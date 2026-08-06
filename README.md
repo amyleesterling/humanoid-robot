@@ -35,6 +35,9 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Safety-function requirements](docs/safety-functions.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
+- [HR-V0 Electrical V3 candidate architecture](docs/hr-v0-electrical-v3-candidate.md)
+- [HR-V0 Boston build-site basis](docs/hr-v0-build-site-basis.md)
+- [Boston fabrication and custom-metal sourcing](docs/hr-v0-fabrication-sourcing-boston.md)
 - [Control and fault-state specification](docs/control.md)
 - [Verification plan](docs/verification.md)
 - [Verification scope and applicability](docs/verification-scope.md)
@@ -45,10 +48,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Fable R11 review and disposition](docs/reviews/2026-08-06-fable-review-disposition.md)
 - [Sol R12 review and disposition](docs/reviews/2026-08-06-sol-r12-review-disposition.md)
 - [Requirements](requirements/requirements.csv)
+- [HR-V0 energization gate register](requirements/hr-v0-energization-gates.csv)
 - [Proposed bill of materials](bom/bom.csv)
 - [Risk register](safety/risk-register.csv)
 
-Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements.
+Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements. Run `python tools/check_energization_gates.py --through-stage E2 --require-ready` before claiming readiness for control-only first energization; it must remain nonzero until every applicable gate is evidenced and closed.
 
 ## Review history
 

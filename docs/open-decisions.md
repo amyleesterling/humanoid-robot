@@ -34,4 +34,13 @@ These questions intentionally remain open. They must be answered with evidence, 
 
 ## Inputs needed from Amy
 
-Before the procurement baseline is frozen: available bench/floor footprint and anchoring, budget range, fabrication capabilities (machining/printing), and country of build/use. Overall height is frozen at 762 mm nominal and untethered level-floor walking is a required end-state.
+The following program inputs are now frozen:
+
+- Build/use location: Boston, Massachusetts, USA.
+- Nominal building supply basis: 120 VAC, 60 Hz. The actual receptacle, branch-circuit protection, grounding, GFCI requirements, and site permission remain to be inspected before any energization.
+- HR-V0 use boundary: indoor, bench-mounted experimental machinery operated by adults in a controlled work area. Children are excluded from the build and test area.
+- HR-V0 payload: one soft foam object, 100 g maximum and 70 mm maximum characteristic dimension.
+- Cost/strength direction: favor a low-cost, low-mass, low-force demonstrator; this does not relax structural proof, guarding, current limiting, stopping, or fault-response requirements.
+- Program end-state: 762 mm nominal overall height and untethered level-floor walking, reached only through the staged HR-30 release sequence.
+
+Inputs still required before procurement or fabrication is frozen are: available bench/floor footprint, anchoring permission and substrate, ambient range, exact workshop/site, budget ceiling, and confirmed fabrication capabilities. For any library or makerspace CNC, record the machine make/model, approved materials, work envelope, stock thickness limits, tooling, CAM/file formats, training/certification, attainable tolerance, supervision rules, fees, and whether outside stock is permitted. See [Boston fabrication and sourcing research](hr-v0-fabrication-sourcing-boston.md).
