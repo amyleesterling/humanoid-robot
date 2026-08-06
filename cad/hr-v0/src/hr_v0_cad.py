@@ -24,6 +24,7 @@ OUT = ROOT / "generated"
 PARTS = OUT / "parts"
 DRAWINGS = OUT / "drawings"
 FIT_COUPONS = OUT / "fit-coupons"
+HARD_STOPS = OUT / "hard-stops"
 
 REVISION = "HR-V0-MECH-R0.1-PRELIMINARY"
 MATERIAL = "6061-T6 aluminum"
@@ -44,6 +45,12 @@ FIT_COUPON_THICKNESS_MM = 2.0
 S102_FIT_COUPON_PART = "MV0-FC02"
 S102_FIT_COUPON_X_MM = 44.0
 S102_FIT_COUPON_Z_MM = 30.0
+HARD_STOP_CONTACT_RADIUS_MM = 50.0
+HARD_STOP_MARGIN_DEG = 5.0
+J1_SOFTWARE_LIMIT_DEG = (-20.0, 70.0)
+J1_MECHANICAL_DATUM_DEG = (-25.0, 75.0)
+J2_INTERNAL_SOFTWARE_LIMIT_DEG = (15.0, 125.0)
+J2_INTERNAL_MECHANICAL_DATUM_DEG = (10.0, 130.0)
 SOURCE_MANIFEST = OUT / "SOURCE-MANIFEST.csv"
 
 ADAPTER_X_MM = 90.0
@@ -429,6 +436,103 @@ def export_s102_fit_coupon(coupon: cq.Workplane) -> dict[str, object]:
     }
 
 
+def write_hard_stop_layout() -> None:
+    """Write kinematic stop datums without inventing a bracket or bumper selection."""
+    def point(ray_deg: float) -> tuple[float, float]:
+        radians = math.radians(ray_deg)
+        return (
+            HARD_STOP_CONTACT_RADIUS_MM * math.cos(radians),
+            HARD_STOP_CONTACT_RADIUS_MM * math.sin(radians),
+        )
+
+    rows = []
+    definitions = (
+        ("HS-J1-MIN", "J1", "shoulder angle from +X; CCW positive", -20.0, -25.0, -25.0),
+        ("HS-J1-MAX", "J1", "shoulder angle from +X; CCW positive", 70.0, 75.0, 75.0),
+        ("HS-J2-MIN", "J2", "internal elbow angle; layout ray = 180 - internal", 15.0, 10.0, 170.0),
+        ("HS-J2-MAX", "J2", "internal elbow angle; layout ray = 180 - internal", 125.0, 130.0, 50.0),
+    )
+    for stop_id, joint, definition, software_value, mechanical_value, layout_ray in definitions:
+        x_mm, z_mm = point(layout_ray)
+        rows.append({
+            "stop_id": stop_id,
+            "joint": joint,
+            "coordinate_definition": definition,
+            "software_joint_value_deg": software_value,
+            "mechanical_datum_joint_value_deg": mechanical_value,
+            "layout_ray_deg": layout_ray,
+            "moving_contact_radius_mm": HARD_STOP_CONTACT_RADIUS_MM,
+            "contact_x_mm": round(x_mm, 3),
+            "contact_z_mm": round(z_mm, 3),
+            "required_nominal_margin_deg": HARD_STOP_MARGIN_DEG,
+            "status": "DATUM STUDY ONLY - BRACKET BUMPER AND TOLERANCE DESIGN REQUIRED",
+        })
+    HARD_STOPS.mkdir(parents=True, exist_ok=True)
+    with (HARD_STOPS / "hard-stop-datums.csv").open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=rows[0].keys())
+        writer.writeheader()
+        writer.writerows(rows)
+
+    def ray(cx: float, cy: float, ray_deg: float, css: str) -> str:
+        radians = math.radians(ray_deg)
+        radius_px = 175.0
+        x2 = cx + radius_px * math.cos(radians)
+        y2 = cy - radius_px * math.sin(radians)
+        return (
+            f'<line x1="{cx:.1f}" y1="{cy:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" class="{css}"/>'
+            f'<circle cx="{x2:.1f}" cy="{y2:.1f}" r="6" class="{css}-point"/>'
+        )
+
+    j1_rays = "".join((
+        ray(250, 360, -20, "software"),
+        ray(250, 360, 70, "software"),
+        ray(250, 360, -25, "mechanical"),
+        ray(250, 360, 75, "mechanical"),
+    ))
+    j2_rays = "".join((
+        ray(750, 360, 165, "software"),
+        ray(750, 360, 55, "software"),
+        ray(750, 360, 170, "mechanical"),
+        ray(750, 360, 50, "mechanical"),
+    ))
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="720" viewBox="0 0 1000 720">
+      <style>
+        text {{ font: 16px system-ui, sans-serif; fill: #082554; }}
+        .title {{ font-size: 28px; font-weight: 700; }}
+        .subtitle {{ font-size: 20px; font-weight: 700; }}
+        .warning {{ font-size: 18px; font-weight: 700; fill: #8a4b00; }}
+        .joint {{ fill: #d9efff; stroke: #082554; stroke-width: 3; }}
+        .sweep {{ fill: none; stroke: #9cb9d8; stroke-width: 2; stroke-dasharray: 8 6; }}
+        .software {{ stroke: #0b72b9; stroke-width: 3; }}
+        .mechanical {{ stroke: #b17700; stroke-width: 4; }}
+        .software-point {{ fill: #0b72b9; stroke: white; stroke-width: 2; }}
+        .mechanical-point {{ fill: #ffbf2f; stroke: #8a4b00; stroke-width: 2; }}
+        .label {{ font-size: 15px; font-weight: 600; }}
+      </style>
+      <text x="40" y="45" class="title">HR-V0 HARD-STOP KINEMATIC DATUM STUDY</text>
+      <text x="40" y="78" class="warning">NO BRACKET OR BUMPER IS RELEASED - NOT A FABRICATION DRAWING</text>
+      <text x="40" y="108">Candidate moving-contact radius: 50.0 mm. Orange rays are 5 deg beyond provisional software limits.</text>
+      <text x="250" y="155" text-anchor="middle" class="subtitle">J1 SHOULDER</text>
+      <text x="750" y="155" text-anchor="middle" class="subtitle">J2 ELBOW</text>
+      <circle cx="250" cy="360" r="175" class="sweep"/><circle cx="250" cy="360" r="25" class="joint"/>
+      <circle cx="750" cy="360" r="175" class="sweep"/><circle cx="750" cy="360" r="25" class="joint"/>
+      {j1_rays}{j2_rays}
+      <text x="330" y="177" class="label">BLUE: SW +70 deg</text>
+      <text x="330" y="202" class="label">ORANGE: STOP +75 deg</text>
+      <text x="425" y="425" class="label">BLUE: SW -20 deg</text>
+      <text x="425" y="450" class="label">ORANGE: STOP -25 deg</text>
+      <text x="560" y="285" class="label">BLUE: SW internal 15 deg</text>
+      <text x="560" y="310" class="label">ORANGE: STOP internal 10 deg</text>
+      <text x="775" y="177" class="label">BLUE: SW internal 125 deg</text>
+      <text x="775" y="202" class="label">ORANGE: STOP internal 130 deg</text>
+      <text x="40" y="590">J1 convention: angle from horizontal +X; counter-clockwise positive.</text>
+      <text x="40" y="620">J2 convention: internal elbow angle; layout ray = 180 deg - internal angle.</text>
+      <text x="40" y="650">Final stop position must include measured backlash, calibration error, tolerance, bumper compression and stopping travel.</text>
+      <text x="40" y="690" class="warning">PRELIMINARY - HARD-STOP LOAD PATH, MATERIAL, FASTENERS AND IMPACT TEST REMAIN DESIGN REQUIRED</text>
+    </svg>'''
+    (HARD_STOPS / "HR-V0_hard-stop-kinematic-layout.svg").write_text(svg, encoding="utf-8")
+
+
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -483,6 +587,7 @@ def main():
     PARTS.mkdir(parents=True, exist_ok=True)
     DRAWINGS.mkdir(parents=True, exist_ok=True)
     FIT_COUPONS.mkdir(parents=True, exist_ok=True)
+    HARD_STOPS.mkdir(parents=True, exist_ok=True)
     for obsolete_name in ("MV0-001_link.svg", "MV0-002_link.svg", "MV0-003_adapter.svg"):
         (DRAWINGS / obsolete_name).unlink(missing_ok=True)
     upper = upper_link_plate()
@@ -511,6 +616,7 @@ def main():
         writer = csv.DictWriter(handle, fieldnames=coupon_rows[0].keys())
         writer.writeheader()
         writer.writerows(coupon_rows)
+    write_hard_stop_layout()
     manifest = {
         "revision": REVISION,
         "units": "mm",
@@ -524,6 +630,12 @@ def main():
             "candidate_frame_hole_mm": FRAME_HOLE_MM,
             "fit_coupon_mm": [FIT_COUPON_OUTER_D_MM, FIT_COUPON_CENTER_CLEARANCE_MM, FIT_COUPON_THICKNESS_MM],
             "s102_fit_coupon_mm": [S102_FIT_COUPON_X_MM, S102_FIT_COUPON_Z_MM, FIT_COUPON_THICKNESS_MM],
+            "hard_stop_contact_radius_mm": HARD_STOP_CONTACT_RADIUS_MM,
+            "hard_stop_nominal_margin_deg": HARD_STOP_MARGIN_DEG,
+            "j1_software_limit_deg": list(J1_SOFTWARE_LIMIT_DEG),
+            "j1_mechanical_datum_deg": list(J1_MECHANICAL_DATUM_DEG),
+            "j2_internal_software_limit_deg": list(J2_INTERNAL_SOFTWARE_LIMIT_DEG),
+            "j2_internal_mechanical_datum_deg": list(J2_INTERNAL_MECHANICAL_DATUM_DEG),
             "adapter_mm": [ADAPTER_X_MM, ADAPTER_Z_MM, ADAPTER_T_MM],
             "anchor_mm": [ANCHOR_X_MM, ANCHOR_Z_MM, ANCHOR_T_MM],
         },
@@ -532,6 +644,7 @@ def main():
             "Execute INSPECT-MECH-004 with MV0-FC02 against the received FR13-S102K selected tapped pattern",
             "Resolve M2.5 fastener grade, engagement, torque and retention",
             "Release the MV0-002 distal gripper interface before cutting the forearm",
+            "Release hard-stop bracket, bumper, load path, tolerance stack and impact validation before actuator motion",
             "Resolve T-slot fasteners, torque, anti-rotation and bracket arrangement",
             "Survey actual bench and select anchor fasteners from substrate evidence",
             "Complete structural, hard-stop, cable, guard and proof-test release",

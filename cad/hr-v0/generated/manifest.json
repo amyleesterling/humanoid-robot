@@ -22,6 +22,24 @@
       30.0,
       2.0
     ],
+    "hard_stop_contact_radius_mm": 50.0,
+    "hard_stop_nominal_margin_deg": 5.0,
+    "j1_software_limit_deg": [
+      -20.0,
+      70.0
+    ],
+    "j1_mechanical_datum_deg": [
+      -25.0,
+      75.0
+    ],
+    "j2_internal_software_limit_deg": [
+      15.0,
+      125.0
+    ],
+    "j2_internal_mechanical_datum_deg": [
+      10.0,
+      130.0
+    ],
     "adapter_mm": [
       90.0,
       110.0,
@@ -38,6 +56,7 @@
     "Execute INSPECT-MECH-004 with MV0-FC02 against the received FR13-S102K selected tapped pattern",
     "Resolve M2.5 fastener grade, engagement, torque and retention",
     "Release the MV0-002 distal gripper interface before cutting the forearm",
+    "Release hard-stop bracket, bumper, load path, tolerance stack and impact validation before actuator motion",
     "Resolve T-slot fasteners, torque, anti-rotation and bracket arrangement",
     "Survey actual bench and select anchor fasteners from substrate evidence",
     "Complete structural, hard-stop, cable, guard and proof-test release"

@@ -17,6 +17,11 @@
     },
     "h101_frame_nominal_thickness_mm": 2.0,
     "xm540_output_tap_depth_max_mm": 2.5,
+    "hard_stop_candidate_contact_radius_mm": 50.0,
+    "hard_stop_nominal_margin_beyond_software_deg": 5.0,
+    "hard_stop_illustrative_bumper_stroke_mm_not_selected": 2.0,
+    "xm540_no_load_speed_rpm_at_12v_candidate_endpoint": 30.0,
+    "xm540_ideal_stall_torque_Nm_at_12v_endpoint": 10.6,
     "column_I_mm4": 137870.0
   },
   "screens": {
@@ -30,7 +35,23 @@
     "h101_output_stack_nominal_before_thread_mm": 6.75,
     "h101_output_fastener_geometric_max_underhead_mm": 9.25,
     "column_tip_deflection_pure_moment_mm": 0.15097713346851635,
-    "minimum_anchor_couple_force_each_N": 27.357142857142858
+    "minimum_anchor_couple_force_each_N": 27.357142857142858,
+    "hard_stop": {
+      "allocated_shoulder_inertia_kg_m2_excludes_reflected_rotor": 0.047264,
+      "allocated_elbow_inertia_kg_m2_excludes_reflected_rotor": 0.010144,
+      "J1_energy_J_at_10_deg_s": 0.0007198718864399497,
+      "J1_energy_J_at_30_deg_s": 0.006478846977959547,
+      "J1_energy_J_at_30_rpm_no_load_endpoint": 0.23323849120654364,
+      "J2_energy_J_at_10_deg_s": 0.0001545019553158186,
+      "J2_energy_J_at_30_deg_s": 0.0013905175978423672,
+      "J2_energy_J_at_30_rpm_no_load_endpoint": 0.05005863352232521,
+      "J1_three_x_gravity_force_N_at_50_mm": 101.99999999999999,
+      "J2_three_x_gravity_force_N_at_50_mm": 37.199999999999996,
+      "ideal_stall_endpoint_force_N_at_50_mm": 211.99999999999997,
+      "J1_average_force_N_if_no_load_energy_absorbed_in_2_mm_excludes_rotor": 116.61924560327182,
+      "J2_average_force_N_if_no_load_energy_absorbed_in_2_mm_excludes_rotor": 25.029316761162605,
+      "screen_result": "KINEMATIC AND ALLOCATED-MASS SCREEN ONLY - STOP DESIGN NOT RELEASED"
+    }
   },
   "not_credited_or_unresolved": [
     "Actual alloy/temper certificate, thickness tolerance, flatness and finish",
@@ -38,7 +59,10 @@
     "Exact M2.5 and M8 fastener part, grade, engagement, preload, torque and locking",
     "Physical FC01/FC02 pattern verification, received thread depth and stack tolerance",
     "Released distal gripper interface and its retention load path",
-    "Joint backlash, alignment, combined load, shock, fatigue and hard-stop impact",
+    "Hard-stop bracket, bumper material/force curve, fasteners, contact geometry and load path",
+    "Measured maximum joint speed, reflected rotor/gear inertia, gear compliance, drive torque duration and stop-switch latency",
+    "Hard-stop tolerance stack including calibration error, backlash, bumper compression and stopping travel",
+    "Joint alignment, combined load, shock and fatigue",
     "Bench substrate, anchor part, edge distance, pull-out, shear and site permission",
     "Guard and receiver-fixture impact/retention",
     "Correlation to measured first article and independent mechanical review"

@@ -1,0 +1,9 @@
+record_id,date,inspector,repo_commit,joint,stop_id,test_stage,article_revision,actuator_serial,frame_serial,stop_part_revision,bumper_mpn,fastener_mpn,instrument_ids,calibration_refs,software_limit_deg,first_bumper_contact_deg,positive_catch_contact_deg,first_cable_guard_self_contact_deg,approach_speed_deg_s,current_limit_A,measured_peak_current_A,measured_peak_force_N,measured_bumper_stroke_mm,rebound_deg,pre_backlash_deg,post_backlash_deg,pre_encoder_zero_deg,post_encoder_zero_deg,photo_or_video_refs,raw_data_ref,fastener_or_witness_shift,damage_or_permanent_set,disposition,notes
+NOT-EXECUTED,,,,J1,HS-J1-MIN,UNPOWERED_GEOMETRY,,,,,,,,,-20,,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,J1,HS-J1-MAX,UNPOWERED_GEOMETRY,,,,,,,,,70,,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,J2,HS-J2-MIN,UNPOWERED_GEOMETRY,,,,,,,,,15,,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,J2,HS-J2-MAX,UNPOWERED_GEOMETRY,,,,,,,,,125,,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,J1,HS-J1-MIN,GUARDED_INCREMENTAL_IMPACT,,,,,,,,,-20,,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,J1,HS-J1-MAX,GUARDED_INCREMENTAL_IMPACT,,,,,,,,,70,,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,J2,HS-J2-MIN,GUARDED_INCREMENTAL_IMPACT,,,,,,,,,15,,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,J2,HS-J2-MAX,GUARDED_INCREMENTAL_IMPACT,,,,,,,,,125,,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW

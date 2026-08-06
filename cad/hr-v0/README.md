@@ -29,6 +29,10 @@ For a clean environment, install the pinned package from `requirements-cad.txt`.
 
 The corrected interface and fastener boundary is [controlled separately](../../docs/hr-v0-joint-interface-fasteners-p0.1.md). The earlier symmetric PCD22 assumption was invalid: H101 output, S102 body-frame, and gripper interfaces are not interchangeable.
 
+## Hard-stop datum study
+
+`generated/hard-stops/` contains the checked J1/J2 coordinate conventions, candidate stop-contact datums and a readable kinematic layout. It deliberately contains no fabricable stop block. The generated mass/energy screen excludes reflected drive inertia and cannot select a bumper or establish impact capacity. See [the hard-stop design basis](../../docs/hr-v0-hard-stop-design-basis-p0.1.md) and [validation procedure](../../docs/hr-v0-hard-stop-validation-p0.1.md).
+
 The assembly uses envelopes for 80/20 40-4040 extrusion and XM540 actuators. Use the untouched manufacturer STEP files in `../vendor/robotis` for final interference checking. The generated assembly is a space claim and mounting concept, not a kinematically constrained assembly.
 
 ## Gates before a cutting order
@@ -38,6 +42,7 @@ The assembly uses envelopes for 80/20 40-4040 extrusion and XM540 actuators. Use
 - Confirm the cutting supplier's actual thickness tolerance, hole tolerance, minimum feature and finish.
 - Resolve fastener exact parts, strength class, engagement, torque, locking method and witness marking.
 - Add and verify hard stops, cable paths, covers, gripper retention and the fixed guard.
+- Before any powered stop test, release the backed-up bumper/catch geometry, current/speed/latency bounds, impact acceptance values, guarded fixture and qualified written approval.
 - Survey the real Boston bench substrate and select anchors from the substrate and edge-distance evidence.
 - Complete the released mechanical calculations and independent mechanical review.
 

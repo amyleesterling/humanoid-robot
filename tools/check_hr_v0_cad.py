@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import math
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -15,9 +16,11 @@ CAD = ROOT / "cad" / "hr-v0"
 GENERATED = CAD / "generated"
 VENDOR = ROOT / "cad" / "vendor" / "robotis"
 FIT_COUPONS = GENERATED / "fit-coupons"
+HARD_STOPS = GENERATED / "hard-stops"
 FIT_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-fit-coupon-inspection-template.csv"
 FRAME_KIT_CONTENTS = ROOT / "bom" / "hr-v0-frame-kit-contents.csv"
 FRAME_KIT_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-frame-kit-receiving-template.csv"
+HARD_STOP_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-hard-stop-validation-template.csv"
 
 
 def sha256(path: Path) -> str:
@@ -203,6 +206,62 @@ def main() -> int:
             errors.append("forearm-link drawing does not preserve the open gripper interface")
         if svg.name == "MV0-003_adapter_s102.svg" and "ON 32 x 16 RECTANGLE" not in text:
             errors.append("shoulder-adapter drawing does not preserve the selected S102 interface")
+    hard_stop_csv = HARD_STOPS / "hard-stop-datums.csv"
+    with hard_stop_csv.open(newline="", encoding="utf-8") as handle:
+        hard_stop_rows = list(csv.DictReader(handle))
+    expected_stop_values = {
+        "HS-J1-MIN": ("J1", "-20.0", "-25.0", "-25.0", "45.315", "-21.131"),
+        "HS-J1-MAX": ("J1", "70.0", "75.0", "75.0", "12.941", "48.296"),
+        "HS-J2-MIN": ("J2", "15.0", "10.0", "170.0", "-49.24", "8.682"),
+        "HS-J2-MAX": ("J2", "125.0", "130.0", "50.0", "32.139", "38.302"),
+    }
+    hard_stop_by_id = {row.get("stop_id"): row for row in hard_stop_rows}
+    if set(hard_stop_by_id) != set(expected_stop_values):
+        errors.append("hard-stop datum table lost the four controlled candidate boundaries")
+    for stop_id, expected in expected_stop_values.items():
+        row = hard_stop_by_id.get(stop_id, {})
+        actual = tuple(row.get(field) for field in (
+            "joint", "software_joint_value_deg", "mechanical_datum_joint_value_deg",
+            "layout_ray_deg", "contact_x_mm", "contact_z_mm",
+        ))
+        if actual != expected:
+            errors.append(f"{stop_id} datum expected {expected}, found {actual}")
+        if row.get("moving_contact_radius_mm") != "50.0" or row.get("required_nominal_margin_deg") != "5.0":
+            errors.append(f"{stop_id} lost the 50 mm radius or 5 degree nominal margin")
+        if "DESIGN REQUIRED" not in row.get("status", ""):
+            errors.append(f"{stop_id} falsely appears released")
+    hard_stop_svg = HARD_STOPS / "HR-V0_hard-stop-kinematic-layout.svg"
+    try:
+        ET.parse(hard_stop_svg)
+    except (ET.ParseError, FileNotFoundError) as exc:
+        errors.append(f"invalid or missing hard-stop layout SVG: {exc}")
+    else:
+        hard_stop_text = hard_stop_svg.read_text(encoding="utf-8")
+        for required in (
+            "font: 16px", "NO BRACKET OR BUMPER IS RELEASED", "J1 convention",
+            "J2 convention", "5 deg beyond provisional software limits", "IMPACT TEST REMAIN DESIGN REQUIRED",
+        ):
+            if required not in hard_stop_text:
+                errors.append(f"hard-stop layout missing controlled text: {required}")
+    with HARD_STOP_RECORD_TEMPLATE.open(newline="", encoding="utf-8") as handle:
+        hard_stop_record_rows = list(csv.DictReader(handle))
+    expected_record_keys = {
+        (joint, stop_id, stage)
+        for joint, stop_id in (
+            ("J1", "HS-J1-MIN"), ("J1", "HS-J1-MAX"),
+            ("J2", "HS-J2-MIN"), ("J2", "HS-J2-MAX"),
+        )
+        for stage in ("UNPOWERED_GEOMETRY", "GUARDED_INCREMENTAL_IMPACT")
+    }
+    actual_record_keys = {
+        (row.get("joint"), row.get("stop_id"), row.get("test_stage"))
+        for row in hard_stop_record_rows
+    }
+    if actual_record_keys != expected_record_keys:
+        errors.append("hard-stop validation template lost its eight controlled seed rows")
+    for row in hard_stop_record_rows:
+        if row.get(None) or row.get("record_id") != "NOT-EXECUTED" or row.get("disposition") != "NOT EXECUTED":
+            errors.append(f"malformed or executed-looking hard-stop template row: {row.get('stop_id')}")
     manifest = json.loads((GENERATED / "manifest.json").read_text(encoding="utf-8"))
     if "NOT RELEASED" not in manifest["warning"]:
         errors.append("generated manifest lost release warning")
@@ -246,6 +305,13 @@ def main() -> int:
         errors.append("mechanical calculation status is not the controlled preliminary result")
     if checks["screens"].get("h101_output_fastener_geometric_max_underhead_mm") != 9.25:
         errors.append("mechanical calculation lost the H101 output-stack geometric limit")
+    hard_stop_screen = checks["screens"].get("hard_stop", {})
+    if not math.isclose(hard_stop_screen.get("allocated_shoulder_inertia_kg_m2_excludes_reflected_rotor", 0), 0.047264, rel_tol=1e-9):
+        errors.append("hard-stop screen lost the allocated J1 inertia calculation")
+    if not math.isclose(hard_stop_screen.get("allocated_elbow_inertia_kg_m2_excludes_reflected_rotor", 0), 0.010144, rel_tol=1e-9):
+        errors.append("hard-stop screen lost the allocated J2 inertia calculation")
+    if hard_stop_screen.get("screen_result") != "KINEMATIC AND ALLOCATED-MASS SCREEN ONLY - STOP DESIGN NOT RELEASED":
+        errors.append("hard-stop calculation no longer preserves its unreleased status")
     if checks["inputs"].get("selected_interfaces", {}).get("distal_gripper") != "DESIGN REQUIRED":
         errors.append("mechanical calculation failed to preserve the open gripper interface")
     if not checks["not_credited_or_unresolved"]:

@@ -2,7 +2,7 @@
 
 **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 
-Status: correction-stage feasibility model. Native HR-V0 R0.1 quote geometry, four custom-part neutral files, preliminary mass properties, reproducible structural screens, and the controlled `MV0-FC01` PCD22 fit-coupon package now exist. The physical coupon inspection, released production tolerances/drawings, complete mass closure, hard stops, guards, cable routing, gripper mechanics, bench anchors, proof tests, and mechanical release are not complete. See [the R0.1 mechanical baseline](hr-v0-mechanical-r0.1.md), [fit-coupon procedure](hr-v0-fit-coupon-procedure-p0.1.md), and [R11 engineering calculations](r11-engineering-calculations.md).
+Status: correction-stage feasibility model. Native HR-V0 R0.1 quote geometry, four custom-part neutral files, preliminary mass properties, reproducible structural screens, two controlled fit-coupon packages, and a checked hard-stop kinematic/load-case study now exist. Physical coupon inspection, released production tolerances/drawings, complete mass closure, fabricable hard-stop parts, guards, cable routing, gripper mechanics, bench anchors, proof tests, and mechanical release are not complete. See [the R0.1 mechanical baseline](hr-v0-mechanical-r0.1.md), [joint-interface basis](hr-v0-joint-interface-fasteners-p0.1.md), [hard-stop basis](hr-v0-hard-stop-design-basis-p0.1.md), and [R11 engineering calculations](r11-engineering-calculations.md).
 
 ## Geometry
 
@@ -78,6 +78,8 @@ The HR-V0 arm requires the same form of proof using the selected actuator's own 
 - correlation of CAD mass properties with measured parts.
 
 Minimum mechanical proof factor is 3.0 against the maximum permitted operational load for non-brittle metal primary structure. This is a project rule, not a standards claim. It does not replace joint-specific fatigue, impact, fastener, bearing, or restraint analysis.
+
+The current hard-stop screen records the allocated-mass energies and candidate 50 mm contact datums but is not a stop-part release. Reflected drive inertia, bumper force/displacement, current persisting during stop-detection latency, rebound, wear, tolerance and repeated-cycle evidence remain required under `INSPECT-MECH-006` and `TEST-MECH-002`.
 
 ## Serviceability and pinch control
 

@@ -23,7 +23,7 @@ Evidence maturity is recorded separately from design intent. A clean parser, ERC
 | Domain | Current maturity | Evidence present | Blocking evidence |
 |---|---:|---|---|
 | HR-V0 electrical connectivity | E2 | connected KiCad V2.1; 15 sheets; 0 ERC errors and 0 warnings; manufacturer source register | qualified electrical and functional-safety review; selected physical parts; fault, stop, and reset tests |
-| HR-V0 mechanism | E1 | native quote geometry; separately modeled H101 and S102 candidate interfaces; two hashed fit coupons and unpowered inspection procedures | received-part fit records; released load-path CAD; gripper interface; bearings, shafts, fasteners, hard stops, guards, cable paths, tolerances, mass properties, proof tests |
+| HR-V0 mechanism | E1 | native quote geometry; separately modeled H101 and S102 candidate interfaces; two hashed fit coupons; hard-stop coordinate, inertia and load-case study; unpowered/guarded validation procedures | received-part fit records; released load-path CAD; gripper interface; bearings, shafts, fasteners, physical hard-stop parts and bumper data; guards, cable paths, tolerances, measured effective inertia, mass properties, proof/impact tests |
 | HR-30 full-body CAD | E0 | controlled external dimensions and joint inventory | dimensioned assembly, packaging, collision, service, cable, mass, COM, and inertia evidence |
 | Leg drivetrain | E1 | candidate actuator and 1.5:1 reduction concept | instrumented joint article; output encoder selection; continuous/cyclic/impact/thermal/backlash tests |
 | Foot and IMU sensing | E1 | functional interfaces and sample-rate requirements | complete component circuits, PCB/layout, calibration, overload, saturation, latency, and fault-injection evidence |
