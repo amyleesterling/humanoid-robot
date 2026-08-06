@@ -35,6 +35,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 Mechanical R0.1 preliminary baseline](docs/hr-v0-mechanical-r0.1.md)
 - [HR-V0 PCD22 fit-coupon procedure P0.1](docs/hr-v0-fit-coupon-procedure-p0.1.md)
 - [HR-V0 S102 fit-coupon procedure P0.1](docs/hr-v0-s102-fit-procedure-p0.1.md)
+- [HR-V0 gripper architecture and closure plan P0.1](docs/hr-v0-gripper-architecture-p0.1.md)
+- [HR-V0 gripper-kit contents schedule](bom/hr-v0-gripper-kit-contents.csv)
 - [HR-V0 joint-interface and fastener evidence basis](docs/hr-v0-joint-interface-fasteners-p0.1.md)
 - [HR-V0 hard-stop design basis P0.1](docs/hr-v0-hard-stop-design-basis-p0.1.md)
 - [HR-V0 hard-stop validation procedure P0.1](docs/hr-v0-hard-stop-validation-p0.1.md)
@@ -69,6 +71,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R21](docs/reviews/2026-08-06-sol-r12-post-r21-status.md)
 - [Sol R12 findings rechecked against R22](docs/reviews/2026-08-06-sol-r12-post-r22-status.md)
 - [Sol R12 findings rechecked against R23](docs/reviews/2026-08-06-sol-r12-post-r23-status.md)
+- [Sol R12 findings rechecked against R24](docs/reviews/2026-08-06-sol-r12-post-r24-status.md)
 - [Electrical V3-P0.4 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.1 independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
 - [Requirements](requirements/requirements.csv)
@@ -80,7 +83,7 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 
 ## Review history
 
-Twenty-three review/control rounds are complete: R01-R23. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
+Twenty-four review/control rounds are complete: R01-R24. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -107,6 +110,7 @@ Twenty-three review/control rounds are complete: R01-R23. R11 Fable and R12 Sol 
 | R21 | Mechanical interface-topology correction | Found and removed an invalid symmetric PCD22 assumption; separated H101 output, S102 body-frame, and unresolved gripper interfaces; added `MV0-FC02`, frame-kit receiving controls, fastener stack math, and manifest-pipeline validation. |
 | R22 | Hard-stop kinematic and load-case definition | Added checked stop datums, allocated-mass energy and drive-force screens, an unpowered inspection, and a guarded incremental validation route without inventing a bumper or impact rating. |
 | R23 | HR-V0 moving-mass traceability and closure correction | Added `MASS-002`, a 13-row controlled ledger, reproducible 565.4 g known subtotal, 184.6 g unresolved headroom, measurement form, and review procedure while keeping mass closure open. |
+| R24 | HR-V0 gripper interface and evidence correction | Selected an orderable ROBOTIS parent kit and exact mechanism allocation, added the `MV0-FC03` 24 x 12 mm physical-fit coupon, guarded-use requirement, receiving/interface records, and primary-source hashes while keeping force, guard, mass, fasteners and proof open. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

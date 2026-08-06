@@ -45,6 +45,11 @@ FIT_COUPON_THICKNESS_MM = 2.0
 S102_FIT_COUPON_PART = "MV0-FC02"
 S102_FIT_COUPON_X_MM = 44.0
 S102_FIT_COUPON_Z_MM = 30.0
+GRIPPER_FIT_COUPON_PART = "MV0-FC03"
+GRIPPER_FRAME_PATTERN_X_MM = 24.0
+GRIPPER_FRAME_PATTERN_Z_MM = 12.0
+GRIPPER_FIT_COUPON_X_MM = 36.0
+GRIPPER_FIT_COUPON_Z_MM = 24.0
 HARD_STOP_CONTACT_RADIUS_MM = 50.0
 HARD_STOP_MARGIN_DEG = 5.0
 J1_SOFTWARE_LIMIT_DEG = (-20.0, 70.0)
@@ -101,6 +106,15 @@ def s102_tapped_rectangle_points(cx: float, cz: float) -> list[tuple[float, floa
     ]
 
 
+def gripper_frame_rectangle_points(cx: float, cz: float) -> list[tuple[float, float]]:
+    """Selected four-hole subset on the FR12-H104K broad face."""
+    return [
+        (cx + dx, cz + dz)
+        for dx in (-GRIPPER_FRAME_PATTERN_X_MM / 2.0, GRIPPER_FRAME_PATTERN_X_MM / 2.0)
+        for dz in (-GRIPPER_FRAME_PATTERN_Z_MM / 2.0, GRIPPER_FRAME_PATTERN_Z_MM / 2.0)
+    ]
+
+
 def upper_link_plate() -> cq.Workplane:
     """H101 output interface at J1; S102 body-frame interface at J2."""
     solid = link_profile().extrude(LINK_THICKNESS_MM)
@@ -111,9 +125,15 @@ def upper_link_plate() -> cq.Workplane:
 
 
 def forearm_link_plate() -> cq.Workplane:
-    """H101 output interface at J2; distal gripper interface remains unreleased."""
+    """H101 output at J2 and selected FR12-H104K candidate interface distally."""
     solid = link_profile().extrude(LINK_THICKNESS_MM)
-    return solid.faces(">Y").workplane().pushPoints(pcd_points(0.0, 0.0)).hole(FRAME_HOLE_MM)
+    solid = solid.faces(">Y").workplane().pushPoints(pcd_points(0.0, 0.0)).hole(FRAME_HOLE_MM)
+    # Rotate the frame's 24 x 12 broad-face rectangle so 24 mm lies across the link.
+    distal_points = [
+        (LINK_CENTERS_MM + dz, dx)
+        for dx, dz in gripper_frame_rectangle_points(0.0, 0.0)
+    ]
+    return solid.faces(">Y").workplane().pushPoints(distal_points).hole(FRAME_HOLE_MM)
 
 
 def robotis_pcd22_fit_coupon() -> cq.Workplane:
@@ -135,6 +155,18 @@ def robotis_s102_32x16_fit_coupon() -> cq.Workplane:
         .extrude(FIT_COUPON_THICKNESS_MM)
     )
     return coupon.faces(">Y").workplane().pushPoints(s102_tapped_rectangle_points(0.0, 0.0)).hole(FRAME_HOLE_MM)
+
+
+def robotis_h104_24x12_fit_coupon() -> cq.Workplane:
+    """Non-structural coupon for the selected FR12-H104K four-hole subset."""
+    coupon = (
+        cq.Workplane("XZ")
+        .rect(GRIPPER_FIT_COUPON_X_MM, GRIPPER_FIT_COUPON_Z_MM)
+        .extrude(FIT_COUPON_THICKNESS_MM)
+    )
+    return coupon.faces(">Y").workplane().pushPoints(
+        gripper_frame_rectangle_points(0.0, 0.0)
+    ).hole(FRAME_HOLE_MM)
 
 
 def shoulder_adapter() -> cq.Workplane:
@@ -231,15 +263,21 @@ def write_svg_drawing(part_number: str, title: str, kind: str):
             f'cy="{173 + 38.5*math.sin(2*math.pi*i/8):.1f}" r="4.7"/>'
             for i in range(8)
         )
+        gripper_holes = ''.join(
+            f'<circle cx="{710 + dx*3.5:.1f}" cy="{173 + dz*3.5:.1f}" r="4.7"/>'
+            for dx in (-6.0, 6.0)
+            for dz in (-12.0, 12.0)
+        )
         geometry = f'''
           <path d="M 150 250 L 710 250 A 77 77 0 0 0 710 96 L 150 96 A 77 77 0 0 0 150 250 Z" class="part"/>
           <g class="hole">{h101_holes}</g>
-          <circle cx="710" cy="173" r="52" fill="none" stroke="#0b72b9" stroke-width="2" stroke-dasharray="8 6"/>
+          <g class="hole">{gripper_holes}</g>
           <line x1="150" y1="300" x2="710" y2="300" class="dim"/><text x="430" y="330">160.0 +/-0.5 AXIS TO GRIPPER DATUM</text>
           <line x1="95" y1="96" x2="95" y2="250" class="dim"/><text x="55" y="180" transform="rotate(-90 55 180)">44.0</text>
           <text x="110" y="70">J2/H101: 8 x dia 2.70 ON dia 22 PCD</text>
-          <text x="520" y="70">DISTAL GRIPPER HOLES: DESIGN REQUIRED</text>
-          <text x="150" y="357">THICKNESS 4.75 mm NOMINAL - DO NOT CUT UNTIL GRIPPER INTERFACE IS RELEASED</text>'''
+          <text x="470" y="50">GRIPPER/H104: 4 x dia 2.70</text>
+          <text x="470" y="74">12 LONGITUDINAL x 24 TRANSVERSE</text>
+          <text x="150" y="357">THICKNESS 4.75 mm NOMINAL - DO NOT CUT UNTIL MV0-FC03 PHYSICAL FIT PASSES</text>'''
     elif kind == "link":
         width, height = 920, 380
         geometry = f'''
@@ -436,6 +474,77 @@ def export_s102_fit_coupon(coupon: cq.Workplane) -> dict[str, object]:
     }
 
 
+def export_gripper_fit_coupon(coupon: cq.Workplane) -> dict[str, object]:
+    """Export the selected FR12-H104K 24 x 12 four-hole coupon and overlay."""
+    stem = f"{GRIPPER_FIT_COUPON_PART}_h104_24x12_mount_pattern_coupon"
+    exporters.export(coupon, str(FIT_COUPONS / f"{stem}.step"))
+    exporters.export(coupon, str(FIT_COUPONS / f"{stem}.stl"), tolerance=0.02, angularTolerance=0.1)
+    exporters.export(coupon.faces("<Y"), str(FIT_COUPONS / f"{stem}.dxf"))
+
+    cx, cy = 105.0, 82.0
+    holes = "".join(
+        f'<circle cx="{cx + dx:.3f}" cy="{cy + dz:.3f}" r="{FRAME_HOLE_MM/2:.3f}" class="hole"/>'
+        for dx, dz in gripper_frame_rectangle_points(0.0, 0.0)
+    )
+    overlay = f'''<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 210 297">
+      <style>
+        text {{ font-family: Arial, sans-serif; font-size: 5px; fill: #082554; }}
+        .title {{ font-size: 7px; font-weight: 700; }}
+        .warning {{ font-size: 5px; font-weight: 700; fill: #8a4b00; }}
+        .coupon {{ fill: none; stroke: #082554; stroke-width: 0.35; }}
+        .hole {{ fill: none; stroke: #b17700; stroke-width: 0.35; }}
+        .center {{ stroke: #0b72b9; stroke-width: 0.25; stroke-dasharray: 2 1; }}
+        .scale {{ stroke: #082554; stroke-width: 0.6; }}
+      </style>
+      <text x="15" y="15" class="title">{GRIPPER_FIT_COUPON_PART} - FR12-H104K SELECTED 24 x 12 PATTERN</text>
+      <text x="15" y="23" class="title">1:1 A4 OVERLAY</text>
+      <text x="15" y="32" class="warning">FIT CHECK ONLY - NOT A STRUCTURAL OR FABRICATION-RELEASED PART</text>
+      <text x="15" y="40">Print at ACTUAL SIZE / 100%. Disable Fit, Shrink, and Scale-to-page.</text>
+      <rect x="{cx-GRIPPER_FIT_COUPON_X_MM/2:.3f}" y="{cy-GRIPPER_FIT_COUPON_Z_MM/2:.3f}" width="{GRIPPER_FIT_COUPON_X_MM:.3f}" height="{GRIPPER_FIT_COUPON_Z_MM:.3f}" class="coupon"/>
+      {holes}
+      <line x1="{cx-24}" y1="{cy}" x2="{cx+24}" y2="{cy}" class="center"/>
+      <line x1="{cx}" y1="{cy-20}" x2="{cx}" y2="{cy+20}" class="center"/>
+      <text x="15" y="116">4 x dia 2.70 candidate clearance holes on a 24.00 x 12.00 rectangle.</text>
+      <text x="15" y="124">Selected four received-STEP features on the FR12-H104K broad face.</text>
+      <text x="15" y="132">Coupon 36.0 x 24.0 x 2.0 nominal. It does not validate the final load path.</text>
+      <text x="15" y="144">Verify seating against the received FR12-H104K without forcing.</text>
+      <text x="15" y="152">Record proposed fastener and nut/tool access at every selected hole.</text>
+      <text x="15" y="160">Fastener length, grade, torque, retention and guard clearance remain SELECTION REQUIRED.</text>
+      <line x1="15" y1="174" x2="115" y2="174" class="scale"/>
+      <line x1="15" y1="170" x2="15" y2="178" class="scale"/>
+      <line x1="115" y1="170" x2="115" y2="178" class="scale"/>
+      <text x="15" y="186">X PRINT SCALE CHECK: 100.00 mm</text>
+      <text x="15" y="194">Record measured X before using the overlay.</text>
+      <line x1="155" y1="174" x2="155" y2="274" class="scale"/>
+      <line x1="151" y1="174" x2="159" y2="174" class="scale"/>
+      <line x1="151" y1="274" x2="159" y2="274" class="scale"/>
+      <text x="163" y="186">Y SCALE</text><text x="163" y="194">100.00 mm</text><text x="163" y="202">Record Y</text>
+      <text x="15" y="222">Source: ROBOTIS FR12-H104K reference drawing dated Aug-31-17</text>
+      <text x="15" y="230">and received manufacturer STEP. Drawing states FOR REFERENCE ONLY.</text>
+      <text x="15" y="240">Received part governs. Hashes and URLs:</text>
+      <text x="15" y="248">cad/vendor/robotis/vendor-manifest.csv</text>
+      <text x="15" y="286" class="warning">PRELIMINARY - PHYSICAL FIT AND FASTENER ACCESS INSPECTION REQUIRED</text>
+      <text x="15" y="294" class="warning">NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
+    </svg>'''
+    (FIT_COUPONS / f"{stem}_1to1_A4.svg").write_text(overlay, encoding="utf-8")
+    return {
+        "part_number": GRIPPER_FIT_COUPON_PART,
+        "description": "FR12-H104K selected 24 x 12 pattern non-structural fit coupon",
+        "revision": REVISION,
+        "outer_diameter_mm": "",
+        "outer_x_mm": GRIPPER_FIT_COUPON_X_MM,
+        "outer_z_mm": GRIPPER_FIT_COUPON_Z_MM,
+        "center_clearance_mm": "",
+        "hole_count": 4,
+        "hole_diameter_mm": FRAME_HOLE_MM,
+        "pcd_mm": "",
+        "pattern_x_mm": GRIPPER_FRAME_PATTERN_X_MM,
+        "pattern_z_mm": GRIPPER_FRAME_PATTERN_Z_MM,
+        "thickness_mm": FIT_COUPON_THICKNESS_MM,
+        "release_status": "FIT CHECK ONLY - PHYSICAL EVIDENCE REQUIRED",
+    }
+
+
 def write_hard_stop_layout() -> None:
     """Write kinematic stop datums without inventing a bracket or bumper selection."""
     def point(ray_deg: float) -> tuple[float, float]:
@@ -597,6 +706,7 @@ def main():
     anchor_right = anchor_plate()
     fit_coupon = robotis_pcd22_fit_coupon()
     s102_fit_coupon = robotis_s102_32x16_fit_coupon()
+    gripper_fit_coupon = robotis_h104_24x12_fit_coupon()
     rows = [
         export_part("MV0-001", "upper_link_plate", upper, MATERIAL),
         export_part("MV0-002", "forearm_link_plate", forearm, MATERIAL),
@@ -611,7 +721,11 @@ def main():
         writer = csv.DictWriter(handle, fieldnames=rows[0].keys())
         writer.writeheader()
         writer.writerows(rows)
-    coupon_rows = [export_fit_coupon(fit_coupon), export_s102_fit_coupon(s102_fit_coupon)]
+    coupon_rows = [
+        export_fit_coupon(fit_coupon),
+        export_s102_fit_coupon(s102_fit_coupon),
+        export_gripper_fit_coupon(gripper_fit_coupon),
+    ]
     with (FIT_COUPONS / "fit-coupons.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=coupon_rows[0].keys())
         writer.writeheader()
@@ -630,6 +744,8 @@ def main():
             "candidate_frame_hole_mm": FRAME_HOLE_MM,
             "fit_coupon_mm": [FIT_COUPON_OUTER_D_MM, FIT_COUPON_CENTER_CLEARANCE_MM, FIT_COUPON_THICKNESS_MM],
             "s102_fit_coupon_mm": [S102_FIT_COUPON_X_MM, S102_FIT_COUPON_Z_MM, FIT_COUPON_THICKNESS_MM],
+            "gripper_h104_selected_rectangle_mm": [GRIPPER_FRAME_PATTERN_X_MM, GRIPPER_FRAME_PATTERN_Z_MM],
+            "gripper_fit_coupon_mm": [GRIPPER_FIT_COUPON_X_MM, GRIPPER_FIT_COUPON_Z_MM, FIT_COUPON_THICKNESS_MM],
             "hard_stop_contact_radius_mm": HARD_STOP_CONTACT_RADIUS_MM,
             "hard_stop_nominal_margin_deg": HARD_STOP_MARGIN_DEG,
             "j1_software_limit_deg": list(J1_SOFTWARE_LIMIT_DEG),
@@ -643,7 +759,7 @@ def main():
             "Execute INSPECT-MECH-003 with MV0-FC01 against received FR13-H101K and FR13-S102K parts",
             "Execute INSPECT-MECH-004 with MV0-FC02 against the received FR13-S102K selected tapped pattern",
             "Resolve M2.5 fastener grade, engagement, torque and retention",
-            "Release the MV0-002 distal gripper interface before cutting the forearm",
+            "Execute INSPECT-MECH-008 with MV0-FC03 against the received FR12-H104K and verify seating and fastener access",
             "Release hard-stop bracket, bumper, load path, tolerance stack and impact validation before actuator motion",
             "Resolve T-slot fasteners, torque, anti-rotation and bracket arrangement",
             "Survey actual bench and select anchor fasteners from substrate evidence",

@@ -23,6 +23,9 @@ FRAME_KIT_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-frame-kit-receivin
 HARD_STOP_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-hard-stop-validation-template.csv"
 MOVING_MASS_LEDGER = ROOT / "bom" / "hr-v0-moving-mass-ledger.csv"
 MOVING_MASS_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-moving-mass-measurement-template.csv"
+GRIPPER_KIT_CONTENTS = ROOT / "bom" / "hr-v0-gripper-kit-contents.csv"
+GRIPPER_KIT_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-gripper-kit-receiving-template.csv"
+GRIPPER_INTERFACE_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-gripper-interface-inspection-template.csv"
 
 
 def sha256(path: Path) -> str:
@@ -50,6 +53,7 @@ def main() -> int:
     coupon_stems = {
         "MV0-FC01": "MV0-FC01_robotis_pcd22_fit_coupon",
         "MV0-FC02": "MV0-FC02_s102_32x16_tapped_pattern_coupon",
+        "MV0-FC03": "MV0-FC03_h104_24x12_mount_pattern_coupon",
     }
     for coupon_id, coupon_stem in coupon_stems.items():
         coupon_files = {path.suffix.lower() for path in FIT_COUPONS.glob(f"{coupon_stem}.*")}
@@ -84,6 +88,20 @@ def main() -> int:
             "pcd_mm": "",
             "pattern_x_mm": "32.0",
             "pattern_z_mm": "16.0",
+            "thickness_mm": "2.0",
+            "release_status": "FIT CHECK ONLY - PHYSICAL EVIDENCE REQUIRED",
+        },
+        "MV0-FC03": {
+            "part_number": "MV0-FC03",
+            "outer_diameter_mm": "",
+            "outer_x_mm": "36.0",
+            "outer_z_mm": "24.0",
+            "center_clearance_mm": "",
+            "hole_count": "4",
+            "hole_diameter_mm": "2.7",
+            "pcd_mm": "",
+            "pattern_x_mm": "24.0",
+            "pattern_z_mm": "12.0",
             "thickness_mm": "2.0",
             "release_status": "FIT CHECK ONLY - PHYSICAL EVIDENCE REQUIRED",
         },
@@ -128,6 +146,33 @@ def main() -> int:
     for row in record_rows:
         if row.get(None) or row.get("record_id") != "NOT-EXECUTED" or row.get("disposition") != "NOT EXECUTED":
             errors.append(f"malformed or executed-looking fit-coupon template row: {row.get('vendor_part')}")
+    with GRIPPER_INTERFACE_RECORD_TEMPLATE.open(newline="", encoding="utf-8") as handle:
+        gripper_interface_reader = csv.DictReader(handle)
+        gripper_interface_rows = list(gripper_interface_reader)
+    expected_gripper_interface_fields = (
+        "record_id", "date", "inspector", "repo_commit", "cad_revision", "coupon_file",
+        "coupon_sha256", "vendor_part", "parent_order_code", "received_label", "serial_or_lot",
+        "manufacturer_drawing_sha256", "manufacturer_step_sha256", "coupon_method", "coupon_material",
+        "measuring_instrument", "calibration_reference", "measured_thickness_mm", "scale_x_mm", "scale_y_mm",
+        "hole_index", "candidate_fastener_or_gauge", "seats_flat", "enters_without_force",
+        "fastener_and_nut_access", "measured_x_offset_mm", "measured_y_offset_mm", "photo_reference", "notes",
+        "disposition",
+    )
+    if tuple(gripper_interface_reader.fieldnames or ()) != expected_gripper_interface_fields:
+        errors.append("gripper-interface inspection template fields changed")
+    expected_gripper_interface_keys = {
+        ("MV0-FC03_h104_24x12_mount_pattern_coupon.dxf", "FR12-H104K", str(index))
+        for index in range(1, 5)
+    }
+    actual_gripper_interface_keys = {
+        (row.get("coupon_file"), row.get("vendor_part"), row.get("hole_index"))
+        for row in gripper_interface_rows
+    }
+    if actual_gripper_interface_keys != expected_gripper_interface_keys:
+        errors.append("gripper-interface template lost its four controlled per-hole rows")
+    for row in gripper_interface_rows:
+        if row.get(None) or row.get("record_id") != "NOT-EXECUTED" or row.get("disposition") != "NOT EXECUTED":
+            errors.append(f"malformed or executed-looking gripper-interface row: {row.get('hole_index')}")
     with FRAME_KIT_CONTENTS.open(newline="", encoding="utf-8") as handle:
         kit_rows = list(csv.DictReader(handle))
     expected_kit_ids = {f"FKC-{index:03d}" for index in range(1, 12)}
@@ -155,9 +200,28 @@ def main() -> int:
     for row in kit_record_rows:
         if row.get(None) or row.get("record_id") != "NOT-EXECUTED" or row.get("disposition") != "NOT EXECUTED":
             errors.append(f"malformed or executed-looking frame-kit receiving row: {row.get('kit_content_id')}")
+    with GRIPPER_KIT_CONTENTS.open(newline="", encoding="utf-8") as handle:
+        gripper_kit_rows = list(csv.DictReader(handle))
+    expected_gripper_kit_ids = {f"GKC-{index:03d}" for index in range(1, 21)}
+    if {row.get("content_id") for row in gripper_kit_rows} != expected_gripper_kit_ids:
+        errors.append("gripper-kit schedule does not contain controlled GKC-001 through GKC-020")
+    for row in gripper_kit_rows:
+        expected_status = "proposed" if row.get("content_id") == "GKC-001" else "received_verification_required"
+        if row.get("status") != expected_status:
+            errors.append(f"gripper-kit row has wrong status: {row.get('content_id')}")
+        if row.get("parent_orderable") != "OpenMANIPULATOR-X Frame Set RM-X52" or row.get("order_code") != "905-0023-000":
+            errors.append(f"gripper-kit row lost parent identity: {row.get('content_id')}")
+    with GRIPPER_KIT_RECORD_TEMPLATE.open(newline="", encoding="utf-8") as handle:
+        gripper_kit_record_rows = list(csv.DictReader(handle))
+    if {row.get("content_id") for row in gripper_kit_record_rows} != expected_gripper_kit_ids:
+        errors.append("gripper-kit receiving template does not contain one seed row per controlled content item")
+    for row in gripper_kit_record_rows:
+        if row.get(None) or row.get("record_id") != "NOT-EXECUTED" or row.get("disposition") != "NOT EXECUTED":
+            errors.append(f"malformed or executed-looking gripper-kit receiving row: {row.get('content_id')}")
     overlay_requirements = {
         "MV0-FC01": ("FR13-H101K and FR13-S102K", "PHYSICAL FIT AND TOLERANCE REVIEW REQUIRED"),
         "MV0-FC02": ("32.00 x 16.00", "PHYSICAL FIT AND THREAD INSPECTION REQUIRED"),
+        "MV0-FC03": ("24.00 x 12.00", "PHYSICAL FIT AND FASTENER ACCESS INSPECTION REQUIRED"),
     }
     for coupon_id, coupon_stem in coupon_stems.items():
         overlay = FIT_COUPONS / f"{coupon_stem}_1to1_A4.svg"
@@ -204,8 +268,10 @@ def main() -> int:
             for required in ("J1/H101", "J2/S102", "32 x 16 RECTANGLE"):
                 if required not in text:
                     errors.append(f"upper-link drawing missing interface text: {required}")
-        if svg.name == "MV0-002_forearm_link.svg" and "DISTAL GRIPPER HOLES: DESIGN REQUIRED" not in text:
-            errors.append("forearm-link drawing does not preserve the open gripper interface")
+        if svg.name == "MV0-002_forearm_link.svg":
+            for required in ("GRIPPER/H104", "12 LONGITUDINAL x 24 TRANSVERSE", "MV0-FC03 PHYSICAL FIT PASSES"):
+                if required not in text:
+                    errors.append(f"forearm-link drawing missing controlled gripper text: {required}")
         if svg.name == "MV0-003_adapter_s102.svg" and "ON 32 x 16 RECTANGLE" not in text:
             errors.append("shoulder-adapter drawing does not preserve the selected S102 interface")
     hard_stop_csv = HARD_STOPS / "hard-stop-datums.csv"
@@ -302,6 +368,10 @@ def main() -> int:
         errors.append("generated manifest lost release warning")
     if manifest["controlled_parameters"].get("s102_selected_tapped_rectangle_mm") != [32.0, 16.0]:
         errors.append("generated manifest lost the selected S102 32 x 16 tapped pattern")
+    if manifest["controlled_parameters"].get("gripper_h104_selected_rectangle_mm") != [24.0, 12.0]:
+        errors.append("generated manifest lost the selected FR12-H104K 24 x 12 pattern")
+    if manifest["controlled_parameters"].get("gripper_fit_coupon_mm") != [36.0, 24.0, 2.0]:
+        errors.append("generated manifest lost the MV0-FC03 coupon dimensions")
     for name in ("HR-V0_preliminary_assembly.step", "HR-V0_preliminary_assembly.glb"):
         path = GENERATED / name
         if not path.exists() or path.stat().st_size < 10_000:
@@ -354,8 +424,8 @@ def main() -> int:
         errors.append("mechanical calculation lost the 184.6 g unresolved moving-mass headroom")
     if moving_mass_screen.get("screen_result") != "565.4 g KNOWN SUBTOTAL; 184.6 g UNRESOLVED HEADROOM - MASS CLOSURE OPEN":
         errors.append("moving-mass calculation no longer preserves its open status")
-    if checks["inputs"].get("selected_interfaces", {}).get("distal_gripper") != "DESIGN REQUIRED":
-        errors.append("mechanical calculation failed to preserve the open gripper interface")
+    if checks["inputs"].get("selected_interfaces", {}).get("distal_gripper") != "FR12-H104K selected four-hole subset on 24 x 12 mm rectangle; physical fit required":
+        errors.append("mechanical calculation lost the selected but unreleased gripper interface")
     if not checks["not_credited_or_unresolved"]:
         errors.append("mechanical calculation omitted unresolved release inputs")
     if errors:

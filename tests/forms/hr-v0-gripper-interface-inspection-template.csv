@@ -1,0 +1,5 @@
+record_id,date,inspector,repo_commit,cad_revision,coupon_file,coupon_sha256,vendor_part,parent_order_code,received_label,serial_or_lot,manufacturer_drawing_sha256,manufacturer_step_sha256,coupon_method,coupon_material,measuring_instrument,calibration_reference,measured_thickness_mm,scale_x_mm,scale_y_mm,hole_index,candidate_fastener_or_gauge,seats_flat,enters_without_force,fastener_and_nut_access,measured_x_offset_mm,measured_y_offset_mm,photo_reference,notes,disposition
+NOT-EXECUTED,,,,HR-V0-MECH-R0.1-PRELIMINARY,MV0-FC03_h104_24x12_mount_pattern_coupon.dxf,,FR12-H104K,905-0023-000,,,,,,,,,,,,1,,,,,,,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,HR-V0-MECH-R0.1-PRELIMINARY,MV0-FC03_h104_24x12_mount_pattern_coupon.dxf,,FR12-H104K,905-0023-000,,,,,,,,,,,,2,,,,,,,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,HR-V0-MECH-R0.1-PRELIMINARY,MV0-FC03_h104_24x12_mount_pattern_coupon.dxf,,FR12-H104K,905-0023-000,,,,,,,,,,,,3,,,,,,,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,HR-V0-MECH-R0.1-PRELIMINARY,MV0-FC03_h104_24x12_mount_pattern_coupon.dxf,,FR12-H104K,905-0023-000,,,,,,,,,,,,4,,,,,,,,TEMPLATE ROW,NOT EXECUTED

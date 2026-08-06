@@ -23,6 +23,7 @@ CTRL-003,control,"Communication loss, limit violation, overtemperature, or overc
 CTRL-004,control,"Command and feedback state shall be logged at 100 Hz or faster with a configuration hash.",MUST,TEST-LOG-001,draft
 THERM-001,thermal,"During the validated duty cycle arm actuator cases shall remain below the provisional 65 deg C limit, gripper actuator cases below 60 deg C, and power conductors below 20 deg C rise at the released ambient condition.",MUST,TEST-THERM-001,draft
 GRIP-001,gripper,"Grip force shall be characterized across the allowed object range using a calibrated load cell.",MUST,TEST-GRIP-001,draft
+GRIP-002,gripper,"The HR-V0 gripper shall use the controlled ROBOTIS OpenMANIPULATOR-X mechanism subset with broad compliant object-contact pads and a fixed local guard that prevents access to the actuator-frame crank linkage and rail pinch zones; no human handoff is permitted.",MUST,INSPECT-GRIP-001,draft
 VER-001,verification,"The system shall complete 100 fixture handoffs with at least 99 successes and zero unsafe faults.",MUST,TEST-HAND-001,draft
 CFG-001,configuration,"Every test record shall identify CAD, wiring, firmware, calibration, actuator, and BOM revisions.",MUST,AUDIT-CFG-001,draft
 PROD-001,product,"HR-30 neutral-pose overall height shall be 762 mm nominal and remain between 740 and 800 mm for any released shell configuration.",MUST,INSPECT-PROD-001,draft

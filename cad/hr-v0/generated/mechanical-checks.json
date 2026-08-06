@@ -13,7 +13,7 @@
     "selected_interfaces": {
       "H101_output": "8 clearance holes on 22 mm PCD",
       "S102_body_frame": "4 clearance holes on selected 32 x 16 mm tapped rectangle",
-      "distal_gripper": "DESIGN REQUIRED"
+      "distal_gripper": "FR12-H104K selected four-hole subset on 24 x 12 mm rectangle; physical fit required"
     },
     "h101_frame_nominal_thickness_mm": 2.0,
     "xm540_output_tap_depth_max_mm": 2.5,
@@ -85,7 +85,7 @@
         "J2 S102 body frame",
         "all joint/frame/gripper fasteners and spacers",
         "J2 moving hard-stop hardware",
-        "gripper mechanism, pads, guard and retention",
+        "received OpenMANIPULATOR-X mechanism subset, pads, guard and retention",
         "all moving cable, connectors, guides and strain relief"
       ],
       "screen_result": "565.4 g KNOWN SUBTOTAL; 184.6 g UNRESOLVED HEADROOM - MASS CLOSURE OPEN"
@@ -95,8 +95,8 @@
     "Actual alloy/temper certificate, thickness tolerance, flatness and finish",
     "ROBOTIS frame material, measured mass, permissible load and fatigue behavior",
     "Exact M2.5 and M8 fastener part, grade, engagement, preload, torque and locking",
-    "Physical FC01/FC02 pattern verification, received thread depth and stack tolerance",
-    "Released distal gripper interface and its retention load path",
+    "Physical FC01/FC02/FC03 pattern verification, received thread depth and stack tolerance",
+    "FR12-H104K exact fasteners, received seating, tolerance, guard clearance and retention load path",
     "Measured mass, local COM and inertia for every row in the HR-V0 moving-mass ledger",
     "Mass of frames, fasteners, stop hardware, cable guides, moving harness and complete gripper mechanics",
     "Hard-stop bracket, bumper material/force curve, fasteners, contact geometry and load path",

@@ -41,7 +41,7 @@ CAD masses are estimates until stock alloy/temper, actual thickness, finish and 
 ## Closure procedure
 
 1. Freeze the exact configuration and repository commit.
-2. Execute `INSPECT-MECH-005` for received frame-kit identity and contents.
+2. Execute `INSPECT-MECH-005` for received frame-kit identity and contents and `INSPECT-GRIP-001` for the allocated RM-X52 gripper mechanism and guard configuration.
 3. Execute `INSPECT-MECH-007` using a calibrated scale and the controlled 13-row measurement form.
 4. Record measured mass with uncertainty for every separate part, then repeat for each assembled moving subassembly as a cross-check.
 5. Determine local center of mass and inertia using a released CAD or physical method; preserve raw measurements and coordinate transforms.

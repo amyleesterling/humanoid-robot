@@ -22,6 +22,15 @@
       30.0,
       2.0
     ],
+    "gripper_h104_selected_rectangle_mm": [
+      24.0,
+      12.0
+    ],
+    "gripper_fit_coupon_mm": [
+      36.0,
+      24.0,
+      2.0
+    ],
     "hard_stop_contact_radius_mm": 50.0,
     "hard_stop_nominal_margin_deg": 5.0,
     "j1_software_limit_deg": [
@@ -55,7 +64,7 @@
     "Execute INSPECT-MECH-003 with MV0-FC01 against received FR13-H101K and FR13-S102K parts",
     "Execute INSPECT-MECH-004 with MV0-FC02 against the received FR13-S102K selected tapped pattern",
     "Resolve M2.5 fastener grade, engagement, torque and retention",
-    "Release the MV0-002 distal gripper interface before cutting the forearm",
+    "Execute INSPECT-MECH-008 with MV0-FC03 against the received FR12-H104K and verify seating and fastener access",
     "Release hard-stop bracket, bumper, load path, tolerance stack and impact validation before actuator motion",
     "Resolve T-slot fasteners, torque, anti-rotation and bracket arrangement",
     "Survey actual bench and select anchor fasteners from substrate evidence",

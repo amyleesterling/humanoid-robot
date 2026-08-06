@@ -16,6 +16,7 @@ A fixed, guarded, three-axis bench mechanism repeatedly transfers one soft foam 
 - External compute, safety-control power, and actuator power in separately protected domains.
 - Dual-channel emergency stop, monitored actuator-energy contactors, and an independent heartbeat permit.
 - Foam payload only: 100 g and 70 mm maximum.
+- Proposed gripper mechanism allocation from ROBOTIS RM-X52 with a fixed local linkage/pinch guard; exact received configuration and release evidence remain required.
 
 ## Entry conditions
 
@@ -33,7 +34,7 @@ A fixed, guarded, three-axis bench mechanism repeatedly transfers one soft foam 
 
 ## Required evidence
 
-Approved records for INSPECT-SYS-001, TEST-HAND-001, TEST-SAFE-001 through TEST-SAFE-003, TEST-MECH-001, TEST-THERM-001, TEST-GRIP-001, TEST-POWER-001, and AUDIT-CFG-001.
+Approved records for INSPECT-SYS-001, INSPECT-MECH-008, INSPECT-GRIP-001, TEST-HAND-001, TEST-SAFE-001 through TEST-SAFE-003, TEST-MECH-001, TEST-THERM-001, TEST-GRIP-001, TEST-POWER-001, and AUDIT-CFG-001.
 
 ## Boundary
 
