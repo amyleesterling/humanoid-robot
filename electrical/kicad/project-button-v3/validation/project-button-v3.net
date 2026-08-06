@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-06T14:41:58")
+		(date "2026-08-06T15:17:21")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P0.1")
+			(name "REVISION") "V3-P0.2")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,7 +15,7 @@
 			(title_block
 				(title "Project Button HR-V0 Electrical V3 index")
 				(company "Project Button")
-				(rev "V3-P0.1")
+				(rev "V3-P0.2")
 				(date "2026-08-06")
 				(source "project-button-v3.kicad_sch")
 				(comment
@@ -63,7 +63,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 01")
 				(company "Project Button")
-				(rev "V3-P0.1")
+				(rev "V3-P0.2")
 				(date "2026-08-06")
 				(source "01_external_sources.kicad_sch")
 				(comment
@@ -111,7 +111,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 02")
 				(company "Project Button")
-				(rev "V3-P0.1")
+				(rev "V3-P0.2")
 				(date "2026-08-06")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
@@ -159,7 +159,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 03")
 				(company "Project Button")
-				(rev "V3-P0.1")
+				(rev "V3-P0.2")
 				(date "2026-08-06")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
@@ -207,7 +207,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 04")
 				(company "Project Button")
-				(rev "V3-P0.1")
+				(rev "V3-P0.2")
 				(date "2026-08-06")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
@@ -255,7 +255,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 05")
 				(company "Project Button")
-				(rev "V3-P0.1")
+				(rev "V3-P0.2")
 				(date "2026-08-06")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
@@ -303,7 +303,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 06")
 				(company "Project Button")
-				(rev "V3-P0.1")
+				(rev "V3-P0.2")
 				(date "2026-08-06")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
@@ -351,7 +351,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 07")
 				(company "Project Button")
-				(rev "V3-P0.1")
+				(rev "V3-P0.2")
 				(date "2026-08-06")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
@@ -399,7 +399,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 08")
 				(company "Project Button")
-				(rev "V3-P0.1")
+				(rev "V3-P0.2")
 				(date "2026-08-06")
 				(source "08_compute_and_control_terminals.kicad_sch")
 				(comment
@@ -447,7 +447,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 09")
 				(company "Project Button")
-				(rev "V3-P0.1")
+				(rev "V3-P0.2")
 				(date "2026-08-06")
 				(source "09_actuator_interfaces.kicad_sch")
 				(comment
@@ -6495,40 +6495,6 @@
 		)
 		(net
 			(code "28")
-			(name "SR1_O1")
-			(class "Default")
-			(node
-				(ref "KWD1")
-				(pin "TBD-C1")
-				(pinfunction "CH1_COM_TBD-C1")
-				(pintype "passive")
-			)
-			(node
-				(ref "SR1")
-				(pin "14")
-				(pinfunction "SAFETY_OUT1_OUT_14")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "29")
-			(name "SR1_O2")
-			(class "Default")
-			(node
-				(ref "KWD2")
-				(pin "TBD-C1")
-				(pinfunction "CH1_COM_TBD-C1")
-				(pintype "passive")
-			)
-			(node
-				(ref "SR1")
-				(pin "24")
-				(pinfunction "SAFETY_OUT2_OUT_24")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "30")
 			(name "SR1_S11")
 			(class "Default")
 			(node
@@ -6545,13 +6511,13 @@
 			)
 		)
 		(net
-			(code "31")
+			(code "29")
 			(name "SR1_S12")
 			(class "Default")
 			(node
-				(ref "S0")
-				(pin "TBD-C1B")
-				(pinfunction "CH1_B_TBD-C1B")
+				(ref "KWD1")
+				(pin "TBD-NO1")
+				(pinfunction "CH1_NO_TBD-NO1")
 				(pintype "passive")
 			)
 			(node
@@ -6568,7 +6534,7 @@
 			)
 		)
 		(net
-			(code "32")
+			(code "30")
 			(name "SR1_S21")
 			(class "Default")
 			(node
@@ -6585,13 +6551,13 @@
 			)
 		)
 		(net
-			(code "33")
+			(code "31")
 			(name "SR1_S22")
 			(class "Default")
 			(node
-				(ref "S0")
-				(pin "TBD-C2B")
-				(pinfunction "CH2_B_TBD-C2B")
+				(ref "KWD2")
+				(pin "TBD-NO1")
+				(pinfunction "CH1_NO_TBD-NO1")
 				(pintype "passive")
 			)
 			(node
@@ -6602,7 +6568,7 @@
 			)
 		)
 		(net
-			(code "34")
+			(code "32")
 			(name "SR1_START_RETURN")
 			(class "Default")
 			(node
@@ -6619,7 +6585,7 @@
 			)
 		)
 		(net
-			(code "35")
+			(code "33")
 			(name "SR1_STATUS")
 			(class "Default")
 			(node
@@ -6642,7 +6608,7 @@
 			)
 		)
 		(net
-			(code "36")
+			(code "34")
 			(name "SRA1_K1_RAW")
 			(class "Default")
 			(node
@@ -6659,7 +6625,7 @@
 			)
 		)
 		(net
-			(code "37")
+			(code "35")
 			(name "SRA1_K2_RAW")
 			(class "Default")
 			(node
@@ -6676,7 +6642,7 @@
 			)
 		)
 		(net
-			(code "38")
+			(code "36")
 			(name "SRA1_S11")
 			(class "Default")
 			(node
@@ -6693,19 +6659,19 @@
 			)
 		)
 		(net
-			(code "39")
+			(code "37")
 			(name "SRA1_S12")
 			(class "Default")
-			(node
-				(ref "KWD1")
-				(pin "TBD-NO1")
-				(pinfunction "CH1_NO_TBD-NO1")
-				(pintype "passive")
-			)
 			(node
 				(ref "S2")
 				(pin "TBD-A1")
 				(pinfunction "ARM_IN_TBD-A1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "14")
+				(pinfunction "SAFETY_OUT1_OUT_14")
 				(pintype "passive")
 			)
 			(node
@@ -6716,7 +6682,7 @@
 			)
 		)
 		(net
-			(code "40")
+			(code "38")
 			(name "SRA1_S21")
 			(class "Default")
 			(node
@@ -6733,13 +6699,13 @@
 			)
 		)
 		(net
-			(code "41")
+			(code "39")
 			(name "SRA1_S22")
 			(class "Default")
 			(node
-				(ref "KWD2")
-				(pin "TBD-NO1")
-				(pinfunction "CH1_NO_TBD-NO1")
+				(ref "SR1")
+				(pin "24")
+				(pinfunction "SAFETY_OUT2_OUT_24")
 				(pintype "passive")
 			)
 			(node
@@ -6750,7 +6716,7 @@
 			)
 		)
 		(net
-			(code "42")
+			(code "40")
 			(name "SRA1_START_RETURN")
 			(class "Default")
 			(node
@@ -6767,7 +6733,7 @@
 			)
 		)
 		(net
-			(code "43")
+			(code "41")
 			(name "SRA1_STATUS")
 			(class "Default")
 			(node
@@ -6784,7 +6750,7 @@
 			)
 		)
 		(net
-			(code "44")
+			(code "42")
 			(name "WD1_COIL_N")
 			(class "Default")
 			(node
@@ -6801,7 +6767,7 @@
 			)
 		)
 		(net
-			(code "45")
+			(code "43")
 			(name "WD1_DRIVE")
 			(class "Default")
 			(node
@@ -6818,7 +6784,7 @@
 			)
 		)
 		(net
-			(code "46")
+			(code "44")
 			(name "WD1_NC_DIAG")
 			(class "Default")
 			(node
@@ -6835,7 +6801,24 @@
 			)
 		)
 		(net
-			(code "47")
+			(code "45")
+			(name "WD1_SAFETY_IN")
+			(class "Default")
+			(node
+				(ref "KWD1")
+				(pin "TBD-C1")
+				(pinfunction "CH1_COM_TBD-C1")
+				(pintype "passive")
+			)
+			(node
+				(ref "S0")
+				(pin "TBD-C1B")
+				(pinfunction "CH1_B_TBD-C1B")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "46")
 			(name "WD2_COIL_N")
 			(class "Default")
 			(node
@@ -6852,7 +6835,7 @@
 			)
 		)
 		(net
-			(code "48")
+			(code "47")
 			(name "WD2_DRIVE")
 			(class "Default")
 			(node
@@ -6869,7 +6852,7 @@
 			)
 		)
 		(net
-			(code "49")
+			(code "48")
 			(name "WD2_NC_DIAG")
 			(class "Default")
 			(node
@@ -6882,6 +6865,23 @@
 				(ref "WDCTRL1")
 				(pin "TBD-GPIO-F2")
 				(pinfunction "RELAY2_FEEDBACK_TBD-GPIO-F2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "49")
+			(name "WD2_SAFETY_IN")
+			(class "Default")
+			(node
+				(ref "KWD2")
+				(pin "TBD-C1")
+				(pinfunction "CH1_COM_TBD-C1")
+				(pintype "passive")
+			)
+			(node
+				(ref "S0")
+				(pin "TBD-C2B")
+				(pinfunction "CH2_B_TBD-C2B")
 				(pintype "passive")
 			)
 		)

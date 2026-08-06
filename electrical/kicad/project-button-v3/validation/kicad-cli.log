@@ -1,22 +1,22 @@
 $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\validation\project-button-v3-erc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\project-button-v3.kicad_sch"
 Found 0 violations
 Saved ERC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/project-button-v3/validation/project-button-v3-erc.rpt
-14:41:54: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-14:41:54: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+15:17:17: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+15:17:17: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0
 
 $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\validation\project-button-v3.net" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\project-button-v3.kicad_sch"
-14:41:57: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-14:41:57: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+15:17:20: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+15:17:20: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0
 
 $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export pdf --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-preliminary.pdf" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\project-button-v3.kicad_sch"
 Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-preliminary.pdf'.
 Done.
-14:41:58: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-14:41:58: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+15:17:21: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+15:17:21: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0
 
@@ -32,7 +32,7 @@ Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electric
 Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-08 Compute, debug and control terminals.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-09 U2D2, actuator ports and bonding boundary.svg'.
 Done.
-14:42:00: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-14:42:00: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+15:17:22: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+15:17:22: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0

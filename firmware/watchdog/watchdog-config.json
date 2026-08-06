@@ -1,0 +1,14 @@
+{
+  "configuration_id": "HR-V0-WD-P0.1",
+  "status": "PRELIMINARY-NOT-APPROVED-FOR-ENERGIZATION",
+  "heartbeat_nominal_edge_ms": 100,
+  "heartbeat_timeout_ms": 300,
+  "heartbeat_minimum_edge_ms": 20,
+  "startup_valid_edges": 3,
+  "relay_feedback_settle_ms": 25,
+  "relay_channels": 2,
+  "feedback_contact_state": "NC_TRUE_WHEN_RELAY_DEENERGIZED",
+  "gpio_assignments": "SELECTION REQUIRED",
+  "platform_binding": "SELECTION REQUIRED",
+  "safety_credit": "NONE"
+}

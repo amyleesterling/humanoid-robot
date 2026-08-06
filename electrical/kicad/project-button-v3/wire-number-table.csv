@@ -22,8 +22,8 @@ W1020,01_external_sources.kicad_sch,PSU3,USB-C-VBUS,+5V COMPUTE,COMPUTE_5V
 W1021,01_external_sources.kicad_sch,PSU3,USB-C-GND,COMPUTE GND,COMPUTE_0V
 W2001,02_estop_eligibility.kicad_sch,S0,TBD-C1A,CH1 A,SR1_S11
 W2002,02_estop_eligibility.kicad_sch,S0,TBD-C2A,CH2 A,SR1_S21
-W2003,02_estop_eligibility.kicad_sch,S0,TBD-C1B,CH1 B,SR1_S12
-W2004,02_estop_eligibility.kicad_sch,S0,TBD-C2B,CH2 B,SR1_S22
+W2003,02_estop_eligibility.kicad_sch,S0,TBD-C1B,CH1 B,WD1_SAFETY_IN
+W2004,02_estop_eligibility.kicad_sch,S0,TBD-C2B,CH2 B,WD2_SAFETY_IN
 W2005,02_estop_eligibility.kicad_sch,SR1,A1,24V SUPPLY,SAFETY_24V
 W2006,02_estop_eligibility.kicad_sch,SR1,A2,0V SUPPLY,SAFETY_0V
 W2007,02_estop_eligibility.kicad_sch,SR1,S11,INPUT CH1 FEED,SR1_S11
@@ -32,9 +32,9 @@ W2009,02_estop_eligibility.kicad_sch,SR1,S21,INPUT CH2 FEED,SR1_S21
 W2010,02_estop_eligibility.kicad_sch,SR1,S22,INPUT CH2 RETURN,SR1_S22
 W2011,02_estop_eligibility.kicad_sch,SR1,S34,START / EDM RETURN,SR1_START_RETURN
 W2012,02_estop_eligibility.kicad_sch,SR1,13,SAFETY OUT1 IN,SRA1_S11
-W2013,02_estop_eligibility.kicad_sch,SR1,14,SAFETY OUT1 OUT,SR1_O1
+W2013,02_estop_eligibility.kicad_sch,SR1,14,SAFETY OUT1 OUT,SRA1_S12
 W2014,02_estop_eligibility.kicad_sch,SR1,23,SAFETY OUT2 IN,SRA1_S21
-W2015,02_estop_eligibility.kicad_sch,SR1,24,SAFETY OUT2 OUT,SR1_O2
+W2015,02_estop_eligibility.kicad_sch,SR1,24,SAFETY OUT2 OUT,SRA1_S22
 W2016,02_estop_eligibility.kicad_sch,SR1,41,AUX NC IN,SAFETY_24V
 W2017,02_estop_eligibility.kicad_sch,SR1,Y32,SEMICONDUCTOR STATUS,SR1_STATUS
 W2018,02_estop_eligibility.kicad_sch,S1,TBD-R1,RESET IN,SR1_S12
@@ -56,15 +56,15 @@ W3012,03_arm_watchdog_eligibility.kicad_sch,SRA1,41,AUX NC IN,SAFETY_24V
 W3013,03_arm_watchdog_eligibility.kicad_sch,SRA1,Y32,SEMICONDUCTOR STATUS,SRA1_STATUS
 W3014,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-COIL+,COIL +24V,SAFETY_24V
 W3015,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-COIL-,DRIVER RETURN,WD1_COIL_N
-W3016,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-C1,CH1 COM,SR1_O1
-W3017,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-NO1,CH1 NO,SRA1_S12
+W3016,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-C1,CH1 COM,WD1_SAFETY_IN
+W3017,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-NO1,CH1 NO,SR1_S12
 W3018,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-NC1,CH1 NC,WD1_NC_DIAG
 W3019,03_arm_watchdog_eligibility.kicad_sch,S2,TBD-A1,ARM IN,SRA1_S12
 W3020,03_arm_watchdog_eligibility.kicad_sch,S2,TBD-A2,ARM OUT,ARM_AFTER_S2
 W3021,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-COIL+,COIL +24V,SAFETY_24V
 W3022,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-COIL-,DRIVER RETURN,WD2_COIL_N
-W3023,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-C1,CH1 COM,SR1_O2
-W3024,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-NO1,CH1 NO,SRA1_S22
+W3023,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-C1,CH1 COM,WD2_SAFETY_IN
+W3024,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-NO1,CH1 NO,SR1_S22
 W3025,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-NC1,CH1 NC,WD2_NC_DIAG
 W4001,04_contactor_edm.kicad_sch,K1,A1,COIL +,K1_A1
 W4002,04_contactor_edm.kicad_sch,K1,A2,COIL -,SAFETY_0V

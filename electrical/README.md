@@ -10,7 +10,7 @@ The directory contains the root `.kicad_pro`, root and 14 child `.kicad_sch` she
 
 This is connected preliminary ECAD, not a build release. Clean ERC establishes modeled connectivity and annotation only. Exact physical selections, pinouts, ratings, protection coordination, conductor sizing, enclosure/panel design, functional-safety analysis, firmware, and physical fault tests remain unresolved. Do not fabricate, wire, or energize from this package.
 
-## Electrical V3-P0.1 correction candidate
+## Electrical V3-P0.2 correction candidate
 
 V3 is a generated native KiCad candidate that addresses the V2.1 automatic-restart blocker and removes project-built mains wiring from the proposed HR-V0 architecture. It has one index and nine child sheets, separate RESET and ARM stages, two PNOZ s4 devices, two watchdog-contact channels, explicit K1/K2 mirror contacts and series power poles, external adapters, separately protected actuator branches, and VDD-isolating data/power injection modules.
 

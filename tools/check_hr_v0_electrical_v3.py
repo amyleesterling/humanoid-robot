@@ -70,6 +70,7 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
+    require(gen.REV == "V3-P0.2", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
@@ -170,6 +171,7 @@ def main() -> int:
             require(native_name == pin.net,
                     f"native net mismatch at {comp.ref}:{pin.number}: expected {pin.net}, found {native_name or 'MISSING'}", failures)
     require('(tool "Eeschema 10.0.5")' in native_text, "native netlist tool version is not Eeschema 10.0.5", failures)
+    require('(rev "V3-P0.2")' in native_text, "native netlist does not identify V3-P0.2", failures)
 
     bom_rows = read_csv("bom.csv")
     expected_bom_refs = {comp.ref for _, comp in all_components if comp.quantity}
@@ -192,9 +194,19 @@ def main() -> int:
     require(len(unresolved_rows) == 29, f"expected 29 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
 
     require(pin_map(components, "S0") == {
-        "TBD-C1A": "SR1_S11", "TBD-C1B": "SR1_S12",
-        "TBD-C2A": "SR1_S21", "TBD-C2B": "SR1_S22",
+        "TBD-C1A": "SR1_S11", "TBD-C1B": "WD1_SAFETY_IN",
+        "TBD-C2A": "SR1_S21", "TBD-C2B": "WD2_SAFETY_IN",
     }, "E-stop channel mapping changed", failures)
+    require(pin_map(components, "KWD1")["TBD-C1"] == "WD1_SAFETY_IN" and
+            pin_map(components, "KWD1")["TBD-NO1"] == "SR1_S12" and
+            pin_map(components, "KWD2")["TBD-C1"] == "WD2_SAFETY_IN" and
+            pin_map(components, "KWD2")["TBD-NO1"] == "SR1_S22",
+            "watchdog contacts no longer interrupt both SR1 input returns", failures)
+    require(pin_map(components, "SR1")["13"] == "SRA1_S11" and
+            pin_map(components, "SR1")["14"] == "SRA1_S12" and
+            pin_map(components, "SR1")["23"] == "SRA1_S21" and
+            pin_map(components, "SR1")["24"] == "SRA1_S22",
+            "SR1 safety outputs no longer feed the two SRA1 input channels directly", failures)
     require(pin_map(components, "S1")["TBD-R2"] == "SR1_START_RETURN",
             "RESET no longer returns only to SR1 monitored start", failures)
     require(pin_map(components, "S2")["TBD-A2"] == "ARM_AFTER_S2",
@@ -246,7 +258,8 @@ def main() -> int:
     pdf = OUT / "output" / f"{gen.PROJECT}-preliminary.pdf"
     require(pdf.is_file() and pdf.stat().st_size > 100_000, "native PDF export missing or unexpectedly small", failures)
     readme = (OUT / "README.md").read_text(encoding="utf-8-sig")
-    require(WARNING in readme and "ERC proves only modeled connectivity/annotation" in readme,
+    require(WARNING in readme and "# Project Button HR-V0 Electrical V3-P0.2" in readme and
+            "ERC proves only modeled connectivity/annotation" in readme,
             "README warning/ERC caveat missing", failures)
 
     if failures:

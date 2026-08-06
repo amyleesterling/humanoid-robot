@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P0.1"
+REV = "V3-P0.2"
 DATE = "2026-08-06"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 NS = uuid.UUID("4cb40c84-3194-4ded-b2c7-d78df616c5c0")
@@ -185,15 +185,15 @@ def sheets() -> list[Sheet]:
                 "Site cords, receptacles, GFCI/code basis and source application review remain open."]
 
     s2 = Sheet(2, "02_estop_eligibility.kicad_sch", "Dual-channel E-stop and RESET eligibility",
-               "SR1 monitors E-stop channels. RESET cannot energize the actuator contactors.")
+               "Each SR1 input return contains one E-stop NC and one watchdog NO contact; RESET cannot energize K1/K2.")
     s2.components = [
         Component("S0", "IDEC XW1E-BV402M-R dual-NC E-stop candidate",
-                  [pn("S0", "TBD-C1A", "CH1 A", "SR1_S11", "left"), pn("S0", "TBD-C1B", "CH1 B", "SR1_S12", "right"),
-                   pn("S0", "TBD-C2A", "CH2 A", "SR1_S21", "left"), pn("S0", "TBD-C2B", "CH2 B", "SR1_S22", "right")],
+                  [pn("S0", "TBD-C1A", "CH1 A", "SR1_S11", "left"), pn("S0", "TBD-C1B", "CH1 B", "WD1_SAFETY_IN", "right"),
+                   pn("S0", "TBD-C2A", "CH2 A", "SR1_S21", "left"), pn("S0", "TBD-C2B", "CH2 B", "WD2_SAFETY_IN", "right")],
                   "SELECTION REQUIRED - EXACT CANDIDATE RECORDED", "Candidate is documented as 40 mm mushroom, turn/pull reset, 2NC, screw terminal and terminal cover. Freeze physical contact-block mapping from received-device bottom view and continuity test both positively opening channels.",
                   "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/emergency-stop-switches/xw-22mm-estop/xw1e-bv402m-r", position=(75, 82), width=82),
         pnoz("SR1", (210, 95), {"S11":"SR1_S11", "S12":"SR1_S12", "S21":"SR1_S21", "S22":"SR1_S22", "S34":"SR1_START_RETURN",
-                                   "13":"SRA1_S11", "14":"SR1_O1", "23":"SRA1_S21", "24":"SR1_O2",
+                                   "13":"SRA1_S11", "14":"SRA1_S12", "23":"SRA1_S21", "24":"SRA1_S22",
                                    "33":"INTENTIONALLY_UNUSED_SR1_33", "34":"INTENTIONALLY_UNUSED_SR1_34",
                                    "41":"SAFETY_24V", "42":"SR1_DIAG_NC", "Y32":"SR1_STATUS"},
              "First-stage E-stop eligibility relay."),
@@ -205,7 +205,8 @@ def sheets() -> list[Sheet]:
                   [pn("H1", "TBD-H+", "+", "SR1_STATUS", "left"), pn("H1", "TBD-H-", "-", "SAFETY_0V", "right")],
                   "SELECTION REQUIRED", "Diagnostic indicator only; no safety credit and no motion authority.", position=(75, 190), width=82),
     ]
-    s2.notes = ["RESET release may make SR1 eligible, but SRA1 and K1/K2 remain de-energized.",
+    s2.notes = ["Each E-stop return passes through one watchdog NO contact before SR1; heartbeat loss therefore drops SR1.",
+                "RESET release may make SR1 eligible, but SRA1 and K1/K2 remain de-energized until a later ARM.",
                 "Unused SR1 outputs are explicitly named; do not bridge them during wiring."]
 
     s3 = Sheet(3, "03_arm_edm_contactors.kicad_sch", "Distinct ARM, watchdog channels, EDM and contactors",
@@ -218,7 +219,7 @@ def sheets() -> list[Sheet]:
              "Final ARM and external-device-monitoring relay."),
         Component("KWD1", "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060",
                   [pn("KWD1", "TBD-COIL+", "COIL +24V", "SAFETY_24V", "left"), pn("KWD1", "TBD-COIL-", "DRIVER RETURN", "WD1_COIL_N", "left"),
-                   pn("KWD1", "TBD-C1", "CH1 COM", "SR1_O1", "left"), pn("KWD1", "TBD-NO1", "CH1 NO", "SRA1_S12", "right"),
+                   pn("KWD1", "TBD-C1", "CH1 COM", "WD1_SAFETY_IN", "left"), pn("KWD1", "TBD-NO1", "CH1 NO", "SR1_S12", "right"),
                    pn("KWD1", "TBD-NC1", "CH1 NC", "WD1_NC_DIAG", "right"), pn("KWD1", "TBD-C2", "CH2 COM", "WD1_DIAG_FEED", "left"),
                    pn("KWD1", "TBD-NO2", "CH2 NO", "WD1_NO_DIAG", "right"), pn("KWD1", "TBD-NC2", "CH2 NC", "WD1_NC_DIAG_2", "right")],
                   "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED", "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit.",
@@ -226,7 +227,7 @@ def sheets() -> list[Sheet]:
                   "Official page data-maintenance date 2026-04-01; 24 VDC, two changeover contacts, 18 mA typical, 8 ms pickup, 10 ms release, integrated polarity/freewheel protection.", (210, 72), 82),
         Component("KWD2", "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060",
                   [pn("KWD2", "TBD-COIL+", "COIL +24V", "SAFETY_24V", "left"), pn("KWD2", "TBD-COIL-", "DRIVER RETURN", "WD2_COIL_N", "left"),
-                   pn("KWD2", "TBD-C1", "CH1 COM", "SR1_O2", "left"), pn("KWD2", "TBD-NO1", "CH1 NO", "SRA1_S22", "right"),
+                   pn("KWD2", "TBD-C1", "CH1 COM", "WD2_SAFETY_IN", "left"), pn("KWD2", "TBD-NO1", "CH1 NO", "SR1_S22", "right"),
                    pn("KWD2", "TBD-NC1", "CH1 NC", "WD2_NC_DIAG", "right"), pn("KWD2", "TBD-C2", "CH2 COM", "WD2_DIAG_FEED", "left"),
                    pn("KWD2", "TBD-NO2", "CH2 NO", "WD2_NO_DIAG", "right"), pn("KWD2", "TBD-NC2", "CH2 NC", "WD2_NC_DIAG_2", "right")],
                   "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED", "Second independently driven watchdog relay channel; common controller/supply remain common-cause blockers.",
@@ -255,8 +256,8 @@ def sheets() -> list[Sheet]:
                   [pn("FSR2", "1", "IN", "SRA1_K2_RAW", "left"), pn("FSR2", "2", "OUT", "K2_A1", "right")],
                   "SELECTION REQUIRED", "Same coordination gate as FSR1.", position=(275, 255), width=72),
     ]
-    s3.notes = ["Required sequence: E-stop healthy -> RESET press/release -> SAFE_READY -> distinct ARM press/release -> K1/K2 may energize.",
-                "Heartbeat restoration alone cannot reclose SRA1 because monitored ARM must occur after dropout."]
+    s3.notes = ["Required sequence after E-stop or watchdog dropout: cause healthy -> RESET press/release -> SAFE_READY -> distinct ARM press/release -> K1/K2 may energize.",
+                "Heartbeat restoration closes only KWD contacts; SR1 remains in monitored-start state until RESET."]
 
     s4 = Sheet(4, "04_actuator_distribution.kicad_sch", "Redundant 12 V interruption and separately protected actuator branches",
                "No branch fuse, conductor, connector or service disconnect is released without fault-current and harness evidence.")
@@ -404,16 +405,16 @@ def sheets() -> list[Sheet]:
                 "Site cords, receptacles, GFCI/code basis and source application review remain open."]
 
     s2 = Sheet(2, "02_estop_eligibility.kicad_sch", "Dual-channel E-stop and RESET eligibility",
-               "SR1 monitors E-stop channels. RESET cannot energize the actuator contactors.")
+               "Each SR1 input return contains one E-stop NC and one watchdog NO contact; RESET cannot energize K1/K2.")
     s2.components = placed(["S0", "SR1", "S1", "H1"], [(left, 85), (right, 95), (left, 205), (right, 205)])
-    s2.notes = ["RESET release may make SR1 eligible, but SRA1 and K1/K2 remain de-energized.",
-                "Unused SR1 outputs are explicitly named; do not bridge them during wiring."]
+    s2.notes = ["Heartbeat loss opens both SR1 input returns; recovery alone cannot restore the monitored RESET stage.",
+                "RESET release may make SR1 eligible, but SRA1 and K1/K2 remain de-energized until a later ARM."]
 
     s3 = Sheet(3, "03_arm_watchdog_eligibility.kicad_sch", "Distinct ARM and watchdog eligibility",
                "SRA1 requires SR1 eligibility, two watchdog channels, EDM proof and a new ARM action.")
     s3.components = placed(["SRA1", "KWD1", "S2", "KWD2"], [(left, 85), (right, 85), (left, 205), (right, 205)])
-    s3.notes = ["Required sequence: E-stop healthy -> RESET press/release -> SAFE_READY -> distinct ARM press/release.",
-                "Heartbeat restoration alone cannot reclose SRA1; a monitored ARM action is required after dropout."]
+    s3.notes = ["Required after E-stop/watchdog dropout: cause healthy -> RESET press/release -> SAFE_READY -> distinct ARM press/release.",
+                "KWD contacts are in the SR1 returns; SRA1 receives the two SR1 safety outputs directly."]
 
     s4 = Sheet(4, "04_contactor_edm.kicad_sch", "Contactor coils, mirror contacts and EDM",
                "K1 and K2 are distinct final elements; their mirror contacts form the monitored restart return.")
@@ -692,7 +693,7 @@ def write_tables(items: list[Sheet], net_counts: dict[str, int],
 
 
 def write_docs(items: list[Sheet]):
-    text = f"""# Project Button HR-V0 Electrical V3
+    text = f"""# Project Button HR-V0 Electrical {REV}
 
 **{WARNING}**
 
@@ -705,7 +706,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 ## Material corrections relative to V2.1
 
 - Separate SR1 RESET eligibility and SRA1 ARM/EDM stages.
-- Two separately driven watchdog relay contacts interrupt the two SRA1 input channels.
+- Two separately driven watchdog relay contacts interrupt the two SR1 input returns so heartbeat loss forces the physical RESET stage to drop.
 - Heartbeat restoration cannot restore contactors; SRA1 requires a new monitored ARM action.
 - External Mean Well adapters replace project-built mains wiring.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.

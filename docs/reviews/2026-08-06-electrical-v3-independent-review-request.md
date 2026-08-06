@@ -1,7 +1,7 @@
-# Project Button HR-V0 Electrical V3-P0.1 Independent Review Request
+# Project Button HR-V0 Electrical V3-P0.2 Independent Review Request
 
 Review date: 2026-08-06  
-Controlled candidate: **Electrical V3-P0.1**  
+Controlled candidate: **Electrical V3-P0.2**  
 Systems baseline: **HR-30-SYS-R0.2**  
 Status: **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -9,7 +9,7 @@ Status: **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
 Independently audit the accuracy, completeness, and physical implementability of the connected HR-V0 Electrical V3 candidate. Do not treat clean ERC, generated schedules, or this request as functional-safety validation or permission to procure, fabricate, wire, or energize.
 
-The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P0.1 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close.
+The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P0.2 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. V3-P0.1 is historical and must not be substituted because it did not force the SR1 RESET stage to drop on watchdog loss.
 
 ## Controlled inputs
 
@@ -57,8 +57,8 @@ The final command is expected to remain nonzero while applicable release gates a
 1. Open every KiCad sheet and confirm parsing, hierarchy, cross-sheet connectivity, sheet order, warnings, readable text, and absence of misleading whitespace or line-art-only circuitry.
 2. Rerun ERC and native netlist export. Record every compatibility warning, ignored ERC class, command version, and failure. Explain the limited meaning of ERC 0/0.
 3. Compare every terminal and net against the component, connector, terminal, wire, net, BOM and unresolved schedules. Verify the 23 open terminals are intentional and are neither silently shorted nor omitted from the release record.
-4. Verify the dual-channel E-stop, monitored RESET eligibility, distinct manual ARM, watchdog relay contacts, SRA1 monitored start, K1/K2 coils, mirror-contact EDM, and redundant series actuator-power interruption.
-5. Prove from the schematic and control requirements that E-stop release, RESET, compute boot, watchdog recovery, software restart, brownout, or communication recovery cannot by themselves command actuator power or motion. Identify every single fault or common-cause path that could violate that rule.
+4. Verify the dual-channel E-stop, one watchdog NO contact in each SR1 input return, monitored RESET eligibility, direct SR1-to-SRA1 safety-output paths, distinct manual ARM, SRA1 monitored start, K1/K2 coils, mirror-contact EDM, and redundant series actuator-power interruption.
+5. Prove from the schematic and control requirements that E-stop release, RESET, compute boot, watchdog recovery, software restart, brownout, or communication recovery cannot by themselves command actuator power or motion. Specifically confirm that watchdog recovery cannot restore SR1 without physical RESET and cannot restore SRA1/K1/K2 without the later physical ARM. Identify every single fault or common-cause path that could violate that rule.
 6. Review the exact Pilz PNOZ s4 750104 candidate application, selector mode, terminal use, contact protection, reset/ARM timing, diagnostic contacts, and any need for force-guided or otherwise safety-suitable external devices. Do not assign PL/SIL credit without a complete safety calculation and evidence.
 7. Review the two Phoenix Contact watchdog-relay candidate coil circuits, low-side drivers, suppression/polarity, supply/common reference, pickup/dropout timing, contact routing, welded-contact behavior, common-cause controller/supply failures, and diagnostic limitations. These ordinary relays currently receive no safety credit.
 8. Verify K1/K2 coil polarity, mirror-contact designations, auxiliary contacts, all three main poles in series, DC utilization category, loaded DC interruption capability, regenerative-current behavior, coordination, suppression, and welded-pole detection. Mark every unsupported application assumption as unresolved.

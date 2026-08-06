@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: native connected design candidate `V3-P0.1`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete.
+Status: native connected design candidate `V3-P0.2`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` is retained as the historical R16 configuration; P0.2 is a material restart-chain correction.
 
 - Native source: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Generator: `tools/generate_hr_v0_electrical_v3.py`
@@ -33,18 +33,18 @@ The `GST280A12-C6P` bonds actuator `0 V` to incoming protective earth inside the
 
 V3 uses two separately identified PNOZ s4 750104 relays:
 
-- `SR1` is the E-stop eligibility relay. It monitors the two positively opening E-stop NC channels and accepts the physical `RESET` action. Its outputs do not drive K1/K2 directly.
-- `SRA1` is the final ARM/EDM relay. Each of its two input channels contains one force-guided output from `SR1` in series with one independent watchdog-channel contact. `SRA1` uses monitored falling-edge start. Its start/feedback loop contains the distinct physical `ARM` pushbutton followed by the valid NC mirror contacts of K1 and K2. Its separate safety outputs drive the K1 and K2 coils.
+- `SR1` is the E-stop/watchdog eligibility relay. Each input path contains one positively opening E-stop NC contact in series with one independent watchdog NO contact. It accepts the physical `RESET` action. Its outputs do not drive K1/K2 directly.
+- `SRA1` is the final ARM/EDM relay. Its two input channels are fed by separate force-guided outputs from `SR1`. `SRA1` uses monitored falling-edge start. Its start/feedback loop contains the distinct physical `ARM` pushbutton followed by the valid NC mirror contacts of K1 and K2. Its separate safety outputs drive the K1 and K2 coils.
 
 Proposed logical paths:
 
 ```text
-E-STOP CH1 ---- SR1 input channel 1
-E-STOP CH2 ---- SR1 input channel 2
+SR1 S11 -- E-STOP CH1 NC -- WD relay A NO -- SR1 S12
+SR1 S21 -- E-STOP CH2 NC -- WD relay B NO -- SR1 S22
 RESET + SR1 feedback/start mode ---- SR1 S34
 
-SR1 safety output A -- WD relay A NO ---- SRA1 input channel 1
-SR1 safety output B -- WD relay B NO ---- SRA1 input channel 2
+SR1 safety output A ---- SRA1 input channel 1
+SR1 safety output B ---- SRA1 input channel 2
 SRA1 S12 -- physical ARM NO -- K1 mirror NC -- K2 mirror NC -- SRA1 S34
 
 SRA1 safety output 1 -- K1 coil
@@ -54,7 +54,7 @@ K1 and K2 main contacts remain in series in the 12 V actuator rail
 
 Required sequence:
 
-1. E-stop channels close and the watchdog channels are healthy.
+1. E-stop channels close and heartbeat recovery closes both watchdog contacts, but SR1 remains dropped.
 2. The operator actuates and releases `RESET`; `SR1` becomes eligible.
 3. K1 and K2 remain de-energized because `SRA1` has not accepted ARM.
 4. The operator separately actuates and releases `ARM`; only then may `SRA1` energize K1/K2.
@@ -64,7 +64,7 @@ Any E-stop opening, watchdog-channel opening, SR1 dropout, channel discrepancy, 
 
 ## Watchdog-channel boundary
 
-The current RP2040-class watchdog is not safety-rated. V3 replaces the single KWD1 contact with two independently driven, normally-open relay channels and routes them separately to SRA1. The final parts, drivers, feedback contacts, startup tests, brownout behavior, diagnostic coverage, common-cause controls, and firmware remain `SELECTION REQUIRED`.
+The current RP2040-class watchdog is not safety-rated. V3 replaces the single KWD1 contact with two independently driven, normally-open relay channels and routes one through each SR1 input return. This makes physical RESET part of the nominal recovery after heartbeat loss; SRA1 then still requires the later physical ARM. The final parts, drivers, feedback contacts, startup tests, brownout behavior, diagnostic coverage, common-cause controls, and firmware remain `SELECTION REQUIRED`.
 
 The modeled relay-coil path is `SAFETY_24V -> relay coil -> default-off low-side driver -> SAFETY_0V`. The proposed DC/DC converter is therefore non-isolated and the Pico/driver reference is `SAFETY_0V`; selecting an isolated converter would require isolated output drivers and a fresh grounding/fault review. The relay's exact received coil terminals and integrated-diode polarity remain `TBD-*` until the official terminal drawing and received continuity/polarity evidence are frozen.
 
@@ -107,7 +107,7 @@ Before this candidate can replace V2.1:
 
 ## Native candidate validation record
 
-The generated `V3-P0.1` candidate currently contains:
+The generated `V3-P0.2` candidate currently contains:
 
 - one root index plus nine focused child sheets;
 - 41 component blocks and 198 modeled terminals;

@@ -7,7 +7,7 @@ SYS-005,system,"Setup motion shall be hold-to-run and shall not exceed 10 deg/s.
 SYS-006,system,"The system shall operate indoors from 18 to 28 deg C in dry noncondensing conditions.",MUST,TEST-ENV-001,draft
 SAFE-001,safety,"A dual-channel emergency stop shall remove actuator power without relying on software.",MUST,TEST-SAFE-001,draft
 SAFE-002,safety,"Releasing or resetting the emergency stop shall not initiate motion.",MUST,TEST-SAFE-001,draft
-SAFE-003,safety,"Loss of the supervisor heartbeat for 300 ms shall remove actuator power and latch a fault. Restoration of the heartbeat shall not restore contactor power before a physical monitored reset and a distinct software ARM action.",MUST,TEST-SAFE-002,draft
+SAFE-003,safety,"Loss of the supervisor heartbeat for 300 ms shall remove actuator power and latch a fault. Restoration of the heartbeat shall not restore contactor power before a physical monitored reset and a distinct deliberate physical ARM action. RESET or ARM shall not command torque or motion; motion requires a later fresh validated trajectory.",MUST,TEST-SAFE-002,draft
 SAFE-004,safety,"Fixed shielding and a controlled 600 mm exclusion boundary shall be present for powered V0 fixture tests.",MUST,INSPECT-SAFE-001,draft
 SAFE-005,safety,"No child shall enter the V0 test area while any actuator can be energized.",MUST,AUDIT-SAFE-001,draft
 SAFE-006,safety,"Primary mechanical load paths shall survive 3 times maximum permitted operational static load without hazardous failure.",MUST,TEST-MECH-001,draft

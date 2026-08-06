@@ -42,21 +42,19 @@ SAFETY_24V,13,01_external_sources.kicad_sch:JC1:TBD-OUT+ | 02_estop_eligibility.
 SAFETY_24V_RAW,2,01_external_sources.kicad_sch:PSU2:P1J-C | 01_external_sources.kicad_sch:JC1:TBD-24+
 SITE_PE_CONTROL_SOURCE,1,01_external_sources.kicad_sch:PSU2:C14-PE
 SR1_DIAG_NC,1,02_estop_eligibility.kicad_sch:SR1:42
-SR1_O1,2,02_estop_eligibility.kicad_sch:SR1:14 | 03_arm_watchdog_eligibility.kicad_sch:KWD1:TBD-C1
-SR1_O2,2,02_estop_eligibility.kicad_sch:SR1:24 | 03_arm_watchdog_eligibility.kicad_sch:KWD2:TBD-C1
 SR1_S11,2,02_estop_eligibility.kicad_sch:S0:TBD-C1A | 02_estop_eligibility.kicad_sch:SR1:S11
-SR1_S12,3,02_estop_eligibility.kicad_sch:S0:TBD-C1B | 02_estop_eligibility.kicad_sch:SR1:S12 | 02_estop_eligibility.kicad_sch:S1:TBD-R1
+SR1_S12,3,02_estop_eligibility.kicad_sch:SR1:S12 | 02_estop_eligibility.kicad_sch:S1:TBD-R1 | 03_arm_watchdog_eligibility.kicad_sch:KWD1:TBD-NO1
 SR1_S21,2,02_estop_eligibility.kicad_sch:S0:TBD-C2A | 02_estop_eligibility.kicad_sch:SR1:S21
-SR1_S22,2,02_estop_eligibility.kicad_sch:S0:TBD-C2B | 02_estop_eligibility.kicad_sch:SR1:S22
+SR1_S22,2,02_estop_eligibility.kicad_sch:SR1:S22 | 03_arm_watchdog_eligibility.kicad_sch:KWD2:TBD-NO1
 SR1_START_RETURN,2,02_estop_eligibility.kicad_sch:SR1:S34 | 02_estop_eligibility.kicad_sch:S1:TBD-R2
 SR1_STATUS,3,02_estop_eligibility.kicad_sch:SR1:Y32 | 02_estop_eligibility.kicad_sch:H1:TBD-H+ | 08_compute_and_control_terminals.kicad_sch:XT1:TBD-3
 SRA1_DIAG_NC,1,03_arm_watchdog_eligibility.kicad_sch:SRA1:42
 SRA1_K1_RAW,2,03_arm_watchdog_eligibility.kicad_sch:SRA1:14 | 04_contactor_edm.kicad_sch:FSR1:1
 SRA1_K2_RAW,2,03_arm_watchdog_eligibility.kicad_sch:SRA1:24 | 04_contactor_edm.kicad_sch:FSR2:1
 SRA1_S11,2,02_estop_eligibility.kicad_sch:SR1:13 | 03_arm_watchdog_eligibility.kicad_sch:SRA1:S11
-SRA1_S12,3,03_arm_watchdog_eligibility.kicad_sch:SRA1:S12 | 03_arm_watchdog_eligibility.kicad_sch:KWD1:TBD-NO1 | 03_arm_watchdog_eligibility.kicad_sch:S2:TBD-A1
+SRA1_S12,3,02_estop_eligibility.kicad_sch:SR1:14 | 03_arm_watchdog_eligibility.kicad_sch:SRA1:S12 | 03_arm_watchdog_eligibility.kicad_sch:S2:TBD-A1
 SRA1_S21,2,02_estop_eligibility.kicad_sch:SR1:23 | 03_arm_watchdog_eligibility.kicad_sch:SRA1:S21
-SRA1_S22,2,03_arm_watchdog_eligibility.kicad_sch:SRA1:S22 | 03_arm_watchdog_eligibility.kicad_sch:KWD2:TBD-NO1
+SRA1_S22,2,02_estop_eligibility.kicad_sch:SR1:24 | 03_arm_watchdog_eligibility.kicad_sch:SRA1:S22
 SRA1_START_RETURN,2,03_arm_watchdog_eligibility.kicad_sch:SRA1:S34 | 04_contactor_edm.kicad_sch:K2:22
 SRA1_STATUS,2,03_arm_watchdog_eligibility.kicad_sch:SRA1:Y32 | 08_compute_and_control_terminals.kicad_sch:XT1:TBD-4
 WD1_COIL_N,2,03_arm_watchdog_eligibility.kicad_sch:KWD1:TBD-COIL- | 07_watchdog_control.kicad_sch:Q1:TBD-COIL
@@ -65,12 +63,14 @@ WD1_DRIVE,2,07_watchdog_control.kicad_sch:WDCTRL1:TBD-GPIO-1 | 07_watchdog_contr
 WD1_NC_DIAG,2,03_arm_watchdog_eligibility.kicad_sch:KWD1:TBD-NC1 | 07_watchdog_control.kicad_sch:WDCTRL1:TBD-GPIO-F1
 WD1_NC_DIAG_2,1,03_arm_watchdog_eligibility.kicad_sch:KWD1:TBD-NC2
 WD1_NO_DIAG,1,03_arm_watchdog_eligibility.kicad_sch:KWD1:TBD-NO2
+WD1_SAFETY_IN,2,02_estop_eligibility.kicad_sch:S0:TBD-C1B | 03_arm_watchdog_eligibility.kicad_sch:KWD1:TBD-C1
 WD2_COIL_N,2,03_arm_watchdog_eligibility.kicad_sch:KWD2:TBD-COIL- | 07_watchdog_control.kicad_sch:Q2:TBD-COIL
 WD2_DIAG_FEED,1,03_arm_watchdog_eligibility.kicad_sch:KWD2:TBD-C2
 WD2_DRIVE,2,07_watchdog_control.kicad_sch:WDCTRL1:TBD-GPIO-2 | 07_watchdog_control.kicad_sch:Q2:TBD-IN
 WD2_NC_DIAG,2,03_arm_watchdog_eligibility.kicad_sch:KWD2:TBD-NC1 | 07_watchdog_control.kicad_sch:WDCTRL1:TBD-GPIO-F2
 WD2_NC_DIAG_2,1,03_arm_watchdog_eligibility.kicad_sch:KWD2:TBD-NC2
 WD2_NO_DIAG,1,03_arm_watchdog_eligibility.kicad_sch:KWD2:TBD-NO2
+WD2_SAFETY_IN,2,02_estop_eligibility.kicad_sch:S0:TBD-C2B | 03_arm_watchdog_eligibility.kicad_sch:KWD2:TBD-C1
 WD_5V,2,07_watchdog_control.kicad_sch:DC1:TBD-OUT+ | 07_watchdog_control.kicad_sch:WDCTRL1:VSYS
 WD_HEARTBEAT,2,07_watchdog_control.kicad_sch:ISO1:TBD-OUT | 07_watchdog_control.kicad_sch:WDCTRL1:TBD-GPIO-HB
 WD_SWCLK,2,07_watchdog_control.kicad_sch:WDCTRL1:SWCLK | 08_compute_and_control_terminals.kicad_sch:JDBG1:TBD-SWCLK

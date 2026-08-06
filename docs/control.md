@@ -27,6 +27,12 @@ The Electrical V2.1 arrangement places a normally open watchdog permit downstrea
 
 AI perception or language software may propose a high-level action in a later revision, but it never writes an actuator register. Only the deterministic motion supervisor can execute a versioned, signed trajectory whose preconditions are satisfied.
 
+## HR-V0 firmware implementation candidate
+
+`HR-V0-FW-P0.1` provides a portable-C watchdog logic candidate and an executable Python supervisor authority model under `firmware/`. The V3 sequence is now explicitly a monitored physical RESET followed by a separate deliberate physical ARM action. Software observes that sequence; it has no contactor-closing output. Physical ARM may make the hardware rail eligible, but torque remains off until a later fresh trajectory passes configuration, timing, pose, joint-limit, speed, TCP and terminal-state checks.
+
+The repository supervisor configuration deliberately retains unresolved configuration/kinematic hashes and start-pose tolerances, so it fails closed. Seventeen unit tests and a source-hash manifest are present, but no RP2040 binary, GPIO binding, DYNAMIXEL transport, HIL trace or qualified code/safety review exists. See `docs/hr-v0-firmware-p0.1.md`. No safety credit is assigned to this implementation.
+
 ## Command contract
 
 Every motion command contains `trajectory_id`, configuration hash, mode, starting-pose tolerance, ordered samples, velocity/acceleration limits, joint limits, timeout, payload class, and expected terminal state. Commands with an unknown hash, stale timestamp, wrong starting pose, or unmet receiver state are rejected.
