@@ -1,0 +1,6 @@
+zone_id,segment,coordinate_frame,candidate_route,required_motion,status,evidence_required
+CR-001,base_to_J1,BASE/J1,fixed entry to J1 service loop,All joint poses and service isolation,DESIGN REQUIRED,Select cable connector gland clamp and bend radius
+CR-002,upper_link_neutral_zone,J1 link local,x 35 to 125; z +28; y SELECTION REQUIRED,J1 -25 to +75 deg mechanical range,PRELIMINARY SPACE CLAIM,Verify against H101/S102 frames stop hardware guard and full cable bundle
+CR-003,J2_service_loop,J2 local,loop geometry SELECTION REQUIRED,J2 internal 10 to 130 deg mechanical range,DESIGN REQUIRED,Measure required slack bend twist and connector load on unpowered article
+CR-004,forearm_neutral_zone,J2 link local,x 35 to 125; z +28; y SELECTION REQUIRED,J1/J2 combined mechanical ranges,PRELIMINARY SPACE CLAIM,Verify against H101 gripper frame stops guard and object
+CR-005,gripper_pigtail,FR12-H104K/XM430 local,connector to first retained clamp SELECTION REQUIRED,Full gripper and arm range,DESIGN REQUIRED,Select strain relief flex length and guarded route

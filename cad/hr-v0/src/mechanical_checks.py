@@ -10,7 +10,17 @@ import json
 import math
 from pathlib import Path
 
-from hr_v0_cad import write_source_manifest
+from hr_v0_cad import (
+    GUARD_INTERNAL_DEPTH_MM,
+    GUARD_RADIAL_ENVELOPE_MM,
+    MAX_OBJECT_CENTER_REACH_MM,
+    MAX_OBJECT_HALF_EXTENT_MM,
+    PROVISIONAL_ENVELOPE_TOLERANCE_MM,
+    PROVISIONAL_GUARD_CLEARANCE_MM,
+    PROVISIONAL_STOPPING_TRAVEL_MM,
+    SHOULDER_AXIS_HEIGHT_MM,
+    write_source_manifest,
+)
 
 
 OUT = Path(__file__).resolve().parents[1] / "generated" / "mechanical-checks.json"
@@ -159,6 +169,18 @@ def main():
                 ],
                 "screen_result": "565.4 g KNOWN SUBTOTAL; 184.6 g UNRESOLVED HEADROOM - MASS CLOSURE OPEN",
             },
+            "guard_receiver": {
+                "maximum_object_center_reach_mm": MAX_OBJECT_CENTER_REACH_MM,
+                "maximum_object_half_extent_mm": MAX_OBJECT_HALF_EXTENT_MM,
+                "stopping_travel_space_reservation_mm_not_measured": PROVISIONAL_STOPPING_TRAVEL_MM,
+                "guard_clearance_space_reservation_mm_not_selected": PROVISIONAL_GUARD_CLEARANCE_MM,
+                "envelope_tolerance_space_reservation_mm_not_closed": PROVISIONAL_ENVELOPE_TOLERANCE_MM,
+                "derived_radial_envelope_mm": GUARD_RADIAL_ENVELOPE_MM,
+                "preliminary_internal_width_mm": 2.0 * GUARD_RADIAL_ENVELOPE_MM,
+                "preliminary_internal_depth_mm": GUARD_INTERNAL_DEPTH_MM,
+                "preliminary_internal_height_mm": SHOULDER_AXIS_HEIGHT_MM + GUARD_RADIAL_ENVELOPE_MM,
+                "screen_result": "SPACE RESERVATION ONLY - STOPPING CLEARANCE PANEL RECEIVER AND HARNESS RELEASE OPEN",
+            },
         },
         "not_credited_or_unresolved": [
             "Actual alloy/temper certificate, thickness tolerance, flatness and finish",
@@ -174,6 +196,8 @@ def main():
             "Joint alignment, combined load, shock and fatigue",
             "Bench substrate, anchor part, edge distance, pull-out, shear and site permission",
             "Guard and receiver-fixture impact/retention",
+            "Complete measured 3D sweep and fault-specific stopping/drop envelope",
+            "Exact guard panels frame fasteners access probe service isolation catch and moving harness",
             "Correlation to measured first article and independent mechanical review",
         ],
         "calculation_result": "GEOMETRY SCREEN PASSES; RELEASE REMAINS OPEN",

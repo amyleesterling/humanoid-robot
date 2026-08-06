@@ -32,6 +32,9 @@ HR-30 adds these stages after HR-V0 passes:
 - `TEST-GRIP-001`: Measure grip force across the allowed object range using a calibrated load cell. Establish the lowest current limit that retains the 100 g foam block under the defined motion profile; verify compliant fingers do not tear or permanently crush the reference foam.
 - `INSPECT-MECH-008`: Use `MV0-FC03` to record all four selected FR12-H104K positions, flat seating, and proposed fastener/nut/tool access on the received frame before cutting `MV0-002`.
 - `INSPECT-GRIP-001`: Reconcile every allocated RM-X52 mechanism item, assemble the exact controlled configuration, and probe the fixed local guard to confirm the crank, links, rail and actuator-frame pinch zones are inaccessible.
+- `INSPECT-GUARD-001`: Compare the frozen guard against the complete 3D swept/stopping/payload/tolerance envelope in every unpowered-limit and released fault case; record minimum clearances and access-probe results.
+- `INSPECT-CABLE-001`: Articulate every controlled cable zone through the entire mechanical range and record bend, twist, tension, clamp, connector-load, abrasion and stop/pinch/guard clearances.
+- `TEST-DROP-001`: Verify the fixed catch contains the controlled 100 g foam object after commanded release, gripper fault and actuator-power loss from every released pose; record rebound, slide, escape and damage evidence.
 - `TEST-POWER-001`: Measure steady and peak branch currents, supply droop, protective-device temperature, and contactor voltage drop during worst-case motion and stall-fault injection.
 - `INSPECT-PROD-001`: Measure floor plane to top-of-shell in the released neutral configuration using a calibrated height gauge. Pass at 762 mm nominal drawing dimension and 740–800 mm measured configuration envelope.
 - `TEST-MASS-001`: Weigh the complete tethered robot without external cables supported by the scale. Pass at 10.0 kg or less; a result above the 8.0 kg target opens a mass-margin review.

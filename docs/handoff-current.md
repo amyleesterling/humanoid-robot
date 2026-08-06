@@ -3,7 +3,7 @@
 Handoff date: 2026-08-06  
 Package baseline: **HR-30-SYS-R0.2**  
 Electrical package: **Project Button Electrical V2.1 reviewed baseline; V3-P0.4 connected correction candidate**
-Mechanical package: **HR-V0-MECH-R0.1-PRELIMINARY quote geometry**
+Mechanical package: **HR-V0-MECH-R0.1-PRELIMINARY quote geometry plus guard/catch/cable space study**
 Firmware package: **HR-V0-FW-P0.1 source/test candidate; no released binary**
 Status: **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 
@@ -31,7 +31,7 @@ The authoritative repository controls engineering intent and contains the review
 
 ## Current controlled counts
 
-- 64 draft requirements
+- 67 draft requirements
 - 40 open risks
 - six staged releases: HR-V0, HR-30A, HR-30B, HR-30C, HR-30D, and HR-30W
 - 15 native KiCad sheets
@@ -47,11 +47,11 @@ ERC validates modeled connectivity and annotation only. It does not establish ph
 
 ## Review history and independent findings
 
-Twenty-four review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the analysis resupplied on 2026-08-06 is the same R12 verdict and is not double-counted. R13 staged the authoritative-ECAD provenance correction; R14 corrected reproducible engineering and traceability defects; R15 archived and dispositioned Sol's complete dossier; R16 created the V3-P0.1 candidate; R17 corrected the restart chain and added preliminary firmware; R18 corrected the watchdog feedback voltage boundary and froze reviewable Phoenix/Pico terminals; R19 defined and checked the ISO1212DBQ feedback circuit; R20 added the first hashed PCD22 fit-coupon package; R21 corrected H101/S102 interface topology; R22 defines the hard-stop coordinate, inertia, energy, drive-force and validation basis without releasing stop hardware; R23 adds part-level HR-V0 moving-mass traceability; R24 selects the proposed RM-X52 gripper mechanism allocation and FR12-H104K fit-check interface without claiming release. Physical execution and functional-safety blockers remain open.
+Twenty-five review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the analysis resupplied on 2026-08-06 is the same R12 verdict and is not double-counted. R13 staged the authoritative-ECAD provenance correction; R14 corrected reproducible engineering and traceability defects; R15 archived and dispositioned Sol's complete dossier; R16 created the V3-P0.1 candidate; R17 corrected the restart chain and added preliminary firmware; R18 corrected the watchdog feedback voltage boundary and froze reviewable Phoenix/Pico terminals; R19 defined and checked the ISO1212DBQ feedback circuit; R20 added the first hashed PCD22 fit-coupon package; R21 corrected H101/S102 interface topology; R22 defines the hard-stop coordinate, inertia, energy, drive-force and validation basis without releasing stop hardware; R23 adds part-level HR-V0 moving-mass traceability; R24 selects the proposed RM-X52 gripper mechanism allocation and FR12-H104K fit-check interface; R25 adds preliminary guard/catch and cable-route space/evidence controls without claiming release. Physical execution and functional-safety blockers remain open.
 
 ## Principal unresolved engineering blockers
 
-1. HR-V0 now has native parametric quote geometry, four custom-part DXF/STEP/STL sets, readable drawings, vendor CAD provenance, a GLB/STEP assembly-space model, preliminary plate/column screens, three controlled interface coupons, checked hard-stop datums/load cases, a proposed exact RM-X52 gripper parent kit/allocation, and a 13-row moving-mass ledger plus unpowered/guarded validation procedures. The mass ledger supports 565.4 g known and leaves 184.6 g for every unresolved moving frame, fastener, stop, cable and gripper item; it is not a pass. The FR12-H104K 24 x 12 mm candidate interface is defined, but received fit, exact fasteners, guard, force/current limit and load-path proof remain open. Fabricable stop brackets/bumpers, cable paths, bench anchoring, measured mass/COM/inertia closure, proof tests, and independent mechanical review also remain open. HR-30 has no released mechanical CAD.
+1. HR-V0 now has native parametric quote geometry, four custom-part DXF/STEP/STL sets, readable drawings, vendor CAD provenance, a GLB/STEP assembly-space model, preliminary plate/column screens, three controlled interface coupons, checked hard-stop datums/load cases, a proposed exact RM-X52 gripper parent kit/allocation, a generated guard/catch envelope with five cable zones, and a 13-row moving-mass ledger plus unpowered/guarded validation procedures. The mass ledger supports 565.4 g known and leaves 184.6 g for every unresolved moving frame, fastener, stop, cable and gripper item; it is not a pass. The 900 x 400 x 950 mm guard space and its 25 mm stopping/clearance values are provisional, not a safety distance. Received fit, exact fasteners, complete sweep/stopping/drop evidence, guard/receiver/harness parts, force/current limit, fabricable stops, bench anchoring, measured mass/COM/inertia, proof tests, and independent mechanical review remain open. HR-30 has no released mechanical CAD.
 2. Joint continuous/cyclic/impact/thermal performance, drivetrain efficiency, backlash, and structural margins are not physically validated.
 3. Safe actuator-power-loss behavior remains unresolved; a walking robot may collapse when hazardous drive energy is removed.
 4. Mass, center of mass, inertia, wiring mass, and reserve are not closed against released CAD and measured components.
@@ -78,6 +78,8 @@ The R23 status reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r23-statu
 
 The R24 status reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r24-status.md`. It records the proposed orderable gripper parent kit, allocated mechanism schedule, `MV0-FC03` interface evidence route, local-guard requirement, and still-open physical fit, force, mass, fastener and proof evidence.
 
+The R25 status reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r25-status.md`. It records the generated guard/catch space reservation, five cable zones, three new requirements/procedures, explicit provisional assumptions, and still-open exact hardware, stopping/drop/sweep, inspection and proof evidence. Through E2, 0 of 21 gates are closed; 14 are partial and 7 remain open.
+
 ## Requested independent-review output
 
 Use `docs/reviews/2026-08-06-electrical-v3-independent-review-request.md` for the controlled V3-P0.4 electrical review scope and reproduction commands. Use `docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md` for the source-level watchdog and supervisor review scope.
@@ -98,4 +100,4 @@ No reviewer should interpret clean ERC, traceability, simulation, website public
 
 ## Next controlled action
 
-Submit V3-P0.4 and HR-V0-FW-P0.1 for detailed independent electrical, controls and functional-safety review. Acquire and receive-inspect the H101/S102 frame kits and proposed RM-X52 gripper kit; make all three coupons; execute `INSPECT-MECH-003`/`004`/`008` plus `INSPECT-GRIP-001`; and weigh every received/moving item under `INSPECT-MECH-007`. Use the unpowered joint article to freeze stop planes and tolerance inputs, then release the backed-up bumper/catch and brackets before `INSPECT-MECH-006` or any powered `TEST-MECH-002`. Complete the cable, gripper guard/force, receiver, bench-anchor, mass/COM/inertia, and proof-test designs. In parallel, design/review the ISO1212 PCB, freeze its passive order codes plus the 64 unresolved terminals and all protection/conductor/interface selections, select the firmware platform/toolchain/kinematics, compile reproducible binaries, and prepare disconnected-load HIL procedures. Do not issue a build or energization release until the applicable gate records close.
+Submit V3-P0.4 and HR-V0-FW-P0.1 for detailed independent electrical, controls and functional-safety review. Acquire and receive-inspect the H101/S102 frame kits and proposed RM-X52 gripper kit; make all three coupons; execute `INSPECT-MECH-003`/`004`/`008` plus `INSPECT-GRIP-001`; and weigh every received/moving item under `INSPECT-MECH-007`. Build only an unpowered controlled article to freeze stop planes, cable loops, guard sweep and tolerance inputs under `INSPECT-CABLE-001` and `INSPECT-GUARD-001`. Then release the backed-up bumper/catch, guard/receiver and brackets before any powered `TEST-MECH-002` or `TEST-DROP-001`. In parallel, design/review the ISO1212 PCB, freeze its passive order codes plus the 64 unresolved terminals and all protection/conductor/interface selections, select the firmware platform/toolchain/kinematics, compile reproducible binaries, and prepare disconnected-load HIL procedures. Do not issue a build or energization release until the applicable gate records close.

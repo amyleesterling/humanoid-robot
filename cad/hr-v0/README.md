@@ -12,7 +12,7 @@ From the repository root on Windows:
 & '..\.venvs\hr-v0-cad\Scripts\python.exe' cad\hr-v0\src\hr_v0_cad.py
 ```
 
-For a clean environment, install the pinned package from `requirements-cad.txt`. Generated artifacts include STEP, STL, DXF, readable SVG quote drawings, a STEP/GLB assembly-space model, mass estimates, three interface fit-coupon packages, and `generated/SOURCE-MANIFEST.csv` with SHA-256 hashes for every generated artifact.
+For a clean environment, install the pinned package from `requirements-cad.txt`. Generated artifacts include STEP, STL, DXF, readable SVG quote drawings, a STEP/GLB assembly-space model, mass estimates, three interface fit-coupon packages, a guard/catch/cable space study, and `generated/SOURCE-MANIFEST.csv` with SHA-256 hashes for every generated artifact.
 
 ## Controlled custom parts
 
@@ -35,11 +35,16 @@ The corrected interface and fastener boundary is [controlled separately](../../d
 
 The assembly uses envelopes for 80/20 40-4040 extrusion and XM540 actuators. Use the untouched manufacturer STEP files in `../vendor/robotis` for final interference checking. The generated assembly is a space claim and mounting concept, not a kinematically constrained assembly.
 
+## Guard, receiver and cable space study
+
+`generated/safety-enclosure/` contains a non-released STEP envelope, readable front/plan guard layout, catch-space assumptions, five cable zones and explicit provisional allowances. The 900 x 400 x 950 mm internal guard space is derived from the 360 mm object-center reach, 35 mm object half-extent, and provisional 25 mm stopping, 25 mm clearance and 5 mm tolerance reservations. Those provisional values are not safety distances or acceptance limits. See [the controlled design basis](../../docs/hr-v0-guard-receiver-cable-p0.1.md).
+
 ## Gates before a cutting order
 
 - Execute `INSPECT-MECH-003` with the controlled `MV0-FC01` coupon and received FR13 frames; preserve every per-hole record and photograph.
 - Execute `INSPECT-MECH-004` with `MV0-FC02` on both received S102 frames and `INSPECT-MECH-005` on all received kit contents.
 - Execute `INSPECT-MECH-008` with `MV0-FC03` on the received FR12-H104K and `INSPECT-GRIP-001` on the allocated RM-X52 mechanism plus its fixed local guard.
+- Freeze the full 3D sweep and exact harness, then execute `INSPECT-GUARD-001`, `INSPECT-CABLE-001`, and `TEST-DROP-001`; enlarge the enclosure if measured stopping, payload, tolerance or service volumes exceed the preliminary reservation.
 - Confirm the cutting supplier's actual thickness tolerance, hole tolerance, minimum feature and finish.
 - Resolve fastener exact parts, strength class, engagement, torque, locking method and witness marking.
 - Add and verify hard stops, cable paths, covers, gripper retention and the fixed guard.

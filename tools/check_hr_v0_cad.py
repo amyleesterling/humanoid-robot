@@ -17,6 +17,7 @@ GENERATED = CAD / "generated"
 VENDOR = ROOT / "cad" / "vendor" / "robotis"
 FIT_COUPONS = GENERATED / "fit-coupons"
 HARD_STOPS = GENERATED / "hard-stops"
+SAFETY_ENCLOSURE = GENERATED / "safety-enclosure"
 FIT_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-fit-coupon-inspection-template.csv"
 FRAME_KIT_CONTENTS = ROOT / "bom" / "hr-v0-frame-kit-contents.csv"
 FRAME_KIT_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-frame-kit-receiving-template.csv"
@@ -26,6 +27,9 @@ MOVING_MASS_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-moving-mass-meas
 GRIPPER_KIT_CONTENTS = ROOT / "bom" / "hr-v0-gripper-kit-contents.csv"
 GRIPPER_KIT_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-gripper-kit-receiving-template.csv"
 GRIPPER_INTERFACE_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-gripper-interface-inspection-template.csv"
+GUARD_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-guard-clearance-inspection-template.csv"
+CABLE_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-cable-route-inspection-template.csv"
+DROP_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-drop-containment-template.csv"
 
 
 def sha256(path: Path) -> str:
@@ -330,6 +334,96 @@ def main() -> int:
     for row in hard_stop_record_rows:
         if row.get(None) or row.get("record_id") != "NOT-EXECUTED" or row.get("disposition") != "NOT EXECUTED":
             errors.append(f"malformed or executed-looking hard-stop template row: {row.get('stop_id')}")
+    with (SAFETY_ENCLOSURE / "guard-receiver-assumptions.csv").open(newline="", encoding="utf-8") as handle:
+        guard_rows = list(csv.DictReader(handle))
+    guard_by_parameter = {row.get("parameter"): row for row in guard_rows}
+    expected_guard_values = {
+        "shoulder_axis_height": "500.0",
+        "maximum_object_center_reach": "360.0",
+        "maximum_object_half_extent": "35.0",
+        "stopping_travel_space_reservation": "25.0",
+        "guard_clearance_space_reservation": "25.0",
+        "envelope_tolerance_space_reservation": "5.0",
+        "guard_radial_envelope": "450.0",
+        "guard_internal_width": "900.0",
+        "guard_internal_depth": "400.0",
+        "guard_internal_height": "950.0",
+        "candidate_panel_thickness": "6.0",
+        "catch_tray_plan": "820 x 320",
+        "catch_tray_wall_height": "50.0",
+        "catch_tray_bottom_thickness": "3.0",
+    }
+    if set(guard_by_parameter) != set(expected_guard_values):
+        errors.append("guard/receiver assumptions lost the controlled 14-parameter set")
+    for parameter, expected_value in expected_guard_values.items():
+        row = guard_by_parameter.get(parameter, {})
+        if row.get("value") != expected_value:
+            errors.append(f"guard parameter {parameter} expected {expected_value}, found {row.get('value')}")
+        if parameter in {
+            "stopping_travel_space_reservation", "guard_clearance_space_reservation",
+            "envelope_tolerance_space_reservation", "guard_internal_depth",
+            "candidate_panel_thickness", "catch_tray_wall_height", "catch_tray_bottom_thickness",
+        } and "SELECTION REQUIRED" not in row.get("status", ""):
+            errors.append(f"guard parameter {parameter} falsely appears released")
+    with (SAFETY_ENCLOSURE / "cable-route-datums.csv").open(newline="", encoding="utf-8") as handle:
+        cable_route_rows = list(csv.DictReader(handle))
+    expected_cable_zone_ids = {f"CR-{index:03d}" for index in range(1, 6)}
+    if {row.get("zone_id") for row in cable_route_rows} != expected_cable_zone_ids:
+        errors.append("cable-route datum set lost CR-001 through CR-005")
+    for row in cable_route_rows:
+        if row.get("status") not in {"DESIGN REQUIRED", "PRELIMINARY SPACE CLAIM"}:
+            errors.append(f"cable-route zone falsely appears released: {row.get('zone_id')}")
+    guard_step = SAFETY_ENCLOSURE / "HR-V0_guard_receiver_envelope_NOT_RELEASED.step"
+    if not guard_step.exists() or guard_step.stat().st_size < 100_000:
+        errors.append("guard/receiver envelope STEP is missing or implausibly small")
+    for svg_name, required_text in {
+        "HR-V0_guard_receiver_layout.svg": (
+            "font: 16px", "25 mm stopping travel is NOT measured", "No door interlock is selected or credited",
+            "NOT A FABRICATION DRAWING OR PERMISSION TO ENERGIZE",
+        ),
+        "HR-V0_cable_route_datums.svg": (
+            "font: 16px", "NO CABLE, CLAMP, LOOP OR BEND RADIUS IS RELEASED",
+            "VERIFY ALL COMBINED JOINT POSES", "NOT A HARNESS DRAWING OR PERMISSION TO ENERGIZE",
+        ),
+    }.items():
+        path = SAFETY_ENCLOSURE / svg_name
+        try:
+            ET.parse(path)
+        except (ET.ParseError, FileNotFoundError) as exc:
+            errors.append(f"invalid or missing safety-enclosure SVG {svg_name}: {exc}")
+            continue
+        svg_text = path.read_text(encoding="utf-8")
+        for required in required_text:
+            if required not in svg_text:
+                errors.append(f"{svg_name} missing controlled text: {required}")
+    with GUARD_RECORD_TEMPLATE.open(newline="", encoding="utf-8") as handle:
+        guard_record_rows = list(csv.DictReader(handle))
+    expected_guard_case_ids = {f"GC-{index:03d}" for index in range(1, 11)}
+    if {row.get("case_id") for row in guard_record_rows} != expected_guard_case_ids:
+        errors.append("guard-clearance template lost GC-001 through GC-010")
+    for row in guard_record_rows:
+        if row.get(None) or row.get("record_id") != "NOT-EXECUTED" or row.get("disposition") != "NOT EXECUTED":
+            errors.append(f"malformed or executed-looking guard-clearance row: {row.get('case_id')}")
+    with CABLE_RECORD_TEMPLATE.open(newline="", encoding="utf-8") as handle:
+        cable_record_rows = list(csv.DictReader(handle))
+    expected_cable_record_keys = {
+        (zone_id, pose_id)
+        for zone_id in expected_cable_zone_ids
+        for pose_id in ("FULL_RANGE_ARTICULATION", "WORST_CASE_IDENTIFIED")
+    }
+    if {(row.get("zone_id"), row.get("pose_id")) for row in cable_record_rows} != expected_cable_record_keys:
+        errors.append("cable-route template lost its ten controlled zone/pose seed rows")
+    for row in cable_record_rows:
+        if row.get(None) or row.get("record_id") != "NOT-EXECUTED" or row.get("disposition") != "NOT EXECUTED":
+            errors.append(f"malformed or executed-looking cable-route row: {row.get('zone_id')}")
+    with DROP_RECORD_TEMPLATE.open(newline="", encoding="utf-8") as handle:
+        drop_record_rows = list(csv.DictReader(handle))
+    expected_drop_case_ids = {f"DR-{index:03d}" for index in range(1, 7)}
+    if {row.get("case_id") for row in drop_record_rows} != expected_drop_case_ids:
+        errors.append("drop-containment template lost DR-001 through DR-006")
+    for row in drop_record_rows:
+        if row.get(None) or row.get("record_id") != "NOT-EXECUTED" or row.get("disposition") != "NOT EXECUTED":
+            errors.append(f"malformed or executed-looking drop-containment row: {row.get('case_id')}")
     with MOVING_MASS_LEDGER.open(newline="", encoding="utf-8") as handle:
         moving_mass_rows = list(csv.DictReader(handle))
     expected_mass_ids = {f"V0M-{index:03d}" for index in range(1, 14)}
@@ -372,6 +466,21 @@ def main() -> int:
         errors.append("generated manifest lost the selected FR12-H104K 24 x 12 pattern")
     if manifest["controlled_parameters"].get("gripper_fit_coupon_mm") != [36.0, 24.0, 2.0]:
         errors.append("generated manifest lost the MV0-FC03 coupon dimensions")
+    expected_guard_space = {
+        "radial_envelope": 450.0,
+        "internal_width": 900.0,
+        "internal_depth": 400.0,
+        "internal_height": 950.0,
+        "candidate_panel_thickness": 6.0,
+    }
+    if manifest["controlled_parameters"].get("guard_space_reservation_mm") != expected_guard_space:
+        errors.append("generated manifest lost the controlled guard space reservation")
+    if manifest["controlled_parameters"].get("guard_provisional_allowances_mm") != {
+        "stopping_travel": 25.0, "guard_clearance": 25.0, "envelope_tolerance": 5.0,
+    }:
+        errors.append("generated manifest lost the explicitly provisional guard allowances")
+    if manifest["controlled_parameters"].get("catch_tray_space_reservation_mm") != [820.0, 320.0, 50.0, 3.0]:
+        errors.append("generated manifest lost the catch-tray space reservation")
     for name in ("HR-V0_preliminary_assembly.step", "HR-V0_preliminary_assembly.glb"):
         path = GENERATED / name
         if not path.exists() or path.stat().st_size < 10_000:
@@ -424,6 +533,21 @@ def main() -> int:
         errors.append("mechanical calculation lost the 184.6 g unresolved moving-mass headroom")
     if moving_mass_screen.get("screen_result") != "565.4 g KNOWN SUBTOTAL; 184.6 g UNRESOLVED HEADROOM - MASS CLOSURE OPEN":
         errors.append("moving-mass calculation no longer preserves its open status")
+    guard_screen = checks["screens"].get("guard_receiver", {})
+    expected_guard_screen = {
+        "maximum_object_center_reach_mm": 360.0,
+        "maximum_object_half_extent_mm": 35.0,
+        "stopping_travel_space_reservation_mm_not_measured": 25.0,
+        "guard_clearance_space_reservation_mm_not_selected": 25.0,
+        "envelope_tolerance_space_reservation_mm_not_closed": 5.0,
+        "derived_radial_envelope_mm": 450.0,
+        "preliminary_internal_width_mm": 900.0,
+        "preliminary_internal_depth_mm": 400.0,
+        "preliminary_internal_height_mm": 950.0,
+        "screen_result": "SPACE RESERVATION ONLY - STOPPING CLEARANCE PANEL RECEIVER AND HARNESS RELEASE OPEN",
+    }
+    if guard_screen != expected_guard_screen:
+        errors.append("mechanical calculation lost the controlled preliminary guard/receiver screen")
     if checks["inputs"].get("selected_interfaces", {}).get("distal_gripper") != "FR12-H104K selected four-hole subset on 24 x 12 mm rectangle; physical fit required":
         errors.append("mechanical calculation lost the selected but unreleased gripper interface")
     if not checks["not_credited_or_unresolved"]:

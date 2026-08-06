@@ -25,6 +25,7 @@ PARTS = OUT / "parts"
 DRAWINGS = OUT / "drawings"
 FIT_COUPONS = OUT / "fit-coupons"
 HARD_STOPS = OUT / "hard-stops"
+SAFETY_ENCLOSURE = OUT / "safety-enclosure"
 
 REVISION = "HR-V0-MECH-R0.1-PRELIMINARY"
 MATERIAL = "6061-T6 aluminum"
@@ -71,6 +72,26 @@ ANCHOR_Z_MM = 80.0
 ANCHOR_T_MM = 6.35
 ANCHOR_SLOT_LENGTH_MM = 28.0
 ANCHOR_SLOT_WIDTH_MM = 9.0
+
+SHOULDER_AXIS_HEIGHT_MM = 500.0
+MAX_OBJECT_CENTER_REACH_MM = 360.0
+MAX_OBJECT_HALF_EXTENT_MM = 35.0
+PROVISIONAL_STOPPING_TRAVEL_MM = 25.0
+PROVISIONAL_GUARD_CLEARANCE_MM = 25.0
+PROVISIONAL_ENVELOPE_TOLERANCE_MM = 5.0
+GUARD_RADIAL_ENVELOPE_MM = (
+    MAX_OBJECT_CENTER_REACH_MM
+    + MAX_OBJECT_HALF_EXTENT_MM
+    + PROVISIONAL_STOPPING_TRAVEL_MM
+    + PROVISIONAL_GUARD_CLEARANCE_MM
+    + PROVISIONAL_ENVELOPE_TOLERANCE_MM
+)
+GUARD_INTERNAL_DEPTH_MM = 400.0
+GUARD_PANEL_THICKNESS_MM = 6.0
+CATCH_TRAY_X_MM = 820.0
+CATCH_TRAY_Y_MM = 320.0
+CATCH_TRAY_WALL_HEIGHT_MM = 50.0
+CATCH_TRAY_BOTTOM_THICKNESS_MM = 3.0
 
 
 def pcd_points(cx: float, cz: float, count: int = 8):
@@ -642,6 +663,159 @@ def write_hard_stop_layout() -> None:
     (HARD_STOPS / "HR-V0_hard-stop-kinematic-layout.svg").write_text(svg, encoding="utf-8")
 
 
+def write_guard_receiver_cable_study() -> None:
+    """Generate a non-released guard, catch and harness space-reservation study."""
+    SAFETY_ENCLOSURE.mkdir(parents=True, exist_ok=True)
+    guard_width = 2.0 * GUARD_RADIAL_ENVELOPE_MM
+    guard_height = SHOULDER_AXIS_HEIGHT_MM + GUARD_RADIAL_ENVELOPE_MM
+
+    assumption_rows = [
+        ("shoulder_axis_height", SHOULDER_AXIS_HEIGHT_MM, "mm", "CONTROLLED CURRENT CAD DATUM", "Correlate to surveyed bench and assembled article"),
+        ("maximum_object_center_reach", MAX_OBJECT_CENTER_REACH_MM, "mm", "CONTROLLED REQUIREMENT", "Verify under INSPECT-MECH-001"),
+        ("maximum_object_half_extent", MAX_OBJECT_HALF_EXTENT_MM, "mm", "DERIVED FROM 70 MM MAXIMUM OBJECT", "Freeze reference foam dimensions and tolerance"),
+        ("stopping_travel_space_reservation", PROVISIONAL_STOPPING_TRAVEL_MM, "mm", "PROVISIONAL - SELECTION REQUIRED", "Measure worst pose and fault stopping travel; enlarge guard if exceeded"),
+        ("guard_clearance_space_reservation", PROVISIONAL_GUARD_CLEARANCE_MM, "mm", "PROVISIONAL - SELECTION REQUIRED", "Select access probe and released minimum clearance"),
+        ("envelope_tolerance_space_reservation", PROVISIONAL_ENVELOPE_TOLERANCE_MM, "mm", "PROVISIONAL - SELECTION REQUIRED", "Close CAD build calibration and measurement tolerance stack"),
+        ("guard_radial_envelope", GUARD_RADIAL_ENVELOPE_MM, "mm", "DERIVED PRELIMINARY SPACE CLAIM", "Must be at least the released swept stopping payload and tolerance union"),
+        ("guard_internal_width", guard_width, "mm", "PRELIMINARY SPACE CLAIM", "Site footprint and guard-frame design required"),
+        ("guard_internal_depth", GUARD_INTERNAL_DEPTH_MM, "mm", "PROVISIONAL - SELECTION REQUIRED", "Complete 3D sweep cable and service-volume study"),
+        ("guard_internal_height", guard_height, "mm", "PRELIMINARY SPACE CLAIM", "Site footprint and guard-frame design required"),
+        ("candidate_panel_thickness", GUARD_PANEL_THICKNESS_MM, "mm", "PROVISIONAL - SELECTION REQUIRED", "Exact material grade impact retention fasteners and support spacing required"),
+        ("catch_tray_plan", f"{CATCH_TRAY_X_MM:.0f} x {CATCH_TRAY_Y_MM:.0f}", "mm", "PRELIMINARY SPACE CLAIM", "Execute payload drop and rebound containment tests"),
+        ("catch_tray_wall_height", CATCH_TRAY_WALL_HEIGHT_MM, "mm", "PROVISIONAL - SELECTION REQUIRED", "Validate maximum bounce slide and receiver-fixture interference"),
+        ("catch_tray_bottom_thickness", CATCH_TRAY_BOTTOM_THICKNESS_MM, "mm", "PROVISIONAL - SELECTION REQUIRED", "Exact material support span and impact/retention proof required"),
+    ]
+    with (SAFETY_ENCLOSURE / "guard-receiver-assumptions.csv").open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(("parameter", "value", "unit", "status", "evidence_required"))
+        writer.writerows(assumption_rows)
+
+    cable_rows = [
+        ("CR-001", "base_to_J1", "BASE/J1", "fixed entry to J1 service loop", "All joint poses and service isolation", "DESIGN REQUIRED", "Select cable connector gland clamp and bend radius"),
+        ("CR-002", "upper_link_neutral_zone", "J1 link local", "x 35 to 125; z +28; y SELECTION REQUIRED", "J1 -25 to +75 deg mechanical range", "PRELIMINARY SPACE CLAIM", "Verify against H101/S102 frames stop hardware guard and full cable bundle"),
+        ("CR-003", "J2_service_loop", "J2 local", "loop geometry SELECTION REQUIRED", "J2 internal 10 to 130 deg mechanical range", "DESIGN REQUIRED", "Measure required slack bend twist and connector load on unpowered article"),
+        ("CR-004", "forearm_neutral_zone", "J2 link local", "x 35 to 125; z +28; y SELECTION REQUIRED", "J1/J2 combined mechanical ranges", "PRELIMINARY SPACE CLAIM", "Verify against H101 gripper frame stops guard and object"),
+        ("CR-005", "gripper_pigtail", "FR12-H104K/XM430 local", "connector to first retained clamp SELECTION REQUIRED", "Full gripper and arm range", "DESIGN REQUIRED", "Select strain relief flex length and guarded route"),
+    ]
+    with (SAFETY_ENCLOSURE / "cable-route-datums.csv").open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(("zone_id", "segment", "coordinate_frame", "candidate_route", "required_motion", "status", "evidence_required"))
+        writer.writerows(cable_rows)
+
+    guard = cq.Assembly(name="HR_V0_GUARD_ENVELOPE_NOT_RELEASED")
+    panel = GUARD_PANEL_THICKNESS_MM
+    half_depth = GUARD_INTERNAL_DEPTH_MM / 2.0
+    half_width = guard_width / 2.0
+    guard.add(cq.Workplane("XY").box(guard_width, panel, guard_height),
+              loc=cq.Location(cq.Vector(0, -half_depth - panel / 2.0, guard_height / 2.0)), name="rear_panel_envelope")
+    guard.add(cq.Workplane("XY").box(guard_width, panel, guard_height),
+              loc=cq.Location(cq.Vector(0, half_depth + panel / 2.0, guard_height / 2.0)), name="tool_removable_front_panel_envelope")
+    guard.add(cq.Workplane("XY").box(panel, GUARD_INTERNAL_DEPTH_MM, guard_height),
+              loc=cq.Location(cq.Vector(-half_width - panel / 2.0, 0, guard_height / 2.0)), name="left_panel_envelope")
+    guard.add(cq.Workplane("XY").box(panel, GUARD_INTERNAL_DEPTH_MM, guard_height),
+              loc=cq.Location(cq.Vector(half_width + panel / 2.0, 0, guard_height / 2.0)), name="right_panel_envelope")
+    guard.add(cq.Workplane("XY").box(guard_width, GUARD_INTERNAL_DEPTH_MM, panel),
+              loc=cq.Location(cq.Vector(0, 0, guard_height + panel / 2.0)), name="top_panel_envelope")
+    guard.add(cq.Workplane("XY").box(CATCH_TRAY_X_MM, CATCH_TRAY_Y_MM, CATCH_TRAY_BOTTOM_THICKNESS_MM),
+              loc=cq.Location(cq.Vector(0, 0, CATCH_TRAY_BOTTOM_THICKNESS_MM / 2.0)), name="catch_bottom_envelope")
+    guard.add(cq.Workplane("XY").box(CATCH_TRAY_X_MM, panel, CATCH_TRAY_WALL_HEIGHT_MM),
+              loc=cq.Location(cq.Vector(0, -CATCH_TRAY_Y_MM / 2.0, CATCH_TRAY_WALL_HEIGHT_MM / 2.0)), name="catch_rear_wall_envelope")
+    guard.add(cq.Workplane("XY").box(CATCH_TRAY_X_MM, panel, CATCH_TRAY_WALL_HEIGHT_MM),
+              loc=cq.Location(cq.Vector(0, CATCH_TRAY_Y_MM / 2.0, CATCH_TRAY_WALL_HEIGHT_MM / 2.0)), name="catch_front_wall_envelope")
+    guard.add(cq.Workplane("XY").box(panel, CATCH_TRAY_Y_MM, CATCH_TRAY_WALL_HEIGHT_MM),
+              loc=cq.Location(cq.Vector(-CATCH_TRAY_X_MM / 2.0, 0, CATCH_TRAY_WALL_HEIGHT_MM / 2.0)), name="catch_left_wall_envelope")
+    guard.add(cq.Workplane("XY").box(panel, CATCH_TRAY_Y_MM, CATCH_TRAY_WALL_HEIGHT_MM),
+              loc=cq.Location(cq.Vector(CATCH_TRAY_X_MM / 2.0, 0, CATCH_TRAY_WALL_HEIGHT_MM / 2.0)), name="catch_right_wall_envelope")
+    guard.save(str(SAFETY_ENCLOSURE / "HR-V0_guard_receiver_envelope_NOT_RELEASED.step"))
+
+    scale = 2.0 / 3.0
+    front_x = 100.0
+    front_bottom = 790.0
+    front_width = guard_width * scale
+    front_height = guard_height * scale
+    shoulder_x = front_x + front_width / 2.0
+    shoulder_y = front_bottom - SHOULDER_AXIS_HEIGHT_MM * scale
+    reach_r = MAX_OBJECT_CENTER_REACH_MM * scale
+    envelope_r = GUARD_RADIAL_ENVELOPE_MM * scale
+    plan_y = 1010.0
+    plan_depth = GUARD_INTERNAL_DEPTH_MM * scale
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1320" viewBox="0 0 1100 1320">
+      <style>
+        text {{ font: 16px system-ui, sans-serif; fill: #082554; }}
+        .title {{ font-size: 28px; font-weight: 700; }}
+        .subtitle {{ font-size: 21px; font-weight: 700; }}
+        .warning {{ font-size: 18px; font-weight: 700; fill: #8a4b00; }}
+        .guard {{ fill: #d9efff; fill-opacity: 0.20; stroke: #082554; stroke-width: 4; }}
+        .reach {{ fill: none; stroke: #0b72b9; stroke-width: 3; stroke-dasharray: 10 7; }}
+        .envelope {{ fill: #ffbf2f; fill-opacity: 0.10; stroke: #b17700; stroke-width: 4; }}
+        .tray {{ fill: #ffdf83; stroke: #8a4b00; stroke-width: 3; }}
+        .datum {{ stroke: #082554; stroke-width: 3; }}
+      </style>
+      <text x="50" y="45" class="title">HR-V0 GUARD / RECEIVER PRELIMINARY SPACE STUDY</text>
+      <text x="50" y="78" class="warning">NO PANEL, FRAME, FASTENER, RECEIVER OR CLEARANCE IS RELEASED</text>
+      <text x="50" y="108">The orange envelope includes provisional 25 mm stopping, 25 mm clearance and 5 mm tolerance reservations.</text>
+      <text x="50" y="134">Measured stopping/drop/sweep evidence governs. Increase the enclosure if any released case exceeds this space claim.</text>
+      <text x="100" y="180" class="subtitle">FRONT VIEW - SHOULDER-CENTERED</text>
+      <rect x="{front_x:.1f}" y="{front_bottom-front_height:.1f}" width="{front_width:.1f}" height="{front_height:.1f}" class="guard"/>
+      <circle cx="{shoulder_x:.1f}" cy="{shoulder_y:.1f}" r="{envelope_r:.1f}" class="envelope"/>
+      <circle cx="{shoulder_x:.1f}" cy="{shoulder_y:.1f}" r="{reach_r:.1f}" class="reach"/>
+      <line x1="{shoulder_x-18:.1f}" y1="{shoulder_y:.1f}" x2="{shoulder_x+18:.1f}" y2="{shoulder_y:.1f}" class="datum"/>
+      <line x1="{shoulder_x:.1f}" y1="{shoulder_y-18:.1f}" x2="{shoulder_x:.1f}" y2="{shoulder_y+18:.1f}" class="datum"/>
+      <rect x="{front_x+(guard_width-CATCH_TRAY_X_MM)*scale/2:.1f}" y="{front_bottom-CATCH_TRAY_WALL_HEIGHT_MM*scale:.1f}" width="{CATCH_TRAY_X_MM*scale:.1f}" height="{CATCH_TRAY_WALL_HEIGHT_MM*scale:.1f}" class="tray"/>
+      <text x="730" y="260">BLUE DASH: 360 mm object-center reach ceiling</text>
+      <text x="730" y="292">ORANGE: 450 mm preliminary radial envelope</text>
+      <text x="730" y="324">GUARD INSIDE: 900 W x 950 H mm</text>
+      <text x="730" y="356">SHOULDER DATUM: 500 mm above bench</text>
+      <text x="730" y="388">CATCH SPACE: 820 x 320 x 50 mm</text>
+      <text x="730" y="438" class="warning">25 mm stopping travel is NOT measured.</text>
+      <text x="730" y="470" class="warning">It is not an acceptance limit.</text>
+      <text x="730" y="520">Final guard requires complete 3D sweep,</text>
+      <text x="730" y="548">access probe, impact and retention proof,</text>
+      <text x="730" y="576">panel support, service isolation and drop tests.</text>
+      <text x="100" y="900" class="subtitle">PLAN VIEW - PRELIMINARY INTERNAL DEPTH</text>
+      <rect x="{front_x:.1f}" y="{plan_y:.1f}" width="{front_width:.1f}" height="{plan_depth:.1f}" class="guard"/>
+      <rect x="{front_x+(guard_width-CATCH_TRAY_X_MM)*scale/2:.1f}" y="{plan_y+(GUARD_INTERNAL_DEPTH_MM-CATCH_TRAY_Y_MM)*scale/2:.1f}" width="{CATCH_TRAY_X_MM*scale:.1f}" height="{CATCH_TRAY_Y_MM*scale:.1f}" class="tray"/>
+      <line x1="{shoulder_x-18:.1f}" y1="{plan_y+plan_depth/2:.1f}" x2="{shoulder_x+18:.1f}" y2="{plan_y+plan_depth/2:.1f}" class="datum"/>
+      <line x1="{shoulder_x:.1f}" y1="{plan_y+plan_depth/2-18:.1f}" x2="{shoulder_x:.1f}" y2="{plan_y+plan_depth/2+18:.1f}" class="datum"/>
+      <text x="730" y="1035">GUARD INSIDE DEPTH: 400 mm provisional</text>
+      <text x="730" y="1067">CATCH INSIDE PLAN: 820 x 320 mm</text>
+      <text x="730" y="1117">Front panel shown as tool-removable only.</text>
+      <text x="730" y="1145">No door interlock is selected or credited.</text>
+      <text x="50" y="1285" class="warning">PRELIMINARY - NOT A FABRICATION DRAWING OR PERMISSION TO ENERGIZE</text>
+    </svg>'''
+    (SAFETY_ENCLOSURE / "HR-V0_guard_receiver_layout.svg").write_text(svg, encoding="utf-8")
+
+    cable_svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="760" viewBox="0 0 1100 760">
+      <style>
+        text { font: 16px system-ui, sans-serif; fill: #082554; }
+        .title { font-size: 28px; font-weight: 700; }
+        .warning { font-size: 18px; font-weight: 700; fill: #8a4b00; }
+        .link { stroke: #082554; stroke-width: 42; stroke-linecap: round; }
+        .joint { fill: #d9efff; stroke: #082554; stroke-width: 4; }
+        .route { fill: none; stroke: #b17700; stroke-width: 8; stroke-linecap: round; stroke-dasharray: 12 8; }
+        .zone { fill: none; stroke: #0b72b9; stroke-width: 3; stroke-dasharray: 8 6; }
+      </style>
+      <text x="45" y="45" class="title">HR-V0 CABLE-ROUTE DATUM STUDY</text>
+      <text x="45" y="78" class="warning">CENTERLINE SPACE ONLY - NO CABLE, CLAMP, LOOP OR BEND RADIUS IS RELEASED</text>
+      <line x1="170" y1="330" x2="500" y2="330" class="link"/><line x1="500" y1="330" x2="830" y2="330" class="link"/>
+      <circle cx="170" cy="330" r="34" class="joint"/><circle cx="500" cy="330" r="34" class="joint"/><circle cx="830" cy="330" r="34" class="joint"/>
+      <circle cx="170" cy="330" r="100" class="zone"/><circle cx="500" cy="330" r="100" class="zone"/>
+      <path d="M70,460 C95,390 100,255 170,245 C240,235 275,260 335,270 L430,270 C470,270 480,245 500,245 C570,235 605,260 665,270 L780,270 C820,270 840,250 900,250" class="route"/>
+      <text x="55" y="510">CR-001 fixed entry / J1 loop: DESIGN REQUIRED</text>
+      <text x="235" y="220">CR-002 upper-link neutral zone</text>
+      <text x="420" y="510">CR-003 J2 service loop: DESIGN REQUIRED</text>
+      <text x="610" y="220">CR-004 forearm neutral zone</text>
+      <text x="790" y="510">CR-005 gripper pigtail: DESIGN REQUIRED</text>
+      <text x="45" y="560">Blue circles reserve the 50 mm hard-stop contact-radius study.</text>
+      <text x="45" y="590">Cable must not enter any final stop, pinch, connector or guard-contact path.</text>
+      <text x="45" y="620">Exact bundle, conductor/connector, bend radius, torsion and tension remain SELECTION REQUIRED.</text>
+      <text x="45" y="650">Clamp spacing, flex life, abrasion protection and moving mass also remain SELECTION REQUIRED.</text>
+      <text x="45" y="700" class="warning">VERIFY ALL COMBINED JOINT POSES ON THE UNPOWERED ARTICLE BEFORE ANY ACTUATOR CONNECTION</text>
+      <text x="45" y="736" class="warning">PRELIMINARY - NOT A HARNESS DRAWING OR PERMISSION TO ENERGIZE</text>
+    </svg>'''
+    (SAFETY_ENCLOSURE / "HR-V0_cable_route_datums.svg").write_text(cable_svg, encoding="utf-8")
+
+
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -697,6 +871,7 @@ def main():
     DRAWINGS.mkdir(parents=True, exist_ok=True)
     FIT_COUPONS.mkdir(parents=True, exist_ok=True)
     HARD_STOPS.mkdir(parents=True, exist_ok=True)
+    SAFETY_ENCLOSURE.mkdir(parents=True, exist_ok=True)
     for obsolete_name in ("MV0-001_link.svg", "MV0-002_link.svg", "MV0-003_adapter.svg"):
         (DRAWINGS / obsolete_name).unlink(missing_ok=True)
     upper = upper_link_plate()
@@ -731,6 +906,7 @@ def main():
         writer.writeheader()
         writer.writerows(coupon_rows)
     write_hard_stop_layout()
+    write_guard_receiver_cable_study()
     manifest = {
         "revision": REVISION,
         "units": "mm",
@@ -754,6 +930,24 @@ def main():
             "j2_internal_mechanical_datum_deg": list(J2_INTERNAL_MECHANICAL_DATUM_DEG),
             "adapter_mm": [ADAPTER_X_MM, ADAPTER_Z_MM, ADAPTER_T_MM],
             "anchor_mm": [ANCHOR_X_MM, ANCHOR_Z_MM, ANCHOR_T_MM],
+            "guard_space_reservation_mm": {
+                "radial_envelope": GUARD_RADIAL_ENVELOPE_MM,
+                "internal_width": 2.0 * GUARD_RADIAL_ENVELOPE_MM,
+                "internal_depth": GUARD_INTERNAL_DEPTH_MM,
+                "internal_height": SHOULDER_AXIS_HEIGHT_MM + GUARD_RADIAL_ENVELOPE_MM,
+                "candidate_panel_thickness": GUARD_PANEL_THICKNESS_MM,
+            },
+            "guard_provisional_allowances_mm": {
+                "stopping_travel": PROVISIONAL_STOPPING_TRAVEL_MM,
+                "guard_clearance": PROVISIONAL_GUARD_CLEARANCE_MM,
+                "envelope_tolerance": PROVISIONAL_ENVELOPE_TOLERANCE_MM,
+            },
+            "catch_tray_space_reservation_mm": [
+                CATCH_TRAY_X_MM,
+                CATCH_TRAY_Y_MM,
+                CATCH_TRAY_WALL_HEIGHT_MM,
+                CATCH_TRAY_BOTTOM_THICKNESS_MM,
+            ],
         },
         "release_gates": [
             "Execute INSPECT-MECH-003 with MV0-FC01 against received FR13-H101K and FR13-S102K parts",
@@ -764,6 +958,7 @@ def main():
             "Resolve T-slot fasteners, torque, anti-rotation and bracket arrangement",
             "Survey actual bench and select anchor fasteners from substrate evidence",
             "Complete structural, hard-stop, cable, guard and proof-test release",
+            "Execute INSPECT-GUARD-001 INSPECT-CABLE-001 and TEST-DROP-001 on the frozen unpowered article before actuator connection",
         ],
     }
     (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")

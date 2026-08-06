@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1320" viewBox="0 0 1100 1320">
+      <style>
+        text { font: 16px system-ui, sans-serif; fill: #082554; }
+        .title { font-size: 28px; font-weight: 700; }
+        .subtitle { font-size: 21px; font-weight: 700; }
+        .warning { font-size: 18px; font-weight: 700; fill: #8a4b00; }
+        .guard { fill: #d9efff; fill-opacity: 0.20; stroke: #082554; stroke-width: 4; }
+        .reach { fill: none; stroke: #0b72b9; stroke-width: 3; stroke-dasharray: 10 7; }
+        .envelope { fill: #ffbf2f; fill-opacity: 0.10; stroke: #b17700; stroke-width: 4; }
+        .tray { fill: #ffdf83; stroke: #8a4b00; stroke-width: 3; }
+        .datum { stroke: #082554; stroke-width: 3; }
+      </style>
+      <text x="50" y="45" class="title">HR-V0 GUARD / RECEIVER PRELIMINARY SPACE STUDY</text>
+      <text x="50" y="78" class="warning">NO PANEL, FRAME, FASTENER, RECEIVER OR CLEARANCE IS RELEASED</text>
+      <text x="50" y="108">The orange envelope includes provisional 25 mm stopping, 25 mm clearance and 5 mm tolerance reservations.</text>
+      <text x="50" y="134">Measured stopping/drop/sweep evidence governs. Increase the enclosure if any released case exceeds this space claim.</text>
+      <text x="100" y="180" class="subtitle">FRONT VIEW - SHOULDER-CENTERED</text>
+      <rect x="100.0" y="156.7" width="600.0" height="633.3" class="guard"/>
+      <circle cx="400.0" cy="456.7" r="300.0" class="envelope"/>
+      <circle cx="400.0" cy="456.7" r="240.0" class="reach"/>
+      <line x1="382.0" y1="456.7" x2="418.0" y2="456.7" class="datum"/>
+      <line x1="400.0" y1="438.7" x2="400.0" y2="474.7" class="datum"/>
+      <rect x="126.7" y="756.7" width="546.7" height="33.3" class="tray"/>
+      <text x="730" y="260">BLUE DASH: 360 mm object-center reach ceiling</text>
+      <text x="730" y="292">ORANGE: 450 mm preliminary radial envelope</text>
+      <text x="730" y="324">GUARD INSIDE: 900 W x 950 H mm</text>
+      <text x="730" y="356">SHOULDER DATUM: 500 mm above bench</text>
+      <text x="730" y="388">CATCH SPACE: 820 x 320 x 50 mm</text>
+      <text x="730" y="438" class="warning">25 mm stopping travel is NOT measured.</text>
+      <text x="730" y="470" class="warning">It is not an acceptance limit.</text>
+      <text x="730" y="520">Final guard requires complete 3D sweep,</text>
+      <text x="730" y="548">access probe, impact and retention proof,</text>
+      <text x="730" y="576">panel support, service isolation and drop tests.</text>
+      <text x="100" y="900" class="subtitle">PLAN VIEW - PRELIMINARY INTERNAL DEPTH</text>
+      <rect x="100.0" y="1010.0" width="600.0" height="266.7" class="guard"/>
+      <rect x="126.7" y="1036.7" width="546.7" height="213.3" class="tray"/>
+      <line x1="382.0" y1="1143.3" x2="418.0" y2="1143.3" class="datum"/>
+      <line x1="400.0" y1="1125.3" x2="400.0" y2="1161.3" class="datum"/>
+      <text x="730" y="1035">GUARD INSIDE DEPTH: 400 mm provisional</text>
+      <text x="730" y="1067">CATCH INSIDE PLAN: 820 x 320 mm</text>
+      <text x="730" y="1117">Front panel shown as tool-removable only.</text>
+      <text x="730" y="1145">No door interlock is selected or credited.</text>
+      <text x="50" y="1285" class="warning">PRELIMINARY - NOT A FABRICATION DRAWING OR PERMISSION TO ENERGIZE</text>
+    </svg>

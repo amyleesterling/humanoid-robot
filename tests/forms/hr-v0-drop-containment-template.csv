@@ -1,0 +1,7 @@
+record_id,date,inspector,repo_commit,cad_revision,guard_revision,catch_revision,case_id,release_cause,pose_id,j1_deg,j2_internal_deg,payload_id,payload_mass_g,object_max_dimension_mm,release_height_mm,trial_count,contained_trials,max_rebound_height_mm,max_slide_distance_mm,escape_or_access_result,damage_result,video_reference,photo_reference,notes,disposition
+NOT-EXECUTED,,,,HR-V0-MECH-R0.1-PRELIMINARY,,,DR-001,COMMANDED_OPEN,PICKUP_POSE,,,,,,,,,,,,,,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,HR-V0-MECH-R0.1-PRELIMINARY,,,DR-002,COMMANDED_OPEN,PLACE_POSE,,,,,,,,,,,,,,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,HR-V0-MECH-R0.1-PRELIMINARY,,,DR-003,COMMANDED_OPEN,MAX_RELEASE_HEIGHT,,,,,,,,,,,,,,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,HR-V0-MECH-R0.1-PRELIMINARY,,,DR-004,ACTUATOR_POWER_LOSS,PICKUP_POSE,,,,,,,,,,,,,,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,HR-V0-MECH-R0.1-PRELIMINARY,,,DR-005,ACTUATOR_POWER_LOSS,PLACE_POSE,,,,,,,,,,,,,,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,HR-V0-MECH-R0.1-PRELIMINARY,,,DR-006,GRIPPER_FAULT,MAX_RELEASE_HEIGHT,,,,,,,,,,,,,,,TEMPLATE ROW,NOT EXECUTED

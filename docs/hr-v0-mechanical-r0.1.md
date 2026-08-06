@@ -51,8 +51,8 @@ Using the manufacturer-published 80/20 40-4040 inertia of 13.787 cm⁴ and an al
 3. Receive and identify every kit component under `INSPECT-MECH-005`, then select exact M2.5/M8 fasteners, engagement, torque, locking and inspection marks. The expected kit inventory does not prove screw grade, allocation, preload or structural capacity.
 4. The P0.1 hard-stop study defines the J1/J2 convention, four candidate 5-degree-offset datums, 50 mm contact-radius study, allocated-mass energy cases and validation route. Release the actual backed-up bumper/catch, brackets, fasteners, tolerance stack and guarded impact evidence before motion.
 5. Receive and allocate the proposed RM-X52 gripper mechanism kit, execute `INSPECT-MECH-008` and `INSPECT-GRIP-001`, then release its local guard, compliant pads, exact fasteners, detachment retention and force/current characterization.
-6. Add cable paths, bend-radius checks, strain relief and swept-volume collision evidence.
-7. Design the fixed polycarbonate guard and receiver fixture from the measured stop trajectory.
+6. R25 adds five preliminary cable zones and complete-range records. Freeze exact cable/connector/clamp parts, bend/twist/tension limits, strain relief and full 3D articulation evidence under `INSPECT-CABLE-001`.
+7. R25 reserves a preliminary 900 x 400 x 950 mm internal guard and 820 x 320 x 50 mm catch space. The 25 mm stopping/clearance and 6 mm panel values are not released; complete measured sweep/stop/drop evidence, exact panels/frame/fasteners and `INSPECT-GUARD-001`/`TEST-DROP-001` remain mandatory. See `docs/hr-v0-guard-receiver-cable-p0.1.md`.
 8. Survey the actual bench substrate and select anchor hardware using pull-out/shear and edge-distance evidence.
 9. Correlate CAD masses and geometry with the first article, then obtain qualified mechanical review.
 

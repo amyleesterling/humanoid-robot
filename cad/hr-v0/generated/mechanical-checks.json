@@ -89,6 +89,18 @@
         "all moving cable, connectors, guides and strain relief"
       ],
       "screen_result": "565.4 g KNOWN SUBTOTAL; 184.6 g UNRESOLVED HEADROOM - MASS CLOSURE OPEN"
+    },
+    "guard_receiver": {
+      "maximum_object_center_reach_mm": 360.0,
+      "maximum_object_half_extent_mm": 35.0,
+      "stopping_travel_space_reservation_mm_not_measured": 25.0,
+      "guard_clearance_space_reservation_mm_not_selected": 25.0,
+      "envelope_tolerance_space_reservation_mm_not_closed": 5.0,
+      "derived_radial_envelope_mm": 450.0,
+      "preliminary_internal_width_mm": 900.0,
+      "preliminary_internal_depth_mm": 400.0,
+      "preliminary_internal_height_mm": 950.0,
+      "screen_result": "SPACE RESERVATION ONLY - STOPPING CLEARANCE PANEL RECEIVER AND HARNESS RELEASE OPEN"
     }
   },
   "not_credited_or_unresolved": [
@@ -105,6 +117,8 @@
     "Joint alignment, combined load, shock and fatigue",
     "Bench substrate, anchor part, edge distance, pull-out, shear and site permission",
     "Guard and receiver-fixture impact/retention",
+    "Complete measured 3D sweep and fault-specific stopping/drop envelope",
+    "Exact guard panels frame fasteners access probe service isolation catch and moving harness",
     "Correlation to measured first article and independent mechanical review"
   ],
   "calculation_result": "GEOMETRY SCREEN PASSES; RELEASE REMAINS OPEN"

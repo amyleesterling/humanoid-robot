@@ -11,7 +11,7 @@ These questions intentionally remain open. They must be answered with evidence, 
 | G-27 | Full-body mass feasibility | supplier and measured part-level ledger closing all subsystem allocations, center of mass, inertia, wiring, fasteners, covers, guards, battery/conversion, and contingency | mechanical/systems | actuator procurement |
 | G-03 | Exact safety-relay and contactor wiring | manufacturer manuals, reviewed ECAD, dropout test plan | electrical safety reviewer | panel wiring |
 | G-04 | Fuse types and conductor sizing | measured/inferred fault current, connector ratings, coordination review | electrical | energization |
-| G-05 | Guard material/thickness and clearances | swept-volume CAD, stopping-travel test, impact assessment | mechanical safety | integrated motion |
+| G-05 | Guard material/thickness and clearances | R25 reserves a 900 x 400 x 950 mm internal enclosure and catch space but treats 25 mm stopping/clearance and 6 mm panel geometry as provisional; close with complete 3D sweep, measured stopping/drop envelope, exact material/frame/fasteners, access probe, impact/retention and service-isolation evidence | mechanical safety | before actuator connection and integrated motion |
 | G-06 | Final software current/temperature limits | T3 characterization data | controls | payload motion |
 | G-07 | Receiver fixture sensing method | fault analysis and validation data | systems | handoff test |
 | G-08 | Any adult handoff | completed fixture endurance, contact-force assessment, new risk review | independent reviewer | human exposure |

@@ -58,6 +58,24 @@
       100.0,
       80.0,
       6.35
+    ],
+    "guard_space_reservation_mm": {
+      "radial_envelope": 450.0,
+      "internal_width": 900.0,
+      "internal_depth": 400.0,
+      "internal_height": 950.0,
+      "candidate_panel_thickness": 6.0
+    },
+    "guard_provisional_allowances_mm": {
+      "stopping_travel": 25.0,
+      "guard_clearance": 25.0,
+      "envelope_tolerance": 5.0
+    },
+    "catch_tray_space_reservation_mm": [
+      820.0,
+      320.0,
+      50.0,
+      3.0
     ]
   },
   "release_gates": [
@@ -68,6 +86,7 @@
     "Release hard-stop bracket, bumper, load path, tolerance stack and impact validation before actuator motion",
     "Resolve T-slot fasteners, torque, anti-rotation and bracket arrangement",
     "Survey actual bench and select anchor fasteners from substrate evidence",
-    "Complete structural, hard-stop, cable, guard and proof-test release"
+    "Complete structural, hard-stop, cable, guard and proof-test release",
+    "Execute INSPECT-GUARD-001 INSPECT-CABLE-001 and TEST-DROP-001 on the frozen unpowered article before actuator connection"
   ]
 }
