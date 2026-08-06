@@ -6,6 +6,10 @@ Retrieved or rechecked 2026-08-05 through 2026-08-06. Manufacturer and standards
 - ROBOTIS XH540-W270 e-Manual; rechecked 2026-08-06: 9.9 N m at 12 V/4.9 A, 11.7 N m at 14.8 V/5.9 A, 39/46 rpm, 10.0-14.8 V input, 165 g, 15 arcmin backlash, and 40 N radial load at 10 mm: https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/
 - ROBOTIS XC430-W240 e-Manual; rechecked 2026-08-06: https://emanual.robotis.com/docs/en/dxl/x/xc430-w240/
 - ROBOTIS OpenMANIPULATOR-X specification and open hardware basis: https://emanual.robotis.com/docs/en/platform/openmanipulator_x/specification/
+- ROBOTIS XM540-W270-T manufacturer CAD and compatible-frame downloads for XMHD-540, FR13-H101K, FR13-S101K, and FR13-S102K; retrieved 2026-08-06 with resolved URLs and SHA-256 values in `cad/vendor/robotis/vendor-manifest.csv`. The current e-Manual's S101 STEP link mapping discrepancy is recorded rather than silently corrected.
+- 80/20 40-4040 40 mm T-slot profile; rechecked 2026-08-06: 6063-T6 profile and 13.787 cm^4 X/Y moment of inertia: https://8020.net/40-4040.html
+- 80/20 40-series 40-4334 wide gusset and 40-4332 two-hole gusset candidate interfaces; rechecked 2026-08-06: https://8020.net/40-4334.html and https://8020.net/fasteningmethods/externalfasteners/bracketsgussetscorners/standardgussetedbrackets/2holegussetedinsidecornerbracket/40-series.html
+- SendCutSend 6061-T6 stock/process and accepted file formats; rechecked 2026-08-06: https://sendcutsend.com/materials/6061-aluminum/ and https://sendcutsend.com/faq/what-file-formats-do-you-accept/
 - ROBOTIS U2D2 interface and pin names: https://docs.robotis.com/docs/parts/interface/u2d2/
 - ROBOTIS U2D2 Power Hub pinout, 3.5-24.0 V range, 10.0 A maximum, and wire-gauge information: https://docs.robotis.com/docs/parts/interface/u2d2_power_hub/
 - ROBOTIS DYNAMIXEL SDK device setup and daisy-chain context: https://docs.robotis.com/docs/software/dynamixel_sdk/device_setup/

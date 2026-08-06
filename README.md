@@ -31,6 +31,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Walking-system specification](docs/walking-system.md)
 - [Walking verification matrix](docs/walking-verification.md)
 - [Mechanical concept and load model](docs/mechanical.md)
+- [HR-V0 native CAD and quote geometry](cad/hr-v0/README.md)
+- [HR-V0 Mechanical R0.1 preliminary baseline](docs/hr-v0-mechanical-r0.1.md)
 - [Electrical and safety architecture](docs/electrical.md)
 - [Safety-function requirements](docs/safety-functions.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
@@ -52,7 +54,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Proposed bill of materials](bom/bom.csv)
 - [Risk register](safety/risk-register.csv)
 
-Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements. Run `python tools/check_energization_gates.py --through-stage E2 --require-ready` before claiming readiness for control-only first energization; it must remain nonzero until every applicable gate is evidenced and closed.
+Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements. Run `python tools/check_hr_v0_cad.py` after regenerating mechanical artifacts to verify part sets, readable warnings, vendor hashes, assembly exports, and the deliberately open calculation status. Run `python tools/check_energization_gates.py --through-stage E2 --require-ready` before claiming readiness for control-only first energization; it must remain nonzero until every applicable gate is evidenced and closed.
 
 ## Review history
 

@@ -1,0 +1,29 @@
+{
+  "revision": "HR-V0-MECH-R0.1-PRELIMINARY",
+  "units": "mm",
+  "warning": "PRELIMINARY\u2014NOT RELEASED FOR FABRICATION OR ENERGIZATION",
+  "controlled_parameters": {
+    "link_centers_mm": 160.0,
+    "link_width_mm": 44.0,
+    "link_thickness_mm": 4.75,
+    "robotis_frame_pcd_mm": 22.0,
+    "candidate_frame_hole_mm": 2.7,
+    "adapter_mm": [
+      90.0,
+      110.0,
+      6.35
+    ],
+    "anchor_mm": [
+      100.0,
+      80.0,
+      6.35
+    ]
+  },
+  "release_gates": [
+    "Overlay DXF against physical FR13-H101K and FR13-S102K fit-check coupons",
+    "Resolve M2.5 fastener grade, engagement, torque and retention",
+    "Resolve T-slot fasteners, torque, anti-rotation and bracket arrangement",
+    "Survey actual bench and select anchor fasteners from substrate evidence",
+    "Complete structural, hard-stop, cable, guard and proof-test release"
+  ]
+}

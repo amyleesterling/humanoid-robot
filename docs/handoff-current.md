@@ -3,6 +3,7 @@
 Handoff date: 2026-08-06  
 Package baseline: **HR-30-SYS-R0.2**  
 Electrical package: **Project Button Electrical V2.1**  
+Mechanical package: **HR-V0-MECH-R0.1-PRELIMINARY quote geometry**
 Status: **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 
 ## Authority and presentation
@@ -36,7 +37,7 @@ Fifteen review/control rounds are complete and recorded in `docs/review-ledger.m
 
 ## Principal unresolved engineering blockers
 
-1. No released, dimensioned, load-path mechanical CAD or manufacturing drawing package exists for HR-V0 or HR-30.
+1. HR-V0 now has native parametric quote geometry, four custom-part DXF/STEP/STL sets, readable drawings, vendor CAD provenance, a GLB/STEP assembly-space model, and preliminary plate/column screens. It is not a released manufacturing package: frame fit, fasteners, hard stops, cable paths, gripper, guard, bench anchoring, mass closure, proof tests, and independent mechanical review remain open. HR-30 has no released mechanical CAD.
 2. Joint continuous/cyclic/impact/thermal performance, drivetrain efficiency, backlash, and structural margins are not physically validated.
 3. Safe actuator-power-loss behavior remains unresolved; a walking robot may collapse when hazardous drive energy is removed.
 4. Mass, center of mass, inertia, wiring mass, and reserve are not closed against released CAD and measured components.
@@ -67,4 +68,4 @@ No reviewer should interpret clean ERC, traceability, simulation, website public
 
 ## Next controlled action
 
-Merge and post-merge validate the controlled review branch, then convert the accepted R11/R12 findings into owned closure records. Priority remains buildable HR-V0 CAD, exact electrical selections and protection coordination, corrected watchdog restart hardware, safety-function PLr/SIL analysis, full mass/inertia and six-axis drivetrain closure, safe power-loss behavior, and physical release-gate tests. Do not issue a build or energization release until those gates close.
+Merge and post-merge validate the controlled review branch, then complete the HR-V0 physical FR13 fit coupon and the missing hard-stop, cable, gripper, guard, fastener, bench-anchor, mass, and proof-test design. In parallel, freeze exact electrical selections and protection coordination, correct the watchdog restart hardware, perform safety-function PLr/SIL analysis, and implement the control firmware. Do not issue a build or energization release until the applicable gate records close.

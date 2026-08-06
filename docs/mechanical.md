@@ -2,7 +2,7 @@
 
 **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 
-Status: correction-stage feasibility model. CAD, controlled drawings, mass closure, and mechanical release are not present. See [R11 engineering calculations](r11-engineering-calculations.md) for the controlled arithmetic and source register.
+Status: correction-stage feasibility model. Native HR-V0 R0.1 quote geometry, four custom-part neutral files, preliminary mass properties, and reproducible structural screens now exist; fit coupons, released drawings, complete mass closure, hard stops, guards, cable routing, gripper mechanics, bench anchors, proof tests, and mechanical release are not complete. See [the R0.1 mechanical baseline](hr-v0-mechanical-r0.1.md) and [R11 engineering calculations](r11-engineering-calculations.md).
 
 ## Geometry
 
@@ -16,7 +16,7 @@ The HR-V0 mechanism is a planar two-link arm mounted to a rigid vertical bench c
 - Mechanical hard stops shall sit at least 5° beyond software limits and before any cable, connector, or shield contact.
 - Each rotating joint requires dual-supported output geometry. Actuator output bearings alone shall not carry cantilevered link loads unless the actuator manufacturer explicitly approves the final force, moment, duty, shock, and life case.
 
-Links are initially specified as 6061-T6 aluminum side plates with transverse spacers. Polymer parts may be used for covers, cable guides, and gripper fingers, but not as the sole primary shoulder load path in the first build release.
+Links are initially specified as flat 4.75 mm nominal 6061-T6 aluminum plates using ROBOTIS FR13-H101K output frames and FR13-S102K actuator-body frames. Polymer parts may be used for fit coupons, covers, cable guides, and gripper fingers, but not as the sole primary shoulder load path in the first build release.
 
 ## Mass budget
 

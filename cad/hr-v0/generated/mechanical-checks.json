@@ -1,0 +1,36 @@
+{
+  "status": "PRELIMINARY\u2014NOT A STRUCTURAL OR FABRICATION RELEASE",
+  "inputs": {
+    "proof_moment_Nmm": 11490.0,
+    "basis": "3.83 N\u00b7m intermittent shoulder screen times project 3.0 proof factor",
+    "6061_yield_screen_MPa": 240.0,
+    "link_mm": [
+      160.0,
+      44.0,
+      4.75
+    ],
+    "candidate_hole_d_mm": 2.7,
+    "column_I_mm4": 137870.0
+  },
+  "screens": {
+    "link_gross_I_mm4": 33718.666666666664,
+    "link_net_I_mm4_conservative_two_holes": 22765.34716666667,
+    "link_net_bending_stress_MPa": 9.74098916113608,
+    "link_yield_ratio_on_screen": 24.63815491731941,
+    "link_cantilever_deflection_mm": 0.04214239908398049,
+    "conservative_two_bolt_force_each_N": 522.2727272727273,
+    "candidate_plate_bearing_stress_MPa": 43.98086124401914,
+    "column_tip_deflection_pure_moment_mm": 0.15097713346851635,
+    "minimum_anchor_couple_force_each_N": 27.357142857142858
+  },
+  "not_credited_or_unresolved": [
+    "Actual alloy/temper certificate, thickness tolerance, flatness and finish",
+    "ROBOTIS frame material, measured mass, permissible load and fatigue behavior",
+    "Exact M2.5 and M8 fastener part, grade, engagement, preload, torque and locking",
+    "Joint backlash, alignment, combined load, shock, fatigue and hard-stop impact",
+    "Bench substrate, anchor part, edge distance, pull-out, shear and site permission",
+    "Guard and receiver-fixture impact/retention",
+    "Correlation to measured first article and independent mechanical review"
+  ],
+  "calculation_result": "GEOMETRY SCREEN PASSES; RELEASE REMAINS OPEN"
+}

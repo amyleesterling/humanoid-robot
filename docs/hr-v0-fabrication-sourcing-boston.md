@@ -1,100 +1,66 @@
 # HR-V0 Boston Fabrication and Custom-Metal Sourcing
 
-Status: **SOURCING RESEARCH — NOT A RELEASED MANUFACTURING PACKAGE**
+Status: **VERIFIED SOURCING RESEARCH—NOT A RELEASED MANUFACTURING PACKAGE**
 
 Research date: 2026-08-06
-
 Region: Boston, Massachusetts, USA
 
-## Recommended path
+## Recommendation
 
-Design HR-V0 so that most custom structure is two-dimensional cut or simple bent sheet, while bearings, shafts, spacers, standoffs, fasteners, and actuator frames are purchased standard parts. Reserve precision milling or turning for the smallest possible set of supported joint hubs and shafts.
+Make the first HR-V0 structure from flat 4.75 mm and 6.35 mm 6061-T6 plates, catalog ROBOTIS frames, and catalog 80/20 brackets. Do not weld or bend the structural 6061 parts. Quote identical released geometry at SendCutSend and Xometry, then use a local shop for fit-checking, inspection, deburr, or a genuinely three-dimensional operation only when needed.
 
-This route best matches a light-duty robot without treating a low payload as permission to use unverified structure. Every load-bearing part still needs a released drawing, material/temper, tolerance, calculation, inspection method, and proof test.
+This approach does **not** depend on the local library having a metal-capable CNC machine.
 
-### Manufacturing split
+## Verified options
 
-| Part class | Preferred process | Release file and notes |
+| Route | Verified capability and access | HR-V0 use |
 |---|---|---|
-| Base, upright cheeks, link side plates, guards, adapter plates | Laser or waterjet cut sheet; bend only where useful | DXF plus dimensioned PDF; specify alloy/temper, thickness, grain-sensitive bend direction where applicable, deburr/edge-break, and finish |
-| Simple bent brackets and trays | Brake-formed 5052-H32 aluminum | Flat DXF and controlled formed STEP/drawing; supplier confirms bend radius and deduction |
-| Flat stiff plates without bends | 6061-T6 aluminum where calculation supports it | DXF and drawing; do not substitute material or thickness without engineering disposition |
-| Shoulder/elbow bearing hubs or precision spacers | CNC mill/lathe only if standard hardware cannot close the design | STEP plus dimensioned drawing with fits, datums, surface finish, threads, inspection, and material |
-| Shafts, bearings, collars, spacers, standoffs, fasteners | Off-the-shelf catalog parts | Exact manufacturer part number and controlled BOM entry |
-| Covers, cable guides, soft gripper fingers, drill/assembly fixtures | 3D print | Native CAD/STL, material, orientation, settings, and inspection; not a primary load path unless separately justified |
+| [Boston Public Library KBLIC](https://www.bpl.org/kblic/) | Current official information describes STL/PLA 3D printing, with a 146 mm cube limit; the service is currently marked temporarily unavailable. No metal CNC capability is documented. | Not a metal route. Recheck the exact neighborhood library/makerspace before assuming otherwise. |
+| [FabVille, Somerville](https://fabville.org/machines) | ShopBot accepts DXF and related 2D formats, but its official material list limits the machine to wood, cardboard, acrylic and other organic materials. Community open shop is free. | Polymer guards, templates and fixtures; not 6061 structure. |
+| [Artisans Asylum, Allston](https://www.artisansasylum.com/shops/machine) | Official precision machine shop lists manual/CNC mills and aluminum capability. It is self-service: orientation and tool-specific testing are required. [Membership/day-pass terms](https://www.artisansasylum.com/memberships) currently list day passes and monthly access. | Best nearby hands-on option for supervised drilling, countersink, fit correction, metrology and one-off adapters after checkout or private instruction. |
+| [Lowell Makes](https://lowellmakes.com/facilities/machine-shop/) | Official machine-shop list includes Tormach CNC, knee mill and lathe; each requires checkout. [Membership](https://lowellmakes.com/membership/) is adult-only with onboarding. | Lower-cost local self-fabrication fallback if travel is practical. |
+| [Mill Forge, Norwood](https://millforge.org/facilities/) | Official facilities list includes manual metal cutting/bending/rolling and welding. Its published CNC equipment does not establish precision aluminum milling. Training/certification applies. | Thin guards/enclosures and general assembly, not the baseline precision link route. |
+| [SendCutSend](https://sendcutsend.com/materials/6061-aluminum/) | Official 6061-T6 stock list includes 0.187 in (about 4.75 mm) and 0.250 in (6.35 mm). It accepts [DXF, STEP and other listed formats](https://sendcutsend.com/faq/what-file-formats-do-you-accept/) and publishes typical 2–4 day production before shipping. Its 6061 page does not list bending, so none is assumed. | Primary source for flat link, adapter and anchor plates. Capture the actual quote and DFM result before purchase. |
+| [Xometry](https://www.xometry.com/capabilities/sheet-cutting/metal-laser-cutting/) | Official sheet-cutting service accepts 3D CAD and DXF/drawings; published 6061-T6 stock spans the project thicknesses. [CNC service](https://www.xometry.com/capabilities/cnc-machining-service/precision-cnc-machining/) supports small-batch 6061 work. | Comparison quote for flat plates and preferred fallback for pockets, bearing seats or other 3D features. |
+| [Protolabs](https://www.protolabs.com/services/cnc-machining/cnc-milling/design-guidelines/) | Official CNC guidance supports 6061 and standard neutral CAD formats. Its [formed-sheet guidance](https://www.protolabs.com/services/sheet-metal-fabrication/forming/) limits published formed 6061-T6 thickness to 0.134 in and requires manual review. | Independent CNC/DFM quote, not the 4.75 mm bent-6061 route. |
 
-Plasma cutting is useful for prototypes and thicker steel but generally leaves a wider kerf and rougher edge than laser or waterjet. Do not assign bearing fits, precision datums, or small critical holes directly to a plasma-cut edge without a documented secondary machining operation.
+Current prices are not frozen engineering inputs; each depends on geometry, quantity, tolerance, finish, inspection and lead time.
 
-## Boston-area hands-on options
+## Library/makerspace capability checklist
 
-### 1. Artisans Asylum — Allston
+If the user’s local library is different from KBLIC, record all of these before assigning a part:
 
-Artisans Asylum is the strongest local candidate because its official shop list includes machine, metal, CNC plasma, electronics/robotics, digital fabrication, and finishing facilities. Its CNC plasma shop lists a 4 ft × 8 ft Torchmate system for steel, aluminum, and stainless, and says members and day-pass users must complete tool testing. Day passes, classes, private lessons, and memberships are offered.
+- exact machine make/model, work envelope and operating status;
+- written approval for 6061 aluminum at 4.75 or 6.35 mm;
+- spindle, tooling, workholding, coolant/chip-control and stock rules;
+- supported CAM workflow and whether staff accept STEP/DXF or require staff-generated CAM;
+- required class, certification, supervision, reservation duration, cost and residency/card rules;
+- tolerance staff will accept for the actual drawing and available inspection instruments; and
+- permission for outside stock, cutting fluid, reaming, tapping and repeat setups.
 
-- Location: 96 Holton Street, Allston, MA 02134
-- Contact: front-desk@artisansasylum.com; (617) 800-9010
-- Verify before relying on it: current mill/lathe availability and certification, aluminum thickness/grade rules, minimum feature guidance, whether member-supplied stock is allowed, metrology access, and whether a qualified mentor can review bearing/shaft work.
-- Official sources: [Artisans Asylum](https://www.artisansasylum.com/home), [CNC plasma shop](https://www.artisansasylum.com/shops/cnc-plasma), and [tool testing](https://www.artisansasylum.com/tool-testing-safety-training).
+Until this evidence exists, use a library router only for polymer fit coupons, fixtures and guard templates.
 
-### 2. Mill Forge Makerspace — Norwood
+## Quote package and first-article evidence
 
-Mill Forge describes a roughly 6,000 sq ft facility with CNC/3D, electronics, metalwork/welding, laser, and router capability, with training and 24/7 access for certified members. It is a credible secondary option, especially for prototyping and general metal fabrication.
+Every request for quote needs:
 
-- Location: 61 Endicott Street, Building 46, Norwood, MA 02062
-- Contact: info@millforge.org; (781) 801-1818
-- Verify before relying on it: exact CNC and laser makes/models, whether their laser is metal-capable, metal-milling capability, allowed alloys/thicknesses, tolerance and inspection tools, certification schedule, and project/storage fees.
-- Official sources: [Mill Forge](https://millforge.org/) and [contact/FAQ](https://millforge.org/contact/).
+1. unique part number, revision, units, quantity and preliminary status;
+2. STEP and DXF generated from the same native source with recorded checksums;
+3. controlled drawing specifying 6061-T6, thickness, holes, datums/tolerances, deburr and edge break;
+4. explicit **NO WELDING** and **NO BENDS** for HR-V0 R0.1;
+5. any thread, countersink or insert callout including depth;
+6. vendor DFM report, selected process, live lead time/price, quote expiry and material/inspection options; and
+7. first-article inspection for thickness, critical dimensions, hole location, burrs, flatness, fit and measured mass.
 
-### Library or other makerspace
+If a future bend is unavoidable, record alloy/temper, grain direction, radius, vendor bend rules and post-bend property implications. 6061-T6 is less forgiving in bending than common sheet-metal alloys; the safest V0 structure is flat plates plus bolted catalog brackets.
 
-Treat “has a CNC” as unconfirmed until the following checklist is answered. Many library CNC machines are routers limited to wood, foam, or approved plastics.
+## Immediate purchasing sequence
 
-- Machine make/model and current operating status.
-- Approved materials; specifically ask about aluminum, acetal, and fiber-reinforced plastics.
-- Work envelope, spindle power/speed, workholding, tooling, coolant/chip-control, and stock thickness limits.
-- Supported CAM workflow and file types; ask whether staff require their own CAM and whether STEP/DXF is accepted.
-- Required class, certification, supervision, reservation duration, cost, and age/residency/card rules.
-- Published accuracy is not enough: ask what tolerance staff will accept for a real part and what calipers, micrometers, height gauges, or bore gauges are available.
-- Whether outside stock, cutting fluid, drilling/reaming, thread tapping, and repeat setups are allowed.
-
-Use a library router for templates, plastics, fixtures, or noncritical prototypes unless its staff explicitly authorize metal and the released process can meet the drawing.
-
-## Online manufacturing fallbacks
-
-### SendCutSend
-
-Best fit for flat and formed sheet parts because the supplier offers online laser/waterjet cutting with services such as bending, tapping, countersinking, hardware insertion, and finishing. The project should obtain actual quotes only after the controlled DXF and drawing exist. [Official site](https://sendcutsend.com/)
-
-### Xometry
-
-Best fit for the few genuinely three-dimensional milled or turned parts. Xometry accepts CAD/drawings and offers CNC milling/turning plus sheet-metal processes and inspection options. Its published general metal machining tolerance is ±0.005 in unless otherwise specified; critical fits must therefore be explicitly called out and quoted, not assumed. [Official CNC service](https://www.xometry.com/capabilities/cnc-machining-service/) and [official aluminum fabrication service](https://www.xometry.com/capabilities/sheet-metal-fabrication/aluminum-fabrication/)
-
-These are sourcing candidates, not approved suppliers. Material certificates, inspection level, traceability, lead time, cost, and conformance must be selected per part and retained in the release evidence.
-
-## Quote package required from this project
-
-Do not send a visual mesh or website model to a fabricator as the manufacturing definition. Each custom metal part needs:
-
-1. Unique part number and revision.
-2. Native CAD plus neutral file: DXF for flat profiles and STEP for machined/formed geometry.
-3. Dimensioned drawing with datums, tolerances, threads, fits, surface/edge condition, and inspection points.
-4. Material alloy, temper, thickness, and permitted substitutions.
-5. Finish, masking, hardware insertion, and post-process requirements.
-6. Quantity, mating-part references, and revision-compatible assembly drawing.
-7. Supplier quotation, DFM exceptions, material/conformance evidence, and received-part inspection record.
-
-## Cost strategy while budget is open
-
-No dollar estimate is released before geometry exists because online prices depend strongly on envelope, thickness, quantity, tolerance, finish, bend count, and lead time. Use three live quote baskets at CAD freeze:
-
-- **Minimum viable:** deburred flat parts, standard finish, standard hardware, printed covers, no cosmetic machining.
-- **Preferred prototype:** formed trays/brackets, selected captive hardware, basic finish, and one spare of critical sheet parts.
-- **Precision fallback:** outsource only the supported joint hubs/shafts that cannot be made from catalog components.
-
-Actuators and electrical hardware are expected to dominate HR-V0 cost. Structural parts should be simplified for mass, serviceability, and repeatable inspection—not weakened to chase a target price.
-
-## Next decision
-
-After the library reports its exact equipment and rules, classify every mechanical part into one of the four process rows above. Then release geometry, request comparable quotes, and select a fabrication route using evidence rather than assuming local capability.
+1. Buy one FR13-H101K and one FR13-S102K manufacturer frame.
+2. Make a cheap polymer or low-cost aluminum PCD22 fit coupon from the generated DXF.
+3. Record physical hole/edge/fastener fit; revise CAD if needed.
+4. Complete the missing fastener, hard-stop, cable, guard and bench-anchor design.
+5. Obtain comparable SendCutSend and Xometry quotes for the **same revision**.
+6. Order only after the mechanical release review changes the files from quote geometry to a controlled first-article release.
 
 **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION.**
