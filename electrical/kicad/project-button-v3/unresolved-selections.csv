@@ -5,9 +5,9 @@ sheet,reference,status,evidence_needed
 02_estop_eligibility.kicad_sch,S0,SELECTION REQUIRED - EXACT CANDIDATE RECORDED,"Candidate is documented as 40 mm mushroom, turn/pull reset, 2NC, screw terminal and terminal cover. Freeze physical contact-block mapping from received-device bottom view and continuity test both positively opening channels."
 02_estop_eligibility.kicad_sch,S1,SELECTION REQUIRED - HUMAN-FACTORS REVIEW OPEN,"Documented candidate is black flush momentary 1NO with screw terminals. RESET is outside the swept envelope and feeds only SR1 monitored start; legend, guard, spacing, color and received terminals remain open."
 02_estop_eligibility.kicad_sch,H1,SELECTION REQUIRED,Diagnostic indicator only; no safety credit and no motion authority.
-03_arm_watchdog_eligibility.kicad_sch,KWD1,PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED,"First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit."
+03_arm_watchdog_eligibility.kicad_sch,KWD1,PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED,"First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received polarity, continuity and welded-contact tests remain open."
 03_arm_watchdog_eligibility.kicad_sch,S2,SELECTION REQUIRED - DISTINCT APPEARANCE REQUIRED,Electrical candidate only. ARM must be unmistakably different from RESET by legend/color/guard/spacing; it must actuate and release after every safety dropout. Received terminal mapping remains open.
-03_arm_watchdog_eligibility.kicad_sch,KWD2,PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED,Second independently driven watchdog relay channel; common controller/supply remain common-cause blockers.
+03_arm_watchdog_eligibility.kicad_sch,KWD2,PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED,"Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open."
 04_contactor_edm.kicad_sch,K1,PROPOSED - DC APPLICATION CONFIRMATION REQUIRED,First redundant series contactor. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.
 04_contactor_edm.kicad_sch,K2,PROPOSED - DC APPLICATION CONFIRMATION REQUIRED,Second redundant series contactor.
 04_contactor_edm.kicad_sch,FSR1,SELECTION REQUIRED,"Select from fault current, coil transient, conductor and PNOZ contact-protection limits; published maxima are not selections."
@@ -22,9 +22,11 @@ sheet,reference,status,evidence_needed
 06_branches_and_injection.kicad_sch,INJ3,DESIGN REQUIRED,Final inline injection module; no VDD conductor continues beyond the actuator connection.
 07_watchdog_control.kicad_sch,DC1,SELECTION REQUIRED,"Select an exact non-isolated converter, protection and brownout behavior. V3 models watchdog 0V as SAFETY_0V; changing isolation requires a new driver/interface design."
 07_watchdog_control.kicad_sch,ISO1,SELECTION REQUIRED,"Exact isolation/interface, edge behavior, fault response and connector remain open."
-07_watchdog_control.kicad_sch,WDCTRL1,PROPOSED - PIN/FIRMWARE RELEASE OPEN,Monotonic heartbeat monitor. Three missed 100 ms periods drop both outputs; firmware and shared failures are not safety-rated.
+07_watchdog_control.kicad_sch,WDCTRL1,PROPOSED - GPIO FROZEN; PLATFORM RELEASE OPEN,"Monotonic heartbeat monitor. Physical GPIO candidates are frozen for review; platform startup, external bias, compilation, HIL and shared failures remain open and receive no safety credit."
 07_watchdog_control.kicad_sch,Q1,SELECTION REQUIRED,"Exact transistor/driver, base/gate network, default-off bias, fault behavior and polarity with relay internal diode open."
 07_watchdog_control.kicad_sch,Q2,SELECTION REQUIRED,Independently driven duplicate channel; common-cause review open.
+07_watchdog_control.kicad_sch,IFB1,DESIGN REQUIRED,P0.3 removes the direct 24 V-to-GPIO path. Select and calculate the complete protected 24 V input/3.3 V output circuit; VO615A-3X001 is only an optocoupler screening candidate.
+07_watchdog_control.kicad_sch,IFB2,DESIGN REQUIRED,Independent duplicate diagnostic channel; exact circuit and common-cause review remain open.
 08_compute_and_control_terminals.kicad_sch,JDBG1,SELECTION REQUIRED,Tool-only interface; must not enable or bypass outputs during operation.
 08_compute_and_control_terminals.kicad_sch,XT1,SELECTION REQUIRED,"Exact terminal family, end covers, jumpers, markers, conductor range and torque open."
 09_actuator_interfaces.kicad_sch,JFRAME1,SELECTION REQUIRED,Do not connect frame or shield to 0V/PE until EMC and parallel-path review accepts the implementation.

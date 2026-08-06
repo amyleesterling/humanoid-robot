@@ -70,16 +70,16 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P0.2", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P0.3", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
     all_pins = [(sheet, comp, pin) for sheet, comp in all_components for pin in comp.pins]
 
     require(len(sheets) == 9, f"expected 9 child sheets, found {len(sheets)}", failures)
-    require(len(components) == 41, f"expected 41 unique component blocks, found {len(components)}", failures)
+    require(len(components) == 43, f"expected 43 unique component blocks, found {len(components)}", failures)
     require(len(all_components) == len(components), "duplicate component reference exists", failures)
-    require(len(all_pins) == 198, f"expected 198 modeled terminals, found {len(all_pins)}", failures)
+    require(len(all_pins) == 209, f"expected 209 modeled terminals, found {len(all_pins)}", failures)
     require(all(re.fullmatch(r"[A-Za-z]+[0-9]+", ref) for ref in components),
             "one or more references violate KiCad annotation syntax", failures)
 
@@ -107,7 +107,7 @@ def main() -> int:
         for row in connector_rows
     )
     require(actual_connector == expected_connector, "connector schedule differs from generated model", failures)
-    require(sum(row["terminal"].startswith("TBD-") for row in connector_rows) == 85,
+    require(sum(row["terminal"].startswith("TBD-") for row in connector_rows) == 74,
             "controlled TBD-terminal count changed; review and update checker intentionally", failures)
 
     expected_net_counts = Counter(pin.net for _, _, pin in all_pins)
@@ -123,7 +123,7 @@ def main() -> int:
         for row in wire_rows
     )
     require(actual_wires == expected_wires, "wire-number table differs from generated schematic labels", failures)
-    require(len(wire_rows) == 175, f"expected 175 labeled connected terminals, found {len(wire_rows)}", failures)
+    require(len(wire_rows) == 188, f"expected 188 labeled connected terminals, found {len(wire_rows)}", failures)
     require(len({row["wire_number"] for row in wire_rows}) == len(wire_rows),
             "wire numbers are not unique", failures)
 
@@ -140,7 +140,7 @@ def main() -> int:
         count, actual_connections = actual_nets.get(net, (-1, []))
         require(count == len(connections) and actual_connections == connections,
                 f"net schedule mismatch for {net}", failures)
-    require(len(expected_nets) == 76, f"expected 76 modeled nets, found {len(expected_nets)}", failures)
+    require(len(expected_nets) == 77, f"expected 77 modeled nets, found {len(expected_nets)}", failures)
 
     native_text = (OUT / "validation" / f"{gen.PROJECT}.net").read_text(encoding="utf-8-sig")
     native_refs = set(re.findall(r'\(comp\s+\(ref "([^"]+)"\)', native_text))
@@ -158,10 +158,10 @@ def main() -> int:
             key = (ref, pin)
             require(key not in native_node_net, f"native terminal {ref}:{pin} appears on multiple nets", failures)
             native_node_net[key] = name
-    require(len(native_net_names) == 76, f"expected 76 native KiCad nets, found {len(native_net_names)}", failures)
-    require(sum(name.startswith("unconnected-(") for name in native_net_names) == 23,
-            "expected 23 deliberate native unconnected nets", failures)
-    require(len(native_node_net) == 198, f"expected 198 native KiCad netlist nodes, found {len(native_node_net)}", failures)
+    require(len(native_net_names) == 77, f"expected 77 native KiCad nets, found {len(native_net_names)}", failures)
+    require(sum(name.startswith("unconnected-(") for name in native_net_names) == 21,
+            "expected 21 deliberate native unconnected nets", failures)
+    require(len(native_node_net) == 209, f"expected 209 native KiCad netlist nodes, found {len(native_node_net)}", failures)
     for _, comp, pin in all_pins:
         native_name = native_node_net.get((comp.ref, pin.number), "")
         if expected_net_counts[pin.net] == 1:
@@ -171,13 +171,13 @@ def main() -> int:
             require(native_name == pin.net,
                     f"native net mismatch at {comp.ref}:{pin.number}: expected {pin.net}, found {native_name or 'MISSING'}", failures)
     require('(tool "Eeschema 10.0.5")' in native_text, "native netlist tool version is not Eeschema 10.0.5", failures)
-    require('(rev "V3-P0.2")' in native_text, "native netlist does not identify V3-P0.2", failures)
+    require('(rev "V3-P0.3")' in native_text, "native netlist does not identify V3-P0.3", failures)
 
     bom_rows = read_csv("bom.csv")
     expected_bom_refs = {comp.ref for _, comp in all_components if comp.quantity}
     require({row["reference"] for row in bom_rows} == expected_bom_refs,
             "V3 BOM reference set differs from nonzero-quantity generated components", failures)
-    require(len(bom_rows) == 39, f"expected 39 BOM records, found {len(bom_rows)}", failures)
+    require(len(bom_rows) == 41, f"expected 41 BOM records, found {len(bom_rows)}", failures)
 
     unresolved_rows = read_csv("unresolved-selections.csv")
     unresolved_keys = ("SELECTION REQUIRED", "DESIGN REQUIRED", "CONFIRMATION REQUIRED", "VERIFICATION REQUIRED", "RELEASE OPEN")
@@ -191,16 +191,16 @@ def main() -> int:
         for row in unresolved_rows
     }
     require(actual_unresolved == expected_unresolved, "unresolved-selection register differs from model", failures)
-    require(len(unresolved_rows) == 29, f"expected 29 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
+    require(len(unresolved_rows) == 31, f"expected 31 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
 
     require(pin_map(components, "S0") == {
         "TBD-C1A": "SR1_S11", "TBD-C1B": "WD1_SAFETY_IN",
         "TBD-C2A": "SR1_S21", "TBD-C2B": "WD2_SAFETY_IN",
     }, "E-stop channel mapping changed", failures)
-    require(pin_map(components, "KWD1")["TBD-C1"] == "WD1_SAFETY_IN" and
-            pin_map(components, "KWD1")["TBD-NO1"] == "SR1_S12" and
-            pin_map(components, "KWD2")["TBD-C1"] == "WD2_SAFETY_IN" and
-            pin_map(components, "KWD2")["TBD-NO1"] == "SR1_S22",
+    require(pin_map(components, "KWD1")["11"] == "WD1_SAFETY_IN" and
+            pin_map(components, "KWD1")["14"] == "SR1_S12" and
+            pin_map(components, "KWD2")["11"] == "WD2_SAFETY_IN" and
+            pin_map(components, "KWD2")["14"] == "SR1_S22",
             "watchdog contacts no longer interrupt both SR1 input returns", failures)
     require(pin_map(components, "SR1")["13"] == "SRA1_S11" and
             pin_map(components, "SR1")["14"] == "SRA1_S12" and
@@ -215,13 +215,27 @@ def main() -> int:
             pin_map(components, "K2")["21"] == "EDM_K1_OUT" and
             pin_map(components, "K2")["22"] == "SRA1_START_RETURN",
             "K1/K2 mirror-contact EDM chain changed", failures)
-    require(pin_map(components, "KWD1")["TBD-COIL+"] == "SAFETY_24V" and
-            pin_map(components, "KWD1")["TBD-COIL-"] == "WD1_COIL_N" and
+    require(pin_map(components, "KWD1")["A1"] == "SAFETY_24V" and
+            pin_map(components, "KWD1")["A2"] == "WD1_COIL_N" and
             pin_map(components, "Q1")["TBD-COIL"] == "WD1_COIL_N" and
-            pin_map(components, "KWD2")["TBD-COIL+"] == "SAFETY_24V" and
-            pin_map(components, "KWD2")["TBD-COIL-"] == "WD2_COIL_N" and
+            pin_map(components, "KWD2")["A1"] == "SAFETY_24V" and
+            pin_map(components, "KWD2")["A2"] == "WD2_COIL_N" and
             pin_map(components, "Q2")["TBD-COIL"] == "WD2_COIL_N",
             "watchdog relay low-side coil routing changed", failures)
+    require(pin_map(components, "KWD1")["21"] == "SAFETY_24V" and
+            pin_map(components, "KWD1")["22"] == "WD1_NC_24V" and
+            pin_map(components, "KWD2")["21"] == "SAFETY_24V" and
+            pin_map(components, "KWD2")["22"] == "WD2_NC_24V" and
+            pin_map(components, "IFB1")["TBD-IN+"] == "WD1_NC_24V" and
+            pin_map(components, "IFB1")["TBD-OUT"] == "WD1_NC_DIAG" and
+            pin_map(components, "IFB2")["TBD-IN+"] == "WD2_NC_24V" and
+            pin_map(components, "IFB2")["TBD-OUT"] == "WD2_NC_DIAG",
+            "24 V relay feedback no longer passes through both input-interface blocks", failures)
+    require(pin_map(components, "WDCTRL1") == {
+        "39": "WD_5V", "38": "SAFETY_0V", "36": "WD_3V3", "4": "WD_HEARTBEAT",
+        "5": "WD1_DRIVE", "6": "WD2_DRIVE", "9": "WD1_NC_DIAG", "10": "WD2_NC_DIAG",
+        "SWDIO": "WD_SWDIO", "SWCLK": "WD_SWCLK",
+    }, "Pico power/GPIO assignment changed", failures)
     require(pin_map(components, "KP1") == {
         "1L1": "K1_P1_IN", "2T1": "K1_J12", "3L2": "K1_J12",
         "4T2": "K1_J23", "5L3": "K1_J23", "6T3": "K1_OUT",
@@ -258,7 +272,7 @@ def main() -> int:
     pdf = OUT / "output" / f"{gen.PROJECT}-preliminary.pdf"
     require(pdf.is_file() and pdf.stat().st_size > 100_000, "native PDF export missing or unexpectedly small", failures)
     readme = (OUT / "README.md").read_text(encoding="utf-8-sig")
-    require(WARNING in readme and "# Project Button HR-V0 Electrical V3-P0.2" in readme and
+    require(WARNING in readme and "# Project Button HR-V0 Electrical V3-P0.3" in readme and
             "ERC proves only modeled connectivity/annotation" in readme,
             "README warning/ERC caveat missing", failures)
 
@@ -269,7 +283,7 @@ def main() -> int:
         return 1
 
     print("HR-V0 Electrical V3 validation: PASS")
-    print("10 native pages; 41 component blocks; 198 terminals; 53 named connected + 23 unconnected nets; 175 unique wire labels; 29 unresolved rows")
+    print("10 native pages; 43 component blocks; 209 terminals; 56 named connected + 21 unconnected nets; 188 unique wire labels; 31 unresolved rows")
     print(WARNING)
     print("ERC/export consistency is not design approval or permission to energize.")
     return 0

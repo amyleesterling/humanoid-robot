@@ -4,7 +4,7 @@
 
 Identifier: `HR-V0-FW-P0.1`  
 System baseline: `HR-30-SYS-R0.2`  
-Electrical dependency: `Project Button Electrical V3-P0.2` candidate
+Electrical dependency: `Project Button Electrical V3-P0.3` candidate
 
 ## Purpose and authority boundary
 
@@ -60,7 +60,7 @@ It also compares portable-C timing constants to `watchdog-config.json`, checks f
 
 ## Evidence still required for release
 
-- exact GPIO/terminal assignment and received polarity/continuity records;
+- compiled platform binding and external default-off/input-conditioning implementation for the frozen watchdog GPIO candidate, plus received polarity/continuity records;
 - selected low-side drivers, input conditioning, protected wiring and feedback interface;
 - pinned Pico SDK/compiler/CMake/Ninja versions and a reproducible build environment;
 - warning-clean host and ARM compilation, static analysis, unit-test execution against the compiled C, `.elf`/`.uf2`/map hashes and size/stack evidence;

@@ -10,9 +10,9 @@ sheet,reference,value,quantity,status,datasheet,evidence
 02_estop_eligibility.kicad_sch,S1,IDEC HW1B-M1F10-B momentary 1NO RESET candidate,1,SELECTION REQUIRED - HUMAN-FACTORS REVIEW OPEN,https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b,
 02_estop_eligibility.kicad_sch,H1,SAFE ELIGIBLE indicator interface,1,SELECTION REQUIRED,,
 03_arm_watchdog_eligibility.kicad_sch,SRA1,"Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104",1,PROPOSED - QUALIFIED APPLICATION REVIEW REQUIRED,https://www.pilz.com/en-INT/eshop/product/750104,"Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06."
-03_arm_watchdog_eligibility.kicad_sch,KWD1,"Phoenix Contact PLC-RSC-24DC/21-21, item 2967060",1,PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED,https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060,"Official page data-maintenance date 2026-04-01; 24 VDC, two changeover contacts, 18 mA typical, 8 ms pickup, 10 ms release, integrated polarity/freewheel protection."
+03_arm_watchdog_eligibility.kicad_sch,KWD1,"Phoenix Contact PLC-RSC-24DC/21-21, item 2967060",1,PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED,https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf,"Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01. Circuit diagram identifies A1/A2, 11-12-14 and 21-22-24; 24 VDC, 18 mA typical, 8 ms pickup, 10 ms release."
 03_arm_watchdog_eligibility.kicad_sch,S2,IDEC HW1B-M1F10-B momentary 1NO ARM candidate,1,SELECTION REQUIRED - DISTINCT APPEARANCE REQUIRED,https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b,
-03_arm_watchdog_eligibility.kicad_sch,KWD2,"Phoenix Contact PLC-RSC-24DC/21-21, item 2967060",1,PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED,https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060,Official page data-maintenance date 2026-04-01.
+03_arm_watchdog_eligibility.kicad_sch,KWD2,"Phoenix Contact PLC-RSC-24DC/21-21, item 2967060",1,PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED,https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf,Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01.
 04_contactor_edm.kicad_sch,K1,"Schneider TeSys D LC1D25BD, 24 VDC coil",1,PROPOSED - DC APPLICATION CONFIRMATION REQUIRED,https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF,Schneider product sheet rechecked 2026-08-06; loaded DC interruption/coordination not established.
 04_contactor_edm.kicad_sch,K2,"Schneider TeSys D LC1D25BD, 24 VDC coil",1,PROPOSED - DC APPLICATION CONFIRMATION REQUIRED,https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF,
 04_contactor_edm.kicad_sch,FSR1,SRA1 output-contact protection for K1 coil,1,SELECTION REQUIRED,,
@@ -27,9 +27,11 @@ sheet,reference,value,quantity,status,datasheet,evidence
 06_branches_and_injection.kicad_sch,INJ3,Gripper data/power injection module,1,DESIGN REQUIRED,,
 07_watchdog_control.kicad_sch,DC1,Dedicated 24 V to 5 V watchdog supply,1,SELECTION REQUIRED,,
 07_watchdog_control.kicad_sch,ISO1,Heartbeat isolation/interface,1,SELECTION REQUIRED,,
-07_watchdog_control.kicad_sch,WDCTRL1,"Raspberry Pi Pico 1, order SC0915 / RP2040",1,PROPOSED - PIN/FIRMWARE RELEASE OPEN,https://www.raspberrypi.com/products/raspberry-pi-pico/,Official Pico 1 page and datasheet rechecked 2026-08-06; exact GPIOs not frozen.
+07_watchdog_control.kicad_sch,WDCTRL1,"Raspberry Pi Pico 1, order SC0915 / RP2040",1,PROPOSED - GPIO FROZEN; PLATFORM RELEASE OPEN,https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf,Official Pico datasheet and current pinout documentation rechecked 2026-08-06.
 07_watchdog_control.kicad_sch,Q1,Watchdog relay channel 1 low-side driver,1,SELECTION REQUIRED,,
 07_watchdog_control.kicad_sch,Q2,Watchdog relay channel 2 low-side driver,1,SELECTION REQUIRED,,
+07_watchdog_control.kicad_sch,IFB1,KWD1 24 V NC-feedback input interface,1,DESIGN REQUIRED,https://www.vishay.com/docs/81753/vo615a.pdf,"Vishay VO615A datasheet 81753, rev. 2.3 dated 2017-02-08; resistor, CTR, threshold, fault and PCB design remain open."
+07_watchdog_control.kicad_sch,IFB2,KWD2 24 V NC-feedback input interface,1,DESIGN REQUIRED,https://www.vishay.com/docs/81753/vo615a.pdf,
 08_compute_and_control_terminals.kicad_sch,PI1,Raspberry Pi 5 8GB high-level compute,1,PROPOSED - GPIO/CABLE/RETENTION OPEN,https://www.raspberrypi.com/products/raspberry-pi-5/,
 08_compute_and_control_terminals.kicad_sch,JDBG1,Watchdog programming/debug connector,1,SELECTION REQUIRED,,
 08_compute_and_control_terminals.kicad_sch,XT1,24 V control terminal block group,1,SELECTION REQUIRED,,

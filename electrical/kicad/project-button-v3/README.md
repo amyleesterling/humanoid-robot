@@ -1,4 +1,4 @@
-# Project Button HR-V0 Electrical V3-P0.2
+# Project Button HR-V0 Electrical V3-P0.3
 
 **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -20,6 +20,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 
 - Separate SR1 RESET eligibility and SRA1 ARM/EDM stages.
 - Two separately driven watchdog relay contacts interrupt the two SR1 input returns so heartbeat loss forces the physical RESET stage to drop.
+- Phoenix relay terminals are frozen from the official circuit diagram, and each 24 V NC diagnostic passes through an explicit unreleased input-interface block before the Pico GPIO.
 - Heartbeat restoration cannot restore contactors; SRA1 requires a new monitored ARM action.
 - External Mean Well adapters replace project-built mains wiring.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.

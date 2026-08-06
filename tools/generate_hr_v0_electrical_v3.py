@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P0.2"
+REV = "V3-P0.3"
 DATE = "2026-08-06"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 NS = uuid.UUID("4cb40c84-3194-4ded-b2c7-d78df616c5c0")
@@ -218,21 +218,21 @@ def sheets() -> list[Sheet]:
                                      "41":"SAFETY_24V", "42":"SRA1_DIAG_NC", "Y32":"SRA1_STATUS"},
              "Final ARM and external-device-monitoring relay."),
         Component("KWD1", "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060",
-                  [pn("KWD1", "TBD-COIL+", "COIL +24V", "SAFETY_24V", "left"), pn("KWD1", "TBD-COIL-", "DRIVER RETURN", "WD1_COIL_N", "left"),
-                   pn("KWD1", "TBD-C1", "CH1 COM", "WD1_SAFETY_IN", "left"), pn("KWD1", "TBD-NO1", "CH1 NO", "SR1_S12", "right"),
-                   pn("KWD1", "TBD-NC1", "CH1 NC", "WD1_NC_DIAG", "right"), pn("KWD1", "TBD-C2", "CH2 COM", "WD1_DIAG_FEED", "left"),
-                   pn("KWD1", "TBD-NO2", "CH2 NO", "WD1_NO_DIAG", "right"), pn("KWD1", "TBD-NC2", "CH2 NC", "WD1_NC_DIAG_2", "right")],
-                  "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED", "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit.",
-                  "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060",
-                  "Official page data-maintenance date 2026-04-01; 24 VDC, two changeover contacts, 18 mA typical, 8 ms pickup, 10 ms release, integrated polarity/freewheel protection.", (210, 72), 82),
+                  [pn("KWD1", "A1", "COIL +24V", "SAFETY_24V", "left"), pn("KWD1", "A2", "DRIVER RETURN", "WD1_COIL_N", "left"),
+                   pn("KWD1", "11", "CH1 COM", "WD1_SAFETY_IN", "left"), pn("KWD1", "14", "CH1 NO", "SR1_S12", "right"),
+                   pn("KWD1", "12", "CH1 NC UNUSED", "INTENTIONALLY_UNUSED_KWD1_12", "right"), pn("KWD1", "21", "CH2 COM +24V", "SAFETY_24V", "left"),
+                   pn("KWD1", "24", "CH2 NO UNUSED", "INTENTIONALLY_UNUSED_KWD1_24", "right"), pn("KWD1", "22", "CH2 NC FEEDBACK", "WD1_NC_24V", "right")],
+                  "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED", "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received polarity, continuity and welded-contact tests remain open.",
+                  "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf",
+                  "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01. Circuit diagram identifies A1/A2, 11-12-14 and 21-22-24; 24 VDC, 18 mA typical, 8 ms pickup, 10 ms release.", (210, 72), 82),
         Component("KWD2", "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060",
-                  [pn("KWD2", "TBD-COIL+", "COIL +24V", "SAFETY_24V", "left"), pn("KWD2", "TBD-COIL-", "DRIVER RETURN", "WD2_COIL_N", "left"),
-                   pn("KWD2", "TBD-C1", "CH1 COM", "WD2_SAFETY_IN", "left"), pn("KWD2", "TBD-NO1", "CH1 NO", "SR1_S22", "right"),
-                   pn("KWD2", "TBD-NC1", "CH1 NC", "WD2_NC_DIAG", "right"), pn("KWD2", "TBD-C2", "CH2 COM", "WD2_DIAG_FEED", "left"),
-                   pn("KWD2", "TBD-NO2", "CH2 NO", "WD2_NO_DIAG", "right"), pn("KWD2", "TBD-NC2", "CH2 NC", "WD2_NC_DIAG_2", "right")],
-                  "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED", "Second independently driven watchdog relay channel; common controller/supply remain common-cause blockers.",
-                  "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060",
-                  "Official page data-maintenance date 2026-04-01.", (340, 72), 82),
+                  [pn("KWD2", "A1", "COIL +24V", "SAFETY_24V", "left"), pn("KWD2", "A2", "DRIVER RETURN", "WD2_COIL_N", "left"),
+                   pn("KWD2", "11", "CH1 COM", "WD2_SAFETY_IN", "left"), pn("KWD2", "14", "CH1 NO", "SR1_S22", "right"),
+                   pn("KWD2", "12", "CH1 NC UNUSED", "INTENTIONALLY_UNUSED_KWD2_12", "right"), pn("KWD2", "21", "CH2 COM +24V", "SAFETY_24V", "left"),
+                   pn("KWD2", "24", "CH2 NO UNUSED", "INTENTIONALLY_UNUSED_KWD2_24", "right"), pn("KWD2", "22", "CH2 NC FEEDBACK", "WD2_NC_24V", "right")],
+                  "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED", "Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open.",
+                  "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf",
+                  "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01.", (340, 72), 82),
         Component("S2", "IDEC HW1B-M1F10-B momentary 1NO ARM candidate",
                   [pn("S2", "TBD-A1", "ARM IN", "SRA1_S12", "left"), pn("S2", "TBD-A2", "ARM OUT", "ARM_AFTER_S2", "right")],
                   "SELECTION REQUIRED - DISTINCT APPEARANCE REQUIRED", "Electrical candidate only. ARM must be unmistakably different from RESET by legend/color/guard/spacing; it must actuate and release after every safety dropout. Received terminal mapping remains open.",
@@ -312,13 +312,13 @@ def sheets() -> list[Sheet]:
                    pn("ISO1", "TBD-OUT", "WD HEARTBEAT", "WD_HEARTBEAT", "right"), pn("ISO1", "TBD-WG", "WD GND", "SAFETY_0V", "right")],
                   "SELECTION REQUIRED", "Exact isolation/interface, edge behavior, fault response and connector remain open.", position=(180, 80), width=82),
         Component("WDCTRL1", "Raspberry Pi Pico 1, order SC0915 / RP2040",
-                  [pn("WDCTRL1", "VSYS", "5V INPUT", "WD_5V", "left"), pn("WDCTRL1", "GND", "GROUND", "SAFETY_0V", "left"),
-                   pn("WDCTRL1", "TBD-GPIO-HB", "HEARTBEAT IN", "WD_HEARTBEAT", "left"),
-                   pn("WDCTRL1", "TBD-GPIO-1", "RELAY1 DRIVE", "WD1_DRIVE", "right"), pn("WDCTRL1", "TBD-GPIO-2", "RELAY2 DRIVE", "WD2_DRIVE", "right"),
-                   pn("WDCTRL1", "TBD-GPIO-F1", "RELAY1 FEEDBACK", "WD1_NC_DIAG", "right"), pn("WDCTRL1", "TBD-GPIO-F2", "RELAY2 FEEDBACK", "WD2_NC_DIAG", "right"),
+                  [pn("WDCTRL1", "39", "VSYS 5V INPUT", "WD_5V", "left"), pn("WDCTRL1", "38", "GROUND", "SAFETY_0V", "left"),
+                   pn("WDCTRL1", "36", "3V3 OUTPUT", "WD_3V3", "left"), pn("WDCTRL1", "4", "GP2 HEARTBEAT IN", "WD_HEARTBEAT", "left"),
+                   pn("WDCTRL1", "5", "GP3 RELAY1 DRIVE", "WD1_DRIVE", "right"), pn("WDCTRL1", "6", "GP4 RELAY2 DRIVE", "WD2_DRIVE", "right"),
+                   pn("WDCTRL1", "9", "GP6 RELAY1 FEEDBACK", "WD1_NC_DIAG", "right"), pn("WDCTRL1", "10", "GP7 RELAY2 FEEDBACK", "WD2_NC_DIAG", "right"),
                    pn("WDCTRL1", "SWDIO", "SWDIO", "WD_SWDIO", "right"), pn("WDCTRL1", "SWCLK", "SWCLK", "WD_SWCLK", "right")],
-                  "PROPOSED - PIN/FIRMWARE RELEASE OPEN", "Monotonic heartbeat monitor. Three missed 100 ms periods drop both outputs; firmware and shared failures are not safety-rated.",
-                  "https://www.raspberrypi.com/products/raspberry-pi-pico/", "Official Pico 1 page and datasheet rechecked 2026-08-06; exact GPIOs not frozen.", (300, 80), 82),
+                  "PROPOSED - GPIO FROZEN; PLATFORM RELEASE OPEN", "Monotonic heartbeat monitor. Physical GPIO candidates are frozen for review; platform startup, external bias, compilation, HIL and shared failures remain open and receive no safety credit.",
+                  "https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf", "Official Pico datasheet and current pinout documentation rechecked 2026-08-06.", (300, 80), 82),
         Component("Q1", "Watchdog relay channel 1 low-side driver",
                   [pn("Q1", "TBD-IN", "GPIO", "WD1_DRIVE", "left"), pn("Q1", "TBD-COIL", "COIL RETURN", "WD1_COIL_N", "right"),
                    pn("Q1", "TBD-0V", "0V", "SAFETY_0V", "left")],
@@ -327,6 +327,18 @@ def sheets() -> list[Sheet]:
                   [pn("Q2", "TBD-IN", "GPIO", "WD2_DRIVE", "left"), pn("Q2", "TBD-COIL", "COIL RETURN", "WD2_COIL_N", "right"),
                    pn("Q2", "TBD-0V", "0V", "SAFETY_0V", "left")],
                   "SELECTION REQUIRED", "Independently driven duplicate channel; common-cause review open.", position=(210, 190), width=82),
+        Component("IFB1", "KWD1 24 V NC-feedback input interface",
+                  [pn("IFB1", "TBD-IN+", "24V FEEDBACK", "WD1_NC_24V", "left"), pn("IFB1", "TBD-IN-", "INPUT RETURN", "SAFETY_0V", "left"),
+                   pn("IFB1", "TBD-3V3", "LOGIC PULLUP", "WD_3V3", "left"), pn("IFB1", "TBD-OUT", "3V3 LOGIC OUT", "WD1_NC_DIAG", "right"),
+                   pn("IFB1", "TBD-GND", "LOGIC GROUND", "SAFETY_0V", "right")],
+                  "DESIGN REQUIRED", "P0.3 removes the direct 24 V-to-GPIO path. Select and calculate the complete protected 24 V input/3.3 V output circuit; VO615A-3X001 is only an optocoupler screening candidate.",
+                  "https://www.vishay.com/docs/81753/vo615a.pdf", "Vishay VO615A datasheet 81753, rev. 2.3 dated 2017-02-08; resistor, CTR, threshold, fault and PCB design remain open.", position=(95, 245), width=82),
+        Component("IFB2", "KWD2 24 V NC-feedback input interface",
+                  [pn("IFB2", "TBD-IN+", "24V FEEDBACK", "WD2_NC_24V", "left"), pn("IFB2", "TBD-IN-", "INPUT RETURN", "SAFETY_0V", "left"),
+                   pn("IFB2", "TBD-3V3", "LOGIC PULLUP", "WD_3V3", "left"), pn("IFB2", "TBD-OUT", "3V3 LOGIC OUT", "WD2_NC_DIAG", "right"),
+                   pn("IFB2", "TBD-GND", "LOGIC GROUND", "SAFETY_0V", "right")],
+                  "DESIGN REQUIRED", "Independent duplicate diagnostic channel; exact circuit and common-cause review remain open.",
+                  "https://www.vishay.com/docs/81753/vo615a.pdf", position=(210, 245), width=82),
         Component("JDBG1", "Watchdog programming/debug connector",
                   [pn("JDBG1", "TBD-SWDIO", "SWDIO", "WD_SWDIO", "left"), pn("JDBG1", "TBD-SWCLK", "SWCLK", "WD_SWCLK", "left"),
                    pn("JDBG1", "TBD-GND", "GND", "SAFETY_0V", "left")],
@@ -438,13 +450,13 @@ def sheets() -> list[Sheet]:
                 "Every injection module requires released source, continuity, isolation, pull and no-backfeed tests."]
 
     s7 = Sheet(7, "07_watchdog_control.kicad_sch", "Independent watchdog power, controller and drivers",
-               "The watchdog forces restart but receives no safety-integrity credit by assertion.")
+               "24 V relay feedback is converted before the Pico; the watchdog receives no safety-integrity credit by assertion.")
     s7.components = placed(
-        ["DC1", "ISO1", "WDCTRL1", "Q1", "Q2"],
-        [(left, 65), (right, 65), (left, 170), (right, 165), (left, 225)],
+        ["DC1", "ISO1", "WDCTRL1", "Q1", "Q2", "IFB1", "IFB2"],
+        [(95, 60), (300, 60), (95, 135), (300, 135), (95, 190), (300, 190), (95, 230)],
     )
-    s7.notes = ["Power-up, brownout, clock failure, stuck GPIO, held heartbeat and firmware-corruption tests are mandatory.",
-                "A qualified review must decide whether watchdog loss is credited or diagnostic only."]
+    s7.notes = ["No 24 V diagnostic net may connect directly to a Pico GPIO; IFB1/IFB2 remain unreleased input-interface designs.",
+                "Power-up, brownout, clock, stuck-GPIO and firmware tests are mandatory; qualified review decides whether watchdog loss is credited or diagnostic only."]
 
     s8 = Sheet(8, "08_compute_and_control_terminals.kicad_sch", "Compute, debug and control terminals",
                "High-level compute and diagnostic wiring have no authority to bypass or restore the safety chain.")
@@ -707,6 +719,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 
 - Separate SR1 RESET eligibility and SRA1 ARM/EDM stages.
 - Two separately driven watchdog relay contacts interrupt the two SR1 input returns so heartbeat loss forces the physical RESET stage to drop.
+- Phoenix relay terminals are frozen from the official circuit diagram, and each 24 V NC diagnostic passes through an explicit unreleased input-interface block before the Pico GPIO.
 - Heartbeat restoration cannot restore contactors; SRA1 requires a new monitored ARM action.
 - External Mean Well adapters replace project-built mains wiring.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.

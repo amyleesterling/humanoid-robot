@@ -54,18 +54,20 @@ W3010,03_arm_watchdog_eligibility.kicad_sch,SRA1,23,SAFETY OUT2 IN,SAFETY_24V
 W3011,03_arm_watchdog_eligibility.kicad_sch,SRA1,24,SAFETY OUT2 OUT,SRA1_K2_RAW
 W3012,03_arm_watchdog_eligibility.kicad_sch,SRA1,41,AUX NC IN,SAFETY_24V
 W3013,03_arm_watchdog_eligibility.kicad_sch,SRA1,Y32,SEMICONDUCTOR STATUS,SRA1_STATUS
-W3014,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-COIL+,COIL +24V,SAFETY_24V
-W3015,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-COIL-,DRIVER RETURN,WD1_COIL_N
-W3016,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-C1,CH1 COM,WD1_SAFETY_IN
-W3017,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-NO1,CH1 NO,SR1_S12
-W3018,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-NC1,CH1 NC,WD1_NC_DIAG
-W3019,03_arm_watchdog_eligibility.kicad_sch,S2,TBD-A1,ARM IN,SRA1_S12
-W3020,03_arm_watchdog_eligibility.kicad_sch,S2,TBD-A2,ARM OUT,ARM_AFTER_S2
-W3021,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-COIL+,COIL +24V,SAFETY_24V
-W3022,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-COIL-,DRIVER RETURN,WD2_COIL_N
-W3023,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-C1,CH1 COM,WD2_SAFETY_IN
-W3024,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-NO1,CH1 NO,SR1_S22
-W3025,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-NC1,CH1 NC,WD2_NC_DIAG
+W3014,03_arm_watchdog_eligibility.kicad_sch,KWD1,A1,COIL +24V,SAFETY_24V
+W3015,03_arm_watchdog_eligibility.kicad_sch,KWD1,A2,DRIVER RETURN,WD1_COIL_N
+W3016,03_arm_watchdog_eligibility.kicad_sch,KWD1,11,CH1 COM,WD1_SAFETY_IN
+W3017,03_arm_watchdog_eligibility.kicad_sch,KWD1,21,CH2 COM +24V,SAFETY_24V
+W3018,03_arm_watchdog_eligibility.kicad_sch,KWD1,14,CH1 NO,SR1_S12
+W3019,03_arm_watchdog_eligibility.kicad_sch,KWD1,22,CH2 NC FEEDBACK,WD1_NC_24V
+W3020,03_arm_watchdog_eligibility.kicad_sch,S2,TBD-A1,ARM IN,SRA1_S12
+W3021,03_arm_watchdog_eligibility.kicad_sch,S2,TBD-A2,ARM OUT,ARM_AFTER_S2
+W3022,03_arm_watchdog_eligibility.kicad_sch,KWD2,A1,COIL +24V,SAFETY_24V
+W3023,03_arm_watchdog_eligibility.kicad_sch,KWD2,A2,DRIVER RETURN,WD2_COIL_N
+W3024,03_arm_watchdog_eligibility.kicad_sch,KWD2,11,CH1 COM,WD2_SAFETY_IN
+W3025,03_arm_watchdog_eligibility.kicad_sch,KWD2,21,CH2 COM +24V,SAFETY_24V
+W3026,03_arm_watchdog_eligibility.kicad_sch,KWD2,14,CH1 NO,SR1_S22
+W3027,03_arm_watchdog_eligibility.kicad_sch,KWD2,22,CH2 NC FEEDBACK,WD2_NC_24V
 W4001,04_contactor_edm.kicad_sch,K1,A1,COIL +,K1_A1
 W4002,04_contactor_edm.kicad_sch,K1,A2,COIL -,SAFETY_0V
 W4003,04_contactor_edm.kicad_sch,K1,21,MIRROR NC IN,ARM_AFTER_S2
@@ -134,21 +136,32 @@ W7005,07_watchdog_control.kicad_sch,ISO1,TBD-IN,PI HEARTBEAT,PI_HEARTBEAT
 W7006,07_watchdog_control.kicad_sch,ISO1,TBD-CG,COMPUTE GND,COMPUTE_0V
 W7007,07_watchdog_control.kicad_sch,ISO1,TBD-OUT,WD HEARTBEAT,WD_HEARTBEAT
 W7008,07_watchdog_control.kicad_sch,ISO1,TBD-WG,WD GND,SAFETY_0V
-W7009,07_watchdog_control.kicad_sch,WDCTRL1,VSYS,5V INPUT,WD_5V
-W7010,07_watchdog_control.kicad_sch,WDCTRL1,GND,GROUND,SAFETY_0V
-W7011,07_watchdog_control.kicad_sch,WDCTRL1,TBD-GPIO-HB,HEARTBEAT IN,WD_HEARTBEAT
-W7012,07_watchdog_control.kicad_sch,WDCTRL1,TBD-GPIO-1,RELAY1 DRIVE,WD1_DRIVE
-W7013,07_watchdog_control.kicad_sch,WDCTRL1,TBD-GPIO-2,RELAY2 DRIVE,WD2_DRIVE
-W7014,07_watchdog_control.kicad_sch,WDCTRL1,TBD-GPIO-F1,RELAY1 FEEDBACK,WD1_NC_DIAG
-W7015,07_watchdog_control.kicad_sch,WDCTRL1,TBD-GPIO-F2,RELAY2 FEEDBACK,WD2_NC_DIAG
-W7016,07_watchdog_control.kicad_sch,WDCTRL1,SWDIO,SWDIO,WD_SWDIO
-W7017,07_watchdog_control.kicad_sch,WDCTRL1,SWCLK,SWCLK,WD_SWCLK
-W7018,07_watchdog_control.kicad_sch,Q1,TBD-IN,GPIO,WD1_DRIVE
-W7019,07_watchdog_control.kicad_sch,Q1,TBD-0V,0V,SAFETY_0V
-W7020,07_watchdog_control.kicad_sch,Q1,TBD-COIL,COIL RETURN,WD1_COIL_N
-W7021,07_watchdog_control.kicad_sch,Q2,TBD-IN,GPIO,WD2_DRIVE
-W7022,07_watchdog_control.kicad_sch,Q2,TBD-0V,0V,SAFETY_0V
-W7023,07_watchdog_control.kicad_sch,Q2,TBD-COIL,COIL RETURN,WD2_COIL_N
+W7009,07_watchdog_control.kicad_sch,WDCTRL1,39,VSYS 5V INPUT,WD_5V
+W7010,07_watchdog_control.kicad_sch,WDCTRL1,38,GROUND,SAFETY_0V
+W7011,07_watchdog_control.kicad_sch,WDCTRL1,36,3V3 OUTPUT,WD_3V3
+W7012,07_watchdog_control.kicad_sch,WDCTRL1,4,GP2 HEARTBEAT IN,WD_HEARTBEAT
+W7013,07_watchdog_control.kicad_sch,WDCTRL1,5,GP3 RELAY1 DRIVE,WD1_DRIVE
+W7014,07_watchdog_control.kicad_sch,WDCTRL1,6,GP4 RELAY2 DRIVE,WD2_DRIVE
+W7015,07_watchdog_control.kicad_sch,WDCTRL1,9,GP6 RELAY1 FEEDBACK,WD1_NC_DIAG
+W7016,07_watchdog_control.kicad_sch,WDCTRL1,10,GP7 RELAY2 FEEDBACK,WD2_NC_DIAG
+W7017,07_watchdog_control.kicad_sch,WDCTRL1,SWDIO,SWDIO,WD_SWDIO
+W7018,07_watchdog_control.kicad_sch,WDCTRL1,SWCLK,SWCLK,WD_SWCLK
+W7019,07_watchdog_control.kicad_sch,Q1,TBD-IN,GPIO,WD1_DRIVE
+W7020,07_watchdog_control.kicad_sch,Q1,TBD-0V,0V,SAFETY_0V
+W7021,07_watchdog_control.kicad_sch,Q1,TBD-COIL,COIL RETURN,WD1_COIL_N
+W7022,07_watchdog_control.kicad_sch,Q2,TBD-IN,GPIO,WD2_DRIVE
+W7023,07_watchdog_control.kicad_sch,Q2,TBD-0V,0V,SAFETY_0V
+W7024,07_watchdog_control.kicad_sch,Q2,TBD-COIL,COIL RETURN,WD2_COIL_N
+W7025,07_watchdog_control.kicad_sch,IFB1,TBD-IN+,24V FEEDBACK,WD1_NC_24V
+W7026,07_watchdog_control.kicad_sch,IFB1,TBD-IN-,INPUT RETURN,SAFETY_0V
+W7027,07_watchdog_control.kicad_sch,IFB1,TBD-3V3,LOGIC PULLUP,WD_3V3
+W7028,07_watchdog_control.kicad_sch,IFB1,TBD-OUT,3V3 LOGIC OUT,WD1_NC_DIAG
+W7029,07_watchdog_control.kicad_sch,IFB1,TBD-GND,LOGIC GROUND,SAFETY_0V
+W7030,07_watchdog_control.kicad_sch,IFB2,TBD-IN+,24V FEEDBACK,WD2_NC_24V
+W7031,07_watchdog_control.kicad_sch,IFB2,TBD-IN-,INPUT RETURN,SAFETY_0V
+W7032,07_watchdog_control.kicad_sch,IFB2,TBD-3V3,LOGIC PULLUP,WD_3V3
+W7033,07_watchdog_control.kicad_sch,IFB2,TBD-OUT,3V3 LOGIC OUT,WD2_NC_DIAG
+W7034,07_watchdog_control.kicad_sch,IFB2,TBD-GND,LOGIC GROUND,SAFETY_0V
 W8001,08_compute_and_control_terminals.kicad_sch,PI1,USB-C-VBUS,+5V INPUT,COMPUTE_5V
 W8002,08_compute_and_control_terminals.kicad_sch,PI1,GND,COMPUTE GND,COMPUTE_0V
 W8003,08_compute_and_control_terminals.kicad_sch,PI1,TBD-GPIO-HB,HEARTBEAT OUT,PI_HEARTBEAT

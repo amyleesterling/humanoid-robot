@@ -1,7 +1,7 @@
-# Project Button HR-V0 Electrical V3-P0.2 Independent Review Request
+# Project Button HR-V0 Electrical V3-P0.3 Independent Review Request
 
 Review date: 2026-08-06  
-Controlled candidate: **Electrical V3-P0.2**  
+Controlled candidate: **Electrical V3-P0.3**
 Systems baseline: **HR-30-SYS-R0.2**  
 Status: **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -9,7 +9,7 @@ Status: **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
 Independently audit the accuracy, completeness, and physical implementability of the connected HR-V0 Electrical V3 candidate. Do not treat clean ERC, generated schedules, or this request as functional-safety validation or permission to procure, fabricate, wire, or energize.
 
-The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P0.2 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. V3-P0.1 is historical and must not be substituted because it did not force the SR1 RESET stage to drop on watchdog loss.
+The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P0.3 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. V3-P0.1 is historical and did not force the SR1 RESET stage to drop on watchdog loss. V3-P0.2 is also historical because it routed a 24 V KWD NC diagnostic net toward an unresolved Pico GPIO without an explicit conversion interface.
 
 ## Controlled inputs
 
@@ -43,11 +43,11 @@ The final command is expected to remain nonzero while applicable release gates a
 ## Baseline claims to reproduce, not assume
 
 - ten native pages: one root/index and nine child sheets;
-- 41 component blocks and 198 modeled terminals;
-- 76 native nets: 53 named connected nets plus 23 deliberate auto-generated unconnected nets;
-- 175 unique wire labels synchronized to `wire-number-table.csv`;
-- 29 unresolved component/interface schedule rows;
-- 85 deliberately unresolved `TBD-*` terminal designations;
+- 43 component blocks and 209 modeled terminals;
+- 77 native nets: 56 named connected nets plus 21 deliberate auto-generated unconnected nets;
+- 188 unique wire labels synchronized to `wire-number-table.csv`;
+- 31 unresolved component/interface schedule rows;
+- 74 deliberately unresolved `TBD-*` terminal designations;
 - KiCad 10.0.5 ERC: 0 errors and 0 warnings;
 - successful native netlist, ten-page A3 PDF, and ten-page SVG export; and
 - exact agreement between every modeled `(reference, terminal, net)` tuple and the KiCad-exported native netlist.
@@ -56,11 +56,11 @@ The final command is expected to remain nonzero while applicable release gates a
 
 1. Open every KiCad sheet and confirm parsing, hierarchy, cross-sheet connectivity, sheet order, warnings, readable text, and absence of misleading whitespace or line-art-only circuitry.
 2. Rerun ERC and native netlist export. Record every compatibility warning, ignored ERC class, command version, and failure. Explain the limited meaning of ERC 0/0.
-3. Compare every terminal and net against the component, connector, terminal, wire, net, BOM and unresolved schedules. Verify the 23 open terminals are intentional and are neither silently shorted nor omitted from the release record.
+3. Compare every terminal and net against the component, connector, terminal, wire, net, BOM and unresolved schedules. Verify the 21 deliberate native unconnected terminals and 74 `TBD-*` terminal designations are intentional and are neither silently shorted nor omitted from the release record.
 4. Verify the dual-channel E-stop, one watchdog NO contact in each SR1 input return, monitored RESET eligibility, direct SR1-to-SRA1 safety-output paths, distinct manual ARM, SRA1 monitored start, K1/K2 coils, mirror-contact EDM, and redundant series actuator-power interruption.
 5. Prove from the schematic and control requirements that E-stop release, RESET, compute boot, watchdog recovery, software restart, brownout, or communication recovery cannot by themselves command actuator power or motion. Specifically confirm that watchdog recovery cannot restore SR1 without physical RESET and cannot restore SRA1/K1/K2 without the later physical ARM. Identify every single fault or common-cause path that could violate that rule.
 6. Review the exact Pilz PNOZ s4 750104 candidate application, selector mode, terminal use, contact protection, reset/ARM timing, diagnostic contacts, and any need for force-guided or otherwise safety-suitable external devices. Do not assign PL/SIL credit without a complete safety calculation and evidence.
-7. Review the two Phoenix Contact watchdog-relay candidate coil circuits, low-side drivers, suppression/polarity, supply/common reference, pickup/dropout timing, contact routing, welded-contact behavior, common-cause controller/supply failures, and diagnostic limitations. These ordinary relays currently receive no safety credit.
+7. Review the two Phoenix Contact watchdog-relay candidate coil circuits, official `A1/A2`, `11-12-14`, and `21-22-24` terminal mapping, low-side drivers, suppression/polarity, supply/common reference, pickup/dropout timing, contact routing, welded-contact behavior, common-cause controller/supply failures, and diagnostic limitations. Confirm that `WD1_NC_24V` and `WD2_NC_24V` terminate only at IFB1/IFB2 and never directly at a Pico GPIO. Review the frozen candidate Pico physical pins and identify all required external default-off/input conditioning. These ordinary relays and interfaces currently receive no safety credit.
 8. Verify K1/K2 coil polarity, mirror-contact designations, auxiliary contacts, all three main poles in series, DC utilization category, loaded DC interruption capability, regenerative-current behavior, coordination, suppression, and welded-pole detection. Mark every unsupported application assumption as unresolved.
 9. Verify the Mean Well GST280A12-C6P internal `-V`/PE bond from current manufacturer evidence. Confirm that SP1 is DNP/prohibited for that source, identify all other conductive chassis/frame/shield bonds, and assess touch-current, protective-earth continuity, site cord/GFCI/code, enclosure and fault-current assumptions.
 10. Verify the GST40A24-P1J and Raspberry Pi supply boundaries, locking/retention needs, source segregation, control-only energization boundary, grounding, and all project-built DC protection interfaces.

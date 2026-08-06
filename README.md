@@ -37,12 +37,13 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Safety-function requirements](docs/safety-functions.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
-- [Native KiCad Electrical V3-P0.2 correction candidate](electrical/kicad/project-button-v3/README.md)
+- [Native KiCad Electrical V3-P0.3 correction candidate](electrical/kicad/project-button-v3/README.md)
 - [HR-V0 Electrical V3 candidate architecture](docs/hr-v0-electrical-v3-candidate.md)
 - [HR-V0 Boston build-site basis](docs/hr-v0-build-site-basis.md)
 - [Boston fabrication and custom-metal sourcing](docs/hr-v0-fabrication-sourcing-boston.md)
 - [Control and fault-state specification](docs/control.md)
 - [HR-V0 Firmware P0.1 implementation candidate](docs/hr-v0-firmware-p0.1.md)
+- [HR-V0 watchdog hardware interface P0.2](docs/hr-v0-watchdog-interface-p0.2.md)
 - [Firmware source area](firmware/README.md)
 - [Verification plan](docs/verification.md)
 - [Verification scope and applicability](docs/verification-scope.md)
@@ -53,7 +54,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Fable R11 review and disposition](docs/reviews/2026-08-06-fable-review-disposition.md)
 - [Sol R12 review and disposition](docs/reviews/2026-08-06-sol-r12-review-disposition.md)
 - [Sol R12 findings rechecked against R17](docs/reviews/2026-08-06-sol-r12-post-r17-status.md)
-- [Electrical V3-P0.2 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
+- [Sol R12 findings rechecked against R18](docs/reviews/2026-08-06-sol-r12-post-r18-status.md)
+- [Electrical V3-P0.3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.1 independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
 - [Requirements](requirements/requirements.csv)
 - [HR-V0 energization gate register](requirements/hr-v0-energization-gates.csv)
@@ -64,7 +66,7 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 
 ## Review history
 
-Seventeen review/control rounds are complete: R01-R17. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. Correction and disposition passes are recorded separately from independent reviews.
+Eighteen review/control rounds are complete: R01-R18. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -85,6 +87,7 @@ Seventeen review/control rounds are complete: R01-R17. R11 Fable and R12 Sol are
 | R15 | R12 archival and reconciliation pass | Preserved Sol's complete dossier, dispositioned all 56 findings, and corrected processor ownership, duplicate release evidence, and qualitative IMU labeling. |
 | R16 | Native Electrical V3 candidate correction | Added and validated the ten-page connected V3-P0.1 candidate while retaining 29 unresolved interfaces and no energization approval. |
 | R17 | Restart-chain and firmware implementation candidate | Moved watchdog contacts into the two SR1 input returns, added fail-closed watchdog/supervisor source, 17 executable unit tests and a source manifest; compiled binaries and HIL remain open. |
+| R18 | Watchdog terminal and feedback-interface correction | Froze official Phoenix/Pico terminals, removed a modeled 24 V-to-GPIO path, and added explicit unreleased feedback-interface blocks as Electrical V3-P0.3. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

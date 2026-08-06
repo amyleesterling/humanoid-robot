@@ -76,6 +76,17 @@ def main() -> int:
         failures.append("supervisor tests failed\n" + supervisor_log)
 
     watchdog_config = json.loads((FIRMWARE / "watchdog" / "watchdog-config.json").read_text(encoding="utf-8"))
+    expected_gpio = {
+        "heartbeat_input": {"gpio": 2, "physical_pin": 4},
+        "relay1_drive": {"gpio": 3, "physical_pin": 5},
+        "relay2_drive": {"gpio": 4, "physical_pin": 6},
+        "relay1_nc_feedback": {"gpio": 6, "physical_pin": 9},
+        "relay2_nc_feedback": {"gpio": 7, "physical_pin": 10},
+    }
+    if watchdog_config.get("configuration_id") != "HR-V0-WD-P0.2":
+        failures.append("watchdog configuration ID is not HR-V0-WD-P0.2")
+    if watchdog_config.get("gpio_assignments") != expected_gpio:
+        failures.append("watchdog GPIO assignment differs from the Electrical V3-P0.3 candidate")
     header = (FIRMWARE / "watchdog" / "include" / "pb_watchdog.h").read_text(encoding="utf-8")
     source = (FIRMWARE / "watchdog" / "src" / "pb_watchdog.c").read_text(encoding="utf-8")
     define_names = {

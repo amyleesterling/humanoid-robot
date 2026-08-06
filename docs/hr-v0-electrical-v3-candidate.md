@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: native connected design candidate `V3-P0.2`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` is retained as the historical R16 configuration; P0.2 is a material restart-chain correction.
+Status: native connected design candidate `V3-P0.3`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` is retained as the historical R16 configuration; P0.2 is the historical R17 restart-chain correction; P0.3 corrects the watchdog feedback voltage boundary.
 
 - Native source: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Generator: `tools/generate_hr_v0_electrical_v3.py`
@@ -66,7 +66,7 @@ Any E-stop opening, watchdog-channel opening, SR1 dropout, channel discrepancy, 
 
 The current RP2040-class watchdog is not safety-rated. V3 replaces the single KWD1 contact with two independently driven, normally-open relay channels and routes one through each SR1 input return. This makes physical RESET part of the nominal recovery after heartbeat loss; SRA1 then still requires the later physical ARM. The final parts, drivers, feedback contacts, startup tests, brownout behavior, diagnostic coverage, common-cause controls, and firmware remain `SELECTION REQUIRED`.
 
-The modeled relay-coil path is `SAFETY_24V -> relay coil -> default-off low-side driver -> SAFETY_0V`. The proposed DC/DC converter is therefore non-isolated and the Pico/driver reference is `SAFETY_0V`; selecting an isolated converter would require isolated output drivers and a fresh grounding/fault review. The relay's exact received coil terminals and integrated-diode polarity remain `TBD-*` until the official terminal drawing and received continuity/polarity evidence are frozen.
+The modeled relay-coil path is `SAFETY_24V -> relay coil -> default-off low-side driver -> SAFETY_0V`. The proposed DC/DC converter is therefore non-isolated and the Pico/driver reference is `SAFETY_0V`; selecting an isolated converter would require isolated output drivers and a fresh grounding/fault review. The official Phoenix product PDF freezes the candidate terminal designations `A1/A2`, `11-12-14`, and `21-22-24`, while received continuity and polarity evidence remain mandatory. P0.3 uses `11-14` in the SR1 return and `21-22` for a separate 24 V NC diagnostic feed. The latter terminates at `IFB1`/`IFB2`; it is prohibited from reaching a Pico GPIO directly. Both interface circuits remain `DESIGN REQUIRED`.
 
 This topology improves restart behavior and single-channel diagnostics. It does **not** establish a Performance Level or SIL because both channels may still share a non-safety controller, power source, clock, firmware, or common-cause failure. Qualified risk assessment shall either:
 
@@ -107,19 +107,19 @@ Before this candidate can replace V2.1:
 
 ## Native candidate validation record
 
-The generated `V3-P0.2` candidate currently contains:
+The generated `V3-P0.3` candidate currently contains:
 
 - one root index plus nine focused child sheets;
-- 41 component blocks and 198 modeled terminals;
-- 76 native nets: 53 named connected nets plus 23 deliberate auto-generated unconnected nets;
-- 175 unique wire labels synchronized to `wire-number-table.csv`;
-- 39 nonzero-quantity V3 BOM records;
-- 29 unresolved component/interface records; and
-- 85 terminal designations deliberately retained as `TBD-*`.
+- 43 component blocks and 209 modeled terminals;
+- 77 native nets: 56 named connected nets plus 21 deliberate auto-generated unconnected nets;
+- 188 unique wire labels synchronized to `wire-number-table.csv`;
+- 41 nonzero-quantity V3 BOM records;
+- 31 unresolved component/interface records; and
+- 74 terminal designations deliberately retained as `TBD-*`.
 
-KiCad 10.0.5 parsed the root and all nine children, exported the native netlist, a ten-page A3 PDF, and ten SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 41 native component references and all 198 exported `(reference, terminal, net)` nodes against the generated schedules, including the 23 deliberate no-connect terminals. This check caught and corrected an early generator Y-axis transform that had attached visually aligned labels to reversed terminal rows; clean ERC alone did not detect that defect.
+KiCad 10.0.5 parsed the root and all nine children, exported the native netlist, a ten-page A3 PDF, and ten SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 43 native component references and all 209 exported `(reference, terminal, net)` nodes against the generated schedules, including the 21 deliberate no-connect terminals. This check caught and corrected an early generator Y-axis transform that had attached visually aligned labels to reversed terminal rows; clean ERC alone did not detect that defect.
 
-The export was rendered at 150 dpi and visually checked page by page after reorganizing the earlier crowded six-sheet layout. No remaining clipping, border collision, note-order reversal, or connection-label overlap was observed in the current export. The same audit corrected the watchdog low-side coil path, made the shared TTL ground explicit, and replaced duplicate per-component wire labels with 175 unique per-sheet labels before this candidate was recorded.
+The export is rendered at 150 dpi and visually checked after each material layout change. The earlier audit corrected the watchdog low-side coil path, made the shared TTL ground explicit, and replaced duplicate per-component wire labels. P0.3 adds the two feedback-interface blocks and 188 synchronized wire labels; page-level visual QA is part of the recorded validation for this candidate.
 
 The KiCad CLI logs Windows registry-access messages for `HKCU\Software\kicad-cli` in this restricted execution environment. Every command still returned exit code 0 and produced the expected artifact; the messages are retained in `validation/kicad-cli.log` rather than hidden.
 

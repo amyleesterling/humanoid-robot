@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-06T15:17:21")
+		(date "2026-08-06T15:37:15")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P0.2")
+			(name "REVISION") "V3-P0.3")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,7 +15,7 @@
 			(title_block
 				(title "Project Button HR-V0 Electrical V3 index")
 				(company "Project Button")
-				(rev "V3-P0.2")
+				(rev "V3-P0.3")
 				(date "2026-08-06")
 				(source "project-button-v3.kicad_sch")
 				(comment
@@ -63,7 +63,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 01")
 				(company "Project Button")
-				(rev "V3-P0.2")
+				(rev "V3-P0.3")
 				(date "2026-08-06")
 				(source "01_external_sources.kicad_sch")
 				(comment
@@ -111,7 +111,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 02")
 				(company "Project Button")
-				(rev "V3-P0.2")
+				(rev "V3-P0.3")
 				(date "2026-08-06")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
@@ -159,7 +159,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 03")
 				(company "Project Button")
-				(rev "V3-P0.2")
+				(rev "V3-P0.3")
 				(date "2026-08-06")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
@@ -207,7 +207,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 04")
 				(company "Project Button")
-				(rev "V3-P0.2")
+				(rev "V3-P0.3")
 				(date "2026-08-06")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
@@ -255,7 +255,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 05")
 				(company "Project Button")
-				(rev "V3-P0.2")
+				(rev "V3-P0.3")
 				(date "2026-08-06")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
@@ -303,7 +303,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 06")
 				(company "Project Button")
-				(rev "V3-P0.2")
+				(rev "V3-P0.3")
 				(date "2026-08-06")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
@@ -351,7 +351,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 07")
 				(company "Project Button")
-				(rev "V3-P0.2")
+				(rev "V3-P0.3")
 				(date "2026-08-06")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
@@ -399,7 +399,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 08")
 				(company "Project Button")
-				(rev "V3-P0.2")
+				(rev "V3-P0.3")
 				(date "2026-08-06")
 				(source "08_compute_and_control_terminals.kicad_sch")
 				(comment
@@ -447,7 +447,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 09")
 				(company "Project Button")
-				(rev "V3-P0.2")
+				(rev "V3-P0.3")
 				(date "2026-08-06")
 				(source "09_actuator_interfaces.kicad_sch")
 				(comment
@@ -1241,35 +1241,35 @@
 		(comp
 			(ref "KWD1")
 			(value "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
-			(datasheet "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
-			(description "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit.")
+			(datasheet "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+			(description "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received polarity, continuity and welded-contact tests remain open.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED")
 				(field
-					(name "Evidence") "Official page data-maintenance date 2026-04-01; 24 VDC, two changeover contacts, 18 mA typical, 8 ms pickup, 10 ms release, integrated polarity/freewheel protection.")
+					(name "Evidence") "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01. Circuit diagram identifies A1/A2, 11-12-14 and 21-22-24; 24 VDC, 18 mA typical, 8 ms pickup, 10 ms release.")
 				(field
 					(name "Display") "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
+					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
 				(field
-					(name "Description") "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit.")
+					(name "Description") "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received polarity, continuity and welded-contact tests remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "KWD1")
-				(description "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit.")
+				(description "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received polarity, continuity and welded-contact tests remain open.")
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED")
+				(value "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official page data-maintenance date 2026-04-01; 24 VDC, two changeover contacts, 18 mA typical, 8 ms pickup, 10 ms release, integrated polarity/freewheel protection.")
+				(value "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01. Circuit diagram identifies A1/A2, 11-12-14 and 21-22-24; 24 VDC, 18 mA typical, 8 ms pickup, 10 ms release.")
 			)
 			(property
 				(name "Display")
@@ -1293,28 +1293,28 @@
 					(name "A")
 					(pins
 						(pin
-							(num "TBD-C2")
+							(num "21")
 						)
 						(pin
-							(num "TBD-C1")
+							(num "11")
 						)
 						(pin
-							(num "TBD-COIL-")
+							(num "A2")
 						)
 						(pin
-							(num "TBD-COIL+")
+							(num "A1")
 						)
 						(pin
-							(num "TBD-NC2")
+							(num "22")
 						)
 						(pin
-							(num "TBD-NO2")
+							(num "24")
 						)
 						(pin
-							(num "TBD-NC1")
+							(num "12")
 						)
 						(pin
-							(num "TBD-NO1")
+							(num "14")
 						)
 					)
 				)
@@ -1323,35 +1323,35 @@
 		(comp
 			(ref "KWD2")
 			(value "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
-			(datasheet "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
-			(description "Second independently driven watchdog relay channel; common controller/supply remain common-cause blockers.")
+			(datasheet "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+			(description "Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED")
 				(field
-					(name "Evidence") "Official page data-maintenance date 2026-04-01.")
+					(name "Evidence") "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01.")
 				(field
 					(name "Display") "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
+					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
 				(field
-					(name "Description") "Second independently driven watchdog relay channel; common controller/supply remain common-cause blockers.")
+					(name "Description") "Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "KWD2")
-				(description "Second independently driven watchdog relay channel; common controller/supply remain common-cause blockers.")
+				(description "Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open.")
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED")
+				(value "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official page data-maintenance date 2026-04-01.")
+				(value "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01.")
 			)
 			(property
 				(name "Display")
@@ -1375,28 +1375,28 @@
 					(name "A")
 					(pins
 						(pin
-							(num "TBD-C2")
+							(num "21")
 						)
 						(pin
-							(num "TBD-C1")
+							(num "11")
 						)
 						(pin
-							(num "TBD-COIL-")
+							(num "A2")
 						)
 						(pin
-							(num "TBD-COIL+")
+							(num "A1")
 						)
 						(pin
-							(num "TBD-NC2")
+							(num "22")
 						)
 						(pin
-							(num "TBD-NO2")
+							(num "24")
 						)
 						(pin
-							(num "TBD-NC1")
+							(num "12")
 						)
 						(pin
-							(num "TBD-NO1")
+							(num "14")
 						)
 					)
 				)
@@ -2650,6 +2650,153 @@
 			)
 		)
 		(comp
+			(ref "IFB1")
+			(value "KWD1 24 V NC-feedback input interface")
+			(datasheet "https://www.vishay.com/docs/81753/vo615a.pdf")
+			(description "P0.3 removes the direct 24 V-to-GPIO path. Select and calculate the complete protected 24 V input/3.3 V output circuit; VO615A-3X001 is only an optocoupler screening candidate.")
+			(fields
+				(field
+					(name "Status") "DESIGN REQUIRED")
+				(field
+					(name "Evidence") "Vishay VO615A datasheet 81753, rev. 2.3 dated 2017-02-08; resistor, CTR, threshold, fault and PCB design remain open.")
+				(field
+					(name "Display") "KWD1 24 V NC-feedback input interface")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.vishay.com/docs/81753/vo615a.pdf")
+				(field
+					(name "Description") "P0.3 removes the direct 24 V-to-GPIO path. Select and calculate the complete protected 24 V input/3.3 V output circuit; VO615A-3X001 is only an optocoupler screening candidate.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "IFB1")
+				(description "P0.3 removes the direct 24 V-to-GPIO path. Select and calculate the complete protected 24 V input/3.3 V output circuit; VO615A-3X001 is only an optocoupler screening candidate.")
+			)
+			(property
+				(name "Status")
+				(value "DESIGN REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Vishay VO615A datasheet 81753, rev. 2.3 dated 2017-02-08; resistor, CTR, threshold, fault and PCB design remain open.")
+			)
+			(property
+				(name "Display")
+				(value "KWD1 24 V NC-feedback input interface")
+			)
+			(property
+				(name "Sheetname")
+				(value "07 Independent watchdog power, controller and drivers")
+			)
+			(property
+				(name "Sheetfile")
+				(value "07_watchdog_control.kicad_sch")
+			)
+			(sheetpath
+				(names "/07 Independent watchdog power, controller and drivers/")
+				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
+			)
+			(tstamps "b1c1ecd4-63af-5cb6-8ccd-cb96347a67d4")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-3V3")
+						)
+						(pin
+							(num "TBD-IN-")
+						)
+						(pin
+							(num "TBD-IN+")
+						)
+						(pin
+							(num "TBD-GND")
+						)
+						(pin
+							(num "TBD-OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "IFB2")
+			(value "KWD2 24 V NC-feedback input interface")
+			(datasheet "https://www.vishay.com/docs/81753/vo615a.pdf")
+			(description "Independent duplicate diagnostic channel; exact circuit and common-cause review remain open.")
+			(fields
+				(field
+					(name "Status") "DESIGN REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "KWD2 24 V NC-feedback input interface")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.vishay.com/docs/81753/vo615a.pdf")
+				(field
+					(name "Description") "Independent duplicate diagnostic channel; exact circuit and common-cause review remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "IFB2")
+				(description "Independent duplicate diagnostic channel; exact circuit and common-cause review remain open.")
+			)
+			(property
+				(name "Status")
+				(value "DESIGN REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "KWD2 24 V NC-feedback input interface")
+			)
+			(property
+				(name "Sheetname")
+				(value "07 Independent watchdog power, controller and drivers")
+			)
+			(property
+				(name "Sheetfile")
+				(value "07_watchdog_control.kicad_sch")
+			)
+			(sheetpath
+				(names "/07 Independent watchdog power, controller and drivers/")
+				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
+			)
+			(tstamps "ae034af0-ddee-5e2c-940c-e9953f2cd542")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-3V3")
+						)
+						(pin
+							(num "TBD-IN-")
+						)
+						(pin
+							(num "TBD-IN+")
+						)
+						(pin
+							(num "TBD-GND")
+						)
+						(pin
+							(num "TBD-OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
 			(ref "ISO1")
 			(value "Heartbeat isolation/interface")
 			(description "Exact isolation/interface, edge behavior, fault response and connector remain open.")
@@ -2859,35 +3006,35 @@
 		(comp
 			(ref "WDCTRL1")
 			(value "Raspberry Pi Pico 1, order SC0915 / RP2040")
-			(datasheet "https://www.raspberrypi.com/products/raspberry-pi-pico/")
-			(description "Monotonic heartbeat monitor. Three missed 100 ms periods drop both outputs; firmware and shared failures are not safety-rated.")
+			(datasheet "https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf")
+			(description "Monotonic heartbeat monitor. Physical GPIO candidates are frozen for review; platform startup, external bias, compilation, HIL and shared failures remain open and receive no safety credit.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - PIN/FIRMWARE RELEASE OPEN")
+					(name "Status") "PROPOSED - GPIO FROZEN; PLATFORM RELEASE OPEN")
 				(field
-					(name "Evidence") "Official Pico 1 page and datasheet rechecked 2026-08-06; exact GPIOs not frozen.")
+					(name "Evidence") "Official Pico datasheet and current pinout documentation rechecked 2026-08-06.")
 				(field
 					(name "Display") "Raspberry Pi Pico 1, order SC0915 / RP2040")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.raspberrypi.com/products/raspberry-pi-pico/")
+					(name "Datasheet") "https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf")
 				(field
-					(name "Description") "Monotonic heartbeat monitor. Three missed 100 ms periods drop both outputs; firmware and shared failures are not safety-rated.")
+					(name "Description") "Monotonic heartbeat monitor. Physical GPIO candidates are frozen for review; platform startup, external bias, compilation, HIL and shared failures remain open and receive no safety credit.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "WDCTRL1")
-				(description "Monotonic heartbeat monitor. Three missed 100 ms periods drop both outputs; firmware and shared failures are not safety-rated.")
+				(description "Monotonic heartbeat monitor. Physical GPIO candidates are frozen for review; platform startup, external bias, compilation, HIL and shared failures remain open and receive no safety credit.")
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - PIN/FIRMWARE RELEASE OPEN")
+				(value "PROPOSED - GPIO FROZEN; PLATFORM RELEASE OPEN")
 			)
 			(property
 				(name "Evidence")
-				(value "Official Pico 1 page and datasheet rechecked 2026-08-06; exact GPIOs not frozen.")
+				(value "Official Pico datasheet and current pinout documentation rechecked 2026-08-06.")
 			)
 			(property
 				(name "Display")
@@ -2911,13 +3058,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "TBD-GPIO-HB")
+							(num "4")
 						)
 						(pin
-							(num "GND")
+							(num "36")
 						)
 						(pin
-							(num "VSYS")
+							(num "38")
+						)
+						(pin
+							(num "39")
 						)
 						(pin
 							(num "SWCLK")
@@ -2926,16 +3076,16 @@
 							(num "SWDIO")
 						)
 						(pin
-							(num "TBD-GPIO-F2")
+							(num "10")
 						)
 						(pin
-							(num "TBD-GPIO-F1")
+							(num "9")
 						)
 						(pin
-							(num "TBD-GPIO-2")
+							(num "6")
 						)
 						(pin
-							(num "TBD-GPIO-1")
+							(num "5")
 						)
 					)
 				)
@@ -3817,6 +3967,111 @@
 		)
 		(libpart
 			(lib "PBV3")
+			(part "IFB1")
+			(description "P0.3 removes the direct 24 V-to-GPIO path. Select and calculate the complete protected 24 V input/3.3 V output circuit; VO615A-3X001 is only an optocoupler screening candidate.")
+			(docs "https://www.vishay.com/docs/81753/vo615a.pdf")
+			(fields
+				(field
+					(name "Reference") "IFB1")
+				(field
+					(name "Value") "KWD1 24 V NC-feedback input interface")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.vishay.com/docs/81753/vo615a.pdf")
+				(field
+					(name "Description") "P0.3 removes the direct 24 V-to-GPIO path. Select and calculate the complete protected 24 V input/3.3 V output circuit; VO615A-3X001 is only an optocoupler screening candidate.")
+				(field
+					(name "Status") "DESIGN REQUIRED")
+				(field
+					(name "Evidence") "Vishay VO615A datasheet 81753, rev. 2.3 dated 2017-02-08; resistor, CTR, threshold, fault and PCB design remain open.")
+				(field
+					(name "Display") "KWD1 24 V NC-feedback input interface")
+			)
+			(pins
+				(pin
+					(num "TBD-3V3")
+					(name "LOGIC_PULLUP")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-GND")
+					(name "LOGIC_GROUND")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-IN+")
+					(name "24V_FEEDBACK")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-IN-")
+					(name "INPUT_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-OUT")
+					(name "3V3_LOGIC_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "IFB2")
+			(description "Independent duplicate diagnostic channel; exact circuit and common-cause review remain open.")
+			(docs "https://www.vishay.com/docs/81753/vo615a.pdf")
+			(fields
+				(field
+					(name "Reference") "IFB2")
+				(field
+					(name "Value") "KWD2 24 V NC-feedback input interface")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.vishay.com/docs/81753/vo615a.pdf")
+				(field
+					(name "Description") "Independent duplicate diagnostic channel; exact circuit and common-cause review remain open.")
+				(field
+					(name "Status") "DESIGN REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "KWD2 24 V NC-feedback input interface")
+			)
+			(pins
+				(pin
+					(num "TBD-3V3")
+					(name "LOGIC_PULLUP")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-GND")
+					(name "LOGIC_GROUND")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-IN+")
+					(name "24V_FEEDBACK")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-IN-")
+					(name "INPUT_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-OUT")
+					(name "3V3_LOGIC_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
 			(part "INJ1")
 			(description "Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open.")
 			(fields
@@ -4606,8 +4861,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "KWD1")
-			(description "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit.")
-			(docs "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
+			(description "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received polarity, continuity and welded-contact tests remain open.")
+			(docs "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
 			(fields
 				(field
 					(name "Reference") "KWD1")
@@ -4617,55 +4872,55 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
+					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
 				(field
-					(name "Description") "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit.")
+					(name "Description") "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received polarity, continuity and welded-contact tests remain open.")
 				(field
-					(name "Status") "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED")
 				(field
-					(name "Evidence") "Official page data-maintenance date 2026-04-01; 24 VDC, two changeover contacts, 18 mA typical, 8 ms pickup, 10 ms release, integrated polarity/freewheel protection.")
+					(name "Evidence") "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01. Circuit diagram identifies A1/A2, 11-12-14 and 21-22-24; 24 VDC, 18 mA typical, 8 ms pickup, 10 ms release.")
 				(field
 					(name "Display") "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
 			)
 			(pins
 				(pin
-					(num "TBD-C1")
+					(num "11")
 					(name "CH1_COM")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-C2")
-					(name "CH2_COM")
+					(num "12")
+					(name "CH1_NC_UNUSED")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-COIL+")
-					(name "COIL_+24V")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-COIL-")
-					(name "DRIVER_RETURN")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-NC1")
-					(name "CH1_NC")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-NC2")
-					(name "CH2_NC")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-NO1")
+					(num "14")
 					(name "CH1_NO")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-NO2")
-					(name "CH2_NO")
+					(num "21")
+					(name "CH2_COM_+24V")
+					(type "passive")
+				)
+				(pin
+					(num "22")
+					(name "CH2_NC_FEEDBACK")
+					(type "passive")
+				)
+				(pin
+					(num "24")
+					(name "CH2_NO_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "A1")
+					(name "COIL_+24V")
+					(type "passive")
+				)
+				(pin
+					(num "A2")
+					(name "DRIVER_RETURN")
 					(type "passive")
 				)
 			)
@@ -4673,8 +4928,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "KWD2")
-			(description "Second independently driven watchdog relay channel; common controller/supply remain common-cause blockers.")
-			(docs "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
+			(description "Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open.")
+			(docs "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
 			(fields
 				(field
 					(name "Reference") "KWD2")
@@ -4684,55 +4939,55 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
+					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
 				(field
-					(name "Description") "Second independently driven watchdog relay channel; common controller/supply remain common-cause blockers.")
+					(name "Description") "Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open.")
 				(field
-					(name "Status") "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED")
 				(field
-					(name "Evidence") "Official page data-maintenance date 2026-04-01.")
+					(name "Evidence") "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01.")
 				(field
 					(name "Display") "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
 			)
 			(pins
 				(pin
-					(num "TBD-C1")
+					(num "11")
 					(name "CH1_COM")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-C2")
-					(name "CH2_COM")
+					(num "12")
+					(name "CH1_NC_UNUSED")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-COIL+")
-					(name "COIL_+24V")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-COIL-")
-					(name "DRIVER_RETURN")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-NC1")
-					(name "CH1_NC")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-NC2")
-					(name "CH2_NC")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-NO1")
+					(num "14")
 					(name "CH1_NO")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-NO2")
-					(name "CH2_NO")
+					(num "21")
+					(name "CH2_COM_+24V")
+					(type "passive")
+				)
+				(pin
+					(num "22")
+					(name "CH2_NC_FEEDBACK")
+					(type "passive")
+				)
+				(pin
+					(num "24")
+					(name "CH2_NO_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "A1")
+					(name "COIL_+24V")
+					(type "passive")
+				)
+				(pin
+					(num "A2")
+					(name "DRIVER_RETURN")
 					(type "passive")
 				)
 			)
@@ -5503,8 +5758,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "WDCTRL1")
-			(description "Monotonic heartbeat monitor. Three missed 100 ms periods drop both outputs; firmware and shared failures are not safety-rated.")
-			(docs "https://www.raspberrypi.com/products/raspberry-pi-pico/")
+			(description "Monotonic heartbeat monitor. Physical GPIO candidates are frozen for review; platform startup, external bias, compilation, HIL and shared failures remain open and receive no safety credit.")
+			(docs "https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf")
 			(fields
 				(field
 					(name "Reference") "WDCTRL1")
@@ -5514,20 +5769,55 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.raspberrypi.com/products/raspberry-pi-pico/")
+					(name "Datasheet") "https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf")
 				(field
-					(name "Description") "Monotonic heartbeat monitor. Three missed 100 ms periods drop both outputs; firmware and shared failures are not safety-rated.")
+					(name "Description") "Monotonic heartbeat monitor. Physical GPIO candidates are frozen for review; platform startup, external bias, compilation, HIL and shared failures remain open and receive no safety credit.")
 				(field
-					(name "Status") "PROPOSED - PIN/FIRMWARE RELEASE OPEN")
+					(name "Status") "PROPOSED - GPIO FROZEN; PLATFORM RELEASE OPEN")
 				(field
-					(name "Evidence") "Official Pico 1 page and datasheet rechecked 2026-08-06; exact GPIOs not frozen.")
+					(name "Evidence") "Official Pico datasheet and current pinout documentation rechecked 2026-08-06.")
 				(field
 					(name "Display") "Raspberry Pi Pico 1, order SC0915 / RP2040")
 			)
 			(pins
 				(pin
-					(num "GND")
+					(num "4")
+					(name "GP2_HEARTBEAT_IN")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "GP3_RELAY1_DRIVE")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "GP4_RELAY2_DRIVE")
+					(type "passive")
+				)
+				(pin
+					(num "9")
+					(name "GP6_RELAY1_FEEDBACK")
+					(type "passive")
+				)
+				(pin
+					(num "10")
+					(name "GP7_RELAY2_FEEDBACK")
+					(type "passive")
+				)
+				(pin
+					(num "36")
+					(name "3V3_OUTPUT")
+					(type "passive")
+				)
+				(pin
+					(num "38")
 					(name "GROUND")
+					(type "passive")
+				)
+				(pin
+					(num "39")
+					(name "VSYS_5V_INPUT")
 					(type "passive")
 				)
 				(pin
@@ -5538,36 +5828,6 @@
 				(pin
 					(num "SWDIO")
 					(name "SWDIO")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-GPIO-1")
-					(name "RELAY1_DRIVE")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-GPIO-2")
-					(name "RELAY2_DRIVE")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-GPIO-F1")
-					(name "RELAY1_FEEDBACK")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-GPIO-F2")
-					(name "RELAY2_FEEDBACK")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-GPIO-HB")
-					(name "HEARTBEAT_IN")
-					(type "passive")
-				)
-				(pin
-					(num "VSYS")
-					(name "5V_INPUT")
 					(type "passive")
 				)
 			)
@@ -6315,6 +6575,30 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "IFB1")
+				(pin "TBD-GND")
+				(pinfunction "LOGIC_GROUND_TBD-GND")
+				(pintype "passive")
+			)
+			(node
+				(ref "IFB1")
+				(pin "TBD-IN-")
+				(pinfunction "INPUT_RETURN_TBD-IN-")
+				(pintype "passive")
+			)
+			(node
+				(ref "IFB2")
+				(pin "TBD-GND")
+				(pinfunction "LOGIC_GROUND_TBD-GND")
+				(pintype "passive")
+			)
+			(node
+				(ref "IFB2")
+				(pin "TBD-IN-")
+				(pinfunction "INPUT_RETURN_TBD-IN-")
+				(pintype "passive")
+			)
+			(node
 				(ref "ISO1")
 				(pin "TBD-WG")
 				(pinfunction "WD_GND_TBD-WG")
@@ -6382,8 +6666,8 @@
 			)
 			(node
 				(ref "WDCTRL1")
-				(pin "GND")
-				(pinfunction "GROUND_GND")
+				(pin "38")
+				(pinfunction "GROUND_38")
 				(pintype "passive")
 			)
 			(node
@@ -6423,14 +6707,26 @@
 			)
 			(node
 				(ref "KWD1")
-				(pin "TBD-COIL+")
-				(pinfunction "COIL_+24V_TBD-COIL+")
+				(pin "21")
+				(pinfunction "CH2_COM_+24V_21")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD1")
+				(pin "A1")
+				(pinfunction "COIL_+24V_A1")
 				(pintype "passive")
 			)
 			(node
 				(ref "KWD2")
-				(pin "TBD-COIL+")
-				(pinfunction "COIL_+24V_TBD-COIL+")
+				(pin "21")
+				(pinfunction "CH2_COM_+24V_21")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD2")
+				(pin "A1")
+				(pinfunction "COIL_+24V_A1")
 				(pintype "passive")
 			)
 			(node
@@ -6516,8 +6812,8 @@
 			(class "Default")
 			(node
 				(ref "KWD1")
-				(pin "TBD-NO1")
-				(pinfunction "CH1_NO_TBD-NO1")
+				(pin "14")
+				(pinfunction "CH1_NO_14")
 				(pintype "passive")
 			)
 			(node
@@ -6556,8 +6852,8 @@
 			(class "Default")
 			(node
 				(ref "KWD2")
-				(pin "TBD-NO1")
-				(pinfunction "CH1_NO_TBD-NO1")
+				(pin "14")
+				(pinfunction "CH1_NO_14")
 				(pintype "passive")
 			)
 			(node
@@ -6755,8 +7051,8 @@
 			(class "Default")
 			(node
 				(ref "KWD1")
-				(pin "TBD-COIL-")
-				(pinfunction "DRIVER_RETURN_TBD-COIL-")
+				(pin "A2")
+				(pinfunction "DRIVER_RETURN_A2")
 				(pintype "passive")
 			)
 			(node
@@ -6778,36 +7074,53 @@
 			)
 			(node
 				(ref "WDCTRL1")
-				(pin "TBD-GPIO-1")
-				(pinfunction "RELAY1_DRIVE_TBD-GPIO-1")
+				(pin "5")
+				(pinfunction "GP3_RELAY1_DRIVE_5")
 				(pintype "passive")
 			)
 		)
 		(net
 			(code "44")
-			(name "WD1_NC_DIAG")
+			(name "WD1_NC_24V")
 			(class "Default")
 			(node
-				(ref "KWD1")
-				(pin "TBD-NC1")
-				(pinfunction "CH1_NC_TBD-NC1")
+				(ref "IFB1")
+				(pin "TBD-IN+")
+				(pinfunction "24V_FEEDBACK_TBD-IN+")
 				(pintype "passive")
 			)
 			(node
-				(ref "WDCTRL1")
-				(pin "TBD-GPIO-F1")
-				(pinfunction "RELAY1_FEEDBACK_TBD-GPIO-F1")
+				(ref "KWD1")
+				(pin "22")
+				(pinfunction "CH2_NC_FEEDBACK_22")
 				(pintype "passive")
 			)
 		)
 		(net
 			(code "45")
+			(name "WD1_NC_DIAG")
+			(class "Default")
+			(node
+				(ref "IFB1")
+				(pin "TBD-OUT")
+				(pinfunction "3V3_LOGIC_OUT_TBD-OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "WDCTRL1")
+				(pin "9")
+				(pinfunction "GP6_RELAY1_FEEDBACK_9")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "46")
 			(name "WD1_SAFETY_IN")
 			(class "Default")
 			(node
 				(ref "KWD1")
-				(pin "TBD-C1")
-				(pinfunction "CH1_COM_TBD-C1")
+				(pin "11")
+				(pinfunction "CH1_COM_11")
 				(pintype "passive")
 			)
 			(node
@@ -6818,13 +7131,13 @@
 			)
 		)
 		(net
-			(code "46")
+			(code "47")
 			(name "WD2_COIL_N")
 			(class "Default")
 			(node
 				(ref "KWD2")
-				(pin "TBD-COIL-")
-				(pinfunction "DRIVER_RETURN_TBD-COIL-")
+				(pin "A2")
+				(pinfunction "DRIVER_RETURN_A2")
 				(pintype "passive")
 			)
 			(node
@@ -6835,7 +7148,7 @@
 			)
 		)
 		(net
-			(code "47")
+			(code "48")
 			(name "WD2_DRIVE")
 			(class "Default")
 			(node
@@ -6846,36 +7159,53 @@
 			)
 			(node
 				(ref "WDCTRL1")
-				(pin "TBD-GPIO-2")
-				(pinfunction "RELAY2_DRIVE_TBD-GPIO-2")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "48")
-			(name "WD2_NC_DIAG")
-			(class "Default")
-			(node
-				(ref "KWD2")
-				(pin "TBD-NC1")
-				(pinfunction "CH1_NC_TBD-NC1")
-				(pintype "passive")
-			)
-			(node
-				(ref "WDCTRL1")
-				(pin "TBD-GPIO-F2")
-				(pinfunction "RELAY2_FEEDBACK_TBD-GPIO-F2")
+				(pin "6")
+				(pinfunction "GP4_RELAY2_DRIVE_6")
 				(pintype "passive")
 			)
 		)
 		(net
 			(code "49")
+			(name "WD2_NC_24V")
+			(class "Default")
+			(node
+				(ref "IFB2")
+				(pin "TBD-IN+")
+				(pinfunction "24V_FEEDBACK_TBD-IN+")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD2")
+				(pin "22")
+				(pinfunction "CH2_NC_FEEDBACK_22")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "50")
+			(name "WD2_NC_DIAG")
+			(class "Default")
+			(node
+				(ref "IFB2")
+				(pin "TBD-OUT")
+				(pinfunction "3V3_LOGIC_OUT_TBD-OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "WDCTRL1")
+				(pin "10")
+				(pinfunction "GP7_RELAY2_FEEDBACK_10")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "51")
 			(name "WD2_SAFETY_IN")
 			(class "Default")
 			(node
 				(ref "KWD2")
-				(pin "TBD-C1")
-				(pinfunction "CH1_COM_TBD-C1")
+				(pin "11")
+				(pinfunction "CH1_COM_11")
 				(pintype "passive")
 			)
 			(node
@@ -6886,7 +7216,30 @@
 			)
 		)
 		(net
-			(code "50")
+			(code "52")
+			(name "WD_3V3")
+			(class "Default")
+			(node
+				(ref "IFB1")
+				(pin "TBD-3V3")
+				(pinfunction "LOGIC_PULLUP_TBD-3V3")
+				(pintype "passive")
+			)
+			(node
+				(ref "IFB2")
+				(pin "TBD-3V3")
+				(pinfunction "LOGIC_PULLUP_TBD-3V3")
+				(pintype "passive")
+			)
+			(node
+				(ref "WDCTRL1")
+				(pin "36")
+				(pinfunction "3V3_OUTPUT_36")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "53")
 			(name "WD_5V")
 			(class "Default")
 			(node
@@ -6897,13 +7250,13 @@
 			)
 			(node
 				(ref "WDCTRL1")
-				(pin "VSYS")
-				(pinfunction "5V_INPUT_VSYS")
+				(pin "39")
+				(pinfunction "VSYS_5V_INPUT_39")
 				(pintype "passive")
 			)
 		)
 		(net
-			(code "51")
+			(code "54")
 			(name "WD_HEARTBEAT")
 			(class "Default")
 			(node
@@ -6914,13 +7267,13 @@
 			)
 			(node
 				(ref "WDCTRL1")
-				(pin "TBD-GPIO-HB")
-				(pinfunction "HEARTBEAT_IN_TBD-GPIO-HB")
+				(pin "4")
+				(pinfunction "GP2_HEARTBEAT_IN_4")
 				(pintype "passive")
 			)
 		)
 		(net
-			(code "52")
+			(code "55")
 			(name "WD_SWCLK")
 			(class "Default")
 			(node
@@ -6937,7 +7290,7 @@
 			)
 		)
 		(net
-			(code "53")
+			(code "56")
 			(name "WD_SWDIO")
 			(class "Default")
 			(node
@@ -6954,7 +7307,7 @@
 			)
 		)
 		(net
-			(code "54")
+			(code "57")
 			(name "unconnected-(JFRAME1-CABLE_SHIELDS-PadTBD-SHIELD)")
 			(class "Default")
 			(node
@@ -6965,7 +7318,7 @@
 			)
 		)
 		(net
-			(code "55")
+			(code "58")
 			(name "unconnected-(JFRAME1-ROBOT_FRAME-PadTBD-FRAME)")
 			(class "Default")
 			(node
@@ -6976,73 +7329,51 @@
 			)
 		)
 		(net
-			(code "56")
-			(name "unconnected-(KWD1-CH2_COM-PadTBD-C2)")
-			(class "Default")
-			(node
-				(ref "KWD1")
-				(pin "TBD-C2")
-				(pinfunction "CH2_COM_TBD-C2")
-				(pintype "passive+no_connect")
-			)
-		)
-		(net
-			(code "57")
-			(name "unconnected-(KWD1-CH2_NC-PadTBD-NC2)")
-			(class "Default")
-			(node
-				(ref "KWD1")
-				(pin "TBD-NC2")
-				(pinfunction "CH2_NC_TBD-NC2")
-				(pintype "passive+no_connect")
-			)
-		)
-		(net
-			(code "58")
-			(name "unconnected-(KWD1-CH2_NO-PadTBD-NO2)")
-			(class "Default")
-			(node
-				(ref "KWD1")
-				(pin "TBD-NO2")
-				(pinfunction "CH2_NO_TBD-NO2")
-				(pintype "passive+no_connect")
-			)
-		)
-		(net
 			(code "59")
-			(name "unconnected-(KWD2-CH2_COM-PadTBD-C2)")
+			(name "unconnected-(KWD1-CH1_NC_UNUSED-Pad12)")
 			(class "Default")
 			(node
-				(ref "KWD2")
-				(pin "TBD-C2")
-				(pinfunction "CH2_COM_TBD-C2")
+				(ref "KWD1")
+				(pin "12")
+				(pinfunction "CH1_NC_UNUSED_12")
 				(pintype "passive+no_connect")
 			)
 		)
 		(net
 			(code "60")
-			(name "unconnected-(KWD2-CH2_NC-PadTBD-NC2)")
+			(name "unconnected-(KWD1-CH2_NO_UNUSED-Pad24)")
 			(class "Default")
 			(node
-				(ref "KWD2")
-				(pin "TBD-NC2")
-				(pinfunction "CH2_NC_TBD-NC2")
+				(ref "KWD1")
+				(pin "24")
+				(pinfunction "CH2_NO_UNUSED_24")
 				(pintype "passive+no_connect")
 			)
 		)
 		(net
 			(code "61")
-			(name "unconnected-(KWD2-CH2_NO-PadTBD-NO2)")
+			(name "unconnected-(KWD2-CH1_NC_UNUSED-Pad12)")
 			(class "Default")
 			(node
 				(ref "KWD2")
-				(pin "TBD-NO2")
-				(pinfunction "CH2_NO_TBD-NO2")
+				(pin "12")
+				(pinfunction "CH1_NC_UNUSED_12")
 				(pintype "passive+no_connect")
 			)
 		)
 		(net
 			(code "62")
+			(name "unconnected-(KWD2-CH2_NO_UNUSED-Pad24)")
+			(class "Default")
+			(node
+				(ref "KWD2")
+				(pin "24")
+				(pinfunction "CH2_NO_UNUSED_24")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "63")
 			(name "unconnected-(PSA1-FACTORY_AC_L-PadC14-L)")
 			(class "Default")
 			(node
@@ -7053,7 +7384,7 @@
 			)
 		)
 		(net
-			(code "63")
+			(code "64")
 			(name "unconnected-(PSA1-FACTORY_AC_N-PadC14-N)")
 			(class "Default")
 			(node
@@ -7064,7 +7395,7 @@
 			)
 		)
 		(net
-			(code "64")
+			(code "65")
 			(name "unconnected-(PSU2-FACTORY_AC_L-PadC14-L)")
 			(class "Default")
 			(node
@@ -7075,7 +7406,7 @@
 			)
 		)
 		(net
-			(code "65")
+			(code "66")
 			(name "unconnected-(PSU2-FACTORY_AC_N-PadC14-N)")
 			(class "Default")
 			(node
@@ -7086,7 +7417,7 @@
 			)
 		)
 		(net
-			(code "66")
+			(code "67")
 			(name "unconnected-(PSU2-FACTORY_PE-PadC14-PE)")
 			(class "Default")
 			(node
@@ -7097,7 +7428,7 @@
 			)
 		)
 		(net
-			(code "67")
+			(code "68")
 			(name "unconnected-(PSU3-FACTORY_AC-PadAC-FACTORY)")
 			(class "Default")
 			(node
@@ -7108,7 +7439,7 @@
 			)
 		)
 		(net
-			(code "68")
+			(code "69")
 			(name "unconnected-(SP1-ACTUATOR_0V-Pad1)")
 			(class "Default")
 			(node
@@ -7119,7 +7450,7 @@
 			)
 		)
 		(net
-			(code "69")
+			(code "70")
 			(name "unconnected-(SP1-PE-Pad2)")
 			(class "Default")
 			(node
@@ -7130,7 +7461,7 @@
 			)
 		)
 		(net
-			(code "70")
+			(code "71")
 			(name "unconnected-(SR1-AUX_NC_OUT-Pad42)")
 			(class "Default")
 			(node
@@ -7141,7 +7472,7 @@
 			)
 		)
 		(net
-			(code "71")
+			(code "72")
 			(name "unconnected-(SR1-SAFETY_OUT3_IN-Pad33)")
 			(class "Default")
 			(node
@@ -7152,7 +7483,7 @@
 			)
 		)
 		(net
-			(code "72")
+			(code "73")
 			(name "unconnected-(SR1-SAFETY_OUT3_OUT-Pad34)")
 			(class "Default")
 			(node
@@ -7163,7 +7494,7 @@
 			)
 		)
 		(net
-			(code "73")
+			(code "74")
 			(name "unconnected-(SRA1-AUX_NC_OUT-Pad42)")
 			(class "Default")
 			(node
@@ -7174,7 +7505,7 @@
 			)
 		)
 		(net
-			(code "74")
+			(code "75")
 			(name "unconnected-(SRA1-SAFETY_OUT3_IN-Pad33)")
 			(class "Default")
 			(node
@@ -7185,7 +7516,7 @@
 			)
 		)
 		(net
-			(code "75")
+			(code "76")
 			(name "unconnected-(SRA1-SAFETY_OUT3_OUT-Pad34)")
 			(class "Default")
 			(node
@@ -7196,7 +7527,7 @@
 			)
 		)
 		(net
-			(code "76")
+			(code "77")
 			(name "unconnected-(U1-VDD_OMITTED-PadTTL-2)")
 			(class "Default")
 			(node
