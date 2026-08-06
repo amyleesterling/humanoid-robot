@@ -2,6 +2,7 @@
 
 Document ID: HR-PROD-030  
 Revision: 0.1  
+Program baseline: HR-30-SYS-R0.2  
 Status: Product baseline; detailed design not released
 
 ## Product intent

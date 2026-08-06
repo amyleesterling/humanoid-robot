@@ -2,6 +2,7 @@
 
 Document ID: HR-WALK-001  
 Revision: 0.1  
+Program baseline: HR-30-SYS-R0.2  
 Status: walking baseline; actuator procurement pending test articles
 
 ## Walking mission
