@@ -4,7 +4,7 @@
 
 Identifier: `HR-V0-FW-P0.1`  
 System baseline: `HR-30-SYS-R0.2`  
-Electrical dependency: `Project Button Electrical V3-P0.5` candidate
+Electrical dependency: `Project Button Electrical V3-P0.6` candidate
 
 ## Purpose and authority boundary
 

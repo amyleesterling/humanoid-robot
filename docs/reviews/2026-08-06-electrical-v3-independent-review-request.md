@@ -1,7 +1,7 @@
-# Project Button HR-V0 Electrical V3-P0.5 Independent Review Request
+# Project Button HR-V0 Electrical V3-P0.6 Independent Review Request
 
 Review date: 2026-08-06  
-Controlled candidate: **Electrical V3-P0.5**
+Controlled candidate: **Electrical V3-P0.6**
 Systems baseline: **HR-30-SYS-R0.2**  
 Status: **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -9,11 +9,13 @@ Status: **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
 Independently audit the accuracy, completeness, and physical implementability of the connected HR-V0 Electrical V3 candidate. Do not treat clean ERC, generated schedules, or this request as functional-safety validation or permission to procure, fabricate, wire, or energize.
 
-The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P0.5 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. V3-P0.1 is historical and did not force the SR1 RESET stage to drop on watchdog loss. V3-P0.2 is historical because it routed a 24 V KWD NC diagnostic net toward an unresolved Pico GPIO. V3-P0.3 is historical because it stopped at opaque feedback-interface blocks. V3-P0.4 added the calculated ISO1212DBQ circuit; P0.5 freezes distinct RESET/ARM operator identities and the Raspberry Pi US regional supply model while retaining physical-terminal and panel/SKU/retention blockers.
+The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P0.6 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. V3-P0.1 is historical and did not force the SR1 RESET stage to drop on watchdog loss. V3-P0.2 is historical because it routed a 24 V KWD NC diagnostic net toward an unresolved Pico GPIO. V3-P0.3 is historical because it stopped at opaque feedback-interface blocks. V3-P0.4 added the calculated ISO1212DBQ circuit; P0.5 froze distinct RESET/ARM operator identities and the Raspberry Pi US regional supply model; P0.6 freezes only the XW E-stop's right/left 2NC contact positions while retaining received proof, the IDEC HW production-transition constraint, and all other physical-terminal and panel/SKU/retention blockers.
 
 ## Controlled inputs
 
 - Architecture and open design basis: `docs/hr-v0-electrical-v3-candidate.md`
+- R27 terminal evidence and limits: `docs/hr-v0-electrical-terminal-closure-r27.md`
+- Received control-device record: `tests/forms/hr-v0-control-device-receiving-template.csv`
 - Native KiCad project: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Root schematic plus ten child sheets: `electrical/kicad/project-button-v3/*.kicad_sch`
 - Watchdog feedback calculation and circuit basis: `docs/hr-v0-watchdog-feedback-p0.1.md`
@@ -48,7 +50,7 @@ The final command is expected to remain nonzero while applicable release gates a
 - 87 native nets: 62 named connected nets plus 25 deliberate auto-generated unconnected nets;
 - 216 unique wire labels synchronized to `wire-number-table.csv`;
 - 43 unresolved component/interface schedule rows;
-- 64 deliberately unresolved `TBD-*` terminal designations;
+- 60 deliberately unresolved `TBD-*` terminal designations;
 - KiCad 10.0.5 ERC: 0 errors and 0 warnings;
 - successful native netlist, eleven-page A3 PDF, and eleven-page SVG export; and
 - exact agreement between every modeled `(reference, terminal, net)` tuple and the KiCad-exported native netlist.
@@ -57,7 +59,7 @@ The final command is expected to remain nonzero while applicable release gates a
 
 1. Open every KiCad sheet and confirm parsing, hierarchy, cross-sheet connectivity, sheet order, warnings, readable text, and absence of misleading whitespace or line-art-only circuitry.
 2. Rerun ERC and native netlist export. Record every compatibility warning, ignored ERC class, command version, and failure. Explain the limited meaning of ERC 0/0.
-3. Compare every terminal and net against the component, connector, terminal, wire, net, BOM and unresolved schedules. Verify the 25 deliberate native unconnected terminals and 64 `TBD-*` terminal designations are intentional and are neither silently shorted nor omitted from the release record.
+3. Compare every terminal and net against the component, connector, terminal, wire, net, BOM and unresolved schedules. Verify the 25 deliberate native unconnected terminals and 60 `TBD-*` terminal designations are intentional and are neither silently shorted nor omitted from the release record. Independently verify `S0:R-1/R-2` and `S0:L-1/L-2` against the manufacturer TOP-up bottom view, and confirm that the project prefixes cannot be mistaken for manufacturer markings. Confirm S1/S2 remain unresolved during IDEC's documented old/new assembly transition.
 4. Verify the dual-channel E-stop, one watchdog NO contact in each SR1 input return, monitored RESET eligibility, direct SR1-to-SRA1 safety-output paths, distinct manual ARM, SRA1 monitored start, K1/K2 coils, mirror-contact EDM, and redundant series actuator-power interruption.
 5. Prove from the schematic and control requirements that E-stop release, RESET, compute boot, watchdog recovery, software restart, brownout, or communication recovery cannot by themselves command actuator power or motion. Specifically confirm that watchdog recovery cannot restore SR1 without physical RESET and cannot restore SRA1/K1/K2 without the later physical ARM. Identify every single fault or common-cause path that could violate that rule.
 6. Review the exact Pilz PNOZ s4 750104 candidate application, selector mode, terminal use, contact protection, reset/ARM timing, diagnostic contacts, and any need for force-guided or otherwise safety-suitable external devices. Do not assign PL/SIL credit without a complete safety calculation and evidence.

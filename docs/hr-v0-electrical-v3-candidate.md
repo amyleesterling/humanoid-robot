@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: native connected design candidate `V3-P0.5`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` is retained as the historical R16 configuration; P0.2 is the historical R17 restart-chain correction; P0.3 is the historical R18 watchdog voltage-boundary correction; P0.4 replaces its opaque feedback blocks with a calculated ISO1212DBQ circuit; P0.5 freezes distinct black RESET and green ARM operator order codes and the official Raspberry Pi US regional model while leaving received terminals, panel human factors, compute-supply SKU/color, and cable retention open.
+Status: native connected design candidate `V3-P0.6`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` is retained as the historical R16 configuration; P0.2 is the historical R17 restart-chain correction; P0.3 is the historical R18 watchdog voltage-boundary correction; P0.4 replaces its opaque feedback blocks with a calculated ISO1212DBQ circuit; P0.5 freezes distinct black RESET and green ARM operator order codes and the official Raspberry Pi US regional model; P0.6 freezes the XW E-stop's two physical NC contact positions while retaining received verification and all remaining open selections.
 
 - Native source: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Generator: `tools/generate_hr_v0_electrical_v3.py`
@@ -60,7 +60,9 @@ Required sequence:
 4. The operator separately actuates and releases `ARM`; only then may `SRA1` energize K1/K2.
 5. Motion remains inhibited until contactor feedback, actuator state, limits, configuration, and a fresh trajectory all pass in software.
 
-P0.5 freezes `S1` as IDEC `HW1B-M1F10-B` (black) with the explicit `RESET` legend and `S2` as IDEC `HW1B-M1F10-G` (green) with the explicit `ARM` legend. IDEC's current US pages and `HW Series Catalog_Screw` dated 2026-07-23 identify both as flush momentary 1NO screw-terminal operators and identify `B` and `G` as the black and green color codes. This corrects the earlier same-black-operator ambiguity. It does not freeze panel spacing, guarding, location, physical terminal numbers, or human-factors acceptance; those require the received-device and panel records in `tests/forms/hr-v0-control-device-receiving-template.csv`.
+P0.5 freezes `S1` as IDEC `HW1B-M1F10-B` (black) with the explicit `RESET` legend and `S2` as IDEC `HW1B-M1F10-G` (green) with the explicit `ARM` legend. IDEC's current US pages and `HW Series Catalog_Screw` dated 2026-07-23 identify both as flush momentary 1NO screw-terminal operators and identify `B` and `G` as the black and green color codes. This corrects the earlier same-black-operator ambiguity. IDEC's 2026-07-14 specification-change notice also states that old and redesigned assemblies are being shipped under the same complete-switch order codes and some internal BOM part numbers changed. Therefore S1/S2 physical terminals, panel spacing, guarding, location and human-factors acceptance remain open until the received-device and panel records in `tests/forms/hr-v0-control-device-receiving-template.csv` are executed.
+
+P0.6 freezes only the manufacturer-supported XW E-stop contact positions. In the IDEC screw-terminal non-illuminated 2NC bottom view, with `TOP` up, one NC pair marked `1-2` is on the right and one is on the left. Project channel 1 is allocated to the right pair and channel 2 to the left pair. KiCad uses `R-1`, `R-2`, `L-1`, and `L-2` to keep the duplicate manufacturer markings unique; `R-` and `L-` are project prefixes, not markings claimed to exist on the switch. Received orientation, markings, positive-opening continuity and channel separation remain mandatory.
 
 Any E-stop opening, watchdog-channel opening, SR1 dropout, channel discrepancy, K1/K2 mirror-contact fault, or SRA1 fault drops the final outputs. E-stop release, heartbeat restoration, controller reboot, a held RESET, or stale commands cannot energize K1/K2. After any dropout the complete RESET-then-ARM sequence is required.
 
@@ -111,7 +113,7 @@ Before this candidate can replace V2.1:
 
 ## Native candidate validation record
 
-The generated `V3-P0.5` candidate currently contains:
+The generated `V3-P0.6` candidate currently contains:
 
 - one root index plus ten focused child sheets;
 - 55 component blocks and 241 modeled terminals;
@@ -119,11 +121,11 @@ The generated `V3-P0.5` candidate currently contains:
 - 216 unique wire labels synchronized to `wire-number-table.csv`;
 - 53 nonzero-quantity V3 BOM records;
 - 43 unresolved component/interface records; and
-- 64 terminal designations deliberately retained as `TBD-*`.
+- 60 terminal designations deliberately retained as `TBD-*`.
 
 KiCad 10.0.5 parsed the root and all ten children, exported the native netlist, an eleven-page A3 PDF, and eleven SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 55 native component references and all 241 exported `(reference, terminal, net)` nodes against the generated schedules, including the 25 deliberate no-connect terminals. It also freezes every ISO1212 pin and supporting-network connection. During P0.4 development this review caught and corrected an initially misdrawn `RSENSE` return: TI requires `RSENSE` between `SENSE` and `IN`, not from `IN` to field ground. Clean ERC did not detect that application error.
 
-The export is rendered at 150 dpi and visually checked after each material layout change. The earlier audit corrected the watchdog low-side coil path, made the shared TTL ground explicit, and replaced duplicate per-component wire labels. P0.4 adds the pin-level feedback sheet and 216 synchronized wire labels; P0.5 corrects RESET/ARM operator identity and records the official compute-supply regional model without inferring its unmapped SKU. Page-level visual QA is part of the recorded validation for this candidate.
+The export is rendered at 150 dpi and visually checked after each material layout change. The earlier audit corrected the watchdog low-side coil path, made the shared TTL ground explicit, and replaced duplicate per-component wire labels. P0.4 adds the pin-level feedback sheet and 216 synchronized wire labels; P0.5 corrects RESET/ARM operator identity and records the official compute-supply regional model without inferring its unmapped SKU; P0.6 replaces four E-stop `TBD-*` terminals with controlled right/left contact-position designators. Page-level visual QA is part of the recorded validation for this candidate.
 
 The KiCad CLI logs Windows registry-access messages for `HKCU\Software\kicad-cli` in this restricted execution environment. Every command still returned exit code 0 and produced the expected artifact; the messages are retained in `validation/kicad-cli.log` rather than hidden.
 

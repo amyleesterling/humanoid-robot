@@ -70,7 +70,7 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P0.5", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P0.6", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
@@ -107,7 +107,7 @@ def main() -> int:
         for row in connector_rows
     )
     require(actual_connector == expected_connector, "connector schedule differs from generated model", failures)
-    require(sum(row["terminal"].startswith("TBD-") for row in connector_rows) == 64,
+    require(sum(row["terminal"].startswith("TBD-") for row in connector_rows) == 60,
             "controlled TBD-terminal count changed; review and update checker intentionally", failures)
 
     expected_net_counts = Counter(pin.net for _, _, pin in all_pins)
@@ -194,8 +194,8 @@ def main() -> int:
     require(len(unresolved_rows) == 43, f"expected 43 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
 
     require(pin_map(components, "S0") == {
-        "TBD-C1A": "SR1_S11", "TBD-C1B": "WD1_SAFETY_IN",
-        "TBD-C2A": "SR1_S21", "TBD-C2B": "WD2_SAFETY_IN",
+        "R-1": "SR1_S11", "R-2": "WD1_SAFETY_IN",
+        "L-1": "SR1_S21", "L-2": "WD2_SAFETY_IN",
     }, "E-stop channel mapping changed", failures)
     require(pin_map(components, "KWD1")["11"] == "WD1_SAFETY_IN" and
             pin_map(components, "KWD1")["14"] == "SR1_S12" and

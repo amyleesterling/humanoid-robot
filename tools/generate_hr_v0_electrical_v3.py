@@ -14,6 +14,7 @@ import csv
 import hashlib
 import json
 import math
+import re
 import shutil
 import subprocess
 import sys
@@ -26,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P0.5"
+REV = "V3-P0.6"
 DATE = "2026-08-06"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 NS = uuid.UUID("4cb40c84-3194-4ded-b2c7-d78df616c5c0")
@@ -189,10 +190,11 @@ def sheets() -> list[Sheet]:
                "Each SR1 input return contains one E-stop NC and one watchdog NO contact; RESET cannot energize K1/K2.")
     s2.components = [
         Component("S0", "IDEC XW1E-BV402M-R dual-NC E-stop candidate",
-                  [pn("S0", "TBD-C1A", "CH1 A", "SR1_S11", "left"), pn("S0", "TBD-C1B", "CH1 B", "WD1_SAFETY_IN", "right"),
-                   pn("S0", "TBD-C2A", "CH2 A", "SR1_S21", "left"), pn("S0", "TBD-C2B", "CH2 B", "WD2_SAFETY_IN", "right")],
-                  "SELECTION REQUIRED - EXACT CANDIDATE RECORDED", "Candidate is documented as 40 mm mushroom, turn/pull reset, 2NC, screw terminal and terminal cover. Freeze physical contact-block mapping from received-device bottom view and continuity test both positively opening channels.",
-                  "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/emergency-stop-switches/xw-22mm-estop/xw1e-bv402m-r", position=(75, 82), width=82),
+                  [pn("S0", "R-1", "CH1 RIGHT NC MARK 1", "SR1_S11", "left"), pn("S0", "R-2", "CH1 RIGHT NC MARK 2", "WD1_SAFETY_IN", "right"),
+                   pn("S0", "L-1", "CH2 LEFT NC MARK 1", "SR1_S21", "left"), pn("S0", "L-2", "CH2 LEFT NC MARK 2", "WD2_SAFETY_IN", "right")],
+                  "PROPOSED - TERMINAL POSITIONS FROZEN; RECEIVED VERIFICATION REQUIRED", "Candidate is documented as 40 mm mushroom, turn/pull reset, 2NC, screw terminal and terminal cover. With TOP up in the manufacturer bottom view, project channel 1 is the right NC pair marked 1-2 and channel 2 is the left NC pair marked 1-2. R-/L- prefixes are project-unique KiCad designators, not extra manufacturer markings. Verify orientation, markings and both positively opening NC channels on the received device before wiring.",
+                  "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/emergency-stop-switches/xw-22mm-estop/xw1e-bv402m-r",
+                  "IDEC XW product page plus XW-Indicator-Datasheet terminal arrangement, rechecked 2026-08-06; exact received device still requires bottom-view and continuity verification.", position=(75, 82), width=82),
         pnoz("SR1", (210, 95), {"S11":"SR1_S11", "S12":"SR1_S12", "S21":"SR1_S21", "S22":"SR1_S22", "S34":"SR1_START_RETURN",
                                    "13":"SRA1_S11", "14":"SRA1_S12", "23":"SRA1_S21", "24":"SRA1_S22",
                                    "33":"INTENTIONALLY_UNUSED_SR1_33", "34":"INTENTIONALLY_UNUSED_SR1_34",
@@ -837,6 +839,13 @@ def validate_with_kicad(cli: Path) -> int:
         if result.returncode:
             rc = result.returncode
             break
+    # KiCad's SVG writer can leave line-ending spaces in newly emitted groups.
+    # Normalize only trailing horizontal whitespace so generated exports remain
+    # deterministic and pass repository whitespace checks without changing art.
+    if rc == 0:
+        for svg in exports.glob("*.svg"):
+            content = svg.read_bytes()
+            svg.write_bytes(re.sub(rb"[ \t]+(?=\r?\n)", b"", content))
     (validation / "kicad-cli.log").write_text("\n".join(logs), encoding="utf-8")
     return rc
 

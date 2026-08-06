@@ -1,4 +1,4 @@
-# Project Button HR-V0 Electrical V3-P0.5
+# Project Button HR-V0 Electrical V3-P0.6
 
 **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 

@@ -20,10 +20,10 @@ W1018,01_external_sources.kicad_sch,JC1,TBD-OUT+,PROTECTED +24V,SAFETY_24V
 W1019,01_external_sources.kicad_sch,JC1,TBD-OUT-,0V,SAFETY_0V
 W1020,01_external_sources.kicad_sch,PSU3,USB-C-VBUS,+5V COMPUTE,COMPUTE_5V
 W1021,01_external_sources.kicad_sch,PSU3,USB-C-GND,COMPUTE GND,COMPUTE_0V
-W2001,02_estop_eligibility.kicad_sch,S0,TBD-C1A,CH1 A,SR1_S11
-W2002,02_estop_eligibility.kicad_sch,S0,TBD-C2A,CH2 A,SR1_S21
-W2003,02_estop_eligibility.kicad_sch,S0,TBD-C1B,CH1 B,WD1_SAFETY_IN
-W2004,02_estop_eligibility.kicad_sch,S0,TBD-C2B,CH2 B,WD2_SAFETY_IN
+W2001,02_estop_eligibility.kicad_sch,S0,R-1,CH1 RIGHT NC MARK 1,SR1_S11
+W2002,02_estop_eligibility.kicad_sch,S0,L-1,CH2 LEFT NC MARK 1,SR1_S21
+W2003,02_estop_eligibility.kicad_sch,S0,R-2,CH1 RIGHT NC MARK 2,WD1_SAFETY_IN
+W2004,02_estop_eligibility.kicad_sch,S0,L-2,CH2 LEFT NC MARK 2,WD2_SAFETY_IN
 W2005,02_estop_eligibility.kicad_sch,SR1,A1,24V SUPPLY,SAFETY_24V
 W2006,02_estop_eligibility.kicad_sch,SR1,A2,0V SUPPLY,SAFETY_0V
 W2007,02_estop_eligibility.kicad_sch,SR1,S11,INPUT CH1 FEED,SR1_S11
