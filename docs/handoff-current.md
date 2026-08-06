@@ -32,7 +32,7 @@ ERC validates modeled connectivity and annotation only. It does not establish ph
 
 ## Review history and pending reviews
 
-Eleven review/control rounds are complete and recorded in `docs/review-ledger.md`; R11 is in progress and R12 is requested. R11 surfaced the missing-authoritative-ECAD provenance blocker, and R13 corrected the controlled repository package. Fable and GPT Sol should continue working from the same corrected package without seeing one another's conclusions until both reports are delivered.
+Eleven review/control rounds are complete and recorded in `docs/review-ledger.md`; R11 is complete and R12 is requested. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R13 staged the authoritative-ECAD provenance correction. GPT Sol should complete R12 independently before seeing Fable's conclusions.
 
 ## Principal unresolved engineering blockers
 
@@ -46,6 +46,8 @@ Eleven review/control rounds are complete and recorded in `docs/review-ledger.md
 8. Sensor sheets are functional interfaces, not complete production circuits or released PCB designs.
 9. No released real-time controller, firmware, state-machine implementation, bus timing measurement, HIL evidence, or reset-to-motion fault test exists.
 10. No physical release-gate test has passed; fixtures, calibrated instrumentation, raw records, accountable owners, approvers, FMEA/FTA, and common-cause review remain incomplete.
+
+R11 adds material blockers or invalidated assumptions: the arm and likely leg mass allocations do not close; the 4S battery/14.8 V/torque basis is inconsistent; hip-roll torque and knee speed do not screen at the stated upper envelope; watchdog heartbeat restoration may re-energize contactors without monitored reset; safety integrity targets and many verification procedures are undefined; and the TCP and joint-speed limits conflict at full reach. See `docs/reviews/2026-08-06-fable-review-disposition.md`.
 
 ## Requested independent-review output
 

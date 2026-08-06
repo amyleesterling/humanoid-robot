@@ -1,0 +1,327 @@
+﻿Independent Engineering Review — Project Button HR-30-SYS-R0.2
+Review date: 2026-08-06 Reviewed configuration: GitHub amyleesterling/humanoid-robot, branch main, commit ee276af (package baseline HR-30-SYS-R0.2, baseline date 2026-08-06); website artifacts for Project Button Electrical V2.1 fetched 2026-08-06 from project-button-workshop.amysterling.chatgpt.site (design basis, ERC JSON, unresolved-selections CSV, wire-number table, connector schedule, correction review dated 2026-08-05, schematic sheet content). Reviewer role: independent robotics systems engineering review — mechanical, actuation, electrical, power/thermal, walking dynamics, controls, verification. Review status of this document: engineering review opinion only. It is not a design approval, a certification, a functional-safety assessment under ISO 13849/IEC 62061, or permission to fabricate or energize anything.
+
+
+________________
+
+
+0. Review limitations (read first)
+1. The native KiCad source could not be opened by this review. The KiCad ZIP (project-button-v2-preliminary-kicad-source.zip) is hosted only on the website and could not be retrieved into the review environment (binary download blocked). The electrical review below is based on: the published ERC JSON (KiCad 10.0.5, 2026-08-05, 0 violations, 14 sheets checked, 4 rule classes suppressed), the 168-row wire-number table, the 106-item unresolved-selections register, the correction-review record, the design-basis document, and the 15-sheet schematic PDF content. Pin-by-pin verification of every net against every symbol was therefore not performed and remains open. This limitation is itself Finding B-1: the "authoritative repository" does not contain the electrical source it claims as evidence.
+2. No physical hardware exists; nothing could be measured. All "verification" here is document review plus independent recalculation plus manufacturer-source checks.
+3. Manufacturer values were checked against ROBOTIS e-Manual pages, CubeMars product pages, and ROBOTIS docs pages as retrieved 2026-08-06. They must be re-checked at procurement, as the package itself correctly requires.
+
+
+________________
+
+
+1. Executive assessment
+The package is an unusually disciplined concept-stage baseline. Its greatest strength is epistemic honesty: it consistently distinguishes stall from continuous torque, labels 106 electrical selections as open rather than inventing ratings, refuses to treat a clean ERC as buildability, stages capability behind test gates, and self-declares most of its own blockers. The staged HR-V0 → HR-30W plan is a credible program structure.
+
+
+It is not yet an engineering design. There is no dimensioned CAD, no drawing, no tolerance stack, no structural calculation beyond two static torque sums, no firmware, no test procedure documents, and no electrical source in the controlled repository. More importantly, this review found five substantive technical defects the package has not identified itself: an arm mass allocation that is arithmetically impossible with the proposed actuators; a missing torque analysis for the hip roll axes whose screening margin is negative in direct drive; a knee-speed screening deficit at the upper commanded gait band; a battery-chemistry/voltage/torque inconsistency at the heart of the HR-30W sizing basis; and a watchdog-permit topology that can re-energize actuator power without a monitored reset. None of these is fatal to the program; all of them invalidate specific numbers the package currently leans on.
+Readiness verdicts
+Question
+	Verdict
+	Basis
+	HR-V0 build readiness
+	NOT READY — matches the package's own status
+	No released CAD, drawings, structural calcs, gripper design, guard design, or harness definition (B-2). The concept and load model are sound inputs to detailed design.
+	HR-V0 energization readiness
+	NOT READY — matches the package's own status
+	Every fuse, conductor, connector, E-stop device, output protection, and coil suppression selection is open (B-3); no schematic is released into the controlled repo (B-1); no built article exists. The "PRELIMINARY—NOT APPROVED FOR ENERGIZATION" marking is correct and consistently applied.
+	HR-30A design readiness
+	NOT READY
+	Arm mass allocation does not close against its own BOM (B-4); 12 V/50 A distribution, master disconnect, and supply are SELECTION REQUIRED; head actuator payload check absent; no CAD (E0, correctly self-assessed).
+	HR-30W walking feasibility
+	UNPROVEN, currently doubtful as-baselined; recoverable
+	Negative or unanalyzed screening margins at hip roll (B-7) and knee speed (M-3); mass budget does not close (B-4); battery/voltage basis inconsistent (B-5); safe power loss unresolved (B-6, self-declared). Feasible variants exist (see §7). The W0–W5 gate structure is the right instrument to resolve this.
+	Readiness for qualified mechanical review
+	NOT READY for design review; READY for concept review
+	A design reviewer has nothing dimensioned to review. The load model, proof-factor policy, and dual-support rule are reviewable concepts.
+	Readiness for qualified electrical review
+	PARTIALLY READY for architecture review; NOT READY for design review
+	Architecture (dual-channel E-stop, PNOZ s4 monitored start, series contactors, EDM, star-point, precharge) is coherent and consistent with the Pilz manual as described. Design review is blocked by B-1 and B-3 and by the watchdog latch gap (M-1).
+	Readiness for functional-safety review
+	NOT READY
+	No safety-requirements specification, no required Performance Level (PLr) assignment for any safety function, no FMEA/FTA/common-cause analysis (self-declared at G-24), unjustified fault exclusions in the start/feedback loop, non-safety-rated watchdog latch (M-1, M-2).
+	
+
+Answers to the six review objectives are given in §7.
+
+
+________________
+
+
+2. BLOCKER findings
+Severity definitions: BLOCKER = must be resolved before the package can legitimately advance to the gate it is aimed at (HR-V0 build/energization, HR-30A design freeze, or leg procurement). MAJOR = technical defect, contradiction, or missing analysis that invalidates a stated number or claim. MINOR = documentation, consistency, or completeness defect.
+B-1. The authoritative repository does not contain the electrical design it cites as evidence
+* Where: electrical/README.md ("No buildable schematic exists yet. This directory will hold source ECAD…") vs docs/evidence-maturity.md row "HR-V0 electrical connectivity — E2 — connected KiCad V2.1; 15 sheets; 0 ERC errors" vs docs/configuration-management.md ("Project Button Electrical V2.1 identifies the connected KiCad electrical package").
+* Defect: The E2 maturity claim rests on a KiCad package that exists only as a website download, outside the repository that declares itself "the engineering source of truth." A reviewer cloning the authoritative repo finds an empty electrical directory and a statement that no schematic exists, directly contradicting the dashboard. Website hosting is explicitly defined by the package's own CM rules as "a presentation of controlled artifacts, not an engineering revision" — which means, by the package's own rules, the KiCad V2.1 source is currently uncontrolled.
+* Consequence: Qualified electrical review cannot be anchored to a controlled configuration; SHA-256 manifests on the website do not substitute for revision control in the declared source of truth.
+* Evidence to close: Commit the native KiCad 10 project (all 15 .kicad_sch files), ERC output, netlist, wire/connector tables, and SHA256SUMS into electrical/ under a tagged revision, and correct either electrical/README.md or the dashboard.
+B-2. No buildable mechanical definition exists for HR-V0 (self-declared; confirmed)
+* Where: cad/README.md, docs/mechanical.md ("Status: preliminary; CAD and drawing release are not yet present"), docs/evidence-maturity.md (HR-V0 mechanism E1).
+* Defect (confirmed by inspection): There are no dimensioned drawings, no shaft/bearing sizing, no fastener pattern, no plate thickness, no hard-stop design, no gripper geometry beyond "OpenMANIPULATOR-X-derived," no guard design, and no tolerance stack anywhere in the package. The four STL files published on the website are r0 print-plate meshes with no drawing control (see M-10). The structural checklist in docs/mechanical.md §"Structural release calculations still required" is accurate and complete as a to-do list; none of it exists.
+* Evidence to close: The deliverables list in cad/README.md and docs/dimension-control.md §"CAD deliverables for design freeze" is the correct closure list; execute it. Independent recalculation of the two existing torque sums confirms them (§6.1), so the load inputs to that CAD work are sound.
+B-3. Every electrical protection and conductor selection is open; energization is correctly impossible (self-declared; confirmed and quantified)
+* Where: docs/electrical.md §"Branches and conductors" (F0–F3 SELECTION REQUIRED); unresolved-selections register (106 items across all 15 sheets, including every fuse FL1–FL6, FR1–FR6, FU31–FU53, F0–F3, FHR0, FBAT1, all coil suppression, PNOZ output protection FSR1/FSRH1, E-stop device S0/SH0, AC inlet, main disconnect, and all terminal blocks); bom/bom.csv BOM-012/015/019/020.
+* Confirmation: This review did not recalculate conductor and fuse sizes, because the required inputs genuinely do not exist — prospective fault current at the LRS-350-12 output, harness lengths, bundling, and connector series are all unselected. The package's refusal to invent these numbers is correct, and the review instruction "recalculate conductor and protection sizing without inventing missing inputs" therefore terminates at the same conclusion the package reached: not sizable yet. The LRS-350-12 gap the package identifies is real: the Mean Well spec (rev. 2025-09-12) gives 110–140 % hiccup overload and inrush but no I²t or sustained fault-current curve, so fuse discrimination requires either a measured prospective-fault test at the supply output or a conservative assumption set, documented as such.
+* Evidence to close: per gate G-04 as written, plus: measured or manufacturer-stated LRS-350-12 current-limit foldback behavior into a low-impedance fault; harness length/gauge table; connector contact ratings (note the DYNAMIXEL 4-pin JST-style contacts are rated ≈3 A per contact against a 5.5–5.9 A actuator stall draw — branch protection must account for the connector, not just the wire; see M-6).
+B-4. The mass budget does not close, and one allocation is arithmetically impossible
+* Where: docs/full-body-loads.md §"Mass budget"; bom/hr30a-bom.csv; docs/walking-system.md §"Candidate drivetrain".
+* Defect 1 (arithmetic, new): "Two complete arms and hands: target 1.30 kg." The HR-30A BOM for the arms alone is 4× XM540 (shoulder pitch/roll) + 2× XM540 (elbow) + 2× XM430 (wrist) + 2× XM430 (gripper) = 6×165 g + 4×82 g = 1.318 kg of actuators with zero grams remaining for links, brackets, bearings, fasteners, fingers, covers, and cable (ROBOTIS masses verified 2026-08-06: XM540-W270 = 165 g, XM430-W350 = 82 g). Even the 1.50 kg maximum leaves 182 g for all structure of two complete arms, which is not credible for the specified aluminum primary load paths. The target is not tight — it is impossible as allocated.
+* Defect 2 (screening, new): "Two legs and feet: target 3.40 kg / max 3.80 kg." Bottom-up screening (§6.4): 12×165 g actuators (1.98 kg, confirmed) + six 1.5:1 belt stages (~0.27 kg) + twelve dual-support bearing/shaft sets (~0.36 kg) + leg structure for a 335 mm-per-leg aluminum skeleton (~1.3–1.7 kg) + instrumented feet with 4 load cells, ADC, and soles (~0.35 kg) + leg harness (~0.25 kg) ≈ 4.5–4.9 kg, i.e. 0.7–1.5 kg over the maximum. The package correctly names leg mass "the controlling CAD budget" but its allocation is likely infeasible, not merely aggressive.
+* Consequence: Every actuator-sizing number in the package assumes ≤8.0 kg. The package itself forbids treating 8.0 kg as fact until G-20 — correctly — but the allocations that would deliver 8.0 kg are internally inconsistent, so the walking torque screening in full-body-loads.md is optimistic at its foundation. At a realistic 9–10 kg, the §6.3 hip-roll and ankle numbers worsen by 12–25 %.
+* Evidence to close: G-20 ledger as specified (which is well-specified), started now with supplier masses rather than at CAD freeze; reallocation or actuator strategy change for the arms; a leg mass buildup with real part masses before any leg procurement.
+B-5. The 4-series battery, the 14.8 V actuator limit, and the 17.6 N·m torque basis cannot all be true
+* Where: docs/walking-system.md §"Energy system" ("onboard, professionally assembled 4-series battery"), §"Candidate drivetrain" (11.7 N·m at 14.8 V; 17.6 N·m post-reduction); docs/releases/hr-30w.md; bom/hr30w-bom.csv WALK-BOM-012; ROBOTIS XH540-W270 spec: input voltage 10.0–14.8 V (recommended 12.0 V), verified 2026-08-06.
+* Defect (new): A "4-series" pack constrains chemistry in a way the package has not connected to its own torque math:
+   * 4S Li-ion/LiPo: 14.8 V nominal but 16.8 V at full charge — 2.0 V above the XH540's published absolute input maximum of 14.8 V. Direct battery drive would put every actuator out of spec for the first part of every discharge. A regulator solves it at a cost in mass, heat, and efficiency that appears nowhere in the mass/power budget.
+   * 4S LiFePO₄: 14.6 V max charge (compliant) but 12.8 V nominal sagging toward 12 V under load — at which the same actuator publishes 9.9 N·m stall, giving 14.9 N·m post-reduction, not 17.6 N·m. The package's own screening value for the ankle (9.42 N·m) then consumes 63 % of ideal reduced stall, and continuous capability (typically 25–35 % of stall for this actuator class) is far below it.
+   * The 14.0–14.8 V tether phases (HR-30C/D) can hold 14.8 V; the untethered phase cannot, under either chemistry, without either a spec violation or a torque derate.
+* Consequence: The HR-30W feasibility story quietly assumes tether-voltage torque on battery power. The package's rule that stall is never a usable rating protects it from overclaiming, but the chemistry/voltage/torque triangle must be closed before G-17 and before any claim that Baseline A "can support walking at the stated mass."
+* Evidence to close: pick the chemistry constraint first (G-17), restate all leg torque screening at the pack's loaded end-of-discharge voltage, and add regulator/derate mass and heat to the budgets if Li-ion is chosen.
+B-6. Safe behavior after drive-energy loss is unresolved and blocks untethered walking (self-declared; concur)
+* Where: docs/walking-system.md §"Fall and stop behavior"; gates G-18, G-23; risks R-013, R-017; requirement SAFE-009; docs/evidence-maturity.md row "Safe power-loss response: E0".
+* Confirmation: The candidate joints are ~272.5:1 + 1.5:1 gearmotors with no brake. Backdrivability under an 8–10 kg toppling load is uncharacterized; the assumption that power loss = collapse is the correct conservative default. The package's honesty here is exactly right: untethered walking is not credible until G-18/G-23 close, and the package says so. This review adds one quantitative note: at 45 J upper-bound fall energy (§6.2, confirmed), head-impact energy is in the range where hard-stop head/shell design, not just padded flooring, determines damage outcomes; W4 as written covers this.
+* Evidence to close: as gated — pose-by-pose collapse analysis, then a selected mitigation (brake, spring counterbalance at knee/hip pitch, retained-control ride-down, or accepted-fall design) with restrained fault tests.
+B-7. Leg torque analysis covers one joint out of six; the second-most-loaded axis has a negative screening margin as-baselined
+* Where: docs/full-body-loads.md §"Leg feasibility bounds" (ankle-pitch-only analysis); docs/walking-system.md §"Candidate drivetrain" ("Hip yaw, hip roll, and ankle roll begin direct drive").
+* Defect (new): The only published leg torque calculation is the ankle case at a 40 mm CoM offset. There is no analysis for hip roll — which in single support carries the full body weight on a lateral moment arm of roughly half the hip spacing. Independent screening (§6.3): with W_H = 125 mm, CoM-to-stance-hip offset ≈ 62.5 mm → static hip-roll torque ≈ 4.9 N·m at 8 kg (6.1 N·m at 10 kg), and with the package's own 2× dynamic factor ≈ 9.8–12.3 N·m — at or above the XH540's 11.7 N·m ideal stall in the planned direct-drive configuration, and roughly 3× its plausible continuous rating. Hip roll is loaded this way once per step, every step. Ankle roll sees a related lateral CoP demand bounded by the 42 mm half-foot-width. Knee torque in the controlled-kneel strategy (their designated safe stop) is likewise unanalyzed.
+* Consequence: The provisional statement that Baseline A can support standing and walking is not supported for 9 of 12 leg axes. The reserved packaging space for 1.5:1 stages on the roll axes is prudent but even 1.5:1 yields ~14.9–17.6 N·m ideal stall against a ~10–12 N·m recurring demand — workable only if measured continuous torque at gait duty cycle clears it, which is exactly what W0 must measure.
+* Evidence to close: extend the screening table to all six joint types (static + dynamic + kneel/stand-up cases) at 10 kg and end-of-discharge voltage before G-14; move hip roll into the reduced-joint set unless W0 data proves otherwise.
+
+
+________________
+
+
+3. MAJOR findings
+M-1. The watchdog permit can restore actuator power without a monitored reset
+* Where: docs/electrical.md §"Safety chain" (logical chain places watchdog permit between the PNOZ reset/EDM stage and the "separately protected K1 and K2 coils"); wire table W2076 HR30_WATCHDOG_PERMIT_24V (SRH1↔FSRH1), W2036/W2039 coil-command nets; docs/control.md (three missed heartbeats "drop permit and latch a restart-required fault"); BOM-013 (RP2040-class watchdog, "not safety-rated").
+* Defect (new): With the permit contact in series between the safety-relay outputs and the contactor coils, a heartbeat loss opens K1/K2 while the PNOZ outputs remain closed. When the heartbeat returns, the coils re-energize with no falling-edge monitored start and no EDM check, because the PNOZ never saw a stop. The claimed "latch" exists only in RP2040 firmware — a non-safety-rated device the package itself disclaims. This is a reset-to-motion-prevention gap in exactly the sense the package's own rules ("Reset shall not cause motion… no automatic restart") prohibit, and contactor re-closure under load also becomes a wear/welding mechanism.
+* Evidence to close: either (a) route the watchdog permit into the PNOZ input/start circuit so any permit drop forces a full monitored-start cycle, (b) add a hardware latch (e.g. permit relay with electrically held set path that requires the physical reset chain to re-set), or (c) justify the firmware latch with a documented fault analysis accepted by the functional-safety review. TEST-SAFE-002 should explicitly test "heartbeat restored after dropout → power must NOT return without physical reset."
+M-2. No safety function has a specified required Performance Level (or any quantified integrity target)
+* Where: absent throughout; closest artifacts are docs/electrical.md (component choices) and G-24 (governance gap, which names FMEA/FTA but not PLr/SIL).
+* Defect (new): The package selects PL e-capable components (PNOZ s4) and a sound dual-channel architecture, but never states, for any safety function (E-stop, watchdog stop, guard/exclusion, fall restraint), the required Performance Level per ISO 13849-1:2023 (or SIL per IEC 62061), the category/structure claim, DC/CCF assumptions, or which fault exclusions are being taken (it does note the PNOZ start-loop cross-short limitation — good — but doesn't frame it as a fault exclusion needing justification). A functional-safety review cannot begin without a safety-requirements specification.
+* Evidence to close: a safety-function list with PLr assignments from the risk assessment, per function: architecture, category, channel structure, diagnostics, and claimed/excluded faults. This is cheap to write now and would materially raise review readiness.
+M-3. No joint-velocity analysis exists; knee swing-speed screening is negative at the upper gait band
+* Where: docs/walking-system.md §"Initial performance envelope" (0.10–0.20 m/s, 120 mm max step, 20 mm clearance) and §"Candidate drivetrain"; ROBOTIS XH540-W270: 46 rev/min no-load at 14.8 V (verified 2026-08-06).
+* Defect (new): The package screens torque but never speed. 46 rev/min = 276 °/s at the servo; after 1.5:1, 184 °/s at the joint, no-load, at 14.8 V — substantially less under load and at LiFePO₄ voltages (~150 °/s no-load at 12.8 V). Swing-phase screening (§6.5): at 0.18–0.20 m/s with ~120 mm steps, swing time ≈ 0.3–0.4 s, and a knee that must flex ~25–35° and re-extend within one swing to achieve 20 mm toe clearance needs peak knee rates of ~150–250 °/s — at or beyond no-load capability. The lower band (0.10–0.15 m/s) screens as marginal-feasible. OP3 walks with the same actuator class, which supports feasibility at small scale and modest speed, but HR-30 is 1.5× taller and ~2.3–2.9× heavier.
+* Evidence to close: add a joint-velocity/torque trajectory screening (even a simple sagittal gait model) against the actuator speed-torque curve at worst-case voltage before G-14; expect either a speed-band reduction for HR-30W acceptance or a knee transmission change.
+M-4. Published stall-torque citation for the V0 shoulder actuator is wrong (conservative direction)
+* Where: docs/mechanical.md ("The proposed XM540-W270-T is published at 9.9 N·m stall torque at 12 V"); bom/bom.csv BOM-005 ("9.9 N m published stall torque").
+* Defect (new): ROBOTIS publishes 10.6 N·m at 12.0 V, 4.4 A for the XM540-W270 (10.0 N·m at 11.1 V; 12.9 N·m at 14.8 V), verified against the e-Manual 2026-08-06. 9.9 N·m at 12 V is the XH540-W270 figure — the two models have been cross-contaminated. The error is conservative (understates margin) and does not change any conclusion (margin ratio 10.6/3.83 ≈ 2.8× on the intermittent sizing value), but a package whose credibility rests on primary-source discipline should not contain a mis-attributed primary value, and it propagated into the BOM.
+* Evidence to close: correct both files; re-run the claim audit; add model/voltage/date to every torque citation.
+M-5. SYS-004's two limits contradict each other at full reach
+* Where: requirements/requirements.csv SYS-004 ("tool-center speed shall not exceed 0.15 m/s and joint speed shall not exceed 30 deg/s"); docs/system-specification.md §2.
+* Defect (new, confirmed by calculation §6.6): 30 °/s = 0.524 rad/s; at the 0.36 m maximum reach a shoulder-only motion produces 0.19 m/s at the tool center, and combined joint motion up to ~0.27 m/s — both above the 0.15 m/s limit. As written, a controller respecting the joint-speed limit can violate the TCP limit. The requirement is testable but internally inconsistent; the software must enforce a pose-dependent joint-speed ceiling (≈24 °/s shoulder-only at full reach, lower combined), which no document specifies.
+* Evidence to close: restate SYS-004 as TCP-limit-governing with joint speeds derived per pose, or lower the joint cap; specify the enforcement mechanism in docs/control.md; make TEST-CTRL-001 measure TCP speed at worst-case pose, not joint speed alone.
+M-6. Actuator connector and radial-load limits are the binding hardware constraints and are not yet in any table
+* Where: docs/electrical.md (generic "connector limits"); docs/mechanical.md (dual-support rule); ROBOTIS specs verified 2026-08-06: XH540 radial load limit 40 N, stall current 5.9 A at 14.8 V; XM540 stall 4.4 A at 12 V; DYNAMIXEL 4-pin/3-pin contacts commonly rated ≈3 A.
+* Defect (new, quantified): (a) Single-support foot loads (~78 N static at 8 kg, well over 150 N with the 2× dynamic factor) exceed the actuator's 40 N radial rating by 2–4×; the package's dual-supported-shaft rule is therefore mandatory, not preferred, and should be stated with the 40 N number so no future variant relaxes it. (b) Stall current (4.4–5.9 A) exceeds the ≈3 A per-contact rating of the standard DYNAMIXEL power-in connector; branch current limits, fusing, or upgraded power entry must respect the connector, and this constraint belongs in the F1–F3/FL/FR selection basis explicitly.
+* Evidence to close: add both manufacturer limits, with source and date, to the load model and the branch-protection selection register.
+M-7. 45 of 59 referenced verification IDs have no procedure definition, including three required for the HR-V0 gate
+* Where: requirements/requirements.csv vs docs/verification.md (checked by script, 2026-08-06); docs/releases/hr-v0.md §"Required evidence".
+* Defect (new, quantified): Requirements reference 59 distinct verification IDs; docs/verification.md describes 16. Undefined IDs include TEST-SAFE-003 (SAFE-008 restart interlock — safety-critical), INSPECT-SYS-001 and AUDIT-CFG-001 (both named as required HR-V0 acceptance evidence), all TEST-CTRL-*, TEST-FAULT-001, TEST-LOG-001, all electrical inspections (INSPECT-ELEC-001/002), TEST-ELEC-001, TEST-ENV-001, and every walking/stance test. The package's rule that procedures are written "before execution" is acceptable, but a release specification should not cite an evidence ID that exists nowhere else. Additionally, PROD-008 cites INSPECT-ELEC-030 while docs/verification.md defines TEST-ELEC-030 — a silent ID mismatch the traceability checker cannot catch because it only verifies non-emptiness.
+* Evidence to close: create tests/procedures/ stubs (one paragraph each: method, instrument, acceptance number) for all 59 IDs; fix the INSPECT/TEST-ELEC-030 mismatch; extend tools/check_traceability.py to verify that every verification_id and every release-spec evidence ID resolves to a defined procedure.
+M-8. Several MUST requirements are not objectively testable as written
+* Where / defects (new):
+   * WALK-011 ("fall predictor shall declare FALL_IMMINENT early enough to retract arms…") — no lead-time number, no detection-rate/false-positive threshold. Unverifiable as written.
+   * SAFE-006 / TEST-MECH-001 ("without hazardous failure") — TEST-MECH-001 partially cures this (no fracture, slip, deformation beyond drawing tolerance) but drawing tolerances don't exist yet, so the acceptance threshold is currently undefined.
+   * THERM-001 ("below provisional limits") — acceptable only because 65 °C appears in docs/control.md; the requirement should carry the number or the pointer. No rationale is given for 65 °C against the actuator's 80 °C rating (a sensible margin, but undocumented).
+   * TEST-UI-001 ("in the specified ambient lighting") — the ambient is specified nowhere.
+   * PROD-007 ("stylized and clearly robotic") — SHOULD-level and inherently subjective; needs a review rubric (REVIEW-ID-001 is undefined).
+   * SAFE-003 heartbeat: 100 ms period × 3 missed = 300 ms is consistent between control.md and SAFE-003 — but the measured dropout time budget (heartbeat timeout + permit relay dropout + contactor dropout + arm coast) is never allocated against the shielded clearance budget that TEST-SAFE-001/002 reference, and that clearance budget doesn't exist because CAD doesn't. Flag the dependency explicitly.
+* Evidence to close: numeric thresholds or named rubrics for each; a stopping-performance budget table (ms per element, mm of travel) as an input to guard design.
+M-9. Missing test categories in the verification plan
+* Where: docs/verification.md, docs/walking-verification.md.
+* Defect (new): No EMC/immunity test exists anywhere (R-036 names "worst-case EMC tests" as a control, but no TEST-EMC ID or procedure); no ingress/dust consideration (probably justifiable for a lab device — say so); no transportation/handling test despite R-038; no maintenance-procedure verification despite R-030; no abuse/foreseeable-misuse test (e.g., leaning on the robot, tugging the tether); no endurance beyond 100 handoff cycles (fatigue-relevant joints see 10⁵–10⁶ cycles over a walking program; W-gates test 30 min cumulative, not component fatigue); no thermal-cycling or connector-retention endurance. W3's fault-injection list is genuinely good (IMU saturation, retry storms, regenerative overvoltage, sudden energy loss) — the gap is environmental/endurance, not functional.
+* Evidence to close: add a deliberate scope table: which of EMC, ingress, transport, endurance, abuse are in scope with IDs, and which are excluded with rationale.
+M-10. The website distributes r0 fabrication files while the release rule forbids fabrication
+* Where: website "HR-V0 STL" downloads (base-plate-r0.stl, shoulder-servo-bracket-r0.stl, elbow-link-r0.stl, two-finger-gripper-print-plate-r0.stl) vs README.md release rule ("Only revisions tagged BUILD-RELEASE-* … may be fabricated") and cad/README.md ("No buildable CAD exists yet").
+* Defect (new): Publishing print-plate STLs for an unreleased, un-analyzed design invites exactly the premature fabrication the release rule prohibits, and the files exist in no controlled repository. Either watermark/rename them as REFERENCE-ONLY-NOT-FOR-FABRICATION, remove them, or bring them under configuration control with the same status banner the schematic PDF carries.
+M-11. Regeneration and DC-switching suitability remain open on the exact components proposed (self-declared; concur, with additions)
+* Where: docs/electrical.md; R-023; BOM-011.
+* Confirmation and additions: (a) The LRS-350-12 publishes no sink capability; multi-joint regenerative events (lowering both arms, e-stop deceleration) will pump the bus with no defined clamp — the package flags this (R-023) and correctly leaves clamp selection open; note that DYNAMIXELs themselves tolerate limited bus pump-up and the failure mode is supply OVP latch mid-motion, which is a controlled-stop integrity issue, not just a component-stress issue. (b) LC1D25BD is an AC-3-rated contactor; its DC-1 making/breaking rating at 12 V/20 A (and the HR-30A 50 A-class question) is the right thing to have marked review required; its 1NO+1NC auxiliaries are mirror-contact compliant per Schneider's TeSys D documentation, so the EDM concept is sound. (c) The 24 V safety budget screens feasible: PNOZ s4 + two LC1D BD coils (~5.4 W each → ~0.23 A) + permit relay ≈ 0.6–0.7 A against the HDR-30-24's 1.5 A — adequate margin, pending exact coil and relay data.
+
+
+________________
+
+
+4. MINOR findings
+* m-1. Website requirement count is stale: site banner says "All 58 requirements are draft"; the repo (and the site's own claim map) says 62. A presentation artifact, per CM rules, but it undercuts the "claims audited" posture. Fix on next deploy.
+* m-2. Sheet-count inconsistency: ERC JSON reports 14 sheets checked; the dashboard, correction review, and website say 15 sheets (index + 14 subsheets). Probably a root-sheet counting convention; state the convention once so the numbers reconcile.
+* m-3. Unresolved-selections count ambiguity: the register was reported to this review as 134 rows in one representation and 106 items in the correction review and website. Likely multi-row evidence entries; publish the counting rule.
+* m-4. Moving-mass definition ambiguity: system-specification.md says 0.75 kg "excluding shoulder actuator/base"; mechanical.md's 0.75 kg budget includes the 0.10 kg payload. State whether payload is inside the moving-mass cap.
+* m-5. Step-width vs foot-width interference: minimum step width 90 mm (center-to-center) with 85 mm-wide feet leaves 5 mm between inner edges — one small lateral tracking error from foot-on-foot contact. Either raise the minimum or justify with the collision-checked CAD gate.
+* m-6. U2D2/USB latency: if the U2D2 (FTDI USB) path is ever used beyond V0 bench work, the default USB latency timer (up to 16 ms) breaks any 250 Hz aspiration; the STM32-based leg architecture avoids this, but a note in the packet-budget requirement (WALK-014) would prevent a false-negative bus test on the wrong interface. The §6.7 screening shows the 4 Mbps/6-servo/250 Hz budget is comfortably feasible only if per-device return-delay is configured near zero (factory default is 500 µs → 3 ms of turnaround alone for six devices, which consumes the whole budget).
+* m-7. Head actuator check absent: XC430-W240 (1.9 N·m at 12 V, verified) is almost certainly adequate for a ≤0.55 kg head at pan/tilt radii under 50 mm, but the package's own rule ("exact payload/thermal check required," HR30-006) has no corresponding calc anywhere; one line of math closes it.
+* m-8. Tether physicality unanalyzed: an 80 A-class, 14 V tether needs ≈8 AWG conductors (≈1–1.7 V drop over 3–5 m loop, §6.8, ~10 % of rail); the resulting cable stiffness/weight acting on an 8 kg robot is a gait disturbance and a snag hazard (R-021 covers snag, not stiffness/drag). Either raise tether voltage with on-robot conversion or document the drop and mechanical-drag budget.
+* m-9. Benchmark table check: OP3 figures (510 mm, ~3.5 kg, 20 DOF, XM430-W350) and Poppy (25 DOF) verified against vendor docs — accurate, and the "1.49× taller, loads cannot scale by height" caveat is correct (mass scales ~L³, joint gravity torque ~L⁴ under isometric scaling; HR-30's 2.3× mass ratio vs OP3 is consistent with partial hollowing).
+* m-10. YM070 rejection is sound: YM070-210-R099-RH verified at 14.6 N·m continuous, 790 g, 24 V — the mass-based rejection (12×790 g = 9.5 kg of actuators alone) is arithmetically right; note it is also a 24 V family, incompatible with the 14.8 V architecture, which is a second independent rejection ground worth recording.
+* m-11. AK70-10 figures verified (8.3 N·m rated, 24.8 N·m peak, 521 g, 24/48 V, CAN): correct as cited; note Baseline B introduces a 24/48 V domain and CAN alongside RS-485 — the "mixing families" caution in walking-system.md should explicitly include voltage-domain and bus-architecture mixing, not just spares/timing.
+* m-12. ERC suppressions: the clean ERC was run with four rule classes ignored (single-use global labels, four-way junctions, SPICE, footprint filters). Defensible for a connectivity model; list the suppressions in the evidence-dashboard row so "0 errors and 0 warnings" carries its own caveat.
+
+
+________________
+
+
+5. Contradiction register (cross-document)
+#
+	Contradiction
+	Locations
+	Severity
+	C1
+	"No buildable schematic exists yet" vs "connected KiCad V2.1; 15 sheets; 0 ERC errors" as E2 evidence
+	electrical/README.md vs docs/evidence-maturity.md
+	BLOCKER (B-1)
+	C2
+	Arms mass target 1.30 kg vs 1.318 kg of arm actuators in HR-30A BOM
+	docs/full-body-loads.md vs bom/hr30a-bom.csv + ROBOTIS masses
+	BLOCKER (B-4)
+	C3
+	4-series battery vs 14.8 V actuator input maximum vs 17.6 N·m sizing shorthand
+	docs/walking-system.md internal
+	BLOCKER (B-5)
+	C4
+	XM540-W270 stall "9.9 N·m at 12 V" vs ROBOTIS 10.6 N·m at 12 V (9.9 is the XH540 figure)
+	docs/mechanical.md, bom/bom.csv vs e-Manual
+	MAJOR (M-4)
+	C5
+	TCP ≤0.15 m/s vs joint ≤30 °/s at 0.36 m reach (→0.19 m/s)
+	SYS-004, docs/system-specification.md §2
+	MAJOR (M-5)
+	C6
+	PROD-008 verification INSPECT-ELEC-030 vs defined TEST-ELEC-030
+	requirements.csv vs docs/verification.md
+	MAJOR (M-7)
+	C7
+	HR-V0 release requires TEST-SAFE-003 / INSPECT-SYS-001 / AUDIT-CFG-001 — none defined
+	docs/releases/hr-v0.md vs docs/verification.md
+	MAJOR (M-7)
+	C8
+	Release rule forbids fabrication vs website distributes r0 STL print plates
+	README.md vs website mechanical downloads
+	MAJOR (M-10)
+	C9
+	Website "58 requirements" vs repo 62
+	site banner vs requirements.csv
+	MINOR (m-1)
+	C10
+	ERC "14 sheets checked" vs "15 sheets" claims
+	ERC JSON vs dashboard/correction review
+	MINOR (m-2)
+	C11
+	Moving mass 0.75 kg with vs without payload
+	system-specification.md vs mechanical.md
+	MINOR (m-4)
+	
+
+________________
+
+
+6. Independent calculations (assumptions and units stated)
+All use g = 9.80665 m/s². "Verified" means the package's number was independently reproduced; "new" means the package contains no corresponding calculation.
+6.1 HR-V0 arm torques — VERIFIED
+T_shoulder = g·Σmᵢrᵢ = g(0.12·0.08 + 0.20·0.16 + 0.12·0.24 + 0.21·0.32 + 0.10·0.36) = 1.702 N·m (package: 1.70). T_elbow = g(0.12·0.08 + 0.21·0.16 + 0.10·0.20) = 0.620 N·m (package: 0.62). With the package's 1.5×1.5 factors: 3.83 / 1.40 N·m (package: 3.83 / 1.40). Horizontal-hold current estimate at 12 V, torque-proportional: 1.70/10.6 × 4.4 A ≈ 0.71 A (~16 % of stall) — thermally plausible for continuous hold, subject to the T3 test the package already requires. The V0 arm sizing is sound.
+6.2 Fall energy — VERIFIED
+8 kg × g × 0.41 m = 32.2 J; 10 kg × g × 0.46 m = 45.1 J. Package values correct.
+6.3 Leg torque screening — PARTIALLY VERIFIED, EXTENDED (new)
+Ankle pitch (package case): 8 kg·g·0.040 m = 3.138 N·m static (package: 3.14); ×3.0 combined factor = 9.41 (package: 9.42); 150 mm capture case 11.77 N·m (package: 11.8); ×3 = 35.3 (package: 35.3). All verified. Hip roll, single support (absent from package): lateral moment arm ≈ W_H/2 = 62.5 mm → static 8 kg: 4.90 N·m; 10 kg: 6.13 N·m; with the package's 2× dynamic factor: 9.8–12.3 N·m vs 11.7 N·m ideal stall (direct drive, 14.8 V) and ~2.9–4.1 N·m plausible continuous (25–35 % of stall, to be measured at W0). Margin ≤1.0 on a recurring gait load → Baseline A hip roll direct drive screens infeasible; see B-7.
+6.4 Mass buildups (new)
+Arms (HR-30A BOM): 6×0.165 + 4×0.082 = 1.318 kg actuators vs 1.30 kg two-arm allocation → impossible (B-4). Legs (screening, stated assumptions): actuators 1.980; belt stages 6×45 g = 0.27; bearing/shaft sets 12×30 g = 0.36; aluminum structure 1.3–1.7 (8 links/leg, dual-support housings); instrumented feet 2×~175 g = 0.35; harness 0.25 → 4.5–4.9 kg vs 3.40/3.80 allocation. Whole-robot actuator total (25 axes): 3.59 kg, leaving ≈4.4 kg at the 8.0 kg target for all structure, shells, compute, sensing, harness, feet, and battery (0.4–1.25 kg allowance) — the target is not credible without composite/plastic primary structure, which mechanical.md currently restricts.
+6.5 Knee swing-rate screening (new)
+Cadence at 0.18–0.20 m/s with 100–120 mm steps ≈ 1.5–1.7 steps/s → swing ≈ 0.30–0.40 s. Knee flex-extend excursion for 20 mm clearance on a 335 mm leg ≈ 25–35°, executed twice (flex then extend) per swing → mean rate ≈ 125–230 °/s, peak higher. Joint no-load capability: 276 °/s / 1.5 = 184 °/s at 14.8 V, less under load, ~150 °/s at 12.8 V. Upper gait band screens infeasible; 0.10–0.15 m/s marginal (M-3).
+6.6 TCP speed vs joint speed (new)
+30 °/s = 0.5236 rad/s. Shoulder-only at 0.36 m: v = 0.36 × 0.5236 = 0.188 m/s > 0.15 m/s limit; adding elbow (0.16 m forearm term): up to ≈0.27 m/s (M-5).
+6.7 Leg-bus packet budget screening (new)
+6 servos/leg, 4 Mbps, 250 Hz. Sync-write goal position (4 B/servo): ~44 B; fast-sync-read of position/velocity/current/voltage/temp (~13 B payload/servo): ~113 B. (44+113)×10 bits ≈ 1 570 bits → 0.39 ms wire time per 4 ms cycle (~10 % utilization) — comfortably feasible, provided per-device return-delay is programmed to ≈0 (factory default 500 µs × 6 devices = 3.0 ms of dead time, which alone nearly consumes the cycle). This confirms WALK-014's insistence on a measured budget and adds one specific configuration item to it.
+6.8 Tether voltage drop (new)
+8 AWG (2.1 mΩ/m), 3–5 m tether, out-and-back: 12.6–21.0 mΩ → at 80 A: 1.0–1.7 V (7–12 % of 14.0 V). Either the tether current rating or the drop budget must give; document it (m-8).
+6.9 24 V safety-supply budget (screening, new)
+PNOZ s4 (~0.10–0.15 A) + 2× LC1D-BD coils (5.4 W → 0.225 A each) + permit relay + indicators ≈ 0.6–0.8 A vs HDR-30-24 rated 1.5 A → adequate, pending exact device data (M-11c).
+
+
+________________
+
+
+7. Review-objective verdicts
+1. Coherent 762 mm architecture? Yes at concept level. Dimension control, DOF inventory, datum scheme, staged releases, and control layering are mutually consistent with the exceptions in §5. It is an architecture, not a design.
+2. Enough information to build and test HR-V0 safely? No — and the package says so itself. Missing: all CAD/drawings (B-2), all electrical selections (B-3), controlled schematic in the repo (B-1), all test procedures (M-7). The safety concept (dual-channel stop-cat-0, monitored start, EDM, watchdog permit, guards, exclusion zone) is sound apart from M-1/M-2.
+3. Credible path HR-V0 → HR-30W? The gate structure (T0–T9, W0–W5, G-01–G-24) is credible and unusually well-constructed; later gates cannot bypass earlier evidence as written. The technical path is currently blocked at B-4/B-5/B-7/M-3: Baseline A as allocated likely cannot close mass and torque/speed simultaneously. Recoverable options: hybrid Baseline B at hip roll/pitch and knee (cost: ~+1 kg and a second voltage/bus domain), higher reductions with the speed penalty priced in, a 5S-LFP or regulated pack, a relaxed mass ceiling, or a reduced gait envelope (0.10–0.14 m/s, 80–100 mm steps) — the last is the cheapest and probably sufficient for the mission as stated.
+4. Physically realistic assumptions? Mechanical statics: yes (verified). Electrical architecture: yes. Thermal: untested but conservatively bounded. Control rates and sensing specs: realistic and well-chosen (250/500/800 Hz, ±5 N/±5 mm foot resolution, BMI088 and ADS131M04 are appropriate and their specs support the stated rates). Unrealistic or unsupported: arm/leg mass allocations (B-4), hip-roll direct drive (B-7), knee speed at the upper band (M-3), battery voltage basis (B-5).
+5. Every material unknown identified? The package's own registers (106 electrical selections, 24 gates, 40 risks) are exemplary and cover most of it. This review adds as previously unidentified material unknowns: hip-roll/knee torque-speed analysis (B-7, M-3), pack-chemistry/voltage coupling to torque (B-5), watchdog-latch mechanism (M-1), PLr assignments (M-2), connector current and radial-load limits as binding constraints (M-6), and the arm-allocation arithmetic (B-4).
+6. Claims within evidence? Almost everywhere, yes — the stall-vs-continuous discipline, the E-scale, and the claim map are better than most professional packages at this stage. Exceptions: the E2 electrical row overstates by resting on an artifact outside configuration control (B-1); the "17.6 N·m" shorthand, though heavily caveated, still anchors the walking narrative on a voltage the untethered robot may never see (B-5); and the two mis-cited/miscounted values (M-4, m-1).
+
+
+________________
+
+
+8. Priority actions (evidence to close, in order)
+1. Bring KiCad V2.1 source under the repo with a tagged revision; reconcile electrical/README.md with the evidence dashboard (B-1).
+2. Fix the arm allocation or the actuator strategy; start the G-20 ledger now with supplier masses (B-4).
+3. Extend leg screening to all six joint types × torque × speed × 10 kg × end-of-discharge voltage; decide hip-roll reduction before any leg spend (B-7, M-3).
+4. Resolve the 4S chemistry/voltage/torque triangle and restate walking torque at loaded pack voltage (B-5).
+5. Re-topologize or hardware-latch the watchdog permit; add the heartbeat-restore test to TEST-SAFE-002 (M-1).
+6. Write the safety-requirements specification with PLr per function (M-2).
+7. Stub all 59 verification procedures; fix INSPECT/TEST-ELEC-030; extend the traceability checker (M-7).
+8. Correct XM540 torque citation (M-4); resolve SYS-004 (M-5); quarantine or watermark the website STLs (M-10); refresh the website counts (m-1).
+
+
+________________
+
+
+9. Manufacturer / standards reference register used by this review
+Item
+	Value verified
+	Source, accessed 2026-08-06
+	ROBOTIS XM540-W270
+	10.6 N·m stall @ 12 V/4.4 A (10.0 @ 11.1 V; 12.9 @ 14.8 V); 30 rev/min @ 12 V; 165 g; 272.5:1; −5…+80 °C; TTL/RS-485 9.6 k–4.5 Mbps
+	emanual.robotis.com /docs/en/dxl/x/xm540-w270/
+	ROBOTIS XH540-W270
+	11.7 N·m stall @ 14.8 V/5.9 A (9.9 @ 12 V/4.9 A); 46 rev/min @ 14.8 V; input 10.0–14.8 V (recomm. 12 V); 165 g; backlash 15 arcmin; radial load 40 N
+	emanual.robotis.com /docs/en/dxl/x/xh540-w270/
+	ROBOTIS XM430-W350
+	4.1 N·m stall @ 12 V/2.3 A; 82 g
+	emanual.robotis.com /docs/en/dxl/x/xm430-w350/
+	ROBOTIS XC430-W240
+	1.9 N·m stall @ 12 V/1.4 A; 65 g; TTL only
+	emanual.robotis.com /docs/en/dxl/x/xc430-w240/
+	ROBOTIS YM070-210-R099-RH
+	14.6 N·m continuous; 31.7 N·m max; 790 g; 24 V; RS-485
+	emanual.robotis.com /docs/en/dxl/y/ym070-210-r099-rh/
+	CubeMars AK70-10
+	8.3 N·m rated / 24.8 N·m peak; 521 g; 24/48 V; 10:1; CAN
+	cubemars.com goods-1031-AK70-10
+	ROBOTIS U2D2 Power Hub
+	3.5–24.0 V; 10.0 A max; single power input only (danger note)
+	docs.robotis.com /docs/parts/interface/u2d2_power_hub
+	Mean Well LRS-350-12
+	12 V/29 A class; 110–140 % hiccup overload; 60 A typ. cold-start inrush; no published I²t
+	LRS-350 spec rev. 2025-09-12 (as cited by package; consistent with Mean Well data)
+	Mean Well HDR-30-24
+	24 V/1.5 A
+	HDR-30 spec (as cited)
+	Pilz PNOZ s4 750104
+	24 VDC; S11/S12+S21/S22 dual channels; S12→NO reset→K1 NC→K2 NC→S34 monitored-start/EDM loop; falling-edge monitored start; 41-42/Y32 diagnostic-only; start-loop cross-shorts not detected
+	Operating manual 21396-EN-23 (as cited by package; wiring description consistent with Pilz documented practice)
+	Schneider LC1D25BD
+	24 VDC coil ~5.4 W; 1NO+1NC aux (mirror-contact per TeSys D docs); AC-3 25 A; DC-1 use requires review
+	Schneider LC1D25BD data (as cited)
+	Bosch BMI088 / TI ADS131M04
+	ODR capabilities support 800 Hz IMU / 500 Hz 4-ch simultaneous foot sampling
+	Bosch/TI datasheets (screening level)
+	ISO 10218-1:2025, ISO/TS 15066:2016, ISO 13482:2014/FDIS, ISO 13849-1:2023
+	Cited as principles, no compliance claimed — an accurate and appropriately modest usage
+	iso.org records
+	
+
+Package citations spot-checked and found accurate except the XM540 stall value (M-4). The primary-source register in references/primary-sources.md is itself a model practice.
+
+
+________________
+
+
+
+
+End of review. This review examined every file at commit ee276af and the published V2.1 electrical artifacts. The single largest gap in this review's own coverage is the un-opened native KiCad source (see §0); a pin-level pass should follow once the source is committed to the repository (B-1) or supplied directly.
