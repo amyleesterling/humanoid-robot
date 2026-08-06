@@ -1,0 +1,30 @@
+sheet,reference,status,evidence_needed
+01_external_sources.kicad_sch,JA1,SELECTION REQUIRED,"Freeze housing, contacts, wire range, crimp tooling, current/temperature derating and retention from the exact manufacturer system."
+01_external_sources.kicad_sch,JC1,SELECTION REQUIRED,"Add locking conversion, branch protection, strain relief and enclosure interface without exposing the non-locking barrel plug."
+01_external_sources.kicad_sch,PSU3,SELECTION REQUIRED - US ORDER CODE / RETENTION,Compute remains powered for diagnostics during E-stop; it has no safety authority.
+02_estop_eligibility.kicad_sch,S0,SELECTION REQUIRED - EXACT CANDIDATE RECORDED,"Candidate is documented as 40 mm mushroom, turn/pull reset, 2NC, screw terminal and terminal cover. Freeze physical contact-block mapping from received-device bottom view and continuity test both positively opening channels."
+02_estop_eligibility.kicad_sch,S1,SELECTION REQUIRED - HUMAN-FACTORS REVIEW OPEN,"Documented candidate is black flush momentary 1NO with screw terminals. RESET is outside the swept envelope and feeds only SR1 monitored start; legend, guard, spacing, color and received terminals remain open."
+02_estop_eligibility.kicad_sch,H1,SELECTION REQUIRED,Diagnostic indicator only; no safety credit and no motion authority.
+03_arm_watchdog_eligibility.kicad_sch,KWD1,PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED,"First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit."
+03_arm_watchdog_eligibility.kicad_sch,S2,SELECTION REQUIRED - DISTINCT APPEARANCE REQUIRED,Electrical candidate only. ARM must be unmistakably different from RESET by legend/color/guard/spacing; it must actuate and release after every safety dropout. Received terminal mapping remains open.
+03_arm_watchdog_eligibility.kicad_sch,KWD2,PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED,Second independently driven watchdog relay channel; common controller/supply remain common-cause blockers.
+04_contactor_edm.kicad_sch,K1,PROPOSED - DC APPLICATION CONFIRMATION REQUIRED,First redundant series contactor. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.
+04_contactor_edm.kicad_sch,K2,PROPOSED - DC APPLICATION CONFIRMATION REQUIRED,Second redundant series contactor.
+04_contactor_edm.kicad_sch,FSR1,SELECTION REQUIRED,"Select from fault current, coil transient, conductor and PNOZ contact-protection limits; published maxima are not selections."
+04_contactor_edm.kicad_sch,FSR2,SELECTION REQUIRED,Same coordination gate as FSR1.
+05_actuator_interruption.kicad_sch,F0,SELECTION REQUIRED,"Fuse/holder family, rating, interrupting capacity and thermal coordination remain open."
+05_actuator_interruption.kicad_sch,SD1,SELECTION REQUIRED,"Select a DC-rated lockable disconnect with exact terminals, enclosure and current/fault rating."
+06_branches_and_injection.kicad_sch,F1,SELECTION REQUIRED,"Requires fault current, cable, connector, inrush, regeneration, duty and ambient evidence."
+06_branches_and_injection.kicad_sch,INJ1,DESIGN REQUIRED,Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open.
+06_branches_and_injection.kicad_sch,F2,SELECTION REQUIRED,Same evidence gate as F1.
+06_branches_and_injection.kicad_sch,INJ2,DESIGN REQUIRED,Second injection module.
+06_branches_and_injection.kicad_sch,F3,SELECTION REQUIRED,Same evidence gate as F1.
+06_branches_and_injection.kicad_sch,INJ3,DESIGN REQUIRED,Final inline injection module; no VDD conductor continues beyond the actuator connection.
+07_watchdog_control.kicad_sch,DC1,SELECTION REQUIRED,"Select an exact non-isolated converter, protection and brownout behavior. V3 models watchdog 0V as SAFETY_0V; changing isolation requires a new driver/interface design."
+07_watchdog_control.kicad_sch,ISO1,SELECTION REQUIRED,"Exact isolation/interface, edge behavior, fault response and connector remain open."
+07_watchdog_control.kicad_sch,WDCTRL1,PROPOSED - PIN/FIRMWARE RELEASE OPEN,Monotonic heartbeat monitor. Three missed 100 ms periods drop both outputs; firmware and shared failures are not safety-rated.
+07_watchdog_control.kicad_sch,Q1,SELECTION REQUIRED,"Exact transistor/driver, base/gate network, default-off bias, fault behavior and polarity with relay internal diode open."
+07_watchdog_control.kicad_sch,Q2,SELECTION REQUIRED,Independently driven duplicate channel; common-cause review open.
+08_compute_and_control_terminals.kicad_sch,JDBG1,SELECTION REQUIRED,Tool-only interface; must not enable or bypass outputs during operation.
+08_compute_and_control_terminals.kicad_sch,XT1,SELECTION REQUIRED,"Exact terminal family, end covers, jumpers, markers, conductor range and torque open."
+09_actuator_interfaces.kicad_sch,JFRAME1,SELECTION REQUIRED,Do not connect frame or shield to 0V/PE until EMC and parallel-path review accepts the implementation.

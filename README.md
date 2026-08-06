@@ -37,6 +37,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Safety-function requirements](docs/safety-functions.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
+- [Native KiCad Electrical V3-P0.1 correction candidate](electrical/kicad/project-button-v3/README.md)
 - [HR-V0 Electrical V3 candidate architecture](docs/hr-v0-electrical-v3-candidate.md)
 - [HR-V0 Boston build-site basis](docs/hr-v0-build-site-basis.md)
 - [Boston fabrication and custom-metal sourcing](docs/hr-v0-fabrication-sourcing-boston.md)
@@ -49,16 +50,17 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Independent review disposition](docs/independent-review-disposition.md)
 - [Fable R11 review and disposition](docs/reviews/2026-08-06-fable-review-disposition.md)
 - [Sol R12 review and disposition](docs/reviews/2026-08-06-sol-r12-review-disposition.md)
+- [Electrical V3-P0.1 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Requirements](requirements/requirements.csv)
 - [HR-V0 energization gate register](requirements/hr-v0-energization-gates.csv)
 - [Proposed bill of materials](bom/bom.csv)
 - [Risk register](safety/risk-register.csv)
 
-Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements. Run `python tools/check_hr_v0_cad.py` after regenerating mechanical artifacts to verify part sets, readable warnings, vendor hashes, assembly exports, and the deliberately open calculation status. Run `python tools/check_energization_gates.py --through-stage E2 --require-ready` before claiming readiness for control-only first energization; it must remain nonzero until every applicable gate is evidenced and closed.
+Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements. Run `python tools/check_hr_v0_cad.py` after regenerating mechanical artifacts to verify part sets, readable warnings, vendor hashes, assembly exports, and the deliberately open calculation status. Run `python tools/generate_hr_v0_electrical_v3.py --validate` and `python tools/check_hr_v0_electrical_v3.py` to regenerate and cross-check the V3 native candidate. Run `python tools/check_energization_gates.py --through-stage E2 --require-ready` before claiming readiness for control-only first energization; it must remain nonzero until every applicable gate is evidenced and closed.
 
 ## Review history
 
-Fifteen review/control rounds are complete: R01-R15. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. Correction and disposition passes are recorded separately from independent reviews.
+Sixteen review/control rounds are complete: R01-R16. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -77,6 +79,7 @@ Fifteen review/control rounds are complete: R01-R15. R11 Fable and R12 Sol are i
 | R13 | ECAD provenance correction | Added the controlled native KiCad V2.1 tree and hash manifest to the authoritative repository. |
 | R14 | R11 engineering correction pass | Corrected mass, torque, speed, battery, TCP, watchdog, safety-function, verification, interface, and public-fabrication-control defects without releasing unresolved hardware. |
 | R15 | R12 archival and reconciliation pass | Preserved Sol's complete dossier, dispositioned all 56 findings, and corrected processor ownership, duplicate release evidence, and qualitative IMU labeling. |
+| R16 | Native Electrical V3 candidate correction | Added and validated the ten-page connected V3-P0.1 candidate while retaining 29 unresolved interfaces and no energization approval. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

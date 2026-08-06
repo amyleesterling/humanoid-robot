@@ -2,7 +2,11 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: controlled design candidate for the next native KiCad correction. It is not a wiring instruction and does not supersede Electrical V2.1 until the connected V3 source, schedules, calculations, review, and tests are complete.
+Status: native connected design candidate `V3-P0.1`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete.
+
+- Native source: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
+- Generator: `tools/generate_hr_v0_electrical_v3.py`
+- Consistency checker: `tools/check_hr_v0_electrical_v3.py`
 
 ## Purpose
 
@@ -62,6 +66,8 @@ Any E-stop opening, watchdog-channel opening, SR1 dropout, channel discrepancy, 
 
 The current RP2040-class watchdog is not safety-rated. V3 replaces the single KWD1 contact with two independently driven, normally-open relay channels and routes them separately to SRA1. The final parts, drivers, feedback contacts, startup tests, brownout behavior, diagnostic coverage, common-cause controls, and firmware remain `SELECTION REQUIRED`.
 
+The modeled relay-coil path is `SAFETY_24V -> relay coil -> default-off low-side driver -> SAFETY_0V`. The proposed DC/DC converter is therefore non-isolated and the Pico/driver reference is `SAFETY_0V`; selecting an isolated converter would require isolated output drivers and a fresh grounding/fault review. The relay's exact received coil terminals and integrated-diode polarity remain `TBD-*` until the official terminal drawing and received continuity/polarity evidence are frozen.
+
 This topology improves restart behavior and single-channel diagnostics. It does **not** establish a Performance Level or SIL because both channels may still share a non-safety controller, power source, clock, firmware, or common-cause failure. Qualified risk assessment shall either:
 
 - allocate and validate an integrity target that this implementation can meet;
@@ -84,15 +90,41 @@ Manufacturer values currently support this screening calculation:
 
 The 40 W / 1.67 A adapter has apparent nameplate headroom, but this is not a released load budget. Exact watchdog relays, input currents, simultaneous inrush, output protection, wiring loss, ambient derating, and fault behavior must be added and tested.
 
+## TTL power-injection boundary
+
+The U2D2 and all three actuator ports share `ACT_0V_PE_BONDED` as the TTL reference and share `DXL_TTL_DATA`. U2D2 pin 2 is intentionally omitted. Each actuator receives VDD only from its own protected branch through `INJ1`, `INJ2`, or `INJ3`; no VDD conductor may continue between actuator ports. The common reference means the Pi/U2D2 path can couple compute ground to actuator 0 V/PE, so the exact USB cable, shield, frame, and EMC implementation still require review and continuity/insulation tests.
+
 ## Mandatory V3 deliverables
 
 Before this candidate can replace V2.1:
 
-1. create connected native KiCad sheets with separate `RESET` and `ARM`, two PNOZ devices, two watchdog channels, explicit K1/K2 poles and mirror contacts, and the external-adapter boundary;
+1. **candidate complete:** create connected native KiCad sheets with separate `RESET` and `ARM`, two PNOZ devices, two watchdog channels, explicit K1/K2 poles and mirror contacts, and the external-adapter boundary;
 2. freeze every terminal and connector from exact manufacturer drawings;
 3. regenerate BOM, connector schedule, wire table, netlist, PDF/SVG, unresolved register, source manifest, and ERC output from the same commit;
 4. perform PLr/SIL and common-cause analysis without crediting ordinary firmware by assertion;
 5. execute `TEST-SAFE-001` through `TEST-SAFE-003` first with contactor loads disconnected and then under the released load; and
 6. obtain qualified electrical and functional-safety review.
+
+## Native candidate validation record
+
+The generated `V3-P0.1` candidate currently contains:
+
+- one root index plus nine focused child sheets;
+- 41 component blocks and 198 modeled terminals;
+- 76 native nets: 53 named connected nets plus 23 deliberate auto-generated unconnected nets;
+- 175 unique wire labels synchronized to `wire-number-table.csv`;
+- 39 nonzero-quantity V3 BOM records;
+- 29 unresolved component/interface records; and
+- 85 terminal designations deliberately retained as `TBD-*`.
+
+KiCad 10.0.5 parsed the root and all nine children, exported the native netlist, a ten-page A3 PDF, and ten SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 41 native component references and all 198 exported `(reference, terminal, net)` nodes against the generated schedules, including the 23 deliberate no-connect terminals. This check caught and corrected an early generator Y-axis transform that had attached visually aligned labels to reversed terminal rows; clean ERC alone did not detect that defect.
+
+The export was rendered at 150 dpi and visually checked page by page after reorganizing the earlier crowded six-sheet layout. No remaining clipping, border collision, note-order reversal, or connection-label overlap was observed in the current export. The same audit corrected the watchdog low-side coil path, made the shared TTL ground explicit, and replaced duplicate per-component wire labels with 175 unique per-sheet labels before this candidate was recorded.
+
+The KiCad CLI logs Windows registry-access messages for `HKCU\Software\kicad-cli` in this restricted execution environment. Every command still returned exit code 0 and produced the expected artifact; the messages are retained in `validation/kicad-cli.log` rather than hidden.
+
+ERC ignores singleton-global-label, four-way-junction, SPICE-model, and footprint-filter checks in this generated block-level candidate. Clean ERC therefore proves only that the modeled annotation and connectivity rules passed. It does not validate received-device terminal orientation, conductor/protection sizing, application suitability, restart performance, fault tolerance, functional safety, fabrication, or permission to energize.
+
+The current candidate is ready for another detailed electrical/design review, but not for wiring or energization. Deliverables 2 through 6 above remain open.
 
 No part of this document authorizes ordering, wiring, fabrication, or energization.

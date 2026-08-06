@@ -2,28 +2,32 @@
 
 > **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: architecture baseline; a reviewed ECAD schematic and panel layout are required before wiring.
+Status: architecture baseline with a native connected V3 candidate; qualified review, exact selections, panel/harness release, and physical validation are required before wiring.
 
 ## Power domains
 
 | Rail | Source | Loads | Emergency-stop behavior |
 |---|---|---|---|
-| AC mains | protected lab outlet | enclosed supplies | upstream disconnect removes all power |
-| 12 V `ACTUATOR_BUS` | Mean Well LRS-350-12 | three DYNAMIXEL actuators | removed by K1 and K2 |
-| 24 V `SAFETY_24V` | Mean Well HDR-30-24 | safety relay, K1/K2 coils, indicators | remains on during E-stop |
+| AC mains | site receptacles and three unmodified factory AC inputs | external adapters only | upstream site disconnect removes all power |
+| 12 V `ACTUATOR_BUS` | proposed Mean Well GST280A12-C6P external adapter | three DYNAMIXEL actuators | removed by K1 and K2 |
+| 24 V `SAFETY_24V` | proposed Mean Well GST40A24-P1J external adapter | SR1/SRA1, K1/K2 coils, watchdog relays, indicators | remains on during E-stop |
 | 5 V compute | official Raspberry Pi 27 W USB-C supply | Pi 5 and USB interface | remains on during E-stop |
 
-All exposed AC terminals shall be inside a grounded, tool-access enclosure. Protective earth bonds the enclosure, DIN rail when required, supply chassis, robot base, and bench bonding point. DC 0 V is connected to protective earth at one documented star point only after EMC review.
+The V3 candidate contains no project-built mains wiring, exposed AC terminal, internal AC supply, or project mains splitter. The factory adapters remain external and unmodified. Site cords, receptacles, branch protection, GFCI/code basis, source application review, and disconnect access remain open.
+
+The GST280A12-C6P manufacturer schematic bonds output `-V` to incoming protective earth inside the adapter. V3 therefore marks the former project `0 V`/PE star point `SP1` **DNP - PROHIBITED**. Robot-frame and cable-shield treatment remain open pending EMC and parallel-path review; replacing the source requires a fresh bonding assessment.
 
 ## Safety chain
 
-Proposed components are an exact-selection-required IDEC XW-series dual-channel emergency-stop switch, Pilz PNOZ s4 24 VDC safety relay order code 750104 configured for monitored start on the falling edge with cross-short detection on the E-stop inputs, and two Schneider LC1D25BD 24 VDC-coil contactors in series. The [PNOZ s4 operating manual 21396-EN-23](https://www.pilz.com/download/open/OM_PNOZ_s4_21396-EN-23.pdf) (2026-02 document colophon; product file dated 2026-06-22; verified 2026-08-05) documents the proposed `S11/S12` and `S21/S22` E-stop channels and the `S12 -> momentary NO reset -> K1 NC -> K2 NC -> S34` start/feedback loop. K1/K2 normally closed mirror auxiliary contacts form that external-device-monitor feedback loop. The safety relay outputs shall drive only the contactor coils, not the actuator current directly.
+The V3 candidate uses an exact-but-unreleased IDEC `XW1E-BV402M-R` dual-NC E-stop candidate, two separately identified Pilz PNOZ s4 24 VDC relays order code 750104, a distinct RESET candidate, a visually distinct ARM candidate, two separately driven watchdog relay contacts, and two Schneider `LC1D25BD` 24 VDC-coil contactors in series. All remain proposed or `SELECTION REQUIRED`; V3 does not establish functional-safety performance.
+
+The [PNOZ s4 operating manual 21396-EN-23](https://www.pilz.com/download/open/OM_PNOZ_s4_21396-EN-23.pdf) (2026-02 document colophon; product file dated 2026-06-22; verified 2026-08-06) supports the proposed cross-short-detection and monitored falling-edge start mode. `SR1` monitors the two E-stop channels and accepts RESET. Its outputs do not drive the contactors. `SRA1` receives one SR1 output and one watchdog contact on each input channel, then accepts a later distinct ARM action through the K1/K2 mirror-contact EDM return. Separate SRA1 outputs feed the K1 and K2 coil-protection paths.
 
 Electrical V2.1 currently represents this logical chain:
 
 `E-STOP CH1 + E-STOP CH2 -> PNOZ s4 falling-edge monitored-start mode -> reset + K1/K2 feedback -> watchdog permit -> separately protected K1 and K2 coils`
 
-That downstream watchdog-permit position is a **BLOCKER**. A lost heartbeat can open K1/K2 while the PNOZ outputs remain closed; restored heartbeat can then reclose the coil path without a new PNOZ reset/EDM cycle. The RP2040-class firmware latch is not a credited safety mechanism. A released revision shall alter the hardware so watchdog dropout forces a hardware-held restart-required state and neither coil can re-energize until a monitored physical reset and a later distinct `ARM` action have both occurred. Candidate remedies include routing watchdog loss into an evaluated safety-device input so it forces a complete monitored-start cycle, or adding an independently reviewed hardware restart interlock. These are alternatives, not selections; the exact circuit and hardware remain **SELECTION REQUIRED**.
+That V2.1 downstream watchdog-permit position remains a **BLOCKER** for V2.1. Native V3-P0.1 corrects the modeled restart sequence by routing the two watchdog contacts through separate SRA1 input channels and requiring a new monitored ARM action after dropout. This is a connected design candidate, not proof: the ordinary RP2040 controller and Phoenix Contact relays receive no PL/SIL credit by assertion, shared supply/controller/clock/firmware failures remain common-cause concerns, and the topology still requires FMEA, qualified review, and `TEST-SAFE-002` fault traces.
 
 Required restart sequence:
 
@@ -31,7 +35,7 @@ Required restart sequence:
 
 Power chain:
 
-`LRS-350-12 +V -> F0 (SELECTION REQUIRED) -> K1 pole -> K2 pole -> branch protection (SELECTION REQUIRED) -> J1/J2/gripper`
+`GST280A12-C6P +V -> F0 (SELECTION REQUIRED) -> service disconnect (SELECTION REQUIRED) -> all three K1 poles in series -> all three K2 poles in series -> F1/F2/F3 (SELECTION REQUIRED) -> separate J1/J2/J3 VDD injection`
 
 Opening either contactor removes actuator VDD. The control computer detects loss through isolated auxiliary status inputs and records it, but software indication is not part of the energy-removal safety function. Physical reset shall not re-energize contactors, create torque, or cause motion by itself. A separate deliberate `ARM` command is required after all state checks pass, and a fresh command is required before torque or motion.
 
@@ -39,7 +43,7 @@ For the proposed 750104, the mode selector shall be set with supply removed to t
 
 The PNOZ s4 does not detect shorts or cross-shorts in its `S12 -> reset -> K1 NC -> K2 NC -> S34` start/feedback loop. That loop therefore requires protected or separate routing and a documented fault exclusion accepted by the qualified safety review. A normal schematic/ERC result cannot validate that physical routing or exclusion. Terminals `13-14`, `23-24`, and `33-34` are the safety normally open outputs; `41-42` and `Y32` are diagnostic only and shall not close, bypass, or claim any safety function.
 
-PNOZ output-contact protection `FSR1`/`FSRH1` and the K1/K2/KH1/KH2 coil-suppression networks remain **SELECTION REQUIRED**. Manufacturer-published maximum protection values are limits, not released fuse selections. Protection shall be coordinated with exact coil inrush, safety-supply fault behavior, conductor ampacity, prospective fault current, and interrupting capacity. Suppression shall be selected against both the safety-relay and contactor instructions and validated for fault behavior, coil release time, contactor dropout time, residual travel, and total stopping time.
+PNOZ output-contact protection `FSR1` and `FSR2` remains **SELECTION REQUIRED**. Manufacturer-published maximum protection values are limits, not released fuse selections. Protection shall be coordinated with exact coil behavior, safety-supply fault behavior, conductor ampacity, prospective fault current, and interrupting capacity. The proposed `LC1D25BD` coil already contains a bidirectional peak-limiting diode; V3 does not add an assumed external flyback network. The received contactor, coil release time, dropout time, rail decay, residual travel, and total stopping time still require validation.
 
 ## Branches and conductors
 
@@ -49,14 +53,15 @@ PNOZ output-contact protection `FSR1`/`FSRH1` and the K1/K2/KH1/KH2 coil-suppres
 | F2 | J2 XM540-W270-T | SELECTION REQUIRED | SELECTION REQUIRED |
 | F3 | gripper XM430-W350-T | SELECTION REQUIRED | SELECTION REQUIRED |
 
-No fuse or conductor value is released. Coordination requires prospective fault current, cable length, ambient temperature, bundling, insulation and installation method, connector limits, actuator inrush and regeneration, duty cycle, simultaneous load, acceptable voltage drop, and jurisdiction. The LRS-350-12 specification revision 2025-09-12 lists a 110-140% rated-power overload threshold with hiccup recovery, a one-second maximum 150% peak load allowance, and 60 A typical cold-start AC inrush, but does not publish the maximum, duration, waveform, T50, or I-squared-t needed to select protection. Its 115/230 V selector position must be inspected and controlled before any permitted energization.
+No fuse or conductor value is released. Coordination requires prospective DC fault current and source current limiting, cable length, ambient temperature, bundling, insulation and installation method, connector limits, actuator inrush and regeneration, duty cycle, simultaneous load, acceptable voltage drop, clearing behavior, and jurisdiction. The GST280A12-C6P is only a proposed source; mating connector/contact selection, reverse-current and regeneration behavior, branch coordination, received-unit inspection, and open-circuit/loaded tests remain unresolved.
 
 The ROBOTIS U2D2 Power Hub documentation gives a 3.5-24.0 V range and 10.0 A maximum, and permits only one of its three power inputs. It shall not carry summed robot actuator current. Star-injected power is allowed only with a released custom data interconnect or breakout that omits or isolates VDD on every inter-actuator and U2D2 data link. Standard fully populated 3-pin TTL and 4-pin RS-485 DYNAMIXEL cables carry VDD on pin 2 and can parallel individually protected branches; they are prohibited in this topology until an end-to-end continuity and no-backfeed test proves the released harness.
 
 ## Pin-level net rules
 
-- DYNAMIXEL TTL: pin 1 `DGND`, pin 2 `ACTUATOR_12V`, pin 3 `DXL_DATA`; confirm connector orientation against the exact actuator manual before crimping.
+- DYNAMIXEL TTL: pin 1 `GND` is the common actuator/data reference `ACT_0V_PE_BONDED`, pin 2 receives only that actuator's separately protected `J1_VDD`/`J2_VDD`/`J3_VDD`, and pin 3 is common `DXL_TTL_DATA`; confirm plug/socket orientation against the exact actuator manual before crimping.
 - U2D2 USB connects to the Pi. ROBOTIS calls interface pin 2 `VDD`; it does not document that pin as a sense input or publish the internal current path. Omit pin 2 from the released custom data cable unless ROBOTIS supplies applicable written evidence and qualified review accepts it.
+- V3 models the non-isolated watchdog converter, Pico, relay drivers, and debug connector on common `SAFETY_0V`. An isolated converter or isolated output driver would be a different architecture and requires a new schematic and grounding/fault review.
 - E-stop uses two normally closed, positively opening contacts on separate safety-relay channels.
 - Reset is a normally open momentary switch outside the swept envelope.
 - No software-controlled device may bridge or bypass either E-stop channel.

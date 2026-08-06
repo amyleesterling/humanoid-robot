@@ -9,6 +9,7 @@ Status: preliminary engineering baseline; not approved for fabrication, procurem
 - **HR-30-SYS-R0.2** identifies this integrated systems-specification package.
 - Each controlled document retains its own document ID and revision. A document revision is not the package baseline.
 - **Project Button Electrical V2.1** identifies the connected KiCad electrical package. Its revision is independent of the systems package.
+- **Project Button Electrical V3-P0.1** identifies the connected correction candidate. `P0.1` means preliminary candidate: it has not superseded V2.1 and is not a released electrical baseline.
 - Website releases are identified by their website Git commit and hosted version. A website release is a presentation of controlled artifacts, not an engineering revision.
 
 The label **V2.2** is not a released engineering identifier and must not be used for this package.

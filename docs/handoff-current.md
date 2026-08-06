@@ -2,7 +2,7 @@
 
 Handoff date: 2026-08-06  
 Package baseline: **HR-30-SYS-R0.2**  
-Electrical package: **Project Button Electrical V2.1**  
+Electrical package: **Project Button Electrical V2.1 reviewed baseline; V3-P0.1 connected correction candidate**
 Mechanical package: **HR-V0-MECH-R0.1-PRELIMINARY quote geometry**
 Status: **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 
@@ -14,8 +14,10 @@ Status: **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 - Complete review history: `docs/review-ledger.md`
 - Authoritative native ECAD: `electrical/kicad/project-button-v2/project-button-v2.kicad_pro`
 - ECAD source manifest: `electrical/kicad/project-button-v2/SOURCE-MANIFEST.csv`
+- Connected correction candidate: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
+- V3 generator/checker: `tools/generate_hr_v0_electrical_v3.py`; `tools/check_hr_v0_electrical_v3.py`
 
-The authoritative repository controls engineering intent and now contains the native Electrical V2.1 KiCad source. The website is a synchronized presentation and must not override the source specification. Individual documents retain their own revisions; Electrical V2.1 is independent of the `HR-30-SYS-R0.2` systems-package baseline.
+The authoritative repository controls engineering intent and contains the reviewed Electrical V2.1 KiCad source plus the separate V3-P0.1 correction candidate. The website is a synchronized presentation and must not override the source specification. Individual documents retain their own revisions; neither electrical identifier replaces the `HR-30-SYS-R0.2` systems-package baseline. V3 does not supersede V2.1 until its open selections, calculations, tests, and qualified reviews close.
 
 ## Current program inputs and fabrication route
 
@@ -37,11 +39,13 @@ The authoritative repository controls engineering intent and now contains the na
 - 106 unresolved electrical selections/interfaces
 - KiCad 10.0.5 ERC: 0 errors and 0 warnings
 
+The V3-P0.1 candidate separately contains ten native pages, 41 component blocks, 198 modeled terminals, 76 native nets (53 named connected nets plus 23 deliberate auto-generated unconnected nets), 175 unique wire labels, 29 unresolved component/interface rows, and 85 `TBD-*` terminal designations. Its KiCad 10.0.5 ERC is also 0 errors and 0 warnings, and its native netlist/PDF/SVG exports pass. These V3 counts must not be substituted for the independently reviewed V2.1 counts above.
+
 ERC validates modeled connectivity and annotation only. It does not establish physical pinouts, ratings, protection coordination, functional safety, buildability, or permission to energize.
 
 ## Review history and independent findings
 
-Fifteen review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings. R13 staged the authoritative-ECAD provenance correction; R14 corrected reproducible engineering and traceability defects; R15 archived and dispositioned Sol's complete dossier and corrected three deterministic documentation defects. Physical and functional-safety blockers remain open.
+Sixteen review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings. R13 staged the authoritative-ECAD provenance correction; R14 corrected reproducible engineering and traceability defects; R15 archived and dispositioned Sol's complete dossier; R16 created and validated the separate V3-P0.1 native electrical candidate. Physical and functional-safety blockers remain open.
 
 ## Principal unresolved engineering blockers
 
@@ -49,16 +53,18 @@ Fifteen review/control rounds are complete and recorded in `docs/review-ledger.m
 2. Joint continuous/cyclic/impact/thermal performance, drivetrain efficiency, backlash, and structural margins are not physically validated.
 3. Safe actuator-power-loss behavior remains unresolved; a walking robot may collapse when hazardous drive energy is removed.
 4. Mass, center of mass, inertia, wiring mass, and reserve are not closed against released CAD and measured components.
-5. Exact E-stop devices, contactors, protection, suppression, conductors, connectors, enclosure, mains implementation, and ratings remain selection-dependent.
+5. V3 records exact E-stop, RESET/ARM, safety-relay, watchdog-relay, source, contactor, U2D2, actuator, and frame candidates where primary evidence permits, but their application approval, received terminals, protection, conductors, connectors, enclosure, and ratings remain selection-dependent. Eighty-five V3 terminals remain deliberately `TBD-*`.
 6. Battery, BMS, fuse, precharge, service disconnect, charging interlock, regeneration, telemetry isolation, and enclosure remain topology only.
 7. RS-485 transceivers, harnesses, shielding, termination, biasing, separation, waveform margin, and physical fault tests remain open.
 8. Sensor sheets are functional interfaces, not complete production circuits or released PCB designs.
 9. No released real-time controller, firmware, state-machine implementation, bus timing measurement, HIL evidence, or reset-to-motion fault test exists.
 10. No physical release-gate test has passed; fixtures, calibrated instrumentation, raw records, accountable owners, approvers, FMEA/FTA, and common-cause review remain incomplete.
 
-R11 and R12 added material blockers or invalidated assumptions. R14 records the failed arm/leg mass screen, removes the fixed 4S and 14.8 V sizing basis, blocks direct-drive hip roll, reduces initial walking speed to 0.10-0.14 m/s, makes TCP speed governing, defines 61 verification procedures, and creates a preliminary safety-function register. R15 makes the processor-ownership boundary explicit and records every Sol finding without treating R14 as part of Sol's reviewed baseline. The Electrical V2.1 watchdog restoration path, mass closure, battery/rail, joint selection, protection, CAD, safe power loss, restraint dynamics, response time/stopping distance, PLr/SIL determination, real-time implementation, and physical testing remain open. See `docs/reviews/2026-08-06-fable-review-disposition.md`, `docs/reviews/2026-08-06-sol-r12-review-disposition.md`, and `docs/r11-engineering-calculations.md`.
+R11 and R12 added material blockers or invalidated assumptions. R14 records the failed arm/leg mass screen, removes the fixed 4S and 14.8 V sizing basis, blocks direct-drive hip roll, reduces initial walking speed to 0.10-0.14 m/s, makes TCP speed governing, defines 61 verification procedures, and creates a preliminary safety-function register. R15 makes the processor-ownership boundary explicit and records every Sol finding without treating R14 as part of Sol's reviewed baseline. The Electrical V2.1 watchdog restoration path is corrected in the V3 modeled topology, but no functional-safety credit or physical validation has been established. Mass closure, battery/rail, joint selection, protection, CAD, safe power loss, restraint dynamics, response time/stopping distance, PLr/SIL determination, real-time implementation, and physical testing remain open. See `docs/reviews/2026-08-06-fable-review-disposition.md`, `docs/reviews/2026-08-06-sol-r12-review-disposition.md`, `docs/r11-engineering-calculations.md`, and `docs/hr-v0-electrical-v3-candidate.md`.
 
 ## Requested independent-review output
+
+Use `docs/reviews/2026-08-06-electrical-v3-independent-review-request.md` for the controlled V3-P0.1 electrical review scope and reproduction commands.
 
 Reviewers must provide BLOCKER / MAJOR / MINOR findings with exact document, requirement, risk, component, net, terminal, or KiCad-sheet references. Calculations must show assumptions and units. Component claims must cite current primary manufacturer documents with revision/date. Every missing input or unresolved selection must state the evidence needed for closure.
 
@@ -76,4 +82,4 @@ No reviewer should interpret clean ERC, traceability, simulation, website public
 
 ## Next controlled action
 
-Merge and post-merge validate the controlled review branch, then complete the HR-V0 physical FR13 fit coupon and the missing hard-stop, cable, gripper, guard, fastener, bench-anchor, mass, and proof-test design. In parallel, freeze exact electrical selections and protection coordination, correct the watchdog restart hardware, perform safety-function PLr/SIL analysis, and implement the control firmware. Do not issue a build or energization release until the applicable gate records close.
+Submit V3-P0.1 for detailed independent electrical and functional-safety review while completing the HR-V0 physical FR13 fit coupon and the missing hard-stop, cable, gripper, guard, fastener, bench-anchor, mass, and proof-test design. In parallel, freeze the 85 unresolved terminals and all protection/conductor/interface selections, perform safety-function PLr/SIL and common-cause analysis, and implement the control firmware. Do not issue a build or energization release until the applicable gate records close.
