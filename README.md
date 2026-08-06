@@ -43,6 +43,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Evidence maturity dashboard](docs/evidence-maturity.md)
 - [Independent review disposition](docs/independent-review-disposition.md)
 - [Fable R11 review and disposition](docs/reviews/2026-08-06-fable-review-disposition.md)
+- [Sol R12 review and disposition](docs/reviews/2026-08-06-sol-r12-review-disposition.md)
 - [Requirements](requirements/requirements.csv)
 - [Proposed bill of materials](bom/bom.csv)
 - [Risk register](safety/risk-register.csv)
@@ -51,7 +52,7 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 
 ## Review history
 
-Thirteen review/control rounds are complete: R01-R11, R13, and R14. Independent R12 remains requested. Correction passes are recorded separately from independent reviews.
+Fifteen review/control rounds are complete: R01-R15. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -66,9 +67,10 @@ Thirteen review/control rounds are complete: R01-R11, R13, and R14. Independent 
 | R09 | Independent Fable claim/configuration audit | Confirmed electrical counts and found revision and deployment drift. |
 | R10 | Systems-baseline correction | Established `HR-30-SYS-R0.2` and synchronized the corrected deployment. |
 | R11 | Independent Fable engineering review | Complete: 7 BLOCKER, 11 MAJOR, and 12 MINOR findings; disposition recorded. |
-| R12 | Independent GPT Sol engineering review | Requested; accuracy and completeness review pending. |
+| R12 | Independent GPT Sol engineering review | Complete: 18 BLOCKER, 30 MAJOR, and 8 MINOR findings against the same baseline as R11. |
 | R13 | ECAD provenance correction | Added the controlled native KiCad V2.1 tree and hash manifest to the authoritative repository. |
 | R14 | R11 engineering correction pass | Corrected mass, torque, speed, battery, TCP, watchdog, safety-function, verification, interface, and public-fabrication-control defects without releasing unresolved hardware. |
+| R15 | R12 archival and reconciliation pass | Preserved Sol's complete dossier, dispositioned all 56 findings, and corrected processor ownership, duplicate release evidence, and qualitative IMU labeling. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

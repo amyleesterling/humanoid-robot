@@ -6,8 +6,22 @@
 
 1. The hardware safety layer removes actuator energy independently of software.
 2. An independent watchdog requires a monotonic heartbeat at least every 100 ms. Three missed heartbeats shall drop its hardware permit. The exact watchdog, output driver, relay, restart interlock, diagnostic coverage, and fault response are **SELECTION REQUIRED**.
-3. The Raspberry Pi runs the motion supervisor, trajectory executor, sensor processing, and logger.
-4. DYNAMIXEL internal loops execute bounded current-based position commands and report position, velocity, current, voltage, temperature, hardware error, and bus-watchdog state.
+3. On HR-V0 only, the Raspberry Pi may run the low-rate bench motion supervisor, bounded trajectory executor, non-safety sensor processing, and logger because balance control is outside that release. It never owns the hardware safety function.
+4. On HR-30C/D/W, the Raspberry Pi owns behavior, perception, planning, operator UI, and logging. A deterministic real-time controller owns time-critical sensor acquisition, state estimation, whole-body stabilization, gait execution, actuator command generation, deadline enforcement, and all actuator-register writes during balance-critical operation.
+5. DYNAMIXEL internal loops execute bounded current-based position commands and report position, velocity, current, voltage, temperature, hardware error, and bus-watchdog state. Their internal loops do not replace the system real-time controller or hardware safety layer.
+
+### Canonical processor-authority matrix
+
+| Function | HR-V0 owner | HR-30 owner | Safety credit |
+|---|---|---|---|
+| Operator UI, behavior, perception, high-level planning | Raspberry Pi | Raspberry Pi | none |
+| Bench trajectory execution | Raspberry Pi, within V0 limits | not permitted for balance-critical motion | none |
+| IMU/foot acquisition and timestamping | not applicable or non-safety Pi logging | deterministic real-time controller | none unless separately allocated and validated |
+| State estimation and whole-body stabilization | not applicable | deterministic real-time controller | none unless separately allocated and validated |
+| Gait trajectory execution and actuator-register writes | not applicable | deterministic real-time controller | none |
+| Configuration and deadline validation | Raspberry Pi supervisor plus actuator safeguards | real-time controller; Pi command contract checked again at the boundary | none |
+| Session logging | Raspberry Pi | Raspberry Pi with real-time-controller records | evidence only |
+| Heartbeat loss and hazardous-energy removal | independent hardware chain | independent hardware chain | analysis and selection required |
 
 The Electrical V2.1 arrangement places a normally open watchdog permit downstream of closed PNOZ safety outputs. In that arrangement, restored heartbeat can restore the contactor-coil path without the PNOZ seeing a stop or accepting a new falling-edge reset. That is a release blocker. A watchdog firmware latch is not credited as a safety restart interlock. The released hardware shall keep both contactor coils de-energized after watchdog dropout until the cause is absent, the monitored physical-reset sequence is accepted, and a later, distinct `ARM` action is accepted. Restoring heartbeat, rebooting any controller, clearing a software fault, or holding the reset control shall not satisfy that sequence or re-energize either contactor.
 

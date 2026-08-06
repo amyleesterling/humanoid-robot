@@ -30,9 +30,9 @@ The authoritative repository controls engineering intent and now contains the na
 
 ERC validates modeled connectivity and annotation only. It does not establish physical pinouts, ratings, protection coordination, functional safety, buildability, or permission to energize.
 
-## Review history and pending reviews
+## Review history and independent findings
 
-Thirteen review/control rounds are complete and recorded in `docs/review-ledger.md` (R01-R11, R13, and R14); independent R12 is requested. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R13 staged the authoritative-ECAD provenance correction. R14 corrected reproducible engineering and traceability defects while preserving physical and functional-safety blockers. GPT Sol should complete R12 independently before seeing Fable's conclusions if reviewer independence is still desired.
+Fifteen review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings. R13 staged the authoritative-ECAD provenance correction; R14 corrected reproducible engineering and traceability defects; R15 archived and dispositioned Sol's complete dossier and corrected three deterministic documentation defects. Physical and functional-safety blockers remain open.
 
 ## Principal unresolved engineering blockers
 
@@ -47,7 +47,7 @@ Thirteen review/control rounds are complete and recorded in `docs/review-ledger.
 9. No released real-time controller, firmware, state-machine implementation, bus timing measurement, HIL evidence, or reset-to-motion fault test exists.
 10. No physical release-gate test has passed; fixtures, calibrated instrumentation, raw records, accountable owners, approvers, FMEA/FTA, and common-cause review remain incomplete.
 
-R11 added material blockers or invalidated assumptions. R14 now records the failed arm/leg mass screen, removes the fixed 4S and 14.8 V sizing basis, blocks direct-drive hip roll, reduces initial walking speed to 0.10-0.14 m/s, makes TCP speed governing, defines 61 verification procedures, and creates a preliminary safety-function register. The Electrical V2.1 watchdog restoration path, mass closure, battery/rail, joint selection, protection, CAD, safe power loss, PLr/SIL determination, and physical testing remain open. See `docs/reviews/2026-08-06-fable-review-disposition.md` and `docs/r11-engineering-calculations.md`.
+R11 and R12 added material blockers or invalidated assumptions. R14 records the failed arm/leg mass screen, removes the fixed 4S and 14.8 V sizing basis, blocks direct-drive hip roll, reduces initial walking speed to 0.10-0.14 m/s, makes TCP speed governing, defines 61 verification procedures, and creates a preliminary safety-function register. R15 makes the processor-ownership boundary explicit and records every Sol finding without treating R14 as part of Sol's reviewed baseline. The Electrical V2.1 watchdog restoration path, mass closure, battery/rail, joint selection, protection, CAD, safe power loss, restraint dynamics, response time/stopping distance, PLr/SIL determination, real-time implementation, and physical testing remain open. See `docs/reviews/2026-08-06-fable-review-disposition.md`, `docs/reviews/2026-08-06-sol-r12-review-disposition.md`, and `docs/r11-engineering-calculations.md`.
 
 ## Requested independent-review output
 
@@ -67,4 +67,4 @@ No reviewer should interpret clean ERC, traceability, simulation, website public
 
 ## Next controlled action
 
-Receive R11 and R12 independently, archive both reports, reconcile contradictions using calculations and primary evidence, assign every accepted finding a disposition and owner, then issue the next package baseline only after the controlled files and review ledger are synchronized.
+Merge and post-merge validate the controlled review branch, then convert the accepted R11/R12 findings into owned closure records. Priority remains buildable HR-V0 CAD, exact electrical selections and protection coordination, corrected watchdog restart hardware, safety-function PLr/SIL analysis, full mass/inertia and six-axis drivetrain closure, safe power-loss behavior, and physical release-gate tests. Do not issue a build or energization release until those gates close.

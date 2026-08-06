@@ -3,7 +3,7 @@ WALK-BOM-001,leg_actuator_baseline_a,ROBOTIS,XH540-W270-R,12,test_article,"10.0-
 WALK-BOM-002,primary_joint_reduction,Gates or equivalent,1.5:1 timing belt stage,6,design_required,"Hip knee and ankle pitch; exact tooth profile width and pulley sizes from fatigue/efficiency design"
 WALK-BOM-003,joint_bearings,Selection required,dual-supported output bearing set,12,design_required,"Sized from radial axial and moment loads"
 WALK-BOM-004,alternate_actuator,CubeMars,AK70-10,2,test_article,"Comparison hip/knee pair only; 521 g and 8.3 N m rated published; introduces 24/48 V and CAN domains requiring a controlled mixed-architecture review"
-WALK-BOM-005,pelvis_imu,Bosch,BMI088,1,proposed,"Industrial-grade accel and gyro; use reviewed board-level integration"
+WALK-BOM-005,pelvis_imu,Bosch,BMI088,1,proposed,"Candidate only; select from numeric range bandwidth noise bias stability shock/saturation temperature board-integration and measured timing requirements"
 WALK-BOM-006,torso_imu,Bosch,BMI088,1,proposed,"Independent attitude cross-check"
 WALK-BOM-007,foot_load_cells,Selection required,compression load cell 0-200N,8,selection_required,"Four per foot; overload and cross-axis behavior to be tested"
 WALK-BOM-008,foot_adc,Texas Instruments,ADS131M04,2,proposed,"Four-channel simultaneous-sampling delta-sigma ADC; one per foot"
