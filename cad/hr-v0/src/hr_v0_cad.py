@@ -118,7 +118,13 @@ def tslot_envelope(length_mm: float, axis: str) -> cq.Workplane:
     return cq.Workplane("XY").box(40.0, 40.0, length_mm)
 
 
-def export_part(part_number: str, name: str, solid: cq.Workplane, material: str):
+def export_part(
+    part_number: str,
+    name: str,
+    solid: cq.Workplane,
+    material: str,
+    quantity: int = 1,
+):
     stem = f"{part_number}_{name}"
     exporters.export(solid, str(PARTS / f"{stem}.step"))
     exporters.export(solid, str(PARTS / f"{stem}.stl"), tolerance=0.02, angularTolerance=0.1)
@@ -132,7 +138,7 @@ def export_part(part_number: str, name: str, solid: cq.Workplane, material: str)
         "material": material,
         "volume_mm3": round(volume, 2),
         "calculated_mass_g": round(volume * DENSITY_KG_MM3 * 1000.0, 1),
-        "quantity": 1,
+        "quantity": quantity,
         "release_status": "QUOTE GEOMETRY ONLY—DRAWING REVIEW REQUIRED",
     }
 
@@ -220,7 +226,7 @@ def main():
         export_part("MV0-001", "upper_link_plate", upper, MATERIAL),
         export_part("MV0-002", "forearm_link_plate", forearm, MATERIAL),
         export_part("MV0-003", "shoulder_adapter", adapter, MATERIAL),
-        export_part("MV0-004", "bench_anchor_plate", anchor_left, MATERIAL),
+        export_part("MV0-004", "bench_anchor_plate", anchor_left, MATERIAL, quantity=2),
     ]
     write_svg_drawing("MV0-001", "UPPER LINK PLATE", "link")
     write_svg_drawing("MV0-002", "FOREARM LINK PLATE", "link")
@@ -258,4 +264,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

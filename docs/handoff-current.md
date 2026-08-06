@@ -17,6 +17,14 @@ Status: **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 
 The authoritative repository controls engineering intent and now contains the native Electrical V2.1 KiCad source. The website is a synchronized presentation and must not override the source specification. Individual documents retain their own revisions; Electrical V2.1 is independent of the `HR-30-SYS-R0.2` systems-package baseline.
 
+## Current program inputs and fabrication route
+
+- Build and use region: Boston, Massachusetts, USA.
+- HR-V0 is a light-duty, adult-operated bench demonstrator for a soft 100 g maximum payload; it is not a high-payload robot.
+- A local library makerspace may have CNC access, but metal capability is unverified and is not part of the release basis.
+- The baseline custom-metal route uses four flat 6061-T6 part definitions: one upper link, one forearm link, one shoulder adapter, and two copies of the bench-anchor plate. SendCutSend is the primary quotation route; Xometry is the comparison/3-D-machining fallback; Artisans Asylum is the nearby supervised inspection and secondary-work option.
+- See `docs/hr-v0-build-site-basis.md` and `docs/hr-v0-fabrication-sourcing-boston.md`. No cutting order is authorized until the fit coupon, fastener, bench-survey, drawing, inspection, and qualified-review gates close.
+
 ## Current controlled counts
 
 - 62 draft requirements

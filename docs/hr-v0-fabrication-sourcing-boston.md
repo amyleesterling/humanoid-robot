@@ -5,11 +5,29 @@ Status: **VERIFIED SOURCING RESEARCH—NOT A RELEASED MANUFACTURING PACKAGE**
 Research date: 2026-08-06
 Region: Boston, Massachusetts, USA
 
+## Recorded program input
+
+- A local library makerspace may provide CNC access, but its metalworking capability is not yet known.
+- HR-V0 is a light-duty demonstrator. Its controlled task remains moving one soft foam object of at most 100 g; it is not being sized as a high-payload robot.
+- Low force and low mass reduce the required structure, but they do not replace fastener definition, first-article inspection, proof loading, hard stops, guarding, or stopping tests.
+
 ## Recommendation
 
 Make the first HR-V0 structure from flat 4.75 mm and 6.35 mm 6061-T6 plates, catalog ROBOTIS frames, and catalog 80/20 brackets. Do not weld or bend the structural 6061 parts. Quote identical released geometry at SendCutSend and Xometry, then use a local shop for fit-checking, inspection, deburr, or a genuinely three-dimensional operation only when needed.
 
 This approach does **not** depend on the local library having a metal-capable CNC machine.
+
+## Current part-to-process plan
+
+| Controlled part | Qty | Stock/process candidate | Default route | Why this route |
+|---|---:|---|---|---|
+| `MV0-001` upper link plate | 1 | 4.75 mm / 0.187 in 6061-T6, flat profile cut | SendCutSend quotation | Two-dimensional profile; no pocket, bend, or weld is required. |
+| `MV0-002` forearm link plate | 1 | 4.75 mm / 0.187 in 6061-T6, flat profile cut | SendCutSend quotation | Same process and stock as `MV0-001`; quote together from one controlled revision. |
+| `MV0-003` shoulder adapter | 1 | 6.35 mm / 0.250 in 6061-T6, flat profile cut | SendCutSend plus local fit inspection | Flat plate; physical FR13 and extrusion fit still govern hole release. |
+| `MV0-004` bench anchor plate | 2 | 6.35 mm / 0.250 in 6061-T6, flat profile cut | Hold until bench survey, then quote | Plate outline exists, but the actual bench substrate and anchor hardware are unresolved. |
+| Fit coupons, guard templates, cable-routing mockups | as needed | PLA, plywood, acrylic, or other approved nonmetal stock | Library/FabVille candidate | Appropriate use of a router/laser/3D printer even if metal is prohibited. |
+
+The generated files are quote geometry only. Do not upload them as a cutting order until the fit coupon and drawing review gates close.
 
 ## Verified options
 
@@ -62,5 +80,9 @@ If a future bend is unavoidable, record alloy/temper, grain direction, radius, v
 4. Complete the missing fastener, hard-stop, cable, guard and bench-anchor design.
 5. Obtain comparable SendCutSend and Xometry quotes for the **same revision**.
 6. Order only after the mechanical release review changes the files from quote geometry to a controlled first-article release.
+
+## Research decision
+
+No custom welding, bent aluminum, five-axis machining, or free-form metal bodywork is required for HR-V0 R0.1. If a future revision introduces bearing pockets, precision bores, or non-flat load paths, obtain a separate Xometry/Protolabs CNC quote or use Artisans Asylum only with a checked-out operator and an inspection plan. Do not silently convert a laser-cut part into a locally routed aluminum part.
 
 **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION.**
