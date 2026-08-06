@@ -1,0 +1,4762 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "931f2a64-d64c-5261-a979-38c1d2099b44")
+	(paper "A3")
+	(title_block
+		(title "PB Electrical V2.1 - 08 08 right leg rs485")
+		(date "2026-08-05")
+		(rev "V2.1-P0.2")
+		(company "Project Button")
+		(comment 1 "PRELIMINARY - NOT APPROVED FOR ENERGIZATION")
+		(comment 2 "QUALIFIED REVIEW REQUIRED")
+	)
+	(lib_symbols
+		(symbol "PBV2:XCVRR1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "XCVRR1" (at -17.78 -19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "right leg isolated RS-485 transceiver" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact transceiver, isolation, fail-safe bias, common-mode range, ESD protection, connector, and controller pins are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "right leg isolated RS-485 transceiver" (at -17.78 -15.75 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "XCVRR1_0_1"
+				(rectangle
+					(start -17.78 -12.70)
+					(end 17.78 12.70)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "XCVRR1_1_1"
+				(pin passive line
+					(at 20.32 -7.62 180)
+					(length 2.54)
+					(name "LOGIC_D+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-D+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -2.54 180)
+					(length 2.54)
+					(name "LOGIC_D-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-D-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 2.54 180)
+					(length 2.54)
+					(name "BUS_REFERENCE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-REF" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 7.62 180)
+					(length 2.54)
+					(name "SHIELD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-SH" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -2.54 0)
+					(length 2.54)
+					(name "LOGIC_POWER" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-PWR" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 2.54 0)
+					(length 2.54)
+					(name "LOGIC_RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:RTR1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "RTR1" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "right leg near-end RS-485 termination" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Fit only at the verified controller-side physical end. Resistance and placement require cable-impedance and transceiver review." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "right leg near-end RS-485 termination" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "RTR1_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "RTR1_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "D+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "D-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:RTR2"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "RTR2" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "right leg far-end RS-485 termination" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Fit only at the verified far physical end. No intermediate termination is permitted." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "right leg far-end RS-485 termination" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "RTR2_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "RTR2_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "D+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "D-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:FR1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "FR1" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "right hip yaw actuator branch fuse" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Individual branch protection required by ELEC-003. Rating and holder require measured current, cable, connector, ambient, bundling, and fault data." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "right hip yaw actuator branch fuse" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "FR1_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "FR1_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-I" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-O" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:FR2"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "FR2" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "right hip roll actuator branch fuse" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Individual branch protection required by ELEC-003. Rating and holder require measured current, cable, connector, ambient, bundling, and fault data." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "right hip roll actuator branch fuse" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "FR2_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "FR2_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-I" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-O" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:FR3"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "FR3" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "right hip pitch actuator branch fuse" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Individual branch protection required by ELEC-003. Rating and holder require measured current, cable, connector, ambient, bundling, and fault data." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "right hip pitch actuator branch fuse" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "FR3_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "FR3_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-I" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-O" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:FR4"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "FR4" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "right knee pitch actuator branch fuse" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Individual branch protection required by ELEC-003. Rating and holder require measured current, cable, connector, ambient, bundling, and fault data." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "right knee pitch actuator branch fuse" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "FR4_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "FR4_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-I" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-O" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:FR5"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "FR5" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "right ankle pitch actuator branch fuse" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Individual branch protection required by ELEC-003. Rating and holder require measured current, cable, connector, ambient, bundling, and fault data." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "right ankle pitch actuator branch fuse" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "FR5_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "FR5_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-I" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-O" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:FR6"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "FR6" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "right ankle roll actuator branch fuse" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Individual branch protection required by ELEC-003. Rating and holder require measured current, cable, connector, ambient, bundling, and fault data." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "right ankle roll actuator branch fuse" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "FR6_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "FR6_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-I" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-O" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:MR1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "MR1" (at -13.97 -19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "ROBOTIS XH540-W270-R right hip yaw, provisional ID 21" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Power is star-injected by an individual fuse; only the differential data pair is intended to be bus-connected. Standard 4-pin cables are prohibited because they also carry VDD." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED" (at 0 16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "ROBOTIS XH540-W270-R documentation and product page reviewed 2026-08-05. Freeze the procured -R SKU, verify the nameplate and 4-pin housing, and confirm connector orientation before harness release." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "XH540-W270-R right hip yaw ID 21" (at -13.97 -15.75 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "MR1_0_1"
+				(rectangle
+					(start -13.97 -12.70)
+					(end 13.97 12.70)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "MR1_1_1"
+				(pin passive line
+					(at -16.51 -7.62 0)
+					(length 2.54)
+					(name "GND" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "VDD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "D+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "3" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 7.62 0)
+					(length 2.54)
+					(name "D-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "4" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:MR2"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "MR2" (at -13.97 -19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "ROBOTIS XH540-W270-R right hip roll, provisional ID 22" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Power is star-injected by an individual fuse; only the differential data pair is intended to be bus-connected. Standard 4-pin cables are prohibited because they also carry VDD." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED" (at 0 16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "ROBOTIS XH540-W270-R documentation and product page reviewed 2026-08-05. Freeze the procured -R SKU, verify the nameplate and 4-pin housing, and confirm connector orientation before harness release." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "XH540-W270-R right hip roll ID 22" (at -13.97 -15.75 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "MR2_0_1"
+				(rectangle
+					(start -13.97 -12.70)
+					(end 13.97 12.70)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "MR2_1_1"
+				(pin passive line
+					(at -16.51 -7.62 0)
+					(length 2.54)
+					(name "GND" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "VDD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "D+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "3" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 7.62 0)
+					(length 2.54)
+					(name "D-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "4" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:MR3"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "MR3" (at -13.97 -19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "ROBOTIS XH540-W270-R right hip pitch, provisional ID 23" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Power is star-injected by an individual fuse; only the differential data pair is intended to be bus-connected. Standard 4-pin cables are prohibited because they also carry VDD." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED" (at 0 16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "ROBOTIS XH540-W270-R documentation and product page reviewed 2026-08-05. Freeze the procured -R SKU, verify the nameplate and 4-pin housing, and confirm connector orientation before harness release." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "XH540-W270-R right hip pitch ID 23" (at -13.97 -15.75 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "MR3_0_1"
+				(rectangle
+					(start -13.97 -12.70)
+					(end 13.97 12.70)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "MR3_1_1"
+				(pin passive line
+					(at -16.51 -7.62 0)
+					(length 2.54)
+					(name "GND" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "VDD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "D+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "3" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 7.62 0)
+					(length 2.54)
+					(name "D-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "4" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:MR4"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "MR4" (at -13.97 -19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "ROBOTIS XH540-W270-R right knee pitch, provisional ID 24" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Power is star-injected by an individual fuse; only the differential data pair is intended to be bus-connected. Standard 4-pin cables are prohibited because they also carry VDD." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED" (at 0 16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "ROBOTIS XH540-W270-R documentation and product page reviewed 2026-08-05. Freeze the procured -R SKU, verify the nameplate and 4-pin housing, and confirm connector orientation before harness release." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "XH540-W270-R right knee pitch ID 24" (at -13.97 -15.75 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "MR4_0_1"
+				(rectangle
+					(start -13.97 -12.70)
+					(end 13.97 12.70)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "MR4_1_1"
+				(pin passive line
+					(at -16.51 -7.62 0)
+					(length 2.54)
+					(name "GND" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "VDD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "D+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "3" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 7.62 0)
+					(length 2.54)
+					(name "D-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "4" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:MR5"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "MR5" (at -13.97 -19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "ROBOTIS XH540-W270-R right ankle pitch, provisional ID 25" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Power is star-injected by an individual fuse; only the differential data pair is intended to be bus-connected. Standard 4-pin cables are prohibited because they also carry VDD." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED" (at 0 16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "ROBOTIS XH540-W270-R documentation and product page reviewed 2026-08-05. Freeze the procured -R SKU, verify the nameplate and 4-pin housing, and confirm connector orientation before harness release." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "XH540-W270-R right ankle pitch ID 25" (at -13.97 -15.75 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "MR5_0_1"
+				(rectangle
+					(start -13.97 -12.70)
+					(end 13.97 12.70)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "MR5_1_1"
+				(pin passive line
+					(at -16.51 -7.62 0)
+					(length 2.54)
+					(name "GND" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "VDD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "D+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "3" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 7.62 0)
+					(length 2.54)
+					(name "D-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "4" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:MR6"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "MR6" (at -13.97 -19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "ROBOTIS XH540-W270-R right ankle roll, provisional ID 26" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Power is star-injected by an individual fuse; only the differential data pair is intended to be bus-connected. Standard 4-pin cables are prohibited because they also carry VDD." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED" (at 0 16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "ROBOTIS XH540-W270-R documentation and product page reviewed 2026-08-05. Freeze the procured -R SKU, verify the nameplate and 4-pin housing, and confirm connector orientation before harness release." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "XH540-W270-R right ankle roll ID 26" (at -13.97 -15.75 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "MR6_0_1"
+				(rectangle
+					(start -13.97 -12.70)
+					(end 13.97 12.70)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "MR6_1_1"
+				(pin passive line
+					(at -16.51 -7.62 0)
+					(length 2.54)
+					(name "GND" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "VDD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "D+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "3" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 7.62 0)
+					(length 2.54)
+					(name "D-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "4" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "PRELIMINARY - NOT APPROVED FOR ENERGIZATION"
+		(exclude_from_sim no)
+		(at 17.78 10.16 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+					(justify left bottom)
+			)
+		(uuid "4b0c1b87-bc68-57bd-a657-7dd186771338")
+	)
+	(text "08  HR-30 right leg: six individually fused actuators and one linear RS-485 bus"
+		(exclude_from_sim no)
+		(at 17.78 19.05 0)
+			(effects
+				(font
+					(size 2.03 2.03)
+				)
+					(justify left bottom)
+			)
+		(uuid "6d64deac-8354-5905-aefa-70923a28d9d5")
+	)
+	(text "Provisional IDs 21-26. Termination is present only at the controller and far physical ends; biasing belongs to the selected transceiver implementation."
+		(exclude_from_sim no)
+		(at 17.78 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "e6fc2f56-df96-55fb-ad90-27f0376e65d8")
+	)
+	(rectangle
+		(start 12.70 31.75)
+		(end 406.40 256.54)
+		(stroke (width 0.50) (type solid))
+		(fill (type none))
+		(uuid "6ea642c0-175a-53d1-a308-0fe67bf2d930")
+	)
+	(wire
+		(pts (xy 96.52 58.42) (xy 101.60 58.42))
+		(stroke (width 0) (type default))
+		(uuid "fbcf57d2-3593-512a-ab18-a1d8fb1170fa")
+	)
+	(global_label "RS485_RIGHT_D+"
+		(shape bidirectional)
+		(at 101.60 58.42 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "6abf42da-1750-5a05-a473-55dbe1c5585c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 60.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2115"
+		(exclude_from_sim no)
+		(at 99.06 56.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "a697ab79-f585-5c36-ac29-2b1f0774f9af")
+	)
+	(wire
+		(pts (xy 96.52 53.34) (xy 101.60 53.34))
+		(stroke (width 0) (type default))
+		(uuid "f9bbbb89-5a1b-5fbf-a326-5ff99d7ae348")
+	)
+	(global_label "RS485_RIGHT_D-"
+		(shape bidirectional)
+		(at 101.60 53.34 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "cdf02df6-05b0-5104-aa94-e3687a932e1d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 55.88 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2116"
+		(exclude_from_sim no)
+		(at 99.06 51.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c8863ca9-188a-5ecd-ae0a-1d0e6f148f21")
+	)
+	(wire
+		(pts (xy 96.52 48.26) (xy 101.60 48.26))
+		(stroke (width 0) (type default))
+		(uuid "4e491ab0-9f58-5a3b-ab39-5eeecf474034")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 101.60 48.26 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "81b2f67d-cf3f-5bdc-a887-8df155c6b27a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 50.80 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 99.06 46.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "dff3e896-15e0-58e7-a039-8b73910c4f4c")
+	)
+	(wire
+		(pts (xy 96.52 43.18) (xy 101.60 43.18))
+		(stroke (width 0) (type default))
+		(uuid "2ca4f883-0221-5fa6-a8a7-343edc279e89")
+	)
+	(global_label "RS485_RIGHT_SHIELD"
+		(shape bidirectional)
+		(at 101.60 43.18 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "f572352a-6c1c-53a0-a1cd-b412c055235b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 45.72 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2117"
+		(exclude_from_sim no)
+		(at 99.06 41.40 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "60f76503-313f-5524-aa24-86d673419611")
+	)
+	(wire
+		(pts (xy 55.88 53.34) (xy 50.80 53.34))
+		(stroke (width 0) (type default))
+		(uuid "16949829-2ffa-552b-a495-33794add2658")
+	)
+	(global_label "COMPUTE_5V"
+		(shape bidirectional)
+		(at 50.80 53.34 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "002e8893-6bb3-5e49-ae2a-5de9d5bd3bc6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 55.88 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2025"
+		(exclude_from_sim no)
+		(at 53.34 51.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "a64c5ade-1e59-5489-a3d9-e5178b7dc3c3")
+	)
+	(wire
+		(pts (xy 55.88 48.26) (xy 50.80 48.26))
+		(stroke (width 0) (type default))
+		(uuid "92f8cb64-9637-598f-a457-08068d9a7d49")
+	)
+	(global_label "COMPUTE_0V"
+		(shape bidirectional)
+		(at 50.80 48.26 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "f574aa02-7d62-5bd8-a94d-dc0ed923e235")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 50.80 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2023"
+		(exclude_from_sim no)
+		(at 53.34 46.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b502047f-2524-59aa-a78f-c8c0e3264947")
+	)
+	(wire
+		(pts (xy 186.69 50.80) (xy 181.61 50.80))
+		(stroke (width 0) (type default))
+		(uuid "1aef8294-e3ff-5545-aff9-d256fe122042")
+	)
+	(global_label "RS485_RIGHT_D+"
+		(shape bidirectional)
+		(at 181.61 50.80 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "ffa6ddb0-fb69-56ab-acd7-52ab94d15446")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 53.34 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2115"
+		(exclude_from_sim no)
+		(at 184.15 49.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "723b2555-6b2f-58d5-aed7-171bed93cacf")
+	)
+	(wire
+		(pts (xy 219.71 50.80) (xy 224.79 50.80))
+		(stroke (width 0) (type default))
+		(uuid "c9374306-0f22-5824-a3d2-32fcfd320df2")
+	)
+	(global_label "RS485_RIGHT_D-"
+		(shape bidirectional)
+		(at 224.79 50.80 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "f39564da-065d-5be1-a65f-f548a32a7ed3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 53.34 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2116"
+		(exclude_from_sim no)
+		(at 222.25 49.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d5de189d-059f-5d9b-a547-5e555abda9e1")
+	)
+	(wire
+		(pts (xy 313.69 50.80) (xy 308.61 50.80))
+		(stroke (width 0) (type default))
+		(uuid "23a254c0-4148-545c-a752-088db490f9ef")
+	)
+	(global_label "RS485_RIGHT_D+"
+		(shape bidirectional)
+		(at 308.61 50.80 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "eb27c45e-9232-5874-ad1e-1c79f6b0468b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 53.34 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2115"
+		(exclude_from_sim no)
+		(at 311.15 49.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "e999b122-df90-5eb4-a585-578764b0fd59")
+	)
+	(wire
+		(pts (xy 346.71 50.80) (xy 351.79 50.80))
+		(stroke (width 0) (type default))
+		(uuid "2fa1e6b9-4174-558b-a38b-e806c58e2a6c")
+	)
+	(global_label "RS485_RIGHT_D-"
+		(shape bidirectional)
+		(at 351.79 50.80 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "d9f92e24-4987-59f1-afb3-2ba856186509")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 53.34 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2116"
+		(exclude_from_sim no)
+		(at 349.25 49.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "efb3c551-e3c7-576b-a420-6444a418c2d7")
+	)
+	(wire
+		(pts (xy 59.69 96.52) (xy 54.61 96.52))
+		(stroke (width 0) (type default))
+		(uuid "3f78c6b2-7a76-50f5-a786-2c7020bb44b4")
+	)
+	(global_label "HR30_ACTUATOR_SAFE"
+		(shape bidirectional)
+		(at 54.61 96.52 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "255b87c0-d20c-500d-af4a-f5ad5a6f625b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 99.06 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2027"
+		(exclude_from_sim no)
+		(at 57.15 94.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6ef9b7c3-7b9d-5793-aa41-f5dcbfd1eec2")
+	)
+	(wire
+		(pts (xy 92.71 96.52) (xy 97.79 96.52))
+		(stroke (width 0) (type default))
+		(uuid "6d22f660-eb73-5912-a193-a3f3935f0952")
+	)
+	(global_label "HR30_RIGHT_M1_VDD"
+		(shape bidirectional)
+		(at 97.79 96.52 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "d3957360-32ac-5110-a363-29d3f7916671")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 99.06 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2061"
+		(exclude_from_sim no)
+		(at 95.25 94.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "5dc518ea-d25a-55f9-a608-1d6a557bb969")
+	)
+	(wire
+		(pts (xy 186.69 96.52) (xy 181.61 96.52))
+		(stroke (width 0) (type default))
+		(uuid "4cfe52b3-c8a0-56c9-ac69-f274716403eb")
+	)
+	(global_label "HR30_ACTUATOR_SAFE"
+		(shape bidirectional)
+		(at 181.61 96.52 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "2ac2d179-898e-5675-a21f-b19cf3746ae9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 99.06 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2027"
+		(exclude_from_sim no)
+		(at 184.15 94.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "bc1a1821-4809-5896-a596-e8158de1f723")
+	)
+	(wire
+		(pts (xy 219.71 96.52) (xy 224.79 96.52))
+		(stroke (width 0) (type default))
+		(uuid "17e2e615-d763-58cd-a0ed-5fb1cdf586cf")
+	)
+	(global_label "HR30_RIGHT_M2_VDD"
+		(shape bidirectional)
+		(at 224.79 96.52 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "3cf100bd-c41b-538b-a1a3-f7024b0b1385")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 99.06 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2062"
+		(exclude_from_sim no)
+		(at 222.25 94.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "deac8a10-5819-5865-a9d5-6cc09bb93e65")
+	)
+	(wire
+		(pts (xy 313.69 96.52) (xy 308.61 96.52))
+		(stroke (width 0) (type default))
+		(uuid "324eebe4-eeb0-542f-aa99-56f2ab04bd7f")
+	)
+	(global_label "HR30_ACTUATOR_SAFE"
+		(shape bidirectional)
+		(at 308.61 96.52 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "c1de243b-37c8-5247-a676-654a017449d3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 99.06 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2027"
+		(exclude_from_sim no)
+		(at 311.15 94.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "1ddbbb24-806b-549a-a747-24d08a229f60")
+	)
+	(wire
+		(pts (xy 346.71 96.52) (xy 351.79 96.52))
+		(stroke (width 0) (type default))
+		(uuid "37caae97-4151-5141-a404-25749d36226c")
+	)
+	(global_label "HR30_RIGHT_M3_VDD"
+		(shape bidirectional)
+		(at 351.79 96.52 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "4de80837-f70b-5f47-a53c-06e1b8c40f1a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 99.06 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2063"
+		(exclude_from_sim no)
+		(at 349.25 94.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "73f36854-2eda-5404-a14e-fb16a48a0915")
+	)
+	(wire
+		(pts (xy 59.69 142.24) (xy 54.61 142.24))
+		(stroke (width 0) (type default))
+		(uuid "5df411fc-9891-58bf-a9bb-d6d29eebd184")
+	)
+	(global_label "HR30_ACTUATOR_SAFE"
+		(shape bidirectional)
+		(at 54.61 142.24 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "d1c480ac-4b4a-596f-acdc-3cbd99f8fd41")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 144.78 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2027"
+		(exclude_from_sim no)
+		(at 57.15 140.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d3fe6d1b-b86d-55d2-a9ad-6b0903de1d97")
+	)
+	(wire
+		(pts (xy 92.71 142.24) (xy 97.79 142.24))
+		(stroke (width 0) (type default))
+		(uuid "cbe0a26a-2a65-5fc9-ac64-d401e5a59e87")
+	)
+	(global_label "HR30_RIGHT_M4_VDD"
+		(shape bidirectional)
+		(at 97.79 142.24 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "8ed2cb44-2a89-5c04-a6d1-404517db59d5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 144.78 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2064"
+		(exclude_from_sim no)
+		(at 95.25 140.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "17e5cb14-6f62-5fce-a87b-65db970764fb")
+	)
+	(wire
+		(pts (xy 186.69 142.24) (xy 181.61 142.24))
+		(stroke (width 0) (type default))
+		(uuid "a4e97437-a5a8-5399-a50e-ef3a5255ffcb")
+	)
+	(global_label "HR30_ACTUATOR_SAFE"
+		(shape bidirectional)
+		(at 181.61 142.24 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "a598496d-75d8-56d2-ab27-663b4f1f7f9d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 144.78 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2027"
+		(exclude_from_sim no)
+		(at 184.15 140.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b824ca43-fbb8-51a1-a297-dfbb522815ec")
+	)
+	(wire
+		(pts (xy 219.71 142.24) (xy 224.79 142.24))
+		(stroke (width 0) (type default))
+		(uuid "e80cb48a-8534-52b2-ae43-6730c2b33014")
+	)
+	(global_label "HR30_RIGHT_M5_VDD"
+		(shape bidirectional)
+		(at 224.79 142.24 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "a55be701-f2be-5cab-acbf-ac280cea35c5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 144.78 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2065"
+		(exclude_from_sim no)
+		(at 222.25 140.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "3602ea98-ba91-593b-ac77-2806a3420100")
+	)
+	(wire
+		(pts (xy 313.69 142.24) (xy 308.61 142.24))
+		(stroke (width 0) (type default))
+		(uuid "a4008904-49d0-56df-a8bb-1246578a5d06")
+	)
+	(global_label "HR30_ACTUATOR_SAFE"
+		(shape bidirectional)
+		(at 308.61 142.24 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "6ef3dd2b-6ade-5892-a821-77f3c7100216")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 144.78 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2027"
+		(exclude_from_sim no)
+		(at 311.15 140.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "208368ac-4692-542f-a191-fb980a0a2630")
+	)
+	(wire
+		(pts (xy 346.71 142.24) (xy 351.79 142.24))
+		(stroke (width 0) (type default))
+		(uuid "ec6c6de2-8aba-5758-a52f-b99810e8fb9f")
+	)
+	(global_label "HR30_RIGHT_M6_VDD"
+		(shape bidirectional)
+		(at 351.79 142.24 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "5d91d53e-8916-55c4-a9fd-d5f0796ea341")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 144.78 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2066"
+		(exclude_from_sim no)
+		(at 349.25 140.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "4c9d32b5-c639-5626-ad9e-e82f8b9a0007")
+	)
+	(wire
+		(pts (xy 59.69 195.58) (xy 54.61 195.58))
+		(stroke (width 0) (type default))
+		(uuid "bb26ab1e-826c-58ba-acf7-b78897846abe")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 54.61 195.58 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "3df08085-0f93-5517-ae8e-216ad8ce59dd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 198.12 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 57.15 193.80 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "105531f8-f444-55c1-a973-4bd5e739d2e5")
+	)
+	(wire
+		(pts (xy 59.69 190.50) (xy 54.61 190.50))
+		(stroke (width 0) (type default))
+		(uuid "e7c84884-bb5b-5aeb-a09c-6648c7fa14f2")
+	)
+	(global_label "HR30_RIGHT_M1_VDD"
+		(shape bidirectional)
+		(at 54.61 190.50 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "c432a04f-4b7e-588f-ab1b-90f31bda0749")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 193.04 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2061"
+		(exclude_from_sim no)
+		(at 57.15 188.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "458e0ad0-666e-5087-ac6f-00aa37f70340")
+	)
+	(wire
+		(pts (xy 59.69 185.42) (xy 54.61 185.42))
+		(stroke (width 0) (type default))
+		(uuid "3229be99-7807-5bdd-af32-c0f500368ddf")
+	)
+	(global_label "RS485_RIGHT_D+"
+		(shape bidirectional)
+		(at 54.61 185.42 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "32d6f9af-314b-54c4-a7f0-a4fa5ecc50de")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 187.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2115"
+		(exclude_from_sim no)
+		(at 57.15 183.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "358f35c5-53e0-5dae-a6b9-3fa623596739")
+	)
+	(wire
+		(pts (xy 59.69 180.34) (xy 54.61 180.34))
+		(stroke (width 0) (type default))
+		(uuid "67fb2c91-5244-5c31-a8b4-bfc5abaaa17b")
+	)
+	(global_label "RS485_RIGHT_D-"
+		(shape bidirectional)
+		(at 54.61 180.34 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "2d23eaa3-c01b-50b9-a9f8-d86c59f4f6a2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 182.88 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2116"
+		(exclude_from_sim no)
+		(at 57.15 178.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b6ccf669-2629-5b87-a406-23387fedc337")
+	)
+	(wire
+		(pts (xy 186.69 195.58) (xy 181.61 195.58))
+		(stroke (width 0) (type default))
+		(uuid "baed9f49-987e-5187-a4e3-709226a48a0e")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 181.61 195.58 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "86b97093-d91f-53ff-a5b8-13159f43f05d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 198.12 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 184.15 193.80 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "a6d6225a-543c-5be1-a7fd-348fea085777")
+	)
+	(wire
+		(pts (xy 186.69 190.50) (xy 181.61 190.50))
+		(stroke (width 0) (type default))
+		(uuid "a7e11735-2cd4-59c7-aeea-7bf3fb2d21de")
+	)
+	(global_label "HR30_RIGHT_M2_VDD"
+		(shape bidirectional)
+		(at 181.61 190.50 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "ac966dfa-569c-5ab8-aac9-a8d7a8aea95c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 193.04 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2062"
+		(exclude_from_sim no)
+		(at 184.15 188.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f6de478c-2a5f-58a0-af74-6b47fcbe1fa1")
+	)
+	(wire
+		(pts (xy 186.69 185.42) (xy 181.61 185.42))
+		(stroke (width 0) (type default))
+		(uuid "5280c2be-f540-58a1-a244-76e5511bcd5b")
+	)
+	(global_label "RS485_RIGHT_D+"
+		(shape bidirectional)
+		(at 181.61 185.42 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "308c945b-b671-5012-add7-debbf7af5dc2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 187.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2115"
+		(exclude_from_sim no)
+		(at 184.15 183.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "65206a9a-f817-5ae4-a4f6-043317d1bc01")
+	)
+	(wire
+		(pts (xy 186.69 180.34) (xy 181.61 180.34))
+		(stroke (width 0) (type default))
+		(uuid "3146760e-bc68-5d8c-ac7b-7dc18f0fa1ba")
+	)
+	(global_label "RS485_RIGHT_D-"
+		(shape bidirectional)
+		(at 181.61 180.34 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "643529a6-1033-5f0f-a38d-4bdf51d7176b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 182.88 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2116"
+		(exclude_from_sim no)
+		(at 184.15 178.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "33d9cac4-6fbf-5163-afb0-b5cd02c18911")
+	)
+	(wire
+		(pts (xy 313.69 195.58) (xy 308.61 195.58))
+		(stroke (width 0) (type default))
+		(uuid "2897bcc6-3935-5705-a1eb-e7eabc997459")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 308.61 195.58 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "aeeef055-bb64-5297-a8dd-94d0fda5ae42")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 198.12 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 311.15 193.80 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6507e865-0b16-50bd-a862-3c4aac95262a")
+	)
+	(wire
+		(pts (xy 313.69 190.50) (xy 308.61 190.50))
+		(stroke (width 0) (type default))
+		(uuid "37f2b967-18da-543e-aaed-401cf2a952ab")
+	)
+	(global_label "HR30_RIGHT_M3_VDD"
+		(shape bidirectional)
+		(at 308.61 190.50 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "2516a4fa-f10a-5c38-abdf-1010052e1ec2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 193.04 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2063"
+		(exclude_from_sim no)
+		(at 311.15 188.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "9ccd9a08-a256-52ea-a0d8-f6ba131d7791")
+	)
+	(wire
+		(pts (xy 313.69 185.42) (xy 308.61 185.42))
+		(stroke (width 0) (type default))
+		(uuid "1a816efd-8a2c-531d-a262-9f18efa487a4")
+	)
+	(global_label "RS485_RIGHT_D+"
+		(shape bidirectional)
+		(at 308.61 185.42 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "2e8e242a-58bd-590e-a21e-2cb894ededf2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 187.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2115"
+		(exclude_from_sim no)
+		(at 311.15 183.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "94b74851-a843-5807-abcb-45a0570e671d")
+	)
+	(wire
+		(pts (xy 313.69 180.34) (xy 308.61 180.34))
+		(stroke (width 0) (type default))
+		(uuid "0a0dbc9e-6012-5331-af09-7eba5329e42d")
+	)
+	(global_label "RS485_RIGHT_D-"
+		(shape bidirectional)
+		(at 308.61 180.34 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "ad515bd5-16ff-5df2-a419-92a99a4c2b5c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 182.88 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2116"
+		(exclude_from_sim no)
+		(at 311.15 178.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "0de6da33-4bcc-5ae5-a4d3-c04a4d0606b7")
+	)
+	(wire
+		(pts (xy 59.69 241.30) (xy 54.61 241.30))
+		(stroke (width 0) (type default))
+		(uuid "bb1c1f32-70b7-5602-ab90-acd5b93484a4")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 54.61 241.30 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "5bc046ad-0c0c-5d1d-ab3c-4127308850b8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 243.84 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 57.15 239.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "864f898c-fcd1-5f59-af62-c43fc5014464")
+	)
+	(wire
+		(pts (xy 59.69 236.22) (xy 54.61 236.22))
+		(stroke (width 0) (type default))
+		(uuid "62944b27-85a2-51c8-aa1c-afde5e1174f6")
+	)
+	(global_label "HR30_RIGHT_M4_VDD"
+		(shape bidirectional)
+		(at 54.61 236.22 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "66ed710d-23d4-5c5c-a3f6-b0dea562b364")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 238.76 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2064"
+		(exclude_from_sim no)
+		(at 57.15 234.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "9d71a811-0aa5-53b5-aa53-36fe84589b82")
+	)
+	(wire
+		(pts (xy 59.69 231.14) (xy 54.61 231.14))
+		(stroke (width 0) (type default))
+		(uuid "34064ca4-2661-56fe-ad61-f62f3a74bd83")
+	)
+	(global_label "RS485_RIGHT_D+"
+		(shape bidirectional)
+		(at 54.61 231.14 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "9bfab8a9-ff03-5d9a-a337-3688f7d54fbf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 233.68 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2115"
+		(exclude_from_sim no)
+		(at 57.15 229.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "3c8d9d71-27fa-5158-a11f-811f5d68a082")
+	)
+	(wire
+		(pts (xy 59.69 226.06) (xy 54.61 226.06))
+		(stroke (width 0) (type default))
+		(uuid "33fc9ab7-c245-5ef1-ab83-f2504f0121f3")
+	)
+	(global_label "RS485_RIGHT_D-"
+		(shape bidirectional)
+		(at 54.61 226.06 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "f0a5badf-9b63-5a64-a569-86c2a3502940")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 228.60 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2116"
+		(exclude_from_sim no)
+		(at 57.15 224.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b59db39d-01c2-5510-a5b6-f8f911cca548")
+	)
+	(wire
+		(pts (xy 186.69 241.30) (xy 181.61 241.30))
+		(stroke (width 0) (type default))
+		(uuid "f3a45d54-444f-5b79-a6b9-67929cbeae65")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 181.61 241.30 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "fcea9bcb-5fb8-552d-a289-fd620a0651fe")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 243.84 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 184.15 239.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "081fbcd8-db9e-5bc4-a815-a83b7ab4aada")
+	)
+	(wire
+		(pts (xy 186.69 236.22) (xy 181.61 236.22))
+		(stroke (width 0) (type default))
+		(uuid "656150ab-2333-5558-a69f-67d726b1ce2f")
+	)
+	(global_label "HR30_RIGHT_M5_VDD"
+		(shape bidirectional)
+		(at 181.61 236.22 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "fb362a2e-047d-536f-ad96-0d8b0fdf0384")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 238.76 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2065"
+		(exclude_from_sim no)
+		(at 184.15 234.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "0bcd4c47-3abf-5dd9-a6d2-317b960fc42f")
+	)
+	(wire
+		(pts (xy 186.69 231.14) (xy 181.61 231.14))
+		(stroke (width 0) (type default))
+		(uuid "97683aae-ad29-5635-a16d-f7ec8b1ebaae")
+	)
+	(global_label "RS485_RIGHT_D+"
+		(shape bidirectional)
+		(at 181.61 231.14 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "7668c0bf-087e-56f6-aa87-ccaae818e783")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 233.68 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2115"
+		(exclude_from_sim no)
+		(at 184.15 229.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "fe1e5be2-7818-5eef-a35e-8b505d0bba00")
+	)
+	(wire
+		(pts (xy 186.69 226.06) (xy 181.61 226.06))
+		(stroke (width 0) (type default))
+		(uuid "e5ed1ea6-099b-5e0f-ade6-e18c87846f27")
+	)
+	(global_label "RS485_RIGHT_D-"
+		(shape bidirectional)
+		(at 181.61 226.06 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "e0e88104-b6c2-5dff-a33e-edf0d3ab8bb7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 228.60 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2116"
+		(exclude_from_sim no)
+		(at 184.15 224.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "a7206dc4-3663-50e3-ada2-da8e89d9f1e3")
+	)
+	(wire
+		(pts (xy 313.69 241.30) (xy 308.61 241.30))
+		(stroke (width 0) (type default))
+		(uuid "1b91a424-e8d4-544b-a66d-ab9d52a66eff")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 308.61 241.30 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "b04d73ec-edef-5067-a8f0-f05a5fda8892")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 243.84 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 311.15 239.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "53f1fcc2-00f2-5138-acd0-cb866e7d3c77")
+	)
+	(wire
+		(pts (xy 313.69 236.22) (xy 308.61 236.22))
+		(stroke (width 0) (type default))
+		(uuid "9160e47e-7067-580d-aa15-9c86d83abea1")
+	)
+	(global_label "HR30_RIGHT_M6_VDD"
+		(shape bidirectional)
+		(at 308.61 236.22 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "1822f499-166f-5454-a9cc-bf6d564feffd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 238.76 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2066"
+		(exclude_from_sim no)
+		(at 311.15 234.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "ba76d68a-c43f-53f0-ab63-8d790b645a1f")
+	)
+	(wire
+		(pts (xy 313.69 231.14) (xy 308.61 231.14))
+		(stroke (width 0) (type default))
+		(uuid "fb4d9c63-3aaa-5edf-ae1b-70ee60cc92ad")
+	)
+	(global_label "RS485_RIGHT_D+"
+		(shape bidirectional)
+		(at 308.61 231.14 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "cd5eaa12-db3c-546f-ad2a-8a122c67395a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 233.68 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2115"
+		(exclude_from_sim no)
+		(at 311.15 229.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "3958edb4-ea08-5a80-a133-361619345236")
+	)
+	(wire
+		(pts (xy 313.69 226.06) (xy 308.61 226.06))
+		(stroke (width 0) (type default))
+		(uuid "ebc7d343-467d-593c-a1b3-863edcbaf7be")
+	)
+	(global_label "RS485_RIGHT_D-"
+		(shape bidirectional)
+		(at 308.61 226.06 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "3b959b52-2ea1-5de3-af3d-5016d91b95d5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 228.60 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2116"
+		(exclude_from_sim no)
+		(at 311.15 224.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "e09e273f-3d3f-505d-a139-001070876524")
+	)
+	(text "NOTE 1: D+/D- must be routed as a controlled twisted pair. Shield/drain termination and chassis strategy are SELECTION REQUIRED."
+		(exclude_from_sim no)
+		(at 17.78 266.70 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "a191d0a6-640e-5ae9-a94e-282fd7b20f57")
+	)
+	(text "NOTE 2: Power conductors are separately injected and routed away from the data pair; cable separation dimensions require harness review."
+		(exclude_from_sim no)
+		(at 17.78 271.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "d07ad855-1c77-5eaa-a5bd-6ec752052980")
+	)
+	(text "NOTE 3: Standard fully populated 4-pin RS-485 DYNAMIXEL cables carry VDD and would parallel protected branches. Release a VDD-isolating harness/breakout and pass continuity plus no-backfeed tests."
+		(exclude_from_sim no)
+		(at 17.78 276.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "b8c65ee0-2832-5a7e-ad1b-23994d96a6c5")
+	)
+	(symbol
+		(lib_id "PBV2:XCVRR1")
+		(at 76.20 50.80 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "238f6145-d9a9-5be7-a2f6-4f08c12b6d67")
+		(property "Reference" "XCVRR1"
+			(at 58.42 31.75 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "right leg isolated RS-485 transceiver"
+			(at 76.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact transceiver, isolation, fail-safe bias, common-mode range, ESD protection, connector, and controller pins are unresolved."
+			(at 76.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 67.31 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "right leg isolated RS-485 transceiver"
+			(at 58.42 35.05 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-D+"
+			(uuid "15b78088-ccfe-5c84-a07a-59a7add8945f")
+		)
+		(pin "TBD-D-"
+			(uuid "68d9b142-aab0-5d2e-a975-0b4919ddd586")
+		)
+		(pin "TBD-REF"
+			(uuid "afa31564-21a7-58c9-aff1-151e4123aad1")
+		)
+		(pin "TBD-SH"
+			(uuid "44c9f1a1-955e-59ae-aff4-02115e3dcb40")
+		)
+		(pin "TBD-PWR"
+			(uuid "b2ca28a5-6a04-585c-aa72-2b5b3bb99a20")
+		)
+		(pin "TBD-0V"
+			(uuid "77ebf751-3c95-5950-a642-4afcbf2fdd8f")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "XCVRR1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:RTR1")
+		(at 203.20 50.80 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "89b66f35-f0f1-5236-a3f5-fc8051e10de2")
+		(property "Reference" "RTR1"
+			(at 189.23 35.56 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "right leg near-end RS-485 termination"
+			(at 203.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Fit only at the verified controller-side physical end. Resistance and placement require cable-impedance and transceiver review."
+			(at 203.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "right leg near-end RS-485 termination"
+			(at 189.23 38.86 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-1"
+			(uuid "804ba036-80b6-5d3c-a057-95fbaf6b8c4a")
+		)
+		(pin "TBD-2"
+			(uuid "085df126-8ab6-5965-a791-5b77dfbf6ff5")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "RTR1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:RTR2")
+		(at 330.20 50.80 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "94a8b354-a677-5a27-a7ae-d9e2fe4fff5f")
+		(property "Reference" "RTR2"
+			(at 344.17 35.56 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "right leg far-end RS-485 termination"
+			(at 330.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 330.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Fit only at the verified far physical end. No intermediate termination is permitted."
+			(at 330.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 330.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 330.20 50.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "right leg far-end RS-485 termination"
+			(at 344.17 38.86 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-1"
+			(uuid "2126385c-e877-5e10-a042-e02d3f517671")
+		)
+		(pin "TBD-2"
+			(uuid "725073e4-81b8-5a79-a7d2-4d5060df0565")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "RTR2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:FR1")
+		(at 76.20 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b2ee57a3-502c-5880-a645-1bac4ea006ec")
+		(property "Reference" "FR1"
+			(at 62.23 81.28 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "right hip yaw actuator branch fuse"
+			(at 76.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Individual branch protection required by ELEC-003. Rating and holder require measured current, cable, connector, ambient, bundling, and fault data."
+			(at 76.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 109.22 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "right hip yaw actuator branch fuse"
+			(at 62.23 84.58 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-I"
+			(uuid "74315c2c-9623-51c6-a9dd-4910eb14cdcb")
+		)
+		(pin "TBD-O"
+			(uuid "6ddf817c-96a8-5b1c-a9cf-6952d8207868")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "FR1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:FR2")
+		(at 203.20 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c957b8d0-c337-526a-a9a0-ff79c3a02461")
+		(property "Reference" "FR2"
+			(at 189.23 81.28 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "right hip roll actuator branch fuse"
+			(at 203.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Individual branch protection required by ELEC-003. Rating and holder require measured current, cable, connector, ambient, bundling, and fault data."
+			(at 203.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 109.22 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "right hip roll actuator branch fuse"
+			(at 189.23 84.58 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-I"
+			(uuid "c4802b4a-29cc-584f-ab7b-5461194bbdba")
+		)
+		(pin "TBD-O"
+			(uuid "7dc86032-1f90-5b1c-a837-1ffbfe98c9ef")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "FR2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:FR3")
+		(at 330.20 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0fca326f-663d-5fa9-aee8-08de1ec8ad88")
+		(property "Reference" "FR3"
+			(at 344.17 81.28 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "right hip pitch actuator branch fuse"
+			(at 330.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 330.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Individual branch protection required by ELEC-003. Rating and holder require measured current, cable, connector, ambient, bundling, and fault data."
+			(at 330.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 330.20 109.22 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 330.20 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "right hip pitch actuator branch fuse"
+			(at 344.17 84.58 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-I"
+			(uuid "3f17bb1a-647a-5de9-a91d-e13338bc2744")
+		)
+		(pin "TBD-O"
+			(uuid "e9c019fe-23fb-52ec-aa6c-b72f35e988a1")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "FR3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:FR4")
+		(at 76.20 142.24 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "28672ed9-2b47-5a64-a626-a38b2913a82c")
+		(property "Reference" "FR4"
+			(at 62.23 127 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "right knee pitch actuator branch fuse"
+			(at 76.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Individual branch protection required by ELEC-003. Rating and holder require measured current, cable, connector, ambient, bundling, and fault data."
+			(at 76.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 154.94 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "right knee pitch actuator branch fuse"
+			(at 62.23 130.30 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-I"
+			(uuid "ec4ba8c5-887b-558d-acba-d5064873204a")
+		)
+		(pin "TBD-O"
+			(uuid "0e6dd57b-3299-5539-a796-4e10eb8ccbf4")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "FR4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:FR5")
+		(at 203.20 142.24 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "682c88da-efd7-5206-a5d9-a02a19749578")
+		(property "Reference" "FR5"
+			(at 189.23 127 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "right ankle pitch actuator branch fuse"
+			(at 203.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Individual branch protection required by ELEC-003. Rating and holder require measured current, cable, connector, ambient, bundling, and fault data."
+			(at 203.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 154.94 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "right ankle pitch actuator branch fuse"
+			(at 189.23 130.30 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-I"
+			(uuid "d2f2f24f-1d7c-5477-ae23-8ff886deb247")
+		)
+		(pin "TBD-O"
+			(uuid "30896065-b35e-5cdb-a692-036a6f97be17")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "FR5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:FR6")
+		(at 330.20 142.24 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "304b72d1-2377-5b1f-a3e6-853dc0beaa94")
+		(property "Reference" "FR6"
+			(at 344.17 127 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "right ankle roll actuator branch fuse"
+			(at 330.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 330.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Individual branch protection required by ELEC-003. Rating and holder require measured current, cable, connector, ambient, bundling, and fault data."
+			(at 330.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 330.20 154.94 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 330.20 142.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "right ankle roll actuator branch fuse"
+			(at 344.17 130.30 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-I"
+			(uuid "c5549f99-db31-5dd5-ae82-8be56dde2974")
+		)
+		(pin "TBD-O"
+			(uuid "cb636dfd-bea5-5bd8-afd4-632ff522412e")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "FR6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:MR1")
+		(at 76.20 187.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "74c7efb1-809c-5309-addc-4c63547cb5e2")
+		(property "Reference" "MR1"
+			(at 62.23 168.91 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "ROBOTIS XH540-W270-R right hip yaw, provisional ID 21"
+			(at 76.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/"
+			(at 76.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Power is star-injected by an individual fuse; only the differential data pair is intended to be bus-connected. Standard 4-pin cables are prohibited because they also carry VDD."
+			(at 76.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED"
+			(at 76.20 204.47 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "ROBOTIS XH540-W270-R documentation and product page reviewed 2026-08-05. Freeze the procured -R SKU, verify the nameplate and 4-pin housing, and confirm connector orientation before harness release."
+			(at 76.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "XH540-W270-R right hip yaw ID 21"
+			(at 62.23 172.21 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "1"
+			(uuid "cf5d84fb-8706-5539-adee-eed40fe7ce7a")
+		)
+		(pin "2"
+			(uuid "f340d346-9cab-5fd3-a42f-d07702f83572")
+		)
+		(pin "3"
+			(uuid "84eef6fa-5475-5cbb-a791-c0bc001134db")
+		)
+		(pin "4"
+			(uuid "3fcc4fa4-0f19-573d-ab6b-10140502045f")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "MR1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:MR2")
+		(at 203.20 187.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b3a25136-b79e-5ff2-a93c-bb4657b6b2bb")
+		(property "Reference" "MR2"
+			(at 189.23 168.91 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "ROBOTIS XH540-W270-R right hip roll, provisional ID 22"
+			(at 203.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/"
+			(at 203.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Power is star-injected by an individual fuse; only the differential data pair is intended to be bus-connected. Standard 4-pin cables are prohibited because they also carry VDD."
+			(at 203.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED"
+			(at 203.20 204.47 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "ROBOTIS XH540-W270-R documentation and product page reviewed 2026-08-05. Freeze the procured -R SKU, verify the nameplate and 4-pin housing, and confirm connector orientation before harness release."
+			(at 203.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "XH540-W270-R right hip roll ID 22"
+			(at 189.23 172.21 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "1"
+			(uuid "d5b45f79-c4ff-5c05-af69-ba64875437f3")
+		)
+		(pin "2"
+			(uuid "cd32989c-3771-5388-acdf-0d3d02c87e1b")
+		)
+		(pin "3"
+			(uuid "f13a9e89-021b-5d02-a9ca-efbf2cd710e4")
+		)
+		(pin "4"
+			(uuid "2f98e750-4d59-5478-aac2-941668a5bb91")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "MR2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:MR3")
+		(at 330.20 187.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "cc7cbebe-3a6c-5b2e-ac06-71657260be8c")
+		(property "Reference" "MR3"
+			(at 344.17 168.91 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "ROBOTIS XH540-W270-R right hip pitch, provisional ID 23"
+			(at 330.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/"
+			(at 330.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Power is star-injected by an individual fuse; only the differential data pair is intended to be bus-connected. Standard 4-pin cables are prohibited because they also carry VDD."
+			(at 330.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED"
+			(at 330.20 204.47 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "ROBOTIS XH540-W270-R documentation and product page reviewed 2026-08-05. Freeze the procured -R SKU, verify the nameplate and 4-pin housing, and confirm connector orientation before harness release."
+			(at 330.20 187.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "XH540-W270-R right hip pitch ID 23"
+			(at 344.17 172.21 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "1"
+			(uuid "45936dd5-880c-5246-a613-d7e53687da0b")
+		)
+		(pin "2"
+			(uuid "ce18a430-ef46-50c6-a4d5-e791d2371617")
+		)
+		(pin "3"
+			(uuid "cda59697-4c07-5664-a92f-21e903fd3a8b")
+		)
+		(pin "4"
+			(uuid "e2548145-a3e8-58aa-a481-c3fc73ac2922")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "MR3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:MR4")
+		(at 76.20 233.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2e3680ee-4f3e-5092-a40f-6ca8533994ea")
+		(property "Reference" "MR4"
+			(at 62.23 214.63 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "ROBOTIS XH540-W270-R right knee pitch, provisional ID 24"
+			(at 76.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/"
+			(at 76.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Power is star-injected by an individual fuse; only the differential data pair is intended to be bus-connected. Standard 4-pin cables are prohibited because they also carry VDD."
+			(at 76.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED"
+			(at 76.20 250.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "ROBOTIS XH540-W270-R documentation and product page reviewed 2026-08-05. Freeze the procured -R SKU, verify the nameplate and 4-pin housing, and confirm connector orientation before harness release."
+			(at 76.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "XH540-W270-R right knee pitch ID 24"
+			(at 62.23 217.93 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "1"
+			(uuid "a0a204bc-ee39-5240-ad77-b4cbf4cf035d")
+		)
+		(pin "2"
+			(uuid "ec586db0-4f81-58e8-a357-2713df031299")
+		)
+		(pin "3"
+			(uuid "c543367d-abde-5d68-ac24-b1c3b79b1dca")
+		)
+		(pin "4"
+			(uuid "dc77b562-69a6-524a-aa3d-1494b8ed3769")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "MR4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:MR5")
+		(at 203.20 233.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d79478ba-730c-5a88-afe9-321c27490d72")
+		(property "Reference" "MR5"
+			(at 189.23 214.63 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "ROBOTIS XH540-W270-R right ankle pitch, provisional ID 25"
+			(at 203.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/"
+			(at 203.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Power is star-injected by an individual fuse; only the differential data pair is intended to be bus-connected. Standard 4-pin cables are prohibited because they also carry VDD."
+			(at 203.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED"
+			(at 203.20 250.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "ROBOTIS XH540-W270-R documentation and product page reviewed 2026-08-05. Freeze the procured -R SKU, verify the nameplate and 4-pin housing, and confirm connector orientation before harness release."
+			(at 203.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "XH540-W270-R right ankle pitch ID 25"
+			(at 189.23 217.93 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "1"
+			(uuid "538f5a26-5cf7-5874-a224-245c2f1b1e08")
+		)
+		(pin "2"
+			(uuid "5d2911b6-e67a-5d21-a436-9e5c2288eb5f")
+		)
+		(pin "3"
+			(uuid "89223a4c-38d4-5d4e-a10d-d947ce218e89")
+		)
+		(pin "4"
+			(uuid "9cbd2434-7b0a-5a1c-ab8e-eb5507dcd265")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "MR5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:MR6")
+		(at 330.20 233.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "01fdc4bd-ccc2-5f0f-ab66-55bf5a3e71cf")
+		(property "Reference" "MR6"
+			(at 344.17 214.63 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "ROBOTIS XH540-W270-R right ankle roll, provisional ID 26"
+			(at 330.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/"
+			(at 330.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Power is star-injected by an individual fuse; only the differential data pair is intended to be bus-connected. Standard 4-pin cables are prohibited because they also carry VDD."
+			(at 330.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED"
+			(at 330.20 250.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "ROBOTIS XH540-W270-R documentation and product page reviewed 2026-08-05. Freeze the procured -R SKU, verify the nameplate and 4-pin housing, and confirm connector orientation before harness release."
+			(at 330.20 233.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "XH540-W270-R right ankle roll ID 26"
+			(at 344.17 217.93 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "1"
+			(uuid "231e338b-4fbd-58bb-abc4-c950d04a2b2b")
+		)
+		(pin "2"
+			(uuid "1f065b50-720f-5559-a542-fe72c3f743b3")
+		)
+		(pin "3"
+			(uuid "f5ff3765-1291-59d1-a90f-f513c1e29335")
+		)
+		(pin "4"
+			(uuid "0dd4ebf7-9eac-569d-ad88-b3c0509c8bfc")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae"
+					(reference "MR6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(embedded_fonts no)
+)

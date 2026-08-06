@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "PBV2")(type "KiCad")(uri "${KIPRJMOD}/project-button-v2.kicad_sym")(options "")(descr "Generated Project Button V2 reviewed-interface symbols"))
+)

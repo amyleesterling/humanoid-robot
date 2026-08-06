@@ -1,0 +1,445 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "ade8a40a-c319-546e-afa5-fe4c84b6f51c")
+	(paper "A3")
+	(title_block
+		(title "PB Electrical V2.1 - index")
+		(date "2026-08-05")
+		(rev "V2.1-P0.2")
+		(company "Project Button")
+		(comment 1 "PRELIMINARY - NOT APPROVED FOR ENERGIZATION")
+		(comment 2 "V2.1 CONNECTED DESIGN INTENT - QUALIFIED REVIEW REQUIRED")
+	)
+	(lib_symbols)
+	(text "PRELIMINARY - NOT APPROVED FOR ENERGIZATION"
+		(exclude_from_sim no)
+		(at 17.78 10.16 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+					(justify left bottom)
+			)
+		(uuid "4b0c1b87-bc68-57bd-a657-7dd186771338")
+	)
+	(text "PROJECT BUTTON HR-V0 / HR-30 ELECTRICAL V2.1"
+		(exclude_from_sim no)
+		(at 17.78 19.05 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+					(justify left bottom)
+			)
+		(uuid "75dc5916-6de4-5d78-af8a-97257a9c83d3")
+	)
+	(text "Connected design intent generated from one model; unresolved hardware and pin maps remain explicit release blockers."
+		(exclude_from_sim no)
+		(at 17.78 26.67 0)
+			(effects
+				(font
+					(size 1.52 1.52)
+				)
+					(justify left bottom)
+			)
+		(uuid "cd83f713-410a-5a57-a607-0347979a904d")
+	)
+	(sheet
+		(at 17.78 43.18)
+		(size 116.84 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke (width 0.5) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "58523d53-9f3a-5a48-a670-55f854432091")
+		(property "Sheetname" "01 01 ac pe power" (at 20.32 50.80 0) (effects
+			(font
+				(size 1.52 1.52)
+			)
+				(justify left bottom)
+		))
+		(property "Sheetfile" "01_ac_pe_power.kicad_sch" (at 20.32 60.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(justify left top)
+		))
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c" (page "2"))
+			)
+		)
+	)
+	(sheet
+		(at 149.86 43.18)
+		(size 116.84 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke (width 0.5) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "cf960cd2-6951-5d35-a3e5-4bbe4cb9c24e")
+		(property "Sheetname" "02 02 hrv0 safety" (at 152.40 50.80 0) (effects
+			(font
+				(size 1.52 1.52)
+			)
+				(justify left bottom)
+		))
+		(property "Sheetfile" "02_hrv0_safety.kicad_sch" (at 152.40 60.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(justify left top)
+		))
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c" (page "3"))
+			)
+		)
+	)
+	(sheet
+		(at 281.94 43.18)
+		(size 116.84 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke (width 0.5) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "7c9c6037-9441-5b6b-a82a-37839eb7f92c")
+		(property "Sheetname" "03 03 hrv0 distribution" (at 284.48 50.80 0) (effects
+			(font
+				(size 1.52 1.52)
+			)
+				(justify left bottom)
+		))
+		(property "Sheetfile" "03_hrv0_distribution.kicad_sch" (at 284.48 60.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(justify left top)
+		))
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c" (page "4"))
+			)
+		)
+	)
+	(sheet
+		(at 17.78 86.36)
+		(size 116.84 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke (width 0.5) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "db6cb586-ff17-5c80-a8e3-99c5c80646af")
+		(property "Sheetname" "04 04 control watchdog" (at 20.32 93.98 0) (effects
+			(font
+				(size 1.52 1.52)
+			)
+				(justify left bottom)
+		))
+		(property "Sheetfile" "04_control_watchdog.kicad_sch" (at 20.32 104.14 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(justify left top)
+		))
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c" (page "5"))
+			)
+		)
+	)
+	(sheet
+		(at 149.86 86.36)
+		(size 116.84 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke (width 0.5) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "4a1ab087-b6ca-54dd-aacf-c5993fdcdfcd")
+		(property "Sheetname" "05 05 hr30 battery precharge" (at 152.40 93.98 0) (effects
+			(font
+				(size 1.52 1.52)
+			)
+				(justify left bottom)
+		))
+		(property "Sheetfile" "05_hr30_battery_precharge.kicad_sch" (at 152.40 104.14 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(justify left top)
+		))
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c" (page "6"))
+			)
+		)
+	)
+	(sheet
+		(at 281.94 86.36)
+		(size 116.84 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke (width 0.5) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "95b711ee-75c3-55df-a3ff-a2c9d74e1f6c")
+		(property "Sheetname" "06 06 hr30 safety distribution" (at 284.48 93.98 0) (effects
+			(font
+				(size 1.52 1.52)
+			)
+				(justify left bottom)
+		))
+		(property "Sheetfile" "06_hr30_safety_distribution.kicad_sch" (at 284.48 104.14 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(justify left top)
+		))
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c" (page "7"))
+			)
+		)
+	)
+	(sheet
+		(at 17.78 129.54)
+		(size 116.84 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke (width 0.5) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "cf79f383-b338-574a-a7d1-3b6e9ece802f")
+		(property "Sheetname" "07 07 left leg rs485" (at 20.32 137.16 0) (effects
+			(font
+				(size 1.52 1.52)
+			)
+				(justify left bottom)
+		))
+		(property "Sheetfile" "07_left_leg_rs485.kicad_sch" (at 20.32 147.32 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(justify left top)
+		))
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c" (page "8"))
+			)
+		)
+	)
+	(sheet
+		(at 149.86 129.54)
+		(size 116.84 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke (width 0.5) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "ad57f24b-fdcb-5167-a612-0b915b8181ae")
+		(property "Sheetname" "08 08 right leg rs485" (at 152.40 137.16 0) (effects
+			(font
+				(size 1.52 1.52)
+			)
+				(justify left bottom)
+		))
+		(property "Sheetfile" "08_right_leg_rs485.kicad_sch" (at 152.40 147.32 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(justify left top)
+		))
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c" (page "9"))
+			)
+		)
+	)
+	(sheet
+		(at 281.94 129.54)
+		(size 116.84 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke (width 0.5) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "13be53ef-c538-5de0-a00b-1e2f010ae9ad")
+		(property "Sheetname" "09 09 upper bus a" (at 284.48 137.16 0) (effects
+			(font
+				(size 1.52 1.52)
+			)
+				(justify left bottom)
+		))
+		(property "Sheetfile" "09_upper_bus_a.kicad_sch" (at 284.48 147.32 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(justify left top)
+		))
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c" (page "10"))
+			)
+		)
+	)
+	(sheet
+		(at 17.78 172.72)
+		(size 116.84 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke (width 0.5) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "ddea5665-9329-56b3-a1d6-d158ce74ec30")
+		(property "Sheetname" "10 10 upper bus b" (at 20.32 180.34 0) (effects
+			(font
+				(size 1.52 1.52)
+			)
+				(justify left bottom)
+		))
+		(property "Sheetfile" "10_upper_bus_b.kicad_sch" (at 20.32 190.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(justify left top)
+		))
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c" (page "11"))
+			)
+		)
+	)
+	(sheet
+		(at 149.86 172.72)
+		(size 116.84 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke (width 0.5) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "3ca62ec0-36ae-5435-a7cc-061d6eed2bed")
+		(property "Sheetname" "11 11 sensors sync" (at 152.40 180.34 0) (effects
+			(font
+				(size 1.52 1.52)
+			)
+				(justify left bottom)
+		))
+		(property "Sheetfile" "11_sensors_sync.kicad_sch" (at 152.40 190.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(justify left top)
+		))
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c" (page "12"))
+			)
+		)
+	)
+	(sheet
+		(at 281.94 172.72)
+		(size 116.84 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke (width 0.5) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "cd33e8f9-b051-5529-a454-bd0d6b9c7bac")
+		(property "Sheetname" "12 12 sensor adc imu" (at 284.48 180.34 0) (effects
+			(font
+				(size 1.52 1.52)
+			)
+				(justify left bottom)
+		))
+		(property "Sheetfile" "12_sensor_adc_imu.kicad_sch" (at 284.48 190.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(justify left top)
+		))
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c" (page "13"))
+			)
+		)
+	)
+	(sheet
+		(at 17.78 215.90)
+		(size 116.84 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke (width 0.5) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "bf8e5dd8-e7eb-5737-a89f-c598260f15c4")
+		(property "Sheetname" "13 13 sensor afe" (at 20.32 223.52 0) (effects
+			(font
+				(size 1.52 1.52)
+			)
+				(justify left bottom)
+		))
+		(property "Sheetfile" "13_sensor_afe.kicad_sch" (at 20.32 233.68 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(justify left top)
+		))
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c" (page "14"))
+			)
+		)
+	)
+	(sheet
+		(at 149.86 215.90)
+		(size 116.84 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke (width 0.5) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "65bba94b-8a4b-5d05-ab17-731ee7dec45c")
+		(property "Sheetname" "14 14 harness terminals" (at 152.40 223.52 0) (effects
+			(font
+				(size 1.52 1.52)
+			)
+				(justify left bottom)
+		))
+		(property "Sheetfile" "14_harness_terminals.kicad_sch" (at 152.40 233.68 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(justify left top)
+		))
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c" (page "15"))
+			)
+		)
+	)
+	(sheet_instances
+		(path "/" (page "1"))
+	)
+	(embedded_fonts no)
+)

@@ -1,0 +1,2952 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "0088e069-528c-5ef2-a682-d04513a8197b")
+	(paper "A3")
+	(title_block
+		(title "PB Electrical V2.1 - 11 11 sensors sync")
+		(date "2026-08-05")
+		(rev "V2.1-P0.2")
+		(company "Project Button")
+		(comment 1 "PRELIMINARY - NOT APPROVED FOR ENERGIZATION")
+		(comment 2 "QUALIFIED REVIEW REQUIRED")
+	)
+	(lib_symbols
+		(symbol "PBV2:LCL1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "LCL1" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "left foot 1 compression load cell 0-200 N" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "left foot 1 compression load cell 0-200 N" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "LCL1_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "LCL1_1_1"
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "EXC_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "EXC_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "SIG_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "SIG_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:LCL2"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "LCL2" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "left foot 2 compression load cell 0-200 N" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "left foot 2 compression load cell 0-200 N" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "LCL2_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "LCL2_1_1"
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "EXC_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "EXC_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "SIG_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "SIG_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:LCL3"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "LCL3" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "left foot 3 compression load cell 0-200 N" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "left foot 3 compression load cell 0-200 N" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "LCL3_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "LCL3_1_1"
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "EXC_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "EXC_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "SIG_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "SIG_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:LCL4"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "LCL4" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "left foot 4 compression load cell 0-200 N" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "left foot 4 compression load cell 0-200 N" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "LCL4_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "LCL4_1_1"
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "EXC_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "EXC_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "SIG_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "SIG_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:LCR1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "LCR1" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "right foot 1 compression load cell 0-200 N" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "right foot 1 compression load cell 0-200 N" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "LCR1_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "LCR1_1_1"
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "EXC_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "EXC_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "SIG_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "SIG_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:LCR2"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "LCR2" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "right foot 2 compression load cell 0-200 N" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "right foot 2 compression load cell 0-200 N" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "LCR2_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "LCR2_1_1"
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "EXC_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "EXC_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "SIG_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "SIG_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:LCR3"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "LCR3" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "right foot 3 compression load cell 0-200 N" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "right foot 3 compression load cell 0-200 N" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "LCR3_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "LCR3_1_1"
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "EXC_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "EXC_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "SIG_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "SIG_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:LCR4"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "LCR4" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "right foot 4 compression load cell 0-200 N" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "right foot 4 compression load cell 0-200 N" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "LCR4_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "LCR4_1_1"
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "EXC_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "EXC_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "SIG_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "SIG_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "PRELIMINARY - NOT APPROVED FOR ENERGIZATION"
+		(exclude_from_sim no)
+		(at 17.78 10.16 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+					(justify left bottom)
+			)
+		(uuid "4b0c1b87-bc68-57bd-a657-7dd186771338")
+	)
+	(text "11  Foot load cells and unresolved bridge harness interfaces"
+		(exclude_from_sim no)
+		(at 17.78 19.05 0)
+			(effects
+				(font
+					(size 2.03 2.03)
+				)
+					(justify left bottom)
+			)
+		(uuid "5238d013-e148-52a6-ae6f-5b4a7a1eb282")
+	)
+	(text "Eight load cells are shown as functional bridge interfaces only. Exact parts, wiring colors, overload behavior, connectors, and calibration remain unresolved."
+		(exclude_from_sim no)
+		(at 17.78 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "c5c88c0b-00ad-512b-ac31-204fcb60e7e5")
+	)
+	(rectangle
+		(start 12.70 31.75)
+		(end 406.40 256.54)
+		(stroke (width 0.50) (type solid))
+		(fill (type none))
+		(uuid "5d97ffa0-81ad-52c5-ae24-cc6458530bb0")
+	)
+	(wire
+		(pts (xy 59.69 66.04) (xy 54.61 66.04))
+		(stroke (width 0) (type default))
+		(uuid "ca164082-7ff1-5e31-ada4-bb32d0925e00")
+	)
+	(global_label "LC_L1_EXC+"
+		(shape bidirectional)
+		(at 54.61 66.04 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "d783bc14-643b-59e6-ae60-6d064cc6ca9f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 68.58 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2079"
+		(exclude_from_sim no)
+		(at 57.15 64.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "a5372e10-d7bf-5f78-a843-6d0fa8792647")
+	)
+	(wire
+		(pts (xy 59.69 60.96) (xy 54.61 60.96))
+		(stroke (width 0) (type default))
+		(uuid "a940bf77-0b1d-5762-a21c-a2e57e2504f2")
+	)
+	(global_label "LC_L1_EXC-"
+		(shape bidirectional)
+		(at 54.61 60.96 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "1ee35449-e278-5e68-a710-3840f0369f1d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 63.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2080"
+		(exclude_from_sim no)
+		(at 57.15 59.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "68e14fc8-d886-5fac-a38a-a756f9e5c1f0")
+	)
+	(wire
+		(pts (xy 92.71 66.04) (xy 97.79 66.04))
+		(stroke (width 0) (type default))
+		(uuid "a9504f92-949e-5dff-aff6-81146a900363")
+	)
+	(global_label "LC_L1_SIG+"
+		(shape bidirectional)
+		(at 97.79 66.04 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "a6b48ab7-9c17-53c9-ac95-32387537746b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 68.58 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2081"
+		(exclude_from_sim no)
+		(at 95.25 64.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6892a6dd-398a-56d6-a16b-9ad79670b25b")
+	)
+	(wire
+		(pts (xy 92.71 60.96) (xy 97.79 60.96))
+		(stroke (width 0) (type default))
+		(uuid "62825325-d08b-58ea-a28d-e785bf246855")
+	)
+	(global_label "LC_L1_SIG-"
+		(shape bidirectional)
+		(at 97.79 60.96 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "3374415e-99b3-56a1-ad4d-f29c20e833c1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 63.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2082"
+		(exclude_from_sim no)
+		(at 95.25 59.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "4deb7bfc-952b-588a-a123-6d9111a0e0b8")
+	)
+	(wire
+		(pts (xy 186.69 66.04) (xy 181.61 66.04))
+		(stroke (width 0) (type default))
+		(uuid "822aa7a4-2d89-5da4-a5be-c474b22dd1d8")
+	)
+	(global_label "LC_L2_EXC+"
+		(shape bidirectional)
+		(at 181.61 66.04 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "216784dc-0d69-519a-ab34-6245afe5dea6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 68.58 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2083"
+		(exclude_from_sim no)
+		(at 184.15 64.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d4e8f816-cfc1-5b37-ac75-f49591a63125")
+	)
+	(wire
+		(pts (xy 186.69 60.96) (xy 181.61 60.96))
+		(stroke (width 0) (type default))
+		(uuid "cc0ae2b2-4ce6-5996-a8f4-e28ec47687ef")
+	)
+	(global_label "LC_L2_EXC-"
+		(shape bidirectional)
+		(at 181.61 60.96 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "cfc3d318-95f9-54bc-a1e6-c573aa8acf77")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 63.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2084"
+		(exclude_from_sim no)
+		(at 184.15 59.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "0e4d3000-2daf-577d-a153-9112f00d3d2a")
+	)
+	(wire
+		(pts (xy 219.71 66.04) (xy 224.79 66.04))
+		(stroke (width 0) (type default))
+		(uuid "50e15df3-44ac-574a-a52e-b51bd9b2fa7a")
+	)
+	(global_label "LC_L2_SIG+"
+		(shape bidirectional)
+		(at 224.79 66.04 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "1fdac6ed-e08e-51be-a97b-72d8d37f88df")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 68.58 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2085"
+		(exclude_from_sim no)
+		(at 222.25 64.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "3fea1be3-5549-57ad-a798-812a654bfca3")
+	)
+	(wire
+		(pts (xy 219.71 60.96) (xy 224.79 60.96))
+		(stroke (width 0) (type default))
+		(uuid "aa6a6231-8522-5361-a88a-566388d3637d")
+	)
+	(global_label "LC_L2_SIG-"
+		(shape bidirectional)
+		(at 224.79 60.96 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "305578c7-edb8-5656-a0da-d823ea1c583a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 63.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2086"
+		(exclude_from_sim no)
+		(at 222.25 59.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "e7c727fd-a2f4-577c-aa9a-3d98458e5272")
+	)
+	(wire
+		(pts (xy 313.69 66.04) (xy 308.61 66.04))
+		(stroke (width 0) (type default))
+		(uuid "2dac3a94-b9c0-57d0-ab24-9460d51d1406")
+	)
+	(global_label "LC_L3_EXC+"
+		(shape bidirectional)
+		(at 308.61 66.04 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "f7861265-b1d9-5f94-ac2f-2aff319ad0ef")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 68.58 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2087"
+		(exclude_from_sim no)
+		(at 311.15 64.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "11fdaaf8-dc8d-5b4a-a26f-730ef8ab9f75")
+	)
+	(wire
+		(pts (xy 313.69 60.96) (xy 308.61 60.96))
+		(stroke (width 0) (type default))
+		(uuid "7c2bcb1a-86a2-54a5-a2fb-68b8fd8ae198")
+	)
+	(global_label "LC_L3_EXC-"
+		(shape bidirectional)
+		(at 308.61 60.96 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "eb16f1f0-ccee-5efb-a420-38d33ae3f899")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 63.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2088"
+		(exclude_from_sim no)
+		(at 311.15 59.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "4175158f-22df-5429-a433-342e1e428d8d")
+	)
+	(wire
+		(pts (xy 346.71 66.04) (xy 351.79 66.04))
+		(stroke (width 0) (type default))
+		(uuid "5a0be5e6-ff09-582c-a308-497225710ea5")
+	)
+	(global_label "LC_L3_SIG+"
+		(shape bidirectional)
+		(at 351.79 66.04 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "a7572ed7-7125-5f31-a5e5-029561e6869b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 68.58 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2089"
+		(exclude_from_sim no)
+		(at 349.25 64.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "01824188-45f4-5552-aa31-a6b833ec0a92")
+	)
+	(wire
+		(pts (xy 346.71 60.96) (xy 351.79 60.96))
+		(stroke (width 0) (type default))
+		(uuid "06fddf6b-536a-52c8-a6b9-ecbadf652351")
+	)
+	(global_label "LC_L3_SIG-"
+		(shape bidirectional)
+		(at 351.79 60.96 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "51b46513-c9f6-587a-a39e-acc3faab5829")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 63.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2090"
+		(exclude_from_sim no)
+		(at 349.25 59.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "ea07400e-b763-5800-a799-c2a64e473418")
+	)
+	(wire
+		(pts (xy 59.69 137.16) (xy 54.61 137.16))
+		(stroke (width 0) (type default))
+		(uuid "a18f54dc-dd7b-578c-aa0f-8c920d56b874")
+	)
+	(global_label "LC_L4_EXC+"
+		(shape bidirectional)
+		(at 54.61 137.16 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "66d19034-9e2d-57b1-a99c-2b75807bb8a1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2091"
+		(exclude_from_sim no)
+		(at 57.15 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f26df913-f7c0-5cea-aaa1-96df8dbac868")
+	)
+	(wire
+		(pts (xy 59.69 132.08) (xy 54.61 132.08))
+		(stroke (width 0) (type default))
+		(uuid "dabdccee-6d6c-509e-afc6-66506ddb6bfd")
+	)
+	(global_label "LC_L4_EXC-"
+		(shape bidirectional)
+		(at 54.61 132.08 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "ea14a727-d34d-506e-a7db-ee19d7526a96")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2092"
+		(exclude_from_sim no)
+		(at 57.15 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "24d1790c-5210-5558-a4b6-66295837142c")
+	)
+	(wire
+		(pts (xy 92.71 137.16) (xy 97.79 137.16))
+		(stroke (width 0) (type default))
+		(uuid "a245dda2-2d0a-5dd1-a61a-8bfffc392a07")
+	)
+	(global_label "LC_L4_SIG+"
+		(shape bidirectional)
+		(at 97.79 137.16 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "f5a90c1e-f66d-5c95-af38-30290c1595da")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2093"
+		(exclude_from_sim no)
+		(at 95.25 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "82b6368c-856c-5544-af8f-2d1153c5a95e")
+	)
+	(wire
+		(pts (xy 92.71 132.08) (xy 97.79 132.08))
+		(stroke (width 0) (type default))
+		(uuid "8e885a88-635c-5927-a5c8-a5d60d2ed294")
+	)
+	(global_label "LC_L4_SIG-"
+		(shape bidirectional)
+		(at 97.79 132.08 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "5bf92c6f-829a-5e70-a2e1-26ba17fd5bd0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2094"
+		(exclude_from_sim no)
+		(at 95.25 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "4316caf8-a342-5bbb-aae4-62bc4da29f18")
+	)
+	(wire
+		(pts (xy 186.69 137.16) (xy 181.61 137.16))
+		(stroke (width 0) (type default))
+		(uuid "514ad940-91f7-5a41-a1be-78c6aa69d339")
+	)
+	(global_label "LC_R1_EXC+"
+		(shape bidirectional)
+		(at 181.61 137.16 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "f31557a9-e9f7-5216-ac0d-6fba5b071a4f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2095"
+		(exclude_from_sim no)
+		(at 184.15 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "19f72eaa-8745-58c0-a73e-d046caffcfa6")
+	)
+	(wire
+		(pts (xy 186.69 132.08) (xy 181.61 132.08))
+		(stroke (width 0) (type default))
+		(uuid "e90afb82-32aa-5aaf-a4c4-3834266c4edd")
+	)
+	(global_label "LC_R1_EXC-"
+		(shape bidirectional)
+		(at 181.61 132.08 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "73aefbad-0344-53dd-a604-ec7132aa5397")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2096"
+		(exclude_from_sim no)
+		(at 184.15 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "35fe3a21-afdc-5fdd-ab04-6414d5d21501")
+	)
+	(wire
+		(pts (xy 219.71 137.16) (xy 224.79 137.16))
+		(stroke (width 0) (type default))
+		(uuid "75d13c6e-07a7-5570-a448-b3f15fa4ab20")
+	)
+	(global_label "LC_R1_SIG+"
+		(shape bidirectional)
+		(at 224.79 137.16 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "186570fd-d036-565d-aa71-d34ae72f939b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2097"
+		(exclude_from_sim no)
+		(at 222.25 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b1ecd5eb-ecac-5f78-a933-cf4250a58ff1")
+	)
+	(wire
+		(pts (xy 219.71 132.08) (xy 224.79 132.08))
+		(stroke (width 0) (type default))
+		(uuid "2087dbb4-6625-51c1-a231-74fb5acae2d0")
+	)
+	(global_label "LC_R1_SIG-"
+		(shape bidirectional)
+		(at 224.79 132.08 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "91ef445f-3486-5539-a98e-30e6863e3623")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2098"
+		(exclude_from_sim no)
+		(at 222.25 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "42342517-380b-5f3a-a904-92227d4a52e2")
+	)
+	(wire
+		(pts (xy 313.69 137.16) (xy 308.61 137.16))
+		(stroke (width 0) (type default))
+		(uuid "1475a746-bdbd-5d46-a80d-13bd00d30c67")
+	)
+	(global_label "LC_R2_EXC+"
+		(shape bidirectional)
+		(at 308.61 137.16 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "5fa75ce2-ff43-5f9d-acd2-f6116ec6b563")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2099"
+		(exclude_from_sim no)
+		(at 311.15 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f2ecf8f2-9d49-5797-a748-b4b3c32716a3")
+	)
+	(wire
+		(pts (xy 313.69 132.08) (xy 308.61 132.08))
+		(stroke (width 0) (type default))
+		(uuid "15000da5-441b-5840-a801-5d6bdeec0730")
+	)
+	(global_label "LC_R2_EXC-"
+		(shape bidirectional)
+		(at 308.61 132.08 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "3c5bae5c-6213-50ee-a8d0-92b0a4aff746")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2100"
+		(exclude_from_sim no)
+		(at 311.15 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "a564045d-0af3-5ea1-ad26-c2eaaa895f9d")
+	)
+	(wire
+		(pts (xy 346.71 137.16) (xy 351.79 137.16))
+		(stroke (width 0) (type default))
+		(uuid "30e791b9-3db2-5077-ae30-c7d3835ad29f")
+	)
+	(global_label "LC_R2_SIG+"
+		(shape bidirectional)
+		(at 351.79 137.16 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "df4bbc58-8e90-5568-a7d6-0d8907e85197")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2101"
+		(exclude_from_sim no)
+		(at 349.25 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "53cee4ba-a274-5573-a44f-fbef6c3ca886")
+	)
+	(wire
+		(pts (xy 346.71 132.08) (xy 351.79 132.08))
+		(stroke (width 0) (type default))
+		(uuid "6fabcadf-8e88-57e8-a7ea-5dd7672536c1")
+	)
+	(global_label "LC_R2_SIG-"
+		(shape bidirectional)
+		(at 351.79 132.08 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "2b9c416f-cf25-5934-ac12-28bfcde126ee")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2102"
+		(exclude_from_sim no)
+		(at 349.25 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "143dbd92-f09f-546e-ae50-6ec71dc5601b")
+	)
+	(wire
+		(pts (xy 59.69 208.28) (xy 54.61 208.28))
+		(stroke (width 0) (type default))
+		(uuid "af34d4d2-7de3-5c74-adf4-84cf5379b3d3")
+	)
+	(global_label "LC_R3_EXC+"
+		(shape bidirectional)
+		(at 54.61 208.28 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "808c5752-1912-5ff5-a62c-051647136ee4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 210.82 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2103"
+		(exclude_from_sim no)
+		(at 57.15 206.50 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "2aee2bc6-f8f5-5c6d-afb6-09af23bc5ad6")
+	)
+	(wire
+		(pts (xy 59.69 203.20) (xy 54.61 203.20))
+		(stroke (width 0) (type default))
+		(uuid "d0f077e0-d971-56c2-a6e0-b9e864717c06")
+	)
+	(global_label "LC_R3_EXC-"
+		(shape bidirectional)
+		(at 54.61 203.20 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "da9089da-b902-548e-a765-a1b4f941a010")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 205.74 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2104"
+		(exclude_from_sim no)
+		(at 57.15 201.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "39d054d2-c339-54d6-a20f-39fa8b720f35")
+	)
+	(wire
+		(pts (xy 92.71 208.28) (xy 97.79 208.28))
+		(stroke (width 0) (type default))
+		(uuid "1509a41c-ebb3-5d40-a642-9be36f4ccaf1")
+	)
+	(global_label "LC_R3_SIG+"
+		(shape bidirectional)
+		(at 97.79 208.28 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "018d212b-2543-5c14-abdb-27371ca3420e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 210.82 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2105"
+		(exclude_from_sim no)
+		(at 95.25 206.50 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6b1f98e5-612b-5125-a72a-b21d8c77edc9")
+	)
+	(wire
+		(pts (xy 92.71 203.20) (xy 97.79 203.20))
+		(stroke (width 0) (type default))
+		(uuid "e107e9d6-a057-5453-ab6a-604bf1e3a0e6")
+	)
+	(global_label "LC_R3_SIG-"
+		(shape bidirectional)
+		(at 97.79 203.20 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "6882c3eb-7bef-5cfc-a569-b191d726407c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 205.74 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2106"
+		(exclude_from_sim no)
+		(at 95.25 201.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "93bf837b-5a05-54a0-a3ac-e962c6b58503")
+	)
+	(wire
+		(pts (xy 186.69 208.28) (xy 181.61 208.28))
+		(stroke (width 0) (type default))
+		(uuid "95600f2d-0d79-5133-a087-82823d5463cc")
+	)
+	(global_label "LC_R4_EXC+"
+		(shape bidirectional)
+		(at 181.61 208.28 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "53a671c8-5e89-5950-a359-8d59187fdaec")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 210.82 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2107"
+		(exclude_from_sim no)
+		(at 184.15 206.50 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "53eb768f-7bda-585a-a5f6-6faf3aec8ba7")
+	)
+	(wire
+		(pts (xy 186.69 203.20) (xy 181.61 203.20))
+		(stroke (width 0) (type default))
+		(uuid "6165a501-9288-519f-a73d-51f35ab012a2")
+	)
+	(global_label "LC_R4_EXC-"
+		(shape bidirectional)
+		(at 181.61 203.20 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "96cd0452-beb8-53f6-aba6-5e31abc0e6e0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 205.74 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2108"
+		(exclude_from_sim no)
+		(at 184.15 201.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "4e3f6880-caab-5e4f-a215-991623448949")
+	)
+	(wire
+		(pts (xy 219.71 208.28) (xy 224.79 208.28))
+		(stroke (width 0) (type default))
+		(uuid "d1be089b-cf94-507b-acd3-903a8d19034b")
+	)
+	(global_label "LC_R4_SIG+"
+		(shape bidirectional)
+		(at 224.79 208.28 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "6ee08b9c-9f7c-5fbb-a57f-cbba483ee48e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 210.82 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2109"
+		(exclude_from_sim no)
+		(at 222.25 206.50 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "85bc7f20-cf17-5101-a2ba-f4e94fab899c")
+	)
+	(wire
+		(pts (xy 219.71 203.20) (xy 224.79 203.20))
+		(stroke (width 0) (type default))
+		(uuid "5b4f3e40-bd67-5374-ab1e-66bcbdfb0dfa")
+	)
+	(global_label "LC_R4_SIG-"
+		(shape bidirectional)
+		(at 224.79 203.20 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "49b4151c-a89a-5216-a96e-98ed46b5c09a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 205.74 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2110"
+		(exclude_from_sim no)
+		(at 222.25 201.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "ec3089de-d1ad-5e19-a749-26cc5760e027")
+	)
+	(text "NOTE 1: Bridge excitation and signal pairs are logical nets; physical connector pins and cable colors are not assigned."
+		(exclude_from_sim no)
+		(at 17.78 266.70 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "57cf796c-bdec-5407-ada5-bcfd5b0f40a9")
+	)
+	(text "NOTE 2: Four load cells per foot remain the requirement baseline; overload and cross-axis tests are release gates."
+		(exclude_from_sim no)
+		(at 17.78 271.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "5ebe6df3-8ab7-587d-ae9f-e4cc018575a1")
+	)
+	(symbol
+		(lib_id "PBV2:LCL1")
+		(at 76.20 63.50 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "be9801f5-2ca2-5819-a82e-3755e68ddb72")
+		(property "Reference" "LCL1"
+			(at 62.23 48.26 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "left foot 1 compression load cell 0-200 N"
+			(at 76.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved."
+			(at 76.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 76.20 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "left foot 1 compression load cell 0-200 N"
+			(at 62.23 51.56 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-E+"
+			(uuid "97529881-51b4-5ec4-ae4d-3f05f85a2b91")
+		)
+		(pin "TBD-E-"
+			(uuid "a87bed6e-d0e8-5c42-a654-84db1e3271ae")
+		)
+		(pin "TBD-S+"
+			(uuid "41702c87-f0e9-5d80-a745-768a57cd4053")
+		)
+		(pin "TBD-S-"
+			(uuid "d2bea07f-f4d8-5ce7-ae41-57c029197cad")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/3ca62ec0-36ae-5435-a7cc-061d6eed2bed"
+					(reference "LCL1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:LCL2")
+		(at 203.20 63.50 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "40f628cc-ec40-5e21-ad5b-3468b0f8f034")
+		(property "Reference" "LCL2"
+			(at 189.23 48.26 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "left foot 2 compression load cell 0-200 N"
+			(at 203.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved."
+			(at 203.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 76.20 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "left foot 2 compression load cell 0-200 N"
+			(at 189.23 51.56 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-E+"
+			(uuid "458694b8-2ca0-5d05-ac13-9bb85d2cd6d3")
+		)
+		(pin "TBD-E-"
+			(uuid "173545d6-3e25-51b5-a6b4-fd1bb58cc722")
+		)
+		(pin "TBD-S+"
+			(uuid "979a9a8a-ddcb-5d36-ae70-cbb68ef3f2e6")
+		)
+		(pin "TBD-S-"
+			(uuid "e4be72b6-0ea5-559d-abb8-e5770f655d62")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/3ca62ec0-36ae-5435-a7cc-061d6eed2bed"
+					(reference "LCL2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:LCL3")
+		(at 330.20 63.50 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e1aebc5f-0543-5fab-a63d-7615be83d2a7")
+		(property "Reference" "LCL3"
+			(at 344.17 48.26 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "left foot 3 compression load cell 0-200 N"
+			(at 330.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 330.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved."
+			(at 330.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 330.20 76.20 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 330.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "left foot 3 compression load cell 0-200 N"
+			(at 344.17 51.56 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-E+"
+			(uuid "57d6b6e0-514d-55b5-a235-f1b53c6b5db4")
+		)
+		(pin "TBD-E-"
+			(uuid "1b776723-cab9-596b-a914-9e64f6bcb176")
+		)
+		(pin "TBD-S+"
+			(uuid "1fedf304-bcfc-542c-a749-6fb345f92670")
+		)
+		(pin "TBD-S-"
+			(uuid "4fb79342-1a95-52df-a148-313df1ed3826")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/3ca62ec0-36ae-5435-a7cc-061d6eed2bed"
+					(reference "LCL3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:LCL4")
+		(at 76.20 134.62 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "95724f9a-581e-5623-aa11-92a1296e92fc")
+		(property "Reference" "LCL4"
+			(at 62.23 119.38 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "left foot 4 compression load cell 0-200 N"
+			(at 76.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved."
+			(at 76.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 147.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "left foot 4 compression load cell 0-200 N"
+			(at 62.23 122.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-E+"
+			(uuid "a8c43bc4-17af-526d-a27f-4fcd1215e66f")
+		)
+		(pin "TBD-E-"
+			(uuid "240d275d-128d-5e01-a784-b7afd5d381e1")
+		)
+		(pin "TBD-S+"
+			(uuid "3d6f2e2d-8dd3-5f33-aaeb-c72c77f029e3")
+		)
+		(pin "TBD-S-"
+			(uuid "b403ebe1-d384-5cf1-a3a4-1409bb1218ca")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/3ca62ec0-36ae-5435-a7cc-061d6eed2bed"
+					(reference "LCL4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:LCR1")
+		(at 203.20 134.62 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6b02cd78-3f14-5132-a885-e4568f8de11f")
+		(property "Reference" "LCR1"
+			(at 189.23 119.38 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "right foot 1 compression load cell 0-200 N"
+			(at 203.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved."
+			(at 203.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 147.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "right foot 1 compression load cell 0-200 N"
+			(at 189.23 122.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-E+"
+			(uuid "43e3dfde-8061-5cc3-ae69-b7c54a501937")
+		)
+		(pin "TBD-E-"
+			(uuid "b1f155b3-5f73-5007-ad89-a6daa93f99ca")
+		)
+		(pin "TBD-S+"
+			(uuid "a2579e29-9b49-5ce9-a773-f4901b3db226")
+		)
+		(pin "TBD-S-"
+			(uuid "119ff1d6-514c-5ac8-ac97-a45de93a5c16")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/3ca62ec0-36ae-5435-a7cc-061d6eed2bed"
+					(reference "LCR1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:LCR2")
+		(at 330.20 134.62 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "eee1bc75-e38a-5dec-a238-5b85b6353103")
+		(property "Reference" "LCR2"
+			(at 344.17 119.38 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "right foot 2 compression load cell 0-200 N"
+			(at 330.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 330.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved."
+			(at 330.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 330.20 147.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 330.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "right foot 2 compression load cell 0-200 N"
+			(at 344.17 122.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-E+"
+			(uuid "2984d14a-9094-5d21-a21d-8b8f9833ac3c")
+		)
+		(pin "TBD-E-"
+			(uuid "4bea1f9d-77b7-5e08-a59c-cef9a447b6cc")
+		)
+		(pin "TBD-S+"
+			(uuid "a0c27c1e-06b4-51cb-af1b-427df35d3675")
+		)
+		(pin "TBD-S-"
+			(uuid "91c836d3-01ae-5502-a061-048e00e95b2f")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/3ca62ec0-36ae-5435-a7cc-061d6eed2bed"
+					(reference "LCR2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:LCR3")
+		(at 76.20 205.74 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6daa55df-de92-58fc-a244-5038fa7336e2")
+		(property "Reference" "LCR3"
+			(at 62.23 190.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "right foot 3 compression load cell 0-200 N"
+			(at 76.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved."
+			(at 76.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 218.44 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "right foot 3 compression load cell 0-200 N"
+			(at 62.23 193.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-E+"
+			(uuid "4e58fe9d-dd4e-573d-ae53-8db792e74297")
+		)
+		(pin "TBD-E-"
+			(uuid "fd1bb871-0b1b-592c-a88c-34f453997fba")
+		)
+		(pin "TBD-S+"
+			(uuid "63bde98f-9a0c-52b1-a5b3-d3f421f2d085")
+		)
+		(pin "TBD-S-"
+			(uuid "3dbfc710-3826-5735-a111-f0e389195f3c")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/3ca62ec0-36ae-5435-a7cc-061d6eed2bed"
+					(reference "LCR3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:LCR4")
+		(at 203.20 205.74 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0a3bdc57-cb0d-5804-ae6e-9212511f4024")
+		(property "Reference" "LCR4"
+			(at 189.23 190.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "right foot 4 compression load cell 0-200 N"
+			(at 203.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact load cell, bridge wiring, overload rating, cable, connector, calibration, and cross-axis behavior are unresolved."
+			(at 203.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 218.44 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "right foot 4 compression load cell 0-200 N"
+			(at 189.23 193.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-E+"
+			(uuid "a178bb62-8279-5bed-aecc-832a404c3046")
+		)
+		(pin "TBD-E-"
+			(uuid "6f57eec1-06b8-580e-ab8b-9c5b2cc97f6f")
+		)
+		(pin "TBD-S+"
+			(uuid "7117e69b-b7b3-5910-a56a-c90a763e3f24")
+		)
+		(pin "TBD-S-"
+			(uuid "4a93ae71-4846-5152-a5d0-9db2bea2d2dc")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/3ca62ec0-36ae-5435-a7cc-061d6eed2bed"
+					(reference "LCR4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(embedded_fonts no)
+)

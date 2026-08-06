@@ -1,0 +1,3250 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "9a2c35f6-9a7b-5626-ab2a-7c238a073e9c")
+	(paper "A3")
+	(title_block
+		(title "PB Electrical V2.1 - 12 12 sensor adc imu")
+		(date "2026-08-05")
+		(rev "V2.1-P0.2")
+		(company "Project Button")
+		(comment 1 "PRELIMINARY - NOT APPROVED FOR ENERGIZATION")
+		(comment 2 "QUALIFIED REVIEW REQUIRED")
+	)
+	(lib_symbols
+		(symbol "PBV2:ADC1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "ADC1" (at -17.78 -39.37 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "TI ADS131M04 left foot ADC - proposed device" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/ads131m04.pdf" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact package, pin map, clock, reference, analog power, protection, anti-alias network, and PCB layout are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 36.83 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "TI ADS131M04 datasheet Rev D, May 2021; functional net names only until package selection" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "TI ADS131M04 left foot ADC" (at -17.78 -36.07 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "ADC1_0_1"
+				(rectangle
+					(start -17.78 -33.02)
+					(end 17.78 33.02)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "ADC1_1_1"
+				(pin passive line
+					(at -20.32 -27.94 0)
+					(length 2.54)
+					(name "ANALOG_POWER" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-AVDD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -22.86 0)
+					(length 2.54)
+					(name "ANALOG_RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-AGND" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -17.78 0)
+					(length 2.54)
+					(name "DIGITAL_POWER" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-DVDD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -12.70 0)
+					(length 2.54)
+					(name "DIGITAL_RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-DGND" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -10.16 180)
+					(length 2.54)
+					(name "SCLK" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-SCLK" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -5.08 180)
+					(length 2.54)
+					(name "DIN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-DIN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 0 180)
+					(length 2.54)
+					(name "DOUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-DOUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 5.08 180)
+					(length 2.54)
+					(name "CS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-CS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 10.16 180)
+					(length 2.54)
+					(name "SYNC_RESET" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-SYNC" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -7.62 0)
+					(length 2.54)
+					(name "AIN0P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A0P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -2.54 0)
+					(length 2.54)
+					(name "AIN0N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A0N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 2.54 0)
+					(length 2.54)
+					(name "AIN1P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A1P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 7.62 0)
+					(length 2.54)
+					(name "AIN1N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A1N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 12.70 0)
+					(length 2.54)
+					(name "AIN2P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A2P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 17.78 0)
+					(length 2.54)
+					(name "AIN2N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A2N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 22.86 0)
+					(length 2.54)
+					(name "AIN3P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A3P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 27.94 0)
+					(length 2.54)
+					(name "AIN3N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A3N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:ADC2"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "ADC2" (at -17.78 -39.37 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "TI ADS131M04 right foot ADC - proposed device" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/ads131m04.pdf" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact package, pin map, clock, reference, analog power, protection, anti-alias network, and PCB layout are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 36.83 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "TI ADS131M04 datasheet Rev D, May 2021; functional net names only until package selection" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "TI ADS131M04 right foot ADC" (at -17.78 -36.07 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "ADC2_0_1"
+				(rectangle
+					(start -17.78 -33.02)
+					(end 17.78 33.02)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "ADC2_1_1"
+				(pin passive line
+					(at -20.32 -27.94 0)
+					(length 2.54)
+					(name "ANALOG_POWER" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-AVDD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -22.86 0)
+					(length 2.54)
+					(name "ANALOG_RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-AGND" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -17.78 0)
+					(length 2.54)
+					(name "DIGITAL_POWER" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-DVDD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -12.70 0)
+					(length 2.54)
+					(name "DIGITAL_RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-DGND" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -10.16 180)
+					(length 2.54)
+					(name "SCLK" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-SCLK" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -5.08 180)
+					(length 2.54)
+					(name "DIN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-DIN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 0 180)
+					(length 2.54)
+					(name "DOUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-DOUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 5.08 180)
+					(length 2.54)
+					(name "CS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-CS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 10.16 180)
+					(length 2.54)
+					(name "SYNC_RESET" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-SYNC" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -7.62 0)
+					(length 2.54)
+					(name "AIN0P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A0P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -2.54 0)
+					(length 2.54)
+					(name "AIN0N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A0N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 2.54 0)
+					(length 2.54)
+					(name "AIN1P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A1P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 7.62 0)
+					(length 2.54)
+					(name "AIN1N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A1N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 12.70 0)
+					(length 2.54)
+					(name "AIN2P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A2P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 17.78 0)
+					(length 2.54)
+					(name "AIN2N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A2N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 22.86 0)
+					(length 2.54)
+					(name "AIN3P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A3P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 27.94 0)
+					(length 2.54)
+					(name "AIN3N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A3N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:IMU1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "IMU1" (at -13.97 -24.13 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Bosch BMI088 pelvis IMU - proposed device" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmi088-ds001.pdf" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact package pins, decoupling, separate accel/gyro interfaces, PCB layout, clocking, and mechanical alignment are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 21.59 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Bosch BMI088 datasheet Rev 1.9, January 2024; functional interface only" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Bosch BMI088 pelvis IMU" (at -13.97 -20.83 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "IMU1_0_1"
+				(rectangle
+					(start -13.97 -17.78)
+					(end 13.97 17.78)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "IMU1_1_1"
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "POWER" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-PWR" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -12.70 180)
+					(length 2.54)
+					(name "SCLK" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-SCLK" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -7.62 180)
+					(length 2.54)
+					(name "MOSI" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-MOSI" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "MISO" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-MISO" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "CS_ACC" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-CSA" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 7.62 180)
+					(length 2.54)
+					(name "CS_GYRO" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-CSG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 12.70 180)
+					(length 2.54)
+					(name "INT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-INT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:IMU2"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "IMU2" (at -13.97 -24.13 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Bosch BMI088 torso IMU - proposed device" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmi088-ds001.pdf" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact package pins, decoupling, PCB layout, clocking, and mechanical alignment are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 21.59 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Bosch BMI088 datasheet Rev 1.9, January 2024; functional interface only" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Bosch BMI088 torso IMU" (at -13.97 -20.83 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "IMU2_0_1"
+				(rectangle
+					(start -13.97 -17.78)
+					(end 13.97 17.78)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "IMU2_1_1"
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "POWER" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-PWR" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -12.70 180)
+					(length 2.54)
+					(name "SCLK" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-SCLK" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -7.62 180)
+					(length 2.54)
+					(name "MOSI" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-MOSI" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "MISO" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-MISO" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "CS_ACC" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-CSA" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 7.62 180)
+					(length 2.54)
+					(name "CS_GYRO" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-CSG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 12.70 180)
+					(length 2.54)
+					(name "INT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-INT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "PRELIMINARY - NOT APPROVED FOR ENERGIZATION"
+		(exclude_from_sim no)
+		(at 17.78 10.16 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+					(justify left bottom)
+			)
+		(uuid "4b0c1b87-bc68-57bd-a657-7dd186771338")
+	)
+	(text "12  Foot ADCs, pelvis/torso IMUs, SPI interfaces, and synchronization"
+		(exclude_from_sim no)
+		(at 17.78 19.05 0)
+			(effects
+				(font
+					(size 2.03 2.03)
+				)
+					(justify left bottom)
+			)
+		(uuid "d754a883-f77e-547e-a46d-bd444737885a")
+	)
+	(text "Proposed silicon is shown at functional-interface level only. No package pin map or manufacturable PCB circuit is asserted."
+		(exclude_from_sim no)
+		(at 17.78 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "25c10582-bac8-54cc-a7dc-8955db523927")
+	)
+	(rectangle
+		(start 12.70 31.75)
+		(end 406.40 256.54)
+		(stroke (width 0.50) (type solid))
+		(fill (type none))
+		(uuid "01cbc58e-dc66-5a90-abd7-1089bc0b90ae")
+	)
+	(wire
+		(pts (xy 55.88 114.30) (xy 50.80 114.30))
+		(stroke (width 0) (type default))
+		(uuid "2c1100c6-464b-549d-a04f-44f677b140df")
+	)
+	(global_label "SENSOR_ANALOG_3V3"
+		(shape bidirectional)
+		(at 50.80 114.30 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "7a225009-f4af-5749-a0c9-50864d02cc9a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 116.84 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2123"
+		(exclude_from_sim no)
+		(at 53.34 112.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "8a8d9553-1c5e-5e99-a3f3-8cd61eac945e")
+	)
+	(wire
+		(pts (xy 55.88 109.22) (xy 50.80 109.22))
+		(stroke (width 0) (type default))
+		(uuid "e2834133-6ba7-57b4-a7fb-beac229a36f8")
+	)
+	(global_label "SENSOR_ANALOG_0V"
+		(shape bidirectional)
+		(at 50.80 109.22 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "5c6b5a5d-c7c2-5192-ac01-c627e220520b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 111.76 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2122"
+		(exclude_from_sim no)
+		(at 53.34 107.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "0155d890-d048-5181-a28c-745db0393fa9")
+	)
+	(wire
+		(pts (xy 55.88 104.14) (xy 50.80 104.14))
+		(stroke (width 0) (type default))
+		(uuid "f4e0f257-616f-515b-af2f-962770c8e91c")
+	)
+	(global_label "COMPUTE_3V3"
+		(shape bidirectional)
+		(at 50.80 104.14 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "5413b5e0-d75d-5cbc-a79f-7c10a2dd0c64")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 106.68 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2024"
+		(exclude_from_sim no)
+		(at 53.34 102.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "31c89aff-a625-55a7-ad5a-c184e44ee2c9")
+	)
+	(wire
+		(pts (xy 55.88 99.06) (xy 50.80 99.06))
+		(stroke (width 0) (type default))
+		(uuid "0180daa3-c073-522d-a0de-7054438c43ee")
+	)
+	(global_label "COMPUTE_0V"
+		(shape bidirectional)
+		(at 50.80 99.06 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "878f2339-7441-5a78-af23-5444ba8ffca3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 101.60 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2023"
+		(exclude_from_sim no)
+		(at 53.34 97.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c2c8672e-5943-5797-ace6-3c1d09460733")
+	)
+	(wire
+		(pts (xy 96.52 96.52) (xy 101.60 96.52))
+		(stroke (width 0) (type default))
+		(uuid "97d3bcee-4b97-5d4f-a3e7-47f5b548d2f9")
+	)
+	(global_label "SENSOR_SPI_SCLK"
+		(shape bidirectional)
+		(at 101.60 96.52 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "c4b08da7-7ab3-58f7-aa1c-7bb2d480b28c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 99.06 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2134"
+		(exclude_from_sim no)
+		(at 99.06 94.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "af6dc9e8-756c-5ee4-a4c3-e2e1b1de1f44")
+	)
+	(wire
+		(pts (xy 96.52 91.44) (xy 101.60 91.44))
+		(stroke (width 0) (type default))
+		(uuid "6738571e-9639-5145-a4a4-8b643a38d57e")
+	)
+	(global_label "SENSOR_SPI_MOSI"
+		(shape bidirectional)
+		(at 101.60 91.44 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "3c6d869b-3bb2-5b64-accf-dbd5f3425a4d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 93.98 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2133"
+		(exclude_from_sim no)
+		(at 99.06 89.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "e5560ab1-100d-5a53-aeb0-ee405e251b8d")
+	)
+	(wire
+		(pts (xy 96.52 86.36) (xy 101.60 86.36))
+		(stroke (width 0) (type default))
+		(uuid "10085c25-868e-544e-a43e-3f7151366a3d")
+	)
+	(global_label "SENSOR_SPI_MISO"
+		(shape bidirectional)
+		(at 101.60 86.36 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "d1e5c1a3-b4fe-56db-a981-f0e10a4c64eb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 88.90 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2132"
+		(exclude_from_sim no)
+		(at 99.06 84.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "410fa97c-0592-521f-a1db-f5cd1fe2370b")
+	)
+	(wire
+		(pts (xy 96.52 81.28) (xy 101.60 81.28))
+		(stroke (width 0) (type default))
+		(uuid "306f1580-c5d3-5ba1-a78b-0eb43733dced")
+	)
+	(global_label "SENSOR_LEFT_ADC_CS"
+		(shape bidirectional)
+		(at 101.60 81.28 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "3ce90218-da2c-5836-ab7c-648a2ffa7e24")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 83.82 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2130"
+		(exclude_from_sim no)
+		(at 99.06 79.50 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "40a925d5-e5da-56bd-ad64-753d96b27f33")
+	)
+	(wire
+		(pts (xy 96.52 76.20) (xy 101.60 76.20))
+		(stroke (width 0) (type default))
+		(uuid "6fc501bd-65e6-5ee4-a65c-9c53f01c1f91")
+	)
+	(global_label "SENSOR_SYNC"
+		(shape bidirectional)
+		(at 101.60 76.20 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "9ad126f4-669e-50b2-ab38-904b475f86e2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 78.74 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2135"
+		(exclude_from_sim no)
+		(at 99.06 74.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d3324edd-9bfd-5044-a75a-6768d8ef8ee8")
+	)
+	(wire
+		(pts (xy 55.88 93.98) (xy 50.80 93.98))
+		(stroke (width 0) (type default))
+		(uuid "32043b9d-53e2-5682-a119-8c511f6ddd07")
+	)
+	(global_label "LC_L1_SIG+"
+		(shape bidirectional)
+		(at 50.80 93.98 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "dc776441-29c3-5523-ad3d-ede0ba7ffc8f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 96.52 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2081"
+		(exclude_from_sim no)
+		(at 53.34 92.20 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "8245d27d-0e8f-5dea-a519-41e0307014da")
+	)
+	(wire
+		(pts (xy 55.88 88.90) (xy 50.80 88.90))
+		(stroke (width 0) (type default))
+		(uuid "38df8890-ab2f-5106-a821-8c3918149e2f")
+	)
+	(global_label "LC_L1_SIG-"
+		(shape bidirectional)
+		(at 50.80 88.90 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "fd07c1e3-48e9-5b0f-aca5-780e4bc0f0a7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 91.44 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2082"
+		(exclude_from_sim no)
+		(at 53.34 87.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "03b6b719-f6be-56e3-a7b6-7c2d01958c35")
+	)
+	(wire
+		(pts (xy 55.88 83.82) (xy 50.80 83.82))
+		(stroke (width 0) (type default))
+		(uuid "1385caca-2b66-57b7-a3cd-2a7eb1132b86")
+	)
+	(global_label "LC_L2_SIG+"
+		(shape bidirectional)
+		(at 50.80 83.82 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "2674a883-4a39-50cd-a5f2-64b659dfe322")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 86.36 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2085"
+		(exclude_from_sim no)
+		(at 53.34 82.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "392e405f-93d7-549a-a1a4-dc7cae2c2bc8")
+	)
+	(wire
+		(pts (xy 55.88 78.74) (xy 50.80 78.74))
+		(stroke (width 0) (type default))
+		(uuid "1b46c750-ea53-54b1-a096-c60bc20c8921")
+	)
+	(global_label "LC_L2_SIG-"
+		(shape bidirectional)
+		(at 50.80 78.74 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "bb268ee2-f0f5-5b40-aa29-e82c2ca44263")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 81.28 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2086"
+		(exclude_from_sim no)
+		(at 53.34 76.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6e456b46-af5a-5376-a8f1-52e530a048e9")
+	)
+	(wire
+		(pts (xy 55.88 73.66) (xy 50.80 73.66))
+		(stroke (width 0) (type default))
+		(uuid "40f3187f-168e-5f6f-a212-064015538cda")
+	)
+	(global_label "LC_L3_SIG+"
+		(shape bidirectional)
+		(at 50.80 73.66 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "18a2dcbf-e46f-5c49-aa4c-887a3a4da89e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 76.20 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2089"
+		(exclude_from_sim no)
+		(at 53.34 71.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "0750fc86-a1bd-52d1-ab0e-35e041f16b24")
+	)
+	(wire
+		(pts (xy 55.88 68.58) (xy 50.80 68.58))
+		(stroke (width 0) (type default))
+		(uuid "679377c6-482e-5982-ad4d-392077f6c137")
+	)
+	(global_label "LC_L3_SIG-"
+		(shape bidirectional)
+		(at 50.80 68.58 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "3a198bfa-9fbc-515d-a704-ec2584276544")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 71.12 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2090"
+		(exclude_from_sim no)
+		(at 53.34 66.80 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "15fd93d9-993c-5bb1-a148-4ae2e4821f98")
+	)
+	(wire
+		(pts (xy 55.88 63.50) (xy 50.80 63.50))
+		(stroke (width 0) (type default))
+		(uuid "e752ba3b-5a92-58af-a500-bc74fa8585b5")
+	)
+	(global_label "LC_L4_SIG+"
+		(shape bidirectional)
+		(at 50.80 63.50 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "f958824b-221f-58dc-a6ae-4bb250fce9c3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 66.04 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2093"
+		(exclude_from_sim no)
+		(at 53.34 61.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "539c9feb-20d3-53fd-a3d0-f676aa1a48ce")
+	)
+	(wire
+		(pts (xy 55.88 58.42) (xy 50.80 58.42))
+		(stroke (width 0) (type default))
+		(uuid "ef701946-d2df-5bdf-adcd-5b7fe55c81f5")
+	)
+	(global_label "LC_L4_SIG-"
+		(shape bidirectional)
+		(at 50.80 58.42 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "b385a4ea-7ae2-51de-a862-ffce7638ff2c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 60.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2094"
+		(exclude_from_sim no)
+		(at 53.34 56.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "3f86f579-6f0b-55b8-a1e9-9c729c377f12")
+	)
+	(wire
+		(pts (xy 182.88 114.30) (xy 177.80 114.30))
+		(stroke (width 0) (type default))
+		(uuid "a668b8eb-f10a-5e14-a442-2d900e3c1a03")
+	)
+	(global_label "SENSOR_ANALOG_3V3"
+		(shape bidirectional)
+		(at 177.80 114.30 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "74352ad0-84b5-5f56-ab8b-7528e3191f1f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 116.84 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2123"
+		(exclude_from_sim no)
+		(at 180.34 112.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f3874db6-5c38-5e81-aa8f-2d7550bc40bd")
+	)
+	(wire
+		(pts (xy 182.88 109.22) (xy 177.80 109.22))
+		(stroke (width 0) (type default))
+		(uuid "b0739660-0e8f-5e6e-a46f-f679e8fe4864")
+	)
+	(global_label "SENSOR_ANALOG_0V"
+		(shape bidirectional)
+		(at 177.80 109.22 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "fabbc7da-eb7b-56f9-a937-ae71d3e21a30")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 111.76 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2122"
+		(exclude_from_sim no)
+		(at 180.34 107.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "594451e9-c226-5383-a770-771b4cb62308")
+	)
+	(wire
+		(pts (xy 182.88 104.14) (xy 177.80 104.14))
+		(stroke (width 0) (type default))
+		(uuid "e86976ff-8419-5eaf-a7f4-746538b616b3")
+	)
+	(global_label "COMPUTE_3V3"
+		(shape bidirectional)
+		(at 177.80 104.14 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "8df90025-07a5-58c9-ac48-d61e63d9778d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 106.68 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2024"
+		(exclude_from_sim no)
+		(at 180.34 102.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "84989c50-293d-53e9-a24d-783ef5da79fd")
+	)
+	(wire
+		(pts (xy 182.88 99.06) (xy 177.80 99.06))
+		(stroke (width 0) (type default))
+		(uuid "32c250db-9051-5cdd-af6c-3055a49c258e")
+	)
+	(global_label "COMPUTE_0V"
+		(shape bidirectional)
+		(at 177.80 99.06 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "5b62f3cb-2fb8-5d5f-a3c6-8de40c1e383b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 101.60 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2023"
+		(exclude_from_sim no)
+		(at 180.34 97.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "20eebeb2-0fcc-54d1-a1bb-ff48e50f410b")
+	)
+	(wire
+		(pts (xy 223.52 96.52) (xy 228.60 96.52))
+		(stroke (width 0) (type default))
+		(uuid "4af46065-b1a4-50f9-ab2e-366c1fabd644")
+	)
+	(global_label "SENSOR_SPI_SCLK"
+		(shape bidirectional)
+		(at 228.60 96.52 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "c607e5a7-fb10-5ff5-a4cb-8e65a169c984")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 99.06 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2134"
+		(exclude_from_sim no)
+		(at 226.06 94.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "db52c30b-f156-5ab4-a8f2-dcac709c1444")
+	)
+	(wire
+		(pts (xy 223.52 91.44) (xy 228.60 91.44))
+		(stroke (width 0) (type default))
+		(uuid "0e041890-2cab-505f-a69a-31175f4b88e0")
+	)
+	(global_label "SENSOR_SPI_MOSI"
+		(shape bidirectional)
+		(at 228.60 91.44 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "081bbfea-f75b-5fff-a94e-8f435743dea3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 93.98 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2133"
+		(exclude_from_sim no)
+		(at 226.06 89.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c6ed5bf1-473c-519d-aa89-dcbc419efb40")
+	)
+	(wire
+		(pts (xy 223.52 86.36) (xy 228.60 86.36))
+		(stroke (width 0) (type default))
+		(uuid "4421ad44-856f-58a2-ad4b-dcd35e02e4b2")
+	)
+	(global_label "SENSOR_SPI_MISO"
+		(shape bidirectional)
+		(at 228.60 86.36 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "1c1f07ed-8667-502b-a87d-2038f962556c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 88.90 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2132"
+		(exclude_from_sim no)
+		(at 226.06 84.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "e49da4c0-78f6-5d22-aac9-2d40379d54e8")
+	)
+	(wire
+		(pts (xy 223.52 81.28) (xy 228.60 81.28))
+		(stroke (width 0) (type default))
+		(uuid "35e35580-3376-5728-ac80-6a59b57d47f2")
+	)
+	(global_label "SENSOR_RIGHT_ADC_CS"
+		(shape bidirectional)
+		(at 228.60 81.28 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "a36748d2-7f3b-58c1-ab4e-7b3e535794bb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 83.82 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2131"
+		(exclude_from_sim no)
+		(at 226.06 79.50 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "bb30bb4e-c2b4-543c-af92-b11b73909a26")
+	)
+	(wire
+		(pts (xy 223.52 76.20) (xy 228.60 76.20))
+		(stroke (width 0) (type default))
+		(uuid "00386a5f-8e68-5087-a1f5-5d37479b4ec6")
+	)
+	(global_label "SENSOR_SYNC"
+		(shape bidirectional)
+		(at 228.60 76.20 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "e9d3bee5-26d4-5f3f-ad14-6bf448a046cb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 78.74 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2135"
+		(exclude_from_sim no)
+		(at 226.06 74.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "0c1c9a7c-78b1-54fd-ade9-f8ed71b53e0f")
+	)
+	(wire
+		(pts (xy 182.88 93.98) (xy 177.80 93.98))
+		(stroke (width 0) (type default))
+		(uuid "38aaaf43-5ff8-5772-a634-25e3a15ac194")
+	)
+	(global_label "LC_R1_SIG+"
+		(shape bidirectional)
+		(at 177.80 93.98 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "e0eba467-031e-5a5c-a90b-ade1f2435c39")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 96.52 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2097"
+		(exclude_from_sim no)
+		(at 180.34 92.20 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "e4fc461f-873d-557d-abcb-0003cab99893")
+	)
+	(wire
+		(pts (xy 182.88 88.90) (xy 177.80 88.90))
+		(stroke (width 0) (type default))
+		(uuid "a4d3e9e3-e9e8-54d5-a17d-2ef9ee5782cd")
+	)
+	(global_label "LC_R1_SIG-"
+		(shape bidirectional)
+		(at 177.80 88.90 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "03d51e63-9fe0-5ef5-a579-6f8dc251c44d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 91.44 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2098"
+		(exclude_from_sim no)
+		(at 180.34 87.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "cf883791-7b01-51e7-a0b0-eb08b592abe9")
+	)
+	(wire
+		(pts (xy 182.88 83.82) (xy 177.80 83.82))
+		(stroke (width 0) (type default))
+		(uuid "86fc48a1-0457-54ba-a8a4-57c3321f0eae")
+	)
+	(global_label "LC_R2_SIG+"
+		(shape bidirectional)
+		(at 177.80 83.82 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "800c60ce-c2f1-5289-afbc-9e5baf63ac84")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 86.36 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2101"
+		(exclude_from_sim no)
+		(at 180.34 82.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b9e9d553-5089-57a4-adef-f3ee58490565")
+	)
+	(wire
+		(pts (xy 182.88 78.74) (xy 177.80 78.74))
+		(stroke (width 0) (type default))
+		(uuid "2f102e66-f4ad-5744-a6f5-8512a5919bd0")
+	)
+	(global_label "LC_R2_SIG-"
+		(shape bidirectional)
+		(at 177.80 78.74 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "33085643-7cb6-578c-aa09-74214c519e64")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 81.28 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2102"
+		(exclude_from_sim no)
+		(at 180.34 76.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "ac90c52b-3876-56ec-a526-007fa90b95a7")
+	)
+	(wire
+		(pts (xy 182.88 73.66) (xy 177.80 73.66))
+		(stroke (width 0) (type default))
+		(uuid "8400eee6-346d-59d8-a991-8d15572a9e8e")
+	)
+	(global_label "LC_R3_SIG+"
+		(shape bidirectional)
+		(at 177.80 73.66 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "a4889bf2-e478-501f-a60e-2a3e0ab042ac")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 76.20 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2105"
+		(exclude_from_sim no)
+		(at 180.34 71.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f19fbca5-50fd-57d5-a508-285027c6a5a9")
+	)
+	(wire
+		(pts (xy 182.88 68.58) (xy 177.80 68.58))
+		(stroke (width 0) (type default))
+		(uuid "f7c84ec8-91f5-5503-a975-6c1739800586")
+	)
+	(global_label "LC_R3_SIG-"
+		(shape bidirectional)
+		(at 177.80 68.58 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "aee742b8-2402-5640-a6e5-e57b71f53a16")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 71.12 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2106"
+		(exclude_from_sim no)
+		(at 180.34 66.80 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "01aed2ea-3c44-5166-a9a9-13c156a3c3af")
+	)
+	(wire
+		(pts (xy 182.88 63.50) (xy 177.80 63.50))
+		(stroke (width 0) (type default))
+		(uuid "93c1fecf-e76b-53e3-a036-0fd0e5ea6515")
+	)
+	(global_label "LC_R4_SIG+"
+		(shape bidirectional)
+		(at 177.80 63.50 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "25547840-bc8a-5c42-a81d-35b6070bf895")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 66.04 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2109"
+		(exclude_from_sim no)
+		(at 180.34 61.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "16b32d88-36db-55f0-a0c2-14a75aa920db")
+	)
+	(wire
+		(pts (xy 182.88 58.42) (xy 177.80 58.42))
+		(stroke (width 0) (type default))
+		(uuid "4f921c7e-8804-5165-ae57-1bca06e5f7b8")
+	)
+	(global_label "LC_R4_SIG-"
+		(shape bidirectional)
+		(at 177.80 58.42 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "13e656eb-38e6-5a13-a31e-b283c0165f24")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 60.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2110"
+		(exclude_from_sim no)
+		(at 180.34 56.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "aa1bac5a-84a3-566a-a9f5-2bb19bbebedc")
+	)
+	(wire
+		(pts (xy 313.69 88.90) (xy 308.61 88.90))
+		(stroke (width 0) (type default))
+		(uuid "437777b3-5f07-5302-a37d-35d59c7aa64e")
+	)
+	(global_label "SENSOR_3V3"
+		(shape bidirectional)
+		(at 308.61 88.90 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "3b030d79-3a2c-52ac-a38e-7ef20211fa0b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 91.44 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2121"
+		(exclude_from_sim no)
+		(at 311.15 87.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "0d05c6c0-6e64-5c70-a630-cc05f66bc59a")
+	)
+	(wire
+		(pts (xy 313.69 83.82) (xy 308.61 83.82))
+		(stroke (width 0) (type default))
+		(uuid "48670de2-9c0f-51ba-a4a0-bfac33561ee4")
+	)
+	(global_label "SENSOR_0V"
+		(shape bidirectional)
+		(at 308.61 83.82 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "1d2749c5-90de-5f28-a0e8-bc22b06605c2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 86.36 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2120"
+		(exclude_from_sim no)
+		(at 311.15 82.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f0453d6e-eb9f-5f82-a394-096b0ff0f7f8")
+	)
+	(wire
+		(pts (xy 346.71 99.06) (xy 351.79 99.06))
+		(stroke (width 0) (type default))
+		(uuid "900ac0cf-f4f4-540b-a9f7-d391245650fb")
+	)
+	(global_label "SENSOR_SPI_SCLK"
+		(shape bidirectional)
+		(at 351.79 99.06 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "a402c783-71fd-5ef4-a927-75ec9f10dbac")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 101.60 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2134"
+		(exclude_from_sim no)
+		(at 349.25 97.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "17c68c9f-0d02-5471-a61d-7878d2079f6a")
+	)
+	(wire
+		(pts (xy 346.71 93.98) (xy 351.79 93.98))
+		(stroke (width 0) (type default))
+		(uuid "95c78e72-ec01-56c2-a65a-7b535325e064")
+	)
+	(global_label "SENSOR_SPI_MOSI"
+		(shape bidirectional)
+		(at 351.79 93.98 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "1032b5a7-316f-5f1a-a5dd-6ba2f05deb38")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 96.52 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2133"
+		(exclude_from_sim no)
+		(at 349.25 92.20 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "0a720627-3edd-5623-aa13-8762e95a985d")
+	)
+	(wire
+		(pts (xy 346.71 88.90) (xy 351.79 88.90))
+		(stroke (width 0) (type default))
+		(uuid "6acf1899-b7df-505a-a1e3-632735dd987e")
+	)
+	(global_label "SENSOR_SPI_MISO"
+		(shape bidirectional)
+		(at 351.79 88.90 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "43b5d952-d04b-5e21-aefe-81f85c6cd477")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 91.44 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2132"
+		(exclude_from_sim no)
+		(at 349.25 87.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "044fb376-b785-53b5-ae53-cca5cefa36bc")
+	)
+	(wire
+		(pts (xy 346.71 83.82) (xy 351.79 83.82))
+		(stroke (width 0) (type default))
+		(uuid "bc7dcef7-839a-58f6-ae45-331f5d8ad50c")
+	)
+	(global_label "SENSOR_IMU1_CS_ACC"
+		(shape bidirectional)
+		(at 351.79 83.82 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "ca6cd68a-64ec-57be-a7e7-fba390e9334e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 86.36 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2124"
+		(exclude_from_sim no)
+		(at 349.25 82.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "2727a4dc-3ece-5e5b-a854-6bc86faa0c24")
+	)
+	(wire
+		(pts (xy 346.71 78.74) (xy 351.79 78.74))
+		(stroke (width 0) (type default))
+		(uuid "1aeaa83a-ccce-5aa4-a8c6-a9ed43badc6a")
+	)
+	(global_label "SENSOR_IMU1_CS_GYRO"
+		(shape bidirectional)
+		(at 351.79 78.74 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "52805520-b984-53b8-aa99-b691a0dd29b5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 81.28 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2125"
+		(exclude_from_sim no)
+		(at 349.25 76.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "12477d2b-36a7-553b-abdb-398f8f0ea20e")
+	)
+	(wire
+		(pts (xy 346.71 73.66) (xy 351.79 73.66))
+		(stroke (width 0) (type default))
+		(uuid "2a80f2fe-d64b-5470-a41e-3455fe8777e1")
+	)
+	(global_label "SENSOR_IMU1_INT"
+		(shape bidirectional)
+		(at 351.79 73.66 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "f6d90d9c-66b0-5c72-af5f-54fdd6350606")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 76.20 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2126"
+		(exclude_from_sim no)
+		(at 349.25 71.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "ca06f0a5-3555-5dab-a38e-9565d41ebf6b")
+	)
+	(wire
+		(pts (xy 59.69 180.34) (xy 54.61 180.34))
+		(stroke (width 0) (type default))
+		(uuid "e478870a-ff03-5d2d-a303-feeab754402d")
+	)
+	(global_label "SENSOR_3V3"
+		(shape bidirectional)
+		(at 54.61 180.34 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "0f6c093a-8530-57d0-a625-a61cd98a11c2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 182.88 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2121"
+		(exclude_from_sim no)
+		(at 57.15 178.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "ec5c1d00-c597-57d0-a738-694956046962")
+	)
+	(wire
+		(pts (xy 59.69 175.26) (xy 54.61 175.26))
+		(stroke (width 0) (type default))
+		(uuid "1bee9e17-cadf-5df6-a262-69f8c89ec92a")
+	)
+	(global_label "SENSOR_0V"
+		(shape bidirectional)
+		(at 54.61 175.26 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "4093d596-17ec-51f6-a714-ea8a399fda7d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 177.80 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2120"
+		(exclude_from_sim no)
+		(at 57.15 173.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "10f98dbd-5774-5dd3-a990-6ccc650f2aff")
+	)
+	(wire
+		(pts (xy 92.71 190.50) (xy 97.79 190.50))
+		(stroke (width 0) (type default))
+		(uuid "50992be1-35a0-5402-a20e-ec27530d3aa9")
+	)
+	(global_label "SENSOR_SPI_SCLK"
+		(shape bidirectional)
+		(at 97.79 190.50 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "7b57a4c5-aae4-5dc2-a8f6-1c4bf9e16993")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 193.04 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2134"
+		(exclude_from_sim no)
+		(at 95.25 188.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6d930083-b22f-5cf8-ab71-3efbbf7f79a3")
+	)
+	(wire
+		(pts (xy 92.71 185.42) (xy 97.79 185.42))
+		(stroke (width 0) (type default))
+		(uuid "6d467cf1-99a6-505e-a55a-cd04e9699d7a")
+	)
+	(global_label "SENSOR_SPI_MOSI"
+		(shape bidirectional)
+		(at 97.79 185.42 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "7258038b-ad23-5321-a342-cdec525c1c61")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 187.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2133"
+		(exclude_from_sim no)
+		(at 95.25 183.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d5673636-746f-518d-ab8b-9c98765ab1c4")
+	)
+	(wire
+		(pts (xy 92.71 180.34) (xy 97.79 180.34))
+		(stroke (width 0) (type default))
+		(uuid "eac3db63-c213-51aa-ab8c-12e15c2be6e2")
+	)
+	(global_label "SENSOR_SPI_MISO"
+		(shape bidirectional)
+		(at 97.79 180.34 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "4f176dc3-6923-54f5-a00b-b698477a62be")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 182.88 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2132"
+		(exclude_from_sim no)
+		(at 95.25 178.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "ae47c075-cd16-5589-a009-d51f605918d1")
+	)
+	(wire
+		(pts (xy 92.71 175.26) (xy 97.79 175.26))
+		(stroke (width 0) (type default))
+		(uuid "bb06536d-ad82-5fe2-a6bd-a513b61dedd6")
+	)
+	(global_label "SENSOR_IMU2_CS_ACC"
+		(shape bidirectional)
+		(at 97.79 175.26 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "e5d4cf58-4272-51e3-a139-f5fc399e7b30")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 177.80 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2127"
+		(exclude_from_sim no)
+		(at 95.25 173.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "dd02f2ea-6f7d-53e8-a215-c522fef01980")
+	)
+	(wire
+		(pts (xy 92.71 170.18) (xy 97.79 170.18))
+		(stroke (width 0) (type default))
+		(uuid "870e5ab6-b195-58c1-a727-c3f78bfa3aa0")
+	)
+	(global_label "SENSOR_IMU2_CS_GYRO"
+		(shape bidirectional)
+		(at 97.79 170.18 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "e5358f9e-d869-5617-ae11-03b39f1330c1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 172.72 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2128"
+		(exclude_from_sim no)
+		(at 95.25 168.40 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "5856b625-9a41-5bc5-a419-f5a2ce8e4b80")
+	)
+	(wire
+		(pts (xy 92.71 165.10) (xy 97.79 165.10))
+		(stroke (width 0) (type default))
+		(uuid "9dfc34ae-338b-5814-a1ec-e96a59e734b5")
+	)
+	(global_label "SENSOR_IMU2_INT"
+		(shape bidirectional)
+		(at 97.79 165.10 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "c1fcf300-aaf8-510a-a5bd-eed6ea083b7c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 167.64 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2129"
+		(exclude_from_sim no)
+		(at 95.25 163.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "49b10cc0-35ca-552a-a449-44c43998a28f")
+	)
+	(text "NOTE 1: ADS131M04 and BMI088 pin numbers are intentionally not asserted because board-level packages and integration are not selected."
+		(exclude_from_sim no)
+		(at 17.78 266.70 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "81b84a26-72aa-5782-a06b-435ab36dfef9")
+	)
+	(text "NOTE 2: Sensor update-rate requirements remain verification targets, not evidence that this preliminary interface meets them."
+		(exclude_from_sim no)
+		(at 17.78 271.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "335a899c-62f8-5b50-a972-a1a184ebe22c")
+	)
+	(symbol
+		(lib_id "PBV2:ADC1")
+		(at 76.20 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "89c8e137-ee0c-56ff-ac41-cfb719f5a9c9")
+		(property "Reference" "ADC1"
+			(at 58.42 46.99 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "TI ADS131M04 left foot ADC - proposed device"
+			(at 76.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/ads131m04.pdf"
+			(at 76.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact package, pin map, clock, reference, analog power, protection, anti-alias network, and PCB layout are unresolved."
+			(at 76.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 123.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "TI ADS131M04 datasheet Rev D, May 2021; functional net names only until package selection"
+			(at 76.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "TI ADS131M04 left foot ADC"
+			(at 58.42 50.29 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-AVDD"
+			(uuid "cf6d6151-32e9-549b-ae83-8ca549cdeb44")
+		)
+		(pin "TBD-AGND"
+			(uuid "b72e07ba-0b32-546b-a2fd-141a6b621504")
+		)
+		(pin "TBD-DVDD"
+			(uuid "7a0b55cc-07b8-54b0-a9b8-3e36b7e14b6a")
+		)
+		(pin "TBD-DGND"
+			(uuid "eaa57cb5-74d2-5a4c-a118-008fb3854a5b")
+		)
+		(pin "TBD-SCLK"
+			(uuid "c817bf45-47fa-561b-addc-533d9ca48b8d")
+		)
+		(pin "TBD-DIN"
+			(uuid "fbc02c88-8cc3-5fa3-abc4-cadf25d68ee2")
+		)
+		(pin "TBD-DOUT"
+			(uuid "835c9cee-fa8d-5e06-a25e-4b307ba8606a")
+		)
+		(pin "TBD-CS"
+			(uuid "ea17747b-6508-56c9-ac47-30d3f6633127")
+		)
+		(pin "TBD-SYNC"
+			(uuid "ef230f03-5dc9-5dc1-a1e7-534c873dadd2")
+		)
+		(pin "TBD-A0P"
+			(uuid "1d371c5b-b8f2-5b2c-ae52-b1c2615e0028")
+		)
+		(pin "TBD-A0N"
+			(uuid "fc760d5a-d98a-5fd1-a6e7-b5a7d3cea02c")
+		)
+		(pin "TBD-A1P"
+			(uuid "a419a352-e1e5-58b1-a38f-03efd155c894")
+		)
+		(pin "TBD-A1N"
+			(uuid "3eb03043-b891-573b-a74a-ec4e493b568c")
+		)
+		(pin "TBD-A2P"
+			(uuid "75882f33-6c53-548a-a13e-24f387715080")
+		)
+		(pin "TBD-A2N"
+			(uuid "e22b48b6-c7f5-55df-ab5b-958c820d4526")
+		)
+		(pin "TBD-A3P"
+			(uuid "356fe59d-2b19-5e13-adce-c7a2b3832651")
+		)
+		(pin "TBD-A3N"
+			(uuid "2b46d00a-aed8-5999-a39d-5475c3b19923")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cd33e8f9-b051-5529-a454-bd0d6b9c7bac"
+					(reference "ADC1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:ADC2")
+		(at 203.20 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6a3757be-beaf-551a-af55-f2ac81ab48da")
+		(property "Reference" "ADC2"
+			(at 185.42 46.99 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "TI ADS131M04 right foot ADC - proposed device"
+			(at 203.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/ads131m04.pdf"
+			(at 203.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact package, pin map, clock, reference, analog power, protection, anti-alias network, and PCB layout are unresolved."
+			(at 203.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 123.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "TI ADS131M04 datasheet Rev D, May 2021; functional net names only until package selection"
+			(at 203.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "TI ADS131M04 right foot ADC"
+			(at 185.42 50.29 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-AVDD"
+			(uuid "1bc92e24-e0c4-5ef5-ab5e-2c49e36af5bd")
+		)
+		(pin "TBD-AGND"
+			(uuid "923291a1-b721-5dd0-a43a-ab62babf45cf")
+		)
+		(pin "TBD-DVDD"
+			(uuid "b2791d49-2948-5e8d-ad8f-048afef1c628")
+		)
+		(pin "TBD-DGND"
+			(uuid "1bb78a7f-1f0e-5785-ae16-26f826dd4d96")
+		)
+		(pin "TBD-SCLK"
+			(uuid "9483d396-0cac-5c71-aac7-6c25eb75603d")
+		)
+		(pin "TBD-DIN"
+			(uuid "be8c7c9a-a861-5641-a5e1-7d70de57de4c")
+		)
+		(pin "TBD-DOUT"
+			(uuid "c4ace521-9def-53f2-aad0-5468166cd5cc")
+		)
+		(pin "TBD-CS"
+			(uuid "9ee58c0a-4a7b-503a-a407-373c434bc473")
+		)
+		(pin "TBD-SYNC"
+			(uuid "837346ed-5ec9-511e-aeff-0df9e6175e5c")
+		)
+		(pin "TBD-A0P"
+			(uuid "97f910d4-7b9c-56cd-af38-276e357e5b01")
+		)
+		(pin "TBD-A0N"
+			(uuid "e21a85a0-c4f9-5245-a405-3fdb675f036e")
+		)
+		(pin "TBD-A1P"
+			(uuid "2aa90ff6-ea6b-5472-a513-bf851705db52")
+		)
+		(pin "TBD-A1N"
+			(uuid "444acc9b-dff9-537f-a9de-19f648a5a1df")
+		)
+		(pin "TBD-A2P"
+			(uuid "098363d1-f94b-5f69-a96b-d7b8cabe5671")
+		)
+		(pin "TBD-A2N"
+			(uuid "7cae5953-b1ef-5cb8-a9a2-1ff7b8fa0b1d")
+		)
+		(pin "TBD-A3P"
+			(uuid "818d2587-9771-5614-ab82-f1501fd304f1")
+		)
+		(pin "TBD-A3N"
+			(uuid "3af8b9f2-c78e-5c97-a00b-58e1f10b090a")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cd33e8f9-b051-5529-a454-bd0d6b9c7bac"
+					(reference "ADC2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:IMU1")
+		(at 330.20 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "cbfeb968-38e0-57c0-a528-2679d6f15df7")
+		(property "Reference" "IMU1"
+			(at 344.17 62.23 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "Bosch BMI088 pelvis IMU - proposed device"
+			(at 330.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmi088-ds001.pdf"
+			(at 330.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact package pins, decoupling, separate accel/gyro interfaces, PCB layout, clocking, and mechanical alignment are unresolved."
+			(at 330.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 330.20 107.95 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Bosch BMI088 datasheet Rev 1.9, January 2024; functional interface only"
+			(at 330.20 86.36 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Bosch BMI088 pelvis IMU"
+			(at 344.17 65.53 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-PWR"
+			(uuid "1a61036c-681f-5673-ac03-572388190f68")
+		)
+		(pin "TBD-0V"
+			(uuid "a32a4c37-d34f-580e-a8ef-460a74678852")
+		)
+		(pin "TBD-SCLK"
+			(uuid "eb1c1697-119c-5b99-a1fd-28e3b775a071")
+		)
+		(pin "TBD-MOSI"
+			(uuid "b8b3c24e-9be7-5c58-a45a-f69d4db24897")
+		)
+		(pin "TBD-MISO"
+			(uuid "2be3faba-113f-5915-a3aa-1a20ef8f2ea5")
+		)
+		(pin "TBD-CSA"
+			(uuid "789842ae-64e3-5c02-afb1-cd4e22afa455")
+		)
+		(pin "TBD-CSG"
+			(uuid "266562f9-4944-5f0d-a4dc-b75f07d4be98")
+		)
+		(pin "TBD-INT"
+			(uuid "c04afea5-12b2-5703-a9e8-8b7da2f7e452")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cd33e8f9-b051-5529-a454-bd0d6b9c7bac"
+					(reference "IMU1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:IMU2")
+		(at 76.20 177.80 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3fdeca0a-a98b-5b29-a57c-b9ebc8b99d0f")
+		(property "Reference" "IMU2"
+			(at 62.23 153.67 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Bosch BMI088 torso IMU - proposed device"
+			(at 76.20 177.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 177.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmi088-ds001.pdf"
+			(at 76.20 177.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact package pins, decoupling, PCB layout, clocking, and mechanical alignment are unresolved."
+			(at 76.20 177.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 199.39 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Bosch BMI088 datasheet Rev 1.9, January 2024; functional interface only"
+			(at 76.20 177.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Bosch BMI088 torso IMU"
+			(at 62.23 156.97 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-PWR"
+			(uuid "6ea2889b-2b07-5d0f-afe2-38f8b85eaf63")
+		)
+		(pin "TBD-0V"
+			(uuid "49638eeb-8d7b-57c8-a6b9-2dda9c9fe589")
+		)
+		(pin "TBD-SCLK"
+			(uuid "762966eb-ebe2-5969-acfa-f7641bb7435e")
+		)
+		(pin "TBD-MOSI"
+			(uuid "5043b66a-1515-5f27-a37f-1dcbfb7c6954")
+		)
+		(pin "TBD-MISO"
+			(uuid "fa0e009d-3f51-510c-a8ec-7ea7d8534dad")
+		)
+		(pin "TBD-CSA"
+			(uuid "46dccfc9-bfe2-521d-ae93-fc0750402be3")
+		)
+		(pin "TBD-CSG"
+			(uuid "aa4b7298-a59f-5a4c-a6ad-abd9891d804e")
+		)
+		(pin "TBD-INT"
+			(uuid "e3f3e725-40a8-5db9-a219-0300b384fe0f")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cd33e8f9-b051-5529-a454-bd0d6b9c7bac"
+					(reference "IMU2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(embedded_fonts no)
+)

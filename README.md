@@ -31,6 +31,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Walking verification matrix](docs/walking-verification.md)
 - [Mechanical concept and load model](docs/mechanical.md)
 - [Electrical and safety architecture](docs/electrical.md)
+- [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
 - [Control and fault-state specification](docs/control.md)
 - [Verification plan](docs/verification.md)
 - [Open decisions](docs/open-decisions.md)
@@ -44,7 +45,7 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 
 ## Review history
 
-Ten review/control rounds are complete; two parallel independent engineering reviews are requested. Correction passes are recorded separately from independent reviews.
+Eleven review/control rounds are complete; R11 is in progress and R12 is requested. Correction passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -58,8 +59,9 @@ Ten review/control rounds are complete; two parallel independent engineering rev
 | R08 | Sol finding disposition pass | Added requirements, risks, gates, evidence controls, and explicit unresolved decisions. |
 | R09 | Independent Fable claim/configuration audit | Confirmed electrical counts and found revision and deployment drift. |
 | R10 | Systems-baseline correction | Established `HR-30-SYS-R0.2` and synchronized the corrected deployment. |
-| R11 | Independent Fable engineering review | Requested; accuracy and completeness review pending. |
+| R11 | Independent Fable engineering review | In progress; surfaced missing native ECAD in authoritative GitHub `main`. |
 | R12 | Independent GPT Sol engineering review | Requested; accuracy and completeness review pending. |
+| R13 | ECAD provenance correction | Added the controlled native KiCad V2.1 tree and hash manifest to the authoritative repository. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

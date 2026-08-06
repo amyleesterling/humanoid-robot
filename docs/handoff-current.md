@@ -11,8 +11,10 @@ Status: **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 - Interactive presentation: `https://project-button-workshop.amysterling.chatgpt.site/`
 - Configuration and identifier rules: `docs/configuration-management.md`
 - Complete review history: `docs/review-ledger.md`
+- Authoritative native ECAD: `electrical/kicad/project-button-v2/project-button-v2.kicad_pro`
+- ECAD source manifest: `electrical/kicad/project-button-v2/SOURCE-MANIFEST.csv`
 
-The authoritative repository controls engineering intent. The website is a synchronized presentation and must not override the source specification. Individual documents retain their own revisions; Electrical V2.1 is independent of the `HR-30-SYS-R0.2` systems-package baseline.
+The authoritative repository controls engineering intent and now contains the native Electrical V2.1 KiCad source. The website is a synchronized presentation and must not override the source specification. Individual documents retain their own revisions; Electrical V2.1 is independent of the `HR-30-SYS-R0.2` systems-package baseline.
 
 ## Current controlled counts
 
@@ -30,7 +32,7 @@ ERC validates modeled connectivity and annotation only. It does not establish ph
 
 ## Review history and pending reviews
 
-Ten review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 and R12 are parallel independent design-accuracy and completeness reviews assigned to Fable and GPT Sol. They should work from the same current package without seeing one another's conclusions until both reports are delivered.
+Eleven review/control rounds are complete and recorded in `docs/review-ledger.md`; R11 is in progress and R12 is requested. R11 surfaced the missing-authoritative-ECAD provenance blocker, and R13 corrected the controlled repository package. Fable and GPT Sol should continue working from the same corrected package without seeing one another's conclusions until both reports are delivered.
 
 ## Principal unresolved engineering blockers
 

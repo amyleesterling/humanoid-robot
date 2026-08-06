@@ -1,0 +1,11 @@
+package_status,requirement,requirement_summary,v2_source_evidence,closure_status,required_test_or_review
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,SAFE-001,Dual-channel E-stop removes actuator power without software,02_hrv0_safety; 06_hr30_safety_distribution,OPEN,Qualified schematic review plus fault-injection test
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,SAFE-002,E-stop release/reset cannot initiate motion,04_control_watchdog separate RESET_STATUS and SOFTWARE_ARM_REQUEST nets,OPEN,Power-up/reset test with stale and nonzero goals
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,SAFE-003,300 ms heartbeat loss removes actuator power and latches fault,KWD1/KWH1 normally-open permits and QWD1/QWDH1 driver placeholders,OPEN,"Watchdog timing, brownout, stuck-output, and latch tests"
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,SAFE-008,"Cause removal, hardware reset, and distinct software ARM",02/04/06 state and net separation,OPEN,State-machine code review and end-to-end restart test
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,ELEC-001,"Actuator, safety, and compute domains separately protected",01_ac_pe_power independent QF1/QF2/QF3 and PS1/PS2/PS3 nets,OPEN,Protection coordination and panel inspection
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,ELEC-002,Two series contactors with monitored auxiliary feedback,K1/K2 and KH1/KH2 series paths with EDM loops,OPEN,"Device selection, mirror-contact validation, welded-contact fault tests"
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,ELEC-003,Every actuator branch individually fused,F1-F3; FL1-FL6; FR1-FR6; FU31-FU53,OPEN,Fuse/conductor/connector coordination calculation
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,ELEC-004,Mains inaccessible and structure protectively earthed,01_ac_pe_power and 14_harness_terminals,OPEN,"Panel review, PE continuity, dielectric/insulation tests per selected jurisdiction"
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,WALK-009,"Protected battery with pack fuse, disconnect, precharge, telemetry",05_hr30_battery_precharge,OPEN,"Qualified pack selection, design review, and battery-system tests"
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,WALK-012,Hardware E-stop removes hazardous drive energy,06_hr30_safety_distribution,OPEN,Functional-safety review and restrained hardware validation

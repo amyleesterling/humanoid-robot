@@ -1,0 +1,131 @@
+{
+  "package_status": "PRELIMINARY - NOT APPROVED FOR ENERGIZATION",
+  "pdf": "C:\\Users\\amyle\\Documents\\New project\\project-button\\engineering\\electrical\\kicad\\project-button-v2\\output\\pdf\\project-button-electrical-v2-preliminary.pdf",
+  "pages": 15,
+  "all_pages_a3_landscape": true,
+  "warning_on_every_page": true,
+  "replacement_glyphs_found": false,
+  "visual_review": "All 15 current 120-dpi page renders inspected; no clipped border, warning, component block, net label, title block, or note. HR-30 safety page reflowed after an overlap was detected in an earlier iteration.",
+  "records": [
+    {
+      "page": 1,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "PROJECT BUTTON HR-V0 / HR-30 ELECTRICAL V2.1"
+    },
+    {
+      "page": 2,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "01 AC input, protective earth, and separately protected DC domains"
+    },
+    {
+      "page": 3,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "02 HR-V0 dual-channel E-stop, falling-edge monitored start, watchdog permit, EDM, and redundant contactors"
+    },
+    {
+      "page": 4,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "03 HR-V0 actuator branch protection, star power injection, and one TTL data bus"
+    },
+    {
+      "page": 5,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "04 Compute, deterministic controller, independent watchdog drivers, isolation, and reset/ARM separation"
+    },
+    {
+      "page": 6,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "05 HR-30W protected battery, service disconnect, parallel precharge, charger interlock, and telemetry"
+    },
+    {
+      "page": 7,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "06 HR-30 source selection, dual-channel safety chain, redundant interruption, and upper-body conversion"
+    },
+    {
+      "page": 8,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "07 HR-30 left leg: six individually fused actuators and one linear RS-485 bus"
+    },
+    {
+      "page": 9,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "08 HR-30 right leg: six individually fused actuators and one linear RS-485 bus"
+    },
+    {
+      "page": 10,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "09 HR-30 upper-body TTL bus A: left arm, waist, and head"
+    },
+    {
+      "page": 11,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "10 HR-30 upper-body TTL bus B: right arm"
+    },
+    {
+      "page": 12,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "11 Foot load cells and unresolved bridge harness interfaces"
+    },
+    {
+      "page": 13,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "12 Foot ADCs, pelvis/torso IMUs, SPI interfaces, and synchronization"
+    },
+    {
+      "page": 14,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "13 Load-cell excitation, reference, protection, anti-alias filtering, and analog power"
+    },
+    {
+      "page": 15,
+      "width_pt": 1190.52,
+      "height_pt": 841.896,
+      "warning_present": true,
+      "replacement_glyph_present": false,
+      "title_excerpt": "14 Harness connectors, terminal blocks, shields, service separation, and unresolved physical pin maps"
+    }
+  ]
+}

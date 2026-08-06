@@ -19,16 +19,17 @@ This ledger records both independent reviews and controlled correction/validatio
 | R08 | 2026-08-05 | Full-system review disposition and correction | Codex engineering pass | Authoritative specification after R07 | Accepted and traced Sol findings into new requirements, risks, gates, evidence maturity, output-sensing baseline, timing contract, governance controls, and operating boundaries without inventing selections. | `docs/independent-review-disposition.md` |
 | R09 | 2026-08-06 | Independent claim and configuration audit | Claude/Fable review | Deployed site, website repository, authoritative repository, KiCad outputs, BOM, unresolved register, and traceability data | Independently confirmed the V2.1 counts and ERC status; found stale deployment/commit reporting and conflicting `V2.2`, Revision 0.2, and Revision 0.1 labels. | Reviewer report supplied 2026-08-06 |
 | R10 | 2026-08-06 | Configuration-control correction and deployment validation | Codex engineering pass | Systems package and website after R09 | Established `HR-30-SYS-R0.2`, preserved independent document revisions and Electrical V2.1, corrected 62/40 counts, added configuration management, rebuilt/tests/lint, and deployed website version 22. | `docs/configuration-management.md`; website commit `fd440229f4cbe61b0578cef153e4bbe94880c283`; GitHub PR #2 |
-| R11 | Requested | Independent design accuracy/completeness review | Fable | Current `HR-30-SYS-R0.2` authoritative package | Pending. Must independently recalculate mechanical, actuator, electrical, power, thermal, walking, control, and verification claims. | Evidence record to be added when received |
+| R11 | 2026-08-06; in progress | Independent design accuracy/completeness review | Fable | GitHub `main` at `ee276af…`, deployed presentation, and current `HR-30-SYS-R0.2` package | Interim BLOCKER: authoritative GitHub `main` contained no native KiCad project or sheets while the presentation described synchronized V2.1 engineering data. Remaining engineering review is pending. | Reviewer interim finding supplied 2026-08-06 |
 | R12 | Requested | Independent design accuracy/completeness review | GPT Sol | Current `HR-30-SYS-R0.2` authoritative package | Pending. Same scope as R11; review must be completed without seeing Fable's conclusions. | Evidence record to be added when received |
+| R13 | 2026-08-06 | ECAD provenance correction and validation | Codex engineering pass | Authoritative repository after R11 interim finding | Added the controlled native KiCad V2.1 project, 15 schematic sheets, symbol library, schedules, validation records, and generated source-hash manifest to the authoritative tree; corrected electrical release-area and handoff claims. | `electrical/kicad/project-button-v2/`; `electrical/kicad/project-button-v2/SOURCE-MANIFEST.csv`; corrective GitHub PR |
 
 ## Counting rule
 
 - Rounds R03, R05, R07, R09, R11, and R12 are independent reviewer passes.
-- Rounds R01, R02, R04, R06, R08, and R10 are project-owned audits, correction passes, or validation passes.
+- Rounds R01, R02, R04, R06, R08, R10, and R13 are project-owned audits, correction passes, or validation passes.
 - A reviewer follow-up that materially rechecks the controlled package receives a new round. Editorial discussion without checked artifacts does not.
 - Superseded findings remain in the ledger; their disposition is recorded rather than erased.
 
 ## Current review state
 
-Ten rounds are complete. Two parallel independent engineering reviews are requested. No round has approved fabrication, procurement, energization, functional safety, untethered operation, or operation around children.
+Eleven rounds are complete, R11 is in progress, and R12 is requested. No round has approved fabrication, procurement, energization, functional safety, untethered operation, or operation around children.

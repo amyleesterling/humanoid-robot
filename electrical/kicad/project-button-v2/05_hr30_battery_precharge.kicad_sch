@@ -1,0 +1,4029 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "f9c74b80-1f47-51bc-a84e-2dbcd5d707b1")
+	(paper "A3")
+	(title_block
+		(title "PB Electrical V2.1 - 05 05 hr30 battery precharge")
+		(date "2026-08-05")
+		(rev "V2.1-P0.2")
+		(company "Project Button")
+		(comment 1 "PRELIMINARY - NOT APPROVED FOR ENERGIZATION")
+		(comment 2 "QUALIFIED REVIEW REQUIRED")
+	)
+	(lib_symbols
+		(symbol "PBV2:BAT1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "BAT1" (at -17.78 -16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Professionally assembled 4-series protected battery pack" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Qualified supplier, cells, configuration, protected ports, pack limits, current, capacity, enclosure, and telemetry are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 13.97 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Professionally assembled 4-series protect..." (at -17.78 -13.21 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "BAT1_0_1"
+				(rectangle
+					(start -17.78 -10.16)
+					(end 17.78 10.16)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "BAT1_1_1"
+				(pin passive line
+					(at 20.32 -5.08 180)
+					(length 2.54)
+					(name "PACK_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-P+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 0 180)
+					(length 2.54)
+					(name "PACK_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-P-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 5.08 180)
+					(length 2.54)
+					(name "TELEMETRY" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-TLM" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -2.54 0)
+					(length 2.54)
+					(name "CHARGE_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-C+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 2.54 0)
+					(length 2.54)
+					(name "CHARGE_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-C-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:FBAT1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "FBAT1" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Pack-level fuse at battery" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Rating and interrupt capability require pack fault-current data and conductor protection calculation." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Pack-level fuse at battery" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "FBAT1_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "FBAT1_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-I" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-O" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:SD1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SD1" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Accessible DC service disconnect" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact DC rating, poles, breaking capacity, touch protection, and lockout method are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Accessible DC service disconnect" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "SD1_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "SD1_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-I" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-O" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:KB1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "KB1" (at -13.97 -16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Battery main source contactor" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Coil voltage, DC make/break duty, inrush, mirror contact, suppression, and fault coordination are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 13.97 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Battery main source contactor" (at -13.97 -13.21 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "KB1_0_1"
+				(rectangle
+					(start -13.97 -10.16)
+					(end 13.97 10.16)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "KB1_1_1"
+				(pin passive line
+					(at -16.51 -5.08 0)
+					(length 2.54)
+					(name "LINE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-L" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -5.08 180)
+					(length 2.54)
+					(name "LOAD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-T" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "COIL_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "COIL_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 5.08 0)
+					(length 2.54)
+					(name "MIRROR_A" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-M1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 5.08 180)
+					(length 2.54)
+					(name "MIRROR_B" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-M2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:KP1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "KP1" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Precharge relay" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Contact voltage/current, coil drive, welded-contact detection, and timing are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Precharge relay" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "KP1_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "KP1_1_1"
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "LINE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-L" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "LOAD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-T" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "COIL_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "COIL_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:RP1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "RP1" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Precharge resistor" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Resistance, pulse energy, power, tolerance, mounting, temperature, and discharge interval require measured load capacitance." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Precharge resistor" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "RP1_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "RP1_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:RD1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "RD1" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "DC-link discharge path" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Discharge resistance, power, touch-safe voltage time, and thermal mounting are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "DC-link discharge path" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "RD1_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "RD1_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "BUS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:JCHG1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "JCHG1" (at -17.78 -16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Charge inlet" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Connector, keying, touch protection, current, voltage, and presence-contact implementation are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 13.97 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Charge inlet" (at -17.78 -13.21 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "JCHG1_0_1"
+				(rectangle
+					(start -17.78 -10.16)
+					(end 17.78 10.16)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "JCHG1_1_1"
+				(pin passive line
+					(at 20.32 -5.08 180)
+					(length 2.54)
+					(name "CHARGE_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-C+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 0 180)
+					(length 2.54)
+					(name "CHARGE_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-C-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 5.08 180)
+					(length 2.54)
+					(name "PRESENT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:CHG1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "CHG1" (at -17.78 -16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Battery charger / protected charge interface" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Charger compatibility, BMS charge-port topology, communications, isolation, and interlock circuit are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 13.97 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Battery charger / protected charge interface" (at -17.78 -13.21 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "CHG1_0_1"
+				(rectangle
+					(start -17.78 -10.16)
+					(end 17.78 10.16)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "CHG1_1_1"
+				(pin passive line
+					(at -20.32 -2.54 0)
+					(length 2.54)
+					(name "INPUT_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-I+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 2.54 0)
+					(length 2.54)
+					(name "INPUT_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-I-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -5.08 180)
+					(length 2.54)
+					(name "PACK_CHARGE_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-P+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 0 180)
+					(length 2.54)
+					(name "PACK_CHARGE_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-P-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 5.08 180)
+					(length 2.54)
+					(name "INTERLOCK" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-ILK" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:TLM1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TLM1" (at -17.78 -16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Independent battery telemetry interface" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Isolation, voltage measurement, current sensing, accuracy, fault behavior, and exact interface are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 13.97 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Independent battery telemetry interface" (at -17.78 -13.21 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "TLM1_0_1"
+				(rectangle
+					(start -17.78 -10.16)
+					(end 17.78 10.16)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "TLM1_1_1"
+				(pin passive line
+					(at -20.32 -5.08 0)
+					(length 2.54)
+					(name "PACK_DATA" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 0 0)
+					(length 2.54)
+					(name "PACK_V_SENSE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 5.08 0)
+					(length 2.54)
+					(name "PACK_RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -2.54 180)
+					(length 2.54)
+					(name "ISOLATED_DATA" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 2.54 180)
+					(length 2.54)
+					(name "LOGIC_RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-L0" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:BCU1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "BCU1" (at -17.78 -19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Independent battery sequencing and interlock controller" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Controller, independent power, voltage threshold circuit, coil drivers, diagnostics, sequencing logic, and safety-inhibit interface are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Independent battery sequencing and interl..." (at -17.78 -15.75 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "BCU1_0_1"
+				(rectangle
+					(start -17.78 -12.70)
+					(end 17.78 12.70)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "BCU1_1_1"
+				(pin passive line
+					(at -20.32 -7.62 0)
+					(length 2.54)
+					(name "POWER" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-PWR" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -2.54 0)
+					(length 2.54)
+					(name "RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 2.54 0)
+					(length 2.54)
+					(name "CHARGE_PRESENT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-CHG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 7.62 0)
+					(length 2.54)
+					(name "DC_LINK_SENSE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-VS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -7.62 180)
+					(length 2.54)
+					(name "MAIN_COIL" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-KM" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -2.54 180)
+					(length 2.54)
+					(name "PRECHARGE_COIL" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-KP" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 2.54 180)
+					(length 2.54)
+					(name "MAIN_MIRROR_A" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-MA" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 7.62 180)
+					(length 2.54)
+					(name "MAIN_MIRROR_B" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-MB" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "PRELIMINARY - NOT APPROVED FOR ENERGIZATION"
+		(exclude_from_sim no)
+		(at 17.78 10.16 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+					(justify left bottom)
+			)
+		(uuid "4b0c1b87-bc68-57bd-a657-7dd186771338")
+	)
+	(text "05  HR-30W protected battery, service disconnect, parallel precharge, charger interlock, and telemetry"
+		(exclude_from_sim no)
+		(at 17.78 19.05 0)
+			(effects
+				(font
+					(size 2.03 2.03)
+				)
+					(justify left bottom)
+			)
+		(uuid "fbb15d73-c502-5da4-a095-616a635124ca")
+	)
+	(text "This is a functional topology only. Pack chemistry, voltage window, BMS ports, fuse, contactors, resistor, timing, thresholds, charger, and connectors remain unresolved."
+		(exclude_from_sim no)
+		(at 17.78 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "d33fcea5-c344-5dd1-a24b-f56709871145")
+	)
+	(rectangle
+		(start 12.70 31.75)
+		(end 406.40 256.54)
+		(stroke (width 0.50) (type solid))
+		(fill (type none))
+		(uuid "4e6e352b-6ed6-573e-af48-723eaad393d3")
+	)
+	(wire
+		(pts (xy 96.52 60.96) (xy 101.60 60.96))
+		(stroke (width 0) (type default))
+		(uuid "f5530d76-ec5d-5970-adf9-8372dc64a3fc")
+	)
+	(global_label "BAT_PACK_POS"
+		(shape bidirectional)
+		(at 101.60 60.96 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "09ff348d-be60-57e7-a617-5014db16aa22")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 63.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2015"
+		(exclude_from_sim no)
+		(at 99.06 59.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "cff052f7-b2d8-5800-a6ca-8c7eb4348c45")
+	)
+	(wire
+		(pts (xy 96.52 55.88) (xy 101.60 55.88))
+		(stroke (width 0) (type default))
+		(uuid "4de7ceef-508e-5160-a538-f5a2b5ea2cc0")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 101.60 55.88 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "e60cf6e4-1bdc-503d-a5f3-b24c50144b5c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 58.42 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 99.06 54.10 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "665e2f95-e2e3-56e7-ac5e-27cc983163b4")
+	)
+	(wire
+		(pts (xy 96.52 50.80) (xy 101.60 50.80))
+		(stroke (width 0) (type default))
+		(uuid "698dc9e1-db7c-5dd0-aa78-6c1ccd1150cc")
+	)
+	(global_label "BAT_TELEMETRY"
+		(shape bidirectional)
+		(at 101.60 50.80 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "0df60d7a-70f0-50a6-acc8-19242ffb2672")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 53.34 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2018"
+		(exclude_from_sim no)
+		(at 99.06 49.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "424bea7f-540d-51bc-a4e3-bd228a09503f")
+	)
+	(wire
+		(pts (xy 55.88 58.42) (xy 50.80 58.42))
+		(stroke (width 0) (type default))
+		(uuid "a5d6a171-0250-5aa3-a1b1-d37d6b982268")
+	)
+	(global_label "BAT_CHARGE_POS"
+		(shape bidirectional)
+		(at 50.80 58.42 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "cba92259-ff27-55f9-a7c2-8c724cd99649")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 60.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2009"
+		(exclude_from_sim no)
+		(at 53.34 56.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "1c4a85c3-2ac8-5064-ab41-a4e7a511ba5a")
+	)
+	(wire
+		(pts (xy 55.88 53.34) (xy 50.80 53.34))
+		(stroke (width 0) (type default))
+		(uuid "d05d85cc-8605-527c-a2a1-52a5aee8b8db")
+	)
+	(global_label "BAT_CHARGE_NEG"
+		(shape bidirectional)
+		(at 50.80 53.34 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "585db609-13f7-5baa-af72-c780cdd3f04b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 55.88 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2008"
+		(exclude_from_sim no)
+		(at 53.34 51.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "25953f5a-5558-5791-a386-190693d1deda")
+	)
+	(wire
+		(pts (xy 186.69 55.88) (xy 181.61 55.88))
+		(stroke (width 0) (type default))
+		(uuid "304497a8-d2df-547f-a998-7230ae443ff9")
+	)
+	(global_label "BAT_PACK_POS"
+		(shape bidirectional)
+		(at 181.61 55.88 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "63cb159d-6e11-5d27-a760-67db728c523c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 58.42 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2015"
+		(exclude_from_sim no)
+		(at 184.15 54.10 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "ca343989-729d-5099-a9b3-4ac472b5ae63")
+	)
+	(wire
+		(pts (xy 219.71 55.88) (xy 224.79 55.88))
+		(stroke (width 0) (type default))
+		(uuid "48d8d9de-ded0-5661-a0fa-afa35cba9e47")
+	)
+	(global_label "BAT_FUSED_POS"
+		(shape bidirectional)
+		(at 224.79 55.88 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "bc4a02f6-db7f-5bd1-adaf-f15bfbc54f58")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 58.42 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2011"
+		(exclude_from_sim no)
+		(at 222.25 54.10 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f347925e-6408-5fb2-a9fe-803d696a9f00")
+	)
+	(wire
+		(pts (xy 313.69 55.88) (xy 308.61 55.88))
+		(stroke (width 0) (type default))
+		(uuid "fde384fd-aef8-54e1-aade-96459daed276")
+	)
+	(global_label "BAT_FUSED_POS"
+		(shape bidirectional)
+		(at 308.61 55.88 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "2d70160b-b235-5e68-a81a-9358842e7a76")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 58.42 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2011"
+		(exclude_from_sim no)
+		(at 311.15 54.10 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "21a0b9a8-3be6-5ca9-af08-a78ac02e2ad2")
+	)
+	(wire
+		(pts (xy 346.71 55.88) (xy 351.79 55.88))
+		(stroke (width 0) (type default))
+		(uuid "7ad07798-3b9d-5037-a2bb-420fe9980dca")
+	)
+	(global_label "BAT_DISCONNECTED_POS"
+		(shape bidirectional)
+		(at 351.79 55.88 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "c0d3da9e-04d3-5d32-ab48-0cd664503f92")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 58.42 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2010"
+		(exclude_from_sim no)
+		(at 349.25 54.10 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b6a9892d-3111-5d29-a6fe-6ce31f8726e4")
+	)
+	(wire
+		(pts (xy 59.69 116.84) (xy 54.61 116.84))
+		(stroke (width 0) (type default))
+		(uuid "7755fa53-1ab2-50b8-a8aa-34a76b70a83a")
+	)
+	(global_label "BAT_DISCONNECTED_POS"
+		(shape bidirectional)
+		(at 54.61 116.84 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "71280acd-9fd4-51c6-adac-9c0bdfd8f3ec")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 119.38 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2010"
+		(exclude_from_sim no)
+		(at 57.15 115.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b1f33f2d-8cb9-58e3-a024-5cc4888d3c4b")
+	)
+	(wire
+		(pts (xy 92.71 116.84) (xy 97.79 116.84))
+		(stroke (width 0) (type default))
+		(uuid "6575589a-1d00-5820-a40c-a2d5a5e6ce04")
+	)
+	(global_label "HR30_BAT_PROTECTED"
+		(shape bidirectional)
+		(at 97.79 116.84 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "fa71ea5b-362a-576d-a977-afd31e6d3705")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 119.38 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2028"
+		(exclude_from_sim no)
+		(at 95.25 115.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "27419d4f-8d96-5446-a68c-db582f78f407")
+	)
+	(wire
+		(pts (xy 59.69 111.76) (xy 54.61 111.76))
+		(stroke (width 0) (type default))
+		(uuid "55c40632-7bfd-5cbd-a6bc-a2e7ab673c89")
+	)
+	(global_label "BAT_MAIN_COIL"
+		(shape bidirectional)
+		(at 54.61 111.76 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "589145da-6a04-5745-a0a2-b4c2cf52f623")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 114.30 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2012"
+		(exclude_from_sim no)
+		(at 57.15 109.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "1367fba2-fb8a-57c8-a10d-04c1c44128f3")
+	)
+	(wire
+		(pts (xy 92.71 111.76) (xy 97.79 111.76))
+		(stroke (width 0) (type default))
+		(uuid "bac3f400-c6a1-5654-a712-6777dcb69026")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 97.79 111.76 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "deeaf381-da26-5793-a651-2d798e9094e2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 114.30 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 95.25 109.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6e8c6c4c-93fc-5919-a502-cd810c2781f7")
+	)
+	(wire
+		(pts (xy 59.69 106.68) (xy 54.61 106.68))
+		(stroke (width 0) (type default))
+		(uuid "aa74b7fb-1ec3-5cb6-aea1-e261be03a840")
+	)
+	(global_label "BAT_MAIN_MIRROR_A"
+		(shape bidirectional)
+		(at 54.61 106.68 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "5d0dfbfa-d7a0-567c-ac1e-b5d699acc646")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 109.22 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2013"
+		(exclude_from_sim no)
+		(at 57.15 104.90 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "662416bf-366c-5f10-aae2-638ddcd410f7")
+	)
+	(wire
+		(pts (xy 92.71 106.68) (xy 97.79 106.68))
+		(stroke (width 0) (type default))
+		(uuid "f6dbba73-3154-56d1-a3b0-4a5ef8114b19")
+	)
+	(global_label "BAT_MAIN_MIRROR_B"
+		(shape bidirectional)
+		(at 97.79 106.68 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "e514632c-88fb-5107-acb0-97d9b5325cd8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 109.22 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2014"
+		(exclude_from_sim no)
+		(at 95.25 104.90 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f36d37db-fd6d-5cb9-ae3e-2a9447f9f13c")
+	)
+	(wire
+		(pts (xy 186.69 114.30) (xy 181.61 114.30))
+		(stroke (width 0) (type default))
+		(uuid "998fcf80-2450-56a8-a73e-0081263a4b07")
+	)
+	(global_label "BAT_DISCONNECTED_POS"
+		(shape bidirectional)
+		(at 181.61 114.30 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "81d88770-0213-5b7b-a394-8a7e90ec8714")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 116.84 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2010"
+		(exclude_from_sim no)
+		(at 184.15 112.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6d06b57c-19ca-5efc-a2e3-e70d0a8c583b")
+	)
+	(wire
+		(pts (xy 219.71 114.30) (xy 224.79 114.30))
+		(stroke (width 0) (type default))
+		(uuid "3629efdb-abae-5f35-ac90-fd483baf683b")
+	)
+	(global_label "BAT_PRECHARGE_R_IN"
+		(shape bidirectional)
+		(at 224.79 114.30 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "768b8024-15fb-59c5-a995-39bf5b555898")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 116.84 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2017"
+		(exclude_from_sim no)
+		(at 222.25 112.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "1f67a2c7-8e7d-5229-a546-a2a4169872bf")
+	)
+	(wire
+		(pts (xy 186.69 109.22) (xy 181.61 109.22))
+		(stroke (width 0) (type default))
+		(uuid "b7a27997-b838-585c-a13d-e1be9b981f92")
+	)
+	(global_label "BAT_PRECHARGE_COIL"
+		(shape bidirectional)
+		(at 181.61 109.22 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "6ab579a4-564f-51e2-a4c4-0b98e019da37")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 111.76 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2016"
+		(exclude_from_sim no)
+		(at 184.15 107.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "0e7b530d-5b12-547d-aac6-2ebe0f59fe75")
+	)
+	(wire
+		(pts (xy 219.71 109.22) (xy 224.79 109.22))
+		(stroke (width 0) (type default))
+		(uuid "b8d6cc5d-f184-5601-a725-e9d7388a64ab")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 224.79 109.22 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "fe590c3b-8c22-5561-aa47-785b108801a7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 111.76 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 222.25 107.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "66f8fcb9-9e89-5078-ad4a-93f0447bb5b6")
+	)
+	(wire
+		(pts (xy 313.69 111.76) (xy 308.61 111.76))
+		(stroke (width 0) (type default))
+		(uuid "42c0ea93-f717-5f19-ad16-a53a5daa759b")
+	)
+	(global_label "BAT_PRECHARGE_R_IN"
+		(shape bidirectional)
+		(at 308.61 111.76 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "63b46e3f-84a2-5123-a30f-2100ec94def5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 114.30 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2017"
+		(exclude_from_sim no)
+		(at 311.15 109.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "5d84b2ee-14e3-5b6b-a768-4090d5342644")
+	)
+	(wire
+		(pts (xy 346.71 111.76) (xy 351.79 111.76))
+		(stroke (width 0) (type default))
+		(uuid "40383420-8d11-534b-ae80-8ece58cc0c3a")
+	)
+	(global_label "HR30_BAT_PROTECTED"
+		(shape bidirectional)
+		(at 351.79 111.76 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "32d55723-98e2-5392-a993-ea8008387d07")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 114.30 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2028"
+		(exclude_from_sim no)
+		(at 349.25 109.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6d137055-f51f-539d-a772-e8c601a407be")
+	)
+	(wire
+		(pts (xy 59.69 167.64) (xy 54.61 167.64))
+		(stroke (width 0) (type default))
+		(uuid "46e5be24-8bb8-5929-a30d-b0d74c6619d7")
+	)
+	(global_label "HR30_BAT_PROTECTED"
+		(shape bidirectional)
+		(at 54.61 167.64 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "dfb451b3-9997-5348-ab5b-5f0dfbed398f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 170.18 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2028"
+		(exclude_from_sim no)
+		(at 57.15 165.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "e0901365-8b45-5ded-adba-16cc262c0858")
+	)
+	(wire
+		(pts (xy 92.71 167.64) (xy 97.79 167.64))
+		(stroke (width 0) (type default))
+		(uuid "06c4b2a9-72f9-5bef-a093-46c94b5391de")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 97.79 167.64 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "1cbabe6e-ebbb-5c29-a85d-9b77cf357d5a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 170.18 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 95.25 165.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b05cd875-6d01-589c-a320-db409416caa8")
+	)
+	(wire
+		(pts (xy 223.52 172.72) (xy 228.60 172.72))
+		(stroke (width 0) (type default))
+		(uuid "5aafe5d5-1d39-59c8-af17-69fad4485d6b")
+	)
+	(global_label "CHARGER_POS_RAW"
+		(shape bidirectional)
+		(at 228.60 172.72 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "db89430e-7cf9-5866-ac40-50ba0c366a9c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 175.26 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2021"
+		(exclude_from_sim no)
+		(at 226.06 170.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "58e0e2a0-4256-5780-a59c-60dff744a16c")
+	)
+	(wire
+		(pts (xy 223.52 167.64) (xy 228.60 167.64))
+		(stroke (width 0) (type default))
+		(uuid "a514ea75-79dd-591f-a3b1-7ac6e4fc5068")
+	)
+	(global_label "CHARGER_NEG_RAW"
+		(shape bidirectional)
+		(at 228.60 167.64 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "8119e96e-0e9b-5f93-a7b3-44e28d26c44a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 170.18 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2020"
+		(exclude_from_sim no)
+		(at 226.06 165.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "cd53dd7f-6048-5a7c-aa41-5ca49b9b8570")
+	)
+	(wire
+		(pts (xy 223.52 162.56) (xy 228.60 162.56))
+		(stroke (width 0) (type default))
+		(uuid "a2b19dfd-2e2a-5df0-a129-bafda1319489")
+	)
+	(global_label "CHARGE_PRESENT"
+		(shape bidirectional)
+		(at 228.60 162.56 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "b457717a-6d4c-5770-a42e-a2c1b0f1b17e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 165.10 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2022"
+		(exclude_from_sim no)
+		(at 226.06 160.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "29336a2f-45e7-5bfe-aa88-1ee98ccf8754")
+	)
+	(wire
+		(pts (xy 309.88 170.18) (xy 304.80 170.18))
+		(stroke (width 0) (type default))
+		(uuid "9a89d1e7-b5fa-5e79-ab58-77c5c98c8913")
+	)
+	(global_label "CHARGER_POS_RAW"
+		(shape bidirectional)
+		(at 304.80 170.18 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "65f096a4-34de-57fd-a005-609e7af1ae89")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 304.80 172.72 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2021"
+		(exclude_from_sim no)
+		(at 307.34 168.40 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b263b24f-4054-5184-ad6c-3cf21d3f39c9")
+	)
+	(wire
+		(pts (xy 309.88 165.10) (xy 304.80 165.10))
+		(stroke (width 0) (type default))
+		(uuid "5ad4bd0c-e5f8-50ef-a8c1-b9a7eaca4eb1")
+	)
+	(global_label "CHARGER_NEG_RAW"
+		(shape bidirectional)
+		(at 304.80 165.10 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "4db1f996-2e12-525d-a82f-622a38226b75")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 304.80 167.64 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2020"
+		(exclude_from_sim no)
+		(at 307.34 163.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "9c9bc54c-d76f-5a38-ada3-75df10e82952")
+	)
+	(wire
+		(pts (xy 350.52 172.72) (xy 355.60 172.72))
+		(stroke (width 0) (type default))
+		(uuid "02ac801f-26e3-5c06-aa4e-f88e2c4828e5")
+	)
+	(global_label "BAT_CHARGE_POS"
+		(shape bidirectional)
+		(at 355.60 172.72 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "14e28e65-045d-5cb6-a91d-414811e5515f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 355.60 175.26 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2009"
+		(exclude_from_sim no)
+		(at 353.06 170.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "256722e1-707c-54d5-a03e-7cac62c14b33")
+	)
+	(wire
+		(pts (xy 350.52 167.64) (xy 355.60 167.64))
+		(stroke (width 0) (type default))
+		(uuid "7d522ccf-adbe-5749-a20e-ef0a8007f359")
+	)
+	(global_label "BAT_CHARGE_NEG"
+		(shape bidirectional)
+		(at 355.60 167.64 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "3b7dfeac-fece-5ddc-a475-73457464c999")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 355.60 170.18 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2008"
+		(exclude_from_sim no)
+		(at 353.06 165.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f803781f-458d-5648-a944-2907128b60f7")
+	)
+	(wire
+		(pts (xy 350.52 162.56) (xy 355.60 162.56))
+		(stroke (width 0) (type default))
+		(uuid "5a40c857-25f3-5340-afa2-9946c1a08d04")
+	)
+	(global_label "CHARGE_PRESENT"
+		(shape bidirectional)
+		(at 355.60 162.56 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "68efeb8a-7978-5fc5-a175-5f063f39ac21")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 355.60 165.10 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2022"
+		(exclude_from_sim no)
+		(at 353.06 160.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "fa493896-5bba-55d1-a1ae-6aa003f30826")
+	)
+	(wire
+		(pts (xy 55.88 228.60) (xy 50.80 228.60))
+		(stroke (width 0) (type default))
+		(uuid "6735f5d6-58e6-5e5c-a1c3-d54c4ab3543b")
+	)
+	(global_label "BAT_TELEMETRY"
+		(shape bidirectional)
+		(at 50.80 228.60 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "59b9e448-f7cd-516a-aaa2-1b051eaefca3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 231.14 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2018"
+		(exclude_from_sim no)
+		(at 53.34 226.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "41b1dcd1-d5fc-5ae5-a073-0e7f372215e8")
+	)
+	(wire
+		(pts (xy 55.88 223.52) (xy 50.80 223.52))
+		(stroke (width 0) (type default))
+		(uuid "f843e419-0b6c-5ff3-a66a-5239c5fa7ccd")
+	)
+	(global_label "HR30_BAT_PROTECTED"
+		(shape bidirectional)
+		(at 50.80 223.52 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "62ffaeb1-f925-53e4-a5b7-fcde708c2b7a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 226.06 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2028"
+		(exclude_from_sim no)
+		(at 53.34 221.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "06e098c4-0ee6-539a-a5b8-c10f177f57e6")
+	)
+	(wire
+		(pts (xy 55.88 218.44) (xy 50.80 218.44))
+		(stroke (width 0) (type default))
+		(uuid "cf4170e3-66e7-580e-a8ee-1b4a2bfcf638")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 50.80 218.44 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "f5660c1d-7711-5dec-ac7b-7cf2d73f414c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 220.98 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 53.34 216.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "40a568ca-3e7c-52b9-a789-ae6b73c3bebe")
+	)
+	(wire
+		(pts (xy 96.52 226.06) (xy 101.60 226.06))
+		(stroke (width 0) (type default))
+		(uuid "0b149049-0409-5616-a7ec-f2bb431f5936")
+	)
+	(global_label "BAT_TELEMETRY_LOGIC"
+		(shape bidirectional)
+		(at 101.60 226.06 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "de0b3202-a7a5-5846-a1c5-4b9d2995d076")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 228.60 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2019"
+		(exclude_from_sim no)
+		(at 99.06 224.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "e0cd957b-6340-5b1c-a1ef-0df959384c37")
+	)
+	(wire
+		(pts (xy 96.52 220.98) (xy 101.60 220.98))
+		(stroke (width 0) (type default))
+		(uuid "584879d4-c528-537f-a9dc-68930d6dbb70")
+	)
+	(global_label "COMPUTE_0V"
+		(shape bidirectional)
+		(at 101.60 220.98 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "9ebf5801-05d4-50b8-a779-d015b0f31086")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 223.52 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2023"
+		(exclude_from_sim no)
+		(at 99.06 219.20 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "69924314-759d-5a94-a789-6fd6573c9b57")
+	)
+	(wire
+		(pts (xy 182.88 231.14) (xy 177.80 231.14))
+		(stroke (width 0) (type default))
+		(uuid "725bb245-e65b-5466-a2fc-8c882d43d658")
+	)
+	(global_label "COMPUTE_5V"
+		(shape bidirectional)
+		(at 177.80 231.14 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "b97eab7f-7fd9-59e3-aef1-914f9f384f35")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 233.68 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2025"
+		(exclude_from_sim no)
+		(at 180.34 229.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b0de1553-ee63-57e6-ad2e-1d47b1b9de65")
+	)
+	(wire
+		(pts (xy 182.88 226.06) (xy 177.80 226.06))
+		(stroke (width 0) (type default))
+		(uuid "fdf9440b-2e29-5db5-a8ab-e126c3c8017d")
+	)
+	(global_label "COMPUTE_0V"
+		(shape bidirectional)
+		(at 177.80 226.06 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "90d7ae37-e5bb-58e1-a7f9-8a68606b19fa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 228.60 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2023"
+		(exclude_from_sim no)
+		(at 180.34 224.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d117e5f3-fc8f-524b-a403-b1f53dbb9a74")
+	)
+	(wire
+		(pts (xy 182.88 220.98) (xy 177.80 220.98))
+		(stroke (width 0) (type default))
+		(uuid "9d2627a6-4da1-5a66-a3de-4e2ef08e9704")
+	)
+	(global_label "CHARGE_PRESENT"
+		(shape bidirectional)
+		(at 177.80 220.98 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "d62fee27-6e19-5855-a0b1-cc5481f0e5c9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 223.52 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2022"
+		(exclude_from_sim no)
+		(at 180.34 219.20 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "e792eb60-f954-5b29-a75d-6694cb632b21")
+	)
+	(wire
+		(pts (xy 182.88 215.90) (xy 177.80 215.90))
+		(stroke (width 0) (type default))
+		(uuid "f7d1d509-8d5d-51c2-a6ff-1740c1d0e98d")
+	)
+	(global_label "HR30_BAT_PROTECTED"
+		(shape bidirectional)
+		(at 177.80 215.90 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "d8ae5a5f-d7d1-59be-aec6-f14ba8e6b2fd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 218.44 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2028"
+		(exclude_from_sim no)
+		(at 180.34 214.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "2c4d0233-d649-5079-a074-ea9761ae19a4")
+	)
+	(wire
+		(pts (xy 223.52 231.14) (xy 228.60 231.14))
+		(stroke (width 0) (type default))
+		(uuid "40cbf454-ad8a-5044-a38b-d4a3cabd9319")
+	)
+	(global_label "BAT_MAIN_COIL"
+		(shape bidirectional)
+		(at 228.60 231.14 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "ec9499d7-6e9d-5ae4-a70e-09edefe1e4c4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 233.68 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2012"
+		(exclude_from_sim no)
+		(at 226.06 229.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "20d7403d-c3ce-5d68-ae4d-9b76c4ed95dc")
+	)
+	(wire
+		(pts (xy 223.52 226.06) (xy 228.60 226.06))
+		(stroke (width 0) (type default))
+		(uuid "223194bf-1beb-5b32-a0c2-af1b370eecec")
+	)
+	(global_label "BAT_PRECHARGE_COIL"
+		(shape bidirectional)
+		(at 228.60 226.06 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "07b0f564-fb0c-5687-a0ce-781bc658b338")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 228.60 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2016"
+		(exclude_from_sim no)
+		(at 226.06 224.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "13fba515-fe5d-5130-a18e-be339f39392d")
+	)
+	(wire
+		(pts (xy 223.52 220.98) (xy 228.60 220.98))
+		(stroke (width 0) (type default))
+		(uuid "505c72ca-1794-55e6-a33d-b606be21e0e4")
+	)
+	(global_label "BAT_MAIN_MIRROR_A"
+		(shape bidirectional)
+		(at 228.60 220.98 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "2d51cca3-6d5c-5acf-acd8-21ab109bcc61")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 223.52 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2013"
+		(exclude_from_sim no)
+		(at 226.06 219.20 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d6f108c7-d5ff-55cf-a7d9-8a6d50ae8384")
+	)
+	(wire
+		(pts (xy 223.52 215.90) (xy 228.60 215.90))
+		(stroke (width 0) (type default))
+		(uuid "941a81e9-fd27-5ebc-af67-922fa2872286")
+	)
+	(global_label "BAT_MAIN_MIRROR_B"
+		(shape bidirectional)
+		(at 228.60 215.90 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "7024e1ea-7e34-57d2-a1cd-c5192dc39210")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 218.44 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2014"
+		(exclude_from_sim no)
+		(at 226.06 214.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "9b65c93c-0fb5-54a9-a5ad-f6207c0db194")
+	)
+	(text "NOTE 1: KP1 plus RP1 is explicitly parallel to KB1. It is not a series element in the normal current path."
+		(exclude_from_sim no)
+		(at 17.78 266.70 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "e9a3e0f0-168b-5d2d-a753-077e39e8c67f")
+	)
+	(text "NOTE 2: Charge-present must inhibit actuator-power eligibility in hardware or verified safety control; implementation remains open."
+		(exclude_from_sim no)
+		(at 17.78 271.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "d25a5362-3d05-5ff4-a4c1-e8241298cab9")
+	)
+	(symbol
+		(lib_id "PBV2:BAT1")
+		(at 76.20 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bc58b510-5863-56ba-aff7-4592f108384d")
+		(property "Reference" "BAT1"
+			(at 58.42 39.37 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Professionally assembled 4-series protected battery pack"
+			(at 76.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Qualified supplier, cells, configuration, protected ports, pack limits, current, capacity, enclosure, and telemetry are unresolved."
+			(at 76.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 69.85 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Professionally assembled 4-series protect..."
+			(at 58.42 42.67 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-P+"
+			(uuid "a73bac3f-3f46-586a-a3bf-63e6e96728f3")
+		)
+		(pin "TBD-P-"
+			(uuid "2c4ee2d0-1851-5177-a4e6-68af38a8655e")
+		)
+		(pin "TBD-TLM"
+			(uuid "6a4c7f69-abf7-56ed-a108-ddd884976df3")
+		)
+		(pin "TBD-C+"
+			(uuid "c972a21f-6502-5f11-a52d-d365b50ad85b")
+		)
+		(pin "TBD-C-"
+			(uuid "25162d79-4984-5056-a43f-b6fe944e7b43")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/4a1ab087-b6ca-54dd-aacf-c5993fdcdfcd"
+					(reference "BAT1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:FBAT1")
+		(at 203.20 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8de10b52-9cf0-5e1c-a3cd-b4a0186b75d3")
+		(property "Reference" "FBAT1"
+			(at 189.23 40.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Pack-level fuse at battery"
+			(at 203.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Rating and interrupt capability require pack fault-current data and conductor protection calculation."
+			(at 203.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 68.58 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Pack-level fuse at battery"
+			(at 189.23 43.94 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-I"
+			(uuid "57c44079-eac0-566a-a98f-ef0139a07bd1")
+		)
+		(pin "TBD-O"
+			(uuid "78159eef-60ef-51c4-a4b5-22664d1719af")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/4a1ab087-b6ca-54dd-aacf-c5993fdcdfcd"
+					(reference "FBAT1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:SD1")
+		(at 330.20 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8b773ebf-343a-58cf-a39e-8a40a73440a7")
+		(property "Reference" "SD1"
+			(at 344.17 40.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "Accessible DC service disconnect"
+			(at 330.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 330.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact DC rating, poles, breaking capacity, touch protection, and lockout method are unresolved."
+			(at 330.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 330.20 68.58 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 330.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Accessible DC service disconnect"
+			(at 344.17 43.94 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-I"
+			(uuid "1894d0dc-c47e-5dfa-a1ed-7574ef52d423")
+		)
+		(pin "TBD-O"
+			(uuid "76cc115a-b2f9-5b07-ae2d-5273ee805bc7")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/4a1ab087-b6ca-54dd-aacf-c5993fdcdfcd"
+					(reference "SD1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:KB1")
+		(at 76.20 111.76 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "073d0c26-8159-5a02-a1a2-136e53387dad")
+		(property "Reference" "KB1"
+			(at 62.23 95.25 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Battery main source contactor"
+			(at 76.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Coil voltage, DC make/break duty, inrush, mirror contact, suppression, and fault coordination are unresolved."
+			(at 76.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 125.73 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Battery main source contactor"
+			(at 62.23 98.55 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-L"
+			(uuid "c3510021-8321-597a-a131-107248b69a95")
+		)
+		(pin "TBD-T"
+			(uuid "ac056cad-6749-512f-a644-c863d5b88222")
+		)
+		(pin "TBD-A1"
+			(uuid "ba7bace5-e9dc-5aeb-a721-1ea98384bdcc")
+		)
+		(pin "TBD-A2"
+			(uuid "07a8ceed-b535-56e9-a5bb-75c2a20d23c9")
+		)
+		(pin "TBD-M1"
+			(uuid "f2f7631e-761c-5ab0-a459-dc078dbc3bee")
+		)
+		(pin "TBD-M2"
+			(uuid "e4d4f0f2-066d-5b95-a962-f0788a588f29")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/4a1ab087-b6ca-54dd-aacf-c5993fdcdfcd"
+					(reference "KB1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:KP1")
+		(at 203.20 111.76 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ffa91620-132c-5768-a1f6-6c44663f6032")
+		(property "Reference" "KP1"
+			(at 189.23 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Precharge relay"
+			(at 203.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Contact voltage/current, coil drive, welded-contact detection, and timing are unresolved."
+			(at 203.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 124.46 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Precharge relay"
+			(at 189.23 99.82 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-L"
+			(uuid "e4a9cd34-95a0-55ec-a02a-795ea3a65a29")
+		)
+		(pin "TBD-T"
+			(uuid "d5ba48c3-7197-5978-a10e-e49e82bd2be8")
+		)
+		(pin "TBD-A1"
+			(uuid "77ce91f7-3bef-51c0-a904-2f65c2842241")
+		)
+		(pin "TBD-A2"
+			(uuid "3d804503-8cc9-594d-a7b5-58c66ec4283f")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/4a1ab087-b6ca-54dd-aacf-c5993fdcdfcd"
+					(reference "KP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:RP1")
+		(at 330.20 111.76 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5c5e1533-4e76-52ad-a2c8-9ceee7545a9e")
+		(property "Reference" "RP1"
+			(at 344.17 96.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "Precharge resistor"
+			(at 330.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 330.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Resistance, pulse energy, power, tolerance, mounting, temperature, and discharge interval require measured load capacitance."
+			(at 330.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 330.20 124.46 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 330.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Precharge resistor"
+			(at 344.17 99.82 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-1"
+			(uuid "99d96ace-6823-5e55-ae21-1f5a3d4ae688")
+		)
+		(pin "TBD-2"
+			(uuid "a4a664d2-7354-5b36-ae5f-cbee0298a71a")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/4a1ab087-b6ca-54dd-aacf-c5993fdcdfcd"
+					(reference "RP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:RD1")
+		(at 76.20 167.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1acd5893-5218-5beb-aa59-3112d11d3ca3")
+		(property "Reference" "RD1"
+			(at 62.23 152.40 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "DC-link discharge path"
+			(at 76.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Discharge resistance, power, touch-safe voltage time, and thermal mounting are unresolved."
+			(at 76.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 180.34 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "DC-link discharge path"
+			(at 62.23 155.70 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-1"
+			(uuid "fb43467e-9c1f-57bf-a71d-5521c6b0b20c")
+		)
+		(pin "TBD-2"
+			(uuid "05a21718-6635-589f-ab92-cd57589435db")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/4a1ab087-b6ca-54dd-aacf-c5993fdcdfcd"
+					(reference "RD1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:JCHG1")
+		(at 203.20 167.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5ba022e7-ae07-5718-ae54-fdbf5735df2a")
+		(property "Reference" "JCHG1"
+			(at 185.42 151.13 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Charge inlet"
+			(at 203.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Connector, keying, touch protection, current, voltage, and presence-contact implementation are unresolved."
+			(at 203.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 181.61 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Charge inlet"
+			(at 185.42 154.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-C+"
+			(uuid "4eaabd58-3291-5471-a39b-deba35a21adf")
+		)
+		(pin "TBD-C-"
+			(uuid "7ac3ab50-5a84-50a2-a163-819f0cc73dc0")
+		)
+		(pin "TBD-P"
+			(uuid "0a2487ac-207e-5319-af13-f740b2f6245e")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/4a1ab087-b6ca-54dd-aacf-c5993fdcdfcd"
+					(reference "JCHG1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:CHG1")
+		(at 330.20 167.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bab455ab-b3ce-5ac9-a9cb-923ff122b9fc")
+		(property "Reference" "CHG1"
+			(at 347.98 151.13 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "Battery charger / protected charge interface"
+			(at 330.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 330.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Charger compatibility, BMS charge-port topology, communications, isolation, and interlock circuit are unresolved."
+			(at 330.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 330.20 181.61 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 330.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Battery charger / protected charge interface"
+			(at 347.98 154.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-I+"
+			(uuid "ef20db1a-fa1a-5a9f-a290-3b3825a5169c")
+		)
+		(pin "TBD-I-"
+			(uuid "6f338e8c-b386-5b2f-ae3b-745f9359d54d")
+		)
+		(pin "TBD-P+"
+			(uuid "b7dde4ac-58f0-58e2-ac2a-b6d416c65cd6")
+		)
+		(pin "TBD-P-"
+			(uuid "50818a41-f608-5713-a582-b18b371c4556")
+		)
+		(pin "TBD-ILK"
+			(uuid "4d7a66e9-0200-5cfc-acdc-f183cd71aeaf")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/4a1ab087-b6ca-54dd-aacf-c5993fdcdfcd"
+					(reference "CHG1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:TLM1")
+		(at 76.20 223.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0a0c2b65-4023-5c25-aa5d-e115846f7d39")
+		(property "Reference" "TLM1"
+			(at 58.42 207.01 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Independent battery telemetry interface"
+			(at 76.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Isolation, voltage measurement, current sensing, accuracy, fault behavior, and exact interface are unresolved."
+			(at 76.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 237.49 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Independent battery telemetry interface"
+			(at 58.42 210.31 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-IN"
+			(uuid "1098ff4e-2656-5ba9-af31-8c83f20697de")
+		)
+		(pin "TBD-V"
+			(uuid "25d03764-15aa-5b02-a133-69f55d2ebcd3")
+		)
+		(pin "TBD-0V"
+			(uuid "44db845a-90cd-5501-a862-8ac41459be85")
+		)
+		(pin "TBD-OUT"
+			(uuid "1346b712-864e-53ae-affa-8a8fa3d589c2")
+		)
+		(pin "TBD-L0"
+			(uuid "c33969d5-dc7d-579d-a7a6-9d9f4388b452")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/4a1ab087-b6ca-54dd-aacf-c5993fdcdfcd"
+					(reference "TLM1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:BCU1")
+		(at 203.20 223.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "86589a2d-8c57-57c4-a127-89d5e517619b")
+		(property "Reference" "BCU1"
+			(at 185.42 204.47 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Independent battery sequencing and interlock controller"
+			(at 203.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Controller, independent power, voltage threshold circuit, coil drivers, diagnostics, sequencing logic, and safety-inhibit interface are unresolved."
+			(at 203.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 240.03 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Independent battery sequencing and interl..."
+			(at 185.42 207.77 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-PWR"
+			(uuid "b2e58aff-3be2-51b8-a4a2-1c9119301582")
+		)
+		(pin "TBD-0V"
+			(uuid "b689eb3c-a660-5483-a631-f446a85a6866")
+		)
+		(pin "TBD-CHG"
+			(uuid "88e6e650-503e-5517-a6dc-b0d5b456f56a")
+		)
+		(pin "TBD-VS"
+			(uuid "f280d274-23bd-51d1-a1fc-d52bdcff1d9a")
+		)
+		(pin "TBD-KM"
+			(uuid "01ec9774-2da8-55ac-a811-7587da61ea5d")
+		)
+		(pin "TBD-KP"
+			(uuid "ada22b41-e5fd-5733-a2bc-1d8c6b4d2ef2")
+		)
+		(pin "TBD-MA"
+			(uuid "1d40b988-c7c8-5c01-a763-327ee91fd146")
+		)
+		(pin "TBD-MB"
+			(uuid "f78bb9e8-67a7-5d18-a360-4ea65a839a54")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/4a1ab087-b6ca-54dd-aacf-c5993fdcdfcd"
+					(reference "BCU1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(embedded_fonts no)
+)

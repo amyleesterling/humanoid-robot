@@ -1,0 +1,23 @@
+{
+  "board": {},
+  "boards": [],
+  "cvpcb": {},
+  "erc": {},
+  "libraries": {},
+  "meta": {
+    "filename": "project-button-v2.kicad_pro",
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [],
+    "meta": {
+      "version": 3
+    }
+  },
+  "pcbnew": {},
+  "schematic": {},
+  "text_variables": {
+    "PROJECT_STATUS": "PRELIMINARY - NOT APPROVED FOR ENERGIZATION",
+    "REVISION": "V2.1-P0.2"
+  }
+}
