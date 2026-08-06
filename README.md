@@ -46,9 +46,10 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Safety-function requirements](docs/safety-functions.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
-- [Native KiCad Electrical V3-P0.6 correction candidate](electrical/kicad/project-button-v3/README.md)
+- [Native KiCad Electrical V3-P0.7 correction candidate](electrical/kicad/project-button-v3/README.md)
 - [HR-V0 Electrical V3 candidate architecture](docs/hr-v0-electrical-v3-candidate.md)
 - [HR-V0 Electrical terminal closure R27](docs/hr-v0-electrical-terminal-closure-r27.md)
+- [HR-V0 source-interface closure R28](docs/hr-v0-source-interface-closure-r28.md)
 - [HR-V0 Boston build-site basis](docs/hr-v0-build-site-basis.md)
 - [Boston fabrication and custom-metal sourcing](docs/hr-v0-fabrication-sourcing-boston.md)
 - [Control and fault-state specification](docs/control.md)
@@ -77,7 +78,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R25](docs/reviews/2026-08-06-sol-r12-post-r25-status.md)
 - [Sol R12 findings rechecked against R26](docs/reviews/2026-08-06-sol-r12-post-r26-status.md)
 - [Sol R12 findings rechecked against R27](docs/reviews/2026-08-06-sol-r12-post-r27-status.md)
-- [Electrical V3-P0.6 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
+- [Sol R12 findings rechecked against R28](docs/reviews/2026-08-06-sol-r12-post-r28-status.md)
+- [Electrical V3-P0.7 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.1 independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
 - [Requirements](requirements/requirements.csv)
 - [HR-V0 energization gate register](requirements/hr-v0-energization-gates.csv)
@@ -88,7 +90,7 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 
 ## Review history
 
-Twenty-seven review/control rounds are complete: R01-R27. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
+Twenty-eight review/control rounds are complete: R01-R28. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -119,6 +121,7 @@ Twenty-seven review/control rounds are complete: R01-R27. R11 Fable and R12 Sol 
 | R25 | HR-V0 guard, receiver and moving-cable space correction | Added a generated enclosure/catch STEP envelope, readable layouts, explicit provisional stopping/clearance terms, five cable zones, three requirements, three procedures and unexecuted guard/cable/drop records; no panel, harness or safety distance is released. |
 | R26 | Electrical operator and regional-source identity correction | Advanced the connected candidate to V3-P0.5; froze black RESET and green ARM IDEC operator order codes plus the official Raspberry Pi US regional model, added receiving/continuity evidence controls, regenerated all native/exported artifacts, and retained 43 unresolved rows and 64 `TBD-*` terminals. |
 | R27 | E-stop terminal-position closure | Advanced the connected candidate to V3-P0.6; replaced four anonymous S0 terminals with controlled right/left NC position designators, retained received positive-opening verification, documented the active IDEC HW production transition, and kept RESET/ARM terminals unresolved. ERC remains 0/0; 43 unresolved rows and 60 `TBD-*` terminals remain. |
+| R28 | Source-interface candidate closure | Advanced the connected candidate to V3-P0.7; froze the project-side Molex JA1 housing/HCS contact/tool system and TRACO watchdog-regulator order code/pins, added receiving/current-division/thermal/brownout evidence controls, reduced anonymous terminals to 56, retained 43 unresolved rows, and closed no energization gate. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

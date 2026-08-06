@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P0.6"
+REV = "V3-P0.7"
 DATE = "2026-08-06"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 NS = uuid.UUID("4cb40c84-3194-4ded-b2c7-d78df616c5c0")
@@ -151,10 +151,13 @@ def sheets() -> list[Sheet]:
                   "External Class I adapter. Pins 1-3 are +Vo and 4-6 are -Vo; -Vo is bonded to incoming PE inside the source. Do not add a second 0V/PE bond.",
                   "https://www.meanwell.com/Upload/PDF/GST280A/GST280A-SPEC.PDF",
                   "GST280A-SPEC 2026-04-03", (80, 82), 82),
-        Component("JA1", "GST280A C6P mating connector and contacts",
+        Component("JA1", "Molex 39012066 housing; 6x 444783112 HCS male contacts; 16 AWG",
                   [pn("J12V1", str(i), f"C6P {i}", "ACT_12V_RAW" if i <= 3 else "ACT_0V_PE_BONDED", "left") for i in range(1, 7)],
-                  "SELECTION REQUIRED", "Freeze housing, contacts, wire range, crimp tooling, current/temperature derating and retention from the exact manufacturer system.",
-                  evidence="The adapter document names a Molex 39-01-2060-equivalent plug but does not release the project mating harness.", position=(210, 82), width=78),
+                  "PROPOSED - CONNECTOR SYSTEM FROZEN; HARNESS/THERMAL VERIFICATION REQUIRED",
+                  "Mates the source's 39-01-2060-equivalent receptacle. Use six individual 16 AWG copper conductors, one per contact, and Molex tool 63819-0900. Pins 1-3 are +12 V and 4-6 are bonded 0 V. Do not hot-plug or use current sharing as a safety assumption.",
+                  "https://www.molex.com/en-us/products/part-detail/39012066",
+                  "Molex 5559 and 44478 series data accessed 2026-08-06; PS-44476-001 rev D dated 2003-06-12; ATS-638190900 rev H dated 2015-08-28. Six-contact 16 AWG HCS project-side screen is 21 A / 3 = 7 A per contact versus the published 11 A HCS guideline. The adapter-side contact construction and real current division are not published, so received-harness thermal, crimp and current-division tests remain mandatory.",
+                  position=(210, 82), width=78),
         Component("PSU2", "Mean Well GST40A24-P1J, 24 V 1.67 A 40 W",
                   [pn("PS24A", "P1J-C", "CENTER +24V", "SAFETY_24V_RAW", "right"),
                    pn("PS24A", "P1J-S", "SLEEVE 0V", "SAFETY_0V", "right"),
@@ -308,10 +311,14 @@ def sheets() -> list[Sheet]:
     s5 = Sheet(5, "05_watchdog_control.kicad_sch", "Independent watchdog controller and two relay drivers",
                "Ordinary controller/relays provide diagnostics and restart forcing but receive no safety integrity credit by assertion.")
     s5.components = [
-        Component("DC1", "Dedicated 24 V to 5 V watchdog supply",
-                  [pn("DC1", "TBD-IN+", "24V IN", "SAFETY_24V", "left"), pn("DC1", "TBD-IN-", "0V IN", "SAFETY_0V", "left"),
-                   pn("DC1", "TBD-OUT+", "5V OUT", "WD_5V", "right"), pn("DC1", "TBD-OUT-", "0V OUT", "SAFETY_0V", "right")],
-                  "SELECTION REQUIRED", "Select an exact non-isolated converter, protection and brownout behavior. V3 models watchdog 0V as SAFETY_0V; changing isolation requires a new driver/interface design.", position=(65, 80), width=82),
+        Component("DC1", "TRACO POWER TSR 1-2450, 24 V to 5 V 1 A non-isolated",
+                  [pn("DC1", "1", "+VIN", "SAFETY_24V", "left"),
+                   pn("DC1", "2", "GND", "SAFETY_0V", "left"),
+                   pn("DC1", "3", "+VOUT 5V", "WD_5V", "right")],
+                  "PROPOSED - ORDER CODE/PINOUT FROZEN; BROWNOUT/EMC/THERMAL VERIFICATION REQUIRED",
+                  "Pin 1 +Vin, pin 2 common GND, pin 3 +Vout. Non-isolated by design; changing isolation requires a new driver/interface and grounding review. Published input range is 6.5-36 VDC; external capacitance is not required below 32 V, but branch protection, load budget, startup, brownout, conducted/radiated emissions and enclosure thermal tests remain open.",
+                  "https://www.tracopower.com/tsr1-datasheet",
+                  "TRACO POWER TSR 1 Series datasheet dated 2024-02-07, accessed 2026-08-06.", position=(65, 80), width=82),
         Component("ISO1", "Heartbeat isolation/interface",
                   [pn("ISO1", "TBD-IN", "PI HEARTBEAT", "PI_HEARTBEAT", "left"), pn("ISO1", "TBD-CG", "COMPUTE GND", "COMPUTE_0V", "left"),
                    pn("ISO1", "TBD-OUT", "WD HEARTBEAT", "WD_HEARTBEAT", "right"), pn("ISO1", "TBD-WG", "WD GND", "SAFETY_0V", "right")],

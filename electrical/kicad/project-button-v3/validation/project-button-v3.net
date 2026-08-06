@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-06T19:13:48")
+		(date "2026-08-06T19:23:14")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P0.6")
+			(name "REVISION") "V3-P0.7")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,7 +15,7 @@
 			(title_block
 				(title "Project Button HR-V0 Electrical V3 index")
 				(company "Project Button")
-				(rev "V3-P0.6")
+				(rev "V3-P0.7")
 				(date "2026-08-06")
 				(source "project-button-v3.kicad_sch")
 				(comment
@@ -63,7 +63,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 01")
 				(company "Project Button")
-				(rev "V3-P0.6")
+				(rev "V3-P0.7")
 				(date "2026-08-06")
 				(source "01_external_sources.kicad_sch")
 				(comment
@@ -111,7 +111,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 02")
 				(company "Project Button")
-				(rev "V3-P0.6")
+				(rev "V3-P0.7")
 				(date "2026-08-06")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
@@ -159,7 +159,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 03")
 				(company "Project Button")
-				(rev "V3-P0.6")
+				(rev "V3-P0.7")
 				(date "2026-08-06")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
@@ -207,7 +207,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 04")
 				(company "Project Button")
-				(rev "V3-P0.6")
+				(rev "V3-P0.7")
 				(date "2026-08-06")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
@@ -255,7 +255,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 05")
 				(company "Project Button")
-				(rev "V3-P0.6")
+				(rev "V3-P0.7")
 				(date "2026-08-06")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
@@ -303,7 +303,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 06")
 				(company "Project Button")
-				(rev "V3-P0.6")
+				(rev "V3-P0.7")
 				(date "2026-08-06")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
@@ -351,7 +351,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 07")
 				(company "Project Button")
-				(rev "V3-P0.6")
+				(rev "V3-P0.7")
 				(date "2026-08-06")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
@@ -399,7 +399,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 08")
 				(company "Project Button")
-				(rev "V3-P0.6")
+				(rev "V3-P0.7")
 				(date "2026-08-06")
 				(source "08_watchdog_feedback_interface.kicad_sch")
 				(comment
@@ -447,7 +447,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 09")
 				(company "Project Button")
-				(rev "V3-P0.6")
+				(rev "V3-P0.7")
 				(date "2026-08-06")
 				(source "09_compute_and_control_terminals.kicad_sch")
 				(comment
@@ -495,7 +495,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 10")
 				(company "Project Button")
-				(rev "V3-P0.6")
+				(rev "V3-P0.7")
 				(date "2026-08-06")
 				(source "10_actuator_interfaces.kicad_sch")
 				(comment
@@ -540,40 +540,40 @@
 	(components
 		(comp
 			(ref "JA1")
-			(value "GST280A C6P mating connector and contacts")
-			(description "Freeze housing, contacts, wire range, crimp tooling, current/temperature derating and retention from the exact manufacturer system.")
+			(value "Molex 39012066 housing; 6x 444783112 HCS male contacts; 16 AWG")
+			(datasheet "https://www.molex.com/en-us/products/part-detail/39012066")
+			(description "Mates the source's 39-01-2060-equivalent receptacle. Use six individual 16 AWG copper conductors, one per contact, and Molex tool 63819-0900. Pins 1-3 are +12 V and 4-6 are bonded 0 V. Do not hot-plug or use current sharing as a safety assumption.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - CONNECTOR SYSTEM FROZEN; HARNESS/THERMAL VERIFICATION REQUIRED")
 				(field
-					(name "Evidence") "The adapter document names a Molex 39-01-2060-equivalent plug but does not release the project mating harness.")
+					(name "Evidence") "Molex 5559 and 44478 series data accessed 2026-08-06; PS-44476-001 rev D dated 2003-06-12; ATS-638190900 rev H dated 2015-08-28. Six-contact 16 AWG HCS project-side screen is 21 A / 3 = 7 A per contact versus the published 11 A HCS guideline. The adapter-side contact construction and real current division are not published, so received-harness thermal, crimp and current-division tests remain mandatory.")
 				(field
-					(name "Display") "GST280A C6P mating connector and contacts")
+					(name "Display") "Molex 39012066 housing; 6x 444783112 HCS male contacts; 16 AWG")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://www.molex.com/en-us/products/part-detail/39012066")
 				(field
-					(name "Description") "Freeze housing, contacts, wire range, crimp tooling, current/temperature derating and retention from the exact manufacturer system.")
+					(name "Description") "Mates the source's 39-01-2060-equivalent receptacle. Use six individual 16 AWG copper conductors, one per contact, and Molex tool 63819-0900. Pins 1-3 are +12 V and 4-6 are bonded 0 V. Do not hot-plug or use current sharing as a safety assumption.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "JA1")
-				(description "Freeze housing, contacts, wire range, crimp tooling, current/temperature derating and retention from the exact manufacturer system.")
+				(description "Mates the source's 39-01-2060-equivalent receptacle. Use six individual 16 AWG copper conductors, one per contact, and Molex tool 63819-0900. Pins 1-3 are +12 V and 4-6 are bonded 0 V. Do not hot-plug or use current sharing as a safety assumption.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED")
+				(value "PROPOSED - CONNECTOR SYSTEM FROZEN; HARNESS/THERMAL VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "The adapter document names a Molex 39-01-2060-equivalent plug but does not release the project mating harness.")
+				(value "Molex 5559 and 44478 series data accessed 2026-08-06; PS-44476-001 rev D dated 2003-06-12; ATS-638190900 rev H dated 2015-08-28. Six-contact 16 AWG HCS project-side screen is 21 A / 3 = 7 A per contact versus the published 11 A HCS guideline. The adapter-side contact construction and real current division are not published, so received-harness thermal, crimp and current-division tests remain mandatory.")
 			)
 			(property
 				(name "Display")
-				(value "GST280A C6P mating connector and contacts")
+				(value "Molex 39012066 housing; 6x 444783112 HCS male contacts; 16 AWG")
 			)
 			(property
 				(name "Sheetname")
@@ -2624,41 +2624,40 @@
 		)
 		(comp
 			(ref "DC1")
-			(value "Dedicated 24 V to 5 V watchdog supply")
-			(description "Select an exact non-isolated converter, protection and brownout behavior. V3 models watchdog 0V as SAFETY_0V; changing isolation requires a new driver/interface design.")
+			(value "TRACO POWER TSR 1-2450, 24 V to 5 V 1 A non-isolated")
+			(datasheet "https://www.tracopower.com/tsr1-datasheet")
+			(description "Pin 1 +Vin, pin 2 common GND, pin 3 +Vout. Non-isolated by design; changing isolation requires a new driver/interface and grounding review. Published input range is 6.5-36 VDC; external capacitance is not required below 32 V, but branch protection, load budget, startup, brownout, conducted/radiated emissions and enclosure thermal tests remain open.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - ORDER CODE/PINOUT FROZEN; BROWNOUT/EMC/THERMAL VERIFICATION REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "TRACO POWER TSR 1 Series datasheet dated 2024-02-07, accessed 2026-08-06.")
 				(field
-					(name "Display") "Dedicated 24 V to 5 V watchdog supply")
+					(name "Display") "TRACO POWER TSR 1-2450, 24 V to 5 V 1 A non-isolated")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://www.tracopower.com/tsr1-datasheet")
 				(field
-					(name "Description") "Select an exact non-isolated converter, protection and brownout behavior. V3 models watchdog 0V as SAFETY_0V; changing isolation requires a new driver/interface design.")
+					(name "Description") "Pin 1 +Vin, pin 2 common GND, pin 3 +Vout. Non-isolated by design; changing isolation requires a new driver/interface and grounding review. Published input range is 6.5-36 VDC; external capacitance is not required below 32 V, but branch protection, load budget, startup, brownout, conducted/radiated emissions and enclosure thermal tests remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "DC1")
-				(description "Select an exact non-isolated converter, protection and brownout behavior. V3 models watchdog 0V as SAFETY_0V; changing isolation requires a new driver/interface design.")
+				(description "Pin 1 +Vin, pin 2 common GND, pin 3 +Vout. Non-isolated by design; changing isolation requires a new driver/interface and grounding review. Published input range is 6.5-36 VDC; external capacitance is not required below 32 V, but branch protection, load budget, startup, brownout, conducted/radiated emissions and enclosure thermal tests remain open.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED")
+				(value "PROPOSED - ORDER CODE/PINOUT FROZEN; BROWNOUT/EMC/THERMAL VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "TRACO POWER TSR 1 Series datasheet dated 2024-02-07, accessed 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "Dedicated 24 V to 5 V watchdog supply")
+				(value "TRACO POWER TSR 1-2450, 24 V to 5 V 1 A non-isolated")
 			)
 			(property
 				(name "Sheetname")
@@ -2678,16 +2677,13 @@
 					(name "A")
 					(pins
 						(pin
-							(num "TBD-IN-")
+							(num "2")
 						)
 						(pin
-							(num "TBD-IN+")
+							(num "1")
 						)
 						(pin
-							(num "TBD-OUT-")
-						)
-						(pin
-							(num "TBD-OUT+")
+							(num "3")
 						)
 					)
 				)
@@ -4616,47 +4612,41 @@
 		(libpart
 			(lib "PBV3")
 			(part "DC1")
-			(description "Select an exact non-isolated converter, protection and brownout behavior. V3 models watchdog 0V as SAFETY_0V; changing isolation requires a new driver/interface design.")
+			(description "Pin 1 +Vin, pin 2 common GND, pin 3 +Vout. Non-isolated by design; changing isolation requires a new driver/interface and grounding review. Published input range is 6.5-36 VDC; external capacitance is not required below 32 V, but branch protection, load budget, startup, brownout, conducted/radiated emissions and enclosure thermal tests remain open.")
+			(docs "https://www.tracopower.com/tsr1-datasheet")
 			(fields
 				(field
 					(name "Reference") "DC1")
 				(field
-					(name "Value") "Dedicated 24 V to 5 V watchdog supply")
+					(name "Value") "TRACO POWER TSR 1-2450, 24 V to 5 V 1 A non-isolated")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://www.tracopower.com/tsr1-datasheet")
 				(field
-					(name "Description") "Select an exact non-isolated converter, protection and brownout behavior. V3 models watchdog 0V as SAFETY_0V; changing isolation requires a new driver/interface design.")
+					(name "Description") "Pin 1 +Vin, pin 2 common GND, pin 3 +Vout. Non-isolated by design; changing isolation requires a new driver/interface and grounding review. Published input range is 6.5-36 VDC; external capacitance is not required below 32 V, but branch protection, load budget, startup, brownout, conducted/radiated emissions and enclosure thermal tests remain open.")
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - ORDER CODE/PINOUT FROZEN; BROWNOUT/EMC/THERMAL VERIFICATION REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "TRACO POWER TSR 1 Series datasheet dated 2024-02-07, accessed 2026-08-06.")
 				(field
-					(name "Display") "Dedicated 24 V to 5 V watchdog supply")
+					(name "Display") "TRACO POWER TSR 1-2450, 24 V to 5 V 1 A non-isolated")
 			)
 			(pins
 				(pin
-					(num "TBD-IN+")
-					(name "24V_IN")
+					(num "1")
+					(name "+VIN")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-IN-")
-					(name "0V_IN")
+					(num "2")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-OUT+")
-					(name "5V_OUT")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-OUT-")
-					(name "0V_OUT")
+					(num "3")
+					(name "+VOUT_5V")
 					(type "passive")
 				)
 			)
@@ -5301,26 +5291,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "JA1")
-			(description "Freeze housing, contacts, wire range, crimp tooling, current/temperature derating and retention from the exact manufacturer system.")
+			(description "Mates the source's 39-01-2060-equivalent receptacle. Use six individual 16 AWG copper conductors, one per contact, and Molex tool 63819-0900. Pins 1-3 are +12 V and 4-6 are bonded 0 V. Do not hot-plug or use current sharing as a safety assumption.")
+			(docs "https://www.molex.com/en-us/products/part-detail/39012066")
 			(fields
 				(field
 					(name "Reference") "JA1")
 				(field
-					(name "Value") "GST280A C6P mating connector and contacts")
+					(name "Value") "Molex 39012066 housing; 6x 444783112 HCS male contacts; 16 AWG")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://www.molex.com/en-us/products/part-detail/39012066")
 				(field
-					(name "Description") "Freeze housing, contacts, wire range, crimp tooling, current/temperature derating and retention from the exact manufacturer system.")
+					(name "Description") "Mates the source's 39-01-2060-equivalent receptacle. Use six individual 16 AWG copper conductors, one per contact, and Molex tool 63819-0900. Pins 1-3 are +12 V and 4-6 are bonded 0 V. Do not hot-plug or use current sharing as a safety assumption.")
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - CONNECTOR SYSTEM FROZEN; HARNESS/THERMAL VERIFICATION REQUIRED")
 				(field
-					(name "Evidence") "The adapter document names a Molex 39-01-2060-equivalent plug but does not release the project mating harness.")
+					(name "Evidence") "Molex 5559 and 44478 series data accessed 2026-08-06; PS-44476-001 rev D dated 2003-06-12; ATS-638190900 rev H dated 2015-08-28. Six-contact 16 AWG HCS project-side screen is 21 A / 3 = 7 A per contact versus the published 11 A HCS guideline. The adapter-side contact construction and real current division are not published, so received-harness thermal, crimp and current-division tests remain mandatory.")
 				(field
-					(name "Display") "GST280A C6P mating connector and contacts")
+					(name "Display") "Molex 39012066 housing; 6x 444783112 HCS male contacts; 16 AWG")
 			)
 			(pins
 				(pin
@@ -8008,14 +7998,8 @@
 			)
 			(node
 				(ref "DC1")
-				(pin "TBD-IN-")
-				(pinfunction "0V_IN_TBD-IN-")
-				(pintype "passive")
-			)
-			(node
-				(ref "DC1")
-				(pin "TBD-OUT-")
-				(pinfunction "0V_OUT_TBD-OUT-")
+				(pin "2")
+				(pinfunction "GND_2")
 				(pintype "passive")
 			)
 			(node
@@ -8157,8 +8141,8 @@
 			(class "Default")
 			(node
 				(ref "DC1")
-				(pin "TBD-IN+")
-				(pinfunction "24V_IN_TBD-IN+")
+				(pin "1")
+				(pinfunction "+VIN_1")
 				(pintype "passive")
 			)
 			(node
@@ -8782,8 +8766,8 @@
 			(class "Default")
 			(node
 				(ref "DC1")
-				(pin "TBD-OUT+")
-				(pinfunction "5V_OUT_TBD-OUT+")
+				(pin "3")
+				(pinfunction "+VOUT_5V_3")
 				(pintype "passive")
 			)
 			(node

@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: native connected design candidate `V3-P0.6`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` is retained as the historical R16 configuration; P0.2 is the historical R17 restart-chain correction; P0.3 is the historical R18 watchdog voltage-boundary correction; P0.4 replaces its opaque feedback blocks with a calculated ISO1212DBQ circuit; P0.5 freezes distinct black RESET and green ARM operator order codes and the official Raspberry Pi US regional model; P0.6 freezes the XW E-stop's two physical NC contact positions while retaining received verification and all remaining open selections.
+Status: native connected design candidate `V3-P0.7`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` is retained as the historical R16 configuration; P0.2 is the historical R17 restart-chain correction; P0.3 is the historical R18 watchdog voltage-boundary correction; P0.4 replaces its opaque feedback blocks with a calculated ISO1212DBQ circuit; P0.5 freezes distinct black RESET and green ARM operator order codes and the official Raspberry Pi US regional model; P0.6 freezes the XW E-stop's two physical NC contact positions; P0.7 freezes exact project-side JA1 connector-system and DC1 regulator candidates while retaining application and physical verification.
 
 - Native source: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Generator: `tools/generate_hr_v0_electrical_v3.py`
@@ -21,13 +21,15 @@ The candidate also removes custom mains wiring from HR-V0. All project-built wir
 
 | Rail | Candidate | Manufacturer facts used | Release state |
 |---|---|---|---|
-| actuator 12 V | Mean Well `GST280A12-C6P` | 12 V, 21 A, 252 W; IEC C14 inlet; enclosed adapter; `-V` connected to AC protective earth; standard C6P output is a Molex 39-01-2060-equivalent six-position plug with pins 1-3 `+Vo` and 4-6 `-Vo`; file `GST280A-SPEC 2026-04-03` | candidate only; mating connector/contact order codes, source reverse-current behavior, regeneration, branch protection, and received-unit tests remain open |
+| actuator 12 V | Mean Well `GST280A12-C6P` with proposed project-side Molex `39012066` housing and six `444783112` HCS male contacts | 12 V, 21 A, 252 W; IEC C14 inlet; enclosed adapter; `-V` connected to AC protective earth; C6P output is a Molex 39-01-2060-equivalent receptacle with pins 1-3 `+Vo` and 4-6 `-Vo`; project contacts are 16 AWG HCS candidates with an 11 A/contact manufacturer guideline for 4-6 circuits | candidate only; source-side contact construction, actual current division, exact wire/length, crimp/retention, strain relief, reverse-current behavior, regeneration, branch protection, thermal evidence, and received-unit tests remain open |
 | safety/control 24 V | Mean Well `GST40A24-P1J` | 24 V, 1.67 A, 40 W; class I IEC C14 adapter; center-positive 2.1 x 5.5 mm plug; `-V` is not connected to AC protective earth; file `GST40A-SPEC 2026-04-03` | candidate only; locking DC connector/interface, load/inrush budget, branch protection, and received-unit tests remain open |
 | compute | official `Raspberry Pi 27W USB-C Power Supply US` | independent compute power remains present for diagnostics when actuator energy is removed; official brief `RP-008245-DS-1` identifies the US/Canada Type-A model, 5.1 V / 5 A profile, 1.2 m 17 AWG fixed cable, and production through at least January 2035 | the primary portal lists twelve family SKUs but does not map them to region/color; exact SKU, color, mechanical retention, site receptacle, and received-unit test remain open |
 
 The three external AC inputs shall use site-appropriate listed cords/receptacles and branch protection. No project-built mains splitter, inlet, disconnect, fuse holder, exposed terminal, or internal AC wiring is permitted in this candidate. This change can remove the current internal-mains sheet from the HR-V0 implementation, but it does not close site jurisdiction, adapter suitability, EMC, protective-earth, or inspection obligations.
 
 The `GST280A12-C6P` bonds actuator `0 V` to incoming protective earth inside the adapter. Therefore V3 shall not add `SP1` or any second 0 V/PE bond. Any robot-frame or shield connection must be reviewed against this fixed source bond and checked for unintended parallel paths. Replacing the source changes that conclusion and requires a new bonding review.
+
+P0.7 allocates `JA1` pins 1-3 to three separate `ACT_12V_RAW` conductors and pins 4-6 to three separate `ACT_0V_PE_BONDED` conductors. The idealized screen is `21 A / 3 = 7 A/contact` versus the project-side HCS 11 A guideline, but neither equal sharing nor source-side contact capacity is assumed. `INSPECT-ELEC-004` requires received-part identity, controlled crimping, destructive pull samples, retention/continuity/polarity checks, six-leg current measurement and stabilized thermal evidence in the released arrangement before this interface can be released.
 
 ## Corrected reset, watchdog, ARM, and EDM topology
 
@@ -70,7 +72,7 @@ Any E-stop opening, watchdog-channel opening, SR1 dropout, channel discrepancy, 
 
 The current RP2040-class watchdog is not safety-rated. V3 replaces the single KWD1 contact with two independently driven, normally-open relay channels and routes one through each SR1 input return. This makes physical RESET part of the nominal recovery after heartbeat loss; SRA1 then still requires the later physical ARM. The final parts, drivers, feedback contacts, startup tests, brownout behavior, diagnostic coverage, common-cause controls, and firmware remain `SELECTION REQUIRED`.
 
-The modeled relay-coil path is `SAFETY_24V -> relay coil -> default-off low-side driver -> SAFETY_0V`. The proposed DC/DC converter is therefore non-isolated and the Pico/driver reference is `SAFETY_0V`; selecting an isolated converter would require isolated output drivers and a fresh grounding/fault review. The official Phoenix product PDF freezes the candidate terminal designations `A1/A2`, `11-12-14`, and `21-22-24`, while received continuity and polarity evidence remain mandatory. P0.4 uses `11-14` in the SR1 return and `21-22` for a separate 24 V NC diagnostic feed. The latter terminates at the `UFB1` ISO1212DBQ field-input network and is prohibited from reaching a Pico GPIO directly.
+The modeled relay-coil path is `SAFETY_24V -> relay coil -> default-off low-side driver -> SAFETY_0V`. P0.7 proposes the non-isolated TRACO POWER `TSR 1-2450`: pin 1 `+VIN` to `SAFETY_24V`, pin 2 `GND` to `SAFETY_0V`, and pin 3 `+VOUT` to `WD_5V`. Its 6.5-36 V input and 5 V/1 A output support a candidate, not an application release. Branch protection, load budget, startup, slow-ramp brownout, fast dropout/recovery, stuck/overvoltage faults, EMC and enclosure thermal behavior remain open under `INSPECT-ELEC-004`. Selecting an isolated converter would require isolated output drivers and a fresh grounding/fault review. The official Phoenix product PDF freezes the candidate terminal designations `A1/A2`, `11-12-14`, and `21-22-24`, while received continuity and polarity evidence remain mandatory. P0.4 uses `11-14` in the SR1 return and `21-22` for a separate 24 V NC diagnostic feed. The latter terminates at the `UFB1` ISO1212DBQ field-input network and is prohibited from reaching a Pico GPIO directly.
 
 The feedback sheet uses TI's exact DBQ pinout and Type-3 values: 1 kOhm `RTHR` from module input to `SENSE`, 562 Ohm `RSENSE` between `SENSE` and `IN`, and 10 nF `CIN` from `SENSE` to `FGND` per channel. A calculated 2.70 kOhm 1%, 0.5 W parallel wetting load raises the screened minimum Phoenix contact current above its documented 10 mA minimum at the Mean Well rail minimum. Outputs use 1 kOhm series resistors and 10 kOhm pulldowns before the Pico. `GND1`, `FGND1`, and `FGND2` all return to `SAFETY_0V`, so no galvanic-isolation or safety-integrity credit is claimed. See `docs/hr-v0-watchdog-feedback-p0.1.md`. Exact passive order codes, PCB, terminals, EMC, thermal, brownout, fault injection and HIL remain open.
 
@@ -113,19 +115,19 @@ Before this candidate can replace V2.1:
 
 ## Native candidate validation record
 
-The generated `V3-P0.6` candidate currently contains:
+The generated `V3-P0.7` candidate currently contains:
 
 - one root index plus ten focused child sheets;
-- 55 component blocks and 241 modeled terminals;
+- 55 component blocks and 240 modeled terminals;
 - 87 native nets: 62 named connected nets plus 25 deliberate auto-generated unconnected nets;
-- 216 unique wire labels synchronized to `wire-number-table.csv`;
+- 215 unique wire labels synchronized to `wire-number-table.csv`;
 - 53 nonzero-quantity V3 BOM records;
 - 43 unresolved component/interface records; and
-- 60 terminal designations deliberately retained as `TBD-*`.
+- 56 terminal designations deliberately retained as `TBD-*`.
 
-KiCad 10.0.5 parsed the root and all ten children, exported the native netlist, an eleven-page A3 PDF, and eleven SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 55 native component references and all 241 exported `(reference, terminal, net)` nodes against the generated schedules, including the 25 deliberate no-connect terminals. It also freezes every ISO1212 pin and supporting-network connection. During P0.4 development this review caught and corrected an initially misdrawn `RSENSE` return: TI requires `RSENSE` between `SENSE` and `IN`, not from `IN` to field ground. Clean ERC did not detect that application error.
+KiCad 10.0.5 parsed the root and all ten children, exported the native netlist, an eleven-page A3 PDF, and eleven SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 55 native component references and all 240 exported `(reference, terminal, net)` nodes against the generated schedules, including the 25 deliberate no-connect terminals. It also freezes every ISO1212 pin and supporting-network connection. During P0.4 development this review caught and corrected an initially misdrawn `RSENSE` return: TI requires `RSENSE` between `SENSE` and `IN`, not from `IN` to field ground. Clean ERC did not detect that application error.
 
-The export is rendered at 150 dpi and visually checked after each material layout change. The earlier audit corrected the watchdog low-side coil path, made the shared TTL ground explicit, and replaced duplicate per-component wire labels. P0.4 adds the pin-level feedback sheet and 216 synchronized wire labels; P0.5 corrects RESET/ARM operator identity and records the official compute-supply regional model without inferring its unmapped SKU; P0.6 replaces four E-stop `TBD-*` terminals with controlled right/left contact-position designators. Page-level visual QA is part of the recorded validation for this candidate.
+The export is rendered at 150 dpi and visually checked after each material layout change. The earlier audit corrected the watchdog low-side coil path, made the shared TTL ground explicit, and replaced duplicate per-component wire labels. P0.4 adds the pin-level feedback sheet; P0.5 corrects RESET/ARM operator identity and records the official compute-supply regional model without inferring its unmapped SKU; P0.6 replaces four E-stop `TBD-*` terminals with controlled right/left contact-position designators; P0.7 freezes JA1/DC1 candidates and leaves 215 synchronized wire labels. Page-level visual QA is part of the recorded validation for this candidate.
 
 The KiCad CLI logs Windows registry-access messages for `HKCU\Software\kicad-cli` in this restricted execution environment. Every command still returned exit code 0 and produced the expected artifact; the messages are retained in `validation/kicad-cli.log` rather than hidden.
 

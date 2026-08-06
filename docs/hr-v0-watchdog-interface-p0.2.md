@@ -8,7 +8,7 @@ Firmware configuration: `HR-V0-WD-P0.2`
 
 Date: 2026-08-06
 
-Historical status: this R18 voltage-boundary correction is retained for traceability. Electrical V3-P0.6 and `docs/hr-v0-watchdog-feedback-p0.1.md` supersede the opaque `IFB1`/`IFB2` design placeholders with a calculated ISO1212DBQ candidate and retain the physical-validation gates. The PCB and physical-validation gates remain open.
+Historical status: this R18 voltage-boundary correction is retained for traceability. Electrical V3-P0.7 and `docs/hr-v0-watchdog-feedback-p0.1.md` supersede the opaque `IFB1`/`IFB2` design placeholders with a calculated ISO1212DBQ candidate and retain the physical-validation gates. The PCB and physical-validation gates remain open.
 
 ## Correction being controlled
 

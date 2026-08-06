@@ -1,6 +1,6 @@
 sheet,reference,value,quantity,status,datasheet,evidence
 01_external_sources.kicad_sch,PSA1,"Mean Well GST280A12-C6P, 12 V 21 A 252 W",1,PROPOSED - SOURCE APPLICATION REVIEW OPEN,https://www.meanwell.com/Upload/PDF/GST280A/GST280A-SPEC.PDF,GST280A-SPEC 2026-04-03
-01_external_sources.kicad_sch,JA1,GST280A C6P mating connector and contacts,1,SELECTION REQUIRED,,The adapter document names a Molex 39-01-2060-equivalent plug but does not release the project mating harness.
+01_external_sources.kicad_sch,JA1,Molex 39012066 housing; 6x 444783112 HCS male contacts; 16 AWG,1,PROPOSED - CONNECTOR SYSTEM FROZEN; HARNESS/THERMAL VERIFICATION REQUIRED,https://www.molex.com/en-us/products/part-detail/39012066,"Molex 5559 and 44478 series data accessed 2026-08-06; PS-44476-001 rev D dated 2003-06-12; ATS-638190900 rev H dated 2015-08-28. Six-contact 16 AWG HCS project-side screen is 21 A / 3 = 7 A per contact versus the published 11 A HCS guideline. The adapter-side contact construction and real current division are not published, so received-harness thermal, crimp and current-division tests remain mandatory."
 01_external_sources.kicad_sch,PSU2,"Mean Well GST40A24-P1J, 24 V 1.67 A 40 W",1,PROPOSED - LOCKING DC INTERFACE OPEN,https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF,GST40A-SPEC 2026-04-03
 01_external_sources.kicad_sch,JC1,Locking 24 V DC inlet/interface,1,SELECTION REQUIRED,,
 01_external_sources.kicad_sch,PSU3,Raspberry Pi 27W USB-C Power Supply US; color/SKU unresolved,1,SELECTION REQUIRED - US SKU / COLOR / RETENTION,https://pip-assets.raspberrypi.com/categories/898-raspberry-pi-27w-usb-c-power-supply,"Raspberry Pi product brief RP-008245-DS-1, published October 2023 and portal-updated 2025-10-06; rechecked 2026-08-06."
@@ -25,7 +25,7 @@ sheet,reference,value,quantity,status,datasheet,evidence
 06_branches_and_injection.kicad_sch,INJ2,J2 data/power injection module,1,DESIGN REQUIRED,,
 06_branches_and_injection.kicad_sch,F3,Gripper branch protection,1,SELECTION REQUIRED,,
 06_branches_and_injection.kicad_sch,INJ3,Gripper data/power injection module,1,DESIGN REQUIRED,,
-07_watchdog_control.kicad_sch,DC1,Dedicated 24 V to 5 V watchdog supply,1,SELECTION REQUIRED,,
+07_watchdog_control.kicad_sch,DC1,"TRACO POWER TSR 1-2450, 24 V to 5 V 1 A non-isolated",1,PROPOSED - ORDER CODE/PINOUT FROZEN; BROWNOUT/EMC/THERMAL VERIFICATION REQUIRED,https://www.tracopower.com/tsr1-datasheet,"TRACO POWER TSR 1 Series datasheet dated 2024-02-07, accessed 2026-08-06."
 07_watchdog_control.kicad_sch,ISO1,Heartbeat isolation/interface,1,SELECTION REQUIRED,,
 07_watchdog_control.kicad_sch,WDCTRL1,"Raspberry Pi Pico 1, order SC0915 / RP2040",1,PROPOSED - GPIO FROZEN; PLATFORM RELEASE OPEN,https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf,Official Pico datasheet and current pinout documentation rechecked 2026-08-06.
 07_watchdog_control.kicad_sch,Q1,Watchdog relay channel 1 low-side driver,1,SELECTION REQUIRED,,
