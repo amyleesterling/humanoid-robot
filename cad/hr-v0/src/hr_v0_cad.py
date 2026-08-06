@@ -10,6 +10,7 @@ manufacturer STEP files remain unmodified under cad/vendor/robotis.
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -22,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "generated"
 PARTS = OUT / "parts"
 DRAWINGS = OUT / "drawings"
+FIT_COUPONS = OUT / "fit-coupons"
 
 REVISION = "HR-V0-MECH-R0.1-PRELIMINARY"
 MATERIAL = "6061-T6 aluminum"
@@ -32,6 +34,12 @@ LINK_WIDTH_MM = 44.0
 LINK_THICKNESS_MM = 4.75  # nominal 3/16 in sheet; supplier tolerance applies
 FRAME_PCD_MM = 22.0
 FRAME_HOLE_MM = 2.70  # candidate M2.5 normal clearance; verify supplier/process
+
+FIT_COUPON_PART = "MV0-FC01"
+FIT_COUPON_OUTER_D_MM = 38.0
+FIT_COUPON_CENTER_CLEARANCE_MM = 14.0
+FIT_COUPON_THICKNESS_MM = 2.0
+SOURCE_MANIFEST = OUT / "SOURCE-MANIFEST.csv"
 
 ADAPTER_X_MM = 90.0
 ADAPTER_Z_MM = 110.0
@@ -72,6 +80,17 @@ def link_plate() -> cq.Workplane:
     )
     holes = pcd_points(0.0, 0.0) + pcd_points(LINK_CENTERS_MM, 0.0)
     return profile.extrude(LINK_THICKNESS_MM).faces(">Y").workplane().pushPoints(holes).hole(FRAME_HOLE_MM)
+
+
+def robotis_pcd22_fit_coupon() -> cq.Workplane:
+    """Non-structural coupon for checking the received FR13 PCD22 interface."""
+    coupon = (
+        cq.Workplane("XZ")
+        .circle(FIT_COUPON_OUTER_D_MM / 2.0)
+        .circle(FIT_COUPON_CENTER_CLEARANCE_MM / 2.0)
+        .extrude(FIT_COUPON_THICKNESS_MM)
+    )
+    return coupon.faces(">Y").workplane().pushPoints(pcd_points(0.0, 0.0)).hole(FRAME_HOLE_MM)
 
 
 def shoulder_adapter() -> cq.Workplane:
@@ -189,6 +208,98 @@ def write_svg_drawing(part_number: str, title: str, kind: str):
     (DRAWINGS / f"{part_number}_{kind}.svg").write_text(svg, encoding="utf-8")
 
 
+def export_fit_coupon(coupon: cq.Workplane) -> dict[str, object]:
+    """Export a non-structural PCD22 coupon and a calibrated 1:1 A4 overlay."""
+    stem = f"{FIT_COUPON_PART}_robotis_pcd22_fit_coupon"
+    exporters.export(coupon, str(FIT_COUPONS / f"{stem}.step"))
+    exporters.export(coupon, str(FIT_COUPONS / f"{stem}.stl"), tolerance=0.02, angularTolerance=0.1)
+    exporters.export(coupon.faces("<Y"), str(FIT_COUPONS / f"{stem}.dxf"))
+
+    cx, cy = 105.0, 82.0
+    hole_circles = "".join(
+        f'<circle cx="{cx + FRAME_PCD_MM/2*math.cos(2*math.pi*i/8):.3f}" '
+        f'cy="{cy + FRAME_PCD_MM/2*math.sin(2*math.pi*i/8):.3f}" r="{FRAME_HOLE_MM/2:.3f}" class="hole"/>'
+        for i in range(8)
+    )
+    overlay = f'''<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 210 297">
+      <style>
+        text {{ font-family: Arial, sans-serif; font-size: 5px; fill: #082554; }}
+        .title {{ font-size: 7px; font-weight: 700; }}
+        .warning {{ font-size: 5px; font-weight: 700; fill: #8a4b00; }}
+        .coupon {{ fill: none; stroke: #082554; stroke-width: 0.35; }}
+        .hole {{ fill: none; stroke: #b17700; stroke-width: 0.35; }}
+        .center {{ stroke: #0b72b9; stroke-width: 0.25; stroke-dasharray: 2 1; }}
+        .scale {{ stroke: #082554; stroke-width: 0.6; }}
+      </style>
+      <text x="15" y="15" class="title">{FIT_COUPON_PART} - ROBOTIS PCD22 FIT COUPON</text>
+      <text x="15" y="23" class="title">1:1 A4 OVERLAY</text>
+      <text x="15" y="32" class="warning">FIT CHECK ONLY - NOT A STRUCTURAL OR FABRICATION-RELEASED PART</text>
+      <text x="15" y="40">Print at ACTUAL SIZE / 100%. Disable Fit, Shrink, and Scale-to-page.</text>
+      <circle cx="{cx}" cy="{cy}" r="{FIT_COUPON_OUTER_D_MM/2:.3f}" class="coupon"/>
+      <circle cx="{cx}" cy="{cy}" r="{FIT_COUPON_CENTER_CLEARANCE_MM/2:.3f}" class="coupon"/>
+      {hole_circles}
+      <line x1="{cx-24}" y1="{cy}" x2="{cx+24}" y2="{cy}" class="center"/>
+      <line x1="{cx}" y1="{cy-24}" x2="{cx}" y2="{cy+24}" class="center"/>
+      <text x="15" y="116">8 x dia 2.70 candidate clearance holes on dia 22.00 PCD; 45 deg equal spacing.</text>
+      <text x="15" y="124">Manufacturer drawings call out 8 x dia 2.5 THRU on dia 22 PCD.</text>
+      <text x="15" y="132">Coupon OD 38.0; center clearance 14.0; coupon thickness 2.0 nominal.</text>
+      <text x="15" y="144">Verify against received FR13-H101K and FR13-S102K broad faces.</text>
+      <text x="15" y="152">Do not release metal holes from paper/CAD agreement alone. Record physical fit.</text>
+      <line x1="15" y1="174" x2="115" y2="174" class="scale"/>
+      <line x1="15" y1="170" x2="15" y2="178" class="scale"/>
+      <line x1="115" y1="170" x2="115" y2="178" class="scale"/>
+      <text x="15" y="186">X PRINT SCALE CHECK: 100.00 mm</text>
+      <text x="15" y="194">Record measured X before using the overlay.</text>
+      <line x1="155" y1="174" x2="155" y2="274" class="scale"/>
+      <line x1="151" y1="174" x2="159" y2="174" class="scale"/>
+      <line x1="151" y1="274" x2="159" y2="274" class="scale"/>
+      <text x="163" y="186">Y SCALE</text><text x="163" y="194">100.00 mm</text><text x="163" y="202">Record Y</text>
+      <text x="15" y="222">Source: ROBOTIS FR13-H101K and FR13-S102K drawings</text>
+      <text x="15" y="230">dated 2026/01/07. NONSCALE / FOR REFERENCE ONLY.</text>
+      <text x="15" y="240">Hashes and URLs: cad/vendor/robotis/vendor-manifest.csv</text>
+      <text x="15" y="286" class="warning">PRELIMINARY - PHYSICAL FIT AND TOLERANCE REVIEW REQUIRED</text>
+      <text x="15" y="294" class="warning">NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
+    </svg>'''
+    (FIT_COUPONS / f"{stem}_1to1_A4.svg").write_text(overlay, encoding="utf-8")
+    return {
+        "part_number": FIT_COUPON_PART,
+        "description": "ROBOTIS PCD22 non-structural fit coupon",
+        "revision": REVISION,
+        "outer_diameter_mm": FIT_COUPON_OUTER_D_MM,
+        "center_clearance_mm": FIT_COUPON_CENTER_CLEARANCE_MM,
+        "hole_count": 8,
+        "hole_diameter_mm": FRAME_HOLE_MM,
+        "pcd_mm": FRAME_PCD_MM,
+        "thickness_mm": FIT_COUPON_THICKNESS_MM,
+        "release_status": "FIT CHECK ONLY - PHYSICAL EVIDENCE REQUIRED",
+    }
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest().upper()
+
+
+def write_source_manifest() -> None:
+    """Hash every generated artifact except the self-referential manifest."""
+    rows = []
+    for path in sorted(OUT.rglob("*"), key=lambda candidate: candidate.as_posix().lower()):
+        if path.is_file() and path != SOURCE_MANIFEST:
+            rows.append({
+                "file": path.relative_to(OUT).as_posix(),
+                "sha256": sha256(path),
+                "revision": REVISION,
+                "status": "PRELIMINARY - NOT RELEASED FOR FABRICATION OR ENERGIZATION",
+            })
+    with SOURCE_MANIFEST.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=("file", "sha256", "revision", "status"))
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 def build_assembly(parts: dict[str, cq.Workplane]):
     assy = cq.Assembly(name="HR-V0_PRELIMINARY")
     # Base/column vendor envelopes. Origin: base centre, bench plane z=0.
@@ -217,11 +328,13 @@ def build_assembly(parts: dict[str, cq.Workplane]):
 def main():
     PARTS.mkdir(parents=True, exist_ok=True)
     DRAWINGS.mkdir(parents=True, exist_ok=True)
+    FIT_COUPONS.mkdir(parents=True, exist_ok=True)
     upper = link_plate()
     forearm = link_plate()
     adapter = shoulder_adapter()
     anchor_left = anchor_plate()
     anchor_right = anchor_plate()
+    fit_coupon = robotis_pcd22_fit_coupon()
     rows = [
         export_part("MV0-001", "upper_link_plate", upper, MATERIAL),
         export_part("MV0-002", "forearm_link_plate", forearm, MATERIAL),
@@ -236,6 +349,11 @@ def main():
         writer = csv.DictWriter(handle, fieldnames=rows[0].keys())
         writer.writeheader()
         writer.writerows(rows)
+    coupon_row = export_fit_coupon(fit_coupon)
+    with (FIT_COUPONS / "fit-coupons.csv").open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=coupon_row.keys())
+        writer.writeheader()
+        writer.writerow(coupon_row)
     manifest = {
         "revision": REVISION,
         "units": "mm",
@@ -246,11 +364,12 @@ def main():
             "link_thickness_mm": LINK_THICKNESS_MM,
             "robotis_frame_pcd_mm": FRAME_PCD_MM,
             "candidate_frame_hole_mm": FRAME_HOLE_MM,
+            "fit_coupon_mm": [FIT_COUPON_OUTER_D_MM, FIT_COUPON_CENTER_CLEARANCE_MM, FIT_COUPON_THICKNESS_MM],
             "adapter_mm": [ADAPTER_X_MM, ADAPTER_Z_MM, ADAPTER_T_MM],
             "anchor_mm": [ANCHOR_X_MM, ANCHOR_Z_MM, ANCHOR_T_MM],
         },
         "release_gates": [
-            "Overlay DXF against physical FR13-H101K and FR13-S102K fit-check coupons",
+            "Execute INSPECT-MECH-003 with MV0-FC01 against received FR13-H101K and FR13-S102K parts",
             "Resolve M2.5 fastener grade, engagement, torque and retention",
             "Resolve T-slot fasteners, torque, anti-rotation and bracket arrangement",
             "Survey actual bench and select anchor fasteners from substrate evidence",
@@ -260,6 +379,7 @@ def main():
     (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     build_assembly({"upper": upper, "forearm": forearm, "adapter": adapter,
                     "anchor_left": anchor_left, "anchor_right": anchor_right})
+    write_source_manifest()
 
 
 if __name__ == "__main__":

@@ -46,7 +46,7 @@ Using the manufacturer-published 80/20 40-4040 inertia of 13.787 cm⁴ and an al
 
 ## Release blockers
 
-1. Cut a cheap fit coupon and overlay it against purchased FR13-H101K and FR13-S102K parts. The candidate ⌀2.70 holes are not released until physical fit is recorded.
+1. The controlled `MV0-FC01` DXF/STEP/STL/1:1 overlay and `INSPECT-MECH-003` record template now exist. Cut the nonstructural coupon and execute the procedure against purchased FR13-H101K and FR13-S102K parts. The candidate 2.70 mm holes remain unreleased until physical fit, the exact gauge/fastener, process capability, and acceptance tolerances are recorded and reviewed.
 2. Select exact M2.5/M8 fasteners, engagement, torque, locking and inspection marks. The structural screen does not prove unknown fasteners.
 3. Add positive mechanical hard stops outside the software range and calculate/test their maximum-energy impact.
 4. Release the gripper mechanism, compliant pads, detachment retention and force/current characterization.

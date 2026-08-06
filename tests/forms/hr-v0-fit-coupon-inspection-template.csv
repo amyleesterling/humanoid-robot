@@ -1,0 +1,3 @@
+record_id,date,inspector,repo_commit,cad_revision,coupon_file,coupon_sha256,vendor_part,received_label,serial_or_lot,manufacturer_drawing_sha256,coupon_method,coupon_material,measuring_instrument,calibration_reference,measured_thickness_mm,scale_x_mm,scale_y_mm,hole_index,candidate_fastener_or_gauge,seats_flat,enters_without_force,measured_x_offset_mm,measured_y_offset_mm,photo_reference,notes,disposition
+NOT-EXECUTED,,,,HR-V0-MECH-R0.1-PRELIMINARY,MV0-FC01_robotis_pcd22_fit_coupon.dxf,,FR13-H101K,,,,,,,,,,,1,,,,,,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,HR-V0-MECH-R0.1-PRELIMINARY,MV0-FC01_robotis_pcd22_fit_coupon.dxf,,FR13-S102K,,,,,,,,,,,1,,,,,,,TEMPLATE ROW,NOT EXECUTED

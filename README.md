@@ -33,6 +33,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Mechanical concept and load model](docs/mechanical.md)
 - [HR-V0 native CAD and quote geometry](cad/hr-v0/README.md)
 - [HR-V0 Mechanical R0.1 preliminary baseline](docs/hr-v0-mechanical-r0.1.md)
+- [HR-V0 PCD22 fit-coupon procedure P0.1](docs/hr-v0-fit-coupon-procedure-p0.1.md)
 - [Electrical and safety architecture](docs/electrical.md)
 - [Safety-function requirements](docs/safety-functions.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
@@ -57,6 +58,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R17](docs/reviews/2026-08-06-sol-r12-post-r17-status.md)
 - [Sol R12 findings rechecked against R18](docs/reviews/2026-08-06-sol-r12-post-r18-status.md)
 - [Sol R12 findings rechecked against R19](docs/reviews/2026-08-06-sol-r12-post-r19-status.md)
+- [Sol R12 findings rechecked against R20](docs/reviews/2026-08-06-sol-r12-post-r20-status.md)
 - [Electrical V3-P0.4 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.1 independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
 - [Requirements](requirements/requirements.csv)
@@ -68,7 +70,7 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 
 ## Review history
 
-Nineteen review/control rounds are complete: R01-R19. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. Correction and disposition passes are recorded separately from independent reviews.
+Twenty review/control rounds are complete: R01-R20. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -91,6 +93,7 @@ Nineteen review/control rounds are complete: R01-R19. R11 Fable and R12 Sol are 
 | R17 | Restart-chain and firmware implementation candidate | Moved watchdog contacts into the two SR1 input returns, added fail-closed watchdog/supervisor source, 17 executable unit tests and a source manifest; compiled binaries and HIL remain open. |
 | R18 | Watchdog terminal and feedback-interface correction | Froze official Phoenix/Pico terminals, removed a modeled 24 V-to-GPIO path, and added explicit unreleased feedback-interface blocks as Electrical V3-P0.3. |
 | R19 | Watchdog feedback circuit correction | Replaced the opaque blocks with an exact ISO1212DBQ pinout and calculated threshold, wetting, filter, GPIO and decoupling networks as Electrical V3-P0.4; PCB, order codes and physical evidence remain open. |
+| R20 | Mechanical frame-interface evidence correction | Added a hashed `MV0-FC01` PCD22 coupon package, controlled 1:1 overlay, unpowered inspection procedure and record template; execution and production release remain open. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

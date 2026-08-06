@@ -2,7 +2,7 @@
 
 **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 
-Status: correction-stage feasibility model. Native HR-V0 R0.1 quote geometry, four custom-part neutral files, preliminary mass properties, and reproducible structural screens now exist; fit coupons, released drawings, complete mass closure, hard stops, guards, cable routing, gripper mechanics, bench anchors, proof tests, and mechanical release are not complete. See [the R0.1 mechanical baseline](hr-v0-mechanical-r0.1.md) and [R11 engineering calculations](r11-engineering-calculations.md).
+Status: correction-stage feasibility model. Native HR-V0 R0.1 quote geometry, four custom-part neutral files, preliminary mass properties, reproducible structural screens, and the controlled `MV0-FC01` PCD22 fit-coupon package now exist. The physical coupon inspection, released production tolerances/drawings, complete mass closure, hard stops, guards, cable routing, gripper mechanics, bench anchors, proof tests, and mechanical release are not complete. See [the R0.1 mechanical baseline](hr-v0-mechanical-r0.1.md), [fit-coupon procedure](hr-v0-fit-coupon-procedure-p0.1.md), and [R11 engineering calculations](r11-engineering-calculations.md).
 
 ## Geometry
 

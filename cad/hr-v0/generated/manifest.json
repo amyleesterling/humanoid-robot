@@ -8,6 +8,11 @@
     "link_thickness_mm": 4.75,
     "robotis_frame_pcd_mm": 22.0,
     "candidate_frame_hole_mm": 2.7,
+    "fit_coupon_mm": [
+      38.0,
+      14.0,
+      2.0
+    ],
     "adapter_mm": [
       90.0,
       110.0,
@@ -20,7 +25,7 @@
     ]
   },
   "release_gates": [
-    "Overlay DXF against physical FR13-H101K and FR13-S102K fit-check coupons",
+    "Execute INSPECT-MECH-003 with MV0-FC01 against received FR13-H101K and FR13-S102K parts",
     "Resolve M2.5 fastener grade, engagement, torque and retention",
     "Resolve T-slot fasteners, torque, anti-rotation and bracket arrangement",
     "Survey actual bench and select anchor fasteners from substrate evidence",

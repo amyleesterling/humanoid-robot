@@ -14,6 +14,7 @@ Status: preliminary engineering baseline; not approved for fabrication, procurem
 - **Project Button Electrical V3-P0.3** identifies the historical R18 voltage-boundary correction with opaque feedback-interface blocks.
 - **Project Button Electrical V3-P0.4** identifies the current R19 correction candidate. It replaces those blocks with a pin-level `ISO1212DBQ` circuit and calculated threshold, contact-wetting and logic-interface networks. Exact passive order codes, PCB, EMC, physical tests and qualified review remain open. `P0.4` has not superseded V2.1 and is not a released electrical baseline.
 - **HR-V0-FW-P0.1** identifies the preliminary watchdog/supervisor source candidate. It has executable source tests but no released binary or HIL evidence.
+- **HR-V0-MECH-R0.1-PRELIMINARY** identifies the current native mechanical quote-geometry baseline. `MV0-FC01` is a nonstructural fit coupon within that baseline; it does not release the four production parts.
 - Website releases are identified by their website Git commit and hosted version. A website release is a presentation of controlled artifacts, not an engineering revision.
 
 The label **V2.2** is not a released engineering identifier and must not be used for this package.

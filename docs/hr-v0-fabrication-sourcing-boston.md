@@ -75,8 +75,8 @@ If a future bend is unavoidable, record alloy/temper, grain direction, radius, v
 ## Immediate purchasing sequence
 
 1. Buy one FR13-H101K and one FR13-S102K manufacturer frame.
-2. Make a cheap polymer or low-cost aluminum PCD22 fit coupon from the generated DXF.
-3. Record physical hole/edge/fastener fit; revise CAD if needed.
+2. Make the controlled nonstructural `MV0-FC01` PCD22 coupon from its generated DXF or STL; use polymer, acrylic, or plywood before considering metal.
+3. Execute `INSPECT-MECH-003` against both received frames and preserve the per-hole CSV record, scale measurements, hashes, and photographs; revise CAD through configuration control if needed.
 4. Complete the missing fastener, hard-stop, cable, guard and bench-anchor design.
 5. Obtain comparable SendCutSend and Xometry quotes for the **same revision**.
 6. Order only after the mechanical release review changes the files from quote geometry to a controlled first-article release.
