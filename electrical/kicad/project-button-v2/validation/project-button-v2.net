@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\project-button\\engineering\\electrical\\kicad\\project-button-v2\\project-button-v2.kicad_sch")
-		(date "2026-08-05T21:07:35")
+		(date "2026-08-06T11:33:25")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR ENERGIZATION")
@@ -3205,28 +3205,28 @@
 		)
 		(comp
 			(ref "BAT1")
-			(value "Professionally assembled 4-series protected battery pack")
+			(value "Protected battery pack and conversion - SELECTION REQUIRED")
 			(datasheet "SELECTION REQUIRED")
-			(description "Qualified supplier, cells, configuration, protected ports, pack limits, current, capacity, enclosure, and telemetry are unresolved.")
+			(description "Qualified supplier, chemistry, series count, conversion topology, full-charge and loaded end-of-discharge limits, protected ports, fault current, capacity, enclosure, regeneration, and telemetry are unresolved.")
 			(fields
 				(field
 					(name "Status") "SELECTION REQUIRED")
 				(field
 					(name "Evidence") "Manufacturer datasheet and engineering inputs required")
 				(field
-					(name "Display") "Professionally assembled 4-series protect...")
+					(name "Display") "Protected battery pack and conversion - S...")
 				(field
 					(name "Footprint")
 				)
 				(field
 					(name "Datasheet") "SELECTION REQUIRED")
 				(field
-					(name "Description") "Qualified supplier, cells, configuration, protected ports, pack limits, current, capacity, enclosure, and telemetry are unresolved.")
+					(name "Description") "Qualified supplier, chemistry, series count, conversion topology, full-charge and loaded end-of-discharge limits, protected ports, fault current, capacity, enclosure, regeneration, and telemetry are unresolved.")
 			)
 			(libsource
 				(lib "PBV2")
 				(part "BAT1")
-				(description "Qualified supplier, cells, configuration, protected ports, pack limits, current, capacity, enclosure, and telemetry are unresolved.")
+				(description "Qualified supplier, chemistry, series count, conversion topology, full-charge and loaded end-of-discharge limits, protected ports, fault current, capacity, enclosure, regeneration, and telemetry are unresolved.")
 			)
 			(property
 				(name "Status")
@@ -3238,7 +3238,7 @@
 			)
 			(property
 				(name "Display")
-				(value "Professionally assembled 4-series protect...")
+				(value "Protected battery pack and conversion - S...")
 			)
 			(property
 				(name "Sheetname")
@@ -11105,26 +11105,26 @@
 		(libpart
 			(lib "PBV2")
 			(part "BAT1")
-			(description "Qualified supplier, cells, configuration, protected ports, pack limits, current, capacity, enclosure, and telemetry are unresolved.")
+			(description "Qualified supplier, chemistry, series count, conversion topology, full-charge and loaded end-of-discharge limits, protected ports, fault current, capacity, enclosure, regeneration, and telemetry are unresolved.")
 			(docs "SELECTION REQUIRED")
 			(fields
 				(field
 					(name "Reference") "BAT1")
 				(field
-					(name "Value") "Professionally assembled 4-series protected battery pack")
+					(name "Value") "Protected battery pack and conversion - SELECTION REQUIRED")
 				(field
 					(name "Footprint")
 				)
 				(field
 					(name "Datasheet") "SELECTION REQUIRED")
 				(field
-					(name "Description") "Qualified supplier, cells, configuration, protected ports, pack limits, current, capacity, enclosure, and telemetry are unresolved.")
+					(name "Description") "Qualified supplier, chemistry, series count, conversion topology, full-charge and loaded end-of-discharge limits, protected ports, fault current, capacity, enclosure, regeneration, and telemetry are unresolved.")
 				(field
 					(name "Status") "SELECTION REQUIRED")
 				(field
 					(name "Evidence") "Manufacturer datasheet and engineering inputs required")
 				(field
-					(name "Display") "Professionally assembled 4-series protect...")
+					(name "Display") "Protected battery pack and conversion - S...")
 			)
 			(pins
 				(pin

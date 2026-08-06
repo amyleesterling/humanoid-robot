@@ -6,6 +6,9 @@ These questions intentionally remain open. They must be answered with evidence, 
 |---|---|---|---|---|
 | G-01 | Final J1/J2 actuator and allowable current | CAD mass properties, torque model, single-joint thermal test | mechanical + controls | actuator procurement release |
 | G-02 | Custom link/bearing geometry | released CAD, shaft/bearing load calculation, tolerance stack | mechanical | fabrication |
+| G-25 | Watchdog restart interlock | reviewed hardware topology proving heartbeat restoration cannot restore contactor power without monitored physical reset; fault analysis and TEST-SAFE-002 record | functional safety | energization |
+| G-26 | Actuator-rail battery architecture | selected chemistry, series count or regulated conversion, full-charge and loaded end-of-discharge bounds, transient/regeneration data, thermal and efficiency evidence | electrical/power | HR-30W design |
+| G-27 | Full-body mass feasibility | supplier and measured part-level ledger closing all subsystem allocations, center of mass, inertia, wiring, fasteners, covers, guards, battery/conversion, and contingency | mechanical/systems | actuator procurement |
 | G-03 | Exact safety-relay and contactor wiring | manufacturer manuals, reviewed ECAD, dropout test plan | electrical safety reviewer | panel wiring |
 | G-04 | Fuse types and conductor sizing | measured/inferred fault current, connector ratings, coordination review | electrical | energization |
 | G-05 | Guard material/thickness and clearances | swept-volume CAD, stopping-travel test, impact assessment | mechanical safety | integrated motion |

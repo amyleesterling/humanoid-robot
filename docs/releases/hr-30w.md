@@ -12,7 +12,7 @@ The robot stands, starts, walks, turns, stops, and returns to quiet standing wit
 ## Included configuration
 
 - Released 25-axis walking configuration and real-time control stack.
-- Professionally assembled protected four-series battery with pack fuse, BMS, precharge, service disconnect, independent telemetry, qualified enclosure, and released charging/storage procedure.
+- Professionally assembled protected battery with chemistry, series count, conversion topology, pack fuse, BMS, precharge, service disconnect, independent telemetry, qualified enclosure, and released charging/storage procedure. The actuator rail shall remain within every connected device limit from full charge through loaded end of discharge; no series count is released.
 - Padded, access-controlled test area with no person inside the fall envelope.
 - Released fall response, boundary monitoring, logging, and configuration control.
 

@@ -22,6 +22,7 @@ This ledger records both independent reviews and controlled correction/validatio
 | R11 | 2026-08-06 | Independent design accuracy/completeness review | Fable | GitHub `main` at `ee276af…`, deployed presentation, and published Electrical V2.1 package | Complete: 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. New material issues include impossible arm-mass allocation, 4S voltage/torque conflict, missing hip-roll load analysis, knee-speed deficit, watchdog restart topology, verification-ID gaps, and TCP/joint-speed conflict. | `docs/reviews/2026-08-06-fable-independent-engineering-review.txt`; disposition file in same directory |
 | R12 | Requested | Independent design accuracy/completeness review | GPT Sol | Current `HR-30-SYS-R0.2` authoritative package | Pending. Same scope as R11; review must be completed without seeing Fable's conclusions. | Evidence record to be added when received |
 | R13 | 2026-08-06 | ECAD provenance correction and validation | Codex engineering pass | Authoritative repository after R11 interim finding | Added the controlled native KiCad V2.1 project, 15 schematic sheets, symbol library, schedules, validation records, and generated source-hash manifest to the authoritative tree; corrected electrical release-area and handoff claims. | `electrical/kicad/project-button-v2/`; `electrical/kicad/project-button-v2/SOURCE-MANIFEST.csv`; corrective GitHub PR |
+| R14 | 2026-08-06 | R11 engineering correction and traceability pass | Codex engineering pass with independent manufacturer-source checks | `HR-30-SYS-R0.2` working correction based on R11 | Recalculated and corrected failed mass closure, joint torque/speed, battery/rail, TCP, watchdog restart, safety-function, interface, and verification definitions; quarantined unreleased public fabrication files. Physical selections and safety validation remain open. | `docs/r11-engineering-calculations.md`; `docs/safety-functions.md`; `docs/actuator-interface.md`; `docs/verification-scope.md`; `tests/procedures/procedure-registry.csv`; website quarantine record |
 
 ## Counting rule
 
@@ -32,4 +33,4 @@ This ledger records both independent reviews and controlled correction/validatio
 
 ## Current review state
 
-Eleven rounds are complete, including R11; R12 is requested. No round has approved fabrication, procurement, energization, functional safety, untethered operation, or operation around children.
+Thirteen rounds are complete (R01-R11, R13, and R14); independent R12 is requested. No round has approved fabrication, procurement, energization, functional safety, untethered operation, or operation around children.

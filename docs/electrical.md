@@ -1,5 +1,7 @@
 # Electrical and Safety Architecture
 
+> **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
+
 Status: architecture baseline; a reviewed ECAD schematic and panel layout are required before wiring.
 
 ## Power domains
@@ -15,17 +17,29 @@ All exposed AC terminals shall be inside a grounded, tool-access enclosure. Prot
 
 ## Safety chain
 
-Proposed components are an exact-selection-required IDEC XW-series dual-channel emergency-stop switch, Pilz PNOZ s4 24 VDC safety relay order code 750104 configured for monitored start on the falling edge with cross-short detection on the E-stop inputs, and two Schneider LC1D25BD 24 VDC-coil contactors in series. The PNOZ s4 operating manual 21396-EN-23 (2026-02 document colophon; product file dated 2026-06-22) documents the proposed `S11/S12` and `S21/S22` E-stop channels and the `S12 -> momentary NO reset -> K1 NC -> K2 NC -> S34` start/feedback loop. K1/K2 normally closed mirror auxiliary contacts form that external-device-monitor feedback loop. The safety relay outputs shall drive only the contactor coils, not the actuator current directly.
+Proposed components are an exact-selection-required IDEC XW-series dual-channel emergency-stop switch, Pilz PNOZ s4 24 VDC safety relay order code 750104 configured for monitored start on the falling edge with cross-short detection on the E-stop inputs, and two Schneider LC1D25BD 24 VDC-coil contactors in series. The [PNOZ s4 operating manual 21396-EN-23](https://www.pilz.com/download/open/OM_PNOZ_s4_21396-EN-23.pdf) (2026-02 document colophon; product file dated 2026-06-22; verified 2026-08-05) documents the proposed `S11/S12` and `S21/S22` E-stop channels and the `S12 -> momentary NO reset -> K1 NC -> K2 NC -> S34` start/feedback loop. K1/K2 normally closed mirror auxiliary contacts form that external-device-monitor feedback loop. The safety relay outputs shall drive only the contactor coils, not the actuator current directly.
 
-Logical chain:
+Electrical V2.1 currently represents this logical chain:
 
 `E-STOP CH1 + E-STOP CH2 -> PNOZ s4 falling-edge monitored-start mode -> reset + K1/K2 feedback -> watchdog permit -> separately protected K1 and K2 coils`
+
+That downstream watchdog-permit position is a **BLOCKER**. A lost heartbeat can open K1/K2 while the PNOZ outputs remain closed; restored heartbeat can then reclose the coil path without a new PNOZ reset/EDM cycle. The RP2040-class firmware latch is not a credited safety mechanism. A released revision shall alter the hardware so watchdog dropout forces a hardware-held restart-required state and neither coil can re-energize until a monitored physical reset and a later distinct `ARM` action have both occurred. Candidate remedies include routing watchdog loss into an evaluated safety-device input so it forces a complete monitored-start cycle, or adding an independently reviewed hardware restart interlock. These are alternatives, not selections; the exact circuit and hardware remain **SELECTION REQUIRED**.
+
+Required restart sequence:
+
+`heartbeat invalid -> watchdog permit opens -> K1 and K2 drop -> EDM proves dropped -> heartbeat may become healthy but coils stay inhibited -> valid falling-edge physical reset -> SAFE_READY with coils still inhibited -> distinct ARM -> contactors may energize -> fresh trajectory validation -> torque/motion`
 
 Power chain:
 
 `LRS-350-12 +V -> F0 (SELECTION REQUIRED) -> K1 pole -> K2 pole -> branch protection (SELECTION REQUIRED) -> J1/J2/gripper`
 
-Opening either contactor removes actuator VDD. The control computer detects loss through isolated auxiliary status inputs and records it. Reset shall not cause motion; it only restores actuator power eligibility. A separate deliberate `ARM` command is required after all state checks pass. The PNOZ s4 does not detect shorts or cross-shorts in its start/feedback loop, so that loop requires protected or separate routing and fault exclusion justified by the qualified safety review. Terminals `41-42` and `Y32` are diagnostic only and shall not close any safety function. Output-contact protection and coil suppression are `SELECTION REQUIRED`; suppression shall follow the device manuals and shall be validated not to extend dropout or stopping time unacceptably.
+Opening either contactor removes actuator VDD. The control computer detects loss through isolated auxiliary status inputs and records it, but software indication is not part of the energy-removal safety function. Physical reset shall not re-energize contactors, create torque, or cause motion by itself. A separate deliberate `ARM` command is required after all state checks pass, and a fresh command is required before torque or motion.
+
+For the proposed 750104, the mode selector shall be set with supply removed to the manual page-13 lower-row, third-column mode: “with detection of shorts across contacts / monitored start falling edge.” The setting shall be sealed and inspected against the received device. In this mode the reset control must close and then open; the published falling-edge wait for 750104 is 250 ms and the minimum start pulse is 100 ms. These are device characteristics, not proof that the application is safe.
+
+The PNOZ s4 does not detect shorts or cross-shorts in its `S12 -> reset -> K1 NC -> K2 NC -> S34` start/feedback loop. That loop therefore requires protected or separate routing and a documented fault exclusion accepted by the qualified safety review. A normal schematic/ERC result cannot validate that physical routing or exclusion. Terminals `13-14`, `23-24`, and `33-34` are the safety normally open outputs; `41-42` and `Y32` are diagnostic only and shall not close, bypass, or claim any safety function.
+
+PNOZ output-contact protection `FSR1`/`FSRH1` and the K1/K2/KH1/KH2 coil-suppression networks remain **SELECTION REQUIRED**. Manufacturer-published maximum protection values are limits, not released fuse selections. Protection shall be coordinated with exact coil inrush, safety-supply fault behavior, conductor ampacity, prospective fault current, and interrupting capacity. Suppression shall be selected against both the safety-relay and contactor instructions and validated for fault behavior, coil release time, contactor dropout time, residual travel, and total stopping time.
 
 ## Branches and conductors
 

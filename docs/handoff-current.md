@@ -32,7 +32,7 @@ ERC validates modeled connectivity and annotation only. It does not establish ph
 
 ## Review history and pending reviews
 
-Eleven review/control rounds are complete and recorded in `docs/review-ledger.md`; R11 is complete and R12 is requested. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R13 staged the authoritative-ECAD provenance correction. GPT Sol should complete R12 independently before seeing Fable's conclusions.
+Thirteen review/control rounds are complete and recorded in `docs/review-ledger.md` (R01-R11, R13, and R14); independent R12 is requested. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R13 staged the authoritative-ECAD provenance correction. R14 corrected reproducible engineering and traceability defects while preserving physical and functional-safety blockers. GPT Sol should complete R12 independently before seeing Fable's conclusions if reviewer independence is still desired.
 
 ## Principal unresolved engineering blockers
 
@@ -47,7 +47,7 @@ Eleven review/control rounds are complete and recorded in `docs/review-ledger.md
 9. No released real-time controller, firmware, state-machine implementation, bus timing measurement, HIL evidence, or reset-to-motion fault test exists.
 10. No physical release-gate test has passed; fixtures, calibrated instrumentation, raw records, accountable owners, approvers, FMEA/FTA, and common-cause review remain incomplete.
 
-R11 adds material blockers or invalidated assumptions: the arm and likely leg mass allocations do not close; the 4S battery/14.8 V/torque basis is inconsistent; hip-roll torque and knee speed do not screen at the stated upper envelope; watchdog heartbeat restoration may re-energize contactors without monitored reset; safety integrity targets and many verification procedures are undefined; and the TCP and joint-speed limits conflict at full reach. See `docs/reviews/2026-08-06-fable-review-disposition.md`.
+R11 added material blockers or invalidated assumptions. R14 now records the failed arm/leg mass screen, removes the fixed 4S and 14.8 V sizing basis, blocks direct-drive hip roll, reduces initial walking speed to 0.10-0.14 m/s, makes TCP speed governing, defines 61 verification procedures, and creates a preliminary safety-function register. The Electrical V2.1 watchdog restoration path, mass closure, battery/rail, joint selection, protection, CAD, safe power loss, PLr/SIL determination, and physical testing remain open. See `docs/reviews/2026-08-06-fable-review-disposition.md` and `docs/r11-engineering-calculations.md`.
 
 ## Requested independent-review output
 

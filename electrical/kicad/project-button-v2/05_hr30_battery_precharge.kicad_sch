@@ -24,7 +24,7 @@
 				)
 					(justify left bottom)
 			))
-			(property "Value" "Professionally assembled 4-series protected battery pack" (at 0 0 0) (effects
+			(property "Value" "Protected battery pack and conversion - SELECTION REQUIRED" (at 0 0 0) (effects
 				(font
 					(size 1.27 1.27)
 				)
@@ -42,7 +42,7 @@
 				)
 					(hide yes)
 			))
-			(property "Description" "Qualified supplier, cells, configuration, protected ports, pack limits, current, capacity, enclosure, and telemetry are unresolved." (at 0 0 0) (effects
+			(property "Description" "Qualified supplier, chemistry, series count, conversion topology, full-charge and loaded end-of-discharge limits, protected ports, fault current, capacity, enclosure, regeneration, and telemetry are unresolved." (at 0 0 0) (effects
 				(font
 					(size 1.27 1.27)
 				)
@@ -60,7 +60,7 @@
 				)
 					(hide yes)
 			))
-			(property "Display" "Professionally assembled 4-series protect..." (at -17.78 -13.21 0) (effects
+			(property "Display" "Protected battery pack and conversion - S..." (at -17.78 -13.21 0) (effects
 				(font
 					(size 1.27 1.27)
 				)
@@ -2921,7 +2921,7 @@
 						(justify left bottom)
 				)
 		)
-		(property "Value" "Professionally assembled 4-series protected battery pack"
+		(property "Value" "Protected battery pack and conversion - SELECTION REQUIRED"
 			(at 76.20 55.88 0)
 				(effects
 					(font
@@ -2948,7 +2948,7 @@
 						(hide yes)
 				)
 		)
-		(property "Description" "Qualified supplier, cells, configuration, protected ports, pack limits, current, capacity, enclosure, and telemetry are unresolved."
+		(property "Description" "Qualified supplier, chemistry, series count, conversion topology, full-charge and loaded end-of-discharge limits, protected ports, fault current, capacity, enclosure, regeneration, and telemetry are unresolved."
 			(at 76.20 55.88 0)
 				(effects
 					(font
@@ -2975,7 +2975,7 @@
 						(hide yes)
 				)
 		)
-		(property "Display" "Professionally assembled 4-series protect..."
+		(property "Display" "Protected battery pack and conversion - S..."
 			(at 58.42 42.67 0)
 				(effects
 					(font

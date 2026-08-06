@@ -29,7 +29,7 @@ Human-to-robot or robot-to-human handoff is not part of the initial acceptance t
 | Maximum shoulder-to-object reach | 360 mm |
 | Payload | 100 g maximum, soft foam only |
 | Payload envelope | 40–70 mm each principal dimension |
-| Automatic joint speed | 30 deg/s maximum |
+| Automatic joint speed | Pose-dependent limit derived from the 0.15 m/s tool-center limit; 30 deg/s is an additional ceiling, not sufficient enforcement by itself |
 | Setup joint speed | 10 deg/s maximum, hold-to-run |
 | Tool-center linear speed | 0.15 m/s maximum |
 | Moving assembly mass | 0.75 kg maximum, excluding shoulder actuator/base |
@@ -51,7 +51,7 @@ No unrestricted teleoperation, generated motion, voice-triggered motion, or AI-o
 
 ## 4. Safety concept
 
-The emergency stop is a stop-category-0 design for V0: a dual-channel mushroom switch opens a safety relay, which de-energizes two series contactors in the 12 V actuator rail. Computer power remains present for fault logging. A separate watchdog permit is wired in series with the contactor coils, so a lost control heartbeat also removes actuator power. The hardware emergency-stop path does not depend on Linux, ROS, networking, or the watchdog microcontroller.
+The emergency stop is a proposed stop-category-0 design for V0: a dual-channel mushroom switch opens a safety relay, which de-energizes two series contactors in the 12 V actuator rail. Computer power remains present for fault logging. The current Electrical V2.1 watchdog permit is wired downstream of the safety outputs and removes actuator power on a lost heartbeat, but heartbeat restoration could reclose that permit while the safety relay remains latched. That restart path is a safety-architecture blocker. A released revision shall make watchdog dropout force a monitored physical-reset cycle, or use another independently reviewed hardware restart interlock; a firmware latch is not credited. The emergency-stop path itself does not depend on Linux, ROS, networking, or the watchdog microcontroller.
 
 The arm shall be surrounded by fixed transparent shielding during fixture tests. The only normal access is with actuator power off. A floor/bench exclusion boundary of at least 600 mm from the maximum swept envelope shall be marked and controlled by the test lead.
 

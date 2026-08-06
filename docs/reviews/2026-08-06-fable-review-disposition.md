@@ -69,4 +69,17 @@ Fable reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. This disposition reco
 5. Correct only those numerical claims supported by current primary documents and recorded assumptions.
 6. Obtain R12 independently before reconciling reviewer disagreements.
 
-No finding is closed by this disposition alone.
+## R14 correction status
+
+R14 closes documentation or arithmetic defects only:
+
+- M-4 is corrected to the official XM540-W270 12 V point of 10.6 N m at 4.4 A.
+- M-5 is corrected by making 0.15 m/s TCP speed governing and requiring pose-dependent enforcement; implementation/test evidence remains open.
+- M-7 is corrected at the registry/traceability level: all 62 requirements and all current release-document verification IDs resolve to 61 controlled procedure definitions. No physical procedure has passed.
+- M-9 is corrected at the scope-definition level with an applicability register; standards, severities, equipment, and test evidence remain open.
+- M-10 is corrected by removing the R0 OpenSCAD/STL artifacts from the served website tree and retaining them only in a recoverable source quarantine marked not for fabrication.
+- Minor counting, interface, voltage-domain, and source-record clarifications are corrected in controlled documents.
+
+B-4, B-5, B-7, M-1, M-2, M-3, M-6, and M-11 have corrected calculations or explicit requirements but remain engineering blockers pending selections, reviewed designs, and physical evidence. B-2, B-3, and B-6 remain fully open. B-1 closes only after PR #3 merges to authoritative `main` and the post-merge source/hash/ERC check passes.
+
+No finding is closed by disposition text alone, and R14 does not approve fabrication or energization.

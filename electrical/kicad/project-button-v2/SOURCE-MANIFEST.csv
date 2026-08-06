@@ -1,9 +1,9 @@
-﻿source_relative_path,sha256,bytes
+source_relative_path,sha256,bytes
 "01_ac_pe_power.kicad_sch","531c8f2cac2c32da4e2b3f7cec990885b9bc0d05dc014f889f20039c373b6c70",74504
 "02_hrv0_safety.kicad_sch","82628ba544ffa5191d61c2f67a1e03e8be47f9c18a7fa0dcae786631af85400b",79011
 "03_hrv0_distribution.kicad_sch","a4c865f199011ff91c74f97272d3f50372a17d4349c8c66746e14746680d3cda",48430
 "04_control_watchdog.kicad_sch","537bafe798470227ef498d762b532088422fcdac3ded73d4a78813c7e7c00b83",81953
-"05_hr30_battery_precharge.kicad_sch","39fdfb5376abf46cfee6b48aa53ee4ca33346a7e6d2a1f7b6ae008fbb60e77e3",81424
+"05_hr30_battery_precharge.kicad_sch","22360e305d4aa61064dbe7ff665b07b81c7112815ac59b030b57a08728b95d4e",81586
 "06_hr30_safety_distribution.kicad_sch","06607f322329dba31633249ffd8d35b67d859bd15274113c9098b1bc80019dcf",110267
 "07_left_leg_rs485.kicad_sch","fd18f2f77108a2ebc78a7b27986246c157519bab8b53945511fa3abe5b13262d",100432
 "08_right_leg_rs485.kicad_sch","844a919dd37462210b2c8393d8d85fcc42dfd0d2ce531c2600c2a76b91026be3",100525
@@ -14,40 +14,40 @@
 "13_sensor_afe.kicad_sch","f8ff187bfe4a6f06e481c3e98bf1d284301cd03a845c032faeb4c9593f26c897",23422
 "14_harness_terminals.kicad_sch","8afc6b85b7c9d7431d34cd5e878cae9a3f02f59d3881f5da253f1ffb608b53e9",98514
 "2026-08-05-v2.1-electrical-correction-review.md","b151e8fc6fa02de8e2c68d09a414a5e9d0081bd7b2c1f11babbb9453e6817b3b",15233
-"bom.csv","6cedf05abe5b8736f3fe0a8afb43ab1820ab5fa6b2de18e06d812dcc2b29dd8d",53182
+"bom.csv","442f3ce09156d12b25cc3e81aa78226744df00e4e9413360eafc81d6fddea32e",53263
 "connector-schedule.csv","277c3bc6fdf20c44b8105c618fca9c60148b7c3fdefca65c7ebb99e6485efe29",44407
 "DESIGN-BASIS.md","8c1a62b1ef4efdf7e613e2e2736379d06ce17a7de5db14f209171470efd55043",8989
 "engineering-inputs-required.csv","0b6754e0ec9fccee5fa024e55e7c5400136b14ce2f791a95cbcc803755f6897b",2795
 "netlist-schedule.csv","344eeb4b0cdec365286f72d966e6fedcf0f8bdfc45599e4e9f39d5112c2fcde4",60820
-"output/pdf/project-button-electrical-v2-preliminary.pdf","0b2ad491e0e5a000cba880e221eb0afa046a37665ae74080931421fa2008905c",673908
-"output/svg/project-button-v2.svg","33407f1b0ea97a62fd2dfe6a452ea6ee8e380459ee08527a1061eb04b238a9f8",572560
-"output/svg/project-button-v2-01 01 ac pe power.svg","9bc260b22bb199eecb5c702f7ccd491162303f35671429f1fb00c7ca2b70b175",1075968
-"output/svg/project-button-v2-02 02 hrv0 safety.svg","46e4873d5b7f51958a526c0b596fabc9895cc2d2ab1c0b1a23ba565c8dcfacc7",1284783
-"output/svg/project-button-v2-03 03 hrv0 distribution.svg","8d1cbe9caeff69ba3060291259546013505dfd7de39ef5cd5a14aeb2c3e8755e",834765
-"output/svg/project-button-v2-04 04 control watchdog.svg","6a4e54188ace83c1585aec2ac909be738c7a0c364b0b2a1fff361b7dc605ae0a",1553027
-"output/svg/project-button-v2-05 05 hr30 battery precharge.svg","3db93ddc2c327f71a04c653c82d95c3bb673d3282159fc52686df32a1226c1c7",1370493
-"output/svg/project-button-v2-06 06 hr30 safety distribution.svg","4dcdbac0a894d1e7b7b4db2d3b7d56ac81bbe81249dd781683ca3232c293310f",1858579
-"output/svg/project-button-v2-07 07 left leg rs485.svg","2a97418a33d75082445f36666d58c5b28a5f766dd1949d1986f2643223a20c08",1428673
-"output/svg/project-button-v2-08 08 right leg rs485.svg","650726215a2d2bd19956fc9885040802e07677afba32983151b21aa04cc7aa42",1517049
-"output/svg/project-button-v2-09 09 upper bus a.svg","6a6b42e1836002dba1dba6a34f8902c22abd93ac17315d5b57283a35b04d3506",1371358
-"output/svg/project-button-v2-10 10 upper bus b.svg","d9b414b5d6e8a932168fb8f2c5feabaecb36d87ec9bc324597c945c7e5ed6a05",1017693
-"output/svg/project-button-v2-11 11 sensors sync.svg","f53ffd7d564a804a919b5bbb5ef2f862ad7a707d152ef15d2bcb8796df7221d7",1051956
-"output/svg/project-button-v2-12 12 sensor adc imu.svg","744911a42ced5dd34bbc5dd3cf65455f7a549791a30ea6d6502c6156785bb4c7",1240424
-"output/svg/project-button-v2-13 13 sensor afe.svg","f6967e493da2ea45e29a6f326b9c78b0e5039e9ddeb1a97a0c47589c0b094870",621038
-"output/svg/project-button-v2-14 14 harness terminals.svg","b8c42fce8137dd8976d12d054d4dc732714210c78efa05ec87b49adea0e4a59b",1527252
+"output/pdf/project-button-electrical-v2-preliminary.pdf","c115c992426e71fa193de85c9e78c90286442bd30aaa6216dd45e95993b071ac",525981
+"output/svg/project-button-v2.svg","0ac9d488be6b83d5ece4a4177ef893a2f409ba6ce5c78fb2d7f6e91436cd6d30",572560
+"output/svg/project-button-v2-01 01 ac pe power.svg","75257001cf7dfb6777e7d488a7d19e93150fed4c8f6cca1b3cf26656362fb8c7",1075968
+"output/svg/project-button-v2-02 02 hrv0 safety.svg","70db75df1904a9ae3927cc8ae3321f556f2f1e782900816188960ff6c353fa8b",1284783
+"output/svg/project-button-v2-03 03 hrv0 distribution.svg","a3999d0871f3ecdb65b5a3babf8e487ee3330ca1b0ff6fd061c9b7e774fdc9ff",834765
+"output/svg/project-button-v2-04 04 control watchdog.svg","2b2ca31774a7d452de4669758db290d0e505124e4bcbab52ef1b92551c2e7ee6",1553027
+"output/svg/project-button-v2-05 05 hr30 battery precharge.svg","599904e40966c30afc03760b2b94350732df01dbaca6fe20c477e7b5dfe650ba",1368529
+"output/svg/project-button-v2-06 06 hr30 safety distribution.svg","94874bffccf9360d7f8e7afed5934978059057e9efeecca58c8db30c9eec97e9",1858579
+"output/svg/project-button-v2-07 07 left leg rs485.svg","64907f5c6e89b256e9b948ea48cd3a6fb3c20c5818e71c464515d8ebfe59c638",1428673
+"output/svg/project-button-v2-08 08 right leg rs485.svg","869c7617eb9210733dadbe5b412723f3d887b6cd9a44f2aaac4fc87f0ab7296e",1517049
+"output/svg/project-button-v2-09 09 upper bus a.svg","e12d2c6abde65940f2c7dd10068d3266af48f6e9b5331967ed117979481141ef",1371358
+"output/svg/project-button-v2-10 10 upper bus b.svg","7253151dadac5c94b1b916b0f493c0441e0f7959648bb750bc1d82d01635d7bd",1017693
+"output/svg/project-button-v2-11 11 sensors sync.svg","80bac1f4724123a761feb880787a8f167b854a15df1b4efe8a0954e773889fcc",1051956
+"output/svg/project-button-v2-12 12 sensor adc imu.svg","38fd64b994ccbbb06221d1b6a647ed0a8ea1e8cc36ec5b0a495e7406f96b5d02",1240424
+"output/svg/project-button-v2-13 13 sensor afe.svg","99519daaab32914f7718dfad23a7657d336bbd562e1f7c4bc36b9be65bfba5c3",621038
+"output/svg/project-button-v2-14 14 harness terminals.svg","e6caa8a56efe9f18a1c5f42f8d6eaa061cadad05f6e5d1b3f51e3c299c766331",1527252
 "primary-source-register.csv","935ffd1f75af4480f6652cf4b77b875c34daf29b8402c36f3a972bb7db60c345",5016
 "project-button-v2.kicad_pro","db562d8659fcf56307151e9f09626f78d91d4f44325a4023ffc4df5825825b0d",404
 "project-button-v2.kicad_sch","bb27f197a02ceb97a18f23ed9026f6a3fe1eaa8abb063d541e0184f392def190",10222
-"project-button-v2.kicad_sym","ae97150ff4a6c87cf278d18e9e8aaf4b6321fe5bbe716a964e327b93400e13cb",344435
+"project-button-v2.kicad_sym","475ba36a99f9fb4e469057d2c00aaf23b166c5bb02a2d10b7d641e8612afcb70",344516
 "README.md","25d6a1853e0c867f4963da1e9b51a63cb9e9c660557fa5d588ae69c8cb4ca36b",1370
 "requirements-trace.csv","945d91e9dd9e322b5fb677bb631e8980201890915e8122c8f4d55a84d2bf7e5a",2288
 "sym-lib-table","c4255d2c58fdc90b9f9af35e41ae18f422770f6b48ad529b8be55aed6e901be5",190
-"unresolved-selections.csv","4e94a15d5fd67b12394007c75e0e90083f03060287048213072bdd78e4c5fab2",30867
+"unresolved-selections.csv","e87ad137fff954422d8a1cdf6e2eb608bc98ed328709c29c7250a85f5818c7f4",30948
 "validation/consistency-check.json","1b9515ab428c0bdaae772469afa6b32b23da84ff8a93a6fc33b55949016d05ac",548
 "validation/pdf-inspection.json","83121fef26d62eaa9f97b08ad9d66155eda40d86353985fcc58816cec2e9d368",4680
-"validation/project-button-v2.net","29fd719f7efc93bfe666b51f622fbf43a327f01cb8c1e2c4e2c6ac2682fa5313",552162
-"validation/project-button-v2-erc.json","6c194f76b74317ef99ea058ae6437766ec677b0677d2f5d8bef3abd24a662e4b",3913
-"validation/project-button-v2-erc.rpt","a88ffacad4c7269b797913e23c9ff8b8838a2619544d508e62a9340e0de26cb3",910
-"validation/project-button-v2-erc-preliminary.json","a06e1200a872cdfe96f40847e0e23dadbcf4f688b2fbc4a63a50d0c1fa109bdf",3610
-"validation/project-button-v2-erc-preliminary.rpt","28a607707557d79cc10b1e5bf097280ca0d67673f6a9b078dd9259a4a63f2876",1010
+"validation/project-button-v2.net","44255e847570f260fa1b75ff37f55b1cf164744a9e0b935ba94b88d6af64e95f",552561
+"validation/project-button-v2-erc.json","246102996c41e4cb6a1ccb6ac4ebf94f3e6bcba78f958de262e19bf5637ba0f8",3891
+"validation/project-button-v2-erc.rpt","6863bab5b291c069069be042442df1dedbbdf53826367e9547697cd85355ed5d",898
+"validation/project-button-v2-erc-preliminary.json","4668d6a51c4cdf8ec4a3be6a11fdc6875dc20170788675bffb5eda93015509ed",3591
+"validation/project-button-v2-erc-preliminary.rpt","f975481dcfa9f1c71dcaa1574cc86fe80a0b1abc4ae962ce6d38fc5a80bf8104",998
 "wire-number-table.csv","9a015e33eeba313a1ea315fddb3bb78793a4f4d557488c572b853a3bc0c17625",34024

@@ -3,7 +3,7 @@
   "native_kicad_output": {
     "$schema": "https://schemas.kicad.org/erc.v1.json",
     "coordinate_units": "mm",
-    "date": "2026-08-05T21:07:34",
+    "date": "2026-08-06T11:33:24",
     "ignored_checks": [
       {
         "description": "Global label only appears once in the schematic",
@@ -24,8 +24,7 @@
     ],
     "included_severities": [
       "error",
-      "warning",
-      "exclusion"
+      "warning"
     ],
     "kicad_version": "10.0.5",
     "sheets": [

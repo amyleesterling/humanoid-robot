@@ -26,17 +26,23 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [30-inch product specification](docs/full-body-specification.md)
 - [Dimension-control specification](docs/dimension-control.md)
 - [Full-body load and power budget](docs/full-body-loads.md)
+- [R11 independent engineering calculations](docs/r11-engineering-calculations.md)
 - [Sub-meter humanoid benchmark](docs/architecture-benchmark.md)
 - [Walking-system specification](docs/walking-system.md)
 - [Walking verification matrix](docs/walking-verification.md)
 - [Mechanical concept and load model](docs/mechanical.md)
 - [Electrical and safety architecture](docs/electrical.md)
+- [Safety-function requirements](docs/safety-functions.md)
+- [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
 - [Control and fault-state specification](docs/control.md)
 - [Verification plan](docs/verification.md)
+- [Verification scope and applicability](docs/verification-scope.md)
+- [Verification procedure registry](tests/procedures/procedure-registry.csv)
 - [Open decisions](docs/open-decisions.md)
 - [Evidence maturity dashboard](docs/evidence-maturity.md)
 - [Independent review disposition](docs/independent-review-disposition.md)
+- [Fable R11 review and disposition](docs/reviews/2026-08-06-fable-review-disposition.md)
 - [Requirements](requirements/requirements.csv)
 - [Proposed bill of materials](bom/bom.csv)
 - [Risk register](safety/risk-register.csv)
@@ -45,7 +51,7 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 
 ## Review history
 
-Eleven review/control rounds are complete, including Fable's R11 engineering review; R12 is requested. Correction passes are recorded separately from independent reviews.
+Thirteen review/control rounds are complete: R01-R11, R13, and R14. Independent R12 remains requested. Correction passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -62,6 +68,7 @@ Eleven review/control rounds are complete, including Fable's R11 engineering rev
 | R11 | Independent Fable engineering review | Complete: 7 BLOCKER, 11 MAJOR, and 12 MINOR findings; disposition recorded. |
 | R12 | Independent GPT Sol engineering review | Requested; accuracy and completeness review pending. |
 | R13 | ECAD provenance correction | Added the controlled native KiCad V2.1 tree and hash manifest to the authoritative repository. |
+| R14 | R11 engineering correction pass | Corrected mass, torque, speed, battery, TCP, watchdog, safety-function, verification, interface, and public-fabrication-control defects without releasing unresolved hardware. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

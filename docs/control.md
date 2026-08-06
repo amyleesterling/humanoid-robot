@@ -1,11 +1,15 @@
 # Control, Permissions, and Fault States
 
+> **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
+
 ## Layering
 
 1. The hardware safety layer removes actuator energy independently of software.
-2. A watchdog microcontroller owns the `WATCHDOG_PERMIT` relay and requires a monotonic heartbeat at least every 100 ms. Three missed heartbeats drop permit and latch a restart-required fault.
+2. An independent watchdog requires a monotonic heartbeat at least every 100 ms. Three missed heartbeats shall drop its hardware permit. The exact watchdog, output driver, relay, restart interlock, diagnostic coverage, and fault response are **SELECTION REQUIRED**.
 3. The Raspberry Pi runs the motion supervisor, trajectory executor, sensor processing, and logger.
 4. DYNAMIXEL internal loops execute bounded current-based position commands and report position, velocity, current, voltage, temperature, hardware error, and bus-watchdog state.
+
+The Electrical V2.1 arrangement places a normally open watchdog permit downstream of closed PNOZ safety outputs. In that arrangement, restored heartbeat can restore the contactor-coil path without the PNOZ seeing a stop or accepting a new falling-edge reset. That is a release blocker. A watchdog firmware latch is not credited as a safety restart interlock. The released hardware shall keep both contactor coils de-energized after watchdog dropout until the cause is absent, the monitored physical-reset sequence is accepted, and a later, distinct `ARM` action is accepted. Restoring heartbeat, rebooting any controller, clearing a software fault, or holding the reset control shall not satisfy that sequence or re-energize either contactor.
 
 AI perception or language software may propose a high-level action in a later revision, but it never writes an actuator register. Only the deterministic motion supervisor can execute a versioned, signed trajectory whose preconditions are satisfied.
 
@@ -23,15 +27,15 @@ The same state names apply to HR-V0 and HR-30. Product-specific modes are subord
 |---|---|---|---|
 | `POWER_OFF` | removed | none | control power applied |
 | `SAFE_DISABLED` | removed | none | safety inputs healthy |
-| `RESET_REQUIRED` | removed | none | physical reset edge and EDM healthy |
-| `SAFE_READY` | removed | none | deliberate software `ARM` request |
-| `ARMED` | available but no motion command accepted yet | bounded supervisor only | fresh trajectory preconditions pass |
+| `RESET_REQUIRED` | removed; contactor coils hardware-inhibited | none | cause absent, EDM healthy, and valid physical reset sequence accepted |
+| `SAFE_READY` | removed; contactor coils remain inhibited | none | distinct deliberate `ARM` request accepted by the released restart architecture |
+| `ARMED` | contactors may be energized; actuator torque remains disabled | bounded supervisor only | fresh trajectory preconditions pass |
 | `DRIVE_ENABLED` | available | deterministic real-time controller only | commanded completion, deadline expiry, stop, or fault |
 | `CONTROLLED_STOP` | conditional and time-bounded | released stop trajectory only | stopped safely or control authority becomes invalid |
-| `FAULT_LATCHED` | removed when required by the fault response | none | cause removed, inspection complete, physical reset required |
+| `FAULT_LATCHED` | removed when required by the fault response | none | cause removed and inspection complete; return through `RESET_REQUIRED` |
 | `ENERGY_REMOVED` | removed | none | return through `RESET_REQUIRED` |
 
-Reset never produces torque. `ARM` never produces motion. Linux cannot transition the system directly to `DRIVE_ENABLED`; only the deterministic controller may do so after validating a fresh command and all preconditions. An interrupted trajectory is invalidated and is never resumed after reset. Every state transition is logged with cause and timestamp.
+Physical reset alone shall not re-energize the contactors in this baseline. Reset never produces torque. `ARM` may release the post-reset contactor inhibit only after the preceding physical reset has been accepted; it never produces torque or motion. Linux cannot transition the system directly to `DRIVE_ENABLED`; only the deterministic controller may do so after validating a fresh command and all preconditions. An interrupted trajectory and every stored torque/position target are invalidated at fault entry and are never resumed after reset. Every state transition is logged with cause and timestamp.
 
 Emergency-stop, watchdog, or safety-circuit faults bypass `CONTROLLED_STOP` when the released risk response requires immediate hazardous-energy removal. A software preference for standing or kneeling may never weaken the hardware safety function.
 
@@ -61,7 +65,7 @@ Current limits are intentionally not frozen until single-joint characterization.
 | Pi process crash | heartbeat expires | yes | off |
 | Compute undervoltage | heartbeat considered invalid | yes | off |
 
-Fault reset requires the cause to be absent, arm visually inspected, trajectory cleared, operator outside the exclusion zone, safety reset pressed, and a separate software `ARM` action. Restart never resumes the interrupted trajectory.
+Fault recovery requires, in order: cause absent; arm and exclusion zone inspected; trajectory and actuator targets cleared; EDM healthy with both contactors proven dropped; a valid monitored physical-reset action; and a separate, later `ARM` action. Heartbeat restoration may only make the watchdog healthy; it cannot advance this sequence. The exact hardware implementation that enforces the sequence is **SELECTION REQUIRED** and shall be accepted by the qualified functional-safety review before the architecture is released. Restart never resumes the interrupted trajectory.
 
 ## Logging
 
