@@ -1,5 +1,5 @@
 {
-  "configuration_id": "HR-V0-WD-P0.2",
+  "configuration_id": "HR-V0-WD-P0.3",
   "status": "PRELIMINARY-NOT-APPROVED-FOR-ENERGIZATION",
   "heartbeat_nominal_edge_ms": 100,
   "heartbeat_timeout_ms": 300,
@@ -8,6 +8,8 @@
   "relay_feedback_settle_ms": 25,
   "relay_channels": 2,
   "feedback_contact_state": "NC_TRUE_WHEN_RELAY_DEENERGIZED",
+  "feedback_front_end": "TI_ISO1212DBQ_P0.1",
+  "feedback_gpio_active_high": true,
   "gpio_assignments": {
     "heartbeat_input": {"gpio": 2, "physical_pin": 4},
     "relay1_drive": {"gpio": 3, "physical_pin": 5},

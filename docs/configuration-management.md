@@ -11,7 +11,8 @@ Status: preliminary engineering baseline; not approved for fabrication, procurem
 - **Project Button Electrical V2.1** identifies the connected KiCad electrical package. Its revision is independent of the systems package.
 - **Project Button Electrical V3-P0.1** identifies the historical R16 connected candidate retained in Git history.
 - **Project Button Electrical V3-P0.2** identifies the historical R17 restart-chain correction candidate.
-- **Project Button Electrical V3-P0.3** identifies the current R18 correction candidate. It freezes official Phoenix relay and Pico terminals, removes the P0.2 direct 24 V diagnostic-to-GPIO path, and adds explicit unreleased feedback-interface blocks. `P0.3` remains preliminary: it has not superseded V2.1 and is not a released electrical baseline.
+- **Project Button Electrical V3-P0.3** identifies the historical R18 voltage-boundary correction with opaque feedback-interface blocks.
+- **Project Button Electrical V3-P0.4** identifies the current R19 correction candidate. It replaces those blocks with a pin-level `ISO1212DBQ` circuit and calculated threshold, contact-wetting and logic-interface networks. Exact passive order codes, PCB, EMC, physical tests and qualified review remain open. `P0.4` has not superseded V2.1 and is not a released electrical baseline.
 - **HR-V0-FW-P0.1** identifies the preliminary watchdog/supervisor source candidate. It has executable source tests but no released binary or HIL evidence.
 - Website releases are identified by their website Git commit and hosted version. A website release is a presentation of controlled artifacts, not an engineering revision.
 

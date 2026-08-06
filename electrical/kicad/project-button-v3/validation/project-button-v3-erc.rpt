@@ -1,4 +1,4 @@
-ERC report (2026-08-06T15:37:14, Encoding UTF8)
+ERC report (2026-08-06T16:02:55, Encoding UTF8)
 Report includes: Errors, Warnings
 
 ***** Sheet /
@@ -17,9 +17,11 @@ Report includes: Errors, Warnings
 
 ***** Sheet /07 Independent watchdog power, controller and drivers/
 
-***** Sheet /08 Compute, debug and control terminals/
+***** Sheet /08 Calculated dual-channel 24 V watchdog feedback/
 
-***** Sheet /09 U2D2, actuator ports and bonding boundary/
+***** Sheet /09 Compute, debug and control terminals/
+
+***** Sheet /10 U2D2, actuator ports and bonding boundary/
 
  ** ERC messages: 0  Errors 0  Warnings 0
 

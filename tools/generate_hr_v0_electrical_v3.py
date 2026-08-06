@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P0.3"
+REV = "V3-P0.4"
 DATE = "2026-08-06"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 NS = uuid.UUID("4cb40c84-3194-4ded-b2c7-d78df616c5c0")
@@ -327,18 +327,65 @@ def sheets() -> list[Sheet]:
                   [pn("Q2", "TBD-IN", "GPIO", "WD2_DRIVE", "left"), pn("Q2", "TBD-COIL", "COIL RETURN", "WD2_COIL_N", "right"),
                    pn("Q2", "TBD-0V", "0V", "SAFETY_0V", "left")],
                   "SELECTION REQUIRED", "Independently driven duplicate channel; common-cause review open.", position=(210, 190), width=82),
-        Component("IFB1", "KWD1 24 V NC-feedback input interface",
-                  [pn("IFB1", "TBD-IN+", "24V FEEDBACK", "WD1_NC_24V", "left"), pn("IFB1", "TBD-IN-", "INPUT RETURN", "SAFETY_0V", "left"),
-                   pn("IFB1", "TBD-3V3", "LOGIC PULLUP", "WD_3V3", "left"), pn("IFB1", "TBD-OUT", "3V3 LOGIC OUT", "WD1_NC_DIAG", "right"),
-                   pn("IFB1", "TBD-GND", "LOGIC GROUND", "SAFETY_0V", "right")],
-                  "DESIGN REQUIRED", "P0.3 removes the direct 24 V-to-GPIO path. Select and calculate the complete protected 24 V input/3.3 V output circuit; VO615A-3X001 is only an optocoupler screening candidate.",
-                  "https://www.vishay.com/docs/81753/vo615a.pdf", "Vishay VO615A datasheet 81753, rev. 2.3 dated 2017-02-08; resistor, CTR, threshold, fault and PCB design remain open.", position=(95, 245), width=82),
-        Component("IFB2", "KWD2 24 V NC-feedback input interface",
-                  [pn("IFB2", "TBD-IN+", "24V FEEDBACK", "WD2_NC_24V", "left"), pn("IFB2", "TBD-IN-", "INPUT RETURN", "SAFETY_0V", "left"),
-                   pn("IFB2", "TBD-3V3", "LOGIC PULLUP", "WD_3V3", "left"), pn("IFB2", "TBD-OUT", "3V3 LOGIC OUT", "WD2_NC_DIAG", "right"),
-                   pn("IFB2", "TBD-GND", "LOGIC GROUND", "SAFETY_0V", "right")],
-                  "DESIGN REQUIRED", "Independent duplicate diagnostic channel; exact circuit and common-cause review remain open.",
-                  "https://www.vishay.com/docs/81753/vo615a.pdf", position=(210, 245), width=82),
+        Component("UFB1", "Texas Instruments ISO1212DBQ dual 24 V input receiver",
+                  [pn("UFB1", "1", "GND1", "SAFETY_0V", "left"), pn("UFB1", "2", "VCC1", "WD_3V3", "left"),
+                   pn("UFB1", "3", "EN TIED HIGH", "WD_3V3", "left"), pn("UFB1", "4", "OUT1", "UFB_OUT1", "right"),
+                   pn("UFB1", "5", "OUT2", "UFB_OUT2", "right"), pn("UFB1", "6", "NC", "INTENTIONALLY_UNUSED_UFB1_6", "right"),
+                   pn("UFB1", "7", "NC", "INTENTIONALLY_UNUSED_UFB1_7", "right"), pn("UFB1", "8", "GND1", "SAFETY_0V", "left"),
+                   pn("UFB1", "9", "FGND2", "SAFETY_0V", "left"), pn("UFB1", "10", "IN2", "FB_IN2", "left"),
+                   pn("UFB1", "11", "SENSE2", "FB_SENSE2", "left"), pn("UFB1", "12", "SUB2 FLOAT", "INTENTIONALLY_UNUSED_UFB1_12", "right"),
+                   pn("UFB1", "13", "SUB1 FLOAT", "INTENTIONALLY_UNUSED_UFB1_13", "right"), pn("UFB1", "14", "FGND1", "SAFETY_0V", "left"),
+                   pn("UFB1", "15", "IN1", "FB_IN1", "left"), pn("UFB1", "16", "SENSE1", "FB_SENSE1", "left")],
+                  "PROPOSED - PCB/EMC VERIFICATION REQUIRED", "Exact dual-channel receiver candidate. Logic and field grounds both return to SAFETY_0V in this non-isolated system, so no galvanic-isolation or safety-integrity credit is claimed. Layout, thermal, EMC, fault-injection and received-part tests remain open.",
+                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", "TI ISO1211/ISO1212 datasheet SLLSEY7G, revised February 2025; ISO1212DBQ active tube orderable confirmed 2026-08-06.", position=(205, 115), width=82),
+        Component("RTH1", "1.00 kOhm 1% >=0.25 W MELF RTHR channel 1",
+                  [pn("RTH1", "1", "FIELD INPUT", "WD1_NC_24V", "left"), pn("RTH1", "2", "SENSE", "FB_SENSE1", "right")],
+                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "TI Type-3 threshold resistor value. TI requires 0.25 W MELF for RTHR surge limiting; freeze exact voltage, pulse, temperature and package ratings with the PCB release.",
+                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", position=(55, 60), width=50),
+        Component("RSN1", "562 Ohm 1% RSENSE channel 1",
+                  [pn("RSN1", "1", "SENSE", "FB_SENSE1", "left"), pn("RSN1", "2", "IN", "FB_IN1", "right")],
+                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "TI current-limit resistor connected between SENSE1 and IN1; exact order code and PCB footprint remain open.",
+                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", position=(55, 120), width=50),
+        Component("CFI1", "10 nF 50 V CIN channel 1",
+                  [pn("CFI1", "1", "SENSE", "FB_SENSE1", "left"), pn("CFI1", "2", "FIELD RETURN", "SAFETY_0V", "right")],
+                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "TI Type-3 input-filter value. Select dielectric, tolerance, DC-bias and package; locate at UFB1.",
+                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", position=(55, 180), width=50),
+        Component("RW1", "2.70 kOhm 1% 0.5 W contact-wetting load channel 1",
+                  [pn("RW1", "1", "FIELD INPUT", "WD1_NC_24V", "left"), pn("RW1", "2", "FIELD RETURN", "SAFETY_0V", "right")],
+                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Parallel wetting load raises guaranteed closed-contact current above the Phoenix 10 mA minimum; exact resistor pulse/temperature rating and order code remain open.",
+                  "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf", position=(55, 225), width=50),
+        Component("RTH2", "1.00 kOhm 1% >=0.25 W MELF RTHR channel 2",
+                  [pn("RTH2", "1", "FIELD INPUT", "WD2_NC_24V", "left"), pn("RTH2", "2", "SENSE", "FB_SENSE2", "right")],
+                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Same calculated threshold network as channel 1.",
+                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", position=(355, 60), width=50),
+        Component("RSN2", "562 Ohm 1% RSENSE channel 2",
+                  [pn("RSN2", "1", "SENSE", "FB_SENSE2", "left"), pn("RSN2", "2", "IN", "FB_IN2", "right")],
+                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Same current-limit network as channel 1.",
+                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", position=(355, 120), width=50),
+        Component("CFI2", "10 nF 50 V CIN channel 2",
+                  [pn("CFI2", "1", "SENSE", "FB_SENSE2", "left"), pn("CFI2", "2", "FIELD RETURN", "SAFETY_0V", "right")],
+                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Same input filter as channel 1.",
+                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", position=(355, 180), width=50),
+        Component("RW2", "2.70 kOhm 1% 0.5 W contact-wetting load channel 2",
+                  [pn("RW2", "1", "FIELD INPUT", "WD2_NC_24V", "left"), pn("RW2", "2", "FIELD RETURN", "SAFETY_0V", "right")],
+                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Same wetting-current design as channel 1.",
+                  "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf", position=(355, 225), width=50),
+        Component("CDEC1", "100 nF VCC1 decoupling",
+                  [pn("CDEC1", "1", "3V3", "WD_3V3", "left"), pn("CDEC1", "2", "GND1", "SAFETY_0V", "right")],
+                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Required by TI; place within 2 mm of UFB1 VCC1/GND1 pins. Exact dielectric, voltage rating and footprint remain open.",
+                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", position=(140, 190), width=50),
+        Component("RSO1", "1.00 kOhm 1% GPIO series channel 1",
+                  [pn("RSO1", "1", "RECEIVER OUT", "UFB_OUT1", "left"), pn("RSO1", "2", "PICO INPUT", "WD1_NC_DIAG", "right")],
+                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Limits abnormal GPIO/output contention current; does not provide safety isolation.", position=(220, 190), width=50),
+        Component("RSO2", "1.00 kOhm 1% GPIO series channel 2",
+                  [pn("RSO2", "1", "RECEIVER OUT", "UFB_OUT2", "left"), pn("RSO2", "2", "PICO INPUT", "WD2_NC_DIAG", "right")],
+                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Same output conditioning as channel 1.", position=(300, 190), width=50),
+        Component("RPD1", "10.0 kOhm 1% GPIO default-low channel 1",
+                  [pn("RPD1", "1", "PICO INPUT", "WD1_NC_DIAG", "left"), pn("RPD1", "2", "LOGIC RETURN", "SAFETY_0V", "right")],
+                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Biases the diagnostic low when the receiver output is high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.", position=(220, 230), width=50),
+        Component("RPD2", "10.0 kOhm 1% GPIO default-low channel 2",
+                  [pn("RPD2", "1", "PICO INPUT", "WD2_NC_DIAG", "left"), pn("RPD2", "2", "LOGIC RETURN", "SAFETY_0V", "right")],
+                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Same default-low behavior as channel 1.", position=(300, 230), width=50),
         Component("JDBG1", "Watchdog programming/debug connector",
                   [pn("JDBG1", "TBD-SWDIO", "SWDIO", "WD_SWDIO", "left"), pn("JDBG1", "TBD-SWCLK", "SWCLK", "WD_SWCLK", "left"),
                    pn("JDBG1", "TBD-GND", "GND", "SAFETY_0V", "left")],
@@ -450,30 +497,40 @@ def sheets() -> list[Sheet]:
                 "Every injection module requires released source, continuity, isolation, pull and no-backfeed tests."]
 
     s7 = Sheet(7, "07_watchdog_control.kicad_sch", "Independent watchdog power, controller and drivers",
-               "24 V relay feedback is converted before the Pico; the watchdog receives no safety-integrity credit by assertion.")
+               "The ordinary watchdog controller and drivers receive no safety-integrity credit by assertion.")
     s7.components = placed(
-        ["DC1", "ISO1", "WDCTRL1", "Q1", "Q2", "IFB1", "IFB2"],
-        [(95, 60), (300, 60), (95, 135), (300, 135), (95, 190), (300, 190), (95, 230)],
+        ["DC1", "ISO1", "WDCTRL1", "Q1", "Q2"],
+        [(95, 65), (300, 65), (95, 165), (300, 150), (300, 225)],
     )
-    s7.notes = ["No 24 V diagnostic net may connect directly to a Pico GPIO; IFB1/IFB2 remain unreleased input-interface designs.",
-                "Power-up, brownout, clock, stuck-GPIO and firmware tests are mandatory; qualified review decides whether watchdog loss is credited or diagnostic only."]
+    s7.notes = ["Power-up, brownout, clock, stuck-GPIO and firmware tests are mandatory.",
+                "Qualified review decides whether watchdog loss is credited or diagnostic only; current safety credit is NONE."]
 
-    s8 = Sheet(8, "08_compute_and_control_terminals.kicad_sch", "Compute, debug and control terminals",
+    s8 = Sheet(8, "08_watchdog_feedback_interface.kicad_sch", "Calculated dual-channel 24 V watchdog feedback",
+               "ISO1212DBQ converts both relay NC diagnostics to default-low 3.3 V logic; no isolation or safety credit is claimed.")
+    s8.components = placed(
+        ["UFB1", "RTH1", "RSN1", "CFI1", "RW1", "RTH2", "RSN2", "CFI2", "RW2", "CDEC1", "RSO1", "RSO2", "RPD1", "RPD2"],
+        [(205, 105), (70, 55), (70, 105), (70, 155), (70, 210), (350, 55), (350, 105), (350, 155), (350, 210),
+         (205, 160), (140, 190), (270, 190), (140, 230), (270, 230)],
+    )
+    s8.notes = ["Type-3 values: RTHR=1.00 kOhm, RSENSE=562 Ohm, CIN=10 nF; calculated wetting load is 2.70 kOhm 1% 0.5 W per channel.",
+                "Both grounds are SAFETY_0V; the ISO1212 barrier is not credited. Exact passive order codes, PCB, EMC and fault tests remain open."]
+
+    s9 = Sheet(9, "09_compute_and_control_terminals.kicad_sch", "Compute, debug and control terminals",
                "High-level compute and diagnostic wiring have no authority to bypass or restore the safety chain.")
-    s8.components = placed(["PI1", "JDBG1", "XT1"], [(left, 80), (right, 80), (left, 200)])
-    s8.notes = ["Programming/debug connections must not enable outputs during operation.",
+    s9.components = placed(["PI1", "JDBG1", "XT1"], [(left, 80), (right, 80), (left, 200)])
+    s9.notes = ["Programming/debug connections must not enable outputs during operation.",
                 "Terminal family, markers, conductor range, torque and enclosure layout remain selection required."]
 
-    s9 = Sheet(9, "09_actuator_interfaces.kicad_sch", "U2D2, actuator ports and bonding boundary",
+    s10 = Sheet(10, "10_actuator_interfaces.kicad_sch", "U2D2, actuator ports and bonding boundary",
                "The U2D2 cable carries DATA and GND only; protected VDD is injected at each actuator.")
-    s9.components = placed(
+    s10.components = placed(
         ["U1", "J1", "J2", "J3", "JFRAME1"],
         [(left, 70), (right, 70), (left, 165), (right, 165), (180, 225)],
     )
-    s9.notes = ["The V0 bus is TTL; HR-30 RS-485 remains a separate architecture.",
+    s10.notes = ["The V0 bus is TTL; HR-30 RS-485 remains a separate architecture.",
                 "Do not bond frame or shields to 0V/PE until EMC and parallel-path review accepts the exact implementation."]
 
-    return [s1, s2, s3, s4, s5, s6, s7, s8, s9]
+    return [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10]
 
 
 def font(size: float = 1.8, justify: str = "") -> str:
@@ -633,8 +690,8 @@ def child_schematic(root_uuid: str, sheet: Sheet, net_counts: dict[str, int],
 def root_schematic(root_uuid: str, items: list[Sheet]) -> str:
     blocks = []
     positions = [
-        (17.78 + col * 132.08, 50.8 + row * 58.42)
-        for row in range(3)
+        (17.78 + col * 132.08, 42.0 + row * 56.0)
+        for row in range(4)
         for col in range(3)
     ]
     for sheet, (x, y) in zip(items, positions):
@@ -719,7 +776,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 
 - Separate SR1 RESET eligibility and SRA1 ARM/EDM stages.
 - Two separately driven watchdog relay contacts interrupt the two SR1 input returns so heartbeat loss forces the physical RESET stage to drop.
-- Phoenix relay terminals are frozen from the official circuit diagram, and each 24 V NC diagnostic passes through an explicit unreleased input-interface block before the Pico GPIO.
+- Phoenix relay terminals are frozen from the official circuit diagram. Both 24 V NC diagnostics pass through the calculated ISO1212DBQ input network before the Pico GPIO; exact passive order codes, PCB and physical validation remain open.
 - Heartbeat restoration cannot restore contactors; SRA1 requires a new monitored ARM action.
 - External Mean Well adapters replace project-built mains wiring.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.

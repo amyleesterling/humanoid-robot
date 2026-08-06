@@ -8,6 +8,8 @@ Firmware configuration: `HR-V0-WD-P0.2`
 
 Date: 2026-08-06
 
+Historical status: this R18 voltage-boundary correction is retained for traceability. Electrical V3-P0.4 and `docs/hr-v0-watchdog-feedback-p0.1.md` supersede the opaque `IFB1`/`IFB2` design placeholders with a calculated ISO1212DBQ candidate. The PCB and physical-validation gates remain open.
+
 ## Correction being controlled
 
 Electrical V3-P0.2 connected the `KWD1`/`KWD2` first-changeover NC diagnostic nodes directly to unresolved Pico feedback pins. Those NC nodes share their contact common with the 24 V SR1 input returns. Treating them as logic-level signals was incorrect and could expose a 3.3 V GPIO to 24 V.

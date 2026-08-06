@@ -25,8 +25,20 @@ sheet,reference,status,evidence_needed
 07_watchdog_control.kicad_sch,WDCTRL1,PROPOSED - GPIO FROZEN; PLATFORM RELEASE OPEN,"Monotonic heartbeat monitor. Physical GPIO candidates are frozen for review; platform startup, external bias, compilation, HIL and shared failures remain open and receive no safety credit."
 07_watchdog_control.kicad_sch,Q1,SELECTION REQUIRED,"Exact transistor/driver, base/gate network, default-off bias, fault behavior and polarity with relay internal diode open."
 07_watchdog_control.kicad_sch,Q2,SELECTION REQUIRED,Independently driven duplicate channel; common-cause review open.
-07_watchdog_control.kicad_sch,IFB1,DESIGN REQUIRED,P0.3 removes the direct 24 V-to-GPIO path. Select and calculate the complete protected 24 V input/3.3 V output circuit; VO615A-3X001 is only an optocoupler screening candidate.
-07_watchdog_control.kicad_sch,IFB2,DESIGN REQUIRED,Independent duplicate diagnostic channel; exact circuit and common-cause review remain open.
-08_compute_and_control_terminals.kicad_sch,JDBG1,SELECTION REQUIRED,Tool-only interface; must not enable or bypass outputs during operation.
-08_compute_and_control_terminals.kicad_sch,XT1,SELECTION REQUIRED,"Exact terminal family, end covers, jumpers, markers, conductor range and torque open."
-09_actuator_interfaces.kicad_sch,JFRAME1,SELECTION REQUIRED,Do not connect frame or shield to 0V/PE until EMC and parallel-path review accepts the implementation.
+08_watchdog_feedback_interface.kicad_sch,UFB1,PROPOSED - PCB/EMC VERIFICATION REQUIRED,"Exact dual-channel receiver candidate. Logic and field grounds both return to SAFETY_0V in this non-isolated system, so no galvanic-isolation or safety-integrity credit is claimed. Layout, thermal, EMC, fault-injection and received-part tests remain open."
+08_watchdog_feedback_interface.kicad_sch,RTH1,VALUE FROZEN - ORDER CODE SELECTION REQUIRED,"TI Type-3 threshold resistor value. TI requires 0.25 W MELF for RTHR surge limiting; freeze exact voltage, pulse, temperature and package ratings with the PCB release."
+08_watchdog_feedback_interface.kicad_sch,RSN1,VALUE FROZEN - ORDER CODE SELECTION REQUIRED,TI current-limit resistor connected between SENSE1 and IN1; exact order code and PCB footprint remain open.
+08_watchdog_feedback_interface.kicad_sch,CFI1,VALUE FROZEN - ORDER CODE SELECTION REQUIRED,"TI Type-3 input-filter value. Select dielectric, tolerance, DC-bias and package; locate at UFB1."
+08_watchdog_feedback_interface.kicad_sch,RW1,VALUE FROZEN - ORDER CODE SELECTION REQUIRED,Parallel wetting load raises guaranteed closed-contact current above the Phoenix 10 mA minimum; exact resistor pulse/temperature rating and order code remain open.
+08_watchdog_feedback_interface.kicad_sch,RTH2,VALUE FROZEN - ORDER CODE SELECTION REQUIRED,Same calculated threshold network as channel 1.
+08_watchdog_feedback_interface.kicad_sch,RSN2,VALUE FROZEN - ORDER CODE SELECTION REQUIRED,Same current-limit network as channel 1.
+08_watchdog_feedback_interface.kicad_sch,CFI2,VALUE FROZEN - ORDER CODE SELECTION REQUIRED,Same input filter as channel 1.
+08_watchdog_feedback_interface.kicad_sch,RW2,VALUE FROZEN - ORDER CODE SELECTION REQUIRED,Same wetting-current design as channel 1.
+08_watchdog_feedback_interface.kicad_sch,CDEC1,VALUE FROZEN - ORDER CODE SELECTION REQUIRED,"Required by TI; place within 2 mm of UFB1 VCC1/GND1 pins. Exact dielectric, voltage rating and footprint remain open."
+08_watchdog_feedback_interface.kicad_sch,RSO1,VALUE FROZEN - ORDER CODE SELECTION REQUIRED,Limits abnormal GPIO/output contention current; does not provide safety isolation.
+08_watchdog_feedback_interface.kicad_sch,RSO2,VALUE FROZEN - ORDER CODE SELECTION REQUIRED,Same output conditioning as channel 1.
+08_watchdog_feedback_interface.kicad_sch,RPD1,VALUE FROZEN - ORDER CODE SELECTION REQUIRED,Biases the diagnostic low when the receiver output is high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.
+08_watchdog_feedback_interface.kicad_sch,RPD2,VALUE FROZEN - ORDER CODE SELECTION REQUIRED,Same default-low behavior as channel 1.
+09_compute_and_control_terminals.kicad_sch,JDBG1,SELECTION REQUIRED,Tool-only interface; must not enable or bypass outputs during operation.
+09_compute_and_control_terminals.kicad_sch,XT1,SELECTION REQUIRED,"Exact terminal family, end covers, jumpers, markers, conductor range and torque open."
+10_actuator_interfaces.kicad_sch,JFRAME1,SELECTION REQUIRED,Do not connect frame or shield to 0V/PE until EMC and parallel-path review accepts the implementation.

@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-06T15:37:15")
+		(date "2026-08-06T16:02:56")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P0.3")
+			(name "REVISION") "V3-P0.4")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,7 +15,7 @@
 			(title_block
 				(title "Project Button HR-V0 Electrical V3 index")
 				(company "Project Button")
-				(rev "V3-P0.3")
+				(rev "V3-P0.4")
 				(date "2026-08-06")
 				(source "project-button-v3.kicad_sch")
 				(comment
@@ -63,7 +63,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 01")
 				(company "Project Button")
-				(rev "V3-P0.3")
+				(rev "V3-P0.4")
 				(date "2026-08-06")
 				(source "01_external_sources.kicad_sch")
 				(comment
@@ -111,7 +111,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 02")
 				(company "Project Button")
-				(rev "V3-P0.3")
+				(rev "V3-P0.4")
 				(date "2026-08-06")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
@@ -159,7 +159,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 03")
 				(company "Project Button")
-				(rev "V3-P0.3")
+				(rev "V3-P0.4")
 				(date "2026-08-06")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
@@ -207,7 +207,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 04")
 				(company "Project Button")
-				(rev "V3-P0.3")
+				(rev "V3-P0.4")
 				(date "2026-08-06")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
@@ -255,7 +255,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 05")
 				(company "Project Button")
-				(rev "V3-P0.3")
+				(rev "V3-P0.4")
 				(date "2026-08-06")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
@@ -303,7 +303,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 06")
 				(company "Project Button")
-				(rev "V3-P0.3")
+				(rev "V3-P0.4")
 				(date "2026-08-06")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
@@ -351,7 +351,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 07")
 				(company "Project Button")
-				(rev "V3-P0.3")
+				(rev "V3-P0.4")
 				(date "2026-08-06")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
@@ -394,14 +394,14 @@
 		)
 		(sheet
 			(number "9")
-			(name "/08 Compute, debug and control terminals/")
-			(tstamps "/fe24a110-40e3-5555-b2c3-1be661f8d1d9/")
+			(name "/08 Calculated dual-channel 24 V watchdog feedback/")
+			(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 08")
 				(company "Project Button")
-				(rev "V3-P0.3")
+				(rev "V3-P0.4")
 				(date "2026-08-06")
-				(source "08_compute_and_control_terminals.kicad_sch")
+				(source "08_watchdog_feedback_interface.kicad_sch")
 				(comment
 					(number "1")
 					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
@@ -442,14 +442,62 @@
 		)
 		(sheet
 			(number "10")
-			(name "/09 U2D2, actuator ports and bonding boundary/")
-			(tstamps "/3d723ab8-9971-5c2f-b184-e89d898c907a/")
+			(name "/09 Compute, debug and control terminals/")
+			(tstamps "/f3a60727-2e66-5730-a829-00cc7c809e89/")
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 09")
 				(company "Project Button")
-				(rev "V3-P0.3")
+				(rev "V3-P0.4")
 				(date "2026-08-06")
-				(source "09_actuator_interfaces.kicad_sch")
+				(source "09_compute_and_control_terminals.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "11")
+			(name "/10 U2D2, actuator ports and bonding boundary/")
+			(tstamps "/11f6090f-9f69-5145-93e3-5ccb2d8899ac/")
+			(title_block
+				(title "PB HR-V0 Electrical V3 - 10")
+				(company "Project Button")
+				(rev "V3-P0.4")
+				(date "2026-08-06")
+				(source "10_actuator_interfaces.kicad_sch")
 				(comment
 					(number "1")
 					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
@@ -2650,153 +2698,6 @@
 			)
 		)
 		(comp
-			(ref "IFB1")
-			(value "KWD1 24 V NC-feedback input interface")
-			(datasheet "https://www.vishay.com/docs/81753/vo615a.pdf")
-			(description "P0.3 removes the direct 24 V-to-GPIO path. Select and calculate the complete protected 24 V input/3.3 V output circuit; VO615A-3X001 is only an optocoupler screening candidate.")
-			(fields
-				(field
-					(name "Status") "DESIGN REQUIRED")
-				(field
-					(name "Evidence") "Vishay VO615A datasheet 81753, rev. 2.3 dated 2017-02-08; resistor, CTR, threshold, fault and PCB design remain open.")
-				(field
-					(name "Display") "KWD1 24 V NC-feedback input interface")
-				(field
-					(name "Footprint")
-				)
-				(field
-					(name "Datasheet") "https://www.vishay.com/docs/81753/vo615a.pdf")
-				(field
-					(name "Description") "P0.3 removes the direct 24 V-to-GPIO path. Select and calculate the complete protected 24 V input/3.3 V output circuit; VO615A-3X001 is only an optocoupler screening candidate.")
-			)
-			(libsource
-				(lib "PBV3")
-				(part "IFB1")
-				(description "P0.3 removes the direct 24 V-to-GPIO path. Select and calculate the complete protected 24 V input/3.3 V output circuit; VO615A-3X001 is only an optocoupler screening candidate.")
-			)
-			(property
-				(name "Status")
-				(value "DESIGN REQUIRED")
-			)
-			(property
-				(name "Evidence")
-				(value "Vishay VO615A datasheet 81753, rev. 2.3 dated 2017-02-08; resistor, CTR, threshold, fault and PCB design remain open.")
-			)
-			(property
-				(name "Display")
-				(value "KWD1 24 V NC-feedback input interface")
-			)
-			(property
-				(name "Sheetname")
-				(value "07 Independent watchdog power, controller and drivers")
-			)
-			(property
-				(name "Sheetfile")
-				(value "07_watchdog_control.kicad_sch")
-			)
-			(sheetpath
-				(names "/07 Independent watchdog power, controller and drivers/")
-				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
-			)
-			(tstamps "b1c1ecd4-63af-5cb6-8ccd-cb96347a67d4")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "TBD-3V3")
-						)
-						(pin
-							(num "TBD-IN-")
-						)
-						(pin
-							(num "TBD-IN+")
-						)
-						(pin
-							(num "TBD-GND")
-						)
-						(pin
-							(num "TBD-OUT")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "IFB2")
-			(value "KWD2 24 V NC-feedback input interface")
-			(datasheet "https://www.vishay.com/docs/81753/vo615a.pdf")
-			(description "Independent duplicate diagnostic channel; exact circuit and common-cause review remain open.")
-			(fields
-				(field
-					(name "Status") "DESIGN REQUIRED")
-				(field
-					(name "Evidence")
-				)
-				(field
-					(name "Display") "KWD2 24 V NC-feedback input interface")
-				(field
-					(name "Footprint")
-				)
-				(field
-					(name "Datasheet") "https://www.vishay.com/docs/81753/vo615a.pdf")
-				(field
-					(name "Description") "Independent duplicate diagnostic channel; exact circuit and common-cause review remain open.")
-			)
-			(libsource
-				(lib "PBV3")
-				(part "IFB2")
-				(description "Independent duplicate diagnostic channel; exact circuit and common-cause review remain open.")
-			)
-			(property
-				(name "Status")
-				(value "DESIGN REQUIRED")
-			)
-			(property
-				(name "Evidence")
-				(value "")
-			)
-			(property
-				(name "Display")
-				(value "KWD2 24 V NC-feedback input interface")
-			)
-			(property
-				(name "Sheetname")
-				(value "07 Independent watchdog power, controller and drivers")
-			)
-			(property
-				(name "Sheetfile")
-				(value "07_watchdog_control.kicad_sch")
-			)
-			(sheetpath
-				(names "/07 Independent watchdog power, controller and drivers/")
-				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
-			)
-			(tstamps "ae034af0-ddee-5e2c-940c-e9953f2cd542")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "TBD-3V3")
-						)
-						(pin
-							(num "TBD-IN-")
-						)
-						(pin
-							(num "TBD-IN+")
-						)
-						(pin
-							(num "TBD-GND")
-						)
-						(pin
-							(num "TBD-OUT")
-						)
-					)
-				)
-			)
-		)
-		(comp
 			(ref "ISO1")
 			(value "Heartbeat isolation/interface")
 			(description "Exact isolation/interface, edge behavior, fault response and connector remain open.")
@@ -3092,6 +2993,957 @@
 			)
 		)
 		(comp
+			(ref "CDEC1")
+			(value "100 nF VCC1 decoupling")
+			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "Required by TI; place within 2 mm of UFB1 VCC1/GND1 pins. Exact dielectric, voltage rating and footprint remain open.")
+			(fields
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "100 nF VCC1 decoupling")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "Required by TI; place within 2 mm of UFB1 VCC1/GND1 pins. Exact dielectric, voltage rating and footprint remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "CDEC1")
+				(description "Required by TI; place within 2 mm of UFB1 VCC1/GND1 pins. Exact dielectric, voltage rating and footprint remain open.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "100 nF VCC1 decoupling")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Calculated dual-channel 24 V watchdog feedback")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_watchdog_feedback_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Calculated dual-channel 24 V watchdog feedback/")
+				(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
+			)
+			(tstamps "b73dc146-5bf1-5d6d-91da-ec204f681ecf")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "CFI1")
+			(value "10 nF 50 V CIN channel 1")
+			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "TI Type-3 input-filter value. Select dielectric, tolerance, DC-bias and package; locate at UFB1.")
+			(fields
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "10 nF 50 V CIN channel 1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "TI Type-3 input-filter value. Select dielectric, tolerance, DC-bias and package; locate at UFB1.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "CFI1")
+				(description "TI Type-3 input-filter value. Select dielectric, tolerance, DC-bias and package; locate at UFB1.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "10 nF 50 V CIN channel 1")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Calculated dual-channel 24 V watchdog feedback")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_watchdog_feedback_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Calculated dual-channel 24 V watchdog feedback/")
+				(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
+			)
+			(tstamps "cc452e02-cd1a-5e55-880a-bc96e8aadef4")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "CFI2")
+			(value "10 nF 50 V CIN channel 2")
+			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "Same input filter as channel 1.")
+			(fields
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "10 nF 50 V CIN channel 2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "Same input filter as channel 1.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "CFI2")
+				(description "Same input filter as channel 1.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "10 nF 50 V CIN channel 2")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Calculated dual-channel 24 V watchdog feedback")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_watchdog_feedback_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Calculated dual-channel 24 V watchdog feedback/")
+				(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
+			)
+			(tstamps "949de304-094d-5501-ae28-15d6ed7e1b46")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RPD1")
+			(value "10.0 kOhm 1% GPIO default-low channel 1")
+			(description "Biases the diagnostic low when the receiver output is high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
+			(fields
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "10.0 kOhm 1% GPIO default-low channel 1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Biases the diagnostic low when the receiver output is high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RPD1")
+				(description "Biases the diagnostic low when the receiver output is high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "10.0 kOhm 1% GPIO default-low channel 1")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Calculated dual-channel 24 V watchdog feedback")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_watchdog_feedback_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Calculated dual-channel 24 V watchdog feedback/")
+				(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
+			)
+			(tstamps "93dbb554-e51f-5b61-8e60-62c6a4f96ec6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RPD2")
+			(value "10.0 kOhm 1% GPIO default-low channel 2")
+			(description "Same default-low behavior as channel 1.")
+			(fields
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "10.0 kOhm 1% GPIO default-low channel 2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Same default-low behavior as channel 1.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RPD2")
+				(description "Same default-low behavior as channel 1.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "10.0 kOhm 1% GPIO default-low channel 2")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Calculated dual-channel 24 V watchdog feedback")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_watchdog_feedback_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Calculated dual-channel 24 V watchdog feedback/")
+				(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
+			)
+			(tstamps "d6c12b89-9133-5de9-829f-dd53a618b5b9")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RSN1")
+			(value "562 Ohm 1% RSENSE channel 1")
+			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "TI current-limit resistor connected between SENSE1 and IN1; exact order code and PCB footprint remain open.")
+			(fields
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "562 Ohm 1% RSENSE channel 1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "TI current-limit resistor connected between SENSE1 and IN1; exact order code and PCB footprint remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RSN1")
+				(description "TI current-limit resistor connected between SENSE1 and IN1; exact order code and PCB footprint remain open.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "562 Ohm 1% RSENSE channel 1")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Calculated dual-channel 24 V watchdog feedback")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_watchdog_feedback_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Calculated dual-channel 24 V watchdog feedback/")
+				(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
+			)
+			(tstamps "f2c99674-0268-57c7-b633-9f192383ca6e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RSN2")
+			(value "562 Ohm 1% RSENSE channel 2")
+			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "Same current-limit network as channel 1.")
+			(fields
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "562 Ohm 1% RSENSE channel 2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "Same current-limit network as channel 1.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RSN2")
+				(description "Same current-limit network as channel 1.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "562 Ohm 1% RSENSE channel 2")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Calculated dual-channel 24 V watchdog feedback")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_watchdog_feedback_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Calculated dual-channel 24 V watchdog feedback/")
+				(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
+			)
+			(tstamps "c36b3123-7fe3-5c55-8c44-58eb90482089")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RSO1")
+			(value "1.00 kOhm 1% GPIO series channel 1")
+			(description "Limits abnormal GPIO/output contention current; does not provide safety isolation.")
+			(fields
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "1.00 kOhm 1% GPIO series channel 1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Limits abnormal GPIO/output contention current; does not provide safety isolation.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RSO1")
+				(description "Limits abnormal GPIO/output contention current; does not provide safety isolation.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "1.00 kOhm 1% GPIO series channel 1")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Calculated dual-channel 24 V watchdog feedback")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_watchdog_feedback_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Calculated dual-channel 24 V watchdog feedback/")
+				(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
+			)
+			(tstamps "702a9947-09b4-5502-b31c-deaf2d743798")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RSO2")
+			(value "1.00 kOhm 1% GPIO series channel 2")
+			(description "Same output conditioning as channel 1.")
+			(fields
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "1.00 kOhm 1% GPIO series channel 2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Same output conditioning as channel 1.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RSO2")
+				(description "Same output conditioning as channel 1.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "1.00 kOhm 1% GPIO series channel 2")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Calculated dual-channel 24 V watchdog feedback")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_watchdog_feedback_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Calculated dual-channel 24 V watchdog feedback/")
+				(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
+			)
+			(tstamps "c55cfe5d-b2bc-54a2-8aa1-c856aa0b7533")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RTH1")
+			(value "1.00 kOhm 1% >=0.25 W MELF RTHR channel 1")
+			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "TI Type-3 threshold resistor value. TI requires 0.25 W MELF for RTHR surge limiting; freeze exact voltage, pulse, temperature and package ratings with the PCB release.")
+			(fields
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "1.00 kOhm 1% >=0.25 W MELF RTHR channel 1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "TI Type-3 threshold resistor value. TI requires 0.25 W MELF for RTHR surge limiting; freeze exact voltage, pulse, temperature and package ratings with the PCB release.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RTH1")
+				(description "TI Type-3 threshold resistor value. TI requires 0.25 W MELF for RTHR surge limiting; freeze exact voltage, pulse, temperature and package ratings with the PCB release.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "1.00 kOhm 1% >=0.25 W MELF RTHR channel 1")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Calculated dual-channel 24 V watchdog feedback")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_watchdog_feedback_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Calculated dual-channel 24 V watchdog feedback/")
+				(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
+			)
+			(tstamps "4a3aa18b-bfc0-52b7-aa28-33fad2edafb5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RTH2")
+			(value "1.00 kOhm 1% >=0.25 W MELF RTHR channel 2")
+			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "Same calculated threshold network as channel 1.")
+			(fields
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "1.00 kOhm 1% >=0.25 W MELF RTHR channel 2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "Same calculated threshold network as channel 1.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RTH2")
+				(description "Same calculated threshold network as channel 1.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "1.00 kOhm 1% >=0.25 W MELF RTHR channel 2")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Calculated dual-channel 24 V watchdog feedback")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_watchdog_feedback_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Calculated dual-channel 24 V watchdog feedback/")
+				(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
+			)
+			(tstamps "b385cbbe-1b4a-5250-b8de-e10e527e7437")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RW1")
+			(value "2.70 kOhm 1% 0.5 W contact-wetting load channel 1")
+			(datasheet "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+			(description "Parallel wetting load raises guaranteed closed-contact current above the Phoenix 10 mA minimum; exact resistor pulse/temperature rating and order code remain open.")
+			(fields
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "2.70 kOhm 1% 0.5 W contact-wetting load channel 1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+				(field
+					(name "Description") "Parallel wetting load raises guaranteed closed-contact current above the Phoenix 10 mA minimum; exact resistor pulse/temperature rating and order code remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RW1")
+				(description "Parallel wetting load raises guaranteed closed-contact current above the Phoenix 10 mA minimum; exact resistor pulse/temperature rating and order code remain open.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "2.70 kOhm 1% 0.5 W contact-wetting load channel 1")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Calculated dual-channel 24 V watchdog feedback")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_watchdog_feedback_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Calculated dual-channel 24 V watchdog feedback/")
+				(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
+			)
+			(tstamps "7dfdc204-76e6-5bfc-8bcd-a89b5c818397")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RW2")
+			(value "2.70 kOhm 1% 0.5 W contact-wetting load channel 2")
+			(datasheet "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+			(description "Same wetting-current design as channel 1.")
+			(fields
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "2.70 kOhm 1% 0.5 W contact-wetting load channel 2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+				(field
+					(name "Description") "Same wetting-current design as channel 1.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RW2")
+				(description "Same wetting-current design as channel 1.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "2.70 kOhm 1% 0.5 W contact-wetting load channel 2")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Calculated dual-channel 24 V watchdog feedback")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_watchdog_feedback_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Calculated dual-channel 24 V watchdog feedback/")
+				(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
+			)
+			(tstamps "24058c82-ecab-5296-a8b7-e3fcb37cf897")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "UFB1")
+			(value "Texas Instruments ISO1212DBQ dual 24 V input receiver")
+			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "Exact dual-channel receiver candidate. Logic and field grounds both return to SAFETY_0V in this non-isolated system, so no galvanic-isolation or safety-integrity credit is claimed. Layout, thermal, EMC, fault-injection and received-part tests remain open.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - PCB/EMC VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "TI ISO1211/ISO1212 datasheet SLLSEY7G, revised February 2025; ISO1212DBQ active tube orderable confirmed 2026-08-06.")
+				(field
+					(name "Display") "Texas Instruments ISO1212DBQ dual 24 V input receiver")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "Exact dual-channel receiver candidate. Logic and field grounds both return to SAFETY_0V in this non-isolated system, so no galvanic-isolation or safety-integrity credit is claimed. Layout, thermal, EMC, fault-injection and received-part tests remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "UFB1")
+				(description "Exact dual-channel receiver candidate. Logic and field grounds both return to SAFETY_0V in this non-isolated system, so no galvanic-isolation or safety-integrity credit is claimed. Layout, thermal, EMC, fault-injection and received-part tests remain open.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - PCB/EMC VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI ISO1211/ISO1212 datasheet SLLSEY7G, revised February 2025; ISO1212DBQ active tube orderable confirmed 2026-08-06.")
+			)
+			(property
+				(name "Display")
+				(value "Texas Instruments ISO1212DBQ dual 24 V input receiver")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Calculated dual-channel 24 V watchdog feedback")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_watchdog_feedback_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Calculated dual-channel 24 V watchdog feedback/")
+				(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
+			)
+			(tstamps "80df261c-1883-59e9-b445-ba8168f2c946")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "16")
+						)
+						(pin
+							(num "15")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "11")
+						)
+						(pin
+							(num "10")
+						)
+						(pin
+							(num "9")
+						)
+						(pin
+							(num "8")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "12")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "4")
+						)
+					)
+				)
+			)
+		)
+		(comp
 			(ref "JDBG1")
 			(value "Watchdog programming/debug connector")
 			(description "Tool-only interface; must not enable or bypass outputs during operation.")
@@ -3131,17 +3983,17 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "08 Compute, debug and control terminals")
+				(value "09 Compute, debug and control terminals")
 			)
 			(property
 				(name "Sheetfile")
-				(value "08_compute_and_control_terminals.kicad_sch")
+				(value "09_compute_and_control_terminals.kicad_sch")
 			)
 			(sheetpath
-				(names "/08 Compute, debug and control terminals/")
-				(tstamps "/fe24a110-40e3-5555-b2c3-1be661f8d1d9/")
+				(names "/09 Compute, debug and control terminals/")
+				(tstamps "/f3a60727-2e66-5730-a829-00cc7c809e89/")
 			)
-			(tstamps "2fd6b60c-413e-57b4-8a1d-f7b7e2efb9e2")
+			(tstamps "45831f69-b9c3-5d03-9388-7f213daa8fdf")
 			(units
 				(unit
 					(name "A")
@@ -3199,17 +4051,17 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "08 Compute, debug and control terminals")
+				(value "09 Compute, debug and control terminals")
 			)
 			(property
 				(name "Sheetfile")
-				(value "08_compute_and_control_terminals.kicad_sch")
+				(value "09_compute_and_control_terminals.kicad_sch")
 			)
 			(sheetpath
-				(names "/08 Compute, debug and control terminals/")
-				(tstamps "/fe24a110-40e3-5555-b2c3-1be661f8d1d9/")
+				(names "/09 Compute, debug and control terminals/")
+				(tstamps "/f3a60727-2e66-5730-a829-00cc7c809e89/")
 			)
-			(tstamps "a30b7d75-b4cb-5300-9017-5ff151c40e72")
+			(tstamps "5d3cf6b7-e963-5eab-858b-86720c4b2ba8")
 			(units
 				(unit
 					(name "A")
@@ -3270,17 +4122,17 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "08 Compute, debug and control terminals")
+				(value "09 Compute, debug and control terminals")
 			)
 			(property
 				(name "Sheetfile")
-				(value "08_compute_and_control_terminals.kicad_sch")
+				(value "09_compute_and_control_terminals.kicad_sch")
 			)
 			(sheetpath
-				(names "/08 Compute, debug and control terminals/")
-				(tstamps "/fe24a110-40e3-5555-b2c3-1be661f8d1d9/")
+				(names "/09 Compute, debug and control terminals/")
+				(tstamps "/f3a60727-2e66-5730-a829-00cc7c809e89/")
 			)
-			(tstamps "5f1804ef-0ae9-5b07-af37-97c7d7f38e8f")
+			(tstamps "e1f65e92-fce2-565e-8d12-8f13cbdee913")
 			(units
 				(unit
 					(name "A")
@@ -3347,17 +4199,17 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "09 U2D2, actuator ports and bonding boundary")
+				(value "10 U2D2, actuator ports and bonding boundary")
 			)
 			(property
 				(name "Sheetfile")
-				(value "09_actuator_interfaces.kicad_sch")
+				(value "10_actuator_interfaces.kicad_sch")
 			)
 			(sheetpath
-				(names "/09 U2D2, actuator ports and bonding boundary/")
-				(tstamps "/3d723ab8-9971-5c2f-b184-e89d898c907a/")
+				(names "/10 U2D2, actuator ports and bonding boundary/")
+				(tstamps "/11f6090f-9f69-5145-93e3-5ccb2d8899ac/")
 			)
-			(tstamps "78f373ad-f0a1-57c3-ac05-03abaca3cc44")
+			(tstamps "0c3fceec-9047-5f09-b38a-e0dfa8e15021")
 			(units
 				(unit
 					(name "A")
@@ -3415,17 +4267,17 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "09 U2D2, actuator ports and bonding boundary")
+				(value "10 U2D2, actuator ports and bonding boundary")
 			)
 			(property
 				(name "Sheetfile")
-				(value "09_actuator_interfaces.kicad_sch")
+				(value "10_actuator_interfaces.kicad_sch")
 			)
 			(sheetpath
-				(names "/09 U2D2, actuator ports and bonding boundary/")
-				(tstamps "/3d723ab8-9971-5c2f-b184-e89d898c907a/")
+				(names "/10 U2D2, actuator ports and bonding boundary/")
+				(tstamps "/11f6090f-9f69-5145-93e3-5ccb2d8899ac/")
 			)
-			(tstamps "d3398fb0-96e1-5028-b37f-55bb7652e5b5")
+			(tstamps "5e05a446-50e7-5a7b-b149-e4fe72669872")
 			(units
 				(unit
 					(name "A")
@@ -3483,17 +4335,17 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "09 U2D2, actuator ports and bonding boundary")
+				(value "10 U2D2, actuator ports and bonding boundary")
 			)
 			(property
 				(name "Sheetfile")
-				(value "09_actuator_interfaces.kicad_sch")
+				(value "10_actuator_interfaces.kicad_sch")
 			)
 			(sheetpath
-				(names "/09 U2D2, actuator ports and bonding boundary/")
-				(tstamps "/3d723ab8-9971-5c2f-b184-e89d898c907a/")
+				(names "/10 U2D2, actuator ports and bonding boundary/")
+				(tstamps "/11f6090f-9f69-5145-93e3-5ccb2d8899ac/")
 			)
-			(tstamps "b11c2395-2db0-5ae1-b0c3-60aa2410829d")
+			(tstamps "82e60caa-dfa2-5468-af10-70b891fcf452")
 			(units
 				(unit
 					(name "A")
@@ -3551,17 +4403,17 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "09 U2D2, actuator ports and bonding boundary")
+				(value "10 U2D2, actuator ports and bonding boundary")
 			)
 			(property
 				(name "Sheetfile")
-				(value "09_actuator_interfaces.kicad_sch")
+				(value "10_actuator_interfaces.kicad_sch")
 			)
 			(sheetpath
-				(names "/09 U2D2, actuator ports and bonding boundary/")
-				(tstamps "/3d723ab8-9971-5c2f-b184-e89d898c907a/")
+				(names "/10 U2D2, actuator ports and bonding boundary/")
+				(tstamps "/11f6090f-9f69-5145-93e3-5ccb2d8899ac/")
 			)
-			(tstamps "d79a3e1a-6acc-5f82-9d86-13c8553fb1dd")
+			(tstamps "582f355e-d9d4-5011-8b97-8ba80184d54a")
 			(units
 				(unit
 					(name "A")
@@ -3616,17 +4468,17 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "09 U2D2, actuator ports and bonding boundary")
+				(value "10 U2D2, actuator ports and bonding boundary")
 			)
 			(property
 				(name "Sheetfile")
-				(value "09_actuator_interfaces.kicad_sch")
+				(value "10_actuator_interfaces.kicad_sch")
 			)
 			(sheetpath
-				(names "/09 U2D2, actuator ports and bonding boundary/")
-				(tstamps "/3d723ab8-9971-5c2f-b184-e89d898c907a/")
+				(names "/10 U2D2, actuator ports and bonding boundary/")
+				(tstamps "/11f6090f-9f69-5145-93e3-5ccb2d8899ac/")
 			)
-			(tstamps "cfd32e6a-bdf6-5434-9aba-def495e10fcf")
+			(tstamps "3ed8a865-ea95-57d8-9b72-48c9cc77255d")
 			(units
 				(unit
 					(name "A")
@@ -3651,6 +4503,120 @@
 	(groups)
 	(variants)
 	(libparts
+		(libpart
+			(lib "PBV3")
+			(part "CDEC1")
+			(description "Required by TI; place within 2 mm of UFB1 VCC1/GND1 pins. Exact dielectric, voltage rating and footprint remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(fields
+				(field
+					(name "Reference") "CDEC1")
+				(field
+					(name "Value") "100 nF VCC1 decoupling")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "Required by TI; place within 2 mm of UFB1 VCC1/GND1 pins. Exact dielectric, voltage rating and footprint remain open.")
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "100 nF VCC1 decoupling")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "3V3")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "GND1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "CFI1")
+			(description "TI Type-3 input-filter value. Select dielectric, tolerance, DC-bias and package; locate at UFB1.")
+			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(fields
+				(field
+					(name "Reference") "CFI1")
+				(field
+					(name "Value") "10 nF 50 V CIN channel 1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "TI Type-3 input-filter value. Select dielectric, tolerance, DC-bias and package; locate at UFB1.")
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "10 nF 50 V CIN channel 1")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "SENSE")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "FIELD_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "CFI2")
+			(description "Same input filter as channel 1.")
+			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(fields
+				(field
+					(name "Reference") "CFI2")
+				(field
+					(name "Value") "10 nF 50 V CIN channel 2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "Same input filter as channel 1.")
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "10 nF 50 V CIN channel 2")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "SENSE")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "FIELD_RETURN")
+					(type "passive")
+				)
+			)
+		)
 		(libpart
 			(lib "PBV3")
 			(part "DC1")
@@ -3961,111 +4927,6 @@
 				(pin
 					(num "TBD-H-")
 					(name "-")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "PBV3")
-			(part "IFB1")
-			(description "P0.3 removes the direct 24 V-to-GPIO path. Select and calculate the complete protected 24 V input/3.3 V output circuit; VO615A-3X001 is only an optocoupler screening candidate.")
-			(docs "https://www.vishay.com/docs/81753/vo615a.pdf")
-			(fields
-				(field
-					(name "Reference") "IFB1")
-				(field
-					(name "Value") "KWD1 24 V NC-feedback input interface")
-				(field
-					(name "Footprint")
-				)
-				(field
-					(name "Datasheet") "https://www.vishay.com/docs/81753/vo615a.pdf")
-				(field
-					(name "Description") "P0.3 removes the direct 24 V-to-GPIO path. Select and calculate the complete protected 24 V input/3.3 V output circuit; VO615A-3X001 is only an optocoupler screening candidate.")
-				(field
-					(name "Status") "DESIGN REQUIRED")
-				(field
-					(name "Evidence") "Vishay VO615A datasheet 81753, rev. 2.3 dated 2017-02-08; resistor, CTR, threshold, fault and PCB design remain open.")
-				(field
-					(name "Display") "KWD1 24 V NC-feedback input interface")
-			)
-			(pins
-				(pin
-					(num "TBD-3V3")
-					(name "LOGIC_PULLUP")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-GND")
-					(name "LOGIC_GROUND")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-IN+")
-					(name "24V_FEEDBACK")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-IN-")
-					(name "INPUT_RETURN")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-OUT")
-					(name "3V3_LOGIC_OUT")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "PBV3")
-			(part "IFB2")
-			(description "Independent duplicate diagnostic channel; exact circuit and common-cause review remain open.")
-			(docs "https://www.vishay.com/docs/81753/vo615a.pdf")
-			(fields
-				(field
-					(name "Reference") "IFB2")
-				(field
-					(name "Value") "KWD2 24 V NC-feedback input interface")
-				(field
-					(name "Footprint")
-				)
-				(field
-					(name "Datasheet") "https://www.vishay.com/docs/81753/vo615a.pdf")
-				(field
-					(name "Description") "Independent duplicate diagnostic channel; exact circuit and common-cause review remain open.")
-				(field
-					(name "Status") "DESIGN REQUIRED")
-				(field
-					(name "Evidence")
-				)
-				(field
-					(name "Display") "KWD2 24 V NC-feedback input interface")
-			)
-			(pins
-				(pin
-					(num "TBD-3V3")
-					(name "LOGIC_PULLUP")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-GND")
-					(name "LOGIC_GROUND")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-IN+")
-					(name "24V_FEEDBACK")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-IN-")
-					(name "INPUT_RETURN")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-OUT")
-					(name "3V3_LOGIC_OUT")
 					(type "passive")
 				)
 			)
@@ -5295,6 +6156,386 @@
 		)
 		(libpart
 			(lib "PBV3")
+			(part "RPD1")
+			(description "Biases the diagnostic low when the receiver output is high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
+			(fields
+				(field
+					(name "Reference") "RPD1")
+				(field
+					(name "Value") "10.0 kOhm 1% GPIO default-low channel 1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Biases the diagnostic low when the receiver output is high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "10.0 kOhm 1% GPIO default-low channel 1")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "PICO_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "LOGIC_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RPD2")
+			(description "Same default-low behavior as channel 1.")
+			(fields
+				(field
+					(name "Reference") "RPD2")
+				(field
+					(name "Value") "10.0 kOhm 1% GPIO default-low channel 2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Same default-low behavior as channel 1.")
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "10.0 kOhm 1% GPIO default-low channel 2")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "PICO_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "LOGIC_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RSN1")
+			(description "TI current-limit resistor connected between SENSE1 and IN1; exact order code and PCB footprint remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(fields
+				(field
+					(name "Reference") "RSN1")
+				(field
+					(name "Value") "562 Ohm 1% RSENSE channel 1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "TI current-limit resistor connected between SENSE1 and IN1; exact order code and PCB footprint remain open.")
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "562 Ohm 1% RSENSE channel 1")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "SENSE")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "IN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RSN2")
+			(description "Same current-limit network as channel 1.")
+			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(fields
+				(field
+					(name "Reference") "RSN2")
+				(field
+					(name "Value") "562 Ohm 1% RSENSE channel 2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "Same current-limit network as channel 1.")
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "562 Ohm 1% RSENSE channel 2")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "SENSE")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "IN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RSO1")
+			(description "Limits abnormal GPIO/output contention current; does not provide safety isolation.")
+			(fields
+				(field
+					(name "Reference") "RSO1")
+				(field
+					(name "Value") "1.00 kOhm 1% GPIO series channel 1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Limits abnormal GPIO/output contention current; does not provide safety isolation.")
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "1.00 kOhm 1% GPIO series channel 1")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "RECEIVER_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "PICO_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RSO2")
+			(description "Same output conditioning as channel 1.")
+			(fields
+				(field
+					(name "Reference") "RSO2")
+				(field
+					(name "Value") "1.00 kOhm 1% GPIO series channel 2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Same output conditioning as channel 1.")
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "1.00 kOhm 1% GPIO series channel 2")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "RECEIVER_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "PICO_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RTH1")
+			(description "TI Type-3 threshold resistor value. TI requires 0.25 W MELF for RTHR surge limiting; freeze exact voltage, pulse, temperature and package ratings with the PCB release.")
+			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(fields
+				(field
+					(name "Reference") "RTH1")
+				(field
+					(name "Value") "1.00 kOhm 1% >=0.25 W MELF RTHR channel 1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "TI Type-3 threshold resistor value. TI requires 0.25 W MELF for RTHR surge limiting; freeze exact voltage, pulse, temperature and package ratings with the PCB release.")
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "1.00 kOhm 1% >=0.25 W MELF RTHR channel 1")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "FIELD_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "SENSE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RTH2")
+			(description "Same calculated threshold network as channel 1.")
+			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(fields
+				(field
+					(name "Reference") "RTH2")
+				(field
+					(name "Value") "1.00 kOhm 1% >=0.25 W MELF RTHR channel 2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "Same calculated threshold network as channel 1.")
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "1.00 kOhm 1% >=0.25 W MELF RTHR channel 2")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "FIELD_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "SENSE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RW1")
+			(description "Parallel wetting load raises guaranteed closed-contact current above the Phoenix 10 mA minimum; exact resistor pulse/temperature rating and order code remain open.")
+			(docs "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+			(fields
+				(field
+					(name "Reference") "RW1")
+				(field
+					(name "Value") "2.70 kOhm 1% 0.5 W contact-wetting load channel 1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+				(field
+					(name "Description") "Parallel wetting load raises guaranteed closed-contact current above the Phoenix 10 mA minimum; exact resistor pulse/temperature rating and order code remain open.")
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "2.70 kOhm 1% 0.5 W contact-wetting load channel 1")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "FIELD_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "FIELD_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RW2")
+			(description "Same wetting-current design as channel 1.")
+			(docs "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+			(fields
+				(field
+					(name "Reference") "RW2")
+				(field
+					(name "Value") "2.70 kOhm 1% 0.5 W contact-wetting load channel 2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+				(field
+					(name "Description") "Same wetting-current design as channel 1.")
+				(field
+					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "2.70 kOhm 1% 0.5 W contact-wetting load channel 2")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "FIELD_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "FIELD_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
 			(part "S0")
 			(description "Candidate is documented as 40 mm mushroom, turn/pull reset, 2NC, screw terminal and terminal cover. Freeze physical contact-block mapping from received-device bottom view and continuity test both positively opening channels.")
 			(docs "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/emergency-stop-switches/xw-22mm-estop/xw1e-bv402m-r")
@@ -5751,6 +6992,113 @@
 				(pin
 					(num "USB")
 					(name "USB_TO_PI")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "UFB1")
+			(description "Exact dual-channel receiver candidate. Logic and field grounds both return to SAFETY_0V in this non-isolated system, so no galvanic-isolation or safety-integrity credit is claimed. Layout, thermal, EMC, fault-injection and received-part tests remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(fields
+				(field
+					(name "Reference") "UFB1")
+				(field
+					(name "Value") "Texas Instruments ISO1212DBQ dual 24 V input receiver")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+				(field
+					(name "Description") "Exact dual-channel receiver candidate. Logic and field grounds both return to SAFETY_0V in this non-isolated system, so no galvanic-isolation or safety-integrity credit is claimed. Layout, thermal, EMC, fault-injection and received-part tests remain open.")
+				(field
+					(name "Status") "PROPOSED - PCB/EMC VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "TI ISO1211/ISO1212 datasheet SLLSEY7G, revised February 2025; ISO1212DBQ active tube orderable confirmed 2026-08-06.")
+				(field
+					(name "Display") "Texas Instruments ISO1212DBQ dual 24 V input receiver")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "GND1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "VCC1")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "EN_TIED_HIGH")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "OUT1")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "OUT2")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "NC")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "NC")
+					(type "passive")
+				)
+				(pin
+					(num "8")
+					(name "GND1")
+					(type "passive")
+				)
+				(pin
+					(num "9")
+					(name "FGND2")
+					(type "passive")
+				)
+				(pin
+					(num "10")
+					(name "IN2")
+					(type "passive")
+				)
+				(pin
+					(num "11")
+					(name "SENSE2")
+					(type "passive")
+				)
+				(pin
+					(num "12")
+					(name "SUB2_FLOAT")
+					(type "passive")
+				)
+				(pin
+					(num "13")
+					(name "SUB1_FLOAT")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "FGND1")
+					(type "passive")
+				)
+				(pin
+					(num "15")
+					(name "IN1")
+					(type "passive")
+				)
+				(pin
+					(num "16")
+					(name "SENSE1")
 					(type "passive")
 				)
 			)
@@ -6263,6 +7611,98 @@
 		)
 		(net
 			(code "10")
+			(name "FB_IN1")
+			(class "Default")
+			(node
+				(ref "RSN1")
+				(pin "2")
+				(pinfunction "IN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "UFB1")
+				(pin "15")
+				(pinfunction "IN1_15")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "11")
+			(name "FB_IN2")
+			(class "Default")
+			(node
+				(ref "RSN2")
+				(pin "2")
+				(pinfunction "IN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "UFB1")
+				(pin "10")
+				(pinfunction "IN2_10")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "12")
+			(name "FB_SENSE1")
+			(class "Default")
+			(node
+				(ref "CFI1")
+				(pin "1")
+				(pinfunction "SENSE_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RSN1")
+				(pin "1")
+				(pinfunction "SENSE_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RTH1")
+				(pin "2")
+				(pinfunction "SENSE_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "UFB1")
+				(pin "16")
+				(pinfunction "SENSE1_16")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "13")
+			(name "FB_SENSE2")
+			(class "Default")
+			(node
+				(ref "CFI2")
+				(pin "1")
+				(pinfunction "SENSE_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RSN2")
+				(pin "1")
+				(pinfunction "SENSE_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RTH2")
+				(pin "2")
+				(pinfunction "SENSE_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "UFB1")
+				(pin "11")
+				(pinfunction "SENSE2_11")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "14")
 			(name "J1_VDD")
 			(class "Default")
 			(node
@@ -6291,7 +7731,7 @@
 			)
 		)
 		(net
-			(code "11")
+			(code "15")
 			(name "J2_VDD")
 			(class "Default")
 			(node
@@ -6320,7 +7760,7 @@
 			)
 		)
 		(net
-			(code "12")
+			(code "16")
 			(name "J3_VDD")
 			(class "Default")
 			(node
@@ -6349,7 +7789,7 @@
 			)
 		)
 		(net
-			(code "13")
+			(code "17")
 			(name "K1_A1")
 			(class "Default")
 			(node
@@ -6366,7 +7806,7 @@
 			)
 		)
 		(net
-			(code "14")
+			(code "18")
 			(name "K1_J12")
 			(class "Default")
 			(node
@@ -6383,7 +7823,7 @@
 			)
 		)
 		(net
-			(code "15")
+			(code "19")
 			(name "K1_J23")
 			(class "Default")
 			(node
@@ -6400,7 +7840,7 @@
 			)
 		)
 		(net
-			(code "16")
+			(code "20")
 			(name "K1_OUT")
 			(class "Default")
 			(node
@@ -6417,7 +7857,7 @@
 			)
 		)
 		(net
-			(code "17")
+			(code "21")
 			(name "K1_P1_IN")
 			(class "Default")
 			(node
@@ -6434,7 +7874,7 @@
 			)
 		)
 		(net
-			(code "18")
+			(code "22")
 			(name "K1_STATUS")
 			(class "Default")
 			(node
@@ -6451,7 +7891,7 @@
 			)
 		)
 		(net
-			(code "19")
+			(code "23")
 			(name "K2_A1")
 			(class "Default")
 			(node
@@ -6468,7 +7908,7 @@
 			)
 		)
 		(net
-			(code "20")
+			(code "24")
 			(name "K2_J12")
 			(class "Default")
 			(node
@@ -6485,7 +7925,7 @@
 			)
 		)
 		(net
-			(code "21")
+			(code "25")
 			(name "K2_J23")
 			(class "Default")
 			(node
@@ -6502,7 +7942,7 @@
 			)
 		)
 		(net
-			(code "22")
+			(code "26")
 			(name "K2_STATUS")
 			(class "Default")
 			(node
@@ -6519,7 +7959,7 @@
 			)
 		)
 		(net
-			(code "23")
+			(code "27")
 			(name "PI_HEARTBEAT")
 			(class "Default")
 			(node
@@ -6536,7 +7976,7 @@
 			)
 		)
 		(net
-			(code "24")
+			(code "28")
 			(name "PI_USB_U2D2")
 			(class "Default")
 			(node
@@ -6553,9 +7993,27 @@
 			)
 		)
 		(net
-			(code "25")
+			(code "29")
 			(name "SAFETY_0V")
 			(class "Default")
+			(node
+				(ref "CDEC1")
+				(pin "2")
+				(pinfunction "GND1_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "CFI1")
+				(pin "2")
+				(pinfunction "FIELD_RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "CFI2")
+				(pin "2")
+				(pinfunction "FIELD_RETURN_2")
+				(pintype "passive")
+			)
 			(node
 				(ref "DC1")
 				(pin "TBD-IN-")
@@ -6572,30 +8030,6 @@
 				(ref "H1")
 				(pin "TBD-H-")
 				(pinfunction "-_TBD-H-")
-				(pintype "passive")
-			)
-			(node
-				(ref "IFB1")
-				(pin "TBD-GND")
-				(pinfunction "LOGIC_GROUND_TBD-GND")
-				(pintype "passive")
-			)
-			(node
-				(ref "IFB1")
-				(pin "TBD-IN-")
-				(pinfunction "INPUT_RETURN_TBD-IN-")
-				(pintype "passive")
-			)
-			(node
-				(ref "IFB2")
-				(pin "TBD-GND")
-				(pinfunction "LOGIC_GROUND_TBD-GND")
-				(pintype "passive")
-			)
-			(node
-				(ref "IFB2")
-				(pin "TBD-IN-")
-				(pinfunction "INPUT_RETURN_TBD-IN-")
 				(pintype "passive")
 			)
 			(node
@@ -6653,6 +8087,30 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "RPD1")
+				(pin "2")
+				(pinfunction "LOGIC_RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "RPD2")
+				(pin "2")
+				(pinfunction "LOGIC_RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "RW1")
+				(pin "2")
+				(pinfunction "FIELD_RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "RW2")
+				(pin "2")
+				(pinfunction "FIELD_RETURN_2")
+				(pintype "passive")
+			)
+			(node
 				(ref "SR1")
 				(pin "A2")
 				(pinfunction "0V_SUPPLY_A2")
@@ -6662,6 +8120,30 @@
 				(ref "SRA1")
 				(pin "A2")
 				(pinfunction "0V_SUPPLY_A2")
+				(pintype "passive")
+			)
+			(node
+				(ref "UFB1")
+				(pin "1")
+				(pinfunction "GND1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "UFB1")
+				(pin "14")
+				(pinfunction "FGND1_14")
+				(pintype "passive")
+			)
+			(node
+				(ref "UFB1")
+				(pin "8")
+				(pinfunction "GND1_8")
+				(pintype "passive")
+			)
+			(node
+				(ref "UFB1")
+				(pin "9")
+				(pinfunction "FGND2_9")
 				(pintype "passive")
 			)
 			(node
@@ -6678,7 +8160,7 @@
 			)
 		)
 		(net
-			(code "26")
+			(code "30")
 			(name "SAFETY_24V")
 			(class "Default")
 			(node
@@ -6773,7 +8255,7 @@
 			)
 		)
 		(net
-			(code "27")
+			(code "31")
 			(name "SAFETY_24V_RAW")
 			(class "Default")
 			(node
@@ -6790,7 +8272,7 @@
 			)
 		)
 		(net
-			(code "28")
+			(code "32")
 			(name "SR1_S11")
 			(class "Default")
 			(node
@@ -6807,7 +8289,7 @@
 			)
 		)
 		(net
-			(code "29")
+			(code "33")
 			(name "SR1_S12")
 			(class "Default")
 			(node
@@ -6830,7 +8312,7 @@
 			)
 		)
 		(net
-			(code "30")
+			(code "34")
 			(name "SR1_S21")
 			(class "Default")
 			(node
@@ -6847,7 +8329,7 @@
 			)
 		)
 		(net
-			(code "31")
+			(code "35")
 			(name "SR1_S22")
 			(class "Default")
 			(node
@@ -6864,7 +8346,7 @@
 			)
 		)
 		(net
-			(code "32")
+			(code "36")
 			(name "SR1_START_RETURN")
 			(class "Default")
 			(node
@@ -6881,7 +8363,7 @@
 			)
 		)
 		(net
-			(code "33")
+			(code "37")
 			(name "SR1_STATUS")
 			(class "Default")
 			(node
@@ -6904,7 +8386,7 @@
 			)
 		)
 		(net
-			(code "34")
+			(code "38")
 			(name "SRA1_K1_RAW")
 			(class "Default")
 			(node
@@ -6921,7 +8403,7 @@
 			)
 		)
 		(net
-			(code "35")
+			(code "39")
 			(name "SRA1_K2_RAW")
 			(class "Default")
 			(node
@@ -6938,7 +8420,7 @@
 			)
 		)
 		(net
-			(code "36")
+			(code "40")
 			(name "SRA1_S11")
 			(class "Default")
 			(node
@@ -6955,7 +8437,7 @@
 			)
 		)
 		(net
-			(code "37")
+			(code "41")
 			(name "SRA1_S12")
 			(class "Default")
 			(node
@@ -6978,7 +8460,7 @@
 			)
 		)
 		(net
-			(code "38")
+			(code "42")
 			(name "SRA1_S21")
 			(class "Default")
 			(node
@@ -6995,7 +8477,7 @@
 			)
 		)
 		(net
-			(code "39")
+			(code "43")
 			(name "SRA1_S22")
 			(class "Default")
 			(node
@@ -7012,7 +8494,7 @@
 			)
 		)
 		(net
-			(code "40")
+			(code "44")
 			(name "SRA1_START_RETURN")
 			(class "Default")
 			(node
@@ -7029,7 +8511,7 @@
 			)
 		)
 		(net
-			(code "41")
+			(code "45")
 			(name "SRA1_STATUS")
 			(class "Default")
 			(node
@@ -7046,7 +8528,41 @@
 			)
 		)
 		(net
-			(code "42")
+			(code "46")
+			(name "UFB_OUT1")
+			(class "Default")
+			(node
+				(ref "RSO1")
+				(pin "1")
+				(pinfunction "RECEIVER_OUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "UFB1")
+				(pin "4")
+				(pinfunction "OUT1_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "47")
+			(name "UFB_OUT2")
+			(class "Default")
+			(node
+				(ref "RSO2")
+				(pin "1")
+				(pinfunction "RECEIVER_OUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "UFB1")
+				(pin "5")
+				(pinfunction "OUT2_5")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "48")
 			(name "WD1_COIL_N")
 			(class "Default")
 			(node
@@ -7063,7 +8579,7 @@
 			)
 		)
 		(net
-			(code "43")
+			(code "49")
 			(name "WD1_DRIVE")
 			(class "Default")
 			(node
@@ -7080,30 +8596,42 @@
 			)
 		)
 		(net
-			(code "44")
+			(code "50")
 			(name "WD1_NC_24V")
 			(class "Default")
-			(node
-				(ref "IFB1")
-				(pin "TBD-IN+")
-				(pinfunction "24V_FEEDBACK_TBD-IN+")
-				(pintype "passive")
-			)
 			(node
 				(ref "KWD1")
 				(pin "22")
 				(pinfunction "CH2_NC_FEEDBACK_22")
 				(pintype "passive")
 			)
+			(node
+				(ref "RTH1")
+				(pin "1")
+				(pinfunction "FIELD_INPUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RW1")
+				(pin "1")
+				(pinfunction "FIELD_INPUT_1")
+				(pintype "passive")
+			)
 		)
 		(net
-			(code "45")
+			(code "51")
 			(name "WD1_NC_DIAG")
 			(class "Default")
 			(node
-				(ref "IFB1")
-				(pin "TBD-OUT")
-				(pinfunction "3V3_LOGIC_OUT_TBD-OUT")
+				(ref "RPD1")
+				(pin "1")
+				(pinfunction "PICO_INPUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RSO1")
+				(pin "2")
+				(pinfunction "PICO_INPUT_2")
 				(pintype "passive")
 			)
 			(node
@@ -7114,7 +8642,7 @@
 			)
 		)
 		(net
-			(code "46")
+			(code "52")
 			(name "WD1_SAFETY_IN")
 			(class "Default")
 			(node
@@ -7131,7 +8659,7 @@
 			)
 		)
 		(net
-			(code "47")
+			(code "53")
 			(name "WD2_COIL_N")
 			(class "Default")
 			(node
@@ -7148,7 +8676,7 @@
 			)
 		)
 		(net
-			(code "48")
+			(code "54")
 			(name "WD2_DRIVE")
 			(class "Default")
 			(node
@@ -7165,30 +8693,42 @@
 			)
 		)
 		(net
-			(code "49")
+			(code "55")
 			(name "WD2_NC_24V")
 			(class "Default")
-			(node
-				(ref "IFB2")
-				(pin "TBD-IN+")
-				(pinfunction "24V_FEEDBACK_TBD-IN+")
-				(pintype "passive")
-			)
 			(node
 				(ref "KWD2")
 				(pin "22")
 				(pinfunction "CH2_NC_FEEDBACK_22")
 				(pintype "passive")
 			)
+			(node
+				(ref "RTH2")
+				(pin "1")
+				(pinfunction "FIELD_INPUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RW2")
+				(pin "1")
+				(pinfunction "FIELD_INPUT_1")
+				(pintype "passive")
+			)
 		)
 		(net
-			(code "50")
+			(code "56")
 			(name "WD2_NC_DIAG")
 			(class "Default")
 			(node
-				(ref "IFB2")
-				(pin "TBD-OUT")
-				(pinfunction "3V3_LOGIC_OUT_TBD-OUT")
+				(ref "RPD2")
+				(pin "1")
+				(pinfunction "PICO_INPUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RSO2")
+				(pin "2")
+				(pinfunction "PICO_INPUT_2")
 				(pintype "passive")
 			)
 			(node
@@ -7199,7 +8739,7 @@
 			)
 		)
 		(net
-			(code "51")
+			(code "57")
 			(name "WD2_SAFETY_IN")
 			(class "Default")
 			(node
@@ -7216,19 +8756,25 @@
 			)
 		)
 		(net
-			(code "52")
+			(code "58")
 			(name "WD_3V3")
 			(class "Default")
 			(node
-				(ref "IFB1")
-				(pin "TBD-3V3")
-				(pinfunction "LOGIC_PULLUP_TBD-3V3")
+				(ref "CDEC1")
+				(pin "1")
+				(pinfunction "3V3_1")
 				(pintype "passive")
 			)
 			(node
-				(ref "IFB2")
-				(pin "TBD-3V3")
-				(pinfunction "LOGIC_PULLUP_TBD-3V3")
+				(ref "UFB1")
+				(pin "2")
+				(pinfunction "VCC1_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "UFB1")
+				(pin "3")
+				(pinfunction "EN_TIED_HIGH_3")
 				(pintype "passive")
 			)
 			(node
@@ -7239,7 +8785,7 @@
 			)
 		)
 		(net
-			(code "53")
+			(code "59")
 			(name "WD_5V")
 			(class "Default")
 			(node
@@ -7256,7 +8802,7 @@
 			)
 		)
 		(net
-			(code "54")
+			(code "60")
 			(name "WD_HEARTBEAT")
 			(class "Default")
 			(node
@@ -7273,7 +8819,7 @@
 			)
 		)
 		(net
-			(code "55")
+			(code "61")
 			(name "WD_SWCLK")
 			(class "Default")
 			(node
@@ -7290,7 +8836,7 @@
 			)
 		)
 		(net
-			(code "56")
+			(code "62")
 			(name "WD_SWDIO")
 			(class "Default")
 			(node
@@ -7307,7 +8853,7 @@
 			)
 		)
 		(net
-			(code "57")
+			(code "63")
 			(name "unconnected-(JFRAME1-CABLE_SHIELDS-PadTBD-SHIELD)")
 			(class "Default")
 			(node
@@ -7318,7 +8864,7 @@
 			)
 		)
 		(net
-			(code "58")
+			(code "64")
 			(name "unconnected-(JFRAME1-ROBOT_FRAME-PadTBD-FRAME)")
 			(class "Default")
 			(node
@@ -7329,7 +8875,7 @@
 			)
 		)
 		(net
-			(code "59")
+			(code "65")
 			(name "unconnected-(KWD1-CH1_NC_UNUSED-Pad12)")
 			(class "Default")
 			(node
@@ -7340,7 +8886,7 @@
 			)
 		)
 		(net
-			(code "60")
+			(code "66")
 			(name "unconnected-(KWD1-CH2_NO_UNUSED-Pad24)")
 			(class "Default")
 			(node
@@ -7351,7 +8897,7 @@
 			)
 		)
 		(net
-			(code "61")
+			(code "67")
 			(name "unconnected-(KWD2-CH1_NC_UNUSED-Pad12)")
 			(class "Default")
 			(node
@@ -7362,7 +8908,7 @@
 			)
 		)
 		(net
-			(code "62")
+			(code "68")
 			(name "unconnected-(KWD2-CH2_NO_UNUSED-Pad24)")
 			(class "Default")
 			(node
@@ -7373,7 +8919,7 @@
 			)
 		)
 		(net
-			(code "63")
+			(code "69")
 			(name "unconnected-(PSA1-FACTORY_AC_L-PadC14-L)")
 			(class "Default")
 			(node
@@ -7384,7 +8930,7 @@
 			)
 		)
 		(net
-			(code "64")
+			(code "70")
 			(name "unconnected-(PSA1-FACTORY_AC_N-PadC14-N)")
 			(class "Default")
 			(node
@@ -7395,7 +8941,7 @@
 			)
 		)
 		(net
-			(code "65")
+			(code "71")
 			(name "unconnected-(PSU2-FACTORY_AC_L-PadC14-L)")
 			(class "Default")
 			(node
@@ -7406,7 +8952,7 @@
 			)
 		)
 		(net
-			(code "66")
+			(code "72")
 			(name "unconnected-(PSU2-FACTORY_AC_N-PadC14-N)")
 			(class "Default")
 			(node
@@ -7417,7 +8963,7 @@
 			)
 		)
 		(net
-			(code "67")
+			(code "73")
 			(name "unconnected-(PSU2-FACTORY_PE-PadC14-PE)")
 			(class "Default")
 			(node
@@ -7428,7 +8974,7 @@
 			)
 		)
 		(net
-			(code "68")
+			(code "74")
 			(name "unconnected-(PSU3-FACTORY_AC-PadAC-FACTORY)")
 			(class "Default")
 			(node
@@ -7439,7 +8985,7 @@
 			)
 		)
 		(net
-			(code "69")
+			(code "75")
 			(name "unconnected-(SP1-ACTUATOR_0V-Pad1)")
 			(class "Default")
 			(node
@@ -7450,7 +8996,7 @@
 			)
 		)
 		(net
-			(code "70")
+			(code "76")
 			(name "unconnected-(SP1-PE-Pad2)")
 			(class "Default")
 			(node
@@ -7461,7 +9007,7 @@
 			)
 		)
 		(net
-			(code "71")
+			(code "77")
 			(name "unconnected-(SR1-AUX_NC_OUT-Pad42)")
 			(class "Default")
 			(node
@@ -7472,7 +9018,7 @@
 			)
 		)
 		(net
-			(code "72")
+			(code "78")
 			(name "unconnected-(SR1-SAFETY_OUT3_IN-Pad33)")
 			(class "Default")
 			(node
@@ -7483,7 +9029,7 @@
 			)
 		)
 		(net
-			(code "73")
+			(code "79")
 			(name "unconnected-(SR1-SAFETY_OUT3_OUT-Pad34)")
 			(class "Default")
 			(node
@@ -7494,7 +9040,7 @@
 			)
 		)
 		(net
-			(code "74")
+			(code "80")
 			(name "unconnected-(SRA1-AUX_NC_OUT-Pad42)")
 			(class "Default")
 			(node
@@ -7505,7 +9051,7 @@
 			)
 		)
 		(net
-			(code "75")
+			(code "81")
 			(name "unconnected-(SRA1-SAFETY_OUT3_IN-Pad33)")
 			(class "Default")
 			(node
@@ -7516,7 +9062,7 @@
 			)
 		)
 		(net
-			(code "76")
+			(code "82")
 			(name "unconnected-(SRA1-SAFETY_OUT3_OUT-Pad34)")
 			(class "Default")
 			(node
@@ -7527,13 +9073,57 @@
 			)
 		)
 		(net
-			(code "77")
+			(code "83")
 			(name "unconnected-(U1-VDD_OMITTED-PadTTL-2)")
 			(class "Default")
 			(node
 				(ref "U1")
 				(pin "TTL-2")
 				(pinfunction "VDD_OMITTED_TTL-2")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "84")
+			(name "unconnected-(UFB1-NC-Pad6)")
+			(class "Default")
+			(node
+				(ref "UFB1")
+				(pin "6")
+				(pinfunction "NC_6")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "85")
+			(name "unconnected-(UFB1-NC-Pad7)")
+			(class "Default")
+			(node
+				(ref "UFB1")
+				(pin "7")
+				(pinfunction "NC_7")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "86")
+			(name "unconnected-(UFB1-SUB1_FLOAT-Pad13)")
+			(class "Default")
+			(node
+				(ref "UFB1")
+				(pin "13")
+				(pinfunction "SUB1_FLOAT_13")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "87")
+			(name "unconnected-(UFB1-SUB2_FLOAT-Pad12)")
+			(class "Default")
+			(node
+				(ref "UFB1")
+				(pin "12")
+				(pinfunction "SUB2_FLOAT_12")
 				(pintype "passive+no_connect")
 			)
 		)

@@ -2,7 +2,7 @@
 
 Handoff date: 2026-08-06  
 Package baseline: **HR-30-SYS-R0.2**  
-Electrical package: **Project Button Electrical V2.1 reviewed baseline; V3-P0.3 connected correction candidate**
+Electrical package: **Project Button Electrical V2.1 reviewed baseline; V3-P0.4 connected correction candidate**
 Mechanical package: **HR-V0-MECH-R0.1-PRELIMINARY quote geometry**
 Firmware package: **HR-V0-FW-P0.1 source/test candidate; no released binary**
 Status: **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
@@ -19,7 +19,7 @@ Status: **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 - V3 generator/checker: `tools/generate_hr_v0_electrical_v3.py`; `tools/check_hr_v0_electrical_v3.py`
 - Firmware source/checker: `firmware/`; `tools/check_hr_v0_firmware.py`
 
-The authoritative repository controls engineering intent and contains the reviewed Electrical V2.1 KiCad source plus the separate V3-P0.3 correction candidate. The website is a synchronized presentation and must not override the source specification. Individual documents retain their own revisions; neither electrical identifier replaces the `HR-30-SYS-R0.2` systems-package baseline. V3 does not supersede V2.1 until its open selections, calculations, tests, and qualified reviews close.
+The authoritative repository controls engineering intent and contains the reviewed Electrical V2.1 KiCad source plus the separate V3-P0.4 correction candidate. The website is a synchronized presentation and must not override the source specification. Individual documents retain their own revisions; neither electrical identifier replaces the `HR-30-SYS-R0.2` systems-package baseline. V3 does not supersede V2.1 until its open selections, calculations, tests, and qualified reviews close.
 
 ## Current program inputs and fabrication route
 
@@ -41,13 +41,13 @@ The authoritative repository controls engineering intent and contains the review
 - 106 unresolved electrical selections/interfaces
 - KiCad 10.0.5 ERC: 0 errors and 0 warnings
 
-The V3-P0.3 candidate separately contains ten native pages, 43 component blocks, 209 modeled terminals, 77 native nets (56 named connected nets plus 21 deliberate auto-generated unconnected nets), 188 unique wire labels, 31 unresolved component/interface rows, and 74 `TBD-*` terminal designations. P0.3 replaces the misleading P0.2 direct 24 V relay-diagnostic-to-GPIO path with two explicit unreleased feedback-interface blocks; that honest correction increases the unresolved-component count. Its KiCad 10.0.5 ERC is also 0 errors and 0 warnings, and its native netlist/PDF/SVG exports pass. These V3 counts must not be substituted for the independently reviewed V2.1 counts above.
+The V3-P0.4 candidate separately contains eleven native pages, 55 component blocks, 241 modeled terminals, 87 native nets (62 named connected nets plus 25 deliberate auto-generated unconnected nets), 216 unique wire labels, 43 unresolved component/interface rows, and 64 `TBD-*` terminal designations. P0.4 replaces P0.3's two opaque feedback-interface blocks with an exact ISO1212DBQ pinout and calculated threshold, contact-wetting, filter, GPIO and decoupling networks. Exact passive order codes, PCB, terminals, EMC, thermal and physical fault evidence remain open. KiCad 10.0.5 ERC is 0 errors and 0 warnings, and native netlist/PDF/SVG exports plus the exact-net checker pass. These V3 counts must not be substituted for the independently reviewed V2.1 counts above.
 
 ERC validates modeled connectivity and annotation only. It does not establish physical pinouts, ratings, protection coordination, functional safety, buildability, or permission to energize.
 
 ## Review history and independent findings
 
-Eighteen review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings. R13 staged the authoritative-ECAD provenance correction; R14 corrected reproducible engineering and traceability defects; R15 archived and dispositioned Sol's complete dossier; R16 created the V3-P0.1 candidate; R17 corrected the restart chain and added preliminary firmware; R18 corrected the watchdog feedback voltage boundary and froze reviewable Phoenix/Pico terminals. Physical and functional-safety blockers remain open.
+Nineteen review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings. R13 staged the authoritative-ECAD provenance correction; R14 corrected reproducible engineering and traceability defects; R15 archived and dispositioned Sol's complete dossier; R16 created the V3-P0.1 candidate; R17 corrected the restart chain and added preliminary firmware; R18 corrected the watchdog feedback voltage boundary and froze reviewable Phoenix/Pico terminals; R19 defined and checked the ISO1212DBQ feedback circuit. Physical and functional-safety blockers remain open.
 
 ## Principal unresolved engineering blockers
 
@@ -55,7 +55,7 @@ Eighteen review/control rounds are complete and recorded in `docs/review-ledger.
 2. Joint continuous/cyclic/impact/thermal performance, drivetrain efficiency, backlash, and structural margins are not physically validated.
 3. Safe actuator-power-loss behavior remains unresolved; a walking robot may collapse when hazardous drive energy is removed.
 4. Mass, center of mass, inertia, wiring mass, and reserve are not closed against released CAD and measured components.
-5. V3 records exact E-stop, RESET/ARM, safety-relay, watchdog-relay, source, contactor, U2D2, actuator, and frame candidates where primary evidence permits, but their application approval, received terminals, protection, conductors, connectors, enclosure, and ratings remain selection-dependent. Seventy-four V3 terminals remain deliberately `TBD-*`, including every terminal of the unreleased IFB1/IFB2 feedback interfaces.
+5. V3 records exact E-stop, RESET/ARM, safety-relay, watchdog-relay, ISO1212 feedback-receiver, source, contactor, U2D2, actuator, and frame candidates where primary evidence permits, but their application approval, received terminals, protection, conductors, connectors, enclosure, PCB and ratings remain selection-dependent. Sixty-four V3 terminals remain deliberately `TBD-*`; the feedback IC pins are now exact, while every passive order code and the physical board/interface remain unreleased.
 6. Battery, BMS, fuse, precharge, service disconnect, charging interlock, regeneration, telemetry isolation, and enclosure remain topology only.
 7. RS-485 transceivers, harnesses, shielding, termination, biasing, separation, waveform margin, and physical fault tests remain open.
 8. Sensor sheets are functional interfaces, not complete production circuits or released PCB designs.
@@ -66,9 +66,11 @@ R11 and R12 added material blockers or invalidated assumptions. R14 records the 
 
 Sol's R12 conclusions have also been rechecked against the controlled R18 state in `docs/reviews/2026-08-06-sol-r12-post-r18-status.md`. This is a project-owned disposition update, not a new independent review or approval. It preserves the original 56-finding count, records which baseline claims are stale, and confirms that 21 of 21 gates applicable through E2 remain unresolved.
 
+The R19 status reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r19-status.md`. It records the ISO1212 circuit evidence and the corrected `RSENSE` connection without presenting R19 as a new Sol review or reducing Sol's original finding totals.
+
 ## Requested independent-review output
 
-Use `docs/reviews/2026-08-06-electrical-v3-independent-review-request.md` for the controlled V3-P0.3 electrical review scope and reproduction commands. Use `docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md` for the source-level watchdog and supervisor review scope.
+Use `docs/reviews/2026-08-06-electrical-v3-independent-review-request.md` for the controlled V3-P0.4 electrical review scope and reproduction commands. Use `docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md` for the source-level watchdog and supervisor review scope.
 
 Reviewers must provide BLOCKER / MAJOR / MINOR findings with exact document, requirement, risk, component, net, terminal, or KiCad-sheet references. Calculations must show assumptions and units. Component claims must cite current primary manufacturer documents with revision/date. Every missing input or unresolved selection must state the evidence needed for closure.
 
@@ -86,4 +88,4 @@ No reviewer should interpret clean ERC, traceability, simulation, website public
 
 ## Next controlled action
 
-Submit V3-P0.3 and HR-V0-FW-P0.1 for detailed independent electrical, controls and functional-safety review while completing the HR-V0 physical FR13 fit coupon and the missing hard-stop, cable, gripper, guard, fastener, bench-anchor, mass, and proof-test design. In parallel, complete IFB1/IFB2, freeze the 74 unresolved terminals and all protection/conductor/interface selections, select the firmware platform/toolchain/kinematics, compile reproducible binaries, and prepare disconnected-load HIL procedures. Do not issue a build or energization release until the applicable gate records close.
+Submit V3-P0.4 and HR-V0-FW-P0.1 for detailed independent electrical, controls and functional-safety review while completing the HR-V0 physical FR13 fit coupon and the missing hard-stop, cable, gripper, guard, fastener, bench-anchor, mass, and proof-test design. In parallel, design/review the ISO1212 PCB, freeze its passive order codes plus the 64 unresolved terminals and all protection/conductor/interface selections, select the firmware platform/toolchain/kinematics, compile reproducible binaries, and prepare disconnected-load HIL procedures. Do not issue a build or energization release until the applicable gate records close.

@@ -1,19 +1,23 @@
 net,connection_count,connections
-ACT_0V_PE_BONDED,19,01_external_sources.kicad_sch:PSA1:C6P-4 | 01_external_sources.kicad_sch:PSA1:C6P-5 | 01_external_sources.kicad_sch:PSA1:C6P-6 | 01_external_sources.kicad_sch:PSA1:C14-PE | 01_external_sources.kicad_sch:JA1:4 | 01_external_sources.kicad_sch:JA1:5 | 01_external_sources.kicad_sch:JA1:6 | 06_branches_and_injection.kicad_sch:INJ1:TBD-BI-G | 06_branches_and_injection.kicad_sch:INJ1:TBD-A-G | 06_branches_and_injection.kicad_sch:INJ1:TBD-BO-G | 06_branches_and_injection.kicad_sch:INJ2:TBD-BI-G | 06_branches_and_injection.kicad_sch:INJ2:TBD-A-G | 06_branches_and_injection.kicad_sch:INJ2:TBD-BO-G | 06_branches_and_injection.kicad_sch:INJ3:TBD-BI-G | 06_branches_and_injection.kicad_sch:INJ3:TBD-A-G | 09_actuator_interfaces.kicad_sch:U1:TTL-1 | 09_actuator_interfaces.kicad_sch:J1:1 | 09_actuator_interfaces.kicad_sch:J2:1 | 09_actuator_interfaces.kicad_sch:J3:1
+ACT_0V_PE_BONDED,19,01_external_sources.kicad_sch:PSA1:C6P-4 | 01_external_sources.kicad_sch:PSA1:C6P-5 | 01_external_sources.kicad_sch:PSA1:C6P-6 | 01_external_sources.kicad_sch:PSA1:C14-PE | 01_external_sources.kicad_sch:JA1:4 | 01_external_sources.kicad_sch:JA1:5 | 01_external_sources.kicad_sch:JA1:6 | 06_branches_and_injection.kicad_sch:INJ1:TBD-BI-G | 06_branches_and_injection.kicad_sch:INJ1:TBD-A-G | 06_branches_and_injection.kicad_sch:INJ1:TBD-BO-G | 06_branches_and_injection.kicad_sch:INJ2:TBD-BI-G | 06_branches_and_injection.kicad_sch:INJ2:TBD-A-G | 06_branches_and_injection.kicad_sch:INJ2:TBD-BO-G | 06_branches_and_injection.kicad_sch:INJ3:TBD-BI-G | 06_branches_and_injection.kicad_sch:INJ3:TBD-A-G | 10_actuator_interfaces.kicad_sch:U1:TTL-1 | 10_actuator_interfaces.kicad_sch:J1:1 | 10_actuator_interfaces.kicad_sch:J2:1 | 10_actuator_interfaces.kicad_sch:J3:1
 ACT_12V_BUS,4,05_actuator_interruption.kicad_sch:KP2:6T3 | 06_branches_and_injection.kicad_sch:F1:1 | 06_branches_and_injection.kicad_sch:F2:1 | 06_branches_and_injection.kicad_sch:F3:1
 ACT_12V_FUSED,2,05_actuator_interruption.kicad_sch:F0:2 | 05_actuator_interruption.kicad_sch:SD1:TBD-IN
 ACT_12V_RAW,7,01_external_sources.kicad_sch:PSA1:C6P-1 | 01_external_sources.kicad_sch:PSA1:C6P-2 | 01_external_sources.kicad_sch:PSA1:C6P-3 | 01_external_sources.kicad_sch:JA1:1 | 01_external_sources.kicad_sch:JA1:2 | 01_external_sources.kicad_sch:JA1:3 | 05_actuator_interruption.kicad_sch:F0:1
 ARM_AFTER_S2,2,03_arm_watchdog_eligibility.kicad_sch:S2:TBD-A2 | 04_contactor_edm.kicad_sch:K1:21
-CABLE_SHIELD_TERM,1,09_actuator_interfaces.kicad_sch:JFRAME1:TBD-SHIELD
-COMPUTE_0V,3,01_external_sources.kicad_sch:PSU3:USB-C-GND | 07_watchdog_control.kicad_sch:ISO1:TBD-CG | 08_compute_and_control_terminals.kicad_sch:PI1:GND
-COMPUTE_5V,2,01_external_sources.kicad_sch:PSU3:USB-C-VBUS | 08_compute_and_control_terminals.kicad_sch:PI1:USB-C-VBUS
-DXL_TTL_DATA,12,06_branches_and_injection.kicad_sch:INJ1:TBD-BI-D | 06_branches_and_injection.kicad_sch:INJ1:TBD-A-D | 06_branches_and_injection.kicad_sch:INJ1:TBD-BO-D | 06_branches_and_injection.kicad_sch:INJ2:TBD-BI-D | 06_branches_and_injection.kicad_sch:INJ2:TBD-A-D | 06_branches_and_injection.kicad_sch:INJ2:TBD-BO-D | 06_branches_and_injection.kicad_sch:INJ3:TBD-BI-D | 06_branches_and_injection.kicad_sch:INJ3:TBD-A-D | 09_actuator_interfaces.kicad_sch:U1:TTL-3 | 09_actuator_interfaces.kicad_sch:J1:3 | 09_actuator_interfaces.kicad_sch:J2:3 | 09_actuator_interfaces.kicad_sch:J3:3
+CABLE_SHIELD_TERM,1,10_actuator_interfaces.kicad_sch:JFRAME1:TBD-SHIELD
+COMPUTE_0V,3,01_external_sources.kicad_sch:PSU3:USB-C-GND | 07_watchdog_control.kicad_sch:ISO1:TBD-CG | 09_compute_and_control_terminals.kicad_sch:PI1:GND
+COMPUTE_5V,2,01_external_sources.kicad_sch:PSU3:USB-C-VBUS | 09_compute_and_control_terminals.kicad_sch:PI1:USB-C-VBUS
+DXL_TTL_DATA,12,06_branches_and_injection.kicad_sch:INJ1:TBD-BI-D | 06_branches_and_injection.kicad_sch:INJ1:TBD-A-D | 06_branches_and_injection.kicad_sch:INJ1:TBD-BO-D | 06_branches_and_injection.kicad_sch:INJ2:TBD-BI-D | 06_branches_and_injection.kicad_sch:INJ2:TBD-A-D | 06_branches_and_injection.kicad_sch:INJ2:TBD-BO-D | 06_branches_and_injection.kicad_sch:INJ3:TBD-BI-D | 06_branches_and_injection.kicad_sch:INJ3:TBD-A-D | 10_actuator_interfaces.kicad_sch:U1:TTL-3 | 10_actuator_interfaces.kicad_sch:J1:3 | 10_actuator_interfaces.kicad_sch:J2:3 | 10_actuator_interfaces.kicad_sch:J3:3
 EDM_K1_OUT,2,04_contactor_edm.kicad_sch:K1:22 | 04_contactor_edm.kicad_sch:K2:21
 FACTORY_AC_COMPUTE,1,01_external_sources.kicad_sch:PSU3:AC-FACTORY
 FACTORY_AC_L_ACT,1,01_external_sources.kicad_sch:PSA1:C14-L
 FACTORY_AC_L_CTL,1,01_external_sources.kicad_sch:PSU2:C14-L
 FACTORY_AC_N_ACT,1,01_external_sources.kicad_sch:PSA1:C14-N
 FACTORY_AC_N_CTL,1,01_external_sources.kicad_sch:PSU2:C14-N
+FB_IN1,2,08_watchdog_feedback_interface.kicad_sch:UFB1:15 | 08_watchdog_feedback_interface.kicad_sch:RSN1:2
+FB_IN2,2,08_watchdog_feedback_interface.kicad_sch:UFB1:10 | 08_watchdog_feedback_interface.kicad_sch:RSN2:2
+FB_SENSE1,4,08_watchdog_feedback_interface.kicad_sch:UFB1:16 | 08_watchdog_feedback_interface.kicad_sch:RTH1:2 | 08_watchdog_feedback_interface.kicad_sch:RSN1:1 | 08_watchdog_feedback_interface.kicad_sch:CFI1:1
+FB_SENSE2,4,08_watchdog_feedback_interface.kicad_sch:UFB1:11 | 08_watchdog_feedback_interface.kicad_sch:RTH2:2 | 08_watchdog_feedback_interface.kicad_sch:RSN2:1 | 08_watchdog_feedback_interface.kicad_sch:CFI2:1
 INTENTIONALLY_NOT_CONNECTED_SP1_A,1,01_external_sources.kicad_sch:SP1:1
 INTENTIONALLY_NOT_CONNECTED_SP1_B,1,01_external_sources.kicad_sch:SP1:2
 INTENTIONALLY_UNUSED_KWD1_12,1,03_arm_watchdog_eligibility.kicad_sch:KWD1:12
@@ -24,25 +28,29 @@ INTENTIONALLY_UNUSED_SR1_33,1,02_estop_eligibility.kicad_sch:SR1:33
 INTENTIONALLY_UNUSED_SR1_34,1,02_estop_eligibility.kicad_sch:SR1:34
 INTENTIONALLY_UNUSED_SRA1_33,1,03_arm_watchdog_eligibility.kicad_sch:SRA1:33
 INTENTIONALLY_UNUSED_SRA1_34,1,03_arm_watchdog_eligibility.kicad_sch:SRA1:34
-INTENTIONALLY_UNUSED_U2D2_VDD,1,09_actuator_interfaces.kicad_sch:U1:TTL-2
-J1_VDD,4,06_branches_and_injection.kicad_sch:F1:2 | 06_branches_and_injection.kicad_sch:INJ1:TBD-P | 06_branches_and_injection.kicad_sch:INJ1:TBD-A-V | 09_actuator_interfaces.kicad_sch:J1:2
-J2_VDD,4,06_branches_and_injection.kicad_sch:F2:2 | 06_branches_and_injection.kicad_sch:INJ2:TBD-P | 06_branches_and_injection.kicad_sch:INJ2:TBD-A-V | 09_actuator_interfaces.kicad_sch:J2:2
-J3_VDD,4,06_branches_and_injection.kicad_sch:F3:2 | 06_branches_and_injection.kicad_sch:INJ3:TBD-P | 06_branches_and_injection.kicad_sch:INJ3:TBD-A-V | 09_actuator_interfaces.kicad_sch:J3:2
+INTENTIONALLY_UNUSED_U2D2_VDD,1,10_actuator_interfaces.kicad_sch:U1:TTL-2
+INTENTIONALLY_UNUSED_UFB1_12,1,08_watchdog_feedback_interface.kicad_sch:UFB1:12
+INTENTIONALLY_UNUSED_UFB1_13,1,08_watchdog_feedback_interface.kicad_sch:UFB1:13
+INTENTIONALLY_UNUSED_UFB1_6,1,08_watchdog_feedback_interface.kicad_sch:UFB1:6
+INTENTIONALLY_UNUSED_UFB1_7,1,08_watchdog_feedback_interface.kicad_sch:UFB1:7
+J1_VDD,4,06_branches_and_injection.kicad_sch:F1:2 | 06_branches_and_injection.kicad_sch:INJ1:TBD-P | 06_branches_and_injection.kicad_sch:INJ1:TBD-A-V | 10_actuator_interfaces.kicad_sch:J1:2
+J2_VDD,4,06_branches_and_injection.kicad_sch:F2:2 | 06_branches_and_injection.kicad_sch:INJ2:TBD-P | 06_branches_and_injection.kicad_sch:INJ2:TBD-A-V | 10_actuator_interfaces.kicad_sch:J2:2
+J3_VDD,4,06_branches_and_injection.kicad_sch:F3:2 | 06_branches_and_injection.kicad_sch:INJ3:TBD-P | 06_branches_and_injection.kicad_sch:INJ3:TBD-A-V | 10_actuator_interfaces.kicad_sch:J3:2
 K1_A1,2,04_contactor_edm.kicad_sch:K1:A1 | 04_contactor_edm.kicad_sch:FSR1:2
 K1_J12,2,05_actuator_interruption.kicad_sch:KP1:2T1 | 05_actuator_interruption.kicad_sch:KP1:3L2
 K1_J23,2,05_actuator_interruption.kicad_sch:KP1:4T2 | 05_actuator_interruption.kicad_sch:KP1:5L3
 K1_OUT,2,05_actuator_interruption.kicad_sch:KP1:6T3 | 05_actuator_interruption.kicad_sch:KP2:1L1
 K1_P1_IN,2,05_actuator_interruption.kicad_sch:SD1:TBD-OUT | 05_actuator_interruption.kicad_sch:KP1:1L1
-K1_STATUS,2,04_contactor_edm.kicad_sch:K1:14 | 08_compute_and_control_terminals.kicad_sch:XT1:TBD-5
+K1_STATUS,2,04_contactor_edm.kicad_sch:K1:14 | 09_compute_and_control_terminals.kicad_sch:XT1:TBD-5
 K2_A1,2,04_contactor_edm.kicad_sch:K2:A1 | 04_contactor_edm.kicad_sch:FSR2:2
 K2_J12,2,05_actuator_interruption.kicad_sch:KP2:2T1 | 05_actuator_interruption.kicad_sch:KP2:3L2
 K2_J23,2,05_actuator_interruption.kicad_sch:KP2:4T2 | 05_actuator_interruption.kicad_sch:KP2:5L3
-K2_STATUS,2,04_contactor_edm.kicad_sch:K2:14 | 08_compute_and_control_terminals.kicad_sch:XT1:TBD-6
-PI_HEARTBEAT,2,07_watchdog_control.kicad_sch:ISO1:TBD-IN | 08_compute_and_control_terminals.kicad_sch:PI1:TBD-GPIO-HB
-PI_USB_U2D2,2,08_compute_and_control_terminals.kicad_sch:PI1:USB-U2D2 | 09_actuator_interfaces.kicad_sch:U1:USB
-ROBOT_FRAME,1,09_actuator_interfaces.kicad_sch:JFRAME1:TBD-FRAME
-SAFETY_0V,20,01_external_sources.kicad_sch:PSU2:P1J-S | 01_external_sources.kicad_sch:JC1:TBD-24- | 01_external_sources.kicad_sch:JC1:TBD-OUT- | 02_estop_eligibility.kicad_sch:SR1:A2 | 02_estop_eligibility.kicad_sch:H1:TBD-H- | 03_arm_watchdog_eligibility.kicad_sch:SRA1:A2 | 04_contactor_edm.kicad_sch:K1:A2 | 04_contactor_edm.kicad_sch:K2:A2 | 07_watchdog_control.kicad_sch:DC1:TBD-IN- | 07_watchdog_control.kicad_sch:DC1:TBD-OUT- | 07_watchdog_control.kicad_sch:ISO1:TBD-WG | 07_watchdog_control.kicad_sch:WDCTRL1:38 | 07_watchdog_control.kicad_sch:Q1:TBD-0V | 07_watchdog_control.kicad_sch:Q2:TBD-0V | 07_watchdog_control.kicad_sch:IFB1:TBD-IN- | 07_watchdog_control.kicad_sch:IFB1:TBD-GND | 07_watchdog_control.kicad_sch:IFB2:TBD-IN- | 07_watchdog_control.kicad_sch:IFB2:TBD-GND | 08_compute_and_control_terminals.kicad_sch:JDBG1:TBD-GND | 08_compute_and_control_terminals.kicad_sch:XT1:TBD-2
-SAFETY_24V,15,01_external_sources.kicad_sch:JC1:TBD-OUT+ | 02_estop_eligibility.kicad_sch:SR1:A1 | 02_estop_eligibility.kicad_sch:SR1:41 | 03_arm_watchdog_eligibility.kicad_sch:SRA1:A1 | 03_arm_watchdog_eligibility.kicad_sch:SRA1:13 | 03_arm_watchdog_eligibility.kicad_sch:SRA1:23 | 03_arm_watchdog_eligibility.kicad_sch:SRA1:41 | 03_arm_watchdog_eligibility.kicad_sch:KWD1:A1 | 03_arm_watchdog_eligibility.kicad_sch:KWD1:21 | 03_arm_watchdog_eligibility.kicad_sch:KWD2:A1 | 03_arm_watchdog_eligibility.kicad_sch:KWD2:21 | 04_contactor_edm.kicad_sch:K1:13 | 04_contactor_edm.kicad_sch:K2:13 | 07_watchdog_control.kicad_sch:DC1:TBD-IN+ | 08_compute_and_control_terminals.kicad_sch:XT1:TBD-1
+K2_STATUS,2,04_contactor_edm.kicad_sch:K2:14 | 09_compute_and_control_terminals.kicad_sch:XT1:TBD-6
+PI_HEARTBEAT,2,07_watchdog_control.kicad_sch:ISO1:TBD-IN | 09_compute_and_control_terminals.kicad_sch:PI1:TBD-GPIO-HB
+PI_USB_U2D2,2,09_compute_and_control_terminals.kicad_sch:PI1:USB-U2D2 | 10_actuator_interfaces.kicad_sch:U1:USB
+ROBOT_FRAME,1,10_actuator_interfaces.kicad_sch:JFRAME1:TBD-FRAME
+SAFETY_0V,27,01_external_sources.kicad_sch:PSU2:P1J-S | 01_external_sources.kicad_sch:JC1:TBD-24- | 01_external_sources.kicad_sch:JC1:TBD-OUT- | 02_estop_eligibility.kicad_sch:SR1:A2 | 02_estop_eligibility.kicad_sch:H1:TBD-H- | 03_arm_watchdog_eligibility.kicad_sch:SRA1:A2 | 04_contactor_edm.kicad_sch:K1:A2 | 04_contactor_edm.kicad_sch:K2:A2 | 07_watchdog_control.kicad_sch:DC1:TBD-IN- | 07_watchdog_control.kicad_sch:DC1:TBD-OUT- | 07_watchdog_control.kicad_sch:ISO1:TBD-WG | 07_watchdog_control.kicad_sch:WDCTRL1:38 | 07_watchdog_control.kicad_sch:Q1:TBD-0V | 07_watchdog_control.kicad_sch:Q2:TBD-0V | 08_watchdog_feedback_interface.kicad_sch:UFB1:1 | 08_watchdog_feedback_interface.kicad_sch:UFB1:8 | 08_watchdog_feedback_interface.kicad_sch:UFB1:9 | 08_watchdog_feedback_interface.kicad_sch:UFB1:14 | 08_watchdog_feedback_interface.kicad_sch:CFI1:2 | 08_watchdog_feedback_interface.kicad_sch:RW1:2 | 08_watchdog_feedback_interface.kicad_sch:CFI2:2 | 08_watchdog_feedback_interface.kicad_sch:RW2:2 | 08_watchdog_feedback_interface.kicad_sch:CDEC1:2 | 08_watchdog_feedback_interface.kicad_sch:RPD1:2 | 08_watchdog_feedback_interface.kicad_sch:RPD2:2 | 09_compute_and_control_terminals.kicad_sch:JDBG1:TBD-GND | 09_compute_and_control_terminals.kicad_sch:XT1:TBD-2
+SAFETY_24V,15,01_external_sources.kicad_sch:JC1:TBD-OUT+ | 02_estop_eligibility.kicad_sch:SR1:A1 | 02_estop_eligibility.kicad_sch:SR1:41 | 03_arm_watchdog_eligibility.kicad_sch:SRA1:A1 | 03_arm_watchdog_eligibility.kicad_sch:SRA1:13 | 03_arm_watchdog_eligibility.kicad_sch:SRA1:23 | 03_arm_watchdog_eligibility.kicad_sch:SRA1:41 | 03_arm_watchdog_eligibility.kicad_sch:KWD1:A1 | 03_arm_watchdog_eligibility.kicad_sch:KWD1:21 | 03_arm_watchdog_eligibility.kicad_sch:KWD2:A1 | 03_arm_watchdog_eligibility.kicad_sch:KWD2:21 | 04_contactor_edm.kicad_sch:K1:13 | 04_contactor_edm.kicad_sch:K2:13 | 07_watchdog_control.kicad_sch:DC1:TBD-IN+ | 09_compute_and_control_terminals.kicad_sch:XT1:TBD-1
 SAFETY_24V_RAW,2,01_external_sources.kicad_sch:PSU2:P1J-C | 01_external_sources.kicad_sch:JC1:TBD-24+
 SITE_PE_CONTROL_SOURCE,1,01_external_sources.kicad_sch:PSU2:C14-PE
 SR1_DIAG_NC,1,02_estop_eligibility.kicad_sch:SR1:42
@@ -51,7 +59,7 @@ SR1_S12,3,02_estop_eligibility.kicad_sch:SR1:S12 | 02_estop_eligibility.kicad_sc
 SR1_S21,2,02_estop_eligibility.kicad_sch:S0:TBD-C2A | 02_estop_eligibility.kicad_sch:SR1:S21
 SR1_S22,2,02_estop_eligibility.kicad_sch:SR1:S22 | 03_arm_watchdog_eligibility.kicad_sch:KWD2:14
 SR1_START_RETURN,2,02_estop_eligibility.kicad_sch:SR1:S34 | 02_estop_eligibility.kicad_sch:S1:TBD-R2
-SR1_STATUS,3,02_estop_eligibility.kicad_sch:SR1:Y32 | 02_estop_eligibility.kicad_sch:H1:TBD-H+ | 08_compute_and_control_terminals.kicad_sch:XT1:TBD-3
+SR1_STATUS,3,02_estop_eligibility.kicad_sch:SR1:Y32 | 02_estop_eligibility.kicad_sch:H1:TBD-H+ | 09_compute_and_control_terminals.kicad_sch:XT1:TBD-3
 SRA1_DIAG_NC,1,03_arm_watchdog_eligibility.kicad_sch:SRA1:42
 SRA1_K1_RAW,2,03_arm_watchdog_eligibility.kicad_sch:SRA1:14 | 04_contactor_edm.kicad_sch:FSR1:1
 SRA1_K2_RAW,2,03_arm_watchdog_eligibility.kicad_sch:SRA1:24 | 04_contactor_edm.kicad_sch:FSR2:1
@@ -60,19 +68,21 @@ SRA1_S12,3,02_estop_eligibility.kicad_sch:SR1:14 | 03_arm_watchdog_eligibility.k
 SRA1_S21,2,02_estop_eligibility.kicad_sch:SR1:23 | 03_arm_watchdog_eligibility.kicad_sch:SRA1:S21
 SRA1_S22,2,02_estop_eligibility.kicad_sch:SR1:24 | 03_arm_watchdog_eligibility.kicad_sch:SRA1:S22
 SRA1_START_RETURN,2,03_arm_watchdog_eligibility.kicad_sch:SRA1:S34 | 04_contactor_edm.kicad_sch:K2:22
-SRA1_STATUS,2,03_arm_watchdog_eligibility.kicad_sch:SRA1:Y32 | 08_compute_and_control_terminals.kicad_sch:XT1:TBD-4
+SRA1_STATUS,2,03_arm_watchdog_eligibility.kicad_sch:SRA1:Y32 | 09_compute_and_control_terminals.kicad_sch:XT1:TBD-4
+UFB_OUT1,2,08_watchdog_feedback_interface.kicad_sch:UFB1:4 | 08_watchdog_feedback_interface.kicad_sch:RSO1:1
+UFB_OUT2,2,08_watchdog_feedback_interface.kicad_sch:UFB1:5 | 08_watchdog_feedback_interface.kicad_sch:RSO2:1
 WD1_COIL_N,2,03_arm_watchdog_eligibility.kicad_sch:KWD1:A2 | 07_watchdog_control.kicad_sch:Q1:TBD-COIL
 WD1_DRIVE,2,07_watchdog_control.kicad_sch:WDCTRL1:5 | 07_watchdog_control.kicad_sch:Q1:TBD-IN
-WD1_NC_24V,2,03_arm_watchdog_eligibility.kicad_sch:KWD1:22 | 07_watchdog_control.kicad_sch:IFB1:TBD-IN+
-WD1_NC_DIAG,2,07_watchdog_control.kicad_sch:WDCTRL1:9 | 07_watchdog_control.kicad_sch:IFB1:TBD-OUT
+WD1_NC_24V,3,03_arm_watchdog_eligibility.kicad_sch:KWD1:22 | 08_watchdog_feedback_interface.kicad_sch:RTH1:1 | 08_watchdog_feedback_interface.kicad_sch:RW1:1
+WD1_NC_DIAG,3,07_watchdog_control.kicad_sch:WDCTRL1:9 | 08_watchdog_feedback_interface.kicad_sch:RSO1:2 | 08_watchdog_feedback_interface.kicad_sch:RPD1:1
 WD1_SAFETY_IN,2,02_estop_eligibility.kicad_sch:S0:TBD-C1B | 03_arm_watchdog_eligibility.kicad_sch:KWD1:11
 WD2_COIL_N,2,03_arm_watchdog_eligibility.kicad_sch:KWD2:A2 | 07_watchdog_control.kicad_sch:Q2:TBD-COIL
 WD2_DRIVE,2,07_watchdog_control.kicad_sch:WDCTRL1:6 | 07_watchdog_control.kicad_sch:Q2:TBD-IN
-WD2_NC_24V,2,03_arm_watchdog_eligibility.kicad_sch:KWD2:22 | 07_watchdog_control.kicad_sch:IFB2:TBD-IN+
-WD2_NC_DIAG,2,07_watchdog_control.kicad_sch:WDCTRL1:10 | 07_watchdog_control.kicad_sch:IFB2:TBD-OUT
+WD2_NC_24V,3,03_arm_watchdog_eligibility.kicad_sch:KWD2:22 | 08_watchdog_feedback_interface.kicad_sch:RTH2:1 | 08_watchdog_feedback_interface.kicad_sch:RW2:1
+WD2_NC_DIAG,3,07_watchdog_control.kicad_sch:WDCTRL1:10 | 08_watchdog_feedback_interface.kicad_sch:RSO2:2 | 08_watchdog_feedback_interface.kicad_sch:RPD2:1
 WD2_SAFETY_IN,2,02_estop_eligibility.kicad_sch:S0:TBD-C2B | 03_arm_watchdog_eligibility.kicad_sch:KWD2:11
-WD_3V3,3,07_watchdog_control.kicad_sch:WDCTRL1:36 | 07_watchdog_control.kicad_sch:IFB1:TBD-3V3 | 07_watchdog_control.kicad_sch:IFB2:TBD-3V3
+WD_3V3,4,07_watchdog_control.kicad_sch:WDCTRL1:36 | 08_watchdog_feedback_interface.kicad_sch:UFB1:2 | 08_watchdog_feedback_interface.kicad_sch:UFB1:3 | 08_watchdog_feedback_interface.kicad_sch:CDEC1:1
 WD_5V,2,07_watchdog_control.kicad_sch:DC1:TBD-OUT+ | 07_watchdog_control.kicad_sch:WDCTRL1:39
 WD_HEARTBEAT,2,07_watchdog_control.kicad_sch:ISO1:TBD-OUT | 07_watchdog_control.kicad_sch:WDCTRL1:4
-WD_SWCLK,2,07_watchdog_control.kicad_sch:WDCTRL1:SWCLK | 08_compute_and_control_terminals.kicad_sch:JDBG1:TBD-SWCLK
-WD_SWDIO,2,07_watchdog_control.kicad_sch:WDCTRL1:SWDIO | 08_compute_and_control_terminals.kicad_sch:JDBG1:TBD-SWDIO
+WD_SWCLK,2,07_watchdog_control.kicad_sch:WDCTRL1:SWCLK | 09_compute_and_control_terminals.kicad_sch:JDBG1:TBD-SWCLK
+WD_SWDIO,2,07_watchdog_control.kicad_sch:WDCTRL1:SWDIO | 09_compute_and_control_terminals.kicad_sch:JDBG1:TBD-SWDIO

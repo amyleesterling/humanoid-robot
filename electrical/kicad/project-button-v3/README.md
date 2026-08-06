@@ -1,4 +1,4 @@
-# Project Button HR-V0 Electrical V3-P0.3
+# Project Button HR-V0 Electrical V3-P0.4
 
 **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -13,14 +13,15 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 5. `05_actuator_interruption.kicad_sch` — Redundant actuator-power interruption
 6. `06_branches_and_injection.kicad_sch` — Protected actuator branches and VDD-isolating injection
 7. `07_watchdog_control.kicad_sch` — Independent watchdog power, controller and drivers
-8. `08_compute_and_control_terminals.kicad_sch` — Compute, debug and control terminals
-9. `09_actuator_interfaces.kicad_sch` — U2D2, actuator ports and bonding boundary
+8. `08_watchdog_feedback_interface.kicad_sch` — Calculated dual-channel 24 V watchdog feedback
+9. `09_compute_and_control_terminals.kicad_sch` — Compute, debug and control terminals
+10. `10_actuator_interfaces.kicad_sch` — U2D2, actuator ports and bonding boundary
 
 ## Material corrections relative to V2.1
 
 - Separate SR1 RESET eligibility and SRA1 ARM/EDM stages.
 - Two separately driven watchdog relay contacts interrupt the two SR1 input returns so heartbeat loss forces the physical RESET stage to drop.
-- Phoenix relay terminals are frozen from the official circuit diagram, and each 24 V NC diagnostic passes through an explicit unreleased input-interface block before the Pico GPIO.
+- Phoenix relay terminals are frozen from the official circuit diagram. Both 24 V NC diagnostics pass through the calculated ISO1212DBQ input network before the Pico GPIO; exact passive order codes, PCB and physical validation remain open.
 - Heartbeat restoration cannot restore contactors; SRA1 requires a new monitored ARM action.
 - External Mean Well adapters replace project-built mains wiring.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.

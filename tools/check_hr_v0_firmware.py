@@ -83,10 +83,14 @@ def main() -> int:
         "relay1_nc_feedback": {"gpio": 6, "physical_pin": 9},
         "relay2_nc_feedback": {"gpio": 7, "physical_pin": 10},
     }
-    if watchdog_config.get("configuration_id") != "HR-V0-WD-P0.2":
-        failures.append("watchdog configuration ID is not HR-V0-WD-P0.2")
+    if watchdog_config.get("configuration_id") != "HR-V0-WD-P0.3":
+        failures.append("watchdog configuration ID is not HR-V0-WD-P0.3")
     if watchdog_config.get("gpio_assignments") != expected_gpio:
-        failures.append("watchdog GPIO assignment differs from the Electrical V3-P0.3 candidate")
+        failures.append("watchdog GPIO assignment differs from the Electrical V3-P0.4 candidate")
+    if watchdog_config.get("feedback_front_end") != "TI_ISO1212DBQ_P0.1":
+        failures.append("watchdog feedback front end differs from the Electrical V3-P0.4 candidate")
+    if watchdog_config.get("feedback_gpio_active_high") is not True:
+        failures.append("watchdog feedback GPIO polarity is not active-high for KWD NC closed")
     header = (FIRMWARE / "watchdog" / "include" / "pb_watchdog.h").read_text(encoding="utf-8")
     source = (FIRMWARE / "watchdog" / "src" / "pb_watchdog.c").read_text(encoding="utf-8")
     define_names = {

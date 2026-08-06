@@ -10,11 +10,11 @@ The directory contains the root `.kicad_pro`, root and 14 child `.kicad_sch` she
 
 This is connected preliminary ECAD, not a build release. Clean ERC establishes modeled connectivity and annotation only. Exact physical selections, pinouts, ratings, protection coordination, conductor sizing, enclosure/panel design, functional-safety analysis, firmware, and physical fault tests remain unresolved. Do not fabricate, wire, or energize from this package.
 
-## Electrical V3-P0.3 correction candidate
+## Electrical V3-P0.4 correction candidate
 
-V3 is a generated native KiCad candidate that addresses the V2.1 automatic-restart blocker and removes project-built mains wiring from the proposed HR-V0 architecture. It has one index and nine child sheets, separate RESET and ARM stages, two PNOZ s4 devices, two watchdog-contact channels, explicit K1/K2 mirror contacts and series power poles, external adapters, separately protected actuator branches, and VDD-isolating data/power injection modules.
+V3 is a generated native KiCad candidate that addresses the V2.1 automatic-restart blocker and removes project-built mains wiring from the proposed HR-V0 architecture. It has one index and ten child sheets, separate RESET and ARM stages, two PNOZ s4 devices, two watchdog-contact channels, an explicit calculated ISO1212DBQ feedback sheet, K1/K2 mirror contacts and series power poles, external adapters, separately protected actuator branches, and VDD-isolating data/power injection modules.
 
-Current generated counts are 43 component blocks, 209 modeled terminals, 77 native nets (56 named connected nets plus 21 deliberate auto-generated unconnected nets), 188 unique wire labels, 31 unresolved component/interface rows, and 74 deliberately unresolved `TBD-*` terminal designations. P0.3 freezes the official Phoenix relay and candidate Pico terminals while adding two deliberately unreleased 24 V feedback-interface blocks; the higher unresolved-component count is intentional. KiCad 10.0.5 ERC reports 0 errors and 0 warnings; native netlist, ten-page PDF, and ten SVG exports succeed. Run:
+Current generated counts are 55 component blocks, 241 modeled terminals, 87 native nets (62 named connected nets plus 25 deliberate auto-generated unconnected nets), 216 unique wire labels, 43 unresolved component/interface rows, and 64 deliberately unresolved `TBD-*` terminal designations. P0.4 replaces the two opaque feedback blocks with an exact `ISO1212DBQ` pinout and calculated threshold, wetting, filter, output-series, pulldown and decoupling networks. Exact passive order codes, PCB, terminals, EMC, thermal and fault validation remain open. KiCad 10.0.5 ERC reports 0 errors and 0 warnings; native netlist, eleven-page PDF, and eleven SVG exports succeed. Run:
 
 ```powershell
 python tools/generate_hr_v0_electrical_v3.py --validate

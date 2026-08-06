@@ -31,7 +31,7 @@ AI perception or language software may propose a high-level action in a later re
 
 `HR-V0-FW-P0.1` provides a portable-C watchdog logic candidate and an executable Python supervisor authority model under `firmware/`. The V3 sequence is now explicitly a monitored physical RESET followed by a separate deliberate physical ARM action. Software observes that sequence; it has no contactor-closing output. Physical ARM may make the hardware rail eligible, but torque remains off until a later fresh trajectory passes configuration, timing, pose, joint-limit, speed, TCP and terminal-state checks.
 
-The repository supervisor configuration deliberately retains unresolved configuration/kinematic hashes and start-pose tolerances, so it fails closed. Seventeen unit tests and a source-hash manifest are present. R18 freezes candidate Pico GPIO numbers, but no compiled RP2040 platform binding, external bias/input circuit, DYNAMIXEL transport, HIL trace or qualified code/safety review exists. See `docs/hr-v0-firmware-p0.1.md` and `docs/hr-v0-watchdog-interface-p0.2.md`. No safety credit is assigned to this implementation.
+The repository supervisor configuration deliberately retains unresolved configuration/kinematic hashes and start-pose tolerances, so it fails closed. Seventeen unit tests and a source-hash manifest are present. R19 retains the frozen candidate Pico GPIO numbers and adds a calculated ISO1212DBQ feedback circuit, but no compiled RP2040 platform binding, released PCB, DYNAMIXEL transport, HIL trace or qualified code/safety review exists. See `docs/hr-v0-firmware-p0.1.md`, `docs/hr-v0-watchdog-interface-p0.2.md`, and `docs/hr-v0-watchdog-feedback-p0.1.md`. No safety credit is assigned to this implementation.
 
 ## Command contract
 
