@@ -46,13 +46,14 @@ Using the manufacturer-published 80/20 40-4040 inertia of 13.787 cm⁴ and an al
 
 ## Release blockers
 
-1. The controlled `MV0-FC01` DXF/STEP/STL/1:1 overlay and `INSPECT-MECH-003` record template now exist. Cut the nonstructural coupon and execute the procedure against purchased FR13-H101K and FR13-S102K parts. The candidate 2.70 mm holes remain unreleased until physical fit, the exact gauge/fastener, process capability, and acceptance tolerances are recorded and reviewed.
-2. Select exact M2.5/M8 fasteners, engagement, torque, locking and inspection marks. The structural screen does not prove unknown fasteners.
-3. Add positive mechanical hard stops outside the software range and calculate/test their maximum-energy impact.
-4. Release the gripper mechanism, compliant pads, detachment retention and force/current characterization.
-5. Add cable paths, bend-radius checks, strain relief and swept-volume collision evidence.
-6. Design the fixed polycarbonate guard and receiver fixture from the measured stop trajectory.
-7. Survey the actual bench substrate and select anchor hardware using pull-out/shear and edge-distance evidence.
-8. Correlate CAD masses and geometry with the first article, then obtain qualified mechanical review.
+1. `MV0-FC01`/`INSPECT-MECH-003` now control the PCD22 check, and `MV0-FC02`/`INSPECT-MECH-004` control the selected S102 32 x 16 tapped rectangle. Execute both against received parts. Candidate 2.70 mm clearance holes remain unreleased until physical fit, gauge/thread criteria, process capability, and acceptance tolerances are recorded and reviewed.
+2. R21 corrected the invalid assumption that both ends of both links use PCD22. `MV0-001` now distinguishes H101 output and S102 body-frame interfaces; `MV0-003` uses the selected S102 pattern; `MV0-002` has no released gripper holes. See `docs/hr-v0-joint-interface-fasteners-p0.1.md`.
+3. Receive and identify every kit component under `INSPECT-MECH-005`, then select exact M2.5/M8 fasteners, engagement, torque, locking and inspection marks. The expected kit inventory does not prove screw grade, allocation, preload or structural capacity.
+4. Add positive mechanical hard stops outside the software range and calculate/test their maximum-energy impact.
+5. Release the gripper mechanism, compliant pads, detachment retention and force/current characterization.
+6. Add cable paths, bend-radius checks, strain relief and swept-volume collision evidence.
+7. Design the fixed polycarbonate guard and receiver fixture from the measured stop trajectory.
+8. Survey the actual bench substrate and select anchor hardware using pull-out/shear and edge-distance evidence.
+9. Correlate CAD masses and geometry with the first article, then obtain qualified mechanical review.
 
 The generated DXF/STEP files are suitable for comparable quotations only. They are not suitable for an approved cutting order.

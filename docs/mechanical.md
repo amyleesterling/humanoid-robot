@@ -16,7 +16,7 @@ The HR-V0 mechanism is a planar two-link arm mounted to a rigid vertical bench c
 - Mechanical hard stops shall sit at least 5° beyond software limits and before any cable, connector, or shield contact.
 - Each rotating joint requires dual-supported output geometry. Actuator output bearings alone shall not carry cantilevered link loads unless the actuator manufacturer explicitly approves the final force, moment, duty, shock, and life case.
 
-Links are initially specified as flat 4.75 mm nominal 6061-T6 aluminum plates using ROBOTIS FR13-H101K output frames and FR13-S102K actuator-body frames. Polymer parts may be used for fit coupons, covers, cable guides, and gripper fingers, but not as the sole primary shoulder load path in the first build release.
+Links are initially specified as flat 4.75 mm nominal 6061-T6 aluminum plates using ROBOTIS FR13-H101K output frames and FR13-S102K actuator-body frames. The interfaces are deliberately asymmetric: H101 output uses the PCD22 clearance pattern, S102 body-frame mounting uses the selected 32 x 16 tapped rectangle, and the distal gripper interface remains `DESIGN REQUIRED`. Polymer parts may be used for fit coupons, covers, cable guides, and gripper fingers, but not as the sole primary shoulder load path in the first build release. See [the joint-interface and fastener basis](hr-v0-joint-interface-fasteners-p0.1.md).
 
 ## Mass budget
 

@@ -10,6 +10,13 @@
       4.75
     ],
     "candidate_hole_d_mm": 2.7,
+    "selected_interfaces": {
+      "H101_output": "8 clearance holes on 22 mm PCD",
+      "S102_body_frame": "4 clearance holes on selected 32 x 16 mm tapped rectangle",
+      "distal_gripper": "DESIGN REQUIRED"
+    },
+    "h101_frame_nominal_thickness_mm": 2.0,
+    "xm540_output_tap_depth_max_mm": 2.5,
     "column_I_mm4": 137870.0
   },
   "screens": {
@@ -20,6 +27,8 @@
     "link_cantilever_deflection_mm": 0.04214239908398049,
     "conservative_two_bolt_force_each_N": 522.2727272727273,
     "candidate_plate_bearing_stress_MPa": 43.98086124401914,
+    "h101_output_stack_nominal_before_thread_mm": 6.75,
+    "h101_output_fastener_geometric_max_underhead_mm": 9.25,
     "column_tip_deflection_pure_moment_mm": 0.15097713346851635,
     "minimum_anchor_couple_force_each_N": 27.357142857142858
   },
@@ -27,6 +36,8 @@
     "Actual alloy/temper certificate, thickness tolerance, flatness and finish",
     "ROBOTIS frame material, measured mass, permissible load and fatigue behavior",
     "Exact M2.5 and M8 fastener part, grade, engagement, preload, torque and locking",
+    "Physical FC01/FC02 pattern verification, received thread depth and stack tolerance",
+    "Released distal gripper interface and its retention load path",
     "Joint backlash, alignment, combined load, shock, fatigue and hard-stop impact",
     "Bench substrate, anchor part, edge distance, pull-out, shear and site permission",
     "Guard and receiver-fixture impact/retention",

@@ -18,20 +18,23 @@ For a clean environment, install the pinned package from `requirements-cad.txt`.
 
 | Part | Description | Quantity | Material | Current status |
 |---|---|---:|---|---|
-| MV0-001 | 160 mm upper-link plate | 1 | 4.75 mm nominal 6061-T6 | Quote geometry |
-| MV0-002 | 160 mm forearm plate | 1 | 4.75 mm nominal 6061-T6 | Quote geometry |
-| MV0-003 | Shoulder-to-column adapter | 1 | 6.35 mm nominal 6061-T6 | Fit coupon required |
+| MV0-001 | 160 mm upper-link plate; H101 output to S102 body-frame interfaces | 1 | 4.75 mm nominal 6061-T6 | Corrected quote geometry; physical fit required |
+| MV0-002 | 160 mm forearm plate; H101 input and unreleased gripper datum | 1 | 4.75 mm nominal 6061-T6 | Do not cut until gripper interface is released |
+| MV0-003 | S102 shoulder-to-column adapter | 1 | 6.35 mm nominal 6061-T6 | Corrected quote geometry; physical fit required |
 | MV0-004 | Bench anchor plate | 2 | 6.35 mm nominal 6061-T6 | Site-dependent |
 
 ## Controlled nonstructural fit coupon
 
-`MV0-FC01` is a 38 mm outside-diameter coupon with eight candidate 2.70 mm holes on a 22 mm pitch circle. The generated DXF/STEP/STL and 1:1 A4 SVG are under `generated/fit-coupons/`. Use them only with [the controlled unpowered inspection procedure](../../docs/hr-v0-fit-coupon-procedure-p0.1.md). The coupon checks the received FR13-H101K and FR13-S102K broad-face pattern; it is not a structural part, tolerance release, or evidence that the final fastener stack is acceptable.
+`MV0-FC01` checks the eight-hole PCD22 through pattern on the received frames. `MV0-FC02` checks the selected four-tapped-hole 32 x 16 mm rectangle on the received FR13-S102K. Their generated DXF/STEP/STL and 1:1 A4 SVG files are under `generated/fit-coupons/`. Use only [the PCD22 procedure](../../docs/hr-v0-fit-coupon-procedure-p0.1.md) and [the S102 procedure](../../docs/hr-v0-s102-fit-procedure-p0.1.md). Neither coupon is a structural part, tolerance release, thread qualification, or evidence that the final fastener stack is acceptable.
+
+The corrected interface and fastener boundary is [controlled separately](../../docs/hr-v0-joint-interface-fasteners-p0.1.md). The earlier symmetric PCD22 assumption was invalid: H101 output, S102 body-frame, and gripper interfaces are not interchangeable.
 
 The assembly uses envelopes for 80/20 40-4040 extrusion and XM540 actuators. Use the untouched manufacturer STEP files in `../vendor/robotis` for final interference checking. The generated assembly is a space claim and mounting concept, not a kinematically constrained assembly.
 
 ## Gates before a cutting order
 
 - Execute `INSPECT-MECH-003` with the controlled `MV0-FC01` coupon and received FR13 frames; preserve every per-hole record and photograph.
+- Execute `INSPECT-MECH-004` with `MV0-FC02` on both received S102 frames and `INSPECT-MECH-005` on all received kit contents.
 - Confirm the cutting supplier's actual thickness tolerance, hole tolerance, minimum feature and finish.
 - Resolve fastener exact parts, strength class, engagement, torque, locking method and witness marking.
 - Add and verify hard stops, cable paths, covers, gripper retention and the fixed guard.

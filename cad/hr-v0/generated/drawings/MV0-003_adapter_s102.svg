@@ -11,11 +11,11 @@
       <text x="30" y="32" class="title">MV0-003 · SHOULDER ADAPTER</text>
       
           <rect x="180" y="80" width="450" height="300" class="part"/>
-          <g class="hole"><circle cx="470" cy="189" r="7"/><circle cx="497" cy="200" r="7"/><circle cx="508" cy="227" r="7"/><circle cx="497" cy="254" r="7"/><circle cx="470" cy="265" r="7"/><circle cx="443" cy="254" r="7"/><circle cx="432" cy="227" r="7"/><circle cx="443" cy="200" r="7"/><circle cx="250" cy="285" r="22"/><circle cx="250" cy="176" r="22"/></g>
-          <text x="180" y="55">90.0 × 110.0 × 6.35 mm NOMINAL</text>
-          <text x="655" y="190">8 × ⌀2.70</text><text x="655" y="218">ON ⌀22.0 PCD</text>
-          <text x="655" y="285">2 × ⌀9.0 CANDIDATE</text><text x="655" y="313">M8 COLUMN FASTENERS</text>
+          <g class="hole"><circle cx="390" cy="187" r="7"/><circle cx="390" cy="267" r="7"/><circle cx="550" cy="187" r="7"/><circle cx="550" cy="267" r="7"/><circle cx="250" cy="285" r="22"/><circle cx="250" cy="176" r="22"/></g>
+          <text x="180" y="55">90.0 x 110.0 x 6.35 mm NOMINAL</text>
+          <text x="650" y="190">S102: 4 x dia 2.70</text><text x="650" y="218">ON 32 x 16 RECTANGLE</text>
+          <text x="650" y="285">2 x dia 9.0 CANDIDATE</text><text x="650" y="313">M8 COLUMN FASTENERS</text>
           <text x="180" y="430">SHOULDER AXIS: X=58.0, Z=70.0 FROM LOWER-LEFT DATUM</text>
-          <text x="180" y="460">COLUMN HOLES: X=14.0; Z=35.0 AND 75.0 · VERIFY AGAINST ACTUAL FRAME BEFORE CUT</text>
+          <text x="180" y="460">FASTENER LENGTH, ENGAGEMENT, TORQUE AND TOLERANCES: SELECTION REQUIRED</text>
       <text x="30" y="486" class="warning">HR-V0-MECH-R0.1-PRELIMINARY · PRELIMINARY—NOT RELEASED FOR FABRICATION</text>
     </svg>
