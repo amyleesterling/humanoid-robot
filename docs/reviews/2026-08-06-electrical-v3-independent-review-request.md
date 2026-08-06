@@ -1,7 +1,7 @@
-# Project Button HR-V0 Electrical V3-P0.4 Independent Review Request
+# Project Button HR-V0 Electrical V3-P0.5 Independent Review Request
 
 Review date: 2026-08-06  
-Controlled candidate: **Electrical V3-P0.4**
+Controlled candidate: **Electrical V3-P0.5**
 Systems baseline: **HR-30-SYS-R0.2**  
 Status: **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -9,7 +9,7 @@ Status: **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
 Independently audit the accuracy, completeness, and physical implementability of the connected HR-V0 Electrical V3 candidate. Do not treat clean ERC, generated schedules, or this request as functional-safety validation or permission to procure, fabricate, wire, or energize.
 
-The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P0.4 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. V3-P0.1 is historical and did not force the SR1 RESET stage to drop on watchdog loss. V3-P0.2 is historical because it routed a 24 V KWD NC diagnostic net toward an unresolved Pico GPIO. V3-P0.3 is historical because it stopped at opaque feedback-interface blocks.
+The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P0.5 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. V3-P0.1 is historical and did not force the SR1 RESET stage to drop on watchdog loss. V3-P0.2 is historical because it routed a 24 V KWD NC diagnostic net toward an unresolved Pico GPIO. V3-P0.3 is historical because it stopped at opaque feedback-interface blocks. V3-P0.4 added the calculated ISO1212DBQ circuit; P0.5 freezes distinct RESET/ARM operator identities and the Raspberry Pi US regional supply model while retaining physical-terminal and panel/SKU/retention blockers.
 
 ## Controlled inputs
 

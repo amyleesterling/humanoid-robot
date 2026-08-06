@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: native connected design candidate `V3-P0.4`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` is retained as the historical R16 configuration; P0.2 is the historical R17 restart-chain correction; P0.3 is the historical R18 watchdog voltage-boundary correction; P0.4 replaces its opaque feedback blocks with a calculated ISO1212DBQ circuit.
+Status: native connected design candidate `V3-P0.5`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` is retained as the historical R16 configuration; P0.2 is the historical R17 restart-chain correction; P0.3 is the historical R18 watchdog voltage-boundary correction; P0.4 replaces its opaque feedback blocks with a calculated ISO1212DBQ circuit; P0.5 freezes distinct black RESET and green ARM operator order codes and the official Raspberry Pi US regional model while leaving received terminals, panel human factors, compute-supply SKU/color, and cable retention open.
 
 - Native source: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Generator: `tools/generate_hr_v0_electrical_v3.py`
@@ -23,7 +23,7 @@ The candidate also removes custom mains wiring from HR-V0. All project-built wir
 |---|---|---|---|
 | actuator 12 V | Mean Well `GST280A12-C6P` | 12 V, 21 A, 252 W; IEC C14 inlet; enclosed adapter; `-V` connected to AC protective earth; standard C6P output is a Molex 39-01-2060-equivalent six-position plug with pins 1-3 `+Vo` and 4-6 `-Vo`; file `GST280A-SPEC 2026-04-03` | candidate only; mating connector/contact order codes, source reverse-current behavior, regeneration, branch protection, and received-unit tests remain open |
 | safety/control 24 V | Mean Well `GST40A24-P1J` | 24 V, 1.67 A, 40 W; class I IEC C14 adapter; center-positive 2.1 x 5.5 mm plug; `-V` is not connected to AC protective earth; file `GST40A-SPEC 2026-04-03` | candidate only; locking DC connector/interface, load/inrush budget, branch protection, and received-unit tests remain open |
-| compute | official Raspberry Pi 27 W USB-C supply | independent compute power remains present for diagnostics when actuator energy is removed | regional order code and cable retention remain open |
+| compute | official `Raspberry Pi 27W USB-C Power Supply US` | independent compute power remains present for diagnostics when actuator energy is removed; official brief `RP-008245-DS-1` identifies the US/Canada Type-A model, 5.1 V / 5 A profile, 1.2 m 17 AWG fixed cable, and production through at least January 2035 | the primary portal lists twelve family SKUs but does not map them to region/color; exact SKU, color, mechanical retention, site receptacle, and received-unit test remain open |
 
 The three external AC inputs shall use site-appropriate listed cords/receptacles and branch protection. No project-built mains splitter, inlet, disconnect, fuse holder, exposed terminal, or internal AC wiring is permitted in this candidate. This change can remove the current internal-mains sheet from the HR-V0 implementation, but it does not close site jurisdiction, adapter suitability, EMC, protective-earth, or inspection obligations.
 
@@ -59,6 +59,8 @@ Required sequence:
 3. K1 and K2 remain de-energized because `SRA1` has not accepted ARM.
 4. The operator separately actuates and releases `ARM`; only then may `SRA1` energize K1/K2.
 5. Motion remains inhibited until contactor feedback, actuator state, limits, configuration, and a fresh trajectory all pass in software.
+
+P0.5 freezes `S1` as IDEC `HW1B-M1F10-B` (black) with the explicit `RESET` legend and `S2` as IDEC `HW1B-M1F10-G` (green) with the explicit `ARM` legend. IDEC's current US pages and `HW Series Catalog_Screw` dated 2026-07-23 identify both as flush momentary 1NO screw-terminal operators and identify `B` and `G` as the black and green color codes. This corrects the earlier same-black-operator ambiguity. It does not freeze panel spacing, guarding, location, physical terminal numbers, or human-factors acceptance; those require the received-device and panel records in `tests/forms/hr-v0-control-device-receiving-template.csv`.
 
 Any E-stop opening, watchdog-channel opening, SR1 dropout, channel discrepancy, K1/K2 mirror-contact fault, or SRA1 fault drops the final outputs. E-stop release, heartbeat restoration, controller reboot, a held RESET, or stale commands cannot energize K1/K2. After any dropout the complete RESET-then-ARM sequence is required.
 
@@ -109,7 +111,7 @@ Before this candidate can replace V2.1:
 
 ## Native candidate validation record
 
-The generated `V3-P0.4` candidate currently contains:
+The generated `V3-P0.5` candidate currently contains:
 
 - one root index plus ten focused child sheets;
 - 55 component blocks and 241 modeled terminals;
@@ -121,7 +123,7 @@ The generated `V3-P0.4` candidate currently contains:
 
 KiCad 10.0.5 parsed the root and all ten children, exported the native netlist, an eleven-page A3 PDF, and eleven SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 55 native component references and all 241 exported `(reference, terminal, net)` nodes against the generated schedules, including the 25 deliberate no-connect terminals. It also freezes every ISO1212 pin and supporting-network connection. During P0.4 development this review caught and corrected an initially misdrawn `RSENSE` return: TI requires `RSENSE` between `SENSE` and `IN`, not from `IN` to field ground. Clean ERC did not detect that application error.
 
-The export is rendered at 150 dpi and visually checked after each material layout change. The earlier audit corrected the watchdog low-side coil path, made the shared TTL ground explicit, and replaced duplicate per-component wire labels. P0.4 adds the pin-level feedback sheet and 216 synchronized wire labels; page-level visual QA is part of the recorded validation for this candidate.
+The export is rendered at 150 dpi and visually checked after each material layout change. The earlier audit corrected the watchdog low-side coil path, made the shared TTL ground explicit, and replaced duplicate per-component wire labels. P0.4 adds the pin-level feedback sheet and 216 synchronized wire labels; P0.5 corrects RESET/ARM operator identity and records the official compute-supply regional model without inferring its unmapped SKU. Page-level visual QA is part of the recorded validation for this candidate.
 
 The KiCad CLI logs Windows registry-access messages for `HKCU\Software\kicad-cli` in this restricted execution environment. Every command still returned exit code 0 and produced the expected artifact; the messages are retained in `validation/kicad-cli.log` rather than hidden.
 

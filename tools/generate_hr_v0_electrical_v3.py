@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P0.4"
+REV = "V3-P0.5"
 DATE = "2026-08-06"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 NS = uuid.UUID("4cb40c84-3194-4ded-b2c7-d78df616c5c0")
@@ -170,12 +170,13 @@ def sheets() -> list[Sheet]:
                    pn("J24V1", "TBD-OUT+", "PROTECTED +24V", "SAFETY_24V", "right"),
                    pn("J24V1", "TBD-OUT-", "0V", "SAFETY_0V", "right")],
                   "SELECTION REQUIRED", "Add locking conversion, branch protection, strain relief and enclosure interface without exposing the non-locking barrel plug.", position=(80, 175), width=78),
-        Component("PSU3", "Official Raspberry Pi 27 W USB-C supply, US regional code",
+        Component("PSU3", "Raspberry Pi 27W USB-C Power Supply US; color/SKU unresolved",
                   [pn("PS5A", "USB-C-VBUS", "+5V COMPUTE", "COMPUTE_5V", "right"),
                    pn("PS5A", "USB-C-GND", "COMPUTE GND", "COMPUTE_0V", "right"),
                    pn("PS5A", "AC-FACTORY", "FACTORY AC", "FACTORY_AC_COMPUTE", "left")],
-                  "SELECTION REQUIRED - US ORDER CODE / RETENTION", "Compute remains powered for diagnostics during E-stop; it has no safety authority.",
-                  "https://www.raspberrypi.com/products/27w-power-supply/", position=(210, 175), width=78),
+                  "SELECTION REQUIRED - US SKU / COLOR / RETENTION", "Official US Type-A regional model is frozen. Raspberry Pi's current primary portal lists twelve family SKUs without mapping each SKU to region/color, so the exact order code must not be inferred. Compute remains powered for diagnostics during E-stop and has no safety authority.",
+                  "https://pip-assets.raspberrypi.com/categories/898-raspberry-pi-27w-usb-c-power-supply",
+                  "Raspberry Pi product brief RP-008245-DS-1, published October 2023 and portal-updated 2025-10-06; rechecked 2026-08-06.", position=(210, 175), width=78),
         Component("SP1", "Project-added DC 0V / PE star point",
                   [pn("SP1", "1", "ACTUATOR 0V", "INTENTIONALLY_NOT_CONNECTED_SP1_A", "left"),
                    pn("SP1", "2", "PE", "INTENTIONALLY_NOT_CONNECTED_SP1_B", "right")],
@@ -197,10 +198,11 @@ def sheets() -> list[Sheet]:
                                    "33":"INTENTIONALLY_UNUSED_SR1_33", "34":"INTENTIONALLY_UNUSED_SR1_34",
                                    "41":"SAFETY_24V", "42":"SR1_DIAG_NC", "Y32":"SR1_STATUS"},
              "First-stage E-stop eligibility relay."),
-        Component("S1", "IDEC HW1B-M1F10-B momentary 1NO RESET candidate",
+        Component("S1", "IDEC HW1B-M1F10-B black momentary 1NO RESET",
                   [pn("S1", "TBD-R1", "RESET IN", "SR1_S12", "left"), pn("S1", "TBD-R2", "RESET OUT", "SR1_START_RETURN", "right")],
-                  "SELECTION REQUIRED - HUMAN-FACTORS REVIEW OPEN", "Documented candidate is black flush momentary 1NO with screw terminals. RESET is outside the swept envelope and feeds only SR1 monitored start; legend, guard, spacing, color and received terminals remain open.",
-                  "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b", position=(340, 82), width=82),
+                  "PROPOSED - EXACT OPERATOR/COLOR FROZEN; RECEIVED VERIFICATION REQUIRED", "Exact black flush momentary 1NO screw-terminal operator is frozen for RESET. The panel shall carry the explicit RESET legend and remain outside the swept envelope. Panel spacing/guarding and physical contact-terminal mapping remain open; verify the received device by bottom-view record and continuity test.",
+                  "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b",
+                  "IDEC US product page and HW Series Catalog_Screw dated 2026-07-23; rechecked 2026-08-06.", position=(340, 82), width=82),
         Component("H1", "SAFE ELIGIBLE indicator interface",
                   [pn("H1", "TBD-H+", "+", "SR1_STATUS", "left"), pn("H1", "TBD-H-", "-", "SAFETY_0V", "right")],
                   "SELECTION REQUIRED", "Diagnostic indicator only; no safety credit and no motion authority.", position=(75, 190), width=82),
@@ -233,10 +235,11 @@ def sheets() -> list[Sheet]:
                   "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED", "Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open.",
                   "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf",
                   "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01.", (340, 72), 82),
-        Component("S2", "IDEC HW1B-M1F10-B momentary 1NO ARM candidate",
+        Component("S2", "IDEC HW1B-M1F10-G green momentary 1NO ARM",
                   [pn("S2", "TBD-A1", "ARM IN", "SRA1_S12", "left"), pn("S2", "TBD-A2", "ARM OUT", "ARM_AFTER_S2", "right")],
-                  "SELECTION REQUIRED - DISTINCT APPEARANCE REQUIRED", "Electrical candidate only. ARM must be unmistakably different from RESET by legend/color/guard/spacing; it must actuate and release after every safety dropout. Received terminal mapping remains open.",
-                  "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b", position=(82, 205), width=82),
+                  "PROPOSED - EXACT OPERATOR/COLOR FROZEN; RECEIVED VERIFICATION REQUIRED", "Exact green flush momentary 1NO screw-terminal operator is frozen for ARM, distinct from the black RESET operator. The panel shall carry the explicit ARM legend; spacing/guarding and physical contact-terminal mapping remain open. ARM must actuate and release after every safety dropout.",
+                  "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-g",
+                  "IDEC US product page and HW Series Catalog_Screw dated 2026-07-23; rechecked 2026-08-06.", position=(82, 205), width=82),
         Component("K1", "Schneider TeSys D LC1D25BD, 24 VDC coil",
                   [pn("K1", "A1", "COIL +", "K1_A1", "left"), pn("K1", "A2", "COIL -", "SAFETY_0V", "left"),
                    pn("K1", "21", "MIRROR NC IN", "ARM_AFTER_S2", "left"), pn("K1", "22", "MIRROR NC OUT", "EDM_K1_OUT", "right"),

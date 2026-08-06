@@ -46,7 +46,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Safety-function requirements](docs/safety-functions.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
-- [Native KiCad Electrical V3-P0.4 correction candidate](electrical/kicad/project-button-v3/README.md)
+- [Native KiCad Electrical V3-P0.5 correction candidate](electrical/kicad/project-button-v3/README.md)
 - [HR-V0 Electrical V3 candidate architecture](docs/hr-v0-electrical-v3-candidate.md)
 - [HR-V0 Boston build-site basis](docs/hr-v0-build-site-basis.md)
 - [Boston fabrication and custom-metal sourcing](docs/hr-v0-fabrication-sourcing-boston.md)
@@ -74,7 +74,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R23](docs/reviews/2026-08-06-sol-r12-post-r23-status.md)
 - [Sol R12 findings rechecked against R24](docs/reviews/2026-08-06-sol-r12-post-r24-status.md)
 - [Sol R12 findings rechecked against R25](docs/reviews/2026-08-06-sol-r12-post-r25-status.md)
-- [Electrical V3-P0.4 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
+- [Sol R12 findings rechecked against R26](docs/reviews/2026-08-06-sol-r12-post-r26-status.md)
+- [Electrical V3-P0.5 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.1 independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
 - [Requirements](requirements/requirements.csv)
 - [HR-V0 energization gate register](requirements/hr-v0-energization-gates.csv)
@@ -85,7 +86,7 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 
 ## Review history
 
-Twenty-five review/control rounds are complete: R01-R25. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
+Twenty-six review/control rounds are complete: R01-R26. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -114,6 +115,7 @@ Twenty-five review/control rounds are complete: R01-R25. R11 Fable and R12 Sol a
 | R23 | HR-V0 moving-mass traceability and closure correction | Added `MASS-002`, a 13-row controlled ledger, reproducible 565.4 g known subtotal, 184.6 g unresolved headroom, measurement form, and review procedure while keeping mass closure open. |
 | R24 | HR-V0 gripper interface and evidence correction | Selected an orderable ROBOTIS parent kit and exact mechanism allocation, added the `MV0-FC03` 24 x 12 mm physical-fit coupon, guarded-use requirement, receiving/interface records, and primary-source hashes while keeping force, guard, mass, fasteners and proof open. |
 | R25 | HR-V0 guard, receiver and moving-cable space correction | Added a generated enclosure/catch STEP envelope, readable layouts, explicit provisional stopping/clearance terms, five cable zones, three requirements, three procedures and unexecuted guard/cable/drop records; no panel, harness or safety distance is released. |
+| R26 | Electrical operator and regional-source identity correction | Advanced the connected candidate to V3-P0.5; froze black RESET and green ARM IDEC operator order codes plus the official Raspberry Pi US regional model, added receiving/continuity evidence controls, regenerated all native/exported artifacts, and retained 43 unresolved rows and 64 `TBD-*` terminals. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

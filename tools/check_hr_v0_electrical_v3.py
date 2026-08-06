@@ -70,7 +70,7 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P0.4", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P0.5", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
@@ -171,7 +171,7 @@ def main() -> int:
             require(native_name == pin.net,
                     f"native net mismatch at {comp.ref}:{pin.number}: expected {pin.net}, found {native_name or 'MISSING'}", failures)
     require('(tool "Eeschema 10.0.5")' in native_text, "native netlist tool version is not Eeschema 10.0.5", failures)
-    require('(rev "V3-P0.4")' in native_text, "native netlist does not identify V3-P0.4", failures)
+    require(f'(rev "{gen.REV}")' in native_text, f"native netlist does not identify {gen.REV}", failures)
 
     bom_rows = read_csv("bom.csv")
     expected_bom_refs = {comp.ref for _, comp in all_components if comp.quantity}
@@ -292,8 +292,8 @@ def main() -> int:
     pdf = OUT / "output" / f"{gen.PROJECT}-preliminary.pdf"
     require(pdf.is_file() and pdf.stat().st_size > 100_000, "native PDF export missing or unexpectedly small", failures)
     readme = (OUT / "README.md").read_text(encoding="utf-8-sig")
-    require(WARNING in readme and "# Project Button HR-V0 Electrical V3-P0.4" in readme and
-            "ERC proves only modeled connectivity/annotation" in readme,
+    require(WARNING in readme and f"# Project Button HR-V0 Electrical {gen.REV}" in readme and
+            "Generated ERC proves only modeled connectivity/annotation" in readme,
             "README warning/ERC caveat missing", failures)
 
     if failures:

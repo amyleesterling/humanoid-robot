@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Electrical dependency: `Project Button Electrical V3-P0.4`
+Electrical dependency: `Project Button Electrical V3-P0.5`
 
 Firmware configuration: `HR-V0-WD-P0.3`
 
