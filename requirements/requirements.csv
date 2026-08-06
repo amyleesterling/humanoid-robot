@@ -1,0 +1,63 @@
+id,level,statement,priority,verification_id,status
+SYS-001,system,"HR-V0 shall be a fixed bench-mounted mechanism with exactly two arm rotation axes and one gripper axis.",MUST,INSPECT-SYS-001,draft
+SYS-002,system,"HR-V0 shall transfer one soft foam object of no more than 100 g and 70 mm maximum dimension.",MUST,TEST-HAND-001,draft
+SYS-003,system,"Maximum shoulder-to-object reach shall not exceed 360 mm.",MUST,INSPECT-MECH-001,draft
+SYS-004,system,"Automatic tool-center speed shall not exceed 0.15 m/s and joint speed shall not exceed 30 deg/s.",MUST,TEST-CTRL-001,draft
+SYS-005,system,"Setup motion shall be hold-to-run and shall not exceed 10 deg/s.",MUST,TEST-CTRL-002,draft
+SYS-006,system,"The system shall operate indoors from 18 to 28 deg C in dry noncondensing conditions.",MUST,TEST-ENV-001,draft
+SAFE-001,safety,"A dual-channel emergency stop shall remove actuator power without relying on software.",MUST,TEST-SAFE-001,draft
+SAFE-002,safety,"Releasing or resetting the emergency stop shall not initiate motion.",MUST,TEST-SAFE-001,draft
+SAFE-003,safety,"Loss of the supervisor heartbeat for 300 ms shall remove actuator power and latch a fault.",MUST,TEST-SAFE-002,draft
+SAFE-004,safety,"Fixed shielding and a controlled 600 mm exclusion boundary shall be present for powered V0 fixture tests.",MUST,INSPECT-SAFE-001,draft
+SAFE-005,safety,"No child shall enter the V0 test area while any actuator can be energized.",MUST,AUDIT-SAFE-001,draft
+SAFE-006,safety,"Primary mechanical load paths shall survive 3 times maximum permitted operational static load without hazardous failure.",MUST,TEST-MECH-001,draft
+SAFE-007,safety,"Each joint shall have independent software limits and mechanical hard stops before cable or shield contact.",MUST,INSPECT-MECH-002,draft
+SAFE-008,safety,"Any restart after a fault shall require cause removal, hardware reset, and a distinct software arm command.",MUST,TEST-SAFE-003,draft
+ELEC-001,electrical,"Actuator power, safety-control power, and compute power shall be separately protected domains.",MUST,INSPECT-ELEC-001,draft
+ELEC-002,electrical,"Two series contactors with monitored auxiliary feedback shall interrupt the actuator rail.",MUST,TEST-SAFE-001,draft
+ELEC-003,electrical,"Every actuator power branch shall be individually fused and use conductors and connectors rated for the verified load.",MUST,INSPECT-ELEC-002,draft
+ELEC-004,electrical,"Exposed mains terminals shall be inaccessible without a tool and conductive enclosures and structure shall be protectively earthed.",MUST,TEST-ELEC-001,draft
+CTRL-001,control,"Only deterministic versioned trajectories whose preconditions match the current configuration may command motion.",MUST,TEST-CTRL-003,draft
+CTRL-002,control,"AI or language-model output shall never write actuator commands or registers directly.",MUST,INSPECT-SW-001,draft
+CTRL-003,control,"Communication loss, limit violation, overtemperature, or overcurrent shall cause a latched defined fault response.",MUST,TEST-FAULT-001,draft
+CTRL-004,control,"Command and feedback state shall be logged at 100 Hz or faster with a configuration hash.",MUST,TEST-LOG-001,draft
+THERM-001,thermal,"During the validated duty cycle actuator cases shall remain below provisional limits and power conductors below 20 deg C rise.",MUST,TEST-THERM-001,draft
+GRIP-001,gripper,"Grip force shall be characterized across the allowed object range using a calibrated load cell.",MUST,TEST-GRIP-001,draft
+VER-001,verification,"The system shall complete 100 fixture handoffs with at least 99 successes and zero unsafe faults.",MUST,TEST-HAND-001,draft
+CFG-001,configuration,"Every test record shall identify CAD, wiring, firmware, calibration, actuator, and BOM revisions.",MUST,AUDIT-CFG-001,draft
+PROD-001,product,"HR-30 neutral-pose overall height shall be 762 mm nominal and remain between 740 and 800 mm for any released shell configuration.",MUST,INSPECT-PROD-001,draft
+PROD-002,product,"HR-30 tethered mass shall target 8.0 kg and shall never exceed 10.0 kg.",MUST,TEST-MASS-001,draft
+PROD-003,product,"HR-30A shall provide 13 active upper-body degrees of freedom on a bolted pelvic pedestal.",MUST,INSPECT-PROD-002,draft
+PROD-004,product,"HR-30B full-height testing shall use an engineered restraint that prevents floor impact.",MUST,TEST-RESTRAINT-001,draft
+PROD-005,product,"The full-height robot shall remain restrained through HR-30D and shall operate untethered only after the HR-30W release gate is approved.",MUST,AUDIT-PROD-001,draft
+PROD-006,product,"External covers shall use a 3 mm minimum edge radius and prevent normal access to powered pinch points.",MUST,INSPECT-PROD-003,draft
+PROD-007,product,"The external form shall be stylized and clearly robotic rather than a realistic imitation child.",SHOULD,REVIEW-ID-001,draft
+PROD-008,product,"HR-30A shall use tethered extra-low-voltage actuator power and shall not carry a battery.",MUST,INSPECT-ELEC-030,draft
+PROD-009,product,"Actuator power state and faults shall be visibly distinguishable from at least 3 m.",MUST,TEST-UI-001,draft
+PROD-010,product,"Camera recording capability shall have a hardware-driven visible privacy indication.",MUST,TEST-PRIV-001,draft
+LEG-001,legs,"No powered leg joint shall be enabled until its actuator and structure pass separate load thermal brake and restraint tests.",MUST,AUDIT-LEG-001,draft
+LEG-002,legs,"Untethered level-floor walking shall be the required HR-30W end-state and shall occur only after HR-30D slack-tether acceptance passes.",MUST,AUDIT-LEG-002,draft
+WALK-001,walking,"HR-30W shall stand untethered for 120 seconds on the validated level indoor surface.",MUST,TEST-WALK-001,draft
+WALK-002,walking,"HR-30W shall start walk 25 m at 0.10 to 0.20 m/s stop within two steps and remain standing.",MUST,TEST-WALK-002,draft
+WALK-003,walking,"HR-30W shall turn 90 degrees left and right within five steps without support.",MUST,TEST-WALK-003,draft
+WALK-004,walking,"HR-30W shall complete 30 minutes cumulative walking without exceeding released thermal current voltage or energy limits.",MUST,TEST-WALK-004,draft
+WALK-005,walking,"HR-30D shall walk with a slack overhead tether carrying less than 2 percent of robot weight except during fall arrest.",MUST,TEST-WALK-005,draft
+WALK-006,walking,"Each leg shall provide six active axes: hip yaw roll and pitch knee pitch and ankle pitch and roll.",MUST,INSPECT-WALK-001,draft
+WALK-007,walking,"Pelvis attitude estimation shall update at 800 Hz or faster and foot force/center-of-pressure estimation at 500 Hz or faster.",MUST,TEST-WALK-006,draft
+WALK-008,walking,"The real-time state estimator and stabilizer shall continue safe operation or stop after failure of the Linux high-level process.",MUST,TEST-WALK-007,draft
+WALK-009,walking,"HR-30W shall use an onboard professionally assembled protected battery with pack-level fuse service disconnect precharge and independent telemetry.",MUST,INSPECT-BATT-001,draft
+WALK-010,walking,"Passing the engineering walking test shall not authorize operation among people or children.",MUST,AUDIT-WALK-001,draft
+WALK-011,walking,"A fall predictor shall command the released protective response from attitude angular rate support force joint tracking bus health and supply state.",MUST,TEST-FALL-001,draft
+WALK-012,walking,"A hardware emergency stop shall remove hazardous drive energy even when doing so may cause a fall.",MUST,TEST-SAFE-WALK-001,draft
+STANCE-001,stance,"During HR-30C acceptance both feet shall support 100 percent of measured static robot weight for 120 seconds while the connected restraint supplies no sustained support.",MUST,TEST-STANCE-001,draft
+STANCE-002,stance,"HR-30C shall complete 100 commanded bilateral weight shifts with both feet in contact and without exceeding released force attitude joint-tracking thermal current or deadline limits.",MUST,TEST-STANCE-002,draft
+STANCE-003,stance,"Loss of planner state sensor validity control deadline or supply health during HR-30C shall produce the released restrained response and a latched restart-required fault.",MUST,TEST-STANCE-003,draft
+STANCE-004,stance,"HR-30C powered-stance testing shall not begin until HR-30B W0 W1 restraint proof sensor calibration and enabled-axis qualification records are approved.",MUST,AUDIT-STANCE-001,draft
+PROD-011,product,"The released operating boundary shall state adult-operated experimental robotic machinery not a toy and not approved for unsupervised consumer use while legal classification remains unresolved.",MUST,AUDIT-PROD-002,draft
+MASS-001,mechanical,"Every full-body configuration shall have a controlled part-level mass and inertia ledger separating target estimate and measured values and reporting assembly and whole-body center of mass and inertia.",MUST,REVIEW-MASS-001,draft
+CTRL-005,control,"Every inter-controller message shall carry a monotonic sequence number source timestamp validity deadline sender state and configuration hash and receivers shall reject stale duplicate out-of-order or mismatched messages.",MUST,TEST-CTRL-005,draft
+WALK-013,walking,"Every externally reduced leg joint shall use output-side absolute position sensing or a reviewed equivalent that detects slip backlash lost calibration and motor-output disagreement.",MUST,TEST-JOINT-ENC-001,draft
+WALK-014,walking,"Each segmented joint bus shall demonstrate the released command and feedback schedule with a byte-level packet budget measured worst-case latency jitter utilization and injected fault traffic.",MUST,TEST-BUS-001,draft
+SAFE-009,safety,"Every powered full-body phase shall define and test the response to sudden drive-energy loss for every released pose and mode before restraint dependence is reduced.",MUST,TEST-POWERLOSS-001,draft
+CFG-002,configuration,"A configuration calibration polarity or mirrored-joint mismatch shall inhibit drive enable and latch a recorded fault.",MUST,TEST-CFG-002,draft
+GOV-001,verification,"Every requirement risk and release gate shall identify an accountable owner acceptance evidence approver and controlled change history before design review approval.",MUST,AUDIT-GOV-001,draft
