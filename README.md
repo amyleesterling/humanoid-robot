@@ -20,6 +20,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 ## Start here
 
 - [Configuration management and revision hierarchy](docs/configuration-management.md)
+- [Current engineering handoff](docs/handoff-current.md)
+- [Complete review ledger](docs/review-ledger.md)
 - [System specification](docs/system-specification.md)
 - [30-inch product specification](docs/full-body-specification.md)
 - [Dimension-control specification](docs/dimension-control.md)
@@ -39,6 +41,27 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Risk register](safety/risk-register.csv)
 
 Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements.
+
+## Review history
+
+Ten review/control rounds are complete; two parallel independent engineering reviews are requested. Correction passes are recorded separately from independent reviews.
+
+| Round | Review or control pass | Result |
+|---|---|---|
+| R01 | Initial evidence and public-claim audit | Established that the concept site was not a build package. |
+| R02 | Integrated-site accuracy review | Rechecked claims, artifacts, warnings, links, and legibility. |
+| R03 | Fable preliminary electrical review | Found zero connected symbols/nets and 368 ERC violations. |
+| R04 | Connected electrical V2 review | Introduced reviewable native ECAD and identified residual blockers. |
+| R05 | Independent Fable V2 review | Reproduced improvements and found monitored-reset and selection gaps. |
+| R06 | Electrical V2.1 correction review | Reached connected 15-sheet ERC 0/0 while preserving 106 unresolved items. |
+| R07 | Independent Sol system review | Identified collapse-on-power-loss, drivetrain, CAD, mass, sensing, and governance blockers. |
+| R08 | Sol finding disposition pass | Added requirements, risks, gates, evidence controls, and explicit unresolved decisions. |
+| R09 | Independent Fable claim/configuration audit | Confirmed electrical counts and found revision and deployment drift. |
+| R10 | Systems-baseline correction | Established `HR-30-SYS-R0.2` and synchronized the corrected deployment. |
+| R11 | Independent Fable engineering review | Requested; accuracy and completeness review pending. |
+| R12 | Independent GPT Sol engineering review | Requested; accuracy and completeness review pending. |
+
+See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
 ## Release rule
 
