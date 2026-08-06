@@ -2,6 +2,7 @@
 
 Document ID: HR-REL-V0  
 Revision: 0.1  
+Program baseline: HR-30-SYS-R0.2  
 Status: current engineering baseline; unbuilt and unvalidated
 
 ## Capability earned

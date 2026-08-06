@@ -2,6 +2,7 @@
 
 Document ID: HR-REL-30D  
 Revision: 0.1  
+Program baseline: HR-30-SYS-R0.2  
 Status: future gate; detailed design and test evidence not released
 
 ## Capability earned

@@ -1,7 +1,8 @@
 # Humanoid Robot Program
 
-Status: **V0.1 system specification — concept baseline, not approved for fabrication or procurement**  
-Baseline date: 2026-08-05
+Package baseline: **HR-30-SYS-R0.2**  
+Status: **concept systems baseline, not approved for fabrication, procurement, or energization**  
+Baseline date: 2026-08-06
 
 This repository is the engineering source of truth for a staged **30-inch (762 mm) humanoid-robot program**. The first build is **not a walking humanoid**. It is HR-V0, a bench-mounted, guarded handoff demonstrator with one shoulder axis, one elbow axis, and one parallel gripper. Its validated architecture then becomes HR-30, a child-sized but not child-safe robot.
 
@@ -18,6 +19,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [Configuration management and revision hierarchy](docs/configuration-management.md)
 - [System specification](docs/system-specification.md)
 - [30-inch product specification](docs/full-body-specification.md)
 - [Dimension-control specification](docs/dimension-control.md)
