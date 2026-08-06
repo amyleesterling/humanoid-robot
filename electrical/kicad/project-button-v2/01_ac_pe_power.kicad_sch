@@ -1,0 +1,3681 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "3f703100-fcfe-52da-ae1f-4611b3b324bb")
+	(paper "A3")
+	(title_block
+		(title "PB Electrical V2.1 - 01 01 ac pe power")
+		(date "2026-08-05")
+		(rev "V2.1-P0.2")
+		(company "Project Button")
+		(comment 1 "PRELIMINARY - NOT APPROVED FOR ENERGIZATION")
+		(comment 2 "QUALIFIED REVIEW REQUIRED")
+	)
+	(lib_symbols
+		(symbol "PBV2:JAC1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "JAC1" (at -17.78 -16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "AC inlet" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Regional inlet, cord retention, ingress protection, and terminals are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 13.97 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "AC inlet" (at -17.78 -13.21 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "JAC1_0_1"
+				(rectangle
+					(start -17.78 -10.16)
+					(end 17.78 10.16)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "JAC1_1_1"
+				(pin passive line
+					(at 20.32 -5.08 180)
+					(length 2.54)
+					(name "LINE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-L" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 0 180)
+					(length 2.54)
+					(name "NEUTRAL" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 5.08 180)
+					(length 2.54)
+					(name "PROTECTIVE_EARTH" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-PE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:Q0"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "Q0" (at -17.78 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Two-pole main disconnect" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Disconnect rating, poles, fault rating, and jurisdiction are unresolved. PE bypasses Q0." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Two-pole main disconnect" (at -17.78 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "Q0_0_1"
+				(rectangle
+					(start -17.78 -8.89)
+					(end 17.78 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "Q0_1_1"
+				(pin passive line
+					(at -20.32 -2.54 0)
+					(length 2.54)
+					(name "LINE_IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-LI" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 2.54 0)
+					(length 2.54)
+					(name "NEUTRAL_IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-NI" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -2.54 180)
+					(length 2.54)
+					(name "LINE_OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-LO" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 2.54 180)
+					(length 2.54)
+					(name "NEUTRAL_OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-NO" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:QF1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "QF1" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "PS1 AC branch protection" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Rating and curve require prospective fault current plus the unpublished LRS-350 inrush maximum, duration, waveform, T50, and I-squared-t. Typical inrush alone is insufficient." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "PS1 AC branch protection" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "QF1_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "QF1_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "LINE_IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-I" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "LINE_OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-O" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:QF2"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "QF2" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "PS2 AC branch protection" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Rating and curve require prospective fault current and inrush coordination." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "PS2 AC branch protection" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "QF2_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "QF2_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "LINE_IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-I" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "LINE_OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-O" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:QF3"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "QF3" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "PS3 AC branch protection" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Regional compute-supply branch protection and inlet arrangement are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "PS3 AC branch protection" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "QF3_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "QF3_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "LINE_IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-I" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "LINE_OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-O" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:PS1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "PS1" (at -13.97 -24.13 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Mean Well LRS-350-12" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://www.meanwell.com/Upload/PDF/LRS-350/LRS-350-SPEC.PDF" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "12 V / 29 A candidate. Overload threshold is 110-140% rated power with hiccup recovery; 150% peak is allowed no more than 1 s. Cold-start inrush is 60 A typical at 115/230 VAC, with no published maximum or duration. No protection or conductor value is released." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED" (at 0 21.59 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Mean Well LRS-350 specification file revision 2025-09-12, pp. 2-4, and Enclosed-Type Installation Manual dated 2025-12-17, pp. 4-5; verified 2026-08-05 and recheck at release." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "LRS-350-12" (at -13.97 -20.83 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "PS1_0_1"
+				(rectangle
+					(start -13.97 -17.78)
+					(end 13.97 17.78)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "PS1_1_1"
+				(pin passive line
+					(at -16.51 -5.08 0)
+					(length 2.54)
+					(name "AC/L" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "AC/N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 5.08 0)
+					(length 2.54)
+					(name "FG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "3" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -12.70 180)
+					(length 2.54)
+					(name "-V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "4" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -7.62 180)
+					(length 2.54)
+					(name "-V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "5" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "-V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "6" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "+V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "7" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 7.62 180)
+					(length 2.54)
+					(name "+V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "8" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 12.70 180)
+					(length 2.54)
+					(name "+V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "9" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:PS2"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "PS2" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Mean Well HDR-30-24" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://www.meanwell.com/Upload/PDF/HDR-30/HDR-30-SPEC.PDF" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "24 V / 1.5 A candidate. Pulse-load calculation and bench validation remain open." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Mean Well HDR-30 specification, rev/date recorded in source register; recheck at release." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "HDR-30-24" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "PS2_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "PS2_1_1"
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "-V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "+V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "AC/N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "3" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "AC/L" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "4" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:PS3"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "PS3" (at -17.78 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Raspberry Pi 27 W USB-C supply" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://www.raspberrypi.com/products/27w-power-supply/" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Regional order code, receptacle, and AC integration are unresolved; USB-C is a functional interface, not a pin-level cable drawing." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Official Raspberry Pi product information; regional variant selection required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Raspberry Pi 27 W USB-C supply" (at -17.78 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "PS3_0_1"
+				(rectangle
+					(start -17.78 -8.89)
+					(end 17.78 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "PS3_1_1"
+				(pin passive line
+					(at -20.32 -2.54 0)
+					(length 2.54)
+					(name "AC_LINE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-L" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 2.54 0)
+					(length 2.54)
+					(name "AC_NEUTRAL" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-N" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -2.54 180)
+					(length 2.54)
+					(name "USB_5V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "USB-C" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 2.54 180)
+					(length 2.54)
+					(name "USB_0V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "USB-C-RET" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:PETB1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "PETB1" (at -17.78 -19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Protective-earth distribution block" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Terminal block, bonding studs, conductor sizes, and continuity-test points are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Protective-earth distribution block" (at -17.78 -15.75 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "PETB1_0_1"
+				(rectangle
+					(start -17.78 -12.70)
+					(end 17.78 12.70)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "PETB1_1_1"
+				(pin passive line
+					(at -20.32 0 0)
+					(length 2.54)
+					(name "INLET_PE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -7.62 180)
+					(length 2.54)
+					(name "ENCLOSURE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -2.54 180)
+					(length 2.54)
+					(name "DIN_RAIL" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-3" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 2.54 180)
+					(length 2.54)
+					(name "ROBOT_BASE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-4" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 7.62 180)
+					(length 2.54)
+					(name "BENCH_BOND" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-5" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:SP1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SP1" (at -17.78 -19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Removable single-point DC 0 V / PE bond assembly" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "DEFAULT OPEN. Populate only the single reviewed link; do not bridge all return domains by assumption." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Removable single-point DC 0 V / PE bond a..." (at -17.78 -15.75 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "SP1_0_1"
+				(rectangle
+					(start -17.78 -12.70)
+					(end 17.78 12.70)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "SP1_1_1"
+				(pin passive line
+					(at -20.32 0 0)
+					(length 2.54)
+					(name "PE_SIDE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-PE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -7.62 180)
+					(length 2.54)
+					(name "V0_RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-V0" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -2.54 180)
+					(length 2.54)
+					(name "SAFETY_RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-SAFE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 2.54 180)
+					(length 2.54)
+					(name "COMPUTE_RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-COMP" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 7.62 180)
+					(length 2.54)
+					(name "HR30_RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-HR30" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "PRELIMINARY - NOT APPROVED FOR ENERGIZATION"
+		(exclude_from_sim no)
+		(at 17.78 10.16 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+					(justify left bottom)
+			)
+		(uuid "4b0c1b87-bc68-57bd-a657-7dd186771338")
+	)
+	(text "01  AC input, protective earth, and separately protected DC domains"
+		(exclude_from_sim no)
+		(at 17.78 19.05 0)
+			(effects
+				(font
+					(size 2.03 2.03)
+				)
+					(justify left bottom)
+			)
+		(uuid "a31fabc5-c8bf-5e4d-a7a0-f67cfab0f1c7")
+	)
+	(text "Mains branches feed the 12 V actuator, 24 V safety, and 5 V compute domains independently. PE is never switched. DC-to-PE links are open pending EMC and fault review."
+		(exclude_from_sim no)
+		(at 17.78 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "679e30b5-0f47-57c5-afc3-b60ec4b3337e")
+	)
+	(rectangle
+		(start 12.70 31.75)
+		(end 406.40 256.54)
+		(stroke (width 0.50) (type solid))
+		(fill (type none))
+		(uuid "fba8103c-0c68-59d7-a6d8-d8b84437e51d")
+	)
+	(wire
+		(pts (xy 76.20 68.58) (xy 81.28 68.58))
+		(stroke (width 0) (type default))
+		(uuid "d468425c-c61e-5d09-a010-abd4875a3eae")
+	)
+	(global_label "AC_L_RAW"
+		(shape bidirectional)
+		(at 81.28 68.58 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "9abac192-e706-5700-a2b3-77283339187b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 81.28 71.12 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2004"
+		(exclude_from_sim no)
+		(at 78.74 66.80 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c7107405-df24-5a5d-a6ad-097ced3579bb")
+	)
+	(wire
+		(pts (xy 76.20 63.50) (xy 81.28 63.50))
+		(stroke (width 0) (type default))
+		(uuid "89a4099b-19fe-5474-a49e-8f129cf18e67")
+	)
+	(global_label "AC_N_RAW"
+		(shape bidirectional)
+		(at 81.28 63.50 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "09e772df-fea8-5716-a544-5af94a087c48")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 81.28 66.04 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2006"
+		(exclude_from_sim no)
+		(at 78.74 61.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f0cc1f14-bde0-58a7-a5b3-a72ca247ba01")
+	)
+	(wire
+		(pts (xy 76.20 58.42) (xy 81.28 58.42))
+		(stroke (width 0) (type default))
+		(uuid "68d68f74-809f-5b56-a4ad-77aee3edfde0")
+	)
+	(global_label "PE"
+		(shape bidirectional)
+		(at 81.28 58.42 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "dbd5a58a-c6fd-5386-a8c9-c8b7e3c57ca4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 81.28 60.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2111"
+		(exclude_from_sim no)
+		(at 78.74 56.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "304bb73b-ecc5-583b-aef9-875e4653f20e")
+	)
+	(wire
+		(pts (xy 137.16 66.04) (xy 132.08 66.04))
+		(stroke (width 0) (type default))
+		(uuid "851a34cf-0966-55a6-ac66-8785e7b35d7b")
+	)
+	(global_label "AC_L_RAW"
+		(shape bidirectional)
+		(at 132.08 66.04 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "26677a75-2056-5abd-aa1d-6710298547da")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 132.08 68.58 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2004"
+		(exclude_from_sim no)
+		(at 134.62 64.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "a8011fbf-ee43-57ea-a1f1-29983f080300")
+	)
+	(wire
+		(pts (xy 137.16 60.96) (xy 132.08 60.96))
+		(stroke (width 0) (type default))
+		(uuid "90b14cf3-c46f-51ee-a816-7338399ce781")
+	)
+	(global_label "AC_N_RAW"
+		(shape bidirectional)
+		(at 132.08 60.96 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "d9cc204d-884f-5c5d-ae1c-88b8377da1fe")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 132.08 63.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2006"
+		(exclude_from_sim no)
+		(at 134.62 59.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "afbbef1a-5fb5-5469-a3ea-b64717c089fb")
+	)
+	(wire
+		(pts (xy 177.80 66.04) (xy 182.88 66.04))
+		(stroke (width 0) (type default))
+		(uuid "4b5334f0-52de-5d10-a8d7-2f26b200c920")
+	)
+	(global_label "AC_L_SWITCHED"
+		(shape bidirectional)
+		(at 182.88 66.04 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "7cc4f568-6881-5b7b-a9bc-52f6a40603ca")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 182.88 68.58 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2005"
+		(exclude_from_sim no)
+		(at 180.34 64.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "7fd12bc9-3f4e-58ec-aa80-14986f4aa4c7")
+	)
+	(wire
+		(pts (xy 177.80 60.96) (xy 182.88 60.96))
+		(stroke (width 0) (type default))
+		(uuid "c23e0fdd-54fb-5591-a4e3-07b8871131f1")
+	)
+	(global_label "AC_N_SWITCHED"
+		(shape bidirectional)
+		(at 182.88 60.96 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "f1f9630e-604b-5633-ab69-f78abe4acb7e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 182.88 63.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2007"
+		(exclude_from_sim no)
+		(at 180.34 59.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c78dc181-a69e-5c7c-ab49-29aaf1fe2f3a")
+	)
+	(wire
+		(pts (xy 242.57 63.50) (xy 237.49 63.50))
+		(stroke (width 0) (type default))
+		(uuid "20a47a92-12be-5b21-a395-681f7bd9eaaa")
+	)
+	(global_label "AC_L_SWITCHED"
+		(shape bidirectional)
+		(at 237.49 63.50 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "f61e44c7-c600-562a-a7f2-8a02c0604456")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 237.49 66.04 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2005"
+		(exclude_from_sim no)
+		(at 240.03 61.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "9be6d19f-fc71-5787-a418-7dc19880a14e")
+	)
+	(wire
+		(pts (xy 275.59 63.50) (xy 280.67 63.50))
+		(stroke (width 0) (type default))
+		(uuid "cbd42675-6002-5be5-a43e-3d2f8072d9dc")
+	)
+	(global_label "AC_L_PS1"
+		(shape bidirectional)
+		(at 280.67 63.50 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "454b689a-5fa5-57fc-abcc-1851d50962c6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 280.67 66.04 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2001"
+		(exclude_from_sim no)
+		(at 278.13 61.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d4e7f363-767a-559a-aeef-dd23fb9b2d8a")
+	)
+	(wire
+		(pts (xy 344.17 63.50) (xy 339.09 63.50))
+		(stroke (width 0) (type default))
+		(uuid "252cdd5d-a803-5eae-a3e8-5512cd0d6635")
+	)
+	(global_label "AC_L_SWITCHED"
+		(shape bidirectional)
+		(at 339.09 63.50 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "4658f69e-3ed6-5585-a9da-d1e3ce3208a3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 339.09 66.04 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2005"
+		(exclude_from_sim no)
+		(at 341.63 61.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "7f5cdd34-478d-5ea5-a1a7-01615fcc0b19")
+	)
+	(wire
+		(pts (xy 377.19 63.50) (xy 382.27 63.50))
+		(stroke (width 0) (type default))
+		(uuid "19107d4b-29eb-5ec9-a37d-ea8ac6df6444")
+	)
+	(global_label "AC_L_PS2"
+		(shape bidirectional)
+		(at 382.27 63.50 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "2fbfa3eb-a992-5797-a9ae-63d52188a47a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 382.27 66.04 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2002"
+		(exclude_from_sim no)
+		(at 379.73 61.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "9de6418b-7e35-5a4c-a6cc-468630ec86e9")
+	)
+	(wire
+		(pts (xy 39.37 134.62) (xy 34.29 134.62))
+		(stroke (width 0) (type default))
+		(uuid "cca242d1-62dc-5e58-a5f4-6954da61b8fc")
+	)
+	(global_label "AC_L_SWITCHED"
+		(shape bidirectional)
+		(at 34.29 134.62 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "ca2500ef-46e6-5847-a439-f09e2eb1af8a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 34.29 137.16 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2005"
+		(exclude_from_sim no)
+		(at 36.83 132.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "e1b57bea-2831-5c23-a3e7-8a76250f88fa")
+	)
+	(wire
+		(pts (xy 72.39 134.62) (xy 77.47 134.62))
+		(stroke (width 0) (type default))
+		(uuid "94272c9e-aebc-57d7-a674-26391c4ddc21")
+	)
+	(global_label "AC_L_PS3"
+		(shape bidirectional)
+		(at 77.47 134.62 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "8f283812-b8f4-59d8-a282-1bf88509e284")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 77.47 137.16 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2003"
+		(exclude_from_sim no)
+		(at 74.93 132.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "11249d31-9645-5592-adcc-a47eb2122e03")
+	)
+	(wire
+		(pts (xy 140.97 139.70) (xy 135.89 139.70))
+		(stroke (width 0) (type default))
+		(uuid "4fbee09a-ec92-5300-abcf-80c6326729bb")
+	)
+	(global_label "AC_L_PS1"
+		(shape bidirectional)
+		(at 135.89 139.70 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "15c13aec-3cc9-5d5d-a82d-87aa7e8c4514")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 135.89 142.24 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2001"
+		(exclude_from_sim no)
+		(at 138.43 137.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "4a4d9c2b-a562-573f-ad84-7c1e25ab2bed")
+	)
+	(wire
+		(pts (xy 140.97 134.62) (xy 135.89 134.62))
+		(stroke (width 0) (type default))
+		(uuid "24e8026d-c79a-5fd0-a0a6-2940bdf217d2")
+	)
+	(global_label "AC_N_SWITCHED"
+		(shape bidirectional)
+		(at 135.89 134.62 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "af9e6ae6-dd66-5834-a35d-2a7d9c2f6653")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 135.89 137.16 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2007"
+		(exclude_from_sim no)
+		(at 138.43 132.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "372cb8b3-9d81-5c53-a968-7f1559d3eace")
+	)
+	(wire
+		(pts (xy 140.97 129.54) (xy 135.89 129.54))
+		(stroke (width 0) (type default))
+		(uuid "292ebfa4-eec0-55d4-a4f3-d86d3f0568b5")
+	)
+	(global_label "PE"
+		(shape bidirectional)
+		(at 135.89 129.54 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "4b80fda5-2bca-54ff-ab07-4add3475d333")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 135.89 132.08 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2111"
+		(exclude_from_sim no)
+		(at 138.43 127.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f4654bbe-c762-5589-af1d-3e8f3aa899bc")
+	)
+	(wire
+		(pts (xy 173.99 147.32) (xy 179.07 147.32))
+		(stroke (width 0) (type default))
+		(uuid "2aef8ff2-31cf-5c07-a002-df22f9569e61")
+	)
+	(global_label "V0_0V"
+		(shape bidirectional)
+		(at 179.07 147.32 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "e81e37e1-2e06-5387-aac1-a06c56d4149c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 179.07 149.86 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2142"
+		(exclude_from_sim no)
+		(at 176.53 145.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "4b8073c7-bcc7-5b34-aec9-e2f32c795431")
+	)
+	(wire
+		(pts (xy 173.99 142.24) (xy 179.07 142.24))
+		(stroke (width 0) (type default))
+		(uuid "a6c45c1e-f298-5764-ad09-0629550f135c")
+	)
+	(global_label "V0_0V"
+		(shape bidirectional)
+		(at 179.07 142.24 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "22bebc0f-ac28-5a4e-a659-a3a2fff0fbaf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 179.07 144.78 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2142"
+		(exclude_from_sim no)
+		(at 176.53 140.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "cb48855b-cb0b-5d93-a46a-6b81aa18c06a")
+	)
+	(wire
+		(pts (xy 173.99 137.16) (xy 179.07 137.16))
+		(stroke (width 0) (type default))
+		(uuid "85e10731-62a2-5104-a610-2e179afae6b6")
+	)
+	(global_label "V0_0V"
+		(shape bidirectional)
+		(at 179.07 137.16 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "26a75671-f5bd-5500-a6cd-6eda0da62204")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 179.07 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2142"
+		(exclude_from_sim no)
+		(at 176.53 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "2a339adc-bd49-54b6-a062-da0a47191ffd")
+	)
+	(wire
+		(pts (xy 173.99 132.08) (xy 179.07 132.08))
+		(stroke (width 0) (type default))
+		(uuid "9b714797-3224-5c49-a9ba-6f75d604504a")
+	)
+	(global_label "V0_12V_RAW"
+		(shape bidirectional)
+		(at 179.07 132.08 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "26fdeda3-42be-55a4-a880-eff039d438ed")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 179.07 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2144"
+		(exclude_from_sim no)
+		(at 176.53 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "82bc6a49-9278-51e8-afd6-4c092d92f2e1")
+	)
+	(wire
+		(pts (xy 173.99 127) (xy 179.07 127))
+		(stroke (width 0) (type default))
+		(uuid "ac111f6a-e407-5911-a661-3b1e68d89bac")
+	)
+	(global_label "V0_12V_RAW"
+		(shape bidirectional)
+		(at 179.07 127 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "dc6abd61-0425-5d6d-a6de-46e79df947d0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 179.07 129.54 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2144"
+		(exclude_from_sim no)
+		(at 176.53 125.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "e53b2631-b56a-5bc0-a4de-f9b7e2ccbba9")
+	)
+	(wire
+		(pts (xy 173.99 121.92) (xy 179.07 121.92))
+		(stroke (width 0) (type default))
+		(uuid "0aa9f0a0-618f-5a9b-a680-7e65947591b9")
+	)
+	(global_label "V0_12V_RAW"
+		(shape bidirectional)
+		(at 179.07 121.92 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "f0842b2f-8897-58de-a592-f36c19e2c218")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 179.07 124.46 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2144"
+		(exclude_from_sim no)
+		(at 176.53 120.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "138e727a-cc3f-54a3-a516-9933bbb8bb16")
+	)
+	(wire
+		(pts (xy 275.59 137.16) (xy 280.67 137.16))
+		(stroke (width 0) (type default))
+		(uuid "1d5f17a8-5f1e-5a93-aa2d-f3b51a33493a")
+	)
+	(global_label "SAFETY_0V"
+		(shape bidirectional)
+		(at 280.67 137.16 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "3cf2f9bc-84be-50eb-a557-b009894c8376")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 280.67 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2118"
+		(exclude_from_sim no)
+		(at 278.13 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f7f812f9-62ac-5101-ae91-400310912c32")
+	)
+	(wire
+		(pts (xy 275.59 132.08) (xy 280.67 132.08))
+		(stroke (width 0) (type default))
+		(uuid "22c480c8-3a37-5313-ae65-ac6bfb95415a")
+	)
+	(global_label "SAFETY_24V"
+		(shape bidirectional)
+		(at 280.67 132.08 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "9dc19801-1db5-5d41-aee1-3dc72676340d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 280.67 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2119"
+		(exclude_from_sim no)
+		(at 278.13 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "44ae1f76-a2ee-591c-afff-9e48e5a8ccb5")
+	)
+	(wire
+		(pts (xy 242.57 137.16) (xy 237.49 137.16))
+		(stroke (width 0) (type default))
+		(uuid "89c05927-24e1-5fa9-a4ec-278fe4346886")
+	)
+	(global_label "AC_N_SWITCHED"
+		(shape bidirectional)
+		(at 237.49 137.16 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "2afdd000-e65e-5835-afbc-11967959cdf2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 237.49 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2007"
+		(exclude_from_sim no)
+		(at 240.03 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "01ddcd19-9dcb-5f86-a8ec-102f67977566")
+	)
+	(wire
+		(pts (xy 242.57 132.08) (xy 237.49 132.08))
+		(stroke (width 0) (type default))
+		(uuid "8078b614-3042-5171-a441-9e2ab48f7221")
+	)
+	(global_label "AC_L_PS2"
+		(shape bidirectional)
+		(at 237.49 132.08 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "f31bec16-ee7a-5227-ac5d-2c6106ddd48a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 237.49 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2002"
+		(exclude_from_sim no)
+		(at 240.03 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "5b51bfb7-7f2a-5986-a065-f341861fc635")
+	)
+	(wire
+		(pts (xy 340.36 137.16) (xy 335.28 137.16))
+		(stroke (width 0) (type default))
+		(uuid "b4fab48d-b10e-5fd6-a7a8-60febea4daec")
+	)
+	(global_label "AC_L_PS3"
+		(shape bidirectional)
+		(at 335.28 137.16 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "98a81949-69b7-5f7a-a664-b6d42906ec91")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 335.28 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2003"
+		(exclude_from_sim no)
+		(at 337.82 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "4c510bbd-3f51-5fae-ad20-7dd7f46dcdb0")
+	)
+	(wire
+		(pts (xy 340.36 132.08) (xy 335.28 132.08))
+		(stroke (width 0) (type default))
+		(uuid "8d5896cd-ca8c-5ba0-af41-f496795187c6")
+	)
+	(global_label "AC_N_SWITCHED"
+		(shape bidirectional)
+		(at 335.28 132.08 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "b90f3dbf-56d6-5537-ad37-191ccd03d249")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 335.28 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2007"
+		(exclude_from_sim no)
+		(at 337.82 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d4131ca0-b1a7-55d4-a4dc-f1f58206c127")
+	)
+	(wire
+		(pts (xy 381 137.16) (xy 386.08 137.16))
+		(stroke (width 0) (type default))
+		(uuid "476517c0-c7e7-5bc8-aa30-3cb596f27cc1")
+	)
+	(global_label "COMPUTE_5V"
+		(shape bidirectional)
+		(at 386.08 137.16 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "042d9e6e-6949-5851-a158-33b224543320")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 386.08 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2025"
+		(exclude_from_sim no)
+		(at 383.54 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d68f6a84-e578-5261-aaf7-7d33144d2042")
+	)
+	(wire
+		(pts (xy 381 132.08) (xy 386.08 132.08))
+		(stroke (width 0) (type default))
+		(uuid "ae62b758-51ae-539a-a2e2-24e5ee80f17b")
+	)
+	(global_label "COMPUTE_0V"
+		(shape bidirectional)
+		(at 386.08 132.08 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "5dbff7fb-9469-59c5-a06c-b0e9a26df808")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 386.08 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2023"
+		(exclude_from_sim no)
+		(at 383.54 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "18ab84d0-7b1a-5247-a8a2-632683cebb0e")
+	)
+	(wire
+		(pts (xy 35.56 205.74) (xy 30.48 205.74))
+		(stroke (width 0) (type default))
+		(uuid "15067123-06c1-5a00-abdd-db92aa694c12")
+	)
+	(global_label "PE"
+		(shape bidirectional)
+		(at 30.48 205.74 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "6d9146ac-3aa6-56b6-a14e-7ce2a89be1a8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 30.48 208.28 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2111"
+		(exclude_from_sim no)
+		(at 33.02 203.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6371cb14-7bb7-59aa-ad92-bc3914794550")
+	)
+	(wire
+		(pts (xy 76.20 213.36) (xy 81.28 213.36))
+		(stroke (width 0) (type default))
+		(uuid "2e85544b-c6bb-50ad-ace0-3ad93af6ee02")
+	)
+	(global_label "PE"
+		(shape bidirectional)
+		(at 81.28 213.36 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "05564989-f76e-5fe0-a996-3ea073aad5b4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 81.28 215.90 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2111"
+		(exclude_from_sim no)
+		(at 78.74 211.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "998bb79d-eb1a-5790-a820-d4acd4886319")
+	)
+	(wire
+		(pts (xy 76.20 208.28) (xy 81.28 208.28))
+		(stroke (width 0) (type default))
+		(uuid "39983715-0057-5691-a431-1f6af67077c9")
+	)
+	(global_label "PE"
+		(shape bidirectional)
+		(at 81.28 208.28 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "1c2bee88-04b9-55fb-a905-a43765c78058")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 81.28 210.82 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2111"
+		(exclude_from_sim no)
+		(at 78.74 206.50 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "09706c7e-bd48-5948-a4bd-959e299768ae")
+	)
+	(wire
+		(pts (xy 76.20 203.20) (xy 81.28 203.20))
+		(stroke (width 0) (type default))
+		(uuid "92a11e5a-7c21-556d-a8f8-560a1289b020")
+	)
+	(global_label "PE"
+		(shape bidirectional)
+		(at 81.28 203.20 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "f6fb1328-bcbb-50c6-a1d4-b6c9f03ba798")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 81.28 205.74 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2111"
+		(exclude_from_sim no)
+		(at 78.74 201.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c5cac1e5-7c5a-585b-a93b-454fed053ec8")
+	)
+	(wire
+		(pts (xy 76.20 198.12) (xy 81.28 198.12))
+		(stroke (width 0) (type default))
+		(uuid "699750ad-d28c-51eb-a3c9-9999049c2920")
+	)
+	(global_label "PE"
+		(shape bidirectional)
+		(at 81.28 198.12 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "8a1a95e2-35de-589a-a3d6-6e47e5c3b6b4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 81.28 200.66 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2111"
+		(exclude_from_sim no)
+		(at 78.74 196.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "86e43131-74c7-541c-ae53-717f3581b9e5")
+	)
+	(wire
+		(pts (xy 137.16 205.74) (xy 132.08 205.74))
+		(stroke (width 0) (type default))
+		(uuid "7b693159-9d7f-5e78-a908-b6266808ca01")
+	)
+	(global_label "PE"
+		(shape bidirectional)
+		(at 132.08 205.74 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "9f966a4c-c868-5417-a7f2-3bcd1d6f03d4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 132.08 208.28 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2111"
+		(exclude_from_sim no)
+		(at 134.62 203.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d48ef3d0-015f-5308-ac8e-9400aa72b294")
+	)
+	(wire
+		(pts (xy 177.80 213.36) (xy 182.88 213.36))
+		(stroke (width 0) (type default))
+		(uuid "7b2c27fb-82ce-5a29-afed-08096f94fbab")
+	)
+	(global_label "V0_0V"
+		(shape bidirectional)
+		(at 182.88 213.36 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "c5c963fc-86ba-5ef3-a001-d7ff79023d40")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 182.88 215.90 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2142"
+		(exclude_from_sim no)
+		(at 180.34 211.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "fa150c5d-387c-5efc-a3f6-d4c712faa59a")
+	)
+	(wire
+		(pts (xy 177.80 208.28) (xy 182.88 208.28))
+		(stroke (width 0) (type default))
+		(uuid "78f014fe-114b-5685-ae76-0c8a67427aaa")
+	)
+	(global_label "SAFETY_0V"
+		(shape bidirectional)
+		(at 182.88 208.28 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "485b697a-6828-55e2-a8f3-d9ccb5706694")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 182.88 210.82 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2118"
+		(exclude_from_sim no)
+		(at 180.34 206.50 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "25355a4d-de0c-5c76-a32a-285a90b3bb78")
+	)
+	(wire
+		(pts (xy 177.80 203.20) (xy 182.88 203.20))
+		(stroke (width 0) (type default))
+		(uuid "10845178-0a19-5d88-a3c4-b5e209bd6c16")
+	)
+	(global_label "COMPUTE_0V"
+		(shape bidirectional)
+		(at 182.88 203.20 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "f58bc841-f6b3-5464-a558-7b9d948295d2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 182.88 205.74 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2023"
+		(exclude_from_sim no)
+		(at 180.34 201.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "070cc45d-951f-5617-a348-fb82062bd067")
+	)
+	(wire
+		(pts (xy 177.80 198.12) (xy 182.88 198.12))
+		(stroke (width 0) (type default))
+		(uuid "ee20dfce-45c4-5fa9-a73b-0d8b0c786a4e")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 182.88 198.12 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "914f8fc5-779d-5cd8-a210-101061c63e94")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 182.88 200.66 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 180.34 196.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "2d791faa-f246-527a-aa49-ceaffdaedd12")
+	)
+	(text "NOTE 1: PE continuity is mandatory; SP1 is not populated by this preliminary design."
+		(exclude_from_sim no)
+		(at 17.78 266.70 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "4b9e5aa8-afd5-5cef-ad62-5ed62f0f42c6")
+	)
+	(text "NOTE 2: PS1 output-terminal current sharing and conductor allocation require the terminal-current and thermal design."
+		(exclude_from_sim no)
+		(at 17.78 271.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "1484d201-8360-58e9-a283-dfc9e3eeeb1b")
+	)
+	(text "NOTE 3: Before any permitted energization, inspect and control the LRS-350 115/230 V input-selector position. No fuse, breaker, or conductor value is released."
+		(exclude_from_sim no)
+		(at 17.78 276.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "5b48dbe0-987c-5a3f-a06f-3fb6ed2f0b5d")
+	)
+	(symbol
+		(lib_id "PBV2:JAC1")
+		(at 55.88 63.50 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c725756e-7e4f-54ba-ab8b-b71a0e8a53ba")
+		(property "Reference" "JAC1"
+			(at 38.10 46.99 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "AC inlet"
+			(at 55.88 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 55.88 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 55.88 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Regional inlet, cord retention, ingress protection, and terminals are unresolved."
+			(at 55.88 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 55.88 77.47 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 55.88 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "AC inlet"
+			(at 38.10 50.29 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-L"
+			(uuid "2e1b9cf6-87ed-5507-aa4d-6f55a6f94c80")
+		)
+		(pin "TBD-N"
+			(uuid "14298fc1-ed50-5a1f-ae8d-7314735554d8")
+		)
+		(pin "TBD-PE"
+			(uuid "29ee04b0-055a-5df8-aee2-a1052b861b17")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/58523d53-9f3a-5a48-a670-55f854432091"
+					(reference "JAC1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:Q0")
+		(at 157.48 63.50 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6512c68a-0dd6-55b6-a5b1-9fb5681ffd6a")
+		(property "Reference" "Q0"
+			(at 139.70 48.26 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Two-pole main disconnect"
+			(at 157.48 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 157.48 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 157.48 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Disconnect rating, poles, fault rating, and jurisdiction are unresolved. PE bypasses Q0."
+			(at 157.48 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 157.48 76.20 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 157.48 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Two-pole main disconnect"
+			(at 139.70 51.56 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-LI"
+			(uuid "7f5ec78c-7e95-51d3-ae8c-50d93cc892a8")
+		)
+		(pin "TBD-NI"
+			(uuid "e90a6ffe-d496-5e03-a5fd-accf05f596e8")
+		)
+		(pin "TBD-LO"
+			(uuid "eafeff0e-7acf-566d-af28-8ff95203523f")
+		)
+		(pin "TBD-NO"
+			(uuid "4c1ef790-fd36-55cb-a85e-0f82da38b004")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/58523d53-9f3a-5a48-a670-55f854432091"
+					(reference "Q0")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:QF1")
+		(at 259.08 63.50 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f5b37f61-ca40-54aa-a5ae-e65f11cdb37f")
+		(property "Reference" "QF1"
+			(at 245.11 48.26 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "PS1 AC branch protection"
+			(at 259.08 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 259.08 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 259.08 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Rating and curve require prospective fault current plus the unpublished LRS-350 inrush maximum, duration, waveform, T50, and I-squared-t. Typical inrush alone is insufficient."
+			(at 259.08 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 259.08 76.20 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 259.08 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "PS1 AC branch protection"
+			(at 245.11 51.56 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-I"
+			(uuid "8e6d1a8a-0e31-5782-a4e9-5806a4f39836")
+		)
+		(pin "TBD-O"
+			(uuid "3b9f7b9f-889c-54e4-a6b7-d77d05d6aacb")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/58523d53-9f3a-5a48-a670-55f854432091"
+					(reference "QF1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:QF2")
+		(at 360.68 63.50 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b03f20ea-8d04-526d-ab96-936ba902b473")
+		(property "Reference" "QF2"
+			(at 374.65 48.26 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "PS2 AC branch protection"
+			(at 360.68 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 360.68 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 360.68 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Rating and curve require prospective fault current and inrush coordination."
+			(at 360.68 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 360.68 76.20 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 360.68 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "PS2 AC branch protection"
+			(at 374.65 51.56 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-I"
+			(uuid "b9c3fbb5-af95-58e1-a1a5-73f54de6a113")
+		)
+		(pin "TBD-O"
+			(uuid "322d3196-b3d8-5009-a836-911cece0095f")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/58523d53-9f3a-5a48-a670-55f854432091"
+					(reference "QF2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:QF3")
+		(at 55.88 134.62 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "578d6b6b-e1a6-585e-a8db-3f689564a403")
+		(property "Reference" "QF3"
+			(at 41.91 119.38 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "PS3 AC branch protection"
+			(at 55.88 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 55.88 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 55.88 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Regional compute-supply branch protection and inlet arrangement are unresolved."
+			(at 55.88 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 55.88 147.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 55.88 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "PS3 AC branch protection"
+			(at 41.91 122.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-I"
+			(uuid "d40ef7aa-1217-5467-a2f6-e2d8a92317e8")
+		)
+		(pin "TBD-O"
+			(uuid "95fc97e1-4f71-5d10-ab9b-1be8bac819de")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/58523d53-9f3a-5a48-a670-55f854432091"
+					(reference "QF3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:PS1")
+		(at 157.48 134.62 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f60a73d2-c2c1-54c8-ad61-b5e272761b89")
+		(property "Reference" "PS1"
+			(at 143.51 110.49 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Mean Well LRS-350-12"
+			(at 157.48 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 157.48 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://www.meanwell.com/Upload/PDF/LRS-350/LRS-350-SPEC.PDF"
+			(at 157.48 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "12 V / 29 A candidate. Overload threshold is 110-140% rated power with hiccup recovery; 150% peak is allowed no more than 1 s. Cold-start inrush is 60 A typical at 115/230 VAC, with no published maximum or duration. No protection or conductor value is released."
+			(at 157.48 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED"
+			(at 157.48 156.21 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Mean Well LRS-350 specification file revision 2025-09-12, pp. 2-4, and Enclosed-Type Installation Manual dated 2025-12-17, pp. 4-5; verified 2026-08-05 and recheck at release."
+			(at 157.48 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "LRS-350-12"
+			(at 143.51 113.79 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "1"
+			(uuid "6033fbac-d866-5e3b-aa36-63f09526110e")
+		)
+		(pin "2"
+			(uuid "f68f71bd-88ad-5629-a073-e6eba74fc0e3")
+		)
+		(pin "3"
+			(uuid "35c9ea10-294c-5f53-a6f7-3684478eb61f")
+		)
+		(pin "4"
+			(uuid "e6cef832-f3a8-5b41-ad1e-2f6384afc45a")
+		)
+		(pin "5"
+			(uuid "7f09f5f9-6bd4-5c6a-a4ed-36ebfdef3b39")
+		)
+		(pin "6"
+			(uuid "c9afc8c8-2de1-516b-a5f6-6fd01edb723d")
+		)
+		(pin "7"
+			(uuid "32765de6-dff4-5bba-a4da-979a069a83de")
+		)
+		(pin "8"
+			(uuid "00f155d3-8aab-5d82-a542-860d0b3af913")
+		)
+		(pin "9"
+			(uuid "5aea9d9f-9e42-5c8f-a42e-dc97436e850e")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/58523d53-9f3a-5a48-a670-55f854432091"
+					(reference "PS1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:PS2")
+		(at 259.08 134.62 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1e1bb3d8-6f90-5d9a-adcb-1f116543cbdc")
+		(property "Reference" "PS2"
+			(at 245.11 119.38 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Mean Well HDR-30-24"
+			(at 259.08 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 259.08 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://www.meanwell.com/Upload/PDF/HDR-30/HDR-30-SPEC.PDF"
+			(at 259.08 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "24 V / 1.5 A candidate. Pulse-load calculation and bench validation remain open."
+			(at 259.08 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED"
+			(at 259.08 147.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Mean Well HDR-30 specification, rev/date recorded in source register; recheck at release."
+			(at 259.08 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "HDR-30-24"
+			(at 245.11 122.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "1"
+			(uuid "2ca12f7a-99bf-53f2-a9af-0803342d250f")
+		)
+		(pin "2"
+			(uuid "96858573-8146-5731-ac68-29ccce1e000d")
+		)
+		(pin "3"
+			(uuid "06a6f052-2be1-551d-a78c-650d9b0143ad")
+		)
+		(pin "4"
+			(uuid "21cdfd76-9f1f-5df5-a7f9-893cb31478e5")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/58523d53-9f3a-5a48-a670-55f854432091"
+					(reference "PS2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:PS3")
+		(at 360.68 134.62 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3b918af9-53f4-51cf-a72c-10fb3f11f960")
+		(property "Reference" "PS3"
+			(at 378.46 119.38 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "Raspberry Pi 27 W USB-C supply"
+			(at 360.68 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 360.68 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://www.raspberrypi.com/products/27w-power-supply/"
+			(at 360.68 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Regional order code, receptacle, and AC integration are unresolved; USB-C is a functional interface, not a pin-level cable drawing."
+			(at 360.68 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 360.68 147.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Official Raspberry Pi product information; regional variant selection required"
+			(at 360.68 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Raspberry Pi 27 W USB-C supply"
+			(at 378.46 122.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-L"
+			(uuid "811db006-b3f6-581e-a5ce-c6992ed79b7c")
+		)
+		(pin "TBD-N"
+			(uuid "12276acd-51a9-5a56-a8fa-7b039ded36e8")
+		)
+		(pin "USB-C"
+			(uuid "5dc628f6-77ea-5aba-a750-a935534fe4bc")
+		)
+		(pin "USB-C-RET"
+			(uuid "6078922d-cbf0-517c-a772-d7af26ceff4e")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/58523d53-9f3a-5a48-a670-55f854432091"
+					(reference "PS3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:PETB1")
+		(at 55.88 205.74 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7b7df18d-cd29-509f-ade4-a0fa7af6395f")
+		(property "Reference" "PETB1"
+			(at 38.10 186.69 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Protective-earth distribution block"
+			(at 55.88 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 55.88 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 55.88 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Terminal block, bonding studs, conductor sizes, and continuity-test points are unresolved."
+			(at 55.88 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 55.88 222.25 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 55.88 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Protective-earth distribution block"
+			(at 38.10 189.99 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-1"
+			(uuid "c7a6ae45-09ce-5e82-a926-94828d0920f0")
+		)
+		(pin "TBD-2"
+			(uuid "0b0785b5-c9a4-5a4f-aa38-c924c54460e9")
+		)
+		(pin "TBD-3"
+			(uuid "68a8c24d-1001-5c27-a723-2e117d18cb1c")
+		)
+		(pin "TBD-4"
+			(uuid "d901a7dd-112d-5ad6-ab53-44d0ad109647")
+		)
+		(pin "TBD-5"
+			(uuid "70606a43-1574-5dda-a33e-79efbf85755a")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/58523d53-9f3a-5a48-a670-55f854432091"
+					(reference "PETB1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:SP1")
+		(at 157.48 205.74 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "58a5eb18-f423-51f2-a1a8-abb2697c5fcf")
+		(property "Reference" "SP1"
+			(at 139.70 186.69 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Removable single-point DC 0 V / PE bond assembly"
+			(at 157.48 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 157.48 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 157.48 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "DEFAULT OPEN. Populate only the single reviewed link; do not bridge all return domains by assumption."
+			(at 157.48 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 157.48 222.25 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 157.48 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Removable single-point DC 0 V / PE bond a..."
+			(at 139.70 189.99 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-PE"
+			(uuid "a00e221f-772e-503f-aa78-5984bab0886f")
+		)
+		(pin "TBD-V0"
+			(uuid "35784373-24a5-577b-aff7-cfc0c467c18b")
+		)
+		(pin "TBD-SAFE"
+			(uuid "c1742e12-6f9a-59c5-a663-d91324f4241e")
+		)
+		(pin "TBD-COMP"
+			(uuid "21db82b7-19d0-5721-a52f-fb4ac303f637")
+		)
+		(pin "TBD-HR30"
+			(uuid "9fbc9abf-89eb-5c45-ae4f-441047232819")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/58523d53-9f3a-5a48-a670-55f854432091"
+					(reference "SP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(embedded_fonts no)
+)

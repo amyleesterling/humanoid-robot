@@ -1,0 +1,176 @@
+wire_number,sheet,reference,terminal,pin_name,net
+W1001,01_external_sources.kicad_sch,PSA1,C14-PE,FACTORY PE / INTERNAL -V BOND,ACT_0V_PE_BONDED
+W1002,01_external_sources.kicad_sch,PSA1,C6P-1,+VO 1,ACT_12V_RAW
+W1003,01_external_sources.kicad_sch,PSA1,C6P-2,+VO 2,ACT_12V_RAW
+W1004,01_external_sources.kicad_sch,PSA1,C6P-3,+VO 3,ACT_12V_RAW
+W1005,01_external_sources.kicad_sch,PSA1,C6P-4,-VO 1,ACT_0V_PE_BONDED
+W1006,01_external_sources.kicad_sch,PSA1,C6P-5,-VO 2,ACT_0V_PE_BONDED
+W1007,01_external_sources.kicad_sch,PSA1,C6P-6,-VO 3,ACT_0V_PE_BONDED
+W1008,01_external_sources.kicad_sch,JA1,1,C6P 1,ACT_12V_RAW
+W1009,01_external_sources.kicad_sch,JA1,2,C6P 2,ACT_12V_RAW
+W1010,01_external_sources.kicad_sch,JA1,3,C6P 3,ACT_12V_RAW
+W1011,01_external_sources.kicad_sch,JA1,4,C6P 4,ACT_0V_PE_BONDED
+W1012,01_external_sources.kicad_sch,JA1,5,C6P 5,ACT_0V_PE_BONDED
+W1013,01_external_sources.kicad_sch,JA1,6,C6P 6,ACT_0V_PE_BONDED
+W1014,01_external_sources.kicad_sch,PSU2,P1J-C,CENTER +24V,SAFETY_24V_RAW
+W1015,01_external_sources.kicad_sch,PSU2,P1J-S,SLEEVE 0V,SAFETY_0V
+W1016,01_external_sources.kicad_sch,JC1,TBD-24+,+24V,SAFETY_24V_RAW
+W1017,01_external_sources.kicad_sch,JC1,TBD-24-,0V,SAFETY_0V
+W1018,01_external_sources.kicad_sch,JC1,TBD-OUT+,PROTECTED +24V,SAFETY_24V
+W1019,01_external_sources.kicad_sch,JC1,TBD-OUT-,0V,SAFETY_0V
+W1020,01_external_sources.kicad_sch,PSU3,USB-C-VBUS,+5V COMPUTE,COMPUTE_5V
+W1021,01_external_sources.kicad_sch,PSU3,USB-C-GND,COMPUTE GND,COMPUTE_0V
+W2001,02_estop_eligibility.kicad_sch,S0,TBD-C1A,CH1 A,SR1_S11
+W2002,02_estop_eligibility.kicad_sch,S0,TBD-C2A,CH2 A,SR1_S21
+W2003,02_estop_eligibility.kicad_sch,S0,TBD-C1B,CH1 B,WD1_SAFETY_IN
+W2004,02_estop_eligibility.kicad_sch,S0,TBD-C2B,CH2 B,WD2_SAFETY_IN
+W2005,02_estop_eligibility.kicad_sch,SR1,A1,24V SUPPLY,SAFETY_24V
+W2006,02_estop_eligibility.kicad_sch,SR1,A2,0V SUPPLY,SAFETY_0V
+W2007,02_estop_eligibility.kicad_sch,SR1,S11,INPUT CH1 FEED,SR1_S11
+W2008,02_estop_eligibility.kicad_sch,SR1,S12,INPUT CH1 RETURN / START FEED,SR1_S12
+W2009,02_estop_eligibility.kicad_sch,SR1,S21,INPUT CH2 FEED,SR1_S21
+W2010,02_estop_eligibility.kicad_sch,SR1,S22,INPUT CH2 RETURN,SR1_S22
+W2011,02_estop_eligibility.kicad_sch,SR1,S34,START / EDM RETURN,SR1_START_RETURN
+W2012,02_estop_eligibility.kicad_sch,SR1,13,SAFETY OUT1 IN,SRA1_S11
+W2013,02_estop_eligibility.kicad_sch,SR1,14,SAFETY OUT1 OUT,SRA1_S12
+W2014,02_estop_eligibility.kicad_sch,SR1,23,SAFETY OUT2 IN,SRA1_S21
+W2015,02_estop_eligibility.kicad_sch,SR1,24,SAFETY OUT2 OUT,SRA1_S22
+W2016,02_estop_eligibility.kicad_sch,SR1,41,AUX NC IN,SAFETY_24V
+W2017,02_estop_eligibility.kicad_sch,SR1,Y32,SEMICONDUCTOR STATUS,SR1_STATUS
+W2018,02_estop_eligibility.kicad_sch,S1,TBD-R1,RESET IN,SR1_S12
+W2019,02_estop_eligibility.kicad_sch,S1,TBD-R2,RESET OUT,SR1_START_RETURN
+W2020,02_estop_eligibility.kicad_sch,H1,TBD-H+,+,SR1_STATUS
+W2021,02_estop_eligibility.kicad_sch,H1,TBD-H-,-,SAFETY_0V
+W3001,03_arm_watchdog_eligibility.kicad_sch,SRA1,A1,24V SUPPLY,SAFETY_24V
+W3002,03_arm_watchdog_eligibility.kicad_sch,SRA1,A2,0V SUPPLY,SAFETY_0V
+W3003,03_arm_watchdog_eligibility.kicad_sch,SRA1,S11,INPUT CH1 FEED,SRA1_S11
+W3004,03_arm_watchdog_eligibility.kicad_sch,SRA1,S12,INPUT CH1 RETURN / START FEED,SRA1_S12
+W3005,03_arm_watchdog_eligibility.kicad_sch,SRA1,S21,INPUT CH2 FEED,SRA1_S21
+W3006,03_arm_watchdog_eligibility.kicad_sch,SRA1,S22,INPUT CH2 RETURN,SRA1_S22
+W3007,03_arm_watchdog_eligibility.kicad_sch,SRA1,S34,START / EDM RETURN,SRA1_START_RETURN
+W3008,03_arm_watchdog_eligibility.kicad_sch,SRA1,13,SAFETY OUT1 IN,SAFETY_24V
+W3009,03_arm_watchdog_eligibility.kicad_sch,SRA1,14,SAFETY OUT1 OUT,SRA1_K1_RAW
+W3010,03_arm_watchdog_eligibility.kicad_sch,SRA1,23,SAFETY OUT2 IN,SAFETY_24V
+W3011,03_arm_watchdog_eligibility.kicad_sch,SRA1,24,SAFETY OUT2 OUT,SRA1_K2_RAW
+W3012,03_arm_watchdog_eligibility.kicad_sch,SRA1,41,AUX NC IN,SAFETY_24V
+W3013,03_arm_watchdog_eligibility.kicad_sch,SRA1,Y32,SEMICONDUCTOR STATUS,SRA1_STATUS
+W3014,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-COIL+,COIL +24V,SAFETY_24V
+W3015,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-COIL-,DRIVER RETURN,WD1_COIL_N
+W3016,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-C1,CH1 COM,WD1_SAFETY_IN
+W3017,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-NO1,CH1 NO,SR1_S12
+W3018,03_arm_watchdog_eligibility.kicad_sch,KWD1,TBD-NC1,CH1 NC,WD1_NC_DIAG
+W3019,03_arm_watchdog_eligibility.kicad_sch,S2,TBD-A1,ARM IN,SRA1_S12
+W3020,03_arm_watchdog_eligibility.kicad_sch,S2,TBD-A2,ARM OUT,ARM_AFTER_S2
+W3021,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-COIL+,COIL +24V,SAFETY_24V
+W3022,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-COIL-,DRIVER RETURN,WD2_COIL_N
+W3023,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-C1,CH1 COM,WD2_SAFETY_IN
+W3024,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-NO1,CH1 NO,SR1_S22
+W3025,03_arm_watchdog_eligibility.kicad_sch,KWD2,TBD-NC1,CH1 NC,WD2_NC_DIAG
+W4001,04_contactor_edm.kicad_sch,K1,A1,COIL +,K1_A1
+W4002,04_contactor_edm.kicad_sch,K1,A2,COIL -,SAFETY_0V
+W4003,04_contactor_edm.kicad_sch,K1,21,MIRROR NC IN,ARM_AFTER_S2
+W4004,04_contactor_edm.kicad_sch,K1,13,AUX NO IN,SAFETY_24V
+W4005,04_contactor_edm.kicad_sch,K1,22,MIRROR NC OUT,EDM_K1_OUT
+W4006,04_contactor_edm.kicad_sch,K1,14,AUX NO OUT,K1_STATUS
+W4007,04_contactor_edm.kicad_sch,K2,A1,COIL +,K2_A1
+W4008,04_contactor_edm.kicad_sch,K2,A2,COIL -,SAFETY_0V
+W4009,04_contactor_edm.kicad_sch,K2,21,MIRROR NC IN,EDM_K1_OUT
+W4010,04_contactor_edm.kicad_sch,K2,13,AUX NO IN,SAFETY_24V
+W4011,04_contactor_edm.kicad_sch,K2,22,MIRROR NC OUT,SRA1_START_RETURN
+W4012,04_contactor_edm.kicad_sch,K2,14,AUX NO OUT,K2_STATUS
+W4013,04_contactor_edm.kicad_sch,FSR1,1,IN,SRA1_K1_RAW
+W4014,04_contactor_edm.kicad_sch,FSR1,2,OUT,K1_A1
+W4015,04_contactor_edm.kicad_sch,FSR2,1,IN,SRA1_K2_RAW
+W4016,04_contactor_edm.kicad_sch,FSR2,2,OUT,K2_A1
+W5001,05_actuator_interruption.kicad_sch,F0,1,SOURCE,ACT_12V_RAW
+W5002,05_actuator_interruption.kicad_sch,F0,2,PROTECTED,ACT_12V_FUSED
+W5003,05_actuator_interruption.kicad_sch,SD1,TBD-IN,IN,ACT_12V_FUSED
+W5004,05_actuator_interruption.kicad_sch,SD1,TBD-OUT,OUT,K1_P1_IN
+W5005,05_actuator_interruption.kicad_sch,KP1,1L1,POLE1 IN,K1_P1_IN
+W5006,05_actuator_interruption.kicad_sch,KP1,3L2,POLE2 IN,K1_J12
+W5007,05_actuator_interruption.kicad_sch,KP1,5L3,POLE3 IN,K1_J23
+W5008,05_actuator_interruption.kicad_sch,KP1,2T1,POLE1 OUT,K1_J12
+W5009,05_actuator_interruption.kicad_sch,KP1,4T2,POLE2 OUT,K1_J23
+W5010,05_actuator_interruption.kicad_sch,KP1,6T3,POLE3 OUT,K1_OUT
+W5011,05_actuator_interruption.kicad_sch,KP2,1L1,POLE1 IN,K1_OUT
+W5012,05_actuator_interruption.kicad_sch,KP2,3L2,POLE2 IN,K2_J12
+W5013,05_actuator_interruption.kicad_sch,KP2,5L3,POLE3 IN,K2_J23
+W5014,05_actuator_interruption.kicad_sch,KP2,2T1,POLE1 OUT,K2_J12
+W5015,05_actuator_interruption.kicad_sch,KP2,4T2,POLE2 OUT,K2_J23
+W5016,05_actuator_interruption.kicad_sch,KP2,6T3,POLE3 OUT,ACT_12V_BUS
+W6001,06_branches_and_injection.kicad_sch,F1,1,IN,ACT_12V_BUS
+W6002,06_branches_and_injection.kicad_sch,F1,2,OUT,J1_VDD
+W6003,06_branches_and_injection.kicad_sch,INJ1,TBD-BI-G,BUS IN GND,ACT_0V_PE_BONDED
+W6004,06_branches_and_injection.kicad_sch,INJ1,TBD-BI-D,BUS IN DATA,DXL_TTL_DATA
+W6005,06_branches_and_injection.kicad_sch,INJ1,TBD-P,FUSED VDD,J1_VDD
+W6006,06_branches_and_injection.kicad_sch,INJ1,TBD-A-G,ACT GND,ACT_0V_PE_BONDED
+W6007,06_branches_and_injection.kicad_sch,INJ1,TBD-A-V,ACT VDD,J1_VDD
+W6008,06_branches_and_injection.kicad_sch,INJ1,TBD-A-D,ACT DATA,DXL_TTL_DATA
+W6009,06_branches_and_injection.kicad_sch,INJ1,TBD-BO-G,BUS OUT GND,ACT_0V_PE_BONDED
+W6010,06_branches_and_injection.kicad_sch,INJ1,TBD-BO-D,BUS OUT DATA,DXL_TTL_DATA
+W6011,06_branches_and_injection.kicad_sch,F2,1,IN,ACT_12V_BUS
+W6012,06_branches_and_injection.kicad_sch,F2,2,OUT,J2_VDD
+W6013,06_branches_and_injection.kicad_sch,INJ2,TBD-BI-G,BUS IN GND,ACT_0V_PE_BONDED
+W6014,06_branches_and_injection.kicad_sch,INJ2,TBD-BI-D,BUS IN DATA,DXL_TTL_DATA
+W6015,06_branches_and_injection.kicad_sch,INJ2,TBD-P,FUSED VDD,J2_VDD
+W6016,06_branches_and_injection.kicad_sch,INJ2,TBD-A-G,ACT GND,ACT_0V_PE_BONDED
+W6017,06_branches_and_injection.kicad_sch,INJ2,TBD-A-V,ACT VDD,J2_VDD
+W6018,06_branches_and_injection.kicad_sch,INJ2,TBD-A-D,ACT DATA,DXL_TTL_DATA
+W6019,06_branches_and_injection.kicad_sch,INJ2,TBD-BO-G,BUS OUT GND,ACT_0V_PE_BONDED
+W6020,06_branches_and_injection.kicad_sch,INJ2,TBD-BO-D,BUS OUT DATA,DXL_TTL_DATA
+W6021,06_branches_and_injection.kicad_sch,F3,1,IN,ACT_12V_BUS
+W6022,06_branches_and_injection.kicad_sch,F3,2,OUT,J3_VDD
+W6023,06_branches_and_injection.kicad_sch,INJ3,TBD-BI-G,BUS IN GND,ACT_0V_PE_BONDED
+W6024,06_branches_and_injection.kicad_sch,INJ3,TBD-BI-D,BUS IN DATA,DXL_TTL_DATA
+W6025,06_branches_and_injection.kicad_sch,INJ3,TBD-P,FUSED VDD,J3_VDD
+W6026,06_branches_and_injection.kicad_sch,INJ3,TBD-A-G,ACT GND,ACT_0V_PE_BONDED
+W6027,06_branches_and_injection.kicad_sch,INJ3,TBD-A-V,ACT VDD,J3_VDD
+W6028,06_branches_and_injection.kicad_sch,INJ3,TBD-A-D,ACT DATA,DXL_TTL_DATA
+W7001,07_watchdog_control.kicad_sch,DC1,TBD-IN+,24V IN,SAFETY_24V
+W7002,07_watchdog_control.kicad_sch,DC1,TBD-IN-,0V IN,SAFETY_0V
+W7003,07_watchdog_control.kicad_sch,DC1,TBD-OUT+,5V OUT,WD_5V
+W7004,07_watchdog_control.kicad_sch,DC1,TBD-OUT-,0V OUT,SAFETY_0V
+W7005,07_watchdog_control.kicad_sch,ISO1,TBD-IN,PI HEARTBEAT,PI_HEARTBEAT
+W7006,07_watchdog_control.kicad_sch,ISO1,TBD-CG,COMPUTE GND,COMPUTE_0V
+W7007,07_watchdog_control.kicad_sch,ISO1,TBD-OUT,WD HEARTBEAT,WD_HEARTBEAT
+W7008,07_watchdog_control.kicad_sch,ISO1,TBD-WG,WD GND,SAFETY_0V
+W7009,07_watchdog_control.kicad_sch,WDCTRL1,VSYS,5V INPUT,WD_5V
+W7010,07_watchdog_control.kicad_sch,WDCTRL1,GND,GROUND,SAFETY_0V
+W7011,07_watchdog_control.kicad_sch,WDCTRL1,TBD-GPIO-HB,HEARTBEAT IN,WD_HEARTBEAT
+W7012,07_watchdog_control.kicad_sch,WDCTRL1,TBD-GPIO-1,RELAY1 DRIVE,WD1_DRIVE
+W7013,07_watchdog_control.kicad_sch,WDCTRL1,TBD-GPIO-2,RELAY2 DRIVE,WD2_DRIVE
+W7014,07_watchdog_control.kicad_sch,WDCTRL1,TBD-GPIO-F1,RELAY1 FEEDBACK,WD1_NC_DIAG
+W7015,07_watchdog_control.kicad_sch,WDCTRL1,TBD-GPIO-F2,RELAY2 FEEDBACK,WD2_NC_DIAG
+W7016,07_watchdog_control.kicad_sch,WDCTRL1,SWDIO,SWDIO,WD_SWDIO
+W7017,07_watchdog_control.kicad_sch,WDCTRL1,SWCLK,SWCLK,WD_SWCLK
+W7018,07_watchdog_control.kicad_sch,Q1,TBD-IN,GPIO,WD1_DRIVE
+W7019,07_watchdog_control.kicad_sch,Q1,TBD-0V,0V,SAFETY_0V
+W7020,07_watchdog_control.kicad_sch,Q1,TBD-COIL,COIL RETURN,WD1_COIL_N
+W7021,07_watchdog_control.kicad_sch,Q2,TBD-IN,GPIO,WD2_DRIVE
+W7022,07_watchdog_control.kicad_sch,Q2,TBD-0V,0V,SAFETY_0V
+W7023,07_watchdog_control.kicad_sch,Q2,TBD-COIL,COIL RETURN,WD2_COIL_N
+W8001,08_compute_and_control_terminals.kicad_sch,PI1,USB-C-VBUS,+5V INPUT,COMPUTE_5V
+W8002,08_compute_and_control_terminals.kicad_sch,PI1,GND,COMPUTE GND,COMPUTE_0V
+W8003,08_compute_and_control_terminals.kicad_sch,PI1,TBD-GPIO-HB,HEARTBEAT OUT,PI_HEARTBEAT
+W8004,08_compute_and_control_terminals.kicad_sch,PI1,USB-U2D2,USB TO U2D2,PI_USB_U2D2
+W8005,08_compute_and_control_terminals.kicad_sch,JDBG1,TBD-SWDIO,SWDIO,WD_SWDIO
+W8006,08_compute_and_control_terminals.kicad_sch,JDBG1,TBD-SWCLK,SWCLK,WD_SWCLK
+W8007,08_compute_and_control_terminals.kicad_sch,JDBG1,TBD-GND,GND,SAFETY_0V
+W8008,08_compute_and_control_terminals.kicad_sch,XT1,TBD-1,+24V,SAFETY_24V
+W8009,08_compute_and_control_terminals.kicad_sch,XT1,TBD-2,0V,SAFETY_0V
+W8010,08_compute_and_control_terminals.kicad_sch,XT1,TBD-3,SR1 STATUS,SR1_STATUS
+W8011,08_compute_and_control_terminals.kicad_sch,XT1,TBD-4,SRA1 STATUS,SRA1_STATUS
+W8012,08_compute_and_control_terminals.kicad_sch,XT1,TBD-5,K1 STATUS,K1_STATUS
+W8013,08_compute_and_control_terminals.kicad_sch,XT1,TBD-6,K2 STATUS,K2_STATUS
+W9001,09_actuator_interfaces.kicad_sch,U1,USB,USB TO PI,PI_USB_U2D2
+W9002,09_actuator_interfaces.kicad_sch,U1,TTL-1,GND,ACT_0V_PE_BONDED
+W9003,09_actuator_interfaces.kicad_sch,U1,TTL-3,DATA,DXL_TTL_DATA
+W9004,09_actuator_interfaces.kicad_sch,J1,1,GND,ACT_0V_PE_BONDED
+W9005,09_actuator_interfaces.kicad_sch,J1,2,VDD,J1_VDD
+W9006,09_actuator_interfaces.kicad_sch,J1,3,DATA,DXL_TTL_DATA
+W9007,09_actuator_interfaces.kicad_sch,J2,1,GND,ACT_0V_PE_BONDED
+W9008,09_actuator_interfaces.kicad_sch,J2,2,VDD,J2_VDD
+W9009,09_actuator_interfaces.kicad_sch,J2,3,DATA,DXL_TTL_DATA
+W9010,09_actuator_interfaces.kicad_sch,J3,1,GND,ACT_0V_PE_BONDED
+W9011,09_actuator_interfaces.kicad_sch,J3,2,VDD,J3_VDD
+W9012,09_actuator_interfaces.kicad_sch,J3,3,DATA,DXL_TTL_DATA

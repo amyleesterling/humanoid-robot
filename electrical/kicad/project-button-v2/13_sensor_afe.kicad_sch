@@ -1,0 +1,1153 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "29f2ad16-f51e-55b9-a590-1a2f0c0bb023")
+	(paper "A3")
+	(title_block
+		(title "PB Electrical V2.1 - 13 13 sensor afe")
+		(date "2026-08-05")
+		(rev "V2.1-P0.2")
+		(company "Project Button")
+		(comment 1 "PRELIMINARY - NOT APPROVED FOR ENERGIZATION")
+		(comment 2 "QUALIFIED REVIEW REQUIRED")
+	)
+	(lib_symbols
+		(symbol "PBV2:AFE1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "AFE1" (at -17.78 -49.53 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Load-cell excitation, reference, protection, and anti-alias front ends" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Excitation voltage, reference, amplifiers if required, filters, protection, calibration injection, and complete PCB circuit are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 46.99 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Load-cell excitation, reference, protecti..." (at -17.78 -46.23 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "AFE1_0_1"
+				(rectangle
+					(start -17.78 -43.18)
+					(end 17.78 43.18)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "AFE1_1_1"
+				(pin passive line
+					(at 20.32 -38.10 180)
+					(length 2.54)
+					(name "EXC1+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E1+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -33.02 180)
+					(length 2.54)
+					(name "EXC1-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E1-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -27.94 180)
+					(length 2.54)
+					(name "EXC2+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E2+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -22.86 180)
+					(length 2.54)
+					(name "EXC2-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E2-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -17.78 180)
+					(length 2.54)
+					(name "EXC3+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E3+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -12.70 180)
+					(length 2.54)
+					(name "EXC3-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E3-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -7.62 180)
+					(length 2.54)
+					(name "EXC4+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E4+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -2.54 180)
+					(length 2.54)
+					(name "EXC4-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E4-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 2.54 180)
+					(length 2.54)
+					(name "EXC5+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E5+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 7.62 180)
+					(length 2.54)
+					(name "EXC5-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E5-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 12.70 180)
+					(length 2.54)
+					(name "EXC6+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E6+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 17.78 180)
+					(length 2.54)
+					(name "EXC6-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E6-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 22.86 180)
+					(length 2.54)
+					(name "EXC7+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E7+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 27.94 180)
+					(length 2.54)
+					(name "EXC7-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E7-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 33.02 180)
+					(length 2.54)
+					(name "EXC8+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E8+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 38.10 180)
+					(length 2.54)
+					(name "EXC8-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-E8-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -2.54 0)
+					(length 2.54)
+					(name "ANALOG_3V3" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A3V3" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 2.54 0)
+					(length 2.54)
+					(name "ANALOG_0V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A0V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "PRELIMINARY - NOT APPROVED FOR ENERGIZATION"
+		(exclude_from_sim no)
+		(at 17.78 10.16 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+					(justify left bottom)
+			)
+		(uuid "4b0c1b87-bc68-57bd-a657-7dd186771338")
+	)
+	(text "13  Load-cell excitation, reference, protection, anti-alias filtering, and analog power"
+		(exclude_from_sim no)
+		(at 17.78 19.05 0)
+			(effects
+				(font
+					(size 2.03 2.03)
+				)
+					(justify left bottom)
+			)
+		(uuid "5ac14077-7d9d-5e82-a5a2-4b8b50c79867")
+	)
+	(text "AFE1 is a functional boundary only. No circuit values, silicon, package pins, protection parts, grounding implementation, or PCB layout are selected."
+		(exclude_from_sim no)
+		(at 17.78 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "54e59fc8-d654-531f-aa79-d97ffd50b6a2")
+	)
+	(rectangle
+		(start 12.70 31.75)
+		(end 406.40 256.54)
+		(stroke (width 0.50) (type solid))
+		(fill (type none))
+		(uuid "e8fbc08c-f8f7-5c68-a737-59dbae7ec33f")
+	)
+	(wire
+		(pts (xy 223.52 177.80) (xy 228.60 177.80))
+		(stroke (width 0) (type default))
+		(uuid "567de4d1-a1ed-5ad5-a286-77d7b6db630a")
+	)
+	(global_label "LC_L1_EXC+"
+		(shape bidirectional)
+		(at 228.60 177.80 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "acaed68f-71b6-59f7-a76e-369aa211bf65")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 180.34 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2079"
+		(exclude_from_sim no)
+		(at 226.06 176.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "87fc043b-64eb-55ba-ac0a-9e3076826719")
+	)
+	(wire
+		(pts (xy 223.52 172.72) (xy 228.60 172.72))
+		(stroke (width 0) (type default))
+		(uuid "fd2d5ea6-901a-5514-adab-9ff0e8a6f07b")
+	)
+	(global_label "LC_L1_EXC-"
+		(shape bidirectional)
+		(at 228.60 172.72 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "004d6dda-a9b0-5c0f-a3c5-ba44a3c218cf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 175.26 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2080"
+		(exclude_from_sim no)
+		(at 226.06 170.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b1302639-9a56-5ca2-a18c-73fbbbdb6ee7")
+	)
+	(wire
+		(pts (xy 223.52 167.64) (xy 228.60 167.64))
+		(stroke (width 0) (type default))
+		(uuid "eac943eb-c39e-5ba8-a4df-70787ede6d0d")
+	)
+	(global_label "LC_L2_EXC+"
+		(shape bidirectional)
+		(at 228.60 167.64 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "2d2710d3-2e33-53f6-abfb-b6fc9301858a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 170.18 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2083"
+		(exclude_from_sim no)
+		(at 226.06 165.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "5d34d97a-6f1c-57d1-ac19-181d3673204b")
+	)
+	(wire
+		(pts (xy 223.52 162.56) (xy 228.60 162.56))
+		(stroke (width 0) (type default))
+		(uuid "0afcbc65-f7a0-5207-ad07-3bacc54ececa")
+	)
+	(global_label "LC_L2_EXC-"
+		(shape bidirectional)
+		(at 228.60 162.56 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "da46bf0b-f5a5-5046-a4f0-c8e474c716bf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 165.10 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2084"
+		(exclude_from_sim no)
+		(at 226.06 160.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "e48f9e4a-befc-576b-ae2c-eaead0673a8a")
+	)
+	(wire
+		(pts (xy 223.52 157.48) (xy 228.60 157.48))
+		(stroke (width 0) (type default))
+		(uuid "b1ee6a8e-2215-5e2c-ac07-79397c3e1295")
+	)
+	(global_label "LC_L3_EXC+"
+		(shape bidirectional)
+		(at 228.60 157.48 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "a40547da-487d-5c08-a3a1-5c5317d74faf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 160.02 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2087"
+		(exclude_from_sim no)
+		(at 226.06 155.70 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c9756ba2-3ee6-5146-a51a-e9c033187406")
+	)
+	(wire
+		(pts (xy 223.52 152.40) (xy 228.60 152.40))
+		(stroke (width 0) (type default))
+		(uuid "98fb6021-9eca-5970-a309-c7008360e069")
+	)
+	(global_label "LC_L3_EXC-"
+		(shape bidirectional)
+		(at 228.60 152.40 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "01abe758-6cd8-5a76-a95c-ec22bb142053")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 154.94 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2088"
+		(exclude_from_sim no)
+		(at 226.06 150.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "414b8a81-c8b8-52d1-a8fb-44613924cf42")
+	)
+	(wire
+		(pts (xy 223.52 147.32) (xy 228.60 147.32))
+		(stroke (width 0) (type default))
+		(uuid "a932c7d4-e831-5d28-a24e-ca350f10b62c")
+	)
+	(global_label "LC_L4_EXC+"
+		(shape bidirectional)
+		(at 228.60 147.32 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "c26b97c9-bcc5-561b-a604-a48ef4caa980")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 149.86 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2091"
+		(exclude_from_sim no)
+		(at 226.06 145.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "7d54e884-a3b5-5930-a8b5-820ec1221b52")
+	)
+	(wire
+		(pts (xy 223.52 142.24) (xy 228.60 142.24))
+		(stroke (width 0) (type default))
+		(uuid "6edc906b-a406-53b2-a8f1-9f40e757babb")
+	)
+	(global_label "LC_L4_EXC-"
+		(shape bidirectional)
+		(at 228.60 142.24 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "0bcccaab-82fa-5fc8-afee-8848974b63e7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 144.78 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2092"
+		(exclude_from_sim no)
+		(at 226.06 140.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "8fab98a7-7081-57a9-af0c-496ca6faaea8")
+	)
+	(wire
+		(pts (xy 223.52 137.16) (xy 228.60 137.16))
+		(stroke (width 0) (type default))
+		(uuid "5c251b17-f46e-51be-a450-14c87286096f")
+	)
+	(global_label "LC_R1_EXC+"
+		(shape bidirectional)
+		(at 228.60 137.16 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "587f94b0-0aca-5eca-ae59-9e3f8e825f8d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2095"
+		(exclude_from_sim no)
+		(at 226.06 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "1f7cb7f5-d417-575c-a11e-d9b358fb5310")
+	)
+	(wire
+		(pts (xy 223.52 132.08) (xy 228.60 132.08))
+		(stroke (width 0) (type default))
+		(uuid "cf46a733-7b01-57c3-aedc-6ff618b3219a")
+	)
+	(global_label "LC_R1_EXC-"
+		(shape bidirectional)
+		(at 228.60 132.08 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "17030bae-12d1-5529-a1ad-f62118d3f6ea")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2096"
+		(exclude_from_sim no)
+		(at 226.06 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "acfd23dd-f8f8-5e65-a8a8-b87797fdcb6c")
+	)
+	(wire
+		(pts (xy 223.52 127) (xy 228.60 127))
+		(stroke (width 0) (type default))
+		(uuid "a038d6c5-671a-576c-add6-c5636a6f3ce7")
+	)
+	(global_label "LC_R2_EXC+"
+		(shape bidirectional)
+		(at 228.60 127 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "87a3ab57-1c9d-5b0e-af33-043537898c75")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 129.54 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2099"
+		(exclude_from_sim no)
+		(at 226.06 125.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "19aa737c-fc94-591d-ab83-f318e095e433")
+	)
+	(wire
+		(pts (xy 223.52 121.92) (xy 228.60 121.92))
+		(stroke (width 0) (type default))
+		(uuid "41c5ae9b-d5c5-5296-a0f8-b51eea800a40")
+	)
+	(global_label "LC_R2_EXC-"
+		(shape bidirectional)
+		(at 228.60 121.92 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "3727ee7c-0b14-5318-a8c3-fd3d7c8621b5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 124.46 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2100"
+		(exclude_from_sim no)
+		(at 226.06 120.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c2b04ddd-3185-55ba-afd8-d97134ab7631")
+	)
+	(wire
+		(pts (xy 223.52 116.84) (xy 228.60 116.84))
+		(stroke (width 0) (type default))
+		(uuid "b5757aa3-914f-5717-ad9d-f8ae64b5eabe")
+	)
+	(global_label "LC_R3_EXC+"
+		(shape bidirectional)
+		(at 228.60 116.84 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "dd6f7c90-b03a-5550-a3b9-3f16a84a485b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 119.38 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2103"
+		(exclude_from_sim no)
+		(at 226.06 115.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "5415858c-d620-5263-a618-8ebc151744ef")
+	)
+	(wire
+		(pts (xy 223.52 111.76) (xy 228.60 111.76))
+		(stroke (width 0) (type default))
+		(uuid "44c9db56-62d2-5250-a211-14e05c2ae2f5")
+	)
+	(global_label "LC_R3_EXC-"
+		(shape bidirectional)
+		(at 228.60 111.76 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "cb0f73c4-a64d-5a2a-a465-d2ab5df2d6d7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 114.30 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2104"
+		(exclude_from_sim no)
+		(at 226.06 109.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "2d6803b3-4bc3-5703-ab71-b268159c6ddc")
+	)
+	(wire
+		(pts (xy 223.52 106.68) (xy 228.60 106.68))
+		(stroke (width 0) (type default))
+		(uuid "b6bc6384-cd21-5950-a82b-2167fff9c581")
+	)
+	(global_label "LC_R4_EXC+"
+		(shape bidirectional)
+		(at 228.60 106.68 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "505eb54f-34b7-5044-a224-bd7cb37fbcec")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 109.22 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2107"
+		(exclude_from_sim no)
+		(at 226.06 104.90 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "45e5c2d9-07fe-5617-aa83-0771e30b396e")
+	)
+	(wire
+		(pts (xy 223.52 101.60) (xy 228.60 101.60))
+		(stroke (width 0) (type default))
+		(uuid "92c94885-51f0-5461-ad21-9da735735349")
+	)
+	(global_label "LC_R4_EXC-"
+		(shape bidirectional)
+		(at 228.60 101.60 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "5b774235-4a26-54d6-ae9b-36b008f4fe5c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 104.14 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2108"
+		(exclude_from_sim no)
+		(at 226.06 99.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "32fd4eb6-9efe-582c-aff5-84bc8a35f8d4")
+	)
+	(wire
+		(pts (xy 182.88 142.24) (xy 177.80 142.24))
+		(stroke (width 0) (type default))
+		(uuid "83bb731d-18ae-575a-a123-fc322a15e800")
+	)
+	(global_label "SENSOR_ANALOG_3V3"
+		(shape bidirectional)
+		(at 177.80 142.24 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "be6cb32d-d975-5ebe-a557-2a863332b000")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 144.78 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2123"
+		(exclude_from_sim no)
+		(at 180.34 140.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "cba8fdbe-1552-5fa0-afef-df743bbe1e89")
+	)
+	(wire
+		(pts (xy 182.88 137.16) (xy 177.80 137.16))
+		(stroke (width 0) (type default))
+		(uuid "82a7f5dc-8d0f-5db3-aea8-8ef808e2ba4d")
+	)
+	(global_label "SENSOR_ANALOG_0V"
+		(shape bidirectional)
+		(at 177.80 137.16 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "e370a18e-63de-5671-a589-47420c06b104")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2122"
+		(exclude_from_sim no)
+		(at 180.34 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b1fd7d52-0776-5e29-ae5d-94d379cf3d57")
+	)
+	(text "NOTE 1: A complete low-noise analog design and error budget are required before any sensor PCB can be fabricated."
+		(exclude_from_sim no)
+		(at 17.78 266.70 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "6c2e6094-e0d2-5654-a245-bb289c339e41")
+	)
+	(text "NOTE 2: Load-cell excitation, ADC reference, calibration, shielding, and analog return must be reviewed as one system."
+		(exclude_from_sim no)
+		(at 17.78 271.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "d3c1253b-5366-52c0-a2ee-9cff7eccd5a8")
+	)
+	(symbol
+		(lib_id "PBV2:AFE1")
+		(at 203.20 139.70 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "afae6e35-4035-56b2-a4b9-d24fb5ffe074")
+		(property "Reference" "AFE1"
+			(at 185.42 90.17 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Load-cell excitation, reference, protection, and anti-alias front ends"
+			(at 203.20 139.70 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 139.70 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 139.70 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Excitation voltage, reference, amplifiers if required, filters, protection, calibration injection, and complete PCB circuit are unresolved."
+			(at 203.20 139.70 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 186.69 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 139.70 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Load-cell excitation, reference, protecti..."
+			(at 185.42 93.47 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-E1+"
+			(uuid "8b186f1d-e2a1-5790-a928-c02fe806fb62")
+		)
+		(pin "TBD-E1-"
+			(uuid "39bb319d-49e9-55b5-a34c-9e3eb12c65c5")
+		)
+		(pin "TBD-E2+"
+			(uuid "f5cf8dac-c270-56ad-ac5f-a22f66192ce0")
+		)
+		(pin "TBD-E2-"
+			(uuid "28fda1bc-ec94-5776-a1ce-3d07d6e53159")
+		)
+		(pin "TBD-E3+"
+			(uuid "e6bdf6b9-dcc0-558b-a763-92e052814ed9")
+		)
+		(pin "TBD-E3-"
+			(uuid "791456e3-2893-5c0f-a05b-9e1df68d5a3b")
+		)
+		(pin "TBD-E4+"
+			(uuid "ca49f16d-4677-51dc-a1fa-5ea337035ff3")
+		)
+		(pin "TBD-E4-"
+			(uuid "f0494266-0b69-5d2c-af9c-4a6d581e8287")
+		)
+		(pin "TBD-E5+"
+			(uuid "594b61f8-6e46-561e-af32-ace01c1bd154")
+		)
+		(pin "TBD-E5-"
+			(uuid "574f4f71-69de-5f78-a892-07567fc5851f")
+		)
+		(pin "TBD-E6+"
+			(uuid "0f69c672-236f-57a1-a331-f140edfb1950")
+		)
+		(pin "TBD-E6-"
+			(uuid "5c51649f-1fb9-5237-ab41-d2d9b897e003")
+		)
+		(pin "TBD-E7+"
+			(uuid "c17cca62-1af3-51e6-aed8-a3c5d9383302")
+		)
+		(pin "TBD-E7-"
+			(uuid "532babb2-d76d-5f74-a8b5-62a692d505be")
+		)
+		(pin "TBD-E8+"
+			(uuid "94cc6d61-25bf-505b-a331-70dfeae6c049")
+		)
+		(pin "TBD-E8-"
+			(uuid "25e1be74-0610-5060-a77b-a0ea0bfab08c")
+		)
+		(pin "TBD-A3V3"
+			(uuid "57829368-99c0-5ae8-aa33-54e5f83b22ea")
+		)
+		(pin "TBD-A0V"
+			(uuid "00f1c1fc-4f19-5cf4-af73-527225bd95c8")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/bf8e5dd8-e7eb-5737-a89f-c598260f15c4"
+					(reference "AFE1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(embedded_fonts no)
+)

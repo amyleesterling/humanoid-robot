@@ -1,0 +1,109 @@
+{
+  "package_status": "PRELIMINARY - NOT APPROVED FOR ENERGIZATION",
+  "native_kicad_output": {
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-08-06T11:33:24",
+    "ignored_checks": [
+      {
+        "description": "Global label only appears once in the schematic",
+        "key": "single_global_label"
+      },
+      {
+        "description": "Four connection points are joined together",
+        "key": "four_way_junction"
+      },
+      {
+        "description": "SPICE model issue",
+        "key": "simulation_model_issue"
+      },
+      {
+        "description": "Assigned footprint doesn't match footprint filters",
+        "key": "footprint_filter"
+      }
+    ],
+    "included_severities": [
+      "error",
+      "warning"
+    ],
+    "kicad_version": "10.0.5",
+    "sheets": [
+      {
+        "path": "/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c",
+        "violations": []
+      },
+      {
+        "path": "/01 01 ac pe power/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/58523d53-9f3a-5a48-a670-55f854432091",
+        "violations": []
+      },
+      {
+        "path": "/02 02 hrv0 safety/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cf960cd2-6951-5d35-a3e5-4bbe4cb9c24e",
+        "violations": []
+      },
+      {
+        "path": "/03 03 hrv0 distribution/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/7c9c6037-9441-5b6b-a82a-37839eb7f92c",
+        "violations": []
+      },
+      {
+        "path": "/04 04 control watchdog/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/db6cb586-ff17-5c80-a8e3-99c5c80646af",
+        "violations": []
+      },
+      {
+        "path": "/05 05 hr30 battery precharge/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/4a1ab087-b6ca-54dd-aacf-c5993fdcdfcd",
+        "violations": []
+      },
+      {
+        "path": "/06 06 hr30 safety distribution/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/95b711ee-75c3-55df-a3ff-a2c9d74e1f6c",
+        "violations": []
+      },
+      {
+        "path": "/07 07 left leg rs485/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cf79f383-b338-574a-a7d1-3b6e9ece802f",
+        "violations": []
+      },
+      {
+        "path": "/08 08 right leg rs485/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ad57f24b-fdcb-5167-a612-0b915b8181ae",
+        "violations": []
+      },
+      {
+        "path": "/09 09 upper bus a/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/13be53ef-c538-5de0-a00b-1e2f010ae9ad",
+        "violations": []
+      },
+      {
+        "path": "/10 10 upper bus b/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/ddea5665-9329-56b3-a1d6-d158ce74ec30",
+        "violations": []
+      },
+      {
+        "path": "/11 11 sensors sync/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/3ca62ec0-36ae-5435-a7cc-061d6eed2bed",
+        "violations": []
+      },
+      {
+        "path": "/12 12 sensor adc imu/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cd33e8f9-b051-5529-a454-bd0d6b9c7bac",
+        "violations": []
+      },
+      {
+        "path": "/13 13 sensor afe/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/bf8e5dd8-e7eb-5737-a89f-c598260f15c4",
+        "violations": []
+      },
+      {
+        "path": "/14 14 harness terminals/",
+        "uuid_path": "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/65bba94b-8a4b-5d05-ab17-731ee7dec45c",
+        "violations": []
+      }
+    ],
+    "source": "project-button-v2.kicad_sch"
+  }
+}

@@ -1,0 +1,3831 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "c5d8d94b-61b4-5874-abd5-63ab55605cf1")
+	(paper "A3")
+	(title_block
+		(title "PB Electrical V2.1 - 02 02 hrv0 safety")
+		(date "2026-08-05")
+		(rev "V2.1-P0.2")
+		(company "Project Button")
+		(comment 1 "PRELIMINARY - NOT APPROVED FOR ENERGIZATION")
+		(comment 2 "QUALIFIED REVIEW REQUIRED")
+	)
+	(lib_symbols
+		(symbol "PBV2:S0"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "S0" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Dual-NC positively-opening E-stop" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/emergency-stop-switches/xw-22mm-estop/xw1e-bv402m-r" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "IDEC XW dual-NC is a family candidate only. Freeze the exact complete order code, operator/reset/contact/cover/environment details, attach the exact bottom-view drawing, and continuity-test the received unit before replacing TBD terminals." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "IDEC XW candidate page and family catalogs reviewed 2026-08-05; exact order code and device drawing remain SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Dual-NC positively-opening E-stop" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "S0_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "S0_1_1"
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "CH1_A" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-C1A" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "CH1_B" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-C1B" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "CH2_A" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-C2A" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "CH2_B" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-C2B" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:SR1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SR1" (at -13.97 -31.75 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Pilz PNOZ s4 24 VDC, 750104 - PROPOSED CHANGE" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://www.pilz.com/en-INT/eshop/product/750104" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Select and seal 'with detection of shorts across contacts / monitored start falling edge' with supply off. 750104 falling-edge wait 250 ms and minimum start pulse 100 ms. Qualified review and physical validation remain required." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED" (at 0 29.21 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Pilz PNOZ s4 operating manual 21396-EN-23: pp. 8-16 topology/mode, p.19 status, and p.26 timing; product file 2026-06-22, PDF colophon 2026-02; verified 2026-08-05." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "PNOZ s4 24 VDC, 750104" (at -13.97 -28.45 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "SR1_0_1"
+				(rectangle
+					(start -13.97 -25.40)
+					(end 13.97 25.40)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "SR1_1_1"
+				(pin passive line
+					(at -16.51 -15.24 0)
+					(length 2.54)
+					(name "A1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "A1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -10.16 0)
+					(length 2.54)
+					(name "A2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "A2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -5.08 0)
+					(length 2.54)
+					(name "S11" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "S11" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "S12" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "S12" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 5.08 0)
+					(length 2.54)
+					(name "S21" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "S21" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 10.16 0)
+					(length 2.54)
+					(name "S22" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "S22" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 15.24 0)
+					(length 2.54)
+					(name "S34" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "S34" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -20.32 180)
+					(length 2.54)
+					(name "13" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "13" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -15.24 180)
+					(length 2.54)
+					(name "14" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "14" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -10.16 180)
+					(length 2.54)
+					(name "23" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "23" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -5.08 180)
+					(length 2.54)
+					(name "24" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "24" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "33" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "33" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 5.08 180)
+					(length 2.54)
+					(name "34" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "34" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 10.16 180)
+					(length 2.54)
+					(name "41" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "41" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 15.24 180)
+					(length 2.54)
+					(name "42" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "42" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 20.32 180)
+					(length 2.54)
+					(name "Y32" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "Y32" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:S1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "S1" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Momentary NO reset pushbutton" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Exact normally-open contact and terminal identifiers are unresolved. Locate outside swept envelope." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Momentary NO reset pushbutton" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "S1_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "S1_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "CONTACT_A" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-A" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "CONTACT_B" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-B" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:FSR1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "FSR1" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "PNOZ output-contact protection" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Pilz manual p.11 requires output-contact protection. Published maxima are not selections; coordinate the exact protection with coil inrush, conductor, PS2 behavior, and fault current." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "PNOZ output-contact protection" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "FSR1_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "FSR1_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-I" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "OUT" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-O" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:K1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "K1" (at -13.97 -19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Schneider LC1D25BD" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://iportal2.schneider-electric.com/Contents/docs/SQD-LC1D25BD.PDF" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Integral 21-22 NC mirror contact is used for EDM. Integral 13-14 NO is status only." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED" (at 0 16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Schneider official product data reviewed 2026-08-05. DC make/break, capacitive inrush, and protection coordination remain open." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "LC1D25BD" (at -13.97 -15.75 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "K1_0_1"
+				(rectangle
+					(start -13.97 -12.70)
+					(end 13.97 12.70)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "K1_1_1"
+				(pin passive line
+					(at -16.51 -7.62 0)
+					(length 2.54)
+					(name "1L1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "1L1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -7.62 180)
+					(length 2.54)
+					(name "2T1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "2T1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "A1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "A1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "A2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "A2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "21" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "21" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "22" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "22" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 7.62 0)
+					(length 2.54)
+					(name "13" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "13" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 7.62 180)
+					(length 2.54)
+					(name "14" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "14" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:K2"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "K2" (at -13.97 -19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Schneider LC1D25BD" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://iportal2.schneider-electric.com/Contents/docs/SQD-LC1D25BD.PDF" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Second series contactor; same coordination restrictions as K1." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED" (at 0 16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Schneider official product data reviewed 2026-08-05. DC make/break, capacitive inrush, and protection coordination remain open." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "LC1D25BD" (at -13.97 -15.75 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "K2_0_1"
+				(rectangle
+					(start -13.97 -12.70)
+					(end 13.97 12.70)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "K2_1_1"
+				(pin passive line
+					(at -16.51 -7.62 0)
+					(length 2.54)
+					(name "1L1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "1L1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -7.62 180)
+					(length 2.54)
+					(name "2T1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "2T1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "A1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "A1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "A2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "A2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "21" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "21" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "22" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "22" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 7.62 0)
+					(length 2.54)
+					(name "13" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "13" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 7.62 180)
+					(length 2.54)
+					(name "14" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "14" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:SK1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SK1" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "K1 DC-coil suppression network" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Select per Pilz and Schneider instructions. Exact device, polarity, energy rating, fault behavior, and effect on dropout/stopping time require review and test." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "K1 DC-coil suppression network" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "SK1_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "SK1_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "COIL_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "COIL_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD--" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:SK2"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SK2" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "K2 DC-coil suppression network" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Select per Pilz and Schneider instructions. Exact device, polarity, energy rating, fault behavior, and effect on dropout/stopping time require review and test." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "K2 DC-coil suppression network" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "SK2_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "SK2_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "COIL_POS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "COIL_NEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD--" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:KWD1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "KWD1" (at -13.97 -16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Phoenix Contact PLC-RSC-24DC/21" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "https://www.phoenixcontact.com/en-gb/products/relay-module-plc-rsc-24dc21-2966171" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Supplemental watchdog permit only; not a safety relay. Normally-open 11-14 path is required for fail-safe permit behavior." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED" (at 0 13.97 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Phoenix Contact product 2966171, current manufacturer page reviewed 2026-08-05." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "PLC-RSC-24DC/21" (at -13.97 -13.21 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "KWD1_0_1"
+				(rectangle
+					(start -13.97 -10.16)
+					(end 13.97 10.16)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "KWD1_1_1"
+				(pin passive line
+					(at -16.51 -5.08 0)
+					(length 2.54)
+					(name "A1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "A1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "A2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "A2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 5.08 0)
+					(length 2.54)
+					(name "11_COM" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "11" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "12_NC" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "12" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "14_NO" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "14" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "PRELIMINARY - NOT APPROVED FOR ENERGIZATION"
+		(exclude_from_sim no)
+		(at 17.78 10.16 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+					(justify left bottom)
+			)
+		(uuid "4b0c1b87-bc68-57bd-a657-7dd186771338")
+	)
+	(text "02  HR-V0 dual-channel E-stop, falling-edge monitored start, watchdog permit, EDM, and redundant contactors"
+		(exclude_from_sim no)
+		(at 17.78 19.05 0)
+			(effects
+				(font
+					(size 2.03 2.03)
+				)
+					(justify left bottom)
+			)
+		(uuid "d36fb0fb-2c73-5b8c-ae4a-62879801a1da")
+	)
+	(text "PNOZ s4 750104 is the proposed authoritative selection. Reset completes only the S12-reset-EDM-S34 start loop. It is not electrically connected to ARM or actuator commands."
+		(exclude_from_sim no)
+		(at 17.78 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "a69b7d68-922d-594b-a914-c4cb77eb7a49")
+	)
+	(rectangle
+		(start 12.70 31.75)
+		(end 406.40 256.54)
+		(stroke (width 0.50) (type solid))
+		(fill (type none))
+		(uuid "823be48a-35b6-5058-a728-5cbdae79e2f1")
+	)
+	(wire
+		(pts (xy 59.69 66.04) (xy 54.61 66.04))
+		(stroke (width 0) (type default))
+		(uuid "d38f4e88-ff41-5d12-ac0d-c302e3d4178e")
+	)
+	(global_label "V0_ESTOP_CH1_FEED"
+		(shape bidirectional)
+		(at 54.61 66.04 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "db7bd20e-45ff-5df5-af12-067fea90751a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 68.58 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2151"
+		(exclude_from_sim no)
+		(at 57.15 64.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "dbab6b7e-b49e-5869-adac-e642b9686c64")
+	)
+	(wire
+		(pts (xy 92.71 66.04) (xy 97.79 66.04))
+		(stroke (width 0) (type default))
+		(uuid "2bf2205a-2ef5-5e2d-add5-8d4dfe68cecb")
+	)
+	(global_label "V0_ESTOP_CH1_RETURN"
+		(shape bidirectional)
+		(at 97.79 66.04 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "8a20f6d7-f823-5fa5-ad4a-b9034f1f1037")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 68.58 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2152"
+		(exclude_from_sim no)
+		(at 95.25 64.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "4694c273-da11-5553-a4e2-fd792528b075")
+	)
+	(wire
+		(pts (xy 59.69 60.96) (xy 54.61 60.96))
+		(stroke (width 0) (type default))
+		(uuid "5d2690f3-6aeb-5bf4-a850-a48b92a7faaf")
+	)
+	(global_label "V0_ESTOP_CH2_FEED"
+		(shape bidirectional)
+		(at 54.61 60.96 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "4cb3ce33-8229-5e25-afaa-f7b0753ea379")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 63.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2153"
+		(exclude_from_sim no)
+		(at 57.15 59.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "aae8112c-95d2-5049-a9e3-3d5de50b90a1")
+	)
+	(wire
+		(pts (xy 92.71 60.96) (xy 97.79 60.96))
+		(stroke (width 0) (type default))
+		(uuid "3b49c77b-1d3d-5db3-a63d-7f8984b1e8d4")
+	)
+	(global_label "V0_ESTOP_CH2_RETURN"
+		(shape bidirectional)
+		(at 97.79 60.96 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "b020f324-d581-5ef8-ae3c-4150fe4d13be")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 63.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2154"
+		(exclude_from_sim no)
+		(at 95.25 59.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "263635df-f13f-5a94-a960-38291660820c")
+	)
+	(wire
+		(pts (xy 186.69 78.74) (xy 181.61 78.74))
+		(stroke (width 0) (type default))
+		(uuid "4785b4f2-522b-5efc-aa41-76440c80e7c9")
+	)
+	(global_label "SAFETY_24V"
+		(shape bidirectional)
+		(at 181.61 78.74 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "234bee0c-dc8c-5cb7-aed5-d7f5522c931a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 81.28 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2119"
+		(exclude_from_sim no)
+		(at 184.15 76.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c8309a8f-8734-534e-a5e1-3e8c437871f4")
+	)
+	(wire
+		(pts (xy 186.69 73.66) (xy 181.61 73.66))
+		(stroke (width 0) (type default))
+		(uuid "42c6d521-d75c-5d40-a2e1-8f237aca71f7")
+	)
+	(global_label "SAFETY_0V"
+		(shape bidirectional)
+		(at 181.61 73.66 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "8abb6a6e-966f-5177-a625-387fa5f47cb7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 76.20 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2118"
+		(exclude_from_sim no)
+		(at 184.15 71.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b047010c-1bad-52e0-a9c4-cd796cbc8074")
+	)
+	(wire
+		(pts (xy 186.69 68.58) (xy 181.61 68.58))
+		(stroke (width 0) (type default))
+		(uuid "616cca8f-378f-5054-aefa-b43e50953ae5")
+	)
+	(global_label "V0_ESTOP_CH1_FEED"
+		(shape bidirectional)
+		(at 181.61 68.58 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "e831e18b-bbe0-50ed-a01c-b8d90df2c2f3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 71.12 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2151"
+		(exclude_from_sim no)
+		(at 184.15 66.80 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "3b5de22f-2243-5210-acb3-1ae78aeca564")
+	)
+	(wire
+		(pts (xy 186.69 63.50) (xy 181.61 63.50))
+		(stroke (width 0) (type default))
+		(uuid "698fafa2-af0e-51dd-abd1-8a3327361a9b")
+	)
+	(global_label "V0_ESTOP_CH1_RETURN"
+		(shape bidirectional)
+		(at 181.61 63.50 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "48052048-13f5-548b-a8c4-70c15e02c9a7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 66.04 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2152"
+		(exclude_from_sim no)
+		(at 184.15 61.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "ba813ba0-4979-5dd1-af6b-937f0fed0103")
+	)
+	(wire
+		(pts (xy 186.69 58.42) (xy 181.61 58.42))
+		(stroke (width 0) (type default))
+		(uuid "e88415b2-30db-5df4-ac4f-d7ed6c0ac2d4")
+	)
+	(global_label "V0_ESTOP_CH2_FEED"
+		(shape bidirectional)
+		(at 181.61 58.42 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "c2e1cba1-4d36-530d-a872-d7114bf4e0a6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 60.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2153"
+		(exclude_from_sim no)
+		(at 184.15 56.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "1a2130a9-82b7-5e5a-a51d-a1e9e67c77ac")
+	)
+	(wire
+		(pts (xy 186.69 53.34) (xy 181.61 53.34))
+		(stroke (width 0) (type default))
+		(uuid "7d6a200e-3bbe-5a33-a699-038878eb46b4")
+	)
+	(global_label "V0_ESTOP_CH2_RETURN"
+		(shape bidirectional)
+		(at 181.61 53.34 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "b68d5a20-65e4-5ef5-a7fe-49a70d6965ae")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 55.88 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2154"
+		(exclude_from_sim no)
+		(at 184.15 51.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "ca7c3094-834b-5d64-abfd-0faba26c79d3")
+	)
+	(wire
+		(pts (xy 186.69 48.26) (xy 181.61 48.26))
+		(stroke (width 0) (type default))
+		(uuid "e8a1e044-8cc9-5734-a8aa-7fd0b4549847")
+	)
+	(global_label "V0_RESET_LOOP_RETURN"
+		(shape bidirectional)
+		(at 181.61 48.26 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "a33dd89e-fc70-5e81-aa86-122ca2dd1687")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 50.80 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2161"
+		(exclude_from_sim no)
+		(at 184.15 46.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "60894891-3ccc-53b7-a467-98f2ae914c71")
+	)
+	(wire
+		(pts (xy 219.71 83.82) (xy 224.79 83.82))
+		(stroke (width 0) (type default))
+		(uuid "b8ed3839-054e-5149-aa32-89a39c14ca2e")
+	)
+	(global_label "V0_WATCHDOG_PERMIT_24V"
+		(shape bidirectional)
+		(at 224.79 83.82 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "0480a38a-f14d-5b44-ad56-8036ae23e1ca")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 86.36 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2166"
+		(exclude_from_sim no)
+		(at 222.25 82.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d67e67d1-9a95-5af7-a3f9-448438b7d49d")
+	)
+	(wire
+		(pts (xy 219.71 78.74) (xy 224.79 78.74))
+		(stroke (width 0) (type default))
+		(uuid "667aa647-7a6d-5840-a2e3-4c7dacf63d9c")
+	)
+	(global_label "V0_K1_COIL_CMD"
+		(shape bidirectional)
+		(at 224.79 78.74 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "5aafe71a-9867-50ae-a97d-2a06b2858f65")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 81.28 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2156"
+		(exclude_from_sim no)
+		(at 222.25 76.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b72fe34c-8140-5a44-a0c6-b45b2864ce21")
+	)
+	(wire
+		(pts (xy 219.71 73.66) (xy 224.79 73.66))
+		(stroke (width 0) (type default))
+		(uuid "07662def-2fdf-56fe-a884-9a061dc14f69")
+	)
+	(global_label "V0_WATCHDOG_PERMIT_24V"
+		(shape bidirectional)
+		(at 224.79 73.66 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "be5b7120-769e-59d0-a7c5-1b9a4ba9450c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 76.20 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2166"
+		(exclude_from_sim no)
+		(at 222.25 71.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "0aff5807-213e-5988-a646-acc81ac3217d")
+	)
+	(wire
+		(pts (xy 219.71 68.58) (xy 224.79 68.58))
+		(stroke (width 0) (type default))
+		(uuid "ad12391f-11b1-5c61-a4ee-1c7d54dd4738")
+	)
+	(global_label "V0_K2_COIL_CMD"
+		(shape bidirectional)
+		(at 224.79 68.58 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "7d3f6f5d-c1e7-5ae5-a6f8-c07a97be3f26")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 71.12 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2159"
+		(exclude_from_sim no)
+		(at 222.25 66.80 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "5a8d034a-7b3e-5bce-a6fe-9749d6ef9a2c")
+	)
+	(no_connect (at 219.71 63.50) (uuid "582cbbb0-ec66-5ec7-ae05-dc3165b62ca3"))
+	(no_connect (at 219.71 58.42) (uuid "e5e0e606-ea0f-51de-ad68-74ad59520a6d"))
+	(no_connect (at 219.71 53.34) (uuid "e446a72d-8550-5462-a7c7-a7e3d836aede"))
+	(no_connect (at 219.71 48.26) (uuid "2001147b-86a8-5169-ad4b-29cf4736a130"))
+	(wire
+		(pts (xy 219.71 43.18) (xy 224.79 43.18))
+		(stroke (width 0) (type default))
+		(uuid "4fac8871-3cf1-588b-acf7-c18bb633361c")
+	)
+	(global_label "V0_SR1_STATUS_24V"
+		(shape bidirectional)
+		(at 224.79 43.18 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "2ae43e7d-5858-5d59-a323-31a919e615c5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 45.72 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2163"
+		(exclude_from_sim no)
+		(at 222.25 41.40 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "575d4342-d3e7-5018-ac3e-d8449c86bfa8")
+	)
+	(wire
+		(pts (xy 313.69 63.50) (xy 308.61 63.50))
+		(stroke (width 0) (type default))
+		(uuid "424f4b0f-217c-5897-adc4-54fea62808cf")
+	)
+	(global_label "V0_ESTOP_CH1_RETURN"
+		(shape bidirectional)
+		(at 308.61 63.50 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "c2b1313f-ea8d-5b2c-a01b-2262fafd24f8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 66.04 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2152"
+		(exclude_from_sim no)
+		(at 311.15 61.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "df506f68-bde7-58a5-a6b0-b43fb61fdd58")
+	)
+	(wire
+		(pts (xy 346.71 63.50) (xy 351.79 63.50))
+		(stroke (width 0) (type default))
+		(uuid "30ab30ee-ff7f-5ddc-a771-cc1138783761")
+	)
+	(global_label "V0_EDM_STAGE_1"
+		(shape bidirectional)
+		(at 351.79 63.50 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "1667d537-7622-5143-a06e-2825f89ea520")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 66.04 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2149"
+		(exclude_from_sim no)
+		(at 349.25 61.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "1d32774e-75f2-5822-a383-480c82c352d4")
+	)
+	(wire
+		(pts (xy 59.69 134.62) (xy 54.61 134.62))
+		(stroke (width 0) (type default))
+		(uuid "6660ab2d-63c2-59b0-a585-704773a99350")
+	)
+	(global_label "V0_WATCHDOG_PERMIT_RAW_24V"
+		(shape bidirectional)
+		(at 54.61 134.62 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "b8897556-b013-55a2-a21c-b698a2815aea")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 137.16 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2167"
+		(exclude_from_sim no)
+		(at 57.15 132.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "2d44e96c-aaab-55c9-af6a-18caab0311cf")
+	)
+	(wire
+		(pts (xy 92.71 134.62) (xy 97.79 134.62))
+		(stroke (width 0) (type default))
+		(uuid "280cf6d0-1be6-5f13-a457-8726f3143cfd")
+	)
+	(global_label "V0_WATCHDOG_PERMIT_24V"
+		(shape bidirectional)
+		(at 97.79 134.62 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "31668306-3b20-5426-abba-b807fba38559")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 137.16 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2166"
+		(exclude_from_sim no)
+		(at 95.25 132.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "511d7c94-6878-5093-a6ea-4cff84d56c03")
+	)
+	(wire
+		(pts (xy 186.69 142.24) (xy 181.61 142.24))
+		(stroke (width 0) (type default))
+		(uuid "7f12e5df-7f18-56a6-ae01-5f572042f9fc")
+	)
+	(global_label "V0_12V_FUSED"
+		(shape bidirectional)
+		(at 181.61 142.24 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "ad13bed3-0ecd-5d62-a648-a2e6005aeefa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 144.78 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2143"
+		(exclude_from_sim no)
+		(at 184.15 140.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "276e15df-a667-59dc-a71f-db7965273ae1")
+	)
+	(wire
+		(pts (xy 219.71 142.24) (xy 224.79 142.24))
+		(stroke (width 0) (type default))
+		(uuid "3f8a8d4b-d015-56d7-ae9b-5bf696aaf436")
+	)
+	(global_label "V0_K1_LOAD"
+		(shape bidirectional)
+		(at 224.79 142.24 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "7ba6c1f7-403e-55c4-a291-eafb9e5537c9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 144.78 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2157"
+		(exclude_from_sim no)
+		(at 222.25 140.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6b01f9e0-ee09-574d-a28e-373bcb16f160")
+	)
+	(wire
+		(pts (xy 186.69 137.16) (xy 181.61 137.16))
+		(stroke (width 0) (type default))
+		(uuid "ff48fac9-05ec-5c42-ac86-12e9c2b7d8cf")
+	)
+	(global_label "V0_K1_COIL_CMD"
+		(shape bidirectional)
+		(at 181.61 137.16 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "52df2e35-3eb5-582f-a93f-906c98d757b8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2156"
+		(exclude_from_sim no)
+		(at 184.15 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "36d7312a-b507-5ad0-a862-44655b1d6d9d")
+	)
+	(wire
+		(pts (xy 219.71 137.16) (xy 224.79 137.16))
+		(stroke (width 0) (type default))
+		(uuid "1eabf2b1-3daf-54c8-aaa5-5023a7e870e4")
+	)
+	(global_label "SAFETY_0V"
+		(shape bidirectional)
+		(at 224.79 137.16 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "92dfcdd7-16ee-5f5b-ad9d-cb0e930d6708")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2118"
+		(exclude_from_sim no)
+		(at 222.25 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d7207c36-9a9d-567d-a0f9-dfa29c3f35d0")
+	)
+	(wire
+		(pts (xy 186.69 132.08) (xy 181.61 132.08))
+		(stroke (width 0) (type default))
+		(uuid "374e5dec-2896-5efc-a26c-92f3fa2596e6")
+	)
+	(global_label "V0_EDM_STAGE_1"
+		(shape bidirectional)
+		(at 181.61 132.08 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "bfb2a488-619e-551e-a68b-57150d84cc3b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2149"
+		(exclude_from_sim no)
+		(at 184.15 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "fb172190-fb56-50ea-ad85-938fe2df24fb")
+	)
+	(wire
+		(pts (xy 219.71 132.08) (xy 224.79 132.08))
+		(stroke (width 0) (type default))
+		(uuid "2456f416-7b0f-5385-ac60-9cd3944e2b86")
+	)
+	(global_label "V0_EDM_STAGE_2"
+		(shape bidirectional)
+		(at 224.79 132.08 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "73c45f73-d546-5777-ac1c-826a9323f7e8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2150"
+		(exclude_from_sim no)
+		(at 222.25 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6f35cdca-ab57-51d7-a178-006757278eaa")
+	)
+	(wire
+		(pts (xy 186.69 127) (xy 181.61 127))
+		(stroke (width 0) (type default))
+		(uuid "48d328cd-1a86-5ee4-a7e1-26a7a17d83a8")
+	)
+	(global_label "SAFETY_24V"
+		(shape bidirectional)
+		(at 181.61 127 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "598e7090-2fbc-5f93-a141-270bcfc1d7dc")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 129.54 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2119"
+		(exclude_from_sim no)
+		(at 184.15 125.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "7db97e93-8fb7-53eb-a940-9b1854ad22f6")
+	)
+	(wire
+		(pts (xy 219.71 127) (xy 224.79 127))
+		(stroke (width 0) (type default))
+		(uuid "479333bb-6100-5b21-ab11-879ef4fbc0e2")
+	)
+	(global_label "V0_K1_STATUS_24V"
+		(shape bidirectional)
+		(at 224.79 127 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "4d81ce44-ddb3-568f-a710-75432fce4481")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 129.54 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2158"
+		(exclude_from_sim no)
+		(at 222.25 125.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "e733c637-5416-5e57-ad25-45123c68bc7d")
+	)
+	(wire
+		(pts (xy 313.69 142.24) (xy 308.61 142.24))
+		(stroke (width 0) (type default))
+		(uuid "7a042b1c-0cc1-5290-a038-8613c962db81")
+	)
+	(global_label "V0_K1_LOAD"
+		(shape bidirectional)
+		(at 308.61 142.24 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "4aa7b2a8-1b08-5b7a-ae67-f72366d7d234")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 144.78 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2157"
+		(exclude_from_sim no)
+		(at 311.15 140.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "afdea253-3960-55e5-a708-226ac14b7430")
+	)
+	(wire
+		(pts (xy 346.71 142.24) (xy 351.79 142.24))
+		(stroke (width 0) (type default))
+		(uuid "f00289bf-6fc6-5571-a69d-af3f143f8d25")
+	)
+	(global_label "V0_12V_SAFE"
+		(shape bidirectional)
+		(at 351.79 142.24 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "a17f7d92-ae35-502e-aaf0-2bd0e14b6329")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 144.78 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2145"
+		(exclude_from_sim no)
+		(at 349.25 140.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "1b5310ba-64f8-51fe-a240-d8ed3add299e")
+	)
+	(wire
+		(pts (xy 313.69 137.16) (xy 308.61 137.16))
+		(stroke (width 0) (type default))
+		(uuid "c1d000a5-d24e-5aa0-aa3d-6798a60a5f8d")
+	)
+	(global_label "V0_K2_COIL_CMD"
+		(shape bidirectional)
+		(at 308.61 137.16 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "6e1f6941-5a77-5424-a443-954a223d2bd5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2159"
+		(exclude_from_sim no)
+		(at 311.15 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "546edee3-a484-51ea-a355-0765efc18b6c")
+	)
+	(wire
+		(pts (xy 346.71 137.16) (xy 351.79 137.16))
+		(stroke (width 0) (type default))
+		(uuid "7d5de509-9291-502e-a4f0-0349469db6cb")
+	)
+	(global_label "SAFETY_0V"
+		(shape bidirectional)
+		(at 351.79 137.16 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "86c2d602-2d46-5b6c-a3d9-2c440bc0babd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 139.70 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2118"
+		(exclude_from_sim no)
+		(at 349.25 135.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f83b381c-686a-58e4-a8bf-913de478178a")
+	)
+	(wire
+		(pts (xy 313.69 132.08) (xy 308.61 132.08))
+		(stroke (width 0) (type default))
+		(uuid "8310561f-7846-5db2-a9c0-40ffe3e05325")
+	)
+	(global_label "V0_EDM_STAGE_2"
+		(shape bidirectional)
+		(at 308.61 132.08 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "9daec7ed-d765-5956-a3ef-48e9a917fca6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2150"
+		(exclude_from_sim no)
+		(at 311.15 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "cf1fd83b-94c1-5639-a72b-7ce1df3a2ef3")
+	)
+	(wire
+		(pts (xy 346.71 132.08) (xy 351.79 132.08))
+		(stroke (width 0) (type default))
+		(uuid "fb4e8d72-8ca4-5cfb-a4a2-0e293fd087a9")
+	)
+	(global_label "V0_RESET_LOOP_RETURN"
+		(shape bidirectional)
+		(at 351.79 132.08 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "ca03efbe-c31b-57d8-aa02-29767e09b64b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 134.62 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2161"
+		(exclude_from_sim no)
+		(at 349.25 130.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "ab977525-ed9b-56cd-a4a9-82223a8a5a23")
+	)
+	(wire
+		(pts (xy 313.69 127) (xy 308.61 127))
+		(stroke (width 0) (type default))
+		(uuid "4395562f-7160-54b4-a1c4-78851d322185")
+	)
+	(global_label "SAFETY_24V"
+		(shape bidirectional)
+		(at 308.61 127 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "52c9cfcb-3c22-5cff-aa72-59c4d7a156ef")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 129.54 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2119"
+		(exclude_from_sim no)
+		(at 311.15 125.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c80f046e-3e55-53c3-a410-f161dc7f22a3")
+	)
+	(wire
+		(pts (xy 346.71 127) (xy 351.79 127))
+		(stroke (width 0) (type default))
+		(uuid "3fd6213b-4786-5f9b-a558-55766a4d31fc")
+	)
+	(global_label "V0_K2_STATUS_24V"
+		(shape bidirectional)
+		(at 351.79 127 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "b38b2766-bc75-5b55-a738-ded920cd798e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 129.54 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2160"
+		(exclude_from_sim no)
+		(at 349.25 125.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "154e648d-9fa8-5d7f-adf5-457cebf1ab9e")
+	)
+	(wire
+		(pts (xy 59.69 205.74) (xy 54.61 205.74))
+		(stroke (width 0) (type default))
+		(uuid "41229658-d488-5907-a1f2-15f232d509ac")
+	)
+	(global_label "V0_K1_COIL_CMD"
+		(shape bidirectional)
+		(at 54.61 205.74 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "3423053c-41b1-534c-a753-4035ffb0d8fc")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 208.28 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2156"
+		(exclude_from_sim no)
+		(at 57.15 203.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6995e22c-e030-5864-ade7-2f0bc0b484dc")
+	)
+	(wire
+		(pts (xy 92.71 205.74) (xy 97.79 205.74))
+		(stroke (width 0) (type default))
+		(uuid "123c0b3d-4bd4-5052-ad97-79c47a1a3aad")
+	)
+	(global_label "SAFETY_0V"
+		(shape bidirectional)
+		(at 97.79 205.74 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "2442fcee-5912-51c5-ae41-5898677dc732")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 97.79 208.28 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2118"
+		(exclude_from_sim no)
+		(at 95.25 203.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "14c90b10-bdca-5345-a9a1-86141d74a0d8")
+	)
+	(wire
+		(pts (xy 186.69 205.74) (xy 181.61 205.74))
+		(stroke (width 0) (type default))
+		(uuid "f08dc920-c6eb-5118-a630-46fad0eca055")
+	)
+	(global_label "V0_K2_COIL_CMD"
+		(shape bidirectional)
+		(at 181.61 205.74 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "c8bd2859-5851-52ab-a9c7-78190f4cc7f0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 208.28 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2159"
+		(exclude_from_sim no)
+		(at 184.15 203.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "7777660d-bfc9-57ad-a598-11ec43509636")
+	)
+	(wire
+		(pts (xy 219.71 205.74) (xy 224.79 205.74))
+		(stroke (width 0) (type default))
+		(uuid "02c0fe9b-2540-5f49-a2d2-710660441406")
+	)
+	(global_label "SAFETY_0V"
+		(shape bidirectional)
+		(at 224.79 205.74 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "5f2d979c-5981-5cce-acfc-457e05160c72")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 208.28 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2118"
+		(exclude_from_sim no)
+		(at 222.25 203.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "fd0d018e-5114-5750-a44f-481ca0d4cb19")
+	)
+	(wire
+		(pts (xy 313.69 210.82) (xy 308.61 210.82))
+		(stroke (width 0) (type default))
+		(uuid "f6ac9989-7081-5561-a3ca-6e677fdbce03")
+	)
+	(global_label "V0_WATCHDOG_COIL_24V"
+		(shape bidirectional)
+		(at 308.61 210.82 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "8a4bdc5d-5bf7-56f2-a2b8-71941b940380")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 213.36 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2165"
+		(exclude_from_sim no)
+		(at 311.15 209.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "99a96586-077f-5da5-a41a-08df8c1b2488")
+	)
+	(wire
+		(pts (xy 313.69 205.74) (xy 308.61 205.74))
+		(stroke (width 0) (type default))
+		(uuid "9bd9ae0b-ff2e-560c-a987-170e28a5ed98")
+	)
+	(global_label "SAFETY_0V"
+		(shape bidirectional)
+		(at 308.61 205.74 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "2e06ab17-6b39-5eb0-accb-8bfe17a227d5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 208.28 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2118"
+		(exclude_from_sim no)
+		(at 311.15 203.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "3230cf21-1989-531a-aba7-e8c65b370cde")
+	)
+	(wire
+		(pts (xy 313.69 200.66) (xy 308.61 200.66))
+		(stroke (width 0) (type default))
+		(uuid "f85d1b46-c2ac-5a51-aac2-8a098d0e0477")
+	)
+	(global_label "SAFETY_24V"
+		(shape bidirectional)
+		(at 308.61 200.66 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "ab1b316c-80ea-5d6d-ae89-f92458430d26")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 203.20 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2119"
+		(exclude_from_sim no)
+		(at 311.15 198.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "8519a040-655d-5906-a800-6d634a97c97b")
+	)
+	(no_connect (at 346.71 208.28) (uuid "102d3a7d-99a8-5534-ad36-05b04020141d"))
+	(wire
+		(pts (xy 346.71 203.20) (xy 351.79 203.20))
+		(stroke (width 0) (type default))
+		(uuid "83b55317-1cad-5cb9-a89e-9bff4076d0f9")
+	)
+	(global_label "V0_WATCHDOG_PERMIT_RAW_24V"
+		(shape bidirectional)
+		(at 351.79 203.20 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "a6b5246f-5072-5919-a1c0-3734da3fb2f2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 205.74 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2167"
+		(exclude_from_sim no)
+		(at 349.25 201.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "91aaa798-a504-5c09-a84a-c2b5ad8ca4d7")
+	)
+	(text "NOTE 1: S12 - S1 - K1(21-22) - K2(21-22) - S34 is the proposed monitored start / EDM loop."
+		(exclude_from_sim no)
+		(at 17.78 266.70 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "e9ca1d94-3f9f-554e-a03f-931ec485909d")
+	)
+	(text "NOTE 2: Safety outputs 13-14 and 23-24 drive separate contactor coils; 33-34 is intentionally unused."
+		(exclude_from_sim no)
+		(at 17.78 271.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "4caac650-1086-5511-a561-aea27cc80075")
+	)
+	(text "NOTE 3: The start/feedback loop has no relay diagnostic for shorts or cross-shorts; route it separately or protect it and justify fault exclusion. 41-42 and Y32 are diagnostic only."
+		(exclude_from_sim no)
+		(at 17.78 276.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "c831988c-62fd-5b0c-ae55-6214ccb4c8a3")
+	)
+	(text "NOTE 4: FSR1 and SK1/SK2 are mandatory selection gates. Verify output-contact protection, coil suppression, dropout, and stopping time before release."
+		(exclude_from_sim no)
+		(at 17.78 281.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "5117d283-56ca-5696-aa1e-a8d78163833f")
+	)
+	(symbol
+		(lib_id "PBV2:S0")
+		(at 76.20 63.50 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "771a2747-b23b-59d0-ae9e-31af89cfd0b8")
+		(property "Reference" "S0"
+			(at 62.23 48.26 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Dual-NC positively-opening E-stop"
+			(at 76.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/emergency-stop-switches/xw-22mm-estop/xw1e-bv402m-r"
+			(at 76.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "IDEC XW dual-NC is a family candidate only. Freeze the exact complete order code, operator/reset/contact/cover/environment details, attach the exact bottom-view drawing, and continuity-test the received unit before replacing TBD terminals."
+			(at 76.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 76.20 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "IDEC XW candidate page and family catalogs reviewed 2026-08-05; exact order code and device drawing remain SELECTION REQUIRED"
+			(at 76.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Dual-NC positively-opening E-stop"
+			(at 62.23 51.56 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-C1A"
+			(uuid "4f1be7ef-04cd-5319-a5c3-cb255494f540")
+		)
+		(pin "TBD-C1B"
+			(uuid "9d8594cd-2155-50d4-a31c-cdc9f9982316")
+		)
+		(pin "TBD-C2A"
+			(uuid "283d0a09-3825-51c9-a4f7-4e113b8740bf")
+		)
+		(pin "TBD-C2B"
+			(uuid "57fb994e-3867-56d0-a7aa-9a3735a6f279")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cf960cd2-6951-5d35-a3e5-4bbe4cb9c24e"
+					(reference "S0")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:SR1")
+		(at 203.20 63.50 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c7c9c246-203e-54d2-a0c5-93dc9366414b")
+		(property "Reference" "SR1"
+			(at 189.23 31.75 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Pilz PNOZ s4 24 VDC, 750104 - PROPOSED CHANGE"
+			(at 203.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://www.pilz.com/en-INT/eshop/product/750104"
+			(at 203.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Select and seal 'with detection of shorts across contacts / monitored start falling edge' with supply off. 750104 falling-edge wait 250 ms and minimum start pulse 100 ms. Qualified review and physical validation remain required."
+			(at 203.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED"
+			(at 203.20 92.71 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Pilz PNOZ s4 operating manual 21396-EN-23: pp. 8-16 topology/mode, p.19 status, and p.26 timing; product file 2026-06-22, PDF colophon 2026-02; verified 2026-08-05."
+			(at 203.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "PNOZ s4 24 VDC, 750104"
+			(at 189.23 35.05 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "A1"
+			(uuid "426e89a9-54d6-5819-a21e-311307dbdda3")
+		)
+		(pin "A2"
+			(uuid "b47774c5-6f65-50b0-a050-8f84f022e02e")
+		)
+		(pin "S11"
+			(uuid "f300d969-4e20-5cdb-a107-cb08c41c3174")
+		)
+		(pin "S12"
+			(uuid "a339fdc1-ae50-5345-a770-e856c24a7d59")
+		)
+		(pin "S21"
+			(uuid "c523a1a0-a45c-5aff-abdb-53b3feec64e9")
+		)
+		(pin "S22"
+			(uuid "693fa881-8ca7-52c8-afe1-f71051c0c7e1")
+		)
+		(pin "S34"
+			(uuid "46af1a7e-99bf-5703-a474-246d1b6c8e6f")
+		)
+		(pin "13"
+			(uuid "f61f62cf-cca1-5c66-a4f4-077fe0759492")
+		)
+		(pin "14"
+			(uuid "bd250a54-9ee3-50a2-a80a-7c82be6e2b09")
+		)
+		(pin "23"
+			(uuid "e725e9e6-696e-5f8d-a942-abfdbebf311b")
+		)
+		(pin "24"
+			(uuid "8ec32e1d-540d-517c-a5b8-795f89ee12a2")
+		)
+		(pin "33"
+			(uuid "da50f8e2-7473-59af-af1e-13b29deb9ba0")
+		)
+		(pin "34"
+			(uuid "4c7a3f3d-b998-5753-a181-1ca25b17aee8")
+		)
+		(pin "41"
+			(uuid "d54fb1f0-7054-5fa0-a09e-a0a48f918d8c")
+		)
+		(pin "42"
+			(uuid "9abcd4c1-2ca5-56e3-a3dd-d1cd2293efaf")
+		)
+		(pin "Y32"
+			(uuid "56eda39d-92e8-59fd-afe5-eaa729a48f89")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cf960cd2-6951-5d35-a3e5-4bbe4cb9c24e"
+					(reference "SR1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:S1")
+		(at 330.20 63.50 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3c65b4bc-2ece-5177-a244-aba2fda62a60")
+		(property "Reference" "S1"
+			(at 344.17 48.26 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "Momentary NO reset pushbutton"
+			(at 330.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 330.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Exact normally-open contact and terminal identifiers are unresolved. Locate outside swept envelope."
+			(at 330.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 330.20 76.20 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 330.20 63.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Momentary NO reset pushbutton"
+			(at 344.17 51.56 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-A"
+			(uuid "9658e4ae-2143-5411-a060-92955867cbe7")
+		)
+		(pin "TBD-B"
+			(uuid "d26a2600-4d49-50b9-a9cd-3be1dc3b5d68")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cf960cd2-6951-5d35-a3e5-4bbe4cb9c24e"
+					(reference "S1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:FSR1")
+		(at 76.20 134.62 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "df11b0d1-09e8-5704-a318-34ce1925dbaa")
+		(property "Reference" "FSR1"
+			(at 62.23 119.38 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "PNOZ output-contact protection"
+			(at 76.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Pilz manual p.11 requires output-contact protection. Published maxima are not selections; coordinate the exact protection with coil inrush, conductor, PS2 behavior, and fault current."
+			(at 76.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 147.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "PNOZ output-contact protection"
+			(at 62.23 122.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-I"
+			(uuid "b0537509-bb2b-5a58-aa4b-c27d538a8765")
+		)
+		(pin "TBD-O"
+			(uuid "115c31ed-d67d-5173-aca0-df4f2f1b9f03")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cf960cd2-6951-5d35-a3e5-4bbe4cb9c24e"
+					(reference "FSR1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:K1")
+		(at 203.20 134.62 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1325a718-71a7-53d3-aac2-90b36465502a")
+		(property "Reference" "K1"
+			(at 189.23 115.57 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Schneider LC1D25BD"
+			(at 203.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://iportal2.schneider-electric.com/Contents/docs/SQD-LC1D25BD.PDF"
+			(at 203.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Integral 21-22 NC mirror contact is used for EDM. Integral 13-14 NO is status only."
+			(at 203.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED"
+			(at 203.20 151.13 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Schneider official product data reviewed 2026-08-05. DC make/break, capacitive inrush, and protection coordination remain open."
+			(at 203.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "LC1D25BD"
+			(at 189.23 118.87 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "1L1"
+			(uuid "f7b3d182-efb5-5ff1-ad11-8b58c1b5648e")
+		)
+		(pin "2T1"
+			(uuid "cc6fe5a9-0625-51bc-a65c-2990e2185ce1")
+		)
+		(pin "A1"
+			(uuid "99f09ce6-4d09-5d24-ab39-1ad775080900")
+		)
+		(pin "A2"
+			(uuid "8d8a1500-cff7-5027-a764-23196d359c4c")
+		)
+		(pin "21"
+			(uuid "0da6b1da-2a0b-5270-a739-4754382be196")
+		)
+		(pin "22"
+			(uuid "9ba0ced7-b465-5f16-a825-c83c6682d57f")
+		)
+		(pin "13"
+			(uuid "3783a9af-6692-5166-a3f7-10d45bb0902f")
+		)
+		(pin "14"
+			(uuid "21a1266b-bd74-511a-aedd-b3d0af5e87c1")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cf960cd2-6951-5d35-a3e5-4bbe4cb9c24e"
+					(reference "K1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:K2")
+		(at 330.20 134.62 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a550fff6-db49-552f-aa86-88534b5baad7")
+		(property "Reference" "K2"
+			(at 344.17 115.57 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "Schneider LC1D25BD"
+			(at 330.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://iportal2.schneider-electric.com/Contents/docs/SQD-LC1D25BD.PDF"
+			(at 330.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Second series contactor; same coordination restrictions as K1."
+			(at 330.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED"
+			(at 330.20 151.13 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Schneider official product data reviewed 2026-08-05. DC make/break, capacitive inrush, and protection coordination remain open."
+			(at 330.20 134.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "LC1D25BD"
+			(at 344.17 118.87 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "1L1"
+			(uuid "4d4730e5-4c0b-522a-aa0d-cd4a0374c5dc")
+		)
+		(pin "2T1"
+			(uuid "8f681955-fbcf-5ea6-aaf4-c10fc986d951")
+		)
+		(pin "A1"
+			(uuid "e59ee4cc-6c8e-59a0-a27c-a69540a476b7")
+		)
+		(pin "A2"
+			(uuid "b14376db-e785-52a7-a418-8bf5bf1e35ca")
+		)
+		(pin "21"
+			(uuid "f502ce1b-64f7-5edf-a754-1a03ef64fa05")
+		)
+		(pin "22"
+			(uuid "37b26ab5-c582-5120-ad78-e98303d4b9a0")
+		)
+		(pin "13"
+			(uuid "65285d14-09de-5f9a-a988-36041808a2a8")
+		)
+		(pin "14"
+			(uuid "262fe249-8d35-5515-ae3a-300789ea2198")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cf960cd2-6951-5d35-a3e5-4bbe4cb9c24e"
+					(reference "K2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:SK1")
+		(at 76.20 205.74 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "57e9768f-8308-5d01-adf7-90241af159b5")
+		(property "Reference" "SK1"
+			(at 62.23 190.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "K1 DC-coil suppression network"
+			(at 76.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Select per Pilz and Schneider instructions. Exact device, polarity, energy rating, fault behavior, and effect on dropout/stopping time require review and test."
+			(at 76.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 218.44 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "K1 DC-coil suppression network"
+			(at 62.23 193.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-+"
+			(uuid "c3b8ea36-5bd2-58be-a1f3-59501f7d938b")
+		)
+		(pin "TBD--"
+			(uuid "67bf45c7-27be-58f7-a3c0-f0aecd395eb6")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cf960cd2-6951-5d35-a3e5-4bbe4cb9c24e"
+					(reference "SK1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:SK2")
+		(at 203.20 205.74 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4a57afd8-bb36-57d1-a42a-2a46b83123c3")
+		(property "Reference" "SK2"
+			(at 189.23 190.50 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "K2 DC-coil suppression network"
+			(at 203.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Select per Pilz and Schneider instructions. Exact device, polarity, energy rating, fault behavior, and effect on dropout/stopping time require review and test."
+			(at 203.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 218.44 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "K2 DC-coil suppression network"
+			(at 189.23 193.80 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-+"
+			(uuid "2706058a-8daf-5ea4-ae4a-2366779da0b4")
+		)
+		(pin "TBD--"
+			(uuid "edbb54e2-644b-58fa-a7d8-4280dfb7185c")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cf960cd2-6951-5d35-a3e5-4bbe4cb9c24e"
+					(reference "SK2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:KWD1")
+		(at 330.20 205.74 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a9668a99-8ade-5901-a70a-8976b29548b7")
+		(property "Reference" "KWD1"
+			(at 344.17 189.23 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "Phoenix Contact PLC-RSC-24DC/21"
+			(at 330.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "https://www.phoenixcontact.com/en-gb/products/relay-module-plc-rsc-24dc21-2966171"
+			(at 330.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Supplemental watchdog permit only; not a safety relay. Normally-open 11-14 path is required for fail-safe permit behavior."
+			(at 330.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "PROPOSED - PRIMARY SOURCE RECORDED"
+			(at 330.20 219.71 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Phoenix Contact product 2966171, current manufacturer page reviewed 2026-08-05."
+			(at 330.20 205.74 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "PLC-RSC-24DC/21"
+			(at 344.17 192.53 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "A1"
+			(uuid "9c9e23a6-32c1-5d57-a36f-efc86bc2b305")
+		)
+		(pin "A2"
+			(uuid "9e5c8783-0b91-5cff-a8a0-a339b8745476")
+		)
+		(pin "11"
+			(uuid "72e147e2-6c1c-51ac-a94d-bef8288bfa5e")
+		)
+		(pin "12"
+			(uuid "d1ac109c-808b-5c5d-a9d9-b1a402ebe199")
+		)
+		(pin "14"
+			(uuid "e109d1c5-0af4-53c5-a41a-16fd90f3423e")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/cf960cd2-6951-5d35-a3e5-4bbe4cb9c24e"
+					(reference "KWD1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(embedded_fonts no)
+)

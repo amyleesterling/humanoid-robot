@@ -1,0 +1,7210 @@
+(export
+	(version "E")
+	(design
+		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
+		(date "2026-08-06T15:17:21")
+		(tool "Eeschema 10.0.5")
+		(textvar
+			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+		(textvar
+			(name "REVISION") "V3-P0.2")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title "Project Button HR-V0 Electrical V3 index")
+				(company "Project Button")
+				(rev "V3-P0.2")
+				(date "2026-08-06")
+				(source "project-button-v3.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "2")
+			(name "/01 External listed sources and DC boundaries/")
+			(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
+			(title_block
+				(title "PB HR-V0 Electrical V3 - 01")
+				(company "Project Button")
+				(rev "V3-P0.2")
+				(date "2026-08-06")
+				(source "01_external_sources.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "3")
+			(name "/02 Dual-channel E-stop and RESET eligibility/")
+			(tstamps "/1abf679f-5cd5-5479-8b91-6a232acf93b9/")
+			(title_block
+				(title "PB HR-V0 Electrical V3 - 02")
+				(company "Project Button")
+				(rev "V3-P0.2")
+				(date "2026-08-06")
+				(source "02_estop_eligibility.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "4")
+			(name "/03 Distinct ARM and watchdog eligibility/")
+			(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
+			(title_block
+				(title "PB HR-V0 Electrical V3 - 03")
+				(company "Project Button")
+				(rev "V3-P0.2")
+				(date "2026-08-06")
+				(source "03_arm_watchdog_eligibility.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "5")
+			(name "/04 Contactor coils, mirror contacts and EDM/")
+			(tstamps "/6cf27f97-627c-5512-ba58-751093298e6c/")
+			(title_block
+				(title "PB HR-V0 Electrical V3 - 04")
+				(company "Project Button")
+				(rev "V3-P0.2")
+				(date "2026-08-06")
+				(source "04_contactor_edm.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "6")
+			(name "/05 Redundant actuator-power interruption/")
+			(tstamps "/db315f6f-1ed6-5bc9-bdf8-106d0286ccb4/")
+			(title_block
+				(title "PB HR-V0 Electrical V3 - 05")
+				(company "Project Button")
+				(rev "V3-P0.2")
+				(date "2026-08-06")
+				(source "05_actuator_interruption.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "7")
+			(name "/06 Protected actuator branches and VDD-isolating injection/")
+			(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
+			(title_block
+				(title "PB HR-V0 Electrical V3 - 06")
+				(company "Project Button")
+				(rev "V3-P0.2")
+				(date "2026-08-06")
+				(source "06_branches_and_injection.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "8")
+			(name "/07 Independent watchdog power, controller and drivers/")
+			(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
+			(title_block
+				(title "PB HR-V0 Electrical V3 - 07")
+				(company "Project Button")
+				(rev "V3-P0.2")
+				(date "2026-08-06")
+				(source "07_watchdog_control.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "9")
+			(name "/08 Compute, debug and control terminals/")
+			(tstamps "/fe24a110-40e3-5555-b2c3-1be661f8d1d9/")
+			(title_block
+				(title "PB HR-V0 Electrical V3 - 08")
+				(company "Project Button")
+				(rev "V3-P0.2")
+				(date "2026-08-06")
+				(source "08_compute_and_control_terminals.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "10")
+			(name "/09 U2D2, actuator ports and bonding boundary/")
+			(tstamps "/3d723ab8-9971-5c2f-b184-e89d898c907a/")
+			(title_block
+				(title "PB HR-V0 Electrical V3 - 09")
+				(company "Project Button")
+				(rev "V3-P0.2")
+				(date "2026-08-06")
+				(source "09_actuator_interfaces.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "JA1")
+			(value "GST280A C6P mating connector and contacts")
+			(description "Freeze housing, contacts, wire range, crimp tooling, current/temperature derating and retention from the exact manufacturer system.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence") "The adapter document names a Molex 39-01-2060-equivalent plug but does not release the project mating harness.")
+				(field
+					(name "Display") "GST280A C6P mating connector and contacts")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Freeze housing, contacts, wire range, crimp tooling, current/temperature derating and retention from the exact manufacturer system.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JA1")
+				(description "Freeze housing, contacts, wire range, crimp tooling, current/temperature derating and retention from the exact manufacturer system.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "The adapter document names a Molex 39-01-2060-equivalent plug but does not release the project mating harness.")
+			)
+			(property
+				(name "Display")
+				(value "GST280A C6P mating connector and contacts")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 External listed sources and DC boundaries")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_external_sources.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 External listed sources and DC boundaries/")
+				(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
+			)
+			(tstamps "c0602603-8693-58a8-be61-435992901612")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JC1")
+			(value "Locking 24 V DC inlet/interface")
+			(description "Add locking conversion, branch protection, strain relief and enclosure interface without exposing the non-locking barrel plug.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Locking 24 V DC inlet/interface")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Add locking conversion, branch protection, strain relief and enclosure interface without exposing the non-locking barrel plug.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JC1")
+				(description "Add locking conversion, branch protection, strain relief and enclosure interface without exposing the non-locking barrel plug.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Locking 24 V DC inlet/interface")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 External listed sources and DC boundaries")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_external_sources.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 External listed sources and DC boundaries/")
+				(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
+			)
+			(tstamps "f37e5ecc-c9ff-5d1b-864f-a453861ae51e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-24-")
+						)
+						(pin
+							(num "TBD-24+")
+						)
+						(pin
+							(num "TBD-OUT-")
+						)
+						(pin
+							(num "TBD-OUT+")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "PSA1")
+			(value "Mean Well GST280A12-C6P, 12 V 21 A 252 W")
+			(datasheet "https://www.meanwell.com/Upload/PDF/GST280A/GST280A-SPEC.PDF")
+			(description "External Class I adapter. Pins 1-3 are +Vo and 4-6 are -Vo; -Vo is bonded to incoming PE inside the source. Do not add a second 0V/PE bond.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - SOURCE APPLICATION REVIEW OPEN")
+				(field
+					(name "Evidence") "GST280A-SPEC 2026-04-03")
+				(field
+					(name "Display") "Mean Well GST280A12-C6P, 12 V 21 A 252 W")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.meanwell.com/Upload/PDF/GST280A/GST280A-SPEC.PDF")
+				(field
+					(name "Description") "External Class I adapter. Pins 1-3 are +Vo and 4-6 are -Vo; -Vo is bonded to incoming PE inside the source. Do not add a second 0V/PE bond.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "PSA1")
+				(description "External Class I adapter. Pins 1-3 are +Vo and 4-6 are -Vo; -Vo is bonded to incoming PE inside the source. Do not add a second 0V/PE bond.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - SOURCE APPLICATION REVIEW OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "GST280A-SPEC 2026-04-03")
+			)
+			(property
+				(name "Display")
+				(value "Mean Well GST280A12-C6P, 12 V 21 A 252 W")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 External listed sources and DC boundaries")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_external_sources.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 External listed sources and DC boundaries/")
+				(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
+			)
+			(tstamps "6902d608-5b5b-567d-b4d2-f8cbb85832ed")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "C14-PE")
+						)
+						(pin
+							(num "C14-N")
+						)
+						(pin
+							(num "C14-L")
+						)
+						(pin
+							(num "C6P-6")
+						)
+						(pin
+							(num "C6P-5")
+						)
+						(pin
+							(num "C6P-4")
+						)
+						(pin
+							(num "C6P-3")
+						)
+						(pin
+							(num "C6P-2")
+						)
+						(pin
+							(num "C6P-1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "PSU2")
+			(value "Mean Well GST40A24-P1J, 24 V 1.67 A 40 W")
+			(datasheet "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF")
+			(description "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - LOCKING DC INTERFACE OPEN")
+				(field
+					(name "Evidence") "GST40A-SPEC 2026-04-03")
+				(field
+					(name "Display") "Mean Well GST40A24-P1J, 24 V 1.67 A 40 W")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF")
+				(field
+					(name "Description") "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "PSU2")
+				(description "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - LOCKING DC INTERFACE OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "GST40A-SPEC 2026-04-03")
+			)
+			(property
+				(name "Display")
+				(value "Mean Well GST40A24-P1J, 24 V 1.67 A 40 W")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 External listed sources and DC boundaries")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_external_sources.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 External listed sources and DC boundaries/")
+				(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
+			)
+			(tstamps "2d3fafc6-d1b3-5f85-97ec-2e92db507906")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "C14-PE")
+						)
+						(pin
+							(num "C14-N")
+						)
+						(pin
+							(num "C14-L")
+						)
+						(pin
+							(num "P1J-S")
+						)
+						(pin
+							(num "P1J-C")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "PSU3")
+			(value "Official Raspberry Pi 27 W USB-C supply, US regional code")
+			(datasheet "https://www.raspberrypi.com/products/27w-power-supply/")
+			(description "Compute remains powered for diagnostics during E-stop; it has no safety authority.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - US ORDER CODE / RETENTION")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Official Raspberry Pi 27 W USB-C supply, US regional code")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.raspberrypi.com/products/27w-power-supply/")
+				(field
+					(name "Description") "Compute remains powered for diagnostics during E-stop; it has no safety authority.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "PSU3")
+				(description "Compute remains powered for diagnostics during E-stop; it has no safety authority.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - US ORDER CODE / RETENTION")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Official Raspberry Pi 27 W USB-C supply, US regional code")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 External listed sources and DC boundaries")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_external_sources.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 External listed sources and DC boundaries/")
+				(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
+			)
+			(tstamps "2822df17-dcd2-5e85-af64-25938046e31d")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "AC-FACTORY")
+						)
+						(pin
+							(num "USB-C-GND")
+						)
+						(pin
+							(num "USB-C-VBUS")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SP1")
+			(value "Project-added DC 0V / PE star point")
+			(description "The source already bonds -V to PE. Do not fit SP1 or add a parallel robot-frame bond.")
+			(fields
+				(field
+					(name "Status") "DNP - PROHIBITED WITH GST280A12-C6P")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Project-added DC 0V / PE star point")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "The source already bonds -V to PE. Do not fit SP1 or add a parallel robot-frame bond.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SP1")
+				(description "The source already bonds -V to PE. Do not fit SP1 or add a parallel robot-frame bond.")
+			)
+			(property
+				(name "Status")
+				(value "DNP - PROHIBITED WITH GST280A12-C6P")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Project-added DC 0V / PE star point")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 External listed sources and DC boundaries")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_external_sources.kicad_sch")
+			)
+			(property
+				(name "dnp")
+			)
+			(sheetpath
+				(names "/01 External listed sources and DC boundaries/")
+				(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
+			)
+			(tstamps "b9193c13-f0b6-54f1-a7c7-e75ac74bca8b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "H1")
+			(value "SAFE ELIGIBLE indicator interface")
+			(description "Diagnostic indicator only; no safety credit and no motion authority.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "SAFE ELIGIBLE indicator interface")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Diagnostic indicator only; no safety credit and no motion authority.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "H1")
+				(description "Diagnostic indicator only; no safety credit and no motion authority.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "SAFE ELIGIBLE indicator interface")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Dual-channel E-stop and RESET eligibility")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_estop_eligibility.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Dual-channel E-stop and RESET eligibility/")
+				(tstamps "/1abf679f-5cd5-5479-8b91-6a232acf93b9/")
+			)
+			(tstamps "cdfa4f00-ae12-5a0c-b977-e13fa9d8e645")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-H+")
+						)
+						(pin
+							(num "TBD-H-")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "S0")
+			(value "IDEC XW1E-BV402M-R dual-NC E-stop candidate")
+			(datasheet "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/emergency-stop-switches/xw-22mm-estop/xw1e-bv402m-r")
+			(description "Candidate is documented as 40 mm mushroom, turn/pull reset, 2NC, screw terminal and terminal cover. Freeze physical contact-block mapping from received-device bottom view and continuity test both positively opening channels.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - EXACT CANDIDATE RECORDED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "IDEC XW1E-BV402M-R dual-NC E-stop candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/emergency-stop-switches/xw-22mm-estop/xw1e-bv402m-r")
+				(field
+					(name "Description") "Candidate is documented as 40 mm mushroom, turn/pull reset, 2NC, screw terminal and terminal cover. Freeze physical contact-block mapping from received-device bottom view and continuity test both positively opening channels.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "S0")
+				(description "Candidate is documented as 40 mm mushroom, turn/pull reset, 2NC, screw terminal and terminal cover. Freeze physical contact-block mapping from received-device bottom view and continuity test both positively opening channels.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - EXACT CANDIDATE RECORDED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "IDEC XW1E-BV402M-R dual-NC E-stop candidate")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Dual-channel E-stop and RESET eligibility")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_estop_eligibility.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Dual-channel E-stop and RESET eligibility/")
+				(tstamps "/1abf679f-5cd5-5479-8b91-6a232acf93b9/")
+			)
+			(tstamps "add4e130-20aa-576c-86c8-f6f321221e46")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-C2A")
+						)
+						(pin
+							(num "TBD-C1A")
+						)
+						(pin
+							(num "TBD-C2B")
+						)
+						(pin
+							(num "TBD-C1B")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "S1")
+			(value "IDEC HW1B-M1F10-B momentary 1NO RESET candidate")
+			(datasheet "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b")
+			(description "Documented candidate is black flush momentary 1NO with screw terminals. RESET is outside the swept envelope and feeds only SR1 monitored start; legend, guard, spacing, color and received terminals remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - HUMAN-FACTORS REVIEW OPEN")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "IDEC HW1B-M1F10-B momentary 1NO RESET candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b")
+				(field
+					(name "Description") "Documented candidate is black flush momentary 1NO with screw terminals. RESET is outside the swept envelope and feeds only SR1 monitored start; legend, guard, spacing, color and received terminals remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "S1")
+				(description "Documented candidate is black flush momentary 1NO with screw terminals. RESET is outside the swept envelope and feeds only SR1 monitored start; legend, guard, spacing, color and received terminals remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - HUMAN-FACTORS REVIEW OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "IDEC HW1B-M1F10-B momentary 1NO RESET candidate")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Dual-channel E-stop and RESET eligibility")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_estop_eligibility.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Dual-channel E-stop and RESET eligibility/")
+				(tstamps "/1abf679f-5cd5-5479-8b91-6a232acf93b9/")
+			)
+			(tstamps "33f455d4-86ac-5f09-96c3-f0eab6acda12")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-R1")
+						)
+						(pin
+							(num "TBD-R2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SR1")
+			(value "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104")
+			(datasheet "https://www.pilz.com/en-INT/eshop/product/750104")
+			(description "First-stage E-stop eligibility relay. Mode: short-cross detection plus monitored start on falling edge; seal and inspect selector with power removed.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - QUALIFIED APPLICATION REVIEW REQUIRED")
+				(field
+					(name "Evidence") "Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06.")
+				(field
+					(name "Display") "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pilz.com/en-INT/eshop/product/750104")
+				(field
+					(name "Description") "First-stage E-stop eligibility relay. Mode: short-cross detection plus monitored start on falling edge; seal and inspect selector with power removed.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SR1")
+				(description "First-stage E-stop eligibility relay. Mode: short-cross detection plus monitored start on falling edge; seal and inspect selector with power removed.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - QUALIFIED APPLICATION REVIEW REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06.")
+			)
+			(property
+				(name "Display")
+				(value "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Dual-channel E-stop and RESET eligibility")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_estop_eligibility.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Dual-channel E-stop and RESET eligibility/")
+				(tstamps "/1abf679f-5cd5-5479-8b91-6a232acf93b9/")
+			)
+			(tstamps "1436c8c9-8ef9-57e5-a90c-e98457048651")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "S34")
+						)
+						(pin
+							(num "S22")
+						)
+						(pin
+							(num "S21")
+						)
+						(pin
+							(num "S12")
+						)
+						(pin
+							(num "S11")
+						)
+						(pin
+							(num "A2")
+						)
+						(pin
+							(num "A1")
+						)
+						(pin
+							(num "Y32")
+						)
+						(pin
+							(num "42")
+						)
+						(pin
+							(num "41")
+						)
+						(pin
+							(num "34")
+						)
+						(pin
+							(num "33")
+						)
+						(pin
+							(num "24")
+						)
+						(pin
+							(num "23")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "13")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "KWD1")
+			(value "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
+			(datasheet "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
+			(description "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Official page data-maintenance date 2026-04-01; 24 VDC, two changeover contacts, 18 mA typical, 8 ms pickup, 10 ms release, integrated polarity/freewheel protection.")
+				(field
+					(name "Display") "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
+				(field
+					(name "Description") "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "KWD1")
+				(description "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Official page data-maintenance date 2026-04-01; 24 VDC, two changeover contacts, 18 mA typical, 8 ms pickup, 10 ms release, integrated polarity/freewheel protection.")
+			)
+			(property
+				(name "Display")
+				(value "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Distinct ARM and watchdog eligibility")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_arm_watchdog_eligibility.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Distinct ARM and watchdog eligibility/")
+				(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
+			)
+			(tstamps "24be82e1-7e35-5baa-9f59-9c9dec819998")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-C2")
+						)
+						(pin
+							(num "TBD-C1")
+						)
+						(pin
+							(num "TBD-COIL-")
+						)
+						(pin
+							(num "TBD-COIL+")
+						)
+						(pin
+							(num "TBD-NC2")
+						)
+						(pin
+							(num "TBD-NO2")
+						)
+						(pin
+							(num "TBD-NC1")
+						)
+						(pin
+							(num "TBD-NO1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "KWD2")
+			(value "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
+			(datasheet "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
+			(description "Second independently driven watchdog relay channel; common controller/supply remain common-cause blockers.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Official page data-maintenance date 2026-04-01.")
+				(field
+					(name "Display") "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
+				(field
+					(name "Description") "Second independently driven watchdog relay channel; common controller/supply remain common-cause blockers.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "KWD2")
+				(description "Second independently driven watchdog relay channel; common controller/supply remain common-cause blockers.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Official page data-maintenance date 2026-04-01.")
+			)
+			(property
+				(name "Display")
+				(value "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Distinct ARM and watchdog eligibility")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_arm_watchdog_eligibility.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Distinct ARM and watchdog eligibility/")
+				(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
+			)
+			(tstamps "c9b7416d-4e3c-5f08-ba30-a6dee759995f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-C2")
+						)
+						(pin
+							(num "TBD-C1")
+						)
+						(pin
+							(num "TBD-COIL-")
+						)
+						(pin
+							(num "TBD-COIL+")
+						)
+						(pin
+							(num "TBD-NC2")
+						)
+						(pin
+							(num "TBD-NO2")
+						)
+						(pin
+							(num "TBD-NC1")
+						)
+						(pin
+							(num "TBD-NO1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "S2")
+			(value "IDEC HW1B-M1F10-B momentary 1NO ARM candidate")
+			(datasheet "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b")
+			(description "Electrical candidate only. ARM must be unmistakably different from RESET by legend/color/guard/spacing; it must actuate and release after every safety dropout. Received terminal mapping remains open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - DISTINCT APPEARANCE REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "IDEC HW1B-M1F10-B momentary 1NO ARM candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b")
+				(field
+					(name "Description") "Electrical candidate only. ARM must be unmistakably different from RESET by legend/color/guard/spacing; it must actuate and release after every safety dropout. Received terminal mapping remains open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "S2")
+				(description "Electrical candidate only. ARM must be unmistakably different from RESET by legend/color/guard/spacing; it must actuate and release after every safety dropout. Received terminal mapping remains open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - DISTINCT APPEARANCE REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "IDEC HW1B-M1F10-B momentary 1NO ARM candidate")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Distinct ARM and watchdog eligibility")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_arm_watchdog_eligibility.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Distinct ARM and watchdog eligibility/")
+				(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
+			)
+			(tstamps "ea9b5ec8-6862-5782-825d-cc652f8e8898")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-A1")
+						)
+						(pin
+							(num "TBD-A2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SRA1")
+			(value "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104")
+			(datasheet "https://www.pilz.com/en-INT/eshop/product/750104")
+			(description "Final ARM and external-device-monitoring relay. Mode: short-cross detection plus monitored start on falling edge; seal and inspect selector with power removed.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - QUALIFIED APPLICATION REVIEW REQUIRED")
+				(field
+					(name "Evidence") "Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06.")
+				(field
+					(name "Display") "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pilz.com/en-INT/eshop/product/750104")
+				(field
+					(name "Description") "Final ARM and external-device-monitoring relay. Mode: short-cross detection plus monitored start on falling edge; seal and inspect selector with power removed.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SRA1")
+				(description "Final ARM and external-device-monitoring relay. Mode: short-cross detection plus monitored start on falling edge; seal and inspect selector with power removed.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - QUALIFIED APPLICATION REVIEW REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06.")
+			)
+			(property
+				(name "Display")
+				(value "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Distinct ARM and watchdog eligibility")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_arm_watchdog_eligibility.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Distinct ARM and watchdog eligibility/")
+				(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
+			)
+			(tstamps "c1caff45-574f-55f9-af74-91cc1f1146cf")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "S34")
+						)
+						(pin
+							(num "S22")
+						)
+						(pin
+							(num "S21")
+						)
+						(pin
+							(num "S12")
+						)
+						(pin
+							(num "S11")
+						)
+						(pin
+							(num "A2")
+						)
+						(pin
+							(num "A1")
+						)
+						(pin
+							(num "Y32")
+						)
+						(pin
+							(num "42")
+						)
+						(pin
+							(num "41")
+						)
+						(pin
+							(num "34")
+						)
+						(pin
+							(num "33")
+						)
+						(pin
+							(num "24")
+						)
+						(pin
+							(num "23")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "13")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FSR1")
+			(value "SRA1 output-contact protection for K1 coil")
+			(description "Select from fault current, coil transient, conductor and PNOZ contact-protection limits; published maxima are not selections.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "SRA1 output-contact protection for K1 coil")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Select from fault current, coil transient, conductor and PNOZ contact-protection limits; published maxima are not selections.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "FSR1")
+				(description "Select from fault current, coil transient, conductor and PNOZ contact-protection limits; published maxima are not selections.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "SRA1 output-contact protection for K1 coil")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Contactor coils, mirror contacts and EDM")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_contactor_edm.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Contactor coils, mirror contacts and EDM/")
+				(tstamps "/6cf27f97-627c-5512-ba58-751093298e6c/")
+			)
+			(tstamps "3d8f7366-a2d2-56af-a350-9398cb1082ff")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FSR2")
+			(value "SRA1 output-contact protection for K2 coil")
+			(description "Same coordination gate as FSR1.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "SRA1 output-contact protection for K2 coil")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Same coordination gate as FSR1.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "FSR2")
+				(description "Same coordination gate as FSR1.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "SRA1 output-contact protection for K2 coil")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Contactor coils, mirror contacts and EDM")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_contactor_edm.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Contactor coils, mirror contacts and EDM/")
+				(tstamps "/6cf27f97-627c-5512-ba58-751093298e6c/")
+			)
+			(tstamps "b3d6c074-a268-587b-be9b-b799630a3589")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "K1")
+			(value "Schneider TeSys D LC1D25BD, 24 VDC coil")
+			(datasheet "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
+			(description "First redundant series contactor. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - DC APPLICATION CONFIRMATION REQUIRED")
+				(field
+					(name "Evidence") "Schneider product sheet rechecked 2026-08-06; loaded DC interruption/coordination not established.")
+				(field
+					(name "Display") "Schneider TeSys D LC1D25BD, 24 VDC coil")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
+				(field
+					(name "Description") "First redundant series contactor. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "K1")
+				(description "First redundant series contactor. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - DC APPLICATION CONFIRMATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Schneider product sheet rechecked 2026-08-06; loaded DC interruption/coordination not established.")
+			)
+			(property
+				(name "Display")
+				(value "Schneider TeSys D LC1D25BD, 24 VDC coil")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Contactor coils, mirror contacts and EDM")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_contactor_edm.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Contactor coils, mirror contacts and EDM/")
+				(tstamps "/6cf27f97-627c-5512-ba58-751093298e6c/")
+			)
+			(tstamps "d7b20bef-7bc4-5258-b932-af9b1670142c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "21")
+						)
+						(pin
+							(num "A2")
+						)
+						(pin
+							(num "A1")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "22")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "K2")
+			(value "Schneider TeSys D LC1D25BD, 24 VDC coil")
+			(datasheet "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
+			(description "Second redundant series contactor.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - DC APPLICATION CONFIRMATION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Schneider TeSys D LC1D25BD, 24 VDC coil")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
+				(field
+					(name "Description") "Second redundant series contactor.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "K2")
+				(description "Second redundant series contactor.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - DC APPLICATION CONFIRMATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Schneider TeSys D LC1D25BD, 24 VDC coil")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Contactor coils, mirror contacts and EDM")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_contactor_edm.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Contactor coils, mirror contacts and EDM/")
+				(tstamps "/6cf27f97-627c-5512-ba58-751093298e6c/")
+			)
+			(tstamps "57dea5a8-0fd7-5283-8e05-1564325a35ab")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "21")
+						)
+						(pin
+							(num "A2")
+						)
+						(pin
+							(num "A1")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "22")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "F0")
+			(value "12 V source protection")
+			(description "Fuse/holder family, rating, interrupting capacity and thermal coordination remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "12 V source protection")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Fuse/holder family, rating, interrupting capacity and thermal coordination remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "F0")
+				(description "Fuse/holder family, rating, interrupting capacity and thermal coordination remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "12 V source protection")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Redundant actuator-power interruption")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_actuator_interruption.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Redundant actuator-power interruption/")
+				(tstamps "/db315f6f-1ed6-5bc9-bdf8-106d0286ccb4/")
+			)
+			(tstamps "e67d3681-ef05-5778-ba55-da554b6fa4ba")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "KP1")
+			(value "K1 three main poles represented in series")
+			(description "Do not count as a second BOM device. External nets series-connect the three poles; Schneider application confirmation remains required.")
+			(fields
+				(field
+					(name "Status") "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K1")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "K1 three main poles represented in series")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Do not count as a second BOM device. External nets series-connect the three poles; Schneider application confirmation remains required.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "KP1")
+				(description "Do not count as a second BOM device. External nets series-connect the three poles; Schneider application confirmation remains required.")
+			)
+			(property
+				(name "Status")
+				(value "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K1")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "K1 three main poles represented in series")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Redundant actuator-power interruption")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_actuator_interruption.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Redundant actuator-power interruption/")
+				(tstamps "/db315f6f-1ed6-5bc9-bdf8-106d0286ccb4/")
+			)
+			(tstamps "df076c24-fcfd-5314-ab60-45c55a3a95e1")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "5L3")
+						)
+						(pin
+							(num "3L2")
+						)
+						(pin
+							(num "1L1")
+						)
+						(pin
+							(num "6T3")
+						)
+						(pin
+							(num "4T2")
+						)
+						(pin
+							(num "2T1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "KP2")
+			(value "K2 three main poles represented in series")
+			(description "Do not count as a second BOM device.")
+			(fields
+				(field
+					(name "Status") "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K2")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "K2 three main poles represented in series")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Do not count as a second BOM device.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "KP2")
+				(description "Do not count as a second BOM device.")
+			)
+			(property
+				(name "Status")
+				(value "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K2")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "K2 three main poles represented in series")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Redundant actuator-power interruption")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_actuator_interruption.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Redundant actuator-power interruption/")
+				(tstamps "/db315f6f-1ed6-5bc9-bdf8-106d0286ccb4/")
+			)
+			(tstamps "faccaa7f-9e39-556b-9d8a-64cb4f3ffd71")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "5L3")
+						)
+						(pin
+							(num "3L2")
+						)
+						(pin
+							(num "1L1")
+						)
+						(pin
+							(num "6T3")
+						)
+						(pin
+							(num "4T2")
+						)
+						(pin
+							(num "2T1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SD1")
+			(value "Accessible DC service disconnect")
+			(description "Select a DC-rated lockable disconnect with exact terminals, enclosure and current/fault rating.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Accessible DC service disconnect")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Select a DC-rated lockable disconnect with exact terminals, enclosure and current/fault rating.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SD1")
+				(description "Select a DC-rated lockable disconnect with exact terminals, enclosure and current/fault rating.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Accessible DC service disconnect")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Redundant actuator-power interruption")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_actuator_interruption.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Redundant actuator-power interruption/")
+				(tstamps "/db315f6f-1ed6-5bc9-bdf8-106d0286ccb4/")
+			)
+			(tstamps "50db47be-5f31-5e23-9433-5c471eed8180")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-IN")
+						)
+						(pin
+							(num "TBD-OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "F1")
+			(value "J1 shoulder branch protection")
+			(description "Requires fault current, cable, connector, inrush, regeneration, duty and ambient evidence.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "J1 shoulder branch protection")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Requires fault current, cable, connector, inrush, regeneration, duty and ambient evidence.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "F1")
+				(description "Requires fault current, cable, connector, inrush, regeneration, duty and ambient evidence.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "J1 shoulder branch protection")
+			)
+			(property
+				(name "Sheetname")
+				(value "06 Protected actuator branches and VDD-isolating injection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "06_branches_and_injection.kicad_sch")
+			)
+			(sheetpath
+				(names "/06 Protected actuator branches and VDD-isolating injection/")
+				(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
+			)
+			(tstamps "1eefd47f-1778-5c22-b73d-ec9d6753ba4f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "F2")
+			(value "J2 elbow branch protection")
+			(description "Same evidence gate as F1.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "J2 elbow branch protection")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Same evidence gate as F1.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "F2")
+				(description "Same evidence gate as F1.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "J2 elbow branch protection")
+			)
+			(property
+				(name "Sheetname")
+				(value "06 Protected actuator branches and VDD-isolating injection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "06_branches_and_injection.kicad_sch")
+			)
+			(sheetpath
+				(names "/06 Protected actuator branches and VDD-isolating injection/")
+				(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
+			)
+			(tstamps "faa6a115-0ece-5810-8562-cb88b093e0c3")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "F3")
+			(value "Gripper branch protection")
+			(description "Same evidence gate as F1.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Gripper branch protection")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Same evidence gate as F1.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "F3")
+				(description "Same evidence gate as F1.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Gripper branch protection")
+			)
+			(property
+				(name "Sheetname")
+				(value "06 Protected actuator branches and VDD-isolating injection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "06_branches_and_injection.kicad_sch")
+			)
+			(sheetpath
+				(names "/06 Protected actuator branches and VDD-isolating injection/")
+				(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
+			)
+			(tstamps "ed982f60-3889-5055-9c48-053bca68e3e4")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "INJ1")
+			(value "J1 data/power injection module")
+			(description "Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open.")
+			(fields
+				(field
+					(name "Status") "DESIGN REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "J1 data/power injection module")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "INJ1")
+				(description "Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open.")
+			)
+			(property
+				(name "Status")
+				(value "DESIGN REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "J1 data/power injection module")
+			)
+			(property
+				(name "Sheetname")
+				(value "06 Protected actuator branches and VDD-isolating injection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "06_branches_and_injection.kicad_sch")
+			)
+			(sheetpath
+				(names "/06 Protected actuator branches and VDD-isolating injection/")
+				(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
+			)
+			(tstamps "d6ca064a-a765-542b-a204-b6c36d3016f6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-P")
+						)
+						(pin
+							(num "TBD-BI-D")
+						)
+						(pin
+							(num "TBD-BI-G")
+						)
+						(pin
+							(num "TBD-BO-D")
+						)
+						(pin
+							(num "TBD-BO-G")
+						)
+						(pin
+							(num "TBD-A-D")
+						)
+						(pin
+							(num "TBD-A-V")
+						)
+						(pin
+							(num "TBD-A-G")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "INJ2")
+			(value "J2 data/power injection module")
+			(description "Second injection module.")
+			(fields
+				(field
+					(name "Status") "DESIGN REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "J2 data/power injection module")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Second injection module.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "INJ2")
+				(description "Second injection module.")
+			)
+			(property
+				(name "Status")
+				(value "DESIGN REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "J2 data/power injection module")
+			)
+			(property
+				(name "Sheetname")
+				(value "06 Protected actuator branches and VDD-isolating injection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "06_branches_and_injection.kicad_sch")
+			)
+			(sheetpath
+				(names "/06 Protected actuator branches and VDD-isolating injection/")
+				(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
+			)
+			(tstamps "28b13e68-2703-529a-8cfc-d20f0908f6d3")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-P")
+						)
+						(pin
+							(num "TBD-BI-D")
+						)
+						(pin
+							(num "TBD-BI-G")
+						)
+						(pin
+							(num "TBD-BO-D")
+						)
+						(pin
+							(num "TBD-BO-G")
+						)
+						(pin
+							(num "TBD-A-D")
+						)
+						(pin
+							(num "TBD-A-V")
+						)
+						(pin
+							(num "TBD-A-G")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "INJ3")
+			(value "Gripper data/power injection module")
+			(description "Final inline injection module; no VDD conductor continues beyond the actuator connection.")
+			(fields
+				(field
+					(name "Status") "DESIGN REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Gripper data/power injection module")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Final inline injection module; no VDD conductor continues beyond the actuator connection.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "INJ3")
+				(description "Final inline injection module; no VDD conductor continues beyond the actuator connection.")
+			)
+			(property
+				(name "Status")
+				(value "DESIGN REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Gripper data/power injection module")
+			)
+			(property
+				(name "Sheetname")
+				(value "06 Protected actuator branches and VDD-isolating injection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "06_branches_and_injection.kicad_sch")
+			)
+			(sheetpath
+				(names "/06 Protected actuator branches and VDD-isolating injection/")
+				(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
+			)
+			(tstamps "a76b945a-4f02-5fd6-9af8-398c1be62162")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-P")
+						)
+						(pin
+							(num "TBD-BI-D")
+						)
+						(pin
+							(num "TBD-BI-G")
+						)
+						(pin
+							(num "TBD-A-D")
+						)
+						(pin
+							(num "TBD-A-V")
+						)
+						(pin
+							(num "TBD-A-G")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "DC1")
+			(value "Dedicated 24 V to 5 V watchdog supply")
+			(description "Select an exact non-isolated converter, protection and brownout behavior. V3 models watchdog 0V as SAFETY_0V; changing isolation requires a new driver/interface design.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Dedicated 24 V to 5 V watchdog supply")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Select an exact non-isolated converter, protection and brownout behavior. V3 models watchdog 0V as SAFETY_0V; changing isolation requires a new driver/interface design.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "DC1")
+				(description "Select an exact non-isolated converter, protection and brownout behavior. V3 models watchdog 0V as SAFETY_0V; changing isolation requires a new driver/interface design.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Dedicated 24 V to 5 V watchdog supply")
+			)
+			(property
+				(name "Sheetname")
+				(value "07 Independent watchdog power, controller and drivers")
+			)
+			(property
+				(name "Sheetfile")
+				(value "07_watchdog_control.kicad_sch")
+			)
+			(sheetpath
+				(names "/07 Independent watchdog power, controller and drivers/")
+				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
+			)
+			(tstamps "10b8c356-5951-5376-8c25-073f78b7a1dc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-IN-")
+						)
+						(pin
+							(num "TBD-IN+")
+						)
+						(pin
+							(num "TBD-OUT-")
+						)
+						(pin
+							(num "TBD-OUT+")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ISO1")
+			(value "Heartbeat isolation/interface")
+			(description "Exact isolation/interface, edge behavior, fault response and connector remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Heartbeat isolation/interface")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact isolation/interface, edge behavior, fault response and connector remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ISO1")
+				(description "Exact isolation/interface, edge behavior, fault response and connector remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Heartbeat isolation/interface")
+			)
+			(property
+				(name "Sheetname")
+				(value "07 Independent watchdog power, controller and drivers")
+			)
+			(property
+				(name "Sheetfile")
+				(value "07_watchdog_control.kicad_sch")
+			)
+			(sheetpath
+				(names "/07 Independent watchdog power, controller and drivers/")
+				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
+			)
+			(tstamps "a5768002-1df1-5caf-8b22-48665f11162a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-CG")
+						)
+						(pin
+							(num "TBD-IN")
+						)
+						(pin
+							(num "TBD-WG")
+						)
+						(pin
+							(num "TBD-OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "Q1")
+			(value "Watchdog relay channel 1 low-side driver")
+			(description "Exact transistor/driver, base/gate network, default-off bias, fault behavior and polarity with relay internal diode open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Watchdog relay channel 1 low-side driver")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact transistor/driver, base/gate network, default-off bias, fault behavior and polarity with relay internal diode open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "Q1")
+				(description "Exact transistor/driver, base/gate network, default-off bias, fault behavior and polarity with relay internal diode open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Watchdog relay channel 1 low-side driver")
+			)
+			(property
+				(name "Sheetname")
+				(value "07 Independent watchdog power, controller and drivers")
+			)
+			(property
+				(name "Sheetfile")
+				(value "07_watchdog_control.kicad_sch")
+			)
+			(sheetpath
+				(names "/07 Independent watchdog power, controller and drivers/")
+				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
+			)
+			(tstamps "57dfa8c7-9ea9-56d1-9cda-604f74f3c10a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-0V")
+						)
+						(pin
+							(num "TBD-IN")
+						)
+						(pin
+							(num "TBD-COIL")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "Q2")
+			(value "Watchdog relay channel 2 low-side driver")
+			(description "Independently driven duplicate channel; common-cause review open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Watchdog relay channel 2 low-side driver")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Independently driven duplicate channel; common-cause review open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "Q2")
+				(description "Independently driven duplicate channel; common-cause review open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Watchdog relay channel 2 low-side driver")
+			)
+			(property
+				(name "Sheetname")
+				(value "07 Independent watchdog power, controller and drivers")
+			)
+			(property
+				(name "Sheetfile")
+				(value "07_watchdog_control.kicad_sch")
+			)
+			(sheetpath
+				(names "/07 Independent watchdog power, controller and drivers/")
+				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
+			)
+			(tstamps "fd4b237e-93c4-51e8-9d2f-74de190583cc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-0V")
+						)
+						(pin
+							(num "TBD-IN")
+						)
+						(pin
+							(num "TBD-COIL")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "WDCTRL1")
+			(value "Raspberry Pi Pico 1, order SC0915 / RP2040")
+			(datasheet "https://www.raspberrypi.com/products/raspberry-pi-pico/")
+			(description "Monotonic heartbeat monitor. Three missed 100 ms periods drop both outputs; firmware and shared failures are not safety-rated.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - PIN/FIRMWARE RELEASE OPEN")
+				(field
+					(name "Evidence") "Official Pico 1 page and datasheet rechecked 2026-08-06; exact GPIOs not frozen.")
+				(field
+					(name "Display") "Raspberry Pi Pico 1, order SC0915 / RP2040")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.raspberrypi.com/products/raspberry-pi-pico/")
+				(field
+					(name "Description") "Monotonic heartbeat monitor. Three missed 100 ms periods drop both outputs; firmware and shared failures are not safety-rated.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "WDCTRL1")
+				(description "Monotonic heartbeat monitor. Three missed 100 ms periods drop both outputs; firmware and shared failures are not safety-rated.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - PIN/FIRMWARE RELEASE OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "Official Pico 1 page and datasheet rechecked 2026-08-06; exact GPIOs not frozen.")
+			)
+			(property
+				(name "Display")
+				(value "Raspberry Pi Pico 1, order SC0915 / RP2040")
+			)
+			(property
+				(name "Sheetname")
+				(value "07 Independent watchdog power, controller and drivers")
+			)
+			(property
+				(name "Sheetfile")
+				(value "07_watchdog_control.kicad_sch")
+			)
+			(sheetpath
+				(names "/07 Independent watchdog power, controller and drivers/")
+				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
+			)
+			(tstamps "b426482f-e378-5809-b99d-f8f4bcc29cc7")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-GPIO-HB")
+						)
+						(pin
+							(num "GND")
+						)
+						(pin
+							(num "VSYS")
+						)
+						(pin
+							(num "SWCLK")
+						)
+						(pin
+							(num "SWDIO")
+						)
+						(pin
+							(num "TBD-GPIO-F2")
+						)
+						(pin
+							(num "TBD-GPIO-F1")
+						)
+						(pin
+							(num "TBD-GPIO-2")
+						)
+						(pin
+							(num "TBD-GPIO-1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JDBG1")
+			(value "Watchdog programming/debug connector")
+			(description "Tool-only interface; must not enable or bypass outputs during operation.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Watchdog programming/debug connector")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Tool-only interface; must not enable or bypass outputs during operation.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JDBG1")
+				(description "Tool-only interface; must not enable or bypass outputs during operation.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Watchdog programming/debug connector")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Compute, debug and control terminals")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_compute_and_control_terminals.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Compute, debug and control terminals/")
+				(tstamps "/fe24a110-40e3-5555-b2c3-1be661f8d1d9/")
+			)
+			(tstamps "2fd6b60c-413e-57b4-8a1d-f7b7e2efb9e2")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-GND")
+						)
+						(pin
+							(num "TBD-SWCLK")
+						)
+						(pin
+							(num "TBD-SWDIO")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "PI1")
+			(value "Raspberry Pi 5 8GB high-level compute")
+			(datasheet "https://www.raspberrypi.com/products/raspberry-pi-5/")
+			(description "High-level compute and logger. It never owns the hardware safety function or directly restores contactors.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - GPIO/CABLE/RETENTION OPEN")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Raspberry Pi 5 8GB high-level compute")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.raspberrypi.com/products/raspberry-pi-5/")
+				(field
+					(name "Description") "High-level compute and logger. It never owns the hardware safety function or directly restores contactors.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "PI1")
+				(description "High-level compute and logger. It never owns the hardware safety function or directly restores contactors.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - GPIO/CABLE/RETENTION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Raspberry Pi 5 8GB high-level compute")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Compute, debug and control terminals")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_compute_and_control_terminals.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Compute, debug and control terminals/")
+				(tstamps "/fe24a110-40e3-5555-b2c3-1be661f8d1d9/")
+			)
+			(tstamps "a30b7d75-b4cb-5300-9017-5ff151c40e72")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "GND")
+						)
+						(pin
+							(num "USB-C-VBUS")
+						)
+						(pin
+							(num "USB-U2D2")
+						)
+						(pin
+							(num "TBD-GPIO-HB")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "XT1")
+			(value "24 V control terminal block group")
+			(description "Exact terminal family, end covers, jumpers, markers, conductor range and torque open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "24 V control terminal block group")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact terminal family, end covers, jumpers, markers, conductor range and torque open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "XT1")
+				(description "Exact terminal family, end covers, jumpers, markers, conductor range and torque open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "24 V control terminal block group")
+			)
+			(property
+				(name "Sheetname")
+				(value "08 Compute, debug and control terminals")
+			)
+			(property
+				(name "Sheetfile")
+				(value "08_compute_and_control_terminals.kicad_sch")
+			)
+			(sheetpath
+				(names "/08 Compute, debug and control terminals/")
+				(tstamps "/fe24a110-40e3-5555-b2c3-1be661f8d1d9/")
+			)
+			(tstamps "5f1804ef-0ae9-5b07-af37-97c7d7f38e8f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-2")
+						)
+						(pin
+							(num "TBD-1")
+						)
+						(pin
+							(num "TBD-6")
+						)
+						(pin
+							(num "TBD-5")
+						)
+						(pin
+							(num "TBD-4")
+						)
+						(pin
+							(num "TBD-3")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J1")
+			(value "XM540-W270-T shoulder actuator port")
+			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+			(description "ROBOTIS TTL pin names are controlled; plug/socket orientation and injection harness exact parts remain open.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - RECEIVED ORIENTATION TEST REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "XM540-W270-T shoulder actuator port")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+				(field
+					(name "Description") "ROBOTIS TTL pin names are controlled; plug/socket orientation and injection harness exact parts remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "J1")
+				(description "ROBOTIS TTL pin names are controlled; plug/socket orientation and injection harness exact parts remain open.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - RECEIVED ORIENTATION TEST REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "XM540-W270-T shoulder actuator port")
+			)
+			(property
+				(name "Sheetname")
+				(value "09 U2D2, actuator ports and bonding boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "09_actuator_interfaces.kicad_sch")
+			)
+			(sheetpath
+				(names "/09 U2D2, actuator ports and bonding boundary/")
+				(tstamps "/3d723ab8-9971-5c2f-b184-e89d898c907a/")
+			)
+			(tstamps "78f373ad-f0a1-57c3-ac05-03abaca3cc44")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J2")
+			(value "XM540-W270-T elbow actuator port")
+			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+			(description "Same interface control as J1.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - RECEIVED ORIENTATION TEST REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "XM540-W270-T elbow actuator port")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+				(field
+					(name "Description") "Same interface control as J1.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "J2")
+				(description "Same interface control as J1.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - RECEIVED ORIENTATION TEST REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "XM540-W270-T elbow actuator port")
+			)
+			(property
+				(name "Sheetname")
+				(value "09 U2D2, actuator ports and bonding boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "09_actuator_interfaces.kicad_sch")
+			)
+			(sheetpath
+				(names "/09 U2D2, actuator ports and bonding boundary/")
+				(tstamps "/3d723ab8-9971-5c2f-b184-e89d898c907a/")
+			)
+			(tstamps "d3398fb0-96e1-5028-b37f-55bb7652e5b5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J3")
+			(value "XM430-W350-T gripper actuator port")
+			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+			(description "Exact actuator and gripper mechanical release remain open.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - RECEIVED ORIENTATION TEST REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "XM430-W350-T gripper actuator port")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+				(field
+					(name "Description") "Exact actuator and gripper mechanical release remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "J3")
+				(description "Exact actuator and gripper mechanical release remain open.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - RECEIVED ORIENTATION TEST REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "XM430-W350-T gripper actuator port")
+			)
+			(property
+				(name "Sheetname")
+				(value "09 U2D2, actuator ports and bonding boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "09_actuator_interfaces.kicad_sch")
+			)
+			(sheetpath
+				(names "/09 U2D2, actuator ports and bonding boundary/")
+				(tstamps "/3d723ab8-9971-5c2f-b184-e89d898c907a/")
+			)
+			(tstamps "b11c2395-2db0-5ae1-b0c3-60aa2410829d")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JFRAME1")
+			(value "Frame/shield bonding interface")
+			(description "Do not connect frame or shield to 0V/PE until EMC and parallel-path review accepts the implementation.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Frame/shield bonding interface")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Do not connect frame or shield to 0V/PE until EMC and parallel-path review accepts the implementation.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JFRAME1")
+				(description "Do not connect frame or shield to 0V/PE until EMC and parallel-path review accepts the implementation.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Frame/shield bonding interface")
+			)
+			(property
+				(name "Sheetname")
+				(value "09 U2D2, actuator ports and bonding boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "09_actuator_interfaces.kicad_sch")
+			)
+			(sheetpath
+				(names "/09 U2D2, actuator ports and bonding boundary/")
+				(tstamps "/3d723ab8-9971-5c2f-b184-e89d898c907a/")
+			)
+			(tstamps "d79a3e1a-6acc-5f82-9d86-13c8553fb1dd")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-FRAME")
+						)
+						(pin
+							(num "TBD-SHIELD")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U1")
+			(value "ROBOTIS U2D2 TTL interface, SKU 902-0132-000")
+			(datasheet "https://emanual.robotis.com/docs/en/parts/interface/u2d2/")
+			(description "Pin 2 VDD is intentionally omitted from the project cable. Standard fully populated cables are prohibited in the protected-branch topology.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - CUSTOM DATA-ONLY HARNESS REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "ROBOTIS U2D2 TTL interface, SKU 902-0132-000")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://emanual.robotis.com/docs/en/parts/interface/u2d2/")
+				(field
+					(name "Description") "Pin 2 VDD is intentionally omitted from the project cable. Standard fully populated cables are prohibited in the protected-branch topology.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "U1")
+				(description "Pin 2 VDD is intentionally omitted from the project cable. Standard fully populated cables are prohibited in the protected-branch topology.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - CUSTOM DATA-ONLY HARNESS REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "ROBOTIS U2D2 TTL interface, SKU 902-0132-000")
+			)
+			(property
+				(name "Sheetname")
+				(value "09 U2D2, actuator ports and bonding boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "09_actuator_interfaces.kicad_sch")
+			)
+			(sheetpath
+				(names "/09 U2D2, actuator ports and bonding boundary/")
+				(tstamps "/3d723ab8-9971-5c2f-b184-e89d898c907a/")
+			)
+			(tstamps "cfd32e6a-bdf6-5434-9aba-def495e10fcf")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "USB")
+						)
+						(pin
+							(num "TTL-3")
+						)
+						(pin
+							(num "TTL-2")
+						)
+						(pin
+							(num "TTL-1")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "PBV3")
+			(part "DC1")
+			(description "Select an exact non-isolated converter, protection and brownout behavior. V3 models watchdog 0V as SAFETY_0V; changing isolation requires a new driver/interface design.")
+			(fields
+				(field
+					(name "Reference") "DC1")
+				(field
+					(name "Value") "Dedicated 24 V to 5 V watchdog supply")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Select an exact non-isolated converter, protection and brownout behavior. V3 models watchdog 0V as SAFETY_0V; changing isolation requires a new driver/interface design.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Dedicated 24 V to 5 V watchdog supply")
+			)
+			(pins
+				(pin
+					(num "TBD-IN+")
+					(name "24V_IN")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-IN-")
+					(name "0V_IN")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-OUT+")
+					(name "5V_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-OUT-")
+					(name "0V_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "F0")
+			(description "Fuse/holder family, rating, interrupting capacity and thermal coordination remain open.")
+			(fields
+				(field
+					(name "Reference") "F0")
+				(field
+					(name "Value") "12 V source protection")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Fuse/holder family, rating, interrupting capacity and thermal coordination remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "12 V source protection")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "SOURCE")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "PROTECTED")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "F1")
+			(description "Requires fault current, cable, connector, inrush, regeneration, duty and ambient evidence.")
+			(fields
+				(field
+					(name "Reference") "F1")
+				(field
+					(name "Value") "J1 shoulder branch protection")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Requires fault current, cable, connector, inrush, regeneration, duty and ambient evidence.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "J1 shoulder branch protection")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "F2")
+			(description "Same evidence gate as F1.")
+			(fields
+				(field
+					(name "Reference") "F2")
+				(field
+					(name "Value") "J2 elbow branch protection")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Same evidence gate as F1.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "J2 elbow branch protection")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "F3")
+			(description "Same evidence gate as F1.")
+			(fields
+				(field
+					(name "Reference") "F3")
+				(field
+					(name "Value") "Gripper branch protection")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Same evidence gate as F1.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Gripper branch protection")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "FSR1")
+			(description "Select from fault current, coil transient, conductor and PNOZ contact-protection limits; published maxima are not selections.")
+			(fields
+				(field
+					(name "Reference") "FSR1")
+				(field
+					(name "Value") "SRA1 output-contact protection for K1 coil")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Select from fault current, coil transient, conductor and PNOZ contact-protection limits; published maxima are not selections.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "SRA1 output-contact protection for K1 coil")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "FSR2")
+			(description "Same coordination gate as FSR1.")
+			(fields
+				(field
+					(name "Reference") "FSR2")
+				(field
+					(name "Value") "SRA1 output-contact protection for K2 coil")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Same coordination gate as FSR1.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "SRA1 output-contact protection for K2 coil")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "H1")
+			(description "Diagnostic indicator only; no safety credit and no motion authority.")
+			(fields
+				(field
+					(name "Reference") "H1")
+				(field
+					(name "Value") "SAFE ELIGIBLE indicator interface")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Diagnostic indicator only; no safety credit and no motion authority.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "SAFE ELIGIBLE indicator interface")
+			)
+			(pins
+				(pin
+					(num "TBD-H+")
+					(name "+")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-H-")
+					(name "-")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "INJ1")
+			(description "Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open.")
+			(fields
+				(field
+					(name "Reference") "INJ1")
+				(field
+					(name "Value") "J1 data/power injection module")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open.")
+				(field
+					(name "Status") "DESIGN REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "J1 data/power injection module")
+			)
+			(pins
+				(pin
+					(num "TBD-A-D")
+					(name "ACT_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-A-G")
+					(name "ACT_GND")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-A-V")
+					(name "ACT_VDD")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-BI-D")
+					(name "BUS_IN_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-BI-G")
+					(name "BUS_IN_GND")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-BO-D")
+					(name "BUS_OUT_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-BO-G")
+					(name "BUS_OUT_GND")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-P")
+					(name "FUSED_VDD")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "INJ2")
+			(description "Second injection module.")
+			(fields
+				(field
+					(name "Reference") "INJ2")
+				(field
+					(name "Value") "J2 data/power injection module")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Second injection module.")
+				(field
+					(name "Status") "DESIGN REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "J2 data/power injection module")
+			)
+			(pins
+				(pin
+					(num "TBD-A-D")
+					(name "ACT_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-A-G")
+					(name "ACT_GND")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-A-V")
+					(name "ACT_VDD")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-BI-D")
+					(name "BUS_IN_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-BI-G")
+					(name "BUS_IN_GND")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-BO-D")
+					(name "BUS_OUT_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-BO-G")
+					(name "BUS_OUT_GND")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-P")
+					(name "FUSED_VDD")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "INJ3")
+			(description "Final inline injection module; no VDD conductor continues beyond the actuator connection.")
+			(fields
+				(field
+					(name "Reference") "INJ3")
+				(field
+					(name "Value") "Gripper data/power injection module")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Final inline injection module; no VDD conductor continues beyond the actuator connection.")
+				(field
+					(name "Status") "DESIGN REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Gripper data/power injection module")
+			)
+			(pins
+				(pin
+					(num "TBD-A-D")
+					(name "ACT_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-A-G")
+					(name "ACT_GND")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-A-V")
+					(name "ACT_VDD")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-BI-D")
+					(name "BUS_IN_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-BI-G")
+					(name "BUS_IN_GND")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-P")
+					(name "FUSED_VDD")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "ISO1")
+			(description "Exact isolation/interface, edge behavior, fault response and connector remain open.")
+			(fields
+				(field
+					(name "Reference") "ISO1")
+				(field
+					(name "Value") "Heartbeat isolation/interface")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact isolation/interface, edge behavior, fault response and connector remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Heartbeat isolation/interface")
+			)
+			(pins
+				(pin
+					(num "TBD-CG")
+					(name "COMPUTE_GND")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-IN")
+					(name "PI_HEARTBEAT")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-OUT")
+					(name "WD_HEARTBEAT")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-WG")
+					(name "WD_GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "J1")
+			(description "ROBOTIS TTL pin names are controlled; plug/socket orientation and injection harness exact parts remain open.")
+			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+			(fields
+				(field
+					(name "Reference") "J1")
+				(field
+					(name "Value") "XM540-W270-T shoulder actuator port")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+				(field
+					(name "Description") "ROBOTIS TTL pin names are controlled; plug/socket orientation and injection harness exact parts remain open.")
+				(field
+					(name "Status") "PROPOSED - RECEIVED ORIENTATION TEST REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "XM540-W270-T shoulder actuator port")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "DATA")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "J2")
+			(description "Same interface control as J1.")
+			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+			(fields
+				(field
+					(name "Reference") "J2")
+				(field
+					(name "Value") "XM540-W270-T elbow actuator port")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+				(field
+					(name "Description") "Same interface control as J1.")
+				(field
+					(name "Status") "PROPOSED - RECEIVED ORIENTATION TEST REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "XM540-W270-T elbow actuator port")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "DATA")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "J3")
+			(description "Exact actuator and gripper mechanical release remain open.")
+			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+			(fields
+				(field
+					(name "Reference") "J3")
+				(field
+					(name "Value") "XM430-W350-T gripper actuator port")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+				(field
+					(name "Description") "Exact actuator and gripper mechanical release remain open.")
+				(field
+					(name "Status") "PROPOSED - RECEIVED ORIENTATION TEST REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "XM430-W350-T gripper actuator port")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "DATA")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JA1")
+			(description "Freeze housing, contacts, wire range, crimp tooling, current/temperature derating and retention from the exact manufacturer system.")
+			(fields
+				(field
+					(name "Reference") "JA1")
+				(field
+					(name "Value") "GST280A C6P mating connector and contacts")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Freeze housing, contacts, wire range, crimp tooling, current/temperature derating and retention from the exact manufacturer system.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence") "The adapter document names a Molex 39-01-2060-equivalent plug but does not release the project mating harness.")
+				(field
+					(name "Display") "GST280A C6P mating connector and contacts")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "C6P_1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "C6P_2")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "C6P_3")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "C6P_4")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "C6P_5")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "C6P_6")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JC1")
+			(description "Add locking conversion, branch protection, strain relief and enclosure interface without exposing the non-locking barrel plug.")
+			(fields
+				(field
+					(name "Reference") "JC1")
+				(field
+					(name "Value") "Locking 24 V DC inlet/interface")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Add locking conversion, branch protection, strain relief and enclosure interface without exposing the non-locking barrel plug.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Locking 24 V DC inlet/interface")
+			)
+			(pins
+				(pin
+					(num "TBD-24+")
+					(name "+24V")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-24-")
+					(name "0V")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-OUT+")
+					(name "PROTECTED_+24V")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-OUT-")
+					(name "0V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JDBG1")
+			(description "Tool-only interface; must not enable or bypass outputs during operation.")
+			(fields
+				(field
+					(name "Reference") "JDBG1")
+				(field
+					(name "Value") "Watchdog programming/debug connector")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Tool-only interface; must not enable or bypass outputs during operation.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Watchdog programming/debug connector")
+			)
+			(pins
+				(pin
+					(num "TBD-GND")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-SWCLK")
+					(name "SWCLK")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-SWDIO")
+					(name "SWDIO")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JFRAME1")
+			(description "Do not connect frame or shield to 0V/PE until EMC and parallel-path review accepts the implementation.")
+			(fields
+				(field
+					(name "Reference") "JFRAME1")
+				(field
+					(name "Value") "Frame/shield bonding interface")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Do not connect frame or shield to 0V/PE until EMC and parallel-path review accepts the implementation.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Frame/shield bonding interface")
+			)
+			(pins
+				(pin
+					(num "TBD-FRAME")
+					(name "ROBOT_FRAME")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-SHIELD")
+					(name "CABLE_SHIELDS")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "K1")
+			(description "First redundant series contactor. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
+			(docs "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
+			(fields
+				(field
+					(name "Reference") "K1")
+				(field
+					(name "Value") "Schneider TeSys D LC1D25BD, 24 VDC coil")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
+				(field
+					(name "Description") "First redundant series contactor. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
+				(field
+					(name "Status") "PROPOSED - DC APPLICATION CONFIRMATION REQUIRED")
+				(field
+					(name "Evidence") "Schneider product sheet rechecked 2026-08-06; loaded DC interruption/coordination not established.")
+				(field
+					(name "Display") "Schneider TeSys D LC1D25BD, 24 VDC coil")
+			)
+			(pins
+				(pin
+					(num "13")
+					(name "AUX_NO_IN")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "AUX_NO_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "21")
+					(name "MIRROR_NC_IN")
+					(type "passive")
+				)
+				(pin
+					(num "22")
+					(name "MIRROR_NC_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "A1")
+					(name "COIL_+")
+					(type "passive")
+				)
+				(pin
+					(num "A2")
+					(name "COIL_-")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "K2")
+			(description "Second redundant series contactor.")
+			(docs "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
+			(fields
+				(field
+					(name "Reference") "K2")
+				(field
+					(name "Value") "Schneider TeSys D LC1D25BD, 24 VDC coil")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
+				(field
+					(name "Description") "Second redundant series contactor.")
+				(field
+					(name "Status") "PROPOSED - DC APPLICATION CONFIRMATION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Schneider TeSys D LC1D25BD, 24 VDC coil")
+			)
+			(pins
+				(pin
+					(num "13")
+					(name "AUX_NO_IN")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "AUX_NO_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "21")
+					(name "MIRROR_NC_IN")
+					(type "passive")
+				)
+				(pin
+					(num "22")
+					(name "MIRROR_NC_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "A1")
+					(name "COIL_+")
+					(type "passive")
+				)
+				(pin
+					(num "A2")
+					(name "COIL_-")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "KP1")
+			(description "Do not count as a second BOM device. External nets series-connect the three poles; Schneider application confirmation remains required.")
+			(fields
+				(field
+					(name "Reference") "KP1")
+				(field
+					(name "Value") "K1 three main poles represented in series")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Do not count as a second BOM device. External nets series-connect the three poles; Schneider application confirmation remains required.")
+				(field
+					(name "Status") "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K1")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "K1 three main poles represented in series")
+			)
+			(pins
+				(pin
+					(num "1L1")
+					(name "POLE1_IN")
+					(type "passive")
+				)
+				(pin
+					(num "2T1")
+					(name "POLE1_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "3L2")
+					(name "POLE2_IN")
+					(type "passive")
+				)
+				(pin
+					(num "4T2")
+					(name "POLE2_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "5L3")
+					(name "POLE3_IN")
+					(type "passive")
+				)
+				(pin
+					(num "6T3")
+					(name "POLE3_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "KP2")
+			(description "Do not count as a second BOM device.")
+			(fields
+				(field
+					(name "Reference") "KP2")
+				(field
+					(name "Value") "K2 three main poles represented in series")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Do not count as a second BOM device.")
+				(field
+					(name "Status") "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K2")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "K2 three main poles represented in series")
+			)
+			(pins
+				(pin
+					(num "1L1")
+					(name "POLE1_IN")
+					(type "passive")
+				)
+				(pin
+					(num "2T1")
+					(name "POLE1_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "3L2")
+					(name "POLE2_IN")
+					(type "passive")
+				)
+				(pin
+					(num "4T2")
+					(name "POLE2_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "5L3")
+					(name "POLE3_IN")
+					(type "passive")
+				)
+				(pin
+					(num "6T3")
+					(name "POLE3_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "KWD1")
+			(description "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit.")
+			(docs "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
+			(fields
+				(field
+					(name "Reference") "KWD1")
+				(field
+					(name "Value") "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
+				(field
+					(name "Description") "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit.")
+				(field
+					(name "Status") "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Official page data-maintenance date 2026-04-01; 24 VDC, two changeover contacts, 18 mA typical, 8 ms pickup, 10 ms release, integrated polarity/freewheel protection.")
+				(field
+					(name "Display") "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
+			)
+			(pins
+				(pin
+					(num "TBD-C1")
+					(name "CH1_COM")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-C2")
+					(name "CH2_COM")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-COIL+")
+					(name "COIL_+24V")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-COIL-")
+					(name "DRIVER_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-NC1")
+					(name "CH1_NC")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-NC2")
+					(name "CH2_NC")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-NO1")
+					(name "CH1_NO")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-NO2")
+					(name "CH2_NO")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "KWD2")
+			(description "Second independently driven watchdog relay channel; common controller/supply remain common-cause blockers.")
+			(docs "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
+			(fields
+				(field
+					(name "Reference") "KWD2")
+				(field
+					(name "Value") "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/de-de/produkte/relaismodul-plc-rsc-24dc21-21-2967060")
+				(field
+					(name "Description") "Second independently driven watchdog relay channel; common controller/supply remain common-cause blockers.")
+				(field
+					(name "Status") "PROPOSED - TERMINAL DRAWING VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Official page data-maintenance date 2026-04-01.")
+				(field
+					(name "Display") "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
+			)
+			(pins
+				(pin
+					(num "TBD-C1")
+					(name "CH1_COM")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-C2")
+					(name "CH2_COM")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-COIL+")
+					(name "COIL_+24V")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-COIL-")
+					(name "DRIVER_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-NC1")
+					(name "CH1_NC")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-NC2")
+					(name "CH2_NC")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-NO1")
+					(name "CH1_NO")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-NO2")
+					(name "CH2_NO")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "PI1")
+			(description "High-level compute and logger. It never owns the hardware safety function or directly restores contactors.")
+			(docs "https://www.raspberrypi.com/products/raspberry-pi-5/")
+			(fields
+				(field
+					(name "Reference") "PI1")
+				(field
+					(name "Value") "Raspberry Pi 5 8GB high-level compute")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.raspberrypi.com/products/raspberry-pi-5/")
+				(field
+					(name "Description") "High-level compute and logger. It never owns the hardware safety function or directly restores contactors.")
+				(field
+					(name "Status") "PROPOSED - GPIO/CABLE/RETENTION OPEN")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Raspberry Pi 5 8GB high-level compute")
+			)
+			(pins
+				(pin
+					(num "GND")
+					(name "COMPUTE_GND")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-GPIO-HB")
+					(name "HEARTBEAT_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "USB-C-VBUS")
+					(name "+5V_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "USB-U2D2")
+					(name "USB_TO_U2D2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "PSA1")
+			(description "External Class I adapter. Pins 1-3 are +Vo and 4-6 are -Vo; -Vo is bonded to incoming PE inside the source. Do not add a second 0V/PE bond.")
+			(docs "https://www.meanwell.com/Upload/PDF/GST280A/GST280A-SPEC.PDF")
+			(fields
+				(field
+					(name "Reference") "PSA1")
+				(field
+					(name "Value") "Mean Well GST280A12-C6P, 12 V 21 A 252 W")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.meanwell.com/Upload/PDF/GST280A/GST280A-SPEC.PDF")
+				(field
+					(name "Description") "External Class I adapter. Pins 1-3 are +Vo and 4-6 are -Vo; -Vo is bonded to incoming PE inside the source. Do not add a second 0V/PE bond.")
+				(field
+					(name "Status") "PROPOSED - SOURCE APPLICATION REVIEW OPEN")
+				(field
+					(name "Evidence") "GST280A-SPEC 2026-04-03")
+				(field
+					(name "Display") "Mean Well GST280A12-C6P, 12 V 21 A 252 W")
+			)
+			(pins
+				(pin
+					(num "C6P-1")
+					(name "+VO_1")
+					(type "passive")
+				)
+				(pin
+					(num "C6P-2")
+					(name "+VO_2")
+					(type "passive")
+				)
+				(pin
+					(num "C6P-3")
+					(name "+VO_3")
+					(type "passive")
+				)
+				(pin
+					(num "C6P-4")
+					(name "-VO_1")
+					(type "passive")
+				)
+				(pin
+					(num "C6P-5")
+					(name "-VO_2")
+					(type "passive")
+				)
+				(pin
+					(num "C6P-6")
+					(name "-VO_3")
+					(type "passive")
+				)
+				(pin
+					(num "C14-L")
+					(name "FACTORY_AC_L")
+					(type "passive")
+				)
+				(pin
+					(num "C14-N")
+					(name "FACTORY_AC_N")
+					(type "passive")
+				)
+				(pin
+					(num "C14-PE")
+					(name "FACTORY_PE_/_INTERNAL_-V_BOND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "PSU2")
+			(description "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE.")
+			(docs "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF")
+			(fields
+				(field
+					(name "Reference") "PSU2")
+				(field
+					(name "Value") "Mean Well GST40A24-P1J, 24 V 1.67 A 40 W")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF")
+				(field
+					(name "Description") "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE.")
+				(field
+					(name "Status") "PROPOSED - LOCKING DC INTERFACE OPEN")
+				(field
+					(name "Evidence") "GST40A-SPEC 2026-04-03")
+				(field
+					(name "Display") "Mean Well GST40A24-P1J, 24 V 1.67 A 40 W")
+			)
+			(pins
+				(pin
+					(num "C14-L")
+					(name "FACTORY_AC_L")
+					(type "passive")
+				)
+				(pin
+					(num "C14-N")
+					(name "FACTORY_AC_N")
+					(type "passive")
+				)
+				(pin
+					(num "C14-PE")
+					(name "FACTORY_PE")
+					(type "passive")
+				)
+				(pin
+					(num "P1J-C")
+					(name "CENTER_+24V")
+					(type "passive")
+				)
+				(pin
+					(num "P1J-S")
+					(name "SLEEVE_0V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "PSU3")
+			(description "Compute remains powered for diagnostics during E-stop; it has no safety authority.")
+			(docs "https://www.raspberrypi.com/products/27w-power-supply/")
+			(fields
+				(field
+					(name "Reference") "PSU3")
+				(field
+					(name "Value") "Official Raspberry Pi 27 W USB-C supply, US regional code")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.raspberrypi.com/products/27w-power-supply/")
+				(field
+					(name "Description") "Compute remains powered for diagnostics during E-stop; it has no safety authority.")
+				(field
+					(name "Status") "SELECTION REQUIRED - US ORDER CODE / RETENTION")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Official Raspberry Pi 27 W USB-C supply, US regional code")
+			)
+			(pins
+				(pin
+					(num "AC-FACTORY")
+					(name "FACTORY_AC")
+					(type "passive")
+				)
+				(pin
+					(num "USB-C-GND")
+					(name "COMPUTE_GND")
+					(type "passive")
+				)
+				(pin
+					(num "USB-C-VBUS")
+					(name "+5V_COMPUTE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "Q1")
+			(description "Exact transistor/driver, base/gate network, default-off bias, fault behavior and polarity with relay internal diode open.")
+			(fields
+				(field
+					(name "Reference") "Q1")
+				(field
+					(name "Value") "Watchdog relay channel 1 low-side driver")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact transistor/driver, base/gate network, default-off bias, fault behavior and polarity with relay internal diode open.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Watchdog relay channel 1 low-side driver")
+			)
+			(pins
+				(pin
+					(num "TBD-0V")
+					(name "0V")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-COIL")
+					(name "COIL_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-IN")
+					(name "GPIO")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "Q2")
+			(description "Independently driven duplicate channel; common-cause review open.")
+			(fields
+				(field
+					(name "Reference") "Q2")
+				(field
+					(name "Value") "Watchdog relay channel 2 low-side driver")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Independently driven duplicate channel; common-cause review open.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Watchdog relay channel 2 low-side driver")
+			)
+			(pins
+				(pin
+					(num "TBD-0V")
+					(name "0V")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-COIL")
+					(name "COIL_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-IN")
+					(name "GPIO")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "S0")
+			(description "Candidate is documented as 40 mm mushroom, turn/pull reset, 2NC, screw terminal and terminal cover. Freeze physical contact-block mapping from received-device bottom view and continuity test both positively opening channels.")
+			(docs "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/emergency-stop-switches/xw-22mm-estop/xw1e-bv402m-r")
+			(fields
+				(field
+					(name "Reference") "S0")
+				(field
+					(name "Value") "IDEC XW1E-BV402M-R dual-NC E-stop candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/emergency-stop-switches/xw-22mm-estop/xw1e-bv402m-r")
+				(field
+					(name "Description") "Candidate is documented as 40 mm mushroom, turn/pull reset, 2NC, screw terminal and terminal cover. Freeze physical contact-block mapping from received-device bottom view and continuity test both positively opening channels.")
+				(field
+					(name "Status") "SELECTION REQUIRED - EXACT CANDIDATE RECORDED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "IDEC XW1E-BV402M-R dual-NC E-stop candidate")
+			)
+			(pins
+				(pin
+					(num "TBD-C1A")
+					(name "CH1_A")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-C1B")
+					(name "CH1_B")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-C2A")
+					(name "CH2_A")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-C2B")
+					(name "CH2_B")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "S1")
+			(description "Documented candidate is black flush momentary 1NO with screw terminals. RESET is outside the swept envelope and feeds only SR1 monitored start; legend, guard, spacing, color and received terminals remain open.")
+			(docs "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b")
+			(fields
+				(field
+					(name "Reference") "S1")
+				(field
+					(name "Value") "IDEC HW1B-M1F10-B momentary 1NO RESET candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b")
+				(field
+					(name "Description") "Documented candidate is black flush momentary 1NO with screw terminals. RESET is outside the swept envelope and feeds only SR1 monitored start; legend, guard, spacing, color and received terminals remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - HUMAN-FACTORS REVIEW OPEN")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "IDEC HW1B-M1F10-B momentary 1NO RESET candidate")
+			)
+			(pins
+				(pin
+					(num "TBD-R1")
+					(name "RESET_IN")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-R2")
+					(name "RESET_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "S2")
+			(description "Electrical candidate only. ARM must be unmistakably different from RESET by legend/color/guard/spacing; it must actuate and release after every safety dropout. Received terminal mapping remains open.")
+			(docs "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b")
+			(fields
+				(field
+					(name "Reference") "S2")
+				(field
+					(name "Value") "IDEC HW1B-M1F10-B momentary 1NO ARM candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b")
+				(field
+					(name "Description") "Electrical candidate only. ARM must be unmistakably different from RESET by legend/color/guard/spacing; it must actuate and release after every safety dropout. Received terminal mapping remains open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - DISTINCT APPEARANCE REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "IDEC HW1B-M1F10-B momentary 1NO ARM candidate")
+			)
+			(pins
+				(pin
+					(num "TBD-A1")
+					(name "ARM_IN")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-A2")
+					(name "ARM_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SD1")
+			(description "Select a DC-rated lockable disconnect with exact terminals, enclosure and current/fault rating.")
+			(fields
+				(field
+					(name "Reference") "SD1")
+				(field
+					(name "Value") "Accessible DC service disconnect")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Select a DC-rated lockable disconnect with exact terminals, enclosure and current/fault rating.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Accessible DC service disconnect")
+			)
+			(pins
+				(pin
+					(num "TBD-IN")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-OUT")
+					(name "OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SP1")
+			(description "The source already bonds -V to PE. Do not fit SP1 or add a parallel robot-frame bond.")
+			(fields
+				(field
+					(name "Reference") "SP1")
+				(field
+					(name "Value") "Project-added DC 0V / PE star point")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "The source already bonds -V to PE. Do not fit SP1 or add a parallel robot-frame bond.")
+				(field
+					(name "Status") "DNP - PROHIBITED WITH GST280A12-C6P")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Project-added DC 0V / PE star point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "ACTUATOR_0V")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "PE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SR1")
+			(description "First-stage E-stop eligibility relay. Mode: short-cross detection plus monitored start on falling edge; seal and inspect selector with power removed.")
+			(docs "https://www.pilz.com/en-INT/eshop/product/750104")
+			(fields
+				(field
+					(name "Reference") "SR1")
+				(field
+					(name "Value") "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pilz.com/en-INT/eshop/product/750104")
+				(field
+					(name "Description") "First-stage E-stop eligibility relay. Mode: short-cross detection plus monitored start on falling edge; seal and inspect selector with power removed.")
+				(field
+					(name "Status") "PROPOSED - QUALIFIED APPLICATION REVIEW REQUIRED")
+				(field
+					(name "Evidence") "Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06.")
+				(field
+					(name "Display") "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104")
+			)
+			(pins
+				(pin
+					(num "13")
+					(name "SAFETY_OUT1_IN")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "SAFETY_OUT1_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "23")
+					(name "SAFETY_OUT2_IN")
+					(type "passive")
+				)
+				(pin
+					(num "24")
+					(name "SAFETY_OUT2_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "33")
+					(name "SAFETY_OUT3_IN")
+					(type "passive")
+				)
+				(pin
+					(num "34")
+					(name "SAFETY_OUT3_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "41")
+					(name "AUX_NC_IN")
+					(type "passive")
+				)
+				(pin
+					(num "42")
+					(name "AUX_NC_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "A1")
+					(name "24V_SUPPLY")
+					(type "passive")
+				)
+				(pin
+					(num "A2")
+					(name "0V_SUPPLY")
+					(type "passive")
+				)
+				(pin
+					(num "S11")
+					(name "INPUT_CH1_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "S12")
+					(name "INPUT_CH1_RETURN_/_START_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "S21")
+					(name "INPUT_CH2_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "S22")
+					(name "INPUT_CH2_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "S34")
+					(name "START_/_EDM_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "Y32")
+					(name "SEMICONDUCTOR_STATUS")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SRA1")
+			(description "Final ARM and external-device-monitoring relay. Mode: short-cross detection plus monitored start on falling edge; seal and inspect selector with power removed.")
+			(docs "https://www.pilz.com/en-INT/eshop/product/750104")
+			(fields
+				(field
+					(name "Reference") "SRA1")
+				(field
+					(name "Value") "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pilz.com/en-INT/eshop/product/750104")
+				(field
+					(name "Description") "Final ARM and external-device-monitoring relay. Mode: short-cross detection plus monitored start on falling edge; seal and inspect selector with power removed.")
+				(field
+					(name "Status") "PROPOSED - QUALIFIED APPLICATION REVIEW REQUIRED")
+				(field
+					(name "Evidence") "Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06.")
+				(field
+					(name "Display") "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104")
+			)
+			(pins
+				(pin
+					(num "13")
+					(name "SAFETY_OUT1_IN")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "SAFETY_OUT1_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "23")
+					(name "SAFETY_OUT2_IN")
+					(type "passive")
+				)
+				(pin
+					(num "24")
+					(name "SAFETY_OUT2_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "33")
+					(name "SAFETY_OUT3_IN")
+					(type "passive")
+				)
+				(pin
+					(num "34")
+					(name "SAFETY_OUT3_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "41")
+					(name "AUX_NC_IN")
+					(type "passive")
+				)
+				(pin
+					(num "42")
+					(name "AUX_NC_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "A1")
+					(name "24V_SUPPLY")
+					(type "passive")
+				)
+				(pin
+					(num "A2")
+					(name "0V_SUPPLY")
+					(type "passive")
+				)
+				(pin
+					(num "S11")
+					(name "INPUT_CH1_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "S12")
+					(name "INPUT_CH1_RETURN_/_START_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "S21")
+					(name "INPUT_CH2_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "S22")
+					(name "INPUT_CH2_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "S34")
+					(name "START_/_EDM_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "Y32")
+					(name "SEMICONDUCTOR_STATUS")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "U1")
+			(description "Pin 2 VDD is intentionally omitted from the project cable. Standard fully populated cables are prohibited in the protected-branch topology.")
+			(docs "https://emanual.robotis.com/docs/en/parts/interface/u2d2/")
+			(fields
+				(field
+					(name "Reference") "U1")
+				(field
+					(name "Value") "ROBOTIS U2D2 TTL interface, SKU 902-0132-000")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://emanual.robotis.com/docs/en/parts/interface/u2d2/")
+				(field
+					(name "Description") "Pin 2 VDD is intentionally omitted from the project cable. Standard fully populated cables are prohibited in the protected-branch topology.")
+				(field
+					(name "Status") "PROPOSED - CUSTOM DATA-ONLY HARNESS REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "ROBOTIS U2D2 TTL interface, SKU 902-0132-000")
+			)
+			(pins
+				(pin
+					(num "TTL-1")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "TTL-2")
+					(name "VDD_OMITTED")
+					(type "passive")
+				)
+				(pin
+					(num "TTL-3")
+					(name "DATA")
+					(type "passive")
+				)
+				(pin
+					(num "USB")
+					(name "USB_TO_PI")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "WDCTRL1")
+			(description "Monotonic heartbeat monitor. Three missed 100 ms periods drop both outputs; firmware and shared failures are not safety-rated.")
+			(docs "https://www.raspberrypi.com/products/raspberry-pi-pico/")
+			(fields
+				(field
+					(name "Reference") "WDCTRL1")
+				(field
+					(name "Value") "Raspberry Pi Pico 1, order SC0915 / RP2040")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.raspberrypi.com/products/raspberry-pi-pico/")
+				(field
+					(name "Description") "Monotonic heartbeat monitor. Three missed 100 ms periods drop both outputs; firmware and shared failures are not safety-rated.")
+				(field
+					(name "Status") "PROPOSED - PIN/FIRMWARE RELEASE OPEN")
+				(field
+					(name "Evidence") "Official Pico 1 page and datasheet rechecked 2026-08-06; exact GPIOs not frozen.")
+				(field
+					(name "Display") "Raspberry Pi Pico 1, order SC0915 / RP2040")
+			)
+			(pins
+				(pin
+					(num "GND")
+					(name "GROUND")
+					(type "passive")
+				)
+				(pin
+					(num "SWCLK")
+					(name "SWCLK")
+					(type "passive")
+				)
+				(pin
+					(num "SWDIO")
+					(name "SWDIO")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-GPIO-1")
+					(name "RELAY1_DRIVE")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-GPIO-2")
+					(name "RELAY2_DRIVE")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-GPIO-F1")
+					(name "RELAY1_FEEDBACK")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-GPIO-F2")
+					(name "RELAY2_FEEDBACK")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-GPIO-HB")
+					(name "HEARTBEAT_IN")
+					(type "passive")
+				)
+				(pin
+					(num "VSYS")
+					(name "5V_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "XT1")
+			(description "Exact terminal family, end covers, jumpers, markers, conductor range and torque open.")
+			(fields
+				(field
+					(name "Reference") "XT1")
+				(field
+					(name "Value") "24 V control terminal block group")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact terminal family, end covers, jumpers, markers, conductor range and torque open.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "24 V control terminal block group")
+			)
+			(pins
+				(pin
+					(num "TBD-1")
+					(name "+24V")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-2")
+					(name "0V")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-3")
+					(name "SR1_STATUS")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-4")
+					(name "SRA1_STATUS")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-5")
+					(name "K1_STATUS")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-6")
+					(name "K2_STATUS")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "PBV3")
+			(uri "${KIPRJMOD}/project-button-v3.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "ACT_0V_PE_BONDED")
+			(class "Default")
+			(node
+				(ref "INJ1")
+				(pin "TBD-A-G")
+				(pinfunction "ACT_GND_TBD-A-G")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ1")
+				(pin "TBD-BI-G")
+				(pinfunction "BUS_IN_GND_TBD-BI-G")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ1")
+				(pin "TBD-BO-G")
+				(pinfunction "BUS_OUT_GND_TBD-BO-G")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ2")
+				(pin "TBD-A-G")
+				(pinfunction "ACT_GND_TBD-A-G")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ2")
+				(pin "TBD-BI-G")
+				(pinfunction "BUS_IN_GND_TBD-BI-G")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ2")
+				(pin "TBD-BO-G")
+				(pinfunction "BUS_OUT_GND_TBD-BO-G")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ3")
+				(pin "TBD-A-G")
+				(pinfunction "ACT_GND_TBD-A-G")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ3")
+				(pin "TBD-BI-G")
+				(pinfunction "BUS_IN_GND_TBD-BI-G")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "1")
+				(pinfunction "GND_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "1")
+				(pinfunction "GND_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J3")
+				(pin "1")
+				(pinfunction "GND_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JA1")
+				(pin "4")
+				(pinfunction "C6P_4_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "JA1")
+				(pin "5")
+				(pinfunction "C6P_5_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "JA1")
+				(pin "6")
+				(pinfunction "C6P_6_6")
+				(pintype "passive")
+			)
+			(node
+				(ref "PSA1")
+				(pin "C14-PE")
+				(pinfunction "FACTORY_PE_/_INTERNAL_-V_BOND_C14-PE")
+				(pintype "passive")
+			)
+			(node
+				(ref "PSA1")
+				(pin "C6P-4")
+				(pinfunction "-VO_1_C6P-4")
+				(pintype "passive")
+			)
+			(node
+				(ref "PSA1")
+				(pin "C6P-5")
+				(pinfunction "-VO_2_C6P-5")
+				(pintype "passive")
+			)
+			(node
+				(ref "PSA1")
+				(pin "C6P-6")
+				(pinfunction "-VO_3_C6P-6")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "TTL-1")
+				(pinfunction "GND_TTL-1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "2")
+			(name "ACT_12V_BUS")
+			(class "Default")
+			(node
+				(ref "F1")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "F2")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "F3")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "KP2")
+				(pin "6T3")
+				(pinfunction "POLE3_OUT_6T3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "3")
+			(name "ACT_12V_FUSED")
+			(class "Default")
+			(node
+				(ref "F0")
+				(pin "2")
+				(pinfunction "PROTECTED_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "SD1")
+				(pin "TBD-IN")
+				(pinfunction "IN_TBD-IN")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "4")
+			(name "ACT_12V_RAW")
+			(class "Default")
+			(node
+				(ref "F0")
+				(pin "1")
+				(pinfunction "SOURCE_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JA1")
+				(pin "1")
+				(pinfunction "C6P_1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JA1")
+				(pin "2")
+				(pinfunction "C6P_2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "JA1")
+				(pin "3")
+				(pinfunction "C6P_3_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "PSA1")
+				(pin "C6P-1")
+				(pinfunction "+VO_1_C6P-1")
+				(pintype "passive")
+			)
+			(node
+				(ref "PSA1")
+				(pin "C6P-2")
+				(pinfunction "+VO_2_C6P-2")
+				(pintype "passive")
+			)
+			(node
+				(ref "PSA1")
+				(pin "C6P-3")
+				(pinfunction "+VO_3_C6P-3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "5")
+			(name "ARM_AFTER_S2")
+			(class "Default")
+			(node
+				(ref "K1")
+				(pin "21")
+				(pinfunction "MIRROR_NC_IN_21")
+				(pintype "passive")
+			)
+			(node
+				(ref "S2")
+				(pin "TBD-A2")
+				(pinfunction "ARM_OUT_TBD-A2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "COMPUTE_0V")
+			(class "Default")
+			(node
+				(ref "ISO1")
+				(pin "TBD-CG")
+				(pinfunction "COMPUTE_GND_TBD-CG")
+				(pintype "passive")
+			)
+			(node
+				(ref "PI1")
+				(pin "GND")
+				(pinfunction "COMPUTE_GND_GND")
+				(pintype "passive")
+			)
+			(node
+				(ref "PSU3")
+				(pin "USB-C-GND")
+				(pinfunction "COMPUTE_GND_USB-C-GND")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "7")
+			(name "COMPUTE_5V")
+			(class "Default")
+			(node
+				(ref "PI1")
+				(pin "USB-C-VBUS")
+				(pinfunction "+5V_INPUT_USB-C-VBUS")
+				(pintype "passive")
+			)
+			(node
+				(ref "PSU3")
+				(pin "USB-C-VBUS")
+				(pinfunction "+5V_COMPUTE_USB-C-VBUS")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "8")
+			(name "DXL_TTL_DATA")
+			(class "Default")
+			(node
+				(ref "INJ1")
+				(pin "TBD-A-D")
+				(pinfunction "ACT_DATA_TBD-A-D")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ1")
+				(pin "TBD-BI-D")
+				(pinfunction "BUS_IN_DATA_TBD-BI-D")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ1")
+				(pin "TBD-BO-D")
+				(pinfunction "BUS_OUT_DATA_TBD-BO-D")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ2")
+				(pin "TBD-A-D")
+				(pinfunction "ACT_DATA_TBD-A-D")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ2")
+				(pin "TBD-BI-D")
+				(pinfunction "BUS_IN_DATA_TBD-BI-D")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ2")
+				(pin "TBD-BO-D")
+				(pinfunction "BUS_OUT_DATA_TBD-BO-D")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ3")
+				(pin "TBD-A-D")
+				(pinfunction "ACT_DATA_TBD-A-D")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ3")
+				(pin "TBD-BI-D")
+				(pinfunction "BUS_IN_DATA_TBD-BI-D")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "3")
+				(pinfunction "DATA_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "3")
+				(pinfunction "DATA_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "J3")
+				(pin "3")
+				(pinfunction "DATA_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "TTL-3")
+				(pinfunction "DATA_TTL-3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "9")
+			(name "EDM_K1_OUT")
+			(class "Default")
+			(node
+				(ref "K1")
+				(pin "22")
+				(pinfunction "MIRROR_NC_OUT_22")
+				(pintype "passive")
+			)
+			(node
+				(ref "K2")
+				(pin "21")
+				(pinfunction "MIRROR_NC_IN_21")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "10")
+			(name "J1_VDD")
+			(class "Default")
+			(node
+				(ref "F1")
+				(pin "2")
+				(pinfunction "OUT_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ1")
+				(pin "TBD-A-V")
+				(pinfunction "ACT_VDD_TBD-A-V")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ1")
+				(pin "TBD-P")
+				(pinfunction "FUSED_VDD_TBD-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "2")
+				(pinfunction "VDD_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "11")
+			(name "J2_VDD")
+			(class "Default")
+			(node
+				(ref "F2")
+				(pin "2")
+				(pinfunction "OUT_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ2")
+				(pin "TBD-A-V")
+				(pinfunction "ACT_VDD_TBD-A-V")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ2")
+				(pin "TBD-P")
+				(pinfunction "FUSED_VDD_TBD-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "2")
+				(pinfunction "VDD_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "12")
+			(name "J3_VDD")
+			(class "Default")
+			(node
+				(ref "F3")
+				(pin "2")
+				(pinfunction "OUT_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ3")
+				(pin "TBD-A-V")
+				(pinfunction "ACT_VDD_TBD-A-V")
+				(pintype "passive")
+			)
+			(node
+				(ref "INJ3")
+				(pin "TBD-P")
+				(pinfunction "FUSED_VDD_TBD-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "J3")
+				(pin "2")
+				(pinfunction "VDD_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "13")
+			(name "K1_A1")
+			(class "Default")
+			(node
+				(ref "FSR1")
+				(pin "2")
+				(pinfunction "OUT_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "K1")
+				(pin "A1")
+				(pinfunction "COIL_+_A1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "14")
+			(name "K1_J12")
+			(class "Default")
+			(node
+				(ref "KP1")
+				(pin "2T1")
+				(pinfunction "POLE1_OUT_2T1")
+				(pintype "passive")
+			)
+			(node
+				(ref "KP1")
+				(pin "3L2")
+				(pinfunction "POLE2_IN_3L2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "15")
+			(name "K1_J23")
+			(class "Default")
+			(node
+				(ref "KP1")
+				(pin "4T2")
+				(pinfunction "POLE2_OUT_4T2")
+				(pintype "passive")
+			)
+			(node
+				(ref "KP1")
+				(pin "5L3")
+				(pinfunction "POLE3_IN_5L3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "16")
+			(name "K1_OUT")
+			(class "Default")
+			(node
+				(ref "KP1")
+				(pin "6T3")
+				(pinfunction "POLE3_OUT_6T3")
+				(pintype "passive")
+			)
+			(node
+				(ref "KP2")
+				(pin "1L1")
+				(pinfunction "POLE1_IN_1L1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "17")
+			(name "K1_P1_IN")
+			(class "Default")
+			(node
+				(ref "KP1")
+				(pin "1L1")
+				(pinfunction "POLE1_IN_1L1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SD1")
+				(pin "TBD-OUT")
+				(pinfunction "OUT_TBD-OUT")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "18")
+			(name "K1_STATUS")
+			(class "Default")
+			(node
+				(ref "K1")
+				(pin "14")
+				(pinfunction "AUX_NO_OUT_14")
+				(pintype "passive")
+			)
+			(node
+				(ref "XT1")
+				(pin "TBD-5")
+				(pinfunction "K1_STATUS_TBD-5")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "19")
+			(name "K2_A1")
+			(class "Default")
+			(node
+				(ref "FSR2")
+				(pin "2")
+				(pinfunction "OUT_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "K2")
+				(pin "A1")
+				(pinfunction "COIL_+_A1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "20")
+			(name "K2_J12")
+			(class "Default")
+			(node
+				(ref "KP2")
+				(pin "2T1")
+				(pinfunction "POLE1_OUT_2T1")
+				(pintype "passive")
+			)
+			(node
+				(ref "KP2")
+				(pin "3L2")
+				(pinfunction "POLE2_IN_3L2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "21")
+			(name "K2_J23")
+			(class "Default")
+			(node
+				(ref "KP2")
+				(pin "4T2")
+				(pinfunction "POLE2_OUT_4T2")
+				(pintype "passive")
+			)
+			(node
+				(ref "KP2")
+				(pin "5L3")
+				(pinfunction "POLE3_IN_5L3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "22")
+			(name "K2_STATUS")
+			(class "Default")
+			(node
+				(ref "K2")
+				(pin "14")
+				(pinfunction "AUX_NO_OUT_14")
+				(pintype "passive")
+			)
+			(node
+				(ref "XT1")
+				(pin "TBD-6")
+				(pinfunction "K2_STATUS_TBD-6")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "23")
+			(name "PI_HEARTBEAT")
+			(class "Default")
+			(node
+				(ref "ISO1")
+				(pin "TBD-IN")
+				(pinfunction "PI_HEARTBEAT_TBD-IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "PI1")
+				(pin "TBD-GPIO-HB")
+				(pinfunction "HEARTBEAT_OUT_TBD-GPIO-HB")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "24")
+			(name "PI_USB_U2D2")
+			(class "Default")
+			(node
+				(ref "PI1")
+				(pin "USB-U2D2")
+				(pinfunction "USB_TO_U2D2_USB-U2D2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "USB")
+				(pinfunction "USB_TO_PI_USB")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "25")
+			(name "SAFETY_0V")
+			(class "Default")
+			(node
+				(ref "DC1")
+				(pin "TBD-IN-")
+				(pinfunction "0V_IN_TBD-IN-")
+				(pintype "passive")
+			)
+			(node
+				(ref "DC1")
+				(pin "TBD-OUT-")
+				(pinfunction "0V_OUT_TBD-OUT-")
+				(pintype "passive")
+			)
+			(node
+				(ref "H1")
+				(pin "TBD-H-")
+				(pinfunction "-_TBD-H-")
+				(pintype "passive")
+			)
+			(node
+				(ref "ISO1")
+				(pin "TBD-WG")
+				(pinfunction "WD_GND_TBD-WG")
+				(pintype "passive")
+			)
+			(node
+				(ref "JC1")
+				(pin "TBD-24-")
+				(pinfunction "0V_TBD-24-")
+				(pintype "passive")
+			)
+			(node
+				(ref "JC1")
+				(pin "TBD-OUT-")
+				(pinfunction "0V_TBD-OUT-")
+				(pintype "passive")
+			)
+			(node
+				(ref "JDBG1")
+				(pin "TBD-GND")
+				(pinfunction "GND_TBD-GND")
+				(pintype "passive")
+			)
+			(node
+				(ref "K1")
+				(pin "A2")
+				(pinfunction "COIL_-_A2")
+				(pintype "passive")
+			)
+			(node
+				(ref "K2")
+				(pin "A2")
+				(pinfunction "COIL_-_A2")
+				(pintype "passive")
+			)
+			(node
+				(ref "PSU2")
+				(pin "P1J-S")
+				(pinfunction "SLEEVE_0V_P1J-S")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q1")
+				(pin "TBD-0V")
+				(pinfunction "0V_TBD-0V")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q2")
+				(pin "TBD-0V")
+				(pinfunction "0V_TBD-0V")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "A2")
+				(pinfunction "0V_SUPPLY_A2")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "A2")
+				(pinfunction "0V_SUPPLY_A2")
+				(pintype "passive")
+			)
+			(node
+				(ref "WDCTRL1")
+				(pin "GND")
+				(pinfunction "GROUND_GND")
+				(pintype "passive")
+			)
+			(node
+				(ref "XT1")
+				(pin "TBD-2")
+				(pinfunction "0V_TBD-2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "26")
+			(name "SAFETY_24V")
+			(class "Default")
+			(node
+				(ref "DC1")
+				(pin "TBD-IN+")
+				(pinfunction "24V_IN_TBD-IN+")
+				(pintype "passive")
+			)
+			(node
+				(ref "JC1")
+				(pin "TBD-OUT+")
+				(pinfunction "PROTECTED_+24V_TBD-OUT+")
+				(pintype "passive")
+			)
+			(node
+				(ref "K1")
+				(pin "13")
+				(pinfunction "AUX_NO_IN_13")
+				(pintype "passive")
+			)
+			(node
+				(ref "K2")
+				(pin "13")
+				(pinfunction "AUX_NO_IN_13")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD1")
+				(pin "TBD-COIL+")
+				(pinfunction "COIL_+24V_TBD-COIL+")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD2")
+				(pin "TBD-COIL+")
+				(pinfunction "COIL_+24V_TBD-COIL+")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "41")
+				(pinfunction "AUX_NC_IN_41")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "A1")
+				(pinfunction "24V_SUPPLY_A1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "13")
+				(pinfunction "SAFETY_OUT1_IN_13")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "23")
+				(pinfunction "SAFETY_OUT2_IN_23")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "41")
+				(pinfunction "AUX_NC_IN_41")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "A1")
+				(pinfunction "24V_SUPPLY_A1")
+				(pintype "passive")
+			)
+			(node
+				(ref "XT1")
+				(pin "TBD-1")
+				(pinfunction "+24V_TBD-1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "27")
+			(name "SAFETY_24V_RAW")
+			(class "Default")
+			(node
+				(ref "JC1")
+				(pin "TBD-24+")
+				(pinfunction "+24V_TBD-24+")
+				(pintype "passive")
+			)
+			(node
+				(ref "PSU2")
+				(pin "P1J-C")
+				(pinfunction "CENTER_+24V_P1J-C")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "28")
+			(name "SR1_S11")
+			(class "Default")
+			(node
+				(ref "S0")
+				(pin "TBD-C1A")
+				(pinfunction "CH1_A_TBD-C1A")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S11")
+				(pinfunction "INPUT_CH1_FEED_S11")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "29")
+			(name "SR1_S12")
+			(class "Default")
+			(node
+				(ref "KWD1")
+				(pin "TBD-NO1")
+				(pinfunction "CH1_NO_TBD-NO1")
+				(pintype "passive")
+			)
+			(node
+				(ref "S1")
+				(pin "TBD-R1")
+				(pinfunction "RESET_IN_TBD-R1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S12")
+				(pinfunction "INPUT_CH1_RETURN_/_START_FEED_S12")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "30")
+			(name "SR1_S21")
+			(class "Default")
+			(node
+				(ref "S0")
+				(pin "TBD-C2A")
+				(pinfunction "CH2_A_TBD-C2A")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S21")
+				(pinfunction "INPUT_CH2_FEED_S21")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "31")
+			(name "SR1_S22")
+			(class "Default")
+			(node
+				(ref "KWD2")
+				(pin "TBD-NO1")
+				(pinfunction "CH1_NO_TBD-NO1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S22")
+				(pinfunction "INPUT_CH2_RETURN_S22")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "32")
+			(name "SR1_START_RETURN")
+			(class "Default")
+			(node
+				(ref "S1")
+				(pin "TBD-R2")
+				(pinfunction "RESET_OUT_TBD-R2")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S34")
+				(pinfunction "START_/_EDM_RETURN_S34")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "33")
+			(name "SR1_STATUS")
+			(class "Default")
+			(node
+				(ref "H1")
+				(pin "TBD-H+")
+				(pinfunction "+_TBD-H+")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "Y32")
+				(pinfunction "SEMICONDUCTOR_STATUS_Y32")
+				(pintype "passive")
+			)
+			(node
+				(ref "XT1")
+				(pin "TBD-3")
+				(pinfunction "SR1_STATUS_TBD-3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "34")
+			(name "SRA1_K1_RAW")
+			(class "Default")
+			(node
+				(ref "FSR1")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "14")
+				(pinfunction "SAFETY_OUT1_OUT_14")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "35")
+			(name "SRA1_K2_RAW")
+			(class "Default")
+			(node
+				(ref "FSR2")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "24")
+				(pinfunction "SAFETY_OUT2_OUT_24")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "36")
+			(name "SRA1_S11")
+			(class "Default")
+			(node
+				(ref "SR1")
+				(pin "13")
+				(pinfunction "SAFETY_OUT1_IN_13")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "S11")
+				(pinfunction "INPUT_CH1_FEED_S11")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "37")
+			(name "SRA1_S12")
+			(class "Default")
+			(node
+				(ref "S2")
+				(pin "TBD-A1")
+				(pinfunction "ARM_IN_TBD-A1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "14")
+				(pinfunction "SAFETY_OUT1_OUT_14")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "S12")
+				(pinfunction "INPUT_CH1_RETURN_/_START_FEED_S12")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "38")
+			(name "SRA1_S21")
+			(class "Default")
+			(node
+				(ref "SR1")
+				(pin "23")
+				(pinfunction "SAFETY_OUT2_IN_23")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "S21")
+				(pinfunction "INPUT_CH2_FEED_S21")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "39")
+			(name "SRA1_S22")
+			(class "Default")
+			(node
+				(ref "SR1")
+				(pin "24")
+				(pinfunction "SAFETY_OUT2_OUT_24")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "S22")
+				(pinfunction "INPUT_CH2_RETURN_S22")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "40")
+			(name "SRA1_START_RETURN")
+			(class "Default")
+			(node
+				(ref "K2")
+				(pin "22")
+				(pinfunction "MIRROR_NC_OUT_22")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "S34")
+				(pinfunction "START_/_EDM_RETURN_S34")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "41")
+			(name "SRA1_STATUS")
+			(class "Default")
+			(node
+				(ref "SRA1")
+				(pin "Y32")
+				(pinfunction "SEMICONDUCTOR_STATUS_Y32")
+				(pintype "passive")
+			)
+			(node
+				(ref "XT1")
+				(pin "TBD-4")
+				(pinfunction "SRA1_STATUS_TBD-4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "42")
+			(name "WD1_COIL_N")
+			(class "Default")
+			(node
+				(ref "KWD1")
+				(pin "TBD-COIL-")
+				(pinfunction "DRIVER_RETURN_TBD-COIL-")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q1")
+				(pin "TBD-COIL")
+				(pinfunction "COIL_RETURN_TBD-COIL")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "43")
+			(name "WD1_DRIVE")
+			(class "Default")
+			(node
+				(ref "Q1")
+				(pin "TBD-IN")
+				(pinfunction "GPIO_TBD-IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "WDCTRL1")
+				(pin "TBD-GPIO-1")
+				(pinfunction "RELAY1_DRIVE_TBD-GPIO-1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "44")
+			(name "WD1_NC_DIAG")
+			(class "Default")
+			(node
+				(ref "KWD1")
+				(pin "TBD-NC1")
+				(pinfunction "CH1_NC_TBD-NC1")
+				(pintype "passive")
+			)
+			(node
+				(ref "WDCTRL1")
+				(pin "TBD-GPIO-F1")
+				(pinfunction "RELAY1_FEEDBACK_TBD-GPIO-F1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "45")
+			(name "WD1_SAFETY_IN")
+			(class "Default")
+			(node
+				(ref "KWD1")
+				(pin "TBD-C1")
+				(pinfunction "CH1_COM_TBD-C1")
+				(pintype "passive")
+			)
+			(node
+				(ref "S0")
+				(pin "TBD-C1B")
+				(pinfunction "CH1_B_TBD-C1B")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "46")
+			(name "WD2_COIL_N")
+			(class "Default")
+			(node
+				(ref "KWD2")
+				(pin "TBD-COIL-")
+				(pinfunction "DRIVER_RETURN_TBD-COIL-")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q2")
+				(pin "TBD-COIL")
+				(pinfunction "COIL_RETURN_TBD-COIL")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "47")
+			(name "WD2_DRIVE")
+			(class "Default")
+			(node
+				(ref "Q2")
+				(pin "TBD-IN")
+				(pinfunction "GPIO_TBD-IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "WDCTRL1")
+				(pin "TBD-GPIO-2")
+				(pinfunction "RELAY2_DRIVE_TBD-GPIO-2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "48")
+			(name "WD2_NC_DIAG")
+			(class "Default")
+			(node
+				(ref "KWD2")
+				(pin "TBD-NC1")
+				(pinfunction "CH1_NC_TBD-NC1")
+				(pintype "passive")
+			)
+			(node
+				(ref "WDCTRL1")
+				(pin "TBD-GPIO-F2")
+				(pinfunction "RELAY2_FEEDBACK_TBD-GPIO-F2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "49")
+			(name "WD2_SAFETY_IN")
+			(class "Default")
+			(node
+				(ref "KWD2")
+				(pin "TBD-C1")
+				(pinfunction "CH1_COM_TBD-C1")
+				(pintype "passive")
+			)
+			(node
+				(ref "S0")
+				(pin "TBD-C2B")
+				(pinfunction "CH2_B_TBD-C2B")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "50")
+			(name "WD_5V")
+			(class "Default")
+			(node
+				(ref "DC1")
+				(pin "TBD-OUT+")
+				(pinfunction "5V_OUT_TBD-OUT+")
+				(pintype "passive")
+			)
+			(node
+				(ref "WDCTRL1")
+				(pin "VSYS")
+				(pinfunction "5V_INPUT_VSYS")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "51")
+			(name "WD_HEARTBEAT")
+			(class "Default")
+			(node
+				(ref "ISO1")
+				(pin "TBD-OUT")
+				(pinfunction "WD_HEARTBEAT_TBD-OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "WDCTRL1")
+				(pin "TBD-GPIO-HB")
+				(pinfunction "HEARTBEAT_IN_TBD-GPIO-HB")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "52")
+			(name "WD_SWCLK")
+			(class "Default")
+			(node
+				(ref "JDBG1")
+				(pin "TBD-SWCLK")
+				(pinfunction "SWCLK_TBD-SWCLK")
+				(pintype "passive")
+			)
+			(node
+				(ref "WDCTRL1")
+				(pin "SWCLK")
+				(pinfunction "SWCLK_SWCLK")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "53")
+			(name "WD_SWDIO")
+			(class "Default")
+			(node
+				(ref "JDBG1")
+				(pin "TBD-SWDIO")
+				(pinfunction "SWDIO_TBD-SWDIO")
+				(pintype "passive")
+			)
+			(node
+				(ref "WDCTRL1")
+				(pin "SWDIO")
+				(pinfunction "SWDIO_SWDIO")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "54")
+			(name "unconnected-(JFRAME1-CABLE_SHIELDS-PadTBD-SHIELD)")
+			(class "Default")
+			(node
+				(ref "JFRAME1")
+				(pin "TBD-SHIELD")
+				(pinfunction "CABLE_SHIELDS_TBD-SHIELD")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "55")
+			(name "unconnected-(JFRAME1-ROBOT_FRAME-PadTBD-FRAME)")
+			(class "Default")
+			(node
+				(ref "JFRAME1")
+				(pin "TBD-FRAME")
+				(pinfunction "ROBOT_FRAME_TBD-FRAME")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "56")
+			(name "unconnected-(KWD1-CH2_COM-PadTBD-C2)")
+			(class "Default")
+			(node
+				(ref "KWD1")
+				(pin "TBD-C2")
+				(pinfunction "CH2_COM_TBD-C2")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "57")
+			(name "unconnected-(KWD1-CH2_NC-PadTBD-NC2)")
+			(class "Default")
+			(node
+				(ref "KWD1")
+				(pin "TBD-NC2")
+				(pinfunction "CH2_NC_TBD-NC2")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "58")
+			(name "unconnected-(KWD1-CH2_NO-PadTBD-NO2)")
+			(class "Default")
+			(node
+				(ref "KWD1")
+				(pin "TBD-NO2")
+				(pinfunction "CH2_NO_TBD-NO2")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "59")
+			(name "unconnected-(KWD2-CH2_COM-PadTBD-C2)")
+			(class "Default")
+			(node
+				(ref "KWD2")
+				(pin "TBD-C2")
+				(pinfunction "CH2_COM_TBD-C2")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "60")
+			(name "unconnected-(KWD2-CH2_NC-PadTBD-NC2)")
+			(class "Default")
+			(node
+				(ref "KWD2")
+				(pin "TBD-NC2")
+				(pinfunction "CH2_NC_TBD-NC2")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "61")
+			(name "unconnected-(KWD2-CH2_NO-PadTBD-NO2)")
+			(class "Default")
+			(node
+				(ref "KWD2")
+				(pin "TBD-NO2")
+				(pinfunction "CH2_NO_TBD-NO2")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "62")
+			(name "unconnected-(PSA1-FACTORY_AC_L-PadC14-L)")
+			(class "Default")
+			(node
+				(ref "PSA1")
+				(pin "C14-L")
+				(pinfunction "FACTORY_AC_L_C14-L")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "63")
+			(name "unconnected-(PSA1-FACTORY_AC_N-PadC14-N)")
+			(class "Default")
+			(node
+				(ref "PSA1")
+				(pin "C14-N")
+				(pinfunction "FACTORY_AC_N_C14-N")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "64")
+			(name "unconnected-(PSU2-FACTORY_AC_L-PadC14-L)")
+			(class "Default")
+			(node
+				(ref "PSU2")
+				(pin "C14-L")
+				(pinfunction "FACTORY_AC_L_C14-L")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "65")
+			(name "unconnected-(PSU2-FACTORY_AC_N-PadC14-N)")
+			(class "Default")
+			(node
+				(ref "PSU2")
+				(pin "C14-N")
+				(pinfunction "FACTORY_AC_N_C14-N")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "66")
+			(name "unconnected-(PSU2-FACTORY_PE-PadC14-PE)")
+			(class "Default")
+			(node
+				(ref "PSU2")
+				(pin "C14-PE")
+				(pinfunction "FACTORY_PE_C14-PE")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "67")
+			(name "unconnected-(PSU3-FACTORY_AC-PadAC-FACTORY)")
+			(class "Default")
+			(node
+				(ref "PSU3")
+				(pin "AC-FACTORY")
+				(pinfunction "FACTORY_AC_AC-FACTORY")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "68")
+			(name "unconnected-(SP1-ACTUATOR_0V-Pad1)")
+			(class "Default")
+			(node
+				(ref "SP1")
+				(pin "1")
+				(pinfunction "ACTUATOR_0V_1")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "69")
+			(name "unconnected-(SP1-PE-Pad2)")
+			(class "Default")
+			(node
+				(ref "SP1")
+				(pin "2")
+				(pinfunction "PE_2")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "70")
+			(name "unconnected-(SR1-AUX_NC_OUT-Pad42)")
+			(class "Default")
+			(node
+				(ref "SR1")
+				(pin "42")
+				(pinfunction "AUX_NC_OUT_42")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "71")
+			(name "unconnected-(SR1-SAFETY_OUT3_IN-Pad33)")
+			(class "Default")
+			(node
+				(ref "SR1")
+				(pin "33")
+				(pinfunction "SAFETY_OUT3_IN_33")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "72")
+			(name "unconnected-(SR1-SAFETY_OUT3_OUT-Pad34)")
+			(class "Default")
+			(node
+				(ref "SR1")
+				(pin "34")
+				(pinfunction "SAFETY_OUT3_OUT_34")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "73")
+			(name "unconnected-(SRA1-AUX_NC_OUT-Pad42)")
+			(class "Default")
+			(node
+				(ref "SRA1")
+				(pin "42")
+				(pinfunction "AUX_NC_OUT_42")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "74")
+			(name "unconnected-(SRA1-SAFETY_OUT3_IN-Pad33)")
+			(class "Default")
+			(node
+				(ref "SRA1")
+				(pin "33")
+				(pinfunction "SAFETY_OUT3_IN_33")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "75")
+			(name "unconnected-(SRA1-SAFETY_OUT3_OUT-Pad34)")
+			(class "Default")
+			(node
+				(ref "SRA1")
+				(pin "34")
+				(pinfunction "SAFETY_OUT3_OUT_34")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "76")
+			(name "unconnected-(U1-VDD_OMITTED-PadTTL-2)")
+			(class "Default")
+			(node
+				(ref "U1")
+				(pin "TTL-2")
+				(pinfunction "VDD_OMITTED_TTL-2")
+				(pintype "passive+no_connect")
+			)
+		)
+	)
+)

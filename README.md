@@ -20,25 +20,73 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 ## Start here
 
 - [Configuration management and revision hierarchy](docs/configuration-management.md)
+- [Current engineering handoff](docs/handoff-current.md)
+- [Complete review ledger](docs/review-ledger.md)
 - [System specification](docs/system-specification.md)
 - [30-inch product specification](docs/full-body-specification.md)
 - [Dimension-control specification](docs/dimension-control.md)
 - [Full-body load and power budget](docs/full-body-loads.md)
+- [R11 independent engineering calculations](docs/r11-engineering-calculations.md)
 - [Sub-meter humanoid benchmark](docs/architecture-benchmark.md)
 - [Walking-system specification](docs/walking-system.md)
 - [Walking verification matrix](docs/walking-verification.md)
 - [Mechanical concept and load model](docs/mechanical.md)
+- [HR-V0 native CAD and quote geometry](cad/hr-v0/README.md)
+- [HR-V0 Mechanical R0.1 preliminary baseline](docs/hr-v0-mechanical-r0.1.md)
 - [Electrical and safety architecture](docs/electrical.md)
+- [Safety-function requirements](docs/safety-functions.md)
+- [Actuator and harness interface constraints](docs/actuator-interface.md)
+- [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
+- [Native KiCad Electrical V3-P0.2 correction candidate](electrical/kicad/project-button-v3/README.md)
+- [HR-V0 Electrical V3 candidate architecture](docs/hr-v0-electrical-v3-candidate.md)
+- [HR-V0 Boston build-site basis](docs/hr-v0-build-site-basis.md)
+- [Boston fabrication and custom-metal sourcing](docs/hr-v0-fabrication-sourcing-boston.md)
 - [Control and fault-state specification](docs/control.md)
+- [HR-V0 Firmware P0.1 implementation candidate](docs/hr-v0-firmware-p0.1.md)
+- [Firmware source area](firmware/README.md)
 - [Verification plan](docs/verification.md)
+- [Verification scope and applicability](docs/verification-scope.md)
+- [Verification procedure registry](tests/procedures/procedure-registry.csv)
 - [Open decisions](docs/open-decisions.md)
 - [Evidence maturity dashboard](docs/evidence-maturity.md)
 - [Independent review disposition](docs/independent-review-disposition.md)
+- [Fable R11 review and disposition](docs/reviews/2026-08-06-fable-review-disposition.md)
+- [Sol R12 review and disposition](docs/reviews/2026-08-06-sol-r12-review-disposition.md)
+- [Sol R12 findings rechecked against R17](docs/reviews/2026-08-06-sol-r12-post-r17-status.md)
+- [Electrical V3-P0.2 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
+- [Firmware P0.1 independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
 - [Requirements](requirements/requirements.csv)
+- [HR-V0 energization gate register](requirements/hr-v0-energization-gates.csv)
 - [Proposed bill of materials](bom/bom.csv)
 - [Risk register](safety/risk-register.csv)
 
-Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements.
+Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements. Run `python tools/check_hr_v0_cad.py` after regenerating mechanical artifacts to verify part sets, readable warnings, vendor hashes, assembly exports, and the deliberately open calculation status. Run `python tools/generate_hr_v0_electrical_v3.py --validate` and `python tools/check_hr_v0_electrical_v3.py` to regenerate and cross-check the V3 native candidate. Run `python tools/check_energization_gates.py --through-stage E2 --require-ready` before claiming readiness for control-only first energization; it must remain nonzero until every applicable gate is evidenced and closed.
+
+## Review history
+
+Seventeen review/control rounds are complete: R01-R17. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. Correction and disposition passes are recorded separately from independent reviews.
+
+| Round | Review or control pass | Result |
+|---|---|---|
+| R01 | Initial evidence and public-claim audit | Established that the concept site was not a build package. |
+| R02 | Integrated-site accuracy review | Rechecked claims, artifacts, warnings, links, and legibility. |
+| R03 | Fable preliminary electrical review | Found zero connected symbols/nets and 368 ERC violations. |
+| R04 | Connected electrical V2 review | Introduced reviewable native ECAD and identified residual blockers. |
+| R05 | Independent Fable V2 review | Reproduced improvements and found monitored-reset and selection gaps. |
+| R06 | Electrical V2.1 correction review | Reached connected 15-sheet ERC 0/0 while preserving 106 unresolved items. |
+| R07 | Independent Sol system review | Identified collapse-on-power-loss, drivetrain, CAD, mass, sensing, and governance blockers. |
+| R08 | Sol finding disposition pass | Added requirements, risks, gates, evidence controls, and explicit unresolved decisions. |
+| R09 | Independent Fable claim/configuration audit | Confirmed electrical counts and found revision and deployment drift. |
+| R10 | Systems-baseline correction | Established `HR-30-SYS-R0.2` and synchronized the corrected deployment. |
+| R11 | Independent Fable engineering review | Complete: 7 BLOCKER, 11 MAJOR, and 12 MINOR findings; disposition recorded. |
+| R12 | Independent GPT Sol engineering review | Complete: 18 BLOCKER, 30 MAJOR, and 8 MINOR findings against the same baseline as R11. |
+| R13 | ECAD provenance correction | Added the controlled native KiCad V2.1 tree and hash manifest to the authoritative repository. |
+| R14 | R11 engineering correction pass | Corrected mass, torque, speed, battery, TCP, watchdog, safety-function, verification, interface, and public-fabrication-control defects without releasing unresolved hardware. |
+| R15 | R12 archival and reconciliation pass | Preserved Sol's complete dossier, dispositioned all 56 findings, and corrected processor ownership, duplicate release evidence, and qualitative IMU labeling. |
+| R16 | Native Electrical V3 candidate correction | Added and validated the ten-page connected V3-P0.1 candidate while retaining 29 unresolved interfaces and no energization approval. |
+| R17 | Restart-chain and firmware implementation candidate | Moved watchdog contacts into the two SR1 input returns, added fail-closed watchdog/supervisor source, 17 executable unit tests and a source manifest; compiled binaries and HIL remain open. |
+
+See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
 ## Release rule
 

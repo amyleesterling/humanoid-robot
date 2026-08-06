@@ -1,0 +1,38 @@
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\validation\project-button-v3-erc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\project-button-v3.kicad_sch"
+Found 0 violations
+Saved ERC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/project-button-v3/validation/project-button-v3-erc.rpt
+15:17:17: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+15:17:17: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\validation\project-button-v3.net" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\project-button-v3.kicad_sch"
+15:17:20: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+15:17:20: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export pdf --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-preliminary.pdf" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\project-button-v3.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-preliminary.pdf'.
+Done.
+15:17:21: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+15:17:21: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export svg --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\project-button-v3.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-01 External listed sources and DC boundaries.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-02 Dual-channel E-stop and RESET eligibility.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-03 Distinct ARM and watchdog eligibility.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-04 Contactor coils, mirror contacts and EDM.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-05 Redundant actuator-power interruption.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-06 Protected actuator branches and VDD-isolating injection.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-07 Independent watchdog power, controller and drivers.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-08 Compute, debug and control terminals.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-09 U2D2, actuator ports and bonding boundary.svg'.
+Done.
+15:17:22: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+15:17:22: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+
+exit=0

@@ -1,0 +1,17 @@
+package_status,input,needed_for
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,Prospective AC and DC fault current at every source,Interrupt ratings and fuse/contactor coordination
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,Every cable length and routing,"Voltage drop, fault loop, EMC, and communication integrity"
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,Ambient range inside each enclosure and limb,"Conductor, connector, supply, converter, and fuse derating"
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,"Bundling, flexing, insulation, and installation method",Conductor ampacity and mechanical life
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,Every connector and terminal continuous/peak current limit,Branch protection and current sharing
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,"Supply, converter, contactor, and actuator inrush","Fuse curves, contact life, precharge, and voltage stability"
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,"LRS-350 AC inrush maximum, duration, waveform, T50, and I-squared-t","QF1 curve, nuisance-trip margin, upstream selectivity, and contact stress"
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,"LRS-350 DC overload/short hiccup waveform, restart duty, downstream capacitance, rapid cycling, and regeneration at V0_12V_SAFE","F0 and branch coordination, power stability, conductor stress, and safe recovery"
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,"PS1 output-terminal allocation, parallel-lead current sharing, and enclosure thermal result","Terminal loading, conductor count, derating, and current balance"
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,PNOZ output-coil inrush and safety-supply fault behavior,FSR1/FSRH1 output-contact protection selection and coordination
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,Contactor-coil suppression energy and measured dropout/stopping time,SK1/SK2/SKH1/SKH2 selection and stop-performance validation
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,Released DYNAMIXEL data-only harness drawing plus continuity and no-backfeed results,Proof that individually protected TTL and RS-485 branches are not paralleled through VDD pin 2
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,Measured actuator duty cycle and simultaneous current profile,"Branch/main protection, battery, tether, thermal model"
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,"Battery pack voltage window, impedance, fault current, and BMS behavior","Pack fuse, disconnect, contactors, precharge, charger"
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,Total downstream DC-link capacitance and acceptable charge time,"Precharge resistor, relay, timing, threshold, and discharge"
+PRELIMINARY - NOT APPROVED FOR ENERGIZATION,"Applicable jurisdiction, standards, and installation category","Mains, PE, enclosure, wire, protection, and inspection rules"

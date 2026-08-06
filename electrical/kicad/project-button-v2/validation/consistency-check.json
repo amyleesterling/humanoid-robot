@@ -1,0 +1,14 @@
+{
+  "status": "PRELIMINARY - NOT APPROVED FOR ENERGIZATION",
+  "schematic_files": 15,
+  "child_sheets": 14,
+  "components": 142,
+  "nets": 168,
+  "scheduled_pin_endpoints": 597,
+  "connector_schedule_rows": 157,
+  "unresolved_selections_and_interfaces": 106,
+  "primary_source_records": 18,
+  "erc_errors": 0,
+  "erc_warnings": 0,
+  "caveat": "ERC is connectivity/annotation validation only. It does not prove physical pinouts, ratings, safety performance, or permission to energize; unresolved device pins remain passive functional interfaces."
+}

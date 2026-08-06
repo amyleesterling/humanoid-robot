@@ -1,0 +1,4847 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "09df256b-0c2e-54f0-ae43-60ce09c9134b")
+	(paper "A3")
+	(title_block
+		(title "PB Electrical V2.1 - 14 14 harness terminals")
+		(date "2026-08-05")
+		(rev "V2.1-P0.2")
+		(company "Project Button")
+		(comment 1 "PRELIMINARY - NOT APPROVED FOR ENERGIZATION")
+		(comment 2 "QUALIFIED REVIEW REQUIRED")
+	)
+	(lib_symbols
+		(symbol "PBV2:TBAC1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TBAC1" (at -17.78 -16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Guarded mains terminal block" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "No exposed mains terminal may be accessible without a tool. Terminal family, jumpers, covers, and ratings are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 13.97 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Guarded mains terminal block" (at -17.78 -13.21 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "TBAC1_0_1"
+				(rectangle
+					(start -17.78 -10.16)
+					(end 17.78 10.16)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "TBAC1_1_1"
+				(pin passive line
+					(at -20.32 -2.54 0)
+					(length 2.54)
+					(name "LINE_IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-LI" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 2.54 0)
+					(length 2.54)
+					(name "NEUTRAL_IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-NI" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -5.08 180)
+					(length 2.54)
+					(name "PS1_LINE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-L1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 0 180)
+					(length 2.54)
+					(name "PS2_LINE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-L2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 5.08 180)
+					(length 2.54)
+					(name "PS3_LINE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-L3" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:TB24"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TB24" (at -13.97 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "24 V safety-control terminal block" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "This block is downstream of PS2 only; it has no electrical connection to TBAC1 beyond the power-supply isolation boundary." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "24 V safety-control terminal block" (at -13.97 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "TB24_0_1"
+				(rectangle
+					(start -13.97 -8.89)
+					(end 13.97 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "TB24_1_1"
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "24V_IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-24I" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "0V_IN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0I" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -2.54 180)
+					(length 2.54)
+					(name "24V_FIELD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-24O" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 2.54 180)
+					(length 2.54)
+					(name "0V_FIELD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0O" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:TBV0"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TBV0" (at -13.97 -16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "HR-V0 actuator terminal block" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Terminal selection and conductor allocation are unresolved. No terminal on TBV0 feeds HR-30." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 13.97 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "HR-V0 actuator terminal block" (at -13.97 -13.21 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "TBV0_0_1"
+				(rectangle
+					(start -13.97 -10.16)
+					(end 13.97 10.16)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "TBV0_1_1"
+				(pin passive line
+					(at -16.51 -5.08 0)
+					(length 2.54)
+					(name "12V_RAW" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-R" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "12V_SAFE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 5.08 0)
+					(length 2.54)
+					(name "RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 -5.08 180)
+					(length 2.54)
+					(name "SHOULDER" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-1" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 0 180)
+					(length 2.54)
+					(name "ELBOW" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-2" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 16.51 5.08 180)
+					(length 2.54)
+					(name "GRIPPER" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-3" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:TBHR30"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TBHR30" (at -17.78 -19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "HR-30 actuator terminal block" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Terminal selection, branch allocation, current sharing, barriers, and conductor sizing are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "HR-30 actuator terminal block" (at -17.78 -15.75 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "TBHR30_0_1"
+				(rectangle
+					(start -17.78 -12.70)
+					(end 17.78 12.70)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "TBHR30_1_1"
+				(pin passive line
+					(at -20.32 -2.54 0)
+					(length 2.54)
+					(name "SOURCE_SAFE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 2.54 0)
+					(length 2.54)
+					(name "RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -7.62 180)
+					(length 2.54)
+					(name "UPPER_12V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-U+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 -2.54 180)
+					(length 2.54)
+					(name "UPPER_0V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-U0" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 2.54 180)
+					(length 2.54)
+					(name "LEFT_LEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-L" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 7.62 180)
+					(length 2.54)
+					(name "RIGHT_LEG" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-R" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:JHL1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "JHL1" (at -13.97 -21.59 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Left-leg harness bulkhead" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Connector family, pin numbers, current per contact, keying, shielding, strain relief, and ingress rating are unresolved. Prohibit unreviewed full-conductor DYNAMIXEL links; release a VDD-isolating data harness and require continuity/no-backfeed tests." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Left-leg harness bulkhead" (at -13.97 -18.29 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "JHL1_0_1"
+				(rectangle
+					(start -13.97 -15.24)
+					(end 13.97 15.24)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "JHL1_1_1"
+				(pin passive line
+					(at -16.51 -10.16 0)
+					(length 2.54)
+					(name "POWER" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -5.08 0)
+					(length 2.54)
+					(name "RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "D+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-D+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 5.08 0)
+					(length 2.54)
+					(name "D-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-D-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 10.16 0)
+					(length 2.54)
+					(name "SHIELD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-SH" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:JHR1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "JHR1" (at -13.97 -21.59 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Right-leg harness bulkhead" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Connector family, pin numbers, current per contact, keying, shielding, strain relief, and ingress rating are unresolved. Prohibit unreviewed full-conductor DYNAMIXEL links; release a VDD-isolating data harness and require continuity/no-backfeed tests." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Right-leg harness bulkhead" (at -13.97 -18.29 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "JHR1_0_1"
+				(rectangle
+					(start -13.97 -15.24)
+					(end 13.97 15.24)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "JHR1_1_1"
+				(pin passive line
+					(at -16.51 -10.16 0)
+					(length 2.54)
+					(name "POWER" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -5.08 0)
+					(length 2.54)
+					(name "RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "D+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-D+" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 5.08 0)
+					(length 2.54)
+					(name "D-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-D-" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 10.16 0)
+					(length 2.54)
+					(name "SHIELD" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-SH" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:JUA1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "JUA1" (at -13.97 -16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Upper-body bus A harness" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Connector family, pin map, current capacity, contact count, keying, and strain relief are unresolved. Prohibit standard full-conductor TTL daisy cables; release a data-only harness and require continuity/no-backfeed tests." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 13.97 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Upper-body bus A harness" (at -13.97 -13.21 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "JUA1_0_1"
+				(rectangle
+					(start -13.97 -10.16)
+					(end 13.97 10.16)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "JUA1_1_1"
+				(pin passive line
+					(at -16.51 -5.08 0)
+					(length 2.54)
+					(name "POWER_12V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 5.08 0)
+					(length 2.54)
+					(name "TTL_DATA" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-D" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:JUB1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "JUB1" (at -13.97 -16.51 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Upper-body bus B harness" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Connector family, pin map, current capacity, contact count, keying, and strain relief are unresolved. Prohibit standard full-conductor TTL daisy cables; release a data-only harness and require continuity/no-backfeed tests." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 13.97 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Upper-body bus B harness" (at -13.97 -13.21 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "JUB1_0_1"
+				(rectangle
+					(start -13.97 -10.16)
+					(end 13.97 10.16)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "JUB1_1_1"
+				(pin passive line
+					(at -16.51 -5.08 0)
+					(length 2.54)
+					(name "POWER_12V" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 0 0)
+					(length 2.54)
+					(name "RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 5.08 0)
+					(length 2.54)
+					(name "TTL_DATA" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-D" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:JSL1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "JSL1" (at -13.97 -24.13 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Left-foot sensor harness" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Cable topology, connector, differential/analog routing, shielding, and pin map are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 21.59 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Left-foot sensor harness" (at -13.97 -20.83 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "JSL1_0_1"
+				(rectangle
+					(start -13.97 -17.78)
+					(end 13.97 17.78)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "JSL1_1_1"
+				(pin passive line
+					(at -16.51 -12.70 0)
+					(length 2.54)
+					(name "POWER" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -7.62 0)
+					(length 2.54)
+					(name "RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "SPI_SCLK" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-SCLK" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "SPI_MOSI" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-MOSI" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 7.62 0)
+					(length 2.54)
+					(name "SPI_MISO" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-MISO" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 12.70 0)
+					(length 2.54)
+					(name "SYNC" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-SYNC" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:JSR1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "JSR1" (at -13.97 -24.13 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Right-foot sensor harness" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Cable topology, connector, differential/analog routing, shielding, and pin map are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 21.59 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Right-foot sensor harness" (at -13.97 -20.83 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "JSR1_0_1"
+				(rectangle
+					(start -13.97 -17.78)
+					(end 13.97 17.78)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "JSR1_1_1"
+				(pin passive line
+					(at -16.51 -12.70 0)
+					(length 2.54)
+					(name "POWER" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-P" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -7.62 0)
+					(length 2.54)
+					(name "RETURN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-0" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 -2.54 0)
+					(length 2.54)
+					(name "SPI_SCLK" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-SCLK" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 2.54 0)
+					(length 2.54)
+					(name "SPI_MOSI" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-MOSI" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 7.62 0)
+					(length 2.54)
+					(name "SPI_MISO" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-MISO" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -16.51 12.70 0)
+					(length 2.54)
+					(name "SYNC" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-SYNC" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:SHLD1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SHLD1" (at -17.78 -15.24 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "RS-485 shield-drain termination assembly" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Single-ended, capacitive, or direct chassis termination policy requires EMC testing; do not create an unintended DC 0 V/PE bond." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 12.70 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "RS-485 shield-drain termination assembly" (at -17.78 -11.94 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "SHLD1_0_1"
+				(rectangle
+					(start -17.78 -8.89)
+					(end 17.78 8.89)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "SHLD1_1_1"
+				(pin passive line
+					(at -20.32 -2.54 0)
+					(length 2.54)
+					(name "LEFT_DRAIN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-L" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 2.54 0)
+					(length 2.54)
+					(name "RIGHT_DRAIN" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-R" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at 20.32 0 180)
+					(length 2.54)
+					(name "CHASSIS" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-PE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PBV2:TP1"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TP1" (at -17.78 -21.59 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(property "Value" "Commissioning test-point and lockout panel" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Footprint" "" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Datasheet" "SELECTION REQUIRED" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Description" "Finger-safe test points, covers, labels, voltage categories, and lockout procedures are unresolved." (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Status" "SELECTION REQUIRED" (at 0 19.05 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			))
+			(property "Evidence" "Manufacturer datasheet and engineering inputs required" (at 0 0 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(hide yes)
+			))
+			(property "Display" "Commissioning test-point and lockout panel" (at -17.78 -18.29 0) (effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			))
+			(symbol "TP1_0_1"
+				(rectangle
+					(start -17.78 -15.24)
+					(end 17.78 15.24)
+					(stroke (width 0.45) (type solid))
+					(fill (type background))
+				)
+			)
+			(symbol "TP1_1_1"
+				(pin passive line
+					(at -20.32 -10.16 0)
+					(length 2.54)
+					(name "PE_TEST" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-PE" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 -5.08 0)
+					(length 2.54)
+					(name "SAFETY_24V_TEST" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-24" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 0 0)
+					(length 2.54)
+					(name "SAFETY_0V_TEST" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-S0" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 5.08 0)
+					(length 2.54)
+					(name "V0_SAFE_TEST" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-V0" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+				(pin passive line
+					(at -20.32 10.16 0)
+					(length 2.54)
+					(name "HR30_SAFE_TEST" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+					(number "TBD-HR" (effects
+						(font
+							(size 1.27 1.27)
+						)
+					))
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "PRELIMINARY - NOT APPROVED FOR ENERGIZATION"
+		(exclude_from_sim no)
+		(at 17.78 10.16 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+					(justify left bottom)
+			)
+		(uuid "4b0c1b87-bc68-57bd-a657-7dd186771338")
+	)
+	(text "14  Harness connectors, terminal blocks, shields, service separation, and unresolved physical pin maps"
+		(exclude_from_sim no)
+		(at 17.78 19.05 0)
+			(effects
+				(font
+					(size 2.03 2.03)
+				)
+					(justify left bottom)
+			)
+		(uuid "019d86f6-4e98-54ac-abb2-c7eb9b306800")
+	)
+	(text "All pins on this sheet are logical interface names. Every terminal number, connector family, contact, wire gauge, color, and cable construction remains selection-dependent."
+		(exclude_from_sim no)
+		(at 17.78 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "5ea1426e-887b-5ab8-a8d6-7dcf9b025361")
+	)
+	(rectangle
+		(start 12.70 31.75)
+		(end 406.40 256.54)
+		(stroke (width 0.50) (type solid))
+		(fill (type none))
+		(uuid "a064bae7-ab96-50a3-a007-412cfdf57cdf")
+	)
+	(wire
+		(pts (xy 55.88 58.42) (xy 50.80 58.42))
+		(stroke (width 0) (type default))
+		(uuid "2cc1cdc6-31cc-5e96-a1a0-51074dc2f031")
+	)
+	(global_label "AC_L_SWITCHED"
+		(shape bidirectional)
+		(at 50.80 58.42 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "5b137d91-98af-5945-a690-9bba4977e38b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 60.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2005"
+		(exclude_from_sim no)
+		(at 53.34 56.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d6733ea1-7901-5b09-aa34-522a7cf1f578")
+	)
+	(wire
+		(pts (xy 55.88 53.34) (xy 50.80 53.34))
+		(stroke (width 0) (type default))
+		(uuid "b6fcc13a-abc7-5b46-abbd-f6ba8c4530e2")
+	)
+	(global_label "AC_N_SWITCHED"
+		(shape bidirectional)
+		(at 50.80 53.34 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "84cfcfb6-3a3e-59cf-a41c-aa60a5fedcc0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 55.88 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2007"
+		(exclude_from_sim no)
+		(at 53.34 51.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "19b64162-12f2-5838-a23e-6f5a6d752cb3")
+	)
+	(wire
+		(pts (xy 96.52 60.96) (xy 101.60 60.96))
+		(stroke (width 0) (type default))
+		(uuid "1c7ed2c1-a0db-5dc5-a043-2a9d420aee88")
+	)
+	(global_label "AC_L_PS1"
+		(shape bidirectional)
+		(at 101.60 60.96 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "a7f5f91d-bd1c-596f-af01-7ff50dc8a955")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 63.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2001"
+		(exclude_from_sim no)
+		(at 99.06 59.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "de748e9a-3a84-5d66-abab-e0b675595e85")
+	)
+	(wire
+		(pts (xy 96.52 55.88) (xy 101.60 55.88))
+		(stroke (width 0) (type default))
+		(uuid "428fd945-aabb-5602-a013-b61779a92376")
+	)
+	(global_label "AC_L_PS2"
+		(shape bidirectional)
+		(at 101.60 55.88 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "30696ec6-3031-520a-a990-f5370ccbbf87")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 58.42 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2002"
+		(exclude_from_sim no)
+		(at 99.06 54.10 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "ae437ae3-095e-5de7-a74d-04b2b7ab9945")
+	)
+	(wire
+		(pts (xy 96.52 50.80) (xy 101.60 50.80))
+		(stroke (width 0) (type default))
+		(uuid "ac686b27-f9d5-5b32-a8a4-ee56fb14f260")
+	)
+	(global_label "AC_L_PS3"
+		(shape bidirectional)
+		(at 101.60 50.80 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "7f05b7f3-d97d-5128-a342-364e8f4d7640")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 53.34 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2003"
+		(exclude_from_sim no)
+		(at 99.06 49.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "90753ae9-c45c-5372-a1f9-74b489e858aa")
+	)
+	(wire
+		(pts (xy 186.69 58.42) (xy 181.61 58.42))
+		(stroke (width 0) (type default))
+		(uuid "4ff651ea-d76c-59b6-a68e-a3a72c36625e")
+	)
+	(global_label "SAFETY_24V"
+		(shape bidirectional)
+		(at 181.61 58.42 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "dea553a1-e3f1-594e-a03c-49345230f8ec")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 60.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2119"
+		(exclude_from_sim no)
+		(at 184.15 56.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "ae21320e-9404-541a-a364-c25f9c752d7c")
+	)
+	(wire
+		(pts (xy 186.69 53.34) (xy 181.61 53.34))
+		(stroke (width 0) (type default))
+		(uuid "8f4f9709-997a-52cb-affb-41646b8883dd")
+	)
+	(global_label "SAFETY_0V"
+		(shape bidirectional)
+		(at 181.61 53.34 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "ca02eba6-abe4-5410-a1be-f872ce7fc04d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 55.88 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2118"
+		(exclude_from_sim no)
+		(at 184.15 51.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "00a53c51-a287-58a5-a5f4-5052f9c30277")
+	)
+	(wire
+		(pts (xy 219.71 58.42) (xy 224.79 58.42))
+		(stroke (width 0) (type default))
+		(uuid "c6f9c52c-b647-599e-ae0a-6229bc9390e1")
+	)
+	(global_label "SAFETY_24V"
+		(shape bidirectional)
+		(at 224.79 58.42 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "51e91485-7410-53c0-ab6a-b7912bf42945")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 60.96 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2119"
+		(exclude_from_sim no)
+		(at 222.25 56.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f3a44c4d-444a-55c0-a41c-c09f0fe26847")
+	)
+	(wire
+		(pts (xy 219.71 53.34) (xy 224.79 53.34))
+		(stroke (width 0) (type default))
+		(uuid "aca23fe8-fb19-502a-a6f3-7b9ed6820130")
+	)
+	(global_label "SAFETY_0V"
+		(shape bidirectional)
+		(at 224.79 53.34 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "140c8693-9c39-59d9-a152-3c349d7ff65e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 224.79 55.88 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2118"
+		(exclude_from_sim no)
+		(at 222.25 51.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c95faa3b-10ab-54af-acf2-b0423c0cec34")
+	)
+	(wire
+		(pts (xy 313.69 60.96) (xy 308.61 60.96))
+		(stroke (width 0) (type default))
+		(uuid "88d7a991-0dd1-5f42-ac19-9b9fb555d369")
+	)
+	(global_label "V0_12V_RAW"
+		(shape bidirectional)
+		(at 308.61 60.96 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "2ec49a3b-e3ac-55ca-a617-de032b1a6f29")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 63.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2144"
+		(exclude_from_sim no)
+		(at 311.15 59.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "81ee1605-9c5a-52ea-add2-460121e5deaa")
+	)
+	(wire
+		(pts (xy 313.69 55.88) (xy 308.61 55.88))
+		(stroke (width 0) (type default))
+		(uuid "17cf63b2-b06d-585a-a3b3-2dcf95013c10")
+	)
+	(global_label "V0_12V_SAFE"
+		(shape bidirectional)
+		(at 308.61 55.88 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "136ada8d-c3b5-5220-ad2f-467c7ecbf3eb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 58.42 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2145"
+		(exclude_from_sim no)
+		(at 311.15 54.10 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "7185628f-f649-58a8-a94f-efde0f7adb49")
+	)
+	(wire
+		(pts (xy 313.69 50.80) (xy 308.61 50.80))
+		(stroke (width 0) (type default))
+		(uuid "30d492b4-883b-5670-a35b-2164018cbf18")
+	)
+	(global_label "V0_0V"
+		(shape bidirectional)
+		(at 308.61 50.80 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "23ac91dd-9be8-5212-a655-9f617f0b3725")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 53.34 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2142"
+		(exclude_from_sim no)
+		(at 311.15 49.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "fc939dd7-5b71-5969-afb4-608cddf4459c")
+	)
+	(wire
+		(pts (xy 346.71 60.96) (xy 351.79 60.96))
+		(stroke (width 0) (type default))
+		(uuid "c409ec5a-8610-5c40-a254-0076af222c45")
+	)
+	(global_label "V0_BRANCH_SHOULDER"
+		(shape bidirectional)
+		(at 351.79 60.96 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "52459e70-2625-5399-af44-ea4e52bf9ec5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 63.50 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2148"
+		(exclude_from_sim no)
+		(at 349.25 59.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6981b3e1-0d08-5aef-a2df-99010502a866")
+	)
+	(wire
+		(pts (xy 346.71 55.88) (xy 351.79 55.88))
+		(stroke (width 0) (type default))
+		(uuid "52276a2b-ae96-5206-a082-4b8304003399")
+	)
+	(global_label "V0_BRANCH_ELBOW"
+		(shape bidirectional)
+		(at 351.79 55.88 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "3632d194-2146-52e5-a413-7dea0959fc64")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 58.42 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2146"
+		(exclude_from_sim no)
+		(at 349.25 54.10 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "bd23ef97-3fbf-5a88-adb9-0757bfce9e17")
+	)
+	(wire
+		(pts (xy 346.71 50.80) (xy 351.79 50.80))
+		(stroke (width 0) (type default))
+		(uuid "c22d88db-faa2-5f96-a4a7-4be52d7fd11a")
+	)
+	(global_label "V0_BRANCH_GRIPPER"
+		(shape bidirectional)
+		(at 351.79 50.80 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "ab4b0532-3faa-5c08-a96e-e92de495eb3b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 351.79 53.34 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2147"
+		(exclude_from_sim no)
+		(at 349.25 49.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "7a8e655f-91f3-5823-a9b3-e0742d589fd3")
+	)
+	(wire
+		(pts (xy 55.88 114.30) (xy 50.80 114.30))
+		(stroke (width 0) (type default))
+		(uuid "43ad0a4f-5106-53ea-a5ce-d982f42ee68f")
+	)
+	(global_label "HR30_ACTUATOR_SAFE"
+		(shape bidirectional)
+		(at 50.80 114.30 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "d40a1ca3-62b9-5043-abb4-9a00bd5a84df")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 116.84 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2027"
+		(exclude_from_sim no)
+		(at 53.34 112.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "a3266eda-f28e-502e-a442-74b89d73f445")
+	)
+	(wire
+		(pts (xy 55.88 109.22) (xy 50.80 109.22))
+		(stroke (width 0) (type default))
+		(uuid "af46c634-706b-5565-a21d-05499724308e")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 50.80 109.22 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "4400f819-dde4-5095-ae34-002bde9e653d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 50.80 111.76 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 53.34 107.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "54c9e769-0ace-53f1-ae2c-8f8f9e93eb8d")
+	)
+	(wire
+		(pts (xy 96.52 119.38) (xy 101.60 119.38))
+		(stroke (width 0) (type default))
+		(uuid "6663dd39-14b1-5f9c-a57d-bbd0821d2515")
+	)
+	(global_label "HR30_UPPER_12V"
+		(shape bidirectional)
+		(at 101.60 119.38 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "a45edb77-722a-55ac-a73e-bfebec1cbec9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 121.92 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2074"
+		(exclude_from_sim no)
+		(at 99.06 117.60 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "1f90f8bb-e797-5b0b-a465-66e863c89433")
+	)
+	(wire
+		(pts (xy 96.52 114.30) (xy 101.60 114.30))
+		(stroke (width 0) (type default))
+		(uuid "b293f339-819e-568f-a347-0152f68049e5")
+	)
+	(global_label "HR30_UPPER_0V"
+		(shape bidirectional)
+		(at 101.60 114.30 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "b336cf19-3832-5d0f-a4ad-eda741e0da5b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 116.84 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2073"
+		(exclude_from_sim no)
+		(at 99.06 112.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "cc012e29-82fe-5cc5-a3c6-ded39d8e2738")
+	)
+	(wire
+		(pts (xy 96.52 109.22) (xy 101.60 109.22))
+		(stroke (width 0) (type default))
+		(uuid "6c49de45-77dc-5c60-a053-ab76641cc482")
+	)
+	(global_label "HR30_ACTUATOR_SAFE"
+		(shape bidirectional)
+		(at 101.60 109.22 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "43295a88-4be6-5805-aa3d-a51e0c9a32d9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 111.76 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2027"
+		(exclude_from_sim no)
+		(at 99.06 107.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "21a883c0-494c-5abc-a127-f459bf0e3f55")
+	)
+	(wire
+		(pts (xy 96.52 104.14) (xy 101.60 104.14))
+		(stroke (width 0) (type default))
+		(uuid "6021a283-170f-5685-ad7d-29c0ea401bbc")
+	)
+	(global_label "HR30_ACTUATOR_SAFE"
+		(shape bidirectional)
+		(at 101.60 104.14 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "cf72ca24-2682-5c3a-a23c-23f2382b81a4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.60 106.68 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2027"
+		(exclude_from_sim no)
+		(at 99.06 102.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "fa638ef1-2210-53d4-a786-6f2540c46967")
+	)
+	(wire
+		(pts (xy 186.69 121.92) (xy 181.61 121.92))
+		(stroke (width 0) (type default))
+		(uuid "4441bf67-1f53-5c49-ad32-753e45c787ed")
+	)
+	(global_label "HR30_ACTUATOR_SAFE"
+		(shape bidirectional)
+		(at 181.61 121.92 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "622c3bff-cbaa-5acc-ad39-097a7801dd04")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 124.46 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2027"
+		(exclude_from_sim no)
+		(at 184.15 120.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "f4e63cb5-92b1-598e-a521-dd1aacc41387")
+	)
+	(wire
+		(pts (xy 186.69 116.84) (xy 181.61 116.84))
+		(stroke (width 0) (type default))
+		(uuid "6ede2c3f-8cd5-517c-a1c4-594f42ce362d")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 181.61 116.84 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "7f19a5de-241a-52e0-ae2d-b797a4c77c1d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 119.38 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 184.15 115.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "814a1bf9-b5d8-5097-adf3-a7bbdd0f09cb")
+	)
+	(wire
+		(pts (xy 186.69 111.76) (xy 181.61 111.76))
+		(stroke (width 0) (type default))
+		(uuid "6a608fc9-d20f-504c-ab9e-e1df82b9d158")
+	)
+	(global_label "RS485_LEFT_D+"
+		(shape bidirectional)
+		(at 181.61 111.76 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "e2630f46-000c-5dcd-ac94-65ac67f28219")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 114.30 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2112"
+		(exclude_from_sim no)
+		(at 184.15 109.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "5be243f4-e906-5a8e-aa6d-da568b0a8d2e")
+	)
+	(wire
+		(pts (xy 186.69 106.68) (xy 181.61 106.68))
+		(stroke (width 0) (type default))
+		(uuid "b5a7ac68-8920-50c0-afe1-6df9aa93a0f4")
+	)
+	(global_label "RS485_LEFT_D-"
+		(shape bidirectional)
+		(at 181.61 106.68 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "b23b76e8-8987-56bc-a7be-b5cff004aee1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 109.22 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2113"
+		(exclude_from_sim no)
+		(at 184.15 104.90 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "9196d4e6-ab88-5f82-a7f9-ebae0de6efa0")
+	)
+	(wire
+		(pts (xy 186.69 101.60) (xy 181.61 101.60))
+		(stroke (width 0) (type default))
+		(uuid "6c7a5c6b-e797-52a7-a1d9-50239dd1aa77")
+	)
+	(global_label "RS485_LEFT_SHIELD"
+		(shape bidirectional)
+		(at 181.61 101.60 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "fc97f061-3e2f-598f-a723-3e5c1930d754")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 104.14 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2114"
+		(exclude_from_sim no)
+		(at 184.15 99.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "3b9a1e5c-992a-5880-a0b0-85f560a0b4fd")
+	)
+	(wire
+		(pts (xy 313.69 121.92) (xy 308.61 121.92))
+		(stroke (width 0) (type default))
+		(uuid "de5cf218-36d5-5296-a60a-1938f76059fa")
+	)
+	(global_label "HR30_ACTUATOR_SAFE"
+		(shape bidirectional)
+		(at 308.61 121.92 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "f6924f3c-184f-581e-aa8b-a0d3a5735a0b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 124.46 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2027"
+		(exclude_from_sim no)
+		(at 311.15 120.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6c273188-49dc-51f8-ac34-1f82c0e08d00")
+	)
+	(wire
+		(pts (xy 313.69 116.84) (xy 308.61 116.84))
+		(stroke (width 0) (type default))
+		(uuid "94d4634b-76b5-575a-ad6a-9170a3819b88")
+	)
+	(global_label "HR30_0V"
+		(shape bidirectional)
+		(at 308.61 116.84 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "e8196179-4c01-5766-a8b1-d791e30a0425")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 119.38 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2026"
+		(exclude_from_sim no)
+		(at 311.15 115.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "4cafe1d5-ea3d-57d9-a954-89f0202b7b61")
+	)
+	(wire
+		(pts (xy 313.69 111.76) (xy 308.61 111.76))
+		(stroke (width 0) (type default))
+		(uuid "fa59b4ad-dda2-551e-a505-cd12d3359a34")
+	)
+	(global_label "RS485_RIGHT_D+"
+		(shape bidirectional)
+		(at 308.61 111.76 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "9f8b44b8-b394-5dc5-a742-08d037e5e1e4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 114.30 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2115"
+		(exclude_from_sim no)
+		(at 311.15 109.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "1c803e93-7047-5cf7-ab57-82e71b8b8ada")
+	)
+	(wire
+		(pts (xy 313.69 106.68) (xy 308.61 106.68))
+		(stroke (width 0) (type default))
+		(uuid "66788ac2-6451-5151-a189-1ac99bd9b3a0")
+	)
+	(global_label "RS485_RIGHT_D-"
+		(shape bidirectional)
+		(at 308.61 106.68 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "00729bdd-2a1a-5b1b-a187-e654d1255231")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 109.22 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2116"
+		(exclude_from_sim no)
+		(at 311.15 104.90 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "5834a1ec-88b7-51d6-a8e0-eb9d1ba1a43e")
+	)
+	(wire
+		(pts (xy 313.69 101.60) (xy 308.61 101.60))
+		(stroke (width 0) (type default))
+		(uuid "844152d9-9b07-5ef5-ad0a-38453134acd8")
+	)
+	(global_label "RS485_RIGHT_SHIELD"
+		(shape bidirectional)
+		(at 308.61 101.60 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "aef8f88b-ab12-5c13-a554-0a52fc1d294b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 104.14 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2117"
+		(exclude_from_sim no)
+		(at 311.15 99.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "bb9e126c-ee4b-55b8-a72b-60c9aca3fb7e")
+	)
+	(wire
+		(pts (xy 59.69 172.72) (xy 54.61 172.72))
+		(stroke (width 0) (type default))
+		(uuid "62d03616-1360-5273-af5a-b7fcf89c6359")
+	)
+	(global_label "HR30_UPPER_12V"
+		(shape bidirectional)
+		(at 54.61 172.72 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "270a67d5-2800-5a2c-adc0-eea3a413d5e1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 175.26 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2074"
+		(exclude_from_sim no)
+		(at 57.15 170.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "4565c7ae-9881-5cae-a36a-e62788f2e749")
+	)
+	(wire
+		(pts (xy 59.69 167.64) (xy 54.61 167.64))
+		(stroke (width 0) (type default))
+		(uuid "3cdd5c59-ff78-596d-a413-35b922c42b51")
+	)
+	(global_label "HR30_UPPER_0V"
+		(shape bidirectional)
+		(at 54.61 167.64 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "a8a92ed0-1f7d-59a9-a38c-d92d63c816de")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 170.18 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2073"
+		(exclude_from_sim no)
+		(at 57.15 165.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "a51c908b-0049-59a3-ab09-76d043bb1240")
+	)
+	(wire
+		(pts (xy 59.69 162.56) (xy 54.61 162.56))
+		(stroke (width 0) (type default))
+		(uuid "4aa640f0-e3e3-5a32-acc4-90dc4b76bf1e")
+	)
+	(global_label "TTL_UPPER_A"
+		(shape bidirectional)
+		(at 54.61 162.56 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "e2d38f8a-2e0e-5791-abb6-f6b46d05d5a0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 165.10 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2137"
+		(exclude_from_sim no)
+		(at 57.15 160.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "6ea8aa83-fd86-5d2f-a989-e71830acbd02")
+	)
+	(wire
+		(pts (xy 186.69 172.72) (xy 181.61 172.72))
+		(stroke (width 0) (type default))
+		(uuid "e2a7d90e-9cda-5c03-a9e5-158a557e9290")
+	)
+	(global_label "HR30_UPPER_12V"
+		(shape bidirectional)
+		(at 181.61 172.72 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "a916a4f1-8479-5b1b-a83a-26945263b69f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 175.26 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2074"
+		(exclude_from_sim no)
+		(at 184.15 170.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b81720b0-b831-53a1-ae61-9434dd9378ca")
+	)
+	(wire
+		(pts (xy 186.69 167.64) (xy 181.61 167.64))
+		(stroke (width 0) (type default))
+		(uuid "2fd7b3b0-b942-5ce7-a182-e76c334664c7")
+	)
+	(global_label "HR30_UPPER_0V"
+		(shape bidirectional)
+		(at 181.61 167.64 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "6ddad01b-620d-5f2d-a259-ec0d49d563f1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 170.18 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2073"
+		(exclude_from_sim no)
+		(at 184.15 165.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "a0ac662b-63d8-5707-ac4b-bba8ad6fca69")
+	)
+	(wire
+		(pts (xy 186.69 162.56) (xy 181.61 162.56))
+		(stroke (width 0) (type default))
+		(uuid "5a0794c5-7772-5b0a-a42c-ec5d33a8150b")
+	)
+	(global_label "TTL_UPPER_B"
+		(shape bidirectional)
+		(at 181.61 162.56 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "280ab737-13cf-531e-a026-87e41bc8a432")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 181.61 165.10 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2138"
+		(exclude_from_sim no)
+		(at 184.15 160.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "294c9dae-17ea-57f4-a2d4-7db08674c1e5")
+	)
+	(wire
+		(pts (xy 313.69 180.34) (xy 308.61 180.34))
+		(stroke (width 0) (type default))
+		(uuid "6480f7d4-cb09-5ea5-a4a4-26b55acf9a2e")
+	)
+	(global_label "SENSOR_3V3"
+		(shape bidirectional)
+		(at 308.61 180.34 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "885fc859-0d7c-516d-a73d-6a6ec75507a5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 182.88 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2121"
+		(exclude_from_sim no)
+		(at 311.15 178.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "71d47dd0-4a8a-5310-a430-be298d7aef36")
+	)
+	(wire
+		(pts (xy 313.69 175.26) (xy 308.61 175.26))
+		(stroke (width 0) (type default))
+		(uuid "98479096-225e-5164-a536-5b5995caafcb")
+	)
+	(global_label "SENSOR_0V"
+		(shape bidirectional)
+		(at 308.61 175.26 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "3f7fcf61-70e2-5360-a015-00582c6987c3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 177.80 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2120"
+		(exclude_from_sim no)
+		(at 311.15 173.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "651f5572-cab2-5a39-a395-27699f0425b1")
+	)
+	(wire
+		(pts (xy 313.69 170.18) (xy 308.61 170.18))
+		(stroke (width 0) (type default))
+		(uuid "06452457-21de-5d4c-a60f-806b4080c85a")
+	)
+	(global_label "SENSOR_SPI_SCLK"
+		(shape bidirectional)
+		(at 308.61 170.18 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "b9e633c9-4e82-51ad-a2ab-dabc04a70f7e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 172.72 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2134"
+		(exclude_from_sim no)
+		(at 311.15 168.40 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "28acbe89-8ed7-5cd9-aebd-f7cb3d0d6122")
+	)
+	(wire
+		(pts (xy 313.69 165.10) (xy 308.61 165.10))
+		(stroke (width 0) (type default))
+		(uuid "5b622267-b39c-5a23-a8bf-a9910657f63a")
+	)
+	(global_label "SENSOR_SPI_MOSI"
+		(shape bidirectional)
+		(at 308.61 165.10 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "33670de2-f11d-55b8-a4c4-4f9ca2ac6e44")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 167.64 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2133"
+		(exclude_from_sim no)
+		(at 311.15 163.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "9806c8d8-79c3-5c1d-aa79-70ad3945edf8")
+	)
+	(wire
+		(pts (xy 313.69 160.02) (xy 308.61 160.02))
+		(stroke (width 0) (type default))
+		(uuid "d9a8908f-81b3-586b-a8c6-104cb198ead1")
+	)
+	(global_label "SENSOR_SPI_MISO"
+		(shape bidirectional)
+		(at 308.61 160.02 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "1e728a9c-4abf-5d2f-adc5-1f4393464217")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 162.56 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2132"
+		(exclude_from_sim no)
+		(at 311.15 158.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "d8dd781b-fee5-55bb-a829-5c1a196ab97f")
+	)
+	(wire
+		(pts (xy 313.69 154.94) (xy 308.61 154.94))
+		(stroke (width 0) (type default))
+		(uuid "d33130b8-9b1d-539a-a936-778fc408f34e")
+	)
+	(global_label "SENSOR_SYNC"
+		(shape bidirectional)
+		(at 308.61 154.94 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "e37f0ed0-eceb-58c1-a125-cd7595ca6608")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 308.61 157.48 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2135"
+		(exclude_from_sim no)
+		(at 311.15 153.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "84d42111-5bea-5563-a4df-2e4d36c03955")
+	)
+	(wire
+		(pts (xy 59.69 236.22) (xy 54.61 236.22))
+		(stroke (width 0) (type default))
+		(uuid "53840bcf-3c6d-5323-ada9-1a9906a76de9")
+	)
+	(global_label "SENSOR_3V3"
+		(shape bidirectional)
+		(at 54.61 236.22 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "1c633ab3-6d0c-5b8f-ad6b-365e877c3571")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 238.76 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2121"
+		(exclude_from_sim no)
+		(at 57.15 234.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b81a7c9c-ffc7-5759-a9e5-af97852559b3")
+	)
+	(wire
+		(pts (xy 59.69 231.14) (xy 54.61 231.14))
+		(stroke (width 0) (type default))
+		(uuid "d637c987-f313-5827-a780-30b9fe185610")
+	)
+	(global_label "SENSOR_0V"
+		(shape bidirectional)
+		(at 54.61 231.14 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "77d00b07-a2b4-579a-ac8e-2afe53e3f4a2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 233.68 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2120"
+		(exclude_from_sim no)
+		(at 57.15 229.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c834dd0c-db52-58fe-aa23-c883528fd2f5")
+	)
+	(wire
+		(pts (xy 59.69 226.06) (xy 54.61 226.06))
+		(stroke (width 0) (type default))
+		(uuid "350a2dd8-8aaf-5798-a049-7291e3aec702")
+	)
+	(global_label "SENSOR_SPI_SCLK"
+		(shape bidirectional)
+		(at 54.61 226.06 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "866416b6-8e88-5547-acb5-68d1ac602409")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 228.60 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2134"
+		(exclude_from_sim no)
+		(at 57.15 224.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c976fffb-cf0a-5b7d-a532-217f0b49ebae")
+	)
+	(wire
+		(pts (xy 59.69 220.98) (xy 54.61 220.98))
+		(stroke (width 0) (type default))
+		(uuid "a8f55d26-1b9d-575e-afa3-5d35839eecc3")
+	)
+	(global_label "SENSOR_SPI_MOSI"
+		(shape bidirectional)
+		(at 54.61 220.98 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "fd9c8317-35e7-5eda-adf2-218aba64a834")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 223.52 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2133"
+		(exclude_from_sim no)
+		(at 57.15 219.20 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "b5fe718e-4694-5041-ae32-64e826ae39eb")
+	)
+	(wire
+		(pts (xy 59.69 215.90) (xy 54.61 215.90))
+		(stroke (width 0) (type default))
+		(uuid "19e2775b-444e-5cd1-a972-4f73a9383835")
+	)
+	(global_label "SENSOR_SPI_MISO"
+		(shape bidirectional)
+		(at 54.61 215.90 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "bd2893e4-ecff-51e5-a2b9-d2e0ffff63fc")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 218.44 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2132"
+		(exclude_from_sim no)
+		(at 57.15 214.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "2dbfcb64-a36e-53b3-a5af-96dcc36cffa8")
+	)
+	(wire
+		(pts (xy 59.69 210.82) (xy 54.61 210.82))
+		(stroke (width 0) (type default))
+		(uuid "8ea38f3c-3438-52c5-a4d6-418c0a1a020e")
+	)
+	(global_label "SENSOR_SYNC"
+		(shape bidirectional)
+		(at 54.61 210.82 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "d7ed59c7-4c88-5cac-a211-0e0355c321ff")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 54.61 213.36 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2135"
+		(exclude_from_sim no)
+		(at 57.15 209.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "3b5c63c8-e3ad-5522-aa32-891801424163")
+	)
+	(wire
+		(pts (xy 182.88 226.06) (xy 177.80 226.06))
+		(stroke (width 0) (type default))
+		(uuid "c0b52f80-93f3-52fd-a0a5-0c24e63272db")
+	)
+	(global_label "RS485_LEFT_SHIELD"
+		(shape bidirectional)
+		(at 177.80 226.06 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "3f9d0b5a-43b5-549c-a8c7-74d81cc536a1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 228.60 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2114"
+		(exclude_from_sim no)
+		(at 180.34 224.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "22577d04-0df6-5098-ad56-ab510a81e452")
+	)
+	(wire
+		(pts (xy 182.88 220.98) (xy 177.80 220.98))
+		(stroke (width 0) (type default))
+		(uuid "dbf6df93-c2c1-5984-a9b3-88e287bdd4e8")
+	)
+	(global_label "RS485_RIGHT_SHIELD"
+		(shape bidirectional)
+		(at 177.80 220.98 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "67c5ff28-91f0-5fc0-a715-8771b4385e31")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 177.80 223.52 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2117"
+		(exclude_from_sim no)
+		(at 180.34 219.20 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "ae0d7620-8961-5c62-a4a5-4dc6c5458621")
+	)
+	(wire
+		(pts (xy 223.52 223.52) (xy 228.60 223.52))
+		(stroke (width 0) (type default))
+		(uuid "4318a11d-30a6-5d66-afcd-b3f08c50a795")
+	)
+	(global_label "PE"
+		(shape bidirectional)
+		(at 228.60 223.52 0)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left)
+			)
+		(uuid "0357abc5-89b9-5f97-af75-b89e903aceaa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 228.60 226.06 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2111"
+		(exclude_from_sim no)
+		(at 226.06 221.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "1b2386cb-9290-5215-a3c7-0e869f7af0b5")
+	)
+	(wire
+		(pts (xy 309.88 233.68) (xy 304.80 233.68))
+		(stroke (width 0) (type default))
+		(uuid "f21f8fef-9574-5625-a7b3-c9c6f6a37382")
+	)
+	(global_label "PE"
+		(shape bidirectional)
+		(at 304.80 233.68 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "6c213da0-c269-5fad-ac6b-a295ad75e60c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 304.80 236.22 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2111"
+		(exclude_from_sim no)
+		(at 307.34 231.90 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "df1a90a8-58bd-545a-a668-b66871905b4d")
+	)
+	(wire
+		(pts (xy 309.88 228.60) (xy 304.80 228.60))
+		(stroke (width 0) (type default))
+		(uuid "023b6bcb-4198-5ac4-a753-1a918be2b286")
+	)
+	(global_label "SAFETY_24V"
+		(shape bidirectional)
+		(at 304.80 228.60 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "91efcf99-6498-5b0a-a33f-e1aa7c36bbea")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 304.80 231.14 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2119"
+		(exclude_from_sim no)
+		(at 307.34 226.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c24cf23d-f7f9-5975-a898-c0947c15247c")
+	)
+	(wire
+		(pts (xy 309.88 223.52) (xy 304.80 223.52))
+		(stroke (width 0) (type default))
+		(uuid "0522f758-6b6a-5125-a6e0-364e790b0fc1")
+	)
+	(global_label "SAFETY_0V"
+		(shape bidirectional)
+		(at 304.80 223.52 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "338a8df2-03bb-552e-ac47-9ef14bbc03ad")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 304.80 226.06 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2118"
+		(exclude_from_sim no)
+		(at 307.34 221.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "0c3f1211-0cb4-5841-a8a9-2f30cd7da1ad")
+	)
+	(wire
+		(pts (xy 309.88 218.44) (xy 304.80 218.44))
+		(stroke (width 0) (type default))
+		(uuid "0888a062-a43b-5938-a2d4-a619b44260c4")
+	)
+	(global_label "V0_12V_SAFE"
+		(shape bidirectional)
+		(at 304.80 218.44 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "3eafea0a-1f60-5681-a787-01353aa5e3ec")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 304.80 220.98 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2145"
+		(exclude_from_sim no)
+		(at 307.34 216.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c16ca0e6-0437-5fe2-ac7c-2b563dbc0b96")
+	)
+	(wire
+		(pts (xy 309.88 213.36) (xy 304.80 213.36))
+		(stroke (width 0) (type default))
+		(uuid "a4e83c28-0c08-5444-ab9e-fe9466399005")
+	)
+	(global_label "HR30_ACTUATOR_SAFE"
+		(shape bidirectional)
+		(at 304.80 213.36 180)
+		(fields_autoplaced yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify right)
+			)
+		(uuid "ba8a7235-de52-575e-a7b1-879f838ad68e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}" (at 304.80 215.90 0) (effects
+			(font
+				(size 1.27 1.27)
+			)
+				(hide yes)
+		))
+	)
+	(text "W2027"
+		(exclude_from_sim no)
+		(at 307.34 211.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify bottom)
+			)
+		(uuid "c5d15225-90d8-53ad-aaec-053551744542")
+	)
+	(text "NOTE 1: No connector or terminal number on this sheet is physical. Every TBD identifier is an explicit release blocker."
+		(exclude_from_sim no)
+		(at 17.78 266.70 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "84579726-1e2f-5f08-afa0-5d0e10ac6ad2")
+	)
+	(text "NOTE 2: Minimum separation, creepage, clearance, shielding, bend radius, flex life, and service loops require the panel and harness design."
+		(exclude_from_sim no)
+		(at 17.78 271.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+					(justify left bottom)
+			)
+		(uuid "23410923-2723-57b4-ae7c-079fa4bf5ec8")
+	)
+	(symbol
+		(lib_id "PBV2:TBAC1")
+		(at 76.20 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ab724408-e073-53a4-a845-c6add01130fa")
+		(property "Reference" "TBAC1"
+			(at 58.42 39.37 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Guarded mains terminal block"
+			(at 76.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "No exposed mains terminal may be accessible without a tool. Terminal family, jumpers, covers, and ratings are unresolved."
+			(at 76.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 69.85 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Guarded mains terminal block"
+			(at 58.42 42.67 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-LI"
+			(uuid "d8dc7a1b-8edb-59a0-a64b-4be98a148b35")
+		)
+		(pin "TBD-NI"
+			(uuid "eadb17bb-3dce-5670-a887-96e564748201")
+		)
+		(pin "TBD-L1"
+			(uuid "a918da11-b451-5659-a7a5-26d3dbb11d2e")
+		)
+		(pin "TBD-L2"
+			(uuid "ad7d772b-b0e3-5de9-abda-2a4dbc4658b6")
+		)
+		(pin "TBD-L3"
+			(uuid "addb8a42-f440-5d82-a458-4d91707b5a40")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/65bba94b-8a4b-5d05-ab17-731ee7dec45c"
+					(reference "TBAC1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:TB24")
+		(at 203.20 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8a99b42f-3b26-5e94-ac9c-48a145b5a4ff")
+		(property "Reference" "TB24"
+			(at 189.23 40.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "24 V safety-control terminal block"
+			(at 203.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "This block is downstream of PS2 only; it has no electrical connection to TBAC1 beyond the power-supply isolation boundary."
+			(at 203.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 68.58 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "24 V safety-control terminal block"
+			(at 189.23 43.94 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-24I"
+			(uuid "239bc0aa-bd95-521b-a871-fce5685cf5c6")
+		)
+		(pin "TBD-0I"
+			(uuid "47c72b30-72fe-531d-a644-3f35da73c7b9")
+		)
+		(pin "TBD-24O"
+			(uuid "938ece3d-b100-5be9-ab95-d38cfc80fac4")
+		)
+		(pin "TBD-0O"
+			(uuid "2a07fcba-a1ef-55b8-a9e0-14f99205a752")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/65bba94b-8a4b-5d05-ab17-731ee7dec45c"
+					(reference "TB24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:TBV0")
+		(at 330.20 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d5d94951-2833-5c98-a6a1-ab2d4d451b11")
+		(property "Reference" "TBV0"
+			(at 344.17 39.37 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "HR-V0 actuator terminal block"
+			(at 330.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 330.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Terminal selection and conductor allocation are unresolved. No terminal on TBV0 feeds HR-30."
+			(at 330.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 330.20 69.85 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 330.20 55.88 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "HR-V0 actuator terminal block"
+			(at 344.17 42.67 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-R"
+			(uuid "e89d5589-5f8e-54ba-a711-80f3a96a0731")
+		)
+		(pin "TBD-S"
+			(uuid "e885ba73-3d9f-548e-a7ca-61f730f1fec4")
+		)
+		(pin "TBD-0"
+			(uuid "682351c3-795a-5615-aafe-b0b7e8d24267")
+		)
+		(pin "TBD-1"
+			(uuid "fed74b0f-dac5-5ad0-a936-d93570b889fa")
+		)
+		(pin "TBD-2"
+			(uuid "12c0c038-b006-5f8b-a0fe-adc740509eda")
+		)
+		(pin "TBD-3"
+			(uuid "508dc7eb-4d0b-5d48-a000-5822dab92ef6")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/65bba94b-8a4b-5d05-ab17-731ee7dec45c"
+					(reference "TBV0")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:TBHR30")
+		(at 76.20 111.76 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "df23b955-c741-5654-afaa-bebd4cd5b5d0")
+		(property "Reference" "TBHR30"
+			(at 58.42 92.71 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "HR-30 actuator terminal block"
+			(at 76.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Terminal selection, branch allocation, current sharing, barriers, and conductor sizing are unresolved."
+			(at 76.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 128.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "HR-30 actuator terminal block"
+			(at 58.42 96.01 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-S"
+			(uuid "26991583-d6d3-5f2b-a1e5-8fe3c05a833b")
+		)
+		(pin "TBD-0"
+			(uuid "312d5854-7963-5d47-adc1-bb5f1e9fcc6a")
+		)
+		(pin "TBD-U+"
+			(uuid "f01c93da-e44a-53d3-a982-6f56c1e22de1")
+		)
+		(pin "TBD-U0"
+			(uuid "e166626e-ae67-5dcc-a592-ef6542722652")
+		)
+		(pin "TBD-L"
+			(uuid "fcabf289-960c-5a74-a993-65d562f16d74")
+		)
+		(pin "TBD-R"
+			(uuid "ddae2c7e-ecdc-58cc-a63a-e2262cf812db")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/65bba94b-8a4b-5d05-ab17-731ee7dec45c"
+					(reference "TBHR30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:JHL1")
+		(at 203.20 111.76 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0f62f0c1-916f-5e97-a1dd-ad39ba8f5d0e")
+		(property "Reference" "JHL1"
+			(at 189.23 90.17 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Left-leg harness bulkhead"
+			(at 203.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Connector family, pin numbers, current per contact, keying, shielding, strain relief, and ingress rating are unresolved. Prohibit unreviewed full-conductor DYNAMIXEL links; release a VDD-isolating data harness and require continuity/no-backfeed tests."
+			(at 203.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 130.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Left-leg harness bulkhead"
+			(at 189.23 93.47 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-P"
+			(uuid "444cbedf-67cf-5f9d-a1f2-8c9086be1972")
+		)
+		(pin "TBD-0"
+			(uuid "8df0c038-2238-54f5-aa70-0078e198fa28")
+		)
+		(pin "TBD-D+"
+			(uuid "6250a997-b49f-58be-aa9c-8bc53b13650c")
+		)
+		(pin "TBD-D-"
+			(uuid "c6e55e0d-c598-54c2-aace-4149b3d5b6b0")
+		)
+		(pin "TBD-SH"
+			(uuid "2468e643-dcf7-5861-a1cf-a84b8f0b6c56")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/65bba94b-8a4b-5d05-ab17-731ee7dec45c"
+					(reference "JHL1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:JHR1")
+		(at 330.20 111.76 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "439afd04-a130-59dc-a84a-6184176e2523")
+		(property "Reference" "JHR1"
+			(at 344.17 90.17 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "Right-leg harness bulkhead"
+			(at 330.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 330.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Connector family, pin numbers, current per contact, keying, shielding, strain relief, and ingress rating are unresolved. Prohibit unreviewed full-conductor DYNAMIXEL links; release a VDD-isolating data harness and require continuity/no-backfeed tests."
+			(at 330.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 330.20 130.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 330.20 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Right-leg harness bulkhead"
+			(at 344.17 93.47 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-P"
+			(uuid "029c9c7d-4ae4-5aa7-a1b0-b9ab17121b4f")
+		)
+		(pin "TBD-0"
+			(uuid "20684001-291d-5e55-a537-ad01a2716a95")
+		)
+		(pin "TBD-D+"
+			(uuid "76688a32-4a22-53c7-aefa-055712e6af08")
+		)
+		(pin "TBD-D-"
+			(uuid "51c21fdf-2890-5bcb-a6e5-68330fcca90e")
+		)
+		(pin "TBD-SH"
+			(uuid "1903637a-9770-59b7-a7a6-d267d09b7ea0")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/65bba94b-8a4b-5d05-ab17-731ee7dec45c"
+					(reference "JHR1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:JUA1")
+		(at 76.20 167.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "439ace1f-d01d-5380-a5fe-a3b609f6d9c4")
+		(property "Reference" "JUA1"
+			(at 62.23 151.13 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Upper-body bus A harness"
+			(at 76.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Connector family, pin map, current capacity, contact count, keying, and strain relief are unresolved. Prohibit standard full-conductor TTL daisy cables; release a data-only harness and require continuity/no-backfeed tests."
+			(at 76.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 181.61 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Upper-body bus A harness"
+			(at 62.23 154.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-P"
+			(uuid "a2e95716-118a-5ebe-a197-669a96ad681d")
+		)
+		(pin "TBD-0"
+			(uuid "358022db-29d6-5520-a2d8-1def90cb480d")
+		)
+		(pin "TBD-D"
+			(uuid "733bb559-0a4a-5c07-ad87-1a4abc2381ff")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/65bba94b-8a4b-5d05-ab17-731ee7dec45c"
+					(reference "JUA1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:JUB1")
+		(at 203.20 167.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6f3f300c-ee33-5521-ab6f-cc57a0eb780e")
+		(property "Reference" "JUB1"
+			(at 189.23 151.13 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Upper-body bus B harness"
+			(at 203.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Connector family, pin map, current capacity, contact count, keying, and strain relief are unresolved. Prohibit standard full-conductor TTL daisy cables; release a data-only harness and require continuity/no-backfeed tests."
+			(at 203.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 181.61 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Upper-body bus B harness"
+			(at 189.23 154.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-P"
+			(uuid "f14ab197-c907-5110-ae04-b349a203f3e4")
+		)
+		(pin "TBD-0"
+			(uuid "5908848c-435c-50ea-a3b6-d9096a9b86f1")
+		)
+		(pin "TBD-D"
+			(uuid "8d93cfa7-6465-53fd-a7d3-da6d3ca68dc3")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/65bba94b-8a4b-5d05-ab17-731ee7dec45c"
+					(reference "JUB1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:JSL1")
+		(at 330.20 167.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8aa7b06c-88b3-5979-aa65-faf9e5fc2b24")
+		(property "Reference" "JSL1"
+			(at 344.17 143.51 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "Left-foot sensor harness"
+			(at 330.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 330.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Cable topology, connector, differential/analog routing, shielding, and pin map are unresolved."
+			(at 330.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 330.20 189.23 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 330.20 167.64 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Left-foot sensor harness"
+			(at 344.17 146.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-P"
+			(uuid "7a6e4d9d-8b38-51af-a673-383a9caeaf09")
+		)
+		(pin "TBD-0"
+			(uuid "381034f4-d977-5d80-a688-a15d148359fb")
+		)
+		(pin "TBD-SCLK"
+			(uuid "26a8711b-f81a-5553-af42-f2c7bc9275ef")
+		)
+		(pin "TBD-MOSI"
+			(uuid "1c96d813-91d2-5beb-a6db-87f705941d14")
+		)
+		(pin "TBD-MISO"
+			(uuid "b5355a32-6d87-5a4e-a0fa-7e09e2985baf")
+		)
+		(pin "TBD-SYNC"
+			(uuid "0f498b52-3374-5d32-a3b7-3bbd8aa2f0e8")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/65bba94b-8a4b-5d05-ab17-731ee7dec45c"
+					(reference "JSL1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:JSR1")
+		(at 76.20 223.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "df89a204-872d-5fd8-a586-b2f0641ca375")
+		(property "Reference" "JSR1"
+			(at 62.23 199.39 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "Right-foot sensor harness"
+			(at 76.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 76.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 76.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Cable topology, connector, differential/analog routing, shielding, and pin map are unresolved."
+			(at 76.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 76.20 245.11 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 76.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Right-foot sensor harness"
+			(at 62.23 202.69 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-P"
+			(uuid "48dcc780-4eeb-5b59-a766-e0ccb3c08811")
+		)
+		(pin "TBD-0"
+			(uuid "72c23723-4f25-5081-ac4a-12039529d501")
+		)
+		(pin "TBD-SCLK"
+			(uuid "d016cbdb-94b9-5b09-a43e-fab20e40e815")
+		)
+		(pin "TBD-MOSI"
+			(uuid "75cd0eea-931a-5a1c-ad5c-217c628697b3")
+		)
+		(pin "TBD-MISO"
+			(uuid "6a5bae53-ea61-551f-ae42-c3e0a42ce777")
+		)
+		(pin "TBD-SYNC"
+			(uuid "d36d263f-196b-5009-aab6-8348859a78e3")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/65bba94b-8a4b-5d05-ab17-731ee7dec45c"
+					(reference "JSR1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:SHLD1")
+		(at 203.20 223.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "885fd119-16dc-59a4-a0f5-b42573c3bda0")
+		(property "Reference" "SHLD1"
+			(at 185.42 208.28 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(property "Value" "RS-485 shield-drain termination assembly"
+			(at 203.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 203.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 203.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Single-ended, capacitive, or direct chassis termination policy requires EMC testing; do not create an unintended DC 0 V/PE bond."
+			(at 203.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 203.20 236.22 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 203.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "RS-485 shield-drain termination assembly"
+			(at 185.42 211.58 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify left bottom)
+				)
+		)
+		(pin "TBD-L"
+			(uuid "6eecfb10-60dd-58ab-a63d-c0eb76db5314")
+		)
+		(pin "TBD-R"
+			(uuid "05c21b22-11e5-5c01-a3a9-8ac5cf995d5c")
+		)
+		(pin "TBD-PE"
+			(uuid "c3b66449-08a5-5602-a847-c4ac0a174303")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/65bba94b-8a4b-5d05-ab17-731ee7dec45c"
+					(reference "SHLD1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PBV2:TP1")
+		(at 330.20 223.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9d309cc3-3da2-5d21-ac1e-25de9e6a846d")
+		(property "Reference" "TP1"
+			(at 347.98 201.93 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(property "Value" "Commissioning test-point and lockout panel"
+			(at 330.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Footprint" ""
+			(at 330.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Datasheet" "SELECTION REQUIRED"
+			(at 330.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Description" "Finger-safe test points, covers, labels, voltage categories, and lockout procedures are unresolved."
+			(at 330.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Status" "SELECTION REQUIRED"
+			(at 330.20 242.57 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify bottom)
+				)
+		)
+		(property "Evidence" "Manufacturer datasheet and engineering inputs required"
+			(at 330.20 223.52 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(hide yes)
+				)
+		)
+		(property "Display" "Commissioning test-point and lockout panel"
+			(at 347.98 205.23 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+						(justify right bottom)
+				)
+		)
+		(pin "TBD-PE"
+			(uuid "21d2306d-6d85-58b6-ae88-83362a03adad")
+		)
+		(pin "TBD-24"
+			(uuid "faf4ccf4-f54b-59af-ac8b-9917ad3c5c9c")
+		)
+		(pin "TBD-S0"
+			(uuid "61fabfea-c2df-5295-ad39-b7ad5b9ac8bf")
+		)
+		(pin "TBD-V0"
+			(uuid "04dde9b3-839b-5023-a818-1ffc674d0a87")
+		)
+		(pin "TBD-HR"
+			(uuid "0f03ebc8-4f6f-5712-a7a1-4f1e6da41440")
+		)
+		(instances
+			(project "project-button-v2"
+				(path "/ade8a40a-c319-546e-afa5-fe4c84b6f51c/65bba94b-8a4b-5d05-ab17-731ee7dec45c"
+					(reference "TP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(embedded_fonts no)
+)

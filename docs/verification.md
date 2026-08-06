@@ -1,5 +1,7 @@
 # Verification Plan
 
+> **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
+
 Every row in `requirements/requirements.csv` names a test, inspection, analysis, or demonstration ID. Detailed procedures are created under `tests/procedures/` before execution. Raw data is never overwritten; reruns receive new run IDs.
 
 ## Test stages
@@ -20,8 +22,10 @@ HR-30 adds these stages after HR-V0 passes:
 
 ## Key procedures
 
-- `TEST-SAFE-001`: Trigger each E-stop channel independently and together from maximum validated speed/pose. Measure command cessation, contactor dropout, residual joint travel, and tool-center travel. Pass only if actuator power is removed, no restart occurs on release, and travel is within the shielded clearance budget established by CAD.
-- `TEST-SAFE-002`: Interrupt the Pi process, USB bus, and heartbeat wire separately. Each shall reach safe-off and latch before the arm can cross its clearance budget.
+- `TEST-SAFE-001`: Trigger each E-stop channel independently and together from maximum validated speed/pose. Measure command cessation, safety-relay response, both contactor dropouts, residual joint travel, and tool-center travel. Test channel open, channel-to-channel short, welded/stuck contact simulation, E-stop release, and reset held at power-up. Pass only if actuator power is removed, release/reset does not restart or command motion, the EDM prevents restart after a simulated welded contact, and travel is within the shielded clearance budget established by released CAD.
+- `TEST-SAFE-002`: Interrupt the Pi process, USB bus, heartbeat wire, watchdog supply, watchdog output driver, and permit relay path separately. Each shall reach safe-off before the mechanism can cross the released clearance budget and shall enter a hardware-held restart-required state. While the physical reset remains untouched, restore the heartbeat, reboot all controllers, and restore every software process: K1 and K2 shall remain de-energized. Apply the valid physical reset sequence: K1 and K2 shall still remain de-energized and no torque or motion shall occur. Only a later distinct `ARM` action may permit contactor energization. The old trajectory and every stored actuator target shall remain invalid, and motion shall require a fresh command whose preconditions pass. Record heartbeat timeout, watchdog/relay dropout, each contactor dropout, rail decay, residual travel, and total stopping time.
+- `TEST-SAFE-003`: For each latched fault class, verify recovery ordering: cause removed, inspection complete, EDM healthy, valid physical-reset sequence, then separate `ARM`. Inject reset held, reset stuck closed, reset contact bridged, reset pulse shorter than the published minimum, ARM before reset, simultaneous reset/ARM, and stale-trajectory cases. None shall restore contactor power, torque, or motion outside the released order.
+- `TEST-SAFE-004`: With power removed, inspect the received PNOZ s4 identity, terminal markings, selector position, and seal. Confirm the manual page-13 lower-row/third-column falling-edge mode. Inspect `S11/S12`, `S21/S22`, the protected `S12 -> reset -> K1 NC -> K2 NC -> S34` route, and safety outputs `13-14`, `23-24`, and `33-34`. Treat `41-42` and `Y32` as diagnostics only. Test the 250 ms falling-edge wait, 100 ms minimum start pulse, stuck reset, induced start/feedback-loop bridge, each mirror contact, and welded-contactor simulation. The protected-routing fault exclusion requires documented physical inspection and qualified acceptance; ERC cannot close it.
 - `TEST-MECH-001`: Apply 3× maximum operational static load to each primary structural load path with actuator power off. No fracture, fastener slip, permanent deformation beyond drawing tolerance, or loss of hard-stop function.
 - `TEST-THERM-001`: Run the worst validated duty cycle at 28 °C ambient or correct results conservatively. Pass if actuator cases stay below provisional limits and conductors remain below 20 °C rise.
 - `TEST-HAND-001`: Run 100 fixture handoffs. Pass with at least 99 successful transfers, zero unsafe faults, zero dropped blocks outside the catch tray, and complete logs.
@@ -36,6 +40,13 @@ HR-30 adds these stages after HR-V0 passes:
 - `TEST-PRIV-001`: Remove camera power and simulate software crashes and boot states. The privacy indicator shall illuminate whenever camera power permits capture and shall not depend on the application process.
 - `TEST-ELEC-030`: Inspect HR-30A for absence of onboard energy storage, verify extra-low-voltage tether polarity/strain relief, and prove external actuator-power isolation.
 - `AUDIT-LEG-001`: Before each leg axis is enabled, require signed records for joint proof load, current/thermal characterization, power-loss behavior, mechanical lock or brake behavior, joint limits, restraint clearance, and fault injection.
+- `TEST-POWERLOSS-001`: With the robot restrained and the restraint proven first, remove drive energy in every released HR-30 pose and mode, including single-support and credible fault poses. Measure collapse path, joint backdrive, contact and arrest loads, head/tool trajectories, regenerated-bus voltage, and time to the selected protective state. An unbraked collapse is the conservative assumption until tests prove otherwise. Pass criteria require a selected and reviewed brake, counterbalance, retained-control ride-down, or accepted-fall design with pose-specific clearance and load limits. This test cannot authorize reduced restraint dependence or operation near people.
+
+## Electrical evidence counting convention
+
+- The native KiCad package contains **15 pages total: one root/index sheet plus 14 child schematic sheets**. KiCad ERC output that says “14 sheets checked” is counting the 14 child sheets; it is not a contradictory package total.
+- The controlled unresolved-selection count is **106**: the 106 non-header records in `unresolved-selections.csv`. Each record is one unresolved component or interface decision and is uniquely keyed by `(sheet, reference)`. Do not recount terminals, nets, evidence phrases, website cards, or rows from a joined/expanded representation as additional selections. Any other reported total shall identify its source file, filter, join, and grouping rule and shall not replace the controlled 106-item count.
+- These counts describe artifact structure and open work only. They do not establish design completeness, functional-safety performance, or permission to fabricate or energize.
 
 ## Traceability rule
 

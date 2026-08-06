@@ -32,7 +32,7 @@ A stationary 762 mm humanoid upper body performs guarded two-arm research motion
 
 ## Required evidence
 
-Approved T7/T8 records including INSPECT-PROD-001 through INSPECT-PROD-003, INSPECT-PROD-002, TEST-MASS-001, TEST-ELEC-030, TEST-UI-001, TEST-PRIV-001, and configuration reconciliation.
+Approved T7/T8 records including INSPECT-PROD-001 through INSPECT-PROD-003, TEST-MASS-001, TEST-ELEC-030, TEST-UI-001, TEST-PRIV-001, and configuration reconciliation.
 
 ## Boundary
 

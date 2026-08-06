@@ -1,0 +1,19 @@
+{
+  "configuration_id": "HR-V0-SUP-P0.1",
+  "status": "PRELIMINARY-NOT-APPROVED-FOR-ENERGIZATION",
+  "configuration_hash": "HR-V0-SYS-CONFIG-SELECTION-REQUIRED",
+  "maximum_command_age_ms": 100,
+  "maximum_tcp_speed_m_s": 0.15,
+  "automatic_joint_speed_deg_s": 30.0,
+  "setup_joint_speed_deg_s": 10.0,
+  "automatic_gripper_speed_mm_s": 20.0,
+  "setup_gripper_speed_mm_s": 10.0,
+  "joints": {
+    "J1": {"minimum": -20.0, "maximum": 70.0, "unit": "deg", "start_tolerance": null},
+    "J2": {"minimum": 15.0, "maximum": 125.0, "unit": "deg", "start_tolerance": null},
+    "GRIPPER": {"minimum": 20.0, "maximum": 75.0, "unit": "mm", "start_tolerance": null}
+  },
+  "kinematic_model_hash": "SELECTION REQUIRED",
+  "dynamixel_transport": "SELECTION REQUIRED",
+  "safety_credit": "NONE"
+}

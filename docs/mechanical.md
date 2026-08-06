@@ -1,19 +1,22 @@
 # Mechanical Concept and Preliminary Load Model
 
-Status: preliminary; CAD and drawing release are not yet present.
+**PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
+
+Status: correction-stage feasibility model. Native HR-V0 R0.1 quote geometry, four custom-part neutral files, preliminary mass properties, and reproducible structural screens now exist; fit coupons, released drawings, complete mass closure, hard stops, guards, cable routing, gripper mechanics, bench anchors, proof tests, and mechanical release are not complete. See [the R0.1 mechanical baseline](hr-v0-mechanical-r0.1.md) and [R11 engineering calculations](r11-engineering-calculations.md).
 
 ## Geometry
 
-The mechanism is a planar two-link arm mounted to a rigid vertical bench column.
+The HR-V0 mechanism is a planar two-link arm mounted to a rigid vertical bench column.
 
-- J1 shoulder pitch: commanded range -20° to +70° from horizontal datum.
+- J1 shoulder pitch: commanded range −20° to +70° from horizontal datum.
 - J2 elbow pitch: commanded range 15° to 125° internal angle.
 - Upper link, shoulder axis to elbow axis: 160 ±0.5 mm.
 - Forearm, elbow axis to gripper datum: 160 ±0.5 mm.
+- Payload center: up to 200 mm from elbow and 360 mm from shoulder in the screened horizontal pose.
 - Mechanical hard stops shall sit at least 5° beyond software limits and before any cable, connector, or shield contact.
-- Each rotating joint requires dual-supported output geometry; actuator output bearings alone shall not carry cantilevered link loads unless the actuator maker explicitly approves the final load case.
+- Each rotating joint requires dual-supported output geometry. Actuator output bearings alone shall not carry cantilevered link loads unless the actuator manufacturer explicitly approves the final force, moment, duty, shock, and life case.
 
-Links are initially specified as 6061-T6 aluminum side plates with transverse spacers. Polymer parts may be used for covers, cable guides, and gripper fingers, but not as the sole primary shoulder load path in the first build release.
+Links are initially specified as flat 4.75 mm nominal 6061-T6 aluminum plates using ROBOTIS FR13-H101K output frames and FR13-S102K actuator-body frames. Polymer parts may be used for fit coupons, covers, cable guides, and gripper fingers, but not as the sole primary shoulder load path in the first build release.
 
 ## Mass budget
 
@@ -25,7 +28,7 @@ Links are initially specified as 6061-T6 aluminum side plates with transverse sp
 | Gripper assembly | 0.21 kg | 0.16 m from elbow |
 | Payload | 0.10 kg | 0.20 m from elbow, 0.36 m from shoulder |
 
-Maximum moving mass from this budget is 0.75 kg.
+Maximum moving mass from this budget is 0.75 kg. This is an allocation, not a measured assembly mass. Each item requires a supplier or CAD source, local center of mass, inertia, configuration revision, and later a measured value.
 
 ## Worst-case static gravity torque
 
@@ -35,23 +38,49 @@ The conservative pose places both links horizontal. Using `g = 9.80665 m/s²`:
 
 `T_elbow = g × [(0.12×0.08) + (0.21×0.16) + (0.10×0.20)] = 0.62 N·m`
 
-Preliminary design checks use 1.5× for commanded acceleration and 1.5× uncertainty, producing required intermittent torques of 3.83 N·m at J1 and 1.40 N·m at J2. These are sizing values, not permission to run continuously at those loads.
+Preliminary design checks use 1.5× for commanded acceleration and 1.5× uncertainty, producing intermittent screening values of 3.83 N·m at J1 and 1.40 N·m at J2. These are not continuous-duty ratings or permission to energize.
 
-The proposed XM540-W270-T is published at 9.9 N·m stall torque at 12 V. Stall torque is not a continuous rating. Build release requires a duty-cycle/temperature bench test with the actual joint, current limiting enabled, and the final mass properties. If J1 cannot hold the horizontal proof pose below the approved steady current and temperature, the design shall add a counterbalance or change actuator; software current limits shall not simply be raised.
+The current official ROBOTIS web manual, consulted 2026-08-06, publishes the XM540-W270 at **10.6 N·m ideal stall torque and 4.4 A stall current at 12.0 V**. The prior 9.9 N·m statement incorrectly used the XH540 value and has been removed. The ideal stall ratio against the 3.83 N·m shoulder screen is `10.6 / 3.83 = 2.77`, but stall is a momentary zero-speed endpoint, not a continuous available torque or structural safety factor.
+
+Build release requires a duty-cycle/temperature bench test with the actual joint, controlled current limiting, measured actuator-terminal voltage, and final mass properties. If J1 cannot hold the horizontal proof pose below the approved steady current and temperature, the design shall add a counterbalance or change the actuator; current limits shall not simply be raised.
+
+## Tool-center-point speed consistency
+
+The 30 deg/s joint limit is `30 × π / 180 = 0.5236 rad/s`. At the 0.36 m maximum shoulder-to-payload radius, shoulder-only motion would produce:
+
+`v_TCP = r × ω = 0.36 × 0.5236 = 0.188 m/s`
+
+That exceeds the 0.15 m/s tool-center-point (TCP) limit. At full reach, the shoulder-only rate must therefore be no more than:
+
+`ω_shoulder,max = 0.15 / 0.36 = 0.4167 rad/s = 23.9 deg/s`
+
+Combined shoulder and elbow motion can be more restrictive. In the screened straight horizontal pose, using 0.36 m from shoulder to the payload center and 0.20 m from elbow to the payload center, equal-direction motion at 30 deg/s gives a conservative planar Jacobian screen of `(0.36 + 0.20) × 0.5236 = 0.293 m/s`. The controller shall therefore use pose-dependent forward-kinematic/Jacobian rate limiting on the defined TCP; independent per-joint caps are insufficient. The exact TCP datum, tool transform, link calibration, command interpolation, measurement method, and worst-case combined-axis test remain release inputs.
+
+Reset, enable, or E-stop release shall never create motion. TCP limiting applies to commanded, startup, recovery, calibration, and controlled-stop trajectories.
+
+## Output-load boundary
+
+For the walking candidate, the current XH540 manufacturer page lists a 40 N radial load at 10 mm from the horn and a 20 N axial load. An 8 kg single-support load is already approximately 78.5 N static before dynamics or lever arms. Consequently, HR-30 leg axes require dual-supported output shafts or an independently verified equivalent load path. The final bearing arrangement must isolate actuator bearings from prohibited radial, axial, and overturning loads.
+
+The HR-V0 arm requires the same form of proof using the selected actuator's own manufacturer limits; XH540 limits shall not be silently transferred to XM540. Exact actuator variant, horn, bearing, shaft, bracket, fastener, and load spectrum remain controlled selections.
 
 ## Structural release calculations still required
 
-- joint-shaft/bearing radial and moment loads;
-- plate bending and fastener bearing/tear-out at 3× the worst operational load;
+- joint-shaft and bearing radial, axial, moment, life, and shock loads;
+- plate bending and fastener bearing/tear-out at 3× the maximum permitted operational load;
 - base and bench overturning/slip at 3× operational load;
 - hard-stop impact at the maximum physically possible speed;
 - gripper finger stress and detachment retention;
 - fatigue-sensitive holes and printed-part creep;
-- shield impact and fastener retention.
+- shield impact and fastener retention;
+- cable forces throughout the envelope;
+- tolerance stack, alignment, backlash, and service access;
+- correlation of CAD mass properties with measured parts.
 
-Minimum mechanical proof factor is 3.0 against the maximum permitted operational load for non-brittle metal primary structure. This is a project rule, not a standards claim.
+Minimum mechanical proof factor is 3.0 against the maximum permitted operational load for non-brittle metal primary structure. This is a project rule, not a standards claim. It does not replace joint-specific fatigue, impact, fastener, bearing, or restraint analysis.
 
 ## Serviceability and pinch control
 
-Route power and data in separate replaceable looms with strain relief at every moving transition. No cable may become a hard stop. Covers shall prevent finger access to belt, gear, and scissor-gripper pinch points. Fasteners in primary joints use documented torque, prevailing-torque nuts or threadlocker as appropriate, and witness marks. The gripper fingers use compliant pads and rounded edges with at least 3 mm radius.
+Route power and data in separate replaceable looms with strain relief at every moving transition. No cable may become a hard stop. Covers shall prevent finger access to belt, gear, and scissor-gripper pinch points. Fasteners in primary joints use documented torque, prevailing-torque nuts or threadlocker as appropriate, and witness marks. Gripper fingers use compliant pads and rounded edges with at least 3 mm radius.
 
+This document does not authorize fabrication, energization, or operation around children.

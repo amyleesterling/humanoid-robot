@@ -5,7 +5,10 @@ These questions intentionally remain open. They must be answered with evidence, 
 | Gate | Decision | Evidence required | Owner | Due before |
 |---|---|---|---|---|
 | G-01 | Final J1/J2 actuator and allowable current | CAD mass properties, torque model, single-joint thermal test | mechanical + controls | actuator procurement release |
-| G-02 | Custom link/bearing geometry | released CAD, shaft/bearing load calculation, tolerance stack | mechanical | fabrication |
+| G-02 | Custom link/bearing geometry | R0.1 native quote geometry exists; still requires physical FR13 fit coupon, released CAD, shaft/frame load calculation, fastener selection and tolerance stack | mechanical | fabrication |
+| G-25 | Watchdog restart interlock | reviewed hardware topology proving heartbeat restoration cannot restore contactor power without monitored physical reset; fault analysis and TEST-SAFE-002 record | functional safety | energization |
+| G-26 | Actuator-rail battery architecture | selected chemistry, series count or regulated conversion, full-charge and loaded end-of-discharge bounds, transient/regeneration data, thermal and efficiency evidence | electrical/power | HR-30W design |
+| G-27 | Full-body mass feasibility | supplier and measured part-level ledger closing all subsystem allocations, center of mass, inertia, wiring, fasteners, covers, guards, battery/conversion, and contingency | mechanical/systems | actuator procurement |
 | G-03 | Exact safety-relay and contactor wiring | manufacturer manuals, reviewed ECAD, dropout test plan | electrical safety reviewer | panel wiring |
 | G-04 | Fuse types and conductor sizing | measured/inferred fault current, connector ratings, coordination review | electrical | energization |
 | G-05 | Guard material/thickness and clearances | swept-volume CAD, stopping-travel test, impact assessment | mechanical safety | integrated motion |
@@ -31,4 +34,13 @@ These questions intentionally remain open. They must be answered with evidence, 
 
 ## Inputs needed from Amy
 
-Before the procurement baseline is frozen: available bench/floor footprint and anchoring, budget range, fabrication capabilities (machining/printing), and country of build/use. Overall height is frozen at 762 mm nominal and untethered level-floor walking is a required end-state.
+The following program inputs are now frozen:
+
+- Build/use location: Boston, Massachusetts, USA.
+- Nominal building supply basis: 120 VAC, 60 Hz. The actual receptacle, branch-circuit protection, grounding, GFCI requirements, and site permission remain to be inspected before any energization.
+- HR-V0 use boundary: indoor, bench-mounted experimental machinery operated by adults in a controlled work area. Children are excluded from the build and test area.
+- HR-V0 payload: one soft foam object, 100 g maximum and 70 mm maximum characteristic dimension.
+- Cost/strength direction: favor a low-cost, low-mass, low-force demonstrator; this does not relax structural proof, guarding, current limiting, stopping, or fault-response requirements.
+- Program end-state: 762 mm nominal overall height and untethered level-floor walking, reached only through the staged HR-30 release sequence.
+
+Inputs still required before procurement or fabrication is frozen are: available bench/floor footprint, anchoring permission and substrate, ambient range, exact workshop/site, and budget ceiling. The verified fallback does not require a library metal CNC: flat plates can be quoted online and local makerspaces used for supervised inspection or secondary work. For any library or makerspace CNC, still record the machine make/model, approved materials, work envelope, stock thickness limits, tooling, CAM/file formats, training/certification, attainable tolerance, supervision rules, fees, and whether outside stock is permitted. See [Boston fabrication and sourcing research](hr-v0-fabrication-sourcing-boston.md).
