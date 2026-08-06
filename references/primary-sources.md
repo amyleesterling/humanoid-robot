@@ -3,6 +3,7 @@
 Retrieved or rechecked 2026-08-05 through 2026-08-06. Manufacturer and standards pages must be rechecked at each procurement/release gate.
 
 - ROBOTIS XM540-W270 e-Manual; rechecked 2026-08-06: 10.6 N m stall at 12 V/4.4 A and 165 g. Stall is not continuous torque: https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/
+- ROBOTIS XM430-W350 e-Manual; rechecked 2026-08-06: 4.1 N m stall at 12 V/2.3 A, 46 rpm at 12 V, and 82 g. Stall is not continuous torque: https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/
 - ROBOTIS XH540-W270 e-Manual; rechecked 2026-08-06: 9.9 N m at 12 V/4.9 A, 11.7 N m at 14.8 V/5.9 A, 39/46 rpm, 10.0-14.8 V input, 165 g, 15 arcmin backlash, and 40 N radial load at 10 mm: https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/
 - ROBOTIS XC430-W240 e-Manual; rechecked 2026-08-06: https://emanual.robotis.com/docs/en/dxl/x/xc430-w240/
 - ROBOTIS OpenMANIPULATOR-X specification and open hardware basis: https://emanual.robotis.com/docs/en/platform/openmanipulator_x/specification/

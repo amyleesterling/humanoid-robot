@@ -26,10 +26,10 @@ No welding or custom bent 6061 part is required. The base must be physically sec
 |---|---:|---|
 | MV0-001 upper link | 109.2 g | Fits the old 120 g plate-only intent, but leaves insufficient room for frame/fasteners. Allocation must be regrouped. |
 | MV0-002 forearm | 109.2 g | Same issue. |
-| MV0-003 shoulder adapter | 166.8 g | Fixed, not part of moving mass. |
+| MV0-003 shoulder adapter | 167.2 g | Fixed, not part of moving mass. |
 | MV0-004 anchor plate | 126.9 g each | Fixed; two required. |
 
-The prior mass rows are not a valid closed BOM because they mix plates, frames, fasteners and actuators. Before torque is re-released, the program must weigh each purchased frame/fastener and use the actual gripper assembly. The 0.75 kg moving-mass ceiling remains a system requirement, not a claim that the current assembly has achieved it.
+The controlled 13-row ledger in `bom/hr-v0-moving-mass-ledger.csv` currently supports a 565.4 g known subtotal and leaves 184.6 g unresolved under the 750 g ceiling. That headroom must still contain every moving frame, fastener, spacer, stop part, cable guide, connector, moving harness segment, and the complete gripper mechanism. See `docs/hr-v0-moving-mass-closure-p0.1.md`. This is not mass closure; all received items require measured mass, local center of mass, and inertia evidence for the exact configuration before torque is re-released.
 
 ## Preliminary structural screens
 

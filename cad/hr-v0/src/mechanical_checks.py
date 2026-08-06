@@ -5,6 +5,7 @@ PRELIMINARY—NOT A STRUCTURAL RELEASE.
 
 from __future__ import annotations
 
+import csv
 import json
 import math
 from pathlib import Path
@@ -13,6 +14,7 @@ from hr_v0_cad import write_source_manifest
 
 
 OUT = Path(__file__).resolve().parents[1] / "generated" / "mechanical-checks.json"
+CUSTOM_PARTS = OUT.parent / "custom-parts.csv"
 
 
 def main():
@@ -31,6 +33,33 @@ def main():
     h101_frame_t = 2.0
     output_tap_depth_max = 2.5
     output_stack_nominal = plate_t + h101_frame_t
+    with CUSTOM_PARTS.open(newline="", encoding="utf-8") as handle:
+        custom_part_mass_g = {
+            row["part_number"]: float(row["calculated_mass_g"])
+            for row in csv.DictReader(handle)
+        }
+    moving_mass_ceiling_g = 750.0
+    known_moving_mass_g = (
+        custom_part_mass_g["MV0-001"]
+        + 165.0
+        + custom_part_mass_g["MV0-002"]
+        + 82.0
+        + 100.0
+    )
+    bucket_allocations_g = {
+        "upper_link_hardware": 120.0,
+        "elbow_actuator_and_bracket": 200.0,
+        "forearm_hardware": 120.0,
+        "gripper_assembly": 210.0,
+        "payload": 100.0,
+    }
+    bucket_known_g = {
+        "upper_link_hardware": custom_part_mass_g["MV0-001"],
+        "elbow_actuator_and_bracket": 165.0,
+        "forearm_hardware": custom_part_mass_g["MV0-002"],
+        "gripper_assembly": 82.0,
+        "payload": 100.0,
+    }
     hard_stop_radius_m = 0.050
     setup_speed_rad_s = math.radians(10.0)
     auto_speed_rad_s = math.radians(30.0)
@@ -78,6 +107,9 @@ def main():
             "xm540_no_load_speed_rpm_at_12v_candidate_endpoint": 30.0,
             "xm540_ideal_stall_torque_Nm_at_12v_endpoint": xm540_ideal_stall_torque_nm_12v,
             "column_I_mm4": column_i,
+            "moving_mass_ceiling_g": moving_mass_ceiling_g,
+            "xm540_manufacturer_mass_g": 165.0,
+            "xm430_manufacturer_mass_g": 82.0,
         },
         "screens": {
             "link_gross_I_mm4": gross_i,
@@ -107,6 +139,26 @@ def main():
                 "J2_average_force_N_if_no_load_energy_absorbed_in_2_mm_excludes_rotor": rotational_energy(elbow_allocated_inertia, xm540_no_load_speed_rad_s_12v) / illustrative_bumper_stroke_m,
                 "screen_result": "KINEMATIC AND ALLOCATED-MASS SCREEN ONLY - STOP DESIGN NOT RELEASED",
             },
+            "moving_mass": {
+                "known_subtotal_g": known_moving_mass_g,
+                "unresolved_headroom_g": moving_mass_ceiling_g - known_moving_mass_g,
+                "known_fraction_of_ceiling": known_moving_mass_g / moving_mass_ceiling_g,
+                "bucket_allocation_g": bucket_allocations_g,
+                "bucket_known_g": bucket_known_g,
+                "bucket_unresolved_headroom_g": {
+                    bucket: bucket_allocations_g[bucket] - known
+                    for bucket, known in bucket_known_g.items()
+                },
+                "unknown_items": [
+                    "J1 and J2 H101 frames/idlers",
+                    "J2 S102 body frame",
+                    "all joint/frame/gripper fasteners and spacers",
+                    "J2 moving hard-stop hardware",
+                    "gripper mechanism, pads, guard and retention",
+                    "all moving cable, connectors, guides and strain relief",
+                ],
+                "screen_result": "565.4 g KNOWN SUBTOTAL; 184.6 g UNRESOLVED HEADROOM - MASS CLOSURE OPEN",
+            },
         },
         "not_credited_or_unresolved": [
             "Actual alloy/temper certificate, thickness tolerance, flatness and finish",
@@ -114,6 +166,8 @@ def main():
             "Exact M2.5 and M8 fastener part, grade, engagement, preload, torque and locking",
             "Physical FC01/FC02 pattern verification, received thread depth and stack tolerance",
             "Released distal gripper interface and its retention load path",
+            "Measured mass, local COM and inertia for every row in the HR-V0 moving-mass ledger",
+            "Mass of frames, fasteners, stop hardware, cable guides, moving harness and complete gripper mechanics",
             "Hard-stop bracket, bumper material/force curve, fasteners, contact geometry and load path",
             "Measured maximum joint speed, reflected rotor/gear inertia, gear compliance, drive torque duration and stop-switch latency",
             "Hard-stop tolerance stack including calibration error, backlash, bumper compression and stopping travel",

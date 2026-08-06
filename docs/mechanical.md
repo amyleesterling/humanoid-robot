@@ -28,7 +28,7 @@ Links are initially specified as flat 4.75 mm nominal 6061-T6 aluminum plates us
 | Gripper assembly | 0.21 kg | 0.16 m from elbow |
 | Payload | 0.10 kg | 0.20 m from elbow, 0.36 m from shoulder |
 
-Maximum moving mass from this budget is 0.75 kg. This is an allocation, not a measured assembly mass. Each item requires a supplier or CAD source, local center of mass, inertia, configuration revision, and later a measured value.
+Maximum moving mass from this budget is 0.75 kg, including the 0.10 kg payload and excluding the fixed shoulder actuator/base. The controlled R23 ledger has a 565.4 g known subtotal and only 184.6 g of unresolved headroom for all remaining moving parts. This is an allocation screen, not a measured assembly-mass pass. Each item requires a supplier or CAD source, local center of mass, inertia, configuration revision, and later a measured value. See [the moving-mass closure record](hr-v0-moving-mass-closure-p0.1.md).
 
 ## Worst-case static gravity torque
 

@@ -21,6 +21,8 @@ FIT_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-fit-coupon-inspection-te
 FRAME_KIT_CONTENTS = ROOT / "bom" / "hr-v0-frame-kit-contents.csv"
 FRAME_KIT_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-frame-kit-receiving-template.csv"
 HARD_STOP_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-hard-stop-validation-template.csv"
+MOVING_MASS_LEDGER = ROOT / "bom" / "hr-v0-moving-mass-ledger.csv"
+MOVING_MASS_RECORD_TEMPLATE = ROOT / "tests" / "forms" / "hr-v0-moving-mass-measurement-template.csv"
 
 
 def sha256(path: Path) -> str:
@@ -262,6 +264,39 @@ def main() -> int:
     for row in hard_stop_record_rows:
         if row.get(None) or row.get("record_id") != "NOT-EXECUTED" or row.get("disposition") != "NOT EXECUTED":
             errors.append(f"malformed or executed-looking hard-stop template row: {row.get('stop_id')}")
+    with MOVING_MASS_LEDGER.open(newline="", encoding="utf-8") as handle:
+        moving_mass_rows = list(csv.DictReader(handle))
+    expected_mass_ids = {f"V0M-{index:03d}" for index in range(1, 14)}
+    if {row.get("mass_id") for row in moving_mass_rows} != expected_mass_ids:
+        errors.append("moving-mass ledger does not contain controlled V0M-001 through V0M-013 rows")
+    known_mass_total = sum(float(row["known_subtotal_g"]) for row in moving_mass_rows if row.get("known_subtotal_g"))
+    if not math.isclose(known_mass_total, 565.4, abs_tol=1e-9):
+        errors.append(f"moving-mass known subtotal expected 565.4 g, found {known_mass_total}")
+    expected_bucket_allocations = {
+        "upper_link_hardware": 120.0,
+        "elbow_actuator_and_bracket": 200.0,
+        "forearm_hardware": 120.0,
+        "gripper_assembly": 210.0,
+        "payload": 100.0,
+    }
+    actual_bucket_allocations: dict[str, float] = {}
+    for row in moving_mass_rows:
+        bucket = row.get("allocation_bucket", "")
+        allocation = float(row["bucket_allocation_g"])
+        if bucket in actual_bucket_allocations and actual_bucket_allocations[bucket] != allocation:
+            errors.append(f"moving-mass bucket {bucket} has inconsistent allocations")
+        actual_bucket_allocations[bucket] = allocation
+        if row.get("mass_basis") in {"MEASURE RECEIVED", "DESIGN AND MEASURE"} and row.get("known_subtotal_g"):
+            errors.append(f"unresolved moving-mass row falsely contains known mass: {row.get('mass_id')}")
+    if actual_bucket_allocations != expected_bucket_allocations:
+        errors.append(f"moving-mass bucket allocations changed: {actual_bucket_allocations}")
+    with MOVING_MASS_RECORD_TEMPLATE.open(newline="", encoding="utf-8") as handle:
+        moving_mass_record_rows = list(csv.DictReader(handle))
+    if {row.get("mass_id") for row in moving_mass_record_rows} != expected_mass_ids:
+        errors.append("moving-mass measurement template lost its 13 controlled seed rows")
+    for row in moving_mass_record_rows:
+        if row.get(None) or row.get("record_id") != "NOT-EXECUTED" or row.get("disposition") != "NOT EXECUTED":
+            errors.append(f"malformed or executed-looking moving-mass template row: {row.get('mass_id')}")
     manifest = json.loads((GENERATED / "manifest.json").read_text(encoding="utf-8"))
     if "NOT RELEASED" not in manifest["warning"]:
         errors.append("generated manifest lost release warning")
@@ -312,6 +347,13 @@ def main() -> int:
         errors.append("hard-stop screen lost the allocated J2 inertia calculation")
     if hard_stop_screen.get("screen_result") != "KINEMATIC AND ALLOCATED-MASS SCREEN ONLY - STOP DESIGN NOT RELEASED":
         errors.append("hard-stop calculation no longer preserves its unreleased status")
+    moving_mass_screen = checks["screens"].get("moving_mass", {})
+    if not math.isclose(moving_mass_screen.get("known_subtotal_g", 0), 565.4, abs_tol=1e-9):
+        errors.append("mechanical calculation lost the 565.4 g known moving-mass subtotal")
+    if not math.isclose(moving_mass_screen.get("unresolved_headroom_g", 0), 184.6, abs_tol=1e-9):
+        errors.append("mechanical calculation lost the 184.6 g unresolved moving-mass headroom")
+    if moving_mass_screen.get("screen_result") != "565.4 g KNOWN SUBTOTAL; 184.6 g UNRESOLVED HEADROOM - MASS CLOSURE OPEN":
+        errors.append("moving-mass calculation no longer preserves its open status")
     if checks["inputs"].get("selected_interfaces", {}).get("distal_gripper") != "DESIGN REQUIRED":
         errors.append("mechanical calculation failed to preserve the open gripper interface")
     if not checks["not_credited_or_unresolved"]:

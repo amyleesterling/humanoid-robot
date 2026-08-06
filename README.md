@@ -57,6 +57,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Verification procedure registry](tests/procedures/procedure-registry.csv)
 - [Open decisions](docs/open-decisions.md)
 - [Evidence maturity dashboard](docs/evidence-maturity.md)
+- [HR-V0 moving-mass closure screen](docs/hr-v0-moving-mass-closure-p0.1.md)
+- [HR-V0 moving-mass ledger](bom/hr-v0-moving-mass-ledger.csv)
 - [Independent review disposition](docs/independent-review-disposition.md)
 - [Fable R11 review and disposition](docs/reviews/2026-08-06-fable-review-disposition.md)
 - [Sol R12 review and disposition](docs/reviews/2026-08-06-sol-r12-review-disposition.md)
@@ -66,6 +68,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R20](docs/reviews/2026-08-06-sol-r12-post-r20-status.md)
 - [Sol R12 findings rechecked against R21](docs/reviews/2026-08-06-sol-r12-post-r21-status.md)
 - [Sol R12 findings rechecked against R22](docs/reviews/2026-08-06-sol-r12-post-r22-status.md)
+- [Sol R12 findings rechecked against R23](docs/reviews/2026-08-06-sol-r12-post-r23-status.md)
 - [Electrical V3-P0.4 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.1 independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
 - [Requirements](requirements/requirements.csv)
@@ -77,7 +80,7 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 
 ## Review history
 
-Twenty-two review/control rounds are complete: R01-R22. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
+Twenty-three review/control rounds are complete: R01-R23. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -103,6 +106,7 @@ Twenty-two review/control rounds are complete: R01-R22. R11 Fable and R12 Sol ar
 | R20 | Mechanical frame-interface evidence correction | Added a hashed `MV0-FC01` PCD22 coupon package, controlled 1:1 overlay, unpowered inspection procedure and record template; execution and production release remain open. |
 | R21 | Mechanical interface-topology correction | Found and removed an invalid symmetric PCD22 assumption; separated H101 output, S102 body-frame, and unresolved gripper interfaces; added `MV0-FC02`, frame-kit receiving controls, fastener stack math, and manifest-pipeline validation. |
 | R22 | Hard-stop kinematic and load-case definition | Added checked stop datums, allocated-mass energy and drive-force screens, an unpowered inspection, and a guarded incremental validation route without inventing a bumper or impact rating. |
+| R23 | HR-V0 moving-mass traceability and closure correction | Added `MASS-002`, a 13-row controlled ledger, reproducible 565.4 g known subtotal, 184.6 g unresolved headroom, measurement form, and review procedure while keeping mass closure open. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

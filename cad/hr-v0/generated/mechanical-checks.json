@@ -22,7 +22,10 @@
     "hard_stop_illustrative_bumper_stroke_mm_not_selected": 2.0,
     "xm540_no_load_speed_rpm_at_12v_candidate_endpoint": 30.0,
     "xm540_ideal_stall_torque_Nm_at_12v_endpoint": 10.6,
-    "column_I_mm4": 137870.0
+    "column_I_mm4": 137870.0,
+    "moving_mass_ceiling_g": 750.0,
+    "xm540_manufacturer_mass_g": 165.0,
+    "xm430_manufacturer_mass_g": 82.0
   },
   "screens": {
     "link_gross_I_mm4": 33718.666666666664,
@@ -51,6 +54,41 @@
       "J1_average_force_N_if_no_load_energy_absorbed_in_2_mm_excludes_rotor": 116.61924560327182,
       "J2_average_force_N_if_no_load_energy_absorbed_in_2_mm_excludes_rotor": 25.029316761162605,
       "screen_result": "KINEMATIC AND ALLOCATED-MASS SCREEN ONLY - STOP DESIGN NOT RELEASED"
+    },
+    "moving_mass": {
+      "known_subtotal_g": 565.4,
+      "unresolved_headroom_g": 184.60000000000002,
+      "known_fraction_of_ceiling": 0.7538666666666667,
+      "bucket_allocation_g": {
+        "upper_link_hardware": 120.0,
+        "elbow_actuator_and_bracket": 200.0,
+        "forearm_hardware": 120.0,
+        "gripper_assembly": 210.0,
+        "payload": 100.0
+      },
+      "bucket_known_g": {
+        "upper_link_hardware": 109.2,
+        "elbow_actuator_and_bracket": 165.0,
+        "forearm_hardware": 109.2,
+        "gripper_assembly": 82.0,
+        "payload": 100.0
+      },
+      "bucket_unresolved_headroom_g": {
+        "upper_link_hardware": 10.799999999999997,
+        "elbow_actuator_and_bracket": 35.0,
+        "forearm_hardware": 10.799999999999997,
+        "gripper_assembly": 128.0,
+        "payload": 0.0
+      },
+      "unknown_items": [
+        "J1 and J2 H101 frames/idlers",
+        "J2 S102 body frame",
+        "all joint/frame/gripper fasteners and spacers",
+        "J2 moving hard-stop hardware",
+        "gripper mechanism, pads, guard and retention",
+        "all moving cable, connectors, guides and strain relief"
+      ],
+      "screen_result": "565.4 g KNOWN SUBTOTAL; 184.6 g UNRESOLVED HEADROOM - MASS CLOSURE OPEN"
     }
   },
   "not_credited_or_unresolved": [
@@ -59,6 +97,8 @@
     "Exact M2.5 and M8 fastener part, grade, engagement, preload, torque and locking",
     "Physical FC01/FC02 pattern verification, received thread depth and stack tolerance",
     "Released distal gripper interface and its retention load path",
+    "Measured mass, local COM and inertia for every row in the HR-V0 moving-mass ledger",
+    "Mass of frames, fasteners, stop hardware, cable guides, moving harness and complete gripper mechanics",
     "Hard-stop bracket, bumper material/force curve, fasteners, contact geometry and load path",
     "Measured maximum joint speed, reflected rotor/gear inertia, gear compliance, drive torque duration and stop-switch latency",
     "Hard-stop tolerance stack including calibration error, backlash, bumper compression and stopping travel",
