@@ -2,6 +2,7 @@
 
 Document ID: HR-EVID-001  
 Revision: 0.2  
+Program baseline: HR-30-SYS-R0.2  
 Status: planning baseline; no release approval
 
 Evidence maturity is recorded separately from design intent. A clean parser, ERC result, simulation, or reviewed concept is not physical validation.

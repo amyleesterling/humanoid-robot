@@ -2,6 +2,7 @@
 
 Document ID: HR-SYS-001  
 Revision: 0.1  
+Program baseline: HR-30-SYS-R0.2  
 Status: Concept baseline; not a build release
 
 ## 1. Mission
