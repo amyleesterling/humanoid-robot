@@ -1,0 +1,7 @@
+datum_id,description,x_mm,y_mm,z_mm,status
+A0,bench plane and base plan origin,0,0,0,candidate datum
+C0,column extrusion centerline at bench plane,-210,0,0,candidate datum
+J1,shoulder rotation axis,-166,0,500,candidate datum; assembled inspection required
+J2,elbow rotation axis in neutral study pose,-6,0,500,derived from J1 plus 160 mm
+G1,gripper-frame mounting datum in neutral study pose,154,0,500,derived from J2 plus 160 mm
+OMAX,maximum permitted object-center reach datum in neutral study pose,194,0,500,360 mm upper limit from J1; not a commanded pose

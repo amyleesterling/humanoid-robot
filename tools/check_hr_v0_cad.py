@@ -40,6 +40,17 @@ def sha256(path: Path) -> str:
     return digest.hexdigest().upper()
 
 
+GENERATED_TEXT_SUFFIXES = {".csv", ".dxf", ".json", ".step", ".svg", ".txt"}
+
+
+def generated_sha256(path: Path) -> str:
+    """Match the generator's LF/CRLF-independent hashes for text artifacts."""
+    if path.suffix.lower() in GENERATED_TEXT_SUFFIXES:
+        data = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        return hashlib.sha256(data).hexdigest().upper()
+    return sha256(path)
+
+
 def main() -> int:
     errors: list[str] = []
     required_parts = ["MV0-001", "MV0-002", "MV0-003", "MV0-004"]
@@ -50,8 +61,8 @@ def main() -> int:
     for row in rows:
         matches = list((GENERATED / "parts").glob(f'{row["part_number"]}_*'))
         suffixes = {path.suffix.lower() for path in matches}
-        if suffixes != {".dxf", ".step", ".stl"}:
-            errors.append(f'{row["part_number"]} missing DXF/STEP/STL set: {sorted(suffixes)}')
+        if suffixes != {".dxf", ".step"}:
+            errors.append(f'{row["part_number"]} must have DXF/STEP only; structural STL is prohibited: {sorted(suffixes)}')
         if row["release_status"] != "RFQ PROCESS CONTROLLED—DIMENSIONAL RELEASE AND FAI REQUIRED":
             errors.append(f'{row["part_number"]} lost the controlled RFQ-only release status')
     coupon_stems = {
@@ -521,7 +532,7 @@ def main() -> int:
         errors.append(f"generated source manifest mismatch; missing={missing}, stale={stale}")
     for relative, row in source_by_file.items():
         path = GENERATED / relative
-        if path.exists() and sha256(path) != row["sha256"].upper():
+        if path.exists() and generated_sha256(path) != row["sha256"].upper():
             errors.append(f"generated hash mismatch {relative}")
         if row.get("revision") != manifest["revision"]:
             errors.append(f"generated manifest revision mismatch {relative}")

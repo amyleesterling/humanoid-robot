@@ -22,7 +22,7 @@ The manifest hashes Git's canonical staged blobs, not platform-dependent checkou
 | Electrical | `Project Button Electrical V3-P1.4` | connected correction candidate; not a released schematic |
 | Watchdog PCB | `PCB-P0.5` | routed/test-access candidate; no fabrication outputs |
 | Actuator star PCB | `DXL-STAR-P0.1` | routed candidate; no fabrication outputs |
-| Mechanical | `HR-V0-MECH-R0.1-PRELIMINARY` | RFQ/first-article geometry only |
+| Mechanical | `HR-V0-MECH-P0.2` | Datum/interface/RFQ coordination only; native geometry remains `HR-V0-MECH-R0.1-PRELIMINARY` |
 | Plate manufacturing | `HR-V0-PLATE-RFQ-P0.1` | quotation and DFM control only |
 | Firmware | `HR-V0-FW-P0.1` / `HR-V0-WD-BUILD-P0.2` | source and reproducible artifacts; not flashed or HIL validated |
 | Functional safety | `HR-V0-FSA-P0.1` | allocation candidate; `DF-01` has zero safety credit; no PLr/SIL assigned |

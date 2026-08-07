@@ -59,6 +59,24 @@
       80.0,
       6.35
     ],
+    "assembly_datum_chain_candidate_mm": {
+      "column_center_x": -210.0,
+      "j1": [
+        -166.0,
+        0.0,
+        500.0
+      ],
+      "j2_neutral": [
+        -6.0,
+        0.0,
+        500.0
+      ],
+      "gripper_neutral": [
+        154.0,
+        0.0,
+        500.0
+      ]
+    },
     "guard_space_reservation_mm": {
       "radial_envelope": 450.0,
       "internal_width": 900.0,

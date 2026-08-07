@@ -12,7 +12,9 @@ From the repository root on Windows:
 & '..\.venvs\hr-v0-cad\Scripts\python.exe' cad\hr-v0\src\hr_v0_cad.py
 ```
 
-For a clean environment, install the pinned package from `requirements-cad.txt`. Generated artifacts include STEP, STL, DXF, readable SVG quote drawings, a STEP/GLB assembly-space model, mass estimates, three interface fit-coupon packages, a guard/catch/cable space study, and `generated/SOURCE-MANIFEST.csv` with SHA-256 hashes for every generated artifact.
+For a clean environment, install the pinned package from `requirements-cad.txt`. Generated artifacts include controlled structural STEP/DXF, readable SVG quote drawings, a STEP/GLB assembly-space model, mass estimates, three nonstructural interface fit-coupon packages, a guard/catch/cable space study, the P0.2 general arrangement, and `generated/SOURCE-MANIFEST.csv` with SHA-256 hashes for every generated artifact. Structural STL is deliberately prohibited because the CadQuery 2.8 export produced byte-identical meshes for the distinct upper-link and forearm interfaces; the metal parts are not print parts. Fit coupons retain optional STL as nonstructural inspection aids.
+
+The current coordination layer is [HR-V0-MECH-P0.2](../../docs/hr-v0-mechanical-release-p0.2.md). Its parameter, interface and component source registers are next to this README; its generated general arrangement and datum chain are under `generated/assembly/`. P0.2 remains a coordination candidate, not a cutting or assembly release.
 
 ## Controlled custom parts
 

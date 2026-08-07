@@ -6,6 +6,8 @@ Date: 2026-08-06
 Native source: `cad/hr-v0/src/hr_v0_cad.py`  
 Reproducible screens: `cad/hr-v0/src/mechanical_checks.py`
 
+Current coordination overlay: `HR-V0-MECH-P0.2` in `docs/hr-v0-mechanical-release-p0.2.md`. P0.2 corrects the assembly datum transforms and anchor orientation, adds the general arrangement/interface registers, and prohibits structural STL. It does not advance the underlying quote geometry to a fabrication release.
+
 ## Design decision
 
 HR-V0 is a light-duty, adult-operated bench demonstrator. It does not need high payload or speed. The mechanism is therefore frozen at 100 g of soft payload, two 160 mm planar links, and deliberately limited motion. Strength is not used as a reason to omit proof: low mass, low speed, rounded tooling, current/force limiting, guarding, and redundant power interruption are the protective strategy.

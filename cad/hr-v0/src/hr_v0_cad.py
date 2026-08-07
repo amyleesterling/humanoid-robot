@@ -75,6 +75,10 @@ ANCHOR_SLOT_LENGTH_MM = 28.0
 ANCHOR_SLOT_WIDTH_MM = 9.0
 
 SHOULDER_AXIS_HEIGHT_MM = 500.0
+COLUMN_CENTER_X_MM = -210.0
+SHOULDER_AXIS_X_MM = -166.0
+J2_NEUTRAL_AXIS_X_MM = SHOULDER_AXIS_X_MM + LINK_CENTERS_MM
+GRIPPER_NEUTRAL_DATUM_X_MM = J2_NEUTRAL_AXIS_X_MM + LINK_CENTERS_MM
 MAX_OBJECT_CENTER_REACH_MM = 360.0
 MAX_OBJECT_HALF_EXTENT_MM = 35.0
 PROVISIONAL_STOPPING_TRAVEL_MM = 25.0
@@ -244,7 +248,11 @@ def export_part(
 ):
     stem = f"{part_number}_{name}"
     exporters.export(solid, str(PARTS / f"{stem}.step"))
-    exporters.export(solid, str(PARTS / f"{stem}.stl"), tolerance=0.02, angularTolerance=0.1)
+    # Structural plates are CNC/RFQ geometry, not printable parts.  CadQuery
+    # 2.8 also produced byte-identical STL meshes for the distinct MV0-001 and
+    # MV0-002 hole patterns in this model, so structural STL is deliberately
+    # prohibited rather than published as misleading geometry.
+    (PARTS / f"{stem}.stl").unlink(missing_ok=True)
     # DXF is the source for 2D cutting quotations. Export the XZ profile face.
     exporters.export(solid.faces("<Y"), str(PARTS / f"{stem}.dxf"))
     volume = solid.val().Volume()
@@ -831,7 +839,14 @@ def write_guard_receiver_cable_study() -> None:
     (SAFETY_ENCLOSURE / "HR-V0_cable_route_datums.svg").write_text(cable_svg, encoding="utf-8")
 
 
+GENERATED_TEXT_SUFFIXES = {".csv", ".dxf", ".json", ".step", ".svg", ".txt"}
+
+
 def sha256(path: Path) -> str:
+    """Hash generated text canonically and generated binary byte-for-byte."""
+    if path.suffix.lower() in GENERATED_TEXT_SUFFIXES:
+        data = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        return hashlib.sha256(data).hexdigest().upper()
     digest = hashlib.sha256()
     with path.open("rb") as handle:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
@@ -863,17 +878,26 @@ def build_assembly(parts: dict[str, cq.Workplane]):
     assy.add(tslot_envelope(500, "x"), loc=cq.Location(cq.Vector(0, 160, 20)), name="base_front", color=cq.Color(0.25, 0.35, 0.55))
     assy.add(tslot_envelope(320, "y"), loc=cq.Location(cq.Vector(-210, 0, 20)), name="base_left", color=cq.Color(0.25, 0.35, 0.55))
     assy.add(tslot_envelope(320, "y"), loc=cq.Location(cq.Vector(210, 0, 20)), name="base_right", color=cq.Color(0.25, 0.35, 0.55))
-    assy.add(tslot_envelope(500, "z"), loc=cq.Location(cq.Vector(-210, 0, 270)), name="column", color=cq.Color(0.25, 0.35, 0.55))
+    assy.add(tslot_envelope(500, "z"), loc=cq.Location(cq.Vector(COLUMN_CENTER_X_MM, 0, 270)), name="column", color=cq.Color(0.25, 0.35, 0.55))
 
-    # Controlled custom geometry shown in a neutral working pose. These locations
-    # are for fit/space review, not final manufacturing datums.
-    assy.add(parts["adapter"], loc=cq.Location(cq.Vector(-190, -ADAPTER_T_MM / 2, 430)), name="MV0_003_adapter", color=cq.Color(0.95, 0.68, 0.10))
-    assy.add(servo_envelope(), loc=cq.Location(cq.Vector(-125, 0, 500)), name="J1_XM540_envelope", color=cq.Color(0.12, 0.35, 0.72))
-    assy.add(parts["upper"], loc=cq.Location(cq.Vector(-110, -LINK_THICKNESS_MM / 2, 500)), name="MV0_001_upper", color=cq.Color(0.85, 0.88, 0.92))
-    assy.add(servo_envelope(), loc=cq.Location(cq.Vector(50, 0, 500)), name="J2_XM540_envelope", color=cq.Color(0.12, 0.35, 0.72))
-    assy.add(parts["forearm"], loc=cq.Location(cq.Vector(50, -LINK_THICKNESS_MM / 2, 500)), name="MV0_002_forearm", color=cq.Color(0.85, 0.88, 0.92))
-    assy.add(parts["anchor_left"], loc=cq.Location(cq.Vector(-210, -ANCHOR_T_MM/2, 43)), name="MV0_004_anchor_left", color=cq.Color(0.95, 0.68, 0.10))
-    assy.add(parts["anchor_right"], loc=cq.Location(cq.Vector(210, -ANCHOR_T_MM/2, 43)), name="MV0_004_anchor_right", color=cq.Color(0.95, 0.68, 0.10))
+    # P0.2 datum-chain correction.  The adapter lower-left point is chosen so
+    # its two column holes share C0 and its shoulder datum lands at J1.  J2 and
+    # the gripper datum then follow the controlled 160 mm link centers.
+    adapter_lower_left_x = COLUMN_CENTER_X_MM - T_SLOT_HOLE_X_MM
+    adapter_lower_left_z = SHOULDER_AXIS_HEIGHT_MM - SHOULDER_AXIS[1]
+    adapter_center_x = adapter_lower_left_x + ADAPTER_X_MM / 2.0
+    adapter_center_z = adapter_lower_left_z + ADAPTER_Z_MM / 2.0
+    assy.add(parts["adapter"], loc=cq.Location(cq.Vector(adapter_center_x, -ADAPTER_T_MM / 2, adapter_center_z)), name="MV0_003_adapter", color=cq.Color(0.95, 0.68, 0.10))
+    assy.add(servo_envelope(), loc=cq.Location(cq.Vector(SHOULDER_AXIS_X_MM, 0, SHOULDER_AXIS_HEIGHT_MM)), name="J1_XM540_envelope", color=cq.Color(0.12, 0.35, 0.72))
+    assy.add(parts["upper"], loc=cq.Location(cq.Vector(SHOULDER_AXIS_X_MM, -LINK_THICKNESS_MM / 2, SHOULDER_AXIS_HEIGHT_MM)), name="MV0_001_upper", color=cq.Color(0.85, 0.88, 0.92))
+    assy.add(servo_envelope(), loc=cq.Location(cq.Vector(J2_NEUTRAL_AXIS_X_MM, 0, SHOULDER_AXIS_HEIGHT_MM)), name="J2_XM540_envelope", color=cq.Color(0.12, 0.35, 0.72))
+    assy.add(parts["forearm"], loc=cq.Location(cq.Vector(J2_NEUTRAL_AXIS_X_MM, -LINK_THICKNESS_MM / 2, SHOULDER_AXIS_HEIGHT_MM)), name="MV0_002_forearm", color=cq.Color(0.85, 0.88, 0.92))
+    # MV0-004 plates are horizontal bench interfaces.  Exact anchor hardware
+    # and substrate remain site-specific holds.
+    horizontal = cq.Vector(1, 0, 0)
+    anchor_z = ANCHOR_T_MM / 2.0
+    assy.add(parts["anchor_left"], loc=cq.Location(cq.Vector(-210, 0, anchor_z), horizontal, 90), name="MV0_004_anchor_left", color=cq.Color(0.95, 0.68, 0.10))
+    assy.add(parts["anchor_right"], loc=cq.Location(cq.Vector(210, 0, anchor_z), horizontal, 90), name="MV0_004_anchor_right", color=cq.Color(0.95, 0.68, 0.10))
     assy.save(str(OUT / "HR-V0_preliminary_assembly.step"))
     try:
         assy.save(str(OUT / "HR-V0_preliminary_assembly.glb"))
@@ -945,6 +969,12 @@ def main():
             "j2_internal_mechanical_datum_deg": list(J2_INTERNAL_MECHANICAL_DATUM_DEG),
             "adapter_mm": [ADAPTER_X_MM, ADAPTER_Z_MM, ADAPTER_T_MM],
             "anchor_mm": [ANCHOR_X_MM, ANCHOR_Z_MM, ANCHOR_T_MM],
+            "assembly_datum_chain_candidate_mm": {
+                "column_center_x": COLUMN_CENTER_X_MM,
+                "j1": [SHOULDER_AXIS_X_MM, 0.0, SHOULDER_AXIS_HEIGHT_MM],
+                "j2_neutral": [J2_NEUTRAL_AXIS_X_MM, 0.0, SHOULDER_AXIS_HEIGHT_MM],
+                "gripper_neutral": [GRIPPER_NEUTRAL_DATUM_X_MM, 0.0, SHOULDER_AXIS_HEIGHT_MM],
+            },
             "guard_space_reservation_mm": {
                 "radial_envelope": GUARD_RADIAL_ENVELOPE_MM,
                 "internal_width": 2.0 * GUARD_RADIAL_ENVELOPE_MM,

@@ -63,7 +63,7 @@ def main() -> None:
     }
     required_identifiers = {
         "Project Button Electrical V3-P1.4",
-        "HR-V0-MECH-R0.1-PRELIMINARY",
+        "HR-V0-MECH-P0.2",
         "HR-V0-FW-P0.1",
         "HR-V0-FSA-P0.1",
         "HR-V0-BOM-P0.1",
@@ -71,6 +71,15 @@ def main() -> None:
     missing_identifiers = required_identifiers - identifiers
     if missing_identifiers:
         errors.append(f"metadata missing current product identifiers: {sorted(missing_identifiers)}")
+    mechanical_product = next(
+        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-MECH-P0.2"),
+        {},
+    )
+    if mechanical_product.get("supporting_identifiers") != [
+        "HR-V0-MECH-R0.1-PRELIMINARY",
+        "HR-V0-PLATE-RFQ-P0.1",
+    ]:
+        errors.append("HR-V0-MECH-P0.2 supporting identifiers changed or are incomplete")
 
     if not MANIFEST.is_file():
         errors.append(f"manifest missing: {MANIFEST_REL}")

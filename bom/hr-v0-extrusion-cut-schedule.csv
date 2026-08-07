@@ -1,0 +1,4 @@
+cut_id,parent_bom_id,manufacturer,profile,quantity,finished_length_mm,length_tolerance_mm,end_condition,machining,release_state,required_evidence
+EXT-001,BOM-024,80/20 Inc.,40-4040,2,500,+/-0.5,"square saw cut; deburr; no sharp burrs",none,candidate_cut_length,"Exact supplier quote received profile identity straightness length squareness and FAI"
+EXT-002,BOM-024,80/20 Inc.,40-4040,2,320,+/-0.5,"square saw cut; deburr; no sharp burrs",none,candidate_cut_length,"Exact supplier quote received profile identity straightness length squareness and FAI"
+EXT-003,BOM-024,80/20 Inc.,40-4040,1,500,+/-0.5,"square saw cut; deburr; no sharp burrs",none,candidate_cut_length,"Exact supplier quote received profile identity straightness length squareness and FAI"

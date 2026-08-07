@@ -16,3 +16,12 @@ firmware/**/*.hex text eol=crlf
 firmware/**/*.uf2 binary
 electrical/kicad/**/*.kicad_mod text eol=lf
 electrical/kicad/**/*.kicad_pro text eol=lf
+cad/hr-v0/**/*.py text eol=lf
+cad/hr-v0/**/*.csv text eol=lf
+cad/hr-v0/**/*.json text eol=lf
+cad/hr-v0/**/*.md text eol=lf
+cad/hr-v0/**/*.svg text eol=lf
+cad/hr-v0/**/*.dxf text eol=lf
+cad/hr-v0/**/*.step text eol=lf
+cad/hr-v0/**/*.glb binary
+cad/hr-v0/**/*.stl binary
