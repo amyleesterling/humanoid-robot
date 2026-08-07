@@ -1,0 +1,175 @@
+{
+  "status": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION",
+  "board_revision": "PCB-P0.3",
+  "electrical_revision": "Electrical V3-P1.0",
+  "generated_date": "2026-08-06",
+  "manufacturer_sources": [
+    {
+      "manufacturer": "Texas Instruments",
+      "document": "ISO121x datasheet SLLSEY7G",
+      "revision": "G, revised February 2025",
+      "accessed": "2026-08-06",
+      "url": "https://www.ti.com/lit/ds/symlink/iso1211.pdf"
+    },
+    {
+      "manufacturer": "Texas Instruments",
+      "document": "TPL7407L datasheet SLRS066D",
+      "revision": "D, revised March 2016",
+      "accessed": "2026-08-06",
+      "url": "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf"
+    }
+  ],
+  "measured_placement_screens_mm": {
+    "CDEC1_VCC_to_UFB1_VCC_edge_max": 1.825,
+    "CDEC1_GND_to_UFB1_GND_edge_max": 1.8997,
+    "CFI1_to_UFB1_SENSE1_centres": 3.223,
+    "CFI2_to_UFB1_SENSE2_centres": 3.4691,
+    "RTH1_high_voltage_to_protected_copper_min": 16.0811,
+    "RTH2_high_voltage_to_protected_copper_min": 16.0811,
+    "CDRV1_to_UDRV1_COM_centres": 3.2797,
+    "CDRV2_to_UDRV2_COM_centres": 3.2797
+  },
+  "measured_explicit_route_paths_mm": {
+    "CDEC1_VCC_to_UFB1_VCC2": 3.3757,
+    "CDEC1_VCC_to_UFB1_VCC3": 3.6537,
+    "CDRV1_to_UDRV1_COM": 7.825,
+    "CDRV1_GND_to_UDRV1_GND8": 6.8335,
+    "CDRV2_to_UDRV2_COM": 7.825,
+    "CDRV2_GND_to_UDRV2_GND8": 6.8335
+  },
+  "routing_state": {
+    "segments": 160,
+    "vias": 45,
+    "zones": 1,
+    "native_unconnected_pads": 0,
+    "intentional_singleton_pads": [
+      {
+        "net": "WD_SWDIO",
+        "reference": "WDCTRL1",
+        "pad": "D3"
+      },
+      {
+        "net": "WD_SWCLK",
+        "reference": "WDCTRL1",
+        "pad": "D1"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UDRV1_10",
+        "reference": "UDRV1",
+        "pad": "10"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UDRV1_11",
+        "reference": "UDRV1",
+        "pad": "11"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UDRV1_12",
+        "reference": "UDRV1",
+        "pad": "12"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UDRV1_13",
+        "reference": "UDRV1",
+        "pad": "13"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UDRV1_14",
+        "reference": "UDRV1",
+        "pad": "14"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UDRV1_15",
+        "reference": "UDRV1",
+        "pad": "15"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UDRV2_10",
+        "reference": "UDRV2",
+        "pad": "10"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UDRV2_11",
+        "reference": "UDRV2",
+        "pad": "11"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UDRV2_12",
+        "reference": "UDRV2",
+        "pad": "12"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UDRV2_13",
+        "reference": "UDRV2",
+        "pad": "13"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UDRV2_14",
+        "reference": "UDRV2",
+        "pad": "14"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UDRV2_15",
+        "reference": "UDRV2",
+        "pad": "15"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UFB1_6",
+        "reference": "UFB1",
+        "pad": "6"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UFB1_7",
+        "reference": "UFB1",
+        "pad": "7"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UFB1_12",
+        "reference": "UFB1",
+        "pad": "12"
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UFB1_13",
+        "reference": "UFB1",
+        "pad": "13"
+      }
+    ],
+    "no_net_pads": 89,
+    "track_widths_mm": [
+      0.1,
+      0.25,
+      0.5,
+      0.75
+    ],
+    "route_lengths_mm": {
+      "COMPUTE_0V": 32.83,
+      "FB_IN1": 6.3776,
+      "FB_IN2": 7.3052,
+      "FB_SENSE1": 25.7359,
+      "FB_SENSE2": 45.922,
+      "HB_LED_A": 8.9692,
+      "PI_HEARTBEAT": 23.0,
+      "SAFETY_0V": 72.7339,
+      "SAFETY_24V": 136.6875,
+      "UFB_OUT1": 27.058,
+      "UFB_OUT2": 22.032,
+      "WD1_COIL_N": 72.8625,
+      "WD1_DRIVE": 102.8654,
+      "WD1_NC_24V": 35.7182,
+      "WD1_NC_DIAG": 78.1688,
+      "WD2_COIL_N": 107.3625,
+      "WD2_DRIVE": 135.3254,
+      "WD2_NC_24V": 53.6127,
+      "WD2_NC_DIAG": 62.4469,
+      "WD_3V3": 289.8194,
+      "WD_5V": 74.02,
+      "WD_HEARTBEAT": 47.5821
+    }
+  },
+  "limitations": [
+    "Zero native DRC violations proves only the encoded geometric/connectivity rules.",
+    "The 0.10 mm fine-pitch breakouts require fabricator capability selection and review.",
+    "No stack-up, fabrication, EMC, thermal, COM-slew, test-point or fault evidence is released.",
+    "UFB1 field and logic returns share SAFETY_0V; no galvanic-isolation or safety credit is claimed."
+  ]
+}

@@ -1,7 +1,7 @@
-# Project Button HR-V0 Electrical V3-P1.0 / PCB-P0.2 Independent Review Request
+# Project Button HR-V0 Electrical V3-P1.0 / PCB-P0.3 Independent Review Request
 
 Review date: 2026-08-06  
-Controlled candidate: **Electrical V3-P1.0 / PCB-P0.2**
+Controlled candidate: **Electrical V3-P1.0 / PCB-P0.3**
 Systems baseline: **HR-30-SYS-R0.2**  
 Status: **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -9,7 +9,7 @@ Status: **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
 Independently audit the accuracy, completeness, and physical implementability of the connected HR-V0 Electrical V3 candidate. Do not treat clean ERC, generated schedules, or this request as functional-safety validation or permission to procure, fabricate, wire, or energize.
 
-The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P1.0 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. Electrical P0.1 through P0.9 remain historical. P1.0 retains the exact feedback passives and adds exact watchdog-PCB terminal-block candidates plus project pin allocation. PCB-P0.2 corrects P0.1's non-matching ISO1212 land pattern and incorrect field/control-side staging placement. The PCB is intentionally unrouted: it has zero tracks/zones and 68 unconnected pads. Routing, stack-up, source current-sharing, harness/protection, COM-slew, brownout/EMC, received proof, physical terminals, panel/SKU/retention, HIL and functional-safety blockers remain open.
+The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P1.0 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. Electrical P0.1 through P0.9 remain historical. P1.0 retains the exact feedback passives and adds exact watchdog-PCB terminal-block candidates plus project pin allocation. PCB-P0.2 corrected P0.1's non-matching ISO1212 land pattern and incorrect field/control-side staging placement. PCB-P0.3 adds a two-layer routed-copper candidate with 160 segments, 45 vias, one filled return zone, native DRC 0/0 and independent pad-connectivity evidence. It has no fabrication outputs. Exact fabricator/stack-up capability, 0.10 mm breakout acceptance, test points, SUB copper, source current-sharing, harness/protection, COM-slew, brownout/EMC, received proof, physical terminals, panel/SKU/retention, HIL and functional-safety blockers remain open.
 
 ## Controlled inputs
 
@@ -19,13 +19,14 @@ The authoritative source is this repository. The workshop website is presentatio
 - R29 heartbeat/driver evidence and limits: `docs/hr-v0-heartbeat-driver-closure-r29.md`
 - R30 feedback-passive evidence and limits: `docs/hr-v0-watchdog-feedback-passive-closure-r30.md`
 - R32 PCB package and constrained-placement evidence: `docs/hr-v0-watchdog-pcb-p0.2.md`
+- R33 PCB routed-copper and connectivity evidence: `docs/hr-v0-watchdog-pcb-p0.3.md`
 - native PCB and custom candidate footprints: `electrical/kicad/project-button-v3/project-button-v3.kicad_pcb` and `electrical/kicad/project-button-v3/PBV3_Footprints.pretty/`
 - Received control-device record: `tests/forms/hr-v0-control-device-receiving-template.csv`
 - Source-interface receiving/test record: `tests/forms/hr-v0-source-interface-receiving-template.csv`
 - Heartbeat/driver physical test record: `tests/forms/hr-v0-watchdog-drive-test-template.csv`
 - Feedback-passive receiving/derating record: `tests/forms/hr-v0-watchdog-feedback-passive-receiving-template.csv`
 - Native KiCad project: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
-- Root schematic plus ten child sheets: `electrical/kicad/project-button-v3/*.kicad_sch`
+- Root schematic plus eleven child sheets: `electrical/kicad/project-button-v3/*.kicad_sch`
 - Watchdog feedback calculation and circuit basis: `docs/hr-v0-watchdog-feedback-p0.1.md`
 - Generator: `tools/generate_hr_v0_electrical_v3.py`
 - Independent consistency checker: `tools/check_hr_v0_electrical_v3.py`
@@ -63,7 +64,7 @@ The final command is expected to remain nonzero while applicable release gates a
 - 46 deliberately unresolved `TBD-*` terminal designations;
 - KiCad 10.0.5 ERC: 0 errors and 0 warnings;
 - successful native netlist, twelve-page A3 PDF, and twelve-page SVG export;
-- native PCB-P0.2 source with 26 schematic references, four board-only holes, zero tracks/zones, zero non-routing DRC violations, 68 controlled unconnected pads, and a passing generated placement-constraint record; and
+- native PCB-P0.3 source with 26 schematic references, four board-only holes, 160 segments, 45 vias, one filled `SAFETY_0V` zone, native DRC zero violations/zero routed unconnected pads, 18 isolated modeled singleton nets, 89 untouched no-net pads, top/bottom renders and a passing generated routing-evidence record; and
 - exact agreement between every modeled `(reference, terminal, net)` tuple and the KiCad-exported native netlist.
 
 ## Required technical review
@@ -82,7 +83,7 @@ The final command is expected to remain nonzero while applicable release gates a
 12. Verify the U2D2 has no actuator VDD connection and does not carry summed actuator current. Review the three VDD-isolating injection modules, pin-2 isolation, common TTL ground/data reference, no-backfeed behavior under every power sequence, connector orientation, strain relief, crimping and test requirements.
 13. Verify ROBOTIS model/SKU/interface claims and distinguish stall or estimated torque data from continuous validated joint capacity. Check received-unit revision, model readback and USB-connector evidence requirements.
 14. Review the watchdog controller, heartbeat input, Raspberry Pi/control-terminal boundary, firmware ownership, diagnostics, startup defaults, stuck-high/stuck-low faults, loss of common supply, reset behavior, and fault-injection testability. Independently reproduce the VO618A-4X017T pins and CTR-bin facts, 910 ohm input-current screen, 10 kilohm pullup current, inversion and edge timing. Reproduce both separate TPL7407LPWR pin maps, tied-low unused inputs, no-connect unused outputs, COM clamp/bypass, 18 mA typical Phoenix coil load comparison, and TI's less-than-0.5 V/us COM-slew requirement. Confirm that the proposed 100 nF parts do not by themselves prove slew compliance. Independently verify TRACO POWER `TSR 1-2450` pin 1 `+VIN`, pin 2 `GND`, pin 3 `+VOUT`, non-isolated topology, 6.5-36 V input and 5 V/1 A output, then identify the exact branch-protection, load, startup, slow-ramp brownout, fast-dropout, recovery, output-fault, EMC and enclosed-thermal evidence needed for release.
-15. Inspect the native PCB, all three project footprints, board subset/net mapping, staging outline, mounting holes, terminal orientation, 0.15 mm candidate clearance, placement render and complete DRC output. Independently confirm that `UFB1` now uses the 3.9 mm by 4.9 mm, 0.635 mm-pitch DBQ candidate rather than P0.1's non-matching footprint. Reproduce every result in `project-button-v3-pcb-placement-constraints.json`, including CDEC spacing, RTH high-voltage spacing, field/control zoning and driver-capacitor placement. Confirm that zero routed tracks/zones and 68 unconnected pads block fabrication. Review every routing gate in `docs/hr-v0-watchdog-pcb-p0.2.md`, including the explicit absence of isolation credit for `UFB1`; do not treat the constrained positions as a compliant routed layout.
+15. Inspect the native PCB, all three project footprints, board subset/net mapping, outline, mounting holes, terminal orientation, candidate net classes, every routed segment/via/zone, top/bottom renders and complete DRC output. Independently confirm that `UFB1` uses the 3.9 mm by 4.9 mm, 0.635 mm-pitch DBQ candidate. Reproduce every result in `project-button-v3-pcb-routing-evidence.json`: 160 segments, 45 vias, one filled return zone, all multi-pad modeled nets connected, 18 intentional singleton nets isolated, 89 no-net pads untouched, zero native DRC violations, zero routed unconnected pads, placement screens, explicit decoupling/driver path lengths and net route totals. Audit all 0.10 mm fine-pitch breakouts, the B.Cu zone boundary around `ISO1`, current-return paths, power widths, connector approaches and absence of unintended copper at unused/debug/SUB pads. Identify the exact fabricator/stack-up, test-point, SUB-copper, protection, thermal, EMC and parity evidence still needed. Confirm that no Gerber/drill output exists and that DRC 0/0 is not a fabrication or safety approval. Review `docs/hr-v0-watchdog-pcb-p0.3.md`, including the explicit absence of isolation credit for `UFB1`.
 16. Inspect the PDF and every SVG at normal viewing size for clipping, overlap, tiny text, ambiguous crossings, misleading contact state, incomplete titles, or absent preliminary warnings. Treat web rendering as a separate presentation check.
 
 ## Required findings format

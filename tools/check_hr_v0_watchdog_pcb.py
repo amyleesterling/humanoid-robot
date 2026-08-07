@@ -1,14 +1,16 @@
-"""Validate the HR-V0 watchdog PCB constrained-placement candidate.
+"""Validate the HR-V0 watchdog PCB routed-copper candidate.
 
-Run this checker with KiCad's bundled Python.  It proves source consistency,
-placement membership, manufacturer-derived geometry rules and the explicitly
-unrouted state only. It does not release routing, fabrication, assembly,
+Run this checker with KiCad's bundled Python. It independently proves source
+consistency, placement membership, manufacturer-derived geometry screens,
+routed pad connectivity, intentional singleton isolation, copper counts and
+native KiCad DRC status. It does not release fabrication, assembly,
 energization or safety credit.
 """
 
 from __future__ import annotations
 
 import importlib.util
+import heapq
 import json
 import math
 import re
@@ -69,6 +71,44 @@ def nearest_edge_mm(item, candidates) -> float:
     return min(edge_distance_mm(item, candidate) for candidate in candidates)
 
 
+def routed_path_mm(board, start_pad, end_pad) -> float:
+    """Return the shortest explicit track/via path between two pad centres."""
+    graph = {}
+
+    def connect(a, b, distance):
+        graph.setdefault(a, []).append((b, distance))
+        graph.setdefault(b, []).append((a, distance))
+
+    for item in board.Tracks():
+        if type(item).__name__ == "PCB_TRACK":
+            start = (item.GetStart().x, item.GetStart().y, item.GetLayer())
+            end = (item.GetEnd().x, item.GetEnd().y, item.GetLayer())
+            connect(start, end, math.hypot(
+                pcbnew.ToMM(item.GetEnd().x - item.GetStart().x),
+                pcbnew.ToMM(item.GetEnd().y - item.GetStart().y),
+            ))
+        elif type(item).__name__ == "PCB_VIA":
+            point_f = (item.GetPosition().x, item.GetPosition().y, pcbnew.F_Cu)
+            point_b = (item.GetPosition().x, item.GetPosition().y, pcbnew.B_Cu)
+            connect(point_f, point_b, 0.0)
+    start = (start_pad.GetPosition().x, start_pad.GetPosition().y, pcbnew.F_Cu)
+    end = (end_pad.GetPosition().x, end_pad.GetPosition().y, pcbnew.F_Cu)
+    queue = [(0.0, start)]
+    best = {start: 0.0}
+    while queue:
+        distance, node = heapq.heappop(queue)
+        if node == end:
+            return distance
+        if distance != best.get(node):
+            continue
+        for neighbor, increment in graph.get(node, []):
+            candidate = distance + increment
+            if candidate < best.get(neighbor, math.inf):
+                best[neighbor] = candidate
+                heapq.heappush(queue, (candidate, neighbor))
+    return math.inf
+
+
 def main() -> int:
     failures: list[str] = []
     model = load_model()
@@ -95,8 +135,61 @@ def main() -> int:
         wanted = {pin.number: pin.net for pin in comp.pins}
         require(actual == wanted, f"PCB pad/net mapping differs at {ref}", failures)
     require(board.GetCopperLayerCount() == 2, "candidate is no longer a controlled two-layer board", failures)
-    require(len(list(board.Tracks())) == 0, "placement candidate unexpectedly contains tracks or vias", failures)
-    require(len(list(board.Zones())) == 0, "placement candidate unexpectedly contains copper zones", failures)
+    segments = [item for item in board.Tracks() if type(item).__name__ == "PCB_TRACK"]
+    vias = [item for item in board.Tracks() if type(item).__name__ == "PCB_VIA"]
+    zones = list(board.Zones())
+    require(len(segments) == 160, "controlled segment count differs from 160", failures)
+    require(len(vias) == 45, "controlled via count differs from 45", failures)
+    require(len(zones) == 1, "controlled copper-zone count differs from one", failures)
+    if len(zones) == 1:
+        require(zones[0].GetNetname() == "SAFETY_0V", "the sole copper zone is not SAFETY_0V", failures)
+        require(zones[0].IsFilled() and zones[0].HasFilledPolysForLayer(pcbnew.B_Cu),
+                "SAFETY_0V zone does not contain a saved B.Cu fill", failures)
+
+    # Independently rebuild KiCad connectivity. Every modeled net with more
+    # than one pad must form one connected pad set. Every modeled singleton
+    # and every footprint pad without a net must remain free of route copper.
+    connectivity = board.GetConnectivity()
+    connectivity.Build(board)
+    require(connectivity.GetUnconnectedCount(False) == 0,
+            "KiCad connectivity engine reports an open routed connection", failures)
+    modeled_by_net = {}
+    for ref, comp in expected.items():
+        for pin in comp.pins:
+            modeled_by_net.setdefault(pin.net, []).append(pad(footprints, ref, pin.number))
+    singleton_records = []
+    for net_name, net_pads in modeled_by_net.items():
+        expected_ids = {item.m_Uuid.AsString() for item in net_pads}
+        if len(net_pads) > 1:
+            for item in net_pads:
+                connected_ids = {
+                    connected.m_Uuid.AsString()
+                    for connected in connectivity.GetConnectedItems(item)
+                    if isinstance(connected, pcbnew.PAD)
+                }
+                require(connected_ids == expected_ids,
+                        f"routed pad set is incomplete or contaminated at {net_name}", failures)
+        else:
+            item = net_pads[0]
+            connected = list(connectivity.GetConnectedItems(item))
+            require(len(connected) == 1 and connected[0].m_Uuid == item.m_Uuid,
+                    f"intentional singleton {net_name} touches route copper", failures)
+            singleton_records.append({
+                "net": net_name,
+                "reference": item.GetParentFootprint().GetReference(),
+                "pad": item.GetNumber(),
+            })
+    require(len(singleton_records) == 18, "controlled singleton-pad count differs from 18", failures)
+    no_net_pads = [
+        item
+        for footprint in board.GetFootprints()
+        for item in footprint.Pads()
+        if not item.GetNetname()
+    ]
+    require(len(no_net_pads) == 89, "controlled no-net pad count differs from 89", failures)
+    for item in no_net_pads:
+        require(len(list(connectivity.GetConnectedItems(item))) == 0,
+                f"no-net pad touches copper at {item.GetParentFootprint().GetReference()}.{item.GetNumber()}", failures)
 
     # TI ISO1212 SLLSEY7G layout controls: the 100 nF side-1 bypass is
     # constrained to a maximum 2 mm copper-edge placement gap, CIN is kept
@@ -143,30 +236,44 @@ def main() -> int:
                 f"CDRV{channel} is not compact to UDRV{channel} GND", failures)
 
     title = board.GetTitleBlock()
-    require(title.GetRevision() == "PCB-P0.2 / Electrical V3-P1.0", "PCB title-block revision mismatch", failures)
+    require(title.GetRevision() == "PCB-P0.3 / Electrical V3-P1.0", "PCB title-block revision mismatch", failures)
     require(WARNING in board_path.read_text(encoding="utf-8-sig"), "PCB warning missing", failures)
-    require("UNROUTED" in board_path.read_text(encoding="utf-8-sig"), "unrouted status missing from PCB", failures)
+    require("ROUTED-COPPER CANDIDATE" in board_path.read_text(encoding="utf-8-sig"),
+            "routed-copper candidate status missing from PCB", failures)
 
     project = json.loads((OUT / "project-button-v3.kicad_pro").read_text(encoding="utf-8-sig"))
     default = next((item for item in project["net_settings"]["classes"] if item.get("name") == "Default"), {})
     require(default.get("clearance") == 0.15, "controlled 0.15 mm candidate copper clearance missing", failures)
     require(default.get("track_width") == 0.25, "controlled 0.25 mm candidate track width missing", failures)
+    power = next((item for item in project["net_settings"]["classes"] if item.get("name") == "POWER24"), {})
+    require(power.get("clearance") == 0.15 and power.get("track_width") == 0.75,
+            "controlled POWER24 candidate net class differs from 0.15/0.75 mm", failures)
+    require(project["net_settings"].get("netclass_assignments") == {
+        "SAFETY_24V": "POWER24", "WD1_COIL_N": "POWER24", "WD2_COIL_N": "POWER24"
+    }, "POWER24 net assignments differ from the controlled three nets", failures)
 
-    drc = (OUT / "validation" / "project-button-v3-pcb-placement-drc.rpt").read_text(encoding="utf-8-sig")
-    require("Found 0 DRC violations" in drc, "placement DRC has non-unrouted violations", failures)
+    drc = (OUT / "validation" / "project-button-v3-pcb-routing-drc.rpt").read_text(encoding="utf-8-sig")
+    require("Found 0 DRC violations" in drc, "routed-copper DRC has violations", failures)
     unconnected = re.search(r"Found (\d+) unconnected pads", drc)
-    require(unconnected is not None and int(unconnected.group(1)) == 68,
-            "controlled unrouted-pad count differs from 68", failures)
-    log = (OUT / "validation" / "project-button-v3-pcb-placement-cli.log").read_text(encoding="utf-8-sig")
-    require(log.count("exit=0") == 2, "PCB DRC/render command did not both exit 0", failures)
-    render = OUT / "output" / "project-button-v3-pcb-placement-top.png"
-    require(render.is_file() and render.stat().st_size > 30_000, "PCB top render missing or unexpectedly small", failures)
+    require(unconnected is not None and int(unconnected.group(1)) == 0,
+            "native DRC routed-unconnected count differs from zero", failures)
+    log = (OUT / "validation" / "project-button-v3-pcb-routing-cli.log").read_text(encoding="utf-8-sig")
+    require(log.count("exit=0") == 3, "PCB DRC/top-render/bottom-render commands did not all exit 0", failures)
+    for side in ("top", "bottom"):
+        render = OUT / "output" / f"project-button-v3-pcb-routing-{side}.png"
+        require(render.is_file() and render.stat().st_size > 20_000,
+                f"PCB {side} render missing or unexpectedly small", failures)
+    fabrication_outputs = [
+        path for path in OUT.rglob("*")
+        if path.is_file() and path.suffix.lower() in {".gbr", ".ger", ".drl", ".xln", ".gbrjob"}
+    ]
+    require(not fabrication_outputs, "Gerber/drill fabrication outputs exist despite the open release gate", failures)
     for name in ("MKDS_1_2_3P5.kicad_mod", "MKDS_1_4_3P5.kicad_mod", "VO618A_Option7_SMD.kicad_mod"):
         require((OUT / "PBV3_Footprints.pretty" / name).is_file(), f"custom candidate footprint missing: {name}", failures)
 
     constraint_evidence = {
         "status": WARNING,
-        "board_revision": "PCB-P0.2",
+        "board_revision": "PCB-P0.3",
         "electrical_revision": "Electrical V3-P1.0",
         "generated_date": "2026-08-06",
         "manufacturer_sources": [
@@ -207,26 +314,60 @@ def main() -> int:
             "CDRV2_to_UDRV2_COM_centres": round(distance_mm(
                 pad(footprints, "CDRV2", "1"), pad(footprints, "UDRV2", "9")), 4),
         },
-        "routing_state": {"tracks": len(list(board.Tracks())), "zones": len(list(board.Zones())), "unconnected_pads": 68},
+        "measured_explicit_route_paths_mm": {
+            "CDEC1_VCC_to_UFB1_VCC2": round(routed_path_mm(
+                board, pad(footprints, "CDEC1", "1"), pad(footprints, "UFB1", "2")), 4),
+            "CDEC1_VCC_to_UFB1_VCC3": round(routed_path_mm(
+                board, pad(footprints, "CDEC1", "1"), pad(footprints, "UFB1", "3")), 4),
+            "CDRV1_to_UDRV1_COM": round(routed_path_mm(
+                board, pad(footprints, "CDRV1", "1"), pad(footprints, "UDRV1", "9")), 4),
+            "CDRV1_GND_to_UDRV1_GND8": round(routed_path_mm(
+                board, pad(footprints, "CDRV1", "2"), pad(footprints, "UDRV1", "8")), 4),
+            "CDRV2_to_UDRV2_COM": round(routed_path_mm(
+                board, pad(footprints, "CDRV2", "1"), pad(footprints, "UDRV2", "9")), 4),
+            "CDRV2_GND_to_UDRV2_GND8": round(routed_path_mm(
+                board, pad(footprints, "CDRV2", "2"), pad(footprints, "UDRV2", "8")), 4),
+        },
+        "routing_state": {
+            "segments": len(segments),
+            "vias": len(vias),
+            "zones": len(zones),
+            "native_unconnected_pads": 0,
+            "intentional_singleton_pads": singleton_records,
+            "no_net_pads": len(no_net_pads),
+            "track_widths_mm": sorted({round(pcbnew.ToMM(item.GetWidth()), 4) for item in segments}),
+            "route_lengths_mm": {
+                net_name: round(sum(
+                    math.hypot(
+                        pcbnew.ToMM(item.GetEnd().x - item.GetStart().x),
+                        pcbnew.ToMM(item.GetEnd().y - item.GetStart().y),
+                    )
+                    for item in segments if item.GetNetname() == net_name
+                ), 4)
+                for net_name in sorted({item.GetNetname() for item in segments})
+            },
+        },
         "limitations": [
-            "Placement screens are not routed-copper path measurements.",
-            "No trace-width, stack-up, fabrication, EMC, thermal, COM-slew or fault evidence is released.",
+            "Zero native DRC violations proves only the encoded geometric/connectivity rules.",
+            "The 0.10 mm fine-pitch breakouts require fabricator capability selection and review.",
+            "No stack-up, fabrication, EMC, thermal, COM-slew, test-point or fault evidence is released.",
             "UFB1 field and logic returns share SAFETY_0V; no galvanic-isolation or safety credit is claimed.",
         ],
     }
-    evidence_path = OUT / "validation" / "project-button-v3-pcb-placement-constraints.json"
+    evidence_path = OUT / "validation" / "project-button-v3-pcb-routing-evidence.json"
     evidence_path.write_text(json.dumps(constraint_evidence, indent=2) + "\n", encoding="utf-8")
     model.manifest()
 
     if failures:
-        print("HR-V0 watchdog PCB placement validation: FAIL")
+        print("HR-V0 watchdog PCB routed-copper validation: FAIL")
         for failure in failures:
             print(f"- {failure}")
         return 1
-    print("HR-V0 watchdog PCB constrained-placement validation: PASS")
-    print("26 board-mounted references; 4 board-only M3 holes; 0 routed tracks; 0 zones")
+    print("HR-V0 watchdog PCB routed-copper validation: PASS")
+    print("26 board-mounted references; 4 board-only M3 holes; 160 segments; 45 vias; 1 filled zone")
+    print("40 modeled nets: every multi-pad net connected; 18 intentional singletons isolated; 89 no-net pads untouched")
     print("TI placement screens: CDEC <=2 mm; CIN compact; RTH high side >=4 mm; field/control zoning PASS")
-    print("KiCad DRC: 0 non-unrouted violations; 68 unconnected pads are the controlled open routing gate")
+    print("KiCad DRC: 0 violations; 0 routed unconnected pads; no Gerber/drill release outputs")
     print(WARNING)
     return 0
 

@@ -1,10 +1,10 @@
-"""Generate the native HR-V0 watchdog PCB constrained-placement candidate.
+"""Generate the native HR-V0 watchdog PCB routed-copper candidate.
 
 This board freezes board membership, footprints, terminal-block identities,
-project pin allocation and the first machine-checked placement constraints. It
-deliberately contains no routed copper and is not a fabrication release. KiCad
-DRC must therefore report unrouted items until a reviewed routing pass closes
-the layout requirements.
+project pin allocation, placement constraints and a first controlled two-layer
+routing candidate. It is not a fabrication release: stack-up, protection,
+fabricator capability, test access, physical verification and independent
+layout review remain open.
 
 PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION.
 """
@@ -49,13 +49,13 @@ PLACEMENTS = {
     "RTH1": (125, 70, 180),
     "RSN1": (109, 73.50, 270),
     "CFI1": (104, 70, 90),
-    "RW1": (136, 70, 180),
+    "RW1": (136, 70, 0),
     "RTH2": (125, 82, 180),
     "RSN2": (109, 78.50, 270),
     "CFI2": (104, 81, 270),
-    "RW2": (136, 82, 180),
+    "RW2": (136, 82, 0),
     "UFB1": (100, 76, 0),
-    "CDEC1": (94.8, 74.7, 90),
+    "CDEC1": (94, 73.5, 90),
     "RSO1": (91, 64, 0),
     "RPD1": (91, 68, 0),
     "RSO2": (91, 84, 0),
@@ -113,6 +113,206 @@ def add_mounting_holes(pcbnew, board):
         board.Add(footprint)
 
 
+def add_track(pcbnew, board, net, points, width: float, layer):
+    """Add a routed polyline on one copper layer."""
+    for start, end in zip(points, points[1:]):
+        if start == end:
+            continue
+        track = pcbnew.PCB_TRACK(board)
+        track.SetStart(pcbnew.VECTOR2I_MM(*start))
+        track.SetEnd(pcbnew.VECTOR2I_MM(*end))
+        track.SetWidth(pcbnew.FromMM(width))
+        track.SetLayer(layer)
+        track.SetNet(net)
+        board.Add(track)
+
+
+def add_via(pcbnew, board, net, point, diameter: float = 0.8, drill: float = 0.4):
+    via = pcbnew.PCB_VIA(board)
+    via.SetPosition(pcbnew.VECTOR2I_MM(*point))
+    via.SetWidth(pcbnew.FromMM(diameter))
+    via.SetDrill(pcbnew.FromMM(drill))
+    via.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu)
+    via.SetNet(net)
+    board.Add(via)
+
+
+def add_ground_zone(pcbnew, board, net):
+    """Add the provisional B.Cu safety-return plane above the ISO1 corridor."""
+    zone = pcbnew.ZONE(board)
+    zone.SetLayer(pcbnew.B_Cu)
+    zone.SetNet(net)
+    zone.SetLocalClearance(pcbnew.FromMM(0.25))
+    outline = zone.Outline()
+    outline.NewOutline()
+    for point in ((22, 22), (178, 22), (178, 103), (22, 103)):
+        outline.Append(pcbnew.VECTOR2I_MM(*point))
+    board.Add(zone)
+
+
+def route_board(pcbnew, board, nets):
+    """Create the first reviewable two-layer route candidate."""
+    footprints = {footprint.GetReference(): footprint for footprint in board.GetFootprints()}
+
+    def pad_point(reference: str, number: str) -> tuple[float, float]:
+        matches = [pad for pad in footprints[reference].Pads() if pad.GetNumber() == number]
+        if len(matches) != 1:
+            raise RuntimeError(f"expected one pad {reference}.{number}")
+        position = matches[0].GetPosition()
+        return pcbnew.ToMM(position.x), pcbnew.ToMM(position.y)
+
+    def f(net_name: str, points, width: float = 0.25):
+        add_track(pcbnew, board, nets[net_name], points, width, pcbnew.F_Cu)
+
+    def b(net_name: str, points, width: float = 0.25):
+        add_track(pcbnew, board, nets[net_name], points, width, pcbnew.B_Cu)
+
+    def via(net_name: str, point, diameter: float = 0.8, drill: float = 0.4):
+        add_via(pcbnew, board, nets[net_name], point, diameter, drill)
+
+    # Bottom compute/heartbeat boundary. No B.Cu safety-return zone is placed
+    # below y=103 mm, leaving a visible copper corridor around ISO1.
+    f("PI_HEARTBEAT", [pad_point("JWH1", "1"), (30.0, 105.0), (47.0, 105.0), pad_point("RHB1", "1")])
+    f("HB_LED_A", [pad_point("RHB1", "2"), (53.0, 108.0), (55.0, 106.73), pad_point("ISO1", "1")])
+    f("COMPUTE_0V", [pad_point("JWH1", "2"), (33.5, 113.0), (57.6, 113.0), pad_point("ISO1", "2")])
+
+    # Watchdog heartbeat: local optical/pull-up connection plus a B.Cu hop to
+    # the Pico edge. Vias are outside component pads rather than via-in-pad.
+    f("WD_HEARTBEAT", [pad_point("ISO1", "4"), (60.0, 106.73), (55.0, 101.0), pad_point("RHP1", "2")])
+    f("WD_HEARTBEAT", [pad_point("RHP1", "2"), (53.0, 96.0)])
+    via("WD_HEARTBEAT", (53.0, 96.0))
+    via("WD_HEARTBEAT", (42.0, 84.0))
+    b("WD_HEARTBEAT", [(53.0, 96.0), (42.0, 96.0), (42.0, 84.0)])
+    f("WD_HEARTBEAT", [(42.0, 84.0), pad_point("WDCTRL1", "4")])
+
+    # Both controller supplies use B.Cu trunks with short front-copper Pico
+    # fan-outs, avoiding the 24 V front-copper corridor.
+    b("WD_5V", [pad_point("DC1", "3"), (60.0, 34.0), (60.0, 44.0), (32.0, 44.0), (32.0, 65.5), (38.41, 65.5)])
+    via("WD_5V", (38.41, 65.5))
+    f("WD_5V", [(38.41, 65.5), pad_point("WDCTRL1", "39")], 0.5)
+    f("WD_3V3", [pad_point("WDCTRL1", "36"), (46.03, 58.0), (44.0, 58.0)])
+    via("WD_3V3", (44.0, 58.0))
+    f("WD_3V3", [pad_point("RHP1", "1"), (49.0, 104.0), (54.0, 104.0)])
+    via("WD_3V3", (54.0, 104.0))
+    f("WD_3V3", [pad_point("UFB1", "2"), (95.0, 74.412), pad_point("CDEC1", "1")], 0.1)
+    f("WD_3V3", [pad_point("UFB1", "3"), (94.5, 75.047), pad_point("CDEC1", "1")], 0.1)
+    f("WD_3V3", [pad_point("CDEC1", "1"), (92.0, 74.45)], 0.1)
+    via("WD_3V3", (92.0, 74.45))
+    b("WD_3V3", [(44.0, 58.0), (44.0, 46.0)])
+    via("WD_3V3", (44.0, 46.0))
+    via("WD_3V3", (118.0, 46.0))
+    f("WD_3V3", [(44.0, 46.0), (118.0, 46.0)])
+    b("WD_3V3", [(118.0, 46.0), (118.0, 100.0), (54.0, 100.0), (54.0, 104.0)])
+    b("WD_3V3", [(118.0, 100.0), (118.0, 72.5), (93.5, 72.5), (93.5, 74.45), (92.0, 74.45)])
+
+    # 24 V distribution and coil sinks use provisional 0.75 mm copper. Final
+    # widths remain a protection/fault-current release input.
+    f("SAFETY_24V", [pad_point("JWP1", "1"), (30.0, 43.0), (93.0375, 43.0), pad_point("CDRV1", "1")], 0.75)
+    f("SAFETY_24V", [pad_point("DC1", "1"), (50.0, 43.0)], 0.75)
+    f("SAFETY_24V", [pad_point("CDRV1", "1"), (96.5, 39.0), (96.5, 36.275), pad_point("UDRV1", "9")], 0.25)
+    f("SAFETY_24V", [(93.0375, 43.0), (125.0375, 43.0), pad_point("CDRV2", "1")], 0.75)
+    f("SAFETY_24V", [pad_point("CDRV2", "1"), (128.5, 39.0), (128.5, 36.275), pad_point("UDRV2", "9")], 0.25)
+    f("WD1_COIL_N", [pad_point("JWP1", "3"), (37.0, 27.0), (96.5, 27.0), (96.5, 31.725)], 0.75)
+    f("WD1_COIL_N", [(96.5, 31.725), pad_point("UDRV1", "16")], 0.1)
+    b("WD2_COIL_N", [pad_point("JWP1", "4"), (40.5, 24.0), (128.5, 24.0), (128.5, 29.5)], 0.75)
+    via("WD2_COIL_N", (128.5, 29.5), 1.0, 0.5)
+    f("WD2_COIL_N", [(128.5, 29.5), (128.5, 31.725)], 0.25)
+    f("WD2_COIL_N", [(128.5, 31.725), pad_point("UDRV2", "16")], 0.1)
+
+    # Two independent logic-drive routes. Channel 2 changes layer briefly to
+    # cross channel 1 without a same-layer junction.
+    f("WD1_DRIVE", [pad_point("WDCTRL1", "5"), (46.03, 85.0)])
+    via("WD1_DRIVE", (46.03, 85.0))
+    via("WD1_DRIVE", (84.0, 29.5))
+    b("WD1_DRIVE", [(46.03, 85.0), (46.03, 48.0), (84.0, 48.0), (84.0, 29.5)])
+    f("WD1_DRIVE", [(84.0, 29.5), (87.0, 29.5), pad_point("UDRV1", "1")])
+    f("WD2_DRIVE", [pad_point("WDCTRL1", "6"), (48.57, 86.5)])
+    via("WD2_DRIVE", (48.57, 86.5))
+    via("WD2_DRIVE", (116.0, 29.5))
+    b("WD2_DRIVE", [(48.57, 86.5), (48.57, 50.0), (116.0, 50.0), (116.0, 29.5)])
+    f("WD2_DRIVE", [(116.0, 29.5), (119.0, 29.5), pad_point("UDRV2", "1")])
+
+    # ISO1212 field-input clusters. These front-copper trees preserve the
+    # machine-checked high-voltage and decoupling placement constraints.
+    f("FB_IN1", [pad_point("UFB1", "15"), (104.5, 74.412), (106.0, 74.5), pad_point("RSN1", "2")])
+    f("FB_IN2", [pad_point("UFB1", "10"), (104.5, 77.588), (106.0, 79.5), pad_point("RSN2", "2")])
+    f("FB_SENSE1", [pad_point("UFB1", "16"), (104.5, 73.778), (104.5, 70.862), pad_point("CFI1", "1")])
+    f("FB_SENSE1", [pad_point("CFI1", "1"), (106.0, 72.5), pad_point("RSN1", "1"), (115.0, 72.5), pad_point("RTH1", "2")])
+    f("FB_SENSE2", [pad_point("UFB1", "11"), (105.5, 76.953)], 0.1)
+    via("FB_SENSE2", (105.5, 76.953), 0.6, 0.3)
+    via("FB_SENSE2", (105.5, 80.138), 0.6, 0.3)
+    b("FB_SENSE2", [(105.5, 76.953), (105.5, 80.138)], 0.1)
+    f("FB_SENSE2", [(105.5, 80.138), pad_point("CFI2", "1")], 0.1)
+    f("FB_SENSE2", [pad_point("CFI2", "1"), (107.0, 80.138), (107.0, 83.0), (115.0, 83.0), (115.0, 77.5), pad_point("RSN2", "1")], 0.1)
+    f("FB_SENSE2", [(115.0, 77.5), (115.0, 82.0), pad_point("RTH2", "2")])
+    f("WD1_NC_24V", [pad_point("RTH1", "1"), pad_point("RW1", "1"), (132.0, 68.0)], 0.5)
+    via("WD1_NC_24V", (132.0, 68.0), 1.0, 0.5)
+    via("WD1_NC_24V", (147.0, 74.0), 1.0, 0.5)
+    b("WD1_NC_24V", [(132.0, 68.0), (147.0, 68.0), (147.0, 74.0)], 0.5)
+    f("WD1_NC_24V", [(147.0, 74.0), pad_point("JWF1", "1")], 0.5)
+    f("WD2_NC_24V", [pad_point("RTH2", "1"), pad_point("RW2", "1"), (132.0, 84.0)], 0.5)
+    via("WD2_NC_24V", (132.0, 84.0), 1.0, 0.5)
+    via("WD2_NC_24V", (160.0, 82.0), 1.0, 0.5)
+    b("WD2_NC_24V", [(132.0, 84.0), (160.0, 84.0), (160.0, 82.0)], 0.5)
+    f("WD2_NC_24V", [(160.0, 82.0), (160.0, 76.0), pad_point("JWF1", "2")], 0.5)
+
+    # Receiver outputs use B.Cu hops around the package, then local front
+    # networks and separate B.Cu returns to the Pico feedback inputs.
+    for net_name, ufb_pin, rso_ref, near_via, far_via in (
+        ("UFB_OUT1", "4", "RSO1", (93.0, 75.683), (86.0, 64.0)),
+        ("UFB_OUT2", "5", "RSO2", (93.0, 77.5), (86.0, 84.0)),
+    ):
+        f(net_name, [pad_point("UFB1", ufb_pin), near_via], 0.1)
+        via(net_name, near_via)
+        via(net_name, far_via)
+        b(net_name, [near_via, (86.0, near_via[1]), far_via])
+        f(net_name, [far_via, pad_point(rso_ref, "1")])
+    f("WD1_NC_DIAG", [pad_point("RSO1", "2"), pad_point("RPD1", "1"), (82.0, 68.0)])
+    via("WD1_NC_DIAG", (82.0, 68.0))
+    f("WD1_NC_DIAG", [pad_point("WDCTRL1", "9"), (56.0, 79.0)])
+    via("WD1_NC_DIAG", (56.0, 79.0))
+    b("WD1_NC_DIAG", [(82.0, 68.0), (82.0, 92.0), (56.0, 92.0), (56.0, 79.0)])
+    f("WD2_NC_DIAG", [pad_point("RSO2", "2"), pad_point("RPD2", "1"), (84.0, 88.0)])
+    via("WD2_NC_DIAG", (84.0, 88.0))
+    f("WD2_NC_DIAG", [pad_point("WDCTRL1", "10"), (60.0, 79.0)])
+    via("WD2_NC_DIAG", (84.0, 96.0))
+    via("WD2_NC_DIAG", (60.0, 96.0))
+    b("WD2_NC_DIAG", [(84.0, 88.0), (84.0, 96.0)])
+    f("WD2_NC_DIAG", [(84.0, 96.0), (60.0, 96.0)])
+    b("WD2_NC_DIAG", [(60.0, 96.0), (60.0, 93.5)])
+    via("WD2_NC_DIAG", (60.0, 93.5))
+    f("WD2_NC_DIAG", [(60.0, 93.5), (60.0, 79.0)])
+
+    # Local safety-return fan-outs into a provisional B.Cu plane. No via is
+    # placed in an SMD pad. Adjacent TPL7407L ground pins are first stitched on
+    # front copper.
+    for driver_ref, cap_ref, via_point in (("UDRV1", "CDRV1", (87.0, 38.0)), ("UDRV2", "CDRV2", (119.0, 38.0))):
+        driver_points = [pad_point(driver_ref, str(number)) for number in range(2, 9)]
+        f("SAFETY_0V", driver_points, 0.25)
+        f("SAFETY_0V", [driver_points[-1], via_point], 0.25)
+        f("SAFETY_0V", [pad_point(cap_ref, "2"), via_point], 0.25)
+        via("SAFETY_0V", via_point, 1.0, 0.5)
+    for reference, number, via_point in (
+        ("WDCTRL1", "38", (40.95, 65.5)), ("WDCTRL1", "D2", (83.5, 72.0)),
+        ("RPD1", "2", (93.5, 68.0)), ("RPD2", "2", (93.5, 88.0)),
+        ("CFI1", "2", (106.0, 68.5)), ("CFI2", "2", (106.0, 82.5)),
+        ("RW1", "2", (141.5, 65.5)), ("RW2", "2", (141.5, 86.5)),
+    ):
+        f("SAFETY_0V", [pad_point(reference, number), via_point], 0.5)
+        via("SAFETY_0V", via_point, 1.0, 0.5)
+    f("SAFETY_0V", [pad_point("CDEC1", "2"), (92.0, 72.55)], 0.1)
+    via("SAFETY_0V", (92.0, 72.55), 0.8, 0.4)
+    for ufb_pin, via_point in (("1", (100.0, 70.5)), ("8", (95.0, 79.5)), ("14", (106.0, 75.3)), ("9", (103.2, 83.5))):
+        if ufb_pin == "9":
+            f("SAFETY_0V", [pad_point("UFB1", ufb_pin), (103.2, 78.222), via_point], 0.1)
+        else:
+            f("SAFETY_0V", [pad_point("UFB1", ufb_pin), via_point], 0.1)
+        via("SAFETY_0V", via_point, 0.8, 0.4)
+    f("SAFETY_0V", [pad_point("ISO1", "3"), (70.0, 109.27), (70.0, 102.5)], 0.5)
+    via("SAFETY_0V", (70.0, 102.5), 1.0, 0.5)
+    add_ground_zone(pcbnew, board, nets["SAFETY_0V"])
+
+
 def main() -> int:
     try:
         import pcbnew
@@ -135,24 +335,33 @@ def main() -> int:
     board = pcbnew.BOARD()
     board.SetFileName(str(BOARD_PATH))
     title = board.GetTitleBlock()
-    title.SetTitle("Project Button HR-V0 ordinary watchdog PCB constrained-placement candidate")
+    title.SetTitle("Project Button HR-V0 ordinary watchdog PCB routed-copper candidate")
     title.SetDate("2026-08-06")
-    title.SetRevision("PCB-P0.2 / Electrical V3-P1.0")
+    title.SetRevision("PCB-P0.3 / Electrical V3-P1.0")
     title.SetCompany("Project Button")
     title.SetComment(0, WARNING)
-    title.SetComment(1, "CONSTRAINED PLACEMENT; UNROUTED - NO GERBER RELEASE")
+    title.SetComment(1, "ROUTED-COPPER CANDIDATE - NO GERBER RELEASE")
     default_class = pcbnew.NETCLASS("Default")
     default_class.SetClearance(pcbnew.FromMM(0.15))
     default_class.SetTrackWidth(pcbnew.FromMM(0.25))
     default_class.SetViaDiameter(pcbnew.FromMM(0.8))
     default_class.SetViaDrill(pcbnew.FromMM(0.4))
     board.GetNetClasses()["Default"] = default_class
+    board.GetDesignSettings().m_TrackMinWidth = pcbnew.FromMM(0.1)
+    power_class = pcbnew.NETCLASS("POWER24")
+    power_class.SetClearance(pcbnew.FromMM(0.15))
+    power_class.SetTrackWidth(pcbnew.FromMM(0.75))
+    power_class.SetViaDiameter(pcbnew.FromMM(1.0))
+    power_class.SetViaDrill(pcbnew.FromMM(0.5))
+    board.GetNetClasses()["POWER24"] = power_class
 
     nets = {}
     for name in sorted({pin.net for comp in components.values() for pin in comp.pins}):
         net = pcbnew.NETINFO_ITEM(board, name)
         board.Add(net)
         nets[name] = net
+    for name in ("SAFETY_24V", "WD1_COIL_N", "WD2_COIL_N"):
+        nets[name].SetNetClass(power_class)
 
     for ref, comp in components.items():
         lib, name = footprint_location(comp.footprint)
@@ -175,8 +384,9 @@ def main() -> int:
 
     add_outline(pcbnew, board)
     add_mounting_holes(pcbnew, board)
+    route_board(pcbnew, board, nets)
     add_text(pcbnew, board, WARNING, 35, 116.5, 1.35, pcbnew.F_SilkS)
-    add_text(pcbnew, board, "PCB-P0.2 - CONSTRAINED PLACEMENT - UNROUTED", 85, 112, 1.2, pcbnew.F_SilkS)
+    add_text(pcbnew, board, "PCB-P0.3 - ROUTED CANDIDATE - NO SAFETY CREDIT", 85, 112, 1.2, pcbnew.F_SilkS)
     add_text(pcbnew, board, "+24  0V  C1-  C2-", 25, 42, 1.1, pcbnew.F_SilkS)
     add_text(pcbnew, board, "FB1  FB2", 143, 69, 1.1, pcbnew.F_SilkS)
     add_text(pcbnew, board, "HB   COMPUTE-0V", 25, 101.5, 1.1, pcbnew.F_SilkS)
@@ -191,6 +401,14 @@ def main() -> int:
         default = {"name": "Default", "priority": 2147483647}
         classes.append(default)
     default.update({"clearance": 0.15, "track_width": 0.25, "via_diameter": 0.8, "via_drill": 0.4})
+    power = next((item for item in classes if item.get("name") == "POWER24"), None)
+    if power is None:
+        power = {"name": "POWER24", "priority": 1}
+        classes.append(power)
+    power.update({"clearance": 0.15, "track_width": 0.75, "via_diameter": 1.0, "via_drill": 0.5})
+    project["net_settings"]["netclass_assignments"] = {
+        name: "POWER24" for name in ("SAFETY_24V", "WD1_COIL_N", "WD2_COIL_N")
+    }
     project_path.write_text(json.dumps(project, indent=2) + "\n", encoding="utf-8")
 
     validation = OUT / "validation"
@@ -199,20 +417,22 @@ def main() -> int:
     output.mkdir(exist_ok=True)
     cli = KICAD_ROOT / "bin" / "kicad-cli.exe"
     commands = [
-        [str(cli), "pcb", "drc", "--output", str(validation / "project-button-v3-pcb-placement-drc.rpt"), str(BOARD_PATH)],
-        [str(cli), "pcb", "render", "--output", str(output / "project-button-v3-pcb-placement-top.png"), "--width", "1800", "--height", "1100", "--side", "top", "--background", "opaque", str(BOARD_PATH)],
+        [str(cli), "pcb", "drc", "--refill-zones", "--save-board", "--output", str(validation / "project-button-v3-pcb-routing-drc.rpt"), str(BOARD_PATH)],
+        [str(cli), "pcb", "render", "--output", str(output / "project-button-v3-pcb-routing-top.png"), "--width", "1800", "--height", "1100", "--side", "top", "--background", "opaque", str(BOARD_PATH)],
+        [str(cli), "pcb", "render", "--output", str(output / "project-button-v3-pcb-routing-bottom.png"), "--width", "1800", "--height", "1100", "--side", "bottom", "--background", "opaque", str(BOARD_PATH)],
     ]
     logs = []
     for command in commands:
         result = subprocess.run(command, text=True, capture_output=True)
-        logs.append("$ " + subprocess.list2cmdline(command) + "\n" + result.stdout + result.stderr + f"\nexit={result.returncode}\n")
-    (validation / "project-button-v3-pcb-placement-cli.log").write_text("\n".join(logs), encoding="utf-8")
+        combined = "\n".join(line.rstrip() for line in (result.stdout + result.stderr).splitlines())
+        logs.append("$ " + subprocess.list2cmdline(command) + "\n" + combined + f"\nexit={result.returncode}\n")
+    (validation / "project-button-v3-pcb-routing-cli.log").write_text("\n".join(logs), encoding="utf-8")
     (OUT / "project-button-v3.kicad_prl").unlink(missing_ok=True)
     model.manifest()
     print(f"Generated {BOARD_PATH}")
     print(f"Board-mounted schematic references: {len(components)}")
     print(WARNING)
-    print("This constrained-placement candidate is intentionally unrouted; routing DRC closure is not claimed.")
+    print("This routed-copper candidate has no fabrication release; DRC and connectivity evidence are review inputs only.")
     return 0
 
 
