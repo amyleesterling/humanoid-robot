@@ -10,7 +10,7 @@ RFQ revision: `HR-V0-PLATE-RFQ-P0.1`
 
 The four native CAD parts remain an RFQ and first-article package, not a cutting release. The source geometry is unchanged by this process correction.
 
-The current `MV0-001`, `MV0-002`, and `MV0-003` drawings contain 2.70 mm candidate clearance holes in 4.75 mm or 6.35 mm 6061-T6 plate. SendCutSend's current 6061 material page recommends holes no smaller than the material thickness. Its broader educational sheet-cutting guide and Xometry's laser-cutting guide use a less conservative 50%-of-thickness feature screen. Because the part-specific guidance is more conservative, and because `MV0-003` also fails the 50% screen, **laser-only finished holes are not accepted for these three parts**. Their RFQ process is CNC mill/drill from plate.
+The current `MV0-001`, `MV0-002`, and `MV0-003` drawings contain 2.70 mm candidate clearance holes in 4.75 mm or 6.35 mm 6061-T6 plate. SendCutSend's current 6061 material page recommends holes no smaller than the material thickness, and its current service article gives 0.170 inch (4.318 mm) as an example minimum hole. Its broader educational sheet-cutting guide and Xometry's laser-cutting guide use a less conservative 50%-of-thickness feature screen. Because the part-specific guidance is more conservative, and because `MV0-003` also fails the 50% screen, **laser-only finished holes are not accepted for these three parts**. Their permitted RFQ routes are one-stop CNC mill/drill or a deliberately hole-free profile blank followed by qualified secondary CNC/drilling. See `HR-V0-FAB-RFQ-P0.1`.
 
 `MV0-004` has 9.00 mm candidate through/slot features in 6.35 mm plate and may be suitable for profile cutting, but its bench slots cannot be released until the actual Boston bench substrate, edge distances, access and anchor system are surveyed.
 
@@ -20,10 +20,10 @@ These are supplier-capability screens, not released project tolerances. Supplier
 
 | Part | Stock | Critical current feature | RFQ process | Release state |
 |---|---|---:|---|---|
-| `MV0-001` upper link | 4.75 mm 6061-T6 | 2.70 mm H101/S102 holes | CNC mill/drill from plate | Selection required |
-| `MV0-002` forearm | 4.75 mm 6061-T6 | 2.70 mm H101/H104 holes | CNC mill/drill from plate | Selection required |
-| `MV0-003` shoulder adapter | 6.35 mm 6061-T6 | 2.70 mm S102 holes | CNC mill/drill from plate | Selection required |
-| `MV0-004` bench anchor, qty 2 | 6.35 mm 6061-T6 | 9.00 mm holes/slots | Profile-cut candidate after bench survey | Selection required |
+| `MV0-001` upper link | 4.75 mm 6061-T6 | 2.70 mm H101/S102 holes | One-stop CNC or profile-only blank plus qualified secondary CNC/drill | Selection required |
+| `MV0-002` forearm | 4.75 mm 6061-T6 | 2.70 mm H101/H104 holes | One-stop CNC or profile-only blank plus qualified secondary CNC/drill | Selection required |
+| `MV0-003` shoulder adapter | 6.35 mm 6061-T6 | 2.70 mm S102 holes | One-stop CNC or profile-only blank plus qualified secondary CNC/drill | Selection required |
+| `MV0-004` bench anchor, qty 2 | 6.35 mm 6061-T6 | 9.00 mm holes/slots | Profile cutting or one-stop CNC after bench survey | Selection required |
 
 The machine-checkable source is [`cad/hr-v0/manufacturing/hr-v0-flat-plate-process-register.csv`](../cad/hr-v0/manufacturing/hr-v0-flat-plate-process-register.csv).
 
@@ -35,7 +35,7 @@ Each supplier receives one controlled revision containing:
 2. STEP and DXF from the same native generator plus SHA-256 values;
 3. the matching SVG/PDF-equivalent drawing with material, nominal thickness and candidate geometry;
 4. explicit `NO BEND`, `NO WELD`, `DO NOT SCALE`, deburr and break-sharp-edge instructions;
-5. CNC mill/drill requirement for the critical holes on `MV0-001` through `MV0-003`;
+5. CNC mill/drill requirement for the critical holes on `MV0-001` through `MV0-003`; if a two-process route is quoted, the profile supplier receives only the zero-hole `PROFILE_ONLY_RFQ` artifacts and the secondary shop receives the separately frozen finished drawing;
 6. a request for material/temper and actual-thickness evidence;
 7. written DFM acceptance of the selected process, hole size/location capability, profile, flatness and inspection method; and
 8. one first article per part number before any remaining quantity or assembly use.

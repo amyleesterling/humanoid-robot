@@ -2,7 +2,7 @@
 
 **PRELIMINARY—NOT RELEASED FOR FABRICATION OR ENERGIZATION**
 
-This directory contains the native, parametric mechanical source for the bench-mounted HR-V0 handoff demonstrator. It is an **RFQ and first-article evidence package**, not a fabrication release. The custom parts are flat 6061-T6 plates. The controlled process is CNC mill/drill for `MV0-001` through `MV0-003`; `MV0-004` is a profile-cut candidate only after the bench survey.
+This directory contains the native, parametric mechanical source for the bench-mounted HR-V0 handoff demonstrator. It is an **RFQ and first-article evidence package**, not a fabrication release. The custom parts are flat 6061-T6 plates. `MV0-001` through `MV0-003` may be quoted as one-stop CNC or as a hole-free profile blank plus qualified secondary CNC/drilling; `MV0-004` remains on hold until the bench survey.
 
 ## Generate the package
 
@@ -12,7 +12,7 @@ From the repository root on Windows:
 & '..\.venvs\hr-v0-cad\Scripts\python.exe' cad\hr-v0\src\hr_v0_cad.py
 ```
 
-For a clean environment, install the pinned package from `requirements-cad.txt`. Generated artifacts include controlled structural STEP/DXF, readable SVG quote drawings, a STEP/GLB assembly-space model, mass estimates, three nonstructural interface fit-coupon packages, a guard/catch/cable space study, the P0.2 general arrangement, and `generated/SOURCE-MANIFEST.csv` with SHA-256 hashes for every generated artifact. Structural STL is deliberately prohibited because the CadQuery 2.8 export produced byte-identical meshes for the distinct upper-link and forearm interfaces; the metal parts are not print parts. Fit coupons retain optional STL as nonstructural inspection aids.
+For a clean environment, install the pinned package from `requirements-cad.txt`. Generated artifacts include controlled finished-part STEP/DXF, three zero-hole `PROFILE_ONLY_RFQ` blank STEP/DXF packages and a readable route guide, SVG quote drawings, a STEP/GLB assembly-space model, mass estimates, three nonstructural interface fit-coupon packages, a guard/catch/cable space study, the P0.2 general arrangement, and `generated/SOURCE-MANIFEST.csv` with SHA-256 hashes for every generated artifact. Structural STL is deliberately prohibited because the CadQuery 2.8 export produced byte-identical meshes for the distinct upper-link and forearm interfaces; the metal parts are not print parts. Fit coupons retain optional STL as nonstructural inspection aids.
 
 The current coordination layer is [HR-V0-MECH-P0.2](../../docs/hr-v0-mechanical-release-p0.2.md). Its parameter, interface and component source registers are next to this README; its generated general arrangement and datum chain are under `generated/assembly/`. P0.2 remains a coordination candidate, not a cutting or assembly release.
 
@@ -20,12 +20,12 @@ The current coordination layer is [HR-V0-MECH-P0.2](../../docs/hr-v0-mechanical-
 
 | Part | Description | Quantity | Material | Current status |
 |---|---|---:|---|---|
-| MV0-001 | 160 mm upper-link plate; H101 output to S102 body-frame interfaces | 1 | 4.75 mm nominal 6061-T6 | CNC mill/drill RFQ; diameter/location selection and FAI required |
-| MV0-002 | 160 mm forearm plate; H101 input and selected FR12-H104K 24 x 12 candidate pattern | 1 | 4.75 mm nominal 6061-T6 | CNC mill/drill RFQ; fit, fastener/load path, tolerance and FAI required |
-| MV0-003 | S102 shoulder-to-column adapter | 1 | 6.35 mm nominal 6061-T6 | CNC mill/drill RFQ; fit, column interface, tolerance and FAI required |
-| MV0-004 | Bench anchor plate | 2 | 6.35 mm nominal 6061-T6 | Profile-cut candidate; bench survey, anchor selection and FAI required |
+| MV0-001 | 160 mm upper-link plate; H101 output to S102 body-frame interfaces | 1 | 4.75 mm nominal 6061-T6 | One-stop CNC or two-process RFQ; diameter/location selection and FAI required |
+| MV0-002 | 160 mm forearm plate; H101 input and selected FR12-H104K 24 x 12 candidate pattern | 1 | 4.75 mm nominal 6061-T6 | One-stop CNC or two-process RFQ; fit, fastener/load path, tolerance and FAI required |
+| MV0-003 | S102 shoulder-to-column adapter | 1 | 6.35 mm nominal 6061-T6 | One-stop CNC or two-process RFQ; fit, column interface, tolerance and FAI required |
+| MV0-004 | Bench anchor plate | 2 | 6.35 mm nominal 6061-T6 | Site hold; bench survey, anchor selection and FAI required |
 
-The process decision, supplier screens and closure sequence are controlled in [HR-V0 flat-plate manufacturing P0.1](../../docs/hr-v0-flat-plate-manufacturing-p0.1.md) and the machine-readable [`manufacturing/hr-v0-flat-plate-process-register.csv`](manufacturing/hr-v0-flat-plate-process-register.csv). Validate it with `python tools/check_hr_v0_manufacturing.py`.
+The process decision, supplier screens and closure sequence are controlled in [HR-V0 flat-plate manufacturing P0.1](../../docs/hr-v0-flat-plate-manufacturing-p0.1.md), [Boston fabrication and RFQ route P0.1](../../docs/hr-v0-boston-fabrication-route-p0.1.md), and their machine-readable registers. Validate them with `python tools/check_hr_v0_manufacturing.py` and `python tools/check_hr_v0_fabrication_routes.py`.
 
 ## Controlled nonstructural fit coupon
 

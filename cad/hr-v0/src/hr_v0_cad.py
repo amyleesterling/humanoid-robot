@@ -26,9 +26,11 @@ DRAWINGS = OUT / "drawings"
 FIT_COUPONS = OUT / "fit-coupons"
 HARD_STOPS = OUT / "hard-stops"
 SAFETY_ENCLOSURE = OUT / "safety-enclosure"
+MANUFACTURING_BLANKS = OUT / "manufacturing-blanks"
 
 REVISION = "HR-V0-MECH-R0.1-PRELIMINARY"
 PLATE_RFQ_REVISION = "HR-V0-PLATE-RFQ-P0.1"
+FABRICATION_RFQ_REVISION = "HR-V0-FAB-RFQ-P0.1"
 MATERIAL = "6061-T6 aluminum"
 DENSITY_KG_MM3 = 2.70e-6
 
@@ -266,6 +268,87 @@ def export_part(
         "quantity": quantity,
         "release_status": "RFQ PROCESS CONTROLLED—DIMENSIONAL RELEASE AND FAI REQUIRED",
     }
+
+
+def export_profile_only_blank(
+    part_number: str,
+    name: str,
+    solid: cq.Workplane,
+    thickness_mm: float,
+) -> dict[str, object]:
+    """Export hole-free stock geometry for quotation or a controlled first operation.
+
+    These files deliberately omit every finished hole.  They may only be used
+    with a separately qualified secondary drilling/milling operation and a
+    released finished-part drawing.
+    """
+    stem = f"{part_number}_{name}_PROFILE_ONLY_RFQ"
+    step_path = MANUFACTURING_BLANKS / f"{stem}.step"
+    dxf_path = MANUFACTURING_BLANKS / f"{stem}.dxf"
+    exporters.export(solid, str(step_path))
+    exporters.export(solid.faces("<Y"), str(dxf_path))
+    volume = solid.val().Volume()
+    return {
+        "part_number": part_number,
+        "blank_revision": FABRICATION_RFQ_REVISION,
+        "material": MATERIAL,
+        "nominal_thickness_mm": thickness_mm,
+        "finished_holes_included": 0,
+        "volume_mm3": round(volume, 2),
+        "calculated_mass_g": round(volume * DENSITY_KG_MM3 * 1000.0, 1),
+        "dxf_file": dxf_path.name,
+        "step_file": step_path.name,
+        "allowed_use": "QUOTE OR PROFILE-BLANK FIRST OPERATION ONLY",
+        "required_next_operation": "Qualified secondary CNC/drill plus FAI to released finished-part drawing",
+        "release_status": "PRELIMINARY - NOT RELEASED FOR FABRICATION OR ENERGIZATION",
+    }
+
+
+def write_profile_only_blank_guide() -> None:
+    """Readable route guide; geometry files remain controlled by their hashes."""
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820">
+      <style>
+        text {{ font: 16px system-ui, sans-serif; fill: #082554; }}
+        .title {{ font-size: 30px; font-weight: 750; }}
+        .head {{ font-size: 21px; font-weight: 700; }}
+        .warning {{ font-size: 18px; font-weight: 750; fill: #8a4b00; }}
+        .part {{ fill: #d9efff; stroke: #082554; stroke-width: 4; }}
+        .route {{ fill: #fff8dd; stroke: #b17700; stroke-width: 3; }}
+        .arrow {{ stroke: #0b72b9; stroke-width: 5; marker-end: url(#arrow); }}
+      </style>
+      <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0b72b9"/></marker></defs>
+      <text x="45" y="52" class="title">HR-V0 PROFILE-ONLY BLANK RFQ GUIDE</text>
+      <text x="45" y="88" class="warning">HOLES ARE DELIBERATELY OMITTED - THESE ARE NOT FINISHED PARTS</text>
+      <path d="M115 270 L415 270 A42 42 0 0 0 415 186 L115 186 A42 42 0 0 0 115 270 Z" class="part"/>
+      <text x="115" y="310" class="head">MV0-001 / MV0-002 blank</text>
+      <text x="115" y="340">6061-T6, 4.75 mm nominal</text>
+      <text x="115" y="370">Common capsule perimeter; zero holes</text>
+      <rect x="680" y="176" width="270" height="150" class="part"/>
+      <text x="680" y="365" class="head">MV0-003 blank</text>
+      <text x="680" y="395">6061-T6, 6.35 mm nominal</text>
+      <text x="680" y="425">90 x 110 mm perimeter; zero holes</text>
+      <rect x="55" y="500" width="305" height="150" rx="18" class="route"/>
+      <text x="78" y="535" class="head">1. Profile blank</text>
+      <text x="78" y="570">Quote the PROFILE_ONLY_RFQ</text>
+      <text x="78" y="600">DXF/STEP and its exact hash.</text>
+      <text x="78" y="630">Do not add finished holes.</text>
+      <line x1="365" y1="575" x2="455" y2="575" class="arrow"/>
+      <rect x="465" y="500" width="305" height="150" rx="18" class="route"/>
+      <text x="488" y="535" class="head">2. Secondary machining</text>
+      <text x="488" y="570">Qualified shop drills/mills to</text>
+      <text x="488" y="600">the separately frozen finished</text>
+      <text x="488" y="630">drawing and coupon evidence.</text>
+      <line x1="775" y1="575" x2="865" y2="575" class="arrow"/>
+      <rect x="875" y="500" width="270" height="150" rx="18" class="route"/>
+      <text x="898" y="535" class="head">3. FAI and acceptance</text>
+      <text x="898" y="570">Inspect material, thickness,</text>
+      <text x="898" y="600">profile, holes, locations,</text>
+      <text x="898" y="630">edges, flatness and fit.</text>
+      <text x="45" y="710">Alternative: quote the complete finished geometry to a one-stop CNC supplier. The supplier's written DFM response and quote govern.</text>
+      <text x="45" y="748">MV0-004 is excluded until the Boston bench survey freezes its anchor interface and slot geometry.</text>
+      <text x="45" y="790" class="warning">{FABRICATION_RFQ_REVISION} - PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION</text>
+    </svg>'''
+    (MANUFACTURING_BLANKS / "HR-V0_profile-only-blank-RFQ-guide.svg").write_text(svg, encoding="utf-8")
 
 
 def write_svg_drawing(part_number: str, title: str, kind: str):
@@ -914,6 +997,7 @@ def main():
     FIT_COUPONS.mkdir(parents=True, exist_ok=True)
     HARD_STOPS.mkdir(parents=True, exist_ok=True)
     SAFETY_ENCLOSURE.mkdir(parents=True, exist_ok=True)
+    MANUFACTURING_BLANKS.mkdir(parents=True, exist_ok=True)
     for obsolete_name in ("MV0-001_link.svg", "MV0-002_link.svg", "MV0-003_adapter.svg"):
         (DRAWINGS / obsolete_name).unlink(missing_ok=True)
     upper = upper_link_plate()
@@ -921,6 +1005,9 @@ def main():
     adapter = shoulder_adapter()
     anchor_left = anchor_plate()
     anchor_right = anchor_plate()
+    upper_blank = link_profile().extrude(LINK_THICKNESS_MM)
+    forearm_blank = link_profile().extrude(LINK_THICKNESS_MM)
+    adapter_blank = cq.Workplane("XZ").rect(ADAPTER_X_MM, ADAPTER_Z_MM).extrude(ADAPTER_T_MM)
     fit_coupon = robotis_pcd22_fit_coupon()
     s102_fit_coupon = robotis_s102_32x16_fit_coupon()
     gripper_fit_coupon = robotis_h104_24x12_fit_coupon()
@@ -938,6 +1025,16 @@ def main():
         writer = csv.DictWriter(handle, fieldnames=rows[0].keys())
         writer.writeheader()
         writer.writerows(rows)
+    blank_rows = [
+        export_profile_only_blank("MV0-001", "upper_link", upper_blank, LINK_THICKNESS_MM),
+        export_profile_only_blank("MV0-002", "forearm_link", forearm_blank, LINK_THICKNESS_MM),
+        export_profile_only_blank("MV0-003", "shoulder_adapter", adapter_blank, ADAPTER_T_MM),
+    ]
+    with (MANUFACTURING_BLANKS / "profile-only-blanks.csv").open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=blank_rows[0].keys())
+        writer.writeheader()
+        writer.writerows(blank_rows)
+    write_profile_only_blank_guide()
     coupon_rows = [
         export_fit_coupon(fit_coupon),
         export_s102_fit_coupon(s102_fit_coupon),
@@ -960,6 +1057,7 @@ def main():
             "robotis_frame_pcd_mm": FRAME_PCD_MM,
             "s102_selected_tapped_rectangle_mm": [S102_TAPPED_RECT_X_MM, S102_TAPPED_RECT_Z_MM],
             "candidate_frame_hole_mm": FRAME_HOLE_MM,
+            "fabrication_rfq_identifier": FABRICATION_RFQ_REVISION,
             "fit_coupon_mm": [FIT_COUPON_OUTER_D_MM, FIT_COUPON_CENTER_CLEARANCE_MM, FIT_COUPON_THICKNESS_MM],
             "s102_fit_coupon_mm": [S102_FIT_COUPON_X_MM, S102_FIT_COUPON_Z_MM, FIT_COUPON_THICKNESS_MM],
             "gripper_h104_selected_rectangle_mm": [GRIPPER_FRAME_PATTERN_X_MM, GRIPPER_FRAME_PATTERN_Z_MM],

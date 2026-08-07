@@ -20,7 +20,7 @@ The first structural architecture uses:
 - 80/20 40-series catalog gussets; and
 - flat 6.35 mm nominal 6061-T6 adapter and bench-anchor plates.
 
-No welding or custom bent 6061 part is required. R43 holds `MV0-001` through `MV0-003` to CNC mill/drill RFQ because their 2.70 mm candidate holes are smaller than the plate thickness; `MV0-004` remains a profile-cut candidate after bench survey. See `docs/hr-v0-flat-plate-manufacturing-p0.1.md`. The base must be physically secured to a surveyed bench; the free-standing assembly model is not an operating configuration.
+No welding or custom bent 6061 part is required. R50 permits `MV0-001` through `MV0-003` to be quoted either as one-stop CNC mill/drill or as a hole-free profile blank plus qualified secondary machining; their 2.70 mm candidate holes may not be ordered as direct profile-cut finished features. `MV0-004` remains on site hold until the bench survey. See `docs/hr-v0-flat-plate-manufacturing-p0.1.md` and `docs/hr-v0-boston-fabrication-route-p0.1.md`. The base must be physically secured to a surveyed bench; the free-standing assembly model is not an operating configuration.
 
 ## Custom part mass closure
 

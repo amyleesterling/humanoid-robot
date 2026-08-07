@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820">
+      <style>
+        text { font: 16px system-ui, sans-serif; fill: #082554; }
+        .title { font-size: 30px; font-weight: 750; }
+        .head { font-size: 21px; font-weight: 700; }
+        .warning { font-size: 18px; font-weight: 750; fill: #8a4b00; }
+        .part { fill: #d9efff; stroke: #082554; stroke-width: 4; }
+        .route { fill: #fff8dd; stroke: #b17700; stroke-width: 3; }
+        .arrow { stroke: #0b72b9; stroke-width: 5; marker-end: url(#arrow); }
+      </style>
+      <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0b72b9"/></marker></defs>
+      <text x="45" y="52" class="title">HR-V0 PROFILE-ONLY BLANK RFQ GUIDE</text>
+      <text x="45" y="88" class="warning">HOLES ARE DELIBERATELY OMITTED - THESE ARE NOT FINISHED PARTS</text>
+      <path d="M115 270 L415 270 A42 42 0 0 0 415 186 L115 186 A42 42 0 0 0 115 270 Z" class="part"/>
+      <text x="115" y="310" class="head">MV0-001 / MV0-002 blank</text>
+      <text x="115" y="340">6061-T6, 4.75 mm nominal</text>
+      <text x="115" y="370">Common capsule perimeter; zero holes</text>
+      <rect x="680" y="176" width="270" height="150" class="part"/>
+      <text x="680" y="365" class="head">MV0-003 blank</text>
+      <text x="680" y="395">6061-T6, 6.35 mm nominal</text>
+      <text x="680" y="425">90 x 110 mm perimeter; zero holes</text>
+      <rect x="55" y="500" width="305" height="150" rx="18" class="route"/>
+      <text x="78" y="535" class="head">1. Profile blank</text>
+      <text x="78" y="570">Quote the PROFILE_ONLY_RFQ</text>
+      <text x="78" y="600">DXF/STEP and its exact hash.</text>
+      <text x="78" y="630">Do not add finished holes.</text>
+      <line x1="365" y1="575" x2="455" y2="575" class="arrow"/>
+      <rect x="465" y="500" width="305" height="150" rx="18" class="route"/>
+      <text x="488" y="535" class="head">2. Secondary machining</text>
+      <text x="488" y="570">Qualified shop drills/mills to</text>
+      <text x="488" y="600">the separately frozen finished</text>
+      <text x="488" y="630">drawing and coupon evidence.</text>
+      <line x1="775" y1="575" x2="865" y2="575" class="arrow"/>
+      <rect x="875" y="500" width="270" height="150" rx="18" class="route"/>
+      <text x="898" y="535" class="head">3. FAI and acceptance</text>
+      <text x="898" y="570">Inspect material, thickness,</text>
+      <text x="898" y="600">profile, holes, locations,</text>
+      <text x="898" y="630">edges, flatness and fit.</text>
+      <text x="45" y="710">Alternative: quote the complete finished geometry to a one-stop CNC supplier. The supplier's written DFM response and quote govern.</text>
+      <text x="45" y="748">MV0-004 is excluded until the Boston bench survey freezes its anchor interface and slot geometry.</text>
+      <text x="45" y="790" class="warning">HR-V0-FAB-RFQ-P0.1 - PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION</text>
+    </svg>

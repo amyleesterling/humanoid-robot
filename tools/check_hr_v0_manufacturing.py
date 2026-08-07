@@ -59,12 +59,21 @@ def main() -> int:
 
     for part in ("MV0-001", "MV0-002", "MV0-003"):
         row = by_part.get(part, {})
-        if row.get("selected_rfq_process") != "CNC mill/drill from plate":
-            errors.append(f"{part} is not held to CNC mill/drill")
+        if row.get("selected_rfq_process") != "One-stop CNC OR profile-only blank plus qualified secondary CNC/drill":
+            errors.append(f"{part} lost its controlled one-stop/two-process routes")
+        if row.get("one_stop_route") != "FAB-001 or FAB-002" or row.get("two_process_route") != "FAB-003":
+            errors.append(f"{part} fabrication routes changed")
+        blank = ROOT / row.get("profile_only_blank_artifact", "")
+        if not blank.is_file() or "PROFILE_ONLY_RFQ" not in blank.name:
+            errors.append(f"{part} profile-only blank is missing or misnamed")
+        if "separately frozen drawing" not in row.get("secondary_operation", ""):
+            errors.append(f"{part} secondary-operation control is incomplete")
         if row.get("sendcutsend_laser_only_compatible") != "no":
             errors.append(f"{part} falsely permits the current laser-only finished-hole route")
-    if by_part.get("MV0-004", {}).get("selected_rfq_process") != "Profile cutting candidate after bench survey":
+    if by_part.get("MV0-004", {}).get("selected_rfq_process") != "Profile cutting or one-stop CNC candidate after bench survey":
         errors.append("MV0-004 lost its bench-survey hold")
+    if by_part.get("MV0-004", {}).get("profile_only_blank_artifact") != "NOT GENERATED - SITE HOLD":
+        errors.append("MV0-004 falsely exposes a pre-survey blank")
 
     if errors:
         print("HR-V0 manufacturing register check FAILED")
