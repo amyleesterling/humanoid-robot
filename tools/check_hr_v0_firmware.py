@@ -279,6 +279,25 @@ def main() -> int:
         failures.append("compiled-C host evidence no longer preserves the target-HIL boundary")
 
     supervisor_config = json.loads((FIRMWARE / "supervisor" / "supervisor-config.json").read_text(encoding="utf-8"))
+    if supervisor_config.get("configuration_id") != "HR-V0-SUP-P0.2":
+        failures.append("supervisor configuration ID is not HR-V0-SUP-P0.2")
+    expected_binding = {
+        "limit_set_id": "HR-V0-LIMITS-P0.1",
+        "mechanical_revision": "HR-V0-MECH-P0.5",
+        "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.6",
+        "hard_stop_revision": "HR-V0-HS-P0.2",
+        "release_state": "CANDIDATE-NOT-RELEASED",
+        "acceptance_evidence_hash": "SELECTION REQUIRED",
+    }
+    if supervisor_config.get("mechanical_limit_binding") != expected_binding:
+        failures.append("supervisor mechanical-limit binding differs from the unreleased P0.6/P0.5/P0.2 candidate")
+    if supervisor_config.get("joints", {}).get("J2") != {
+        "minimum": 15.0,
+        "maximum": 115.0,
+        "unit": "deg",
+        "start_tolerance": None,
+    }:
+        failures.append("supervisor J2 candidate is not the fail-closed 15..115 degree envelope")
     for field in ("configuration_hash", "kinematic_model_hash"):
         value = supervisor_config[field].upper()
         if "SELECTION" not in value or "REQUIRED" not in value:
@@ -293,13 +312,17 @@ def main() -> int:
         "command.session_id != self.session_id",
         "waiting for three valid watchdog heartbeat edges",
         "computed TCP speed outside configured limit",
+        "limits_current",
+        "evidence_is_accepted(self.mechanical_limit_binding)",
     ):
         if required not in model:
             failures.append(f"supervisor fail-closed invariant missing: {required}")
 
     actuator_config = json.loads((FIRMWARE / "supervisor" / "actuator-config.json").read_text(encoding="utf-8"))
-    if actuator_config.get("configuration_id") != "HR-V0-ACT-P0.1":
-        failures.append("actuator configuration ID is not HR-V0-ACT-P0.1")
+    if actuator_config.get("configuration_id") != "HR-V0-ACT-P0.2":
+        failures.append("actuator configuration ID is not HR-V0-ACT-P0.2")
+    if actuator_config.get("mechanical_limit_binding") != expected_binding:
+        failures.append("actuator mechanical-limit binding differs from the unreleased P0.6/P0.5/P0.2 candidate")
     if actuator_config.get("external_branch_current_limit_a") != "SELECTION REQUIRED":
         failures.append("external branch-current limit was released without physical evidence")
     if actuator_config.get("operating_mode") != 5:
@@ -309,14 +332,16 @@ def main() -> int:
     if actuator_config.get("torque_on_by_goal_update") is not False:
         failures.append("actuator goal-update torque candidate is not fail-off")
     expected_actuators = {
-        "J1": (1, "XM540-W270-T", 800),
-        "J2": (2, "XM540-W270-T", 800),
-        "GRIPPER": (3, "XM430-W350-T", 300),
+        "J1": (1, "XM540-W270-T", 800, -20.0, 70.0, "deg"),
+        "J2": (2, "XM540-W270-T", 800, 15.0, 115.0, "deg"),
+        "GRIPPER": (3, "XM430-W350-T", 300, 20.0, 75.0, "mm"),
     }
-    for joint, (actuator_id, model_name, raw_limit) in expected_actuators.items():
+    for joint, (actuator_id, model_name, raw_limit, minimum, maximum, unit) in expected_actuators.items():
         item = actuator_config.get("actuators", {}).get(joint, {})
         if (item.get("id"), item.get("model"), item.get("current_limit_raw_candidate")) != (actuator_id, model_name, raw_limit):
             failures.append(f"actuator candidate differs at {joint}")
+        if (item.get("minimum_engineering"), item.get("maximum_engineering"), item.get("engineering_unit")) != (minimum, maximum, unit):
+            failures.append(f"actuator engineering envelope differs at {joint}")
         if isinstance(item.get("model_number"), int) or isinstance(item.get("firmware_version"), int):
             failures.append(f"received identity was inferred before inspection at {joint}")
     actuator_model = (FIRMWARE / "supervisor" / "project_button_supervisor" / "actuator_config.py").read_text(encoding="utf-8")
@@ -331,6 +356,8 @@ def main() -> int:
         "DRIVE_MODE_MISMATCH",
         "def engineering_to_raw",
         "actuator transport/calibration selections remain open",
+        "engineering target outside controlled motion envelope",
+        "evidence_is_accepted(self.mechanical_limit_binding)",
     ):
         if required not in actuator_model:
             failures.append(f"actuator fail-closed invariant missing: {required}")
@@ -373,7 +400,7 @@ def main() -> int:
         sdk_lock.get("upstream_commit"),
         sdk_lock.get("installation"),
     ) != (
-        "HR-V0-DXL-TRANSPORT-P0.1",
+        "HR-V0-DXL-TRANSPORT-P0.2",
         "dynamixel-sdk",
         "4.0.5",
         "4.0.5",
@@ -432,6 +459,8 @@ def main() -> int:
     if (
         len(hil_rows) != 9
         or actual_hil_cases != expected_hil_cases
+        or any(row.get("firmware_id") != "HR-V0-FW-P0.3" for row in hil_rows)
+        or any(row.get("transport_id") != "HR-V0-DXL-TRANSPORT-P0.2" for row in hil_rows)
         or any(row.get("result") != "NOT EXECUTED" for row in hil_rows)
         or any(row.get("warning") != required_warning for row in hil_rows)
     ):

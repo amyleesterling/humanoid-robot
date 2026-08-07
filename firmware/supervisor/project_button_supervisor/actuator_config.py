@@ -14,6 +14,13 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Mapping
 
+from .mechanical_binding import (
+    EXPECTED_ENGINEERING_LIMITS,
+    EXPECTED_ACTUATOR_CONFIGURATION_ID,
+    binding_is_current,
+    evidence_is_accepted,
+)
+
 
 @dataclass(frozen=True)
 class ActuatorReadback:
@@ -50,6 +57,9 @@ class ActuatorRule:
     minimum_input_voltage_raw: int | None
     maximum_input_voltage_raw: int | None
     maximum_temperature_c: int | None
+    minimum_engineering: float
+    maximum_engineering: float
+    engineering_unit: str
 
 
 class ActuatorConfiguration:
@@ -63,6 +73,7 @@ class ActuatorConfiguration:
         self.torque_on_by_goal_update = bool(raw["torque_on_by_goal_update"])
         self.bus_watchdog_raw_candidate = int(raw["bus_watchdog_raw_candidate"])
         self.transport = dict(raw["transport"])
+        self.mechanical_limit_binding = dict(raw["mechanical_limit_binding"])
         self.external_branch_current_limit_a = raw["external_branch_current_limit_a"]
         self.rules: dict[str, ActuatorRule] = {}
         for joint, item in dict(raw["actuators"]).items():
@@ -88,6 +99,9 @@ class ActuatorConfiguration:
                 minimum_input_voltage_raw=_optional_int(entry["minimum_input_voltage_raw"]),
                 maximum_input_voltage_raw=_optional_int(entry["maximum_input_voltage_raw"]),
                 maximum_temperature_c=_optional_int(entry["maximum_temperature_c"]),
+                minimum_engineering=float(entry["minimum_engineering"]),
+                maximum_engineering=float(entry["maximum_engineering"]),
+                engineering_unit=str(entry["engineering_unit"]),
             )
 
     @classmethod
@@ -157,13 +171,27 @@ class ActuatorConfiguration:
             and external_limit > 0
         )
         bus_watchdog_valid = 1 <= self.bus_watchdog_raw_candidate <= 127
+        exact_axes = set(self.rules) == set(EXPECTED_ENGINEERING_LIMITS)
+        engineering_limits_current = exact_axes and all(
+            (
+                self.rules[joint].minimum_engineering,
+                self.rules[joint].maximum_engineering,
+                self.rules[joint].engineering_unit,
+            )
+            == expected
+            for joint, expected in EXPECTED_ENGINEERING_LIMITS.items()
+        )
         return (
-            external_limit_valid
+            self.configuration_id == EXPECTED_ACTUATOR_CONFIGURATION_ID
+            and external_limit_valid
             and identities
             and identity_set_valid
             and motion_scales
             and transport_closed
             and bus_watchdog_valid
+            and engineering_limits_current
+            and binding_is_current(self.mechanical_limit_binding)
+            and evidence_is_accepted(self.mechanical_limit_binding)
         )
 
     def engineering_to_raw(self, joint: str, position: float) -> int:
@@ -176,6 +204,8 @@ class ActuatorConfiguration:
         rule = self.rules[joint]
         if not self.release_selections_closed:
             raise ValueError("actuator transport/calibration selections remain open")
+        if not rule.minimum_engineering <= float(position) <= rule.maximum_engineering:
+            raise ValueError(f"{joint} engineering target outside controlled motion envelope")
         assert rule.position_zero_raw is not None
         assert rule.position_zero_engineering is not None
         assert rule.raw_per_unit is not None

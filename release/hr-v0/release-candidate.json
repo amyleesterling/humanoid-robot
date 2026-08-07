@@ -22,8 +22,8 @@
     },
     {
       "domain": "firmware",
-      "identifier": "HR-V0-FW-P0.2",
-      "supporting_identifiers": ["HR-V0-WD-BUILD-P0.2", "HR-V0-ACT-P0.1", "HR-V0-DXL-TRANSPORT-P0.1"],
+      "identifier": "HR-V0-FW-P0.3",
+      "supporting_identifiers": ["HR-V0-WD-BUILD-P0.2", "HR-V0-SUP-P0.2", "HR-V0-ACT-P0.2", "HR-V0-DXL-TRANSPORT-P0.2", "HR-V0-MECH-P0.5", "HR-V0-ARM-ARCH-P0.6", "HR-V0-HS-P0.2"],
       "release_state": "source_transport_and_reproducible_watchdog_candidate_not_installed_flashed_connected_or_hil_validated"
     },
     {

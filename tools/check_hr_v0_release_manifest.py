@@ -64,7 +64,7 @@ def main() -> None:
     required_identifiers = {
         "Project Button Electrical V3-P1.8",
         "HR-V0-MECH-P0.5",
-        "HR-V0-FW-P0.2",
+        "HR-V0-FW-P0.3",
         "HR-V0-FSA-P0.1",
         "HR-V0-BOM-P0.1",
         "HR-V0-E2-SEQ-P0.1",
@@ -100,17 +100,21 @@ def main() -> None:
     if mechanical_product.get("release_state") != "integrated_exact_coordinate_candidate_not_released_for_fabrication_or_energization":
         errors.append("HR-V0-MECH-P0.5 fail-closed release state changed")
     firmware_product = next(
-        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FW-P0.2"),
+        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FW-P0.3"),
         {},
     )
     if firmware_product.get("supporting_identifiers") != [
         "HR-V0-WD-BUILD-P0.2",
-        "HR-V0-ACT-P0.1",
-        "HR-V0-DXL-TRANSPORT-P0.1",
+        "HR-V0-SUP-P0.2",
+        "HR-V0-ACT-P0.2",
+        "HR-V0-DXL-TRANSPORT-P0.2",
+        "HR-V0-MECH-P0.5",
+        "HR-V0-ARM-ARCH-P0.6",
+        "HR-V0-HS-P0.2",
     ] or firmware_product.get("release_state") != (
         "source_transport_and_reproducible_watchdog_candidate_not_installed_flashed_connected_or_hil_validated"
     ):
-        errors.append("HR-V0-FW-P0.2 supporting identifiers or fail-closed release state changed")
+        errors.append("HR-V0-FW-P0.3 supporting identifiers or fail-closed release state changed")
     commissioning_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-E2-SEQ-P0.1"),
         {},

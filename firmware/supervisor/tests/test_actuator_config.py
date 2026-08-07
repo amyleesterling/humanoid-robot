@@ -65,6 +65,8 @@ class ActuatorConfigurationTests(unittest.TestCase):
         raw = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
         raw["external_branch_current_limit_a"] = 2.4
         raw["transport"]["device"] = "TEST-ONLY"
+        raw["mechanical_limit_binding"]["release_state"] = "ACCEPTED-FOR-GUARDED-HIL"
+        raw["mechanical_limit_binding"]["acceptance_evidence_hash"] = "C" * 64
         for item in raw["actuators"].values():
             item["model_number"] = 1130 if item["model"].startswith("XM540") else 1020
             item["firmware_version"] = 46
@@ -82,6 +84,9 @@ class ActuatorConfigurationTests(unittest.TestCase):
             item["maximum_temperature_c"] = 60
         frozen = ActuatorConfiguration(raw)
         self.assertEqual((), frozen.torque_enable_inhibits("J1", self.readback()))
+        self.assertEqual(frozen.engineering_to_raw("J2", 115.0), frozen.engineering_to_raw("J2", 115.0))
+        with self.assertRaisesRegex(ValueError, "controlled motion envelope"):
+            frozen.engineering_to_raw("J2", 115.001)
 
     def test_repository_calibration_refuses_raw_conversion(self):
         with self.assertRaisesRegex(ValueError, "selections remain open"):
@@ -91,6 +96,8 @@ class ActuatorConfigurationTests(unittest.TestCase):
         raw = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
         raw["external_branch_current_limit_a"] = 2.4
         raw["transport"]["device"] = "TEST-ONLY"
+        raw["mechanical_limit_binding"]["release_state"] = "ACCEPTED-FOR-GUARDED-HIL"
+        raw["mechanical_limit_binding"]["acceptance_evidence_hash"] = "C" * 64
         for item in raw["actuators"].values():
             item.update(
                 model_number=1130,
@@ -109,6 +116,17 @@ class ActuatorConfigurationTests(unittest.TestCase):
                 maximum_temperature_c=60,
             )
         raw["actuators"]["J2"]["id"] = raw["actuators"]["J1"]["id"]
+        self.assertFalse(ActuatorConfiguration(raw).release_selections_closed)
+
+    def test_stale_limit_or_mechanical_revision_keeps_release_fail_closed(self):
+        raw = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+        raw["actuators"]["J2"]["maximum_engineering"] = 120.0
+        self.assertFalse(ActuatorConfiguration(raw).release_selections_closed)
+        raw = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+        raw["mechanical_limit_binding"]["arm_architecture_revision"] = "HR-V0-ARM-ARCH-P0.5"
+        self.assertFalse(ActuatorConfiguration(raw).release_selections_closed)
+        raw = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+        raw["configuration_id"] = "HR-V0-ACT-P0.1"
         self.assertFalse(ActuatorConfiguration(raw).release_selections_closed)
 
 

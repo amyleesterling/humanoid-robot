@@ -42,6 +42,8 @@ def frozen_config() -> ActuatorConfiguration:
     raw = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     raw["external_branch_current_limit_a"] = 2.4
     raw["transport"]["device"] = "TEST-ONLY"
+    raw["mechanical_limit_binding"]["release_state"] = "ACCEPTED-FOR-GUARDED-HIL"
+    raw["mechanical_limit_binding"]["acceptance_evidence_hash"] = "C" * 64
     for joint, item in raw["actuators"].items():
         item["model_number"] = 1130 if item["model"].startswith("XM540") else 1020
         item["firmware_version"] = 46
@@ -294,10 +296,13 @@ class DynamixelBusTests(unittest.TestCase):
     def test_raw_conversion_and_signed_sdk_encoding_are_bounded(self):
         config = frozen_config()
         self.assertEqual(2048, config.engineering_to_raw("J1", 0.0))
+        config.engineering_to_raw("J2", 115.0)
+        with self.assertRaisesRegex(ValueError, "controlled motion envelope"):
+            config.engineering_to_raw("J2", 115.001)
         self.assertEqual(-1, _decoded(_encoded(-1, 2, True), 2, True))
         self.assertEqual(-32768, _decoded(_encoded(-32768, 2, True), 2, True))
         self.assertEqual(32767, _decoded(_encoded(32767, 2, True), 2, True))
-        with self.assertRaisesRegex(ValueError, "outside released"):
+        with self.assertRaisesRegex(ValueError, "controlled motion envelope"):
             config.engineering_to_raw("J1", 400.0)
         with self.assertRaisesRegex(BusError, "does not fit"):
             _encoded(256, 1, False)

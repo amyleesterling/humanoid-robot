@@ -29,7 +29,7 @@ Before this area can be released, the project still needs:
 3. reproducible `.uf2`/`.elf` binaries with hashes and map files;
 4. Raspberry Pi deployment packaging and service supervision;
 5. the released kinematic model, received calibration/profile/telemetry limits and target-installed DYNAMIXEL SDK/transport image;
-6. received actuator identity/firmware records and external branch-current, torque and thermal characterization under `HR-V0-ACT-P0.1`;
+6. received actuator identity/firmware records and external branch-current, torque and thermal characterization under `HR-V0-ACT-P0.2`;
 7. HIL traces for every startup, timeout, stuck-signal, feedback, reset, ARM, configuration mismatch, stale-target, unexpected-ID, packet/USB, bus-watchdog and partial-write fault; and
 8. qualified controls, electrical and functional-safety review.
 
