@@ -71,7 +71,7 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P1.6", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P1.7", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
@@ -92,6 +92,14 @@ def main() -> int:
                 f"{ref} lacks current Schneider catalog evidence", failures)
         require("critical-current" in components[ref].description.lower(),
                 f"{ref} description omits the lower-current critical-current boundary", failures)
+
+    for ref in ("FSR1", "FSR2"):
+        require("3211861" in components[ref].value and "3030420" in components[ref].value,
+                f"{ref} holder/end-cover identity changed", failures)
+        require("FUSE LINK AND COORDINATION SELECTION REQUIRED" in components[ref].status,
+                f"{ref} prematurely releases a fuse or coordination result", failures)
+        require("manufacturer maxima are not project selections" in components[ref].description,
+                f"{ref} omits the product-limit boundary", failures)
 
     expected_schematics = {f"{gen.PROJECT}.kicad_sch", *(sheet.filename for sheet in sheets)}
     actual_schematics = {path.name for path in OUT.glob("*.kicad_sch")}

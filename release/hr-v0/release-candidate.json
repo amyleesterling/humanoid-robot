@@ -10,8 +10,8 @@
   "current_products": [
     {
       "domain": "electrical",
-      "identifier": "Project Button Electrical V3-P1.6",
-      "supporting_identifiers": ["PCB-P0.5", "DXL-STAR-P0.1", "HR-V0-CP-P0.2"],
+      "identifier": "Project Button Electrical V3-P1.7",
+      "supporting_identifiers": ["PCB-P0.5", "DXL-STAR-P0.1", "HR-V0-CP-P0.3", "HR-V0-SD-P0.1"],
       "release_state": "correction_candidate_not_released"
     },
     {

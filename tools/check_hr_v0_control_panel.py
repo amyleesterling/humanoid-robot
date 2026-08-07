@@ -10,11 +10,11 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PACKAGE = ROOT / "electrical" / "panel" / "hr-v0-control-panel-p0.2"
+PACKAGE = ROOT / "electrical" / "panel" / "hr-v0-control-panel-p0.3"
 V3 = ROOT / "electrical" / "kicad" / "project-button-v3"
 FORM = ROOT / "tests" / "forms" / "hr-v0-control-panel-receiving-assembly-template.csv"
 H1_FORM = ROOT / "tests" / "forms" / "hr-v0-h1-receiving-template.csv"
-DOC = ROOT / "docs" / "hr-v0-control-panel-p0.2.md"
+DOC = ROOT / "docs" / "hr-v0-control-panel-p0.3.md"
 H1_DOC = ROOT / "docs" / "hr-v0-h1-receiving-p0.1.md"
 PRIMARY_SOURCES = ROOT / "references" / "primary-sources.md"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
@@ -61,8 +61,8 @@ def main() -> int:
         require_warning(rows, name, errors)
 
     bom = tables.get("panel-bom.csv", [])
-    if len(bom) != 23 or {row.get("item_id") for row in bom} != {f"PAN-{i:03d}" for i in range(1, 24)}:
-        errors.append("panel BOM must contain exactly PAN-001..PAN-023")
+    if len(bom) != 24 or {row.get("item_id") for row in bom} != {f"PAN-{i:03d}" for i in range(1, 25)}:
+        errors.append("panel BOM must contain exactly PAN-001..PAN-024")
     required_mpn = {
         "PAN-001": "PJ242010RT",
         "PAN-002": "18P2117",
@@ -85,6 +85,7 @@ def main() -> int:
         "PAN-021": "PT 4-HESI (5X20), item 3211861",
         "PAN-022": "5025",
         "PAN-023": "FHAC0002SXJ",
+        "PAN-024": "D-ST 4, item 3030420",
     }
     by_item = {row.get("item_id", ""): row for row in bom}
     for item_id, mpn in required_mpn.items():
@@ -226,10 +227,11 @@ def main() -> int:
 
     doc = DOC.read_text(encoding="utf-8") if DOC.is_file() else ""
     for required in (
-        "HR-V0-CP-P0.2",
+        "HR-V0-CP-P0.3",
         "P0.1 reserve is physically insufficient",
         "PJ242010RT",
         "PT 4-HESI (5X20)` item `3211861",
+        "D-ST 4`, item `3030420",
         "84.20 x 124.31 mm",
         "No backplate, enclosure, DIN-rail, duct, or door hole coordinate is released",
         "A project-added DC 0 V/PE star point remains prohibited",
@@ -242,7 +244,7 @@ def main() -> int:
     h1_doc = H1_DOC.read_text(encoding="utf-8") if H1_DOC.is_file() else ""
     for required in (
         "HR-V0-H1-RCV-P0.1",
-        "Project Button Electrical V3-P1.6",
+        "Project Button Electrical V3-P1.7",
         "TBD-HA` and `TBD-HB` are project placeholders only",
         "does not choose a current limit, fuse, test-lead rating, or source",
         "RESET STAGE READY - DIAGNOSTIC ONLY / NO MOTION AUTHORITY",
@@ -259,6 +261,8 @@ def main() -> int:
         "does not close received terminal markings, internal polarity/bridge behavior",
         "HR-V0-H1-RCV-P0.1",
         "PT 4-HESI (5X20)`, item `3211861",
+        "D-ST 4",
+        "3030420",
         "PJ242010RT",
         "18P2117",
         "84.20 x 124.31 mm body",
@@ -286,7 +290,7 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print("HR-V0 control-panel P0.2 check passed: 23 BOM rows; 20 backplate allocations; 66 V3 wire endpoints")
+    print("HR-V0 control-panel P0.3 check passed: 24 BOM rows; 20 backplate allocations; 66 V3 wire endpoints")
     print("Six cable entries, twelve thermal/space screens, twenty-two panel records and fourteen H1 records remain fail-closed")
     print("No hole, cut length, wire, fuse, PE bond, cable entry, PCB fabrication, assembly or energization release exists")
     print(WARNING)

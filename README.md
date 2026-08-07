@@ -58,7 +58,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 functional-safety allocation and diagnostic-credit boundary P0.1](docs/hr-v0-functional-safety-allocation-p0.1.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
-- [Native KiCad Electrical V3-P1.6 correction candidate](electrical/kicad/project-button-v3/README.md)
+- [Native KiCad Electrical V3-P1.7 correction candidate](electrical/kicad/project-button-v3/README.md)
 - [Native KiCad DXL-STAR-P0.1 injection-board candidate](electrical/kicad/hr-v0-dxl-star/README.md)
 - [HR-V0 DYNAMIXEL star-injection evidence basis](docs/hr-v0-dxl-star-injection-p0.1.md)
 - [HR-V0 Electrical V3 candidate architecture](docs/hr-v0-electrical-v3-candidate.md)
@@ -71,7 +71,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 watchdog PCB routed-copper candidate P0.3](docs/hr-v0-watchdog-pcb-p0.3.md)
 - [HR-V0 watchdog PCB test-access candidate P0.4](docs/hr-v0-watchdog-pcb-p0.4.md)
 - [HR-V0 watchdog PCB fabrication-envelope candidate P0.5](docs/hr-v0-watchdog-pcb-p0.5.md)
-- [HR-V0 protection and conductor coordination P0.1](docs/hr-v0-protection-coordination-p0.1.md)
+- [HR-V0 protection and conductor coordination P0.3](docs/hr-v0-protection-coordination-p0.3.md)
+- [HR-V0 DC service-disconnect application screen P0.1](docs/hr-v0-service-disconnect-p0.1.md)
 - [HR-V0 actuator current and torque envelope P0.1](docs/hr-v0-actuator-current-envelope-p0.1.md)
 - [HR-V0 Boston build-site basis](docs/hr-v0-build-site-basis.md)
 - [Boston fabrication and custom-metal sourcing](docs/hr-v0-fabrication-sourcing-boston.md)
@@ -138,7 +139,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R60 control-panel physical-definition reconciliation](docs/reviews/2026-08-07-sol-r12-post-r60-status.md)
 - [R61 H1 pilot-light selection and terminal-placeholder reconciliation](docs/reviews/2026-08-07-sol-r12-post-r61-status.md)
 - [R62 panel-fit and protection-holder reconciliation](docs/reviews/2026-08-07-sol-r12-post-r62-status.md)
-- [HR-V0 control-panel physical-definition candidate](docs/hr-v0-control-panel-p0.2.md)
+- [R63 end-cover and service-disconnect reconciliation](docs/reviews/2026-08-07-sol-r12-post-r63-status.md)
+- [HR-V0 control-panel physical-definition candidate](docs/hr-v0-control-panel-p0.3.md)
 - [HR-V0 H1 receiving and characterization procedure](docs/hr-v0-h1-receiving-p0.1.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.2 independent review request](docs/reviews/2026-08-07-firmware-p0.2-independent-review-request.md)
@@ -152,7 +154,7 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 
 Run `python tools/check_hr_v0_e2_commissioning.py` to validate the fail-closed 15-step E2 sequence, 20 disconnected-load logic cases, five unexecuted evidence forms and partial-only authorization boundary. Run `python tools/check_hr_v0_r57_fabrication_sourcing.py` to verify that the current Boston route contains only held/excluded R57 candidates and unexecuted inquiry records. A passing checker is not permission to order, fabricate, or connect a source.
 
-Run `python tools/check_hr_v0_control_panel.py` to cross-check the R60 panel BOM, nominal allocations, exact XT1 mapping, all 66 bounded V3 wire endpoints, unreleased physical-wire fields, cable-entry holds, thermal/space screens, readable SVG warning content and twenty unexecuted evidence records. A passing panel checker releases no drilling, cutting, wiring, assembly, PCB fabrication, or energization work.
+Run `python tools/check_hr_v0_control_panel.py` to cross-check the R63 24-row panel BOM, nominal allocations, exact XT1 mapping, all 66 bounded V3 wire endpoints, unreleased physical-wire fields, cable-entry holds, thermal/space screens, readable SVG warning content and twenty-two unexecuted panel records. Run `python tools/check_hr_v0_service_disconnect.py` to prove the 15 SD1 application/receiving rows remain unexecuted and that no disconnect selection, cutout, conductor, lockout or wiring release exists. Passing either checker releases no drilling, cutting, wiring, assembly, PCB fabrication, or energization work.
 
 Run `python tools/check_hr_v0_fabrication_rfi_packets.py` to verify that every obsolete P0.1 supplier packet remains withdrawn and that zero ZIPs are active. The earlier manufacturing/route artifacts are historical inputs only until a replacement arm architecture closes `MECH-005`.
 Run `python tools/check_hr_v0_safety_allocation.py` to verify that the ordinary heartbeat path retains zero safety credit and every PLr/SIL allocation remains unresolved until qualified execution.
@@ -163,7 +165,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-Sixty-two review/control rounds are complete: R01-R62. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R62 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, and protection-holder configuration corrections, not additional independent reviews.
+Sixty-three review/control rounds are complete: R01-R63. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R63 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, and service-disconnect configuration corrections, not additional independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -229,6 +231,7 @@ Sixty-two review/control rounds are complete: R01-R62. R11 Fable and R12 Sol are
 | R60 | HR-V0 control-panel physical-definition correction | Issued `HR-V0-CP-P0.1` with exact enclosure/backplate, rail/duct/terminal and amber H1 catalog candidates on hold; 16 backplate allocations; five door rows; six XT1 positions; all 66 bounded V3 wire endpoints; six no-hole cable-entry zones; ten thermal/space screens; 20 unexecuted evidence rows; and a checker. No holes, cuts, conductors, protection ratings, PE bond, glands, PCB fabrication, assembly or energization work is released. |
 | R61 | H1 pilot-light configuration and received-evidence correction | Issued Electrical V3-P1.5 with exact amber IDEC `HW1P-1FQD-A-24V`, replaced misleading `SAFE ELIGIBLE` and `+/-` labels with diagnostic-only wording and `TBD-HA/TBD-HB` project placeholders, moved system `BOM-041` to exact-candidate hold (18 exact / 29 selection-required), synchronized all native/exported artifacts, and added fourteen unexecuted receiving/characterization records. ERC remains 0/0; 63 unresolved rows and 24 `TBD-*` terminals remain. No wiring or energization release exists. |
 | R62 | Control-panel fit and protection-holder correction | Proved the P0.1 protection reserve could not contain the catalog fuse hardware; issued `HR-V0-CP-P0.2` around Hammond `PJ242010RT` / `18P2117`, exact Phoenix `3211861` FSR1/FSR2 holder candidates and the exact Blue Sea/Littelfuse branch/main holder envelopes. Issued Electrical V3-P1.6 and synchronized the holder identity while leaving all six fuse links, end cover, coordination, conductors, holes and assembly unresolved. The system BOM is now 72 groups (19 exact holds / 29 selection-required); ERC remains 0/0 and no gate closed. |
+| R63 | FSR end-cover identity and SD1 application-screen correction | Issued Electrical V3-P1.7 / `HR-V0-CP-P0.3`; froze Phoenix `D-ST 4` item `3030420` only as the FSR group end-cover candidate; expanded the system BOM to 73 groups (20 exact holds / 29 selection-required); and added a 15-row unexecuted SD1 application/receiving route. Blue Sea `6004200` remains a screened candidate, not a selected disconnect, because conductor, fault/load-break, lockout, placement and jurisdiction evidence are open. ERC remains 0/0 and no gate closed. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1120" viewBox="0 0 1600 1120" role="img" aria-labelledby="title desc">
+  <title id="title">Project Button HR-V0 control-panel candidate P0.3</title>
+  <desc id="desc">Planning views for the Hammond 18P2117 backplate and PJ242010RT cover. P0.1 did not contain the proposed protection hardware. No holes, wiring, fuse values, fabrication, or energization are released.</desc>
+  <defs>
+    <pattern id="hold" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="14" height="14" fill="#fff3bf"/>
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#e0a800" stroke-width="5"/>
+    </pattern>
+    <style>
+      text { font-family: Inter, Arial, sans-serif; fill: #0b3158; }
+      .title { font-size: 34px; font-weight: 800; }
+      .subtitle { font-size: 22px; font-weight: 750; }
+      .body { font-size: 18px; }
+      .label { font-size: 18px; font-weight: 750; }
+      .small { font-size: 16px; }
+      .warning { font-size: 20px; font-weight: 800; fill: #8a2f0b; }
+      .outline { fill: #f7fbff; stroke: #0b3158; stroke-width: 4; }
+      .duct { fill: #bde7ff; stroke: #2d77a7; stroke-width: 2; }
+      .rail { fill: #d7e0e8; stroke: #4b5d6b; stroke-width: 2; }
+      .safety { fill: #dff4e7; stroke: #207544; stroke-width: 2; }
+      .ordinary { fill: #e8e5ff; stroke: #5746af; stroke-width: 2; }
+      .power { fill: #ffe5da; stroke: #b54525; stroke-width: 2; }
+      .pcb { fill: #dff5f0; stroke: #13795b; stroke-width: 2; }
+      .terminal { fill: #eef2f6; stroke: #4b5563; stroke-width: 2; }
+      .dim { stroke: #51606e; stroke-width: 2; marker-start: url(#arrow); marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#51606e"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="1120" fill="#f5fbff"/>
+  <text x="60" y="56" class="title">HR-V0 CONTROL-PANEL CANDIDATE · P0.3</text>
+  <text x="60" y="92" class="warning">PRELIMINARY — NOT APPROVED FOR FABRICATION OR ENERGIZATION</text>
+  <text x="60" y="124" class="body">P0.1 DOES NOT FIT: its 270 × 43 mm reserve is smaller than the proposed protection hardware.</text>
+  <text x="60" y="152" class="body">P0.3 freezes the fuse-terminal end cover. It releases no holes, wires, fuse values, disconnect, or assembly work.</text>
+
+  <text x="60" y="194" class="subtitle">Backplate allocation · Hammond 18P2117</text>
+  <text x="60" y="222" class="body">Nominal 431.8 × 533.4 mm · catalog envelope only</text>
+  <g transform="translate(60 245) scale(1.02)">
+    <rect class="outline" x="0" y="0" width="431.8" height="533.4" rx="4"/>
+    <rect class="duct" x="8" y="10" width="40" height="513.4"/>
+    <text x="28" y="266" class="small" text-anchor="middle" transform="rotate(-90 28 266)">WD1 · 40 × 40 DUCT</text>
+    <rect class="duct" x="383.8" y="10" width="40" height="513.4"/>
+    <text x="404" y="266" class="small" text-anchor="middle" transform="rotate(90 404 266)">WD2 · 40 × 40 DUCT</text>
+
+    <rect class="rail" x="54" y="45" width="323.8" height="7.5"/>
+    <text x="216" y="38" class="small" text-anchor="middle">DR1 · 323.8 mm ALLOCATION</text>
+    <rect class="safety" x="54" y="55" width="32" height="115"/>
+    <text x="70" y="114" class="label" text-anchor="middle" transform="rotate(-90 70 114)">SR1</text>
+    <rect class="safety" x="92" y="55" width="32" height="115"/>
+    <text x="108" y="114" class="label" text-anchor="middle" transform="rotate(-90 108 114)">SRA1</text>
+    <rect class="ordinary" x="130" y="55" width="20" height="105"/>
+    <text x="140" y="108" class="small" text-anchor="middle" transform="rotate(-90 140 108)">KWD1</text>
+    <rect class="ordinary" x="156" y="55" width="20" height="105"/>
+    <text x="166" y="108" class="small" text-anchor="middle" transform="rotate(-90 166 108)">KWD2</text>
+    <rect class="power" x="184" y="55" width="58" height="115"/>
+    <text x="213" y="112" class="label" text-anchor="middle">K1</text>
+    <text x="213" y="140" class="small" text-anchor="middle">DC DUTY OPEN</text>
+    <rect class="power" x="250" y="55" width="58" height="115"/>
+    <text x="279" y="112" class="label" text-anchor="middle">K2</text>
+    <text x="279" y="140" class="small" text-anchor="middle">DC DUTY OPEN</text>
+
+    <rect class="duct" x="54" y="180" width="323.8" height="40"/>
+    <text x="216" y="198" class="label" text-anchor="middle">WD3 · ROUTE DUCT</text>
+    <text x="216" y="216" class="small" text-anchor="middle">FILL + SEGREGATION OPEN</text>
+
+    <rect class="pcb" x="54" y="230" width="160" height="100"/>
+    <text x="134" y="264" class="label" text-anchor="middle">WD PCB · P0.5</text>
+    <text x="134" y="292" class="small" text-anchor="middle">160 × 100 mm</text>
+    <text x="134" y="318" class="small" text-anchor="middle">NO FABRICATION OUTPUTS</text>
+    <rect class="pcb" x="224" y="230" width="100" height="60"/>
+    <text x="274" y="254" class="label" text-anchor="middle">DXL STAR</text>
+    <text x="274" y="280" class="small" text-anchor="middle">P0.1 · HOLD</text>
+    <rect class="rail" x="224" y="309" width="153.8" height="7.5"/>
+    <rect class="terminal" x="224" y="318" width="100" height="48"/>
+    <text x="274" y="340" class="label" text-anchor="middle">XT1 · 01–06</text>
+    <text x="274" y="360" class="small" text-anchor="middle">WIRING HOLD</text>
+
+    <rect class="power" x="54" y="385" width="100" height="130"/>
+    <text x="104" y="420" class="label" text-anchor="middle">F1–F3 BLOCK</text>
+    <text x="104" y="448" class="small" text-anchor="middle">BLUE SEA 5025</text>
+    <text x="104" y="476" class="small" text-anchor="middle">BODY 84.20 × 124.31</text>
+    <text x="104" y="504" class="small" text-anchor="middle">NO FUSE VALUES</text>
+    <rect class="rail" x="170" y="375" width="65" height="7.5"/>
+    <rect class="terminal" x="175" y="385" width="25" height="75"/>
+    <text x="188" y="424" class="small" text-anchor="middle" transform="rotate(-90 188 424)">FSR1/2 HOLDERS</text>
+    <rect class="power" x="210" y="385" width="30" height="130"/>
+    <text x="225" y="450" class="small" text-anchor="middle" transform="rotate(-90 225 450)">F0 HOLDER · RETENTION OPEN</text>
+    <rect x="250" y="375" width="127.8" height="140" fill="url(#hold)" stroke="#8a5a00" stroke-width="2"/>
+    <text x="314" y="416" class="label" text-anchor="middle">SELECTION RESERVE</text>
+    <text x="314" y="448" class="small" text-anchor="middle">JC1 · SD1 · SIX LINKS</text>
+    <text x="314" y="478" class="small" text-anchor="middle">SIX FUSE LINKS · TERMINATIONS</text>
+    <text x="314" y="505" class="small" text-anchor="middle">NO DRILLING</text>
+  </g>
+  <line x1="60" y1="802" x2="500" y2="802" class="dim"/>
+  <text x="280" y="834" class="body" text-anchor="middle">431.8 mm nominal</text>
+  <line x1="520" y1="245" x2="520" y2="789" class="dim"/>
+  <text x="550" y="518" class="body" text-anchor="middle" transform="rotate(90 550 518)">533.4 mm nominal</text>
+
+  <text x="700" y="194" class="subtitle">Cover operator allocation · PJ242010RT</text>
+  <text x="700" y="222" class="body">Nominal cover width 508 mm · usable drilling zone unverified</text>
+  <g transform="translate(700 245) scale(1.30)">
+    <rect class="outline" x="0" y="0" width="508" height="420" rx="9"/>
+    <text x="254" y="34" class="small" text-anchor="middle">FRONT VIEW · NO CUTOUTS RELEASED</text>
+    <circle cx="75" cy="95" r="27" fill="#e3342f" stroke="#7a120f" stroke-width="3"/>
+    <text x="75" y="142" class="label" text-anchor="middle">S0 · E-STOP</text>
+    <circle cx="195" cy="95" r="18" fill="#1f2937" stroke="#000" stroke-width="3"/>
+    <text x="195" y="142" class="label" text-anchor="middle">S1 · RESET</text>
+    <circle cx="315" cy="95" r="18" fill="#2e9b57" stroke="#14532d" stroke-width="3"/>
+    <text x="315" y="142" class="label" text-anchor="middle">S2 · ARM</text>
+    <circle cx="435" cy="95" r="18" fill="#f2b705" stroke="#805b00" stroke-width="3"/>
+    <text x="435" y="142" class="label" text-anchor="middle">H1 · DIAGNOSTIC</text>
+    <rect x="50" y="180" width="408" height="78" rx="9" fill="#fff3bf" stroke="#8a5a00" stroke-width="3"/>
+    <text x="254" y="208" class="label" text-anchor="middle">RESET STAGE READY — DIAGNOSTIC ONLY</text>
+    <text x="254" y="235" class="small" text-anchor="middle">NO MOTION AUTHORITY · NOT “SAFE” · NOT “ARMED”</text>
+    <rect x="50" y="285" width="408" height="92" rx="9" fill="#ffe5da" stroke="#a33b20" stroke-width="3"/>
+    <text x="254" y="316" class="label" text-anchor="middle">CUTOUT RELEASE BLOCKED</text>
+    <text x="254" y="345" class="small" text-anchor="middle">RECEIVED TEMPLATE · REAR DEPTH · RIBS/LATCHES</text>
+    <text x="254" y="370" class="small" text-anchor="middle">DOOR LOOM · TOOL ACCESS · HUMAN FACTORS</text>
+  </g>
+
+  <rect x="60" y="870" width="1480" height="190" rx="12" fill="#e3f3ff" stroke="#0b3158" stroke-width="3"/>
+  <text x="90" y="908" class="subtitle">P0.3 establishes</text>
+  <text x="90" y="940" class="body">A larger, source-traceable planning envelope with explicit locations for Blue Sea 5025, two Phoenix 3211861 holders, and FHAC0002SXJ.</text>
+  <text x="90" y="980" class="subtitle">P0.3 does not establish</text>
+  <text x="90" y="1012" class="body">No fuse link, ampere rating, conductor, inlet, disconnect, hole, cut length, PE bond, PCB order, completed-enclosure rating, or thermal result.</text>
+  <text x="90" y="1043" class="body">No fabrication, assembly, functional-safety credit, commissioning authorization, or energization permission exists.</text>
+</svg>
