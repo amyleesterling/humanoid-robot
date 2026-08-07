@@ -24,7 +24,7 @@ The manifest hashes Git's canonical staged blobs, not platform-dependent checkou
 | Actuator star PCB | `DXL-STAR-P0.1` | routed candidate; no fabrication outputs |
 | Mechanical | `HR-V0-MECH-P0.3` + `HR-V0-ARM-ARCH-P0.4` | Fabrication-defined adapter candidate exists under the P0.3 hold; received MTR/fit, qualified analytical acceptance, torque/locking, continuous collision and stop/overtravel proof, FAI, physical proof and qualified review remain open |
 | Arm fabrication | `HR-V0-FAB-RFI-P0.2-WITHDRAWN` | zero active supplier packets; replacement architecture required |
-| Firmware | `HR-V0-FW-P0.1` / `HR-V0-WD-BUILD-P0.2` | source and reproducible artifacts; not flashed or HIL validated |
+| Firmware | `HR-V0-FW-P0.2` / `HR-V0-WD-BUILD-P0.2` / `HR-V0-DXL-TRANSPORT-P0.1` | source, pinned fail-closed transport boundary and reproducible watchdog artifacts; SDK not installed on target; no received actuator configuration, connection, flash, execution or HIL validation |
 | Functional safety | `HR-V0-FSA-P0.1` | allocation candidate; `DF-01` has zero safety credit; no PLr/SIL assigned |
 | E2 commissioning | `HR-V0-E2-SEQ-P0.1` | 15-step control-only procedure candidate; actuator source absent; five forms not executed; authorization `NOT AUTHORIZED` |
 

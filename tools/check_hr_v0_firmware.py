@@ -328,9 +328,114 @@ def main() -> int:
         "CURRENT_LIMIT_MISMATCH",
         "GOAL_CURRENT_EXCEEDS_CANDIDATE",
         "HARDWARE_ERROR_PRESENT",
+        "DRIVE_MODE_MISMATCH",
+        "def engineering_to_raw",
+        "actuator transport/calibration selections remain open",
     ):
         if required not in actuator_model:
             failures.append(f"actuator fail-closed invariant missing: {required}")
+
+    transport_config = actuator_config.get("transport", {})
+    if transport_config != {
+        "implementation": "ROBOTIS DYNAMIXEL SDK",
+        "sdk_version": "4.0.5",
+        "protocol": 2.0,
+        "baud_rate": 1_000_000,
+        "device": "SELECTION REQUIRED",
+    }:
+        failures.append("DYNAMIXEL transport configuration is not the pinned fail-closed candidate")
+    if actuator_config.get("bus_watchdog_raw_candidate") != 5:
+        failures.append("DYNAMIXEL bus-watchdog candidate is not 5 raw / nominal 100 ms")
+    for joint, item in actuator_config.get("actuators", {}).items():
+        for field in (
+            "profile_velocity_raw_candidate",
+            "profile_acceleration_raw_candidate",
+            "position_zero_raw",
+            "position_zero_engineering",
+            "raw_per_unit",
+            "direction",
+            "minimum_raw",
+            "maximum_raw",
+            "start_tolerance_raw",
+            "minimum_input_voltage_raw",
+            "maximum_input_voltage_raw",
+            "maximum_temperature_c",
+        ):
+            if isinstance(item.get(field), (int, float)):
+                failures.append(f"received/physical DYNAMIXEL field was inferred before evidence at {joint}.{field}")
+
+    sdk_lock = json.loads((FIRMWARE / "supervisor" / "dynamixel-sdk-lock.json").read_text(encoding="utf-8"))
+    if (
+        sdk_lock.get("release_id"),
+        sdk_lock.get("distribution"),
+        sdk_lock.get("version"),
+        sdk_lock.get("upstream_tag"),
+        sdk_lock.get("upstream_commit"),
+        sdk_lock.get("installation"),
+    ) != (
+        "HR-V0-DXL-TRANSPORT-P0.1",
+        "dynamixel-sdk",
+        "4.0.5",
+        "4.0.5",
+        "2ded684",
+        "NOT INSTALLED OR EXECUTED ON TARGET",
+    ):
+        failures.append("DYNAMIXEL SDK lock identity or installation boundary differs")
+
+    bus_source = (FIRMWARE / "supervisor" / "project_button_supervisor" / "dynamixel_bus.py").read_text(encoding="utf-8")
+    for required in (
+        "release selections remain open; serial port will not be opened",
+        "self._torque_off_ids(expected_ids, verify=True)",
+        "set(discovered) != expected_ids",
+        "fresh matching supervisor motion authority is absent",
+        "self._sync_write(GOAL_POSITION, raw_targets)",
+        "self._sync_write(TORQUE_ENABLE",
+        "bus watchdog expired",
+        "input-voltage readback is outside the released envelope",
+        "temperature readback exceeds the released limit",
+        "self._best_effort_torque_off",
+    ):
+        if required not in bus_source:
+            failures.append(f"DYNAMIXEL bus fail-closed invariant missing: {required}")
+    if bus_source.find("self._sync_write(GOAL_POSITION, raw_targets)") > bus_source.find("self._sync_write(TORQUE_ENABLE"):
+        failures.append("DYNAMIXEL torque enable appears before the zero-jump start target")
+
+    sdk_source = (FIRMWARE / "supervisor" / "project_button_supervisor" / "sdk_transport.py").read_text(encoding="utf-8")
+    for required in (
+        'PINNED_VERSION = "4.0.5"',
+        "installed_version = metadata.version(PINNED_DISTRIBUTION)",
+        "except metadata.PackageNotFoundError",
+        "installed_version != PINNED_VERSION",
+        "self.sdk.PacketHandler(PROTOCOL_VERSION)",
+        "self.sdk.GroupSyncWrite",
+        "self._check_comm",
+    ):
+        if required not in sdk_source:
+            failures.append(f"pinned SDK adapter invariant missing: {required}")
+
+    hil_path = ROOT / "tests" / "forms" / "hr-v0-dynamixel-transport-hil-template.csv"
+    with hil_path.open(newline="", encoding="utf-8-sig") as handle:
+        hil_rows = list(csv.DictReader(handle))
+    expected_hil_cases = {
+        "UNRESOLVED_CONFIG_PORT_OPEN_INHIBIT",
+        "TORQUE_OFF_BEFORE_DISCOVERY",
+        "UNEXPECTED_OR_DUPLICATE_ID",
+        "PACKET_TIMEOUT_OR_CRC_ERROR",
+        "USB_UNPLUG_AND_RECONNECT",
+        "BUS_WATCHDOG_EXPIRY",
+        "PROCESS_CRASH_OR_KILL",
+        "BROWNOUT_OR_ACTUATOR_REBOOT",
+        "AUTHORITY_OR_TRAJECTORY_ID_LOSS",
+    }
+    actual_hil_cases = {row.get("test_case", "") for row in hil_rows}
+    required_warning = "PRELIMINARY - NOT APPROVED FOR CONNECTION OR ENERGIZATION"
+    if (
+        len(hil_rows) != 9
+        or actual_hil_cases != expected_hil_cases
+        or any(row.get("result") != "NOT EXECUTED" for row in hil_rows)
+        or any(row.get("warning") != required_warning for row in hil_rows)
+    ):
+        failures.append("DYNAMIXEL HIL template must contain the exact nine unexecuted warned fault cases")
 
     if load_manifest() != current_hashes():
         failures.append("firmware SOURCE-MANIFEST.csv does not match the controlled source tree")

@@ -10,7 +10,7 @@ This directory contains the first controlled implementation candidate for the HR
 
 The watchdog firmware drives two ordinary relay channels and checks their conditioned NC diagnostic contacts. It receives no functional-safety credit. The hardware SR1 RESET then SRA1 ARM/EDM chain—not this firmware—must prevent heartbeat restoration from restoring K1/K2.
 
-The supervisor has no output capable of closing K1 or K2. It may request actuator torque only after observing the released hardware sequence and accepting a fresh, configuration-matched trajectory. RESET and physical ARM never create a motion command. `supervisor/actuator-config.json` and `actuator_config.py` add a fail-closed register-readback contract for the proposed DYNAMIXEL configuration. The raw current values are guarded test candidates, not released connector-current limits.
+The supervisor has no output capable of closing K1 or K2. It may request actuator torque only after observing the released hardware sequence and accepting a fresh, configuration-matched trajectory. RESET and physical ARM never create a motion command. `supervisor/actuator-config.json` and `actuator_config.py` add a fail-closed register-readback and calibration contract for the proposed DYNAMIXEL configuration. `dynamixel_bus.py` and `sdk_transport.py` add the P0.1 transport/execution boundary, including torque-off-before-discovery, exact bus identity, ordered configuration, trajectory-bound synchronous writes and fault-triggered torque removal. The committed configuration is deliberately incomplete and refuses to open a serial port. The raw current values are guarded test candidates, not released connector-current limits.
 
 ## Current evidence and limits
 
@@ -20,7 +20,7 @@ Run:
 python tools/check_hr_v0_firmware.py
 ```
 
-The checker runs the executable Python unit tests, checks the portable C interface/constants against the controlled configuration, and verifies the source manifest. It does not compile an RP2040 binary or perform hardware-in-the-loop testing.
+The checker runs the executable Python unit tests, checks the portable C interface/constants and DYNAMIXEL transport invariants against the controlled configuration, and verifies the source manifest and pinned SDK record. It does not install the SDK, open a serial port, compile a new RP2040 binary, or perform hardware-in-the-loop testing.
 
 Before this area can be released, the project still needs:
 
@@ -28,9 +28,9 @@ Before this area can be released, the project still needs:
 2. a reviewed Pico SDK platform binding and pinned toolchain/container;
 3. reproducible `.uf2`/`.elf` binaries with hashes and map files;
 4. Raspberry Pi deployment packaging and service supervision;
-5. the released kinematic model and actual DYNAMIXEL transport;
+5. the released kinematic model, received calibration/profile/telemetry limits and target-installed DYNAMIXEL SDK/transport image;
 6. received actuator identity/firmware records and external branch-current, torque and thermal characterization under `HR-V0-ACT-P0.1`;
-7. HIL traces for every startup, timeout, stuck-signal, feedback, reset, ARM, configuration mismatch and stale-target fault; and
+7. HIL traces for every startup, timeout, stuck-signal, feedback, reset, ARM, configuration mismatch, stale-target, unexpected-ID, packet/USB, bus-watchdog and partial-write fault; and
 8. qualified controls, electrical and functional-safety review.
 
 No file in this directory authorizes connecting outputs to contactors, installing firmware on the robot, or energizing an actuator.

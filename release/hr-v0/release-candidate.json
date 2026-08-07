@@ -22,9 +22,9 @@
     },
     {
       "domain": "firmware",
-      "identifier": "HR-V0-FW-P0.1",
-      "supporting_identifiers": ["HR-V0-WD-BUILD-P0.2", "HR-V0-ACT-P0.1"],
-      "release_state": "source_and_reproducible_build_candidate_not_flashed_or_hil_validated"
+      "identifier": "HR-V0-FW-P0.2",
+      "supporting_identifiers": ["HR-V0-WD-BUILD-P0.2", "HR-V0-ACT-P0.1", "HR-V0-DXL-TRANSPORT-P0.1"],
+      "release_state": "source_transport_and_reproducible_watchdog_candidate_not_installed_flashed_connected_or_hil_validated"
     },
     {
       "domain": "functional_safety",

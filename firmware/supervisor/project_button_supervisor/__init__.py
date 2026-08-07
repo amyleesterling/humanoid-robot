@@ -13,6 +13,7 @@ from .model import (
     TrajectoryCommand,
     TrajectorySample,
 )
+from .dynamixel_bus import ActuatorTelemetry, BusError, DynamixelBusController
 
 __all__ = [
     "ActuatorConfiguration",
@@ -28,4 +29,7 @@ __all__ = [
     "SupervisorOutputs",
     "TrajectoryCommand",
     "TrajectorySample",
+    "ActuatorTelemetry",
+    "BusError",
+    "DynamixelBusController",
 ]

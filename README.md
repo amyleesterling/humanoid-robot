@@ -81,6 +81,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 watchdog hardware interface P0.2](docs/hr-v0-watchdog-interface-p0.2.md)
 - [HR-V0 calculated watchdog feedback receiver P0.1](docs/hr-v0-watchdog-feedback-p0.1.md)
 - [HR-V0 watchdog build and compiled-C evidence P0.2](docs/hr-v0-watchdog-build-p0.2.md)
+- [HR-V0 firmware implementation candidate P0.2](docs/hr-v0-firmware-p0.2.md)
+- [HR-V0 DYNAMIXEL transport and execution boundary P0.1](docs/hr-v0-dynamixel-transport-p0.1.md)
 - [HR-V0 Pico watchdog historical build P0.1](docs/hr-v0-watchdog-build-p0.1.md)
 - [Firmware source area](firmware/README.md)
 - [Verification plan](docs/verification.md)
@@ -141,6 +143,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R62 panel-fit and protection-holder reconciliation](docs/reviews/2026-08-07-sol-r12-post-r62-status.md)
 - [R63 end-cover and service-disconnect reconciliation](docs/reviews/2026-08-07-sol-r12-post-r63-status.md)
 - [R64 exact SD1 and control-panel reconciliation](docs/reviews/2026-08-07-sol-r12-post-r64-status.md)
+- [R65 DYNAMIXEL transport reconciliation](docs/reviews/2026-08-07-sol-r12-post-r65-status.md)
 - [HR-V0 control-panel physical-definition candidate](docs/hr-v0-control-panel-p0.4.md)
 - [HR-V0 H1 receiving and characterization procedure](docs/hr-v0-h1-receiving-p0.1.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
@@ -166,7 +169,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-Sixty-four review/control rounds are complete: R01-R64. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R64 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, and service-disconnect configuration corrections, not additional independent reviews.
+Sixty-five review/control rounds are complete: R01-R65. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R65 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, and fail-closed transport configuration corrections, not additional independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -234,6 +237,7 @@ Sixty-four review/control rounds are complete: R01-R64. R11 Fable and R12 Sol ar
 | R62 | Control-panel fit and protection-holder correction | Proved the P0.1 protection reserve could not contain the catalog fuse hardware; issued `HR-V0-CP-P0.2` around Hammond `PJ242010RT` / `18P2117`, exact Phoenix `3211861` FSR1/FSR2 holder candidates and the exact Blue Sea/Littelfuse branch/main holder envelopes. Issued Electrical V3-P1.6 and synchronized the holder identity while leaving all six fuse links, end cover, coordination, conductors, holes and assembly unresolved. The system BOM is now 72 groups (19 exact holds / 29 selection-required); ERC remains 0/0 and no gate closed. |
 | R63 | FSR end-cover identity and SD1 application-screen correction | Issued Electrical V3-P1.7 / `HR-V0-CP-P0.3`; froze Phoenix `D-ST 4` item `3030420` only as the FSR group end-cover candidate; expanded the system BOM to 73 groups (20 exact holds / 29 selection-required); and added a 15-row unexecuted SD1 application/receiving route. Blue Sea `6004200` remains a screened candidate, not a selected disconnect, because conductor, fault/load-break, lockout, placement and jurisdiction evidence are open. ERC remains 0/0 and no gate closed. |
 | R64 | Exact SD1 catalog-candidate and sidewall-integration correction | Issued Electrical V3-P1.8 / `HR-V0-CP-P0.4` / `HR-V0-SD-P0.2`; froze active Littelfuse `75920-01` as the exact SPST high-side catalog candidate while retaining `TBD-IN/TBD-OUT`, conductor/lug, source-fault, load-break, touch-protection, placement, padlock procedure, human-factors and Boston application holds. The system BOM remains 73 groups (21 exact holds / 28 selection-required). No hole, wire, lockout, fabrication, gate closure or energization release exists. |
+| R65 | Fail-closed DYNAMIXEL transport and execution-boundary correction | Issued `HR-V0-FW-P0.2` / `HR-V0-DXL-TRANSPORT-P0.1`; pinned official SDK 4.0.5, implemented torque-off-before-discovery, exact identity/configuration readback, trajectory-bound synchronous writes and fault-triggered torque removal, and added nine physical HIL cases. The committed configuration still refuses to open a serial port because received identities, calibration, profiles, device path and physical limits are unresolved. EG-017 remains partial; no hardware was connected or energized. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

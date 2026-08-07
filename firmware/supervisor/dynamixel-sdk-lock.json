@@ -1,0 +1,18 @@
+{
+  "release_id": "HR-V0-DXL-TRANSPORT-P0.1",
+  "status": "SOURCE-CANDIDATE-HIL-REQUIRED",
+  "distribution": "dynamixel-sdk",
+  "version": "4.0.5",
+  "upstream_repository": "https://github.com/ROBOTIS-GIT/DynamixelSDK",
+  "upstream_tag": "4.0.5",
+  "upstream_commit": "2ded684",
+  "release_date": "2026-05-06",
+  "source_basis": [
+    "https://github.com/ROBOTIS-GIT/DynamixelSDK/releases/tag/4.0.5",
+    "https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_sdk/overview/",
+    "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/",
+    "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/"
+  ],
+  "installation": "NOT INSTALLED OR EXECUTED ON TARGET",
+  "verification_boundary": "Exact installed artifact hash, Raspberry Pi OS/Python image, device path, U2D2 revision, latency, packet-loss, unplug, recovery and HIL evidence remain required. No permission to connect or energize."
+}

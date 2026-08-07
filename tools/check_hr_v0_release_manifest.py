@@ -64,7 +64,7 @@ def main() -> None:
     required_identifiers = {
         "Project Button Electrical V3-P1.8",
         "HR-V0-MECH-P0.3",
-        "HR-V0-FW-P0.1",
+        "HR-V0-FW-P0.2",
         "HR-V0-FSA-P0.1",
         "HR-V0-BOM-P0.1",
         "HR-V0-E2-SEQ-P0.1",
@@ -95,6 +95,18 @@ def main() -> None:
         "HR-V0-FRAME-P0.2",
     ]:
         errors.append("HR-V0-MECH-P0.3 supporting identifiers changed or are incomplete")
+    firmware_product = next(
+        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FW-P0.2"),
+        {},
+    )
+    if firmware_product.get("supporting_identifiers") != [
+        "HR-V0-WD-BUILD-P0.2",
+        "HR-V0-ACT-P0.1",
+        "HR-V0-DXL-TRANSPORT-P0.1",
+    ] or firmware_product.get("release_state") != (
+        "source_transport_and_reproducible_watchdog_candidate_not_installed_flashed_connected_or_hil_validated"
+    ):
+        errors.append("HR-V0-FW-P0.2 supporting identifiers or fail-closed release state changed")
     commissioning_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-E2-SEQ-P0.1"),
         {},
