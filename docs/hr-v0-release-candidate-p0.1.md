@@ -12,7 +12,7 @@ This package makes the current HR-V0 review configuration reproducible. It does 
 
 The manifest covers every Git-tracked or non-ignored candidate file except the manifest itself. That exception prevents a recursive self-hash. The manifest includes its own metadata, generator, checker, engineering sources, generated candidates, BOMs, requirements, risks, procedures, primary/vendor references, review history and configuration files.
 
-The manifest hashes Git's canonical staged blobs, not platform-dependent checkout bytes. Repository text also uses controlled LF checkout through `.gitattributes`, with explicit binary and firmware-HEX exceptions. Clean-worktree enforcement then proves that the checkout corresponds to the committed candidate without making SHA-256 evidence depend on a reviewer's platform defaults.
+The manifest hashes Git's canonical staged blobs, not platform-dependent checkout bytes. Clean-worktree enforcement separately proves that the checkout corresponds to the committed candidate. Existing domain-specific line-ending rules remain unchanged so the release-control layer does not rewrite established CAD, ECAD, firmware or vendor evidence formats.
 
 ## Current product set
 
