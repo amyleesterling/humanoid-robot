@@ -1,5 +1,7 @@
 # HR-V0 exact-coordinate arm architecture P0.1
 
+> **SUPERSEDED BY `HR-V0-ARM-ARCH-P0.2` (R55). DO NOT USE P0.1 FOR FABRICATION OR RANGE CLAIMS.** R55 found that P0.1 left the raw XM540 body in the wrong vendor orientation, used the horn PCD22 instead of the ROBOTIS link-frame rectangular pattern, oriented the 20-2040 end-tap pair on the joint axis, and missed a high-angle adapter/body collision. This file is configuration history only.
+
 **PRELIMINARY—CANDIDATE GEOMETRY ONLY—NOT RELEASED FOR QUOTATION, FABRICATION, ASSEMBLY, OR ENERGIZATION**
 
 Date: 2026-08-07

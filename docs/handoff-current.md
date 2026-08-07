@@ -3,11 +3,11 @@
 Handoff date: 2026-08-07
 Package baseline: **HR-30-SYS-R0.2**  
 Electrical package: **Project Button Electrical V2.1 reviewed baseline; V3-P1.4 / PCB-P0.5 / DXL-STAR-P0.1 correction candidates**
-Mechanical package: **HR-V0-MECH-P0.3 hold plus HR-V0-ARM-ARCH-P0.1 exact-coordinate candidate; no supplier packet or buildable mechanical release**
+Mechanical package: **HR-V0-MECH-P0.3 hold plus corrected HR-V0-ARM-ARCH-P0.2 candidate; no supplier packet or buildable mechanical release**
 Firmware package: **HR-V0-FW-P0.1 source/test candidate; reproducible watchdog P0.2 review artifacts; no released or flashed binary**
 Safety package: **HR-V0-FSA-P0.1 allocation candidate; ordinary DF-01 heartbeat has zero safety credit; no PLr, SIL, or achieved PL assigned**
 Configuration package: **HR-V0-RC-P0.1 deterministic candidate; immutable merge/acceptance and signatures remain open**
-BOM package: **HR-V0-BOM-P0.1 closure candidate; 16 evaluation-only lines; 15 exact candidates on hold; 32 selection-required groups; no complete procurement release**
+BOM package: **HR-V0-BOM-P0.1 closure candidate; 16 evaluation-only lines; 17 exact candidates on hold; 30 selection-required groups; no complete procurement release**
 Status: **PRELIMINARY - NOT APPROVED FOR ENERGIZATION**
 
 ## Authority and presentation
@@ -33,15 +33,16 @@ The authoritative repository controls engineering intent and contains the review
 - HR-V0 is a light-duty, adult-operated bench demonstrator for a soft 100 g maximum payload; it is not a high-payload robot.
 - A local library makerspace may have CNC access, but metal capability is unverified and is not part of the release basis.
 - R53 invalidated the active custom-metal arm route. Exact ROBOTIS STEP coordinates showed that the H101 moving frame and S102 bottom frame do not present the coplanar interfaces assumed by MV0-001/MV0-003. MV0-001 through MV0-003, the 44/160/160 mm datum chain and all three RFI ZIPs remain withdrawn. Their earlier bytes remain recoverable in Git history, but no current supplier packet exists.
-- R54 adds `HR-V0-ARM-ARCH-P0.1`: J2/S102 is deliberately rolled +90° with a -90° output reference; J1/J2 axes are parallel at a candidate 191.5 mm spacing; G1 is 118.0 mm beyond J2, leaving 50.5 mm to the 360 mm object-center ceiling; 23 sampled elbow poses have zero positive self-intersection; and candidate gravity screens are 1.762/0.478 N·m. Exact beam/end-machining CAD, adapter release, fasteners, access, cables, continuous sweep, proof, FAI and qualified review remain open.
-- `MECH-005` / `AUDIT-MECH-012` therefore remain open. No arm quotation can resume from R54.
+- R55 supersedes R54/P0.1 after finding its raw XM540 orientation, PCD22 link pattern and horizontal 20-2040 end-tap pair were wrong. `HR-V0-ARM-ARCH-P0.2` registers the XM540 to S102, uses the ROBOTIS rectangular link pattern and vertical 20-2040 candidates, places J1/J2 193.025 mm apart and G1 119.525 mm beyond J2, and leaves 47.45 mm to the 360 mm object-center ceiling. Candidate gravity screens are 1.777/0.483 N·m.
+- The 221-pose screen finds first nominal contact at 122°. The 120° ceiling is provisional until a physical hard stop, stopping-overtravel/uncertainty margin and continuous collision proof close. Adapter local strength, exact M2.5 stacks, received fit, cables, proof, FAI and qualified review also remain open.
+- `MECH-005` / `AUDIT-MECH-012` and `MECH-006` / `INSPECT-MECH-013` therefore remain open. No arm quotation can resume from R55.
 - `MV0-004` and the base/frame candidate remain on their separate exact-Boston-bench, physical-fit, torque and proof holds.
 - See `docs/hr-v0-build-site-basis.md`, `docs/hr-v0-fabrication-sourcing-boston.md`, and `docs/hr-v0-flat-plate-manufacturing-p0.1.md`. No cutting order is authorized until received-part coupons, final tolerances, fasteners, bench survey, supplier DFM, separately authorized first article, FAI, and qualified review close.
 
 ## Current controlled counts
 
-- 74 draft requirements
-- 94 controlled verification procedure records
+- 75 draft requirements
+- 95 controlled verification procedure records
 - 40 open risks
 - six staged releases: HR-V0, HR-30A, HR-30B, HR-30C, HR-30D, and HR-30W
 - 15 native KiCad sheets
@@ -49,7 +50,7 @@ The authoritative repository controls engineering intent and contains the review
 - 181 total KiCad nets, including 13 auto-generated unconnected nets
 - 168 named electrical nets
 - 106 unresolved electrical selections/interfaces
-- 71 system BOM groups: 16 evaluation candidates, 15 exact candidates on hold, three grouped-component holds, 32 selection-required groups, four historical/DNP exclusions, and one integrated item
+- 71 system BOM groups: 16 evaluation candidates, 17 exact candidates on hold, three grouped-component holds, 30 selection-required groups, four historical/DNP exclusions, and one integrated item
 - KiCad 10.0.5 ERC: 0 errors and 0 warnings
 
 The V3-P1.4 candidate separately contains thirteen native pages, 76 component blocks, 295 modeled terminals, 100 native nets (64 named connected nets plus 36 deliberate auto-generated unconnected nets), 259 unique wire labels, 63 unresolved component/interface rows, and 24 `TBD-*` terminal designations. It retains the exact watchdog/safety, DXL-star and contactor architecture through P1.3 and adds a received-lot terminal-control boundary for RESET and ARM. IDEC's current transition notice permits prior or redesigned HW internals under unchanged complete order codes, and the live product BOM exposes no internal identity; the four S1/S2 terminals therefore remain `TBD-*` pending received markings, orientation, continuity and independent comparison. Schneider Catalog 2026 supports the represented one-through-three-pole topology at its 32 A / 24 V row but warns that lower current can reduce durability because of critical current; the 11.1 A HR-V0 screen therefore still requires written application disposition and loaded tests. The separate DXL-STAR-P0.1 native project has seven proposed headers, 18 terminals, three mutually isolated positive rails, common TTL data/return, `JC1:2` no-net/no-copper, 17 routed segments, one return zone and native ERC/DRC 0/0. PCB-P0.5 remains a 42-reference, 201-segment, 56-via watchdog candidate with three filled B.Cu zones. R36's protection register still carries zero released fuse ampere ratings and blocks the XM540 branches on the 4.4 A stall versus 3 A JST EH conflict. Cable construction, protection, contactor duty, source-side current division, physical continuity/isolation/no-backfeed, thermal, waveform, crimp/retention, RESET/ARM terminals, panel human factors, supplier acceptance, HIL/fault evidence and qualified review remain open. Neither PCB has fabrication outputs. KiCad 10.0.5 ERC/DRC, native exports and the exact-net, protection and PCB checkers pass; those checks do not establish physical suitability. These V3 counts must not be substituted for the independently reviewed V2.1 counts above.
@@ -58,11 +59,11 @@ ERC validates modeled connectivity and annotation only. It does not establish ph
 
 ## Review history and independent findings
 
-Fifty-four review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R54 are controlled project responses, not independent approvals. R53 withdrew the invalid P0.2 arm chain. R54 supplies a coherent exact-coordinate architecture candidate without closing a physical gate.
+Fifty-five review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R55 are controlled project responses, not independent approvals. R53 withdrew the invalid P0.2 arm chain. R55 supersedes the defective R54 candidate and adds a fail-closed 120/122-degree collision boundary without closing a physical gate.
 
 ## Principal unresolved engineering blockers
 
-1. HR-V0 has `HR-V0-ARM-ARCH-P0.1` under the `HR-V0-MECH-P0.3` hold. It closes the transform/parallel-axis ambiguity at candidate level and supplies STEP/GLB/SVG, interface schedules, a sampled collision sweep and updated load screens. It is not buildable: exact profile/end machining, adapter material/tolerances, all fasteners, access, cables, complete sweep, stress/slip/fatigue/impact proof, received fit, FAI and qualified review remain open under `MECH-005` / `AUDIT-MECH-012`. The base frame still requires received-part fit, tool access, actual-joint torque, slip/proof, exact Boston bench anchors and qualified disposition. HR-30 has no released mechanical CAD.
+1. HR-V0 has corrected `HR-V0-ARM-ARCH-P0.2` under the `HR-V0-MECH-P0.3` hold. It supplies STEP/GLB/SVG, exact-source transforms, interface schedules, candidate member/adapter geometry, a 221-pose collision sweep and preliminary fastener/tool/load screens. It is not buildable: adapter pull-through/local strength, exact M2.5 stacks, received fit, cables, continuous collision proof, a physical hard stop and demonstrated stopping-overtravel/uncertainty margin below first contact, FAI and qualified review remain open under `MECH-005` / `AUDIT-MECH-012` and `MECH-006` / `INSPECT-MECH-013`. The base frame still requires received-part fit, tool access, actual-joint torque, slip/proof, exact Boston bench anchors and qualified disposition. HR-30 has no released mechanical CAD.
 2. Joint continuous/cyclic/impact/thermal performance, drivetrain efficiency, backlash, and structural margins are not physically validated.
 3. Safe actuator-power-loss behavior remains unresolved; a walking robot may collapse when hazardous drive energy is removed.
 4. Mass, center of mass, inertia, wiring mass, and reserve are not closed against released CAD and measured components.

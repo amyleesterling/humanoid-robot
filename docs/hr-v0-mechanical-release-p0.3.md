@@ -19,9 +19,9 @@ R53 withdraws the P0.2 arm geometry rather than allowing an unsupported plate ar
 
 The former 44 mm shoulder offset, 160 mm J1–J2 spacing, 160 mm J2–gripper spacing, MV0-001, MV0-002, MV0-003 and S102 application selection are therefore superseded. This correction does not select S101, S102, or a custom frame. It exposes that choice as `SELECTION REQUIRED`.
 
-## R54 candidate addendum
+## R55 current candidate addendum
 
-`HR-V0-ARM-ARCH-P0.1` now supplies a separate exact-coordinate replacement candidate using a deliberately rolled S102 body frame, explicit 4 × 4 transforms, parallel-axis proof, a 23-pose sampled self-collision screen, native STEP/GLB and revised mass/load screens. It does not supersede this P0.3 release hold. Exact profile/end machining, adapter definition, fasteners, access, cables, continuous sweep, structural proof, received fit, FAI and qualified review remain open, so no arm supplier packet is active.
+R55 supersedes the defective R54/P0.1 candidate. `HR-V0-ARM-ARCH-P0.2` supplies corrected vendor-to-joint XM540/S102 registration, the ROBOTIS rectangular link pattern, vertical 20-2040 candidate members, explicit 4 × 4 transforms, parallel-axis proof, a 221-pose 0.5-degree self-collision screen, native STEP/GLB and candidate fastener/tool/load screens. It does not supersede this P0.3 release hold. The model predicts first nominal adapter/body contact at 122 degrees, so 120 degrees is only a provisional software ceiling. Adapter pull-through/local strength, exact M2.5 stacks, received fit, continuous-between-sample proof, cables, hard stop, measured stopping overtravel and uncertainty margin, FAI and qualified review remain open; no arm supplier packet is active.
 
 ## Controlled evidence
 

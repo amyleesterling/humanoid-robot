@@ -24,7 +24,7 @@ EVALUATION_IDS = {
     "BOM-029", "BOM-030", "BOM-031", "BOM-032",
 }
 EXACT_HOLD_IDS = {
-    "BOM-024", "BOM-025",
+    "BOM-023", "BOM-024", "BOM-025", "BOM-026",
     "BOM-036", "BOM-037", "BOM-046", "BOM-047", "BOM-049", "BOM-050",
     "BOM-052", "BOM-053", "BOM-054", "BOM-055", "BOM-056", "BOM-057", "BOM-071",
 }

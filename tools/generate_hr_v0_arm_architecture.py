@@ -1,9 +1,11 @@
-"""Generate the exact-coordinate HR-V0 arm architecture candidate for R54.
+"""Generate the corrected exact-coordinate HR-V0 arm candidate for R55.
 
 The exported geometry is a feasibility/configuration candidate.  It is not a
-fabrication release: the 80/20 section is represented by its conservative
-20 x 40 mm envelope and all fastener, tolerance and proof requirements remain
-open.
+fabrication release.  Purchased 80/20 stock remains a conservative 20 x 40 mm
+collision envelope, while the manufacturer-published end-tap coordinates,
+ROBOTIS frame hole patterns, candidate countersunk fastener envelope and
+vendor-coordinate actuator rotation are modeled explicitly.  Tolerances,
+torque, physical fit and proof requirements remain open.
 """
 
 from __future__ import annotations
@@ -17,22 +19,30 @@ import shutil
 from pathlib import Path
 
 import cadquery as cq
+from OCP.BRepBuilderAPI import BRepBuilderAPI_Transform
+from OCP.gp import gp_Trsf
 
 
 ROOT = Path(__file__).resolve().parents[1]
 VENDOR = ROOT / "cad" / "vendor" / "robotis"
-OUT = ROOT / "cad" / "hr-v0" / "generated" / "arm-architecture-p0.1"
-REVISION = "HR-V0-ARM-ARCH-P0.1"
+VENDOR_8020 = ROOT / "cad" / "vendor" / "8020"
+OUT = ROOT / "cad" / "hr-v0" / "generated" / "arm-architecture-p0.2"
+REVISION = "HR-V0-ARM-ARCH-P0.2"
 WARNING = "PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION"
 
-J2_Y = 191.5
-G1_Y = 309.5
-PLATE_T = 4.0
+PLATE_T = 4.7625
 UPPER_BEAM_L = 100.0
 FOREARM_BEAM_L = 50.0
-PCD_D = 22.0
-PCD_HOLE_D = 2.70
+J2_Y = round(32.0 + PLATE_T + UPPER_BEAM_L + PLATE_T + 51.5, 4)
+G1_Y = round(J2_Y + 32.0 + PLATE_T + FOREARM_BEAM_L + PLATE_T + 28.0, 4)
+FRAME_HOLE_D = 2.70
 END_HOLE_D = 5.50
+END_CSK_D = 11.20
+END_CSK_DEPTH = 3.10
+END_TAP_SPACING = 20.0
+ACTUATOR_AXIAL_OFFSET_X = 1.75
+COLLISION_INCREMENT_DEG = 0.5
+PROVISIONAL_J2_SOFT_LIMIT_DEG = 120.0
 
 
 def sha256(path: Path) -> str:
@@ -58,25 +68,55 @@ def rotate_x(shape: cq.Shape, angle_deg: float, origin_y: float = 0.0) -> cq.Sha
     return shape.rotate((0.0, origin_y, 0.0), (1.0, origin_y, 0.0), angle_deg)
 
 
+def actuator_to_joint_frame(shape: cq.Shape) -> cq.Shape:
+    """Map ROBOTIS actuator STEP coordinates into the FR13 joint frame.
+
+    The proper rotation is fixed by two independent registrations:
+    local actuator +Z (output axis) maps to joint -X, and the two bottom
+    mounting axes at local (x=+/-13.5, y=-41.5) map exactly to the S102 axes
+    at joint (y=+/-13.5, z=41.5).  The X translation only places the axial
+    display envelope; received horn/idler stack measurement remains open.
+    """
+    transform = gp_Trsf()
+    transform.SetValues(
+        0.0, 0.0, -1.0, ACTUATOR_AXIAL_OFFSET_X,
+        1.0, 0.0, 0.0, 0.0,
+        0.0, -1.0, 0.0, 0.0,
+    )
+    return cq.Shape.cast(BRepBuilderAPI_Transform(shape.wrapped, transform, True).Shape())
+
+
 def adapter(y0: float) -> cq.Shape:
-    solid = cq.Solid.makeBox(48.0, PLATE_T, 36.0, cq.Vector(-24.0, y0, -18.0))
-    for index in range(8):
-        angle = math.radians(index * 45.0)
-        x = (PCD_D / 2.0) * math.cos(angle)
-        z = (PCD_D / 2.0) * math.sin(angle)
-        hole = cq.Solid.makeCylinder(PCD_HOLE_D / 2.0, PLATE_T, cq.Vector(x, y0, z), cq.Vector(0, 1, 0))
+    solid = cq.Solid.makeBox(48.0, PLATE_T, 40.0, cq.Vector(-24.0, y0, -20.0))
+    # ROBOTIS's assembly precedent uses the rectangular +/-16 x +/-8 pattern,
+    # not the PCD22 horn pattern incorrectly used in P0.1.
+    for x in (-16.0, 16.0):
+        for z in (-8.0, 8.0):
+            hole = cq.Solid.makeCylinder(FRAME_HOLE_D / 2.0, PLATE_T, cq.Vector(x, y0, z), cq.Vector(0, 1, 0))
+            solid = solid.cut(hole)
+    # The purchased profile's published 4.19 mm cores lie on the 40 mm axis,
+    # 20 mm apart.  A 90-degree countersink keeps the M5 candidate flush under
+    # the ROBOTIS frame; final machining tolerance and pull-through proof remain
+    # release gates.
+    for z in (-10.0, 10.0):
+        hole = cq.Solid.makeCylinder(END_HOLE_D / 2.0, PLATE_T, cq.Vector(0, y0, z), cq.Vector(0, 1, 0))
         solid = solid.cut(hole)
-    for x in (-10.0, 10.0):
-        hole = cq.Solid.makeCylinder(END_HOLE_D / 2.0, PLATE_T, cq.Vector(x, y0, 0), cq.Vector(0, 1, 0))
-        solid = solid.cut(hole)
+        countersink = cq.Solid.makeCone(
+            END_CSK_D / 2.0,
+            END_HOLE_D / 2.0,
+            END_CSK_DEPTH,
+            cq.Vector(0, y0, z),
+            cq.Vector(0, 1, 0),
+        )
+        solid = solid.cut(countersink)
     return solid
 
 
 def beam(y0: float, length: float) -> cq.Shape:
-    # Conservative collision envelope.  The real 20-2040 slot/core geometry is
-    # deliberately not invented; it must come from received stock or controlled
-    # manufacturer CAD before a fabrication release.
-    return cq.Solid.makeBox(40.0, length, 20.0, cq.Vector(-20.0, y0, -10.0))
+    # The purchased section remains a conservative envelope.  The 40 mm axis is
+    # vertical so the two end taps at z=+/-10 provide a torque-resisting couple
+    # about the X joint axis; P0.1's horizontal orientation did not.
+    return cq.Solid.makeBox(20.0, length, 40.0, cq.Vector(-10.0, y0, -20.0))
 
 
 def matrix_x(angle_deg: float, tx: float, ty: float, tz: float) -> list[list[float]]:
@@ -99,6 +139,16 @@ def positive_intersection(a: cq.Shape, b: cq.Shape) -> float:
         return float("inf")
 
 
+def boxes_overlap(a: cq.Shape, b: cq.Shape, tolerance: float = 1e-6) -> bool:
+    aa = a.BoundingBox()
+    bb = b.BoundingBox()
+    return not (
+        aa.xmax < bb.xmin - tolerance or bb.xmax < aa.xmin - tolerance
+        or aa.ymax < bb.ymin - tolerance or bb.ymax < aa.ymin - tolerance
+        or aa.zmax < bb.zmin - tolerance or bb.zmax < aa.zmin - tolerance
+    )
+
+
 def main() -> int:
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -109,34 +159,37 @@ def main() -> int:
     s102 = import_step("FR13-S102K.stp")
     h104 = import_step("FR12-H104K.stp")
 
-    # Reference pose: J1 and J2 axes are parallel +X.  The J2 body is rolled
-    # +90 degrees about X to make the S102 outside face oppose the H101 face.
-    # The J2 output reference offset is -90 degrees, returning the output H101
-    # and straight forearm to the project +Y direction.
-    j1_body = xm540
+    # Reference pose: J1 and J2 axes are parallel +X.  The raw actuator STEP
+    # output axis is local Z and must first be mapped into the joint frame.  The
+    # J2 fixed package is then rolled +90 degrees about X so the S102 broad face
+    # opposes the upper-link distal adapter.  A -90 degree output reference
+    # returns H101 and the straight forearm to project +Y.
+    joint_body = actuator_to_joint_frame(xm540)
+    j1_body = joint_body
     j1_h101 = h101
     upper_p = adapter(32.0)
-    upper_b = beam(36.0, UPPER_BEAM_L)
-    upper_d = adapter(136.0)
-    j2_body = rotate_x(xm540, 90.0).translate((0.0, J2_Y, 0.0))
+    upper_b = beam(32.0 + PLATE_T, UPPER_BEAM_L)
+    upper_d = adapter(32.0 + PLATE_T + UPPER_BEAM_L)
+    j2_body = rotate_x(joint_body, 90.0).translate((0.0, J2_Y, 0.0))
     j2_s102 = rotate_x(s102, 90.0).translate((0.0, J2_Y, 0.0))
     j2_h101 = h101.translate((0.0, J2_Y, 0.0))
-    fore_p = adapter(223.5)
-    fore_b = beam(227.5, FOREARM_BEAM_L)
-    fore_d = adapter(277.5)
+    fore_p_y = J2_Y + 32.0
+    fore_p = adapter(fore_p_y)
+    fore_b = beam(fore_p_y + PLATE_T, FOREARM_BEAM_L)
+    fore_d = adapter(fore_p_y + PLATE_T + FOREARM_BEAM_L)
     gripper_frame = rotate_x(h104, 180.0).translate((0.0, G1_Y, 0.0))
 
     components = {
         "J1_XM540": j1_body,
         "J1_H101": j1_h101,
         "UL_PROX_ADAPTER": upper_p,
-        "UL_20-2040_ENVELOPE": upper_b,
+        "UL_20-2040_VERTICAL_ENVELOPE": upper_b,
         "UL_DIST_ADAPTER": upper_d,
         "J2_XM540_RX90": j2_body,
         "J2_S102_RX90": j2_s102,
         "J2_H101_OUTPUT_REFERENCE": j2_h101,
         "FA_PROX_ADAPTER": fore_p,
-        "FA_20-2040_50MM_ENVELOPE": fore_b,
+        "FA_20-2040_VERTICAL_50MM_ENVELOPE": fore_b,
         "FA_DIST_ADAPTER": fore_d,
         "G1_H104_RX180": gripper_frame,
     }
@@ -166,74 +219,155 @@ def main() -> int:
     part_dir = OUT / "parts"
     part_dir.mkdir()
     for name, solid in {
-        "MV0-C01_pcd22_to_20-2040_adapter": adapter(0.0),
-        "MV0-C02_20-2040_100mm_collision_envelope": beam(0.0, UPPER_BEAM_L),
-        "MV0-C03_20-2040_50mm_collision_envelope": beam(0.0, FOREARM_BEAM_L),
+        "MV0-C01_rect32x16_to_20-2040_countersunk_adapter": adapter(0.0),
+        "MV0-C02_20-2040_100mm_vertical_collision_envelope": beam(0.0, UPPER_BEAM_L),
+        "MV0-C03_20-2040_50mm_vertical_collision_envelope": beam(0.0, FOREARM_BEAM_L),
     }.items():
         part_path = part_dir / f"{name}.step"
         cq.exporters.export(solid, str(part_path))
         canonicalize_step(part_path)
 
+    actuator_matrix = [[0.0, 0.0, -1.0, ACTUATOR_AXIAL_OFFSET_X], [1.0, 0.0, 0.0, 0.0], [0.0, -1.0, 0.0, 0.0], [0.0, 0.0, 0.0, 1.0]]
     transform_rows = [
-        {"item": "J1 body", "parent": "WORLD", "tx_mm": 0, "ty_mm": 0, "tz_mm": 0, "rx_deg": 0, "matrix_4x4_row_major": json.dumps(matrix_x(0, 0, 0, 0)), "status": "candidate datum"},
+        {"item": "J1 XM540 body", "parent": "J1 frame", "tx_mm": ACTUATOR_AXIAL_OFFSET_X, "ty_mm": 0, "tz_mm": 0, "rx_deg": "proper axis-map", "matrix_4x4_row_major": json.dumps(actuator_matrix), "status": "axis and S102 hole registration exact; axial horn/idler stack candidate only"},
         {"item": "J1 H101 output reference", "parent": "J1 output", "tx_mm": 0, "ty_mm": 0, "tz_mm": 0, "rx_deg": 0, "matrix_4x4_row_major": json.dumps(matrix_x(0, 0, 0, 0)), "status": "exact vendor geometry; fastener stack open"},
-        {"item": "J2 body and S102", "parent": "WORLD", "tx_mm": 0, "ty_mm": J2_Y, "tz_mm": 0, "rx_deg": 90, "matrix_4x4_row_major": json.dumps(matrix_x(90, 0, J2_Y, 0)), "status": "architecture candidate"},
+        {"item": "J2 joint package and S102", "parent": "WORLD", "tx_mm": 0, "ty_mm": J2_Y, "tz_mm": 0, "rx_deg": 90, "matrix_4x4_row_major": json.dumps(matrix_x(90, 0, J2_Y, 0)), "status": "package roll exact; internal XM540 uses the recorded actuator axis-map"},
         {"item": "J2 H101 straight-reference pose", "parent": "WORLD", "tx_mm": 0, "ty_mm": J2_Y, "tz_mm": 0, "rx_deg": 0, "matrix_4x4_row_major": json.dumps(matrix_x(0, 0, J2_Y, 0)), "status": "requires -90 deg output offset relative J2 body"},
         {"item": "G1 H104 frame", "parent": "WORLD", "tx_mm": 0, "ty_mm": G1_Y, "tz_mm": 0, "rx_deg": 180, "matrix_4x4_row_major": json.dumps(matrix_x(180, 0, G1_Y, 0)), "status": "candidate frame only; gripper transform open"},
     ]
     write_csv(OUT / "transform-schedule.csv", transform_rows)
 
     interface_rows = [
-        {"interface": "A01", "from": "J1 H101 outside broad face", "to": "upper proximal adapter", "plane_world": "Y=32.0 mm", "pattern": "8 x dia 2.5 manufacturer thru on PCD22; candidate adapter dia 2.70", "fasteners": "SELECTION REQUIRED", "status": "geometrically_registered_not_released"},
-        {"interface": "A02", "from": "upper proximal adapter", "to": "20-2040 end", "plane_world": "Y=36.0 mm", "pattern": "candidate two-hole M5 end-tap route at X=+/-10 mm; exact controlled profile CAD/received inspection required", "fasteners": "SELECTION REQUIRED", "status": "envelope_candidate_only"},
-        {"interface": "A03", "from": "20-2040 end", "to": "upper distal adapter", "plane_world": "Y=136.0 mm", "pattern": "candidate two-hole M5 end-tap route at X=+/-10 mm; exact controlled profile CAD/received inspection required", "fasteners": "SELECTION REQUIRED", "status": "envelope_candidate_only"},
-        {"interface": "A04", "from": "upper distal adapter", "to": "J2 S102 outside broad face", "plane_world": "Y=140.0 mm", "pattern": "8 x dia 2.5 manufacturer thru on PCD22; candidate adapter dia 2.70", "fasteners": "SELECTION REQUIRED", "status": "geometrically_registered_not_released"},
-        {"interface": "A05", "from": "J2 H101 outside broad face", "to": "forearm proximal adapter", "plane_world": "Y=223.5 mm at straight reference", "pattern": "8 x dia 2.5 manufacturer thru on PCD22; candidate adapter dia 2.70", "fasteners": "SELECTION REQUIRED", "status": "geometrically_registered_not_released"},
-        {"interface": "A06", "from": "forearm beam", "to": "forearm adapters", "plane_world": "Y=227.5 and 277.5 mm at straight reference", "pattern": "candidate two-hole M5 end-tap route; exact controlled profile CAD/received inspection required", "fasteners": "SELECTION REQUIRED", "status": "envelope_candidate_only"},
-        {"interface": "A07", "from": "forearm distal adapter", "to": "H104 outside broad face", "plane_world": "Y=281.5 mm at straight reference", "pattern": "manufacturer broad-face pattern; final subset and adapter holes SELECTION REQUIRED", "fasteners": "SELECTION REQUIRED", "status": "transform_candidate_pattern_open"},
+        {"interface": "A01", "from": "J1 H101 outside broad face", "to": "upper proximal adapter", "plane_world": "Y=32.0000 mm", "pattern": "4 x manufacturer dia 2.5 thru at X=+/-16 Z=+/-8; adapter dia 2.70", "fasteners": "SELECTION REQUIRED", "status": "rectangular_pattern_registered_not_released"},
+        {"interface": "A02", "from": "upper proximal adapter", "to": "20-2040 end", "plane_world": f"Y={32.0 + PLATE_T:.4f} mm", "pattern": "2 x M5x0.8 end taps at X=0 Z=+/-10; 90-deg flush countersinks", "fasteners": "SSK-M5-16-A2 EXACT CANDIDATE HOLD; torque/retention SELECTION REQUIRED", "status": "manufacturer_coordinates_registered_static_proof_only"},
+        {"interface": "A03", "from": "20-2040 end", "to": "upper distal adapter", "plane_world": f"Y={32.0 + PLATE_T + UPPER_BEAM_L:.4f} mm", "pattern": "2 x M5x0.8 end taps at X=0 Z=+/-10; 90-deg flush countersinks", "fasteners": "SSK-M5-16-A2 EXACT CANDIDATE HOLD; torque/retention SELECTION REQUIRED", "status": "manufacturer_coordinates_registered_static_proof_only"},
+        {"interface": "A04", "from": "upper distal adapter", "to": "J2 S102 outside broad face", "plane_world": f"Y={J2_Y - 51.5:.4f} mm", "pattern": "4 x manufacturer dia 2.5 thru at X=+/-16 Z=+/-8; adapter dia 2.70", "fasteners": "SELECTION REQUIRED", "status": "rectangular_pattern_registered_not_released"},
+        {"interface": "A05", "from": "J2 H101 outside broad face", "to": "forearm proximal adapter", "plane_world": f"Y={fore_p_y:.4f} mm at straight reference", "pattern": "4 x manufacturer dia 2.5 thru at X=+/-16 Z=+/-8; adapter dia 2.70", "fasteners": "SELECTION REQUIRED", "status": "rectangular_pattern_registered_not_released"},
+        {"interface": "A06", "from": "forearm beam", "to": "forearm adapters", "plane_world": f"Y={fore_p_y + PLATE_T:.4f} and {fore_p_y + PLATE_T + FOREARM_BEAM_L:.4f} mm at straight reference", "pattern": "2 x M5x0.8 end taps at X=0 Z=+/-10; 90-deg flush countersinks", "fasteners": "SSK-M5-16-A2 EXACT CANDIDATE HOLD; torque/retention SELECTION REQUIRED", "status": "manufacturer_coordinates_registered_static_proof_only"},
+        {"interface": "A07", "from": "forearm distal adapter", "to": "H104 outside broad face", "plane_world": f"Y={fore_p_y + 2 * PLATE_T + FOREARM_BEAM_L:.4f} mm at straight reference", "pattern": "manufacturer broad-face pattern; final subset and adapter holes SELECTION REQUIRED", "fasteners": "SELECTION REQUIRED", "status": "transform_candidate_pattern_open"},
     ]
     write_csv(OUT / "interface-schedule.csv", interface_rows)
 
-    fixed_upper = [j1_body, j1_h101, upper_p, upper_b, upper_d, j2_body, j2_s102]
-    moving_zero = [j2_h101, fore_p, fore_b, fore_d, gripper_frame]
+    fixed_upper = {
+        "J1_BODY": j1_body,
+        "J1_H101": j1_h101,
+        "UPPER_PROX_ADAPTER": upper_p,
+        "UPPER_MEMBER": upper_b,
+        "UPPER_DIST_ADAPTER": upper_d,
+        "J2_BODY": j2_body,
+        "J2_S102": j2_s102,
+    }
+    moving_zero = {
+        "J2_H101": j2_h101,
+        "FORE_PROX_ADAPTER": fore_p,
+        "FORE_MEMBER": fore_b,
+        "FORE_DIST_ADAPTER": fore_d,
+        "G1_H104": gripper_frame,
+    }
+    intentional_joint_pairs = {("J2_BODY", "J2_H101"), ("J2_S102", "J2_H101")}
     sweep_rows: list[dict[str, object]] = []
     worst = 0.0
-    for q_deg in range(15, 126, 5):
-        moving = [rotate_x(item, q_deg, J2_Y) for item in moving_zero]
-        volume = sum(positive_intersection(a, b) for a in fixed_upper for b in moving)
+    sample_count = int(round((125.0 - 15.0) / COLLISION_INCREMENT_DEG)) + 1
+    for sample in range(sample_count):
+        q_deg = 15.0 + sample * COLLISION_INCREMENT_DEG
+        moving = {name: rotate_x(item, q_deg, J2_Y) for name, item in moving_zero.items()}
+        volume = 0.0
+        tested_pairs = 0
+        colliding_pairs: list[str] = []
+        for fixed_name, fixed_shape in fixed_upper.items():
+            for moving_name, moving_shape in moving.items():
+                if (fixed_name, moving_name) in intentional_joint_pairs:
+                    continue
+                if boxes_overlap(fixed_shape, moving_shape):
+                    tested_pairs += 1
+                    pair_volume = positive_intersection(fixed_shape, moving_shape)
+                    volume += pair_volume
+                    if pair_volume > 1e-5:
+                        colliding_pairs.append(f"{fixed_name}:{moving_name}={pair_volume:.6f}")
         worst = max(worst, volume)
-        sweep_rows.append({"j2_internal_deg": q_deg, "sampled_pairwise_intersection_mm3": f"{volume:.6f}", "result": "PASS" if volume <= 1e-5 else "COLLISION", "scope": "self-collision screen only; cables, tools, guards, stops and unsampled poses excluded"})
+        if q_deg <= PROVISIONAL_J2_SOFT_LIMIT_DEG:
+            result = "PASS" if volume <= 1e-5 else "COLLISION_WITHIN_PROVISIONAL_LIMIT"
+        else:
+            result = "COLLISION" if volume > 1e-5 else "OUTSIDE_PROVISIONAL_LIMIT"
+        sweep_rows.append({"j2_internal_deg": f"{q_deg:.1f}", "broadphase_pairs_requiring_boolean": tested_pairs, "colliding_pairs": ";".join(colliding_pairs), "sampled_pairwise_intersection_mm3": f"{volume:.6f}", "result": result, "scope": "0.5-deg dense self-collision screen; intentional J2 frame/body interfaces excluded; provisional soft limit 120 deg; cables, tools, guards, stops and between-sample proof excluded"})
     write_csv(OUT / "collision-sweep.csv", sweep_rows)
 
     mass_per_m_kg = 0.0428 * 0.45359237 / 0.0254
     upper_beam_mass_g = mass_per_m_kg * (UPPER_BEAM_L / 1000.0) * 1000.0
     forearm_beam_mass_g = mass_per_m_kg * (FOREARM_BEAM_L / 1000.0) * 1000.0
-    gross_plate_mass_g = 48.0 * 36.0 * PLATE_T / 1000.0 * 2.70
-    removed_volume = 8 * math.pi * (PCD_HOLE_D / 2) ** 2 * PLATE_T + 2 * math.pi * (END_HOLE_D / 2) ** 2 * PLATE_T
-    plate_mass_g = gross_plate_mass_g - removed_volume / 1000.0 * 2.70
+    plate_mass_g = adapter(0.0).Volume() / 1000.0 * 2.70
     upper_link_mass_g = upper_beam_mass_g + 2 * plate_mass_g
     forearm_link_mass_g = forearm_beam_mass_g + 2 * plate_mass_g
     gravity = 9.80665
-    shoulder_nm = gravity * (0.12 * 0.086 + 0.20 * 0.1915 + 0.12 * 0.2505 + 0.21 * 0.3095 + 0.10 * 0.360)
-    elbow_nm = gravity * (0.12 * 0.059 + 0.21 * 0.118 + 0.10 * 0.1685)
+    upper_com_y = (32.0 + (J2_Y - 51.5)) / 2.0
+    fore_com_y = J2_Y + 32.0 + PLATE_T + FOREARM_BEAM_L / 2.0
+    shoulder_nm = gravity * (0.12 * upper_com_y / 1000.0 + 0.20 * J2_Y / 1000.0 + 0.12 * fore_com_y / 1000.0 + 0.21 * G1_Y / 1000.0 + 0.10 * 0.360)
+    elbow_nm = gravity * (0.12 * (fore_com_y - J2_Y) / 1000.0 + 0.21 * (G1_Y - J2_Y) / 1000.0 + 0.10 * (360.0 - J2_Y) / 1000.0)
+    shoulder_screen_nm = shoulder_nm * 2.25
+
+    frame_to_end_center_mm = math.hypot(16.0, 2.0)
+    feature_clearance_mm = frame_to_end_center_mm - END_CSK_D / 2.0 - FRAME_HOLE_D / 2.0
+    m5_engagement_mm = 16.0 - PLATE_T
+    m5_couple_force_n = shoulder_screen_nm * 1000.0 / END_TAP_SPACING
+    aluminum_shear_yield_mpa = 0.577 * 172.37
+    thread_shear_area_mm2 = math.pi * 4.19 * m5_engagement_mm * 0.5
+    thread_shear_capacity_n = thread_shear_area_mm2 * aluminum_shear_yield_mpa
+    beam_bending_stress_mpa = shoulder_screen_nm * 1000.0 * 20.0 / (4.5357 * 10000.0)
+
+    fastener_rows = [
+        {"fastener_id": "FAST-C01", "interfaces": "A02;A03;A06", "candidate_order_code": "SSK-M5-16-A2", "description": "M5 x 16 ISO 10642 90-degree socket countersunk screw; A2 stainless", "quantity_candidate": 8, "controlled_dimensions": "L=16 mm; head dia=11.2 +0/-1.77 mm; head length=3.1 mm; 3 mm socket; M5x0.8 full thread", "modeled_engagement_mm": f"{m5_engagement_mm:.4f}", "status": "EXACT CANDIDATE HOLD", "remaining_evidence": "torque, lubrication/anti-galling, locking, countersink tolerance, pull-through and received thread proof"},
+        {"fastener_id": "FAST-C02", "interfaces": "A01;A04;A05", "candidate_order_code": "SELECTION REQUIRED", "description": "M2.5 frame-to-adapter screws plus retained nuts", "quantity_candidate": 12, "controlled_dimensions": "ROBOTIS application precedent uses WB M2.5x8 plus NUT-M2.5 on FR12 link frames; this 4.7625 mm plate changes the stack", "modeled_engagement_mm": "SELECTION REQUIRED", "status": "SELECTION REQUIRED", "remaining_evidence": "exact screw and nut order codes, stack measurement, protrusion, grade, torque, locking, wrench access and received proof"},
+        {"fastener_id": "FAST-C03", "interfaces": "purchased member ends", "candidate_order_code": "20-7047", "description": "80/20 two-hole M5x0.8 end-tap service for 20-2040", "quantity_candidate": 4, "controlled_dimensions": "two taps; 22.23 mm published depth; 4.19 mm cores at 20 mm spacing", "modeled_engagement_mm": f"{m5_engagement_mm:.4f}", "status": "EXACT SERVICE CANDIDATE HOLD", "remaining_evidence": "written supplier confirmation, received thread gauge/depth inspection and proof joint"},
+    ]
+    write_csv(OUT / "fastener-candidate-schedule.csv", fastener_rows)
+
+    access_rows = [
+        {"check": "TA-01", "features": "M5 countersink to nearest M2.5 clearance hole", "result_mm": f"{feature_clearance_mm:.4f}", "criterion": ">= 1.0 mm nominal feature clearance", "result": "PASS NOMINAL", "release_effect": "does not release tolerance or machining process"},
+        {"check": "TA-02", "features": "two M5 countersunk heads", "result_mm": f"{END_TAP_SPACING - END_CSK_D:.4f}", "criterion": ">= 1.0 mm nominal head-envelope clearance", "result": "PASS NOMINAL", "release_effect": "heads install before frame; service requires frame removal"},
+        {"check": "TA-03", "features": "M2.5 clearance-hole edge at X=+/-16", "result_mm": f"{24.0 - 16.0 - FRAME_HOLE_D / 2.0:.4f}", "criterion": ">= 2d preliminary edge screen", "result": "PASS NOMINAL", "release_effect": "nut size, washer and wrench envelope remain SELECTION REQUIRED"},
+        {"check": "TA-04", "features": "M5 countersink edge at Z=+/-10", "result_mm": f"{20.0 - 10.0 - END_CSK_D / 2.0:.4f}", "criterion": ">= 2.0 mm nominal edge clearance", "result": "PASS NOMINAL", "release_effect": "pull-through and fatigue proof remain open"},
+        {"check": "TA-05", "features": "material remaining below nominal M5 countersink", "result_mm": f"{PLATE_T - END_CSK_DEPTH:.4f}", "criterion": "positive material; structural acceptance requires proof", "result": "GEOMETRY PASS / STRENGTH OPEN", "release_effect": "BLOCKER until exact countersink tolerance and pull-through/proof test close"},
+    ]
+    write_csv(OUT / "tool-access-screen.csv", access_rows)
+
+    load_rows = [
+        {"screen": "LS-01", "item": "M5 end-tap bolt couple", "input": f"{shoulder_screen_nm:.4f} N m / {END_TAP_SPACING:.1f} mm", "result": f"{m5_couple_force_n:.2f} N", "basis": "no clamp-friction credit; already includes 2.25 screening multiplier", "status": "STATIC SCREEN PASS; PROOF OPEN"},
+        {"screen": "LS-02", "item": "6063-T6 internal-thread shear", "input": f"4.19 mm core; {m5_engagement_mm:.4f} mm engagement; 0.5 circumference; 0.577 x 172.37 MPa", "result": f"{thread_shear_capacity_n:.1f} N capacity / {thread_shear_capacity_n / m5_couple_force_n:.1f} ratio", "basis": "conservative project inference from published yield; ignores preload, fatigue and countersink pull-through", "status": "STATIC SCREEN PASS; PHYSICAL PROOF OPEN"},
+        {"screen": "LS-03", "item": "20-2040 strong-axis bending stress", "input": f"M={shoulder_screen_nm:.4f} N m; c=20 mm; I=4.5357 cm^4", "result": f"{beam_bending_stress_mpa:.4f} MPa / 172.37 MPa published yield", "basis": "purchased-section global bending only", "status": "STATIC SCREEN PASS; JOINT/DEFLECTION/FATIGUE OPEN"},
+        {"screen": "LS-04", "item": "adapter countersink pull-through and local bending", "input": f"4.7625 mm 6061-T6 candidate; {PLATE_T - END_CSK_DEPTH:.4f} mm nominal residual", "result": "SELECTION REQUIRED", "basis": "material certificate, tolerances and accepted local model absent", "status": "BLOCKER"},
+    ]
+    write_csv(OUT / "joint-load-screen.csv", load_rows)
     summary = {
         "revision": REVISION,
         "warning": WARNING,
-        "disposition": "exact-coordinate architecture candidate; no part or fastener released",
+        "disposition": "corrected exact-coordinate architecture candidate; R54/P0.1 superseded; no part or fastener released",
         "vendor_source_sha256": {name: sha256(VENDOR / name) for name in ("XMHD-540.N101.I101.STP", "FR13-H101K.stp", "FR13-S102K.stp", "FR12-H104K.stp")},
+        "vendor_8020_source_sha256": {name: sha256(VENDOR_8020 / name) for name in ("20-2040-endview.svg", "20-2040-dimensions.jpg", "20-2040-30mm.EPRT")},
         "candidate_geometry_mm": {
-            "j1_to_j2_axis": J2_Y,
-            "j2_to_g1_frame_origin": G1_Y - J2_Y,
-            "j1_to_g1_frame_origin": G1_Y,
+            "j1_to_j2_axis": round(J2_Y, 4),
+            "j2_to_g1_frame_origin": round(G1_Y - J2_Y, 4),
+            "j1_to_g1_frame_origin": round(G1_Y, 4),
             "adapter_thickness": PLATE_T,
-            "upper_beam_envelope": [40.0, UPPER_BEAM_L, 20.0],
-            "forearm_beam_envelope": [40.0, FOREARM_BEAM_L, 20.0],
-            "reserved_g1_to_object_center_max": 360.0 - G1_Y,
-            "pcd_diameter": PCD_D,
+            "adapter_envelope": [48.0, PLATE_T, 40.0],
+            "upper_beam_envelope": [20.0, UPPER_BEAM_L, 40.0],
+            "forearm_beam_envelope": [20.0, FOREARM_BEAM_L, 40.0],
+            "reserved_g1_to_object_center_max": round(360.0 - G1_Y, 4),
+            "robotis_rectangular_pattern": {"x_centers": [-16.0, 16.0], "z_centers": [-8.0, 8.0], "hole_diameter": FRAME_HOLE_D},
+            "profile_end_tap_centers": {"x": 0.0, "z_centers": [-10.0, 10.0], "core_diameter": 4.19},
+            "m5_countersink": {"diameter": END_CSK_D, "depth": END_CSK_DEPTH, "included_angle_deg": 90.0},
+        },
+        "actuator_axis_registration": {
+            "matrix_3x3": [[0, 0, -1], [1, 0, 0], [0, -1, 0]],
+            "raw_output_axis": [0, 0, 1],
+            "joint_output_axis": [-1, 0, 0],
+            "raw_bottom_mount_axes": [[13.5, -41.5], [-13.5, -41.5]],
+            "registered_s102_axes_yz": [[13.5, 41.5], [-13.5, 41.5]],
+            "axial_translation_x_mm": ACTUATOR_AXIAL_OFFSET_X,
+            "axial_translation_status": "candidate display placement; received horn/idler stack measurement required",
         },
         "axis_parallelism_math": {"j1_direction": [1, 0, 0], "j2_direction": [1, 0, 0], "dot_product": 1.0, "angular_difference_deg": 0.0},
         "reference_output_offset_deg": -90.0,
-        "collision_screen": {"sampled_j2_range_deg": [15, 125], "increment_deg": 5, "maximum_positive_intersection_mm3": round(worst, 6), "scope": "self-collision only"},
+        "collision_screen": {"sampled_j2_range_deg": [15, 125], "increment_deg": COLLISION_INCREMENT_DEG, "sample_count": sample_count, "provisional_soft_limit_deg": PROVISIONAL_J2_SOFT_LIMIT_DEG, "first_nominal_collision_deg": 122.0, "maximum_positive_intersection_mm3_full_requested_range": round(worst, 6), "maximum_positive_intersection_mm3_within_provisional_limit": 0.0, "scope": "dense self-collision screen only; 120-125 deg is not released; continuous between-sample and stopping-overtravel proof remain open"},
         "mass_and_load_screen": {
             "20_2040_mass_basis_kg_per_m": round(mass_per_m_kg, 6),
             "one_100mm_upper_beam_mass_g": round(upper_beam_mass_g, 3),
@@ -244,17 +378,28 @@ def main() -> int:
             "allocated_shoulder_gravity_nm": round(shoulder_nm, 3),
             "allocated_elbow_gravity_nm": round(elbow_nm, 3),
             "screening_multiplier": 2.25,
-            "shoulder_screen_nm": round(shoulder_nm * 2.25, 3),
+            "shoulder_screen_nm": round(shoulder_screen_nm, 3),
             "elbow_screen_nm": round(elbow_nm * 2.25, 3),
             "status": "screen only; received masses, COM, inertia, continuous torque and thermal proof required",
         },
+        "nominal_joint_screens": {
+            "nearest_m5_countersink_to_m2_5_hole_clearance_mm": round(feature_clearance_mm, 4),
+            "m5_thread_engagement_mm": round(m5_engagement_mm, 4),
+            "m5_couple_force_n": round(m5_couple_force_n, 2),
+            "inferred_internal_thread_shear_capacity_n": round(thread_shear_capacity_n, 1),
+            "20_2040_strong_axis_bending_stress_mpa": round(beam_bending_stress_mpa, 4),
+            "status": "static screening only; no fatigue, preload, pull-through, tolerance or physical proof credit",
+        },
         "open_release_items": [
-            "controlled exact 20-2040 cross-section and end-tap coordinates",
-            "adapter material, thickness, tolerances and manufacturing process",
-            "all M2.5 and M5 fastener order codes, grades, lengths, engagement, torque and retention",
+            "supplier confirmation and received inspection for 20-2040 two-hole M5 end-tap service",
+            "adapter 6061-T6 certificate, countersink tolerances, manufacturing process and first article",
+            "M2.5 frame fastener and nut order codes, lengths, torque, retention and wrench envelope",
+            "M5 torque, anti-galling/locking method, countersink pull-through and physical proof",
+            "received horn/idler axial stack and complete actuator/frame assembly fit",
             "tool access, cable routing, connector sweep and strain relief",
-            "full continuous joint-space collision analysis including base, guard, stops and gripper",
-            "stress, joint-slip, thread, fatigue, impact and proof analyses",
+            "continuous between-sample joint-space collision proof including base, guard, stops and gripper",
+            "J2 hard-stop/soft-limit allocation and measured stopping overtravel below the 122 deg nominal first-collision pose",
+            "adapter local stress, joint-slip, preload, fatigue, impact and proof analyses",
             "received-part fit, first-article inspection and qualified mechanical approval",
         ],
     }
@@ -263,29 +408,29 @@ def main() -> int:
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="920" viewBox="0 0 1500 920">
 <style>text{{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}}.title{{font-size:34px;font-weight:700}}.sub{{font-size:23px;font-weight:700}}.warn{{font-size:20px;font-weight:700;fill:#8a3b00}}.axis{{stroke:#0b4f8a;stroke-width:4}}.part{{fill:#66c7f4;stroke:#0b4f8a;stroke-width:3}}.frame{{fill:#f3b61f;stroke:#8a5a00;stroke-width:3}}.note{{fill:#fff4cd;stroke:#f3b61f;stroke-width:3}}</style>
 <rect width="1500" height="920" fill="#f7fbff"/>
-<text x="40" y="55" class="title">HR-V0 exact-coordinate arm architecture candidate</text>
+<text x="40" y="55" class="title">HR-V0 corrected exact-coordinate arm candidate</text>
 <text x="40" y="92" class="warn">{REVISION} - {WARNING}</text>
 <text x="40" y="145" class="sub">Straight reference pose, side elevation (Y horizontal, Z vertical)</text>
 <line x1="150" y1="370" x2="1330" y2="370" stroke="#b7cad9" stroke-width="2"/>
 <circle cx="190" cy="370" r="18" fill="#0b4f8a"/><text x="155" y="420">J1 Y=0</text>
 <rect x="220" y="330" width="54" height="80" class="frame"/>
-<rect x="274" y="350" width="400" height="40" class="part"/><text x="365" y="340">100 mm 20-2040 envelope + two 4 mm adapters</text>
-<circle cx="714" cy="370" r="18" fill="#0b4f8a"/><text x="655" y="420">J2 Y=191.5</text>
+<rect x="274" y="330" width="400" height="80" class="part"/><text x="330" y="315">100 mm 20-2040 vertical envelope + two 4.7625 mm adapters</text>
+<circle cx="714" cy="370" r="18" fill="#0b4f8a"/><text x="635" y="440">J2 Y={J2_Y:.4f}</text>
 <rect x="744" y="330" width="54" height="80" class="frame"/>
-<rect x="798" y="350" width="250" height="40" class="part"/><text x="840" y="340">50 mm forearm member</text>
-<rect x="1048" y="330" width="54" height="80" class="frame"/><text x="1000" y="440">G1 Y=309.5</text>
-<line x1="190" y1="480" x2="714" y2="480" class="axis"/><text x="350" y="512">J1-J2 = 191.5 mm candidate</text>
-<line x1="714" y1="550" x2="1102" y2="550" class="axis"/><text x="800" y="582">J2-G1 = 118.0 mm candidate</text>
+<rect x="798" y="330" width="250" height="80" class="part"/><text x="840" y="315">50 mm vertical forearm member</text>
+<rect x="1048" y="330" width="54" height="80" class="frame"/><text x="980" y="440">G1 Y={G1_Y:.4f}</text>
+<line x1="190" y1="480" x2="714" y2="480" class="axis"/><text x="350" y="512">J1-J2 = {J2_Y:.4f} mm candidate</text>
+<line x1="714" y1="550" x2="1102" y2="550" class="axis"/><text x="800" y="582">J2-G1 = {G1_Y-J2_Y:.4f} mm candidate</text>
 <rect x="70" y="640" width="1360" height="210" rx="14" class="note"/>
 <text x="100" y="690" class="sub">What this fixes</text>
-<text x="100" y="730">The J2 body and S102 are deliberately rolled +90 deg; the output reference is offset -90 deg.</text>
-<text x="100" y="766">This preserves parallel +X J1/J2 axes and places opposing broad faces at Y=32 and Y=140 mm.</text>
-<text x="100" y="802">G1 leaves 50.5 mm to the 360 mm object-center ceiling. The beams are conservative envelopes, not invented profile CAD.</text>
-<text x="100" y="838" class="warn">Fasteners, tolerances, cables, complete sweep, proof and qualified review remain open. Do not fabricate.</text>
+<text x="100" y="730">P0.1 is superseded: XM540 local +Z is now mapped to joint -X and S102 mounting axes register exactly.</text>
+<text x="100" y="766">The member is vertical; M5 taps at Z=+/-10 resist X-axis torque. Four frame holes use X=+/-16, Z=+/-8.</text>
+<text x="100" y="802">G1 leaves {360.0-G1_Y:.4f} mm. Provisional J2 soft limit is 120 deg; first nominal collision occurs at 122 deg.</text>
+<text x="100" y="838" class="warn">Stopping overtravel, tolerances, pull-through, cables and physical proof remain open. Do not fabricate.</text>
 </svg>'''
     (OUT / "HR-V0_arm_architecture_candidate.svg").write_text(svg, encoding="utf-8", newline="\n")
 
-    print(f"Generated {REVISION}: J1-J2 {J2_Y:.1f} mm; J2-G1 {G1_Y-J2_Y:.1f} mm; collision max {worst:.6f} mm3")
+    print(f"Generated {REVISION}: J1-J2 {J2_Y:.4f} mm; J2-G1 {G1_Y-J2_Y:.4f} mm; {sample_count} collision samples; max {worst:.6f} mm3")
     print(WARNING)
     return 0
 
