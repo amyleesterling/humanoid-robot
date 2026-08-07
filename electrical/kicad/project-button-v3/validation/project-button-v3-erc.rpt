@@ -1,4 +1,4 @@
-ERC report (2026-08-06T23:58:19, Encoding UTF8)
+ERC report (2026-08-07T00:43:19, Encoding UTF8)
 Report includes: Errors, Warnings
 
 ***** Sheet /
@@ -13,7 +13,7 @@ Report includes: Errors, Warnings
 
 ***** Sheet /05 Redundant actuator-power interruption/
 
-***** Sheet /06 Protected actuator branches and VDD-isolating injection/
+***** Sheet /06 Protected actuator branches and central DYNAMIXEL star injection/
 
 ***** Sheet /07 Independent watchdog power, controller and drivers/
 

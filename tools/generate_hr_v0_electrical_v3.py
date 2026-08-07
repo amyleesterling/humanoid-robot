@@ -27,8 +27,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P1.1"
-DATE = "2026-08-06"
+REV = "V3-P1.2"
+PROJECT_TITLE = "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE"
+PROJECT_SUBTITLE = "Separate RESET and ARM, two PNOZ stages, dual watchdog contacts, external adapters, redundant actuator interruption."
+DATE = "2026-08-07"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 NS = uuid.UUID("4cb40c84-3194-4ded-b2c7-d78df616c5c0")
 
@@ -295,21 +297,29 @@ def sheets() -> list[Sheet]:
                   "SELECTION REQUIRED", "Same R36 candidate hardware and XM540/JST connector-limit conflict as F1.", position=(295, 145), width=72),
         Component("F3", "Gripper branch protection", [pn("F3", "1", "IN", "ACT_12V_BUS", "left"), pn("F3", "2", "OUT", "J3_VDD", "right")],
                   "SELECTION REQUIRED", "R36 proposes 5025 block plus ATOF family only. XM430 stall screen is 2.3 A; exact cable, rating and coordination evidence remain open.", position=(65, 230), width=72),
-        Component("INJ1", "J1 data/power injection module",
-                  [pn("INJ1", "TBD-BI-G", "BUS IN GND", "ACT_0V_PE_BONDED", "left"), pn("INJ1", "TBD-BI-D", "BUS IN DATA", "DXL_TTL_DATA", "left"),
-                   pn("INJ1", "TBD-P", "FUSED VDD", "J1_VDD", "left"), pn("INJ1", "TBD-A-G", "ACT GND", "ACT_0V_PE_BONDED", "right"),
-                   pn("INJ1", "TBD-A-V", "ACT VDD", "J1_VDD", "right"), pn("INJ1", "TBD-A-D", "ACT DATA", "DXL_TTL_DATA", "right"),
-                   pn("INJ1", "TBD-BO-G", "BUS OUT GND", "ACT_0V_PE_BONDED", "right"), pn("INJ1", "TBD-BO-D", "BUS OUT DATA", "DXL_TTL_DATA", "right")],
-                  "DESIGN REQUIRED", "Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open.", position=(180, 230), width=82),
-        Component("INJ2", "J2 data/power injection module",
-                  [pn("INJ2", "TBD-BI-G", "BUS IN GND", "ACT_0V_PE_BONDED", "left"), pn("INJ2", "TBD-BI-D", "BUS IN DATA", "DXL_TTL_DATA", "left"),
-                   pn("INJ2", "TBD-P", "FUSED VDD", "J2_VDD", "left"), pn("INJ2", "TBD-A-G", "ACT GND", "ACT_0V_PE_BONDED", "right"),
-                   pn("INJ2", "TBD-A-V", "ACT VDD", "J2_VDD", "right"), pn("INJ2", "TBD-A-D", "ACT DATA", "DXL_TTL_DATA", "right"),
-                   pn("INJ2", "TBD-BO-G", "BUS OUT GND", "ACT_0V_PE_BONDED", "right"), pn("INJ2", "TBD-BO-D", "BUS OUT DATA", "DXL_TTL_DATA", "right")],
-                  "DESIGN REQUIRED", "Second injection module.", position=(295, 230), width=82),
+        Component("INJ1", "HR-V0 DXL-STAR-P0.1 central branch-isolating injection board",
+                  [pn("INJ1", "CTRL:1", "U2D2 GND", "ACT_0V_PE_BONDED", "left"),
+                   pn("INJ1", "CTRL:2", "U2D2 VDD OMITTED", "INTENTIONALLY_UNUSED_U2D2_VDD", "left"),
+                   pn("INJ1", "CTRL:3", "U2D2 DATA", "DXL_TTL_DATA", "left"),
+                   pn("INJ1", "PWR1:1", "J1 FUSED VDD", "J1_VDD", "left"),
+                   pn("INJ1", "PWR1:2", "J1 RETURN", "ACT_0V_PE_BONDED", "left"),
+                   pn("INJ1", "PWR2:1", "J2 FUSED VDD", "J2_VDD", "left"),
+                   pn("INJ1", "PWR2:2", "J2 RETURN", "ACT_0V_PE_BONDED", "left"),
+                   pn("INJ1", "PWR3:1", "J3 FUSED VDD", "J3_VDD", "left"),
+                   pn("INJ1", "PWR3:2", "J3 RETURN", "ACT_0V_PE_BONDED", "left"),
+                   pn("INJ1", "ACT1:1", "J1 GND", "ACT_0V_PE_BONDED", "right"),
+                   pn("INJ1", "ACT1:2", "J1 VDD", "J1_VDD", "right"),
+                   pn("INJ1", "ACT1:3", "J1 DATA", "DXL_TTL_DATA", "right"),
+                   pn("INJ1", "ACT2:1", "J2 GND", "ACT_0V_PE_BONDED", "right"),
+                   pn("INJ1", "ACT2:2", "J2 VDD", "J2_VDD", "right"),
+                   pn("INJ1", "ACT2:3", "J2 DATA", "DXL_TTL_DATA", "right"),
+                   pn("INJ1", "ACT3:1", "J3 GND", "ACT_0V_PE_BONDED", "right"),
+                   pn("INJ1", "ACT3:2", "J3 VDD", "J3_VDD", "right"),
+                   pn("INJ1", "ACT3:3", "J3 DATA", "DXL_TTL_DATA", "right")],
+                  "PROPOSED - PCB/HARNESS/FAULT EVIDENCE REQUIRED", "One fixed central star board accepts three separately protected VDD/return branches, shares only DATA and common return, and leaves U2D2 pin 2 physically unrouted. Routed DXL-STAR-P0.1 source exists; exact cable lengths, terminals, enclosure, signal-integrity, thermal, continuity and no-backfeed proof remain open.", position=(250, 195), width=120),
     ]
     s4.notes = ["Series jumpers: K1 2T1->3L2, 4T2->5L3, 6T3->K2 1L1; repeat through K2 to ACT_12V_BUS.",
-                "INJ3 and exact actuator connectors continue on the harness sheet; U2D2 Power Hub is excluded from actuator current."]
+                "INJ1 is one central star board with three isolated positive rails; U2D2 Power Hub is excluded from actuator current."]
 
     s5 = Sheet(5, "05_watchdog_control.kicad_sch", "Independent watchdog controller and two relay drivers",
                "Ordinary controller/relays provide diagnostics and restart forcing but receive no safety integrity credit by assertion.")
@@ -480,7 +490,7 @@ def sheets() -> list[Sheet]:
     s5.notes = ["Power-up, brownout, clock failure, stuck GPIO, held heartbeat and firmware-corruption tests are mandatory.",
                 "A qualified review must decide whether watchdog loss is credited or only diagnostic."]
 
-    s6 = Sheet(6, "06_harness_interfaces.kicad_sch", "HR-V0 connectors, injection modules and terminal schedule",
+    s6 = Sheet(6, "06_branches_and_injection.kicad_sch", "HR-V0 connectors, DYNAMIXEL star injection and terminal schedule",
                "Every TBD terminal remains a fabrication blocker; connector orientation must be checked on received parts.")
     s6.components = [
         Component("U1", "ROBOTIS U2D2 TTL interface, SKU 902-0132-000",
@@ -488,11 +498,6 @@ def sheets() -> list[Sheet]:
                    pn("U2D2", "TTL-3", "DATA", "DXL_TTL_DATA", "right"), pn("U2D2", "USB", "USB TO PI", "PI_USB_U2D2", "left")],
                   "PROPOSED - CUSTOM DATA-ONLY HARNESS REQUIRED", "Pin 2 VDD is intentionally omitted from the project cable. Standard fully populated cables are prohibited in the protected-branch topology.",
                   "https://emanual.robotis.com/docs/en/parts/interface/u2d2/", position=(65, 75), width=82),
-        Component("INJ3", "Gripper data/power injection module",
-                  [pn("INJ3", "TBD-BI-G", "BUS IN GND", "ACT_0V_PE_BONDED", "left"), pn("INJ3", "TBD-BI-D", "BUS IN DATA", "DXL_TTL_DATA", "left"),
-                   pn("INJ3", "TBD-P", "FUSED VDD", "J3_VDD", "left"), pn("INJ3", "TBD-A-G", "ACT GND", "ACT_0V_PE_BONDED", "right"),
-                   pn("INJ3", "TBD-A-V", "ACT VDD", "J3_VDD", "right"), pn("INJ3", "TBD-A-D", "ACT DATA", "DXL_TTL_DATA", "right")],
-                  "DESIGN REQUIRED", "Final inline injection module; no VDD conductor continues beyond the actuator connection.", position=(180, 75), width=82),
         Component("J1", "XM540-W270-T shoulder actuator port",
                   [pn("J1", "1", "GND", "ACT_0V_PE_BONDED", "left"), pn("J1", "2", "VDD", "J1_VDD", "left"), pn("J1", "3", "DATA", "DXL_TTL_DATA", "left")],
                   "PROPOSED - RECEIVED ORIENTATION TEST REQUIRED", "ROBOTIS TTL pin names are controlled; plug/socket orientation and injection harness exact parts remain open.",
@@ -541,7 +546,7 @@ def sheets() -> list[Sheet]:
                   position=(95, 235), width=100, footprint="PBV3_Footprints:MKDS_1_2_3P5"),
     ]
     s6.notes = ["The V0 bus is TTL because the selected -T actuators are TTL variants; HR-30 RS-485 remains a separate architecture.",
-                "All injection modules require released PCB/harness source, continuity, isolation, pull and no-backfeed tests."]
+                "The DXL-STAR-P0.1 board requires continuity, isolation, pull, thermal, waveform and no-backfeed tests before release."]
 
     # Repartition the logical model onto focused two-column pages.  This avoids
     # hiding real connectivity behind overlapping global labels while retaining
@@ -594,20 +599,20 @@ def sheets() -> list[Sheet]:
     s5.notes = ["Series jumpers: K1 2T1->3L2, 4T2->5L3, 6T3->K2 1L1; repeat through K2 to ACT_12V_BUS.",
                 "No fuse, disconnect, conductor, connector or contactor application is released without fault-current evidence."]
 
-    s6 = Sheet(6, "06_branches_and_injection.kicad_sch", "Protected actuator branches and VDD-isolating injection",
-               "Each actuator has a separate protected VDD branch; inter-actuator data cables must omit VDD.")
+    s6 = Sheet(6, "06_branches_and_injection.kicad_sch", "Protected actuator branches and central DYNAMIXEL star injection",
+               "Each actuator has a separate protected VDD branch; U2D2 pin 2 and inter-actuator VDD paths are omitted.")
     s6.components = placed(
-        ["F1", "INJ1", "F2", "INJ2", "F3", "INJ3"],
-        [(left, 60), (right, 60), (left, 145), (right, 145), (left, 230), (245, 230)],
+        ["F1", "F2", "F3", "INJ1"],
+        [(left, 55), (left, 130), (left, 205), (right, 130)],
     )
-    s6.notes = ["Standard fully populated ROBOTIS TTL daisy-chain cables are prohibited because they would parallel branch VDD.",
-                "Every injection module requires released source, continuity, isolation, pull and no-backfeed tests."]
+    s6.notes = ["INJ1 is a fixed central star: U2D2 pin 2 is unrouted and J1/J2/J3 positive rails never join.",
+                "Exact actuator cables, branch returns, enclosure, continuity, isolation, signal-integrity, pull and no-backfeed tests remain release gates."]
 
     s7 = Sheet(7, "07_watchdog_control.kicad_sch", "Independent watchdog power, controller and drivers",
                "The ordinary watchdog controller and drivers receive no safety-integrity credit by assertion.")
     s7.components = placed(
         ["DC1", "RHB1", "ISO1", "RHP1", "WDCTRL1", "UDRV1", "CDRV1", "UDRV2", "CDRV2"],
-        [(75, 55), (190, 80), (305, 55), (340, 115), (85, 210), (250, 150), (75, 120), (250, 230), (75, 160)],
+        [(95, 55), (190, 80), (305, 55), (340, 115), (105, 210), (250, 150), (95, 120), (250, 230), (95, 160)],
     )
     s7.notes = ["Power-up, brownout, clock, stuck-GPIO and firmware tests are mandatory.",
                 "Qualified review decides whether watchdog loss is credited or diagnostic only; current safety credit is NONE."]
@@ -639,11 +644,10 @@ def sheets() -> list[Sheet]:
 
     s11 = Sheet(11, "11_watchdog_pcb_connectors.kicad_sch", "Watchdog PCB external connectors",
                 "Exact PCB terminal-block candidates and project pin allocations define the board boundary; harness release remains open.")
-    s11.components = placed(["JWP1", "JWF1", "JWH1"], [(75, 78), (185, 78), (140, 140)])
+    s11.components = placed(["JWP1", "JWF1", "JWH1"], [(110, 100), (300, 100), (205, 205)])
     for comp in s11.components:
         comp.width = 100
         comp.height = 35
-    s11.compact = True
     s11.notes = ["Terminal numbering follows the PCB footprint and must be confirmed against received parts before wiring.",
                  "Nominal terminal ratings do not release branch protection, conductor, ferrule, harness, enclosure or thermal application."]
 
@@ -673,7 +677,7 @@ def sheets() -> list[Sheet]:
             ref,
             "Harwin S1751-46R SMT test point",
             [pn(ref, "1", label, net, "right")],
-            "PROPOSED - ACCESS VERIFICATION REQUIRED",
+            "PROPOSED - VERIFICATION REQUIRED",
             "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.",
             "https://www.harwin.com/products/S1751-46R",
             "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.",
@@ -842,7 +846,7 @@ def child_schematic(root_uuid: str, sheet: Sheet, net_counts: dict[str, int],
     return f'''(kicad_sch
   (version 20250114) (generator "eeschema") (generator_version "10.0")
   (uuid "{uid(f"file:{sheet.filename}")}") (paper "{paper}")
-  (title_block (title "PB HR-V0 Electrical V3 - {sheet.number:02d}") (date "{DATE}") (rev "{REV}")
+  (title_block (title "PB HR-V0 {REV} - {sheet.number:02d}") (date "{DATE}") (rev "{REV}")
     (company "Project Button") (comment 1 "{WARNING}") (comment 2 "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED"))
   (lib_symbols {libs})
   {' '.join(graphics)}
@@ -867,12 +871,12 @@ def root_schematic(root_uuid: str, items: list[Sheet]) -> str:
           (instances (project "{PROJECT}" (path "/{root_uuid}" (page "{sheet.number+1}")))))''')
     return f'''(kicad_sch
   (version 20250114) (generator "eeschema") (generator_version "10.0") (uuid "{root_uuid}") (paper "A3")
-  (title_block (title "Project Button HR-V0 Electrical V3 index") (date "{DATE}") (rev "{REV}")
+  (title_block (title "{esc(PROJECT_TITLE)} index") (date "{DATE}") (rev "{REV}")
     (company "Project Button") (comment 1 "{WARNING}") (comment 2 "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE"))
   (lib_symbols)
   {text_item(WARNING,17.78,10.16,2.54,'root-warning')}
-  {text_item('PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE',17.78,19.05,2.54,'root-title')}
-  {text_item('Separate RESET and ARM, two PNOZ stages, dual watchdog contacts, external adapters, redundant actuator interruption.',17.78,27.0,1.8,'root-subtitle')}
+  {text_item(PROJECT_TITLE,17.78,19.05,2.54,'root-title')}
+  {text_item(PROJECT_SUBTITLE,17.78,27.0,1.8,'root-subtitle')}
   {' '.join(blocks)}
   (sheet_instances (path "/" (page "1"))) (embedded_fonts no))
 '''
@@ -949,7 +953,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 - External Mean Well adapters replace project-built mains wiring.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.
 - Three poles per candidate contactor are represented in series, pending Schneider application confirmation.
-- U2D2 VDD is omitted and protected power is injected by three custom modules; those modules remain a design gate.
+- U2D2 VDD is omitted and protected power is injected by one central DXL-STAR-P0.1 board with three isolated VDD branches; harness, thermal, waveform and no-backfeed evidence remain design gates.
 
 ## Validate
 

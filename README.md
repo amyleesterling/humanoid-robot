@@ -46,7 +46,9 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Safety-function requirements](docs/safety-functions.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
-- [Native KiCad Electrical V3-P1.1 correction candidate](electrical/kicad/project-button-v3/README.md)
+- [Native KiCad Electrical V3-P1.2 correction candidate](electrical/kicad/project-button-v3/README.md)
+- [Native KiCad DXL-STAR-P0.1 injection-board candidate](electrical/kicad/hr-v0-dxl-star/README.md)
+- [HR-V0 DYNAMIXEL star-injection evidence basis](docs/hr-v0-dxl-star-injection-p0.1.md)
 - [HR-V0 Electrical V3 candidate architecture](docs/hr-v0-electrical-v3-candidate.md)
 - [HR-V0 Electrical terminal closure R27](docs/hr-v0-electrical-terminal-closure-r27.md)
 - [HR-V0 source-interface closure R28](docs/hr-v0-source-interface-closure-r28.md)
@@ -94,6 +96,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R34](docs/reviews/2026-08-06-sol-r12-post-r34-status.md)
 - [Sol R12 findings rechecked against R35](docs/reviews/2026-08-06-sol-r12-post-r35-status.md)
 - [Sol R12 findings rechecked against R36](docs/reviews/2026-08-06-sol-r12-post-r36-status.md)
+- [Sol R12 findings rechecked against R37](docs/reviews/2026-08-07-sol-r12-post-r37-status.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.1 independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
 - [Requirements](requirements/requirements.csv)
@@ -101,11 +104,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Proposed bill of materials](bom/bom.csv)
 - [Risk register](safety/risk-register.csv)
 
-Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements. Regenerate and check the mechanical package in this order: `python cad/hr-v0/src/hr_v0_cad.py`, `python cad/hr-v0/src/mechanical_checks.py`, then `python tools/check_hr_v0_cad.py`. The calculation pass refreshes the generated source manifest after updating its result file. Run `python tools/generate_hr_v0_electrical_v3.py --validate` and `python tools/check_hr_v0_electrical_v3.py` to regenerate and cross-check the V3 native candidate. Run `python tools/check_hr_v0_protection.py` to verify that the six-reference coordination register remains explicit and that no unresolved fuse ampere rating has been released. Run the PCB generator and checker with KiCad's bundled Python: `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_watchdog_pcb.py` followed by `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_watchdog_pcb.py`. PCB-P0.5 is routed, has encoded test access and SUB thermal copper, and passes the proposed 6 mil U.S. prototype-process envelope, but it must remain without Gerber/drill outputs until supplier acceptance, protection, physical-access, physical-evidence and independent-review gates close. Run `python tools/check_energization_gates.py --through-stage E2 --require-ready` before claiming readiness for control-only first energization; it must remain nonzero until every applicable gate is evidenced and closed.
+Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements. Regenerate and check the mechanical package in this order: `python cad/hr-v0/src/hr_v0_cad.py`, `python cad/hr-v0/src/mechanical_checks.py`, then `python tools/check_hr_v0_cad.py`. The calculation pass refreshes the generated source manifest after updating its result file. Run `python tools/generate_hr_v0_electrical_v3.py --validate` and `python tools/check_hr_v0_electrical_v3.py` to regenerate and cross-check the V3 native candidate. Run `python tools/check_hr_v0_protection.py` to verify that the six-reference coordination register remains explicit and that no unresolved fuse ampere rating has been released. Run both PCB generators/checkers with KiCad's bundled Python: `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_watchdog_pcb.py`, `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_watchdog_pcb.py`, `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_dxl_star.py`, and `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_dxl_star.py`. PCB-P0.5 and DXL-STAR-P0.1 are routed source candidates, but both must remain without Gerber/drill outputs until supplier acceptance, protection, physical evidence and independent-review gates close. Run `python tools/check_energization_gates.py --through-stage E2 --require-ready` before claiming readiness for control-only first energization; it must remain nonzero until every applicable gate is evidenced and closed.
 
 ## Review history
 
-Thirty-six review/control rounds are complete: R01-R36. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
+Thirty-seven review/control rounds are complete: R01-R37. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -145,6 +148,7 @@ Thirty-six review/control rounds are complete: R01-R36. R11 Fable and R12 Sol ar
 | R34 | Watchdog PCB test-access and ISO1212 SUB-copper pass | Issued Electrical V3-P1.1 / PCB-P0.4 with 16 Harwin S1751-46R test points, separate 2 mm x 2 mm floating SUB planes, 200 segments, 56 vias and three filled zones. Native DRC remains 0/0 and no fabrication or energization release was issued. |
 | R35 | Watchdog PCB fabrication-envelope pass | Issued PCB-P0.5 with every former 0.10 mm feature rerouted at 0.1524 mm minimum and a proposed source-backed OSH Park two-layer process. Native DRC remains 0/0; no fabrication outputs or energization release were issued. |
 | R36 | Protection and conductor-coordination input pass | Added exact proposed holder/distribution hardware and fuse family, six machine-checked input rows, three procedures and an unexecuted evidence form while retaining zero fuse ampere ratings. Exposed the XM540 4.4 A stall versus JST EH 3 A series conflict; EG-014 is partial, not closed. |
+| R37 | DYNAMIXEL star-injection native-ECAD correction | Issued Electrical V3-P1.2 plus a separate routed DXL-STAR-P0.1 source with three isolated positive branches, common TTL data/return, an unrouted U2D2 VDD pin, ERC/DRC 0/0 and physical evidence controls. Cable, current, thermal, waveform, no-backfeed and fabrication evidence remain open. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

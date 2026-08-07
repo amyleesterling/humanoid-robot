@@ -1,4 +1,4 @@
-# Project Button HR-V0 Electrical V3-P1.1
+# Project Button HR-V0 Electrical V3-P1.2
 
 **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -11,7 +11,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 3. `03_arm_watchdog_eligibility.kicad_sch` — Distinct ARM and watchdog eligibility
 4. `04_contactor_edm.kicad_sch` — Contactor coils, mirror contacts and EDM
 5. `05_actuator_interruption.kicad_sch` — Redundant actuator-power interruption
-6. `06_branches_and_injection.kicad_sch` — Protected actuator branches and VDD-isolating injection
+6. `06_branches_and_injection.kicad_sch` — Protected actuator branches and central DYNAMIXEL star injection
 7. `07_watchdog_control.kicad_sch` — Independent watchdog power, controller and drivers
 8. `08_watchdog_feedback_interface.kicad_sch` — Calculated dual-channel 24 V watchdog feedback
 9. `09_compute_and_control_terminals.kicad_sch` — Compute, debug and control terminals
@@ -32,7 +32,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 - External Mean Well adapters replace project-built mains wiring.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.
 - Three poles per candidate contactor are represented in series, pending Schneider application confirmation.
-- U2D2 VDD is omitted and protected power is injected by three custom modules; those modules remain a design gate.
+- U2D2 VDD is omitted and protected power is injected by one central DXL-STAR-P0.1 board with three isolated VDD branches; harness, thermal, waveform and no-backfeed evidence remain design gates.
 
 ## Validate
 

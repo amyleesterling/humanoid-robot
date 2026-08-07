@@ -1,6 +1,6 @@
 (kicad_sch
   (version 20250114) (generator "eeschema") (generator_version "10.0") (uuid "5cd52082-c883-51c8-b492-8b3b3e331e69") (paper "A3")
-  (title_block (title "Project Button HR-V0 Electrical V3 index") (date "2026-08-06") (rev "V3-P1.1")
+  (title_block (title "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE index") (date "2026-08-07") (rev "V3-P1.2")
     (company "Project Button") (comment 1 "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION") (comment 2 "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE"))
   (lib_symbols)
   (text "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION" (exclude_from_sim no) (at 17.78 10.16 0)
@@ -37,7 +37,7 @@
           (instances (project "project-button-v3" (path "/5cd52082-c883-51c8-b492-8b3b3e331e69" (page "6"))))) (sheet (at 281.94 98.00) (size 116.84 40.64)
           (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
           (stroke (width 0.5) (type solid)) (fill (color 0 0 0 0.0000)) (uuid "469e3ded-ca97-58c7-82af-88dcca390710")
-          (property "Sheetname" "06 Protected actuator branches and VDD-isolating injection" (at 284.48 108.16 0) (effects (font (size 1.80 1.80)) (justify left bottom)))
+          (property "Sheetname" "06 Protected actuator branches and central DYNAMIXEL star injection" (at 284.48 108.16 0) (effects (font (size 1.80 1.80)) (justify left bottom)))
           (property "Sheetfile" "06_branches_and_injection.kicad_sch" (at 284.48 123.40 0) (effects (font (size 1.50 1.50)) (justify left top)))
           (instances (project "project-button-v3" (path "/5cd52082-c883-51c8-b492-8b3b3e331e69" (page "7"))))) (sheet (at 17.78 154.00) (size 116.84 40.64)
           (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)

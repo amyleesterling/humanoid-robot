@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: native connected design candidate `V3-P1.1`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` through P1.0 are retained as historical configurations. P1.1 adds 16 proposed Harwin test-point records. The separate PCB-P0.5 routes the controlled board subset, adds exact test access and separate floating ISO1212 SUB thermal areas, and encodes a proposed 6 mil U.S. two-layer fabrication envelope while retaining supplier acceptance, received, derating, physical, fault, EMC and qualified-review gates.
+Status: native connected design candidate `V3-P1.2`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` through P1.1 are retained as historical configurations. P1.2 replaces three undefined injection placeholders with one exact central star-board boundary. The separate PCB-P0.5 watchdog board and DXL-STAR-P0.1 actuator board are routed native candidates while retaining supplier acceptance, received, protection, harness, derating, physical, fault, EMC and qualified-review gates.
 
 - Native source: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Generator: `tools/generate_hr_v0_electrical_v3.py`
@@ -102,7 +102,7 @@ The 40 W / 1.67 A adapter has apparent nameplate headroom, but this is not a rel
 
 ## TTL power-injection boundary
 
-The U2D2 and all three actuator ports share `ACT_0V_PE_BONDED` as the TTL reference and share `DXL_TTL_DATA`. U2D2 pin 2 is intentionally omitted. Each actuator receives VDD only from its own protected branch through `INJ1`, `INJ2`, or `INJ3`; no VDD conductor may continue between actuator ports. The common reference means the Pi/U2D2 path can couple compute ground to actuator 0 V/PE, so the exact USB cable, shield, frame, and EMC implementation still require review and continuity/insulation tests.
+The U2D2 and all three actuator ports share `ACT_0V_PE_BONDED` as the TTL reference and share `DXL_TTL_DATA`. Electrical V3-P1.2 represents one central `INJ1`; its separate native `DXL-STAR-P0.1` project fixes `JC1:1` to return, `JC1:2` to no net/no copper and `JC1:3` to TTL data. `JP1`-`JP3` accept separately protected VDD branches and common return; `JA1`-`JA3` carry only their respective VDD plus common data/return. No VDD conductor joins actuator branches or reaches U2D2. The common reference means the Pi/U2D2 path can couple compute ground to actuator 0 V/PE, so exact USB and actuator cables, shields, frame, protection, EMC, signal integrity, thermal and power-sequencing/no-backfeed behavior still require physical review and test. See `docs/hr-v0-dxl-star-injection-p0.1.md`.
 
 ## Mandatory V3 deliverables
 
@@ -117,19 +117,19 @@ Before this candidate can replace V2.1:
 
 ## Native candidate validation record
 
-The generated `V3-P1.1` candidate currently contains:
+The generated `V3-P1.2` candidate currently contains:
 
 - one root index plus twelve focused child sheets;
-- 78 component blocks and 299 modeled terminals;
-- 100 native nets: 63 named connected nets plus 37 deliberate auto-generated unconnected nets;
-- 262 unique wire labels synchronized to `wire-number-table.csv`;
-- 76 nonzero-quantity V3 BOM records;
-- 66 unresolved component/interface records; and
-- 46 terminal designations deliberately retained as `TBD-*`.
+- 76 component blocks and 295 modeled terminals;
+- 100 native nets: 64 named connected nets plus 36 deliberate auto-generated unconnected nets;
+- 259 unique wire labels synchronized to `wire-number-table.csv`;
+- 74 nonzero-quantity V3 BOM records;
+- 63 unresolved component/interface records; and
+- 24 terminal designations deliberately retained as `TBD-*`.
 
-KiCad 10.0.5 parsed the root and all eleven children, exported the native netlist, a twelve-page A3 PDF, and twelve SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 62 native component references and all 283 exported `(reference, terminal, net)` nodes against the generated schedules, including the 37 deliberate no-connect terminals. It freezes every ISO1212, VO618A and TPL7407L pin, their supporting networks, and all three board-terminal allocations. Clean ERC did not detect the historical P0.4 `RSENSE` application error, illustrating why the exact-net and primary-source checks remain separate.
+KiCad 10.0.5 parsed the root and all twelve children, exported the native netlist, a thirteen-page A3 PDF and thirteen SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 76 native component references and all 295 exported `(reference, terminal, net)` nodes against the generated schedules, including the 36 deliberate no-connect terminals. It freezes every ISO1212, VO618A and TPL7407L pin, their supporting networks, the watchdog-board terminals and the 18-terminal DXL-star system boundary. Clean ERC did not detect the historical P0.4 `RSENSE` application error, illustrating why exact-net, primary-source and physical checks remain separate.
 
-The export is rendered at 150 dpi and visually checked after each material layout change. P1.1 retains the pin-level heartbeat/driver circuits, feedback passive identities and exact board terminals, adds 16 test-point records, and has 262 synchronized wire labels. Page-level visual QA is part of the recorded validation for this candidate. The separate native PCB-P0.5 source has 42 schematic references, four board-only mounting holes, 201 segments, 56 vias, three filled B.Cu zones, zero DRC violations, zero routed unconnected pads and generated fabrication-envelope/test-access/connectivity evidence. It has no fabrication outputs.
+The export is rendered at 150 dpi and visually checked after each material layout change. P1.2 retains the pin-level watchdog circuits and exact test points while adding the DXL-star boundary; it has 259 synchronized wire labels. The separate native PCB-P0.5 watchdog source retains 42 schematic references, 201 segments, 56 vias and three filled B.Cu zones. DXL-STAR-P0.1 has seven connector references, four board-only holes, 17 segments and one return zone. Both native DRC runs report zero violations/routed unconnected pads; neither project has fabrication outputs.
 
 The KiCad CLI logs Windows registry-access messages for `HKCU\Software\kicad-cli` in this restricted execution environment. Every command still returned exit code 0 and produced the expected artifact; the messages are retained in `validation/kicad-cli.log` rather than hidden.
 

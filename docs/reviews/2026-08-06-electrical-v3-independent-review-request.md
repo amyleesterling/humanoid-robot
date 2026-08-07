@@ -1,7 +1,7 @@
-# Project Button HR-V0 Electrical V3-P1.1 / PCB-P0.5 Independent Review Request
+# Project Button HR-V0 Electrical V3-P1.2 / PCB-P0.5 / DXL-STAR-P0.1 Independent Review Request
 
-Review date: 2026-08-06  
-Controlled candidate: **Electrical V3-P1.1 / PCB-P0.5**
+Review date: 2026-08-07
+Controlled candidate: **Electrical V3-P1.2 / PCB-P0.5 / DXL-STAR-P0.1**
 Systems baseline: **HR-30-SYS-R0.2**  
 Status: **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -9,7 +9,7 @@ Status: **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
 Independently audit the accuracy, completeness, and physical implementability of the connected HR-V0 Electrical V3 candidate. Do not treat clean ERC, generated schedules, or this request as functional-safety validation or permission to procure, fabricate, wire, or energize.
 
-The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P1.1 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. Electrical P0.1 through P1.0 remain historical. P1.1 retains the exact board boundary and adds 16 proposed Harwin `S1751-46R` test-point records. PCB-P0.5 is a two-layer routed/test-access candidate with 201 segments, 56 vias, one filled return zone, two separate floating 2 mm x 2 mm SUB thermal zones, native DRC 0/0 and independent pad/copper-connectivity evidence. It encodes a 0.1524 mm minimum trace/clearance and a proposed source-backed OSH Park U.S. two-layer process envelope. It has no fabrication outputs. Supplier archive acceptance, physical test access, source current-sharing, harness/protection, COM-slew, brownout/EMC, received proof, physical terminals, panel/SKU/retention, HIL and functional-safety blockers remain open.
+The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P1.2 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. Electrical P0.1 through P1.1 remain historical. P1.2 retains the watchdog PCB boundary and test points while replacing three undefined inline DYNAMIXEL injection modules with one exact central `DXL-STAR-P0.1` board boundary. PCB-P0.5 is a two-layer routed/test-access candidate with 201 segments, 56 vias, one filled return zone, two separate floating 2 mm x 2 mm SUB thermal zones, native DRC 0/0 and independent pad/copper-connectivity evidence. DXL-STAR-P0.1 is a separate 100 mm x 60 mm, two-layer routed candidate with seven connectors, 18 terminals, 17 segments, one common-return zone, mutually isolated J1/J2/J3 VDD nets and an unrouted U2D2 pin 2. Neither project has fabrication outputs. Supplier archive acceptance, physical test access, source current-sharing, harness/protection, connector-current, thermal/waveform/no-backfeed, COM-slew, brownout/EMC, received proof, physical terminals, panel/SKU/retention, HIL and functional-safety blockers remain open.
 
 ## Controlled inputs
 
@@ -23,6 +23,7 @@ The authoritative source is this repository. The workshop website is presentatio
 - R34 PCB test-access and ISO1212 SUB-copper evidence: `docs/hr-v0-watchdog-pcb-p0.4.md`
 - R35 PCB fabrication-envelope evidence: `docs/hr-v0-watchdog-pcb-p0.5.md`
 - R36 protection-coordination evidence: `docs/hr-v0-protection-coordination-p0.1.md`; `electrical/hr-v0-protection-coordination-inputs.csv`; `tests/forms/hr-v0-protection-coordination-template.csv`
+- R37 DYNAMIXEL star-injection evidence: `docs/hr-v0-dxl-star-injection-p0.1.md`; `electrical/kicad/hr-v0-dxl-star/`; `tests/forms/hr-v0-dxl-star-inspection-template.csv`
 - native PCB and custom candidate footprints: `electrical/kicad/project-button-v3/project-button-v3.kicad_pcb` and `electrical/kicad/project-button-v3/PBV3_Footprints.pretty/`
 - Received control-device record: `tests/forms/hr-v0-control-device-receiving-template.csv`
 - Source-interface receiving/test record: `tests/forms/hr-v0-source-interface-receiving-template.csv`
@@ -51,6 +52,8 @@ python tools/generate_hr_v0_electrical_v3.py --validate
 python tools/check_hr_v0_electrical_v3.py
 "C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_watchdog_pcb.py
 "C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_watchdog_pcb.py
+"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_dxl_star.py
+"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_dxl_star.py
 python tools/check_traceability.py
 python tools/check_energization_gates.py --through-stage E2 --require-ready
 ```
@@ -60,21 +63,22 @@ The final command is expected to remain nonzero while applicable release gates a
 ## Baseline claims to reproduce, not assume
 
 - thirteen native pages: one root/index and twelve child sheets;
-- 78 component blocks and 299 modeled terminals;
-- 100 native nets: 63 named connected nets plus 37 deliberate auto-generated unconnected nets;
-- 262 unique wire labels synchronized to `wire-number-table.csv`;
-- 66 unresolved component/interface schedule rows;
-- 46 deliberately unresolved `TBD-*` terminal designations;
+- 76 component blocks and 295 modeled terminals;
+- 100 native nets: 64 named connected nets plus 36 deliberate auto-generated unconnected nets;
+- 259 unique wire labels synchronized to `wire-number-table.csv`;
+- 63 unresolved component/interface schedule rows;
+- 24 deliberately unresolved `TBD-*` terminal designations;
 - KiCad 10.0.5 ERC: 0 errors and 0 warnings;
 - successful native netlist, thirteen-page A3 PDF, and thirteen-page SVG export;
 - native PCB-P0.5 source with 42 schematic references, four board-only holes, 201 segments, 56 vias, one filled `SAFETY_0V` zone, two isolated 2 mm x 2 mm SUB zones, native DRC zero violations/zero routed unconnected pads, 14 isolated unused singleton nets, 89 untouched no-net pads, 16 exact test-point records, 0.1524 mm minimum trace/clearance, top/bottom renders and a passing generated fabrication-envelope/test-access evidence record; and
 - exact agreement between every modeled `(reference, terminal, net)` tuple and the KiCad-exported native netlist.
+- separate DXL-STAR-P0.1 source with seven connectors, 18 terminals, 17 routed segments, one common-return zone, three isolated positive rails, an unrouted/no-net `JC1:2`, ERC/DRC 0/0, readable top/bottom renders, and no fabrication outputs.
 
 ## Required technical review
 
 1. Open every KiCad sheet and confirm parsing, hierarchy, cross-sheet connectivity, sheet order, warnings, readable text, and absence of misleading whitespace or line-art-only circuitry.
 2. Rerun ERC and native netlist export. Record every compatibility warning, ignored ERC class, command version, and failure. Explain the limited meaning of ERC 0/0.
-3. Compare every terminal and net against the component, connector, terminal, wire, net, BOM and unresolved schedules. Verify the 37 deliberate native unconnected terminals and 46 `TBD-*` terminal designations are intentional and are neither silently shorted nor omitted from the release record. Independently verify `S0:R-1/R-2` and `S0:L-1/L-2` against the manufacturer TOP-up bottom view, and confirm that the project prefixes cannot be mistaken for manufacturer markings. Confirm S1/S2 remain unresolved during IDEC's documented old/new assembly transition.
+3. Compare every terminal and net against the component, connector, terminal, wire, net, BOM and unresolved schedules. Verify the 36 deliberate native unconnected terminals and 24 `TBD-*` terminal designations are intentional and are neither silently shorted nor omitted from the release record. Independently verify `S0:R-1/R-2` and `S0:L-1/L-2` against the manufacturer TOP-up bottom view, and confirm that the project prefixes cannot be mistaken for manufacturer markings. Confirm S1/S2 remain unresolved during IDEC's documented old/new assembly transition.
 4. Verify the dual-channel E-stop, one watchdog NO contact in each SR1 input return, monitored RESET eligibility, direct SR1-to-SRA1 safety-output paths, distinct manual ARM, SRA1 monitored start, K1/K2 coils, mirror-contact EDM, and redundant series actuator-power interruption.
 5. Prove from the schematic and control requirements that E-stop release, RESET, compute boot, watchdog recovery, software restart, brownout, or communication recovery cannot by themselves command actuator power or motion. Specifically confirm that watchdog recovery cannot restore SR1 without physical RESET and cannot restore SRA1/K1/K2 without the later physical ARM. Identify every single fault or common-cause path that could violate that rule.
 6. Review the exact Pilz PNOZ s4 750104 candidate application, selector mode, terminal use, contact protection, reset/ARM timing, diagnostic contacts, and any need for force-guided or otherwise safety-suitable external devices. Do not assign PL/SIL credit without a complete safety calculation and evidence.
@@ -83,7 +87,7 @@ The final command is expected to remain nonzero while applicable release gates a
 9. Verify the Mean Well GST280A12-C6P internal `-V`/PE bond from current manufacturer evidence. Confirm that SP1 is DNP/prohibited for that source, identify all other conductive chassis/frame/shield bonds, and assess touch-current, protective-earth continuity, site cord/GFCI/code, enclosure and fault-current assumptions.
 10. Verify the GST40A24-P1J and Raspberry Pi supply boundaries, locking/retention needs, source segregation, control-only energization boundary, grounding, and all project-built DC protection interfaces. Independently verify `JA1` Molex `39012066`/`444783112`, HCS compatibility with the 5559 housing, 16 AWG range, `63819-0900` tool scope, strip/pull criteria, pins 1-3 positive and 4-6 return, and the 7 A/contact idealized screen. Do not assume equal parallel-contact sharing or unpublished adapter-side contact capacity; require received current-division, crimp, retention and stabilized thermal evidence.
 11. Review every fuse/protection placeholder and independently audit the R36 six-reference register without inventing values. Verify Littelfuse `FHAC0002SXJ` against document `062923-B`, Blue Sea Systems `5025`, and Littelfuse ATOF against Rev. 02/04/2025; treat all product maxima as limits rather than released ratings. Reproduce the XM540 4.4 A stall versus JST EH 3 A series conflict and assess whether written application evidence plus physical current-limit/thermal/clearing proof is sufficient. List every still-missing prospective fault current, cable length, conductor/terminal/splice order code, ambient, bundling, insulation, connector limit, inrush, duty cycle, regeneration, coordination, source foldback, temperature rise and jurisdiction input. Confirm that no ampere-specific fuse order code has been released.
-12. Verify the U2D2 has no actuator VDD connection and does not carry summed actuator current. Review the three VDD-isolating injection modules, pin-2 isolation, common TTL ground/data reference, no-backfeed behavior under every power sequence, connector orientation, strain relief, crimping and test requirements.
+12. Verify the U2D2 has no actuator VDD connection and does not carry summed actuator current. Independently audit the native DXL-STAR-P0.1 project: `JC1:1` common return, `JC1:2` no net/no copper, `JC1:3` TTL data; `JP1`-`JP3` separate VDD plus common return; `JA1`-`JA3` common return/data plus only their respective VDD. Review the proposed JST exact headers/housings/contacts, the controller cable's empty pin-2 cavities, three-rail isolation, no-backfeed behavior under every power sequence, the XM540 4.4 A versus EH 3 A conflict, copper/return paths, TTL star signal integrity, cable length, baud rate, connector orientation, strain relief, crimping, thermal evidence and test requirements. Confirm DRC 0/0 does not resolve any of those physical questions.
 13. Verify ROBOTIS model/SKU/interface claims and distinguish stall or estimated torque data from continuous validated joint capacity. Check received-unit revision, model readback and USB-connector evidence requirements.
 14. Review the watchdog controller, heartbeat input, Raspberry Pi/control-terminal boundary, firmware ownership, diagnostics, startup defaults, stuck-high/stuck-low faults, loss of common supply, reset behavior, and fault-injection testability. Independently reproduce the VO618A-4X017T pins and CTR-bin facts, 910 ohm input-current screen, 10 kilohm pullup current, inversion and edge timing. Reproduce both separate TPL7407LPWR pin maps, tied-low unused inputs, no-connect unused outputs, COM clamp/bypass, 18 mA typical Phoenix coil load comparison, and TI's less-than-0.5 V/us COM-slew requirement. Confirm that the proposed 100 nF parts do not by themselves prove slew compliance. Independently verify TRACO POWER `TSR 1-2450` pin 1 `+VIN`, pin 2 `GND`, pin 3 `+VOUT`, non-isolated topology, 6.5-36 V input and 5 V/1 A output, then identify the exact branch-protection, load, startup, slow-ramp brownout, fast-dropout, recovery, output-fault, EMC and enclosed-thermal evidence needed for release.
 15. Inspect the native PCB, all four project footprints, board subset/net mapping, outline, mounting holes, terminal orientation, candidate net classes, every routed segment/via/zone, top/bottom renders and complete DRC output. Independently confirm that `UFB1` uses the 3.9 mm by 4.9 mm, 0.635 mm-pitch DBQ candidate and that every `TP1`-`TP16` pad matches Harwin drawing issue 10. Reproduce every result in `project-button-v3-pcb-test-access-evidence.json`: 201 segments, 56 vias, three filled B.Cu zones, all multi-pad modeled nets connected, 14 unused singleton nets isolated, both SUB nets confined to their own pad/route/via/2 mm x 2 mm plane, 89 no-net pads untouched, zero native DRC violations, zero routed unconnected pads, placement screens, explicit path lengths and net route totals. Independently reproduce the 0.1524 mm minimum trace width/clearance, 0.30 mm minimum via drill and 0.15 mm minimum annular ring, then compare the complete design—not just those three minima—with the current official OSH Park Two Layer Service stack-up, mask, copper, drill, outline and board-edge rules. Audit the `SAFETY_0V` zone boundary around `ISO1`, current-return paths, power widths, connector approaches, physical probe clearance and absence of unintended copper at unused pads. Confirm that the two SUB planes remain separate from each other and every ground/signal net. Identify the supplier-acceptance, physical test-access, protection, thermal, EMC and parity evidence still needed. Confirm that no Gerber/drill output exists and that DRC 0/0 is not a fabrication or safety approval. Review `docs/hr-v0-watchdog-pcb-p0.5.md`, including the explicit absence of isolation credit for `UFB1` and the proposed-only supplier status.

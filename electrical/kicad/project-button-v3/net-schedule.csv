@@ -1,5 +1,5 @@
 net,connection_count,connections
-ACT_0V_PE_BONDED,19,01_external_sources.kicad_sch:PSA1:C6P-4 | 01_external_sources.kicad_sch:PSA1:C6P-5 | 01_external_sources.kicad_sch:PSA1:C6P-6 | 01_external_sources.kicad_sch:PSA1:C14-PE | 01_external_sources.kicad_sch:JA1:4 | 01_external_sources.kicad_sch:JA1:5 | 01_external_sources.kicad_sch:JA1:6 | 06_branches_and_injection.kicad_sch:INJ1:TBD-BI-G | 06_branches_and_injection.kicad_sch:INJ1:TBD-A-G | 06_branches_and_injection.kicad_sch:INJ1:TBD-BO-G | 06_branches_and_injection.kicad_sch:INJ2:TBD-BI-G | 06_branches_and_injection.kicad_sch:INJ2:TBD-A-G | 06_branches_and_injection.kicad_sch:INJ2:TBD-BO-G | 06_branches_and_injection.kicad_sch:INJ3:TBD-BI-G | 06_branches_and_injection.kicad_sch:INJ3:TBD-A-G | 10_actuator_interfaces.kicad_sch:U1:TTL-1 | 10_actuator_interfaces.kicad_sch:J1:1 | 10_actuator_interfaces.kicad_sch:J2:1 | 10_actuator_interfaces.kicad_sch:J3:1
+ACT_0V_PE_BONDED,18,01_external_sources.kicad_sch:PSA1:C6P-4 | 01_external_sources.kicad_sch:PSA1:C6P-5 | 01_external_sources.kicad_sch:PSA1:C6P-6 | 01_external_sources.kicad_sch:PSA1:C14-PE | 01_external_sources.kicad_sch:JA1:4 | 01_external_sources.kicad_sch:JA1:5 | 01_external_sources.kicad_sch:JA1:6 | 06_branches_and_injection.kicad_sch:INJ1:CTRL:1 | 06_branches_and_injection.kicad_sch:INJ1:PWR1:2 | 06_branches_and_injection.kicad_sch:INJ1:PWR2:2 | 06_branches_and_injection.kicad_sch:INJ1:PWR3:2 | 06_branches_and_injection.kicad_sch:INJ1:ACT1:1 | 06_branches_and_injection.kicad_sch:INJ1:ACT2:1 | 06_branches_and_injection.kicad_sch:INJ1:ACT3:1 | 10_actuator_interfaces.kicad_sch:U1:TTL-1 | 10_actuator_interfaces.kicad_sch:J1:1 | 10_actuator_interfaces.kicad_sch:J2:1 | 10_actuator_interfaces.kicad_sch:J3:1
 ACT_12V_BUS,4,05_actuator_interruption.kicad_sch:KP2:6T3 | 06_branches_and_injection.kicad_sch:F1:1 | 06_branches_and_injection.kicad_sch:F2:1 | 06_branches_and_injection.kicad_sch:F3:1
 ACT_12V_FUSED,2,05_actuator_interruption.kicad_sch:F0:2 | 05_actuator_interruption.kicad_sch:SD1:TBD-IN
 ACT_12V_RAW,7,01_external_sources.kicad_sch:PSA1:C6P-1 | 01_external_sources.kicad_sch:PSA1:C6P-2 | 01_external_sources.kicad_sch:PSA1:C6P-3 | 01_external_sources.kicad_sch:JA1:1 | 01_external_sources.kicad_sch:JA1:2 | 01_external_sources.kicad_sch:JA1:3 | 05_actuator_interruption.kicad_sch:F0:1
@@ -7,7 +7,7 @@ ARM_AFTER_S2,2,03_arm_watchdog_eligibility.kicad_sch:S2:TBD-A2 | 04_contactor_ed
 CABLE_SHIELD_TERM,1,10_actuator_interfaces.kicad_sch:JFRAME1:TBD-SHIELD
 COMPUTE_0V,4,01_external_sources.kicad_sch:PSU3:USB-C-GND | 07_watchdog_control.kicad_sch:ISO1:2 | 09_compute_and_control_terminals.kicad_sch:PI1:GND | 11_watchdog_pcb_connectors.kicad_sch:JWH1:2
 COMPUTE_5V,2,01_external_sources.kicad_sch:PSU3:USB-C-VBUS | 09_compute_and_control_terminals.kicad_sch:PI1:USB-C-VBUS
-DXL_TTL_DATA,12,06_branches_and_injection.kicad_sch:INJ1:TBD-BI-D | 06_branches_and_injection.kicad_sch:INJ1:TBD-A-D | 06_branches_and_injection.kicad_sch:INJ1:TBD-BO-D | 06_branches_and_injection.kicad_sch:INJ2:TBD-BI-D | 06_branches_and_injection.kicad_sch:INJ2:TBD-A-D | 06_branches_and_injection.kicad_sch:INJ2:TBD-BO-D | 06_branches_and_injection.kicad_sch:INJ3:TBD-BI-D | 06_branches_and_injection.kicad_sch:INJ3:TBD-A-D | 10_actuator_interfaces.kicad_sch:U1:TTL-3 | 10_actuator_interfaces.kicad_sch:J1:3 | 10_actuator_interfaces.kicad_sch:J2:3 | 10_actuator_interfaces.kicad_sch:J3:3
+DXL_TTL_DATA,8,06_branches_and_injection.kicad_sch:INJ1:CTRL:3 | 06_branches_and_injection.kicad_sch:INJ1:ACT1:3 | 06_branches_and_injection.kicad_sch:INJ1:ACT2:3 | 06_branches_and_injection.kicad_sch:INJ1:ACT3:3 | 10_actuator_interfaces.kicad_sch:U1:TTL-3 | 10_actuator_interfaces.kicad_sch:J1:3 | 10_actuator_interfaces.kicad_sch:J2:3 | 10_actuator_interfaces.kicad_sch:J3:3
 EDM_K1_OUT,2,04_contactor_edm.kicad_sch:K1:22 | 04_contactor_edm.kicad_sch:K2:21
 FACTORY_AC_COMPUTE,1,01_external_sources.kicad_sch:PSU3:AC-FACTORY
 FACTORY_AC_L_ACT,1,01_external_sources.kicad_sch:PSA1:C14-L
@@ -29,7 +29,7 @@ INTENTIONALLY_UNUSED_SR1_33,1,02_estop_eligibility.kicad_sch:SR1:33
 INTENTIONALLY_UNUSED_SR1_34,1,02_estop_eligibility.kicad_sch:SR1:34
 INTENTIONALLY_UNUSED_SRA1_33,1,03_arm_watchdog_eligibility.kicad_sch:SRA1:33
 INTENTIONALLY_UNUSED_SRA1_34,1,03_arm_watchdog_eligibility.kicad_sch:SRA1:34
-INTENTIONALLY_UNUSED_U2D2_VDD,1,10_actuator_interfaces.kicad_sch:U1:TTL-2
+INTENTIONALLY_UNUSED_U2D2_VDD,2,06_branches_and_injection.kicad_sch:INJ1:CTRL:2 | 10_actuator_interfaces.kicad_sch:U1:TTL-2
 INTENTIONALLY_UNUSED_UDRV1_10,1,07_watchdog_control.kicad_sch:UDRV1:10
 INTENTIONALLY_UNUSED_UDRV1_11,1,07_watchdog_control.kicad_sch:UDRV1:11
 INTENTIONALLY_UNUSED_UDRV1_12,1,07_watchdog_control.kicad_sch:UDRV1:12
@@ -46,9 +46,9 @@ INTENTIONALLY_UNUSED_UFB1_12,1,08_watchdog_feedback_interface.kicad_sch:UFB1:12
 INTENTIONALLY_UNUSED_UFB1_13,1,08_watchdog_feedback_interface.kicad_sch:UFB1:13
 INTENTIONALLY_UNUSED_UFB1_6,1,08_watchdog_feedback_interface.kicad_sch:UFB1:6
 INTENTIONALLY_UNUSED_UFB1_7,1,08_watchdog_feedback_interface.kicad_sch:UFB1:7
-J1_VDD,4,06_branches_and_injection.kicad_sch:F1:2 | 06_branches_and_injection.kicad_sch:INJ1:TBD-P | 06_branches_and_injection.kicad_sch:INJ1:TBD-A-V | 10_actuator_interfaces.kicad_sch:J1:2
-J2_VDD,4,06_branches_and_injection.kicad_sch:F2:2 | 06_branches_and_injection.kicad_sch:INJ2:TBD-P | 06_branches_and_injection.kicad_sch:INJ2:TBD-A-V | 10_actuator_interfaces.kicad_sch:J2:2
-J3_VDD,4,06_branches_and_injection.kicad_sch:F3:2 | 06_branches_and_injection.kicad_sch:INJ3:TBD-P | 06_branches_and_injection.kicad_sch:INJ3:TBD-A-V | 10_actuator_interfaces.kicad_sch:J3:2
+J1_VDD,4,06_branches_and_injection.kicad_sch:F1:2 | 06_branches_and_injection.kicad_sch:INJ1:PWR1:1 | 06_branches_and_injection.kicad_sch:INJ1:ACT1:2 | 10_actuator_interfaces.kicad_sch:J1:2
+J2_VDD,4,06_branches_and_injection.kicad_sch:F2:2 | 06_branches_and_injection.kicad_sch:INJ1:PWR2:1 | 06_branches_and_injection.kicad_sch:INJ1:ACT2:2 | 10_actuator_interfaces.kicad_sch:J2:2
+J3_VDD,4,06_branches_and_injection.kicad_sch:F3:2 | 06_branches_and_injection.kicad_sch:INJ1:PWR3:1 | 06_branches_and_injection.kicad_sch:INJ1:ACT3:2 | 10_actuator_interfaces.kicad_sch:J3:2
 K1_A1,2,04_contactor_edm.kicad_sch:K1:A1 | 04_contactor_edm.kicad_sch:FSR1:2
 K1_J12,2,05_actuator_interruption.kicad_sch:KP1:2T1 | 05_actuator_interruption.kicad_sch:KP1:3L2
 K1_J23,2,05_actuator_interruption.kicad_sch:KP1:4T2 | 05_actuator_interruption.kicad_sch:KP1:5L3

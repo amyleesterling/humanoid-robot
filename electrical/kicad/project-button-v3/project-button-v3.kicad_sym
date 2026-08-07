@@ -368,22 +368,6 @@
           (stroke (width 0.45) (type solid)) (fill (type background))))
       (symbol "F1_1_1" (pin passive line (at -38.10 0.00 0) (length 2.54) (name "IN" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27))))) (pin passive line (at 38.10 0.00 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27))))))
       (embedded_fonts no))
-(symbol "INJ1"
-      (pin_names (offset 1.016))
-      (exclude_from_sim no) (in_bom yes) (on_board yes)
-      (property "Reference" "INJ1" (at -40.64 -19.24 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
-      (property "Value" "J1 data/power injection module" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Footprint" "" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Datasheet" "" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Description" "Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "DESIGN REQUIRED" (at 0.00 18.24 0) (effects (font (size 1.50 1.50)) (justify bottom)))
-      (property "Evidence" "" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Display" "J1 data/power injection module" (at -40.64 -16.04 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
-      (symbol "INJ1_0_1"
-        (rectangle (start -40.64 -15.24) (end 40.64 15.24)
-          (stroke (width 0.45) (type solid)) (fill (type background))))
-      (symbol "INJ1_1_1" (pin passive line (at -43.18 -5.08 0) (length 2.54) (name "BUS IN GND" (effects (font (size 1.27 1.27)))) (number "TBD-BI-G" (effects (font (size 1.27 1.27))))) (pin passive line (at -43.18 0.00 0) (length 2.54) (name "BUS IN DATA" (effects (font (size 1.27 1.27)))) (number "TBD-BI-D" (effects (font (size 1.27 1.27))))) (pin passive line (at -43.18 5.08 0) (length 2.54) (name "FUSED VDD" (effects (font (size 1.27 1.27)))) (number "TBD-P" (effects (font (size 1.27 1.27))))) (pin passive line (at 43.18 -10.16 180) (length 2.54) (name "ACT GND" (effects (font (size 1.27 1.27)))) (number "TBD-A-G" (effects (font (size 1.27 1.27))))) (pin passive line (at 43.18 -5.08 180) (length 2.54) (name "ACT VDD" (effects (font (size 1.27 1.27)))) (number "TBD-A-V" (effects (font (size 1.27 1.27))))) (pin passive line (at 43.18 0.00 180) (length 2.54) (name "ACT DATA" (effects (font (size 1.27 1.27)))) (number "TBD-A-D" (effects (font (size 1.27 1.27))))) (pin passive line (at 43.18 5.08 180) (length 2.54) (name "BUS OUT GND" (effects (font (size 1.27 1.27)))) (number "TBD-BO-G" (effects (font (size 1.27 1.27))))) (pin passive line (at 43.18 10.16 180) (length 2.54) (name "BUS OUT DATA" (effects (font (size 1.27 1.27)))) (number "TBD-BO-D" (effects (font (size 1.27 1.27))))))
-      (embedded_fonts no))
 (symbol "F2"
       (pin_names (offset 1.016))
       (exclude_from_sim no) (in_bom yes) (on_board yes)
@@ -399,22 +383,6 @@
         (rectangle (start -35.56 -12.70) (end 35.56 12.70)
           (stroke (width 0.45) (type solid)) (fill (type background))))
       (symbol "F2_1_1" (pin passive line (at -38.10 0.00 0) (length 2.54) (name "IN" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27))))) (pin passive line (at 38.10 0.00 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27))))))
-      (embedded_fonts no))
-(symbol "INJ2"
-      (pin_names (offset 1.016))
-      (exclude_from_sim no) (in_bom yes) (on_board yes)
-      (property "Reference" "INJ2" (at -40.64 -19.24 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
-      (property "Value" "J2 data/power injection module" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Footprint" "" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Datasheet" "" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Description" "Second injection module." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "DESIGN REQUIRED" (at 0.00 18.24 0) (effects (font (size 1.50 1.50)) (justify bottom)))
-      (property "Evidence" "" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Display" "J2 data/power injection module" (at -40.64 -16.04 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
-      (symbol "INJ2_0_1"
-        (rectangle (start -40.64 -15.24) (end 40.64 15.24)
-          (stroke (width 0.45) (type solid)) (fill (type background))))
-      (symbol "INJ2_1_1" (pin passive line (at -43.18 -5.08 0) (length 2.54) (name "BUS IN GND" (effects (font (size 1.27 1.27)))) (number "TBD-BI-G" (effects (font (size 1.27 1.27))))) (pin passive line (at -43.18 0.00 0) (length 2.54) (name "BUS IN DATA" (effects (font (size 1.27 1.27)))) (number "TBD-BI-D" (effects (font (size 1.27 1.27))))) (pin passive line (at -43.18 5.08 0) (length 2.54) (name "FUSED VDD" (effects (font (size 1.27 1.27)))) (number "TBD-P" (effects (font (size 1.27 1.27))))) (pin passive line (at 43.18 -10.16 180) (length 2.54) (name "ACT GND" (effects (font (size 1.27 1.27)))) (number "TBD-A-G" (effects (font (size 1.27 1.27))))) (pin passive line (at 43.18 -5.08 180) (length 2.54) (name "ACT VDD" (effects (font (size 1.27 1.27)))) (number "TBD-A-V" (effects (font (size 1.27 1.27))))) (pin passive line (at 43.18 0.00 180) (length 2.54) (name "ACT DATA" (effects (font (size 1.27 1.27)))) (number "TBD-A-D" (effects (font (size 1.27 1.27))))) (pin passive line (at 43.18 5.08 180) (length 2.54) (name "BUS OUT GND" (effects (font (size 1.27 1.27)))) (number "TBD-BO-G" (effects (font (size 1.27 1.27))))) (pin passive line (at 43.18 10.16 180) (length 2.54) (name "BUS OUT DATA" (effects (font (size 1.27 1.27)))) (number "TBD-BO-D" (effects (font (size 1.27 1.27))))))
       (embedded_fonts no))
 (symbol "F3"
       (pin_names (offset 1.016))
@@ -432,21 +400,21 @@
           (stroke (width 0.45) (type solid)) (fill (type background))))
       (symbol "F3_1_1" (pin passive line (at -38.10 0.00 0) (length 2.54) (name "IN" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27))))) (pin passive line (at 38.10 0.00 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27))))))
       (embedded_fonts no))
-(symbol "INJ3"
+(symbol "INJ1"
       (pin_names (offset 1.016))
       (exclude_from_sim no) (in_bom yes) (on_board yes)
-      (property "Reference" "INJ3" (at -40.64 -16.70 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
-      (property "Value" "Gripper data/power injection module" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
+      (property "Reference" "INJ1" (at -59.69 -29.40 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
+      (property "Value" "HR-V0 DXL-STAR-P0.1 central branch-isolating injection board" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Footprint" "" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Description" "Final inline injection module; no VDD conductor continues beyond the actuator connection." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "DESIGN REQUIRED" (at 0.00 15.70 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Description" "One fixed central star board accepts three separately protected VDD/return branches, shares only DATA and common return, and leaves U2D2 pin 2 physically unrouted. Routed DXL-STAR-P0.1 source exists; exact cable lengths, terminals, enclosure, signal-integrity, thermal, continuity and no-backfeed proof remain open." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
+      (property "Status" "PROPOSED - PCB/HARNESS/FAULT EVIDENCE REQUIRED" (at 0.00 28.40 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Display" "Gripper data/power injection module" (at -40.64 -13.50 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
-      (symbol "INJ3_0_1"
-        (rectangle (start -40.64 -12.70) (end 40.64 12.70)
+      (property "Display" "HR-V0 DXL-STAR-P0.1 central branch-isolating injection board" (at -59.69 -26.20 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
+      (symbol "INJ1_0_1"
+        (rectangle (start -59.69 -25.40) (end 59.69 25.40)
           (stroke (width 0.45) (type solid)) (fill (type background))))
-      (symbol "INJ3_1_1" (pin passive line (at -43.18 -5.08 0) (length 2.54) (name "BUS IN GND" (effects (font (size 1.27 1.27)))) (number "TBD-BI-G" (effects (font (size 1.27 1.27))))) (pin passive line (at -43.18 0.00 0) (length 2.54) (name "BUS IN DATA" (effects (font (size 1.27 1.27)))) (number "TBD-BI-D" (effects (font (size 1.27 1.27))))) (pin passive line (at -43.18 5.08 0) (length 2.54) (name "FUSED VDD" (effects (font (size 1.27 1.27)))) (number "TBD-P" (effects (font (size 1.27 1.27))))) (pin passive line (at 43.18 -5.08 180) (length 2.54) (name "ACT GND" (effects (font (size 1.27 1.27)))) (number "TBD-A-G" (effects (font (size 1.27 1.27))))) (pin passive line (at 43.18 0.00 180) (length 2.54) (name "ACT VDD" (effects (font (size 1.27 1.27)))) (number "TBD-A-V" (effects (font (size 1.27 1.27))))) (pin passive line (at 43.18 5.08 180) (length 2.54) (name "ACT DATA" (effects (font (size 1.27 1.27)))) (number "TBD-A-D" (effects (font (size 1.27 1.27))))))
+      (symbol "INJ1_1_1" (pin passive line (at -62.23 -20.32 0) (length 2.54) (name "U2D2 GND" (effects (font (size 1.27 1.27)))) (number "CTRL:1" (effects (font (size 1.27 1.27))))) (pin passive line (at -62.23 -15.24 0) (length 2.54) (name "U2D2 VDD OMITTED" (effects (font (size 1.27 1.27)))) (number "CTRL:2" (effects (font (size 1.27 1.27))))) (pin passive line (at -62.23 -10.16 0) (length 2.54) (name "U2D2 DATA" (effects (font (size 1.27 1.27)))) (number "CTRL:3" (effects (font (size 1.27 1.27))))) (pin passive line (at -62.23 -5.08 0) (length 2.54) (name "J1 FUSED VDD" (effects (font (size 1.27 1.27)))) (number "PWR1:1" (effects (font (size 1.27 1.27))))) (pin passive line (at -62.23 0.00 0) (length 2.54) (name "J1 RETURN" (effects (font (size 1.27 1.27)))) (number "PWR1:2" (effects (font (size 1.27 1.27))))) (pin passive line (at -62.23 5.08 0) (length 2.54) (name "J2 FUSED VDD" (effects (font (size 1.27 1.27)))) (number "PWR2:1" (effects (font (size 1.27 1.27))))) (pin passive line (at -62.23 10.16 0) (length 2.54) (name "J2 RETURN" (effects (font (size 1.27 1.27)))) (number "PWR2:2" (effects (font (size 1.27 1.27))))) (pin passive line (at -62.23 15.24 0) (length 2.54) (name "J3 FUSED VDD" (effects (font (size 1.27 1.27)))) (number "PWR3:1" (effects (font (size 1.27 1.27))))) (pin passive line (at -62.23 20.32 0) (length 2.54) (name "J3 RETURN" (effects (font (size 1.27 1.27)))) (number "PWR3:2" (effects (font (size 1.27 1.27))))) (pin passive line (at 62.23 -20.32 180) (length 2.54) (name "J1 GND" (effects (font (size 1.27 1.27)))) (number "ACT1:1" (effects (font (size 1.27 1.27))))) (pin passive line (at 62.23 -15.24 180) (length 2.54) (name "J1 VDD" (effects (font (size 1.27 1.27)))) (number "ACT1:2" (effects (font (size 1.27 1.27))))) (pin passive line (at 62.23 -10.16 180) (length 2.54) (name "J1 DATA" (effects (font (size 1.27 1.27)))) (number "ACT1:3" (effects (font (size 1.27 1.27))))) (pin passive line (at 62.23 -5.08 180) (length 2.54) (name "J2 GND" (effects (font (size 1.27 1.27)))) (number "ACT2:1" (effects (font (size 1.27 1.27))))) (pin passive line (at 62.23 0.00 180) (length 2.54) (name "J2 VDD" (effects (font (size 1.27 1.27)))) (number "ACT2:2" (effects (font (size 1.27 1.27))))) (pin passive line (at 62.23 5.08 180) (length 2.54) (name "J2 DATA" (effects (font (size 1.27 1.27)))) (number "ACT2:3" (effects (font (size 1.27 1.27))))) (pin passive line (at 62.23 10.16 180) (length 2.54) (name "J3 GND" (effects (font (size 1.27 1.27)))) (number "ACT3:1" (effects (font (size 1.27 1.27))))) (pin passive line (at 62.23 15.24 180) (length 2.54) (name "J3 VDD" (effects (font (size 1.27 1.27)))) (number "ACT3:2" (effects (font (size 1.27 1.27))))) (pin passive line (at 62.23 20.32 180) (length 2.54) (name "J3 DATA" (effects (font (size 1.27 1.27)))) (number "ACT3:3" (effects (font (size 1.27 1.27))))))
       (embedded_fonts no))
 (symbol "DC1"
       (pin_names (offset 1.016))
@@ -1000,7 +968,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP1_0_1"
@@ -1016,7 +984,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP2_0_1"
@@ -1032,7 +1000,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP3_0_1"
@@ -1048,7 +1016,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP4_0_1"
@@ -1064,7 +1032,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP5_0_1"
@@ -1080,7 +1048,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP6_0_1"
@@ -1096,7 +1064,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP7_0_1"
@@ -1112,7 +1080,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP8_0_1"
@@ -1128,7 +1096,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP9_0_1"
@@ -1144,7 +1112,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP10_0_1"
@@ -1160,7 +1128,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP11_0_1"
@@ -1176,7 +1144,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP12_0_1"
@@ -1192,7 +1160,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP13_0_1"
@@ -1208,7 +1176,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP14_0_1"
@@ -1224,7 +1192,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP15_0_1"
@@ -1240,7 +1208,7 @@
       (property "Footprint" "PBV3_Footprints:Harwin_S1751_46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Datasheet" "https://www.harwin.com/products/S1751-46R" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
-      (property "Status" "PROPOSED - ACCESS VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
+      (property "Status" "PROPOSED - VERIFICATION REQUIRED" (at 0.00 13.16 0) (effects (font (size 1.50 1.50)) (justify bottom)))
       (property "Evidence" "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Harwin S1751-46R SMT test point" (at -35.56 -10.96 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "TP16_0_1"

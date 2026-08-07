@@ -10,6 +10,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import re
+import subprocess
 import sys
 from collections import Counter
 from pathlib import Path
@@ -70,16 +71,16 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P1.1", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P1.2", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
     all_pins = [(sheet, comp, pin) for sheet, comp in all_components for pin in comp.pins]
 
     require(len(sheets) == 12, f"expected 12 child sheets, found {len(sheets)}", failures)
-    require(len(components) == 78, f"expected 78 unique component blocks, found {len(components)}", failures)
+    require(len(components) == 76, f"expected 76 unique component blocks, found {len(components)}", failures)
     require(len(all_components) == len(components), "duplicate component reference exists", failures)
-    require(len(all_pins) == 299, f"expected 299 modeled terminals, found {len(all_pins)}", failures)
+    require(len(all_pins) == 295, f"expected 295 modeled terminals, found {len(all_pins)}", failures)
     require(all(re.fullmatch(r"[A-Za-z]+[0-9]+", ref) for ref in components),
             "one or more references violate KiCad annotation syntax", failures)
 
@@ -107,7 +108,7 @@ def main() -> int:
         for row in connector_rows
     )
     require(actual_connector == expected_connector, "connector schedule differs from generated model", failures)
-    require(sum(row["terminal"].startswith("TBD-") for row in connector_rows) == 46,
+    require(sum(row["terminal"].startswith("TBD-") for row in connector_rows) == 24,
             "controlled TBD-terminal count changed; review and update checker intentionally", failures)
 
     expected_net_counts = Counter(pin.net for _, _, pin in all_pins)
@@ -123,7 +124,7 @@ def main() -> int:
         for row in wire_rows
     )
     require(actual_wires == expected_wires, "wire-number table differs from generated schematic labels", failures)
-    require(len(wire_rows) == 262, f"expected 262 labeled connected terminals, found {len(wire_rows)}", failures)
+    require(len(wire_rows) == 259, f"expected 259 labeled connected terminals, found {len(wire_rows)}", failures)
     require(len({row["wire_number"] for row in wire_rows}) == len(wire_rows),
             "wire numbers are not unique", failures)
 
@@ -159,9 +160,9 @@ def main() -> int:
             require(key not in native_node_net, f"native terminal {ref}:{pin} appears on multiple nets", failures)
             native_node_net[key] = name
     require(len(native_net_names) == 100, f"expected 100 native KiCad nets, found {len(native_net_names)}", failures)
-    require(sum(name.startswith("unconnected-(") for name in native_net_names) == 37,
-            "expected 37 deliberate native unconnected nets", failures)
-    require(len(native_node_net) == 299, f"expected 299 native KiCad netlist nodes, found {len(native_node_net)}", failures)
+    require(sum(name.startswith("unconnected-(") for name in native_net_names) == 36,
+            "expected 36 deliberate native unconnected nets", failures)
+    require(len(native_node_net) == 295, f"expected 295 native KiCad netlist nodes, found {len(native_node_net)}", failures)
     for _, comp, pin in all_pins:
         native_name = native_node_net.get((comp.ref, pin.number), "")
         if expected_net_counts[pin.net] == 1:
@@ -177,7 +178,7 @@ def main() -> int:
     expected_bom_refs = {comp.ref for _, comp in all_components if comp.quantity}
     require({row["reference"] for row in bom_rows} == expected_bom_refs,
             "V3 BOM reference set differs from nonzero-quantity generated components", failures)
-    require(len(bom_rows) == 76, f"expected 76 BOM records, found {len(bom_rows)}", failures)
+    require(len(bom_rows) == 74, f"expected 74 BOM records, found {len(bom_rows)}", failures)
 
     unresolved_rows = read_csv("unresolved-selections.csv")
     unresolved_keys = ("SELECTION REQUIRED", "DESIGN REQUIRED", "CONFIRMATION REQUIRED", "VERIFICATION REQUIRED", "RELEASE OPEN")
@@ -191,7 +192,7 @@ def main() -> int:
         for row in unresolved_rows
     }
     require(actual_unresolved == expected_unresolved, "unresolved-selection register differs from model", failures)
-    require(len(unresolved_rows) == 66, f"expected 66 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
+    require(len(unresolved_rows) == 63, f"expected 63 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
 
     require(pin_map(components, "S0") == {
         "R-1": "SR1_S11", "R-2": "WD1_SAFETY_IN",
@@ -335,9 +336,19 @@ def main() -> int:
     }, "K2 three-pole series representation changed", failures)
     require(pin_map(components, "U1")["TTL-2"].startswith("INTENTIONALLY_UNUSED"),
             "U2D2 VDD is no longer explicitly omitted", failures)
+    injection = pin_map(components, "INJ1")
     require(pin_map(components, "U1")["TTL-1"] == "ACT_0V_PE_BONDED" and
-            all(pin_map(components, ref)["TBD-BI-G"] == "ACT_0V_PE_BONDED" for ref in ("INJ1", "INJ2", "INJ3")),
-            "TTL bus no longer shares the explicit actuator reference ground", failures)
+            injection["CTRL:1"] == "ACT_0V_PE_BONDED" and
+            injection["CTRL:2"].startswith("INTENTIONALLY_UNUSED") and
+            injection["CTRL:3"] == "DXL_TTL_DATA",
+            "U2D2/star-board reference, omitted VDD or DATA mapping changed", failures)
+    require({injection[f"PWR{index}:1"] for index in (1, 2, 3)} == {"J1_VDD", "J2_VDD", "J3_VDD"} and
+            all(injection[f"PWR{index}:2"] == "ACT_0V_PE_BONDED" for index in (1, 2, 3)),
+            "star-board branch-power inputs are no longer three separate VDD rails with common return", failures)
+    require({injection[f"ACT{index}:2"] for index in (1, 2, 3)} == {"J1_VDD", "J2_VDD", "J3_VDD"} and
+            all(injection[f"ACT{index}:1"] == "ACT_0V_PE_BONDED" and
+                injection[f"ACT{index}:3"] == "DXL_TTL_DATA" for index in (1, 2, 3)),
+            "star-board actuator outputs changed or positive rails are no longer isolated", failures)
     require({pin_map(components, ref)["2"] for ref in ("J1", "J2", "J3")} == {"J1_VDD", "J2_VDD", "J3_VDD"},
             "actuator VDD branches are no longer separate", failures)
     require({pin_map(components, ref)["3"] for ref in ("J1", "J2", "J3")} == {"DXL_TTL_DATA"},
@@ -360,6 +371,21 @@ def main() -> int:
         require(WARNING.encode() in path.read_bytes(), f"warning missing from {path.name}", failures)
     pdf = OUT / "output" / f"{gen.PROJECT}-preliminary.pdf"
     require(pdf.is_file() and pdf.stat().st_size > 100_000, "native PDF export missing or unexpectedly small", failures)
+    pdfinfo_candidates = (
+        Path(r"C:\Users\amyle\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\poppler\Library\bin\pdfinfo.exe"),
+        Path(r"C:\Program Files\poppler\Library\bin\pdfinfo.exe"),
+    )
+    pdfinfo = next((candidate for candidate in pdfinfo_candidates if candidate.exists()), None)
+    if pdfinfo is not None and pdf.is_file():
+        info = subprocess.run(
+            [str(pdfinfo), "-f", "1", "-l", "13", "-box", str(pdf)],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        a3_pages = re.findall(r"Page\s+\d+ size:\s+[0-9.]+ x [0-9.]+ pts \(A3\)", info.stdout)
+        require(info.returncode == 0, "pdfinfo failed for synchronized PDF", failures)
+        require(len(a3_pages) == 13, f"expected all 13 PDF pages to be A3, found {len(a3_pages)}", failures)
     readme = (OUT / "README.md").read_text(encoding="utf-8-sig")
     require(WARNING in readme and f"# Project Button HR-V0 Electrical {gen.REV}" in readme and
             "Generated ERC proves only modeled connectivity/annotation" in readme,
@@ -372,7 +398,7 @@ def main() -> int:
         return 1
 
     print("HR-V0 Electrical V3 validation: PASS")
-    print("13 native pages; 78 component blocks; 299 terminals; 63 named connected + 37 unconnected nets; 262 unique wire labels; 66 unresolved rows")
+    print("13 native pages; 76 component blocks; 295 terminals; 64 named connected + 36 unconnected nets; 259 unique wire labels; 63 unresolved rows")
     print(WARNING)
     print("ERC/export consistency is not design approval or permission to energize.")
     return 0

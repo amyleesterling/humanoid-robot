@@ -1,0 +1,11 @@
+record_id,date,operator,qualified_reviewer,repo_commit,electrical_revision,board_revision,board_serial,cable_or_interface,check_type,from_reference_pin,to_reference_pin,expected_result,instrument_or_fixture,calibration_reference,measured_value,result,photo_or_trace_reference,notes,disposition
+NOT-EXECUTED,,,,,V3-P1.2,DXL-STAR-P0.1,,BOARD,identity,,,Matches controlled source and received order records,,,NOT EXECUTED,NOT EXECUTED,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,,V3-P1.2,DXL-STAR-P0.1,,CTRL_CABLE,continuity,JC1:1,U2D2:1,Continuity within released limit,,,NOT EXECUTED,NOT EXECUTED,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,,V3-P1.2,DXL-STAR-P0.1,,CTRL_CABLE,open_circuit,JC1:2,U2D2:2,Open and both cable cavities empty,,,NOT EXECUTED,NOT EXECUTED,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,,V3-P1.2,DXL-STAR-P0.1,,CTRL_CABLE,continuity,JC1:3,U2D2:3,Continuity within released limit,,,NOT EXECUTED,NOT EXECUTED,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,,V3-P1.2,DXL-STAR-P0.1,,POSITIVE_RAILS,isolation,JP1:1,JP2:1,Open above released insulation threshold,,,NOT EXECUTED,NOT EXECUTED,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,,V3-P1.2,DXL-STAR-P0.1,,POSITIVE_RAILS,isolation,JP1:1,JP3:1,Open above released insulation threshold,,,NOT EXECUTED,NOT EXECUTED,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,,V3-P1.2,DXL-STAR-P0.1,,POSITIVE_RAILS,isolation,JP2:1,JP3:1,Open above released insulation threshold,,,NOT EXECUTED,NOT EXECUTED,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,,V3-P1.2,DXL-STAR-P0.1,,POWER_SEQUENCE,no_backfeed,ALL_BRANCHES,JC1:2,Within released touch-safe and source-off voltage/current limits,,,NOT EXECUTED,NOT EXECUTED,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,,V3-P1.2,DXL-STAR-P0.1,,THERMAL,duty_test,ALL_BRANCHES,ALL_CONNECTORS,Within released voltage-drop and temperature limits,,,NOT EXECUTED,NOT EXECUTED,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,,V3-P1.2,DXL-STAR-P0.1,,TTL_BUS,waveform,JC1:3,JA1-JA3:3,Meets released logic-level timing ringing and margin limits,,,NOT EXECUTED,NOT EXECUTED,,TEMPLATE ROW,NOT EXECUTED

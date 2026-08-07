@@ -2,21 +2,21 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-06T23:58:20")
+		(date "2026-08-07T00:43:20")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P1.1")
+			(name "REVISION") "V3-P1.2")
 		(sheet
 			(number "1")
 			(name "/")
 			(tstamps "/")
 			(title_block
-				(title "Project Button HR-V0 Electrical V3 index")
+				(title "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE index")
 				(company "Project Button")
-				(rev "V3-P1.1")
-				(date "2026-08-06")
+				(rev "V3-P1.2")
+				(date "2026-08-07")
 				(source "project-button-v3.kicad_sch")
 				(comment
 					(number "1")
@@ -61,10 +61,10 @@
 			(name "/01 External listed sources and DC boundaries/")
 			(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
 			(title_block
-				(title "PB HR-V0 Electrical V3 - 01")
+				(title "PB HR-V0 V3-P1.2 - 01")
 				(company "Project Button")
-				(rev "V3-P1.1")
-				(date "2026-08-06")
+				(rev "V3-P1.2")
+				(date "2026-08-07")
 				(source "01_external_sources.kicad_sch")
 				(comment
 					(number "1")
@@ -109,10 +109,10 @@
 			(name "/02 Dual-channel E-stop and RESET eligibility/")
 			(tstamps "/1abf679f-5cd5-5479-8b91-6a232acf93b9/")
 			(title_block
-				(title "PB HR-V0 Electrical V3 - 02")
+				(title "PB HR-V0 V3-P1.2 - 02")
 				(company "Project Button")
-				(rev "V3-P1.1")
-				(date "2026-08-06")
+				(rev "V3-P1.2")
+				(date "2026-08-07")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
 					(number "1")
@@ -157,10 +157,10 @@
 			(name "/03 Distinct ARM and watchdog eligibility/")
 			(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
 			(title_block
-				(title "PB HR-V0 Electrical V3 - 03")
+				(title "PB HR-V0 V3-P1.2 - 03")
 				(company "Project Button")
-				(rev "V3-P1.1")
-				(date "2026-08-06")
+				(rev "V3-P1.2")
+				(date "2026-08-07")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
 					(number "1")
@@ -205,10 +205,10 @@
 			(name "/04 Contactor coils, mirror contacts and EDM/")
 			(tstamps "/6cf27f97-627c-5512-ba58-751093298e6c/")
 			(title_block
-				(title "PB HR-V0 Electrical V3 - 04")
+				(title "PB HR-V0 V3-P1.2 - 04")
 				(company "Project Button")
-				(rev "V3-P1.1")
-				(date "2026-08-06")
+				(rev "V3-P1.2")
+				(date "2026-08-07")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
 					(number "1")
@@ -253,10 +253,10 @@
 			(name "/05 Redundant actuator-power interruption/")
 			(tstamps "/db315f6f-1ed6-5bc9-bdf8-106d0286ccb4/")
 			(title_block
-				(title "PB HR-V0 Electrical V3 - 05")
+				(title "PB HR-V0 V3-P1.2 - 05")
 				(company "Project Button")
-				(rev "V3-P1.1")
-				(date "2026-08-06")
+				(rev "V3-P1.2")
+				(date "2026-08-07")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
 					(number "1")
@@ -298,13 +298,13 @@
 		)
 		(sheet
 			(number "7")
-			(name "/06 Protected actuator branches and VDD-isolating injection/")
+			(name "/06 Protected actuator branches and central DYNAMIXEL star injection/")
 			(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
 			(title_block
-				(title "PB HR-V0 Electrical V3 - 06")
+				(title "PB HR-V0 V3-P1.2 - 06")
 				(company "Project Button")
-				(rev "V3-P1.1")
-				(date "2026-08-06")
+				(rev "V3-P1.2")
+				(date "2026-08-07")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
 					(number "1")
@@ -349,10 +349,10 @@
 			(name "/07 Independent watchdog power, controller and drivers/")
 			(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
 			(title_block
-				(title "PB HR-V0 Electrical V3 - 07")
+				(title "PB HR-V0 V3-P1.2 - 07")
 				(company "Project Button")
-				(rev "V3-P1.1")
-				(date "2026-08-06")
+				(rev "V3-P1.2")
+				(date "2026-08-07")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
 					(number "1")
@@ -397,10 +397,10 @@
 			(name "/08 Calculated dual-channel 24 V watchdog feedback/")
 			(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
 			(title_block
-				(title "PB HR-V0 Electrical V3 - 08")
+				(title "PB HR-V0 V3-P1.2 - 08")
 				(company "Project Button")
-				(rev "V3-P1.1")
-				(date "2026-08-06")
+				(rev "V3-P1.2")
+				(date "2026-08-07")
 				(source "08_watchdog_feedback_interface.kicad_sch")
 				(comment
 					(number "1")
@@ -445,10 +445,10 @@
 			(name "/09 Compute, debug and control terminals/")
 			(tstamps "/f3a60727-2e66-5730-a829-00cc7c809e89/")
 			(title_block
-				(title "PB HR-V0 Electrical V3 - 09")
+				(title "PB HR-V0 V3-P1.2 - 09")
 				(company "Project Button")
-				(rev "V3-P1.1")
-				(date "2026-08-06")
+				(rev "V3-P1.2")
+				(date "2026-08-07")
 				(source "09_compute_and_control_terminals.kicad_sch")
 				(comment
 					(number "1")
@@ -493,10 +493,10 @@
 			(name "/10 U2D2, actuator ports and bonding boundary/")
 			(tstamps "/11f6090f-9f69-5145-93e3-5ccb2d8899ac/")
 			(title_block
-				(title "PB HR-V0 Electrical V3 - 10")
+				(title "PB HR-V0 V3-P1.2 - 10")
 				(company "Project Button")
-				(rev "V3-P1.1")
-				(date "2026-08-06")
+				(rev "V3-P1.2")
+				(date "2026-08-07")
 				(source "10_actuator_interfaces.kicad_sch")
 				(comment
 					(number "1")
@@ -541,10 +541,10 @@
 			(name "/11 Watchdog PCB external connectors/")
 			(tstamps "/6e16a5a8-d40c-518b-9320-2dd1b7122c9a/")
 			(title_block
-				(title "PB HR-V0 Electrical V3 - 11")
+				(title "PB HR-V0 V3-P1.2 - 11")
 				(company "Project Button")
-				(rev "V3-P1.1")
-				(date "2026-08-06")
+				(rev "V3-P1.2")
+				(date "2026-08-07")
 				(source "11_watchdog_pcb_connectors.kicad_sch")
 				(comment
 					(number "1")
@@ -589,10 +589,10 @@
 			(name "/12 Watchdog PCB test access/")
 			(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
 			(title_block
-				(title "PB HR-V0 Electrical V3 - 12")
+				(title "PB HR-V0 V3-P1.2 - 12")
 				(company "Project Button")
-				(rev "V3-P1.1")
-				(date "2026-08-06")
+				(rev "V3-P1.2")
+				(date "2026-08-07")
 				(source "12_watchdog_pcb_test_access.kicad_sch")
 				(comment
 					(number "1")
@@ -2320,14 +2320,14 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "06 Protected actuator branches and VDD-isolating injection")
+				(value "06 Protected actuator branches and central DYNAMIXEL star injection")
 			)
 			(property
 				(name "Sheetfile")
 				(value "06_branches_and_injection.kicad_sch")
 			)
 			(sheetpath
-				(names "/06 Protected actuator branches and VDD-isolating injection/")
+				(names "/06 Protected actuator branches and central DYNAMIXEL star injection/")
 				(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
 			)
 			(tstamps "1eefd47f-1778-5c22-b73d-ec9d6753ba4f")
@@ -2385,14 +2385,14 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "06 Protected actuator branches and VDD-isolating injection")
+				(value "06 Protected actuator branches and central DYNAMIXEL star injection")
 			)
 			(property
 				(name "Sheetfile")
 				(value "06_branches_and_injection.kicad_sch")
 			)
 			(sheetpath
-				(names "/06 Protected actuator branches and VDD-isolating injection/")
+				(names "/06 Protected actuator branches and central DYNAMIXEL star injection/")
 				(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
 			)
 			(tstamps "faa6a115-0ece-5810-8562-cb88b093e0c3")
@@ -2450,14 +2450,14 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "06 Protected actuator branches and VDD-isolating injection")
+				(value "06 Protected actuator branches and central DYNAMIXEL star injection")
 			)
 			(property
 				(name "Sheetfile")
 				(value "06_branches_and_injection.kicad_sch")
 			)
 			(sheetpath
-				(names "/06 Protected actuator branches and VDD-isolating injection/")
+				(names "/06 Protected actuator branches and central DYNAMIXEL star injection/")
 				(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
 			)
 			(tstamps "ed982f60-3889-5055-9c48-053bca68e3e4")
@@ -2477,16 +2477,16 @@
 		)
 		(comp
 			(ref "INJ1")
-			(value "J1 data/power injection module")
-			(description "Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open.")
+			(value "HR-V0 DXL-STAR-P0.1 central branch-isolating injection board")
+			(description "One fixed central star board accepts three separately protected VDD/return branches, shares only DATA and common return, and leaves U2D2 pin 2 physically unrouted. Routed DXL-STAR-P0.1 source exists; exact cable lengths, terminals, enclosure, signal-integrity, thermal, continuity and no-backfeed proof remain open.")
 			(fields
 				(field
-					(name "Status") "DESIGN REQUIRED")
+					(name "Status") "PROPOSED - PCB/HARNESS/FAULT EVIDENCE REQUIRED")
 				(field
 					(name "Evidence")
 				)
 				(field
-					(name "Display") "J1 data/power injection module")
+					(name "Display") "HR-V0 DXL-STAR-P0.1 central branch-isolating injection board")
 				(field
 					(name "Footprint")
 				)
@@ -2494,16 +2494,16 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open.")
+					(name "Description") "One fixed central star board accepts three separately protected VDD/return branches, shares only DATA and common return, and leaves U2D2 pin 2 physically unrouted. Routed DXL-STAR-P0.1 source exists; exact cable lengths, terminals, enclosure, signal-integrity, thermal, continuity and no-backfeed proof remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "INJ1")
-				(description "Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open.")
+				(description "One fixed central star board accepts three separately protected VDD/return branches, shares only DATA and common return, and leaves U2D2 pin 2 physically unrouted. Routed DXL-STAR-P0.1 source exists; exact cable lengths, terminals, enclosure, signal-integrity, thermal, continuity and no-backfeed proof remain open.")
 			)
 			(property
 				(name "Status")
-				(value "DESIGN REQUIRED")
+				(value "PROPOSED - PCB/HARNESS/FAULT EVIDENCE REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -2511,18 +2511,18 @@
 			)
 			(property
 				(name "Display")
-				(value "J1 data/power injection module")
+				(value "HR-V0 DXL-STAR-P0.1 central branch-isolating injection board")
 			)
 			(property
 				(name "Sheetname")
-				(value "06 Protected actuator branches and VDD-isolating injection")
+				(value "06 Protected actuator branches and central DYNAMIXEL star injection")
 			)
 			(property
 				(name "Sheetfile")
 				(value "06_branches_and_injection.kicad_sch")
 			)
 			(sheetpath
-				(names "/06 Protected actuator branches and VDD-isolating injection/")
+				(names "/06 Protected actuator branches and central DYNAMIXEL star injection/")
 				(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
 			)
 			(tstamps "d6ca064a-a765-542b-a204-b6c36d3016f6")
@@ -2531,188 +2531,58 @@
 					(name "A")
 					(pins
 						(pin
-							(num "TBD-P")
+							(num "PWR3:2")
 						)
 						(pin
-							(num "TBD-BI-D")
+							(num "PWR3:1")
 						)
 						(pin
-							(num "TBD-BI-G")
+							(num "PWR2:2")
 						)
 						(pin
-							(num "TBD-BO-D")
+							(num "PWR2:1")
 						)
 						(pin
-							(num "TBD-BO-G")
+							(num "PWR1:2")
 						)
 						(pin
-							(num "TBD-A-D")
+							(num "PWR1:1")
 						)
 						(pin
-							(num "TBD-A-V")
+							(num "CTRL:3")
 						)
 						(pin
-							(num "TBD-A-G")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "INJ2")
-			(value "J2 data/power injection module")
-			(description "Second injection module.")
-			(fields
-				(field
-					(name "Status") "DESIGN REQUIRED")
-				(field
-					(name "Evidence")
-				)
-				(field
-					(name "Display") "J2 data/power injection module")
-				(field
-					(name "Footprint")
-				)
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Second injection module.")
-			)
-			(libsource
-				(lib "PBV3")
-				(part "INJ2")
-				(description "Second injection module.")
-			)
-			(property
-				(name "Status")
-				(value "DESIGN REQUIRED")
-			)
-			(property
-				(name "Evidence")
-				(value "")
-			)
-			(property
-				(name "Display")
-				(value "J2 data/power injection module")
-			)
-			(property
-				(name "Sheetname")
-				(value "06 Protected actuator branches and VDD-isolating injection")
-			)
-			(property
-				(name "Sheetfile")
-				(value "06_branches_and_injection.kicad_sch")
-			)
-			(sheetpath
-				(names "/06 Protected actuator branches and VDD-isolating injection/")
-				(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
-			)
-			(tstamps "28b13e68-2703-529a-8cfc-d20f0908f6d3")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "TBD-P")
+							(num "CTRL:2")
 						)
 						(pin
-							(num "TBD-BI-D")
+							(num "CTRL:1")
 						)
 						(pin
-							(num "TBD-BI-G")
+							(num "ACT3:3")
 						)
 						(pin
-							(num "TBD-BO-D")
+							(num "ACT3:2")
 						)
 						(pin
-							(num "TBD-BO-G")
+							(num "ACT3:1")
 						)
 						(pin
-							(num "TBD-A-D")
+							(num "ACT2:3")
 						)
 						(pin
-							(num "TBD-A-V")
+							(num "ACT2:2")
 						)
 						(pin
-							(num "TBD-A-G")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "INJ3")
-			(value "Gripper data/power injection module")
-			(description "Final inline injection module; no VDD conductor continues beyond the actuator connection.")
-			(fields
-				(field
-					(name "Status") "DESIGN REQUIRED")
-				(field
-					(name "Evidence")
-				)
-				(field
-					(name "Display") "Gripper data/power injection module")
-				(field
-					(name "Footprint")
-				)
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Final inline injection module; no VDD conductor continues beyond the actuator connection.")
-			)
-			(libsource
-				(lib "PBV3")
-				(part "INJ3")
-				(description "Final inline injection module; no VDD conductor continues beyond the actuator connection.")
-			)
-			(property
-				(name "Status")
-				(value "DESIGN REQUIRED")
-			)
-			(property
-				(name "Evidence")
-				(value "")
-			)
-			(property
-				(name "Display")
-				(value "Gripper data/power injection module")
-			)
-			(property
-				(name "Sheetname")
-				(value "06 Protected actuator branches and VDD-isolating injection")
-			)
-			(property
-				(name "Sheetfile")
-				(value "06_branches_and_injection.kicad_sch")
-			)
-			(sheetpath
-				(names "/06 Protected actuator branches and VDD-isolating injection/")
-				(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
-			)
-			(tstamps "a76b945a-4f02-5fd6-9af8-398c1be62162")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "TBD-P")
+							(num "ACT2:1")
 						)
 						(pin
-							(num "TBD-BI-D")
+							(num "ACT1:3")
 						)
 						(pin
-							(num "TBD-BI-G")
+							(num "ACT1:2")
 						)
 						(pin
-							(num "TBD-A-D")
-						)
-						(pin
-							(num "TBD-A-V")
-						)
-						(pin
-							(num "TBD-A-G")
+							(num "ACT1:1")
 						)
 					)
 				)
@@ -5114,7 +4984,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5133,7 +5003,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -5175,7 +5045,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5194,7 +5064,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -5236,7 +5106,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5255,7 +5125,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -5297,7 +5167,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5316,7 +5186,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -5358,7 +5228,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5377,7 +5247,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -5419,7 +5289,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5438,7 +5308,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -5480,7 +5350,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5499,7 +5369,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -5541,7 +5411,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5560,7 +5430,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -5602,7 +5472,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5621,7 +5491,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -5663,7 +5533,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5682,7 +5552,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -5724,7 +5594,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5743,7 +5613,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -5785,7 +5655,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5804,7 +5674,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -5846,7 +5716,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5865,7 +5735,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -5907,7 +5777,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5926,7 +5796,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -5968,7 +5838,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -5987,7 +5857,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -6029,7 +5899,7 @@
 			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -6048,7 +5918,7 @@
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -6576,12 +6446,12 @@
 		(libpart
 			(lib "PBV3")
 			(part "INJ1")
-			(description "Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open.")
+			(description "One fixed central star board accepts three separately protected VDD/return branches, shares only DATA and common return, and leaves U2D2 pin 2 physically unrouted. Routed DXL-STAR-P0.1 source exists; exact cable lengths, terminals, enclosure, signal-integrity, thermal, continuity and no-backfeed proof remain open.")
 			(fields
 				(field
 					(name "Reference") "INJ1")
 				(field
-					(name "Value") "J1 data/power injection module")
+					(name "Value") "HR-V0 DXL-STAR-P0.1 central branch-isolating injection board")
 				(field
 					(name "Footprint")
 				)
@@ -6589,180 +6459,104 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open.")
+					(name "Description") "One fixed central star board accepts three separately protected VDD/return branches, shares only DATA and common return, and leaves U2D2 pin 2 physically unrouted. Routed DXL-STAR-P0.1 source exists; exact cable lengths, terminals, enclosure, signal-integrity, thermal, continuity and no-backfeed proof remain open.")
 				(field
-					(name "Status") "DESIGN REQUIRED")
-				(field
-					(name "Evidence")
-				)
-				(field
-					(name "Display") "J1 data/power injection module")
-			)
-			(pins
-				(pin
-					(num "TBD-A-D")
-					(name "ACT_DATA")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-A-G")
-					(name "ACT_GND")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-A-V")
-					(name "ACT_VDD")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-BI-D")
-					(name "BUS_IN_DATA")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-BI-G")
-					(name "BUS_IN_GND")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-BO-D")
-					(name "BUS_OUT_DATA")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-BO-G")
-					(name "BUS_OUT_GND")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-P")
-					(name "FUSED_VDD")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "PBV3")
-			(part "INJ2")
-			(description "Second injection module.")
-			(fields
-				(field
-					(name "Reference") "INJ2")
-				(field
-					(name "Value") "J2 data/power injection module")
-				(field
-					(name "Footprint")
-				)
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Second injection module.")
-				(field
-					(name "Status") "DESIGN REQUIRED")
+					(name "Status") "PROPOSED - PCB/HARNESS/FAULT EVIDENCE REQUIRED")
 				(field
 					(name "Evidence")
 				)
 				(field
-					(name "Display") "J2 data/power injection module")
+					(name "Display") "HR-V0 DXL-STAR-P0.1 central branch-isolating injection board")
 			)
 			(pins
 				(pin
-					(num "TBD-A-D")
-					(name "ACT_DATA")
+					(num "ACT1:1")
+					(name "J1_GND")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-A-G")
-					(name "ACT_GND")
+					(num "ACT1:2")
+					(name "J1_VDD")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-A-V")
-					(name "ACT_VDD")
+					(num "ACT1:3")
+					(name "J1_DATA")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-BI-D")
-					(name "BUS_IN_DATA")
+					(num "ACT2:1")
+					(name "J2_GND")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-BI-G")
-					(name "BUS_IN_GND")
+					(num "ACT2:2")
+					(name "J2_VDD")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-BO-D")
-					(name "BUS_OUT_DATA")
+					(num "ACT2:3")
+					(name "J2_DATA")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-BO-G")
-					(name "BUS_OUT_GND")
+					(num "ACT3:1")
+					(name "J3_GND")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-P")
-					(name "FUSED_VDD")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "PBV3")
-			(part "INJ3")
-			(description "Final inline injection module; no VDD conductor continues beyond the actuator connection.")
-			(fields
-				(field
-					(name "Reference") "INJ3")
-				(field
-					(name "Value") "Gripper data/power injection module")
-				(field
-					(name "Footprint")
-				)
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Final inline injection module; no VDD conductor continues beyond the actuator connection.")
-				(field
-					(name "Status") "DESIGN REQUIRED")
-				(field
-					(name "Evidence")
-				)
-				(field
-					(name "Display") "Gripper data/power injection module")
-			)
-			(pins
-				(pin
-					(num "TBD-A-D")
-					(name "ACT_DATA")
+					(num "ACT3:2")
+					(name "J3_VDD")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-A-G")
-					(name "ACT_GND")
+					(num "ACT3:3")
+					(name "J3_DATA")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-A-V")
-					(name "ACT_VDD")
+					(num "CTRL:1")
+					(name "U2D2_GND")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-BI-D")
-					(name "BUS_IN_DATA")
+					(num "CTRL:2")
+					(name "U2D2_VDD_OMITTED")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-BI-G")
-					(name "BUS_IN_GND")
+					(num "CTRL:3")
+					(name "U2D2_DATA")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-P")
-					(name "FUSED_VDD")
+					(num "PWR1:1")
+					(name "J1_FUSED_VDD")
+					(type "passive")
+				)
+				(pin
+					(num "PWR1:2")
+					(name "J1_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "PWR2:1")
+					(name "J2_FUSED_VDD")
+					(type "passive")
+				)
+				(pin
+					(num "PWR2:2")
+					(name "J2_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "PWR3:1")
+					(name "J3_FUSED_VDD")
+					(type "passive")
+				)
+				(pin
+					(num "PWR3:2")
+					(name "J3_RETURN")
 					(type "passive")
 				)
 			)
@@ -8685,7 +8479,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -8716,7 +8510,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -8747,7 +8541,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -8778,7 +8572,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -8809,7 +8603,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -8840,7 +8634,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -8871,7 +8665,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -8902,7 +8696,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -8933,7 +8727,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -8964,7 +8758,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -8995,7 +8789,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -9026,7 +8820,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -9057,7 +8851,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -9088,7 +8882,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -9119,7 +8913,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -9150,7 +8944,7 @@
 				(field
 					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
 				(field
-					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
 				(field
@@ -9683,50 +9477,44 @@
 			(class "Default")
 			(node
 				(ref "INJ1")
-				(pin "TBD-A-G")
-				(pinfunction "ACT_GND_TBD-A-G")
+				(pin "ACT1:1")
+				(pinfunction "J1_GND_ACT1:1")
 				(pintype "passive")
 			)
 			(node
 				(ref "INJ1")
-				(pin "TBD-BI-G")
-				(pinfunction "BUS_IN_GND_TBD-BI-G")
+				(pin "ACT2:1")
+				(pinfunction "J2_GND_ACT2:1")
 				(pintype "passive")
 			)
 			(node
 				(ref "INJ1")
-				(pin "TBD-BO-G")
-				(pinfunction "BUS_OUT_GND_TBD-BO-G")
+				(pin "ACT3:1")
+				(pinfunction "J3_GND_ACT3:1")
 				(pintype "passive")
 			)
 			(node
-				(ref "INJ2")
-				(pin "TBD-A-G")
-				(pinfunction "ACT_GND_TBD-A-G")
+				(ref "INJ1")
+				(pin "CTRL:1")
+				(pinfunction "U2D2_GND_CTRL:1")
 				(pintype "passive")
 			)
 			(node
-				(ref "INJ2")
-				(pin "TBD-BI-G")
-				(pinfunction "BUS_IN_GND_TBD-BI-G")
+				(ref "INJ1")
+				(pin "PWR1:2")
+				(pinfunction "J1_RETURN_PWR1:2")
 				(pintype "passive")
 			)
 			(node
-				(ref "INJ2")
-				(pin "TBD-BO-G")
-				(pinfunction "BUS_OUT_GND_TBD-BO-G")
+				(ref "INJ1")
+				(pin "PWR2:2")
+				(pinfunction "J2_RETURN_PWR2:2")
 				(pintype "passive")
 			)
 			(node
-				(ref "INJ3")
-				(pin "TBD-A-G")
-				(pinfunction "ACT_GND_TBD-A-G")
-				(pintype "passive")
-			)
-			(node
-				(ref "INJ3")
-				(pin "TBD-BI-G")
-				(pinfunction "BUS_IN_GND_TBD-BI-G")
+				(ref "INJ1")
+				(pin "PWR3:2")
+				(pinfunction "J3_RETURN_PWR3:2")
 				(pintype "passive")
 			)
 			(node
@@ -9958,50 +9746,26 @@
 			(class "Default")
 			(node
 				(ref "INJ1")
-				(pin "TBD-A-D")
-				(pinfunction "ACT_DATA_TBD-A-D")
+				(pin "ACT1:3")
+				(pinfunction "J1_DATA_ACT1:3")
 				(pintype "passive")
 			)
 			(node
 				(ref "INJ1")
-				(pin "TBD-BI-D")
-				(pinfunction "BUS_IN_DATA_TBD-BI-D")
+				(pin "ACT2:3")
+				(pinfunction "J2_DATA_ACT2:3")
 				(pintype "passive")
 			)
 			(node
 				(ref "INJ1")
-				(pin "TBD-BO-D")
-				(pinfunction "BUS_OUT_DATA_TBD-BO-D")
+				(pin "ACT3:3")
+				(pinfunction "J3_DATA_ACT3:3")
 				(pintype "passive")
 			)
 			(node
-				(ref "INJ2")
-				(pin "TBD-A-D")
-				(pinfunction "ACT_DATA_TBD-A-D")
-				(pintype "passive")
-			)
-			(node
-				(ref "INJ2")
-				(pin "TBD-BI-D")
-				(pinfunction "BUS_IN_DATA_TBD-BI-D")
-				(pintype "passive")
-			)
-			(node
-				(ref "INJ2")
-				(pin "TBD-BO-D")
-				(pinfunction "BUS_OUT_DATA_TBD-BO-D")
-				(pintype "passive")
-			)
-			(node
-				(ref "INJ3")
-				(pin "TBD-A-D")
-				(pinfunction "ACT_DATA_TBD-A-D")
-				(pintype "passive")
-			)
-			(node
-				(ref "INJ3")
-				(pin "TBD-BI-D")
-				(pinfunction "BUS_IN_DATA_TBD-BI-D")
+				(ref "INJ1")
+				(pin "CTRL:3")
+				(pinfunction "U2D2_DATA_CTRL:3")
 				(pintype "passive")
 			)
 			(node
@@ -10157,6 +9921,23 @@
 		)
 		(net
 			(code "15")
+			(name "INTENTIONALLY_UNUSED_U2D2_VDD")
+			(class "Default")
+			(node
+				(ref "INJ1")
+				(pin "CTRL:2")
+				(pinfunction "U2D2_VDD_OMITTED_CTRL:2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "TTL-2")
+				(pinfunction "VDD_OMITTED_TTL-2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "16")
 			(name "J1_VDD")
 			(class "Default")
 			(node
@@ -10167,14 +9948,14 @@
 			)
 			(node
 				(ref "INJ1")
-				(pin "TBD-A-V")
-				(pinfunction "ACT_VDD_TBD-A-V")
+				(pin "ACT1:2")
+				(pinfunction "J1_VDD_ACT1:2")
 				(pintype "passive")
 			)
 			(node
 				(ref "INJ1")
-				(pin "TBD-P")
-				(pinfunction "FUSED_VDD_TBD-P")
+				(pin "PWR1:1")
+				(pinfunction "J1_FUSED_VDD_PWR1:1")
 				(pintype "passive")
 			)
 			(node
@@ -10185,7 +9966,7 @@
 			)
 		)
 		(net
-			(code "16")
+			(code "17")
 			(name "J2_VDD")
 			(class "Default")
 			(node
@@ -10195,15 +9976,15 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "INJ2")
-				(pin "TBD-A-V")
-				(pinfunction "ACT_VDD_TBD-A-V")
+				(ref "INJ1")
+				(pin "ACT2:2")
+				(pinfunction "J2_VDD_ACT2:2")
 				(pintype "passive")
 			)
 			(node
-				(ref "INJ2")
-				(pin "TBD-P")
-				(pinfunction "FUSED_VDD_TBD-P")
+				(ref "INJ1")
+				(pin "PWR2:1")
+				(pinfunction "J2_FUSED_VDD_PWR2:1")
 				(pintype "passive")
 			)
 			(node
@@ -10214,7 +9995,7 @@
 			)
 		)
 		(net
-			(code "17")
+			(code "18")
 			(name "J3_VDD")
 			(class "Default")
 			(node
@@ -10224,15 +10005,15 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "INJ3")
-				(pin "TBD-A-V")
-				(pinfunction "ACT_VDD_TBD-A-V")
+				(ref "INJ1")
+				(pin "ACT3:2")
+				(pinfunction "J3_VDD_ACT3:2")
 				(pintype "passive")
 			)
 			(node
-				(ref "INJ3")
-				(pin "TBD-P")
-				(pinfunction "FUSED_VDD_TBD-P")
+				(ref "INJ1")
+				(pin "PWR3:1")
+				(pinfunction "J3_FUSED_VDD_PWR3:1")
 				(pintype "passive")
 			)
 			(node
@@ -10243,7 +10024,7 @@
 			)
 		)
 		(net
-			(code "18")
+			(code "19")
 			(name "K1_A1")
 			(class "Default")
 			(node
@@ -10260,7 +10041,7 @@
 			)
 		)
 		(net
-			(code "19")
+			(code "20")
 			(name "K1_J12")
 			(class "Default")
 			(node
@@ -10277,7 +10058,7 @@
 			)
 		)
 		(net
-			(code "20")
+			(code "21")
 			(name "K1_J23")
 			(class "Default")
 			(node
@@ -10294,7 +10075,7 @@
 			)
 		)
 		(net
-			(code "21")
+			(code "22")
 			(name "K1_OUT")
 			(class "Default")
 			(node
@@ -10311,7 +10092,7 @@
 			)
 		)
 		(net
-			(code "22")
+			(code "23")
 			(name "K1_P1_IN")
 			(class "Default")
 			(node
@@ -10328,7 +10109,7 @@
 			)
 		)
 		(net
-			(code "23")
+			(code "24")
 			(name "K1_STATUS")
 			(class "Default")
 			(node
@@ -10345,7 +10126,7 @@
 			)
 		)
 		(net
-			(code "24")
+			(code "25")
 			(name "K2_A1")
 			(class "Default")
 			(node
@@ -10362,7 +10143,7 @@
 			)
 		)
 		(net
-			(code "25")
+			(code "26")
 			(name "K2_J12")
 			(class "Default")
 			(node
@@ -10379,7 +10160,7 @@
 			)
 		)
 		(net
-			(code "26")
+			(code "27")
 			(name "K2_J23")
 			(class "Default")
 			(node
@@ -10396,7 +10177,7 @@
 			)
 		)
 		(net
-			(code "27")
+			(code "28")
 			(name "K2_STATUS")
 			(class "Default")
 			(node
@@ -10413,7 +10194,7 @@
 			)
 		)
 		(net
-			(code "28")
+			(code "29")
 			(name "PI_HEARTBEAT")
 			(class "Default")
 			(node
@@ -10442,7 +10223,7 @@
 			)
 		)
 		(net
-			(code "29")
+			(code "30")
 			(name "PI_USB_U2D2")
 			(class "Default")
 			(node
@@ -10459,7 +10240,7 @@
 			)
 		)
 		(net
-			(code "30")
+			(code "31")
 			(name "SAFETY_0V")
 			(class "Default")
 			(node
@@ -10722,7 +10503,7 @@
 			)
 		)
 		(net
-			(code "31")
+			(code "32")
 			(name "SAFETY_24V")
 			(class "Default")
 			(node
@@ -10853,7 +10634,7 @@
 			)
 		)
 		(net
-			(code "32")
+			(code "33")
 			(name "SAFETY_24V_RAW")
 			(class "Default")
 			(node
@@ -10870,7 +10651,7 @@
 			)
 		)
 		(net
-			(code "33")
+			(code "34")
 			(name "SR1_S11")
 			(class "Default")
 			(node
@@ -10887,7 +10668,7 @@
 			)
 		)
 		(net
-			(code "34")
+			(code "35")
 			(name "SR1_S12")
 			(class "Default")
 			(node
@@ -10910,7 +10691,7 @@
 			)
 		)
 		(net
-			(code "35")
+			(code "36")
 			(name "SR1_S21")
 			(class "Default")
 			(node
@@ -10927,7 +10708,7 @@
 			)
 		)
 		(net
-			(code "36")
+			(code "37")
 			(name "SR1_S22")
 			(class "Default")
 			(node
@@ -10944,7 +10725,7 @@
 			)
 		)
 		(net
-			(code "37")
+			(code "38")
 			(name "SR1_START_RETURN")
 			(class "Default")
 			(node
@@ -10961,7 +10742,7 @@
 			)
 		)
 		(net
-			(code "38")
+			(code "39")
 			(name "SR1_STATUS")
 			(class "Default")
 			(node
@@ -10984,7 +10765,7 @@
 			)
 		)
 		(net
-			(code "39")
+			(code "40")
 			(name "SRA1_K1_RAW")
 			(class "Default")
 			(node
@@ -11001,7 +10782,7 @@
 			)
 		)
 		(net
-			(code "40")
+			(code "41")
 			(name "SRA1_K2_RAW")
 			(class "Default")
 			(node
@@ -11018,7 +10799,7 @@
 			)
 		)
 		(net
-			(code "41")
+			(code "42")
 			(name "SRA1_S11")
 			(class "Default")
 			(node
@@ -11035,7 +10816,7 @@
 			)
 		)
 		(net
-			(code "42")
+			(code "43")
 			(name "SRA1_S12")
 			(class "Default")
 			(node
@@ -11058,7 +10839,7 @@
 			)
 		)
 		(net
-			(code "43")
+			(code "44")
 			(name "SRA1_S21")
 			(class "Default")
 			(node
@@ -11075,7 +10856,7 @@
 			)
 		)
 		(net
-			(code "44")
+			(code "45")
 			(name "SRA1_S22")
 			(class "Default")
 			(node
@@ -11092,7 +10873,7 @@
 			)
 		)
 		(net
-			(code "45")
+			(code "46")
 			(name "SRA1_START_RETURN")
 			(class "Default")
 			(node
@@ -11109,7 +10890,7 @@
 			)
 		)
 		(net
-			(code "46")
+			(code "47")
 			(name "SRA1_STATUS")
 			(class "Default")
 			(node
@@ -11126,7 +10907,7 @@
 			)
 		)
 		(net
-			(code "47")
+			(code "48")
 			(name "UFB_OUT1")
 			(class "Default")
 			(node
@@ -11149,7 +10930,7 @@
 			)
 		)
 		(net
-			(code "48")
+			(code "49")
 			(name "UFB_OUT2")
 			(class "Default")
 			(node
@@ -11172,7 +10953,7 @@
 			)
 		)
 		(net
-			(code "49")
+			(code "50")
 			(name "WD1_COIL_N")
 			(class "Default")
 			(node
@@ -11201,7 +10982,7 @@
 			)
 		)
 		(net
-			(code "50")
+			(code "51")
 			(name "WD1_DRIVE")
 			(class "Default")
 			(node
@@ -11224,7 +11005,7 @@
 			)
 		)
 		(net
-			(code "51")
+			(code "52")
 			(name "WD1_NC_24V")
 			(class "Default")
 			(node
@@ -11259,7 +11040,7 @@
 			)
 		)
 		(net
-			(code "52")
+			(code "53")
 			(name "WD1_NC_DIAG")
 			(class "Default")
 			(node
@@ -11282,7 +11063,7 @@
 			)
 		)
 		(net
-			(code "53")
+			(code "54")
 			(name "WD1_SAFETY_IN")
 			(class "Default")
 			(node
@@ -11299,7 +11080,7 @@
 			)
 		)
 		(net
-			(code "54")
+			(code "55")
 			(name "WD2_COIL_N")
 			(class "Default")
 			(node
@@ -11328,7 +11109,7 @@
 			)
 		)
 		(net
-			(code "55")
+			(code "56")
 			(name "WD2_DRIVE")
 			(class "Default")
 			(node
@@ -11351,7 +11132,7 @@
 			)
 		)
 		(net
-			(code "56")
+			(code "57")
 			(name "WD2_NC_24V")
 			(class "Default")
 			(node
@@ -11386,7 +11167,7 @@
 			)
 		)
 		(net
-			(code "57")
+			(code "58")
 			(name "WD2_NC_DIAG")
 			(class "Default")
 			(node
@@ -11409,7 +11190,7 @@
 			)
 		)
 		(net
-			(code "58")
+			(code "59")
 			(name "WD2_SAFETY_IN")
 			(class "Default")
 			(node
@@ -11426,7 +11207,7 @@
 			)
 		)
 		(net
-			(code "59")
+			(code "60")
 			(name "WD_3V3")
 			(class "Default")
 			(node
@@ -11467,7 +11248,7 @@
 			)
 		)
 		(net
-			(code "60")
+			(code "61")
 			(name "WD_5V")
 			(class "Default")
 			(node
@@ -11490,7 +11271,7 @@
 			)
 		)
 		(net
-			(code "61")
+			(code "62")
 			(name "WD_HEARTBEAT")
 			(class "Default")
 			(node
@@ -11519,7 +11300,7 @@
 			)
 		)
 		(net
-			(code "62")
+			(code "63")
 			(name "WD_SWCLK")
 			(class "Default")
 			(node
@@ -11542,7 +11323,7 @@
 			)
 		)
 		(net
-			(code "63")
+			(code "64")
 			(name "WD_SWDIO")
 			(class "Default")
 			(node
@@ -11565,7 +11346,7 @@
 			)
 		)
 		(net
-			(code "64")
+			(code "65")
 			(name "unconnected-(JFRAME1-CABLE_SHIELDS-PadTBD-SHIELD)")
 			(class "Default")
 			(node
@@ -11576,7 +11357,7 @@
 			)
 		)
 		(net
-			(code "65")
+			(code "66")
 			(name "unconnected-(JFRAME1-ROBOT_FRAME-PadTBD-FRAME)")
 			(class "Default")
 			(node
@@ -11587,7 +11368,7 @@
 			)
 		)
 		(net
-			(code "66")
+			(code "67")
 			(name "unconnected-(KWD1-CH1_NC_UNUSED-Pad12)")
 			(class "Default")
 			(node
@@ -11598,7 +11379,7 @@
 			)
 		)
 		(net
-			(code "67")
+			(code "68")
 			(name "unconnected-(KWD1-CH2_NO_UNUSED-Pad24)")
 			(class "Default")
 			(node
@@ -11609,7 +11390,7 @@
 			)
 		)
 		(net
-			(code "68")
+			(code "69")
 			(name "unconnected-(KWD2-CH1_NC_UNUSED-Pad12)")
 			(class "Default")
 			(node
@@ -11620,7 +11401,7 @@
 			)
 		)
 		(net
-			(code "69")
+			(code "70")
 			(name "unconnected-(KWD2-CH2_NO_UNUSED-Pad24)")
 			(class "Default")
 			(node
@@ -11631,7 +11412,7 @@
 			)
 		)
 		(net
-			(code "70")
+			(code "71")
 			(name "unconnected-(PSA1-FACTORY_AC_L-PadC14-L)")
 			(class "Default")
 			(node
@@ -11642,7 +11423,7 @@
 			)
 		)
 		(net
-			(code "71")
+			(code "72")
 			(name "unconnected-(PSA1-FACTORY_AC_N-PadC14-N)")
 			(class "Default")
 			(node
@@ -11653,7 +11434,7 @@
 			)
 		)
 		(net
-			(code "72")
+			(code "73")
 			(name "unconnected-(PSU2-FACTORY_AC_L-PadC14-L)")
 			(class "Default")
 			(node
@@ -11664,7 +11445,7 @@
 			)
 		)
 		(net
-			(code "73")
+			(code "74")
 			(name "unconnected-(PSU2-FACTORY_AC_N-PadC14-N)")
 			(class "Default")
 			(node
@@ -11675,7 +11456,7 @@
 			)
 		)
 		(net
-			(code "74")
+			(code "75")
 			(name "unconnected-(PSU2-FACTORY_PE-PadC14-PE)")
 			(class "Default")
 			(node
@@ -11686,7 +11467,7 @@
 			)
 		)
 		(net
-			(code "75")
+			(code "76")
 			(name "unconnected-(PSU3-FACTORY_AC-PadAC-FACTORY)")
 			(class "Default")
 			(node
@@ -11697,7 +11478,7 @@
 			)
 		)
 		(net
-			(code "76")
+			(code "77")
 			(name "unconnected-(SP1-ACTUATOR_0V-Pad1)")
 			(class "Default")
 			(node
@@ -11708,7 +11489,7 @@
 			)
 		)
 		(net
-			(code "77")
+			(code "78")
 			(name "unconnected-(SP1-PE-Pad2)")
 			(class "Default")
 			(node
@@ -11719,7 +11500,7 @@
 			)
 		)
 		(net
-			(code "78")
+			(code "79")
 			(name "unconnected-(SR1-AUX_NC_OUT-Pad42)")
 			(class "Default")
 			(node
@@ -11730,7 +11511,7 @@
 			)
 		)
 		(net
-			(code "79")
+			(code "80")
 			(name "unconnected-(SR1-SAFETY_OUT3_IN-Pad33)")
 			(class "Default")
 			(node
@@ -11741,7 +11522,7 @@
 			)
 		)
 		(net
-			(code "80")
+			(code "81")
 			(name "unconnected-(SR1-SAFETY_OUT3_OUT-Pad34)")
 			(class "Default")
 			(node
@@ -11752,7 +11533,7 @@
 			)
 		)
 		(net
-			(code "81")
+			(code "82")
 			(name "unconnected-(SRA1-AUX_NC_OUT-Pad42)")
 			(class "Default")
 			(node
@@ -11763,7 +11544,7 @@
 			)
 		)
 		(net
-			(code "82")
+			(code "83")
 			(name "unconnected-(SRA1-SAFETY_OUT3_IN-Pad33)")
 			(class "Default")
 			(node
@@ -11774,24 +11555,13 @@
 			)
 		)
 		(net
-			(code "83")
+			(code "84")
 			(name "unconnected-(SRA1-SAFETY_OUT3_OUT-Pad34)")
 			(class "Default")
 			(node
 				(ref "SRA1")
 				(pin "34")
 				(pinfunction "SAFETY_OUT3_OUT_34")
-				(pintype "passive+no_connect")
-			)
-		)
-		(net
-			(code "84")
-			(name "unconnected-(U1-VDD_OMITTED-PadTTL-2)")
-			(class "Default")
-			(node
-				(ref "U1")
-				(pin "TTL-2")
-				(pinfunction "VDD_OMITTED_TTL-2")
 				(pintype "passive+no_connect")
 			)
 		)
