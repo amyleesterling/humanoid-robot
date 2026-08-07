@@ -1,5 +1,6 @@
 """Project Button HR-V0 non-safety motion-authority supervisor."""
 
+from .actuator_config import ActuatorConfiguration, ActuatorReadback, ActuatorRule
 from .model import (
     FaultCode,
     HardwareSnapshot,
@@ -14,6 +15,9 @@ from .model import (
 )
 
 __all__ = [
+    "ActuatorConfiguration",
+    "ActuatorReadback",
+    "ActuatorRule",
     "FaultCode",
     "HardwareSnapshot",
     "JointRule",

@@ -59,6 +59,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 watchdog PCB test-access candidate P0.4](docs/hr-v0-watchdog-pcb-p0.4.md)
 - [HR-V0 watchdog PCB fabrication-envelope candidate P0.5](docs/hr-v0-watchdog-pcb-p0.5.md)
 - [HR-V0 protection and conductor coordination P0.1](docs/hr-v0-protection-coordination-p0.1.md)
+- [HR-V0 actuator current and torque envelope P0.1](docs/hr-v0-actuator-current-envelope-p0.1.md)
 - [HR-V0 Boston build-site basis](docs/hr-v0-build-site-basis.md)
 - [Boston fabrication and custom-metal sourcing](docs/hr-v0-fabrication-sourcing-boston.md)
 - [Control and fault-state specification](docs/control.md)
@@ -97,6 +98,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R35](docs/reviews/2026-08-06-sol-r12-post-r35-status.md)
 - [Sol R12 findings rechecked against R36](docs/reviews/2026-08-06-sol-r12-post-r36-status.md)
 - [Sol R12 findings rechecked against R37](docs/reviews/2026-08-07-sol-r12-post-r37-status.md)
+- [Sol supplied review summary](docs/reviews/2026-08-07-sol-independent-engineering-review-summary.md)
+- [Sol R12 findings rechecked against R38](docs/reviews/2026-08-07-sol-r12-post-r38-status.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.1 independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
 - [Requirements](requirements/requirements.csv)
@@ -108,7 +111,7 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 
 ## Review history
 
-Thirty-seven review/control rounds are complete: R01-R37. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
+Thirty-eight review/control rounds are complete: R01-R38. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -149,6 +152,7 @@ Thirty-seven review/control rounds are complete: R01-R37. R11 Fable and R12 Sol 
 | R35 | Watchdog PCB fabrication-envelope pass | Issued PCB-P0.5 with every former 0.10 mm feature rerouted at 0.1524 mm minimum and a proposed source-backed OSH Park two-layer process. Native DRC remains 0/0; no fabrication outputs or energization release were issued. |
 | R36 | Protection and conductor-coordination input pass | Added exact proposed holder/distribution hardware and fuse family, six machine-checked input rows, three procedures and an unexecuted evidence form while retaining zero fuse ampere ratings. Exposed the XM540 4.4 A stall versus JST EH 3 A series conflict; EG-014 is partial, not closed. |
 | R37 | DYNAMIXEL star-injection native-ECAD correction | Issued Electrical V3-P1.2 plus a separate routed DXL-STAR-P0.1 source with three isolated positive branches, common TTL data/return, an unrouted U2D2 VDD pin, ERC/DRC 0/0 and physical evidence controls. Cable, current, thermal, waveform, no-backfeed and fabrication evidence remain open. |
+| R38 | Actuator current-envelope and torque-enable configuration correction | Added a guarded raw 800/300 current candidate, exact mode/readback rules, a fail-closed executable validator, eight tests and an external characterization route. Internal current is not treated as branch-current proof; the XM540/JST conflict and all physical gates remain open. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

@@ -34,6 +34,8 @@ Watchdog heartbeat recovery may make the two ordinary watchdog relays healthy ag
 
 `firmware/supervisor/project_button_supervisor/model.py` implements the authority state machine and trajectory checks. The repository configuration intentionally contains unresolved configuration/kinematic hashes and `null` start-pose tolerances. Therefore the repository configuration fails closed and cannot accept any trajectory.
 
+`firmware/supervisor/actuator-config.json` now defines `HR-V0-ACT-P0.1`, a fail-closed register-readback candidate. It requires Operating Mode 5, startup torque off, torque-on-goal-update off, torque initially off, and raw current candidates of 800 for J1/J2 and 300 for the gripper. Received model numbers, firmware versions and the external branch-current ceiling are deliberately unresolved, so the repository candidate still inhibits torque. See `docs/hr-v0-actuator-current-envelope-p0.1.md`.
+
 The candidate has no DYNAMIXEL transport, trajectory interpolator, Raspberry Pi service wrapper, real-time scheduler or released kinematic model. Those are required before bench motion.
 
 ## Current validation evidence
@@ -44,7 +46,7 @@ Run:
 python tools/check_hr_v0_firmware.py
 ```
 
-The current checker executes 17 standard-library unit tests covering:
+The current checker executes 25 standard-library unit tests covering:
 
 - default-off startup and stuck heartbeat;
 - exact 300 ms timeout and three-edge recovery;
@@ -55,6 +57,7 @@ The current checker executes 17 standard-library unit tests covering:
 - start-pose, joint limit, joint-speed and TCP-speed rejection;
 - target invalidation on fault and hardware restoration; and
 - execution-deadline and terminal-state behavior.
+- fail-closed actuator identity, mode, startup/drive-bit, torque-state, current-limit, goal-current and hardware-error readback.
 
 It also compares portable-C timing constants to `watchdog-config.json`, checks fail-closed source invariants, and verifies `firmware/SOURCE-MANIFEST.csv` against the source tree.
 
@@ -65,9 +68,10 @@ It also compares portable-C timing constants to `watchdog-config.json`, checks f
 - pinned Pico SDK/compiler/CMake/Ninja versions and a reproducible build environment;
 - warning-clean host and ARM compilation, static analysis, unit-test execution against the compiled C, `.elf`/`.uf2`/map hashes and size/stack evidence;
 - selected Raspberry Pi deployment image, Python version, service supervision and immutable configuration hash;
-- selected kinematic model, tolerance values, DYNAMIXEL interface and torque-off semantics;
+- selected kinematic model, tolerance values, DYNAMIXEL transport and compiled torque-off/readback semantics;
+- received actuator identity/firmware records plus external branch-current, torque, connector-temperature and duty-cycle evidence under `INSPECT-CTRL-001` and `TEST-CTRL-006`;
 - code review by named controls/electrical reviewers;
-- HIL fault matrix and raw traces for `TEST-SAFE-001` through `TEST-SAFE-003` and `TEST-CTRL-001` through `TEST-CTRL-005`; and
+- HIL fault matrix and raw traces for `TEST-SAFE-001` through `TEST-SAFE-003` and `TEST-CTRL-001` through `TEST-CTRL-006`; and
 - qualified functional-safety review of the hardware boundary, diagnostics and common-cause failures.
 
 Gate `EG-017` is therefore only `partial`. Source tests and hashes do not authorize installing firmware or energizing the robot.

@@ -1,0 +1,10 @@
+record_id,date_utc,operator,reviewer,configuration_id,axis,actuator_model,serial_number,model_number_readback,firmware_version_readback,dynamixel_id,operating_mode_readback,drive_mode_readback,startup_configuration_readback,torque_enable_initial,current_limit_raw,goal_current_raw,profile_velocity_raw,profile_acceleration_raw,test_case,commanded_position,measured_load_nm,external_branch_peak_a,external_branch_rms_a,present_current_peak_raw,branch_min_v,connector_start_c,connector_max_c,actuator_max_c,ambient_c,cable_part_and_length,instrument_ids,calibration_ids,raw_data_uri,acceptance_limit_reference,result,nonconformance_id,approver,approval_date,notes
+ACT-001,,,,HR-V0-ACT-P0.1,J1,XM540-W270-T,,,,1,5,0,0,0,200,200,,,TORQUE_OFF_BASELINE,,,,,,,,,,,,,,,,NOT EXECUTED,,,,
+ACT-002,,,,HR-V0-ACT-P0.1,J1,XM540-W270-T,,,,1,5,0,0,0,400,400,,,LOADED_HOLD,,,,,,,,,,,,,,,,NOT EXECUTED,,,,
+ACT-003,,,,HR-V0-ACT-P0.1,J1,XM540-W270-T,,,,1,5,0,0,0,600,600,,,BIDIRECTIONAL_MOTION,,,,,,,,,,,,,,,,NOT EXECUTED,,,,
+ACT-004,,,,HR-V0-ACT-P0.1,J1,XM540-W270-T,,,,1,5,0,0,0,800,800,,,RELEASED_DUTY_CYCLE,,,,,,,,,,,,,,,,NOT EXECUTED,,,,
+ACT-005,,,,HR-V0-ACT-P0.1,J2,XM540-W270-T,,,,2,5,0,0,0,800,800,,,RELEASED_DUTY_CYCLE,,,,,,,,,,,,,,,,NOT EXECUTED,,,,
+ACT-006,,,,HR-V0-ACT-P0.1,GRIPPER,XM430-W350-T,,,,3,5,0,0,0,300,300,,,GRIP_FORCE_CYCLE,,,,,,,,,,,,,,,,NOT EXECUTED,,,,
+ACT-007,,,,HR-V0-ACT-P0.1,J1,XM540-W270-T,,,,1,5,0,0,0,800,800,,,COMMUNICATION_LOSS,,,,,,,,,,,,,,,,NOT EXECUTED,,,,
+ACT-008,,,,HR-V0-ACT-P0.1,J1,XM540-W270-T,,,,1,5,0,0,0,800,800,,,PROTECTIVE_POWER_INTERRUPTION,,,,,,,,,,,,,,,,NOT EXECUTED,,,,
+ACT-009,,,,HR-V0-ACT-P0.1,J1,XM540-W270-T,,,,1,5,0,0,0,800,800,,,REVERSAL_REGENERATION,,,,,,,,,,,,,,,,NOT EXECUTED,,,,

@@ -27,10 +27,10 @@ Evidence maturity is recorded separately from design intent. A clean parser, ERC
 | HR-30 full-body CAD | E0 | controlled external dimensions and joint inventory | dimensioned assembly, packaging, collision, service, cable, mass, COM, and inertia evidence |
 | Leg drivetrain | E1 | candidate actuator and 1.5:1 reduction concept | instrumented joint article; output encoder selection; continuous/cyclic/impact/thermal/backlash tests |
 | Foot and IMU sensing | E1 | functional interfaces and sample-rate requirements | complete component circuits, PCB/layout, calibration, overload, saturation, latency, and fault-injection evidence |
-| HR-V0 control implementation | E1 | canonical states; portable watchdog C candidate; executable supervisor model; 17 unit tests; source manifest | exact interfaces; compiled reproducible binaries; selected kinematics/transport; HIL, deadline, stale-data and reset-to-motion traces; qualified review |
+| HR-V0 control implementation | E1 | canonical states; portable watchdog C candidate; executable supervisor and actuator-readback models; 25 unit tests; source manifest | received actuator identities; external branch-current envelope; exact interfaces; compiled reproducible binaries; selected kinematics/transport; HIL, deadline, stale-data and reset-to-motion traces; qualified review |
 | Safe power-loss response | E0 | hazard and release gate recorded | selected mitigation and pose-by-pose restrained fault evidence |
 | HR-30 energy system | E0 | preliminary topology and required protections | chemistry, pack, fault current, contactors, fuses, precharge, charger interlock, enclosure, and test evidence |
-| Requirements and risk governance | E0 | 67 draft requirements; 40 open risks; traceability links | accountable owners, rationale, acceptance thresholds, evidence locations, approvers, change history, FMEA/FTA/common-cause review |
+| Requirements and risk governance | E0 | 68 draft requirements; 40 open risks; 85 procedure records; traceability links | accountable owners, rationale, acceptance thresholds, evidence locations, approvers, change history, FMEA/FTA/common-cause review |
 | Walking capability | E0 | W0-W5 acceptance definitions | all preceding releases and physical test evidence |
 
 ## Release rule

@@ -138,6 +138,41 @@ def main() -> int:
         if required not in model:
             failures.append(f"supervisor fail-closed invariant missing: {required}")
 
+    actuator_config = json.loads((FIRMWARE / "supervisor" / "actuator-config.json").read_text(encoding="utf-8"))
+    if actuator_config.get("configuration_id") != "HR-V0-ACT-P0.1":
+        failures.append("actuator configuration ID is not HR-V0-ACT-P0.1")
+    if actuator_config.get("external_branch_current_limit_a") != "SELECTION REQUIRED":
+        failures.append("external branch-current limit was released without physical evidence")
+    if actuator_config.get("operating_mode") != 5:
+        failures.append("actuator candidate is not current-based position control mode 5")
+    if actuator_config.get("startup_torque_on") is not False:
+        failures.append("actuator startup-torque candidate is not fail-off")
+    if actuator_config.get("torque_on_by_goal_update") is not False:
+        failures.append("actuator goal-update torque candidate is not fail-off")
+    expected_actuators = {
+        "J1": (1, "XM540-W270-T", 800),
+        "J2": (2, "XM540-W270-T", 800),
+        "GRIPPER": (3, "XM430-W350-T", 300),
+    }
+    for joint, (actuator_id, model_name, raw_limit) in expected_actuators.items():
+        item = actuator_config.get("actuators", {}).get(joint, {})
+        if (item.get("id"), item.get("model"), item.get("current_limit_raw_candidate")) != (actuator_id, model_name, raw_limit):
+            failures.append(f"actuator candidate differs at {joint}")
+        if isinstance(item.get("model_number"), int) or isinstance(item.get("firmware_version"), int):
+            failures.append(f"received identity was inferred before inspection at {joint}")
+    actuator_model = (FIRMWARE / "supervisor" / "project_button_supervisor" / "actuator_config.py").read_text(encoding="utf-8")
+    for required in (
+        "RELEASE_SELECTIONS_OPEN",
+        "TORQUE_ALREADY_ENABLED",
+        "TORQUE_ON_GOAL_UPDATE_MISMATCH",
+        "STARTUP_TORQUE_MISMATCH",
+        "CURRENT_LIMIT_MISMATCH",
+        "GOAL_CURRENT_EXCEEDS_CANDIDATE",
+        "HARDWARE_ERROR_PRESENT",
+    ):
+        if required not in actuator_model:
+            failures.append(f"actuator fail-closed invariant missing: {required}")
+
     if load_manifest() != current_hashes():
         failures.append("firmware SOURCE-MANIFEST.csv does not match the controlled source tree")
 

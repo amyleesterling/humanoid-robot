@@ -1,0 +1,46 @@
+{
+  "configuration_id": "HR-V0-ACT-P0.1",
+  "status": "PRELIMINARY-NOT-APPROVED-FOR-ENERGIZATION",
+  "protocol": 2.0,
+  "baud_rate": 1000000,
+  "torque_enable_default": 0,
+  "startup_torque_on": false,
+  "torque_on_by_goal_update": false,
+  "operating_mode": 5,
+  "current_unit_a": 0.00269,
+  "external_branch_current_limit_a": "SELECTION REQUIRED",
+  "actuators": {
+    "J1": {
+      "id": 1,
+      "model": "XM540-W270-T",
+      "model_number": "RECEIVED READBACK REQUIRED",
+      "firmware_version": "RECEIVED READBACK REQUIRED",
+      "current_limit_raw_candidate": 800,
+      "goal_current_max_raw_candidate": 800,
+      "nominal_internal_current_limit_a": 2.152,
+      "position_limit_source": "SUPERVISOR-AND-PHYSICAL-HARD-STOPS"
+    },
+    "J2": {
+      "id": 2,
+      "model": "XM540-W270-T",
+      "model_number": "RECEIVED READBACK REQUIRED",
+      "firmware_version": "RECEIVED READBACK REQUIRED",
+      "current_limit_raw_candidate": 800,
+      "goal_current_max_raw_candidate": 800,
+      "nominal_internal_current_limit_a": 2.152,
+      "position_limit_source": "SUPERVISOR-AND-PHYSICAL-HARD-STOPS"
+    },
+    "GRIPPER": {
+      "id": 3,
+      "model": "XM430-W350-T",
+      "model_number": "RECEIVED READBACK REQUIRED",
+      "firmware_version": "RECEIVED READBACK REQUIRED",
+      "current_limit_raw_candidate": 300,
+      "goal_current_max_raw_candidate": 300,
+      "nominal_internal_current_limit_a": 0.807,
+      "position_limit_source": "SUPERVISOR-AND-PHYSICAL-GRIPPER-STOPS"
+    }
+  },
+  "safety_credit": "NONE",
+  "release_state": "TEST-CANDIDATE-ONLY"
+}
