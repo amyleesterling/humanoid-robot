@@ -7,18 +7,19 @@ import json
 import subprocess
 from pathlib import Path
 
-from generate_hr_v0_release_manifest import FIELDS, MANIFEST, MANIFEST_REL, ROOT, package_files, role_for
+from generate_hr_v0_release_manifest import (
+    FIELDS,
+    MANIFEST,
+    MANIFEST_REL,
+    ROOT,
+    index_blobs,
+    package_files,
+    role_for,
+    untracked_package_files,
+)
 
 
 METADATA = ROOT / "release" / "hr-v0" / "release-candidate.json"
-
-
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
 
 
 def git(*args: str) -> str:
@@ -83,6 +84,10 @@ def main() -> None:
             errors.append(f"manifest columns: expected {FIELDS}, got {tuple(headers)}")
 
     actual_paths = package_files()
+    blobs = index_blobs(actual_paths)
+    untracked = untracked_package_files()
+    if untracked:
+        errors.append(f"untracked non-ignored package files are not allowed: {untracked}")
     manifested_paths = [row.get("path", "") for row in rows]
     if manifested_paths != sorted(manifested_paths):
         errors.append("manifest paths are not deterministically sorted")
@@ -98,16 +103,16 @@ def main() -> None:
 
     for row in rows:
         relative = row.get("path", "")
-        path = ROOT / relative
-        if not relative or not path.is_file():
+        if not relative or relative not in actual_paths:
             continue
+        content = blobs[relative]
         expected_role = role_for(relative)
         if row.get("role") != expected_role:
             errors.append(f"{relative}: role {row.get('role')!r}, expected {expected_role!r}")
-        expected_size = str(path.stat().st_size)
+        expected_size = str(len(content))
         if row.get("size_bytes") != expected_size:
             errors.append(f"{relative}: size {row.get('size_bytes')!r}, expected {expected_size}")
-        expected_hash = sha256(path)
+        expected_hash = hashlib.sha256(content).hexdigest()
         if row.get("sha256") != expected_hash:
             errors.append(f"{relative}: SHA-256 mismatch")
 

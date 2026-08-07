@@ -14,7 +14,7 @@ R45 creates a deterministic, reviewable HR-V0 package boundary:
 
 - records the current systems, electrical, PCB, mechanical, firmware and safety candidate identifiers in machine-readable release metadata;
 - classifies Electrical V2.1 as historical and HR-30A/B/C/D/W as later-stage scope rather than silently mixing them into the HR-V0 candidate;
-- hashes every non-ignored package file except the self-referential manifest itself;
+- hashes every tracked package file's canonical Git blob except the self-referential manifest itself and rejects untracked non-ignored files;
 - includes the metadata, generator and checker within the hashed file set;
 - controls cross-platform text checkout so line-ending conversion cannot silently invalidate or rewrite the evidence set;
 - detects changed, missing, extra, reordered, reclassified or corrupted package files; and

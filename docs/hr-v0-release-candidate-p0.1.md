@@ -12,7 +12,7 @@ This package makes the current HR-V0 review configuration reproducible. It does 
 
 The manifest covers every Git-tracked or non-ignored candidate file except the manifest itself. That exception prevents a recursive self-hash. The manifest includes its own metadata, generator, checker, engineering sources, generated candidates, BOMs, requirements, risks, procedures, primary/vendor references, review history and configuration files.
 
-Repository text uses controlled LF checkout through `.gitattributes`, with explicit binary and firmware-HEX exceptions. This prevents the SHA-256 evidence from changing merely because a reviewer clones on a platform with different default line endings.
+The manifest hashes Git's canonical staged blobs, not platform-dependent checkout bytes. Repository text also uses controlled LF checkout through `.gitattributes`, with explicit binary and firmware-HEX exceptions. Clean-worktree enforcement then proves that the checkout corresponds to the committed candidate without making SHA-256 evidence depend on a reviewer's platform defaults.
 
 ## Current product set
 
@@ -31,10 +31,11 @@ Electrical V2.1 remains preserved as a reviewed historical baseline. It does not
 
 ## Generate and verify
 
-From the repository root with Python 3:
+From the repository root with Python 3, first stage every deliberate candidate change except the generated manifest. Generation fails if any non-ignored package file remains untracked. Then run:
 
 ```powershell
 python tools/generate_hr_v0_release_manifest.py
+git add release/hr-v0/HR-V0-RC-P0.1-file-manifest.csv
 python tools/check_hr_v0_release_manifest.py
 ```
 

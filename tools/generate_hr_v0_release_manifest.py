@@ -13,14 +13,40 @@ FIELDS = ("path", "role", "sha256", "size_bytes")
 
 
 def package_files() -> list[str]:
+    return sorted(path for path in index_entries() if path != MANIFEST_REL)
+
+
+def index_entries() -> dict[str, str]:
     result = subprocess.run(
-        ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
+        ["git", "ls-files", "--stage", "-z"],
         cwd=ROOT,
         check=True,
         capture_output=True,
     )
-    paths = [item.decode("utf-8") for item in result.stdout.split(b"\0") if item]
-    return sorted(path for path in paths if path != MANIFEST_REL)
+    entries: dict[str, str] = {}
+    for record in result.stdout.split(b"\0"):
+        if not record:
+            continue
+        metadata, raw_path = record.split(b"\t", 1)
+        _mode, object_id, stage = metadata.decode("ascii").split()
+        if stage != "0":
+            raise SystemExit(f"Unmerged index entry is not allowed: {raw_path.decode('utf-8')}")
+        entries[raw_path.decode("utf-8")] = object_id
+    return entries
+
+
+def untracked_package_files() -> list[str]:
+    result = subprocess.run(
+        ["git", "ls-files", "--others", "--exclude-standard", "-z"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    )
+    return sorted(
+        item.decode("utf-8")
+        for item in result.stdout.split(b"\0")
+        if item and item.decode("utf-8") != MANIFEST_REL
+    )
 
 
 def role_for(path: str) -> str:
@@ -55,26 +81,66 @@ def role_for(path: str) -> str:
     return "repository_configuration"
 
 
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
+def index_blobs(paths: list[str]) -> dict[str, bytes]:
+    entries = index_entries()
+    missing = sorted(set(paths) - set(entries))
+    if missing:
+        raise SystemExit(f"Paths are missing from the Git index: {missing}")
+
+    query = b"".join(entries[path].encode("ascii") + b"\n" for path in paths)
+    result = subprocess.run(
+        ["git", "cat-file", "--batch"],
+        cwd=ROOT,
+        input=query,
+        check=True,
+        capture_output=True,
+    )
+
+    blobs: dict[str, bytes] = {}
+    position = 0
+    for path in paths:
+        header_end = result.stdout.find(b"\n", position)
+        if header_end < 0:
+            raise SystemExit(f"Missing git cat-file header for {path}")
+        header = result.stdout[position:header_end].decode("ascii").split()
+        if len(header) != 3 or header[1] != "blob":
+            raise SystemExit(f"Unexpected git cat-file response for {path}: {header}")
+        if header[0] != entries[path]:
+            raise SystemExit(f"Git blob identity mismatch for {path}")
+        size = int(header[2])
+        content_start = header_end + 1
+        content_end = content_start + size
+        content = result.stdout[content_start:content_end]
+        delimiter = result.stdout[content_end:content_end + 1]
+        if len(content) != size or delimiter != b"\n":
+            raise SystemExit(f"Truncated git blob response for {path}")
+        blobs[path] = content
+        position = content_end + 1
+
+    if position != len(result.stdout):
+        raise SystemExit("Unexpected trailing data from git cat-file")
+    return blobs
 
 
 def main() -> None:
+    untracked = untracked_package_files()
+    if untracked:
+        raise SystemExit(
+            "Stage every candidate package file before generating the manifest; "
+            f"untracked files remain: {untracked}"
+        )
+
     rows: list[dict[str, str | int]] = []
-    for relative in package_files():
-        path = ROOT / relative
-        if not path.is_file():
-            raise SystemExit(f"Package path is not a regular file: {relative}")
+    paths = package_files()
+    blobs = index_blobs(paths)
+    for relative in paths:
+        content = blobs[relative]
         rows.append(
             {
                 "path": relative,
                 "role": role_for(relative),
-                "sha256": sha256(path),
-                "size_bytes": path.stat().st_size,
+                "sha256": hashlib.sha256(content).hexdigest(),
+                "size_bytes": len(content),
             }
         )
 
