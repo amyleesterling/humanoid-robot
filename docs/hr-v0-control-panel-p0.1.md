@@ -6,7 +6,7 @@ Document ID: `HR-V0-CP-P0.1`
 
 Date: 2026-08-07
 
-Electrical input: `Project Button Electrical V3-P1.4`
+Electrical input: `Project Button Electrical V3-P1.5`
 
 Scope: stationary HR-V0 bench control enclosure, backplate, operator door, terminal strip, reserved cable entries, and a source-traceable stationary-wire boundary
 
@@ -35,7 +35,7 @@ The planning envelope uses Hammond `PJU181610H` and steel inner panel `P1868`. T
 
 XT1 proposes five gray Phoenix Contact `PT 2,5` item `3209510` terminals, one blue `PT 2,5 BU` item `3209523`, one `D-ST 2,5` item `3030417` end cover, two `CLIPFIX 35` item `3022218` end brackets, and `UCT-TM 5` item `0828734` markers. Proposed DIN rail is `NS 35/7,5 PERF 500MM` item `1207650`; proposed duct stock is `CD 40X40` item `3240189`. These selections establish identity and layout inputs only. They do not establish conductor ampacity, protection, temperature rise, termination method, or code acceptance.
 
-H1 proposes amber IDEC `HW1P-1FQD-A-24V`. The V3 modeled net remains `SR1_STATUS` to `SAFETY_0V`; received terminal identity, polarity and current must be verified before any source connection. The legend is **RESET STAGE READY - DIAGNOSTIC ONLY / NO MOTION AUTHORITY**. H1 must never be described as “safe” or “armed,” and it receives no safety credit.
+H1 is frozen in V3-P1.5 as amber IDEC `HW1P-1FQD-A-24V`. The modeled net remains `SR1_STATUS` to `SAFETY_0V`; `TBD-HA` and `TBD-HB` are project placeholders, not manufacturer markings. Received terminal identity, internal circuit, orientation, polarity/current and brightness must be verified before any source connection. The legend is **RESET STAGE READY - DIAGNOSTIC ONLY / NO MOTION AUTHORITY**. H1 must never be described as “safe” or “armed,” and it receives no safety credit.
 
 S0, S1, S2, SR1, SRA1, KWD1, KWD2, K1 and K2 retain the exact V3 candidate identities and holds. In particular:
 

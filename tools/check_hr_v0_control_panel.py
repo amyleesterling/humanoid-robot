@@ -13,8 +13,12 @@ ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "electrical" / "panel" / "hr-v0-control-panel-p0.1"
 V3 = ROOT / "electrical" / "kicad" / "project-button-v3"
 FORM = ROOT / "tests" / "forms" / "hr-v0-control-panel-receiving-assembly-template.csv"
+H1_FORM = ROOT / "tests" / "forms" / "hr-v0-h1-receiving-template.csv"
 DOC = ROOT / "docs" / "hr-v0-control-panel-p0.1.md"
+H1_DOC = ROOT / "docs" / "hr-v0-h1-receiving-p0.1.md"
+PRIMARY_SOURCES = ROOT / "references" / "primary-sources.md"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
+H1_WARNING = "PRELIMINARY - NOT APPROVED FOR PANEL WIRING OR ROBOT ENERGIZATION"
 PANEL_REFS = {"S0", "S1", "S2", "H1", "SR1", "SRA1", "KWD1", "KWD2", "K1", "K2", "XT1"}
 
 
@@ -83,6 +87,8 @@ def main() -> int:
     for item_id, mpn in required_mpn.items():
         if by_item.get(item_id, {}).get("manufacturer_part_number") != mpn:
             errors.append(f"{item_id} exact candidate must remain {mpn}")
+    if "HR-V0-H1-RCV-P0.1" not in by_item.get("PAN-010", {}).get("closure_evidence_required", ""):
+        errors.append("PAN-010 does not require the controlled H1 receiving/characterization route")
     for item_id in ("PAN-019", "PAN-020"):
         if by_item.get(item_id, {}).get("manufacturer_part_number") != "SELECTION REQUIRED":
             errors.append(f"{item_id} must remain SELECTION REQUIRED")
@@ -177,7 +183,7 @@ def main() -> int:
                 errors.append(f"{row.get('wire_number')} infers unreleased {field}: {row.get(field)!r}")
         if not row.get("release_state", "").startswith("NOT RELEASED"):
             errors.append(f"{row.get('wire_number')} has released-looking state")
-    required_tbd = {"TBD-R1", "TBD-R2", "TBD-A1", "TBD-A2", "TBD-H+", "TBD-H-", "TBD-1", "TBD-2", "TBD-3", "TBD-4", "TBD-5", "TBD-6"}
+    required_tbd = {"TBD-R1", "TBD-R2", "TBD-A1", "TBD-A2", "TBD-HA", "TBD-HB", "TBD-1", "TBD-2", "TBD-3", "TBD-4", "TBD-5", "TBD-6"}
     actual_tbd = {row.get("terminal") for row in physical_wires if row.get("terminal", "").startswith("TBD-")}
     if actual_tbd != required_tbd:
         errors.append(f"TBD terminal boundary changed: {sorted(actual_tbd)}")
@@ -190,6 +196,17 @@ def main() -> int:
         if row.get("record_id") != "NOT-EXECUTED" or row.get("status") != "NOT EXECUTED":
             errors.append(f"{row.get('step_id')} contains executed-looking evidence")
 
+    h1_form = read_csv(H1_FORM) if H1_FORM.is_file() else []
+    if len(h1_form) != 14 or {row.get("step_id") for row in h1_form} != {f"H1-{i:03d}" for i in range(1, 15)}:
+        errors.append("H1 receiving form must contain exactly H1-001..H1-014")
+    for row in h1_form:
+        if row.get(None):
+            errors.append(f"{row.get('step_id')} has extra CSV fields")
+        if row.get("record_id") != "NOT-EXECUTED" or row.get("status") != "NOT EXECUTED":
+            errors.append(f"{row.get('step_id')} contains executed-looking H1 evidence")
+        if row.get("warning") != H1_WARNING:
+            errors.append(f"{row.get('step_id')} lacks the exact H1 preliminary warning")
+
     doc = DOC.read_text(encoding="utf-8") if DOC.is_file() else ""
     for required in (
         "HR-V0-CP-P0.1",
@@ -200,6 +217,29 @@ def main() -> int:
     ):
         if required not in doc:
             errors.append(f"control-panel document omits: {required}")
+
+    h1_doc = H1_DOC.read_text(encoding="utf-8") if H1_DOC.is_file() else ""
+    for required in (
+        "HR-V0-H1-RCV-P0.1",
+        "Project Button Electrical V3-P1.5",
+        "TBD-HA` and `TBD-HB` are project placeholders only",
+        "does not choose a current limit, fuse, test-lead rating, or source",
+        "RESET STAGE READY - DIAGNOSTIC ONLY / NO MOTION AUTHORITY",
+        "must never be described as \"safe\" or \"armed\"",
+    ):
+        if required not in h1_doc:
+            errors.append(f"H1 receiving procedure omits: {required}")
+
+    primary_sources = PRIMARY_SOURCES.read_text(encoding="utf-8") if PRIMARY_SOURCES.is_file() else ""
+    for required in (
+        "HW1P-1FQD-A-24V",
+        "official product page rechecked 2026-08-07",
+        "current `HW Series Catalog_Screw` supporting document is dated 2026-07-23",
+        "does not close received terminal markings, internal polarity/bridge behavior",
+        "HR-V0-H1-RCV-P0.1",
+    ):
+        if required not in primary_sources:
+            errors.append(f"primary-source register omits H1 evidence limit: {required}")
 
     svg = PACKAGE / "panel-layout.svg"
     if svg.is_file():
@@ -222,7 +262,7 @@ def main() -> int:
         return 1
 
     print("HR-V0 control-panel check passed: 20 BOM rows; 16 backplate allocations; 66 V3 wire endpoints")
-    print("Six cable entries, ten thermal/space screens and twenty evidence records remain fail-closed")
+    print("Six cable entries, ten thermal/space screens, twenty panel records and fourteen H1 records remain fail-closed")
     print("No hole, cut length, wire, fuse, PE bond, cable entry, PCB fabrication, assembly or energization release exists")
     print(WARNING)
     return 0

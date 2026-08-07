@@ -318,7 +318,7 @@
   },
   "text_variables": {
     "PROJECT_STATUS": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION",
-    "REVISION": "V3-P1.4"
+    "REVISION": "V3-P1.5"
   },
   "component_class_settings": {
     "assignments": [],

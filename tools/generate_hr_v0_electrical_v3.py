@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P1.4"
+REV = "V3-P1.5"
 PROJECT_TITLE = "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE"
 PROJECT_SUBTITLE = "Separate RESET and ARM, two PNOZ stages, dual watchdog contacts, external adapters, redundant actuator interruption."
 DATE = "2026-08-07"
@@ -213,9 +213,13 @@ def sheets() -> list[Sheet]:
                   "PROPOSED - COMPLETE ORDER CODE FROZEN; RECEIVED-LOT TERMINAL MAPPING REQUIRED", "Exact black flush momentary 1NO screw-terminal complete assembly is frozen for RESET. IDEC states that old and redesigned HW assemblies can ship under the same complete order code during the transition that began 2026-06-15, and the live product-page BOM returned no component detail on 2026-08-07. Do not copy legacy or push-in terminal numbers. The panel shall carry the explicit RESET legend and remain outside the swept envelope. Record the received design, underside orientation, molded terminal marks and released/pressed continuity before replacing either TBD terminal.",
                   "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b",
                   "IDEC US product page and HW Series Catalog_Screw dated 2026-07-23 plus IDEC HW specification-change notice dated 2026-07-14; live page/BOM rechecked 2026-08-07.", position=(340, 82), width=82),
-        Component("H1", "SAFE ELIGIBLE indicator interface",
-                  [pn("H1", "TBD-H+", "+", "SR1_STATUS", "left"), pn("H1", "TBD-H-", "-", "SAFETY_0V", "right")],
-                  "SELECTION REQUIRED", "Diagnostic indicator only; no safety credit and no motion authority.", position=(75, 190), width=82),
+        Component("H1", "IDEC HW1P-1FQD-A-24V amber diagnostic pilot light",
+                  [pn("H1", "TBD-HA", "UNVERIFIED LAMP TERMINAL A", "SR1_STATUS", "left"),
+                   pn("H1", "TBD-HB", "UNVERIFIED LAMP TERMINAL B", "SAFETY_0V", "right")],
+                  "PROPOSED - COMPLETE ORDER CODE FROZEN; RECEIVED TERMINAL/POLARITY VERIFICATION REQUIRED",
+                  "Exact amber round flush 22 mm pilot-light complete assembly is frozen. The current IDEC page identifies a black plastic bezel, screw terminals and 24 VAC/DC illumination, but no received terminal marking, orientation, internal circuit or polarity result is recorded. TBD-HA/TBD-HB are project placeholders, not manufacturer markings. Label H1 RESET STAGE READY - DIAGNOSTIC ONLY / NO MOTION AUTHORITY. Do not call it SAFE or ARMED and assign no safety credit. Execute docs/hr-v0-h1-receiving-p0.1.md before replacing placeholders or wiring the lamp.",
+                  "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/22mm-25mm-30mm-switches/hw-22mm-heavy-duty/hw1p-1fqd-a-24v",
+                  "IDEC USA current product page and HW Series Catalog_Screw dated 2026-07-23; product page rechecked 2026-08-07. Received terminal identity, internal circuit, polarity/current, brightness and legend acceptance remain open.", position=(75, 190), width=82),
     ]
     s2.notes = ["Each E-stop return passes through one watchdog NO contact before SR1; heartbeat loss therefore drops SR1.",
                 "RESET release may make SR1 eligible, but SRA1 and K1/K2 remain de-energized until a later ARM.",
@@ -955,6 +959,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 - Three poles per candidate contactor are represented in series, pending Schneider application confirmation.
 - U2D2 VDD is omitted and protected power is injected by one central DXL-STAR-P0.1 board with three isolated VDD branches; harness, thermal, waveform and no-backfeed evidence remain design gates.
 - RESET `S1` and ARM `S2` retain exact complete IDEC order codes, but their physical terminals remain `TBD-*`. IDEC's 2026 production transition permits prior or redesigned internals under the same complete codes, and the live product BOM exposes no component identity. Only received-lot markings, orientation, continuity and independent comparison may release the terminal map.
+- H1 is exact amber IDEC `HW1P-1FQD-A-24V`, labeled `RESET STAGE READY - DIAGNOSTIC ONLY / NO MOTION AUTHORITY`. The prior `SAFE ELIGIBLE` name and `+/-` pin implication are removed. `TBD-HA/TBD-HB` are project placeholders pending received terminal, internal-circuit, polarity/current, brightness and human-factors evidence; H1 receives no safety credit.
 
 ## Validate
 

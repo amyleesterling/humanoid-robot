@@ -71,7 +71,7 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P1.4", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P1.5", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
@@ -230,6 +230,17 @@ def main() -> int:
                 "no component detail" in device.description and
                 "Do not copy legacy or push-in terminal numbers" in device.description,
                 f"{ref} IDEC production-transition evidence changed", failures)
+    h1 = components["H1"]
+    require(h1.value == "IDEC HW1P-1FQD-A-24V amber diagnostic pilot light",
+            "H1 exact amber IDEC order code changed", failures)
+    require(h1.status == "PROPOSED - COMPLETE ORDER CODE FROZEN; RECEIVED TERMINAL/POLARITY VERIFICATION REQUIRED",
+            "H1 received-terminal/polarity hold changed", failures)
+    require(pin_map(components, "H1") == {"TBD-HA": "SR1_STATUS", "TBD-HB": "SAFETY_0V"},
+            "H1 placeholder-terminal mapping changed", failures)
+    require("project placeholders, not manufacturer markings" in h1.description and
+            "Do not call it SAFE or ARMED" in h1.description and
+            "no safety credit" in h1.description,
+            "H1 diagnostic-only and placeholder boundary changed", failures)
     require(pin_map(components, "K1")["22"] == "EDM_K1_OUT" and
             pin_map(components, "K2")["21"] == "EDM_K1_OUT" and
             pin_map(components, "K2")["22"] == "SRA1_START_RETURN",

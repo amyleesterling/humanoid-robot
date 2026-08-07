@@ -39,8 +39,8 @@ W2016,02_estop_eligibility.kicad_sch,SR1,41,AUX NC IN,SAFETY_24V
 W2017,02_estop_eligibility.kicad_sch,SR1,Y32,SEMICONDUCTOR STATUS,SR1_STATUS
 W2018,02_estop_eligibility.kicad_sch,S1,TBD-R1,RESET IN,SR1_S12
 W2019,02_estop_eligibility.kicad_sch,S1,TBD-R2,RESET OUT,SR1_START_RETURN
-W2020,02_estop_eligibility.kicad_sch,H1,TBD-H+,+,SR1_STATUS
-W2021,02_estop_eligibility.kicad_sch,H1,TBD-H-,-,SAFETY_0V
+W2020,02_estop_eligibility.kicad_sch,H1,TBD-HA,UNVERIFIED LAMP TERMINAL A,SR1_STATUS
+W2021,02_estop_eligibility.kicad_sch,H1,TBD-HB,UNVERIFIED LAMP TERMINAL B,SAFETY_0V
 W3001,03_arm_watchdog_eligibility.kicad_sch,SRA1,A1,24V SUPPLY,SAFETY_24V
 W3002,03_arm_watchdog_eligibility.kicad_sch,SRA1,A2,0V SUPPLY,SAFETY_0V
 W3003,03_arm_watchdog_eligibility.kicad_sch,SRA1,S11,INPUT CH1 FEED,SRA1_S11

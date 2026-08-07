@@ -4,7 +4,7 @@
 
 Date: 2026-08-07
 
-Electrical candidate: `V3-P1.4`
+Electrical candidate: `V3-P1.5` (retains the P1.4 RESET/ARM terminal-control correction)
 
 Gate: `EG-011` remains **partial**
 
