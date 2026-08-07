@@ -414,7 +414,7 @@ def sheets() -> list[Sheet]:
                    pn("UFB1", "15", "IN1", "FB_IN1", "left"), pn("UFB1", "16", "SENSE1", "FB_SENSE1", "left")],
                   "PROPOSED - PCB/EMC VERIFICATION REQUIRED", "Exact dual-channel receiver candidate. Logic and field grounds both return to SAFETY_0V in this non-isolated system, so no galvanic-isolation or safety-integrity credit is claimed. Layout, thermal, EMC, fault-injection and received-part tests remain open.",
                   "https://www.ti.com/lit/ds/symlink/iso1211.pdf", "TI ISO1211/ISO1212 datasheet SLLSEY7G, revised February 2025; ISO1212DBQ active tube orderable confirmed 2026-08-06.", position=(205, 115), width=82,
-                  footprint="Package_SO:SSOP-16_5.3x6.2mm_P0.65mm"),
+                  footprint="Package_SO:SSOP-16_3.9x4.9mm_P0.635mm"),
         Component("RTH1", "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF",
                   [pn("RTH1", "1", "FIELD INPUT", "WD1_NC_24V", "left"), pn("RTH1", "2", "SENSE", "FB_SENSE1", "right")],
                   "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL", "Exact order code frozen. Exact MELF candidate for TI Type-3 threshold/surge limiting. Screened steady loss is 7.6 mW at 2.75 mA; PCB land pattern, pulse/surge, temperature and enclosure derating still require release evidence.",
@@ -450,7 +450,7 @@ def sheets() -> list[Sheet]:
         Component("CDEC1", "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805",
                   [pn("CDEC1", "1", "3V3", "WD_3V3", "left"), pn("CDEC1", "2", "GND1", "SAFETY_0V", "right")],
                   "PROPOSED - VERIFICATION REQUIRED: PCB/PLACEMENT", "Exact order code frozen. Exact 0805 candidate required at UFB1 VCC1/GND1; placement within 2 mm, land pattern and received-board capacitance remain open.",
-                  "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810", "Murata official GRM21BR71H104KA01L specification asset, updated 2025 and accessed 2026-08-06.", position=(140, 190), width=50, footprint="Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"),
+                  "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810", "Murata official GRM21BR71H104KA01L specification asset, updated 2025 and accessed 2026-08-06.", position=(140, 190), width=50, footprint="Capacitor_SMD:C_0805_2012Metric"),
         Component("RSO1", "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805",
                   [pn("RSO1", "1", "RECEIVER OUT", "UFB_OUT1", "left"), pn("RSO1", "2", "PICO INPUT", "WD1_NC_DIAG", "right")],
                   "PROPOSED - VERIFICATION REQUIRED: PCB/FAULT", "Exact order code frozen. Exact 0.125 W series candidate. A 3.3 V contention screen is 10.9 mW; it does not make contention safe or provide isolation.",
@@ -904,7 +904,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 - Compute heartbeat crosses an exact VO618A-4X017T optical interface with exact 910 Ohm input and 10 kOhm pullup candidates. Two separate TPL7407LPWR packages drive the two relay coils, with unused inputs tied low, unused outputs open, and local 100 nF COM bypass candidates. These ordinary circuits receive no safety credit and still require PCB, timing, hot-plug, fault-injection, EMC and qualified review.
 - The ISO1212 feedback network uses exact proposed Vishay, Panasonic, TDK and Murata passive order codes. Receiving, PCB land-pattern/placement, DC-bias, pulse, thermal, EMC, fault and HIL evidence remain mandatory.
 - Three exact Phoenix Contact PCB terminal-block candidates freeze the project pin allocation for 24 V/control return, two coil sinks, two NC feedback channels and the isolated heartbeat pair. Harness, conductor, ferrule, protection, enclosure, received-orientation and thermal evidence remain open.
-- `project-button-v3.kicad_pcb` is a native placement/interface candidate only. It is deliberately unrouted and is not a Gerber or fabrication release; layout completion, DRC, schematic parity, creepage/clearance, thermal and HIL evidence remain gates.
+- `project-button-v3.kicad_pcb` is the native PCB-P0.2 constrained-placement candidate. It corrects the ISO1212 DBQ footprint and field/control zoning but remains deliberately unrouted and is not a Gerber or fabrication release; routing, DRC connectivity, schematic parity, stack-up, creepage/clearance, thermal, EMC and HIL evidence remain gates.
 - Heartbeat restoration cannot restore contactors; SRA1 requires a new monitored ARM action.
 - External Mean Well adapters replace project-built mains wiring.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.

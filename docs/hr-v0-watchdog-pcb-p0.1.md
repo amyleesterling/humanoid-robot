@@ -2,6 +2,8 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
+> **SUPERSEDED BY PCB-P0.2.** P0.1 used a non-matching `UFB1` package footprint and a staging placement that did not satisfy the field/control-side layout constraints. Do not route or fabricate P0.1.
+
 Electrical dependency: `Project Button Electrical V3-P1.0`
 
 PCB identifier: `PCB-P0.1`

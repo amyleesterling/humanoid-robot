@@ -2,10 +2,10 @@
 
 Handoff date: 2026-08-06  
 Package baseline: **HR-30-SYS-R0.2**  
-Electrical package: **Project Button Electrical V2.1 reviewed baseline; V3-P1.0 / PCB-P0.1 correction candidates**
+Electrical package: **Project Button Electrical V2.1 reviewed baseline; V3-P1.0 / PCB-P0.2 correction candidates**
 Mechanical package: **HR-V0-MECH-R0.1-PRELIMINARY quote geometry plus guard/catch/cable space study**
 Firmware package: **HR-V0-FW-P0.1 source/test candidate; no released binary**
-Status: **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
+Status: **PRELIMINARY - NOT APPROVED FOR ENERGIZATION**
 
 ## Authority and presentation
 
@@ -19,7 +19,7 @@ Status: **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 - V3 generator/checker: `tools/generate_hr_v0_electrical_v3.py`; `tools/check_hr_v0_electrical_v3.py`
 - Firmware source/checker: `firmware/`; `tools/check_hr_v0_firmware.py`
 
-The authoritative repository controls engineering intent and contains the reviewed Electrical V2.1 KiCad source plus the separate V3-P1.0 schematic and PCB-P0.1 placement/interface correction candidates. The website is a synchronized presentation and must not override the source specification. Individual documents retain their own revisions; neither electrical identifier replaces the `HR-30-SYS-R0.2` systems-package baseline. V3 does not supersede V2.1 until its open selections, calculations, tests, and qualified reviews close.
+The authoritative repository controls engineering intent and contains the reviewed Electrical V2.1 KiCad source plus the separate V3-P1.0 schematic and PCB-P0.2 constrained-placement correction candidates. The website is a synchronized presentation and must not override the source specification. Individual documents retain their own revisions; neither electrical identifier replaces the `HR-30-SYS-R0.2` systems-package baseline. V3 does not supersede V2.1 until its open selections, calculations, tests, and qualified reviews close.
 
 ## Current program inputs and fabrication route
 
@@ -41,13 +41,13 @@ The authoritative repository controls engineering intent and contains the review
 - 106 unresolved electrical selections/interfaces
 - KiCad 10.0.5 ERC: 0 errors and 0 warnings
 
-The V3-P1.0 candidate separately contains twelve native pages, 62 component blocks, 283 modeled terminals, 100 native nets (63 named connected nets plus 37 deliberate auto-generated unconnected nets), 246 unique wire labels, 50 unresolved component/interface rows, and 46 `TBD-*` terminal designations. It retains P0.4's exact ISO1212DBQ circuit, P0.5's RESET/ARM and compute-source identities, P0.6's controlled S0 contacts, P0.7's JA1/DC1 selections, P0.8's exact heartbeat/driver candidates and P0.9's exact feedback passives. P1.0 adds exact watchdog-PCB terminal candidates and pin allocation. PCB-P0.1 contains 26 schematic references, four board-only holes, zero tracks/zones, zero non-unrouted DRC violations and 68 unconnected pads. Source-side construction/current division, protection/distribution, receiving/derating, RESET/ARM terminals, panel human factors, routed PCB/stack-up, thermal/pulse/DC-bias/EMC, COM-slew, HIL/fault evidence and qualified review remain open. KiCad 10.0.5 ERC is 0 errors and 0 warnings, and native netlist/PDF/SVG exports plus the exact-net and PCB-subset checkers pass. These V3 counts must not be substituted for the independently reviewed V2.1 counts above.
+The V3-P1.0 candidate separately contains twelve native pages, 62 component blocks, 283 modeled terminals, 100 native nets (63 named connected nets plus 37 deliberate auto-generated unconnected nets), 246 unique wire labels, 50 unresolved component/interface rows, and 46 `TBD-*` terminal designations. It retains P0.4's exact ISO1212DBQ circuit, P0.5's RESET/ARM and compute-source identities, P0.6's controlled S0 contacts, P0.7's JA1/DC1 selections, P0.8's exact heartbeat/driver candidates and P0.9's exact feedback passives. P1.0 adds exact watchdog-PCB terminal candidates and pin allocation. PCB-P0.2 contains 26 schematic references, four board-only holes, zero tracks/zones, zero non-routing DRC violations and 68 unconnected pads. R32 corrects the non-matching P0.1 ISO1212 footprint, field/control zoning, bypass placement and driver capacitor placement, with a generated numerical constraint record. Source-side construction/current division, protection/distribution, receiving/derating, RESET/ARM terminals, panel human factors, routed PCB/stack-up, thermal/pulse/DC-bias/EMC, COM-slew, HIL/fault evidence and qualified review remain open. KiCad 10.0.5 ERC is 0 errors and 0 warnings, and native netlist/PDF/SVG exports plus the exact-net and PCB-subset checkers pass. These V3 counts must not be substituted for the independently reviewed V2.1 counts above.
 
 ERC validates modeled connectivity and annotation only. It does not establish physical pinouts, ratings, protection coordination, functional safety, buildability, or permission to energize.
 
 ## Review history and independent findings
 
-Thirty-one review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the analysis resupplied on 2026-08-06 is the same R12 verdict and is not double-counted. R13-R31 are controlled project responses, not independent approvals. R29 freezes the exact heartbeat/driver path, R30 freezes the feedback passive order codes, and R31 freezes the PCB boundary/terminal allocation plus an unrouted native placement source. Routing, received evidence, fault/HIL, protection and qualified-review blockers remain open.
+Thirty-two review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the analysis resupplied on 2026-08-06 is the same R12 verdict and is not double-counted. R13-R32 are controlled project responses, not independent approvals. R29 freezes the exact heartbeat/driver path, R30 freezes the feedback passive order codes, R31 freezes the PCB boundary/terminal allocation, and R32 corrects the native PCB footprint and placement constraints. Routing, received evidence, fault/HIL, protection and qualified-review blockers remain open.
 
 ## Principal unresolved engineering blockers
 
@@ -90,11 +90,11 @@ The R29 status reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r29-statu
 
 The R30 status reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r30-status.md`. It records Electrical V3-P0.9, the exact feedback passive order codes and receiving/derating control while keeping PCB, physical validation and every energization gate open. It is a project-owned reconciliation, not a new Sol review.
 
-The current R31 reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r31-status.md`. It records Electrical V3-P1.0 and the explicitly unrouted PCB-P0.1 source while preserving Sol's physical-build, functional-safety and energization blockers. It is also a project-owned reconciliation, not a new independent review.
+The current R32 reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r32-status.md`. It records Electrical V3-P1.0 and the corrected, explicitly unrouted PCB-P0.2 source while preserving Sol's physical-build, functional-safety and energization blockers. It is also a project-owned reconciliation, not a new independent review.
 
 ## Requested independent-review output
 
-Use `docs/reviews/2026-08-06-electrical-v3-independent-review-request.md` for the controlled V3-P1.0 / PCB-P0.1 electrical review scope and reproduction commands. Use `docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md` for the source-level watchdog and supervisor review scope.
+Use `docs/reviews/2026-08-06-electrical-v3-independent-review-request.md` for the controlled V3-P1.0 / PCB-P0.2 electrical review scope and reproduction commands. Use `docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md` for the source-level watchdog and supervisor review scope.
 
 Reviewers must provide BLOCKER / MAJOR / MINOR findings with exact document, requirement, risk, component, net, terminal, or KiCad-sheet references. Calculations must show assumptions and units. Component claims must cite current primary manufacturer documents with revision/date. Every missing input or unresolved selection must state the evidence needed for closure.
 
@@ -112,4 +112,4 @@ No reviewer should interpret clean ERC, traceability, simulation, website public
 
 ## Next controlled action
 
-Submit V3-P1.0, PCB-P0.1 and HR-V0-FW-P0.1 for detailed independent electrical, layout, controls and functional-safety review. Route and review PCB-P0.1 only after closing its explicit layout constraints; do not generate fabrication outputs from the current unrouted source. Acquire and receive-inspect the H101/S102 frame kits and proposed RM-X52 gripper kit; make all three coupons; execute `INSPECT-MECH-003`/`004`/`008` plus `INSPECT-GRIP-001`; and weigh every received/moving item under `INSPECT-MECH-007`. Receive S0/S1/S2 and execute `INSPECT-ELEC-003`; receive and build only the controlled JA1/DC1 test articles under `INSPECT-ELEC-004`. After a routed PCB release, execute `INSPECT-ELEC-006` and `INSPECT-ELEC-007`, then execute `TEST-ELEC-005` with relay/contactor/actuator loads disconnected. Build only an unpowered controlled mechanical article to freeze stop planes, cable loops, guard sweep and tolerance inputs. Then release the backed-up bumper/catch, guard/receiver and brackets before any powered mechanical test. In parallel, freeze the 46 unresolved terminals and all remaining protection/conductor/interface selections; compile reproducible firmware binaries and prepare disconnected-load HIL. Do not issue a build or energization release until every applicable gate record closes.
+Submit V3-P1.0, PCB-P0.2 and HR-V0-FW-P0.1 for detailed independent electrical, layout, controls and functional-safety review. Route and review PCB-P0.2 only against its explicit layout constraints; do not generate fabrication outputs from the current unrouted source. Acquire and receive-inspect the H101/S102 frame kits and proposed RM-X52 gripper kit; make all three coupons; execute `INSPECT-MECH-003`/`004`/`008` plus `INSPECT-GRIP-001`; and weigh every received/moving item under `INSPECT-MECH-007`. Receive S0/S1/S2 and execute `INSPECT-ELEC-003`; receive and build only the controlled JA1/DC1 test articles under `INSPECT-ELEC-004`. After a routed PCB release, execute `INSPECT-ELEC-006` and `INSPECT-ELEC-007`, then execute `TEST-ELEC-005` with relay/contactor/actuator loads disconnected. Build only an unpowered controlled mechanical article to freeze stop planes, cable loops, guard sweep and tolerance inputs. Then release the backed-up bumper/catch, guard/receiver and brackets before any powered mechanical test. In parallel, freeze the 46 unresolved terminals and all remaining protection/conductor/interface selections; compile reproducible firmware binaries and prepare disconnected-load HIL. Do not issue a build or energization release until every applicable gate record closes.

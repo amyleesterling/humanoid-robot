@@ -2,8 +2,8 @@ $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb drc --output "C:\Users\amy
 Found 0 violations
 Found 68 unconnected items
 Saved DRC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/project-button-v3/validation/project-button-v3-pcb-placement-drc.rpt
-21:14:55: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-21:14:55: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+21:45:23: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+21:45:23: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0
 
@@ -79,12 +79,12 @@ Build BVH for holes and vias
 Load Raytracing: board
 Load Raytracing: layers
 Loading 3D models...
-Reload time 0.175 s
+Reload time 0.163 s
 Rendering: 100 
-Rendering time 0.273 s
+Rendering time 0.243 s
 Successfully created 3D render image
-21:14:59: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-21:14:59: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
-9:14:59 PM: Error: Directory 'C:\Users\amyle\AppData\Roaming\kicad\10.0\3d' couldn't be created (error 5: Access is denied.)
+21:45:25: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+21:45:25: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+9:45:26 PM: Error: Directory 'C:\Users\amyle\AppData\Roaming\kicad\10.0\3d' couldn't be created (error 5: Access is denied.)
 
 exit=0

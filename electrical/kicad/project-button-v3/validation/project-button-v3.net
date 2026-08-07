@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-06T21:14:48")
+		(date "2026-08-06T21:44:11")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
@@ -3369,7 +3369,7 @@
 		(comp
 			(ref "CDEC1")
 			(value "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
-			(footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
+			(footprint "Capacitor_SMD:C_0805_2012Metric")
 			(datasheet "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 			(description "Exact order code frozen. Exact 0805 candidate required at UFB1 VCC1/GND1; placement within 2 mm, land pattern and received-board capacitance remain open.")
 			(fields
@@ -3380,7 +3380,7 @@
 				(field
 					(name "Display") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
 				(field
-					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
 				(field
 					(name "Datasheet") "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 				(field
@@ -4201,7 +4201,7 @@
 		(comp
 			(ref "UFB1")
 			(value "Texas Instruments ISO1212DBQ dual 24 V input receiver")
-			(footprint "Package_SO:SSOP-16_5.3x6.2mm_P0.65mm")
+			(footprint "Package_SO:SSOP-16_3.9x4.9mm_P0.635mm")
 			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
 			(description "Exact dual-channel receiver candidate. Logic and field grounds both return to SAFETY_0V in this non-isolated system, so no galvanic-isolation or safety-integrity credit is claimed. Layout, thermal, EMC, fault-injection and received-part tests remain open.")
 			(fields
@@ -4212,7 +4212,7 @@
 				(field
 					(name "Display") "Texas Instruments ISO1212DBQ dual 24 V input receiver")
 				(field
-					(name "Footprint") "Package_SO:SSOP-16_5.3x6.2mm_P0.65mm")
+					(name "Footprint") "Package_SO:SSOP-16_3.9x4.9mm_P0.635mm")
 				(field
 					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
 				(field
@@ -5073,7 +5073,7 @@
 				(field
 					(name "Value") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
 				(field
-					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
 				(field
 					(name "Datasheet") "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 				(field
@@ -7915,7 +7915,7 @@
 				(field
 					(name "Value") "Texas Instruments ISO1212DBQ dual 24 V input receiver")
 				(field
-					(name "Footprint") "Package_SO:SSOP-16_5.3x6.2mm_P0.65mm")
+					(name "Footprint") "Package_SO:SSOP-16_3.9x4.9mm_P0.635mm")
 				(field
 					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
 				(field

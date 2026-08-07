@@ -1,9 +1,10 @@
-"""Generate the native HR-V0 watchdog PCB placement/interface candidate.
+"""Generate the native HR-V0 watchdog PCB constrained-placement candidate.
 
-This board freezes board membership, footprints, terminal-block identities and
-project pin allocation.  It deliberately contains no routed copper and is not
-a fabrication release.  KiCad DRC must therefore report unrouted items until a
-reviewed routing pass closes the layout requirements.
+This board freezes board membership, footprints, terminal-block identities,
+project pin allocation and the first machine-checked placement constraints. It
+deliberately contains no routed copper and is not a fabrication release. KiCad
+DRC must therefore report unrouted items until a reviewed routing pass closes
+the layout requirements.
 
 PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION.
 """
@@ -39,31 +40,31 @@ def load_model():
 
 PLACEMENTS = {
     "JWP1": (30, 34, 0),
-    "DC1": (55, 34, 0),
-    "CDRV1": (76, 26, 0),
-    "UDRV1": (88, 34, 0),
-    "CDRV2": (112, 26, 0),
+    "DC1": (50, 34, 0),
+    "CDRV1": (92, 39, 180),
+    "UDRV1": (92, 34, 0),
+    "CDRV2": (124, 39, 180),
     "UDRV2": (124, 34, 0),
-    "JWF1": (30, 58, 0),
-    "RTH1": (48, 57, 0),
-    "RSN1": (59, 57, 0),
-    "CFI1": (69, 61, 90),
-    "RW1": (49, 68, 0),
-    "RTH2": (48, 80, 0),
-    "RSN2": (59, 80, 0),
-    "CFI2": (69, 84, 90),
-    "RW2": (49, 91, 0),
-    "UFB1": (84, 76, 0),
-    "CDEC1": (84, 68, 0),
-    "RSO1": (99, 68, 0),
-    "RPD1": (112, 68, 0),
-    "RSO2": (99, 82, 0),
-    "RPD2": (112, 82, 0),
+    "JWF1": (150, 76, 0),
+    "RTH1": (125, 70, 180),
+    "RSN1": (109, 73.50, 270),
+    "CFI1": (104, 70, 90),
+    "RW1": (136, 70, 180),
+    "RTH2": (125, 82, 180),
+    "RSN2": (109, 78.50, 270),
+    "CFI2": (104, 81, 270),
+    "RW2": (136, 82, 180),
+    "UFB1": (100, 76, 0),
+    "CDEC1": (94.8, 74.7, 90),
+    "RSO1": (91, 64, 0),
+    "RPD1": (91, 68, 0),
+    "RSO2": (91, 84, 0),
+    "RPD2": (91, 88, 0),
     "JWH1": (30, 108, 0),
     "RHB1": (48, 108, 0),
     "ISO1": (62, 108, 0),
-    "RHP1": (77, 100, 0),
-    "WDCTRL1": (146, 75, 90),
+    "RHP1": (50, 98, 0),
+    "WDCTRL1": (60, 72, 90),
 }
 
 
@@ -134,12 +135,12 @@ def main() -> int:
     board = pcbnew.BOARD()
     board.SetFileName(str(BOARD_PATH))
     title = board.GetTitleBlock()
-    title.SetTitle("Project Button HR-V0 ordinary watchdog PCB placement/interface candidate")
+    title.SetTitle("Project Button HR-V0 ordinary watchdog PCB constrained-placement candidate")
     title.SetDate("2026-08-06")
-    title.SetRevision("PCB-P0.1 / Electrical V3-P1.0")
+    title.SetRevision("PCB-P0.2 / Electrical V3-P1.0")
     title.SetCompany("Project Button")
     title.SetComment(0, WARNING)
-    title.SetComment(1, "UNROUTED PLACEMENT CANDIDATE - NO GERBER RELEASE")
+    title.SetComment(1, "CONSTRAINED PLACEMENT; UNROUTED - NO GERBER RELEASE")
     default_class = pcbnew.NETCLASS("Default")
     default_class.SetClearance(pcbnew.FromMM(0.15))
     default_class.SetTrackWidth(pcbnew.FromMM(0.25))
@@ -175,9 +176,9 @@ def main() -> int:
     add_outline(pcbnew, board)
     add_mounting_holes(pcbnew, board)
     add_text(pcbnew, board, WARNING, 35, 116.5, 1.35, pcbnew.F_SilkS)
-    add_text(pcbnew, board, "PCB-P0.1 - UNROUTED - NO SAFETY CREDIT", 95, 112, 1.2, pcbnew.F_SilkS)
+    add_text(pcbnew, board, "PCB-P0.2 - CONSTRAINED PLACEMENT - UNROUTED", 85, 112, 1.2, pcbnew.F_SilkS)
     add_text(pcbnew, board, "+24  0V  C1-  C2-", 25, 42, 1.1, pcbnew.F_SilkS)
-    add_text(pcbnew, board, "FB1  FB2", 25, 51.5, 1.1, pcbnew.F_SilkS)
+    add_text(pcbnew, board, "FB1  FB2", 143, 69, 1.1, pcbnew.F_SilkS)
     add_text(pcbnew, board, "HB   COMPUTE-0V", 25, 101.5, 1.1, pcbnew.F_SilkS)
 
     pcbnew.SaveBoard(str(BOARD_PATH), board)
@@ -211,7 +212,7 @@ def main() -> int:
     print(f"Generated {BOARD_PATH}")
     print(f"Board-mounted schematic references: {len(components)}")
     print(WARNING)
-    print("This placement candidate is intentionally unrouted; DRC closure is not claimed.")
+    print("This constrained-placement candidate is intentionally unrouted; routing DRC closure is not claimed.")
     return 0
 
 

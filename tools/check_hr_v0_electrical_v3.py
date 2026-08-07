@@ -235,6 +235,8 @@ def main() -> int:
         "13": "INTENTIONALLY_UNUSED_UFB1_13", "14": "SAFETY_0V", "15": "FB_IN1",
         "16": "FB_SENSE1",
     }, "ISO1212DBQ pin-level mapping changed", failures)
+    require(components["UFB1"].footprint == "Package_SO:SSOP-16_3.9x4.9mm_P0.635mm",
+            "ISO1212DBQ package candidate no longer matches the 3.9 x 4.9 mm, 0.635 mm-pitch DBQ body", failures)
     require(pin_map(components, "RTH1") == {"1": "WD1_NC_24V", "2": "FB_SENSE1"} and
             pin_map(components, "RSN1") == {"1": "FB_SENSE1", "2": "FB_IN1"} and
             pin_map(components, "CFI1") == {"1": "FB_SENSE1", "2": "SAFETY_0V"} and
@@ -251,6 +253,8 @@ def main() -> int:
             "watchdog feedback channel 2 network changed", failures)
     require(pin_map(components, "CDEC1") == {"1": "WD_3V3", "2": "SAFETY_0V"},
             "ISO1212 logic-side decoupling mapping changed", failures)
+    require(components["CDEC1"].footprint == "Capacitor_SMD:C_0805_2012Metric",
+            "CDEC1 footprint changed from the controlled compact 0805 candidate", failures)
     expected_feedback_values = {
         "RTH1": "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF",
         "RTH2": "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF",
