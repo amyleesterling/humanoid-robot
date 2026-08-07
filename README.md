@@ -135,6 +135,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R57 adapter fabrication-definition and Sol R12 reconciliation](docs/reviews/2026-08-07-sol-r12-post-r57-status.md)
 - [R58 E2 control-only commissioning boundary and Sol R12 reconciliation](docs/reviews/2026-08-07-sol-r12-post-r58-status.md)
 - [R59 current Boston fabrication-sourcing reconciliation](docs/reviews/2026-08-07-sol-r12-post-r59-status.md)
+- [R60 control-panel physical-definition reconciliation](docs/reviews/2026-08-07-sol-r12-post-r60-status.md)
+- [HR-V0 control-panel physical-definition candidate](docs/hr-v0-control-panel-p0.1.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.2 independent review request](docs/reviews/2026-08-07-firmware-p0.2-independent-review-request.md)
 - [Firmware P0.1 historical independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
@@ -147,6 +149,8 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 
 Run `python tools/check_hr_v0_e2_commissioning.py` to validate the fail-closed 15-step E2 sequence, 20 disconnected-load logic cases, five unexecuted evidence forms and partial-only authorization boundary. Run `python tools/check_hr_v0_r57_fabrication_sourcing.py` to verify that the current Boston route contains only held/excluded R57 candidates and unexecuted inquiry records. A passing checker is not permission to order, fabricate, or connect a source.
 
+Run `python tools/check_hr_v0_control_panel.py` to cross-check the R60 panel BOM, nominal allocations, exact XT1 mapping, all 66 bounded V3 wire endpoints, unreleased physical-wire fields, cable-entry holds, thermal/space screens, readable SVG warning content and twenty unexecuted evidence records. A passing panel checker releases no drilling, cutting, wiring, assembly, PCB fabrication, or energization work.
+
 Run `python tools/check_hr_v0_fabrication_rfi_packets.py` to verify that every obsolete P0.1 supplier packet remains withdrawn and that zero ZIPs are active. The earlier manufacturing/route artifacts are historical inputs only until a replacement arm architecture closes `MECH-005`.
 Run `python tools/check_hr_v0_safety_allocation.py` to verify that the ordinary heartbeat path retains zero safety credit and every PLr/SIL allocation remains unresolved until qualified execution.
 Run `python tools/generate_hr_v0_release_manifest.py` only after deliberate package changes, then run `python tools/check_hr_v0_release_manifest.py`. A committed clean clone must additionally pass `python tools/check_hr_v0_release_manifest.py --require-clean`; this proves package identity, not fabrication or energization readiness.
@@ -156,7 +160,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-Fifty-nine review/control rounds are complete: R01-R59. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R59 are project-owned exact-geometry, release-boundary, and sourcing corrections, not additional independent reviews.
+Sixty review/control rounds are complete: R01-R60. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R60 are project-owned exact-geometry, release-boundary, sourcing, and physical-panel corrections, not additional independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -219,6 +223,7 @@ Fifty-nine review/control rounds are complete: R01-R59. R11 Fable and R12 Sol ar
 | R57 | Adapter fabrication-definition correction | Superseded P0.3 with `HR-V0-ARM-ARCH-P0.4`: exact OnlineMetals `1249` certified-stock candidate, controlled drawing/DXF and ten FAI controls, exact current Accu/MISUMI fasteners, receiving records and ten analytical screens using a three-times-gravity proof-load candidate. Physical fit, MTR/FAI, torque/locking, proof, collision/stopping margin and qualified acceptance remain open. No physical gate closed. |
 | R58 | E2 control-only commissioning boundary | Added `HR-V0-E2-SEQ-P0.1`, a 15-step fail-closed sequence, five evidence forms, 20 disconnected-load safety-logic cases and a checker. Corrected the stage ambiguity: E2 may verify logic with the actuator source physically absent, but it cannot claim loaded interruption, stopping distance or PL/SIL validation. EG-018 through EG-022 advance from empty/open to template/partial only; all 21 E2 gates remain unresolved and no authorization exists. |
 | R59 | Current Boston fabrication-sourcing reconciliation | Replaced stale live guidance for withdrawn `MV0-001/002/003` with `HR-V0-FAB-SRC-P0.2`, tied to four R57 `MV0-C01` adapter candidates, two 20-2040 members and a separate bench-anchor hold. Added eight held/excluded routes, seven unexecuted inquiry rows and a checker. No supplier, upload artifact, quote, first article or fabrication authorization exists. |
+| R60 | HR-V0 control-panel physical-definition correction | Issued `HR-V0-CP-P0.1` with exact enclosure/backplate, rail/duct/terminal and amber H1 catalog candidates on hold; 16 backplate allocations; five door rows; six XT1 positions; all 66 bounded V3 wire endpoints; six no-hole cable-entry zones; ten thermal/space screens; 20 unexecuted evidence rows; and a checker. No holes, cuts, conductors, protection ratings, PE bond, glands, PCB fabrication, assembly or energization work is released. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
