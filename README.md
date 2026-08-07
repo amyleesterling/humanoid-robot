@@ -21,6 +21,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 - [Configuration management and revision hierarchy](docs/configuration-management.md)
 - [HR-V0 deterministic release-candidate configuration P0.1](docs/hr-v0-release-candidate-p0.1.md)
+- [HR-V0 BOM closure and evaluation boundary P0.1](docs/hr-v0-bom-closure-p0.1.md)
+- [HR-V0 Evaluation Batch A candidates](bom/hr-v0-evaluation-batch-a.csv)
 - [Current engineering handoff](docs/handoff-current.md)
 - [Complete review ledger](docs/review-ledger.md)
 - [System specification](docs/system-specification.md)
@@ -113,6 +115,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R43](docs/reviews/2026-08-07-sol-r12-post-r43-status.md)
 - [Sol R12 findings rechecked against R44](docs/reviews/2026-08-07-sol-r12-post-r44-status.md)
 - [Sol R12 findings rechecked against R45](docs/reviews/2026-08-07-sol-r12-post-r45-status.md)
+- [Sol R12 findings rechecked against R46](docs/reviews/2026-08-07-sol-r12-post-r46-status.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.2 independent review request](docs/reviews/2026-08-07-firmware-p0.2-independent-review-request.md)
 - [Firmware P0.1 historical independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
@@ -126,10 +129,11 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 Also run `python tools/check_hr_v0_manufacturing.py` to verify the four-part RFQ process register and prove that no dimensional release is recorded.
 Run `python tools/check_hr_v0_safety_allocation.py` to verify that the ordinary heartbeat path retains zero safety credit and every PLr/SIL allocation remains unresolved until qualified execution.
 Run `python tools/generate_hr_v0_release_manifest.py` only after deliberate package changes, then run `python tools/check_hr_v0_release_manifest.py`. A committed clean clone must additionally pass `python tools/check_hr_v0_release_manifest.py --require-clean`; this proves package identity, not fabrication or energization readiness.
+Run `python tools/generate_hr_v0_bom_closure.py` after deliberate system-BOM changes, then `python tools/check_hr_v0_bom.py`. The checker must retain `EG-003` as partial until a complete signed machine BOM exists; Evaluation Batch A is not blanket purchase authority.
 
 ## Review history
 
-Forty-five review/control rounds are complete: R01-R45. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
+Forty-six review/control rounds are complete: R01-R46. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -178,6 +182,7 @@ Forty-five review/control rounds are complete: R01-R45. R11 Fable and R12 Sol ar
 | R43 | HR-V0 flat-plate process and first-article correction | Reclassified `MV0-001` through `MV0-003` as CNC mill/drill RFQ parts, held `MV0-004` behind the bench survey, added machine-checked process evidence, drawing RFQ notes, supplier DFM/FAI records and `INSPECT-MECH-009`. EG-006 remains partial; no cutting or energization release was issued. |
 | R44 | Functional-safety allocation and watchdog-credit correction | Classified the ordinary heartbeat path as zero-credit `DF-01`, separated credited-candidate `SF-01/SF-03`, physical `PG-01`, and future `SF-02`, added an eleven-case FMEA plus qualified allocation controls, and left EG-012 partial. No PLr/SIL or energization release was issued. |
 | R45 | Deterministic HR-V0 release-candidate configuration | Issued `HR-V0-RC-P0.1` metadata plus an all-file SHA-256 manifest and clean-clone checker, reconciled the stale V3 identifier in configuration management, and kept EG-002 partial pending immutable acceptance and signatures. No build or energization release was issued. |
+| R46 | HR-V0 BOM closure and evaluation boundary | Expanded the system BOM from 57 to 70 groups, exposed thirteen missing assembly dependencies, classified every row, froze seventeen exact evaluation-only candidates with receiving routes, and advanced EG-003 from open to partial. Thirty-three groups remain `SELECTION REQUIRED`; no blanket procurement, fabrication or energization release was issued. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

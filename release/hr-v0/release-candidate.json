@@ -31,6 +31,12 @@
       "identifier": "HR-V0-FSA-P0.1",
       "supporting_identifiers": ["DF-01 ZERO SAFETY CREDIT"],
       "release_state": "allocation_candidate_no_plr_or_sil_assigned"
+    },
+    {
+      "domain": "bill_of_materials",
+      "identifier": "HR-V0-BOM-P0.1",
+      "supporting_identifiers": ["EVALUATION-BATCH-A"],
+      "release_state": "closure_register_candidate_no_complete_machine_procurement_release"
     }
   ],
   "historical_or_out_of_scope_products": [

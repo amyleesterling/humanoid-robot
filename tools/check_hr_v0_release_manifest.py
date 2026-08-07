@@ -66,6 +66,7 @@ def main() -> None:
         "HR-V0-MECH-R0.1-PRELIMINARY",
         "HR-V0-FW-P0.1",
         "HR-V0-FSA-P0.1",
+        "HR-V0-BOM-P0.1",
     }
     missing_identifiers = required_identifiers - identifiers
     if missing_identifiers:
