@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: native connected design candidate `V3-P0.7`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` is retained as the historical R16 configuration; P0.2 is the historical R17 restart-chain correction; P0.3 is the historical R18 watchdog voltage-boundary correction; P0.4 replaces its opaque feedback blocks with a calculated ISO1212DBQ circuit; P0.5 freezes distinct black RESET and green ARM operator order codes and the official Raspberry Pi US regional model; P0.6 freezes the XW E-stop's two physical NC contact positions; P0.7 freezes exact project-side JA1 connector-system and DC1 regulator candidates while retaining application and physical verification.
+Status: native connected design candidate `V3-P0.8`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` through P0.7 are retained as historical configurations. P0.8 adds an exact VO618A optical heartbeat path, exact 910 ohm and 10 kilohm passives, and two separate TPL7407LPWR relay-driver packages with local COM bypass candidates while retaining PCB, physical, fault, EMC and qualified-review gates.
 
 - Native source: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Generator: `tools/generate_hr_v0_electrical_v3.py`
@@ -70,11 +70,13 @@ Any E-stop opening, watchdog-channel opening, SR1 dropout, channel discrepancy, 
 
 ## Watchdog-channel boundary
 
-The current RP2040-class watchdog is not safety-rated. V3 replaces the single KWD1 contact with two independently driven, normally-open relay channels and routes one through each SR1 input return. This makes physical RESET part of the nominal recovery after heartbeat loss; SRA1 then still requires the later physical ARM. The final parts, drivers, feedback contacts, startup tests, brownout behavior, diagnostic coverage, common-cause controls, and firmware remain `SELECTION REQUIRED`.
+The current RP2040-class watchdog is not safety-rated. V3 replaces the single KWD1 contact with two independently driven, normally-open relay channels and routes one through each SR1 input return. This makes physical RESET part of the nominal recovery after heartbeat loss; SRA1 then still requires the later physical ARM. P0.8 freezes the ordinary signal interface and driver candidates, but startup tests, brownout behavior, diagnostic coverage, common-cause controls, firmware binding, PCB and HIL remain unreleased.
 
 The modeled relay-coil path is `SAFETY_24V -> relay coil -> default-off low-side driver -> SAFETY_0V`. P0.7 proposes the non-isolated TRACO POWER `TSR 1-2450`: pin 1 `+VIN` to `SAFETY_24V`, pin 2 `GND` to `SAFETY_0V`, and pin 3 `+VOUT` to `WD_5V`. Its 6.5-36 V input and 5 V/1 A output support a candidate, not an application release. Branch protection, load budget, startup, slow-ramp brownout, fast dropout/recovery, stuck/overvoltage faults, EMC and enclosure thermal behavior remain open under `INSPECT-ELEC-004`. Selecting an isolated converter would require isolated output drivers and a fresh grounding/fault review. The official Phoenix product PDF freezes the candidate terminal designations `A1/A2`, `11-12-14`, and `21-22-24`, while received continuity and polarity evidence remain mandatory. P0.4 uses `11-14` in the SR1 return and `21-22` for a separate 24 V NC diagnostic feed. The latter terminates at the `UFB1` ISO1212DBQ field-input network and is prohibited from reaching a Pico GPIO directly.
 
 The feedback sheet uses TI's exact DBQ pinout and Type-3 values: 1 kOhm `RTHR` from module input to `SENSE`, 562 Ohm `RSENSE` between `SENSE` and `IN`, and 10 nF `CIN` from `SENSE` to `FGND` per channel. A calculated 2.70 kOhm 1%, 0.5 W parallel wetting load raises the screened minimum Phoenix contact current above its documented 10 mA minimum at the Mean Well rail minimum. Outputs use 1 kOhm series resistors and 10 kOhm pulldowns before the Pico. `GND1`, `FGND1`, and `FGND2` all return to `SAFETY_0V`, so no galvanic-isolation or safety-integrity credit is claimed. See `docs/hr-v0-watchdog-feedback-p0.1.md`. Exact passive order codes, PCB, terminals, EMC, thermal, brownout, fault injection and HIL remain open.
+
+P0.8 routes `PI_HEARTBEAT` through Panasonic `ERJ6ENF9100V` and Vishay `VO618A-4X017T`; the watchdog collector is pulled to `WD_3V3` by `ERJ6ENF1002V`. Two distinct `TPL7407LPWR` packages use only channel 1: unused inputs are tied low, unused outputs are explicit no-connects, COM connects to `SAFETY_24V`, and each package has a proposed `GRM21BR71H104KA01L` bypass. See `docs/hr-v0-heartbeat-driver-closure-r29.md`. The bypass does not prove TI's COM-slew limit, and none of these parts receives safety credit before `TEST-ELEC-005`, FMEA and qualified review.
 
 This topology improves restart behavior and single-channel diagnostics. It does **not** establish a Performance Level or SIL because both channels may still share a non-safety controller, power source, clock, firmware, or common-cause failure. Qualified risk assessment shall either:
 
@@ -115,19 +117,19 @@ Before this candidate can replace V2.1:
 
 ## Native candidate validation record
 
-The generated `V3-P0.7` candidate currently contains:
+The generated `V3-P0.8` candidate currently contains:
 
 - one root index plus ten focused child sheets;
-- 55 component blocks and 240 modeled terminals;
-- 87 native nets: 62 named connected nets plus 25 deliberate auto-generated unconnected nets;
-- 215 unique wire labels synchronized to `wire-number-table.csv`;
-- 53 nonzero-quantity V3 BOM records;
-- 43 unresolved component/interface records; and
-- 56 terminal designations deliberately retained as `TBD-*`.
+- 59 component blocks and 274 modeled terminals;
+- 100 native nets: 63 named connected nets plus 37 deliberate auto-generated unconnected nets;
+- 237 unique wire labels synchronized to `wire-number-table.csv`;
+- 57 nonzero-quantity V3 BOM records;
+- 47 unresolved component/interface records; and
+- 46 terminal designations deliberately retained as `TBD-*`.
 
-KiCad 10.0.5 parsed the root and all ten children, exported the native netlist, an eleven-page A3 PDF, and eleven SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 55 native component references and all 240 exported `(reference, terminal, net)` nodes against the generated schedules, including the 25 deliberate no-connect terminals. It also freezes every ISO1212 pin and supporting-network connection. During P0.4 development this review caught and corrected an initially misdrawn `RSENSE` return: TI requires `RSENSE` between `SENSE` and `IN`, not from `IN` to field ground. Clean ERC did not detect that application error.
+KiCad 10.0.5 parsed the root and all ten children, exported the native netlist, an eleven-page A3 PDF, and eleven SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 59 native component references and all 274 exported `(reference, terminal, net)` nodes against the generated schedules, including the 37 deliberate no-connect terminals. It freezes every ISO1212, VO618A and TPL7407L pin plus their supporting networks. Clean ERC did not detect the historical P0.4 `RSENSE` application error, illustrating why the exact-net and primary-source checks remain separate.
 
-The export is rendered at 150 dpi and visually checked after each material layout change. The earlier audit corrected the watchdog low-side coil path, made the shared TTL ground explicit, and replaced duplicate per-component wire labels. P0.4 adds the pin-level feedback sheet; P0.5 corrects RESET/ARM operator identity and records the official compute-supply regional model without inferring its unmapped SKU; P0.6 replaces four E-stop `TBD-*` terminals with controlled right/left contact-position designators; P0.7 freezes JA1/DC1 candidates and leaves 215 synchronized wire labels. Page-level visual QA is part of the recorded validation for this candidate.
+The export is rendered at 150 dpi and visually checked after each material layout change. P0.8 adds the pin-level heartbeat and driver circuits and leaves 237 synchronized wire labels. Page-level visual QA is part of the recorded validation for this candidate.
 
 The KiCad CLI logs Windows registry-access messages for `HKCU\Software\kicad-cli` in this restricted execution environment. Every command still returned exit code 0 and produced the expected artifact; the messages are retained in `validation/kicad-cli.log` rather than hidden.
 

@@ -1,5 +1,5 @@
 {
-  "configuration_id": "HR-V0-WD-P0.3",
+  "configuration_id": "HR-V0-WD-P0.4",
   "status": "PRELIMINARY-NOT-APPROVED-FOR-ENERGIZATION",
   "heartbeat_nominal_edge_ms": 100,
   "heartbeat_timeout_ms": 300,
@@ -9,6 +9,8 @@
   "relay_channels": 2,
   "feedback_contact_state": "NC_TRUE_WHEN_RELAY_DEENERGIZED",
   "feedback_front_end": "TI_ISO1212DBQ_P0.1",
+  "heartbeat_front_end": "VISHAY_VO618A-4X017T_R910_PULLUP10K_P0.1",
+  "relay_driver": "2X_TI_TPL7407LPWR_OUT1_P0.1",
   "feedback_gpio_active_high": true,
   "gpio_assignments": {
     "heartbeat_input": {"gpio": 2, "physical_pin": 4},

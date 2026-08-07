@@ -4,7 +4,7 @@
 
 Identifier: `HR-V0-FW-P0.1`  
 System baseline: `HR-30-SYS-R0.2`  
-Electrical dependency: `Project Button Electrical V3-P0.7` candidate
+Electrical dependency: `Project Button Electrical V3-P0.8` candidate
 
 ## Purpose and authority boundary
 
@@ -61,7 +61,7 @@ It also compares portable-C timing constants to `watchdog-config.json`, checks f
 ## Evidence still required for release
 
 - compiled platform binding and external default-off/input-conditioning implementation for the frozen watchdog GPIO candidate, plus received polarity/continuity records;
-- selected low-side drivers, input conditioning, protected wiring and feedback interface;
+- released PCB and protected wiring for the proposed VO618A heartbeat path, two separate TPL7407LPWR drivers and ISO1212 feedback interface, plus `TEST-ELEC-005` physical/HIL/fault evidence;
 - pinned Pico SDK/compiler/CMake/Ninja versions and a reproducible build environment;
 - warning-clean host and ARM compilation, static analysis, unit-test execution against the compiled C, `.elf`/`.uf2`/map hashes and size/stack evidence;
 - selected Raspberry Pi deployment image, Python version, service supervision and immutable configuration hash;

@@ -1,7 +1,7 @@
 (kicad_sch
   (version 20250114) (generator "eeschema") (generator_version "10.0")
   (uuid "d150a021-9bc5-5453-b695-70310cec8d71") (paper "A3")
-  (title_block (title "PB HR-V0 Electrical V3 - 01") (date "2026-08-06") (rev "V3-P0.7")
+  (title_block (title "PB HR-V0 Electrical V3 - 01") (date "2026-08-06") (rev "V3-P0.8")
     (company "Project Button") (comment 1 "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION") (comment 2 "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED"))
   (lib_symbols (symbol "PBV3:PSA1"
       (pin_names (offset 1.016))

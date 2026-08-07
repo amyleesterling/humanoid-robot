@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P0.7"
+REV = "V3-P0.8"
 DATE = "2026-08-06"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 NS = uuid.UUID("4cb40c84-3194-4ded-b2c7-d78df616c5c0")
@@ -319,10 +319,29 @@ def sheets() -> list[Sheet]:
                   "Pin 1 +Vin, pin 2 common GND, pin 3 +Vout. Non-isolated by design; changing isolation requires a new driver/interface and grounding review. Published input range is 6.5-36 VDC; external capacitance is not required below 32 V, but branch protection, load budget, startup, brownout, conducted/radiated emissions and enclosure thermal tests remain open.",
                   "https://www.tracopower.com/tsr1-datasheet",
                   "TRACO POWER TSR 1 Series datasheet dated 2024-02-07, accessed 2026-08-06.", position=(65, 80), width=82),
-        Component("ISO1", "Heartbeat isolation/interface",
-                  [pn("ISO1", "TBD-IN", "PI HEARTBEAT", "PI_HEARTBEAT", "left"), pn("ISO1", "TBD-CG", "COMPUTE GND", "COMPUTE_0V", "left"),
-                   pn("ISO1", "TBD-OUT", "WD HEARTBEAT", "WD_HEARTBEAT", "right"), pn("ISO1", "TBD-WG", "WD GND", "SAFETY_0V", "right")],
-                  "SELECTION REQUIRED", "Exact isolation/interface, edge behavior, fault response and connector remain open.", position=(180, 80), width=82),
+        Component("ISO1", "Vishay VO618A-4X017T heartbeat optocoupler",
+                  [pn("ISO1", "1", "ANODE", "HB_LED_A", "left"),
+                   pn("ISO1", "2", "CATHODE", "COMPUTE_0V", "left"),
+                   pn("ISO1", "3", "EMITTER", "SAFETY_0V", "right"),
+                   pn("ISO1", "4", "COLLECTOR", "WD_HEARTBEAT", "right")],
+                  "PROPOSED - ORDER CODE/PINOUT FROZEN; PCB/HIL/FAULT VERIFICATION REQUIRED",
+                  "Ordinary signal isolation only; no safety-integrity credit. Verify received identity, PCB creepage/clearance, GPIO levels, LED current, edge timing, leakage, EMC, brownout and open/short faults in the released assembly.",
+                  "https://www.vishay.com/docs/83432/vo618a.pdf",
+                  "Vishay document 83432, VO618A datasheet Rev. 2.1 dated 2025-01-22, accessed 2026-08-06.", position=(180, 80), width=82),
+        Component("RHB1", "Panasonic ERJ6ENF9100V, 910 Ohm 1% 0805 0.125 W",
+                  [pn("RHB1", "1", "GPIO SIDE", "PI_HEARTBEAT", "left"),
+                   pn("RHB1", "2", "LED ANODE SIDE", "HB_LED_A", "right")],
+                  "PROPOSED - ORDER CODE FROZEN; PCB/HIL VERIFICATION REQUIRED",
+                  "Screens approximately 1.04 mA at a project 2.6 V GPIO-high floor and 1.65 V LED maximum, and 2.53 mA at 3.3 V with 1.0 V LED minimum. The 2.6 V floor is a project screen, not a released Raspberry Pi 5 guarantee; measure the actual source across load and temperature.",
+                  "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF9100V",
+                  "Panasonic ERJ6ENF9100V current product page and specification, accessed 2026-08-06.", position=(180, 130), width=82),
+        Component("RHP1", "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805 0.125 W",
+                  [pn("RHP1", "1", "PULLUP SUPPLY", "WD_3V3", "left"),
+                   pn("RHP1", "2", "HEARTBEAT NODE", "WD_HEARTBEAT", "right")],
+                  "PROPOSED - ORDER CODE FROZEN; PCB/HIL VERIFICATION REQUIRED",
+                  "The 10 kOhm pullup draws 0.33 mA at 3.3 V. Confirm logic thresholds, leakage, power sequencing, waveform rise/fall time and fault response on the released PCB.",
+                  "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V",
+                  "Panasonic ERJ6ENF1002V current product page and specification, accessed 2026-08-06.", position=(180, 180), width=82),
         Component("WDCTRL1", "Raspberry Pi Pico 1, order SC0915 / RP2040",
                   [pn("WDCTRL1", "39", "VSYS 5V INPUT", "WD_5V", "left"), pn("WDCTRL1", "38", "GROUND", "SAFETY_0V", "left"),
                    pn("WDCTRL1", "36", "3V3 OUTPUT", "WD_3V3", "left"), pn("WDCTRL1", "4", "GP2 HEARTBEAT IN", "WD_HEARTBEAT", "left"),
@@ -331,14 +350,46 @@ def sheets() -> list[Sheet]:
                    pn("WDCTRL1", "SWDIO", "SWDIO", "WD_SWDIO", "right"), pn("WDCTRL1", "SWCLK", "SWCLK", "WD_SWCLK", "right")],
                   "PROPOSED - GPIO FROZEN; PLATFORM RELEASE OPEN", "Monotonic heartbeat monitor. Physical GPIO candidates are frozen for review; platform startup, external bias, compilation, HIL and shared failures remain open and receive no safety credit.",
                   "https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf", "Official Pico datasheet and current pinout documentation rechecked 2026-08-06.", (300, 80), 82),
-        Component("Q1", "Watchdog relay channel 1 low-side driver",
-                  [pn("Q1", "TBD-IN", "GPIO", "WD1_DRIVE", "left"), pn("Q1", "TBD-COIL", "COIL RETURN", "WD1_COIL_N", "right"),
-                   pn("Q1", "TBD-0V", "0V", "SAFETY_0V", "left")],
-                  "SELECTION REQUIRED", "Exact transistor/driver, base/gate network, default-off bias, fault behavior and polarity with relay internal diode open.", position=(95, 190), width=82),
-        Component("Q2", "Watchdog relay channel 2 low-side driver",
-                  [pn("Q2", "TBD-IN", "GPIO", "WD2_DRIVE", "left"), pn("Q2", "TBD-COIL", "COIL RETURN", "WD2_COIL_N", "right"),
-                   pn("Q2", "TBD-0V", "0V", "SAFETY_0V", "left")],
-                  "SELECTION REQUIRED", "Independently driven duplicate channel; common-cause review open.", position=(210, 190), width=82),
+        Component("UDRV1", "Texas Instruments TPL7407LPWR channel-1 relay driver",
+                  [pn("UDRV1", "1", "IN1", "WD1_DRIVE", "left"),
+                   pn("UDRV1", "2", "IN2 TIED LOW", "SAFETY_0V", "left"), pn("UDRV1", "3", "IN3 TIED LOW", "SAFETY_0V", "left"),
+                   pn("UDRV1", "4", "IN4 TIED LOW", "SAFETY_0V", "left"), pn("UDRV1", "5", "IN5 TIED LOW", "SAFETY_0V", "left"),
+                   pn("UDRV1", "6", "IN6 TIED LOW", "SAFETY_0V", "left"), pn("UDRV1", "7", "IN7 TIED LOW", "SAFETY_0V", "left"),
+                   pn("UDRV1", "8", "GND", "SAFETY_0V", "left"), pn("UDRV1", "9", "COM", "SAFETY_24V", "left"),
+                   pn("UDRV1", "10", "OUT7 UNUSED", "INTENTIONALLY_UNUSED_UDRV1_10", "right"), pn("UDRV1", "11", "OUT6 UNUSED", "INTENTIONALLY_UNUSED_UDRV1_11", "right"),
+                   pn("UDRV1", "12", "OUT5 UNUSED", "INTENTIONALLY_UNUSED_UDRV1_12", "right"), pn("UDRV1", "13", "OUT4 UNUSED", "INTENTIONALLY_UNUSED_UDRV1_13", "right"),
+                   pn("UDRV1", "14", "OUT3 UNUSED", "INTENTIONALLY_UNUSED_UDRV1_14", "right"), pn("UDRV1", "15", "OUT2 UNUSED", "INTENTIONALLY_UNUSED_UDRV1_15", "right"),
+                   pn("UDRV1", "16", "OUT1 COIL RETURN", "WD1_COIL_N", "right")],
+                  "PROPOSED - ORDER CODE/PINOUT FROZEN; PCB/HIL/FAULT VERIFICATION REQUIRED",
+                  "Dedicated package for channel 1. COM is tied to the 24 V coil rail for the internal clamp; unused inputs are tied low and unused outputs are no-connect. Default-off, hot-plug/COM slew, clamp interaction with the relay module, thermal, brownout, open/short and cross-channel faults remain open.",
+                  "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf",
+                  "TI TPL7407L datasheet SLRS066D, revised 2016-03; TPL7407LPWR active orderable status checked 2026-08-06.", position=(95, 190), width=82),
+        Component("UDRV2", "Texas Instruments TPL7407LPWR channel-2 relay driver",
+                  [pn("UDRV2", "1", "IN1", "WD2_DRIVE", "left"),
+                   pn("UDRV2", "2", "IN2 TIED LOW", "SAFETY_0V", "left"), pn("UDRV2", "3", "IN3 TIED LOW", "SAFETY_0V", "left"),
+                   pn("UDRV2", "4", "IN4 TIED LOW", "SAFETY_0V", "left"), pn("UDRV2", "5", "IN5 TIED LOW", "SAFETY_0V", "left"),
+                   pn("UDRV2", "6", "IN6 TIED LOW", "SAFETY_0V", "left"), pn("UDRV2", "7", "IN7 TIED LOW", "SAFETY_0V", "left"),
+                   pn("UDRV2", "8", "GND", "SAFETY_0V", "left"), pn("UDRV2", "9", "COM", "SAFETY_24V", "left"),
+                   pn("UDRV2", "10", "OUT7 UNUSED", "INTENTIONALLY_UNUSED_UDRV2_10", "right"), pn("UDRV2", "11", "OUT6 UNUSED", "INTENTIONALLY_UNUSED_UDRV2_11", "right"),
+                   pn("UDRV2", "12", "OUT5 UNUSED", "INTENTIONALLY_UNUSED_UDRV2_12", "right"), pn("UDRV2", "13", "OUT4 UNUSED", "INTENTIONALLY_UNUSED_UDRV2_13", "right"),
+                   pn("UDRV2", "14", "OUT3 UNUSED", "INTENTIONALLY_UNUSED_UDRV2_14", "right"), pn("UDRV2", "15", "OUT2 UNUSED", "INTENTIONALLY_UNUSED_UDRV2_15", "right"),
+                   pn("UDRV2", "16", "OUT1 COIL RETURN", "WD2_COIL_N", "right")],
+                  "PROPOSED - ORDER CODE/PINOUT FROZEN; PCB/HIL/FAULT VERIFICATION REQUIRED",
+                  "Separate package for channel 2 to avoid one driver-package fault controlling both coils. The controller, supplies, clock and firmware remain common causes; no safety credit is claimed.",
+                  "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf",
+                  "TI TPL7407L datasheet SLRS066D, revised 2016-03; TPL7407LPWR active orderable status checked 2026-08-06.", position=(210, 190), width=82),
+        Component("CDRV1", "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805",
+                  [pn("CDRV1", "1", "COM RAIL", "SAFETY_24V", "left"), pn("CDRV1", "2", "RETURN", "SAFETY_0V", "right")],
+                  "PROPOSED - ORDER CODE FROZEN; COM-SLEW/PCB VERIFICATION REQUIRED",
+                  "Local COM bypass candidate for UDRV1. Capacitance alone does not prove TI's less-than-0.5 V/us COM slew requirement; scope hot-plug and repetitive transients in the released layout.",
+                  "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810",
+                  "Murata GRM21BR71H104KA01L official specification asset, updated 2025 and accessed 2026-08-06.", position=(95, 245), width=82),
+        Component("CDRV2", "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805",
+                  [pn("CDRV2", "1", "COM RAIL", "SAFETY_24V", "left"), pn("CDRV2", "2", "RETURN", "SAFETY_0V", "right")],
+                  "PROPOSED - ORDER CODE FROZEN; COM-SLEW/PCB VERIFICATION REQUIRED",
+                  "Local COM bypass candidate for UDRV2; the same physical slew and fault evidence remains mandatory.",
+                  "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810",
+                  "Murata GRM21BR71H104KA01L official specification asset, updated 2025 and accessed 2026-08-06.", position=(210, 245), width=82),
         Component("UFB1", "Texas Instruments ISO1212DBQ dual 24 V input receiver",
                   [pn("UFB1", "1", "GND1", "SAFETY_0V", "left"), pn("UFB1", "2", "VCC1", "WD_3V3", "left"),
                    pn("UFB1", "3", "EN TIED HIGH", "WD_3V3", "left"), pn("UFB1", "4", "OUT1", "UFB_OUT1", "right"),
@@ -511,8 +562,8 @@ def sheets() -> list[Sheet]:
     s7 = Sheet(7, "07_watchdog_control.kicad_sch", "Independent watchdog power, controller and drivers",
                "The ordinary watchdog controller and drivers receive no safety-integrity credit by assertion.")
     s7.components = placed(
-        ["DC1", "ISO1", "WDCTRL1", "Q1", "Q2"],
-        [(95, 65), (300, 65), (95, 165), (300, 150), (300, 225)],
+        ["DC1", "RHB1", "ISO1", "RHP1", "WDCTRL1", "UDRV1", "CDRV1", "UDRV2", "CDRV2"],
+        [(75, 55), (190, 80), (305, 55), (340, 115), (85, 210), (250, 150), (75, 120), (250, 230), (75, 160)],
     )
     s7.notes = ["Power-up, brownout, clock, stuck-GPIO and firmware tests are mandatory.",
                 "Qualified review decides whether watchdog loss is credited or diagnostic only; current safety credit is NONE."]
@@ -788,7 +839,8 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 
 - Separate SR1 RESET eligibility and SRA1 ARM/EDM stages.
 - Two separately driven watchdog relay contacts interrupt the two SR1 input returns so heartbeat loss forces the physical RESET stage to drop.
-- Phoenix relay terminals are frozen from the official circuit diagram. Both 24 V NC diagnostics pass through the calculated ISO1212DBQ input network before the Pico GPIO; exact passive order codes, PCB and physical validation remain open.
+- Phoenix relay terminals are frozen from the official circuit diagram. Both 24 V NC diagnostics pass through the calculated ISO1212DBQ input network before the Pico GPIO; exact feedback-network passive order codes, PCB and physical validation remain open.
+- Compute heartbeat crosses an exact VO618A-4X017T optical interface with exact 910 Ohm input and 10 kOhm pullup candidates. Two separate TPL7407LPWR packages drive the two relay coils, with unused inputs tied low, unused outputs open, and local 100 nF COM bypass candidates. These ordinary circuits receive no safety credit and still require PCB, timing, hot-plug, fault-injection, EMC and qualified review.
 - Heartbeat restoration cannot restore contactors; SRA1 requires a new monitored ARM action.
 - External Mean Well adapters replace project-built mains wiring.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.

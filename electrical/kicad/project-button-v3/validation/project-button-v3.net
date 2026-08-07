@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-06T19:23:14")
+		(date "2026-08-06T20:04:13")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P0.7")
+			(name "REVISION") "V3-P0.8")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,7 +15,7 @@
 			(title_block
 				(title "Project Button HR-V0 Electrical V3 index")
 				(company "Project Button")
-				(rev "V3-P0.7")
+				(rev "V3-P0.8")
 				(date "2026-08-06")
 				(source "project-button-v3.kicad_sch")
 				(comment
@@ -63,7 +63,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 01")
 				(company "Project Button")
-				(rev "V3-P0.7")
+				(rev "V3-P0.8")
 				(date "2026-08-06")
 				(source "01_external_sources.kicad_sch")
 				(comment
@@ -111,7 +111,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 02")
 				(company "Project Button")
-				(rev "V3-P0.7")
+				(rev "V3-P0.8")
 				(date "2026-08-06")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
@@ -159,7 +159,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 03")
 				(company "Project Button")
-				(rev "V3-P0.7")
+				(rev "V3-P0.8")
 				(date "2026-08-06")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
@@ -207,7 +207,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 04")
 				(company "Project Button")
-				(rev "V3-P0.7")
+				(rev "V3-P0.8")
 				(date "2026-08-06")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
@@ -255,7 +255,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 05")
 				(company "Project Button")
-				(rev "V3-P0.7")
+				(rev "V3-P0.8")
 				(date "2026-08-06")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
@@ -303,7 +303,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 06")
 				(company "Project Button")
-				(rev "V3-P0.7")
+				(rev "V3-P0.8")
 				(date "2026-08-06")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
@@ -351,7 +351,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 07")
 				(company "Project Button")
-				(rev "V3-P0.7")
+				(rev "V3-P0.8")
 				(date "2026-08-06")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
@@ -399,7 +399,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 08")
 				(company "Project Button")
-				(rev "V3-P0.7")
+				(rev "V3-P0.8")
 				(date "2026-08-06")
 				(source "08_watchdog_feedback_interface.kicad_sch")
 				(comment
@@ -447,7 +447,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 09")
 				(company "Project Button")
-				(rev "V3-P0.7")
+				(rev "V3-P0.8")
 				(date "2026-08-06")
 				(source "09_compute_and_control_terminals.kicad_sch")
 				(comment
@@ -495,7 +495,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 10")
 				(company "Project Button")
-				(rev "V3-P0.7")
+				(rev "V3-P0.8")
 				(date "2026-08-06")
 				(source "10_actuator_interfaces.kicad_sch")
 				(comment
@@ -2623,6 +2623,134 @@
 			)
 		)
 		(comp
+			(ref "CDRV1")
+			(value "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
+			(datasheet "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
+			(description "Local COM bypass candidate for UDRV1. Capacitance alone does not prove TI's less-than-0.5 V/us COM slew requirement; scope hot-plug and repetitive transients in the released layout.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ORDER CODE FROZEN; COM-SLEW/PCB VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Murata GRM21BR71H104KA01L official specification asset, updated 2025 and accessed 2026-08-06.")
+				(field
+					(name "Display") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
+				(field
+					(name "Description") "Local COM bypass candidate for UDRV1. Capacitance alone does not prove TI's less-than-0.5 V/us COM slew requirement; scope hot-plug and repetitive transients in the released layout.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "CDRV1")
+				(description "Local COM bypass candidate for UDRV1. Capacitance alone does not prove TI's less-than-0.5 V/us COM slew requirement; scope hot-plug and repetitive transients in the released layout.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ORDER CODE FROZEN; COM-SLEW/PCB VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Murata GRM21BR71H104KA01L official specification asset, updated 2025 and accessed 2026-08-06.")
+			)
+			(property
+				(name "Display")
+				(value "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "07 Independent watchdog power, controller and drivers")
+			)
+			(property
+				(name "Sheetfile")
+				(value "07_watchdog_control.kicad_sch")
+			)
+			(sheetpath
+				(names "/07 Independent watchdog power, controller and drivers/")
+				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
+			)
+			(tstamps "7d44671e-c084-5ca4-8f6a-8809b4a776cc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "CDRV2")
+			(value "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
+			(datasheet "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
+			(description "Local COM bypass candidate for UDRV2; the same physical slew and fault evidence remains mandatory.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ORDER CODE FROZEN; COM-SLEW/PCB VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Murata GRM21BR71H104KA01L official specification asset, updated 2025 and accessed 2026-08-06.")
+				(field
+					(name "Display") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
+				(field
+					(name "Description") "Local COM bypass candidate for UDRV2; the same physical slew and fault evidence remains mandatory.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "CDRV2")
+				(description "Local COM bypass candidate for UDRV2; the same physical slew and fault evidence remains mandatory.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ORDER CODE FROZEN; COM-SLEW/PCB VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Murata GRM21BR71H104KA01L official specification asset, updated 2025 and accessed 2026-08-06.")
+			)
+			(property
+				(name "Display")
+				(value "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
+			)
+			(property
+				(name "Sheetname")
+				(value "07 Independent watchdog power, controller and drivers")
+			)
+			(property
+				(name "Sheetfile")
+				(value "07_watchdog_control.kicad_sch")
+			)
+			(sheetpath
+				(names "/07 Independent watchdog power, controller and drivers/")
+				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
+			)
+			(tstamps "c584dc50-0af6-536b-870a-b781e1d6282e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
 			(ref "DC1")
 			(value "TRACO POWER TSR 1-2450, 24 V to 5 V 1 A non-isolated")
 			(datasheet "https://www.tracopower.com/tsr1-datasheet")
@@ -2691,41 +2819,40 @@
 		)
 		(comp
 			(ref "ISO1")
-			(value "Heartbeat isolation/interface")
-			(description "Exact isolation/interface, edge behavior, fault response and connector remain open.")
+			(value "Vishay VO618A-4X017T heartbeat optocoupler")
+			(datasheet "https://www.vishay.com/docs/83432/vo618a.pdf")
+			(description "Ordinary signal isolation only; no safety-integrity credit. Verify received identity, PCB creepage/clearance, GPIO levels, LED current, edge timing, leakage, EMC, brownout and open/short faults in the released assembly.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - ORDER CODE/PINOUT FROZEN; PCB/HIL/FAULT VERIFICATION REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Vishay document 83432, VO618A datasheet Rev. 2.1 dated 2025-01-22, accessed 2026-08-06.")
 				(field
-					(name "Display") "Heartbeat isolation/interface")
+					(name "Display") "Vishay VO618A-4X017T heartbeat optocoupler")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://www.vishay.com/docs/83432/vo618a.pdf")
 				(field
-					(name "Description") "Exact isolation/interface, edge behavior, fault response and connector remain open.")
+					(name "Description") "Ordinary signal isolation only; no safety-integrity credit. Verify received identity, PCB creepage/clearance, GPIO levels, LED current, edge timing, leakage, EMC, brownout and open/short faults in the released assembly.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "ISO1")
-				(description "Exact isolation/interface, edge behavior, fault response and connector remain open.")
+				(description "Ordinary signal isolation only; no safety-integrity credit. Verify received identity, PCB creepage/clearance, GPIO levels, LED current, edge timing, leakage, EMC, brownout and open/short faults in the released assembly.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED")
+				(value "PROPOSED - ORDER CODE/PINOUT FROZEN; PCB/HIL/FAULT VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Vishay document 83432, VO618A datasheet Rev. 2.1 dated 2025-01-22, accessed 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "Heartbeat isolation/interface")
+				(value "Vishay VO618A-4X017T heartbeat optocoupler")
 			)
 			(property
 				(name "Sheetname")
@@ -2745,58 +2872,57 @@
 					(name "A")
 					(pins
 						(pin
-							(num "TBD-CG")
+							(num "2")
 						)
 						(pin
-							(num "TBD-IN")
+							(num "1")
 						)
 						(pin
-							(num "TBD-WG")
+							(num "4")
 						)
 						(pin
-							(num "TBD-OUT")
+							(num "3")
 						)
 					)
 				)
 			)
 		)
 		(comp
-			(ref "Q1")
-			(value "Watchdog relay channel 1 low-side driver")
-			(description "Exact transistor/driver, base/gate network, default-off bias, fault behavior and polarity with relay internal diode open.")
+			(ref "RHB1")
+			(value "Panasonic ERJ6ENF9100V, 910 Ohm 1% 0805 0.125 W")
+			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF9100V")
+			(description "Screens approximately 1.04 mA at a project 2.6 V GPIO-high floor and 1.65 V LED maximum, and 2.53 mA at 3.3 V with 1.0 V LED minimum. The 2.6 V floor is a project screen, not a released Raspberry Pi 5 guarantee; measure the actual source across load and temperature.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - ORDER CODE FROZEN; PCB/HIL VERIFICATION REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic ERJ6ENF9100V current product page and specification, accessed 2026-08-06.")
 				(field
-					(name "Display") "Watchdog relay channel 1 low-side driver")
+					(name "Display") "Panasonic ERJ6ENF9100V, 910 Ohm 1% 0805 0.125 W")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF9100V")
 				(field
-					(name "Description") "Exact transistor/driver, base/gate network, default-off bias, fault behavior and polarity with relay internal diode open.")
+					(name "Description") "Screens approximately 1.04 mA at a project 2.6 V GPIO-high floor and 1.65 V LED maximum, and 2.53 mA at 3.3 V with 1.0 V LED minimum. The 2.6 V floor is a project screen, not a released Raspberry Pi 5 guarantee; measure the actual source across load and temperature.")
 			)
 			(libsource
 				(lib "PBV3")
-				(part "Q1")
-				(description "Exact transistor/driver, base/gate network, default-off bias, fault behavior and polarity with relay internal diode open.")
+				(part "RHB1")
+				(description "Screens approximately 1.04 mA at a project 2.6 V GPIO-high floor and 1.65 V LED maximum, and 2.53 mA at 3.3 V with 1.0 V LED minimum. The 2.6 V floor is a project screen, not a released Raspberry Pi 5 guarantee; measure the actual source across load and temperature.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED")
+				(value "PROPOSED - ORDER CODE FROZEN; PCB/HIL VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Panasonic ERJ6ENF9100V current product page and specification, accessed 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "Watchdog relay channel 1 low-side driver")
+				(value "Panasonic ERJ6ENF9100V, 910 Ohm 1% 0805 0.125 W")
 			)
 			(property
 				(name "Sheetname")
@@ -2810,61 +2936,57 @@
 				(names "/07 Independent watchdog power, controller and drivers/")
 				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
 			)
-			(tstamps "57dfa8c7-9ea9-56d1-9cda-604f74f3c10a")
+			(tstamps "9e5bbba7-0e88-54eb-ab81-58e547808d1b")
 			(units
 				(unit
 					(name "A")
 					(pins
 						(pin
-							(num "TBD-0V")
+							(num "1")
 						)
 						(pin
-							(num "TBD-IN")
-						)
-						(pin
-							(num "TBD-COIL")
+							(num "2")
 						)
 					)
 				)
 			)
 		)
 		(comp
-			(ref "Q2")
-			(value "Watchdog relay channel 2 low-side driver")
-			(description "Independently driven duplicate channel; common-cause review open.")
+			(ref "RHP1")
+			(value "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805 0.125 W")
+			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
+			(description "The 10 kOhm pullup draws 0.33 mA at 3.3 V. Confirm logic thresholds, leakage, power sequencing, waveform rise/fall time and fault response on the released PCB.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - ORDER CODE FROZEN; PCB/HIL VERIFICATION REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic ERJ6ENF1002V current product page and specification, accessed 2026-08-06.")
 				(field
-					(name "Display") "Watchdog relay channel 2 low-side driver")
+					(name "Display") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805 0.125 W")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 				(field
-					(name "Description") "Independently driven duplicate channel; common-cause review open.")
+					(name "Description") "The 10 kOhm pullup draws 0.33 mA at 3.3 V. Confirm logic thresholds, leakage, power sequencing, waveform rise/fall time and fault response on the released PCB.")
 			)
 			(libsource
 				(lib "PBV3")
-				(part "Q2")
-				(description "Independently driven duplicate channel; common-cause review open.")
+				(part "RHP1")
+				(description "The 10 kOhm pullup draws 0.33 mA at 3.3 V. Confirm logic thresholds, leakage, power sequencing, waveform rise/fall time and fault response on the released PCB.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED")
+				(value "PROPOSED - ORDER CODE FROZEN; PCB/HIL VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Panasonic ERJ6ENF1002V current product page and specification, accessed 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "Watchdog relay channel 2 low-side driver")
+				(value "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805 0.125 W")
 			)
 			(property
 				(name "Sheetname")
@@ -2878,19 +3000,228 @@
 				(names "/07 Independent watchdog power, controller and drivers/")
 				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
 			)
-			(tstamps "fd4b237e-93c4-51e8-9d2f-74de190583cc")
+			(tstamps "aac197a8-3ed6-57f9-b984-9e2bc6e04fc1")
 			(units
 				(unit
 					(name "A")
 					(pins
 						(pin
-							(num "TBD-0V")
+							(num "1")
 						)
 						(pin
-							(num "TBD-IN")
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "UDRV1")
+			(value "Texas Instruments TPL7407LPWR channel-1 relay driver")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf")
+			(description "Dedicated package for channel 1. COM is tied to the 24 V coil rail for the internal clamp; unused inputs are tied low and unused outputs are no-connect. Default-off, hot-plug/COM slew, clamp interaction with the relay module, thermal, brownout, open/short and cross-channel faults remain open.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ORDER CODE/PINOUT FROZEN; PCB/HIL/FAULT VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "TI TPL7407L datasheet SLRS066D, revised 2016-03; TPL7407LPWR active orderable status checked 2026-08-06.")
+				(field
+					(name "Display") "Texas Instruments TPL7407LPWR channel-1 relay driver")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf")
+				(field
+					(name "Description") "Dedicated package for channel 1. COM is tied to the 24 V coil rail for the internal clamp; unused inputs are tied low and unused outputs are no-connect. Default-off, hot-plug/COM slew, clamp interaction with the relay module, thermal, brownout, open/short and cross-channel faults remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "UDRV1")
+				(description "Dedicated package for channel 1. COM is tied to the 24 V coil rail for the internal clamp; unused inputs are tied low and unused outputs are no-connect. Default-off, hot-plug/COM slew, clamp interaction with the relay module, thermal, brownout, open/short and cross-channel faults remain open.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ORDER CODE/PINOUT FROZEN; PCB/HIL/FAULT VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI TPL7407L datasheet SLRS066D, revised 2016-03; TPL7407LPWR active orderable status checked 2026-08-06.")
+			)
+			(property
+				(name "Display")
+				(value "Texas Instruments TPL7407LPWR channel-1 relay driver")
+			)
+			(property
+				(name "Sheetname")
+				(value "07 Independent watchdog power, controller and drivers")
+			)
+			(property
+				(name "Sheetfile")
+				(value "07_watchdog_control.kicad_sch")
+			)
+			(sheetpath
+				(names "/07 Independent watchdog power, controller and drivers/")
+				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
+			)
+			(tstamps "9927b222-345d-5d0a-bce5-be9f43786220")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "9")
 						)
 						(pin
-							(num "TBD-COIL")
+							(num "8")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "16")
+						)
+						(pin
+							(num "15")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "12")
+						)
+						(pin
+							(num "11")
+						)
+						(pin
+							(num "10")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "UDRV2")
+			(value "Texas Instruments TPL7407LPWR channel-2 relay driver")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf")
+			(description "Separate package for channel 2 to avoid one driver-package fault controlling both coils. The controller, supplies, clock and firmware remain common causes; no safety credit is claimed.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ORDER CODE/PINOUT FROZEN; PCB/HIL/FAULT VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "TI TPL7407L datasheet SLRS066D, revised 2016-03; TPL7407LPWR active orderable status checked 2026-08-06.")
+				(field
+					(name "Display") "Texas Instruments TPL7407LPWR channel-2 relay driver")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf")
+				(field
+					(name "Description") "Separate package for channel 2 to avoid one driver-package fault controlling both coils. The controller, supplies, clock and firmware remain common causes; no safety credit is claimed.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "UDRV2")
+				(description "Separate package for channel 2 to avoid one driver-package fault controlling both coils. The controller, supplies, clock and firmware remain common causes; no safety credit is claimed.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ORDER CODE/PINOUT FROZEN; PCB/HIL/FAULT VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI TPL7407L datasheet SLRS066D, revised 2016-03; TPL7407LPWR active orderable status checked 2026-08-06.")
+			)
+			(property
+				(name "Display")
+				(value "Texas Instruments TPL7407LPWR channel-2 relay driver")
+			)
+			(property
+				(name "Sheetname")
+				(value "07 Independent watchdog power, controller and drivers")
+			)
+			(property
+				(name "Sheetfile")
+				(value "07_watchdog_control.kicad_sch")
+			)
+			(sheetpath
+				(names "/07 Independent watchdog power, controller and drivers/")
+				(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
+			)
+			(tstamps "d4bf4976-077b-5b3b-8982-c51dbd2f1f9f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "9")
+						)
+						(pin
+							(num "8")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "16")
+						)
+						(pin
+							(num "15")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "12")
+						)
+						(pin
+							(num "11")
+						)
+						(pin
+							(num "10")
 						)
 					)
 				)
@@ -4535,6 +4866,80 @@
 		)
 		(libpart
 			(lib "PBV3")
+			(part "CDRV1")
+			(description "Local COM bypass candidate for UDRV1. Capacitance alone does not prove TI's less-than-0.5 V/us COM slew requirement; scope hot-plug and repetitive transients in the released layout.")
+			(docs "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
+			(fields
+				(field
+					(name "Reference") "CDRV1")
+				(field
+					(name "Value") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
+				(field
+					(name "Description") "Local COM bypass candidate for UDRV1. Capacitance alone does not prove TI's less-than-0.5 V/us COM slew requirement; scope hot-plug and repetitive transients in the released layout.")
+				(field
+					(name "Status") "PROPOSED - ORDER CODE FROZEN; COM-SLEW/PCB VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Murata GRM21BR71H104KA01L official specification asset, updated 2025 and accessed 2026-08-06.")
+				(field
+					(name "Display") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "COM_RAIL")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "CDRV2")
+			(description "Local COM bypass candidate for UDRV2; the same physical slew and fault evidence remains mandatory.")
+			(docs "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
+			(fields
+				(field
+					(name "Reference") "CDRV2")
+				(field
+					(name "Value") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
+				(field
+					(name "Description") "Local COM bypass candidate for UDRV2; the same physical slew and fault evidence remains mandatory.")
+				(field
+					(name "Status") "PROPOSED - ORDER CODE FROZEN; COM-SLEW/PCB VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Murata GRM21BR71H104KA01L official specification asset, updated 2025 and accessed 2026-08-06.")
+				(field
+					(name "Display") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "COM_RAIL")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
 			(part "CFI1")
 			(description "TI Type-3 input-filter value. Select dielectric, tolerance, DC-bias and package; locate at UFB1.")
 			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
@@ -5114,47 +5519,46 @@
 		(libpart
 			(lib "PBV3")
 			(part "ISO1")
-			(description "Exact isolation/interface, edge behavior, fault response and connector remain open.")
+			(description "Ordinary signal isolation only; no safety-integrity credit. Verify received identity, PCB creepage/clearance, GPIO levels, LED current, edge timing, leakage, EMC, brownout and open/short faults in the released assembly.")
+			(docs "https://www.vishay.com/docs/83432/vo618a.pdf")
 			(fields
 				(field
 					(name "Reference") "ISO1")
 				(field
-					(name "Value") "Heartbeat isolation/interface")
+					(name "Value") "Vishay VO618A-4X017T heartbeat optocoupler")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://www.vishay.com/docs/83432/vo618a.pdf")
 				(field
-					(name "Description") "Exact isolation/interface, edge behavior, fault response and connector remain open.")
+					(name "Description") "Ordinary signal isolation only; no safety-integrity credit. Verify received identity, PCB creepage/clearance, GPIO levels, LED current, edge timing, leakage, EMC, brownout and open/short faults in the released assembly.")
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - ORDER CODE/PINOUT FROZEN; PCB/HIL/FAULT VERIFICATION REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Vishay document 83432, VO618A datasheet Rev. 2.1 dated 2025-01-22, accessed 2026-08-06.")
 				(field
-					(name "Display") "Heartbeat isolation/interface")
+					(name "Display") "Vishay VO618A-4X017T heartbeat optocoupler")
 			)
 			(pins
 				(pin
-					(num "TBD-CG")
-					(name "COMPUTE_GND")
+					(num "1")
+					(name "ANODE")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-IN")
-					(name "PI_HEARTBEAT")
+					(num "2")
+					(name "CATHODE")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-OUT")
-					(name "WD_HEARTBEAT")
+					(num "3")
+					(name "EMITTER")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-WG")
-					(name "WD_GND")
+					(num "4")
+					(name "COLLECTOR")
 					(type "passive")
 				)
 			)
@@ -6055,86 +6459,74 @@
 		)
 		(libpart
 			(lib "PBV3")
-			(part "Q1")
-			(description "Exact transistor/driver, base/gate network, default-off bias, fault behavior and polarity with relay internal diode open.")
+			(part "RHB1")
+			(description "Screens approximately 1.04 mA at a project 2.6 V GPIO-high floor and 1.65 V LED maximum, and 2.53 mA at 3.3 V with 1.0 V LED minimum. The 2.6 V floor is a project screen, not a released Raspberry Pi 5 guarantee; measure the actual source across load and temperature.")
+			(docs "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF9100V")
 			(fields
 				(field
-					(name "Reference") "Q1")
+					(name "Reference") "RHB1")
 				(field
-					(name "Value") "Watchdog relay channel 1 low-side driver")
+					(name "Value") "Panasonic ERJ6ENF9100V, 910 Ohm 1% 0805 0.125 W")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF9100V")
 				(field
-					(name "Description") "Exact transistor/driver, base/gate network, default-off bias, fault behavior and polarity with relay internal diode open.")
+					(name "Description") "Screens approximately 1.04 mA at a project 2.6 V GPIO-high floor and 1.65 V LED maximum, and 2.53 mA at 3.3 V with 1.0 V LED minimum. The 2.6 V floor is a project screen, not a released Raspberry Pi 5 guarantee; measure the actual source across load and temperature.")
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - ORDER CODE FROZEN; PCB/HIL VERIFICATION REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic ERJ6ENF9100V current product page and specification, accessed 2026-08-06.")
 				(field
-					(name "Display") "Watchdog relay channel 1 low-side driver")
+					(name "Display") "Panasonic ERJ6ENF9100V, 910 Ohm 1% 0805 0.125 W")
 			)
 			(pins
 				(pin
-					(num "TBD-0V")
-					(name "0V")
+					(num "1")
+					(name "GPIO_SIDE")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-COIL")
-					(name "COIL_RETURN")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-IN")
-					(name "GPIO")
+					(num "2")
+					(name "LED_ANODE_SIDE")
 					(type "passive")
 				)
 			)
 		)
 		(libpart
 			(lib "PBV3")
-			(part "Q2")
-			(description "Independently driven duplicate channel; common-cause review open.")
+			(part "RHP1")
+			(description "The 10 kOhm pullup draws 0.33 mA at 3.3 V. Confirm logic thresholds, leakage, power sequencing, waveform rise/fall time and fault response on the released PCB.")
+			(docs "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 			(fields
 				(field
-					(name "Reference") "Q2")
+					(name "Reference") "RHP1")
 				(field
-					(name "Value") "Watchdog relay channel 2 low-side driver")
+					(name "Value") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805 0.125 W")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 				(field
-					(name "Description") "Independently driven duplicate channel; common-cause review open.")
+					(name "Description") "The 10 kOhm pullup draws 0.33 mA at 3.3 V. Confirm logic thresholds, leakage, power sequencing, waveform rise/fall time and fault response on the released PCB.")
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - ORDER CODE FROZEN; PCB/HIL VERIFICATION REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic ERJ6ENF1002V current product page and specification, accessed 2026-08-06.")
 				(field
-					(name "Display") "Watchdog relay channel 2 low-side driver")
+					(name "Display") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805 0.125 W")
 			)
 			(pins
 				(pin
-					(num "TBD-0V")
-					(name "0V")
+					(num "1")
+					(name "PULLUP_SUPPLY")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-COIL")
-					(name "COIL_RETURN")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-IN")
-					(name "GPIO")
+					(num "2")
+					(name "HEARTBEAT_NODE")
 					(type "passive")
 				)
 			)
@@ -6980,6 +7372,220 @@
 		)
 		(libpart
 			(lib "PBV3")
+			(part "UDRV1")
+			(description "Dedicated package for channel 1. COM is tied to the 24 V coil rail for the internal clamp; unused inputs are tied low and unused outputs are no-connect. Default-off, hot-plug/COM slew, clamp interaction with the relay module, thermal, brownout, open/short and cross-channel faults remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf")
+			(fields
+				(field
+					(name "Reference") "UDRV1")
+				(field
+					(name "Value") "Texas Instruments TPL7407LPWR channel-1 relay driver")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf")
+				(field
+					(name "Description") "Dedicated package for channel 1. COM is tied to the 24 V coil rail for the internal clamp; unused inputs are tied low and unused outputs are no-connect. Default-off, hot-plug/COM slew, clamp interaction with the relay module, thermal, brownout, open/short and cross-channel faults remain open.")
+				(field
+					(name "Status") "PROPOSED - ORDER CODE/PINOUT FROZEN; PCB/HIL/FAULT VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "TI TPL7407L datasheet SLRS066D, revised 2016-03; TPL7407LPWR active orderable status checked 2026-08-06.")
+				(field
+					(name "Display") "Texas Instruments TPL7407LPWR channel-1 relay driver")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "IN2_TIED_LOW")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "IN3_TIED_LOW")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "IN4_TIED_LOW")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "IN5_TIED_LOW")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "IN6_TIED_LOW")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "IN7_TIED_LOW")
+					(type "passive")
+				)
+				(pin
+					(num "8")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "9")
+					(name "COM")
+					(type "passive")
+				)
+				(pin
+					(num "10")
+					(name "OUT7_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "11")
+					(name "OUT6_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "12")
+					(name "OUT5_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "13")
+					(name "OUT4_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "OUT3_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "15")
+					(name "OUT2_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "16")
+					(name "OUT1_COIL_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "UDRV2")
+			(description "Separate package for channel 2 to avoid one driver-package fault controlling both coils. The controller, supplies, clock and firmware remain common causes; no safety credit is claimed.")
+			(docs "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf")
+			(fields
+				(field
+					(name "Reference") "UDRV2")
+				(field
+					(name "Value") "Texas Instruments TPL7407LPWR channel-2 relay driver")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf")
+				(field
+					(name "Description") "Separate package for channel 2 to avoid one driver-package fault controlling both coils. The controller, supplies, clock and firmware remain common causes; no safety credit is claimed.")
+				(field
+					(name "Status") "PROPOSED - ORDER CODE/PINOUT FROZEN; PCB/HIL/FAULT VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "TI TPL7407L datasheet SLRS066D, revised 2016-03; TPL7407LPWR active orderable status checked 2026-08-06.")
+				(field
+					(name "Display") "Texas Instruments TPL7407LPWR channel-2 relay driver")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "IN2_TIED_LOW")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "IN3_TIED_LOW")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "IN4_TIED_LOW")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "IN5_TIED_LOW")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "IN6_TIED_LOW")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "IN7_TIED_LOW")
+					(type "passive")
+				)
+				(pin
+					(num "8")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "9")
+					(name "COM")
+					(type "passive")
+				)
+				(pin
+					(num "10")
+					(name "OUT7_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "11")
+					(name "OUT6_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "12")
+					(name "OUT5_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "13")
+					(name "OUT4_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "OUT3_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "15")
+					(name "OUT2_UNUSED")
+					(type "passive")
+				)
+				(pin
+					(num "16")
+					(name "OUT1_COIL_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
 			(part "UFB1")
 			(description "Exact dual-channel receiver candidate. Logic and field grounds both return to SAFETY_0V in this non-isolated system, so no galvanic-isolation or safety-integrity credit is claimed. Layout, thermal, EMC, fault-injection and received-part tests remain open.")
 			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
@@ -7463,8 +8069,8 @@
 			(class "Default")
 			(node
 				(ref "ISO1")
-				(pin "TBD-CG")
-				(pinfunction "COMPUTE_GND_TBD-CG")
+				(pin "2")
+				(pinfunction "CATHODE_2")
 				(pintype "passive")
 			)
 			(node
@@ -7685,6 +8291,23 @@
 		)
 		(net
 			(code "14")
+			(name "HB_LED_A")
+			(class "Default")
+			(node
+				(ref "ISO1")
+				(pin "1")
+				(pinfunction "ANODE_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RHB1")
+				(pin "2")
+				(pinfunction "LED_ANODE_SIDE_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "15")
 			(name "J1_VDD")
 			(class "Default")
 			(node
@@ -7713,7 +8336,7 @@
 			)
 		)
 		(net
-			(code "15")
+			(code "16")
 			(name "J2_VDD")
 			(class "Default")
 			(node
@@ -7742,7 +8365,7 @@
 			)
 		)
 		(net
-			(code "16")
+			(code "17")
 			(name "J3_VDD")
 			(class "Default")
 			(node
@@ -7771,7 +8394,7 @@
 			)
 		)
 		(net
-			(code "17")
+			(code "18")
 			(name "K1_A1")
 			(class "Default")
 			(node
@@ -7788,7 +8411,7 @@
 			)
 		)
 		(net
-			(code "18")
+			(code "19")
 			(name "K1_J12")
 			(class "Default")
 			(node
@@ -7805,7 +8428,7 @@
 			)
 		)
 		(net
-			(code "19")
+			(code "20")
 			(name "K1_J23")
 			(class "Default")
 			(node
@@ -7822,7 +8445,7 @@
 			)
 		)
 		(net
-			(code "20")
+			(code "21")
 			(name "K1_OUT")
 			(class "Default")
 			(node
@@ -7839,7 +8462,7 @@
 			)
 		)
 		(net
-			(code "21")
+			(code "22")
 			(name "K1_P1_IN")
 			(class "Default")
 			(node
@@ -7856,7 +8479,7 @@
 			)
 		)
 		(net
-			(code "22")
+			(code "23")
 			(name "K1_STATUS")
 			(class "Default")
 			(node
@@ -7873,7 +8496,7 @@
 			)
 		)
 		(net
-			(code "23")
+			(code "24")
 			(name "K2_A1")
 			(class "Default")
 			(node
@@ -7890,7 +8513,7 @@
 			)
 		)
 		(net
-			(code "24")
+			(code "25")
 			(name "K2_J12")
 			(class "Default")
 			(node
@@ -7907,7 +8530,7 @@
 			)
 		)
 		(net
-			(code "25")
+			(code "26")
 			(name "K2_J23")
 			(class "Default")
 			(node
@@ -7924,7 +8547,7 @@
 			)
 		)
 		(net
-			(code "26")
+			(code "27")
 			(name "K2_STATUS")
 			(class "Default")
 			(node
@@ -7941,24 +8564,24 @@
 			)
 		)
 		(net
-			(code "27")
+			(code "28")
 			(name "PI_HEARTBEAT")
 			(class "Default")
-			(node
-				(ref "ISO1")
-				(pin "TBD-IN")
-				(pinfunction "PI_HEARTBEAT_TBD-IN")
-				(pintype "passive")
-			)
 			(node
 				(ref "PI1")
 				(pin "TBD-GPIO-HB")
 				(pinfunction "HEARTBEAT_OUT_TBD-GPIO-HB")
 				(pintype "passive")
 			)
+			(node
+				(ref "RHB1")
+				(pin "1")
+				(pinfunction "GPIO_SIDE_1")
+				(pintype "passive")
+			)
 		)
 		(net
-			(code "28")
+			(code "29")
 			(name "PI_USB_U2D2")
 			(class "Default")
 			(node
@@ -7975,13 +8598,25 @@
 			)
 		)
 		(net
-			(code "29")
+			(code "30")
 			(name "SAFETY_0V")
 			(class "Default")
 			(node
 				(ref "CDEC1")
 				(pin "2")
 				(pinfunction "GND1_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "CDRV1")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "CDRV2")
+				(pin "2")
+				(pinfunction "RETURN_2")
 				(pintype "passive")
 			)
 			(node
@@ -8010,8 +8645,8 @@
 			)
 			(node
 				(ref "ISO1")
-				(pin "TBD-WG")
-				(pinfunction "WD_GND_TBD-WG")
+				(pin "3")
+				(pinfunction "EMITTER_3")
 				(pintype "passive")
 			)
 			(node
@@ -8051,18 +8686,6 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "Q1")
-				(pin "TBD-0V")
-				(pinfunction "0V_TBD-0V")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q2")
-				(pin "TBD-0V")
-				(pinfunction "0V_TBD-0V")
-				(pintype "passive")
-			)
-			(node
 				(ref "RPD1")
 				(pin "2")
 				(pinfunction "LOGIC_RETURN_2")
@@ -8096,6 +8719,90 @@
 				(ref "SRA1")
 				(pin "A2")
 				(pinfunction "0V_SUPPLY_A2")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV1")
+				(pin "2")
+				(pinfunction "IN2_TIED_LOW_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV1")
+				(pin "3")
+				(pinfunction "IN3_TIED_LOW_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV1")
+				(pin "4")
+				(pinfunction "IN4_TIED_LOW_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV1")
+				(pin "5")
+				(pinfunction "IN5_TIED_LOW_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV1")
+				(pin "6")
+				(pinfunction "IN6_TIED_LOW_6")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV1")
+				(pin "7")
+				(pinfunction "IN7_TIED_LOW_7")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV1")
+				(pin "8")
+				(pinfunction "GND_8")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV2")
+				(pin "2")
+				(pinfunction "IN2_TIED_LOW_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV2")
+				(pin "3")
+				(pinfunction "IN3_TIED_LOW_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV2")
+				(pin "4")
+				(pinfunction "IN4_TIED_LOW_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV2")
+				(pin "5")
+				(pinfunction "IN5_TIED_LOW_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV2")
+				(pin "6")
+				(pinfunction "IN6_TIED_LOW_6")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV2")
+				(pin "7")
+				(pinfunction "IN7_TIED_LOW_7")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV2")
+				(pin "8")
+				(pinfunction "GND_8")
 				(pintype "passive")
 			)
 			(node
@@ -8136,9 +8843,21 @@
 			)
 		)
 		(net
-			(code "30")
+			(code "31")
 			(name "SAFETY_24V")
 			(class "Default")
+			(node
+				(ref "CDRV1")
+				(pin "1")
+				(pinfunction "COM_RAIL_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "CDRV2")
+				(pin "1")
+				(pinfunction "COM_RAIL_1")
+				(pintype "passive")
+			)
 			(node
 				(ref "DC1")
 				(pin "1")
@@ -8224,6 +8943,18 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "UDRV1")
+				(pin "9")
+				(pinfunction "COM_9")
+				(pintype "passive")
+			)
+			(node
+				(ref "UDRV2")
+				(pin "9")
+				(pinfunction "COM_9")
+				(pintype "passive")
+			)
+			(node
 				(ref "XT1")
 				(pin "TBD-1")
 				(pinfunction "+24V_TBD-1")
@@ -8231,7 +8962,7 @@
 			)
 		)
 		(net
-			(code "31")
+			(code "32")
 			(name "SAFETY_24V_RAW")
 			(class "Default")
 			(node
@@ -8248,7 +8979,7 @@
 			)
 		)
 		(net
-			(code "32")
+			(code "33")
 			(name "SR1_S11")
 			(class "Default")
 			(node
@@ -8265,7 +8996,7 @@
 			)
 		)
 		(net
-			(code "33")
+			(code "34")
 			(name "SR1_S12")
 			(class "Default")
 			(node
@@ -8288,7 +9019,7 @@
 			)
 		)
 		(net
-			(code "34")
+			(code "35")
 			(name "SR1_S21")
 			(class "Default")
 			(node
@@ -8305,7 +9036,7 @@
 			)
 		)
 		(net
-			(code "35")
+			(code "36")
 			(name "SR1_S22")
 			(class "Default")
 			(node
@@ -8322,7 +9053,7 @@
 			)
 		)
 		(net
-			(code "36")
+			(code "37")
 			(name "SR1_START_RETURN")
 			(class "Default")
 			(node
@@ -8339,7 +9070,7 @@
 			)
 		)
 		(net
-			(code "37")
+			(code "38")
 			(name "SR1_STATUS")
 			(class "Default")
 			(node
@@ -8362,7 +9093,7 @@
 			)
 		)
 		(net
-			(code "38")
+			(code "39")
 			(name "SRA1_K1_RAW")
 			(class "Default")
 			(node
@@ -8379,7 +9110,7 @@
 			)
 		)
 		(net
-			(code "39")
+			(code "40")
 			(name "SRA1_K2_RAW")
 			(class "Default")
 			(node
@@ -8396,7 +9127,7 @@
 			)
 		)
 		(net
-			(code "40")
+			(code "41")
 			(name "SRA1_S11")
 			(class "Default")
 			(node
@@ -8413,7 +9144,7 @@
 			)
 		)
 		(net
-			(code "41")
+			(code "42")
 			(name "SRA1_S12")
 			(class "Default")
 			(node
@@ -8436,7 +9167,7 @@
 			)
 		)
 		(net
-			(code "42")
+			(code "43")
 			(name "SRA1_S21")
 			(class "Default")
 			(node
@@ -8453,7 +9184,7 @@
 			)
 		)
 		(net
-			(code "43")
+			(code "44")
 			(name "SRA1_S22")
 			(class "Default")
 			(node
@@ -8470,7 +9201,7 @@
 			)
 		)
 		(net
-			(code "44")
+			(code "45")
 			(name "SRA1_START_RETURN")
 			(class "Default")
 			(node
@@ -8487,7 +9218,7 @@
 			)
 		)
 		(net
-			(code "45")
+			(code "46")
 			(name "SRA1_STATUS")
 			(class "Default")
 			(node
@@ -8504,7 +9235,7 @@
 			)
 		)
 		(net
-			(code "46")
+			(code "47")
 			(name "UFB_OUT1")
 			(class "Default")
 			(node
@@ -8521,7 +9252,7 @@
 			)
 		)
 		(net
-			(code "47")
+			(code "48")
 			(name "UFB_OUT2")
 			(class "Default")
 			(node
@@ -8538,7 +9269,7 @@
 			)
 		)
 		(net
-			(code "48")
+			(code "49")
 			(name "WD1_COIL_N")
 			(class "Default")
 			(node
@@ -8548,20 +9279,20 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "Q1")
-				(pin "TBD-COIL")
-				(pinfunction "COIL_RETURN_TBD-COIL")
+				(ref "UDRV1")
+				(pin "16")
+				(pinfunction "OUT1_COIL_RETURN_16")
 				(pintype "passive")
 			)
 		)
 		(net
-			(code "49")
+			(code "50")
 			(name "WD1_DRIVE")
 			(class "Default")
 			(node
-				(ref "Q1")
-				(pin "TBD-IN")
-				(pinfunction "GPIO_TBD-IN")
+				(ref "UDRV1")
+				(pin "1")
+				(pinfunction "IN1_1")
 				(pintype "passive")
 			)
 			(node
@@ -8572,7 +9303,7 @@
 			)
 		)
 		(net
-			(code "50")
+			(code "51")
 			(name "WD1_NC_24V")
 			(class "Default")
 			(node
@@ -8595,7 +9326,7 @@
 			)
 		)
 		(net
-			(code "51")
+			(code "52")
 			(name "WD1_NC_DIAG")
 			(class "Default")
 			(node
@@ -8618,7 +9349,7 @@
 			)
 		)
 		(net
-			(code "52")
+			(code "53")
 			(name "WD1_SAFETY_IN")
 			(class "Default")
 			(node
@@ -8635,7 +9366,7 @@
 			)
 		)
 		(net
-			(code "53")
+			(code "54")
 			(name "WD2_COIL_N")
 			(class "Default")
 			(node
@@ -8645,20 +9376,20 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "Q2")
-				(pin "TBD-COIL")
-				(pinfunction "COIL_RETURN_TBD-COIL")
+				(ref "UDRV2")
+				(pin "16")
+				(pinfunction "OUT1_COIL_RETURN_16")
 				(pintype "passive")
 			)
 		)
 		(net
-			(code "54")
+			(code "55")
 			(name "WD2_DRIVE")
 			(class "Default")
 			(node
-				(ref "Q2")
-				(pin "TBD-IN")
-				(pinfunction "GPIO_TBD-IN")
+				(ref "UDRV2")
+				(pin "1")
+				(pinfunction "IN1_1")
 				(pintype "passive")
 			)
 			(node
@@ -8669,7 +9400,7 @@
 			)
 		)
 		(net
-			(code "55")
+			(code "56")
 			(name "WD2_NC_24V")
 			(class "Default")
 			(node
@@ -8692,7 +9423,7 @@
 			)
 		)
 		(net
-			(code "56")
+			(code "57")
 			(name "WD2_NC_DIAG")
 			(class "Default")
 			(node
@@ -8715,7 +9446,7 @@
 			)
 		)
 		(net
-			(code "57")
+			(code "58")
 			(name "WD2_SAFETY_IN")
 			(class "Default")
 			(node
@@ -8732,13 +9463,19 @@
 			)
 		)
 		(net
-			(code "58")
+			(code "59")
 			(name "WD_3V3")
 			(class "Default")
 			(node
 				(ref "CDEC1")
 				(pin "1")
 				(pinfunction "3V3_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RHP1")
+				(pin "1")
+				(pinfunction "PULLUP_SUPPLY_1")
 				(pintype "passive")
 			)
 			(node
@@ -8761,7 +9498,7 @@
 			)
 		)
 		(net
-			(code "59")
+			(code "60")
 			(name "WD_5V")
 			(class "Default")
 			(node
@@ -8778,13 +9515,19 @@
 			)
 		)
 		(net
-			(code "60")
+			(code "61")
 			(name "WD_HEARTBEAT")
 			(class "Default")
 			(node
 				(ref "ISO1")
-				(pin "TBD-OUT")
-				(pinfunction "WD_HEARTBEAT_TBD-OUT")
+				(pin "4")
+				(pinfunction "COLLECTOR_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "RHP1")
+				(pin "2")
+				(pinfunction "HEARTBEAT_NODE_2")
 				(pintype "passive")
 			)
 			(node
@@ -8795,7 +9538,7 @@
 			)
 		)
 		(net
-			(code "61")
+			(code "62")
 			(name "WD_SWCLK")
 			(class "Default")
 			(node
@@ -8812,7 +9555,7 @@
 			)
 		)
 		(net
-			(code "62")
+			(code "63")
 			(name "WD_SWDIO")
 			(class "Default")
 			(node
@@ -8829,7 +9572,7 @@
 			)
 		)
 		(net
-			(code "63")
+			(code "64")
 			(name "unconnected-(JFRAME1-CABLE_SHIELDS-PadTBD-SHIELD)")
 			(class "Default")
 			(node
@@ -8840,7 +9583,7 @@
 			)
 		)
 		(net
-			(code "64")
+			(code "65")
 			(name "unconnected-(JFRAME1-ROBOT_FRAME-PadTBD-FRAME)")
 			(class "Default")
 			(node
@@ -8851,7 +9594,7 @@
 			)
 		)
 		(net
-			(code "65")
+			(code "66")
 			(name "unconnected-(KWD1-CH1_NC_UNUSED-Pad12)")
 			(class "Default")
 			(node
@@ -8862,7 +9605,7 @@
 			)
 		)
 		(net
-			(code "66")
+			(code "67")
 			(name "unconnected-(KWD1-CH2_NO_UNUSED-Pad24)")
 			(class "Default")
 			(node
@@ -8873,7 +9616,7 @@
 			)
 		)
 		(net
-			(code "67")
+			(code "68")
 			(name "unconnected-(KWD2-CH1_NC_UNUSED-Pad12)")
 			(class "Default")
 			(node
@@ -8884,7 +9627,7 @@
 			)
 		)
 		(net
-			(code "68")
+			(code "69")
 			(name "unconnected-(KWD2-CH2_NO_UNUSED-Pad24)")
 			(class "Default")
 			(node
@@ -8895,7 +9638,7 @@
 			)
 		)
 		(net
-			(code "69")
+			(code "70")
 			(name "unconnected-(PSA1-FACTORY_AC_L-PadC14-L)")
 			(class "Default")
 			(node
@@ -8906,7 +9649,7 @@
 			)
 		)
 		(net
-			(code "70")
+			(code "71")
 			(name "unconnected-(PSA1-FACTORY_AC_N-PadC14-N)")
 			(class "Default")
 			(node
@@ -8917,7 +9660,7 @@
 			)
 		)
 		(net
-			(code "71")
+			(code "72")
 			(name "unconnected-(PSU2-FACTORY_AC_L-PadC14-L)")
 			(class "Default")
 			(node
@@ -8928,7 +9671,7 @@
 			)
 		)
 		(net
-			(code "72")
+			(code "73")
 			(name "unconnected-(PSU2-FACTORY_AC_N-PadC14-N)")
 			(class "Default")
 			(node
@@ -8939,7 +9682,7 @@
 			)
 		)
 		(net
-			(code "73")
+			(code "74")
 			(name "unconnected-(PSU2-FACTORY_PE-PadC14-PE)")
 			(class "Default")
 			(node
@@ -8950,7 +9693,7 @@
 			)
 		)
 		(net
-			(code "74")
+			(code "75")
 			(name "unconnected-(PSU3-FACTORY_AC-PadAC-FACTORY)")
 			(class "Default")
 			(node
@@ -8961,7 +9704,7 @@
 			)
 		)
 		(net
-			(code "75")
+			(code "76")
 			(name "unconnected-(SP1-ACTUATOR_0V-Pad1)")
 			(class "Default")
 			(node
@@ -8972,7 +9715,7 @@
 			)
 		)
 		(net
-			(code "76")
+			(code "77")
 			(name "unconnected-(SP1-PE-Pad2)")
 			(class "Default")
 			(node
@@ -8983,7 +9726,7 @@
 			)
 		)
 		(net
-			(code "77")
+			(code "78")
 			(name "unconnected-(SR1-AUX_NC_OUT-Pad42)")
 			(class "Default")
 			(node
@@ -8994,7 +9737,7 @@
 			)
 		)
 		(net
-			(code "78")
+			(code "79")
 			(name "unconnected-(SR1-SAFETY_OUT3_IN-Pad33)")
 			(class "Default")
 			(node
@@ -9005,7 +9748,7 @@
 			)
 		)
 		(net
-			(code "79")
+			(code "80")
 			(name "unconnected-(SR1-SAFETY_OUT3_OUT-Pad34)")
 			(class "Default")
 			(node
@@ -9016,7 +9759,7 @@
 			)
 		)
 		(net
-			(code "80")
+			(code "81")
 			(name "unconnected-(SRA1-AUX_NC_OUT-Pad42)")
 			(class "Default")
 			(node
@@ -9027,7 +9770,7 @@
 			)
 		)
 		(net
-			(code "81")
+			(code "82")
 			(name "unconnected-(SRA1-SAFETY_OUT3_IN-Pad33)")
 			(class "Default")
 			(node
@@ -9038,7 +9781,7 @@
 			)
 		)
 		(net
-			(code "82")
+			(code "83")
 			(name "unconnected-(SRA1-SAFETY_OUT3_OUT-Pad34)")
 			(class "Default")
 			(node
@@ -9049,7 +9792,7 @@
 			)
 		)
 		(net
-			(code "83")
+			(code "84")
 			(name "unconnected-(U1-VDD_OMITTED-PadTTL-2)")
 			(class "Default")
 			(node
@@ -9060,7 +9803,139 @@
 			)
 		)
 		(net
-			(code "84")
+			(code "85")
+			(name "unconnected-(UDRV1-OUT2_UNUSED-Pad15)")
+			(class "Default")
+			(node
+				(ref "UDRV1")
+				(pin "15")
+				(pinfunction "OUT2_UNUSED_15")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "86")
+			(name "unconnected-(UDRV1-OUT3_UNUSED-Pad14)")
+			(class "Default")
+			(node
+				(ref "UDRV1")
+				(pin "14")
+				(pinfunction "OUT3_UNUSED_14")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "87")
+			(name "unconnected-(UDRV1-OUT4_UNUSED-Pad13)")
+			(class "Default")
+			(node
+				(ref "UDRV1")
+				(pin "13")
+				(pinfunction "OUT4_UNUSED_13")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "88")
+			(name "unconnected-(UDRV1-OUT5_UNUSED-Pad12)")
+			(class "Default")
+			(node
+				(ref "UDRV1")
+				(pin "12")
+				(pinfunction "OUT5_UNUSED_12")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "89")
+			(name "unconnected-(UDRV1-OUT6_UNUSED-Pad11)")
+			(class "Default")
+			(node
+				(ref "UDRV1")
+				(pin "11")
+				(pinfunction "OUT6_UNUSED_11")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "90")
+			(name "unconnected-(UDRV1-OUT7_UNUSED-Pad10)")
+			(class "Default")
+			(node
+				(ref "UDRV1")
+				(pin "10")
+				(pinfunction "OUT7_UNUSED_10")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "91")
+			(name "unconnected-(UDRV2-OUT2_UNUSED-Pad15)")
+			(class "Default")
+			(node
+				(ref "UDRV2")
+				(pin "15")
+				(pinfunction "OUT2_UNUSED_15")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "92")
+			(name "unconnected-(UDRV2-OUT3_UNUSED-Pad14)")
+			(class "Default")
+			(node
+				(ref "UDRV2")
+				(pin "14")
+				(pinfunction "OUT3_UNUSED_14")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "93")
+			(name "unconnected-(UDRV2-OUT4_UNUSED-Pad13)")
+			(class "Default")
+			(node
+				(ref "UDRV2")
+				(pin "13")
+				(pinfunction "OUT4_UNUSED_13")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "94")
+			(name "unconnected-(UDRV2-OUT5_UNUSED-Pad12)")
+			(class "Default")
+			(node
+				(ref "UDRV2")
+				(pin "12")
+				(pinfunction "OUT5_UNUSED_12")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "95")
+			(name "unconnected-(UDRV2-OUT6_UNUSED-Pad11)")
+			(class "Default")
+			(node
+				(ref "UDRV2")
+				(pin "11")
+				(pinfunction "OUT6_UNUSED_11")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "96")
+			(name "unconnected-(UDRV2-OUT7_UNUSED-Pad10)")
+			(class "Default")
+			(node
+				(ref "UDRV2")
+				(pin "10")
+				(pinfunction "OUT7_UNUSED_10")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "97")
 			(name "unconnected-(UFB1-NC-Pad6)")
 			(class "Default")
 			(node
@@ -9071,7 +9946,7 @@
 			)
 		)
 		(net
-			(code "85")
+			(code "98")
 			(name "unconnected-(UFB1-NC-Pad7)")
 			(class "Default")
 			(node
@@ -9082,7 +9957,7 @@
 			)
 		)
 		(net
-			(code "86")
+			(code "99")
 			(name "unconnected-(UFB1-SUB1_FLOAT-Pad13)")
 			(class "Default")
 			(node
@@ -9093,7 +9968,7 @@
 			)
 		)
 		(net
-			(code "87")
+			(code "100")
 			(name "unconnected-(UFB1-SUB2_FLOAT-Pad12)")
 			(class "Default")
 			(node
