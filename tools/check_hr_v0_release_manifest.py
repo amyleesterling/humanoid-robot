@@ -1,0 +1,133 @@
+from __future__ import annotations
+
+import argparse
+import csv
+import hashlib
+import json
+import subprocess
+from pathlib import Path
+
+from generate_hr_v0_release_manifest import FIELDS, MANIFEST, MANIFEST_REL, ROOT, package_files, role_for
+
+
+METADATA = ROOT / "release" / "hr-v0" / "release-candidate.json"
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def git(*args: str) -> str:
+    return subprocess.run(
+        ["git", *args], cwd=ROOT, check=True, capture_output=True, text=True
+    ).stdout.strip()
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--require-clean",
+        action="store_true",
+        help="Fail unless the repository has no tracked or untracked non-ignored changes.",
+    )
+    args = parser.parse_args()
+
+    errors: list[str] = []
+    if not METADATA.is_file():
+        errors.append("release-candidate.json is missing")
+        metadata: dict[str, object] = {}
+    else:
+        metadata = json.loads(METADATA.read_text(encoding="utf-8"))
+
+    required_metadata = {
+        "schema": "project-button-release-candidate-v1",
+        "candidate_id": "HR-V0-RC-P0.1",
+        "system_baseline": "HR-30-SYS-R0.2",
+        "status": "PRELIMINARY_NOT_APPROVED_FOR_FABRICATION_OR_ENERGIZATION",
+        "file_manifest": MANIFEST_REL,
+    }
+    for key, expected in required_metadata.items():
+        if metadata.get(key) != expected:
+            errors.append(f"metadata {key}: expected {expected!r}, got {metadata.get(key)!r}")
+
+    products = metadata.get("current_products", [])
+    identifiers = {
+        item.get("identifier")
+        for item in products
+        if isinstance(item, dict)
+    }
+    required_identifiers = {
+        "Project Button Electrical V3-P1.4",
+        "HR-V0-MECH-R0.1-PRELIMINARY",
+        "HR-V0-FW-P0.1",
+        "HR-V0-FSA-P0.1",
+    }
+    missing_identifiers = required_identifiers - identifiers
+    if missing_identifiers:
+        errors.append(f"metadata missing current product identifiers: {sorted(missing_identifiers)}")
+
+    if not MANIFEST.is_file():
+        errors.append(f"manifest missing: {MANIFEST_REL}")
+        rows: list[dict[str, str]] = []
+        headers: list[str] = []
+    else:
+        with MANIFEST.open(encoding="utf-8-sig", newline="") as handle:
+            reader = csv.DictReader(handle)
+            rows = list(reader)
+            headers = list(reader.fieldnames or [])
+        if tuple(headers) != FIELDS:
+            errors.append(f"manifest columns: expected {FIELDS}, got {tuple(headers)}")
+
+    actual_paths = package_files()
+    manifested_paths = [row.get("path", "") for row in rows]
+    if manifested_paths != sorted(manifested_paths):
+        errors.append("manifest paths are not deterministically sorted")
+    if len(manifested_paths) != len(set(manifested_paths)):
+        errors.append("manifest contains duplicate paths")
+
+    missing = sorted(set(actual_paths) - set(manifested_paths))
+    extra = sorted(set(manifested_paths) - set(actual_paths))
+    if missing:
+        errors.append(f"manifest missing package files: {missing}")
+    if extra:
+        errors.append(f"manifest contains absent package files: {extra}")
+
+    for row in rows:
+        relative = row.get("path", "")
+        path = ROOT / relative
+        if not relative or not path.is_file():
+            continue
+        expected_role = role_for(relative)
+        if row.get("role") != expected_role:
+            errors.append(f"{relative}: role {row.get('role')!r}, expected {expected_role!r}")
+        expected_size = str(path.stat().st_size)
+        if row.get("size_bytes") != expected_size:
+            errors.append(f"{relative}: size {row.get('size_bytes')!r}, expected {expected_size}")
+        expected_hash = sha256(path)
+        if row.get("sha256") != expected_hash:
+            errors.append(f"{relative}: SHA-256 mismatch")
+
+    dirty = git("status", "--porcelain=v1", "--untracked-files=all")
+    if args.require_clean:
+        if dirty:
+            errors.append("repository is not clean:\n" + dirty)
+
+    if errors:
+        raise SystemExit("HR-V0 release-candidate manifest check failed:\n- " + "\n- ".join(errors))
+
+    head = git("rev-parse", "HEAD")
+    print(f"HR-V0-RC-P0.1 manifest check passed: {len(rows)} package files")
+    if dirty:
+        print(f"Repository HEAD at check time: {head}; working candidate contains uncommitted changes")
+    else:
+        print(f"Git commit containing checked candidate: {head}")
+    print("Configuration gate EG-002 remains PARTIAL until merge and formal acceptance.")
+    print("PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+
+
+if __name__ == "__main__":
+    main()

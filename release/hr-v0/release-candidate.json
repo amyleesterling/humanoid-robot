@@ -1,0 +1,53 @@
+{
+  "schema": "project-button-release-candidate-v1",
+  "candidate_id": "HR-V0-RC-P0.1",
+  "system_baseline": "HR-30-SYS-R0.2",
+  "status": "PRELIMINARY_NOT_APPROVED_FOR_FABRICATION_OR_ENERGIZATION",
+  "scope": "HR-V0 guarded bench-mounted handoff demonstrator",
+  "git_binding": "The exact Git commit containing this metadata and its verified file manifest is the candidate configuration identifier. Merge and formal acceptance remain required.",
+  "file_manifest": "release/hr-v0/HR-V0-RC-P0.1-file-manifest.csv",
+  "manifest_exclusion": "The file manifest excludes only itself to avoid a recursive hash. It includes this metadata, the generator, the checker, and every other non-ignored package file.",
+  "current_products": [
+    {
+      "domain": "electrical",
+      "identifier": "Project Button Electrical V3-P1.4",
+      "supporting_identifiers": ["PCB-P0.5", "DXL-STAR-P0.1"],
+      "release_state": "correction_candidate_not_released"
+    },
+    {
+      "domain": "mechanical",
+      "identifier": "HR-V0-MECH-R0.1-PRELIMINARY",
+      "supporting_identifiers": ["HR-V0-PLATE-RFQ-P0.1"],
+      "release_state": "rfq_and_first_article_candidate_not_released"
+    },
+    {
+      "domain": "firmware",
+      "identifier": "HR-V0-FW-P0.1",
+      "supporting_identifiers": ["HR-V0-WD-BUILD-P0.2", "HR-V0-ACT-P0.1"],
+      "release_state": "source_and_reproducible_build_candidate_not_flashed_or_hil_validated"
+    },
+    {
+      "domain": "functional_safety",
+      "identifier": "HR-V0-FSA-P0.1",
+      "supporting_identifiers": ["DF-01 ZERO SAFETY CREDIT"],
+      "release_state": "allocation_candidate_no_plr_or_sil_assigned"
+    }
+  ],
+  "historical_or_out_of_scope_products": [
+    {
+      "identifier": "Project Button Electrical V2.1",
+      "disposition": "reviewed historical baseline; does not override the V3 HR-V0 correction candidate"
+    },
+    {
+      "identifier": "HR-30A/B/C/D/W",
+      "disposition": "later staged program; not released by this HR-V0 candidate"
+    }
+  ],
+  "release_preconditions": [
+    "candidate commit merged or otherwise immutably accepted",
+    "file manifest reproduced from a clean clone",
+    "all applicable energization gates closed with executed evidence",
+    "qualified mechanical, electrical, and functional-safety reviews signed",
+    "separate fabrication and energization authorizations issued"
+  ]
+}
