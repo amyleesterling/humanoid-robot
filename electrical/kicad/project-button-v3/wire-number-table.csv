@@ -147,32 +147,33 @@ W7016,07_watchdog_control.kicad_sch,WDCTRL1,5,GP3 RELAY1 DRIVE,WD1_DRIVE
 W7017,07_watchdog_control.kicad_sch,WDCTRL1,6,GP4 RELAY2 DRIVE,WD2_DRIVE
 W7018,07_watchdog_control.kicad_sch,WDCTRL1,9,GP6 RELAY1 FEEDBACK,WD1_NC_DIAG
 W7019,07_watchdog_control.kicad_sch,WDCTRL1,10,GP7 RELAY2 FEEDBACK,WD2_NC_DIAG
-W7020,07_watchdog_control.kicad_sch,WDCTRL1,SWDIO,SWDIO,WD_SWDIO
-W7021,07_watchdog_control.kicad_sch,WDCTRL1,SWCLK,SWCLK,WD_SWCLK
-W7022,07_watchdog_control.kicad_sch,UDRV1,1,IN1,WD1_DRIVE
-W7023,07_watchdog_control.kicad_sch,UDRV1,2,IN2 TIED LOW,SAFETY_0V
-W7024,07_watchdog_control.kicad_sch,UDRV1,3,IN3 TIED LOW,SAFETY_0V
-W7025,07_watchdog_control.kicad_sch,UDRV1,4,IN4 TIED LOW,SAFETY_0V
-W7026,07_watchdog_control.kicad_sch,UDRV1,5,IN5 TIED LOW,SAFETY_0V
-W7027,07_watchdog_control.kicad_sch,UDRV1,6,IN6 TIED LOW,SAFETY_0V
-W7028,07_watchdog_control.kicad_sch,UDRV1,7,IN7 TIED LOW,SAFETY_0V
-W7029,07_watchdog_control.kicad_sch,UDRV1,8,GND,SAFETY_0V
-W7030,07_watchdog_control.kicad_sch,UDRV1,9,COM,SAFETY_24V
-W7031,07_watchdog_control.kicad_sch,UDRV1,16,OUT1 COIL RETURN,WD1_COIL_N
-W7032,07_watchdog_control.kicad_sch,CDRV1,1,COM RAIL,SAFETY_24V
-W7033,07_watchdog_control.kicad_sch,CDRV1,2,RETURN,SAFETY_0V
-W7034,07_watchdog_control.kicad_sch,UDRV2,1,IN1,WD2_DRIVE
-W7035,07_watchdog_control.kicad_sch,UDRV2,2,IN2 TIED LOW,SAFETY_0V
-W7036,07_watchdog_control.kicad_sch,UDRV2,3,IN3 TIED LOW,SAFETY_0V
-W7037,07_watchdog_control.kicad_sch,UDRV2,4,IN4 TIED LOW,SAFETY_0V
-W7038,07_watchdog_control.kicad_sch,UDRV2,5,IN5 TIED LOW,SAFETY_0V
-W7039,07_watchdog_control.kicad_sch,UDRV2,6,IN6 TIED LOW,SAFETY_0V
-W7040,07_watchdog_control.kicad_sch,UDRV2,7,IN7 TIED LOW,SAFETY_0V
-W7041,07_watchdog_control.kicad_sch,UDRV2,8,GND,SAFETY_0V
-W7042,07_watchdog_control.kicad_sch,UDRV2,9,COM,SAFETY_24V
-W7043,07_watchdog_control.kicad_sch,UDRV2,16,OUT1 COIL RETURN,WD2_COIL_N
-W7044,07_watchdog_control.kicad_sch,CDRV2,1,COM RAIL,SAFETY_24V
-W7045,07_watchdog_control.kicad_sch,CDRV2,2,RETURN,SAFETY_0V
+W7020,07_watchdog_control.kicad_sch,WDCTRL1,D3,SWDIO,WD_SWDIO
+W7021,07_watchdog_control.kicad_sch,WDCTRL1,D1,SWCLK,WD_SWCLK
+W7022,07_watchdog_control.kicad_sch,WDCTRL1,D2,DEBUG GROUND,SAFETY_0V
+W7023,07_watchdog_control.kicad_sch,UDRV1,1,IN1,WD1_DRIVE
+W7024,07_watchdog_control.kicad_sch,UDRV1,2,IN2 TIED LOW,SAFETY_0V
+W7025,07_watchdog_control.kicad_sch,UDRV1,3,IN3 TIED LOW,SAFETY_0V
+W7026,07_watchdog_control.kicad_sch,UDRV1,4,IN4 TIED LOW,SAFETY_0V
+W7027,07_watchdog_control.kicad_sch,UDRV1,5,IN5 TIED LOW,SAFETY_0V
+W7028,07_watchdog_control.kicad_sch,UDRV1,6,IN6 TIED LOW,SAFETY_0V
+W7029,07_watchdog_control.kicad_sch,UDRV1,7,IN7 TIED LOW,SAFETY_0V
+W7030,07_watchdog_control.kicad_sch,UDRV1,8,GND,SAFETY_0V
+W7031,07_watchdog_control.kicad_sch,UDRV1,9,COM,SAFETY_24V
+W7032,07_watchdog_control.kicad_sch,UDRV1,16,OUT1 COIL RETURN,WD1_COIL_N
+W7033,07_watchdog_control.kicad_sch,CDRV1,1,COM RAIL,SAFETY_24V
+W7034,07_watchdog_control.kicad_sch,CDRV1,2,RETURN,SAFETY_0V
+W7035,07_watchdog_control.kicad_sch,UDRV2,1,IN1,WD2_DRIVE
+W7036,07_watchdog_control.kicad_sch,UDRV2,2,IN2 TIED LOW,SAFETY_0V
+W7037,07_watchdog_control.kicad_sch,UDRV2,3,IN3 TIED LOW,SAFETY_0V
+W7038,07_watchdog_control.kicad_sch,UDRV2,4,IN4 TIED LOW,SAFETY_0V
+W7039,07_watchdog_control.kicad_sch,UDRV2,5,IN5 TIED LOW,SAFETY_0V
+W7040,07_watchdog_control.kicad_sch,UDRV2,6,IN6 TIED LOW,SAFETY_0V
+W7041,07_watchdog_control.kicad_sch,UDRV2,7,IN7 TIED LOW,SAFETY_0V
+W7042,07_watchdog_control.kicad_sch,UDRV2,8,GND,SAFETY_0V
+W7043,07_watchdog_control.kicad_sch,UDRV2,9,COM,SAFETY_24V
+W7044,07_watchdog_control.kicad_sch,UDRV2,16,OUT1 COIL RETURN,WD2_COIL_N
+W7045,07_watchdog_control.kicad_sch,CDRV2,1,COM RAIL,SAFETY_24V
+W7046,07_watchdog_control.kicad_sch,CDRV2,2,RETURN,SAFETY_0V
 W8001,08_watchdog_feedback_interface.kicad_sch,UFB1,1,GND1,SAFETY_0V
 W8002,08_watchdog_feedback_interface.kicad_sch,UFB1,2,VCC1,WD_3V3
 W8003,08_watchdog_feedback_interface.kicad_sch,UFB1,3,EN TIED HIGH,WD_3V3
@@ -236,3 +237,11 @@ W10009,10_actuator_interfaces.kicad_sch,J2,3,DATA,DXL_TTL_DATA
 W10010,10_actuator_interfaces.kicad_sch,J3,1,GND,ACT_0V_PE_BONDED
 W10011,10_actuator_interfaces.kicad_sch,J3,2,VDD,J3_VDD
 W10012,10_actuator_interfaces.kicad_sch,J3,3,DATA,DXL_TTL_DATA
+W11001,11_watchdog_pcb_connectors.kicad_sch,JWP1,1,SAFETY +24 V,SAFETY_24V
+W11002,11_watchdog_pcb_connectors.kicad_sch,JWP1,2,SAFETY 0 V,SAFETY_0V
+W11003,11_watchdog_pcb_connectors.kicad_sch,JWP1,3,WATCHDOG 1 COIL SINK,WD1_COIL_N
+W11004,11_watchdog_pcb_connectors.kicad_sch,JWP1,4,WATCHDOG 2 COIL SINK,WD2_COIL_N
+W11005,11_watchdog_pcb_connectors.kicad_sch,JWF1,1,WATCHDOG 1 NC +24 V,WD1_NC_24V
+W11006,11_watchdog_pcb_connectors.kicad_sch,JWF1,2,WATCHDOG 2 NC +24 V,WD2_NC_24V
+W11007,11_watchdog_pcb_connectors.kicad_sch,JWH1,1,COMPUTE HEARTBEAT,PI_HEARTBEAT
+W11008,11_watchdog_pcb_connectors.kicad_sch,JWH1,2,COMPUTE 0 V,COMPUTE_0V

@@ -46,12 +46,13 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Safety-function requirements](docs/safety-functions.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
-- [Native KiCad Electrical V3-P0.9 correction candidate](electrical/kicad/project-button-v3/README.md)
+- [Native KiCad Electrical V3-P1.0 correction candidate](electrical/kicad/project-button-v3/README.md)
 - [HR-V0 Electrical V3 candidate architecture](docs/hr-v0-electrical-v3-candidate.md)
 - [HR-V0 Electrical terminal closure R27](docs/hr-v0-electrical-terminal-closure-r27.md)
 - [HR-V0 source-interface closure R28](docs/hr-v0-source-interface-closure-r28.md)
 - [HR-V0 heartbeat and relay-driver closure R29](docs/hr-v0-heartbeat-driver-closure-r29.md)
 - [HR-V0 watchdog-feedback passive closure R30](docs/hr-v0-watchdog-feedback-passive-closure-r30.md)
+- [HR-V0 watchdog PCB placement/interface candidate P0.1](docs/hr-v0-watchdog-pcb-p0.1.md)
 - [HR-V0 Boston build-site basis](docs/hr-v0-build-site-basis.md)
 - [Boston fabrication and custom-metal sourcing](docs/hr-v0-fabrication-sourcing-boston.md)
 - [Control and fault-state specification](docs/control.md)
@@ -83,18 +84,19 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R28](docs/reviews/2026-08-06-sol-r12-post-r28-status.md)
 - [Sol R12 findings rechecked against R29](docs/reviews/2026-08-06-sol-r12-post-r29-status.md)
 - [Sol R12 findings rechecked against R30](docs/reviews/2026-08-06-sol-r12-post-r30-status.md)
-- [Electrical V3-P0.9 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
+- [Sol R12 findings rechecked against R31](docs/reviews/2026-08-06-sol-r12-post-r31-status.md)
+- [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.1 independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
 - [Requirements](requirements/requirements.csv)
 - [HR-V0 energization gate register](requirements/hr-v0-energization-gates.csv)
 - [Proposed bill of materials](bom/bom.csv)
 - [Risk register](safety/risk-register.csv)
 
-Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements. Regenerate and check the mechanical package in this order: `python cad/hr-v0/src/hr_v0_cad.py`, `python cad/hr-v0/src/mechanical_checks.py`, then `python tools/check_hr_v0_cad.py`. The calculation pass refreshes the generated source manifest after updating its result file. Run `python tools/generate_hr_v0_electrical_v3.py --validate` and `python tools/check_hr_v0_electrical_v3.py` to regenerate and cross-check the V3 native candidate. Run `python tools/check_energization_gates.py --through-stage E2 --require-ready` before claiming readiness for control-only first energization; it must remain nonzero until every applicable gate is evidenced and closed.
+Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements. Regenerate and check the mechanical package in this order: `python cad/hr-v0/src/hr_v0_cad.py`, `python cad/hr-v0/src/mechanical_checks.py`, then `python tools/check_hr_v0_cad.py`. The calculation pass refreshes the generated source manifest after updating its result file. Run `python tools/generate_hr_v0_electrical_v3.py --validate` and `python tools/check_hr_v0_electrical_v3.py` to regenerate and cross-check the V3 native candidate. Run the PCB generator and checker with KiCad's bundled Python: `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_watchdog_pcb.py` followed by `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_watchdog_pcb.py`. PCB-P0.1 must remain explicitly unrouted until the layout gate closes. Run `python tools/check_energization_gates.py --through-stage E2 --require-ready` before claiming readiness for control-only first energization; it must remain nonzero until every applicable gate is evidenced and closed.
 
 ## Review history
 
-Thirty review/control rounds are complete: R01-R30. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
+Thirty-one review/control rounds are complete: R01-R31. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -128,6 +130,7 @@ Thirty review/control rounds are complete: R01-R30. R11 Fable and R12 Sol are in
 | R28 | Source-interface candidate closure | Advanced the connected candidate to V3-P0.7; froze the project-side Molex JA1 housing/HCS contact/tool system and TRACO watchdog-regulator order code/pins, added receiving/current-division/thermal/brownout evidence controls, reduced anonymous terminals to 56, retained 43 unresolved rows, and closed no energization gate. |
 | R29 | Heartbeat and relay-driver circuit closure | Advanced the candidate to V3-P0.8; replaced anonymous heartbeat and coil-driver blocks with an exact VO618A optical path, exact passives, two separate TPL7407LPWR packages and COM bypass candidates; added pin/net assertions and a physical HIL/fault test record; retained 47 unresolved evidence rows and closed no energization gate. |
 | R30 | Watchdog-feedback passive closure | Advanced the candidate to V3-P0.9; froze exact proposed order codes for all 13 ISO1212 support passives, added pin/value assertions plus a receiving/derating record, retained 47 unresolved evidence rows, and closed no energization gate. |
+| R31 | Watchdog PCB boundary and placement-source pass | Advanced the schematic candidate to V3-P1.0; added exact board terminal candidates and project pin allocation, a native 26-reference PCB-P0.1 placement source, custom footprints, DRC/render evidence and an inspection record. The board intentionally has zero tracks/zones and 68 unconnected pads, so fabrication and energization remain blocked. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

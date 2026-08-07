@@ -1,7 +1,7 @@
-# Project Button HR-V0 Electrical V3-P0.9 Independent Review Request
+# Project Button HR-V0 Electrical V3-P1.0 / PCB-P0.1 Independent Review Request
 
 Review date: 2026-08-06  
-Controlled candidate: **Electrical V3-P0.9**
+Controlled candidate: **Electrical V3-P1.0 / PCB-P0.1**
 Systems baseline: **HR-30-SYS-R0.2**  
 Status: **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -9,7 +9,7 @@ Status: **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
 Independently audit the accuracy, completeness, and physical implementability of the connected HR-V0 Electrical V3 candidate. Do not treat clean ERC, generated schedules, or this request as functional-safety validation or permission to procure, fabricate, wire, or energize.
 
-The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P0.9 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. P0.1 through P0.8 remain historical. P0.9 adds exact proposed order codes and receiving/derating controls for all ISO1212 feedback passives while retaining PCB, source current-sharing, harness/protection, COM-slew, brownout/EMC, received-proof, IDEC production-transition, physical-terminal and panel/SKU/retention blockers.
+The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P1.0 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. P0.1 through P0.9 remain historical. P1.0 retains the exact feedback passives, adds exact watchdog-PCB terminal-block candidates and project pin allocation, and adds a native `PCB-P0.1` placement/interface source. The PCB is intentionally unrouted: it has zero tracks/zones and 68 unconnected pads. Routing, stack-up, source current-sharing, harness/protection, close-placement constraints, COM-slew, brownout/EMC, received proof, physical terminals, panel/SKU/retention, HIL and functional-safety blockers remain open.
 
 ## Controlled inputs
 
@@ -18,6 +18,8 @@ The authoritative source is this repository. The workshop website is presentatio
 - R28 source-interface evidence and limits: `docs/hr-v0-source-interface-closure-r28.md`
 - R29 heartbeat/driver evidence and limits: `docs/hr-v0-heartbeat-driver-closure-r29.md`
 - R30 feedback-passive evidence and limits: `docs/hr-v0-watchdog-feedback-passive-closure-r30.md`
+- R31 PCB boundary and placement-source evidence: `docs/hr-v0-watchdog-pcb-p0.1.md`
+- native PCB and custom candidate footprints: `electrical/kicad/project-button-v3/project-button-v3.kicad_pcb` and `electrical/kicad/project-button-v3/PBV3_Footprints.pretty/`
 - Received control-device record: `tests/forms/hr-v0-control-device-receiving-template.csv`
 - Source-interface receiving/test record: `tests/forms/hr-v0-source-interface-receiving-template.csv`
 - Heartbeat/driver physical test record: `tests/forms/hr-v0-watchdog-drive-test-template.csv`
@@ -43,6 +45,8 @@ With KiCad 10.0.5 and Python available, run:
 ```text
 python tools/generate_hr_v0_electrical_v3.py --validate
 python tools/check_hr_v0_electrical_v3.py
+"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_watchdog_pcb.py
+"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_watchdog_pcb.py
 python tools/check_traceability.py
 python tools/check_energization_gates.py --through-stage E2 --require-ready
 ```
@@ -51,14 +55,15 @@ The final command is expected to remain nonzero while applicable release gates a
 
 ## Baseline claims to reproduce, not assume
 
-- eleven native pages: one root/index and ten child sheets;
-- 59 component blocks and 274 modeled terminals;
+- twelve native pages: one root/index and eleven child sheets;
+- 62 component blocks and 283 modeled terminals;
 - 100 native nets: 63 named connected nets plus 37 deliberate auto-generated unconnected nets;
-- 237 unique wire labels synchronized to `wire-number-table.csv`;
-- 47 unresolved component/interface schedule rows;
+- 246 unique wire labels synchronized to `wire-number-table.csv`;
+- 50 unresolved component/interface schedule rows;
 - 46 deliberately unresolved `TBD-*` terminal designations;
 - KiCad 10.0.5 ERC: 0 errors and 0 warnings;
-- successful native netlist, eleven-page A3 PDF, and eleven-page SVG export; and
+- successful native netlist, twelve-page A3 PDF, and twelve-page SVG export;
+- native PCB-P0.1 source with 26 schematic references, four board-only holes, zero tracks/zones, zero non-unrouted DRC violations and 68 controlled unconnected pads; and
 - exact agreement between every modeled `(reference, terminal, net)` tuple and the KiCad-exported native netlist.
 
 ## Required technical review
@@ -77,7 +82,8 @@ The final command is expected to remain nonzero while applicable release gates a
 12. Verify the U2D2 has no actuator VDD connection and does not carry summed actuator current. Review the three VDD-isolating injection modules, pin-2 isolation, common TTL ground/data reference, no-backfeed behavior under every power sequence, connector orientation, strain relief, crimping and test requirements.
 13. Verify ROBOTIS model/SKU/interface claims and distinguish stall or estimated torque data from continuous validated joint capacity. Check received-unit revision, model readback and USB-connector evidence requirements.
 14. Review the watchdog controller, heartbeat input, Raspberry Pi/control-terminal boundary, firmware ownership, diagnostics, startup defaults, stuck-high/stuck-low faults, loss of common supply, reset behavior, and fault-injection testability. Independently reproduce the VO618A-4X017T pins and CTR-bin facts, 910 ohm input-current screen, 10 kilohm pullup current, inversion and edge timing. Reproduce both separate TPL7407LPWR pin maps, tied-low unused inputs, no-connect unused outputs, COM clamp/bypass, 18 mA typical Phoenix coil load comparison, and TI's less-than-0.5 V/us COM-slew requirement. Confirm that the proposed 100 nF parts do not by themselves prove slew compliance. Independently verify TRACO POWER `TSR 1-2450` pin 1 `+VIN`, pin 2 `GND`, pin 3 `+VOUT`, non-isolated topology, 6.5-36 V input and 5 V/1 A output, then identify the exact branch-protection, load, startup, slow-ramp brownout, fast-dropout, recovery, output-fault, EMC and enclosed-thermal evidence needed for release.
-15. Inspect the PDF and every SVG at normal viewing size for clipping, overlap, tiny text, ambiguous crossings, misleading contact state, incomplete titles, or absent preliminary warnings. Treat web rendering as a separate presentation check.
+15. Inspect the native PCB, all three project footprints, board subset/net mapping, staging outline, mounting holes, terminal orientation, 0.15 mm candidate clearance, placement render and complete DRC output. Confirm that zero routed tracks/zones and 68 unconnected pads block fabrication. Review every mandatory placement/routing constraint in `docs/hr-v0-watchdog-pcb-p0.1.md`; do not treat the current staging positions as a compliant routed layout.
+16. Inspect the PDF and every SVG at normal viewing size for clipping, overlap, tiny text, ambiguous crossings, misleading contact state, incomplete titles, or absent preliminary warnings. Treat web rendering as a separate presentation check.
 
 ## Required findings format
 

@@ -46,3 +46,6 @@ sheet,reference,status,evidence_needed
 09_compute_and_control_terminals.kicad_sch,JDBG1,SELECTION REQUIRED,Tool-only interface; must not enable or bypass outputs during operation.
 09_compute_and_control_terminals.kicad_sch,XT1,SELECTION REQUIRED,"Exact terminal family, end covers, jumpers, markers, conductor range and torque open."
 10_actuator_interfaces.kicad_sch,JFRAME1,SELECTION REQUIRED,Do not connect frame or shield to 0V/PE until EMC and parallel-path review accepts the implementation.
+11_watchdog_pcb_connectors.kicad_sch,JWP1,PROPOSED - VERIFICATION REQUIRED,"Project pin allocation is frozen for the PCB candidate. Manufacturer identity, 3.5 mm pitch, 1.1 mm PCB hole, conductor range and torque are controlled; branch protection, current, temperature, ferrule, harness, marking and received orientation remain open."
+11_watchdog_pcb_connectors.kicad_sch,JWF1,PROPOSED - VERIFICATION REQUIRED,"Project pin allocation is frozen for the PCB candidate. Exact relay-contact harness, conductor, marking, torque, strain relief, received orientation and application evidence remain open."
+11_watchdog_pcb_connectors.kicad_sch,JWH1,PROPOSED - VERIFICATION REQUIRED,"Project pin allocation is frozen for the ordinary isolated heartbeat input. GPIO source identity, cable, shielding, retention, strain relief, received orientation and EMC evidence remain open."

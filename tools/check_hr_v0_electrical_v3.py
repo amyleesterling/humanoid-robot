@@ -70,16 +70,16 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P0.9", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P1.0", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
     all_pins = [(sheet, comp, pin) for sheet, comp in all_components for pin in comp.pins]
 
-    require(len(sheets) == 10, f"expected 10 child sheets, found {len(sheets)}", failures)
-    require(len(components) == 59, f"expected 59 unique component blocks, found {len(components)}", failures)
+    require(len(sheets) == 11, f"expected 11 child sheets, found {len(sheets)}", failures)
+    require(len(components) == 62, f"expected 62 unique component blocks, found {len(components)}", failures)
     require(len(all_components) == len(components), "duplicate component reference exists", failures)
-    require(len(all_pins) == 274, f"expected 274 modeled terminals, found {len(all_pins)}", failures)
+    require(len(all_pins) == 283, f"expected 283 modeled terminals, found {len(all_pins)}", failures)
     require(all(re.fullmatch(r"[A-Za-z]+[0-9]+", ref) for ref in components),
             "one or more references violate KiCad annotation syntax", failures)
 
@@ -123,7 +123,7 @@ def main() -> int:
         for row in wire_rows
     )
     require(actual_wires == expected_wires, "wire-number table differs from generated schematic labels", failures)
-    require(len(wire_rows) == 237, f"expected 237 labeled connected terminals, found {len(wire_rows)}", failures)
+    require(len(wire_rows) == 246, f"expected 246 labeled connected terminals, found {len(wire_rows)}", failures)
     require(len({row["wire_number"] for row in wire_rows}) == len(wire_rows),
             "wire numbers are not unique", failures)
 
@@ -161,7 +161,7 @@ def main() -> int:
     require(len(native_net_names) == 100, f"expected 100 native KiCad nets, found {len(native_net_names)}", failures)
     require(sum(name.startswith("unconnected-(") for name in native_net_names) == 37,
             "expected 37 deliberate native unconnected nets", failures)
-    require(len(native_node_net) == 274, f"expected 274 native KiCad netlist nodes, found {len(native_node_net)}", failures)
+    require(len(native_node_net) == 283, f"expected 283 native KiCad netlist nodes, found {len(native_node_net)}", failures)
     for _, comp, pin in all_pins:
         native_name = native_node_net.get((comp.ref, pin.number), "")
         if expected_net_counts[pin.net] == 1:
@@ -177,7 +177,7 @@ def main() -> int:
     expected_bom_refs = {comp.ref for _, comp in all_components if comp.quantity}
     require({row["reference"] for row in bom_rows} == expected_bom_refs,
             "V3 BOM reference set differs from nonzero-quantity generated components", failures)
-    require(len(bom_rows) == 57, f"expected 57 BOM records, found {len(bom_rows)}", failures)
+    require(len(bom_rows) == 60, f"expected 60 BOM records, found {len(bom_rows)}", failures)
 
     unresolved_rows = read_csv("unresolved-selections.csv")
     unresolved_keys = ("SELECTION REQUIRED", "DESIGN REQUIRED", "CONFIRMATION REQUIRED", "VERIFICATION REQUIRED", "RELEASE OPEN")
@@ -191,7 +191,7 @@ def main() -> int:
         for row in unresolved_rows
     }
     require(actual_unresolved == expected_unresolved, "unresolved-selection register differs from model", failures)
-    require(len(unresolved_rows) == 47, f"expected 47 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
+    require(len(unresolved_rows) == 50, f"expected 50 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
 
     require(pin_map(components, "S0") == {
         "R-1": "SR1_S11", "R-2": "WD1_SAFETY_IN",
@@ -290,8 +290,26 @@ def main() -> int:
     require(pin_map(components, "WDCTRL1") == {
         "39": "WD_5V", "38": "SAFETY_0V", "36": "WD_3V3", "4": "WD_HEARTBEAT",
         "5": "WD1_DRIVE", "6": "WD2_DRIVE", "9": "WD1_NC_DIAG", "10": "WD2_NC_DIAG",
-        "SWDIO": "WD_SWDIO", "SWCLK": "WD_SWCLK",
+        "D3": "WD_SWDIO", "D1": "WD_SWCLK", "D2": "SAFETY_0V",
     }, "Pico power/GPIO assignment changed", failures)
+    require(pin_map(components, "JWP1") == {
+        "1": "SAFETY_24V", "2": "SAFETY_0V", "3": "WD1_COIL_N", "4": "WD2_COIL_N",
+    }, "watchdog PCB power/coil connector pin allocation changed", failures)
+    require(pin_map(components, "JWF1") == {
+        "1": "WD1_NC_24V", "2": "WD2_NC_24V",
+    }, "watchdog PCB feedback connector pin allocation changed", failures)
+    require(pin_map(components, "JWH1") == {
+        "1": "PI_HEARTBEAT", "2": "COMPUTE_0V",
+    }, "watchdog PCB heartbeat connector pin allocation changed", failures)
+    expected_board_refs = {
+        "DC1", "ISO1", "RHB1", "RHP1", "WDCTRL1", "UDRV1", "UDRV2", "CDRV1", "CDRV2",
+        "UFB1", "RTH1", "RSN1", "CFI1", "RW1", "RTH2", "RSN2", "CFI2", "RW2",
+        "CDEC1", "RSO1", "RSO2", "RPD1", "RPD2", "JWP1", "JWF1", "JWH1",
+    }
+    require({ref for ref, comp in components.items() if comp.watchdog_pcb} == expected_board_refs,
+            "watchdog PCB membership changed", failures)
+    require(all(components[ref].footprint for ref in expected_board_refs),
+            "one or more board-mounted references lack a footprint", failures)
     require(pin_map(components, "KP1") == {
         "1L1": "K1_P1_IN", "2T1": "K1_J12", "3L2": "K1_J12",
         "4T2": "K1_J23", "5L3": "K1_J23", "6T3": "K1_OUT",
@@ -322,7 +340,7 @@ def main() -> int:
     require("annotation errors" not in log.lower(), "KiCad reported annotation errors", failures)
 
     svg_files = sorted((OUT / "output").glob("*.svg"))
-    require(len(svg_files) == 11, f"expected 11 SVG pages including index, found {len(svg_files)}", failures)
+    require(len(svg_files) == 12, f"expected 12 SVG pages including index, found {len(svg_files)}", failures)
     for path in svg_files:
         require(WARNING.encode() in path.read_bytes(), f"warning missing from {path.name}", failures)
     pdf = OUT / "output" / f"{gen.PROJECT}-preliminary.pdf"
@@ -339,7 +357,7 @@ def main() -> int:
         return 1
 
     print("HR-V0 Electrical V3 validation: PASS")
-    print("11 native pages; 59 component blocks; 274 terminals; 63 named connected + 37 unconnected nets; 237 unique wire labels; 47 unresolved rows")
+    print("12 native pages; 62 component blocks; 283 terminals; 63 named connected + 37 unconnected nets; 246 unique wire labels; 50 unresolved rows")
     print(WARNING)
     print("ERC/export consistency is not design approval or permission to energize.")
     return 0

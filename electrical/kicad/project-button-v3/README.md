@@ -1,4 +1,4 @@
-# Project Button HR-V0 Electrical V3-P0.9
+# Project Button HR-V0 Electrical V3-P1.0
 
 **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -16,6 +16,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 8. `08_watchdog_feedback_interface.kicad_sch` — Calculated dual-channel 24 V watchdog feedback
 9. `09_compute_and_control_terminals.kicad_sch` — Compute, debug and control terminals
 10. `10_actuator_interfaces.kicad_sch` — U2D2, actuator ports and bonding boundary
+11. `11_watchdog_pcb_connectors.kicad_sch` — Watchdog PCB external connectors
 
 ## Material corrections relative to V2.1
 
@@ -24,6 +25,8 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 - Phoenix relay terminals are frozen from the official circuit diagram. Both 24 V NC diagnostics pass through the calculated ISO1212DBQ input network before the Pico GPIO. Exact proposed passive order codes are frozen; PCB, received measurements, derating and physical validation remain open.
 - Compute heartbeat crosses an exact VO618A-4X017T optical interface with exact 910 Ohm input and 10 kOhm pullup candidates. Two separate TPL7407LPWR packages drive the two relay coils, with unused inputs tied low, unused outputs open, and local 100 nF COM bypass candidates. These ordinary circuits receive no safety credit and still require PCB, timing, hot-plug, fault-injection, EMC and qualified review.
 - The ISO1212 feedback network uses exact proposed Vishay, Panasonic, TDK and Murata passive order codes. Receiving, PCB land-pattern/placement, DC-bias, pulse, thermal, EMC, fault and HIL evidence remain mandatory.
+- Three exact Phoenix Contact PCB terminal-block candidates freeze the project pin allocation for 24 V/control return, two coil sinks, two NC feedback channels and the isolated heartbeat pair. Harness, conductor, ferrule, protection, enclosure, received-orientation and thermal evidence remain open.
+- `project-button-v3.kicad_pcb` is a native placement/interface candidate only. It is deliberately unrouted and is not a Gerber or fabrication release; layout completion, DRC, schematic parity, creepage/clearance, thermal and HIL evidence remain gates.
 - Heartbeat restoration cannot restore contactors; SRA1 requires a new monitored ARM action.
 - External Mean Well adapters replace project-built mains wiring.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.

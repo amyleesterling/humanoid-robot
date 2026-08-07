@@ -90,9 +90,9 @@ def main() -> int:
     if watchdog_config.get("feedback_front_end") != "TI_ISO1212DBQ_P0.1":
         failures.append("watchdog feedback front end differs from the Electrical V3-P0.4 candidate")
     if watchdog_config.get("heartbeat_front_end") != "VISHAY_VO618A-4X017T_R910_PULLUP10K_P0.1":
-        failures.append("watchdog heartbeat front end differs from the Electrical V3-P0.9 candidate")
+        failures.append("watchdog heartbeat front end differs from the Electrical V3-P1.0 candidate")
     if watchdog_config.get("relay_driver") != "2X_TI_TPL7407LPWR_OUT1_P0.1":
-        failures.append("watchdog relay drivers differ from the Electrical V3-P0.9 candidate")
+        failures.append("watchdog relay drivers differ from the Electrical V3-P1.0 candidate")
     if watchdog_config.get("feedback_gpio_active_high") is not True:
         failures.append("watchdog feedback GPIO polarity is not active-high for KWD NC closed")
     header = (FIRMWARE / "watchdog" / "include" / "pb_watchdog.h").read_text(encoding="utf-8")

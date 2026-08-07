@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Electrical dependency: `Project Button Electrical V3-P0.9`
+Electrical dependency: `Project Button Electrical V3-P1.0`
 
 Firmware configuration: `HR-V0-WD-P0.4`
 
@@ -10,7 +10,7 @@ Date: 2026-08-06
 
 ## Scope and decision
 
-This record replaces the opaque `IFB1` and `IFB2` placeholders from Electrical V3-P0.3 with one proposed dual-channel `ISO1212DBQ` receiver and explicit supporting components. R30 / Electrical V3-P0.9 freezes exact passive order codes, but PCB layout, terminals, enclosure, passive derating, EMC/surge testing, received-part inspection, hardware-in-the-loop testing, fault injection and qualified review remain open.
+This record replaces the opaque `IFB1` and `IFB2` placeholders from Electrical V3-P0.3 with one proposed dual-channel `ISO1212DBQ` receiver and explicit supporting components. R30 / Electrical V3-P0.9 froze exact passive order codes. R31 / Electrical V3-P1.0 adds the explicit PCB connector boundary and an unrouted PCB-P0.1 placement source, but routed layout, stack-up, enclosure, passive derating, EMC/surge testing, received-part inspection, hardware-in-the-loop testing, fault injection and qualified review remain open.
 
 No PL, SIL, galvanic-isolation or functional-safety credit is assigned. `GND1`, `FGND1`, and `FGND2` all return to `SAFETY_0V` in this ordinary watchdog architecture. The component contains an isolation barrier, but this implementation does not preserve separate field and logic reference domains.
 

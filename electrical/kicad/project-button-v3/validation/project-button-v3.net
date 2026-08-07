@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-06T20:29:13")
+		(date "2026-08-06T21:14:48")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P0.9")
+			(name "REVISION") "V3-P1.0")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,7 +15,7 @@
 			(title_block
 				(title "Project Button HR-V0 Electrical V3 index")
 				(company "Project Button")
-				(rev "V3-P0.9")
+				(rev "V3-P1.0")
 				(date "2026-08-06")
 				(source "project-button-v3.kicad_sch")
 				(comment
@@ -63,7 +63,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 01")
 				(company "Project Button")
-				(rev "V3-P0.9")
+				(rev "V3-P1.0")
 				(date "2026-08-06")
 				(source "01_external_sources.kicad_sch")
 				(comment
@@ -111,7 +111,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 02")
 				(company "Project Button")
-				(rev "V3-P0.9")
+				(rev "V3-P1.0")
 				(date "2026-08-06")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
@@ -159,7 +159,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 03")
 				(company "Project Button")
-				(rev "V3-P0.9")
+				(rev "V3-P1.0")
 				(date "2026-08-06")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
@@ -207,7 +207,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 04")
 				(company "Project Button")
-				(rev "V3-P0.9")
+				(rev "V3-P1.0")
 				(date "2026-08-06")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
@@ -255,7 +255,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 05")
 				(company "Project Button")
-				(rev "V3-P0.9")
+				(rev "V3-P1.0")
 				(date "2026-08-06")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
@@ -303,7 +303,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 06")
 				(company "Project Button")
-				(rev "V3-P0.9")
+				(rev "V3-P1.0")
 				(date "2026-08-06")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
@@ -351,7 +351,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 07")
 				(company "Project Button")
-				(rev "V3-P0.9")
+				(rev "V3-P1.0")
 				(date "2026-08-06")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
@@ -399,7 +399,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 08")
 				(company "Project Button")
-				(rev "V3-P0.9")
+				(rev "V3-P1.0")
 				(date "2026-08-06")
 				(source "08_watchdog_feedback_interface.kicad_sch")
 				(comment
@@ -447,7 +447,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 09")
 				(company "Project Button")
-				(rev "V3-P0.9")
+				(rev "V3-P1.0")
 				(date "2026-08-06")
 				(source "09_compute_and_control_terminals.kicad_sch")
 				(comment
@@ -495,9 +495,57 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 10")
 				(company "Project Button")
-				(rev "V3-P0.9")
+				(rev "V3-P1.0")
 				(date "2026-08-06")
 				(source "10_actuator_interfaces.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "12")
+			(name "/11 Watchdog PCB external connectors/")
+			(tstamps "/6e16a5a8-d40c-518b-9320-2dd1b7122c9a/")
+			(title_block
+				(title "PB HR-V0 Electrical V3 - 11")
+				(company "Project Button")
+				(rev "V3-P1.0")
+				(date "2026-08-06")
+				(source "11_watchdog_pcb_connectors.kicad_sch")
 				(comment
 					(number "1")
 					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
@@ -2625,6 +2673,7 @@
 		(comp
 			(ref "CDRV1")
 			(value "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
+			(footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
 			(datasheet "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 			(description "Local COM bypass candidate for UDRV1. Capacitance alone does not prove TI's less-than-0.5 V/us COM slew requirement; scope hot-plug and repetitive transients in the released layout.")
 			(fields
@@ -2635,8 +2684,7 @@
 				(field
 					(name "Display") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
 				(field
 					(name "Datasheet") "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 				(field
@@ -2689,6 +2737,7 @@
 		(comp
 			(ref "CDRV2")
 			(value "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
+			(footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
 			(datasheet "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 			(description "Local COM bypass candidate for UDRV2; the same physical slew and fault evidence remains mandatory.")
 			(fields
@@ -2699,8 +2748,7 @@
 				(field
 					(name "Display") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
 				(field
 					(name "Datasheet") "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 				(field
@@ -2753,6 +2801,7 @@
 		(comp
 			(ref "DC1")
 			(value "TRACO POWER TSR 1-2450, 24 V to 5 V 1 A non-isolated")
+			(footprint "Converter_DCDC:Converter_DCDC_TRACO_TSR-1_THT")
 			(datasheet "https://www.tracopower.com/tsr1-datasheet")
 			(description "Pin 1 +Vin, pin 2 common GND, pin 3 +Vout. Non-isolated by design; changing isolation requires a new driver/interface and grounding review. Published input range is 6.5-36 VDC; external capacitance is not required below 32 V, but branch protection, load budget, startup, brownout, conducted/radiated emissions and enclosure thermal tests remain open.")
 			(fields
@@ -2763,8 +2812,7 @@
 				(field
 					(name "Display") "TRACO POWER TSR 1-2450, 24 V to 5 V 1 A non-isolated")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Converter_DCDC:Converter_DCDC_TRACO_TSR-1_THT")
 				(field
 					(name "Datasheet") "https://www.tracopower.com/tsr1-datasheet")
 				(field
@@ -2820,6 +2868,7 @@
 		(comp
 			(ref "ISO1")
 			(value "Vishay VO618A-4X017T heartbeat optocoupler")
+			(footprint "PBV3_Footprints:VO618A_Option7_SMD")
 			(datasheet "https://www.vishay.com/docs/83432/vo618a.pdf")
 			(description "Ordinary signal isolation only; no safety-integrity credit. Verify received identity, PCB creepage/clearance, GPIO levels, LED current, edge timing, leakage, EMC, brownout and open/short faults in the released assembly.")
 			(fields
@@ -2830,8 +2879,7 @@
 				(field
 					(name "Display") "Vishay VO618A-4X017T heartbeat optocoupler")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "PBV3_Footprints:VO618A_Option7_SMD")
 				(field
 					(name "Datasheet") "https://www.vishay.com/docs/83432/vo618a.pdf")
 				(field
@@ -2890,6 +2938,7 @@
 		(comp
 			(ref "RHB1")
 			(value "Panasonic ERJ6ENF9100V, 910 Ohm 1% 0805 0.125 W")
+			(footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF9100V")
 			(description "Screens approximately 1.04 mA at a project 2.6 V GPIO-high floor and 1.65 V LED maximum, and 2.53 mA at 3.3 V with 1.0 V LED minimum. The 2.6 V floor is a project screen, not a released Raspberry Pi 5 guarantee; measure the actual source across load and temperature.")
 			(fields
@@ -2900,8 +2949,7 @@
 				(field
 					(name "Display") "Panasonic ERJ6ENF9100V, 910 Ohm 1% 0805 0.125 W")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF9100V")
 				(field
@@ -2954,6 +3002,7 @@
 		(comp
 			(ref "RHP1")
 			(value "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805 0.125 W")
+			(footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 			(description "The 10 kOhm pullup draws 0.33 mA at 3.3 V. Confirm logic thresholds, leakage, power sequencing, waveform rise/fall time and fault response on the released PCB.")
 			(fields
@@ -2964,8 +3013,7 @@
 				(field
 					(name "Display") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805 0.125 W")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 				(field
@@ -3018,6 +3066,7 @@
 		(comp
 			(ref "UDRV1")
 			(value "Texas Instruments TPL7407LPWR channel-1 relay driver")
+			(footprint "Package_SO:TSSOP-16_4.4x5mm_P0.65mm")
 			(datasheet "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf")
 			(description "Dedicated package for channel 1. COM is tied to the 24 V coil rail for the internal clamp; unused inputs are tied low and unused outputs are no-connect. Default-off, hot-plug/COM slew, clamp interaction with the relay module, thermal, brownout, open/short and cross-channel faults remain open.")
 			(fields
@@ -3028,8 +3077,7 @@
 				(field
 					(name "Display") "Texas Instruments TPL7407LPWR channel-1 relay driver")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Package_SO:TSSOP-16_4.4x5mm_P0.65mm")
 				(field
 					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf")
 				(field
@@ -3124,6 +3172,7 @@
 		(comp
 			(ref "UDRV2")
 			(value "Texas Instruments TPL7407LPWR channel-2 relay driver")
+			(footprint "Package_SO:TSSOP-16_4.4x5mm_P0.65mm")
 			(datasheet "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf")
 			(description "Separate package for channel 2 to avoid one driver-package fault controlling both coils. The controller, supplies, clock and firmware remain common causes; no safety credit is claimed.")
 			(fields
@@ -3134,8 +3183,7 @@
 				(field
 					(name "Display") "Texas Instruments TPL7407LPWR channel-2 relay driver")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Package_SO:TSSOP-16_4.4x5mm_P0.65mm")
 				(field
 					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf")
 				(field
@@ -3230,6 +3278,7 @@
 		(comp
 			(ref "WDCTRL1")
 			(value "Raspberry Pi Pico 1, order SC0915 / RP2040")
+			(footprint "Module:RaspberryPi_Pico_SMD")
 			(datasheet "https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf")
 			(description "Monotonic heartbeat monitor. Physical GPIO candidates are frozen for review; platform startup, external bias, compilation, HIL and shared failures remain open and receive no safety credit.")
 			(fields
@@ -3240,8 +3289,7 @@
 				(field
 					(name "Display") "Raspberry Pi Pico 1, order SC0915 / RP2040")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Module:RaspberryPi_Pico_SMD")
 				(field
 					(name "Datasheet") "https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf")
 				(field
@@ -3294,10 +3342,13 @@
 							(num "39")
 						)
 						(pin
-							(num "SWCLK")
+							(num "D2")
 						)
 						(pin
-							(num "SWDIO")
+							(num "D1")
+						)
+						(pin
+							(num "D3")
 						)
 						(pin
 							(num "10")
@@ -3318,6 +3369,7 @@
 		(comp
 			(ref "CDEC1")
 			(value "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
+			(footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
 			(datasheet "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 			(description "Exact order code frozen. Exact 0805 candidate required at UFB1 VCC1/GND1; placement within 2 mm, land pattern and received-board capacitance remain open.")
 			(fields
@@ -3328,8 +3380,7 @@
 				(field
 					(name "Display") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
 				(field
 					(name "Datasheet") "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 				(field
@@ -3382,6 +3433,7 @@
 		(comp
 			(ref "CFI1")
 			(value "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
+			(footprint "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder")
 			(datasheet "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 			(description "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at 24.6 V until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
 			(fields
@@ -3392,8 +3444,7 @@
 				(field
 					(name "Display") "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder")
 				(field
 					(name "Datasheet") "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 				(field
@@ -3446,6 +3497,7 @@
 		(comp
 			(ref "CFI2")
 			(value "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
+			(footprint "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder")
 			(datasheet "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 			(description "Exact order code frozen. Same exact input-filter candidate and open DC-bias/physical evidence as channel 1.")
 			(fields
@@ -3456,8 +3508,7 @@
 				(field
 					(name "Display") "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder")
 				(field
 					(name "Datasheet") "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 				(field
@@ -3510,6 +3561,7 @@
 		(comp
 			(ref "RPD1")
 			(value "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
+			(footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 			(description "Exact order code frozen. Exact 0.125 W default-low candidate. It biases the GPIO low during high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
 			(fields
@@ -3520,8 +3572,7 @@
 				(field
 					(name "Display") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 				(field
@@ -3574,6 +3625,7 @@
 		(comp
 			(ref "RPD2")
 			(value "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
+			(footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 			(description "Exact order code frozen. Same exact default-low candidate and open physical evidence as channel 1.")
 			(fields
@@ -3584,8 +3636,7 @@
 				(field
 					(name "Display") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 				(field
@@ -3638,6 +3689,7 @@
 		(comp
 			(ref "RSN1")
 			(value "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
+			(footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V")
 			(description "Exact order code frozen. Exact 0.125 W candidate for TI current-limit resistor between SENSE1 and IN1. Screened steady loss is 4.3 mW at 2.75 mA; layout, tolerance and fault evidence remain open.")
 			(fields
@@ -3648,8 +3700,7 @@
 				(field
 					(name "Display") "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V")
 				(field
@@ -3702,6 +3753,7 @@
 		(comp
 			(ref "RSN2")
 			(value "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
+			(footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V")
 			(description "Exact order code frozen. Same exact current-limit candidate and open physical evidence as channel 1.")
 			(fields
@@ -3712,8 +3764,7 @@
 				(field
 					(name "Display") "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V")
 				(field
@@ -3766,6 +3817,7 @@
 		(comp
 			(ref "RSO1")
 			(value "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
+			(footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V")
 			(description "Exact order code frozen. Exact 0.125 W series candidate. A 3.3 V contention screen is 10.9 mW; it does not make contention safe or provide isolation.")
 			(fields
@@ -3776,8 +3828,7 @@
 				(field
 					(name "Display") "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V")
 				(field
@@ -3830,6 +3881,7 @@
 		(comp
 			(ref "RSO2")
 			(value "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
+			(footprint "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V")
 			(description "Exact order code frozen. Same exact output-series candidate and open fault evidence as channel 1.")
 			(fields
@@ -3840,8 +3892,7 @@
 				(field
 					(name "Display") "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V")
 				(field
@@ -3894,6 +3945,7 @@
 		(comp
 			(ref "RTH1")
 			(value "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
+			(footprint "Resistor_SMD:R_MiniMELF_MMA-0204")
 			(datasheet "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf")
 			(description "Exact order code frozen. Exact MELF candidate for TI Type-3 threshold/surge limiting. Screened steady loss is 7.6 mW at 2.75 mA; PCB land pattern, pulse/surge, temperature and enclosure derating still require release evidence.")
 			(fields
@@ -3904,8 +3956,7 @@
 				(field
 					(name "Display") "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_MiniMELF_MMA-0204")
 				(field
 					(name "Datasheet") "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf")
 				(field
@@ -3958,6 +4009,7 @@
 		(comp
 			(ref "RTH2")
 			(value "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
+			(footprint "Resistor_SMD:R_MiniMELF_MMA-0204")
 			(datasheet "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf")
 			(description "Exact order code frozen. Same exact threshold/surge candidate and open physical evidence as channel 1.")
 			(fields
@@ -3968,8 +4020,7 @@
 				(field
 					(name "Display") "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_MiniMELF_MMA-0204")
 				(field
 					(name "Datasheet") "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf")
 				(field
@@ -4022,6 +4073,7 @@
 		(comp
 			(ref "RW1")
 			(value "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
+			(footprint "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder")
 			(datasheet "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 			(description "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.226 W, 45.2% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
 			(fields
@@ -4032,8 +4084,7 @@
 				(field
 					(name "Display") "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder")
 				(field
 					(name "Datasheet") "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 				(field
@@ -4086,6 +4137,7 @@
 		(comp
 			(ref "RW2")
 			(value "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
+			(footprint "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder")
 			(datasheet "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 			(description "Exact order code frozen. Same exact wetting-load candidate and open physical evidence as channel 1.")
 			(fields
@@ -4096,8 +4148,7 @@
 				(field
 					(name "Display") "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder")
 				(field
 					(name "Datasheet") "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 				(field
@@ -4150,6 +4201,7 @@
 		(comp
 			(ref "UFB1")
 			(value "Texas Instruments ISO1212DBQ dual 24 V input receiver")
+			(footprint "Package_SO:SSOP-16_5.3x6.2mm_P0.65mm")
 			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
 			(description "Exact dual-channel receiver candidate. Logic and field grounds both return to SAFETY_0V in this non-isolated system, so no galvanic-isolation or safety-integrity credit is claimed. Layout, thermal, EMC, fault-injection and received-part tests remain open.")
 			(fields
@@ -4160,8 +4212,7 @@
 				(field
 					(name "Display") "Texas Instruments ISO1212DBQ dual 24 V input receiver")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Package_SO:SSOP-16_5.3x6.2mm_P0.65mm")
 				(field
 					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
 				(field
@@ -4809,6 +4860,204 @@
 				)
 			)
 		)
+		(comp
+			(ref "JWF1")
+			(value "Phoenix Contact MKDS 1/2-3,5, item 1751248")
+			(footprint "PBV3_Footprints:MKDS_1_2_3P5")
+			(datasheet "https://www.phoenixcontact.com/en-us/products/printed-circuit-board-terminal-mkds-1-2-35-1751248")
+			(description "Project pin allocation is frozen for the PCB candidate. Exact relay-contact harness, conductor, marking, torque, strain relief, received orientation and application evidence remain open.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Phoenix Contact official product data for item 1751248 accessed 2026-08-06; 3.5 mm pitch, 1.1 mm PCB hole, 17.5 A nominal, 200 V nominal, AWG 26-16 and 0.22-0.25 N m recorded.")
+				(field
+					(name "Display") "Phoenix Contact MKDS 1/2-3,5, item 1751248")
+				(field
+					(name "Footprint") "PBV3_Footprints:MKDS_1_2_3P5")
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/printed-circuit-board-terminal-mkds-1-2-35-1751248")
+				(field
+					(name "Description") "Project pin allocation is frozen for the PCB candidate. Exact relay-contact harness, conductor, marking, torque, strain relief, received orientation and application evidence remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JWF1")
+				(description "Project pin allocation is frozen for the PCB candidate. Exact relay-contact harness, conductor, marking, torque, strain relief, received orientation and application evidence remain open.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Phoenix Contact official product data for item 1751248 accessed 2026-08-06; 3.5 mm pitch, 1.1 mm PCB hole, 17.5 A nominal, 200 V nominal, AWG 26-16 and 0.22-0.25 N m recorded.")
+			)
+			(property
+				(name "Display")
+				(value "Phoenix Contact MKDS 1/2-3,5, item 1751248")
+			)
+			(property
+				(name "Sheetname")
+				(value "11 Watchdog PCB external connectors")
+			)
+			(property
+				(name "Sheetfile")
+				(value "11_watchdog_pcb_connectors.kicad_sch")
+			)
+			(sheetpath
+				(names "/11 Watchdog PCB external connectors/")
+				(tstamps "/6e16a5a8-d40c-518b-9320-2dd1b7122c9a/")
+			)
+			(tstamps "c74b090a-3960-53c8-8c13-f644f0c243a0")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JWH1")
+			(value "Phoenix Contact MKDS 1/2-3,5, item 1751248")
+			(footprint "PBV3_Footprints:MKDS_1_2_3P5")
+			(datasheet "https://www.phoenixcontact.com/en-us/products/printed-circuit-board-terminal-mkds-1-2-35-1751248")
+			(description "Project pin allocation is frozen for the ordinary isolated heartbeat input. GPIO source identity, cable, shielding, retention, strain relief, received orientation and EMC evidence remain open.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Phoenix Contact official product data for item 1751248 accessed 2026-08-06; 3.5 mm pitch, 1.1 mm PCB hole, conductor range and torque recorded. No safety credit is assigned.")
+				(field
+					(name "Display") "Phoenix Contact MKDS 1/2-3,5, item 1751248")
+				(field
+					(name "Footprint") "PBV3_Footprints:MKDS_1_2_3P5")
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/printed-circuit-board-terminal-mkds-1-2-35-1751248")
+				(field
+					(name "Description") "Project pin allocation is frozen for the ordinary isolated heartbeat input. GPIO source identity, cable, shielding, retention, strain relief, received orientation and EMC evidence remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JWH1")
+				(description "Project pin allocation is frozen for the ordinary isolated heartbeat input. GPIO source identity, cable, shielding, retention, strain relief, received orientation and EMC evidence remain open.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Phoenix Contact official product data for item 1751248 accessed 2026-08-06; 3.5 mm pitch, 1.1 mm PCB hole, conductor range and torque recorded. No safety credit is assigned.")
+			)
+			(property
+				(name "Display")
+				(value "Phoenix Contact MKDS 1/2-3,5, item 1751248")
+			)
+			(property
+				(name "Sheetname")
+				(value "11 Watchdog PCB external connectors")
+			)
+			(property
+				(name "Sheetfile")
+				(value "11_watchdog_pcb_connectors.kicad_sch")
+			)
+			(sheetpath
+				(names "/11 Watchdog PCB external connectors/")
+				(tstamps "/6e16a5a8-d40c-518b-9320-2dd1b7122c9a/")
+			)
+			(tstamps "67fa615c-c733-51d4-a23a-da1864999856")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JWP1")
+			(value "Phoenix Contact MKDS 1/4-3,5, item 1751264")
+			(footprint "PBV3_Footprints:MKDS_1_4_3P5")
+			(datasheet "https://www.phoenixcontact.com/gb/products/1751264/pdf")
+			(description "Project pin allocation is frozen for the PCB candidate. Manufacturer identity, 3.5 mm pitch, 1.1 mm PCB hole, conductor range and torque are controlled; branch protection, current, temperature, ferrule, harness, marking and received orientation remain open.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Phoenix Contact official product PDF for item 1751264 generated 2026-08-06; 17.5 A nominal, 200 V nominal, AWG 26-16, 0.22-0.25 N m and 5 mm strip data recorded. Application release remains open.")
+				(field
+					(name "Display") "Phoenix Contact MKDS 1/4-3,5, item 1751264")
+				(field
+					(name "Footprint") "PBV3_Footprints:MKDS_1_4_3P5")
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/gb/products/1751264/pdf")
+				(field
+					(name "Description") "Project pin allocation is frozen for the PCB candidate. Manufacturer identity, 3.5 mm pitch, 1.1 mm PCB hole, conductor range and torque are controlled; branch protection, current, temperature, ferrule, harness, marking and received orientation remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JWP1")
+				(description "Project pin allocation is frozen for the PCB candidate. Manufacturer identity, 3.5 mm pitch, 1.1 mm PCB hole, conductor range and torque are controlled; branch protection, current, temperature, ferrule, harness, marking and received orientation remain open.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Phoenix Contact official product PDF for item 1751264 generated 2026-08-06; 17.5 A nominal, 200 V nominal, AWG 26-16, 0.22-0.25 N m and 5 mm strip data recorded. Application release remains open.")
+			)
+			(property
+				(name "Display")
+				(value "Phoenix Contact MKDS 1/4-3,5, item 1751264")
+			)
+			(property
+				(name "Sheetname")
+				(value "11 Watchdog PCB external connectors")
+			)
+			(property
+				(name "Sheetfile")
+				(value "11_watchdog_pcb_connectors.kicad_sch")
+			)
+			(sheetpath
+				(names "/11 Watchdog PCB external connectors/")
+				(tstamps "/6e16a5a8-d40c-518b-9320-2dd1b7122c9a/")
+			)
+			(tstamps "d2e20ea9-31ed-5af5-bf5a-ead73580bcd3")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
 	)
 	(groups)
 	(variants)
@@ -4824,8 +5073,7 @@
 				(field
 					(name "Value") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
 				(field
 					(name "Datasheet") "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 				(field
@@ -4861,8 +5109,7 @@
 				(field
 					(name "Value") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
 				(field
 					(name "Datasheet") "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 				(field
@@ -4898,8 +5145,7 @@
 				(field
 					(name "Value") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
 				(field
 					(name "Datasheet") "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 				(field
@@ -4935,8 +5181,7 @@
 				(field
 					(name "Value") "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder")
 				(field
 					(name "Datasheet") "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 				(field
@@ -4972,8 +5217,7 @@
 				(field
 					(name "Value") "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder")
 				(field
 					(name "Datasheet") "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 				(field
@@ -5009,8 +5253,7 @@
 				(field
 					(name "Value") "TRACO POWER TSR 1-2450, 24 V to 5 V 1 A non-isolated")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Converter_DCDC:Converter_DCDC_TRACO_TSR-1_THT")
 				(field
 					(name "Datasheet") "https://www.tracopower.com/tsr1-datasheet")
 				(field
@@ -5511,8 +5754,7 @@
 				(field
 					(name "Value") "Vishay VO618A-4X017T heartbeat optocoupler")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "PBV3_Footprints:VO618A_Option7_SMD")
 				(field
 					(name "Datasheet") "https://www.vishay.com/docs/83432/vo618a.pdf")
 				(field
@@ -5858,6 +6100,124 @@
 				(pin
 					(num "TBD-SHIELD")
 					(name "CABLE_SHIELDS")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JWF1")
+			(description "Project pin allocation is frozen for the PCB candidate. Exact relay-contact harness, conductor, marking, torque, strain relief, received orientation and application evidence remain open.")
+			(docs "https://www.phoenixcontact.com/en-us/products/printed-circuit-board-terminal-mkds-1-2-35-1751248")
+			(fields
+				(field
+					(name "Reference") "JWF1")
+				(field
+					(name "Value") "Phoenix Contact MKDS 1/2-3,5, item 1751248")
+				(field
+					(name "Footprint") "PBV3_Footprints:MKDS_1_2_3P5")
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/printed-circuit-board-terminal-mkds-1-2-35-1751248")
+				(field
+					(name "Description") "Project pin allocation is frozen for the PCB candidate. Exact relay-contact harness, conductor, marking, torque, strain relief, received orientation and application evidence remain open.")
+				(field
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Phoenix Contact official product data for item 1751248 accessed 2026-08-06; 3.5 mm pitch, 1.1 mm PCB hole, 17.5 A nominal, 200 V nominal, AWG 26-16 and 0.22-0.25 N m recorded.")
+				(field
+					(name "Display") "Phoenix Contact MKDS 1/2-3,5, item 1751248")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "WATCHDOG_1_NC_+24_V")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "WATCHDOG_2_NC_+24_V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JWH1")
+			(description "Project pin allocation is frozen for the ordinary isolated heartbeat input. GPIO source identity, cable, shielding, retention, strain relief, received orientation and EMC evidence remain open.")
+			(docs "https://www.phoenixcontact.com/en-us/products/printed-circuit-board-terminal-mkds-1-2-35-1751248")
+			(fields
+				(field
+					(name "Reference") "JWH1")
+				(field
+					(name "Value") "Phoenix Contact MKDS 1/2-3,5, item 1751248")
+				(field
+					(name "Footprint") "PBV3_Footprints:MKDS_1_2_3P5")
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/printed-circuit-board-terminal-mkds-1-2-35-1751248")
+				(field
+					(name "Description") "Project pin allocation is frozen for the ordinary isolated heartbeat input. GPIO source identity, cable, shielding, retention, strain relief, received orientation and EMC evidence remain open.")
+				(field
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Phoenix Contact official product data for item 1751248 accessed 2026-08-06; 3.5 mm pitch, 1.1 mm PCB hole, conductor range and torque recorded. No safety credit is assigned.")
+				(field
+					(name "Display") "Phoenix Contact MKDS 1/2-3,5, item 1751248")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "COMPUTE_HEARTBEAT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "COMPUTE_0_V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JWP1")
+			(description "Project pin allocation is frozen for the PCB candidate. Manufacturer identity, 3.5 mm pitch, 1.1 mm PCB hole, conductor range and torque are controlled; branch protection, current, temperature, ferrule, harness, marking and received orientation remain open.")
+			(docs "https://www.phoenixcontact.com/gb/products/1751264/pdf")
+			(fields
+				(field
+					(name "Reference") "JWP1")
+				(field
+					(name "Value") "Phoenix Contact MKDS 1/4-3,5, item 1751264")
+				(field
+					(name "Footprint") "PBV3_Footprints:MKDS_1_4_3P5")
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/gb/products/1751264/pdf")
+				(field
+					(name "Description") "Project pin allocation is frozen for the PCB candidate. Manufacturer identity, 3.5 mm pitch, 1.1 mm PCB hole, conductor range and torque are controlled; branch protection, current, temperature, ferrule, harness, marking and received orientation remain open.")
+				(field
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Phoenix Contact official product PDF for item 1751264 generated 2026-08-06; 17.5 A nominal, 200 V nominal, AWG 26-16, 0.22-0.25 N m and 5 mm strip data recorded. Application release remains open.")
+				(field
+					(name "Display") "Phoenix Contact MKDS 1/4-3,5, item 1751264")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "SAFETY_+24_V")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "SAFETY_0_V")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "WATCHDOG_1_COIL_SINK")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "WATCHDOG_2_COIL_SINK")
 					(type "passive")
 				)
 			)
@@ -6452,8 +6812,7 @@
 				(field
 					(name "Value") "Panasonic ERJ6ENF9100V, 910 Ohm 1% 0805 0.125 W")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF9100V")
 				(field
@@ -6489,8 +6848,7 @@
 				(field
 					(name "Value") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805 0.125 W")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 				(field
@@ -6526,8 +6884,7 @@
 				(field
 					(name "Value") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 				(field
@@ -6563,8 +6920,7 @@
 				(field
 					(name "Value") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 				(field
@@ -6600,8 +6956,7 @@
 				(field
 					(name "Value") "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V")
 				(field
@@ -6637,8 +6992,7 @@
 				(field
 					(name "Value") "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V")
 				(field
@@ -6674,8 +7028,7 @@
 				(field
 					(name "Value") "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V")
 				(field
@@ -6711,8 +7064,7 @@
 				(field
 					(name "Value") "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder")
 				(field
 					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V")
 				(field
@@ -6748,8 +7100,7 @@
 				(field
 					(name "Value") "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_MiniMELF_MMA-0204")
 				(field
 					(name "Datasheet") "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf")
 				(field
@@ -6785,8 +7136,7 @@
 				(field
 					(name "Value") "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_MiniMELF_MMA-0204")
 				(field
 					(name "Datasheet") "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf")
 				(field
@@ -6822,8 +7172,7 @@
 				(field
 					(name "Value") "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder")
 				(field
 					(name "Datasheet") "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 				(field
@@ -6859,8 +7208,7 @@
 				(field
 					(name "Value") "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder")
 				(field
 					(name "Datasheet") "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 				(field
@@ -7355,8 +7703,7 @@
 				(field
 					(name "Value") "Texas Instruments TPL7407LPWR channel-1 relay driver")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Package_SO:TSSOP-16_4.4x5mm_P0.65mm")
 				(field
 					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf")
 				(field
@@ -7462,8 +7809,7 @@
 				(field
 					(name "Value") "Texas Instruments TPL7407LPWR channel-2 relay driver")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Package_SO:TSSOP-16_4.4x5mm_P0.65mm")
 				(field
 					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf")
 				(field
@@ -7569,8 +7915,7 @@
 				(field
 					(name "Value") "Texas Instruments ISO1212DBQ dual 24 V input receiver")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Package_SO:SSOP-16_5.3x6.2mm_P0.65mm")
 				(field
 					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
 				(field
@@ -7676,8 +8021,7 @@
 				(field
 					(name "Value") "Raspberry Pi Pico 1, order SC0915 / RP2040")
 				(field
-					(name "Footprint")
-				)
+					(name "Footprint") "Module:RaspberryPi_Pico_SMD")
 				(field
 					(name "Datasheet") "https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf")
 				(field
@@ -7731,12 +8075,17 @@
 					(type "passive")
 				)
 				(pin
-					(num "SWCLK")
+					(num "D1")
 					(name "SWCLK")
 					(type "passive")
 				)
 				(pin
-					(num "SWDIO")
+					(num "D2")
+					(name "DEBUG_GROUND")
+					(type "passive")
+				)
+				(pin
+					(num "D3")
 					(name "SWDIO")
 					(type "passive")
 				)
@@ -8045,6 +8394,12 @@
 				(ref "ISO1")
 				(pin "2")
 				(pinfunction "CATHODE_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "JWH1")
+				(pin "2")
+				(pinfunction "COMPUTE_0_V_2")
 				(pintype "passive")
 			)
 			(node
@@ -8542,6 +8897,12 @@
 			(name "PI_HEARTBEAT")
 			(class "Default")
 			(node
+				(ref "JWH1")
+				(pin "1")
+				(pinfunction "COMPUTE_HEARTBEAT_1")
+				(pintype "passive")
+			)
+			(node
 				(ref "PI1")
 				(pin "TBD-GPIO-HB")
 				(pinfunction "HEARTBEAT_OUT_TBD-GPIO-HB")
@@ -8639,6 +9000,12 @@
 				(ref "JDBG1")
 				(pin "TBD-GND")
 				(pinfunction "GND_TBD-GND")
+				(pintype "passive")
+			)
+			(node
+				(ref "JWP1")
+				(pin "2")
+				(pinfunction "SAFETY_0_V_2")
 				(pintype "passive")
 			)
 			(node
@@ -8810,6 +9177,12 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "WDCTRL1")
+				(pin "D2")
+				(pinfunction "DEBUG_GROUND_D2")
+				(pintype "passive")
+			)
+			(node
 				(ref "XT1")
 				(pin "TBD-2")
 				(pinfunction "0V_TBD-2")
@@ -8842,6 +9215,12 @@
 				(ref "JC1")
 				(pin "TBD-OUT+")
 				(pinfunction "PROTECTED_+24V_TBD-OUT+")
+				(pintype "passive")
+			)
+			(node
+				(ref "JWP1")
+				(pin "1")
+				(pinfunction "SAFETY_+24_V_1")
 				(pintype "passive")
 			)
 			(node
@@ -9247,6 +9626,12 @@
 			(name "WD1_COIL_N")
 			(class "Default")
 			(node
+				(ref "JWP1")
+				(pin "3")
+				(pinfunction "WATCHDOG_1_COIL_SINK_3")
+				(pintype "passive")
+			)
+			(node
 				(ref "KWD1")
 				(pin "A2")
 				(pinfunction "DRIVER_RETURN_A2")
@@ -9280,6 +9665,12 @@
 			(code "51")
 			(name "WD1_NC_24V")
 			(class "Default")
+			(node
+				(ref "JWF1")
+				(pin "1")
+				(pinfunction "WATCHDOG_1_NC_+24_V_1")
+				(pintype "passive")
+			)
 			(node
 				(ref "KWD1")
 				(pin "22")
@@ -9344,6 +9735,12 @@
 			(name "WD2_COIL_N")
 			(class "Default")
 			(node
+				(ref "JWP1")
+				(pin "4")
+				(pinfunction "WATCHDOG_2_COIL_SINK_4")
+				(pintype "passive")
+			)
+			(node
 				(ref "KWD2")
 				(pin "A2")
 				(pinfunction "DRIVER_RETURN_A2")
@@ -9377,6 +9774,12 @@
 			(code "56")
 			(name "WD2_NC_24V")
 			(class "Default")
+			(node
+				(ref "JWF1")
+				(pin "2")
+				(pinfunction "WATCHDOG_2_NC_+24_V_2")
+				(pintype "passive")
+			)
 			(node
 				(ref "KWD2")
 				(pin "22")
@@ -9523,8 +9926,8 @@
 			)
 			(node
 				(ref "WDCTRL1")
-				(pin "SWCLK")
-				(pinfunction "SWCLK_SWCLK")
+				(pin "D1")
+				(pinfunction "SWCLK_D1")
 				(pintype "passive")
 			)
 		)
@@ -9540,8 +9943,8 @@
 			)
 			(node
 				(ref "WDCTRL1")
-				(pin "SWDIO")
-				(pinfunction "SWDIO_SWDIO")
+				(pin "D3")
+				(pinfunction "SWDIO_D3")
 				(pintype "passive")
 			)
 		)
