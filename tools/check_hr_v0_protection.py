@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REGISTER = ROOT / "electrical" / "hr-v0-protection-coordination-inputs.csv"
 FORM = ROOT / "tests" / "forms" / "hr-v0-protection-coordination-template.csv"
-DOC = ROOT / "docs" / "hr-v0-protection-coordination-p0.1.md"
+DOC = ROOT / "docs" / "hr-v0-protection-coordination-p0.2.md"
 EXPECTED_REFERENCES = {"F0", "F1", "F2", "F3", "FSR1", "FSR2"}
 OPEN_VALUE_FIELDS = {
     "fuse_rating_a",
@@ -63,6 +63,18 @@ def main() -> int:
             if not row.get(field, "").strip():
                 failures.append(f"{ref}: {field} must explicitly say SELECTION REQUIRED")
 
+    holders = {row["reference"]: row["proposed_holder_or_block"] for row in register}
+    expected_holders = {
+        "F0": "Littelfuse FHAC0002SXJ",
+        "F1": "Blue Sea Systems 5025",
+        "F2": "Blue Sea Systems 5025",
+        "F3": "Blue Sea Systems 5025",
+        "FSR1": "Phoenix Contact PT 4-HESI (5X20) item 3211861; exact holder candidate only",
+        "FSR2": "Phoenix Contact PT 4-HESI (5X20) item 3211861; exact holder candidate only",
+    }
+    if holders != expected_holders:
+        failures.append(f"protection-holder boundary changed: {holders}")
+
     form_refs = {row["reference"].strip() for row in form}
     if form_refs != EXPECTED_REFERENCES:
         failures.append("execution template does not cover all six protection references")
@@ -78,6 +90,8 @@ def main() -> int:
         "INSPECT-ELEC-008",
         "TEST-ELEC-006",
         "ANALYSIS-ELEC-001",
+        "PT 4-HESI (5X20)` item `3211861",
+        "HR-V0-CP-P0.2",
     ):
         if phrase not in text:
             failures.append(f"coordination document is missing required phrase: {phrase}")

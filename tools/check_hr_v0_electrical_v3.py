@@ -71,7 +71,7 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P1.5", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P1.6", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
@@ -387,6 +387,11 @@ def main() -> int:
     for ref in ("F0", "F1", "F2", "F3", "FSR1", "FSR2"):
         require("SELECTION REQUIRED" in components[ref].status,
                 f"{ref} appears released despite unresolved sizing", failures)
+    for ref in ("FSR1", "FSR2"):
+        require("PT 4-HESI (5X20)" in components[ref].value and "3211861" in components[ref].value,
+                f"{ref} exact holder candidate is not synchronized", failures)
+        require("fuse link SELECTION REQUIRED" in components[ref].value,
+                f"{ref} no longer exposes the unresolved fuse link", failures)
 
     erc = (OUT / "validation" / f"{gen.PROJECT}-erc.rpt").read_text(encoding="utf-8-sig")
     require("ERC messages: 0  Errors 0  Warnings 0" in erc, "KiCad ERC is not 0 errors / 0 warnings", failures)

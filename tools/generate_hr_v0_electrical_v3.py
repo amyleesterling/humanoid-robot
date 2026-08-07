@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P1.5"
+REV = "V3-P1.6"
 PROJECT_TITLE = "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE"
 PROJECT_SUBTITLE = "Separate RESET and ARM, two PNOZ stages, dual watchdog contacts, external adapters, redundant actuator interruption."
 DATE = "2026-08-07"
@@ -266,12 +266,12 @@ def sheets() -> list[Sheet]:
                    pn("K2", "13", "AUX NO IN", "SAFETY_24V", "left"), pn("K2", "14", "AUX NO OUT", "K2_STATUS", "right")],
                   "PROPOSED - CATALOG DC ENVELOPE FOUND; CRITICAL-CURRENT AND APPLICATION CONFIRMATION REQUIRED; TEST REQUIRED", "Second redundant series contactor. Same three-pole series application boundary, critical-current warning and physical evidence gate as K1.",
                   "https://download.schneider-electric.com/files?filename=Catalog&p_Doc_Ref=MKTED210011EN", "Schneider MKTED210011EN Catalog 2026 pp. A5/120-A5/123, LC1D25BD product sheet dated 2017-09-13, and FA126437 modified 2026-05-12; rechecked 2026-08-07.", position=(340, 205), width=82),
-        Component("FSR1", "SRA1 output-contact protection for K1 coil",
+        Component("FSR1", "Phoenix PT 4-HESI (5X20) item 3211861 holder; fuse link SELECTION REQUIRED",
                   [pn("FSR1", "1", "IN", "SRA1_K1_RAW", "left"), pn("FSR1", "2", "OUT", "K1_A1", "right")],
-                  "SELECTION REQUIRED", "R36 input register exists, but exact device/holder, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; published maxima are not selections.", position=(145, 255), width=72),
-        Component("FSR2", "SRA1 output-contact protection for K2 coil",
+                  "PROPOSED - HOLDER ORDER CODE FROZEN; FUSE LINK AND COORDINATION SELECTION REQUIRED", "Exact non-LED 5x20 holder candidate only. Fuse link, compatible end cover, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; manufacturer maxima are not project selections.", "https://www.phoenixcontact.com/en-us/products/fuse-terminal-block-pt-4-hesi-5x20-3211861", "Phoenix Contact official US product page and generated product PDF dated 2026-07-06; rechecked 2026-08-07.", position=(145, 255), width=72),
+        Component("FSR2", "Phoenix PT 4-HESI (5X20) item 3211861 holder; fuse link SELECTION REQUIRED",
                   [pn("FSR2", "1", "IN", "SRA1_K2_RAW", "left"), pn("FSR2", "2", "OUT", "K2_A1", "right")],
-                  "SELECTION REQUIRED", "Same R36 coordination and physical-evidence gate as FSR1.", position=(275, 255), width=72),
+                  "PROPOSED - HOLDER ORDER CODE FROZEN; FUSE LINK AND COORDINATION SELECTION REQUIRED", "Same exact holder candidate and open fuse-link, end-cover, coordination and physical-evidence gate as FSR1.", "https://www.phoenixcontact.com/en-us/products/fuse-terminal-block-pt-4-hesi-5x20-3211861", "Phoenix Contact official US product page and generated product PDF dated 2026-07-06; rechecked 2026-08-07.", position=(275, 255), width=72),
     ]
     s3.notes = ["Required sequence after E-stop or watchdog dropout: cause healthy -> RESET press/release -> SAFE_READY -> distinct ARM press/release -> K1/K2 may energize.",
                 "Heartbeat restoration closes only KWD contacts; SR1 remains in monitored-start state until RESET."]
@@ -594,7 +594,7 @@ def sheets() -> list[Sheet]:
     s4 = Sheet(4, "04_contactor_edm.kicad_sch", "Contactor coils, mirror contacts and EDM",
                "K1 and K2 are distinct final elements; their mirror contacts form the monitored restart return.")
     s4.components = placed(["K1", "K2", "FSR1", "FSR2"], [(left, 85), (right, 85), (left, 205), (right, 205)])
-    s4.notes = ["SRA1 outputs are separately protected before K1 and K2 coils; exact protection remains selection required.",
+    s4.notes = ["SRA1 outputs are separately protected before K1 and K2 coils. FSR1/FSR2 holder candidate is Phoenix PT 4-HESI (5X20) item 3211861; both fuse links, end cover and coordination remain SELECTION REQUIRED.",
                 "Loaded DC interruption, suppression behavior, mirror-contact use and coordination require qualified review."]
 
     s5 = Sheet(5, "05_actuator_interruption.kicad_sch", "Redundant actuator-power interruption",

@@ -6,9 +6,11 @@ Control date: 2026-08-07
 
 ## Result
 
-The system BOM now contains 71 configuration groups. R46 added thirteen groups that were previously invisible assembly assumptions: the control enclosure, panel hardware, stationary wire, actuator signal harness, labels, AC cords, boot media, bench anchors, project-added structural fasteners, cable-entry/strain-relief hardware, guard access hardware, wire terminations, and the Raspberry Pi-to-U2D2 USB cable. R49 corrects `BOM-071` to twelve exact `75-3422` frame-joint bolt assemblies and binds `BOM-024`/`BOM-025` to the non-overlapping `40-4040` cut schedule and six `40-4332` brackets under `HR-V0-FRAME-P0.2`; none is application-released.
+The system BOM now contains 72 configuration groups. R46 added thirteen groups that were previously invisible assembly assumptions: the control enclosure, panel hardware, stationary wire, actuator signal harness, labels, AC cords, boot media, bench anchors, project-added structural fasteners, cable-entry/strain-relief hardware, guard access hardware, wire terminations, and the Raspberry Pi-to-U2D2 USB cable. R49 corrects `BOM-071` to twelve exact `75-3422` frame-joint bolt assemblies and binds `BOM-024`/`BOM-025` to the non-overlapping `40-4040` cut schedule and six `40-4332` brackets under `HR-V0-FRAME-P0.2`; none is application-released.
 
 R61 advances `BOM-041` from `selection_required` to `exact_candidate_hold` for IDEC `HW1P-1FQD-A-24V`. This removes the obsolete `SAFE ELIGIBLE` value and synchronizes the system BOM with Electrical V3-P1.5 and `HR-V0-CP-P0.1`. It is not added to Evaluation Batch A and is not procurement- or wiring-released; `HR-V0-H1-RCV-P0.1` remains unexecuted.
+
+R62 advances `BOM-019` to an exact-candidate hold for two Phoenix `PT 4-HESI (5X20)` item `3211861` holders and adds `BOM-072` for the two still-unresolved fuse links. Electrical V3-P1.6 and `HR-V0-CP-P0.2` now carry the same holder identity. The compatible end cover, both fuse links, all protection calculations and all physical evidence remain open; the holder maximum ratings are not project fuse ratings.
 
 The machine-readable closure register is `bom/hr-v0-bom-closure.csv`. Every `bom/bom.csv` item has exactly one classification:
 

@@ -8,9 +8,9 @@ Status: **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 
 The directory contains the root `.kicad_pro`, root and 14 child `.kicad_sch` sheets, project symbol library, schedules, BOM, unresolved-selection register, primary-source register, native validation outputs, and synchronized review exports. `SOURCE-MANIFEST.csv` records the authoritative file hashes.
 
-This is connected preliminary ECAD, not a build release. Clean ERC establishes modeled connectivity and annotation only. Exact physical selections, pinouts, ratings, protection coordination, conductor sizing, released enclosure/panel drawings, functional-safety analysis, firmware, and physical fault tests remain unresolved. Do not fabricate, wire, or energize from this package. R60's separate [`panel/hr-v0-control-panel-p0.1/`](panel/hr-v0-control-panel-p0.1/) directory is a physical-allocation candidate tied to V3 wire numbers; it releases no drilling, cutting, wiring, assembly, or energization work.
+This is connected preliminary ECAD, not a build release. Clean ERC establishes modeled connectivity and annotation only. Exact physical selections, pinouts, ratings, protection coordination, conductor sizing, released enclosure/panel drawings, functional-safety analysis, firmware, and physical fault tests remain unresolved. Do not fabricate, wire, or energize from this package. R62's separate [`panel/hr-v0-control-panel-p0.2/`](panel/hr-v0-control-panel-p0.2/) directory corrects the impossible P0.1 protection reserve and is tied to V3 wire numbers; it releases no drilling, cutting, wiring, assembly, or energization work.
 
-## Electrical V3-P1.5 correction candidate
+## Electrical V3-P1.6 correction candidate
 
 V3 is a generated native KiCad candidate that addresses the V2.1 automatic-restart blocker and removes project-built mains wiring from the proposed HR-V0 architecture. It has one index and twelve child sheets, separate RESET and ARM stages, two PNOZ s4 devices, two watchdog-contact channels, an explicit calculated ISO1212DBQ feedback sheet, K1/K2 mirror contacts and series power poles, external adapters, separately protected actuator branches, and one exact central DYNAMIXEL star-injection board boundary.
 

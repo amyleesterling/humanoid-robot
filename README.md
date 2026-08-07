@@ -58,7 +58,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 functional-safety allocation and diagnostic-credit boundary P0.1](docs/hr-v0-functional-safety-allocation-p0.1.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
-- [Native KiCad Electrical V3-P1.5 correction candidate](electrical/kicad/project-button-v3/README.md)
+- [Native KiCad Electrical V3-P1.6 correction candidate](electrical/kicad/project-button-v3/README.md)
 - [Native KiCad DXL-STAR-P0.1 injection-board candidate](electrical/kicad/hr-v0-dxl-star/README.md)
 - [HR-V0 DYNAMIXEL star-injection evidence basis](docs/hr-v0-dxl-star-injection-p0.1.md)
 - [HR-V0 Electrical V3 candidate architecture](docs/hr-v0-electrical-v3-candidate.md)
@@ -137,7 +137,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R59 current Boston fabrication-sourcing reconciliation](docs/reviews/2026-08-07-sol-r12-post-r59-status.md)
 - [R60 control-panel physical-definition reconciliation](docs/reviews/2026-08-07-sol-r12-post-r60-status.md)
 - [R61 H1 pilot-light selection and terminal-placeholder reconciliation](docs/reviews/2026-08-07-sol-r12-post-r61-status.md)
-- [HR-V0 control-panel physical-definition candidate](docs/hr-v0-control-panel-p0.1.md)
+- [R62 panel-fit and protection-holder reconciliation](docs/reviews/2026-08-07-sol-r12-post-r62-status.md)
+- [HR-V0 control-panel physical-definition candidate](docs/hr-v0-control-panel-p0.2.md)
 - [HR-V0 H1 receiving and characterization procedure](docs/hr-v0-h1-receiving-p0.1.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.2 independent review request](docs/reviews/2026-08-07-firmware-p0.2-independent-review-request.md)
@@ -162,7 +163,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-Sixty-one review/control rounds are complete: R01-R61. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R61 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, and H1 configuration corrections, not additional independent reviews.
+Sixty-two review/control rounds are complete: R01-R62. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R62 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, and protection-holder configuration corrections, not additional independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -227,6 +228,7 @@ Sixty-one review/control rounds are complete: R01-R61. R11 Fable and R12 Sol are
 | R59 | Current Boston fabrication-sourcing reconciliation | Replaced stale live guidance for withdrawn `MV0-001/002/003` with `HR-V0-FAB-SRC-P0.2`, tied to four R57 `MV0-C01` adapter candidates, two 20-2040 members and a separate bench-anchor hold. Added eight held/excluded routes, seven unexecuted inquiry rows and a checker. No supplier, upload artifact, quote, first article or fabrication authorization exists. |
 | R60 | HR-V0 control-panel physical-definition correction | Issued `HR-V0-CP-P0.1` with exact enclosure/backplate, rail/duct/terminal and amber H1 catalog candidates on hold; 16 backplate allocations; five door rows; six XT1 positions; all 66 bounded V3 wire endpoints; six no-hole cable-entry zones; ten thermal/space screens; 20 unexecuted evidence rows; and a checker. No holes, cuts, conductors, protection ratings, PE bond, glands, PCB fabrication, assembly or energization work is released. |
 | R61 | H1 pilot-light configuration and received-evidence correction | Issued Electrical V3-P1.5 with exact amber IDEC `HW1P-1FQD-A-24V`, replaced misleading `SAFE ELIGIBLE` and `+/-` labels with diagnostic-only wording and `TBD-HA/TBD-HB` project placeholders, moved system `BOM-041` to exact-candidate hold (18 exact / 29 selection-required), synchronized all native/exported artifacts, and added fourteen unexecuted receiving/characterization records. ERC remains 0/0; 63 unresolved rows and 24 `TBD-*` terminals remain. No wiring or energization release exists. |
+| R62 | Control-panel fit and protection-holder correction | Proved the P0.1 protection reserve could not contain the catalog fuse hardware; issued `HR-V0-CP-P0.2` around Hammond `PJ242010RT` / `18P2117`, exact Phoenix `3211861` FSR1/FSR2 holder candidates and the exact Blue Sea/Littelfuse branch/main holder envelopes. Issued Electrical V3-P1.6 and synchronized the holder identity while leaving all six fuse links, end cover, coordination, conductors, holes and assembly unresolved. The system BOM is now 72 groups (19 exact holds / 29 selection-required); ERC remains 0/0 and no gate closed. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

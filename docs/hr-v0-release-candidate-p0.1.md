@@ -19,7 +19,7 @@ The manifest hashes Git's canonical staged blobs, not platform-dependent checkou
 | Domain | Current candidate | Release boundary |
 |---|---|---|
 | Systems | `HR-30-SYS-R0.2` | integrated preliminary baseline |
-| Electrical | `Project Button Electrical V3-P1.5` | connected correction candidate; not a released schematic |
+| Electrical | `Project Button Electrical V3-P1.6` / `HR-V0-CP-P0.2` | connected schematic and dimension-screened panel-allocation candidates; not released for wiring, drilling, fabrication, or energization |
 | Watchdog PCB | `PCB-P0.5` | routed/test-access candidate; no fabrication outputs |
 | Actuator star PCB | `DXL-STAR-P0.1` | routed candidate; no fabrication outputs |
 | Mechanical | `HR-V0-MECH-P0.3` + `HR-V0-ARM-ARCH-P0.4` | Fabrication-defined adapter candidate exists under the P0.3 hold; received MTR/fit, qualified analytical acceptance, torque/locking, continuous collision and stop/overtravel proof, FAI, physical proof and qualified review remain open |

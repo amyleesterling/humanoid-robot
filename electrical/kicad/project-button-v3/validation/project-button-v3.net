@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-07T15:07:05")
+		(date "2026-08-07T15:43:40")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P1.5")
+			(name "REVISION") "V3-P1.6")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,7 +15,7 @@
 			(title_block
 				(title "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE index")
 				(company "Project Button")
-				(rev "V3-P1.5")
+				(rev "V3-P1.6")
 				(date "2026-08-07")
 				(source "project-button-v3.kicad_sch")
 				(comment
@@ -61,9 +61,9 @@
 			(name "/01 External listed sources and DC boundaries/")
 			(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
 			(title_block
-				(title "PB HR-V0 V3-P1.5 - 01")
+				(title "PB HR-V0 V3-P1.6 - 01")
 				(company "Project Button")
-				(rev "V3-P1.5")
+				(rev "V3-P1.6")
 				(date "2026-08-07")
 				(source "01_external_sources.kicad_sch")
 				(comment
@@ -109,9 +109,9 @@
 			(name "/02 Dual-channel E-stop and RESET eligibility/")
 			(tstamps "/1abf679f-5cd5-5479-8b91-6a232acf93b9/")
 			(title_block
-				(title "PB HR-V0 V3-P1.5 - 02")
+				(title "PB HR-V0 V3-P1.6 - 02")
 				(company "Project Button")
-				(rev "V3-P1.5")
+				(rev "V3-P1.6")
 				(date "2026-08-07")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
@@ -157,9 +157,9 @@
 			(name "/03 Distinct ARM and watchdog eligibility/")
 			(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
 			(title_block
-				(title "PB HR-V0 V3-P1.5 - 03")
+				(title "PB HR-V0 V3-P1.6 - 03")
 				(company "Project Button")
-				(rev "V3-P1.5")
+				(rev "V3-P1.6")
 				(date "2026-08-07")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
@@ -205,9 +205,9 @@
 			(name "/04 Contactor coils, mirror contacts and EDM/")
 			(tstamps "/6cf27f97-627c-5512-ba58-751093298e6c/")
 			(title_block
-				(title "PB HR-V0 V3-P1.5 - 04")
+				(title "PB HR-V0 V3-P1.6 - 04")
 				(company "Project Button")
-				(rev "V3-P1.5")
+				(rev "V3-P1.6")
 				(date "2026-08-07")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
@@ -253,9 +253,9 @@
 			(name "/05 Redundant actuator-power interruption/")
 			(tstamps "/db315f6f-1ed6-5bc9-bdf8-106d0286ccb4/")
 			(title_block
-				(title "PB HR-V0 V3-P1.5 - 05")
+				(title "PB HR-V0 V3-P1.6 - 05")
 				(company "Project Button")
-				(rev "V3-P1.5")
+				(rev "V3-P1.6")
 				(date "2026-08-07")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
@@ -301,9 +301,9 @@
 			(name "/06 Protected actuator branches and central DYNAMIXEL star injection/")
 			(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
 			(title_block
-				(title "PB HR-V0 V3-P1.5 - 06")
+				(title "PB HR-V0 V3-P1.6 - 06")
 				(company "Project Button")
-				(rev "V3-P1.5")
+				(rev "V3-P1.6")
 				(date "2026-08-07")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
@@ -349,9 +349,9 @@
 			(name "/07 Independent watchdog power, controller and drivers/")
 			(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
 			(title_block
-				(title "PB HR-V0 V3-P1.5 - 07")
+				(title "PB HR-V0 V3-P1.6 - 07")
 				(company "Project Button")
-				(rev "V3-P1.5")
+				(rev "V3-P1.6")
 				(date "2026-08-07")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
@@ -397,9 +397,9 @@
 			(name "/08 Calculated dual-channel 24 V watchdog feedback/")
 			(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
 			(title_block
-				(title "PB HR-V0 V3-P1.5 - 08")
+				(title "PB HR-V0 V3-P1.6 - 08")
 				(company "Project Button")
-				(rev "V3-P1.5")
+				(rev "V3-P1.6")
 				(date "2026-08-07")
 				(source "08_watchdog_feedback_interface.kicad_sch")
 				(comment
@@ -445,9 +445,9 @@
 			(name "/09 Compute, debug and control terminals/")
 			(tstamps "/f3a60727-2e66-5730-a829-00cc7c809e89/")
 			(title_block
-				(title "PB HR-V0 V3-P1.5 - 09")
+				(title "PB HR-V0 V3-P1.6 - 09")
 				(company "Project Button")
-				(rev "V3-P1.5")
+				(rev "V3-P1.6")
 				(date "2026-08-07")
 				(source "09_compute_and_control_terminals.kicad_sch")
 				(comment
@@ -493,9 +493,9 @@
 			(name "/10 U2D2, actuator ports and bonding boundary/")
 			(tstamps "/11f6090f-9f69-5145-93e3-5ccb2d8899ac/")
 			(title_block
-				(title "PB HR-V0 V3-P1.5 - 10")
+				(title "PB HR-V0 V3-P1.6 - 10")
 				(company "Project Button")
-				(rev "V3-P1.5")
+				(rev "V3-P1.6")
 				(date "2026-08-07")
 				(source "10_actuator_interfaces.kicad_sch")
 				(comment
@@ -541,9 +541,9 @@
 			(name "/11 Watchdog PCB external connectors/")
 			(tstamps "/6e16a5a8-d40c-518b-9320-2dd1b7122c9a/")
 			(title_block
-				(title "PB HR-V0 V3-P1.5 - 11")
+				(title "PB HR-V0 V3-P1.6 - 11")
 				(company "Project Button")
-				(rev "V3-P1.5")
+				(rev "V3-P1.6")
 				(date "2026-08-07")
 				(source "11_watchdog_pcb_connectors.kicad_sch")
 				(comment
@@ -589,9 +589,9 @@
 			(name "/12 Watchdog PCB test access/")
 			(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
 			(title_block
-				(title "PB HR-V0 V3-P1.5 - 12")
+				(title "PB HR-V0 V3-P1.6 - 12")
 				(company "Project Button")
-				(rev "V3-P1.5")
+				(rev "V3-P1.6")
 				(date "2026-08-07")
 				(source "12_watchdog_pcb_test_access.kicad_sch")
 				(comment
@@ -1714,41 +1714,40 @@
 		)
 		(comp
 			(ref "FSR1")
-			(value "SRA1 output-contact protection for K1 coil")
-			(description "R36 input register exists, but exact device/holder, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; published maxima are not selections.")
+			(value "Phoenix PT 4-HESI (5X20) item 3211861 holder; fuse link SELECTION REQUIRED")
+			(datasheet "https://www.phoenixcontact.com/en-us/products/fuse-terminal-block-pt-4-hesi-5x20-3211861")
+			(description "Exact non-LED 5x20 holder candidate only. Fuse link, compatible end cover, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; manufacturer maxima are not project selections.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - HOLDER ORDER CODE FROZEN; FUSE LINK AND COORDINATION SELECTION REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Phoenix Contact official US product page and generated product PDF dated 2026-07-06; rechecked 2026-08-07.")
 				(field
-					(name "Display") "SRA1 output-contact protection for K1 coil")
+					(name "Display") "Phoenix PT 4-HESI (5X20) item 3211861 holder; fuse link SELECTION REQUIRED")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/fuse-terminal-block-pt-4-hesi-5x20-3211861")
 				(field
-					(name "Description") "R36 input register exists, but exact device/holder, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; published maxima are not selections.")
+					(name "Description") "Exact non-LED 5x20 holder candidate only. Fuse link, compatible end cover, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; manufacturer maxima are not project selections.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "FSR1")
-				(description "R36 input register exists, but exact device/holder, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; published maxima are not selections.")
+				(description "Exact non-LED 5x20 holder candidate only. Fuse link, compatible end cover, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; manufacturer maxima are not project selections.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED")
+				(value "PROPOSED - HOLDER ORDER CODE FROZEN; FUSE LINK AND COORDINATION SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Phoenix Contact official US product page and generated product PDF dated 2026-07-06; rechecked 2026-08-07.")
 			)
 			(property
 				(name "Display")
-				(value "SRA1 output-contact protection for K1 coil")
+				(value "Phoenix PT 4-HESI (5X20) item 3211861 holder; fuse link SELECTION REQUIRED")
 			)
 			(property
 				(name "Sheetname")
@@ -1779,41 +1778,40 @@
 		)
 		(comp
 			(ref "FSR2")
-			(value "SRA1 output-contact protection for K2 coil")
-			(description "Same R36 coordination and physical-evidence gate as FSR1.")
+			(value "Phoenix PT 4-HESI (5X20) item 3211861 holder; fuse link SELECTION REQUIRED")
+			(datasheet "https://www.phoenixcontact.com/en-us/products/fuse-terminal-block-pt-4-hesi-5x20-3211861")
+			(description "Same exact holder candidate and open fuse-link, end-cover, coordination and physical-evidence gate as FSR1.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - HOLDER ORDER CODE FROZEN; FUSE LINK AND COORDINATION SELECTION REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Phoenix Contact official US product page and generated product PDF dated 2026-07-06; rechecked 2026-08-07.")
 				(field
-					(name "Display") "SRA1 output-contact protection for K2 coil")
+					(name "Display") "Phoenix PT 4-HESI (5X20) item 3211861 holder; fuse link SELECTION REQUIRED")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/fuse-terminal-block-pt-4-hesi-5x20-3211861")
 				(field
-					(name "Description") "Same R36 coordination and physical-evidence gate as FSR1.")
+					(name "Description") "Same exact holder candidate and open fuse-link, end-cover, coordination and physical-evidence gate as FSR1.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "FSR2")
-				(description "Same R36 coordination and physical-evidence gate as FSR1.")
+				(description "Same exact holder candidate and open fuse-link, end-cover, coordination and physical-evidence gate as FSR1.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED")
+				(value "PROPOSED - HOLDER ORDER CODE FROZEN; FUSE LINK AND COORDINATION SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Phoenix Contact official US product page and generated product PDF dated 2026-07-06; rechecked 2026-08-07.")
 			)
 			(property
 				(name "Display")
-				(value "SRA1 output-contact protection for K2 coil")
+				(value "Phoenix PT 4-HESI (5X20) item 3211861 holder; fuse link SELECTION REQUIRED")
 			)
 			(property
 				(name "Sheetname")
@@ -6330,27 +6328,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "FSR1")
-			(description "R36 input register exists, but exact device/holder, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; published maxima are not selections.")
+			(description "Exact non-LED 5x20 holder candidate only. Fuse link, compatible end cover, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; manufacturer maxima are not project selections.")
+			(docs "https://www.phoenixcontact.com/en-us/products/fuse-terminal-block-pt-4-hesi-5x20-3211861")
 			(fields
 				(field
 					(name "Reference") "FSR1")
 				(field
-					(name "Value") "SRA1 output-contact protection for K1 coil")
+					(name "Value") "Phoenix PT 4-HESI (5X20) item 3211861 holder; fuse link SELECTION REQUIRED")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/fuse-terminal-block-pt-4-hesi-5x20-3211861")
 				(field
-					(name "Description") "R36 input register exists, but exact device/holder, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; published maxima are not selections.")
+					(name "Description") "Exact non-LED 5x20 holder candidate only. Fuse link, compatible end cover, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; manufacturer maxima are not project selections.")
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - HOLDER ORDER CODE FROZEN; FUSE LINK AND COORDINATION SELECTION REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Phoenix Contact official US product page and generated product PDF dated 2026-07-06; rechecked 2026-08-07.")
 				(field
-					(name "Display") "SRA1 output-contact protection for K1 coil")
+					(name "Display") "Phoenix PT 4-HESI (5X20) item 3211861 holder; fuse link SELECTION REQUIRED")
 			)
 			(pins
 				(pin
@@ -6368,27 +6365,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "FSR2")
-			(description "Same R36 coordination and physical-evidence gate as FSR1.")
+			(description "Same exact holder candidate and open fuse-link, end-cover, coordination and physical-evidence gate as FSR1.")
+			(docs "https://www.phoenixcontact.com/en-us/products/fuse-terminal-block-pt-4-hesi-5x20-3211861")
 			(fields
 				(field
 					(name "Reference") "FSR2")
 				(field
-					(name "Value") "SRA1 output-contact protection for K2 coil")
+					(name "Value") "Phoenix PT 4-HESI (5X20) item 3211861 holder; fuse link SELECTION REQUIRED")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/fuse-terminal-block-pt-4-hesi-5x20-3211861")
 				(field
-					(name "Description") "Same R36 coordination and physical-evidence gate as FSR1.")
+					(name "Description") "Same exact holder candidate and open fuse-link, end-cover, coordination and physical-evidence gate as FSR1.")
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - HOLDER ORDER CODE FROZEN; FUSE LINK AND COORDINATION SELECTION REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Phoenix Contact official US product page and generated product PDF dated 2026-07-06; rechecked 2026-08-07.")
 				(field
-					(name "Display") "SRA1 output-contact protection for K2 coil")
+					(name "Display") "Phoenix PT 4-HESI (5X20) item 3211861 holder; fuse link SELECTION REQUIRED")
 			)
 			(pins
 				(pin
