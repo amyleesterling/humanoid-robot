@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "release_id": "HR-V0-WD-HOST-VECTOR-P0.1",
+  "status": "PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION",
+  "verified_date": "2026-08-07",
+  "compiler": {
+    "name": "LLVM-MinGW",
+    "release": "20260616",
+    "llvm_version": "22.1.8",
+    "target": "x86_64-w64-windows-gnu",
+    "runtime": "UCRT",
+    "official_release_url": "https://github.com/mstorsjo/llvm-mingw/releases/tag/20260616",
+    "archive_url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20260616/llvm-mingw-20260616-ucrt-x86_64.zip",
+    "archive_bytes": 187504083,
+    "archive_sha256": "b9b68a4d276e16fa25802aaba458e4638f64b3884c290aaccdc2d87083b6ca35",
+    "verification": "matched the official GitHub release-asset digest on 2026-08-07"
+  },
+  "build_controls": {
+    "source_date_epoch": 1786060800,
+    "language": "C11",
+    "optimization": "-O2",
+    "warnings": "-Wall -Wextra -Werror -Wconversion -Wshadow -Wformat=2",
+    "path_normalization": true,
+    "linker_build_id": "disabled",
+    "pe_timestamp": "disabled"
+  },
+  "known_limits": [
+    "The Windows host runner is evidence for portable C state logic only; it is not RP2040 execution evidence.",
+    "Compiler diversity, target HIL, timing, electrical I/O and fault-injection evidence remain required.",
+    "No host test grants functional-safety credit or permission to fabricate, flash or energize."
+  ]
+}

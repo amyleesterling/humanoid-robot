@@ -100,8 +100,8 @@ def main() -> int:
         failures.append("processor watchdog timeout is not the 100 ms platform candidate")
     if watchdog_config.get("polling_period_us") != 1000:
         failures.append("watchdog polling period is not the 1 ms platform candidate")
-    if watchdog_config.get("platform_binding") != "RASPBERRY_PI_PICO_SC0915_PICO_SDK_2.3.0_P0.1":
-        failures.append("watchdog platform binding differs from the compiled Pico P0.1 candidate")
+    if watchdog_config.get("platform_binding") != "RASPBERRY_PI_PICO_SC0915_PICO_SDK_2.3.0_P0.2":
+        failures.append("watchdog platform binding differs from the compiled Pico P0.2 candidate")
     if watchdog_config.get("platform_binding_status") != "SOURCE-CANDIDATE-HIL-REQUIRED":
         failures.append("watchdog platform binding no longer preserves the HIL-required boundary")
     header = (FIRMWARE / "watchdog" / "include" / "pb_watchdog.h").read_text(encoding="utf-8")
@@ -124,6 +124,8 @@ def main() -> int:
         "state->valid_edges >= PB_WD_STARTUP_VALID_EDGES",
         "inputs.relay1_nc != !state->relay1_drive",
         "inputs.relay2_nc != !state->relay2_drive",
+        "PB_WD_FAULT_CLOCK_REGRESSION",
+        "clock_regressed(inputs.now_ms, state->last_now_ms)",
     ):
         if required not in source:
             failures.append(f"portable watchdog source invariant missing: {required}")
@@ -151,6 +153,8 @@ def main() -> int:
 
     toolchain_lock_path = FIRMWARE / "watchdog" / "toolchain-lock.json"
     toolchain_lock = json.loads(toolchain_lock_path.read_text(encoding="utf-8"))
+    if toolchain_lock.get("release_id") != "HR-V0-WD-BUILD-P0.2":
+        failures.append("target toolchain lock release ID is not HR-V0-WD-BUILD-P0.2")
     expected_tools = {
         "Raspberry Pi Pico SDK": ("2.3.0", "98a542c1a62fb549ffb5d66a3e5892b06276b670"),
         "Arm GNU Toolchain": ("14.3.rel1 / GCC 14.3.1 build arm-14.174", "836ebe51fd71b6542dd7884c8fb2011192464b16c28e4b38fddc9350daba5ee8"),
@@ -178,12 +182,14 @@ def main() -> int:
         "firmware/**/*.dis text eol=lf",
         "firmware/**/*.bin binary",
         "firmware/**/*.elf binary",
+        "firmware/**/*.exe binary",
+        "firmware/**/*.hex text eol=crlf",
         "firmware/**/*.uf2 binary",
     ):
         if required not in attributes:
             failures.append(f"firmware Git checkout control missing: {required}")
 
-    output_dir = FIRMWARE / "watchdog" / "output" / "P0.1"
+    output_dir = FIRMWARE / "watchdog" / "output" / "P0.2"
     artifact_manifest_path = output_dir / "artifact-manifest.csv"
     with artifact_manifest_path.open(newline="", encoding="utf-8-sig") as handle:
         artifact_rows = list(csv.DictReader(handle))
@@ -208,13 +214,69 @@ def main() -> int:
         if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != expected_hash.lower():
             failures.append(f"watchdog build source hash differs: {relative}")
     reproducibility = build_evidence.get("reproducibility", {})
-    for key in ("elf_match", "uf2_match", "bin_match", "hex_match", "linker_map_match", "canonical_disassembly_match"):
+    for key in (
+        "elf_match",
+        "uf2_match",
+        "bin_match",
+        "hex_match",
+        "linker_map_match",
+        "canonical_disassembly_match",
+        "stack_usage_match",
+        "canonical_size_match",
+    ):
         if reproducibility.get(key) is not True:
             failures.append(f"watchdog reproducibility evidence is not true: {key}")
     if build_evidence.get("verification_boundary", {}).get("gate_disposition") != (
         "EG-017 remains partial; no permission to flash, fabricate or energize."
     ):
         failures.append("watchdog build evidence no longer preserves the EG-017 partial gate")
+
+    host_lock = json.loads((FIRMWARE / "watchdog" / "host-test-toolchain-lock.json").read_text(encoding="utf-8"))
+    compiler = host_lock.get("compiler", {})
+    if host_lock.get("release_id") != "HR-V0-WD-HOST-VECTOR-P0.1":
+        failures.append("host-vector toolchain lock release ID differs")
+    if (compiler.get("release"), compiler.get("llvm_version"), compiler.get("target")) != (
+        "20260616",
+        "22.1.8",
+        "x86_64-w64-windows-gnu",
+    ):
+        failures.append("host-vector compiler identity differs from the pinned release")
+    if compiler.get("archive_sha256") != "b9b68a4d276e16fa25802aaba458e4638f64b3884c290aaccdc2d87083b6ca35":
+        failures.append("host-vector compiler archive hash differs from the publisher digest")
+
+    host_output = FIRMWARE / "watchdog" / "output" / "host-vector" / "P0.1"
+    host_manifest_path = host_output / "artifact-manifest.csv"
+    with host_manifest_path.open(newline="", encoding="utf-8-sig") as handle:
+        host_rows = list(csv.DictReader(handle))
+    if len(host_rows) != 1:
+        failures.append("host-vector artifact manifest does not contain exactly one executable")
+    else:
+        row = host_rows[0]
+        artifact = host_output / row["file"]
+        if not artifact.is_file():
+            failures.append("controlled compiled-C vector runner is missing")
+        else:
+            if artifact.stat().st_size != int(row["bytes"]):
+                failures.append("controlled compiled-C vector runner size differs")
+            if hashlib.sha256(artifact.read_bytes()).hexdigest().lower() != row["sha256"].lower():
+                failures.append("controlled compiled-C vector runner hash differs")
+            if row["build_a_matches_build_b"].lower() != "true":
+                failures.append("compiled-C vector runner lacks two-build match")
+
+    host_evidence = json.loads((host_output / "build-evidence.json").read_text(encoding="utf-8"))
+    if host_evidence.get("release_id") != "HR-V0-WD-HOST-VECTOR-P0.1":
+        failures.append("compiled-C host evidence release ID differs")
+    for relative, expected_hash in host_evidence.get("source_hashes", {}).items():
+        path = ROOT / relative
+        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != expected_hash.lower():
+            failures.append(f"compiled-C host evidence source hash differs: {relative}")
+    execution = host_evidence.get("differential_execution", {})
+    if (execution.get("result"), execution.get("scenario_count"), execution.get("step_count")) != ("PASS", 9, 44):
+        failures.append("compiled-C differential execution evidence differs from 9 scenarios / 44 steps")
+    if host_evidence.get("verification_boundary", {}).get("gate_disposition") != (
+        "EG-017 remains partial; host execution closes no target-HIL requirement."
+    ):
+        failures.append("compiled-C host evidence no longer preserves the target-HIL boundary")
 
     supervisor_config = json.loads((FIRMWARE / "supervisor" / "supervisor-config.json").read_text(encoding="utf-8"))
     for field in ("configuration_hash", "kinematic_model_hash"):

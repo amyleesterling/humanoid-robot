@@ -23,8 +23,9 @@ $ninja = Join-Path $ToolRoot "ninja\ninja.exe"
 $picotool = Join-Path $ToolRoot "picotool-prebuilt"
 $python = Join-Path $ToolRoot "python\python.exe"
 $objdump = Join-Path $arm "bin\arm-none-eabi-objdump.exe"
+$sizeTool = Join-Path $arm "bin\arm-none-eabi-size.exe"
 
-foreach ($required in @($sdk, $arm, $cmake, $ninja, $picotool, $python, $objdump)) {
+foreach ($required in @($sdk, $arm, $cmake, $ninja, $picotool, $python, $objdump, $sizeTool)) {
     if (-not (Test-Path -LiteralPath $required)) {
         throw "Pinned tool is missing: $required"
     }
@@ -91,6 +92,28 @@ function Invoke-CleanBuild([string]$Label) {
             $mapText,
             $utf8NoBom
         )
+
+        $mainStack = Join-Path $build "CMakeFiles\project_button_watchdog.dir\platform\pico\main.c.su"
+        $logicStack = Join-Path $build "CMakeFiles\project_button_watchdog.dir\src\pb_watchdog.c.su"
+        Copy-Item -LiteralPath $mainStack -Destination (Join-Path $build "main.c.su") -Force
+        Copy-Item -LiteralPath $logicStack -Destination (Join-Path $build "pb_watchdog.c.su") -Force
+        foreach ($stackPath in @((Join-Path $build "main.c.su"), (Join-Path $build "pb_watchdog.c.su"))) {
+            $stackText = [System.IO.File]::ReadAllText($stackPath)
+            $stackText = [regex]::Replace($stackText, "[ \t]+(?=\r?$)", "", [System.Text.RegularExpressions.RegexOptions]::Multiline)
+            $stackText = $stackText.Replace("`r`n", "`n").TrimEnd("`r", "`n") + "`n"
+            [System.IO.File]::WriteAllText($stackPath, $stackText, $utf8NoBom)
+        }
+
+        $sizeText = (& $sizeTool -A "project_button_watchdog.elf") -join "`n"
+        if ($LASTEXITCODE -ne 0) { throw "arm-none-eabi-size failed for build-$Label" }
+        $sizeText = [regex]::Replace(
+            $sizeText,
+            "(?m)^.*project_button_watchdog\.elf\s+:$",
+            "project_button_watchdog.elf :"
+        )
+        $sizeText = [regex]::Replace($sizeText, "[ \t]+(?=\r?$)", "", [System.Text.RegularExpressions.RegexOptions]::Multiline)
+        $sizeText = $sizeText.Replace("`r`n", "`n").TrimEnd("`r", "`n") + "`n"
+        [System.IO.File]::WriteAllText((Join-Path $build "size.txt"), $sizeText, $utf8NoBom)
     }
     finally {
         Pop-Location
@@ -106,7 +129,10 @@ $artifacts = @(
     "project_button_watchdog.bin",
     "project_button_watchdog.hex",
     "project_button_watchdog.canonical.map",
-    "project_button_watchdog.canonical.dis"
+    "project_button_watchdog.canonical.dis",
+    "main.c.su",
+    "pb_watchdog.c.su",
+    "size.txt"
 )
 $results = foreach ($artifact in $artifacts) {
     $pathA = Join-Path $buildA $artifact

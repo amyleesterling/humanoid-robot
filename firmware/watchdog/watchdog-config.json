@@ -21,7 +21,7 @@
     "relay1_nc_feedback": {"gpio": 6, "physical_pin": 9},
     "relay2_nc_feedback": {"gpio": 7, "physical_pin": 10}
   },
-  "platform_binding": "RASPBERRY_PI_PICO_SC0915_PICO_SDK_2.3.0_P0.1",
+  "platform_binding": "RASPBERRY_PI_PICO_SC0915_PICO_SDK_2.3.0_P0.2",
   "platform_binding_status": "SOURCE-CANDIDATE-HIL-REQUIRED",
   "safety_credit": "NONE"
 }

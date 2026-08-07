@@ -11,4 +11,6 @@ firmware/**/*.dis text eol=lf
 firmware/**/CMakeLists.txt text eol=lf
 firmware/**/*.bin binary
 firmware/**/*.elf binary
+firmware/**/*.exe binary
+firmware/**/*.hex text eol=crlf
 firmware/**/*.uf2 binary

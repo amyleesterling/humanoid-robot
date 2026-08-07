@@ -17,7 +17,8 @@ typedef enum {
     PB_WD_FAULT_NONE = 0,
     PB_WD_FAULT_HEARTBEAT_TOO_FAST = 1,
     PB_WD_FAULT_RELAY1_FEEDBACK = 2,
-    PB_WD_FAULT_RELAY2_FEEDBACK = 3
+    PB_WD_FAULT_RELAY2_FEEDBACK = 3,
+    PB_WD_FAULT_CLOCK_REGRESSION = 4
 } pb_wd_fault_t;
 
 typedef struct {
@@ -38,6 +39,7 @@ typedef struct {
 
 typedef struct {
     bool initialized;
+    uint32_t last_now_ms;
     bool last_heartbeat_level;
     bool have_edge;
     uint32_t last_edge_ms;
