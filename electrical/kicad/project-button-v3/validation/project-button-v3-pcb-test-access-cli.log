@@ -3,8 +3,8 @@ Found 0 violations
 Found 0 unconnected items
 Saved DRC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/project-button-v3/validation/project-button-v3-pcb-test-access-drc.rpt
 Saved board
-23:38:22: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-23:38:22: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+23:55:10: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+23:55:10: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 exit=0
 
 $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb render --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-pcb-test-access-top.png" --width 1800 --height 1100 --side top --background opaque "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\project-button-v3.kicad_pcb"
@@ -79,13 +79,13 @@ Build BVH for holes and vias
 Load Raytracing: board
 Load Raytracing: layers
 Loading 3D models...
-Reload time 0.217 s
+Reload time 0.222 s
 Rendering: 100
-Rendering time 0.308 s
+Rendering time 0.273 s
 Successfully created 3D render image
-23:38:26: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-23:38:26: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
-11:38:26 PM: Error: Directory 'C:\Users\amyle\AppData\Roaming\kicad\10.0\3d' couldn't be created (error 5: Access is denied.)
+23:55:13: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+23:55:13: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+11:55:14 PM: Error: Directory 'C:\Users\amyle\AppData\Roaming\kicad\10.0\3d' couldn't be created (error 5: Access is denied.)
 exit=0
 
 $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb render --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-pcb-test-access-bottom.png" --width 1800 --height 1100 --side bottom --background opaque "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\project-button-v3.kicad_pcb"
@@ -160,11 +160,11 @@ Build BVH for holes and vias
 Load Raytracing: board
 Load Raytracing: layers
 Loading 3D models...
-Reload time 0.221 s
+Reload time 0.202 s
 Rendering: 100
-Rendering time 0.326 s
+Rendering time 0.270 s
 Successfully created 3D render image
-23:38:27: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-23:38:27: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
-11:38:28 PM: Error: Directory 'C:\Users\amyle\AppData\Roaming\kicad\10.0\3d' couldn't be created (error 5: Access is denied.)
+23:55:15: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+23:55:15: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+11:55:15 PM: Error: Directory 'C:\Users\amyle\AppData\Roaming\kicad\10.0\3d' couldn't be created (error 5: Access is denied.)
 exit=0

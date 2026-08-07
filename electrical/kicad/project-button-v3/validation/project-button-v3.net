@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-06T23:38:14")
+		(date "2026-08-06T23:58:20")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
@@ -1716,7 +1716,7 @@
 		(comp
 			(ref "FSR1")
 			(value "SRA1 output-contact protection for K1 coil")
-			(description "Select from fault current, coil transient, conductor and PNOZ contact-protection limits; published maxima are not selections.")
+			(description "R36 input register exists, but exact device/holder, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; published maxima are not selections.")
 			(fields
 				(field
 					(name "Status") "SELECTION REQUIRED")
@@ -1732,12 +1732,12 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Select from fault current, coil transient, conductor and PNOZ contact-protection limits; published maxima are not selections.")
+					(name "Description") "R36 input register exists, but exact device/holder, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; published maxima are not selections.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "FSR1")
-				(description "Select from fault current, coil transient, conductor and PNOZ contact-protection limits; published maxima are not selections.")
+				(description "R36 input register exists, but exact device/holder, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; published maxima are not selections.")
 			)
 			(property
 				(name "Status")
@@ -1781,7 +1781,7 @@
 		(comp
 			(ref "FSR2")
 			(value "SRA1 output-contact protection for K2 coil")
-			(description "Same coordination gate as FSR1.")
+			(description "Same R36 coordination and physical-evidence gate as FSR1.")
 			(fields
 				(field
 					(name "Status") "SELECTION REQUIRED")
@@ -1797,12 +1797,12 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Same coordination gate as FSR1.")
+					(name "Description") "Same R36 coordination and physical-evidence gate as FSR1.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "FSR2")
-				(description "Same coordination gate as FSR1.")
+				(description "Same R36 coordination and physical-evidence gate as FSR1.")
 			)
 			(property
 				(name "Status")
@@ -1999,7 +1999,7 @@
 		(comp
 			(ref "F0")
 			(value "12 V source protection")
-			(description "Fuse/holder family, rating, interrupting capacity and thermal coordination remain open.")
+			(description "R36 proposes FHAC0002SXJ holder plus ATOF family only. Ampere rating, 12-to-16 AWG transition, fault current, interrupting and thermal coordination remain open.")
 			(fields
 				(field
 					(name "Status") "SELECTION REQUIRED")
@@ -2015,12 +2015,12 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Fuse/holder family, rating, interrupting capacity and thermal coordination remain open.")
+					(name "Description") "R36 proposes FHAC0002SXJ holder plus ATOF family only. Ampere rating, 12-to-16 AWG transition, fault current, interrupting and thermal coordination remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "F0")
-				(description "Fuse/holder family, rating, interrupting capacity and thermal coordination remain open.")
+				(description "R36 proposes FHAC0002SXJ holder plus ATOF family only. Ampere rating, 12-to-16 AWG transition, fault current, interrupting and thermal coordination remain open.")
 			)
 			(property
 				(name "Status")
@@ -2283,7 +2283,7 @@
 		(comp
 			(ref "F1")
 			(value "J1 shoulder branch protection")
-			(description "Requires fault current, cable, connector, inrush, regeneration, duty and ambient evidence.")
+			(description "R36 proposes 5025 block plus ATOF family only. XM540 4.4 A stall versus JST EH 3 A series basis is unresolved; rating and all physical evidence remain open.")
 			(fields
 				(field
 					(name "Status") "SELECTION REQUIRED")
@@ -2299,12 +2299,12 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Requires fault current, cable, connector, inrush, regeneration, duty and ambient evidence.")
+					(name "Description") "R36 proposes 5025 block plus ATOF family only. XM540 4.4 A stall versus JST EH 3 A series basis is unresolved; rating and all physical evidence remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "F1")
-				(description "Requires fault current, cable, connector, inrush, regeneration, duty and ambient evidence.")
+				(description "R36 proposes 5025 block plus ATOF family only. XM540 4.4 A stall versus JST EH 3 A series basis is unresolved; rating and all physical evidence remain open.")
 			)
 			(property
 				(name "Status")
@@ -2348,7 +2348,7 @@
 		(comp
 			(ref "F2")
 			(value "J2 elbow branch protection")
-			(description "Same evidence gate as F1.")
+			(description "Same R36 candidate hardware and XM540/JST connector-limit conflict as F1.")
 			(fields
 				(field
 					(name "Status") "SELECTION REQUIRED")
@@ -2364,12 +2364,12 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Same evidence gate as F1.")
+					(name "Description") "Same R36 candidate hardware and XM540/JST connector-limit conflict as F1.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "F2")
-				(description "Same evidence gate as F1.")
+				(description "Same R36 candidate hardware and XM540/JST connector-limit conflict as F1.")
 			)
 			(property
 				(name "Status")
@@ -2413,7 +2413,7 @@
 		(comp
 			(ref "F3")
 			(value "Gripper branch protection")
-			(description "Same evidence gate as F1.")
+			(description "R36 proposes 5025 block plus ATOF family only. XM430 stall screen is 2.3 A; exact cable, rating and coordination evidence remain open.")
 			(fields
 				(field
 					(name "Status") "SELECTION REQUIRED")
@@ -2429,12 +2429,12 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Same evidence gate as F1.")
+					(name "Description") "R36 proposes 5025 block plus ATOF family only. XM430 stall screen is 2.3 A; exact cable, rating and coordination evidence remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "F3")
-				(description "Same evidence gate as F1.")
+				(description "R36 proposes 5025 block plus ATOF family only. XM430 stall screen is 2.3 A; exact cable, rating and coordination evidence remain open.")
 			)
 			(property
 				(name "Status")
@@ -6310,7 +6310,7 @@
 		(libpart
 			(lib "PBV3")
 			(part "F0")
-			(description "Fuse/holder family, rating, interrupting capacity and thermal coordination remain open.")
+			(description "R36 proposes FHAC0002SXJ holder plus ATOF family only. Ampere rating, 12-to-16 AWG transition, fault current, interrupting and thermal coordination remain open.")
 			(fields
 				(field
 					(name "Reference") "F0")
@@ -6323,7 +6323,7 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Fuse/holder family, rating, interrupting capacity and thermal coordination remain open.")
+					(name "Description") "R36 proposes FHAC0002SXJ holder plus ATOF family only. Ampere rating, 12-to-16 AWG transition, fault current, interrupting and thermal coordination remain open.")
 				(field
 					(name "Status") "SELECTION REQUIRED")
 				(field
@@ -6348,7 +6348,7 @@
 		(libpart
 			(lib "PBV3")
 			(part "F1")
-			(description "Requires fault current, cable, connector, inrush, regeneration, duty and ambient evidence.")
+			(description "R36 proposes 5025 block plus ATOF family only. XM540 4.4 A stall versus JST EH 3 A series basis is unresolved; rating and all physical evidence remain open.")
 			(fields
 				(field
 					(name "Reference") "F1")
@@ -6361,7 +6361,7 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Requires fault current, cable, connector, inrush, regeneration, duty and ambient evidence.")
+					(name "Description") "R36 proposes 5025 block plus ATOF family only. XM540 4.4 A stall versus JST EH 3 A series basis is unresolved; rating and all physical evidence remain open.")
 				(field
 					(name "Status") "SELECTION REQUIRED")
 				(field
@@ -6386,7 +6386,7 @@
 		(libpart
 			(lib "PBV3")
 			(part "F2")
-			(description "Same evidence gate as F1.")
+			(description "Same R36 candidate hardware and XM540/JST connector-limit conflict as F1.")
 			(fields
 				(field
 					(name "Reference") "F2")
@@ -6399,7 +6399,7 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Same evidence gate as F1.")
+					(name "Description") "Same R36 candidate hardware and XM540/JST connector-limit conflict as F1.")
 				(field
 					(name "Status") "SELECTION REQUIRED")
 				(field
@@ -6424,7 +6424,7 @@
 		(libpart
 			(lib "PBV3")
 			(part "F3")
-			(description "Same evidence gate as F1.")
+			(description "R36 proposes 5025 block plus ATOF family only. XM430 stall screen is 2.3 A; exact cable, rating and coordination evidence remain open.")
 			(fields
 				(field
 					(name "Reference") "F3")
@@ -6437,7 +6437,7 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Same evidence gate as F1.")
+					(name "Description") "R36 proposes 5025 block plus ATOF family only. XM430 stall screen is 2.3 A; exact cable, rating and coordination evidence remain open.")
 				(field
 					(name "Status") "SELECTION REQUIRED")
 				(field
@@ -6462,7 +6462,7 @@
 		(libpart
 			(lib "PBV3")
 			(part "FSR1")
-			(description "Select from fault current, coil transient, conductor and PNOZ contact-protection limits; published maxima are not selections.")
+			(description "R36 input register exists, but exact device/holder, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; published maxima are not selections.")
 			(fields
 				(field
 					(name "Reference") "FSR1")
@@ -6475,7 +6475,7 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Select from fault current, coil transient, conductor and PNOZ contact-protection limits; published maxima are not selections.")
+					(name "Description") "R36 input register exists, but exact device/holder, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; published maxima are not selections.")
 				(field
 					(name "Status") "SELECTION REQUIRED")
 				(field
@@ -6500,7 +6500,7 @@
 		(libpart
 			(lib "PBV3")
 			(part "FSR2")
-			(description "Same coordination gate as FSR1.")
+			(description "Same R36 coordination and physical-evidence gate as FSR1.")
 			(fields
 				(field
 					(name "Reference") "FSR2")
@@ -6513,7 +6513,7 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Same coordination gate as FSR1.")
+					(name "Description") "Same R36 coordination and physical-evidence gate as FSR1.")
 				(field
 					(name "Status") "SELECTION REQUIRED")
 				(field

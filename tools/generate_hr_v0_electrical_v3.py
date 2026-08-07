@@ -262,10 +262,10 @@ def sheets() -> list[Sheet]:
                   "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF", position=(340, 205), width=82),
         Component("FSR1", "SRA1 output-contact protection for K1 coil",
                   [pn("FSR1", "1", "IN", "SRA1_K1_RAW", "left"), pn("FSR1", "2", "OUT", "K1_A1", "right")],
-                  "SELECTION REQUIRED", "Select from fault current, coil transient, conductor and PNOZ contact-protection limits; published maxima are not selections.", position=(145, 255), width=72),
+                  "SELECTION REQUIRED", "R36 input register exists, but exact device/holder, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; published maxima are not selections.", position=(145, 255), width=72),
         Component("FSR2", "SRA1 output-contact protection for K2 coil",
                   [pn("FSR2", "1", "IN", "SRA1_K2_RAW", "left"), pn("FSR2", "2", "OUT", "K2_A1", "right")],
-                  "SELECTION REQUIRED", "Same coordination gate as FSR1.", position=(275, 255), width=72),
+                  "SELECTION REQUIRED", "Same R36 coordination and physical-evidence gate as FSR1.", position=(275, 255), width=72),
     ]
     s3.notes = ["Required sequence after E-stop or watchdog dropout: cause healthy -> RESET press/release -> SAFE_READY -> distinct ARM press/release -> K1/K2 may energize.",
                 "Heartbeat restoration closes only KWD contacts; SR1 remains in monitored-start state until RESET."]
@@ -275,7 +275,7 @@ def sheets() -> list[Sheet]:
     s4.components = [
         Component("F0", "12 V source protection",
                   [pn("F0", "1", "SOURCE", "ACT_12V_RAW", "left"), pn("F0", "2", "PROTECTED", "ACT_12V_FUSED", "right")],
-                  "SELECTION REQUIRED", "Fuse/holder family, rating, interrupting capacity and thermal coordination remain open.", position=(65, 70), width=72),
+                  "SELECTION REQUIRED", "R36 proposes FHAC0002SXJ holder plus ATOF family only. Ampere rating, 12-to-16 AWG transition, fault current, interrupting and thermal coordination remain open.", position=(65, 70), width=72),
         Component("SD1", "Accessible DC service disconnect",
                   [pn("SD1", "TBD-IN", "IN", "ACT_12V_FUSED", "left"), pn("SD1", "TBD-OUT", "OUT", "K1_P1_IN", "right")],
                   "SELECTION REQUIRED", "Select a DC-rated lockable disconnect with exact terminals, enclosure and current/fault rating.", position=(180, 70), width=72),
@@ -290,11 +290,11 @@ def sheets() -> list[Sheet]:
                    pn("K2P", "5L3", "POLE3 IN", "K2_J23", "left"), pn("K2P", "6T3", "POLE3 OUT", "ACT_12V_BUS", "right")],
                   "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K2", "Do not count as a second BOM device.", position=(65, 155), width=82, quantity=0),
         Component("F1", "J1 shoulder branch protection", [pn("F1", "1", "IN", "ACT_12V_BUS", "left"), pn("F1", "2", "OUT", "J1_VDD", "right")],
-                  "SELECTION REQUIRED", "Requires fault current, cable, connector, inrush, regeneration, duty and ambient evidence.", position=(180, 145), width=72),
+                  "SELECTION REQUIRED", "R36 proposes 5025 block plus ATOF family only. XM540 4.4 A stall versus JST EH 3 A series basis is unresolved; rating and all physical evidence remain open.", position=(180, 145), width=72),
         Component("F2", "J2 elbow branch protection", [pn("F2", "1", "IN", "ACT_12V_BUS", "left"), pn("F2", "2", "OUT", "J2_VDD", "right")],
-                  "SELECTION REQUIRED", "Same evidence gate as F1.", position=(295, 145), width=72),
+                  "SELECTION REQUIRED", "Same R36 candidate hardware and XM540/JST connector-limit conflict as F1.", position=(295, 145), width=72),
         Component("F3", "Gripper branch protection", [pn("F3", "1", "IN", "ACT_12V_BUS", "left"), pn("F3", "2", "OUT", "J3_VDD", "right")],
-                  "SELECTION REQUIRED", "Same evidence gate as F1.", position=(65, 230), width=72),
+                  "SELECTION REQUIRED", "R36 proposes 5025 block plus ATOF family only. XM430 stall screen is 2.3 A; exact cable, rating and coordination evidence remain open.", position=(65, 230), width=72),
         Component("INJ1", "J1 data/power injection module",
                   [pn("INJ1", "TBD-BI-G", "BUS IN GND", "ACT_0V_PE_BONDED", "left"), pn("INJ1", "TBD-BI-D", "BUS IN DATA", "DXL_TTL_DATA", "left"),
                    pn("INJ1", "TBD-P", "FUSED VDD", "J1_VDD", "left"), pn("INJ1", "TBD-A-G", "ACT GND", "ACT_0V_PE_BONDED", "right"),
@@ -985,7 +985,9 @@ def validate_with_kicad(cli: Path) -> int:
     validation.mkdir(exist_ok=True)
     exports.mkdir(exist_ok=True)
     for path in exports.iterdir():
-        if path.is_file():
+        # Schematic regeneration shares this directory with controlled PCB
+        # renders.  Never erase board evidence while refreshing the sheets.
+        if path.is_file() and path.suffix.lower() != ".png":
             path.unlink()
     project = OUT / f"{PROJECT}.kicad_sch"
     commands = [
@@ -1025,12 +1027,25 @@ def main() -> int:
             for pin in comp.pins:
                 net_counts[pin.net] = net_counts.get(pin.net, 0) + 1
     wire_numbers = build_wire_numbers(items, net_counts)
-    (OUT / f"{PROJECT}.kicad_pro").write_text(json.dumps({
+    project_path = OUT / f"{PROJECT}.kicad_pro"
+    default_project_data = {
         "board": {}, "boards": [], "cvpcb": {}, "erc": {}, "libraries": {},
         "meta": {"filename": f"{PROJECT}.kicad_pro", "version": 1},
         "net_settings": {"classes": [], "meta": {"version": 3}}, "pcbnew": {}, "schematic": {},
-        "text_variables": {"PROJECT_STATUS": WARNING, "REVISION": REV}
-    }, indent=2), encoding="utf-8")
+        "text_variables": {"PROJECT_STATUS": WARNING, "REVISION": REV},
+    }
+    if project_path.exists():
+        # The native schematic and PCB intentionally share one KiCad project.
+        # Preserve board design settings/net classes installed by the PCB
+        # generator instead of replacing them with an empty project object.
+        project_data = json.loads(project_path.read_text(encoding="utf-8-sig"))
+        project_data.setdefault("meta", {})["filename"] = f"{PROJECT}.kicad_pro"
+        project_data.setdefault("text_variables", {}).update(
+            {"PROJECT_STATUS": WARNING, "REVISION": REV}
+        )
+    else:
+        project_data = default_project_data
+    project_path.write_text(json.dumps(project_data, indent=2) + "\n", encoding="utf-8")
     library_symbols = []
     for sheet in items:
         for comp in sheet.components:

@@ -10,15 +10,15 @@ sheet,reference,status,evidence_needed
 03_arm_watchdog_eligibility.kicad_sch,KWD2,PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED,"Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open."
 04_contactor_edm.kicad_sch,K1,PROPOSED - DC APPLICATION CONFIRMATION REQUIRED,First redundant series contactor. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.
 04_contactor_edm.kicad_sch,K2,PROPOSED - DC APPLICATION CONFIRMATION REQUIRED,Second redundant series contactor.
-04_contactor_edm.kicad_sch,FSR1,SELECTION REQUIRED,"Select from fault current, coil transient, conductor and PNOZ contact-protection limits; published maxima are not selections."
-04_contactor_edm.kicad_sch,FSR2,SELECTION REQUIRED,Same coordination gate as FSR1.
-05_actuator_interruption.kicad_sch,F0,SELECTION REQUIRED,"Fuse/holder family, rating, interrupting capacity and thermal coordination remain open."
+04_contactor_edm.kicad_sch,FSR1,SELECTION REQUIRED,"R36 input register exists, but exact device/holder, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; published maxima are not selections."
+04_contactor_edm.kicad_sch,FSR2,SELECTION REQUIRED,Same R36 coordination and physical-evidence gate as FSR1.
+05_actuator_interruption.kicad_sch,F0,SELECTION REQUIRED,"R36 proposes FHAC0002SXJ holder plus ATOF family only. Ampere rating, 12-to-16 AWG transition, fault current, interrupting and thermal coordination remain open."
 05_actuator_interruption.kicad_sch,SD1,SELECTION REQUIRED,"Select a DC-rated lockable disconnect with exact terminals, enclosure and current/fault rating."
-06_branches_and_injection.kicad_sch,F1,SELECTION REQUIRED,"Requires fault current, cable, connector, inrush, regeneration, duty and ambient evidence."
+06_branches_and_injection.kicad_sch,F1,SELECTION REQUIRED,R36 proposes 5025 block plus ATOF family only. XM540 4.4 A stall versus JST EH 3 A series basis is unresolved; rating and all physical evidence remain open.
 06_branches_and_injection.kicad_sch,INJ1,DESIGN REQUIRED,Custom inline module omits VDD on inter-actuator bus cables so protected branches cannot backfeed. PCB/harness design and tests open.
-06_branches_and_injection.kicad_sch,F2,SELECTION REQUIRED,Same evidence gate as F1.
+06_branches_and_injection.kicad_sch,F2,SELECTION REQUIRED,Same R36 candidate hardware and XM540/JST connector-limit conflict as F1.
 06_branches_and_injection.kicad_sch,INJ2,DESIGN REQUIRED,Second injection module.
-06_branches_and_injection.kicad_sch,F3,SELECTION REQUIRED,Same evidence gate as F1.
+06_branches_and_injection.kicad_sch,F3,SELECTION REQUIRED,"R36 proposes 5025 block plus ATOF family only. XM430 stall screen is 2.3 A; exact cable, rating and coordination evidence remain open."
 06_branches_and_injection.kicad_sch,INJ3,DESIGN REQUIRED,Final inline injection module; no VDD conductor continues beyond the actuator connection.
 07_watchdog_control.kicad_sch,DC1,PROPOSED - ORDER CODE/PINOUT FROZEN; BROWNOUT/EMC/THERMAL VERIFICATION REQUIRED,"Pin 1 +Vin, pin 2 common GND, pin 3 +Vout. Non-isolated by design; changing isolation requires a new driver/interface and grounding review. Published input range is 6.5-36 VDC; external capacitance is not required below 32 V, but branch protection, load budget, startup, brownout, conducted/radiated emissions and enclosure thermal tests remain open."
 07_watchdog_control.kicad_sch,RHB1,PROPOSED - ORDER CODE FROZEN; PCB/HIL VERIFICATION REQUIRED,"Screens approximately 1.04 mA at a project 2.6 V GPIO-high floor and 1.65 V LED maximum, and 2.53 mA at 3.3 V with 1.0 V LED minimum. The 2.6 V floor is a project screen, not a released Raspberry Pi 5 guarantee; measure the actual source across load and temperature."
