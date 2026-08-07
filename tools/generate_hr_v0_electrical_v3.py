@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P1.3"
+REV = "V3-P1.4"
 PROJECT_TITLE = "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE"
 PROJECT_SUBTITLE = "Separate RESET and ARM, two PNOZ stages, dual watchdog contacts, external adapters, redundant actuator interruption."
 DATE = "2026-08-07"
@@ -210,9 +210,9 @@ def sheets() -> list[Sheet]:
              "First-stage E-stop eligibility relay."),
         Component("S1", "IDEC HW1B-M1F10-B black momentary 1NO RESET",
                   [pn("S1", "TBD-R1", "RESET IN", "SR1_S12", "left"), pn("S1", "TBD-R2", "RESET OUT", "SR1_START_RETURN", "right")],
-                  "PROPOSED - EXACT OPERATOR/COLOR FROZEN; RECEIVED VERIFICATION REQUIRED", "Exact black flush momentary 1NO screw-terminal operator is frozen for RESET. The panel shall carry the explicit RESET legend and remain outside the swept envelope. Panel spacing/guarding and physical contact-terminal mapping remain open; verify the received device by bottom-view record and continuity test.",
+                  "PROPOSED - COMPLETE ORDER CODE FROZEN; RECEIVED-LOT TERMINAL MAPPING REQUIRED", "Exact black flush momentary 1NO screw-terminal complete assembly is frozen for RESET. IDEC states that old and redesigned HW assemblies can ship under the same complete order code during the transition that began 2026-06-15, and the live product-page BOM returned no component detail on 2026-08-07. Do not copy legacy or push-in terminal numbers. The panel shall carry the explicit RESET legend and remain outside the swept envelope. Record the received design, underside orientation, molded terminal marks and released/pressed continuity before replacing either TBD terminal.",
                   "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-b",
-                  "IDEC US product page and HW Series Catalog_Screw dated 2026-07-23; rechecked 2026-08-06.", position=(340, 82), width=82),
+                  "IDEC US product page and HW Series Catalog_Screw dated 2026-07-23 plus IDEC HW specification-change notice dated 2026-07-14; live page/BOM rechecked 2026-08-07.", position=(340, 82), width=82),
         Component("H1", "SAFE ELIGIBLE indicator interface",
                   [pn("H1", "TBD-H+", "+", "SR1_STATUS", "left"), pn("H1", "TBD-H-", "-", "SAFETY_0V", "right")],
                   "SELECTION REQUIRED", "Diagnostic indicator only; no safety credit and no motion authority.", position=(75, 190), width=82),
@@ -247,9 +247,9 @@ def sheets() -> list[Sheet]:
                   "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01.", (340, 72), 82),
         Component("S2", "IDEC HW1B-M1F10-G green momentary 1NO ARM",
                   [pn("S2", "TBD-A1", "ARM IN", "SRA1_S12", "left"), pn("S2", "TBD-A2", "ARM OUT", "ARM_AFTER_S2", "right")],
-                  "PROPOSED - EXACT OPERATOR/COLOR FROZEN; RECEIVED VERIFICATION REQUIRED", "Exact green flush momentary 1NO screw-terminal operator is frozen for ARM, distinct from the black RESET operator. The panel shall carry the explicit ARM legend; spacing/guarding and physical contact-terminal mapping remain open. ARM must actuate and release after every safety dropout.",
+                  "PROPOSED - COMPLETE ORDER CODE FROZEN; RECEIVED-LOT TERMINAL MAPPING REQUIRED", "Exact green flush momentary 1NO screw-terminal complete assembly is frozen for ARM, distinct from black RESET. IDEC states that old and redesigned HW assemblies can ship under the same complete order code during the transition that began 2026-06-15, and the live product-page BOM returned no component detail on 2026-08-07. Do not copy legacy or push-in terminal numbers. Record the received design, underside orientation, molded terminal marks and released/pressed continuity before replacing either TBD terminal. The panel shall carry the explicit ARM legend; ARM must actuate and release after every safety dropout.",
                   "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/pushbuttons-pilot-lights/hw-22mm-heavy-duty/hw1b-m1f10-g",
-                  "IDEC US product page and HW Series Catalog_Screw dated 2026-07-23; rechecked 2026-08-06.", position=(82, 205), width=82),
+                  "IDEC US product page and HW Series Catalog_Screw dated 2026-07-23 plus IDEC HW specification-change notice dated 2026-07-14; live page/BOM rechecked 2026-08-07.", position=(82, 205), width=82),
         Component("K1", "Schneider TeSys D LC1D25BD, 24 VDC coil",
                   [pn("K1", "A1", "COIL +", "K1_A1", "left"), pn("K1", "A2", "COIL -", "SAFETY_0V", "left"),
                    pn("K1", "21", "MIRROR NC IN", "ARM_AFTER_S2", "left"), pn("K1", "22", "MIRROR NC OUT", "EDM_K1_OUT", "right"),
@@ -925,7 +925,7 @@ def write_tables(items: list[Sheet], net_counts: dict[str, int],
         writer = csv.writer(handle)
         writer.writerow(["sheet", "reference", "status", "evidence_needed"])
         for sheet, comp in components:
-            if any(key in comp.status for key in ("SELECTION REQUIRED", "DESIGN REQUIRED", "CONFIRMATION REQUIRED", "VERIFICATION REQUIRED", "RELEASE OPEN")):
+            if any(key in comp.status for key in ("SELECTION REQUIRED", "DESIGN REQUIRED", "CONFIRMATION REQUIRED", "VERIFICATION REQUIRED", "MAPPING REQUIRED", "RELEASE OPEN")):
                 writer.writerow([sheet.filename, comp.ref, comp.status, comp.description])
 
 
@@ -954,6 +954,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.
 - Three poles per candidate contactor are represented in series, pending Schneider application confirmation.
 - U2D2 VDD is omitted and protected power is injected by one central DXL-STAR-P0.1 board with three isolated VDD branches; harness, thermal, waveform and no-backfeed evidence remain design gates.
+- RESET `S1` and ARM `S2` retain exact complete IDEC order codes, but their physical terminals remain `TBD-*`. IDEC's 2026 production transition permits prior or redesigned internals under the same complete codes, and the live product BOM exposes no component identity. Only received-lot markings, orientation, continuity and independent comparison may release the terminal map.
 
 ## Validate
 
@@ -1049,7 +1050,8 @@ def main() -> int:
         )
     else:
         project_data = default_project_data
-    project_path.write_text(json.dumps(project_data, indent=2) + "\n", encoding="utf-8")
+    with project_path.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write(json.dumps(project_data, indent=2) + "\n")
     library_symbols = []
     for sheet in items:
         for comp in sheet.components:

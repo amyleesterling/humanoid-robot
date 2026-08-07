@@ -71,7 +71,7 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P1.3", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P1.4", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
@@ -190,7 +190,7 @@ def main() -> int:
     require(len(bom_rows) == 74, f"expected 74 BOM records, found {len(bom_rows)}", failures)
 
     unresolved_rows = read_csv("unresolved-selections.csv")
-    unresolved_keys = ("SELECTION REQUIRED", "DESIGN REQUIRED", "CONFIRMATION REQUIRED", "VERIFICATION REQUIRED", "RELEASE OPEN")
+    unresolved_keys = ("SELECTION REQUIRED", "DESIGN REQUIRED", "CONFIRMATION REQUIRED", "VERIFICATION REQUIRED", "MAPPING REQUIRED", "RELEASE OPEN")
     expected_unresolved = {
         (sheet.filename, comp.ref, comp.status, comp.description)
         for sheet, comp in all_components
@@ -221,6 +221,15 @@ def main() -> int:
             "RESET no longer returns only to SR1 monitored start", failures)
     require(pin_map(components, "S2")["TBD-A2"] == "ARM_AFTER_S2",
             "ARM output mapping changed", failures)
+    for ref in ("S1", "S2"):
+        device = components[ref]
+        require("COMPLETE ORDER CODE FROZEN" in device.status and
+                "RECEIVED-LOT TERMINAL MAPPING REQUIRED" in device.status,
+                f"{ref} received-lot terminal-mapping gate changed", failures)
+        require("2026-06-15" in device.description and
+                "no component detail" in device.description and
+                "Do not copy legacy or push-in terminal numbers" in device.description,
+                f"{ref} IDEC production-transition evidence changed", failures)
     require(pin_map(components, "K1")["22"] == "EDM_K1_OUT" and
             pin_map(components, "K2")["21"] == "EDM_K1_OUT" and
             pin_map(components, "K2")["22"] == "SRA1_START_RETURN",

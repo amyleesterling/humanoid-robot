@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: native connected design candidate `V3-P1.3`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` through P1.2 are retained as historical configurations. P1.2 replaced three undefined injection placeholders with one exact central star-board boundary. P1.3 records current Schneider contactor application evidence and the catalog's lower-current/critical-current blocker without releasing K1/K2. The separate PCB-P0.5 watchdog board and DXL-STAR-P0.1 actuator board are routed native candidates while retaining supplier acceptance, received, protection, harness, derating, physical, fault, EMC and qualified-review gates.
+Status: native connected design candidate `V3-P1.4`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` through P1.3 are retained as historical configurations. P1.3 records current Schneider contactor application evidence and the catalog's lower-current/critical-current blocker without releasing K1/K2. P1.4 adds a received-lot terminal-control boundary for RESET and ARM without inventing internal component or terminal identities. The separate PCB-P0.5 watchdog board and DXL-STAR-P0.1 actuator board are routed native candidates while retaining supplier acceptance, received, protection, harness, derating, physical, fault, EMC and qualified-review gates.
 
 - Native source: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Generator: `tools/generate_hr_v0_electrical_v3.py`
@@ -62,7 +62,7 @@ Required sequence:
 4. The operator separately actuates and releases `ARM`; only then may `SRA1` energize K1/K2.
 5. Motion remains inhibited until contactor feedback, actuator state, limits, configuration, and a fresh trajectory all pass in software.
 
-P0.5 freezes `S1` as IDEC `HW1B-M1F10-B` (black) with the explicit `RESET` legend and `S2` as IDEC `HW1B-M1F10-G` (green) with the explicit `ARM` legend. IDEC's current US pages and `HW Series Catalog_Screw` dated 2026-07-23 identify both as flush momentary 1NO screw-terminal operators and identify `B` and `G` as the black and green color codes. This corrects the earlier same-black-operator ambiguity. IDEC's 2026-07-14 specification-change notice also states that old and redesigned assemblies are being shipped under the same complete-switch order codes and some internal BOM part numbers changed. Therefore S1/S2 physical terminals, panel spacing, guarding, location and human-factors acceptance remain open until the received-device and panel records in `tests/forms/hr-v0-control-device-receiving-template.csv` are executed.
+P0.5 freezes `S1` as IDEC `HW1B-M1F10-B` (black) with the explicit `RESET` legend and `S2` as IDEC `HW1B-M1F10-G` (green) with the explicit `ARM` legend. IDEC's current US pages and `HW Series Catalog_Screw` dated 2026-07-23 identify both as flush momentary 1NO screw-terminal complete assemblies and identify `B` and `G` as the black and green color codes. This corrects the earlier same-black-operator ambiguity. P1.4 adds a fail-closed received-lot control: IDEC's 2026-07-14 specification-change notice says prior and redesigned assemblies may ship under the same complete order codes and internal BOM codes changed, while the live product-page BOM returned no component detail on 2026-08-07. The project therefore freezes no internal contact block or terminal number. S1/S2 physical terminals, panel spacing, guarding, location and human-factors acceptance remain open until `docs/hr-v0-reset-arm-receiving-p0.1.md` and `tests/forms/hr-v0-reset-arm-receiving-template.csv` are executed and independently checked.
 
 P0.6 freezes only the manufacturer-supported XW E-stop contact positions. In the IDEC screw-terminal non-illuminated 2NC bottom view, with `TOP` up, one NC pair marked `1-2` is on the right and one is on the left. Project channel 1 is allocated to the right pair and channel 2 to the left pair. KiCad uses `R-1`, `R-2`, `L-1`, and `L-2` to keep the duplicate manufacturer markings unique; `R-` and `L-` are project prefixes, not markings claimed to exist on the switch. Received orientation, markings, positive-opening continuity and channel separation remain mandatory.
 
@@ -102,7 +102,7 @@ The 40 W / 1.67 A adapter has apparent nameplate headroom, but this is not a rel
 
 ## TTL power-injection boundary
 
-The U2D2 and all three actuator ports share `ACT_0V_PE_BONDED` as the TTL reference and share `DXL_TTL_DATA`. Electrical V3-P1.3 represents one central `INJ1`; its separate native `DXL-STAR-P0.1` project fixes `JC1:1` to return, `JC1:2` to no net/no copper and `JC1:3` to TTL data. `JP1`-`JP3` accept separately protected VDD branches and common return; `JA1`-`JA3` carry only their respective VDD plus common data/return. No VDD conductor joins actuator branches or reaches U2D2. The common reference means the Pi/U2D2 path can couple compute ground to actuator 0 V/PE, so exact USB and actuator cables, shields, frame, protection, EMC, signal integrity, thermal and power-sequencing/no-backfeed behavior still require physical review and test. See `docs/hr-v0-dxl-star-injection-p0.1.md`.
+The U2D2 and all three actuator ports share `ACT_0V_PE_BONDED` as the TTL reference and share `DXL_TTL_DATA`. Electrical V3-P1.4 represents one central `INJ1`; its separate native `DXL-STAR-P0.1` project fixes `JC1:1` to return, `JC1:2` to no net/no copper and `JC1:3` to TTL data. `JP1`-`JP3` accept separately protected VDD branches and common return; `JA1`-`JA3` carry only their respective VDD plus common data/return. No VDD conductor joins actuator branches or reaches U2D2. The common reference means the Pi/U2D2 path can couple compute ground to actuator 0 V/PE, so exact USB and actuator cables, shields, frame, protection, EMC, signal integrity, thermal and power-sequencing/no-backfeed behavior still require physical review and test. See `docs/hr-v0-dxl-star-injection-p0.1.md`.
 
 ## Mandatory V3 deliverables
 
@@ -117,7 +117,7 @@ Before this candidate can replace V2.1:
 
 ## Native candidate validation record
 
-The generated `V3-P1.3` candidate currently contains:
+The generated `V3-P1.4` candidate currently contains:
 
 - one root index plus twelve focused child sheets;
 - 76 component blocks and 295 modeled terminals;

@@ -15,3 +15,4 @@ firmware/**/*.exe binary
 firmware/**/*.hex text eol=crlf
 firmware/**/*.uf2 binary
 electrical/kicad/**/*.kicad_mod text eol=lf
+electrical/kicad/**/*.kicad_pro text eol=lf
