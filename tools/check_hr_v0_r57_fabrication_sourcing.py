@@ -1,4 +1,4 @@
-"""Fail-closed checks for the current HR-V0 Boston fabrication sourcing boundary."""
+"""Preserve historical R57 sourcing evidence after migration to R66."""
 
 from __future__ import annotations
 
@@ -29,8 +29,10 @@ def main() -> int:
     forms = read_csv(FORM)
 
     for required in (
-        "HR-V0-ARM-ARCH-P0.4",
-        "four identical `MV0-C01`",
+        "HR-V0-ARM-ARCH-P0.5",
+        "three `MV0-C01`",
+        "one H104-specific `MV0-C04`",
+        "one `MV0-C05`",
         "Artisans Asylum",
         "no current profile-only upload artifact exists",
         "100 g foam-object payload",
@@ -83,8 +85,8 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print("HR-V0 R57 fabrication-sourcing check passed: 8 held routes; 7 unexecuted inquiry rows")
-    print("No withdrawn geometry, supplier selection, upload artifact, first article, or fabrication release is active")
+    print("HR-V0 historical R57 sourcing evidence preserved: 8 held routes; 7 unexecuted inquiry rows")
+    print("Current sourcing migrated to R66; no supplier selection, upload artifact, first article, or fabrication release is active")
     print(WARNING)
     return 0
 

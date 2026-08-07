@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="950" viewBox="0 0 1600 950">
+<style>text{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}.title{font-size:34px;font-weight:700}.head{font-size:24px;font-weight:700}.warn{font-size:20px;font-weight:700;fill:#8a3b00}.box{fill:#f7fbff;stroke:#0b4f8a;stroke-width:3}.note{fill:#fff9e8;stroke:#d59600;stroke-width:3}</style>
+<rect width="1600" height="950" fill="#ffffff"/>
+<text x="45" y="60" class="title">MV0-C04 H104-to-20-2040 gripper adapter candidate</text>
+<text x="45" y="100" class="warn">MV0-C04 / HR-V0-ARM-ARCH-P0.5 - PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
+<rect x="55" y="155" width="1490" height="290" rx="14" class="box"/>
+<text x="90" y="205" class="head">Controlled candidate geometry</text>
+<text x="90" y="250">Finished envelope: 48.00 x 40.00 x 9.525 nominal; 6061-T651 plate from held OnlineMetals 1249 stock.</text>
+<text x="90" y="292">Frame pattern: 4 x diameter 2.70 at project X/Z (-11,+8), (+11,+8), (-12,-6), (+12,-6)</text>
+<text x="90" y="334">Structural/member pattern: 2 x diameter 5.50 with 11.30-11.40 countersink at X=0, Z=+/-10</text>
+<text x="90" y="376">All hole coordinates are basic to the part center; coordinate tolerance +/-0.05 mm.</text>
+<text x="90" y="418">Hole diameters, thickness, flatness, parallelism, edge break and FAI controls are in the CSV schedule.</text>
+<rect x="55" y="485" width="1490" height="300" rx="14" class="note"/>
+<text x="90" y="540" class="head">Source and installation boundary</text>
+<text x="90" y="585">The four H104 axes are exact cylindrical axes extracted from controlled FR12-H104K STEP; drawing dated Aug-31-17.</text>
+<text x="90" y="630">The selected subset avoids the two M5 countersinks nominally and is verified against the transformed H104 STEP.</text>
+<text x="90" y="675">Received-part fit, exact stack, installation torque, locking, tool access and proof remain required.</text>
+<text x="90" y="720">Supplier DFM and one separately authorized first article precede any use on an assembly.</text>
+<text x="90" y="765" class="warn">DO NOT FABRICATE, ASSEMBLE, CONNECT, OR ENERGIZE FROM THIS DRAWING ALONE.</text>
+<text x="55" y="870">Units: mm | Projection: plate face X-Z | Date: 2026-08-07</text>
+</svg>

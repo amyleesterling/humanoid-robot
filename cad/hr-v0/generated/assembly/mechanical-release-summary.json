@@ -1,15 +1,19 @@
 {
-  "revision": "HR-V0-MECH-P0.3",
-  "warning": "PRELIMINARY - NO BUILDABLE ARM GEOMETRY - NOT RELEASED FOR FABRICATION OR ENERGIZATION",
+  "revision": "HR-V0-MECH-P0.4",
+  "warning": "PRELIMINARY - INTEGRATED CANDIDATE ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION",
   "source_hashes": {
-    "cad/hr-v0/mechanical-release-data.csv": "9F84FAFC49368ED106063D293CA763F9482DB033931ED24E5ABDEC873644E85D",
-    "cad/hr-v0/mechanical-interface-control.csv": "2B348EE18C5B50230C67D3FC9CFADAF01303D38C311D3D7A4D23C4E74CCEB116",
-    "cad/hr-v0/mechanical-assembly-components.csv": "9F827C04DEF78AC4A2D0B93E3DE49B643EB6153DE4B71EF329517C2F463ED498",
+    "cad/hr-v0/mechanical-release-data.csv": "C08ED28D5033A0E86B8D15E52CD8AF29B2A80902822F3EFF478E5763EAF0E0D6",
+    "cad/hr-v0/mechanical-interface-control.csv": "CDD1C0D7277194B22D2AEBE6D0137777104FAFB08CEC317B6192EB6E24382712",
+    "cad/hr-v0/mechanical-assembly-components.csv": "5FA35B9C8FE5AD83AD0762C5D9344D54B0803479200BAA3552287AE538EF9D17",
     "bom/hr-v0-extrusion-cut-schedule.csv": "1CE06A551E5130B82BE039DA078351625369621153C7E14EE38FA8C57CB7DF06",
     "bom/hr-v0-frame-joint-schedule.csv": "92DB7C25680C1D62E5CFF7ED247C505A650AC25B884CFF22EC3464967F534FE8",
     "cad/hr-v0/frame-joint-placement-p0.2.csv": "025BD1824077DEB89EB1198352FF3A242E2D68F5EAABAB21322094C5A10B0210",
-    "cad/hr-v0/generated/vendor-interfaces/same-origin-bounds.csv": "008D3CF46F35A3F21D621C7A285C392D57B608DB0E8179A048EBF8972589A690"
+    "cad/hr-v0/generated/vendor-interfaces/same-origin-bounds.csv": "008D3CF46F35A3F21D621C7A285C392D57B608DB0E8179A048EBF8972589A690",
+    "cad/hr-v0/generated/arm-architecture-p0.5/architecture-summary.json": "4BDBEB2050A4404BDD24B87CF595B2830EDBAE2E59AF03DCD83AA27D1DD10E00",
+    "cad/hr-v0/generated/arm-architecture-p0.5/interface-schedule.csv": "A6BE6BC818461B48AB63FB9374DDDE0795A0C18210A93095062DE65F73E2C367",
+    "cad/hr-v0/generated/arm-architecture-p0.5/transform-schedule.csv": "DE66EE83115BCBF558D7F113CEE7E2C714158705A63E1C16E861006C1FC85CE2"
   },
+  "arm_revision": "HR-V0-ARM-ARCH-P0.5",
   "counts": {
     "controlled_parameters": 24,
     "interfaces": 12,
@@ -21,29 +25,43 @@
     "datums": 6
   },
   "parameter_status_counts": {
-    "architecture_redesign_required": 5,
     "candidate_component": 1,
     "candidate_dimension": 5,
     "candidate_limit": 2,
+    "candidate_material_hold": 1,
     "controlled_requirement": 1,
     "derived_candidate": 1,
+    "exact_candidate_hold": 1,
+    "integrated_candidate": 7,
     "selection_required": 1,
-    "study_only": 4,
-    "superseded_invalid_geometry": 4
+    "study_only": 4
   },
   "interface_status_counts": {
-    "architecture_redesign_required": 6,
     "design_required": 2,
-    "exact_candidate_hold": 1,
+    "exact_candidate_hold": 7,
     "received_verification_required": 1,
     "selection_required": 2
   },
-  "release_state": "base_coordination_only_arm_architecture_withdrawn",
+  "release_state": "integrated_exact_coordinate_candidate_not_released_for_fabrication_or_energization",
+  "integrated_interface_ids": [
+    "A00",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07"
+  ],
+  "arm_transform_count": 8,
+  "arm_sample_count": 40001,
+  "first_nominal_collision_j2_deg": 122.0,
   "superseded": [
     "HR-V0-MECH-P0.2 arm datum chain",
     "MV0-001",
     "MV0-002",
     "MV0-003",
+    "HR-V0-ARM-ARCH-P0.4",
     "HR-V0-FAB-RFI-P0.1"
   ]
 }

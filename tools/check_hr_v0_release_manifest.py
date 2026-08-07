@@ -63,7 +63,7 @@ def main() -> None:
     }
     required_identifiers = {
         "Project Button Electrical V3-P1.8",
-        "HR-V0-MECH-P0.3",
+        "HR-V0-MECH-P0.4",
         "HR-V0-FW-P0.2",
         "HR-V0-FSA-P0.1",
         "HR-V0-BOM-P0.1",
@@ -84,17 +84,20 @@ def main() -> None:
     ] or electrical_product.get("release_state") != "correction_candidate_not_released":
         errors.append("Electrical V3-P1.8 supporting identifiers or release state changed")
     mechanical_product = next(
-        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-MECH-P0.3"),
+        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-MECH-P0.4"),
         {},
     )
     if mechanical_product.get("supporting_identifiers") != [
         "HR-V0-ROBOTIS-IF-P0.1",
-        "HR-V0-ARM-ARCH-P0.4",
+        "HR-V0-ARM-ARCH-P0.5",
+        "HR-V0-FAB-SRC-P0.3",
         "HR-V0-MECH-R0.1-PRELIMINARY-SUPERSEDED-ARM",
         "HR-V0-FAB-RFI-P0.2-WITHDRAWN",
         "HR-V0-FRAME-P0.2",
     ]:
-        errors.append("HR-V0-MECH-P0.3 supporting identifiers changed or are incomplete")
+        errors.append("HR-V0-MECH-P0.4 supporting identifiers changed or are incomplete")
+    if mechanical_product.get("release_state") != "integrated_exact_coordinate_candidate_not_released_for_fabrication_or_energization":
+        errors.append("HR-V0-MECH-P0.4 fail-closed release state changed")
     firmware_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FW-P0.2"),
         {},

@@ -1,4 +1,4 @@
-"""Generate the fail-closed HR-V0-MECH-P0.3 coordination artifacts."""
+"""Generate the fail-closed HR-V0-MECH-P0.4 integrated coordination artifacts."""
 
 from __future__ import annotations
 
@@ -12,8 +12,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CAD = ROOT / "cad" / "hr-v0"
 OUT = CAD / "generated" / "assembly"
-REVISION = "HR-V0-MECH-P0.3"
-WARNING = "PRELIMINARY - NO BUILDABLE ARM GEOMETRY - NOT RELEASED FOR FABRICATION OR ENERGIZATION"
+REVISION = "HR-V0-MECH-P0.4"
+ARM_REVISION = "HR-V0-ARM-ARCH-P0.5"
+WARNING = "PRELIMINARY - INTEGRATED CANDIDATE ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION"
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -30,10 +31,10 @@ def write_datums() -> list[dict[str, str]]:
     rows = [
         {"datum_id": "A0", "description": "bench plane and base-plan origin", "x_mm": "0", "y_mm": "0", "z_mm": "0", "status": "candidate base datum"},
         {"datum_id": "C0", "description": "candidate column centerline", "x_mm": "-210", "y_mm": "0", "z_mm": "0", "status": "candidate base datum"},
-        {"datum_id": "J1", "description": "shoulder rotation axis", "x_mm": "", "y_mm": "", "z_mm": "", "status": "SELECTION REQUIRED - P0.2 transform superseded"},
-        {"datum_id": "J2", "description": "elbow rotation axis", "x_mm": "", "y_mm": "", "z_mm": "", "status": "SELECTION REQUIRED - P0.2 transform superseded"},
-        {"datum_id": "G1", "description": "gripper-frame datum", "x_mm": "", "y_mm": "", "z_mm": "", "status": "SELECTION REQUIRED - P0.2 transform superseded"},
-        {"datum_id": "OMAX", "description": "maximum object-center reach datum", "x_mm": "", "y_mm": "", "z_mm": "", "status": "SELECTION REQUIRED - depends on replacement arm"},
+        {"datum_id": "J1", "description": "candidate shoulder rotation axis", "x_mm": "-210", "y_mm": "81.025", "z_mm": "500", "status": f"integrated candidate from {ARM_REVISION}; physical inspection and release open"},
+        {"datum_id": "J2", "description": "candidate elbow rotation axis in straight reference", "x_mm": "-210", "y_mm": "283.575", "z_mm": "500", "status": f"integrated candidate from {ARM_REVISION}; physical inspection and release open"},
+        {"datum_id": "G1", "description": "candidate H104 gripper-frame datum in straight reference", "x_mm": "-210", "y_mm": "412.625", "z_mm": "500", "status": f"integrated candidate from {ARM_REVISION}; received fit and release open"},
+        {"datum_id": "OMAX", "description": "maximum object-center reach requirement boundary in straight reference", "x_mm": "-210", "y_mm": "441.025", "z_mm": "500", "status": "controlled 360 mm J1-relative limit; actual TCP must remain at or inside after received assembly"},
     ]
     with (OUT / "assembly-datums.csv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=rows[0].keys(), lineterminator="\n")
@@ -47,30 +48,30 @@ def write_svg() -> None:
 <rect width="1400" height="1000" fill="#f7fbff"/>
 <text x="40" y="58" class="title">Project Button HR-V0 mechanical coordination</text>
 <text x="40" y="98" class="warn">{REVISION} - {WARNING}</text>
-<text x="40" y="150" class="sub">Base/frame candidate retained</text>
+<text x="40" y="150" class="sub">Integrated base, column and two-axis arm candidate</text>
 <rect x="80" y="545" width="500" height="40" class="structure"/>
 <rect x="80" y="505" width="40" height="40" class="structure"/><rect x="540" y="505" width="40" height="40" class="structure"/>
-<rect x="100" y="45" width="40" height="500" class="structure"/>
+<rect x="100" y="185" width="40" height="360" class="structure"/>
 <line x1="330" y1="600" x2="330" y2="625" class="datum"/><text x="300" y="653">A0</text>
-<line x1="120" y1="45" x2="120" y2="585" class="datum"/><text x="82" y="685">C0 X=-210 candidate</text>
+<line x1="120" y1="185" x2="120" y2="585" class="datum"/><text x="82" y="685">C0 X=-210 candidate</text>
 <text x="80" y="730">Five exact candidate extrusion cuts and six frame joints remain on physical-fit/proof hold.</text>
 <text x="80" y="764">Bench anchors remain SELECTION REQUIRED for one surveyed Boston bench.</text>
 <rect x="680" y="150" width="670" height="600" rx="18" class="hold"/>
-<text x="720" y="205" class="sub">ARM ARCHITECTURE HOLD</text>
-<text x="720" y="255" class="warn">J1, J2, G1 AND OMAX COORDINATES WITHDRAWN</text>
-<text x="720" y="305">Exact manufacturer STEP geometry shows:</text>
-<text x="750" y="350">1. H101 is a moving output U-frame.</text>
-<text x="750" y="390">2. S102 is a bottom body frame in a different plane.</text>
-<text x="750" y="430">3. MV0-001 and MV0-003 do not define the required 3D transforms.</text>
-<text x="750" y="470">4. The former 44 / 160 / 160 mm chain is superseded.</text>
-<text x="720" y="535">Replacement must close MECH-005 / AUDIT-MECH-012:</text>
-<text x="750" y="580">exact transforms and parallel-axis proof</text>
-<text x="750" y="620">collision, tool access, fasteners and cable space</text>
-<text x="750" y="660">load path, tolerances, drawings, FAI and qualified review</text>
-<text x="720" y="710" class="warn">NO ARM PART MAY BE QUOTED OR FABRICATED.</text>
+<text x="720" y="205" class="sub">ARM RELEASE HOLD</text>
+<text x="720" y="250" class="warn">A00-A07 SOURCE GEOMETRY CLOSED AS A CANDIDATE</text>
+<text x="720" y="300">J1: (-210, 81.025, 500) mm from A0</text>
+<text x="720" y="340">J1-J2: 202.550 mm; J2-G1: 129.050 mm</text>
+<text x="720" y="380">J1/J2 axes parallel in the nominal native assembly</text>
+<text x="720" y="430">40,001 sampled J1/J2 poses; first nominal contact at J2=122 deg</text>
+<text x="720" y="480">120 deg is provisional, not a released motion limit.</text>
+<text x="720" y="535">Still required before quotation/fabrication:</text>
+<text x="750" y="580">received material, fit, fastener and FAI evidence</text>
+<text x="750" y="620">continuous collision, cables, guard and backed-up hard stop</text>
+<text x="750" y="660">physical proof and qualified mechanical disposition</text>
+<text x="720" y="710" class="warn">NO PART OR ASSEMBLY IS RELEASED.</text>
 <rect x="40" y="820" width="1310" height="120" rx="14" class="hold"/>
-<text x="70" y="865">Interactive exact-source evidence: generated/vendor-interfaces/XM540-H101-S102-same-origin.step</text>
-<text x="70" y="903">Readable orientation evidence: generated/vendor-interfaces/XM540-frame-orientation.svg</text>
+<text x="70" y="865">Interactive candidate: generated/arm-architecture-p0.5/HR-V0_arm_architecture_candidate.glb</text>
+<text x="70" y="903">Controlled STEP, drawings and evidence registers: generated/arm-architecture-p0.5/</text>
 <text x="40" y="975" class="warn">{REVISION} - {WARNING}</text>
 </svg>'''
     (OUT / "HR-V0_general-arrangement.svg").write_text(svg, encoding="utf-8", newline="\n")
@@ -82,20 +83,28 @@ def main() -> int:
         CAD / "mechanical-release-data.csv", CAD / "mechanical-interface-control.csv", CAD / "mechanical-assembly-components.csv",
         ROOT / "bom" / "hr-v0-extrusion-cut-schedule.csv", ROOT / "bom" / "hr-v0-frame-joint-schedule.csv",
         CAD / "frame-joint-placement-p0.2.csv", CAD / "generated" / "vendor-interfaces" / "same-origin-bounds.csv",
+        CAD / "generated" / "arm-architecture-p0.5" / "architecture-summary.json",
+        CAD / "generated" / "arm-architecture-p0.5" / "interface-schedule.csv",
+        CAD / "generated" / "arm-architecture-p0.5" / "transform-schedule.csv",
     ]
-    data, interfaces, components, extrusions, frame_joints, placements, vendor_rows = [read_csv(path) for path in paths]
+    data, interfaces, components, extrusions, frame_joints, placements, vendor_rows, arm_summary_rows, arm_interfaces, arm_transforms = [read_csv(path) if path.suffix == ".csv" else json.loads(path.read_text(encoding="utf-8")) for path in paths]
     datums = write_datums(); write_svg()
     summary = {
         "revision": REVISION, "warning": WARNING,
         "source_hashes": {path.relative_to(ROOT).as_posix(): canonical_text_sha256(path) for path in paths},
+        "arm_revision": ARM_REVISION,
         "counts": {"controlled_parameters": len(data), "interfaces": len(interfaces), "assembly_components": len(components), "extrusion_cut_rows": len(extrusions), "frame_joint_rows": len(frame_joints), "frame_joint_placements": len(placements), "vendor_interface_sources": len(vendor_rows), "datums": len(datums)},
         "parameter_status_counts": dict(sorted(Counter(row["status"] for row in data).items())),
         "interface_status_counts": dict(sorted(Counter(row["current_status"] for row in interfaces).items())),
-        "release_state": "base_coordination_only_arm_architecture_withdrawn",
-        "superseded": ["HR-V0-MECH-P0.2 arm datum chain", "MV0-001", "MV0-002", "MV0-003", "HR-V0-FAB-RFI-P0.1"],
+        "release_state": "integrated_exact_coordinate_candidate_not_released_for_fabrication_or_energization",
+        "integrated_interface_ids": [row["interface"] for row in arm_interfaces],
+        "arm_transform_count": len(arm_transforms),
+        "arm_sample_count": arm_summary_rows["collision_screen"]["sample_count"],
+        "first_nominal_collision_j2_deg": arm_summary_rows["collision_screen"]["first_nominal_collision_j2_deg"],
+        "superseded": ["HR-V0-MECH-P0.2 arm datum chain", "MV0-001", "MV0-002", "MV0-003", "HR-V0-ARM-ARCH-P0.4", "HR-V0-FAB-RFI-P0.1"],
     }
     (OUT / "mechanical-release-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8", newline="\n")
-    print(f"Generated {REVISION}: base coordination retained; J1/J2/G1/OMAX blanked; arm architecture withdrawn")
+    print(f"Generated {REVISION}: integrated A00-A07 candidate; 40,001 sampled poses; no fabrication or energization release")
     print(WARNING)
     return 0
 
