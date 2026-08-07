@@ -78,11 +78,7 @@ The feedback sheet uses TI's exact DBQ pinout and Type-3 values: 1 kOhm `RTHR` f
 
 P0.8 routes `PI_HEARTBEAT` through Panasonic `ERJ6ENF9100V` and Vishay `VO618A-4X017T`; the watchdog collector is pulled to `WD_3V3` by `ERJ6ENF1002V`. Two distinct `TPL7407LPWR` packages use only channel 1: unused inputs are tied low, unused outputs are explicit no-connects, COM connects to `SAFETY_24V`, and each package has a proposed `GRM21BR71H104KA01L` bypass. See `docs/hr-v0-heartbeat-driver-closure-r29.md`. The bypass does not prove TI's COM-slew limit, and none of these parts receives safety credit before `TEST-ELEC-005`, FMEA and qualified review.
 
-This topology improves restart behavior and single-channel diagnostics. It does **not** establish a Performance Level or SIL because both channels may still share a non-safety controller, power source, clock, firmware, or common-cause failure. Qualified risk assessment shall either:
-
-- allocate and validate an integrity target that this implementation can meet;
-- replace the watchdog source with an accepted safety-rated architecture; or
-- treat watchdog stopping as a non-safety diagnostic while independent guarding/E-stop functions carry the risk reduction.
+This topology improves restart behavior and single-channel diagnostics. It does **not** establish a Performance Level or SIL because both channels share or may share a non-safety controller, power source, clock, firmware, ordinary relays, or common-cause failure. R44 selects the only presently supportable HR-V0 classification: this is `DF-01`, an uncredited diagnostic whose failure is assumed. `SF-01` E-stop, `SF-03` restart prevention and the physically released `PG-01` fixed guard must carry the HR-V0 risk reduction. Any HR-V0 configuration whose fixed guard cannot contain assumed diagnostic failure, and all exposed HR-30 motion, require a separately selected and validated safety-rated `SF-02`. See `docs/hr-v0-functional-safety-allocation-p0.1.md`.
 
 ## Contactor candidate boundary
 

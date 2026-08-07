@@ -21,7 +21,7 @@ The label **V2.2** is not a released engineering identifier and must not be used
 
 ## Controlled baseline summary
 
-This baseline contains 68 draft requirements and 40 open risks. HR-V0 and HR-30 release specifications remain unbuilt and unvalidated. Individual files may advance only through a recorded change that updates their revision, linked requirements, evidence, and review disposition as applicable.
+This baseline contains 69 draft requirements and 40 open risks. HR-V0 and HR-30 release specifications remain unbuilt and unvalidated. Individual files may advance only through a recorded change that updates their revision, linked requirements, evidence, and review disposition as applicable.
 
 ## Release rule
 

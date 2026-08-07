@@ -5,7 +5,7 @@
 ## Layering
 
 1. The hardware safety layer removes actuator energy independently of software.
-2. An independent watchdog requires a monotonic heartbeat at least every 100 ms. Three missed heartbeats shall drop its hardware permit. The exact watchdog, output driver, relay, restart interlock, diagnostic coverage, and fault response are **SELECTION REQUIRED**.
+2. An ordinary diagnostic watchdog requires a monotonic heartbeat at least every 100 ms. Three missed heartbeats nominally demand hardware-permit dropout. For guarded HR-V0 it is `DF-01`, receives **NO SAFETY CREDIT**, and is assumed capable of failing to operate. Exact physical behavior, routing, output drivers, relays, feedback, restart interaction and fault response remain **SELECTION REQUIRED**. HR-30 requires a separately allocated safety-rated `SF-02` wherever control loss can expose a person.
 3. On HR-V0 only, the Raspberry Pi may run the low-rate bench motion supervisor, bounded trajectory executor, non-safety sensor processing, and logger because balance control is outside that release. It never owns the hardware safety function.
 4. On HR-30C/D/W, the Raspberry Pi owns behavior, perception, planning, operator UI, and logging. A deterministic real-time controller owns time-critical sensor acquisition, state estimation, whole-body stabilization, gait execution, actuator command generation, deadline enforcement, and all actuator-register writes during balance-critical operation.
 5. DYNAMIXEL internal loops execute bounded current-based position commands and report position, velocity, current, voltage, temperature, hardware error, and bus-watchdog state. Their internal loops do not replace the system real-time controller or hardware safety layer.
@@ -21,7 +21,8 @@
 | Gait trajectory execution and actuator-register writes | not applicable | deterministic real-time controller | none |
 | Configuration and deadline validation | Raspberry Pi supervisor plus actuator safeguards | real-time controller; Pi command contract checked again at the boundary | none |
 | Session logging | Raspberry Pi | Raspberry Pi with real-time-controller records | evidence only |
-| Heartbeat loss and hazardous-energy removal | independent hardware chain | independent hardware chain | analysis and selection required |
+| Ordinary heartbeat diagnostic | Raspberry Pi source plus ordinary RP2040/relay path | not credited for walking | none; failure assumed |
+| Safety-rated control-loss response | not selected; fixed guard must contain assumed diagnostic failure | selection required before exposed walking | PLr/SIL allocation and validation required |
 
 The Electrical V2.1 arrangement places a normally open watchdog permit downstream of closed PNOZ safety outputs. In that arrangement, restored heartbeat can restore the contactor-coil path without the PNOZ seeing a stop or accepting a new falling-edge reset. That is a release blocker. A watchdog firmware latch is not credited as a safety restart interlock. The released hardware shall keep both contactor coils de-energized after watchdog dropout until the cause is absent, the monitored physical-reset sequence is accepted, and a later, distinct `ARM` action is accepted. Restoring heartbeat, rebooting any controller, clearing a software fault, or holding the reset control shall not satisfy that sequence or re-energize either contactor.
 
@@ -57,7 +58,7 @@ The same state names apply to HR-V0 and HR-30. Product-specific modes are subord
 
 Physical reset alone shall not re-energize the contactors in this baseline. Reset never produces torque. `ARM` may release the post-reset contactor inhibit only after the preceding physical reset has been accepted; it never produces torque or motion. Linux cannot transition the system directly to `DRIVE_ENABLED`; only the deterministic controller may do so after validating a fresh command and all preconditions. An interrupted trajectory and every stored torque/position target are invalidated at fault entry and are never resumed after reset. Every state transition is logged with cause and timestamp.
 
-Emergency-stop, watchdog, or safety-circuit faults bypass `CONTROLLED_STOP` when the released risk response requires immediate hazardous-energy removal. A software preference for standing or kneeling may never weaken the hardware safety function.
+Emergency-stop and credited safety-circuit faults bypass `CONTROLLED_STOP` when the released risk response requires immediate hazardous-energy removal. `DF-01` may nominally request the same dropout, but the risk assessment assumes it can fail. A software preference for standing or kneeling may never weaken a hardware safety function.
 
 ## Provisional software limits
 
@@ -76,7 +77,7 @@ Current limits are intentionally not frozen until single-joint characterization.
 | Event | Immediate response | Latched? | Actuator rail |
 |---|---|---:|---:|
 | E-stop channel opens | hardware contactors drop | yes | off |
-| Watchdog heartbeat lost | watchdog permit drops | yes | off |
+| Ordinary watchdog heartbeat lost | diagnostic requests permit dropout; no safety credit | diagnostic latch | off if diagnostic operates; fixed guard/hard stops assume failure |
 | Bus communication lost | DYNAMIXEL bus watchdog torque-off; supervisor requests permit drop | yes | off |
 | Joint position exceeds software limit | zero-velocity/torque-off request, then permit drop | yes | off |
 | Overtemperature | controlled stop if safe, then permit drop | yes | off |
@@ -85,7 +86,7 @@ Current limits are intentionally not frozen until single-joint characterization.
 | Pi process crash | heartbeat expires | yes | off |
 | Compute undervoltage | heartbeat considered invalid | yes | off |
 
-Fault recovery requires, in order: cause absent; arm and exclusion zone inspected; trajectory and actuator targets cleared; EDM healthy with both contactors proven dropped; a valid monitored physical-reset action; and a separate, later `ARM` action. Heartbeat restoration may only make the watchdog healthy; it cannot advance this sequence. The exact hardware implementation that enforces the sequence is **SELECTION REQUIRED** and shall be accepted by the qualified functional-safety review before the architecture is released. Restart never resumes the interrupted trajectory.
+Fault recovery requires, in order: cause absent; arm and exclusion zone inspected; trajectory and actuator targets cleared; EDM healthy with both contactors proven dropped; a valid monitored physical-reset action; and a separate, later physical `ARM` action. Heartbeat restoration may only make `DF-01` healthy; it cannot advance this sequence. The credited restart architecture, the diagnostic's non-interference with it, and all physical terminals/routing remain **SELECTION REQUIRED** for qualified validation. Restart never resumes the interrupted trajectory.
 
 ## Logging
 

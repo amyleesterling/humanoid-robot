@@ -30,7 +30,7 @@ Evidence maturity is recorded separately from design intent. A clean parser, ERC
 | HR-V0 control implementation | E1 | canonical states; portable watchdog C candidate; executable supervisor and actuator-readback models; 25 unit tests; source manifest | received actuator identities; external branch-current envelope; exact interfaces; compiled reproducible binaries; selected kinematics/transport; HIL, deadline, stale-data and reset-to-motion traces; qualified review |
 | Safe power-loss response | E0 | hazard and release gate recorded | selected mitigation and pose-by-pose restrained fault evidence |
 | HR-30 energy system | E0 | preliminary topology and required protections | chemistry, pack, fault current, contactors, fuses, precharge, charger interlock, enclosure, and test evidence |
-| Requirements and risk governance | E0 | 68 draft requirements; 40 open risks; 85 procedure records; traceability links | accountable owners, rationale, acceptance thresholds, evidence locations, approvers, change history, FMEA/FTA/common-cause review |
+| Requirements and risk governance | E0 | 69 draft requirements; 40 open risks; 88 procedure records; traceability links; controlled safety-allocation/FMEA inputs | accountable owners, qualified PLr/SIL allocation, acceptance thresholds, executed evidence, approvers, change history, complete FMEA/FTA/common-cause review |
 | Walking capability | E0 | W0-W5 acceptance definitions | all preceding releases and physical test evidence |
 
 ## Release rule
