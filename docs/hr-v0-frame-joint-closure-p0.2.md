@@ -6,7 +6,7 @@ Date: 2026-08-07
 
 Supporting identifier: `HR-V0-FRAME-P0.2`
 
-Parent mechanical coordination candidate: `HR-V0-MECH-P0.2`
+Parent mechanical coordination candidate: `HR-V0-MECH-P0.3` (base/frame evidence only; arm geometry withdrawn)
 
 ## Result
 

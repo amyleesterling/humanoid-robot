@@ -1,5 +1,7 @@
 # HR-V0 Hard-Stop Design Basis P0.1
 
+> **R53 HOLD:** The P0.2 arm datums and link geometry are superseded. Energy/load calculations below are historical screens only until replacement J1/J2 transforms, inertia, speeds and stop geometry are released.
+
 **PRELIMINARY - KINEMATIC AND LOAD-CASE DEFINITION ONLY. NOT RELEASED FOR FABRICATION OR ENERGIZATION.**
 
 Date: 2026-08-06

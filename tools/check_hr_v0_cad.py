@@ -557,7 +557,7 @@ def main() -> int:
         elif sha256(path) != row["sha256"].upper():
             errors.append(f'vendor hash mismatch {row["file"]}')
     checks = json.loads((GENERATED / "mechanical-checks.json").read_text(encoding="utf-8"))
-    if checks["calculation_result"] != "GEOMETRY SCREEN PASSES; RELEASE REMAINS OPEN":
+    if checks["calculation_result"] != "P0.2 ARM GEOMETRY SUPERSEDED BY R53; NUMERICAL SCREENS RETAINED AS HISTORICAL ONLY; REPLACEMENT ARCHITECTURE REQUIRED":
         errors.append("mechanical calculation status is not the controlled preliminary result")
     if checks["screens"].get("h101_output_fastener_geometric_max_underhead_mm") != 9.25:
         errors.append("mechanical calculation lost the H101 output-stack geometric limit")
@@ -599,7 +599,8 @@ def main() -> int:
         for error in errors:
             print(f"- {error}")
         return 1
-    print(f"HR-V0 CAD validation: PASS ({len(rows)} custom parts, {len(coupon_rows)} fit coupons, {len(source_rows)} hashed generated artifacts, {len(vendor_rows)} vendor references)")
+    print(f"HR-V0 CAD validation: PASS ({len(rows)} historical custom-part artifacts, {len(coupon_rows)} fit coupons, {len(source_rows)} hashed generated artifacts, {len(vendor_rows)} vendor references)")
+    print("R53: MV0-001 through MV0-003 and the P0.2 arm datum chain are superseded; no active fabrication packet exists")
     print("Status remains PRELIMINARY—NOT RELEASED FOR FABRICATION OR ENERGIZATION")
     return 0
 

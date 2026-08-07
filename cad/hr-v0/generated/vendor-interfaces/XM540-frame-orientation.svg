@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="920" viewBox="0 0 1400 920">
+<style>text{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}.title{font-size:34px;font-weight:700}.sub{font-size:22px;font-weight:700}.label{font-size:16px;font-weight:700}.warn{font-size:20px;font-weight:700;fill:#8a3b00}</style>
+<rect width="1400" height="920" fill="#f7fbff"/>
+<text x="40" y="55" class="title">XM540 frame interfaces in manufacturer STEP coordinates</text>
+<text x="40" y="92" class="warn">PRELIMINARY - ORIENTATION EVIDENCE ONLY - NO BUILDABLE ARM GEOMETRY</text>
+<text x="40" y="135" class="sub">X-Z projection</text><text x="700" y="135" class="sub">Y-Z projection</text>
+<rect x="173.0" y="280.8" width="134.0" height="217.2" fill="#0b4f8a" fill-opacity="0.36" stroke="#0b4f8a" stroke-width="3"/><text x="173.0" y="272.8" class="label">XM540 actuator</text><rect x="134.0" y="336.0" width="212.0" height="128.0" fill="#f3b61f" fill-opacity="0.36" stroke="#f3b61f" stroke-width="3"/><text x="134.0" y="328.0" class="label">H101 moving output frame</text><rect x="144.0" y="194.0" width="192.0" height="52.0" fill="#66c7f4" fill-opacity="0.36" stroke="#66c7f4" stroke-width="3"/><text x="144.0" y="186.0" class="label">S102 bottom body frame</text><rect x="721.0" y="280.8" width="234.0" height="217.2" fill="#0b4f8a" fill-opacity="0.36" stroke="#0b4f8a" stroke-width="3"/><text x="721.0" y="272.8" class="label">XM540 actuator</text><rect x="890.0" y="336.0" width="138.0" height="128.0" fill="#f3b61f" fill-opacity="0.36" stroke="#f3b61f" stroke-width="3"/><text x="890.0" y="328.0" class="label">H101 moving output frame</text><rect x="834.0" y="194.0" width="132.0" height="52.0" fill="#66c7f4" fill-opacity="0.36" stroke="#66c7f4" stroke-width="3"/><text x="834.0" y="186.0" class="label">S102 bottom body frame</text>
+<rect x="40" y="650" width="1320" height="220" rx="14" fill="#fff4cd" stroke="#f3b61f" stroke-width="3"/>
+<text x="70" y="700" class="sub">R53 disposition</text>
+<text x="70" y="740">The exact files share an assembly origin, but H101 is a moving U-frame and S102 is a bottom body frame.</text>
+<text x="70" y="777">Their link interfaces are not the single coplanar plate assumed by MV0-001 and MV0-003.</text>
+<text x="70" y="814">P0.2 arm geometry and all supplier packets are withdrawn. Bounds shown here are evidence—not mounting surfaces.</text>
+<text x="70" y="851" class="warn">Replacement requires exact transforms, parallel-axis proof, collision/tool access and a qualified load-path review.</text>
+</svg>

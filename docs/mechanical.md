@@ -1,5 +1,7 @@
 # Mechanical Concept and Preliminary Load Model
 
+> **R53 CURRENT BOUNDARY:** The P0.2 flat-arm architecture described historically below is withdrawn. `HR-V0-MECH-P0.3` contains no buildable arm geometry; MV0-001 through MV0-003 and all supplier packets must not be used.
+
 **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 
 Status: correction-stage feasibility model. Native HR-V0 R0.1 quote geometry, four custom-part neutral files, preliminary mass properties, reproducible structural screens, three controlled fit-coupon packages, a proposed orderable gripper mechanism allocation, a checked hard-stop kinematic/load-case study, and a generated guard/catch/cable space study now exist. Physical coupon/kit inspection, released production tolerances/drawings, complete mass closure, fabricable hard-stop parts, measured stopping/drop/sweep evidence, exact guard/receiver/harness parts, gripper force/fasteners, bench anchors, proof tests, and mechanical release are not complete. See [the R0.1 mechanical baseline](hr-v0-mechanical-r0.1.md), [joint-interface basis](hr-v0-joint-interface-fasteners-p0.1.md), [gripper architecture](hr-v0-gripper-architecture-p0.1.md), [guard/receiver/cable architecture](hr-v0-guard-receiver-cable-p0.1.md), [hard-stop basis](hr-v0-hard-stop-design-basis-p0.1.md), and [R11 engineering calculations](r11-engineering-calculations.md).

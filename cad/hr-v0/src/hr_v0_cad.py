@@ -949,7 +949,7 @@ def write_source_manifest() -> None:
                 "status": "PRELIMINARY - NOT RELEASED FOR FABRICATION OR ENERGIZATION",
             })
     with SOURCE_MANIFEST.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=("file", "sha256", "revision", "status"))
+        writer = csv.DictWriter(handle, fieldnames=("file", "sha256", "revision", "status"), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 

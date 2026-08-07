@@ -1,5 +1,7 @@
 # HR-V0 Moving-Mass Closure P0.1
 
+> **R53 HOLD:** Link/frame masses and all derived COM/inertia screens are historical until a replacement exact-coordinate arm architecture is released. Do not use this ledger to claim current mass closure.
+
 **PRELIMINARY - MASS LEDGER AND SCREEN ONLY. NOT A FABRICATION OR ENERGIZATION RELEASE.**
 
 Date: 2026-08-06

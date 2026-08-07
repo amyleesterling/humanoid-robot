@@ -21,7 +21,7 @@ No row is classified as production-selected or procurement-released.
 
 ## Evaluation Batch A
 
-`bom/hr-v0-evaluation-batch-a.csv` identifies seventeen exact candidate lines whose receipt is needed to execute fit, identity, terminal, current, thermal, source, restart and fault tests. These include the three actuators, U2D2, safety relays, contactors, E-stop, watchdog controller/relays, frame and gripper kits, RESET/ARM operators and both external DC sources.
+`bom/hr-v0-evaluation-batch-a.csv` identifies sixteen exact candidate lines whose receipt is needed to execute identity, terminal, current, thermal, source, restart and fault tests. R53 removes the actuator body-frame purchase from this batch because S101, S102, or a custom-frame route remains an architecture selection. The remaining batch includes the three actuators, U2D2, safety relays, contactors, E-stop, watchdog controller/relays, output/gripper frames, RESET/ARM operators and both external DC sources.
 
 The batch is not a shopping instruction. Every line states:
 

@@ -8,7 +8,7 @@ Supporting identifier: `HR-V0-FRAME-P0.1`
 
 Historical disposition: **SUPERSEDED BY `HR-V0-FRAME-P0.2`; DO NOT PROCURE OR ASSEMBLE.** R49 showed that `40-4334` spans two adjacent slot positions and is incompatible with the one-slot-per-face `40-4040` topology used here; the 320 mm transverse members and column placement also produced positive-volume intersections. This file is retained as an auditable correction history only.
 
-Parent mechanical coordination candidate: `HR-V0-MECH-P0.2`
+Historical parent mechanical candidate: `HR-V0-MECH-P0.2`; current base-only coordination parent is `HR-V0-MECH-P0.3`
 
 ## Result
 

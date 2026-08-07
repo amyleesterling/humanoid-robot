@@ -24,8 +24,8 @@ Human-to-robot or robot-to-human handoff is not part of the initial acceptance t
 | Parameter | Baseline value |
 |---|---:|
 | Active axes | shoulder pitch, elbow pitch, parallel gripper |
-| Shoulder-to-elbow length | 160 mm nominal |
-| Elbow-to-gripper datum | 160 mm nominal |
+| Shoulder-to-elbow length | SELECTION REQUIRED; former 160 mm P0.2 datum superseded by R53 |
+| Elbow-to-gripper datum | SELECTION REQUIRED; former 160 mm P0.2 datum superseded by R53 |
 | Maximum shoulder-to-object reach | 360 mm |
 | Payload | 100 g maximum, soft foam only |
 | Payload envelope | 40–70 mm each principal dimension |

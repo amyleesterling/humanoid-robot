@@ -1,5 +1,7 @@
 # HR-V0 fabrication capability and DFM packets P0.1
 
+> **WITHDRAWN BY R53. DO NOT SEND, QUOTE, OR FABRICATE.** The three ZIPs described below were removed from the current tree because their arm geometry depends on the invalid P0.2 coplanar-frame assumption. Their bytes remain recoverable in Git history at commit `978119f`.
+
 **Identifier:** `HR-V0-FAB-RFI-P0.1`
 
 **Status:** **PRELIMINARY - CAPABILITY/DFM REQUEST ONLY - NOT A PURCHASE ORDER - DO NOT FABRICATE**

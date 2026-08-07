@@ -1,5 +1,7 @@
 # HR-V0 Mechanical Release Coordination P0.2
 
+> **SUPERSEDED BY `HR-V0-MECH-P0.3` (R53). DO NOT USE THE P0.2 ARM DATUMS, MV0-001/MV0-002/MV0-003 GEOMETRY, OR FABRICATION PACKETS.** Exact ROBOTIS STEP coordinates show that the H101 moving frame and S102 bottom body frame do not present the coplanar interfaces assumed here. This file is retained only as configuration history.
+
 **PRELIMINARY—NOT RELEASED FOR FABRICATION, ASSEMBLY, OR ENERGIZATION**
 
 Date: 2026-08-07

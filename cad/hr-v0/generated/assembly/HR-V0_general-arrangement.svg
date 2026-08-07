@@ -1,99 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1100" viewBox="0 0 1400 1100" role="img" aria-labelledby="title desc">
-  <title id="title">Project Button HR-V0 mechanical general arrangement P0.2</title>
-  <desc id="desc">Dimensioned preliminary bench demonstrator datum chain, base, arm, guard reservation, plan view, configuration legend, and unresolved release holds.</desc>
-  <style>
-    text { font-family: system-ui, sans-serif; font-size: 16px; fill: #082554; }
-    .title { font-size: 30px; font-weight: 750; }
-    .subtitle { font-size: 18px; font-weight: 650; }
-    .warning { font-size: 18px; font-weight: 750; fill: #8a4b00; }
-    .small { font-size: 14px; }
-    .structure { fill: #d9efff; stroke: #082554; stroke-width: 4; }
-    .custom { fill: #ffd059; stroke: #082554; stroke-width: 3; }
-    .actuator { fill: #2185d0; stroke: #082554; stroke-width: 3; }
-    .hold { fill: #fff3cf; stroke: #b17700; stroke-width: 2; }
-    .guard { fill: #d9efff; fill-opacity: 0.12; stroke: #2185d0; stroke-width: 3; stroke-dasharray: 10 8; }
-    .axis { fill: white; stroke: #082554; stroke-width: 3; }
-    .datum { stroke: #082554; stroke-width: 2; stroke-dasharray: 5 5; }
-    .dim { stroke: #b17700; stroke-width: 2; marker-start: url(#arrow); marker-end: url(#arrow); }
-    .ext { stroke: #b17700; stroke-width: 1.5; }
-    .callout { fill: white; stroke: #082554; stroke-width: 2; }
-  </style>
-  <defs>
-    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b17700"/></marker>
-  </defs>
-  <text id="release-warning-top" x="36" y="38" class="warning">PRELIMINARY—NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
-  <text x="36" y="78" class="title">HR-V0 mechanical general arrangement</text>
-  <text x="36" y="108" class="subtitle">HR-V0-MECH-P0.2 · neutral datum study · dimensions in millimetres · do not scale</text>
-
-  <text x="36" y="150" class="subtitle">FRONT ELEVATION · A0 BENCH PLANE</text>
-  <rect x="159.6" y="162.5" width="585.0" height="617.5" class="guard"/>
-  <text x="175.6" y="188.5" class="small">900 W x 950 H INTERNAL SPACE RESERVATION — NOT A SAFETY DISTANCE</text>
-  <line x1="100" y1="780.0" x2="790" y2="780.0" class="datum"/>
-  <text x="105" y="804.0" class="small">A0 BENCH PLANE</text>
-  <rect x="397.5" y="754.0" width="325.0" height="26.0" class="structure"/>
-  <rect x="410.5" y="429.0" width="26.0" height="325.0" class="structure"/>
-  <rect x="426.8" y="419.2" width="58.5" height="71.5" class="custom"/>
-  <circle cx="452.1" cy="455.0" r="18" class="actuator"/>
-  <rect x="452.1" y="440.7" width="104.0" height="28.6" rx="14" class="custom"/>
-  <circle cx="556.1" cy="455.0" r="18" class="actuator"/>
-  <rect x="556.1" y="440.7" width="104.0" height="28.6" rx="14" class="custom"/>
-  <circle cx="660.1" cy="455.0" r="15" class="actuator"/>
-  <rect x="660.1" y="432.2" width="26.0" height="45.5" rx="8" class="hold"/>
-  <line x1="686.1" y1="429.0" x2="686.1" y2="481.0" class="datum"/>
-
-  <circle cx="452.1" cy="455.0" r="6" class="axis"/><text x="434.1" y="493.0" class="subtitle">J1</text>
-  <circle cx="556.1" cy="455.0" r="6" class="axis"/><text x="538.1" y="493.0" class="subtitle">J2</text>
-  <circle cx="660.1" cy="455.0" r="6" class="axis"/><text x="642.1" y="493.0" class="subtitle">G1</text>
-  <text x="694.1" y="429.0" class="small">OMAX</text>
-
-  <line x1="452.1" y1="377.0" x2="556.1" y2="377.0" class="dim"/>
-  <line x1="556.1" y1="377.0" x2="660.1" y2="377.0" class="dim"/>
-  <line x1="452.1" y1="335.0" x2="686.1" y2="335.0" class="dim"/>
-  <text x="470.1" y="368.0" class="subtitle">160 ±0.5</text>
-  <text x="574.1" y="368.0" class="subtitle">160 ±0.5</text>
-  <text x="507.1" y="326.0" class="subtitle">REACH ≤ 360</text>
-  <line x1="379.3" y1="780.0" x2="379.3" y2="455.0" class="dim"/>
-  <text x="366.3" y="617.5" transform="rotate(-90 366.3 617.5)" class="subtitle">J1 AXIS HEIGHT 500 ±2</text>
-  <line x1="397.5" y1="838.0" x2="722.5" y2="838.0" class="dim"/>
-  <text x="498.0" y="830.0" class="subtitle">BASE 500</text>
-
-  <text x="850" y="150" class="subtitle">PLAN VIEW · BASE / GUARD RESERVATION</text>
-  <rect x="865" y="185" width="378" height="168" class="guard"/>
-  <rect x="949" y="202" width="210" height="17" class="structure"/>
-  <rect x="949" y="319" width="210" height="17" class="structure"/>
-  <rect x="949" y="219" width="17" height="100" class="structure"/>
-  <rect x="1142" y="219" width="17" height="100" class="structure"/>
-  <rect x="949" y="261" width="17" height="17" class="hold"/>
-  <circle cx="966" cy="219" r="4" class="axis"/><circle cx="966" cy="319" r="4" class="axis"/>
-  <circle cx="1142" cy="219" r="4" class="axis"/><circle cx="1142" cy="319" r="4" class="axis"/>
-  <line x1="949" y1="261" x2="966" y2="261" class="datum"/><line x1="949" y1="278" x2="966" y2="278" class="datum"/>
-  <circle cx="983" cy="269" r="8" class="axis"/>
-  <text x="1000" y="264" class="small">C0 column X=-210</text>
-  <text x="1000" y="286" class="small">J1 offset +44 from C0</text>
-  <text x="875" y="380" class="small">Base outside: 500 x 320. Cuts: 2 x 500, 2 x 240, column 500.</text>
-
-  <text x="850" y="430" class="subtitle">CONFIGURATION LEGEND</text>
-  <rect x="850" y="450" width="24" height="24" class="structure"/><text x="888" y="469">selected profile / candidate cut length</text>
-  <rect x="850" y="486" width="24" height="24" class="custom"/><text x="888" y="505">custom RFQ geometry; FAI and fit holds remain</text>
-  <rect x="850" y="522" width="24" height="24" class="actuator"/><text x="888" y="541">evaluation actuator / received identity required</text>
-  <rect x="850" y="558" width="24" height="24" class="hold"/><text x="888" y="577">design or selection hold</text>
-
-  <rect x="830" y="620" width="525" height="334" rx="12" class="hold"/>
-  <text x="850" y="654" class="subtitle">FABRICATION / ASSEMBLY HOLDS</text>
-  <text x="850" y="690">1. Execute MV0-FC01 / FC02 / FC03 on received frames.</text>
-  <text x="850" y="720">2. Freeze hole size/position, fastener stacks, torque and retention.</text>
-  <text x="850" y="750">3. Dry-fit and proof six 40-4332 / twelve 75-3422 joint candidates.</text>
-  <text x="850" y="780">4. Survey the Boston build bench and engineer its anchors.</text>
-  <text x="850" y="810">5. Design and proof backed-up hard stops, guard and catch.</text>
-  <text x="850" y="840">6. Close measured mass/COM/inertia and rerun load calculations.</text>
-  <text x="850" y="870">7. Complete FAI and unpowered assembly inspection.</text>
-  <text x="850" y="900" class="warning">NO STRUCTURAL CUTTING ORDER IS RELEASED.</text>
-  <text x="850" y="930" class="warning">NO POWERED MOTION IS RELEASED.</text>
-
-  <rect x="36" y="900" width="745" height="132" rx="10" class="callout"/>
-  <text x="56" y="932" class="subtitle">DATUM CHAIN</text>
-  <text x="56" y="962">A0 base center → C0 column X=-210 → J1 X=-166 / Z=500</text>
-  <text x="56" y="992">J2 = J1 +160 in neutral pose → G1 = J2 +160 → OMAX ≤ J1 +360</text>
-  <text x="56" y="1018" class="small">Only the neutral pose is depicted. Joint limits, sweep, stopping travel and physical stops are controlled separately.</text>
-  <text id="release-warning-bottom" x="36" y="1074" class="warning">HR-V0-MECH-P0.2 · PRELIMINARY—NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+<style>text{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}.title{font-size:36px;font-weight:700}.sub{font-size:23px;font-weight:700}.small{font-size:16px}.warn{font-size:20px;font-weight:700;fill:#8a3b00}.structure{fill:#66c7f4;stroke:#0b4f8a;stroke-width:3}.hold{fill:#fff4cd;stroke:#f3b61f;stroke-width:4}.datum{stroke:#0b4f8a;stroke-width:2;stroke-dasharray:8 6}</style>
+<rect width="1400" height="1000" fill="#f7fbff"/>
+<text x="40" y="58" class="title">Project Button HR-V0 mechanical coordination</text>
+<text x="40" y="98" class="warn">HR-V0-MECH-P0.3 - PRELIMINARY - NO BUILDABLE ARM GEOMETRY - NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
+<text x="40" y="150" class="sub">Base/frame candidate retained</text>
+<rect x="80" y="545" width="500" height="40" class="structure"/>
+<rect x="80" y="505" width="40" height="40" class="structure"/><rect x="540" y="505" width="40" height="40" class="structure"/>
+<rect x="100" y="45" width="40" height="500" class="structure"/>
+<line x1="330" y1="600" x2="330" y2="625" class="datum"/><text x="300" y="653">A0</text>
+<line x1="120" y1="45" x2="120" y2="585" class="datum"/><text x="82" y="685">C0 X=-210 candidate</text>
+<text x="80" y="730">Five exact candidate extrusion cuts and six frame joints remain on physical-fit/proof hold.</text>
+<text x="80" y="764">Bench anchors remain SELECTION REQUIRED for one surveyed Boston bench.</text>
+<rect x="680" y="150" width="670" height="600" rx="18" class="hold"/>
+<text x="720" y="205" class="sub">ARM ARCHITECTURE HOLD</text>
+<text x="720" y="255" class="warn">J1, J2, G1 AND OMAX COORDINATES WITHDRAWN</text>
+<text x="720" y="305">Exact manufacturer STEP geometry shows:</text>
+<text x="750" y="350">1. H101 is a moving output U-frame.</text>
+<text x="750" y="390">2. S102 is a bottom body frame in a different plane.</text>
+<text x="750" y="430">3. MV0-001 and MV0-003 do not define the required 3D transforms.</text>
+<text x="750" y="470">4. The former 44 / 160 / 160 mm chain is superseded.</text>
+<text x="720" y="535">Replacement must close MECH-005 / AUDIT-MECH-012:</text>
+<text x="750" y="580">exact transforms and parallel-axis proof</text>
+<text x="750" y="620">collision, tool access, fasteners and cable space</text>
+<text x="750" y="660">load path, tolerances, drawings, FAI and qualified review</text>
+<text x="720" y="710" class="warn">NO ARM PART MAY BE QUOTED OR FABRICATED.</text>
+<rect x="40" y="820" width="1310" height="120" rx="14" class="hold"/>
+<text x="70" y="865">Interactive exact-source evidence: generated/vendor-interfaces/XM540-H101-S102-same-origin.step</text>
+<text x="70" y="903">Readable orientation evidence: generated/vendor-interfaces/XM540-frame-orientation.svg</text>
+<text x="40" y="975" class="warn">HR-V0-MECH-P0.3 - PRELIMINARY - NO BUILDABLE ARM GEOMETRY - NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
 </svg>

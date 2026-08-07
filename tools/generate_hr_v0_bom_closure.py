@@ -21,7 +21,7 @@ FIELDS = (
 EVALUATION_IDS = {
     "BOM-003", "BOM-005", "BOM-006", "BOM-007", "BOM-010", "BOM-011",
     "BOM-012", "BOM-013", "BOM-014", "BOM-018", "BOM-021", "BOM-022",
-    "BOM-023", "BOM-029", "BOM-030", "BOM-031", "BOM-032",
+    "BOM-029", "BOM-030", "BOM-031", "BOM-032",
 }
 EXACT_HOLD_IDS = {
     "BOM-024", "BOM-025",

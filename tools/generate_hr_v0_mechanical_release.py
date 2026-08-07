@@ -1,10 +1,4 @@
-"""Generate the HR-V0 P0.2 mechanical release-coordination artifacts.
-
-This generator is intentionally standard-library only.  It does not replace the
-CadQuery R0.1 native geometry; it binds that geometry, the cut schedule, the
-assembly datum chain, and every unresolved physical interface into one readable
-general-arrangement artifact.
-"""
+"""Generate the fail-closed HR-V0-MECH-P0.3 coordination artifacts."""
 
 from __future__ import annotations
 
@@ -18,8 +12,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CAD = ROOT / "cad" / "hr-v0"
 OUT = CAD / "generated" / "assembly"
-REVISION = "HR-V0-MECH-P0.2"
-WARNING = "PRELIMINARY—NOT RELEASED FOR FABRICATION OR ENERGIZATION"
+REVISION = "HR-V0-MECH-P0.3"
+WARNING = "PRELIMINARY - NO BUILDABLE ARM GEOMETRY - NOT RELEASED FOR FABRICATION OR ENERGIZATION"
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -28,194 +22,80 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 
 def canonical_text_sha256(path: Path) -> str:
-    """Hash controlled text independent of Git's LF/CRLF checkout policy."""
     data = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
     return hashlib.sha256(data).hexdigest().upper()
 
 
 def write_datums() -> list[dict[str, str]]:
-    # A0 is the base/bench-plan origin.  The kinematic chain is shown in the
-    # neutral horizontal study pose; angles and physical stop locations remain
-    # separate controlled studies.
     rows = [
-        {"datum_id": "A0", "description": "bench plane and base plan origin", "x_mm": "0", "y_mm": "0", "z_mm": "0", "status": "candidate datum"},
-        {"datum_id": "C0", "description": "column extrusion centerline at bench plane", "x_mm": "-210", "y_mm": "0", "z_mm": "0", "status": "candidate datum"},
-        {"datum_id": "J1", "description": "shoulder rotation axis", "x_mm": "-166", "y_mm": "0", "z_mm": "500", "status": "candidate datum; assembled inspection required"},
-        {"datum_id": "J2", "description": "elbow rotation axis in neutral study pose", "x_mm": "-6", "y_mm": "0", "z_mm": "500", "status": "derived from J1 plus 160 mm"},
-        {"datum_id": "G1", "description": "gripper-frame mounting datum in neutral study pose", "x_mm": "154", "y_mm": "0", "z_mm": "500", "status": "derived from J2 plus 160 mm"},
-        {"datum_id": "OMAX", "description": "maximum permitted object-center reach datum in neutral study pose", "x_mm": "194", "y_mm": "0", "z_mm": "500", "status": "360 mm upper limit from J1; not a commanded pose"},
+        {"datum_id": "A0", "description": "bench plane and base-plan origin", "x_mm": "0", "y_mm": "0", "z_mm": "0", "status": "candidate base datum"},
+        {"datum_id": "C0", "description": "candidate column centerline", "x_mm": "-210", "y_mm": "0", "z_mm": "0", "status": "candidate base datum"},
+        {"datum_id": "J1", "description": "shoulder rotation axis", "x_mm": "", "y_mm": "", "z_mm": "", "status": "SELECTION REQUIRED - P0.2 transform superseded"},
+        {"datum_id": "J2", "description": "elbow rotation axis", "x_mm": "", "y_mm": "", "z_mm": "", "status": "SELECTION REQUIRED - P0.2 transform superseded"},
+        {"datum_id": "G1", "description": "gripper-frame datum", "x_mm": "", "y_mm": "", "z_mm": "", "status": "SELECTION REQUIRED - P0.2 transform superseded"},
+        {"datum_id": "OMAX", "description": "maximum object-center reach datum", "x_mm": "", "y_mm": "", "z_mm": "", "status": "SELECTION REQUIRED - depends on replacement arm"},
     ]
-    with (OUT / "assembly-datums.csv").open("w", newline="", encoding="utf-8") as handle:
+    with (OUT / "assembly-datums.csv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=rows[0].keys(), lineterminator="\n")
-        writer.writeheader()
-        writer.writerows(rows)
+        writer.writeheader(); writer.writerows(rows)
     return rows
 
 
 def write_svg() -> None:
-    # Front-view transform: world X/Z in millimetres to drawing coordinates.
-    sx = 0.65
-    ox = 560.0
-    bench_y = 780.0
-
-    def x(world: float) -> float:
-        return ox + world * sx
-
-    def y(world_z: float) -> float:
-        return bench_y - world_z * sx
-
-    j1x, j2x, g1x, omaxx = (-166.0, -6.0, 154.0, 194.0)
-    colx = -210.0
-    guard_left = x(j1x - 450.0)
-    guard_right = x(j1x + 450.0)
-    guard_top = y(950.0)
-    dim_y = y(500.0) - 78.0
-
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1100" viewBox="0 0 1400 1100" role="img" aria-labelledby="title desc">
-  <title id="title">Project Button HR-V0 mechanical general arrangement P0.2</title>
-  <desc id="desc">Dimensioned preliminary bench demonstrator datum chain, base, arm, guard reservation, plan view, configuration legend, and unresolved release holds.</desc>
-  <style>
-    text {{ font-family: system-ui, sans-serif; font-size: 16px; fill: #082554; }}
-    .title {{ font-size: 30px; font-weight: 750; }}
-    .subtitle {{ font-size: 18px; font-weight: 650; }}
-    .warning {{ font-size: 18px; font-weight: 750; fill: #8a4b00; }}
-    .small {{ font-size: 14px; }}
-    .structure {{ fill: #d9efff; stroke: #082554; stroke-width: 4; }}
-    .custom {{ fill: #ffd059; stroke: #082554; stroke-width: 3; }}
-    .actuator {{ fill: #2185d0; stroke: #082554; stroke-width: 3; }}
-    .hold {{ fill: #fff3cf; stroke: #b17700; stroke-width: 2; }}
-    .guard {{ fill: #d9efff; fill-opacity: 0.12; stroke: #2185d0; stroke-width: 3; stroke-dasharray: 10 8; }}
-    .axis {{ fill: white; stroke: #082554; stroke-width: 3; }}
-    .datum {{ stroke: #082554; stroke-width: 2; stroke-dasharray: 5 5; }}
-    .dim {{ stroke: #b17700; stroke-width: 2; marker-start: url(#arrow); marker-end: url(#arrow); }}
-    .ext {{ stroke: #b17700; stroke-width: 1.5; }}
-    .callout {{ fill: white; stroke: #082554; stroke-width: 2; }}
-  </style>
-  <defs>
-    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b17700"/></marker>
-  </defs>
-  <text id="release-warning-top" x="36" y="38" class="warning">{WARNING}</text>
-  <text x="36" y="78" class="title">HR-V0 mechanical general arrangement</text>
-  <text x="36" y="108" class="subtitle">{REVISION} · neutral datum study · dimensions in millimetres · do not scale</text>
-
-  <text x="36" y="150" class="subtitle">FRONT ELEVATION · A0 BENCH PLANE</text>
-  <rect x="{guard_left:.1f}" y="{guard_top:.1f}" width="{guard_right-guard_left:.1f}" height="{bench_y-guard_top:.1f}" class="guard"/>
-  <text x="{guard_left+16:.1f}" y="{guard_top+26:.1f}" class="small">900 W x 950 H INTERNAL SPACE RESERVATION — NOT A SAFETY DISTANCE</text>
-  <line x1="100" y1="{bench_y:.1f}" x2="790" y2="{bench_y:.1f}" class="datum"/>
-  <text x="105" y="{bench_y+24:.1f}" class="small">A0 BENCH PLANE</text>
-  <rect x="{x(-250):.1f}" y="{y(40):.1f}" width="{500*sx:.1f}" height="{40*sx:.1f}" class="structure"/>
-  <rect x="{x(colx-20):.1f}" y="{y(540):.1f}" width="{40*sx:.1f}" height="{500*sx:.1f}" class="structure"/>
-  <rect x="{x(colx+5):.1f}" y="{y(555):.1f}" width="{90*sx:.1f}" height="{110*sx:.1f}" class="custom"/>
-  <circle cx="{x(j1x):.1f}" cy="{y(500):.1f}" r="18" class="actuator"/>
-  <rect x="{x(j1x):.1f}" y="{y(522):.1f}" width="{160*sx:.1f}" height="{44*sx:.1f}" rx="14" class="custom"/>
-  <circle cx="{x(j2x):.1f}" cy="{y(500):.1f}" r="18" class="actuator"/>
-  <rect x="{x(j2x):.1f}" y="{y(522):.1f}" width="{160*sx:.1f}" height="{44*sx:.1f}" rx="14" class="custom"/>
-  <circle cx="{x(g1x):.1f}" cy="{y(500):.1f}" r="15" class="actuator"/>
-  <rect x="{x(g1x):.1f}" y="{y(535):.1f}" width="{40*sx:.1f}" height="{70*sx:.1f}" rx="8" class="hold"/>
-  <line x1="{x(omaxx):.1f}" y1="{y(540):.1f}" x2="{x(omaxx):.1f}" y2="{y(460):.1f}" class="datum"/>
-
-  <circle cx="{x(j1x):.1f}" cy="{y(500):.1f}" r="6" class="axis"/><text x="{x(j1x)-18:.1f}" y="{y(500)+38:.1f}" class="subtitle">J1</text>
-  <circle cx="{x(j2x):.1f}" cy="{y(500):.1f}" r="6" class="axis"/><text x="{x(j2x)-18:.1f}" y="{y(500)+38:.1f}" class="subtitle">J2</text>
-  <circle cx="{x(g1x):.1f}" cy="{y(500):.1f}" r="6" class="axis"/><text x="{x(g1x)-18:.1f}" y="{y(500)+38:.1f}" class="subtitle">G1</text>
-  <text x="{x(omaxx)+8:.1f}" y="{y(540):.1f}" class="small">OMAX</text>
-
-  <line x1="{x(j1x):.1f}" y1="{dim_y:.1f}" x2="{x(j2x):.1f}" y2="{dim_y:.1f}" class="dim"/>
-  <line x1="{x(j2x):.1f}" y1="{dim_y:.1f}" x2="{x(g1x):.1f}" y2="{dim_y:.1f}" class="dim"/>
-  <line x1="{x(j1x):.1f}" y1="{dim_y-42:.1f}" x2="{x(omaxx):.1f}" y2="{dim_y-42:.1f}" class="dim"/>
-  <text x="{(x(j1x)+x(j2x))/2-34:.1f}" y="{dim_y-9:.1f}" class="subtitle">160 ±0.5</text>
-  <text x="{(x(j2x)+x(g1x))/2-34:.1f}" y="{dim_y-9:.1f}" class="subtitle">160 ±0.5</text>
-  <text x="{(x(j1x)+x(omaxx))/2-62:.1f}" y="{dim_y-51:.1f}" class="subtitle">REACH ≤ 360</text>
-  <line x1="{x(-278):.1f}" y1="{y(0):.1f}" x2="{x(-278):.1f}" y2="{y(500):.1f}" class="dim"/>
-  <text x="{x(-298):.1f}" y="{y(250):.1f}" transform="rotate(-90 {x(-298):.1f} {y(250):.1f})" class="subtitle">J1 AXIS HEIGHT 500 ±2</text>
-  <line x1="{x(-250):.1f}" y1="{bench_y+58:.1f}" x2="{x(250):.1f}" y2="{bench_y+58:.1f}" class="dim"/>
-  <text x="{x(0)-62:.1f}" y="{bench_y+50:.1f}" class="subtitle">BASE 500</text>
-
-  <text x="850" y="150" class="subtitle">PLAN VIEW · BASE / GUARD RESERVATION</text>
-  <rect x="865" y="185" width="378" height="168" class="guard"/>
-  <rect x="949" y="202" width="210" height="17" class="structure"/>
-  <rect x="949" y="319" width="210" height="17" class="structure"/>
-  <rect x="949" y="219" width="17" height="100" class="structure"/>
-  <rect x="1142" y="219" width="17" height="100" class="structure"/>
-  <rect x="949" y="261" width="17" height="17" class="hold"/>
-  <circle cx="966" cy="219" r="4" class="axis"/><circle cx="966" cy="319" r="4" class="axis"/>
-  <circle cx="1142" cy="219" r="4" class="axis"/><circle cx="1142" cy="319" r="4" class="axis"/>
-  <line x1="949" y1="261" x2="966" y2="261" class="datum"/><line x1="949" y1="278" x2="966" y2="278" class="datum"/>
-  <circle cx="983" cy="269" r="8" class="axis"/>
-  <text x="1000" y="264" class="small">C0 column X=-210</text>
-  <text x="1000" y="286" class="small">J1 offset +44 from C0</text>
-  <text x="875" y="380" class="small">Base outside: 500 x 320. Cuts: 2 x 500, 2 x 240, column 500.</text>
-
-  <text x="850" y="430" class="subtitle">CONFIGURATION LEGEND</text>
-  <rect x="850" y="450" width="24" height="24" class="structure"/><text x="888" y="469">selected profile / candidate cut length</text>
-  <rect x="850" y="486" width="24" height="24" class="custom"/><text x="888" y="505">custom RFQ geometry; FAI and fit holds remain</text>
-  <rect x="850" y="522" width="24" height="24" class="actuator"/><text x="888" y="541">evaluation actuator / received identity required</text>
-  <rect x="850" y="558" width="24" height="24" class="hold"/><text x="888" y="577">design or selection hold</text>
-
-  <rect x="830" y="620" width="525" height="334" rx="12" class="hold"/>
-  <text x="850" y="654" class="subtitle">FABRICATION / ASSEMBLY HOLDS</text>
-  <text x="850" y="690">1. Execute MV0-FC01 / FC02 / FC03 on received frames.</text>
-  <text x="850" y="720">2. Freeze hole size/position, fastener stacks, torque and retention.</text>
-  <text x="850" y="750">3. Dry-fit and proof six 40-4332 / twelve 75-3422 joint candidates.</text>
-  <text x="850" y="780">4. Survey the Boston build bench and engineer its anchors.</text>
-  <text x="850" y="810">5. Design and proof backed-up hard stops, guard and catch.</text>
-  <text x="850" y="840">6. Close measured mass/COM/inertia and rerun load calculations.</text>
-  <text x="850" y="870">7. Complete FAI and unpowered assembly inspection.</text>
-  <text x="850" y="900" class="warning">NO STRUCTURAL CUTTING ORDER IS RELEASED.</text>
-  <text x="850" y="930" class="warning">NO POWERED MOTION IS RELEASED.</text>
-
-  <rect x="36" y="900" width="745" height="132" rx="10" class="callout"/>
-  <text x="56" y="932" class="subtitle">DATUM CHAIN</text>
-  <text x="56" y="962">A0 base center → C0 column X=-210 → J1 X=-166 / Z=500</text>
-  <text x="56" y="992">J2 = J1 +160 in neutral pose → G1 = J2 +160 → OMAX ≤ J1 +360</text>
-  <text x="56" y="1018" class="small">Only the neutral pose is depicted. Joint limits, sweep, stopping travel and physical stops are controlled separately.</text>
-  <text id="release-warning-bottom" x="36" y="1074" class="warning">{REVISION} · {WARNING}</text>
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+<style>text{{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}}.title{{font-size:36px;font-weight:700}}.sub{{font-size:23px;font-weight:700}}.small{{font-size:16px}}.warn{{font-size:20px;font-weight:700;fill:#8a3b00}}.structure{{fill:#66c7f4;stroke:#0b4f8a;stroke-width:3}}.hold{{fill:#fff4cd;stroke:#f3b61f;stroke-width:4}}.datum{{stroke:#0b4f8a;stroke-width:2;stroke-dasharray:8 6}}</style>
+<rect width="1400" height="1000" fill="#f7fbff"/>
+<text x="40" y="58" class="title">Project Button HR-V0 mechanical coordination</text>
+<text x="40" y="98" class="warn">{REVISION} - {WARNING}</text>
+<text x="40" y="150" class="sub">Base/frame candidate retained</text>
+<rect x="80" y="545" width="500" height="40" class="structure"/>
+<rect x="80" y="505" width="40" height="40" class="structure"/><rect x="540" y="505" width="40" height="40" class="structure"/>
+<rect x="100" y="45" width="40" height="500" class="structure"/>
+<line x1="330" y1="600" x2="330" y2="625" class="datum"/><text x="300" y="653">A0</text>
+<line x1="120" y1="45" x2="120" y2="585" class="datum"/><text x="82" y="685">C0 X=-210 candidate</text>
+<text x="80" y="730">Five exact candidate extrusion cuts and six frame joints remain on physical-fit/proof hold.</text>
+<text x="80" y="764">Bench anchors remain SELECTION REQUIRED for one surveyed Boston bench.</text>
+<rect x="680" y="150" width="670" height="600" rx="18" class="hold"/>
+<text x="720" y="205" class="sub">ARM ARCHITECTURE HOLD</text>
+<text x="720" y="255" class="warn">J1, J2, G1 AND OMAX COORDINATES WITHDRAWN</text>
+<text x="720" y="305">Exact manufacturer STEP geometry shows:</text>
+<text x="750" y="350">1. H101 is a moving output U-frame.</text>
+<text x="750" y="390">2. S102 is a bottom body frame in a different plane.</text>
+<text x="750" y="430">3. MV0-001 and MV0-003 do not define the required 3D transforms.</text>
+<text x="750" y="470">4. The former 44 / 160 / 160 mm chain is superseded.</text>
+<text x="720" y="535">Replacement must close MECH-005 / AUDIT-MECH-012:</text>
+<text x="750" y="580">exact transforms and parallel-axis proof</text>
+<text x="750" y="620">collision, tool access, fasteners and cable space</text>
+<text x="750" y="660">load path, tolerances, drawings, FAI and qualified review</text>
+<text x="720" y="710" class="warn">NO ARM PART MAY BE QUOTED OR FABRICATED.</text>
+<rect x="40" y="820" width="1310" height="120" rx="14" class="hold"/>
+<text x="70" y="865">Interactive exact-source evidence: generated/vendor-interfaces/XM540-H101-S102-same-origin.step</text>
+<text x="70" y="903">Readable orientation evidence: generated/vendor-interfaces/XM540-frame-orientation.svg</text>
+<text x="40" y="975" class="warn">{REVISION} - {WARNING}</text>
 </svg>'''
     (OUT / "HR-V0_general-arrangement.svg").write_text(svg, encoding="utf-8", newline="\n")
 
 
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
-    data_path = CAD / "mechanical-release-data.csv"
-    interface_path = CAD / "mechanical-interface-control.csv"
-    components_path = CAD / "mechanical-assembly-components.csv"
-    extrusion_path = ROOT / "bom" / "hr-v0-extrusion-cut-schedule.csv"
-    frame_joint_path = ROOT / "bom" / "hr-v0-frame-joint-schedule.csv"
-    placement_path = CAD / "frame-joint-placement-p0.2.csv"
-    data = read_csv(data_path)
-    interfaces = read_csv(interface_path)
-    components = read_csv(components_path)
-    extrusions = read_csv(extrusion_path)
-    frame_joints = read_csv(frame_joint_path)
-    placements = read_csv(placement_path)
-    datums = write_datums()
-    write_svg()
+    paths = [
+        CAD / "mechanical-release-data.csv", CAD / "mechanical-interface-control.csv", CAD / "mechanical-assembly-components.csv",
+        ROOT / "bom" / "hr-v0-extrusion-cut-schedule.csv", ROOT / "bom" / "hr-v0-frame-joint-schedule.csv",
+        CAD / "frame-joint-placement-p0.2.csv", CAD / "generated" / "vendor-interfaces" / "same-origin-bounds.csv",
+    ]
+    data, interfaces, components, extrusions, frame_joints, placements, vendor_rows = [read_csv(path) for path in paths]
+    datums = write_datums(); write_svg()
     summary = {
-        "revision": REVISION,
-        "warning": WARNING,
-        "source_hashes": {
-            path.relative_to(ROOT).as_posix(): canonical_text_sha256(path)
-            for path in (data_path, interface_path, components_path, extrusion_path, frame_joint_path, placement_path)
-        },
-        "counts": {
-            "controlled_parameters": len(data),
-            "interfaces": len(interfaces),
-            "assembly_components": len(components),
-            "extrusion_cut_rows": len(extrusions),
-            "frame_joint_rows": len(frame_joints),
-            "frame_joint_placements": len(placements),
-            "datums": len(datums),
-        },
+        "revision": REVISION, "warning": WARNING,
+        "source_hashes": {path.relative_to(ROOT).as_posix(): canonical_text_sha256(path) for path in paths},
+        "counts": {"controlled_parameters": len(data), "interfaces": len(interfaces), "assembly_components": len(components), "extrusion_cut_rows": len(extrusions), "frame_joint_rows": len(frame_joints), "frame_joint_placements": len(placements), "vendor_interface_sources": len(vendor_rows), "datums": len(datums)},
         "parameter_status_counts": dict(sorted(Counter(row["status"] for row in data).items())),
         "interface_status_counts": dict(sorted(Counter(row["current_status"] for row in interfaces).items())),
-        "release_state": "coordination_candidate_not_released",
+        "release_state": "base_coordination_only_arm_architecture_withdrawn",
+        "superseded": ["HR-V0-MECH-P0.2 arm datum chain", "MV0-001", "MV0-002", "MV0-003", "HR-V0-FAB-RFI-P0.1"],
     }
-    (OUT / "mechanical-release-summary.json").write_text(
-        json.dumps(summary, indent=2) + "\n", encoding="utf-8", newline="\n"
-    )
-    print(
-        f"Generated {REVISION}: {len(data)} parameters, {len(interfaces)} interfaces, "
-        f"{len(components)} component groups, {len(frame_joints)} frame joints, {len(datums)} datums"
-    )
+    (OUT / "mechanical-release-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8", newline="\n")
+    print(f"Generated {REVISION}: base coordination retained; J1/J2/G1/OMAX blanked; arm architecture withdrawn")
     print(WARNING)
     return 0
 

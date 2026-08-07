@@ -1,5 +1,7 @@
 # HR-V0 Mechanical R0.1 Preliminary Baseline
 
+> **SUPERSEDED ARM GEOMETRY:** R53 found that this model does not preserve the exact ROBOTIS H101/S101/S102 interface orientations. Retain it as a historical space model only. The base/frame work remains candidate evidence; no arm part may be quoted or fabricated from this revision.
+
 **PRELIMINARY—NOT RELEASED FOR FABRICATION OR ENERGIZATION**
 
 Date: 2026-08-06  

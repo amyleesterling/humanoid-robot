@@ -1,5 +1,7 @@
 # HR-V0 Boston fabrication and RFQ route P0.1
 
+> **R53 HOLD:** All arm quotation routes and P0.1 supplier packets are withdrawn. Use this document only as historical sourcing research until `MECH-005` / `AUDIT-MECH-012` release replacement geometry.
+
 **Identifier:** `HR-V0-FAB-RFQ-P0.1`
 **Status:** **PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY OR ENERGIZATION**
 
@@ -28,7 +30,7 @@ The machine-readable register is [`cad/hr-v0/manufacturing/hr-v0-fabrication-rou
 
 Use [`tests/forms/hr-v0-fabrication-supplier-quote-template.csv`](../tests/forms/hr-v0-fabrication-supplier-quote-template.csv). Every quote must bind the repository commit, RFQ revision, exact file names and SHA-256 hashes. It must explicitly answer material/temper, stock tolerance, process, finished-hole and location capability, flatness, edge treatment, certificates, inspection/FAI, lead time and cost.
 
-Use only the route-bounded deterministic inquiry artifacts in [`HR-V0-FAB-RFI-P0.1`](hr-v0-fabrication-rfi-p0.1.md). Do not assemble a new upload set by hand or send a packet for `MV0-004`.
+Do not send any arm inquiry artifact. The current fabrication-RFI directory contains only the R53 withdrawal register; `MV0-004` remains on its separate bench-site hold.
 
 For route `FAB-003`, preserve material traceability between the profile blank and secondary machining. The secondary shop must define its datum/fixture strategy and accept the finished drawing in writing. No shop may infer holes from a model intentionally marked as a blank.
 

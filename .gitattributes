@@ -27,3 +27,5 @@ cad/hr-v0/**/*.glb binary
 cad/hr-v0/**/*.stl binary
 release/**/*.zip binary
 release/**/*.csv text eol=lf
+release/**/*.md text eol=lf
+bom/hr-v0-bom-closure.csv text eol=lf

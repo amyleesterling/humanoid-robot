@@ -200,10 +200,10 @@ def main():
             "Exact guard panels frame fasteners access probe service isolation catch and moving harness",
             "Correlation to measured first article and independent mechanical review",
         ],
-        "calculation_result": "GEOMETRY SCREEN PASSES; RELEASE REMAINS OPEN",
+        "calculation_result": "P0.2 ARM GEOMETRY SUPERSEDED BY R53; NUMERICAL SCREENS RETAINED AS HISTORICAL ONLY; REPLACEMENT ARCHITECTURE REQUIRED",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(results, indent=2), encoding="utf-8")
+    OUT.write_text(json.dumps(results, indent=2), encoding="utf-8", newline="\n")
     write_source_manifest()
     print(json.dumps(results, indent=2))
 
