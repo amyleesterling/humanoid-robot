@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P1.0"
+REV = "V3-P1.1"
 DATE = "2026-08-06"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 NS = uuid.UUID("4cb40c84-3194-4ded-b2c7-d78df616c5c0")
@@ -647,10 +647,50 @@ def sheets() -> list[Sheet]:
     s11.notes = ["Terminal numbering follows the PCB footprint and must be confirmed against received parts before wiring.",
                  "Nominal terminal ratings do not release branch protection, conductor, ferrule, harness, enclosure or thermal application."]
 
-    for comp in [*s7.components, *s8.components, *s11.components]:
+    test_points = [
+        ("TP1", "SAFETY 24 V", "SAFETY_24V"),
+        ("TP2", "SAFETY 0 V", "SAFETY_0V"),
+        ("TP3", "WATCHDOG 5 V", "WD_5V"),
+        ("TP4", "WATCHDOG 3V3", "WD_3V3"),
+        ("TP5", "COMPUTE HEARTBEAT", "PI_HEARTBEAT"),
+        ("TP6", "WATCHDOG HEARTBEAT", "WD_HEARTBEAT"),
+        ("TP7", "WATCHDOG DRIVE 1", "WD1_DRIVE"),
+        ("TP8", "WATCHDOG DRIVE 2", "WD2_DRIVE"),
+        ("TP9", "WATCHDOG COIL 1 SINK", "WD1_COIL_N"),
+        ("TP10", "WATCHDOG COIL 2 SINK", "WD2_COIL_N"),
+        ("TP11", "WATCHDOG NC 1 INPUT", "WD1_NC_24V"),
+        ("TP12", "WATCHDOG NC 2 INPUT", "WD2_NC_24V"),
+        ("TP13", "FEEDBACK RECEIVER 1 OUT", "UFB_OUT1"),
+        ("TP14", "FEEDBACK RECEIVER 2 OUT", "UFB_OUT2"),
+        ("TP15", "WATCHDOG SWDIO", "WD_SWDIO"),
+        ("TP16", "WATCHDOG SWCLK", "WD_SWCLK"),
+    ]
+    s12 = Sheet(12, "12_watchdog_pcb_test_access.kicad_sch", "Watchdog PCB test access",
+                "Exact clip-compatible test terminals expose controlled nodes without granting safety or operating authority.")
+    positions = [(55 + column * 90, 60 + row * 55) for row in range(4) for column in range(4)]
+    s12.components = [
+        Component(
+            ref,
+            "Harwin S1751-46R SMT test point",
+            [pn(ref, "1", label, net, "right")],
+            "PROPOSED - ACCESS VERIFICATION REQUIRED",
+            "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.",
+            "https://www.harwin.com/products/S1751-46R",
+            "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.",
+            position=position,
+            width=70,
+            height=20,
+            footprint="PBV3_Footprints:Harwin_S1751_46R",
+        )
+        for (ref, label, net), position in zip(test_points, positions, strict=True)
+    ]
+    s12.notes = ["Test terminals are diagnostic features only; they provide no safety integrity or bypass authority.",
+                 "Verify clip clearance with guards, harnesses and power removed before any live measurement procedure is released."]
+
+    for comp in [*s7.components, *s8.components, *s11.components, *s12.components]:
         comp.watchdog_pcb = True
 
-    return [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11]
+    return [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12]
 
 
 def font(size: float = 1.8, justify: str = "") -> str:
@@ -904,7 +944,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 - Compute heartbeat crosses an exact VO618A-4X017T optical interface with exact 910 Ohm input and 10 kOhm pullup candidates. Two separate TPL7407LPWR packages drive the two relay coils, with unused inputs tied low, unused outputs open, and local 100 nF COM bypass candidates. These ordinary circuits receive no safety credit and still require PCB, timing, hot-plug, fault-injection, EMC and qualified review.
 - The ISO1212 feedback network uses exact proposed Vishay, Panasonic, TDK and Murata passive order codes. Receiving, PCB land-pattern/placement, DC-bias, pulse, thermal, EMC, fault and HIL evidence remain mandatory.
 - Three exact Phoenix Contact PCB terminal-block candidates freeze the project pin allocation for 24 V/control return, two coil sinks, two NC feedback channels and the isolated heartbeat pair. Harness, conductor, ferrule, protection, enclosure, received-orientation and thermal evidence remain open.
-- `project-button-v3.kicad_pcb` is the native PCB-P0.3 routed-copper candidate. It retains the corrected ISO1212 DBQ footprint and field/control zoning, contains 160 segments, 45 vias and one filled return zone, and passes native DRC plus independent connectivity checks. It is not a Gerber or fabrication release; exact stack-up/fabricator capability, 0.10 mm breakout acceptance, test points, SUB copper, protection coordination, schematic parity review, creepage/clearance, thermal, EMC and HIL evidence remain gates.
+- `project-button-v3.kicad_pcb` is the native PCB-P0.4 routed/test-access candidate. It retains the corrected ISO1212 DBQ footprint and field/control zoning, adds sixteen exact Harwin S1751-46R test terminals and separate TI-recommended 2 mm x 2 mm SUB1/SUB2 floating copper planes, and must pass native DRC plus independent connectivity/isolation checks. It is not a Gerber or fabrication release; exact stack-up/fabricator capability, 0.10 mm breakout acceptance, installed probe access, protection coordination, schematic parity review, creepage/clearance, thermal, EMC and HIL evidence remain gates.
 - Heartbeat restoration cannot restore contactors; SRA1 requires a new monitored ARM action.
 - External Mean Well adapters replace project-built mains wiring.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.

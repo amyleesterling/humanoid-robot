@@ -245,3 +245,19 @@ W11005,11_watchdog_pcb_connectors.kicad_sch,JWF1,1,WATCHDOG 1 NC +24 V,WD1_NC_24
 W11006,11_watchdog_pcb_connectors.kicad_sch,JWF1,2,WATCHDOG 2 NC +24 V,WD2_NC_24V
 W11007,11_watchdog_pcb_connectors.kicad_sch,JWH1,1,COMPUTE HEARTBEAT,PI_HEARTBEAT
 W11008,11_watchdog_pcb_connectors.kicad_sch,JWH1,2,COMPUTE 0 V,COMPUTE_0V
+W12001,12_watchdog_pcb_test_access.kicad_sch,TP1,1,SAFETY 24 V,SAFETY_24V
+W12002,12_watchdog_pcb_test_access.kicad_sch,TP2,1,SAFETY 0 V,SAFETY_0V
+W12003,12_watchdog_pcb_test_access.kicad_sch,TP3,1,WATCHDOG 5 V,WD_5V
+W12004,12_watchdog_pcb_test_access.kicad_sch,TP4,1,WATCHDOG 3V3,WD_3V3
+W12005,12_watchdog_pcb_test_access.kicad_sch,TP5,1,COMPUTE HEARTBEAT,PI_HEARTBEAT
+W12006,12_watchdog_pcb_test_access.kicad_sch,TP6,1,WATCHDOG HEARTBEAT,WD_HEARTBEAT
+W12007,12_watchdog_pcb_test_access.kicad_sch,TP7,1,WATCHDOG DRIVE 1,WD1_DRIVE
+W12008,12_watchdog_pcb_test_access.kicad_sch,TP8,1,WATCHDOG DRIVE 2,WD2_DRIVE
+W12009,12_watchdog_pcb_test_access.kicad_sch,TP9,1,WATCHDOG COIL 1 SINK,WD1_COIL_N
+W12010,12_watchdog_pcb_test_access.kicad_sch,TP10,1,WATCHDOG COIL 2 SINK,WD2_COIL_N
+W12011,12_watchdog_pcb_test_access.kicad_sch,TP11,1,WATCHDOG NC 1 INPUT,WD1_NC_24V
+W12012,12_watchdog_pcb_test_access.kicad_sch,TP12,1,WATCHDOG NC 2 INPUT,WD2_NC_24V
+W12013,12_watchdog_pcb_test_access.kicad_sch,TP13,1,FEEDBACK RECEIVER 1 OUT,UFB_OUT1
+W12014,12_watchdog_pcb_test_access.kicad_sch,TP14,1,FEEDBACK RECEIVER 2 OUT,UFB_OUT2
+W12015,12_watchdog_pcb_test_access.kicad_sch,TP15,1,WATCHDOG SWDIO,WD_SWDIO
+W12016,12_watchdog_pcb_test_access.kicad_sch,TP16,1,WATCHDOG SWCLK,WD_SWCLK

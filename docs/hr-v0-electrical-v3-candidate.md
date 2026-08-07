@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: native connected design candidate `V3-P1.0`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` through P0.9 are retained as historical configurations. P1.0 adds exact watchdog-PCB terminal candidates and project pin allocation. The separate PCB-P0.2 corrects the UFB1 package and constrained placement while retaining routing, stack-up, received, derating, physical, fault, EMC and qualified-review gates.
+Status: native connected design candidate `V3-P1.1`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` through P1.0 are retained as historical configurations. P1.1 adds 16 proposed Harwin test-point records. The separate PCB-P0.4 routes the controlled board subset and adds exact test access plus separate floating ISO1212 SUB thermal areas while retaining fabricator/stack-up, received, derating, physical, fault, EMC and qualified-review gates.
 
 - Native source: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Generator: `tools/generate_hr_v0_electrical_v3.py`
@@ -117,19 +117,19 @@ Before this candidate can replace V2.1:
 
 ## Native candidate validation record
 
-The generated `V3-P1.0` candidate currently contains:
+The generated `V3-P1.1` candidate currently contains:
 
-- one root index plus eleven focused child sheets;
-- 62 component blocks and 283 modeled terminals;
+- one root index plus twelve focused child sheets;
+- 78 component blocks and 299 modeled terminals;
 - 100 native nets: 63 named connected nets plus 37 deliberate auto-generated unconnected nets;
-- 246 unique wire labels synchronized to `wire-number-table.csv`;
-- 60 nonzero-quantity V3 BOM records;
-- 50 unresolved component/interface records; and
+- 262 unique wire labels synchronized to `wire-number-table.csv`;
+- 76 nonzero-quantity V3 BOM records;
+- 66 unresolved component/interface records; and
 - 46 terminal designations deliberately retained as `TBD-*`.
 
 KiCad 10.0.5 parsed the root and all eleven children, exported the native netlist, a twelve-page A3 PDF, and twelve SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 62 native component references and all 283 exported `(reference, terminal, net)` nodes against the generated schedules, including the 37 deliberate no-connect terminals. It freezes every ISO1212, VO618A and TPL7407L pin, their supporting networks, and all three board-terminal allocations. Clean ERC did not detect the historical P0.4 `RSENSE` application error, illustrating why the exact-net and primary-source checks remain separate.
 
-The export is rendered at 150 dpi and visually checked after each material layout change. P1.0 retains the pin-level heartbeat/driver circuits and feedback passive identities, adds exact board-terminal candidates, and leaves 246 synchronized wire labels. Page-level visual QA is part of the recorded validation for this candidate. The separate native PCB-P0.2 source has 26 schematic references, four board-only mounting holes, zero tracks/zones, zero non-routing DRC violations, 68 explicitly open unconnected pads and a generated placement-constraint record.
+The export is rendered at 150 dpi and visually checked after each material layout change. P1.1 retains the pin-level heartbeat/driver circuits, feedback passive identities and exact board terminals, adds 16 test-point records, and has 262 synchronized wire labels. Page-level visual QA is part of the recorded validation for this candidate. The separate native PCB-P0.4 source has 42 schematic references, four board-only mounting holes, 200 segments, 56 vias, three filled B.Cu zones, zero DRC violations, zero routed unconnected pads and generated test-access/connectivity evidence. It has no fabrication outputs.
 
 The KiCad CLI logs Windows registry-access messages for `HKCU\Software\kicad-cli` in this restricted execution environment. Every command still returned exit code 0 and produced the expected artifact; the messages are retained in `validation/kicad-cli.log` rather than hidden.
 

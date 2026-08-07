@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-06T21:44:11")
+		(date "2026-08-06T23:10:24")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P1.0")
+			(name "REVISION") "V3-P1.1")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,7 +15,7 @@
 			(title_block
 				(title "Project Button HR-V0 Electrical V3 index")
 				(company "Project Button")
-				(rev "V3-P1.0")
+				(rev "V3-P1.1")
 				(date "2026-08-06")
 				(source "project-button-v3.kicad_sch")
 				(comment
@@ -63,7 +63,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 01")
 				(company "Project Button")
-				(rev "V3-P1.0")
+				(rev "V3-P1.1")
 				(date "2026-08-06")
 				(source "01_external_sources.kicad_sch")
 				(comment
@@ -111,7 +111,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 02")
 				(company "Project Button")
-				(rev "V3-P1.0")
+				(rev "V3-P1.1")
 				(date "2026-08-06")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
@@ -159,7 +159,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 03")
 				(company "Project Button")
-				(rev "V3-P1.0")
+				(rev "V3-P1.1")
 				(date "2026-08-06")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
@@ -207,7 +207,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 04")
 				(company "Project Button")
-				(rev "V3-P1.0")
+				(rev "V3-P1.1")
 				(date "2026-08-06")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
@@ -255,7 +255,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 05")
 				(company "Project Button")
-				(rev "V3-P1.0")
+				(rev "V3-P1.1")
 				(date "2026-08-06")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
@@ -303,7 +303,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 06")
 				(company "Project Button")
-				(rev "V3-P1.0")
+				(rev "V3-P1.1")
 				(date "2026-08-06")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
@@ -351,7 +351,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 07")
 				(company "Project Button")
-				(rev "V3-P1.0")
+				(rev "V3-P1.1")
 				(date "2026-08-06")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
@@ -399,7 +399,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 08")
 				(company "Project Button")
-				(rev "V3-P1.0")
+				(rev "V3-P1.1")
 				(date "2026-08-06")
 				(source "08_watchdog_feedback_interface.kicad_sch")
 				(comment
@@ -447,7 +447,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 09")
 				(company "Project Button")
-				(rev "V3-P1.0")
+				(rev "V3-P1.1")
 				(date "2026-08-06")
 				(source "09_compute_and_control_terminals.kicad_sch")
 				(comment
@@ -495,7 +495,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 10")
 				(company "Project Button")
-				(rev "V3-P1.0")
+				(rev "V3-P1.1")
 				(date "2026-08-06")
 				(source "10_actuator_interfaces.kicad_sch")
 				(comment
@@ -543,9 +543,57 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 11")
 				(company "Project Button")
-				(rev "V3-P1.0")
+				(rev "V3-P1.1")
 				(date "2026-08-06")
 				(source "11_watchdog_pcb_connectors.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "13")
+			(name "/12 Watchdog PCB test access/")
+			(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			(title_block
+				(title "PB HR-V0 Electrical V3 - 12")
+				(company "Project Button")
+				(rev "V3-P1.1")
+				(date "2026-08-06")
+				(source "12_watchdog_pcb_test_access.kicad_sch")
 				(comment
 					(number "1")
 					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
@@ -5058,6 +5106,982 @@
 				)
 			)
 		)
+		(comp
+			(ref "TP1")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP1")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "97019d37-41ba-5491-84c9-76b56973b4fc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP2")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP2")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "bfa6dad0-cd6e-5a83-b61d-b343c1fc9127")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP3")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP3")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "fd6c28e6-bf05-5f68-9dbc-891296c5405a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP4")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP4")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "5774a30d-3314-5d35-9ff3-fd274172bbf5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP5")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP5")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "a06d8eb8-01d3-522d-9804-9d506c17216a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP6")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP6")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "d37a07ee-f93c-510b-8eb5-6352dcf63165")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP7")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP7")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "a9a3e687-d915-5588-8a45-d743b9017fbc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP8")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP8")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "70b6ba00-b9ed-559b-b301-b37e23d34154")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP9")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP9")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "e77fcad9-cc40-522e-a45f-e7931826f2dc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP10")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP10")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "907be63b-6f1e-57be-bd28-e4b8ef914dd0")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP11")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP11")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "d6293a3b-6b36-5e24-8972-5587c2e9e70b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP12")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP12")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "f5dcb495-d913-5297-a1e3-54539879e450")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP13")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP13")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "14dab880-51d6-5e50-bcd0-71f5747245d0")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP14")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP14")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "0d98f44b-6dc4-575f-aafe-7685d95a3339")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP15")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP15")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "e8998853-fdfc-586a-8c9a-a57c9fa12ed3")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP16")
+			(value "Harwin S1751-46R SMT test point")
+			(footprint "PBV3_Footprints:Harwin_S1751_46R")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TP16")
+				(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - ACCESS VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R SMT test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Watchdog PCB test access")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_watchdog_pcb_test_access.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Watchdog PCB test access/")
+				(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
+			)
+			(tstamps "d557a25b-1aa6-5da0-a376-0cb3fb92cb36")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
 	)
 	(groups)
 	(variants)
@@ -7646,6 +8670,502 @@
 		)
 		(libpart
 			(lib "PBV3")
+			(part "TP1")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP1")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "SAFETY_24_V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP10")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP10")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "WATCHDOG_COIL_2_SINK")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP11")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP11")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "WATCHDOG_NC_1_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP12")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP12")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "WATCHDOG_NC_2_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP13")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP13")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "FEEDBACK_RECEIVER_1_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP14")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP14")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "FEEDBACK_RECEIVER_2_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP15")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP15")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "WATCHDOG_SWDIO")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP16")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP16")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "WATCHDOG_SWCLK")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP2")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP2")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "SAFETY_0_V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP3")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP3")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "WATCHDOG_5_V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP4")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP4")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "WATCHDOG_3V3")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP5")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP5")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "COMPUTE_HEARTBEAT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP6")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP6")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "WATCHDOG_HEARTBEAT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP7")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP7")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "WATCHDOG_DRIVE_1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP8")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP8")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "WATCHDOG_DRIVE_2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TP9")
+			(description "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TP9")
+				(field
+					(name "Value") "Harwin S1751-46R SMT test point")
+				(field
+					(name "Footprint") "PBV3_Footprints:Harwin_S1751_46R")
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Dedicated clip/probe point. Confirm probe compatibility, installed access, clearance, marking, retention and no-short test method on the assembled guarded board.")
+				(field
+					(name "Status") "PROPOSED - ACCESS VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Harwin drawing S1751-XXR, issue 10 dated 2023-02-15; product page and drawing accessed 2026-08-06. Recommended PCB pad is 3.45 x 1.85 mm.")
+				(field
+					(name "Display") "Harwin S1751-46R SMT test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "WATCHDOG_COIL_1_SINK")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
 			(part "U1")
 			(description "Pin 2 VDD is intentionally omitted from the project cable. Standard fully populated cables are prohibited in the protected-branch topology.")
 			(docs "https://emanual.robotis.com/docs/en/parts/interface/u2d2/")
@@ -8914,6 +10434,12 @@
 				(pinfunction "GPIO_SIDE_1")
 				(pintype "passive")
 			)
+			(node
+				(ref "TP5")
+				(pin "1")
+				(pinfunction "COMPUTE_HEARTBEAT_1")
+				(pintype "passive")
+			)
 		)
 		(net
 			(code "29")
@@ -9060,6 +10586,12 @@
 				(ref "SRA1")
 				(pin "A2")
 				(pinfunction "0V_SUPPLY_A2")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP2")
+				(pin "1")
+				(pinfunction "SAFETY_0_V_1")
 				(pintype "passive")
 			)
 			(node
@@ -9293,6 +10825,12 @@
 				(ref "SRA1")
 				(pin "A1")
 				(pinfunction "24V_SUPPLY_A1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP1")
+				(pin "1")
+				(pinfunction "SAFETY_24_V_1")
 				(pintype "passive")
 			)
 			(node
@@ -9598,6 +11136,12 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "TP13")
+				(pin "1")
+				(pinfunction "FEEDBACK_RECEIVER_1_OUT_1")
+				(pintype "passive")
+			)
+			(node
 				(ref "UFB1")
 				(pin "4")
 				(pinfunction "OUT1_4")
@@ -9612,6 +11156,12 @@
 				(ref "RSO2")
 				(pin "1")
 				(pinfunction "RECEIVER_OUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP14")
+				(pin "1")
+				(pinfunction "FEEDBACK_RECEIVER_2_OUT_1")
 				(pintype "passive")
 			)
 			(node
@@ -9638,6 +11188,12 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "TP9")
+				(pin "1")
+				(pinfunction "WATCHDOG_COIL_1_SINK_1")
+				(pintype "passive")
+			)
+			(node
 				(ref "UDRV1")
 				(pin "16")
 				(pinfunction "OUT1_COIL_RETURN_16")
@@ -9648,6 +11204,12 @@
 			(code "50")
 			(name "WD1_DRIVE")
 			(class "Default")
+			(node
+				(ref "TP7")
+				(pin "1")
+				(pinfunction "WATCHDOG_DRIVE_1_1")
+				(pintype "passive")
+			)
 			(node
 				(ref "UDRV1")
 				(pin "1")
@@ -9687,6 +11249,12 @@
 				(ref "RW1")
 				(pin "1")
 				(pinfunction "FIELD_INPUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP11")
+				(pin "1")
+				(pinfunction "WATCHDOG_NC_1_INPUT_1")
 				(pintype "passive")
 			)
 		)
@@ -9747,6 +11315,12 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "TP10")
+				(pin "1")
+				(pinfunction "WATCHDOG_COIL_2_SINK_1")
+				(pintype "passive")
+			)
+			(node
 				(ref "UDRV2")
 				(pin "16")
 				(pinfunction "OUT1_COIL_RETURN_16")
@@ -9757,6 +11331,12 @@
 			(code "55")
 			(name "WD2_DRIVE")
 			(class "Default")
+			(node
+				(ref "TP8")
+				(pin "1")
+				(pinfunction "WATCHDOG_DRIVE_2_1")
+				(pintype "passive")
+			)
 			(node
 				(ref "UDRV2")
 				(pin "1")
@@ -9796,6 +11376,12 @@
 				(ref "RW2")
 				(pin "1")
 				(pinfunction "FIELD_INPUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP12")
+				(pin "1")
+				(pinfunction "WATCHDOG_NC_2_INPUT_1")
 				(pintype "passive")
 			)
 		)
@@ -9856,6 +11442,12 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "TP4")
+				(pin "1")
+				(pinfunction "WATCHDOG_3V3_1")
+				(pintype "passive")
+			)
+			(node
 				(ref "UFB1")
 				(pin "2")
 				(pinfunction "VCC1_2")
@@ -9885,6 +11477,12 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "TP3")
+				(pin "1")
+				(pinfunction "WATCHDOG_5_V_1")
+				(pintype "passive")
+			)
+			(node
 				(ref "WDCTRL1")
 				(pin "39")
 				(pinfunction "VSYS_5V_INPUT_39")
@@ -9908,6 +11506,12 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "TP6")
+				(pin "1")
+				(pinfunction "WATCHDOG_HEARTBEAT_1")
+				(pintype "passive")
+			)
+			(node
 				(ref "WDCTRL1")
 				(pin "4")
 				(pinfunction "GP2_HEARTBEAT_IN_4")
@@ -9925,6 +11529,12 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "TP16")
+				(pin "1")
+				(pinfunction "WATCHDOG_SWCLK_1")
+				(pintype "passive")
+			)
+			(node
 				(ref "WDCTRL1")
 				(pin "D1")
 				(pinfunction "SWCLK_D1")
@@ -9939,6 +11549,12 @@
 				(ref "JDBG1")
 				(pin "TBD-SWDIO")
 				(pinfunction "SWDIO_TBD-SWDIO")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP15")
+				(pin "1")
+				(pinfunction "WATCHDOG_SWDIO_1")
 				(pintype "passive")
 			)
 			(node

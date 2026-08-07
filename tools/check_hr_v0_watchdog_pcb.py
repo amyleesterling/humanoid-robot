@@ -1,4 +1,4 @@
-"""Validate the HR-V0 watchdog PCB routed-copper candidate.
+"""Validate the HR-V0 watchdog PCB routed/test-access candidate.
 
 Run this checker with KiCad's bundled Python. It independently proves source
 consistency, placement membership, manufacturer-derived geometry screens,
@@ -23,6 +23,13 @@ import pcbnew
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
+TESTPOINT_NETS = {
+    "TP1": "SAFETY_24V", "TP2": "SAFETY_0V", "TP3": "WD_5V", "TP4": "WD_3V3",
+    "TP5": "PI_HEARTBEAT", "TP6": "WD_HEARTBEAT", "TP7": "WD1_DRIVE", "TP8": "WD2_DRIVE",
+    "TP9": "WD1_COIL_N", "TP10": "WD2_COIL_N", "TP11": "WD1_NC_24V", "TP12": "WD2_NC_24V",
+    "TP13": "UFB_OUT1", "TP14": "UFB_OUT2", "TP15": "WD_SWDIO", "TP16": "WD_SWCLK",
+}
+FLOATING_SUB_NETS = {"INTENTIONALLY_UNUSED_UFB1_12", "INTENTIONALLY_UNUSED_UFB1_13"}
 
 
 def require(condition: bool, message: str, failures: list[str]) -> None:
@@ -138,13 +145,21 @@ def main() -> int:
     segments = [item for item in board.Tracks() if type(item).__name__ == "PCB_TRACK"]
     vias = [item for item in board.Tracks() if type(item).__name__ == "PCB_VIA"]
     zones = list(board.Zones())
-    require(len(segments) == 160, "controlled segment count differs from 160", failures)
-    require(len(vias) == 45, "controlled via count differs from 45", failures)
-    require(len(zones) == 1, "controlled copper-zone count differs from one", failures)
-    if len(zones) == 1:
-        require(zones[0].GetNetname() == "SAFETY_0V", "the sole copper zone is not SAFETY_0V", failures)
-        require(zones[0].IsFilled() and zones[0].HasFilledPolysForLayer(pcbnew.B_Cu),
-                "SAFETY_0V zone does not contain a saved B.Cu fill", failures)
+    require(len(segments) == 200, "controlled segment count differs from 200", failures)
+    require(len(vias) == 56, "controlled via count differs from 56", failures)
+    require(len(zones) == 3, "controlled copper-zone count differs from three", failures)
+    zones_by_net = {zone.GetNetname(): zone for zone in zones}
+    require(set(zones_by_net) == {"SAFETY_0V"} | FLOATING_SUB_NETS,
+            "zone nets differ from SAFETY_0V plus the two isolated SUB nets", failures)
+    for net_name, zone in zones_by_net.items():
+        require(zone.IsOnLayer(pcbnew.B_Cu), f"{net_name} zone is not on B.Cu", failures)
+        require(zone.IsFilled() and zone.HasFilledPolysForLayer(pcbnew.B_Cu),
+                f"{net_name} zone does not contain a saved B.Cu fill", failures)
+        if net_name in FLOATING_SUB_NETS:
+            bounds = zone.Outline().BBox()
+            require(abs(pcbnew.ToMM(bounds.GetWidth()) - 2.0) < 0.001 and
+                    abs(pcbnew.ToMM(bounds.GetHeight()) - 2.0) < 0.001,
+                    f"{net_name} thermal plane is not exactly 2 mm x 2 mm", failures)
 
     # Independently rebuild KiCad connectivity. Every modeled net with more
     # than one pad must form one connected pad set. Every modeled singleton
@@ -158,6 +173,7 @@ def main() -> int:
         for pin in comp.pins:
             modeled_by_net.setdefault(pin.net, []).append(pad(footprints, ref, pin.number))
     singleton_records = []
+    floating_sub_records = []
     for net_name, net_pads in modeled_by_net.items():
         expected_ids = {item.m_Uuid.AsString() for item in net_pads}
         if len(net_pads) > 1:
@@ -169,6 +185,27 @@ def main() -> int:
                 }
                 require(connected_ids == expected_ids,
                         f"routed pad set is incomplete or contaminated at {net_name}", failures)
+        elif net_name in FLOATING_SUB_NETS:
+            item = net_pads[0]
+            connected = list(connectivity.GetConnectedItems(item))
+            connected_pads = {
+                connected.m_Uuid.AsString()
+                for connected in connected
+                if isinstance(connected, pcbnew.PAD)
+            }
+            require(connected_pads == expected_ids,
+                    f"floating SUB net {net_name} reaches another pad", failures)
+            net_segments = [track for track in segments if track.GetNetname() == net_name]
+            net_vias = [via for via in vias if via.GetNetname() == net_name]
+            require(bool(net_segments) and bool(net_vias) and net_name in zones_by_net,
+                    f"floating SUB net {net_name} lacks controlled trace/via/plane copper", failures)
+            floating_sub_records.append({
+                "net": net_name,
+                "reference": item.GetParentFootprint().GetReference(),
+                "pad": item.GetNumber(),
+                "segments": len(net_segments),
+                "vias": len(net_vias),
+            })
         else:
             item = net_pads[0]
             connected = list(connectivity.GetConnectedItems(item))
@@ -179,7 +216,8 @@ def main() -> int:
                 "reference": item.GetParentFootprint().GetReference(),
                 "pad": item.GetNumber(),
             })
-    require(len(singleton_records) == 18, "controlled singleton-pad count differs from 18", failures)
+    require(len(singleton_records) == 14, "controlled isolated singleton-pad count differs from 14", failures)
+    require(len(floating_sub_records) == 2, "controlled floating-SUB count differs from two", failures)
     no_net_pads = [
         item
         for footprint in board.GetFootprints()
@@ -190,6 +228,20 @@ def main() -> int:
     for item in no_net_pads:
         require(len(list(connectivity.GetConnectedItems(item))) == 0,
                 f"no-net pad touches copper at {item.GetParentFootprint().GetReference()}.{item.GetNumber()}", failures)
+
+    # Harwin drawing S1751-XXR issue 10 freezes the SMT land pattern. These
+    # checks prove encoded footprint and net identity; physical probe access
+    # still requires assembled-board inspection.
+    for ref, net_name in TESTPOINT_NETS.items():
+        footprint = footprints[ref]
+        require(footprint.GetFPID().GetLibItemName() == "Harwin_S1751_46R",
+                f"{ref} does not use the frozen Harwin S1751-46R footprint", failures)
+        test_pad = pad(footprints, ref, "1")
+        require(test_pad.GetNetname() == net_name, f"{ref} net differs from {net_name}", failures)
+        require(abs(pcbnew.ToMM(test_pad.GetSizeX()) - 3.45) < 0.001 and
+                abs(pcbnew.ToMM(test_pad.GetSizeY()) - 1.85) < 0.001,
+                f"{ref} pad differs from the 3.45 mm x 1.85 mm Harwin land pattern", failures)
+        require(test_pad.IsOnLayer(pcbnew.F_Cu), f"{ref} is not top-side probe accessible", failures)
 
     # TI ISO1212 SLLSEY7G layout controls: the 100 nF side-1 bypass is
     # constrained to a maximum 2 mm copper-edge placement gap, CIN is kept
@@ -236,10 +288,10 @@ def main() -> int:
                 f"CDRV{channel} is not compact to UDRV{channel} GND", failures)
 
     title = board.GetTitleBlock()
-    require(title.GetRevision() == "PCB-P0.3 / Electrical V3-P1.0", "PCB title-block revision mismatch", failures)
+    require(title.GetRevision() == "PCB-P0.4 / Electrical V3-P1.1", "PCB title-block revision mismatch", failures)
     require(WARNING in board_path.read_text(encoding="utf-8-sig"), "PCB warning missing", failures)
-    require("ROUTED-COPPER CANDIDATE" in board_path.read_text(encoding="utf-8-sig"),
-            "routed-copper candidate status missing from PCB", failures)
+    require("ROUTED/TEST-ACCESS CANDIDATE" in board_path.read_text(encoding="utf-8-sig"),
+            "routed/test-access candidate status missing from PCB", failures)
 
     project = json.loads((OUT / "project-button-v3.kicad_pro").read_text(encoding="utf-8-sig"))
     default = next((item for item in project["net_settings"]["classes"] if item.get("name") == "Default"), {})
@@ -252,15 +304,15 @@ def main() -> int:
         "SAFETY_24V": "POWER24", "WD1_COIL_N": "POWER24", "WD2_COIL_N": "POWER24"
     }, "POWER24 net assignments differ from the controlled three nets", failures)
 
-    drc = (OUT / "validation" / "project-button-v3-pcb-routing-drc.rpt").read_text(encoding="utf-8-sig")
-    require("Found 0 DRC violations" in drc, "routed-copper DRC has violations", failures)
+    drc = (OUT / "validation" / "project-button-v3-pcb-test-access-drc.rpt").read_text(encoding="utf-8-sig")
+    require("Found 0 DRC violations" in drc, "routed/test-access DRC has violations", failures)
     unconnected = re.search(r"Found (\d+) unconnected pads", drc)
     require(unconnected is not None and int(unconnected.group(1)) == 0,
             "native DRC routed-unconnected count differs from zero", failures)
-    log = (OUT / "validation" / "project-button-v3-pcb-routing-cli.log").read_text(encoding="utf-8-sig")
+    log = (OUT / "validation" / "project-button-v3-pcb-test-access-cli.log").read_text(encoding="utf-8-sig")
     require(log.count("exit=0") == 3, "PCB DRC/top-render/bottom-render commands did not all exit 0", failures)
     for side in ("top", "bottom"):
-        render = OUT / "output" / f"project-button-v3-pcb-routing-{side}.png"
+        render = OUT / "output" / f"project-button-v3-pcb-test-access-{side}.png"
         require(render.is_file() and render.stat().st_size > 20_000,
                 f"PCB {side} render missing or unexpectedly small", failures)
     fabrication_outputs = [
@@ -268,13 +320,13 @@ def main() -> int:
         if path.is_file() and path.suffix.lower() in {".gbr", ".ger", ".drl", ".xln", ".gbrjob"}
     ]
     require(not fabrication_outputs, "Gerber/drill fabrication outputs exist despite the open release gate", failures)
-    for name in ("MKDS_1_2_3P5.kicad_mod", "MKDS_1_4_3P5.kicad_mod", "VO618A_Option7_SMD.kicad_mod"):
+    for name in ("MKDS_1_2_3P5.kicad_mod", "MKDS_1_4_3P5.kicad_mod", "VO618A_Option7_SMD.kicad_mod", "Harwin_S1751_46R.kicad_mod"):
         require((OUT / "PBV3_Footprints.pretty" / name).is_file(), f"custom candidate footprint missing: {name}", failures)
 
     constraint_evidence = {
         "status": WARNING,
-        "board_revision": "PCB-P0.3",
-        "electrical_revision": "Electrical V3-P1.0",
+        "board_revision": "PCB-P0.4",
+        "electrical_revision": "Electrical V3-P1.1",
         "generated_date": "2026-08-06",
         "manufacturer_sources": [
             {
@@ -282,7 +334,7 @@ def main() -> int:
                 "document": "ISO121x datasheet SLLSEY7G",
                 "revision": "G, revised February 2025",
                 "accessed": "2026-08-06",
-                "url": "https://www.ti.com/lit/ds/symlink/iso1211.pdf",
+                "url": "https://www.ti.com/lit/ds/symlink/iso1212.pdf",
             },
             {
                 "manufacturer": "Texas Instruments",
@@ -290,6 +342,13 @@ def main() -> int:
                 "revision": "D, revised March 2016",
                 "accessed": "2026-08-06",
                 "url": "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf",
+            },
+            {
+                "manufacturer": "Harwin",
+                "document": "S1751-XXR technical drawing DRG 02202",
+                "revision": "Issue 10, 2023-02-15",
+                "accessed": "2026-08-06",
+                "url": "https://content.harwin.com/asset/e4e6a5e1-de35-4a2b-8b49-ff06562cba9d/DRG-02202-Technical-Drawing-Datasheet-S1751R-pdf.pdf",
             },
         ],
         "measured_placement_screens_mm": {
@@ -334,6 +393,8 @@ def main() -> int:
             "zones": len(zones),
             "native_unconnected_pads": 0,
             "intentional_singleton_pads": singleton_records,
+            "floating_sub_copper": floating_sub_records,
+            "test_points": TESTPOINT_NETS,
             "no_net_pads": len(no_net_pads),
             "track_widths_mm": sorted({round(pcbnew.ToMM(item.GetWidth()), 4) for item in segments}),
             "route_lengths_mm": {
@@ -350,23 +411,23 @@ def main() -> int:
         "limitations": [
             "Zero native DRC violations proves only the encoded geometric/connectivity rules.",
             "The 0.10 mm fine-pitch breakouts require fabricator capability selection and review.",
-            "No stack-up, fabrication, EMC, thermal, COM-slew, test-point or fault evidence is released.",
+            "No stack-up, fabrication, EMC, thermal, COM-slew, physical probe-access or fault evidence is released.",
             "UFB1 field and logic returns share SAFETY_0V; no galvanic-isolation or safety credit is claimed.",
         ],
     }
-    evidence_path = OUT / "validation" / "project-button-v3-pcb-routing-evidence.json"
+    evidence_path = OUT / "validation" / "project-button-v3-pcb-test-access-evidence.json"
     evidence_path.write_text(json.dumps(constraint_evidence, indent=2) + "\n", encoding="utf-8")
     model.manifest()
 
     if failures:
-        print("HR-V0 watchdog PCB routed-copper validation: FAIL")
+        print("HR-V0 watchdog PCB routed/test-access validation: FAIL")
         for failure in failures:
             print(f"- {failure}")
         return 1
-    print("HR-V0 watchdog PCB routed-copper validation: PASS")
-    print("26 board-mounted references; 4 board-only M3 holes; 160 segments; 45 vias; 1 filled zone")
-    print("40 modeled nets: every multi-pad net connected; 18 intentional singletons isolated; 89 no-net pads untouched")
-    print("TI placement screens: CDEC <=2 mm; CIN compact; RTH high side >=4 mm; field/control zoning PASS")
+    print("HR-V0 watchdog PCB routed/test-access validation: PASS")
+    print("42 board-mounted references; 4 board-only M3 holes; 200 segments; 56 vias; 3 filled zones")
+    print("40 modeled nets: every multi-pad net connected; 14 singletons isolated; 2 SUB thermal nets controlled; 89 no-net pads untouched")
+    print("TI placement/SUB screens and 16 Harwin test-point land patterns: PASS")
     print("KiCad DRC: 0 violations; 0 routed unconnected pads; no Gerber/drill release outputs")
     print(WARNING)
     return 0

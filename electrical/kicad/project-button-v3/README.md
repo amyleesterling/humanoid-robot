@@ -1,4 +1,4 @@
-# Project Button HR-V0 Electrical V3-P1.0
+# Project Button HR-V0 Electrical V3-P1.1
 
 **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -17,6 +17,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 9. `09_compute_and_control_terminals.kicad_sch` — Compute, debug and control terminals
 10. `10_actuator_interfaces.kicad_sch` — U2D2, actuator ports and bonding boundary
 11. `11_watchdog_pcb_connectors.kicad_sch` — Watchdog PCB external connectors
+12. `12_watchdog_pcb_test_access.kicad_sch` — Watchdog PCB test access
 
 ## Material corrections relative to V2.1
 
@@ -26,7 +27,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 - Compute heartbeat crosses an exact VO618A-4X017T optical interface with exact 910 Ohm input and 10 kOhm pullup candidates. Two separate TPL7407LPWR packages drive the two relay coils, with unused inputs tied low, unused outputs open, and local 100 nF COM bypass candidates. These ordinary circuits receive no safety credit and still require PCB, timing, hot-plug, fault-injection, EMC and qualified review.
 - The ISO1212 feedback network uses exact proposed Vishay, Panasonic, TDK and Murata passive order codes. Receiving, PCB land-pattern/placement, DC-bias, pulse, thermal, EMC, fault and HIL evidence remain mandatory.
 - Three exact Phoenix Contact PCB terminal-block candidates freeze the project pin allocation for 24 V/control return, two coil sinks, two NC feedback channels and the isolated heartbeat pair. Harness, conductor, ferrule, protection, enclosure, received-orientation and thermal evidence remain open.
-- `project-button-v3.kicad_pcb` is the native PCB-P0.3 routed-copper candidate. It retains the corrected ISO1212 DBQ footprint and field/control zoning, contains 160 segments, 45 vias and one filled return zone, and passes native DRC plus independent connectivity checks. It is not a Gerber or fabrication release; exact stack-up/fabricator capability, 0.10 mm breakout acceptance, test points, SUB copper, protection coordination, schematic parity review, creepage/clearance, thermal, EMC and HIL evidence remain gates.
+- `project-button-v3.kicad_pcb` is the native PCB-P0.4 routed/test-access candidate. It retains the corrected ISO1212 DBQ footprint and field/control zoning, adds sixteen exact Harwin S1751-46R test terminals and separate TI-recommended 2 mm x 2 mm SUB1/SUB2 floating copper planes, and must pass native DRC plus independent connectivity/isolation checks. It is not a Gerber or fabrication release; exact stack-up/fabricator capability, 0.10 mm breakout acceptance, installed probe access, protection coordination, schematic parity review, creepage/clearance, thermal, EMC and HIL evidence remain gates.
 - Heartbeat restoration cannot restore contactors; SRA1 requires a new monitored ARM action.
 - External Mean Well adapters replace project-built mains wiring.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.
