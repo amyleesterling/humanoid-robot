@@ -6,7 +6,7 @@ Control date: 2026-08-07
 
 ## Result
 
-The system BOM now contains 71 configuration groups. R46 added thirteen groups that were previously invisible assembly assumptions: the control enclosure, panel hardware, stationary wire, actuator signal harness, labels, AC cords, boot media, bench anchors, project-added structural fasteners, cable-entry/strain-relief hardware, guard access hardware, wire terminations, and the Raspberry Pi-to-U2D2 USB cable. R48 adds `BOM-071` for twenty-four exact `75-3422` frame-joint bolt assemblies and moves `BOM-024`/`BOM-025` to exact-candidate hold under `HR-V0-FRAME-P0.1`; none is application-released.
+The system BOM now contains 71 configuration groups. R46 added thirteen groups that were previously invisible assembly assumptions: the control enclosure, panel hardware, stationary wire, actuator signal harness, labels, AC cords, boot media, bench anchors, project-added structural fasteners, cable-entry/strain-relief hardware, guard access hardware, wire terminations, and the Raspberry Pi-to-U2D2 USB cable. R49 corrects `BOM-071` to twelve exact `75-3422` frame-joint bolt assemblies and binds `BOM-024`/`BOM-025` to the non-overlapping `40-4040` cut schedule and six `40-4332` brackets under `HR-V0-FRAME-P0.2`; none is application-released.
 
 The machine-readable closure register is `bom/hr-v0-bom-closure.csv`. Every `bom/bom.csv` item has exactly one classification:
 

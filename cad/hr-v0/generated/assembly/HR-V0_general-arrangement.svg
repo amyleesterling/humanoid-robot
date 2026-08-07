@@ -31,7 +31,7 @@
   <line x1="100" y1="780.0" x2="790" y2="780.0" class="datum"/>
   <text x="105" y="804.0" class="small">A0 BENCH PLANE</text>
   <rect x="397.5" y="754.0" width="325.0" height="26.0" class="structure"/>
-  <rect x="410.5" y="442.0" width="26.0" height="325.0" class="structure"/>
+  <rect x="410.5" y="429.0" width="26.0" height="325.0" class="structure"/>
   <rect x="426.8" y="419.2" width="58.5" height="71.5" class="custom"/>
   <circle cx="452.1" cy="455.0" r="18" class="actuator"/>
   <rect x="452.1" y="440.7" width="104.0" height="28.6" rx="14" class="custom"/>
@@ -59,12 +59,18 @@
 
   <text x="850" y="150" class="subtitle">PLAN VIEW · BASE / GUARD RESERVATION</text>
   <rect x="865" y="185" width="378" height="168" class="guard"/>
-  <rect x="949" y="202" width="210" height="134" class="structure"/>
-  <rect x="964" y="202" width="17" height="134" class="structure"/>
+  <rect x="949" y="202" width="210" height="17" class="structure"/>
+  <rect x="949" y="319" width="210" height="17" class="structure"/>
+  <rect x="949" y="219" width="17" height="100" class="structure"/>
+  <rect x="1142" y="219" width="17" height="100" class="structure"/>
+  <rect x="949" y="261" width="17" height="17" class="hold"/>
+  <circle cx="966" cy="219" r="4" class="axis"/><circle cx="966" cy="319" r="4" class="axis"/>
+  <circle cx="1142" cy="219" r="4" class="axis"/><circle cx="1142" cy="319" r="4" class="axis"/>
+  <line x1="949" y1="261" x2="966" y2="261" class="datum"/><line x1="949" y1="278" x2="966" y2="278" class="datum"/>
   <circle cx="983" cy="269" r="8" class="axis"/>
   <text x="1000" y="264" class="small">C0 column X=-210</text>
   <text x="1000" y="286" class="small">J1 offset +44 from C0</text>
-  <text x="875" y="380" class="small">Guard reservation: 900 W x 400 D. Base: 500 x 320.</text>
+  <text x="875" y="380" class="small">Base outside: 500 x 320. Cuts: 2 x 500, 2 x 240, column 500.</text>
 
   <text x="850" y="430" class="subtitle">CONFIGURATION LEGEND</text>
   <rect x="850" y="450" width="24" height="24" class="structure"/><text x="888" y="469">selected profile / candidate cut length</text>
@@ -76,12 +82,13 @@
   <text x="850" y="654" class="subtitle">FABRICATION / ASSEMBLY HOLDS</text>
   <text x="850" y="690">1. Execute MV0-FC01 / FC02 / FC03 on received frames.</text>
   <text x="850" y="720">2. Freeze hole size/position, fastener stacks, torque and retention.</text>
-  <text x="850" y="750">3. Proof six 40-4334 / twenty-four 75-3422 frame-joint candidates.</text>
+  <text x="850" y="750">3. Dry-fit and proof six 40-4332 / twelve 75-3422 joint candidates.</text>
   <text x="850" y="780">4. Survey the Boston build bench and engineer its anchors.</text>
   <text x="850" y="810">5. Design and proof backed-up hard stops, guard and catch.</text>
   <text x="850" y="840">6. Close measured mass/COM/inertia and rerun load calculations.</text>
   <text x="850" y="870">7. Complete FAI and unpowered assembly inspection.</text>
-  <text x="850" y="910" class="warning">NO STRUCTURAL CUTTING ORDER OR POWERED MOTION IS RELEASED.</text>
+  <text x="850" y="900" class="warning">NO STRUCTURAL CUTTING ORDER IS RELEASED.</text>
+  <text x="850" y="930" class="warning">NO POWERED MOTION IS RELEASED.</text>
 
   <rect x="36" y="900" width="745" height="132" rx="10" class="callout"/>
   <text x="56" y="932" class="subtitle">DATUM CHAIN</text>

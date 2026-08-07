@@ -104,7 +104,7 @@ def write_svg() -> None:
   <line x1="100" y1="{bench_y:.1f}" x2="790" y2="{bench_y:.1f}" class="datum"/>
   <text x="105" y="{bench_y+24:.1f}" class="small">A0 BENCH PLANE</text>
   <rect x="{x(-250):.1f}" y="{y(40):.1f}" width="{500*sx:.1f}" height="{40*sx:.1f}" class="structure"/>
-  <rect x="{x(colx-20):.1f}" y="{y(520):.1f}" width="{40*sx:.1f}" height="{500*sx:.1f}" class="structure"/>
+  <rect x="{x(colx-20):.1f}" y="{y(540):.1f}" width="{40*sx:.1f}" height="{500*sx:.1f}" class="structure"/>
   <rect x="{x(colx+5):.1f}" y="{y(555):.1f}" width="{90*sx:.1f}" height="{110*sx:.1f}" class="custom"/>
   <circle cx="{x(j1x):.1f}" cy="{y(500):.1f}" r="18" class="actuator"/>
   <rect x="{x(j1x):.1f}" y="{y(522):.1f}" width="{160*sx:.1f}" height="{44*sx:.1f}" rx="14" class="custom"/>
@@ -132,12 +132,18 @@ def write_svg() -> None:
 
   <text x="850" y="150" class="subtitle">PLAN VIEW · BASE / GUARD RESERVATION</text>
   <rect x="865" y="185" width="378" height="168" class="guard"/>
-  <rect x="949" y="202" width="210" height="134" class="structure"/>
-  <rect x="964" y="202" width="17" height="134" class="structure"/>
+  <rect x="949" y="202" width="210" height="17" class="structure"/>
+  <rect x="949" y="319" width="210" height="17" class="structure"/>
+  <rect x="949" y="219" width="17" height="100" class="structure"/>
+  <rect x="1142" y="219" width="17" height="100" class="structure"/>
+  <rect x="949" y="261" width="17" height="17" class="hold"/>
+  <circle cx="966" cy="219" r="4" class="axis"/><circle cx="966" cy="319" r="4" class="axis"/>
+  <circle cx="1142" cy="219" r="4" class="axis"/><circle cx="1142" cy="319" r="4" class="axis"/>
+  <line x1="949" y1="261" x2="966" y2="261" class="datum"/><line x1="949" y1="278" x2="966" y2="278" class="datum"/>
   <circle cx="983" cy="269" r="8" class="axis"/>
   <text x="1000" y="264" class="small">C0 column X=-210</text>
   <text x="1000" y="286" class="small">J1 offset +44 from C0</text>
-  <text x="875" y="380" class="small">Guard reservation: 900 W x 400 D. Base: 500 x 320.</text>
+  <text x="875" y="380" class="small">Base outside: 500 x 320. Cuts: 2 x 500, 2 x 240, column 500.</text>
 
   <text x="850" y="430" class="subtitle">CONFIGURATION LEGEND</text>
   <rect x="850" y="450" width="24" height="24" class="structure"/><text x="888" y="469">selected profile / candidate cut length</text>
@@ -149,12 +155,13 @@ def write_svg() -> None:
   <text x="850" y="654" class="subtitle">FABRICATION / ASSEMBLY HOLDS</text>
   <text x="850" y="690">1. Execute MV0-FC01 / FC02 / FC03 on received frames.</text>
   <text x="850" y="720">2. Freeze hole size/position, fastener stacks, torque and retention.</text>
-  <text x="850" y="750">3. Proof six 40-4334 / twenty-four 75-3422 frame-joint candidates.</text>
+  <text x="850" y="750">3. Dry-fit and proof six 40-4332 / twelve 75-3422 joint candidates.</text>
   <text x="850" y="780">4. Survey the Boston build bench and engineer its anchors.</text>
   <text x="850" y="810">5. Design and proof backed-up hard stops, guard and catch.</text>
   <text x="850" y="840">6. Close measured mass/COM/inertia and rerun load calculations.</text>
   <text x="850" y="870">7. Complete FAI and unpowered assembly inspection.</text>
-  <text x="850" y="910" class="warning">NO STRUCTURAL CUTTING ORDER OR POWERED MOTION IS RELEASED.</text>
+  <text x="850" y="900" class="warning">NO STRUCTURAL CUTTING ORDER IS RELEASED.</text>
+  <text x="850" y="930" class="warning">NO POWERED MOTION IS RELEASED.</text>
 
   <rect x="36" y="900" width="745" height="132" rx="10" class="callout"/>
   <text x="56" y="932" class="subtitle">DATUM CHAIN</text>
@@ -173,11 +180,13 @@ def main() -> int:
     components_path = CAD / "mechanical-assembly-components.csv"
     extrusion_path = ROOT / "bom" / "hr-v0-extrusion-cut-schedule.csv"
     frame_joint_path = ROOT / "bom" / "hr-v0-frame-joint-schedule.csv"
+    placement_path = CAD / "frame-joint-placement-p0.2.csv"
     data = read_csv(data_path)
     interfaces = read_csv(interface_path)
     components = read_csv(components_path)
     extrusions = read_csv(extrusion_path)
     frame_joints = read_csv(frame_joint_path)
+    placements = read_csv(placement_path)
     datums = write_datums()
     write_svg()
     summary = {
@@ -185,7 +194,7 @@ def main() -> int:
         "warning": WARNING,
         "source_hashes": {
             path.relative_to(ROOT).as_posix(): canonical_text_sha256(path)
-            for path in (data_path, interface_path, components_path, extrusion_path, frame_joint_path)
+            for path in (data_path, interface_path, components_path, extrusion_path, frame_joint_path, placement_path)
         },
         "counts": {
             "controlled_parameters": len(data),
@@ -193,6 +202,7 @@ def main() -> int:
             "assembly_components": len(components),
             "extrusion_cut_rows": len(extrusions),
             "frame_joint_rows": len(frame_joints),
+            "frame_joint_placements": len(placements),
             "datums": len(datums),
         },
         "parameter_status_counts": dict(sorted(Counter(row["status"] for row in data).items())),

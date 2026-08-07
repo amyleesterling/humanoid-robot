@@ -37,11 +37,12 @@ def main() -> int:
     component_path = CAD / "mechanical-assembly-components.csv"
     extrusion_path = ROOT / "bom" / "hr-v0-extrusion-cut-schedule.csv"
     frame_joint_path = ROOT / "bom" / "hr-v0-frame-joint-schedule.csv"
+    placement_path = CAD / "frame-joint-placement-p0.2.csv"
     inspection_path = ROOT / "tests" / "forms" / "hr-v0-mechanical-release-inspection-template.csv"
     svg_path = OUT / "HR-V0_general-arrangement.svg"
     datums_path = OUT / "assembly-datums.csv"
     summary_path = OUT / "mechanical-release-summary.json"
-    required = [data_path, interface_path, component_path, extrusion_path, frame_joint_path, inspection_path, svg_path, datums_path, summary_path]
+    required = [data_path, interface_path, component_path, extrusion_path, frame_joint_path, placement_path, inspection_path, svg_path, datums_path, summary_path]
     for path in required:
         if not path.is_file():
             errors.append(f"missing {path.relative_to(ROOT)}")
@@ -54,6 +55,7 @@ def main() -> int:
     components = rows(component_path)
     extrusions = rows(extrusion_path)
     frame_joints = rows(frame_joint_path)
+    placements = rows(placement_path)
     inspection = rows(inspection_path)
     datums = rows(datums_path)
     bom = {row["item_id"]: row for row in rows(ROOT / "bom" / "bom.csv")}
@@ -94,14 +96,16 @@ def main() -> int:
     if len(extrusions) != 3 or sum(int(row["quantity"]) for row in extrusions) != 5:
         errors.append("extrusion schedule must resolve five cuts in three rows")
     total_length = sum(int(row["quantity"]) * float(row["finished_length_mm"]) for row in extrusions)
-    if total_length != 2140.0:
-        errors.append(f"extrusion cut total expected 2140 mm, found {total_length}")
+    if total_length != 1980.0:
+        errors.append(f"extrusion cut total expected 1980 mm, found {total_length}")
     if any(row["parent_bom_id"] != "BOM-024" or row["release_state"] != "candidate_cut_length" for row in extrusions):
         errors.append("extrusion schedule lost BOM-024/candidate-cut controls")
-    if len(frame_joints) != 6 or sum(int(row["hardware_qty"]) for row in frame_joints) != 24:
-        errors.append("frame-joint schedule must resolve six brackets and twenty-four hardware assemblies")
+    if len(frame_joints) != 6 or sum(int(row["hardware_qty"]) for row in frame_joints) != 12:
+        errors.append("frame-joint schedule must resolve six brackets and twelve hardware assemblies")
     if any(row["configuration_state"] != "exact_candidate_hold" for row in frame_joints):
         errors.append("frame-joint schedule lost exact-candidate hold controls")
+    if len(placements) != 6 or [row["joint_id"] for row in placements] != [f"FJ-{index:03d}" for index in range(1, 7)]:
+        errors.append("frame-joint placement schedule must contain ordered FJ-001 through FJ-006")
 
     expected_inspection_ids = {
         "MRD-001", "MRD-002", "MRD-003", "MRD-005", "MRD-006", "MRD-007", "MRD-008", "MRD-009", "MRD-010",
@@ -147,10 +151,10 @@ def main() -> int:
     summary = json.loads(summary_path.read_text(encoding="utf-8"))
     if summary.get("revision") != REVISION or summary.get("warning") != WARNING:
         errors.append("mechanical summary revision/warning changed")
-    expected_counts = {"controlled_parameters": 24, "interfaces": 12, "assembly_components": 20, "extrusion_cut_rows": 3, "frame_joint_rows": 6, "datums": 6}
+    expected_counts = {"controlled_parameters": 24, "interfaces": 12, "assembly_components": 20, "extrusion_cut_rows": 3, "frame_joint_rows": 6, "frame_joint_placements": 6, "datums": 6}
     if summary.get("counts") != expected_counts:
         errors.append(f"mechanical summary counts changed: {summary.get('counts')}")
-    for path in (data_path, interface_path, component_path, extrusion_path, frame_joint_path):
+    for path in (data_path, interface_path, component_path, extrusion_path, frame_joint_path, placement_path):
         key = path.relative_to(ROOT).as_posix()
         if summary.get("source_hashes", {}).get(key) != canonical_text_sha256(path):
             errors.append(f"mechanical summary hash stale for {key}")
@@ -170,6 +174,7 @@ def main() -> int:
         "cad/hr-v0/generated/assembly/",
         "bom/hr-v0-extrusion-cut-schedule.csv",
         "bom/hr-v0-frame-joint-schedule.csv",
+        "cad/hr-v0/frame-joint-placement-p0.2.csv",
         "docs/hr-v0-mechanical-release-p0.2.md",
     ):
         if evidence not in gate_text:

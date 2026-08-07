@@ -78,7 +78,7 @@ def main() -> None:
     if mechanical_product.get("supporting_identifiers") != [
         "HR-V0-MECH-R0.1-PRELIMINARY",
         "HR-V0-PLATE-RFQ-P0.1",
-        "HR-V0-FRAME-P0.1",
+        "HR-V0-FRAME-P0.2",
     ]:
         errors.append("HR-V0-MECH-P0.2 supporting identifiers changed or are incomplete")
 

@@ -119,7 +119,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R45](docs/reviews/2026-08-07-sol-r12-post-r45-status.md)
 - [Sol R12 findings rechecked against R46](docs/reviews/2026-08-07-sol-r12-post-r46-status.md)
 - [Sol R12 findings rechecked against R47](docs/reviews/2026-08-07-sol-r12-post-r47-status.md)
-- [Sol R12 findings rechecked against R48](docs/reviews/2026-08-07-sol-r12-post-r48-status.md)
+- [Sol R12 findings rechecked against R49](docs/reviews/2026-08-07-sol-r12-post-r49-status.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.2 independent review request](docs/reviews/2026-08-07-firmware-p0.2-independent-review-request.md)
 - [Firmware P0.1 historical independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
@@ -139,7 +139,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-Forty-eight review/control rounds are complete: R01-R48. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
+Forty-nine review/control rounds are complete: R01-R49. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -191,6 +191,7 @@ Forty-eight review/control rounds are complete: R01-R48. R11 Fable and R12 Sol a
 | R46 | HR-V0 BOM closure and evaluation boundary | Expanded the system BOM from 57 to 70 groups, exposed thirteen missing assembly dependencies, classified every row, froze seventeen exact evaluation-only candidates with receiving routes, and advanced EG-003 from open to partial. Thirty-three groups remain `SELECTION REQUIRED`; no blanket procurement, fabrication or energization release was issued. |
 | R47 | HR-V0 mechanical datum/interface correction | Issued `HR-V0-MECH-P0.2` with 24 parameters, 12 interfaces, 19 assembly groups, five exact extrusion cuts, six datums, a generated general arrangement and inspection route. Corrected inconsistent assembly transforms/anchor orientation and removed misleading structural STL. EG-005 through EG-008 remain partial; no cutting, assembly or energization release was issued. |
 | R48 | HR-V0 exact catalog frame-joint correction | Issued `HR-V0-FRAME-P0.1`: six enumerated `40-4334` brackets, twenty-four `75-3422` assemblies, an 11.49 N m load-path screen, manufacturer 13–20 N m trial guidance, and `INSPECT-MECH-010`. Actual-joint torque, slip/proof, bench anchors and qualified disposition remain open; no assembly or energization release was issued. |
+| R49 | HR-V0 frame collision and bracket-topology correction | Superseded defective `HR-V0-FRAME-P0.1` with `P0.2`; changed the two transverse cuts from 320 to 240 mm, placed the upright on the base top, replaced incompatible two-slot-wide `40-4334` with six `40-4332` brackets and twelve `75-3422` assemblies, enumerated six bracket ridges, and added a fail-closed positive-volume overlap check. Received fit/tool access, torque, slip/proof and qualified review remain open; no procurement, fabrication, assembly or energization release was issued. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

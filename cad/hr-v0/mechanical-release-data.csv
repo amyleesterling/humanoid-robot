@@ -1,9 +1,9 @@
 parameter_id,category,parameter,nominal_value,unit,tolerance_or_limit,datum_or_frame,source,status,closure_evidence
 MRD-001,base,base longitudinal extrusion length,500,mm,+/-0.5,each cut end,bom/hr-v0-extrusion-cut-schedule.csv,candidate_dimension,"Supplier cut capability and first-article length/squareness inspection"
-MRD-002,base,base transverse extrusion length,320,mm,+/-0.5,each cut end,bom/hr-v0-extrusion-cut-schedule.csv,candidate_dimension,"Supplier cut capability and first-article length/squareness inspection"
-MRD-003,base,column extrusion length,500,mm,+/-0.5,bench plane A0,bom/hr-v0-extrusion-cut-schedule.csv,candidate_dimension,"Supplier cut capability and first-article length/squareness inspection"
+MRD-002,base,base transverse extrusion length,240,mm,+/-0.5,each cut end,bom/hr-v0-extrusion-cut-schedule.csv,candidate_dimension,"Supplier cut capability and first-article length/squareness inspection"
+MRD-003,base,column extrusion length,500,mm,+/-0.5,base top Z=40,bom/hr-v0-extrusion-cut-schedule.csv,candidate_dimension,"Supplier cut capability and first-article length/squareness inspection"
 MRD-004,base,extrusion profile envelope,40 x 40,mm,manufacturer profile,extrusion centerline,80/20 40-4040,candidate_component,"Receive exact 40-4040 stock and inspect profile/straightness"
-MRD-005,base,base outside footprint,500 x 320,mm,derived nominal,A0 base center,cad/hr-v0/src/hr_v0_cad.py,derived_candidate,"Assemble square and inspect diagonals after exact gusset and fastener selection"
+MRD-005,base,base outside footprint,500 x 320,mm,derived nominal,A0 base center,cad/hr-v0/src/hr_v0_cad.py,derived_candidate,"Two 500 mm rails at Y +/-140 and two 240 mm rails at X +/-210 abut without positive-volume overlap; inspect diagonals after dry-fit"
 MRD-006,arm,shoulder axis height,500,mm,+/-2.0,A0 bench plane,cad/hr-v0/src/hr_v0_cad.py,candidate_dimension,"Close adapter stack and inspect assembled J1 axis height"
 MRD-007,arm,column centerline X,-210,mm,+/-1.0,A0 base center,cad/hr-v0/src/hr_v0_cad.py,candidate_dimension,"Close base gussets and inspect assembled column position/squareness"
 MRD-008,arm,shoulder axis X offset from column centerline,44,mm,+/-0.5,C0 column centerline,derived from MV0-003,candidate_dimension,"Coupon/FAI plus assembled adapter and frame inspection"

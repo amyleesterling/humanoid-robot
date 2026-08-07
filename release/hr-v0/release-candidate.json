@@ -17,7 +17,7 @@
     {
       "domain": "mechanical",
       "identifier": "HR-V0-MECH-P0.2",
-      "supporting_identifiers": ["HR-V0-MECH-R0.1-PRELIMINARY", "HR-V0-PLATE-RFQ-P0.1", "HR-V0-FRAME-P0.1"],
+      "supporting_identifiers": ["HR-V0-MECH-R0.1-PRELIMINARY", "HR-V0-PLATE-RFQ-P0.1", "HR-V0-FRAME-P0.2"],
       "release_state": "datum_interface_and_rfq_coordination_candidate_not_released"
     },
     {

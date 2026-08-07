@@ -1,7 +1,7 @@
 record_id,date,operator,configuration_commit,joint_id,received_bracket_mpn,received_hardware_mpn,bracket_qty,hardware_qty,lot_or_pack_id,tool_id,tool_calibration_due,trial_torque_nm,torque_sequence,member_surface_condition,seating_gap_mm,initial_diagonal_or_perpendicularity,proof_load_case,measured_slip_mm,post_proof_torque_check_nm,witness_mark_applied,photograph_refs,nonconformance_ref,reviewer,disposition,notes
-NOT-EXECUTED,,,,FJ-001,,,1,4,,,,,,,,,,,,,,,,NOT EXECUTED,
-NOT-EXECUTED,,,,FJ-002,,,1,4,,,,,,,,,,,,,,,,NOT EXECUTED,
-NOT-EXECUTED,,,,FJ-003,,,1,4,,,,,,,,,,,,,,,,NOT EXECUTED,
-NOT-EXECUTED,,,,FJ-004,,,1,4,,,,,,,,,,,,,,,,NOT EXECUTED,
-NOT-EXECUTED,,,,FJ-005,,,1,4,,,,,,,,,,,,,,,,NOT EXECUTED,
-NOT-EXECUTED,,,,FJ-006,,,1,4,,,,,,,,,,,,,,,,NOT EXECUTED,
+NOT-EXECUTED,,,,FJ-001,,,1,2,,,,,,,,,,,,,,,,NOT EXECUTED,
+NOT-EXECUTED,,,,FJ-002,,,1,2,,,,,,,,,,,,,,,,NOT EXECUTED,
+NOT-EXECUTED,,,,FJ-003,,,1,2,,,,,,,,,,,,,,,,NOT EXECUTED,
+NOT-EXECUTED,,,,FJ-004,,,1,2,,,,,,,,,,,,,,,,NOT EXECUTED,
+NOT-EXECUTED,,,,FJ-005,,,1,2,,,,,,,,,,,,,,,,NOT EXECUTED,
+NOT-EXECUTED,,,,FJ-006,,,1,2,,,,,,,,,,,,,,,,NOT EXECUTED,

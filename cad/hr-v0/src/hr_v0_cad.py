@@ -874,11 +874,14 @@ def write_source_manifest() -> None:
 def build_assembly(parts: dict[str, cq.Workplane]):
     assy = cq.Assembly(name="HR-V0_PRELIMINARY")
     # Base/column vendor envelopes. Origin: base centre, bench plane z=0.
-    assy.add(tslot_envelope(500, "x"), loc=cq.Location(cq.Vector(0, -160, 20)), name="base_rear", color=cq.Color(0.25, 0.35, 0.55))
-    assy.add(tslot_envelope(500, "x"), loc=cq.Location(cq.Vector(0, 160, 20)), name="base_front", color=cq.Color(0.25, 0.35, 0.55))
-    assy.add(tslot_envelope(320, "y"), loc=cq.Location(cq.Vector(-210, 0, 20)), name="base_left", color=cq.Color(0.25, 0.35, 0.55))
-    assy.add(tslot_envelope(320, "y"), loc=cq.Location(cq.Vector(210, 0, 20)), name="base_right", color=cq.Color(0.25, 0.35, 0.55))
-    assy.add(tslot_envelope(500, "z"), loc=cq.Location(cq.Vector(COLUMN_CENTER_X_MM, 0, 270)), name="column", color=cq.Color(0.25, 0.35, 0.55))
+    # Square-cut, non-overlapping 500 x 320 mm outside frame.  The 240 mm
+    # transverse members terminate at the longitudinal members' inner faces;
+    # the 500 mm upright starts on the base top rather than intersecting it.
+    assy.add(tslot_envelope(500, "x"), loc=cq.Location(cq.Vector(0, -140, 20)), name="base_rear", color=cq.Color(0.25, 0.35, 0.55))
+    assy.add(tslot_envelope(500, "x"), loc=cq.Location(cq.Vector(0, 140, 20)), name="base_front", color=cq.Color(0.25, 0.35, 0.55))
+    assy.add(tslot_envelope(240, "y"), loc=cq.Location(cq.Vector(-210, 0, 20)), name="base_left", color=cq.Color(0.25, 0.35, 0.55))
+    assy.add(tslot_envelope(240, "y"), loc=cq.Location(cq.Vector(210, 0, 20)), name="base_right", color=cq.Color(0.25, 0.35, 0.55))
+    assy.add(tslot_envelope(500, "z"), loc=cq.Location(cq.Vector(COLUMN_CENTER_X_MM, 0, 290)), name="column", color=cq.Color(0.25, 0.35, 0.55))
 
     # P0.2 datum-chain correction.  The adapter lower-left point is chosen so
     # its two column holes share C0 and its shoulder datum lands at J1.  J2 and
@@ -969,6 +972,15 @@ def main():
             "j2_internal_mechanical_datum_deg": list(J2_INTERNAL_MECHANICAL_DATUM_DEG),
             "adapter_mm": [ADAPTER_X_MM, ADAPTER_Z_MM, ADAPTER_T_MM],
             "anchor_mm": [ANCHOR_X_MM, ANCHOR_Z_MM, ANCHOR_T_MM],
+            "base_frame_candidate_mm": {
+                "outside_x": 500.0,
+                "outside_y": 320.0,
+                "longitudinal_cuts": [500.0, 500.0],
+                "transverse_cuts": [240.0, 240.0],
+                "column_cut": 500.0,
+                "column_bottom_z": 40.0,
+                "frame_joint_identifier": "HR-V0-FRAME-P0.2",
+            },
             "assembly_datum_chain_candidate_mm": {
                 "column_center_x": COLUMN_CENTER_X_MM,
                 "j1": [SHOULDER_AXIS_X_MM, 0.0, SHOULDER_AXIS_HEIGHT_MM],
@@ -1000,7 +1012,7 @@ def main():
             "Resolve M2.5 fastener grade, engagement, torque and retention",
             "Execute INSPECT-MECH-008 with MV0-FC03 against the received FR12-H104K and verify seating and fastener access",
             "Release hard-stop bracket, bumper, load path, tolerance stack and impact validation before actuator motion",
-            "Resolve T-slot fasteners, torque, anti-rotation and bracket arrangement",
+            "Execute INSPECT-MECH-010 on six 40-4332 / twelve 75-3422 candidates; resolve fit, tool access, torque, slip, proof and qualified disposition",
             "Survey actual bench and select anchor fasteners from substrate evidence",
             "Complete structural, hard-stop, cable, guard and proof-test release",
             "Execute INSPECT-GUARD-001 INSPECT-CABLE-001 and TEST-DROP-001 on the frozen unpowered article before actuator connection",

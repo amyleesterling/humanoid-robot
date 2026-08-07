@@ -498,6 +498,16 @@ def main() -> int:
         errors.append("generated manifest lost the selected FR12-H104K 24 x 12 pattern")
     if manifest["controlled_parameters"].get("gripper_fit_coupon_mm") != [36.0, 24.0, 2.0]:
         errors.append("generated manifest lost the MV0-FC03 coupon dimensions")
+    if manifest["controlled_parameters"].get("base_frame_candidate_mm") != {
+        "outside_x": 500.0,
+        "outside_y": 320.0,
+        "longitudinal_cuts": [500.0, 500.0],
+        "transverse_cuts": [240.0, 240.0],
+        "column_cut": 500.0,
+        "column_bottom_z": 40.0,
+        "frame_joint_identifier": "HR-V0-FRAME-P0.2",
+    }:
+        errors.append("generated manifest lost the corrected non-overlapping base-frame contract")
     expected_guard_space = {
         "radial_envelope": 450.0,
         "internal_width": 900.0,
