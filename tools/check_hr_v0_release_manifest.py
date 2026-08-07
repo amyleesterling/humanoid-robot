@@ -77,7 +77,7 @@ def main() -> None:
     )
     if mechanical_product.get("supporting_identifiers") != [
         "HR-V0-ROBOTIS-IF-P0.1",
-        "HR-V0-ARM-ARCH-P0.2",
+        "HR-V0-ARM-ARCH-P0.3",
         "HR-V0-MECH-R0.1-PRELIMINARY-SUPERSEDED-ARM",
         "HR-V0-FAB-RFI-P0.2-WITHDRAWN",
         "HR-V0-FRAME-P0.2",

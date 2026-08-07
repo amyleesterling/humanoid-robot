@@ -1,0 +1,191 @@
+{
+  "revision": "HR-V0-ARM-ARCH-P0.3",
+  "warning": "PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION",
+  "disposition": "strengthened exact-coordinate architecture candidate; R55/P0.2 superseded; exact fastener candidates remain on hold; no part or assembly released",
+  "vendor_source_sha256": {
+    "XMHD-540.N101.I101.STP": "6E0DF65638B3A23B12C7EE1114D4D06F5EC2DE9E84E3FFDDD7E115E8F8FAF39F",
+    "FR13-H101K.stp": "269291E14F47A793A3C915358DD4A90B2B3F2AA4D2168E40D14F683C1BD21B1C",
+    "FR13-S102K.stp": "8203F33EF40C82BC503DB008C6A8D52DDEED25053960F2064DA2250332974C03",
+    "FR12-H104K.stp": "75BA58D2668D7D25802D1277A5393445C4FB7A8C565566E56CE76FEFC0E59F7D"
+  },
+  "vendor_8020_source_sha256": {
+    "20-2040-endview.svg": "0958DF1CB1AA380F05B0B5EECD9589F14CD2F643E38143781CD077D255084BDF",
+    "20-2040-dimensions.jpg": "169A2BBF2BADD6D1F7DEF5DDDEB193ACE8A378E9C710C2A8B1520DDF31A99906",
+    "20-2040-30mm.EPRT": "DDE2F6E3A19CDCA98F57F95431405DA6B7482A4232D2EBAD5720E13BF4A1641C"
+  },
+  "candidate_geometry_mm": {
+    "j1_to_j2_axis": 202.55,
+    "j2_to_g1_frame_origin": 129.05,
+    "j1_to_g1_frame_origin": 331.6,
+    "adapter_thickness": 9.525,
+    "adapter_finished_thickness_range": [
+      9.0,
+      10.0
+    ],
+    "adapter_envelope": [
+      48.0,
+      9.525,
+      40.0
+    ],
+    "upper_beam_envelope": [
+      20.0,
+      100.0,
+      40.0
+    ],
+    "forearm_beam_envelope": [
+      20.0,
+      50.0,
+      40.0
+    ],
+    "reserved_g1_to_object_center_max": 28.4,
+    "robotis_rectangular_pattern": {
+      "x_centers": [
+        -16.0,
+        16.0
+      ],
+      "z_centers": [
+        -8.0,
+        8.0
+      ],
+      "hole_diameter": 2.7
+    },
+    "profile_end_tap_centers": {
+      "x": 0.0,
+      "z_centers": [
+        -10.0,
+        10.0
+      ],
+      "core_diameter": 4.19
+    },
+    "m5_countersink": {
+      "diameter": 10.07,
+      "depth": 3.1,
+      "included_angle_deg": 90.0
+    }
+  },
+  "actuator_axis_registration": {
+    "matrix_3x3": [
+      [
+        0,
+        0,
+        -1
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0
+      ]
+    ],
+    "raw_output_axis": [
+      0,
+      0,
+      1
+    ],
+    "joint_output_axis": [
+      -1,
+      0,
+      0
+    ],
+    "raw_bottom_mount_axes": [
+      [
+        13.5,
+        -41.5
+      ],
+      [
+        -13.5,
+        -41.5
+      ]
+    ],
+    "registered_s102_axes_yz": [
+      [
+        13.5,
+        41.5
+      ],
+      [
+        -13.5,
+        41.5
+      ]
+    ],
+    "axial_translation_x_mm": 1.75,
+    "axial_translation_status": "candidate display placement; received horn/idler stack measurement required"
+  },
+  "axis_parallelism_math": {
+    "j1_direction": [
+      1,
+      0,
+      0
+    ],
+    "j2_direction": [
+      1,
+      0,
+      0
+    ],
+    "dot_product": 1.0,
+    "angular_difference_deg": 0.0
+  },
+  "reference_output_offset_deg": -90.0,
+  "collision_screen": {
+    "sampled_j2_range_deg": [
+      15,
+      125
+    ],
+    "increment_deg": 0.5,
+    "sample_count": 221,
+    "provisional_soft_limit_deg": 120.0,
+    "first_nominal_collision_deg": 122.0,
+    "maximum_positive_intersection_mm3_full_requested_range": 188.28278,
+    "maximum_positive_intersection_mm3_within_provisional_limit": 0.0,
+    "scope": "dense self-collision screen only; commanded range is not released; continuous between-sample and stopping-overtravel proof remain open"
+  },
+  "mass_and_load_screen": {
+    "20_2040_mass_basis_kg_per_m": 0.764321,
+    "one_100mm_upper_beam_mass_g": 76.432,
+    "one_50mm_forearm_beam_mass_g": 38.216,
+    "one_adapter_candidate_mass_g": 47.145,
+    "upper_beam_plus_two_adapters_mass_g": 170.721,
+    "forearm_beam_plus_two_adapters_mass_g": 132.505,
+    "allocated_shoulder_gravity_nm": 1.858,
+    "allocated_elbow_gravity_nm": 0.498,
+    "screening_multiplier": 2.25,
+    "shoulder_screen_nm": 4.18,
+    "elbow_screen_nm": 1.122,
+    "status": "screen only; received masses, COM, inertia, continuous torque and thermal proof required"
+  },
+  "nominal_joint_screens": {
+    "nearest_m5_countersink_to_m2_5_hole_clearance_mm": 9.7395,
+    "m5_thread_engagement_mm": 10.475,
+    "m5_min_thread_engagement_screen_mm": 10.0,
+    "m2_5_nominal_protrusion_mm": 2.475,
+    "m2_5_geometric_min_protrusion_screen_mm": 1.8,
+    "m5_couple_force_n": 208.98,
+    "inferred_internal_thread_shear_capacity_n": 6856.9,
+    "20_2040_strong_axis_bending_stress_mpa": 1.8429,
+    "adapter_min_residual_below_countersink_mm": 5.9,
+    "adapter_punching_shear_demand_mpa": 2.0499,
+    "adapter_head_annular_average_pressure_mpa": 4.5347,
+    "status": "indicative static screening only; typical material properties are not allowables and no fatigue, preload, local bending, tolerance or physical proof credit is taken"
+  },
+  "candidate_primary_sources": {
+    "adapter_material_typical_properties": "Kaiser Aluminum Sheet Coil & Plate Alloy 6061, Rev. 05/06; typical T6/T651 yield 276 MPa; not a minimum allowable",
+    "m5_countersunk_screw": "Westfield Fasteners WF2563, live product page accessed 2026-08-07",
+    "m2_5_socket_screw": "Westfield Fasteners WF2339, live product page accessed 2026-08-07",
+    "m2_5_hex_nut": "Westfield Fasteners WF1254 and DIN 934 guide, live pages accessed 2026-08-07"
+  },
+  "open_release_items": [
+    "supplier confirmation and received inspection for 20-2040 two-hole M5 end-tap service",
+    "adapter 6061-T651 minimum properties/certificate, 9.0 to 10.0 mm finished thickness, countersink tolerances, manufacturing process and first article",
+    "received WF2339/WF1254 stack, screw-length tolerance, torque, anti-galling/locking, wrench envelope and proof",
+    "received WF2563 full-thread confirmation, torque, anti-galling/locking method, countersink inspection and physical proof",
+    "received horn/idler axial stack and complete actuator/frame assembly fit",
+    "tool access, cable routing, connector sweep and strain relief",
+    "continuous between-sample joint-space collision proof including base, guard, stops and gripper",
+    "J2 hard-stop/soft-limit allocation and measured stopping overtravel below the current nominal first-collision pose",
+    "adapter conical contact/local bending FEA or accepted equivalent plus joint-slip, preload, fatigue, impact and proof analyses",
+    "received-part fit, first-article inspection and qualified mechanical approval"
+  ]
+}

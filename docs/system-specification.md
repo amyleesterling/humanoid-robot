@@ -24,8 +24,8 @@ Human-to-robot or robot-to-human handoff is not part of the initial acceptance t
 | Parameter | Baseline value |
 |---|---:|
 | Active axes | shoulder pitch, elbow pitch, parallel gripper |
-| Shoulder-to-elbow length | 193.025 mm R55 architecture candidate; NOT RELEASED; final tolerance and structure SELECTION REQUIRED |
-| Elbow-to-gripper-frame origin | 119.525 mm R55 architecture candidate; NOT RELEASED; leaves 47.45 mm to 360 mm object-center ceiling; final gripper/TCP transform SELECTION REQUIRED |
+| Shoulder-to-elbow length | 202.550 mm R56 architecture candidate; NOT RELEASED; final tolerance and structure SELECTION REQUIRED |
+| Elbow-to-gripper-frame origin | 129.050 mm R56 architecture candidate; NOT RELEASED; leaves 28.400 mm to 360 mm object-center ceiling; final gripper/TCP transform SELECTION REQUIRED |
 | Maximum shoulder-to-object reach | 360 mm |
 | Payload | 100 g maximum, soft foam only |
 | Payload envelope | 40–70 mm each principal dimension |

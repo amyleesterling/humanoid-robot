@@ -1,0 +1,7 @@
+check,features,result_mm,criterion,result,release_effect
+TA-01,M5 countersink to nearest M2.5 clearance hole,9.7395,>= 1.0 mm nominal feature clearance,PASS NOMINAL,does not release tolerance or machining process
+TA-02,two M5 countersunk heads,9.9300,>= 1.0 mm nominal head-envelope clearance,PASS NOMINAL,heads install before frame; service requires frame removal
+TA-03,M2.5 clearance-hole edge at X=+/-16,6.6500,>= 2d preliminary edge screen,PASS NOMINAL,WF1254 nut fits nominally; 5 mm tool outer envelope remains SELECTION REQUIRED
+TA-04,M5 countersink edge at Z=+/-10,4.9650,>= 2.0 mm nominal edge clearance,PASS NOMINAL,pull-through and fatigue proof remain open
+TA-05,material remaining below maximum M5 countersink at finished minimum thickness,5.9000,>= 5.0 mm project geometry screen; structural acceptance still requires proof,PASS NOMINAL / PROOF OPEN,physical countersink inspection material certificate local analysis and proof remain required
+TA-06,WF2339 protrusion beyond maximum-thickness WF1254 stack,1.8000,>= 1.35 mm (3 x 0.45 mm pitch) geometric screen before screw-length tolerance,PASS NOMINAL / RECEIVED STACK OPEN,received screw length frame/plate/nut stack and tool proof remain required

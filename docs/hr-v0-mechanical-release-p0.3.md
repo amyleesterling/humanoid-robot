@@ -19,9 +19,9 @@ R53 withdraws the P0.2 arm geometry rather than allowing an unsupported plate ar
 
 The former 44 mm shoulder offset, 160 mm J1–J2 spacing, 160 mm J2–gripper spacing, MV0-001, MV0-002, MV0-003 and S102 application selection are therefore superseded. This correction does not select S101, S102, or a custom frame. It exposes that choice as `SELECTION REQUIRED`.
 
-## R55 current candidate addendum
+## R56 current candidate addendum
 
-R55 supersedes the defective R54/P0.1 candidate. `HR-V0-ARM-ARCH-P0.2` supplies corrected vendor-to-joint XM540/S102 registration, the ROBOTIS rectangular link pattern, vertical 20-2040 candidate members, explicit 4 × 4 transforms, parallel-axis proof, a 221-pose 0.5-degree self-collision screen, native STEP/GLB and candidate fastener/tool/load screens. It does not supersede this P0.3 release hold. The model predicts first nominal adapter/body contact at 122 degrees, so 120 degrees is only a provisional software ceiling. Adapter pull-through/local strength, exact M2.5 stacks, received fit, continuous-between-sample proof, cables, hard stop, measured stopping overtravel and uncertainty margin, FAI and qualified review remain open; no arm supplier packet is active.
+R56 supersedes the thin R55/P0.2 adapter. `HR-V0-ARM-ARCH-P0.3` preserves corrected vendor-to-joint XM540/S102 registration, the ROBOTIS rectangular link pattern and vertical 20-2040 candidate members while increasing the adapter from 4.7625 mm to 9.525 mm nominal (9.0–10.0 mm finished). It freezes `WF2563`, `WF2339` and `WF1254` as exact candidates on hold, supplies explicit 4 × 4 transforms, parallel-axis proof, a 221-pose 0.5-degree self-collision screen, native STEP/GLB and strengthened static screens. It does not supersede this P0.3 release hold. The model predicts first nominal adapter/body contact at 122 degrees, so 120 degrees is only a provisional software ceiling. Typical material values are not allowables; certified material, local conical-contact analysis, complete received stacks, torque/locking rules, continuous-between-sample proof, cables, hard stop, measured stopping overtravel and uncertainty margin, FAI and qualified review remain open; no arm supplier packet is active.
 
 ## Controlled evidence
 

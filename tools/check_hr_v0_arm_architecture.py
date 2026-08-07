@@ -1,4 +1,4 @@
-"""Fail-closed checks for the corrected HR-V0 arm candidate."""
+"""Fail-closed checks for the strengthened HR-V0 arm candidate."""
 
 from __future__ import annotations
 
@@ -12,8 +12,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "cad" / "hr-v0" / "generated" / "arm-architecture-p0.2"
-REVISION = "HR-V0-ARM-ARCH-P0.2"
+OUT = ROOT / "cad" / "hr-v0" / "generated" / "arm-architecture-p0.3"
+ARM_SOURCE_REGISTER = ROOT / "cad" / "vendor" / "arm-interface-source-register.csv"
+REVISION = "HR-V0-ARM-ARCH-P0.3"
 EXPECTED_FILES = {
     "HR-V0_arm_architecture_candidate.glb",
     "HR-V0_arm_architecture_candidate.step",
@@ -55,6 +56,15 @@ def main() -> int:
             errors.append(f"candidate part artifact set changed: {sorted(part_names)}")
 
     if not errors:
+        source_rows = rows(ARM_SOURCE_REGISTER)
+        expected_source_codes = ["SELECTION REQUIRED", "SELECTION REQUIRED", "WF2563", "WF2339", "WF1254", "WF1254", "20-7047"]
+        if len(source_rows) != 7 or [row.get("order_code") for row in source_rows] != expected_source_codes:
+            errors.append("controlled arm-interface source register changed")
+        if any(row.get("access_date") != "2026-08-07" or not row.get("source_url", "").startswith("https://") for row in source_rows):
+            errors.append("arm-interface source register lost its dated primary URL boundary")
+        if "Typical" not in source_rows[0].get("release_effect", "") or "not design allowables" not in (ROOT / "cad" / "vendor" / "arm-interface-source-register.md").read_text(encoding="utf-8"):
+            errors.append("material typical-value caveat is incomplete")
+
         summary = json.loads((OUT / "architecture-summary.json").read_text(encoding="utf-8"))
         if summary.get("revision") != REVISION:
             errors.append("candidate revision changed")
@@ -62,9 +72,9 @@ def main() -> int:
             errors.append("preliminary warning missing")
 
         geometry = summary.get("candidate_geometry_mm", {})
-        if geometry.get("j1_to_j2_axis") != 193.025 or geometry.get("j2_to_g1_frame_origin") != 119.525 or geometry.get("reserved_g1_to_object_center_max") != 47.45:
+        if geometry.get("j1_to_j2_axis") != 202.55 or geometry.get("j2_to_g1_frame_origin") != 129.05 or geometry.get("reserved_g1_to_object_center_max") != 28.4:
             errors.append("candidate axis schedule changed")
-        if geometry.get("adapter_envelope") != [48.0, 4.7625, 40.0] or geometry.get("upper_beam_envelope") != [20.0, 100.0, 40.0] or geometry.get("forearm_beam_envelope") != [20.0, 50.0, 40.0]:
+        if geometry.get("adapter_envelope") != [48.0, 9.525, 40.0] or geometry.get("adapter_finished_thickness_range") != [9.0, 10.0] or geometry.get("upper_beam_envelope") != [20.0, 100.0, 40.0] or geometry.get("forearm_beam_envelope") != [20.0, 50.0, 40.0]:
             errors.append("20-2040 strong-axis orientation changed")
         pattern = geometry.get("robotis_rectangular_pattern", {})
         if pattern.get("x_centers") != [-16.0, 16.0] or pattern.get("z_centers") != [-8.0, 8.0]:
@@ -98,7 +108,7 @@ def main() -> int:
                 errors.append(f"80/20 source hash mismatch: {filename}")
 
         loads = summary.get("mass_and_load_screen", {})
-        if loads.get("allocated_shoulder_gravity_nm") != 1.777 or loads.get("allocated_elbow_gravity_nm") != 0.483:
+        if loads.get("allocated_shoulder_gravity_nm") != 1.858 or loads.get("allocated_elbow_gravity_nm") != 0.498:
             errors.append("candidate gravity screen changed")
         if len(summary.get("open_release_items", [])) < 9:
             errors.append("open release-item list is incomplete")
@@ -107,27 +117,32 @@ def main() -> int:
         if len(transforms) != 5:
             errors.append("expected five transform records")
         j2 = next((row for row in transforms if row["item"] == "J2 joint package and S102"), {})
-        if j2.get("ty_mm") != "193.025" or j2.get("rx_deg") != "90":
+        if j2.get("ty_mm") != "202.55" or j2.get("rx_deg") != "90":
             errors.append("J2 body transform changed")
         output = next((row for row in transforms if row["item"] == "J2 H101 straight-reference pose"), {})
         if "-90 deg output offset" not in output.get("status", ""):
             errors.append("J2 output offset is not explicit")
 
         interfaces = rows(OUT / "interface-schedule.csv")
-        if len(interfaces) != 7 or not any("EXACT CANDIDATE HOLD" in row["fasteners"] for row in interfaces) or not any(row["fasteners"] == "SELECTION REQUIRED" for row in interfaces):
+        if len(interfaces) != 7 or not any("WF2563 EXACT CANDIDATE HOLD" in row["fasteners"] for row in interfaces) or not any("WF2339 + WF1254 EXACT CANDIDATE HOLD" in row["fasteners"] for row in interfaces) or not any(row["fasteners"] == "SELECTION REQUIRED" for row in interfaces):
             errors.append("interface schedule lost its candidate/selection boundary")
         if any(not any(token in row["status"] for token in ("not_released", "candidate", "open", "static_proof_only")) for row in interfaces):
             errors.append("interface status is not fail-closed")
 
         fasteners = rows(OUT / "fastener-candidate-schedule.csv")
-        if len(fasteners) != 3 or fasteners[0].get("candidate_order_code") != "SSK-M5-16-A2" or fasteners[1].get("candidate_order_code") != "SELECTION REQUIRED":
+        if len(fasteners) != 4 or [row.get("candidate_order_code") for row in fasteners] != ["WF2563", "WF2339", "WF1254", "20-7047"] or any(row.get("status") not in ("EXACT CANDIDATE HOLD", "EXACT SERVICE CANDIDATE HOLD") for row in fasteners):
             errors.append("fastener candidate/selection boundary changed")
         access = rows(OUT / "tool-access-screen.csv")
-        if len(access) != 5 or not any(row["result"] == "GEOMETRY PASS / STRENGTH OPEN" for row in access):
-            errors.append("tool-access screen no longer fails closed on pull-through")
+        if len(access) != 6 or not any(row["result"] == "PASS NOMINAL / PROOF OPEN" for row in access) or not any(row["result"] == "PASS NOMINAL / RECEIVED STACK OPEN" for row in access):
+            errors.append("tool-access screen no longer retains proof/received-stack holds")
         load_screens = rows(OUT / "joint-load-screen.csv")
-        if len(load_screens) != 4 or not any(row["status"] == "BLOCKER" for row in load_screens):
-            errors.append("joint-load screen lost its unresolved blocker")
+        if len(load_screens) != 5 or any(row["status"] == "BLOCKER" for row in load_screens) or sum("INDICATIVE STATIC SCREEN PASS" in row["status"] for row in load_screens) != 2:
+            errors.append("joint-load screen lost the strengthened adapter boundary")
+        nominal = summary.get("nominal_joint_screens", {})
+        if nominal.get("adapter_min_residual_below_countersink_mm") != 5.9 or nominal.get("m5_min_thread_engagement_screen_mm") != 10.0 or nominal.get("m2_5_geometric_min_protrusion_screen_mm") != 1.8:
+            errors.append("adapter/fastener geometry screens changed")
+        if "typical material properties are not allowables" not in nominal.get("status", ""):
+            errors.append("typical material properties were promoted to allowables")
 
         sweep = rows(OUT / "collision-sweep.csv")
         expected_angles = [15.0 + 0.5 * index for index in range(221)]
@@ -143,7 +158,7 @@ def main() -> int:
         try:
             root = ET.parse(OUT / "HR-V0_arm_architecture_candidate.svg").getroot()
             text = " ".join(node.text or "" for node in root.iter() if node.tag.endswith("text"))
-            for token in (REVISION, "NOT RELEASED", "J1-J2 = 193.0250 mm", "P0.1 is superseded", "Do not fabricate"):
+            for token in (REVISION, "NOT RELEASED", "J1-J2 = 202.5500 mm", "P0.2 is superseded", "Do not fabricate"):
                 if token not in text:
                     errors.append(f"readable view omits {token}")
         except ET.ParseError as exc:
@@ -160,7 +175,7 @@ def main() -> int:
             print(f"- {error}", file=sys.stderr)
         return 1
     print("HR-V0 arm architecture validation: PASS")
-    print("Corrected XM540/S102 registration; vertical 20-2040; 221-pose self-collision screen; fail-closed joint proof")
+    print("Strengthened 9.525 mm adapter; exact fastener candidates on hold; 221-pose self-collision screen; fail-closed proof boundary")
     print("PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION")
     return 0
 

@@ -1,5 +1,7 @@
 # HR-V0 corrected arm architecture P0.2
 
+> **SUPERSEDED BY `HR-V0-ARM-ARCH-P0.3` (R56). DO NOT USE P0.2 FOR FABRICATION OR FASTENER SELECTION.** P0.3 replaces the 4.7625 mm adapter and discontinued/underspecified fastener boundary with a nominal 9.525 mm adapter, a 9.0 mm finished minimum and current exact fastener candidates on hold. P0.2 remains configuration history only.
+
 **PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR QUOTATION, FABRICATION, ASSEMBLY, OR ENERGIZATION**
 
 Date: 2026-08-07
