@@ -3,7 +3,7 @@
 Handoff date: 2026-08-07
 Package baseline: **HR-30-SYS-R0.2**  
 Electrical package: **Project Button Electrical V2.1 reviewed baseline; V3-P1.4 / PCB-P0.5 / DXL-STAR-P0.1 correction candidates**
-Mechanical package: **HR-V0-MECH-R0.1-PRELIMINARY quote geometry plus guard/catch/cable space study**
+Mechanical package: **HR-V0-MECH-R0.1-PRELIMINARY plus HR-V0-PLATE-RFQ-P0.1 process/FAI control**
 Firmware package: **HR-V0-FW-P0.1 source/test candidate; reproducible watchdog P0.2 review artifacts; no released or flashed binary**
 Status: **PRELIMINARY - NOT APPROVED FOR ENERGIZATION**
 
@@ -27,13 +27,13 @@ The authoritative repository controls engineering intent and contains the review
 - Build and use region: Boston, Massachusetts, USA.
 - HR-V0 is a light-duty, adult-operated bench demonstrator for a soft 100 g maximum payload; it is not a high-payload robot.
 - A local library makerspace may have CNC access, but metal capability is unverified and is not part of the release basis.
-- The baseline custom-metal route uses four flat 6061-T6 part definitions: one upper link, one forearm link, one shoulder adapter, and two copies of the bench-anchor plate. SendCutSend is the primary quotation route; Xometry is the comparison/3-D-machining fallback; Artisans Asylum is the nearby supervised inspection and secondary-work option.
-- See `docs/hr-v0-build-site-basis.md` and `docs/hr-v0-fabrication-sourcing-boston.md`. No cutting order is authorized until the fit coupon, fastener, bench-survey, drawing, inspection, and qualified-review gates close.
+- The custom-metal route uses four flat 6061-T6 part definitions: one upper link, one forearm link, one shoulder adapter, and two bench-anchor plates. R43 assigns `MV0-001` through `MV0-003` to CNC mill/drill RFQ because their 2.70 mm candidate holes are smaller than the plate thickness. `MV0-004` is a profile-cut candidate only after the real bench survey. Xometry/Protolabs are CNC RFQ routes; SendCutSend is limited to compatible profiles such as the surveyed anchor; Artisans Asylum remains a nearby supervised machining/inspection candidate.
+- See `docs/hr-v0-build-site-basis.md`, `docs/hr-v0-fabrication-sourcing-boston.md`, and `docs/hr-v0-flat-plate-manufacturing-p0.1.md`. No cutting order is authorized until received-part coupons, final tolerances, fasteners, bench survey, supplier DFM, separately authorized first article, FAI, and qualified review close.
 
 ## Current controlled counts
 
 - 68 draft requirements
-- 85 controlled verification procedure records
+- 86 controlled verification procedure records
 - 40 open risks
 - six staged releases: HR-V0, HR-30A, HR-30B, HR-30C, HR-30D, and HR-30W
 - 15 native KiCad sheets
@@ -49,7 +49,7 @@ ERC validates modeled connectivity and annotation only. It does not establish ph
 
 ## Review history and independent findings
 
-Forty-two review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R42 are controlled project responses, not independent approvals. R37 freezes the DXL-star board pin allocation and native routing but does not close its cable, protection, thermal, waveform, no-backfeed or physical-evidence gates. R38 adds a fail-closed actuator readback/current test candidate while explicitly leaving the branch-current and connector application conflict open. R39 adds exact Pico GPIO binding, publisher-pinned tools and reproducible target artifacts while keeping target execution and HIL open. R40 corrects the C/Python clock mismatch and executes compiled C against 44 controlled model steps. R41 adds current Schneider K1/K2 application evidence while explicitly retaining the critical-current/application and physical-test blocker. R42 adds a fail-closed IDEC received-lot terminal-control route while retaining all four RESET/ARM terminal identifiers as unresolved.
+Forty-three review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R43 are controlled project responses, not independent approvals. R37 freezes the DXL-star board pin allocation and native routing but does not close its cable, protection, thermal, waveform, no-backfeed or physical-evidence gates. R38 adds a fail-closed actuator readback/current test candidate while explicitly leaving the branch-current and connector application conflict open. R39 adds exact Pico GPIO binding, publisher-pinned tools and reproducible target artifacts while keeping target execution and HIL open. R40 corrects the C/Python clock mismatch and executes compiled C against 44 controlled model steps. R41 adds current Schneider K1/K2 application evidence while explicitly retaining the critical-current/application and physical-test blocker. R42 adds a fail-closed IDEC received-lot terminal-control route while retaining all four RESET/ARM terminal identifiers as unresolved. R43 controls the custom flat-plate RFQ/FAI route while leaving every part dimensionally unreleased pending physical evidence.
 
 ## Principal unresolved engineering blockers
 
@@ -96,7 +96,7 @@ The R32 reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r32-status.md`. 
 
 The R33 reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r33-status.md`. It records PCB-P0.3's routed-copper and connectivity evidence while preserving Sol's fabrication, physical-build, functional-safety and energization blockers. It is also a project-owned reconciliation, not a new independent review.
 
-The R34 reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r34-status.md`. R35 records PCB-P0.5's 6 mil fabrication envelope; R36 records the machine-controlled protection inputs and connector/rating conflict; R37 records the native DXL-star correction; R38 records the actuator configuration/current-envelope candidate and still-open external-current evidence; R39 records the Pico target and reproducible build; R40 records the clock-semantics fix and compiled-C/model differential evidence; R41 records current contactor evidence while retaining the Schneider application, protection, received and loaded-test blockers; and the current R42 reconciliation is `docs/reviews/2026-08-07-sol-r12-post-r42-status.md`. R42 records the current IDEC production-transition evidence and exact received-lot terminal-map closure route while keeping EG-011 partial. All are project-owned reconciliations, not new independent reviews, and all preserve Sol's physical-build, fabrication-release, functional-safety and energization blockers.
+The R34 reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r34-status.md`. R35 records PCB-P0.5's 6 mil fabrication envelope; R36 records the machine-controlled protection inputs and connector/rating conflict; R37 records the native DXL-star correction; R38 records the actuator configuration/current-envelope candidate and still-open external-current evidence; R39 records the Pico target and reproducible build; R40 records the clock-semantics fix and compiled-C/model differential evidence; R41 records current contactor evidence while retaining the Schneider application, protection, received and loaded-test blockers; R42 is `docs/reviews/2026-08-07-sol-r12-post-r42-status.md`; and the current R43 reconciliation is `docs/reviews/2026-08-07-sol-r12-post-r43-status.md`. R42 keeps EG-011 partial. R43 records the corrected CNC/profile process split and FAI closure route while keeping EG-006 partial. All are project-owned reconciliations, not new independent reviews, and all preserve Sol's physical-build, fabrication-release, functional-safety and energization blockers.
 
 ## Requested independent-review output
 

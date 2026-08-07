@@ -52,8 +52,8 @@ def main() -> int:
         suffixes = {path.suffix.lower() for path in matches}
         if suffixes != {".dxf", ".step", ".stl"}:
             errors.append(f'{row["part_number"]} missing DXF/STEP/STL set: {sorted(suffixes)}')
-        if "QUOTE GEOMETRY ONLY" not in row["release_status"]:
-            errors.append(f'{row["part_number"]} lost the preliminary release status')
+        if row["release_status"] != "RFQ PROCESS CONTROLLED—DIMENSIONAL RELEASE AND FAI REQUIRED":
+            errors.append(f'{row["part_number"]} lost the controlled RFQ-only release status')
     coupon_stems = {
         "MV0-FC01": "MV0-FC01_robotis_pcd22_fit_coupon",
         "MV0-FC02": "MV0-FC02_s102_32x16_tapped_pattern_coupon",
@@ -266,8 +266,29 @@ def main() -> int:
             errors.append(f"{svg.name} lacks fabrication warning")
         if "font: 16px" not in text:
             errors.append(f"{svg.name} lacks 16 px drawing text baseline")
-        if svg.name in {"MV0-001_upper_link.svg", "MV0-002_forearm_link.svg"} and 'height="420"' not in text:
-            errors.append(f"{svg.name} lacks the checked 420 px warning-clearance canvas")
+        expected_canvas_heights = {
+            "MV0-001_upper_link.svg": "560",
+            "MV0-002_forearm_link.svg": "560",
+            "MV0-003_adapter_s102.svg": "660",
+            "MV0-004_anchor.svg": "570",
+        }
+        expected_height = expected_canvas_heights[svg.name]
+        if f'height="{expected_height}"' not in text:
+            errors.append(f"{svg.name} lacks the checked {expected_height} px RFQ-note canvas")
+        for required in (
+            "HR-V0-PLATE-RFQ-P0.1",
+            "QUOTED CAPABILITY SHALL GOVERN",
+            "CRITICAL HOLE SIZE/POSITION: SELECTION REQUIRED",
+            "NO BEND - NO WELD",
+            "DO NOT SCALE",
+            "FIRST ARTICLE INSPECTION REQUIRED",
+        ):
+            if required not in text:
+                errors.append(f"{svg.name} missing controlled RFQ text: {required}")
+        if svg.name != "MV0-004_anchor.svg" and "CNC MILL/DRILL" not in text:
+            errors.append(f"{svg.name} lost the required CNC mill/drill process")
+        if svg.name == "MV0-004_anchor.svg" and "BENCH-SLOT RELEASE REQUIRES COMPLETED SITE SURVEY" not in text:
+            errors.append("bench-anchor drawing lost the site-survey hold")
         if svg.name == "MV0-001_upper_link.svg":
             for required in ("J1/H101", "J2/S102", "32 x 16 RECTANGLE"):
                 if required not in text:

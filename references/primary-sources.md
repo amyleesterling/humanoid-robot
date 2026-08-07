@@ -1,6 +1,12 @@
 # Primary Sources Consulted
 
-Retrieved or rechecked 2026-08-05 through 2026-08-06. Manufacturer and standards pages must be rechecked at each procurement/release gate.
+Retrieved or rechecked 2026-08-05 through 2026-08-07. Manufacturer and standards pages must be rechecked at each procurement/release gate.
+
+- SendCutSend, *6061 Aluminum*, current page with 0.187 in and 0.250 in 6061-T6 stock and part-specific recommendation that holes be no smaller than material thickness; no revision displayed, accessed 2026-08-07. The current 2.70 mm HR-V0 holes therefore are not released as laser-finished features: https://sendcutsend.com/materials/6061-aluminum/
+- SendCutSend EDU[CAD] sheet-cutting study guide, file path dated 2025-11 and accessed 2026-08-07; its general minimum-hole/bridge screen is 50% of thickness. The project applies the more conservative material-specific rule for critical holes: https://sendcutsend.com/wp-content/uploads/2025/11/5.2.pdf
+- Xometry, *Metal Laser Cutting Service*, current page accessed 2026-08-07; minimum detail at least 50% of thickness and published edge/detail rules support process screening only: https://www.xometry.com/capabilities/sheet-cutting/metal-laser-cutting/
+- Xometry, *CNC Machining Services* and *Manufacturing Standards*, current pages accessed 2026-08-07; 6061 support and standard metal tolerance of ±0.005 in / ±0.127 mm form an RFQ basis, while material thickness/flatness remain separate: https://www.xometry.com/capabilities/cnc-machining-service/ and https://www.xometry.com/manufacturing-standards/
+- Protolabs, *Precision Machining Tolerances*, current page accessed 2026-08-07; published standard machined-hole tolerance is ±0.005 in / ±0.12 mm, with drawing review for finer requirements: https://www.protolabs.com/services/cnc-machining/precision-machining-tolerances/
 
 - ROBOTIS XM540-W270 e-Manual; rechecked 2026-08-06: 10.6 N m stall at 12 V/4.4 A and 165 g. Stall is not continuous torque: https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/
 - ROBOTIS XM430-W350 e-Manual; rechecked 2026-08-06: 4.1 N m stall at 12 V/2.3 A, 46 rpm at 12 V, and 82 g. Stall is not continuous torque: https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/

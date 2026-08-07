@@ -18,7 +18,7 @@ The first structural architecture uses:
 - 80/20 40-series catalog gussets; and
 - flat 6.35 mm nominal 6061-T6 adapter and bench-anchor plates.
 
-No welding or custom bent 6061 part is required. The base must be physically secured to a surveyed bench; the free-standing assembly model is not an operating configuration.
+No welding or custom bent 6061 part is required. R43 holds `MV0-001` through `MV0-003` to CNC mill/drill RFQ because their 2.70 mm candidate holes are smaller than the plate thickness; `MV0-004` remains a profile-cut candidate after bench survey. See `docs/hr-v0-flat-plate-manufacturing-p0.1.md`. The base must be physically secured to a surveyed bench; the free-standing assembly model is not an operating configuration.
 
 ## Custom part mass closure
 
@@ -46,7 +46,7 @@ Using the manufacturer-published 80/20 40-4040 inertia of 13.787 cm⁴ and an al
 
 ## Release blockers
 
-1. `MV0-FC01`/`INSPECT-MECH-003` now control the PCD22 check, and `MV0-FC02`/`INSPECT-MECH-004` control the selected S102 32 x 16 tapped rectangle. Execute both against received parts. Candidate 2.70 mm clearance holes remain unreleased until physical fit, gauge/thread criteria, process capability, and acceptance tolerances are recorded and reviewed.
+1. `MV0-FC01`/`INSPECT-MECH-003` control the PCD22 check, `MV0-FC02`/`INSPECT-MECH-004` control the selected S102 32 x 16 tapped rectangle, and `MV0-FC03`/`INSPECT-MECH-008` control the gripper subset. Execute them against received parts. Candidate 2.70 mm holes remain unreleased until physical fit, gauge/thread criteria, CNC process capability, diameter/location tolerances, supplier DFM and `INSPECT-MECH-009` first-article evidence are recorded and independently reviewed.
 2. R21 corrected the invalid assumption that both ends of both links use PCD22. `MV0-001` distinguishes H101 output and S102 body-frame interfaces; `MV0-003` uses the selected S102 pattern. R24 adds a candidate FR12-H104K 24 x 12 mm four-hole subset to `MV0-002` plus `MV0-FC03`; physical seating, fastener access, tolerance and proof remain mandatory. See `docs/hr-v0-joint-interface-fasteners-p0.1.md` and `docs/hr-v0-gripper-architecture-p0.1.md`.
 3. Receive and identify every kit component under `INSPECT-MECH-005`, then select exact M2.5/M8 fasteners, engagement, torque, locking and inspection marks. The expected kit inventory does not prove screw grade, allocation, preload or structural capacity.
 4. The P0.1 hard-stop study defines the J1/J2 convention, four candidate 5-degree-offset datums, 50 mm contact-radius study, allocated-mass energy cases and validation route. Release the actual backed-up bumper/catch, brackets, fasteners, tolerance stack and guarded impact evidence before motion.
@@ -54,6 +54,6 @@ Using the manufacturer-published 80/20 40-4040 inertia of 13.787 cm⁴ and an al
 6. R25 adds five preliminary cable zones and complete-range records. Freeze exact cable/connector/clamp parts, bend/twist/tension limits, strain relief and full 3D articulation evidence under `INSPECT-CABLE-001`.
 7. R25 reserves a preliminary 900 x 400 x 950 mm internal guard and 820 x 320 x 50 mm catch space. The 25 mm stopping/clearance and 6 mm panel values are not released; complete measured sweep/stop/drop evidence, exact panels/frame/fasteners and `INSPECT-GUARD-001`/`TEST-DROP-001` remain mandatory. See `docs/hr-v0-guard-receiver-cable-p0.1.md`.
 8. Survey the actual bench substrate and select anchor hardware using pull-out/shear and edge-distance evidence.
-9. Correlate CAD masses and geometry with the first article, then obtain qualified mechanical review.
+9. Issue a separate controlled first-article drawing revision after coupons and DFM; correlate its mass and geometry under `INSPECT-MECH-009`, then obtain qualified mechanical review.
 
 The generated DXF/STEP files are suitable for comparable quotations only. They are not suitable for an approved cutting order.

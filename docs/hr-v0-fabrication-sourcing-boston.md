@@ -1,88 +1,74 @@
-# HR-V0 Boston Fabrication and Custom-Metal Sourcing
+# HR-V0 Boston fabrication and custom-metal sourcing
 
 Status: **VERIFIED SOURCING RESEARCH—NOT A RELEASED MANUFACTURING PACKAGE**
 
-Research date: 2026-08-06
+Research updated: 2026-08-07
+
 Region: Boston, Massachusetts, USA
 
-## Recorded program input
+## Program input
 
 - A local library makerspace may provide CNC access, but its metalworking capability is not yet known.
-- HR-V0 is a light-duty demonstrator. Its controlled task remains moving one soft foam object of at most 100 g; it is not being sized as a high-payload robot.
-- Low force and low mass reduce the required structure, but they do not replace fastener definition, first-article inspection, proof loading, hard stops, guarding, or stopping tests.
+- HR-V0 is a light-duty demonstrator for one soft foam object of at most 100 g; it is not a high-payload robot.
+- Low force and low mass do not replace fastener definition, first-article inspection, proof loading, hard stops, guarding, stopping tests or qualified review.
 
 ## Recommendation
 
-Make the first HR-V0 structure from flat 4.75 mm and 6.35 mm 6061-T6 plates, catalog ROBOTIS frames, and catalog 80/20 brackets. Do not weld or bend the structural 6061 parts. Quote identical released geometry at SendCutSend and Xometry, then use a local shop for fit-checking, inspection, deburr, or a genuinely three-dimensional operation only when needed.
+Use flat 4.75 mm and 6.35 mm 6061-T6 plates, catalog ROBOTIS frames and catalog 80/20 brackets. Do not weld or bend the structural parts. The current 2.70 mm candidate holes in `MV0-001`, `MV0-002`, and `MV0-003` are smaller than their plate thickness, so they are **CNC mill/drill RFQ parts**, not laser-finished SendCutSend parts. `MV0-004` may be profile cut only after the real bench survey closes its slot and anchor definition.
 
-This approach does **not** depend on the local library having a metal-capable CNC machine.
+This plan does not depend on a library having metal CNC. See the controlled [flat-plate manufacturing decision](hr-v0-flat-plate-manufacturing-p0.1.md).
 
 ## Current part-to-process plan
 
-| Controlled part | Qty | Stock/process candidate | Default route | Why this route |
+| Controlled part | Qty | Stock/process candidate | Default RFQ route | Hold point |
 |---|---:|---|---|---|
-| `MV0-001` upper link plate | 1 | 4.75 mm / 0.187 in 6061-T6, flat profile cut | SendCutSend quotation | Two-dimensional profile; no pocket, bend, or weld is required. |
-| `MV0-002` forearm link plate | 1 | 4.75 mm / 0.187 in 6061-T6, flat profile cut | SendCutSend quotation | Same process and stock as `MV0-001`; quote together from one controlled revision. |
-| `MV0-003` shoulder adapter | 1 | 6.35 mm / 0.250 in 6061-T6, flat profile cut | SendCutSend plus local fit inspection | Flat plate; physical FR13 and extrusion fit still govern hole release. |
-| `MV0-004` bench anchor plate | 2 | 6.35 mm / 0.250 in 6061-T6, flat profile cut | Hold until bench survey, then quote | Plate outline exists, but the actual bench substrate and anchor hardware are unresolved. |
-| Fit coupons, guard templates, cable-routing mockups | as needed | PLA, plywood, acrylic, or other approved nonmetal stock | Library/FabVille candidate | Appropriate use of a router/laser/3D printer even if metal is prohibited. |
+| `MV0-001` upper link | 1 | 4.75 mm 6061-T6; CNC profile and drill | Xometry or Protolabs CNC | `MV0-FC01` and `MV0-FC02`, hole tolerance, DFM and FAI |
+| `MV0-002` forearm | 1 | 4.75 mm 6061-T6; CNC profile and drill | Xometry or Protolabs CNC | `MV0-FC01` and `MV0-FC03`, hole tolerance, DFM and FAI |
+| `MV0-003` shoulder adapter | 1 | 6.35 mm 6061-T6; CNC profile and drill | Xometry or Protolabs CNC | `MV0-FC02`, column interface, DFM and FAI |
+| `MV0-004` bench anchor | 2 | 6.35 mm 6061-T6; profile-cut candidate | SendCutSend or Xometry only after survey | Bench substrate, anchor system, slots, DFM and FAI |
+| Fit coupons, guard templates, cable mockups | as needed | Approved nonstructural polymer, plywood or acrylic | Library/FabVille candidate | Inspection procedure and material/use restrictions |
 
-The generated files are quote geometry only. Do not upload them as a cutting order until the fit coupon and drawing review gates close.
+The generated files are RFQ geometry only. Do not upload them as a cutting order.
 
 ## Verified options
 
 | Route | Verified capability and access | HR-V0 use |
 |---|---|---|
-| [Boston Public Library KBLIC](https://www.bpl.org/kblic/) | Current official information describes STL/PLA 3D printing, with a 146 mm cube limit; the service is currently marked temporarily unavailable. No metal CNC capability is documented. | Not a metal route. Recheck the exact neighborhood library/makerspace before assuming otherwise. |
-| [FabVille, Somerville](https://fabville.org/machines) | ShopBot accepts DXF and related 2D formats, but its official material list limits the machine to wood, cardboard, acrylic and other organic materials. Community open shop is free. | Polymer guards, templates and fixtures; not 6061 structure. |
-| [Artisans Asylum, Allston](https://www.artisansasylum.com/shops/machine) | Official precision machine shop lists manual/CNC mills and aluminum capability. It is self-service: orientation and tool-specific testing are required. [Membership/day-pass terms](https://www.artisansasylum.com/memberships) currently list day passes and monthly access. | Best nearby hands-on option for supervised drilling, countersink, fit correction, metrology and one-off adapters after checkout or private instruction. |
-| [Lowell Makes](https://lowellmakes.com/facilities/machine-shop/) | Official machine-shop list includes Tormach CNC, knee mill and lathe; each requires checkout. [Membership](https://lowellmakes.com/membership/) is adult-only with onboarding. | Lower-cost local self-fabrication fallback if travel is practical. |
-| [Mill Forge, Norwood](https://millforge.org/facilities/) | Official facilities list includes manual metal cutting/bending/rolling and welding. Its published CNC equipment does not establish precision aluminum milling. Training/certification applies. | Thin guards/enclosures and general assembly, not the baseline precision link route. |
-| [SendCutSend](https://sendcutsend.com/materials/6061-aluminum/) | Official 6061-T6 stock list includes 0.187 in (about 4.75 mm) and 0.250 in (6.35 mm). It accepts [DXF, STEP and other listed formats](https://sendcutsend.com/faq/what-file-formats-do-you-accept/) and publishes typical 2–4 day production before shipping. Its 6061 page does not list bending, so none is assumed. | Primary source for flat link, adapter and anchor plates. Capture the actual quote and DFM result before purchase. |
-| [Xometry](https://www.xometry.com/capabilities/sheet-cutting/metal-laser-cutting/) | Official sheet-cutting service accepts 3D CAD and DXF/drawings; published 6061-T6 stock spans the project thicknesses. [CNC service](https://www.xometry.com/capabilities/cnc-machining-service/precision-cnc-machining/) supports small-batch 6061 work. | Comparison quote for flat plates and preferred fallback for pockets, bearing seats or other 3D features. |
-| [Protolabs](https://www.protolabs.com/services/cnc-machining/cnc-milling/design-guidelines/) | Official CNC guidance supports 6061 and standard neutral CAD formats. Its [formed-sheet guidance](https://www.protolabs.com/services/sheet-metal-fabrication/forming/) limits published formed 6061-T6 thickness to 0.134 in and requires manual review. | Independent CNC/DFM quote, not the 4.75 mm bent-6061 route. |
+| [Boston Public Library KBLIC](https://www.bpl.org/kblic/) | Official information describes STL/PLA printing with a 146 mm cube limit; the service is currently marked temporarily unavailable. No metal CNC capability is documented. | Not a metal route; recheck the actual neighborhood facility. |
+| [FabVille, Somerville](https://fabville.org/machines) | Its ShopBot accepts DXF, but the official material list limits it to wood, cardboard, acrylic and other organic materials. | Nonmetal templates, fixtures and guards only. |
+| [Artisans Asylum, Allston](https://www.artisansasylum.com/shops/machine) | Official machine-shop listing includes manual/CNC mills and aluminum capability; orientation and tool-specific testing are required. | Nearby supervised CNC/inspection candidate after operator checkout or instruction. |
+| [Lowell Makes](https://lowellmakes.com/facilities/machine-shop/) | Official list includes Tormach CNC, knee mill and lathe; checkout is required. | Local self-fabrication fallback if access and inspection capability are documented. |
+| [Mill Forge, Norwood](https://millforge.org/facilities/) | Official facilities list manual metal cutting/forming and welding, but does not establish precision aluminum CNC capability. | General fabrication only; not the baseline precision-link route. |
+| [SendCutSend 6061](https://sendcutsend.com/materials/6061-aluminum/) | Lists project stock thicknesses but recommends holes no smaller than material thickness. | `MV0-004` profile RFQ candidate after survey. Do not order the current 2.70 mm holes as laser-finished features. |
+| [Xometry CNC](https://www.xometry.com/capabilities/cnc-machining-service/) | Supports 6061 and publishes standard metal tolerance of ±0.005 in / ±0.127 mm unless otherwise specified. | Baseline CNC/DFM quotation for `MV0-001` through `MV0-003`; the quote, drawing and FAI govern. |
+| [Protolabs precision machining](https://www.protolabs.com/services/cnc-machining/precision-machining-tolerances/) | Publishes standard machined-hole tolerance and drawing-based precision review. | Independent CNC/DFM quotation. |
 
-Current prices are not frozen engineering inputs; each depends on geometry, quantity, tolerance, finish, inspection and lead time.
+Current prices are not engineering inputs; they depend on the released geometry, quantity, tolerance, finish, inspection and lead time.
 
 ## Library/makerspace capability checklist
 
-If the user’s local library is different from KBLIC, record all of these before assigning a part:
+Before assigning any metal part, record:
 
 - exact machine make/model, work envelope and operating status;
-- written approval for 6061 aluminum at 4.75 or 6.35 mm;
+- written approval for 6061 at 4.75 or 6.35 mm;
 - spindle, tooling, workholding, coolant/chip-control and stock rules;
-- supported CAM workflow and whether staff accept STEP/DXF or require staff-generated CAM;
-- required class, certification, supervision, reservation duration, cost and residency/card rules;
-- tolerance staff will accept for the actual drawing and available inspection instruments; and
-- permission for outside stock, cutting fluid, reaming, tapping and repeat setups.
+- CAM workflow and accepted source formats;
+- class, certification, supervision, reservation, cost and residency rules;
+- drawing tolerance the shop accepts and the available calibrated inspection instruments; and
+- permission for outside stock, cutting fluid, drilling, reaming, tapping and repeat setups.
 
-Until this evidence exists, use a library router only for polymer fit coupons, fixtures and guard templates.
+Until this evidence exists, use the library only for approved nonmetal fit coupons, fixtures and guard templates.
 
-## Quote package and first-article evidence
+## Immediate sequence
 
-Every request for quote needs:
+1. Receive one FR13-H101K, one FR13-S102K and the controlled gripper interface hardware.
+2. Execute `INSPECT-MECH-003`, `INSPECT-MECH-004`, and `INSPECT-MECH-008` with the controlled coupons.
+3. Freeze the hole diameter/location tolerances from physical evidence and reviewed structural calculations.
+4. Complete fastener, hard-stop, cable, guard and bench-anchor definitions.
+5. Obtain comparable CNC quotes for the same hashes and revision; obtain a profile-cut quote for `MV0-004` only after bench survey.
+6. Obtain supplier DFM acceptance and release a separately controlled first-article candidate.
+7. Inspect first articles under `INSPECT-MECH-009`; do not use them in powered assembly until qualified disposition.
 
-1. unique part number, revision, units, quantity and preliminary status;
-2. STEP and DXF generated from the same native source with recorded checksums;
-3. controlled drawing specifying 6061-T6, thickness, holes, datums/tolerances, deburr and edge break;
-4. explicit **NO WELDING** and **NO BENDS** for HR-V0 R0.1;
-5. any thread, countersink or insert callout including depth;
-6. vendor DFM report, selected process, live lead time/price, quote expiry and material/inspection options; and
-7. first-article inspection for thickness, critical dimensions, hole location, burrs, flatness, fit and measured mass.
-
-If a future bend is unavoidable, record alloy/temper, grain direction, radius, vendor bend rules and post-bend property implications. 6061-T6 is less forgiving in bending than common sheet-metal alloys; the safest V0 structure is flat plates plus bolted catalog brackets.
-
-## Immediate purchasing sequence
-
-1. Buy one FR13-H101K and one FR13-S102K manufacturer frame.
-2. Make the controlled nonstructural `MV0-FC01` PCD22 coupon from its generated DXF or STL; use polymer, acrylic, or plywood before considering metal.
-3. Execute `INSPECT-MECH-003` against both received frames and preserve the per-hole CSV record, scale measurements, hashes, and photographs; revise CAD through configuration control if needed.
-4. Complete the missing fastener, hard-stop, cable, guard and bench-anchor design.
-5. Obtain comparable SendCutSend and Xometry quotes for the **same revision**.
-6. Order only after the mechanical release review changes the files from quote geometry to a controlled first-article release.
-
-## Research decision
-
-No custom welding, bent aluminum, five-axis machining, or free-form metal bodywork is required for HR-V0 R0.1. If a future revision introduces bearing pockets, precision bores, or non-flat load paths, obtain a separate Xometry/Protolabs CNC quote or use Artisans Asylum only with a checked-out operator and an inspection plan. Do not silently convert a laser-cut part into a locally routed aluminum part.
+No custom welding, bent aluminum, five-axis machining or free-form metal bodywork is required for HR-V0 R0.1. Do not silently convert a quoted process or local machine into an approved fabrication route.
 
 **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION.**

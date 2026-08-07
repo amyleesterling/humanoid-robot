@@ -1,21 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="920" height="500" viewBox="0 0 920 500">
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="660" viewBox="0 0 920 660">
       <style>
         text { font: 16px system-ui, sans-serif; fill: #082554; }
         .title { font-size: 24px; font-weight: 700; }
         .warning { font-size: 18px; font-weight: 700; fill: #8a4b00; }
+        .rfq-note text { font-size: 16px; font-weight: 650; fill: #082554; }
         .part { fill: #d9efff; stroke: #082554; stroke-width: 3; }
         .hole { fill: white; stroke: #082554; stroke-width: 2; }
         .dim { stroke: #b17700; stroke-width: 2; marker-start: url(#arrow); marker-end: url(#arrow); }
       </style>
       <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b17700"/></marker></defs>
       <text x="30" y="32" class="title">MV0-003 · SHOULDER ADAPTER</text>
-      
-          <rect x="180" y="80" width="450" height="300" class="part"/>
+      <rect x="180" y="80" width="450" height="300" class="part"/>
           <g class="hole"><circle cx="390" cy="187" r="7"/><circle cx="390" cy="267" r="7"/><circle cx="550" cy="187" r="7"/><circle cx="550" cy="267" r="7"/><circle cx="250" cy="285" r="22"/><circle cx="250" cy="176" r="22"/></g>
           <text x="180" y="55">90.0 x 110.0 x 6.35 mm NOMINAL</text>
           <text x="650" y="190">S102: 4 x dia 2.70</text><text x="650" y="218">ON 32 x 16 RECTANGLE</text>
           <text x="650" y="285">2 x dia 9.0 CANDIDATE</text><text x="650" y="313">M8 COLUMN FASTENERS</text>
           <text x="180" y="430">SHOULDER AXIS: X=58.0, Z=70.0 FROM LOWER-LEFT DATUM</text>
           <text x="180" y="460">FASTENER LENGTH, ENGAGEMENT, TORQUE AND TOLERANCES: SELECTION REQUIRED</text>
-      <text x="30" y="486" class="warning">HR-V0-MECH-R0.1-PRELIMINARY · PRELIMINARY—NOT RELEASED FOR FABRICATION</text>
+      <g class="rfq-note">
+        <text x="30" y="515">RFQ PROCESS: CNC MILL/DRILL FROM 6061-T6 PLATE; LASER-ONLY 2.70 mm HOLES NOT ACCEPTED</text>
+        <text x="30" y="540">GENERAL RFQ BASIS: XOMETRY CNC STANDARD +/-0.127 mm; QUOTED CAPABILITY SHALL GOVERN</text>
+        <text x="30" y="565">CRITICAL HOLE SIZE/POSITION: SELECTION REQUIRED AFTER RECEIVED-FRAME COUPON EVIDENCE</text>
+        <text x="30" y="590">NO BEND - NO WELD - DEBURR/BREAK SHARP EDGES - DO NOT SCALE - FIRST ARTICLE INSPECTION REQUIRED</text>
+      </g>
+      <text x="30" y="646" class="warning">HR-V0-MECH-R0.1-PRELIMINARY · HR-V0-PLATE-RFQ-P0.1 · PRELIMINARY—NOT RELEASED FOR FABRICATION</text>
     </svg>

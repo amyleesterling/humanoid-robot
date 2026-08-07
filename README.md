@@ -31,8 +31,9 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Walking-system specification](docs/walking-system.md)
 - [Walking verification matrix](docs/walking-verification.md)
 - [Mechanical concept and load model](docs/mechanical.md)
-- [HR-V0 native CAD and quote geometry](cad/hr-v0/README.md)
+- [HR-V0 native CAD, RFQ geometry and first-article controls](cad/hr-v0/README.md)
 - [HR-V0 Mechanical R0.1 preliminary baseline](docs/hr-v0-mechanical-r0.1.md)
+- [HR-V0 flat-plate manufacturing and first-article control P0.1](docs/hr-v0-flat-plate-manufacturing-p0.1.md)
 - [HR-V0 PCD22 fit-coupon procedure P0.1](docs/hr-v0-fit-coupon-procedure-p0.1.md)
 - [HR-V0 S102 fit-coupon procedure P0.1](docs/hr-v0-s102-fit-procedure-p0.1.md)
 - [HR-V0 gripper architecture and closure plan P0.1](docs/hr-v0-gripper-architecture-p0.1.md)
@@ -107,6 +108,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R40](docs/reviews/2026-08-07-sol-r12-post-r40-status.md)
 - [Sol R12 findings rechecked against R41](docs/reviews/2026-08-07-sol-r12-post-r41-status.md)
 - [Sol R12 findings rechecked against R42](docs/reviews/2026-08-07-sol-r12-post-r42-status.md)
+- [Sol R12 findings rechecked against R43](docs/reviews/2026-08-07-sol-r12-post-r43-status.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.2 independent review request](docs/reviews/2026-08-07-firmware-p0.2-independent-review-request.md)
 - [Firmware P0.1 historical independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
@@ -117,9 +119,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements. Regenerate and check the mechanical package in this order: `python cad/hr-v0/src/hr_v0_cad.py`, `python cad/hr-v0/src/mechanical_checks.py`, then `python tools/check_hr_v0_cad.py`. The calculation pass refreshes the generated source manifest after updating its result file. Run `python tools/generate_hr_v0_electrical_v3.py --validate` and `python tools/check_hr_v0_electrical_v3.py` to regenerate and cross-check the V3 native candidate. Run `python tools/check_hr_v0_protection.py` to verify that the six-reference coordination register remains explicit and that no unresolved fuse ampere rating has been released. Run both PCB generators/checkers with KiCad's bundled Python: `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_watchdog_pcb.py`, `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_watchdog_pcb.py`, `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_dxl_star.py`, and `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_dxl_star.py`. Run `python tools/check_hr_v0_firmware.py` to validate the source, compiled-C differential suite, locked toolchains and controlled watchdog artifacts. Use `tools/build_hr_v0_watchdog.ps1` to reproduce the clean Pico P0.2 builds and `tools/build_hr_v0_watchdog_host_runner.ps1` to reproduce the clean host-vector builds with their pinned portable tool directories. PCB-P0.5 and DXL-STAR-P0.1 are routed source candidates, but both must remain without Gerber/drill outputs until supplier acceptance, protection, physical evidence and independent-review gates close. Run `python tools/check_energization_gates.py --through-stage E2 --require-ready` before claiming readiness for control-only first energization; it must remain nonzero until every applicable gate is evidenced and closed.
 
+Also run `python tools/check_hr_v0_manufacturing.py` to verify the four-part RFQ process register and prove that no dimensional release is recorded.
+
 ## Review history
 
-Forty-two review/control rounds are complete: R01-R42. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
+Forty-three review/control rounds are complete: R01-R43. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -165,6 +169,7 @@ Forty-two review/control rounds are complete: R01-R42. R11 Fable and R12 Sol are
 | R40 | Watchdog clock-model and compiled-C correction | Reconciled C/Python 32-bit wrap and regression semantics, added a latched clock fault, matched compiled C to the model for 44 steps in nine scenarios, and issued reproducible Pico P0.2 plus host-vector artifacts. Target HIL and EG-017 remain open. |
 | R41 | K1/K2 DC application-evidence correction | Issued Electrical V3-P1.3 with current Schneider three-pole-series and mirror-contact evidence, corrected the misleading 25 A BOM shorthand, and exposed the catalog's lower-current critical-current warning for the 11.1 A HR-V0 screen. EG-013 remains partial pending written application disposition and physical loaded tests. |
 | R42 | RESET/ARM received-lot terminal-control correction | Issued Electrical V3-P1.4 after current IDEC evidence confirmed that prior or redesigned HW internals may ship under unchanged complete order codes and the live BOM exposes no component identity. Retained exact black RESET and green ARM complete assemblies, kept all four terminals `TBD-*`, added a lot-specific inspection/continuity form and vendor query, and left EG-011 partial. |
+| R43 | HR-V0 flat-plate process and first-article correction | Reclassified `MV0-001` through `MV0-003` as CNC mill/drill RFQ parts, held `MV0-004` behind the bench survey, added machine-checked process evidence, drawing RFQ notes, supplier DFM/FAI records and `INSPECT-MECH-009`. EG-006 remains partial; no cutting or energization release was issued. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

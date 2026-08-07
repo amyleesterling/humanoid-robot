@@ -28,6 +28,7 @@ HARD_STOPS = OUT / "hard-stops"
 SAFETY_ENCLOSURE = OUT / "safety-enclosure"
 
 REVISION = "HR-V0-MECH-R0.1-PRELIMINARY"
+PLATE_RFQ_REVISION = "HR-V0-PLATE-RFQ-P0.1"
 MATERIAL = "6061-T6 aluminum"
 DENSITY_KG_MM3 = 2.70e-6
 
@@ -255,14 +256,14 @@ def export_part(
         "volume_mm3": round(volume, 2),
         "calculated_mass_g": round(volume * DENSITY_KG_MM3 * 1000.0, 1),
         "quantity": quantity,
-        "release_status": "QUOTE GEOMETRY ONLY—DRAWING REVIEW REQUIRED",
+        "release_status": "RFQ PROCESS CONTROLLED—DIMENSIONAL RELEASE AND FAI REQUIRED",
     }
 
 
 def write_svg_drawing(part_number: str, title: str, kind: str):
     """Human-readable quote drawing; dimensions remain controlled in source."""
     if kind == "upper_link":
-        width, height = 920, 420
+        width, height = 920, 560
         h101_holes = ''.join(
             f'<circle cx="{150 + 38.5*math.cos(2*math.pi*i/8):.1f}" '
             f'cy="{173 + 38.5*math.sin(2*math.pi*i/8):.1f}" r="4.7"/>'
@@ -278,7 +279,7 @@ def write_svg_drawing(part_number: str, title: str, kind: str):
           <text x="490" y="70">J2/S102: 4 x dia 2.70 ON 32 x 16 RECTANGLE</text>
           <text x="150" y="357">THICKNESS 4.75 mm NOMINAL - FASTENER STACK AND TOLERANCES NOT RELEASED</text>'''
     elif kind == "forearm_link":
-        width, height = 920, 420
+        width, height = 920, 560
         h101_holes = ''.join(
             f'<circle cx="{150 + 38.5*math.cos(2*math.pi*i/8):.1f}" '
             f'cy="{173 + 38.5*math.sin(2*math.pi*i/8):.1f}" r="4.7"/>'
@@ -309,7 +310,7 @@ def write_svg_drawing(part_number: str, title: str, kind: str):
           <text x="150" y="70">2 × 8 HOLES ⌀2.70 ON ⌀22.0 PCD, 45° EQUAL SPACING</text>
           <text x="150" y="357">THICKNESS 4.75 mm NOMINAL · DEBURR ALL EDGES · BREAK SHARP EDGES 0.5 MAX</text>'''
     elif kind == "adapter_s102":
-        width, height = 920, 500
+        width, height = 920, 660
         geometry = '''
           <rect x="180" y="80" width="450" height="300" class="part"/>
           <g class="hole"><circle cx="390" cy="187" r="7"/><circle cx="390" cy="267" r="7"/><circle cx="550" cy="187" r="7"/><circle cx="550" cy="267" r="7"/><circle cx="250" cy="285" r="22"/><circle cx="250" cy="176" r="22"/></g>
@@ -329,26 +330,40 @@ def write_svg_drawing(part_number: str, title: str, kind: str):
           <text x="180" y="430">SHOULDER AXIS: X=58.0, Z=70.0 FROM LOWER-LEFT DATUM</text>
           <text x="180" y="460">COLUMN HOLES: X=14.0; Z=35.0 AND 75.0 · VERIFY AGAINST ACTUAL FRAME BEFORE CUT</text>'''
     else:
-        width, height = 920, 450
+        width, height = 920, 570
         geometry = '''
           <rect x="170" y="80" width="500" height="260" class="part"/>
           <g class="hole"><circle cx="320" cy="145" r="22"/><circle cx="520" cy="145" r="22"/><rect x="265" y="235" width="110" height="32" rx="16"/><rect x="465" y="235" width="110" height="32" rx="16"/></g>
           <text x="170" y="55">100.0 × 80.0 × 6.35 mm NOMINAL</text>
           <text x="690" y="145">2 × ⌀9.0 FRAME</text><text x="690" y="252">2 × 28 × 9 SLOT</text>
           <text x="170" y="395">BENCH FASTENER, EDGE DISTANCE, SUBSTRATE AND PULL-OUT: SELECTION REQUIRED AFTER SITE SURVEY</text>'''
+    if kind in {"upper_link", "forearm_link", "adapter_s102"}:
+        process_note = "RFQ PROCESS: CNC MILL/DRILL FROM 6061-T6 PLATE; LASER-ONLY 2.70 mm HOLES NOT ACCEPTED"
+    else:
+        process_note = "RFQ PROCESS: PROFILE CUT CANDIDATE; BENCH-SLOT RELEASE REQUIRES COMPLETED SITE SURVEY"
+    note_y = height - 145
+    rfq_notes = f'''
+      <g class="rfq-note">
+        <text x="30" y="{note_y}">{process_note}</text>
+        <text x="30" y="{note_y + 25}">GENERAL RFQ BASIS: XOMETRY CNC STANDARD +/-0.127 mm; QUOTED CAPABILITY SHALL GOVERN</text>
+        <text x="30" y="{note_y + 50}">CRITICAL HOLE SIZE/POSITION: SELECTION REQUIRED AFTER RECEIVED-FRAME COUPON EVIDENCE</text>
+        <text x="30" y="{note_y + 75}">NO BEND - NO WELD - DEBURR/BREAK SHARP EDGES - DO NOT SCALE - FIRST ARTICLE INSPECTION REQUIRED</text>
+      </g>'''
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">
       <style>
         text {{ font: 16px system-ui, sans-serif; fill: #082554; }}
         .title {{ font-size: 24px; font-weight: 700; }}
         .warning {{ font-size: 18px; font-weight: 700; fill: #8a4b00; }}
+        .rfq-note text {{ font-size: 16px; font-weight: 650; fill: #082554; }}
         .part {{ fill: #d9efff; stroke: #082554; stroke-width: 3; }}
         .hole {{ fill: white; stroke: #082554; stroke-width: 2; }}
         .dim {{ stroke: #b17700; stroke-width: 2; marker-start: url(#arrow); marker-end: url(#arrow); }}
       </style>
       <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b17700"/></marker></defs>
       <text x="30" y="32" class="title">{part_number} · {title}</text>
-      {geometry}
-      <text x="30" y="{height-14}" class="warning">{REVISION} · PRELIMINARY—NOT RELEASED FOR FABRICATION</text>
+      {geometry.strip()}
+      {rfq_notes.strip()}
+      <text x="30" y="{height-14}" class="warning">{REVISION} · {PLATE_RFQ_REVISION} · PRELIMINARY—NOT RELEASED FOR FABRICATION</text>
     </svg>'''
     (DRAWINGS / f"{part_number}_{kind}.svg").write_text(svg, encoding="utf-8")
 

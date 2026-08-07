@@ -2,7 +2,7 @@
 
 **PRELIMINARY—NOT RELEASED FOR FABRICATION OR ENERGIZATION**
 
-This directory contains the first native, parametric mechanical source for the bench-mounted HR-V0 handoff demonstrator. It is **quote geometry**, not a fabrication release. The custom parts are intentionally limited to flat 6061-T6 plates that can be waterjet, laser cut, router cut, or conventionally machined.
+This directory contains the native, parametric mechanical source for the bench-mounted HR-V0 handoff demonstrator. It is an **RFQ and first-article evidence package**, not a fabrication release. The custom parts are flat 6061-T6 plates. The controlled process is CNC mill/drill for `MV0-001` through `MV0-003`; `MV0-004` is a profile-cut candidate only after the bench survey.
 
 ## Generate the package
 
@@ -18,10 +18,12 @@ For a clean environment, install the pinned package from `requirements-cad.txt`.
 
 | Part | Description | Quantity | Material | Current status |
 |---|---|---:|---|---|
-| MV0-001 | 160 mm upper-link plate; H101 output to S102 body-frame interfaces | 1 | 4.75 mm nominal 6061-T6 | Corrected quote geometry; physical fit required |
-| MV0-002 | 160 mm forearm plate; H101 input and selected FR12-H104K 24 x 12 candidate pattern | 1 | 4.75 mm nominal 6061-T6 | Do not cut until MV0-FC03 physical fit, fastener stack and load path are released |
-| MV0-003 | S102 shoulder-to-column adapter | 1 | 6.35 mm nominal 6061-T6 | Corrected quote geometry; physical fit required |
-| MV0-004 | Bench anchor plate | 2 | 6.35 mm nominal 6061-T6 | Site-dependent |
+| MV0-001 | 160 mm upper-link plate; H101 output to S102 body-frame interfaces | 1 | 4.75 mm nominal 6061-T6 | CNC mill/drill RFQ; diameter/location selection and FAI required |
+| MV0-002 | 160 mm forearm plate; H101 input and selected FR12-H104K 24 x 12 candidate pattern | 1 | 4.75 mm nominal 6061-T6 | CNC mill/drill RFQ; fit, fastener/load path, tolerance and FAI required |
+| MV0-003 | S102 shoulder-to-column adapter | 1 | 6.35 mm nominal 6061-T6 | CNC mill/drill RFQ; fit, column interface, tolerance and FAI required |
+| MV0-004 | Bench anchor plate | 2 | 6.35 mm nominal 6061-T6 | Profile-cut candidate; bench survey, anchor selection and FAI required |
+
+The process decision, supplier screens and closure sequence are controlled in [HR-V0 flat-plate manufacturing P0.1](../../docs/hr-v0-flat-plate-manufacturing-p0.1.md) and the machine-readable [`manufacturing/hr-v0-flat-plate-process-register.csv`](manufacturing/hr-v0-flat-plate-process-register.csv). Validate it with `python tools/check_hr_v0_manufacturing.py`.
 
 ## Controlled nonstructural fit coupon
 
@@ -46,10 +48,11 @@ The assembly uses envelopes for 80/20 40-4040 extrusion and XM540 actuators. Use
 - Execute `INSPECT-MECH-008` with `MV0-FC03` on the received FR12-H104K and `INSPECT-GRIP-001` on the allocated RM-X52 mechanism plus its fixed local guard.
 - Freeze the full 3D sweep and exact harness, then execute `INSPECT-GUARD-001`, `INSPECT-CABLE-001`, and `TEST-DROP-001`; enlarge the enclosure if measured stopping, payload, tolerance or service volumes exceed the preliminary reservation.
 - Confirm the cutting supplier's actual thickness tolerance, hole tolerance, minimum feature and finish.
+- Obtain written supplier DFM against the exact drawing and hashes, then inspect one authorized first article under `INSPECT-MECH-009` before any production or powered use.
 - Resolve fastener exact parts, strength class, engagement, torque, locking method and witness marking.
 - Add and verify hard stops, cable paths, covers, gripper retention and the fixed guard.
 - Before any powered stop test, release the backed-up bumper/catch geometry, current/speed/latency bounds, impact acceptance values, guarded fixture and qualified written approval.
 - Survey the real Boston bench substrate and select anchors from the substrate and edge-distance evidence.
 - Complete the released mechanical calculations and independent mechanical review.
 
-Do not send the generated files as an approved production order.
+Do not send the generated files as an approved production order. P0.1 may support comparable RFQs only; it does not authorize a cutting order.
