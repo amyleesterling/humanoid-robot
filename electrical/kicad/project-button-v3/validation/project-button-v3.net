@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-06T20:04:13")
+		(date "2026-08-06T20:29:13")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P0.8")
+			(name "REVISION") "V3-P0.9")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,7 +15,7 @@
 			(title_block
 				(title "Project Button HR-V0 Electrical V3 index")
 				(company "Project Button")
-				(rev "V3-P0.8")
+				(rev "V3-P0.9")
 				(date "2026-08-06")
 				(source "project-button-v3.kicad_sch")
 				(comment
@@ -63,7 +63,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 01")
 				(company "Project Button")
-				(rev "V3-P0.8")
+				(rev "V3-P0.9")
 				(date "2026-08-06")
 				(source "01_external_sources.kicad_sch")
 				(comment
@@ -111,7 +111,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 02")
 				(company "Project Button")
-				(rev "V3-P0.8")
+				(rev "V3-P0.9")
 				(date "2026-08-06")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
@@ -159,7 +159,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 03")
 				(company "Project Button")
-				(rev "V3-P0.8")
+				(rev "V3-P0.9")
 				(date "2026-08-06")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
@@ -207,7 +207,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 04")
 				(company "Project Button")
-				(rev "V3-P0.8")
+				(rev "V3-P0.9")
 				(date "2026-08-06")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
@@ -255,7 +255,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 05")
 				(company "Project Button")
-				(rev "V3-P0.8")
+				(rev "V3-P0.9")
 				(date "2026-08-06")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
@@ -303,7 +303,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 06")
 				(company "Project Button")
-				(rev "V3-P0.8")
+				(rev "V3-P0.9")
 				(date "2026-08-06")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
@@ -351,7 +351,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 07")
 				(company "Project Button")
-				(rev "V3-P0.8")
+				(rev "V3-P0.9")
 				(date "2026-08-06")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
@@ -399,7 +399,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 08")
 				(company "Project Button")
-				(rev "V3-P0.8")
+				(rev "V3-P0.9")
 				(date "2026-08-06")
 				(source "08_watchdog_feedback_interface.kicad_sch")
 				(comment
@@ -447,7 +447,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 09")
 				(company "Project Button")
-				(rev "V3-P0.8")
+				(rev "V3-P0.9")
 				(date "2026-08-06")
 				(source "09_compute_and_control_terminals.kicad_sch")
 				(comment
@@ -495,7 +495,7 @@
 			(title_block
 				(title "PB HR-V0 Electrical V3 - 10")
 				(company "Project Button")
-				(rev "V3-P0.8")
+				(rev "V3-P0.9")
 				(date "2026-08-06")
 				(source "10_actuator_interfaces.kicad_sch")
 				(comment
@@ -3317,41 +3317,40 @@
 		)
 		(comp
 			(ref "CDEC1")
-			(value "100 nF VCC1 decoupling")
-			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
-			(description "Required by TI; place within 2 mm of UFB1 VCC1/GND1 pins. Exact dielectric, voltage rating and footprint remain open.")
+			(value "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
+			(datasheet "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
+			(description "Exact order code frozen. Exact 0805 candidate required at UFB1 VCC1/GND1; placement within 2 mm, land pattern and received-board capacitance remain open.")
 			(fields
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/PLACEMENT")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Murata official GRM21BR71H104KA01L specification asset, updated 2025 and accessed 2026-08-06.")
 				(field
-					(name "Display") "100 nF VCC1 decoupling")
+					(name "Display") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+					(name "Datasheet") "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 				(field
-					(name "Description") "Required by TI; place within 2 mm of UFB1 VCC1/GND1 pins. Exact dielectric, voltage rating and footprint remain open.")
+					(name "Description") "Exact order code frozen. Exact 0805 candidate required at UFB1 VCC1/GND1; placement within 2 mm, land pattern and received-board capacitance remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "CDEC1")
-				(description "Required by TI; place within 2 mm of UFB1 VCC1/GND1 pins. Exact dielectric, voltage rating and footprint remain open.")
+				(description "Exact order code frozen. Exact 0805 candidate required at UFB1 VCC1/GND1; placement within 2 mm, land pattern and received-board capacitance remain open.")
 			)
 			(property
 				(name "Status")
-				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED: PCB/PLACEMENT")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Murata official GRM21BR71H104KA01L specification asset, updated 2025 and accessed 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "100 nF VCC1 decoupling")
+				(value "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
 			)
 			(property
 				(name "Sheetname")
@@ -3382,41 +3381,40 @@
 		)
 		(comp
 			(ref "CFI1")
-			(value "10 nF 50 V CIN channel 1")
-			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
-			(description "TI Type-3 input-filter value. Select dielectric, tolerance, DC-bias and package; locate at UFB1.")
+			(value "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
+			(datasheet "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
+			(description "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at 24.6 V until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
 			(fields
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: DC-BIAS/PCB/EMC")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "TDK current product page: production, 10 nF +/-10%, 50 VDC, X7R, 0603, -55 to 125 C; accessed 2026-08-06.")
 				(field
-					(name "Display") "10 nF 50 V CIN channel 1")
+					(name "Display") "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+					(name "Datasheet") "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 				(field
-					(name "Description") "TI Type-3 input-filter value. Select dielectric, tolerance, DC-bias and package; locate at UFB1.")
+					(name "Description") "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at 24.6 V until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "CFI1")
-				(description "TI Type-3 input-filter value. Select dielectric, tolerance, DC-bias and package; locate at UFB1.")
+				(description "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at 24.6 V until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
 			)
 			(property
 				(name "Status")
-				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED: DC-BIAS/PCB/EMC")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "TDK current product page: production, 10 nF +/-10%, 50 VDC, X7R, 0603, -55 to 125 C; accessed 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "10 nF 50 V CIN channel 1")
+				(value "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
 			)
 			(property
 				(name "Sheetname")
@@ -3447,41 +3445,40 @@
 		)
 		(comp
 			(ref "CFI2")
-			(value "10 nF 50 V CIN channel 2")
-			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
-			(description "Same input filter as channel 1.")
+			(value "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
+			(datasheet "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
+			(description "Exact order code frozen. Same exact input-filter candidate and open DC-bias/physical evidence as channel 1.")
 			(fields
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: DC-BIAS/PCB/EMC")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "TDK current production page; accessed 2026-08-06.")
 				(field
-					(name "Display") "10 nF 50 V CIN channel 2")
+					(name "Display") "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+					(name "Datasheet") "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 				(field
-					(name "Description") "Same input filter as channel 1.")
+					(name "Description") "Exact order code frozen. Same exact input-filter candidate and open DC-bias/physical evidence as channel 1.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "CFI2")
-				(description "Same input filter as channel 1.")
+				(description "Exact order code frozen. Same exact input-filter candidate and open DC-bias/physical evidence as channel 1.")
 			)
 			(property
 				(name "Status")
-				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED: DC-BIAS/PCB/EMC")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "TDK current production page; accessed 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "10 nF 50 V CIN channel 2")
+				(value "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
 			)
 			(property
 				(name "Sheetname")
@@ -3512,41 +3509,40 @@
 		)
 		(comp
 			(ref "RPD1")
-			(value "10.0 kOhm 1% GPIO default-low channel 1")
-			(description "Biases the diagnostic low when the receiver output is high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
+			(value "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
+			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
+			(description "Exact order code frozen. Exact 0.125 W default-low candidate. It biases the GPIO low during high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
 			(fields
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/BROWNOUT/FAULT")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic current product page, 10 kilohm 1%, 0805, 0.125 W; accessed 2026-08-06.")
 				(field
-					(name "Display") "10.0 kOhm 1% GPIO default-low channel 1")
+					(name "Display") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 				(field
-					(name "Description") "Biases the diagnostic low when the receiver output is high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
+					(name "Description") "Exact order code frozen. Exact 0.125 W default-low candidate. It biases the GPIO low during high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "RPD1")
-				(description "Biases the diagnostic low when the receiver output is high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
+				(description "Exact order code frozen. Exact 0.125 W default-low candidate. It biases the GPIO low during high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
 			)
 			(property
 				(name "Status")
-				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED: PCB/BROWNOUT/FAULT")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Panasonic current product page, 10 kilohm 1%, 0805, 0.125 W; accessed 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "10.0 kOhm 1% GPIO default-low channel 1")
+				(value "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
 			)
 			(property
 				(name "Sheetname")
@@ -3577,41 +3573,40 @@
 		)
 		(comp
 			(ref "RPD2")
-			(value "10.0 kOhm 1% GPIO default-low channel 2")
-			(description "Same default-low behavior as channel 1.")
+			(value "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
+			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
+			(description "Exact order code frozen. Same exact default-low candidate and open physical evidence as channel 1.")
 			(fields
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/BROWNOUT/FAULT")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic current product page; accessed 2026-08-06.")
 				(field
-					(name "Display") "10.0 kOhm 1% GPIO default-low channel 2")
+					(name "Display") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 				(field
-					(name "Description") "Same default-low behavior as channel 1.")
+					(name "Description") "Exact order code frozen. Same exact default-low candidate and open physical evidence as channel 1.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "RPD2")
-				(description "Same default-low behavior as channel 1.")
+				(description "Exact order code frozen. Same exact default-low candidate and open physical evidence as channel 1.")
 			)
 			(property
 				(name "Status")
-				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED: PCB/BROWNOUT/FAULT")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Panasonic current product page; accessed 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "10.0 kOhm 1% GPIO default-low channel 2")
+				(value "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
 			)
 			(property
 				(name "Sheetname")
@@ -3642,41 +3637,40 @@
 		)
 		(comp
 			(ref "RSN1")
-			(value "562 Ohm 1% RSENSE channel 1")
-			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
-			(description "TI current-limit resistor connected between SENSE1 and IN1; exact order code and PCB footprint remain open.")
+			(value "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
+			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V")
+			(description "Exact order code frozen. Exact 0.125 W candidate for TI current-limit resistor between SENSE1 and IN1. Screened steady loss is 4.3 mW at 2.75 mA; layout, tolerance and fault evidence remain open.")
 			(fields
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/THERMAL/FAULT")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic current product page, 562 ohm 1%, 0805, 0.125 W; accessed 2026-08-06.")
 				(field
-					(name "Display") "562 Ohm 1% RSENSE channel 1")
+					(name "Display") "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V")
 				(field
-					(name "Description") "TI current-limit resistor connected between SENSE1 and IN1; exact order code and PCB footprint remain open.")
+					(name "Description") "Exact order code frozen. Exact 0.125 W candidate for TI current-limit resistor between SENSE1 and IN1. Screened steady loss is 4.3 mW at 2.75 mA; layout, tolerance and fault evidence remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "RSN1")
-				(description "TI current-limit resistor connected between SENSE1 and IN1; exact order code and PCB footprint remain open.")
+				(description "Exact order code frozen. Exact 0.125 W candidate for TI current-limit resistor between SENSE1 and IN1. Screened steady loss is 4.3 mW at 2.75 mA; layout, tolerance and fault evidence remain open.")
 			)
 			(property
 				(name "Status")
-				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED: PCB/THERMAL/FAULT")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Panasonic current product page, 562 ohm 1%, 0805, 0.125 W; accessed 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "562 Ohm 1% RSENSE channel 1")
+				(value "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
 			)
 			(property
 				(name "Sheetname")
@@ -3707,41 +3701,40 @@
 		)
 		(comp
 			(ref "RSN2")
-			(value "562 Ohm 1% RSENSE channel 2")
-			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
-			(description "Same current-limit network as channel 1.")
+			(value "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
+			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V")
+			(description "Exact order code frozen. Same exact current-limit candidate and open physical evidence as channel 1.")
 			(fields
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/THERMAL/FAULT")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic current product page; accessed 2026-08-06.")
 				(field
-					(name "Display") "562 Ohm 1% RSENSE channel 2")
+					(name "Display") "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V")
 				(field
-					(name "Description") "Same current-limit network as channel 1.")
+					(name "Description") "Exact order code frozen. Same exact current-limit candidate and open physical evidence as channel 1.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "RSN2")
-				(description "Same current-limit network as channel 1.")
+				(description "Exact order code frozen. Same exact current-limit candidate and open physical evidence as channel 1.")
 			)
 			(property
 				(name "Status")
-				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED: PCB/THERMAL/FAULT")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Panasonic current product page; accessed 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "562 Ohm 1% RSENSE channel 2")
+				(value "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
 			)
 			(property
 				(name "Sheetname")
@@ -3772,41 +3765,40 @@
 		)
 		(comp
 			(ref "RSO1")
-			(value "1.00 kOhm 1% GPIO series channel 1")
-			(description "Limits abnormal GPIO/output contention current; does not provide safety isolation.")
+			(value "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
+			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V")
+			(description "Exact order code frozen. Exact 0.125 W series candidate. A 3.3 V contention screen is 10.9 mW; it does not make contention safe or provide isolation.")
 			(fields
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/FAULT")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic current product page, 1 kilohm 1%, 0805, 0.125 W; accessed 2026-08-06.")
 				(field
-					(name "Display") "1.00 kOhm 1% GPIO series channel 1")
+					(name "Display") "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V")
 				(field
-					(name "Description") "Limits abnormal GPIO/output contention current; does not provide safety isolation.")
+					(name "Description") "Exact order code frozen. Exact 0.125 W series candidate. A 3.3 V contention screen is 10.9 mW; it does not make contention safe or provide isolation.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "RSO1")
-				(description "Limits abnormal GPIO/output contention current; does not provide safety isolation.")
+				(description "Exact order code frozen. Exact 0.125 W series candidate. A 3.3 V contention screen is 10.9 mW; it does not make contention safe or provide isolation.")
 			)
 			(property
 				(name "Status")
-				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED: PCB/FAULT")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Panasonic current product page, 1 kilohm 1%, 0805, 0.125 W; accessed 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "1.00 kOhm 1% GPIO series channel 1")
+				(value "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
 			)
 			(property
 				(name "Sheetname")
@@ -3837,41 +3829,40 @@
 		)
 		(comp
 			(ref "RSO2")
-			(value "1.00 kOhm 1% GPIO series channel 2")
-			(description "Same output conditioning as channel 1.")
+			(value "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
+			(datasheet "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V")
+			(description "Exact order code frozen. Same exact output-series candidate and open fault evidence as channel 1.")
 			(fields
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/FAULT")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic current product page; accessed 2026-08-06.")
 				(field
-					(name "Display") "1.00 kOhm 1% GPIO series channel 2")
+					(name "Display") "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V")
 				(field
-					(name "Description") "Same output conditioning as channel 1.")
+					(name "Description") "Exact order code frozen. Same exact output-series candidate and open fault evidence as channel 1.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "RSO2")
-				(description "Same output conditioning as channel 1.")
+				(description "Exact order code frozen. Same exact output-series candidate and open fault evidence as channel 1.")
 			)
 			(property
 				(name "Status")
-				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED: PCB/FAULT")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Panasonic current product page; accessed 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "1.00 kOhm 1% GPIO series channel 2")
+				(value "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
 			)
 			(property
 				(name "Sheetname")
@@ -3902,41 +3893,40 @@
 		)
 		(comp
 			(ref "RTH1")
-			(value "1.00 kOhm 1% >=0.25 W MELF RTHR channel 1")
-			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
-			(description "TI Type-3 threshold resistor value. TI requires 0.25 W MELF for RTHR surge limiting; freeze exact voltage, pulse, temperature and package ratings with the PCB release.")
+			(value "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
+			(datasheet "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf")
+			(description "Exact order code frozen. Exact MELF candidate for TI Type-3 threshold/surge limiting. Screened steady loss is 7.6 mW at 2.75 mA; PCB land pattern, pulse/surge, temperature and enclosure derating still require release evidence.")
 			(fields
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Vishay document 28963, revision 2026-06-02; MMA0204 order-code construction and 0.4 W power-mode rating checked 2026-08-06.")
 				(field
-					(name "Display") "1.00 kOhm 1% >=0.25 W MELF RTHR channel 1")
+					(name "Display") "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+					(name "Datasheet") "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf")
 				(field
-					(name "Description") "TI Type-3 threshold resistor value. TI requires 0.25 W MELF for RTHR surge limiting; freeze exact voltage, pulse, temperature and package ratings with the PCB release.")
+					(name "Description") "Exact order code frozen. Exact MELF candidate for TI Type-3 threshold/surge limiting. Screened steady loss is 7.6 mW at 2.75 mA; PCB land pattern, pulse/surge, temperature and enclosure derating still require release evidence.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "RTH1")
-				(description "TI Type-3 threshold resistor value. TI requires 0.25 W MELF for RTHR surge limiting; freeze exact voltage, pulse, temperature and package ratings with the PCB release.")
+				(description "Exact order code frozen. Exact MELF candidate for TI Type-3 threshold/surge limiting. Screened steady loss is 7.6 mW at 2.75 mA; PCB land pattern, pulse/surge, temperature and enclosure derating still require release evidence.")
 			)
 			(property
 				(name "Status")
-				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Vishay document 28963, revision 2026-06-02; MMA0204 order-code construction and 0.4 W power-mode rating checked 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "1.00 kOhm 1% >=0.25 W MELF RTHR channel 1")
+				(value "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
 			)
 			(property
 				(name "Sheetname")
@@ -3967,41 +3957,40 @@
 		)
 		(comp
 			(ref "RTH2")
-			(value "1.00 kOhm 1% >=0.25 W MELF RTHR channel 2")
-			(datasheet "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
-			(description "Same calculated threshold network as channel 1.")
+			(value "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
+			(datasheet "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf")
+			(description "Exact order code frozen. Same exact threshold/surge candidate and open physical evidence as channel 1.")
 			(fields
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Vishay document 28963, revision 2026-06-02; checked 2026-08-06.")
 				(field
-					(name "Display") "1.00 kOhm 1% >=0.25 W MELF RTHR channel 2")
+					(name "Display") "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+					(name "Datasheet") "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf")
 				(field
-					(name "Description") "Same calculated threshold network as channel 1.")
+					(name "Description") "Exact order code frozen. Same exact threshold/surge candidate and open physical evidence as channel 1.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "RTH2")
-				(description "Same calculated threshold network as channel 1.")
+				(description "Exact order code frozen. Same exact threshold/surge candidate and open physical evidence as channel 1.")
 			)
 			(property
 				(name "Status")
-				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Vishay document 28963, revision 2026-06-02; checked 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "1.00 kOhm 1% >=0.25 W MELF RTHR channel 2")
+				(value "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
 			)
 			(property
 				(name "Sheetname")
@@ -4032,41 +4021,40 @@
 		)
 		(comp
 			(ref "RW1")
-			(value "2.70 kOhm 1% 0.5 W contact-wetting load channel 1")
-			(datasheet "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
-			(description "Parallel wetting load raises guaranteed closed-contact current above the Phoenix 10 mA minimum; exact resistor pulse/temperature rating and order code remain open.")
+			(value "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
+			(datasheet "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
+			(description "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.226 W, 45.2% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
 			(fields
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Vishay document 20035, revision 2026-04-14; CRCW1210 0.5 W rating and order-code construction checked 2026-08-06.")
 				(field
-					(name "Display") "2.70 kOhm 1% 0.5 W contact-wetting load channel 1")
+					(name "Display") "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+					(name "Datasheet") "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 				(field
-					(name "Description") "Parallel wetting load raises guaranteed closed-contact current above the Phoenix 10 mA minimum; exact resistor pulse/temperature rating and order code remain open.")
+					(name "Description") "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.226 W, 45.2% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "RW1")
-				(description "Parallel wetting load raises guaranteed closed-contact current above the Phoenix 10 mA minimum; exact resistor pulse/temperature rating and order code remain open.")
+				(description "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.226 W, 45.2% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
 			)
 			(property
 				(name "Status")
-				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Vishay document 20035, revision 2026-04-14; CRCW1210 0.5 W rating and order-code construction checked 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "2.70 kOhm 1% 0.5 W contact-wetting load channel 1")
+				(value "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
 			)
 			(property
 				(name "Sheetname")
@@ -4097,41 +4085,40 @@
 		)
 		(comp
 			(ref "RW2")
-			(value "2.70 kOhm 1% 0.5 W contact-wetting load channel 2")
-			(datasheet "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
-			(description "Same wetting-current design as channel 1.")
+			(value "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
+			(datasheet "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
+			(description "Exact order code frozen. Same exact wetting-load candidate and open physical evidence as channel 1.")
 			(fields
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Vishay document 20035, revision 2026-04-14; checked 2026-08-06.")
 				(field
-					(name "Display") "2.70 kOhm 1% 0.5 W contact-wetting load channel 2")
+					(name "Display") "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+					(name "Datasheet") "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 				(field
-					(name "Description") "Same wetting-current design as channel 1.")
+					(name "Description") "Exact order code frozen. Same exact wetting-load candidate and open physical evidence as channel 1.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "RW2")
-				(description "Same wetting-current design as channel 1.")
+				(description "Exact order code frozen. Same exact wetting-load candidate and open physical evidence as channel 1.")
 			)
 			(property
 				(name "Status")
-				(value "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+				(value "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Vishay document 20035, revision 2026-04-14; checked 2026-08-06.")
 			)
 			(property
 				(name "Display")
-				(value "2.70 kOhm 1% 0.5 W contact-wetting load channel 2")
+				(value "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
 			)
 			(property
 				(name "Sheetname")
@@ -4829,27 +4816,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "CDEC1")
-			(description "Required by TI; place within 2 mm of UFB1 VCC1/GND1 pins. Exact dielectric, voltage rating and footprint remain open.")
-			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "Exact order code frozen. Exact 0805 candidate required at UFB1 VCC1/GND1; placement within 2 mm, land pattern and received-board capacitance remain open.")
+			(docs "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 			(fields
 				(field
 					(name "Reference") "CDEC1")
 				(field
-					(name "Value") "100 nF VCC1 decoupling")
+					(name "Value") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+					(name "Datasheet") "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810")
 				(field
-					(name "Description") "Required by TI; place within 2 mm of UFB1 VCC1/GND1 pins. Exact dielectric, voltage rating and footprint remain open.")
+					(name "Description") "Exact order code frozen. Exact 0805 candidate required at UFB1 VCC1/GND1; placement within 2 mm, land pattern and received-board capacitance remain open.")
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/PLACEMENT")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Murata official GRM21BR71H104KA01L specification asset, updated 2025 and accessed 2026-08-06.")
 				(field
-					(name "Display") "100 nF VCC1 decoupling")
+					(name "Display") "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805")
 			)
 			(pins
 				(pin
@@ -4941,27 +4927,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "CFI1")
-			(description "TI Type-3 input-filter value. Select dielectric, tolerance, DC-bias and package; locate at UFB1.")
-			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at 24.6 V until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
+			(docs "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 			(fields
 				(field
 					(name "Reference") "CFI1")
 				(field
-					(name "Value") "10 nF 50 V CIN channel 1")
+					(name "Value") "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+					(name "Datasheet") "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 				(field
-					(name "Description") "TI Type-3 input-filter value. Select dielectric, tolerance, DC-bias and package; locate at UFB1.")
+					(name "Description") "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at 24.6 V until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: DC-BIAS/PCB/EMC")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "TDK current product page: production, 10 nF +/-10%, 50 VDC, X7R, 0603, -55 to 125 C; accessed 2026-08-06.")
 				(field
-					(name "Display") "10 nF 50 V CIN channel 1")
+					(name "Display") "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
 			)
 			(pins
 				(pin
@@ -4979,27 +4964,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "CFI2")
-			(description "Same input filter as channel 1.")
-			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "Exact order code frozen. Same exact input-filter candidate and open DC-bias/physical evidence as channel 1.")
+			(docs "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 			(fields
 				(field
 					(name "Reference") "CFI2")
 				(field
-					(name "Value") "10 nF 50 V CIN channel 2")
+					(name "Value") "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+					(name "Datasheet") "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 				(field
-					(name "Description") "Same input filter as channel 1.")
+					(name "Description") "Exact order code frozen. Same exact input-filter candidate and open DC-bias/physical evidence as channel 1.")
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: DC-BIAS/PCB/EMC")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "TDK current production page; accessed 2026-08-06.")
 				(field
-					(name "Display") "10 nF 50 V CIN channel 2")
+					(name "Display") "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
 			)
 			(pins
 				(pin
@@ -6534,27 +6518,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "RPD1")
-			(description "Biases the diagnostic low when the receiver output is high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
+			(description "Exact order code frozen. Exact 0.125 W default-low candidate. It biases the GPIO low during high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
+			(docs "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 			(fields
 				(field
 					(name "Reference") "RPD1")
 				(field
-					(name "Value") "10.0 kOhm 1% GPIO default-low channel 1")
+					(name "Value") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 				(field
-					(name "Description") "Biases the diagnostic low when the receiver output is high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
+					(name "Description") "Exact order code frozen. Exact 0.125 W default-low candidate. It biases the GPIO low during high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.")
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/BROWNOUT/FAULT")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic current product page, 10 kilohm 1%, 0805, 0.125 W; accessed 2026-08-06.")
 				(field
-					(name "Display") "10.0 kOhm 1% GPIO default-low channel 1")
+					(name "Display") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
 			)
 			(pins
 				(pin
@@ -6572,27 +6555,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "RPD2")
-			(description "Same default-low behavior as channel 1.")
+			(description "Exact order code frozen. Same exact default-low candidate and open physical evidence as channel 1.")
+			(docs "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 			(fields
 				(field
 					(name "Reference") "RPD2")
 				(field
-					(name "Value") "10.0 kOhm 1% GPIO default-low channel 2")
+					(name "Value") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V")
 				(field
-					(name "Description") "Same default-low behavior as channel 1.")
+					(name "Description") "Exact order code frozen. Same exact default-low candidate and open physical evidence as channel 1.")
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/BROWNOUT/FAULT")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic current product page; accessed 2026-08-06.")
 				(field
-					(name "Display") "10.0 kOhm 1% GPIO default-low channel 2")
+					(name "Display") "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805")
 			)
 			(pins
 				(pin
@@ -6610,27 +6592,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "RSN1")
-			(description "TI current-limit resistor connected between SENSE1 and IN1; exact order code and PCB footprint remain open.")
-			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "Exact order code frozen. Exact 0.125 W candidate for TI current-limit resistor between SENSE1 and IN1. Screened steady loss is 4.3 mW at 2.75 mA; layout, tolerance and fault evidence remain open.")
+			(docs "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V")
 			(fields
 				(field
 					(name "Reference") "RSN1")
 				(field
-					(name "Value") "562 Ohm 1% RSENSE channel 1")
+					(name "Value") "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V")
 				(field
-					(name "Description") "TI current-limit resistor connected between SENSE1 and IN1; exact order code and PCB footprint remain open.")
+					(name "Description") "Exact order code frozen. Exact 0.125 W candidate for TI current-limit resistor between SENSE1 and IN1. Screened steady loss is 4.3 mW at 2.75 mA; layout, tolerance and fault evidence remain open.")
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/THERMAL/FAULT")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic current product page, 562 ohm 1%, 0805, 0.125 W; accessed 2026-08-06.")
 				(field
-					(name "Display") "562 Ohm 1% RSENSE channel 1")
+					(name "Display") "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
 			)
 			(pins
 				(pin
@@ -6648,27 +6629,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "RSN2")
-			(description "Same current-limit network as channel 1.")
-			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "Exact order code frozen. Same exact current-limit candidate and open physical evidence as channel 1.")
+			(docs "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V")
 			(fields
 				(field
 					(name "Reference") "RSN2")
 				(field
-					(name "Value") "562 Ohm 1% RSENSE channel 2")
+					(name "Value") "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V")
 				(field
-					(name "Description") "Same current-limit network as channel 1.")
+					(name "Description") "Exact order code frozen. Same exact current-limit candidate and open physical evidence as channel 1.")
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/THERMAL/FAULT")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic current product page; accessed 2026-08-06.")
 				(field
-					(name "Display") "562 Ohm 1% RSENSE channel 2")
+					(name "Display") "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805")
 			)
 			(pins
 				(pin
@@ -6686,27 +6666,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "RSO1")
-			(description "Limits abnormal GPIO/output contention current; does not provide safety isolation.")
+			(description "Exact order code frozen. Exact 0.125 W series candidate. A 3.3 V contention screen is 10.9 mW; it does not make contention safe or provide isolation.")
+			(docs "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V")
 			(fields
 				(field
 					(name "Reference") "RSO1")
 				(field
-					(name "Value") "1.00 kOhm 1% GPIO series channel 1")
+					(name "Value") "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V")
 				(field
-					(name "Description") "Limits abnormal GPIO/output contention current; does not provide safety isolation.")
+					(name "Description") "Exact order code frozen. Exact 0.125 W series candidate. A 3.3 V contention screen is 10.9 mW; it does not make contention safe or provide isolation.")
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/FAULT")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic current product page, 1 kilohm 1%, 0805, 0.125 W; accessed 2026-08-06.")
 				(field
-					(name "Display") "1.00 kOhm 1% GPIO series channel 1")
+					(name "Display") "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
 			)
 			(pins
 				(pin
@@ -6724,27 +6703,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "RSO2")
-			(description "Same output conditioning as channel 1.")
+			(description "Exact order code frozen. Same exact output-series candidate and open fault evidence as channel 1.")
+			(docs "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V")
 			(fields
 				(field
 					(name "Reference") "RSO2")
 				(field
-					(name "Value") "1.00 kOhm 1% GPIO series channel 2")
+					(name "Value") "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V")
 				(field
-					(name "Description") "Same output conditioning as channel 1.")
+					(name "Description") "Exact order code frozen. Same exact output-series candidate and open fault evidence as channel 1.")
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/FAULT")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Panasonic current product page; accessed 2026-08-06.")
 				(field
-					(name "Display") "1.00 kOhm 1% GPIO series channel 2")
+					(name "Display") "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805")
 			)
 			(pins
 				(pin
@@ -6762,27 +6740,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "RTH1")
-			(description "TI Type-3 threshold resistor value. TI requires 0.25 W MELF for RTHR surge limiting; freeze exact voltage, pulse, temperature and package ratings with the PCB release.")
-			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "Exact order code frozen. Exact MELF candidate for TI Type-3 threshold/surge limiting. Screened steady loss is 7.6 mW at 2.75 mA; PCB land pattern, pulse/surge, temperature and enclosure derating still require release evidence.")
+			(docs "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf")
 			(fields
 				(field
 					(name "Reference") "RTH1")
 				(field
-					(name "Value") "1.00 kOhm 1% >=0.25 W MELF RTHR channel 1")
+					(name "Value") "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+					(name "Datasheet") "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf")
 				(field
-					(name "Description") "TI Type-3 threshold resistor value. TI requires 0.25 W MELF for RTHR surge limiting; freeze exact voltage, pulse, temperature and package ratings with the PCB release.")
+					(name "Description") "Exact order code frozen. Exact MELF candidate for TI Type-3 threshold/surge limiting. Screened steady loss is 7.6 mW at 2.75 mA; PCB land pattern, pulse/surge, temperature and enclosure derating still require release evidence.")
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Vishay document 28963, revision 2026-06-02; MMA0204 order-code construction and 0.4 W power-mode rating checked 2026-08-06.")
 				(field
-					(name "Display") "1.00 kOhm 1% >=0.25 W MELF RTHR channel 1")
+					(name "Display") "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
 			)
 			(pins
 				(pin
@@ -6800,27 +6777,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "RTH2")
-			(description "Same calculated threshold network as channel 1.")
-			(docs "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+			(description "Exact order code frozen. Same exact threshold/surge candidate and open physical evidence as channel 1.")
+			(docs "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf")
 			(fields
 				(field
 					(name "Reference") "RTH2")
 				(field
-					(name "Value") "1.00 kOhm 1% >=0.25 W MELF RTHR channel 2")
+					(name "Value") "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/iso1211.pdf")
+					(name "Datasheet") "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf")
 				(field
-					(name "Description") "Same calculated threshold network as channel 1.")
+					(name "Description") "Exact order code frozen. Same exact threshold/surge candidate and open physical evidence as channel 1.")
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Vishay document 28963, revision 2026-06-02; checked 2026-08-06.")
 				(field
-					(name "Display") "1.00 kOhm 1% >=0.25 W MELF RTHR channel 2")
+					(name "Display") "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF")
 			)
 			(pins
 				(pin
@@ -6838,27 +6814,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "RW1")
-			(description "Parallel wetting load raises guaranteed closed-contact current above the Phoenix 10 mA minimum; exact resistor pulse/temperature rating and order code remain open.")
-			(docs "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+			(description "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.226 W, 45.2% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
+			(docs "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 			(fields
 				(field
 					(name "Reference") "RW1")
 				(field
-					(name "Value") "2.70 kOhm 1% 0.5 W contact-wetting load channel 1")
+					(name "Value") "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+					(name "Datasheet") "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 				(field
-					(name "Description") "Parallel wetting load raises guaranteed closed-contact current above the Phoenix 10 mA minimum; exact resistor pulse/temperature rating and order code remain open.")
+					(name "Description") "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.226 W, 45.2% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Vishay document 20035, revision 2026-04-14; CRCW1210 0.5 W rating and order-code construction checked 2026-08-06.")
 				(field
-					(name "Display") "2.70 kOhm 1% 0.5 W contact-wetting load channel 1")
+					(name "Display") "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
 			)
 			(pins
 				(pin
@@ -6876,27 +6851,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "RW2")
-			(description "Same wetting-current design as channel 1.")
-			(docs "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+			(description "Exact order code frozen. Same exact wetting-load candidate and open physical evidence as channel 1.")
+			(docs "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 			(fields
 				(field
 					(name "Reference") "RW2")
 				(field
-					(name "Value") "2.70 kOhm 1% 0.5 W contact-wetting load channel 2")
+					(name "Value") "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
+					(name "Datasheet") "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 				(field
-					(name "Description") "Same wetting-current design as channel 1.")
+					(name "Description") "Exact order code frozen. Same exact wetting-load candidate and open physical evidence as channel 1.")
 				(field
-					(name "Status") "VALUE FROZEN - ORDER CODE SELECTION REQUIRED")
+					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Vishay document 20035, revision 2026-04-14; checked 2026-08-06.")
 				(field
-					(name "Display") "2.70 kOhm 1% 0.5 W contact-wetting load channel 2")
+					(name "Display") "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
 			)
 			(pins
 				(pin

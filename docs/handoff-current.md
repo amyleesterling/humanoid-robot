@@ -2,7 +2,7 @@
 
 Handoff date: 2026-08-06  
 Package baseline: **HR-30-SYS-R0.2**  
-Electrical package: **Project Button Electrical V2.1 reviewed baseline; V3-P0.8 connected correction candidate**
+Electrical package: **Project Button Electrical V2.1 reviewed baseline; V3-P0.9 connected correction candidate**
 Mechanical package: **HR-V0-MECH-R0.1-PRELIMINARY quote geometry plus guard/catch/cable space study**
 Firmware package: **HR-V0-FW-P0.1 source/test candidate; no released binary**
 Status: **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
@@ -19,7 +19,7 @@ Status: **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 - V3 generator/checker: `tools/generate_hr_v0_electrical_v3.py`; `tools/check_hr_v0_electrical_v3.py`
 - Firmware source/checker: `firmware/`; `tools/check_hr_v0_firmware.py`
 
-The authoritative repository controls engineering intent and contains the reviewed Electrical V2.1 KiCad source plus the separate V3-P0.8 correction candidate. The website is a synchronized presentation and must not override the source specification. Individual documents retain their own revisions; neither electrical identifier replaces the `HR-30-SYS-R0.2` systems-package baseline. V3 does not supersede V2.1 until its open selections, calculations, tests, and qualified reviews close.
+The authoritative repository controls engineering intent and contains the reviewed Electrical V2.1 KiCad source plus the separate V3-P0.9 correction candidate. The website is a synchronized presentation and must not override the source specification. Individual documents retain their own revisions; neither electrical identifier replaces the `HR-30-SYS-R0.2` systems-package baseline. V3 does not supersede V2.1 until its open selections, calculations, tests, and qualified reviews close.
 
 ## Current program inputs and fabrication route
 
@@ -41,13 +41,13 @@ The authoritative repository controls engineering intent and contains the review
 - 106 unresolved electrical selections/interfaces
 - KiCad 10.0.5 ERC: 0 errors and 0 warnings
 
-The V3-P0.8 candidate separately contains eleven native pages, 59 component blocks, 274 modeled terminals, 100 native nets (63 named connected nets plus 37 deliberate auto-generated unconnected nets), 237 unique wire labels, 47 unresolved component/interface rows, and 46 `TBD-*` terminal designations. It retains P0.4's exact ISO1212DBQ circuit, P0.5's RESET/ARM and compute-source identities, P0.6's controlled S0 contacts, and P0.7's JA1/DC1 selections. P0.8 adds an exact VO618A optical heartbeat path, exact 910 ohm/10 kilohm passives, two separate TPL7407LPWR relay drivers, and local 100 nF COM bypass candidates. Source-side construction/current division, protection/distribution, feedback passives, received/thermal/brownout evidence, RESET/ARM terminals, panel human factors, PCB, COM-slew, HIL/fault evidence and qualified review remain open. KiCad 10.0.5 ERC is 0 errors and 0 warnings, and native netlist/PDF/SVG exports plus the exact-net checker pass. These V3 counts must not be substituted for the independently reviewed V2.1 counts above.
+The V3-P0.9 candidate separately contains eleven native pages, 59 component blocks, 274 modeled terminals, 100 native nets (63 named connected nets plus 37 deliberate auto-generated unconnected nets), 237 unique wire labels, 47 unresolved component/interface rows, and 46 `TBD-*` terminal designations. It retains P0.4's exact ISO1212DBQ circuit, P0.5's RESET/ARM and compute-source identities, P0.6's controlled S0 contacts, P0.7's JA1/DC1 selections, and P0.8's exact heartbeat/driver candidates. P0.9 freezes exact proposed order codes for every feedback-network passive. Source-side construction/current division, protection/distribution, passive receiving/derating, RESET/ARM terminals, panel human factors, PCB, thermal/pulse/DC-bias/EMC, COM-slew, HIL/fault evidence and qualified review remain open. KiCad 10.0.5 ERC is 0 errors and 0 warnings, and native netlist/PDF/SVG exports plus the exact-net checker pass. These V3 counts must not be substituted for the independently reviewed V2.1 counts above.
 
 ERC validates modeled connectivity and annotation only. It does not establish physical pinouts, ratings, protection coordination, functional safety, buildability, or permission to energize.
 
 ## Review history and independent findings
 
-Twenty-nine review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the analysis resupplied on 2026-08-06 is the same R12 verdict and is not double-counted. R13-R28 are the recorded provenance, engineering, mechanical and electrical responses summarized in the ledger. R29 freezes the exact heartbeat optical path and two separate relay-driver packages while retaining PCB, fault/HIL, protection and qualified-review blockers. Physical execution and functional-safety blockers remain open.
+Thirty review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the analysis resupplied on 2026-08-06 is the same R12 verdict and is not double-counted. R13-R30 are controlled project responses, not independent approvals. R29 freezes the exact heartbeat/driver path; R30 freezes the feedback passive order codes. PCB, received evidence, fault/HIL, protection and qualified-review blockers remain open.
 
 ## Principal unresolved engineering blockers
 
@@ -55,7 +55,7 @@ Twenty-nine review/control rounds are complete and recorded in `docs/review-ledg
 2. Joint continuous/cyclic/impact/thermal performance, drivetrain efficiency, backlash, and structural margins are not physically validated.
 3. Safe actuator-power-loss behavior remains unresolved; a walking robot may collapse when hazardous drive energy is removed.
 4. Mass, center of mass, inertia, wiring mass, and reserve are not closed against released CAD and measured components.
-5. V3 records exact E-stop, RESET/ARM, safety-relay, watchdog-relay, ISO1212 feedback-receiver, source, contactor, U2D2, actuator, frame, JA1 project-side and DC1 regulator candidates where primary evidence permits, but their application approval, received terminals, protection, conductors, remaining connectors, enclosure, PCB and ratings remain selection-dependent. Fifty-six V3 terminals remain deliberately `TBD-*`; the E-stop contact positions, feedback IC pins, JA1 project-side pins/contacts and DC1 pins are exact at the ECAD level, while received proof, source-side current sharing, RESET/ARM terminals, every passive order code and the physical board/interface remain unreleased.
+5. V3 records exact E-stop, RESET/ARM, safety-relay, watchdog-relay, ISO1212 feedback-receiver and support-passive, source, contactor, U2D2, actuator, frame, JA1 project-side and DC1 regulator candidates where primary evidence permits, but their application approval, received terminals, protection, conductors, remaining connectors, enclosure, PCB and ratings remain selection-dependent. Forty-six V3 terminals remain deliberately `TBD-*`; the E-stop contact positions, feedback IC/passive identities, JA1 project-side pins/contacts and DC1 pins are exact at the ECAD level, while received proof/derating, source-side current sharing, RESET/ARM terminals and the physical board/interface remain unreleased.
 6. Battery, BMS, fuse, precharge, service disconnect, charging interlock, regeneration, telemetry isolation, and enclosure remain topology only.
 7. RS-485 transceivers, harnesses, shielding, termination, biasing, separation, waveform margin, and physical fault tests remain open.
 8. Sensor sheets are functional interfaces, not complete production circuits or released PCB designs.
@@ -88,9 +88,11 @@ The R28 status reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r28-statu
 
 The R29 status reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r29-status.md`. It records Electrical V3-P0.8, the exact VO618A heartbeat path, separate TPL7407LPWR driver packages, physical test controls, synchronized regeneration, and no energization-gate closure. It is a project-owned reconciliation, not a new Sol review.
 
+The R30 status reconciliation is `docs/reviews/2026-08-06-sol-r12-post-r30-status.md`. It records Electrical V3-P0.9, the exact feedback passive order codes and receiving/derating control while keeping PCB, physical validation and every energization gate open. It is a project-owned reconciliation, not a new Sol review.
+
 ## Requested independent-review output
 
-Use `docs/reviews/2026-08-06-electrical-v3-independent-review-request.md` for the controlled V3-P0.8 electrical review scope and reproduction commands. Use `docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md` for the source-level watchdog and supervisor review scope.
+Use `docs/reviews/2026-08-06-electrical-v3-independent-review-request.md` for the controlled V3-P0.9 electrical review scope and reproduction commands. Use `docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md` for the source-level watchdog and supervisor review scope.
 
 Reviewers must provide BLOCKER / MAJOR / MINOR findings with exact document, requirement, risk, component, net, terminal, or KiCad-sheet references. Calculations must show assumptions and units. Component claims must cite current primary manufacturer documents with revision/date. Every missing input or unresolved selection must state the evidence needed for closure.
 
@@ -108,4 +110,4 @@ No reviewer should interpret clean ERC, traceability, simulation, website public
 
 ## Next controlled action
 
-Submit V3-P0.8 and HR-V0-FW-P0.1 for detailed independent electrical, controls and functional-safety review. Acquire and receive-inspect the H101/S102 frame kits and proposed RM-X52 gripper kit; make all three coupons; execute `INSPECT-MECH-003`/`004`/`008` plus `INSPECT-GRIP-001`; and weigh every received/moving item under `INSPECT-MECH-007`. Receive S0/S1/S2 and execute `INSPECT-ELEC-003`; receive and build only the controlled JA1/DC1 test articles under `INSPECT-ELEC-004`. Design/review the watchdog PCB and execute `TEST-ELEC-005` with relay/contactor/actuator loads disconnected. Build only an unpowered controlled mechanical article to freeze stop planes, cable loops, guard sweep and tolerance inputs. Then release the backed-up bumper/catch, guard/receiver and brackets before any powered mechanical test. In parallel, freeze the 46 unresolved terminals, feedback-network passives and all remaining protection/conductor/interface selections; compile reproducible firmware binaries and prepare disconnected-load HIL. Do not issue a build or energization release until every applicable gate record closes.
+Submit V3-P0.9 and HR-V0-FW-P0.1 for detailed independent electrical, controls and functional-safety review. Acquire and receive-inspect the H101/S102 frame kits and proposed RM-X52 gripper kit; make all three coupons; execute `INSPECT-MECH-003`/`004`/`008` plus `INSPECT-GRIP-001`; and weigh every received/moving item under `INSPECT-MECH-007`. Receive S0/S1/S2 and execute `INSPECT-ELEC-003`; receive and build only the controlled JA1/DC1 test articles under `INSPECT-ELEC-004`. Design/review the watchdog PCB, execute `INSPECT-ELEC-006`, then execute `TEST-ELEC-005` with relay/contactor/actuator loads disconnected. Build only an unpowered controlled mechanical article to freeze stop planes, cable loops, guard sweep and tolerance inputs. Then release the backed-up bumper/catch, guard/receiver and brackets before any powered mechanical test. In parallel, freeze the 46 unresolved terminals and all remaining protection/conductor/interface selections; compile reproducible firmware binaries and prepare disconnected-load HIL. Do not issue a build or energization release until every applicable gate record closes.

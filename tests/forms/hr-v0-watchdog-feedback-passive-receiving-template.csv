@@ -1,0 +1,8 @@
+record_status,inspection_date,configuration,board_serial,lot_or_reel_id,reference,controlled_order_code,received_marking_or_label,measuring_instrument,calibration_due,measured_value,unit,ambient_c,pcb_footprint,placement_or_land_pattern_check,dc_bias_or_power_derating_check,pulse_or_fault_check,expected_result,actual_result,raw_evidence_path,reviewer,disposition,notes
+NOT-EXECUTED,,V3-P0.9,,,RTH1;RTH2,Vishay MMA02040C1001FB300,,,,,,,,,,,Exact identity resistance footprint and released surge/thermal evidence pass,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,RSN1;RSN2,Panasonic ERJ6ENF5620V,,,,,,,,,,,Exact identity resistance footprint and released fault/thermal evidence pass,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,CFI1;CFI2,TDK CGA3E2X7R1H103K080AA,,,,,,,,,,,Exact identity capacitance footprint placement and released DC-bias/temperature evidence pass,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,RW1;RW2,Vishay CRCW12102K70FKEA,,,,,,,,,,,Exact identity resistance footprint and released power/pulse/enclosure derating pass,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,CDEC1,Murata GRM21BR71H104KA01L,,,,,,,,,,,Exact identity capacitance footprint and placement within 2 mm of UFB1 pass,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,RSO1;RSO2,Panasonic ERJ6ENF1001V,,,,,,,,,,,Exact identity resistance footprint and released output/GPIO fault evidence pass,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,RPD1;RPD2,Panasonic ERJ6ENF1002V,,,,,,,,,,,Exact identity resistance footprint and released brownout/high-impedance evidence pass,,TEMPLATE ROW - NOT EXECUTED,,,

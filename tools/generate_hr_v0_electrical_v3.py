@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P0.8"
+REV = "V3-P0.9"
 DATE = "2026-08-06"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 NS = uuid.UUID("4cb40c84-3194-4ded-b2c7-d78df616c5c0")
@@ -401,54 +401,58 @@ def sheets() -> list[Sheet]:
                    pn("UFB1", "15", "IN1", "FB_IN1", "left"), pn("UFB1", "16", "SENSE1", "FB_SENSE1", "left")],
                   "PROPOSED - PCB/EMC VERIFICATION REQUIRED", "Exact dual-channel receiver candidate. Logic and field grounds both return to SAFETY_0V in this non-isolated system, so no galvanic-isolation or safety-integrity credit is claimed. Layout, thermal, EMC, fault-injection and received-part tests remain open.",
                   "https://www.ti.com/lit/ds/symlink/iso1211.pdf", "TI ISO1211/ISO1212 datasheet SLLSEY7G, revised February 2025; ISO1212DBQ active tube orderable confirmed 2026-08-06.", position=(205, 115), width=82),
-        Component("RTH1", "1.00 kOhm 1% >=0.25 W MELF RTHR channel 1",
+        Component("RTH1", "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF",
                   [pn("RTH1", "1", "FIELD INPUT", "WD1_NC_24V", "left"), pn("RTH1", "2", "SENSE", "FB_SENSE1", "right")],
-                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "TI Type-3 threshold resistor value. TI requires 0.25 W MELF for RTHR surge limiting; freeze exact voltage, pulse, temperature and package ratings with the PCB release.",
-                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", position=(55, 60), width=50),
-        Component("RSN1", "562 Ohm 1% RSENSE channel 1",
+                  "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL", "Exact order code frozen. Exact MELF candidate for TI Type-3 threshold/surge limiting. Screened steady loss is 7.6 mW at 2.75 mA; PCB land pattern, pulse/surge, temperature and enclosure derating still require release evidence.",
+                  "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf", "Vishay document 28963, revision 2026-06-02; MMA0204 order-code construction and 0.4 W power-mode rating checked 2026-08-06.", position=(55, 60), width=50),
+        Component("RSN1", "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805",
                   [pn("RSN1", "1", "SENSE", "FB_SENSE1", "left"), pn("RSN1", "2", "IN", "FB_IN1", "right")],
-                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "TI current-limit resistor connected between SENSE1 and IN1; exact order code and PCB footprint remain open.",
-                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", position=(55, 120), width=50),
-        Component("CFI1", "10 nF 50 V CIN channel 1",
+                  "PROPOSED - VERIFICATION REQUIRED: PCB/THERMAL/FAULT", "Exact order code frozen. Exact 0.125 W candidate for TI current-limit resistor between SENSE1 and IN1. Screened steady loss is 4.3 mW at 2.75 mA; layout, tolerance and fault evidence remain open.",
+                  "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V", "Panasonic current product page, 562 ohm 1%, 0805, 0.125 W; accessed 2026-08-06.", position=(55, 120), width=50),
+        Component("CFI1", "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603",
                   [pn("CFI1", "1", "SENSE", "FB_SENSE1", "left"), pn("CFI1", "2", "FIELD RETURN", "SAFETY_0V", "right")],
-                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "TI Type-3 input-filter value. Select dielectric, tolerance, DC-bias and package; locate at UFB1.",
-                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", position=(55, 180), width=50),
-        Component("RW1", "2.70 kOhm 1% 0.5 W contact-wetting load channel 1",
+                  "PROPOSED - VERIFICATION REQUIRED: DC-BIAS/PCB/EMC", "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at 24.6 V until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.",
+                  "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA", "TDK current product page: production, 10 nF +/-10%, 50 VDC, X7R, 0603, -55 to 125 C; accessed 2026-08-06.", position=(55, 180), width=50),
+        Component("RW1", "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210",
                   [pn("RW1", "1", "FIELD INPUT", "WD1_NC_24V", "left"), pn("RW1", "2", "FIELD RETURN", "SAFETY_0V", "right")],
-                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Parallel wetting load raises guaranteed closed-contact current above the Phoenix 10 mA minimum; exact resistor pulse/temperature rating and order code remain open.",
-                  "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf", position=(55, 225), width=50),
-        Component("RTH2", "1.00 kOhm 1% >=0.25 W MELF RTHR channel 2",
+                  "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL", "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.226 W, 45.2% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.",
+                  "https://www.vishay.com/docs/20035/dcrcwe3.pdf", "Vishay document 20035, revision 2026-04-14; CRCW1210 0.5 W rating and order-code construction checked 2026-08-06.", position=(55, 225), width=50),
+        Component("RTH2", "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF",
                   [pn("RTH2", "1", "FIELD INPUT", "WD2_NC_24V", "left"), pn("RTH2", "2", "SENSE", "FB_SENSE2", "right")],
-                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Same calculated threshold network as channel 1.",
-                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", position=(355, 60), width=50),
-        Component("RSN2", "562 Ohm 1% RSENSE channel 2",
+                  "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL", "Exact order code frozen. Same exact threshold/surge candidate and open physical evidence as channel 1.",
+                  "https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf", "Vishay document 28963, revision 2026-06-02; checked 2026-08-06.", position=(355, 60), width=50),
+        Component("RSN2", "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805",
                   [pn("RSN2", "1", "SENSE", "FB_SENSE2", "left"), pn("RSN2", "2", "IN", "FB_IN2", "right")],
-                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Same current-limit network as channel 1.",
-                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", position=(355, 120), width=50),
-        Component("CFI2", "10 nF 50 V CIN channel 2",
+                  "PROPOSED - VERIFICATION REQUIRED: PCB/THERMAL/FAULT", "Exact order code frozen. Same exact current-limit candidate and open physical evidence as channel 1.",
+                  "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V", "Panasonic current product page; accessed 2026-08-06.", position=(355, 120), width=50),
+        Component("CFI2", "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603",
                   [pn("CFI2", "1", "SENSE", "FB_SENSE2", "left"), pn("CFI2", "2", "FIELD RETURN", "SAFETY_0V", "right")],
-                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Same input filter as channel 1.",
-                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", position=(355, 180), width=50),
-        Component("RW2", "2.70 kOhm 1% 0.5 W contact-wetting load channel 2",
+                  "PROPOSED - VERIFICATION REQUIRED: DC-BIAS/PCB/EMC", "Exact order code frozen. Same exact input-filter candidate and open DC-bias/physical evidence as channel 1.",
+                  "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA", "TDK current production page; accessed 2026-08-06.", position=(355, 180), width=50),
+        Component("RW2", "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210",
                   [pn("RW2", "1", "FIELD INPUT", "WD2_NC_24V", "left"), pn("RW2", "2", "FIELD RETURN", "SAFETY_0V", "right")],
-                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Same wetting-current design as channel 1.",
-                  "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf", position=(355, 225), width=50),
-        Component("CDEC1", "100 nF VCC1 decoupling",
+                  "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL", "Exact order code frozen. Same exact wetting-load candidate and open physical evidence as channel 1.",
+                  "https://www.vishay.com/docs/20035/dcrcwe3.pdf", "Vishay document 20035, revision 2026-04-14; checked 2026-08-06.", position=(355, 225), width=50),
+        Component("CDEC1", "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805",
                   [pn("CDEC1", "1", "3V3", "WD_3V3", "left"), pn("CDEC1", "2", "GND1", "SAFETY_0V", "right")],
-                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Required by TI; place within 2 mm of UFB1 VCC1/GND1 pins. Exact dielectric, voltage rating and footprint remain open.",
-                  "https://www.ti.com/lit/ds/symlink/iso1211.pdf", position=(140, 190), width=50),
-        Component("RSO1", "1.00 kOhm 1% GPIO series channel 1",
+                  "PROPOSED - VERIFICATION REQUIRED: PCB/PLACEMENT", "Exact order code frozen. Exact 0805 candidate required at UFB1 VCC1/GND1; placement within 2 mm, land pattern and received-board capacitance remain open.",
+                  "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810", "Murata official GRM21BR71H104KA01L specification asset, updated 2025 and accessed 2026-08-06.", position=(140, 190), width=50),
+        Component("RSO1", "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805",
                   [pn("RSO1", "1", "RECEIVER OUT", "UFB_OUT1", "left"), pn("RSO1", "2", "PICO INPUT", "WD1_NC_DIAG", "right")],
-                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Limits abnormal GPIO/output contention current; does not provide safety isolation.", position=(220, 190), width=50),
-        Component("RSO2", "1.00 kOhm 1% GPIO series channel 2",
+                  "PROPOSED - VERIFICATION REQUIRED: PCB/FAULT", "Exact order code frozen. Exact 0.125 W series candidate. A 3.3 V contention screen is 10.9 mW; it does not make contention safe or provide isolation.",
+                  "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V", "Panasonic current product page, 1 kilohm 1%, 0805, 0.125 W; accessed 2026-08-06.", position=(220, 190), width=50),
+        Component("RSO2", "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805",
                   [pn("RSO2", "1", "RECEIVER OUT", "UFB_OUT2", "left"), pn("RSO2", "2", "PICO INPUT", "WD2_NC_DIAG", "right")],
-                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Same output conditioning as channel 1.", position=(300, 190), width=50),
-        Component("RPD1", "10.0 kOhm 1% GPIO default-low channel 1",
+                  "PROPOSED - VERIFICATION REQUIRED: PCB/FAULT", "Exact order code frozen. Same exact output-series candidate and open fault evidence as channel 1.",
+                  "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1001V", "Panasonic current product page; accessed 2026-08-06.", position=(300, 190), width=50),
+        Component("RPD1", "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805",
                   [pn("RPD1", "1", "PICO INPUT", "WD1_NC_DIAG", "left"), pn("RPD1", "2", "LOGIC RETURN", "SAFETY_0V", "right")],
-                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Biases the diagnostic low when the receiver output is high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.", position=(220, 230), width=50),
-        Component("RPD2", "10.0 kOhm 1% GPIO default-low channel 2",
+                  "PROPOSED - VERIFICATION REQUIRED: PCB/BROWNOUT/FAULT", "Exact order code frozen. Exact 0.125 W default-low candidate. It biases the GPIO low during high impedance; the documented VCC1 brownout region remains a fault-injection/HIL case. Firmware treats raw high as NC closed.",
+                  "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V", "Panasonic current product page, 10 kilohm 1%, 0805, 0.125 W; accessed 2026-08-06.", position=(220, 230), width=50),
+        Component("RPD2", "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805",
                   [pn("RPD2", "1", "PICO INPUT", "WD2_NC_DIAG", "left"), pn("RPD2", "2", "LOGIC RETURN", "SAFETY_0V", "right")],
-                  "VALUE FROZEN - ORDER CODE SELECTION REQUIRED", "Same default-low behavior as channel 1.", position=(300, 230), width=50),
+                  "PROPOSED - VERIFICATION REQUIRED: PCB/BROWNOUT/FAULT", "Exact order code frozen. Same exact default-low candidate and open physical evidence as channel 1.",
+                  "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V", "Panasonic current product page; accessed 2026-08-06.", position=(300, 230), width=50),
         Component("JDBG1", "Watchdog programming/debug connector",
                   [pn("JDBG1", "TBD-SWDIO", "SWDIO", "WD_SWDIO", "left"), pn("JDBG1", "TBD-SWCLK", "SWCLK", "WD_SWCLK", "left"),
                    pn("JDBG1", "TBD-GND", "GND", "SAFETY_0V", "left")],
@@ -576,7 +580,7 @@ def sheets() -> list[Sheet]:
          (205, 160), (140, 190), (270, 190), (140, 230), (270, 230)],
     )
     s8.notes = ["Type-3 values: RTHR=1.00 kOhm, RSENSE=562 Ohm, CIN=10 nF; calculated wetting load is 2.70 kOhm 1% 0.5 W per channel.",
-                "Both grounds are SAFETY_0V; the ISO1212 barrier is not credited. Exact passive order codes, PCB, EMC and fault tests remain open."]
+                "Both grounds are SAFETY_0V; the ISO1212 barrier is not credited. Passive identities are frozen; PCB, derating, EMC and fault tests remain open."]
 
     s9 = Sheet(9, "09_compute_and_control_terminals.kicad_sch", "Compute, debug and control terminals",
                "High-level compute and diagnostic wiring have no authority to bypass or restore the safety chain.")
@@ -839,8 +843,9 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 
 - Separate SR1 RESET eligibility and SRA1 ARM/EDM stages.
 - Two separately driven watchdog relay contacts interrupt the two SR1 input returns so heartbeat loss forces the physical RESET stage to drop.
-- Phoenix relay terminals are frozen from the official circuit diagram. Both 24 V NC diagnostics pass through the calculated ISO1212DBQ input network before the Pico GPIO; exact feedback-network passive order codes, PCB and physical validation remain open.
+- Phoenix relay terminals are frozen from the official circuit diagram. Both 24 V NC diagnostics pass through the calculated ISO1212DBQ input network before the Pico GPIO. Exact proposed passive order codes are frozen; PCB, received measurements, derating and physical validation remain open.
 - Compute heartbeat crosses an exact VO618A-4X017T optical interface with exact 910 Ohm input and 10 kOhm pullup candidates. Two separate TPL7407LPWR packages drive the two relay coils, with unused inputs tied low, unused outputs open, and local 100 nF COM bypass candidates. These ordinary circuits receive no safety credit and still require PCB, timing, hot-plug, fault-injection, EMC and qualified review.
+- The ISO1212 feedback network uses exact proposed Vishay, Panasonic, TDK and Murata passive order codes. Receiving, PCB land-pattern/placement, DC-bias, pulse, thermal, EMC, fault and HIL evidence remain mandatory.
 - Heartbeat restoration cannot restore contactors; SRA1 requires a new monitored ARM action.
 - External Mean Well adapters replace project-built mains wiring.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.

@@ -70,7 +70,7 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P0.8", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P0.9", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
@@ -251,6 +251,23 @@ def main() -> int:
             "watchdog feedback channel 2 network changed", failures)
     require(pin_map(components, "CDEC1") == {"1": "WD_3V3", "2": "SAFETY_0V"},
             "ISO1212 logic-side decoupling mapping changed", failures)
+    expected_feedback_values = {
+        "RTH1": "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF",
+        "RTH2": "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF",
+        "RSN1": "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805",
+        "RSN2": "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805",
+        "CFI1": "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603",
+        "CFI2": "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603",
+        "RW1": "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210",
+        "RW2": "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210",
+        "CDEC1": "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805",
+        "RSO1": "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805",
+        "RSO2": "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805",
+        "RPD1": "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805",
+        "RPD2": "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805",
+    }
+    require(all(components[ref].value == value for ref, value in expected_feedback_values.items()),
+            "watchdog feedback passive identity changed", failures)
     require(pin_map(components, "ISO1") == {
         "1": "HB_LED_A", "2": "COMPUTE_0V", "3": "SAFETY_0V", "4": "WD_HEARTBEAT",
     }, "VO618A heartbeat optocoupler pin mapping changed", failures)

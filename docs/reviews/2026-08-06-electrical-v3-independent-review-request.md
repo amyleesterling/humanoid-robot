@@ -1,7 +1,7 @@
-# Project Button HR-V0 Electrical V3-P0.8 Independent Review Request
+# Project Button HR-V0 Electrical V3-P0.9 Independent Review Request
 
 Review date: 2026-08-06  
-Controlled candidate: **Electrical V3-P0.8**
+Controlled candidate: **Electrical V3-P0.9**
 Systems baseline: **HR-30-SYS-R0.2**  
 Status: **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -9,7 +9,7 @@ Status: **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
 Independently audit the accuracy, completeness, and physical implementability of the connected HR-V0 Electrical V3 candidate. Do not treat clean ERC, generated schedules, or this request as functional-safety validation or permission to procure, fabricate, wire, or energize.
 
-The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P0.8 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. P0.1 through P0.7 remain historical. P0.8 adds the exact VO618A heartbeat interface, exact 910 ohm/10 kilohm passives, and two separate TPL7407LPWR driver packages while retaining PCB, source current-sharing, harness/protection, COM-slew, brownout/EMC, received-proof, IDEC production-transition, physical-terminal and panel/SKU/retention blockers.
+The authoritative source is this repository. The workshop website is presentation context only. Electrical V2.1 is the previously reviewed baseline; V3-P0.9 is a separate correction candidate and does not supersede it until its selections, calculations, tests, and qualified reviews close. P0.1 through P0.8 remain historical. P0.9 adds exact proposed order codes and receiving/derating controls for all ISO1212 feedback passives while retaining PCB, source current-sharing, harness/protection, COM-slew, brownout/EMC, received-proof, IDEC production-transition, physical-terminal and panel/SKU/retention blockers.
 
 ## Controlled inputs
 
@@ -17,9 +17,11 @@ The authoritative source is this repository. The workshop website is presentatio
 - R27 terminal evidence and limits: `docs/hr-v0-electrical-terminal-closure-r27.md`
 - R28 source-interface evidence and limits: `docs/hr-v0-source-interface-closure-r28.md`
 - R29 heartbeat/driver evidence and limits: `docs/hr-v0-heartbeat-driver-closure-r29.md`
+- R30 feedback-passive evidence and limits: `docs/hr-v0-watchdog-feedback-passive-closure-r30.md`
 - Received control-device record: `tests/forms/hr-v0-control-device-receiving-template.csv`
 - Source-interface receiving/test record: `tests/forms/hr-v0-source-interface-receiving-template.csv`
 - Heartbeat/driver physical test record: `tests/forms/hr-v0-watchdog-drive-test-template.csv`
+- Feedback-passive receiving/derating record: `tests/forms/hr-v0-watchdog-feedback-passive-receiving-template.csv`
 - Native KiCad project: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Root schematic plus ten child sheets: `electrical/kicad/project-button-v3/*.kicad_sch`
 - Watchdog feedback calculation and circuit basis: `docs/hr-v0-watchdog-feedback-p0.1.md`
