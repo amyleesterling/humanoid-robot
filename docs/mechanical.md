@@ -1,14 +1,20 @@
 # Mechanical Concept and Preliminary Load Model
 
-> **R53 CURRENT BOUNDARY:** The P0.2 flat-arm architecture described historically below is withdrawn. `HR-V0-MECH-P0.3` contains no buildable arm geometry; MV0-001 through MV0-003 and all supplier packets must not be used.
+> **R54 CURRENT BOUNDARY:** The P0.2 flat-arm architecture described historically below remains withdrawn. `HR-V0-ARM-ARCH-P0.1` now provides an exact-coordinate replacement candidate with explicit transforms and a sampled collision screen, but `HR-V0-MECH-P0.3` remains the release hold. No adapter, beam, fastener, tolerance or supplier packet is released.
 
 **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 
-Status: correction-stage feasibility model. Native HR-V0 R0.1 quote geometry, four custom-part neutral files, preliminary mass properties, reproducible structural screens, three controlled fit-coupon packages, a proposed orderable gripper mechanism allocation, a checked hard-stop kinematic/load-case study, and a generated guard/catch/cable space study now exist. Physical coupon/kit inspection, released production tolerances/drawings, complete mass closure, fabricable hard-stop parts, measured stopping/drop/sweep evidence, exact guard/receiver/harness parts, gripper force/fasteners, bench anchors, proof tests, and mechanical release are not complete. See [the R0.1 mechanical baseline](hr-v0-mechanical-r0.1.md), [joint-interface basis](hr-v0-joint-interface-fasteners-p0.1.md), [gripper architecture](hr-v0-gripper-architecture-p0.1.md), [guard/receiver/cable architecture](hr-v0-guard-receiver-cable-p0.1.md), [hard-stop basis](hr-v0-hard-stop-design-basis-p0.1.md), and [R11 engineering calculations](r11-engineering-calculations.md).
+Status: correction-stage feasibility model. Exact vendor-coordinate arm source, explicit replacement transforms, an interactive candidate model, preliminary mass properties, reproducible structural screens, three controlled fit-coupon packages, a proposed orderable gripper mechanism allocation, a checked hard-stop kinematic/load-case study, and a generated guard/catch/cable space study now exist. Exact profile/end-machining evidence, physical coupon/kit inspection, released production tolerances/drawings, complete mass closure, fabricable hard-stop parts, measured stopping/drop/sweep evidence, exact guard/receiver/harness parts, gripper force/fasteners, bench anchors, proof tests, and mechanical release are not complete. See [the R54 arm architecture candidate](hr-v0-arm-architecture-p0.1.md), [the R0.1 historical baseline](hr-v0-mechanical-r0.1.md), [joint-interface basis](hr-v0-joint-interface-fasteners-p0.1.md), [gripper architecture](hr-v0-gripper-architecture-p0.1.md), [guard/receiver/cable architecture](hr-v0-guard-receiver-cable-p0.1.md), [hard-stop basis](hr-v0-hard-stop-design-basis-p0.1.md), and [R11 engineering calculations](r11-engineering-calculations.md).
 
-## Geometry
+## Current exact-coordinate candidate
 
-The HR-V0 mechanism is a planar two-link arm mounted to a rigid vertical bench column.
+R54 deliberately rolls the J2 XM540/S102 body assembly +90° about its X output axis and applies a -90° output-reference offset. The reference J1 and J2 axes are both `+X`, with a candidate 191.5 mm spacing. The candidate H104 gripper-frame origin is 118.0 mm beyond J2 and 309.5 mm from J1, reserving 50.5 mm to the 360 mm object-center ceiling. The upper/forearm members are 100/50 mm `20-2040` collision envelopes between candidate 4 mm adapters. The 23 sampled elbow poses from 15° through 125° show no positive self-intersection, but cables, tools, stops, guards, base/column, gripper mechanism, tolerances and continuous interpolation remain excluded.
+
+The updated allocation screen is 1.762 N·m shoulder gravity and 0.478 N·m elbow gravity; after the existing 2.25 screening multiplier, 3.965 N·m and 1.075 N·m. These values supersede the old 1.70/0.62 N·m numbers only for the R54 candidate reference geometry. They remain non-physical screens, not continuous actuator ratings or structural proof.
+
+## Historical P0.2 geometry — withdrawn
+
+The following P0.2 geometry is retained only to explain earlier calculations. It must not be fabricated or used as the current arm definition.
 
 - J1 shoulder pitch: commanded range −20° to +70° from horizontal datum.
 - J2 elbow pitch: commanded range 15° to 125° internal angle.
@@ -32,7 +38,7 @@ Links are initially specified as flat 4.75 mm nominal 6061-T6 aluminum plates us
 
 Maximum moving mass from this budget is 0.75 kg, including the 0.10 kg payload and excluding the fixed shoulder actuator/base. The controlled R23 ledger has a 565.4 g known subtotal and only 184.6 g of unresolved headroom for all remaining moving parts. This is an allocation screen, not a measured assembly-mass pass. Each item requires a supplier or CAD source, local center of mass, inertia, configuration revision, and later a measured value. See [the moving-mass closure record](hr-v0-moving-mass-closure-p0.1.md).
 
-## Worst-case static gravity torque
+## Historical P0.2 static gravity torque — superseded by R54 candidate screen
 
 The conservative pose places both links horizontal. Using `g = 9.80665 m/s²`:
 

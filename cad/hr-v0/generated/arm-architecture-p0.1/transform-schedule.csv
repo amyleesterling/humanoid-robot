@@ -1,0 +1,6 @@
+item,parent,tx_mm,ty_mm,tz_mm,rx_deg,matrix_4x4_row_major,status
+J1 body,WORLD,0,0,0,0,"[[1.0, 0.0, 0.0, 0], [0.0, 1.0, -0.0, 0], [0.0, 0.0, 1.0, 0], [0.0, 0.0, 0.0, 1.0]]",candidate datum
+J1 H101 output reference,J1 output,0,0,0,0,"[[1.0, 0.0, 0.0, 0], [0.0, 1.0, -0.0, 0], [0.0, 0.0, 1.0, 0], [0.0, 0.0, 0.0, 1.0]]",exact vendor geometry; fastener stack open
+J2 body and S102,WORLD,0,191.5,0,90,"[[1.0, 0.0, 0.0, 0], [0.0, 0.0, -1.0, 191.5], [0.0, 1.0, 0.0, 0], [0.0, 0.0, 0.0, 1.0]]",architecture candidate
+J2 H101 straight-reference pose,WORLD,0,191.5,0,0,"[[1.0, 0.0, 0.0, 0], [0.0, 1.0, -0.0, 191.5], [0.0, 0.0, 1.0, 0], [0.0, 0.0, 0.0, 1.0]]",requires -90 deg output offset relative J2 body
+G1 H104 frame,WORLD,0,309.5,0,180,"[[1.0, 0.0, 0.0, 0], [0.0, -1.0, -0.0, 309.5], [0.0, 0.0, -1.0, 0], [0.0, 0.0, 0.0, 1.0]]",candidate frame only; gripper transform open

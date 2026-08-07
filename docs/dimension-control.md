@@ -9,7 +9,7 @@ The top-level CAD assembly shall be driven from a single parameter table. No sub
 | Ankle to knee | L_S | 165 mm | 155–175 mm |
 | Knee to hip | L_T | 170 mm | 160–180 mm |
 | Hip to shoulder | L_TR | 210 mm | 195–225 mm |
-| Shoulder to elbow | L_UA | SELECTION REQUIRED | Former 140–160 mm study range superseded by R53 exact-frame correction |
+| Shoulder to elbow | L_UA | SELECTION REQUIRED | HR-V0 R54 bench candidate is 191.5 mm because of exact frame offsets; it does not define HR-30 proportions |
 | Elbow to wrist | L_FA | 145 mm | 135–155 mm |
 | Wrist to fingertip | L_H | 75 mm | 65–85 mm |
 | Shoulder-axis spacing | W_S | 220 mm | 210–240 mm |

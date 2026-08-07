@@ -127,6 +127,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R51](docs/reviews/2026-08-07-sol-r12-post-r51-status.md)
 - [Sol R12 findings rechecked against R52](docs/reviews/2026-08-07-sol-r12-post-r52-status.md)
 - [R53 exact-frame supersession and Sol R12 reconciliation](docs/reviews/2026-08-07-sol-r12-post-r53-status.md)
+- [R54 exact-coordinate arm candidate and Sol R12 reconciliation](docs/reviews/2026-08-07-sol-r12-post-r54-status.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.2 independent review request](docs/reviews/2026-08-07-firmware-p0.2-independent-review-request.md)
 - [Firmware P0.1 historical independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
@@ -141,12 +142,12 @@ Run `python tools/check_hr_v0_fabrication_rfi_packets.py` to verify that every o
 Run `python tools/check_hr_v0_safety_allocation.py` to verify that the ordinary heartbeat path retains zero safety credit and every PLr/SIL allocation remains unresolved until qualified execution.
 Run `python tools/generate_hr_v0_release_manifest.py` only after deliberate package changes, then run `python tools/check_hr_v0_release_manifest.py`. A committed clean clone must additionally pass `python tools/check_hr_v0_release_manifest.py --require-clean`; this proves package identity, not fabrication or energization readiness.
 Run `python tools/generate_hr_v0_bom_closure.py` after deliberate system-BOM changes, then `python tools/check_hr_v0_bom.py`. The checker must retain `EG-003` as partial until a complete signed machine BOM exists; Evaluation Batch A is not blanket purchase authority.
-Generate exact vendor-coordinate evidence with `C:\Users\amyle\Documents\New project\.venvs\hr-v0-cad\Scripts\python.exe tools/generate_hr_v0_robotis_interface.py`, then run `python tools/check_hr_v0_robotis_interface.py`. Run `python tools/generate_hr_v0_mechanical_release.py` and `python tools/check_hr_v0_mechanical_release.py` after deliberate mechanical-control changes. P0.3 must retain blank J1/J2/G1/OMAX datums and zero active arm fabrication packets until replacement native CAD closes `MECH-005`.
+Generate exact vendor-coordinate evidence with `C:\Users\amyle\Documents\New project\.venvs\hr-v0-cad\Scripts\python.exe tools/generate_hr_v0_robotis_interface.py`, then run its checker. Generate the R54 arm candidate with the same interpreter using `tools/generate_hr_v0_arm_architecture.py`, then run `tools/check_hr_v0_arm_architecture.py`. Run `tools/generate_hr_v0_mechanical_release.py` and its checker after deliberate mechanical-control changes. P0.3 remains the release hold and all arm fabrication packets remain withdrawn until exact member/end machining, adapters, fasteners, access, cables, complete sweep, proof, FAI and qualified review close `MECH-005`.
 Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket, hardware, orientation, torque-guidance, load-screen or inspection-route change. It must retain all six joints as exact candidates on hold until `INSPECT-MECH-010` and qualified mechanical disposition are executed.
 
 ## Review history
 
-Fifty-three review/control rounds are complete: R01-R53. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53 is a project-owned exact-geometry correction, not another independent review.
+Fifty-four review/control rounds are complete: R01-R54. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53 and R54 are project-owned exact-geometry corrections, not additional independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -203,6 +204,7 @@ Fifty-three review/control rounds are complete: R01-R53. R11 Fable and R12 Sol a
 | R51 | Deterministic supplier-inquiry and exact-bench control | Issued `HR-V0-FAB-RFI-P0.1` with three route-bounded deterministic ZIPs, internal/outer SHA-256 manifests, fail-closed membership checks, an exact-bench survey form, `MECH-004` and `INSPECT-MECH-011`. No packet exists for the site-held anchor part; no supplier response, drilling, fabrication, assembly or energization release was issued. |
 | R52 | Cross-checkout packet-portability correction | Clean-clone validation found R51 packet payloads depended on CRLF/LF checkout state. Canonicalized controlled text inputs and release CSV output to LF, regenerated all packet identities, and required committed-packet verification plus zero-diff, clean-worktree regeneration in a fresh clone. No supplier, fabrication, assembly or energization release was issued. |
 | R53 | Exact ROBOTIS frame-orientation supersession | Imported the controlled XM540/H101/S101/S102/H104 STEP files without transforms, proved the P0.2 flat-link/adapter assumption did not define the required 3D frame interfaces, blanked the J1/J2/G1/OMAX chain, withdrew MV0-001 through MV0-003 and every supplier ZIP, and added `MECH-005` / `AUDIT-MECH-012` for a replacement exact-coordinate architecture. No fabrication or energization gate closed. |
+| R54 | Exact-coordinate arm architecture candidate | Rolled the J2 XM540/S102 +90° with a -90° output reference, proved parallel J1/J2 axes at a candidate 191.5 mm spacing, reserved 50.5 mm for the gripper/TCP inside the 360 mm reach ceiling, generated STEP/GLB/SVG and explicit transforms/interfaces, sampled 23 collision-free elbow poses, and updated gravity screens to 1.762/0.478 N·m. Exact member/end machining, adapters, fasteners, cables, complete sweep and proof remain open; no fabrication or energization gate closed. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

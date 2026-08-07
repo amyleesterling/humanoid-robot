@@ -19,6 +19,10 @@ R53 withdraws the P0.2 arm geometry rather than allowing an unsupported plate ar
 
 The former 44 mm shoulder offset, 160 mm J1–J2 spacing, 160 mm J2–gripper spacing, MV0-001, MV0-002, MV0-003 and S102 application selection are therefore superseded. This correction does not select S101, S102, or a custom frame. It exposes that choice as `SELECTION REQUIRED`.
 
+## R54 candidate addendum
+
+`HR-V0-ARM-ARCH-P0.1` now supplies a separate exact-coordinate replacement candidate using a deliberately rolled S102 body frame, explicit 4 × 4 transforms, parallel-axis proof, a 23-pose sampled self-collision screen, native STEP/GLB and revised mass/load screens. It does not supersede this P0.3 release hold. Exact profile/end machining, adapter definition, fasteners, access, cables, continuous sweep, structural proof, received fit, FAI and qualified review remain open, so no arm supplier packet is active.
+
 ## Controlled evidence
 
 | Artifact | Purpose |

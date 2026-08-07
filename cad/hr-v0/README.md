@@ -2,7 +2,7 @@
 
 **PRELIMINARY—NOT RELEASED FOR FABRICATION OR ENERGIZATION**
 
-This directory contains the native, parametric mechanical source for the bench-mounted HR-V0 handoff demonstrator. It is an **RFQ and first-article evidence package**, not a fabrication release. The custom parts are flat 6061-T6 plates. `MV0-001` through `MV0-003` may be quoted as one-stop CNC or as a hole-free profile blank plus qualified secondary CNC/drilling; `MV0-004` remains on hold until the bench survey.
+This directory contains native mechanical sources and correction evidence for the bench-mounted HR-V0 handoff demonstrator. It is not a fabrication release. R53 withdrew `MV0-001` through `MV0-003` and every arm supplier packet. R54 adds `generated/arm-architecture-p0.1/` as an exact-coordinate replacement candidate; its adapters and beam envelope must not be quoted or fabricated. `MV0-004` remains on its separate bench-survey hold.
 
 ## Generate the package
 
@@ -12,20 +12,22 @@ From the repository root on Windows:
 & '..\.venvs\hr-v0-cad\Scripts\python.exe' cad\hr-v0\src\hr_v0_cad.py
 ```
 
-For a clean environment, install the pinned package from `requirements-cad.txt`. Generated artifacts include controlled finished-part STEP/DXF, three zero-hole `PROFILE_ONLY_RFQ` blank STEP/DXF packages and a readable route guide, SVG quote drawings, a STEP/GLB assembly-space model, mass estimates, three nonstructural interface fit-coupon packages, a guard/catch/cable space study, the P0.2 general arrangement, and `generated/SOURCE-MANIFEST.csv` with SHA-256 hashes for every generated artifact. Structural STL is deliberately prohibited because the CadQuery 2.8 export produced byte-identical meshes for the distinct upper-link and forearm interfaces; the metal parts are not print parts. Fit coupons retain optional STL as nonstructural inspection aids.
+For a clean environment, install the pinned package from `requirements-cad.txt`. The old generator retains historical P0.2 files so earlier review evidence remains reproducible; `generated/WITHDRAWN-R53.md` governs those artifacts. Generate the replacement candidate separately with `tools/generate_hr_v0_arm_architecture.py` and validate it with `tools/check_hr_v0_arm_architecture.py`. Its exact-source STEP/GLB, explicit transforms, interface schedule, sampled collision sweep and readable SVG are review evidence only. Fit coupons retain optional STL solely as nonstructural inspection aids.
 
-The current coordination layer is [HR-V0-MECH-P0.2](../../docs/hr-v0-mechanical-release-p0.2.md). Its parameter, interface and component source registers are next to this README; its generated general arrangement and datum chain are under `generated/assembly/`. P0.2 remains a coordination candidate, not a cutting or assembly release.
+The current release hold is [HR-V0-MECH-P0.3](../../docs/hr-v0-mechanical-release-p0.3.md). The replacement feasibility layer is [HR-V0-ARM-ARCH-P0.1](../../docs/hr-v0-arm-architecture-p0.1.md). The P0.3 general arrangement intentionally keeps released arm datums blank; the R54 directory contains candidate datums without converting them into released dimensions.
 
 ## Controlled custom parts
 
 | Part | Description | Quantity | Material | Current status |
 |---|---|---:|---|---|
-| MV0-001 | 160 mm upper-link plate; H101 output to S102 body-frame interfaces | 1 | 4.75 mm nominal 6061-T6 | One-stop CNC or two-process RFQ; diameter/location selection and FAI required |
-| MV0-002 | 160 mm forearm plate; H101 input and selected FR12-H104K 24 x 12 candidate pattern | 1 | 4.75 mm nominal 6061-T6 | One-stop CNC or two-process RFQ; fit, fastener/load path, tolerance and FAI required |
-| MV0-003 | S102 shoulder-to-column adapter | 1 | 6.35 mm nominal 6061-T6 | One-stop CNC or two-process RFQ; fit, column interface, tolerance and FAI required |
+| MV0-001 | former 160 mm upper-link plate | 1 historical | 4.75 mm nominal 6061-T6 | WITHDRAWN R53; invalid interface architecture; do not quote or fabricate |
+| MV0-002 | former 160 mm forearm plate | 1 historical | 4.75 mm nominal 6061-T6 | WITHDRAWN R53; do not quote or fabricate |
+| MV0-003 | former S102 shoulder-to-column adapter | 1 historical | 6.35 mm nominal 6061-T6 | WITHDRAWN R53; invalid interface architecture; do not quote or fabricate |
 | MV0-004 | Bench anchor plate | 2 | 6.35 mm nominal 6061-T6 | Site hold; bench survey, anchor selection and FAI required |
+| MV0-C01 | R54 PCD22-to-member adapter topology | 4 candidate | material/thickness SELECTION REQUIRED | CANDIDATE ONLY; fasteners, tolerances, access and proof open; do not quote or fabricate |
+| MV0-C02 | R54 100 mm `20-2040` conservative collision envelope | 2 candidate | orderable route under investigation | Not exact profile CAD; end machining and structural application open; do not quote or fabricate |
 
-The process decision, supplier screens and closure sequence are controlled in [HR-V0 flat-plate manufacturing P0.1](../../docs/hr-v0-flat-plate-manufacturing-p0.1.md), [Boston fabrication and RFQ route P0.1](../../docs/hr-v0-boston-fabrication-route-p0.1.md), [deterministic inquiry packets P0.1](../../docs/hr-v0-fabrication-rfi-p0.1.md), and their machine-readable registers. Validate them with `python tools/check_hr_v0_manufacturing.py`, `python tools/check_hr_v0_fabrication_routes.py`, and `python tools/check_hr_v0_fabrication_rfi_packets.py`.
+The old process decision and supplier screens are retained as historical research in [HR-V0 flat-plate manufacturing P0.1](../../docs/hr-v0-flat-plate-manufacturing-p0.1.md), [Boston fabrication and RFQ route P0.1](../../docs/hr-v0-boston-fabrication-route-p0.1.md), and [withdrawn inquiry packets P0.1](../../docs/hr-v0-fabrication-rfi-p0.1.md). The packet checker must report zero active ZIPs.
 
 ## Controlled nonstructural fit coupon
 
@@ -58,4 +60,4 @@ The assembly uses envelopes for 80/20 40-4040 extrusion and XM540 actuators. Use
 - Execute `INSPECT-MECH-011` with the exact-bench survey form; obtain facility permission, calculate the complete anchor interface, release numerical proof limits and preserve qualified proof evidence.
 - Complete the released mechanical calculations and independent mechanical review.
 
-Do not send the generated files as an approved production order. P0.1 may support comparable RFQs only; it does not authorize a cutting order.
+Do not send any current arm geometry for quotation or fabrication. R54 is an architecture candidate only and no supplier packet is active.

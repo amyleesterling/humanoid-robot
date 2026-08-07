@@ -1,0 +1,76 @@
+{
+  "revision": "HR-V0-ARM-ARCH-P0.1",
+  "warning": "PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION",
+  "disposition": "exact-coordinate architecture candidate; no part or fastener released",
+  "vendor_source_sha256": {
+    "XMHD-540.N101.I101.STP": "6E0DF65638B3A23B12C7EE1114D4D06F5EC2DE9E84E3FFDDD7E115E8F8FAF39F",
+    "FR13-H101K.stp": "269291E14F47A793A3C915358DD4A90B2B3F2AA4D2168E40D14F683C1BD21B1C",
+    "FR13-S102K.stp": "8203F33EF40C82BC503DB008C6A8D52DDEED25053960F2064DA2250332974C03",
+    "FR12-H104K.stp": "75BA58D2668D7D25802D1277A5393445C4FB7A8C565566E56CE76FEFC0E59F7D"
+  },
+  "candidate_geometry_mm": {
+    "j1_to_j2_axis": 191.5,
+    "j2_to_g1_frame_origin": 118.0,
+    "j1_to_g1_frame_origin": 309.5,
+    "adapter_thickness": 4.0,
+    "upper_beam_envelope": [
+      40.0,
+      100.0,
+      20.0
+    ],
+    "forearm_beam_envelope": [
+      40.0,
+      50.0,
+      20.0
+    ],
+    "reserved_g1_to_object_center_max": 50.5,
+    "pcd_diameter": 22.0
+  },
+  "axis_parallelism_math": {
+    "j1_direction": [
+      1,
+      0,
+      0
+    ],
+    "j2_direction": [
+      1,
+      0,
+      0
+    ],
+    "dot_product": 1.0,
+    "angular_difference_deg": 0.0
+  },
+  "reference_output_offset_deg": -90.0,
+  "collision_screen": {
+    "sampled_j2_range_deg": [
+      15,
+      125
+    ],
+    "increment_deg": 5,
+    "maximum_positive_intersection_mm3": 0.0,
+    "scope": "self-collision only"
+  },
+  "mass_and_load_screen": {
+    "20_2040_mass_basis_kg_per_m": 0.764321,
+    "one_100mm_upper_beam_mass_g": 76.432,
+    "one_50mm_forearm_beam_mass_g": 38.216,
+    "one_adapter_candidate_mass_g": 17.655,
+    "upper_beam_plus_two_adapters_mass_g": 111.741,
+    "forearm_beam_plus_two_adapters_mass_g": 73.525,
+    "allocated_shoulder_gravity_nm": 1.762,
+    "allocated_elbow_gravity_nm": 0.478,
+    "screening_multiplier": 2.25,
+    "shoulder_screen_nm": 3.965,
+    "elbow_screen_nm": 1.075,
+    "status": "screen only; received masses, COM, inertia, continuous torque and thermal proof required"
+  },
+  "open_release_items": [
+    "controlled exact 20-2040 cross-section and end-tap coordinates",
+    "adapter material, thickness, tolerances and manufacturing process",
+    "all M2.5 and M5 fastener order codes, grades, lengths, engagement, torque and retention",
+    "tool access, cable routing, connector sweep and strain relief",
+    "full continuous joint-space collision analysis including base, guard, stops and gripper",
+    "stress, joint-slip, thread, fatigue, impact and proof analyses",
+    "received-part fit, first-article inspection and qualified mechanical approval"
+  ]
+}

@@ -3,7 +3,7 @@
 Handoff date: 2026-08-07
 Package baseline: **HR-30-SYS-R0.2**  
 Electrical package: **Project Button Electrical V2.1 reviewed baseline; V3-P1.4 / PCB-P0.5 / DXL-STAR-P0.1 correction candidates**
-Mechanical package: **HR-V0-MECH-P0.3 correction hold; P0.2 arm geometry and all supplier packets withdrawn; base/frame evidence only**
+Mechanical package: **HR-V0-MECH-P0.3 hold plus HR-V0-ARM-ARCH-P0.1 exact-coordinate candidate; no supplier packet or buildable mechanical release**
 Firmware package: **HR-V0-FW-P0.1 source/test candidate; reproducible watchdog P0.2 review artifacts; no released or flashed binary**
 Safety package: **HR-V0-FSA-P0.1 allocation candidate; ordinary DF-01 heartbeat has zero safety credit; no PLr, SIL, or achieved PL assigned**
 Configuration package: **HR-V0-RC-P0.1 deterministic candidate; immutable merge/acceptance and signatures remain open**
@@ -32,8 +32,9 @@ The authoritative repository controls engineering intent and contains the review
 - Build and use region: Boston, Massachusetts, USA.
 - HR-V0 is a light-duty, adult-operated bench demonstrator for a soft 100 g maximum payload; it is not a high-payload robot.
 - A local library makerspace may have CNC access, but metal capability is unverified and is not part of the release basis.
-- R53 invalidates the active custom-metal arm route. Exact ROBOTIS STEP coordinates show that the H101 moving frame and S102 bottom frame do not present the coplanar interfaces assumed by MV0-001/MV0-003. MV0-001 through MV0-003, the 44/160/160 mm datum chain and all three RFI ZIPs are withdrawn. Their earlier bytes remain recoverable in Git history, but no current supplier packet exists.
-- `MECH-005` / `AUDIT-MECH-012` require selection of an S101, S102 or custom-frame architecture, exact transforms, J1/J2 axis parallelism, collision/tool/cable evidence, load path, fasteners, tolerances, FAI and qualified review before any arm quotation can resume.
+- R53 invalidated the active custom-metal arm route. Exact ROBOTIS STEP coordinates showed that the H101 moving frame and S102 bottom frame do not present the coplanar interfaces assumed by MV0-001/MV0-003. MV0-001 through MV0-003, the 44/160/160 mm datum chain and all three RFI ZIPs remain withdrawn. Their earlier bytes remain recoverable in Git history, but no current supplier packet exists.
+- R54 adds `HR-V0-ARM-ARCH-P0.1`: J2/S102 is deliberately rolled +90° with a -90° output reference; J1/J2 axes are parallel at a candidate 191.5 mm spacing; G1 is 118.0 mm beyond J2, leaving 50.5 mm to the 360 mm object-center ceiling; 23 sampled elbow poses have zero positive self-intersection; and candidate gravity screens are 1.762/0.478 N·m. Exact beam/end-machining CAD, adapter release, fasteners, access, cables, continuous sweep, proof, FAI and qualified review remain open.
+- `MECH-005` / `AUDIT-MECH-012` therefore remain open. No arm quotation can resume from R54.
 - `MV0-004` and the base/frame candidate remain on their separate exact-Boston-bench, physical-fit, torque and proof holds.
 - See `docs/hr-v0-build-site-basis.md`, `docs/hr-v0-fabrication-sourcing-boston.md`, and `docs/hr-v0-flat-plate-manufacturing-p0.1.md`. No cutting order is authorized until received-part coupons, final tolerances, fasteners, bench survey, supplier DFM, separately authorized first article, FAI, and qualified review close.
 
@@ -57,11 +58,11 @@ ERC validates modeled connectivity and annotation only. It does not establish ph
 
 ## Review history and independent findings
 
-Fifty-three review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R53 are controlled project responses, not independent approvals. R37-R52 record the prior correction chain. R53 independently reproduced a new mechanical configuration defect using controlled ROBOTIS STEP geometry, withdrew the P0.2 arm chain, MV0-001 through MV0-003 and all three fabrication ZIPs, and added the exact-coordinate replacement evidence route without closing a physical gate.
+Fifty-four review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R54 are controlled project responses, not independent approvals. R53 withdrew the invalid P0.2 arm chain. R54 supplies a coherent exact-coordinate architecture candidate without closing a physical gate.
 
 ## Principal unresolved engineering blockers
 
-1. HR-V0 now has `HR-V0-MECH-P0.3`: the base/frame candidate and exact vendor-source evidence are retained, but the J1/J2/G1/OMAX chain and MV0-001 through MV0-003 are withdrawn. The current general arrangement deliberately contains no arm geometry. A replacement S101/S102/custom-frame architecture must close exact transforms, axis parallelism, collision/tool/cable space, load path, fasteners, tolerances, FAI and qualified review under `MECH-005` / `AUDIT-MECH-012`. The base frame still requires received-part fit, tool access, actual-joint torque, slip/proof, exact Boston bench anchors and qualified disposition. The moving-mass, stop, guard/catch and cable evidence are consequently stale until replacement geometry exists. HR-30 has no released mechanical CAD.
+1. HR-V0 has `HR-V0-ARM-ARCH-P0.1` under the `HR-V0-MECH-P0.3` hold. It closes the transform/parallel-axis ambiguity at candidate level and supplies STEP/GLB/SVG, interface schedules, a sampled collision sweep and updated load screens. It is not buildable: exact profile/end machining, adapter material/tolerances, all fasteners, access, cables, complete sweep, stress/slip/fatigue/impact proof, received fit, FAI and qualified review remain open under `MECH-005` / `AUDIT-MECH-012`. The base frame still requires received-part fit, tool access, actual-joint torque, slip/proof, exact Boston bench anchors and qualified disposition. HR-30 has no released mechanical CAD.
 2. Joint continuous/cyclic/impact/thermal performance, drivetrain efficiency, backlash, and structural margins are not physically validated.
 3. Safe actuator-power-loss behavior remains unresolved; a walking robot may collapse when hazardous drive energy is removed.
 4. Mass, center of mass, inertia, wiring mass, and reserve are not closed against released CAD and measured components.
