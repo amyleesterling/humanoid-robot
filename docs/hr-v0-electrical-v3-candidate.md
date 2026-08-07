@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: native connected design candidate `V3-P1.2`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` through P1.1 are retained as historical configurations. P1.2 replaces three undefined injection placeholders with one exact central star-board boundary. The separate PCB-P0.5 watchdog board and DXL-STAR-P0.1 actuator board are routed native candidates while retaining supplier acceptance, received, protection, harness, derating, physical, fault, EMC and qualified-review gates.
+Status: native connected design candidate `V3-P1.3`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` through P1.2 are retained as historical configurations. P1.2 replaced three undefined injection placeholders with one exact central star-board boundary. P1.3 records current Schneider contactor application evidence and the catalog's lower-current/critical-current blocker without releasing K1/K2. The separate PCB-P0.5 watchdog board and DXL-STAR-P0.1 actuator board are routed native candidates while retaining supplier acceptance, received, protection, harness, derating, physical, fault, EMC and qualified-review gates.
 
 - Native source: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Generator: `tools/generate_hr_v0_electrical_v3.py`
@@ -86,9 +86,9 @@ This topology improves restart behavior and single-channel diagnostics. It does 
 
 ## Contactor candidate boundary
 
-`LC1D25BD` remains only a candidate. Current Schneider data identify a 24 VDC coil, mechanically linked 1NO+1NC auxiliaries with an NC mirror contact, built-in bidirectional peak-limiting diode suppression, 16-24 ms opening time, and a 2.5 N m power-terminal torque. The current DC-1 selection table includes an LC1D25-class rating above the screened HR-V0 current at 24 VDC, but the robot is a capacitive, inductive, and potentially regenerative electronic load rather than a proved DC-1 resistive load.
+`LC1D25BD` remains only a candidate. Current Schneider data identify a 24 VDC coil, mechanically linked 1NO+1NC auxiliaries with an NC mirror contact, built-in bidirectional peak-limiting diode suppression, 16-24 ms opening time, and a 2.5 N m power-terminal torque. Schneider catalog `MKTED210011EN` (Catalog 2026, pp. A5/120-A5/123) gives 32 A at 24 V for the LC1D25 column with one, two or three poles in series. The same catalog warns that lower currents can have durability below the IEC 60947-4-1 definition because of critical current and directs the application to Schneider technical support. The 11.1 A HR-V0 summed-stall screen is below that row, and the robot is a capacitive, inductive, and potentially regenerative electronic load rather than a proved DC-1 resistive load.
 
-V3 may show all three power poles in series per contactor only after Schneider application guidance confirms the exact 12 VDC making/breaking arrangement. Final release still requires prospective fault current, downstream capacitance, regeneration energy, source behavior, conductor/protection coordination, loaded interruption, contact-weld injection, dropout, rail-decay, and stopping-distance tests. The built-in `BD` suppression shall not be duplicated by an assumed external network.
+V3 shows all three power poles in series per contactor as a proposed topology because the catalog expressly publishes one-through-three-pole series arrangements; it does not treat the 24 V row as a released 12 V application rating. Final release still requires measured break current and voltage, Schneider's identifiable application disposition for the low-current electronic/regenerative load, prospective fault current, downstream capacitance, regeneration energy, source behavior, conductor/protection coordination, loaded interruption, contact-weld injection, dropout, rail-decay, and stopping-distance tests. The built-in `BD` suppression shall not be duplicated by an assumed external network. See `docs/hr-v0-contactor-application-p0.1.md`.
 
 ## Preliminary 24 V load screen
 
@@ -102,7 +102,7 @@ The 40 W / 1.67 A adapter has apparent nameplate headroom, but this is not a rel
 
 ## TTL power-injection boundary
 
-The U2D2 and all three actuator ports share `ACT_0V_PE_BONDED` as the TTL reference and share `DXL_TTL_DATA`. Electrical V3-P1.2 represents one central `INJ1`; its separate native `DXL-STAR-P0.1` project fixes `JC1:1` to return, `JC1:2` to no net/no copper and `JC1:3` to TTL data. `JP1`-`JP3` accept separately protected VDD branches and common return; `JA1`-`JA3` carry only their respective VDD plus common data/return. No VDD conductor joins actuator branches or reaches U2D2. The common reference means the Pi/U2D2 path can couple compute ground to actuator 0 V/PE, so exact USB and actuator cables, shields, frame, protection, EMC, signal integrity, thermal and power-sequencing/no-backfeed behavior still require physical review and test. See `docs/hr-v0-dxl-star-injection-p0.1.md`.
+The U2D2 and all three actuator ports share `ACT_0V_PE_BONDED` as the TTL reference and share `DXL_TTL_DATA`. Electrical V3-P1.3 represents one central `INJ1`; its separate native `DXL-STAR-P0.1` project fixes `JC1:1` to return, `JC1:2` to no net/no copper and `JC1:3` to TTL data. `JP1`-`JP3` accept separately protected VDD branches and common return; `JA1`-`JA3` carry only their respective VDD plus common data/return. No VDD conductor joins actuator branches or reaches U2D2. The common reference means the Pi/U2D2 path can couple compute ground to actuator 0 V/PE, so exact USB and actuator cables, shields, frame, protection, EMC, signal integrity, thermal and power-sequencing/no-backfeed behavior still require physical review and test. See `docs/hr-v0-dxl-star-injection-p0.1.md`.
 
 ## Mandatory V3 deliverables
 
@@ -117,7 +117,7 @@ Before this candidate can replace V2.1:
 
 ## Native candidate validation record
 
-The generated `V3-P1.2` candidate currently contains:
+The generated `V3-P1.3` candidate currently contains:
 
 - one root index plus twelve focused child sheets;
 - 76 component blocks and 295 modeled terminals;
@@ -129,7 +129,7 @@ The generated `V3-P1.2` candidate currently contains:
 
 KiCad 10.0.5 parsed the root and all twelve children, exported the native netlist, a thirteen-page A3 PDF and thirteen SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 76 native component references and all 295 exported `(reference, terminal, net)` nodes against the generated schedules, including the 36 deliberate no-connect terminals. It freezes every ISO1212, VO618A and TPL7407L pin, their supporting networks, the watchdog-board terminals and the 18-terminal DXL-star system boundary. Clean ERC did not detect the historical P0.4 `RSENSE` application error, illustrating why exact-net, primary-source and physical checks remain separate.
 
-The export is rendered at 150 dpi and visually checked after each material layout change. P1.2 retains the pin-level watchdog circuits and exact test points while adding the DXL-star boundary; it has 259 synchronized wire labels. The separate native PCB-P0.5 watchdog source retains 42 schematic references, 201 segments, 56 vias and three filled B.Cu zones. DXL-STAR-P0.1 has seven connector references, four board-only holes, 17 segments and one return zone. Both native DRC runs report zero violations/routed unconnected pads; neither project has fabrication outputs.
+The export is rendered at 150 dpi and visually checked after each material layout change. P1.3 retains the pin-level watchdog circuits, exact test points and DXL-star boundary while adding the controlled K1/K2 application evidence; it has 259 synchronized wire labels. The separate native PCB-P0.5 watchdog source retains 42 schematic references, 201 segments, 56 vias and three filled B.Cu zones. DXL-STAR-P0.1 has seven connector references, four board-only holes, 17 segments and one return zone. Both native DRC runs report zero violations/routed unconnected pads; neither project has fabrication outputs.
 
 The KiCad CLI logs Windows registry-access messages for `HKCU\Software\kicad-cli` in this restricted execution environment. Every command still returned exit code 0 and produced the expected artifact; the messages are retained in `validation/kicad-cli.log` rather than hidden.
 

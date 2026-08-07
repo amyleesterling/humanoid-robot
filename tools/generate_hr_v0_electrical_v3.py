@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P1.2"
+REV = "V3-P1.3"
 PROJECT_TITLE = "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE"
 PROJECT_SUBTITLE = "Separate RESET and ARM, two PNOZ stages, dual watchdog contacts, external adapters, redundant actuator interruption."
 DATE = "2026-08-07"
@@ -254,14 +254,14 @@ def sheets() -> list[Sheet]:
                   [pn("K1", "A1", "COIL +", "K1_A1", "left"), pn("K1", "A2", "COIL -", "SAFETY_0V", "left"),
                    pn("K1", "21", "MIRROR NC IN", "ARM_AFTER_S2", "left"), pn("K1", "22", "MIRROR NC OUT", "EDM_K1_OUT", "right"),
                    pn("K1", "13", "AUX NO IN", "SAFETY_24V", "left"), pn("K1", "14", "AUX NO OUT", "K1_STATUS", "right")],
-                  "PROPOSED - DC APPLICATION CONFIRMATION REQUIRED", "First redundant series contactor. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.",
-                  "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF", "Schneider product sheet rechecked 2026-08-06; loaded DC interruption/coordination not established.", (210, 205), 82),
+                  "PROPOSED - CATALOG DC ENVELOPE FOUND; CRITICAL-CURRENT AND APPLICATION CONFIRMATION REQUIRED; TEST REQUIRED", "First redundant series contactor. Three power poles are represented in series. The 2026 catalog's LC1D25 24 V row is 32 A for one, two or three poles, but its lower-current critical-current warning applies to the 11.1 A HR-V0 screen. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.",
+                  "https://download.schneider-electric.com/files?filename=Catalog&p_Doc_Ref=MKTED210011EN", "Schneider MKTED210011EN Catalog 2026 pp. A5/120-A5/123, LC1D25BD product sheet dated 2017-09-13, and FA126437 modified 2026-05-12; rechecked 2026-08-07. Loaded DC interruption, critical-current disposition and coordination remain open.", (210, 205), 82),
         Component("K2", "Schneider TeSys D LC1D25BD, 24 VDC coil",
                   [pn("K2", "A1", "COIL +", "K2_A1", "left"), pn("K2", "A2", "COIL -", "SAFETY_0V", "left"),
                    pn("K2", "21", "MIRROR NC IN", "EDM_K1_OUT", "left"), pn("K2", "22", "MIRROR NC OUT", "SRA1_START_RETURN", "right"),
                    pn("K2", "13", "AUX NO IN", "SAFETY_24V", "left"), pn("K2", "14", "AUX NO OUT", "K2_STATUS", "right")],
-                  "PROPOSED - DC APPLICATION CONFIRMATION REQUIRED", "Second redundant series contactor.",
-                  "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF", position=(340, 205), width=82),
+                  "PROPOSED - CATALOG DC ENVELOPE FOUND; CRITICAL-CURRENT AND APPLICATION CONFIRMATION REQUIRED; TEST REQUIRED", "Second redundant series contactor. Same three-pole series application boundary, critical-current warning and physical evidence gate as K1.",
+                  "https://download.schneider-electric.com/files?filename=Catalog&p_Doc_Ref=MKTED210011EN", "Schneider MKTED210011EN Catalog 2026 pp. A5/120-A5/123, LC1D25BD product sheet dated 2017-09-13, and FA126437 modified 2026-05-12; rechecked 2026-08-07.", position=(340, 205), width=82),
         Component("FSR1", "SRA1 output-contact protection for K1 coil",
                   [pn("FSR1", "1", "IN", "SRA1_K1_RAW", "left"), pn("FSR1", "2", "OUT", "K1_A1", "right")],
                   "SELECTION REQUIRED", "R36 input register exists, but exact device/holder, fault current, coil pickup/transient, conductor and PNOZ contact-protection coordination remain open; published maxima are not selections.", position=(145, 255), width=72),
@@ -285,12 +285,12 @@ def sheets() -> list[Sheet]:
                   [pn("K1P", "1L1", "POLE1 IN", "K1_P1_IN", "left"), pn("K1P", "2T1", "POLE1 OUT", "K1_J12", "right"),
                    pn("K1P", "3L2", "POLE2 IN", "K1_J12", "left"), pn("K1P", "4T2", "POLE2 OUT", "K1_J23", "right"),
                    pn("K1P", "5L3", "POLE3 IN", "K1_J23", "left"), pn("K1P", "6T3", "POLE3 OUT", "K1_OUT", "right")],
-                  "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K1", "Do not count as a second BOM device. External nets series-connect the three poles; Schneider application confirmation remains required.", position=(295, 70), width=82, quantity=0),
+                  "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K1", "Do not count as a second BOM device. External nets series-connect the three poles. Catalog DC evidence exists, but lower-current/critical-current application confirmation and loaded tests remain required.", position=(295, 70), width=82, quantity=0),
         Component("KP2", "K2 three main poles represented in series",
                   [pn("K2P", "1L1", "POLE1 IN", "K1_OUT", "left"), pn("K2P", "2T1", "POLE1 OUT", "K2_J12", "right"),
                    pn("K2P", "3L2", "POLE2 IN", "K2_J12", "left"), pn("K2P", "4T2", "POLE2 OUT", "K2_J23", "right"),
                    pn("K2P", "5L3", "POLE3 IN", "K2_J23", "left"), pn("K2P", "6T3", "POLE3 OUT", "ACT_12V_BUS", "right")],
-                  "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K2", "Do not count as a second BOM device.", position=(65, 155), width=82, quantity=0),
+                  "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K2", "Do not count as a second BOM device. Same catalog and lower-current application boundary as K1.", position=(65, 155), width=82, quantity=0),
         Component("F1", "J1 shoulder branch protection", [pn("F1", "1", "IN", "ACT_12V_BUS", "left"), pn("F1", "2", "OUT", "J1_VDD", "right")],
                   "SELECTION REQUIRED", "R36 proposes 5025 block plus ATOF family only. XM540 4.4 A stall versus JST EH 3 A series basis is unresolved; rating and all physical evidence remain open.", position=(180, 145), width=72),
         Component("F2", "J2 elbow branch protection", [pn("F2", "1", "IN", "ACT_12V_BUS", "left"), pn("F2", "2", "OUT", "J2_VDD", "right")],
@@ -318,7 +318,7 @@ def sheets() -> list[Sheet]:
                    pn("INJ1", "ACT3:3", "J3 DATA", "DXL_TTL_DATA", "right")],
                   "PROPOSED - PCB/HARNESS/FAULT EVIDENCE REQUIRED", "One fixed central star board accepts three separately protected VDD/return branches, shares only DATA and common return, and leaves U2D2 pin 2 physically unrouted. Routed DXL-STAR-P0.1 source exists; exact cable lengths, terminals, enclosure, signal-integrity, thermal, continuity and no-backfeed proof remain open.", position=(250, 195), width=120),
     ]
-    s4.notes = ["Series jumpers: K1 2T1->3L2, 4T2->5L3, 6T3->K2 1L1; repeat through K2 to ACT_12V_BUS.",
+    s4.notes = ["Series jumpers: K1 2T1->3L2, 4T2->5L3, 6T3->K2 1L1; repeat through K2 to ACT_12V_BUS. MKTED210011EN Catalog 2026 gives 32 A at 24 V for LC1D25 with 1-3 poles in series, but its lower-current critical-current warning applies; selection and loaded test remain open.",
                 "INJ1 is one central star board with three isolated positive rails; U2D2 Power Hub is excluded from actuator current."]
 
     s5 = Sheet(5, "05_watchdog_control.kicad_sch", "Independent watchdog controller and two relay drivers",

@@ -46,7 +46,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Safety-function requirements](docs/safety-functions.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
-- [Native KiCad Electrical V3-P1.2 correction candidate](electrical/kicad/project-button-v3/README.md)
+- [Native KiCad Electrical V3-P1.3 correction candidate](electrical/kicad/project-button-v3/README.md)
 - [Native KiCad DXL-STAR-P0.1 injection-board candidate](electrical/kicad/hr-v0-dxl-star/README.md)
 - [HR-V0 DYNAMIXEL star-injection evidence basis](docs/hr-v0-dxl-star-injection-p0.1.md)
 - [HR-V0 Electrical V3 candidate architecture](docs/hr-v0-electrical-v3-candidate.md)
@@ -104,6 +104,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R38](docs/reviews/2026-08-07-sol-r12-post-r38-status.md)
 - [Sol R12 findings rechecked against R39](docs/reviews/2026-08-07-sol-r12-post-r39-status.md)
 - [Sol R12 findings rechecked against R40](docs/reviews/2026-08-07-sol-r12-post-r40-status.md)
+- [Sol R12 findings rechecked against R41](docs/reviews/2026-08-07-sol-r12-post-r41-status.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.2 independent review request](docs/reviews/2026-08-07-firmware-p0.2-independent-review-request.md)
 - [Firmware P0.1 historical independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
@@ -116,7 +117,7 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 
 ## Review history
 
-Forty review/control rounds are complete: R01-R40. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
+Forty-one review/control rounds are complete: R01-R41. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -160,6 +161,7 @@ Forty review/control rounds are complete: R01-R40. R11 Fable and R12 Sol are ind
 | R38 | Actuator current-envelope and torque-enable configuration correction | Added a guarded raw 800/300 current candidate, exact mode/readback rules, a fail-closed executable validator, eight tests and an external characterization route. Internal current is not treated as branch-current proof; the XM540/JST conflict and all physical gates remain open. |
 | R39 | Pico watchdog platform and reproducible-build correction | Added exact default-off Pico GPIO binding, a 100 ms hardware watchdog, pinned publisher-verified tools, strict target compilation, static size/stack evidence and matching ELF/UF2/BIN/HEX/map/disassembly across two clean builds. The binary remains unflashed; HIL and EG-017 remain open. |
 | R40 | Watchdog clock-model and compiled-C correction | Reconciled C/Python 32-bit wrap and regression semantics, added a latched clock fault, matched compiled C to the model for 44 steps in nine scenarios, and issued reproducible Pico P0.2 plus host-vector artifacts. Target HIL and EG-017 remain open. |
+| R41 | K1/K2 DC application-evidence correction | Issued Electrical V3-P1.3 with current Schneider three-pole-series and mirror-contact evidence, corrected the misleading 25 A BOM shorthand, and exposed the catalog's lower-current critical-current warning for the 11.1 A HR-V0 screen. EG-013 remains partial pending written application disposition and physical loaded tests. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

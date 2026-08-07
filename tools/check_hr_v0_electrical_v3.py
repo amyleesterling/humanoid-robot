@@ -71,7 +71,7 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P1.2", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P1.3", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
@@ -83,6 +83,15 @@ def main() -> int:
     require(len(all_pins) == 295, f"expected 295 modeled terminals, found {len(all_pins)}", failures)
     require(all(re.fullmatch(r"[A-Za-z]+[0-9]+", ref) for ref in components),
             "one or more references violate KiCad annotation syntax", failures)
+
+    contactor_status = "PROPOSED - CATALOG DC ENVELOPE FOUND; CRITICAL-CURRENT AND APPLICATION CONFIRMATION REQUIRED; TEST REQUIRED"
+    for ref in ("K1", "K2"):
+        require(components[ref].status == contactor_status,
+                f"{ref} contactor application status is not the controlled critical-current disposition", failures)
+        require("MKTED210011EN" in components[ref].evidence,
+                f"{ref} lacks current Schneider catalog evidence", failures)
+        require("critical-current" in components[ref].description.lower(),
+                f"{ref} description omits the lower-current critical-current boundary", failures)
 
     expected_schematics = {f"{gen.PROJECT}.kicad_sch", *(sheet.filename for sheet in sheets)}
     actual_schematics = {path.name for path in OUT.glob("*.kicad_sch")}

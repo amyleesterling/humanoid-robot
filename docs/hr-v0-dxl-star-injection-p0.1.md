@@ -7,7 +7,7 @@
 `DXL-STAR-P0.1` replaces the three undefined Electrical V3 injection-module placeholders with one controlled, reusable central board. It distributes one common DYNAMIXEL TTL data conductor and one common return while keeping the three protected actuator-positive branches electrically separate. It is ordinary interface hardware and receives no functional-safety credit.
 
 Native source: `electrical/kicad/hr-v0-dxl-star/hr-v0-dxl-star.kicad_pro`
-System representation: Electrical `V3-P1.2`, sheet `06_branches_and_injection`, reference `INJ1`
+System representation: Electrical `V3-P1.3`, sheet `06_branches_and_injection`, reference `INJ1`
 
 ## Frozen project pin allocation
 

@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-07T00:43:20")
+		(date "2026-08-07T03:20:33")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P1.2")
+			(name "REVISION") "V3-P1.3")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,7 +15,7 @@
 			(title_block
 				(title "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE index")
 				(company "Project Button")
-				(rev "V3-P1.2")
+				(rev "V3-P1.3")
 				(date "2026-08-07")
 				(source "project-button-v3.kicad_sch")
 				(comment
@@ -61,9 +61,9 @@
 			(name "/01 External listed sources and DC boundaries/")
 			(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
 			(title_block
-				(title "PB HR-V0 V3-P1.2 - 01")
+				(title "PB HR-V0 V3-P1.3 - 01")
 				(company "Project Button")
-				(rev "V3-P1.2")
+				(rev "V3-P1.3")
 				(date "2026-08-07")
 				(source "01_external_sources.kicad_sch")
 				(comment
@@ -109,9 +109,9 @@
 			(name "/02 Dual-channel E-stop and RESET eligibility/")
 			(tstamps "/1abf679f-5cd5-5479-8b91-6a232acf93b9/")
 			(title_block
-				(title "PB HR-V0 V3-P1.2 - 02")
+				(title "PB HR-V0 V3-P1.3 - 02")
 				(company "Project Button")
-				(rev "V3-P1.2")
+				(rev "V3-P1.3")
 				(date "2026-08-07")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
@@ -157,9 +157,9 @@
 			(name "/03 Distinct ARM and watchdog eligibility/")
 			(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
 			(title_block
-				(title "PB HR-V0 V3-P1.2 - 03")
+				(title "PB HR-V0 V3-P1.3 - 03")
 				(company "Project Button")
-				(rev "V3-P1.2")
+				(rev "V3-P1.3")
 				(date "2026-08-07")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
@@ -205,9 +205,9 @@
 			(name "/04 Contactor coils, mirror contacts and EDM/")
 			(tstamps "/6cf27f97-627c-5512-ba58-751093298e6c/")
 			(title_block
-				(title "PB HR-V0 V3-P1.2 - 04")
+				(title "PB HR-V0 V3-P1.3 - 04")
 				(company "Project Button")
-				(rev "V3-P1.2")
+				(rev "V3-P1.3")
 				(date "2026-08-07")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
@@ -253,9 +253,9 @@
 			(name "/05 Redundant actuator-power interruption/")
 			(tstamps "/db315f6f-1ed6-5bc9-bdf8-106d0286ccb4/")
 			(title_block
-				(title "PB HR-V0 V3-P1.2 - 05")
+				(title "PB HR-V0 V3-P1.3 - 05")
 				(company "Project Button")
-				(rev "V3-P1.2")
+				(rev "V3-P1.3")
 				(date "2026-08-07")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
@@ -301,9 +301,9 @@
 			(name "/06 Protected actuator branches and central DYNAMIXEL star injection/")
 			(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
 			(title_block
-				(title "PB HR-V0 V3-P1.2 - 06")
+				(title "PB HR-V0 V3-P1.3 - 06")
 				(company "Project Button")
-				(rev "V3-P1.2")
+				(rev "V3-P1.3")
 				(date "2026-08-07")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
@@ -349,9 +349,9 @@
 			(name "/07 Independent watchdog power, controller and drivers/")
 			(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
 			(title_block
-				(title "PB HR-V0 V3-P1.2 - 07")
+				(title "PB HR-V0 V3-P1.3 - 07")
 				(company "Project Button")
-				(rev "V3-P1.2")
+				(rev "V3-P1.3")
 				(date "2026-08-07")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
@@ -397,9 +397,9 @@
 			(name "/08 Calculated dual-channel 24 V watchdog feedback/")
 			(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
 			(title_block
-				(title "PB HR-V0 V3-P1.2 - 08")
+				(title "PB HR-V0 V3-P1.3 - 08")
 				(company "Project Button")
-				(rev "V3-P1.2")
+				(rev "V3-P1.3")
 				(date "2026-08-07")
 				(source "08_watchdog_feedback_interface.kicad_sch")
 				(comment
@@ -445,9 +445,9 @@
 			(name "/09 Compute, debug and control terminals/")
 			(tstamps "/f3a60727-2e66-5730-a829-00cc7c809e89/")
 			(title_block
-				(title "PB HR-V0 V3-P1.2 - 09")
+				(title "PB HR-V0 V3-P1.3 - 09")
 				(company "Project Button")
-				(rev "V3-P1.2")
+				(rev "V3-P1.3")
 				(date "2026-08-07")
 				(source "09_compute_and_control_terminals.kicad_sch")
 				(comment
@@ -493,9 +493,9 @@
 			(name "/10 U2D2, actuator ports and bonding boundary/")
 			(tstamps "/11f6090f-9f69-5145-93e3-5ccb2d8899ac/")
 			(title_block
-				(title "PB HR-V0 V3-P1.2 - 10")
+				(title "PB HR-V0 V3-P1.3 - 10")
 				(company "Project Button")
-				(rev "V3-P1.2")
+				(rev "V3-P1.3")
 				(date "2026-08-07")
 				(source "10_actuator_interfaces.kicad_sch")
 				(comment
@@ -541,9 +541,9 @@
 			(name "/11 Watchdog PCB external connectors/")
 			(tstamps "/6e16a5a8-d40c-518b-9320-2dd1b7122c9a/")
 			(title_block
-				(title "PB HR-V0 V3-P1.2 - 11")
+				(title "PB HR-V0 V3-P1.3 - 11")
 				(company "Project Button")
-				(rev "V3-P1.2")
+				(rev "V3-P1.3")
 				(date "2026-08-07")
 				(source "11_watchdog_pcb_connectors.kicad_sch")
 				(comment
@@ -589,9 +589,9 @@
 			(name "/12 Watchdog PCB test access/")
 			(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
 			(title_block
-				(title "PB HR-V0 V3-P1.2 - 12")
+				(title "PB HR-V0 V3-P1.3 - 12")
 				(company "Project Button")
-				(rev "V3-P1.2")
+				(rev "V3-P1.3")
 				(date "2026-08-07")
 				(source "12_watchdog_pcb_test_access.kicad_sch")
 				(comment
@@ -1846,35 +1846,35 @@
 		(comp
 			(ref "K1")
 			(value "Schneider TeSys D LC1D25BD, 24 VDC coil")
-			(datasheet "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
-			(description "First redundant series contactor. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
+			(datasheet "https://download.schneider-electric.com/files?filename=Catalog&p_Doc_Ref=MKTED210011EN")
+			(description "First redundant series contactor. Three power poles are represented in series. The 2026 catalog's LC1D25 24 V row is 32 A for one, two or three poles, but its lower-current critical-current warning applies to the 11.1 A HR-V0 screen. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - DC APPLICATION CONFIRMATION REQUIRED")
+					(name "Status") "PROPOSED - CATALOG DC ENVELOPE FOUND; CRITICAL-CURRENT AND APPLICATION CONFIRMATION REQUIRED; TEST REQUIRED")
 				(field
-					(name "Evidence") "Schneider product sheet rechecked 2026-08-06; loaded DC interruption/coordination not established.")
+					(name "Evidence") "Schneider MKTED210011EN Catalog 2026 pp. A5/120-A5/123, LC1D25BD product sheet dated 2017-09-13, and FA126437 modified 2026-05-12; rechecked 2026-08-07. Loaded DC interruption, critical-current disposition and coordination remain open.")
 				(field
 					(name "Display") "Schneider TeSys D LC1D25BD, 24 VDC coil")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
+					(name "Datasheet") "https://download.schneider-electric.com/files?filename=Catalog&p_Doc_Ref=MKTED210011EN")
 				(field
-					(name "Description") "First redundant series contactor. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
+					(name "Description") "First redundant series contactor. Three power poles are represented in series. The 2026 catalog's LC1D25 24 V row is 32 A for one, two or three poles, but its lower-current critical-current warning applies to the 11.1 A HR-V0 screen. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "K1")
-				(description "First redundant series contactor. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
+				(description "First redundant series contactor. Three power poles are represented in series. The 2026 catalog's LC1D25 24 V row is 32 A for one, two or three poles, but its lower-current critical-current warning applies to the 11.1 A HR-V0 screen. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - DC APPLICATION CONFIRMATION REQUIRED")
+				(value "PROPOSED - CATALOG DC ENVELOPE FOUND; CRITICAL-CURRENT AND APPLICATION CONFIRMATION REQUIRED; TEST REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Schneider product sheet rechecked 2026-08-06; loaded DC interruption/coordination not established.")
+				(value "Schneider MKTED210011EN Catalog 2026 pp. A5/120-A5/123, LC1D25BD product sheet dated 2017-09-13, and FA126437 modified 2026-05-12; rechecked 2026-08-07. Loaded DC interruption, critical-current disposition and coordination remain open.")
 			)
 			(property
 				(name "Display")
@@ -1922,36 +1922,35 @@
 		(comp
 			(ref "K2")
 			(value "Schneider TeSys D LC1D25BD, 24 VDC coil")
-			(datasheet "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
-			(description "Second redundant series contactor.")
+			(datasheet "https://download.schneider-electric.com/files?filename=Catalog&p_Doc_Ref=MKTED210011EN")
+			(description "Second redundant series contactor. Same three-pole series application boundary, critical-current warning and physical evidence gate as K1.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - DC APPLICATION CONFIRMATION REQUIRED")
+					(name "Status") "PROPOSED - CATALOG DC ENVELOPE FOUND; CRITICAL-CURRENT AND APPLICATION CONFIRMATION REQUIRED; TEST REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Schneider MKTED210011EN Catalog 2026 pp. A5/120-A5/123, LC1D25BD product sheet dated 2017-09-13, and FA126437 modified 2026-05-12; rechecked 2026-08-07.")
 				(field
 					(name "Display") "Schneider TeSys D LC1D25BD, 24 VDC coil")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
+					(name "Datasheet") "https://download.schneider-electric.com/files?filename=Catalog&p_Doc_Ref=MKTED210011EN")
 				(field
-					(name "Description") "Second redundant series contactor.")
+					(name "Description") "Second redundant series contactor. Same three-pole series application boundary, critical-current warning and physical evidence gate as K1.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "K2")
-				(description "Second redundant series contactor.")
+				(description "Second redundant series contactor. Same three-pole series application boundary, critical-current warning and physical evidence gate as K1.")
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - DC APPLICATION CONFIRMATION REQUIRED")
+				(value "PROPOSED - CATALOG DC ENVELOPE FOUND; CRITICAL-CURRENT AND APPLICATION CONFIRMATION REQUIRED; TEST REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Schneider MKTED210011EN Catalog 2026 pp. A5/120-A5/123, LC1D25BD product sheet dated 2017-09-13, and FA126437 modified 2026-05-12; rechecked 2026-08-07.")
 			)
 			(property
 				(name "Display")
@@ -2064,7 +2063,7 @@
 		(comp
 			(ref "KP1")
 			(value "K1 three main poles represented in series")
-			(description "Do not count as a second BOM device. External nets series-connect the three poles; Schneider application confirmation remains required.")
+			(description "Do not count as a second BOM device. External nets series-connect the three poles. Catalog DC evidence exists, but lower-current/critical-current application confirmation and loaded tests remain required.")
 			(fields
 				(field
 					(name "Status") "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K1")
@@ -2080,12 +2079,12 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Do not count as a second BOM device. External nets series-connect the three poles; Schneider application confirmation remains required.")
+					(name "Description") "Do not count as a second BOM device. External nets series-connect the three poles. Catalog DC evidence exists, but lower-current/critical-current application confirmation and loaded tests remain required.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "KP1")
-				(description "Do not count as a second BOM device. External nets series-connect the three poles; Schneider application confirmation remains required.")
+				(description "Do not count as a second BOM device. External nets series-connect the three poles. Catalog DC evidence exists, but lower-current/critical-current application confirmation and loaded tests remain required.")
 			)
 			(property
 				(name "Status")
@@ -2141,7 +2140,7 @@
 		(comp
 			(ref "KP2")
 			(value "K2 three main poles represented in series")
-			(description "Do not count as a second BOM device.")
+			(description "Do not count as a second BOM device. Same catalog and lower-current application boundary as K1.")
 			(fields
 				(field
 					(name "Status") "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K2")
@@ -2157,12 +2156,12 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Do not count as a second BOM device.")
+					(name "Description") "Do not count as a second BOM device. Same catalog and lower-current application boundary as K1.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "KP2")
-				(description "Do not count as a second BOM device.")
+				(description "Do not count as a second BOM device. Same catalog and lower-current application boundary as K1.")
 			)
 			(property
 				(name "Status")
@@ -7043,8 +7042,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "K1")
-			(description "First redundant series contactor. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
-			(docs "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
+			(description "First redundant series contactor. Three power poles are represented in series. The 2026 catalog's LC1D25 24 V row is 32 A for one, two or three poles, but its lower-current critical-current warning applies to the 11.1 A HR-V0 screen. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
+			(docs "https://download.schneider-electric.com/files?filename=Catalog&p_Doc_Ref=MKTED210011EN")
 			(fields
 				(field
 					(name "Reference") "K1")
@@ -7054,13 +7053,13 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
+					(name "Datasheet") "https://download.schneider-electric.com/files?filename=Catalog&p_Doc_Ref=MKTED210011EN")
 				(field
-					(name "Description") "First redundant series contactor. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
+					(name "Description") "First redundant series contactor. Three power poles are represented in series. The 2026 catalog's LC1D25 24 V row is 32 A for one, two or three poles, but its lower-current critical-current warning applies to the 11.1 A HR-V0 screen. BD coil has built-in bidirectional peak-limiting diode; do not add assumed external suppression.")
 				(field
-					(name "Status") "PROPOSED - DC APPLICATION CONFIRMATION REQUIRED")
+					(name "Status") "PROPOSED - CATALOG DC ENVELOPE FOUND; CRITICAL-CURRENT AND APPLICATION CONFIRMATION REQUIRED; TEST REQUIRED")
 				(field
-					(name "Evidence") "Schneider product sheet rechecked 2026-08-06; loaded DC interruption/coordination not established.")
+					(name "Evidence") "Schneider MKTED210011EN Catalog 2026 pp. A5/120-A5/123, LC1D25BD product sheet dated 2017-09-13, and FA126437 modified 2026-05-12; rechecked 2026-08-07. Loaded DC interruption, critical-current disposition and coordination remain open.")
 				(field
 					(name "Display") "Schneider TeSys D LC1D25BD, 24 VDC coil")
 			)
@@ -7100,8 +7099,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "K2")
-			(description "Second redundant series contactor.")
-			(docs "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
+			(description "Second redundant series contactor. Same three-pole series application boundary, critical-current warning and physical evidence gate as K1.")
+			(docs "https://download.schneider-electric.com/files?filename=Catalog&p_Doc_Ref=MKTED210011EN")
 			(fields
 				(field
 					(name "Reference") "K2")
@@ -7111,14 +7110,13 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://iportal.se.com/Contents/docs/SQD-LC1D25BD.PDF")
+					(name "Datasheet") "https://download.schneider-electric.com/files?filename=Catalog&p_Doc_Ref=MKTED210011EN")
 				(field
-					(name "Description") "Second redundant series contactor.")
+					(name "Description") "Second redundant series contactor. Same three-pole series application boundary, critical-current warning and physical evidence gate as K1.")
 				(field
-					(name "Status") "PROPOSED - DC APPLICATION CONFIRMATION REQUIRED")
+					(name "Status") "PROPOSED - CATALOG DC ENVELOPE FOUND; CRITICAL-CURRENT AND APPLICATION CONFIRMATION REQUIRED; TEST REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Schneider MKTED210011EN Catalog 2026 pp. A5/120-A5/123, LC1D25BD product sheet dated 2017-09-13, and FA126437 modified 2026-05-12; rechecked 2026-08-07.")
 				(field
 					(name "Display") "Schneider TeSys D LC1D25BD, 24 VDC coil")
 			)
@@ -7158,7 +7156,7 @@
 		(libpart
 			(lib "PBV3")
 			(part "KP1")
-			(description "Do not count as a second BOM device. External nets series-connect the three poles; Schneider application confirmation remains required.")
+			(description "Do not count as a second BOM device. External nets series-connect the three poles. Catalog DC evidence exists, but lower-current/critical-current application confirmation and loaded tests remain required.")
 			(fields
 				(field
 					(name "Reference") "KP1")
@@ -7171,7 +7169,7 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Do not count as a second BOM device. External nets series-connect the three poles; Schneider application confirmation remains required.")
+					(name "Description") "Do not count as a second BOM device. External nets series-connect the three poles. Catalog DC evidence exists, but lower-current/critical-current application confirmation and loaded tests remain required.")
 				(field
 					(name "Status") "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K1")
 				(field
@@ -7216,7 +7214,7 @@
 		(libpart
 			(lib "PBV3")
 			(part "KP2")
-			(description "Do not count as a second BOM device.")
+			(description "Do not count as a second BOM device. Same catalog and lower-current application boundary as K1.")
 			(fields
 				(field
 					(name "Reference") "KP2")
@@ -7229,7 +7227,7 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Do not count as a second BOM device.")
+					(name "Description") "Do not count as a second BOM device. Same catalog and lower-current application boundary as K1.")
 				(field
 					(name "Status") "CONTACT CROSS-REFERENCE ONLY - SAME DEVICE K2")
 				(field
