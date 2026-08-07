@@ -1,11 +1,11 @@
-"""Generate the strengthened exact-coordinate HR-V0 arm candidate for R56.
+"""Generate the fabrication-defined exact-coordinate HR-V0 arm candidate for R57.
 
 The exported geometry is a feasibility/configuration candidate.  It is not a
 fabrication release.  Purchased 80/20 stock remains a conservative 20 x 40 mm
 collision envelope, while the manufacturer-published end-tap coordinates,
 ROBOTIS frame hole patterns, candidate countersunk fastener envelope and
 vendor-coordinate actuator rotation are modeled explicitly.  Tolerances,
-torque, physical fit and proof requirements remain open.
+qualified acceptance, physical fit and proof requirements remain open.
 """
 
 from __future__ import annotations
@@ -26,8 +26,8 @@ from OCP.gp import gp_Trsf
 ROOT = Path(__file__).resolve().parents[1]
 VENDOR = ROOT / "cad" / "vendor" / "robotis"
 VENDOR_8020 = ROOT / "cad" / "vendor" / "8020"
-OUT = ROOT / "cad" / "hr-v0" / "generated" / "arm-architecture-p0.3"
-REVISION = "HR-V0-ARM-ARCH-P0.3"
+OUT = ROOT / "cad" / "hr-v0" / "generated" / "arm-architecture-p0.4"
+REVISION = "HR-V0-ARM-ARCH-P0.4"
 WARNING = "PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION"
 
 PLATE_T = 9.525
@@ -39,15 +39,20 @@ J2_Y = round(32.0 + PLATE_T + UPPER_BEAM_L + PLATE_T + 51.5, 4)
 G1_Y = round(J2_Y + 32.0 + PLATE_T + FOREARM_BEAM_L + PLATE_T + 28.0, 4)
 FRAME_HOLE_D = 2.70
 END_HOLE_D = 5.50
-END_CSK_D = 10.07
+END_CSK_D = 11.40
+END_CSK_D_NOM = 11.30
 END_CSK_D_MIN = 9.43
 END_CSK_DEPTH = 3.10
 END_TAP_SPACING = 20.0
 M5_SCREW_LENGTH = 20.0
-M2_5_SCREW_LENGTH = 16.0
+M2_5_SCREW_LENGTH = 20.0
 H101_LINK_FACE_T = 2.0
 H101_LINK_FACE_MAX_T = 2.2
-M2_5_NUT_T = 2.0
+M2_5_NUT_T = 3.60
+M2_5_NUT_MIN_T = 3.30
+MATERIAL_PROJECT_MIN_YIELD_MPA = 240.0
+FASTENER_A2_70_MIN_TENSILE_MPA = 700.0
+PROOF_MULTIPLIER = 3.0
 ACTUATOR_AXIAL_OFFSET_X = 1.75
 COLLISION_INCREMENT_DEG = 0.5
 PROVISIONAL_J2_SOFT_LIMIT_DEG = 120.0
@@ -105,8 +110,9 @@ def adapter(y0: float) -> cq.Shape:
     # The purchased profile's published 4.19 mm cores lie on the 40 mm axis,
     # 20 mm apart.  A 90-degree countersink keeps the M5 candidate flush under
     # the ROBOTIS frame.  R56 increases the adapter from 4.7625 mm to nominal
-    # 9.525 mm and sets a 9.0 mm finished minimum; material certification,
-    # countersink inspection and physical proof remain release gates.
+    # 9.525 mm and sets a 9.0 mm finished minimum. R57 uses the maximum
+    # controlled countersink envelope for the exact A2-70 Torx candidate;
+    # material certification, inspection and physical proof remain gates.
     for z in (-10.0, 10.0):
         hole = cq.Solid.makeCylinder(END_HOLE_D / 2.0, PLATE_T, cq.Vector(0, y0, z), cq.Vector(0, 1, 0))
         solid = solid.cut(hole)
@@ -139,6 +145,75 @@ def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
+
+
+def write_adapter_dxf(path: Path) -> None:
+    """Write a minimal ASCII DXF with separate finished-feature layers."""
+    lines: list[str] = [
+        "0", "SECTION", "2", "HEADER", "9", "$ACADVER", "1", "AC1009", "0", "ENDSEC",
+        "0", "SECTION", "2", "ENTITIES",
+    ]
+
+    def line(x1: float, y1: float, x2: float, y2: float, layer: str) -> None:
+        lines.extend(["0", "LINE", "8", layer, "10", str(x1), "20", str(y1), "30", "0", "11", str(x2), "21", str(y2), "31", "0"])
+
+    def circle(x: float, y: float, radius: float, layer: str) -> None:
+        lines.extend(["0", "CIRCLE", "8", layer, "10", str(x), "20", str(y), "30", "0", "40", str(radius)])
+
+    for x1, z1, x2, z2 in ((-24, -20, 24, -20), (24, -20, 24, 20), (24, 20, -24, 20), (-24, 20, -24, -20)):
+        line(x1, z1, x2, z2, "FINISHED_PROFILE")
+    for x in (-16.0, 16.0):
+        for z in (-8.0, 8.0):
+            circle(x, z, FRAME_HOLE_D / 2.0, "M2_5_CLEARANCE")
+    for z in (-10.0, 10.0):
+        circle(0.0, z, END_HOLE_D / 2.0, "M5_CLEARANCE")
+        circle(0.0, z, END_CSK_D_NOM / 2.0, "M5_COUNTERSINK_NOMINAL")
+    lines.extend(["0", "ENDSEC", "0", "EOF"])
+    path.write_text("\n".join(lines) + "\n", encoding="ascii", newline="\n")
+
+
+def write_adapter_drawing(path: Path) -> None:
+    sx = lambda value: 390 + value * 10
+    sz = lambda value: 500 - value * 10
+    holes = []
+    for x in (-16.0, 16.0):
+        for z in (-8.0, 8.0):
+            holes.append(f'<circle cx="{sx(x)}" cy="{sz(z)}" r="13.5" class="hole"/><line x1="{sx(x)-18}" y1="{sz(z)}" x2="{sx(x)+18}" y2="{sz(z)}" class="center"/><line x1="{sx(x)}" y1="{sz(z)-18}" x2="{sx(x)}" y2="{sz(z)+18}" class="center"/>')
+    for z in (-10.0, 10.0):
+        holes.append(f'<circle cx="{sx(0)}" cy="{sz(z)}" r="27.5" class="hole"/><circle cx="{sx(0)}" cy="{sz(z)}" r="56.5" class="csk"/><line x1="{sx(0)-65}" y1="{sz(z)}" x2="{sx(0)+65}" y2="{sz(z)}" class="center"/>')
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+<style>text{{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}}.title{{font-size:34px;font-weight:700}}.head{{font-size:23px;font-weight:700}}.warn{{font-size:20px;font-weight:700;fill:#8a3b00}}.part{{fill:#d9f1ff;stroke:#0b4f8a;stroke-width:4}}.hole{{fill:#fff;stroke:#0b4f8a;stroke-width:3}}.csk{{fill:none;stroke:#d59600;stroke-width:3}}.center{{stroke:#657b8a;stroke-width:1.5;stroke-dasharray:8 5}}.dim{{stroke:#082b4c;stroke-width:2}}.box{{fill:#fff9e8;stroke:#d59600;stroke-width:3}}</style>
+<rect width="1600" height="1100" fill="#f7fbff"/>
+<text x="40" y="55" class="title">MV0-C01 arm adapter — controlled candidate drawing</text>
+<text x="40" y="90" class="warn">{REVISION} — {WARNING}</text>
+<rect x="150" y="300" width="480" height="400" class="part"/>
+{''.join(holes)}
+<line x1="150" y1="245" x2="630" y2="245" class="dim"/><line x1="150" y1="230" x2="150" y2="270" class="dim"/><line x1="630" y1="230" x2="630" y2="270" class="dim"/><text x="345" y="225" class="head">48.00 ±0.10</text>
+<line x1="95" y1="300" x2="95" y2="700" class="dim"/><line x1="80" y1="300" x2="120" y2="300" class="dim"/><line x1="80" y1="700" x2="120" y2="700" class="dim"/><text x="35" y="520" class="head" transform="rotate(-90 35 520)">40.00 ±0.10</text>
+<text x="175" y="755">4× Ø2.70 +0.10/−0.00 at X=±16.00, Z=±8.00; center coordinates ±0.05</text>
+<text x="175" y="790">2× Ø5.50 +0.10/−0.00 at X=0, Z=±10.00; center coordinates ±0.05</text>
+<text x="175" y="825">2× countersink Ø11.30 +0.10/−0.00, 90° included nominal; received screw functional gauge controls</text>
+<rect x="760" y="150" width="790" height="780" rx="12" class="box"/>
+<text x="800" y="205" class="head">Material and process</text>
+<text x="800" y="245">6061‑T651 plate, ASTM B209 / AMS 4027, OnlineMetals part 1249 candidate.</text>
+<text x="800" y="280">One 8×8×3/8 in sheet, one heat lot, MTR required. CNC mill/drill only.</text>
+<text x="800" y="315">Finished thickness 9.00–10.00 mm; opposite broad faces parallel within 0.10 mm.</text>
+<text x="800" y="350">Flatness ≤0.15 mm over the finished part. Bare as-machined; remove all burrs.</text>
+<text x="800" y="385">Break sharp edges 0.20–0.50 mm. No anodize, plating, or unapproved substitution.</text>
+<text x="800" y="440" class="head">Functional acceptance</text>
+<text x="800" y="480">Use received Accu SHKL-M5-20-A2-R360 as the countersink functional gauge.</text>
+<text x="800" y="515">Head proud ≤0.05 mm; recess ≤0.25 mm. Residual thickness below cone ≥5.80 mm.</text>
+<text x="800" y="550">Inspect all dimensions; record actual hole coordinates, thickness, flatness, and mass.</text>
+<text x="800" y="585">Dry-fit only with received ROBOTIS frames and 20-2040 article before load proof.</text>
+<text x="800" y="640" class="head">Release boundary</text>
+<text x="800" y="680">Drawing is suitable for supplier DFM/quotation only after program authorization.</text>
+<text x="800" y="715">No production quantity. One separately authorized first article maximum.</text>
+<text x="800" y="750">Torque, final locking validation, cable clearance, proof load, FAI, and qualified</text>
+<text x="800" y="785">mechanical disposition remain required before assembly or actuator connection.</text>
+<text x="800" y="850" class="warn">DO NOT FABRICATE OR ENERGIZE FROM THIS DRAWING ALONE.</text>
+<text x="800" y="890">Units: mm • Projection: adapter face X–Z • Revision: {REVISION}</text>
+</svg>'''
+    path.write_text(svg, encoding="utf-8", newline="\n")
 
 
 def positive_intersection(a: cq.Shape, b: cq.Shape) -> float:
@@ -235,6 +310,8 @@ def main() -> int:
         part_path = part_dir / f"{name}.step"
         cq.exporters.export(solid, str(part_path))
         canonicalize_step(part_path)
+    write_adapter_dxf(part_dir / "MV0-C01_adapter-finished-profile.dxf")
+    write_adapter_drawing(OUT / "MV0-C01_adapter-candidate-drawing.svg")
 
     actuator_matrix = [[0.0, 0.0, -1.0, ACTUATOR_AXIAL_OFFSET_X], [1.0, 0.0, 0.0, 0.0], [0.0, -1.0, 0.0, 0.0], [0.0, 0.0, 0.0, 1.0]]
     transform_rows = [
@@ -247,12 +324,12 @@ def main() -> int:
     write_csv(OUT / "transform-schedule.csv", transform_rows)
 
     interface_rows = [
-        {"interface": "A01", "from": "J1 H101 outside broad face", "to": "upper proximal adapter", "plane_world": "Y=32.0000 mm", "pattern": "4 x manufacturer dia 2.5 thru at X=+/-16 Z=+/-8; adapter dia 2.70", "fasteners": "WF2339 + WF1254 EXACT CANDIDATE HOLD; torque/retention/received stack SELECTION REQUIRED", "status": "rectangular_pattern_registered_static_proof_only"},
-        {"interface": "A02", "from": "upper proximal adapter", "to": "20-2040 end", "plane_world": f"Y={32.0 + PLATE_T:.4f} mm", "pattern": "2 x M5x0.8 end taps at X=0 Z=+/-10; 90-deg flush countersinks", "fasteners": "WF2563 EXACT CANDIDATE HOLD; torque/retention SELECTION REQUIRED", "status": "manufacturer_coordinates_registered_static_proof_only"},
-        {"interface": "A03", "from": "20-2040 end", "to": "upper distal adapter", "plane_world": f"Y={32.0 + PLATE_T + UPPER_BEAM_L:.4f} mm", "pattern": "2 x M5x0.8 end taps at X=0 Z=+/-10; 90-deg flush countersinks", "fasteners": "WF2563 EXACT CANDIDATE HOLD; torque/retention SELECTION REQUIRED", "status": "manufacturer_coordinates_registered_static_proof_only"},
-        {"interface": "A04", "from": "upper distal adapter", "to": "J2 S102 outside broad face", "plane_world": f"Y={J2_Y - 51.5:.4f} mm", "pattern": "4 x manufacturer dia 2.5 thru at X=+/-16 Z=+/-8; adapter dia 2.70", "fasteners": "WF2339 + WF1254 EXACT CANDIDATE HOLD; torque/retention/received stack SELECTION REQUIRED", "status": "rectangular_pattern_registered_static_proof_only"},
-        {"interface": "A05", "from": "J2 H101 outside broad face", "to": "forearm proximal adapter", "plane_world": f"Y={fore_p_y:.4f} mm at straight reference", "pattern": "4 x manufacturer dia 2.5 thru at X=+/-16 Z=+/-8; adapter dia 2.70", "fasteners": "WF2339 + WF1254 EXACT CANDIDATE HOLD; torque/retention/received stack SELECTION REQUIRED", "status": "rectangular_pattern_registered_static_proof_only"},
-        {"interface": "A06", "from": "forearm beam", "to": "forearm adapters", "plane_world": f"Y={fore_p_y + PLATE_T:.4f} and {fore_p_y + PLATE_T + FOREARM_BEAM_L:.4f} mm at straight reference", "pattern": "2 x M5x0.8 end taps at X=0 Z=+/-10; 90-deg flush countersinks", "fasteners": "WF2563 EXACT CANDIDATE HOLD; torque/retention SELECTION REQUIRED", "status": "manufacturer_coordinates_registered_static_proof_only"},
+        {"interface": "A01", "from": "J1 H101 outside broad face", "to": "upper proximal adapter", "plane_world": "Y=32.0000 mm", "pattern": "4 x manufacturer dia 2.5 thru at X=+/-16 Z=+/-8; adapter dia 2.70", "fasteners": "MISUMI SCB2.5-20 + ACCU HNN-M2.5-A2 EXACT CANDIDATE HOLD; torque/received stack SELECTION REQUIRED", "status": "rectangular_pattern_registered_static_proof_only"},
+        {"interface": "A02", "from": "upper proximal adapter", "to": "20-2040 end", "plane_world": f"Y={32.0 + PLATE_T:.4f} mm", "pattern": "2 x M5x0.8 end taps at X=0 Z=+/-10; controlled flush countersinks", "fasteners": "ACCU SHKL-M5-20-A2-R360 EXACT CANDIDATE HOLD; torque/received seating SELECTION REQUIRED", "status": "manufacturer_coordinates_registered_static_proof_only"},
+        {"interface": "A03", "from": "20-2040 end", "to": "upper distal adapter", "plane_world": f"Y={32.0 + PLATE_T + UPPER_BEAM_L:.4f} mm", "pattern": "2 x M5x0.8 end taps at X=0 Z=+/-10; controlled flush countersinks", "fasteners": "ACCU SHKL-M5-20-A2-R360 EXACT CANDIDATE HOLD; torque/received seating SELECTION REQUIRED", "status": "manufacturer_coordinates_registered_static_proof_only"},
+        {"interface": "A04", "from": "upper distal adapter", "to": "J2 S102 outside broad face", "plane_world": f"Y={J2_Y - 51.5:.4f} mm", "pattern": "4 x manufacturer dia 2.5 thru at X=+/-16 Z=+/-8; adapter dia 2.70", "fasteners": "MISUMI SCB2.5-20 + ACCU HNN-M2.5-A2 EXACT CANDIDATE HOLD; torque/received stack SELECTION REQUIRED", "status": "rectangular_pattern_registered_static_proof_only"},
+        {"interface": "A05", "from": "J2 H101 outside broad face", "to": "forearm proximal adapter", "plane_world": f"Y={fore_p_y:.4f} mm at straight reference", "pattern": "4 x manufacturer dia 2.5 thru at X=+/-16 Z=+/-8; adapter dia 2.70", "fasteners": "MISUMI SCB2.5-20 + ACCU HNN-M2.5-A2 EXACT CANDIDATE HOLD; torque/received stack SELECTION REQUIRED", "status": "rectangular_pattern_registered_static_proof_only"},
+        {"interface": "A06", "from": "forearm beam", "to": "forearm adapters", "plane_world": f"Y={fore_p_y + PLATE_T:.4f} and {fore_p_y + PLATE_T + FOREARM_BEAM_L:.4f} mm at straight reference", "pattern": "2 x M5x0.8 end taps at X=0 Z=+/-10; controlled flush countersinks", "fasteners": "ACCU SHKL-M5-20-A2-R360 EXACT CANDIDATE HOLD; torque/received seating SELECTION REQUIRED", "status": "manufacturer_coordinates_registered_static_proof_only"},
         {"interface": "A07", "from": "forearm distal adapter", "to": "H104 outside broad face", "plane_world": f"Y={fore_p_y + 2 * PLATE_T + FOREARM_BEAM_L:.4f} mm at straight reference", "pattern": "manufacturer broad-face pattern; final subset and adapter holes SELECTION REQUIRED", "fasteners": "SELECTION REQUIRED", "status": "transform_candidate_pattern_open"},
     ]
     write_csv(OUT / "interface-schedule.csv", interface_rows)
@@ -328,6 +405,10 @@ def main() -> int:
     m2_5_nominal_protrusion_mm = M2_5_SCREW_LENGTH - H101_LINK_FACE_T - PLATE_T - M2_5_NUT_T
     m2_5_screen_min_protrusion_mm = M2_5_SCREW_LENGTH - H101_LINK_FACE_MAX_T - PLATE_MAX_T - M2_5_NUT_T
     m5_couple_force_n = shoulder_screen_nm * 1000.0 / END_TAP_SPACING
+    proof_moment_nm = shoulder_screen_nm * PROOF_MULTIPLIER
+    proof_m5_couple_force_n = proof_moment_nm * 1000.0 / END_TAP_SPACING
+    proof_m2_5_row_force_n = proof_moment_nm * 1000.0 / 16.0
+    proof_m2_5_each_force_n = proof_m2_5_row_force_n / 2.0
     aluminum_shear_yield_mpa = 0.577 * 172.37
     thread_shear_area_mm2 = math.pi * 4.19 * m5_engagement_mm * 0.5
     thread_shear_capacity_n = thread_shear_area_mm2 * aluminum_shear_yield_mpa
@@ -336,13 +417,24 @@ def main() -> int:
     adapter_required_punching_shear_mpa = m5_couple_force_n / (math.pi * END_HOLE_D * adapter_min_residual_mm)
     adapter_head_annulus_mm2 = math.pi / 4.0 * (END_CSK_D_MIN ** 2 - END_HOLE_D ** 2)
     adapter_head_average_pressure_mpa = m5_couple_force_n / adapter_head_annulus_mm2
+    proof_adapter_punching_shear_mpa = proof_m5_couple_force_n / (math.pi * END_HOLE_D * adapter_min_residual_mm)
+    proof_adapter_head_average_pressure_mpa = proof_m5_couple_force_n / adapter_head_annulus_mm2
+    proof_m2_5_bearing_mpa = proof_m2_5_each_force_n / (2.5 * PLATE_MIN_T)
+    m2_5_edge_ligament_mm = 24.0 - 16.0 - FRAME_HOLE_D / 2.0
+    proof_m2_5_edge_tearout_mpa = proof_m2_5_each_force_n / (2.0 * PLATE_MIN_T * m2_5_edge_ligament_mm)
+    proof_adapter_net_section_mpa = proof_m2_5_row_force_n / ((48.0 - 2.0 * FRAME_HOLE_D) * PLATE_MIN_T)
+    project_fastener_shear_screen_mpa = 0.30 * FASTENER_A2_70_MIN_TENSILE_MPA
+    m5_thread_root_screen_area_mm2 = math.pi * 4.0 ** 2 / 4.0
+    m2_5_thread_root_screen_area_mm2 = math.pi * 2.0 ** 2 / 4.0
+    m5_fastener_shear_screen_capacity_n = project_fastener_shear_screen_mpa * m5_thread_root_screen_area_mm2
+    m2_5_fastener_shear_screen_capacity_n = project_fastener_shear_screen_mpa * m2_5_thread_root_screen_area_mm2
     kaiser_typical_yield_mpa = 276.0
     kaiser_typical_shear_yield_mpa = 0.577 * kaiser_typical_yield_mpa
 
     fastener_rows = [
-        {"fastener_id": "FAST-C01", "interfaces": "A02;A03;A06", "candidate_order_code": "WF2563", "description": "M5 x 20 ISO 10642 90-degree socket countersunk screw; A2 stainless", "quantity_candidate": 8, "controlled_dimensions": "L=20 mm; head dia=9.43..10.07 mm; head height=2.669..3.100 mm; 3 mm socket; M5x0.8", "modeled_engagement_mm": f"{m5_engagement_mm:.4f} nominal; {m5_min_engagement_mm:.4f} screen minimum", "status": "EXACT CANDIDATE HOLD", "remaining_evidence": "received full-thread confirmation, torque, lubrication/anti-galling, locking, countersink inspection and proof"},
-        {"fastener_id": "FAST-C02", "interfaces": "A01;A04;A05", "candidate_order_code": "WF2339", "description": "M2.5 x 16 ISO 4762 socket head cap screw; A2 stainless", "quantity_candidate": 12, "controlled_dimensions": "L=16 mm; head dia max=4.5 mm; head height max=2.5 mm; 2 mm socket; M2.5x0.45; full thread at this length", "modeled_engagement_mm": f"{m2_5_nominal_protrusion_mm:.4f} nominal protrusion beyond 2 mm nut; {m2_5_screen_min_protrusion_mm:.4f} geometric screen minimum", "status": "EXACT CANDIDATE HOLD", "remaining_evidence": "received frame/plate/nut stack, screw-length tolerance, protrusion, torque, locking, wrench access and proof"},
-        {"fastener_id": "FAST-C03", "interfaces": "A01;A04;A05", "candidate_order_code": "WF1254", "description": "M2.5 DIN 934 full hex nut; A2 stainless", "quantity_candidate": 12, "controlled_dimensions": "M2.5x0.45; thickness 1.75 min / 2.00 max; across flats 4.82 min / 5.00 max", "modeled_engagement_mm": f"paired with WF2339; {m2_5_screen_min_protrusion_mm:.4f} geometric screen minimum before screw-length tolerance", "status": "EXACT CANDIDATE HOLD", "remaining_evidence": "received dimensions, torque, anti-galling/locking method, 5 mm tool envelope and proof"},
+        {"fastener_id": "FAST-C01", "interfaces": "A02;A03;A06", "candidate_order_code": "SHKL-M5-20-A2-R360", "description": "M5 x 20 countersunk Torx screw; A2-70 stainless; pre-applied AccuLock 360", "quantity_candidate": 8, "controlled_dimensions": "L=20 mm; head dia=9.43..11.20 mm; countersunk length=3.10 mm; T25; M5x0.8; 90 deg +2/-0", "modeled_engagement_mm": f"{m5_engagement_mm:.4f} nominal; {m5_min_engagement_mm:.4f} screen minimum", "status": "EXACT CANDIDATE HOLD", "remaining_evidence": "received identity, full-thread condition, torque development, flush seating, cure/storage, single-install project rule and proof"},
+        {"fastener_id": "FAST-C02", "interfaces": "A01;A04;A05", "candidate_order_code": "SCB2.5-20", "description": "MISUMI M2.5 x 20 ISO 4762 socket head cap screw; A2-70 stainless", "quantity_candidate": 12, "controlled_dimensions": "L=20 mm; head dia max=4.5 mm; head height max=2.5 mm; 2 mm socket; M2.5x0.45; fully threaded", "modeled_engagement_mm": f"{m2_5_nominal_protrusion_mm:.4f} nominal protrusion beyond 3.6 mm nut; {m2_5_screen_min_protrusion_mm:.4f} geometric screen minimum", "status": "EXACT CANDIDATE HOLD", "remaining_evidence": "received identity, frame/plate/nut stack, screw-length tolerance, protrusion, torque, wrench access and proof"},
+        {"fastener_id": "FAST-C03", "interfaces": "A01;A04;A05", "candidate_order_code": "HNN-M2.5-A2", "description": "Accu M2.5 DIN 985 nylon-insert locking nut; A2 stainless", "quantity_candidate": 12, "controlled_dimensions": "M2.5x0.45; overall thickness 3.30..3.60 mm; 5 mm across flats; nylon insert", "modeled_engagement_mm": f"paired with SCB2.5-20; {m2_5_screen_min_protrusion_mm:.4f} geometric minimum beyond nut", "status": "EXACT CANDIDATE HOLD", "remaining_evidence": "received identity/dimensions, prevailing torque, installation torque, single-use project rule, temperature envelope and proof"},
         {"fastener_id": "FAST-C04", "interfaces": "purchased member ends", "candidate_order_code": "20-7047", "description": "80/20 two-hole M5x0.8 end-tap service for 20-2040", "quantity_candidate": 4, "controlled_dimensions": "two taps; 22.23 mm published depth; 4.19 mm cores at 20 mm spacing", "modeled_engagement_mm": f"{m5_engagement_mm:.4f} nominal; {m5_min_engagement_mm:.4f} screen minimum", "status": "EXACT SERVICE CANDIDATE HOLD", "remaining_evidence": "written supplier confirmation, received thread gauge/depth inspection and proof joint"},
     ]
     write_csv(OUT / "fastener-candidate-schedule.csv", fastener_rows)
@@ -350,10 +442,10 @@ def main() -> int:
     access_rows = [
         {"check": "TA-01", "features": "M5 countersink to nearest M2.5 clearance hole", "result_mm": f"{feature_clearance_mm:.4f}", "criterion": ">= 1.0 mm nominal feature clearance", "result": "PASS NOMINAL", "release_effect": "does not release tolerance or machining process"},
         {"check": "TA-02", "features": "two M5 countersunk heads", "result_mm": f"{END_TAP_SPACING - END_CSK_D:.4f}", "criterion": ">= 1.0 mm nominal head-envelope clearance", "result": "PASS NOMINAL", "release_effect": "heads install before frame; service requires frame removal"},
-        {"check": "TA-03", "features": "M2.5 clearance-hole edge at X=+/-16", "result_mm": f"{24.0 - 16.0 - FRAME_HOLE_D / 2.0:.4f}", "criterion": ">= 2d preliminary edge screen", "result": "PASS NOMINAL", "release_effect": "WF1254 nut fits nominally; 5 mm tool outer envelope remains SELECTION REQUIRED"},
+        {"check": "TA-03", "features": "M2.5 clearance-hole edge at X=+/-16", "result_mm": f"{24.0 - 16.0 - FRAME_HOLE_D / 2.0:.4f}", "criterion": ">= 2d preliminary edge screen", "result": "PASS NOMINAL", "release_effect": "HNN-M2.5-A2 fits nominally; physical 5 mm tool proof remains required"},
         {"check": "TA-04", "features": "M5 countersink edge at Z=+/-10", "result_mm": f"{20.0 - 10.0 - END_CSK_D / 2.0:.4f}", "criterion": ">= 2.0 mm nominal edge clearance", "result": "PASS NOMINAL", "release_effect": "pull-through and fatigue proof remain open"},
         {"check": "TA-05", "features": "material remaining below maximum M5 countersink at finished minimum thickness", "result_mm": f"{adapter_min_residual_mm:.4f}", "criterion": ">= 5.0 mm project geometry screen; structural acceptance still requires proof", "result": "PASS NOMINAL / PROOF OPEN", "release_effect": "physical countersink inspection material certificate local analysis and proof remain required"},
-        {"check": "TA-06", "features": "WF2339 protrusion beyond maximum-thickness WF1254 stack", "result_mm": f"{m2_5_screen_min_protrusion_mm:.4f}", "criterion": ">= 1.35 mm (3 x 0.45 mm pitch) geometric screen before screw-length tolerance", "result": "PASS NOMINAL / RECEIVED STACK OPEN", "release_effect": "received screw length frame/plate/nut stack and tool proof remain required"},
+        {"check": "TA-06", "features": "SCB2.5-20 protrusion beyond maximum-thickness HNN-M2.5-A2 stack", "result_mm": f"{m2_5_screen_min_protrusion_mm:.4f}", "criterion": ">= 1.35 mm (3 x 0.45 mm pitch) geometric screen before screw-length tolerance", "result": "PASS NOMINAL / RECEIVED STACK OPEN", "release_effect": "received screw length frame/plate/nut stack and tool proof remain required"},
     ]
     write_csv(OUT / "tool-access-screen.csv", access_rows)
 
@@ -365,10 +457,38 @@ def main() -> int:
         {"screen": "LS-05", "item": "adapter countersunk-head annular average pressure", "input": f"{m5_couple_force_n:.2f} N / annulus({END_CSK_D_MIN:.2f} mm head min, {END_HOLE_D:.2f} mm hole)", "result": f"{adapter_head_average_pressure_mpa:.4f} MPa average pressure; {kaiser_typical_yield_mpa / adapter_head_average_pressure_mpa:.1f} ratio to Kaiser typical T651 yield", "basis": "average-pressure screen only; does not resolve conical contact, prying, local bending, preload, fatigue or impact", "status": "INDICATIVE STATIC SCREEN PASS; FEA/PROOF OPEN"},
     ]
     write_csv(OUT / "joint-load-screen.csv", load_rows)
+
+    adapter_control_rows = [
+        {"control_id": "ADP-001", "feature": "finished outside width X", "nominal_mm": "48.00", "tolerance_or_limit": "+/-0.10", "inspection": "calibrated caliper or CMM; record actual", "status": "CANDIDATE CONTROL; FAI REQUIRED"},
+        {"control_id": "ADP-002", "feature": "finished outside height Z", "nominal_mm": "40.00", "tolerance_or_limit": "+/-0.10", "inspection": "calibrated caliper or CMM; record actual", "status": "CANDIDATE CONTROL; FAI REQUIRED"},
+        {"control_id": "ADP-003", "feature": "finished thickness Y", "nominal_mm": "9.525", "tolerance_or_limit": "9.00 minimum / 10.00 maximum", "inspection": "micrometer at four corners and center", "status": "CANDIDATE CONTROL; FAI REQUIRED"},
+        {"control_id": "ADP-004", "feature": "four M2.5 clearance holes", "nominal_mm": "diameter 2.70 at X +/-16.00 Z +/-8.00", "tolerance_or_limit": "diameter +0.10/-0.00; each center coordinate +/-0.05", "inspection": "pin gauges plus CMM or optical comparator", "status": "CANDIDATE CONTROL; FAI REQUIRED; RECEIVED FRAME FIT REQUIRED"},
+        {"control_id": "ADP-005", "feature": "two M5 clearance holes", "nominal_mm": "diameter 5.50 at X 0 Z +/-10.00", "tolerance_or_limit": "diameter +0.10/-0.00; each center coordinate +/-0.05", "inspection": "pin gauges plus CMM or optical comparator", "status": "CANDIDATE CONTROL; FAI REQUIRED; RECEIVED END-TAP FIT REQUIRED"},
+        {"control_id": "ADP-006", "feature": "two M5 countersinks", "nominal_mm": "diameter 11.30; 90 degree included nominal", "tolerance_or_limit": "diameter +0.10/-0.00; received head proud <=0.05 and recess <=0.25", "inspection": "CMM/optical plus received SHKL-M5-20-A2-R360 functional gauge", "status": "CANDIDATE CONTROL; FAI REQUIRED"},
+        {"control_id": "ADP-007", "feature": "residual below countersink", "nominal_mm": "not applicable", "tolerance_or_limit": ">=5.80", "inspection": "derive from measured thickness and countersink depth; retain raw data", "status": "CANDIDATE CONTROL; FAI REQUIRED"},
+        {"control_id": "ADP-008", "feature": "broad-face flatness", "nominal_mm": "not applicable", "tolerance_or_limit": "<=0.15 over finished part", "inspection": "surface plate and indicator or CMM", "status": "CANDIDATE CONTROL; FAI REQUIRED"},
+        {"control_id": "ADP-009", "feature": "opposite broad-face parallelism", "nominal_mm": "not applicable", "tolerance_or_limit": "<=0.10", "inspection": "micrometer map or CMM", "status": "CANDIDATE CONTROL; FAI REQUIRED"},
+        {"control_id": "ADP-010", "feature": "edges and finish", "nominal_mm": "bare as-machined", "tolerance_or_limit": "break 0.20 to 0.50; no burrs; no coating", "inspection": "visual and edge-break gauge", "status": "CANDIDATE CONTROL; FAI REQUIRED"},
+    ]
+    write_csv(OUT / "adapter-drawing-controls.csv", adapter_control_rows)
+
+    adapter_analysis_rows = [
+        {"screen_id": "ADP-LC-01", "item": "proof-screen moment", "demand": f"{proof_moment_nm:.4f} N m", "capacity_or_limit": "3.0 x R57 2.25 gravity screen", "ratio": "1.0000 applied", "result": "PROJECT PROOF LOAD CANDIDATE; QUALIFIED ACCEPTANCE OPEN"},
+        {"screen_id": "ADP-LC-02", "item": "M5 thread-root shear", "demand": f"{proof_m5_couple_force_n:.2f} N per screw", "capacity_or_limit": f"{m5_fastener_shear_screen_capacity_n:.1f} N from 4.0 mm project root and 0.30 x 700 MPa", "ratio": f"{m5_fastener_shear_screen_capacity_n / proof_m5_couple_force_n:.2f}", "result": "ANALYTICAL SCREEN PASS; NOT AN ALLOWABLE"},
+        {"screen_id": "ADP-LC-03", "item": "M2.5 thread-root shear", "demand": f"{proof_m2_5_each_force_n:.2f} N per screw", "capacity_or_limit": f"{m2_5_fastener_shear_screen_capacity_n:.1f} N from 2.0 mm project root and 0.30 x 700 MPa", "ratio": f"{m2_5_fastener_shear_screen_capacity_n / proof_m2_5_each_force_n:.2f}", "result": "ANALYTICAL SCREEN PASS; NOT AN ALLOWABLE"},
+        {"screen_id": "ADP-LC-04", "item": "adapter punching shear below M5 countersink", "demand": f"{proof_adapter_punching_shear_mpa:.4f} MPa", "capacity_or_limit": f"{0.5 * MATERIAL_PROJECT_MIN_YIELD_MPA:.1f} MPa project screen from required 240 MPa MTR yield", "ratio": f"{0.5 * MATERIAL_PROJECT_MIN_YIELD_MPA / proof_adapter_punching_shear_mpa:.2f}", "result": "ANALYTICAL SCREEN PASS; MTR/FAI/PROOF OPEN"},
+        {"screen_id": "ADP-LC-05", "item": "average annular pressure under M5 head", "demand": f"{proof_adapter_head_average_pressure_mpa:.4f} MPa", "capacity_or_limit": f"{MATERIAL_PROJECT_MIN_YIELD_MPA:.1f} MPa required MTR yield", "ratio": f"{MATERIAL_PROJECT_MIN_YIELD_MPA / proof_adapter_head_average_pressure_mpa:.2f}", "result": "ANALYTICAL SCREEN PASS; CONICAL CONTACT/PROOF OPEN"},
+        {"screen_id": "ADP-LC-06", "item": "M2.5 hole bearing", "demand": f"{proof_m2_5_bearing_mpa:.4f} MPa", "capacity_or_limit": f"{MATERIAL_PROJECT_MIN_YIELD_MPA:.1f} MPa required MTR yield", "ratio": f"{MATERIAL_PROJECT_MIN_YIELD_MPA / proof_m2_5_bearing_mpa:.2f}", "result": "ANALYTICAL SCREEN PASS; PHYSICAL PROOF OPEN"},
+        {"screen_id": "ADP-LC-07", "item": "M2.5 edge tear-out average shear", "demand": f"{proof_m2_5_edge_tearout_mpa:.4f} MPa", "capacity_or_limit": f"{0.5 * MATERIAL_PROJECT_MIN_YIELD_MPA:.1f} MPa project screen from required 240 MPa MTR yield", "ratio": f"{0.5 * MATERIAL_PROJECT_MIN_YIELD_MPA / proof_m2_5_edge_tearout_mpa:.2f}", "result": "ANALYTICAL SCREEN PASS; PHYSICAL PROOF OPEN"},
+        {"screen_id": "ADP-LC-08", "item": "adapter net-section average stress", "demand": f"{proof_adapter_net_section_mpa:.4f} MPa", "capacity_or_limit": f"{MATERIAL_PROJECT_MIN_YIELD_MPA:.1f} MPa required MTR yield", "ratio": f"{MATERIAL_PROJECT_MIN_YIELD_MPA / proof_adapter_net_section_mpa:.2f}", "result": "ANALYTICAL SCREEN PASS; PHYSICAL PROOF OPEN"},
+        {"screen_id": "ADP-LC-09", "item": "20-2040 M5 internal-thread shear", "demand": f"{proof_m5_couple_force_n:.2f} N", "capacity_or_limit": f"{thread_shear_capacity_n:.1f} N R56 conservative inferred capacity", "ratio": f"{thread_shear_capacity_n / proof_m5_couple_force_n:.2f}", "result": "ANALYTICAL SCREEN PASS; RECEIVED THREAD/PROOF OPEN"},
+        {"screen_id": "ADP-LC-10", "item": "20-2040 strong-axis bending", "demand": f"{beam_bending_stress_mpa * PROOF_MULTIPLIER:.4f} MPa", "capacity_or_limit": "172.37 MPa published profile yield", "ratio": f"{172.37 / (beam_bending_stress_mpa * PROOF_MULTIPLIER):.2f}", "result": "ANALYTICAL SCREEN PASS; JOINT/DEFLECTION/FATIGUE OPEN"},
+    ]
+    write_csv(OUT / "adapter-proof-analysis.csv", adapter_analysis_rows)
     summary = {
         "revision": REVISION,
         "warning": WARNING,
-        "disposition": "strengthened exact-coordinate architecture candidate; R55/P0.2 superseded; exact fastener candidates remain on hold; no part or assembly released",
+        "disposition": "fabrication-defined exact-coordinate architecture candidate; P0.3 superseded; exact U.S.-orderable material and fastener candidates remain on hold; no part or assembly released",
         "vendor_source_sha256": {name: sha256(VENDOR / name) for name in ("XMHD-540.N101.I101.STP", "FR13-H101K.stp", "FR13-S102K.stp", "FR12-H104K.stp")},
         "vendor_8020_source_sha256": {name: sha256(VENDOR_8020 / name) for name in ("20-2040-endview.svg", "20-2040-dimensions.jpg", "20-2040-30mm.EPRT")},
         "candidate_geometry_mm": {
@@ -383,7 +503,7 @@ def main() -> int:
             "reserved_g1_to_object_center_max": round(360.0 - G1_Y, 4),
             "robotis_rectangular_pattern": {"x_centers": [-16.0, 16.0], "z_centers": [-8.0, 8.0], "hole_diameter": FRAME_HOLE_D},
             "profile_end_tap_centers": {"x": 0.0, "z_centers": [-10.0, 10.0], "core_diameter": 4.19},
-            "m5_countersink": {"diameter": END_CSK_D, "depth": END_CSK_DEPTH, "included_angle_deg": 90.0},
+            "m5_countersink": {"finished_diameter_range": [END_CSK_D_NOM, END_CSK_D], "modeled_maximum_diameter": END_CSK_D, "maximum_depth_screen": END_CSK_DEPTH, "included_angle_deg_nominal": 90.0},
         },
         "actuator_axis_registration": {
             "matrix_3x3": [[0, 0, -1], [1, 0, 0], [0, -1, 0]],
@@ -423,24 +543,34 @@ def main() -> int:
             "adapter_min_residual_below_countersink_mm": round(adapter_min_residual_mm, 4),
             "adapter_punching_shear_demand_mpa": round(adapter_required_punching_shear_mpa, 4),
             "adapter_head_annular_average_pressure_mpa": round(adapter_head_average_pressure_mpa, 4),
-            "status": "indicative static screening only; typical material properties are not allowables and no fatigue, preload, local bending, tolerance or physical proof credit is taken",
+            "proof_screen_multiplier_on_2_25_gravity_case": PROOF_MULTIPLIER,
+            "proof_screen_moment_nm": round(proof_moment_nm, 4),
+            "proof_m5_couple_force_n": round(proof_m5_couple_force_n, 2),
+            "proof_m2_5_each_force_n": round(proof_m2_5_each_force_n, 2),
+            "proof_adapter_punching_shear_mpa": round(proof_adapter_punching_shear_mpa, 4),
+            "proof_adapter_head_annular_average_pressure_mpa": round(proof_adapter_head_average_pressure_mpa, 4),
+            "proof_m2_5_bearing_mpa": round(proof_m2_5_bearing_mpa, 4),
+            "project_mtr_minimum_yield_mpa": MATERIAL_PROJECT_MIN_YIELD_MPA,
+            "status": "analytical screening only; typical material properties are not allowables; controlled tolerances exist but no fatigue, preload, prying, local bending, physical proof or qualified-acceptance credit is taken",
         },
         "candidate_primary_sources": {
             "adapter_material_typical_properties": "Kaiser Aluminum Sheet Coil & Plate Alloy 6061, Rev. 05/06; typical T6/T651 yield 276 MPa; not a minimum allowable",
-            "m5_countersunk_screw": "Westfield Fasteners WF2563, live product page accessed 2026-08-07",
-            "m2_5_socket_screw": "Westfield Fasteners WF2339, live product page accessed 2026-08-07",
-            "m2_5_hex_nut": "Westfield Fasteners WF1254 and DIN 934 guide, live pages accessed 2026-08-07",
+            "adapter_raw_stock": "OnlineMetals part 1249, 3/8 inch 6061-T651 plate, ASTM B209 / AMS 4027, MTR available; live product page accessed 2026-08-07",
+            "m5_countersunk_screw": "Accu SHKL-M5-20-A2-R360, A2-70, AccuLock 360; live U.S. product page accessed 2026-08-07",
+            "m2_5_socket_screw": "MISUMI SCB2.5-20, A2-70, fully threaded; live U.S. configurator accessed 2026-08-07",
+            "m2_5_locknut": "Accu HNN-M2.5-A2, DIN 985 nylon-insert locking nut; live U.S. product page revision/stock record dated 2026-07-14 and accessed 2026-08-07",
         },
         "open_release_items": [
             "supplier confirmation and received inspection for 20-2040 two-hole M5 end-tap service",
-            "adapter 6061-T651 minimum properties/certificate, 9.0 to 10.0 mm finished thickness, countersink tolerances, manufacturing process and first article",
-            "received WF2339/WF1254 stack, screw-length tolerance, torque, anti-galling/locking, wrench envelope and proof",
-            "received WF2563 full-thread confirmation, torque, anti-galling/locking method, countersink inspection and physical proof",
+            "separately authorized OnlineMetals 1249 receipt with one heat lot, MTR review against the project 240 MPa minimum-yield acceptance and stock inspection",
+            "qualified supplier DFM acceptance of the P0.4 adapter controls and one separately authorized first article",
+            "received SCB2.5-20/HNN-M2.5-A2 stack, screw-length tolerance, prevailing/installation torque, single-use rule, wrench envelope and proof",
+            "received SHKL-M5-20-A2-R360 identity, full-thread condition, seating, torque/cure/storage method, single-install rule and physical proof",
             "received horn/idler axial stack and complete actuator/frame assembly fit",
             "tool access, cable routing, connector sweep and strain relief",
             "continuous between-sample joint-space collision proof including base, guard, stops and gripper",
             "J2 hard-stop/soft-limit allocation and measured stopping overtravel below the current nominal first-collision pose",
-            "adapter conical contact/local bending FEA or accepted equivalent plus joint-slip, preload, fatigue, impact and proof analyses",
+            "qualified acceptance of the R57 analytical equivalent or requested local FEA plus joint-slip, preload, fatigue, impact and physical proof",
             "received-part fit, first-article inspection and qualified mechanical approval",
         ],
     }
@@ -450,7 +580,7 @@ def main() -> int:
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="920" viewBox="0 0 1500 920">
 <style>text{{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}}.title{{font-size:34px;font-weight:700}}.sub{{font-size:23px;font-weight:700}}.warn{{font-size:20px;font-weight:700;fill:#8a3b00}}.axis{{stroke:#0b4f8a;stroke-width:4}}.part{{fill:#66c7f4;stroke:#0b4f8a;stroke-width:3}}.frame{{fill:#f3b61f;stroke:#8a5a00;stroke-width:3}}.note{{fill:#fff4cd;stroke:#f3b61f;stroke-width:3}}</style>
 <rect width="1500" height="920" fill="#f7fbff"/>
-<text x="40" y="55" class="title">HR-V0 strengthened exact-coordinate arm candidate</text>
+<text x="40" y="55" class="title">HR-V0 fabrication-defined exact-coordinate arm candidate</text>
 <text x="40" y="92" class="warn">{REVISION} - {WARNING}</text>
 <text x="40" y="145" class="sub">Straight reference pose, side elevation (Y horizontal, Z vertical)</text>
 <line x1="150" y1="370" x2="1330" y2="370" stroke="#b7cad9" stroke-width="2"/>
@@ -464,11 +594,11 @@ def main() -> int:
 <line x1="190" y1="480" x2="714" y2="480" class="axis"/><text x="350" y="512">J1-J2 = {J2_Y:.4f} mm candidate</text>
 <line x1="714" y1="550" x2="1102" y2="550" class="axis"/><text x="800" y="582">J2-G1 = {G1_Y-J2_Y:.4f} mm candidate</text>
 <rect x="70" y="640" width="1360" height="210" rx="14" class="note"/>
-<text x="100" y="690" class="sub">What this fixes</text>
-<text x="100" y="730">P0.2 is superseded: nominal adapter thickness is 9.525 mm with a 9.0 mm finished minimum.</text>
-<text x="100" y="766">Exact candidates: WF2563 M5 x 20, WF2339 M2.5 x 16 and WF1254 M2.5 nut. No torque is released.</text>
+<text x="100" y="690" class="sub">R57 fabrication-definition correction</text>
+<text x="100" y="730">P0.3 is superseded: exact OnlineMetals 1249 stock and controlled adapter drawing/tolerances are recorded.</text>
+<text x="100" y="766">Exact candidates: Accu A2-70 M5 x 20, MISUMI A2-70 M2.5 x 20 and Accu locking nut. No torque is released.</text>
 <text x="100" y="802">G1 leaves {360.0-G1_Y:.4f} mm. Provisional J2 ceiling is {PROVISIONAL_J2_SOFT_LIMIT_DEG:.1f} deg; first nominal collision: {first_collision_label}.</text>
-<text x="100" y="838" class="warn">Stopping overtravel, material allowables, local FEA, cables and physical proof remain open. Do not fabricate.</text>
+<text x="100" y="838" class="warn">MTR, supplier DFM, FAI, qualified analysis acceptance, cables and physical proof remain open. Do not fabricate.</text>
 </svg>'''
     (OUT / "HR-V0_arm_architecture_candidate.svg").write_text(svg, encoding="utf-8", newline="\n")
 

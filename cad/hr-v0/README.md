@@ -2,7 +2,7 @@
 
 **PRELIMINARY—NOT RELEASED FOR FABRICATION OR ENERGIZATION**
 
-This directory contains native mechanical sources and correction evidence for the bench-mounted HR-V0 handoff demonstrator. It is not a fabrication release. R53 withdrew `MV0-001` through `MV0-003` and every arm supplier packet. R56 adds `generated/arm-architecture-p0.3/` as the current strengthened exact-coordinate replacement candidate; its adapters, beams and fasteners must not be quoted or fabricated. `MV0-004` remains on its separate bench-survey hold.
+This directory contains native mechanical sources and correction evidence for the bench-mounted HR-V0 handoff demonstrator. It is not a fabrication release. R53 withdrew `MV0-001` through `MV0-003` and every arm supplier packet. R57 adds `generated/arm-architecture-p0.4/` as the current fabrication-defined exact-coordinate replacement candidate; its adapters, beams and fasteners must not be quoted or fabricated. `MV0-004` remains on its separate bench-survey hold.
 
 ## Generate the package
 
@@ -14,7 +14,7 @@ From the repository root on Windows:
 
 For a clean environment, install the pinned package from `requirements-cad.txt`. The old generator retains historical P0.2 files so earlier review evidence remains reproducible; `generated/WITHDRAWN-R53.md` governs those artifacts. Generate the replacement candidate separately with `tools/generate_hr_v0_arm_architecture.py` and validate it with `tools/check_hr_v0_arm_architecture.py`. Its exact-source STEP/GLB, explicit transforms, interface schedule, sampled collision sweep and readable SVG are review evidence only. Fit coupons retain optional STL solely as nonstructural inspection aids.
 
-The current release hold is [HR-V0-MECH-P0.3](../../docs/hr-v0-mechanical-release-p0.3.md). The replacement feasibility layer is [HR-V0-ARM-ARCH-P0.3](../../docs/hr-v0-arm-architecture-p0.3.md). The P0.3 general arrangement intentionally keeps released arm datums blank; the R56 directory contains candidate datums without converting them into released dimensions.
+The current release hold is [HR-V0-MECH-P0.3](../../docs/hr-v0-mechanical-release-p0.3.md). The replacement feasibility layer is [HR-V0-ARM-ARCH-P0.4](../../docs/hr-v0-arm-architecture-p0.4.md). The P0.3 general arrangement intentionally keeps released arm datums blank; the R57 directory contains candidate datums and adapter controls without converting them into released dimensions or a fabrication authorization.
 
 ## Controlled custom parts
 

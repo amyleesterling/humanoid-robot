@@ -3,7 +3,7 @@
 Handoff date: 2026-08-07
 Package baseline: **HR-30-SYS-R0.2**  
 Electrical package: **Project Button Electrical V2.1 reviewed baseline; V3-P1.4 / PCB-P0.5 / DXL-STAR-P0.1 correction candidates**
-Mechanical package: **HR-V0-MECH-P0.3 hold plus strengthened HR-V0-ARM-ARCH-P0.3 candidate; no supplier packet or buildable mechanical release**
+Mechanical package: **HR-V0-MECH-P0.3 hold plus fabrication-defined HR-V0-ARM-ARCH-P0.4 adapter candidate; no supplier packet or buildable mechanical release**
 Firmware package: **HR-V0-FW-P0.1 source/test candidate; reproducible watchdog P0.2 review artifacts; no released or flashed binary**
 Safety package: **HR-V0-FSA-P0.1 allocation candidate; ordinary DF-01 heartbeat has zero safety credit; no PLr, SIL, or achieved PL assigned**
 Configuration package: **HR-V0-RC-P0.1 deterministic candidate; immutable merge/acceptance and signatures remain open**
@@ -33,17 +33,17 @@ The authoritative repository controls engineering intent and contains the review
 - HR-V0 is a light-duty, adult-operated bench demonstrator for a soft 100 g maximum payload; it is not a high-payload robot.
 - A local library makerspace may have CNC access, but metal capability is unverified and is not part of the release basis.
 - R53 invalidated the active custom-metal arm route. Exact ROBOTIS STEP coordinates showed that the H101 moving frame and S102 bottom frame do not present the coplanar interfaces assumed by MV0-001/MV0-003. MV0-001 through MV0-003, the 44/160/160 mm datum chain and all three RFI ZIPs remain withdrawn. Their earlier bytes remain recoverable in Git history, but no current supplier packet exists.
-- R56 supersedes R55/P0.2 because the 4.7625 mm adapter left only 1.6625 mm nominal material under its countersink. `HR-V0-ARM-ARCH-P0.3` retains corrected XM540/S102 registration, the ROBOTIS rectangular link pattern and vertical 20-2040 candidates; uses a 9.525 mm nominal, 9.0–10.0 mm finished adapter; places J1/J2 202.550 mm apart and G1 129.050 mm beyond J2; and leaves 28.400 mm to the 360 mm object-center ceiling. Candidate gravity screens are 1.858/0.498 N·m.
+- R57 supersedes R56/P0.3 with `HR-V0-ARM-ARCH-P0.4`. It preserves the 9.525 mm nominal adapter and 202.550/129.050 mm datum chain while adding exact OnlineMetals `1249` stock, current Accu/MISUMI fasteners, a controlled drawing/DXF, ten FAI controls, receiving forms and ten analytical screens. Candidate gravity screens remain 1.858/0.498 N·m; the project proof-load candidate is 12.5385 N·m. None is a released allowable or physical proof result.
 - The 221-pose screen finds first nominal contact at 122°. The 120° ceiling is provisional until a physical hard stop, stopping-overtravel/uncertainty margin and continuous collision proof close. Adapter local strength, exact M2.5 stacks, received fit, cables, proof, FAI and qualified review also remain open.
 - `WF2563`, `WF2339` and `WF1254` are exact fastener candidates on hold. The static geometry screens pass, but certified material, accepted local analysis, received stack/tolerance measurements, torque/locking/reuse rules and physical proof remain open. Typical material properties are not allowables.
-- `MECH-005` / `AUDIT-MECH-012` and `MECH-006` / `INSPECT-MECH-013` therefore remain open. No arm quotation can resume from R56.
+- `MECH-005` / `AUDIT-MECH-012` / `INSPECT-MECH-014` / `INSPECT-MECH-015` and `MECH-006` / `INSPECT-MECH-013` therefore remain open. No arm quotation can resume from R57.
 - `MV0-004` and the base/frame candidate remain on their separate exact-Boston-bench, physical-fit, torque and proof holds.
 - See `docs/hr-v0-build-site-basis.md`, `docs/hr-v0-fabrication-sourcing-boston.md`, and `docs/hr-v0-flat-plate-manufacturing-p0.1.md`. No cutting order is authorized until received-part coupons, final tolerances, fasteners, bench survey, supplier DFM, separately authorized first article, FAI, and qualified review close.
 
 ## Current controlled counts
 
 - 75 draft requirements
-- 95 controlled verification procedure records
+- 97 controlled verification procedure records
 - 40 open risks
 - six staged releases: HR-V0, HR-30A, HR-30B, HR-30C, HR-30D, and HR-30W
 - 15 native KiCad sheets
@@ -60,11 +60,11 @@ ERC validates modeled connectivity and annotation only. It does not establish ph
 
 ## Review history and independent findings
 
-Fifty-six review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R56 are controlled project responses, not independent approvals. R53 withdrew the invalid P0.2 arm chain. R55 established the fail-closed 120/122-degree collision boundary; R56 strengthens the adapter and freezes exact fastener candidates without closing a physical gate.
+Fifty-seven review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R57 are controlled project responses, not independent approvals. R57 adds a fabrication-defined adapter candidate and receiving/FAI evidence boundary without closing a physical gate.
 
 ## Principal unresolved engineering blockers
 
-1. HR-V0 has strengthened `HR-V0-ARM-ARCH-P0.3` under the `HR-V0-MECH-P0.3` hold. It supplies deterministic STEP/GLB/SVG, exact-source transforms, interface schedules, 9.525 mm adapter geometry, exact fastener candidates on hold, a 221-pose collision sweep and indicative static screens. It is not buildable: certified material/minimum properties, local conical-contact analysis, received fastener stacks, torque/locking rules, cables, continuous collision proof, a physical hard stop and demonstrated stopping-overtravel/uncertainty margin below first contact, FAI and qualified review remain open under `MECH-005` / `AUDIT-MECH-012` and `MECH-006` / `INSPECT-MECH-013`. The base frame still requires received-part fit, tool access, actual-joint torque, slip/proof, exact Boston bench anchors and qualified disposition. HR-30 has no released mechanical CAD.
+1. HR-V0 has `HR-V0-ARM-ARCH-P0.4` under the `HR-V0-MECH-P0.3` hold. It supplies deterministic STEP/GLB/SVG/DXF, exact-source transforms, interface schedules, controlled adapter tolerances, exact stock/fastener candidates on hold, a 221-pose collision sweep and analytical screens. It is not buildable: received MTR/FAI/fit, qualified calculation acceptance, torque/locking rules, cables, continuous collision proof, a physical hard stop and demonstrated stopping-overtravel/uncertainty margin below first contact, physical proof and qualified review remain open. The base frame still requires received-part fit, tool access, actual-joint torque, slip/proof, exact Boston bench anchors and qualified disposition. HR-30 has no released mechanical CAD.
 2. Joint continuous/cyclic/impact/thermal performance, drivetrain efficiency, backlash, and structural margins are not physically validated.
 3. Safe actuator-power-loss behavior remains unresolved; a walking robot may collapse when hazardous drive energy is removed.
 4. Mass, center of mass, inertia, wiring mass, and reserve are not closed against released CAD and measured components.

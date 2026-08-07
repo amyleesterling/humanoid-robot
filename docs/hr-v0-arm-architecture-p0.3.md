@@ -1,5 +1,7 @@
 # HR-V0 strengthened arm architecture P0.3
 
+> **SUPERSEDED BY `HR-V0-ARM-ARCH-P0.4` (R57). DO NOT USE P0.3 FOR QUOTATION OR FABRICATION.** P0.4 adds an exact certified-stock candidate, controlled adapter drawing/DXF, current U.S.-orderable fasteners, tolerance controls, receiving/FAI records and a three-times-gravity analytical proof-load basis. P0.3 remains configuration history only.
+
 **PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR QUOTATION, FABRICATION, ASSEMBLY, OR ENERGIZATION**
 
 Date: 2026-08-07
