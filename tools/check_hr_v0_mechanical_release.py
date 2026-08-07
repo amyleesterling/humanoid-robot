@@ -1,4 +1,4 @@
-"""Fail-closed consistency checks for HR-V0-MECH-P0.4."""
+"""Fail-closed consistency checks for HR-V0-MECH-P0.5."""
 
 from __future__ import annotations
 
@@ -12,8 +12,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CAD = ROOT / "cad" / "hr-v0"
 OUT = CAD / "generated" / "assembly"
-REVISION = "HR-V0-MECH-P0.4"
-ARM_REVISION = "HR-V0-ARM-ARCH-P0.5"
+REVISION = "HR-V0-MECH-P0.5"
+ARM_REVISION = "HR-V0-ARM-ARCH-P0.6"
 
 
 def rows(path: Path) -> list[dict[str, str]]:
@@ -41,7 +41,7 @@ def main() -> int:
         "MRD-013": ("A00 through A07 exact candidate schedule", "exact_candidate_hold"),
         "MRD-014": ("48 x 80 x 9.525", "integrated_candidate"),
         "MRD-015": ("81.025", "integrated_candidate"),
-        "MRD-021": ("15 to 120", "candidate_limit"),
+        "MRD-021": ("15 to 115", "candidate_limit"),
     }
     for pid, expected in expected_parameters.items():
         row = next(r for r in data if r["parameter_id"] == pid)
@@ -66,15 +66,15 @@ def main() -> int:
     if len(closure) != 1 or closure[0].get("record_id") != "NOT-EXECUTED" or closure[0].get("disposition") != "NOT EXECUTED": errors.append("interface closure template looks executed")
     summary = json.loads((OUT / "mechanical-release-summary.json").read_text(encoding="utf-8"))
     if summary.get("revision") != REVISION or summary.get("arm_revision") != ARM_REVISION or summary.get("release_state") != "integrated_exact_coordinate_candidate_not_released_for_fabrication_or_energization": errors.append("summary revision/state changed")
-    if summary.get("integrated_interface_ids") != [f"A0{i}" for i in range(8)] or summary.get("arm_transform_count") != 8 or summary.get("arm_sample_count") != 40001 or summary.get("first_nominal_collision_j2_deg") != 122.0: errors.append("summary lacks integrated arm evidence")
+    if summary.get("integrated_interface_ids") != [f"A0{i}" for i in range(8)] or summary.get("arm_transform_count") != 8 or summary.get("arm_sample_count") != 40001 or summary.get("continuous_minimum_guaranteed_clearance_mm", 0) < 0.75 or summary.get("continuous_first_nominal_contact_j2_deg") != 121.643289 or summary.get("candidate_j2_soft_limit_deg") != 115.0 or summary.get("candidate_j2_positive_hard_stop_datum_deg") != 118.0 or summary.get("candidate_j2_physical_uncertainty_budget_deg") != 2.643289: errors.append("summary lacks integrated continuous-clearance/stop evidence")
     if "MV0-001" not in summary.get("superseded", []) or summary.get("counts", {}).get("vendor_interface_sources") != 5: errors.append("summary lacks supersession/vendor evidence")
     release = json.loads((ROOT / "release" / "hr-v0" / "release-candidate.json").read_text(encoding="utf-8"))
     mech = next((p for p in release["current_products"] if p["domain"] == "mechanical"), {})
-    if mech.get("identifier") != REVISION or ARM_REVISION not in mech.get("supporting_identifiers", []) or mech.get("release_state") != "integrated_exact_coordinate_candidate_not_released_for_fabrication_or_energization": errors.append("release candidate does not enforce the current P0.4 hold")
+    if mech.get("identifier") != REVISION or ARM_REVISION not in mech.get("supporting_identifiers", []) or mech.get("release_state") != "integrated_exact_coordinate_candidate_not_released_for_fabrication_or_energization": errors.append("release candidate does not enforce the current P0.5 hold")
     try:
         tree = ET.parse(OUT / "HR-V0_general-arrangement.svg")
         text = " ".join(node.text or "" for node in tree.iter() if node.tag.endswith("text"))
-        for token in (REVISION, "ARM RELEASE HOLD", "A00-A07 SOURCE GEOMETRY CLOSED AS A CANDIDATE", "40,001 sampled J1/J2 poses", "NO PART OR ASSEMBLY IS RELEASED"):
+        for token in (REVISION, "ARM RELEASE HOLD", "A00-A07 SOURCE GEOMETRY CLOSED AS A CANDIDATE", "Continuous nominal first contact", "Candidate soft/stop datums: 115/118 deg", "NO PART OR ASSEMBLY IS RELEASED"):
             if token not in text: errors.append(f"general arrangement omits {token}")
     except ET.ParseError as exc: errors.append(f"general arrangement does not parse: {exc}")
     if errors:

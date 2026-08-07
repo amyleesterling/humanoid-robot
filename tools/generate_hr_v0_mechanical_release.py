@@ -1,4 +1,4 @@
-"""Generate the fail-closed HR-V0-MECH-P0.4 integrated coordination artifacts."""
+"""Generate the fail-closed HR-V0-MECH-P0.5 integrated coordination artifacts."""
 
 from __future__ import annotations
 
@@ -12,8 +12,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CAD = ROOT / "cad" / "hr-v0"
 OUT = CAD / "generated" / "assembly"
-REVISION = "HR-V0-MECH-P0.4"
-ARM_REVISION = "HR-V0-ARM-ARCH-P0.5"
+REVISION = "HR-V0-MECH-P0.5"
+ARM_REVISION = "HR-V0-ARM-ARCH-P0.6"
 WARNING = "PRELIMINARY - INTEGRATED CANDIDATE ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION"
 
 
@@ -54,24 +54,25 @@ def write_svg() -> None:
 <rect x="100" y="185" width="40" height="360" class="structure"/>
 <line x1="330" y1="600" x2="330" y2="625" class="datum"/><text x="300" y="653">A0</text>
 <line x1="120" y1="185" x2="120" y2="585" class="datum"/><text x="82" y="685">C0 X=-210 candidate</text>
-<text x="80" y="730">Five exact candidate extrusion cuts and six frame joints remain on physical-fit/proof hold.</text>
-<text x="80" y="764">Bench anchors remain SELECTION REQUIRED for one surveyed Boston bench.</text>
+<text x="80" y="720">Five extrusion cuts and six frame joints remain on</text>
+<text x="80" y="755">received-fit, torque, slip and proof hold.</text>
+<text x="80" y="790">Bench anchors remain SELECTION REQUIRED for one surveyed Boston bench.</text>
 <rect x="680" y="150" width="670" height="600" rx="18" class="hold"/>
 <text x="720" y="205" class="sub">ARM RELEASE HOLD</text>
 <text x="720" y="250" class="warn">A00-A07 SOURCE GEOMETRY CLOSED AS A CANDIDATE</text>
 <text x="720" y="300">J1: (-210, 81.025, 500) mm from A0</text>
 <text x="720" y="340">J1-J2: 202.550 mm; J2-G1: 129.050 mm</text>
 <text x="720" y="380">J1/J2 axes parallel in the nominal native assembly</text>
-<text x="720" y="430">40,001 sampled J1/J2 poses; first nominal contact at J2=122 deg</text>
-<text x="720" y="480">120 deg is provisional, not a released motion limit.</text>
+<text x="720" y="430">Continuous nominal first contact: J2=121.6433 deg</text>
+<text x="720" y="480">Candidate soft/stop datums: 115/118 deg; neither is released.</text>
 <text x="720" y="535">Still required before quotation/fabrication:</text>
 <text x="750" y="580">received material, fit, fastener and FAI evidence</text>
-<text x="750" y="620">continuous collision, cables, guard and backed-up hard stop</text>
+<text x="750" y="620">cables, guard, physical backed-up stop and overtravel proof</text>
 <text x="750" y="660">physical proof and qualified mechanical disposition</text>
 <text x="720" y="710" class="warn">NO PART OR ASSEMBLY IS RELEASED.</text>
 <rect x="40" y="820" width="1310" height="120" rx="14" class="hold"/>
-<text x="70" y="865">Interactive candidate: generated/arm-architecture-p0.5/HR-V0_arm_architecture_candidate.glb</text>
-<text x="70" y="903">Controlled STEP, drawings and evidence registers: generated/arm-architecture-p0.5/</text>
+<text x="70" y="865">Interactive candidate: generated/arm-architecture-p0.6/HR-V0_arm_architecture_candidate.glb</text>
+<text x="70" y="903">Controlled STEP, drawings and evidence registers: generated/arm-architecture-p0.6/</text>
 <text x="40" y="975" class="warn">{REVISION} - {WARNING}</text>
 </svg>'''
     (OUT / "HR-V0_general-arrangement.svg").write_text(svg, encoding="utf-8", newline="\n")
@@ -83,11 +84,13 @@ def main() -> int:
         CAD / "mechanical-release-data.csv", CAD / "mechanical-interface-control.csv", CAD / "mechanical-assembly-components.csv",
         ROOT / "bom" / "hr-v0-extrusion-cut-schedule.csv", ROOT / "bom" / "hr-v0-frame-joint-schedule.csv",
         CAD / "frame-joint-placement-p0.2.csv", CAD / "generated" / "vendor-interfaces" / "same-origin-bounds.csv",
-        CAD / "generated" / "arm-architecture-p0.5" / "architecture-summary.json",
-        CAD / "generated" / "arm-architecture-p0.5" / "interface-schedule.csv",
-        CAD / "generated" / "arm-architecture-p0.5" / "transform-schedule.csv",
+        CAD / "generated" / "arm-architecture-p0.6" / "architecture-summary.json",
+        CAD / "generated" / "arm-architecture-p0.6" / "interface-schedule.csv",
+        CAD / "generated" / "arm-architecture-p0.6" / "transform-schedule.csv",
+        CAD / "generated" / "arm-architecture-p0.6" / "continuous-clearance-analysis.json",
+        CAD / "generated" / "arm-architecture-p0.6" / "hard-stop-allocation.csv",
     ]
-    data, interfaces, components, extrusions, frame_joints, placements, vendor_rows, arm_summary_rows, arm_interfaces, arm_transforms = [read_csv(path) if path.suffix == ".csv" else json.loads(path.read_text(encoding="utf-8")) for path in paths]
+    data, interfaces, components, extrusions, frame_joints, placements, vendor_rows, arm_summary_rows, arm_interfaces, arm_transforms, continuous_analysis, stop_allocation = [read_csv(path) if path.suffix == ".csv" else json.loads(path.read_text(encoding="utf-8")) for path in paths]
     datums = write_datums(); write_svg()
     summary = {
         "revision": REVISION, "warning": WARNING,
@@ -100,11 +103,15 @@ def main() -> int:
         "integrated_interface_ids": [row["interface"] for row in arm_interfaces],
         "arm_transform_count": len(arm_transforms),
         "arm_sample_count": arm_summary_rows["collision_screen"]["sample_count"],
-        "first_nominal_collision_j2_deg": arm_summary_rows["collision_screen"]["first_nominal_collision_j2_deg"],
-        "superseded": ["HR-V0-MECH-P0.2 arm datum chain", "MV0-001", "MV0-002", "MV0-003", "HR-V0-ARM-ARCH-P0.4", "HR-V0-FAB-RFI-P0.1"],
+        "continuous_minimum_guaranteed_clearance_mm": continuous_analysis["minimum_guaranteed_clearance_mm"],
+        "continuous_first_nominal_contact_j2_deg": continuous_analysis["continuous_first_contact_j2_deg_numeric"],
+        "candidate_j2_soft_limit_deg": float(stop_allocation[0]["candidate_software_limit_deg"]),
+        "candidate_j2_positive_hard_stop_datum_deg": float(stop_allocation[0]["candidate_backed_up_hard_stop_datum_deg"]),
+        "candidate_j2_physical_uncertainty_budget_deg": float(stop_allocation[0]["candidate_physical_uncertainty_budget_deg"]),
+        "superseded": ["HR-V0-MECH-P0.4", "HR-V0-MECH-P0.2 arm datum chain", "MV0-001", "MV0-002", "MV0-003", "HR-V0-ARM-ARCH-P0.5", "HR-V0-ARM-ARCH-P0.4", "HR-V0-FAB-RFI-P0.1"],
     }
     (OUT / "mechanical-release-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8", newline="\n")
-    print(f"Generated {REVISION}: integrated A00-A07 candidate; 40,001 sampled poses; no fabrication or energization release")
+    print(f"Generated {REVISION}: integrated A00-A07 candidate; continuous nominal contact 121.643289 deg; candidate J2 soft/stop 115/118 deg; no fabrication or energization release")
     print(WARNING)
     return 0
 

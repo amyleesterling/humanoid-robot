@@ -29,7 +29,7 @@ def main() -> int:
     forms = read_csv(FORM)
 
     for required in (
-        "HR-V0-ARM-ARCH-P0.5",
+        "HR-V0-ARM-ARCH-P0.6",
         "three `MV0-C01`",
         "one H104-specific `MV0-C04`",
         "one `MV0-C05`",

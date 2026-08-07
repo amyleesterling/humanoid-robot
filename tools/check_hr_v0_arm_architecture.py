@@ -12,9 +12,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "cad" / "hr-v0" / "generated" / "arm-architecture-p0.5"
+OUT = ROOT / "cad" / "hr-v0" / "generated" / "arm-architecture-p0.6"
 ARM_SOURCE_REGISTER = ROOT / "cad" / "vendor" / "arm-interface-source-register.csv"
-REVISION = "HR-V0-ARM-ARCH-P0.5"
+REVISION = "HR-V0-ARM-ARCH-P0.6"
 EXPECTED_FILES = {
     "HR-V0_arm_architecture_candidate.glb",
     "HR-V0_arm_architecture_candidate.step",
@@ -24,7 +24,11 @@ EXPECTED_FILES = {
     "adapter-proof-analysis.csv",
     "collision-sweep.csv",
     "column-support-analysis.csv",
+    "continuous-clearance-analysis.json",
+    "continuous-clearance-cells.csv",
+    "continuous-clearance-summary.csv",
     "fastener-candidate-schedule.csv",
+    "hard-stop-allocation.csv",
     "interface-feature-evidence.csv",
     "interface-schedule.csv",
     "joint-load-screen.csv",
@@ -111,10 +115,12 @@ def main() -> int:
             errors.append("parallel-axis proof changed")
 
         collision = summary.get("collision_screen", {})
-        if collision.get("sampled_j1_range_deg") != [-20, 70] or collision.get("sampled_j2_range_deg") != [15, 125] or collision.get("increment_deg") != 0.5 or collision.get("sample_count") != 40001 or collision.get("provisional_soft_limit_deg") != 120.0:
+        if collision.get("sampled_j1_range_deg") != [-20, 70] or collision.get("sampled_j2_range_deg") != [15, 125] or collision.get("increment_deg") != 0.5 or collision.get("sample_count") != 40001 or collision.get("provisional_soft_limit_deg") != 115.0 or collision.get("candidate_positive_hard_stop_datum_deg") != 118.0 or collision.get("continuous_analysis_j2_max_deg") != 120.0:
             errors.append("collision-sweep range changed")
-        if collision.get("maximum_positive_intersection_mm3_within_provisional_limit", math.inf) > 1e-5 or collision.get("first_nominal_collision_j2_deg") != 122.0:
+        if collision.get("maximum_positive_intersection_mm3_within_provisional_limit", math.inf) > 1e-5 or collision.get("first_sampled_positive_volume_collision_j2_deg") != 122.0:
             errors.append("provisional collision limit no longer matches the dense sweep")
+        if collision.get("continuous_minimum_guaranteed_clearance_mm", 0.0) < 0.75 or collision.get("continuous_first_nominal_contact_j2_deg") != 121.643289 or collision.get("candidate_soft_to_stop_allowance_deg") != 3.0 or collision.get("candidate_stop_to_contact_margin_deg") != 3.643289 or collision.get("reserved_nominal_collision_guard_deg") != 1.0 or collision.get("candidate_physical_uncertainty_budget_deg") != 2.643289:
+            errors.append("continuous clearance or candidate stop allocation changed")
 
         source_hashes = summary.get("vendor_source_sha256", {})
         for filename in ("XMHD-540.N101.I101.STP", "FR13-H101K.stp", "FR13-S102K.stp", "FR12-H104K.stp"):
@@ -207,20 +213,43 @@ def main() -> int:
         actual_pairs = [(float(row["j1_deg"]), float(row["j2_internal_deg"])) for row in sweep]
         if len(sweep) != 40001 or actual_pairs != expected_pairs:
             errors.append("collision sample schedule changed")
-        within_limit = [row for row in sweep if float(row["j2_internal_deg"]) <= 120.0]
+        within_limit = [row for row in sweep if float(row["j2_internal_deg"]) <= 115.0]
         collisions = [row for row in sweep if row["result"] == "COLLISION"]
         if any(row["result"] != "PASS" or float(row["sampled_pairwise_intersection_mm3"]) > 1e-5 for row in within_limit):
-            errors.append("collision occurs within the provisional 120 degree soft limit")
+            errors.append("collision occurs within the provisional 115 degree soft limit")
         if not collisions or min(float(row["j2_internal_deg"]) for row in collisions) != 122.0 or len(collisions) != 1267:
             errors.append("expected two-axis fail-closed collision boundary at J2 122 through 125 degrees changed")
         if any("conservative rotated-AABB broadphase" not in row.get("scope", "") for row in sweep):
             errors.append("collision sweep lost its conservative broadphase/exact-boolean method record")
 
+        continuous = json.loads((OUT / "continuous-clearance-analysis.json").read_text(encoding="utf-8"))
+        if continuous.get("revision") != REVISION or continuous.get("joint_domain_deg") != {"j1": [-20.0, 70.0], "j2": [15.0, 120.0]}:
+            errors.append("continuous-clearance domain or revision changed")
+        if continuous.get("pair_count") != 70 or continuous.get("required_certified_clearance_mm") != 0.75 or continuous.get("minimum_guaranteed_clearance_mm", 0.0) < 0.75:
+            errors.append("continuous-clearance coverage or certified floor changed")
+        if continuous.get("critical_pair") != "UPPER_FORE:J2_BODY:FORE_PROX_ADAPTER" or continuous.get("critical_pair_exact_clearance_at_j2_120_mm") != 0.962813 or continuous.get("continuous_first_contact_j2_deg_numeric") != 121.643289:
+            errors.append("continuous critical-pair evidence changed")
+        continuous_summary = rows(OUT / "continuous-clearance-summary.csv")
+        if len(continuous_summary) != 70 or len({row.get("pair_id") for row in continuous_summary}) != 70:
+            errors.append("continuous-clearance pair register is incomplete")
+        group_counts = {
+            prefix: sum(row.get("pair_id", "").startswith(prefix) for row in continuous_summary)
+            for prefix in ("BASE_UPPER:", "UPPER_FORE:", "BASE_FORE:")
+        }
+        if group_counts != {"BASE_UPPER:": 22, "UPPER_FORE:": 28, "BASE_FORE:": 20} or any(float(row.get("minimum_guaranteed_clearance_mm", "0")) < 0.75 for row in continuous_summary):
+            errors.append("continuous-clearance pair groups or lower bounds changed")
+        continuous_cells = rows(OUT / "continuous-clearance-cells.csv")
+        if len(continuous_cells) != continuous.get("certified_leaf_cell_count") or any(float(row.get("guaranteed_clearance_mm", "0")) < 0.75 for row in continuous_cells):
+            errors.append("continuous-clearance interval certificate changed")
+        allocation = rows(OUT / "hard-stop-allocation.csv")
+        if len(allocation) != 1 or allocation[0].get("candidate_software_limit_deg") != "115.000000" or allocation[0].get("candidate_backed_up_hard_stop_datum_deg") != "118.000000" or allocation[0].get("continuous_nominal_first_contact_deg") != "121.643289" or allocation[0].get("candidate_physical_uncertainty_budget_deg") != "2.643289" or "PHYSICAL STOP DESIGN" not in allocation[0].get("status", ""):
+            errors.append("candidate hard-stop allocation changed or was promoted")
+
         try:
             architecture_svg = OUT / "HR-V0_arm_architecture_candidate.svg"
             root = ET.parse(architecture_svg).getroot()
             text = " ".join(node.text or "" for node in root.iter() if node.tag.endswith("text"))
-            for token in (REVISION, "NOT RELEASED", "J1-J2 = 202.5500 mm", "A00 closes candidate column/J1 geometry", "40001 sampled J1/J2 poses", "Do not fabricate"):
+            for token in (REVISION, "NOT RELEASED", "J1-J2 = 202.5500 mm", "R67 continuous-clearance and J2-allocation correction", "A00 closes candidate column/J1 geometry", "Continuous nominal clearance certified", "Candidate soft/stop: 115/118 deg", "Do not fabricate"):
                 if token not in text:
                     errors.append(f"readable view omits {token}")
             style = " ".join(node.text or "" for node in root.iter() if node.tag.endswith("style"))

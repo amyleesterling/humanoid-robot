@@ -24,7 +24,7 @@ def main() -> int:
     doc = DOC.read_text(encoding="utf-8")
     routes = rows(REGISTER)
     forms = rows(FORM)
-    for token in ("HR-V0-FAB-SRC-P0.3", "HR-V0-ARM-ARCH-P0.5", "three `MV0-C01`", "one H104-specific `MV0-C04`", "one `MV0-C05`", "no current profile-only upload artifact exists", "100 g foam-object payload"):
+    for token in ("HR-V0-FAB-SRC-P0.3", "HR-V0-ARM-ARCH-P0.6", "three `MV0-C01`", "one H104-specific `MV0-C04`", "one `MV0-C05`", "no current profile-only upload artifact exists", "100 g foam-object payload"):
         if token not in doc:
             errors.append(f"sourcing document omits {token}")
     expected_routes = [f"R66-FAB-{index:03d}" for index in range(1, 11)]

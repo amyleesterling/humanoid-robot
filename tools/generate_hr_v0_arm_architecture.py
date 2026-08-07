@@ -1,4 +1,4 @@
-"""Generate the integrated exact-coordinate HR-V0 arm candidate for R66.
+"""Generate the integrated exact-coordinate HR-V0 arm candidate for R67.
 
 The exported geometry is a feasibility/configuration candidate.  It is not a
 fabrication release.  Purchased 80/20 stock remains a conservative 20 x 40 mm
@@ -26,8 +26,8 @@ from OCP.gp import gp_Trsf
 ROOT = Path(__file__).resolve().parents[1]
 VENDOR = ROOT / "cad" / "vendor" / "robotis"
 VENDOR_8020 = ROOT / "cad" / "vendor" / "8020"
-OUT = ROOT / "cad" / "hr-v0" / "generated" / "arm-architecture-p0.5"
-REVISION = "HR-V0-ARM-ARCH-P0.5"
+OUT = ROOT / "cad" / "hr-v0" / "generated" / "arm-architecture-p0.6"
+REVISION = "HR-V0-ARM-ARCH-P0.6"
 WARNING = "PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION"
 
 PLATE_T = 9.525
@@ -55,7 +55,13 @@ FASTENER_A2_70_MIN_TENSILE_MPA = 700.0
 PROOF_MULTIPLIER = 3.0
 ACTUATOR_AXIAL_OFFSET_X = 1.75
 COLLISION_INCREMENT_DEG = 0.5
-PROVISIONAL_J2_SOFT_LIMIT_DEG = 120.0
+CONTINUOUS_ANALYSIS_J2_MAX_DEG = 120.0
+PROVISIONAL_J2_SOFT_LIMIT_DEG = 115.0
+CANDIDATE_J2_POSITIVE_HARD_STOP_DEG = 118.0
+CANDIDATE_CONTACT_GUARD_DEG = 1.0
+CONTINUOUS_CERTIFIED_CLEARANCE_MM = 0.75
+CONTINUOUS_NUMERIC_TOLERANCE_MM = 1e-6
+CONTINUOUS_MIN_CELL_DEG = 1e-5
 SUPPORT_PLATE_H = 80.0
 SUPPORT_M8_SPACING = 60.0
 SUPPORT_M8_HOLE_D = 8.50
@@ -444,6 +450,185 @@ def bbox_values_overlap(
     )
 
 
+def bbox_distance_values(
+    a: tuple[float, float, float, float, float, float],
+    b: tuple[float, float, float, float, float, float],
+) -> float:
+    """Euclidean lower bound between two axis-aligned bounding boxes."""
+
+    dx = max(a[0] - b[1], b[0] - a[1], 0.0)
+    dy = max(a[2] - b[3], b[2] - a[3], 0.0)
+    dz = max(a[4] - b[5], b[4] - a[5], 0.0)
+    return math.sqrt(dx * dx + dy * dy + dz * dz)
+
+
+def bbox_radius_about_x(shape: cq.Shape, origin_y: float = 0.0, origin_z: float = 0.0) -> float:
+    """Conservative maximum Y-Z radius using the shape's enclosing AABB."""
+
+    bounds = bbox_tuple(shape)
+    return max(
+        math.hypot(y - origin_y, z - origin_z)
+        for y in (bounds[2], bounds[3])
+        for z in (bounds[4], bounds[5])
+    )
+
+
+def chord_motion_bound(radius_mm: float, half_width_deg: float) -> float:
+    """Maximum point displacement from an interval center under X rotation."""
+
+    return 2.0 * radius_mm * math.sin(math.radians(abs(half_width_deg)) / 2.0)
+
+
+def certify_continuous_1d(
+    *,
+    pair_id: str,
+    fixed_shape: cq.Shape,
+    moving_shape: cq.Shape,
+    rotation_origin_y: float,
+    q_lo: float,
+    q_hi: float,
+    coordinate: str,
+) -> tuple[dict[str, object], list[dict[str, object]]]:
+    """Certify a one-angle interval with exact/AABB distance and a chord bound."""
+
+    radius = bbox_radius_about_x(moving_shape, rotation_origin_y)
+    fixed_bounds = bbox_tuple(fixed_shape)
+    pending = [(q_lo, q_hi, 0)]
+    leaves: list[dict[str, object]] = []
+    exact_calls = 0
+    while pending:
+        lo, hi, depth = pending.pop()
+        mid = (lo + hi) / 2.0
+        transformed = rotate_x(moving_shape, mid, rotation_origin_y)
+        aabb_lower = bbox_distance_values(fixed_bounds, bbox_tuple(transformed))
+        motion_bound = chord_motion_bound(radius, (hi - lo) / 2.0)
+        center_distance = aabb_lower
+        method = "AABB_LOWER_BOUND"
+        if center_distance - motion_bound < CONTINUOUS_CERTIFIED_CLEARANCE_MM:
+            center_distance = fixed_shape.distance(transformed)
+            exact_calls += 1
+            method = "EXACT_BREP_DISTANCE"
+        guaranteed = center_distance - motion_bound
+        if guaranteed + CONTINUOUS_NUMERIC_TOLERANCE_MM >= CONTINUOUS_CERTIFIED_CLEARANCE_MM:
+            leaves.append(
+                {
+                    "pair_id": pair_id,
+                    "coordinate": coordinate,
+                    "q1_lo_deg": f"{lo:.9f}" if coordinate == "J1" else "",
+                    "q1_hi_deg": f"{hi:.9f}" if coordinate == "J1" else "",
+                    "q2_lo_deg": f"{lo:.9f}" if coordinate == "J2" else "",
+                    "q2_hi_deg": f"{hi:.9f}" if coordinate == "J2" else "",
+                    "center_distance_mm": f"{center_distance:.9f}",
+                    "motion_bound_mm": f"{motion_bound:.9f}",
+                    "guaranteed_clearance_mm": f"{guaranteed:.9f}",
+                    "distance_method": method,
+                    "subdivision_depth": depth,
+                    "status": "CERTIFIED_NOMINAL_MODEL_SPACE",
+                }
+            )
+            continue
+        if hi - lo <= CONTINUOUS_MIN_CELL_DEG:
+            raise RuntimeError(
+                f"continuous proof failed for {pair_id} on {coordinate} in [{lo}, {hi}]: "
+                f"guaranteed {guaranteed:.9f} mm"
+            )
+        split = mid
+        pending.append((split, hi, depth + 1))
+        pending.append((lo, split, depth + 1))
+    minimum = min(float(row["guaranteed_clearance_mm"]) for row in leaves)
+    summary = {
+        "pair_id": pair_id,
+        "coordinates": coordinate,
+        "q1_range_deg": f"{q_lo:.6f}..{q_hi:.6f}" if coordinate == "J1" else "INVARIANT",
+        "q2_range_deg": f"{q_lo:.6f}..{q_hi:.6f}" if coordinate == "J2" else "INVARIANT",
+        "certified_leaf_cells": len(leaves),
+        "exact_brep_distance_calls": exact_calls,
+        "minimum_guaranteed_clearance_mm": f"{minimum:.9f}",
+        "status": "CERTIFIED_NOMINAL_MODEL_SPACE",
+    }
+    return summary, leaves
+
+
+def certify_continuous_2d(
+    *,
+    pair_id: str,
+    fixed_shape: cq.Shape,
+    moving_shape: cq.Shape,
+    q1_lo: float,
+    q1_hi: float,
+    q2_lo: float,
+    q2_hi: float,
+) -> tuple[dict[str, object], list[dict[str, object]]]:
+    """Certify a two-angle interval with additive rigid-motion chord bounds."""
+
+    radius_j2 = bbox_radius_about_x(moving_shape, J2_Y)
+    radius_j1 = J2_Y + radius_j2
+    fixed_bounds = bbox_tuple(fixed_shape)
+    pending = [(q1_lo, q1_hi, q2_lo, q2_hi, 0)]
+    leaves: list[dict[str, object]] = []
+    exact_calls = 0
+    while pending:
+        lo1, hi1, lo2, hi2, depth = pending.pop()
+        mid1 = (lo1 + hi1) / 2.0
+        mid2 = (lo2 + hi2) / 2.0
+        transformed = rotate_x(rotate_x(moving_shape, mid2, J2_Y), mid1)
+        aabb_lower = bbox_distance_values(fixed_bounds, bbox_tuple(transformed))
+        bound1 = chord_motion_bound(radius_j1, (hi1 - lo1) / 2.0)
+        bound2 = chord_motion_bound(radius_j2, (hi2 - lo2) / 2.0)
+        motion_bound = bound1 + bound2
+        center_distance = aabb_lower
+        method = "AABB_LOWER_BOUND"
+        if center_distance - motion_bound < CONTINUOUS_CERTIFIED_CLEARANCE_MM:
+            center_distance = fixed_shape.distance(transformed)
+            exact_calls += 1
+            method = "EXACT_BREP_DISTANCE"
+        guaranteed = center_distance - motion_bound
+        if guaranteed + CONTINUOUS_NUMERIC_TOLERANCE_MM >= CONTINUOUS_CERTIFIED_CLEARANCE_MM:
+            leaves.append(
+                {
+                    "pair_id": pair_id,
+                    "coordinate": "J1+J2",
+                    "q1_lo_deg": f"{lo1:.9f}",
+                    "q1_hi_deg": f"{hi1:.9f}",
+                    "q2_lo_deg": f"{lo2:.9f}",
+                    "q2_hi_deg": f"{hi2:.9f}",
+                    "center_distance_mm": f"{center_distance:.9f}",
+                    "motion_bound_mm": f"{motion_bound:.9f}",
+                    "guaranteed_clearance_mm": f"{guaranteed:.9f}",
+                    "distance_method": method,
+                    "subdivision_depth": depth,
+                    "status": "CERTIFIED_NOMINAL_MODEL_SPACE",
+                }
+            )
+            continue
+        if max(hi1 - lo1, hi2 - lo2) <= CONTINUOUS_MIN_CELL_DEG:
+            raise RuntimeError(
+                f"continuous proof failed for {pair_id} in [{lo1}, {hi1}] x [{lo2}, {hi2}]: "
+                f"guaranteed {guaranteed:.9f} mm"
+            )
+        # Split the angular coordinate with the larger current motion bound.
+        if bound1 >= bound2:
+            split = mid1
+            pending.append((split, hi1, lo2, hi2, depth + 1))
+            pending.append((lo1, split, lo2, hi2, depth + 1))
+        else:
+            split = mid2
+            pending.append((lo1, hi1, split, hi2, depth + 1))
+            pending.append((lo1, hi1, lo2, split, depth + 1))
+    minimum = min(float(row["guaranteed_clearance_mm"]) for row in leaves)
+    summary = {
+        "pair_id": pair_id,
+        "coordinates": "J1+J2",
+        "q1_range_deg": f"{q1_lo:.6f}..{q1_hi:.6f}",
+        "q2_range_deg": f"{q2_lo:.6f}..{q2_hi:.6f}",
+        "certified_leaf_cells": len(leaves),
+        "exact_brep_distance_calls": exact_calls,
+        "minimum_guaranteed_clearance_mm": f"{minimum:.9f}",
+        "status": "CERTIFIED_NOMINAL_MODEL_SPACE",
+    }
+    return summary, leaves
+
+
 def main() -> int:
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -751,6 +936,126 @@ def main() -> int:
         if float(row["j2_internal_deg"]) <= PROVISIONAL_J2_SOFT_LIMIT_DEG
     )
 
+    # Continuous nominal model-space clearance certificate.  At each adaptive
+    # cell center, an AABB lower bound or exact B-Rep distance is reduced by a
+    # rigorous chord-displacement bound for every permitted angular deviation
+    # inside that cell.  A leaf is accepted only when the remainder is at least
+    # 0.75 mm.  This closes only between-sample CAD separation; manufacturing
+    # tolerance, cables, guards, compliance and stopping travel remain open.
+    continuous_summary_rows: list[dict[str, object]] = []
+    continuous_cell_rows: list[dict[str, object]] = []
+    for fixed_name, fixed_shape in fixed_base.items():
+        for upper_name, upper_shape in upper_zero.items():
+            if (fixed_name, upper_name) in intentional_j1_pairs:
+                continue
+            summary_row, cell_rows = certify_continuous_1d(
+                pair_id=f"BASE_UPPER:{fixed_name}:{upper_name}",
+                fixed_shape=fixed_shape,
+                moving_shape=upper_shape,
+                rotation_origin_y=0.0,
+                q_lo=-20.0,
+                q_hi=70.0,
+                coordinate="J1",
+            )
+            continuous_summary_rows.append(summary_row)
+            continuous_cell_rows.extend(cell_rows)
+    for upper_name, upper_shape in upper_zero.items():
+        for fore_name, fore_shape in moving_zero.items():
+            if (upper_name, fore_name) in intentional_j2_pairs:
+                continue
+            summary_row, cell_rows = certify_continuous_1d(
+                pair_id=f"UPPER_FORE:{upper_name}:{fore_name}",
+                fixed_shape=upper_shape,
+                moving_shape=fore_shape,
+                rotation_origin_y=J2_Y,
+                q_lo=15.0,
+                q_hi=CONTINUOUS_ANALYSIS_J2_MAX_DEG,
+                coordinate="J2",
+            )
+            continuous_summary_rows.append(summary_row)
+            continuous_cell_rows.extend(cell_rows)
+    for fixed_name, fixed_shape in fixed_base.items():
+        for fore_name, fore_shape in moving_zero.items():
+            summary_row, cell_rows = certify_continuous_2d(
+                pair_id=f"BASE_FORE:{fixed_name}:{fore_name}",
+                fixed_shape=fixed_shape,
+                moving_shape=fore_shape,
+                q1_lo=-20.0,
+                q1_hi=70.0,
+                q2_lo=15.0,
+                q2_hi=CONTINUOUS_ANALYSIS_J2_MAX_DEG,
+            )
+            continuous_summary_rows.append(summary_row)
+            continuous_cell_rows.extend(cell_rows)
+    write_csv(OUT / "continuous-clearance-summary.csv", continuous_summary_rows)
+    write_csv(OUT / "continuous-clearance-cells.csv", continuous_cell_rows)
+    continuous_minimum_guaranteed_mm = min(
+        float(row["minimum_guaranteed_clearance_mm"])
+        for row in continuous_summary_rows
+    )
+
+    critical_fixed = upper_zero["J2_BODY"]
+    critical_moving = moving_zero["FORE_PROX_ADAPTER"]
+    continuous_contact_lo = CONTINUOUS_ANALYSIS_J2_MAX_DEG
+    continuous_contact_hi = first_nominal_collision_deg or 125.0
+    for _ in range(60):
+        midpoint = (continuous_contact_lo + continuous_contact_hi) / 2.0
+        clearance = critical_fixed.distance(rotate_x(critical_moving, midpoint, J2_Y))
+        if clearance > 1e-7:
+            continuous_contact_lo = midpoint
+        else:
+            continuous_contact_hi = midpoint
+    continuous_first_contact_deg = continuous_contact_hi
+    clearance_at_analysis_max_mm = critical_fixed.distance(
+        rotate_x(critical_moving, CONTINUOUS_ANALYSIS_J2_MAX_DEG, J2_Y)
+    )
+    clearance_at_soft_limit_mm = critical_fixed.distance(
+        rotate_x(critical_moving, PROVISIONAL_J2_SOFT_LIMIT_DEG, J2_Y)
+    )
+    soft_to_stop_deg = CANDIDATE_J2_POSITIVE_HARD_STOP_DEG - PROVISIONAL_J2_SOFT_LIMIT_DEG
+    stop_to_contact_deg = continuous_first_contact_deg - CANDIDATE_J2_POSITIVE_HARD_STOP_DEG
+    candidate_physical_budget_deg = stop_to_contact_deg - CANDIDATE_CONTACT_GUARD_DEG
+    continuous_analysis = {
+        "revision": REVISION,
+        "method": "adaptive interval cover; center AABB lower bound or exact B-Rep distance minus additive rigid-body chord-displacement bounds",
+        "included_pair_groups": ["fixed base versus upper", "upper versus forearm", "fixed base versus forearm"],
+        "intentional_interfaces_excluded": sorted(
+            [f"{left}:{right}" for left, right in intentional_j1_pairs | intentional_j2_pairs]
+        ),
+        "joint_domain_deg": {"j1": [-20.0, 70.0], "j2": [15.0, CONTINUOUS_ANALYSIS_J2_MAX_DEG]},
+        "required_certified_clearance_mm": CONTINUOUS_CERTIFIED_CLEARANCE_MM,
+        "minimum_guaranteed_clearance_mm": round(continuous_minimum_guaranteed_mm, 6),
+        "pair_count": len(continuous_summary_rows),
+        "certified_leaf_cell_count": len(continuous_cell_rows),
+        "exact_brep_distance_call_count": sum(int(row["exact_brep_distance_calls"]) for row in continuous_summary_rows),
+        "critical_pair": "UPPER_FORE:J2_BODY:FORE_PROX_ADAPTER",
+        "critical_pair_exact_clearance_at_j2_120_mm": round(clearance_at_analysis_max_mm, 6),
+        "critical_pair_exact_clearance_at_candidate_soft_limit_mm": round(clearance_at_soft_limit_mm, 6),
+        "continuous_first_contact_j2_deg_numeric": round(continuous_first_contact_deg, 6),
+        "continuous_first_contact_threshold_mm": 1e-7,
+        "release_boundary": "nominal model-space separation only; tolerances, deformation, cables, guards, stops, stopping travel and physical proof excluded",
+        "status": "CERTIFIED_NOMINAL_MODEL_SPACE_NOT_A_PHYSICAL_OR_MOTION_RELEASE",
+    }
+    (OUT / "continuous-clearance-analysis.json").write_text(
+        json.dumps(continuous_analysis, indent=2) + "\n", encoding="utf-8", newline="\n"
+    )
+    hard_stop_allocation_rows = [
+        {
+            "joint": "J2_POSITIVE",
+            "candidate_software_limit_deg": f"{PROVISIONAL_J2_SOFT_LIMIT_DEG:.6f}",
+            "candidate_backed_up_hard_stop_datum_deg": f"{CANDIDATE_J2_POSITIVE_HARD_STOP_DEG:.6f}",
+            "continuous_nominal_first_contact_deg": f"{continuous_first_contact_deg:.6f}",
+            "soft_limit_to_stop_allowance_deg": f"{soft_to_stop_deg:.6f}",
+            "stop_to_nominal_contact_deg": f"{stop_to_contact_deg:.6f}",
+            "reserved_nominal_collision_guard_deg": f"{CANDIDATE_CONTACT_GUARD_DEG:.6f}",
+            "candidate_physical_uncertainty_budget_deg": f"{candidate_physical_budget_deg:.6f}",
+            "required_physical_evidence": "measured stopping overtravel + backlash + compliance + tolerance + measurement uncertainty must fit both the 3 deg soft-to-stop allowance and the 2.643289 deg residual nominal-contact budget",
+            "status": "CANDIDATE ALLOCATION ONLY - PHYSICAL STOP DESIGN AND VALIDATION REQUIRED",
+            "warning": WARNING,
+        }
+    ]
+    write_csv(OUT / "hard-stop-allocation.csv", hard_stop_allocation_rows)
+
     mass_per_m_kg = 0.0428 * 0.45359237 / 0.0254
     upper_beam_mass_g = mass_per_m_kg * (UPPER_BEAM_L / 1000.0) * 1000.0
     forearm_beam_mass_g = mass_per_m_kg * (FOREARM_BEAM_L / 1000.0) * 1000.0
@@ -928,7 +1233,7 @@ def main() -> int:
         },
         "axis_parallelism_math": {"j1_direction": [1, 0, 0], "j2_direction": [1, 0, 0], "dot_product": 1.0, "angular_difference_deg": 0.0},
         "reference_output_offset_deg": -90.0,
-        "collision_screen": {"sampled_j1_range_deg": [-20, 70], "sampled_j2_range_deg": [15, 125], "increment_deg": COLLISION_INCREMENT_DEG, "sample_count": len(sweep_rows), "provisional_soft_limit_deg": PROVISIONAL_J2_SOFT_LIMIT_DEG, "first_nominal_collision_j2_deg": first_nominal_collision_deg, "maximum_positive_intersection_mm3_full_requested_range": round(worst, 6), "maximum_positive_intersection_mm3_within_provisional_limit": round(max_intersection_within_limit, 6), "scope": "two-joint sampled collision screen including column, support, exact H104 and arm; commanded range is not released; continuous between-sample, cables, guards, stops and stopping-overtravel proof remain open"},
+        "collision_screen": {"sampled_j1_range_deg": [-20, 70], "sampled_j2_range_deg": [15, 125], "increment_deg": COLLISION_INCREMENT_DEG, "sample_count": len(sweep_rows), "provisional_soft_limit_deg": PROVISIONAL_J2_SOFT_LIMIT_DEG, "candidate_positive_hard_stop_datum_deg": CANDIDATE_J2_POSITIVE_HARD_STOP_DEG, "continuous_analysis_j2_max_deg": CONTINUOUS_ANALYSIS_J2_MAX_DEG, "continuous_minimum_guaranteed_clearance_mm": round(continuous_minimum_guaranteed_mm, 6), "continuous_first_nominal_contact_j2_deg": round(continuous_first_contact_deg, 6), "candidate_soft_to_stop_allowance_deg": round(soft_to_stop_deg, 6), "candidate_stop_to_contact_margin_deg": round(stop_to_contact_deg, 6), "reserved_nominal_collision_guard_deg": CANDIDATE_CONTACT_GUARD_DEG, "candidate_physical_uncertainty_budget_deg": round(candidate_physical_budget_deg, 6), "first_sampled_positive_volume_collision_j2_deg": first_nominal_collision_deg, "maximum_positive_intersection_mm3_full_requested_range": round(worst, 6), "maximum_positive_intersection_mm3_within_provisional_limit": round(max_intersection_within_limit, 6), "scope": "continuous adaptive nominal model-space separation certificate covers all 70 non-intentional body pairs through J2=120 deg; sampled exact-boolean sweep continues through J2=125 deg; cables, guards, tolerances, deformation, physical stops, stopping travel and qualified acceptance remain open"},
         "mass_and_load_screen": {
             "20_2040_mass_basis_kg_per_m": round(mass_per_m_kg, 6),
             "one_100mm_upper_beam_mass_g": round(upper_beam_mass_g, 3),
@@ -990,8 +1295,8 @@ def main() -> int:
             "received MV0-C04/H104 and MV0-C05/S102/40-4040 fit with complete exact fastener stacks",
             "17-8520/13035 engagement, anti-galling, installation torque, T-slot pullout/slip/prying and column-support proof",
             "tool access, cable routing, connector sweep and strain relief",
-            "continuous between-sample joint-space collision proof including base, guard, stops and gripper",
-            "J2 hard-stop/soft-limit allocation and measured stopping overtravel below the current nominal first-collision pose",
+            "guard, cable, tolerance, deformation and as-built collision proof beyond the continuous nominal body certificate",
+            "physical J2 hard-stop design plus measured stopping overtravel, backlash, compliance, tolerance and uncertainty closure against the candidate allocation",
             "qualified acceptance of the R66 analytical equivalent or requested local FEA plus joint-slip, preload, fatigue, impact and physical proof",
             "received-part fit, first-article inspection and qualified mechanical approval",
         ],
@@ -1017,16 +1322,16 @@ def main() -> int:
 <rect x="1048" y="330" width="54" height="80" class="frame"/><text x="980" y="440">G1 Y={G1_Y:.4f}</text>
 <line x1="190" y1="480" x2="714" y2="480" class="axis"/><text x="350" y="512">J1-J2 = {J2_Y:.4f} mm candidate</text>
 <line x1="714" y1="550" x2="1102" y2="550" class="axis"/><text x="800" y="582">J2-G1 = {G1_Y-J2_Y:.4f} mm candidate</text>
-<rect x="70" y="640" width="1360" height="210" rx="14" class="note"/>
-<text x="100" y="690" class="sub">R66 integrated-interface correction</text>
-<text x="100" y="730">A00 closes candidate column/J1 geometry; A07 closes the exact H104 STEP-axis subset with MV0-C04.</text>
-<text x="100" y="766">17-8520/13035 and all prior fasteners remain held. No installation torque or T-slot capacity is released.</text>
-<text x="100" y="802">{len(sweep_rows)} sampled J1/J2 poses include column/support/H104. J2 ceiling {PROVISIONAL_J2_SOFT_LIMIT_DEG:.1f} deg; first nominal collision: {first_collision_label}.</text>
-<text x="100" y="838" class="warn">Between-sample proof, stops, cables, MTR/FAI, physical proof and qualified acceptance remain open. Do not fabricate.</text>
+<rect x="70" y="670" width="1360" height="220" rx="14" class="note"/>
+<text x="100" y="720" class="sub">R67 continuous-clearance and J2-allocation correction</text>
+<text x="100" y="760">A00 closes candidate column/J1 geometry; A07 closes the exact H104 STEP-axis subset with MV0-C04.</text>
+<text x="100" y="796">17-8520/13035 and all prior fasteners remain held. No installation torque or T-slot capacity is released.</text>
+<text x="100" y="832">Continuous nominal clearance certified to J2=120 deg; contact {continuous_first_contact_deg:.4f} deg. Candidate soft/stop: {PROVISIONAL_J2_SOFT_LIMIT_DEG:.0f}/{CANDIDATE_J2_POSITIVE_HARD_STOP_DEG:.0f} deg.</text>
+<text x="100" y="868" class="warn">Physical stops, stopping travel, tolerances, cables, guards, MTR/FAI and qualified acceptance remain open. Do not fabricate.</text>
 </svg>'''
     (OUT / "HR-V0_arm_architecture_candidate.svg").write_text(svg, encoding="utf-8", newline="\n")
 
-    print(f"Generated {REVISION}: J1-J2 {J2_Y:.4f} mm; J2-G1 {G1_Y-J2_Y:.4f} mm; {len(sweep_rows)} collision samples; max {worst:.6f} mm3")
+    print(f"Generated {REVISION}: J1-J2 {J2_Y:.4f} mm; J2-G1 {G1_Y-J2_Y:.4f} mm; continuous contact {continuous_first_contact_deg:.6f} deg; candidate J2 soft/stop {PROVISIONAL_J2_SOFT_LIMIT_DEG:.1f}/{CANDIDATE_J2_POSITIVE_HARD_STOP_DEG:.1f} deg")
     print(WARNING)
     return 0
 

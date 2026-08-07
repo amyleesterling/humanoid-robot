@@ -22,7 +22,7 @@ The manifest hashes Git's canonical staged blobs, not platform-dependent checkou
 | Electrical | `Project Button Electrical V3-P1.8` / `HR-V0-CP-P0.4` / `HR-V0-SD-P0.2` | connected schematic, dimension-screened panel allocation, and exact SD1 catalog candidate on application hold; not released for wiring, drilling, lockout use, fabrication, or energization |
 | Watchdog PCB | `PCB-P0.5` | routed/test-access candidate; no fabrication outputs |
 | Actuator star PCB | `DXL-STAR-P0.1` | routed candidate; no fabrication outputs |
-| Mechanical | `HR-V0-MECH-P0.4` + `HR-V0-ARM-ARCH-P0.5` | Integrated A00-A07 native CAD candidate exists; received MTR/fit, T-slot capacity, qualified analytical acceptance, torque/locking/reuse, continuous collision and stop/overtravel proof, FAI, physical proof and qualified review remain open |
+| Mechanical | `HR-V0-MECH-P0.5` + `HR-V0-ARM-ARCH-P0.6` + `HR-V0-HS-P0.2` | Integrated A00-A07 native CAD and continuous nominal rigid-body clearance evidence exist; received MTR/fit, T-slot capacity, qualified analytical acceptance, torque/locking/reuse, physical stop/stopping/tolerance closure, cables/guard, FAI, physical proof and qualified review remain open |
 | Arm fabrication | `HR-V0-FAB-RFI-P0.2-WITHDRAWN` | zero active supplier packets; replacement architecture required |
 | Firmware | `HR-V0-FW-P0.2` / `HR-V0-WD-BUILD-P0.2` / `HR-V0-DXL-TRANSPORT-P0.1` | source, pinned fail-closed transport boundary and reproducible watchdog artifacts; SDK not installed on target; no received actuator configuration, connection, flash, execution or HIL validation |
 | Functional safety | `HR-V0-FSA-P0.1` | allocation candidate; `DF-01` has zero safety credit; no PLr/SIL assigned |
