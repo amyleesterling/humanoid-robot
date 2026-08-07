@@ -8,6 +8,8 @@
 
 **Status:** **PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY OR ENERGIZATION**
 
+**Subsequent disposition:** R51's first packet bytes were not reproducible across CRLF/LF checkouts. R52 supersedes those packet bytes with canonical-LF payload generation and clean-clone proof. R51 remains the control-design record, not the current packet release candidate.
+
 Sol's verdict remains correct: HR-V0 is not yet buildable or energizable. R51 makes external DFM evidence and the missing bench-anchor evidence executable without closing either blocker.
 
 | Sol concern | R51 response | Still required |

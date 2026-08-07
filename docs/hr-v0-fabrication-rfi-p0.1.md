@@ -24,7 +24,7 @@ Each ZIP contains:
 - `MANIFEST.csv`, which binds every payload file to its repository path, byte count and SHA-256; and
 - the exact controlled payload under `payload/`.
 
-ZIP member timestamps are fixed to 1980-01-01, files are stored without compression, and member permissions are fixed. Regeneration is therefore byte-for-byte deterministic. [`packet-index.csv`](../release/hr-v0/fabrication-rfi/packet-index.csv) records each ZIP's outer hash, size, payload count, permitted action, forbidden action and state.
+ZIP member timestamps are fixed to 1980-01-01, files are stored without compression, and member permissions are fixed. Text payloads are normalized to LF bytes before hashing and storage so Windows checkout line endings cannot change packet identity. Regeneration is therefore byte-for-byte deterministic across controlled clean checkouts. [`packet-index.csv`](../release/hr-v0/fabrication-rfi/packet-index.csv) records each ZIP's outer hash, size, payload count, permitted action, forbidden action and state.
 
 The generator is [`tools/generate_hr_v0_fabrication_rfi_packets.py`](../tools/generate_hr_v0_fabrication_rfi_packets.py). The checker independently opens every ZIP, verifies exact membership, timestamps, stored bytes, internal hashes, source equality, route-specific exclusions, packet-index hashes and the absence of PDFs. It also proves that `MV0-004` is absent.
 

@@ -125,6 +125,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R49](docs/reviews/2026-08-07-sol-r12-post-r49-status.md)
 - [Sol R12 findings rechecked against R50](docs/reviews/2026-08-07-sol-r12-post-r50-status.md)
 - [Sol R12 findings rechecked against R51](docs/reviews/2026-08-07-sol-r12-post-r51-status.md)
+- [Sol R12 findings rechecked against R52](docs/reviews/2026-08-07-sol-r12-post-r52-status.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.2 independent review request](docs/reviews/2026-08-07-firmware-p0.2-independent-review-request.md)
 - [Firmware P0.1 historical independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
@@ -144,7 +145,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-Fifty-one review/control rounds are complete: R01-R51. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
+Fifty-two review/control rounds are complete: R01-R52. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -199,6 +200,7 @@ Fifty-one review/control rounds are complete: R01-R51. R11 Fable and R12 Sol are
 | R49 | HR-V0 frame collision and bracket-topology correction | Superseded defective `HR-V0-FRAME-P0.1` with `P0.2`; changed the two transverse cuts from 320 to 240 mm, placed the upright on the base top, replaced incompatible two-slot-wide `40-4334` with six `40-4332` brackets and twelve `75-3422` assemblies, enumerated six bracket ridges, and added a fail-closed positive-volume overlap check. Received fit/tool access, torque, slip/proof and qualified review remain open; no procurement, fabrication, assembly or energization release was issued. |
 | R50 | Boston fabrication-route and profile-blank correction | Issued `HR-V0-FAB-RFQ-P0.1` with seven machine-checked routes, two one-stop CNC candidates, a controlled two-process route, three native hole-free STEP/DXF blank packages, a quote/DFM form and explicit BPL/FabVille limitations. Supplier selection, coupon execution, finished tolerances, first article, FAI and qualified review remain open; no procurement, fabrication, assembly or energization release was issued. |
 | R51 | Deterministic supplier-inquiry and exact-bench control | Issued `HR-V0-FAB-RFI-P0.1` with three route-bounded deterministic ZIPs, internal/outer SHA-256 manifests, fail-closed membership checks, an exact-bench survey form, `MECH-004` and `INSPECT-MECH-011`. No packet exists for the site-held anchor part; no supplier response, drilling, fabrication, assembly or energization release was issued. |
+| R52 | Cross-checkout packet-portability correction | Clean-clone validation found R51 packet payloads depended on CRLF/LF checkout state. Canonicalized controlled text inputs and release CSV output to LF, regenerated all packet identities, and required committed-packet verification plus zero-diff, clean-worktree regeneration in a fresh clone. No supplier, fabrication, assembly or energization release was issued. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

@@ -26,3 +26,4 @@ cad/hr-v0/**/*.step text eol=lf
 cad/hr-v0/**/*.glb binary
 cad/hr-v0/**/*.stl binary
 release/**/*.zip binary
+release/**/*.csv text eol=lf

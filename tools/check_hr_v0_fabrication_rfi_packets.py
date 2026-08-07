@@ -10,6 +10,7 @@ import zipfile
 from pathlib import Path
 
 from generate_hr_v0_fabrication_rfi_packets import (
+    CANONICAL_TEXT_SUFFIXES,
     FIXED_ZIP_TIME,
     OUT,
     PACKETS,
@@ -24,6 +25,13 @@ SURVEY = ROOT / "tests" / "forms" / "hr-v0-boston-bench-survey-template.csv"
 
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest().upper()
+
+
+def canonical_source_bytes(source: str) -> bytes:
+    data = (ROOT / source).read_bytes()
+    if Path(source).suffix.lower() in CANONICAL_TEXT_SUFFIXES:
+        return data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return data
 
 
 def read_csv_bytes(data: bytes) -> list[dict[str, str]]:
@@ -78,7 +86,7 @@ def main() -> int:
                     if packet_path != f"payload/{source}" or packet_path not in expected_names:
                         errors.append(f"{packet.packet_id} invalid manifest mapping: {source}")
                         continue
-                    source_data = (ROOT / source).read_bytes()
+                    source_data = canonical_source_bytes(source)
                     packet_data = archive.read(packet_path)
                     if packet_data != source_data:
                         errors.append(f"{packet.packet_id} payload differs from repository source: {source}")

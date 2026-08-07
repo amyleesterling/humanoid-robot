@@ -15,6 +15,7 @@ OUT = ROOT / "release" / "hr-v0" / "fabrication-rfi"
 REVISION = "HR-V0-FAB-RFI-P0.1"
 FIXED_ZIP_TIME = (1980, 1, 1, 0, 0, 0)
 WARNING = "PRELIMINARY - CAPABILITY/DFM REQUEST ONLY - NOT A PURCHASE ORDER - DO NOT FABRICATE"
+CANONICAL_TEXT_SUFFIXES = {".csv", ".dxf", ".md", ".step", ".svg", ".txt"}
 
 
 @dataclass(frozen=True)
@@ -97,6 +98,14 @@ def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest().upper()
 
 
+def source_bytes(source: str) -> bytes:
+    """Return checkout-independent payload bytes for controlled text inputs."""
+    data = (ROOT / source).read_bytes()
+    if Path(source).suffix.lower() in CANONICAL_TEXT_SUFFIXES:
+        return data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return data
+
+
 def zip_info(name: str) -> zipfile.ZipInfo:
     info = zipfile.ZipInfo(name, date_time=FIXED_ZIP_TIME)
     info.compress_type = zipfile.ZIP_STORED
@@ -114,7 +123,7 @@ def manifest_bytes(packet: Packet) -> bytes:
     )
     writer.writeheader()
     for source in packet.inputs:
-        data = (ROOT / source).read_bytes()
+        data = source_bytes(source)
         writer.writerow(
             {
                 "packet_path": f"payload/{source}",
@@ -167,7 +176,7 @@ def write_packet(packet: Packet) -> dict[str, str | int]:
         archive.writestr(zip_info("README-FIRST.txt"), readme)
         archive.writestr(zip_info("MANIFEST.csv"), manifest)
         for source in packet.inputs:
-            archive.writestr(zip_info(f"payload/{source}"), (ROOT / source).read_bytes())
+            archive.writestr(zip_info(f"payload/{source}"), source_bytes(source))
     data = output.read_bytes()
     return {
         "packet_id": packet.packet_id,
