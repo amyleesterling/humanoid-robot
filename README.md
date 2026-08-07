@@ -22,6 +22,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Configuration management and revision hierarchy](docs/configuration-management.md)
 - [HR-V0 deterministic release-candidate configuration P0.1](docs/hr-v0-release-candidate-p0.1.md)
 - [HR-V0 fabrication-defined arm architecture P0.4](docs/hr-v0-arm-architecture-p0.4.md)
+- [HR-V0 E2 control-only commissioning package P0.1](docs/hr-v0-e2-control-only-energization-p0.1.md)
 - [HR-V0 BOM closure and evaluation boundary P0.1](docs/hr-v0-bom-closure-p0.1.md)
 - [HR-V0 Evaluation Batch A candidates](bom/hr-v0-evaluation-batch-a.csv)
 - [HR-V0 mechanical release coordination P0.2](docs/hr-v0-mechanical-release-p0.2.md)
@@ -132,6 +133,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R55 corrected arm architecture and Sol R12 reconciliation](docs/reviews/2026-08-07-sol-r12-post-r55-status.md)
 - [R56 strengthened adapter/fastener stack and Sol R12 reconciliation](docs/reviews/2026-08-07-sol-r12-post-r56-status.md)
 - [R57 adapter fabrication-definition and Sol R12 reconciliation](docs/reviews/2026-08-07-sol-r12-post-r57-status.md)
+- [R58 E2 control-only commissioning boundary and Sol R12 reconciliation](docs/reviews/2026-08-07-sol-r12-post-r58-status.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.2 independent review request](docs/reviews/2026-08-07-firmware-p0.2-independent-review-request.md)
 - [Firmware P0.1 historical independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
@@ -142,6 +144,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements. Regenerate and check the mechanical package in this order: `python cad/hr-v0/src/hr_v0_cad.py`, `python cad/hr-v0/src/mechanical_checks.py`, then `python tools/check_hr_v0_cad.py`. The calculation pass refreshes the generated source manifest after updating its result file. Run `python tools/generate_hr_v0_electrical_v3.py --validate` and `python tools/check_hr_v0_electrical_v3.py` to regenerate and cross-check the V3 native candidate. Run `python tools/check_hr_v0_protection.py` to verify that the six-reference coordination register remains explicit and that no unresolved fuse ampere rating has been released. Run both PCB generators/checkers with KiCad's bundled Python: `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_watchdog_pcb.py`, `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_watchdog_pcb.py`, `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_dxl_star.py`, and `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_dxl_star.py`. Run `python tools/check_hr_v0_firmware.py` to validate the source, compiled-C differential suite, locked toolchains and controlled watchdog artifacts. Use `tools/build_hr_v0_watchdog.ps1` to reproduce the clean Pico P0.2 builds and `tools/build_hr_v0_watchdog_host_runner.ps1` to reproduce the clean host-vector builds with their pinned portable tool directories. PCB-P0.5 and DXL-STAR-P0.1 are routed source candidates, but both must remain without Gerber/drill outputs until supplier acceptance, protection, physical evidence and independent-review gates close. Run `python tools/check_energization_gates.py --through-stage E2 --require-ready` before claiming readiness for control-only first energization; it must remain nonzero until every applicable gate is evidenced and closed.
 
+Run `python tools/check_hr_v0_e2_commissioning.py` to validate the fail-closed 15-step E2 sequence, 20 disconnected-load logic cases, five unexecuted evidence forms and partial-only authorization boundary. A passing checker is not permission to connect a source.
+
 Run `python tools/check_hr_v0_fabrication_rfi_packets.py` to verify that every obsolete P0.1 supplier packet remains withdrawn and that zero ZIPs are active. The earlier manufacturing/route artifacts are historical inputs only until a replacement arm architecture closes `MECH-005`.
 Run `python tools/check_hr_v0_safety_allocation.py` to verify that the ordinary heartbeat path retains zero safety credit and every PLr/SIL allocation remains unresolved until qualified execution.
 Run `python tools/generate_hr_v0_release_manifest.py` only after deliberate package changes, then run `python tools/check_hr_v0_release_manifest.py`. A committed clean clone must additionally pass `python tools/check_hr_v0_release_manifest.py --require-clean`; this proves package identity, not fabrication or energization readiness.
@@ -151,7 +155,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-Fifty-seven review/control rounds are complete: R01-R57. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R57 are project-owned exact-geometry and release-boundary corrections, not additional independent reviews.
+Fifty-eight review/control rounds are complete: R01-R58. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R58 are project-owned exact-geometry and release-boundary corrections, not additional independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -212,6 +216,7 @@ Fifty-seven review/control rounds are complete: R01-R57. R11 Fable and R12 Sol a
 | R55 | Corrected actuator/frame/link architecture and collision boundary | Superseded R54 after finding its raw XM540 orientation, PCD22 link pattern and horizontal end-tap pair were incorrect. `HR-V0-ARM-ARCH-P0.2` registers the XM540 to S102, uses the ROBOTIS rectangular frame pattern and vertical 20-2040 members, adds candidate fastener/tool/load screens, and records first modeled contact at 122° from a 221-pose sweep. The 120° software ceiling is provisional pending a hard stop, stopping-overtravel/uncertainty proof, continuous collision proof, adapter local-strength closure, received fit, FAI and qualified review; no physical gate closed. |
 | R56 | Strengthened adapter and exact fastener-candidate correction | Superseded the 4.7625 mm P0.2 adapter with a 9.525 mm nominal, 9.0–10.0 mm finished P0.3 candidate; minimum residual below the worst-case countersink is now 5.9 mm. Froze `WF2563`, `WF2339`, and `WF1254` as exact candidates on hold and regenerated the 202.55/129.05 mm datum chain, load screens and deterministic STEP/GLB/SVG evidence. Typical material values are not allowables; certified material, local analysis, received stacks, torque/locking rules, proof, FAI and qualified review remain open. No physical gate closed. |
 | R57 | Adapter fabrication-definition correction | Superseded P0.3 with `HR-V0-ARM-ARCH-P0.4`: exact OnlineMetals `1249` certified-stock candidate, controlled drawing/DXF and ten FAI controls, exact current Accu/MISUMI fasteners, receiving records and ten analytical screens using a three-times-gravity proof-load candidate. Physical fit, MTR/FAI, torque/locking, proof, collision/stopping margin and qualified acceptance remain open. No physical gate closed. |
+| R58 | E2 control-only commissioning boundary | Added `HR-V0-E2-SEQ-P0.1`, a 15-step fail-closed sequence, five evidence forms, 20 disconnected-load safety-logic cases and a checker. Corrected the stage ambiguity: E2 may verify logic with the actuator source physically absent, but it cannot claim loaded interruption, stopping distance or PL/SIL validation. EG-018 through EG-022 advance from empty/open to template/partial only; all 21 E2 gates remain unresolved and no authorization exists. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

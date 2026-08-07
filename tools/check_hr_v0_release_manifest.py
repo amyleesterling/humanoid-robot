@@ -67,6 +67,7 @@ def main() -> None:
         "HR-V0-FW-P0.1",
         "HR-V0-FSA-P0.1",
         "HR-V0-BOM-P0.1",
+        "HR-V0-E2-SEQ-P0.1",
     }
     missing_identifiers = required_identifiers - identifiers
     if missing_identifiers:
@@ -83,6 +84,18 @@ def main() -> None:
         "HR-V0-FRAME-P0.2",
     ]:
         errors.append("HR-V0-MECH-P0.3 supporting identifiers changed or are incomplete")
+    commissioning_product = next(
+        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-E2-SEQ-P0.1"),
+        {},
+    )
+    if commissioning_product.get("supporting_identifiers") != [
+        "INSPECT-E2-001",
+        "INSPECT-E2-002",
+        "TEST-E2-001",
+        "TEST-E2-002",
+        "AUDIT-E2-001",
+    ] or commissioning_product.get("release_state") != "templates_not_executed_not_authorized_for_energization":
+        errors.append("HR-V0-E2-SEQ-P0.1 supporting identifiers or fail-closed state changed")
 
     if not MANIFEST.is_file():
         errors.append(f"manifest missing: {MANIFEST_REL}")

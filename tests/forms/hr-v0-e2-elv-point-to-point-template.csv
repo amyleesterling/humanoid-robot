@@ -1,0 +1,2 @@
+record_id,date_utc,configuration_commit,article_id,wire_number,from_reference,from_terminal,to_reference,to_terminal,expected_net,expected_state,approved_limit,measured_value,instrument_id,calibration_ref,polarity_result,shield_result,adjacent_net_isolation,no_backfeed_result,photo_ref,nonconformance_ref,witness,qualified_disposition,status,warning
+NOT-EXECUTED,,,,,,,,,,SELECTION REQUIRED,SELECTION REQUIRED,,,,NOT EXECUTED,NOT EXECUTED,NOT EXECUTED,NOT EXECUTED,,,,NOT EXECUTED,NOT EXECUTED,PRELIMINARY-NOT APPROVED FOR ENERGIZATION

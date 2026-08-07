@@ -26,6 +26,7 @@ The manifest hashes Git's canonical staged blobs, not platform-dependent checkou
 | Arm fabrication | `HR-V0-FAB-RFI-P0.2-WITHDRAWN` | zero active supplier packets; replacement architecture required |
 | Firmware | `HR-V0-FW-P0.1` / `HR-V0-WD-BUILD-P0.2` | source and reproducible artifacts; not flashed or HIL validated |
 | Functional safety | `HR-V0-FSA-P0.1` | allocation candidate; `DF-01` has zero safety credit; no PLr/SIL assigned |
+| E2 commissioning | `HR-V0-E2-SEQ-P0.1` | 15-step control-only procedure candidate; actuator source absent; five forms not executed; authorization `NOT AUTHORIZED` |
 
 Electrical V2.1 remains preserved as a reviewed historical baseline. It does not override V3's HR-V0 correction intent. HR-30A/B/C/D/W remain later program stages and are not released by this HR-V0 candidate.
 

@@ -7,6 +7,7 @@ Mechanical package: **HR-V0-MECH-P0.3 hold plus fabrication-defined HR-V0-ARM-AR
 Firmware package: **HR-V0-FW-P0.1 source/test candidate; reproducible watchdog P0.2 review artifacts; no released or flashed binary**
 Safety package: **HR-V0-FSA-P0.1 allocation candidate; ordinary DF-01 heartbeat has zero safety credit; no PLr, SIL, or achieved PL assigned**
 Configuration package: **HR-V0-RC-P0.1 deterministic candidate; immutable merge/acceptance and signatures remain open**
+Commissioning package: **HR-V0-E2-SEQ-P0.1 procedure candidate; 15 steps and five forms; all records NOT EXECUTED; authorization NOT AUTHORIZED**
 BOM package: **HR-V0-BOM-P0.1 closure candidate; 16 evaluation-only lines; 17 exact candidates on hold; 30 selection-required groups; no complete procurement release**
 Status: **PRELIMINARY - NOT APPROVED FOR ENERGIZATION**
 
@@ -35,15 +36,15 @@ The authoritative repository controls engineering intent and contains the review
 - R53 invalidated the active custom-metal arm route. Exact ROBOTIS STEP coordinates showed that the H101 moving frame and S102 bottom frame do not present the coplanar interfaces assumed by MV0-001/MV0-003. MV0-001 through MV0-003, the 44/160/160 mm datum chain and all three RFI ZIPs remain withdrawn. Their earlier bytes remain recoverable in Git history, but no current supplier packet exists.
 - R57 supersedes R56/P0.3 with `HR-V0-ARM-ARCH-P0.4`. It preserves the 9.525 mm nominal adapter and 202.550/129.050 mm datum chain while adding exact OnlineMetals `1249` stock, current Accu/MISUMI fasteners, a controlled drawing/DXF, ten FAI controls, receiving forms and ten analytical screens. Candidate gravity screens remain 1.858/0.498 N·m; the project proof-load candidate is 12.5385 N·m. None is a released allowable or physical proof result.
 - The 221-pose screen finds first nominal contact at 122°. The 120° ceiling is provisional until a physical hard stop, stopping-overtravel/uncertainty margin and continuous collision proof close. Adapter local strength, exact M2.5 stacks, received fit, cables, proof, FAI and qualified review also remain open.
-- `WF2563`, `WF2339` and `WF1254` are exact fastener candidates on hold. The static geometry screens pass, but certified material, accepted local analysis, received stack/tolerance measurements, torque/locking/reuse rules and physical proof remain open. Typical material properties are not allowables.
+- `SHKL-M5-20-A2-R360`, `SCB2.5-20` and `HNN-M2.5-A2` are the current exact fastener candidates on hold. The analytical screens pass their project thresholds, but received MTR/fit, qualified allowable/method acceptance, stack/tolerance measurements, torque/locking/reuse rules and physical proof remain open. Source reference properties are not allowables.
 - `MECH-005` / `AUDIT-MECH-012` / `INSPECT-MECH-014` / `INSPECT-MECH-015` and `MECH-006` / `INSPECT-MECH-013` therefore remain open. No arm quotation can resume from R57.
 - `MV0-004` and the base/frame candidate remain on their separate exact-Boston-bench, physical-fit, torque and proof holds.
 - See `docs/hr-v0-build-site-basis.md`, `docs/hr-v0-fabrication-sourcing-boston.md`, and `docs/hr-v0-flat-plate-manufacturing-p0.1.md`. No cutting order is authorized until received-part coupons, final tolerances, fasteners, bench survey, supplier DFM, separately authorized first article, FAI, and qualified review close.
 
 ## Current controlled counts
 
-- 75 draft requirements
-- 97 controlled verification procedure records
+- 80 draft requirements
+- 102 controlled verification procedure records
 - 40 open risks
 - six staged releases: HR-V0, HR-30A, HR-30B, HR-30C, HR-30D, and HR-30W
 - 15 native KiCad sheets
@@ -53,6 +54,7 @@ The authoritative repository controls engineering intent and contains the review
 - 106 unresolved electrical selections/interfaces
 - 71 system BOM groups: 16 evaluation candidates, 17 exact candidates on hold, three grouped-component holds, 30 selection-required groups, four historical/DNP exclusions, and one integrated item
 - KiCad 10.0.5 ERC: 0 errors and 0 warnings
+- E2 gate status: 21 applicable, 0 closed, 21 partial; all five new physical/authorization records remain unexecuted
 
 The V3-P1.4 candidate separately contains thirteen native pages, 76 component blocks, 295 modeled terminals, 100 native nets (64 named connected nets plus 36 deliberate auto-generated unconnected nets), 259 unique wire labels, 63 unresolved component/interface rows, and 24 `TBD-*` terminal designations. It retains the exact watchdog/safety, DXL-star and contactor architecture through P1.3 and adds a received-lot terminal-control boundary for RESET and ARM. IDEC's current transition notice permits prior or redesigned HW internals under unchanged complete order codes, and the live product BOM exposes no internal identity; the four S1/S2 terminals therefore remain `TBD-*` pending received markings, orientation, continuity and independent comparison. Schneider Catalog 2026 supports the represented one-through-three-pole topology at its 32 A / 24 V row but warns that lower current can reduce durability because of critical current; the 11.1 A HR-V0 screen therefore still requires written application disposition and loaded tests. The separate DXL-STAR-P0.1 native project has seven proposed headers, 18 terminals, three mutually isolated positive rails, common TTL data/return, `JC1:2` no-net/no-copper, 17 routed segments, one return zone and native ERC/DRC 0/0. PCB-P0.5 remains a 42-reference, 201-segment, 56-via watchdog candidate with three filled B.Cu zones. R36's protection register still carries zero released fuse ampere ratings and blocks the XM540 branches on the 4.4 A stall versus 3 A JST EH conflict. Cable construction, protection, contactor duty, source-side current division, physical continuity/isolation/no-backfeed, thermal, waveform, crimp/retention, RESET/ARM terminals, panel human factors, supplier acceptance, HIL/fault evidence and qualified review remain open. Neither PCB has fabrication outputs. KiCad 10.0.5 ERC/DRC, native exports and the exact-net, protection and PCB checkers pass; those checks do not establish physical suitability. These V3 counts must not be substituted for the independently reviewed V2.1 counts above.
 
@@ -60,7 +62,7 @@ ERC validates modeled connectivity and annotation only. It does not establish ph
 
 ## Review history and independent findings
 
-Fifty-seven review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R57 are controlled project responses, not independent approvals. R57 adds a fabrication-defined adapter candidate and receiving/FAI evidence boundary without closing a physical gate.
+Fifty-eight review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R58 are controlled project responses, not independent approvals. R58 adds the fail-closed E2 control-only sequence and evidence boundary without closing a physical gate or authorizing energization.
 
 ## Principal unresolved engineering blockers
 

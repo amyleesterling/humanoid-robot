@@ -37,6 +37,12 @@
       "identifier": "HR-V0-BOM-P0.1",
       "supporting_identifiers": ["EVALUATION-BATCH-A"],
       "release_state": "closure_register_candidate_no_complete_machine_procurement_release"
+    },
+    {
+      "domain": "commissioning",
+      "identifier": "HR-V0-E2-SEQ-P0.1",
+      "supporting_identifiers": ["INSPECT-E2-001", "INSPECT-E2-002", "TEST-E2-001", "TEST-E2-002", "AUDIT-E2-001"],
+      "release_state": "templates_not_executed_not_authorized_for_energization"
     }
   ],
   "historical_or_out_of_scope_products": [
