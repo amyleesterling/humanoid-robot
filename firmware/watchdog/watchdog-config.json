@@ -6,6 +6,8 @@
   "heartbeat_minimum_edge_ms": 20,
   "startup_valid_edges": 3,
   "relay_feedback_settle_ms": 25,
+  "processor_watchdog_timeout_ms": 100,
+  "polling_period_us": 1000,
   "relay_channels": 2,
   "feedback_contact_state": "NC_TRUE_WHEN_RELAY_DEENERGIZED",
   "feedback_front_end": "TI_ISO1212DBQ_P0.1",
@@ -19,6 +21,7 @@
     "relay1_nc_feedback": {"gpio": 6, "physical_pin": 9},
     "relay2_nc_feedback": {"gpio": 7, "physical_pin": 10}
   },
-  "platform_binding": "SELECTION REQUIRED",
+  "platform_binding": "RASPBERRY_PI_PICO_SC0915_PICO_SDK_2.3.0_P0.1",
+  "platform_binding_status": "SOURCE-CANDIDATE-HIL-REQUIRED",
   "safety_credit": "NONE"
 }

@@ -71,4 +71,4 @@ Vishay source used for screening: `VO615A` datasheet document 81753, revision 2.
 
 ## Release effect
 
-This correction closes neither `EG-012` nor `EG-017`. It removes a modeled overvoltage path, freezes reviewable relay/Pico terminals and makes the missing interface explicit. Exact interface circuitry, target compilation, hardware binding, HIL, functional-safety analysis and qualified review remain open.
+This correction closes neither `EG-012` nor `EG-017`. It removes a modeled overvoltage path, freezes reviewable relay/Pico terminals and makes the missing interface explicit. R39 later supplies a compiled Pico platform binding and reproducible P0.1 binary evidence. Exact received-interface behavior, HIL, functional-safety analysis and qualified review remain open.

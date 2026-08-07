@@ -1,0 +1,14 @@
+firmware/**/*.c text eol=lf
+firmware/**/*.h text eol=lf
+firmware/**/*.py text eol=lf
+firmware/**/*.json text eol=lf
+firmware/**/*.md text eol=lf
+firmware/**/*.csv text eol=lf
+firmware/**/*.txt text eol=lf
+firmware/**/*.su text eol=lf
+firmware/**/*.map text eol=lf
+firmware/**/*.dis text eol=lf
+firmware/**/CMakeLists.txt text eol=lf
+firmware/**/*.bin binary
+firmware/**/*.elf binary
+firmware/**/*.uf2 binary

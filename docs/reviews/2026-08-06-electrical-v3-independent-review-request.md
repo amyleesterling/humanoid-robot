@@ -25,6 +25,7 @@ The authoritative source is this repository. The workshop website is presentatio
 - R36 protection-coordination evidence: `docs/hr-v0-protection-coordination-p0.1.md`; `electrical/hr-v0-protection-coordination-inputs.csv`; `tests/forms/hr-v0-protection-coordination-template.csv`
 - R37 DYNAMIXEL star-injection evidence: `docs/hr-v0-dxl-star-injection-p0.1.md`; `electrical/kicad/hr-v0-dxl-star/`; `tests/forms/hr-v0-dxl-star-inspection-template.csv`
 - R38 actuator current/configuration evidence: `docs/hr-v0-actuator-current-envelope-p0.1.md`; `firmware/supervisor/actuator-config.json`; `tests/forms/hr-v0-actuator-current-characterization-template.csv`
+- R39 watchdog target/build evidence: `docs/hr-v0-watchdog-build-p0.1.md`; `firmware/watchdog/platform/pico/main.c`; `firmware/watchdog/toolchain-lock.json`; `firmware/watchdog/output/P0.1/`
 - native PCB and custom candidate footprints: `electrical/kicad/project-button-v3/project-button-v3.kicad_pcb` and `electrical/kicad/project-button-v3/PBV3_Footprints.pretty/`
 - Received control-device record: `tests/forms/hr-v0-control-device-receiving-template.csv`
 - Source-interface receiving/test record: `tests/forms/hr-v0-source-interface-receiving-template.csv`

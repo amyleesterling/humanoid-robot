@@ -1,8 +1,9 @@
 """Validate the preliminary HR-V0 watchdog and supervisor source package.
 
-This proves source/configuration consistency and executable reference-model
-tests only. It does not compile an RP2040 binary, perform HIL testing, establish
-functional-safety integrity, or authorize energization.
+This proves source/configuration consistency, executable reference-model tests,
+and integrity of the controlled RP2040 build evidence. It does not flash a
+target, perform HIL testing, establish functional-safety integrity, or
+authorize energization.
 """
 
 from __future__ import annotations
@@ -95,6 +96,14 @@ def main() -> int:
         failures.append("watchdog relay drivers differ from the Electrical V3-P1.0 candidate")
     if watchdog_config.get("feedback_gpio_active_high") is not True:
         failures.append("watchdog feedback GPIO polarity is not active-high for KWD NC closed")
+    if watchdog_config.get("processor_watchdog_timeout_ms") != 100:
+        failures.append("processor watchdog timeout is not the 100 ms platform candidate")
+    if watchdog_config.get("polling_period_us") != 1000:
+        failures.append("watchdog polling period is not the 1 ms platform candidate")
+    if watchdog_config.get("platform_binding") != "RASPBERRY_PI_PICO_SC0915_PICO_SDK_2.3.0_P0.1":
+        failures.append("watchdog platform binding differs from the compiled Pico P0.1 candidate")
+    if watchdog_config.get("platform_binding_status") != "SOURCE-CANDIDATE-HIL-REQUIRED":
+        failures.append("watchdog platform binding no longer preserves the HIL-required boundary")
     header = (FIRMWARE / "watchdog" / "include" / "pb_watchdog.h").read_text(encoding="utf-8")
     source = (FIRMWARE / "watchdog" / "src" / "pb_watchdog.c").read_text(encoding="utf-8")
     define_names = {
@@ -118,6 +127,94 @@ def main() -> int:
     ):
         if required not in source:
             failures.append(f"portable watchdog source invariant missing: {required}")
+
+    platform_source = (FIRMWARE / "watchdog" / "platform" / "pico" / "main.c").read_text(encoding="utf-8")
+    for required in (
+        "#define PB_WD_GPIO_HEARTBEAT 2u",
+        "#define PB_WD_GPIO_RELAY1_DRIVE 3u",
+        "#define PB_WD_GPIO_RELAY2_DRIVE 4u",
+        "#define PB_WD_GPIO_RELAY1_NC 6u",
+        "#define PB_WD_GPIO_RELAY2_NC 7u",
+        "#define PB_WD_PROCESSOR_WATCHDOG_MS 100u",
+        "#define PB_WD_LOOP_PERIOD_US 1000u",
+        "gpio_put(gpio, false);",
+        "gpio_set_dir(gpio, GPIO_OUT);",
+        "watchdog_enable(PB_WD_PROCESSOR_WATCHDOG_MS, false);",
+        "gpio_put_masked(PB_WD_DRIVE_MASK, drive_value);",
+    ):
+        if required not in platform_source:
+            failures.append(f"Pico watchdog platform invariant missing: {required}")
+    low_index = platform_source.find("gpio_put(gpio, false);")
+    output_index = platform_source.find("gpio_set_dir(gpio, GPIO_OUT);")
+    if low_index >= 0 and output_index >= 0 and low_index > output_index:
+        failures.append("Pico relay drive is not set low before GPIO output direction")
+
+    toolchain_lock_path = FIRMWARE / "watchdog" / "toolchain-lock.json"
+    toolchain_lock = json.loads(toolchain_lock_path.read_text(encoding="utf-8"))
+    expected_tools = {
+        "Raspberry Pi Pico SDK": ("2.3.0", "98a542c1a62fb549ffb5d66a3e5892b06276b670"),
+        "Arm GNU Toolchain": ("14.3.rel1 / GCC 14.3.1 build arm-14.174", "836ebe51fd71b6542dd7884c8fb2011192464b16c28e4b38fddc9350daba5ee8"),
+        "CMake": ("4.3.3", "935ade9e5e8723583c07f44c5592cea2a1c8f65c56ca7e07b34c025c880e0bd6"),
+        "Ninja": ("1.13.2", "07fc8261b42b20e71d1720b39068c2e14ffcee6396b76fb7a795fb460b78dc65"),
+        "Raspberry Pi picotool prebuilt": ("2.3.0 / pico-sdk-tools v2.3.0-0", "4dcad3bfbc9d126bdb3870bbce0668f5d300d0f2f505ce775b3444bfdd5eaa79"),
+        "Python embeddable package": ("3.13.14", "90b4e5b9898b72d744650524bff92377c367f44bd5fbd09e3148656c080ad907"),
+    }
+    tools_by_name = {item["name"]: item for item in toolchain_lock.get("dependencies", [])}
+    for name, (version, revision_or_hash) in expected_tools.items():
+        item = tools_by_name.get(name, {})
+        if item.get("version") != version:
+            failures.append(f"toolchain lock version differs at {name}")
+        actual_identity = item.get("git_revision", item.get("sha256", "")).lower()
+        if actual_identity != revision_or_hash.lower():
+            failures.append(f"toolchain lock revision/hash differs at {name}")
+    if toolchain_lock.get("build_controls", {}).get("source_date_epoch") != 1786060800:
+        failures.append("toolchain lock does not freeze the R39 SOURCE_DATE_EPOCH")
+    build_script = (ROOT / "tools" / "build_hr_v0_watchdog.ps1").read_text(encoding="utf-8")
+    if '$env:SOURCE_DATE_EPOCH = "1786060800"' not in build_script:
+        failures.append("watchdog build script does not enforce the locked SOURCE_DATE_EPOCH")
+    attributes = (ROOT / ".gitattributes").read_text(encoding="utf-8")
+    for required in (
+        "firmware/**/*.map text eol=lf",
+        "firmware/**/*.dis text eol=lf",
+        "firmware/**/*.bin binary",
+        "firmware/**/*.elf binary",
+        "firmware/**/*.uf2 binary",
+    ):
+        if required not in attributes:
+            failures.append(f"firmware Git checkout control missing: {required}")
+
+    output_dir = FIRMWARE / "watchdog" / "output" / "P0.1"
+    artifact_manifest_path = output_dir / "artifact-manifest.csv"
+    with artifact_manifest_path.open(newline="", encoding="utf-8-sig") as handle:
+        artifact_rows = list(csv.DictReader(handle))
+    for row in artifact_rows:
+        artifact = output_dir / row["file"]
+        if not artifact.is_file():
+            failures.append(f"controlled watchdog artifact missing: {row['file']}")
+            continue
+        if artifact.stat().st_size != int(row["bytes"]):
+            failures.append(f"controlled watchdog artifact size differs: {row['file']}")
+        if hashlib.sha256(artifact.read_bytes()).hexdigest().lower() != row["sha256"].lower():
+            failures.append(f"controlled watchdog artifact hash differs: {row['file']}")
+        if row["build_a_matches_build_b"].lower() != "true":
+            failures.append(f"controlled watchdog artifact lacks two-build match: {row['file']}")
+
+    build_evidence = json.loads((output_dir / "build-evidence.json").read_text(encoding="utf-8"))
+    if build_evidence.get("source_date_epoch") != 1786060800:
+        failures.append("watchdog build evidence does not record the locked SOURCE_DATE_EPOCH")
+    source_hashes = build_evidence.get("source_hashes", {})
+    for relative, expected_hash in source_hashes.items():
+        path = ROOT / relative
+        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != expected_hash.lower():
+            failures.append(f"watchdog build source hash differs: {relative}")
+    reproducibility = build_evidence.get("reproducibility", {})
+    for key in ("elf_match", "uf2_match", "bin_match", "hex_match", "linker_map_match", "canonical_disassembly_match"):
+        if reproducibility.get(key) is not True:
+            failures.append(f"watchdog reproducibility evidence is not true: {key}")
+    if build_evidence.get("verification_boundary", {}).get("gate_disposition") != (
+        "EG-017 remains partial; no permission to flash, fabricate or energize."
+    ):
+        failures.append("watchdog build evidence no longer preserves the EG-017 partial gate")
 
     supervisor_config = json.loads((FIRMWARE / "supervisor" / "supervisor-config.json").read_text(encoding="utf-8"))
     for field in ("configuration_hash", "kinematic_model_hash"):
@@ -188,7 +285,8 @@ def main() -> int:
 
     test_count = watchdog_log.count(" ... ok") + supervisor_log.count(" ... ok")
     print(f"HR-V0 firmware source validation: PASS ({test_count} executable unit tests)")
-    print("Portable watchdog C compile/binary/HIL: NOT PERFORMED - TOOLCHAIN AND HARDWARE SELECTION REQUIRED")
+    print("Pico binding and controlled two-build binary evidence: PASS (source/build integrity only)")
+    print("Target flash, received-hardware execution and HIL: NOT PERFORMED")
     print(WARNING)
     print("Source tests and hashes are not functional-safety approval or permission to energize.")
     return 0
