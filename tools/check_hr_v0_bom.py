@@ -18,7 +18,7 @@ PROCEDURES = ROOT / "tests" / "procedures" / "procedure-registry.csv"
 REQUIREMENTS = ROOT / "requirements" / "requirements.csv"
 GATES = ROOT / "requirements" / "hr-v0-energization-gates.csv"
 RECEIVING_FORM = ROOT / "tests" / "forms" / "hr-v0-evaluation-batch-a-receiving-template.csv"
-REQUIRED_DEPENDENCY_IDS = {f"BOM-{number:03d}" for number in range(58, 71)}
+REQUIRED_DEPENDENCY_IDS = {f"BOM-{number:03d}" for number in range(58, 72)}
 
 
 def read_csv(path: Path) -> tuple[list[dict[str, str]], list[str]]:

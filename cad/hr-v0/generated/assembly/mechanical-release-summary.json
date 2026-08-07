@@ -3,15 +3,17 @@
   "warning": "PRELIMINARY\u2014NOT RELEASED FOR FABRICATION OR ENERGIZATION",
   "source_hashes": {
     "cad/hr-v0/mechanical-release-data.csv": "1E7DC85C0841B8DB57C5E52C5EB6B159B260AB0589A42D7C713099A9F69F4FFC",
-    "cad/hr-v0/mechanical-interface-control.csv": "A89167CCC3D2427E4A8ECEAF70BBB69D7FA8DF516B3C9ACC15879C34DDC80A1A",
-    "cad/hr-v0/mechanical-assembly-components.csv": "EF5A4958F3D540B1C3BE1F25AACB6EB409951C3DE5F6E0A1585E66A0B980C951",
-    "bom/hr-v0-extrusion-cut-schedule.csv": "BC667D06E80BC197980B71B11B5C872ED49A075BD74EE986407A7AA9615EF834"
+    "cad/hr-v0/mechanical-interface-control.csv": "8CCB75376C09129A5BEF120F7C3DB02BCF01ABAB04F62122CC0354ED4573F14D",
+    "cad/hr-v0/mechanical-assembly-components.csv": "0664B31C11F147CC5293B63E7A3A13AA6E67C9EE9EA2A86CCA9D7E167EF9278F",
+    "bom/hr-v0-extrusion-cut-schedule.csv": "BC667D06E80BC197980B71B11B5C872ED49A075BD74EE986407A7AA9615EF834",
+    "bom/hr-v0-frame-joint-schedule.csv": "C9834171F40A1BD13F3C22B74D800CFD501BD7DAFE97CEAF7613B8689CE99622"
   },
   "counts": {
     "controlled_parameters": 24,
     "interfaces": 12,
-    "assembly_components": 19,
+    "assembly_components": 20,
     "extrusion_cut_rows": 3,
+    "frame_joint_rows": 6,
     "datums": 6
   },
   "parameter_status_counts": {
@@ -25,9 +27,10 @@
   },
   "interface_status_counts": {
     "design_required": 2,
+    "exact_candidate_hold": 1,
     "physical_fit_required": 5,
     "received_verification_required": 1,
-    "selection_required": 4
+    "selection_required": 3
   },
   "release_state": "coordination_candidate_not_released"
 }

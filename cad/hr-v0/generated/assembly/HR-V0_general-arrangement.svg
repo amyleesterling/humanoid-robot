@@ -76,7 +76,7 @@
   <text x="850" y="654" class="subtitle">FABRICATION / ASSEMBLY HOLDS</text>
   <text x="850" y="690">1. Execute MV0-FC01 / FC02 / FC03 on received frames.</text>
   <text x="850" y="720">2. Freeze hole size/position, fastener stacks, torque and retention.</text>
-  <text x="850" y="750">3. Freeze exact gussets, base joints and column squareness criteria.</text>
+  <text x="850" y="750">3. Proof six 40-4334 / twenty-four 75-3422 frame-joint candidates.</text>
   <text x="850" y="780">4. Survey the Boston build bench and engineer its anchors.</text>
   <text x="850" y="810">5. Design and proof backed-up hard stops, guard and catch.</text>
   <text x="850" y="840">6. Close measured mass/COM/inertia and rerun load calculations.</text>

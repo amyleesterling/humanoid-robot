@@ -16,8 +16,9 @@ P0.2 establishes one explicit mechanical datum and interface contract for the HR
 
 - 24 controlled parameters state a nominal value, datum, source, maturity and exact closure evidence;
 - 12 mechanical interfaces identify every parent/child boundary and prevent an unspecified fastener or mounting assumption from disappearing inside the assembly;
-- 19 assembly component groups join the mechanical arrangement to the system BOM;
+- 20 assembly component groups join the mechanical arrangement to the system BOM;
 - five exact candidate extrusion cuts are enumerated in three controlled schedule rows;
+- six exact frame-joint candidates allocate six `40-4334` brackets and twenty-four `75-3422` assemblies under `HR-V0-FRAME-P0.1`;
 - six generated assembly datums create one neutral-pose chain from the bench plane through J1, J2, the gripper frame and maximum permitted object reach;
 - a readable SVG general-arrangement drawing exposes dimensions and every fabrication hold; and
 - a 20-row unexecuted inspection template provides the physical closure route.
@@ -56,8 +57,8 @@ The previous assembly view displayed `MV0-004` vertically even though its intend
 No step below may start until its preceding hold is signed. This is sequencing information, not assembly authorization.
 
 1. Receive and inspect the five exact `40-4040` extrusion cuts: two at 500 mm for the longitudinal base rails, two at 320 mm for the transverse rails, and one at 500 mm for the column.
-2. Freeze exact 40-series gusset order codes, quantities, orientations, fasteners, torque, locking method and reuse rule.
-3. Assemble the base unanchored, inspect lengths, end squareness, profile identity, opposing diagonals, twist and joint seating.
+2. Receive the six `40-4334` brackets and twenty-four `75-3422` assemblies identified in `bom/hr-v0-frame-joint-schedule.csv`; do not treat catalog identity as application release.
+3. Execute the qualified torque-development, slip/proof and inspection route in `docs/hr-v0-frame-joint-closure-p0.1.md` and `INSPECT-MECH-010`. The manufacturer 13–20 N m value is a trial guide, not a released torque.
 4. Install the column at candidate `C0`; inspect position, perpendicularity and anti-rotation. Do not install actuators.
 5. Survey the actual bench and close `MIC-001`/`MIC-002` before cutting or installing `MV0-004`.
 6. Execute `MV0-FC01`, `MV0-FC02` and `MV0-FC03` against received and identified ROBOTIS parts.
@@ -76,10 +77,13 @@ No step below may start until its preceding hold is signed. This is sequencing i
 | `cad/hr-v0/mechanical-interface-control.csv` | parent/child mounting and fastener boundary register |
 | `cad/hr-v0/mechanical-assembly-components.csv` | mechanical-to-system-BOM assembly schedule |
 | `bom/hr-v0-extrusion-cut-schedule.csv` | exact candidate profile cut lengths |
+| `bom/hr-v0-frame-joint-schedule.csv` | six exact bracket/hardware instances and orientation/load-screen holds |
+| `docs/hr-v0-frame-joint-closure-p0.1.md` | catalog evidence, torque-development boundary and proof route |
 | `cad/hr-v0/generated/assembly/assembly-datums.csv` | generated coordinate chain |
 | `cad/hr-v0/generated/assembly/HR-V0_general-arrangement.svg` | web-readable dimensioned assembly view |
 | `cad/hr-v0/generated/assembly/mechanical-release-summary.json` | counts and source hashes |
 | `tests/forms/hr-v0-mechanical-release-inspection-template.csv` | unexecuted physical evidence form |
+| `tests/forms/hr-v0-frame-joint-receiving-assembly-template.csv` | unexecuted joint receiving, torque and proof form |
 | `tools/generate_hr_v0_mechanical_release.py` | deterministic standard-library generator |
 | `tools/check_hr_v0_mechanical_release.py` | cross-source fail-closed validation |
 
@@ -89,7 +93,7 @@ The following remain hard blockers:
 
 1. received frame, actuator, gripper and extrusion identities;
 2. executed interface coupons and released acceptance tolerances;
-3. exact gussets, anchors and every structural fastener;
+3. executed frame-joint fit/torque/slip/proof evidence, exact anchors and every remaining structural fastener;
 4. supplier DFM and material/thickness certificates;
 5. custom-part first articles and dimensional inspection;
 6. measured moving mass, center of mass and inertia;

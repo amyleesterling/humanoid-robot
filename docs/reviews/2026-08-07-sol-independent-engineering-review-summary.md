@@ -30,7 +30,6 @@ Primary links supplied with the summary:
 
 ## Current project disposition
 
-R13–R37 already made several baseline claims stale by adding native source, connected V3 candidates, mechanical quote geometry, firmware source, and controlled evidence routes. Those are project corrections, not executed physical proof or independent approval. The central Sol verdict remains open: no fabrication or energization release exists.
+R13–R48 made several baseline claims stale by adding native source, connected V3 candidates, mechanical quote geometry, firmware source, deterministic release control, a complete BOM closure register, a controlled datum/interface package and an exact catalog frame-joint candidate. Those are project corrections, not executed physical proof or independent approval. The central Sol verdict remains open: no fabrication or energization release exists.
 
-R38 adds an executable, fail-closed DYNAMIXEL configuration-readback contract and guarded current/torque characterization route. It does not close the XM540/JST connector conflict, continuous torque, protection coordination, physical-build, functional-safety, or energization findings.
-
+R48 removes the ambiguous frame-gusset/order-code allocation and adds an unexecuted torque/slip/proof route. It does not close the XM540/JST connector conflict, continuous torque, protection coordination, actual frame-joint proof, bench anchoring, physical-build, functional-safety, or energization findings.

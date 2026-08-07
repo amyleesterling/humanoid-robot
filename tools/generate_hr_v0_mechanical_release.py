@@ -149,7 +149,7 @@ def write_svg() -> None:
   <text x="850" y="654" class="subtitle">FABRICATION / ASSEMBLY HOLDS</text>
   <text x="850" y="690">1. Execute MV0-FC01 / FC02 / FC03 on received frames.</text>
   <text x="850" y="720">2. Freeze hole size/position, fastener stacks, torque and retention.</text>
-  <text x="850" y="750">3. Freeze exact gussets, base joints and column squareness criteria.</text>
+  <text x="850" y="750">3. Proof six 40-4334 / twenty-four 75-3422 frame-joint candidates.</text>
   <text x="850" y="780">4. Survey the Boston build bench and engineer its anchors.</text>
   <text x="850" y="810">5. Design and proof backed-up hard stops, guard and catch.</text>
   <text x="850" y="840">6. Close measured mass/COM/inertia and rerun load calculations.</text>
@@ -172,10 +172,12 @@ def main() -> int:
     interface_path = CAD / "mechanical-interface-control.csv"
     components_path = CAD / "mechanical-assembly-components.csv"
     extrusion_path = ROOT / "bom" / "hr-v0-extrusion-cut-schedule.csv"
+    frame_joint_path = ROOT / "bom" / "hr-v0-frame-joint-schedule.csv"
     data = read_csv(data_path)
     interfaces = read_csv(interface_path)
     components = read_csv(components_path)
     extrusions = read_csv(extrusion_path)
+    frame_joints = read_csv(frame_joint_path)
     datums = write_datums()
     write_svg()
     summary = {
@@ -183,13 +185,14 @@ def main() -> int:
         "warning": WARNING,
         "source_hashes": {
             path.relative_to(ROOT).as_posix(): canonical_text_sha256(path)
-            for path in (data_path, interface_path, components_path, extrusion_path)
+            for path in (data_path, interface_path, components_path, extrusion_path, frame_joint_path)
         },
         "counts": {
             "controlled_parameters": len(data),
             "interfaces": len(interfaces),
             "assembly_components": len(components),
             "extrusion_cut_rows": len(extrusions),
+            "frame_joint_rows": len(frame_joints),
             "datums": len(datums),
         },
         "parameter_status_counts": dict(sorted(Counter(row["status"] for row in data).items())),
@@ -201,7 +204,7 @@ def main() -> int:
     )
     print(
         f"Generated {REVISION}: {len(data)} parameters, {len(interfaces)} interfaces, "
-        f"{len(components)} component groups, {len(datums)} datums"
+        f"{len(components)} component groups, {len(frame_joints)} frame joints, {len(datums)} datums"
     )
     print(WARNING)
     return 0

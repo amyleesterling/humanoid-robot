@@ -36,11 +36,12 @@ def main() -> int:
     interface_path = CAD / "mechanical-interface-control.csv"
     component_path = CAD / "mechanical-assembly-components.csv"
     extrusion_path = ROOT / "bom" / "hr-v0-extrusion-cut-schedule.csv"
+    frame_joint_path = ROOT / "bom" / "hr-v0-frame-joint-schedule.csv"
     inspection_path = ROOT / "tests" / "forms" / "hr-v0-mechanical-release-inspection-template.csv"
     svg_path = OUT / "HR-V0_general-arrangement.svg"
     datums_path = OUT / "assembly-datums.csv"
     summary_path = OUT / "mechanical-release-summary.json"
-    required = [data_path, interface_path, component_path, extrusion_path, inspection_path, svg_path, datums_path, summary_path]
+    required = [data_path, interface_path, component_path, extrusion_path, frame_joint_path, inspection_path, svg_path, datums_path, summary_path]
     for path in required:
         if not path.is_file():
             errors.append(f"missing {path.relative_to(ROOT)}")
@@ -52,6 +53,7 @@ def main() -> int:
     interfaces = rows(interface_path)
     components = rows(component_path)
     extrusions = rows(extrusion_path)
+    frame_joints = rows(frame_joint_path)
     inspection = rows(inspection_path)
     datums = rows(datums_path)
     bom = {row["item_id"]: row for row in rows(ROOT / "bom" / "bom.csv")}
@@ -75,14 +77,15 @@ def main() -> int:
         errors.append("interface register must contain ordered MIC-001 through MIC-012")
     expected_interface_counts = {
         "design_required": 2,
+        "exact_candidate_hold": 1,
         "physical_fit_required": 5,
         "received_verification_required": 1,
-        "selection_required": 4,
+        "selection_required": 3,
     }
     if Counter(row["current_status"] for row in interfaces) != expected_interface_counts:
         errors.append("interface status counts changed")
-    if len(components) != 19 or [row["item_no"] for row in components] != [str(index) for index in range(1, 20)]:
-        errors.append("assembly component schedule must contain item numbers 1 through 19")
+    if len(components) != 20 or [row["item_no"] for row in components] != [str(index) for index in range(1, 21)]:
+        errors.append("assembly component schedule must contain item numbers 1 through 20")
     for row in components:
         if row["source_id"] not in bom:
             errors.append(f"assembly item {row['item_no']} references unknown {row['source_id']}")
@@ -95,6 +98,10 @@ def main() -> int:
         errors.append(f"extrusion cut total expected 2140 mm, found {total_length}")
     if any(row["parent_bom_id"] != "BOM-024" or row["release_state"] != "candidate_cut_length" for row in extrusions):
         errors.append("extrusion schedule lost BOM-024/candidate-cut controls")
+    if len(frame_joints) != 6 or sum(int(row["hardware_qty"]) for row in frame_joints) != 24:
+        errors.append("frame-joint schedule must resolve six brackets and twenty-four hardware assemblies")
+    if any(row["configuration_state"] != "exact_candidate_hold" for row in frame_joints):
+        errors.append("frame-joint schedule lost exact-candidate hold controls")
 
     expected_inspection_ids = {
         "MRD-001", "MRD-002", "MRD-003", "MRD-005", "MRD-006", "MRD-007", "MRD-008", "MRD-009", "MRD-010",
@@ -140,10 +147,10 @@ def main() -> int:
     summary = json.loads(summary_path.read_text(encoding="utf-8"))
     if summary.get("revision") != REVISION or summary.get("warning") != WARNING:
         errors.append("mechanical summary revision/warning changed")
-    expected_counts = {"controlled_parameters": 24, "interfaces": 12, "assembly_components": 19, "extrusion_cut_rows": 3, "datums": 6}
+    expected_counts = {"controlled_parameters": 24, "interfaces": 12, "assembly_components": 20, "extrusion_cut_rows": 3, "frame_joint_rows": 6, "datums": 6}
     if summary.get("counts") != expected_counts:
         errors.append(f"mechanical summary counts changed: {summary.get('counts')}")
-    for path in (data_path, interface_path, component_path, extrusion_path):
+    for path in (data_path, interface_path, component_path, extrusion_path, frame_joint_path):
         key = path.relative_to(ROOT).as_posix()
         if summary.get("source_hashes", {}).get(key) != canonical_text_sha256(path):
             errors.append(f"mechanical summary hash stale for {key}")
@@ -162,6 +169,7 @@ def main() -> int:
         "cad/hr-v0/mechanical-interface-control.csv",
         "cad/hr-v0/generated/assembly/",
         "bom/hr-v0-extrusion-cut-schedule.csv",
+        "bom/hr-v0-frame-joint-schedule.csv",
         "docs/hr-v0-mechanical-release-p0.2.md",
     ):
         if evidence not in gate_text:
@@ -169,9 +177,13 @@ def main() -> int:
     requirement_rows = {row["id"]: row for row in rows(ROOT / "requirements" / "requirements.csv")}
     if requirement_rows.get("MECH-002", {}).get("verification_id") != "AUDIT-MECH-001":
         errors.append("MECH-002 / AUDIT-MECH-001 traceability missing")
+    if requirement_rows.get("MECH-003", {}).get("verification_id") != "INSPECT-MECH-010":
+        errors.append("MECH-003 / INSPECT-MECH-010 traceability missing")
     procedures = {row["verification_id"]: row for row in rows(ROOT / "tests" / "procedures" / "procedure-registry.csv")}
     if procedures.get("AUDIT-MECH-001", {}).get("linked_requirement_ids") != "MECH-002":
         errors.append("AUDIT-MECH-001 procedure missing")
+    if procedures.get("INSPECT-MECH-010", {}).get("linked_requirement_ids") != "MECH-003":
+        errors.append("INSPECT-MECH-010 procedure missing")
     release = json.loads((ROOT / "release" / "hr-v0" / "release-candidate.json").read_text(encoding="utf-8"))
     mechanical = next((item for item in release["current_products"] if item["domain"] == "mechanical"), {})
     if mechanical.get("identifier") != REVISION:
@@ -183,7 +195,7 @@ def main() -> int:
             print(f"- {error}", file=sys.stderr)
         return 1
     print("HR-V0 mechanical release validation: PASS")
-    print("24 controlled parameters; 12 interfaces; 19 assembly groups; 5 extrusion cuts; 6 datums")
+    print("24 controlled parameters; 12 interfaces; 20 assembly groups; 5 extrusion cuts; 6 frame joints; 6 datums")
     print("0 fabrication or assembly releases; physical fit, fasteners, stops, guard, mass and bench anchoring remain open")
     print(WARNING)
     return 0
