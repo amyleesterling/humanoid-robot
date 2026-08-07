@@ -153,7 +153,10 @@ def main() -> int:
     for name, solid in components.items():
         assembly.add(solid, name=name, color=colors.get(name, cq.Color(0.65, 0.69, 0.73)))
     step_path = OUT / "HR-V0_arm_architecture_candidate.step"
-    assembly.save(str(step_path))
+    # Assembly STEP presentation records are emitted in nondeterministic map
+    # order by OCC.  The controlled STEP is therefore an ordered geometry
+    # compound; the GLB carries the component names and review colors.
+    cq.exporters.export(cq.Compound.makeCompound(list(components.values())), str(step_path))
     canonicalize_step(step_path)
     assembly.save(str(OUT / "HR-V0_arm_architecture_candidate.glb"))
 
