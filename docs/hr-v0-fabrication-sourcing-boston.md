@@ -1,71 +1,71 @@
 # HR-V0 Boston fabrication and custom-metal sourcing
 
-Status: **VERIFIED SOURCING RESEARCH - NOT A RELEASED MANUFACTURING PACKAGE**
+**PRELIMINARY - SOURCING RESEARCH ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, OR ENERGIZATION**
 
 Research updated: 2026-08-07
+
 Region: Boston, Massachusetts, USA
 
-## Program input
+Identifier: `HR-V0-FAB-SRC-P0.2`
 
-- HR-V0 is a light-duty demonstrator for one soft foam object of at most 100 g; low payload does not replace tolerances, inspection, proof loading, hard stops, guarding, stopping tests or qualified review.
-- The local library's metalworking capability is unknown. The plan does not depend on it.
-- No welding or custom bent structural aluminum is currently required.
+Current geometry input: `HR-V0-ARM-ARCH-P0.4` / R57
 
-## Controlled recommendation
+Controlled route register: `cad/hr-v0/manufacturing/hr-v0-r57-fabrication-route-register.csv`
 
-Use flat 4.75 mm and 6.35 mm 6061-T6 plates, catalog ROBOTIS frames and catalog 80/20 brackets. The current 2.70 mm candidate holes in `MV0-001`, `MV0-002`, and `MV0-003` must be CNC drilled/milled. Quote either one-stop CNC or a deliberately hole-free profile blank followed by qualified secondary machining. `MV0-004` remains on site hold until the real bench survey closes its slot and anchor definition.
+## Configuration correction
 
-See the controlled [flat-plate manufacturing decision](hr-v0-flat-plate-manufacturing-p0.1.md), [fabrication-route supplement](hr-v0-boston-fabrication-route-p0.1.md), and machine-readable route register.
+The earlier version of this page named `MV0-001`, `MV0-002`, and `MV0-003` as current custom parts. R53 withdrew those parts because their coplanar-frame assumption was wrong. They remain historical only and must not be quoted, cut, or uploaded to a supplier.
+
+The current R57 arm candidate uses:
+
+- four identical `MV0-C01` adapter candidates, each `48 x 40 x 9.525 mm` nominal, from a single received heat lot of OnlineMetals `1249` 6061-T651 stock;
+- one 100 mm and one 50 mm 80/20 `20-2040` extrusion candidate, each with the proposed `20-7047` two-hole M5 end-tap service; and
+- catalog ROBOTIS frames and current exact fastener candidates recorded in `HR-V0-ARM-ARCH-P0.4`.
+
+The distal H104 interface pattern, complete cable/guard envelope, hard stop, stopping-overtravel margin, bench anchor, received fit, supplier DFM, FAI, proof testing, and qualified mechanical acceptance remain open. The parent `HR-V0-MECH-P0.3` release hold remains in force.
+
+## Recommended Boston-area route
+
+Use catalog ROBOTIS/80/20 hardware wherever the current candidate permits it. For the four adapters, obtain written DFM from a one-stop 3-axis CNC supplier only after a qualified reviewer accepts the P0.4 drawing controls. Use Artisans Asylum as the leading nearby candidate for machine-capability confirmation, training, minor finishing, or independent dimensional inspection. Use SendCutSend only as a possible profile-blank source followed by qualified secondary CNC machining; no current profile-only upload artifact exists, so nothing may be uploaded or ordered on that route.
+
+The Boston Public Library pages checked for this research document design, software, and PLA resources but no suitable structural-aluminum machining capability. FabVille describes education and prototyping rather than production. Neither is a current structural-metal supplier route.
 
 ## Current part-to-process plan
 
-| Controlled part | Qty | Stock | Permitted quotation route | Hold point |
+| Current item | Candidate quantity | Candidate process | Current action | Hold point |
 |---|---:|---|---|---|
-| `MV0-001` upper link | 1 | 4.75 mm 6061-T6 | One-stop CNC, or `PROFILE_ONLY_RFQ` blank plus qualified secondary CNC/drill | `MV0-FC01` and `MV0-FC02`, hole tolerance, DFM and FAI |
-| `MV0-002` forearm | 1 | 4.75 mm 6061-T6 | One-stop CNC, or `PROFILE_ONLY_RFQ` blank plus qualified secondary CNC/drill | `MV0-FC01` and `MV0-FC03`, hole tolerance, DFM and FAI |
-| `MV0-003` shoulder adapter | 1 | 6.35 mm 6061-T6 | One-stop CNC, or `PROFILE_ONLY_RFQ` blank plus qualified secondary CNC/drill | `MV0-FC02`, column interface, DFM and FAI |
-| `MV0-004` bench anchor | 2 | 6.35 mm 6061-T6 | Site hold; profile cutting or one-stop CNC only after survey | Bench substrate, anchor system, slots, DFM and FAI |
-| Fit coupons, guard templates, cable mockups | as needed | Approved nonstructural material | Library or prototype-shop candidate | Inspection procedure and material/use restrictions |
+| `MV0-C01` adapter | 4 | One-stop 3-axis CNC from accepted drawing/STEP/DXF | Capability/DFM inquiry only after qualified drawing review | Material specification and MTR acceptance, final H104 pattern, supplier DFM, one-first-article authorization, FAI and proof |
+| `MV0-C01` profile blank | 4 | Profile cutting without holes/countersinks, then qualified secondary CNC | Research only; no controlled upload artifact exists | Generate a separate hole-free artifact and prove material traceability, datum/fixture plan, finished-feature capability and FAI |
+| 80/20 `20-2040`, 100 mm | 1 | Catalog cut plus `20-7047` two-hole M5 end-tap service | Written supplier configuration/DFM confirmation only | Received length, squareness, end-tap location/depth, thread-gauge result and joint proof |
+| 80/20 `20-2040`, 50 mm | 1 | Catalog cut plus `20-7047` two-hole M5 end-tap service | Written supplier configuration/DFM confirmation only | Same as 100 mm member |
+| Bench anchor | 2 candidate | Selection required after actual bench survey | Site survey only | Substrate, edge distance, access, anchor system, pull-out basis, slots, DFM, FAI and proof |
+| Fit/guard/cable aids | as needed | PLA, plywood, foam, or other approved nonstructural material | Prototype only | Must not enter a primary load path or be mistaken for released guarding |
 
-The generated files are RFQ geometry only. Final-geometry DXFs must not be uploaded to a profile-only supplier as a cutting order.
+## Capability screen
 
-## Current official-source capability screen
+All pages were checked 2026-08-07; no formal revision was exposed unless the page itself stated one.
 
-All pages below were rechecked 2026-08-07 and exposed no formal document revision unless stated.
-
-| Route | Current published capability | Controlled HR-V0 use |
+| Candidate | Published evidence | Controlled use |
 |---|---|---|
-| [Boston Public Library KBLIC](https://www.bpl.org/kblic/) and [Teen Central](https://www.bpl.org/services-central-library/teen-central/) | Checked pages document CAD/software, MakerBot/PLA and related maker resources. No suitable structural-metal machining capability was documented. | Design/nonstructural aids only on current evidence; excluded from the structural-metal route. |
-| [FabVille, Somerville](https://fabville.org/) | Current page describes free open-shop/lab-manager support and says its focus is education and prototyping rather than small-scale manufacturing. | Prototype/training candidate only; exact current machine and material policy require direct confirmation. |
-| [Artisans Asylum, Allston](https://www.artisansasylum.com/home) | Current page lists Machine Shop, Metal Shop and CNC Plasma Cutter resources at 96 Holton Street. It does not publish the exact machine, tolerance or availability needed here. | Nearby capability-confirmation, training, secondary-machining or inspection candidate; no job is assumed accepted. |
-| [SendCutSend 6061](https://sendcutsend.com/blog/6061-t6-aluminum-laser-cutting-service/) | Advertises 6061-T6 profile cutting and gives 0.170 inch as an example minimum hole, larger than the current 2.70 mm holes. | Hole-free profile-blank quote candidate only; secondary machining remains mandatory. |
-| [Xometry CNC](https://www.xometry.com/capabilities/cnc-machining-service/) | Advertises 6061 CNC machining, DFM feedback and inspection options. | One-stop CNC/DFM quotation candidate; exact quote, drawing and FAI govern. |
-| [Protolabs aluminum CNC](https://www.protolabs.com/services/cnc-machining/aluminum/) | Advertises 6061-T651 CNC machining and published machining tolerances. | Independent one-stop quotation candidate; T651 versus current T6 callout requires explicit disposition. |
+| [Artisans Asylum, Allston](https://www.artisansasylum.com/home) | Current page lists Machine Shop, Metal Shop, and CNC Plasma Cutter resources at 96 Holton Street. | Local capability confirmation, training, finishing, or inspection candidate. Exact machine, operator, tolerance, material policy, access, and accepted job remain unverified. |
+| [Xometry CNC](https://www.xometry.com/capabilities/cnc-machining-service/) | Advertises 6061 CNC machining, DFM feedback, and inspection options. | One-stop CNC/DFM candidate after drawing review; no quote, supplier selection, or work authorization exists. |
+| [Protolabs aluminum CNC](https://www.protolabs.com/services/cnc-machining/aluminum/) | Advertises 6061-T651 CNC machining and published machining tolerances. | Independent one-stop quotation candidate after drawing review; exact material, inspection, and quote terms govern. |
+| [SendCutSend 6061](https://sendcutsend.com/blog/6061-t6-aluminum-laser-cutting-service/) | Advertises 6061-T6 profile cutting. | Research-only profile-blank candidate. Current 2.70 mm holes and countersinks require secondary CNC; no active profile-only artifact exists. |
+| [80/20 20-2040](https://8020.net/20-2040.html) | Current profile page offers the proposed two-hole M5 x 0.8 end-tap service. | Catalog member/service candidate subject to written configuration confirmation and received inspection. |
+| [Boston Public Library KBLIC](https://www.bpl.org/kblic/) | Checked pages document maker/design resources, not suitable structural-metal machining. | Design and nonstructural prototype aids only on current evidence. |
+| [FabVille, Somerville](https://fabville.org/) | Current page describes education, prototyping, and open-shop support. | Training/prototyping candidate only; not a released structural-part route. |
 
-Current prices are not engineering inputs; they depend on the frozen geometry, quantity, tolerance, finish, inspection and lead time.
+## Evidence required before any first article
 
-## Makerspace capability checklist
+1. Qualified mechanical acceptance of the P0.4 drawing, tolerances, material specification, provisional MTR threshold, load cases, and analytical method.
+2. Closure of the H104 distal pattern and complete adapter quantity/configuration.
+3. Supplier written DFM against the exact repository commit, file names, SHA-256 values, quantity, material, process, tolerances, finish, certificate, and FAI requirements.
+4. A separately signed authorization for one first article only. A quote or portal upload is not authorization.
+5. Completed `tests/forms/hr-v0-arm-adapter-fai-template.csv` and received-fit evidence using calibrated instruments.
+6. Released installation torque, anti-galling, locking, reuse, witness-mark, proof, and nonconformance rules.
+7. Physical joint proof, slip/backlash, cycle/impact, cable/guard, hard-stop, and stopping-overtravel evidence.
+8. Signed qualified mechanical disposition and every applicable electrical/functional-safety gate before powered use.
 
-Before assigning any metal part, record:
+The robot's light 100 g foam-object payload reduces the design load case; it does not remove these controls or make an untested moving arm safe around children.
 
-- exact machine make/model, work envelope and operating status;
-- written approval for 6061 at 4.75 or 6.35 mm;
-- spindle, tooling, workholding, coolant/chip-control and stock rules;
-- CAM workflow and accepted source formats;
-- class, certification, supervision, reservation, cost and residency rules;
-- drawing tolerance the shop accepts and available calibrated inspection instruments; and
-- permission for outside stock, cutting fluid, drilling, reaming, tapping and repeat setups.
-
-Until this evidence exists, use a library or makerspace only for approved nonmetal aids or capability discussions.
-
-## Immediate sequence
-
-1. Receive the controlled ROBOTIS interface hardware and execute `INSPECT-MECH-003`, `INSPECT-MECH-004`, and `INSPECT-MECH-008`.
-2. Freeze finished hole diameter/location tolerances from physical evidence and reviewed calculations.
-3. Complete fastener, hard-stop, cable, guard and bench-anchor definitions.
-4. Obtain comparable one-stop CNC and/or controlled two-process quotes for the same hashes and revision; obtain any `MV0-004` quote only after bench survey.
-5. Obtain supplier DFM acceptance and qualified review of the selected route.
-6. Release a separately controlled one-first-article authorization.
-7. Execute `INSPECT-MECH-009`; do not use the article in powered assembly until signed disposition.
-
-**PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY OR ENERGIZATION.**
+**PRELIMINARY - SOURCING RESEARCH ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, OR ENERGIZATION**

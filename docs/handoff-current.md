@@ -39,7 +39,8 @@ The authoritative repository controls engineering intent and contains the review
 - `SHKL-M5-20-A2-R360`, `SCB2.5-20` and `HNN-M2.5-A2` are the current exact fastener candidates on hold. The analytical screens pass their project thresholds, but received MTR/fit, qualified allowable/method acceptance, stack/tolerance measurements, torque/locking/reuse rules and physical proof remain open. Source reference properties are not allowables.
 - `MECH-005` / `AUDIT-MECH-012` / `INSPECT-MECH-014` / `INSPECT-MECH-015` and `MECH-006` / `INSPECT-MECH-013` therefore remain open. No arm quotation can resume from R57.
 - `MV0-004` and the base/frame candidate remain on their separate exact-Boston-bench, physical-fit, torque and proof holds.
-- See `docs/hr-v0-build-site-basis.md`, `docs/hr-v0-fabrication-sourcing-boston.md`, and `docs/hr-v0-flat-plate-manufacturing-p0.1.md`. No cutting order is authorized until received-part coupons, final tolerances, fasteners, bench survey, supplier DFM, separately authorized first article, FAI, and qualified review close.
+- R59 issues `HR-V0-FAB-SRC-P0.2`, which corrects the Boston sourcing page to the current four-adapter/two-member R57 candidate. Xometry and Protolabs remain one-stop CNC/DFM candidates; Artisans Asylum is the leading local capability/inspection candidate; SendCutSend is research-only because no current hole-free upload artifact exists; BPL and FabVille remain nonstructural/training routes. Eight route records are held or excluded and all seven inquiry rows are unexecuted.
+- See `docs/hr-v0-build-site-basis.md`, `docs/hr-v0-fabrication-sourcing-boston.md`, and the explicitly withdrawn historical `docs/hr-v0-flat-plate-manufacturing-p0.1.md`. No portal upload, quote request against geometry, cutting order, or first article is authorized until the named route holds close.
 
 ## Current controlled counts
 
@@ -62,7 +63,7 @@ ERC validates modeled connectivity and annotation only. It does not establish ph
 
 ## Review history and independent findings
 
-Fifty-eight review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R58 are controlled project responses, not independent approvals. R58 adds the fail-closed E2 control-only sequence and evidence boundary without closing a physical gate or authorizing energization.
+Fifty-nine review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R59 are controlled project responses, not independent approvals. R58 adds the fail-closed E2 control-only sequence; R59 corrects current Boston fabrication sourcing. Neither closes a physical gate or authorizes energization.
 
 ## Principal unresolved engineering blockers
 
