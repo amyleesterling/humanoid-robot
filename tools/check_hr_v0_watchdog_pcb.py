@@ -142,12 +142,43 @@ def main() -> int:
         wanted = {pin.number: pin.net for pin in comp.pins}
         require(actual == wanted, f"PCB pad/net mapping differs at {ref}", failures)
     require(board.GetCopperLayerCount() == 2, "candidate is no longer a controlled two-layer board", failures)
+    edge_segments = [
+        item for item in board.GetDrawings()
+        if item.GetLayer() == pcbnew.Edge_Cuts and item.GetShape() == pcbnew.SHAPE_T_SEGMENT
+    ]
+    outline_edges = {
+        frozenset((
+            (round(pcbnew.ToMM(item.GetStart().x), 4), round(pcbnew.ToMM(item.GetStart().y), 4)),
+            (round(pcbnew.ToMM(item.GetEnd().x), 4), round(pcbnew.ToMM(item.GetEnd().y), 4)),
+        ))
+        for item in edge_segments
+    }
+    expected_outline = {
+        frozenset(((20.0, 20.0), (180.0, 20.0))),
+        frozenset(((180.0, 20.0), (180.0, 120.0))),
+        frozenset(((180.0, 120.0), (20.0, 120.0))),
+        frozenset(((20.0, 120.0), (20.0, 20.0))),
+    }
+    require(outline_edges == expected_outline,
+            "board outline differs from the controlled 160 mm x 100 mm rectangle", failures)
     segments = [item for item in board.Tracks() if type(item).__name__ == "PCB_TRACK"]
     vias = [item for item in board.Tracks() if type(item).__name__ == "PCB_VIA"]
     zones = list(board.Zones())
-    require(len(segments) == 200, "controlled segment count differs from 200", failures)
+    require(len(segments) == 201, "controlled segment count differs from 201", failures)
     require(len(vias) == 56, "controlled via count differs from 56", failures)
     require(len(zones) == 3, "controlled copper-zone count differs from three", failures)
+    min_track_width_mm = min(pcbnew.ToMM(item.GetWidth()) for item in segments)
+    min_via_drill_mm = min(pcbnew.ToMM(item.GetDrillValue()) for item in vias)
+    min_via_annular_mm = min(
+        (pcbnew.ToMM(item.GetWidth(pcbnew.F_Cu)) - pcbnew.ToMM(item.GetDrillValue())) / 2
+        for item in vias
+    )
+    require(min_track_width_mm >= 0.1524,
+            "a routed trace is below the controlled 6 mil fabrication envelope", failures)
+    require(min_via_drill_mm >= 0.254,
+            "a via drill is below the proposed two-layer service minimum", failures)
+    require(min_via_annular_mm >= 0.127,
+            "a via annular ring is below the proposed two-layer service minimum", failures)
     zones_by_net = {zone.GetNetname(): zone for zone in zones}
     require(set(zones_by_net) == {"SAFETY_0V"} | FLOATING_SUB_NETS,
             "zone nets differ from SAFETY_0V plus the two isolated SUB nets", failures)
@@ -288,18 +319,23 @@ def main() -> int:
                 f"CDRV{channel} is not compact to UDRV{channel} GND", failures)
 
     title = board.GetTitleBlock()
-    require(title.GetRevision() == "PCB-P0.4 / Electrical V3-P1.1", "PCB title-block revision mismatch", failures)
+    require(title.GetRevision() == "PCB-P0.5 / Electrical V3-P1.1", "PCB title-block revision mismatch", failures)
     require(WARNING in board_path.read_text(encoding="utf-8-sig"), "PCB warning missing", failures)
     require("ROUTED/TEST-ACCESS CANDIDATE" in board_path.read_text(encoding="utf-8-sig"),
             "routed/test-access candidate status missing from PCB", failures)
 
     project = json.loads((OUT / "project-button-v3.kicad_pro").read_text(encoding="utf-8-sig"))
+    board_rules = project["board"]["design_settings"]["rules"]
+    require(board_rules.get("min_copper_edge_clearance", 0) >= 0.381,
+            "encoded copper-to-edge clearance is below the proposed service minimum", failures)
+    require(board_rules.get("min_through_hole_diameter", 0) >= 0.254,
+            "encoded through-hole minimum is below the proposed service minimum", failures)
     default = next((item for item in project["net_settings"]["classes"] if item.get("name") == "Default"), {})
-    require(default.get("clearance") == 0.15, "controlled 0.15 mm candidate copper clearance missing", failures)
+    require(default.get("clearance") == 0.1524, "controlled 6 mil candidate copper clearance missing", failures)
     require(default.get("track_width") == 0.25, "controlled 0.25 mm candidate track width missing", failures)
     power = next((item for item in project["net_settings"]["classes"] if item.get("name") == "POWER24"), {})
-    require(power.get("clearance") == 0.15 and power.get("track_width") == 0.75,
-            "controlled POWER24 candidate net class differs from 0.15/0.75 mm", failures)
+    require(power.get("clearance") == 0.1524 and power.get("track_width") == 0.75,
+            "controlled POWER24 candidate net class differs from 0.1524/0.75 mm", failures)
     require(project["net_settings"].get("netclass_assignments") == {
         "SAFETY_24V": "POWER24", "WD1_COIL_N": "POWER24", "WD2_COIL_N": "POWER24"
     }, "POWER24 net assignments differ from the controlled three nets", failures)
@@ -325,7 +361,7 @@ def main() -> int:
 
     constraint_evidence = {
         "status": WARNING,
-        "board_revision": "PCB-P0.4",
+        "board_revision": "PCB-P0.5",
         "electrical_revision": "Electrical V3-P1.1",
         "generated_date": "2026-08-06",
         "manufacturer_sources": [
@@ -349,6 +385,13 @@ def main() -> int:
                 "revision": "Issue 10, 2023-02-15",
                 "accessed": "2026-08-06",
                 "url": "https://content.harwin.com/asset/e4e6a5e1-de35-4a2b-8b49-ff06562cba9d/DRG-02202-Technical-Drawing-Datasheet-S1751R-pdf.pdf",
+            },
+            {
+                "manufacturer": "OSH Park",
+                "document": "Two Layer Service design rules and materials",
+                "revision": "Web page; no revision stated",
+                "accessed": "2026-08-06",
+                "url": "https://docs.oshpark.com/services/two-layer/",
             },
         ],
         "measured_placement_screens_mm": {
@@ -397,6 +440,9 @@ def main() -> int:
             "test_points": TESTPOINT_NETS,
             "no_net_pads": len(no_net_pads),
             "track_widths_mm": sorted({round(pcbnew.ToMM(item.GetWidth()), 4) for item in segments}),
+            "minimum_track_width_mm": round(min_track_width_mm, 4),
+            "minimum_via_drill_mm": round(min_via_drill_mm, 4),
+            "minimum_via_annular_ring_mm": round(min_via_annular_mm, 4),
             "route_lengths_mm": {
                 net_name: round(sum(
                     math.hypot(
@@ -408,10 +454,30 @@ def main() -> int:
                 for net_name in sorted({item.GetNetname() for item in segments})
             },
         },
+        "proposed_fabrication_envelope": {
+            "status": "PROPOSED - FABRICATOR ACCEPTANCE AND RELEASE REQUIRED",
+            "service": "OSH Park Two Layer Prototype Service",
+            "country": "United States",
+            "nominal_board_thickness_mm": 1.6,
+            "copper_layers": 2,
+            "copper_weight_oz": 1,
+            "finish": "ENIG",
+            "minimum_trace_width_mm": 0.1524,
+            "minimum_trace_spacing_mm": 0.1524,
+            "minimum_drill_mm": 0.254,
+            "minimum_annular_ring_mm": 0.127,
+            "minimum_board_edge_keepout_mm": 0.381,
+            "controlled_board_outline_mm": [160.0, 100.0],
+            "encoded_copper_edge_clearance_mm": board_rules["min_copper_edge_clearance"],
+            "source_revision": "Web page; no revision stated",
+            "accessed": "2026-08-06",
+            "source_url": "https://docs.oshpark.com/services/two-layer/",
+        },
         "limitations": [
             "Zero native DRC violations proves only the encoded geometric/connectivity rules.",
-            "The 0.10 mm fine-pitch breakouts require fabricator capability selection and review.",
-            "No stack-up, fabrication, EMC, thermal, COM-slew, physical probe-access or fault evidence is released.",
+            "PCB-P0.5 encodes a 0.1524 mm (6 mil) minimum trace/clearance candidate envelope; fabricator acceptance remains required.",
+            "The proposed OSH Park two-layer process is not a released purchase or fabrication selection.",
+            "No fabrication, EMC, thermal, COM-slew, physical probe-access or fault evidence is released.",
             "UFB1 field and logic returns share SAFETY_0V; no galvanic-isolation or safety credit is claimed.",
         ],
     }
@@ -425,7 +491,7 @@ def main() -> int:
             print(f"- {failure}")
         return 1
     print("HR-V0 watchdog PCB routed/test-access validation: PASS")
-    print("42 board-mounted references; 4 board-only M3 holes; 200 segments; 56 vias; 3 filled zones")
+    print("42 board-mounted references; 4 board-only M3 holes; 201 segments; 56 vias; 3 filled zones")
     print("40 modeled nets: every multi-pad net connected; 14 singletons isolated; 2 SUB thermal nets controlled; 89 no-net pads untouched")
     print("TI placement/SUB screens and 16 Harwin test-point land patterns: PASS")
     print("KiCad DRC: 0 violations; 0 routed unconnected pads; no Gerber/drill release outputs")

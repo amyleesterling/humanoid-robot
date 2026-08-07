@@ -2,9 +2,9 @@
 
 This board freezes board membership, footprints, terminal-block identities,
 project pin allocation, placement constraints and a first controlled two-layer
-routing candidate. It is not a fabrication release: stack-up, protection,
-fabricator capability, test access, physical verification and independent
-layout review remain open.
+routing candidate. It is not a fabrication release: supplier acceptance,
+protection, physical test access, physical verification and independent layout
+review remain open.
 
 PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION.
 """
@@ -25,6 +25,8 @@ KICAD_ROOT = Path(r"C:\Program Files\KiCad\10.0")
 FOOTPRINT_ROOT = KICAD_ROOT / "share" / "kicad" / "footprints"
 CUSTOM_ROOT = OUT / "PBV3_Footprints.pretty"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
+FAB_TRACE_MIN_MM = 0.1524
+FAB_CLEARANCE_MIN_MM = 0.1524
 
 
 def load_model():
@@ -187,7 +189,7 @@ def add_floating_plane(pcbnew, board, net, center):
     zone.SetLayer(pcbnew.B_Cu)
     zone.SetNet(net)
     zone.SetAssignedPriority(2)
-    zone.SetLocalClearance(pcbnew.FromMM(0.15))
+    zone.SetLocalClearance(pcbnew.FromMM(FAB_CLEARANCE_MIN_MM))
     outline = zone.Outline()
     outline.NewOutline()
     for point in ((x - 1, y - 1), (x + 1, y - 1), (x + 1, y + 1), (x - 1, y + 1)):
@@ -241,9 +243,9 @@ def route_board(pcbnew, board, nets):
     via("WD_3V3", (44.0, 58.0))
     f("WD_3V3", [pad_point("RHP1", "1"), (49.0, 104.0), (54.0, 104.0)])
     via("WD_3V3", (54.0, 104.0))
-    f("WD_3V3", [pad_point("UFB1", "2"), (95.0, 74.412), pad_point("CDEC1", "1")], 0.1)
-    f("WD_3V3", [pad_point("UFB1", "3"), (94.5, 75.047), pad_point("CDEC1", "1")], 0.1)
-    f("WD_3V3", [pad_point("CDEC1", "1"), (92.0, 74.45)], 0.1)
+    f("WD_3V3", [pad_point("UFB1", "2"), (95.0, 74.412), pad_point("CDEC1", "1")], FAB_TRACE_MIN_MM)
+    f("WD_3V3", [pad_point("UFB1", "3"), (94.5, 75.047), pad_point("CDEC1", "1")], FAB_TRACE_MIN_MM)
+    f("WD_3V3", [pad_point("CDEC1", "1"), (92.0, 74.45)], FAB_TRACE_MIN_MM)
     via("WD_3V3", (92.0, 74.45))
     b("WD_3V3", [(44.0, 58.0), (44.0, 46.0)])
     via("WD_3V3", (44.0, 46.0))
@@ -262,13 +264,13 @@ def route_board(pcbnew, board, nets):
     f("SAFETY_24V", [pad_point("CDRV2", "1"), (128.5, 39.0), (128.5, 36.275), pad_point("UDRV2", "9")], 0.25)
     f("WD1_COIL_N", [pad_point("JWP1", "3"), (37.0, 27.0), (74.0, 27.0), (96.5, 27.0), (96.5, 31.725)], 0.75)
     f("WD1_COIL_N", [pad_point("TP9", "1"), (74.0, 27.0)], 0.75)
-    f("WD1_COIL_N", [(96.5, 31.725), pad_point("UDRV1", "16")], 0.1)
+    f("WD1_COIL_N", [(96.5, 31.725), pad_point("UDRV1", "16")], FAB_TRACE_MIN_MM)
     b("WD2_COIL_N", [pad_point("JWP1", "4"), (40.5, 24.0), (128.5, 24.0), (128.5, 29.5)], 0.75)
     f("WD2_COIL_N", [pad_point("TP10", "1"), (108.0, 24.0)], 0.75)
     via("WD2_COIL_N", (108.0, 24.0), 1.0, 0.5)
     via("WD2_COIL_N", (128.5, 29.5), 1.0, 0.5)
     f("WD2_COIL_N", [(128.5, 29.5), (128.5, 31.725)], 0.25)
-    f("WD2_COIL_N", [(128.5, 31.725), pad_point("UDRV2", "16")], 0.1)
+    f("WD2_COIL_N", [(128.5, 31.725), pad_point("UDRV2", "16")], FAB_TRACE_MIN_MM)
 
     # Two independent logic-drive routes. Channel 2 changes layer briefly to
     # cross channel 1 without a same-layer junction.
@@ -293,12 +295,12 @@ def route_board(pcbnew, board, nets):
     f("FB_IN2", [pad_point("UFB1", "10"), (104.5, 77.588), (106.0, 79.5), pad_point("RSN2", "2")])
     f("FB_SENSE1", [pad_point("UFB1", "16"), (104.5, 73.778), (104.5, 70.862), pad_point("CFI1", "1")])
     f("FB_SENSE1", [pad_point("CFI1", "1"), (106.0, 72.5), pad_point("RSN1", "1"), (115.0, 72.5), pad_point("RTH1", "2")])
-    f("FB_SENSE2", [pad_point("UFB1", "11"), (105.5, 76.953)], 0.1)
+    f("FB_SENSE2", [pad_point("UFB1", "11"), (105.5, 76.953)], FAB_TRACE_MIN_MM)
     via("FB_SENSE2", (105.5, 76.953), 0.6, 0.3)
     via("FB_SENSE2", (105.5, 80.138), 0.6, 0.3)
-    b("FB_SENSE2", [(105.5, 76.953), (105.5, 80.138)], 0.1)
-    f("FB_SENSE2", [(105.5, 80.138), pad_point("CFI2", "1")], 0.1)
-    f("FB_SENSE2", [pad_point("CFI2", "1"), (107.0, 80.138), (107.0, 83.0), (115.0, 83.0), (115.0, 77.5), pad_point("RSN2", "1")], 0.1)
+    b("FB_SENSE2", [(105.5, 76.953), (105.5, 80.138)], FAB_TRACE_MIN_MM)
+    f("FB_SENSE2", [(105.5, 80.138), pad_point("CFI2", "1")], FAB_TRACE_MIN_MM)
+    f("FB_SENSE2", [pad_point("CFI2", "1"), (107.0, 80.138), (107.0, 83.0), (115.0, 83.0), (115.0, 77.5), pad_point("RSN2", "1")], FAB_TRACE_MIN_MM)
     f("FB_SENSE2", [(115.0, 77.5), (115.0, 82.0), pad_point("RTH2", "2")])
     f("WD1_NC_24V", [pad_point("RTH1", "1"), pad_point("RW1", "1"), (132.0, 68.0)], 0.5)
     via("WD1_NC_24V", (132.0, 68.0), 1.0, 0.5)
@@ -317,14 +319,14 @@ def route_board(pcbnew, board, nets):
 
     # Receiver outputs use B.Cu hops around the package, then local front
     # networks and separate B.Cu returns to the Pico feedback inputs.
-    for net_name, ufb_pin, rso_ref, near_via, far_via in (
-        ("UFB_OUT1", "4", "RSO1", (93.0, 75.683), (86.0, 64.0)),
-        ("UFB_OUT2", "5", "RSO2", (93.0, 77.5), (86.0, 84.0)),
+    for net_name, ufb_pin, rso_ref, near_via, far_via, corridor_y in (
+        ("UFB_OUT1", "4", "RSO1", (93.0, 75.683), (86.0, 64.0), 75.683),
+        ("UFB_OUT2", "5", "RSO2", (94.0, 76.3175), (86.0, 84.0), 77.0),
     ):
-        f(net_name, [pad_point("UFB1", ufb_pin), near_via], 0.1)
+        f(net_name, [pad_point("UFB1", ufb_pin), near_via], FAB_TRACE_MIN_MM)
         via(net_name, near_via)
         via(net_name, far_via)
-        b(net_name, [near_via, (86.0, near_via[1]), far_via])
+        b(net_name, [near_via, (near_via[0], corridor_y), (86.0, corridor_y), far_via])
         f(net_name, [far_via, pad_point(rso_ref, "1")])
     f("UFB_OUT1", [(86.0, 64.0), (86.0, 58.0), pad_point("TP13", "1")])
     via("UFB_OUT2", (86.0, 92.0))
@@ -369,13 +371,13 @@ def route_board(pcbnew, board, nets):
     ):
         f("SAFETY_0V", [pad_point(reference, number), via_point], 0.5)
         via("SAFETY_0V", via_point, 1.0, 0.5)
-    f("SAFETY_0V", [pad_point("CDEC1", "2"), (92.0, 72.55)], 0.1)
+    f("SAFETY_0V", [pad_point("CDEC1", "2"), (92.0, 72.55)], FAB_TRACE_MIN_MM)
     via("SAFETY_0V", (92.0, 72.55), 0.8, 0.4)
     for ufb_pin, via_point in (("1", (100.0, 70.5)), ("8", (95.0, 79.5)), ("14", (104.0, 75.0475)), ("9", (103.2, 83.5))):
         if ufb_pin == "9":
-            f("SAFETY_0V", [pad_point("UFB1", ufb_pin), (103.2, 78.222), via_point], 0.1)
+            f("SAFETY_0V", [pad_point("UFB1", ufb_pin), (103.2, 78.222), via_point], FAB_TRACE_MIN_MM)
         else:
-            f("SAFETY_0V", [pad_point("UFB1", ufb_pin), via_point], 0.1)
+            f("SAFETY_0V", [pad_point("UFB1", ufb_pin), via_point], FAB_TRACE_MIN_MM)
         if ufb_pin == "14":
             via("SAFETY_0V", via_point, 0.6, 0.3)
         else:
@@ -388,11 +390,11 @@ def route_board(pcbnew, board, nets):
     # TI ISO1212 Rev G recommends a separate, floating 2 mm x 2 mm plane for
     # each exposed SUB pin. These two nets remain isolated from each other and
     # from both field and logic grounds; the copper is thermal-only.
-    f("INTENTIONALLY_UNUSED_UFB1_13", [pad_point("UFB1", "13"), (104.0, 75.6825), (105.0, 75.2)], 0.1)
+    f("INTENTIONALLY_UNUSED_UFB1_13", [pad_point("UFB1", "13"), (104.0, 75.6825), (105.0, 75.2)], FAB_TRACE_MIN_MM)
     via("INTENTIONALLY_UNUSED_UFB1_13", (105.0, 75.2), 0.6, 0.3)
     b("INTENTIONALLY_UNUSED_UFB1_13", [(105.0, 75.2), (112.0, 75.2)], 0.2)
     add_floating_plane(pcbnew, board, nets["INTENTIONALLY_UNUSED_UFB1_13"], (112.0, 75.2))
-    f("INTENTIONALLY_UNUSED_UFB1_12", [pad_point("UFB1", "12"), (104.5, 76.3175)], 0.1)
+    f("INTENTIONALLY_UNUSED_UFB1_12", [pad_point("UFB1", "12"), (104.5, 76.3175)], FAB_TRACE_MIN_MM)
     via("INTENTIONALLY_UNUSED_UFB1_12", (104.5, 76.3175), 0.6, 0.3)
     b("INTENTIONALLY_UNUSED_UFB1_12", [(104.5, 76.3175), (104.0, 80.5), (108.0, 82.0), (108.0, 88.0), (112.0, 88.0)], 0.2)
     add_floating_plane(pcbnew, board, nets["INTENTIONALLY_UNUSED_UFB1_12"], (112.0, 88.0))
@@ -423,19 +425,19 @@ def main() -> int:
     title = board.GetTitleBlock()
     title.SetTitle("Project Button HR-V0 ordinary watchdog PCB routed/test-access candidate")
     title.SetDate("2026-08-06")
-    title.SetRevision("PCB-P0.4 / Electrical V3-P1.1")
+    title.SetRevision("PCB-P0.5 / Electrical V3-P1.1")
     title.SetCompany("Project Button")
     title.SetComment(0, WARNING)
     title.SetComment(1, "ROUTED/TEST-ACCESS CANDIDATE - NO GERBER RELEASE")
     default_class = pcbnew.NETCLASS("Default")
-    default_class.SetClearance(pcbnew.FromMM(0.15))
+    default_class.SetClearance(pcbnew.FromMM(FAB_CLEARANCE_MIN_MM))
     default_class.SetTrackWidth(pcbnew.FromMM(0.25))
     default_class.SetViaDiameter(pcbnew.FromMM(0.8))
     default_class.SetViaDrill(pcbnew.FromMM(0.4))
     board.GetNetClasses()["Default"] = default_class
-    board.GetDesignSettings().m_TrackMinWidth = pcbnew.FromMM(0.1)
+    board.GetDesignSettings().m_TrackMinWidth = pcbnew.FromMM(FAB_TRACE_MIN_MM)
     power_class = pcbnew.NETCLASS("POWER24")
-    power_class.SetClearance(pcbnew.FromMM(0.15))
+    power_class.SetClearance(pcbnew.FromMM(FAB_CLEARANCE_MIN_MM))
     power_class.SetTrackWidth(pcbnew.FromMM(0.75))
     power_class.SetViaDiameter(pcbnew.FromMM(1.0))
     power_class.SetViaDrill(pcbnew.FromMM(0.5))
@@ -474,7 +476,7 @@ def main() -> int:
     add_mounting_holes(pcbnew, board)
     route_board(pcbnew, board, nets)
     add_text(pcbnew, board, WARNING, 35, 116.5, 1.35, pcbnew.F_SilkS)
-    add_text(pcbnew, board, "PCB-P0.4 - ROUTED/TEST ACCESS - NO SAFETY CREDIT", 85, 112, 1.2, pcbnew.F_SilkS)
+    add_text(pcbnew, board, "PCB-P0.5 - 6 MIL ENVELOPE - NO SAFETY CREDIT", 85, 112, 1.2, pcbnew.F_SilkS)
     add_text(pcbnew, board, "+24  0V  C1-  C2-", 25, 42, 1.1, pcbnew.F_SilkS)
     add_text(pcbnew, board, "FB1  FB2", 143, 69, 1.1, pcbnew.F_SilkS)
     add_text(pcbnew, board, "HB   COMPUTE-0V", 25, 101.5, 1.1, pcbnew.F_SilkS)
@@ -492,12 +494,12 @@ def main() -> int:
     if default is None:
         default = {"name": "Default", "priority": 2147483647}
         classes.append(default)
-    default.update({"clearance": 0.15, "track_width": 0.25, "via_diameter": 0.8, "via_drill": 0.4})
+    default.update({"clearance": FAB_CLEARANCE_MIN_MM, "track_width": 0.25, "via_diameter": 0.8, "via_drill": 0.4})
     power = next((item for item in classes if item.get("name") == "POWER24"), None)
     if power is None:
         power = {"name": "POWER24", "priority": 1}
         classes.append(power)
-    power.update({"clearance": 0.15, "track_width": 0.75, "via_diameter": 1.0, "via_drill": 0.5})
+    power.update({"clearance": FAB_CLEARANCE_MIN_MM, "track_width": 0.75, "via_diameter": 1.0, "via_drill": 0.5})
     project["net_settings"]["netclass_assignments"] = {
         name: "POWER24" for name in ("SAFETY_24V", "WD1_COIL_N", "WD2_COIL_N")
     }

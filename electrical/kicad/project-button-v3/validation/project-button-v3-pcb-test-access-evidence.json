@@ -1,6 +1,6 @@
 {
   "status": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION",
-  "board_revision": "PCB-P0.4",
+  "board_revision": "PCB-P0.5",
   "electrical_revision": "Electrical V3-P1.1",
   "generated_date": "2026-08-06",
   "manufacturer_sources": [
@@ -24,6 +24,13 @@
       "revision": "Issue 10, 2023-02-15",
       "accessed": "2026-08-06",
       "url": "https://content.harwin.com/asset/e4e6a5e1-de35-4a2b-8b49-ff06562cba9d/DRG-02202-Technical-Drawing-Datasheet-S1751R-pdf.pdf"
+    },
+    {
+      "manufacturer": "OSH Park",
+      "document": "Two Layer Service design rules and materials",
+      "revision": "Web page; no revision stated",
+      "accessed": "2026-08-06",
+      "url": "https://docs.oshpark.com/services/two-layer/"
     }
   ],
   "measured_placement_screens_mm": {
@@ -45,7 +52,7 @@
     "CDRV2_GND_to_UDRV2_GND8": 6.8335
   },
   "routing_state": {
-    "segments": 200,
+    "segments": 201,
     "vias": 56,
     "zones": 3,
     "native_unconnected_pads": 0,
@@ -157,12 +164,15 @@
     },
     "no_net_pads": 89,
     "track_widths_mm": [
-      0.1,
+      0.1524,
       0.2,
       0.25,
       0.5,
       0.75
     ],
+    "minimum_track_width_mm": 0.1524,
+    "minimum_via_drill_mm": 0.3,
+    "minimum_via_annular_ring_mm": 0.15,
     "route_lengths_mm": {
       "COMPUTE_0V": 32.83,
       "FB_IN1": 6.3776,
@@ -176,7 +186,7 @@
       "SAFETY_0V": 73.2245,
       "SAFETY_24V": 139.6875,
       "UFB_OUT1": 37.058,
-      "UFB_OUT2": 32.032,
+      "UFB_OUT2": 33.0575,
       "WD1_COIL_N": 75.8625,
       "WD1_DRIVE": 106.8654,
       "WD1_NC_24V": 43.1904,
@@ -192,10 +202,33 @@
       "WD_SWDIO": 18.4892
     }
   },
+  "proposed_fabrication_envelope": {
+    "status": "PROPOSED - FABRICATOR ACCEPTANCE AND RELEASE REQUIRED",
+    "service": "OSH Park Two Layer Prototype Service",
+    "country": "United States",
+    "nominal_board_thickness_mm": 1.6,
+    "copper_layers": 2,
+    "copper_weight_oz": 1,
+    "finish": "ENIG",
+    "minimum_trace_width_mm": 0.1524,
+    "minimum_trace_spacing_mm": 0.1524,
+    "minimum_drill_mm": 0.254,
+    "minimum_annular_ring_mm": 0.127,
+    "minimum_board_edge_keepout_mm": 0.381,
+    "controlled_board_outline_mm": [
+      160.0,
+      100.0
+    ],
+    "encoded_copper_edge_clearance_mm": 0.5,
+    "source_revision": "Web page; no revision stated",
+    "accessed": "2026-08-06",
+    "source_url": "https://docs.oshpark.com/services/two-layer/"
+  },
   "limitations": [
     "Zero native DRC violations proves only the encoded geometric/connectivity rules.",
-    "The 0.10 mm fine-pitch breakouts require fabricator capability selection and review.",
-    "No stack-up, fabrication, EMC, thermal, COM-slew, physical probe-access or fault evidence is released.",
+    "PCB-P0.5 encodes a 0.1524 mm (6 mil) minimum trace/clearance candidate envelope; fabricator acceptance remains required.",
+    "The proposed OSH Park two-layer process is not a released purchase or fabrication selection.",
+    "No fabrication, EMC, thermal, COM-slew, physical probe-access or fault evidence is released.",
     "UFB1 field and logic returns share SAFETY_0V; no galvanic-isolation or safety credit is claimed."
   ]
 }
