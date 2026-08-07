@@ -71,7 +71,7 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P1.7", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P1.8", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
@@ -100,6 +100,18 @@ def main() -> int:
                 f"{ref} prematurely releases a fuse or coordination result", failures)
         require("manufacturer maxima are not project selections" in components[ref].description,
                 f"{ref} omits the product-limit boundary", failures)
+
+    sd1 = components["SD1"]
+    require("75920-01" in sd1.value, "SD1 exact catalog candidate changed", failures)
+    require("SPST HIGH-SIDE TOPOLOGY FROZEN" in sd1.status,
+            "SD1 topology/order-code boundary changed", failures)
+    require([pin.number for pin in sd1.pins] == ["TBD-IN", "TBD-OUT"],
+            "SD1 source/load terminals were inferred", failures)
+    for required in ("4/0 cable", "not the E-stop", "no functional-safety credit"):
+        require(required in sd1.description,
+                f"SD1 description omits application boundary: {required}", failures)
+    require("Rev 091825" in sd1.evidence and "IF-165 Rev 010320-C" in sd1.evidence,
+            "SD1 current primary-document revisions are not recorded", failures)
 
     expected_schematics = {f"{gen.PROJECT}.kicad_sch", *(sheet.filename for sheet in sheets)}
     actual_schematics = {path.name for path in OUT.glob("*.kicad_sch")}

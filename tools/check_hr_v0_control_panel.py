@@ -10,11 +10,11 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PACKAGE = ROOT / "electrical" / "panel" / "hr-v0-control-panel-p0.3"
+PACKAGE = ROOT / "electrical" / "panel" / "hr-v0-control-panel-p0.4"
 V3 = ROOT / "electrical" / "kicad" / "project-button-v3"
 FORM = ROOT / "tests" / "forms" / "hr-v0-control-panel-receiving-assembly-template.csv"
 H1_FORM = ROOT / "tests" / "forms" / "hr-v0-h1-receiving-template.csv"
-DOC = ROOT / "docs" / "hr-v0-control-panel-p0.3.md"
+DOC = ROOT / "docs" / "hr-v0-control-panel-p0.4.md"
 H1_DOC = ROOT / "docs" / "hr-v0-h1-receiving-p0.1.md"
 PRIMARY_SOURCES = ROOT / "references" / "primary-sources.md"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
@@ -42,6 +42,7 @@ def main() -> int:
         "panel-bom.csv",
         "backplate-layout.csv",
         "door-layout.csv",
+        "sidewall-placement.csv",
         "terminal-allocation.csv",
         "cable-entry-schedule.csv",
         "stationary-wire-schedule.csv",
@@ -61,8 +62,8 @@ def main() -> int:
         require_warning(rows, name, errors)
 
     bom = tables.get("panel-bom.csv", [])
-    if len(bom) != 24 or {row.get("item_id") for row in bom} != {f"PAN-{i:03d}" for i in range(1, 25)}:
-        errors.append("panel BOM must contain exactly PAN-001..PAN-024")
+    if len(bom) != 25 or {row.get("item_id") for row in bom} != {f"PAN-{i:03d}" for i in range(1, 26)}:
+        errors.append("panel BOM must contain exactly PAN-001..PAN-025")
     required_mpn = {
         "PAN-001": "PJ242010RT",
         "PAN-002": "18P2117",
@@ -86,6 +87,7 @@ def main() -> int:
         "PAN-022": "5025",
         "PAN-023": "FHAC0002SXJ",
         "PAN-024": "D-ST 4, item 3030420",
+        "PAN-025": "75920-01",
     }
     by_item = {row.get("item_id", ""): row for row in bom}
     for item_id, mpn in required_mpn.items():
@@ -117,9 +119,11 @@ def main() -> int:
         if not any(token in row.get("release_state", "") for token in ("HOLD", "CANDIDATE", "SELECTION REQUIRED")):
             errors.append(f"{row.get('layout_id')} has released-looking layout state")
     reserve = next((row for row in backplate if row.get("layout_id") == "BP-020"), {})
-    for ref in ("JC1", "SD1", "F0-F3 LINKS", "FSR1-FSR2 LINKS"):
+    for ref in ("JC1", "F0-F3 LINKS", "FSR1-FSR2 LINKS"):
         if ref not in reserve.get("reference", ""):
             errors.append(f"selection reserve omits {ref}")
+    if "SD1" in reserve.get("reference", ""):
+        errors.append("backplate reserve still conflates SD1 with the separate sidewall option")
     bottom_expected = {
         "BP-016": (54.0, 385.0, 100.0, 130.0),
         "BP-018": (175.0, 385.0, 25.0, 75.0),
@@ -145,6 +149,14 @@ def main() -> int:
             errors.append(f"H1 door record omits {required}")
     if "NO CUTOUT" not in h1.get("release_state", ""):
         errors.append("H1 door cutout is not fail-closed")
+
+    sidewall = tables.get("sidewall-placement.csv", [])
+    if len(sidewall) != 1 or sidewall[0].get("option_id") != "SW-001" or sidewall[0].get("reference") != "SD1":
+        errors.append("sidewall placement must contain exactly SW-001 for SD1")
+    elif any(sidewall[0].get(field) != "SELECTION REQUIRED" for field in ("cutout", "rear_envelope", "conductor_route")):
+        errors.append("SD1 sidewall row infers unreleased geometry or conductor routing")
+    elif "NO CUTOUT" not in sidewall[0].get("release_state", ""):
+        errors.append("SD1 sidewall option is not fail-closed")
 
     terminals = tables.get("terminal-allocation.csv", [])
     expected_terminals = {
@@ -227,11 +239,13 @@ def main() -> int:
 
     doc = DOC.read_text(encoding="utf-8") if DOC.is_file() else ""
     for required in (
-        "HR-V0-CP-P0.3",
+        "HR-V0-CP-P0.4",
         "P0.1 reserve is physically insufficient",
         "PJ242010RT",
         "PT 4-HESI (5X20)` item `3211861",
         "D-ST 4`, item `3030420",
+        "Littelfuse `75920-01`",
+        "sidewall-placement.csv",
         "84.20 x 124.31 mm",
         "No backplate, enclosure, DIN-rail, duct, or door hole coordinate is released",
         "A project-added DC 0 V/PE star point remains prohibited",
@@ -244,7 +258,7 @@ def main() -> int:
     h1_doc = H1_DOC.read_text(encoding="utf-8") if H1_DOC.is_file() else ""
     for required in (
         "HR-V0-H1-RCV-P0.1",
-        "Project Button Electrical V3-P1.7",
+        "Project Button Electrical V3-P1.8",
         "TBD-HA` and `TBD-HB` are project placeholders only",
         "does not choose a current limit, fuse, test-lead rating, or source",
         "RESET STAGE READY - DIAGNOSTIC ONLY / NO MOTION AUTHORITY",
@@ -266,6 +280,9 @@ def main() -> int:
         "PJ242010RT",
         "18P2117",
         "84.20 x 124.31 mm body",
+        "Littelfuse `75920-01`",
+        "Rev `091825`",
+        "IF-165` Rev `010320-C`",
     ):
         if required not in primary_sources:
             errors.append(f"primary-source register omits H1 evidence limit: {required}")
@@ -277,7 +294,7 @@ def main() -> int:
         except ET.ParseError as exc:
             errors.append(f"panel-layout.svg does not parse: {exc}")
         svg_text = svg.read_text(encoding="utf-8")
-        for required in ("NO FABRICATION OUTPUTS", "SELECTION RESERVE", "P0.1 DOES NOT FIT", "NO DRILLING", "NO MOTION AUTHORITY", "NOT “SAFE” · NOT “ARMED”"):
+        for required in ("NO FAB OUTPUTS", "SELECTION", "RESERVE", "P0.1 DOES NOT FIT", "NO DRILLING", "NO MOTION AUTHORITY", "NOT “SAFE” · NOT “ARMED”", "Littelfuse 75920-01"):
             if required not in svg_text:
                 errors.append(f"panel-layout.svg omits: {required}")
         font_sizes = [int(value) for value in re.findall(r"font-size:\s*(\d+)px", svg_text)]
@@ -290,7 +307,7 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print("HR-V0 control-panel P0.3 check passed: 24 BOM rows; 20 backplate allocations; 66 V3 wire endpoints")
+    print("HR-V0 control-panel P0.4 check passed: 25 BOM rows; 20 backplate allocations; one held sidewall option; 66 V3 wire endpoints")
     print("Six cable entries, twelve thermal/space screens, twenty-two panel records and fourteen H1 records remain fail-closed")
     print("No hole, cut length, wire, fuse, PE bond, cable entry, PCB fabrication, assembly or energization release exists")
     print(WARNING)

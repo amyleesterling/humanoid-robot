@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P1.7"
+REV = "V3-P1.8"
 PROJECT_TITLE = "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE"
 PROJECT_SUBTITLE = "Separate RESET and ARM, two PNOZ stages, dual watchdog contacts, external adapters, redundant actuator interruption."
 DATE = "2026-08-07"
@@ -282,9 +282,12 @@ def sheets() -> list[Sheet]:
         Component("F0", "12 V source protection",
                   [pn("F0", "1", "SOURCE", "ACT_12V_RAW", "left"), pn("F0", "2", "PROTECTED", "ACT_12V_FUSED", "right")],
                   "SELECTION REQUIRED", "R36 proposes FHAC0002SXJ holder plus ATOF family only. Ampere rating, 12-to-16 AWG transition, fault current, interrupting and thermal coordination remain open.", position=(65, 70), width=72),
-        Component("SD1", "Accessible DC service disconnect",
+        Component("SD1", "Littelfuse 75920-01 70 V DC SPST master disconnect candidate",
                   [pn("SD1", "TBD-IN", "IN", "ACT_12V_FUSED", "left"), pn("SD1", "TBD-OUT", "OUT", "K1_P1_IN", "right")],
-                  "SELECTION REQUIRED", "Select a DC-rated lockable disconnect with exact terminals, enclosure and current/fault rating.", position=(180, 70), width=72),
+                  "PROPOSED - ORDER CODE AND SPST HIGH-SIDE TOPOLOGY FROZEN; CONDUCTOR/LUG/FAULT/LOAD-BREAK/PLACEMENT/LOCKOUT APPLICATION SELECTION REQUIRED",
+                  "Exact active catalog candidate only: through-panel 75920-01 with yellow knob, OFF-position padlock feature and two identical 3/8-24 studs. Littelfuse permits high-side use, but published current-cycle ratings depend on 4/0 cable and are not project conductor or fault-duty proof. Source/load stud assignment, lug stack, touch protection, panel location, load-break rule, zero-energy verification, human factors and qualified Boston application review remain open. SD1 is not the E-stop and has no functional-safety credit.",
+                  "https://www.littelfuse.com/products/switches-connectors/dc-disconnect-switches/manual-battery-disconnect-switches/75920/75920-01",
+                  "Littelfuse 75920 Series datasheet Rev 091825 (2025); 75920-01 drawing current download accessed 2026-08-07; installation IF-165 Rev 010320-C (2020); product status rechecked active 2026-08-07.", position=(180, 70), width=72),
         Component("KP1", "K1 three main poles represented in series",
                   [pn("K1P", "1L1", "POLE1 IN", "K1_P1_IN", "left"), pn("K1P", "2T1", "POLE1 OUT", "K1_J12", "right"),
                    pn("K1P", "3L2", "POLE2 IN", "K1_J12", "left"), pn("K1P", "4T2", "POLE2 OUT", "K1_J23", "right"),

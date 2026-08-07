@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REGISTER = ROOT / "electrical" / "hr-v0-protection-coordination-inputs.csv"
 FORM = ROOT / "tests" / "forms" / "hr-v0-protection-coordination-template.csv"
-DOC = ROOT / "docs" / "hr-v0-protection-coordination-p0.3.md"
+DOC = ROOT / "docs" / "hr-v0-protection-coordination-p0.4.md"
 EXPECTED_REFERENCES = {"F0", "F1", "F2", "F3", "FSR1", "FSR2"}
 OPEN_VALUE_FIELDS = {
     "fuse_rating_a",
@@ -91,9 +91,11 @@ def main() -> int:
         "TEST-ELEC-006",
         "ANALYSIS-ELEC-001",
         "PT 4-HESI (5X20)` item `3211861",
-        "HR-V0-CP-P0.3",
+        "HR-V0-CP-P0.4",
         "D-ST 4",
         "3030420",
+        "Littelfuse `75920-01`",
+        "HR-V0-SD-P0.2",
     ):
         if phrase not in text:
             failures.append(f"coordination document is missing required phrase: {phrase}")
