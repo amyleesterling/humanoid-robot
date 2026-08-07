@@ -28,6 +28,8 @@ The machine-readable register is [`cad/hr-v0/manufacturing/hr-v0-fabrication-rou
 
 Use [`tests/forms/hr-v0-fabrication-supplier-quote-template.csv`](../tests/forms/hr-v0-fabrication-supplier-quote-template.csv). Every quote must bind the repository commit, RFQ revision, exact file names and SHA-256 hashes. It must explicitly answer material/temper, stock tolerance, process, finished-hole and location capability, flatness, edge treatment, certificates, inspection/FAI, lead time and cost.
 
+Use only the route-bounded deterministic inquiry artifacts in [`HR-V0-FAB-RFI-P0.1`](hr-v0-fabrication-rfi-p0.1.md). Do not assemble a new upload set by hand or send a packet for `MV0-004`.
+
 For route `FAB-003`, preserve material traceability between the profile blank and secondary machining. The secondary shop must define its datum/fixture strategy and accept the finished drawing in writing. No shop may infer holes from a model intentionally marked as a blank.
 
 ## Release sequence

@@ -1,0 +1,7 @@
+packet_id,routes,artifact,sha256,size_bytes,payload_file_count,permitted_action,forbidden_action,state
+RFI-001,FAB-001;FAB-002,release/hr-v0/fabrication-rfi/HR-V0-RFI-FAB-001-002-one-stop-CNC-P0.1.zip,EA7F879867CD09180D079444A7986F21E3C715B5246884A5CFAA0537A9D59B2C,142471,6,Return written capability DFM budgetary cost and lead time only,No procurement material commitment programming fabrication or shipment,PRELIMINARY - INQUIRY ONLY
+RFI-002,FAB-003 profile operation only,release/hr-v0/fabrication-rfi/HR-V0-RFI-FAB-003-profile-blanks-P0.1.zip,95351E928836760C81D0C7527F1948A897DE0479F18C73F9F7CF751C8DB4E72B,115550,8,Return written capability DFM budgetary cost and lead time only,No procurement material commitment programming fabrication or shipment,PRELIMINARY - INQUIRY ONLY
+RFI-003,FAB-004 local secondary operation,release/hr-v0/fabrication-rfi/HR-V0-RFI-FAB-004-local-secondary-machining-P0.1.zip,9EEA703D03DE1C77617EFEA004B182B17CFC925C9C4B91D63020BC6FB1A20E90,255772,14,Return written capability DFM budgetary cost and lead time only,No procurement material commitment programming fabrication or shipment,PRELIMINARY - INQUIRY ONLY
+RFI-004,FAB-005,NOT GENERATED,,0,0,Prototype or training capability discussion only,No structural-part production assignment,PROTOTYPING ONLY
+RFI-005,FAB-006,NOT GENERATED,,0,0,Design support or nonstructural PLA aids only,No structural-metal assignment,EXCLUDED FROM STRUCTURAL METAL ROUTE
+RFI-006,FAB-007,NOT GENERATED - SITE HOLD,,0,0,Execute Boston bench survey,No MV0-004 quote or fabrication before geometry freeze,SITE HOLD

@@ -40,6 +40,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 Mechanical R0.1 preliminary baseline](docs/hr-v0-mechanical-r0.1.md)
 - [HR-V0 flat-plate manufacturing and first-article control P0.1](docs/hr-v0-flat-plate-manufacturing-p0.1.md)
 - [HR-V0 Boston fabrication and RFQ route P0.1](docs/hr-v0-boston-fabrication-route-p0.1.md)
+- [HR-V0 deterministic fabrication capability/DFM packets P0.1](docs/hr-v0-fabrication-rfi-p0.1.md)
+- [HR-V0 Boston bench survey and anchor-release procedure P0.1](docs/hr-v0-bench-survey-p0.1.md)
 - [HR-V0 PCD22 fit-coupon procedure P0.1](docs/hr-v0-fit-coupon-procedure-p0.1.md)
 - [HR-V0 S102 fit-coupon procedure P0.1](docs/hr-v0-s102-fit-procedure-p0.1.md)
 - [HR-V0 gripper architecture and closure plan P0.1](docs/hr-v0-gripper-architecture-p0.1.md)
@@ -122,6 +124,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Sol R12 findings rechecked against R47](docs/reviews/2026-08-07-sol-r12-post-r47-status.md)
 - [Sol R12 findings rechecked against R49](docs/reviews/2026-08-07-sol-r12-post-r49-status.md)
 - [Sol R12 findings rechecked against R50](docs/reviews/2026-08-07-sol-r12-post-r50-status.md)
+- [Sol R12 findings rechecked against R51](docs/reviews/2026-08-07-sol-r12-post-r51-status.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Firmware P0.2 independent review request](docs/reviews/2026-08-07-firmware-p0.2-independent-review-request.md)
 - [Firmware P0.1 historical independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
@@ -132,7 +135,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 Run `python tools/check_traceability.py` from this directory to ensure every requirement has at least one verification method and all risk controls reference valid requirements. Regenerate and check the mechanical package in this order: `python cad/hr-v0/src/hr_v0_cad.py`, `python cad/hr-v0/src/mechanical_checks.py`, then `python tools/check_hr_v0_cad.py`. The calculation pass refreshes the generated source manifest after updating its result file. Run `python tools/generate_hr_v0_electrical_v3.py --validate` and `python tools/check_hr_v0_electrical_v3.py` to regenerate and cross-check the V3 native candidate. Run `python tools/check_hr_v0_protection.py` to verify that the six-reference coordination register remains explicit and that no unresolved fuse ampere rating has been released. Run both PCB generators/checkers with KiCad's bundled Python: `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_watchdog_pcb.py`, `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_watchdog_pcb.py`, `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_dxl_star.py`, and `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_dxl_star.py`. Run `python tools/check_hr_v0_firmware.py` to validate the source, compiled-C differential suite, locked toolchains and controlled watchdog artifacts. Use `tools/build_hr_v0_watchdog.ps1` to reproduce the clean Pico P0.2 builds and `tools/build_hr_v0_watchdog_host_runner.ps1` to reproduce the clean host-vector builds with their pinned portable tool directories. PCB-P0.5 and DXL-STAR-P0.1 are routed source candidates, but both must remain without Gerber/drill outputs until supplier acceptance, protection, physical evidence and independent-review gates close. Run `python tools/check_energization_gates.py --through-stage E2 --require-ready` before claiming readiness for control-only first energization; it must remain nonzero until every applicable gate is evidenced and closed.
 
-Also run `python tools/check_hr_v0_manufacturing.py` and `python tools/check_hr_v0_fabrication_routes.py` to verify the four-part RFQ process register, the seven fabrication routes, the hole-free blank package and the absence of any supplier or dimensional release.
+Also run `python tools/check_hr_v0_manufacturing.py`, `python tools/check_hr_v0_fabrication_routes.py`, and `python tools/check_hr_v0_fabrication_rfi_packets.py` to verify the four-part RFQ process register, seven fabrication routes, hole-free blank package, three deterministic inquiry packets, bench-survey hold, and absence of any supplier or dimensional release.
 Run `python tools/check_hr_v0_safety_allocation.py` to verify that the ordinary heartbeat path retains zero safety credit and every PLr/SIL allocation remains unresolved until qualified execution.
 Run `python tools/generate_hr_v0_release_manifest.py` only after deliberate package changes, then run `python tools/check_hr_v0_release_manifest.py`. A committed clean clone must additionally pass `python tools/check_hr_v0_release_manifest.py --require-clean`; this proves package identity, not fabrication or energization readiness.
 Run `python tools/generate_hr_v0_bom_closure.py` after deliberate system-BOM changes, then `python tools/check_hr_v0_bom.py`. The checker must retain `EG-003` as partial until a complete signed machine BOM exists; Evaluation Batch A is not blanket purchase authority.
@@ -141,7 +144,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-Fifty review/control rounds are complete: R01-R50. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
+Fifty-one review/control rounds are complete: R01-R51. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. Correction and disposition passes are recorded separately from independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -195,6 +198,7 @@ Fifty review/control rounds are complete: R01-R50. R11 Fable and R12 Sol are ind
 | R48 | HR-V0 exact catalog frame-joint correction | Issued `HR-V0-FRAME-P0.1`: six enumerated `40-4334` brackets, twenty-four `75-3422` assemblies, an 11.49 N m load-path screen, manufacturer 13–20 N m trial guidance, and `INSPECT-MECH-010`. Actual-joint torque, slip/proof, bench anchors and qualified disposition remain open; no assembly or energization release was issued. |
 | R49 | HR-V0 frame collision and bracket-topology correction | Superseded defective `HR-V0-FRAME-P0.1` with `P0.2`; changed the two transverse cuts from 320 to 240 mm, placed the upright on the base top, replaced incompatible two-slot-wide `40-4334` with six `40-4332` brackets and twelve `75-3422` assemblies, enumerated six bracket ridges, and added a fail-closed positive-volume overlap check. Received fit/tool access, torque, slip/proof and qualified review remain open; no procurement, fabrication, assembly or energization release was issued. |
 | R50 | Boston fabrication-route and profile-blank correction | Issued `HR-V0-FAB-RFQ-P0.1` with seven machine-checked routes, two one-stop CNC candidates, a controlled two-process route, three native hole-free STEP/DXF blank packages, a quote/DFM form and explicit BPL/FabVille limitations. Supplier selection, coupon execution, finished tolerances, first article, FAI and qualified review remain open; no procurement, fabrication, assembly or energization release was issued. |
+| R51 | Deterministic supplier-inquiry and exact-bench control | Issued `HR-V0-FAB-RFI-P0.1` with three route-bounded deterministic ZIPs, internal/outer SHA-256 manifests, fail-closed membership checks, an exact-bench survey form, `MECH-004` and `INSPECT-MECH-011`. No packet exists for the site-held anchor part; no supplier response, drilling, fabrication, assembly or energization release was issued. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

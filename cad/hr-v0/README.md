@@ -25,7 +25,7 @@ The current coordination layer is [HR-V0-MECH-P0.2](../../docs/hr-v0-mechanical-
 | MV0-003 | S102 shoulder-to-column adapter | 1 | 6.35 mm nominal 6061-T6 | One-stop CNC or two-process RFQ; fit, column interface, tolerance and FAI required |
 | MV0-004 | Bench anchor plate | 2 | 6.35 mm nominal 6061-T6 | Site hold; bench survey, anchor selection and FAI required |
 
-The process decision, supplier screens and closure sequence are controlled in [HR-V0 flat-plate manufacturing P0.1](../../docs/hr-v0-flat-plate-manufacturing-p0.1.md), [Boston fabrication and RFQ route P0.1](../../docs/hr-v0-boston-fabrication-route-p0.1.md), and their machine-readable registers. Validate them with `python tools/check_hr_v0_manufacturing.py` and `python tools/check_hr_v0_fabrication_routes.py`.
+The process decision, supplier screens and closure sequence are controlled in [HR-V0 flat-plate manufacturing P0.1](../../docs/hr-v0-flat-plate-manufacturing-p0.1.md), [Boston fabrication and RFQ route P0.1](../../docs/hr-v0-boston-fabrication-route-p0.1.md), [deterministic inquiry packets P0.1](../../docs/hr-v0-fabrication-rfi-p0.1.md), and their machine-readable registers. Validate them with `python tools/check_hr_v0_manufacturing.py`, `python tools/check_hr_v0_fabrication_routes.py`, and `python tools/check_hr_v0_fabrication_rfi_packets.py`.
 
 ## Controlled nonstructural fit coupon
 
@@ -55,6 +55,7 @@ The assembly uses envelopes for 80/20 40-4040 extrusion and XM540 actuators. Use
 - Add and verify hard stops, cable paths, covers, gripper retention and the fixed guard.
 - Before any powered stop test, release the backed-up bumper/catch geometry, current/speed/latency bounds, impact acceptance values, guarded fixture and qualified written approval.
 - Survey the real Boston bench substrate and select anchors from the substrate and edge-distance evidence.
+- Execute `INSPECT-MECH-011` with the exact-bench survey form; obtain facility permission, calculate the complete anchor interface, release numerical proof limits and preserve qualified proof evidence.
 - Complete the released mechanical calculations and independent mechanical review.
 
 Do not send the generated files as an approved production order. P0.1 may support comparable RFQs only; it does not authorize a cutting order.
