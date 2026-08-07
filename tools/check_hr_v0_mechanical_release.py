@@ -50,7 +50,7 @@ def main() -> int:
     if "MV0-001" not in summary.get("superseded", []) or summary.get("counts", {}).get("vendor_interface_sources") != 5: errors.append("summary lacks supersession/vendor evidence")
     release = json.loads((ROOT / "release" / "hr-v0" / "release-candidate.json").read_text(encoding="utf-8"))
     mech = next((p for p in release["current_products"] if p["domain"] == "mechanical"), {})
-    if mech.get("identifier") != REVISION or "no_buildable_arm_geometry" not in mech.get("release_state", ""): errors.append("release candidate does not enforce P0.3 hold")
+    if mech.get("identifier") != REVISION or mech.get("release_state") != "corrected_exact_coordinate_candidate_under_p0.3_hold_not_buildable_or_released": errors.append("release candidate does not enforce the current P0.3 hold")
     try:
         tree = ET.parse(OUT / "HR-V0_general-arrangement.svg")
         text = " ".join(node.text or "" for node in tree.iter() if node.tag.endswith("text"))

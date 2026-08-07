@@ -25,6 +25,9 @@ cad/hr-v0/**/*.dxf text eol=lf
 cad/hr-v0/**/*.step text eol=lf
 cad/hr-v0/**/*.glb binary
 cad/hr-v0/**/*.stl binary
+cad/vendor/8020/*.svg binary
+cad/vendor/8020/*.jpg binary
+cad/vendor/8020/*.EPRT binary
 release/**/*.zip binary
 release/**/*.csv text eol=lf
 release/**/*.md text eol=lf
