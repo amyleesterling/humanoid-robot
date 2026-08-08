@@ -11,7 +11,7 @@
     {
       "domain": "electrical",
       "identifier": "Project Button Electrical V3-P1.13",
-      "supporting_identifiers": ["PCB-P0.5", "DXL-STAR-P0.1", "HR-V0-CP-P0.5", "HR-V0-WD-SUPPLY-P0.1", "HR-V0-SD-P0.2", "HR-V0-24V-IF-P0.2", "HR-V0-E2-HW-P0.2", "HR-V0-COMPUTE-IF-P0.1"],
+      "supporting_identifiers": ["PCB-P0.5", "HR-V0-WD-FAB-P0.1", "HR-V0-WD-TRAVELER-P0.1", "DXL-STAR-P0.1", "HR-V0-CP-P0.5", "HR-V0-WD-SUPPLY-P0.1", "HR-V0-SD-P0.2", "HR-V0-24V-IF-P0.2", "HR-V0-E2-HW-P0.2", "HR-V0-COMPUTE-IF-P0.1"],
       "release_state": "correction_candidate_not_released"
     },
     {
@@ -41,7 +41,7 @@
     {
       "domain": "commissioning",
       "identifier": "HR-V0-E2-SEQ-P0.1",
-      "supporting_identifiers": ["HR-V0-E2-HW-P0.2", "INSPECT-E2-001", "INSPECT-E2-002", "TEST-E2-001", "TEST-E2-002", "AUDIT-E2-001"],
+      "supporting_identifiers": ["HR-V0-E2-HW-P0.2", "HR-V0-WD-TRAVELER-P0.1", "AUDIT-ELEC-002", "INSPECT-ELEC-010", "TEST-ELEC-008", "INSPECT-E2-001", "INSPECT-E2-002", "TEST-E2-001", "TEST-E2-002", "AUDIT-E2-001"],
       "release_state": "templates_not_executed_not_authorized_for_energization"
     }
   ],

@@ -1,0 +1,18 @@
+{
+  "identifier": "HR-V0-WD-FAB-P0.1",
+  "date": "2026-08-08",
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION",
+  "board_revision": "PCB-P0.5",
+  "electrical_compatibility": "Project Button Electrical V3-P1.13",
+  "native_tool": "KiCad 10.0.5",
+  "board_component_references": 42,
+  "cam_generated": true,
+  "cam_released": false,
+  "supplier_selected": false,
+  "portal_upload_authorized": false,
+  "fabrication_order_authorized": false,
+  "assembly_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "open_holds": 14
+}

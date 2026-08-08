@@ -1,0 +1,13 @@
+parameter,candidate_value,status,source,accessed
+copper_layers,2,PROPOSED,https://docs.oshpark.com/services/two-layer/,2026-08-08
+finished_thickness,1.6 mm nominal,PROPOSED,https://docs.oshpark.com/services/two-layer/,2026-08-08
+copper_weight,1 oz each side,PROPOSED,https://docs.oshpark.com/services/two-layer/,2026-08-08
+material,175 Tg FR-4; UL94 V-0,PROPOSED,https://docs.oshpark.com/services/two-layer/,2026-08-08
+finish,ENIG,PROPOSED,https://docs.oshpark.com/services/two-layer/,2026-08-08
+solder_mask,Purple SMOBC,PROPOSED,https://docs.oshpark.com/services/two-layer/,2026-08-08
+minimum_trace_space,0.1524 mm / 0.1524 mm,SOURCE CHECKED,https://docs.oshpark.com/services/two-layer/,2026-08-08
+minimum_drill,0.254 mm supplier minimum; design minimum 0.300 mm,SOURCE CHECKED,https://docs.oshpark.com/services/two-layer/,2026-08-08
+minimum_annular_ring,0.127 mm supplier minimum; design minimum 0.150 mm,SOURCE CHECKED,https://docs.oshpark.com/services/two-layer/,2026-08-08
+board_outline,160 mm x 100 mm,SOURCE CHECKED,https://docs.oshpark.com/services/two-layer/,2026-08-08
+supplier,OSH Park Two Layer Prototype Service candidate,SELECTION REQUIRED,https://docs.oshpark.com/services/two-layer/,2026-08-08
+native_file_compatibility,Supplier documents latest stable direct KiCad processing as 9.x; use reviewed Gerbers for this KiCad 10.0.5 source,HOLD,https://docs.oshpark.com/services/two-layer/,2026-08-08

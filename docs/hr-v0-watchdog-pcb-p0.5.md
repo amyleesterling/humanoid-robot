@@ -2,11 +2,11 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Electrical dependency: `Project Button Electrical V3-P1.1`
+Electrical compatibility: `Project Button Electrical V3-P1.13`
 
 PCB identifier: `PCB-P0.5`
 
-Date: 2026-08-06
+Date: 2026-08-08
 
 ## Decision
 
@@ -40,7 +40,13 @@ These are source and geometry checks, not fabricator acceptance or physical vali
 
 ## Fabrication gate remains open
 
-PCB-P0.5 still needs all of the following before fabrication outputs may be generated:
+R88 generated a deterministic CAM **review candidate** at
+`release/hr-v0/watchdog-pcb-fabrication-candidate-p0.1/`. The candidate has
+Gerber, PTH/NPTH drill, placement, IPC-D-356, statistics, fresh DRC, BOM,
+source and checksum records. It is not a fabrication release and cannot be
+uploaded, ordered, assembled or energized.
+
+PCB-P0.5 still needs all of the following before a fabrication order may be authorized:
 
 1. independent schematic-to-PCB parity and layout review;
 2. official-land-pattern, paste, mask and orientation review for every footprint;
@@ -49,10 +55,10 @@ PCB-P0.5 still needs all of the following before fabrication outputs may be gene
 5. physical test-point access and programming-tool compatibility review;
 6. thermal, COM-slew, brownout, EMC/surge and fault-injection evidence;
 7. enclosure, mounting, harness, strain relief and service-access definition;
-8. a controlled fabrication-output generation and CAM review; and
+8. independent review of the controlled fabrication-output candidate and supplier portal preview; and
 9. qualified electrical and functional-safety review.
 
-No physical board, received-part, AOI, continuity, current-limited bring-up, waveform, thermal, EMC, fault-injection or HIL evidence exists yet. No Gerber, drill or placement release exists.
+No physical board, received-part, AOI, continuity, current-limited bring-up, waveform, thermal, EMC, fault-injection or HIL evidence exists yet. CAM files exist only inside the explicitly non-released review candidate; no Gerber, drill or placement manufacturing release exists.
 
 ## Primary documentation
 
