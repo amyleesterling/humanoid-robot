@@ -1,0 +1,11 @@
+hold_id,missing_evidence,state,effect
+AF-HOLD-01,"4866 current availability, body CAD, material, supplied hardware, allowables and Magtrol application acceptance",PARTIAL,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+AF-HOLD-02,"PT-600 tolerances, countersunk pattern, exact T-slot hardware, clamp/structural allowables and Magtrol application acceptance",PARTIAL,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+AF-HOLD-03,"qualified review of R105 material, drawing, GD&T, load cases, calculations and proof basis",PARTIAL,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+AF-HOLD-04,"machine-shop DFM including tool access, blind-thread manufacture, inspection feasibility, stock/lot availability and quote",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+AF-HOLD-05,"exact 4866-to-adapter and adapter-to-PT fastener/T-nut stacks, preload, locking, torque and reuse controls",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+AF-HOLD-06,received material certificate and complete signed FAI,OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+AF-HOLD-07,"qualified adapter/support proof procedure, acceptance values and executed results",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+AF-HOLD-08,"installed center height, coaxiality, parallelism, runout, end float, shimming and uncertainty",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+AF-HOLD-09,"complete guarded rig, brake controls, instrumentation, anchoring and powered-work authorization",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+AF-HOLD-10,final configured FR12-H101 test and qualified acceptance,OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION

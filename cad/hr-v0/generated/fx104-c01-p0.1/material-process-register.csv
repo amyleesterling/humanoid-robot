@@ -1,0 +1,6 @@
+control,requirement,evidence,state
+MP01,"6061-T651 aluminum plate, ASTM B209, certified","material certificate with alloy, temper, product form, heat/lot and applicable ASTM B209 compliance",DEFINED; RECEIVED EVIDENCE OPEN
+MP02,stock thickness at least 25.4 mm; face both datum surfaces to 24.00 ±0.05 mm,shop traveler and FAI thickness map,DEFINED; DFM/FAI OPEN
+MP03,"as-machined; no anodize, conversion coat, welding or heat treatment",shop traveler and visual inspection,DEFINED; EXECUTION OPEN
+MP04,deburr and break all edges 0.2-0.5 mm; clean and dry,visual inspection,DEFINED; EXECUTION OPEN
+MP05,protect A/B/C and threads during storage; identify part/revision by removable tag,receiving inspection,DEFINED; EXECUTION OPEN

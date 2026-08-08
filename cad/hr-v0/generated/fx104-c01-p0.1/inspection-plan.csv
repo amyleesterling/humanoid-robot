@@ -1,0 +1,10 @@
+record,characteristic,method,acceptance,result,reviewer
+FAI-01,material certificate and trace,document review,F09/MP01,NOT EXECUTED,UNASSIGNED
+FAI-02,overall X/Y and thickness map,calibrated micrometer/CMM,F01/F02/F03,NOT EXECUTED,UNASSIGNED
+FAI-03,datum A flatness and top parallelism,surface plate and calibrated indicator,F04/F05,NOT EXECUTED,UNASSIGNED
+FAI-04,datum-face surface finish,calibrated profilometer,Ra 3.2 µm max,NOT EXECUTED,UNASSIGNED
+FAI-05,"M6 thread size, position and depths","CMM, GO/NO-GO gage, depth gage",F06,NOT EXECUTED,UNASSIGNED
+FAI-06,four through-hole diameters and position,CMM and pin gage,F07,NOT EXECUTED,UNASSIGNED
+FAI-07,"edges, burrs, finish, cleaning and marking",visual/comparator,F08/F10 and MP03-MP05,NOT EXECUTED,UNASSIGNED
+FAI-08,nominal STEP-to-FAI feature reconciliation,ballooned drawing and signed FAI report,all F01-F10 accounted,NOT EXECUTED,UNASSIGNED
+FAI-09,adapter-only proof and post-proof reinspection,qualified procedure required,SELECTION REQUIRED,NOT EXECUTED,UNASSIGNED

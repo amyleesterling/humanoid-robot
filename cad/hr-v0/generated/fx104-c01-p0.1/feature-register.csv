@@ -1,0 +1,11 @@
+feature,definition,nominal,tolerance,datum,inspection,state
+F01,overall X,90.00 mm,±0.10 mm,B/C,calibrated micrometer or CMM,DEFINED CANDIDATE
+F02,overall Y,160.00 mm,±0.10 mm,B/C,calibrated micrometer or CMM,DEFINED CANDIDATE
+F03,thickness,24.00 mm,±0.05 mm,A,five-point micrometer map,DEFINED CANDIDATE
+F04,datum A bottom face,PT contact,flatness 0.05 mm; Ra 3.2 µm max,A,surface plate/indicator plus profilometer,DEFINED CANDIDATE
+F05,top face,parallel to A,parallelism 0.05 mm; Ra 3.2 µm max,A,surface plate/indicator plus profilometer,DEFINED CANDIDATE
+F06,4866 mounting threads,"2X M6 x 1 - 6H at X=0, Y=±52 BASIC",position Ø0.10 to A|B|C; 12 mm min full thread; Ø5 drill 18 mm min,A|B|C,"CMM, GO/NO-GO thread gage, depth gage",DEFINED CANDIDATE
+F07,PT attachment holes,"4X Ø6.6 THRU at X=±30, Y=±50 BASIC",position Ø0.20 to A|B|C,A|B|C,CMM and calibrated pin gage,DEFINED CANDIDATE
+F08,edges,all edges,break 0.2-0.5 mm; burr-free,none,visual and edge comparator,DEFINED CANDIDATE
+F09,material,"6061-T651 aluminum plate, ASTM B209, certified",no substitution; certificate required,none,certificate and trace review,DEFINED CANDIDATE
+F10,finish/marking,"as-machined, no coating; non-damaging part/rev tag",clean/dry; no permanent mark on datum faces,A/B/C protected,visual,DEFINED CANDIDATE
