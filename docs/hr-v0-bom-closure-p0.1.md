@@ -14,6 +14,8 @@ R62 advances `BOM-019` to an exact-candidate hold for two Phoenix `PT 4-HESI (5X
 
 R66 reconciles custom mechanical group `BOM-027` to the P0.5 geometry: three `MV0-C01`, one `MV0-C04`, and one `MV0-C05` candidate. The group remains `selection_required` in the closure register because supplier/process/quote, received material, separate first article per geometry, fit, T-slot proof, physical proof, and qualified release are not selected or executed. This quantity correction does not change the closure-class totals or authorize fabrication.
 
+R73 reconciles the physical-evidence batch to the current P0.7 architecture. `BOM-023` moves from exact-candidate hold to evaluation candidate and `EVA-013` restores two exact ROBOTIS FR13-S102K sets, SKU `903-0269-300`. The resulting 17-line batch covers every actuator and actuator-frame article required for unpowered P0.7 receiving and fit work. `HR-V0-MECH-EVAL-P0.1` extracts the seven-line, nine-article mechanical subset. Every line still requires separate program-owner approval before purchase and remains unpowered evaluation only.
+
 The machine-readable closure register is `bom/hr-v0-bom-closure.csv`. Every `bom/bom.csv` item has exactly one classification:
 
 - `evaluation_candidate`: exact candidate order code and evaluation quantity are frozen, but program-owner approval is required before purchase and application suitability remains open;
@@ -27,7 +29,9 @@ No row is classified as production-selected or procurement-released.
 
 ## Evaluation Batch A
 
-`bom/hr-v0-evaluation-batch-a.csv` identifies sixteen exact candidate lines whose receipt is needed to execute identity, terminal, current, thermal, source, restart and fault tests. R53 removes the actuator body-frame purchase from this batch because S101, S102, or a custom-frame route remains an architecture selection. The remaining batch includes the three actuators, U2D2, safety relays, contactors, E-stop, watchdog controller/relays, output/gripper frames, RESET/ARM operators and both external DC sources.
+`bom/hr-v0-evaluation-batch-a.csv` identifies seventeen exact candidate lines whose receipt is needed to execute identity, terminal, current, thermal, source, restart and fault tests. R53 removed the actuator body-frame purchase while the architecture was unresolved; R73 restores it after R69 froze the current P0.7 arrangement around two exact S102 sets. The batch includes the three actuators, U2D2, safety relays, contactors, E-stop, watchdog controller/relays, output/body/gripper frames, RESET/ARM operators and both external DC sources.
+
+`bom/hr-v0-unpowered-mechanical-evaluation.csv` is a narrower seven-line subset covering nine actuator/frame/gripper articles. It is an evidence-planning view of the same Batch A rows, not a second procurement list. It permits no powered work and does not include custom metal, a guard, a receiver, or an installed fastener release.
 
 The batch is not a shopping instruction. Every line states:
 

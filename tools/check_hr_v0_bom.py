@@ -14,6 +14,7 @@ from generate_hr_v0_bom_closure import (
 
 
 BATCH = ROOT / "bom" / "hr-v0-evaluation-batch-a.csv"
+MECHANICAL_SUBSET = ROOT / "bom" / "hr-v0-unpowered-mechanical-evaluation.csv"
 PROCEDURES = ROOT / "tests" / "procedures" / "procedure-registry.csv"
 REQUIREMENTS = ROOT / "requirements" / "requirements.csv"
 GATES = ROOT / "requirements" / "hr-v0-energization-gates.csv"
@@ -36,6 +37,7 @@ def main() -> None:
     system_rows, system_headers = read_csv(SYSTEM_BOM)
     closure_rows, closure_headers = read_csv(CLOSURE)
     batch_rows, batch_headers = read_csv(BATCH)
+    mechanical_rows, mechanical_headers = read_csv(MECHANICAL_SUBSET)
     procedure_rows, _ = read_csv(PROCEDURES)
     requirement_rows, _ = read_csv(REQUIREMENTS)
     gate_rows, _ = read_csv(GATES)
@@ -55,6 +57,12 @@ def main() -> None:
     }
     if not required_batch_headers.issubset(batch_headers):
         errors.append("evaluation batch is missing required columns")
+    required_mechanical_headers = {
+        "subset_line", "batch_line", "parent_item_id", "manufacturer", "order_code",
+        "quantity", "mechanical_role", "allowed_action", "required_records", "status",
+    }
+    if not required_mechanical_headers.issubset(mechanical_headers):
+        errors.append("unpowered mechanical subset is missing required columns")
 
     system_by_id = {row["item_id"]: row for row in system_rows}
     closure_by_id = {row["item_id"]: row for row in closure_rows}
@@ -115,6 +123,33 @@ def main() -> None:
             f"extra={sorted(batch_parents-EVALUATION_IDS)}"
         )
 
+    batch_by_line = {row["batch_line"]: row for row in batch_rows}
+    expected_mechanical_lines = {f"MEV-{number:03d}" for number in range(1, 8)}
+    expected_batch_lines = {"EVA-002", "EVA-003", "EVA-004", "EVA-010", "EVA-011", "EVA-012", "EVA-013"}
+    if {row["subset_line"] for row in mechanical_rows} != expected_mechanical_lines:
+        errors.append("unpowered mechanical subset membership changed")
+    if {row["batch_line"] for row in mechanical_rows} != expected_batch_lines:
+        errors.append("unpowered mechanical subset does not cover the exact actuator/frame/gripper lines")
+    for row in mechanical_rows:
+        parent = batch_by_line.get(row["batch_line"])
+        if parent is None:
+            errors.append(f"{row['subset_line']}: missing parent batch line {row['batch_line']}")
+            continue
+        for field in ("parent_item_id", "manufacturer", "order_code", "quantity"):
+            if row[field] != parent[field]:
+                errors.append(f"{row['subset_line']}: {field} differs from {row['batch_line']}")
+        if row["status"] != "PROGRAM OWNER APPROVAL REQUIRED":
+            errors.append(f"{row['subset_line']}: purchase approval boundary changed")
+        action = row["allowed_action"].lower()
+        if "unpowered only" not in action or "program-owner purchase approval" not in action:
+            errors.append(f"{row['subset_line']}: unpowered/action boundary weakened")
+        if any(token in action for token in ("energize", "torque enable", "motion")):
+            errors.append(f"{row['subset_line']}: prohibited powered action appears in allowed action")
+
+    eva013 = batch_by_line.get("EVA-013", {})
+    if eva013.get("parent_item_id") != "BOM-023" or eva013.get("order_code") != "FR13-S102K Set; SKU 903-0269-300" or eva013.get("quantity") != "2":
+        errors.append("EVA-013 does not freeze two exact FR13-S102K sets")
+
     requirement_by_id = {row["id"]: row for row in requirement_rows}
     if requirement_by_id.get("CFG-003", {}).get("verification_id") != "AUDIT-BOM-001":
         errors.append("CFG-003/AUDIT-BOM-001 requirement link is missing")
@@ -127,7 +162,7 @@ def main() -> None:
     eg003 = gate_by_id.get("EG-003", {})
     if eg003.get("status") != "partial":
         errors.append("EG-003 must be partial after closure-register creation")
-    for path in ("bom/hr-v0-bom-closure.csv", "bom/hr-v0-evaluation-batch-a.csv", "tools/check_hr_v0_bom.py"):
+    for path in ("bom/hr-v0-bom-closure.csv", "bom/hr-v0-evaluation-batch-a.csv", "bom/hr-v0-unpowered-mechanical-evaluation.csv", "tools/check_hr_v0_bom.py"):
         if path not in eg003.get("evidence_location", ""):
             errors.append(f"EG-003 evidence does not cite {path}")
 

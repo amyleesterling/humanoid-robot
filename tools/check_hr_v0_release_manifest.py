@@ -119,6 +119,14 @@ def main() -> None:
         "source_transport_and_reproducible_watchdog_candidate_not_installed_flashed_connected_or_hil_validated"
     ):
         errors.append("HR-V0-FW-P0.4 supporting identifiers or fail-closed release state changed")
+    bom_product = next(
+        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BOM-P0.1"),
+        {},
+    )
+    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1"] or bom_product.get("release_state") != (
+        "closure_register_candidate_no_complete_machine_procurement_release"
+    ):
+        errors.append("HR-V0-BOM-P0.1 supporting identifiers or fail-closed release state changed")
     commissioning_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-E2-SEQ-P0.1"),
         {},

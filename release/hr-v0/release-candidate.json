@@ -35,7 +35,7 @@
     {
       "domain": "bill_of_materials",
       "identifier": "HR-V0-BOM-P0.1",
-      "supporting_identifiers": ["EVALUATION-BATCH-A"],
+      "supporting_identifiers": ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1"],
       "release_state": "closure_register_candidate_no_complete_machine_procurement_release"
     },
     {
