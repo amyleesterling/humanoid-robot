@@ -32,4 +32,6 @@ cad/vendor/robotis/open-manipulator-9187eca/* binary
 release/**/*.zip binary
 release/**/*.csv text eol=lf
 release/**/*.md text eol=lf
+docs/reviews/2026-08-08-24v-interface-p0.2-independent-review-request.md text eol=lf
+docs/reviews/2026-08-08-r81-validation-record.md text eol=lf
 bom/hr-v0-bom-closure.csv text eol=lf
