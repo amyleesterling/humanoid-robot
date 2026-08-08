@@ -1,0 +1,6 @@
+interface,from,to,coordinates,fastener_state,status
+P09-A00..A03,P0.7 column/J1/upper proximal interfaces,upper 20-2040 distal face,unchanged through Y=141.525,P0.7 exact candidates remain HOLD,NOT REQUALIFIED; RECEIVED/FAI/PRELOAD/PROOF OPEN
+P09-A04,upper 20-2040,P09-C01 and FR12-S102,"beam X=0,Z=+/-10; frame X=+/-12,Z=+/-6; fixed face Y=151.050",M5 beam and M2.5 frame stacks SELECTION REQUIRED,NOMINAL AXES REGISTERED; ACCESS/ENGAGEMENT/BOTTOMING/PROOF OPEN
+P09-A05,FR12-H101,P09-C02 and forearm 20-2040,"frame X=+/-12,Z=+/-6; beam X=0,Z=+/-10; moving face Y=219.550",M2.5 through/nut and M5 beam stacks SELECTION REQUIRED,NOMINAL AXES REGISTERED; ACCESS/ENGAGEMENT/PRELOAD/PROOF OPEN
+P09-A06..A07,forearm beam/distal adapter,H104/gripper datum,H104 origin Y=316.600; object screen Y=345.000,P0.7 candidates remain HOLD,GRIPPER MECHANISM/DATUM/MASS/PROOF OPEN
+P09-HS-J2,P09-C02 integral wings,P09-C01 integral wings,nominal first metal contact 117.999977 deg,bumper material/order/retention SELECTION REQUIRED,NOMINAL CAD; TOLERANCE/LOAD/STOPPING/PHYSICAL PROOF OPEN

@@ -1,0 +1,6 @@
+control_id,feature,nominal,allowed,effect,evidence,state
+P09-TOL-01,adapter finished thickness,9.525 mm,SELECTION REQUIRED,"fastener length, stop angle, frame seating",DFM plus calibrated FAI at defined points,OPEN
+P09-TOL-02,FR12 frame hole/thread true position,official nominal axes,SELECTION REQUIRED,"assembly stress, joint registration",received metrology and manufacturer tolerance disposition,OPEN
+P09-TOL-03,C01/C02 stop-wing profile and relative clocking,metal contact 117.999977 deg,SELECTION REQUIRED,"soft-to-stop margin, impact/rebound","worst-case stack, FAI, as-built contact-angle measurement",OPEN
+P09-TOL-04,joint stack axial offset/runout/play,model Tx=2.35 mm,SELECTION REQUIRED,"frame clearance, cable path, stop load",received assembly metrology under HR-V0-JOINT-MET-P0.1,OPEN
+P09-TOL-05,cable/connector/guard swept envelope,not modeled,SELECTION REQUIRED,collision and pinch protection,released harness/guard CAD plus tolerance/deformation sweep and physical trial,OPEN
