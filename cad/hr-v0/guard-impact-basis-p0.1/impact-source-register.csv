@@ -1,0 +1,7 @@
+source_id,organization,document,revision_or_date,url,verified_fact
+GIS-001,ROBOTIS,XM540-W270-T/R e-Manual,live page; no formal revision shown; accessed 2026-08-07,https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/,30 rev/min no-load speed and 10.6 N m at 12 V; stall is momentary and differs from continuous/real-world output
+GIS-002,ROBOTIS,XM430-W350-T/R e-Manual,live page; no formal revision shown; accessed 2026-08-07,https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/,46 rev/min no-load speed and 4.1 N m at 12 V; stall is momentary and differs from continuous/real-world output
+GIS-003,ISO,ISO 14120:2015,Edition 2; published 2015-11; current page checked 2026-08-07,https://www.iso.org/standard/59545.html,general guard design/construction/selection scope; no project test-energy value taken from public metadata
+GIS-004,OSHA,29 CFR 1910.212,current electronic regulation checked 2026-08-07,https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.212,guarding required for listed hazards; guards affixed where possible and must not create a hazard
+GIS-005,Project Button,requirements.csv,HR-30-SYS-R0.2 repository state accessed 2026-08-07,requirements/requirements.csv,"SYS-002, SYS-003, SYS-004, SAFE-010 and SAFE-011 inputs"
+GIS-006,Project Button,HR-V0-ARM-ARCH-P0.7,R69 controlled candidate dated 2026-08-07,cad/hr-v0/generated/arm-architecture-p0.7/architecture-summary.json,J1/J2/G1 geometry and explicit missing inertia/physical proof

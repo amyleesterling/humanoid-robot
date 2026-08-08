@@ -8,6 +8,8 @@ Identifier: `HR-V0-GUARD-P0.3`
 
 > **R76 retention correction:** `HR-V0-GUARD-RET-P0.1` excludes `20-2496` from the current retention baseline and confirms that the panel schedule below contains enclosure envelopes, not released finished cut dimensions or hole patterns. P0.3 remains the current frame/space basis.
 
+> **R77 impact-allocation input:** `HR-V0-GUARD-IMPACT-P0.1` separates payload, moving-link, continued-drive, detached-hardware and static-access cases. It does not release a proof energy, panel thickness or retention system.
+
 Supersedes: `HR-V0-GUARD-P0.2` for current guard guidance
 
 Mechanical basis: `HR-V0-MECH-P0.6` / `HR-V0-ARM-ARCH-P0.7`

@@ -47,6 +47,8 @@ This is a 36.96% reduction in the known subtotal. It excludes gasket, brackets, 
 
 No thinner panel is selected. The branch cannot supersede P0.3 until the complete credible impact-energy/direction envelope, retention loads, frame and joint response, temperature range, physical tests and qualified disposition close.
 
+R77 `HR-V0-GUARD-IMPACT-P0.1` now supplies the bounded arithmetic and hazard-to-test allocation input. It leaves powered-contact, detached-item and static-load values open, so this selection hold remains unchanged.
+
 ## Thermal and fit boundary
 
 The Plaskolite guide gives a general expansion/contraction allowance of 1.52 mm per foot in both sheet directions. Applied only as a planning screen, that is approximately:

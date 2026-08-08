@@ -1,0 +1,7 @@
+direction_id,hazard,targets,basis,required_evidence,state
+GID-001,payload release/drop/rebound,receiver; front; rear; left; right,all released poses and power-loss/open-gripper faults,pose matrix plus TEST-DROP-001 raw rebound/escape results,OPEN
+GID-002,commanded or overspeed link contact,front; rear; left; right; top where sweep permits,complete swept volume plus measured stopping overtravel,"as-built kinematics, contact map, effective inertia and energy-removal response",OPEN
+GID-003,detached actuator/frame/fastener/tool,all outer panels; receiver; top,retention and single-fault analysis,"released BOM, fastener/retention proof, projectile definition and impact tests",OPEN
+GID-004,base or column detachment,frame; panels; anchors; bench interface,R-006 structural fault,"Boston bench survey, anchor design, proof load and collapse envelope",OPEN
+GID-005,static external push or access attempt,every panel center/edge/corner; joints; cable entry,fixed-guard integrity and access prevention,qualified load/probe method and installed inspection,OPEN
+GID-006,receiver rebound or ricochet,receiver floor/walls; adjacent outer panels,100 g foam at every released pose,"conditioned payload matrix, high-speed video and no-escape acceptance",OPEN
