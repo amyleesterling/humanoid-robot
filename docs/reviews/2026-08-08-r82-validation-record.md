@@ -25,7 +25,13 @@ Independent baseline being dispositioned: Sol R12; not counted again
 - `tools/check_hr_v0_compute_debug_interface.py`: PASS.
 - `tools/check_hr_v0_electrical_v3.py`: PASS.
 
-The repository-wide checker sweep, staged release manifest, commit/push binding and remote clean-clone reproduction are recorded below only after they execute; until then they remain pending.
+## Repository and remote reproduction
+
+- Local repository-wide sweep: 31/31 `check_hr_v0_*.py` checkers passed.
+- Release manifest: 908 package files; staged-manifest check passed.
+- Pushed source state: `0dd207584d57475d042abf187324cf256d5f9edb` on `codex/review-ledger-handoff`.
+- Remote clean clone at that exact commit passed `check_hr_v0_release_manifest.py --require-clean` and all 31 repository checkers.
+- The first clean-clone attempt at `7b7df98...` exposed a CRLF checkout hash mismatch for the generated gripper HTML. R82 added `cad/hr-v0/**/*.html text eol=lf`; the subsequent clean clone at `0dd2075...` passed. No CAD geometry changed.
 
 ## Evidence limits
 
