@@ -51,8 +51,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Walking verification matrix](docs/walking-verification.md)
 - [Mechanical concept and load model](docs/mechanical.md)
 - [HR-V0 native CAD, RFQ geometry and first-article controls](cad/hr-v0/README.md)
-- [HR-V0 Mechanical R0.1 preliminary baseline](docs/hr-v0-mechanical-r0.1.md)
-- [HR-V0 flat-plate manufacturing and first-article control P0.1](docs/hr-v0-flat-plate-manufacturing-p0.1.md)
+- [HR-V0 Mechanical R0.1 historical baseline (superseded arm)](docs/hr-v0-mechanical-r0.1.md)
+- [HR-V0 flat-plate manufacturing P0.1 (withdrawn by R53)](docs/hr-v0-flat-plate-manufacturing-p0.1.md)
 - [HR-V0 Boston fabrication and RFQ route P0.1](docs/hr-v0-boston-fabrication-route-p0.1.md)
 - [HR-V0 deterministic fabrication capability/DFM packets P0.1](docs/hr-v0-fabrication-rfi-p0.1.md)
 - [HR-V0 Boston bench survey and anchor-release procedure P0.1](docs/hr-v0-bench-survey-p0.1.md)
@@ -98,6 +98,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 actuator current and torque envelope P0.1](docs/hr-v0-actuator-current-envelope-p0.1.md)
 - [HR-V0 Boston build-site basis](docs/hr-v0-build-site-basis.md)
 - [Boston fabrication and custom-metal sourcing](docs/hr-v0-fabrication-sourcing-boston.md)
+- [Boston custom-metal decision package P0.2](docs/hr-v0-boston-fabrication-decision-p0.2.md)
+- [Interactive Boston fabrication route guide](release/hr-v0/boston-fabrication-route-p0.2/index.html)
 - [Control and fault-state specification](docs/control.md)
 - [HR-V0 Firmware P0.1 implementation candidate](docs/hr-v0-firmware-p0.1.md)
 - [HR-V0 watchdog hardware interface P0.2](docs/hr-v0-watchdog-interface-p0.2.md)
@@ -179,6 +181,9 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R89 watchdog PCB land-pattern validation record](docs/reviews/2026-08-08-r89-validation-record.md)
 - [R89 watchdog PCB land-pattern independent review request](docs/reviews/2026-08-08-watchdog-pcb-land-pattern-p0.1-independent-review-request.md)
 - [Sol R12 findings rechecked after R89](docs/reviews/2026-08-08-sol-r12-post-r89-status.md)
+- [R90 Boston fabrication-route validation record](docs/reviews/2026-08-08-r90-validation-record.md)
+- [R90 Boston fabrication-route independent review request](docs/reviews/2026-08-08-boston-fabrication-route-p0.2-independent-review-request.md)
+- [Sol R12 findings rechecked after R90](docs/reviews/2026-08-08-sol-r12-post-r90-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -210,7 +215,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-Eighty-nine review/control rounds are complete: R01-R89. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R89 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding, positive-stop, mass-reduction, gripper-source, datum-acquisition, unpowered-evaluation, fixed-guard, measurement-method, E2 configuration, source-interface, compute/debug, hard-stop-region, joint-stack-metrology, physical-acquisition, watchdog-dependent-failure, watchdog-supply-gate, watchdog-PCB fabrication-candidate and land-pattern corrections, not additional independent reviews.
+Ninety review/control rounds are complete: R01-R90. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R90 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding, positive-stop, mass-reduction, gripper-source, datum-acquisition, unpowered-evaluation, fixed-guard, measurement-method, E2 configuration, source-interface, compute/debug, hard-stop-region, joint-stack-metrology, physical-acquisition, watchdog-dependent-failure, watchdog-supply-gate, watchdog-PCB fabrication-candidate/land-pattern and Boston fabrication-route corrections, not additional independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -303,6 +308,7 @@ Eighty-nine review/control rounds are complete: R01-R89. R11 Fable and R12 Sol a
 | R87 | Watchdog-gated SR1 supply correction | Issued Electrical V3-P1.13, `HR-V0-CP-P0.5` and `HR-V0-WD-SUPPLY-P0.1`; made both S0 channels direct to SR1 and moved KWD1/KWD2 into a series gate on `SR1:A1`. The old encoded KWD-to-E-stop-return injection path is removed, but physical noninterference, contact duty, routing, recovery, fault injection, PLr/category and qualified review remain open. No fabrication, wiring, motion or energization is authorized. |
 | R88 | Watchdog PCB CAM and physical-evidence route | Issued `HR-V0-WD-FAB-P0.1` and `HR-V0-WD-TRAVELER-P0.1`; generated a checksummed KiCad 10.0.5 CAM review candidate with DRC, Gerbers, PTH/NPTH drills, placement, IPC-D-356, statistics and a 42-reference candidate BOM; added 24 CAM, 18 receiving/assembly, 16 current-limited bring-up and 13 inspection records. Fourteen fabrication holds and all physical rows remain open/unexecuted. No supplier upload, order, fabrication, assembly, energization or safety credit is authorized. |
 | R89 | Watchdog PCB land-pattern and assembly-process correction | Audited all 42 schematic references and four board-only holes; found the ISO1 isolation-land blocker, undocumented TI alternate lands and seventeen passive-process mismatches; issued PCB-P0.6 with 86 corrected source lands and a proposed mixed reflow/manual-THT sequence; preserved DRC 0/0; and superseded the immutable PCB-P0.5 CAM set for current fabrication review. No PCB-P0.6 CAM, assembler acceptance, physical evidence, fabrication, assembly or energization authority exists. |
+| R90 | Boston custom-metal route and thickness correction | Rejected the incompatible 4.75 mm SendCutSend advice against P0.7's 9.525 mm parts; compared six provider/process routes against nine current primary records; excluded SendCutSend as a finished-part route because its published tolerance and M5 countersink conflict with the controlled features; identified Xometry/Protolabs as held high-requirement CNC inquiry candidates and Artisans Asylum's Bridgeport mill as local capability only; and issued an interactive route guide. No contact, upload, quotation, supplier selection, first article, fabrication, assembly or energization authority exists. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

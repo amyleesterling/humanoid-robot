@@ -1,5 +1,7 @@
 # HR-V0 Joint Interface and Fastener Basis P0.1
 
+> **SUPERSEDED BY R53/R69.** This P0.1 interface model uses the withdrawn flat-link topology and must not control a quote, upload, part, fastener stack or assembly. The current candidate is `HR-V0-ARM-ARCH-P0.7` under `HR-V0-MECH-P0.6`; use its C01/C04/C05/C06/C07 controls and the R90 Boston route package.
+
 **PRELIMINARY - NOT RELEASED FOR FABRICATION, PROCUREMENT, ASSEMBLY, OR ENERGIZATION**
 
 Date: 2026-08-06  

@@ -1,0 +1,18 @@
+{
+  "identifier": "HR-V0-BOSTON-FAB-ROUTE-P0.2",
+  "date": "2026-08-08",
+  "parent_geometry": "HR-V0-ARM-ARCH-P0.7",
+  "source_revision": "HR-V0-FAB-SRC-P0.5",
+  "warning": "PRELIMINARY - NOT APPROVED FOR QUOTATION, FABRICATION, ASSEMBLY, MOTION, OR ENERGIZATION",
+  "provider_contacted": false,
+  "supplier_selected": false,
+  "upload_authorized": false,
+  "quotation_authorized": false,
+  "fabrication_authorized": false,
+  "first_article_authorized": false,
+  "energization_authorized": false,
+  "route_count": 6,
+  "source_count": 9,
+  "geometry_file_count": 15,
+  "correction": "4.75 mm SendCutSend advice rejected; all controlled custom parts remain 9.525 mm nominal and require high-requirement CNC"
+}

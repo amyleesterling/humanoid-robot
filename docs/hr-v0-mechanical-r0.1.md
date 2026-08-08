@@ -8,7 +8,7 @@ Date: 2026-08-06
 Native source: `cad/hr-v0/src/hr_v0_cad.py`  
 Reproducible screens: `cad/hr-v0/src/mechanical_checks.py`
 
-Current coordination overlay: `HR-V0-MECH-P0.2` in `docs/hr-v0-mechanical-release-p0.2.md`. P0.2 corrects the assembly datum transforms and anchor orientation, adds the general arrangement/interface registers, and prohibits structural STL. It does not advance the underlying quote geometry to a fabrication release.
+Current coordination overlay: `HR-V0-MECH-P0.6` in `docs/hr-v0-mechanical-release-p0.6.md`, with `HR-V0-ARM-ARCH-P0.7` as the current geometry candidate. This R0.1 document does not advance or define current quote geometry.
 
 ## Design decision
 

@@ -1,6 +1,6 @@
 # HR-V0 flat-plate manufacturing control P0.1
 
-> **WITHDRAWN BY R53. DO NOT QUOTE, UPLOAD, OR FABRICATE `MV0-001`, `MV0-002`, OR `MV0-003`.** The current arm candidate is `HR-V0-ARM-ARCH-P0.4`; see `docs/hr-v0-fabrication-sourcing-boston.md`. This file is retained as historical process research only.
+> **WITHDRAWN BY R53. DO NOT QUOTE, UPLOAD, OR FABRICATE `MV0-001`, `MV0-002`, OR `MV0-003`.** The current arm candidate is `HR-V0-ARM-ARCH-P0.7`; see `docs/hr-v0-fabrication-sourcing-boston.md` and `docs/hr-v0-boston-fabrication-decision-p0.2.md`. This file is retained as historical process research only.
 
 Status: **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 

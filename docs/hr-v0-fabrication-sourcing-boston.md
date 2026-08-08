@@ -2,11 +2,11 @@
 
 **PRELIMINARY - SOURCING RESEARCH ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, OR ENERGIZATION**
 
-Research updated: 2026-08-07
+Research updated: 2026-08-08
 
 Region: Boston, Massachusetts, USA
 
-Identifier: `HR-V0-FAB-SRC-P0.4`
+Identifier: `HR-V0-FAB-SRC-P0.5`
 
 Current geometry input: `HR-V0-ARM-ARCH-P0.7` / `HR-V0-J2-STOP-P0.1` / R69
 
@@ -26,9 +26,24 @@ The current R69 arm candidate uses:
 
 The H104 and S102 source axes and C06/C07 stop geometry are explicit candidates, but bumper selection, received fit, T-slot capacity, complete cable/guard envelope, stop load/contact/tolerance closure, stopping-overtravel margin, bench anchor, supplier DFM, FAI, proof testing, and qualified mechanical acceptance remain open. The parent `HR-V0-MECH-P0.6` release hold remains in force.
 
+## R90 material and process correction
+
+An earlier research note suggested `4.75 mm` (`0.187 in`) SendCutSend plate. That thickness is incompatible with every current C01/C04/C05/C06/C07 part. P0.7 controls nominal thickness at `9.525 mm` with a `9.00..10.00 mm` finished range. **Do not upload, quote, order or substitute 4.75 mm stock.**
+
+SendCutSend's current official pages list `0.375 in` 6061-T6 and countersinking, but the published process evidence does not close this design:
+
+- published accuracy is `+/-0.015 in` (`+/-0.381 mm`), while P0.7 requires locations/profile down to `+/-0.05 mm`, C06 rail datums at `+/-0.025 mm`, and C07 rail coplanarity `<=0.03 mm`;
+- its standard M5 90-degree countersink table uses a `10 mm` major diameter, while C01/C04/C06/C07 require `11.30 +0.10/-0.00 mm` and a received-head functional check;
+- the current controlled stock candidate is traceable 6061-T651 with an MTR, not an unreviewed T6 substitution; and
+- C07 requires a controlled `1.000 +/-0.05 mm` face step and retained surface/coplanarity map.
+
+SendCutSend is therefore excluded as a finished-part route. A deliberately oversized `9.53 mm` profile blank followed by qualified secondary CNC remains only a research contingency; no current profile-only upload artifact exists, and no datum transfer, traceability method or supplier pair is released.
+
 ## Recommended Boston-area route
 
-Use catalog ROBOTIS/80/20 hardware wherever the current candidate permits it. For C01/C04/C05/C06/C07, obtain written DFM from a one-stop 3-axis CNC supplier only after a qualified reviewer accepts the P0.7 drawing and stop controls. C07 requires controlled face-step/coplanarity capability. Use Artisans Asylum as a nearby capability/inspection candidate. Use SendCutSend only as a possible profile-blank source followed by qualified secondary CNC; no current profile-only upload artifact exists.
+Use catalog ROBOTIS/80/20 hardware wherever the current candidate permits it. For C01/C04/C05/C06/C07, obtain written DFM from a one-stop high-requirement 3-axis CNC supplier only after a qualified reviewer accepts the P0.7 drawing and stop controls. Xometry is the primary capability-inquiry candidate and Protolabs is the alternate; neither default portal tolerance is sufficient by itself, so every critical drawing control, material certificate and first-article report must receive explicit written acceptance. C06/C07 require one datum-controlled stop review, and C07 requires controlled face-step/coplanarity capability.
+
+Artisans Asylum's current machine-shop page identifies a Bridgeport CNC mill in Allston. That makes it a useful local capability, fixture, training or secondary-inspection candidate, but does not establish accepted material, CAM/workholding, operator availability, the P0.7 tolerances, calibrated CMM capability or responsibility for an FAI. It is not the current first-article supplier route.
 
 The Boston Public Library pages checked for this research document design, software, and PLA resources but no suitable structural-aluminum machining capability. FabVille describes education and prototyping rather than production. Neither is a current structural-metal supplier route.
 
@@ -51,7 +66,7 @@ Artisans Asylum remains a local capability candidate for supervised fit-up, debu
 | `MV0-C05` shoulder support | 1 | One-stop 3-axis CNC from accepted drawing/STEP/DXF | Capability/DFM inquiry only after qualified drawing review | Received S102/40-4040 fit, T-slot proof, material/MTR, DFM, separate first article and FAI |
 | `MV0-C06` moving striker | 1 | One-stop 3-axis CNC from accepted STEP/DXF/control schedule | Capability/DFM inquiry only after qualified stop review | STOP-001/002/005, MTR, FAI, complete contact/load/tolerance and proof evidence |
 | `MV0-C07` fixed catch | 1 | One-stop 3-axis CNC including controlled face step | Capability/DFM inquiry only after qualified stop review | STOP-003/004/005, step/coplanarity CMM, bumper/retention, load and proof evidence |
-| C01/C04/C05/C06/C07 profile blanks | 5 total | Profile cutting without final holes/countersinks/face step, then qualified secondary CNC | Research only; no controlled upload artifact exists | Separate pre-fillet blank artifacts, traceability, datum/fixture plan, finished-feature capability and FAI |
+| C01/C04/C05/C06/C07 profile blanks | 5 total | Oversized 9.53 mm blank only, then qualified secondary CNC | Research contingency only; direct finished-part route excluded and no controlled upload artifact exists | Separate oversized blank artifacts, T6/T651 disposition, traceability, datum/fixture plan, finished-feature capability and FAI |
 | 80/20 `20-2040`, 100 mm | 1 | Catalog cut plus `20-7047` two-hole M5 end-tap service | Written supplier configuration/DFM confirmation only | Received length, squareness, end-tap location/depth, thread-gauge result and joint proof |
 | 80/20 `20-2040`, 50 mm | 1 | Catalog cut plus `20-7047` two-hole M5 end-tap service | Written supplier configuration/DFM confirmation only | Same as 100 mm member |
 | Bench anchor | 2 candidate | Selection required after actual bench survey | Site survey only | Substrate, edge distance, access, anchor system, pull-out basis, slots, DFM, FAI and proof |
@@ -63,10 +78,10 @@ All pages were checked 2026-08-07; no formal revision was exposed unless the pag
 
 | Candidate | Published evidence | Controlled use |
 |---|---|---|
-| [Artisans Asylum, Allston](https://www.artisansasylum.com/home) | Current page lists Machine Shop, Metal Shop, and CNC Plasma Cutter resources at 96 Holton Street. | Local capability confirmation, training, finishing, or inspection candidate. Exact machine, operator, tolerance, material policy, access, and accepted job remain unverified. |
-| [Xometry CNC](https://www.xometry.com/capabilities/cnc-machining-service/) | Advertises 6061 CNC machining, DFM feedback, and inspection options. | One-stop CNC/DFM candidate after drawing review; no quote, supplier selection, or work authorization exists. |
-| [Protolabs aluminum CNC](https://www.protolabs.com/services/cnc-machining/aluminum/) | Advertises 6061-T651 CNC machining and published machining tolerances. | Independent one-stop quotation candidate after drawing review; exact material, inspection, and quote terms govern. |
-| [SendCutSend 6061](https://sendcutsend.com/blog/6061-t6-aluminum-laser-cutting-service/) | Advertises 6061-T6 profile cutting. | Research-only profile-blank candidate. Current 2.70 mm holes and countersinks require secondary CNC; no active profile-only artifact exists. |
+| [Artisans Asylum, Allston](https://www.artisansasylum.com/shops/machine) | Current page lists a Bridgeport CNC mill and requires tool testing for members/day-pass users. | Local capability, fixture, training, finishing, or supplemental inspection inquiry. Required material, workholding/CAM, operator, tolerance and calibrated-metrology evidence remain unverified. |
+| [Xometry CNC](https://www.xometry.com/capabilities/cnc-machining-service/) | Current page lists aluminum 6061, technical drawings, inspection/material-certification options, `+/-0.005 in` default metal tolerance and tighter drawing-defined capability. | Primary one-stop capability-inquiry candidate after qualified drawing review. Written precision, material/MTR and FAI acceptance is mandatory; no quote, supplier selection, or work authorization exists. |
+| [Protolabs aluminum CNC](https://www.protolabs.com/services/cnc-machining/aluminum/) | Current pages list 6061-T651 and precision/network machining with drawing-defined tolerances and inspection options. | Alternate one-stop high-requirement candidate after qualified drawing review. Exact factory/network route, material, FAI and quoted tolerances govern. |
+| [SendCutSend 6061/countersinking](https://sendcutsend.com/services/countersinking/) | Current page lists 0.375 in 6061-T6 and countersinking at `+/-0.015 in`; its M5 table uses a 10 mm major diameter. | Excluded as the finished-part route. Oversized blank research only; no active profile-only artifact, T651/MTR disposition or secondary datum chain exists. |
 | [80/20 20-2040](https://8020.net/20-2040.html) | Current profile page offers the proposed two-hole M5 x 0.8 end-tap service. | Catalog member/service candidate subject to written configuration confirmation and received inspection. |
 | [Boston Public Library KBLIC](https://www.bpl.org/kblic/) | Checked pages document maker/design resources, not suitable structural-metal machining. | Design and nonstructural prototype aids only on current evidence. |
 | [FabVille, Somerville](https://fabville.org/) | Current page describes education, prototyping, and open-shop support. | Training/prototyping candidate only; not a released structural-part route. |
