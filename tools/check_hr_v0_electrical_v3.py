@@ -71,7 +71,7 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P1.10", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P1.11", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
@@ -80,7 +80,7 @@ def main() -> int:
     require(len(sheets) == 12, f"expected 12 child sheets, found {len(sheets)}", failures)
     require(len(components) == 77, f"expected 77 unique component blocks, found {len(components)}", failures)
     require(len(all_components) == len(components), "duplicate component reference exists", failures)
-    require(len(all_pins) == 297, f"expected 297 modeled terminals, found {len(all_pins)}", failures)
+    require(len(all_pins) == 298, f"expected 298 modeled terminals, found {len(all_pins)}", failures)
     require(all(re.fullmatch(r"[A-Za-z]+[0-9]+", ref) for ref in components),
             "one or more references violate KiCad annotation syntax", failures)
 
@@ -153,7 +153,7 @@ def main() -> int:
         for row in wire_rows
     )
     require(actual_wires == expected_wires, "wire-number table differs from generated schematic labels", failures)
-    require(len(wire_rows) == 261, f"expected 261 labeled connected terminals, found {len(wire_rows)}", failures)
+    require(len(wire_rows) == 259, f"expected 259 labeled connected terminals, found {len(wire_rows)}", failures)
     require(len({row["wire_number"] for row in wire_rows}) == len(wire_rows),
             "wire numbers are not unique", failures)
 
@@ -170,7 +170,7 @@ def main() -> int:
         count, actual_connections = actual_nets.get(net, (-1, []))
         require(count == len(connections) and actual_connections == connections,
                 f"net schedule mismatch for {net}", failures)
-    require(len(expected_nets) == 100, f"expected 100 modeled nets, found {len(expected_nets)}", failures)
+    require(len(expected_nets) == 103, f"expected 103 modeled nets, found {len(expected_nets)}", failures)
 
     native_text = (OUT / "validation" / f"{gen.PROJECT}.net").read_text(encoding="utf-8-sig")
     native_refs = set(re.findall(r'\(comp\s+\(ref "([^"]+)"\)', native_text))
@@ -188,10 +188,10 @@ def main() -> int:
             key = (ref, pin)
             require(key not in native_node_net, f"native terminal {ref}:{pin} appears on multiple nets", failures)
             native_node_net[key] = name
-    require(len(native_net_names) == 100, f"expected 100 native KiCad nets, found {len(native_net_names)}", failures)
-    require(sum(name.startswith("unconnected-(") for name in native_net_names) == 36,
-            "expected 36 deliberate native unconnected nets", failures)
-    require(len(native_node_net) == 297, f"expected 297 native KiCad netlist nodes, found {len(native_node_net)}", failures)
+    require(len(native_net_names) == 103, f"expected 103 native KiCad nets, found {len(native_net_names)}", failures)
+    require(sum(name.startswith("unconnected-(") for name in native_net_names) == 39,
+            "expected 39 deliberate native unconnected nets", failures)
+    require(len(native_node_net) == 298, f"expected 298 native KiCad netlist nodes, found {len(native_node_net)}", failures)
     for _, comp, pin in all_pins:
         native_name = native_node_net.get((comp.ref, pin.number), "")
         if expected_net_counts[pin.net] == 1:
@@ -225,12 +225,21 @@ def main() -> int:
 
     require("JC1" not in components, "obsolete combined system-level JC1 block remains", failures)
     require(pin_map(components, "J24") == {
-        "1": "SAFETY_24V_RAW", "2": "SAFETY_0V", "3": "SAFETY_0V", "4": "SAFETY_24V_RAW",
-    }, "J24 R7B pin allocation changed", failures)
-    require("DC PLUG-P1J-R7B" in components["J24"].value and "KPJX-PM-4S" in components["J24"].value,
-            "J24 exact conversion/jack candidates changed", failures)
-    require("COMPATIBILITY AND PHYSICAL VERIFICATION REQUIRED" in components["J24"].status,
+        "1": "SAFETY_24V_RAW", "2": "INTENTIONALLY_NOT_CONNECTED_J24_2",
+        "3": "SAFETY_0V", "4": "INTENTIONALLY_NOT_CONNECTED_J24_4",
+    }, "J24 YL4/KPPX pin allocation changed", failures)
+    require("KPJX-PM-4S" in components["J24"].value and "factory 4-pin locking output" in components["J24"].value,
+            "J24 exact source-cord/jack candidates changed", failures)
+    require("SOURCE-CORD FIT AND PHYSICAL VERIFICATION REQUIRED" in components["J24"].status,
             "J24 appears physically or application released", failures)
+    require("WR9QI1660YL4NKITR6B" in components["PSU2"].value and
+            pin_map(components, "PSU2") == {
+                "Q-NA-L": "FACTORY_AC_L_CTL", "Q-NA-N": "FACTORY_AC_N_CTL",
+                "YL4-1": "SAFETY_24V_RAW", "YL4-2": "INTENTIONALLY_NOT_CONNECTED_PSU2_YL4_2",
+                "YL4-3": "SAFETY_0V", "YL4-4": "INTENTIONALLY_NOT_CONNECTED_PSU2_YL4_4",
+            }, "PSU2 exact GlobTek source or output pin map changed", failures)
+    require("Class II" in components["PSU2"].description and "floating output" in components["PSU2"].description,
+            "PSU2 Class II floating-output boundary changed", failures)
     require(pin_map(components, "F24") == {"IN": "SAFETY_24V_RAW", "OUT": "SAFETY_24V"},
             "F24 protection boundary changed", failures)
     require(components["F24"].status == "SELECTION REQUIRED",
@@ -477,7 +486,7 @@ def main() -> int:
         return 1
 
     print("HR-V0 Electrical V3 validation: PASS")
-    print("13 native pages; 77 component blocks; 297 terminals; 64 named connected + 36 unconnected nets; 261 unique wire labels; 65 unresolved rows")
+    print("13 native pages; 77 component blocks; 298 terminals; 64 named connected + 39 unconnected nets; 259 unique wire labels; 65 unresolved rows")
     print(WARNING)
     print("ERC/export consistency is not design approval or permission to energize.")
     return 0

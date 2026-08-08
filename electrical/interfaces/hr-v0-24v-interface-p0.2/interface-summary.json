@@ -1,0 +1,19 @@
+{
+  "identifier": "HR-V0-24V-IF-P0.2",
+  "date": "2026-08-08",
+  "electrical_baseline": "Project Button Electrical V3-P1.11",
+  "bom_rows": 5,
+  "pin_rows": 10,
+  "hold_rows": 8,
+  "source_rows": 10,
+  "load_rows": 5,
+  "source_rating_w": 40.0,
+  "source_rating_a": 1.66,
+  "screened_continuous_w": 27.024,
+  "screened_continuous_a": 1.126,
+  "headroom_through_40c_w": 12.976,
+  "headroom_at_50c_80pct_w": 4.976,
+  "load_screen_release": "NOT RELEASED - PHYSICAL STARTUP/BROWNOUT/FAULT EVIDENCE REQUIRED",
+  "release": "NOT AUTHORIZED",
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
+}

@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "electrical" / "e2" / "hr-v0-e2-hardware-p0.1"
+OUT = ROOT / "electrical" / "e2" / "hr-v0-e2-hardware-p0.2"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 
 
@@ -34,15 +34,18 @@ def main() -> None:
     require(len(terminals) == 6, "expected six XT1 positions")
     require(len(sources) == 3, "expected three source-domain rows")
     require(len(holds) == 12, "expected twelve blocking holds")
-    require(summary.get("electrical_baseline") == "Project Button Electrical V3-P1.10", "electrical baseline mismatch")
+    require(summary.get("identifier") == "HR-V0-E2-HW-P0.2", "E2 hardware identifier mismatch")
+    require(summary.get("electrical_baseline") == "Project Button Electrical V3-P1.11", "electrical baseline mismatch")
     require(summary.get("authorization") == "NOT AUTHORIZED", "authorization must remain denied")
     require({r["terminal"]: r["net"] for r in terminals} == {
         "XT1-01": "SAFETY_24V", "XT1-02": "SAFETY_0V", "XT1-03": "SR1_STATUS",
         "XT1-04": "SRA1_STATUS", "XT1-05": "K1_STATUS", "XT1-06": "K2_STATUS",
     }, "XT1 map differs from frozen candidate")
     combined = "\n".join(str(v) for row in config + terminals + sources + holds for v in row.values()) + guide
-    for token in ("3209510", "3209523", "3030417", "3022218", "0828734", "DC PLUG-P1J-R7B", "KPJX-PM-4S", "F24", "PHYSICALLY ABSENT", "LOAD POLES UNSOURCED AND UNWIRED", "NO FUSE LINK SELECTED", "NOT APPROVED FOR FABRICATION OR ENERGIZATION"):
+    for token in ("3209510", "3209523", "3030417", "3022218", "0828734", "WR9QI1660YL4NKITR6B", "YL4/C40337", "KPJX-PM-4S", "F24", "PHYSICALLY ABSENT", "LOAD POLES UNSOURCED AND UNWIRED", "NO FUSE LINK SELECTED", "NOT APPROVED FOR FABRICATION OR ENERGIZATION"):
         require(token in combined, f"required fail-closed token missing: {token}")
+    require("GST40A24-P1J" not in combined and "DC PLUG-P1J-R7B" not in combined,
+            "superseded 24 V conversion chain remains in E2 P0.2")
     require("12 V actuator" in guide and "physically absent" in guide, "guide does not state actuator-source exclusion")
     require("font:16px" in guide and "font-size:1rem" in guide, "guide text floor is not explicit")
     require(all(row["warning"] == WARNING for row in config + terminals + sources + holds), "warning missing from a CSV row")

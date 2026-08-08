@@ -1,0 +1,9 @@
+hold_id,scope,evidence_required,warning
+24H-001,SOURCE-CORD MATING,Received PSU2 output plug identity and proof that the supplied YL4/KPPX-4P-or-equal plug mates correctly with exact KPJX-PM-4S,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24H-002,LOAD/STARTUP,"Accepted continuous-load budget plus simultaneous pickup, startup, brownout, source-foldback and recovery evidence for the actual control assembly",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24H-003,RECEIVING,"Photographed source, Q-NA blade and jack identities; blade retention; keyed orientation; power-off continuity and controlled polarity record",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24H-004,PROTECTION,"F24 part/value based on fault current, inrush, time-current and downstream protection coordination",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24H-005,CONDUCTORS,"Wire, PCB/harness, terminals and terminations based on length, ambient, bundling, connector limits and jurisdiction",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24H-006,MECHANICAL,"Received Kycon geometry, panel/PCB design, mounting, retention, strain relief, bend radius, ingress and pullout proof",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24H-007,PHYSICAL TEST,"Polarity, voltage drop, contact temperature, retention and abnormal-condition evidence at accepted worst case",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24H-008,QUALIFIED REVIEW,Qualified electrical review and controlled work authorization for the applicable stage,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION

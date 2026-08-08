@@ -9,13 +9,13 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "electrical" / "e2" / "hr-v0-e2-hardware-p0.1"
-IDENTIFIER = "HR-V0-E2-HW-P0.1"
+OUT = ROOT / "electrical" / "e2" / "hr-v0-e2-hardware-p0.2"
+IDENTIFIER = "HR-V0-E2-HW-P0.2"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 
 CONFIG = [
     ("E2-CFG-001", "ENC1/BP1", "Hammond PJ242010RT / 18P2117", "INSTALL CANDIDATE", "HOLD", "Panel and backplate candidate only; no drilling until received geometry, layout and qualified review close."),
-    ("E2-CFG-002", "PSU2/J24", "Mean Well GST40A24-P1J + DC PLUG-P1J-R7B + Kycon KPJX-PM-4S", "EXACT SOURCE/INTERFACE CANDIDATES", "24 V CONTROL SOURCE ONLY", "Mean Well compatibility and adapter-current evidence, received polarity, panel interface, PCB/harness, retention and physical application remain open."),
+    ("E2-CFG-002", "PSU2/J24", "GlobTek WR9QI1660YL4NKITR6B with factory YL4/C40337 locking cord + Kycon KPJX-PM-4S", "EXACT SOURCE/INTERFACE CANDIDATES", "24 V CONTROL SOURCE ONLY", "Received source-cord plug identity/fit, Q-NA blade retention, polarity, load/startup, panel interface, PCB/harness, protection, retention and physical application remain open."),
     ("E2-CFG-003", "PSU3", "Raspberry Pi 27 W USB-C Power Supply, US family", "INSTALL CANDIDATE", "5.1 V COMPUTE SOURCE ONLY", "Exact US SKU/color and retention remain selection required."),
     ("E2-CFG-004", "S0", "IDEC XW1E-BV402M-R", "INSTALL CANDIDATE", "CONTROL ONLY", "Received identity, positive-opening contact mapping, continuity and mounting evidence required."),
     ("E2-CFG-005", "S1", "IDEC HW1B-M1F10-B", "INSTALL CANDIDATE", "CONTROL ONLY", "Received-lot RESET terminal mapping required; schematic placeholders TBD-R1/TBD-R2 remain."),
@@ -49,7 +49,7 @@ TERMINALS = [
 ]
 
 SOURCES = [
-    ("SRC-E2-24V", "PSU2/J24", "Mean Well GST40A24-P1J + DC PLUG-P1J-R7B + Kycon KPJX-PM-4S", "24 V / 1.67 A source; locking conversion/jack application not released", "GST40A-SPEC 2026-04-03; Kycon KPJX-PM catalog 0126; KPJX-PM-4S Rev C2 2026-01-08", "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF", "CONDITIONAL CANDIDATE; Mean Well compatibility/adapter rating, F24, PCB/harness, retention and received polarity open"),
+    ("SRC-E2-24V", "PSU2/J24", "GlobTek WR9QI1660YL4NKITR6B YL4/C40337 + Kycon KPJX-PM-4S", "24 V / 1.66 A / 40 W Class II source; factory locking output cord; application not released", "GlobTek exact specification Rev B generated/rechecked 2026-08-08; Kycon KPJX-PM catalog 0126; KPJX-PM-4S Rev C2 2026-01-08", "https://www.globtek.com/_0/WR9QI1660YL4NKITR6B/o", "CONDITIONAL CANDIDATE; received plug identity/fit, blade retention, load/startup, F24, PCB/harness, retention and polarity open"),
     ("SRC-E2-5V", "PSU3", "Raspberry Pi 27 W USB-C Power Supply", "5.1 V / 5 A family record", "RP-008245-DS-1 October 2023; portal updated 2025-10-06", "https://www.raspberrypi.com/products/27w-power-supply/", "CONDITIONAL CANDIDATE; exact US SKU/color/retention open"),
     ("SRC-E2-ACT", "PSA1", "Mean Well GST280A12-C6P", "12 V actuator source", "GST280A-SPEC 2026-04-03", "https://www.meanwell.com/Upload/PDF/GST280A/GST280A-SPEC.PDF", "PROHIBITED AT E2; physically absent, AC/DC disconnected"),
 ]
@@ -58,7 +58,7 @@ HOLDS = [
     ("E2-HOLD-001", "SITE", "Exact Boston site, receptacle, branch/GFCI basis, cords, LOTO and exclusion zone", "Accepted site record and qualified electrical disposition"),
     ("E2-HOLD-002", "RECEIVING", "Received identities and markings for every installed candidate", "Signed receiving records with photographs and traceability"),
     ("E2-HOLD-003", "OPERATOR MAPPING", "S1 RESET, S2 ARM and H1 terminals remain TBD", "Executed receiving/continuity procedures and independent comparison"),
-    ("E2-HOLD-004", "24 V INTERFACE", "J24 catalog/topology candidate is frozen but not application or physical released", "Written Mean Well GST40A24-P1J compatibility and adapter-current evidence; received polarity/continuity; Kycon pin-view reconciliation; PCB/harness, cutout, retention and strain-relief proof"),
+    ("E2-HOLD-004", "24 V INTERFACE", "PSU2 factory locking cord and J24 catalog/topology candidate are frozen but not application or physically released", "Received GlobTek YL4/KPPX-4P-or-equal plug identity and fit to exact Kycon jack; Q-NA blade retention; polarity/continuity; load/startup/brownout; PCB/harness, cutout, retention and strain-relief proof"),
     ("E2-HOLD-005", "PROTECTION", "F24 and FSR1/FSR2 protection/link selections and coordination are open", "Fault current, inrush, time-current, conductor and device coordination"),
     ("E2-HOLD-006", "CONDUCTORS", "Wire, ferrule/lug, labels, glands and door loom not released", "Lengths, ambient, bundling, ampacity, voltage drop, connector limits, termination qualification and jurisdiction"),
     ("E2-HOLD-007", "ENCLOSURE", "Holes, rail/duct cuts, entries, touch protection and bonding not released", "Received measurements, drawings, fabrication inspection and qualified enclosure review"),
@@ -94,7 +94,7 @@ def make_html() -> str:
     )
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HR-V0 E2 hardware slice P0.1</title>
+<title>HR-V0 E2 hardware slice P0.2</title>
 <style>
 :root{{--ink:#082b55;--blue:#0b4f8a;--sky:#dff3ff;--gold:#f5bd24;--paper:#f8fbff;--hold:#7b1e1e}}
 *{{box-sizing:border-box}} body{{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,sans-serif}}
@@ -124,7 +124,7 @@ def main() -> None:
         "identifier": IDENTIFIER,
         "date": "2026-08-08",
         "warning": WARNING,
-        "electrical_baseline": "Project Button Electrical V3-P1.10",
+        "electrical_baseline": "Project Button Electrical V3-P1.11",
         "sequence_baseline": "HR-V0-E2-SEQ-P0.1",
         "configuration_rows": len(CONFIG),
         "terminal_rows": len(TERMINALS),

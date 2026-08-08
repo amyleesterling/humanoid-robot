@@ -39,7 +39,7 @@ No connection may begin unless all of the following are true for the exact artic
 
 ## Permitted source architecture
 
-The candidate control source is Mean Well `GST40A24-P1J`, 24 V / 1.67 A, and the candidate compute source is the official Raspberry Pi 27 W USB-C supply. Both remain proposed until receiving/application evidence closes. Their factory AC inputs must remain unmodified; project-built mains wiring is outside this candidate.
+The candidate control source is GlobTek `WR9QI1660YL4NKITR6B`, 24 V / 1.66 A, with its factory `YL4/C40337` locking cord; the candidate compute source is the official Raspberry Pi 27 W USB-C supply. Both remain proposed until receiving/application evidence closes. The control source is Class II/floating and uses an interchangeable Q-NA blade from its factory kit; no project 0 V/PE bond is inferred. Factory AC inputs must remain unmodified; project-built mains wiring is outside this candidate.
 
 The Pilz `PNOZ s4` 750104 records support 24 V DC operation, two inputs, three safety N/O outputs, manual/automatic start modes and current operating-manual revision 21396-23 dated 2026-06-22. The current product record and manual do not validate this project application. Received identity, selector position, protected reset/EDM routing, output protection, device timing, fault tests and qualified functional-safety review remain mandatory.
 

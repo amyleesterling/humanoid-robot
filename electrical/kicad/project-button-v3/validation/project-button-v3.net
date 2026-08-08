@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-08T01:25:20")
+		(date "2026-08-08T02:28:11")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P1.10")
+			(name "REVISION") "V3-P1.11")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,7 +15,7 @@
 			(title_block
 				(title "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE index")
 				(company "Project Button")
-				(rev "V3-P1.10")
+				(rev "V3-P1.11")
 				(date "2026-08-08")
 				(source "project-button-v3.kicad_sch")
 				(comment
@@ -61,9 +61,9 @@
 			(name "/01 External listed sources and DC boundaries/")
 			(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
 			(title_block
-				(title "PB HR-V0 V3-P1.10 - 01")
+				(title "PB HR-V0 V3-P1.11 - 01")
 				(company "Project Button")
-				(rev "V3-P1.10")
+				(rev "V3-P1.11")
 				(date "2026-08-08")
 				(source "01_external_sources.kicad_sch")
 				(comment
@@ -109,9 +109,9 @@
 			(name "/02 Dual-channel E-stop and RESET eligibility/")
 			(tstamps "/1abf679f-5cd5-5479-8b91-6a232acf93b9/")
 			(title_block
-				(title "PB HR-V0 V3-P1.10 - 02")
+				(title "PB HR-V0 V3-P1.11 - 02")
 				(company "Project Button")
-				(rev "V3-P1.10")
+				(rev "V3-P1.11")
 				(date "2026-08-08")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
@@ -157,9 +157,9 @@
 			(name "/03 Distinct ARM and watchdog eligibility/")
 			(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
 			(title_block
-				(title "PB HR-V0 V3-P1.10 - 03")
+				(title "PB HR-V0 V3-P1.11 - 03")
 				(company "Project Button")
-				(rev "V3-P1.10")
+				(rev "V3-P1.11")
 				(date "2026-08-08")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
@@ -205,9 +205,9 @@
 			(name "/04 Contactor coils, mirror contacts and EDM/")
 			(tstamps "/6cf27f97-627c-5512-ba58-751093298e6c/")
 			(title_block
-				(title "PB HR-V0 V3-P1.10 - 04")
+				(title "PB HR-V0 V3-P1.11 - 04")
 				(company "Project Button")
-				(rev "V3-P1.10")
+				(rev "V3-P1.11")
 				(date "2026-08-08")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
@@ -253,9 +253,9 @@
 			(name "/05 Redundant actuator-power interruption/")
 			(tstamps "/db315f6f-1ed6-5bc9-bdf8-106d0286ccb4/")
 			(title_block
-				(title "PB HR-V0 V3-P1.10 - 05")
+				(title "PB HR-V0 V3-P1.11 - 05")
 				(company "Project Button")
-				(rev "V3-P1.10")
+				(rev "V3-P1.11")
 				(date "2026-08-08")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
@@ -301,9 +301,9 @@
 			(name "/06 Protected actuator branches and central DYNAMIXEL star injection/")
 			(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
 			(title_block
-				(title "PB HR-V0 V3-P1.10 - 06")
+				(title "PB HR-V0 V3-P1.11 - 06")
 				(company "Project Button")
-				(rev "V3-P1.10")
+				(rev "V3-P1.11")
 				(date "2026-08-08")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
@@ -349,9 +349,9 @@
 			(name "/07 Independent watchdog power, controller and drivers/")
 			(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
 			(title_block
-				(title "PB HR-V0 V3-P1.10 - 07")
+				(title "PB HR-V0 V3-P1.11 - 07")
 				(company "Project Button")
-				(rev "V3-P1.10")
+				(rev "V3-P1.11")
 				(date "2026-08-08")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
@@ -397,9 +397,9 @@
 			(name "/08 Calculated dual-channel 24 V watchdog feedback/")
 			(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
 			(title_block
-				(title "PB HR-V0 V3-P1.10 - 08")
+				(title "PB HR-V0 V3-P1.11 - 08")
 				(company "Project Button")
-				(rev "V3-P1.10")
+				(rev "V3-P1.11")
 				(date "2026-08-08")
 				(source "08_watchdog_feedback_interface.kicad_sch")
 				(comment
@@ -445,9 +445,9 @@
 			(name "/09 Compute, debug and control terminals/")
 			(tstamps "/f3a60727-2e66-5730-a829-00cc7c809e89/")
 			(title_block
-				(title "PB HR-V0 V3-P1.10 - 09")
+				(title "PB HR-V0 V3-P1.11 - 09")
 				(company "Project Button")
-				(rev "V3-P1.10")
+				(rev "V3-P1.11")
 				(date "2026-08-08")
 				(source "09_compute_and_control_terminals.kicad_sch")
 				(comment
@@ -493,9 +493,9 @@
 			(name "/10 U2D2, actuator ports and bonding boundary/")
 			(tstamps "/11f6090f-9f69-5145-93e3-5ccb2d8899ac/")
 			(title_block
-				(title "PB HR-V0 V3-P1.10 - 10")
+				(title "PB HR-V0 V3-P1.11 - 10")
 				(company "Project Button")
-				(rev "V3-P1.10")
+				(rev "V3-P1.11")
 				(date "2026-08-08")
 				(source "10_actuator_interfaces.kicad_sch")
 				(comment
@@ -541,9 +541,9 @@
 			(name "/11 Watchdog PCB external connectors/")
 			(tstamps "/6e16a5a8-d40c-518b-9320-2dd1b7122c9a/")
 			(title_block
-				(title "PB HR-V0 V3-P1.10 - 11")
+				(title "PB HR-V0 V3-P1.11 - 11")
 				(company "Project Button")
-				(rev "V3-P1.10")
+				(rev "V3-P1.11")
 				(date "2026-08-08")
 				(source "11_watchdog_pcb_connectors.kicad_sch")
 				(comment
@@ -589,9 +589,9 @@
 			(name "/12 Watchdog PCB test access/")
 			(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
 			(title_block
-				(title "PB HR-V0 V3-P1.10 - 12")
+				(title "PB HR-V0 V3-P1.11 - 12")
 				(company "Project Button")
-				(rev "V3-P1.10")
+				(rev "V3-P1.11")
 				(date "2026-08-08")
 				(source "12_watchdog_pcb_test_access.kicad_sch")
 				(comment
@@ -701,40 +701,40 @@
 		)
 		(comp
 			(ref "J24")
-			(value "Mean Well DC PLUG-P1J-R7B conversion candidate + Kycon KPJX-PM-4S panel jack")
-			(datasheet "https://www.meanwell.com/productSeriesP.aspx?c=75&i=90")
-			(description "R7B pins 1 and 4 are proposed +24 V and pins 2 and 3 are proposed 0 V. Parallel contacts receive no current-sharing or safety credit. Do not order, cut a panel, make a PCB/harness or connect PSU2 until Mean Well confirms GST40A24-P1J compatibility and adapter current/application limits, and received continuity proves the plug/jack view and polarity.")
+			(value "Kycon KPJX-PM-4S panel jack candidate for GlobTek factory 4-pin locking output")
+			(datasheet "https://www.kycon.com/Pub_Eng_Draw/KPJX-PM-4S.pdf")
+			(description "GlobTek identifies YL4 as the KPPX-4P connector type and the exact PSU2 drawing assigns only pin 1 +24 V and pin 3 return/shield; pins 2 and 4 are N/C. Kycon recommends KPJX-PM-4S for KPPX plugs. GlobTek still permits a connector 'or equal', so received plug identity, keyed plug/jack view, fit, continuity and polarity remain mandatory. No N/C pin may be repurposed.")
 			(fields
 				(field
-					(name "Status") "EXACT CATALOG/TOPOLOGY CANDIDATE - COMPATIBILITY AND PHYSICAL VERIFICATION REQUIRED")
+					(name "Status") "EXACT JACK CANDIDATE - SOURCE-CORD FIT AND PHYSICAL VERIFICATION REQUIRED")
 				(field
-					(name "Evidence") "Mean Well current accessory page and industrial catalog rechecked 2026-08-08; Kycon KPJX-PM catalog 0126 and KPJX-PM-4S drawing Rev C2 dated 2026-01-08. Compatibility, adapter rating, installed retention, PCB/harness and received mapping remain open.")
+					(name "Evidence") "GlobTek WR9QI1660YL4NKITR6B Rev B and YL4/KPPX-4P source records rechecked 2026-08-08; Kycon KPJX-PM catalog 0126 and KPJX-PM-4S drawing Rev C2 dated 2026-01-08.")
 				(field
-					(name "Display") "Mean Well DC PLUG-P1J-R7B conversion candidate + Kycon KPJX-PM-4S panel jack")
+					(name "Display") "Kycon KPJX-PM-4S panel jack candidate for GlobTek factory 4-pin locking output")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.meanwell.com/productSeriesP.aspx?c=75&i=90")
+					(name "Datasheet") "https://www.kycon.com/Pub_Eng_Draw/KPJX-PM-4S.pdf")
 				(field
-					(name "Description") "R7B pins 1 and 4 are proposed +24 V and pins 2 and 3 are proposed 0 V. Parallel contacts receive no current-sharing or safety credit. Do not order, cut a panel, make a PCB/harness or connect PSU2 until Mean Well confirms GST40A24-P1J compatibility and adapter current/application limits, and received continuity proves the plug/jack view and polarity.")
+					(name "Description") "GlobTek identifies YL4 as the KPPX-4P connector type and the exact PSU2 drawing assigns only pin 1 +24 V and pin 3 return/shield; pins 2 and 4 are N/C. Kycon recommends KPJX-PM-4S for KPPX plugs. GlobTek still permits a connector 'or equal', so received plug identity, keyed plug/jack view, fit, continuity and polarity remain mandatory. No N/C pin may be repurposed.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "J24")
-				(description "R7B pins 1 and 4 are proposed +24 V and pins 2 and 3 are proposed 0 V. Parallel contacts receive no current-sharing or safety credit. Do not order, cut a panel, make a PCB/harness or connect PSU2 until Mean Well confirms GST40A24-P1J compatibility and adapter current/application limits, and received continuity proves the plug/jack view and polarity.")
+				(description "GlobTek identifies YL4 as the KPPX-4P connector type and the exact PSU2 drawing assigns only pin 1 +24 V and pin 3 return/shield; pins 2 and 4 are N/C. Kycon recommends KPJX-PM-4S for KPPX plugs. GlobTek still permits a connector 'or equal', so received plug identity, keyed plug/jack view, fit, continuity and polarity remain mandatory. No N/C pin may be repurposed.")
 			)
 			(property
 				(name "Status")
-				(value "EXACT CATALOG/TOPOLOGY CANDIDATE - COMPATIBILITY AND PHYSICAL VERIFICATION REQUIRED")
+				(value "EXACT JACK CANDIDATE - SOURCE-CORD FIT AND PHYSICAL VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Mean Well current accessory page and industrial catalog rechecked 2026-08-08; Kycon KPJX-PM catalog 0126 and KPJX-PM-4S drawing Rev C2 dated 2026-01-08. Compatibility, adapter rating, installed retention, PCB/harness and received mapping remain open.")
+				(value "GlobTek WR9QI1660YL4NKITR6B Rev B and YL4/KPPX-4P source records rechecked 2026-08-08; Kycon KPJX-PM catalog 0126 and KPJX-PM-4S drawing Rev C2 dated 2026-01-08.")
 			)
 			(property
 				(name "Display")
-				(value "Mean Well DC PLUG-P1J-R7B conversion candidate + Kycon KPJX-PM-4S panel jack")
+				(value "Kycon KPJX-PM-4S panel jack candidate for GlobTek factory 4-pin locking output")
 			)
 			(property
 				(name "Sheetname")
@@ -932,40 +932,40 @@
 		)
 		(comp
 			(ref "PSU2")
-			(value "Mean Well GST40A24-P1J, 24 V 1.67 A 40 W")
-			(datasheet "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF")
-			(description "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE. The proposed P1J-to-R7B conversion remains on hold until Mean Well confirms GST40A24-P1J compatibility and the adapter current/application envelope.")
+			(value "GlobTek WR9QI1660YL4NKITR6B, 24 V 1.66 A 40 W, YL4/C40337 factory 4-pin locking cord")
+			(datasheet "https://www.globtek.com/_0/WR9QI1660YL4NKITR6B/o")
+			(description "Factory-sealed Class II wall adapter with floating output and included interchangeable Q blade kit. Rev B specifies a 1200 mm UL 1185 16 AWG 1C-plus-shield output cord, YL4 four-pin locking plug, pin 1 +24 V, pin 3 return/shield, and pins 2/4 N/C. Output current limit is 110-160% with auto-recovery; full rated load is specified only through 40 C ambient and derates to 80% at 50 C. Do not connect until received identity, blade retention, plug identity, polarity, load/startup, abnormal-condition and site-use evidence are accepted.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - LOCKING CONVERSION COMPATIBILITY VERIFICATION REQUIRED")
+					(name "Status") "EXACT SOURCE/OUTPUT-CORD CANDIDATE - RECEIVED AND APPLICATION VERIFICATION REQUIRED")
 				(field
-					(name "Evidence") "GST40A-SPEC 2026-04-03")
+					(name "Evidence") "GlobTek WR9QI1660YL4NKITR6B specification Rev B; current generated copy and product page rechecked 2026-08-08.")
 				(field
-					(name "Display") "Mean Well GST40A24-P1J, 24 V 1.67 A 40 W")
+					(name "Display") "GlobTek WR9QI1660YL4NKITR6B, 24 V 1.66 A 40 W, YL4/C40337 factory 4-pin locking cord")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF")
+					(name "Datasheet") "https://www.globtek.com/_0/WR9QI1660YL4NKITR6B/o")
 				(field
-					(name "Description") "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE. The proposed P1J-to-R7B conversion remains on hold until Mean Well confirms GST40A24-P1J compatibility and the adapter current/application envelope.")
+					(name "Description") "Factory-sealed Class II wall adapter with floating output and included interchangeable Q blade kit. Rev B specifies a 1200 mm UL 1185 16 AWG 1C-plus-shield output cord, YL4 four-pin locking plug, pin 1 +24 V, pin 3 return/shield, and pins 2/4 N/C. Output current limit is 110-160% with auto-recovery; full rated load is specified only through 40 C ambient and derates to 80% at 50 C. Do not connect until received identity, blade retention, plug identity, polarity, load/startup, abnormal-condition and site-use evidence are accepted.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "PSU2")
-				(description "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE. The proposed P1J-to-R7B conversion remains on hold until Mean Well confirms GST40A24-P1J compatibility and the adapter current/application envelope.")
+				(description "Factory-sealed Class II wall adapter with floating output and included interchangeable Q blade kit. Rev B specifies a 1200 mm UL 1185 16 AWG 1C-plus-shield output cord, YL4 four-pin locking plug, pin 1 +24 V, pin 3 return/shield, and pins 2/4 N/C. Output current limit is 110-160% with auto-recovery; full rated load is specified only through 40 C ambient and derates to 80% at 50 C. Do not connect until received identity, blade retention, plug identity, polarity, load/startup, abnormal-condition and site-use evidence are accepted.")
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - LOCKING CONVERSION COMPATIBILITY VERIFICATION REQUIRED")
+				(value "EXACT SOURCE/OUTPUT-CORD CANDIDATE - RECEIVED AND APPLICATION VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "GST40A-SPEC 2026-04-03")
+				(value "GlobTek WR9QI1660YL4NKITR6B specification Rev B; current generated copy and product page rechecked 2026-08-08.")
 			)
 			(property
 				(name "Display")
-				(value "Mean Well GST40A24-P1J, 24 V 1.67 A 40 W")
+				(value "GlobTek WR9QI1660YL4NKITR6B, 24 V 1.66 A 40 W, YL4/C40337 factory 4-pin locking cord")
 			)
 			(property
 				(name "Sheetname")
@@ -985,19 +985,22 @@
 					(name "A")
 					(pins
 						(pin
-							(num "C14-PE")
+							(num "Q-NA-N")
 						)
 						(pin
-							(num "C14-N")
+							(num "Q-NA-L")
 						)
 						(pin
-							(num "C14-L")
+							(num "YL4-4")
 						)
 						(pin
-							(num "P1J-S")
+							(num "YL4-3")
 						)
 						(pin
-							(num "P1J-C")
+							(num "YL4-2")
+						)
+						(pin
+							(num "YL4-1")
 						)
 					)
 				)
@@ -3412,7 +3415,7 @@
 			(value "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603")
 			(footprint "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder")
 			(datasheet "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
-			(description "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at 24.6 V until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
+			(description "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at the 25.2 V screened rail maximum until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
 			(fields
 				(field
 					(name "Status") "PROPOSED - VERIFICATION REQUIRED: DC-BIAS/PCB/EMC")
@@ -3425,12 +3428,12 @@
 				(field
 					(name "Datasheet") "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 				(field
-					(name "Description") "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at 24.6 V until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
+					(name "Description") "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at the 25.2 V screened rail maximum until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "CFI1")
-				(description "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at 24.6 V until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
+				(description "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at the 25.2 V screened rail maximum until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
 			)
 			(property
 				(name "Status")
@@ -4052,7 +4055,7 @@
 			(value "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210")
 			(footprint "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder")
 			(datasheet "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
-			(description "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.226 W, 45.2% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
+			(description "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.238 W, 47.6% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
 			(fields
 				(field
 					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL")
@@ -4065,12 +4068,12 @@
 				(field
 					(name "Datasheet") "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 				(field
-					(name "Description") "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.226 W, 45.2% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
+					(name "Description") "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.238 W, 47.6% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "RW1")
-				(description "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.226 W, 45.2% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
+				(description "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.238 W, 47.6% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
 			)
 			(property
 				(name "Status")
@@ -6125,7 +6128,7 @@
 		(libpart
 			(lib "PBV3")
 			(part "CFI1")
-			(description "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at 24.6 V until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
+			(description "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at the 25.2 V screened rail maximum until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
 			(docs "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 			(fields
 				(field
@@ -6137,7 +6140,7 @@
 				(field
 					(name "Datasheet") "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA")
 				(field
-					(name "Description") "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at 24.6 V until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
+					(name "Description") "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at the 25.2 V screened rail maximum until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.")
 				(field
 					(name "Status") "PROPOSED - VERIFICATION REQUIRED: DC-BIAS/PCB/EMC")
 				(field
@@ -6789,46 +6792,46 @@
 		(libpart
 			(lib "PBV3")
 			(part "J24")
-			(description "R7B pins 1 and 4 are proposed +24 V and pins 2 and 3 are proposed 0 V. Parallel contacts receive no current-sharing or safety credit. Do not order, cut a panel, make a PCB/harness or connect PSU2 until Mean Well confirms GST40A24-P1J compatibility and adapter current/application limits, and received continuity proves the plug/jack view and polarity.")
-			(docs "https://www.meanwell.com/productSeriesP.aspx?c=75&i=90")
+			(description "GlobTek identifies YL4 as the KPPX-4P connector type and the exact PSU2 drawing assigns only pin 1 +24 V and pin 3 return/shield; pins 2 and 4 are N/C. Kycon recommends KPJX-PM-4S for KPPX plugs. GlobTek still permits a connector 'or equal', so received plug identity, keyed plug/jack view, fit, continuity and polarity remain mandatory. No N/C pin may be repurposed.")
+			(docs "https://www.kycon.com/Pub_Eng_Draw/KPJX-PM-4S.pdf")
 			(fields
 				(field
 					(name "Reference") "J24")
 				(field
-					(name "Value") "Mean Well DC PLUG-P1J-R7B conversion candidate + Kycon KPJX-PM-4S panel jack")
+					(name "Value") "Kycon KPJX-PM-4S panel jack candidate for GlobTek factory 4-pin locking output")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.meanwell.com/productSeriesP.aspx?c=75&i=90")
+					(name "Datasheet") "https://www.kycon.com/Pub_Eng_Draw/KPJX-PM-4S.pdf")
 				(field
-					(name "Description") "R7B pins 1 and 4 are proposed +24 V and pins 2 and 3 are proposed 0 V. Parallel contacts receive no current-sharing or safety credit. Do not order, cut a panel, make a PCB/harness or connect PSU2 until Mean Well confirms GST40A24-P1J compatibility and adapter current/application limits, and received continuity proves the plug/jack view and polarity.")
+					(name "Description") "GlobTek identifies YL4 as the KPPX-4P connector type and the exact PSU2 drawing assigns only pin 1 +24 V and pin 3 return/shield; pins 2 and 4 are N/C. Kycon recommends KPJX-PM-4S for KPPX plugs. GlobTek still permits a connector 'or equal', so received plug identity, keyed plug/jack view, fit, continuity and polarity remain mandatory. No N/C pin may be repurposed.")
 				(field
-					(name "Status") "EXACT CATALOG/TOPOLOGY CANDIDATE - COMPATIBILITY AND PHYSICAL VERIFICATION REQUIRED")
+					(name "Status") "EXACT JACK CANDIDATE - SOURCE-CORD FIT AND PHYSICAL VERIFICATION REQUIRED")
 				(field
-					(name "Evidence") "Mean Well current accessory page and industrial catalog rechecked 2026-08-08; Kycon KPJX-PM catalog 0126 and KPJX-PM-4S drawing Rev C2 dated 2026-01-08. Compatibility, adapter rating, installed retention, PCB/harness and received mapping remain open.")
+					(name "Evidence") "GlobTek WR9QI1660YL4NKITR6B Rev B and YL4/KPPX-4P source records rechecked 2026-08-08; Kycon KPJX-PM catalog 0126 and KPJX-PM-4S drawing Rev C2 dated 2026-01-08.")
 				(field
-					(name "Display") "Mean Well DC PLUG-P1J-R7B conversion candidate + Kycon KPJX-PM-4S panel jack")
+					(name "Display") "Kycon KPJX-PM-4S panel jack candidate for GlobTek factory 4-pin locking output")
 			)
 			(pins
 				(pin
 					(num "1")
-					(name "+24V_A")
+					(name "+24V")
 					(type "passive")
 				)
 				(pin
 					(num "2")
-					(name "0V_A")
+					(name "N/C")
 					(type "passive")
 				)
 				(pin
 					(num "3")
-					(name "0V_B")
+					(name "0V_/_SHIELD_RETURN")
 					(type "passive")
 				)
 				(pin
 					(num "4")
-					(name "+24V_B")
+					(name "N/C")
 					(type "passive")
 				)
 			)
@@ -7619,51 +7622,56 @@
 		(libpart
 			(lib "PBV3")
 			(part "PSU2")
-			(description "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE. The proposed P1J-to-R7B conversion remains on hold until Mean Well confirms GST40A24-P1J compatibility and the adapter current/application envelope.")
-			(docs "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF")
+			(description "Factory-sealed Class II wall adapter with floating output and included interchangeable Q blade kit. Rev B specifies a 1200 mm UL 1185 16 AWG 1C-plus-shield output cord, YL4 four-pin locking plug, pin 1 +24 V, pin 3 return/shield, and pins 2/4 N/C. Output current limit is 110-160% with auto-recovery; full rated load is specified only through 40 C ambient and derates to 80% at 50 C. Do not connect until received identity, blade retention, plug identity, polarity, load/startup, abnormal-condition and site-use evidence are accepted.")
+			(docs "https://www.globtek.com/_0/WR9QI1660YL4NKITR6B/o")
 			(fields
 				(field
 					(name "Reference") "PSU2")
 				(field
-					(name "Value") "Mean Well GST40A24-P1J, 24 V 1.67 A 40 W")
+					(name "Value") "GlobTek WR9QI1660YL4NKITR6B, 24 V 1.66 A 40 W, YL4/C40337 factory 4-pin locking cord")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF")
+					(name "Datasheet") "https://www.globtek.com/_0/WR9QI1660YL4NKITR6B/o")
 				(field
-					(name "Description") "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE. The proposed P1J-to-R7B conversion remains on hold until Mean Well confirms GST40A24-P1J compatibility and the adapter current/application envelope.")
+					(name "Description") "Factory-sealed Class II wall adapter with floating output and included interchangeable Q blade kit. Rev B specifies a 1200 mm UL 1185 16 AWG 1C-plus-shield output cord, YL4 four-pin locking plug, pin 1 +24 V, pin 3 return/shield, and pins 2/4 N/C. Output current limit is 110-160% with auto-recovery; full rated load is specified only through 40 C ambient and derates to 80% at 50 C. Do not connect until received identity, blade retention, plug identity, polarity, load/startup, abnormal-condition and site-use evidence are accepted.")
 				(field
-					(name "Status") "PROPOSED - LOCKING CONVERSION COMPATIBILITY VERIFICATION REQUIRED")
+					(name "Status") "EXACT SOURCE/OUTPUT-CORD CANDIDATE - RECEIVED AND APPLICATION VERIFICATION REQUIRED")
 				(field
-					(name "Evidence") "GST40A-SPEC 2026-04-03")
+					(name "Evidence") "GlobTek WR9QI1660YL4NKITR6B specification Rev B; current generated copy and product page rechecked 2026-08-08.")
 				(field
-					(name "Display") "Mean Well GST40A24-P1J, 24 V 1.67 A 40 W")
+					(name "Display") "GlobTek WR9QI1660YL4NKITR6B, 24 V 1.66 A 40 W, YL4/C40337 factory 4-pin locking cord")
 			)
 			(pins
 				(pin
-					(num "C14-L")
-					(name "FACTORY_AC_L")
+					(num "Q-NA-L")
+					(name "FACTORY_AC_LINE_BLADE")
 					(type "passive")
 				)
 				(pin
-					(num "C14-N")
-					(name "FACTORY_AC_N")
+					(num "Q-NA-N")
+					(name "FACTORY_AC_NEUTRAL_BLADE")
 					(type "passive")
 				)
 				(pin
-					(num "C14-PE")
-					(name "FACTORY_PE")
+					(num "YL4-1")
+					(name "+24V")
 					(type "passive")
 				)
 				(pin
-					(num "P1J-C")
-					(name "CENTER_+24V")
+					(num "YL4-2")
+					(name "N/C")
 					(type "passive")
 				)
 				(pin
-					(num "P1J-S")
-					(name "SLEEVE_0V")
+					(num "YL4-3")
+					(name "0V_/_SHIELD_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "YL4-4")
+					(name "N/C")
 					(type "passive")
 				)
 			)
@@ -8073,7 +8081,7 @@
 		(libpart
 			(lib "PBV3")
 			(part "RW1")
-			(description "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.226 W, 45.2% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
+			(description "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.238 W, 47.6% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
 			(docs "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 			(fields
 				(field
@@ -8085,7 +8093,7 @@
 				(field
 					(name "Datasheet") "https://www.vishay.com/docs/20035/dcrcwe3.pdf")
 				(field
-					(name "Description") "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.226 W, 45.2% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
+					(name "Description") "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.238 W, 47.6% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.")
 				(field
 					(name "Status") "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL")
 				(field
@@ -10382,14 +10390,8 @@
 			)
 			(node
 				(ref "J24")
-				(pin "2")
-				(pinfunction "0V_A_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "J24")
 				(pin "3")
-				(pinfunction "0V_B_3")
+				(pinfunction "0V_/_SHIELD_RETURN_3")
 				(pintype "passive")
 			)
 			(node
@@ -10418,8 +10420,8 @@
 			)
 			(node
 				(ref "PSU2")
-				(pin "P1J-S")
-				(pinfunction "SLEEVE_0V_P1J-S")
+				(pin "YL4-3")
+				(pinfunction "0V_/_SHIELD_RETURN_YL4-3")
 				(pintype "passive")
 			)
 			(node
@@ -10735,19 +10737,13 @@
 			(node
 				(ref "J24")
 				(pin "1")
-				(pinfunction "+24V_A_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "J24")
-				(pin "4")
-				(pinfunction "+24V_B_4")
+				(pinfunction "+24V_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "PSU2")
-				(pin "P1J-C")
-				(pinfunction "CENTER_+24V_P1J-C")
+				(pin "YL4-1")
+				(pinfunction "+24V_YL4-1")
 				(pintype "passive")
 			)
 		)
@@ -11448,6 +11444,28 @@
 		)
 		(net
 			(code "65")
+			(name "unconnected-(J24-N{slash}C-Pad2)")
+			(class "Default")
+			(node
+				(ref "J24")
+				(pin "2")
+				(pinfunction "N/C_2")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "66")
+			(name "unconnected-(J24-N{slash}C-Pad4)")
+			(class "Default")
+			(node
+				(ref "J24")
+				(pin "4")
+				(pinfunction "N/C_4")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "67")
 			(name "unconnected-(JFRAME1-CABLE_SHIELDS-PadTBD-SHIELD)")
 			(class "Default")
 			(node
@@ -11458,7 +11476,7 @@
 			)
 		)
 		(net
-			(code "66")
+			(code "68")
 			(name "unconnected-(JFRAME1-ROBOT_FRAME-PadTBD-FRAME)")
 			(class "Default")
 			(node
@@ -11469,7 +11487,7 @@
 			)
 		)
 		(net
-			(code "67")
+			(code "69")
 			(name "unconnected-(KWD1-CH1_NC_UNUSED-Pad12)")
 			(class "Default")
 			(node
@@ -11480,7 +11498,7 @@
 			)
 		)
 		(net
-			(code "68")
+			(code "70")
 			(name "unconnected-(KWD1-CH2_NO_UNUSED-Pad24)")
 			(class "Default")
 			(node
@@ -11491,7 +11509,7 @@
 			)
 		)
 		(net
-			(code "69")
+			(code "71")
 			(name "unconnected-(KWD2-CH1_NC_UNUSED-Pad12)")
 			(class "Default")
 			(node
@@ -11502,7 +11520,7 @@
 			)
 		)
 		(net
-			(code "70")
+			(code "72")
 			(name "unconnected-(KWD2-CH2_NO_UNUSED-Pad24)")
 			(class "Default")
 			(node
@@ -11513,7 +11531,7 @@
 			)
 		)
 		(net
-			(code "71")
+			(code "73")
 			(name "unconnected-(PSA1-FACTORY_AC_L-PadC14-L)")
 			(class "Default")
 			(node
@@ -11524,7 +11542,7 @@
 			)
 		)
 		(net
-			(code "72")
+			(code "74")
 			(name "unconnected-(PSA1-FACTORY_AC_N-PadC14-N)")
 			(class "Default")
 			(node
@@ -11535,40 +11553,51 @@
 			)
 		)
 		(net
-			(code "73")
-			(name "unconnected-(PSU2-FACTORY_AC_L-PadC14-L)")
-			(class "Default")
-			(node
-				(ref "PSU2")
-				(pin "C14-L")
-				(pinfunction "FACTORY_AC_L_C14-L")
-				(pintype "passive+no_connect")
-			)
-		)
-		(net
-			(code "74")
-			(name "unconnected-(PSU2-FACTORY_AC_N-PadC14-N)")
-			(class "Default")
-			(node
-				(ref "PSU2")
-				(pin "C14-N")
-				(pinfunction "FACTORY_AC_N_C14-N")
-				(pintype "passive+no_connect")
-			)
-		)
-		(net
 			(code "75")
-			(name "unconnected-(PSU2-FACTORY_PE-PadC14-PE)")
+			(name "unconnected-(PSU2-FACTORY_AC_LINE_BLADE-PadQ-NA-L)")
 			(class "Default")
 			(node
 				(ref "PSU2")
-				(pin "C14-PE")
-				(pinfunction "FACTORY_PE_C14-PE")
+				(pin "Q-NA-L")
+				(pinfunction "FACTORY_AC_LINE_BLADE_Q-NA-L")
 				(pintype "passive+no_connect")
 			)
 		)
 		(net
 			(code "76")
+			(name "unconnected-(PSU2-FACTORY_AC_NEUTRAL_BLADE-PadQ-NA-N)")
+			(class "Default")
+			(node
+				(ref "PSU2")
+				(pin "Q-NA-N")
+				(pinfunction "FACTORY_AC_NEUTRAL_BLADE_Q-NA-N")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "77")
+			(name "unconnected-(PSU2-N{slash}C-PadYL4-2)")
+			(class "Default")
+			(node
+				(ref "PSU2")
+				(pin "YL4-2")
+				(pinfunction "N/C_YL4-2")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "78")
+			(name "unconnected-(PSU2-N{slash}C-PadYL4-4)")
+			(class "Default")
+			(node
+				(ref "PSU2")
+				(pin "YL4-4")
+				(pinfunction "N/C_YL4-4")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "79")
 			(name "unconnected-(PSU3-FACTORY_AC-PadAC-FACTORY)")
 			(class "Default")
 			(node
@@ -11579,7 +11608,7 @@
 			)
 		)
 		(net
-			(code "77")
+			(code "80")
 			(name "unconnected-(SP1-ACTUATOR_0V-Pad1)")
 			(class "Default")
 			(node
@@ -11590,7 +11619,7 @@
 			)
 		)
 		(net
-			(code "78")
+			(code "81")
 			(name "unconnected-(SP1-PE-Pad2)")
 			(class "Default")
 			(node
@@ -11601,7 +11630,7 @@
 			)
 		)
 		(net
-			(code "79")
+			(code "82")
 			(name "unconnected-(SR1-AUX_NC_OUT-Pad42)")
 			(class "Default")
 			(node
@@ -11612,7 +11641,7 @@
 			)
 		)
 		(net
-			(code "80")
+			(code "83")
 			(name "unconnected-(SR1-SAFETY_OUT3_IN-Pad33)")
 			(class "Default")
 			(node
@@ -11623,7 +11652,7 @@
 			)
 		)
 		(net
-			(code "81")
+			(code "84")
 			(name "unconnected-(SR1-SAFETY_OUT3_OUT-Pad34)")
 			(class "Default")
 			(node
@@ -11634,7 +11663,7 @@
 			)
 		)
 		(net
-			(code "82")
+			(code "85")
 			(name "unconnected-(SRA1-AUX_NC_OUT-Pad42)")
 			(class "Default")
 			(node
@@ -11645,7 +11674,7 @@
 			)
 		)
 		(net
-			(code "83")
+			(code "86")
 			(name "unconnected-(SRA1-SAFETY_OUT3_IN-Pad33)")
 			(class "Default")
 			(node
@@ -11656,7 +11685,7 @@
 			)
 		)
 		(net
-			(code "84")
+			(code "87")
 			(name "unconnected-(SRA1-SAFETY_OUT3_OUT-Pad34)")
 			(class "Default")
 			(node
@@ -11667,7 +11696,7 @@
 			)
 		)
 		(net
-			(code "85")
+			(code "88")
 			(name "unconnected-(UDRV1-OUT2_UNUSED-Pad15)")
 			(class "Default")
 			(node
@@ -11678,7 +11707,7 @@
 			)
 		)
 		(net
-			(code "86")
+			(code "89")
 			(name "unconnected-(UDRV1-OUT3_UNUSED-Pad14)")
 			(class "Default")
 			(node
@@ -11689,7 +11718,7 @@
 			)
 		)
 		(net
-			(code "87")
+			(code "90")
 			(name "unconnected-(UDRV1-OUT4_UNUSED-Pad13)")
 			(class "Default")
 			(node
@@ -11700,7 +11729,7 @@
 			)
 		)
 		(net
-			(code "88")
+			(code "91")
 			(name "unconnected-(UDRV1-OUT5_UNUSED-Pad12)")
 			(class "Default")
 			(node
@@ -11711,7 +11740,7 @@
 			)
 		)
 		(net
-			(code "89")
+			(code "92")
 			(name "unconnected-(UDRV1-OUT6_UNUSED-Pad11)")
 			(class "Default")
 			(node
@@ -11722,7 +11751,7 @@
 			)
 		)
 		(net
-			(code "90")
+			(code "93")
 			(name "unconnected-(UDRV1-OUT7_UNUSED-Pad10)")
 			(class "Default")
 			(node
@@ -11733,7 +11762,7 @@
 			)
 		)
 		(net
-			(code "91")
+			(code "94")
 			(name "unconnected-(UDRV2-OUT2_UNUSED-Pad15)")
 			(class "Default")
 			(node
@@ -11744,7 +11773,7 @@
 			)
 		)
 		(net
-			(code "92")
+			(code "95")
 			(name "unconnected-(UDRV2-OUT3_UNUSED-Pad14)")
 			(class "Default")
 			(node
@@ -11755,7 +11784,7 @@
 			)
 		)
 		(net
-			(code "93")
+			(code "96")
 			(name "unconnected-(UDRV2-OUT4_UNUSED-Pad13)")
 			(class "Default")
 			(node
@@ -11766,7 +11795,7 @@
 			)
 		)
 		(net
-			(code "94")
+			(code "97")
 			(name "unconnected-(UDRV2-OUT5_UNUSED-Pad12)")
 			(class "Default")
 			(node
@@ -11777,7 +11806,7 @@
 			)
 		)
 		(net
-			(code "95")
+			(code "98")
 			(name "unconnected-(UDRV2-OUT6_UNUSED-Pad11)")
 			(class "Default")
 			(node
@@ -11788,7 +11817,7 @@
 			)
 		)
 		(net
-			(code "96")
+			(code "99")
 			(name "unconnected-(UDRV2-OUT7_UNUSED-Pad10)")
 			(class "Default")
 			(node
@@ -11799,7 +11828,7 @@
 			)
 		)
 		(net
-			(code "97")
+			(code "100")
 			(name "unconnected-(UFB1-NC-Pad6)")
 			(class "Default")
 			(node
@@ -11810,7 +11839,7 @@
 			)
 		)
 		(net
-			(code "98")
+			(code "101")
 			(name "unconnected-(UFB1-NC-Pad7)")
 			(class "Default")
 			(node
@@ -11821,7 +11850,7 @@
 			)
 		)
 		(net
-			(code "99")
+			(code "102")
 			(name "unconnected-(UFB1-SUB1_FLOAT-Pad13)")
 			(class "Default")
 			(node
@@ -11832,7 +11861,7 @@
 			)
 		)
 		(net
-			(code "100")
+			(code "103")
 			(name "unconnected-(UFB1-SUB2_FLOAT-Pad12)")
 			(class "Default")
 			(node

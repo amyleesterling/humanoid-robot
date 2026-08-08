@@ -6,7 +6,7 @@ Document ID: `HR-V0-CP-P0.4`
 
 Date: 2026-08-07
 
-Electrical input: `Project Button Electrical V3-P1.10`
+Electrical input: `Project Button Electrical V3-P1.11`
 
 R79 reconciles the previously exact panel-BOM XT1 family into the native electrical source as `XT1-01` through `XT1-06`. This freezes catalog identities and position-to-net candidates only; every conductor, ferrule/direct-wire method, protection choice, current/temperature coordination, received check, strip length, retention, marking and point-to-point record remains on hold.
 
@@ -74,7 +74,7 @@ H1 remains IDEC `HW1P-1FQD-A-24V`, labeled **RESET STAGE READY - DIAGNOSTIC ONLY
 
 ## Closure sequence
 
-1. Close the `J24` compatibility, adapter-current and physical-installation holds; select and coordinate `F24` plus all six remaining fuse links, conductors, terminations, glands, and bonding hardware; receive and verify the candidate end cover and exact `SD1`.
+1. Close the `J24` received GlobTek source-cord plug identity/fit, Q-NA blade retention, load/startup and physical-installation holds; select and coordinate `F24` plus all six remaining fuse links, conductors, terminations, glands, and bonding hardware; receive and verify the candidate end cover and exact `SD1`.
 2. Receive and inspect enclosure, panel, protection hardware, operators, relays, contactors, terminals, rails, ducts, and boards.
 3. Replace catalog envelopes with received dimensions, service sweeps, cable bends, and a three-dimensional depth model.
 4. Complete fault-current, time-current, voltage-drop, duct-fill, heat, grounding/bonding, and enclosure-rating reviews.

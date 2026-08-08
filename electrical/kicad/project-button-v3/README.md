@@ -1,4 +1,4 @@
-# Project Button HR-V0 Electrical V3-P1.10
+# Project Button HR-V0 Electrical V3-P1.11
 
 **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -29,7 +29,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 - Three exact Phoenix Contact PCB terminal-block candidates freeze the project pin allocation for 24 V/control return, two coil sinks, two NC feedback channels and the isolated heartbeat pair. Harness, conductor, ferrule, protection, enclosure, received-orientation and thermal evidence remain open.
 - `project-button-v3.kicad_pcb` is the native PCB-P0.5 routed/test-access candidate. It retains the corrected ISO1212 DBQ footprint, field/control zoning, sixteen exact Harwin S1751-46R test terminals and separate TI-recommended 2 mm x 2 mm SUB1/SUB2 floating copper planes. It encodes a 0.1524 mm minimum trace/clearance and passes the proposed OSH Park U.S. two-layer width, spacing, drill and annular-ring envelope. It is not a Gerber or fabrication release; supplier acceptance, installed probe access, protection coordination, schematic parity review, creepage/clearance, thermal, EMC and HIL evidence remain gates.
 - Heartbeat restoration cannot restore contactors; SRA1 requires a new monitored ARM action.
-- External Mean Well adapters replace project-built mains wiring.
+- Factory-sealed external adapters replace project-built mains wiring; the 24 V candidate is GlobTek `WR9QI1660YL4NKITR6B` with its factory YL4/C40337 locking cord.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.
 - Three poles per candidate contactor are represented in series, pending Schneider application confirmation.
 - U2D2 VDD is omitted and protected power is injected by one central DXL-STAR-P0.1 board with three isolated VDD branches; harness, thermal, waveform and no-backfeed evidence remain design gates.

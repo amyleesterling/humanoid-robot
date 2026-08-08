@@ -94,7 +94,10 @@ def main() -> int:
             errors.append(f"{name} form lost its preliminary warning")
     if len(unpowered) != 1 or unpowered[0].get("status") != "NOT EXECUTED" or unpowered[0].get("actuator_source_physically_absent") != "NOT EXECUTED":
         errors.append("unpowered-configuration template execution boundary changed")
-    if len(mains_pe) != 1 or mains_pe[0].get("status") != "NOT EXECUTED" or mains_pe[0].get("frame_pe_policy") != "SELECTION REQUIRED":
+    if (len(mains_pe) != 1 or mains_pe[0].get("status") != "NOT EXECUTED"
+            or mains_pe[0].get("psu2_identity") != "WR9QI1660YL4NKITR6B"
+            or mains_pe[0].get("psu2_cord_order_code") != "YL4/C40337 factory cord"
+            or mains_pe[0].get("frame_pe_policy") != "CLASS II PSU2; PROJECT 0 V/PE POLICY SELECTION REQUIRED"):
         errors.append("mains/PE template execution/selection boundary changed")
     if len(elv) != 1 or elv[0].get("status") != "NOT EXECUTED" or elv[0].get("expected_state") != "SELECTION REQUIRED":
         errors.append("ELV template execution/selection boundary changed")

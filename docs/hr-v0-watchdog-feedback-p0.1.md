@@ -34,11 +34,11 @@ The circuit is modeled on KiCad sheet `08_watchdog_feedback_interface.kicad_sch`
 
 ## Input threshold and wetting-current screen
 
-The proposed Mean Well `GST40A24-P1J` output is 24 V with a documented plus/minus 2.5% tolerance. The screened operating endpoints are therefore:
+The proposed GlobTek `WR9QI1660YL4NKITR6B` output is 24 V with output regulation of plus/minus 5% measured at the output connector in specification Rev B. The screened operating endpoints are therefore:
 
 ```text
-Vrail_min = 24.0 V * 0.975 = 23.4 V
-Vrail_max = 24.0 V * 1.025 = 24.6 V
+Vrail_min = 24.0 V * 0.95 = 22.8 V
+Vrail_max = 24.0 V * 1.05 = 25.2 V
 ```
 
 For `RSENSE = 562 Ohm` and `RTHR = 1 kOhm`, TI specifies a module-input low threshold of 8.7 V to 9.2 V, a high threshold of 10.4 V to 10.95 V, and 1.0 V to 1.2 V hysteresis. Both screened rail endpoints are therefore above the specified high threshold. This is a component-level margin check, not an EMC or wiring-drop validation.
@@ -47,15 +47,15 @@ Phoenix Contact specifies a 5 V / 10 mA minimum switching load for the proposed 
 
 ```text
 Rwet_max = 2700 Ohm * 1.01 = 2727 Ohm
-Iwet_min = 23.4 V / 2727 Ohm = 8.58 mA
+Iwet_min = 22.8 V / 2727 Ohm = 8.36 mA
 
 Iiso_min = 2.05 mA
-Icontact_min = 8.58 mA + 2.05 mA = 10.63 mA
+Icontact_min = 8.36 mA + 2.05 mA = 10.41 mA
 
 Rwet_min = 2700 Ohm * 0.99 = 2673 Ohm
-Iwet_max = 24.6 V / 2673 Ohm = 9.20 mA
+Iwet_max = 25.2 V / 2673 Ohm = 9.43 mA
 Iiso_max = 2.75 mA
-Icontact_max = 9.20 mA + 2.75 mA = 11.95 mA
+Icontact_max = 9.43 mA + 2.75 mA = 12.18 mA
 ```
 
 The `Iiso` bounds use TI's specified 2.05 mA to 2.75 mA input-current range for a 562 Ohm current-set resistor above the low threshold and below 30 V. Applying that table to the module input with the 1 kOhm threshold resistor is an engineering inference: the resistor drops only a few volts at the current limit, leaving `SENSE` within the cited range. Received-board current measurements across temperature remain required.
@@ -63,8 +63,8 @@ The `Iiso` bounds use TI's specified 2.05 mA to 2.75 mA input-current range for 
 Worst-case steady dissipation in the wetting resistor is:
 
 ```text
-Pwet_max = 24.6 V^2 / 2673 Ohm = 0.226 W
-0.226 W / 0.5 W = 45.2% of candidate rating
+Pwet_max = 25.2 V^2 / 2673 Ohm = 0.238 W
+0.238 W / 0.5 W = 47.6% of candidate rating
 ```
 
 The exact proposed wetting resistor is Vishay `CRCW12102K70FKEA`, rated 0.5 W at 70 degrees C under the cited manufacturer conditions. The 0.5 W rating has preliminary steady-state margin, but pulse, temperature-rise, mounting, ambient and enclosure derating still require review. The exact proposed threshold resistor is Vishay `MMA02040C1001FB300`, a MELF with a 0.4 W power-operation rating at 70 degrees C. At the screened 2.75 mA input current its simple steady loss is 7.56 mW; pulse/surge qualification remains open.
@@ -99,7 +99,7 @@ Raw high means the KWD NC feedback contact is closed, which corresponds to the o
 - Texas Instruments, *ISO121x Isolated 24V to 60V Digital Input Receivers*, `SLLSEY7G`, revised February 2025: https://www.ti.com/lit/ds/symlink/iso1211.pdf
 - Texas Instruments, `ISO1212DBQ` active orderable part page, accessed 2026-08-06: https://www.ti.com/product/ISO1212/part-details/ISO1212DBQ
 - Phoenix Contact, `PLC-RSC-24DC/21-21`, item `2967060`, product PDF generated 2026-08-04, product-data maintenance date 2026-04-01: https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf
-- Mean Well, `GST40A` specification `GST40A-SPEC`, dated 2026-04-03: https://www.meanwell.com/Upload/PDF/gst40a/gst40a-spec.pdf
+- GlobTek, `WR9QI1660YL4NKITR6B` specification Rev B, rechecked 2026-08-08: https://spec.globtek.info/spec/?id=01t0c000008jfZg
 - Raspberry Pi, current RP2040 and Pico datasheets, accessed 2026-08-06: https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf and https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf
 - Vishay Beyschlag, MELF resistor document `28963`, revision 2026-06-02: https://www.vishay.com/docs/28963/mmu0102_mma0204_mmb0207.pdf
 - Vishay, D/CRCW resistor document `20035`, revision 2026-04-14: https://www.vishay.com/docs/20035/dcrcwe3.pdf

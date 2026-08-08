@@ -88,7 +88,7 @@ def main() -> int:
         "PAN-023": "FHAC0002SXJ",
         "PAN-024": "D-ST 4, item 3030420",
         "PAN-025": "75920-01",
-        "PAN-026": "DC PLUG-P1J-R7B / KPJX-PM-4S",
+        "PAN-026": "WR9QI1660YL4NKITR6B YL4/C40337 / KPJX-PM-4S",
     }
     by_item = {row.get("item_id", ""): row for row in bom}
     for item_id, mpn in required_mpn.items():
@@ -259,7 +259,7 @@ def main() -> int:
     h1_doc = H1_DOC.read_text(encoding="utf-8") if H1_DOC.is_file() else ""
     for required in (
         "HR-V0-H1-RCV-P0.1",
-        "Project Button Electrical V3-P1.10",
+        "Project Button Electrical V3-P1.11",
         "TBD-HA` and `TBD-HB` are project placeholders only",
         "does not choose a current limit, fuse, test-lead rating, or source",
         "RESET STAGE READY - DIAGNOSTIC ONLY / NO MOTION AUTHORITY",

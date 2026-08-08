@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P1.10"
+REV = "V3-P1.11"
 PROJECT_TITLE = "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE"
 PROJECT_SUBTITLE = "Separate RESET and ARM, two PNOZ stages, dual watchdog contacts, external adapters, redundant actuator interruption."
 DATE = "2026-08-08"
@@ -163,26 +163,27 @@ def sheets() -> list[Sheet]:
                   "https://www.molex.com/en-us/products/part-detail/39012066",
                   "Molex 5559 and 44478 series data accessed 2026-08-06; PS-44476-001 rev D dated 2003-06-12; ATS-638190900 rev H dated 2015-08-28. Six-contact 16 AWG HCS project-side screen is 21 A / 3 = 7 A per contact versus the published 11 A HCS guideline. The adapter-side contact construction and real current division are not published, so received-harness thermal, crimp and current-division tests remain mandatory.",
                   position=(210, 82), width=78),
-        Component("PSU2", "Mean Well GST40A24-P1J, 24 V 1.67 A 40 W",
-                  [pn("PS24A", "P1J-C", "CENTER +24V", "SAFETY_24V_RAW", "right"),
-                   pn("PS24A", "P1J-S", "SLEEVE 0V", "SAFETY_0V", "right"),
-                   pn("PS24A", "C14-L", "FACTORY AC L", "FACTORY_AC_L_CTL", "left"),
-                   pn("PS24A", "C14-N", "FACTORY AC N", "FACTORY_AC_N_CTL", "left"),
-                   pn("PS24A", "C14-PE", "FACTORY PE", "SITE_PE_CONTROL_SOURCE", "left")],
-                  "PROPOSED - LOCKING CONVERSION COMPATIBILITY VERIFICATION REQUIRED",
-                  "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE. The proposed P1J-to-R7B conversion remains on hold until Mean Well confirms GST40A24-P1J compatibility and the adapter current/application envelope.",
-                  "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF",
-                  "GST40A-SPEC 2026-04-03", (340, 82), 78),
-        Component("J24", "Mean Well DC PLUG-P1J-R7B conversion candidate + Kycon KPJX-PM-4S panel jack",
-                  [pn("J24", "1", "+24V A", "SAFETY_24V_RAW", "left"),
-                   pn("J24", "2", "0V A", "SAFETY_0V", "left"),
-                   pn("J24", "3", "0V B", "SAFETY_0V", "left"),
-                   pn("J24", "4", "+24V B", "SAFETY_24V_RAW", "left")],
-                  "EXACT CATALOG/TOPOLOGY CANDIDATE - COMPATIBILITY AND PHYSICAL VERIFICATION REQUIRED",
-                  "R7B pins 1 and 4 are proposed +24 V and pins 2 and 3 are proposed 0 V. Parallel contacts receive no current-sharing or safety credit. Do not order, cut a panel, make a PCB/harness or connect PSU2 until Mean Well confirms GST40A24-P1J compatibility and adapter current/application limits, and received continuity proves the plug/jack view and polarity.",
-                  "https://www.meanwell.com/productSeriesP.aspx?c=75&i=90",
-                  "Mean Well current accessory page and industrial catalog rechecked 2026-08-08; Kycon KPJX-PM catalog 0126 and KPJX-PM-4S drawing Rev C2 dated 2026-01-08. Compatibility, adapter rating, installed retention, PCB/harness and received mapping remain open.",
-                  position=(75, 175), width=92),
+        Component("PSU2", "GlobTek WR9QI1660YL4NKITR6B, 24 V 1.66 A 40 W, YL4/C40337 factory 4-pin locking cord",
+                  [pn("PSU2", "Q-NA-L", "FACTORY AC LINE BLADE", "FACTORY_AC_L_CTL", "left"),
+                   pn("PSU2", "Q-NA-N", "FACTORY AC NEUTRAL BLADE", "FACTORY_AC_N_CTL", "left"),
+                   pn("PSU2", "YL4-1", "+24V", "SAFETY_24V_RAW", "right"),
+                   pn("PSU2", "YL4-2", "N/C", "INTENTIONALLY_NOT_CONNECTED_PSU2_YL4_2", "right"),
+                   pn("PSU2", "YL4-3", "0V / SHIELD RETURN", "SAFETY_0V", "right"),
+                   pn("PSU2", "YL4-4", "N/C", "INTENTIONALLY_NOT_CONNECTED_PSU2_YL4_4", "right")],
+                  "EXACT SOURCE/OUTPUT-CORD CANDIDATE - RECEIVED AND APPLICATION VERIFICATION REQUIRED",
+                  "Factory-sealed Class II wall adapter with floating output and included interchangeable Q blade kit. Rev B specifies a 1200 mm UL 1185 16 AWG 1C-plus-shield output cord, YL4 four-pin locking plug, pin 1 +24 V, pin 3 return/shield, and pins 2/4 N/C. Output current limit is 110-160% with auto-recovery; full rated load is specified only through 40 C ambient and derates to 80% at 50 C. Do not connect until received identity, blade retention, plug identity, polarity, load/startup, abnormal-condition and site-use evidence are accepted.",
+                  "https://www.globtek.com/_0/WR9QI1660YL4NKITR6B/o",
+                  "GlobTek WR9QI1660YL4NKITR6B specification Rev B; current generated copy and product page rechecked 2026-08-08.", (340, 82), 86),
+        Component("J24", "Kycon KPJX-PM-4S panel jack candidate for GlobTek factory 4-pin locking output",
+                  [pn("J24", "1", "+24V", "SAFETY_24V_RAW", "left"),
+                   pn("J24", "2", "N/C", "INTENTIONALLY_NOT_CONNECTED_J24_2", "left"),
+                   pn("J24", "3", "0V / SHIELD RETURN", "SAFETY_0V", "left"),
+                   pn("J24", "4", "N/C", "INTENTIONALLY_NOT_CONNECTED_J24_4", "left")],
+                  "EXACT JACK CANDIDATE - SOURCE-CORD FIT AND PHYSICAL VERIFICATION REQUIRED",
+                  "GlobTek identifies YL4 as the KPPX-4P connector type and the exact PSU2 drawing assigns only pin 1 +24 V and pin 3 return/shield; pins 2 and 4 are N/C. Kycon recommends KPJX-PM-4S for KPPX plugs. GlobTek still permits a connector 'or equal', so received plug identity, keyed plug/jack view, fit, continuity and polarity remain mandatory. No N/C pin may be repurposed.",
+                  "https://www.kycon.com/Pub_Eng_Draw/KPJX-PM-4S.pdf",
+                  "GlobTek WR9QI1660YL4NKITR6B Rev B and YL4/KPPX-4P source records rechecked 2026-08-08; Kycon KPJX-PM catalog 0126 and KPJX-PM-4S drawing Rev C2 dated 2026-01-08.",
+                  position=(75, 175), width=96),
         Component("F24", "24 V control-source branch protection",
                   [pn("F24", "IN", "SOURCE +24V", "SAFETY_24V_RAW", "left"),
                    pn("F24", "OUT", "PROTECTED +24V", "SAFETY_24V", "right")],
@@ -202,7 +203,8 @@ def sheets() -> list[Sheet]:
                   "DNP - PROHIBITED WITH GST280A12-C6P", "The source already bonds -V to PE. Do not fit SP1 or add a parallel robot-frame bond.", position=(340, 175), width=78),
     ]
     s1.notes = ["All AC conductors shown are factory boundaries, not project-built wiring.",
-                "Site cords, receptacles, GFCI/code basis and source application review remain open."]
+                "PSU2 is Class II with a floating output; do not infer a control 0 V/PE bond.",
+                "Site receptacles, GFCI/code basis, blade retention and source application review remain open."]
 
     s2 = Sheet(2, "02_estop_eligibility.kicad_sch", "Dual-channel E-stop and RESET eligibility",
                "Each SR1 input return contains one E-stop NC and one watchdog NO contact; RESET cannot energize K1/K2.")
@@ -452,11 +454,11 @@ def sheets() -> list[Sheet]:
                   "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF5620V", "Panasonic current product page, 562 ohm 1%, 0805, 0.125 W; accessed 2026-08-06.", position=(55, 120), width=50, footprint="Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"),
         Component("CFI1", "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603",
                   [pn("CFI1", "1", "SENSE", "FB_SENSE1", "left"), pn("CFI1", "2", "FIELD RETURN", "SAFETY_0V", "right")],
-                  "PROPOSED - VERIFICATION REQUIRED: DC-BIAS/PCB/EMC", "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at 24.6 V until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.",
+                  "PROPOSED - VERIFICATION REQUIRED: DC-BIAS/PCB/EMC", "Exact order code frozen. Exact AEC-Q200 X7R candidate for TI Type-3 input filter. Nominal value is not credited at the 25.2 V screened rail maximum until DC-bias, tolerance, temperature and received-board capacitance are verified; locate at UFB1.",
                   "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA3E2X7R1H103K080AA", "TDK current product page: production, 10 nF +/-10%, 50 VDC, X7R, 0603, -55 to 125 C; accessed 2026-08-06.", position=(55, 180), width=50, footprint="Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"),
         Component("RW1", "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210",
                   [pn("RW1", "1", "FIELD INPUT", "WD1_NC_24V", "left"), pn("RW1", "2", "FIELD RETURN", "SAFETY_0V", "right")],
-                  "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL", "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.226 W, 45.2% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.",
+                  "PROPOSED - VERIFICATION REQUIRED: PCB/PULSE/THERMAL", "Exact order code frozen. Exact 0.5 W candidate for the parallel wetting load. Worst screened steady loss is 0.238 W, 47.6% of the 70 C rating; PCB/enclosure temperature, pulse and fault derating remain open.",
                   "https://www.vishay.com/docs/20035/dcrcwe3.pdf", "Vishay document 20035, revision 2026-04-14; CRCW1210 0.5 W rating and order-code construction checked 2026-08-06.", position=(55, 225), width=50, footprint="Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder"),
         Component("RTH2", "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF",
                   [pn("RTH2", "1", "FIELD INPUT", "WD2_NC_24V", "left"), pn("RTH2", "2", "SENSE", "FB_SENSE2", "right")],
@@ -970,7 +972,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 - Three exact Phoenix Contact PCB terminal-block candidates freeze the project pin allocation for 24 V/control return, two coil sinks, two NC feedback channels and the isolated heartbeat pair. Harness, conductor, ferrule, protection, enclosure, received-orientation and thermal evidence remain open.
 - `project-button-v3.kicad_pcb` is the native PCB-P0.5 routed/test-access candidate. It retains the corrected ISO1212 DBQ footprint, field/control zoning, sixteen exact Harwin S1751-46R test terminals and separate TI-recommended 2 mm x 2 mm SUB1/SUB2 floating copper planes. It encodes a 0.1524 mm minimum trace/clearance and passes the proposed OSH Park U.S. two-layer width, spacing, drill and annular-ring envelope. It is not a Gerber or fabrication release; supplier acceptance, installed probe access, protection coordination, schematic parity review, creepage/clearance, thermal, EMC and HIL evidence remain gates.
 - Heartbeat restoration cannot restore contactors; SRA1 requires a new monitored ARM action.
-- External Mean Well adapters replace project-built mains wiring.
+- Factory-sealed external adapters replace project-built mains wiring; the 24 V candidate is GlobTek `WR9QI1660YL4NKITR6B` with its factory YL4/C40337 locking cord.
 - The GST280A12-C6P source bond is explicit; project star point SP1 is DNP/prohibited.
 - Three poles per candidate contactor are represented in series, pending Schneider application confirmation.
 - U2D2 VDD is omitted and protected power is injected by one central DXL-STAR-P0.1 board with three isolated VDD branches; harness, thermal, waveform and no-backfeed evidence remain design gates.

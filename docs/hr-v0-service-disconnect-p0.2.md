@@ -6,7 +6,7 @@ Date: 2026-08-07
 
 Document ID: `HR-V0-SD-P0.2`
 
-Applies to: Electrical `V3-P1.10`, reference `SD1`, positive path `ACT_12V_FUSED -> SD1 -> K1_P1_IN`
+Applies to: Electrical `V3-P1.11`, reference `SD1`, positive path `ACT_12V_FUSED -> SD1 -> K1_P1_IN`
 
 Supersedes: `HR-V0-SD-P0.1` as the current application screen. P0.1 remains configuration history.
 
