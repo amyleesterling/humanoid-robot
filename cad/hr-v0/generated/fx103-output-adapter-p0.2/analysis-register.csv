@@ -1,0 +1,16 @@
+screen,inputs,result,authority
+R106-A01,old radius 7.5 - (hole radius 8 - hole radius 1.1),0.600000 mm nominal hole/stub overlap,R103 ONE-PIECE GEOMETRY REJECTED
+R106-A02,old radius 7.5 - (hole radius 8 - candidate M2 head radius 1.9),1.400000 mm nominal head/stub overlap,SCREW/DRIVER ACCESS IMPOSSIBLE; EXACT HEAD STILL SELECTION REQUIRED
+R106-A03,new hole radius 8 - head radius 1.9 - pilot radius 5,1.100000 mm nominal C01 pilot/head radial clearance,GEOMETRY SCREEN; EXACT FASTENER/TOOL OPEN
+R106-A04,M4 tap inner edge minus M2 counterbore outer edge,2.350000 mm nominal pattern-to-pattern radial clearance,GEOMETRY SCREEN; POSITION/TOLERANCE/LOCAL STRESS REVIEW OPEN
+R106-A05,PCD28 radius - candidate M4 head radius 3.5 - shaft radius 7.5,3.000000 mm nominal C02 head/stub radial clearance,GEOMETRY SCREEN; EXACT HEAD/TOOL OPEN
+R106-A06,stub length 20.00 - insertion 14.95,5.050000 mm nominal exposed stub before hub,CATALOG LAYOUT ONLY; RULAND ACCEPTANCE OPEN
+R106-A07,7.9 N m / 8 screws / 8 mm radius,123.437500 N ideal peak tangential load per horn screw,EQUAL-SHARE ARITHMETIC; NO HORN/SCREW/THREAD/SLIP CREDIT
+R106-A08,7.9 N m / 4 screws / 14 mm radius,141.071429 N ideal peak tangential load per transfer screw,EQUAL-SHARE ARITHMETIC; PRELOAD/SLIP/THREAD REVIEW OPEN
+R106-A09,"16T/(pi*d^3), T=7.9 N m, d=14.987 mm",11.952344 MPa nominal shaft torsional shear,GROSS SOLID-SHAFT SCREEN; FILLET/FATIGUE/FAULT/ALIGNMENT OPEN
+R106-A10,"16T/(pi*d^3), T=3.96 N m, d=14.987 mm",5.991301 MPa nominal shaft torsional shear,RULAND RATED ENDPOINT SCREEN; NOT A PROJECT DUTY ALLOWABLE
+R106-A11,A08 / (pi x M4 internal thread minor-diameter screen 3.242 x 6 mm),2.308474 MPa simplified uniform internal-thread shear,SIMPLIFIED SCREEN; FASTENER/PRELOAD/ENGAGEMENT/LOCAL STRESS OPEN
+R106-A12,C01 CAD volume 9607.355 mm3 x 7820 kg/m3,75.129514 g nominal C01 mass,CAD/DENSITY MASS; RECEIVED MASS OPEN
+R106-A13,C02 CAD volume 12904.867 mm3 x 7820 kg/m3,100.916058 g nominal C02 mass,CAD/DENSITY MASS; RECEIVED MASS OPEN
+R106-A14,Carpenter typical H1150 yield 869 MPa; project screen 600 MPa,69.044879% of published typical,TYPICAL VALUE IS NOT A MINIMUM OR RELEASED ALLOWABLE
+R106-A15,"smooth circular Ø10 pilot without interference, key or accepted friction preload",0 N m positive torque-transfer credit,PILOT IS ALIGNMENT-ONLY; TORQUE REQUIRES ACCEPTED CLAMPED JOINT

@@ -1,0 +1,4 @@
+parent,artifact,sha256,use
+HR-V0-X430-OUTPUT-IF-P0.1,test-fixtures/hr-v0/x430-output-interface-p0.1/adapter-feature-register.csv,062A872B785A5700E40EAFCC565232F3EB1EC18F36EE7A36BEAB6E944AD7BF0D,R103 one-piece allocation and open feature controls
+HR-V0-X430-OUTPUT-IF-P0.1,test-fixtures/hr-v0/x430-output-interface-p0.1/geometry-check.json,1BC9EABEE3F3B5E1E5EA3976672785E4DE596A0C2AC9EB27FEA31FF420424C0E,controlled HN12 placement and original review geometry
+HR-V0-X430-OUTPUT-IF-P0.1,test-fixtures/hr-v0/x430-output-interface-p0.1/interface-tolerance-register.csv,BED908D8AF1C9EAC8EA903FE851FE754650BCC1FD5F2DDF94174013D778F8131,HN12/coupling fit and application holds

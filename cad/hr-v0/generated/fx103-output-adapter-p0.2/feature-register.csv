@@ -1,0 +1,16 @@
+feature,part,definition,nominal,tolerance,datum,inspection,state
+C01-F01,FX103-C01 P0.2,outer diameter,Ø40.00 mm,±0.05 mm; datum feature B axis,B,CMM or roundness instrument,DEFINED CANDIDATE
+C01-F02,FX103-C01 P0.2,horn-contact face and flange thickness,A; 8.00 mm,flatness 0.03; thickness ±0.03; Ra 1.6 µm max,A,surface plate/CMM/profilometer,DEFINED CANDIDATE
+C01-F03,FX103-C01 P0.2,opposite transfer face,front face,parallelism 0.03 to A; Ra 1.6 µm max,A,CMM/profilometer,DEFINED CANDIDATE
+C01-F04,FX103-C01 P0.2,HN12 holes and recessed head envelopes,8X Ø2.2 +0.05/0 THRU; CBORE Ø4.0 +0.10/0 x 2.20 ±0.05; PCD Ø16 BASIC,position Ø0.05 to A|B; H1 designated datum C clock hole,A|B; C=H1,CMM and pin/depth gages,DEFINED CANDIDATE; EXACT SCREW OPEN
+C01-F05,FX103-C01 P0.2,transfer threads,4X M4 x 0.7 - 6H; 6.0 mm min full thread; PCD Ø28 BASIC; phase 22.5° BASIC,position Ø0.05 to A|B|C,A|B|C,"CMM, GO/NO-GO thread and depth gages",DEFINED CANDIDATE
+C01-F06,FX103-C01 P0.2,transfer pilot,Ø10 h6 x 2.00 mm,length ±0.03; total runout 0.03 to A|B,A|B,CMM/micrometer/indicator,DEFINED CANDIDATE
+C01-F07,FX103-C01 P0.2,edges,all uncontrolled edges,break 0.2-0.4 mm; burr-free,none,visual/comparator,DEFINED CANDIDATE
+C02-F01,FX103-C02 P0.1,outer diameter and flange thickness,Ø40.00 x 8.00 mm,OD ±0.05; thickness ±0.03,A|B,CMM/micrometer,DEFINED CANDIDATE
+C02-F02,FX103-C02 P0.1,rear mating face,datum A,flatness 0.03; Ra 1.6 µm max,A,surface plate/CMM/profilometer,DEFINED CANDIDATE
+C02-F03,FX103-C02 P0.1,pilot pocket,Ø10 H7 x 2.20 mm deep,depth ±0.05; datum feature B axis,B,CMM/bore gage/depth gage,DEFINED CANDIDATE
+C02-F04,FX103-C02 P0.1,transfer clearance holes,4X Ø4.5 +0.10/0 THRU; PCD Ø28 BASIC; phase 22.5° BASIC,position Ø0.05 to A|B,A|B,CMM/pin gage,DEFINED CANDIDATE
+C02-F05,FX103-C02 P0.1,coupling stub,Ø15.000 +0/-0.013 x 20.00 mm,length ±0.05; total runout 0.03 to A|B; Ra 0.8 µm max,A|B,micrometer/CMM/indicator/profilometer,DEFINED CANDIDATE; RULAND ACCEPTANCE OPEN
+C02-F06,FX103-C02 P0.1,shaft-root fillet,R1.0 mm,±0.1 mm; smooth blend; no undercut,A|B,optical comparator/CMM,DEFINED CANDIDATE
+C02-F07,FX103-C02 P0.1,front flange face and edges,front face; uncontrolled edges,parallelism 0.03 to A; Ra 1.6 µm max; edge break 0.2-0.4 mm,A,CMM/profilometer/visual,DEFINED CANDIDATE
+MAT-F01,both,material and condition,"17-4 PH stainless steel, UNS S17400, ASTM A564/A564M Type 630, H1150, certified",no substitution; condition A finished parts prohibited; certificate required,none,"certificate, heat/lot trace and PMI if required",DEFINED CANDIDATE

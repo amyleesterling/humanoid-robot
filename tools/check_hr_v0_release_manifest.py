@@ -113,6 +113,7 @@ def main() -> None:
         "HR-V0-X430-FIXTURE-SUP-P0.1",
         "HR-V0-X430-LOAD-RIG-P0.1",
         "HR-V0-X430-OUTPUT-IF-P0.1",
+        "HR-V0-FX103-OUTPUT-ADAPTER-FAB-P0.2",
         "HR-V0-X430-BRAKE-SUP-P0.1",
         "HR-V0-FX104-C01-FAB-P0.1",
         "HR-V0-HS-P0.3",
