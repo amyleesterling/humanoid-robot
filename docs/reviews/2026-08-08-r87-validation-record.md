@@ -19,7 +19,7 @@ Change: remove KWD contacts from SR1 E-stop returns and place them in a series g
 - rendered A3 review of the external-source, direct E-stop/RESET and watchdog-gated supply sheets: borders and warnings visible, terminals/nets readable, no wire/text collision or content clipping observed;
 - interactive-guide structural/readability check: responsive layout, filtering script, table overflow, exact warnings and 16 px minimum table/body text pass. Local-file browser navigation was unavailable, so the HTML did not receive a live-browser interaction claim; the SVG and KiCad PDF views received direct rendered inspection.
 
-The deterministic manifest, clean-clone reproduction, commit binding and remote-head comparison will be recorded before this round is published. No physical inspection, measurement, switching, fault injection, HIL, qualified review, fabrication, wiring, energization or motion occurred.
+The deterministic manifest covers 1,004 package files. A fresh clone of the pushed branch at `c26353521e0cdab69fe3872566aafef16ef4be07` passed all 37 non-manifest checks plus `tools/check_hr_v0_release_manifest.py --require-clean`. The final documentation commit and remote-head comparison are recorded in Git after this validation note. No physical inspection, measurement, switching, fault injection, HIL, qualified review, fabrication, wiring, energization or motion occurred.
 
 ## Engineering disposition
 
