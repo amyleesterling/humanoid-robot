@@ -28,3 +28,14 @@ R83 responds to the open J1-minimum, J1-maximum and J2-minimum stop findings wit
 The computation reuses the exact controlled P0.7 nominal solids and excludes intentional frame interfaces and the existing C06/C07 positive-stop pair. It does not include proposed new stop hardware, manufacturing/assembly tolerance, deformation, cables, guards, backlash, stopping travel or the received article.
 
 R83 establishes nominal free space in the three study regions. It does not establish an as-built stop datum or a fabricable stop. Received stack/attachment metrology, topology selection, integrated CAD, load/tolerance analysis, bumper selection, FAI, physical proof and qualified review remain open. No gate is closed.
+
+## Remote clean-clone validation
+
+The pushed branch was cloned independently from GitHub at commit `51a01de10af9170e68813db5045e14ac3aee4176`. In that remote clone:
+
+- all `33` non-manifest repository checkers passed;
+- `tools/check_hr_v0_release_manifest.py --require-clean` passed for `922` package files;
+- the checker reported the exact cloned commit above; and
+- Git's temporary exact-path `safe.directory` entry was removed after the check.
+
+The in-app browser refused local `file:` navigation under its URL policy. Static HTML structure, interaction-source and minimum-font checks passed; the SVG parses and carries its required warnings. No live browser-rendering claim is made. Desktop/mobile rendering of the guide remains part of the first deployed-site review.
