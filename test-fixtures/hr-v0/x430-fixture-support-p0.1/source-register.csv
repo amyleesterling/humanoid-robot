@@ -1,0 +1,5 @@
+source,organization,record,revision_date,locator,use
+SUP-SRC-001,80/20,40200-SP-K static robotic pedestal,live page accessed 2026-08-08,https://8020.net/40200-sp-k.html,"300 mm option, 3207 N load, 2040 N m floor-mounted torque and hardware-family boundary"
+SUP-SRC-002,80/20,40006-BP blank 8 inch mounting plate,live page accessed 2026-08-08,https://8020.net/40006-bp.html,"203.2 square x 19.05, 6061-T6, 40-series compatibility and suggested hardware"
+SUP-SRC-003,Accu,SSC-8-32-5/8-A2,live page accessed 2026-08-08,https://www.accu.co.uk/imperial-cap-head-screws/29027-SSC-8-32-5-8-A2,candidate screw identity/length only
+SUP-SRC-004,FUTEK,TFF400 FI1251-F and EM1040,drawing F/current manual accessed 2026-08-08,https://media.futek.com/content/futek/files/pdf/productdrawings/fsh02588.pdf,sensor mounting interface and application-confirmation boundary

@@ -1,0 +1,7 @@
+item,manufacturer,order_identity,quantity,state,missing
+SUP-001,80/20,40200-SP-K configured 300 mm height,1,EXACT FAMILY/HEIGHT CANDIDATE - QUOTE CONFIGURATION REQUIRED,"controlled CAD/drawing, option identity, anchor pattern/loads, rating applicability, included hardware identity"
+SUP-002,80/20,40006-BP,1,EXACT MODIFICATION BLANK CANDIDATE - NOT ORDERED,"controlled CAD/drawing, existing hole pattern/tolerances, modification acceptance, MTR/FAI"
+SUP-003,Accu,SSC-8-32-5/8-A2,4,DIMENSIONAL CANDIDATE - NOT SELECTED,"FUTEK acceptance, washer, grade, engagement, torque, locking and proof"
+SUP-004,Accu,HRDW-M4-A2,4,DIMENSIONAL CANDIDATE - NOT SELECTED,FUTEK acceptance and joint-stack proof
+SUP-005,80/20,included pedestal / suggested 40006-BP mounting hardware,8 positions,IDENTITY REQUIRED,"exact screw/nut allocation, torque, reuse, witness, fit and proof"
+SUP-006,SELECTION REQUIRED,site-specific floor anchors,SELECTION REQUIRED,NOT SELECTED,"substrate survey, code/jurisdiction, loads, edge distances, embedment, installation and proof"

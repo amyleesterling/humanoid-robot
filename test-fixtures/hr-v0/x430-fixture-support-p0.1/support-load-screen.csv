@@ -1,0 +1,5 @@
+screen,input,value,comparison,result,authority
+SLS-001,40200-SP-K published maximum torque when mounted to floor,2040 N m,16.5 N m accidental overload arithmetic,catalog ratio=123.636364,CATALOG COMPARISON ONLY - NOT PROJECT ALLOWABLE
+SLS-002,vertical joint axis,gravity force acts parallel to axis,gravity moment about joint axis,0 N m ideal,ORIENTATION FACT ONLY - DOES NOT REPLACE HORIZONTAL TEST
+SLS-003,TFF four fasteners on BCD31.75,16.5 N m equal-share assumption,four tangential demands,259.843 N each,DEMAND ONLY - JOINT ALLOWABLE OPEN
+SLS-004,5/8 in screw and nominal modified-plate stack,L 15.113..15.875; grip 9.75..9.95; washer 0.45..0.55 mm,thread engagement,4.613..5.675 mm,PROVISIONAL; PLATE THICKNESS TOLERANCE AND VENDOR ACCEPTANCE OPEN
