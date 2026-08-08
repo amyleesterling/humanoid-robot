@@ -1,0 +1,5 @@
+mass_id,item,basis,mass_kg,credit
+GM-001,80/20 20-2020 profile,11820 mm x 0.0247 lb/in published weight,5.213705,CATALOG ESTIMATE ONLY
+GM-002,eight outer TUFFAK GP panel candidates,generated finished volume x PDS004 specific gravity 1.2,22.767840,CANDIDATE GEOMETRY ESTIMATE ONLY
+GM-003,five receiver TUFFAK GP pieces,generated finished volume x PDS004 specific gravity 1.2,2.818253,CANDIDATE GEOMETRY ESTIMATE ONLY
+GM-004,known frame plus sheet subtotal,GM-001 + GM-002 + GM-003,30.799798,INCOMPLETE; BRACKETS HARDWARE RETAINERS ANCHORS NESTS AND CABLE ENTRY OMITTED

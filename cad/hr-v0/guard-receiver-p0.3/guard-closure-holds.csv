@@ -1,0 +1,13 @@
+hold_id,unresolved_item,state,release_effect
+GH-001,complete P0.7 gripper payload and cable swept/stopping envelope,OPEN,BLOCKS FABRICATION AND GUARDED MOTION
+GH-002,measured worst-case stopping travel and uncertainty for every permitted mode and fault,OPEN,BLOCKS FABRICATION AND GUARDED MOTION
+GH-003,80/20 20-2020 and 14201/75-3581 joint application strength received dimensions torque and proof,OPEN,BLOCKS FABRICATION AND GUARDED MOTION
+GH-004,Plaskolite TUFFAK GP clear 6 mm supplier SKU thickness tolerance suitability impact and flame disposition,OPEN,BLOCKS FABRICATION AND GUARDED MOTION
+GH-005,panel clamp or fastener pattern retention loads edge distances and service method,DESIGN REQUIRED,BLOCKS FABRICATION AND GUARDED MOTION
+GH-006,guard stability bench-anchor and frame-joint calculations plus proof,OPEN,BLOCKS FABRICATION AND GUARDED MOTION
+GH-007,access probe and minimum clearance rationale with physical test,SELECTION REQUIRED,BLOCKS FABRICATION AND GUARDED MOTION
+GH-008,receiver material support fasteners nests rebound and damage acceptance,DESIGN REQUIRED,BLOCKS FABRICATION AND GUARDED MOTION
+GH-009,drop and detached-part containment risk assessment and tests,OPEN,BLOCKS FABRICATION AND GUARDED MOTION
+GH-010,cable-entry plate gland clamp bend and service design,SELECTION REQUIRED,BLOCKS FABRICATION AND GUARDED MOTION
+GH-011,Boston site bench footprint egress electrical separation and service survey,OPEN,BLOCKS FABRICATION AND GUARDED MOTION
+GH-012,qualified mechanical electrical and functional-safety review,OPEN,BLOCKS FABRICATION AND GUARDED MOTION

@@ -32,6 +32,14 @@ Use catalog ROBOTIS/80/20 hardware wherever the current candidate permits it. Fo
 
 The Boston Public Library pages checked for this research document design, software, and PLA resources but no suitable structural-aluminum machining capability. FabVille describes education and prototyping rather than production. Neither is a current structural-metal supplier route.
 
+## R75 fixed-guard sourcing route
+
+`HR-V0-GUARD-P0.3` now freezes 80/20 `20-2020`, `14201`, and `75-3581` as exact catalog candidates and Plaskolite TUFFAK GP clear nominal 6 mm as the exact sheet-grade candidate. The 16 profile cuts can be configured directly through 80/20 or an authorized distributor. Obtain one written configuration that lists every cut length, quantity and unmachined-end condition; do not substitute a visually similar 20 mm extrusion or mixed T-slot series.
+
+Obtain the TUFFAK GP sheet from a supplier that will state Plaskolite manufacturer, TUFFAK GP clear grade, nominal thickness, actual stock-sheet identification and traceability on the quote and packing documents. A generic “polycarbonate” line item is not acceptable. The supplier cut plan must bind all thirteen finished envelopes and preserve protective film through received inspection. Exact supplier/SKU, thickness tolerance and cut capability remain `SELECTION REQUIRED`.
+
+Artisans Asylum remains a local capability candidate for supervised fit-up, deburring, measurement or fixture work after the drawings and work authorization exist. It is not assumed to accept the job or provide certified structural inspection. No library or makerspace is authorized to drill panels, assemble the frame, or modify guard parts from the current candidate.
+
 ## Current part-to-process plan
 
 | Current item | Candidate quantity | Candidate process | Current action | Hold point |

@@ -1,0 +1,6 @@
+calculation_id,expression,result,status,boundary
+GCAL-001,360 + 35 + 25 + 25 + 5,450 mm,SPACE RESERVATION ONLY,stopping clearance and tolerance terms remain provisional
+GCAL-002,0.100 kg x 9.80665 m/s2 x 0.950 m,0.931632 J,TEST INPUT ONLY,not a guard or receiver impact rating
+GCAL-003,6 posts x 970 + 4 x 900 + 6 x 400,11820 mm profile envelope,CUT-LENGTH CANDIDATE,saw allowance and joint method absent
+GCAL-004,11820 mm x 0.0247 lb/in x 0.45359237 kg/lb,5.213705 kg,CATALOG MASS ESTIMATE,received mass and cut losses absent
+GCAL-005,0.021321744 m3 total sheet volume x 1200 kg/m3,25.586093 kg,GEOMETRY MASS ESTIMATE,PDS004 values are typical and not specification values; received thickness/mass absent

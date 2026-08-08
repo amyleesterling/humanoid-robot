@@ -1,0 +1,36 @@
+{
+  "revision": "HR-V0-GUARD-P0.3",
+  "arm_revision": "HR-V0-ARM-ARCH-P0.7",
+  "warning": "PRELIMINARY - DESIGN CANDIDATE ONLY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION",
+  "coordinate_system": {
+    "origin": "G0 vertical projection of J1 on bench",
+    "x": "depth",
+    "y": "width",
+    "z": "height above bench"
+  },
+  "internal_clear_mm": {
+    "x": 400.0,
+    "y": 900.0,
+    "z": 950.0
+  },
+  "frame_envelope_mm": 20.0,
+  "panel_geometry_mm": 6.0,
+  "reserved_space_radius_mm_not_safety_distance": 450.0,
+  "j1_height_mm": 500.0,
+  "receiver_clear_mm": {
+    "x": 320.0,
+    "y": 820.0,
+    "wall_height": 50.0
+  },
+  "maximum_foam_drop_energy_j_test_input_only": 0.931632,
+  "frame_schedule_lines": 4,
+  "frame_physical_pieces": 16,
+  "panel_schedule_lines": 7,
+  "panel_physical_pieces": 13,
+  "frame_joint_count": 20,
+  "frame_bracket_candidate_quantity": 20,
+  "frame_joint_hardware_candidate_quantity": 40,
+  "known_guard_mass_subtotal_kg_incomplete": 30.799798,
+  "open_holds": 12,
+  "release_state": "DESIGN CANDIDATE - ALL FABRICATION MOTION CONNECTION AND ENERGIZATION GATES OPEN"
+}

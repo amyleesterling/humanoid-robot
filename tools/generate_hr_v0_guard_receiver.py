@@ -17,8 +17,8 @@ import cadquery as cq
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "cad" / "hr-v0" / "guard-receiver-p0.2"
-REVISION = "HR-V0-GUARD-P0.2"
+OUT = ROOT / "cad" / "hr-v0" / "guard-receiver-p0.3"
+REVISION = "HR-V0-GUARD-P0.3"
 ARM_REVISION = "HR-V0-ARM-ARCH-P0.7"
 WARNING = (
     "PRELIMINARY - DESIGN CANDIDATE ONLY - NOT APPROVED FOR FABRICATION, "
@@ -42,6 +42,10 @@ RECEIVER_T = 6.0
 FOAM_MASS_KG = 0.100
 MAX_DROP_HEIGHT_M = INNER_Z / 1000.0
 DROP_ENERGY_J = FOAM_MASS_KG * 9.80665 * MAX_DROP_HEIGHT_M
+PROFILE_WEIGHT_LB_PER_IN = 0.0247
+PROFILE_TOTAL_LENGTH_MM = 11820.0
+PROFILE_MASS_KG = PROFILE_WEIGHT_LB_PER_IN * (PROFILE_TOTAL_LENGTH_MM / 25.4) * 0.45359237
+SHEET_DENSITY_KG_M3 = 1200.0
 
 
 def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
@@ -169,8 +173,8 @@ text {{ font-family: Arial, sans-serif; fill: #102a43; font-size: 18px; }}
 <rect x="950" y="300" width="250" height="550" class="catch"/>
 <line x1="920" y1="920" x2="1230" y2="920" class="dim"/><text x="1015" y="952">400 internal</text>
 <line x1="1270" y1="265" x2="1270" y2="885" class="dim"/><text x="1295" y="610" transform="rotate(-90 1295 610)">900 internal</text>
-<text x="920" y="995">Six posts; sixteen 20 × 20 profile-envelope pieces.</text>
-<text x="920" y="1028">Eight 6 mm transparent-panel geometry candidates.</text>
+<text x="920" y="995">Six posts; sixteen exact-candidate 80/20 20-2020 pieces.</text>
+<text x="920" y="1028">Eight outer plus five receiver 6 mm TUFFAK GP geometry candidates.</text>
 
 <rect x="55" y="970" width="790" height="80" rx="14" fill="#fff3d6" stroke="#c38300" stroke-width="3"/>
 <text x="75" y="1002">These dimensions reserve space only. Measured stopping, full gripper/cable sweep,</text>
@@ -193,7 +197,7 @@ svg{{width:100%;height:auto;background:white;border:2px solid #123b68;border-rad
 <g id="sweepLayer"><circle cx="330" cy="369" r="260" class="sweep"/><text x="346" y="360" class="label">J1 Z=500</text><text x="346" y="390" class="label">450 mm radius</text></g>
 <g id="catchLayer"><rect x="100" y="570" width="460" height="35" class="catch"/><rect x="690" y="215" width="190" height="390" class="catch"/></g>
 <text x="70" y="680" class="label">Front: 900 W × 950 H internal</text><text x="670" y="680" class="label">Plan: 400 D × 900 W internal</text><text x="70" y="720" class="label">Eight panel candidates; tool-removable only after isolation. No interlock is selected or credited.</text></svg>
-<h2>Controlled dimensions and boundaries</h2><table><tr><th>Item</th><th>Candidate</th><th>Release boundary</th></tr><tr><td>Internal clear box</td><td>400 X × 900 Y × 950 Z mm</td><td>Must grow if complete swept, stopping, cable, payload, tolerance or access evidence exceeds it.</td></tr><tr><td>Frame envelope</td><td>20 × 20 mm profile geometry</td><td>Manufacturer, alloy, temper, connector and anchor are SELECTION REQUIRED.</td></tr><tr><td>Panels</td><td>6 mm transparent geometry</td><td>Grade, thickness acceptance, flame behavior, impact, retention and edge treatment are SELECTION REQUIRED.</td></tr><tr><td>Receiver</td><td>320 × 820 mm clear, 50 mm wall</td><td>Material, support, nests and drop/rebound acceptance are SELECTION REQUIRED.</td></tr></table>
+<h2>Controlled dimensions and boundaries</h2><table><tr><th>Item</th><th>Candidate</th><th>Release boundary</th></tr><tr><td>Internal clear box</td><td>400 X × 900 Y × 950 Z mm</td><td>Must grow if complete swept, stopping, cable, payload, tolerance or access evidence exceeds it.</td></tr><tr><td>Frame</td><td>80/20 20-2020, 6063-T6 clear anodized; 16 custom lengths</td><td>Exact product candidate; joint strength, received dimensions, anchors and proof remain open.</td></tr><tr><td>Panels</td><td>Plaskolite TUFFAK GP clear, nominal 6 mm; 13 cut pieces</td><td>Exact grade candidate; supplier SKU, thickness tolerance, retention, impact and edge treatment remain open.</td></tr><tr><td>Receiver</td><td>320 × 820 mm clear, 50 mm wall</td><td>Support, nests and drop/rebound acceptance are SELECTION REQUIRED.</td></tr></table>
 <p class="warning">No cutting, drilling, purchase, installation, motion, connection or energization is authorized by this package.</p></main>
 <script>for(const id of ['panels','sweep','catch'])document.getElementById(id).addEventListener('change',e=>document.getElementById(id==='panels'?'panelLayer':id+'Layer').style.display=e.target.checked?'':'none');</script></body></html>'''
 
@@ -215,7 +219,13 @@ def main() -> int:
         {"item_id": "GP-REAR-HALF", "finished_x_mm": PANEL_T, "finished_y_mm": half_y, "finished_z_mm": FRAME_Z, "quantity": 2, "candidate_material": "transparent sheet", "selection_state": "GRADE THICKNESS RETENTION EDGE AND IMPACT SELECTION REQUIRED"},
         {"item_id": "GP-SIDE", "finished_x_mm": INNER_X + 2 * FRAME, "finished_y_mm": PANEL_T, "finished_z_mm": FRAME_Z, "quantity": 2, "candidate_material": "transparent sheet", "selection_state": "GRADE THICKNESS RETENTION EDGE AND IMPACT SELECTION REQUIRED"},
         {"item_id": "GP-TOP-HALF", "finished_x_mm": INNER_X + 2 * FRAME, "finished_y_mm": half_y, "finished_z_mm": PANEL_T, "quantity": 2, "candidate_material": "transparent sheet", "selection_state": "GRADE THICKNESS RETENTION EDGE AND IMPACT SELECTION REQUIRED"},
+        {"item_id": "GR-BASE", "finished_x_mm": RECEIVER_X + 2 * RECEIVER_T, "finished_y_mm": RECEIVER_Y + 2 * RECEIVER_T, "finished_z_mm": RECEIVER_T, "quantity": 1, "candidate_material": "Plaskolite TUFFAK GP clear nominal 6 mm", "selection_state": "EXACT GRADE CANDIDATE; SUPPLIER SKU RETENTION SUPPORT AND IMPACT SELECTION REQUIRED"},
+        {"item_id": "GR-WALL-X", "finished_x_mm": RECEIVER_T, "finished_y_mm": RECEIVER_Y + 2 * RECEIVER_T, "finished_z_mm": RECEIVER_WALL, "quantity": 2, "candidate_material": "Plaskolite TUFFAK GP clear nominal 6 mm", "selection_state": "EXACT GRADE CANDIDATE; SUPPLIER SKU RETENTION SUPPORT AND IMPACT SELECTION REQUIRED"},
+        {"item_id": "GR-WALL-Y", "finished_x_mm": RECEIVER_X, "finished_y_mm": RECEIVER_T, "finished_z_mm": RECEIVER_WALL, "quantity": 2, "candidate_material": "Plaskolite TUFFAK GP clear nominal 6 mm", "selection_state": "EXACT GRADE CANDIDATE; SUPPLIER SKU RETENTION SUPPORT AND IMPACT SELECTION REQUIRED"},
     ]
+    for row in panel_rows[:4]:
+        row["candidate_material"] = "Plaskolite TUFFAK GP clear nominal 6 mm"
+        row["selection_state"] = "EXACT GRADE CANDIDATE; SUPPLIER SKU RETENTION EDGE AND IMPACT SELECTION REQUIRED"
     controls = [
         {"control_id": "G0", "controlled_value": "origin at vertical projection of J1 onto bench", "status": "DATUM CANDIDATE", "closure_evidence": "bench survey and accepted J1 as-built transform"},
         {"control_id": "G-X", "controlled_value": "internal X -200 to +200 mm", "status": "SPACE CANDIDATE", "closure_evidence": "complete gripper cable and stopping sweep"},
@@ -229,8 +239,8 @@ def main() -> int:
     holds = [
         ("GH-001", "complete P0.7 gripper payload and cable swept/stopping envelope", "OPEN"),
         ("GH-002", "measured worst-case stopping travel and uncertainty for every permitted mode and fault", "OPEN"),
-        ("GH-003", "exact frame manufacturer profile alloy temper connectors and fasteners", "SELECTION REQUIRED"),
-        ("GH-004", "exact transparent sheet manufacturer grade thickness tolerance flame and impact evidence", "SELECTION REQUIRED"),
+        ("GH-003", "80/20 20-2020 and 14201/75-3581 joint application strength received dimensions torque and proof", "OPEN"),
+        ("GH-004", "Plaskolite TUFFAK GP clear 6 mm supplier SKU thickness tolerance suitability impact and flame disposition", "OPEN"),
         ("GH-005", "panel clamp or fastener pattern retention loads edge distances and service method", "DESIGN REQUIRED"),
         ("GH-006", "guard stability bench-anchor and frame-joint calculations plus proof", "OPEN"),
         ("GH-007", "access probe and minimum clearance rationale with physical test", "SELECTION REQUIRED"),
@@ -243,13 +253,44 @@ def main() -> int:
     source_rows = [
         {"source_id": "GS-001", "organization": "OSHA", "document": "29 CFR 1910.212 General requirements for all machines", "revision_or_date": "current electronic regulation accessed 2026-08-07", "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.212", "use": "guard affixing and no-new-hazard design input", "verification": "PRIMARY SOURCE VERIFIED"},
         {"source_id": "GS-002", "organization": "ISO", "document": "ISO 14120:2015 Edition 2", "revision_or_date": "published 2015-11; confirmed 2021; systematic review opened 2026-01-15", "url": "https://www.iso.org/standard/59545.html", "use": "fixed and movable guard design framework", "verification": "PRIMARY SOURCE METADATA VERIFIED; LICENSED STANDARD REVIEW REQUIRED"},
-        {"source_id": "GS-003", "organization": "80/20", "document": "20-2020 product route", "revision_or_date": "access attempted 2026-08-07; anti-bot interstitial prevented content verification", "url": "https://8020.net/20-2020.html", "use": "possible 20 x 20 frame profile", "verification": "NOT VERIFIED - SELECTION REQUIRED"},
-        {"source_id": "GS-004", "organization": "SELECTION REQUIRED", "document": "transparent guard sheet product and technical data", "revision_or_date": "not selected", "url": "SELECTION REQUIRED", "use": "panel material and thickness qualification", "verification": "NOT VERIFIED - SELECTION REQUIRED"},
+        {"source_id": "GS-003", "organization": "80/20", "document": "20-2020 product page", "revision_or_date": "live page; no formal revision exposed; accessed 2026-08-07", "url": "https://8020.net/20-2020.html", "use": "20 x 20 frame profile exact catalog candidate", "verification": "PRIMARY SOURCE VERIFIED"},
+        {"source_id": "GS-004", "organization": "80/20", "document": "14201 supported corner bracket product page", "revision_or_date": "live page; no formal revision exposed; accessed 2026-08-07", "url": "https://8020.net/14201.html", "use": "twenty frame-joint bracket candidates and suggested 75-3581 hardware", "verification": "PRIMARY SOURCE VERIFIED"},
+        {"source_id": "GS-005", "organization": "80/20", "document": "20-2496 panel retainer product page", "revision_or_date": "live page; no formal revision exposed; accessed 2026-08-07", "url": "https://8020.net/20-2496.html", "use": "panel-retainer family candidate only; quantity and drill pattern open", "verification": "PRIMARY SOURCE VERIFIED"},
+        {"source_id": "GS-006", "organization": "Plaskolite", "document": "PDS004 TUFFAK GP polycarbonate sheet", "revision_or_date": "122022; accessed 2026-08-07", "url": "https://plaskolite.com/docs/default-source/pds/pds004_tuf_gp.pdf", "use": "clear nominal 6 mm panel and receiver material candidate", "verification": "PRIMARY SOURCE VERIFIED; TYPICAL DATA NOT SPECIFICATION VALUES"},
+    ]
+    joint_rows = [
+        {"joint_group": "GJ-Y-END", "joint_count": 8, "members": "four Y rails to four corner posts", "bracket_candidate": "80/20 14201", "hardware_per_joint": "two 75-3581 assemblies", "state": "EXACT CATALOG CANDIDATE; STRENGTH TORQUE FIT AND PROOF OPEN"},
+        {"joint_group": "GJ-X-SIDE-END", "joint_count": 8, "members": "four side X rails to four corner posts", "bracket_candidate": "80/20 14201", "hardware_per_joint": "two 75-3581 assemblies", "state": "EXACT CATALOG CANDIDATE; STRENGTH TORQUE FIT AND PROOF OPEN"},
+        {"joint_group": "GJ-X-CENTER-END", "joint_count": 4, "members": "two center X rails to two center posts", "bracket_candidate": "80/20 14201", "hardware_per_joint": "two 75-3581 assemblies", "state": "EXACT CATALOG CANDIDATE; STRENGTH TORQUE FIT AND PROOF OPEN"},
+    ]
+    catalog_rows = [
+        {"candidate_id": "GCAT-001", "manufacturer": "80/20 Inc.", "order_code": "20-2020 custom length", "candidate_quantity": "16 pieces per frame cut schedule", "state": "EXACT CATALOG CANDIDATE HOLD", "open_evidence": "written configuration; received length/squareness/profile identity; structural and joint proof"},
+        {"candidate_id": "GCAT-002", "manufacturer": "80/20 Inc.", "order_code": "14201", "candidate_quantity": "20", "state": "EXACT CATALOG CANDIDATE HOLD", "open_evidence": "application load; orientation/access; received fit; torque and proof"},
+        {"candidate_id": "GCAT-003", "manufacturer": "80/20 Inc.", "order_code": "75-3581", "candidate_quantity": "40", "state": "EXACT CATALOG CANDIDATE HOLD", "open_evidence": "received identity; torque/locking/reuse; slip and proof"},
+        {"candidate_id": "GCAT-004", "manufacturer": "Plaskolite", "order_code": "TUFFAK GP clear nominal 6 mm; supplier SKU SELECTION REQUIRED", "candidate_quantity": "13 cut pieces per panel schedule", "state": "EXACT GRADE CANDIDATE HOLD", "open_evidence": "supplier SKU/stock; thickness tolerance; suitability; retention; impact; flame and edge disposition"},
+        {"candidate_id": "GCAT-005", "manufacturer": "80/20 Inc.", "order_code": "20-2496", "candidate_quantity": "SELECTION REQUIRED", "state": "FAMILY CANDIDATE ONLY", "open_evidence": "retention load and spacing calculation; drill pattern; edge distance; service method"},
+        {"candidate_id": "GCAT-006", "manufacturer": "80/20 Inc.", "order_code": "75-3581", "candidate_quantity": "SELECTION REQUIRED", "state": "FAMILY CANDIDATE ONLY", "open_evidence": "retainer quantity follows accepted panel retention design"},
+    ]
+    outer_panel_volume_m3 = sum(
+        float(row["finished_x_mm"]) * float(row["finished_y_mm"]) * float(row["finished_z_mm"]) * int(row["quantity"])
+        for row in panel_rows[:4]
+    ) / 1_000_000_000.0
+    receiver_volume_m3 = sum(
+        float(row["finished_x_mm"]) * float(row["finished_y_mm"]) * float(row["finished_z_mm"]) * int(row["quantity"])
+        for row in panel_rows[4:]
+    ) / 1_000_000_000.0
+    mass_rows = [
+        {"mass_id": "GM-001", "item": "80/20 20-2020 profile", "basis": "11820 mm x 0.0247 lb/in published weight", "mass_kg": f"{PROFILE_MASS_KG:.6f}", "credit": "CATALOG ESTIMATE ONLY"},
+        {"mass_id": "GM-002", "item": "eight outer TUFFAK GP panel candidates", "basis": "generated finished volume x PDS004 specific gravity 1.2", "mass_kg": f"{outer_panel_volume_m3 * SHEET_DENSITY_KG_M3:.6f}", "credit": "CANDIDATE GEOMETRY ESTIMATE ONLY"},
+        {"mass_id": "GM-003", "item": "five receiver TUFFAK GP pieces", "basis": "generated finished volume x PDS004 specific gravity 1.2", "mass_kg": f"{receiver_volume_m3 * SHEET_DENSITY_KG_M3:.6f}", "credit": "CANDIDATE GEOMETRY ESTIMATE ONLY"},
+        {"mass_id": "GM-004", "item": "known frame plus sheet subtotal", "basis": "GM-001 + GM-002 + GM-003", "mass_kg": f"{PROFILE_MASS_KG + (outer_panel_volume_m3 + receiver_volume_m3) * SHEET_DENSITY_KG_M3:.6f}", "credit": "INCOMPLETE; BRACKETS HARDWARE RETAINERS ANCHORS NESTS AND CABLE ENTRY OMITTED"},
     ]
     calculations = [
         {"calculation_id": "GCAL-001", "expression": "360 + 35 + 25 + 25 + 5", "result": "450 mm", "status": "SPACE RESERVATION ONLY", "boundary": "stopping clearance and tolerance terms remain provisional"},
         {"calculation_id": "GCAL-002", "expression": "0.100 kg x 9.80665 m/s2 x 0.950 m", "result": f"{DROP_ENERGY_J:.6f} J", "status": "TEST INPUT ONLY", "boundary": "not a guard or receiver impact rating"},
         {"calculation_id": "GCAL-003", "expression": "6 posts x 970 + 4 x 900 + 6 x 400", "result": "11820 mm profile envelope", "status": "CUT-LENGTH CANDIDATE", "boundary": "saw allowance and joint method absent"},
+        {"calculation_id": "GCAL-004", "expression": "11820 mm x 0.0247 lb/in x 0.45359237 kg/lb", "result": f"{PROFILE_MASS_KG:.6f} kg", "status": "CATALOG MASS ESTIMATE", "boundary": "received mass and cut losses absent"},
+        {"calculation_id": "GCAL-005", "expression": f"{outer_panel_volume_m3 + receiver_volume_m3:.9f} m3 total sheet volume x 1200 kg/m3", "result": f"{(outer_panel_volume_m3 + receiver_volume_m3) * SHEET_DENSITY_KG_M3:.6f} kg", "status": "GEOMETRY MASS ESTIMATE", "boundary": "PDS004 values are typical and not specification values; received thickness/mass absent"},
     ]
     write_csv(OUT / "guard-frame-cut-schedule.csv", frame_rows)
     write_csv(OUT / "guard-panel-cut-schedule.csv", panel_rows)
@@ -257,6 +298,9 @@ def main() -> int:
     write_csv(OUT / "guard-closure-holds.csv", [{"hold_id": a, "unresolved_item": b, "state": c, "release_effect": "BLOCKS FABRICATION AND GUARDED MOTION"} for a, b, c in holds])
     write_csv(OUT / "guard-source-register.csv", source_rows)
     write_csv(OUT / "guard-calculation-screen.csv", calculations)
+    write_csv(OUT / "guard-joint-schedule.csv", joint_rows)
+    write_csv(OUT / "guard-catalog-candidates.csv", catalog_rows)
+    write_csv(OUT / "guard-mass-screen.csv", mass_rows)
 
     assembly = cq.Assembly(name="HR-V0-GUARD-RECEIVER-P0.2")
     add_frame(assembly)
@@ -294,11 +338,15 @@ def main() -> int:
         "frame_physical_pieces": sum(int(row["quantity"]) for row in frame_rows),
         "panel_schedule_lines": len(panel_rows),
         "panel_physical_pieces": sum(int(row["quantity"]) for row in panel_rows),
+        "frame_joint_count": sum(int(row["joint_count"]) for row in joint_rows),
+        "frame_bracket_candidate_quantity": 20,
+        "frame_joint_hardware_candidate_quantity": 40,
+        "known_guard_mass_subtotal_kg_incomplete": round(PROFILE_MASS_KG + (outer_panel_volume_m3 + receiver_volume_m3) * SHEET_DENSITY_KG_M3, 6),
         "open_holds": len(holds),
         "release_state": "DESIGN CANDIDATE - ALL FABRICATION MOTION CONNECTION AND ENERGIZATION GATES OPEN",
     }
     (OUT / "guard-receiver-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
-    print(f"Generated {REVISION}: 16 frame pieces, 8 panel geometry candidates, {len(holds)} open holds")
+    print(f"Generated {REVISION}: 16 frame pieces, 13 sheet pieces, 20 catalog-candidate joints, {len(holds)} open holds")
     print(WARNING)
     return 0
 

@@ -1,0 +1,7 @@
+candidate_id,manufacturer,order_code,candidate_quantity,state,open_evidence
+GCAT-001,80/20 Inc.,20-2020 custom length,16 pieces per frame cut schedule,EXACT CATALOG CANDIDATE HOLD,written configuration; received length/squareness/profile identity; structural and joint proof
+GCAT-002,80/20 Inc.,14201,20,EXACT CATALOG CANDIDATE HOLD,application load; orientation/access; received fit; torque and proof
+GCAT-003,80/20 Inc.,75-3581,40,EXACT CATALOG CANDIDATE HOLD,received identity; torque/locking/reuse; slip and proof
+GCAT-004,Plaskolite,TUFFAK GP clear nominal 6 mm; supplier SKU SELECTION REQUIRED,13 cut pieces per panel schedule,EXACT GRADE CANDIDATE HOLD,supplier SKU/stock; thickness tolerance; suitability; retention; impact; flame and edge disposition
+GCAT-005,80/20 Inc.,20-2496,SELECTION REQUIRED,FAMILY CANDIDATE ONLY,retention load and spacing calculation; drill pattern; edge distance; service method
+GCAT-006,80/20 Inc.,75-3581,SELECTION REQUIRED,FAMILY CANDIDATE ONLY,retainer quantity follows accepted panel retention design

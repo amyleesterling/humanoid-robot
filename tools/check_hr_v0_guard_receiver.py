@@ -12,7 +12,7 @@ import generate_hr_v0_guard_receiver as guard
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "cad" / "hr-v0" / "guard-receiver-p0.2"
+OUT = ROOT / "cad" / "hr-v0" / "guard-receiver-p0.3"
 FORM = ROOT / "tests" / "forms" / "hr-v0-guard-clearance-inspection-template.csv"
 
 
@@ -28,9 +28,12 @@ def main() -> int:
         "HR-V0_fixed-guard-receiver-candidate.step",
         "HR-V0_fixed-guard-receiver-layout.svg",
         "guard-calculation-screen.csv",
+        "guard-catalog-candidates.csv",
         "guard-closure-holds.csv",
         "guard-frame-cut-schedule.csv",
         "guard-interface-controls.csv",
+        "guard-joint-schedule.csv",
+        "guard-mass-screen.csv",
         "guard-panel-cut-schedule.csv",
         "guard-receiver-summary.json",
         "guard-source-register.csv",
@@ -44,8 +47,12 @@ def main() -> int:
         raise AssertionError("guard/arm revision binding changed")
     if summary["internal_clear_mm"] != {"x": 400.0, "y": 900.0, "z": 950.0}:
         raise AssertionError("controlled internal guard space changed")
-    if summary["frame_physical_pieces"] != 16 or summary["panel_physical_pieces"] != 8:
+    if summary["frame_physical_pieces"] != 16 or summary["panel_physical_pieces"] != 13:
         raise AssertionError("frame/panel schedule count changed")
+    if summary["frame_joint_count"] != 20 or summary["frame_bracket_candidate_quantity"] != 20 or summary["frame_joint_hardware_candidate_quantity"] != 40:
+        raise AssertionError("frame joint/catalog candidate count changed")
+    if abs(float(summary["known_guard_mass_subtotal_kg_incomplete"]) - 30.799798) > 0.000002:
+        raise AssertionError("known guard mass subtotal changed")
     if summary["open_holds"] != 12 or "ALL FABRICATION" not in summary["release_state"]:
         raise AssertionError("guard holds or fail-closed release state weakened")
 
@@ -55,9 +62,9 @@ def main() -> int:
     if any("SELECTION REQUIRED" not in row["selection_state"] for row in frame):
         raise AssertionError("frame schedule falsely releases a material or connector")
     panels = read_rows("guard-panel-cut-schedule.csv")
-    if len(panels) != 4 or sum(int(row["quantity"]) for row in panels) != 8:
+    if len(panels) != 7 or sum(int(row["quantity"]) for row in panels) != 13:
         raise AssertionError("panel schedule is incomplete")
-    if any("SELECTION REQUIRED" not in row["selection_state"] for row in panels):
+    if any("EXACT GRADE CANDIDATE" not in row["selection_state"] or "SELECTION REQUIRED" not in row["selection_state"] for row in panels):
         raise AssertionError("panel schedule falsely releases a material or retention method")
     holds = read_rows("guard-closure-holds.csv")
     if {row["hold_id"] for row in holds} != {f"GH-{index:03d}" for index in range(1, 13)}:
@@ -65,8 +72,21 @@ def main() -> int:
     if any(row["state"] not in {"OPEN", "SELECTION REQUIRED", "DESIGN REQUIRED"} for row in holds):
         raise AssertionError("guard closure register contains an executed-looking state")
     sources = read_rows("guard-source-register.csv")
-    if len(sources) != 4 or sources[2]["verification"] != "NOT VERIFIED - SELECTION REQUIRED" or sources[3]["url"] != "SELECTION REQUIRED":
-        raise AssertionError("unverified frame/panel primary-source boundary was weakened")
+    if len(sources) != 6 or any(row["verification"].startswith("NOT VERIFIED") for row in sources):
+        raise AssertionError("guard primary-source register is incomplete")
+    if sources[5]["revision_or_date"] != "122022; accessed 2026-08-07" or "TYPICAL DATA NOT SPECIFICATION VALUES" not in sources[5]["verification"]:
+        raise AssertionError("TUFFAK PDS revision/typical-data boundary changed")
+    joints = read_rows("guard-joint-schedule.csv")
+    if len(joints) != 3 or sum(int(row["joint_count"]) for row in joints) != 20 or any(row["bracket_candidate"] != "80/20 14201" for row in joints):
+        raise AssertionError("twenty-joint 14201 schedule is incomplete")
+    catalog = read_rows("guard-catalog-candidates.csv")
+    if len(catalog) != 6 or catalog[0]["order_code"] != "20-2020 custom length" or catalog[3]["order_code"] != "TUFFAK GP clear nominal 6 mm; supplier SKU SELECTION REQUIRED":
+        raise AssertionError("guard catalog candidate register changed")
+    if any("HOLD" not in row["state"] and "FAMILY CANDIDATE ONLY" not in row["state"] for row in catalog):
+        raise AssertionError("catalog candidate release boundary weakened")
+    mass = read_rows("guard-mass-screen.csv")
+    if len(mass) != 4 or abs(float(mass[-1]["mass_kg"]) - 30.799798) > 0.000002 or "INCOMPLETE" not in mass[-1]["credit"]:
+        raise AssertionError("guard mass screen is incomplete or overclaims closure")
 
     with FORM.open(encoding="utf-8", newline="") as handle:
         form = list(csv.DictReader(handle))
@@ -103,7 +123,7 @@ def main() -> int:
     if (OUT / "HR-V0_fixed-guard-receiver-candidate.glb").stat().st_size < 5000:
         raise AssertionError("guard GLB export is unexpectedly small")
 
-    print("HR-V0 guard/receiver check passed: 16 frame pieces, 8 panel candidates, 12 open holds, 12 unexecuted inspection cases")
+    print("HR-V0 guard/receiver check passed: 16 frame pieces, 13 sheet pieces, 20 catalog-candidate joints, 12 open holds, 12 unexecuted inspection cases")
     print(guard.WARNING)
     return 0
 

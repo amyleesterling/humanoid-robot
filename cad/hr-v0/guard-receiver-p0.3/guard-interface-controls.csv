@@ -1,0 +1,9 @@
+control_id,controlled_value,status,closure_evidence
+G0,origin at vertical projection of J1 onto bench,DATUM CANDIDATE,bench survey and accepted J1 as-built transform
+G-X,internal X -200 to +200 mm,SPACE CANDIDATE,complete gripper cable and stopping sweep
+G-Y,internal Y -450 to +450 mm,SPACE CANDIDATE,complete gripper cable and stopping sweep
+G-Z,internal Z 0 to 950 mm,SPACE CANDIDATE,complete gripper cable and stopping sweep
+G-J1,J1 axis at G0 + (0 0 500) mm,ARM P0.7 BINDING,received assembly metrology
+G-R,450 mm radial reservation in Y-Z,NOT A SAFETY DISTANCE,measured stopping travel tolerance access and payload union
+G-SERVICE,all panels tool-removable only after isolation,NO INTERLOCK CREDIT,service procedure panel hardware and access validation
+G-CONTROL,E-stop RESET ARM outside boundary,LAYOUT REQUIRED,accepted human-factors and panel installation record

@@ -9,7 +9,7 @@ Firmware package: **HR-V0-FW-P0.4 source/test candidate with supervisor P0.3, ac
 Safety package: **HR-V0-FSA-P0.1 allocation candidate; ordinary DF-01 heartbeat has zero safety credit; no PLr, SIL, or achieved PL assigned**
 Configuration package: **HR-V0-RC-P0.1 deterministic candidate; immutable merge/acceptance and signatures remain open**
 Commissioning package: **HR-V0-E2-SEQ-P0.1 procedure candidate; 15 steps and five forms; all records NOT EXECUTED; authorization NOT AUTHORIZED**
-BOM package: **HR-V0-BOM-P0.1 closure candidate; 17 evaluation-only lines including two S102 sets; HR-V0-MECH-EVAL-P0.1 seven-line unpowered mechanical subset; 20 exact candidates on hold; 28 selection-required groups; no purchase approval or complete procurement release**
+BOM package: **HR-V0-BOM-P0.1 closure candidate; 17 evaluation-only lines including two S102 sets; HR-V0-MECH-EVAL-P0.1 seven-line unpowered mechanical subset; 24 exact candidates on hold; 29 selection-required groups; no purchase approval or complete procurement release**
 Status: **PRELIMINARY - NOT APPROVED FOR ENERGIZATION**
 
 ## Authority and presentation
@@ -49,6 +49,7 @@ The authoritative repository controls engineering intent and contains the review
 - R72 issues `HR-V0-GRIP-CAD-ACQ-P0.1`. It records six primary-source states, including the broken official Onshape redirect and the metadata-only Thingiverse route; defines controlled publisher-file and received-part-metrology closure paths; adds ten open datum controls plus 27 unexecuted records; and drafts but does not send a ROBOTIS support query. No file, physical article, measurement, transform, tolerance, mass, guard or release was obtained.
 - R73 restores two exact FR13-S102K sets to Evaluation Batch A after the P0.7 architecture made them required. `HR-V0-MECH-EVAL-P0.1` now covers nine unpowered actuator/frame/gripper articles with exact parent/order-code/quantity parity. Every line requires separate program-owner approval before purchase; nothing has been ordered or received.
 - R74 issues `HR-V0-GUARD-P0.2`: a dimensioned fixed-enclosure candidate with source STEP/GLB, a readable layout, responsive interactive guide, sixteen frame lengths, eight panel envelopes, twelve open holds and twelve P0.7-aligned inspection cases. The 450 mm radius remains a space reservation, not a safety distance. Exact profile, transparent sheet, joints, retention, anchors, sweep, stopping, access, impact and qualified review remain open.
+- R75 supersedes that guard guidance with `HR-V0-GUARD-P0.3`: sixteen exact 80/20 `20-2020` profile candidates, twenty `14201` joint-bracket candidates, forty `75-3581` frame-hardware candidates and thirteen Plaskolite TUFFAK GP clear nominal 6 mm sheet pieces. The known profile-and-sheet subtotal is 30.799798 kg and is incomplete; panel-retainer quantity/pattern, received identity, design allowables, joint capacity, anchors, cable entry, containment, proof and qualified acceptance remain open.
 - R60 issues `HR-V0-CP-P0.1`, a physical allocation candidate for Hammond `PJU181610H` / `P1868`, the V3 devices, two source PCB envelopes, six XT1 positions, six cable-entry zones and all 66 bounded V3 wire endpoints. Exact rail/duct/terminal/H1 catalog candidates are on hold; inlet, protection, disconnect, conductors, terminations, glands and bonding remain `SELECTION REQUIRED`. No hole, cut, wire, PCB fabrication, assembly or energization record is released or executed.
 - R61 issues Electrical `V3-P1.5`, freezing H1 as amber IDEC `HW1P-1FQD-A-24V`, removing the misleading `SAFE ELIGIBLE` and `+/-` labels, and retaining `TBD-HA/TBD-HB` as project placeholders. Fourteen H1 receiving/characterization records are `NOT EXECUTED`; no terminal, polarity, current, brightness, wiring, safety credit or energization release is claimed.
 - R63 issues Electrical `V3-P1.7` and `HR-V0-CP-P0.3`, freezing Phoenix `D-ST 4` item `3030420` as the FSR group end-cover candidate while retaining all six fuse links, received accessory compatibility/grouping, coordination, conductors, holes, thermal/depth proof, bonding and assembly as unresolved. `HR-V0-SD-P0.1` screens Blue Sea `6004200` but leaves SD1 `SELECTION REQUIRED` because fault/load-break, conductor/lug, lockout, placement and jurisdiction evidence remain open.
@@ -67,9 +68,9 @@ The authoritative repository controls engineering intent and contains the review
 - 181 total KiCad nets, including 13 auto-generated unconnected nets
 - 168 named electrical nets
 - 106 unresolved electrical selections/interfaces
-- 73 system BOM groups: 17 evaluation candidates, 20 exact candidates on hold, three grouped-component holds, 28 selection-required groups, four historical/DNP exclusions, and one integrated item
+- 78 system BOM groups: 17 evaluation candidates, 24 exact candidates on hold, three grouped-component holds, 29 selection-required groups, four historical/DNP exclusions, and one integrated item
 - KiCad 10.0.5 ERC: 0 errors and 0 warnings
-- E2 gate status: 21 applicable, 0 closed, 21 partial; all five new physical/authorization records remain unexecuted
+- HR-V0 gate status: 30 total, 0 closed, 22 partial, 8 open; all physical and authorization records remain unexecuted
 - full energization-gate register: 30 gates, 0 closed, 22 partial, 8 open
 - control-panel candidate: 25 BOM rows, 20 backplate allocations, five door rows, one held sidewall option, six XT1 positions, 66 V3 wire endpoints, six unreleased cable-entry zones, twelve thermal/space screens, and 22 unexecuted evidence rows
 
@@ -79,7 +80,7 @@ ERC validates modeled connectivity and annotation only. It does not establish ph
 
 ## Review history and independent findings
 
-Seventy-four review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R74 are controlled project responses, not independent approvals. R69 adds analytical positive-stop geometry, R70 adds a nonselected mass-reduction study, R71 adds exact-source gripper integration inputs, R72 adds a fail-closed acquisition/metrology route, R73 makes the unpowered evaluation subset consistent with P0.7, and R74 turns the guard space study into a checked dimensioned candidate while keeping all physical holds open. None closes a physical gate or authorizes purchase, quotation, fabrication, motion, connection or energization.
+Seventy-five review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R75 are controlled project responses, not independent approvals. R69 adds analytical positive-stop geometry, R70 adds a nonselected mass-reduction study, R71 adds exact-source gripper integration inputs, R72 adds a fail-closed acquisition/metrology route, R73 makes the unpowered evaluation subset consistent with P0.7, R74 turns the guard space study into a checked dimensioned candidate, and R75 binds exact catalog candidates and exposes the guard's incomplete 30.799798 kg mass consequence. None closes a physical gate or authorizes purchase, quotation, fabrication, motion, connection or energization.
 
 ## Principal unresolved engineering blockers
 
@@ -140,7 +141,7 @@ Use `docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md` for the
 
 Use `docs/reviews/2026-08-07-gripper-cad-acquisition-p0.1-independent-review-request.md` for the R72 source-state, publisher-file/metrology closure-route, six-degree datum-control and fail-closed-template review. It contains no received file or measurement and is not a fabrication or motion release.
 
-Use `docs/reviews/2026-08-07-guard-p0.2-independent-review-request.md` for the R74 fixed-enclosure coordinate, frame/panel schedule, access, retention, containment, stability and twelve-hold review. It is not a safety-distance, product-selection, structural or fabrication release.
+Use `docs/reviews/2026-08-07-guard-p0.3-independent-review-request.md` for the R75 fixed-enclosure catalog identity, coordinate, frame/sheet/joint schedule, mass, access, retention, containment, stability and twelve-hold review. It is not a safety-distance, structural or fabrication release.
 
 Reviewers must provide BLOCKER / MAJOR / MINOR findings with exact document, requirement, risk, component, net, terminal, or KiCad-sheet references. Calculations must show assumptions and units. Component claims must cite current primary manufacturer documents with revision/date. Every missing input or unresolved selection must state the evidence needed for closure.
 
