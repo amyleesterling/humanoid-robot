@@ -1,0 +1,2 @@
+record_id,source,tx_mm,ty_mm,tz_mm,project_hole_axes,rear_gap_mm,state
+PAT-001,Pololu item 3551 manufacturer STEP,2.980409242639,3.719474107557,17.512087117409,Y/Z 10.49/+4.00 and 19.69/-4.00,0.500,NOMINAL CANDIDATE - RECEIVED REGISTRATION OPEN

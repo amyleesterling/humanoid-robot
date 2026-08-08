@@ -86,6 +86,7 @@ def main() -> None:
         "HR-V0-24V-IF-P0.2",
         "HR-V0-E2-HW-P0.2",
         "HR-V0-COMPUTE-IF-P0.1",
+        "HR-V0-GRIP-ELEC-P0.1",
     ] or electrical_product.get("release_state") != "correction_candidate_not_released":
         errors.append("Electrical V3-P1.13 supporting identifiers or release state changed")
     safety_product = next(
@@ -126,6 +127,7 @@ def main() -> None:
         "HR-V0-GRIP-SRC-P0.3",
         "HR-V0-GRIP-SRC-ROUTE-P0.4",
         "HR-V0-GRIP-ALT-P0.1",
+        "HR-V0-GRIP-ADAPT-P0.1",
         "HR-V0-GUARD-P0.3",
         "HR-V0-GUARD-RET-P0.1",
         "HR-V0-GUARD-IMPACT-P0.1",

@@ -1,0 +1,5 @@
+feature_id,feature,nominal,basis,state
+PAF-001,backplate,40 X x 40 Z x 5 Y mm,project candidate,NOT RELEASED
+PAF-002,beam holes,2 x diameter 5.50 through; diameter 11.30 x 90 degree countersink; X=0 Z=+/-10.00,current 20-2040 end-tap and retained M5 countersunk interface,TOLERANCE/FASTENER PROOF OPEN
+PAF-003,gripper holes,2 x diameter 4.40 transverse; Y/Z 10.49/+4.00 and 19.69/-4.00,Pololu drawing/STEP axes,M4 STACK/POM PROOF OPEN
+PAF-004,cheeks,3.00 thick each; 20.40 inside gap,19.80 manufacturer STEP ear envelope plus 0.30 nominal each side,TOLERANCE STACK OPEN

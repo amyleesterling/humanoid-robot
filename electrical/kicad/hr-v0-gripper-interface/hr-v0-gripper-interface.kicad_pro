@@ -1,0 +1,23 @@
+{
+  "board": {},
+  "boards": [],
+  "cvpcb": {},
+  "erc": {},
+  "libraries": {},
+  "meta": {
+    "filename": "hr-v0-gripper-interface.kicad_pro",
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [],
+    "meta": {
+      "version": 3
+    }
+  },
+  "pcbnew": {},
+  "schematic": {},
+  "text_variables": {
+    "PROJECT_STATUS": "PRELIMINARY - ORDINARY CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION",
+    "REVISION": "HR-V0-GRIP-ELEC-P0.1"
+  }
+}
