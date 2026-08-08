@@ -17,7 +17,7 @@
     {
       "domain": "mechanical",
       "identifier": "HR-V0-MECH-P0.6",
-      "supporting_identifiers": ["HR-V0-ROBOTIS-IF-P0.1", "HR-V0-ARM-ARCH-P0.7", "HR-V0-HS-P0.3", "HR-V0-J2-STOP-P0.1", "HR-V0-GRIP-P0.2", "HR-V0-FAB-SRC-P0.4", "HR-V0-MECH-R0.1-PRELIMINARY-SUPERSEDED-ARM", "HR-V0-FAB-RFI-P0.2-WITHDRAWN", "HR-V0-FRAME-P0.2"],
+      "supporting_identifiers": ["HR-V0-ROBOTIS-IF-P0.1", "HR-V0-ARM-ARCH-P0.7", "HR-V0-HS-P0.3", "HR-V0-J2-STOP-P0.1", "HR-V0-GRIP-P0.2", "HR-V0-GRIP-CAD-ACQ-P0.1", "HR-V0-FAB-SRC-P0.4", "HR-V0-MECH-R0.1-PRELIMINARY-SUPERSEDED-ARM", "HR-V0-FAB-RFI-P0.2-WITHDRAWN", "HR-V0-FRAME-P0.2"],
       "release_state": "integrated_exact_coordinate_candidate_not_released_for_fabrication_or_energization"
     },
     {

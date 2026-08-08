@@ -1,0 +1,16 @@
+measurement_id,date,repo_commit,article_id,serial_or_lot,configuration,datum_frame,feature_or_quantity,value_type,method,instrument,calibration_reference,measured_value,unit,expanded_uncertainty,temperature_c,photo_or_scan_reference,raw_data_reference,inspector,independent_reviewer,disposition,notes
+NOT-EXECUTED,,,,,,GDM-A,H104 mounting-plane point cloud,geometry,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,,GDM-A,H104 mounting-hole centers diameters and thread identity,geometry,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,,GDM-A,H104 actuator-output axis relative to mounting plane,axis,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,,GDM-B,link5 or carrier mounting-plane point cloud,geometry,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,,GDM-B,carrier mounting-hole centers diameters and thread identity,geometry,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,,GDM-B,carrier datum axes relative to H104 assembly,transform,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,,GDM-C,left and right rail axes over travel,axis,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,,GDM-C,crank rod bush and bracket pivot centers,geometry,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,,GDM-D,pad contact planes and centerline at minimum command,opening,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,,GDM-D,pad contact planes and centerline at mid command,opening,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,,GDM-D,pad contact planes and centerline at maximum command,opening,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,,GDM-E,complete assembled gripper excluding shared cable,mass,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,,GDM-E,assembled gripper local center of mass X Y Z,center_of_mass,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,,GDM-F,guard access and moving-envelope clearance,clearance,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,,GDM-G,fastener head tool and cable service envelope,clearance,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
