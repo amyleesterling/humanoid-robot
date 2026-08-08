@@ -27,7 +27,7 @@ Round: R80
 - Browser QA: the interactive guide parsed with all expected headings, tables and warning text; at the available 1280 x 720 viewport, page scroll width equaled client width, the body font was 16 px, the minimum functional text was 14 px and no text fell below 14 px. The narrow-screen CSS retains horizontal scrolling inside the flow/table containers rather than shrinking text.
 - KiCad sheet-01 visual QA: the first export exposed border clipping and then label crowding during intermediate layouts. The final two-column/four-row A3 export removes both defects; all source, connector, protection and DNP blocks, net labels, warnings, notes and title fields are visible without overlap.
 - Repository validation: all 32 checkers passed using the controlled general, CadQuery and KiCad Python runtimes as applicable.
-- Release manifest: 878 package files; clean-clone reproduction passed with a clean worktree and all five R80-critical checks. Remote-branch verification follows push.
+- Release manifest: 878 package files; clean-clone reproduction passed with a clean worktree and all five R80-critical checks. The remote review branch was verified after push.
 
 ## Limits
 
