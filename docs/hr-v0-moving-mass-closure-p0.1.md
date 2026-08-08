@@ -1,55 +1,45 @@
-# HR-V0 Moving-Mass Closure P0.1
+# HR-V0 moving-mass closure P0.1 — R69 update
 
-> **R53 HOLD:** Link/frame masses and all derived COM/inertia screens are historical until a replacement exact-coordinate arm architecture is released. Do not use this ledger to claim current mass closure.
+> **PRELIMINARY—MASS LEDGER AND SCREEN ONLY—NOT APPROVED FOR FABRICATION, MOTION, OR ENERGIZATION.**
 
-**PRELIMINARY - MASS LEDGER AND SCREEN ONLY. NOT A FABRICATION OR ENERGIZATION RELEASE.**
-
-Date: 2026-08-06
+Date updated: 2026-08-07
 
 Requirement: `MASS-002`
 
+Configuration input: `HR-V0-ARM-ARCH-P0.7` / `HR-V0-J2-STOP-P0.1`
+
 Controlled ledger: `bom/hr-v0-moving-mass-ledger.csv`
 
-Measurement record: `tests/forms/hr-v0-moving-mass-measurement-template.csv`
+Measurement form: `tests/forms/hr-v0-moving-mass-measurement-template.csv`
 
-## Configuration boundary
+## R69 result
 
-The HR-V0 moving-assembly ceiling is 750 g, excluding the fixed J1 actuator, shoulder adapter, column, base and bench anchors. The moving configuration includes every item that rotates about J1: both link plates, J1/J2 moving frames and idlers, the J2 actuator/body-frame assembly, the gripper actuator and mechanism, all moving fasteners/stops/guides/connectors/cable shares, and the maximum 100 g payload.
+The 750 g moving-assembly ceiling includes the 100 g payload and excludes only the fixed J1 actuator, support, column, base and bench anchors. Every item rotating about J1 must be counted exactly once.
 
-No item may be omitted because it was supplied in a kit, modeled as a massless envelope, attached near a joint axis, or allocated to electrical rather than mechanical work. Each item appears exactly once in the ledger.
+| Known or CAD-estimated item | Mass |
+|---|---:|
+| C01 + 100 mm upper member + C07 | 190.289 g |
+| J2 XM540 actuator | 165.000 g |
+| C06 + 50 mm forearm member + C04 | 155.469 g |
+| gripper XM430 actuator | 82.000 g |
+| maximum permitted payload | 100.000 g |
+| **known/estimated subtotal** | **692.758 g** |
+| **unresolved headroom to 750 g** | **57.242 g** |
 
-## Current reproducible subtotal
+The subtotal consumes 92.37% of the ceiling before either H101 frame/idler set, the S102 frame, the selected bumper/retention, fasteners, spacers, complete gripper mechanism/pads/guard, connectors, guides, strain relief, or any moving cable is counted. The upper-link bucket is already 70.289 g over its 120 g allocation and the forearm bucket is 35.469 g over its allocation.
 
-| Known item | Basis | Mass |
-|---|---|---:|
-| `MV0-001` upper-link plate | generated CAD volume at 2.70 g/cm3 | 109.2 g |
-| J2 `XM540-W270-T` actuator | current ROBOTIS e-Manual | 165.0 g |
-| `MV0-002` forearm plate | generated CAD volume at 2.70 g/cm3 | 109.2 g |
-| gripper `XM430-W350-T` actuator | current ROBOTIS e-Manual | 82.0 g |
-| maximum permitted payload | system requirement | 100.0 g |
-| **Known subtotal** |  | **565.4 g** |
-| **Unresolved headroom to 750 g** |  | **184.6 g** |
+This is a **mass-budget blocker**, not a pass. The remaining 57.242 g is unlikely to contain all unresolved items, but the project shall measure rather than invent their masses. The response may require a higher justified system mass/torque envelope, lighter C06/C07/link geometry, a lighter gripper, or a different architecture. Any change requires updated torque, inertia, stop-impact, structure, guard and thermal evidence.
 
-The known subtotal already consumes 75.4% of the ceiling. The remaining 184.6 g must cover two moving H101 frame/idler assemblies, one S102 frame, all frame/link/gripper fasteners and spacers, the complete gripper mechanism and pads, J2 moving stop hardware, cable guides, strain relief, connectors and every moving cable segment.
-
-This is not a pass. The current 120 g upper-link and 120 g forearm allocation buckets each contain a 109.2 g plate, leaving only 10.8 g per bucket for their H101/frame/fastener/harness content. Those suballocations are not credible until measured; the system may need thinner/lighter link geometry or a controlled regrouping supported by the final torque, stiffness and impact calculations.
-
-## Source status
-
-The ROBOTIS XM540-W270 and XM430-W350 e-Manual pages were rechecked 2026-08-06 and report 165 g and 82 g respectively. Received-device mass still governs the measured ledger. Frame and kit-content pages do not provide controlled component masses, and material shall not be inferred from appearance or STEP volume.
-
-CAD masses are estimates until stock alloy/temper, actual thickness, finish and measured first-article mass are recorded. The calculation must be rerun whenever hole geometry, material, gripper, cable route, stop part or fastener changes.
+CAD values assume 2.70 g/cm³ and are estimates pending the exact stock certificate, thickness, finish and first-article measurement. Purchased-member estimates use the published mass per length. Received mass governs.
 
 ## Closure procedure
 
 1. Freeze the exact configuration and repository commit.
-2. Execute `INSPECT-MECH-005` for received frame-kit identity and contents and `INSPECT-GRIP-001` for the allocated RM-X52 gripper mechanism and guard configuration.
-3. Execute `INSPECT-MECH-007` using a calibrated scale and the controlled 13-row measurement form.
-4. Record measured mass with uncertainty for every separate part, then repeat for each assembled moving subassembly as a cross-check.
-5. Determine local center of mass and inertia using a released CAD or physical method; preserve raw measurements and coordinate transforms.
-6. Reconcile component totals to assembly measurements within the released uncertainty. Investigate rather than distributing unexplained error.
-7. Update the gravity, torque, stop-impact and receiver/drop calculations from the same immutable mass configuration.
-8. Run `REVIEW-MASS-002`; pass only if the measured moving assembly including the 100 g test payload is no more than 750 g and every item is included once.
-9. Obtain qualified mechanical review before torque/current limits or proof loads use the closed ledger.
+2. Execute the 17-row measurement form with calibrated equipment; record local COM and uncertainty.
+3. Cross-check individual totals against assembled moving subassemblies and investigate discrepancies.
+4. Determine inertia using an accepted CAD/physical method, including reflected drivetrain inertia where applicable.
+5. Recalculate gravity, acceleration, continuous torque, stop impact, base/guard and thermal cases from the same configuration.
+6. Close or formally revise every bucket and the 750 g ceiling; unused allocation may not hide an omitted item.
+7. Obtain qualified mechanical review before any torque/current/stop/proof value is released.
 
-No supplier estimate, CAD value or unused allocation is permission to substitute an unweighed component.
+No CAD estimate, supplier mass, apparent headroom or unused bucket is permission to omit, fabricate, move or energize hardware.

@@ -24,7 +24,7 @@ from hr_v0_cad import (
 
 
 OUT = Path(__file__).resolve().parents[1] / "generated" / "mechanical-checks.json"
-CUSTOM_PARTS = OUT.parent / "custom-parts.csv"
+ARM_SUMMARY = OUT.parent / "arm-architecture-p0.7" / "architecture-summary.json"
 
 
 def main():
@@ -43,16 +43,13 @@ def main():
     h101_frame_t = 2.0
     output_tap_depth_max = 2.5
     output_stack_nominal = plate_t + h101_frame_t
-    with CUSTOM_PARTS.open(newline="", encoding="utf-8") as handle:
-        custom_part_mass_g = {
-            row["part_number"]: float(row["calculated_mass_g"])
-            for row in csv.DictReader(handle)
-        }
+    arm_summary = json.loads(ARM_SUMMARY.read_text(encoding="utf-8"))
+    arm_mass = arm_summary["mass_and_load_screen"]
     moving_mass_ceiling_g = 750.0
     known_moving_mass_g = (
-        custom_part_mass_g["MV0-001"]
+        arm_mass["upper_member_c01_c07_mass_g"]
         + 165.0
-        + custom_part_mass_g["MV0-002"]
+        + arm_mass["forearm_member_c06_c04_mass_g"]
         + 82.0
         + 100.0
     )
@@ -64,9 +61,9 @@ def main():
         "payload": 100.0,
     }
     bucket_known_g = {
-        "upper_link_hardware": custom_part_mass_g["MV0-001"],
+        "upper_link_hardware": arm_mass["upper_member_c01_c07_mass_g"],
         "elbow_actuator_and_bracket": 165.0,
-        "forearm_hardware": custom_part_mass_g["MV0-002"],
+        "forearm_hardware": arm_mass["forearm_member_c06_c04_mass_g"],
         "gripper_assembly": 82.0,
         "payload": 100.0,
     }
@@ -112,8 +109,8 @@ def main():
             "h101_frame_nominal_thickness_mm": h101_frame_t,
             "xm540_output_tap_depth_max_mm": output_tap_depth_max,
             "hard_stop_candidate_contact_radius_mm": hard_stop_radius_m * 1000.0,
-            "hard_stop_nominal_margin_beyond_software_deg": 5.0,
-            "hard_stop_illustrative_bumper_stroke_mm_not_selected": illustrative_bumper_stroke_m * 1000.0,
+            "historical_p0_2_hard_stop_margin_deg_withdrawn": 5.0,
+            "historical_illustrative_bumper_stroke_mm_not_selected": illustrative_bumper_stroke_m * 1000.0,
             "xm540_no_load_speed_rpm_at_12v_candidate_endpoint": 30.0,
             "xm540_ideal_stall_torque_Nm_at_12v_endpoint": xm540_ideal_stall_torque_nm_12v,
             "column_I_mm4": column_i,
@@ -147,7 +144,7 @@ def main():
                 "ideal_stall_endpoint_force_N_at_50_mm": xm540_ideal_stall_torque_nm_12v / hard_stop_radius_m,
                 "J1_average_force_N_if_no_load_energy_absorbed_in_2_mm_excludes_rotor": rotational_energy(shoulder_allocated_inertia, xm540_no_load_speed_rad_s_12v) / illustrative_bumper_stroke_m,
                 "J2_average_force_N_if_no_load_energy_absorbed_in_2_mm_excludes_rotor": rotational_energy(elbow_allocated_inertia, xm540_no_load_speed_rad_s_12v) / illustrative_bumper_stroke_m,
-                "screen_result": "KINEMATIC AND ALLOCATED-MASS SCREEN ONLY - STOP DESIGN NOT RELEASED",
+                "screen_result": "HISTORICAL ALLOCATED-INERTIA SCREEN - CURRENT J2 STOP P0.1 EXISTS - IMPACT AND PHYSICAL RELEASE OPEN",
             },
             "moving_mass": {
                 "known_subtotal_g": known_moving_mass_g,
@@ -163,11 +160,11 @@ def main():
                     "J1 and J2 H101 frames/idlers",
                     "J2 S102 body frame",
                     "all joint/frame/gripper fasteners and spacers",
-                    "J2 moving hard-stop hardware",
+                    "selected bumper and retention hardware",
                     "received OpenMANIPULATOR-X mechanism subset, pads, guard and retention",
                     "all moving cable, connectors, guides and strain relief",
                 ],
-                "screen_result": "565.4 g KNOWN SUBTOTAL; 184.6 g UNRESOLVED HEADROOM - MASS CLOSURE OPEN",
+                "screen_result": "692.758 g KNOWN/ESTIMATED SUBTOTAL; 57.242 g UNRESOLVED HEADROOM - LINK BUCKETS EXCEEDED - MASS CLOSURE OPEN",
             },
             "guard_receiver": {
                 "maximum_object_center_reach_mm": MAX_OBJECT_CENTER_REACH_MM,
@@ -190,7 +187,7 @@ def main():
             "FR12-H104K exact fasteners, received seating, tolerance, guard clearance and retention load path",
             "Measured mass, local COM and inertia for every row in the HR-V0 moving-mass ledger",
             "Mass of frames, fasteners, stop hardware, cable guides, moving harness and complete gripper mechanics",
-            "Hard-stop bracket, bumper material/force curve, fasteners, contact geometry and load path",
+            "C06/C07 positive-stop CAD candidate still requires bumper selection, received FAI, complete load/contact/tolerance analysis and physical proof",
             "Measured maximum joint speed, reflected rotor/gear inertia, gear compliance, drive torque duration and stop-switch latency",
             "Hard-stop tolerance stack including calibration error, backlash, bumper compression and stopping travel",
             "Joint alignment, combined load, shock and fatigue",
@@ -200,7 +197,7 @@ def main():
             "Exact guard panels frame fasteners access probe service isolation catch and moving harness",
             "Correlation to measured first article and independent mechanical review",
         ],
-        "calculation_result": "P0.2 ARM GEOMETRY SUPERSEDED BY R53; NUMERICAL SCREENS RETAINED AS HISTORICAL ONLY; REPLACEMENT ARCHITECTURE REQUIRED",
+        "calculation_result": "P0.2 ARM GEOMETRY SUPERSEDED; LEGACY STRUCTURAL SCREENS RETAINED AS HISTORICAL ONLY; CURRENT P0.7 EVIDENCE IS SEPARATELY CONTROLLED",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(results, indent=2), encoding="utf-8", newline="\n")

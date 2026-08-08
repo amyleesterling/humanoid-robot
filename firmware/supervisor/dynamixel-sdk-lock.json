@@ -1,5 +1,5 @@
 {
-  "release_id": "HR-V0-DXL-TRANSPORT-P0.2",
+  "release_id": "HR-V0-DXL-TRANSPORT-P0.3",
   "status": "SOURCE-CANDIDATE-HIL-REQUIRED",
   "distribution": "dynamixel-sdk",
   "version": "4.0.5",

@@ -14,10 +14,10 @@ from typing import Mapping
 
 
 EXPECTED_MECHANICAL_BINDING = {
-    "limit_set_id": "HR-V0-LIMITS-P0.1",
-    "mechanical_revision": "HR-V0-MECH-P0.5",
-    "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.6",
-    "hard_stop_revision": "HR-V0-HS-P0.2",
+    "limit_set_id": "HR-V0-LIMITS-P0.2",
+    "mechanical_revision": "HR-V0-MECH-P0.6",
+    "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.7",
+    "hard_stop_revision": "HR-V0-HS-P0.3",
 }
 
 EXPECTED_ENGINEERING_LIMITS = {
@@ -27,8 +27,8 @@ EXPECTED_ENGINEERING_LIMITS = {
 }
 
 ACCEPTED_LIMIT_STATE = "ACCEPTED-FOR-GUARDED-HIL"
-EXPECTED_SUPERVISOR_CONFIGURATION_ID = "HR-V0-SUP-P0.2"
-EXPECTED_ACTUATOR_CONFIGURATION_ID = "HR-V0-ACT-P0.2"
+EXPECTED_SUPERVISOR_CONFIGURATION_ID = "HR-V0-SUP-P0.3"
+EXPECTED_ACTUATOR_CONFIGURATION_ID = "HR-V0-ACT-P0.3"
 
 
 def selection_is_closed(value: object) -> bool:

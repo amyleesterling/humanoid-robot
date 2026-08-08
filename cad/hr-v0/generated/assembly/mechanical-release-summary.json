@@ -1,21 +1,24 @@
 {
-  "revision": "HR-V0-MECH-P0.5",
+  "revision": "HR-V0-MECH-P0.6",
   "warning": "PRELIMINARY - INTEGRATED CANDIDATE ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION",
   "source_hashes": {
-    "cad/hr-v0/mechanical-release-data.csv": "5DE658C3A48F62E2D047C7D8836874689DE45448DC7235F5888F284C7F658E5C",
+    "cad/hr-v0/mechanical-release-data.csv": "B3974BD22B7FD80D6E78C63F6AA287447B244926357C18826F0A1A88351EBFDD",
     "cad/hr-v0/mechanical-interface-control.csv": "9E0D8616CB4A2C48B20AFFBCFFF1BC9DD5D3B199729CF4C4BC977295228D47A1",
     "cad/hr-v0/mechanical-assembly-components.csv": "76D825364D1540F28708A64B4EFEE3173F7119EFC27493E2BD007EDE52E4C0AD",
     "bom/hr-v0-extrusion-cut-schedule.csv": "1CE06A551E5130B82BE039DA078351625369621153C7E14EE38FA8C57CB7DF06",
     "bom/hr-v0-frame-joint-schedule.csv": "92DB7C25680C1D62E5CFF7ED247C505A650AC25B884CFF22EC3464967F534FE8",
     "cad/hr-v0/frame-joint-placement-p0.2.csv": "025BD1824077DEB89EB1198352FF3A242E2D68F5EAABAB21322094C5A10B0210",
     "cad/hr-v0/generated/vendor-interfaces/same-origin-bounds.csv": "008D3CF46F35A3F21D621C7A285C392D57B608DB0E8179A048EBF8972589A690",
-    "cad/hr-v0/generated/arm-architecture-p0.6/architecture-summary.json": "3A3B627F1780182F1232B39D529ECE1A3A6D0953286C95032547C1FA7A301D08",
-    "cad/hr-v0/generated/arm-architecture-p0.6/interface-schedule.csv": "A6BE6BC818461B48AB63FB9374DDDE0795A0C18210A93095062DE65F73E2C367",
-    "cad/hr-v0/generated/arm-architecture-p0.6/transform-schedule.csv": "DE66EE83115BCBF558D7F113CEE7E2C714158705A63E1C16E861006C1FC85CE2",
-    "cad/hr-v0/generated/arm-architecture-p0.6/continuous-clearance-analysis.json": "907AB4E318137A289A906883EBE0CF2C17A3B96E3CE6F97D1120998B3E40D646",
-    "cad/hr-v0/generated/arm-architecture-p0.6/hard-stop-allocation.csv": "BD664EEF220B629938605322FC11E5058B4DA54779EDA52C091DDBAD1AD95AA1"
+    "cad/hr-v0/generated/arm-architecture-p0.7/architecture-summary.json": "F681850AD1F644014371A9849552E9B896933DC35478850E163CB865BF1F4DF1",
+    "cad/hr-v0/generated/arm-architecture-p0.7/interface-schedule.csv": "98635831A6EADEA47CCCD5D4227340516DCF59CD8C4A33EE5CDCD26980713ED4",
+    "cad/hr-v0/generated/arm-architecture-p0.7/transform-schedule.csv": "C16E15D7396643D1CDE8F95110253EA4EFC8E55B67F8385CD97CFEB0DF8B026C",
+    "cad/hr-v0/generated/arm-architecture-p0.7/continuous-clearance-analysis.json": "B612CBE49F6198F925F9D018938D9CD413905E3D0C181FDE09C31F23E4E45E0C",
+    "cad/hr-v0/generated/arm-architecture-p0.7/hard-stop-allocation.csv": "05DB37CA424BC54A7B9200FE1AE8B3B38B9D4623AFBB3402FD079EA25F5F5D99",
+    "cad/hr-v0/generated/arm-architecture-p0.7/j2-positive-stop-analysis.json": "1D0C3BBD2ABA85757FD2D8DA91962BFAAC56942FDCFCA6D493B5EC017ACD1C9B",
+    "cad/hr-v0/generated/arm-architecture-p0.7/j2-positive-stop-controls.csv": "298F69C656333266A03C32DC585E6C7FEAE2A50E6891013813BAAD346EF43CE4"
   },
-  "arm_revision": "HR-V0-ARM-ARCH-P0.6",
+  "arm_revision": "HR-V0-ARM-ARCH-P0.7",
+  "stop_revision": "HR-V0-HS-P0.3",
   "counts": {
     "controlled_parameters": 24,
     "interfaces": 12,
@@ -53,23 +56,30 @@
     "A04",
     "A05",
     "A06",
-    "A07"
+    "A07",
+    "HS-J2-POS"
   ],
-  "arm_transform_count": 8,
+  "arm_transform_count": 10,
   "arm_sample_count": 40001,
   "continuous_minimum_guaranteed_clearance_mm": 0.765783,
   "continuous_first_nominal_contact_j2_deg": 121.643289,
   "candidate_j2_soft_limit_deg": 115.0,
   "candidate_j2_positive_hard_stop_datum_deg": 118.0,
   "candidate_j2_physical_uncertainty_budget_deg": 2.643289,
+  "candidate_j2_positive_stop_nominal_contact_deg": 117.999985,
+  "candidate_j2_stop_control_count": 6,
+  "candidate_j2_bumper_selection_state": "SELECTION REQUIRED - NO ORDER CODE RELEASED",
   "superseded": [
+    "HR-V0-MECH-P0.5",
     "HR-V0-MECH-P0.4",
     "HR-V0-MECH-P0.2 arm datum chain",
     "MV0-001",
     "MV0-002",
     "MV0-003",
+    "HR-V0-ARM-ARCH-P0.6",
     "HR-V0-ARM-ARCH-P0.5",
     "HR-V0-ARM-ARCH-P0.4",
+    "HR-V0-HS-P0.2",
     "HR-V0-FAB-RFI-P0.1"
   ]
 }

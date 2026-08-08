@@ -18,8 +18,8 @@
     "h101_frame_nominal_thickness_mm": 2.0,
     "xm540_output_tap_depth_max_mm": 2.5,
     "hard_stop_candidate_contact_radius_mm": 50.0,
-    "hard_stop_nominal_margin_beyond_software_deg": 5.0,
-    "hard_stop_illustrative_bumper_stroke_mm_not_selected": 2.0,
+    "historical_p0_2_hard_stop_margin_deg_withdrawn": 5.0,
+    "historical_illustrative_bumper_stroke_mm_not_selected": 2.0,
     "xm540_no_load_speed_rpm_at_12v_candidate_endpoint": 30.0,
     "xm540_ideal_stall_torque_Nm_at_12v_endpoint": 10.6,
     "column_I_mm4": 137870.0,
@@ -53,12 +53,12 @@
       "ideal_stall_endpoint_force_N_at_50_mm": 211.99999999999997,
       "J1_average_force_N_if_no_load_energy_absorbed_in_2_mm_excludes_rotor": 116.61924560327182,
       "J2_average_force_N_if_no_load_energy_absorbed_in_2_mm_excludes_rotor": 25.029316761162605,
-      "screen_result": "KINEMATIC AND ALLOCATED-MASS SCREEN ONLY - STOP DESIGN NOT RELEASED"
+      "screen_result": "HISTORICAL ALLOCATED-INERTIA SCREEN - CURRENT J2 STOP P0.1 EXISTS - IMPACT AND PHYSICAL RELEASE OPEN"
     },
     "moving_mass": {
-      "known_subtotal_g": 565.4,
-      "unresolved_headroom_g": 184.60000000000002,
-      "known_fraction_of_ceiling": 0.7538666666666667,
+      "known_subtotal_g": 692.758,
+      "unresolved_headroom_g": 57.24199999999996,
+      "known_fraction_of_ceiling": 0.9236773333333334,
       "bucket_allocation_g": {
         "upper_link_hardware": 120.0,
         "elbow_actuator_and_bracket": 200.0,
@@ -67,16 +67,16 @@
         "payload": 100.0
       },
       "bucket_known_g": {
-        "upper_link_hardware": 109.2,
+        "upper_link_hardware": 190.289,
         "elbow_actuator_and_bracket": 165.0,
-        "forearm_hardware": 109.2,
+        "forearm_hardware": 155.469,
         "gripper_assembly": 82.0,
         "payload": 100.0
       },
       "bucket_unresolved_headroom_g": {
-        "upper_link_hardware": 10.799999999999997,
+        "upper_link_hardware": -70.28899999999999,
         "elbow_actuator_and_bracket": 35.0,
-        "forearm_hardware": 10.799999999999997,
+        "forearm_hardware": -35.468999999999994,
         "gripper_assembly": 128.0,
         "payload": 0.0
       },
@@ -84,11 +84,11 @@
         "J1 and J2 H101 frames/idlers",
         "J2 S102 body frame",
         "all joint/frame/gripper fasteners and spacers",
-        "J2 moving hard-stop hardware",
+        "selected bumper and retention hardware",
         "received OpenMANIPULATOR-X mechanism subset, pads, guard and retention",
         "all moving cable, connectors, guides and strain relief"
       ],
-      "screen_result": "565.4 g KNOWN SUBTOTAL; 184.6 g UNRESOLVED HEADROOM - MASS CLOSURE OPEN"
+      "screen_result": "692.758 g KNOWN/ESTIMATED SUBTOTAL; 57.242 g UNRESOLVED HEADROOM - LINK BUCKETS EXCEEDED - MASS CLOSURE OPEN"
     },
     "guard_receiver": {
       "maximum_object_center_reach_mm": 360.0,
@@ -111,7 +111,7 @@
     "FR12-H104K exact fasteners, received seating, tolerance, guard clearance and retention load path",
     "Measured mass, local COM and inertia for every row in the HR-V0 moving-mass ledger",
     "Mass of frames, fasteners, stop hardware, cable guides, moving harness and complete gripper mechanics",
-    "Hard-stop bracket, bumper material/force curve, fasteners, contact geometry and load path",
+    "C06/C07 positive-stop CAD candidate still requires bumper selection, received FAI, complete load/contact/tolerance analysis and physical proof",
     "Measured maximum joint speed, reflected rotor/gear inertia, gear compliance, drive torque duration and stop-switch latency",
     "Hard-stop tolerance stack including calibration error, backlash, bumper compression and stopping travel",
     "Joint alignment, combined load, shock and fatigue",
@@ -121,5 +121,5 @@
     "Exact guard panels frame fasteners access probe service isolation catch and moving harness",
     "Correlation to measured first article and independent mechanical review"
   ],
-  "calculation_result": "P0.2 ARM GEOMETRY SUPERSEDED BY R53; NUMERICAL SCREENS RETAINED AS HISTORICAL ONLY; REPLACEMENT ARCHITECTURE REQUIRED"
+  "calculation_result": "P0.2 ARM GEOMETRY SUPERSEDED; LEGACY STRUCTURAL SCREENS RETAINED AS HISTORICAL ONLY; CURRENT P0.7 EVIDENCE IS SEPARATELY CONTROLLED"
 }

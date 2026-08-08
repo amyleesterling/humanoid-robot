@@ -1,4 +1,4 @@
-"""Generate the fail-closed HR-V0-MECH-P0.5 integrated coordination artifacts."""
+"""Generate the fail-closed HR-V0-MECH-P0.6 integrated coordination artifacts."""
 
 from __future__ import annotations
 
@@ -12,8 +12,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CAD = ROOT / "cad" / "hr-v0"
 OUT = CAD / "generated" / "assembly"
-REVISION = "HR-V0-MECH-P0.5"
-ARM_REVISION = "HR-V0-ARM-ARCH-P0.6"
+REVISION = "HR-V0-MECH-P0.6"
+ARM_REVISION = "HR-V0-ARM-ARCH-P0.7"
+STOP_REVISION = "HR-V0-HS-P0.3"
 WARNING = "PRELIMINARY - INTEGRATED CANDIDATE ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION"
 
 
@@ -67,12 +68,12 @@ def write_svg() -> None:
 <text x="720" y="480">Candidate soft/stop datums: 115/118 deg; neither is released.</text>
 <text x="720" y="535">Still required before quotation/fabrication:</text>
 <text x="750" y="580">received material, fit, fastener and FAI evidence</text>
-<text x="750" y="620">cables, guard, physical backed-up stop and overtravel proof</text>
+<text x="750" y="620">bumper selection, cables, guard and stop overtravel proof</text>
 <text x="750" y="660">physical proof and qualified mechanical disposition</text>
 <text x="720" y="710" class="warn">NO PART OR ASSEMBLY IS RELEASED.</text>
 <rect x="40" y="820" width="1310" height="120" rx="14" class="hold"/>
-<text x="70" y="865">Interactive candidate: generated/arm-architecture-p0.6/HR-V0_arm_architecture_candidate.glb</text>
-<text x="70" y="903">Controlled STEP, drawings and evidence registers: generated/arm-architecture-p0.6/</text>
+<text x="70" y="865">Interactive candidate: generated/arm-architecture-p0.7/HR-V0_arm_architecture_candidate.glb</text>
+<text x="70" y="903">Controlled STEP, drawings and stop evidence: generated/arm-architecture-p0.7/</text>
 <text x="40" y="975" class="warn">{REVISION} - {WARNING}</text>
 </svg>'''
     (OUT / "HR-V0_general-arrangement.svg").write_text(svg, encoding="utf-8", newline="\n")
@@ -84,18 +85,21 @@ def main() -> int:
         CAD / "mechanical-release-data.csv", CAD / "mechanical-interface-control.csv", CAD / "mechanical-assembly-components.csv",
         ROOT / "bom" / "hr-v0-extrusion-cut-schedule.csv", ROOT / "bom" / "hr-v0-frame-joint-schedule.csv",
         CAD / "frame-joint-placement-p0.2.csv", CAD / "generated" / "vendor-interfaces" / "same-origin-bounds.csv",
-        CAD / "generated" / "arm-architecture-p0.6" / "architecture-summary.json",
-        CAD / "generated" / "arm-architecture-p0.6" / "interface-schedule.csv",
-        CAD / "generated" / "arm-architecture-p0.6" / "transform-schedule.csv",
-        CAD / "generated" / "arm-architecture-p0.6" / "continuous-clearance-analysis.json",
-        CAD / "generated" / "arm-architecture-p0.6" / "hard-stop-allocation.csv",
+        CAD / "generated" / "arm-architecture-p0.7" / "architecture-summary.json",
+        CAD / "generated" / "arm-architecture-p0.7" / "interface-schedule.csv",
+        CAD / "generated" / "arm-architecture-p0.7" / "transform-schedule.csv",
+        CAD / "generated" / "arm-architecture-p0.7" / "continuous-clearance-analysis.json",
+        CAD / "generated" / "arm-architecture-p0.7" / "hard-stop-allocation.csv",
+        CAD / "generated" / "arm-architecture-p0.7" / "j2-positive-stop-analysis.json",
+        CAD / "generated" / "arm-architecture-p0.7" / "j2-positive-stop-controls.csv",
     ]
-    data, interfaces, components, extrusions, frame_joints, placements, vendor_rows, arm_summary_rows, arm_interfaces, arm_transforms, continuous_analysis, stop_allocation = [read_csv(path) if path.suffix == ".csv" else json.loads(path.read_text(encoding="utf-8")) for path in paths]
+    data, interfaces, components, extrusions, frame_joints, placements, vendor_rows, arm_summary_rows, arm_interfaces, arm_transforms, continuous_analysis, stop_allocation, positive_stop, stop_controls = [read_csv(path) if path.suffix == ".csv" else json.loads(path.read_text(encoding="utf-8")) for path in paths]
     datums = write_datums(); write_svg()
     summary = {
         "revision": REVISION, "warning": WARNING,
         "source_hashes": {path.relative_to(ROOT).as_posix(): canonical_text_sha256(path) for path in paths},
         "arm_revision": ARM_REVISION,
+        "stop_revision": STOP_REVISION,
         "counts": {"controlled_parameters": len(data), "interfaces": len(interfaces), "assembly_components": len(components), "extrusion_cut_rows": len(extrusions), "frame_joint_rows": len(frame_joints), "frame_joint_placements": len(placements), "vendor_interface_sources": len(vendor_rows), "datums": len(datums)},
         "parameter_status_counts": dict(sorted(Counter(row["status"] for row in data).items())),
         "interface_status_counts": dict(sorted(Counter(row["current_status"] for row in interfaces).items())),
@@ -108,10 +112,13 @@ def main() -> int:
         "candidate_j2_soft_limit_deg": float(stop_allocation[0]["candidate_software_limit_deg"]),
         "candidate_j2_positive_hard_stop_datum_deg": float(stop_allocation[0]["candidate_backed_up_hard_stop_datum_deg"]),
         "candidate_j2_physical_uncertainty_budget_deg": float(stop_allocation[0]["candidate_physical_uncertainty_budget_deg"]),
-        "superseded": ["HR-V0-MECH-P0.4", "HR-V0-MECH-P0.2 arm datum chain", "MV0-001", "MV0-002", "MV0-003", "HR-V0-ARM-ARCH-P0.5", "HR-V0-ARM-ARCH-P0.4", "HR-V0-FAB-RFI-P0.1"],
+        "candidate_j2_positive_stop_nominal_contact_deg": positive_stop["nominal_metal_contact_deg"],
+        "candidate_j2_stop_control_count": len(stop_controls),
+        "candidate_j2_bumper_selection_state": "SELECTION REQUIRED - NO ORDER CODE RELEASED",
+        "superseded": ["HR-V0-MECH-P0.5", "HR-V0-MECH-P0.4", "HR-V0-MECH-P0.2 arm datum chain", "MV0-001", "MV0-002", "MV0-003", "HR-V0-ARM-ARCH-P0.6", "HR-V0-ARM-ARCH-P0.5", "HR-V0-ARM-ARCH-P0.4", "HR-V0-HS-P0.2", "HR-V0-FAB-RFI-P0.1"],
     }
     (OUT / "mechanical-release-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8", newline="\n")
-    print(f"Generated {REVISION}: integrated A00-A07 candidate; continuous nominal contact 121.643289 deg; candidate J2 soft/stop 115/118 deg; no fabrication or energization release")
+    print(f"Generated {REVISION}: integrated A00-A07 plus positive-stop CAD candidate; continuous nominal contact 121.643289 deg; candidate J2 soft/stop 115/118 deg; no fabrication or energization release")
     print(WARNING)
     return 0
 

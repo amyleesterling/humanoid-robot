@@ -1,4 +1,4 @@
-"""Preserve historical R57 sourcing evidence after migration to R66."""
+"""Preserve historical R57 sourcing evidence after migration to R69."""
 
 from __future__ import annotations
 
@@ -29,10 +29,12 @@ def main() -> int:
     forms = read_csv(FORM)
 
     for required in (
-        "HR-V0-ARM-ARCH-P0.6",
-        "three `MV0-C01`",
+        "HR-V0-ARM-ARCH-P0.7",
+        "one `MV0-C01`",
         "one H104-specific `MV0-C04`",
         "one `MV0-C05`",
+        "one `MV0-C06`",
+        "one `MV0-C07`",
         "Artisans Asylum",
         "no current profile-only upload artifact exists",
         "100 g foam-object payload",
@@ -86,7 +88,7 @@ def main() -> int:
         return 1
 
     print("HR-V0 historical R57 sourcing evidence preserved: 8 held routes; 7 unexecuted inquiry rows")
-    print("Current sourcing migrated to R66; no supplier selection, upload artifact, first article, or fabrication release is active")
+    print("Current sourcing migrated to R69; no supplier selection, upload artifact, first article, or fabrication release is active")
     print(WARNING)
     return 0
 

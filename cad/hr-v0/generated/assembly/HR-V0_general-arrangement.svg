@@ -2,7 +2,7 @@
 <style>text{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}.title{font-size:36px;font-weight:700}.sub{font-size:23px;font-weight:700}.small{font-size:16px}.warn{font-size:20px;font-weight:700;fill:#8a3b00}.structure{fill:#66c7f4;stroke:#0b4f8a;stroke-width:3}.hold{fill:#fff4cd;stroke:#f3b61f;stroke-width:4}.datum{stroke:#0b4f8a;stroke-width:2;stroke-dasharray:8 6}</style>
 <rect width="1400" height="1000" fill="#f7fbff"/>
 <text x="40" y="58" class="title">Project Button HR-V0 mechanical coordination</text>
-<text x="40" y="98" class="warn">HR-V0-MECH-P0.5 - PRELIMINARY - INTEGRATED CANDIDATE ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
+<text x="40" y="98" class="warn">HR-V0-MECH-P0.6 - PRELIMINARY - INTEGRATED CANDIDATE ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
 <text x="40" y="150" class="sub">Integrated base, column and two-axis arm candidate</text>
 <rect x="80" y="545" width="500" height="40" class="structure"/>
 <rect x="80" y="505" width="40" height="40" class="structure"/><rect x="540" y="505" width="40" height="40" class="structure"/>
@@ -22,11 +22,11 @@
 <text x="720" y="480">Candidate soft/stop datums: 115/118 deg; neither is released.</text>
 <text x="720" y="535">Still required before quotation/fabrication:</text>
 <text x="750" y="580">received material, fit, fastener and FAI evidence</text>
-<text x="750" y="620">cables, guard, physical backed-up stop and overtravel proof</text>
+<text x="750" y="620">bumper selection, cables, guard and stop overtravel proof</text>
 <text x="750" y="660">physical proof and qualified mechanical disposition</text>
 <text x="720" y="710" class="warn">NO PART OR ASSEMBLY IS RELEASED.</text>
 <rect x="40" y="820" width="1310" height="120" rx="14" class="hold"/>
-<text x="70" y="865">Interactive candidate: generated/arm-architecture-p0.6/HR-V0_arm_architecture_candidate.glb</text>
-<text x="70" y="903">Controlled STEP, drawings and evidence registers: generated/arm-architecture-p0.6/</text>
-<text x="40" y="975" class="warn">HR-V0-MECH-P0.5 - PRELIMINARY - INTEGRATED CANDIDATE ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
+<text x="70" y="865">Interactive candidate: generated/arm-architecture-p0.7/HR-V0_arm_architecture_candidate.glb</text>
+<text x="70" y="903">Controlled STEP, drawings and stop evidence: generated/arm-architecture-p0.7/</text>
+<text x="40" y="975" class="warn">HR-V0-MECH-P0.6 - PRELIMINARY - INTEGRATED CANDIDATE ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
 </svg>

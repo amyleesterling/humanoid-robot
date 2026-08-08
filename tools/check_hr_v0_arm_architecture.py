@@ -12,13 +12,15 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "cad" / "hr-v0" / "generated" / "arm-architecture-p0.6"
+OUT = ROOT / "cad" / "hr-v0" / "generated" / "arm-architecture-p0.7"
 ARM_SOURCE_REGISTER = ROOT / "cad" / "vendor" / "arm-interface-source-register.csv"
-REVISION = "HR-V0-ARM-ARCH-P0.6"
+REVISION = "HR-V0-ARM-ARCH-P0.7"
 EXPECTED_FILES = {
     "HR-V0_arm_architecture_candidate.glb",
     "HR-V0_arm_architecture_candidate.step",
     "HR-V0_arm_architecture_candidate.svg",
+    "HR-V0_J2_positive_stop_contact_candidate.glb",
+    "HR-V0_J2_positive_stop_contact_candidate.step",
     "architecture-summary.json",
     "adapter-drawing-controls.csv",
     "adapter-proof-analysis.csv",
@@ -31,10 +33,17 @@ EXPECTED_FILES = {
     "hard-stop-allocation.csv",
     "interface-feature-evidence.csv",
     "interface-schedule.csv",
+    "j2-positive-stop-analysis.json",
+    "j2-positive-stop-controls.csv",
+    "j2-positive-stop-load-screen.csv",
+    "j2-positive-stop-sweep.csv",
+    "j2-positive-stop-tolerance-screen.csv",
     "joint-load-screen.csv",
     "MV0-C01_adapter-candidate-drawing.svg",
     "MV0-C04_gripper-adapter-candidate-drawing.svg",
     "MV0-C05_shoulder-support-candidate-drawing.svg",
+    "MV0-C06_J2-positive-moving-striker-drawing.svg",
+    "MV0-C07_J2-positive-fixed-catch-drawing.svg",
     "new-interface-drawing-controls.csv",
     "tool-access-screen.csv",
     "transform-schedule.csv",
@@ -48,6 +57,10 @@ EXPECTED_PARTS = {
     "MV0-C04_H104_to_20-2040_countersunk_adapter.step",
     "MV0-C05_S102_to_40-4040_side_slot_support.step",
     "MV0-C05_shoulder-support-finished-profile.dxf",
+    "MV0-C06_J2-positive-moving-striker-profile.dxf",
+    "MV0-C06_J2_positive_moving_striker_adapter.step",
+    "MV0-C07_J2-positive-fixed-catch-profile.dxf",
+    "MV0-C07_J2_positive_fixed_catch_adapter.step",
 }
 
 
@@ -104,6 +117,9 @@ def main() -> int:
         countersink = geometry.get("m5_countersink", {})
         if countersink.get("finished_diameter_range") != [11.3, 11.4] or countersink.get("maximum_depth_screen") != 3.1:
             errors.append("M5 countersink fabrication envelope changed")
+        positive_stop_geometry = geometry.get("j2_positive_stop", {})
+        if positive_stop_geometry.get("revision") != "HR-V0-J2-STOP-P0.1" or positive_stop_geometry.get("moving_part") != "MV0-C06" or positive_stop_geometry.get("fixed_part") != "MV0-C07" or positive_stop_geometry.get("target_metal_contact_deg") != 118.0 or positive_stop_geometry.get("maximum_bumper_protrusion_mm") != 0.75 or "PHYSICAL VALIDATION OPEN" not in positive_stop_geometry.get("status", ""):
+            errors.append("J2 positive-stop candidate geometry boundary changed")
 
         registration = summary.get("actuator_axis_registration", {})
         if registration.get("matrix_3x3") != [[0, 0, -1], [1, 0, 0], [0, -1, 0]] or registration.get("joint_output_axis") != [-1, 0, 0]:
@@ -132,14 +148,18 @@ def main() -> int:
                 errors.append(f"80/20 source hash mismatch: {filename}")
 
         loads = summary.get("mass_and_load_screen", {})
-        if loads.get("allocated_shoulder_gravity_nm") != 1.858 or loads.get("allocated_elbow_gravity_nm") != 0.498:
+        if loads.get("allocated_shoulder_gravity_nm") != 2.018 or loads.get("allocated_elbow_gravity_nm") != 0.515:
             errors.append("candidate gravity screen changed")
+        if loads.get("j2_moving_striker_adapter_candidate_mass_g") != 70.265 or loads.get("j2_fixed_catch_adapter_candidate_mass_g") != 66.87 or loads.get("upper_member_c01_c07_mass_g") != 190.289 or loads.get("forearm_member_c06_c04_mass_g") != 155.469:
+            errors.append("current C06/C07 link-mass screen changed")
+        if "frames, fasteners, cables and final gripper mechanism remain incomplete" not in loads.get("status", ""):
+            errors.append("mass/load screen lost its incomplete-input boundary")
         if len(summary.get("open_release_items", [])) < 9:
             errors.append("open release-item list is incomplete")
 
         transforms = rows(OUT / "transform-schedule.csv")
-        if len(transforms) != 8:
-            errors.append("expected eight integrated transform records")
+        if len(transforms) != 10:
+            errors.append("expected ten integrated transform records including C06/C07")
         j1 = next((row for row in transforms if row["item"] == "J1 XM540 body and S102"), {})
         if j1.get("rx_deg") != "90":
             errors.append("J1 fixed package roll changed")
@@ -154,7 +174,7 @@ def main() -> int:
             errors.append("J1-to-base candidate transform changed")
 
         interfaces = rows(OUT / "interface-schedule.csv")
-        if len(interfaces) != 8 or [row.get("interface") for row in interfaces] != ["A00", "A01", "A02", "A03", "A04", "A05", "A06", "A07"] or not any("17-8520 + 13035" in row["fasteners"] for row in interfaces) or not any("SHKL-M5-20-A2-R360 EXACT CANDIDATE HOLD" in row["fasteners"] for row in interfaces) or not any("SCB2.5-20 + ACCU HNN-M2.5-A2 EXACT CANDIDATE HOLD" in row["fasteners"] for row in interfaces):
+        if len(interfaces) != 9 or [row.get("interface") for row in interfaces] != ["A00", "A01", "A02", "A03", "A04", "A05", "A06", "A07", "HS-J2-POS"] or not any("17-8520 + 13035" in row["fasteners"] for row in interfaces) or not any("SHKL-M5-20-A2-R360 EXACT CANDIDATE HOLD" in row["fasteners"] for row in interfaces) or not any("SCB2.5-20 + ACCU HNN-M2.5-A2 EXACT CANDIDATE HOLD" in row["fasteners"] for row in interfaces):
             errors.append("interface schedule lost its candidate/selection boundary")
         if any(not any(token in row["status"] for token in ("not_released", "candidate", "open", "static_proof_only")) for row in interfaces):
             errors.append("interface status is not fail-closed")
@@ -225,31 +245,53 @@ def main() -> int:
         continuous = json.loads((OUT / "continuous-clearance-analysis.json").read_text(encoding="utf-8"))
         if continuous.get("revision") != REVISION or continuous.get("joint_domain_deg") != {"j1": [-20.0, 70.0], "j2": [15.0, 120.0]}:
             errors.append("continuous-clearance domain or revision changed")
-        if continuous.get("pair_count") != 70 or continuous.get("required_certified_clearance_mm") != 0.75 or continuous.get("minimum_guaranteed_clearance_mm", 0.0) < 0.75:
+        if continuous.get("pair_count") != 69 or continuous.get("required_certified_clearance_mm") != 0.75 or continuous.get("minimum_guaranteed_clearance_mm", 0.0) < 0.75:
             errors.append("continuous-clearance coverage or certified floor changed")
+        if "UPPER_DIST_ADAPTER:FORE_PROX_ADAPTER" not in continuous.get("intentional_interfaces_excluded", []):
+            errors.append("intentional J2 stop pair is not explicit in the continuous-clearance boundary")
         if continuous.get("critical_pair") != "UPPER_FORE:J2_BODY:FORE_PROX_ADAPTER" or continuous.get("critical_pair_exact_clearance_at_j2_120_mm") != 0.962813 or continuous.get("continuous_first_contact_j2_deg_numeric") != 121.643289:
             errors.append("continuous critical-pair evidence changed")
         continuous_summary = rows(OUT / "continuous-clearance-summary.csv")
-        if len(continuous_summary) != 70 or len({row.get("pair_id") for row in continuous_summary}) != 70:
+        if len(continuous_summary) != 69 or len({row.get("pair_id") for row in continuous_summary}) != 69:
             errors.append("continuous-clearance pair register is incomplete")
         group_counts = {
             prefix: sum(row.get("pair_id", "").startswith(prefix) for row in continuous_summary)
             for prefix in ("BASE_UPPER:", "UPPER_FORE:", "BASE_FORE:")
         }
-        if group_counts != {"BASE_UPPER:": 22, "UPPER_FORE:": 28, "BASE_FORE:": 20} or any(float(row.get("minimum_guaranteed_clearance_mm", "0")) < 0.75 for row in continuous_summary):
+        if group_counts != {"BASE_UPPER:": 22, "UPPER_FORE:": 27, "BASE_FORE:": 20} or any(float(row.get("minimum_guaranteed_clearance_mm", "0")) < 0.75 for row in continuous_summary):
             errors.append("continuous-clearance pair groups or lower bounds changed")
         continuous_cells = rows(OUT / "continuous-clearance-cells.csv")
         if len(continuous_cells) != continuous.get("certified_leaf_cell_count") or any(float(row.get("guaranteed_clearance_mm", "0")) < 0.75 for row in continuous_cells):
             errors.append("continuous-clearance interval certificate changed")
         allocation = rows(OUT / "hard-stop-allocation.csv")
-        if len(allocation) != 1 or allocation[0].get("candidate_software_limit_deg") != "115.000000" or allocation[0].get("candidate_backed_up_hard_stop_datum_deg") != "118.000000" or allocation[0].get("continuous_nominal_first_contact_deg") != "121.643289" or allocation[0].get("candidate_physical_uncertainty_budget_deg") != "2.643289" or "PHYSICAL STOP DESIGN" not in allocation[0].get("status", ""):
+        if len(allocation) != 1 or allocation[0].get("candidate_software_limit_deg") != "115.000000" or allocation[0].get("candidate_backed_up_hard_stop_datum_deg") != "118.000000" or allocation[0].get("continuous_nominal_first_contact_deg") != "121.643289" or allocation[0].get("candidate_physical_uncertainty_budget_deg") != "2.643289" or "POSITIVE METAL STOP CAD CANDIDATE" not in allocation[0].get("status", "") or "PHYSICAL VALIDATION" not in allocation[0].get("status", ""):
             errors.append("candidate hard-stop allocation changed or was promoted")
+
+        stop = json.loads((OUT / "j2-positive-stop-analysis.json").read_text(encoding="utf-8"))
+        if stop.get("revision") != "HR-V0-J2-STOP-P0.1" or stop.get("parent_arm_revision") != REVISION or stop.get("target_metal_contact_deg") != 118.0 or abs(stop.get("nominal_metal_contact_deg", 0.0) - 118.0) > 0.002:
+            errors.append("positive-stop target/contact analysis changed")
+        if stop.get("metal_clearance_at_software_limit_mm", 0.0) <= 1.0 or stop.get("maximum_bumper_envelope_clearance_at_software_limit_mm", 0.0) <= 0.25 or not (115.0 < stop.get("maximum_bumper_envelope_first_contact_deg", 0.0) < 118.0):
+            errors.append("positive-stop or maximum bumper envelope intrudes at the software limit")
+        if stop.get("nominal_body_clearance_at_metal_contact_mm", 0.0) <= 2.0 or "PHYSICAL TEST" not in stop.get("status", ""):
+            errors.append("positive-stop body clearance or physical-test hold changed")
+        stop_sweep = rows(OUT / "j2-positive-stop-sweep.csv")
+        if len(stop_sweep) != 61 or stop_sweep[0].get("classification") != "SOFT_LIMIT" or stop_sweep[-1].get("classification") != "METAL_CONTACT_TARGET" or any("PHYSICAL VALIDATION REQUIRED" not in row.get("status", "") for row in stop_sweep):
+            errors.append("positive-stop approach sweep changed")
+        stop_tolerances = rows(OUT / "j2-positive-stop-tolerance-screen.csv")
+        if len(stop_tolerances) != 5 or [row.get("case") for row in stop_tolerances] != ["STRIKER_TOP_LOW", "NOMINAL", "STRIKER_TOP_HIGH", "CATCH_FACE_SHALLOW", "CATCH_FACE_DEEP"] or max(abs(float(row["delta_from_118_deg"])) for row in stop_tolerances) > 0.16:
+            errors.append("positive-stop sensitivity screen changed")
+        stop_loads = rows(OUT / "j2-positive-stop-load-screen.csv")
+        if len(stop_loads) != 3 or [row.get("case") for row in stop_loads] != ["R69_PROOF_SCREEN", "RAW800_IDEAL_STALL_LINE", "PUBLISHED_12V_MOMENTARY_STALL_ENDPOINT"] or any("NOT AN ALLOWABLE OR RELEASE" not in row.get("status", "") for row in stop_loads):
+            errors.append("positive-stop load screen changed or was promoted")
+        stop_controls = rows(OUT / "j2-positive-stop-controls.csv")
+        if len(stop_controls) != 6 or [row.get("control_id") for row in stop_controls] != [f"STOP-{index:03d}" for index in range(1, 7)] or stop_controls[-1].get("status") != "SELECTION REQUIRED - NO ORDER CODE RELEASED":
+            errors.append("positive-stop drawing controls or bumper selection boundary changed")
 
         try:
             architecture_svg = OUT / "HR-V0_arm_architecture_candidate.svg"
             root = ET.parse(architecture_svg).getroot()
             text = " ".join(node.text or "" for node in root.iter() if node.tag.endswith("text"))
-            for token in (REVISION, "NOT RELEASED", "J1-J2 = 202.5500 mm", "R67 continuous-clearance and J2-allocation correction", "A00 closes candidate column/J1 geometry", "Continuous nominal clearance certified", "Candidate soft/stop: 115/118 deg", "Do not fabricate"):
+            for token in (REVISION, "NOT RELEASED", "J1-J2 = 202.5500 mm", "R69 integrated positive-metal J2 stop candidate", "A00 closes candidate column/J1 geometry", "Continuous nominal body clearance certified", "Twin-rail metal stop target", "Do not fabricate"):
                 if token not in text:
                     errors.append(f"readable view omits {token}")
             style = " ".join(node.text or "" for node in root.iter() if node.tag.endswith("style"))
@@ -272,6 +314,8 @@ def main() -> int:
         for filename, tokens in (
             ("MV0-C04_gripper-adapter-candidate-drawing.svg", (REVISION, "H104-to-20-2040", "FR12-H104K STEP", "DO NOT FABRICATE")),
             ("MV0-C05_shoulder-support-candidate-drawing.svg", (REVISION, "S102-to-40-4040", "17-8520 plus 13035", "DO NOT FABRICATE")),
+            ("MV0-C06_J2-positive-moving-striker-drawing.svg", (REVISION, "HR-V0-J2-STOP-P0.1", "moving striker", "SELECTION REQUIRED", "DO NOT QUOTE, FABRICATE")),
+            ("MV0-C07_J2-positive-fixed-catch-drawing.svg", (REVISION, "HR-V0-J2-STOP-P0.1", "fixed catch", "SELECTION REQUIRED", "DO NOT QUOTE, FABRICATE")),
         ):
             try:
                 interface_root = ET.parse(OUT / filename).getroot()
@@ -296,11 +340,20 @@ def main() -> int:
         for token in ("FINISHED_PROFILE", "M2_5_CLEARANCE", "M8_CLEARANCE"):
             if token not in support_dxf:
                 errors.append(f"shoulder support DXF omits layer {token}")
+        for filename in ("MV0-C06_J2-positive-moving-striker-profile.dxf", "MV0-C07_J2-positive-fixed-catch-profile.dxf"):
+            stop_dxf = (OUT / "parts" / filename).read_text(encoding="ascii")
+            for token in ("FINISHED_PROFILE_BEFORE_R2_FILLETS", "M2_5_CLEARANCE", "M5_CLEARANCE", "M5_COUNTERSINK_NOMINAL"):
+                if token not in stop_dxf:
+                    errors.append(f"{filename} omits layer {token}")
+        if "FACE_MILL_RECESS_BOUNDARY" not in (OUT / "parts" / "MV0-C07_J2-positive-fixed-catch-profile.dxf").read_text(encoding="ascii"):
+            errors.append("fixed-catch DXF omits its recessed contact-face boundary")
 
         if (OUT / "HR-V0_arm_architecture_candidate.step").stat().st_size < 1_000_000:
             errors.append("combined exact-source STEP is unexpectedly small")
         if (OUT / "HR-V0_arm_architecture_candidate.glb").stat().st_size < 100_000:
             errors.append("interactive GLB is unexpectedly small")
+        if (OUT / "HR-V0_J2_positive_stop_contact_candidate.step").stat().st_size < 20_000 or (OUT / "HR-V0_J2_positive_stop_contact_candidate.glb").stat().st_size < 5_000:
+            errors.append("dedicated positive-stop contact model is unexpectedly small")
 
     if errors:
         print("HR-V0 arm architecture validation: FAIL", file=sys.stderr)
@@ -308,7 +361,7 @@ def main() -> int:
             print(f"- {error}", file=sys.stderr)
         return 1
     print("HR-V0 arm architecture validation: PASS")
-    print("Integrated A00-A07 candidate geometry; exact U.S.-orderable candidates on hold; 40,001-pose two-axis collision screen; fail-closed proof boundary")
+    print("Integrated A00-A07 plus J2 positive-stop candidate; 69-pair continuous certificate; 40,001-pose two-axis collision screen; fail-closed proof boundary")
     print("PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION")
     return 0
 

@@ -33,7 +33,7 @@ END = {"J1": 5.0, "J2": 35.0, "GRIPPER": 42.0}
 
 def config() -> SupervisorConfig:
     return SupervisorConfig(
-        configuration_id="HR-V0-SUP-P0.2",
+        configuration_id="HR-V0-SUP-P0.3",
         configuration_hash="A" * 64,
         maximum_command_age_ms=100,
         maximum_tcp_speed_m_s=0.15,
@@ -44,10 +44,10 @@ def config() -> SupervisorConfig:
         joints=JOINTS,
         kinematic_model_hash="B" * 64,
         mechanical_limit_binding={
-            "limit_set_id": "HR-V0-LIMITS-P0.1",
-            "mechanical_revision": "HR-V0-MECH-P0.5",
-            "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.6",
-            "hard_stop_revision": "HR-V0-HS-P0.2",
+            "limit_set_id": "HR-V0-LIMITS-P0.2",
+            "mechanical_revision": "HR-V0-MECH-P0.6",
+            "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.7",
+            "hard_stop_revision": "HR-V0-HS-P0.3",
             "release_state": "ACCEPTED-FOR-GUARDED-HIL",
             "acceptance_evidence_hash": "C" * 64,
         },

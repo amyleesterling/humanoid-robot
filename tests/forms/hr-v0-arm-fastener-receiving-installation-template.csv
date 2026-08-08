@@ -1,4 +1,4 @@
 record_id,date_utc,configuration_commit,arm_revision,article_id,interface,manufacturer_order_code,received_marking,quantity,certificate_reference,measured_length_mm,measured_head_or_nut_mm,thread_gauge_result,received_locking_feature,installation_lubrication,developed_torque_nm,prevailing_torque_nm,reuse_rule,witness_mark,proof_load,post_proof_condition,nonconformance,qualified_disposition,status,warning
-NOT-EXECUTED-M5,,,HR-V0-ARM-ARCH-P0.6,,adapter_to_20-2040,SHKL-M5-20-A2-R360,,,,,,,,,,,,,,,,,NOT EXECUTED,PRELIMINARY-NOT APPROVED FOR FABRICATION OR ENERGIZATION
-NOT-EXECUTED-M2.5-SCREW,,,HR-V0-ARM-ARCH-P0.6,,robotis_frame_to_adapter,SCB2.5-20,,,,,,,,,,,,,,,,,NOT EXECUTED,PRELIMINARY-NOT APPROVED FOR FABRICATION OR ENERGIZATION
-NOT-EXECUTED-M2.5-NUT,,,HR-V0-ARM-ARCH-P0.6,,robotis_frame_to_adapter,HNN-M2.5-A2,,,,,,,,,,,,,,,,,NOT EXECUTED,PRELIMINARY-NOT APPROVED FOR FABRICATION OR ENERGIZATION
+NOT-EXECUTED-M5,,,HR-V0-ARM-ARCH-P0.7,,adapter_to_20-2040,SHKL-M5-20-A2-R360,,,,,,,,,,,,,,,,,NOT EXECUTED,PRELIMINARY-NOT APPROVED FOR FABRICATION OR ENERGIZATION
+NOT-EXECUTED-M2.5-SCREW,,,HR-V0-ARM-ARCH-P0.7,,robotis_frame_to_adapter,SCB2.5-20,,,,,,,,,,,,,,,,,NOT EXECUTED,PRELIMINARY-NOT APPROVED FOR FABRICATION OR ENERGIZATION
+NOT-EXECUTED-M2.5-NUT,,,HR-V0-ARM-ARCH-P0.7,,robotis_frame_to_adapter,HNN-M2.5-A2,,,,,,,,,,,,,,,,,NOT EXECUTED,PRELIMINARY-NOT APPROVED FOR FABRICATION OR ENERGIZATION

@@ -1,7 +1,7 @@
 datum_id,description,x_mm,y_mm,z_mm,status
 A0,bench plane and base-plan origin,0,0,0,candidate base datum
 C0,candidate column centerline,-210,0,0,candidate base datum
-J1,candidate shoulder rotation axis,-210,81.025,500,integrated candidate from HR-V0-ARM-ARCH-P0.6; physical inspection and release open
-J2,candidate elbow rotation axis in straight reference,-210,283.575,500,integrated candidate from HR-V0-ARM-ARCH-P0.6; physical inspection and release open
-G1,candidate H104 gripper-frame datum in straight reference,-210,412.625,500,integrated candidate from HR-V0-ARM-ARCH-P0.6; received fit and release open
+J1,candidate shoulder rotation axis,-210,81.025,500,integrated candidate from HR-V0-ARM-ARCH-P0.7; physical inspection and release open
+J2,candidate elbow rotation axis in straight reference,-210,283.575,500,integrated candidate from HR-V0-ARM-ARCH-P0.7; physical inspection and release open
+G1,candidate H104 gripper-frame datum in straight reference,-210,412.625,500,integrated candidate from HR-V0-ARM-ARCH-P0.7; received fit and release open
 OMAX,maximum object-center reach requirement boundary in straight reference,-210,441.025,500,controlled 360 mm J1-relative limit; actual TCP must remain at or inside after received assembly

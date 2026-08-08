@@ -1,14 +1,18 @@
 record_id,date,inspector,repo_commit,mass_id,component,part_or_order_code,serial_or_lot,scale_id,calibration_reference,tare_method,measured_mass_g,measurement_uncertainty_g,local_com_x_mm,local_com_y_mm,local_com_z_mm,inertia_method,inertia_xx_kg_m2,inertia_yy_kg_m2,inertia_zz_kg_m2,photo_reference,raw_data_reference,disposition,notes
-NOT-EXECUTED,,,,V0M-001,MV0-001 upper link plate,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
-NOT-EXECUTED,,,,V0M-002,J1 FR13-H101K moving output frame and idler hardware,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
-NOT-EXECUTED,,,,V0M-003,Upper-link fasteners cable guide and moving harness share,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
-NOT-EXECUTED,,,,V0M-004,J2 XM540-W270-T actuator,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
-NOT-EXECUTED,,,,V0M-005,J2 FR13-S102K body frame,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
-NOT-EXECUTED,,,,V0M-006,J2 body-frame fasteners cable guide hard-stop hardware and harness share,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
-NOT-EXECUTED,,,,V0M-007,MV0-002 forearm plate,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
-NOT-EXECUTED,,,,V0M-008,J2 FR13-H101K moving output frame and idler hardware,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
-NOT-EXECUTED,,,,V0M-009,Forearm fasteners cable guide and moving harness share,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
-NOT-EXECUTED,,,,V0M-010,XM430-W350-T gripper actuator,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
-NOT-EXECUTED,,,,V0M-011,Parallel gripper mechanism pads guard and retention,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
-NOT-EXECUTED,,,,V0M-012,Gripper fasteners connector cable and moving harness share,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
-NOT-EXECUTED,,,,V0M-013,Maximum permitted soft foam payload,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-001,MV0-C01 upper proximal adapter,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-002,20-2040 upper member 100 mm,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-003,MV0-C07 fixed positive-stop catch adapter,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-004,J1 FR13-H101K moving output frame and idler hardware,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-005,Upper-link fasteners bumper cable guide and moving harness share,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-006,J2 XM540-W270-T actuator,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-007,J2 FR13-S102K body frame,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-008,J2 body-frame fasteners cable guide and harness share,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-009,MV0-C06 moving positive-stop striker adapter,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-010,20-2040 forearm member 50 mm,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-011,MV0-C04 H104 distal adapter,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-012,J2 FR13-H101K moving output frame and idler hardware,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-013,Forearm fasteners cable guide and moving harness share,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-014,XM430-W350-T gripper actuator,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-015,Parallel gripper mechanism pads guard and retention,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-016,Gripper fasteners connector cable and moving harness share,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,V0M-017,Maximum permitted soft foam payload,,,,,,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW

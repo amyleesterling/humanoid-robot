@@ -1,4 +1,4 @@
-"""Generate the integrated exact-coordinate HR-V0 arm candidate for R67.
+"""Generate the integrated exact-coordinate HR-V0 arm candidate for R69.
 
 The exported geometry is a feasibility/configuration candidate.  It is not a
 fabrication release.  Purchased 80/20 stock remains a conservative 20 x 40 mm
@@ -26,8 +26,8 @@ from OCP.gp import gp_Trsf
 ROOT = Path(__file__).resolve().parents[1]
 VENDOR = ROOT / "cad" / "vendor" / "robotis"
 VENDOR_8020 = ROOT / "cad" / "vendor" / "8020"
-OUT = ROOT / "cad" / "hr-v0" / "generated" / "arm-architecture-p0.6"
-REVISION = "HR-V0-ARM-ARCH-P0.6"
+OUT = ROOT / "cad" / "hr-v0" / "generated" / "arm-architecture-p0.7"
+REVISION = "HR-V0-ARM-ARCH-P0.7"
 WARNING = "PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION"
 
 PLATE_T = 9.525
@@ -59,6 +59,19 @@ CONTINUOUS_ANALYSIS_J2_MAX_DEG = 120.0
 PROVISIONAL_J2_SOFT_LIMIT_DEG = 115.0
 CANDIDATE_J2_POSITIVE_HARD_STOP_DEG = 118.0
 CANDIDATE_CONTACT_GUARD_DEG = 1.0
+STOP_REVISION = "HR-V0-J2-STOP-P0.1"
+STOP_STRIKER_TOP_Z_MM = 37.380699
+STOP_STRIKER_OUTER_X_MM = 41.0
+STOP_STRIKER_INNER_X_MM = 35.0
+STOP_CATCH_OUTER_X_MM = 42.0
+STOP_CATCH_INNER_X_MM = 34.0
+STOP_WING_INNER_X_MM = 24.0
+STOP_WING_TOP_Z_MM = -10.0
+STOP_CATCH_TOP_Z_MM = 22.0
+STOP_CATCH_FACE_RECESS_MM = 1.0
+STOP_PROFILE_FILLET_MM = 2.0
+STOP_BUMPER_MAX_PROTRUSION_MM = 0.75
+STOP_STRIKER_HEIGHT_TOLERANCE_MM = 0.025
 CONTINUOUS_CERTIFIED_CLEARANCE_MM = 0.75
 CONTINUOUS_NUMERIC_TOLERANCE_MM = 1e-6
 CONTINUOUS_MIN_CELL_DEG = 1e-5
@@ -143,6 +156,119 @@ def adapter(y0: float) -> cq.Shape:
         )
         solid = solid.cut(countersink)
     return solid
+
+
+def _profile_plate(points: list[tuple[float, float]], y0: float, thickness: float = PLATE_T) -> cq.Shape:
+    """Extrude a filleted X-Z profile into the project +Y plate thickness."""
+
+    work = (
+        cq.Workplane("XZ")
+        .polyline(points)
+        .close()
+        .extrude(thickness)
+        .edges("|Y")
+        .fillet(STOP_PROFILE_FILLET_MM)
+    )
+    return work.val().translate((0.0, y0 + thickness, 0.0))
+
+
+def _cut_standard_adapter_features(solid: cq.Shape, y0: float) -> cq.Shape:
+    for x in (-16.0, 16.0):
+        for z in (-8.0, 8.0):
+            solid = solid.cut(
+                cq.Solid.makeCylinder(
+                    FRAME_HOLE_D / 2.0,
+                    PLATE_T,
+                    cq.Vector(x, y0, z),
+                    cq.Vector(0, 1, 0),
+                )
+            )
+    for z in (-10.0, 10.0):
+        solid = solid.cut(
+            cq.Solid.makeCylinder(
+                END_HOLE_D / 2.0,
+                PLATE_T,
+                cq.Vector(0, y0, z),
+                cq.Vector(0, 1, 0),
+            )
+        )
+        solid = solid.cut(
+            cq.Solid.makeCone(
+                END_CSK_D / 2.0,
+                END_HOLE_D / 2.0,
+                END_CSK_DEPTH,
+                cq.Vector(0, y0, z),
+                cq.Vector(0, 1, 0),
+            )
+        )
+    return solid
+
+
+def j2_positive_catch_adapter(y0: float, face_recess_mm: float = STOP_CATCH_FACE_RECESS_MM) -> cq.Shape:
+    """Fixed upper-link adapter with twin external positive-stop catch rails."""
+
+    points = [
+        (-STOP_CATCH_OUTER_X_MM, -20.0),
+        (STOP_CATCH_OUTER_X_MM, -20.0),
+        (STOP_CATCH_OUTER_X_MM, STOP_CATCH_TOP_Z_MM),
+        (STOP_CATCH_INNER_X_MM, STOP_CATCH_TOP_Z_MM),
+        (STOP_CATCH_INNER_X_MM, STOP_WING_TOP_Z_MM),
+        (STOP_WING_INNER_X_MM, STOP_WING_TOP_Z_MM),
+        (STOP_WING_INNER_X_MM, 20.0),
+        (-STOP_WING_INNER_X_MM, 20.0),
+        (-STOP_WING_INNER_X_MM, STOP_WING_TOP_Z_MM),
+        (-STOP_CATCH_INNER_X_MM, STOP_WING_TOP_Z_MM),
+        (-STOP_CATCH_INNER_X_MM, STOP_CATCH_TOP_Z_MM),
+        (-STOP_CATCH_OUTER_X_MM, STOP_CATCH_TOP_Z_MM),
+    ]
+    solid = _cut_standard_adapter_features(_profile_plate(points, y0), y0)
+    for x0 in (-STOP_CATCH_OUTER_X_MM, STOP_WING_INNER_X_MM - 0.5):
+        solid = solid.cut(
+            cq.Solid.makeBox(
+                STOP_CATCH_OUTER_X_MM - STOP_WING_INNER_X_MM + 0.5,
+                face_recess_mm,
+                STOP_CATCH_TOP_Z_MM + 20.0,
+                cq.Vector(x0, y0 + PLATE_T - face_recess_mm, -20.0),
+            )
+        )
+    return solid
+
+
+def j2_positive_striker_adapter(y0: float, top_z_mm: float = STOP_STRIKER_TOP_Z_MM) -> cq.Shape:
+    """Moving forearm adapter with twin external metal striker rails."""
+
+    points = [
+        (-STOP_STRIKER_OUTER_X_MM, -20.0),
+        (STOP_STRIKER_OUTER_X_MM, -20.0),
+        (STOP_STRIKER_OUTER_X_MM, top_z_mm),
+        (STOP_STRIKER_INNER_X_MM, top_z_mm),
+        (STOP_STRIKER_INNER_X_MM, STOP_WING_TOP_Z_MM),
+        (STOP_WING_INNER_X_MM, STOP_WING_TOP_Z_MM),
+        (STOP_WING_INNER_X_MM, 20.0),
+        (-STOP_WING_INNER_X_MM, 20.0),
+        (-STOP_WING_INNER_X_MM, STOP_WING_TOP_Z_MM),
+        (-STOP_STRIKER_INNER_X_MM, STOP_WING_TOP_Z_MM),
+        (-STOP_STRIKER_INNER_X_MM, top_z_mm),
+        (-STOP_STRIKER_OUTER_X_MM, top_z_mm),
+    ]
+    return _cut_standard_adapter_features(_profile_plate(points, y0), y0)
+
+
+def j2_positive_bumper_envelope(y0: float) -> cq.Shape:
+    """Unselected maximum undeformed bumper volume; not a released part."""
+
+    shapes = []
+    face_y = y0 + PLATE_T - STOP_CATCH_FACE_RECESS_MM
+    for x0 in (-STOP_STRIKER_OUTER_X_MM, STOP_STRIKER_INNER_X_MM):
+        shapes.append(
+            cq.Solid.makeBox(
+                STOP_STRIKER_OUTER_X_MM - STOP_STRIKER_INNER_X_MM,
+                STOP_BUMPER_MAX_PROTRUSION_MM,
+                STOP_CATCH_TOP_Z_MM + 20.0,
+                cq.Vector(x0, face_y, -20.0),
+            )
+        )
+    return cq.Compound.makeCompound(shapes)
 
 
 def gripper_adapter(y0: float) -> cq.Shape:
@@ -321,6 +447,93 @@ def write_custom_plate_dxf(
             circle(x, z, END_CSK_D_NOM / 2.0, "M5_COUNTERSINK_NOMINAL")
     lines.extend(["0", "ENDSEC", "0", "EOF"])
     path.write_text("\n".join(lines) + "\n", encoding="ascii", newline="\n")
+
+
+def write_stop_profile_dxf(path: Path, *, striker: bool) -> None:
+    """Write the controlled 2.5D C06/C07 finished profile and shared holes."""
+
+    if striker:
+        outer_x = STOP_STRIKER_OUTER_X_MM
+        inner_x = STOP_STRIKER_INNER_X_MM
+        top_z = STOP_STRIKER_TOP_Z_MM
+    else:
+        outer_x = STOP_CATCH_OUTER_X_MM
+        inner_x = STOP_CATCH_INNER_X_MM
+        top_z = STOP_CATCH_TOP_Z_MM
+    points = [
+        (-outer_x, -20.0),
+        (outer_x, -20.0),
+        (outer_x, top_z),
+        (inner_x, top_z),
+        (inner_x, STOP_WING_TOP_Z_MM),
+        (STOP_WING_INNER_X_MM, STOP_WING_TOP_Z_MM),
+        (STOP_WING_INNER_X_MM, 20.0),
+        (-STOP_WING_INNER_X_MM, 20.0),
+        (-STOP_WING_INNER_X_MM, STOP_WING_TOP_Z_MM),
+        (-inner_x, STOP_WING_TOP_Z_MM),
+        (-inner_x, top_z),
+        (-outer_x, top_z),
+    ]
+    lines: list[str] = [
+        "0", "SECTION", "2", "HEADER", "9", "$ACADVER", "1", "AC1009", "0", "ENDSEC",
+        "0", "SECTION", "2", "ENTITIES",
+    ]
+
+    def line(x1: float, z1: float, x2: float, z2: float, layer: str) -> None:
+        lines.extend(["0", "LINE", "8", layer, "10", str(x1), "20", str(z1), "30", "0", "11", str(x2), "21", str(z2), "31", "0"])
+
+    def circle(x: float, z: float, radius: float, layer: str) -> None:
+        lines.extend(["0", "CIRCLE", "8", layer, "10", str(x), "20", str(z), "30", "0", "40", str(radius)])
+
+    for index, (x1, z1) in enumerate(points):
+        x2, z2 = points[(index + 1) % len(points)]
+        line(x1, z1, x2, z2, "FINISHED_PROFILE_BEFORE_R2_FILLETS")
+    for x in (-16.0, 16.0):
+        for z in (-8.0, 8.0):
+            circle(x, z, FRAME_HOLE_D / 2.0, "M2_5_CLEARANCE")
+    for z in (-10.0, 10.0):
+        circle(0.0, z, END_HOLE_D / 2.0, "M5_CLEARANCE")
+        circle(0.0, z, END_CSK_D_NOM / 2.0, "M5_COUNTERSINK_NOMINAL")
+    if not striker:
+        for x1, x2 in ((-STOP_CATCH_OUTER_X_MM, -STOP_CATCH_INNER_X_MM), (STOP_CATCH_INNER_X_MM, STOP_CATCH_OUTER_X_MM)):
+            line(x1, -20.0, x2, -20.0, "FACE_MILL_RECESS_BOUNDARY")
+            line(x2, -20.0, x2, STOP_CATCH_TOP_Z_MM, "FACE_MILL_RECESS_BOUNDARY")
+            line(x2, STOP_CATCH_TOP_Z_MM, x1, STOP_CATCH_TOP_Z_MM, "FACE_MILL_RECESS_BOUNDARY")
+            line(x1, STOP_CATCH_TOP_Z_MM, x1, -20.0, "FACE_MILL_RECESS_BOUNDARY")
+    lines.extend(["0", "ENDSEC", "0", "EOF"])
+    path.write_text("\n".join(lines) + "\n", encoding="ascii", newline="\n")
+
+
+def write_stop_drawing(path: Path, *, striker: bool, contact_angle_deg: float) -> None:
+    part_id = "MV0-C06" if striker else "MV0-C07"
+    title = "J2 positive-stop moving striker adapter" if striker else "J2 positive-stop fixed catch adapter"
+    detail = (
+        f"Twin rails X=+/-{(STOP_STRIKER_INNER_X_MM + STOP_STRIKER_OUTER_X_MM) / 2:.1f}; top Z={STOP_STRIKER_TOP_Z_MM:.6f}; height tolerance +/-{STOP_STRIKER_HEIGHT_TOLERANCE_MM:.3f}."
+        if striker
+        else f"Twin backed metal rails X={STOP_CATCH_INNER_X_MM:.1f}..{STOP_CATCH_OUTER_X_MM:.1f}; moving-side face recess {STOP_CATCH_FACE_RECESS_MM:.3f}."
+    )
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>text{{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}}.title{{font-size:34px;font-weight:700}}.head{{font-size:24px;font-weight:700}}.warn{{font-size:20px;font-weight:700;fill:#8a3b00}}.box{{fill:#f7fbff;stroke:#0b4f8a;stroke-width:3}}.note{{fill:#fff9e8;stroke:#d59600;stroke-width:3}}</style>
+<rect width="1600" height="1000" fill="#ffffff"/>
+<text x="45" y="60" class="title">{part_id} {title}</text>
+<text x="45" y="100" class="warn">{REVISION} / {STOP_REVISION} - {WARNING}</text>
+<rect x="55" y="150" width="1490" height="330" rx="14" class="box"/>
+<text x="90" y="205" class="head">Controlled candidate geometry</text>
+<text x="90" y="250">2.5D 6061-T651 candidate from 9.525 mm nominal plate; finished thickness 9.00–10.00 mm.</text>
+<text x="90" y="292">{detail}</text>
+<text x="90" y="334">All twelve X-Z profile vertices receive R{STOP_PROFILE_FILLET_MM:.1f} tangent fillets; shared adapter holes retain P0.6 controls.</text>
+<text x="90" y="376">Nominal metal-to-metal first contact: J2={contact_angle_deg:.6f} degrees; target datum 118.000000 degrees.</text>
+<text x="90" y="418">The STEP controls the rounded profile and 3D face step. The DXF lines are pre-fillet construction geometry only.</text>
+<rect x="55" y="520" width="1490" height="330" rx="14" class="note"/>
+<text x="90" y="575" class="head">Release boundary</text>
+<text x="90" y="620">Two symmetric rails keep the load path outside the XM540 case; nominal body clearance is separately checked.</text>
+<text x="90" y="662">The catch reserves a maximum 0.75 mm undeformed bumper envelope. Bumper material, order code, force/stroke, retention and life are SELECTION REQUIRED.</text>
+<text x="90" y="704">MTR, FAI, received fit, contact marking, tolerance stack, load analysis, stopping tests, guard/cable sweep and qualified review remain required.</text>
+<text x="90" y="746">No source property is a released allowable. No stop angle is released from nominal CAD alone.</text>
+<text x="90" y="798" class="warn">DO NOT QUOTE, FABRICATE, ASSEMBLE, MOVE, OR ENERGIZE FROM THIS DRAWING.</text>
+<text x="55" y="930">Units: mm | Projection: plate face X-Z | Date: 2026-08-07</text>
+</svg>'''
+    path.write_text(svg, encoding="utf-8", newline="\n")
 
 
 def write_interface_plate_drawing(
@@ -689,12 +902,12 @@ def main() -> int:
     column = column_envelope()
     upper_p = adapter(32.0)
     upper_b = beam(32.0 + PLATE_T, UPPER_BEAM_L)
-    upper_d = adapter(32.0 + PLATE_T + UPPER_BEAM_L)
+    upper_d = j2_positive_catch_adapter(32.0 + PLATE_T + UPPER_BEAM_L)
     j2_body = rotate_x(joint_body, 90.0).translate((0.0, J2_Y, 0.0))
     j2_s102 = rotate_x(s102, 90.0).translate((0.0, J2_Y, 0.0))
     j2_h101 = h101.translate((0.0, J2_Y, 0.0))
     fore_p_y = J2_Y + 32.0
-    fore_p = adapter(fore_p_y)
+    fore_p = j2_positive_striker_adapter(fore_p_y)
     fore_b = beam(fore_p_y + PLATE_T, FOREARM_BEAM_L)
     fore_d = gripper_adapter(fore_p_y + PLATE_T + FOREARM_BEAM_L)
     gripper_frame = rotate_x(h104, 180.0).translate((0.0, G1_Y, 0.0))
@@ -707,11 +920,11 @@ def main() -> int:
         "J1_H101": j1_h101,
         "UL_PROX_ADAPTER": upper_p,
         "UL_20-2040_VERTICAL_ENVELOPE": upper_b,
-        "UL_DIST_ADAPTER": upper_d,
+        "MV0-C07_J2_POSITIVE_FIXED_CATCH_ADAPTER": upper_d,
         "J2_XM540_RX90": j2_body,
         "J2_S102_RX90": j2_s102,
         "J2_H101_OUTPUT_REFERENCE": j2_h101,
-        "FA_PROX_ADAPTER": fore_p,
+        "MV0-C06_J2_POSITIVE_MOVING_STRIKER_ADAPTER": fore_p,
         "FA_20-2040_VERTICAL_50MM_ENVELOPE": fore_b,
         "FA_DIST_H104_ADAPTER": fore_d,
         "G1_H104_RX180": gripper_frame,
@@ -727,6 +940,8 @@ def main() -> int:
         "J1_S102_RX90": cq.Color(0.40, 0.78, 0.96),
         "G1_H104_RX180": cq.Color(0.40, 0.78, 0.96),
         "MV0-C05_SHOULDER_SUPPORT": cq.Color(0.82, 0.84, 0.86),
+        "MV0-C06_J2_POSITIVE_MOVING_STRIKER_ADAPTER": cq.Color(0.95, 0.42, 0.10),
+        "MV0-C07_J2_POSITIVE_FIXED_CATCH_ADAPTER": cq.Color(0.80, 0.18, 0.12),
         "COLUMN_40-4040_ENVELOPE": cq.Color(0.46, 0.50, 0.54),
     }
     for name, solid in components.items():
@@ -750,6 +965,8 @@ def main() -> int:
         "MV0-C03_20-2040_50mm_vertical_collision_envelope": beam(0.0, FOREARM_BEAM_L),
         "MV0-C04_H104_to_20-2040_countersunk_adapter": gripper_adapter(0.0),
         "MV0-C05_S102_to_40-4040_side_slot_support": shoulder_support_plate(),
+        "MV0-C06_J2_positive_moving_striker_adapter": j2_positive_striker_adapter(0.0),
+        "MV0-C07_J2_positive_fixed_catch_adapter": j2_positive_catch_adapter(0.0),
     }.items():
         part_path = part_dir / f"{name}.step"
         cq.exporters.export(solid, str(part_path))
@@ -763,6 +980,8 @@ def main() -> int:
         large_holes=((0.0, -10.0), (0.0, 10.0)),
         countersunk_large=True,
     )
+    write_stop_profile_dxf(part_dir / "MV0-C06_J2-positive-moving-striker-profile.dxf", striker=True)
+    write_stop_profile_dxf(part_dir / "MV0-C07_J2-positive-fixed-catch-profile.dxf", striker=False)
     write_custom_plate_dxf(
         part_dir / "MV0-C05_shoulder-support-finished-profile.dxf",
         width=48.0,
@@ -799,8 +1018,10 @@ def main() -> int:
         {"item": "MV0-C05 shoulder support", "parent": "J1_LOCAL", "tx_mm": 0, "ty_mm": COLUMN_FACE_Y, "tz_mm": -SUPPORT_PLATE_H / 2.0, "rx_deg": 0, "matrix_4x4_row_major": json.dumps(matrix_x(0, 0, COLUMN_FACE_Y, -SUPPORT_PLATE_H / 2.0)), "status": "exact candidate geometry; T-slot stack torque pullout and proof open"},
         {"item": "J1 XM540 body and S102", "parent": "J1_LOCAL", "tx_mm": 0, "ty_mm": 0, "tz_mm": 0, "rx_deg": 90, "matrix_4x4_row_major": json.dumps(matrix_x(90, 0, 0, 0)), "status": "package roll exact; internal XM540 uses the recorded actuator axis-map"},
         {"item": "J1 H101 straight-reference pose", "parent": "J1_LOCAL", "tx_mm": 0, "ty_mm": 0, "tz_mm": 0, "rx_deg": 0, "matrix_4x4_row_major": json.dumps(matrix_x(0, 0, 0, 0)), "status": "requires -90 deg output offset relative J1 body"},
+        {"item": "MV0-C07 fixed catch adapter", "parent": "WORLD", "tx_mm": 0, "ty_mm": 32.0 + PLATE_T + UPPER_BEAM_L, "tz_mm": 0, "rx_deg": 0, "matrix_4x4_row_major": json.dumps(matrix_x(0, 0, 32.0 + PLATE_T + UPPER_BEAM_L, 0)), "status": "exact candidate geometry; positive metal stop and bumper physical validation open"},
         {"item": "J2 joint package and S102", "parent": "WORLD", "tx_mm": 0, "ty_mm": J2_Y, "tz_mm": 0, "rx_deg": 90, "matrix_4x4_row_major": json.dumps(matrix_x(90, 0, J2_Y, 0)), "status": "package roll exact; internal XM540 uses the recorded actuator axis-map"},
         {"item": "J2 H101 straight-reference pose", "parent": "WORLD", "tx_mm": 0, "ty_mm": J2_Y, "tz_mm": 0, "rx_deg": 0, "matrix_4x4_row_major": json.dumps(matrix_x(0, 0, J2_Y, 0)), "status": "requires -90 deg output offset relative J2 body"},
+        {"item": "MV0-C06 moving striker adapter", "parent": "J2_MOVING", "tx_mm": 0, "ty_mm": 32.0, "tz_mm": 0, "rx_deg": 0, "matrix_4x4_row_major": json.dumps(matrix_x(0, 0, 32.0, 0)), "status": "exact candidate geometry at J2 zero reference; transforms about J2 +X; physical stop validation open"},
         {"item": "G1 H104 frame", "parent": "WORLD", "tx_mm": 0, "ty_mm": G1_Y, "tz_mm": 0, "rx_deg": 180, "matrix_4x4_row_major": json.dumps(matrix_x(180, 0, G1_Y, 0)), "status": "four exact broad-face axes registered to MV0-C04; received fit and gripper kit assembly remain open"},
         {"item": "J1 local frame", "parent": "A0_BASE_CENTER", "tx_mm": J1_A0_X, "ty_mm": J1_A0_Y, "tz_mm": J1_A0_Z, "rx_deg": 0, "matrix_4x4_row_major": json.dumps(matrix_x(0, J1_A0_X, J1_A0_Y, J1_A0_Z)), "status": "candidate full-assembly placement; base/column receipt and inspection open"},
     ]
@@ -810,11 +1031,12 @@ def main() -> int:
         {"interface": "A00", "from": "40-4040 column front T-slot", "to": "MV0-C05 shoulder support and rolled J1 S102", "plane_world": f"J1-local Y={COLUMN_FACE_Y:.4f} to {J1_S102_FACE_Y:.4f} mm", "pattern": "2 x dia 8.50 at X=0 Z=+/-30 to T-slot; 4 x dia 2.70 at X=+/-16 Z=+/-8 to S102", "fasteners": "80/20 17-8520 + 13035 and MISUMI SCB2.5-20 + ACCU HNN-M2.5-A2 EXACT CANDIDATE HOLD; torque/received stack SELECTION REQUIRED", "status": "exact_coordinate_candidate_static_screen_only"},
         {"interface": "A01", "from": "J1 H101 outside broad face", "to": "upper proximal adapter", "plane_world": "Y=32.0000 mm", "pattern": "4 x manufacturer dia 2.5 thru at X=+/-16 Z=+/-8; adapter dia 2.70", "fasteners": "MISUMI SCB2.5-20 + ACCU HNN-M2.5-A2 EXACT CANDIDATE HOLD; torque/received stack SELECTION REQUIRED", "status": "rectangular_pattern_registered_static_proof_only"},
         {"interface": "A02", "from": "upper proximal adapter", "to": "20-2040 end", "plane_world": f"Y={32.0 + PLATE_T:.4f} mm", "pattern": "2 x M5x0.8 end taps at X=0 Z=+/-10; controlled flush countersinks", "fasteners": "ACCU SHKL-M5-20-A2-R360 EXACT CANDIDATE HOLD; torque/received seating SELECTION REQUIRED", "status": "manufacturer_coordinates_registered_static_proof_only"},
-        {"interface": "A03", "from": "20-2040 end", "to": "upper distal adapter", "plane_world": f"Y={32.0 + PLATE_T + UPPER_BEAM_L:.4f} mm", "pattern": "2 x M5x0.8 end taps at X=0 Z=+/-10; controlled flush countersinks", "fasteners": "ACCU SHKL-M5-20-A2-R360 EXACT CANDIDATE HOLD; torque/received seating SELECTION REQUIRED", "status": "manufacturer_coordinates_registered_static_proof_only"},
-        {"interface": "A04", "from": "upper distal adapter", "to": "J2 S102 outside broad face", "plane_world": f"Y={J2_Y - 51.5:.4f} mm", "pattern": "4 x manufacturer dia 2.5 thru at X=+/-16 Z=+/-8; adapter dia 2.70", "fasteners": "MISUMI SCB2.5-20 + ACCU HNN-M2.5-A2 EXACT CANDIDATE HOLD; torque/received stack SELECTION REQUIRED", "status": "rectangular_pattern_registered_static_proof_only"},
-        {"interface": "A05", "from": "J2 H101 outside broad face", "to": "forearm proximal adapter", "plane_world": f"Y={fore_p_y:.4f} mm at straight reference", "pattern": "4 x manufacturer dia 2.5 thru at X=+/-16 Z=+/-8; adapter dia 2.70", "fasteners": "MISUMI SCB2.5-20 + ACCU HNN-M2.5-A2 EXACT CANDIDATE HOLD; torque/received stack SELECTION REQUIRED", "status": "rectangular_pattern_registered_static_proof_only"},
-        {"interface": "A06", "from": "forearm beam", "to": "forearm adapters", "plane_world": f"Y={fore_p_y + PLATE_T:.4f} and {fore_p_y + PLATE_T + FOREARM_BEAM_L:.4f} mm at straight reference", "pattern": "2 x M5x0.8 end taps at X=0 Z=+/-10; controlled flush countersinks", "fasteners": "ACCU SHKL-M5-20-A2-R360 EXACT CANDIDATE HOLD; torque/received seating SELECTION REQUIRED", "status": "manufacturer_coordinates_registered_static_proof_only"},
+        {"interface": "A03", "from": "20-2040 end", "to": "MV0-C07 fixed catch adapter", "plane_world": f"Y={32.0 + PLATE_T + UPPER_BEAM_L:.4f} mm", "pattern": "2 x M5x0.8 end taps at X=0 Z=+/-10; controlled flush countersinks", "fasteners": "ACCU SHKL-M5-20-A2-R360 EXACT CANDIDATE HOLD; torque/received seating SELECTION REQUIRED", "status": "manufacturer_coordinates_registered_static_proof_only"},
+        {"interface": "A04", "from": "MV0-C07 fixed catch adapter", "to": "J2 S102 outside broad face", "plane_world": f"Y={J2_Y - 51.5:.4f} mm", "pattern": "4 x manufacturer dia 2.5 thru at X=+/-16 Z=+/-8; adapter dia 2.70", "fasteners": "MISUMI SCB2.5-20 + ACCU HNN-M2.5-A2 EXACT CANDIDATE HOLD; torque/received stack SELECTION REQUIRED", "status": "rectangular_pattern_registered_static_proof_only"},
+        {"interface": "A05", "from": "J2 H101 outside broad face", "to": "MV0-C06 moving striker adapter", "plane_world": f"Y={fore_p_y:.4f} mm at straight reference", "pattern": "4 x manufacturer dia 2.5 thru at X=+/-16 Z=+/-8; adapter dia 2.70", "fasteners": "MISUMI SCB2.5-20 + ACCU HNN-M2.5-A2 EXACT CANDIDATE HOLD; torque/received stack SELECTION REQUIRED", "status": "rectangular_pattern_registered_static_proof_only"},
+        {"interface": "A06", "from": "forearm beam", "to": "MV0-C06 moving striker and MV0-C04 distal adapters", "plane_world": f"Y={fore_p_y + PLATE_T:.4f} and {fore_p_y + PLATE_T + FOREARM_BEAM_L:.4f} mm at straight reference", "pattern": "2 x M5x0.8 end taps at X=0 Z=+/-10; controlled flush countersinks", "fasteners": "ACCU SHKL-M5-20-A2-R360 EXACT CANDIDATE HOLD; torque/received seating SELECTION REQUIRED", "status": "manufacturer_coordinates_registered_static_proof_only"},
         {"interface": "A07", "from": "MV0-C04 forearm distal adapter", "to": "H104 outside broad face", "plane_world": f"Y={fore_p_y + 2 * PLATE_T + FOREARM_BEAM_L:.4f} mm at straight reference", "pattern": "4 x exact H104 dia 2.5 axes; project X/Z (-11,+8),(+11,+8),(-12,-6),(+12,-6); adapter dia 2.70", "fasteners": "MISUMI SCB2.5-20 + ACCU HNN-M2.5-A2 EXACT CANDIDATE HOLD; torque/received stack SELECTION REQUIRED", "status": "exact_step_axis_subset_registered_static_proof_only"},
+        {"interface": "HS-J2-POS", "from": "MV0-C06 twin moving striker rails", "to": "MV0-C07 twin recessed fixed catch rails", "plane_world": "two symmetric external rails; nominal contact at J2=118.000000 deg", "pattern": "positive metal backup outside XM540 case; maximum 0.75 mm bumper envelope reserved", "fasteners": "integral adapter profiles; bumper material/order code/retention SELECTION REQUIRED", "status": "cad_candidate_only_physical_fit_load_stopping_and_qualified_validation_required"},
     ]
     write_csv(OUT / "interface-schedule.csv", interface_rows)
 
@@ -841,6 +1063,7 @@ def main() -> int:
     }
     intentional_j1_pairs = {("J1_BODY", "J1_H101"), ("J1_S102", "J1_H101")}
     intentional_j2_pairs = {("J2_BODY", "J2_H101"), ("J2_S102", "J2_H101")}
+    intentional_stop_pairs = {("UPPER_DIST_ADAPTER", "FORE_PROX_ADAPTER")}
     sweep_rows: list[dict[str, object]] = []
     worst = 0.0
     q1_values = [-20.0 + sample * COLLISION_INCREMENT_DEG for sample in range(int(round(90.0 / COLLISION_INCREMENT_DEG)) + 1)]
@@ -877,7 +1100,7 @@ def main() -> int:
         pairs: list[str] = []
         for upper_name, upper_shape in upper_zero.items():
             for fore_name, fore_shape in fore_relative.items():
-                if (upper_name, fore_name) in intentional_j2_pairs:
+                if (upper_name, fore_name) in intentional_j2_pairs | intentional_stop_pairs:
                     continue
                 if boxes_overlap(upper_shape, fore_shape):
                     tested += 1
@@ -924,7 +1147,7 @@ def main() -> int:
                     "colliding_pairs": ";".join(colliding_pairs),
                     "sampled_pairwise_intersection_mm3": f"{volume:.6f}",
                     "result": result,
-                    "scope": "0.5-deg two-joint sampled collision screen; conservative rotated-AABB broadphase; exact booleans for every overlapping box; intentional J1/J2 frame interfaces excluded; cables, guards, stops and between-sample proof excluded",
+                    "scope": "0.5-deg two-joint sampled collision screen; conservative rotated-AABB broadphase; exact booleans for every overlapping box; intentional frame and C06/C07 positive-stop interfaces excluded and checked separately; cables, guards and between-sample proof excluded",
                 }
             )
     write_csv(OUT / "collision-sweep.csv", sweep_rows)
@@ -961,7 +1184,7 @@ def main() -> int:
             continuous_cell_rows.extend(cell_rows)
     for upper_name, upper_shape in upper_zero.items():
         for fore_name, fore_shape in moving_zero.items():
-            if (upper_name, fore_name) in intentional_j2_pairs:
+            if (upper_name, fore_name) in intentional_j2_pairs | intentional_stop_pairs:
                 continue
             summary_row, cell_rows = certify_continuous_1d(
                 pair_id=f"UPPER_FORE:{upper_name}:{fore_name}",
@@ -1020,7 +1243,7 @@ def main() -> int:
         "method": "adaptive interval cover; center AABB lower bound or exact B-Rep distance minus additive rigid-body chord-displacement bounds",
         "included_pair_groups": ["fixed base versus upper", "upper versus forearm", "fixed base versus forearm"],
         "intentional_interfaces_excluded": sorted(
-            [f"{left}:{right}" for left, right in intentional_j1_pairs | intentional_j2_pairs]
+            [f"{left}:{right}" for left, right in intentional_j1_pairs | intentional_j2_pairs | intentional_stop_pairs]
         ),
         "joint_domain_deg": {"j1": [-20.0, 70.0], "j2": [15.0, CONTINUOUS_ANALYSIS_J2_MAX_DEG]},
         "required_certified_clearance_mm": CONTINUOUS_CERTIFIED_CLEARANCE_MM,
@@ -1039,6 +1262,185 @@ def main() -> int:
     (OUT / "continuous-clearance-analysis.json").write_text(
         json.dumps(continuous_analysis, indent=2) + "\n", encoding="utf-8", newline="\n"
     )
+
+    # Dedicated positive-stop analysis. C06/C07 are deliberately excluded from
+    # the non-intentional certificate only as one named stop pair; every other
+    # interaction remains in the ordinary collision and continuous checks.
+    stop_fixed = upper_zero["UPPER_DIST_ADAPTER"]
+    stop_moving = moving_zero["FORE_PROX_ADAPTER"]
+
+    def first_contact_angle(fixed_shape: cq.Shape, moving_shape: cq.Shape, lo: float = 115.0, hi: float = 120.0) -> float:
+        if fixed_shape.distance(rotate_x(moving_shape, hi, J2_Y)) > 1e-7:
+            raise RuntimeError("positive-stop contact was not bracketed")
+        for _ in range(60):
+            midpoint = (lo + hi) / 2.0
+            if fixed_shape.distance(rotate_x(moving_shape, midpoint, J2_Y)) > 1e-7:
+                lo = midpoint
+            else:
+                hi = midpoint
+        return hi
+
+    stop_contact_deg = first_contact_angle(stop_fixed, stop_moving, 115.0, 119.0)
+    if abs(stop_contact_deg - CANDIDATE_J2_POSITIVE_HARD_STOP_DEG) > 0.002:
+        raise RuntimeError(f"positive-stop contact {stop_contact_deg:.6f} deg differs from the 118 deg target")
+    stop_gap_soft_mm = stop_fixed.distance(rotate_x(stop_moving, PROVISIONAL_J2_SOFT_LIMIT_DEG, J2_Y))
+    stop_bumper = j2_positive_bumper_envelope(32.0 + PLATE_T + UPPER_BEAM_L)
+    bumper_contact_deg = first_contact_angle(stop_bumper, stop_moving, 115.0, stop_contact_deg)
+    bumper_gap_soft_mm = stop_bumper.distance(rotate_x(stop_moving, PROVISIONAL_J2_SOFT_LIMIT_DEG, J2_Y))
+
+    stop_sweep_rows: list[dict[str, object]] = []
+    for index in range(61):
+        q2 = PROVISIONAL_J2_SOFT_LIMIT_DEG + index * 0.05
+        transformed = rotate_x(stop_moving, q2, J2_Y)
+        metal_volume = stop_fixed.intersect(transformed).Volume()
+        stop_sweep_rows.append(
+            {
+                "j2_deg": f"{q2:.2f}",
+                "metal_clearance_mm": f"{stop_fixed.distance(transformed):.9f}",
+                "metal_intersection_mm3": f"{metal_volume:.9f}",
+                "maximum_bumper_envelope_clearance_mm": f"{stop_bumper.distance(transformed):.9f}",
+                "classification": "SOFT_LIMIT" if index == 0 else ("METAL_CONTACT_TARGET" if index == 60 else "STOP_APPROACH"),
+                "status": "NOMINAL CAD ONLY - BUMPER SELECTION AND PHYSICAL VALIDATION REQUIRED",
+            }
+        )
+    write_csv(OUT / "j2-positive-stop-sweep.csv", stop_sweep_rows)
+
+    tolerance_rows: list[dict[str, object]] = []
+    for case, top_delta, recess_delta in (
+        ("STRIKER_TOP_LOW", -STOP_STRIKER_HEIGHT_TOLERANCE_MM, 0.0),
+        ("NOMINAL", 0.0, 0.0),
+        ("STRIKER_TOP_HIGH", STOP_STRIKER_HEIGHT_TOLERANCE_MM, 0.0),
+        ("CATCH_FACE_SHALLOW", 0.0, -0.05),
+        ("CATCH_FACE_DEEP", 0.0, 0.05),
+    ):
+        varied_fixed = j2_positive_catch_adapter(
+            32.0 + PLATE_T + UPPER_BEAM_L,
+            STOP_CATCH_FACE_RECESS_MM + recess_delta,
+        )
+        varied_moving = j2_positive_striker_adapter(
+            fore_p_y,
+            STOP_STRIKER_TOP_Z_MM + top_delta,
+        )
+        varied_contact = first_contact_angle(varied_fixed, varied_moving, 115.0, 120.0)
+        tolerance_rows.append(
+            {
+                "case": case,
+                "striker_top_z_mm": f"{STOP_STRIKER_TOP_Z_MM + top_delta:.6f}",
+                "catch_face_recess_mm": f"{STOP_CATCH_FACE_RECESS_MM + recess_delta:.6f}",
+                "nominal_first_metal_contact_deg": f"{varied_contact:.6f}",
+                "delta_from_118_deg": f"{varied_contact - CANDIDATE_J2_POSITIVE_HARD_STOP_DEG:.6f}",
+                "release_effect": "geometric sensitivity only; complete measured tolerance stack remains required",
+            }
+        )
+    write_csv(OUT / "j2-positive-stop-tolerance-screen.csv", tolerance_rows)
+
+    contact_radius_mm = math.hypot(32.0 + PLATE_T, STOP_STRIKER_TOP_Z_MM)
+    allocated_elbow_inertia_kg_m2 = 0.010144
+    setup_speed_rad_s = math.radians(10.0)
+    automatic_speed_rad_s = math.radians(30.0)
+    energy_setup_j = 0.5 * allocated_elbow_inertia_kg_m2 * setup_speed_rad_s ** 2
+    energy_auto_j = 0.5 * allocated_elbow_inertia_kg_m2 * automatic_speed_rad_s ** 2
+    raw_800_ideal_torque_nm = 5.18
+    published_12v_stall_torque_nm = 10.6
+    # Repeat the current CAD-estimate/payload screen here because the general
+    # arm load screen is emitted later in this generator.  Frames, fasteners,
+    # cables and the final gripper mechanism remain absent, so this is a lower-
+    # completeness demand screen rather than a released load case.
+    stop_screen_gravity_m_s2 = 9.80665
+    stop_screen_mass_per_m_kg = 0.0428 * 0.45359237 / 0.0254
+    stop_screen_fore_beam_mass_g = stop_screen_mass_per_m_kg * (FOREARM_BEAM_L / 1000.0) * 1000.0
+    stop_screen_striker_mass_g = fore_p.Volume() / 1000.0 * 2.70
+    stop_screen_distal_mass_g = fore_d.Volume() / 1000.0 * 2.70
+    stop_screen_fore_mass_g = stop_screen_striker_mass_g + stop_screen_fore_beam_mass_g + stop_screen_distal_mass_g
+    stop_screen_fore_com_local_mm = (
+        stop_screen_striker_mass_g * (32.0 + PLATE_T / 2.0)
+        + stop_screen_fore_beam_mass_g * (32.0 + PLATE_T + FOREARM_BEAM_L / 2.0)
+        + stop_screen_distal_mass_g * (32.0 + PLATE_T + FOREARM_BEAM_L + PLATE_T / 2.0)
+    ) / stop_screen_fore_mass_g
+    stop_screen_elbow_gravity_nm = stop_screen_gravity_m_s2 * (
+        (stop_screen_fore_mass_g / 1000.0) * stop_screen_fore_com_local_mm / 1000.0
+        + 0.21 * (G1_Y - J2_Y) / 1000.0
+        + 0.10 * (360.0 - J2_Y) / 1000.0
+    )
+    proof_elbow_moment_nm = stop_screen_elbow_gravity_nm * 2.25 * PROOF_MULTIPLIER
+    rail_width_mm = STOP_STRIKER_OUTER_X_MM - STOP_STRIKER_INNER_X_MM
+    rail_lever_mm = STOP_STRIKER_TOP_Z_MM + 15.0
+    rail_section_modulus_mm3 = rail_width_mm * PLATE_MIN_T ** 2 / 6.0
+
+    load_rows_stop = []
+    for case, torque_nm in (
+        ("R69_PROOF_SCREEN", proof_elbow_moment_nm),
+        ("RAW800_IDEAL_STALL_LINE", raw_800_ideal_torque_nm),
+        ("PUBLISHED_12V_MOMENTARY_STALL_ENDPOINT", published_12v_stall_torque_nm),
+    ):
+        total_force_n = torque_nm * 1000.0 / contact_radius_mm
+        each_force_n = total_force_n / 2.0
+        nominal_bending_mpa = each_force_n * rail_lever_mm / rail_section_modulus_mm3
+        load_rows_stop.append(
+            {
+                "case": case,
+                "torque_input_nm": f"{torque_nm:.6f}",
+                "contact_radius_mm": f"{contact_radius_mm:.6f}",
+                "total_tangential_force_n": f"{total_force_n:.3f}",
+                "ideal_force_per_rail_n": f"{each_force_n:.3f}",
+                "nominal_striker_rail_bending_mpa": f"{nominal_bending_mpa:.3f}",
+                "basis": "two-rail equal sharing; 6 mm rail; 9 mm finished minimum; no notch, prying, impact, fatigue or dynamic amplification",
+                "status": "INDICATIVE SCREEN ONLY - NOT AN ALLOWABLE OR RELEASE",
+            }
+        )
+    write_csv(OUT / "j2-positive-stop-load-screen.csv", load_rows_stop)
+
+    stop_controls = [
+        {"control_id": "STOP-001", "part_id": "MV0-C06", "feature": "finished profile", "nominal": f"82.000 x {STOP_STRIKER_TOP_Z_MM + 20.0:.6f} x 9.525 mm envelope; R{STOP_PROFILE_FILLET_MM:.1f}", "tolerance_or_limit": "profile +/-0.05; thickness 9.00..10.00", "inspection": "CMM profile and five-point thickness map", "status": "FAI REQUIRED"},
+        {"control_id": "STOP-002", "part_id": "MV0-C06", "feature": "twin striker top datum", "nominal": f"Z={STOP_STRIKER_TOP_Z_MM:.6f} at X=+/-38.0", "tolerance_or_limit": f"+/-{STOP_STRIKER_HEIGHT_TOLERANCE_MM:.3f} relative to joint-hole datum", "inspection": "CMM from four M2.5 hole axes; record both rails", "status": "FAI AND ASSEMBLED CONTACT MARK REQUIRED"},
+        {"control_id": "STOP-003", "part_id": "MV0-C07", "feature": "finished profile and catch rails", "nominal": f"84.000 x {STOP_CATCH_TOP_Z_MM + 20.0:.3f} x 9.525 mm envelope; rails X=+/-38", "tolerance_or_limit": "profile +/-0.05; thickness 9.00..10.00", "inspection": "CMM profile and thickness map", "status": "FAI REQUIRED"},
+        {"control_id": "STOP-004", "part_id": "MV0-C07", "feature": "moving-side catch face step", "nominal": f"{STOP_CATCH_FACE_RECESS_MM:.3f} mm recessed from parent adapter face", "tolerance_or_limit": "+/-0.05; both rails coplanar <=0.03", "inspection": "CMM/height gauge; retain surface map", "status": "FAI REQUIRED"},
+        {"control_id": "STOP-005", "part_id": "C06/C07", "feature": "shared four M2.5 and two countersunk M5 interfaces", "nominal": "same exact coordinates as MV0-C01", "tolerance_or_limit": "retain P0.6 adapter hole/countersink controls", "inspection": "pin/CMM/optical plus received frame/member dry fit", "status": "RECEIVED FIT REQUIRED"},
+        {"control_id": "STOP-006", "part_id": "BUMPER-SR1", "feature": "maximum undeformed occupied envelope", "nominal": f"two 6 x 42 mm rail envelopes; protrusion <= {STOP_BUMPER_MAX_PROTRUSION_MM:.3f} mm", "tolerance_or_limit": "no contact at J2=115 deg; metal backup remains at 118 deg nominal", "inspection": "SELECTION REQUIRED; received thickness/retention/force-stroke/temperature/life characterization", "status": "SELECTION REQUIRED - NO ORDER CODE RELEASED"},
+    ]
+    write_csv(OUT / "j2-positive-stop-controls.csv", stop_controls)
+
+    stop_analysis = {
+        "revision": STOP_REVISION,
+        "parent_arm_revision": REVISION,
+        "warning": WARNING,
+        "architecture": "twin symmetric 2.5D moving striker rails on MV0-C06 contact recessed positive metal catch rails on MV0-C07; both loads remain in the two metal adapter/member/frame paths and outside the actuator case",
+        "target_metal_contact_deg": CANDIDATE_J2_POSITIVE_HARD_STOP_DEG,
+        "nominal_metal_contact_deg": round(stop_contact_deg, 6),
+        "metal_clearance_at_software_limit_mm": round(stop_gap_soft_mm, 6),
+        "maximum_bumper_envelope_protrusion_mm": STOP_BUMPER_MAX_PROTRUSION_MM,
+        "maximum_bumper_envelope_clearance_at_software_limit_mm": round(bumper_gap_soft_mm, 6),
+        "maximum_bumper_envelope_first_contact_deg": round(bumper_contact_deg, 6),
+        "nominal_body_clearance_at_metal_contact_mm": round(
+            upper_zero["J2_BODY"].distance(rotate_x(stop_moving, stop_contact_deg, J2_Y)), 6
+        ),
+        "contact_radius_mm": round(contact_radius_mm, 6),
+        "allocated_elbow_inertia_kg_m2_excludes_reflected_rotor": allocated_elbow_inertia_kg_m2,
+        "kinetic_energy_j": {"at_10_deg_s": round(energy_setup_j, 9), "at_30_deg_s": round(energy_auto_j, 9)},
+        "status": "POSITIVE METAL STOP CAD CANDIDATE; BUMPER, COMPLETE LOAD/TOLERANCE/CABLE/GUARD EVIDENCE, PHYSICAL TEST AND QUALIFIED RELEASE OPEN",
+    }
+    (OUT / "j2-positive-stop-analysis.json").write_text(
+        json.dumps(stop_analysis, indent=2) + "\n", encoding="utf-8", newline="\n"
+    )
+
+    stop_contact_assembly = cq.Assembly(name="HR_V0_J2_POSITIVE_STOP_CONTACT_CANDIDATE")
+    stop_contact_assembly.add(stop_fixed, name="MV0-C07_FIXED_CATCH", color=cq.Color(0.80, 0.18, 0.12))
+    stop_contact_assembly.add(
+        rotate_x(stop_moving, stop_contact_deg, J2_Y),
+        name="MV0-C06_MOVING_STRIKER_AT_CONTACT",
+        color=cq.Color(0.95, 0.42, 0.10),
+    )
+    stop_contact_assembly.add(stop_bumper, name="BUMPER_SR1_MAXIMUM_ENVELOPE_SELECTION_REQUIRED", color=cq.Color(0.95, 0.75, 0.10))
+    stop_step = OUT / "HR-V0_J2_positive_stop_contact_candidate.step"
+    cq.exporters.export(
+        cq.Compound.makeCompound([stop_fixed, rotate_x(stop_moving, stop_contact_deg, J2_Y)]),
+        str(stop_step),
+    )
+    canonicalize_step(stop_step)
+    stop_contact_assembly.save(str(OUT / "HR-V0_J2_positive_stop_contact_candidate.glb"))
+    write_stop_drawing(OUT / "MV0-C06_J2-positive-moving-striker-drawing.svg", striker=True, contact_angle_deg=stop_contact_deg)
+    write_stop_drawing(OUT / "MV0-C07_J2-positive-fixed-catch-drawing.svg", striker=False, contact_angle_deg=stop_contact_deg)
+
     hard_stop_allocation_rows = [
         {
             "joint": "J2_POSITIVE",
@@ -1050,7 +1452,7 @@ def main() -> int:
             "reserved_nominal_collision_guard_deg": f"{CANDIDATE_CONTACT_GUARD_DEG:.6f}",
             "candidate_physical_uncertainty_budget_deg": f"{candidate_physical_budget_deg:.6f}",
             "required_physical_evidence": "measured stopping overtravel + backlash + compliance + tolerance + measurement uncertainty must fit both the 3 deg soft-to-stop allowance and the 2.643289 deg residual nominal-contact budget",
-            "status": "CANDIDATE ALLOCATION ONLY - PHYSICAL STOP DESIGN AND VALIDATION REQUIRED",
+            "status": "POSITIVE METAL STOP CAD CANDIDATE - BUMPER SELECTION, COMPLETE LOAD/TOLERANCE/CABLE/GUARD EVIDENCE, PHYSICAL VALIDATION AND QUALIFIED RELEASE REQUIRED",
             "warning": WARNING,
         }
     ]
@@ -1062,13 +1464,24 @@ def main() -> int:
     plate_mass_g = adapter(0.0).Volume() / 1000.0 * 2.70
     gripper_plate_mass_g = gripper_adapter(0.0).Volume() / 1000.0 * 2.70
     support_plate_mass_g = shoulder_support_plate().Volume() / 1000.0 * 2.70
-    upper_link_mass_g = upper_beam_mass_g + 2 * plate_mass_g
-    forearm_link_mass_g = forearm_beam_mass_g + plate_mass_g + gripper_plate_mass_g
+    striker_plate_mass_g = j2_positive_striker_adapter(0.0).Volume() / 1000.0 * 2.70
+    catch_plate_mass_g = j2_positive_catch_adapter(0.0).Volume() / 1000.0 * 2.70
+    upper_link_mass_g = upper_beam_mass_g + plate_mass_g + catch_plate_mass_g
+    forearm_link_mass_g = forearm_beam_mass_g + striker_plate_mass_g + gripper_plate_mass_g
     gravity = 9.80665
-    upper_com_y = (32.0 + (J2_Y - 51.5)) / 2.0
-    fore_com_y = J2_Y + 32.0 + PLATE_T + FOREARM_BEAM_L / 2.0
-    shoulder_nm = gravity * (0.12 * upper_com_y / 1000.0 + 0.20 * J2_Y / 1000.0 + 0.12 * fore_com_y / 1000.0 + 0.21 * G1_Y / 1000.0 + 0.10 * 0.360)
-    elbow_nm = gravity * (0.12 * (fore_com_y - J2_Y) / 1000.0 + 0.21 * (G1_Y - J2_Y) / 1000.0 + 0.10 * (360.0 - J2_Y) / 1000.0)
+    upper_com_y = (
+        plate_mass_g * (32.0 + PLATE_T / 2.0)
+        + upper_beam_mass_g * (32.0 + PLATE_T + UPPER_BEAM_L / 2.0)
+        + catch_plate_mass_g * (32.0 + PLATE_T + UPPER_BEAM_L + PLATE_T / 2.0)
+    ) / upper_link_mass_g
+    fore_com_local_y = (
+        striker_plate_mass_g * (32.0 + PLATE_T / 2.0)
+        + forearm_beam_mass_g * (32.0 + PLATE_T + FOREARM_BEAM_L / 2.0)
+        + gripper_plate_mass_g * (32.0 + PLATE_T + FOREARM_BEAM_L + PLATE_T / 2.0)
+    ) / forearm_link_mass_g
+    fore_com_y = J2_Y + fore_com_local_y
+    shoulder_nm = gravity * ((upper_link_mass_g / 1000.0) * upper_com_y / 1000.0 + 0.20 * J2_Y / 1000.0 + (forearm_link_mass_g / 1000.0) * fore_com_y / 1000.0 + 0.21 * G1_Y / 1000.0 + 0.10 * 0.360)
+    elbow_nm = gravity * ((forearm_link_mass_g / 1000.0) * fore_com_local_y / 1000.0 + 0.21 * (G1_Y - J2_Y) / 1000.0 + 0.10 * (360.0 - J2_Y) / 1000.0)
     shoulder_screen_nm = shoulder_nm * 2.25
 
     frame_to_end_center_mm = math.hypot(16.0, 2.0)
@@ -1199,7 +1612,7 @@ def main() -> int:
     summary = {
         "revision": REVISION,
         "warning": WARNING,
-        "disposition": "integrated exact-coordinate arm/column candidate with closed source geometry at A00 through A07; material, received fit, physical proof, hard-stop, cable, guard and qualified release gates remain open; no part or assembly released",
+        "disposition": "integrated exact-coordinate arm/column candidate with closed source geometry at A00 through A07 and an analytical positive-metal J2 stop candidate; material, bumper selection, received fit, physical proof, cable, guard and qualified release gates remain open; no part or assembly released",
         "vendor_source_sha256": {name: sha256(VENDOR / name) for name in ("XMHD-540.N101.I101.STP", "FR13-H101K.stp", "FR13-S102K.stp", "FR12-H104K.stp")},
         "vendor_8020_source_sha256": {name: sha256(VENDOR_8020 / name) for name in ("20-2040-endview.svg", "20-2040-dimensions.jpg", "20-2040-30mm.EPRT")},
         "candidate_geometry_mm": {
@@ -1221,6 +1634,14 @@ def main() -> int:
             "support_m8_axes_xz": [[0.0, -30.0], [0.0, 30.0]],
             "column_center_local_y": COLUMN_CENTER_Y,
             "j1_a0_transform_mm": [J1_A0_X, J1_A0_Y, J1_A0_Z],
+            "j2_positive_stop": {
+                "revision": STOP_REVISION,
+                "moving_part": "MV0-C06",
+                "fixed_part": "MV0-C07",
+                "target_metal_contact_deg": CANDIDATE_J2_POSITIVE_HARD_STOP_DEG,
+                "maximum_bumper_protrusion_mm": STOP_BUMPER_MAX_PROTRUSION_MM,
+                "status": "CAD CANDIDATE ONLY - PHYSICAL VALIDATION OPEN",
+            },
         },
         "actuator_axis_registration": {
             "matrix_3x3": [[0, 0, -1], [1, 0, 0], [0, -1, 0]],
@@ -1233,22 +1654,26 @@ def main() -> int:
         },
         "axis_parallelism_math": {"j1_direction": [1, 0, 0], "j2_direction": [1, 0, 0], "dot_product": 1.0, "angular_difference_deg": 0.0},
         "reference_output_offset_deg": -90.0,
-        "collision_screen": {"sampled_j1_range_deg": [-20, 70], "sampled_j2_range_deg": [15, 125], "increment_deg": COLLISION_INCREMENT_DEG, "sample_count": len(sweep_rows), "provisional_soft_limit_deg": PROVISIONAL_J2_SOFT_LIMIT_DEG, "candidate_positive_hard_stop_datum_deg": CANDIDATE_J2_POSITIVE_HARD_STOP_DEG, "continuous_analysis_j2_max_deg": CONTINUOUS_ANALYSIS_J2_MAX_DEG, "continuous_minimum_guaranteed_clearance_mm": round(continuous_minimum_guaranteed_mm, 6), "continuous_first_nominal_contact_j2_deg": round(continuous_first_contact_deg, 6), "candidate_soft_to_stop_allowance_deg": round(soft_to_stop_deg, 6), "candidate_stop_to_contact_margin_deg": round(stop_to_contact_deg, 6), "reserved_nominal_collision_guard_deg": CANDIDATE_CONTACT_GUARD_DEG, "candidate_physical_uncertainty_budget_deg": round(candidate_physical_budget_deg, 6), "first_sampled_positive_volume_collision_j2_deg": first_nominal_collision_deg, "maximum_positive_intersection_mm3_full_requested_range": round(worst, 6), "maximum_positive_intersection_mm3_within_provisional_limit": round(max_intersection_within_limit, 6), "scope": "continuous adaptive nominal model-space separation certificate covers all 70 non-intentional body pairs through J2=120 deg; sampled exact-boolean sweep continues through J2=125 deg; cables, guards, tolerances, deformation, physical stops, stopping travel and qualified acceptance remain open"},
+        "collision_screen": {"sampled_j1_range_deg": [-20, 70], "sampled_j2_range_deg": [15, 125], "increment_deg": COLLISION_INCREMENT_DEG, "sample_count": len(sweep_rows), "provisional_soft_limit_deg": PROVISIONAL_J2_SOFT_LIMIT_DEG, "candidate_positive_hard_stop_datum_deg": CANDIDATE_J2_POSITIVE_HARD_STOP_DEG, "continuous_analysis_j2_max_deg": CONTINUOUS_ANALYSIS_J2_MAX_DEG, "continuous_minimum_guaranteed_clearance_mm": round(continuous_minimum_guaranteed_mm, 6), "continuous_first_nominal_contact_j2_deg": round(continuous_first_contact_deg, 6), "candidate_soft_to_stop_allowance_deg": round(soft_to_stop_deg, 6), "candidate_stop_to_contact_margin_deg": round(stop_to_contact_deg, 6), "reserved_nominal_collision_guard_deg": CANDIDATE_CONTACT_GUARD_DEG, "candidate_physical_uncertainty_budget_deg": round(candidate_physical_budget_deg, 6), "first_sampled_positive_volume_collision_j2_deg": first_nominal_collision_deg, "maximum_positive_intersection_mm3_full_requested_range": round(worst, 6), "maximum_positive_intersection_mm3_within_provisional_limit": round(max_intersection_within_limit, 6), "scope": f"continuous adaptive nominal model-space separation certificate covers {len(continuous_summary_rows)} non-intentional body pairs through J2=120 deg; the one intentional MV0-C06/MV0-C07 stop pair is separately analyzed; sampled exact-boolean sweep continues through J2=125 deg; cables, guards, tolerances, deformation, stopping travel and qualified acceptance remain open"},
         "mass_and_load_screen": {
             "20_2040_mass_basis_kg_per_m": round(mass_per_m_kg, 6),
             "one_100mm_upper_beam_mass_g": round(upper_beam_mass_g, 3),
             "one_50mm_forearm_beam_mass_g": round(forearm_beam_mass_g, 3),
             "one_adapter_candidate_mass_g": round(plate_mass_g, 3),
             "gripper_adapter_candidate_mass_g": round(gripper_plate_mass_g, 3),
+            "j2_moving_striker_adapter_candidate_mass_g": round(striker_plate_mass_g, 3),
+            "j2_fixed_catch_adapter_candidate_mass_g": round(catch_plate_mass_g, 3),
             "shoulder_support_candidate_mass_g": round(support_plate_mass_g, 3),
-            "upper_beam_plus_two_adapters_mass_g": round(upper_link_mass_g, 3),
-            "forearm_beam_plus_two_adapters_mass_g": round(forearm_link_mass_g, 3),
+            "upper_member_c01_c07_mass_g": round(upper_link_mass_g, 3),
+            "forearm_member_c06_c04_mass_g": round(forearm_link_mass_g, 3),
+            "upper_link_cad_estimate_com_from_j1_mm": round(upper_com_y, 3),
+            "forearm_link_cad_estimate_com_from_j2_mm": round(fore_com_local_y, 3),
             "allocated_shoulder_gravity_nm": round(shoulder_nm, 3),
             "allocated_elbow_gravity_nm": round(elbow_nm, 3),
             "screening_multiplier": 2.25,
             "shoulder_screen_nm": round(shoulder_screen_nm, 3),
             "elbow_screen_nm": round(elbow_nm * 2.25, 3),
-            "status": "screen only; received masses, COM, inertia, continuous torque and thermal proof required",
+            "status": "screen uses current C01/C04/C06/C07 CAD-estimate link masses plus legacy elbow/gripper/payload allocations; frames, fasteners, cables and final gripper mechanism remain incomplete; received masses, COM, inertia, continuous torque and thermal proof required",
         },
         "nominal_joint_screens": {
             "nearest_m5_countersink_to_m2_5_hole_clearance_mm": round(feature_clearance_mm, 4),
@@ -1296,7 +1721,8 @@ def main() -> int:
             "17-8520/13035 engagement, anti-galling, installation torque, T-slot pullout/slip/prying and column-support proof",
             "tool access, cable routing, connector sweep and strain relief",
             "guard, cable, tolerance, deformation and as-built collision proof beyond the continuous nominal body certificate",
-            "physical J2 hard-stop design plus measured stopping overtravel, backlash, compliance, tolerance and uncertainty closure against the candidate allocation",
+            "BUMPER-SR1 exact material/order code/retention/force-stroke/temperature/life selection and received characterization",
+            "complete J2 stop tolerance/load/cable/guard review plus measured contact, stopping overtravel, backlash, compliance and uncertainty closure against the candidate allocation",
             "qualified acceptance of the R66 analytical equivalent or requested local FEA plus joint-slip, preload, fatigue, impact and physical proof",
             "received-part fit, first-article inspection and qualified mechanical approval",
         ],
@@ -1323,11 +1749,11 @@ def main() -> int:
 <line x1="190" y1="480" x2="714" y2="480" class="axis"/><text x="350" y="512">J1-J2 = {J2_Y:.4f} mm candidate</text>
 <line x1="714" y1="550" x2="1102" y2="550" class="axis"/><text x="800" y="582">J2-G1 = {G1_Y-J2_Y:.4f} mm candidate</text>
 <rect x="70" y="670" width="1360" height="220" rx="14" class="note"/>
-<text x="100" y="720" class="sub">R67 continuous-clearance and J2-allocation correction</text>
+<text x="100" y="720" class="sub">R69 integrated positive-metal J2 stop candidate</text>
 <text x="100" y="760">A00 closes candidate column/J1 geometry; A07 closes the exact H104 STEP-axis subset with MV0-C04.</text>
 <text x="100" y="796">17-8520/13035 and all prior fasteners remain held. No installation torque or T-slot capacity is released.</text>
-<text x="100" y="832">Continuous nominal clearance certified to J2=120 deg; contact {continuous_first_contact_deg:.4f} deg. Candidate soft/stop: {PROVISIONAL_J2_SOFT_LIMIT_DEG:.0f}/{CANDIDATE_J2_POSITIVE_HARD_STOP_DEG:.0f} deg.</text>
-<text x="100" y="868" class="warn">Physical stops, stopping travel, tolerances, cables, guards, MTR/FAI and qualified acceptance remain open. Do not fabricate.</text>
+<text x="100" y="832">Continuous nominal body clearance certified to J2=120 deg. Twin-rail metal stop target: {stop_contact_deg:.4f} deg; soft limit {PROVISIONAL_J2_SOFT_LIMIT_DEG:.0f} deg.</text>
+<text x="100" y="868" class="warn">Bumper selection, stopping travel, tolerances, cables, guards, MTR/FAI and qualified acceptance remain open. Do not fabricate.</text>
 </svg>'''
     (OUT / "HR-V0_arm_architecture_candidate.svg").write_text(svg, encoding="utf-8", newline="\n")
 

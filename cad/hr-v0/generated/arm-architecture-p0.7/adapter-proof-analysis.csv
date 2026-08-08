@@ -1,0 +1,11 @@
+screen_id,item,demand,capacity_or_limit,ratio,result
+ADP-LC-01,proof-screen moment,13.6223 N m,3.0 x R57 2.25 gravity screen,1.0000 applied,PROJECT PROOF LOAD CANDIDATE; QUALIFIED ACCEPTANCE OPEN
+ADP-LC-02,M5 thread-root shear,681.12 N per screw,2638.9 N from 4.0 mm project root and 0.30 x 700 MPa,3.87,ANALYTICAL SCREEN PASS; NOT AN ALLOWABLE
+ADP-LC-03,M2.5 thread-root shear,425.70 N per screw,659.7 N from 2.0 mm project root and 0.30 x 700 MPa,1.55,ANALYTICAL SCREEN PASS; NOT AN ALLOWABLE
+ADP-LC-04,adapter punching shear below M5 countersink,6.6812 MPa,120.0 MPa project screen from required 240 MPa MTR yield,17.96,ANALYTICAL SCREEN PASS; MTR/FAI/PROOF OPEN
+ADP-LC-05,average annular pressure under M5 head,14.7801 MPa,240.0 MPa required MTR yield,16.24,ANALYTICAL SCREEN PASS; CONICAL CONTACT/PROOF OPEN
+ADP-LC-06,M2.5 hole bearing,18.9199 MPa,240.0 MPa required MTR yield,12.69,ANALYTICAL SCREEN PASS; PHYSICAL PROOF OPEN
+ADP-LC-07,M2.5 edge tear-out average shear,3.5564 MPa,120.0 MPa project screen from required 240 MPa MTR yield,33.74,ANALYTICAL SCREEN PASS; PHYSICAL PROOF OPEN
+ADP-LC-08,adapter net-section average stress,2.2206 MPa,240.0 MPa required MTR yield,108.08,ANALYTICAL SCREEN PASS; PHYSICAL PROOF OPEN
+ADP-LC-09,20-2040 M5 internal-thread shear,681.12 N,6856.9 N R56 conservative inferred capacity,10.07,ANALYTICAL SCREEN PASS; RECEIVED THREAD/PROOF OPEN
+ADP-LC-10,20-2040 strong-axis bending,6.0067 MPa,172.37 MPa published profile yield,28.70,ANALYTICAL SCREEN PASS; JOINT/DEFLECTION/FATIGUE OPEN
