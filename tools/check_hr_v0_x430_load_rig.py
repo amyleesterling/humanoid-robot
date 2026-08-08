@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "test-fixtures" / "hr-v0" / "x430-load-rig-p0.1"
 WEB = ROOT / "release" / "hr-v0" / "x430-load-rig-p0.1"
 MAGTROL = ROOT / "cad" / "vendor" / "magtrol" / "hb-450m-r102"
+PT_SOURCE = ROOT / "cad" / "vendor" / "magtrol" / "pt-series-r104"
 
 
 def rows(name: str) -> list[dict[str, str]]:
@@ -58,13 +59,14 @@ def main() -> None:
     holds = rows("open-hold-register.csv")
     if len(holds) != 14 or any(r["state"] != "OPEN" for r in holds): errors.append("hold state changed")
     sources = rows("source-register.csv")
-    if len(sources) != 6 or sources[2]["local_sha256"] != "2EE1136C6CA3B2202A13BC11DEA1A18EEB9D261B7E7D776EE940699C7F89EDE1": errors.append("source register changed")
+    if len(sources) != 6 or sources[2]["local_sha256"] != "2EE1136C6CA3B2202A13BC11DEA1A18EEB9D261B7E7D776EE940699C7F89EDE1" or sources[3]["local_sha256"] != "5B1B991767A5801975485F22430931EBB6990B1E957D554CD8AE9B8D2CC00655": errors.append("source register changed")
     expected_hashes = {
         "HB-450M_B_EF.step":"2EE1136C6CA3B2202A13BC11DEA1A18EEB9D261B7E7D776EE940699C7F89EDE1",
         "hb-450m-rev-a.pdf":"B60AE3A2B5E4CB18BA8F9875AD1C44B6AD78002DC2E2E880331C67FFE1FEB77F",
     }
     for name, expected_hash in expected_hashes.items():
         if sha256(MAGTROL / name) != expected_hash: errors.append(f"controlled Magtrol source changed: {name}")
+    if sha256(PT_SOURCE / "PT-series-US-02-2022.pdf") != "5B1B991767A5801975485F22430931EBB6990B1E957D554CD8AE9B8D2CC00655": errors.append("controlled PT-series source changed")
 
     status = json.loads((OUT / "package-status.json").read_text(encoding="utf-8"))
     if status.get("identifier") != "HR-V0-X430-LOAD-RIG-P0.1" or status.get("preferred_route") != "LOAD-A": errors.append("package identity changed")
@@ -77,7 +79,7 @@ def main() -> None:
     for phrase in ("A controllable load device", "final configured FR12-H101 gravity test remains mandatory", "font-size:14px", "font-size:16px", "No hardware was connected or energized"):
         if phrase not in guide: errors.append(f"guide boundary/readability missing: {phrase}")
     drawing = (OUT / "load-rig-layout.svg").read_text(encoding="utf-8")
-    for phrase in ("max-width:100%;height:auto", "DO NOT BUILD OR POWER FROM THIS LAYOUT", "does not reproduce the final FR12-H101 configured joint"):
+    for phrase in ("max-width:100%;height:auto", "600×375×20 mm corrected envelope", "DO NOT BUILD OR POWER FROM THIS LAYOUT", "does not reproduce the final FR12-H101 configured joint"):
         if phrase not in drawing: errors.append(f"layout boundary missing: {phrase}")
     if errors: raise SystemExit("HR-V0 X430 load-rig check FAILED:\n- " + "\n- ".join(errors))
     print("HR-V0 X430 load-rig check: PASS")

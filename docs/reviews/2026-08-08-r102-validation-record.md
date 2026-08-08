@@ -4,6 +4,8 @@
 
 R102 responds to the missing controlled load device behind R98–R101 and Sol R12. It issues `HR-V0-X430-LOAD-RIG-P0.1`, a common-bed horizontal actuator/brake characterization topology using controlled Magtrol and ROBOTIS geometry plus fail-closed catalog envelopes and interface placeholders.
 
+R104 later corrected one R102 catalog-envelope interpretation: PT-series dimension `C = 20.0 mm` is the plate thickness; `D = 14.5 mm` is the lower T-slot width. The regenerated R102 review envelope now uses 20.0 mm. R104 contains the controlled source and current profile/support interpretation.
+
 The preferred inquiry route is PT-600 + standard HB-450M-2 + a reviewed riser. A metric Magtrol base-mounted special is an RFI alternative, not an inferred order code. The 80/20 cantilever route is rejected for the current 5.85 kg coaxial drivetrain, and human-held/friction/loose-weight loading is prohibited for powered characterization.
 
 `tools/check_hr_v0_x430_load_rig.py` passes. It checks:

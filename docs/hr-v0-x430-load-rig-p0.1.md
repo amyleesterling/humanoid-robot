@@ -8,6 +8,10 @@ Parents: `HR-V0-X430-DUTY-P0.1`; `HR-V0-X430-FIXTURE-IF-P0.2`; `HR-V0-X430-FIXTU
 
 Date: 2026-08-08
 
+## R104 controlled dimensional erratum
+
+R102 originally modeled the PT-series plate as 14.5 mm thick. Visual reinspection of the official `PT SERIES - US 02/2022` profile shows that `C = 20.0 mm` is the plate thickness and `D = 14.5 mm` is the lower T-slot width. The current generated R102 envelope is corrected to 600 × 375 × 20 mm. R104 controls the drawing-derived slot profile and brake-support interface. No earlier 14.5 mm thickness model may be used for layout, quotation or fabrication.
+
 ## Decision
 
 Use a common-bed, coaxial actuator/brake topology as the preferred **inquiry route** for controlled X430 characterization. The current candidate chain is:

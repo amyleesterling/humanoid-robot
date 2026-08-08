@@ -1,0 +1,9 @@
+record,item,acceptance,result,reviewer
+BS-RI-01,"4866 identity, revision, package contents and trace",MANUFACTURER-CONFIRMED RECORD REQUIRED,NOT EXECUTED,UNASSIGNED
+BS-RI-02,4866 O/P/Q/R/S/T/U/W/X/Y dimensions and center opening,CONTROLLED DRAWING + INSPECTION PLAN REQUIRED,NOT EXECUTED,UNASSIGNED
+BS-RI-03,"PT-600 identity, length/width/thickness, slot count/profile/pitch and countersunk holes",CONTROLLED CAD/DRAWING + INSPECTION PLAN REQUIRED,NOT EXECUTED,UNASSIGNED
+BS-RI-04,FX104-C01 material certificate and full FAI,RELEASED DRAWING REQUIRED,NOT EXECUTED,UNASSIGNED
+BS-RI-05,all fastener/T-nut identities and received dimensions,RELEASED BOM/STACK REQUIRED,NOT EXECUTED,UNASSIGNED
+BS-RI-06,assembled 4866/brake/adapter/PT torque and witness controls,RELEASED PROCEDURE REQUIRED,NOT EXECUTED,UNASSIGNED
+BS-RI-07,"installed axis height, coaxiality, runout and end float",RELEASED LIMITS + UNCERTAINTY REQUIRED,NOT EXECUTED,UNASSIGNED
+BS-RI-08,"support proof, slip witness, guard/catch and post-test inspection",QUALIFIED TEST PLAN REQUIRED,NOT EXECUTED,UNASSIGNED

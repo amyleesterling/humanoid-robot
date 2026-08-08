@@ -29,13 +29,14 @@ WARNING = "PRELIMINARY - LOAD-RIG/RFI CANDIDATE ONLY - NOT APPROVED FOR QUOTATIO
 OUT = ROOT / "test-fixtures" / "hr-v0" / "x430-load-rig-p0.1"
 WEB = ROOT / "release" / "hr-v0" / "x430-load-rig-p0.1"
 MAGTROL = ROOT / "cad" / "vendor" / "magtrol" / "hb-450m-r102"
+PT_SOURCE = ROOT / "cad" / "vendor" / "magtrol" / "pt-series-r104"
 ROBOTIS = ROOT / "cad" / "vendor" / "robotis" / "x430-fr12-r91"
 
 AXIS_Z = 120.0
 BASE_X0 = -200.0
 BASE_L = 600.0
 BASE_W = 375.0
-BASE_T = 14.5
+BASE_T = 20.0
 COUPLING_X0 = 52.0
 COUPLING_L = 44.5
 COUPLING_OD = 33.3
@@ -85,7 +86,7 @@ text{{font-family:Arial,sans-serif;fill:#102a43;font-size:20px}}.h{{font-size:36
 <text x="55" y="185" class="h">Common-bed side elevation</text><rect x="100" y="710" width="980" height="24" class="g"/><line x1="120" y1="500" x2="1170" y2="500" class="x"/>
 <rect x="150" y="405" width="75" height="190" class="b"/><rect x="225" y="435" width="150" height="130" rx="60" class="g"/><rect x="375" y="405" width="75" height="190" class="b"/><rect x="450" y="430" width="130" height="140" rx="20" class="s"/>
 <rect x="580" y="460" width="90" height="80" class="b"/><rect x="670" y="474" width="145" height="52" class="g"/><rect x="815" y="360" width="250" height="280" rx="30" fill="#b7c4cf" stroke="#334e68" stroke-width="3"/>
-<text x="130" y="650">TFF400 / X430 fixed-case stack</text><text x="575" y="420">output-adapter placeholder</text><text x="670" y="455">MJC33 15×15 envelope</text><text x="820" y="330">exact HB-450M STEP</text><text x="100" y="775">PT-600 600×375×14.5 mm envelope only — slots, hardware and anchoring intentionally absent</text>
+<text x="130" y="650">TFF400 / X430 fixed-case stack</text><text x="575" y="420">output-adapter placeholder</text><text x="670" y="455">MJC33 15×15 envelope</text><text x="820" y="330">exact HB-450M STEP</text><text x="100" y="775">PT-600 600×375×20 mm corrected envelope only — slots, hardware and anchoring intentionally absent</text>
 <text x="1140" y="185" class="h">Evidence boundary</text><text x="1160" y="235" class="sm">Brake, X430 and FR12 geometry:</text><text x="1160" y="265" class="sm">controlled vendor files.</text><text x="1160" y="310" class="sm">Base and coupling:</text><text x="1160" y="340" class="sm">catalog envelopes only.</text><text x="1160" y="385" class="sm">Output adapter and brake riser:</text><text x="1160" y="415" class="sm">placeholders, not fabrication CAD.</text><text x="1160" y="460" class="sm">Guard, wiring, anchors, thermal</text><text x="1160" y="490" class="sm">controls and limits: OPEN.</text>
 <rect x="55" y="840" width="1490" height="150" fill="#fff" stroke="#8b1e1e" stroke-width="3"/><text x="85" y="885" class="w">DO NOT BUILD OR POWER FROM THIS LAYOUT.</text><text x="85" y="930">This route characterizes an actuator against a brake; it does not reproduce the final FR12-H101 configured joint.</text><text x="85" y="970">Manufacturer application acceptance, qualified design, full guarding and a separate powered-work authorization are mandatory.</text></svg>''', encoding="utf-8", newline="\n")
 
@@ -195,7 +196,7 @@ def main() -> int:
         {"source":"LR-SRC-001","organization":"Magtrol","record":"HB/MHB hysteresis brake datasheet","revision_date":"©2025; accessed 2026-08-08","locator":"https://www.magtrol.com/wp-content/uploads/hb-mhb.pdf","local_sha256":"NOT DOWNLOADED","use":"HB-450M-2 torque/current/power/speed/thermal/flyback boundary"},
         {"source":"LR-SRC-002","organization":"Magtrol","record":"HB-450M installation drawing Rev A","revision_date":"Rev A, 2004-01-29; accessed 2026-08-08","locator":"https://www.magtrol.com/wp-content/uploads/hb-450m.pdf","local_sha256":"B60AE3A2B5E4CB18BA8F9875AD1C44B6AD78002DC2E2E880331C67FFE1FEB77F","use":"metric shaft and mounting interface; local PDF is drawing only"},
         {"source":"LR-SRC-003","organization":"Magtrol","record":"HB-450M_B_EF STEP","revision_date":"downloaded 2026-08-08; publisher revision not exposed","locator":"https://www.magtrol.com/product/hysteresis-brakes/","local_sha256":"2EE1136C6CA3B2202A13BC11DEA1A18EEB9D261B7E7D776EE940699C7F89EDE1","use":"exact vendor review geometry; placement provisional"},
-        {"source":"LR-SRC-004","organization":"Magtrol","record":"PT Series T-slot base plates PT25","revision_date":"US 02/2022; accessed 2026-08-08","locator":"https://www.magtrol.com/wp-content/uploads/pt25.pdf","local_sha256":"NOT DOWNLOADED","use":"PT-600 envelope, pitch, mass and product identity"},
+        {"source":"LR-SRC-004","organization":"Magtrol","record":"PT Series T-slot base plates PT25","revision_date":"US 02/2022; accessed 2026-08-08","locator":"https://www.magtrol.com/wp-content/uploads/pt25.pdf","local_sha256":sha256(PT_SOURCE / "PT-series-US-02-2022.pdf"),"use":"PT-600 corrected 600 x 375 x 20 mm envelope, profile, pitch, mass and product identity; countersunk holes omitted"},
         {"source":"LR-SRC-005","organization":"Ruland","record":"MJC33-15-A / JD21/33-92Y / MJS33-15-A","revision_date":"live product page accessed 2026-08-08","locator":"https://www.ruland.com/mjc33-15-a-jd21-33-92y-mjs33-15-a.html","local_sha256":"NOT DOWNLOADED","use":"coupling envelope, torque, stiffness, speed and fit boundary"},
         {"source":"LR-SRC-006","organization":"ROBOTIS","record":"HN12-N101 Set","revision_date":"live product page accessed 2026-08-08","locator":"https://www.robotis.us/hn12-n101-set/","local_sha256":"NOT DOWNLOADED","use":"candidate identity/compatibility only"},
     ])

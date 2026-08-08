@@ -1,0 +1,10 @@
+record,subject,value_mm,evidence,state
+DIM-01,PT plate width B,375.0,PT US 02/2022,DRAWING CONTROLLED
+DIM-02,PT plate thickness C,20.0,PT US 02/2022,CORRECTED DRAWING CONTROLLED
+DIM-03,PT slot pitch A,25.0,PT US 02/2022,DRAWING CONTROLLED
+DIM-04,PT lower slot width D / opening E / depth F / lip G,14.5 / 8.0 / 12.0 / 5.0,PT US 02/2022,DRAWING CONTROLLED; TOLERANCES OPEN
+DIM-05,4866 O / P / Q / R / S,117.3 / 104 / 12.7 / 76 / 120.4,HB/MHB 2025 page 11,DRAWING CONTROLLED; BODY CAD OPEN
+DIM-06,4866 T / ØU / ØW / X / Y,14.2 / 60 / 6.6 / 6.4 / 12.7,HB/MHB 2025 page 11,DRAWING CONTROLLED; APPLICATION OPEN
+DIM-07,FX104-C01 envelope,90 x 160 x 24,project review allocation,NOT TOLERANCED OR RELEASED
+DIM-08,nominal axis height,20 + 24 + 76 = 120,drawing/project arithmetic,NOMINAL ONLY; ALIGNMENT/TOLERANCE OPEN
+DIM-09,4866 model center opening,Ø50 visual clearance in simplified envelope,NOT PUBLISHED; clears exact HB boss/key envelope only,NOT A FABRICATION DIMENSION

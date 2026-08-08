@@ -1,0 +1,5 @@
+route,topology,disposition,boundary
+BS-A,Magtrol 4866 + FX104-C01 + PT-600,PREFERRED INQUIRY - NOT SELECTED,4866 CAD/material/mass/hardware/allowables and adapter release evidence absent
+BS-B,Magtrol-approved direct or special metric base route,MANUFACTURER ALTERNATIVE - IDENTITY REQUIRED,"no exact product identity, geometry or acceptance"
+BS-C,custom HB-450M face-mount bracket using 3 x M5 on PCD 60,FALLBACK ONLY - NOT DEFINED,use only if 4866 is unavailable/rejected; full qualified design required
+BS-D,"body clamp, shaft-bearing support, hand restraint or loose blocking",PROHIBITED,"uncontrolled case/shaft loads, retention and stored energy"

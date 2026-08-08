@@ -1,0 +1,13 @@
+hold_id,missing_evidence,state,effect
+BS-HOLD-01,"controlled 4866 catalog dimensions acquired; current availability, body CAD, material, mass, hardware, allowables and application acceptance absent",PARTIAL,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+BS-HOLD-02,"controlled PT profile acquired; body CAD, countersunk pattern, tolerances, T-slot hardware, allowables and application acceptance absent",PARTIAL,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+BS-HOLD-03,"FX104-C01 material, finish, threads, GD&T, analysis, DFM, FAI and proof",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+BS-HOLD-04,"three HB-to-4866 and two 4866-to-adapter exact fastener stacks, preload, locking, torque and reuse controls",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+BS-HOLD-05,"four PT T-nut/bolt/washer identities, fit, clamp load, slip resistance, torque and proof",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+BS-HOLD-06,"assembled center height, coaxiality, parallelism, runout, end float, shimming and measurement uncertainty",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+BS-HOLD-07,brake/coupling extraneous-load and full-bearing-support application acceptance,OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+BS-HOLD-08,"dedicated brake source, control, flyback, interruption, current/temperature limits and fault injection",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+BS-HOLD-09,"complete rotating guard, independent catch, access prevention, hot-surface and containment proof",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+BS-HOLD-10,"PT common-bed support, countersunk attachments, Boston substrate/site permission, anchors and proof",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+BS-HOLD-11,"FUTEK application, calibration, instrumentation and uncertainty closure",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+BS-HOLD-12,final configured FR12-H101 gravity/bearing/cable/moving-mass test and qualified powered-work authorization,OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
