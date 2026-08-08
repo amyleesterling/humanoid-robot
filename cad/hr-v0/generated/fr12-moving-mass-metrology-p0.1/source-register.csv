@@ -1,0 +1,7 @@
+source_id,title,locator,revision_or_date,use,sha256
+FR12-SRC-01,ROBOTIS FR12-H101K Set,https://www.robotis.us/fr12-h101k-set/,live page; no formal revision displayed; checked 2026-08-08,"SKU, included HN12-I101, hardware contents and conflicting 0.10 lb commerce field",LIVE PRIMARY PAGE - NO LOCAL SNAPSHOT
+FR12-SRC-02,ROBOTIS HN12-I101 Set,https://www.robotis.us/hn12-i101-set/,live page; no formal revision displayed; checked 2026-08-08,"SKU, component contents and conflicting 0.20 lb commerce field",LIVE PRIMARY PAGE - NO LOCAL SNAPSHOT
+FR12-SRC-03,ROBOTIS X430 model reference drawings,https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh430-v210/,live page; checked 2026-08-08; FR12 drawing dated 2026-01-07,official FR12-H101 drawing/STEP provenance,LIVE PRIMARY PAGE - LOCAL FILES HASHED SEPARATELY
+FR12-SRC-04,controlled FR12-H101 STEP,cad/vendor/robotis/x430-fr12-r91/fr12_h101.stp,manufacturer file acquired R91,frame-only geometry and support envelope,18C2021EB0DF523E5879B745D58201FF30FC4E812DF8A2E83829A59A8D9FEE4C
+FR12-SRC-05,controlled FR12-H101 drawing,cad/vendor/robotis/x430-fr12-r91/fr12_h101_ref.pdf,drawing date 2026-01-07,received source-parity reference,50C41E8D6548F0A89BECBB569DD41A250914FE673E20624C1460B0B298A381BF
+FR12-SRC-06,R97 generator,tools/generate_hr_v0_fr12_mass_metrology.py,repository-controlled,"reproduce geometry, bounds, templates and guide",9722C255DAC56FFD3CF31766D98E02A8CF49CC19E951236ED8908A84F8EA60FA

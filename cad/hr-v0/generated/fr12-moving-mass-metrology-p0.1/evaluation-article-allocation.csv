@@ -1,0 +1,4 @@
+allocation_id,source_line,article,order_code,quantity_needed,measurement_use,state
+FR12-EA-01,EVA-010 / BOM-018,OpenMANIPULATOR-X Frame Set RM-X52,ROBOTIS SKU 905-0023-000,1,source one FR12-H101 frame and one HN12-I101 set; retain kit traceability,PROGRAM OWNER APPROVAL REQUIRED - NOT PURCHASED OR RECEIVED
+FR12-EA-02,EVA-004 / BOM-007,XM430-W350-T,ROBOTIS SKU 902-0124-000,1,unpowered temporary fit article only after fastener/assembly hold closes,PROGRAM OWNER APPROVAL REQUIRED - NOT PURCHASED OR RECEIVED
+FR12-EA-03,RM-X52 received contents,"installed bolts, spacer rings, idler and output-side moving hardware",RECEIVED ALLOCATION REQUIRED,SELECTION REQUIRED,freeze exact installed moving subset and prevent double counting,NOT ALLOCATED

@@ -52,6 +52,12 @@ P0.7 remains the controlled ledger. XM430 is not selected, no P0.8 geometry exis
 
 This is still not `MASS-002` closure. FR12 frame and idler hardware, exact fasteners, bumper, complete gripper mechanics, connectors, cable guides, strain relief and moving harness remain absent; no complete assembly has been weighed; and no local COM or inertia has been measured. P0.7 remains controlled, XM430 is not selected and the P0.7 metal route remains held. See `docs/hr-v0-x430-elbow-architecture-p0.8.md`.
 
+## R96/R97 X430 comparison load evidence
+
+`HR-V0-ARM-LOAD-P1.1-X430-CANDIDATE` replaces the earlier P1.1 subtotal narrative with an evidence-classed J2-moving model: 143.485169 g exact/catalog-estimated known subset plus 210 g gripper and 100 g payload point allocations. It is explicitly incomplete and not an upper bound.
+
+`HR-V0-FR12-MASS-MET-P0.1` addresses only the excluded FR12-H101/idler physical-input route. It rejects internally inconsistent official storefront weight fields, binds the frame-only STEP envelope, and supplies blank repeated-mass, reaction-COM, as-built-envelope and inertia-bound records. No article or measurement exists, so `LOAD-OPEN-01`, `MASS-002` and `EG-007` remain open/partial. See `docs/hr-v0-x430-load-basis-p1.1.md` and `docs/hr-v0-fr12-moving-mass-metrology-p0.1.md`.
+
 ## Closure procedure
 
 1. Freeze the exact configuration and repository commit.
