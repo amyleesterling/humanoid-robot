@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" style="max-width:100%;height:auto">
+<style>text{font-family:Arial,sans-serif;fill:#102a43;font-size:20px}.h{font-size:36px;font-weight:700;fill:#082b55}.w{font-size:19px;font-weight:700;fill:#8b1e1e}.p{stroke:#082b55;stroke-width:3;fill:#e4f6ff}.g{stroke:#8a5b00;stroke-width:3;fill:#f4b942}.x{stroke:#9b1c1c;stroke-width:2;stroke-dasharray:9 7}.d{stroke:#102a43;stroke-width:2;fill:none}.s{font-size:17px}</style>
+<rect width="1600" height="1100" fill="#f7fbff"/><text x="50" y="58" class="h">HR-V0-X430-FIXTURE-IF-P0.2 · adapter-interface drawing</text>
+<text x="50" y="96" class="w">PRELIMINARY - RFI/RFQ REVIEW CANDIDATE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY,</text>
+<text x="50" y="126" class="w">CONNECTION, POWERED TEST, MOTION, OR ENERGIZATION</text>
+<text x="55" y="180" class="h">Side section · X430 joint axis horizontal</text>
+<rect x="145" y="310" width="52" height="390" class="p"/><rect x="197" y="400" width="205" height="210" rx="100" class="g"/>
+<rect x="402" y="300" width="53" height="410" class="p"/><rect x="455" y="298" width="235" height="52" class="p"/>
+<rect x="550" y="350" width="120" height="220" rx="25" fill="#7dd3fc" stroke="#0b63a3" stroke-width="3"/>
+<line x1="70" y1="505" x2="760" y2="505" class="x"/><line x1="610" y1="240" x2="610" y2="760" class="x"/>
+<text x="132" y="735">fixed adapter 13.0</text><text x="376" y="735">active flange 13.0</text><text x="486" y="285">12.7 shelf to S102 center face</text>
+<text x="80" y="900" class="s">Gold: drawing-derived TFF400 envelope. Pale blue: custom CNC adapter candidates. Sky blue: exact ROBOTIS solids.</text>
+<text x="80" y="935" class="w">The fixed-adapter support pattern, connector orientation, fillets, tooling access, material allowables and proof remain OPEN.</text>
+<text x="850" y="180" class="h">Controlled candidate features</text>
+<text x="880" y="230">TFF flange: 100 × 100 × 13.0 mm</text><text x="880" y="270">Pilot: Ø18.98 ±0.02 × 2.50 ±0.05 mm</text>
+<text x="880" y="310">TFF clearance: 4 × Ø4.50 ±0.05 on BCD31.75 basic</text><text x="880" y="350">Pattern position: Ø0.10 to pilot datum axis</text>
+<text x="880" y="390">Mating-face flatness: 0.05 / 50 mm candidate</text><text x="880" y="430">Candidate finish: Ra 1.6 µm; deburr 0.2–0.5 mm</text>
+<text x="880" y="490">Active shelf: 52.4 × 50.0 × 12.7 mm</text><text x="880" y="530">S102 axes: X=±12, Y=±6 mm; 4 × M2.5×0.45</text>
+<text x="880" y="570">Candidate screws: M2.5×12 low head; NOT SELECTED</text><text x="880" y="610">Nominal screw-head/X430 gap: 1.900 mm</text>
+<text x="880" y="670" class="w">Required before quote/fabrication:</text><text x="900" y="710">manufacturer CAD and application confirmation</text>
+<text x="900" y="750">GD&amp;T/threads/fillets/access reviewed by qualified engineer</text><text x="900" y="790">FEA, fatigue, fastener, deflection and proof definition</text>
+<text x="900" y="830">received-part CMM/fit evidence and controlled first article</text>
+<rect x="70" y="985" width="1460" height="160" fill="#fff" stroke="#8b1e1e" stroke-width="3"/>
+<text x="95" y="1035" class="w">DO NOT FABRICATE FROM THIS DRAWING.</text><text x="95" y="1080">Dimensions define a review candidate and vendor questions; they are not production authority.</text>
+<text x="95" y="1120">All tolerances are provisional until the sensor manufacturer, machinist and qualified mechanical reviewer accept the stack.</text></svg>

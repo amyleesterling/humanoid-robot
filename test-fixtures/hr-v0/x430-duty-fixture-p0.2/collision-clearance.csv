@@ -1,0 +1,6 @@
+check_id,pair,method,result,state
+CLR-001,active adapter / exact X430,exact B-Rep nominal intersection,0.000000000 mm3,NOMINAL PASS ONLY - TOLERANCE/RECEIVED CHECK OPEN
+CLR-002,active adapter / exact S102 nonmating solid,exact B-Rep nominal intersection,0.000000000 mm3,NOMINAL PASS ONLY - MATING CONTACT EXCLUDED
+CLR-003,candidate low heads / exact X430,exact B-Rep nominal intersection,0.000000000 mm3; gap 1.900000 mm,NOMINAL PASS ONLY - 1.900 MM GAP HAS NO ALLOCATED TOLERANCE
+CLR-004,TFF connector/cable / active adapter,not modeled; manufacturer says connector position may vary,NO RESULT,OPEN - CONTROLLED CAD/ORIENTATION/KEEP-OUT REQUIRED
+CLR-005,tools / all fasteners / X430 cable,not modeled,NO RESULT,OPEN - ASSEMBLY/TOOL/CABLE ACCESS REQUIRED

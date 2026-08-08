@@ -1,0 +1,9 @@
+rfi_id,recipient,question,evidence_needed,state
+RFI-001,FUTEK applications engineering,Provide current controlled 3D CAD and drawing revision for FSH04015; confirm all interface dimensions and connector angular position.,controlled CAD/drawing response tied to item and revision,NOT SENT
+RFI-002,FUTEK applications engineering,"Accept or correct Ø18.98±0.02 male pilot, Ø4.50 clearance holes, 13.0 mm 6061-T651 flange and face flatness/finish candidates.",written application disposition and required GD&T,NOT SENT
+RFI-003,FUTEK applications engineering,"Confirm screw grade, washer, minimum/max engagement and 25–30 lbf-in installation torque for both FSH04015 flanges.",written fastener/joint instruction for this item/application,NOT SENT
+RFI-004,FUTEK applications engineering,"Confirm torque-axis mapping and use of EL1065 coefficients for 1.087, 4.1 and 11 N·m cyclic profiles plus 16.5 N·m accidental overload.","accepted load cases, fatigue/overload limits and extraneous-load method",NOT SENT
+RFI-005,FUTEK applications engineering,"Quote CW+CCW system calibration, calibration uncertainty, exact cable/right-angle option and compatible conditioner for dynamic use.",formal quote/configuration and calibration scope,NOT SENT
+RFI-006,ROBOTIS support,Confirm whether the four S102 center-face M2.5 locations may support the external reaction bracket and provide installation torque/allowable loads.,written application response tied to FR12-S102K/X430,NOT SENT
+RFI-007,candidate CNC supplier,"Review monolithic 6061-T651 geometry for tool access, fillets, distortion, inspection and first-article capability; do not quote until engineering release.",DFM response only; no production authorization,NOT SENT
+RFI-008,qualified mechanical reviewer,"Independently review load path, FEA plan, fatigue, fasteners, stiffness, tolerance stack, proof and guard/catch interfaces.",signed findings/disposition,NOT SENT

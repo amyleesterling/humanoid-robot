@@ -1,0 +1,35 @@
+{
+  "identifier": "HR-V0-X430-FIXTURE-IF-P0.2",
+  "parent": "HR-V0-X430-FIXTURE-P0.1",
+  "candidate_parts": [
+    "FX100-C01",
+    "FX100-C02"
+  ],
+  "nominal_collision_check": {
+    "active_adapter_x430_mm3": 0.0,
+    "active_adapter_s102_mm3": 0.0,
+    "fixed_adapter_x430_mm3": 0.0,
+    "screw_head_x430_mm3": 0.0,
+    "nominal_screw_head_x430_gap_mm": 1.9000000000000057
+  },
+  "open_hold_count": 14,
+  "rfi_state": "NOT SENT",
+  "release_flags": {
+    "procurement": false,
+    "quotation": false,
+    "fabrication": false,
+    "assembly": false,
+    "connection": false,
+    "powered_test": false,
+    "motion": false,
+    "energization": false,
+    "safety_credit": false,
+    "build_release": false
+  },
+  "source_sha256": {
+    "x-430_idle.stp": "7FF4E39475245D5C1FC4F703E9241FCA1A09D57AED920274498DBE2CD5E31E22",
+    "fr12_s102.stp": "671C847A9A946F5F3BB0B42EF9816A8476BECEBB36D1B0CC8B826FF2FA7667A8",
+    "fr12_h101.stp": "18C2021EB0DF523E5879B745D58201FF30FC4E812DF8A2E83829A59A8D9FEE4C"
+  },
+  "warning": "PRELIMINARY - RFI/RFQ REVIEW CANDIDATE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TEST, MOTION, OR ENERGIZATION"
+}
