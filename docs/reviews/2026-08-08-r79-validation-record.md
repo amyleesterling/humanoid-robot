@@ -21,7 +21,7 @@ Round: R79
 - Complete pre-manifest repository suite: PASS; 28 non-manifest checkers plus the two native PCB checkers. Traceability remains 81 requirements, 40 risks, 104 procedures and 56 release/walking-document procedure references.
 - Release manifest: PASS with 866 package files; final clean-clone verification follows the R79 commit.
 - Desktop/mobile visual QA: PASS at 1280 x 720 and 390 x 844; minimum functional text is 16 px, there is no page-level horizontal overflow, and wide tables scroll within their own containers on mobile.
-- Clean-clone and remote-branch verification: pending final R79 commit.
+- Clean-clone and remote-branch verification: PASS; the release manifest and key R79 electrical/E2 checks reproduced from a clean clone, and the remote branch was verified after push.
 
 ## Release boundary
 
