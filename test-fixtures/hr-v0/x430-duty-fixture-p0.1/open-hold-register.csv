@@ -1,0 +1,15 @@
+hold_id,closure_needed,state
+FXH-01,"FUTEK written application confirmation for TFF400 orientation, side loads, mounting and expected dynamic profile",OPEN
+FXH-02,"Exact torque sensor, bidirectional system calibration, amplifier and cable configuration selected and received",OPEN
+FXH-03,"Dimensioned fixed-side adapter with material, fits, holes, fasteners, tolerances and tool access",OPEN
+FXH-04,"Dimensioned active-side adapter to exact received S102/X430 with interference, stiffness and FAI evidence",OPEN
+FXH-05,"Complete materials, fasteners, locking, torque, edge treatment and manufacturing process for all fixture parts",OPEN
+FXH-06,"Qualified structural/load-path calculation including shock, fatigue, deflection, local stress and sensor overload protection",OPEN
+FXH-07,"Boston site bench survey, permission, substrate, exact anchors, installation and proof evidence",OPEN
+FXH-08,Independent physical catch containing link and load after branch removal and single fixture-control failure,OPEN
+FXH-09,Full guard and access closure for the actual swept/pinch/ejected-part volume with impact/retention proof,OPEN
+FXH-10,"Non-human controlled load device, profile, retention, balance and reverse-energy behavior",OPEN
+FXH-11,"Cable, connector, strain relief, bend, separation and temperature-sensor routing",OPEN
+FXH-12,"Acquisition ranges, rates, settling, synchronization, calibration and uncertainty budget",OPEN
+FXH-13,"Independent branch interruption, accepted abort logic, source limits, overload and regenerated-energy controls",OPEN
+FXH-14,"As-built inspection, unpowered proof, qualified mechanical/electrical review and separate powered-work authorization",OPEN

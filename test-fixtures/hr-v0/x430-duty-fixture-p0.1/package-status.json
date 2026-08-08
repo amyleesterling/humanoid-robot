@@ -1,0 +1,30 @@
+{
+  "identifier": "HR-V0-X430-FIXTURE-P0.1",
+  "warning": "PRELIMINARY - DIMENSIONED REVIEW CANDIDATE ONLY - NOT APPROVED FOR QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TEST, MOTION, CONNECTION, OR ENERGIZATION",
+  "state": "DIMENSIONED_TOPOLOGY_CANDIDATE_NOT_SELECTED",
+  "preferred_topology": "TFF400 FSH04015 stationary reaction torque with LSB205 static cross-check",
+  "open_hold_count": 14,
+  "source_sha256": {
+    "x-430_idle.stp": "7FF4E39475245D5C1FC4F703E9241FCA1A09D57AED920274498DBE2CD5E31E22",
+    "fr12_s102.stp": "671C847A9A946F5F3BB0B42EF9816A8476BECEBB36D1B0CC8B826FF2FA7667A8",
+    "fr12_h101.stp": "18C2021EB0DF523E5879B745D58201FF30FC4E812DF8A2E83829A59A8D9FEE4C"
+  },
+  "screen_values": {
+    "tff_capacity_to_x430_stall_endpoint_ratio": 2.682926829,
+    "lsb205_100mm_nominal_moment_nm": 11.1
+  },
+  "release_flags": {
+    "sensor_selected": false,
+    "fixture_buildable": false,
+    "fixture_fabrication_released": false,
+    "fixture_assembly_released": false,
+    "fixture_guard_complete": false,
+    "fixture_catch_complete": false,
+    "bench_anchor_selected": false,
+    "powered_test_authorized": false,
+    "motion_authorized": false,
+    "connection_authorized": false,
+    "energization_authorized": false,
+    "duty_hold_08_closed": false
+  }
+}

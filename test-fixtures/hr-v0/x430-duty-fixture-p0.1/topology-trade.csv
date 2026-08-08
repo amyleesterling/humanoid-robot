@@ -1,0 +1,5 @@
+option,topology,evidence_strength,limitations,disposition
+TOP-A,TFF400 FSH04015 stationary reaction torque in fixed-case load path,continuous external reaction-torque channel,custom fixed/active interfaces; reaction includes drive dynamics; output-torque interpretation and system calibration required,PREFERRED EVALUATION CANDIDATE - NOT SELECTED
+TOP-B,LSB205 FSH04097 tangential force at measured 100 mm arm,independent static/cyclic force cross-check,"line-of-action, changing tangent geometry, off-axis load, arm deflection and exact cable/conditioner unresolved",RETAIN AS STATIC CROSS-CHECK CANDIDATE - NOT SELECTED
+TOP-C,motor current / DYNAMIXEL telemetry only,supplemental correlation,cannot establish external torque or continuous rating,REJECT AS PRIMARY TORQUE EVIDENCE
+TOP-D,"human-held scale, strap or applied force",none acceptable,person enters stored-energy and sweep hazard,PROHIBITED TEST METHOD
