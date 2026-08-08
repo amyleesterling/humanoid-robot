@@ -1,4 +1,4 @@
-ERC report (2026-08-08T02:48:23, Encoding UTF8)
+ERC report (2026-08-08T05:03:18, Encoding UTF8)
 Report includes: Errors, Warnings
 
 ***** Sheet /
@@ -7,7 +7,7 @@ Report includes: Errors, Warnings
 
 ***** Sheet /02 Dual-channel E-stop and RESET eligibility/
 
-***** Sheet /03 Distinct ARM and watchdog eligibility/
+***** Sheet /03 Distinct ARM and watchdog-gated SR1 supply/
 
 ***** Sheet /04 Contactor coils, mirror contacts and EDM/
 

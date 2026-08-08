@@ -10,11 +10,11 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PACKAGE = ROOT / "electrical" / "panel" / "hr-v0-control-panel-p0.4"
+PACKAGE = ROOT / "electrical" / "panel" / "hr-v0-control-panel-p0.5"
 V3 = ROOT / "electrical" / "kicad" / "project-button-v3"
 FORM = ROOT / "tests" / "forms" / "hr-v0-control-panel-receiving-assembly-template.csv"
 H1_FORM = ROOT / "tests" / "forms" / "hr-v0-h1-receiving-template.csv"
-DOC = ROOT / "docs" / "hr-v0-control-panel-p0.4.md"
+DOC = ROOT / "docs" / "hr-v0-control-panel-p0.5.md"
 H1_DOC = ROOT / "docs" / "hr-v0-h1-receiving-p0.1.md"
 PRIMARY_SOURCES = ROOT / "references" / "primary-sources.md"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
@@ -47,7 +47,9 @@ def main() -> int:
         "cable-entry-schedule.csv",
         "stationary-wire-schedule.csv",
         "thermal-space-screen.csv",
+        "supply-gate-routing-register.csv",
         "panel-layout.svg",
+        "watchdog-supply-gate.svg",
     }
     actual_files = {path.name for path in PACKAGE.iterdir()} if PACKAGE.is_dir() else set()
     if actual_files != expected_files:
@@ -102,6 +104,10 @@ def main() -> int:
     for row in bom:
         if not any(token in row.get("physical_release", "") for token in ("HOLD", "NO ")):
             errors.append(f"{row.get('item_id')} has released-looking physical state")
+    kwd_text = " ".join(by_item.get("PAN-015", {}).values()).lower()
+    for required in ("series sr1 a1 supply gate", "zero safety credit", "0.5 a 5 ms inrush", "routing segregation"):
+        if required not in kwd_text:
+            errors.append(f"PAN-015 omits current supply-gate hold: {required}")
 
     backplate = tables.get("backplate-layout.csv", [])
     if len(backplate) != 20:
@@ -207,6 +213,27 @@ def main() -> int:
         extra = sorted(set(actual_wires) - set(expected_wires))
         changed = sorted(key for key in set(expected_wires) & set(actual_wires) if expected_wires[key] != actual_wires[key])
         errors.append(f"physical wire schedule differs from bounded V3 endpoints; missing={missing}, extra={extra}, changed={changed}")
+    wire_text = "\n".join(",".join(row.values()) for row in physical_wires)
+    for prohibited in ("WD1_SAFETY_IN", "WD2_SAFETY_IN"):
+        if prohibited in wire_text:
+            errors.append(f"obsolete watchdog-in-E-stop net remains in physical schedule: {prohibited}")
+    exact_endpoints = {
+        ("S0", "R-2"): "SR1_S12",
+        ("S0", "L-2"): "SR1_S22",
+        ("SR1", "A1"): "SR1_A1_WD_GATED",
+        ("KWD1", "11"): "SAFETY_24V",
+        ("KWD1", "14"): "WD_SUPPLY_INTERMEDIATE",
+        ("KWD2", "11"): "WD_SUPPLY_INTERMEDIATE",
+        ("KWD2", "14"): "SR1_A1_WD_GATED",
+    }
+    by_endpoint = {(row.get("reference"), row.get("terminal")): row for row in physical_wires}
+    for endpoint, expected_net in exact_endpoints.items():
+        row = by_endpoint.get(endpoint, {})
+        if row.get("net") != expected_net:
+            errors.append(f"{endpoint[0]}:{endpoint[1]} expected {expected_net}, got {row.get('net')}")
+    for endpoint in (("SR1", "A1"), ("KWD1", "11"), ("KWD1", "14"), ("KWD2", "11"), ("KWD2", "14")):
+        if "SEGREGATE" not in by_endpoint.get(endpoint, {}).get("routing_zone", "").upper():
+            errors.append(f"{endpoint[0]}:{endpoint[1]} omits explicit segregated supply-gate route")
     physical_fields = ("conductor_part_number", "gauge", "color", "length_mm", "termination_a", "termination_b")
     for row in physical_wires:
         for field in physical_fields:
@@ -240,7 +267,11 @@ def main() -> int:
 
     doc = DOC.read_text(encoding="utf-8") if DOC.is_file() else ""
     for required in (
-        "HR-V0-CP-P0.4",
+        "HR-V0-CP-P0.5",
+        "Project Button Electrical V3-P1.13",
+        "series gate on `SR1:A1`",
+        "0.5 A for 5 ms",
+        "supply-gate-routing-register.csv",
         "P0.1 reserve is physically insufficient",
         "PJ242010RT",
         "PT 4-HESI (5X20)` item `3211861",
@@ -288,6 +319,38 @@ def main() -> int:
         if required not in primary_sources:
             errors.append(f"primary-source register omits H1 evidence limit: {required}")
 
+    routes = tables.get("supply-gate-routing-register.csv", [])
+    if len(routes) != 12 or {row.get("route_id") for row in routes} != {f"SGR-{i:03d}" for i in range(1, 13)}:
+        errors.append("supply-gate register must contain exactly SGR-001..SGR-012")
+    route_text = "\n".join(",".join(row.values()) for row in routes)
+    for required in (
+        "KWD1:11",
+        "KWD1:14 -> KWD2:11",
+        "KWD2:14 -> SR1:A1",
+        "SR1:S11 -> S0:R-1/R-2 -> SR1:S12",
+        "SR1:S21 -> S0:L-1/L-2 -> SR1:S22",
+        "heartbeat loss -> SR1 supply loss -> RESET -> ARM -> fresh trajectory",
+    ):
+        if required not in route_text:
+            errors.append(f"supply-gate register omits: {required}")
+    for row in routes:
+        if row.get("release_state") != "NOT RELEASED":
+            errors.append(f"{row.get('route_id')} has released-looking state")
+
+    gate_svg = PACKAGE / "watchdog-supply-gate.svg"
+    if gate_svg.is_file():
+        try:
+            ET.parse(gate_svg)
+        except ET.ParseError as exc:
+            errors.append(f"watchdog-supply-gate.svg does not parse: {exc}")
+        gate_svg_text = gate_svg.read_text(encoding="utf-8")
+        for required in ("DIRECT E-STOP", "KWD1", "KWD2", "SR1:A1", "NOT RELEASED"):
+            if required not in gate_svg_text:
+                errors.append(f"watchdog-supply-gate.svg omits: {required}")
+        gate_font_sizes = [int(value) for value in re.findall(r"font-size:\s*(\d+)px", gate_svg_text)]
+        if not gate_font_sizes or min(gate_font_sizes) < 16:
+            errors.append(f"watchdog-supply-gate.svg functional font size below 16 px: {gate_font_sizes}")
+
     svg = PACKAGE / "panel-layout.svg"
     if svg.is_file():
         try:
@@ -308,7 +371,8 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print("HR-V0 control-panel P0.4 check passed: 26 BOM rows; 20 backplate allocations; one held sidewall option; 66 V3 wire endpoints")
+    print("HR-V0 control-panel P0.5 check passed: 26 BOM rows; 20 backplate allocations; one held sidewall option; 66 V3 wire endpoints")
+    print("Twelve supply-gate routing controls preserve direct S0 inputs and segregate the ordinary-relay SR1:A1 gate")
     print("Six cable entries, twelve thermal/space screens, twenty-two panel records and fourteen H1 records remain fail-closed")
     print("No hole, cut length, wire, fuse, PE bond, cable entry, PCB fabrication, assembly or energization release exists")
     print(WARNING)

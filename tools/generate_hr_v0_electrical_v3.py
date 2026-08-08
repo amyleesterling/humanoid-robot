@@ -27,9 +27,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P1.12"
+REV = "V3-P1.13"
 PROJECT_TITLE = "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE"
-PROJECT_SUBTITLE = "Separate RESET and ARM, two PNOZ stages, dual watchdog contacts, external adapters, redundant actuator interruption."
+PROJECT_SUBTITLE = "Direct dual-channel E-stop inputs, watchdog-gated SR1 supply, separate RESET/ARM, redundant actuator interruption."
 DATE = "2026-08-08"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 NS = uuid.UUID("4cb40c84-3194-4ded-b2c7-d78df616c5c0")
@@ -207,15 +207,15 @@ def sheets() -> list[Sheet]:
                 "Site receptacles, GFCI/code basis, blade retention and source application review remain open."]
 
     s2 = Sheet(2, "02_estop_eligibility.kicad_sch", "Dual-channel E-stop and RESET eligibility",
-               "Each SR1 input return contains one E-stop NC and one watchdog NO contact; RESET cannot energize K1/K2.")
+               "Each SR1 input return contains only its E-stop NC contact; ordinary watchdog contacts do not enter either input loop.")
     s2.components = [
         Component("S0", "IDEC XW1E-BV402M-R dual-NC E-stop candidate",
-                  [pn("S0", "R-1", "CH1 RIGHT NC MARK 1", "SR1_S11", "left"), pn("S0", "R-2", "CH1 RIGHT NC MARK 2", "WD1_SAFETY_IN", "right"),
-                   pn("S0", "L-1", "CH2 LEFT NC MARK 1", "SR1_S21", "left"), pn("S0", "L-2", "CH2 LEFT NC MARK 2", "WD2_SAFETY_IN", "right")],
+                  [pn("S0", "R-1", "CH1 RIGHT NC MARK 1", "SR1_S11", "left"), pn("S0", "R-2", "CH1 RIGHT NC MARK 2", "SR1_S12", "right"),
+                   pn("S0", "L-1", "CH2 LEFT NC MARK 1", "SR1_S21", "left"), pn("S0", "L-2", "CH2 LEFT NC MARK 2", "SR1_S22", "right")],
                   "PROPOSED - TERMINAL POSITIONS FROZEN; RECEIVED VERIFICATION REQUIRED", "Candidate is documented as 40 mm mushroom, turn/pull reset, 2NC, screw terminal and terminal cover. With TOP up in the manufacturer bottom view, project channel 1 is the right NC pair marked 1-2 and channel 2 is the left NC pair marked 1-2. R-/L- prefixes are project-unique KiCad designators, not extra manufacturer markings. Verify orientation, markings and both positively opening NC channels on the received device before wiring.",
                   "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/emergency-stop-switches/xw-22mm-estop/xw1e-bv402m-r",
                   "IDEC XW product page plus XW-Indicator-Datasheet terminal arrangement, rechecked 2026-08-06; exact received device still requires bottom-view and continuity verification.", position=(75, 82), width=82),
-        pnoz("SR1", (210, 95), {"S11":"SR1_S11", "S12":"SR1_S12", "S21":"SR1_S21", "S22":"SR1_S22", "S34":"SR1_START_RETURN",
+        pnoz("SR1", (210, 95), {"A1":"SR1_A1_WD_GATED", "S11":"SR1_S11", "S12":"SR1_S12", "S21":"SR1_S21", "S22":"SR1_S22", "S34":"SR1_START_RETURN",
                                    "13":"SRA1_S11", "14":"SRA1_S12", "23":"SRA1_S21", "24":"SRA1_S22",
                                    "33":"INTENTIONALLY_UNUSED_SR1_33", "34":"INTENTIONALLY_UNUSED_SR1_34",
                                    "41":"SAFETY_24V", "42":"SR1_DIAG_NC", "Y32":"SR1_STATUS"},
@@ -233,8 +233,8 @@ def sheets() -> list[Sheet]:
                   "https://www.idec.com/en-us/switches-indicator-lights/switches-pushbuttons/22mm-25mm-30mm-switches/hw-22mm-heavy-duty/hw1p-1fqd-a-24v",
                   "IDEC USA current product page and HW Series Catalog_Screw dated 2026-07-23; product page rechecked 2026-08-07. Received terminal identity, internal circuit, polarity/current, brightness and legend acceptance remain open.", position=(75, 190), width=82),
     ]
-    s2.notes = ["Each E-stop return passes through one watchdog NO contact before SR1; heartbeat loss therefore drops SR1.",
-                "RESET release may make SR1 eligible, but SRA1 and K1/K2 remain de-energized until a later ARM.",
+    s2.notes = ["S0 connects directly to both SR1 input returns; no ordinary watchdog terminal is present in either input loop.",
+                "Heartbeat loss opens the separate two-contact SR1 A1 supply gate; after recovery SR1 still requires RESET and SRA1 still requires later ARM.",
                 "Unused SR1 outputs are explicitly named; do not bridge them during wiring."]
 
     s3 = Sheet(3, "03_arm_edm_contactors.kicad_sch", "Distinct ARM, watchdog channels, EDM and contactors",
@@ -247,18 +247,18 @@ def sheets() -> list[Sheet]:
              "Final ARM and external-device-monitoring relay."),
         Component("KWD1", "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060",
                   [pn("KWD1", "A1", "COIL +24V", "SAFETY_24V", "left"), pn("KWD1", "A2", "DRIVER RETURN", "WD1_COIL_N", "left"),
-                   pn("KWD1", "11", "CH1 COM", "WD1_SAFETY_IN", "left"), pn("KWD1", "14", "CH1 NO", "SR1_S12", "right"),
+                   pn("KWD1", "11", "SR1 SUPPLY GATE IN", "SAFETY_24V", "left"), pn("KWD1", "14", "SR1 SUPPLY GATE STAGE 1", "WD_SUPPLY_INTERMEDIATE", "right"),
                    pn("KWD1", "12", "CH1 NC UNUSED", "INTENTIONALLY_UNUSED_KWD1_12", "right"), pn("KWD1", "21", "CH2 COM +24V", "SAFETY_24V", "left"),
                    pn("KWD1", "24", "CH2 NO UNUSED", "INTENTIONALLY_UNUSED_KWD1_24", "right"), pn("KWD1", "22", "CH2 NC FEEDBACK", "WD1_NC_24V", "right")],
-                  "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED", "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received polarity, continuity and welded-contact tests remain open.",
+                  "PROPOSED - SUPPLY-GATE APPLICATION/FMEA/RECEIVED VERIFICATION REQUIRED", "First ordinary watchdog supply-gate stage. Its 11-14 NO contact is in series with KWD2 before SR1:A1 and is not in an E-stop input loop. A welded or internally bypassed contact can defeat only this diagnostic stage, not bridge S0. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received terminal identity, 2.5 W steady/0.5 A 5 ms PNOZ supply-load switching, polarity, continuity, wear and fault tests remain open.",
                   "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf",
                   "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01. Circuit diagram identifies A1/A2, 11-12-14 and 21-22-24; 24 VDC, 18 mA typical, 8 ms pickup, 10 ms release.", (210, 72), 82),
         Component("KWD2", "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060",
                   [pn("KWD2", "A1", "COIL +24V", "SAFETY_24V", "left"), pn("KWD2", "A2", "DRIVER RETURN", "WD2_COIL_N", "left"),
-                   pn("KWD2", "11", "CH1 COM", "WD2_SAFETY_IN", "left"), pn("KWD2", "14", "CH1 NO", "SR1_S22", "right"),
+                   pn("KWD2", "11", "SR1 SUPPLY GATE STAGE 1", "WD_SUPPLY_INTERMEDIATE", "left"), pn("KWD2", "14", "SR1 A1 GATED SUPPLY", "SR1_A1_WD_GATED", "right"),
                    pn("KWD2", "12", "CH1 NC UNUSED", "INTENTIONALLY_UNUSED_KWD2_12", "right"), pn("KWD2", "21", "CH2 COM +24V", "SAFETY_24V", "left"),
                    pn("KWD2", "24", "CH2 NO UNUSED", "INTENTIONALLY_UNUSED_KWD2_24", "right"), pn("KWD2", "22", "CH2 NC FEEDBACK", "WD2_NC_24V", "right")],
-                  "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED", "Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open.",
+                  "PROPOSED - SUPPLY-GATE APPLICATION/FMEA/RECEIVED VERIFICATION REQUIRED", "Second ordinary watchdog supply-gate stage. Its 11-14 NO contact completes SR1:A1 supply only after KWD1. A welded or internally bypassed contact can defeat the diagnostic gate but cannot bridge either S0 input contact. Exact terminals follow the official circuit diagram; PNOZ supply inrush/contact duty, received verification and common controller/supply failures remain open. No PL/SIL credit.",
                   "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf",
                   "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01.", (340, 72), 82),
         Component("S2", "IDEC HW1B-M1F10-G green momentary 1NO ARM",
@@ -285,8 +285,8 @@ def sheets() -> list[Sheet]:
                   [pn("FSR2", "1", "IN", "SRA1_K2_RAW", "left"), pn("FSR2", "2", "OUT", "K2_A1", "right")],
                   "PROPOSED - HOLDER AND END-COVER ORDER CODES FROZEN; FUSE LINK AND COORDINATION SELECTION REQUIRED", "Same exact holder/end-cover candidates and open fuse-link, grouping, coordination and physical-evidence gate as FSR1; manufacturer maxima are not project selections.", "https://www.phoenixcontact.com/en-us/products/fuse-terminal-block-pt-4-hesi-5x20-3211861", "Phoenix Contact official US product pages for items 3211861 and 3030420; rechecked 2026-08-07.", position=(275, 255), width=72),
     ]
-    s3.notes = ["Required sequence after E-stop or watchdog dropout: cause healthy -> RESET press/release -> SAFE_READY -> distinct ARM press/release -> K1/K2 may energize.",
-                "Heartbeat restoration closes only KWD contacts; SR1 remains in monitored-start state until RESET."]
+    s3.notes = ["Required sequence after E-stop or watchdog dropout: cause healthy -> KWD supply gate restored -> RESET press/release -> SAFE_READY -> distinct ARM press/release -> K1/K2 may energize.",
+                "KWD1:11-14 and KWD2:11-14 are series SR1 A1 supply gates, not E-stop input contacts. Heartbeat restoration only repowers SR1; monitored RESET and later ARM remain mandatory."]
 
     s4 = Sheet(4, "04_actuator_distribution.kicad_sch", "Redundant 12 V interruption and separately protected actuator branches",
                "No branch fuse, conductor, connector or service disconnect is released without fault-current and harness evidence.")
@@ -601,16 +601,16 @@ def sheets() -> list[Sheet]:
                 "Site cords, receptacles, GFCI/code basis and source application review remain open."]
 
     s2 = Sheet(2, "02_estop_eligibility.kicad_sch", "Dual-channel E-stop and RESET eligibility",
-               "Each SR1 input return contains one E-stop NC and one watchdog NO contact; RESET cannot energize K1/K2.")
+               "Each SR1 input return contains only one S0 NC contact; RESET cannot energize K1/K2.")
     s2.components = placed(["S0", "SR1", "S1", "H1"], [(left, 85), (right, 95), (left, 205), (right, 205)])
-    s2.notes = ["Heartbeat loss opens both SR1 input returns; recovery alone cannot restore the monitored RESET stage.",
-                "RESET release may make SR1 eligible, but SRA1 and K1/K2 remain de-energized until a later ARM."]
+    s2.notes = ["S0 directly completes both SR1 input returns; ordinary KWD terminals are absent from both loops.",
+                "Heartbeat loss removes SR1 A1 through the separate two-contact supply gate; recovery alone cannot restore the monitored RESET stage."]
 
-    s3 = Sheet(3, "03_arm_watchdog_eligibility.kicad_sch", "Distinct ARM and watchdog eligibility",
-               "SRA1 requires SR1 eligibility, two watchdog channels, EDM proof and a new ARM action.")
+    s3 = Sheet(3, "03_arm_watchdog_eligibility.kicad_sch", "Distinct ARM and watchdog-gated SR1 supply",
+               "Two ordinary KWD contacts gate SR1 A1; SRA1 still requires SR1 outputs, EDM proof and a new ARM action.")
     s3.components = placed(["SRA1", "KWD1", "S2", "KWD2"], [(left, 85), (right, 85), (left, 205), (right, 205)])
-    s3.notes = ["Required after E-stop/watchdog dropout: cause healthy -> RESET press/release -> SAFE_READY -> distinct ARM press/release.",
-                "KWD contacts are in the SR1 returns; SRA1 receives the two SR1 safety outputs directly."]
+    s3.notes = ["Required after E-stop/watchdog dropout: cause healthy -> KWD supply restored -> RESET press/release -> SAFE_READY -> distinct ARM press/release.",
+                "KWD contacts are in series with SR1 A1 only; S0 remains direct in both SR1 input returns and SRA1 receives both SR1 safety outputs directly."]
 
     s4 = Sheet(4, "04_contactor_edm.kicad_sch", "Contactor coils, mirror contacts and EDM",
                "K1 and K2 are distinct final elements; their mirror contacts form the monitored restart return.")
@@ -969,7 +969,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 ## Material corrections relative to V2.1
 
 - Separate SR1 RESET eligibility and SRA1 ARM/EDM stages.
-- Two separately driven watchdog relay contacts interrupt the two SR1 input returns so heartbeat loss forces the physical RESET stage to drop.
+- Two separately driven ordinary watchdog relay contacts are in series with the SR1 A1 supply. Heartbeat loss power-cycles SR1 and forces the physical RESET stage to drop, while S0 remains direct in both SR1 input loops. Internal KWD A1/21-to-14 shorts can defeat the diagnostic gate but cannot inject downstream of S0. Supply switching, protected routing, common-cause analysis and physical proof remain open; the watchdog receives zero safety credit.
 - Phoenix relay terminals are frozen from the official circuit diagram. Both 24 V NC diagnostics pass through the calculated ISO1212DBQ input network before the Pico GPIO. Exact proposed passive order codes are frozen; PCB, received measurements, derating and physical validation remain open.
 - Compute heartbeat crosses an exact VO618A-4X017T optical interface with exact 910 Ohm input and 10 kOhm pullup candidates. Two separate TPL7407LPWR packages drive the two relay coils, with unused inputs tied low, unused outputs open, and local 100 nF COM bypass candidates. These ordinary circuits receive no safety credit and still require PCB, timing, hot-plug, fault-injection, EMC and qualified review.
 - The ISO1212 feedback network uses exact proposed Vishay, Panasonic, TDK and Murata passive order codes. Receiving, PCB land-pattern/placement, DC-bias, pulse, thermal, EMC, fault and HIL evidence remain mandatory.

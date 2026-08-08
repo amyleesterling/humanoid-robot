@@ -18,7 +18,7 @@ $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export svg --output "C:\Us
 Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-01 External listed sources and DC boundaries.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-02 Dual-channel E-stop and RESET eligibility.svg'.
-Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-03 Distinct ARM and watchdog eligibility.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-03 Distinct ARM and watchdog-gated SR1 supply.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-04 Contactor coils, mirror contacts and EDM.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-05 Redundant actuator-power interruption.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-06 Protected actuator branches and central DYNAMIXEL star injection.svg'.

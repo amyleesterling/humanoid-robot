@@ -1,0 +1,16 @@
+{
+  "revision": "HR-V0-WD-SUPPLY-P0.1",
+  "configuration": "Electrical V3-P1.13 / PCB-P0.5 / HR-V0-CP-P0.5",
+  "path_count": 14,
+  "fmea_count": 32,
+  "fault_case_count": 28,
+  "separation_control_count": 12,
+  "open_decision_count": 10,
+  "df01_safety_credit": "ZERO",
+  "encoded_internal_kwd_to_estop_return_path_removed": true,
+  "physical_noninterference_proved": false,
+  "physical_test_executed": false,
+  "qualified_review_executed": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
+}

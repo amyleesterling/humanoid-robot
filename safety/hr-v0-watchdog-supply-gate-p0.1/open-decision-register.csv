@@ -1,0 +1,11 @@
+hold_id,unresolved_selection,closure_evidence,warning,state
+HOLD-001,KWD contact application to PNOZ A1 electronic load,manufacturer confirmation plus qualified review,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION,SELECTION REQUIRED
+HOLD-002,contact switching/endurance cycle target,defined mission profile and endurance evidence,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION,SELECTION REQUIRED
+HOLD-003,gate-branch fault protection,"fault current, conductor, terminal, fuse and coordination study",PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION,SELECTION REQUIRED
+HOLD-004,brownout/dropout/recovery window,measured voltage/time behavior and acceptance limits,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION,SELECTION REQUIRED
+HOLD-005,manual reset behavior after gated A1 restore,received-article test for every relevant state,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION,SELECTION REQUIRED
+HOLD-006,physical separation/protected wiring,released drawing and inspected as-built evidence,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION,SELECTION REQUIRED
+HOLD-007,KWD internal/pole-to-pole fault consequences,manufacturer evidence and qualified fault analysis,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION,SELECTION REQUIRED
+HOLD-008,functional-safety allocation,"SRS, PLr/SIL, category, CCF and validation by qualified reviewer",PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION,SELECTION REQUIRED
+HOLD-009,fault-injection fixture and limits,"approved no-load fixture, instruments and numerical criteria",PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION,SELECTION REQUIRED
+HOLD-010,motion restart prevention,hardware/firmware integration test proving fresh trajectory required,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION,SELECTION REQUIRED

@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-08T02:48:24")
+		(date "2026-08-08T05:03:19")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P1.12")
+			(name "REVISION") "V3-P1.13")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,7 +15,7 @@
 			(title_block
 				(title "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE index")
 				(company "Project Button")
-				(rev "V3-P1.12")
+				(rev "V3-P1.13")
 				(date "2026-08-08")
 				(source "project-button-v3.kicad_sch")
 				(comment
@@ -61,9 +61,9 @@
 			(name "/01 External listed sources and DC boundaries/")
 			(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
 			(title_block
-				(title "PB HR-V0 V3-P1.12 - 01")
+				(title "PB HR-V0 V3-P1.13 - 01")
 				(company "Project Button")
-				(rev "V3-P1.12")
+				(rev "V3-P1.13")
 				(date "2026-08-08")
 				(source "01_external_sources.kicad_sch")
 				(comment
@@ -109,9 +109,9 @@
 			(name "/02 Dual-channel E-stop and RESET eligibility/")
 			(tstamps "/1abf679f-5cd5-5479-8b91-6a232acf93b9/")
 			(title_block
-				(title "PB HR-V0 V3-P1.12 - 02")
+				(title "PB HR-V0 V3-P1.13 - 02")
 				(company "Project Button")
-				(rev "V3-P1.12")
+				(rev "V3-P1.13")
 				(date "2026-08-08")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
@@ -154,12 +154,12 @@
 		)
 		(sheet
 			(number "4")
-			(name "/03 Distinct ARM and watchdog eligibility/")
+			(name "/03 Distinct ARM and watchdog-gated SR1 supply/")
 			(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
 			(title_block
-				(title "PB HR-V0 V3-P1.12 - 03")
+				(title "PB HR-V0 V3-P1.13 - 03")
 				(company "Project Button")
-				(rev "V3-P1.12")
+				(rev "V3-P1.13")
 				(date "2026-08-08")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
@@ -205,9 +205,9 @@
 			(name "/04 Contactor coils, mirror contacts and EDM/")
 			(tstamps "/6cf27f97-627c-5512-ba58-751093298e6c/")
 			(title_block
-				(title "PB HR-V0 V3-P1.12 - 04")
+				(title "PB HR-V0 V3-P1.13 - 04")
 				(company "Project Button")
-				(rev "V3-P1.12")
+				(rev "V3-P1.13")
 				(date "2026-08-08")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
@@ -253,9 +253,9 @@
 			(name "/05 Redundant actuator-power interruption/")
 			(tstamps "/db315f6f-1ed6-5bc9-bdf8-106d0286ccb4/")
 			(title_block
-				(title "PB HR-V0 V3-P1.12 - 05")
+				(title "PB HR-V0 V3-P1.13 - 05")
 				(company "Project Button")
-				(rev "V3-P1.12")
+				(rev "V3-P1.13")
 				(date "2026-08-08")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
@@ -301,9 +301,9 @@
 			(name "/06 Protected actuator branches and central DYNAMIXEL star injection/")
 			(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
 			(title_block
-				(title "PB HR-V0 V3-P1.12 - 06")
+				(title "PB HR-V0 V3-P1.13 - 06")
 				(company "Project Button")
-				(rev "V3-P1.12")
+				(rev "V3-P1.13")
 				(date "2026-08-08")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
@@ -349,9 +349,9 @@
 			(name "/07 Independent watchdog power, controller and drivers/")
 			(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
 			(title_block
-				(title "PB HR-V0 V3-P1.12 - 07")
+				(title "PB HR-V0 V3-P1.13 - 07")
 				(company "Project Button")
-				(rev "V3-P1.12")
+				(rev "V3-P1.13")
 				(date "2026-08-08")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
@@ -397,9 +397,9 @@
 			(name "/08 Calculated dual-channel 24 V watchdog feedback/")
 			(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
 			(title_block
-				(title "PB HR-V0 V3-P1.12 - 08")
+				(title "PB HR-V0 V3-P1.13 - 08")
 				(company "Project Button")
-				(rev "V3-P1.12")
+				(rev "V3-P1.13")
 				(date "2026-08-08")
 				(source "08_watchdog_feedback_interface.kicad_sch")
 				(comment
@@ -445,9 +445,9 @@
 			(name "/09 Compute and control terminals/")
 			(tstamps "/f3a60727-2e66-5730-a829-00cc7c809e89/")
 			(title_block
-				(title "PB HR-V0 V3-P1.12 - 09")
+				(title "PB HR-V0 V3-P1.13 - 09")
 				(company "Project Button")
-				(rev "V3-P1.12")
+				(rev "V3-P1.13")
 				(date "2026-08-08")
 				(source "09_compute_and_control_terminals.kicad_sch")
 				(comment
@@ -493,9 +493,9 @@
 			(name "/10 U2D2, actuator ports and bonding boundary/")
 			(tstamps "/11f6090f-9f69-5145-93e3-5ccb2d8899ac/")
 			(title_block
-				(title "PB HR-V0 V3-P1.12 - 10")
+				(title "PB HR-V0 V3-P1.13 - 10")
 				(company "Project Button")
-				(rev "V3-P1.12")
+				(rev "V3-P1.13")
 				(date "2026-08-08")
 				(source "10_actuator_interfaces.kicad_sch")
 				(comment
@@ -541,9 +541,9 @@
 			(name "/11 Watchdog PCB external connectors/")
 			(tstamps "/6e16a5a8-d40c-518b-9320-2dd1b7122c9a/")
 			(title_block
-				(title "PB HR-V0 V3-P1.12 - 11")
+				(title "PB HR-V0 V3-P1.13 - 11")
 				(company "Project Button")
-				(rev "V3-P1.12")
+				(rev "V3-P1.13")
 				(date "2026-08-08")
 				(source "11_watchdog_pcb_connectors.kicad_sch")
 				(comment
@@ -589,9 +589,9 @@
 			(name "/12 Watchdog PCB test access/")
 			(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
 			(title_block
-				(title "PB HR-V0 V3-P1.12 - 12")
+				(title "PB HR-V0 V3-P1.13 - 12")
 				(company "Project Button")
-				(rev "V3-P1.12")
+				(rev "V3-P1.13")
 				(date "2026-08-08")
 				(source "12_watchdog_pcb_test_access.kicad_sch")
 				(comment
@@ -1449,10 +1449,10 @@
 			(ref "KWD1")
 			(value "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
 			(datasheet "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
-			(description "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received polarity, continuity and welded-contact tests remain open.")
+			(description "First ordinary watchdog supply-gate stage. Its 11-14 NO contact is in series with KWD2 before SR1:A1 and is not in an E-stop input loop. A welded or internally bypassed contact can defeat only this diagnostic stage, not bridge S0. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received terminal identity, 2.5 W steady/0.5 A 5 ms PNOZ supply-load switching, polarity, continuity, wear and fault tests remain open.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - SUPPLY-GATE APPLICATION/FMEA/RECEIVED VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01. Circuit diagram identifies A1/A2, 11-12-14 and 21-22-24; 24 VDC, 18 mA typical, 8 ms pickup, 10 ms release.")
 				(field
@@ -1463,16 +1463,16 @@
 				(field
 					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
 				(field
-					(name "Description") "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received polarity, continuity and welded-contact tests remain open.")
+					(name "Description") "First ordinary watchdog supply-gate stage. Its 11-14 NO contact is in series with KWD2 before SR1:A1 and is not in an E-stop input loop. A welded or internally bypassed contact can defeat only this diagnostic stage, not bridge S0. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received terminal identity, 2.5 W steady/0.5 A 5 ms PNOZ supply-load switching, polarity, continuity, wear and fault tests remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "KWD1")
-				(description "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received polarity, continuity and welded-contact tests remain open.")
+				(description "First ordinary watchdog supply-gate stage. Its 11-14 NO contact is in series with KWD2 before SR1:A1 and is not in an E-stop input loop. A welded or internally bypassed contact can defeat only this diagnostic stage, not bridge S0. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received terminal identity, 2.5 W steady/0.5 A 5 ms PNOZ supply-load switching, polarity, continuity, wear and fault tests remain open.")
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED")
+				(value "PROPOSED - SUPPLY-GATE APPLICATION/FMEA/RECEIVED VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -1484,14 +1484,14 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "03 Distinct ARM and watchdog eligibility")
+				(value "03 Distinct ARM and watchdog-gated SR1 supply")
 			)
 			(property
 				(name "Sheetfile")
 				(value "03_arm_watchdog_eligibility.kicad_sch")
 			)
 			(sheetpath
-				(names "/03 Distinct ARM and watchdog eligibility/")
+				(names "/03 Distinct ARM and watchdog-gated SR1 supply/")
 				(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
 			)
 			(tstamps "24be82e1-7e35-5baa-9f59-9c9dec819998")
@@ -1531,10 +1531,10 @@
 			(ref "KWD2")
 			(value "Phoenix Contact PLC-RSC-24DC/21-21, item 2967060")
 			(datasheet "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
-			(description "Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open.")
+			(description "Second ordinary watchdog supply-gate stage. Its 11-14 NO contact completes SR1:A1 supply only after KWD1. A welded or internally bypassed contact can defeat the diagnostic gate but cannot bridge either S0 input contact. Exact terminals follow the official circuit diagram; PNOZ supply inrush/contact duty, received verification and common controller/supply failures remain open. No PL/SIL credit.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - SUPPLY-GATE APPLICATION/FMEA/RECEIVED VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01.")
 				(field
@@ -1545,16 +1545,16 @@
 				(field
 					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
 				(field
-					(name "Description") "Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open.")
+					(name "Description") "Second ordinary watchdog supply-gate stage. Its 11-14 NO contact completes SR1:A1 supply only after KWD1. A welded or internally bypassed contact can defeat the diagnostic gate but cannot bridge either S0 input contact. Exact terminals follow the official circuit diagram; PNOZ supply inrush/contact duty, received verification and common controller/supply failures remain open. No PL/SIL credit.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "KWD2")
-				(description "Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open.")
+				(description "Second ordinary watchdog supply-gate stage. Its 11-14 NO contact completes SR1:A1 supply only after KWD1. A welded or internally bypassed contact can defeat the diagnostic gate but cannot bridge either S0 input contact. Exact terminals follow the official circuit diagram; PNOZ supply inrush/contact duty, received verification and common controller/supply failures remain open. No PL/SIL credit.")
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED")
+				(value "PROPOSED - SUPPLY-GATE APPLICATION/FMEA/RECEIVED VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -1566,14 +1566,14 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "03 Distinct ARM and watchdog eligibility")
+				(value "03 Distinct ARM and watchdog-gated SR1 supply")
 			)
 			(property
 				(name "Sheetfile")
 				(value "03_arm_watchdog_eligibility.kicad_sch")
 			)
 			(sheetpath
-				(names "/03 Distinct ARM and watchdog eligibility/")
+				(names "/03 Distinct ARM and watchdog-gated SR1 supply/")
 				(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
 			)
 			(tstamps "c9b7416d-4e3c-5f08-ba30-a6dee759995f")
@@ -1648,14 +1648,14 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "03 Distinct ARM and watchdog eligibility")
+				(value "03 Distinct ARM and watchdog-gated SR1 supply")
 			)
 			(property
 				(name "Sheetfile")
 				(value "03_arm_watchdog_eligibility.kicad_sch")
 			)
 			(sheetpath
-				(names "/03 Distinct ARM and watchdog eligibility/")
+				(names "/03 Distinct ARM and watchdog-gated SR1 supply/")
 				(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
 			)
 			(tstamps "ea9b5ec8-6862-5782-825d-cc652f8e8898")
@@ -1712,14 +1712,14 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "03 Distinct ARM and watchdog eligibility")
+				(value "03 Distinct ARM and watchdog-gated SR1 supply")
 			)
 			(property
 				(name "Sheetfile")
 				(value "03_arm_watchdog_eligibility.kicad_sch")
 			)
 			(sheetpath
-				(names "/03 Distinct ARM and watchdog eligibility/")
+				(names "/03 Distinct ARM and watchdog-gated SR1 supply/")
 				(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
 			)
 			(tstamps "c1caff45-574f-55f9-af74-91cc1f1146cf")
@@ -7259,7 +7259,7 @@
 		(libpart
 			(lib "PBV3")
 			(part "KWD1")
-			(description "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received polarity, continuity and welded-contact tests remain open.")
+			(description "First ordinary watchdog supply-gate stage. Its 11-14 NO contact is in series with KWD2 before SR1:A1 and is not in an E-stop input loop. A welded or internally bypassed contact can defeat only this diagnostic stage, not bridge S0. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received terminal identity, 2.5 W steady/0.5 A 5 ms PNOZ supply-load switching, polarity, continuity, wear and fault tests remain open.")
 			(docs "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
 			(fields
 				(field
@@ -7272,9 +7272,9 @@
 				(field
 					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
 				(field
-					(name "Description") "First independent watchdog relay channel. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received polarity, continuity and welded-contact tests remain open.")
+					(name "Description") "First ordinary watchdog supply-gate stage. Its 11-14 NO contact is in series with KWD2 before SR1:A1 and is not in an E-stop input loop. A welded or internally bypassed contact can defeat only this diagnostic stage, not bridge S0. Ordinary relay, not force-guided and not safety-rated; no PL/SIL credit. Received terminal identity, 2.5 W steady/0.5 A 5 ms PNOZ supply-load switching, polarity, continuity, wear and fault tests remain open.")
 				(field
-					(name "Status") "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - SUPPLY-GATE APPLICATION/FMEA/RECEIVED VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01. Circuit diagram identifies A1/A2, 11-12-14 and 21-22-24; 24 VDC, 18 mA typical, 8 ms pickup, 10 ms release.")
 				(field
@@ -7283,7 +7283,7 @@
 			(pins
 				(pin
 					(num "11")
-					(name "CH1_COM")
+					(name "SR1_SUPPLY_GATE_IN")
 					(type "passive")
 				)
 				(pin
@@ -7293,7 +7293,7 @@
 				)
 				(pin
 					(num "14")
-					(name "CH1_NO")
+					(name "SR1_SUPPLY_GATE_STAGE_1")
 					(type "passive")
 				)
 				(pin
@@ -7326,7 +7326,7 @@
 		(libpart
 			(lib "PBV3")
 			(part "KWD2")
-			(description "Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open.")
+			(description "Second ordinary watchdog supply-gate stage. Its 11-14 NO contact completes SR1:A1 supply only after KWD1. A welded or internally bypassed contact can defeat the diagnostic gate but cannot bridge either S0 input contact. Exact terminals follow the official circuit diagram; PNOZ supply inrush/contact duty, received verification and common controller/supply failures remain open. No PL/SIL credit.")
 			(docs "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
 			(fields
 				(field
@@ -7339,9 +7339,9 @@
 				(field
 					(name "Datasheet") "https://www.phoenixcontact.com/en-pc/products/relay-module-plc-rsc-24dc-21-21-2967060?type=pdf")
 				(field
-					(name "Description") "Second independently driven watchdog relay channel; exact terminals follow the official circuit diagram, while received verification and common controller/supply failures remain open.")
+					(name "Description") "Second ordinary watchdog supply-gate stage. Its 11-14 NO contact completes SR1:A1 supply only after KWD1. A welded or internally bypassed contact can defeat the diagnostic gate but cannot bridge either S0 input contact. Exact terminals follow the official circuit diagram; PNOZ supply inrush/contact duty, received verification and common controller/supply failures remain open. No PL/SIL credit.")
 				(field
-					(name "Status") "PROPOSED - RECEIVED POLARITY/FMEA VERIFICATION REQUIRED")
+					(name "Status") "PROPOSED - SUPPLY-GATE APPLICATION/FMEA/RECEIVED VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "Official product PDF generated 2026-08-04; data-maintenance date 2026-04-01.")
 				(field
@@ -7350,7 +7350,7 @@
 			(pins
 				(pin
 					(num "11")
-					(name "CH1_COM")
+					(name "SR1_SUPPLY_GATE_STAGE_1")
 					(type "passive")
 				)
 				(pin
@@ -7360,7 +7360,7 @@
 				)
 				(pin
 					(num "14")
-					(name "CH1_NO")
+					(name "SR1_A1_GATED_SUPPLY")
 					(type "passive")
 				)
 				(pin
@@ -10536,6 +10536,12 @@
 			)
 			(node
 				(ref "KWD1")
+				(pin "11")
+				(pinfunction "SR1_SUPPLY_GATE_IN_11")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD1")
 				(pin "21")
 				(pinfunction "CH2_COM_+24V_21")
 				(pintype "passive")
@@ -10562,12 +10568,6 @@
 				(ref "SR1")
 				(pin "41")
 				(pinfunction "AUX_NC_IN_41")
-				(pintype "passive")
-			)
-			(node
-				(ref "SR1")
-				(pin "A1")
-				(pinfunction "24V_SUPPLY_A1")
 				(pintype "passive")
 			)
 			(node
@@ -10644,6 +10644,23 @@
 		)
 		(net
 			(code "34")
+			(name "SR1_A1_WD_GATED")
+			(class "Default")
+			(node
+				(ref "KWD2")
+				(pin "14")
+				(pinfunction "SR1_A1_GATED_SUPPLY_14")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "A1")
+				(pinfunction "24V_SUPPLY_A1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "35")
 			(name "SR1_S11")
 			(class "Default")
 			(node
@@ -10660,13 +10677,13 @@
 			)
 		)
 		(net
-			(code "35")
+			(code "36")
 			(name "SR1_S12")
 			(class "Default")
 			(node
-				(ref "KWD1")
-				(pin "14")
-				(pinfunction "CH1_NO_14")
+				(ref "S0")
+				(pin "R-2")
+				(pinfunction "CH1_RIGHT_NC_MARK_2_R-2")
 				(pintype "passive")
 			)
 			(node
@@ -10683,7 +10700,7 @@
 			)
 		)
 		(net
-			(code "36")
+			(code "37")
 			(name "SR1_S21")
 			(class "Default")
 			(node
@@ -10700,13 +10717,13 @@
 			)
 		)
 		(net
-			(code "37")
+			(code "38")
 			(name "SR1_S22")
 			(class "Default")
 			(node
-				(ref "KWD2")
-				(pin "14")
-				(pinfunction "CH1_NO_14")
+				(ref "S0")
+				(pin "L-2")
+				(pinfunction "CH2_LEFT_NC_MARK_2_L-2")
 				(pintype "passive")
 			)
 			(node
@@ -10717,7 +10734,7 @@
 			)
 		)
 		(net
-			(code "38")
+			(code "39")
 			(name "SR1_START_RETURN")
 			(class "Default")
 			(node
@@ -10734,7 +10751,7 @@
 			)
 		)
 		(net
-			(code "39")
+			(code "40")
 			(name "SR1_STATUS")
 			(class "Default")
 			(node
@@ -10757,7 +10774,7 @@
 			)
 		)
 		(net
-			(code "40")
+			(code "41")
 			(name "SRA1_K1_RAW")
 			(class "Default")
 			(node
@@ -10774,7 +10791,7 @@
 			)
 		)
 		(net
-			(code "41")
+			(code "42")
 			(name "SRA1_K2_RAW")
 			(class "Default")
 			(node
@@ -10791,7 +10808,7 @@
 			)
 		)
 		(net
-			(code "42")
+			(code "43")
 			(name "SRA1_S11")
 			(class "Default")
 			(node
@@ -10808,7 +10825,7 @@
 			)
 		)
 		(net
-			(code "43")
+			(code "44")
 			(name "SRA1_S12")
 			(class "Default")
 			(node
@@ -10831,7 +10848,7 @@
 			)
 		)
 		(net
-			(code "44")
+			(code "45")
 			(name "SRA1_S21")
 			(class "Default")
 			(node
@@ -10848,7 +10865,7 @@
 			)
 		)
 		(net
-			(code "45")
+			(code "46")
 			(name "SRA1_S22")
 			(class "Default")
 			(node
@@ -10865,7 +10882,7 @@
 			)
 		)
 		(net
-			(code "46")
+			(code "47")
 			(name "SRA1_START_RETURN")
 			(class "Default")
 			(node
@@ -10882,7 +10899,7 @@
 			)
 		)
 		(net
-			(code "47")
+			(code "48")
 			(name "SRA1_STATUS")
 			(class "Default")
 			(node
@@ -10899,7 +10916,7 @@
 			)
 		)
 		(net
-			(code "48")
+			(code "49")
 			(name "UFB_OUT1")
 			(class "Default")
 			(node
@@ -10922,7 +10939,7 @@
 			)
 		)
 		(net
-			(code "49")
+			(code "50")
 			(name "UFB_OUT2")
 			(class "Default")
 			(node
@@ -10945,7 +10962,7 @@
 			)
 		)
 		(net
-			(code "50")
+			(code "51")
 			(name "WD1_COIL_N")
 			(class "Default")
 			(node
@@ -10974,7 +10991,7 @@
 			)
 		)
 		(net
-			(code "51")
+			(code "52")
 			(name "WD1_DRIVE")
 			(class "Default")
 			(node
@@ -10997,7 +11014,7 @@
 			)
 		)
 		(net
-			(code "52")
+			(code "53")
 			(name "WD1_NC_24V")
 			(class "Default")
 			(node
@@ -11032,7 +11049,7 @@
 			)
 		)
 		(net
-			(code "53")
+			(code "54")
 			(name "WD1_NC_DIAG")
 			(class "Default")
 			(node
@@ -11051,23 +11068,6 @@
 				(ref "WDCTRL1")
 				(pin "9")
 				(pinfunction "GP6_RELAY1_FEEDBACK_9")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "54")
-			(name "WD1_SAFETY_IN")
-			(class "Default")
-			(node
-				(ref "KWD1")
-				(pin "11")
-				(pinfunction "CH1_COM_11")
-				(pintype "passive")
-			)
-			(node
-				(ref "S0")
-				(pin "R-2")
-				(pinfunction "CH1_RIGHT_NC_MARK_2_R-2")
 				(pintype "passive")
 			)
 		)
@@ -11183,23 +11183,6 @@
 		)
 		(net
 			(code "59")
-			(name "WD2_SAFETY_IN")
-			(class "Default")
-			(node
-				(ref "KWD2")
-				(pin "11")
-				(pinfunction "CH1_COM_11")
-				(pintype "passive")
-			)
-			(node
-				(ref "S0")
-				(pin "L-2")
-				(pinfunction "CH2_LEFT_NC_MARK_2_L-2")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "60")
 			(name "WD_3V3")
 			(class "Default")
 			(node
@@ -11240,7 +11223,7 @@
 			)
 		)
 		(net
-			(code "61")
+			(code "60")
 			(name "WD_5V")
 			(class "Default")
 			(node
@@ -11263,7 +11246,7 @@
 			)
 		)
 		(net
-			(code "62")
+			(code "61")
 			(name "WD_HEARTBEAT")
 			(class "Default")
 			(node
@@ -11288,6 +11271,23 @@
 				(ref "WDCTRL1")
 				(pin "4")
 				(pinfunction "GP2_HEARTBEAT_IN_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "62")
+			(name "WD_SUPPLY_INTERMEDIATE")
+			(class "Default")
+			(node
+				(ref "KWD1")
+				(pin "14")
+				(pinfunction "SR1_SUPPLY_GATE_STAGE_1_14")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD2")
+				(pin "11")
+				(pinfunction "SR1_SUPPLY_GATE_STAGE_1_11")
 				(pintype "passive")
 			)
 		)

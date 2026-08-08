@@ -71,7 +71,7 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P1.12", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P1.13", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
@@ -266,14 +266,21 @@ def main() -> int:
             "XT1 catalog identity is either reopened or falsely physically released", failures)
 
     require(pin_map(components, "S0") == {
-        "R-1": "SR1_S11", "R-2": "WD1_SAFETY_IN",
-        "L-1": "SR1_S21", "L-2": "WD2_SAFETY_IN",
+        "R-1": "SR1_S11", "R-2": "SR1_S12",
+        "L-1": "SR1_S21", "L-2": "SR1_S22",
     }, "E-stop channel mapping changed", failures)
-    require(pin_map(components, "KWD1")["11"] == "WD1_SAFETY_IN" and
-            pin_map(components, "KWD1")["14"] == "SR1_S12" and
-            pin_map(components, "KWD2")["11"] == "WD2_SAFETY_IN" and
-            pin_map(components, "KWD2")["14"] == "SR1_S22",
-            "watchdog contacts no longer interrupt both SR1 input returns", failures)
+    require(pin_map(components, "SR1")["A1"] == "SR1_A1_WD_GATED",
+            "SR1 A1 is not controlled by the watchdog supply gate", failures)
+    require(pin_map(components, "KWD1")["11"] == "SAFETY_24V" and
+            pin_map(components, "KWD1")["14"] == "WD_SUPPLY_INTERMEDIATE" and
+            pin_map(components, "KWD2")["11"] == "WD_SUPPLY_INTERMEDIATE" and
+            pin_map(components, "KWD2")["14"] == "SR1_A1_WD_GATED",
+            "watchdog contacts no longer form the two-stage SR1 A1 supply gate", failures)
+    require("WD1_SAFETY_IN" not in expected_nets and "WD2_SAFETY_IN" not in expected_nets,
+            "superseded watchdog-in-E-stop-return nets remain", failures)
+    require("not in an E-stop input loop" in components["KWD1"].description and
+            "cannot bridge either S0 input contact" in components["KWD2"].description,
+            "KWD supply-gate negative-contribution boundary is not explicit", failures)
     require(pin_map(components, "SR1")["13"] == "SRA1_S11" and
             pin_map(components, "SR1")["14"] == "SRA1_S12" and
             pin_map(components, "SR1")["23"] == "SRA1_S21" and

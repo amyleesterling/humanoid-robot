@@ -1,4 +1,4 @@
-# Project Button HR-V0 Electrical V3-P1.12
+# Project Button HR-V0 Electrical V3-P1.13
 
 **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -8,7 +8,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 
 1. `01_external_sources.kicad_sch` — External listed sources and DC boundaries
 2. `02_estop_eligibility.kicad_sch` — Dual-channel E-stop and RESET eligibility
-3. `03_arm_watchdog_eligibility.kicad_sch` — Distinct ARM and watchdog eligibility
+3. `03_arm_watchdog_eligibility.kicad_sch` — Distinct ARM and watchdog-gated SR1 supply
 4. `04_contactor_edm.kicad_sch` — Contactor coils, mirror contacts and EDM
 5. `05_actuator_interruption.kicad_sch` — Redundant actuator-power interruption
 6. `06_branches_and_injection.kicad_sch` — Protected actuator branches and central DYNAMIXEL star injection
@@ -22,7 +22,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 ## Material corrections relative to V2.1
 
 - Separate SR1 RESET eligibility and SRA1 ARM/EDM stages.
-- Two separately driven watchdog relay contacts interrupt the two SR1 input returns so heartbeat loss forces the physical RESET stage to drop.
+- Two separately driven ordinary watchdog relay contacts are in series with the SR1 A1 supply. Heartbeat loss power-cycles SR1 and forces the physical RESET stage to drop, while S0 remains direct in both SR1 input loops. Internal KWD A1/21-to-14 shorts can defeat the diagnostic gate but cannot inject downstream of S0. Supply switching, protected routing, common-cause analysis and physical proof remain open; the watchdog receives zero safety credit.
 - Phoenix relay terminals are frozen from the official circuit diagram. Both 24 V NC diagnostics pass through the calculated ISO1212DBQ input network before the Pico GPIO. Exact proposed passive order codes are frozen; PCB, received measurements, derating and physical validation remain open.
 - Compute heartbeat crosses an exact VO618A-4X017T optical interface with exact 910 Ohm input and 10 kOhm pullup candidates. Two separate TPL7407LPWR packages drive the two relay coils, with unused inputs tied low, unused outputs open, and local 100 nF COM bypass candidates. These ordinary circuits receive no safety credit and still require PCB, timing, hot-plug, fault-injection, EMC and qualified review.
 - The ISO1212 feedback network uses exact proposed Vishay, Panasonic, TDK and Murata passive order codes. Receiving, PCB land-pattern/placement, DC-bias, pulse, thermal, EMC, fault and HIL evidence remain mandatory.

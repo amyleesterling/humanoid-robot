@@ -71,8 +71,12 @@ def main() -> int:
     if bypass.get("safe_by_design") != "no" or "can be impaired" not in bypass.get("sf01_effect", ""):
         errors.append("WDF-008 must remain an explicit credited E-stop impairment case")
     injection = fmea_by_id.get("WDF-012", {})
-    if injection.get("safe_by_design") != "no" or "potential" not in injection.get("sf01_effect", "").lower():
-        errors.append("WDF-012 must preserve the open KWD1 voltage-injection impairment case")
+    if (
+        injection.get("safe_by_design") != "conditional"
+        or "P1.13" not in injection.get("sf01_effect", "")
+        or "physical separation" not in injection.get("sf01_effect", "").lower()
+    ):
+        errors.append("WDF-012 must preserve the conditional P1.13 disposition with physical proof open")
 
     form_rows = rows(FORM)
     if len(form_rows) != len(expected) or {row.get("function_id") for row in form_rows} != set(expected):

@@ -10,7 +10,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "safety" / "hr-v0-watchdog-ccf-p0.1"
-CANONICAL_FMEA = ROOT / "safety" / "hr-v0-watchdog-boundary-fmea.csv"
 RESULT_FORM = ROOT / "tests" / "forms" / "hr-v0-watchdog-fault-injection-template.csv"
 INSPECTION_FORM = ROOT / "tests" / "forms" / "hr-v0-watchdog-separation-inspection-template.csv"
 REVISION = "HR-V0-WD-CCF-P0.1"
@@ -192,7 +191,6 @@ def main() -> int:
     OUT.mkdir(parents=True)
     write_csv(OUT / "exact-path-register.csv", PATH_ROWS)
     write_csv(OUT / "failure-mode-register.csv", FAILURE_ROWS)
-    write_csv(CANONICAL_FMEA, CANONICAL_FAILURE_ROWS)
     write_csv(OUT / "common-cause-group-register.csv", CCF_ROWS)
     write_csv(OUT / "fault-injection-matrix.csv", CASE_ROWS)
     write_csv(OUT / "separation-control-register.csv", SEPARATION_ROWS)

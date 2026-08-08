@@ -65,7 +65,13 @@ def main() -> int:
     net_text = NETS.read_text(encoding="utf-8-sig")
     connector_text = CONNECTORS.read_text(encoding="utf-8-sig")
     panel_text = PANEL.read_text(encoding="utf-8-sig")
-    for token in ("WD1_SAFETY_IN", "WD2_SAFETY_IN", "SR1_S12", "SR1_S22", "ARM_AFTER_S2", "WD1_COIL_N", "WD2_COIL_N", "WD1_NC_24V", "WD2_NC_24V"):
+    historical_path_text = (OUT / "exact-path-register.csv").read_text(encoding="utf-8-sig")
+    for token in ("WD1_SAFETY_IN", "WD2_SAFETY_IN"):
+        if token not in historical_path_text:
+            errors.append(f"historical R86 path register missing {token}")
+        if token in net_text:
+            errors.append(f"current V3 source still contains superseded R86 net {token}")
+    for token in ("SR1_S12", "SR1_S22", "SR1_A1_WD_GATED", "WD_SUPPLY_INTERMEDIATE", "ARM_AFTER_S2", "WD1_COIL_N", "WD2_COIL_N", "WD1_NC_24V", "WD2_NC_24V"):
         if token not in net_text:
             errors.append(f"V3 net schedule missing {token}")
     for token in ("KWD1,A1", "KWD1,21", "KWD1,14", "KWD2,A1", "KWD2,21", "KWD2,14"):

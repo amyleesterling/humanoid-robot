@@ -29,6 +29,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 unpowered J1/J2 acquisition and metrology P0.1](docs/hr-v0-joint-stack-metrology-p0.1.md)
 - [HR-V0 evaluation acquisition and Boston metrology quote packet P0.1](docs/hr-v0-evaluation-acquisition-metrology-p0.1.md)
 - [HR-V0 watchdog dependent-failure and common-cause analysis P0.1](docs/hr-v0-watchdog-common-cause-p0.1.md)
+- [HR-V0 watchdog-gated SR1 supply correction P0.1](docs/hr-v0-watchdog-supply-gate-p0.1.md)
+- [Interactive watchdog supply-gate correction guide](safety/hr-v0-watchdog-supply-gate-p0.1/index.html)
 - [HR-V0 firmware implementation candidate P0.4](docs/hr-v0-firmware-p0.4.md)
 - [HR-V0 DYNAMIXEL transport candidate P0.3](docs/hr-v0-dynamixel-transport-p0.3.md)
 - [HR-V0 E2 control-only commissioning package P0.1](docs/hr-v0-e2-control-only-energization-p0.1.md)
@@ -72,7 +74,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 functional-safety allocation and diagnostic-credit boundary P0.1](docs/hr-v0-functional-safety-allocation-p0.1.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
-- [Native KiCad Electrical V3-P1.12 correction candidate](electrical/kicad/project-button-v3/README.md)
+- [Native KiCad Electrical V3-P1.13 correction candidate](electrical/kicad/project-button-v3/README.md)
+- [HR-V0 control-panel physical-definition candidate P0.5](docs/hr-v0-control-panel-p0.5.md)
 - [HR-V0 24 V source-interface candidate P0.2](docs/hr-v0-24v-interface-p0.2.md)
 - [HR-V0 compute-heartbeat and watchdog-debug interface P0.1](docs/hr-v0-compute-debug-interface-p0.1.md)
 - [E2 control-only hardware slice P0.2](electrical/e2/hr-v0-e2-hardware-p0.2/HR-V0_e2-hardware-guide.html)
@@ -202,7 +205,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-Eighty-six review/control rounds are complete: R01-R86. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R86 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding, positive-stop, mass-reduction, gripper-source, datum-acquisition, unpowered-evaluation, fixed-guard, measurement-method, E2 configuration, source-interface, compute/debug, hard-stop-region, joint-stack-metrology, physical-acquisition and watchdog-dependent-failure corrections, not additional independent reviews.
+Eighty-seven review/control rounds are complete: R01-R87. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R87 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding, positive-stop, mass-reduction, gripper-source, datum-acquisition, unpowered-evaluation, fixed-guard, measurement-method, E2 configuration, source-interface, compute/debug, hard-stop-region, joint-stack-metrology, physical-acquisition, watchdog-dependent-failure and watchdog-supply-gate corrections, not additional independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -292,6 +295,7 @@ Eighty-six review/control rounds are complete: R01-R86. R11 Fable and R12 Sol ar
 | R84 | Unpowered J1/J2 acquisition and metrology correction | Issued `HR-V0-JOINT-MET-P0.1`; allocated six exact received articles, eighteen operations, eight hard hold points, six instrument classes, a raw evidence form and a route for all twenty HSI inputs. Corrected unpowered angle evidence to use an external mechanical datum rather than an unavailable encoder reading. No purchase, threaded temporary assembly, physical result, motion or energization is authorized. |
 | R85 | Evaluation acquisition and Boston metrology quote correction | Issued `HR-V0-EVAL-ACQ-P0.1`; recorded three exact cost lines covering six articles and a $1,182.22 official-web-price subtotal before extras; screened four uncontacted provider candidates; and added twenty-four quote questions, ten open holds and separate unsigned authorization/response templates. No cart, contact, order, shipment, work, measurement, motion or energization is authorized. |
 | R86 | Watchdog dependent-failure and common-cause correction | Issued `HR-V0-WD-CCF-P0.1`; mapped 18 exact V3 paths, expanded the FMEA to 32 cases, defined 12 common-cause groups, 28 unexecuted cases and 16 separation controls, and exposed the KWD A1/21-to-14 voltage-injection blocker. Topology non-interference is not proved; DF-01 retains zero safety credit; no test, wiring, motion or energization is authorized. |
+| R87 | Watchdog-gated SR1 supply correction | Issued Electrical V3-P1.13, `HR-V0-CP-P0.5` and `HR-V0-WD-SUPPLY-P0.1`; made both S0 channels direct to SR1 and moved KWD1/KWD2 into a series gate on `SR1:A1`. The old encoded KWD-to-E-stop-return injection path is removed, but physical noninterference, contact duty, routing, recovery, fault injection, PLr/category and qualified review remain open. No fabrication, wiring, motion or energization is authorized. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
