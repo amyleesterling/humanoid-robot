@@ -94,6 +94,7 @@ def main() -> None:
         "HR-V0-J2-STOP-P0.1",
         "HR-V0-GRIP-P0.2",
         "HR-V0-GRIP-CAD-ACQ-P0.1",
+        "HR-V0-GUARD-P0.2",
         "HR-V0-FAB-SRC-P0.4",
         "HR-V0-MECH-R0.1-PRELIMINARY-SUPERSEDED-ARM",
         "HR-V0-FAB-RFI-P0.2-WITHDRAWN",

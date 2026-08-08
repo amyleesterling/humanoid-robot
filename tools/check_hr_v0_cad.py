@@ -430,9 +430,9 @@ def main() -> int:
                 errors.append(f"{svg_name} missing controlled text: {required}")
     with GUARD_RECORD_TEMPLATE.open(newline="", encoding="utf-8") as handle:
         guard_record_rows = list(csv.DictReader(handle))
-    expected_guard_case_ids = {f"GC-{index:03d}" for index in range(1, 11)}
+    expected_guard_case_ids = {f"GC-{index:03d}" for index in range(1, 13)}
     if {row.get("case_id") for row in guard_record_rows} != expected_guard_case_ids:
-        errors.append("guard-clearance template lost GC-001 through GC-010")
+        errors.append("guard-clearance template lost GC-001 through GC-012")
     for row in guard_record_rows:
         if row.get(None) or row.get("record_id") != "NOT-EXECUTED" or row.get("disposition") != "NOT EXECUTED":
             errors.append(f"malformed or executed-looking guard-clearance row: {row.get('case_id')}")
