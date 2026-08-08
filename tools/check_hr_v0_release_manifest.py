@@ -103,6 +103,7 @@ def main() -> None:
         "HR-V0-ARM-ARCH-P0.7",
         "HR-V0-ARM-ARCH-P0.8-X430-CANDIDATE",
         "HR-V0-ARM-ARCH-P0.9-X430-INTEGRATED-CANDIDATE",
+        "HR-V0-ARM-ARCH-P1.0-X430-CLEARANCE-CANDIDATE",
         "HR-V0-HS-P0.3",
         "HR-V0-J2-STOP-P0.1",
         "HR-V0-STOP-REGION-P0.1",

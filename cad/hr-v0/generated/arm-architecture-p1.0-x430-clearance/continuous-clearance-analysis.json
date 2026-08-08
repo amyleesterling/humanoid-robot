@@ -1,0 +1,24 @@
+{
+  "revision": "HR-V0-ARM-ARCH-P1.0-X430-CLEARANCE-CANDIDATE",
+  "retained_pair_required_clearance_mm": 0.75,
+  "changed_striker_pair_required_clearance_mm": 3.0,
+  "minimum_guaranteed_all_pairs_mm": 1.040321,
+  "minimum_guaranteed_changed_striker_pairs_mm": 3.242248,
+  "pair_count": 69,
+  "retained_pair_count": 60,
+  "recomputed_changed_pair_count": 9,
+  "leaf_cell_count": 136,
+  "exact_brep_distance_calls": 94,
+  "joint_domain_deg": {
+    "j1": [
+      -20.0,
+      70.0
+    ],
+    "j2": [
+      15.0,
+      115.0
+    ]
+  },
+  "status": "CERTIFIED_NOMINAL_MODEL_SPACE_ONLY",
+  "release_boundary": "nominal rigid solids only; tolerances, fastener projections, cables, guards, deformation, compliance and stopping travel excluded"
+}

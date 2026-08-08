@@ -1,0 +1,70 @@
+{
+  "revision": "HR-V0-ARM-ARCH-P1.0-X430-CLEARANCE-CANDIDATE",
+  "warning": "PRELIMINARY - COMPARISON CANDIDATE ONLY - NOT APPROVED FOR QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, CONNECTION, OR ENERGIZATION",
+  "configuration_disposition": "P1.0 comparison only; P0.7 remains controlled; P0.9 remains prior comparison; XM430 is not selected",
+  "contour_mm": {
+    "base_top_z": 15.0,
+    "m5_boss_top_z": 17.0,
+    "m5_boss_half_width": 8.0,
+    "original_stop_surface_preserved_from_z": 19.9167
+  },
+  "certificate_supersession": {
+    "retained_identical_pair_count": 60,
+    "recomputed_changed_pair_count": 9,
+    "full_pair_count": 69,
+    "status": "ALL CHANGED-PART PAIRS RECOMPUTED; NO SAMPLED-SWEEP SUBSTITUTION"
+  },
+  "continuous_clearance": {
+    "retained_pair_required_clearance_mm": 0.75,
+    "changed_striker_pair_required_clearance_mm": 3.0,
+    "minimum_guaranteed_all_pairs_mm": 1.040321,
+    "minimum_guaranteed_changed_striker_pairs_mm": 3.242248,
+    "pair_count": 69,
+    "retained_pair_count": 60,
+    "recomputed_changed_pair_count": 9,
+    "leaf_cell_count": 136,
+    "exact_brep_distance_calls": 94,
+    "joint_domain_deg": {
+      "j1": [
+        -20.0,
+        70.0
+      ],
+      "j2": [
+        15.0,
+        115.0
+      ]
+    },
+    "status": "CERTIFIED_NOMINAL_MODEL_SPACE_ONLY"
+  },
+  "stop_sequencing": {
+    "soft_limit_deg": 115.0,
+    "nominal_first_contact_deg": 117.999977,
+    "x430_clearance_at_soft_limit_mm": 3.942108,
+    "x430_clearance_at_stop_contact_mm": 2.491516,
+    "stop_gap_at_soft_limit_mm": 1.913782,
+    "required_physical_residual_at_stop_mm": 1.0,
+    "maximum_combined_adverse_variation_mm": 1.491516,
+    "status": "NOMINAL CAD AND UNALLOCATED REQUIREMENT ONLY"
+  },
+  "mass": {
+    "moving_striker_cad_mass_g": 51.184,
+    "incomplete_known_mass_g": 576.04,
+    "provisional_headroom_g": 173.96
+  },
+  "hold_counts": {
+    "open": 8,
+    "partial": 4
+  },
+  "release_flags": {
+    "supersedes_p0_7": false,
+    "supersedes_p0_9": false,
+    "xm430_selected": false,
+    "quotation_authorized": false,
+    "procurement_authorized": false,
+    "fabrication_authorized": false,
+    "assembly_authorized": false,
+    "motion_authorized": false,
+    "connection_authorized": false,
+    "energization_authorized": false
+  }
+}

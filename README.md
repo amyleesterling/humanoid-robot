@@ -24,6 +24,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 integrated arm architecture P0.7](docs/hr-v0-arm-architecture-p0.7.md)
 - [HR-V0 integrated X430 arm comparison P0.9](docs/hr-v0-x430-integrated-arm-p0.9.md)
 - [Interactive P0.9 full-arm review guide](release/hr-v0/arm-architecture-p0.9-x430/index.html)
+- [HR-V0 X430 arm clearance candidate P1.0](docs/hr-v0-x430-arm-p1.0.md)
+- [Interactive P1.0 stop-clearance review guide](release/hr-v0/arm-architecture-p1.0-x430-clearance/index.html)
 - [HR-V0 same-interface mass-reduction study P0.1](docs/hr-v0-mass-reduction-study-p0.1.md)
 - [HR-V0 elbow actuator and moving-mass trade P0.1](docs/hr-v0-elbow-actuator-trade-p0.1.md)
 - [Interactive elbow and mass decision guide](release/hr-v0/elbow-actuator-trade-p0.1/index.html)
@@ -201,6 +203,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R93 validation record](docs/reviews/2026-08-08-r93-validation-record.md)
 - [R93 independent review request](docs/reviews/2026-08-08-x430-integrated-arm-p0.9-independent-review-request.md)
 - [Sol R12 findings rechecked after R93](docs/reviews/2026-08-08-sol-r12-post-r93-status.md)
+- [R94 X430 arm P1.0 clearance record](docs/hr-v0-x430-arm-p1.0.md)
+- [R94 P1.0 interactive guide](release/hr-v0/arm-architecture-p1.0-x430-clearance/index.html)
+- [R94 validation record](docs/reviews/2026-08-08-r94-validation-record.md)
+- [R94 independent review request](docs/reviews/2026-08-08-x430-arm-p1.0-independent-review-request.md)
+- [Sol R12 findings rechecked after R94](docs/reviews/2026-08-08-sol-r12-post-r94-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -232,7 +239,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-Ninety-three review/control rounds are complete: R01-R93. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R93 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding, positive-stop, mass-reduction, gripper-source, datum-acquisition, unpowered-evaluation, fixed-guard, measurement-method, E2 configuration, source-interface, compute/debug, hard-stop-region, joint-stack-metrology, physical-acquisition, watchdog-dependent-failure, watchdog-supply-gate, watchdog-PCB fabrication-candidate/land-pattern, Boston fabrication-route, elbow/moving-mass architecture, exact-coordinate X430 elbow and full-arm integration corrections, not additional independent reviews.
+Ninety-four review/control rounds are complete: R01-R94. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R94 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding, positive-stop, mass-reduction, gripper-source, datum-acquisition, unpowered-evaluation, fixed-guard, measurement-method, E2 configuration, source-interface, compute/debug, hard-stop-region, joint-stack-metrology, physical-acquisition, watchdog-dependent-failure, watchdog-supply-gate, watchdog-PCB fabrication-candidate/land-pattern, Boston fabrication-route, elbow/moving-mass architecture, exact-coordinate X430 elbow, full-arm integration and stop-sequencing clearance corrections, not additional independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -329,6 +336,7 @@ Ninety-three review/control rounds are complete: R01-R93. R11 Fable and R12 Sol 
 | R91 | Elbow actuator and moving-mass architecture hold | Held the P0.7 custom-metal route because only 57.242 g remains before mandatory missing moving items; acquired and hash-controlled five official X430/FR12 source files; quantified nonselecting X430 mass/current/torque/speed sensitivities; and required an exact-coordinate P0.8 comparison with twelve open holds. P0.7 remains controlled, XM430 is not selected, and no quote, procurement, fabrication, motion, connection or energization authority exists. |
 | R92 | Exact-coordinate X430 elbow P0.8 comparison | Registered the X430/FR12 assembly datums, corrected the S102 local-origin interpretation, generated integrated STEP/GLB and two separately identified adapter candidates, modeled a nominal 118-degree stop, sampled 221 rigid-body poses, and recalculated an incomplete 577.091 g subtotal and 1.104 N m elbow screen. Nine holds remain open and three partial; P0.7 remains controlled, XM430 is not selected, and every authorization flag is false. |
 | R93 | Full-arm X430 P0.9 integration and continuous-clearance correction | Joined the corrected P0.8 elbow to the P0.7 column/J1/upper-link/forearm/H104 assembly; sampled 9,464 full-arm poses; continuously certified 69 nominal solid-pair groups through the 115-degree software limit with a 0.862928 mm conservative minimum; and added four fastener-stack plus five tolerance-control closure records. Eight holds remain open and four partial; P0.7 remains controlled, XM430 is not selected, and every authorization flag is false. |
+| R94 | X430 P1.0 stop-sequencing clearance correction | Recontoured only the moving-striker upper edge while preserving the stop surface and hole axes; retained 60 SHA-bound identical-solid certificates; recomputed all nine changed-part pair groups at a 3.0 mm requirement with a 3.242248 mm conservative minimum; preserved nominal 118-degree contact; raised stop-contact X430 clearance to 2.491516 mm; and exposed a still-unallocated <=1.491516 mm adverse-variation limit. Eight holds remain open and four partial; P0.7 remains controlled, P0.9/P1.0 are unselected, and every authorization flag is false. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
