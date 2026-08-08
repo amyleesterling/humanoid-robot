@@ -39,6 +39,8 @@ The corrected interface and fastener boundary is [controlled separately](../../d
 
 `generated/hard-stops/` contains the checked J1/J2 coordinate conventions, candidate stop-contact datums and a readable kinematic layout. It deliberately contains no fabricable stop block. The generated mass/energy screen excludes reflected drive inertia and cannot select a bumper or establish impact capacity. See [the hard-stop design basis](../../docs/hr-v0-hard-stop-design-basis-p0.1.md) and [validation procedure](../../docs/hr-v0-hard-stop-validation-p0.1.md).
 
+`generated/stop-region-clearance-p0.1/` adds the current R83 boundary-region evidence. Its 6,411 sampled poses and 131 continuous pair-region certificates show that the nominal P0.7 rigid bodies do not already occupy the historic J1 `-25/+75 deg` and J2 `+10 deg` study regions. The interactive HTML guide and readable SVG explain the evidence boundary; `HSI-001..020` define the received stack, attachment, cable/guard, load, bumper and manufacturing inputs still required. No historic angle, topology or stop part is released. See [the current stop-region basis](../../docs/hr-v0-stop-region-clearance-p0.1.md).
+
 The assembly uses envelopes for 80/20 40-4040 extrusion and XM540 actuators. Use the untouched manufacturer STEP files in `../vendor/robotis` for final interference checking. The generated assembly is a space claim and mounting concept, not a kinematically constrained assembly.
 
 ## Guard, receiver and cable space study
