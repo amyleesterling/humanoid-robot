@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>
+  text { font-family: Arial, sans-serif; fill: #102a43; font-size: 18px; }
+  .title { font-size: 34px; font-weight: 700; }
+  .head { font-size: 23px; font-weight: 700; }
+  .warn { font-size: 20px; font-weight: 700; fill: #8a4b00; }
+  .part { fill: #9dd8f5; stroke: #123b68; stroke-width: 4; }
+  .cut { fill: white; stroke: #123b68; stroke-width: 3; stroke-dasharray: 8 6; }
+  .stop { fill: #f4bd3e; stroke: #123b68; stroke-width: 4; }
+  .dim { fill: none; stroke: #607d98; stroke-width: 2; }
+</style>
+<rect width="1600" height="1000" fill="#f8fbff"/>
+<text x="60" y="65" class="title">HR-V0 same-interface moving-adapter mass-reduction study</text>
+<text x="60" y="105" class="warn">PRELIMINARY - MASS-REDUCTION STUDY ONLY - NOT RELEASED FOR FABRICATION, MOTION, OR ENERGIZATION</text>
+<text x="60" y="150">Revision HR-V0-MASS-REDUCTION-P0.1 • parent HR-V0-ARM-ARCH-P0.7 • units mm and g</text>
+
+<text x="100" y="225" class="head">C01R / C04R relieved interface plate</text>
+<path class="part" d="M120 510 L560 510 L560 360 L380 360 L380 300 L560 300 L560 150 L120 150 L120 300 L300 300 L300 360 L120 360 Z"/>
+<circle cx="280" cy="250" r="14" class="cut"/><circle cx="400" cy="250" r="14" class="cut"/>
+<circle cx="280" cy="410" r="14" class="cut"/><circle cx="400" cy="410" r="14" class="cut"/>
+<circle cx="340" cy="230" r="57" class="cut"/><circle cx="340" cy="430" r="57" class="cut"/>
+<text x="100" y="555">Exact P0.7 hole axes, countersinks and 9.525 mm thickness retained.</text>
+<text x="100" y="590">Material is removed only outside the existing functional interfaces.</text>
+
+<text x="830" y="225" class="head">C06R / C07R stop adapters</text>
+<path class="stop" d="M800 510 L1420 510 L1420 130 L1360 130 L1360 360 L1230 360 L1230 300 L990 300 L990 360 L860 360 L860 130 L800 130 Z"/>
+<rect x="1030" y="300" width="140" height="60" class="cut"/>
+<text x="830" y="555">Twin external metal rails and moving-side catch faces remain exact.</text>
+<text x="830" y="590">Subset proof prevents new rigid-body collision volume by construction.</text>
+
+<rect x="70" y="650" width="1460" height="250" rx="18" fill="#e8f3fb" stroke="#123b68" stroke-width="3"/>
+<text x="100" y="700" class="head">Analytical result</text>
+<text x="100" y="745">Four-adapter CAD estimate: 231.110 → 173.127 g (25.09% reduction).</text>
+<text x="100" y="785">Known moving subtotal: 692.758 → 634.775 g.</text>
+<text x="100" y="825">Unresolved headroom below 750 g: 57.242 → 115.225 g.</text>
+<text x="100" y="865" class="warn">This remains a blocker: frames, gripper mechanism, fasteners, cables, bumper and received masses are absent.</text>
+<text x="100" y="940">No material order code, fabrication authorization, torque value, motion permission or safety approval is released.</text>
+</svg>

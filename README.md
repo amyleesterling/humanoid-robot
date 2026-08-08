@@ -22,6 +22,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Configuration management and revision hierarchy](docs/configuration-management.md)
 - [HR-V0 deterministic release-candidate configuration P0.1](docs/hr-v0-release-candidate-p0.1.md)
 - [HR-V0 integrated arm architecture P0.7](docs/hr-v0-arm-architecture-p0.7.md)
+- [HR-V0 same-interface mass-reduction study P0.1](docs/hr-v0-mass-reduction-study-p0.1.md)
 - [HR-V0 integrated mechanical release candidate P0.6](docs/hr-v0-mechanical-release-p0.6.md)
 - [HR-V0 hard-stop design basis P0.3](docs/hr-v0-hard-stop-design-basis-p0.3.md)
 - [HR-V0 firmware implementation candidate P0.4](docs/hr-v0-firmware-p0.4.md)
@@ -152,6 +153,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 H1 receiving and characterization procedure](docs/hr-v0-h1-receiving-p0.1.md)
 - [Electrical V3 independent review request](docs/reviews/2026-08-06-electrical-v3-independent-review-request.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
+- [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Firmware P0.3 independent review request](docs/reviews/2026-08-07-firmware-p0.3-independent-review-request.md)
 - [Firmware P0.2 historical independent review request](docs/reviews/2026-08-07-firmware-p0.2-independent-review-request.md)
 - [Firmware P0.1 historical independent review request](docs/reviews/2026-08-06-firmware-p0.1-independent-review-request.md)
@@ -171,11 +173,12 @@ Run `python tools/check_hr_v0_safety_allocation.py` to verify that the ordinary 
 Run `python tools/generate_hr_v0_release_manifest.py` only after deliberate package changes, then run `python tools/check_hr_v0_release_manifest.py`. A committed clean clone must additionally pass `python tools/check_hr_v0_release_manifest.py --require-clean`; this proves package identity, not fabrication or energization readiness.
 Run `python tools/generate_hr_v0_bom_closure.py` after deliberate system-BOM changes, then `python tools/check_hr_v0_bom.py`. The checker must retain `EG-003` as partial until a complete signed machine BOM exists; Evaluation Batch A is not blanket purchase authority.
 Generate exact vendor-coordinate evidence with `C:\Users\amyle\Documents\New project\.venvs\hr-v0-cad\Scripts\python.exe tools/generate_hr_v0_robotis_interface.py`, then run its checker. Generate the current R69 / `HR-V0-ARM-ARCH-P0.7` candidate with the same interpreter using `tools/generate_hr_v0_arm_architecture.py`, then run `tools/check_hr_v0_arm_architecture.py`. Run `tools/generate_hr_v0_mechanical_release.py` and its checker after deliberate mechanical-control changes. `HR-V0-MECH-P0.6` remains the release hold. The certificate closes nominal body between-sample clearance only and C06/C07 are analytical only; all fabrication packets remain withdrawn until bumper selection, received MTR/FAI/fit, T-slot/fastener/stop analysis, cables/guard, physical contact/stopping/tolerance proof and qualified review close `MECH-005` and `MECH-006`.
+Generate and check the nonselected R70 mass-reduction study with the CAD interpreter using `tools/generate_hr_v0_mass_reduction_study.py` and `tools/check_hr_v0_mass_reduction_study.py`. Its exact-subset result and 57.983 g CAD reduction do not supersede P0.7, close `MASS-002`, or release C01R/C04R/C06R/C07R for quotation or fabrication.
 Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket, hardware, orientation, torque-guidance, load-screen or inspection-route change. It must retain all six joints as exact candidates on hold until `INSPECT-MECH-010` and qualified mechanical disposition are executed.
 
 ## Review history
 
-Sixty-nine review/control rounds are complete: R01-R69. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R69 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding and positive-stop corrections, not additional independent reviews.
+Seventy review/control rounds are complete: R01-R70. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R70 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding, positive-stop and mass-reduction corrections, not additional independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -248,6 +251,7 @@ Sixty-nine review/control rounds are complete: R01-R69. R11 Fable and R12 Sol ar
 | R67 | Continuous nominal collision and J2 allocation correction | Issued `HR-V0-MECH-P0.5` / `HR-V0-ARM-ARCH-P0.6` / `HR-V0-HS-P0.2`. Certified all 70 non-intentional rigid-body pairs continuously through J2=120° with a 0.75 mm required floor and 0.765783 mm minimum guaranteed lower bound; numerically located first nominal contact at 121.643289°; lowered the candidate software ceiling to 115° and recorded an unreleased 118° backed-up-stop datum with explicit 3° stopping and 2.643289° physical-uncertainty budgets. Tolerances, deformation, cables/guard, actual stop CAD, measured stopping, physical proof and qualified review remain open. No quotation, fabrication, motion or energization gate closed. |
 | R68 | Mechanical-to-control limit binding correction | Found that the active supervisor still allowed J2 to 125° after R67 allocated 115°. Issued `HR-V0-FW-P0.3` / `HR-V0-SUP-P0.2` / `HR-V0-ACT-P0.2` / `HR-V0-DXL-TRANSPORT-P0.2`; bound command screening and raw conversion to the exact P0.5/P0.6/P0.2 mechanical identifiers and 15–115° envelope; and added fail-closed tests for stale 120°, revision mismatch and missing acceptance evidence. The committed binding remains unreleased and cannot open the actuator port. No hardware, HIL, fabrication, motion or energization gate closed. |
 | R69 | J2 positive-stop CAD and binding synchronization | Issued `HR-V0-ARM-ARCH-P0.7`, `HR-V0-MECH-P0.6`, `HR-V0-HS-P0.3`, and `HR-V0-J2-STOP-P0.1` with twin outside C06/C07 rails, nominal metal contact at 117.999985°, separate stop/tolerance/load evidence, and a 69-pair body-clearance certificate. Issued fail-closed firmware/configuration P0.4/P0.3 identifiers for the current mechanical binding. Bumper selection, physical contact/stopping/proof, received evidence and qualified review remain open; no fabrication, motion or energization gate closed. |
+| R70 | Same-interface moving-adapter mass-reduction study | Issued nonselected `HR-V0-MASS-REDUCTION-P0.1` with four exact-subset relieved candidates. Four-part CAD-estimated mass falls by 57.983 g and the incomplete subtotal would become 634.775 g, but detailed stress/impact/fatigue, material, tolerance, received fit, FAI, measured mass/COM, proof and independent review remain open. P0.7 remains controlled; no fabrication, motion or energization gate closed. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

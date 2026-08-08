@@ -1,0 +1,5 @@
+candidate_part,parent_part,candidate_outside_parent_volume_mm3,parent_material_removed_mm3,criterion,result,effect
+MV0-C01R,MV0-C01,0.000000000,5257.800000,outside-parent volume <= 0.000010 mm3,PASS EXACT BREP SUBSET,removing a subset cannot create a new rigid-body collision; tolerance/cable/guard proof remains open
+MV0-C04R,MV0-C04,0.000000000,5257.800000,outside-parent volume <= 0.000010 mm3,PASS EXACT BREP SUBSET,removing a subset cannot create a new rigid-body collision; tolerance/cable/guard proof remains open
+MV0-C06R,MV0-C06,0.000000000,5301.294680,outside-parent volume <= 0.000010 mm3,PASS EXACT BREP SUBSET,removing a subset cannot create a new rigid-body collision; tolerance/cable/guard proof remains open
+MV0-C07R,MV0-C07,0.000000000,5658.298575,outside-parent volume <= 0.000010 mm3,PASS EXACT BREP SUBSET,removing a subset cannot create a new rigid-body collision; tolerance/cable/guard proof remains open

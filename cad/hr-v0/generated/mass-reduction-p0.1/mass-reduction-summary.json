@@ -1,0 +1,23 @@
+{
+  "revision": "HR-V0-MASS-REDUCTION-P0.1",
+  "parent_revision": "HR-V0-ARM-ARCH-P0.7",
+  "warning": "PRELIMINARY - MASS-REDUCTION STUDY ONLY - NOT RELEASED FOR FABRICATION, MOTION, OR ENERGIZATION",
+  "unchanged": [
+    "J1/J2/G1 coordinates",
+    "9.525 mm nominal plate thickness and 9.0 mm finished minimum",
+    "four M2.5 interface-hole axes per adapter",
+    "two M5 member-end holes and countersinks per adapter",
+    "C06/C07 rail widths, contact faces, top datums and face recess",
+    "candidate fastener stack"
+  ],
+  "parent_four_adapter_mass_g": 231.11,
+  "candidate_four_adapter_mass_g": 173.127,
+  "four_adapter_reduction_g": 57.983,
+  "four_adapter_reduction_percent": 25.09,
+  "parent_known_moving_subtotal_g": 692.758,
+  "candidate_known_moving_subtotal_g": 634.775,
+  "moving_mass_ceiling_g": 750.0,
+  "parent_headroom_g": 57.242,
+  "candidate_headroom_g": 115.225,
+  "status": "MASS REDUCTION FEASIBILITY CANDIDATE - UNRESOLVED MOVING ITEMS KEEP MASS-002 BLOCKED"
+}

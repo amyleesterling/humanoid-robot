@@ -53,6 +53,10 @@
     {
       "identifier": "HR-30A/B/C/D/W",
       "disposition": "later staged program; not released by this HR-V0 candidate"
+    },
+    {
+      "identifier": "HR-V0-MASS-REDUCTION-P0.1",
+      "disposition": "R70 nonselected same-interface feasibility study; does not supersede HR-V0-ARM-ARCH-P0.7 or authorize fabrication"
     }
   ],
   "release_preconditions": [
