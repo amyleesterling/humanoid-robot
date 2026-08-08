@@ -34,7 +34,7 @@ CONFIG = [
     ("E2-CFG-018", "F1/F2/F3/INJ1", "Actuator branch protection and DXL-STAR board", "PHYSICALLY ABSENT OR UNWIRED", "NO ACTUATOR CURRENT PATH", "All protection and branch harness evidence remains open."),
     ("E2-CFG-019", "U1/J1/J2/J3", "U2D2 and actuator interfaces", "PHYSICALLY ABSENT OR DISCONNECTED", "COVERED, LABELED, VERIFIED DEAD", "No actuator, U2D2 power path or branch cable is permitted at E2."),
     ("E2-CFG-020", "SP1", "Project-added DC 0 V / PE star", "DNP", "PROHIBITED", "Do not fit; no project-added star is released for the mixed external factory-adapter architecture with source-defined bonding."),
-    ("E2-CFG-021", "JDBG1", "Watchdog programming/debug connector", "DNP FOR E2", "TOOL-ONLY INTERFACE ABSENT", "Connector and programming method remain selection required; no output bypass is permitted."),
+    ("E2-CFG-021", "TP15/TP16/TP2", "Watchdog SWDIO/SWCLK/return test access", "EXISTING PCB TEST POINTS - NO TOOL CONNECTED FOR E2", "TOOL/DEBUG CONNECTION ABSENT", "No installed debug connector exists. Programmer, unpowered fixture and procedure remain selection required; no output bypass or back-power is permitted."),
     ("E2-CFG-022", "JFRAME1", "Frame/shield bonding interface", "DNP FOR E2", "NO INFERRED 0 V/PE/SHIELD LINK", "Bonding/EMC application remains selection required."),
     ("E2-CFG-023", "F24", "24 V control-source branch protection", "SELECTION REQUIRED", "NO PROTECTION VALUE OR HARDWARE RELEASED", "Fault current, inrush, time-current coordination, conductor/connector limits, cable length, ambient, bundling and jurisdiction remain open."),
 ]
@@ -124,7 +124,7 @@ def main() -> None:
         "identifier": IDENTIFIER,
         "date": "2026-08-08",
         "warning": WARNING,
-        "electrical_baseline": "Project Button Electrical V3-P1.11",
+        "electrical_baseline": "Project Button Electrical V3-P1.12",
         "sequence_baseline": "HR-V0-E2-SEQ-P0.1",
         "configuration_rows": len(CONFIG),
         "terminal_rows": len(TERMINALS),

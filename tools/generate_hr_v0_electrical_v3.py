@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P1.11"
+REV = "V3-P1.12"
 PROJECT_TITLE = "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE"
 PROJECT_SUBTITLE = "Separate RESET and ARM, two PNOZ stages, dual watchdog contacts, external adapters, redundant actuator interruption."
 DATE = "2026-08-08"
@@ -496,18 +496,21 @@ def sheets() -> list[Sheet]:
                   [pn("RPD2", "1", "PICO INPUT", "WD2_NC_DIAG", "left"), pn("RPD2", "2", "LOGIC RETURN", "SAFETY_0V", "right")],
                   "PROPOSED - VERIFICATION REQUIRED: PCB/BROWNOUT/FAULT", "Exact order code frozen. Same exact default-low candidate and open physical evidence as channel 1.",
                   "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V", "Panasonic current product page; accessed 2026-08-06.", position=(300, 230), width=50, footprint="Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"),
-        Component("JDBG1", "Watchdog programming/debug connector",
-                  [pn("JDBG1", "TBD-SWDIO", "SWDIO", "WD_SWDIO", "left"), pn("JDBG1", "TBD-SWCLK", "SWCLK", "WD_SWCLK", "left"),
-                   pn("JDBG1", "TBD-GND", "GND", "SAFETY_0V", "left")],
-                  "SELECTION REQUIRED", "Tool-only interface; must not enable or bypass outputs during operation.", position=(325, 190), width=82),
         Component("PI1", "Raspberry Pi 5 8GB high-level compute",
-                  [pn("PI1", "USB-C-VBUS", "+5V INPUT", "COMPUTE_5V", "left"), pn("PI1", "GND", "COMPUTE GND", "COMPUTE_0V", "left"),
-                   pn("PI1", "TBD-GPIO-HB", "HEARTBEAT OUT", "PI_HEARTBEAT", "right"), pn("PI1", "USB-U2D2", "USB TO U2D2", "PI_USB_U2D2", "right")],
-                  "PROPOSED - GPIO/CABLE/RETENTION OPEN", "High-level compute and logger. It never owns the hardware safety function or directly restores contactors.",
-                  "https://www.raspberrypi.com/products/raspberry-pi-5/", position=(325, 245), width=82),
+                  [pn("PI1", "USB-C-VBUS", "+5V INPUT", "COMPUTE_5V", "left"),
+                   pn("PI1", "USB-C-GND", "USB-C POWER RETURN", "COMPUTE_0V", "left"),
+                   pn("PI1", "HDR40-6", "GPIO HEADER GND", "COMPUTE_0V", "left"),
+                   pn("PI1", "HDR40-11", "GPIO17 HEARTBEAT OUT", "PI_HEARTBEAT", "right"),
+                   pn("PI1", "USB-U2D2", "USB TO U2D2", "PI_USB_U2D2", "right")],
+                  "PROPOSED - GPIO PIN FROZEN; CABLE/RUNTIME/RETENTION OPEN",
+                  "High-level compute and logger. BCM GPIO17 on physical header pin 11 is reserved for the ordinary heartbeat output; physical header pin 6 is its compute-domain return. Output must remain inactive until explicitly configured. It never owns the hardware safety function or directly restores contactors.",
+                  "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html",
+                  "Raspberry Pi current hardware documentation and Raspberry Pi 5 product brief accessed 2026-08-08; GPIO17/header pin 11, 3.3 V output semantics, 40-pin header and pin 6 ground cross-checked. Cable, GPIO backend, startup state and physical verification remain open.",
+                  position=(325, 225), width=82),
     ]
     s5.notes = ["Power-up, brownout, clock failure, stuck GPIO, held heartbeat and firmware-corruption tests are mandatory.",
-                "A qualified review must decide whether watchdog loss is credited or only diagnostic."]
+                "A qualified review must decide whether watchdog loss is credited or only diagnostic.",
+                "No installed debug connector exists: use TP15 SWDIO, TP16 SWCLK and TP2 SAFETY_0V only with a controlled unpowered fixture; programmer, fixture, procedure and no-backfeed evidence remain SELECTION REQUIRED."]
 
     s6 = Sheet(6, "06_branches_and_injection.kicad_sch", "HR-V0 connectors, DYNAMIXEL star injection and terminal schedule",
                "Every TBD terminal remains a fabrication blocker; connector orientation must be checked on received parts.")
@@ -649,11 +652,12 @@ def sheets() -> list[Sheet]:
     s8.notes = ["Type-3 values: RTHR=1.00 kOhm, RSENSE=562 Ohm, CIN=10 nF; calculated wetting load is 2.70 kOhm 1% 0.5 W per channel.",
                 "Both grounds are SAFETY_0V; the ISO1212 barrier is not credited. Passive identities are frozen; PCB, derating, EMC and fault tests remain open."]
 
-    s9 = Sheet(9, "09_compute_and_control_terminals.kicad_sch", "Compute, debug and control terminals",
+    s9 = Sheet(9, "09_compute_and_control_terminals.kicad_sch", "Compute and control terminals",
                "High-level compute and diagnostic wiring have no authority to bypass or restore the safety chain.")
-    s9.components = placed(["PI1", "JDBG1", "XT1"], [(left, 80), (right, 80), (left, 200)])
-    s9.notes = ["Programming/debug connections must not enable outputs during operation.",
-                "Terminal family, markers, conductor range, torque and enclosure layout remain selection required."]
+    s9.components = placed(["PI1", "XT1"], [(left, 85), (right, 150)])
+    s9.notes = ["No installed debug connector exists; watchdog programming uses only TP15/TP16/TP2 under a future controlled unpowered-fixture procedure.",
+                "Debug connection, halt, flash and disconnect must not enable outputs, back-power the board or bypass a protective function.",
+                "Heartbeat cable, GPIO runtime, timing, terminal family, markers, conductor range, torque and enclosure layout remain selection required."]
 
     s10 = Sheet(10, "10_actuator_interfaces.kicad_sch", "U2D2, actuator ports and bonding boundary",
                "The U2D2 cable carries DATA and GND only; protected VDD is injected at each actuator.")

@@ -33,7 +33,7 @@ def main() -> None:
 
     require(len(bom) == 5 and len(pins) == 10 and len(holds) == 8 and len(sources) == 10 and len(loads) == 5, "package row counts changed")
     require(summary.get("identifier") == "HR-V0-24V-IF-P0.2", "interface identifier mismatch")
-    require(summary.get("electrical_baseline") == "Project Button Electrical V3-P1.11", "electrical baseline mismatch")
+    require(summary.get("electrical_baseline") == "Project Button Electrical V3-P1.12", "electrical baseline mismatch")
     require(summary.get("release") == "NOT AUTHORIZED", "interface appears released")
     require({(r["reference"], r["pin"]): r["net"] for r in pins if r["reference"] == "J24"} == {("J24", "1"): "SAFETY_24V_RAW", ("J24", "2"): "NO NET / NO CONNECTION", ("J24", "3"): "SAFETY_0V", ("J24", "4"): "NO NET / NO CONNECTION"}, "J24 pin map changed")
     require({(r["reference"], r["pin"]): r["net"] for r in pins if r["reference"] == "PSU2"} == {("PSU2", "YL4-1"): "SAFETY_24V_RAW", ("PSU2", "YL4-2"): "NO NET / NO CONNECTION", ("PSU2", "YL4-3"): "SAFETY_0V", ("PSU2", "YL4-4"): "NO NET / NO CONNECTION"}, "PSU2 YL4 pin map changed")

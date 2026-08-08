@@ -1,6 +1,6 @@
 (kicad_sch
   (version 20250114) (generator "eeschema") (generator_version "10.0") (uuid "5cd52082-c883-51c8-b492-8b3b3e331e69") (paper "A3")
-  (title_block (title "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE index") (date "2026-08-08") (rev "V3-P1.11")
+  (title_block (title "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE index") (date "2026-08-08") (rev "V3-P1.12")
     (company "Project Button") (comment 1 "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION") (comment 2 "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE"))
   (lib_symbols)
   (text "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION" (exclude_from_sim no) (at 17.78 10.16 0)
@@ -52,7 +52,7 @@
           (instances (project "project-button-v3" (path "/5cd52082-c883-51c8-b492-8b3b3e331e69" (page "9"))))) (sheet (at 281.94 154.00) (size 116.84 40.64)
           (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
           (stroke (width 0.5) (type solid)) (fill (color 0 0 0 0.0000)) (uuid "f3a60727-2e66-5730-a829-00cc7c809e89")
-          (property "Sheetname" "09 Compute, debug and control terminals" (at 284.48 164.16 0) (effects (font (size 1.80 1.80)) (justify left bottom)))
+          (property "Sheetname" "09 Compute and control terminals" (at 284.48 164.16 0) (effects (font (size 1.80 1.80)) (justify left bottom)))
           (property "Sheetfile" "09_compute_and_control_terminals.kicad_sch" (at 284.48 179.40 0) (effects (font (size 1.50 1.50)) (justify left top)))
           (instances (project "project-button-v3" (path "/5cd52082-c883-51c8-b492-8b3b3e331e69" (page "10"))))) (sheet (at 17.78 210.00) (size 116.84 40.64)
           (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)

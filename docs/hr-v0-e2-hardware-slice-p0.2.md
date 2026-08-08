@@ -6,7 +6,7 @@ Date: 2026-08-08
 
 Identifier: `HR-V0-E2-HW-P0.2`
 
-Electrical input: `Project Button Electrical V3-P1.11`
+Electrical input: `Project Button Electrical V3-P1.12`
 
 Sequence input: `HR-V0-E2-SEQ-P0.1`
 

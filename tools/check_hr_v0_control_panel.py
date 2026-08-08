@@ -259,7 +259,7 @@ def main() -> int:
     h1_doc = H1_DOC.read_text(encoding="utf-8") if H1_DOC.is_file() else ""
     for required in (
         "HR-V0-H1-RCV-P0.1",
-        "Project Button Electrical V3-P1.11",
+        "Project Button Electrical V3-P1.12",
         "TBD-HA` and `TBD-HB` are project placeholders only",
         "does not choose a current limit, fuse, test-lead rating, or source",
         "RESET STAGE READY - DIAGNOSTIC ONLY / NO MOTION AUTHORITY",

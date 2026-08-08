@@ -6,7 +6,7 @@ Document ID: `HR-V0-H1-RCV-P0.1`
 
 Date: 2026-08-07
 
-Electrical input: introduced by `Project Button Electrical V3-P1.5`; retained by current `Project Button Electrical V3-P1.11`
+Electrical input: introduced by `Project Button Electrical V3-P1.5`; retained by current `Project Button Electrical V3-P1.12`
 
 Candidate: IDEC `HW1P-1FQD-A-24V`
 

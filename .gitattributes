@@ -34,4 +34,7 @@ release/**/*.csv text eol=lf
 release/**/*.md text eol=lf
 docs/reviews/2026-08-08-24v-interface-p0.2-independent-review-request.md text eol=lf
 docs/reviews/2026-08-08-r81-validation-record.md text eol=lf
+docs/reviews/2026-08-08-r82-validation-record.md text eol=lf
+docs/reviews/2026-08-08-compute-debug-interface-p0.1-independent-review-request.md text eol=lf
+docs/reviews/2026-08-08-sol-r12-post-r82-status.md text eol=lf
 bom/hr-v0-bom-closure.csv text eol=lf

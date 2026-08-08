@@ -6,7 +6,7 @@ Identifier: `HR-V0-24V-IF-P0.2`
 
 Date: 2026-08-08
 
-Electrical dependency: Project Button Electrical `V3-P1.11`
+Electrical dependency: Project Button Electrical `V3-P1.12`
 
 Supersedes: `HR-V0-24V-IF-P0.1` for the current candidate only
 

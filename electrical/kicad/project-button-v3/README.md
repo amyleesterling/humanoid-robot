@@ -1,4 +1,4 @@
-# Project Button HR-V0 Electrical V3-P1.11
+# Project Button HR-V0 Electrical V3-P1.12
 
 **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
@@ -14,7 +14,7 @@ This is a generated, connected native KiCad candidate derived from `tools/genera
 6. `06_branches_and_injection.kicad_sch` — Protected actuator branches and central DYNAMIXEL star injection
 7. `07_watchdog_control.kicad_sch` — Independent watchdog power, controller and drivers
 8. `08_watchdog_feedback_interface.kicad_sch` — Calculated dual-channel 24 V watchdog feedback
-9. `09_compute_and_control_terminals.kicad_sch` — Compute, debug and control terminals
+9. `09_compute_and_control_terminals.kicad_sch` — Compute and control terminals
 10. `10_actuator_interfaces.kicad_sch` — U2D2, actuator ports and bonding boundary
 11. `11_watchdog_pcb_connectors.kicad_sch` — Watchdog PCB external connectors
 12. `12_watchdog_pcb_test_access.kicad_sch` — Watchdog PCB test access
