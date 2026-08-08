@@ -1,0 +1,25 @@
+question_id,category,required_question,provider_response,reviewer_disposition,state
+EAR-001,IDENTITY,"State the legal provider name, performing facility and responsible technical contact.",REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-002,SCOPE,Confirm willingness to receive six exact unpowered ROBOTIS articles and keep J1/J2 kits segregated.,REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-003,SCOPE,"Confirm that no power source, U2D2, actuator cable, encoder read or powered motion is required or permitted.",REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-004,CHAIN,"Describe inbound inspection, quarantine, serial/lot capture, photography and chain-of-custody controls.",REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-005,EQUIPMENT,"List every proposed CMM, scanner, balance, angle reference and fixture by manufacturer/model/serial.",REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-006,TRACEABILITY,"Provide current calibration certificates, calibration due dates and traceability chain for each instrument.",REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-007,ACCREDITATION,"Provide the current ISO/IEC 17025 certificate and scope, and identify exactly which quoted results fall inside or outside it.",REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-008,METHOD,Propose the datum realization and method for the actuator axis and H101/S102 fixed/moving axial faces.,REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-009,METHOD,Propose the received mounting-depth and attachment-feature measurement method without inferring thread purpose or load capacity.,REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-010,METHOD,Propose an external mechanical angle datum and repeated bidirectional unpowered backlash method; do not use encoder data.,REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-011,FIXTURE,"Describe a non-damaging restraint that does not load the actuator case, connector, cable aperture, unapproved thread or candidate stop surface.",REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-012,ASSEMBLY,Confirm no screw will enter an actuator until a separately signed screw/length/depth/spacer/torque/reuse instruction is received.,REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-013,ASSEMBLY,State whether the provider can execute the later signed temporary assembly and teardown instruction with calibrated torque tools.,REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-014,UNCERTAINTY,Provide a measurement-specific uncertainty budget and coverage factor for each numeric deliverable.,REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-015,SCAN,"State scanner point spacing, verified volumetric error over the article, registration method and verification artifact.",REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-016,POSE,State how hand-positioned poses will be supported without forcing an angle or using the actuator/fixture as a stop.,REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-017,DELIVERABLE,"Provide native/raw CMM and scan files, point clouds, CSV results, coordinate transforms, residuals and processing logs.",REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-018,DELIVERABLE,Provide original scale-bearing photographs and permit SHA-256 hashing of every delivered file.,REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-019,NONCONFORMANCE,"Describe stop-work, damage, discrepancy and nonconformance reporting plus article quarantine rules.",REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-020,TEARDOWN,"Describe post-measurement teardown, thread/frame/case/washer/spacer inspection, re-inventory and return packaging.",REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-021,COMMERCIAL,"Provide itemized fixed/not-to-exceed price, assumptions, shipping, insurance, tax, lead time and quote expiration.",REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-022,WITNESS,State whether remote or in-person witness of setup and critical measurements is available and priced.,REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-023,IP_DATA,"State data retention, confidentiality, subcontracting and deletion/return policy; identify all subcontractors.",REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN
+EAR-024,BOUNDARY,"Acknowledge that the work is unpowered evidence acquisition only and supplies no fabrication, motion, safety or energization approval.",REQUIRED - NOT RECEIVED,NOT EXECUTED,OPEN

@@ -27,6 +27,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 hard-stop design basis P0.3](docs/hr-v0-hard-stop-design-basis-p0.3.md)
 - [HR-V0 hard-stop region clearance and interface acquisition P0.1](docs/hr-v0-stop-region-clearance-p0.1.md)
 - [HR-V0 unpowered J1/J2 acquisition and metrology P0.1](docs/hr-v0-joint-stack-metrology-p0.1.md)
+- [HR-V0 evaluation acquisition and Boston metrology quote packet P0.1](docs/hr-v0-evaluation-acquisition-metrology-p0.1.md)
 - [HR-V0 firmware implementation candidate P0.4](docs/hr-v0-firmware-p0.4.md)
 - [HR-V0 DYNAMIXEL transport candidate P0.3](docs/hr-v0-dynamixel-transport-p0.3.md)
 - [HR-V0 E2 control-only commissioning package P0.1](docs/hr-v0-e2-control-only-energization-p0.1.md)
@@ -200,7 +201,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-Eighty-four review/control rounds are complete: R01-R84. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R84 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding, positive-stop, mass-reduction, gripper-source, datum-acquisition, unpowered-evaluation, fixed-guard, measurement-method, E2 configuration, source-interface, compute/debug, hard-stop-region and joint-stack-metrology corrections, not additional independent reviews.
+Eighty-five review/control rounds are complete: R01-R85. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R85 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding, positive-stop, mass-reduction, gripper-source, datum-acquisition, unpowered-evaluation, fixed-guard, measurement-method, E2 configuration, source-interface, compute/debug, hard-stop-region, joint-stack-metrology and physical-acquisition corrections, not additional independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -288,6 +289,7 @@ Eighty-four review/control rounds are complete: R01-R84. R11 Fable and R12 Sol a
 | R82 | Compute-heartbeat and watchdog-debug reconciliation | Issued Electrical V3-P1.12 and `HR-V0-COMPUTE-IF-P0.1`; removed the invented installed `JDBG1` connector; bound Pi BCM GPIO17 to physical header pin 11 with pin 6 compute return; and limited debug access to existing exact Harwin TP15/TP16/TP2 test points. Harness, GPIO runtime, startup, waveform/timing, HIL, programmer, unpowered fixture, no-back-power proof, EMC/retention, receiving and qualified review remain open. No cable, fixture, programming connection, powered debug, safety credit, fabrication or energization is released. |
 | R83 | Hard-stop region clearance and interface acquisition | Issued `HR-V0-STOP-REGION-P0.1`; checked 6,411 boundary poses and 131 continuous pair-region certificates with a 5.743912 mm conservative nominal lower bound; and defined 20 open received/interface inputs plus candidate/rejected topology controls. The historic study regions are nominally free, but no angle, topology, stop part, fabrication, motion or energization is released. |
 | R84 | Unpowered J1/J2 acquisition and metrology correction | Issued `HR-V0-JOINT-MET-P0.1`; allocated six exact received articles, eighteen operations, eight hard hold points, six instrument classes, a raw evidence form and a route for all twenty HSI inputs. Corrected unpowered angle evidence to use an external mechanical datum rather than an unavailable encoder reading. No purchase, threaded temporary assembly, physical result, motion or energization is authorized. |
+| R85 | Evaluation acquisition and Boston metrology quote correction | Issued `HR-V0-EVAL-ACQ-P0.1`; recorded three exact cost lines covering six articles and a $1,182.22 official-web-price subtotal before extras; screened four uncontacted provider candidates; and added twenty-four quote questions, ten open holds and separate unsigned authorization/response templates. No cart, contact, order, shipment, work, measurement, motion or energization is authorized. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

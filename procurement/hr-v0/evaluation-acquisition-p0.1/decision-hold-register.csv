@@ -1,0 +1,11 @@
+hold_id,before_action,condition,evidence,failure_action,state
+EAH-001,Any purchase,"Program owner signs exact lines, maximum spend and permitted evaluation-only use",Signed authorization template,Do not order,OPEN
+EAH-002,Any purchase,"Current seller price, stock allocation, shipping, tax and quote expiration are recorded",Dated cart or written quote without checkout,Do not infer availability or total cost,OPEN
+EAH-003,Any purchase,"Seller identity, ship-to, payment authority and return terms are accepted",Procurement record,Do not enter payment or place order,OPEN
+EAH-004,Shipment release,Receiving/quarantine location and accountable receiver are named,Receiving plan,Do not ship to an uncontrolled location,OPEN
+EAH-005,Provider selection,Provider returns every applicable EAR-001..024 response with supporting evidence,Completed provider response,Provider remains research candidate,OPEN
+EAH-006,Metrology work authorization,"Qualified reviewer accepts provider scope, equipment, calibration, method and uncertainty",Signed technical bid evaluation,Do not ship or authorize work,OPEN
+EAH-007,Threaded temporary assembly,Exact screw/length/depth/spacer/torque/locking/reuse instruction is signed,JSM-HP-005 closure,Loose-part metrology only,OPEN
+EAH-008,Article shipment,"Packing, declared value, insurance, chain of custody and return route are accepted",Shipping traveler,Keep articles quarantined,OPEN
+EAH-009,Metrology execution,"Configuration-specific work authorization names scope, provider, commit, articles, witnesses and stop conditions",Signed work authorization,Do not begin work,OPEN
+EAH-010,Metrology execution,Provider acknowledges unpowered/no-source boundary and no design-release authority,Signed EAR-003 and EAR-024 responses,Stop and reject work authorization,OPEN
