@@ -8,6 +8,8 @@ R71 also freezes the official OpenMANIPULATOR repository's `link5`, left-palm an
 
 For the distal gripper interface, the project selects a compact four-hole subset on a 24 x 12 mm rectangle from the received FR12-H104K STEP geometry and checks it with `MV0-FC03`. The drawing is dated Aug-31-17 and states `FOR REFERENCE ONLY`; physical seating, fastener access, exact hardware, tolerance and structural proof therefore remain mandatory.
 
+R115 controls the current official XC430-W240 e-Manual download chain for the complete FR12-H104K DWG/PDF/STEP reference set. The current PDF and STEP are byte-identical to the files already held here; the added DWG has an `AC1015` signature. This provenance correction does not define the H104-to-OpenMANIPULATOR carrier transform, complete gripper mechanism, manufacturing tolerances or physical acceptance evidence.
+
 ## Documentation defect recorded during retrieval
 
 The current ROBOTIS XM540-W270-T e-Manual labels download number 696 as the FR13-S101K STEP file, but that endpoint delivered a DWG. The manufacturer endpoint numbered 698 delivered the S101 STEP file stored here. The mismatch is not corrected or inferred silently; the actual resolved URL and hash are retained in the manifest.

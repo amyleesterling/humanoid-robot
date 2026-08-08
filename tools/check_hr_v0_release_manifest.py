@@ -130,6 +130,7 @@ def main() -> None:
         "HR-V0-GRIP-ADAPT-P0.1",
         "HR-V0-GRIP-SEL-P0.1",
         "HR-V0-OBJ-CTRL-P0.1",
+        "HR-V0-GRIP-H104-SRC-P0.1",
         "HR-V0-GUARD-P0.3",
         "HR-V0-GUARD-RET-P0.1",
         "HR-V0-GUARD-IMPACT-P0.1",

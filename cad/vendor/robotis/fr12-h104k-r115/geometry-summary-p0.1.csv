@@ -1,0 +1,2 @@
+part,solid_count,bbox_x_mm,bbox_y_mm,bbox_z_mm,volume_mm3,center_x_mm,center_y_mm,center_z_mm,source_sha256,release_boundary
+FR12-H104K,1,41.000000100,30.500000261,46.500000015,4314.613722204,0.000000085,22.276497270,8.999152628,75BA58D2668D7D25802D1277A5393445C4FB7A8C565566E56CE76FEFC0E59F7D,Exact source-space geometry; not an H104-to-gripper-carrier assembly transform
