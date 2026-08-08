@@ -71,16 +71,16 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P1.9", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P1.10", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
     all_pins = [(sheet, comp, pin) for sheet, comp in all_components for pin in comp.pins]
 
     require(len(sheets) == 12, f"expected 12 child sheets, found {len(sheets)}", failures)
-    require(len(components) == 76, f"expected 76 unique component blocks, found {len(components)}", failures)
+    require(len(components) == 77, f"expected 77 unique component blocks, found {len(components)}", failures)
     require(len(all_components) == len(components), "duplicate component reference exists", failures)
-    require(len(all_pins) == 295, f"expected 295 modeled terminals, found {len(all_pins)}", failures)
+    require(len(all_pins) == 297, f"expected 297 modeled terminals, found {len(all_pins)}", failures)
     require(all(re.fullmatch(r"[A-Za-z]+[0-9]+", ref) for ref in components),
             "one or more references violate KiCad annotation syntax", failures)
 
@@ -137,7 +137,7 @@ def main() -> int:
         for row in connector_rows
     )
     require(actual_connector == expected_connector, "connector schedule differs from generated model", failures)
-    require(sum(row["terminal"].startswith("TBD-") for row in connector_rows) == 18,
+    require(sum(row["terminal"].startswith("TBD-") for row in connector_rows) == 14,
             "controlled TBD-terminal count changed; review and update checker intentionally", failures)
 
     expected_net_counts = Counter(pin.net for _, _, pin in all_pins)
@@ -153,7 +153,7 @@ def main() -> int:
         for row in wire_rows
     )
     require(actual_wires == expected_wires, "wire-number table differs from generated schematic labels", failures)
-    require(len(wire_rows) == 259, f"expected 259 labeled connected terminals, found {len(wire_rows)}", failures)
+    require(len(wire_rows) == 261, f"expected 261 labeled connected terminals, found {len(wire_rows)}", failures)
     require(len({row["wire_number"] for row in wire_rows}) == len(wire_rows),
             "wire numbers are not unique", failures)
 
@@ -191,7 +191,7 @@ def main() -> int:
     require(len(native_net_names) == 100, f"expected 100 native KiCad nets, found {len(native_net_names)}", failures)
     require(sum(name.startswith("unconnected-(") for name in native_net_names) == 36,
             "expected 36 deliberate native unconnected nets", failures)
-    require(len(native_node_net) == 295, f"expected 295 native KiCad netlist nodes, found {len(native_node_net)}", failures)
+    require(len(native_node_net) == 297, f"expected 297 native KiCad netlist nodes, found {len(native_node_net)}", failures)
     for _, comp, pin in all_pins:
         native_name = native_node_net.get((comp.ref, pin.number), "")
         if expected_net_counts[pin.net] == 1:
@@ -207,7 +207,7 @@ def main() -> int:
     expected_bom_refs = {comp.ref for _, comp in all_components if comp.quantity}
     require({row["reference"] for row in bom_rows} == expected_bom_refs,
             "V3 BOM reference set differs from nonzero-quantity generated components", failures)
-    require(len(bom_rows) == 74, f"expected 74 BOM records, found {len(bom_rows)}", failures)
+    require(len(bom_rows) == 75, f"expected 75 BOM records, found {len(bom_rows)}", failures)
 
     unresolved_rows = read_csv("unresolved-selections.csv")
     unresolved_keys = ("SELECTION REQUIRED", "DESIGN REQUIRED", "CONFIRMATION REQUIRED", "VERIFICATION REQUIRED", "MAPPING REQUIRED", "RELEASE OPEN")
@@ -221,7 +221,20 @@ def main() -> int:
         for row in unresolved_rows
     }
     require(actual_unresolved == expected_unresolved, "unresolved-selection register differs from model", failures)
-    require(len(unresolved_rows) == 63, f"expected 63 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
+    require(len(unresolved_rows) == 65, f"expected 65 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
+
+    require("JC1" not in components, "obsolete combined system-level JC1 block remains", failures)
+    require(pin_map(components, "J24") == {
+        "1": "SAFETY_24V_RAW", "2": "SAFETY_0V", "3": "SAFETY_0V", "4": "SAFETY_24V_RAW",
+    }, "J24 R7B pin allocation changed", failures)
+    require("DC PLUG-P1J-R7B" in components["J24"].value and "KPJX-PM-4S" in components["J24"].value,
+            "J24 exact conversion/jack candidates changed", failures)
+    require("COMPATIBILITY AND PHYSICAL VERIFICATION REQUIRED" in components["J24"].status,
+            "J24 appears physically or application released", failures)
+    require(pin_map(components, "F24") == {"IN": "SAFETY_24V_RAW", "OUT": "SAFETY_24V"},
+            "F24 protection boundary changed", failures)
+    require(components["F24"].status == "SELECTION REQUIRED",
+            "F24 appears selected", failures)
 
     require(pin_map(components, "XT1") == {
         "XT1-01": "SAFETY_24V", "XT1-02": "SAFETY_0V", "XT1-03": "SR1_STATUS",
@@ -464,7 +477,7 @@ def main() -> int:
         return 1
 
     print("HR-V0 Electrical V3 validation: PASS")
-    print("13 native pages; 76 component blocks; 295 terminals; 64 named connected + 36 unconnected nets; 259 unique wire labels; 63 unresolved rows")
+    print("13 native pages; 77 component blocks; 297 terminals; 64 named connected + 36 unconnected nets; 261 unique wire labels; 65 unresolved rows")
     print(WARNING)
     print("ERC/export consistency is not design approval or permission to energize.")
     return 0

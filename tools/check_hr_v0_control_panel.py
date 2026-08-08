@@ -62,8 +62,8 @@ def main() -> int:
         require_warning(rows, name, errors)
 
     bom = tables.get("panel-bom.csv", [])
-    if len(bom) != 25 or {row.get("item_id") for row in bom} != {f"PAN-{i:03d}" for i in range(1, 26)}:
-        errors.append("panel BOM must contain exactly PAN-001..PAN-025")
+    if len(bom) != 26 or {row.get("item_id") for row in bom} != {f"PAN-{i:03d}" for i in range(1, 27)}:
+        errors.append("panel BOM must contain exactly PAN-001..PAN-026")
     required_mpn = {
         "PAN-001": "PJ242010RT",
         "PAN-002": "18P2117",
@@ -88,6 +88,7 @@ def main() -> int:
         "PAN-023": "FHAC0002SXJ",
         "PAN-024": "D-ST 4, item 3030420",
         "PAN-025": "75920-01",
+        "PAN-026": "DC PLUG-P1J-R7B / KPJX-PM-4S",
     }
     by_item = {row.get("item_id", ""): row for row in bom}
     for item_id, mpn in required_mpn.items():
@@ -119,7 +120,7 @@ def main() -> int:
         if not any(token in row.get("release_state", "") for token in ("HOLD", "CANDIDATE", "SELECTION REQUIRED")):
             errors.append(f"{row.get('layout_id')} has released-looking layout state")
     reserve = next((row for row in backplate if row.get("layout_id") == "BP-020"), {})
-    for ref in ("JC1", "F0-F3 LINKS", "FSR1-FSR2 LINKS"):
+    for ref in ("J24", "F24", "F0-F3 LINKS", "FSR1-FSR2 LINKS"):
         if ref not in reserve.get("reference", ""):
             errors.append(f"selection reserve omits {ref}")
     if "SD1" in reserve.get("reference", ""):
@@ -258,7 +259,7 @@ def main() -> int:
     h1_doc = H1_DOC.read_text(encoding="utf-8") if H1_DOC.is_file() else ""
     for required in (
         "HR-V0-H1-RCV-P0.1",
-        "Project Button Electrical V3-P1.9",
+        "Project Button Electrical V3-P1.10",
         "TBD-HA` and `TBD-HB` are project placeholders only",
         "does not choose a current limit, fuse, test-lead rating, or source",
         "RESET STAGE READY - DIAGNOSTIC ONLY / NO MOTION AUTHORITY",
@@ -307,7 +308,7 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print("HR-V0 control-panel P0.4 check passed: 25 BOM rows; 20 backplate allocations; one held sidewall option; 66 V3 wire endpoints")
+    print("HR-V0 control-panel P0.4 check passed: 26 BOM rows; 20 backplate allocations; one held sidewall option; 66 V3 wire endpoints")
     print("Six cable entries, twelve thermal/space screens, twenty-two panel records and fourteen H1 records remain fail-closed")
     print("No hole, cut length, wire, fuse, PE bond, cable entry, PCB fabrication, assembly or energization release exists")
     print(WARNING)

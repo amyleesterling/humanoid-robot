@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: native connected design candidate `V3-P1.9`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` through P1.8 are retained as historical configurations. P1.3 records current Schneider contactor application evidence and the catalog's lower-current/critical-current blocker without releasing K1/K2. P1.4 adds a received-lot terminal-control boundary for RESET and ARM. P1.5 freezes exact amber H1 and retains two project placeholder terminals pending received evidence. P1.6 freezes the Phoenix `3211861` FSR1/FSR2 holder candidates; P1.7 freezes `D-ST 4` item `3030420` as the group end-cover candidate. P1.8 freezes active Littelfuse `75920-01` only as the exact SPST high-side SD1 catalog candidate. P1.9 reconciles the exact XT1 Phoenix family and six position-to-net candidates with the physical-panel record. `TBD-IN/TBD-OUT`, conductor/lug, source fault, load-break, touch protection, cutout, zero-energy/padlock application, human factors and qualified Boston review remain open, as do both FSR fuse links, received compatibility/grouping, XT1 conductor/protection/physical evidence, protection coordination and physical evidence. The separate PCB-P0.5 watchdog board and DXL-STAR-P0.1 actuator board are routed native candidates while retaining supplier acceptance, received, protection, harness, derating, physical, fault, EMC and qualified-review gates.
+Status: native connected design candidate `V3-P1.10`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` through P1.9 are retained as historical configurations. P1.3 records current Schneider contactor application evidence and the catalog's lower-current/critical-current blocker without releasing K1/K2. P1.4 adds a received-lot terminal-control boundary for RESET and ARM. P1.5 freezes exact amber H1 and retains two project placeholder terminals pending received evidence. P1.6 freezes the Phoenix `3211861` FSR1/FSR2 holder candidates; P1.7 freezes `D-ST 4` item `3030420` as the group end-cover candidate. P1.8 freezes active Littelfuse `75920-01` only as the exact SPST high-side SD1 catalog candidate. P1.9 reconciles the exact XT1 Phoenix family and six position-to-net candidates with the physical-panel record. P1.10 replaces the ambiguous system `JC1` block with `J24` and separate `F24`, and freezes the held Mean Well `DC PLUG-P1J-R7B` / Kycon `KPJX-PM-4S` four-pin topology. Written source/accessory compatibility, adapter current/application limits, received polarity, PCB/harness, panel mounting/retention, F24 selection and physical tests remain open. `TBD-IN/TBD-OUT`, conductor/lug, source fault, load-break, touch protection, cutout, zero-energy/padlock application, human factors and qualified Boston review remain open, as do both FSR fuse links, received compatibility/grouping, XT1 conductor/protection/physical evidence, protection coordination and physical evidence. The separate PCB-P0.5 watchdog board and DXL-STAR-P0.1 actuator board are routed native candidates while retaining supplier acceptance, received, protection, harness, derating, physical, fault, EMC and qualified-review gates.
 
 - Native source: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Generator: `tools/generate_hr_v0_electrical_v3.py`
@@ -115,15 +115,15 @@ Before this candidate can replace V2.1:
 
 ## Native candidate validation record
 
-The generated `V3-P1.9` candidate currently contains:
+The generated `V3-P1.10` candidate currently contains:
 
 - one root index plus twelve focused child sheets;
-- 76 component blocks and 295 modeled terminals;
+- 77 component blocks and 297 modeled terminals;
 - 100 native nets: 64 named connected nets plus 36 deliberate auto-generated unconnected nets;
-- 259 unique wire labels synchronized to `wire-number-table.csv`;
-- 74 nonzero-quantity V3 BOM records;
-- 63 unresolved component/interface records; and
-- 18 terminal designations deliberately retained as `TBD-*`.
+- 261 unique wire labels synchronized to `wire-number-table.csv`;
+- 75 nonzero-quantity V3 BOM records;
+- 65 unresolved component/interface records; and
+- 14 terminal designations deliberately retained as `TBD-*`.
 
 KiCad 10.0.5 parsed the root and all twelve children, exported the native netlist, a thirteen-page A3 PDF and thirteen SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 76 native component references and all 295 exported `(reference, terminal, net)` nodes against the generated schedules, including the 36 deliberate no-connect terminals. It freezes every ISO1212, VO618A and TPL7407L pin, their supporting networks, the watchdog-board terminals and the 18-terminal DXL-star system boundary. Clean ERC did not detect the historical P0.4 `RSENSE` application error, illustrating why exact-net, primary-source and physical checks remain separate.
 

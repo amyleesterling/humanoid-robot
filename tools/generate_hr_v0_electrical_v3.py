@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P1.9"
+REV = "V3-P1.10"
 PROJECT_TITLE = "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE"
 PROJECT_SUBTITLE = "Separate RESET and ARM, two PNOZ stages, dual watchdog contacts, external adapters, redundant actuator interruption."
 DATE = "2026-08-08"
@@ -169,16 +169,26 @@ def sheets() -> list[Sheet]:
                    pn("PS24A", "C14-L", "FACTORY AC L", "FACTORY_AC_L_CTL", "left"),
                    pn("PS24A", "C14-N", "FACTORY AC N", "FACTORY_AC_N_CTL", "left"),
                    pn("PS24A", "C14-PE", "FACTORY PE", "SITE_PE_CONTROL_SOURCE", "left")],
-                  "PROPOSED - LOCKING DC INTERFACE OPEN",
-                  "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE.",
+                  "PROPOSED - LOCKING CONVERSION COMPATIBILITY VERIFICATION REQUIRED",
+                  "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE. The proposed P1J-to-R7B conversion remains on hold until Mean Well confirms GST40A24-P1J compatibility and the adapter current/application envelope.",
                   "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF",
                   "GST40A-SPEC 2026-04-03", (340, 82), 78),
-        Component("JC1", "Locking 24 V DC inlet/interface",
-                  [pn("J24V1", "TBD-24+", "+24V", "SAFETY_24V_RAW", "left"),
-                   pn("J24V1", "TBD-24-", "0V", "SAFETY_0V", "left"),
-                   pn("J24V1", "TBD-OUT+", "PROTECTED +24V", "SAFETY_24V", "right"),
-                   pn("J24V1", "TBD-OUT-", "0V", "SAFETY_0V", "right")],
-                  "SELECTION REQUIRED", "Add locking conversion, branch protection, strain relief and enclosure interface without exposing the non-locking barrel plug.", position=(80, 175), width=78),
+        Component("J24", "Mean Well DC PLUG-P1J-R7B conversion candidate + Kycon KPJX-PM-4S panel jack",
+                  [pn("J24", "1", "+24V A", "SAFETY_24V_RAW", "left"),
+                   pn("J24", "2", "0V A", "SAFETY_0V", "left"),
+                   pn("J24", "3", "0V B", "SAFETY_0V", "left"),
+                   pn("J24", "4", "+24V B", "SAFETY_24V_RAW", "left")],
+                  "EXACT CATALOG/TOPOLOGY CANDIDATE - COMPATIBILITY AND PHYSICAL VERIFICATION REQUIRED",
+                  "R7B pins 1 and 4 are proposed +24 V and pins 2 and 3 are proposed 0 V. Parallel contacts receive no current-sharing or safety credit. Do not order, cut a panel, make a PCB/harness or connect PSU2 until Mean Well confirms GST40A24-P1J compatibility and adapter current/application limits, and received continuity proves the plug/jack view and polarity.",
+                  "https://www.meanwell.com/productSeriesP.aspx?c=75&i=90",
+                  "Mean Well current accessory page and industrial catalog rechecked 2026-08-08; Kycon KPJX-PM catalog 0126 and KPJX-PM-4S drawing Rev C2 dated 2026-01-08. Compatibility, adapter rating, installed retention, PCB/harness and received mapping remain open.",
+                  position=(75, 175), width=92),
+        Component("F24", "24 V control-source branch protection",
+                  [pn("F24", "IN", "SOURCE +24V", "SAFETY_24V_RAW", "left"),
+                   pn("F24", "OUT", "PROTECTED +24V", "SAFETY_24V", "right")],
+                  "SELECTION REQUIRED",
+                  "Separate protection function downstream of J24V1. Select only after source fault current, inrush, downstream conductor/connector limits, ambient, bundling, cable length, time-current coordination and jurisdiction are accepted.",
+                  position=(75, 245), width=92),
         Component("PSU3", "Raspberry Pi 27W USB-C Power Supply US; color/SKU unresolved",
                   [pn("PS5A", "USB-C-VBUS", "+5V COMPUTE", "COMPUTE_5V", "right"),
                    pn("PS5A", "USB-C-GND", "COMPUTE GND", "COMPUTE_0V", "right"),
@@ -579,8 +589,8 @@ def sheets() -> list[Sheet]:
     s1 = Sheet(1, "01_external_sources.kicad_sch", "External listed sources and DC boundaries",
                "Factory-sealed adapters eliminate project-built mains wiring.")
     s1.components = placed(
-        ["PSA1", "JA1", "PSU2", "JC1", "PSU3", "SP1"],
-        [(left, 65), (right, 65), (left, 145), (right, 145), (left, 225), (260, 225)],
+        ["PSA1", "JA1", "PSU2", "J24", "F24", "PSU3", "SP1"],
+        [(100, 60), (325, 60), (100, 140), (325, 140), (100, 210), (325, 210), (210, 255)],
     )
     s1.notes = ["All AC conductors shown are factory boundaries, not project-built wiring.",
                 "Site cords, receptacles, GFCI/code basis and source application review remain open."]

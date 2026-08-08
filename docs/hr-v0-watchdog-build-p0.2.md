@@ -8,7 +8,7 @@ System baseline: `HR-30-SYS-R0.2`
 
 Firmware baseline: `HR-V0-FW-P0.1`
 
-Electrical dependency: `Project Button Electrical V3-P1.9` candidate
+Electrical dependency: `Project Button Electrical V3-P1.10` candidate
 
 ## Result
 

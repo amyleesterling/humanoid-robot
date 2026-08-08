@@ -6,7 +6,7 @@ Date: 2026-08-08
 
 Identifier: `HR-V0-E2-HW-P0.1`
 
-Electrical input: `Project Button Electrical V3-P1.9`
+Electrical input: `Project Button Electrical V3-P1.10`
 
 Sequence input: `HR-V0-E2-SEQ-P0.1`
 
@@ -54,7 +54,7 @@ The HTML guide is a responsive review surface with a 16 px body-text floor. CSV 
 
 ## Open release boundary
 
-All twelve hardware holds remain open: site, receiving, RESET/ARM/H1 mapping, JC1, FSR1/FSR2 fuse links, conductors/terminations, enclosure fabrication, watchdog PCB manufacture, firmware/HIL, test equipment/limits, four-role authorization and physical proof that the actuator domain is absent.
+All twelve hardware holds remain open: site, receiving, RESET/ARM/H1 mapping, `J24` compatibility/application/physical evidence, `F24` and FSR1/FSR2 protection/link selections, conductors/terminations, enclosure fabrication, watchdog PCB manufacture, firmware/HIL, test equipment/limits, four-role authorization and physical proof that the actuator domain is absent.
 
 Nothing in this package approves procurement, quotation, drilling, cutting, PCB fabrication, assembly, wiring, connection, energization, motion, human exposure or child-adjacent operation.
 

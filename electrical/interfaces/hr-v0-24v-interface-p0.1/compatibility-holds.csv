@@ -1,0 +1,9 @@
+hold_id,scope,evidence_required,warning
+24H-001,COMPATIBILITY,Mean Well written confirmation that DC PLUG-P1J-R7B is compatible with GST40A24-P1J,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24H-002,ADAPTER RATING,"Mean Well current/application envelope for DC PLUG-P1J-R7B, including whether all four R7B contacts are intended to be paralleled",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24H-003,RECEIVING,"Photographed part identities, pin markings, keyed orientation and live-dead-live polarity/continuity record",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24H-004,PROTECTION,"F24 part/value based on fault current, inrush, time-current and downstream protection coordination",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24H-005,CONDUCTORS,"Wire, PCB/harness, terminals and terminations based on length, ambient, bundling, connector limits and jurisdiction",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24H-006,MECHANICAL,"Received Kycon geometry, panel/PCB design, mounting, retention, strain relief, bend radius, ingress and pullout proof",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24H-007,PHYSICAL TEST,"Polarity, voltage drop, contact temperature, retention and abnormal-condition evidence at accepted worst case",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24H-008,QUALIFIED REVIEW,Qualified electrical review and controlled work authorization for the applicable stage,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION

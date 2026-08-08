@@ -90,7 +90,7 @@
     <rect x="250" y="375" width="127.8" height="140" fill="url(#hold)" stroke="#8a5a00" stroke-width="2"/>
     <text x="314" y="410" class="label" text-anchor="middle">SELECTION</text>
     <text x="314" y="428" class="small" text-anchor="middle">RESERVE</text>
-    <text x="314" y="448" class="small" text-anchor="middle">JC1 + SIX LINKS</text>
+    <text x="314" y="448" class="small" text-anchor="middle">J24 · F24 · SIX LINKS</text>
     <text x="314" y="478" class="small" text-anchor="middle">TERMINATIONS</text>
     <text x="314" y="505" class="small" text-anchor="middle">NO DRILLING</text>
   </g>

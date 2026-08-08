@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-08T00:21:25")
+		(date "2026-08-08T01:25:20")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P1.9")
+			(name "REVISION") "V3-P1.10")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,7 +15,7 @@
 			(title_block
 				(title "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE index")
 				(company "Project Button")
-				(rev "V3-P1.9")
+				(rev "V3-P1.10")
 				(date "2026-08-08")
 				(source "project-button-v3.kicad_sch")
 				(comment
@@ -61,9 +61,9 @@
 			(name "/01 External listed sources and DC boundaries/")
 			(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
 			(title_block
-				(title "PB HR-V0 V3-P1.9 - 01")
+				(title "PB HR-V0 V3-P1.10 - 01")
 				(company "Project Button")
-				(rev "V3-P1.9")
+				(rev "V3-P1.10")
 				(date "2026-08-08")
 				(source "01_external_sources.kicad_sch")
 				(comment
@@ -109,9 +109,9 @@
 			(name "/02 Dual-channel E-stop and RESET eligibility/")
 			(tstamps "/1abf679f-5cd5-5479-8b91-6a232acf93b9/")
 			(title_block
-				(title "PB HR-V0 V3-P1.9 - 02")
+				(title "PB HR-V0 V3-P1.10 - 02")
 				(company "Project Button")
-				(rev "V3-P1.9")
+				(rev "V3-P1.10")
 				(date "2026-08-08")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
@@ -157,9 +157,9 @@
 			(name "/03 Distinct ARM and watchdog eligibility/")
 			(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
 			(title_block
-				(title "PB HR-V0 V3-P1.9 - 03")
+				(title "PB HR-V0 V3-P1.10 - 03")
 				(company "Project Button")
-				(rev "V3-P1.9")
+				(rev "V3-P1.10")
 				(date "2026-08-08")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
@@ -205,9 +205,9 @@
 			(name "/04 Contactor coils, mirror contacts and EDM/")
 			(tstamps "/6cf27f97-627c-5512-ba58-751093298e6c/")
 			(title_block
-				(title "PB HR-V0 V3-P1.9 - 04")
+				(title "PB HR-V0 V3-P1.10 - 04")
 				(company "Project Button")
-				(rev "V3-P1.9")
+				(rev "V3-P1.10")
 				(date "2026-08-08")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
@@ -253,9 +253,9 @@
 			(name "/05 Redundant actuator-power interruption/")
 			(tstamps "/db315f6f-1ed6-5bc9-bdf8-106d0286ccb4/")
 			(title_block
-				(title "PB HR-V0 V3-P1.9 - 05")
+				(title "PB HR-V0 V3-P1.10 - 05")
 				(company "Project Button")
-				(rev "V3-P1.9")
+				(rev "V3-P1.10")
 				(date "2026-08-08")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
@@ -301,9 +301,9 @@
 			(name "/06 Protected actuator branches and central DYNAMIXEL star injection/")
 			(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
 			(title_block
-				(title "PB HR-V0 V3-P1.9 - 06")
+				(title "PB HR-V0 V3-P1.10 - 06")
 				(company "Project Button")
-				(rev "V3-P1.9")
+				(rev "V3-P1.10")
 				(date "2026-08-08")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
@@ -349,9 +349,9 @@
 			(name "/07 Independent watchdog power, controller and drivers/")
 			(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
 			(title_block
-				(title "PB HR-V0 V3-P1.9 - 07")
+				(title "PB HR-V0 V3-P1.10 - 07")
 				(company "Project Button")
-				(rev "V3-P1.9")
+				(rev "V3-P1.10")
 				(date "2026-08-08")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
@@ -397,9 +397,9 @@
 			(name "/08 Calculated dual-channel 24 V watchdog feedback/")
 			(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
 			(title_block
-				(title "PB HR-V0 V3-P1.9 - 08")
+				(title "PB HR-V0 V3-P1.10 - 08")
 				(company "Project Button")
-				(rev "V3-P1.9")
+				(rev "V3-P1.10")
 				(date "2026-08-08")
 				(source "08_watchdog_feedback_interface.kicad_sch")
 				(comment
@@ -445,9 +445,9 @@
 			(name "/09 Compute, debug and control terminals/")
 			(tstamps "/f3a60727-2e66-5730-a829-00cc7c809e89/")
 			(title_block
-				(title "PB HR-V0 V3-P1.9 - 09")
+				(title "PB HR-V0 V3-P1.10 - 09")
 				(company "Project Button")
-				(rev "V3-P1.9")
+				(rev "V3-P1.10")
 				(date "2026-08-08")
 				(source "09_compute_and_control_terminals.kicad_sch")
 				(comment
@@ -493,9 +493,9 @@
 			(name "/10 U2D2, actuator ports and bonding boundary/")
 			(tstamps "/11f6090f-9f69-5145-93e3-5ccb2d8899ac/")
 			(title_block
-				(title "PB HR-V0 V3-P1.9 - 10")
+				(title "PB HR-V0 V3-P1.10 - 10")
 				(company "Project Button")
-				(rev "V3-P1.9")
+				(rev "V3-P1.10")
 				(date "2026-08-08")
 				(source "10_actuator_interfaces.kicad_sch")
 				(comment
@@ -541,9 +541,9 @@
 			(name "/11 Watchdog PCB external connectors/")
 			(tstamps "/6e16a5a8-d40c-518b-9320-2dd1b7122c9a/")
 			(title_block
-				(title "PB HR-V0 V3-P1.9 - 11")
+				(title "PB HR-V0 V3-P1.10 - 11")
 				(company "Project Button")
-				(rev "V3-P1.9")
+				(rev "V3-P1.10")
 				(date "2026-08-08")
 				(source "11_watchdog_pcb_connectors.kicad_sch")
 				(comment
@@ -589,9 +589,9 @@
 			(name "/12 Watchdog PCB test access/")
 			(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
 			(title_block
-				(title "PB HR-V0 V3-P1.9 - 12")
+				(title "PB HR-V0 V3-P1.10 - 12")
 				(company "Project Button")
-				(rev "V3-P1.9")
+				(rev "V3-P1.10")
 				(date "2026-08-08")
 				(source "12_watchdog_pcb_test_access.kicad_sch")
 				(comment
@@ -634,6 +634,141 @@
 		)
 	)
 	(components
+		(comp
+			(ref "F24")
+			(value "24 V control-source branch protection")
+			(description "Separate protection function downstream of J24V1. Select only after source fault current, inrush, downstream conductor/connector limits, ambient, bundling, cable length, time-current coordination and jurisdiction are accepted.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "24 V control-source branch protection")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Separate protection function downstream of J24V1. Select only after source fault current, inrush, downstream conductor/connector limits, ambient, bundling, cable length, time-current coordination and jurisdiction are accepted.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "F24")
+				(description "Separate protection function downstream of J24V1. Select only after source fault current, inrush, downstream conductor/connector limits, ambient, bundling, cable length, time-current coordination and jurisdiction are accepted.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "24 V control-source branch protection")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 External listed sources and DC boundaries")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_external_sources.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 External listed sources and DC boundaries/")
+				(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
+			)
+			(tstamps "410a63a9-3e02-5a86-8d8c-f689ddbf3a23")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J24")
+			(value "Mean Well DC PLUG-P1J-R7B conversion candidate + Kycon KPJX-PM-4S panel jack")
+			(datasheet "https://www.meanwell.com/productSeriesP.aspx?c=75&i=90")
+			(description "R7B pins 1 and 4 are proposed +24 V and pins 2 and 3 are proposed 0 V. Parallel contacts receive no current-sharing or safety credit. Do not order, cut a panel, make a PCB/harness or connect PSU2 until Mean Well confirms GST40A24-P1J compatibility and adapter current/application limits, and received continuity proves the plug/jack view and polarity.")
+			(fields
+				(field
+					(name "Status") "EXACT CATALOG/TOPOLOGY CANDIDATE - COMPATIBILITY AND PHYSICAL VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Mean Well current accessory page and industrial catalog rechecked 2026-08-08; Kycon KPJX-PM catalog 0126 and KPJX-PM-4S drawing Rev C2 dated 2026-01-08. Compatibility, adapter rating, installed retention, PCB/harness and received mapping remain open.")
+				(field
+					(name "Display") "Mean Well DC PLUG-P1J-R7B conversion candidate + Kycon KPJX-PM-4S panel jack")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.meanwell.com/productSeriesP.aspx?c=75&i=90")
+				(field
+					(name "Description") "R7B pins 1 and 4 are proposed +24 V and pins 2 and 3 are proposed 0 V. Parallel contacts receive no current-sharing or safety credit. Do not order, cut a panel, make a PCB/harness or connect PSU2 until Mean Well confirms GST40A24-P1J compatibility and adapter current/application limits, and received continuity proves the plug/jack view and polarity.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "J24")
+				(description "R7B pins 1 and 4 are proposed +24 V and pins 2 and 3 are proposed 0 V. Parallel contacts receive no current-sharing or safety credit. Do not order, cut a panel, make a PCB/harness or connect PSU2 until Mean Well confirms GST40A24-P1J compatibility and adapter current/application limits, and received continuity proves the plug/jack view and polarity.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT CATALOG/TOPOLOGY CANDIDATE - COMPATIBILITY AND PHYSICAL VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Mean Well current accessory page and industrial catalog rechecked 2026-08-08; Kycon KPJX-PM catalog 0126 and KPJX-PM-4S drawing Rev C2 dated 2026-01-08. Compatibility, adapter rating, installed retention, PCB/harness and received mapping remain open.")
+			)
+			(property
+				(name "Display")
+				(value "Mean Well DC PLUG-P1J-R7B conversion candidate + Kycon KPJX-PM-4S panel jack")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 External listed sources and DC boundaries")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_external_sources.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 External listed sources and DC boundaries/")
+				(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
+			)
+			(tstamps "9b9c60e4-c90b-5d8c-855f-e937c278483c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
 		(comp
 			(ref "JA1")
 			(value "Molex 39012066 housing; 6x 444783112 HCS male contacts; 16 AWG")
@@ -705,77 +840,6 @@
 						)
 						(pin
 							(num "1")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "JC1")
-			(value "Locking 24 V DC inlet/interface")
-			(description "Add locking conversion, branch protection, strain relief and enclosure interface without exposing the non-locking barrel plug.")
-			(fields
-				(field
-					(name "Status") "SELECTION REQUIRED")
-				(field
-					(name "Evidence")
-				)
-				(field
-					(name "Display") "Locking 24 V DC inlet/interface")
-				(field
-					(name "Footprint")
-				)
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Add locking conversion, branch protection, strain relief and enclosure interface without exposing the non-locking barrel plug.")
-			)
-			(libsource
-				(lib "PBV3")
-				(part "JC1")
-				(description "Add locking conversion, branch protection, strain relief and enclosure interface without exposing the non-locking barrel plug.")
-			)
-			(property
-				(name "Status")
-				(value "SELECTION REQUIRED")
-			)
-			(property
-				(name "Evidence")
-				(value "")
-			)
-			(property
-				(name "Display")
-				(value "Locking 24 V DC inlet/interface")
-			)
-			(property
-				(name "Sheetname")
-				(value "01 External listed sources and DC boundaries")
-			)
-			(property
-				(name "Sheetfile")
-				(value "01_external_sources.kicad_sch")
-			)
-			(sheetpath
-				(names "/01 External listed sources and DC boundaries/")
-				(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
-			)
-			(tstamps "f37e5ecc-c9ff-5d1b-864f-a453861ae51e")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "TBD-24-")
-						)
-						(pin
-							(num "TBD-24+")
-						)
-						(pin
-							(num "TBD-OUT-")
-						)
-						(pin
-							(num "TBD-OUT+")
 						)
 					)
 				)
@@ -870,10 +934,10 @@
 			(ref "PSU2")
 			(value "Mean Well GST40A24-P1J, 24 V 1.67 A 40 W")
 			(datasheet "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF")
-			(description "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE.")
+			(description "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE. The proposed P1J-to-R7B conversion remains on hold until Mean Well confirms GST40A24-P1J compatibility and the adapter current/application envelope.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - LOCKING DC INTERFACE OPEN")
+					(name "Status") "PROPOSED - LOCKING CONVERSION COMPATIBILITY VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "GST40A-SPEC 2026-04-03")
 				(field
@@ -884,16 +948,16 @@
 				(field
 					(name "Datasheet") "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF")
 				(field
-					(name "Description") "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE.")
+					(name "Description") "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE. The proposed P1J-to-R7B conversion remains on hold until Mean Well confirms GST40A24-P1J compatibility and the adapter current/application envelope.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "PSU2")
-				(description "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE.")
+				(description "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE. The proposed P1J-to-R7B conversion remains on hold until Mean Well confirms GST40A24-P1J compatibility and the adapter current/application envelope.")
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - LOCKING DC INTERFACE OPEN")
+				(value "PROPOSED - LOCKING CONVERSION COMPATIBILITY VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
@@ -6287,6 +6351,44 @@
 		)
 		(libpart
 			(lib "PBV3")
+			(part "F24")
+			(description "Separate protection function downstream of J24V1. Select only after source fault current, inrush, downstream conductor/connector limits, ambient, bundling, cable length, time-current coordination and jurisdiction are accepted.")
+			(fields
+				(field
+					(name "Reference") "F24")
+				(field
+					(name "Value") "24 V control-source branch protection")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Separate protection function downstream of J24V1. Select only after source fault current, inrush, downstream conductor/connector limits, ambient, bundling, cable length, time-current coordination and jurisdiction are accepted.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "24 V control-source branch protection")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "SOURCE_+24V")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "PROTECTED_+24V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
 			(part "F3")
 			(description "R36 proposes 5025 block plus ATOF family only. XM430 stall screen is 2.3 A; exact cable, rating and coordination evidence remain open.")
 			(fields
@@ -6686,6 +6788,53 @@
 		)
 		(libpart
 			(lib "PBV3")
+			(part "J24")
+			(description "R7B pins 1 and 4 are proposed +24 V and pins 2 and 3 are proposed 0 V. Parallel contacts receive no current-sharing or safety credit. Do not order, cut a panel, make a PCB/harness or connect PSU2 until Mean Well confirms GST40A24-P1J compatibility and adapter current/application limits, and received continuity proves the plug/jack view and polarity.")
+			(docs "https://www.meanwell.com/productSeriesP.aspx?c=75&i=90")
+			(fields
+				(field
+					(name "Reference") "J24")
+				(field
+					(name "Value") "Mean Well DC PLUG-P1J-R7B conversion candidate + Kycon KPJX-PM-4S panel jack")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.meanwell.com/productSeriesP.aspx?c=75&i=90")
+				(field
+					(name "Description") "R7B pins 1 and 4 are proposed +24 V and pins 2 and 3 are proposed 0 V. Parallel contacts receive no current-sharing or safety credit. Do not order, cut a panel, make a PCB/harness or connect PSU2 until Mean Well confirms GST40A24-P1J compatibility and adapter current/application limits, and received continuity proves the plug/jack view and polarity.")
+				(field
+					(name "Status") "EXACT CATALOG/TOPOLOGY CANDIDATE - COMPATIBILITY AND PHYSICAL VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "Mean Well current accessory page and industrial catalog rechecked 2026-08-08; Kycon KPJX-PM catalog 0126 and KPJX-PM-4S drawing Rev C2 dated 2026-01-08. Compatibility, adapter rating, installed retention, PCB/harness and received mapping remain open.")
+				(field
+					(name "Display") "Mean Well DC PLUG-P1J-R7B conversion candidate + Kycon KPJX-PM-4S panel jack")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "+24V_A")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "0V_A")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "0V_B")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "+24V_B")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
 			(part "J3")
 			(description "Exact actuator and gripper mechanical release remain open.")
 			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
@@ -6780,54 +6929,6 @@
 				(pin
 					(num "6")
 					(name "C6P_6")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "PBV3")
-			(part "JC1")
-			(description "Add locking conversion, branch protection, strain relief and enclosure interface without exposing the non-locking barrel plug.")
-			(fields
-				(field
-					(name "Reference") "JC1")
-				(field
-					(name "Value") "Locking 24 V DC inlet/interface")
-				(field
-					(name "Footprint")
-				)
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Add locking conversion, branch protection, strain relief and enclosure interface without exposing the non-locking barrel plug.")
-				(field
-					(name "Status") "SELECTION REQUIRED")
-				(field
-					(name "Evidence")
-				)
-				(field
-					(name "Display") "Locking 24 V DC inlet/interface")
-			)
-			(pins
-				(pin
-					(num "TBD-24+")
-					(name "+24V")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-24-")
-					(name "0V")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-OUT+")
-					(name "PROTECTED_+24V")
-					(type "passive")
-				)
-				(pin
-					(num "TBD-OUT-")
-					(name "0V")
 					(type "passive")
 				)
 			)
@@ -7518,7 +7619,7 @@
 		(libpart
 			(lib "PBV3")
 			(part "PSU2")
-			(description "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE.")
+			(description "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE. The proposed P1J-to-R7B conversion remains on hold until Mean Well confirms GST40A24-P1J compatibility and the adapter current/application envelope.")
 			(docs "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF")
 			(fields
 				(field
@@ -7531,9 +7632,9 @@
 				(field
 					(name "Datasheet") "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF")
 				(field
-					(name "Description") "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE.")
+					(name "Description") "External Class I adapter. P1J is center-positive; output -V is not internally bonded to PE. The proposed P1J-to-R7B conversion remains on hold until Mean Well confirms GST40A24-P1J compatibility and the adapter current/application envelope.")
 				(field
-					(name "Status") "PROPOSED - LOCKING DC INTERFACE OPEN")
+					(name "Status") "PROPOSED - LOCKING CONVERSION COMPATIBILITY VERIFICATION REQUIRED")
 				(field
 					(name "Evidence") "GST40A-SPEC 2026-04-03")
 				(field
@@ -10280,15 +10381,15 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "JC1")
-				(pin "TBD-24-")
-				(pinfunction "0V_TBD-24-")
+				(ref "J24")
+				(pin "2")
+				(pinfunction "0V_A_2")
 				(pintype "passive")
 			)
 			(node
-				(ref "JC1")
-				(pin "TBD-OUT-")
-				(pinfunction "0V_TBD-OUT-")
+				(ref "J24")
+				(pin "3")
+				(pinfunction "0V_B_3")
 				(pintype "passive")
 			)
 			(node
@@ -10513,9 +10614,9 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "JC1")
-				(pin "TBD-OUT+")
-				(pinfunction "PROTECTED_+24V_TBD-OUT+")
+				(ref "F24")
+				(pin "OUT")
+				(pinfunction "PROTECTED_+24V_OUT")
 				(pintype "passive")
 			)
 			(node
@@ -10626,9 +10727,21 @@
 			(name "SAFETY_24V_RAW")
 			(class "Default")
 			(node
-				(ref "JC1")
-				(pin "TBD-24+")
-				(pinfunction "+24V_TBD-24+")
+				(ref "F24")
+				(pin "IN")
+				(pinfunction "SOURCE_+24V_IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "J24")
+				(pin "1")
+				(pinfunction "+24V_A_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J24")
+				(pin "4")
+				(pinfunction "+24V_B_4")
 				(pintype "passive")
 			)
 			(node

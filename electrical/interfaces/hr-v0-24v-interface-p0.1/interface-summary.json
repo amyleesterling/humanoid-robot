@@ -1,0 +1,11 @@
+{
+  "identifier": "HR-V0-24V-IF-P0.1",
+  "date": "2026-08-08",
+  "electrical_baseline": "Project Button Electrical V3-P1.10",
+  "bom_rows": 6,
+  "pin_rows": 8,
+  "hold_rows": 8,
+  "source_rows": 5,
+  "release": "NOT AUTHORIZED",
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
+}

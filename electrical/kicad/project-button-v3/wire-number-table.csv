@@ -14,12 +14,14 @@ W1012,01_external_sources.kicad_sch,JA1,5,C6P 5,ACT_0V_PE_BONDED
 W1013,01_external_sources.kicad_sch,JA1,6,C6P 6,ACT_0V_PE_BONDED
 W1014,01_external_sources.kicad_sch,PSU2,P1J-C,CENTER +24V,SAFETY_24V_RAW
 W1015,01_external_sources.kicad_sch,PSU2,P1J-S,SLEEVE 0V,SAFETY_0V
-W1016,01_external_sources.kicad_sch,JC1,TBD-24+,+24V,SAFETY_24V_RAW
-W1017,01_external_sources.kicad_sch,JC1,TBD-24-,0V,SAFETY_0V
-W1018,01_external_sources.kicad_sch,JC1,TBD-OUT+,PROTECTED +24V,SAFETY_24V
-W1019,01_external_sources.kicad_sch,JC1,TBD-OUT-,0V,SAFETY_0V
-W1020,01_external_sources.kicad_sch,PSU3,USB-C-VBUS,+5V COMPUTE,COMPUTE_5V
-W1021,01_external_sources.kicad_sch,PSU3,USB-C-GND,COMPUTE GND,COMPUTE_0V
+W1016,01_external_sources.kicad_sch,J24,1,+24V A,SAFETY_24V_RAW
+W1017,01_external_sources.kicad_sch,J24,2,0V A,SAFETY_0V
+W1018,01_external_sources.kicad_sch,J24,3,0V B,SAFETY_0V
+W1019,01_external_sources.kicad_sch,J24,4,+24V B,SAFETY_24V_RAW
+W1020,01_external_sources.kicad_sch,F24,IN,SOURCE +24V,SAFETY_24V_RAW
+W1021,01_external_sources.kicad_sch,F24,OUT,PROTECTED +24V,SAFETY_24V
+W1022,01_external_sources.kicad_sch,PSU3,USB-C-VBUS,+5V COMPUTE,COMPUTE_5V
+W1023,01_external_sources.kicad_sch,PSU3,USB-C-GND,COMPUTE GND,COMPUTE_0V
 W2001,02_estop_eligibility.kicad_sch,S0,R-1,CH1 RIGHT NC MARK 1,SR1_S11
 W2002,02_estop_eligibility.kicad_sch,S0,L-1,CH2 LEFT NC MARK 1,SR1_S21
 W2003,02_estop_eligibility.kicad_sch,S0,R-2,CH1 RIGHT NC MARK 2,WD1_SAFETY_IN

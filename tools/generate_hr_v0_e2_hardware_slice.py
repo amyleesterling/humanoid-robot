@@ -15,7 +15,7 @@ WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 
 CONFIG = [
     ("E2-CFG-001", "ENC1/BP1", "Hammond PJ242010RT / 18P2117", "INSTALL CANDIDATE", "HOLD", "Panel and backplate candidate only; no drilling until received geometry, layout and qualified review close."),
-    ("E2-CFG-002", "PSU2", "Mean Well GST40A24-P1J", "INSTALL CANDIDATE", "24 V CONTROL SOURCE ONLY", "JC1, protection, retention, received identity and application evidence remain open."),
+    ("E2-CFG-002", "PSU2/J24", "Mean Well GST40A24-P1J + DC PLUG-P1J-R7B + Kycon KPJX-PM-4S", "EXACT SOURCE/INTERFACE CANDIDATES", "24 V CONTROL SOURCE ONLY", "Mean Well compatibility and adapter-current evidence, received polarity, panel interface, PCB/harness, retention and physical application remain open."),
     ("E2-CFG-003", "PSU3", "Raspberry Pi 27 W USB-C Power Supply, US family", "INSTALL CANDIDATE", "5.1 V COMPUTE SOURCE ONLY", "Exact US SKU/color and retention remain selection required."),
     ("E2-CFG-004", "S0", "IDEC XW1E-BV402M-R", "INSTALL CANDIDATE", "CONTROL ONLY", "Received identity, positive-opening contact mapping, continuity and mounting evidence required."),
     ("E2-CFG-005", "S1", "IDEC HW1B-M1F10-B", "INSTALL CANDIDATE", "CONTROL ONLY", "Received-lot RESET terminal mapping required; schematic placeholders TBD-R1/TBD-R2 remain."),
@@ -36,6 +36,7 @@ CONFIG = [
     ("E2-CFG-020", "SP1", "Project-added DC 0 V / PE star", "DNP", "PROHIBITED", "Do not fit; no project-added star is released for the mixed external factory-adapter architecture with source-defined bonding."),
     ("E2-CFG-021", "JDBG1", "Watchdog programming/debug connector", "DNP FOR E2", "TOOL-ONLY INTERFACE ABSENT", "Connector and programming method remain selection required; no output bypass is permitted."),
     ("E2-CFG-022", "JFRAME1", "Frame/shield bonding interface", "DNP FOR E2", "NO INFERRED 0 V/PE/SHIELD LINK", "Bonding/EMC application remains selection required."),
+    ("E2-CFG-023", "F24", "24 V control-source branch protection", "SELECTION REQUIRED", "NO PROTECTION VALUE OR HARDWARE RELEASED", "Fault current, inrush, time-current coordination, conductor/connector limits, cable length, ambient, bundling and jurisdiction remain open."),
 ]
 
 TERMINALS = [
@@ -48,7 +49,7 @@ TERMINALS = [
 ]
 
 SOURCES = [
-    ("SRC-E2-24V", "PSU2", "Mean Well GST40A24-P1J", "24 V / 1.67 A family record", "GST40A-SPEC 2026-04-03", "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF", "CONDITIONAL CANDIDATE; JC1/protection/retention/open application evidence"),
+    ("SRC-E2-24V", "PSU2/J24", "Mean Well GST40A24-P1J + DC PLUG-P1J-R7B + Kycon KPJX-PM-4S", "24 V / 1.67 A source; locking conversion/jack application not released", "GST40A-SPEC 2026-04-03; Kycon KPJX-PM catalog 0126; KPJX-PM-4S Rev C2 2026-01-08", "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF", "CONDITIONAL CANDIDATE; Mean Well compatibility/adapter rating, F24, PCB/harness, retention and received polarity open"),
     ("SRC-E2-5V", "PSU3", "Raspberry Pi 27 W USB-C Power Supply", "5.1 V / 5 A family record", "RP-008245-DS-1 October 2023; portal updated 2025-10-06", "https://www.raspberrypi.com/products/27w-power-supply/", "CONDITIONAL CANDIDATE; exact US SKU/color/retention open"),
     ("SRC-E2-ACT", "PSA1", "Mean Well GST280A12-C6P", "12 V actuator source", "GST280A-SPEC 2026-04-03", "https://www.meanwell.com/Upload/PDF/GST280A/GST280A-SPEC.PDF", "PROHIBITED AT E2; physically absent, AC/DC disconnected"),
 ]
@@ -57,8 +58,8 @@ HOLDS = [
     ("E2-HOLD-001", "SITE", "Exact Boston site, receptacle, branch/GFCI basis, cords, LOTO and exclusion zone", "Accepted site record and qualified electrical disposition"),
     ("E2-HOLD-002", "RECEIVING", "Received identities and markings for every installed candidate", "Signed receiving records with photographs and traceability"),
     ("E2-HOLD-003", "OPERATOR MAPPING", "S1 RESET, S2 ARM and H1 terminals remain TBD", "Executed receiving/continuity procedures and independent comparison"),
-    ("E2-HOLD-004", "24 V INTERFACE", "JC1 locking inlet/interface is selection required", "Exact order code, pinout, rating, retention and source-interface proof"),
-    ("E2-HOLD-005", "PROTECTION", "FSR1/FSR2 fuse links and coordination are selection required", "Fault current, inrush, time-current, conductor and device coordination"),
+    ("E2-HOLD-004", "24 V INTERFACE", "J24 catalog/topology candidate is frozen but not application or physical released", "Written Mean Well GST40A24-P1J compatibility and adapter-current evidence; received polarity/continuity; Kycon pin-view reconciliation; PCB/harness, cutout, retention and strain-relief proof"),
+    ("E2-HOLD-005", "PROTECTION", "F24 and FSR1/FSR2 protection/link selections and coordination are open", "Fault current, inrush, time-current, conductor and device coordination"),
     ("E2-HOLD-006", "CONDUCTORS", "Wire, ferrule/lug, labels, glands and door loom not released", "Lengths, ambient, bundling, ampacity, voltage drop, connector limits, termination qualification and jurisdiction"),
     ("E2-HOLD-007", "ENCLOSURE", "Holes, rail/duct cuts, entries, touch protection and bonding not released", "Received measurements, drawings, fabrication inspection and qualified enclosure review"),
     ("E2-HOLD-008", "WATCHDOG PCB", "PCB-P0.5 has no manufacturing release", "Supplier acceptance, fabrication package, bare-board test, assembly, HIL/fault/EMC/thermal evidence"),
@@ -123,7 +124,7 @@ def main() -> None:
         "identifier": IDENTIFIER,
         "date": "2026-08-08",
         "warning": WARNING,
-        "electrical_baseline": "Project Button Electrical V3-P1.9",
+        "electrical_baseline": "Project Button Electrical V3-P1.10",
         "sequence_baseline": "HR-V0-E2-SEQ-P0.1",
         "configuration_rows": len(CONFIG),
         "terminal_rows": len(TERMINALS),

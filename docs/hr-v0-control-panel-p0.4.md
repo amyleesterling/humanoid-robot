@@ -6,7 +6,7 @@ Document ID: `HR-V0-CP-P0.4`
 
 Date: 2026-08-07
 
-Electrical input: `Project Button Electrical V3-P1.9`
+Electrical input: `Project Button Electrical V3-P1.10`
 
 R79 reconciles the previously exact panel-BOM XT1 family into the native electrical source as `XT1-01` through `XT1-06`. This freezes catalog identities and position-to-net candidates only; every conductor, ferrule/direct-wire method, protection choice, current/temperature coordination, received check, strip length, retention, marking and point-to-point record remains on hold.
 
@@ -56,7 +56,7 @@ Every P0.4 rectangle fits inside the nominal `431.8 x 533.4 mm` panel boundary. 
 | `F1/F2/F3 BLOCK` | `100 x 130 mm` | exact 5025 candidate; no fuse values or mounting release |
 | `FSR1/FSR2 HOLDERS + END COVER` | `25 x 75 mm` | two exact 3211861 holders plus one exact 3030420 end-cover candidate; fuse links/grouping open |
 | `F0 HOLDER` | `30 x 130 mm` | exact FHAC0002SXJ candidate; retention/splice open |
-| `JC1/F0-F3 LINKS/FSR1-FSR2 LINKS` | `127.8 x 140 mm` | selection reserve; adequacy unproved |
+| `J24/F24/F0-F3 LINKS/FSR1-FSR2 LINKS` | `127.8 x 140 mm` | held interface candidate plus protection selection reserve; adequacy unproved |
 
 `SD1` is not assigned to that rectangle. Its provisional right-side-wall option has no released coordinate or hole. A door location is deliberately not preferred at this stage because it would introduce a flexible high-current door loom; this is a routing judgment, not a prohibition or a completed installation decision.
 
@@ -74,7 +74,7 @@ H1 remains IDEC `HW1P-1FQD-A-24V`, labeled **RESET STAGE READY - DIAGNOSTIC ONLY
 
 ## Closure sequence
 
-1. Select and coordinate all six fuse links, `JC1`, conductors, terminations, glands, and bonding hardware; receive and verify the candidate end cover and exact `SD1`.
+1. Close the `J24` compatibility, adapter-current and physical-installation holds; select and coordinate `F24` plus all six remaining fuse links, conductors, terminations, glands, and bonding hardware; receive and verify the candidate end cover and exact `SD1`.
 2. Receive and inspect enclosure, panel, protection hardware, operators, relays, contactors, terminals, rails, ducts, and boards.
 3. Replace catalog envelopes with received dimensions, service sweeps, cable bends, and a three-dimensional depth model.
 4. Complete fault-current, time-current, voltage-drop, duct-fill, heat, grounding/bonding, and enclosure-rating reviews.

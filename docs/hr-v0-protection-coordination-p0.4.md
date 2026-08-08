@@ -4,7 +4,7 @@
 
 Date: 2026-08-07
 
-Applies to: Electrical V3-P1.9, references `F0`, `F1`, `F2`, `F3`, `FSR1`, and `FSR2`; exact `SD1` candidate is a path constraint, not a fuse selection
+Applies to: Electrical V3-P1.10, references `F24`, `F0`, `F1`, `F2`, `F3`, `FSR1`, and `FSR2`; exact `SD1` candidate is a path constraint, not a fuse selection
 
 Status: input and evidence-control package only; physical values and execution evidence remain open
 
