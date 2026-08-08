@@ -21,7 +21,7 @@ Date: 2026-08-08
 - `HR-V0-24V-IF-P0.2`: five BOM rows, ten pin rows, eight holds, ten source records and five load rows.
 - `HR-V0-E2-HW-P0.2`: 23 configuration rows, six XT1 rows, three source-domain rows and twelve holds.
 - Repository validation: all 32 controlled checkers passed using the general, CadQuery and KiCad runtimes as applicable.
-- Release manifest: 896 package files. Clean-clone reproduction and remote-branch verification are required after the R81 commit is created and pushed.
+- Release manifest: 896 package files. Remote clean-clone reproduction passed for pushed R81 source state `3f74b90...`, including the clean-manifest, electrical, 24 V interface, E2 hardware, BOM, control-panel and E2 commissioning checks.
 - The generated interactive guides retain 16 px body text, 14 px secondary text, responsive flow/table scrolling and the preliminary warning. Direct local-file browser rendering was not executed because the in-app browser rejected `file:` navigation; no visual-browser result is claimed for R81.
 
 ## Open evidence
