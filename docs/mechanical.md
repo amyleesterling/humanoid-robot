@@ -1,5 +1,7 @@
 # Mechanical Concept and Preliminary Load Model
 
+> **R91 OVERRIDING ARCHITECTURE HOLD:** `HR-V0-ARM-ARCH-P0.7` remains the controlled unreleased geometry, but its custom-metal route is held. `HR-V0-ELBOW-TRADE-P0.1` requires a separately identified exact-coordinate X430/P0.8 comparison before custom metal is dispositioned. XM430 is not selected and P0.7 is not superseded. The X430 same-axis planning sensitivity creates 140.242 g provisional headroom, or 198.225 g if combined with the separately unselected R70 relief set; neither is a measured or selectable mass pass.
+
 > **R70 CURRENT BOUNDARY:** The historical P0.2 flat-arm architecture and R54/P0.1 through R67/P0.6 arm candidates remain superseded. `HR-V0-ARM-ARCH-P0.7` remains the controlled geometry with integrated A00-A07 plus HS-J2-POS, a 40,001-pose body sweep, a continuous nominal clearance certificate for 69 non-intentional rigid-body pairs through J2=120 degrees, and a separately analyzed twin-rail positive-stop contact. `HR-V0-MASS-REDUCTION-P0.1` adds four nonselected subtractive relief candidates; it does not supersede P0.7. `HR-V0-MECH-P0.6` remains the release hold. No adapter, support, beam, fastener, bumper, motion limit or supplier packet is released.
 
 **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**

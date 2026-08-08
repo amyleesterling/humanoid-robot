@@ -12,6 +12,8 @@ Sourcing basis: `HR-V0-FAB-SRC-P0.5`
 
 ## Decision
 
+**R91 architecture hold:** do not initiate the capability inquiry or quote request yet. `HR-V0-ELBOW-TRADE-P0.1` shows that P0.7 has only 57.242 g of incomplete mass headroom before mandatory missing items and requires an exact-coordinate X430/P0.8 comparison before custom metal is dispositioned. This P0.2 supplier route remains valid process research, but it is not the next authorized action.
+
 The current five custom aluminum parts are plausible conventional CNC-mill work, but no supplier has accepted the drawings and no fabrication release exists. Use one high-requirement 3-axis CNC supplier for C01/C04/C05/C06/C07 after qualified mechanical review. Xometry is the primary capability-inquiry candidate and Protolabs is the alternate. This is a route ranking, not a supplier selection.
 
 The earlier `4.75 mm` SendCutSend suggestion is rejected. Every current part is `9.525 mm` nominal with a `9.00..10.00 mm` finished range. SendCutSend is also excluded as a finished-part route because its published `+/-0.381 mm` accuracy and standard `10 mm` M5 countersink do not satisfy the P0.7 `+/-0.05 mm` feature controls, C06 `+/-0.025 mm` rail datum, C07 `<=0.03 mm` coplanarity, or `11.30 +0.10/-0.00 mm` project countersink.

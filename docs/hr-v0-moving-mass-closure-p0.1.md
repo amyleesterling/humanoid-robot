@@ -40,6 +40,12 @@ This does not close `MASS-002`. The relieved parts are not selected, the additio
 
 CAD values assume 2.70 g/cm³ and are estimates pending the exact stock certificate, thickness, finish and first-article measurement. Purchased-member estimates use the published mass per length. Received mass governs.
 
+## R91 elbow architecture hold
+
+`HR-V0-ELBOW-TRADE-P0.1` blocks the P0.7 custom-metal quote until the elbow/moving-mass architecture is dispositioned. Replacing only the catalog J2 actuator mass, 165 g XM540 with 82 g XM430, creates an 83 g same-axis sensitivity: 609.758 g incomplete subtotal and 140.242 g provisional headroom. Combining that sensitivity with the separately nonselected R70 relief produces 551.775 g and 198.225 g. Neither row is a selectable or physically closed configuration.
+
+P0.7 remains the controlled ledger. XM430 is not selected, no P0.8 geometry exists, and all FR12 frames, adapters, fasteners, moving harness, bumper, gripper mechanism, COM, inertia, continuous/cyclic torque, temperature, stopping, collision, structure, electrical and firmware evidence remains open. See `docs/hr-v0-elbow-actuator-trade-p0.1.md`.
+
 ## Closure procedure
 
 1. Freeze the exact configuration and repository commit.

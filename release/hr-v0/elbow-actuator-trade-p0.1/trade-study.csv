@@ -1,0 +1,5 @@
+option_id,configuration,state,j2_actuator,j2_actuator_mass_g,adapter_relief_credit_g,incomplete_known_mass_g,headroom_to_750_g,j2_stall_torque_12v_nm,j2_stall_current_12v_a,j2_no_load_speed_12v_rpm,elbow_screen_nm,stall_endpoint_ratio_only,shoulder_gravity_screen_nm,total_three_actuator_catalog_stall_current_a,disposition
+ELB-01,P0.7 current geometry,CONTROLLED_NOT_RELEASED,XM540-W270-T,165.000,0.000,692.758,57.242,10.600,4.400,30.000,1.158,9.154,4.541,11.100,HOLD_QUOTATION_MASS_CLOSURE_NOT_CREDIBLE_WITHOUT_MISSING_ITEMS
+ELB-02,P0.7 plus R70 relief set,NONSELECTED_STUDY,XM540-W270-T,165.000,57.983,634.775,115.225,10.600,4.400,30.000,1.158,9.154,4.541,11.100,HOLD_RELIEF_REQUIRES_STRUCTURAL_AND_PHYSICAL_PROOF
+ELB-03,same-axis mass sensitivity with X430 elbow,TRADE_STUDY_NOT_GEOMETRY,XM430-W350-T,82.000,0.000,609.758,140.242,4.100,2.300,46.000,1.158,3.541,4.170,9.000,DEVELOP_P0.8_EXACT_GEOMETRY_BEFORE_SELECTION
+ELB-04,same-axis mass sensitivity with X430 elbow and R70 relief,TRADE_STUDY_NOT_GEOMETRY,XM430-W350-T,82.000,57.983,551.775,198.225,4.100,2.300,46.000,1.158,3.541,4.170,9.000,DEVELOP_P0.8_EXACT_GEOMETRY_AND_REVALIDATE_EVERY_DEPENDENCY

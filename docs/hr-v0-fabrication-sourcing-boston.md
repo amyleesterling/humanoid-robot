@@ -28,6 +28,8 @@ The H104 and S102 source axes and C06/C07 stop geometry are explicit candidates,
 
 ## R90 material and process correction
 
+R91 adds an upstream architecture hold: do not contact a provider or quote P0.7 custom metal until `HR-V0-ELBOW-TRADE-P0.1` is dispositioned. The P0.7 process comparison remains useful, but its five finished parts may change if the exact-coordinate X430/P0.8 branch is selected after review.
+
 An earlier research note suggested `4.75 mm` (`0.187 in`) SendCutSend plate. That thickness is incompatible with every current C01/C04/C05/C06/C07 part. P0.7 controls nominal thickness at `9.525 mm` with a `9.00..10.00 mm` finished range. **Do not upload, quote, order or substitute 4.75 mm stock.**
 
 SendCutSend's current official pages list `0.375 in` 6061-T6 and countersinking, but the published process evidence does not close this design:
