@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HR-V0 gripper source route P0.4</title>
+  <style>
+    :root{--sky:#e8f6ff;--navy:#072c4d;--blue:#0a5a96;--gold:#f5b82e;--paper:#fff;--warn:#7a3500;--muted:#d7eafa}
+    *{box-sizing:border-box}body{margin:0;background:var(--sky);color:var(--navy);font:16px/1.55 system-ui,sans-serif}header,main{max-width:1180px;margin:auto;padding:24px}header{background:var(--paper);border-bottom:6px solid var(--gold)}
+    h1{font-size:clamp(30px,5vw,52px);line-height:1.08;margin:.3em 0}h2{font-size:clamp(24px,3vw,34px);line-height:1.2}h3{font-size:22px}a{color:var(--blue);font-weight:700}.warning{font-size:16px;font-weight:850;color:var(--warn)}.meta{font-size:14px}
+    section,.card{background:var(--paper);border:2px solid var(--blue);border-radius:16px;padding:20px;margin:20px 0}.routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.card{margin:0}.card[hidden]{display:none}.status{display:inline-block;background:var(--gold);border:2px solid var(--navy);border-radius:999px;padding:7px 11px;font-size:12px;font-weight:850}
+    .selector{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.selector button{font:700 16px/1.2 system-ui,sans-serif;color:var(--navy);background:var(--muted);border:2px solid var(--blue);border-radius:10px;padding:12px 16px;cursor:pointer}.selector button[aria-pressed="true"]{background:var(--gold);border-color:var(--navy)}
+    .decision{border-color:var(--gold)}code{font-size:14px;overflow-wrap:anywhere}.foot{font-size:14px}@media(max-width:680px){header,main{padding:16px}.routes{grid-template-columns:1fr}.selector button{width:100%}}
+  </style>
+</head>
+<body>
+  <header>
+    <p class="warning">PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, OR ENERGIZATION</p>
+    <h1>A source route, not buildable CAD</h1>
+    <p>HR-V0-GRIP-SRC-ROUTE-P0.4 records the current ROBOTIS path without promoting a view-only model into manufacturing evidence.</p>
+    <p class="meta">Controlled 2026-08-08 - review round R110</p>
+  </header>
+  <main>
+    <section>
+      <span class="status">SOURCE DISCOVERY CORRECTED</span>
+      <h2>What we verified</h2>
+      <p>ROBOTIS endpoint <code>767</code> leads to a public Onshape document containing a visible OpenManipulator chain and metadata for an original full-robot STEP blob. Exact document, workspace and element identities are frozen in the repository.</p>
+      <p class="warning">No anonymous export was available and no CAD bytes were acquired. A visible model is not a manufacturing release.</p>
+    </section>
+    <section>
+      <h2>Explore each evidence route</h2>
+      <div class="selector" role="group" aria-label="Choose an evidence route">
+        <button type="button" data-route="publisher" aria-pressed="true">Official Onshape route</button>
+        <button type="button" data-route="files" aria-pressed="false">Individual files</button>
+        <button type="button" data-route="article" aria-pressed="false">Received article</button>
+      </div>
+      <div class="routes">
+        <article class="card" id="publisher"><span class="status">VIEW ONLY</span><h3>Official Onshape route</h3><p>Document <code>1535c2d7f05d4986e5ab539c</code>, workspace <code>72b49bd8c74a47b010391012</code>, selected assembly <code>454b64d637f42073514486f4</code>.</p><p>Needed: immutable export, license, revision, units, mates and transform.</p></article>
+        <article class="card" id="files" hidden><span class="status">METADATA ONLY</span><h3>Individual mechanism files</h3><p>Publisher metadata names palms, rods, bushes, crank, rail blocks and brackets. Payloads and hashes are not controlled.</p><p>Needed: authorized source files plus manufacturing definition.</p></article>
+        <article class="card" id="article" hidden><span class="status">NOT AUTHORIZED</span><h3>Received RM-X52 route</h3><p>A controlled inventory and metrology plan exists, but no kit has been purchased, received or measured.</p><p>Needed: separate program-owner approval, then unpowered inventory and qualified metrology.</p></article>
+      </div>
+    </section>
+    <section class="decision">
+      <h2>Fail-closed decision</h2>
+      <p><strong>GRH-001 complete mechanism and GRH-002 H104 registration remain open.</strong> The next valid branch is either publisher-supplied exportable source or separately authorized received-article metrology.</p>
+      <p class="warning">No supplier contact, purchase, fabrication, connection, motion or energization is authorized. No energization gate closes.</p>
+      <p class="foot"><a href="../../../docs/hr-v0-gripper-source-route-correction-p0.4.md">Read the controlled correction</a> - <a href="../../../references/gripper/robotis-gripper-source-route-p0.2.csv">Download the route register</a></p>
+    </section>
+  </main>
+  <script>
+    const buttons=[...document.querySelectorAll('[data-route]')];
+    buttons.forEach(button=>button.addEventListener('click',()=>{
+      buttons.forEach(candidate=>candidate.setAttribute('aria-pressed',String(candidate===button)));
+      document.querySelectorAll('.card').forEach(panel=>panel.hidden=panel.id!==button.dataset.route);
+    }));
+  </script>
+</body>
+</html>

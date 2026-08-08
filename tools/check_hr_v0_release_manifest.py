@@ -124,6 +124,7 @@ def main() -> None:
         "HR-V0-GRIP-CAD-ACQ-P0.1",
         "HR-V0-GRIP-ACQ-P0.2",
         "HR-V0-GRIP-SRC-P0.3",
+        "HR-V0-GRIP-SRC-ROUTE-P0.4",
         "HR-V0-GUARD-P0.3",
         "HR-V0-GUARD-RET-P0.1",
         "HR-V0-GUARD-IMPACT-P0.1",
