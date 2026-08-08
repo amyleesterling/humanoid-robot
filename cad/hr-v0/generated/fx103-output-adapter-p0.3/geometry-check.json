@@ -1,0 +1,69 @@
+{
+  "identifier": "HR-V0-FX103-OUTPUT-ADAPTER-FAB-P0.3",
+  "supersession": {
+    "rejected": "FX103-C01 P0.2 fastener stack; supplied WB M2x3 cannot reach HN12 face",
+    "replacement": [
+      "FX103-C01 P0.3 horn flange",
+      "FX103-C02 P0.1 shaft flange"
+    ]
+  },
+  "material": "17-4 PH stainless steel, UNS S17400, ASTM A564/A564M Type 630, H1150, certified",
+  "c01": {
+    "od_mm": 40.0,
+    "thickness_mm": 8.0,
+    "pilot_diameter_mm": 10.0,
+    "pilot_length_mm": 2.0,
+    "volume_mm3": 9551.25848100291,
+    "mass_g": 74.69084132144275,
+    "step_sha256": "B6D8E557E830C4406D592DB30F725DB2A4046EC539E7C21AB1A58722FA47D62F",
+    "counterbore_depth_mm": 3.0
+  },
+  "c02": {
+    "od_mm": 40.0,
+    "thickness_mm": 8.0,
+    "pilot_bore_nominal_mm": 10.008,
+    "stub_diameter_limits_mm": [
+      14.987,
+      15.0
+    ],
+    "stub_length_mm": 20.0,
+    "root_fillet_mm": 1.0,
+    "volume_mm3": 12904.866784612455,
+    "mass_g": 100.9160582556694,
+    "step_sha256": "39B2A7B0FF3FC62222357712AED4769A37280D3A2BBEB217E82269383761EDA4"
+  },
+  "patterns": {
+    "horn": {
+      "quantity": 8,
+      "pcd_mm": 16.0,
+      "hole_diameter_mm": 2.2,
+      "counterbore_diameter_mm": 4.0
+    },
+    "transfer": {
+      "quantity": 4,
+      "pcd_mm": 28.0,
+      "phase_deg": 22.5,
+      "c01_thread": "M4 x 0.7 - 6H",
+      "c02_clearance_diameter_mm": 4.5
+    }
+  },
+  "nominal_intersections_mm3": {
+    "c01_c02": 0.0,
+    "c02_hub": 0.0
+  },
+  "old_one_piece_hole_stub_overlap_mm": 0.5999999999999996,
+  "old_one_piece_rejected": true,
+  "thread_geometry_in_step": false,
+  "fabrication_release": false,
+  "capacity_credit": false,
+  "fastener_candidates": {
+    "horn": "SCB2-8",
+    "transfer": "CB4-15",
+    "selected_for_release": false
+  },
+  "nominal_engagement_mm": {
+    "horn": 3.0,
+    "transfer": 7.0
+  },
+  "p02_supplied_m2_shortfall_mm": 2.8
+}

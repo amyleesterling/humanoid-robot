@@ -1,0 +1,18 @@
+record,characteristic,method,acceptance,result,reviewer
+FAI-01,"both material certificates, heat/lot and H1150 condition",document review; PMI if qualified reviewer requires,MAT-F01/MP01-MP03,NOT EXECUTED,UNASSIGNED
+FAI-02,"C01 OD, thickness, datum A flatness, face parallelism and finishes",CMM/surface plate/profilometer,C01-F01/F02/F03,NOT EXECUTED,UNASSIGNED
+FAI-03,C01 eight HN12 holes/counterbores and H1 clock datum,CMM/pin/depth gages,C01-F04,NOT EXECUTED,UNASSIGNED
+FAI-04,"C01 four M4 threads, depth, position and phase",CMM/GO-NO-GO/depth gage,C01-F05,NOT EXECUTED,UNASSIGNED
+FAI-05,"C01 pilot size, length and runout",CMM/micrometer/indicator,C01-F06,NOT EXECUTED,UNASSIGNED
+FAI-06,"C02 OD, thickness, datum A flatness, face parallelism and finishes",CMM/surface plate/profilometer,C02-F01/F02/F07,NOT EXECUTED,UNASSIGNED
+FAI-07,C02 H7 pilot pocket and depth,CMM/bore/depth gages,C02-F03,NOT EXECUTED,UNASSIGNED
+FAI-08,"C02 four transfer holes, position and phase",CMM/pin gage,C02-F04,NOT EXECUTED,UNASSIGNED
+FAI-09,"C02 stub diameter, length, runout and finish",micrometer/CMM/indicator/profilometer,C02-F05,NOT EXECUTED,UNASSIGNED
+FAI-10,C02 root fillet,optical comparator/CMM,C02-F06,NOT EXECUTED,UNASSIGNED
+FAI-11,"all edges, burrs, prohibited processes and protection",visual/process record,C01-F07/C02-F07/MP04-MP06,NOT EXECUTED,UNASSIGNED
+FAI-12,ballooned drawing and STEP reconciliation,signed dimensional FAI,all 15 features plus both fastener candidates accounted,NOT EXECUTED,UNASSIGNED
+FAI-13,assembled C01/C02/HN12 static torque proof and post-proof inspection,qualified procedure required,SELECTION REQUIRED,NOT EXECUTED,UNASSIGNED
+FAI-14,assembled shaft coaxiality/runout under released stack,qualified metrology procedure,SELECTION REQUIRED,NOT EXECUTED,UNASSIGNED
+FAI-15,"received SCB2-8 identity, M2x0.4 thread, length/head/hex, material-class evidence and quantity","certificate/packaging review, micrometer/comparator and thread gage",signed lot-specific fastener record; no substitution,NOT EXECUTED,UNASSIGNED
+FAI-16,"received CB4-15 identity, M4x0.7 thread, length/head/hex, material-class/finish evidence and quantity","certificate/packaging review, micrometer/comparator and thread gage",signed lot-specific fastener record; no substitution,NOT EXECUTED,UNASSIGNED
+FAI-17,"assembled M2/M4 engagement, no bottoming/protrusion, head seating, hub/tool clearance and service order","released stack measurement, witness/feeler check and signed assembly traveler",SELECTION REQUIRED,NOT EXECUTED,UNASSIGNED

@@ -1,0 +1,3 @@
+interface,candidate,quantity,definition,nominal_grip_mm,nominal_engagement_mm,state,open
+HN12 to C01,SCB2-8,8,MISUMI M2 x 0.4 x 8 mm fully threaded socket head cap screw; JIS SUSXM7; A2-70; head Ø3.8 x 2 mm; 1.5 mm hex,5.000,3.000,EXACT CANDIDATE HOLD,ROBOTIS acceptance; received lot identity/dimensions; tolerance stack; protrusion; torque; locking; reuse; thread/horn proof
+C02 to C01,CB4-15,4,MISUMI M4 x 0.7 x 15 mm fully threaded socket head cap screw; SCM435; black oxide; 38-43 HRC; catalog strength rank 12.9; head Ø7 x 4 mm; 3 mm hex,8.000,7.000,EXACT CANDIDATE HOLD,current orderability; received lot/certificate/dimensions; corrosion; bearing/friction; torque/preload; locking; reuse; thread/joint proof
