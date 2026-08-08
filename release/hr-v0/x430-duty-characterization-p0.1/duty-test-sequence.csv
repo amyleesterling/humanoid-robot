@@ -1,0 +1,13 @@
+stage_id,stage,energy_state,method,required_result,state
+DUT-00,Configuration freeze,Unpowered,"Bind actuator serial/model/firmware, fixture drawing, wiring revision, instrument IDs/calibrations and software hash",Signed traveler; no substitution,NOT EXECUTED
+DUT-01,Fixture proof and catch check,Unpowered,Apply qualified proof method to load path and independently confirm catch/guard coverage,Approved physical evidence,NOT EXECUTED
+DUT-02,Sensor zero/span and synchronization,Unpowered,"Record pre/post zero, applied standards and timing alignment",Uncertainty budget accepted,NOT EXECUTED
+DUT-03,Control-only communications,Actuator branch physically isolated,Read model/firmware/register configuration; exercise controller logging without actuator power,Exact model and fail-closed state confirmed,NOT EXECUTED
+DUT-04,First torque-enable,POWERED - NOT AUTHORIZED,Guard closed; no external load; lowest independently approved current/PWM/velocity/acceleration limits,No unexpected motion/fault; all primary channels valid,BLOCKED
+DUT-05,Incremental static map,POWERED - NOT AUTHORIZED,"Approved increments of direction, angle and reaction torque with cool-down/abort logic",Measured torque-current-voltage-temperature map with uncertainty,BLOCKED
+DUT-06,Bounded gravity hold,POWERED - NOT AUTHORIZED,Use complete accepted moving mass/COM and approved hold duration; never use the current incomplete screen as a released load,Temperature rise and current remain within qualified project limits,BLOCKED
+DUT-07,No-payload cyclic duty,POWERED - NOT AUTHORIZED,Execute frozen representative trajectory/dwell/count only after LOAD-OPEN-04 closes,Cycle-resolved electrical/mechanical/thermal evidence,BLOCKED
+DUT-08,Soft-payload cyclic duty,POWERED - NOT AUTHORIZED,"Repeat only after payload retention, gripper force and guard evidence close",Cycle-resolved evidence with retained payload,BLOCKED
+DUT-09,Worst credible released duty,POWERED - NOT AUTHORIZED,"Execute only the qualified envelope derived from complete trajectory, ambient, mass, current, connector and cooling evidence",Sustained/cyclic capability disposition,BLOCKED
+DUT-10,Branch-power removal,POWERED - NOT AUTHORIZED,"At separately approved low-energy condition, remove actuator branch power and verify physical decay/state logging",Measured response; no safety credit inferred,BLOCKED
+DUT-11,Post-test inspection and data seal,Unpowered,"Record temperatures through cool-down, inspect actuator/connector/harness/fixture and hash raw data",Qualified disposition or quarantine,NOT EXECUTED

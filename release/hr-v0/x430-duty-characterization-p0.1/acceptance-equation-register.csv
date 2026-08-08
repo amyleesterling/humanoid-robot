@@ -1,0 +1,11 @@
+equation_id,metric,equation,constraint,acceptance_limit
+EQ-01,external current RMS,sqrt(integral(i_ext^2 dt)/duration),window and sample treatment must be frozen,SELECTION REQUIRED
+EQ-02,mechanical output torque,force * perpendicular_as_built_lever_arm,"alignment, lever-arm and force uncertainty included",SELECTION REQUIRED
+EQ-03,case temperature rise,max(case_temp - ambient_temp),project limit must be below applicable product/material/skin-contact constraints,SELECTION REQUIRED
+EQ-04,connector temperature rise,max(connector_temp - ambient_temp),connector and termination limits must be manufacturer-supported,SELECTION REQUIRED
+EQ-05,late-window thermal slope,linear_fit(case_temp versus time) over frozen terminal window,steady-state criterion and window selected before test,SELECTION REQUIRED
+EQ-06,telemetry-current error,DXL_present_current - synchronized_external_current,"external channel is primary; sign, delay and bandwidth accounted",SELECTION REQUIRED
+EQ-07,voltage margin,min(actuator_terminal_voltage) versus released device/source envelope,"10.0-14.8 V is catalog envelope, not a system acceptance margin",SELECTION REQUIRED
+EQ-08,torque repeatability,qualified statistic over repeated identical cases,repeat count and allowable selected before test,SELECTION REQUIRED
+EQ-09,thermal cool-down,time until all monitored temperatures return within approved band of ambient,cool-down band and restart rule selected before test,SELECTION REQUIRED
+EQ-10,fault-free completion,"no unexpected hardware-error, shutdown, watchdog, reset or state mismatch",raw states retained; any event forces quarantine/disposition,SELECTION REQUIRED

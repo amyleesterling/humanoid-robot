@@ -1,0 +1,13 @@
+run_id,stage_id,execution_state,configuration_commit,actuator_serial,actuator_model_readback,firmware_version,fixture_revision,instrument_set,calibration_record,operator,witnesses,date_time_utc,trajectory_id,load_case_id,current_limit_raw,pwm_limit_raw,velocity_limit_raw,acceleration_limit_raw,ambient_c,external_current_rms_a,external_current_peak_a,terminal_voltage_min_v,torque_mean_nm,torque_peak_nm,case_temp_max_c,connector_temp_max_c,cable_temp_max_c,late_window_case_slope_c_per_min,dxl_current_error_rms_a,hardware_error_events,abort_events,raw_data_sha256,review_disposition,notes
+RUN-DUT-00,DUT-00,NOT EXECUTED,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,
+RUN-DUT-01,DUT-01,NOT EXECUTED,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,
+RUN-DUT-02,DUT-02,NOT EXECUTED,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,
+RUN-DUT-03,DUT-03,NOT EXECUTED,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,
+RUN-DUT-04,DUT-04,NOT EXECUTED,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,
+RUN-DUT-05,DUT-05,NOT EXECUTED,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,
+RUN-DUT-06,DUT-06,NOT EXECUTED,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,
+RUN-DUT-07,DUT-07,NOT EXECUTED,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,
+RUN-DUT-08,DUT-08,NOT EXECUTED,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,
+RUN-DUT-09,DUT-09,NOT EXECUTED,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,
+RUN-DUT-10,DUT-10,NOT EXECUTED,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,
+RUN-DUT-11,DUT-11,NOT EXECUTED,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,

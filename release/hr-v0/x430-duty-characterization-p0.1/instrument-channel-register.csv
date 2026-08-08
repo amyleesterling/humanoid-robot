@@ -1,0 +1,16 @@
+channel_id,quantity,method,unit,evidence_role,state
+CH-01,external actuator-branch current,bidirectional current transducer plus independent acquisition,A,Primary electrical evidence; DYNAMIXEL current is supplemental,SELECTION REQUIRED
+CH-02,actuator terminal voltage,differential measurement at received actuator connector,V,Capture source droop and wiring loss at the device,SELECTION REQUIRED
+CH-03,reaction torque,calibrated force transducer at measured perpendicular lever arm,N and m,Primary mechanical output evidence,SELECTION REQUIRED
+CH-04,actuator metal-case temperature,bonded calibrated contact sensor,degC,Primary external thermal evidence,SELECTION REQUIRED
+CH-05,actuator connector contact temperature,calibrated contact sensor without compromising insulation,degC,Connector-heating evidence,SELECTION REQUIRED
+CH-06,moving-cable temperature,calibrated contact sensor at worst credible bend/bundle location,degC,Harness-heating evidence,SELECTION REQUIRED
+CH-07,ambient air temperature,shielded calibrated sensor near test article,degC,Reference for temperature-rise calculations,SELECTION REQUIRED
+CH-08,J2 output angle,independent external angle reference,deg,Do not rely on actuator position alone,SELECTION REQUIRED
+CH-09,fixture deflection,independent displacement measurement,mm,Detect invalid torque-arm geometry/compliance,SELECTION REQUIRED
+CH-10,hardware synchronization,shared isolated trigger or demonstrably aligned clocks,s,Bound channel-to-channel timing uncertainty,SELECTION REQUIRED
+CH-11,DYNAMIXEL Present Current 126,Protocol 2.0 telemetry,raw and 2.69 mA/raw,Supplemental correlation only,CATALOG UNIT VERIFIED; RATE SELECTION REQUIRED
+CH-12,DYNAMIXEL Present Input Voltage 144,Protocol 2.0 telemetry,0.1 V/raw,Supplemental correlation only,CATALOG UNIT VERIFIED; RATE SELECTION REQUIRED
+CH-13,DYNAMIXEL Present Temperature 146,Protocol 2.0 telemetry,1 degC/raw,Supplemental correlation only,CATALOG UNIT VERIFIED; RATE SELECTION REQUIRED
+CH-14,DYNAMIXEL Hardware Error Status 70,Protocol 2.0 telemetry,bitfield,Record every transition with raw value,CATALOG ADDRESS VERIFIED; DECODER/RATE REQUIRED
+CH-15,command and safety-state log,controller log plus physical enable/contactor observations,state and time,"Correlate permitted, commanded and physically powered states",SELECTION REQUIRED

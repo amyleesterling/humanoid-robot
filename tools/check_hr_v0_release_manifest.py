@@ -107,6 +107,7 @@ def main() -> None:
         "HR-V0-ARM-ARCH-P1.1-X430-LOWERED-FOREARM-CANDIDATE",
         "HR-V0-ARM-LOAD-P1.1-X430-CANDIDATE",
         "HR-V0-FR12-MASS-MET-P0.1",
+        "HR-V0-X430-DUTY-P0.1",
         "HR-V0-HS-P0.3",
         "HR-V0-J2-STOP-P0.1",
         "HR-V0-STOP-REGION-P0.1",

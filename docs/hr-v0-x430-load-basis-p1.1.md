@@ -91,6 +91,8 @@ Energy divided by stroke is an average, not a peak impact force. The 180°/s row
 
 These inputs block complete mass/COM/inertia, stop load, structural release, X430 selection and worst-duty validation.
 
+R98 adds `HR-V0-X430-DUTY-P0.1`, a configuration-specific instrumented evidence route for input 8. It does not close the input: all seven powered stages are blocked, all acceptance values remain `SELECTION REQUIRED`, and no physical result exists.
+
 ## Controlled evidence
 
 - generator: `tools/generate_hr_v0_x430_load_basis.py`;
