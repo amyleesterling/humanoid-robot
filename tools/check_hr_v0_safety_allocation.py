@@ -61,15 +61,18 @@ def main() -> int:
 
     fmea_rows = rows(FMEA)
     fmea_by_id = {row.get("fmea_id"): row for row in fmea_rows}
-    expected_fmea = {f"WDF-{index:03d}" for index in range(1, 12)}
+    expected_fmea = {f"WDF-{index:03d}" for index in range(1, 33)}
     if len(fmea_rows) != len(expected_fmea) or set(fmea_by_id) != expected_fmea:
-        errors.append("watchdog FMEA must contain WDF-001 through WDF-011")
+        errors.append("watchdog FMEA must contain WDF-001 through WDF-032")
     for row in fmea_rows:
         if row.get("status") != "open" or not row.get("required_control") or not row.get("verification"):
             errors.append(f"{row.get('fmea_id')} lacks an open control/verification route")
     bypass = fmea_by_id.get("WDF-008", {})
     if bypass.get("safe_by_design") != "no" or "can be impaired" not in bypass.get("sf01_effect", ""):
         errors.append("WDF-008 must remain an explicit credited E-stop impairment case")
+    injection = fmea_by_id.get("WDF-012", {})
+    if injection.get("safe_by_design") != "no" or "potential" not in injection.get("sf01_effect", "").lower():
+        errors.append("WDF-012 must preserve the open KWD1 voltage-injection impairment case")
 
     form_rows = rows(FORM)
     if len(form_rows) != len(expected) or {row.get("function_id") for row in form_rows} != set(expected):
@@ -107,7 +110,7 @@ def main() -> int:
         for error in errors:
             print(f"- {error}")
         return 1
-    print("HR-V0 safety allocation check passed: 8 controlled functions/measures; 11 open watchdog FMEA cases")
+    print("HR-V0 safety allocation check passed: 8 controlled functions/measures; 32 open watchdog FMEA cases")
     print("DF-01 safety credit: ZERO; SF-01/SF-03 PLr and architecture: SELECTION REQUIRED")
     print("PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION")
     return 0

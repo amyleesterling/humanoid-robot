@@ -39,7 +39,7 @@ Selecting a PL e-capable component does not establish a PL e function. A clean E
 
 ## Immediate release blockers
 
-- Execute `ANALYSIS-SAFE-001` to allocate PLr/SIL only to credited functions. Keep `DF-01` at zero safety credit; prove through `ANALYSIS-SAFE-002` that its open, short, welded, cross-channel, shared-supply and contamination faults cannot impair `SF-01` or `SF-03`.
+- Execute `ANALYSIS-SAFE-001` to allocate PLr/SIL only to credited functions. Keep `DF-01` at zero safety credit. Use `HR-V0-WD-CCF-P0.1` for `ANALYSIS-SAFE-002`; it exposes the open KWD A1/21-to-14 voltage-injection path as well as open, short, welded, cross-channel, shared-supply, debug and contamination faults. Redesign or include every negative contribution in the qualified `SF-01`/`SF-03` model before claiming non-interference.
 - Release `PG-01` against the maximum motion/stopping/drop envelope with `DF-01` failed, or select and validate `SF-02` before any configuration that can expose a person.
 - Derive the stopping/clearance budget from released CAD and measure the complete sensor-to-energy-removal-to-motion-stop time.
 - Select exact E-stop, contactors/mirror contacts, output protection, coil suppression, terminals, conductors, and protected routing; then update ECAD and all synchronized schedules.

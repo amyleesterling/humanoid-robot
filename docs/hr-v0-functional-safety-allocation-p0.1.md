@@ -23,7 +23,7 @@ For HR-30, or for any HR-V0 configuration where the fixed guard cannot contain t
 
 Electrical V3 improves nominal restart order: heartbeat dropout opens both SR1 input returns, then recovery requires physical RESET followed by a distinct physical ARM. That is useful diagnostic and restart behavior. It does not make the shared ordinary controller, clock, firmware, supply, drivers or relays a safety-rated two-channel system. A stuck-valid heartbeat, stuck driver or welded contacts can defeat the heartbeat-driven stop demand.
 
-The fixed E-stop NC contacts remain separately in series with the SR1 input channels. A welded watchdog contact should not bypass its corresponding E-stop contact, but that claim depends on actual PCB/harness separation and the absence of shorts that bridge the whole input path. `WDF-008` and `WDF-011` therefore remain safety-critical open FMEA cases.
+The fixed E-stop NC contacts remain nominally in series with the SR1 input channels. A welded watchdog contact should not by itself bypass its corresponding E-stop contact, but R86 proves that this is not the complete fault boundary: KWD A1 and 21 carry `SAFETY_24V`, while KWD terminal 14 returns downstream of S0 to `SR1:S12` or `SR1:S22`. An internal or panel bridge to 14 could inject voltage after an E-stop contact. `WDF-008`, `WDF-011`, and `WDF-012..016` therefore remain safety-critical open cases. See `docs/hr-v0-watchdog-common-cause-p0.1.md`.
 
 ## Controlled allocation
 
@@ -68,6 +68,6 @@ The project shall use the complete controlled standard obtained by the responsib
 - `CTRL-007` controls the ordinary HR-V0 watchdog diagnostic and preserves the 300 ms candidate detection test without calling it a safety limit.
 - `SAFE-008` now matches the hardware architecture: physical RESET, later distinct physical ARM, then a fresh validated trajectory.
 - `TEST-SAFE-002` is retained as a historical identifier but explicitly verifies an uncredited diagnostic only.
-- `EG-012` remains partial until qualified allocation, FMEA/CCF, protected routing, physical fault injection and timing evidence close.
+- `EG-012` remains partial. R86 supplies 18 exact paths, 32 open failure modes, 12 common-cause groups, 28 unexecuted cases and 16 separation controls, but topology non-interference, qualified allocation, protected routing, physical fault injection and timing evidence remain open.
 
 This correction removes an unjustified safety claim. It does not close Sol `B-005` or `B-006`, assign a PLr/SIL, approve a component, release a guard, or authorize fabrication or energization.
