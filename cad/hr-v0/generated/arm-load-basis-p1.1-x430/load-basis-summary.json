@@ -1,0 +1,60 @@
+{
+  "revision": "HR-V0-ARM-LOAD-P1.1-X430-CANDIDATE",
+  "warning": "PRELIMINARY - ANALYTICAL CANDIDATE ONLY - NOT APPROVED FOR QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, CONNECTION, OR ENERGIZATION",
+  "source_binding": {
+    "count": 4,
+    "status": "SHA256_BOUND_TO_R95"
+  },
+  "known_subset": {
+    "mass_g": 143.485169,
+    "nominal_ixx_about_j2_kg_m2": 0.000650235102,
+    "geometry_support_ixx_kg_m2": 0.000921987948,
+    "status": "NOMINAL/ESTIMATED INPUTS ONLY"
+  },
+  "reference_allocation": {
+    "mass_g": 453.485169,
+    "point_model_ixx_about_j2_kg_m2": 0.006303990877,
+    "support_plus_point_ixx_kg_m2": 0.006575743723,
+    "status": "INCOMPLETE REFERENCE; NOT UPPER BOUND OR PHYSICAL RESULT"
+  },
+  "gravity": {
+    "domain_deg": [
+      15.0,
+      115.0
+    ],
+    "sample_increment_deg": 0.25,
+    "maximum_reference_absolute_nm": 0.483257699,
+    "angle_of_maximum_deg": 15.0,
+    "screen_2_25x_nm": 1.087329823,
+    "proof_3x_screen_nm": 3.261989468,
+    "status": "INCOMPLETE REFERENCE"
+  },
+  "stop": {
+    "nominal_contact_deg": 117.999977,
+    "nominal_contact_radius_mm": 45.604835001,
+    "contact_solution_count": 4,
+    "proof_screen_one_rail_force_n": 71.527272672,
+    "status": "STATIC/ENERGY SENSITIVITY ONLY; PEAK/CAPACITY OPEN"
+  },
+  "counts": {
+    "component_rows": 7,
+    "gravity_rows": 401,
+    "energy_rows": 20,
+    "stop_rows": 16,
+    "open_inputs": 10
+  },
+  "release_flags": {
+    "p1_1_selected": false,
+    "x430_selected": false,
+    "mass_closed": false,
+    "com_closed": false,
+    "inertia_closed": false,
+    "continuous_torque_closed": false,
+    "stop_load_closed": false,
+    "structural_release": false,
+    "motion_authorized": false,
+    "fabrication_authorized": false,
+    "connection_authorized": false,
+    "energization_authorized": false
+  }
+}

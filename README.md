@@ -28,6 +28,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Interactive P1.0 stop-clearance review guide](release/hr-v0/arm-architecture-p1.0-x430-clearance/index.html)
 - [HR-V0 X430 lowered-forearm candidate P1.1](docs/hr-v0-x430-lowered-forearm-p1.1.md)
 - [Interactive P1.1 lowered-forearm review guide](release/hr-v0/arm-architecture-p1.1-x430-lowered-forearm/index.html)
+- [HR-V0 P1.1 X430 load basis](docs/hr-v0-x430-load-basis-p1.1.md)
+- [Interactive P1.1 load and stop-sensitivity guide](release/hr-v0/arm-load-basis-p1.1-x430/index.html)
 - [HR-V0 same-interface mass-reduction study P0.1](docs/hr-v0-mass-reduction-study-p0.1.md)
 - [HR-V0 elbow actuator and moving-mass trade P0.1](docs/hr-v0-elbow-actuator-trade-p0.1.md)
 - [Interactive elbow and mass decision guide](release/hr-v0/elbow-actuator-trade-p0.1/index.html)
@@ -215,6 +217,9 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R95 validation record](docs/reviews/2026-08-08-r95-validation-record.md)
 - [R95 independent review request](docs/reviews/2026-08-08-x430-lowered-forearm-p1.1-independent-review-request.md)
 - [Sol R12 findings rechecked after R95](docs/reviews/2026-08-08-sol-r12-post-r95-status.md)
+- [R96 P1.1 X430 load-basis validation record](docs/reviews/2026-08-08-r96-validation-record.md)
+- [R96 P1.1 X430 load-basis independent review request](docs/reviews/2026-08-08-x430-load-basis-p1.1-independent-review-request.md)
+- [Sol R12 findings rechecked after R96](docs/reviews/2026-08-08-sol-r12-post-r96-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -246,7 +251,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-Ninety-five review/control rounds are complete: R01-R95. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R95 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding, positive-stop, mass-reduction, gripper-source, datum-acquisition, unpowered-evaluation, fixed-guard, measurement-method, E2 configuration, source-interface, compute/debug, hard-stop-region, joint-stack-metrology, physical-acquisition, watchdog-dependent-failure, watchdog-supply-gate, watchdog-PCB fabrication-candidate/land-pattern, Boston fabrication-route, elbow/moving-mass architecture, exact-coordinate X430 elbow, full-arm integration, stop-sequencing clearance and lowered-forearm allocation corrections, not additional independent reviews.
+Ninety-six review/control rounds are complete: R01-R96. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R96 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding, positive-stop, mass-reduction, gripper-source, datum-acquisition, unpowered-evaluation, fixed-guard, measurement-method, E2 configuration, source-interface, compute/debug, hard-stop-region, joint-stack-metrology, physical-acquisition, watchdog-dependent-failure, watchdog-supply-gate, watchdog-PCB fabrication-candidate/land-pattern, Boston fabrication-route, elbow/moving-mass architecture, exact-coordinate X430 elbow, full-arm integration, stop-sequencing clearance, lowered-forearm allocation and load-basis corrections, not additional independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -345,6 +350,7 @@ Ninety-five review/control rounds are complete: R01-R95. R11 Fable and R12 Sol a
 | R93 | Full-arm X430 P0.9 integration and continuous-clearance correction | Joined the corrected P0.8 elbow to the P0.7 column/J1/upper-link/forearm/H104 assembly; sampled 9,464 full-arm poses; continuously certified 69 nominal solid-pair groups through the 115-degree software limit with a 0.862928 mm conservative minimum; and added four fastener-stack plus five tolerance-control closure records. Eight holds remain open and four partial; P0.7 remains controlled, XM430 is not selected, and every authorization flag is false. |
 | R94 | X430 P1.0 stop-sequencing clearance correction | Recontoured only the moving-striker upper edge while preserving the stop surface and hole axes; retained 60 SHA-bound identical-solid certificates; recomputed all nine changed-part pair groups at a 3.0 mm requirement with a 3.242248 mm conservative minimum; preserved nominal 118-degree contact; raised stop-contact X430 clearance to 2.491516 mm; and exposed a still-unallocated <=1.491516 mm adverse-variation limit. Eight holds remain open and four partial; P0.7 remains controlled, P0.9/P1.0 are unselected, and every authorization flag is false. |
 | R95 | X430 P1.1 lowered-forearm and tolerance-allocation correction | Shifted the member-side forearm subassembly 7 mm downward while preserving the J2 axis, FR12 pattern and nominal 118-degree external stop datum; retained 30 SHA-bound unchanged-solid certificates and recomputed all 39 changed-solid pairs; certified 4.798163 mm for X430/striker through the command domain; raised stop-contact clearance to 4.369402 mm; restored 4.300 mm nominal M5 countersink edge lands; and allocated six unverified adverse-variation limits totaling 2.500 mm while preserving a 1.500 mm residual plus 0.369402 mm nominal arithmetic margin. Eight holds remain open and four partial; P0.7 remains controlled, P1.1/X430 are unselected, and every authorization flag is false. |
+| R96 | X430 P1.1 moving-load, gravity and stop-sensitivity correction | Issued `HR-V0-ARM-LOAD-P1.1-X430-CANDIDATE`; separated exact CAD, catalog-envelope estimates, program allocations and unresolved physical inputs; calculated a 143.485169 g known subset and 453.485169 g incomplete reference allocation; swept gravity over J2 15..115 degrees; and published inertia, kinetic-energy, static-contact and average-energy/stroke sensitivities. The reference model is explicitly not an upper bound or actuator/stop rating. Ten inputs and every release flag remain open/false. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
