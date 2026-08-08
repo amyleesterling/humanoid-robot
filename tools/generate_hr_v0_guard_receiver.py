@@ -197,7 +197,7 @@ svg{{width:100%;height:auto;background:white;border:2px solid #123b68;border-rad
 <g id="sweepLayer"><circle cx="330" cy="369" r="260" class="sweep"/><text x="346" y="360" class="label">J1 Z=500</text><text x="346" y="390" class="label">450 mm radius</text></g>
 <g id="catchLayer"><rect x="100" y="570" width="460" height="35" class="catch"/><rect x="690" y="215" width="190" height="390" class="catch"/></g>
 <text x="70" y="680" class="label">Front: 900 W × 950 H internal</text><text x="670" y="680" class="label">Plan: 400 D × 900 W internal</text><text x="70" y="720" class="label">Eight panel candidates; tool-removable only after isolation. No interlock is selected or credited.</text></svg>
-<h2>Controlled dimensions and boundaries</h2><table><tr><th>Item</th><th>Candidate</th><th>Release boundary</th></tr><tr><td>Internal clear box</td><td>400 X × 900 Y × 950 Z mm</td><td>Must grow if complete swept, stopping, cable, payload, tolerance or access evidence exceeds it.</td></tr><tr><td>Frame</td><td>80/20 20-2020, 6063-T6 clear anodized; 16 custom lengths</td><td>Exact product candidate; joint strength, received dimensions, anchors and proof remain open.</td></tr><tr><td>Panels</td><td>Plaskolite TUFFAK GP clear, nominal 6 mm; 13 cut pieces</td><td>Exact grade candidate; supplier SKU, thickness tolerance, retention, impact and edge treatment remain open.</td></tr><tr><td>Receiver</td><td>320 × 820 mm clear, 50 mm wall</td><td>Support, nests and drop/rebound acceptance are SELECTION REQUIRED.</td></tr></table>
+<h2>Controlled dimensions and boundaries</h2><table><tr><th>Item</th><th>Candidate</th><th>Release boundary</th></tr><tr><td>Internal clear box</td><td>400 X × 900 Y × 950 Z mm</td><td>Must grow if complete swept, stopping, cable, payload, tolerance or access evidence exceeds it.</td></tr><tr><td>Frame</td><td>80/20 20-2020, 6063-T6 clear anodized; 16 custom lengths</td><td>Exact product candidate; joint strength, received dimensions, anchors and proof remain open.</td></tr><tr><td>Panels</td><td>Plaskolite TUFFAK GP clear, nominal 6 mm; 13 sheet envelopes</td><td>Exact grade candidate; finished sizes, supplier SKU, thickness tolerance, retention, impact and edge treatment remain open.</td></tr><tr><td>Receiver</td><td>320 × 820 mm clear, 50 mm wall</td><td>Support, nests and drop/rebound acceptance are SELECTION REQUIRED.</td></tr></table>
 <p class="warning">No cutting, drilling, purchase, installation, motion, connection or energization is authorized by this package.</p></main>
 <script>for(const id of ['panels','sweep','catch'])document.getElementById(id).addEventListener('change',e=>document.getElementById(id==='panels'?'panelLayer':id+'Layer').style.display=e.target.checked?'':'none');</script></body></html>'''
 
@@ -215,17 +215,17 @@ def main() -> int:
     ]
     half_y = INNER_Y / 2 + FRAME + 15.0
     panel_rows = [
-        {"item_id": "GP-FRONT-HALF", "finished_x_mm": PANEL_T, "finished_y_mm": half_y, "finished_z_mm": FRAME_Z, "quantity": 2, "candidate_material": "transparent sheet", "selection_state": "GRADE THICKNESS RETENTION EDGE AND IMPACT SELECTION REQUIRED"},
-        {"item_id": "GP-REAR-HALF", "finished_x_mm": PANEL_T, "finished_y_mm": half_y, "finished_z_mm": FRAME_Z, "quantity": 2, "candidate_material": "transparent sheet", "selection_state": "GRADE THICKNESS RETENTION EDGE AND IMPACT SELECTION REQUIRED"},
-        {"item_id": "GP-SIDE", "finished_x_mm": INNER_X + 2 * FRAME, "finished_y_mm": PANEL_T, "finished_z_mm": FRAME_Z, "quantity": 2, "candidate_material": "transparent sheet", "selection_state": "GRADE THICKNESS RETENTION EDGE AND IMPACT SELECTION REQUIRED"},
-        {"item_id": "GP-TOP-HALF", "finished_x_mm": INNER_X + 2 * FRAME, "finished_y_mm": half_y, "finished_z_mm": PANEL_T, "quantity": 2, "candidate_material": "transparent sheet", "selection_state": "GRADE THICKNESS RETENTION EDGE AND IMPACT SELECTION REQUIRED"},
-        {"item_id": "GR-BASE", "finished_x_mm": RECEIVER_X + 2 * RECEIVER_T, "finished_y_mm": RECEIVER_Y + 2 * RECEIVER_T, "finished_z_mm": RECEIVER_T, "quantity": 1, "candidate_material": "Plaskolite TUFFAK GP clear nominal 6 mm", "selection_state": "EXACT GRADE CANDIDATE; SUPPLIER SKU RETENTION SUPPORT AND IMPACT SELECTION REQUIRED"},
-        {"item_id": "GR-WALL-X", "finished_x_mm": RECEIVER_T, "finished_y_mm": RECEIVER_Y + 2 * RECEIVER_T, "finished_z_mm": RECEIVER_WALL, "quantity": 2, "candidate_material": "Plaskolite TUFFAK GP clear nominal 6 mm", "selection_state": "EXACT GRADE CANDIDATE; SUPPLIER SKU RETENTION SUPPORT AND IMPACT SELECTION REQUIRED"},
-        {"item_id": "GR-WALL-Y", "finished_x_mm": RECEIVER_X, "finished_y_mm": RECEIVER_T, "finished_z_mm": RECEIVER_WALL, "quantity": 2, "candidate_material": "Plaskolite TUFFAK GP clear nominal 6 mm", "selection_state": "EXACT GRADE CANDIDATE; SUPPLIER SKU RETENTION SUPPORT AND IMPACT SELECTION REQUIRED"},
+        {"item_id": "GP-FRONT-HALF", "envelope_x_mm": PANEL_T, "envelope_y_mm": half_y, "envelope_z_mm": FRAME_Z, "quantity": 2, "candidate_material": "transparent sheet", "selection_state": "ENVELOPE ONLY; GRADE THICKNESS FINISHED SIZE RETENTION EDGE AND IMPACT SELECTION REQUIRED"},
+        {"item_id": "GP-REAR-HALF", "envelope_x_mm": PANEL_T, "envelope_y_mm": half_y, "envelope_z_mm": FRAME_Z, "quantity": 2, "candidate_material": "transparent sheet", "selection_state": "ENVELOPE ONLY; GRADE THICKNESS FINISHED SIZE RETENTION EDGE AND IMPACT SELECTION REQUIRED"},
+        {"item_id": "GP-SIDE", "envelope_x_mm": INNER_X + 2 * FRAME, "envelope_y_mm": PANEL_T, "envelope_z_mm": FRAME_Z, "quantity": 2, "candidate_material": "transparent sheet", "selection_state": "ENVELOPE ONLY; GRADE THICKNESS FINISHED SIZE RETENTION EDGE AND IMPACT SELECTION REQUIRED"},
+        {"item_id": "GP-TOP-HALF", "envelope_x_mm": INNER_X + 2 * FRAME, "envelope_y_mm": half_y, "envelope_z_mm": PANEL_T, "quantity": 2, "candidate_material": "transparent sheet", "selection_state": "ENVELOPE ONLY; GRADE THICKNESS FINISHED SIZE RETENTION EDGE AND IMPACT SELECTION REQUIRED"},
+        {"item_id": "GR-BASE", "envelope_x_mm": RECEIVER_X + 2 * RECEIVER_T, "envelope_y_mm": RECEIVER_Y + 2 * RECEIVER_T, "envelope_z_mm": RECEIVER_T, "quantity": 1, "candidate_material": "Plaskolite TUFFAK GP clear nominal 6 mm", "selection_state": "ENVELOPE ONLY; EXACT GRADE CANDIDATE; SUPPLIER SKU FINISHED SIZE RETENTION SUPPORT AND IMPACT SELECTION REQUIRED"},
+        {"item_id": "GR-WALL-X", "envelope_x_mm": RECEIVER_T, "envelope_y_mm": RECEIVER_Y + 2 * RECEIVER_T, "envelope_z_mm": RECEIVER_WALL, "quantity": 2, "candidate_material": "Plaskolite TUFFAK GP clear nominal 6 mm", "selection_state": "ENVELOPE ONLY; EXACT GRADE CANDIDATE; SUPPLIER SKU FINISHED SIZE RETENTION SUPPORT AND IMPACT SELECTION REQUIRED"},
+        {"item_id": "GR-WALL-Y", "envelope_x_mm": RECEIVER_X, "envelope_y_mm": RECEIVER_T, "envelope_z_mm": RECEIVER_WALL, "quantity": 2, "candidate_material": "Plaskolite TUFFAK GP clear nominal 6 mm", "selection_state": "ENVELOPE ONLY; EXACT GRADE CANDIDATE; SUPPLIER SKU FINISHED SIZE RETENTION SUPPORT AND IMPACT SELECTION REQUIRED"},
     ]
     for row in panel_rows[:4]:
         row["candidate_material"] = "Plaskolite TUFFAK GP clear nominal 6 mm"
-        row["selection_state"] = "EXACT GRADE CANDIDATE; SUPPLIER SKU RETENTION EDGE AND IMPACT SELECTION REQUIRED"
+        row["selection_state"] = "ENVELOPE ONLY; EXACT GRADE CANDIDATE; SUPPLIER SKU FINISHED SIZE RETENTION EDGE AND IMPACT SELECTION REQUIRED"
     controls = [
         {"control_id": "G0", "controlled_value": "origin at vertical projection of J1 onto bench", "status": "DATUM CANDIDATE", "closure_evidence": "bench survey and accepted J1 as-built transform"},
         {"control_id": "G-X", "controlled_value": "internal X -200 to +200 mm", "status": "SPACE CANDIDATE", "closure_evidence": "complete gripper cable and stopping sweep"},
@@ -255,7 +255,7 @@ def main() -> int:
         {"source_id": "GS-002", "organization": "ISO", "document": "ISO 14120:2015 Edition 2", "revision_or_date": "published 2015-11; confirmed 2021; systematic review opened 2026-01-15", "url": "https://www.iso.org/standard/59545.html", "use": "fixed and movable guard design framework", "verification": "PRIMARY SOURCE METADATA VERIFIED; LICENSED STANDARD REVIEW REQUIRED"},
         {"source_id": "GS-003", "organization": "80/20", "document": "20-2020 product page", "revision_or_date": "live page; no formal revision exposed; accessed 2026-08-07", "url": "https://8020.net/20-2020.html", "use": "20 x 20 frame profile exact catalog candidate", "verification": "PRIMARY SOURCE VERIFIED"},
         {"source_id": "GS-004", "organization": "80/20", "document": "14201 supported corner bracket product page", "revision_or_date": "live page; no formal revision exposed; accessed 2026-08-07", "url": "https://8020.net/14201.html", "use": "twenty frame-joint bracket candidates and suggested 75-3581 hardware", "verification": "PRIMARY SOURCE VERIFIED"},
-        {"source_id": "GS-005", "organization": "80/20", "document": "20-2496 panel retainer product page", "revision_or_date": "live page; no formal revision exposed; accessed 2026-08-07", "url": "https://8020.net/20-2496.html", "use": "panel-retainer family candidate only; quantity and drill pattern open", "verification": "PRIMARY SOURCE VERIFIED"},
+        {"source_id": "GS-005", "organization": "80/20", "document": "20-2496 panel retainer product page", "revision_or_date": "live page; no formal revision exposed; accessed 2026-08-07", "url": "https://8020.net/20-2496.html", "use": "catalog screen only; drill-through route excluded by HR-V0-GUARD-RET-P0.1", "verification": "PRIMARY SOURCE VERIFIED; NOT CURRENT RETENTION BASELINE"},
         {"source_id": "GS-006", "organization": "Plaskolite", "document": "PDS004 TUFFAK GP polycarbonate sheet", "revision_or_date": "122022; accessed 2026-08-07", "url": "https://plaskolite.com/docs/default-source/pds/pds004_tuf_gp.pdf", "use": "clear nominal 6 mm panel and receiver material candidate", "verification": "PRIMARY SOURCE VERIFIED; TYPICAL DATA NOT SPECIFICATION VALUES"},
     ]
     joint_rows = [
@@ -267,22 +267,22 @@ def main() -> int:
         {"candidate_id": "GCAT-001", "manufacturer": "80/20 Inc.", "order_code": "20-2020 custom length", "candidate_quantity": "16 pieces per frame cut schedule", "state": "EXACT CATALOG CANDIDATE HOLD", "open_evidence": "written configuration; received length/squareness/profile identity; structural and joint proof"},
         {"candidate_id": "GCAT-002", "manufacturer": "80/20 Inc.", "order_code": "14201", "candidate_quantity": "20", "state": "EXACT CATALOG CANDIDATE HOLD", "open_evidence": "application load; orientation/access; received fit; torque and proof"},
         {"candidate_id": "GCAT-003", "manufacturer": "80/20 Inc.", "order_code": "75-3581", "candidate_quantity": "40", "state": "EXACT CATALOG CANDIDATE HOLD", "open_evidence": "received identity; torque/locking/reuse; slip and proof"},
-        {"candidate_id": "GCAT-004", "manufacturer": "Plaskolite", "order_code": "TUFFAK GP clear nominal 6 mm; supplier SKU SELECTION REQUIRED", "candidate_quantity": "13 cut pieces per panel schedule", "state": "EXACT GRADE CANDIDATE HOLD", "open_evidence": "supplier SKU/stock; thickness tolerance; suitability; retention; impact; flame and edge disposition"},
-        {"candidate_id": "GCAT-005", "manufacturer": "80/20 Inc.", "order_code": "20-2496", "candidate_quantity": "SELECTION REQUIRED", "state": "FAMILY CANDIDATE ONLY", "open_evidence": "retention load and spacing calculation; drill pattern; edge distance; service method"},
-        {"candidate_id": "GCAT-006", "manufacturer": "80/20 Inc.", "order_code": "75-3581", "candidate_quantity": "SELECTION REQUIRED", "state": "FAMILY CANDIDATE ONLY", "open_evidence": "retainer quantity follows accepted panel retention design"},
+        {"candidate_id": "GCAT-004", "manufacturer": "Plaskolite", "order_code": "TUFFAK GP clear nominal 6 mm; supplier SKU SELECTION REQUIRED", "candidate_quantity": "13 envelope pieces; finished sizes not released", "state": "EXACT GRADE CANDIDATE HOLD", "open_evidence": "supplier SKU/stock; thickness tolerance; finished size; suitability; retention; impact; flame and edge disposition"},
+        {"candidate_id": "GCAT-005", "manufacturer": "80/20 Inc.", "order_code": "20-2496", "candidate_quantity": "0 CURRENT", "state": "EXCLUDED BY HR-V0-GUARD-RET-P0.1", "open_evidence": "catalog-screening history only; drill-through route not current retention baseline"},
+        {"candidate_id": "GCAT-006", "manufacturer": "80/20 Inc.", "order_code": "75-3581", "candidate_quantity": "0 FOR PANEL RETENTION", "state": "EXCLUDED WITH GCAT-005", "open_evidence": "frame-joint quantity remains separately controlled by GCAT-003"},
     ]
     outer_panel_volume_m3 = sum(
-        float(row["finished_x_mm"]) * float(row["finished_y_mm"]) * float(row["finished_z_mm"]) * int(row["quantity"])
+        float(row["envelope_x_mm"]) * float(row["envelope_y_mm"]) * float(row["envelope_z_mm"]) * int(row["quantity"])
         for row in panel_rows[:4]
     ) / 1_000_000_000.0
     receiver_volume_m3 = sum(
-        float(row["finished_x_mm"]) * float(row["finished_y_mm"]) * float(row["finished_z_mm"]) * int(row["quantity"])
+        float(row["envelope_x_mm"]) * float(row["envelope_y_mm"]) * float(row["envelope_z_mm"]) * int(row["quantity"])
         for row in panel_rows[4:]
     ) / 1_000_000_000.0
     mass_rows = [
         {"mass_id": "GM-001", "item": "80/20 20-2020 profile", "basis": "11820 mm x 0.0247 lb/in published weight", "mass_kg": f"{PROFILE_MASS_KG:.6f}", "credit": "CATALOG ESTIMATE ONLY"},
-        {"mass_id": "GM-002", "item": "eight outer TUFFAK GP panel candidates", "basis": "generated finished volume x PDS004 specific gravity 1.2", "mass_kg": f"{outer_panel_volume_m3 * SHEET_DENSITY_KG_M3:.6f}", "credit": "CANDIDATE GEOMETRY ESTIMATE ONLY"},
-        {"mass_id": "GM-003", "item": "five receiver TUFFAK GP pieces", "basis": "generated finished volume x PDS004 specific gravity 1.2", "mass_kg": f"{receiver_volume_m3 * SHEET_DENSITY_KG_M3:.6f}", "credit": "CANDIDATE GEOMETRY ESTIMATE ONLY"},
+        {"mass_id": "GM-002", "item": "eight outer TUFFAK GP panel envelopes", "basis": "generated envelope volume x PDS004 specific gravity 1.2", "mass_kg": f"{outer_panel_volume_m3 * SHEET_DENSITY_KG_M3:.6f}", "credit": "ENVELOPE GEOMETRY ESTIMATE ONLY; NOT FINISHED SHEET MASS"},
+        {"mass_id": "GM-003", "item": "five receiver TUFFAK GP piece envelopes", "basis": "generated envelope volume x PDS004 specific gravity 1.2", "mass_kg": f"{receiver_volume_m3 * SHEET_DENSITY_KG_M3:.6f}", "credit": "ENVELOPE GEOMETRY ESTIMATE ONLY; NOT FINISHED SHEET MASS"},
         {"mass_id": "GM-004", "item": "known frame plus sheet subtotal", "basis": "GM-001 + GM-002 + GM-003", "mass_kg": f"{PROFILE_MASS_KG + (outer_panel_volume_m3 + receiver_volume_m3) * SHEET_DENSITY_KG_M3:.6f}", "credit": "INCOMPLETE; BRACKETS HARDWARE RETAINERS ANCHORS NESTS AND CABLE ENTRY OMITTED"},
     ]
     calculations = [
@@ -329,7 +329,7 @@ def main() -> int:
         "coordinate_system": {"origin": "G0 vertical projection of J1 on bench", "x": "depth", "y": "width", "z": "height above bench"},
         "internal_clear_mm": {"x": INNER_X, "y": INNER_Y, "z": INNER_Z},
         "frame_envelope_mm": FRAME,
-        "panel_geometry_mm": PANEL_T,
+        "panel_envelope_thickness_mm": PANEL_T,
         "reserved_space_radius_mm_not_safety_distance": SPACE_RADIUS,
         "j1_height_mm": SHOULDER_Z,
         "receiver_clear_mm": {"x": RECEIVER_X, "y": RECEIVER_Y, "wall_height": RECEIVER_WALL},

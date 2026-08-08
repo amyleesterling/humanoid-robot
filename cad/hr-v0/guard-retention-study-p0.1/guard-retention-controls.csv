@@ -1,0 +1,9 @@
+control_id,control,evidence_required,state
+GRC-001,Engage all four edges of every outer panel; no point-fastener-only retention receives credit.,accepted section drawing and installed-fit inspection,OPEN
+GRC-002,Do not release finished panel dimensions until exact slot/gasket engagement and temperature range are accepted.,"manufacturer CAD, tolerance stack and thermal calculation",OPEN
+GRC-003,"The 20,980 mm gasket schedule requires eleven nominal 2 m sticks before saw kerf and received-length allowance.",supplier configuration and cut plan,SCREEN ONLY
+GRC-004,"Derive the panel test energy and direction from the complete credible payload, tool, hardware and runaway envelope.",signed hazard/energy allocation,SELECTION REQUIRED
+GRC-005,"Test the exact panel, edge finish, gasket, frame, joints and support spacing; record residual engagement and damage.",released fixture/procedure and signed raw results,NOT EXECUTED
+GRC-006,"Retain the 6 mm receiver in the hybrid branch until receiver deflection, rebound and support proof close.",receiver calculation and TEST-DROP-001,OPEN
+GRC-007,"Do not count manufacturer typical density, product wording or a passing fit mock-up as an impact rating.",qualified application review and physical proof,OPEN
+GRC-008,No retention branch may be procured for the machine or fabricated from these envelope dimensions.,separate approved evaluation purchase plus released coupon/fixture drawings,HOLD

@@ -14,7 +14,7 @@
     "z": 950.0
   },
   "frame_envelope_mm": 20.0,
-  "panel_geometry_mm": 6.0,
+  "panel_envelope_thickness_mm": 6.0,
   "reserved_space_radius_mm_not_safety_distance": 450.0,
   "j1_height_mm": 500.0,
   "receiver_clear_mm": {

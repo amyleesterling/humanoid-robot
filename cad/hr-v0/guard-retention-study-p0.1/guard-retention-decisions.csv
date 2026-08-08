@@ -1,0 +1,4 @@
+candidate_id,candidate,configuration,disposition,reason
+GRET-001,80/20 20-2496 with 75-3581,through-drilled external point retainer,EXCLUDED FROM CURRENT RETENTION BASELINE,requires panel drilling; Plaskolite says through-bolting glazing should be used only when unavoidable and reviewed for thermal movement; no project load/spacing proof exists
+GRET-002,80/20 12004 with TUFFAK GP clear nominal 3 mm,continuous four-edge 20-Series gasket branch,EXACT EVALUATION CANDIDATE; NOT SELECTED,12004 explicitly covers 1-4 mm panels and avoids point drilling; no retention/impact allowable or application approval is published
+GRET-003,TUFFAK GP clear nominal 6 mm with continuous external clamp/channel,four-edge custom or larger-series retention,DESIGN REQUIRED,preserves P0.3 thickness but no exact 20-Series continuous 6 mm retention system or released design exists

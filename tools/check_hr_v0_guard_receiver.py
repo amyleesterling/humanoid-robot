@@ -64,7 +64,9 @@ def main() -> int:
     panels = read_rows("guard-panel-cut-schedule.csv")
     if len(panels) != 7 or sum(int(row["quantity"]) for row in panels) != 13:
         raise AssertionError("panel schedule is incomplete")
-    if any("EXACT GRADE CANDIDATE" not in row["selection_state"] or "SELECTION REQUIRED" not in row["selection_state"] for row in panels):
+    if any("finished_x_mm" in row or "envelope_x_mm" not in row for row in panels):
+        raise AssertionError("panel schedule must contain envelopes rather than finished cut dimensions")
+    if any("ENVELOPE ONLY" not in row["selection_state"] or "SELECTION REQUIRED" not in row["selection_state"] for row in panels):
         raise AssertionError("panel schedule falsely releases a material or retention method")
     holds = read_rows("guard-closure-holds.csv")
     if {row["hold_id"] for row in holds} != {f"GH-{index:03d}" for index in range(1, 13)}:
@@ -82,8 +84,10 @@ def main() -> int:
     catalog = read_rows("guard-catalog-candidates.csv")
     if len(catalog) != 6 or catalog[0]["order_code"] != "20-2020 custom length" or catalog[3]["order_code"] != "TUFFAK GP clear nominal 6 mm; supplier SKU SELECTION REQUIRED":
         raise AssertionError("guard catalog candidate register changed")
-    if any("HOLD" not in row["state"] and "FAMILY CANDIDATE ONLY" not in row["state"] for row in catalog):
+    if any("HOLD" not in row["state"] and "EXCLUDED" not in row["state"] for row in catalog):
         raise AssertionError("catalog candidate release boundary weakened")
+    if catalog[4]["state"] != "EXCLUDED BY HR-V0-GUARD-RET-P0.1" or catalog[5]["state"] != "EXCLUDED WITH GCAT-005":
+        raise AssertionError("R76 retainer exclusion is not synchronized into P0.3")
     mass = read_rows("guard-mass-screen.csv")
     if len(mass) != 4 or abs(float(mass[-1]["mass_kg"]) - 30.799798) > 0.000002 or "INCOMPLETE" not in mass[-1]["credit"]:
         raise AssertionError("guard mass screen is incomplete or overclaims closure")

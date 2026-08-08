@@ -1,0 +1,17 @@
+{
+  "revision": "HR-V0-GUARD-RET-P0.1",
+  "status": "PRELIMINARY - EVALUATION STUDY ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, CONNECTION, OR ENERGIZATION",
+  "parent_guard": "HR-V0-GUARD-P0.3",
+  "current_known_subtotal_kg": 30.799798,
+  "preferred_evaluation_known_subtotal_kg": 19.415878,
+  "preferred_evaluation_reduction_kg": 11.38392,
+  "gasket_candidate": "80/20 12004",
+  "gasket_stock_length_mm": 2000,
+  "gasket_stock_quantity_screen": 11,
+  "gasket_used_length_mm": 20980,
+  "gasket_offcut_before_kerf_mm": 1020,
+  "retention_decisions": 3,
+  "controls": 8,
+  "sources": 5,
+  "selection_state": "NONSELECTED EVALUATION BRANCH; IMPACT AND RETENTION PROOF OPEN"
+}

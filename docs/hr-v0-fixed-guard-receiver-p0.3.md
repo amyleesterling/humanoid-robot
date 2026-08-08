@@ -6,6 +6,8 @@ Date: 2026-08-07
 
 Identifier: `HR-V0-GUARD-P0.3`
 
+> **R76 retention correction:** `HR-V0-GUARD-RET-P0.1` excludes `20-2496` from the current retention baseline and confirms that the panel schedule below contains enclosure envelopes, not released finished cut dimensions or hole patterns. P0.3 remains the current frame/space basis.
+
 Supersedes: `HR-V0-GUARD-P0.2` for current guard guidance
 
 Mechanical basis: `HR-V0-MECH-P0.6` / `HR-V0-ARM-ARCH-P0.7`
@@ -27,11 +29,11 @@ The package remains intentionally unreleased. The exact catalog identity of a co
 | 80/20 `20-2020`, custom lengths | 16 pieces | 20 × 20 mm 20 Series, 6063-T6 aluminum, clear anodized, four open T-slots; manufacturer describes machine-guard use | written configuration, received identity/length/squareness, frame analysis, anchors and proof |
 | 80/20 `14201` | 20 | 20 Series dual-support inside corner bracket; no machining required | joint orientation, access, loads, allowable, torque, fit, slip and proof |
 | 80/20 `75-3581` | 40 | manufacturer-suggested two-per-`14201` M5 × 8 BHSCS/T-nut assemblies | received identity, torque, locking, reuse, witness marking and joint proof |
-| Plaskolite TUFFAK GP clear, nominal 6 mm | 13 cut pieces | transparent UV-stabilized polycarbonate; PDS lists machine guards among applications | supplier SKU/stock, thickness tolerance, design values, flame disposition, edge treatment, retention, impact and proof |
+| Plaskolite TUFFAK GP clear, nominal 6 mm | 13 sheet envelopes; finished sizes not released | transparent UV-stabilized polycarbonate; PDS lists machine guards among applications | supplier SKU/stock, thickness tolerance, finished sizes, design values, flame disposition, edge treatment, retention, impact and proof |
 
-The compatible 80/20 `20-2496` panel retainer and its suggested `75-3581` hardware are family candidates only. The exact retainer quantity and drill pattern remain `SELECTION REQUIRED` because retention loads, spacing, panel edge distance, accessibility and service method have not been accepted.
+The earlier 80/20 `20-2496` family screen is not an active retention candidate. Current documentation says it requires drill-through panel machining, while Plaskolite says through-fastening glazing should be used only when unavoidable and reviewed for thermal movement. See `HR-V0-GUARD-RET-P0.1` for the exact nonselected `12004` / nominal 3 mm continuous-gasket evaluation branch. Retention loads, final sheet dimensions, temperature fit, impact proof and qualified selection remain open.
 
-## Cut and joint definition
+## Profile-cut, sheet-envelope and joint definition
 
 The generated package contains:
 
@@ -39,10 +41,10 @@ The generated package contains:
 - four width rails at 900 mm;
 - six depth rails at 400 mm;
 - twenty rail-to-post joints using one proposed `14201` and two proposed `75-3581` assemblies per joint;
-- eight outer transparent panels; and
-- five receiver pieces, for thirteen sheet pieces total.
+- eight outer transparent panel envelopes; and
+- five receiver-piece envelopes, for thirteen sheet envelopes total.
 
-All profile lengths are custom-length candidates without end machining. Saw allowance, cut tolerance, deburring, packaging damage limits and received inspection remain open. No panel holes are released.
+All profile lengths are custom-length candidates without end machining. Saw allowance, cut tolerance, deburring, packaging damage limits and received inspection remain open. The sheet values are envelope dimensions only. No finished panel dimension or panel hole is released.
 
 ## Mass screen
 
