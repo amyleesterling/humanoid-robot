@@ -2,8 +2,10 @@
 
 > **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION.**
 
-Identifier: `HR-V0-COMPUTE-IF-P0.1`  
-Electrical baseline: `Project Button Electrical V3-P1.12`  
+Identifier: `HR-V0-COMPUTE-IF-P0.1`
+
+Electrical baseline: `Project Button Electrical V3-P1.12`
+
 Date: 2026-08-08
 
 ## Correction

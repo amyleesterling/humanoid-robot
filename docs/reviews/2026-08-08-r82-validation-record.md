@@ -2,8 +2,10 @@
 
 > **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION.**
 
-Date: 2026-08-08  
-Round: R82  
+Date: 2026-08-08
+
+Round: R82
+
 Independent baseline being dispositioned: Sol R12; not counted again
 
 ## Controlled correction
