@@ -1,0 +1,6 @@
+control,quantity,candidate_limit,evidence
+ALI-01,X430-to-brake coaxiality,SELECTION REQUIRED,"manufacturer limits, tolerance stack, received metrology and runout test"
+ALI-02,coupling shaft fits,shaft +0/-0.013 mm; hub bore +0.03/0 mm catalog values,Ruland acceptance and received inspection
+ALI-03,axial gap/end float,SELECTION REQUIRED,"brake, coupling and X430 application limits plus assembled inspection"
+ALI-04,base/riser parallelism and center height,SELECTION REQUIRED,"released GD&T, FAI and installed alignment record"
+ALI-05,extraneous brake/actuator loads,SELECTION REQUIRED,"Magtrol, ROBOTIS and FUTEK written acceptance plus qualified load analysis"

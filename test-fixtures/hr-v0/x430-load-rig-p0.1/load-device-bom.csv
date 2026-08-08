@@ -1,0 +1,9 @@
+item,manufacturer,order_identity,quantity,state,missing
+LR-001,Magtrol,"HB-450M-2, standard metric shaft candidate",1,EXACT FAMILY CANDIDATE - NOT SELECTED,"written application acceptance, coil/order identity, received certificate, control and thermal limits"
+LR-002,Magtrol,PT-600,1,CATALOG ENVELOPE CANDIDATE - NOT SELECTED,"controlled CAD/drawing, T-slot hardware, attachment/anchor design and application acceptance"
+LR-003,Ruland,MJC33-15-A & JD21/33-92Y & MJS33-15-A,1 set,EXACT CATALOG CANDIDATE - NOT SELECTED,"application acceptance, shaft fits, clamp/key strategy, bearing support and proof"
+LR-004,ROBOTIS,HN12-N101 Set SKU 903-0238-000,1,CANDIDATE - NOT SELECTED,"controlled CAD, exact adapter attachment pattern and application acceptance"
+LR-005,SELECTION REQUIRED,custom HN12-to-15 mm adapter,1,NOT DEFINED,"material, geometry, GD&T, fasteners, analysis, FAI and proof"
+LR-006,SELECTION REQUIRED,HB-450M-2 riser/bracket and PT attachment,1 set,NOT DEFINED,"controlled geometry, load path, alignment, analysis, fasteners and proof"
+LR-007,SELECTION REQUIRED,dedicated current-regulated brake supply/controller,1,NOT SELECTED,"range, current limit, isolation, protection, flyback, interlock, fault and thermal behavior"
+LR-008,SELECTION REQUIRED,complete rotating guard/catch/access interlock,1 system,NOT DEFINED,"hazard analysis, geometry, material, retention, access, impact and validation"

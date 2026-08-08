@@ -1,0 +1,7 @@
+source,organization,record,revision_date,locator,local_sha256,use
+LR-SRC-001,Magtrol,HB/MHB hysteresis brake datasheet,©2025; accessed 2026-08-08,https://www.magtrol.com/wp-content/uploads/hb-mhb.pdf,NOT DOWNLOADED,HB-450M-2 torque/current/power/speed/thermal/flyback boundary
+LR-SRC-002,Magtrol,HB-450M installation drawing Rev A,"Rev A, 2004-01-29; accessed 2026-08-08",https://www.magtrol.com/wp-content/uploads/hb-450m.pdf,B60AE3A2B5E4CB18BA8F9875AD1C44B6AD78002DC2E2E880331C67FFE1FEB77F,metric shaft and mounting interface; local PDF is drawing only
+LR-SRC-003,Magtrol,HB-450M_B_EF STEP,downloaded 2026-08-08; publisher revision not exposed,https://www.magtrol.com/product/hysteresis-brakes/,2EE1136C6CA3B2202A13BC11DEA1A18EEB9D261B7E7D776EE940699C7F89EDE1,exact vendor review geometry; placement provisional
+LR-SRC-004,Magtrol,PT Series T-slot base plates PT25,US 02/2022; accessed 2026-08-08,https://www.magtrol.com/wp-content/uploads/pt25.pdf,NOT DOWNLOADED,"PT-600 envelope, pitch, mass and product identity"
+LR-SRC-005,Ruland,MJC33-15-A / JD21/33-92Y / MJS33-15-A,live product page accessed 2026-08-08,https://www.ruland.com/mjc33-15-a-jd21-33-92y-mjs33-15-a.html,NOT DOWNLOADED,"coupling envelope, torque, stiffness, speed and fit boundary"
+LR-SRC-006,ROBOTIS,HN12-N101 Set,live product page accessed 2026-08-08,https://www.robotis.us/hn12-n101-set/,NOT DOWNLOADED,candidate identity/compatibility only

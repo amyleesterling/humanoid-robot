@@ -1,0 +1,9 @@
+rfi,recipient,question,state
+LR-RFI-01,Magtrol applications,"Confirm HB-450M-2 for low-speed bidirectional X430 characterization; provide coil/order identity, rated-current tolerance, thermal derating, bearing/extraneous-load limits and acceptance conditions.",NOT SENT
+LR-RFI-02,Magtrol applications,"Provide controlled PT-600 CAD/drawing, slot/hardware definition and acceptable brake mounting route.",NOT SENT
+LR-RFI-03,Magtrol applications,"State whether a metric base-mounted HB-450M-2 special exists and provide its exact identity, shaft, performance and CAD.",NOT SENT
+LR-RFI-04,Ruland applications,"Accept or correct MJC33 15×15 92A for the proposed brake/X430 spectrum, reversals, starts/stops, fits, clamp strategy and bearing support.",NOT SENT
+LR-RFI-05,ROBOTIS applications,Provide controlled HN12-N101 CAD and accept or correct a rigid adapter for guarded low-speed external brake characterization.,NOT SENT
+LR-RFI-06,FUTEK applications,"Review the horizontal common-bed reaction-torque configuration, alignment/extraneous-load limits and calibration route.",NOT SENT
+LR-RFI-07,candidate machine shop,DFM-review the output adapter and brake riser after controlled vendor interfaces arrive; no quote or machining authorized.,NOT SENT
+LR-RFI-08,qualified mechanical/electrical reviewer and facility,"Review the full drivetrain, support, guard, brake control, thermal, interruption and site load path before powered-work authorization.",NOT SENT

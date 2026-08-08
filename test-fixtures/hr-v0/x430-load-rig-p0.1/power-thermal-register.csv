@@ -1,0 +1,7 @@
+control,subject,state,missing
+PWR-01,dedicated brake source,SELECTION REQUIRED,"regulated 0..rated-current behavior, isolation, current measurement and fault energy"
+PWR-02,coil interruption/flyback,SELECTION REQUIRED,"Magtrol-required diode implementation, switching device rating and measured decay"
+PWR-03,interlock/abort,SELECTION REQUIRED,"safe-state definition, E-stop relationship, contact duty and fault injection"
+PWR-04,brake temperature,SELECTION REQUIRED,"sensor, placement, uncertainty, limit, dwell/cooldown and mounting derating"
+PWR-05,regenerated/mechanical energy,SELECTION REQUIRED,"four-quadrant behavior, actuator source absorption and shutdown transient evidence"
+PWR-06,robot 24 V rail separation,REQUIRED,schematic proof that the brake supply is not carried by the robot 24 V control rail
