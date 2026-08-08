@@ -1,0 +1,17 @@
+{
+  "revision": "HR-V0-ARM-ARCH-P1.1-X430-LOWERED-FOREARM-CANDIDATE",
+  "state": "COMPARISON_CANDIDATE_NOT_SELECTED",
+  "warning": "PRELIMINARY - COMPARISON CANDIDATE ONLY - NOT APPROVED FOR QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, CONNECTION, OR ENERGIZATION",
+  "release_flags": {
+    "supersedes_p0_7": false,
+    "supersedes_p1_0": false,
+    "x430_selected": false,
+    "quotation_authorized": false,
+    "procurement_authorized": false,
+    "fabrication_authorized": false,
+    "assembly_authorized": false,
+    "motion_authorized": false,
+    "connection_authorized": false,
+    "energization_authorized": false
+  }
+}

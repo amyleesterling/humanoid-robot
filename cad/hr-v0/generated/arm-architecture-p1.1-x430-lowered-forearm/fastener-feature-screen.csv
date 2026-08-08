@@ -1,0 +1,5 @@
+check_id,feature,result_mm,criterion,status
+P11-FEAT-01,upper M5 countersink to top profile,4.300,>= 2.000 mm nominal,PASS NOMINAL; FAI/PROOF OPEN
+P11-FEAT-02,lower M5 countersink to bottom profile,4.300,>= 2.000 mm nominal,PASS NOMINAL; FAI/PROOF OPEN
+P11-FEAT-03,M5 countersink-to-countersink,8.600,>= 1.000 mm nominal,PASS NOMINAL; FAI/PROOF OPEN
+P11-FEAT-04,closest M5-to-FR12 hole envelopes,5.116,>= 1.000 mm nominal,PASS NOMINAL; FAI/PROOF OPEN

@@ -1,0 +1,4 @@
+transform_id,item,x_mm,y_mm,z_mm,status
+P11-TF-01,J2 axis,0.000,191.550,0.000,CONTROLLED NOMINAL
+P11-TF-02,FR12-H101 moving face / striker origin,0.000,219.550,0.000,CONTROLLED NOMINAL
+P11-TF-03,20-2040/H104 forearm offset,0.000,UNCHANGED,-7.000,P1.1 CHANGED TRANSFORM

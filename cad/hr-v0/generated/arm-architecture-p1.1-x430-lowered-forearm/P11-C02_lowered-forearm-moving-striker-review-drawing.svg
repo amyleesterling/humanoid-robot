@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1000" viewBox="0 0 1500 1000">
+<style>text{font-family:Arial,sans-serif;fill:#102a43;font-size:18px}.h{font-size:34px;font-weight:700;fill:#082b55}.s{font-size:24px;font-weight:700}.w{font-weight:700;fill:#9b1c1c}.p{stroke:#082b55;stroke-width:3;fill:#dff3ff}.d{stroke:#d59600;stroke-width:3;fill:none}.box{fill:#fff9e8;stroke:#d59600;stroke-width:3}</style>
+<rect width="1500" height="1000" fill="#f7fbff"/><text x="45" y="60" class="h">P11-C02 lowered-forearm moving-striker candidate</text>
+<text x="45" y="98" class="w">PRELIMINARY - COMPARISON CANDIDATE ONLY - NOT APPROVED FOR QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, CONNECTION, OR ENERGIZATION</text>
+<path d="M250 680 L250 360 L730 360 L730 680 Z M80 240 L250 240 L250 360 L80 360 Z M730 240 L900 240 L900 360 L730 360 Z" class="p"/>
+<circle cx="490" cy="520" r="14" class="d"/><circle cx="610" cy="520" r="14" class="d"/><circle cx="490" cy="640" r="14" class="d"/><circle cx="610" cy="640" r="14" class="d"/>
+<circle cx="550" cy="500" r="29" class="d"/><circle cx="550" cy="700" r="29" class="d"/>
+<text x="970" y="210" class="s">Controlled nominal geometry</text>
+<text x="970" y="255">Base: X = -24..+24; Z = -27..+13 mm</text><text x="970" y="292">Thickness: 9.525 mm nominal</text>
+<text x="970" y="329">FR12 axes: X = +/-12; Z = +/-6 mm</text><text x="970" y="366">20-2040 axes: X = 0; Z = +3, -17 mm</text>
+<text x="970" y="403">M5 countersink envelope: 11.40 mm maximum</text><text x="970" y="440">Minimum nominal countersink-edge land: 4.300 mm</text>
+<rect x="940" y="490" width="500" height="315" rx="14" class="box"/><text x="975" y="540" class="s">Stop-sequencing screen</text>
+<text x="975" y="585">Nominal X430 clearance at contact: 4.369 mm</text><text x="975" y="622">Required physical residual: 1.500 mm</text>
+<text x="975" y="659">Available adverse-variation budget: 2.869 mm</text><text x="975" y="696">Proposed acceptance allocations: 2.500 mm</text>
+<text x="975" y="740" class="w">ALLOCATIONS ARE UNVERIFIED LIMITS, NOT RESULTS.</text><text x="975" y="775" class="w">DO NOT QUOTE OR FABRICATE FROM THIS DRAWING.</text>
+<text x="45" y="865">Material candidate: 6061-T651 plate. Profile +/-0.10 mm, feature position +/-0.05 mm and thickness 9.45..9.60 mm are proposed supplier/FAI limits.</text>
+<text x="45" y="905">MTR, DFM, FAI, received frame fit, screw seating, runout/play, deformation, stopping, proof and qualified acceptance remain required.</text>
+<text x="45" y="950" class="w">PRELIMINARY - NO FABRICATION, ASSEMBLY, MOTION, CONNECTION, OR ENERGIZATION AUTHORITY.</text></svg>
