@@ -1,0 +1,8 @@
+screen,inputs,result,authority
+OI-CALC-01,3.2 N m / 8 screws / 8 mm radius,50.000000 N equal tangential load per screw,IDEAL EQUAL-SHARE ARITHMETIC ONLY; NO FASTENER CREDIT
+OI-CALC-02,4.1 N m / 8 screws / 8 mm radius,64.062500 N equal tangential load per screw,STALL-ENDPOINT SCREEN ONLY; NOT AN OPERATING OR PROOF LOAD
+OI-CALC-03,7.9 N m / 8 screws / 8 mm radius,123.437500 N equal tangential load per screw,ACCIDENT SCREEN ONLY; NO FASTENER OR HORN ALLOWABLE
+OI-CALC-04,solid Ø15 shaft; 16T/(pi*d^3); T=3.2 N m,4.828879 MPa nominal torsional shear,ARITHMETIC ONLY; MATERIAL/STRESS CONCENTRATION/FATIGUE OPEN
+OI-CALC-05,solid Ø15 shaft; 16T/(pi*d^3); T=4.1 N m,6.187001 MPa nominal torsional shear,STALL-ENDPOINT SCREEN ONLY
+OI-CALC-06,solid Ø15 shaft; 16T/(pi*d^3); T=7.9 N m,11.921295 MPa nominal torsional shear,ACCIDENT SCREEN ONLY
+OI-CALC-07,stub X=33.95..51.95; hub envelope begins X=37.00,14.950000 mm candidate penetration,CATALOG ENVELOPE LAYOUT ONLY; RULAND ACCEPTANCE REQUIRED

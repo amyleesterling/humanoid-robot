@@ -1,0 +1,31 @@
+{
+  "identifier": "HR-V0-X430-OUTPUT-IF-P0.1",
+  "axis": "project X",
+  "hn12_bbox_mm": {
+    "xmin": 21.34347384113163,
+    "xmax": 25.95277224756905,
+    "ymin": -9.750869849684259,
+    "ymax": 9.75086985001736,
+    "zmin": 110.2460996744906,
+    "zmax": 129.7539003255094
+  },
+  "adapter_bbox_mm": {
+    "xmin": 25.94502681201304,
+    "xmax": 51.95223394726149,
+    "ymin": -16.00000010000002,
+    "ymax": 16.000000100000022,
+    "zmin": 103.99502681201304,
+    "zmax": 136.00497318798696
+  },
+  "candidate_hole_count": 8,
+  "candidate_hole_diameter_mm": 2.2,
+  "candidate_pcd_mm": 16.0,
+  "stub_penetration_mm": 14.95,
+  "nominal_intersections_mm3": {
+    "hn12_x430": 0.0,
+    "adapter_hn12": 0.0,
+    "adapter_x430": 0.0
+  },
+  "tolerance_credit": false,
+  "capacity_credit": false
+}

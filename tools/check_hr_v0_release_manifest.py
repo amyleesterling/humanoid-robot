@@ -112,6 +112,7 @@ def main() -> None:
         "HR-V0-X430-FIXTURE-IF-P0.2",
         "HR-V0-X430-FIXTURE-SUP-P0.1",
         "HR-V0-X430-LOAD-RIG-P0.1",
+        "HR-V0-X430-OUTPUT-IF-P0.1",
         "HR-V0-HS-P0.3",
         "HR-V0-J2-STOP-P0.1",
         "HR-V0-STOP-REGION-P0.1",

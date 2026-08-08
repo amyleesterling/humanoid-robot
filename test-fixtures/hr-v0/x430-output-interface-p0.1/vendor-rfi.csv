@@ -1,0 +1,9 @@
+rfi,recipient,question,state
+OI-RFI-01,ROBOTIS applications,"Accept or correct HN12-N101 for guarded low-speed external-brake characterization; provide allowable torque/duty/extraneous loads, datum tolerances, material/finish, installation torque and recommended M2 fastener/engagement/locking controls.",NOT SENT
+OI-RFI-02,Ruland applications,"Accept or correct 2 x MJC33-15-A plus JD21/33-92Y for the proposed bidirectional spectrum; review 14.95/15 mm insertion, fits, full-bearing support, hub gap, clamp procedure, reversals and proof.",NOT SENT
+OI-RFI-03,Magtrol applications,"Accept or correct clamp-hub coupling on the HB-450M-2 smooth h4 shaft; provide insertion, surface, extraneous-load, axial-location and received-inspection requirements.",NOT SENT
+OI-RFI-04,FUTEK applications,Review the complete fixed-case reaction-torque path with the HN12/adapter/coupling/brake chain and state alignment/extraneous-load/calibration requirements.,NOT SENT
+OI-RFI-05,candidate machine shop,"DFM-review FX103-C01 only after manufacturer replies and qualified analysis; identify feasible material, GD&T, tool access, inspection and proof route. No quote or machining authorized.",NOT SENT
+OI-RFI-06,qualified mechanical reviewer,"Review torque path, serration/horn/fasteners, one-piece adapter, stress concentrations, fatigue, coupling, bearings, fault loads and containment before any release.",NOT SENT
+OI-RFI-07,qualified metrology provider,"Propose received-horn inspection, adapter FAI, coaxiality/runout/end-float and assembled alignment records with stated uncertainty.",NOT SENT
+OI-RFI-08,qualified facility/electrical reviewer,"Review guard/catch, brake control, instrumentation, thermal controls, interruption, anchoring and powered-work authorization for the actual Boston site.",NOT SENT

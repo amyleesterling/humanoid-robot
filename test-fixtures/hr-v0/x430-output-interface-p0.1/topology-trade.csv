@@ -1,0 +1,5 @@
+route,topology,disposition,boundary
+OUT-A,one-piece HN12 flange-to-15 mm stub + 2 x MJC33-15-A clamp hubs + JD21/33-92Y spider,PREFERRED INQUIRY - NOT SELECTED,"ROBOTIS/Ruland acceptance, material, GD&T, fasteners, bearing support, FAI and proof open"
+OUT-B,bearing-supported 15 mm intermediate-shaft cartridge,FALLBACK INQUIRY - NOT DEFINED,"bearing, housing, shaft, fits, alignment, support and proof all selection required"
+OUT-C,MJS33 set-screw hub on smooth h4 brake shaft,REJECTED FROM CURRENT BASELINE,"surface damage, retention and application acceptance unresolved"
+OUT-D,printed/polymer horn-to-shaft adapter,PROHIBITED FOR POWERED CHARACTERIZATION,"no strength, creep, fatigue, temperature or containment evidence"

@@ -1,0 +1,7 @@
+item,manufacturer,order_identity,quantity,state,missing
+OI-001,ROBOTIS,HN12-N101 Set; product SKU 903-0238-000,1,EXACT GEOMETRY CONTROLLED - NOT SELECTED,"application acceptance, received inspection, load allowables, datum tolerances and installation controls"
+OI-002,SELECTION REQUIRED,FX103-C01 custom one-piece flange/stub,1,DIMENSIONED REVIEW CANDIDATE ONLY,"material, heat treatment, finish, GD&T, fillets, analysis, DFM, FAI and proof"
+OI-003,SELECTION REQUIRED,eight horn-interface fasteners,8,NOT SELECTED,"exact order code, class/material, head/tool envelope, engagement, preload, locking and reuse policy"
+OI-004,Ruland,MJC33-15-A,2,EXACT CATALOG CANDIDATE - NOT SELECTED,"written application acceptance, received fit, clamp procedure and bearing-support closure"
+OI-005,Ruland,JD21/33-92Y,1,EXACT CATALOG CANDIDATE - NOT SELECTED,"application acceptance, hub-gap procedure, reversal/duty acceptance and proof"
+OI-006,Magtrol,HB-450M-2 standard metric-shaft candidate,1,EXACT FAMILY CANDIDATE - NOT SELECTED,"smooth-shaft clamp acceptance, insertion/location, extraneous-load limits and received inspection"

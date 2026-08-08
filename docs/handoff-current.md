@@ -11,6 +11,7 @@ Configuration package: **HR-V0-RC-P0.1 deterministic candidate; immutable merge/
 Commissioning package: **HR-V0-E2-SEQ-P0.1 procedure candidate; 15 steps and five forms; all records NOT EXECUTED; authorization NOT AUTHORIZED**
 BOM package: **HR-V0-BOM-P0.1 closure candidate; 17 evaluation-only lines including two S102 sets; HR-V0-MECH-EVAL-P0.1 seven-line unpowered mechanical subset; HR-V0-EVAL-ACQ-P0.1 six-article unsigned acquisition/quote packet; 25 exact candidates on hold; 28 selection-required groups; no purchase approval, order or complete procurement release**
 R102 load-test package: **HR-V0-X430-LOAD-RIG-P0.1 horizontal common-bed/brake inquiry route; exact Magtrol and ROBOTIS review geometry, eight unsent RFIs and fourteen open holds; no buildable output adapter, brake riser, base attachment, anchors, complete guard, selected brake control, powered-work authorization or configured FR12-H101 validation**
+R103 output-interface package: **HR-V0-X430-OUTPUT-IF-P0.1 exact official HN12 geometry plus dimensioned FX103-C01 review candidate and two-clamp-hub inquiry route; eight unsent RFIs, one partial and eleven open holds; no material, GD&T, fastener, manufacturer acceptance, DFM, FAI, proof, machining, assembly, powered-test or energization release**
 Status: **PRELIMINARY - NOT APPROVED FOR ENERGIZATION**
 
 ## Authority and presentation
