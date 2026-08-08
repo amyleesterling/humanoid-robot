@@ -31,3 +31,14 @@ The staged release manifest contains `974` package files and passed its content/
 ## Boundary
 
 This is a source and analysis-control validation. It is not the signed `ANALYSIS-SAFE-002` result, a fault-exclusion justification, a physical test, a PL calculation, a qualified review or an energization release. `EG-012` remains partial.
+
+## Remote clean-clone validation
+
+The pushed branch was cloned independently from GitHub at commit `c167d814c4d7de35d87fb02c19ab58e0e81c499d`. In that remote clone:
+
+- all `36` non-manifest repository checkers passed;
+- `tools/check_hr_v0_release_manifest.py --require-clean` passed for `974` package files;
+- the manifest checker reported the exact cloned commit above; and
+- the temporary clone and its exact-path `safe.directory` entry were removed after validation.
+
+This validates source/configuration reproducibility only. It supplies no redesign acceptance, fault exclusion, physical injection, qualified review, fabrication, motion or energization evidence.
