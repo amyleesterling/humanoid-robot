@@ -1,0 +1,13 @@
+control_id,control,evidence_required,state
+DFC-001,Test one joint axis and one released article configuration at a time.,configuration photo and serialized article record,NOT EXECUTED
+DFC-002,Use the P0.7 joint geometry and exact received interfaces; do not substitute the full arm before single-axis closure.,received-interface inspection and configuration hash,NOT EXECUTED
+DFC-003,Rigidly anchor the fixture to a surveyed bench with a separate secondary restraint or catch.,bench survey anchor calculation proof load and installed inspection,SELECTION REQUIRED
+DFC-004,The outer guard may contain debris but shall not carry intended fixture reaction loads.,independent load path drawing and inspection,DESIGN REQUIRED
+DFC-005,Measure every inertial surrogate mass COM and attachment before use.,traceable scale and balance record plus attachment inspection,NOT EXECUTED
+DFC-006,Select force sensor overload capacity stiffness mounting and orientation from a bounded load case.,released sensor/interface calculation and calibration,SELECTION REQUIRED
+DFC-007,Keep all people outside the containment envelope and operate remotely with the E-stop reachable outside the hazard.,approved layout work control and witnessed dry run,NOT AUTHORIZED
+DFC-008,Use physical source current and voltage limiting independent of motion software.,exact source protection settings and measured open-circuit behavior,SELECTION REQUIRED
+DFC-009,Inspect fasteners witness marks cables stop bumper and sensor preload before and after every increment.,signed pre/post inspection rows,NOT EXECUTED
+DFC-010,Abort on unexpected motion noise heat smoke data loss fixture shift sensor saturation or guard contact.,written abort criteria and recorded run disposition,OPEN
+DFC-011,Do not infer safe limits from a catalog stall/no-load endpoint or a single successful run.,qualified test plan with repetition and uncertainty treatment,HOLD
+DFC-012,No powered stage may execute until its existing E2 E3 or E4 gate and written authorization are satisfied.,configuration-specific signed authorization,NOT AUTHORIZED

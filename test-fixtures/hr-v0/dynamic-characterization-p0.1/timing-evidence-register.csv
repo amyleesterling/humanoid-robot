@@ -1,0 +1,9 @@
+evidence_id,quantity,required_record,acceptance_value,state
+DTE-001,DAQ scan rate and complete scan list,requested and measured rate every address and ordering,SELECTION REQUIRED,OPEN
+DTE-002,interchannel delay and jitter,scope/SPC or common-edge measurement on received DAQ,SELECTION REQUIRED,OPEN
+DTE-003,analog sensor group delay,installed step/impulse response including filters,SELECTION REQUIRED,OPEN
+DTE-004,digital input propagation and bounce,edge injection at every monitored circuit,SELECTION REQUIRED,OPEN
+DTE-005,video frame timing and trigger latency,common LED edge frame analysis and dropped-frame test,SELECTION REQUIRED,OPEN
+DTE-006,host transport loss,backlog overflow skipped-scan and packet-loss counters,zero unexplained loss in accepted run; exact handling method SELECTION REQUIRED,OPEN
+DTE-007,DYNAMIXEL polling latency and tick alignment,host timestamp versus hardware trigger including 32767 ms rollover,supplemental only; no primary timing credit,OPEN
+DTE-008,combined timing uncertainty,signed error budget spanning trigger scan skew filters sensors video and analysis,SELECTION REQUIRED before test acceptance,OPEN

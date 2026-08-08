@@ -100,6 +100,7 @@ def main() -> int:
         "source_hashes": {path.relative_to(ROOT).as_posix(): canonical_text_sha256(path) for path in paths},
         "arm_revision": ARM_REVISION,
         "stop_revision": STOP_REVISION,
+        "supporting_identifiers": ["HR-V0-GUARD-P0.3", "HR-V0-GUARD-RET-P0.1", "HR-V0-GUARD-IMPACT-P0.1", "HR-V0-DYN-CHAR-P0.1"],
         "counts": {"controlled_parameters": len(data), "interfaces": len(interfaces), "assembly_components": len(components), "extrusion_cut_rows": len(extrusions), "frame_joint_rows": len(frame_joints), "frame_joint_placements": len(placements), "vendor_interface_sources": len(vendor_rows), "datums": len(datums)},
         "parameter_status_counts": dict(sorted(Counter(row["status"] for row in data).items())),
         "interface_status_counts": dict(sorted(Counter(row["current_status"] for row in interfaces).items())),

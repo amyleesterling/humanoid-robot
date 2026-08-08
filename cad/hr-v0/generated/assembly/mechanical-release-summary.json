@@ -4,7 +4,7 @@
   "source_hashes": {
     "cad/hr-v0/mechanical-release-data.csv": "B3974BD22B7FD80D6E78C63F6AA287447B244926357C18826F0A1A88351EBFDD",
     "cad/hr-v0/mechanical-interface-control.csv": "9E0D8616CB4A2C48B20AFFBCFFF1BC9DD5D3B199729CF4C4BC977295228D47A1",
-    "cad/hr-v0/mechanical-assembly-components.csv": "76D825364D1540F28708A64B4EFEE3173F7119EFC27493E2BD007EDE52E4C0AD",
+    "cad/hr-v0/mechanical-assembly-components.csv": "915511E2EEC3B93CEE58E9B47077DFFA309EDE7FD5BA1C54BC31E37C3EBEF902",
     "bom/hr-v0-extrusion-cut-schedule.csv": "1CE06A551E5130B82BE039DA078351625369621153C7E14EE38FA8C57CB7DF06",
     "bom/hr-v0-frame-joint-schedule.csv": "92DB7C25680C1D62E5CFF7ED247C505A650AC25B884CFF22EC3464967F534FE8",
     "cad/hr-v0/frame-joint-placement-p0.2.csv": "025BD1824077DEB89EB1198352FF3A242E2D68F5EAABAB21322094C5A10B0210",
@@ -19,6 +19,12 @@
   },
   "arm_revision": "HR-V0-ARM-ARCH-P0.7",
   "stop_revision": "HR-V0-HS-P0.3",
+  "supporting_identifiers": [
+    "HR-V0-GUARD-P0.3",
+    "HR-V0-GUARD-RET-P0.1",
+    "HR-V0-GUARD-IMPACT-P0.1",
+    "HR-V0-DYN-CHAR-P0.1"
+  ],
   "counts": {
     "controlled_parameters": 24,
     "interfaces": 12,

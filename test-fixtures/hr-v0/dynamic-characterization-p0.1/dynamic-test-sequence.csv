@@ -1,0 +1,13 @@
+stage_id,stage,minimum_inputs,authorization_gate,execution_state,stop_rule
+DYN-00,configuration freeze,immutable commit article serials instrument list and qualified test draft,E0/E1 prerequisites,NOT EXECUTED,any mismatch or missing record
+DYN-01,unpowered mass COM and surrogate inertia input,measured article and surrogate mass COM geometry,E1 work control,NOT EXECUTED,unbounded attachment or measurement uncertainty
+DYN-02,fixture load-path and restraint proof,bench anchor load path secondary catch and guard independence,EG-005 through EG-008 evidence,NOT EXECUTED,shift damage permanent set or guard load
+DYN-03,installed sensor calibration,all primary channels installed ranges overload protection calibration refs,qualified metrology review,NOT EXECUTED,saturation drift polarity error or expired calibration
+DYN-04,synchronization injection,common hardware edge DAQ clock witness and video trigger,unpowered instrumentation work control,NOT EXECUTED,timing budget or data-integrity acceptance not released
+DYN-05,unpowered dry run,remote operation abort recovery and inspection rehearsal,approved test-area work control,NOT EXECUTED,person enters envelope or recovery is ambiguous
+DYN-06,actuator source open-circuit characterization,source only no actuator branch connected,EG-019 through EG-023 plus written E3 authorization,NOT AUTHORIZED,unexpected voltage ripple discharge or source interaction
+DYN-07,single unloaded actuator holding at lowest released limit,received actuator branch protection and primary instrumentation,EG-023 and EG-024 plus written E4 authorization,NOT AUTHORIZED,unexpected motion current heat communication or data behavior
+DYN-08,low-speed no-contact motion,released current speed angle and travel bounds,EG-025 plus written E4 authorization,NOT AUTHORIZED,any limit approach overshoot data loss or fixture shift
+DYN-09,torque-off and source-removal response,released poses loads repetitions and trigger definitions,EG-025 plus qualified test authorization,NOT AUTHORIZED,containment or timing anomaly
+DYN-10,lowest released bumper-contact energy,selected bumper force chain proof energy and acceptance criteria,EG-026 and EG-028 test authorization,NOT AUTHORIZED,damage permanent set rebound escape or acceptance exceedance
+DYN-11,released pose load and fault matrix,approved statistical plan single faults and guard reconciliation,EG-026 through EG-030,NOT AUTHORIZED,any deviation or unbounded result
