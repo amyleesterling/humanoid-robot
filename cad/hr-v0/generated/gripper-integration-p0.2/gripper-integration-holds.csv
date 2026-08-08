@@ -1,0 +1,8 @@
+hold_id,scope,current_evidence,missing_evidence,effect,status
+GRH-001,complete mechanism manufacturing definition,official link5 and palm STL collision/visual meshes,native part CAD/drawings or received dimensional metrology for crank rods rails brackets pads bushes and interfaces,no gripper fabrication or dimensional release,OPEN
+GRH-002,H104-to-URDF carrier registration,separate H104 STEP and official link5-parent URDF frame,controlled transform proven against received kit datums and fastener access,no exact merged arm/gripper assembly or collision credit,OPEN
+GRH-003,usable opening calibration,e-Manual 20-75 mm stroke plus URDF limits and mesh-distance samples,received mechanism calibration across the project 20-70 mm object range with pads installed,mesh distance is not released as jaw opening,OPEN
+GRH-004,mass COM and inertia closure,82 g actuator catalog mass and parameterized load sensitivity,weighed received components and assembled gripper plus measured local COM and cable share,MASS-002 remains blocked,OPEN
+GRH-005,guard and receiver,reference collision envelopes only,released fixed guard receiver catch attachment access-probe clearance and retained-load CAD plus tests,no guarded motion,OPEN
+GRH-006,force current and power-off behavior,test method only,calibrated force/current foam-compression retention drop and power-off containment records,no grip-force setting or handoff capability claim,OPEN
+GRH-007,fasteners cable and wear,kit content allocation,exact fastener stack torque locking cable route strain relief flex-cycle and retention evidence,no assembly or service release,OPEN

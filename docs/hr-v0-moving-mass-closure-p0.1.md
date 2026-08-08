@@ -34,6 +34,8 @@ This is a **mass-budget blocker**, not a pass. The remaining 57.242 g is unlikel
 
 `HR-V0-MASS-REDUCTION-P0.1` defines C01R/C04R/C06R/C07R as exact subtractive subsets of the controlled P0.7 adapters. The four-part CAD estimate falls by 57.983 g. If selected after independent review and physical evidence, the incomplete known/CAD-estimated subtotal would become 634.775 g and provisional unresolved headroom would become 115.225 g.
 
+R71's `cad/hr-v0/generated/gripper-integration-p0.2/gripper-mass-load-sensitivity.csv` parameterizes additional gripper mass at the ledger's shoulder/elbow radii. It does not assign an actual gripper-mechanism mass and does not reserve either the 57.242 g controlled headroom or the 115.225 g nonselected-study headroom for the gripper; other unresolved frames, hardware, bumper and moving cables compete for the same total.
+
 This does not close `MASS-002`. The relieved parts are not selected, the additional headroom is still smaller than a controlled allocation for all missing frames/mechanism/fasteners/harness items, and no received mass exists. The controlled ledger therefore continues to record P0.7 C01/C04/C06/C07. See `docs/hr-v0-mass-reduction-study-p0.1.md` and `cad/hr-v0/generated/mass-reduction-p0.1/`.
 
 CAD values assume 2.70 g/cm³ and are estimates pending the exact stock certificate, thickness, finish and first-article measurement. Purchased-member estimates use the published mass per length. Received mass governs.

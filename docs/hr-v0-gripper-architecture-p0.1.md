@@ -1,5 +1,7 @@
 # HR-V0 gripper architecture P0.1
 
+**SUPERSEDED FOR CURRENT INTEGRATION INPUTS BY `docs/hr-v0-gripper-architecture-p0.2.md`. Retained as R24 history.**
+
 **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION.**
 
 Requirement links: `GRIP-001`, `GRIP-002`, `SAFE-004`, `SAFE-006`, `MASS-002`

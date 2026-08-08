@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="950" viewBox="0 0 1600 950">
+<style>
+  text { font-family: Arial, sans-serif; fill: #102a43; font-size: 18px; }
+  .title { font-size: 34px; font-weight: 700; }
+  .head { font-size: 23px; font-weight: 700; }
+  .warn { font-size: 20px; font-weight: 700; fill: #8a4b00; }
+  .panel { fill: #f8fbff; stroke: #123b68; stroke-width: 3; }
+  .carrier { fill: #9dd8f5; stroke: #123b68; stroke-width: 2.5; }
+  .palm { fill: #f4bd3e; stroke: #123b68; stroke-width: 2.5; }
+</style>
+<rect width="1600" height="950" fill="#eef7fd"/>
+<text x="55" y="62" class="title">HR-V0 official gripper reference geometry</text>
+<text x="55" y="102" class="warn">PRELIMINARY - REFERENCE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION, MOTION, OR ENERGIZATION</text>
+<text x="55" y="142">ROBOTIS source commit 9187eca09204 - top-view convex projections - dimensions in mm</text>
+<text x="55" y="178">Blue: official link5 carrier mesh. Gold: official palm meshes positioned by the official URDF.</text>
+<g>
+  <rect x="55.0" y="210" width="460" height="390" rx="16" class="panel"/>
+  <text x="77.0" y="248" class="head">urdf lower</text>
+  <text x="77.0" y="278">joint displacement q = -11.0 mm</text>
+  <polygon points="97.02,509.45 103.45,515.90 272.23,598.25 285.12,598.25 287.06,464.51 287.06,455.49 285.12,321.75 272.23,321.75 103.45,404.10 97.02,410.55" class="carrier"/>
+  <polygon points="265.99,422.16 315.65,464.62 318.65,464.62 451.54,438.50 455.07,437.21 455.40,427.54 455.14,420.01 324.25,379.16 265.99,379.16" class="palm"/>
+  <polygon points="265.99,540.84 324.25,540.84 455.14,499.99 455.40,492.46 455.07,482.79 451.54,481.50 318.65,455.38 315.65,455.38 265.99,497.84" class="palm"/>
+  <text x="77.0" y="640">Closest palm-mesh distance: 0.059 mm</text>
+</g><g>
+  <rect x="560.0" y="210" width="460" height="390" rx="16" class="panel"/>
+  <text x="582.0" y="248" class="head">urdf neutral</text>
+  <text x="582.0" y="278">joint displacement q = 0.0 mm</text>
+  <polygon points="602.02,509.45 608.45,515.90 777.23,598.25 790.12,598.25 792.06,464.51 792.06,455.49 790.12,321.75 777.23,321.75 608.45,404.10 602.02,410.55" class="carrier"/>
+  <polygon points="770.99,398.51 820.65,440.97 823.65,440.97 956.54,414.85 960.07,413.56 960.40,403.89 960.14,396.36 829.25,355.51 770.99,355.51" class="palm"/>
+  <polygon points="770.99,564.49 829.25,564.49 960.14,523.64 960.40,516.11 960.07,506.44 956.54,505.15 823.65,479.03 820.65,479.03 770.99,521.49" class="palm"/>
+  <text x="582.0" y="640">Closest palm-mesh distance: 19.939 mm</text>
+</g><g>
+  <rect x="1065.0" y="210" width="460" height="390" rx="16" class="panel"/>
+  <text x="1087.0" y="248" class="head">urdf upper</text>
+  <text x="1087.0" y="278">joint displacement q = 20.0 mm</text>
+  <polygon points="1107.02,509.45 1113.45,515.90 1282.22,598.25 1295.12,598.25 1297.06,464.51 1297.06,455.49 1295.12,321.75 1282.22,321.75 1113.45,404.10 1107.02,410.55" class="carrier"/>
+  <polygon points="1275.99,355.51 1325.65,397.97 1328.65,397.97 1461.54,371.85 1465.07,370.56 1465.40,360.89 1465.14,353.36 1334.26,312.51 1275.99,312.51" class="palm"/>
+  <polygon points="1275.99,607.49 1334.26,607.49 1465.14,566.64 1465.40,559.11 1465.07,549.44 1461.54,548.15 1328.65,522.03 1325.65,522.03 1275.99,564.49" class="palm"/>
+  <text x="1087.0" y="640">Closest palm-mesh distance: 59.106 mm</text>
+</g>
+<rect x="55" y="690" width="1460" height="190" rx="16" fill="#fff8e7" stroke="#8a4b00" stroke-width="3"/>
+<text x="82" y="730" class="head">What this establishes - and what it does not</text>
+<text x="82" y="770">The exact public meshes and URDF are revision-frozen and reproducible. The views show geometry-derived projection envelopes.</text>
+<text x="82" y="808">Mesh distance is not certified jaw opening. The e-Manual 20-75 mm stroke still requires received-assembly reconciliation.</text>
+<text x="82" y="846">No crank/rod/rail manufacturing CAD, H104 registration, guard, mass, force, fastener, cable, or physical test is released.</text>
+<text x="55" y="925">Revision HR-V0-GRIP-P0.2. No fabrication, motion, energization, or functional-safety approval.</text>
+</svg>

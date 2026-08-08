@@ -1,0 +1,68 @@
+{
+  "revision": "HR-V0-GRIP-P0.2",
+  "warning": "PRELIMINARY - REFERENCE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION, MOTION, OR ENERGIZATION",
+  "upstream_commit": "9187eca0920458be04d2399906388f55242f81f1",
+  "source_file_count": 5,
+  "configuration_count": 3,
+  "urdf_joints": {
+    "gripper_left_joint": {
+      "parent": "link5",
+      "child": "gripper_left_link",
+      "origin_mm": [
+        81.69999999999999,
+        21.0,
+        0.0
+      ],
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "lower_mm": -11.0,
+      "upper_mm": 20.0
+    },
+    "gripper_right_joint": {
+      "parent": "link5",
+      "child": "gripper_right_link",
+      "origin_mm": [
+        81.69999999999999,
+        -21.0,
+        0.0
+      ],
+      "axis": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "lower_mm": -11.0,
+      "upper_mm": 20.0
+    }
+  },
+  "link5_bounds_mm": [
+    -19.98933982849121,
+    -64.30000305175781,
+    -23.0,
+    68.4000015258789,
+    64.30000305175781,
+    39.75
+  ],
+  "urdf_endpoint_closest_mesh_distance_mm": {
+    "urdf_lower": 0.059329,
+    "urdf_neutral": 19.939267,
+    "urdf_upper": 59.106467
+  },
+  "published_stroke_mm": [
+    20.0,
+    75.0
+  ],
+  "project_object_range_mm": [
+    20.0,
+    70.0
+  ],
+  "controlled_p0_7_known_subtotal_g": 692.758,
+  "controlled_p0_7_total_unresolved_headroom_g": 57.242,
+  "r70_nonselected_known_subtotal_g": 634.775,
+  "r70_nonselected_total_unresolved_headroom_g": 115.225,
+  "mass_credit": "NONE - URDF inertial values and mesh volumes are not used as physical gripper mass",
+  "integration_state": "SOURCE GEOMETRY CONTROLLED; COMPLETE BUILD DEFINITION AND PHYSICAL EVIDENCE OPEN"
+}
