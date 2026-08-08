@@ -1,0 +1,13 @@
+hold_id,subject,state,evidence_required,release_effect
+ELBH-001,Complete moving mass and local centers of mass,OPEN,designed exact configuration plus calibrated received-item and assembled-subassembly measurements,Blocks MASS-002 and configuration selection
+ELBH-002,X430 exact-coordinate integration,PARTIAL,registered X430 H101 S102 H104 and link transforms with reproducible native CAD,Blocks P0.8 geometry; P0.8 nominal CAD evidence exists but physical closure is absent
+ELBH-003,Frame and fastener mass,OPEN,received FR12 frame kits fasteners spacers cables and calibrated measurements,Blocks headroom claim
+ELBH-004,Continuous and cyclic torque,OPEN,measured duty-cycle torque current temperature and efficiency over released motion/load envelope,Blocks actuator selection
+ELBH-005,External branch-current envelope,OPEN,received harness construction connector derating voltage drop temperature rise transients and calibrated current capture,Blocks electrical selection
+ELBH-006,Speed acceleration and stopping limits,OPEN,released profile values measured stopping time overtravel rebound and uncertainty,Blocks control limits and hard stops
+ELBH-007,Positive hard-stop redesign,PARTIAL,exact P0.8 stop geometry bumper retention tolerance load and physical proof,Blocks motion and fabrication; P0.8 nominal CAD evidence exists but physical closure is absent
+ELBH-008,Collision cable and guard sweep,PARTIAL,continuous exact-geometry sweep including connectors harness service loops strain relief gripper guard tolerances and deformation,Blocks fabrication and motion; P0.8 nominal CAD evidence exists but physical closure is absent
+ELBH-009,Structural interfaces,OPEN,qualified calculations FAI received fit preload slip prying fatigue impact and proof,Blocks fabrication
+ELBH-010,Firmware and calibration binding,OPEN,new exact configuration IDs model checks encoder calibration limits HIL and fault injection,Blocks torque enable
+ELBH-011,Electrical source synchronization,OPEN,BOM net/interface/current/protection and terminal updates with ERC and independent review,Blocks connection and energization
+ELBH-012,Qualified architecture disposition,OPEN,independent mechanical electrical controls and functional-safety review with signed selection decision,Blocks supersession of P0.7

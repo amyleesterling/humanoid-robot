@@ -1,0 +1,4 @@
+item,parent,transform,registration_evidence,status
+X430 actuator,J2,raw +Z output -> joint -X; axial Tx=2.35 mm; then package Rx=90 deg,"rear case local Z axes X=+/-11,Y=-32 map to FR12-S102 side axes after +21 mm frame shift",EXACT MODEL REGISTRATION; RECEIVED HORN/IDLER STACK MEASUREMENT OPEN
+FR12-S102 fixed frame,J2,local Tz=+21 mm; then package Rx=90 deg,local side axes Z=11 become joint-registration Z=32; outside face becomes Y=-40.5 mm,EXACT STEP REGISTRATION; RECEIVED FIT OPEN
+FR12-H101 moving frame,J2 moving,identity at straight reference; rotates about joint +X,"outside link face at Y=28 mm and exact X=+/-12,Z=+/-6 axes",EXACT STEP REGISTRATION; RECEIVED FIT OPEN

@@ -189,6 +189,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R91 elbow/mass architecture validation record](docs/reviews/2026-08-08-r91-validation-record.md)
 - [R91 elbow/mass independent review request](docs/reviews/2026-08-08-elbow-actuator-trade-p0.1-independent-review-request.md)
 - [Sol R12 findings rechecked after R91](docs/reviews/2026-08-08-sol-r12-post-r91-status.md)
+- [R92 X430 elbow P0.8 design record](docs/hr-v0-x430-elbow-architecture-p0.8.md)
+- [R92 X430 elbow P0.8 interactive guide](release/hr-v0/elbow-architecture-p0.8/index.html)
+- [R92 validation record](docs/reviews/2026-08-08-r92-validation-record.md)
+- [R92 independent review request](docs/reviews/2026-08-08-x430-elbow-p0.8-independent-review-request.md)
+- [Sol R12 findings rechecked after R92](docs/reviews/2026-08-08-sol-r12-post-r92-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -220,7 +225,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-Ninety-one review/control rounds are complete: R01-R91. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R91 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding, positive-stop, mass-reduction, gripper-source, datum-acquisition, unpowered-evaluation, fixed-guard, measurement-method, E2 configuration, source-interface, compute/debug, hard-stop-region, joint-stack-metrology, physical-acquisition, watchdog-dependent-failure, watchdog-supply-gate, watchdog-PCB fabrication-candidate/land-pattern, Boston fabrication-route and elbow/moving-mass architecture corrections, not additional independent reviews.
+Ninety-two review/control rounds are complete: R01-R92. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R92 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding, positive-stop, mass-reduction, gripper-source, datum-acquisition, unpowered-evaluation, fixed-guard, measurement-method, E2 configuration, source-interface, compute/debug, hard-stop-region, joint-stack-metrology, physical-acquisition, watchdog-dependent-failure, watchdog-supply-gate, watchdog-PCB fabrication-candidate/land-pattern, Boston fabrication-route, elbow/moving-mass architecture and exact-coordinate X430 elbow corrections, not additional independent reviews.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -315,6 +320,7 @@ Ninety-one review/control rounds are complete: R01-R91. R11 Fable and R12 Sol ar
 | R89 | Watchdog PCB land-pattern and assembly-process correction | Audited all 42 schematic references and four board-only holes; found the ISO1 isolation-land blocker, undocumented TI alternate lands and seventeen passive-process mismatches; issued PCB-P0.6 with 86 corrected source lands and a proposed mixed reflow/manual-THT sequence; preserved DRC 0/0; and superseded the immutable PCB-P0.5 CAM set for current fabrication review. No PCB-P0.6 CAM, assembler acceptance, physical evidence, fabrication, assembly or energization authority exists. |
 | R90 | Boston custom-metal route and thickness correction | Rejected the incompatible 4.75 mm SendCutSend advice against P0.7's 9.525 mm parts; compared six provider/process routes against nine current primary records; excluded SendCutSend as a finished-part route because its published tolerance and M5 countersink conflict with the controlled features; identified Xometry/Protolabs as held high-requirement CNC inquiry candidates and Artisans Asylum's Bridgeport mill as local capability only; and issued an interactive route guide. No contact, upload, quotation, supplier selection, first article, fabrication, assembly or energization authority exists. |
 | R91 | Elbow actuator and moving-mass architecture hold | Held the P0.7 custom-metal route because only 57.242 g remains before mandatory missing moving items; acquired and hash-controlled five official X430/FR12 source files; quantified nonselecting X430 mass/current/torque/speed sensitivities; and required an exact-coordinate P0.8 comparison with twelve open holds. P0.7 remains controlled, XM430 is not selected, and no quote, procurement, fabrication, motion, connection or energization authority exists. |
+| R92 | Exact-coordinate X430 elbow P0.8 comparison | Registered the X430/FR12 assembly datums, corrected the S102 local-origin interpretation, generated integrated STEP/GLB and two separately identified adapter candidates, modeled a nominal 118-degree stop, sampled 221 rigid-body poses, and recalculated an incomplete 577.091 g subtotal and 1.104 N m elbow screen. Nine holds remain open and three partial; P0.7 remains controlled, XM430 is not selected, and every authorization flag is false. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

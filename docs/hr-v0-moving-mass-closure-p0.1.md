@@ -46,6 +46,12 @@ CAD values assume 2.70 g/cm³ and are estimates pending the exact stock certific
 
 P0.7 remains the controlled ledger. XM430 is not selected, no P0.8 geometry exists, and all FR12 frames, adapters, fasteners, moving harness, bumper, gripper mechanism, COM, inertia, continuous/cyclic torque, temperature, stopping, collision, structure, electrical and firmware evidence remains open. See `docs/hr-v0-elbow-actuator-trade-p0.1.md`.
 
+## R92 exact-coordinate comparison
+
+`HR-V0-ARM-ARCH-P0.8-X430-CANDIDATE` replaces the R91 same-axis sensitivity with a separately identified native comparison. It corrects the FR12-S102 datum using exact selected hole axes and the official assembly relationship, generates new fixed-catch and moving-striker adapters, and reports an incomplete 577.091 g subtotal with 172.909 g provisional headroom. The two new adapter masses are CAD estimates of 52.234 g each.
+
+This is still not `MASS-002` closure. FR12 frame and idler hardware, exact fasteners, bumper, complete gripper mechanics, connectors, cable guides, strain relief and moving harness remain absent; no complete assembly has been weighed; and no local COM or inertia has been measured. P0.7 remains controlled, XM430 is not selected and the P0.7 metal route remains held. See `docs/hr-v0-x430-elbow-architecture-p0.8.md`.
+
 ## Closure procedure
 
 1. Freeze the exact configuration and repository commit.

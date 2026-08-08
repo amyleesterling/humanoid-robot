@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<style>text{font-family:Arial,sans-serif;fill:#102a43;font-size:20px}.h{font-size:34px;font-weight:700;fill:#082b55}.w{font-weight:700;fill:#9b1c1c}.d{stroke:#082b55;stroke-width:3;fill:#e4f6ff}.c{stroke:#f4b942;stroke-width:3;fill:none}.x{stroke:#9b1c1c;stroke-width:2}</style>
+<rect width="1200" height="760" fill="#f7fbff"/><text x="45" y="60" class="h">P08-C01 · X430 elbow fixed catch</text>
+<text x="45" y="100" class="w">PRELIMINARY - COMPARISON CANDIDATE ONLY - NOT APPROVED FOR QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, CONNECTION, OR ENERGIZATION</text>
+<rect x="330" y="210" width="480" height="300" class="d"/><rect x="160" y="270.0" width="170" height="60" class="d"/><rect x="810" y="270.0" width="170" height="60" class="d"/>
+<circle cx="480" cy="320" r="14" class="c"/><circle cx="720" cy="320" r="14" class="c"/><circle cx="480" cy="440" r="14" class="c"/><circle cx="720" cy="440" r="14" class="c"/>
+<circle cx="600" cy="300" r="28" class="c"/><circle cx="600" cy="460" r="28" class="c"/>
+<line x1="600" y1="180" x2="600" y2="540" class="x"/><line x1="130" y1="380" x2="1010" y2="380" class="x"/>
+<text x="45" y="590">Envelope: base 48 × 40 × 9.525 mm; two 17 × 6 mm integral wings; wing Z=15.0000 mm.</text>
+<text x="45" y="625">Frame axes: X=±12, Z=±6, Ø2.70. Member axes: X=0, Z=±10, Ø5.50 with candidate countersinks.</text>
+<text x="45" y="660">Coordinates are nominal model-space controls only. Material, tolerance, edge treatment, bumper, FAI and proof remain open.</text>
+<text x="45" y="705" class="w">DO NOT QUOTE OR FABRICATE FROM THIS REVIEW DRAWING.</text></svg>

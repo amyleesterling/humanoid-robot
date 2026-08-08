@@ -1,0 +1,4 @@
+feature_id,source,sha256,selected_axes,registration,status
+P08-FEAT-001,cad/vendor/robotis/x430-fr12-r91/x-430_idle.stp,7FF4E39475245D5C1FC4F703E9241FCA1A09D57AED920274498DBE2CD5E31E22,"local Z at X=+/-11,Y=-32; diameter 2.5 cylindrical subset","matrix maps to joint X axes at Y=+/-11,Z=32 before package roll",EXACT STEP AXES; RECEIVED FIT/IDENTITY/FAI OPEN
+P08-FEAT-002,cad/vendor/robotis/x430-fr12-r91/fr12_s102.stp,671C847A9A946F5F3BB0B42EF9816A8476BECEBB36D1B0CC8B826FF2FA7667A8,"local X at Y=+/-11,Z=11; diameter 2.6",translate local Z +21 -> Z=32; exact match to X430 rear axes before package roll,EXACT STEP AXES; DRAWING REFERENCE ONLY; RECEIVED FIT/FAI OPEN
+P08-FEAT-003,cad/vendor/robotis/x430-fr12-r91/fr12_h101.stp,18C2021EB0DF523E5879B745D58201FF30FC4E812DF8A2E83829A59A8D9FEE4C,"local Y at X=+/-12,Z=+/-6; diameter 2.6",P08-C02 adapter holes diameter 2.70 at exact axes; face offset 28 mm,EXACT STEP AXES; DRAWING REFERENCE ONLY; RECEIVED FIT/FAI OPEN
