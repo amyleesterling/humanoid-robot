@@ -20,15 +20,15 @@
   </style>
 </head>
 <body>
-  <div class="warning">PRELIMINARY — NOT SELECTED — NOT APPROVED FOR PROCUREMENT, FABRICATION, MOTION, OR ENERGIZATION</div>
-  <header><div><span class="tag">HR-V0-GRIP-ALT-P0.1 · R111</span><h1>A lighter, source-controlled gripper path</h1><p class="intro">Pololu item 3551 is the preferred evaluation candidate because its complete CAD is available and its catalog mass is 30 g. It is not yet the Project Button gripper.</p></div></header>
+  <div class="warning">PRELIMINARY R113 CORRECTION — ALL CANDIDATES NOT SELECTED — NOT APPROVED FOR PROCUREMENT, FABRICATION, MOTION, OR ENERGIZATION</div>
+  <header><div><span class="tag">HR-V0-GRIP-ALT-P0.1 · HISTORICAL R111 STUDY</span><h1>A source-controlled gripper comparison</h1><p class="intro">R113 supersedes the former preference: Pololu item 3551 has complete CAD and a 30 g catalog mass, but its 32 mm opening fails the retained 40 mm object minimum.</p></div></header>
   <main>
     <h2>Compare candidates</h2>
     <div class="controls" aria-label="Candidate filters">
-      <button data-filter="all" aria-pressed="true">Show all</button><button data-filter="preferred" aria-pressed="false">Preferred only</button><button data-filter="source" aria-pressed="false">CAD acquired</button>
+      <button data-filter="all" aria-pressed="true">Show all</button><button data-filter="preferred" aria-pressed="false">Pololu study</button><button data-filter="source" aria-pressed="false">CAD acquired</button>
     </div>
     <section class="grid" aria-live="polite">
-      <article class="card preferred" data-kinds="preferred source"><span class="tag">Preferred evaluation · not selected</span><h3>Pololu 3551</h3><p class="metric">30 g · 32 mm</p><p>Catalog mass and internal opening. Manufacturer dimension PDF, assembled STEP and feedback-servo guide are controlled.</p><p><strong>Still missing:</strong> adapter, 6 V protected branch, PWM/analog interfaces, guard, pads, calibration and physical tests.</p></article>
+      <article class="card preferred" data-kinds="preferred source"><span class="tag">Fails current baseline · not selected</span><h3>Pololu 3551</h3><p class="metric">30 g · 32 mm</p><p>Catalog mass and internal opening. The opening is at least 8 mm below the retained 40 mm minimum before pads and uncertainty.</p><p><strong>Still missing:</strong> approved requirement change or different gripper, plus adapter, power/control, guard, pads, calibration and physical tests.</p></article>
       <article class="card" data-kinds="source"><span class="tag">Fallback · not selected</span><h3>ServoCity 3219-0002-0002</h3><p class="metric">101 g · opening held</p><p>Complete assembly PDF, specification PDF and 43-solid STEP are controlled.</p><p><strong>Tradeoff:</strong> 71 g heavier than Pololu, no stated position feedback, and usable opening remains to be established.</p></article>
       <article class="card" data-kinds=""><span class="tag">Baseline proposal · source held</span><h3>ROBOTIS RM-X52</h3><p class="metric">Mass and opening held</p><p>Fits the existing DYNAMIXEL concept, but the complete acquired manufacturing source and H104 registration remain unresolved.</p></article>
     </section>

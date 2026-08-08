@@ -1,7 +1,9 @@
 # HR-V0 source-controlled gripper alternative trade study P0.1
 
+> **R113 correction notice:** `HR-V0-GRIP-SEL-P0.1` supersedes this document's preference conclusion. This study omitted the 40 mm minimum in `docs/system-specification.md`. Pololu item 3551's 32 mm internal opening therefore fails the retained current object baseline and is now a conditional study only. The controlled source files and calculations remain valid within their stated boundaries.
+
 Identifier: **HR-V0-GRIP-ALT-P0.1**  
-Status: **PRELIMINARY - PREFERRED EVALUATION CANDIDATE ONLY; NOT SELECTED; NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, OR ENERGIZATION**  
+Status: **HISTORICAL P0.1 TRADE STUDY - PREFERENCE SUPERSEDED BY HR-V0-GRIP-SEL-P0.1; NOT SELECTED; NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, OR ENERGIZATION**
 Date: 2026-08-08  
 Requirements affected: `SYS-001`, `SYS-002`, `GRIP-001`, `GRIP-002`, `MASS-002`, `SAFE-004`, `SAFE-006`
 

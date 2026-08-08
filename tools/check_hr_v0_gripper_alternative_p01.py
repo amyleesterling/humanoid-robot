@@ -79,7 +79,7 @@ def check_geometry() -> None:
 def check_decision() -> None:
     trade = rows(ROOT / "references/gripper/hr-v0-gripper-alternative-trade-p0.1.csv")
     assert [row["candidate_id"] for row in trade] == ["GRALT-POL3551", "GRALT-SC3219", "GRALT-RMX52"]
-    assert trade[0]["decision_state"] == "PREFERRED EVALUATION CANDIDATE - NOT SELECTED"
+    assert trade[0]["decision_state"] == "HISTORICAL PREFERENCE SUPERSEDED - CONDITIONAL STUDY - NOT SELECTED"
     assert all("NOT SELECTED" in row["decision_state"] or "SOURCE HELD" in row["decision_state"] for row in trade)
     assert trade[0]["catalog_mass_g"] == "30" and trade[0]["usable_opening_mm"] == "32"
 
@@ -92,7 +92,7 @@ def check_decision() -> None:
 
     doc = (ROOT / "docs/hr-v0-gripper-alternative-trade-p0.1.md").read_text(encoding="utf-8")
     for token in (
-        "PREFERRED EVALUATION CANDIDATE ONLY; NOT SELECTED",
+        "R113 correction notice",
         "750 - 577.091 - 30 = 142.909 g",
         "GRIP-002",
         "E-stop release and manual reset must leave the PWM output in a nonmoving state",
