@@ -15,7 +15,7 @@ Applies to: HR-V0 only
 | Environment | Indoor bench-mounted experimental machinery |
 | Operators | Adults working in a controlled test area |
 | Child access | Prohibited during assembly, test, and operation |
-| Payload | Soft foam object; 100 g maximum; 70 mm maximum characteristic dimension |
+| Payload | One controlled soft-foam object; measured mass no more than 100 g; each measured principal dimension 40-70 mm inclusive; exact article and metrology method remain `SELECTION REQUIRED` |
 | Strength/cost objective | Low-mass, low-force, cost-conscious demonstrator; no relaxation of proof or safety gates |
 | Local fabrication access | A Boston-area library makerspace may have CNC equipment; metal capability, machine model, material permission, training, and tolerance are not yet verified |
 | HR-30 program end-state | 762 mm nominal humanoid capable of untethered level-floor walking after the staged validation program |

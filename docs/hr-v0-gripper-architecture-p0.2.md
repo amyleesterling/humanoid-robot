@@ -12,7 +12,7 @@ Requirement links: `GRIP-001`, `GRIP-002`, `SAFE-004`, `SAFE-006`, `MASS-002`
 
 HR-V0 uses one proposed ROBOTIS `XM430-W350-T` actuator and the gripper mechanism subset allocated from the orderable `OpenMANIPULATOR-X Frame Set RM-X52`, ROBOTIS SKU `905-0023-000`. The exact allocation is controlled in `bom/hr-v0-gripper-kit-contents.csv`; the parent kit contains other manipulator parts and its complete shipping mass must not be assigned to the gripper.
 
-The manufacturer publishes a 20-75 mm gripper stroke for OpenMANIPULATOR-X. Project Button requires only the 20-70 mm reference-object range; it does not claim the manufacturer's whole-manipulator 500 g payload as a gripper force or HR-V0 payload rating. The project payload remains one soft foam object no heavier than 100 g.
+The manufacturer publishes a 20-75 mm gripper stroke for OpenMANIPULATOR-X. Project Button's controlled object envelope is 40-70 mm in each principal dimension; the exact released grip axis and installed padded opening remain unverified. The project does not claim the manufacturer's whole-manipulator 500 g payload as a gripper force or HR-V0 payload rating. The object mass remains no more than 100 g.
 
 ## Exact official geometry now controlled
 

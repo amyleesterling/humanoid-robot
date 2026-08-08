@@ -1,0 +1,13 @@
+record_id,stage,characteristic,limit_or_requirement,actual_value,unit,instrument_or_method,calibration_or_traceability,uncertainty,raw_evidence,reviewer_and_date,state
+OBJ-001,definition,serialized object identity,"unique durable ID correlated to every record",,,,,,,,OPEN
+OBJ-002,definition,soft-foam product material and lot,"exact controlled source or accepted fabrication definition",,,,,,,,SELECTION REQUIRED
+OBJ-003,definition,conditioning,"duration temperature humidity support and recovery interval",,,,,,,,SELECTION REQUIRED
+OBJ-004,definition,dimensional method,"contact geometry measurement force support sampling and calculation",,,,,,,,SELECTION REQUIRED
+OBJ-005,definition,grip axis and contact faces,"principal axis and both contact faces marked and photographed",,,,,,,,SELECTION REQUIRED
+OBJ-006,pre-test,mass including uncertainty,"accepted upper bound <= 100",,g,,,,,,NOT EXECUTED
+OBJ-007,pre-test,principal dimension A including uncertainty,"accepted interval 40 through 70",,mm,,,,,,NOT EXECUTED
+OBJ-008,pre-test,principal dimension B including uncertainty,"accepted interval 40 through 70",,mm,,,,,,NOT EXECUTED
+OBJ-009,pre-test,principal dimension C including uncertainty,"accepted interval 40 through 70",,mm,,,,,,NOT EXECUTED
+OBJ-010,pre-test,condition and photographs,"no unaccepted tear permanent set contamination or damage",,,,,,,,NOT EXECUTED
+OBJ-011,post-test,dimensions mass and permanent set,"repeat accepted method and meet released post-test limits",,,,,,,,NOT EXECUTED
+OBJ-012,post-test,condition and photographs,"meet released damage criteria and close deviations",,,,,,,,NOT EXECUTED

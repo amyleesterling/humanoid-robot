@@ -1,6 +1,6 @@
 id,level,statement,priority,verification_id,status
 SYS-001,system,"HR-V0 shall be a fixed bench-mounted mechanism with exactly two arm rotation axes and one gripper axis.",MUST,INSPECT-SYS-001,draft
-SYS-002,system,"HR-V0 shall transfer one soft foam object of no more than 100 g and 70 mm maximum dimension.",MUST,TEST-HAND-001,draft
+SYS-002,system,"HR-V0 shall transfer one controlled soft foam object whose measured mass is no more than 100 g and whose three principal dimensions are each between 40 mm and 70 mm inclusive.",MUST,TEST-HAND-001,draft
 SYS-003,system,"Maximum shoulder-to-object reach shall not exceed 360 mm.",MUST,INSPECT-MECH-001,draft
 SYS-004,system,"Automatic tool-center speed shall not exceed 0.15 m/s. The controller shall derive pose-dependent joint-rate limits from the commanded kinematics; the 30 deg/s joint cap is an additional ceiling and shall never be treated as sufficient enforcement of the tool-center limit.",MUST,TEST-CTRL-001,draft
 SYS-005,system,"Setup motion shall be hold-to-run and shall not exceed 10 deg/s.",MUST,TEST-CTRL-002,draft

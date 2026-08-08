@@ -1,5 +1,7 @@
 # HR-V0 gripper requirement and selection correction P0.1
 
+> **R114 synchronization notice:** `SYS-002` now states the retained 40-70 mm each-principal-dimension envelope directly. `HR-V0-OBJ-CTRL-P0.1` controls the still-unselected object and handoff evidence route.
+
 Identifier: **HR-V0-GRIP-SEL-P0.1**
 Status: **PRELIMINARY - NO GRIPPER SELECTED; NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, OR ENERGIZATION**
 Date: 2026-08-08
@@ -9,7 +11,7 @@ Correction round: R113
 
 No HR-V0 gripper candidate is selected. The current 40-70 mm each-principal-dimension payload envelope is retained as the fail-closed selection baseline until an authorized requirement change says otherwise.
 
-R111 incorrectly treated `SYS-002` as the complete object definition and proposed a 25-30 mm foam cube. `SYS-002` supplies an upper bound, but `docs/system-specification.md` revision 0.1 also supplies a 40 mm minimum for every principal dimension. The smaller-object proposal is therefore not part of the current baseline.
+Before R114, R111 incorrectly treated the then-shorter `SYS-002` text as the complete object definition and proposed a 25-30 mm foam cube. `docs/system-specification.md` revision 0.1 also supplied a 40 mm minimum for every principal dimension. R114 synchronizes `SYS-002` to that retained baseline; the smaller-object proposal remains outside it.
 
 This correction supersedes only the R111/R112 **preference conclusion**. It does not erase their controlled manufacturer files, geometry, interface studies, hashes, calculations, KiCad source, or historical records.
 

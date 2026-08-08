@@ -1,0 +1,9 @@
+record_id,characteristic,acceptance_criterion,actual_value,evidence_reference,reviewer_and_date,state
+HAND-SUM-001,attempted cycles,exactly 100,,, ,NOT EXECUTED
+HAND-SUM-002,successful transfers,at least 99,,, ,NOT EXECUTED
+HAND-SUM-003,unsafe faults,zero,,, ,NOT EXECUTED
+HAND-SUM-004,payload escapes from released catch or guard,zero,,, ,NOT EXECUTED
+HAND-SUM-005,object identity,one INSPECT-OBJ-001 accepted serialized object for all cycles,,, ,NOT EXECUTED
+HAND-SUM-006,cycle evidence,all 100 rows resolve to synchronized raw logs and video,,, ,NOT EXECUTED
+HAND-SUM-007,post-test object condition,passes released damage and permanent-set limits,,, ,NOT EXECUTED
+HAND-SUM-008,final qualified disposition,"signed pass only if every criterion and deviation closes",,, ,NOT EXECUTED
