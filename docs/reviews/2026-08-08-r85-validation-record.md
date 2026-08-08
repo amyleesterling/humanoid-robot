@@ -41,4 +41,11 @@ R85 closes zero HSI rows and zero release gates. The package is not a purchase, 
 
 ## Remote clean-clone validation
 
-Pending push and independent clean-clone check. The final pushed content commit and manifest/checker results must be recorded before this section is treated as complete configuration evidence.
+The pushed branch was cloned independently from GitHub at commit `612617d95de7bc815d16d7ba10c16b44f214f94b`. In that remote clone:
+
+- all `35` non-manifest repository checkers passed;
+- `tools/check_hr_v0_release_manifest.py --require-clean` passed for `956` package files;
+- the manifest checker reported the exact cloned commit above; and
+- the temporary clone and its exact-path `safe.directory` entry were removed after validation.
+
+This validates source/configuration reproducibility only. It supplies no signed purchase decision, provider response, physical article, qualified acceptance, fabrication, motion or energization evidence.
