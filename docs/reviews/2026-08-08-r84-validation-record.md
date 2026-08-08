@@ -46,4 +46,11 @@ R84 closes zero HSI rows and zero release gates. The package is not a build rele
 
 ## Remote clean-clone validation
 
-Pending push and independent clean-clone check. The final pushed commit and manifest/checker results must be appended before this section is treated as complete release evidence.
+The pushed branch was cloned independently from GitHub at commit `2b17b1ca2978f6b9c447c6b3df0fd9e503f040bd`. In that remote clone:
+
+- all `34` non-manifest repository checkers passed;
+- `tools/check_hr_v0_release_manifest.py --require-clean` passed for `938` package files;
+- the manifest checker reported the exact cloned commit above; and
+- the temporary clone and its exact-path `safe.directory` entry were removed after validation.
+
+This validates source/configuration reproducibility only. It supplies no physical article, qualified review, fabrication, motion or energization evidence.
