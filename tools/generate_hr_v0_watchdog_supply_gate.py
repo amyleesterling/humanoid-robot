@@ -16,7 +16,7 @@ OUT = ROOT / "safety" / "hr-v0-watchdog-supply-gate-p0.1"
 CANONICAL_FMEA = ROOT / "safety" / "hr-v0-watchdog-boundary-fmea.csv"
 WARNING = "PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 REVISION = "HR-V0-WD-SUPPLY-P0.1"
-CONFIGURATION = "Electrical V3-P1.13 / PCB-P0.5 / HR-V0-CP-P0.5"
+CONFIGURATION = "Electrical V3-P1.13 / PCB-P0.6 / HR-V0-CP-P0.5"
 
 
 def write_csv(path: Path, rows: list[dict[str, str]]) -> None:

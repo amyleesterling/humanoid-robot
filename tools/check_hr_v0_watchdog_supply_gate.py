@@ -53,7 +53,7 @@ def main() -> int:
     status = json.loads(status_path.read_text(encoding="utf-8")) if status_path.is_file() else {}
     for key, expected_value in {
         "revision": "HR-V0-WD-SUPPLY-P0.1",
-        "configuration": "Electrical V3-P1.13 / PCB-P0.5 / HR-V0-CP-P0.5",
+        "configuration": "Electrical V3-P1.13 / PCB-P0.6 / HR-V0-CP-P0.5",
         "path_count": 14,
         "fmea_count": 32,
         "fault_case_count": 28,

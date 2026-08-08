@@ -54,10 +54,10 @@ PLACEMENTS = {
     "RW1": (136, 70, 0),
     "RTH2": (125, 82, 180),
     "RSN2": (109, 78.50, 270),
-    "CFI2": (104, 81, 270),
+    "CFI2": (104, 80.8, 270),
     "RW2": (136, 82, 0),
     "UFB1": (100, 76, 0),
-    "CDEC1": (94, 73.5, 90),
+    "CDEC1": (94.2, 73.5, 90),
     "RSO1": (91, 64, 0),
     "RPD1": (91, 68, 0),
     "RSO2": (91, 84, 0),
@@ -424,8 +424,8 @@ def main() -> int:
     board.SetFileName(str(BOARD_PATH))
     title = board.GetTitleBlock()
     title.SetTitle("Project Button HR-V0 ordinary watchdog PCB routed/test-access candidate")
-    title.SetDate("2026-08-06")
-    title.SetRevision("PCB-P0.5 / Electrical V3-P1.1")
+    title.SetDate("2026-08-08")
+    title.SetRevision("PCB-P0.6 / Electrical V3-P1.13")
     title.SetCompany("Project Button")
     title.SetComment(0, WARNING)
     title.SetComment(1, "ROUTED/TEST-ACCESS CANDIDATE - NO GERBER RELEASE")
@@ -476,7 +476,7 @@ def main() -> int:
     add_mounting_holes(pcbnew, board)
     route_board(pcbnew, board, nets)
     add_text(pcbnew, board, WARNING, 35, 116.5, 1.35, pcbnew.F_SilkS)
-    add_text(pcbnew, board, "PCB-P0.5 - 6 MIL ENVELOPE - NO SAFETY CREDIT", 85, 112, 1.2, pcbnew.F_SilkS)
+    add_text(pcbnew, board, "PCB-P0.6 - LAND CORRECTION - NO SAFETY CREDIT", 80, 112, 1.2, pcbnew.F_SilkS)
     add_text(pcbnew, board, "+24  0V  C1-  C2-", 25, 42, 1.1, pcbnew.F_SilkS)
     add_text(pcbnew, board, "FB1  FB2", 143, 69, 1.1, pcbnew.F_SilkS)
     add_text(pcbnew, board, "HB   COMPUTE-0V", 25, 101.5, 1.1, pcbnew.F_SilkS)

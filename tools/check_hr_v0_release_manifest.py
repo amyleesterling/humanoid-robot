@@ -77,9 +77,8 @@ def main() -> None:
         {},
     )
     if electrical_product.get("supporting_identifiers") != [
-        "PCB-P0.5",
-        "HR-V0-WD-FAB-P0.1",
-        "HR-V0-WD-TRAVELER-P0.1",
+        "PCB-P0.6",
+        "HR-V0-WD-LAND-P0.1",
         "DXL-STAR-P0.1",
         "HR-V0-CP-P0.5",
         "HR-V0-WD-SUPPLY-P0.1",
@@ -150,7 +149,6 @@ def main() -> None:
     )
     if commissioning_product.get("supporting_identifiers") != [
         "HR-V0-E2-HW-P0.2",
-        "HR-V0-WD-TRAVELER-P0.1",
         "AUDIT-ELEC-002",
         "INSPECT-ELEC-010",
         "TEST-ELEC-008",

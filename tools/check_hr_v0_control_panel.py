@@ -83,7 +83,7 @@ def main() -> int:
         "PAN-014": "750104",
         "PAN-015": "2967060",
         "PAN-016": "LC1D25BD",
-        "PAN-017": "PCB-P0.5",
+        "PAN-017": "PCB-P0.6",
         "PAN-018": "DXL-STAR-P0.1",
         "PAN-021": "PT 4-HESI (5X20), item 3211861",
         "PAN-022": "5025",

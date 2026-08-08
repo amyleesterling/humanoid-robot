@@ -1,5 +1,7 @@
 # HR-V0 watchdog PCB fabrication-envelope candidate P0.5
 
+> **SUPERSEDED FOR CURRENT FABRICATION REVIEW BY PCB-P0.6 / HR-V0-WD-LAND-P0.1.** R89 found material ISO1, TI IC and passive land-pattern errors. Preserve this document and the R88 CAM package as historical configuration evidence only; do not upload, order or fabricate PCB-P0.5.
+
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
 Electrical compatibility: `Project Button Electrical V3-P1.13`

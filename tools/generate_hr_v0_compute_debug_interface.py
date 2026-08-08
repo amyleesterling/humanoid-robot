@@ -19,11 +19,11 @@ PINS = [
     ("CIPIN-002", "PI1", "USB-C-GND", "USB-C power return", "COMPUTE_0V", "Existing compute power boundary", "Verify on received power path"),
     ("CIPIN-003", "PI1", "HDR40-6", "GPIO header ground", "COMPUTE_0V", "Raspberry Pi current GPIO documentation", "Verify physical header orientation and continuity before harness construction"),
     ("CIPIN-004", "PI1", "HDR40-11", "BCM GPIO17 heartbeat output", "PI_HEARTBEAT", "Raspberry Pi current GPIO documentation", "Reserve GPIO17; verify startup, logic level, load, waveform and fault behavior"),
-    ("CIPIN-005", "JWH1", "1", "isolated heartbeat input", "PI_HEARTBEAT", "PCB-P0.5 exact connector allocation", "Harness connector, contacts, wire and retention remain open"),
-    ("CIPIN-006", "JWH1", "2", "compute-domain return", "COMPUTE_0V", "PCB-P0.5 exact connector allocation", "Harness connector, contacts, wire and retention remain open"),
-    ("CIPIN-007", "TP15", "1", "watchdog SWDIO test access", "WD_SWDIO", "PCB-P0.5 exact Harwin test point", "Unpowered fixture and programmer selection required"),
-    ("CIPIN-008", "TP16", "1", "watchdog SWCLK test access", "WD_SWCLK", "PCB-P0.5 exact Harwin test point", "Unpowered fixture and programmer selection required"),
-    ("CIPIN-009", "TP2", "1", "watchdog debug return", "SAFETY_0V", "PCB-P0.5 exact Harwin test point", "Unpowered fixture and no-back-power proof required"),
+    ("CIPIN-005", "JWH1", "1", "isolated heartbeat input", "PI_HEARTBEAT", "PCB-P0.6 exact connector allocation", "Harness connector, contacts, wire and retention remain open"),
+    ("CIPIN-006", "JWH1", "2", "compute-domain return", "COMPUTE_0V", "PCB-P0.6 exact connector allocation", "Harness connector, contacts, wire and retention remain open"),
+    ("CIPIN-007", "TP15", "1", "watchdog SWDIO test access", "WD_SWDIO", "PCB-P0.6 exact Harwin test point", "Unpowered fixture and programmer selection required"),
+    ("CIPIN-008", "TP16", "1", "watchdog SWCLK test access", "WD_SWCLK", "PCB-P0.6 exact Harwin test point", "Unpowered fixture and programmer selection required"),
+    ("CIPIN-009", "TP2", "1", "watchdog debug return", "SAFETY_0V", "PCB-P0.6 exact Harwin test point", "Unpowered fixture and no-back-power proof required"),
 ]
 
 HOLDS = [
@@ -45,7 +45,7 @@ SOURCES = [
     ("CISRC-003", "Raspberry Pi Touch Display documentation", "current web documentation; no document revision stated", "accessed 2026-08-08", "https://www.raspberrypi.com/documentation/accessories/display.html", "Manufacturer documentation explicitly identifies physical header pin 6 as GND"),
     ("CISRC-004", "Harwin S1751-46R product page", "current product page", "accessed 2026-08-08", "https://www.harwin.com/products/S1751-46R", "Exact installed SMT test point; Harwin states compatibility with standard probes, lead clips and hooks; fixture is not selected"),
     ("CISRC-005", "Harwin S1751-XXR technical drawing", "issue 10", "2023-02-15; accessed 2026-08-08", "https://www.harwin.com/products/S1751-46R", "Exact test-point geometry and recommended pad; does not define a debug cable or programmer"),
-    ("CISRC-006", "Project Button watchdog PCB-P0.5 source and checker", "PCB-P0.5", "repository state 2026-08-08", "../../kicad/project-button-v3/project-button-v3.kicad_pcb", "Exact TP2/TP15/TP16 net allocation and Harwin footprint; no fabricated board or installed access evidence"),
+    ("CISRC-006", "Project Button watchdog PCB-P0.6 source and checker", "PCB-P0.6 / HR-V0-WD-LAND-P0.1", "repository state 2026-08-08", "../../kicad/project-button-v3/project-button-v3.kicad_pcb", "Exact TP2/TP15/TP16 net allocation and Harwin footprint; no current CAM, fabricated board or installed access evidence"),
 ]
 
 

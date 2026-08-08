@@ -274,13 +274,77 @@ def main() -> int:
                 f"{ref} pad differs from the 3.45 mm x 1.85 mm Harwin land pattern", failures)
         require(test_pad.IsOnLayer(pcbnew.F_Cu), f"{ref} is not top-side probe accessible", failures)
 
+    # Vishay VO618A option-7 document 83432 Rev. 2.1 freezes the SMD land
+    # geometry. The mask/stencil process and system-level creepage requirement
+    # remain open; these checks prove only the encoded copper candidate.
+    iso = footprints["ISO1"]
+    require(iso.GetFPID().GetLibItemName() == "VO618A_Option7_SMD",
+            "ISO1 is not using the controlled VO618A option-7 land", failures)
+    require(iso.GetFieldText("Datasheet") == "https://www.vishay.com/docs/83432/vo618a.pdf",
+            "ISO1 datasheet field is not frozen to Vishay document 83432", failures)
+    iso_pads = {item.GetNumber(): item for item in iso.Pads() if item.GetNumber()}
+    for number, item in iso_pads.items():
+        require(abs(pcbnew.ToMM(item.GetSizeX()) - 1.52) < 0.001 and
+                abs(pcbnew.ToMM(item.GetSizeY()) - 1.78) < 0.001,
+                f"ISO1.{number} differs from the 1.52 x 1.78 mm option-7 land", failures)
+    iso_row_centres = abs(pcbnew.ToMM(iso_pads["4"].GetPosition().x - iso_pads["1"].GetPosition().x))
+    require(iso_row_centres - 1.52 >= 8.0,
+            "ISO1 option-7 inner copper gap is below 8.0 mm", failures)
+    require(abs(iso_row_centres + 1.52 - 11.05) < 0.001,
+            "ISO1 option-7 overall copper span differs from 11.05 mm", failures)
+    require(abs(pcbnew.ToMM(iso_pads["2"].GetPosition().y - iso_pads["1"].GetPosition().y)) - 2.54 < 0.001,
+            "ISO1 option-7 within-row pin pitch differs from 2.54 mm", failures)
+
+    # R89 replaces generic hand-solder lands with controlled manufacturer-
+    # traced reflow candidates. Mask/paste/process capability and first-article
+    # evidence remain release holds; these checks prevent geometry regression.
+    passive_groups = [
+        (("CDEC1", "CDRV1", "CDRV2"), "Murata_GRM21_Reflow_Nominal", 0.95, 0.95, 2.05,
+         "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM21BR71H104KA01-01-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20250707233810"),
+        (("CFI1", "CFI2"), "TDK_CGA3_Reflow_Nominal", 0.70, 0.70, 1.40,
+         "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/mlcc/specification/mlccspec_automotive_general_en.pdf"),
+        (("RHB1", "RHP1", "RSN1", "RSN2", "RSO1", "RSO2", "RPD1", "RPD2"),
+         "Panasonic_ERJ6_Reflow_Nominal", 1.15, 1.15, 2.35,
+         "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"),
+        (("RTH1", "RTH2"), "Vishay_MMA0204_IPC_Reflow", 1.40, 1.55, 3.00,
+         "https://www.vishay.com/doc/?28950="),
+        (("RW1", "RW2"), "Vishay_CRCW1210_Reflow", 1.10, 2.80, 2.80,
+         "https://www.vishay.com/docs/20035/dcrcwe3.pdf"),
+    ]
+    for references, footprint_name, pad_x, pad_y, centre_span, datasheet in passive_groups:
+        for ref in references:
+            candidate = footprints[ref]
+            require(candidate.GetFPID().GetLibItemName() == footprint_name,
+                    f"{ref} is not using controlled {footprint_name}", failures)
+            require(candidate.GetFieldText("Datasheet") == datasheet,
+                    f"{ref} controlled land source is missing or wrong", failures)
+            require(pcbnew.ToMM(candidate.GetLocalSolderMaskMargin()) == 0.05,
+                    f"{ref} does not encode the provisional 0.05 mm NSMD mask clearance", failures)
+            pads_by_number = {item.GetNumber(): item for item in candidate.Pads() if item.GetNumber()}
+            require(set(pads_by_number) == {"1", "2"}, f"{ref} does not have exactly two numbered lands", failures)
+            for number, item in pads_by_number.items():
+                require(abs(pcbnew.ToMM(item.GetSizeX()) - pad_x) < 0.001 and
+                        abs(pcbnew.ToMM(item.GetSizeY()) - pad_y) < 0.001,
+                        f"{ref}.{number} differs from controlled {pad_x:.2f} x {pad_y:.2f} mm land", failures)
+            require(abs(distance_mm(pads_by_number["1"], pads_by_number["2"]) - centre_span) < 0.001,
+                    f"{ref} land centre span differs from {centre_span:.2f} mm", failures)
+
     # TI ISO1212 SLLSEY7G layout controls: the 100 nF side-1 bypass is
     # constrained to a maximum 2 mm copper-edge placement gap, CIN is kept
     # compact, and
     # the high-voltage end of RTHR remains at least 4 mm from receiver/CIN/
     # RSENSE pins. These numeric checks are placement screens, not EMC proof.
-    require(footprints["UFB1"].GetFPID().GetLibItemName() == "SSOP-16_3.9x4.9mm_P0.635mm",
-            "UFB1 is not using the DBQ body/pitch candidate footprint", failures)
+    require(footprints["UFB1"].GetFPID().GetLibItemName() == "TI_DBQ0016A_Example_Land",
+            "UFB1 is not using the controlled TI DBQ0016A example land", failures)
+    require(footprints["UFB1"].GetFieldText("Datasheet") == "https://www.ti.com/lit/ds/symlink/iso1212.pdf",
+            "UFB1 datasheet field is not frozen to the TI ISO1212 record", failures)
+    require(pcbnew.ToMM(footprints["UFB1"].GetLocalSolderMaskMargin()) == 0.05,
+            "UFB1 does not encode the TI example 0.05 mm NSMD mask clearance", failures)
+    for item in footprints["UFB1"].Pads():
+        if item.GetNumber():
+            require(abs(pcbnew.ToMM(item.GetSizeX()) - 1.60) < 0.001 and
+                    abs(pcbnew.ToMM(item.GetSizeY()) - 0.41) < 0.001,
+                    f"UFB1.{item.GetNumber()} differs from the TI DBQ0016A 1.60 x 0.41 mm example land", failures)
     require(nearest_edge_mm(pad(footprints, "CDEC1", "1"),
                             [pad(footprints, "UFB1", "2"), pad(footprints, "UFB1", "3")]) <= 2.0,
             "CDEC1 VCC pad exceeds the 2 mm UFB1 VCC placement screen", failures)
@@ -311,6 +375,18 @@ def main() -> int:
     # copper. The local capacitor loop is screened here; slew rate, trace width,
     # fault current and thermal evidence remain physical routing/test gates.
     for channel in ("1", "2"):
+        driver = footprints[f"UDRV{channel}"]
+        require(driver.GetFPID().GetLibItemName() == "TI_PW0016A_Example_Land",
+                f"UDRV{channel} is not using the controlled TI PW0016A example land", failures)
+        require(driver.GetFieldText("Datasheet") == "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf",
+                f"UDRV{channel} datasheet field is not frozen to TI SLRS066D", failures)
+        require(pcbnew.ToMM(driver.GetLocalSolderMaskMargin()) == 0.05,
+                f"UDRV{channel} does not encode the TI example 0.05 mm NSMD mask clearance", failures)
+        for item in driver.Pads():
+            if item.GetNumber():
+                require(abs(pcbnew.ToMM(item.GetSizeX()) - 1.50) < 0.001 and
+                        abs(pcbnew.ToMM(item.GetSizeY()) - 0.45) < 0.001,
+                        f"UDRV{channel}.{item.GetNumber()} differs from the TI PW0016A 1.50 x 0.45 mm example land", failures)
         require(distance_mm(pad(footprints, f"CDRV{channel}", "1"),
                             pad(footprints, f"UDRV{channel}", "9")) <= 3.5,
                 f"CDRV{channel} is not compact to UDRV{channel} COM", failures)
@@ -319,7 +395,7 @@ def main() -> int:
                 f"CDRV{channel} is not compact to UDRV{channel} GND", failures)
 
     title = board.GetTitleBlock()
-    require(title.GetRevision() == "PCB-P0.5 / Electrical V3-P1.1", "PCB title-block revision mismatch", failures)
+    require(title.GetRevision() == "PCB-P0.6 / Electrical V3-P1.13", "PCB title-block revision mismatch", failures)
     require(WARNING in board_path.read_text(encoding="utf-8-sig"), "PCB warning missing", failures)
     require("ROUTED/TEST-ACCESS CANDIDATE" in board_path.read_text(encoding="utf-8-sig"),
             "routed/test-access candidate status missing from PCB", failures)
@@ -356,14 +432,14 @@ def main() -> int:
         if path.is_file() and path.suffix.lower() in {".gbr", ".ger", ".drl", ".xln", ".gbrjob"}
     ]
     require(not fabrication_outputs, "Gerber/drill fabrication outputs exist despite the open release gate", failures)
-    for name in ("MKDS_1_2_3P5.kicad_mod", "MKDS_1_4_3P5.kicad_mod", "VO618A_Option7_SMD.kicad_mod", "Harwin_S1751_46R.kicad_mod"):
+    for name in ("MKDS_1_2_3P5.kicad_mod", "MKDS_1_4_3P5.kicad_mod", "VO618A_Option7_SMD.kicad_mod", "Harwin_S1751_46R.kicad_mod", "TI_PW0016A_Example_Land.kicad_mod", "TI_DBQ0016A_Example_Land.kicad_mod", "Murata_GRM21_Reflow_Nominal.kicad_mod", "TDK_CGA3_Reflow_Nominal.kicad_mod", "Panasonic_ERJ6_Reflow_Nominal.kicad_mod", "Vishay_MMA0204_IPC_Reflow.kicad_mod", "Vishay_CRCW1210_Reflow.kicad_mod"):
         require((OUT / "PBV3_Footprints.pretty" / name).is_file(), f"custom candidate footprint missing: {name}", failures)
 
     constraint_evidence = {
         "status": WARNING,
-        "board_revision": "PCB-P0.5",
-        "electrical_revision": "Electrical V3-P1.1",
-        "generated_date": "2026-08-06",
+        "board_revision": "PCB-P0.6",
+        "electrical_revision": "Electrical V3-P1.13",
+        "generated_date": "2026-08-08",
         "manufacturer_sources": [
             {
                 "manufacturer": "Texas Instruments",
@@ -475,7 +551,7 @@ def main() -> int:
         },
         "limitations": [
             "Zero native DRC violations proves only the encoded geometric/connectivity rules.",
-            "PCB-P0.5 encodes a 0.1524 mm (6 mil) minimum trace/clearance candidate envelope; fabricator acceptance remains required.",
+            "PCB-P0.6 encodes a 0.1524 mm (6 mil) minimum trace/clearance candidate envelope and controlled TI example land patterns; fabricator/assembler acceptance remains required.",
             "The proposed OSH Park two-layer process is not a released purchase or fabrication selection.",
             "No fabrication, EMC, thermal, COM-slew, physical probe-access or fault evidence is released.",
             "UFB1 field and logic returns share SAFETY_0V; no galvanic-isolation or safety credit is claimed.",

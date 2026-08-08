@@ -247,6 +247,15 @@
     "viewports": []
   },
   "boards": [],
+  "component_class_settings": {
+    "assignments": [],
+    "meta": {
+      "version": 0
+    },
+    "sheet_component_classes": {
+      "enabled": false
+    }
+  },
   "cvpcb": {
     "equivalence_files": []
   },
@@ -316,20 +325,8 @@
     "legacy_lib_list": [],
     "top_level_sheets": []
   },
-  "text_variables": {
-    "PROJECT_STATUS": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION",
-    "REVISION": "V3-P1.13"
-  },
-  "component_class_settings": {
-    "assignments": [],
-    "meta": {
-      "version": 0
-    },
-    "sheet_component_classes": {
-      "enabled": false
-    }
-  },
   "sheets": [],
+  "text_variables": {},
   "tuning_profiles": {
     "meta": {
       "version": 0
