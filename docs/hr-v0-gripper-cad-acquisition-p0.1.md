@@ -7,6 +7,8 @@ Requirements: `GRIP-002`, `MECH-005`, `MASS-002`
 Verification: `AUDIT-GRIP-002`
 Status: **PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, OR ENERGIZATION**
 
+Current acquisition correction: `HR-V0-GRIP-ACQ-P0.2` records the exact FR12-G101GM/HN12-I101 orderable scope and rejects that frame set as a sole substitute for the complete mechanism. The publisher-file and received-metrology routes below remain open.
+
 ## Decision
 
 The current official ROBOTIS repository supplies useful `link5` and palm collision/visual meshes plus URDF kinematics. Those files do not define the complete gripper mechanism, the H104-to-carrier installation transform, fastener stacks, physical mass, tolerances, or a manufacturing release.

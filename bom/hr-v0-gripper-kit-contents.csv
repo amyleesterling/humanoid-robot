@@ -1,5 +1,5 @@
 content_id,parent_orderable,manufacturer,order_code,included_item,required_quantity,source,status,notes
-GKC-001,OpenMANIPULATOR-X Frame Set RM-X52,ROBOTIS,905-0023-000,Parent frame set,1,https://www.robotis.us/openmanipulator-x-frame-set-rm-x52/,proposed,"One orderable parent kit; current inventory and price are not controlled"
+GKC-001,OpenMANIPULATOR-X Frame Set RM-X52,ROBOTIS,905-0023-000,Parent frame set,1,https://www.robotis.us/openmanipulator-x-frame-set-rm-x52/,proposed,"One orderable parent kit; current inventory and price are not controlled; FR12-G101GM is rejected as a sole replacement by HR-V0-GRIP-ACQ-P0.2"
 GKC-002,OpenMANIPULATOR-X Frame Set RM-X52,ROBOTIS,905-0023-000,FR12-H104K frame,1,OpenMANIPULATOR-X assembly manual,received_verification_required,"Use MV0-FC03 before cutting MV0-002"
 GKC-003,OpenMANIPULATOR-X Frame Set RM-X52,ROBOTIS,905-0023-000,HN12-I101 idler set,1,OpenMANIPULATOR-X assembly manual,received_verification_required,"Required at the XM430 idler face"
 GKC-004,OpenMANIPULATOR-X Frame Set RM-X52,ROBOTIS,905-0023-000,PALM GRIPPER,2,OpenMANIPULATOR-X assembly manual,received_verification_required,"Add only released broad compliant object-contact pads"
