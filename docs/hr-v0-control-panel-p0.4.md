@@ -6,7 +6,9 @@ Document ID: `HR-V0-CP-P0.4`
 
 Date: 2026-08-07
 
-Electrical input: `Project Button Electrical V3-P1.8`
+Electrical input: `Project Button Electrical V3-P1.9`
+
+R79 reconciles the previously exact panel-BOM XT1 family into the native electrical source as `XT1-01` through `XT1-06`. This freezes catalog identities and position-to-net candidates only; every conductor, ferrule/direct-wire method, protection choice, current/temperature coordination, received check, strip length, retention, marking and point-to-point record remains on hold.
 
 Supersedes: `HR-V0-CP-P0.3` as the current layout candidate; P0.1 through P0.3 remain configuration history.
 

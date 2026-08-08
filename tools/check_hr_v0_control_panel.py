@@ -160,12 +160,12 @@ def main() -> int:
 
     terminals = tables.get("terminal-allocation.csv", [])
     expected_terminals = {
-        "XT1-01": ("3209510", "TBD-1", "SAFETY_24V"),
-        "XT1-02": ("3209523", "TBD-2", "SAFETY_0V"),
-        "XT1-03": ("3209510", "TBD-3", "SR1_STATUS"),
-        "XT1-04": ("3209510", "TBD-4", "SRA1_STATUS"),
-        "XT1-05": ("3209510", "TBD-5", "K1_STATUS"),
-        "XT1-06": ("3209510", "TBD-6", "K2_STATUS"),
+        "XT1-01": ("3209510", "XT1-01", "SAFETY_24V"),
+        "XT1-02": ("3209523", "XT1-02", "SAFETY_0V"),
+        "XT1-03": ("3209510", "XT1-03", "SR1_STATUS"),
+        "XT1-04": ("3209510", "XT1-04", "SRA1_STATUS"),
+        "XT1-05": ("3209510", "XT1-05", "K1_STATUS"),
+        "XT1-06": ("3209510", "XT1-06", "K2_STATUS"),
     }
     if len(terminals) != 6:
         errors.append(f"terminal allocation expected 6 positions, found {len(terminals)}")
@@ -213,7 +213,7 @@ def main() -> int:
                 errors.append(f"{row.get('wire_number')} infers unreleased {field}: {row.get(field)!r}")
         if not row.get("release_state", "").startswith("NOT RELEASED"):
             errors.append(f"{row.get('wire_number')} has released-looking state")
-    required_tbd = {"TBD-R1", "TBD-R2", "TBD-A1", "TBD-A2", "TBD-HA", "TBD-HB", "TBD-1", "TBD-2", "TBD-3", "TBD-4", "TBD-5", "TBD-6"}
+    required_tbd = {"TBD-R1", "TBD-R2", "TBD-A1", "TBD-A2", "TBD-HA", "TBD-HB"}
     actual_tbd = {row.get("terminal") for row in physical_wires if row.get("terminal", "").startswith("TBD-")}
     if actual_tbd != required_tbd:
         errors.append(f"TBD terminal boundary changed: {sorted(actual_tbd)}")
@@ -258,7 +258,7 @@ def main() -> int:
     h1_doc = H1_DOC.read_text(encoding="utf-8") if H1_DOC.is_file() else ""
     for required in (
         "HR-V0-H1-RCV-P0.1",
-        "Project Button Electrical V3-P1.8",
+        "Project Button Electrical V3-P1.9",
         "TBD-HA` and `TBD-HB` are project placeholders only",
         "does not choose a current limit, fuse, test-lead rating, or source",
         "RESET STAGE READY - DIAGNOSTIC ONLY / NO MOTION AUTHORITY",

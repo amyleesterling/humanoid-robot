@@ -27,10 +27,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P1.8"
+REV = "V3-P1.9"
 PROJECT_TITLE = "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE"
 PROJECT_SUBTITLE = "Separate RESET and ARM, two PNOZ stages, dual watchdog contacts, external adapters, redundant actuator interruption."
-DATE = "2026-08-07"
+DATE = "2026-08-08"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 NS = uuid.UUID("4cb40c84-3194-4ded-b2c7-d78df616c5c0")
 
@@ -517,11 +517,14 @@ def sheets() -> list[Sheet]:
                   [pn("J3", "1", "GND", "ACT_0V_PE_BONDED", "left"), pn("J3", "2", "VDD", "J3_VDD", "left"), pn("J3", "3", "DATA", "DXL_TTL_DATA", "left")],
                   "PROPOSED - RECEIVED ORIENTATION TEST REQUIRED", "Exact actuator and gripper mechanical release remain open.",
                   "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/", position=(180, 170), width=82),
-        Component("XT1", "24 V control terminal block group",
-                  [pn("XT1", "TBD-1", "+24V", "SAFETY_24V", "left"), pn("XT1", "TBD-2", "0V", "SAFETY_0V", "left"),
-                   pn("XT1", "TBD-3", "SR1 STATUS", "SR1_STATUS", "right"), pn("XT1", "TBD-4", "SRA1 STATUS", "SRA1_STATUS", "right"),
-                   pn("XT1", "TBD-5", "K1 STATUS", "K1_STATUS", "right"), pn("XT1", "TBD-6", "K2 STATUS", "K2_STATUS", "right")],
-                  "SELECTION REQUIRED", "Exact terminal family, end covers, jumpers, markers, conductor range and torque open.", position=(295, 170), width=82),
+        Component("XT1", "Phoenix PT 2,5 six-position terminal group: 5x 3209510 gray, 1x 3209523 blue, 1x 3030417 end cover, 2x 3022218 end brackets, 1x 0828734 marker sheet",
+                  [pn("XT1", "XT1-01", "+24V", "SAFETY_24V", "left"), pn("XT1", "XT1-02", "0V", "SAFETY_0V", "left"),
+                   pn("XT1", "XT1-03", "SR1 STATUS", "SR1_STATUS", "right"), pn("XT1", "XT1-04", "SRA1 STATUS", "SRA1_STATUS", "right"),
+                   pn("XT1", "XT1-05", "K1 STATUS", "K1_STATUS", "right"), pn("XT1", "XT1-06", "K2 STATUS", "K2_STATUS", "right")],
+                  "PROPOSED - ORDER CODES AND POSITION TERMINALS FROZEN; CONDUCTOR/PROTECTION/PHYSICAL VERIFICATION REQUIRED",
+                  "Exact six-position family and position-to-net allocation are frozen with no bridges. PT 2,5 item 3209510 and blue item 3209523 each provide two push-in connections and 5.2 mm width; D-ST 2,5 item 3030417 is the open-side end cover; two CLIPFIX 35 item 3022218 end brackets retain the group; UCT-TM 5 item 0828734 supplies 5.2 mm markers. Conductor order code, ferrule/direct-wire method, protection, current/temperature coordination, received compatibility, strip length, installed retention, marking and point-to-point evidence remain open.",
+                  "https://www.phoenixcontact.com/en-us/products/feed-through-terminal-block-pt-25-3209510",
+                  "Phoenix Contact current official product records for items 3209510, 3209523, 3030417, 3022218 and 0828734; rechecked 2026-08-08.", position=(295, 170), width=82),
         Component("JFRAME1", "Frame/shield bonding interface",
                   [pn("JFRAME1", "TBD-FRAME", "ROBOT FRAME", "ROBOT_FRAME", "left"), pn("JFRAME1", "TBD-SHIELD", "CABLE SHIELDS", "CABLE_SHIELD_TERM", "right")],
                   "SELECTION REQUIRED", "Do not connect frame or shield to 0V/PE until EMC and parallel-path review accepts the implementation.", position=(180, 245), width=92),

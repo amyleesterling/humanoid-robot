@@ -4,13 +4,13 @@
 
 Date: 2026-08-07
 
-Applies to: Electrical V3-P1.8, references `F0`, `F1`, `F2`, `F3`, `FSR1`, and `FSR2`; exact `SD1` candidate is a path constraint, not a fuse selection
+Applies to: Electrical V3-P1.9, references `F0`, `F1`, `F2`, `F3`, `FSR1`, and `FSR2`; exact `SD1` candidate is a path constraint, not a fuse selection
 
 Status: input and evidence-control package only; physical values and execution evidence remain open
 
 ## Decision
 
-No fuse ampere rating is released. R64 retains the exact non-LED DIN holder candidates for `FSR1` and `FSR2`, Phoenix Contact `D-ST 4` item `3030420` as the end-cover candidate, and synchronizes the accessory boundary with `HR-V0-CP-P0.4` and Electrical `V3-P1.8`. Littelfuse `75920-01` is now the exact `SD1` catalog candidate on hold, but this document does not select a fuse link, conductor, splice, cable length, lug/terminal stack, source-load stud assignment, load-break duty, physical cutout, or released enclosure layout.
+No fuse ampere rating is released. R64 retains the exact non-LED DIN holder candidates for `FSR1` and `FSR2`, Phoenix Contact `D-ST 4` item `3030420` as the end-cover candidate, and synchronizes the accessory boundary with `HR-V0-CP-P0.4` and Electrical `V3-P1.9`. Littelfuse `75920-01` is now the exact `SD1` catalog candidate on hold, but this document does not select a fuse link, conductor, splice, cable length, lug/terminal stack, source-load stud assignment, load-break duty, physical cutout, or released enclosure layout.
 
 The machine-readable input register is `electrical/hr-v0-protection-coordination-inputs.csv`. Every value that depends on the received source, harness geometry, installation, measured load, or qualified application review remains `SELECTION REQUIRED`. The execution record is `tests/forms/hr-v0-protection-coordination-template.csv`.
 

@@ -19,7 +19,7 @@ The manifest hashes Git's canonical staged blobs, not platform-dependent checkou
 | Domain | Current candidate | Release boundary |
 |---|---|---|
 | Systems | `HR-30-SYS-R0.2` | integrated preliminary baseline |
-| Electrical | `Project Button Electrical V3-P1.8` / `HR-V0-CP-P0.4` / `HR-V0-SD-P0.2` | connected schematic, dimension-screened panel allocation, and exact SD1 catalog candidate on application hold; not released for wiring, drilling, lockout use, fabrication, or energization |
+| Electrical | `Project Button Electrical V3-P1.9` / `HR-V0-CP-P0.4` / `HR-V0-SD-P0.2` / `HR-V0-E2-HW-P0.1` | connected schematic, dimension-screened panel allocation, exact XT1 catalog/position candidate, exact SD1 catalog candidate on application hold, and fail-closed E2 installed/absent/DNP slice; not released for wiring, drilling, lockout use, fabrication, connection, or energization |
 | Watchdog PCB | `PCB-P0.5` | routed/test-access candidate; no fabrication outputs |
 | Actuator star PCB | `DXL-STAR-P0.1` | routed candidate; no fabrication outputs |
 | Mechanical | `HR-V0-MECH-P0.5` + `HR-V0-ARM-ARCH-P0.6` + `HR-V0-HS-P0.2` | Integrated A00-A07 native CAD and continuous nominal rigid-body clearance evidence exist; received MTR/fit, T-slot capacity, qualified analytical acceptance, torque/locking/reuse, physical stop/stopping/tolerance closure, cables/guard, FAI, physical proof and qualified review remain open |

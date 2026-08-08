@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-07T16:59:03")
+		(date "2026-08-08T00:21:25")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P1.8")
+			(name "REVISION") "V3-P1.9")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,8 +15,8 @@
 			(title_block
 				(title "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE index")
 				(company "Project Button")
-				(rev "V3-P1.8")
-				(date "2026-08-07")
+				(rev "V3-P1.9")
+				(date "2026-08-08")
 				(source "project-button-v3.kicad_sch")
 				(comment
 					(number "1")
@@ -61,10 +61,10 @@
 			(name "/01 External listed sources and DC boundaries/")
 			(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
 			(title_block
-				(title "PB HR-V0 V3-P1.8 - 01")
+				(title "PB HR-V0 V3-P1.9 - 01")
 				(company "Project Button")
-				(rev "V3-P1.8")
-				(date "2026-08-07")
+				(rev "V3-P1.9")
+				(date "2026-08-08")
 				(source "01_external_sources.kicad_sch")
 				(comment
 					(number "1")
@@ -109,10 +109,10 @@
 			(name "/02 Dual-channel E-stop and RESET eligibility/")
 			(tstamps "/1abf679f-5cd5-5479-8b91-6a232acf93b9/")
 			(title_block
-				(title "PB HR-V0 V3-P1.8 - 02")
+				(title "PB HR-V0 V3-P1.9 - 02")
 				(company "Project Button")
-				(rev "V3-P1.8")
-				(date "2026-08-07")
+				(rev "V3-P1.9")
+				(date "2026-08-08")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
 					(number "1")
@@ -157,10 +157,10 @@
 			(name "/03 Distinct ARM and watchdog eligibility/")
 			(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
 			(title_block
-				(title "PB HR-V0 V3-P1.8 - 03")
+				(title "PB HR-V0 V3-P1.9 - 03")
 				(company "Project Button")
-				(rev "V3-P1.8")
-				(date "2026-08-07")
+				(rev "V3-P1.9")
+				(date "2026-08-08")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
 					(number "1")
@@ -205,10 +205,10 @@
 			(name "/04 Contactor coils, mirror contacts and EDM/")
 			(tstamps "/6cf27f97-627c-5512-ba58-751093298e6c/")
 			(title_block
-				(title "PB HR-V0 V3-P1.8 - 04")
+				(title "PB HR-V0 V3-P1.9 - 04")
 				(company "Project Button")
-				(rev "V3-P1.8")
-				(date "2026-08-07")
+				(rev "V3-P1.9")
+				(date "2026-08-08")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
 					(number "1")
@@ -253,10 +253,10 @@
 			(name "/05 Redundant actuator-power interruption/")
 			(tstamps "/db315f6f-1ed6-5bc9-bdf8-106d0286ccb4/")
 			(title_block
-				(title "PB HR-V0 V3-P1.8 - 05")
+				(title "PB HR-V0 V3-P1.9 - 05")
 				(company "Project Button")
-				(rev "V3-P1.8")
-				(date "2026-08-07")
+				(rev "V3-P1.9")
+				(date "2026-08-08")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
 					(number "1")
@@ -301,10 +301,10 @@
 			(name "/06 Protected actuator branches and central DYNAMIXEL star injection/")
 			(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
 			(title_block
-				(title "PB HR-V0 V3-P1.8 - 06")
+				(title "PB HR-V0 V3-P1.9 - 06")
 				(company "Project Button")
-				(rev "V3-P1.8")
-				(date "2026-08-07")
+				(rev "V3-P1.9")
+				(date "2026-08-08")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
 					(number "1")
@@ -349,10 +349,10 @@
 			(name "/07 Independent watchdog power, controller and drivers/")
 			(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
 			(title_block
-				(title "PB HR-V0 V3-P1.8 - 07")
+				(title "PB HR-V0 V3-P1.9 - 07")
 				(company "Project Button")
-				(rev "V3-P1.8")
-				(date "2026-08-07")
+				(rev "V3-P1.9")
+				(date "2026-08-08")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
 					(number "1")
@@ -397,10 +397,10 @@
 			(name "/08 Calculated dual-channel 24 V watchdog feedback/")
 			(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
 			(title_block
-				(title "PB HR-V0 V3-P1.8 - 08")
+				(title "PB HR-V0 V3-P1.9 - 08")
 				(company "Project Button")
-				(rev "V3-P1.8")
-				(date "2026-08-07")
+				(rev "V3-P1.9")
+				(date "2026-08-08")
 				(source "08_watchdog_feedback_interface.kicad_sch")
 				(comment
 					(number "1")
@@ -445,10 +445,10 @@
 			(name "/09 Compute, debug and control terminals/")
 			(tstamps "/f3a60727-2e66-5730-a829-00cc7c809e89/")
 			(title_block
-				(title "PB HR-V0 V3-P1.8 - 09")
+				(title "PB HR-V0 V3-P1.9 - 09")
 				(company "Project Button")
-				(rev "V3-P1.8")
-				(date "2026-08-07")
+				(rev "V3-P1.9")
+				(date "2026-08-08")
 				(source "09_compute_and_control_terminals.kicad_sch")
 				(comment
 					(number "1")
@@ -493,10 +493,10 @@
 			(name "/10 U2D2, actuator ports and bonding boundary/")
 			(tstamps "/11f6090f-9f69-5145-93e3-5ccb2d8899ac/")
 			(title_block
-				(title "PB HR-V0 V3-P1.8 - 10")
+				(title "PB HR-V0 V3-P1.9 - 10")
 				(company "Project Button")
-				(rev "V3-P1.8")
-				(date "2026-08-07")
+				(rev "V3-P1.9")
+				(date "2026-08-08")
 				(source "10_actuator_interfaces.kicad_sch")
 				(comment
 					(number "1")
@@ -541,10 +541,10 @@
 			(name "/11 Watchdog PCB external connectors/")
 			(tstamps "/6e16a5a8-d40c-518b-9320-2dd1b7122c9a/")
 			(title_block
-				(title "PB HR-V0 V3-P1.8 - 11")
+				(title "PB HR-V0 V3-P1.9 - 11")
 				(company "Project Button")
-				(rev "V3-P1.8")
-				(date "2026-08-07")
+				(rev "V3-P1.9")
+				(date "2026-08-08")
 				(source "11_watchdog_pcb_connectors.kicad_sch")
 				(comment
 					(number "1")
@@ -589,10 +589,10 @@
 			(name "/12 Watchdog PCB test access/")
 			(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
 			(title_block
-				(title "PB HR-V0 V3-P1.8 - 12")
+				(title "PB HR-V0 V3-P1.9 - 12")
 				(company "Project Button")
-				(rev "V3-P1.8")
-				(date "2026-08-07")
+				(rev "V3-P1.9")
+				(date "2026-08-08")
 				(source "12_watchdog_pcb_test_access.kicad_sch")
 				(comment
 					(number "1")
@@ -4358,41 +4358,40 @@
 		)
 		(comp
 			(ref "XT1")
-			(value "24 V control terminal block group")
-			(description "Exact terminal family, end covers, jumpers, markers, conductor range and torque open.")
+			(value "Phoenix PT 2,5 six-position terminal group: 5x 3209510 gray, 1x 3209523 blue, 1x 3030417 end cover, 2x 3022218 end brackets, 1x 0828734 marker sheet")
+			(datasheet "https://www.phoenixcontact.com/en-us/products/feed-through-terminal-block-pt-25-3209510")
+			(description "Exact six-position family and position-to-net allocation are frozen with no bridges. PT 2,5 item 3209510 and blue item 3209523 each provide two push-in connections and 5.2 mm width; D-ST 2,5 item 3030417 is the open-side end cover; two CLIPFIX 35 item 3022218 end brackets retain the group; UCT-TM 5 item 0828734 supplies 5.2 mm markers. Conductor order code, ferrule/direct-wire method, protection, current/temperature coordination, received compatibility, strip length, installed retention, marking and point-to-point evidence remain open.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - ORDER CODES AND POSITION TERMINALS FROZEN; CONDUCTOR/PROTECTION/PHYSICAL VERIFICATION REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Phoenix Contact current official product records for items 3209510, 3209523, 3030417, 3022218 and 0828734; rechecked 2026-08-08.")
 				(field
-					(name "Display") "24 V control terminal block group")
+					(name "Display") "Phoenix PT 2,5 six-position terminal group: 5x 3209510 gray, 1x 3209523 blue, 1x 3030417 end cover, 2x 3022218 end brackets, 1x 0828734 marker sheet")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/feed-through-terminal-block-pt-25-3209510")
 				(field
-					(name "Description") "Exact terminal family, end covers, jumpers, markers, conductor range and torque open.")
+					(name "Description") "Exact six-position family and position-to-net allocation are frozen with no bridges. PT 2,5 item 3209510 and blue item 3209523 each provide two push-in connections and 5.2 mm width; D-ST 2,5 item 3030417 is the open-side end cover; two CLIPFIX 35 item 3022218 end brackets retain the group; UCT-TM 5 item 0828734 supplies 5.2 mm markers. Conductor order code, ferrule/direct-wire method, protection, current/temperature coordination, received compatibility, strip length, installed retention, marking and point-to-point evidence remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "XT1")
-				(description "Exact terminal family, end covers, jumpers, markers, conductor range and torque open.")
+				(description "Exact six-position family and position-to-net allocation are frozen with no bridges. PT 2,5 item 3209510 and blue item 3209523 each provide two push-in connections and 5.2 mm width; D-ST 2,5 item 3030417 is the open-side end cover; two CLIPFIX 35 item 3022218 end brackets retain the group; UCT-TM 5 item 0828734 supplies 5.2 mm markers. Conductor order code, ferrule/direct-wire method, protection, current/temperature coordination, received compatibility, strip length, installed retention, marking and point-to-point evidence remain open.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED")
+				(value "PROPOSED - ORDER CODES AND POSITION TERMINALS FROZEN; CONDUCTOR/PROTECTION/PHYSICAL VERIFICATION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "")
+				(value "Phoenix Contact current official product records for items 3209510, 3209523, 3030417, 3022218 and 0828734; rechecked 2026-08-08.")
 			)
 			(property
 				(name "Display")
-				(value "24 V control terminal block group")
+				(value "Phoenix PT 2,5 six-position terminal group: 5x 3209510 gray, 1x 3209523 blue, 1x 3030417 end cover, 2x 3022218 end brackets, 1x 0828734 marker sheet")
 			)
 			(property
 				(name "Sheetname")
@@ -4412,22 +4411,22 @@
 					(name "A")
 					(pins
 						(pin
-							(num "TBD-2")
+							(num "XT1-02")
 						)
 						(pin
-							(num "TBD-1")
+							(num "XT1-01")
 						)
 						(pin
-							(num "TBD-6")
+							(num "XT1-06")
 						)
 						(pin
-							(num "TBD-5")
+							(num "XT1-05")
 						)
 						(pin
-							(num "TBD-4")
+							(num "XT1-04")
 						)
 						(pin
-							(num "TBD-3")
+							(num "XT1-03")
 						)
 					)
 				)
@@ -9398,56 +9397,55 @@
 		(libpart
 			(lib "PBV3")
 			(part "XT1")
-			(description "Exact terminal family, end covers, jumpers, markers, conductor range and torque open.")
+			(description "Exact six-position family and position-to-net allocation are frozen with no bridges. PT 2,5 item 3209510 and blue item 3209523 each provide two push-in connections and 5.2 mm width; D-ST 2,5 item 3030417 is the open-side end cover; two CLIPFIX 35 item 3022218 end brackets retain the group; UCT-TM 5 item 0828734 supplies 5.2 mm markers. Conductor order code, ferrule/direct-wire method, protection, current/temperature coordination, received compatibility, strip length, installed retention, marking and point-to-point evidence remain open.")
+			(docs "https://www.phoenixcontact.com/en-us/products/feed-through-terminal-block-pt-25-3209510")
 			(fields
 				(field
 					(name "Reference") "XT1")
 				(field
-					(name "Value") "24 V control terminal block group")
+					(name "Value") "Phoenix PT 2,5 six-position terminal group: 5x 3209510 gray, 1x 3209523 blue, 1x 3030417 end cover, 2x 3022218 end brackets, 1x 0828734 marker sheet")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet")
-				)
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/feed-through-terminal-block-pt-25-3209510")
 				(field
-					(name "Description") "Exact terminal family, end covers, jumpers, markers, conductor range and torque open.")
+					(name "Description") "Exact six-position family and position-to-net allocation are frozen with no bridges. PT 2,5 item 3209510 and blue item 3209523 each provide two push-in connections and 5.2 mm width; D-ST 2,5 item 3030417 is the open-side end cover; two CLIPFIX 35 item 3022218 end brackets retain the group; UCT-TM 5 item 0828734 supplies 5.2 mm markers. Conductor order code, ferrule/direct-wire method, protection, current/temperature coordination, received compatibility, strip length, installed retention, marking and point-to-point evidence remain open.")
 				(field
-					(name "Status") "SELECTION REQUIRED")
+					(name "Status") "PROPOSED - ORDER CODES AND POSITION TERMINALS FROZEN; CONDUCTOR/PROTECTION/PHYSICAL VERIFICATION REQUIRED")
 				(field
-					(name "Evidence")
-				)
+					(name "Evidence") "Phoenix Contact current official product records for items 3209510, 3209523, 3030417, 3022218 and 0828734; rechecked 2026-08-08.")
 				(field
-					(name "Display") "24 V control terminal block group")
+					(name "Display") "Phoenix PT 2,5 six-position terminal group: 5x 3209510 gray, 1x 3209523 blue, 1x 3030417 end cover, 2x 3022218 end brackets, 1x 0828734 marker sheet")
 			)
 			(pins
 				(pin
-					(num "TBD-1")
+					(num "XT1-01")
 					(name "+24V")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-2")
+					(num "XT1-02")
 					(name "0V")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-3")
+					(num "XT1-03")
 					(name "SR1_STATUS")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-4")
+					(num "XT1-04")
 					(name "SRA1_STATUS")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-5")
+					(num "XT1-05")
 					(name "K1_STATUS")
 					(type "passive")
 				)
 				(pin
-					(num "TBD-6")
+					(num "XT1-06")
 					(name "K2_STATUS")
 					(type "passive")
 				)
@@ -10110,8 +10108,8 @@
 			)
 			(node
 				(ref "XT1")
-				(pin "TBD-5")
-				(pinfunction "K1_STATUS_TBD-5")
+				(pin "XT1-05")
+				(pinfunction "K1_STATUS_XT1-05")
 				(pintype "passive")
 			)
 		)
@@ -10178,8 +10176,8 @@
 			)
 			(node
 				(ref "XT1")
-				(pin "TBD-6")
-				(pinfunction "K2_STATUS_TBD-6")
+				(pin "XT1-06")
+				(pinfunction "K2_STATUS_XT1-06")
 				(pintype "passive")
 			)
 		)
@@ -10487,8 +10485,8 @@
 			)
 			(node
 				(ref "XT1")
-				(pin "TBD-2")
-				(pinfunction "0V_TBD-2")
+				(pin "XT1-02")
+				(pinfunction "0V_XT1-02")
 				(pintype "passive")
 			)
 		)
@@ -10618,8 +10616,8 @@
 			)
 			(node
 				(ref "XT1")
-				(pin "TBD-1")
-				(pinfunction "+24V_TBD-1")
+				(pin "XT1-01")
+				(pinfunction "+24V_XT1-01")
 				(pintype "passive")
 			)
 		)
@@ -10749,8 +10747,8 @@
 			)
 			(node
 				(ref "XT1")
-				(pin "TBD-3")
-				(pinfunction "SR1_STATUS_TBD-3")
+				(pin "XT1-03")
+				(pinfunction "SR1_STATUS_XT1-03")
 				(pintype "passive")
 			)
 		)
@@ -10891,8 +10889,8 @@
 			)
 			(node
 				(ref "XT1")
-				(pin "TBD-4")
-				(pinfunction "SRA1_STATUS_TBD-4")
+				(pin "XT1-04")
+				(pinfunction "SRA1_STATUS_XT1-04")
 				(pintype "passive")
 			)
 		)

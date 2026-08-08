@@ -71,7 +71,7 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P1.8", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P1.9", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
@@ -137,7 +137,7 @@ def main() -> int:
         for row in connector_rows
     )
     require(actual_connector == expected_connector, "connector schedule differs from generated model", failures)
-    require(sum(row["terminal"].startswith("TBD-") for row in connector_rows) == 24,
+    require(sum(row["terminal"].startswith("TBD-") for row in connector_rows) == 18,
             "controlled TBD-terminal count changed; review and update checker intentionally", failures)
 
     expected_net_counts = Counter(pin.net for _, _, pin in all_pins)
@@ -222,6 +222,18 @@ def main() -> int:
     }
     require(actual_unresolved == expected_unresolved, "unresolved-selection register differs from model", failures)
     require(len(unresolved_rows) == 63, f"expected 63 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
+
+    require(pin_map(components, "XT1") == {
+        "XT1-01": "SAFETY_24V", "XT1-02": "SAFETY_0V", "XT1-03": "SR1_STATUS",
+        "XT1-04": "SRA1_STATUS", "XT1-05": "K1_STATUS", "XT1-06": "K2_STATUS",
+    }, "XT1 exact position-to-net allocation changed", failures)
+    require("3209510" in components["XT1"].value and "3209523" in components["XT1"].value and
+            "3030417" in components["XT1"].value and "3022218" in components["XT1"].value and
+            "0828734" in components["XT1"].value,
+            "XT1 exact terminal/accessory identities changed", failures)
+    require("SELECTION REQUIRED" not in components["XT1"].status and
+            "PHYSICAL VERIFICATION REQUIRED" in components["XT1"].status,
+            "XT1 catalog identity is either reopened or falsely physically released", failures)
 
     require(pin_map(components, "S0") == {
         "R-1": "SR1_S11", "R-2": "WD1_SAFETY_IN",

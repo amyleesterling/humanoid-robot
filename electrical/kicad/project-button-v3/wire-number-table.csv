@@ -215,12 +215,12 @@ W9004,09_compute_and_control_terminals.kicad_sch,PI1,USB-U2D2,USB TO U2D2,PI_USB
 W9005,09_compute_and_control_terminals.kicad_sch,JDBG1,TBD-SWDIO,SWDIO,WD_SWDIO
 W9006,09_compute_and_control_terminals.kicad_sch,JDBG1,TBD-SWCLK,SWCLK,WD_SWCLK
 W9007,09_compute_and_control_terminals.kicad_sch,JDBG1,TBD-GND,GND,SAFETY_0V
-W9008,09_compute_and_control_terminals.kicad_sch,XT1,TBD-1,+24V,SAFETY_24V
-W9009,09_compute_and_control_terminals.kicad_sch,XT1,TBD-2,0V,SAFETY_0V
-W9010,09_compute_and_control_terminals.kicad_sch,XT1,TBD-3,SR1 STATUS,SR1_STATUS
-W9011,09_compute_and_control_terminals.kicad_sch,XT1,TBD-4,SRA1 STATUS,SRA1_STATUS
-W9012,09_compute_and_control_terminals.kicad_sch,XT1,TBD-5,K1 STATUS,K1_STATUS
-W9013,09_compute_and_control_terminals.kicad_sch,XT1,TBD-6,K2 STATUS,K2_STATUS
+W9008,09_compute_and_control_terminals.kicad_sch,XT1,XT1-01,+24V,SAFETY_24V
+W9009,09_compute_and_control_terminals.kicad_sch,XT1,XT1-02,0V,SAFETY_0V
+W9010,09_compute_and_control_terminals.kicad_sch,XT1,XT1-03,SR1 STATUS,SR1_STATUS
+W9011,09_compute_and_control_terminals.kicad_sch,XT1,XT1-04,SRA1 STATUS,SRA1_STATUS
+W9012,09_compute_and_control_terminals.kicad_sch,XT1,XT1-05,K1 STATUS,K1_STATUS
+W9013,09_compute_and_control_terminals.kicad_sch,XT1,XT1-06,K2 STATUS,K2_STATUS
 W10001,10_actuator_interfaces.kicad_sch,U1,USB,USB TO PI,PI_USB_U2D2
 W10002,10_actuator_interfaces.kicad_sch,U1,TTL-1,GND,ACT_0V_PE_BONDED
 W10003,10_actuator_interfaces.kicad_sch,U1,TTL-2,VDD OMITTED,INTENTIONALLY_UNUSED_U2D2_VDD
