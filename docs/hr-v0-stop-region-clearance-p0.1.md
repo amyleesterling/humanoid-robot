@@ -40,7 +40,7 @@ The package therefore leaves all three potentially acceptable topologies `CANDID
 2. J1/J2 fixed and moving axial face locations;
 3. both-side swept-volume scans across the candidate regions;
 4. manufacturer-supported and physically measured attachment features;
-5. unpowered zero/repeatability/backlash evidence;
+5. external mechanical angle-datum, repeatability and unpowered-backlash evidence; encoder calibration remains later separately authorized powered work;
 6. installed cable, connector, strain-relief and guard sweeps;
 7. accepted load path, effective/reflected inertia and stop contact radius;
 8. exact bumper/retention evidence; and

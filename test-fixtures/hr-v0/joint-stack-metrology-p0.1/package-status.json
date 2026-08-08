@@ -1,0 +1,15 @@
+{
+  "revision": "HR-V0-JOINT-MET-P0.1",
+  "parent": "HR-V0-STOP-REGION-P0.1 / HR-V0-MECH-EVAL-P0.1",
+  "article_count": 6,
+  "instrument_count": 6,
+  "hold_count": 8,
+  "operation_count": 18,
+  "hsi_count": 20,
+  "hsi_closed": 0,
+  "purchase_authorized": false,
+  "temporary_assembly_authorized": false,
+  "power_or_motion_authorized": false,
+  "interpretation": "Executable staged evidence plan only. No physical article, measurement or accepted result exists.",
+  "warning": "PRELIMINARY - UNPOWERED METROLOGY ONLY - NO PURCHASE, ASSEMBLY-USE, MOTION OR ENERGIZATION RELEASE"
+}

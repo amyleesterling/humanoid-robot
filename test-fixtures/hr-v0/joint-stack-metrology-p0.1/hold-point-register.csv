@@ -1,0 +1,9 @@
+hold_id,before_operation,condition,required_signoff,failure_action,state
+JSM-HP-001,JSM-OP-002,Separate program-owner purchase authorization exists for each exact evaluation line,Program owner,Do not order; retain NOT RECEIVED state,OPEN
+JSM-HP-002,JSM-OP-004,"Every article is received, quarantined, photographed and reconciled to its exact SKU and kit inventory",Receiving inspector,Quarantine and open nonconformance; no fit or assembly,OPEN
+JSM-HP-003,JSM-OP-006,"Instrument identities, calibrations, uncertainty methods and provisional capability are accepted",Qualified mechanical/metrology reviewer,Stop measurement; do not infer missing values,OPEN
+JSM-HP-004,JSM-OP-008,A non-damaging fixture/restraint method and article support plan are reviewed,Qualified mechanical reviewer,Do not articulate or fixture the joint,OPEN
+JSM-HP-005,JSM-OP-009,"Exact screw identity/length, mounting depth, spacer placement, temporary torque, reuse and locking prohibition are released in writing",Qualified mechanical reviewer,No screw enters an actuator mounting point; loose-part metrology only,OPEN
+JSM-HP-006,JSM-OP-009,"No power source, U2D2, actuator cable, battery or energized instrument connection is present in the controlled area",Test conductor and independent witness,"Stop, remove source-capable equipment and re-inspect",OPEN
+JSM-HP-007,JSM-OP-011,"J1 and J2 serials, frame kit lots, temporary hardware allocation, fixture transform and source commit are frozen in one immutable manifest",Configuration owner,Do not record comparative geometry,OPEN
+JSM-HP-008,JSM-OP-017,"Raw data, point clouds, photographs, uncertainty records and nonconformances are complete",Test conductor and independent witness,Keep article assembled and quarantined; do not release or discard evidence,OPEN

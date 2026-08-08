@@ -1,0 +1,21 @@
+hsi,r84_route,operation,closure_possible_in_r84,remaining_dependency,state
+HSI-001,Received actuator identity,JSM-OP-002/003/010,YES after purchase/receipt,Program-owner approval and physical receipt,OPEN - NOT EXECUTED
+HSI-002,Received frame/idler identity,JSM-OP-002/003/004/010,YES after purchase/receipt,Program-owner approval and physical receipt,OPEN - NOT EXECUTED
+HSI-003,J1 moving axial faces,JSM-OP-007/009/011,YES after holds,Received stack and qualified temporary-assembly method,OPEN - NOT EXECUTED
+HSI-004,J1 fixed axial faces,JSM-OP-007/009/011,YES after holds,Received stack and qualified temporary-assembly method,OPEN - NOT EXECUTED
+HSI-005,J2 moving axial faces,JSM-OP-007/009/011,YES after holds,Received stack and qualified temporary-assembly method,OPEN - NOT EXECUTED
+HSI-006,J2 fixed axial faces,JSM-OP-007/009/011,YES after holds,Received stack and qualified temporary-assembly method,OPEN - NOT EXECUTED
+HSI-007,J1 side envelope,JSM-OP-008/013,SCREENING after holds,"Final configured fasteners, cable, guard and service tooling",OPEN - NOT EXECUTED
+HSI-008,J2 side envelope,JSM-OP-008/013,SCREENING after holds,"Final configured fasteners, cable, guard and service tooling",OPEN - NOT EXECUTED
+HSI-009,J1 fixed attachments,JSM-OP-007/014,GEOMETRY ONLY,Manufacturer-supported use and accepted load path,OPEN - NOT EXECUTED
+HSI-010,J1 moving attachments,JSM-OP-007/014,GEOMETRY ONLY,Manufacturer-supported use and accepted load path,OPEN - NOT EXECUTED
+HSI-011,J2 fixed attachments,JSM-OP-007/014,GEOMETRY ONLY,Manufacturer-supported use and accepted load path,OPEN - NOT EXECUTED
+HSI-012,J2 moving attachments,JSM-OP-007/014,GEOMETRY ONLY,Manufacturer-supported use and accepted load path,OPEN - NOT EXECUTED
+HSI-013,J1 external datum/backlash,JSM-OP-012,YES after holds,Encoder calibration remains later powered work,OPEN - NOT EXECUTED
+HSI-014,J2 external datum/backlash,JSM-OP-012,YES after holds,Encoder calibration remains later powered work,OPEN - NOT EXECUTED
+HSI-015,Cable/connector/strain relief,JSM-OP-016,NO,Configured received harness and later scan,OPEN - NOT EXECUTED
+HSI-016,Guard/access sweep,JSM-OP-016,NO,Received/released guard and later inspection,OPEN - NOT EXECUTED
+HSI-017,Stop radius/load path,JSM-OP-015/016,MASS INPUT ONLY,Selected topology and qualified structural model,OPEN - NOT EXECUTED
+HSI-018,Effective/reflected inertia,JSM-OP-015/016,MASS INPUT ONLY,Instrumented dynamic characterization,OPEN - NOT EXECUTED
+HSI-019,Bumper/retention,JSM-OP-016,NO,Exact selection and manufacturer evidence,OPEN - NOT EXECUTED
+HSI-020,Supplier DFM/FAI,JSM-OP-016,NO,"Selected topology, supplier and released drawings",OPEN - NOT EXECUTED

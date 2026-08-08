@@ -33,7 +33,8 @@ The subset contains no power source, U2D2, energized test article, custom metal,
 3. Execute `INSPECT-MECH-005` for every H101/S102 frame item and fastener. Do not assume the included fasteners are allocated to the P0.7 project interfaces.
 4. Execute the R72 gripper receiving, CAD-acquisition, and datum-metrology forms for RM-X52/XM430 without power.
 5. Correlate received actuator/frame geometry to the frozen manufacturer STEP sources and record model-to-article residuals and fit-coupon results.
-6. Keep every article quarantined until its item-specific nonconformances and qualified dispositions close.
+6. For the two XM540/H101/S102 joint allocations, execute the staged `HR-V0-JOINT-MET-P0.1` traveler. No threaded temporary stack is permitted until its screw-length, mounting-depth, spacer, fixture and temporary-torque hold points are signed.
+7. Keep every article quarantined until its item-specific nonconformances and qualified dispositions close.
 
 ## Release boundary
 
