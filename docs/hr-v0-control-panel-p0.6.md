@@ -42,7 +42,7 @@ The compute heartbeat, U2D2 path and every retention candidate retain **zero fun
 `backplate-layout.csv` controls 26 planning rectangles. All lie inside the nominal 533.4 x 685.8 mm inner-panel boundary. This is a two-dimensional catalog-envelope screen only:
 
 - the dedicated compute column is separated from the inherited device area by `WD2`;
-- `DR4` is a 100 mm planning segment of the current Phoenix Contact `NS 35/7.5` rail candidate;
+- `DR4` is a 100 mm planning segment of the R123 exact held Phoenix Contact `1207648` unperforated `NS 35/7.5` rail candidate; its end retention remains `SELECTION REQUIRED`;
 - CCASE1, the U2D2 retention base and two cable-loop bases have separate envelopes;
 - 323.8 x 142.4 mm of added lower area remains visibly unallocated; and
 - no hole, cut length, fastener, conductor, cable entry or cable route is released.
