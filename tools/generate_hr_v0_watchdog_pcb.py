@@ -17,6 +17,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from hr_v0_watchdog_footprint_metadata import apply_metadata
+
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
@@ -425,7 +427,7 @@ def main() -> int:
     title = board.GetTitleBlock()
     title.SetTitle("Project Button HR-V0 ordinary watchdog PCB routed/test-access candidate")
     title.SetDate("2026-08-09")
-    title.SetRevision("PCB-P0.7 / Electrical V3-P1.13")
+    title.SetRevision("PCB-P0.8 / Electrical V3-P1.14")
     title.SetCompany("Project Button")
     title.SetComment(0, WARNING)
     title.SetComment(1, "ROUTED/TEST-ACCESS CANDIDATE - NO GERBER RELEASE")
@@ -458,6 +460,7 @@ def main() -> int:
             raise RuntimeError(f"cannot load {comp.footprint} for {ref}")
         footprint.SetReference(ref)
         footprint.SetValue(comp.value)
+        apply_metadata(footprint)
         x, y, rotation = PLACEMENTS[ref]
         footprint.SetPosition(pcbnew.VECTOR2I_MM(x, y))
         footprint.SetOrientationDegrees(rotation)

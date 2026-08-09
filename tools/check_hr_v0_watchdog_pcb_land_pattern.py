@@ -50,7 +50,7 @@ def main() -> int:
 
     board_text = BOARD.read_text(encoding="utf-8-sig")
     for token in (
-        'rev "PCB-P0.7 / Electrical V3-P1.13"',
+        'rev "PCB-P0.8 / Electrical V3-P1.14"',
         "PCB-P0.7 - HARWIN LAND SHAPE CORRECTION - NO SAFETY CREDIT",
         "TI_PW0016A_Example_Land", "TI_DBQ0016A_Example_Land",
         "VO618A_Option7_SMD", "Murata_GRM21_Reflow_Nominal",
@@ -80,7 +80,7 @@ def main() -> int:
         return 1
     print("HR-V0 watchdog PCB land-pattern audit validation: PASS")
     print("46/46 board references covered; 21 corrected references / 86 source lands; every reference retains an open release hold")
-    print("R89 land set retained in current PCB-P0.7; immutable PCB-P0.5 CAM record preserved and superseded for current review")
+    print("R89/R132 land set retained in current metadata-only PCB-P0.8; immutable PCB-P0.5 CAM record preserved and superseded for current review")
     print(WARNING)
     return 0
 

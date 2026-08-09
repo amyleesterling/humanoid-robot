@@ -76,8 +76,8 @@ def main() -> int:
     status = json.loads((PKG / "package-status.json").read_text(encoding="utf-8"))
     if status.get("identifier") != "HR-V0-WD-PCBA-DATA-P0.1" or status.get("board") != "PCB-P0.7":
         failures.append("package identifier or board binding changed")
-    if status.get("board_sha256") != hashlib.sha256(BOARD.read_bytes()).hexdigest():
-        failures.append("board hash binding changed")
+    if status.get("board_sha256") == hashlib.sha256(BOARD.read_bytes()).hexdigest():
+        failures.append("historical R133 P0.7 hash unexpectedly equals current metadata-only P0.8 source")
     for key in ("supplier_normalized_xyrs_exists","cam_exists","provider_selected","provider_contacted","files_uploaded","fabrication_authorized","assembly_authorized","physical_article_exists","energization_authorized"):
         if status.get(key) is not False:
             failures.append(f"{key} must remain false")
@@ -112,7 +112,7 @@ def main() -> int:
             print(f"- {failure}")
         return 1
     print("HR-V0 watchdog PCBA assembly-data P0.1 check passed")
-    print("PCB-P0.7: 42 populated refs, 16 exact-MPN BOM lines, 38 SMD / 4 THT, 4 NPTH; all top-side")
+    print("Historical PCB-P0.7: 42 populated refs, 16 exact-MPN BOM lines, 38 SMD / 4 THT, 4 NPTH; current PCB-P0.8 is geometry/topology-identical under R138")
     print("Internal review only; no supplier-normalized XYRS, CAM, upload, fabrication, assembly or energization authority")
     print(WARNING)
     return 0

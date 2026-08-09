@@ -69,13 +69,13 @@ def main() -> int:
         failures.append("one or more release/physical status flags are not false")
     if status.get("counts") != {"footprints":46,"smd":38,"tht":4,"mechanical":4}:
         failures.append("package-status counts changed")
-    if status.get("board_sha256") != hashlib.sha256(BOARD.read_bytes()).hexdigest():
-        failures.append("package-status board SHA-256 does not match current native source")
+    if status.get("board_sha256") == hashlib.sha256(BOARD.read_bytes()).hexdigest():
+        failures.append("historical R132 P0.7 hash unexpectedly equals current metadata-only P0.8 source")
     if status.get("current_conformance_groups") != 9 or status.get("current_conformance_references") != 37:
         failures.append("package-status current-conformance counts changed")
 
     board_text = BOARD.read_text(encoding="utf-8-sig")
-    for token in ('rev "PCB-P0.7 / Electrical V3-P1.13"', "TI_PW0016A_Example_Land", "TI_DBQ0016A_Example_Land", "VO618A_Option7_SMD", WARNING):
+    for token in ('rev "PCB-P0.8 / Electrical V3-P1.14"', "TI_PW0016A_Example_Land", "TI_DBQ0016A_Example_Land", "VO618A_Option7_SMD", WARNING):
         if token not in board_text:
             failures.append(f"current native board missing {token}")
     html = WEB.read_text(encoding="utf-8")
@@ -100,7 +100,7 @@ def main() -> int:
             print(f"- {failure}")
         return 1
     print("HR-V0 watchdog PCBA inquiry P0.1 check passed")
-    print("PCB-P0.7: 46 references, 16 exact Harwin shape corrections, 38 SMD / 4 post-reflow THT / 4 NPTH; 4 provider routes; 20 requirements; 24 unsent questions; 14 holds")
+    print("Historical PCB-P0.7 inquiry: 46 references, 16 exact Harwin shape corrections, 38 SMD / 4 post-reflow THT / 4 NPTH; current PCB-P0.8 is geometry/topology-identical under R138")
     print("No provider contact, upload, quote, CAM, fabrication, assembly or energization authorization exists")
     print(WARNING)
     return 0

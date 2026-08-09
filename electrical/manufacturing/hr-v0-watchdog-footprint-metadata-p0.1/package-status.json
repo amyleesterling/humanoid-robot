@@ -1,0 +1,16 @@
+{
+  "identifier": "HR-V0-WD-IC-META-P0.1",
+  "round": "R138",
+  "board": "PCB-P0.8 / Electrical V3-P1.14",
+  "critical_references": 4,
+  "native_fields": 36,
+  "geometry_topology_equal_to_p0_7": true,
+  "copper_changed": false,
+  "placement_changed": false,
+  "nets_changed": false,
+  "assembly_process_selected": false,
+  "fabrication_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
+}
