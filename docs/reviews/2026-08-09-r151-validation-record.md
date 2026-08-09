@@ -25,7 +25,7 @@ Product: `HR-V0-DXL-STAR-MFG-P0.1`
 - Computed minimum functional text is 14 px, body text is at least 16 px, and responsive source uses `clamp()`, auto-fit cards and horizontal table containment. Narrow layout behavior was source-inspected; it is not claimed as a physical mobile-device test.
 - Ninety-eight standard engineering checkers passed in the controlled CAD environment.
 - Seven native KiCad checkers passed under KiCad 10.0.5 Python, including both DXL-star source and manufacturing-package checkers.
-- The release manifest was regenerated over 2,132 package files and passed its dedicated checker in the working candidate. A clean committed-state recheck is required before push. Total regression is 106 engineering checkers: 98 standard, seven native KiCad and one release-manifest checker.
+- The release manifest was regenerated over 2,132 package files and passed its dedicated checker in the working candidate. The clean committed-state manifest recheck also passed before push. Total regression is 106 engineering checkers: 98 standard, seven native KiCad and one release-manifest checker.
 
 ## Disposition
 
