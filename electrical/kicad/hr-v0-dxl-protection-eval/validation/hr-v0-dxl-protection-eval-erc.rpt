@@ -1,0 +1,20 @@
+ERC report (2026-08-09T13:39:17, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+
+***** Sheet /01 Branch 1 TPS259461L evaluation circuit/
+
+***** Sheet /02 Branch 2 TPS259461L evaluation circuit/
+
+***** Sheet /03 Branch 3 TPS259461L evaluation circuit/
+
+***** Sheet /04 Source and regenerative-clamp evaluation boundary/
+
+ ** ERC messages: 0  Errors 0  Warnings 0
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

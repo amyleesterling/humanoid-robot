@@ -93,6 +93,7 @@ def main() -> None:
         "HR-V0-DXL-INJECT-BIND-P0.1",
         "HR-V0-DXL-HARNESS-ALLOC-P0.1",
         "HR-V0-DXL-CURRENT-ENV-P0.1",
+        "HR-V0-DXL-PROT-EVAL-P0.1",
         "HR-V0-CP-P0.6",
         "HR-V0-COMPUTE-INSTALL-P0.1",
         "HR-V0-U2D2-USB-P0.1",

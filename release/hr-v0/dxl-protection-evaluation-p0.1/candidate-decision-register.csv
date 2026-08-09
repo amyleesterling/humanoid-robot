@@ -1,0 +1,6 @@
+decision_id,candidate,disposition,reason,remaining_boundary
+DEC-001,TPS259461LRPWR,RETAIN AS EXACT EVALUATION CANDIDATE,Guaranteed forward threshold candidates can remain below the 3 A connector basis,Reverse current is not limited; PCB/thermal/startup/short-circuit evidence absent
+DEC-002,TPS25947 true reverse-current-blocking family,REJECT FOR CURRENT REGENERATIVE PATH,Always-on reverse blocking would isolate returned energy at the actuator side,Could be reconsidered only with a validated local energy sink and overvoltage proof
+DEC-003,Pololu item 3771,RETAIN AS EXACT SHORT-PULSE EVALUATION CANDIDATE,13.2 V ±3% is below the 14.8 V actuator maximum and intended for motor-regeneration spikes,"Pulse energy/duration, simultaneous axes, mounting, ventilation and failure behavior unproved"
+DEC-004,existing fuse-only path,REJECT AS COMPLETE CONNECTOR-OVERLOAD CONTROL,Time-current clearing does not set the intended operating current envelope,Fuses remain required for fault coordination after source/fault evidence
+DEC-005,robot release baseline,NO CHANGE,"Candidate circuit has no PCB, passive MPNs, physical data or qualified acceptance",Keep external current evidence SELECTION REQUIRED and all work-authority flags false

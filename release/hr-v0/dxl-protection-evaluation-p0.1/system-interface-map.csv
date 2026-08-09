@@ -1,0 +1,9 @@
+interface_id,from,to,net_or_mapping,status
+IF-001,F1 output,JIN1.1,B1_FUSED_IN,candidate inserted boundary; not current V3 release
+IF-002,JOUT1.1,DXL-STAR JP1.1,B1_LIMITED_OUT to J1_VDD,candidate harness/board integration required
+IF-003,F2 output,JIN2.1,B2_FUSED_IN,candidate inserted boundary; not current V3 release
+IF-004,JOUT2.1,DXL-STAR JP2.1,B2_LIMITED_OUT to J2_VDD,candidate harness/board integration required
+IF-005,F3 output,JIN3.1,B3_FUSED_IN,candidate inserted boundary; not current V3 release
+IF-006,JOUT3.1,DXL-STAR JP3.1,B3_LIMITED_OUT to J3_VDD,candidate harness/board integration required
+IF-007,SH1.+,post-K2 ACT_12V_BUS,ACT_12V_BUS,parallel short-pulse clamp candidate
+IF-008,all returns and SH1.-,ACT_0V_PE_BONDED,ACT_0V_PE_BONDED,single controlled return net; physical star/bond proof remains open

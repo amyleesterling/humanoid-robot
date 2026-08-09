@@ -1,0 +1,48 @@
+reference,value,quantity,status,evidence
+JIN1,JST B2P-VH J1 SHOULDER fused input boundary,1,EXACT FAMILY CANDIDATE - HARNESS/CONTACT SELECTION REQUIRED,JST VH family application remains held; this evaluation schematic does not release a harness.
+U1,TI TPS259461LRPWR latch-off bidirectional-on-state eFuse,1,EXACT EVALUATION CANDIDATE - NOT SELECTED FOR ROBOT,"TI product page active and datasheet SLVSGA8B, April 2022; rechecked 2026-08-09."
+U1G,U1 pin 8 GND cross-reference,0,CONTACT CROSS-REFERENCE - SAME DEVICE,Split graphical unit preserves the exact pin while preventing adjacent global-label ambiguity.
+JOUT1,JST B2P-VH J1 SHOULDER limited output boundary,1,EXACT FAMILY CANDIDATE - DXL-STAR INTERFACE HOLD,JST VH family evidence only; no cable or contact application release.
+RILM1,1.65 kOhm 1%,1,VALUE DERIVED - EXACT MPN SELECTION REQUIRED,TI equation and guaranteed threshold rows; no passive order code inferred.
+RUVT1,365 kOhm 1% UVLO upper,1,VALUE DERIVED - EXACT MPN SELECTION REQUIRED,Derived with TI VUVLO limits; exact resistor selection remains open.
+RUVB1,49.9 kOhm 1% UVLO lower,1,VALUE DERIVED - EXACT MPN SELECTION REQUIRED,Derived with TI VUVLO limits; exact resistor selection remains open.
+ROVT1,470 kOhm 1% OVLO upper,1,TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED,"TI design example, not project application approval."
+ROVB1,44.2 kOhm 1% OVLO lower,1,TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED,"TI design example, not project application approval."
+CDV1,2.2 nF dVdt candidate,1,VALUE CANDIDATE - EXACT MPN SELECTION REQUIRED,Value appears in TI application example; no project suitability inferred.
+CIN1,0.1 uF minimum 25 V X7R input bypass candidate,1,REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED,TI recommends 0.1 uF or greater at IN; exact component not inferred.
+COUT1,1.0 uF minimum 25 V X7R output bypass candidate,1,REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED,TI recommends 1 uF or greater at OUT for inductive-load transients; exact component not inferred.
+TPILM1,Harwin S1751-46R ILM test point,1,EXACT TEST-POINT CANDIDATE - CAPACITIVE-LOADING HOLD,Existing controlled Harwin test-point identity; bench probe loading remains open.
+TPFLT1,Harwin S1751-46R FLT diagnostic test point,1,EXACT TEST-POINT CANDIDATE - NO INSTALLED PULLUP,No safety or motion credit.
+JIN2,JST B2P-VH J2 ELBOW fused input boundary,1,EXACT FAMILY CANDIDATE - HARNESS/CONTACT SELECTION REQUIRED,JST VH family application remains held; this evaluation schematic does not release a harness.
+U2,TI TPS259461LRPWR latch-off bidirectional-on-state eFuse,1,EXACT EVALUATION CANDIDATE - NOT SELECTED FOR ROBOT,"TI product page active and datasheet SLVSGA8B, April 2022; rechecked 2026-08-09."
+U2G,U2 pin 8 GND cross-reference,0,CONTACT CROSS-REFERENCE - SAME DEVICE,Split graphical unit preserves the exact pin while preventing adjacent global-label ambiguity.
+JOUT2,JST B2P-VH J2 ELBOW limited output boundary,1,EXACT FAMILY CANDIDATE - DXL-STAR INTERFACE HOLD,JST VH family evidence only; no cable or contact application release.
+RILM2,1.65 kOhm 1%,1,VALUE DERIVED - EXACT MPN SELECTION REQUIRED,TI equation and guaranteed threshold rows; no passive order code inferred.
+RUVT2,365 kOhm 1% UVLO upper,1,VALUE DERIVED - EXACT MPN SELECTION REQUIRED,Derived with TI VUVLO limits; exact resistor selection remains open.
+RUVB2,49.9 kOhm 1% UVLO lower,1,VALUE DERIVED - EXACT MPN SELECTION REQUIRED,Derived with TI VUVLO limits; exact resistor selection remains open.
+ROVT2,470 kOhm 1% OVLO upper,1,TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED,"TI design example, not project application approval."
+ROVB2,44.2 kOhm 1% OVLO lower,1,TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED,"TI design example, not project application approval."
+CDV2,2.2 nF dVdt candidate,1,VALUE CANDIDATE - EXACT MPN SELECTION REQUIRED,Value appears in TI application example; no project suitability inferred.
+CIN2,0.1 uF minimum 25 V X7R input bypass candidate,1,REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED,TI recommends 0.1 uF or greater at IN; exact component not inferred.
+COUT2,1.0 uF minimum 25 V X7R output bypass candidate,1,REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED,TI recommends 1 uF or greater at OUT for inductive-load transients; exact component not inferred.
+TPILM2,Harwin S1751-46R ILM test point,1,EXACT TEST-POINT CANDIDATE - CAPACITIVE-LOADING HOLD,Existing controlled Harwin test-point identity; bench probe loading remains open.
+TPFLT2,Harwin S1751-46R FLT diagnostic test point,1,EXACT TEST-POINT CANDIDATE - NO INSTALLED PULLUP,No safety or motion credit.
+JIN3,JST B2P-VH G1 GRIPPER fused input boundary,1,EXACT FAMILY CANDIDATE - HARNESS/CONTACT SELECTION REQUIRED,JST VH family application remains held; this evaluation schematic does not release a harness.
+U3,TI TPS259461LRPWR latch-off bidirectional-on-state eFuse,1,EXACT EVALUATION CANDIDATE - NOT SELECTED FOR ROBOT,"TI product page active and datasheet SLVSGA8B, April 2022; rechecked 2026-08-09."
+U3G,U3 pin 8 GND cross-reference,0,CONTACT CROSS-REFERENCE - SAME DEVICE,Split graphical unit preserves the exact pin while preventing adjacent global-label ambiguity.
+JOUT3,JST B2P-VH G1 GRIPPER limited output boundary,1,EXACT FAMILY CANDIDATE - DXL-STAR INTERFACE HOLD,JST VH family evidence only; no cable or contact application release.
+RILM3,3.32 kOhm 1%,1,VALUE DERIVED - EXACT MPN SELECTION REQUIRED,TI equation and guaranteed threshold rows; no passive order code inferred.
+RUVT3,365 kOhm 1% UVLO upper,1,VALUE DERIVED - EXACT MPN SELECTION REQUIRED,Derived with TI VUVLO limits; exact resistor selection remains open.
+RUVB3,49.9 kOhm 1% UVLO lower,1,VALUE DERIVED - EXACT MPN SELECTION REQUIRED,Derived with TI VUVLO limits; exact resistor selection remains open.
+ROVT3,470 kOhm 1% OVLO upper,1,TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED,"TI design example, not project application approval."
+ROVB3,44.2 kOhm 1% OVLO lower,1,TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED,"TI design example, not project application approval."
+CDV3,2.2 nF dVdt candidate,1,VALUE CANDIDATE - EXACT MPN SELECTION REQUIRED,Value appears in TI application example; no project suitability inferred.
+CIN3,0.1 uF minimum 25 V X7R input bypass candidate,1,REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED,TI recommends 0.1 uF or greater at IN; exact component not inferred.
+COUT3,1.0 uF minimum 25 V X7R output bypass candidate,1,REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED,TI recommends 1 uF or greater at OUT for inductive-load transients; exact component not inferred.
+TPILM3,Harwin S1751-46R ILM test point,1,EXACT TEST-POINT CANDIDATE - CAPACITIVE-LOADING HOLD,Existing controlled Harwin test-point identity; bench probe loading remains open.
+TPFLT3,Harwin S1751-46R FLT diagnostic test point,1,EXACT TEST-POINT CANDIDATE - NO INSTALLED PULLUP,No safety or motion credit.
+SRC1,Mean Well GST280A12-C6P source boundary,1,EXACT SOURCE CANDIDATE - REGENERATION APPLICATION HOLD,GST280A-SPEC 2025-03-28; final equipment and regeneration behavior remain open.
+KCHAIN1,K1/K2 redundant interruption output boundary,1,SYSTEM BOUNDARY - CONTACT APPLICATION HOLD,Current V3-P1.14 boundary; loaded interruption and regeneration remain open.
+SH1,Pololu item 3771 13.2 V 1.50 Ohm 15 W shunt regulator,1,EXACT EVALUATION CANDIDATE - SHORT PULSES ONLY,"Pololu item 3771 active/preferred page accessed 2026-08-09; fixed setpoint ±3%, pulse application only."
+TPBUS1,Bus-voltage measurement point - SELECTION REQUIRED,1,SELECTION REQUIRED,
+TPRET1,Return measurement point - SELECTION REQUIRED,1,SELECTION REQUIRED,

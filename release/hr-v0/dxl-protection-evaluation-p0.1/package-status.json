@@ -1,0 +1,20 @@
+{
+  "identifier": "HR-V0-DXL-PROT-EVAL-P0.1",
+  "round": "R155",
+  "date": "2026-08-09",
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION",
+  "selected_for_robot": false,
+  "external_current_limit_released": false,
+  "pcb_released": false,
+  "procurement_authorized": false,
+  "fabrication_authorized": false,
+  "assembly_authorized": false,
+  "connection_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "native_kicad_sheets": 5,
+  "exact_evaluation_devices": 2,
+  "open_holds": 18,
+  "physical_tests_executed": 0
+}

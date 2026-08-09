@@ -1,0 +1,5871 @@
+(export
+	(version "E")
+	(design
+		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\hr-v0-dxl-protection-eval\\hr-v0-dxl-protection-eval.kicad_sch")
+		(date "2026-08-09T13:39:17")
+		(tool "Eeschema 10.0.5")
+		(textvar
+			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION")
+		(textvar
+			(name "REVISION") "DXL-PROT-EVAL-P0.1")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title "PROJECT BUTTON HR-V0 DXL BRANCH-PROTECTION EVALUATION index")
+				(company "Project Button")
+				(rev "DXL-PROT-EVAL-P0.1")
+				(date "2026-08-09")
+				(source "hr-v0-dxl-protection-eval.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "2")
+			(name "/01 Branch 1 TPS259461L evaluation circuit/")
+			(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			(title_block
+				(title "PB HR-V0 DXL-PROT-EVAL-P0.1 - 01")
+				(company "Project Button")
+				(rev "DXL-PROT-EVAL-P0.1")
+				(date "2026-08-09")
+				(source "01_branch_1.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "3")
+			(name "/02 Branch 2 TPS259461L evaluation circuit/")
+			(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			(title_block
+				(title "PB HR-V0 DXL-PROT-EVAL-P0.1 - 02")
+				(company "Project Button")
+				(rev "DXL-PROT-EVAL-P0.1")
+				(date "2026-08-09")
+				(source "02_branch_2.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "4")
+			(name "/03 Branch 3 TPS259461L evaluation circuit/")
+			(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			(title_block
+				(title "PB HR-V0 DXL-PROT-EVAL-P0.1 - 03")
+				(company "Project Button")
+				(rev "DXL-PROT-EVAL-P0.1")
+				(date "2026-08-09")
+				(source "03_branch_3.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "5")
+			(name "/04 Source and regenerative-clamp evaluation boundary/")
+			(tstamps "/d34d761c-825b-5ddc-86c2-b5c3b2b21595/")
+			(title_block
+				(title "PB HR-V0 DXL-PROT-EVAL-P0.1 - 04")
+				(company "Project Button")
+				(rev "DXL-PROT-EVAL-P0.1")
+				(date "2026-08-09")
+				(source "04_regeneration_clamp.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "CDV1")
+			(value "2.2 nF dVdt candidate")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+			(fields
+				(field
+					(name "Status") "VALUE CANDIDATE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Value appears in TI application example; no project suitability inferred.")
+				(field
+					(name "Display") "2.2 nF dVdt candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "CDV1")
+				(description "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE CANDIDATE - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Value appears in TI application example; no project suitability inferred.")
+			)
+			(property
+				(name "Display")
+				(value "2.2 nF dVdt candidate")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Branch 1 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_branch_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Branch 1 TPS259461L evaluation circuit/")
+				(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			)
+			(tstamps "f3d93519-ae73-534e-b766-b0aae537ef75")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "CIN1")
+			(value "0.1 uF minimum 25 V X7R input bypass candidate")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+			(fields
+				(field
+					(name "Status") "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI recommends 0.1 uF or greater at IN; exact component not inferred.")
+				(field
+					(name "Display") "0.1 uF minimum 25 V X7R input bypass candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "CIN1")
+				(description "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+			)
+			(property
+				(name "Status")
+				(value "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI recommends 0.1 uF or greater at IN; exact component not inferred.")
+			)
+			(property
+				(name "Display")
+				(value "0.1 uF minimum 25 V X7R input bypass candidate")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Branch 1 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_branch_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Branch 1 TPS259461L evaluation circuit/")
+				(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			)
+			(tstamps "4fddca1c-dacd-52d9-ad76-edf39afe5bbc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "COUT1")
+			(value "1.0 uF minimum 25 V X7R output bypass candidate")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+			(fields
+				(field
+					(name "Status") "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI recommends 1 uF or greater at OUT for inductive-load transients; exact component not inferred.")
+				(field
+					(name "Display") "1.0 uF minimum 25 V X7R output bypass candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "COUT1")
+				(description "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+			)
+			(property
+				(name "Status")
+				(value "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI recommends 1 uF or greater at OUT for inductive-load transients; exact component not inferred.")
+			)
+			(property
+				(name "Display")
+				(value "1.0 uF minimum 25 V X7R output bypass candidate")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Branch 1 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_branch_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Branch 1 TPS259461L evaluation circuit/")
+				(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			)
+			(tstamps "32c39848-b23c-5851-a48b-624d966470a5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JIN1")
+			(value "JST B2P-VH J1 SHOULDER fused input boundary")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(description "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+			(fields
+				(field
+					(name "Status") "EXACT FAMILY CANDIDATE - HARNESS/CONTACT SELECTION REQUIRED")
+				(field
+					(name "Evidence") "JST VH family application remains held; this evaluation schematic does not release a harness.")
+				(field
+					(name "Display") "JST B2P-VH J1 SHOULDER fused input boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JIN1")
+				(description "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT FAMILY CANDIDATE - HARNESS/CONTACT SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "JST VH family application remains held; this evaluation schematic does not release a harness.")
+			)
+			(property
+				(name "Display")
+				(value "JST B2P-VH J1 SHOULDER fused input boundary")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Branch 1 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_branch_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Branch 1 TPS259461L evaluation circuit/")
+				(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			)
+			(tstamps "1ee18f6f-ce6a-59ec-a0cb-81134bf10dd4")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JOUT1")
+			(value "JST B2P-VH J1 SHOULDER limited output boundary")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(description "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+			(fields
+				(field
+					(name "Status") "EXACT FAMILY CANDIDATE - DXL-STAR INTERFACE HOLD")
+				(field
+					(name "Evidence") "JST VH family evidence only; no cable or contact application release.")
+				(field
+					(name "Display") "JST B2P-VH J1 SHOULDER limited output boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JOUT1")
+				(description "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT FAMILY CANDIDATE - DXL-STAR INTERFACE HOLD")
+			)
+			(property
+				(name "Evidence")
+				(value "JST VH family evidence only; no cable or contact application release.")
+			)
+			(property
+				(name "Display")
+				(value "JST B2P-VH J1 SHOULDER limited output boundary")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Branch 1 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_branch_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Branch 1 TPS259461L evaluation circuit/")
+				(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			)
+			(tstamps "fbbba049-7b51-5867-bda0-13e09a5954af")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RILM1")
+			(value "1.65 kOhm 1%")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "TI catalog basis: 1.8-2.2 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+			(fields
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI equation and guaranteed threshold rows; no passive order code inferred.")
+				(field
+					(name "Display") "1.65 kOhm 1%")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI catalog basis: 1.8-2.2 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RILM1")
+				(description "TI catalog basis: 1.8-2.2 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI equation and guaranteed threshold rows; no passive order code inferred.")
+			)
+			(property
+				(name "Display")
+				(value "1.65 kOhm 1%")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Branch 1 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_branch_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Branch 1 TPS259461L evaluation circuit/")
+				(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			)
+			(tstamps "90471204-de51-5208-a684-4cff39e1d079")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ROVB1")
+			(value "44.2 kOhm 1% OVLO lower")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			(fields
+				(field
+					(name "Status") "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI design example, not project application approval.")
+				(field
+					(name "Display") "44.2 kOhm 1% OVLO lower")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ROVB1")
+				(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			)
+			(property
+				(name "Status")
+				(value "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI design example, not project application approval.")
+			)
+			(property
+				(name "Display")
+				(value "44.2 kOhm 1% OVLO lower")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Branch 1 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_branch_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Branch 1 TPS259461L evaluation circuit/")
+				(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			)
+			(tstamps "d3c4f2f4-b565-55f8-9632-f9302c2770f1")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ROVT1")
+			(value "470 kOhm 1% OVLO upper")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			(fields
+				(field
+					(name "Status") "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI design example, not project application approval.")
+				(field
+					(name "Display") "470 kOhm 1% OVLO upper")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ROVT1")
+				(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			)
+			(property
+				(name "Status")
+				(value "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI design example, not project application approval.")
+			)
+			(property
+				(name "Display")
+				(value "470 kOhm 1% OVLO upper")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Branch 1 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_branch_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Branch 1 TPS259461L evaluation circuit/")
+				(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			)
+			(tstamps "19d6e724-11e6-5ea2-b8de-10091aaffe71")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RUVB1")
+			(value "49.9 kOhm 1% UVLO lower")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+			(fields
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Derived with TI VUVLO limits; exact resistor selection remains open.")
+				(field
+					(name "Display") "49.9 kOhm 1% UVLO lower")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RUVB1")
+				(description "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Derived with TI VUVLO limits; exact resistor selection remains open.")
+			)
+			(property
+				(name "Display")
+				(value "49.9 kOhm 1% UVLO lower")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Branch 1 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_branch_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Branch 1 TPS259461L evaluation circuit/")
+				(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			)
+			(tstamps "5afc2c42-a910-5e84-b868-0d6c09e93702")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RUVT1")
+			(value "365 kOhm 1% UVLO upper")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+			(fields
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Derived with TI VUVLO limits; exact resistor selection remains open.")
+				(field
+					(name "Display") "365 kOhm 1% UVLO upper")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RUVT1")
+				(description "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Derived with TI VUVLO limits; exact resistor selection remains open.")
+			)
+			(property
+				(name "Display")
+				(value "365 kOhm 1% UVLO upper")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Branch 1 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_branch_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Branch 1 TPS259461L evaluation circuit/")
+				(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			)
+			(tstamps "7970bb1d-5d11-5ecf-8940-29cf25bdc1c2")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TPFLT1")
+			(value "Harwin S1751-46R FLT diagnostic test point")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+			(fields
+				(field
+					(name "Status") "EXACT TEST-POINT CANDIDATE - NO INSTALLED PULLUP")
+				(field
+					(name "Evidence") "No safety or motion credit.")
+				(field
+					(name "Display") "Harwin S1751-46R FLT diagnostic test point")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TPFLT1")
+				(description "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT TEST-POINT CANDIDATE - NO INSTALLED PULLUP")
+			)
+			(property
+				(name "Evidence")
+				(value "No safety or motion credit.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R FLT diagnostic test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Branch 1 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_branch_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Branch 1 TPS259461L evaluation circuit/")
+				(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			)
+			(tstamps "cc50ceba-8665-550d-a115-bf0386b25da7")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TPILM1")
+			(value "Harwin S1751-46R ILM test point")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+			(fields
+				(field
+					(name "Status") "EXACT TEST-POINT CANDIDATE - CAPACITIVE-LOADING HOLD")
+				(field
+					(name "Evidence") "Existing controlled Harwin test-point identity; bench probe loading remains open.")
+				(field
+					(name "Display") "Harwin S1751-46R ILM test point")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TPILM1")
+				(description "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT TEST-POINT CANDIDATE - CAPACITIVE-LOADING HOLD")
+			)
+			(property
+				(name "Evidence")
+				(value "Existing controlled Harwin test-point identity; bench probe loading remains open.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R ILM test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Branch 1 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_branch_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Branch 1 TPS259461L evaluation circuit/")
+				(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			)
+			(tstamps "be38539f-abb9-5f17-be74-e95ca91ef54a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U1")
+			(value "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+			(datasheet "https://www.ti.com/product/TPS25946/part-details/TPS259461LRPWR")
+			(description "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+			(fields
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE - NOT SELECTED FOR ROBOT")
+				(field
+					(name "Evidence") "TI product page active and datasheet SLVSGA8B, April 2022; rechecked 2026-08-09.")
+				(field
+					(name "Display") "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/product/TPS25946/part-details/TPS259461LRPWR")
+				(field
+					(name "Description") "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "U1")
+				(description "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT EVALUATION CANDIDATE - NOT SELECTED FOR ROBOT")
+			)
+			(property
+				(name "Evidence")
+				(value "TI product page active and datasheet SLVSGA8B, April 2022; rechecked 2026-08-09.")
+			)
+			(property
+				(name "Display")
+				(value "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Branch 1 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_branch_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Branch 1 TPS259461L evaluation circuit/")
+				(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			)
+			(tstamps "0fa315d0-5e20-5fb4-b0b2-4188d3085991")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "10")
+						)
+						(pin
+							(num "9")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "6")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U1G")
+			(value "U1 pin 8 GND cross-reference")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Pin 8 belongs to the same TPS259461LRPWR represented by U1; do not count as another BOM device.")
+			(fields
+				(field
+					(name "Status") "CONTACT CROSS-REFERENCE - SAME DEVICE")
+				(field
+					(name "Evidence") "Split graphical unit preserves the exact pin while preventing adjacent global-label ambiguity.")
+				(field
+					(name "Display") "U1 pin 8 GND cross-reference")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Pin 8 belongs to the same TPS259461LRPWR represented by U1; do not count as another BOM device.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "U1G")
+				(description "Pin 8 belongs to the same TPS259461LRPWR represented by U1; do not count as another BOM device.")
+			)
+			(property
+				(name "Status")
+				(value "CONTACT CROSS-REFERENCE - SAME DEVICE")
+			)
+			(property
+				(name "Evidence")
+				(value "Split graphical unit preserves the exact pin while preventing adjacent global-label ambiguity.")
+			)
+			(property
+				(name "Display")
+				(value "U1 pin 8 GND cross-reference")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Branch 1 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_branch_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Branch 1 TPS259461L evaluation circuit/")
+				(tstamps "/c0ed06ae-0323-5121-9c5d-3f4d866de86d/")
+			)
+			(tstamps "98654b20-e505-5bac-97f1-1507e0c6985a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "8")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "CDV2")
+			(value "2.2 nF dVdt candidate")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+			(fields
+				(field
+					(name "Status") "VALUE CANDIDATE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Value appears in TI application example; no project suitability inferred.")
+				(field
+					(name "Display") "2.2 nF dVdt candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "CDV2")
+				(description "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE CANDIDATE - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Value appears in TI application example; no project suitability inferred.")
+			)
+			(property
+				(name "Display")
+				(value "2.2 nF dVdt candidate")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Branch 2 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_branch_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Branch 2 TPS259461L evaluation circuit/")
+				(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			)
+			(tstamps "3a6b17b8-78af-5ac9-a7ac-d0dc3d6156cd")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "CIN2")
+			(value "0.1 uF minimum 25 V X7R input bypass candidate")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+			(fields
+				(field
+					(name "Status") "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI recommends 0.1 uF or greater at IN; exact component not inferred.")
+				(field
+					(name "Display") "0.1 uF minimum 25 V X7R input bypass candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "CIN2")
+				(description "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+			)
+			(property
+				(name "Status")
+				(value "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI recommends 0.1 uF or greater at IN; exact component not inferred.")
+			)
+			(property
+				(name "Display")
+				(value "0.1 uF minimum 25 V X7R input bypass candidate")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Branch 2 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_branch_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Branch 2 TPS259461L evaluation circuit/")
+				(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			)
+			(tstamps "6f750e43-e667-5766-bd2d-8684a949da80")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "COUT2")
+			(value "1.0 uF minimum 25 V X7R output bypass candidate")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+			(fields
+				(field
+					(name "Status") "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI recommends 1 uF or greater at OUT for inductive-load transients; exact component not inferred.")
+				(field
+					(name "Display") "1.0 uF minimum 25 V X7R output bypass candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "COUT2")
+				(description "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+			)
+			(property
+				(name "Status")
+				(value "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI recommends 1 uF or greater at OUT for inductive-load transients; exact component not inferred.")
+			)
+			(property
+				(name "Display")
+				(value "1.0 uF minimum 25 V X7R output bypass candidate")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Branch 2 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_branch_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Branch 2 TPS259461L evaluation circuit/")
+				(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			)
+			(tstamps "88f810d6-8426-50e1-88c8-b2d28e5ab956")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JIN2")
+			(value "JST B2P-VH J2 ELBOW fused input boundary")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(description "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+			(fields
+				(field
+					(name "Status") "EXACT FAMILY CANDIDATE - HARNESS/CONTACT SELECTION REQUIRED")
+				(field
+					(name "Evidence") "JST VH family application remains held; this evaluation schematic does not release a harness.")
+				(field
+					(name "Display") "JST B2P-VH J2 ELBOW fused input boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JIN2")
+				(description "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT FAMILY CANDIDATE - HARNESS/CONTACT SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "JST VH family application remains held; this evaluation schematic does not release a harness.")
+			)
+			(property
+				(name "Display")
+				(value "JST B2P-VH J2 ELBOW fused input boundary")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Branch 2 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_branch_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Branch 2 TPS259461L evaluation circuit/")
+				(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			)
+			(tstamps "259ec908-e3c6-5125-80da-c83ee16b89f5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JOUT2")
+			(value "JST B2P-VH J2 ELBOW limited output boundary")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(description "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+			(fields
+				(field
+					(name "Status") "EXACT FAMILY CANDIDATE - DXL-STAR INTERFACE HOLD")
+				(field
+					(name "Evidence") "JST VH family evidence only; no cable or contact application release.")
+				(field
+					(name "Display") "JST B2P-VH J2 ELBOW limited output boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JOUT2")
+				(description "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT FAMILY CANDIDATE - DXL-STAR INTERFACE HOLD")
+			)
+			(property
+				(name "Evidence")
+				(value "JST VH family evidence only; no cable or contact application release.")
+			)
+			(property
+				(name "Display")
+				(value "JST B2P-VH J2 ELBOW limited output boundary")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Branch 2 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_branch_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Branch 2 TPS259461L evaluation circuit/")
+				(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			)
+			(tstamps "dacc7810-63bf-5bcd-9a20-02ebf6b81113")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RILM2")
+			(value "1.65 kOhm 1%")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "TI catalog basis: 1.8-2.2 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+			(fields
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI equation and guaranteed threshold rows; no passive order code inferred.")
+				(field
+					(name "Display") "1.65 kOhm 1%")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI catalog basis: 1.8-2.2 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RILM2")
+				(description "TI catalog basis: 1.8-2.2 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI equation and guaranteed threshold rows; no passive order code inferred.")
+			)
+			(property
+				(name "Display")
+				(value "1.65 kOhm 1%")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Branch 2 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_branch_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Branch 2 TPS259461L evaluation circuit/")
+				(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			)
+			(tstamps "bb5a4b08-ac17-5e0f-ad21-23c55a76dccd")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ROVB2")
+			(value "44.2 kOhm 1% OVLO lower")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			(fields
+				(field
+					(name "Status") "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI design example, not project application approval.")
+				(field
+					(name "Display") "44.2 kOhm 1% OVLO lower")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ROVB2")
+				(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			)
+			(property
+				(name "Status")
+				(value "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI design example, not project application approval.")
+			)
+			(property
+				(name "Display")
+				(value "44.2 kOhm 1% OVLO lower")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Branch 2 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_branch_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Branch 2 TPS259461L evaluation circuit/")
+				(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			)
+			(tstamps "6a4a3b0b-a847-5350-9c95-faa83ba112cf")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ROVT2")
+			(value "470 kOhm 1% OVLO upper")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			(fields
+				(field
+					(name "Status") "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI design example, not project application approval.")
+				(field
+					(name "Display") "470 kOhm 1% OVLO upper")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ROVT2")
+				(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			)
+			(property
+				(name "Status")
+				(value "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI design example, not project application approval.")
+			)
+			(property
+				(name "Display")
+				(value "470 kOhm 1% OVLO upper")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Branch 2 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_branch_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Branch 2 TPS259461L evaluation circuit/")
+				(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			)
+			(tstamps "53fb5826-644d-597a-87f0-4fabc1d07cfc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RUVB2")
+			(value "49.9 kOhm 1% UVLO lower")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+			(fields
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Derived with TI VUVLO limits; exact resistor selection remains open.")
+				(field
+					(name "Display") "49.9 kOhm 1% UVLO lower")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RUVB2")
+				(description "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Derived with TI VUVLO limits; exact resistor selection remains open.")
+			)
+			(property
+				(name "Display")
+				(value "49.9 kOhm 1% UVLO lower")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Branch 2 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_branch_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Branch 2 TPS259461L evaluation circuit/")
+				(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			)
+			(tstamps "5ca03cb4-390a-536e-8ff0-5060374512bb")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RUVT2")
+			(value "365 kOhm 1% UVLO upper")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+			(fields
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Derived with TI VUVLO limits; exact resistor selection remains open.")
+				(field
+					(name "Display") "365 kOhm 1% UVLO upper")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RUVT2")
+				(description "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Derived with TI VUVLO limits; exact resistor selection remains open.")
+			)
+			(property
+				(name "Display")
+				(value "365 kOhm 1% UVLO upper")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Branch 2 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_branch_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Branch 2 TPS259461L evaluation circuit/")
+				(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			)
+			(tstamps "136542e5-a1d5-5e0f-88ef-785b7e707957")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TPFLT2")
+			(value "Harwin S1751-46R FLT diagnostic test point")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+			(fields
+				(field
+					(name "Status") "EXACT TEST-POINT CANDIDATE - NO INSTALLED PULLUP")
+				(field
+					(name "Evidence") "No safety or motion credit.")
+				(field
+					(name "Display") "Harwin S1751-46R FLT diagnostic test point")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TPFLT2")
+				(description "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT TEST-POINT CANDIDATE - NO INSTALLED PULLUP")
+			)
+			(property
+				(name "Evidence")
+				(value "No safety or motion credit.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R FLT diagnostic test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Branch 2 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_branch_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Branch 2 TPS259461L evaluation circuit/")
+				(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			)
+			(tstamps "b85173e0-58a8-53b5-b3e7-47c6f019aab4")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TPILM2")
+			(value "Harwin S1751-46R ILM test point")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+			(fields
+				(field
+					(name "Status") "EXACT TEST-POINT CANDIDATE - CAPACITIVE-LOADING HOLD")
+				(field
+					(name "Evidence") "Existing controlled Harwin test-point identity; bench probe loading remains open.")
+				(field
+					(name "Display") "Harwin S1751-46R ILM test point")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TPILM2")
+				(description "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT TEST-POINT CANDIDATE - CAPACITIVE-LOADING HOLD")
+			)
+			(property
+				(name "Evidence")
+				(value "Existing controlled Harwin test-point identity; bench probe loading remains open.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R ILM test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Branch 2 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_branch_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Branch 2 TPS259461L evaluation circuit/")
+				(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			)
+			(tstamps "5469bacf-75dd-5e92-8055-f683fe36eb64")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U2")
+			(value "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+			(datasheet "https://www.ti.com/product/TPS25946/part-details/TPS259461LRPWR")
+			(description "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+			(fields
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE - NOT SELECTED FOR ROBOT")
+				(field
+					(name "Evidence") "TI product page active and datasheet SLVSGA8B, April 2022; rechecked 2026-08-09.")
+				(field
+					(name "Display") "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/product/TPS25946/part-details/TPS259461LRPWR")
+				(field
+					(name "Description") "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "U2")
+				(description "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT EVALUATION CANDIDATE - NOT SELECTED FOR ROBOT")
+			)
+			(property
+				(name "Evidence")
+				(value "TI product page active and datasheet SLVSGA8B, April 2022; rechecked 2026-08-09.")
+			)
+			(property
+				(name "Display")
+				(value "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Branch 2 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_branch_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Branch 2 TPS259461L evaluation circuit/")
+				(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			)
+			(tstamps "e8f78520-a0b1-5c8d-803b-ee6cc5b05c23")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "10")
+						)
+						(pin
+							(num "9")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "6")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U2G")
+			(value "U2 pin 8 GND cross-reference")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Pin 8 belongs to the same TPS259461LRPWR represented by U2; do not count as another BOM device.")
+			(fields
+				(field
+					(name "Status") "CONTACT CROSS-REFERENCE - SAME DEVICE")
+				(field
+					(name "Evidence") "Split graphical unit preserves the exact pin while preventing adjacent global-label ambiguity.")
+				(field
+					(name "Display") "U2 pin 8 GND cross-reference")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Pin 8 belongs to the same TPS259461LRPWR represented by U2; do not count as another BOM device.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "U2G")
+				(description "Pin 8 belongs to the same TPS259461LRPWR represented by U2; do not count as another BOM device.")
+			)
+			(property
+				(name "Status")
+				(value "CONTACT CROSS-REFERENCE - SAME DEVICE")
+			)
+			(property
+				(name "Evidence")
+				(value "Split graphical unit preserves the exact pin while preventing adjacent global-label ambiguity.")
+			)
+			(property
+				(name "Display")
+				(value "U2 pin 8 GND cross-reference")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Branch 2 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_branch_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Branch 2 TPS259461L evaluation circuit/")
+				(tstamps "/c5a0b5b7-3ef9-5a69-93b3-6a1050843447/")
+			)
+			(tstamps "a3e4006b-b282-5b49-b620-ccc5489e3089")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "8")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "CDV3")
+			(value "2.2 nF dVdt candidate")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+			(fields
+				(field
+					(name "Status") "VALUE CANDIDATE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Value appears in TI application example; no project suitability inferred.")
+				(field
+					(name "Display") "2.2 nF dVdt candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "CDV3")
+				(description "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE CANDIDATE - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Value appears in TI application example; no project suitability inferred.")
+			)
+			(property
+				(name "Display")
+				(value "2.2 nF dVdt candidate")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Branch 3 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_branch_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Branch 3 TPS259461L evaluation circuit/")
+				(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			)
+			(tstamps "542a0767-913d-58b0-bf50-d95a5a5421f8")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "CIN3")
+			(value "0.1 uF minimum 25 V X7R input bypass candidate")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+			(fields
+				(field
+					(name "Status") "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI recommends 0.1 uF or greater at IN; exact component not inferred.")
+				(field
+					(name "Display") "0.1 uF minimum 25 V X7R input bypass candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "CIN3")
+				(description "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+			)
+			(property
+				(name "Status")
+				(value "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI recommends 0.1 uF or greater at IN; exact component not inferred.")
+			)
+			(property
+				(name "Display")
+				(value "0.1 uF minimum 25 V X7R input bypass candidate")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Branch 3 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_branch_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Branch 3 TPS259461L evaluation circuit/")
+				(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			)
+			(tstamps "2fee1ff0-136b-5733-8b2c-37d305c3c4c9")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "COUT3")
+			(value "1.0 uF minimum 25 V X7R output bypass candidate")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+			(fields
+				(field
+					(name "Status") "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI recommends 1 uF or greater at OUT for inductive-load transients; exact component not inferred.")
+				(field
+					(name "Display") "1.0 uF minimum 25 V X7R output bypass candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "COUT3")
+				(description "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+			)
+			(property
+				(name "Status")
+				(value "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI recommends 1 uF or greater at OUT for inductive-load transients; exact component not inferred.")
+			)
+			(property
+				(name "Display")
+				(value "1.0 uF minimum 25 V X7R output bypass candidate")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Branch 3 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_branch_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Branch 3 TPS259461L evaluation circuit/")
+				(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			)
+			(tstamps "91e8a36a-af55-5901-92ba-e23f55c93b9f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JIN3")
+			(value "JST B2P-VH G1 GRIPPER fused input boundary")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(description "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+			(fields
+				(field
+					(name "Status") "EXACT FAMILY CANDIDATE - HARNESS/CONTACT SELECTION REQUIRED")
+				(field
+					(name "Evidence") "JST VH family application remains held; this evaluation schematic does not release a harness.")
+				(field
+					(name "Display") "JST B2P-VH G1 GRIPPER fused input boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JIN3")
+				(description "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT FAMILY CANDIDATE - HARNESS/CONTACT SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "JST VH family application remains held; this evaluation schematic does not release a harness.")
+			)
+			(property
+				(name "Display")
+				(value "JST B2P-VH G1 GRIPPER fused input boundary")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Branch 3 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_branch_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Branch 3 TPS259461L evaluation circuit/")
+				(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			)
+			(tstamps "bd9a2654-40cd-5034-b3b1-f5d100e325c4")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JOUT3")
+			(value "JST B2P-VH G1 GRIPPER limited output boundary")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(description "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+			(fields
+				(field
+					(name "Status") "EXACT FAMILY CANDIDATE - DXL-STAR INTERFACE HOLD")
+				(field
+					(name "Evidence") "JST VH family evidence only; no cable or contact application release.")
+				(field
+					(name "Display") "JST B2P-VH G1 GRIPPER limited output boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JOUT3")
+				(description "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT FAMILY CANDIDATE - DXL-STAR INTERFACE HOLD")
+			)
+			(property
+				(name "Evidence")
+				(value "JST VH family evidence only; no cable or contact application release.")
+			)
+			(property
+				(name "Display")
+				(value "JST B2P-VH G1 GRIPPER limited output boundary")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Branch 3 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_branch_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Branch 3 TPS259461L evaluation circuit/")
+				(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			)
+			(tstamps "176101ba-b19a-5088-a34e-72f2d7502156")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RILM3")
+			(value "3.32 kOhm 1%")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "TI catalog basis: 0.85-1.15 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+			(fields
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI equation and guaranteed threshold rows; no passive order code inferred.")
+				(field
+					(name "Display") "3.32 kOhm 1%")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI catalog basis: 0.85-1.15 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RILM3")
+				(description "TI catalog basis: 0.85-1.15 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI equation and guaranteed threshold rows; no passive order code inferred.")
+			)
+			(property
+				(name "Display")
+				(value "3.32 kOhm 1%")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Branch 3 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_branch_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Branch 3 TPS259461L evaluation circuit/")
+				(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			)
+			(tstamps "38c351a1-087a-5e90-b8a2-53384a1b88c9")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ROVB3")
+			(value "44.2 kOhm 1% OVLO lower")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			(fields
+				(field
+					(name "Status") "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI design example, not project application approval.")
+				(field
+					(name "Display") "44.2 kOhm 1% OVLO lower")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ROVB3")
+				(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			)
+			(property
+				(name "Status")
+				(value "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI design example, not project application approval.")
+			)
+			(property
+				(name "Display")
+				(value "44.2 kOhm 1% OVLO lower")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Branch 3 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_branch_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Branch 3 TPS259461L evaluation circuit/")
+				(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			)
+			(tstamps "59abd06c-db82-5326-8223-8d9013d64042")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ROVT3")
+			(value "470 kOhm 1% OVLO upper")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			(fields
+				(field
+					(name "Status") "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI design example, not project application approval.")
+				(field
+					(name "Display") "470 kOhm 1% OVLO upper")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ROVT3")
+				(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			)
+			(property
+				(name "Status")
+				(value "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "TI design example, not project application approval.")
+			)
+			(property
+				(name "Display")
+				(value "470 kOhm 1% OVLO upper")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Branch 3 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_branch_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Branch 3 TPS259461L evaluation circuit/")
+				(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			)
+			(tstamps "606ad762-cf4a-5a4f-9f88-36af87d7e05c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RUVB3")
+			(value "49.9 kOhm 1% UVLO lower")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+			(fields
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Derived with TI VUVLO limits; exact resistor selection remains open.")
+				(field
+					(name "Display") "49.9 kOhm 1% UVLO lower")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RUVB3")
+				(description "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Derived with TI VUVLO limits; exact resistor selection remains open.")
+			)
+			(property
+				(name "Display")
+				(value "49.9 kOhm 1% UVLO lower")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Branch 3 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_branch_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Branch 3 TPS259461L evaluation circuit/")
+				(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			)
+			(tstamps "30e31adf-58d6-52e8-bca3-6c08e97f4a9f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RUVT3")
+			(value "365 kOhm 1% UVLO upper")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+			(fields
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Derived with TI VUVLO limits; exact resistor selection remains open.")
+				(field
+					(name "Display") "365 kOhm 1% UVLO upper")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RUVT3")
+				(description "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Derived with TI VUVLO limits; exact resistor selection remains open.")
+			)
+			(property
+				(name "Display")
+				(value "365 kOhm 1% UVLO upper")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Branch 3 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_branch_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Branch 3 TPS259461L evaluation circuit/")
+				(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			)
+			(tstamps "88c250ff-bd43-5794-8f6d-245cd17e53e1")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TPFLT3")
+			(value "Harwin S1751-46R FLT diagnostic test point")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+			(fields
+				(field
+					(name "Status") "EXACT TEST-POINT CANDIDATE - NO INSTALLED PULLUP")
+				(field
+					(name "Evidence") "No safety or motion credit.")
+				(field
+					(name "Display") "Harwin S1751-46R FLT diagnostic test point")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TPFLT3")
+				(description "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT TEST-POINT CANDIDATE - NO INSTALLED PULLUP")
+			)
+			(property
+				(name "Evidence")
+				(value "No safety or motion credit.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R FLT diagnostic test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Branch 3 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_branch_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Branch 3 TPS259461L evaluation circuit/")
+				(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			)
+			(tstamps "73b3cde7-2675-55ad-a8f0-0db87606cc99")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TPILM3")
+			(value "Harwin S1751-46R ILM test point")
+			(datasheet "https://www.harwin.com/products/S1751-46R")
+			(description "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+			(fields
+				(field
+					(name "Status") "EXACT TEST-POINT CANDIDATE - CAPACITIVE-LOADING HOLD")
+				(field
+					(name "Evidence") "Existing controlled Harwin test-point identity; bench probe loading remains open.")
+				(field
+					(name "Display") "Harwin S1751-46R ILM test point")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TPILM3")
+				(description "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT TEST-POINT CANDIDATE - CAPACITIVE-LOADING HOLD")
+			)
+			(property
+				(name "Evidence")
+				(value "Existing controlled Harwin test-point identity; bench probe loading remains open.")
+			)
+			(property
+				(name "Display")
+				(value "Harwin S1751-46R ILM test point")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Branch 3 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_branch_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Branch 3 TPS259461L evaluation circuit/")
+				(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			)
+			(tstamps "94ffb46b-df34-58d5-89de-3e3a2c60d598")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U3")
+			(value "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+			(datasheet "https://www.ti.com/product/TPS25946/part-details/TPS259461LRPWR")
+			(description "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+			(fields
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE - NOT SELECTED FOR ROBOT")
+				(field
+					(name "Evidence") "TI product page active and datasheet SLVSGA8B, April 2022; rechecked 2026-08-09.")
+				(field
+					(name "Display") "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/product/TPS25946/part-details/TPS259461LRPWR")
+				(field
+					(name "Description") "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "U3")
+				(description "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT EVALUATION CANDIDATE - NOT SELECTED FOR ROBOT")
+			)
+			(property
+				(name "Evidence")
+				(value "TI product page active and datasheet SLVSGA8B, April 2022; rechecked 2026-08-09.")
+			)
+			(property
+				(name "Display")
+				(value "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Branch 3 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_branch_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Branch 3 TPS259461L evaluation circuit/")
+				(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			)
+			(tstamps "f93f4add-ccf4-5da6-8fa8-c3200b3732d4")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "10")
+						)
+						(pin
+							(num "9")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "6")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U3G")
+			(value "U3 pin 8 GND cross-reference")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(description "Pin 8 belongs to the same TPS259461LRPWR represented by U3; do not count as another BOM device.")
+			(fields
+				(field
+					(name "Status") "CONTACT CROSS-REFERENCE - SAME DEVICE")
+				(field
+					(name "Evidence") "Split graphical unit preserves the exact pin while preventing adjacent global-label ambiguity.")
+				(field
+					(name "Display") "U3 pin 8 GND cross-reference")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Pin 8 belongs to the same TPS259461LRPWR represented by U3; do not count as another BOM device.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "U3G")
+				(description "Pin 8 belongs to the same TPS259461LRPWR represented by U3; do not count as another BOM device.")
+			)
+			(property
+				(name "Status")
+				(value "CONTACT CROSS-REFERENCE - SAME DEVICE")
+			)
+			(property
+				(name "Evidence")
+				(value "Split graphical unit preserves the exact pin while preventing adjacent global-label ambiguity.")
+			)
+			(property
+				(name "Display")
+				(value "U3 pin 8 GND cross-reference")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Branch 3 TPS259461L evaluation circuit")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_branch_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Branch 3 TPS259461L evaluation circuit/")
+				(tstamps "/48da5a28-dd88-5aca-9c31-770d1fd7f0ab/")
+			)
+			(tstamps "cd2a05f9-e42c-5726-9d41-bfdfb71dffcc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "8")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "KCHAIN1")
+			(value "K1/K2 redundant interruption output boundary")
+			(description "Represents the existing two-contactor series path only; no added safety credit.")
+			(fields
+				(field
+					(name "Status") "SYSTEM BOUNDARY - CONTACT APPLICATION HOLD")
+				(field
+					(name "Evidence") "Current V3-P1.14 boundary; loaded interruption and regeneration remain open.")
+				(field
+					(name "Display") "K1/K2 redundant interruption output boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Represents the existing two-contactor series path only; no added safety credit.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "KCHAIN1")
+				(description "Represents the existing two-contactor series path only; no added safety credit.")
+			)
+			(property
+				(name "Status")
+				(value "SYSTEM BOUNDARY - CONTACT APPLICATION HOLD")
+			)
+			(property
+				(name "Evidence")
+				(value "Current V3-P1.14 boundary; loaded interruption and regeneration remain open.")
+			)
+			(property
+				(name "Display")
+				(value "K1/K2 redundant interruption output boundary")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Source and regenerative-clamp evaluation boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_regeneration_clamp.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Source and regenerative-clamp evaluation boundary/")
+				(tstamps "/d34d761c-825b-5ddc-86c2-b5c3b2b21595/")
+			)
+			(tstamps "212ee69e-cec6-5c89-9355-bb641c80dede")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SH1")
+			(value "Pololu item 3771 13.2 V 1.50 Ohm 15 W shunt regulator")
+			(datasheet "https://www.pololu.com/product/3771")
+			(description "Install across the post-contactor bus for evaluation. Manufacturer warns continuous above-setpoint voltage can destroy the board in under one second.")
+			(fields
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE - SHORT PULSES ONLY")
+				(field
+					(name "Evidence") "Pololu item 3771 active/preferred page accessed 2026-08-09; fixed setpoint ±3%, pulse application only.")
+				(field
+					(name "Display") "Pololu item 3771 13.2 V 1.50 Ohm 15 W shunt regulator")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pololu.com/product/3771")
+				(field
+					(name "Description") "Install across the post-contactor bus for evaluation. Manufacturer warns continuous above-setpoint voltage can destroy the board in under one second.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SH1")
+				(description "Install across the post-contactor bus for evaluation. Manufacturer warns continuous above-setpoint voltage can destroy the board in under one second.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT EVALUATION CANDIDATE - SHORT PULSES ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "Pololu item 3771 active/preferred page accessed 2026-08-09; fixed setpoint ±3%, pulse application only.")
+			)
+			(property
+				(name "Display")
+				(value "Pololu item 3771 13.2 V 1.50 Ohm 15 W shunt regulator")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Source and regenerative-clamp evaluation boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_regeneration_clamp.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Source and regenerative-clamp evaluation boundary/")
+				(tstamps "/d34d761c-825b-5ddc-86c2-b5c3b2b21595/")
+			)
+			(tstamps "b4f488a1-41f8-5ac9-85af-e2a5e54fce75")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "-")
+						)
+						(pin
+							(num "+")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SRC1")
+			(value "Mean Well GST280A12-C6P source boundary")
+			(datasheet "https://www.meanwell.com/Upload/PDF/GST280A/GST280A-SPEC.PDF")
+			(description "12 V ±5% catalog source; reverse-current sinking is not documented.")
+			(fields
+				(field
+					(name "Status") "EXACT SOURCE CANDIDATE - REGENERATION APPLICATION HOLD")
+				(field
+					(name "Evidence") "GST280A-SPEC 2025-03-28; final equipment and regeneration behavior remain open.")
+				(field
+					(name "Display") "Mean Well GST280A12-C6P source boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.meanwell.com/Upload/PDF/GST280A/GST280A-SPEC.PDF")
+				(field
+					(name "Description") "12 V ±5% catalog source; reverse-current sinking is not documented.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SRC1")
+				(description "12 V ±5% catalog source; reverse-current sinking is not documented.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT SOURCE CANDIDATE - REGENERATION APPLICATION HOLD")
+			)
+			(property
+				(name "Evidence")
+				(value "GST280A-SPEC 2025-03-28; final equipment and regeneration behavior remain open.")
+			)
+			(property
+				(name "Display")
+				(value "Mean Well GST280A12-C6P source boundary")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Source and regenerative-clamp evaluation boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_regeneration_clamp.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Source and regenerative-clamp evaluation boundary/")
+				(tstamps "/d34d761c-825b-5ddc-86c2-b5c3b2b21595/")
+			)
+			(tstamps "5652f155-dd9c-50ec-9c00-91909c609ab1")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "-")
+						)
+						(pin
+							(num "+")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TPBUS1")
+			(value "Bus-voltage measurement point - SELECTION REQUIRED")
+			(description "Kelvin/probe method, category, spacing and fixture remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Bus-voltage measurement point - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Kelvin/probe method, category, spacing and fixture remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TPBUS1")
+				(description "Kelvin/probe method, category, spacing and fixture remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Bus-voltage measurement point - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Source and regenerative-clamp evaluation boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_regeneration_clamp.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Source and regenerative-clamp evaluation boundary/")
+				(tstamps "/d34d761c-825b-5ddc-86c2-b5c3b2b21595/")
+			)
+			(tstamps "51539901-51d1-5035-afa7-2deb6355602a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TPRET1")
+			(value "Return measurement point - SELECTION REQUIRED")
+			(description "Kelvin/probe method, category, spacing and fixture remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Return measurement point - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Kelvin/probe method, category, spacing and fixture remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TPRET1")
+				(description "Kelvin/probe method, category, spacing and fixture remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "Return measurement point - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Source and regenerative-clamp evaluation boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_regeneration_clamp.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Source and regenerative-clamp evaluation boundary/")
+				(tstamps "/d34d761c-825b-5ddc-86c2-b5c3b2b21595/")
+			)
+			(tstamps "39f4086b-5c47-5f33-85d7-0d5348357d27")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "PBV3")
+			(part "CDV1")
+			(description "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "CDV1")
+				(field
+					(name "Value") "2.2 nF dVdt candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+				(field
+					(name "Status") "VALUE CANDIDATE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Value appears in TI application example; no project suitability inferred.")
+				(field
+					(name "Display") "2.2 nF dVdt candidate")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "dVdt")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "CDV2")
+			(description "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "CDV2")
+				(field
+					(name "Value") "2.2 nF dVdt candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+				(field
+					(name "Status") "VALUE CANDIDATE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Value appears in TI application example; no project suitability inferred.")
+				(field
+					(name "Display") "2.2 nF dVdt candidate")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "dVdt")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "CDV3")
+			(description "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "CDV3")
+				(field
+					(name "Value") "2.2 nF dVdt candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Slew-rate candidate; received actuator startup and thermal behavior remain open.")
+				(field
+					(name "Status") "VALUE CANDIDATE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Value appears in TI application example; no project suitability inferred.")
+				(field
+					(name "Display") "2.2 nF dVdt candidate")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "dVdt")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "CIN1")
+			(description "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "CIN1")
+				(field
+					(name "Value") "0.1 uF minimum 25 V X7R input bypass candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+				(field
+					(name "Status") "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI recommends 0.1 uF or greater at IN; exact component not inferred.")
+				(field
+					(name "Display") "0.1 uF minimum 25 V X7R input bypass candidate")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "CIN2")
+			(description "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "CIN2")
+				(field
+					(name "Value") "0.1 uF minimum 25 V X7R input bypass candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+				(field
+					(name "Status") "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI recommends 0.1 uF or greater at IN; exact component not inferred.")
+				(field
+					(name "Display") "0.1 uF minimum 25 V X7R input bypass candidate")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "CIN3")
+			(description "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "CIN3")
+				(field
+					(name "Value") "0.1 uF minimum 25 V X7R input bypass candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Locate at IN/GND; capacitance under bias, ripple and layout remain open.")
+				(field
+					(name "Status") "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI recommends 0.1 uF or greater at IN; exact component not inferred.")
+				(field
+					(name "Display") "0.1 uF minimum 25 V X7R input bypass candidate")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "COUT1")
+			(description "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "COUT1")
+				(field
+					(name "Value") "1.0 uF minimum 25 V X7R output bypass candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+				(field
+					(name "Status") "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI recommends 1 uF or greater at OUT for inductive-load transients; exact component not inferred.")
+				(field
+					(name "Display") "1.0 uF minimum 25 V X7R output bypass candidate")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "OUT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "COUT2")
+			(description "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "COUT2")
+				(field
+					(name "Value") "1.0 uF minimum 25 V X7R output bypass candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+				(field
+					(name "Status") "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI recommends 1 uF or greater at OUT for inductive-load transients; exact component not inferred.")
+				(field
+					(name "Display") "1.0 uF minimum 25 V X7R output bypass candidate")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "OUT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "COUT3")
+			(description "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "COUT3")
+				(field
+					(name "Value") "1.0 uF minimum 25 V X7R output bypass candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Locate at OUT/GND; actuator input capacitance and transient loop remain open.")
+				(field
+					(name "Status") "REQUIREMENT FIXED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI recommends 1 uF or greater at OUT for inductive-load transients; exact component not inferred.")
+				(field
+					(name "Display") "1.0 uF minimum 25 V X7R output bypass candidate")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "OUT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JIN1")
+			(description "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(fields
+				(field
+					(name "Reference") "JIN1")
+				(field
+					(name "Value") "JST B2P-VH J1 SHOULDER fused input boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+				(field
+					(name "Status") "EXACT FAMILY CANDIDATE - HARNESS/CONTACT SELECTION REQUIRED")
+				(field
+					(name "Evidence") "JST VH family application remains held; this evaluation schematic does not release a harness.")
+				(field
+					(name "Display") "JST B2P-VH J1 SHOULDER fused input boundary")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "FUSED_VDD_IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JIN2")
+			(description "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(fields
+				(field
+					(name "Reference") "JIN2")
+				(field
+					(name "Value") "JST B2P-VH J2 ELBOW fused input boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+				(field
+					(name "Status") "EXACT FAMILY CANDIDATE - HARNESS/CONTACT SELECTION REQUIRED")
+				(field
+					(name "Evidence") "JST VH family application remains held; this evaluation schematic does not release a harness.")
+				(field
+					(name "Display") "JST B2P-VH J2 ELBOW fused input boundary")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "FUSED_VDD_IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JIN3")
+			(description "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(fields
+				(field
+					(name "Reference") "JIN3")
+				(field
+					(name "Value") "JST B2P-VH G1 GRIPPER fused input boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Input from the separately fused branch. Exact mating housing, contact, conductor, crimp, retention and thermal evidence remain open.")
+				(field
+					(name "Status") "EXACT FAMILY CANDIDATE - HARNESS/CONTACT SELECTION REQUIRED")
+				(field
+					(name "Evidence") "JST VH family application remains held; this evaluation schematic does not release a harness.")
+				(field
+					(name "Display") "JST B2P-VH G1 GRIPPER fused input boundary")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "FUSED_VDD_IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JOUT1")
+			(description "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(fields
+				(field
+					(name "Reference") "JOUT1")
+				(field
+					(name "Value") "JST B2P-VH J1 SHOULDER limited output boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+				(field
+					(name "Status") "EXACT FAMILY CANDIDATE - DXL-STAR INTERFACE HOLD")
+				(field
+					(name "Evidence") "JST VH family evidence only; no cable or contact application release.")
+				(field
+					(name "Display") "JST B2P-VH J1 SHOULDER limited output boundary")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "LIMITED_VDD_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JOUT2")
+			(description "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(fields
+				(field
+					(name "Reference") "JOUT2")
+				(field
+					(name "Value") "JST B2P-VH J2 ELBOW limited output boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+				(field
+					(name "Status") "EXACT FAMILY CANDIDATE - DXL-STAR INTERFACE HOLD")
+				(field
+					(name "Evidence") "JST VH family evidence only; no cable or contact application release.")
+				(field
+					(name "Display") "JST B2P-VH J2 ELBOW limited output boundary")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "LIMITED_VDD_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JOUT3")
+			(description "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(fields
+				(field
+					(name "Reference") "JOUT3")
+				(field
+					(name "Value") "JST B2P-VH G1 GRIPPER limited output boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Output to the existing DXL-STAR protected-power input. Exact harness and physical integration remain open.")
+				(field
+					(name "Status") "EXACT FAMILY CANDIDATE - DXL-STAR INTERFACE HOLD")
+				(field
+					(name "Evidence") "JST VH family evidence only; no cable or contact application release.")
+				(field
+					(name "Display") "JST B2P-VH G1 GRIPPER limited output boundary")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "LIMITED_VDD_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "KCHAIN1")
+			(description "Represents the existing two-contactor series path only; no added safety credit.")
+			(fields
+				(field
+					(name "Reference") "KCHAIN1")
+				(field
+					(name "Value") "K1/K2 redundant interruption output boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Represents the existing two-contactor series path only; no added safety credit.")
+				(field
+					(name "Status") "SYSTEM BOUNDARY - CONTACT APPLICATION HOLD")
+				(field
+					(name "Evidence") "Current V3-P1.14 boundary; loaded interruption and regeneration remain open.")
+				(field
+					(name "Display") "K1/K2 redundant interruption output boundary")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "SOURCE")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "SAFE_BUS")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RILM1")
+			(description "TI catalog basis: 1.8-2.2 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "RILM1")
+				(field
+					(name "Value") "1.65 kOhm 1%")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI catalog basis: 1.8-2.2 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI equation and guaranteed threshold rows; no passive order code inferred.")
+				(field
+					(name "Display") "1.65 kOhm 1%")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "ILM")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RILM2")
+			(description "TI catalog basis: 1.8-2.2 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "RILM2")
+				(field
+					(name "Value") "1.65 kOhm 1%")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI catalog basis: 1.8-2.2 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI equation and guaranteed threshold rows; no passive order code inferred.")
+				(field
+					(name "Display") "1.65 kOhm 1%")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "ILM")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RILM3")
+			(description "TI catalog basis: 0.85-1.15 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "RILM3")
+				(field
+					(name "Value") "3.32 kOhm 1%")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI catalog basis: 0.85-1.15 A catalog threshold before resistor tolerance. The physical resistor order code and tolerance/temperature proof remain open.")
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI equation and guaranteed threshold rows; no passive order code inferred.")
+				(field
+					(name "Display") "3.32 kOhm 1%")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "ILM")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "ROVB1")
+			(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "ROVB1")
+				(field
+					(name "Value") "44.2 kOhm 1% OVLO lower")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+				(field
+					(name "Status") "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI design example, not project application approval.")
+				(field
+					(name "Display") "44.2 kOhm 1% OVLO lower")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "OVLO")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "ROVB2")
+			(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "ROVB2")
+				(field
+					(name "Value") "44.2 kOhm 1% OVLO lower")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+				(field
+					(name "Status") "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI design example, not project application approval.")
+				(field
+					(name "Display") "44.2 kOhm 1% OVLO lower")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "OVLO")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "ROVB3")
+			(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "ROVB3")
+				(field
+					(name "Value") "44.2 kOhm 1% OVLO lower")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+				(field
+					(name "Status") "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI design example, not project application approval.")
+				(field
+					(name "Display") "44.2 kOhm 1% OVLO lower")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "OVLO")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "ROVT1")
+			(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "ROVT1")
+				(field
+					(name "Value") "470 kOhm 1% OVLO upper")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+				(field
+					(name "Status") "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI design example, not project application approval.")
+				(field
+					(name "Display") "470 kOhm 1% OVLO upper")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "OVLO")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "ROVT2")
+			(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "ROVT2")
+				(field
+					(name "Value") "470 kOhm 1% OVLO upper")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+				(field
+					(name "Status") "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI design example, not project application approval.")
+				(field
+					(name "Display") "470 kOhm 1% OVLO upper")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "OVLO")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "ROVT3")
+			(description "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "ROVT3")
+				(field
+					(name "Value") "470 kOhm 1% OVLO upper")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "TI 14 V application-divider example; project tolerance and transient validation remain open.")
+				(field
+					(name "Status") "TI EXAMPLE VALUE - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "TI design example, not project application approval.")
+				(field
+					(name "Display") "470 kOhm 1% OVLO upper")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "OVLO")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RUVB1")
+			(description "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "RUVB1")
+				(field
+					(name "Value") "49.9 kOhm 1% UVLO lower")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Derived with TI VUVLO limits; exact resistor selection remains open.")
+				(field
+					(name "Display") "49.9 kOhm 1% UVLO lower")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "UVLO")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RUVB2")
+			(description "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "RUVB2")
+				(field
+					(name "Value") "49.9 kOhm 1% UVLO lower")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Derived with TI VUVLO limits; exact resistor selection remains open.")
+				(field
+					(name "Display") "49.9 kOhm 1% UVLO lower")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "UVLO")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RUVB3")
+			(description "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "RUVB3")
+				(field
+					(name "Value") "49.9 kOhm 1% UVLO lower")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Nominal 10 V turn-on divider lower resistor; tolerance screen only.")
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Derived with TI VUVLO limits; exact resistor selection remains open.")
+				(field
+					(name "Display") "49.9 kOhm 1% UVLO lower")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "UVLO")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RUVT1")
+			(description "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "RUVT1")
+				(field
+					(name "Value") "365 kOhm 1% UVLO upper")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Derived with TI VUVLO limits; exact resistor selection remains open.")
+				(field
+					(name "Display") "365 kOhm 1% UVLO upper")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "UVLO")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RUVT2")
+			(description "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "RUVT2")
+				(field
+					(name "Value") "365 kOhm 1% UVLO upper")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Derived with TI VUVLO limits; exact resistor selection remains open.")
+				(field
+					(name "Display") "365 kOhm 1% UVLO upper")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "UVLO")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RUVT3")
+			(description "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "RUVT3")
+				(field
+					(name "Value") "365 kOhm 1% UVLO upper")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Nominal 10 V turn-on divider upper resistor; tolerance screen only.")
+				(field
+					(name "Status") "VALUE DERIVED - EXACT MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Derived with TI VUVLO limits; exact resistor selection remains open.")
+				(field
+					(name "Display") "365 kOhm 1% UVLO upper")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "UVLO")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SH1")
+			(description "Install across the post-contactor bus for evaluation. Manufacturer warns continuous above-setpoint voltage can destroy the board in under one second.")
+			(docs "https://www.pololu.com/product/3771")
+			(fields
+				(field
+					(name "Reference") "SH1")
+				(field
+					(name "Value") "Pololu item 3771 13.2 V 1.50 Ohm 15 W shunt regulator")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pololu.com/product/3771")
+				(field
+					(name "Description") "Install across the post-contactor bus for evaluation. Manufacturer warns continuous above-setpoint voltage can destroy the board in under one second.")
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE - SHORT PULSES ONLY")
+				(field
+					(name "Evidence") "Pololu item 3771 active/preferred page accessed 2026-08-09; fixed setpoint ±3%, pulse application only.")
+				(field
+					(name "Display") "Pololu item 3771 13.2 V 1.50 Ohm 15 W shunt regulator")
+			)
+			(pins
+				(pin
+					(num "+")
+					(name "BUS_+")
+					(type "passive")
+				)
+				(pin
+					(num "-")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SRC1")
+			(description "12 V ±5% catalog source; reverse-current sinking is not documented.")
+			(docs "https://www.meanwell.com/Upload/PDF/GST280A/GST280A-SPEC.PDF")
+			(fields
+				(field
+					(name "Reference") "SRC1")
+				(field
+					(name "Value") "Mean Well GST280A12-C6P source boundary")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.meanwell.com/Upload/PDF/GST280A/GST280A-SPEC.PDF")
+				(field
+					(name "Description") "12 V ±5% catalog source; reverse-current sinking is not documented.")
+				(field
+					(name "Status") "EXACT SOURCE CANDIDATE - REGENERATION APPLICATION HOLD")
+				(field
+					(name "Evidence") "GST280A-SPEC 2025-03-28; final equipment and regeneration behavior remain open.")
+				(field
+					(name "Display") "Mean Well GST280A12-C6P source boundary")
+			)
+			(pins
+				(pin
+					(num "+")
+					(name "+12_V")
+					(type "passive")
+				)
+				(pin
+					(num "-")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TPBUS1")
+			(description "Kelvin/probe method, category, spacing and fixture remain open.")
+			(fields
+				(field
+					(name "Reference") "TPBUS1")
+				(field
+					(name "Value") "Bus-voltage measurement point - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Kelvin/probe method, category, spacing and fixture remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Bus-voltage measurement point - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "ACTUATOR_BUS")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TPFLT1")
+			(description "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TPFLT1")
+				(field
+					(name "Value") "Harwin S1751-46R FLT diagnostic test point")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+				(field
+					(name "Status") "EXACT TEST-POINT CANDIDATE - NO INSTALLED PULLUP")
+				(field
+					(name "Evidence") "No safety or motion credit.")
+				(field
+					(name "Display") "Harwin S1751-46R FLT diagnostic test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "FLT_open_drain")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TPFLT2")
+			(description "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TPFLT2")
+				(field
+					(name "Value") "Harwin S1751-46R FLT diagnostic test point")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+				(field
+					(name "Status") "EXACT TEST-POINT CANDIDATE - NO INSTALLED PULLUP")
+				(field
+					(name "Evidence") "No safety or motion credit.")
+				(field
+					(name "Display") "Harwin S1751-46R FLT diagnostic test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "FLT_open_drain")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TPFLT3")
+			(description "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TPFLT3")
+				(field
+					(name "Value") "Harwin S1751-46R FLT diagnostic test point")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Open-drain diagnostic only. External pullup/interface is deliberately absent and SELECTION REQUIRED.")
+				(field
+					(name "Status") "EXACT TEST-POINT CANDIDATE - NO INSTALLED PULLUP")
+				(field
+					(name "Evidence") "No safety or motion credit.")
+				(field
+					(name "Display") "Harwin S1751-46R FLT diagnostic test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "FLT_open_drain")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TPILM1")
+			(description "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TPILM1")
+				(field
+					(name "Value") "Harwin S1751-46R ILM test point")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+				(field
+					(name "Status") "EXACT TEST-POINT CANDIDATE - CAPACITIVE-LOADING HOLD")
+				(field
+					(name "Evidence") "Existing controlled Harwin test-point identity; bench probe loading remains open.")
+				(field
+					(name "Display") "Harwin S1751-46R ILM test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "ILM")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TPILM2")
+			(description "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TPILM2")
+				(field
+					(name "Value") "Harwin S1751-46R ILM test point")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+				(field
+					(name "Status") "EXACT TEST-POINT CANDIDATE - CAPACITIVE-LOADING HOLD")
+				(field
+					(name "Evidence") "Existing controlled Harwin test-point identity; bench probe loading remains open.")
+				(field
+					(name "Display") "Harwin S1751-46R ILM test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "ILM")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TPILM3")
+			(description "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+			(docs "https://www.harwin.com/products/S1751-46R")
+			(fields
+				(field
+					(name "Reference") "TPILM3")
+				(field
+					(name "Value") "Harwin S1751-46R ILM test point")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.harwin.com/products/S1751-46R")
+				(field
+					(name "Description") "Probe only under a released test method; total ILM capacitance must remain below TI's 50 pF stability limit.")
+				(field
+					(name "Status") "EXACT TEST-POINT CANDIDATE - CAPACITIVE-LOADING HOLD")
+				(field
+					(name "Evidence") "Existing controlled Harwin test-point identity; bench probe loading remains open.")
+				(field
+					(name "Display") "Harwin S1751-46R ILM test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "ILM")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TPRET1")
+			(description "Kelvin/probe method, category, spacing and fixture remain open.")
+			(fields
+				(field
+					(name "Reference") "TPRET1")
+				(field
+					(name "Value") "Return measurement point - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Kelvin/probe method, category, spacing and fixture remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "Return measurement point - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "U1")
+			(description "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+			(docs "https://www.ti.com/product/TPS25946/part-details/TPS259461LRPWR")
+			(fields
+				(field
+					(name "Reference") "U1")
+				(field
+					(name "Value") "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/product/TPS25946/part-details/TPS259461LRPWR")
+				(field
+					(name "Description") "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE - NOT SELECTED FOR ROBOT")
+				(field
+					(name "Evidence") "TI product page active and datasheet SLVSGA8B, April 2022; rechecked 2026-08-09.")
+				(field
+					(name "Display") "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "EN/UVLO")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "OVLO")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "SPLYGD")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "FLT")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "OUT")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "dVdt")
+					(type "passive")
+				)
+				(pin
+					(num "9")
+					(name "ILM")
+					(type "passive")
+				)
+				(pin
+					(num "10")
+					(name "ITIMER_OPEN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "U1G")
+			(description "Pin 8 belongs to the same TPS259461LRPWR represented by U1; do not count as another BOM device.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "U1G")
+				(field
+					(name "Value") "U1 pin 8 GND cross-reference")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Pin 8 belongs to the same TPS259461LRPWR represented by U1; do not count as another BOM device.")
+				(field
+					(name "Status") "CONTACT CROSS-REFERENCE - SAME DEVICE")
+				(field
+					(name "Evidence") "Split graphical unit preserves the exact pin while preventing adjacent global-label ambiguity.")
+				(field
+					(name "Display") "U1 pin 8 GND cross-reference")
+			)
+			(pins
+				(pin
+					(num "8")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "U2")
+			(description "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+			(docs "https://www.ti.com/product/TPS25946/part-details/TPS259461LRPWR")
+			(fields
+				(field
+					(name "Reference") "U2")
+				(field
+					(name "Value") "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/product/TPS25946/part-details/TPS259461LRPWR")
+				(field
+					(name "Description") "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE - NOT SELECTED FOR ROBOT")
+				(field
+					(name "Evidence") "TI product page active and datasheet SLVSGA8B, April 2022; rechecked 2026-08-09.")
+				(field
+					(name "Display") "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "EN/UVLO")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "OVLO")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "SPLYGD")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "FLT")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "OUT")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "dVdt")
+					(type "passive")
+				)
+				(pin
+					(num "9")
+					(name "ILM")
+					(type "passive")
+				)
+				(pin
+					(num "10")
+					(name "ITIMER_OPEN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "U2G")
+			(description "Pin 8 belongs to the same TPS259461LRPWR represented by U2; do not count as another BOM device.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "U2G")
+				(field
+					(name "Value") "U2 pin 8 GND cross-reference")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Pin 8 belongs to the same TPS259461LRPWR represented by U2; do not count as another BOM device.")
+				(field
+					(name "Status") "CONTACT CROSS-REFERENCE - SAME DEVICE")
+				(field
+					(name "Evidence") "Split graphical unit preserves the exact pin while preventing adjacent global-label ambiguity.")
+				(field
+					(name "Display") "U2 pin 8 GND cross-reference")
+			)
+			(pins
+				(pin
+					(num "8")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "U3")
+			(description "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+			(docs "https://www.ti.com/product/TPS25946/part-details/TPS259461LRPWR")
+			(fields
+				(field
+					(name "Reference") "U3")
+				(field
+					(name "Value") "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/product/TPS25946/part-details/TPS259461LRPWR")
+				(field
+					(name "Description") "Exact active TI orderable candidate. Forward overcurrent limiting only; no OUT-to-IN overcurrent protection while enabled. RPW land pattern, assembly process, thermal design and received validation remain open.")
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE - NOT SELECTED FOR ROBOT")
+				(field
+					(name "Evidence") "TI product page active and datasheet SLVSGA8B, April 2022; rechecked 2026-08-09.")
+				(field
+					(name "Display") "TI TPS259461LRPWR latch-off bidirectional-on-state eFuse")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "EN/UVLO")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "OVLO")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "SPLYGD")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "FLT")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "IN")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "OUT")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "dVdt")
+					(type "passive")
+				)
+				(pin
+					(num "9")
+					(name "ILM")
+					(type "passive")
+				)
+				(pin
+					(num "10")
+					(name "ITIMER_OPEN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "U3G")
+			(description "Pin 8 belongs to the same TPS259461LRPWR represented by U3; do not count as another BOM device.")
+			(docs "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+			(fields
+				(field
+					(name "Reference") "U3G")
+				(field
+					(name "Value") "U3 pin 8 GND cross-reference")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps25946.pdf")
+				(field
+					(name "Description") "Pin 8 belongs to the same TPS259461LRPWR represented by U3; do not count as another BOM device.")
+				(field
+					(name "Status") "CONTACT CROSS-REFERENCE - SAME DEVICE")
+				(field
+					(name "Evidence") "Split graphical unit preserves the exact pin while preventing adjacent global-label ambiguity.")
+				(field
+					(name "Display") "U3 pin 8 GND cross-reference")
+			)
+			(pins
+				(pin
+					(num "8")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "PBV3")
+			(uri "${KIPRJMOD}/hr-v0-dxl-protection-eval.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "ACT_0V_PE_BONDED")
+			(class "Default")
+			(node
+				(ref "CDV1")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "CDV2")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "CDV3")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "CIN1")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "CIN2")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "CIN3")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "COUT1")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "COUT2")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "COUT3")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "JIN1")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "JIN2")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "JIN3")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "JOUT1")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "JOUT2")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "JOUT3")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "RILM1")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "RILM2")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "RILM3")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "ROVB1")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "ROVB2")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "ROVB3")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "RUVB1")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "RUVB2")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "RUVB3")
+				(pin "2")
+				(pinfunction "RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "SH1")
+				(pin "-")
+				(pinfunction "RETURN_-")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRC1")
+				(pin "-")
+				(pinfunction "RETURN_-")
+				(pintype "passive")
+			)
+			(node
+				(ref "TPRET1")
+				(pin "1")
+				(pinfunction "RETURN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1G")
+				(pin "8")
+				(pinfunction "GND_8")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2G")
+				(pin "8")
+				(pinfunction "GND_8")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3G")
+				(pin "8")
+				(pinfunction "GND_8")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "2")
+			(name "ACT_12V_BUS")
+			(class "Default")
+			(node
+				(ref "KCHAIN1")
+				(pin "OUT")
+				(pinfunction "SAFE_BUS_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "SH1")
+				(pin "+")
+				(pinfunction "BUS_+_+")
+				(pintype "passive")
+			)
+			(node
+				(ref "TPBUS1")
+				(pin "1")
+				(pinfunction "ACTUATOR_BUS_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "3")
+			(name "ACT_12V_SOURCE")
+			(class "Default")
+			(node
+				(ref "KCHAIN1")
+				(pin "IN")
+				(pinfunction "SOURCE_IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRC1")
+				(pin "+")
+				(pinfunction "+12_V_+")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "4")
+			(name "B1_DVDT")
+			(class "Default")
+			(node
+				(ref "CDV1")
+				(pin "1")
+				(pinfunction "dVdt_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "7")
+				(pinfunction "dVdt_7")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "5")
+			(name "B1_FLT_DIAG")
+			(class "Default")
+			(node
+				(ref "TPFLT1")
+				(pin "1")
+				(pinfunction "FLT_open_drain_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "4")
+				(pinfunction "FLT_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "B1_FUSED_IN")
+			(class "Default")
+			(node
+				(ref "CIN1")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JIN1")
+				(pin "1")
+				(pinfunction "FUSED_VDD_IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "ROVT1")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RUVT1")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "5")
+				(pinfunction "IN_5")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "7")
+			(name "B1_ILM")
+			(class "Default")
+			(node
+				(ref "RILM1")
+				(pin "1")
+				(pinfunction "ILM_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TPILM1")
+				(pin "1")
+				(pinfunction "ILM_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "9")
+				(pinfunction "ILM_9")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "8")
+			(name "B1_LIMITED_OUT")
+			(class "Default")
+			(node
+				(ref "COUT1")
+				(pin "1")
+				(pinfunction "OUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JOUT1")
+				(pin "1")
+				(pinfunction "LIMITED_VDD_OUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "6")
+				(pinfunction "OUT_6")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "9")
+			(name "B1_OVLO")
+			(class "Default")
+			(node
+				(ref "ROVB1")
+				(pin "1")
+				(pinfunction "OVLO_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "ROVT1")
+				(pin "2")
+				(pinfunction "OVLO_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "2")
+				(pinfunction "OVLO_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "10")
+			(name "B1_UVLO")
+			(class "Default")
+			(node
+				(ref "RUVB1")
+				(pin "1")
+				(pinfunction "UVLO_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RUVT1")
+				(pin "2")
+				(pinfunction "UVLO_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "1")
+				(pinfunction "EN/UVLO_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "11")
+			(name "B2_DVDT")
+			(class "Default")
+			(node
+				(ref "CDV2")
+				(pin "1")
+				(pinfunction "dVdt_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "7")
+				(pinfunction "dVdt_7")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "12")
+			(name "B2_FLT_DIAG")
+			(class "Default")
+			(node
+				(ref "TPFLT2")
+				(pin "1")
+				(pinfunction "FLT_open_drain_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "4")
+				(pinfunction "FLT_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "13")
+			(name "B2_FUSED_IN")
+			(class "Default")
+			(node
+				(ref "CIN2")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JIN2")
+				(pin "1")
+				(pinfunction "FUSED_VDD_IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "ROVT2")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RUVT2")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "5")
+				(pinfunction "IN_5")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "14")
+			(name "B2_ILM")
+			(class "Default")
+			(node
+				(ref "RILM2")
+				(pin "1")
+				(pinfunction "ILM_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TPILM2")
+				(pin "1")
+				(pinfunction "ILM_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "9")
+				(pinfunction "ILM_9")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "15")
+			(name "B2_LIMITED_OUT")
+			(class "Default")
+			(node
+				(ref "COUT2")
+				(pin "1")
+				(pinfunction "OUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JOUT2")
+				(pin "1")
+				(pinfunction "LIMITED_VDD_OUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "6")
+				(pinfunction "OUT_6")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "16")
+			(name "B2_OVLO")
+			(class "Default")
+			(node
+				(ref "ROVB2")
+				(pin "1")
+				(pinfunction "OVLO_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "ROVT2")
+				(pin "2")
+				(pinfunction "OVLO_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "2")
+				(pinfunction "OVLO_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "17")
+			(name "B2_UVLO")
+			(class "Default")
+			(node
+				(ref "RUVB2")
+				(pin "1")
+				(pinfunction "UVLO_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RUVT2")
+				(pin "2")
+				(pinfunction "UVLO_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "1")
+				(pinfunction "EN/UVLO_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "18")
+			(name "B3_DVDT")
+			(class "Default")
+			(node
+				(ref "CDV3")
+				(pin "1")
+				(pinfunction "dVdt_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "7")
+				(pinfunction "dVdt_7")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "19")
+			(name "B3_FLT_DIAG")
+			(class "Default")
+			(node
+				(ref "TPFLT3")
+				(pin "1")
+				(pinfunction "FLT_open_drain_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "4")
+				(pinfunction "FLT_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "20")
+			(name "B3_FUSED_IN")
+			(class "Default")
+			(node
+				(ref "CIN3")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JIN3")
+				(pin "1")
+				(pinfunction "FUSED_VDD_IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "ROVT3")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RUVT3")
+				(pin "1")
+				(pinfunction "IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "5")
+				(pinfunction "IN_5")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "21")
+			(name "B3_ILM")
+			(class "Default")
+			(node
+				(ref "RILM3")
+				(pin "1")
+				(pinfunction "ILM_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TPILM3")
+				(pin "1")
+				(pinfunction "ILM_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "9")
+				(pinfunction "ILM_9")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "22")
+			(name "B3_LIMITED_OUT")
+			(class "Default")
+			(node
+				(ref "COUT3")
+				(pin "1")
+				(pinfunction "OUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JOUT3")
+				(pin "1")
+				(pinfunction "LIMITED_VDD_OUT_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "6")
+				(pinfunction "OUT_6")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "23")
+			(name "B3_OVLO")
+			(class "Default")
+			(node
+				(ref "ROVB3")
+				(pin "1")
+				(pinfunction "OVLO_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "ROVT3")
+				(pin "2")
+				(pinfunction "OVLO_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "2")
+				(pinfunction "OVLO_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "24")
+			(name "B3_UVLO")
+			(class "Default")
+			(node
+				(ref "RUVB3")
+				(pin "1")
+				(pinfunction "UVLO_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RUVT3")
+				(pin "2")
+				(pinfunction "UVLO_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "1")
+				(pinfunction "EN/UVLO_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "25")
+			(name "unconnected-(U1-ITIMER_OPEN-Pad10)")
+			(class "Default")
+			(node
+				(ref "U1")
+				(pin "10")
+				(pinfunction "ITIMER_OPEN_10")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "26")
+			(name "unconnected-(U1-SPLYGD-Pad3)")
+			(class "Default")
+			(node
+				(ref "U1")
+				(pin "3")
+				(pinfunction "SPLYGD_3")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "27")
+			(name "unconnected-(U2-ITIMER_OPEN-Pad10)")
+			(class "Default")
+			(node
+				(ref "U2")
+				(pin "10")
+				(pinfunction "ITIMER_OPEN_10")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "28")
+			(name "unconnected-(U2-SPLYGD-Pad3)")
+			(class "Default")
+			(node
+				(ref "U2")
+				(pin "3")
+				(pinfunction "SPLYGD_3")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "29")
+			(name "unconnected-(U3-ITIMER_OPEN-Pad10)")
+			(class "Default")
+			(node
+				(ref "U3")
+				(pin "10")
+				(pinfunction "ITIMER_OPEN_10")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "30")
+			(name "unconnected-(U3-SPLYGD-Pad3)")
+			(class "Default")
+			(node
+				(ref "U3")
+				(pin "3")
+				(pinfunction "SPLYGD_3")
+				(pintype "passive+no_connect")
+			)
+		)
+	)
+)

@@ -1,0 +1,26 @@
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-eval\validation\hr-v0-dxl-protection-eval-erc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-eval\hr-v0-dxl-protection-eval.kicad_sch"
+Found 0 violations
+Saved ERC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/hr-v0-dxl-protection-eval/validation/hr-v0-dxl-protection-eval-erc.rpt
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-eval\validation\hr-v0-dxl-protection-eval.net" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-eval\hr-v0-dxl-protection-eval.kicad_sch"
+Warning: schematic has annotation errors, please use the schematic editor to fix them
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export pdf --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-eval\output\hr-v0-dxl-protection-eval-preliminary.pdf" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-eval\hr-v0-dxl-protection-eval.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-eval\output\hr-v0-dxl-protection-eval-preliminary.pdf'.
+Done.
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export svg --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-eval\output" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-eval\hr-v0-dxl-protection-eval.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-eval\output\hr-v0-dxl-protection-eval.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-eval\output\hr-v0-dxl-protection-eval-01 Branch 1 TPS259461L evaluation circuit.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-eval\output\hr-v0-dxl-protection-eval-02 Branch 2 TPS259461L evaluation circuit.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-eval\output\hr-v0-dxl-protection-eval-03 Branch 3 TPS259461L evaluation circuit.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-eval\output\hr-v0-dxl-protection-eval-04 Source and regenerative-clamp evaluation boundary.svg'.
+Done.
+
+exit=0

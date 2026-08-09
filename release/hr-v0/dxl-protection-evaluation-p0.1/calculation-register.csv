@@ -1,0 +1,11 @@
+calculation_id,quantity,minimum,maximum,unit,basis
+CAL-001,J1/J2 forward current threshold with 1% RILM screen,1.782178,2.222222,A,TI 1.8-2.2 A guaranteed row adjusted inversely for ±1% resistor; application screen only
+CAL-002,G1 forward current threshold with 1% RILM screen,0.841584,1.161616,A,TI 0.85-1.15 A guaranteed row adjusted inversely for ±1% resistor; application screen only
+CAL-003,UVLO rising threshold screen,9.664856,10.349515,V,TI threshold min/max plus 365k/49.9k ±1% corner screen
+CAL-004,OVLO rising threshold screen,13.513315,14.490473,V,TI threshold min/max plus 470k/44.2k ±1% corner screen
+CAL-005,Pololu 3771 setpoint range,12.804000,13.596000,V,13.2 V ±3% manufacturer record
+CAL-006,Mean Well source tolerance range,11.400000,12.600000,V,12 V ±5% manufacturer record; ripple considered separately
+CAL-007,conservative source high plus full published ripple,,12.720000,V,12.6 V + 0.12 Vpp conservative screen; not a waveform prediction
+CAL-008,minimum static shunt/source screen margin,0.084000,,V,12.804 - 12.720; received nuisance-clamp evidence required
+CAL-009,shunt current at nominal setpoint and resistance,8.800000,,A,13.2 V / 1.50 ohm; not a guaranteed sink-current rating
+CAL-010,instantaneous resistor dissipation arithmetic,116.160000,,W,"13.2^2 / 1.50; demonstrates pulse-only boundary, not allowed duration or energy"
