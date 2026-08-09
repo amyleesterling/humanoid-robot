@@ -1,0 +1,45 @@
+{
+  "revision": "HR-V0-COLLAPSE-ENV-P0.1",
+  "arm_revision": "HR-V0-ARM-ARCH-P0.7",
+  "guard_revision": "HR-V0-GUARD-P0.3",
+  "warning": "PRELIMINARY - GEOMETRIC SCREEN ONLY - NOT APPROVED FOR FABRICATION, MOTION OR ENERGIZATION",
+  "proof_method": "continuous rigid-body radial bound for arbitrary J1/J2 X-axis rotations; J2 group uses triangle inequality",
+  "known_brep_radius_bound_mm": 338.740914,
+  "controlled_ledger_radius_mm": 360.0,
+  "combined_known_input_radius_mm": 360.0,
+  "guard_reserved_radius_mm": 450.0,
+  "radial_unallocated_margin_mm": 90.0,
+  "known_x_extent_mm": [
+    -42.0,
+    42.0
+  ],
+  "guard_x_extent_mm": [
+    -200.0,
+    200.0
+  ],
+  "known_input_z_extent_at_g0_mm": [
+    140.0,
+    860.0
+  ],
+  "guard_z_extent_mm": [
+    0.0,
+    950.0
+  ],
+  "object_catch_top_z_mm": 26.0,
+  "object_catch_to_controlled_arm_envelope_gap_mm": 114.0,
+  "known_input_fit": true,
+  "current_floor_tray_role": "OBJECT CATCH ENVELOPE ONLY - ZERO ARM SUPPORT OR ENERGY CREDIT",
+  "open_exclusions": [
+    "complete gripper mechanism",
+    "moving object geometry",
+    "cables and strain relief",
+    "tolerance",
+    "backlash",
+    "deformation",
+    "stopping and rebound",
+    "receiver contact geometry",
+    "physical metrology",
+    "qualified review"
+  ],
+  "release_state": "GEOMETRIC SCREEN ONLY - EG-008 AND EG-009 REMAIN PARTIAL"
+}

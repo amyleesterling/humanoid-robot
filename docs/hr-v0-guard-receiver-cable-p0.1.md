@@ -6,6 +6,8 @@ Date: 2026-08-06
 Requirements: `SAFE-004`, `SAFE-010`, `SAFE-011`, `MECH-001`  
 Risks: `R-001`, `R-002`, `R-022`, `R-034`
 
+> **R126 role correction:** every P0.1 reference to the floor `receiver` or fixed catch tray means the **object catch only**. `HR-V0-COLLAPSE-ENV-P0.1` shows that its top at `Z=26 mm` is 114 mm below the controlled arm-envelope bottom. It receives zero arm-support, energy, impact or load credit. A separate passive arm receiver or accepted stop-supported resting architecture remains required.
+
 ## Protective boundary
 
 HR-V0 powered tests require a fixed enclosure around the entire arm, gripper, receiver and payload-drop region. The preliminary model uses five tool-removable panels—front, rear, left, right and top—plus a fixed catch tray. A panel may be removed only after the applicable service disconnect is open, absence of actuator energy is verified, and restart is controlled. No door switch or guard interlock is selected or credited. During a test, all panels are installed and the separate 600 mm controlled exclusion boundary remains in force.

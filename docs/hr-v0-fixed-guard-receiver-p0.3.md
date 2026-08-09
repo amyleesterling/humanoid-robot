@@ -10,6 +10,8 @@ Identifier: `HR-V0-GUARD-P0.3`
 
 > **R77 impact-allocation input:** `HR-V0-GUARD-IMPACT-P0.1` separates payload, moving-link, continued-drive, detached-hardware and static-access cases. It does not release a proof energy, panel thickness or retention system.
 
+> **R126 receiver-role correction:** `HR-V0-COLLAPSE-ENV-P0.1` proves that the floor-tray top at `Z=26 mm` is `114 mm` below the controlled arm-envelope bottom at `Z=140 mm`. The five tray-piece envelopes are therefore an **object catch only**, with zero arm-support, impact, energy or load credit. A separate passive arm receiver or accepted stop-supported resting architecture remains `DESIGN REQUIRED`.
+
 Supersedes: `HR-V0-GUARD-P0.2` for current guard guidance
 
 Mechanical basis: `HR-V0-MECH-P0.6` / `HR-V0-ARM-ARCH-P0.7`

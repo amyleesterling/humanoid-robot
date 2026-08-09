@@ -14,6 +14,8 @@ HR-V0 shall not depend on actuator holding torque, gearbox friction, software, `
 
 This decision selects a protection strategy, not a receiver design. Exact receiver material, geometry, retention, energy factor, allowed travel, reaction force, rebound, final resting envelope and proof method remain `SELECTION REQUIRED`.
 
+`HR-V0-COLLAPSE-ENV-P0.1` subsequently proves that the existing P0.3 floor tray is 114 mm below the controlled arm envelope. That tray is the object catch only and cannot satisfy the passive arm-receiver requirement.
+
 ## Conservative gravitational input
 
 The current moving-mass ledger allocates exactly `750 g` across five unique buckets and records a maximum shoulder radius of `360 mm`. Without relying on the current joint limits or a particular collapse path, any point contained within that radius can change height by no more than the sphere diameter:

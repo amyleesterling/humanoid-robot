@@ -1,0 +1,9 @@
+fit_id,boundary,candidate_value_mm,guard_limit_mm,remaining_margin_mm,result,exclusion
+CEF-001,known B-Rep continuous shoulder radius,338.740914,450.000000,111.259086,PASS KNOWN BREP ONLY,"complete gripper mechanism, object, cable, strain relief, tolerance, deflection and physical motion"
+CEF-002,controlled ledger radius versus guard radial reservation,360.000000,450.000000,90.000000,PASS ALLOCATION ONLY,"ledger radius is a requirement ceiling, not as-built sweep proof"
+CEF-003,combined known geometric/allocation radius,360.000000,450.000000,90.000000,PASS INPUTS ONLY,"unused margin is not a released cable, stopping or safety clearance"
+CEF-004,negative X depth,-42.000000,-200.000000,158.000000,PASS KNOWN BREP ONLY,complete gripper/cable out-of-plane envelope
+CEF-005,positive X depth,42.000000,200.000000,158.000000,PASS KNOWN BREP ONLY,complete gripper/cable out-of-plane envelope
+CEF-006,bottom Z at G0,140.000000,0.000000,140.000000,PASS INPUTS ONLY,contact/rebound/receiver thickness and deformation
+CEF-007,top Z at G0,860.000000,950.000000,90.000000,PASS INPUTS ONLY,contact/rebound/tolerance and deformation
+CEF-008,P0.3 floor-tray top versus controlled arm-envelope bottom,26.000000,140.000000,114.000000,NO ARM CONTACT EXPECTED - OBJECT CATCH ROLE ONLY,missing gripper/cable geometry cannot be used to invent arm-support credit

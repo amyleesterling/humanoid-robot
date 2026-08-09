@@ -1,0 +1,6 @@
+role_id,current_item,controlled_role,arm_support_credit,energy_or_load_credit,required_correction,status
+RCD-001,P0.3 five-piece 320 x 820 x 50 mm floor tray,OBJECT CATCH ENVELOPE ONLY,ZERO,ZERO,refer to it as the object catch; retain material/retention/drop/rebound holds,ROLE CORRECTED - IMPLEMENTATION OPEN
+RCD-002,passive arm receiver,support arm/gripper after power-loss collapse without control energy,REQUIRED AFTER PHYSICAL ACCEPTANCE,SELECTION REQUIRED,"exact contact geometry, compliant element, load path, force/travel/rebound limits and proof",DESIGN REQUIRED
+RCD-003,J1 bidirectional hard stops,bound shoulder rotation before cable/guard/self-contact,REQUIRED AFTER PHYSICAL ACCEPTANCE,SELECTION REQUIRED,"both stop parts, bumper, backing, tolerance, impact/fatigue and physical proof",DESIGN REQUIRED
+RCD-004,J2 bidirectional hard stops,bound elbow rotation before cable/guard/self-contact,REQUIRED AFTER PHYSICAL ACCEPTANCE,positive direction CAD only; all physical and negative direction open,J2 minimum topology plus complete positive/negative proof,DESIGN REQUIRED
+RCD-005,450 mm radial reservation,geometric design-space allocation around J1,ZERO,ZERO,complete gripper/cable/tolerance/deformation/rebound union and physical metrology,KNOWN BREP FIT SCREEN ONLY
