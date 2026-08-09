@@ -16,7 +16,7 @@
     "bom/hr-v0-bom-closure.csv": "d48fa2b4db56d9e4b97fc8c6a086f02b0ba310120ccf54d285e268f42cbb2865",
     "electrical/kicad/project-button-v3/connector-schedule.csv": "59a20a2e7b2747492acb900b8bb3ad4bd42945113cf3a2a8815fd3908f2093af",
     "electrical/kicad/hr-v0-dxl-star/connector-schedule.csv": "06f702af82ccdb8980ab3aa4fdebb7f051e5344dfcbeaa49b54a4ed7a897853c",
-    "firmware/supervisor/actuator-config.json": "dcf82afb08186ef4d0279e6ce967656a5fcd148ad21a1576766bc247c421574c"
+    "firmware/supervisor/actuator-config.json": "67d89dcf835c0c2d2ec2143a85113945e3e7e404adce824f3870f1cb05b504eb"
   },
   "duplicate_branch_housings_removed": 6,
   "duplicate_branch_contacts_removed": 18,

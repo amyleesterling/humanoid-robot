@@ -67,6 +67,8 @@ class ActuatorConfigurationTests(unittest.TestCase):
         raw["transport"]["device"] = "TEST-ONLY"
         raw["mechanical_limit_binding"]["release_state"] = "ACCEPTED-FOR-GUARDED-HIL"
         raw["mechanical_limit_binding"]["acceptance_evidence_hash"] = "C" * 64
+        raw["current_envelope_binding"]["release_state"] = "ACCEPTED-FOR-GUARDED-HIL"
+        raw["current_envelope_binding"]["acceptance_evidence_hash"] = "D" * 64
         for item in raw["actuators"].values():
             item["model_number"] = 1130 if item["model"].startswith("XM540") else 1020
             item["firmware_version"] = 46
@@ -98,6 +100,8 @@ class ActuatorConfigurationTests(unittest.TestCase):
         raw["transport"]["device"] = "TEST-ONLY"
         raw["mechanical_limit_binding"]["release_state"] = "ACCEPTED-FOR-GUARDED-HIL"
         raw["mechanical_limit_binding"]["acceptance_evidence_hash"] = "C" * 64
+        raw["current_envelope_binding"]["release_state"] = "ACCEPTED-FOR-GUARDED-HIL"
+        raw["current_envelope_binding"]["acceptance_evidence_hash"] = "D" * 64
         for item in raw["actuators"].values():
             item.update(
                 model_number=1130,

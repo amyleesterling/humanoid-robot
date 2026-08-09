@@ -77,6 +77,8 @@ class ActuatorTelemetry:
     torque_enable: int
     bus_watchdog: int
     hardware_error_status: int
+    configured_current_limit_raw: int
+    active_goal_current_raw: int
     present_current_raw: int
     present_velocity_raw: int
     present_position_raw: int
@@ -223,6 +225,17 @@ class DynamixelBusController:
             raise BusError(f"sample execution failed: {exc}") from exc
 
     def poll_telemetry(self, *, require_torque: bool) -> Mapping[str, ActuatorTelemetry]:
+        """Read all execution invariants and force torque-off on any failure."""
+
+        try:
+            return self._poll_telemetry(require_torque=require_torque)
+        except Exception:
+            self._best_effort_torque_off(set(self.joint_by_id))
+            self.torque_enabled = False
+            self.active_trajectory_id = None
+            raise
+
+    def _poll_telemetry(self, *, require_torque: bool) -> Mapping[str, ActuatorTelemetry]:
         result: dict[str, ActuatorTelemetry] = {}
         for joint, rule in self.config.rules.items():
             actuator_id = rule.actuator_id
@@ -231,6 +244,8 @@ class DynamixelBusController:
                 torque_enable=self._read(actuator_id, TORQUE_ENABLE),
                 bus_watchdog=self._read(actuator_id, BUS_WATCHDOG),
                 hardware_error_status=self._read(actuator_id, HARDWARE_ERROR_STATUS),
+                configured_current_limit_raw=self._read(actuator_id, CURRENT_LIMIT),
+                active_goal_current_raw=self._read(actuator_id, GOAL_CURRENT),
                 present_current_raw=self._read(actuator_id, PRESENT_CURRENT),
                 present_velocity_raw=self._read(actuator_id, PRESENT_VELOCITY),
                 present_position_raw=self._read(actuator_id, PRESENT_POSITION),
@@ -241,6 +256,10 @@ class DynamixelBusController:
                 raise BusError(f"{joint} hardware error status is nonzero")
             if item.bus_watchdog == -1:
                 raise BusError(f"{joint} bus watchdog expired")
+            if item.configured_current_limit_raw != rule.current_limit_raw:
+                raise BusError(f"{joint} configured-current-limit readback changed during execution")
+            if item.active_goal_current_raw != rule.goal_current_max_raw:
+                raise BusError(f"{joint} goal-current readback changed during execution")
             if require_torque and item.torque_enable != 1:
                 raise BusError(f"{joint} torque dropped during execution")
             if abs(item.present_current_raw) > rule.current_limit_raw:

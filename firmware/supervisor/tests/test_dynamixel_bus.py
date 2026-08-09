@@ -44,6 +44,8 @@ def frozen_config() -> ActuatorConfiguration:
     raw["transport"]["device"] = "TEST-ONLY"
     raw["mechanical_limit_binding"]["release_state"] = "ACCEPTED-FOR-GUARDED-HIL"
     raw["mechanical_limit_binding"]["acceptance_evidence_hash"] = "C" * 64
+    raw["current_envelope_binding"]["release_state"] = "ACCEPTED-FOR-GUARDED-HIL"
+    raw["current_envelope_binding"]["acceptance_evidence_hash"] = "D" * 64
     for joint, item in raw["actuators"].items():
         item["model_number"] = 1130 if item["model"].startswith("XM540") else 1020
         item["firmware_version"] = 46
@@ -257,6 +259,8 @@ class DynamixelBusTests(unittest.TestCase):
     def test_each_telemetry_envelope_fault_forces_torque_off(self):
         cases = (
             (HARDWARE_ERROR_STATUS.address, 1, "hardware error status"),
+            (CURRENT_LIMIT.address, 801, "configured-current-limit"),
+            (GOAL_CURRENT.address, 799, "goal-current"),
             (PRESENT_CURRENT.address, 801, "present-current"),
             (PRESENT_INPUT_VOLTAGE.address, 99, "input-voltage"),
             (PRESENT_TEMPERATURE.address, 66, "temperature"),
@@ -272,6 +276,18 @@ class DynamixelBusTests(unittest.TestCase):
                 self.assertFalse(controller.torque_enabled)
                 for rule in config.rules.values():
                     self.assertEqual(0, transport.registers[(rule.actuator_id, TORQUE_ENABLE.address)])
+
+    def test_direct_poll_current_bound_drift_forces_torque_off(self):
+        config, transport, controller = connected()
+        controller.start_trajectory(Authority(True, "T1"), "T1", START)
+        actuator_id = config.rules["J1"].actuator_id
+        transport.registers[(actuator_id, GOAL_CURRENT.address)] = 799
+        with self.assertRaisesRegex(BusError, "goal-current"):
+            controller.poll_telemetry(require_torque=True)
+        self.assertFalse(controller.torque_enabled)
+        self.assertIsNone(controller.active_trajectory_id)
+        for rule in config.rules.values():
+            self.assertEqual(0, transport.registers[(rule.actuator_id, TORQUE_ENABLE.address)])
 
     def test_synchronous_write_failure_forces_torque_off(self):
         config, transport, controller = connected()

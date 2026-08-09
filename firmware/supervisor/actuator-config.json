@@ -18,6 +18,11 @@
   },
   "current_unit_a": 0.00269,
   "external_branch_current_limit_a": "SELECTION REQUIRED",
+  "current_envelope_binding": {
+    "identifier": "HR-V0-DXL-CURRENT-ENV-P0.1",
+    "release_state": "CANDIDATE-NOT-RELEASED",
+    "acceptance_evidence_hash": "SELECTION REQUIRED"
+  },
   "mechanical_limit_binding": {
     "limit_set_id": "HR-V0-LIMITS-P0.2",
     "mechanical_revision": "HR-V0-MECH-P0.6",

@@ -325,6 +325,12 @@ def main() -> int:
         failures.append("actuator mechanical-limit binding differs from the unreleased P0.7/P0.6/P0.3 candidate")
     if actuator_config.get("external_branch_current_limit_a") != "SELECTION REQUIRED":
         failures.append("external branch-current limit was released without physical evidence")
+    if actuator_config.get("current_envelope_binding") != {
+        "identifier": "HR-V0-DXL-CURRENT-ENV-P0.1",
+        "release_state": "CANDIDATE-NOT-RELEASED",
+        "acceptance_evidence_hash": "SELECTION REQUIRED",
+    }:
+        failures.append("actuator current-envelope binding is missing or no longer fail-closed")
     if actuator_config.get("operating_mode") != 5:
         failures.append("actuator candidate is not current-based position control mode 5")
     if actuator_config.get("startup_torque_on") is not False:
@@ -358,9 +364,22 @@ def main() -> int:
         "actuator transport/calibration selections remain open",
         "engineering target outside controlled motion envelope",
         "evidence_is_accepted(self.mechanical_limit_binding)",
+        "current_envelope_evidence_is_accepted(self.current_envelope_binding)",
+        "EXPECTED_CURRENT_ENVELOPE_ID",
     ):
         if required not in actuator_model:
             failures.append(f"actuator fail-closed invariant missing: {required}")
+
+    dynamixel_bus = (FIRMWARE / "supervisor" / "project_button_supervisor" / "dynamixel_bus.py").read_text(encoding="utf-8")
+    for required in (
+        "configured_current_limit_raw=self._read(actuator_id, CURRENT_LIMIT)",
+        "active_goal_current_raw=self._read(actuator_id, GOAL_CURRENT)",
+        "configured-current-limit readback changed during execution",
+        "goal-current readback changed during execution",
+        "Read all execution invariants and force torque-off on any failure.",
+    ):
+        if required not in dynamixel_bus:
+            failures.append(f"continuous DXL current-bound invariant missing: {required}")
 
     transport_config = actuator_config.get("transport", {})
     if transport_config != {

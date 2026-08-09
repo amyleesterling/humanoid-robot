@@ -19,7 +19,19 @@ from .mechanical_binding import (
     EXPECTED_ACTUATOR_CONFIGURATION_ID,
     binding_is_current,
     evidence_is_accepted,
+    is_sha256,
 )
+
+
+EXPECTED_CURRENT_ENVELOPE_ID = "HR-V0-DXL-CURRENT-ENV-P0.1"
+
+
+def current_envelope_evidence_is_accepted(binding: Mapping[str, object]) -> bool:
+    return (
+        binding.get("identifier") == EXPECTED_CURRENT_ENVELOPE_ID
+        and binding.get("release_state") == "ACCEPTED-FOR-GUARDED-HIL"
+        and is_sha256(binding.get("acceptance_evidence_hash"))
+    )
 
 
 @dataclass(frozen=True)
@@ -74,6 +86,7 @@ class ActuatorConfiguration:
         self.bus_watchdog_raw_candidate = int(raw["bus_watchdog_raw_candidate"])
         self.transport = dict(raw["transport"])
         self.mechanical_limit_binding = dict(raw["mechanical_limit_binding"])
+        self.current_envelope_binding = dict(raw["current_envelope_binding"])
         self.external_branch_current_limit_a = raw["external_branch_current_limit_a"]
         self.rules: dict[str, ActuatorRule] = {}
         for joint, item in dict(raw["actuators"]).items():
@@ -170,6 +183,10 @@ class ActuatorConfiguration:
             and not isinstance(external_limit, bool)
             and external_limit > 0
         )
+        current_envelope_current = (
+            self.current_envelope_binding.get("identifier") == EXPECTED_CURRENT_ENVELOPE_ID
+            and current_envelope_evidence_is_accepted(self.current_envelope_binding)
+        )
         bus_watchdog_valid = 1 <= self.bus_watchdog_raw_candidate <= 127
         exact_axes = set(self.rules) == set(EXPECTED_ENGINEERING_LIMITS)
         engineering_limits_current = exact_axes and all(
@@ -184,6 +201,7 @@ class ActuatorConfiguration:
         return (
             self.configuration_id == EXPECTED_ACTUATOR_CONFIGURATION_ID
             and external_limit_valid
+            and current_envelope_current
             and identities
             and identity_set_valid
             and motion_scales

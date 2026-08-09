@@ -532,6 +532,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R153 independent review request](docs/reviews/2026-08-09-r153-independent-review-request.md)
 - [Sol R12 findings rechecked after R153](docs/reviews/2026-08-09-sol-r12-post-r153-status.md)
 - [R153 validation record](docs/reviews/2026-08-09-r153-validation-record.md)
+- [R154 DXL current-envelope correction](docs/hr-v0-dxl-current-envelope-p0.1.md)
+- [R154 interactive current guide](release/hr-v0/dxl-current-envelope-p0.1/index.html)
+- [R154 measurement plan](release/hr-v0/dxl-current-envelope-p0.1/measurement-plan.csv)
+- [R154 independent review request](docs/reviews/2026-08-09-r154-independent-review-request.md)
+- [Sol R12 findings rechecked after R154](docs/reviews/2026-08-09-sol-r12-post-r154-status.md)
+- [R154 validation record](docs/reviews/2026-08-09-r154-validation-record.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -572,6 +578,8 @@ Generate R151 with `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_
 Generate R152 with `python tools/generate_hr_v0_dxl_injection_binding.py`, then run `python tools/check_hr_v0_dxl_injection_binding_p01.py`. Passing proves that one Electrical V3 `INJ1` and one DXL-STAR-P0.1/BOM-051 parent implement the three legacy injection branches with exact parity across eighteen terminals. It also proves BOM-035 requires no separate purchase, the parent remains held, all twelve residual boundaries remain open and every external-work flag remains false.
 
 Generate R153 with `python tools/generate_hr_v0_dxl_harness_allocation.py`, then run `python tools/check_hr_v0_dxl_harness_allocation_p01.py`. Passing proves the three held actuator packages each already allocate one assembled 180 mm JST-JST X3P branch cable, the loose connector/contact quantities are not double-counted, and only the custom two-conductor U2D2-to-JC1 data/return cable remains to be selected and fabricated. It does not close the JST EH/XM540 current conflict or any physical-work gate.
+
+Generate R154 with `python tools/generate_hr_v0_dxl_current_envelope.py`, then run `python tools/check_hr_v0_dxl_current_envelope_p01.py`. Passing proves the raw-current arithmetic, source binding, current-register drift monitoring, architecture disposition, blank physical records and fourteen open evidence groups are synchronized. It does not prove external current, temperature, fuse clearing, connector suitability, HIL behavior or permission to work.
 
 Run `python tools/check_hr_v0_panel_rail_duct_p01.py` for R123. Passing proves the corrected two-stock `1207648` rail branch, `3240189` duct, six `3022218` DR1-DR3 brackets, seven planning cuts, twelve holds, three current primary sources, eighteen blank receiving rows and sixteen blank installation rows stay synchronized. It does not prove received identity, final lengths, kerf, tools, holes, fasteners, DR4 retention, bonding, pull/vibration, fill, thermal behavior, qualified review or readiness.
 
@@ -615,7 +623,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred fifty-three review/control rounds are complete: R01-R153. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R153 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R153 removes duplicate loose connector/contact allocation for three factory-included branch cables and isolates the still-unresolved custom controller cable while retaining every connector-current, harness-qualification, protection, grounding, thermal, physical, qualified-review and work-authorization hold.
+One hundred fifty-four review/control rounds are complete: R01-R154. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R154 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R154 binds the unresolved external-current evidence into the fail-closed actuator configuration, rechecks both current-bound registers during every motion sample, and defines the physical qualification matrix while retaining zero safety credit and every external-current, protection, thermal, HIL, qualified-review and work-authorization hold.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -772,6 +780,7 @@ One hundred fifty-three review/control rounds are complete: R01-R153. R11 Fable 
 | R151 | DXL-STAR-P0.1 manufacturing-evidence correction | Issued `HR-V0-DXL-STAR-MFG-P0.1`; generated ten Gerber/job and five drill/map/report files, IPC-D-356, statistics and native DRC 0; proved exact encoded parity for seven connector placements and eighteen terminals and recorded four NPTH features. Advanced BOM-051 to exact-candidate hold. Eighteen release holds and eleven manufacturing selections remain open; no external work or energization authority exists. |
 | R152 | DXL injection allocation/BOM correction | Issued `HR-V0-DXL-INJECT-BIND-P0.1`; proved that one Electrical V3 INJ1 and one DXL-STAR-P0.1/BOM-051 parent implement all three isolated VDD branches with exact parity across eighteen terminals. Integrated legacy BOM-035 with no separate purchase. Twelve residual holds and every external-work boundary remain open. |
 | R153 | DXL harness allocation/BOM correction | Issued `HR-V0-DXL-HARNESS-ALLOC-P0.1`; allocated the three included 180 mm JST-JST actuator cables as integrated BOM-086, reduced loose EHR-3/SEH quantities to the one custom U2D2-to-JC1 data/return cable, and retained fourteen connector-current, harness, physical-evidence and work-authority holds. |
+| R154 | DXL current-envelope and runtime-invariant correction | Issued `HR-V0-DXL-CURRENT-ENV-P0.1`; derived the 2.152 A raw-800 internal screen, rejected fuse-only connector protection, retained the present architecture for guarded qualification only, added per-sample Current Limit/Goal Current drift checks, and preserved fourteen open physical/qualified/work-authority gates. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
