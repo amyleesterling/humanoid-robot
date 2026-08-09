@@ -488,6 +488,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R146 independent review request](docs/reviews/2026-08-09-r146-independent-review-request.md)
 - [R146 validation record](docs/reviews/2026-08-09-r146-validation-record.md)
 - [Sol R12 findings rechecked after R146](docs/reviews/2026-08-09-sol-r12-post-r146-status.md)
+- [R147 actuator-source AC cord candidate](docs/hr-v0-actuator-ac-cord-p0.1.md)
+- [R147 interactive AC cord selection guide](release/hr-v0/actuator-ac-cord-p0.1/index.html)
+- [R147 independent review request](docs/reviews/2026-08-09-r147-independent-review-request.md)
+- [R147 validation record](docs/reviews/2026-08-09-r147-validation-record.md)
+- [Sol R12 findings rechecked after R147](docs/reviews/2026-08-09-sol-r12-post-r147-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -514,6 +519,8 @@ Run `python tools/check_hr_v0_compute_subassembly_p01.py` for R120. Passing prov
 Run `python tools/check_hr_v0_compute_installation_p01.py` for the R121 installation package as synchronized through R122. Passing proves that the enlarged `PJ302410RT` / `18P2721` branch, `PI5-CASE-D`, U2D2, three exact base/strap candidates, held `USB2AC50CM`, 26 planning envelopes, 34 panel-BOM rows, sixteen holds and twenty blank receiving records stay synchronized. It does not prove holes, fasteners, received connector/fit, bend/retention, pull/vibration, depth, thermal behavior, grounding/EMC or readiness.
 
 Run `python tools/check_hr_v0_u2d2_usb_cable_p01.py` for R122. Passing proves that StarTech.com `USB2AC50CM`, fourteen interface controls, four trade records, four current primary-source records, eighteen blank receiving rows, sixteen blank test rows, the P0.6 panel route and fail-closed gate references stay synchronized. It does not prove received identity, connector revision, fit, bend, retention, thermal limits, enumeration, waveform/error performance, common-mode behavior, no-backfeed, EMC, HIL or readiness.
+
+Run `python tools/generate_hr_v0_actuator_ac_cord.py` and `python tools/check_hr_v0_actuator_ac_cord_p01.py` for R147. Passing proves the held Eaton `P006-006` identity, current MEAN WELL/Eaton source facts, eighteen controls, twelve open holds, thirty blank physical records, BOM-063 exact-candidate classification and partial site/BOM/PE/mains gates. It does not prove purchase authority, received construction, premises branch, code applicability, C13/C14 fit, PE/isolation, 95 A catalog-inrush compatibility, route, temperature, connection or readiness.
 
 Run `python tools/check_hr_v0_panel_rail_duct_p01.py` for R123. Passing proves the corrected two-stock `1207648` rail branch, `3240189` duct, six `3022218` DR1-DR3 brackets, seven planning cuts, twelve holds, three current primary sources, eighteen blank receiving rows and sixteen blank installation rows stay synchronized. It does not prove received identity, final lengths, kerf, tools, holes, fasteners, DR4 retention, bonding, pull/vibration, fill, thermal behavior, qualified review or readiness.
 
@@ -557,7 +564,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred forty-six review/control rounds are complete: R01-R146. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R146 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R146 expands the 17 evaluation lines into 21 deterministic unit IDs, 252 unexecuted receiving records, 147 evidence placeholders and 21 quarantine labels; zero items are authorized, ordered, received, executed or accepted for machine use.
+One hundred forty-seven review/control rounds are complete: R01-R147. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R147 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R147 moves BOM-063 to an exact held Eaton `P006-006` actuator-source AC cord candidate, reducing selection-required groups from 24 to 23 while retaining all site, received, PE, inrush, routing, thermal, code and qualified-review holds.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -707,6 +714,7 @@ One hundred forty-six review/control rounds are complete: R01-R146. R11 Fable an
 | R144 | Integrated unpowered build-traveler correction | Issued `HR-V0-BUILD-TRAVELER-P0.1`: 14 dependency-ordered phases, 85 concrete steps, 21 through-E2 gate mappings and 14 hold points. Zero steps are authorized or executed; BT-P13 prohibits connection and energization. |
 | R145 | Complete Evaluation Batch A acquisition-decision and manifest-cycle correction | Issued `HR-V0-EVAL-BATCH-A-ACQ-P0.1`: all 17 controlled lines / 21 units grouped into four lots; current known manufacturer-price floor $1,864.73; eight quote-required lines; 15 current official product records. Removed the inherited unsatisfiable manifest/build-traveler hash cycle with an explicit machine-checked self-reference marker while retaining the independent manifest check. Zero lines/lots are authorized, ordered or received; no checkout, fabrication, connection, motion or energization is authorized. |
 | R146 | Evaluation Batch A unit receiving, quarantine and historical-governance-snapshot correction | Issued `HR-V0-EVAL-BATCH-A-RCV-P0.1`: 21 deterministic unit IDs, twelve receiving steps per unit, seven evidence placeholders per unit and 21 printable quarantine labels. Corrected P0.1/P0.2 governance checkers to validate their recorded historical hashes while current P0.3 follows live sources. All 252 traveler records and 147 evidence records are unexecuted; zero units are authorized, ordered, received or accepted for machine use. |
+| R147 | Actuator-source AC cord catalog-selection correction | Issued `HR-V0-ACT-AC-CORD-P0.1`; advanced BOM-063 to exact-candidate hold for Eaton `P006-006` against the MEAN WELL GST280A12-C6P C14/Class-I basis. Eighteen controls, twelve holds and thirty physical records retain the exact site, branch, code, PE, fit, inrush, route, thermal and qualified-review boundaries. No purchase, connection or energization authority exists. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

@@ -6,7 +6,7 @@ Control date: 2026-08-07
 
 ## Result
 
-The system BOM now contains 85 configuration groups: 17 evaluation candidates, 36 exact candidates on hold, three grouped-component holds, 24 selection-required groups, four exclusions and one integrated item. R46 exposed previously invisible assembly assumptions; later controlled passes add exact source, enclosure, compute-carrier and retention candidates. R122 holds the Pi-to-U2D2 cable; R123 separates exact rail, duct and DR1-DR3 end-bracket candidates into `BOM-083` through `BOM-085` while leaving residual `BOM-059` unresolved. None is a complete procurement, fabrication or application release.
+The system BOM now contains 85 configuration groups: 17 evaluation candidates, 37 exact candidates on hold, three grouped-component holds, 23 selection-required groups, four exclusions and one integrated item. R46 exposed previously invisible assembly assumptions; later controlled passes add exact source, enclosure, compute-carrier and retention candidates. R122 holds the Pi-to-U2D2 cable; R123 separates exact rail, duct and DR1-DR3 end-bracket candidates into `BOM-083` through `BOM-085` while leaving residual `BOM-059` unresolved; R147 advances `BOM-063` to one exact held Eaton `P006-006` actuator-source AC cord candidate. None is a complete procurement, fabrication or application release.
 
 R61 advances `BOM-041` from `selection_required` to `exact_candidate_hold` for IDEC `HW1P-1FQD-A-24V`. This removes the obsolete `SAFE ELIGIBLE` value and synchronizes the system BOM with Electrical V3-P1.5 and `HR-V0-CP-P0.1`. It is not added to Evaluation Batch A and is not procurement- or wiring-released; `HR-V0-H1-RCV-P0.1` remains unexecuted.
 
@@ -43,6 +43,8 @@ The batch is not a shopping instruction. Every line states:
 After separately approving any purchase, quarantine each received unit and execute `INSPECT-BOM-001` using `tests/forms/hr-v0-evaluation-batch-a-receiving-template.csv`. Item-specific procedures remain mandatory. Receipt does not release a component for machine use.
 
 R146 replaces the anonymous “duplicate this row” execution ambiguity with `HR-V0-EVAL-BATCH-A-RCV-P0.1`: 21 deterministic unit IDs, twelve receiving steps per unit, seven evidence placeholders per unit and one quarantine label per unit. The original form remains historical/generic; the current execution scaffold is `tests/forms/hr-v0-evaluation-batch-a-unit-receiving-template-p0.1.csv`. Every record remains `NOT AUTHORIZED`, `NOT ORDERED`, `NOT RECEIVED` and `NOT EXECUTED`.
+
+R147 advances `BOM-063` from `selection_required` to `exact_candidate_hold` for Eaton `P006-006`. Current MEAN WELL evidence identifies the GST280A12-C6P Class-I C14 inlet, 3 A typical input and 95 A cold-start inrush at 115 VAC; current Eaton evidence identifies the held NEMA 5-15P-to-C13 10 A / 125 VAC / 18 AWG / 6 ft UL/cUL cord candidate. Site, branch, code, received identity, PE/isolation, fit, routing, inrush, thermal and qualified-review evidence remain open; no purchase or connection is released.
 
 ## Current manufacturer-page contradictions
 

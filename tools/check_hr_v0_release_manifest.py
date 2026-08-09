@@ -102,6 +102,7 @@ def main() -> None:
         "HR-V0-E2-HW-P0.3",
         "HR-V0-COMPUTE-IF-P0.1",
         "HR-V0-GRIP-ELEC-P0.1",
+        "HR-V0-ACT-AC-CORD-P0.1",
     ] or electrical_product.get("release_state") != "correction_candidate_not_released":
         errors.append("Electrical V3-P1.14 supporting identifiers or release state changed")
     safety_product = next(
@@ -190,7 +191,7 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BOM-P0.1"),
         {},
     )
-    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1"] or bom_product.get("release_state") != (
+    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1"] or bom_product.get("release_state") != (
         "closure_register_candidate_no_complete_machine_procurement_release"
     ):
         errors.append("HR-V0-BOM-P0.1 supporting identifiers or fail-closed release state changed")
