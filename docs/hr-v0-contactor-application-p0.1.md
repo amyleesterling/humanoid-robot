@@ -1,5 +1,7 @@
 # HR-V0 K1/K2 Contactor Application Evidence P0.1
 
+Current superseding closure packet: `HR-V0-K1K2-APP-P0.2` in `docs/hr-v0-contactor-application-p0.2.md`. P0.1 remains the historical R41 evidence record.
+
 > **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
 Date: 2026-08-07
