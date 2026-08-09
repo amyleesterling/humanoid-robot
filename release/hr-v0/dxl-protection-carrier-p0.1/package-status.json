@@ -1,0 +1,17 @@
+{
+  "identifier": "HR-V0-DXL-PROT-CARRIER-P0.1",
+  "review_round": "R156",
+  "date": "2026-08-09",
+  "warning": "PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION",
+  "robot_baseline_changed": false,
+  "fabrication_authorized": false,
+  "assembly_authorized": false,
+  "connection_authorized": false,
+  "energization_authorized": false,
+  "functional_safety_credit": false,
+  "native_kicad_sheets": 5,
+  "assembly_articles_proposed": 3,
+  "tests_executed": 0,
+  "open_holds": 16,
+  "configuration_state": "EVALUATION CARRIER REVIEW CANDIDATE"
+}

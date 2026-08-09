@@ -543,6 +543,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R155 independent review request](docs/reviews/2026-08-09-r155-independent-review-request.md)
 - [R155 validation record](docs/reviews/2026-08-09-r155-validation-record.md)
 - [Sol R12 findings rechecked after R155](docs/reviews/2026-08-09-sol-r12-post-r155-status.md)
+- [R156 DXL protection carrier](docs/hr-v0-dxl-protection-carrier-p0.1.md)
+- [R156 interactive carrier guide](release/hr-v0/dxl-protection-carrier-p0.1/index.html)
+- [R156 independent review request](docs/reviews/2026-08-09-r156-independent-review-request.md)
+- [R156 validation record](docs/reviews/2026-08-09-r156-validation-record.md)
+- [Sol R12 findings rechecked after R156](docs/reviews/2026-08-09-sol-r12-post-r156-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -588,6 +593,8 @@ Generate R154 with `python tools/generate_hr_v0_dxl_current_envelope.py`, then r
 
 Generate R155 with `python tools/generate_hr_v0_dxl_protection_evaluation.py`, then run `python tools/check_hr_v0_dxl_protection_evaluation_p01.py`. Passing proves the five-sheet native KiCad evaluation source, ERC 0/0, source identities, arithmetic, blank tests and eighteen open holds are synchronized. It does not select the candidate, release a PCB, bound reverse current or shunt pulse energy, or authorize physical work.
 
+Generate R156 with KiCad's bundled Python using `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_dxl_protection_carrier_p01.py`, then run the matching checker with the same interpreter. Passing proves five native sheets, the four-layer single-channel carrier, 20 physical placements, three controlled assembly variants, ERC/DRC 0/0, review CAM outputs, ten blank tests and sixteen open holds are synchronized. It does not accept the drawing-derived RPW footprint, select a fabricator, release a robot PCB/BOM change, bound reverse current or authorize physical work.
+
 Run `python tools/check_hr_v0_panel_rail_duct_p01.py` for R123. Passing proves the corrected two-stock `1207648` rail branch, `3240189` duct, six `3022218` DR1-DR3 brackets, seven planning cuts, twelve holds, three current primary sources, eighteen blank receiving rows and sixteen blank installation rows stay synchronized. It does not prove received identity, final lengths, kerf, tools, holes, fasteners, DR4 retention, bonding, pull/vibration, fill, thermal behavior, qualified review or readiness.
 
 Run `python tools/check_hr_v0_stopping_budget_p01.py` for R124. Passing proves the active control narrative and firmware both retain J2 `15..115°`, the nominal positive metal backup remains `118°`, the 3-degree/10-degree-per-second and 3-degree/30-degree-per-second arithmetic remains 300/100 ms, all sixteen physical-test rows remain unexecuted and unauthorized, and `DF-01` retains zero safety credit. It does not establish total stopping time, release either provisional speed, validate contactors or stops, close any missing stop direction, or authorize motion or energization.
@@ -630,7 +637,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred fifty-five review/control rounds are complete: R01-R155. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R155 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R155 supplies an exact connected DXL branch-protection and regenerative-clamp evaluation candidate while retaining the released baseline, zero safety credit and every reverse-current, pulse-energy, PCB, harness, protection, thermal, HIL, qualified-review and work-authorization hold.
+One hundred fifty-six review/control rounds are complete: R01-R156. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R156 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R156 supplies a native four-layer measurement-carrier candidate for R155 while retaining the released robot baseline, zero safety credit and every reverse-current, pulse-energy, footprint/DFM, harness, protection, thermal, HIL, qualified-review and work-authorization hold.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -789,6 +796,7 @@ One hundred fifty-five review/control rounds are complete: R01-R155. R11 Fable a
 | R153 | DXL harness allocation/BOM correction | Issued `HR-V0-DXL-HARNESS-ALLOC-P0.1`; allocated the three included 180 mm JST-JST actuator cables as integrated BOM-086, reduced loose EHR-3/SEH quantities to the one custom U2D2-to-JC1 data/return cable, and retained fourteen connector-current, harness, physical-evidence and work-authority holds. |
 | R154 | DXL current-envelope and runtime-invariant correction | Issued `HR-V0-DXL-CURRENT-ENV-P0.1`; derived the 2.152 A raw-800 internal screen, rejected fuse-only connector protection, retained the present architecture for guarded qualification only, added per-sample Current Limit/Goal Current drift checks, and preserved fourteen open physical/qualified/work-authority gates. |
 | R155 | Native DXL branch-protection and regeneration evaluation | Issued `HR-V0-DXL-PROT-EVAL-P0.1`; added five connected KiCad sheets at ERC 0/0 for three exact TPS259461LRPWR branch candidates and one Pololu 3771 pulse-shunt candidate, rejected true reverse blocking for the present regenerative path, and retained fourteen blank tests, eighteen open holds and an unchanged robot baseline. |
+| R156 | Native DXL protection-carrier correction | Issued `HR-V0-DXL-PROT-CARRIER-P0.1`; added five legible native KiCad sheets, a routed four-layer single-channel carrier, exact source-backed part candidates, 20 placements, three controlled variants, review CAM, ten blank tests and sixteen open holds at ERC/DRC 0/0; rejected the initial crowded export and retained zero robot-baseline, fabrication or energization authority. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

@@ -1,0 +1,5 @@
+item,candidate,state,evidence_needed,warning
+layer count,4 copper layers,ENCODED REVIEW CANDIDATE,fabricator stackup and qualified review,"PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
+power routes,3.0 mm top-copper routes; TI requires path capacity at least 2x full load,GEOMETRY ONLY,"copper weight, temperature rise and fault study","PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
+ground,In1.Cu and B.Cu ground planes; local analog quiet-ground placement candidate,NOT PE IMPLEMENTATION PROOF,qualified grounding/return audit,"PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
+thermal vias,no via-in-pad in P0.1,SELECTION REQUIRED,assembler DFM and measured thermal/fault performance,"PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
