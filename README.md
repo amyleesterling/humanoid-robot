@@ -566,6 +566,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R159 independent review request](docs/reviews/2026-08-09-r159-independent-review-request.md)
 - [R159 validation record](docs/reviews/2026-08-09-r159-validation-record.md)
 - [Sol R12 findings rechecked after R159](docs/reviews/2026-08-09-sol-r12-post-r159-status.md)
+- [R160 carrier harness interface-control candidate](docs/hr-v0-dxl-protection-carrier-harness-p0.1.md)
+- [R160 interactive carrier harness guide](release/hr-v0/dxl-protection-carrier-harness-p0.1/index.html)
+- [R160 harness acceptance matrix](electrical/harness/hr-v0-dxl-protection-carrier-harness-p0.1/acceptance-matrix.csv)
+- [R160 independent review request](docs/reviews/2026-08-09-r160-independent-review-request.md)
+- [R160 validation record](docs/reviews/2026-08-09-r160-validation-record.md)
+- [Sol R12 findings rechecked after R160](docs/reviews/2026-08-09-sol-r12-post-r160-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -655,7 +661,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred fifty-nine review/control rounds are complete: R01-R159. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R159 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R159 retains R158's corrected RPW geometry, fixes the native mask-rule floor, adds three global fiducials and creates a controlled DFM/first-article inquiry while retaining zero provider contact, uploads, quotes, orders, articles, physical tests, safety credit or work authority.
+One hundred sixty review/control rounds are complete: R01-R160. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R160 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R160 freezes exact P0.3 carrier-side JST VH and 18 AWG Belden wire candidates plus a two-harness interface map, while keeping the source-side termination, route, cut/crimp process, installed limits, physical tests, safety credit and every work authority open.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -818,6 +824,7 @@ One hundred fifty-nine review/control rounds are complete: R01-R159. R11 Fable a
 | R157 | Branch-fault and no-backfeed validation definition | Issued `HR-V0-BRANCH-FAULT-P0.1`; bound 24 blank cases to the exact V3 refs/nets across unpowered, limited-energy, guarded-fault and configured-distribution stages; supplied the missing EG-024 evidence location and an interactive guide while keeping the gate open and every physical result/authorization absent. |
 | R158 | RPW0010A footprint defect correction | Found eight material P0.1 transcription failures against TI drawing `4225183/A`; prohibited P0.1 for supplier use and issued a separate P0.2 candidate with exact 14-copper/16-paste primitive parity and KiCad ERC/DRC 0/0. Independent footprint, assembler/stencil DFM, first-article and every physical/work-authority hold remain open. |
 | R159 | Carrier native-rule and PCBA DFM inquiry correction | Issued P0.3 with a 0.100 mm mask/clearance floor and three global fiducials; added 24 provider capability rows, 24 unsent DFM questions, 23 hash-bound proposed files and 18 blank first-article checks. No provider action, external work, physical evidence or energization authority exists. |
+| R160 | P0.3 carrier harness interface-control correction | Froze exact `VHR-2N` / `SVH-21T-P1.1` and Belden 9918 red/black candidates; bound two harness identities across eight pin/interface rows; added four held cut/crimp rows, ten unexecuted process steps, eighteen blank acceptance rows and nine unresolved selections. No harness, physical result or work authority exists. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
