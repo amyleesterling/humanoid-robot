@@ -17,7 +17,7 @@ def rows(path: Path) -> list[dict[str, str]]:
 
 def main() -> int:
     routes = rows(ROOT / "references/gripper/robotis-gripper-source-route-p0.2.csv")
-    assert [row["route_id"] for row in routes] == [f"GSR2-{i:03d}" for i in range(1, 10)]
+    assert [row["route_id"] for row in routes] == [f"GSR2-{i:03d}" for i in range(1, 11)]
     by_id = {row["route_id"]: row for row in routes}
     assert by_id["GSR2-002"]["observed_state"] == "BROKEN_LEGACY_ROUTE"
     assert by_id["GSR2-003"]["locator"].endswith("no=767")
@@ -25,6 +25,8 @@ def main() -> int:
     assert by_id["GSR2-005"]["observed_state"] == "METADATA_ONLY_DOWNLOAD_REQUIRES_AUTHORIZATION"
     assert by_id["GSR2-008"]["observed_state"] == "PROGRAM_OWNER_APPROVAL_REQUIRED"
     assert by_id["GSR2-009"]["observed_state"] == "UNSENT"
+    assert by_id["GSR2-010"]["observed_state"] == "ANONYMOUS_ROUTES_EXHAUSTED_NO_PAYLOAD"
+    assert "no CAD payload" in by_id["GSR2-010"]["release_boundary"]
 
     index = rows(ROOT / "references/gripper/robotis-onshape-element-index-p0.1.csv")
     assert [row["record_id"] for row in index] == [f"ONSH-{i:03d}" for i in range(1, 7)]

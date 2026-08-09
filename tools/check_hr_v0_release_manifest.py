@@ -82,6 +82,7 @@ def main() -> None:
         "DXL-STAR-P0.1",
         "HR-V0-CP-P0.5",
         "HR-V0-WD-SUPPLY-P0.1",
+        "HR-V0-PNOZ-CONF-P0.1",
         "HR-V0-SD-P0.2",
         "HR-V0-24V-IF-P0.2",
         "HR-V0-E2-HW-P0.2",

@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-08T06:24:17")
+		(date "2026-08-08T20:08:10")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
@@ -1348,7 +1348,7 @@
 				(field
 					(name "Status") "PROPOSED - QUALIFIED APPLICATION REVIEW REQUIRED")
 				(field
-					(name "Evidence") "Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06.")
+					(name "Evidence") "Pilz operating manual 21396-EN-23; PDF metadata 2026-06-17; portal file 2026-06-22; SHA-256 4B6E4768CEFAEDAF54F006347D32A8A04964B59A16F3616D8AC43698D3626BB4; terminals and timing rechecked 2026-08-08.")
 				(field
 					(name "Display") "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104")
 				(field
@@ -1370,7 +1370,7 @@
 			)
 			(property
 				(name "Evidence")
-				(value "Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06.")
+				(value "Pilz operating manual 21396-EN-23; PDF metadata 2026-06-17; portal file 2026-06-22; SHA-256 4B6E4768CEFAEDAF54F006347D32A8A04964B59A16F3616D8AC43698D3626BB4; terminals and timing rechecked 2026-08-08.")
 			)
 			(property
 				(name "Display")
@@ -1682,7 +1682,7 @@
 				(field
 					(name "Status") "PROPOSED - QUALIFIED APPLICATION REVIEW REQUIRED")
 				(field
-					(name "Evidence") "Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06.")
+					(name "Evidence") "Pilz operating manual 21396-EN-23; PDF metadata 2026-06-17; portal file 2026-06-22; SHA-256 4B6E4768CEFAEDAF54F006347D32A8A04964B59A16F3616D8AC43698D3626BB4; terminals and timing rechecked 2026-08-08.")
 				(field
 					(name "Display") "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104")
 				(field
@@ -1704,7 +1704,7 @@
 			)
 			(property
 				(name "Evidence")
-				(value "Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06.")
+				(value "Pilz operating manual 21396-EN-23; PDF metadata 2026-06-17; portal file 2026-06-22; SHA-256 4B6E4768CEFAEDAF54F006347D32A8A04964B59A16F3616D8AC43698D3626BB4; terminals and timing rechecked 2026-08-08.")
 			)
 			(property
 				(name "Display")
@@ -8261,7 +8261,7 @@
 				(field
 					(name "Status") "PROPOSED - QUALIFIED APPLICATION REVIEW REQUIRED")
 				(field
-					(name "Evidence") "Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06.")
+					(name "Evidence") "Pilz operating manual 21396-EN-23; PDF metadata 2026-06-17; portal file 2026-06-22; SHA-256 4B6E4768CEFAEDAF54F006347D32A8A04964B59A16F3616D8AC43698D3626BB4; terminals and timing rechecked 2026-08-08.")
 				(field
 					(name "Display") "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104")
 			)
@@ -8368,7 +8368,7 @@
 				(field
 					(name "Status") "PROPOSED - QUALIFIED APPLICATION REVIEW REQUIRED")
 				(field
-					(name "Evidence") "Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06.")
+					(name "Evidence") "Pilz operating manual 21396-EN-23; PDF metadata 2026-06-17; portal file 2026-06-22; SHA-256 4B6E4768CEFAEDAF54F006347D32A8A04964B59A16F3616D8AC43698D3626BB4; terminals and timing rechecked 2026-08-08.")
 				(field
 					(name "Display") "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104")
 			)

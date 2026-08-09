@@ -132,7 +132,7 @@ def pnoz(ref: str, position: tuple[float, float], nets: dict[str, str], purpose:
         status="PROPOSED - QUALIFIED APPLICATION REVIEW REQUIRED",
         description=purpose + " Mode: short-cross detection plus monitored start on falling edge; seal and inspect selector with power removed.",
         datasheet="https://www.pilz.com/en-INT/eshop/product/750104",
-        evidence="Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06.",
+        evidence="Pilz operating manual 21396-EN-23; PDF metadata 2026-06-17; portal file 2026-06-22; SHA-256 4B6E4768CEFAEDAF54F006347D32A8A04964B59A16F3616D8AC43698D3626BB4; terminals and timing rechecked 2026-08-08.",
         position=position,
         width=82.0,
     )

@@ -4,7 +4,7 @@ Current superseding status: native connected design candidate `V3-P1.13`. P1.13 
 
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: native connected design candidate `V3-P1.12`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` through P1.11 are retained as historical configurations. P1.3 records current Schneider contactor application evidence and the catalog's lower-current/critical-current blocker without releasing K1/K2. P1.4 adds a received-lot terminal-control boundary for RESET and ARM. P1.5 freezes exact amber H1 and retains two project placeholder terminals pending received evidence. P1.6 freezes the Phoenix `3211861` FSR1/FSR2 holder candidates; P1.7 freezes `D-ST 4` item `3030420` as the group end-cover candidate. P1.8 freezes active Littelfuse `75920-01` only as the exact SPST high-side SD1 catalog candidate. P1.9 reconciles the exact XT1 Phoenix family and six position-to-net candidates with the physical-panel record. P1.10 replaced the ambiguous system `JC1` block with `J24` and separate `F24`. P1.11 replaces the unsupported P1J conversion chain with exact GlobTek `WR9QI1660YL4NKITR6B` and its factory `YL4/C40337` cord, assigns pin 1 to +24 V and pin 3/shield to return, keeps pins 2/4 intentionally unconnected, and screens 27.024 W / 1.126 A of control load. P1.12 removes the invented installed `JDBG1`, freezes Pi BCM GPIO17 at physical header pin 11 with physical pin 6 return, and limits watchdog debug access to existing exact Harwin TP15/TP16/TP2 test points. Heartbeat harness, runtime, startup, waveform/timing, HIL, programmer, unpowered fixture, no-back-power proof, EMC/retention, receiving and qualified review remain open. Received source plug identity/fit, exact H1 current, startup/simultaneous pickup, PCB/harness, panel mounting/retention, F24 selection, conductors, thermal/fault behavior and physical tests also remain open. `TBD-IN/TBD-OUT`, conductor/lug, source fault, load-break, touch protection, cutout, zero-energy/padlock application, human factors and qualified Boston review remain open, as do both FSR fuse links, received compatibility/grouping, XT1 conductor/protection/physical evidence, protection coordination and physical evidence. The separate PCB-P0.5 watchdog board and DXL-STAR-P0.1 actuator board are routed native candidates while retaining supplier acceptance, received, protection, harness, derating, physical, fault, EMC and qualified-review gates.
+Status: native connected design candidate `V3-P1.13`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` through P1.12 are retained as historical configurations. P1.13 removes KWD1/KWD2 from both SR1 input returns and places their ordinary NO contacts in series with `SR1:A1` only. P1.3 records current Schneider contactor application evidence and the catalog's lower-current/critical-current blocker without releasing K1/K2. P1.4 adds a received-lot terminal-control boundary for RESET and ARM. P1.5 freezes exact amber H1 and retains two project placeholder terminals pending received evidence. P1.6 freezes the Phoenix `3211861` FSR1/FSR2 holder candidates; P1.7 freezes `D-ST 4` item `3030420` as the group end-cover candidate. P1.8 freezes active Littelfuse `75920-01` only as the exact SPST high-side SD1 catalog candidate. P1.9 reconciles the exact XT1 Phoenix family and six position-to-net candidates with the physical-panel record. P1.10 replaced the ambiguous system `JC1` block with `J24` and separate `F24`. P1.11 replaces the unsupported P1J conversion chain with exact GlobTek `WR9QI1660YL4NKITR6B` and its factory `YL4/C40337` cord, assigns pin 1 to +24 V and pin 3/shield to return, keeps pins 2/4 intentionally unconnected, and screens 27.024 W / 1.126 A of control load. P1.12 removes the invented installed `JDBG1`, freezes Pi BCM GPIO17 at physical header pin 11 with physical pin 6 return, and limits watchdog debug access to existing exact Harwin TP15/TP16/TP2 test points. Heartbeat harness, runtime, startup, waveform/timing, HIL, programmer, unpowered fixture, no-back-power proof, EMC/retention, receiving and qualified review remain open. Received source plug identity/fit, exact H1 current, startup/simultaneous pickup, PCB/harness, panel mounting/retention, F24 selection, conductors, thermal/fault behavior and physical tests also remain open. `TBD-IN/TBD-OUT`, conductor/lug, source fault, load-break, touch protection, cutout, zero-energy/padlock application, human factors and qualified Boston review remain open, as do both FSR fuse links, received compatibility/grouping, XT1 conductor/protection/physical evidence, protection coordination and physical evidence. The separate PCB-P0.6 watchdog board and DXL-STAR-P0.1 actuator board are routed native candidates while retaining supplier acceptance, received, protection, harness, derating, physical, fault, EMC and qualified-review gates.
 
 - Native source: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Generator: `tools/generate_hr_v0_electrical_v3.py`
@@ -37,15 +37,17 @@ P0.7 allocates `JA1` pins 1-3 to three separate `ACT_12V_RAW` conductors and pin
 
 V3 uses two separately identified PNOZ s4 750104 relays:
 
-- `SR1` is the E-stop/watchdog eligibility relay. Each input path contains one positively opening E-stop NC contact in series with one independent watchdog NO contact. It accepts the physical `RESET` action. Its outputs do not drive K1/K2 directly.
+- `SR1` is the E-stop eligibility relay. Each input path contains one positively opening E-stop NC contact only. KWD1/KWD2 are absent from both input returns and instead series-gate only `SR1:A1`. SR1 accepts the physical `RESET` action. Its outputs do not drive K1/K2 directly.
 - `SRA1` is the final ARM/EDM relay. Its two input channels are fed by separate force-guided outputs from `SR1`. `SRA1` uses monitored falling-edge start. Its start/feedback loop contains the distinct physical `ARM` pushbutton followed by the valid NC mirror contacts of K1 and K2. Its separate safety outputs drive the K1 and K2 coils.
 
 Proposed logical paths:
 
 ```text
-SR1 S11 -- E-STOP CH1 NC -- WD relay A NO -- SR1 S12
-SR1 S21 -- E-STOP CH2 NC -- WD relay B NO -- SR1 S22
+SR1 S11 -- E-STOP CH1 NC -- SR1 S12
+SR1 S21 -- E-STOP CH2 NC -- SR1 S22
 RESET + SR1 feedback/start mode ---- SR1 S34
+
+SAFETY_24V -- KWD1 NO -- KWD2 NO -- SR1 A1
 
 SR1 safety output A ---- SRA1 input channel 1
 SR1 safety output B ---- SRA1 input channel 2
@@ -58,7 +60,7 @@ K1 and K2 main contacts remain in series in the 12 V actuator rail
 
 Required sequence:
 
-1. E-stop channels close and heartbeat recovery closes both watchdog contacts, but SR1 remains dropped.
+1. E-stop channels close and heartbeat recovery closes the two-contact SR1 A1 supply gate, but SR1 remains dropped.
 2. The operator actuates and releases `RESET`; `SR1` becomes eligible.
 3. K1 and K2 remain de-energized because `SRA1` has not accepted ARM.
 4. The operator separately actuates and releases `ARM`; only then may `SRA1` energize K1/K2.
@@ -74,9 +76,9 @@ Any E-stop opening, watchdog-channel opening, SR1 dropout, channel discrepancy, 
 
 ## Watchdog-channel boundary
 
-The current RP2040-class watchdog is not safety-rated. V3 replaces the single KWD1 contact with two independently driven, normally-open relay channels and routes one through each SR1 input return. This makes physical RESET part of the nominal recovery after heartbeat loss; SRA1 then still requires the later physical ARM. P0.9 freezes the ordinary signal interface, driver and feedback-passive candidates, but startup tests, brownout behavior, diagnostic coverage, common-cause controls, firmware binding, PCB, physical derating and HIL remain unreleased.
+The current RP2040-class watchdog is not safety-rated. V3-P1.13 uses two independently driven ordinary normally-open relay contacts in series with `SR1:A1`; neither appears in an S0 input return. A heartbeat dropout removes SR1 supply eligibility. After heartbeat recovery, physical RESET remains part of nominal SR1 recovery and SRA1 still requires the later physical ARM through K1/K2 EDM. The KWD gate receives zero functional-safety credit. Contact application, startup, brownout/recovery behavior, diagnostic coverage, common-cause controls, physical separation, firmware binding, PCB, physical derating, fault injection and HIL remain unreleased.
 
-The modeled relay-coil path is `SAFETY_24V -> relay coil -> default-off low-side driver -> SAFETY_0V`. P0.7 proposes the non-isolated TRACO POWER `TSR 1-2450`: pin 1 `+VIN` to `SAFETY_24V`, pin 2 `GND` to `SAFETY_0V`, and pin 3 `+VOUT` to `WD_5V`. Its 6.5-36 V input and 5 V/1 A output support a candidate, not an application release. Branch protection, load budget, startup, slow-ramp brownout, fast dropout/recovery, stuck/overvoltage faults, EMC and enclosure thermal behavior remain open under `INSPECT-ELEC-004`. Selecting an isolated converter would require isolated output drivers and a fresh grounding/fault review. The official Phoenix product PDF freezes the candidate terminal designations `A1/A2`, `11-12-14`, and `21-22-24`, while received continuity and polarity evidence remain mandatory. P0.4 uses `11-14` in the SR1 return and `21-22` for a separate 24 V NC diagnostic feed. The latter terminates at the `UFB1` ISO1212DBQ field-input network and is prohibited from reaching a Pico GPIO directly.
+The modeled relay-coil path is `SAFETY_24V -> relay coil -> default-off low-side driver -> SAFETY_0V`. P0.7 proposes the non-isolated TRACO POWER `TSR 1-2450`: pin 1 `+VIN` to `SAFETY_24V`, pin 2 `GND` to `SAFETY_0V`, and pin 3 `+VOUT` to `WD_5V`. Its 6.5-36 V input and 5 V/1 A output support a candidate, not an application release. Branch protection, load budget, startup, slow-ramp brownout, fast dropout/recovery, stuck/overvoltage faults, EMC and enclosure thermal behavior remain open under `INSPECT-ELEC-004`. Selecting an isolated converter would require isolated output drivers and a fresh grounding/fault review. The official Phoenix product PDF freezes the candidate terminal designations `A1/A2`, `11-12-14`, and `21-22-24`, while received continuity and polarity evidence remain mandatory. P1.13 uses both `11-14` NO contacts in series only in the SR1 A1 supply gate. Each `21-22` NC contact remains a separate 24 V diagnostic feed that terminates at the `UFB1` ISO1212DBQ field-input network and is prohibited from reaching a Pico GPIO directly.
 
 The feedback sheet uses TI's exact DBQ pinout and Type-3 values: 1 kOhm `RTHR` from module input to `SENSE`, 562 Ohm `RSENSE` between `SENSE` and `IN`, and 10 nF `CIN` from `SENSE` to `FGND` per channel. A calculated 2.70 kOhm 1%, 0.5 W parallel wetting load raises the screened minimum Phoenix contact current above its documented 10 mA minimum at the Mean Well rail minimum. Outputs use 1 kOhm series resistors and 10 kOhm pulldowns before the Pico. P0.9 freezes the exact proposed Vishay, Panasonic, TDK and Murata passive order codes listed in `docs/hr-v0-watchdog-feedback-passive-closure-r30.md`. `GND1`, `FGND1`, and `FGND2` all return to `SAFETY_0V`, so no galvanic-isolation or safety-integrity credit is claimed. PCB, received measurements, DC-bias/power/pulse derating, terminals, EMC, thermal, brownout, fault injection and HIL remain open.
 
@@ -117,7 +119,7 @@ Before this candidate can replace V2.1:
 
 ## Native candidate validation record
 
-The generated `V3-P1.12` candidate currently contains:
+The generated `V3-P1.13` candidate currently contains:
 
 - one root index plus twelve focused child sheets;
 - 76 component blocks and 296 modeled terminals;

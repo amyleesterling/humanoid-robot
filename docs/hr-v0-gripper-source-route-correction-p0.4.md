@@ -12,6 +12,8 @@ R72's current-source statement is superseded narrowly: ROBOTIS endpoint `767` is
 
 This finding does **not** make the gripper buildable. Anonymous export was not exposed in the view-only interface, the relevant blob endpoint required authorization, and no STEP/native assembly payload was acquired. The mutable workspace is therefore a source-discovery record, not a controlled manufacturing release.
 
+R116 records the completed anonymous-route recheck. Thingiverse file and ZIP requests returned HTTP 403, its API returned HTTP 401, and the Onshape blob request returned HTTP 403. No credential, scraping or access-control bypass was attempted. Those results establish only current anonymous access state; they do not establish file content, permission, geometry or revision. The anonymous route is exhausted until ROBOTIS supplies or enables an authorized export, or a separately authorized received article enters controlled metrology.
+
 ## Reproducible identities
 
 | Item | Identity | Observed state |

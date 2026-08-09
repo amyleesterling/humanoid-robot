@@ -137,7 +137,7 @@
       (property "Datasheet" "https://www.pilz.com/en-INT/eshop/product/750104" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "First-stage E-stop eligibility relay. Mode: short-cross detection plus monitored start on falling edge; seal and inspect selector with power removed." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Status" "PROPOSED - QUALIFIED APPLICATION REVIEW REQUIRED" (at 0.00 28.40 0) (effects (font (size 1.50 1.50)) (justify bottom)))
-      (property "Evidence" "Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
+      (property "Evidence" "Pilz operating manual 21396-EN-23; PDF metadata 2026-06-17; portal file 2026-06-22; SHA-256 4B6E4768CEFAEDAF54F006347D32A8A04964B59A16F3616D8AC43698D3626BB4; terminals and timing rechecked 2026-08-08." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104" (at -40.64 -26.20 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "SR1_0_1"
         (rectangle (start -40.64 -25.40) (end 40.64 25.40)
@@ -185,7 +185,7 @@
       (property "Datasheet" "https://www.pilz.com/en-INT/eshop/product/750104" (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Description" "Final ARM and external-device-monitoring relay. Mode: short-cross detection plus monitored start on falling edge; seal and inspect selector with power removed." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Status" "PROPOSED - QUALIFIED APPLICATION REVIEW REQUIRED" (at 0.00 28.40 0) (effects (font (size 1.50 1.50)) (justify bottom)))
-      (property "Evidence" "Pilz operating manual 21396-EN-23, product file 2026-06-22; terminals and timing rechecked 2026-08-06." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
+      (property "Evidence" "Pilz operating manual 21396-EN-23; PDF metadata 2026-06-17; portal file 2026-06-22; SHA-256 4B6E4768CEFAEDAF54F006347D32A8A04964B59A16F3616D8AC43698D3626BB4; terminals and timing rechecked 2026-08-08." (at 0.00 0.00 0) (effects (font (size 1.50 1.50)) (hide yes)))
       (property "Display" "Pilz PNOZ s4 24 VDC 3 n/o 1 n/c, order 750104" (at -40.64 -26.20 0) (effects (font (size 1.50 1.50)) (justify left bottom)))
       (symbol "SRA1_0_1"
         (rectangle (start -40.64 -25.40) (end 40.64 25.40)
