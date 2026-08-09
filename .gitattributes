@@ -42,6 +42,8 @@ release/hr-v0/watchdog-pcb-cam-p0.1/*.html text eol=lf
 release/hr-v0/dxl-star-manufacturing-p0.1/cam/** binary
 release/hr-v0/dxl-star-manufacturing-p0.1/*.json text eol=lf
 release/hr-v0/dxl-star-manufacturing-p0.1/*.html text eol=lf
+release/hr-v0/dxl-injection-binding-p0.1/*.json text eol=lf
+release/hr-v0/dxl-injection-binding-p0.1/*.html text eol=lf
 docs/reviews/2026-08-08-24v-interface-p0.2-independent-review-request.md text eol=lf
 docs/reviews/2026-08-08-r81-validation-record.md text eol=lf
 docs/reviews/2026-08-08-r82-validation-record.md text eol=lf

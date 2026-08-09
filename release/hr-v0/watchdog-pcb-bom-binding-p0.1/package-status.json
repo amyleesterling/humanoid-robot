@@ -10,8 +10,8 @@
   "mechanical_features": 4,
   "open_assembly_holds": 12,
   "source_hashes": {
-    "bom/bom.csv": "0dacdc36760a801dbebb3dfd91004e46e29e2714b1422cee1e42f69429ad97b9",
-    "bom/hr-v0-bom-closure.csv": "88bd19e24e604046623fc884983fd67b68882dbc828923902dfc20e632e4bbc3",
+    "bom/bom.csv": "5778777b5a020ee9d3f37e8ddd509b7b38a76dcc05473d55f88c109f4d37f08d",
+    "bom/hr-v0-bom-closure.csv": "5a0c465997f68da84c92f1fca71f587b679638021dbde9312496096fa6f89963",
     "electrical/kicad/project-button-v3/project-button-v3.kicad_pcb": "65394e64e79097ff1cbc63a6bb395d5ae39ca9fd462876c1f9246ae70fc923f2",
     "electrical/manufacturing/hr-v0-watchdog-pcba-assembly-data-p0.2/package-status.json": "cb867975425c5f7b84004d9a8634021ddce1607dd2abf7be474188d840ce0125",
     "electrical/manufacturing/hr-v0-watchdog-pcba-assembly-data-p0.2/board-assembly-bom.csv": "47d069003a4a42f3128e9a224e3426ea2c301197aa9685f0a61b131faa7c52c0",

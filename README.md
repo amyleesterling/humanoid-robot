@@ -520,6 +520,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R151 independent review request](docs/reviews/2026-08-09-r151-independent-review-request.md)
 - [R151 validation record](docs/reviews/2026-08-09-r151-validation-record.md)
 - [Sol R12 findings rechecked after R151](docs/reviews/2026-08-09-sol-r12-post-r151-status.md)
+- [R152 DXL injection allocation binding](docs/hr-v0-dxl-injection-binding-p0.1.md)
+- [R152 interactive allocation guide](release/hr-v0/dxl-injection-binding-p0.1/index.html)
+- [R152 eighteen-terminal allocation parity](release/hr-v0/dxl-injection-binding-p0.1/allocation-parity.csv)
+- [R152 independent review request](docs/reviews/2026-08-09-r152-independent-review-request.md)
+- [Sol R12 findings rechecked after R152](docs/reviews/2026-08-09-sol-r12-post-r152-status.md)
+- [R152 validation record](docs/reviews/2026-08-09-r152-validation-record.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -556,6 +562,8 @@ Run `python tools/generate_hr_v0_watchdog_pcb_bom_binding.py` and `python tools/
 Generate R150 with `python tools/generate_hr_v0_watchdog_cam_p01.py`, then run `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_watchdog_cam_p01.py`. Passing proves the current PCB-P0.9 source generated ten Gerber/job and five drill/map/report files, IPC-D-356, board statistics, native DRC 0 and exact 42-reference internal position parity. It also proves the position file is not supplier-normalized XYRS, all eighteen holds remain open, eleven manufacturing selections remain unresolved, no upload archive exists and every supplier/contact/quotation/fabrication/assembly/physical/connection/motion/energization/safety-credit flag remains false.
 
 Generate R151 with `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_dxl_star_manufacturing_p01.py`, then run the matching `tools/check_hr_v0_dxl_star_manufacturing_p01.py` with the same interpreter. Passing proves DXL-STAR-P0.1 generated ten Gerber/job and five drill/map/report files, IPC-D-356, statistics, native DRC 0, exact parity for seven connector placements and eighteen terminal mappings, and four NPTH records. It also proves JC1.2 remains no-net/no-copper, all eighteen holds and eleven manufacturing selections remain open, no upload archive exists and every supplier/contact/quotation/fabrication/assembly/physical/connection/motion/energization/safety-credit flag remains false.
+
+Generate R152 with `python tools/generate_hr_v0_dxl_injection_binding.py`, then run `python tools/check_hr_v0_dxl_injection_binding_p01.py`. Passing proves that one Electrical V3 `INJ1` and one DXL-STAR-P0.1/BOM-051 parent implement the three legacy injection branches with exact parity across eighteen terminals. It also proves BOM-035 requires no separate purchase, the parent remains held, all twelve residual boundaries remain open and every external-work flag remains false.
 
 Run `python tools/check_hr_v0_panel_rail_duct_p01.py` for R123. Passing proves the corrected two-stock `1207648` rail branch, `3240189` duct, six `3022218` DR1-DR3 brackets, seven planning cuts, twelve holds, three current primary sources, eighteen blank receiving rows and sixteen blank installation rows stay synchronized. It does not prove received identity, final lengths, kerf, tools, holes, fasteners, DR4 retention, bonding, pull/vibration, fill, thermal behavior, qualified review or readiness.
 
@@ -599,7 +607,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred fifty-one review/control rounds are complete: R01-R151. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R151 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R151 replaces the absence of DXL-star manufacturing outputs with a quarantined source-bound review set while retaining connector/current, harness, protection, waveform, no-backfeed, grounding, thermal, supplier, process, physical, qualified-review and every work-authorization hold.
+One hundred fifty-two review/control rounds are complete: R01-R152. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R152 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R152 removes the false three-module DXL injection allocation while retaining every parent-board, connector, harness, protection, current, waveform, no-backfeed, grounding, thermal, supplier, process, physical, qualified-review and work-authorization hold.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -754,6 +762,7 @@ One hundred fifty-one review/control rounds are complete: R01-R151. R11 Fable an
 | R149 | Watchdog PCB BOM binding correction | Issued `HR-V0-WD-BOM-BIND-P0.1`; replaced historical PCB-P0.5 in live `BOM-048` with current PCB-P0.9 / Electrical V3-P1.14 and P0.2 assembly data, hash-binding 42 populated references, sixteen BOM lines, 42 placements and four NPTH features. CAM was absent at issuance; supplier XYRS, provider/process, physical and qualified evidence remain absent; no physical-work or energization authority exists. |
 | R150 | Current PCB-P0.9 CAM review correction | Issued `HR-V0-WD-CAM-P0.1`; generated ten Gerber/job and five drill/map/report files, IPC-D-356, statistics and native DRC 0 from current PCB-P0.9; proved exact internal parity for all 42 placement references. No archive, supplier XYRS, provider/process acceptance, physical article, fabrication, assembly, connection, motion or energization authority exists. |
 | R151 | DXL-STAR-P0.1 manufacturing-evidence correction | Issued `HR-V0-DXL-STAR-MFG-P0.1`; generated ten Gerber/job and five drill/map/report files, IPC-D-356, statistics and native DRC 0; proved exact encoded parity for seven connector placements and eighteen terminals and recorded four NPTH features. Advanced BOM-051 to exact-candidate hold. Eighteen release holds and eleven manufacturing selections remain open; no external work or energization authority exists. |
+| R152 | DXL injection allocation/BOM correction | Issued `HR-V0-DXL-INJECT-BIND-P0.1`; proved that one Electrical V3 INJ1 and one DXL-STAR-P0.1/BOM-051 parent implement all three isolated VDD branches with exact parity across eighteen terminals. Integrated legacy BOM-035 with no separate purchase. Twelve residual holds and every external-work boundary remain open. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
