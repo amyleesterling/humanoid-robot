@@ -16,6 +16,8 @@ This decision selects a protection strategy, not a receiver design. Exact receiv
 
 `HR-V0-COLLAPSE-ENV-P0.1` subsequently proves that the existing P0.3 floor tray is 114 mm below the controlled arm envelope. That tray is the object catch only and cannot satisfy the passive arm-receiver requirement.
 
+`HR-V0-PASSIVE-ARM-RECEIVER-P0.1` subsequently adds a raised guided-platen candidate at Z 320 mm with 63.106478 mm nominal separation from the known commanded B-Reps. Its three ACE MA30M records are evaluation candidates only; application approval, complete moving geometry, guides, contact layer, peak force, load path, stops and physical proof remain open.
+
 ## Conservative gravitational input
 
 The current moving-mass ledger allocates exactly `750 g` across five unique buckets and records a maximum shoulder radius of `360 mm`. Without relying on the current joint limits or a particular collapse path, any point contained within that radius can change height by no more than the sphere diameter:

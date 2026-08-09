@@ -1,0 +1,47 @@
+{
+  "identifier": "HR-V0-PASSIVE-ARM-RECEIVER-P0.1",
+  "warning": "PRELIMINARY - DESIGN AND SIZING CANDIDATE ONLY - NOT APPROVED FOR FABRICATION, MOTION OR ENERGIZATION",
+  "parent_revisions": [
+    "HR-V0-ARM-ARCH-P0.7",
+    "HR-V0-COLLAPSE-ENV-P0.1",
+    "HR-V0-GUARD-P0.3",
+    "HR-V0-POWERLOSS-P0.1"
+  ],
+  "commanded_envelope": {
+    "sampled_min_z_mm": 384.14261888640146,
+    "sampled_max_z_mm": 826.5256541327403,
+    "continuous_cell_motion_bound_mm": 1.0361405142589042,
+    "continuous_min_z_bound_mm": 383.10647837214253,
+    "receiver_clearance_mm": 63.10647837214253,
+    "sampled_y_min_mm": -64.84547243667932,
+    "sampled_y_max_mm": 338.7409137925545,
+    "controlling_component": "H104_FRAME",
+    "controlling_q1_deg": -20.0,
+    "controlling_q2_deg": 15.0,
+    "sample_count": 144761
+  },
+  "receiver_top_z_mm": 320.0,
+  "platen_envelope_mm": [
+    180.0,
+    800.0,
+    6.0
+  ],
+  "nominal_clearance_mm": 63.106478,
+  "absorber_candidate": {
+    "type": "ACE MA30M",
+    "quantity": 3,
+    "catalog_total_energy_j": 10.507589,
+    "catalog_to_gravity_ratio": 1.984215,
+    "stroke_mm": 8.128,
+    "status": "EVALUATION ONLY - APPLICATION APPROVAL REQUIRED"
+  },
+  "structural_screen": {
+    "input_n": 2000.0,
+    "rail_stress_mpa": 92.598717,
+    "rail_deflection_mm": 3.951237,
+    "status": "NOMINAL SCREEN ONLY - NO ALLOWABLE OR JOINT PASS"
+  },
+  "closure_holds": 12,
+  "physical_records": 28,
+  "gate_state": "EG-008 AND EG-009 REMAIN PARTIAL"
+}

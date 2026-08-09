@@ -1,0 +1,7 @@
+screen_id,quantity,value,unit,method,result
+REC-ENV-001,sampled known-B-Rep minimum Z,384.142619,mm,0.25 degree grid over J1 -20..70 and J2 15..115 using conservative source AABB corners,INPUT
+REC-ENV-002,continuous between-grid motion deduction,1.036141,mm,Lipschitz radial displacement over half-cell for both parallel X axes,CONSERVATIVE DEDUCTION
+REC-ENV-003,continuous known-B-Rep lower Z bound,383.106478,mm,sampled minimum minus cell-motion deduction,PASS KNOWN BREP ONLY
+REC-ENV-004,receiver contact-surface top Z,320.000000,mm,candidate geometry,INPUT
+REC-ENV-005,nominal continuous commanded-workspace clearance,63.106478,mm,continuous lower Z bound minus receiver top,PASS KNOWN BREP ONLY
+REC-ENV-006,receiver height above full-collapse-envelope bottom,180.000000,mm,receiver top minus R126 controlled bottom,INTERCEPTS LOWER REGION GEOMETRICALLY

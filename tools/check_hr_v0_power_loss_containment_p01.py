@@ -87,7 +87,10 @@ def main() -> int:
     metadata = json.loads(METADATA.read_text(encoding="utf-8"))
     safety = next(item for item in metadata["current_products"] if item["identifier"] == "HR-V0-FSA-P0.1")
     assert safety["supporting_identifiers"] == [
-        "DF-01 ZERO SAFETY CREDIT", "HR-V0-WD-SUPPLY-P0.1", "HR-V0-POWERLOSS-P0.1"
+        "DF-01 ZERO SAFETY CREDIT",
+        "HR-V0-WD-SUPPLY-P0.1",
+        "HR-V0-POWERLOSS-P0.1",
+        "HR-V0-PASSIVE-ARM-RECEIVER-P0.1",
     ]
     assert safety["release_state"] == "allocation_candidate_no_plr_or_sil_assigned"
 

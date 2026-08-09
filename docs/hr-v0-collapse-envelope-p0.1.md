@@ -16,6 +16,8 @@ The current 450 mm radial guard reservation contains the controlled known rigid-
 
 It is reclassified as an **object-catch envelope only**, with zero arm-support, energy, impact or load credit. A separate passive arm receiver and complete bidirectional hard stops remain `DESIGN REQUIRED`.
 
+R127 subsequently issues `HR-V0-PASSIVE-ARM-RECEIVER-P0.1`, a raised guided-platen and shock-absorber evaluation candidate. That candidate does not close the receiver requirement: application approval, complete geometry, load path, stops and physical evidence remain open.
+
 ## Continuous no-stop-credit method
 
 J1 and J2 use parallel project X axes. Rotation about X preserves every point's X coordinate and its radial distance from the relevant X axis.

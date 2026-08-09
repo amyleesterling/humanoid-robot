@@ -1,0 +1,13 @@
+hold_id,scope,evidence_required,status
+REC-HOLD-001,complete moving geometry,"gripper mechanism, foam object, cables and strain relief",OPEN - BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC-HOLD-002,as-built dynamics,"mass, COM, inertia, backlash, friction, contact velocity and coupling",OPEN - BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC-HOLD-003,absorber application,"ACE sizing/application approval, exact model/adjustment, parallel load sharing, temperature and life",OPEN - BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC-HOLD-004,guided platen,"exact guides, alignment, side load, binding, retention and failure containment",OPEN - BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC-HOLD-005,contact layer,"material, thickness, force-travel, energy, rebound, wear, flammability and retention",OPEN - BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC-HOLD-006,platen structure,"material, local contact, bending, edges, fasteners, fatigue and impact",OPEN - BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC-HOLD-007,subframe load path,"rail allowables, cuts, brackets, posts, base/guard joints, anchors and proof",OPEN - BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC-HOLD-008,joint boundaries,J1 minimum/maximum and J2 minimum stops plus physical J2 positive acceptance,OPEN - BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC-HOLD-009,guard interaction,"access, pinch, rebound, final-rest, recovery and panel/retention containment",OPEN - BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC-HOLD-010,continued drive/stored energy,"drive persistence, regeneration, elastic and detached-part cases",OPEN - BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC-HOLD-011,physical evidence,"FAI, metrology, protected drop/backdrive/fault tests and uncertainty",OPEN - BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC-HOLD-012,qualified disposition,mechanical and functional-safety review plus controlled work authorization,OPEN - BLOCKS FABRICATION MOTION AND ENERGIZATION
