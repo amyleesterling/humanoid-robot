@@ -9,6 +9,41 @@ from __future__ import annotations
 
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 
+ASSEMBLY_IDENTITIES = {
+    "CDEC1": ("Murata", "GRM21BR71H104KA01L", "100 nF, 50 V, X7R, 0805", "SMD_REFLOW"),
+    "CDRV1": ("Murata", "GRM21BR71H104KA01L", "100 nF, 50 V, X7R, 0805", "SMD_REFLOW"),
+    "CDRV2": ("Murata", "GRM21BR71H104KA01L", "100 nF, 50 V, X7R, 0805", "SMD_REFLOW"),
+    "CFI1": ("TDK", "CGA3E2X7R1H103K080AA", "10 nF, 50 V, X7R, 0603", "SMD_REFLOW"),
+    "CFI2": ("TDK", "CGA3E2X7R1H103K080AA", "10 nF, 50 V, X7R, 0603", "SMD_REFLOW"),
+    "DC1": ("TRACO POWER", "TSR 1-2450", "24 V to 5 V, 1 A, non-isolated", "MANUAL_THT_POST_REFLOW"),
+    "ISO1": ("Vishay", "VO618A-4X017T", "phototransistor optocoupler, option 7", "SMD_REFLOW"),
+    "JWF1": ("Phoenix Contact", "1751248", "MKDS 1/2-3,5, 2 position", "MANUAL_THT_POST_REFLOW"),
+    "JWH1": ("Phoenix Contact", "1751248", "MKDS 1/2-3,5, 2 position", "MANUAL_THT_POST_REFLOW"),
+    "JWP1": ("Phoenix Contact", "1751264", "MKDS 1/4-3,5, 4 position", "MANUAL_THT_POST_REFLOW"),
+    "RHB1": ("Panasonic Industry", "ERJ6ENF9100V", "910 ohm, 1%, 0805, 0.125 W", "SMD_REFLOW"),
+    "RHP1": ("Panasonic Industry", "ERJ6ENF1002V", "10.0 kohm, 1%, 0805, 0.125 W", "SMD_REFLOW"),
+    "RPD1": ("Panasonic Industry", "ERJ6ENF1002V", "10.0 kohm, 1%, 0805, 0.125 W", "SMD_REFLOW"),
+    "RPD2": ("Panasonic Industry", "ERJ6ENF1002V", "10.0 kohm, 1%, 0805, 0.125 W", "SMD_REFLOW"),
+    "RSN1": ("Panasonic Industry", "ERJ6ENF5620V", "562 ohm, 1%, 0805", "SMD_REFLOW"),
+    "RSN2": ("Panasonic Industry", "ERJ6ENF5620V", "562 ohm, 1%, 0805", "SMD_REFLOW"),
+    "RSO1": ("Panasonic Industry", "ERJ6ENF1001V", "1.00 kohm, 1%, 0805", "SMD_REFLOW"),
+    "RSO2": ("Panasonic Industry", "ERJ6ENF1001V", "1.00 kohm, 1%, 0805", "SMD_REFLOW"),
+    "RTH1": ("Vishay", "MMA02040C1001FB300", "1.00 kohm, 1%, 0.4 W, MELF", "SMD_REFLOW"),
+    "RTH2": ("Vishay", "MMA02040C1001FB300", "1.00 kohm, 1%, 0.4 W, MELF", "SMD_REFLOW"),
+    "RW1": ("Vishay", "CRCW12102K70FKEA", "2.70 kohm, 1%, 0.5 W, 1210", "SMD_REFLOW"),
+    "RW2": ("Vishay", "CRCW12102K70FKEA", "2.70 kohm, 1%, 0.5 W, 1210", "SMD_REFLOW"),
+    "UDRV1": ("Texas Instruments", "TPL7407LPWR", "seven-channel low-side driver, PW0016A", "SMD_REFLOW"),
+    "UDRV2": ("Texas Instruments", "TPL7407LPWR", "seven-channel low-side driver, PW0016A", "SMD_REFLOW"),
+    "UFB1": ("Texas Instruments", "ISO1212DBQ", "dual isolated 24 V input receiver, DBQ0016A", "SMD_REFLOW"),
+    "WDCTRL1": ("Raspberry Pi", "SC0915", "Raspberry Pi Pico 1 / RP2040 module", "SMD_REFLOW"),
+    **{f"TP{i}": ("Harwin", "S1751-46R", "SMT test point", "SMD_REFLOW") for i in range(1, 17)},
+}
+
+BASE_IDENTITY_FIELDS = (
+    "Manufacturer", "ManufacturerPartNumber", "AssemblyDescription",
+    "ProcessClass", "AlternatePolicy", "AssemblyProcessState", "FabricationStatus",
+)
+
 FOOTPRINT_METADATA = {
     "UDRV1": {
         "Manufacturer": "Texas Instruments",
@@ -59,6 +94,21 @@ FOOTPRINT_METADATA = {
 
 def apply_metadata(footprint) -> None:
     """Apply hidden KiCad footprint fields when the reference is controlled."""
+    identity = ASSEMBLY_IDENTITIES.get(footprint.GetReference())
+    if identity is not None:
+        manufacturer, mpn, description, process_class = identity
+        base = {
+            "Manufacturer": manufacturer,
+            "ManufacturerPartNumber": mpn,
+            "AssemblyDescription": description,
+            "ProcessClass": process_class,
+            "AlternatePolicy": "NO ALTERNATES WITHOUT WRITTEN PROJECT DISPOSITION",
+            "AssemblyProcessState": "SELECTION REQUIRED",
+            "FabricationStatus": WARNING,
+        }
+        for name, value in base.items():
+            footprint.SetField(name, value)
+            footprint.GetField(name).SetVisible(False)
     fields = FOOTPRINT_METADATA.get(footprint.GetReference())
     if fields is None:
         return

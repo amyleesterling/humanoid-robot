@@ -77,11 +77,12 @@ def main() -> None:
         {},
     )
     if electrical_product.get("supporting_identifiers") != [
-        "PCB-P0.7",
+        "PCB-P0.9",
+        "HR-V0-WD-IC-META-P0.1",
         "HR-V0-WD-LAND-P0.1",
         "HR-V0-WD-MOUNT-IF-P0.1",
         "HR-V0-WD-PCBA-RFI-P0.1",
-        "HR-V0-WD-PCBA-DATA-P0.1",
+        "HR-V0-WD-PCBA-DATA-P0.2",
         "DXL-STAR-P0.1",
         "HR-V0-CP-P0.6",
         "HR-V0-COMPUTE-INSTALL-P0.1",
@@ -95,7 +96,7 @@ def main() -> None:
         "HR-V0-COMPUTE-SUBASM-P0.1",
         "HR-V0-SD-P0.2",
         "HR-V0-24V-IF-P0.2",
-        "HR-V0-E2-HW-P0.2",
+        "HR-V0-E2-HW-P0.3",
         "HR-V0-COMPUTE-IF-P0.1",
         "HR-V0-GRIP-ELEC-P0.1",
     ] or electrical_product.get("release_state") != "correction_candidate_not_released":
@@ -193,7 +194,7 @@ def main() -> None:
         {},
     )
     if commissioning_product.get("supporting_identifiers") != [
-        "HR-V0-E2-HW-P0.2",
+        "HR-V0-E2-HW-P0.3",
         "AUDIT-ELEC-002",
         "INSPECT-ELEC-010",
         "TEST-ELEC-008",

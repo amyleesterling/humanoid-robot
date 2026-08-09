@@ -427,7 +427,7 @@ def main() -> int:
     title = board.GetTitleBlock()
     title.SetTitle("Project Button HR-V0 ordinary watchdog PCB routed/test-access candidate")
     title.SetDate("2026-08-09")
-    title.SetRevision("PCB-P0.8 / Electrical V3-P1.14")
+    title.SetRevision("PCB-P0.9 / Electrical V3-P1.14")
     title.SetCompany("Project Button")
     title.SetComment(0, WARNING)
     title.SetComment(1, "ROUTED/TEST-ACCESS CANDIDATE - NO GERBER RELEASE")

@@ -9,8 +9,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "electrical" / "e2" / "hr-v0-e2-hardware-p0.2"
-IDENTIFIER = "HR-V0-E2-HW-P0.2"
+OUT = ROOT / "electrical" / "e2" / "hr-v0-e2-hardware-p0.3"
+IDENTIFIER = "HR-V0-E2-HW-P0.3"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 
 CONFIG = [
@@ -24,7 +24,7 @@ CONFIG = [
     ("E2-CFG-008", "SR1/SRA1", "Pilz PNOZ s4 750104", "INSTALL CANDIDATE", "CONTROL ONLY", "Qualified application review, configuration, terminal protection, receiving and fault validation required."),
     ("E2-CFG-009", "KWD1/KWD2", "Phoenix Contact 2967060", "INSTALL CANDIDATE", "ORDINARY DIAGNOSTIC RELAYS; ZERO SAFETY CREDIT", "Received polarity and FMEA/fault evidence required."),
     ("E2-CFG-010", "K1/K2", "Schneider LC1D25BD", "INSTALL COIL/MIRROR CANDIDATE", "LOAD POLES UNSOURCED AND UNWIRED", "Coils and auxiliary/mirror contacts only at E2; loaded DC interruption remains prohibited."),
-    ("E2-CFG-011", "WDPCB1", "Project Button PCB-P0.7 / HR-V0-WD-PCBA-RFI-P0.1 / HR-V0-WD-PCBA-DATA-P0.1", "INSTALL CANDIDATE", "CONTROL ONLY", "Internal exact-BOM/placement review data exist but are not machine XYRS; no current CAM release; assembler/supplier acceptance, fabrication definition, fabrication, bare-board, assembly, HIL, fault, EMC and thermal evidence required."),
+    ("E2-CFG-011", "WDPCB1", "Project Button PCB-P0.9 / HR-V0-WD-IC-META-P0.1 / HR-V0-WD-PCBA-DATA-P0.2", "INSTALL CANDIDATE", "CONTROL ONLY", "All 42 populated references have native exact identity fields and a current exact-BOM/placement review package, but supplier-normalized XYRS, current CAM, assembler/process acceptance, fabrication, bare-board, assembly, HIL, fault, EMC and thermal evidence remain absent."),
     ("E2-CFG-012", "DC1", "TRACO POWER TSR 1-2450", "INSTALL ON WDPCB1 CANDIDATE", "CONTROL ONLY", "Received identity plus PCB, brownout, EMC and thermal verification required."),
     ("E2-CFG-013", "PI1", "Raspberry Pi 5 8GB", "INSTALL CANDIDATE", "COMPUTE ONLY; NO SAFETY AUTHORITY", "GPIO cable, retention, image/hash and fresh-command controls remain open."),
     ("E2-CFG-014", "XT1", "5x Phoenix 3209510; 1x 3209523; 1x 3030417; 2x 3022218; 1x 0828734", "EXACT CATALOG/POSITION CANDIDATE", "CONTROL TERMINALS ONLY", "Position map frozen; conductors, ferrules, protection, marking and physical inspection remain open."),
@@ -62,7 +62,7 @@ HOLDS = [
     ("E2-HOLD-005", "PROTECTION", "F24 and FSR1/FSR2 protection/link selections and coordination are open", "Fault current, inrush, time-current, conductor and device coordination"),
     ("E2-HOLD-006", "CONDUCTORS", "Wire, ferrule/lug, labels, glands and door loom not released", "Lengths, ambient, bundling, ampacity, voltage drop, connector limits, termination qualification and jurisdiction"),
     ("E2-HOLD-007", "ENCLOSURE", "Holes, rail/duct cuts, entries, touch protection and bonding not released", "Received measurements, drawings, fabrication inspection and qualified enclosure review"),
-    ("E2-HOLD-008", "WATCHDOG PCB", "PCB-P0.7 has internal R133 BOM/placement review data but no assembler-normalized XYRS, CAM or manufacturing release; R88 PCB-P0.5 CAM and PCB-P0.6 are superseded", "Assembler/supplier acceptance, returned coordinate transform, land/process review, new fabrication package, bare-board test, assembly, HIL/fault/EMC/thermal evidence"),
+    ("E2-HOLD-008", "WATCHDOG PCB", "PCB-P0.9 / HR-V0-WD-PCBA-DATA-P0.2 has 42 native exact identity records and current internal BOM/placement data but no supplier-normalized XYRS, current CAM or manufacturing release; PCB-P0.5 through P0.8 are historical", "Assembler/supplier acceptance, returned coordinate transform, land/process review, new fabrication package, bare-board test, assembly, HIL/fault/EMC/thermal evidence"),
     ("E2-HOLD-009", "FIRMWARE", "Watchdog and supervisor release images not accepted", "Immutable hashes, review, HIL/fault results and configuration record"),
     ("E2-HOLD-010", "TEST EQUIPMENT", "No exact instruments, calibration or numerical limits accepted", "Instrument register, calibration evidence, CAT/isolation suitability and approved limits"),
     ("E2-HOLD-011", "AUTHORIZATION", "No four-role run authorization", "Test director, qualified electrical reviewer, functional-safety reviewer and independent witness signatures"),
@@ -94,7 +94,7 @@ def make_html() -> str:
     )
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HR-V0 E2 hardware slice P0.2</title>
+<title>HR-V0 E2 hardware slice P0.3</title>
 <style>
 :root{{--ink:#082b55;--blue:#0b4f8a;--sky:#dff3ff;--gold:#f5bd24;--paper:#f8fbff;--hold:#7b1e1e}}
 *{{box-sizing:border-box}} body{{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,sans-serif}}
@@ -106,7 +106,7 @@ h1{{font-size:clamp(2rem,5vw,4rem);line-height:1.05;margin:.25rem 0}} h2{{font-s
 .table-wrap{{overflow-x:auto;background:white;border:2px solid var(--blue)}} table{{border-collapse:collapse;min-width:850px;width:100%}} th,td{{padding:.75rem;text-align:left;vertical-align:top;border-bottom:1px solid #aac7df}} th{{background:var(--sky)}}
 code{{font-size:1rem}} footer{{margin-top:2rem;padding:1rem;background:var(--ink);color:white}} @media(max-width:600px){{main{{padding:.8rem}} .grid{{grid-template-columns:1fr}}}}
 </style></head><body>
-<header><div class="warning">{WARNING}</div><p>{IDENTIFIER} · dated 2026-08-08</p><h1>E2 control-only hardware slice</h1><p class="lede">A configuration-exact candidate for reviewing the first control-only commissioning article. It is not a shopping list, wiring release, test authorization, or permission to connect power.</p></header>
+<header><div class="warning">{WARNING}</div><p>{IDENTIFIER} · dated 2026-08-09</p><h1>E2 control-only hardware slice</h1><p class="lede">A configuration-exact candidate for reviewing the first control-only commissioning article. It is not a shopping list, wiring release, test authorization, or permission to connect power.</p></header>
 <main><section class="boundary"><h2>Hard power boundary</h2><p>Only the accepted 24 V safety/control source and 5.1 V compute source may eventually be considered at E2. The 12 V actuator source, actuator branches, U2D2 power path and every actuator plug must be physically absent or disconnected, covered, labeled and proven dead. K1/K2 may be present only for coil and auxiliary/mirror-contact tests; their load poles remain unsourced and unwired.</p></section>
 <h2>Installed, absent and DNP states</h2><div class="grid">{cards(CONFIG)}</div>
 <h2>XT1 exact position candidate</h2><p>The catalog family and six position-to-net assignments are frozen. Every conductor and termination remains on hold.</p><div class="table-wrap"><table><thead><tr><th>Position</th><th>Net</th><th>Catalog body</th><th>Release</th></tr></thead><tbody>{term_rows}</tbody></table></div>
@@ -122,9 +122,9 @@ def main() -> None:
     write_csv("e2-blocking-holds.csv", ("hold_id", "scope", "open_item", "evidence_needed", "warning"), HOLDS)
     summary = {
         "identifier": IDENTIFIER,
-        "date": "2026-08-08",
+        "date": "2026-08-09",
         "warning": WARNING,
-        "electrical_baseline": "Project Button Electrical V3-P1.12",
+        "electrical_baseline": "Project Button Electrical V3-P1.14 / PCB-P0.9 / HR-V0-WD-PCBA-DATA-P0.2",
         "sequence_baseline": "HR-V0-E2-SEQ-P0.1",
         "configuration_rows": len(CONFIG),
         "terminal_rows": len(TERMINALS),
