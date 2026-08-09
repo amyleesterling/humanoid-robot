@@ -1,0 +1,9 @@
+hold_id,required_evidence,state,warning
+ATOMIC-HOLD-001,independent requirements review of every child statement and parent coverage,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+ATOMIC-HOLD-002,confirm that no child contains multiple independently passable obligations,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+ATOMIC-HOLD-003,"confirm that no parent duty was lost, weakened, strengthened or moved without change control",OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+ATOMIC-HOLD-004,define child-specific acceptance fields in each parent verification record,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+ATOMIC-HOLD-005,select named accountable people and qualified independent approvers,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+ATOMIC-HOLD-006,execute configuration-bound evidence and record child-level pass/fail decisions,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+ATOMIC-HOLD-007,update risk and gate trace only after independent acceptance of child IDs,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+ATOMIC-HOLD-008,merge and formally baseline the accepted parent-child hierarchy,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"

@@ -28,7 +28,7 @@ The manifest hashes Git's canonical staged blobs, not platform-dependent checkou
 | Firmware | `HR-V0-FW-P0.4` / `HR-V0-SUP-P0.3` / `HR-V0-ACT-P0.3` / `HR-V0-WD-BUILD-P0.2` / `HR-V0-DXL-TRANSPORT-P0.3` / `HR-V0-LIMITS-P0.2` | source, P0.6/P0.7/P0.3 mechanically bound fail-closed transport boundary and reproducible watchdog artifacts; calibration/accepted-limit evidence unresolved; SDK not installed on target; no received actuator configuration, connection, flash, execution or HIL validation |
 | Functional safety | `HR-V0-FSA-P0.1` | allocation candidate; `DF-01` has zero safety credit; no PLr/SIL assigned |
 | E2 commissioning | `HR-V0-E2-SEQ-P0.1` | 15-step control-only procedure candidate; actuator source absent; five forms not executed; authorization `NOT AUTHORIZED` |
-| Governance | `HR-V0-GOV-P0.1` | complete source-bound coverage of 81 requirements, 40 risks and 30 gates; candidate roles only; named people, qualifications, atomic children, history, evidence, residual-risk decisions, signatures and approvals remain open |
+| Governance | `HR-V0-GOV-P0.2` / `HR-V0-REQ-ATOMIC-P0.1` | complete source-bound coverage of 81 requirements, 40 risks and 30 gates; 396 draft child candidates cover all 66 compound parents; independent atomicity/coverage acceptance, named people, qualifications, history, evidence, residual-risk decisions, signatures and approvals remain open |
 
 Electrical V2.1 remains preserved as a reviewed historical baseline. It does not override V3's HR-V0 correction intent. HR-30A/B/C/D/W remain later program stages and are not released by this HR-V0 candidate.
 

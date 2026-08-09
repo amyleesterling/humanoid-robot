@@ -1,0 +1,10 @@
+hold_id,required_evidence,state,warning
+GOV-HOLD-001,"select named accountable people for every requirement, risk and gate",OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+GOV-HOLD-002,select independent qualified approvers and record scope/competence/independence,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+GOV-HOLD-003,decompose every compound requirement into stable atomic child requirements,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+GOV-HOLD-004,backfill controlled row-level change history without rewriting historical evidence,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+GOV-HOLD-005,bind executed evidence URIs and immutable configuration hashes,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+GOV-HOLD-006,record approval/rejection decisions and signatures only after evidence review,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+GOV-HOLD-007,obtain configuration-specific residual-risk decisions from accountable roles,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+GOV-HOLD-008,independently review role allocation and separation of author/reviewer/approver,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+GOV-HOLD-009,merge and formally accept the immutable candidate before any baseline claim,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"

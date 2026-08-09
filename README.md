@@ -459,6 +459,13 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R141 validation record](docs/reviews/2026-08-09-r141-validation-record.md)
 - [R141 independent review request](docs/reviews/2026-08-09-r141-independent-review-request.md)
 - [Sol R12 findings rechecked after R141](docs/reviews/2026-08-09-sol-r12-post-r141-status.md)
+- [R142 atomic requirement candidates](docs/hr-v0-atomic-requirements-p0.1.md)
+- [R142 current governance control P0.2](docs/hr-v0-governance-control-p0.2.md)
+- [R142 interactive atomic-requirement register](release/hr-v0/atomic-requirements-p0.1/index.html)
+- [R142 interactive governance register](release/hr-v0/governance-p0.2/index.html)
+- [R142 independent review request](docs/reviews/2026-08-09-r142-independent-review-request.md)
+- [R142 validation record](docs/reviews/2026-08-09-r142-validation-record.md)
+- [Sol R12 findings rechecked after R142](docs/reviews/2026-08-09-sol-r12-post-r142-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -528,7 +535,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred forty-one review/control rounds are complete: R01-R141. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R141 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R141 covers all 81 requirements, 40 risks and 30 gates in one source-hash-bound governance layer while leaving 66 compound decompositions, every named person, executed evidence, approval, residual-risk decision and historical row-level change trail open.
+One hundred forty-two review/control rounds are complete: R01-R142. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R142 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R142 decomposes all 66 R141 compound parents into 396 stable draft child candidates and binds them into governance P0.2; independent acceptance, every named person, executed evidence, approval, residual-risk decision and historical row-level change trail remain open.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -673,6 +680,7 @@ One hundred forty-one review/control rounds are complete: R01-R141. R11 Fable an
 | R139 | Current watchdog native identity and assembly-data correction | Issued `PCB-P0.9 / HR-V0-WD-PCBA-DATA-P0.2 / HR-V0-E2-HW-P0.3`; all 42 populated references carry 294 exact hidden base fields, sixteen BOM lines total 42 parts, 42 placements and four NPTH features reconcile to historical P0.7, and P0.8/P0.9 structural parity passes. Supplier-normalized XYRS, process acceptance, CAM, fabrication, assembly, physical evidence and energization remain false/open. |
 | R140 | HR-V0 frame/sign and raw-calibration boundary correction | Issued `HR-V0-FRAME-CONV-P0.1`; controls six frames, four proper transforms, three engineering axes, four legacy-layout mappings, a blank six-record calibration form and ten open holds. A0 is +X right / +Y front / +Z up; J1/J2 positive rotation is right-hand about +X; legacy G0 axes are layout-only. Raw direction/scale/zero, physical datum proof, gripper registration, HR-30 mirroring, motion and energization remain open. |
 | R141 | Requirement/risk/gate governance-control correction | Issued `HR-V0-GOV-P0.1`; covers 151 source-bound records, identifies candidate owner/approver roles, catalogs 66 compound requirements and keeps nine governance holds open. No person, evidence, signature, approval, residual-risk decision, atomic child register or energization authority is invented. |
+| R142 | Atomic-requirement and governance P0.2 correction | Issued `HR-V0-REQ-ATOMIC-P0.1` with 396 stable draft children covering all 66 compound parents and `HR-V0-GOV-P0.2` binding the child register. Eight atomic and nine governance holds remain open; zero named people, evidence, approvals or work authority are represented. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
