@@ -91,6 +91,7 @@ def main() -> int:
         "HR-V0-WD-SUPPLY-P0.1",
         "HR-V0-POWERLOSS-P0.1",
         "HR-V0-PASSIVE-ARM-RECEIVER-P0.1",
+        "HR-V0-PASSIVE-ARM-RECEIVER-VERIFY-P0.1",
     ]
     assert safety["release_state"] == "allocation_candidate_no_plr_or_sil_assigned"
 

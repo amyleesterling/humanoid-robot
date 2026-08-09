@@ -1,0 +1,12 @@
+record,quantity,independent_result,method,boundary
+R128-ARITH-001,ma30_each_j,3.5025296998561177,Decimal re-derivation from controlled catalog/unit inputs,catalog conversion only
+R128-ARITH-002,ma30_total_j,10.5075890995683531,Decimal re-derivation from controlled catalog/unit inputs,arithmetic sum; unequal sharing and application approval open
+R128-ARITH-003,catalog_to_gravity_ratio,1.984214622988888888888888889,Decimal re-derivation from controlled catalog/unit inputs,not an accepted safety or design factor
+R128-ARITH-004,stroke_mm,8.128,Decimal re-derivation from controlled catalog/unit inputs,published stroke; installed usable stroke and positive stop open
+R128-ARITH-005,minimum_effective_mass_kg,0.226796185,Decimal re-derivation from controlled catalog/unit inputs,published endpoint only
+R128-ARITH-006,maximum_effective_mass_kg,14.06136347,Decimal re-derivation from controlled catalog/unit inputs,published endpoint only
+R128-ARITH-007,minimum_impact_speed_m_s,0.67056,Decimal re-derivation from controlled catalog/unit inputs,published endpoint only; actual machine may be slower
+R128-ARITH-008,maximum_impact_speed_m_s,4.45008,Decimal re-derivation from controlled catalog/unit inputs,published endpoint only
+R128-ARITH-009,rail_moment_n_mm,210000,Decimal re-derivation from controlled catalog/unit inputs,simple-span central-load screen
+R128-ARITH-010,rail_stress_mpa,92.59871684635227197565976586,Decimal re-derivation from controlled catalog/unit inputs,ideal equal-sharing screen; no allowable pass
+R128-ARITH-011,rail_deflection_mm,3.951236974285568644534683768,Decimal re-derivation from controlled catalog/unit inputs,typical E screen; joints and unequal sharing excluded
