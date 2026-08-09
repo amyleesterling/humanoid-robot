@@ -68,8 +68,8 @@ def main() -> None:
         "HR-V0-FSA-P0.1",
         "HR-V0-BOM-P0.1",
         "HR-V0-E2-SEQ-P0.1",
-        "HR-V0-GOV-P0.2",
-        "HR-V0-REQ-ATOMIC-P0.1",
+        "HR-V0-GOV-P0.3",
+        "HR-V0-REQ-ATOMIC-P0.2",
     }
     missing_identifiers = required_identifiers - identifiers
     if missing_identifiers:
@@ -210,21 +210,21 @@ def main() -> None:
     ] or commissioning_product.get("release_state") != "templates_not_executed_not_authorized_for_energization":
         errors.append("HR-V0-E2-SEQ-P0.1 supporting identifiers or fail-closed state changed")
     governance_product = next(
-        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-GOV-P0.2"),
+        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-GOV-P0.3"),
         {},
     )
-    if governance_product.get("supporting_identifiers") != ["HR-V0-GOV-P0.1", "GOV-001", "AUDIT-GOV-001", "SOL-R12-B-018", "HR-V0-REQ-ATOMIC-P0.1"] or governance_product.get("release_state") != (
-        "coverage_snapshot_atomic_children_candidate_people_evidence_approval_history_open_not_approved"
+    if governance_product.get("supporting_identifiers") != ["HR-V0-GOV-P0.2", "HR-V0-GOV-P0.1", "GOV-001", "AUDIT-GOV-001", "SOL-R12-B-018", "HR-V0-REQ-ATOMIC-P0.2"] or governance_product.get("release_state") != (
+        "coverage_snapshot_internally_audited_atomic_children_candidate_people_evidence_approval_history_open_not_approved"
     ):
-        errors.append("HR-V0-GOV-P0.2 supporting identifiers or fail-closed state changed")
+        errors.append("HR-V0-GOV-P0.3 supporting identifiers or fail-closed state changed")
     requirements_product = next(
-        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-REQ-ATOMIC-P0.1"),
+        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-REQ-ATOMIC-P0.2"),
         {},
     )
-    if requirements_product.get("supporting_identifiers") != ["GOV-001", "SOL-R12-N-004", "HR-V0-GOV-P0.2"] or requirements_product.get("release_state") != (
-        "atomic_child_candidate_all_draft_unexecuted_unapproved_independent_review_required_not_approved"
+    if requirements_product.get("supporting_identifiers") != ["HR-V0-REQ-ATOMIC-P0.1", "GOV-001", "SOL-R12-N-004", "HR-V0-GOV-P0.3"] or requirements_product.get("release_state") != (
+        "internally_audited_atomic_child_candidate_all_draft_unexecuted_unapproved_independent_review_required_not_approved"
     ):
-        errors.append("HR-V0-REQ-ATOMIC-P0.1 supporting identifiers or fail-closed state changed")
+        errors.append("HR-V0-REQ-ATOMIC-P0.2 supporting identifiers or fail-closed state changed")
 
     if not MANIFEST.is_file():
         errors.append(f"manifest missing: {MANIFEST_REL}")

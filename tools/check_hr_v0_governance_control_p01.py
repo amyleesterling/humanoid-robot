@@ -127,7 +127,7 @@ def main() -> int:
         governance = next((item for item in candidate["current_products"] if item["domain"] == "governance"), None)
         if (
             not governance
-            or governance["identifier"] != "HR-V0-GOV-P0.2"
+            or governance["identifier"] != "HR-V0-GOV-P0.3"
             or "HR-V0-GOV-P0.1" not in governance.get("supporting_identifiers", [])
             or "not_approved" not in governance["release_state"]
         ):

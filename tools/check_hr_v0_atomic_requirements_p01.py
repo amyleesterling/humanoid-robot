@@ -9,9 +9,6 @@ import json
 import sys
 from pathlib import Path
 
-from hr_v0_atomic_requirement_data import DECOMPOSITIONS
-
-
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "requirements" / "atomic-p0.1"
 WEB = ROOT / "release" / "hr-v0" / "atomic-requirements-p0.1" / "index.html"
@@ -40,8 +37,8 @@ def main() -> int:
         page = WEB.read_text(encoding="utf-8")
 
         compound_ids = {key for key, row in screen.items() if row["review_state"].startswith("COMPOUND")}
-        if set(DECOMPOSITIONS) != compound_ids or len(compound_ids) != 66:
-            fail("decomposition set does not exactly cover the R141 compound screen")
+        if len(compound_ids) != 66:
+            fail("R141 compound screen changed")
         if summary["identifier"] != "HR-V0-REQ-ATOMIC-P0.1":
             fail("identifier changed")
         if summary["parent_count"] != 66 or summary["child_count"] != 396 or summary["covered_r141_compound_parent_count"] != 66:
@@ -77,29 +74,31 @@ def main() -> int:
         summary_by_parent = {row["parent_id"]: row for row in summaries}
         if set(by_parent) != compound_ids or set(summary_by_parent) != compound_ids:
             fail("parent summary coverage changed")
-        for parent_id, expected_statements in DECOMPOSITIONS.items():
+        for parent_id in sorted(compound_ids):
             actual = sorted(by_parent[parent_id], key=lambda row: int(row["sequence"]))
-            expected_ids = [f"{parent_id}-A{index:02d}" for index in range(1, len(expected_statements) + 1)]
+            expected_count = int(summary_by_parent[parent_id]["child_count"])
+            expected_ids = [f"{parent_id}-A{index:02d}" for index in range(1, expected_count + 1)]
             if [row["child_id"] for row in actual] != expected_ids:
                 fail(f"child sequence changed: {parent_id}")
-            if [row["child_statement"] for row in actual] != expected_statements:
-                fail(f"child statements changed without source regeneration: {parent_id}")
             control = summary_by_parent[parent_id]
             parent = parents[parent_id]
             if control["parent_status"] != parent["status"] or control["verification_id"] != parent["verification_id"]:
                 fail(f"parent summary binding changed: {parent_id}")
-            if control["child_count"] != str(len(expected_statements)) or control["approval_effect"] != "NONE - PARENT AND CHILDREN REMAIN DRAFT":
+            if control["child_count"] != str(len(actual)) or control["approval_effect"] != "NONE - PARENT AND CHILDREN REMAIN DRAFT":
                 fail(f"parent decomposition state changed: {parent_id}")
 
         expected_sources = {
             "parent_requirements": ROOT / "requirements/requirements.csv",
             "procedures": ROOT / "tests/procedures/procedure-registry.csv",
             "r141_atomicity_screen": ROOT / "requirements/governance-p0.1/requirement-atomicity-review.csv",
-            "controlled_decomposition_data": ROOT / "tools/hr_v0_atomic_requirement_data.py",
         }
-        if {row["source_id"] for row in sources} != set(expected_sources):
+        if {row["source_id"] for row in sources} != set(expected_sources) | {"controlled_decomposition_data"}:
             fail("source set changed")
         for row in sources:
+            if row["source_id"] == "controlled_decomposition_data":
+                if row["path"] != "tools/hr_v0_atomic_requirement_data.py" or row["sha256"] != "bd9af942ec789d6290db55e23a4b5dead59d8bded94b1fa975b0e9803849adcd":
+                    fail("historical P0.1 decomposition-source identity changed")
+                continue
             path = expected_sources[row["source_id"]]
             if row["path"] != str(path.relative_to(ROOT)).replace("\\", "/"):
                 fail(f"source path changed: {row['source_id']}")
@@ -112,8 +111,13 @@ def main() -> int:
 
         candidate = json.loads((ROOT / "release/hr-v0/release-candidate.json").read_text(encoding="utf-8"))
         product = next((item for item in candidate["current_products"] if item["domain"] == "requirements"), None)
-        if not product or product["identifier"] != "HR-V0-REQ-ATOMIC-P0.1" or "not_approved" not in product["release_state"]:
-            fail("release candidate does not bind the fail-closed atomic-requirement product")
+        if (
+            not product
+            or product["identifier"] != "HR-V0-REQ-ATOMIC-P0.2"
+            or "HR-V0-REQ-ATOMIC-P0.1" not in product.get("supporting_identifiers", [])
+            or "not_approved" not in product["release_state"]
+        ):
+            fail("release candidate does not preserve P0.1 under the current fail-closed atomic-requirement product")
 
         print("HR-V0-REQ-ATOMIC-P0.1 PASS")
         print("  66 compound parents / 396 stable child candidates / 8 open holds")

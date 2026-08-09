@@ -47,15 +47,15 @@
     },
     {
       "domain": "governance",
-      "identifier": "HR-V0-GOV-P0.2",
-      "supporting_identifiers": ["HR-V0-GOV-P0.1", "GOV-001", "AUDIT-GOV-001", "SOL-R12-B-018", "HR-V0-REQ-ATOMIC-P0.1"],
-      "release_state": "coverage_snapshot_atomic_children_candidate_people_evidence_approval_history_open_not_approved"
+      "identifier": "HR-V0-GOV-P0.3",
+      "supporting_identifiers": ["HR-V0-GOV-P0.2", "HR-V0-GOV-P0.1", "GOV-001", "AUDIT-GOV-001", "SOL-R12-B-018", "HR-V0-REQ-ATOMIC-P0.2"],
+      "release_state": "coverage_snapshot_internally_audited_atomic_children_candidate_people_evidence_approval_history_open_not_approved"
     },
     {
       "domain": "requirements",
-      "identifier": "HR-V0-REQ-ATOMIC-P0.1",
-      "supporting_identifiers": ["GOV-001", "SOL-R12-N-004", "HR-V0-GOV-P0.2"],
-      "release_state": "atomic_child_candidate_all_draft_unexecuted_unapproved_independent_review_required_not_approved"
+      "identifier": "HR-V0-REQ-ATOMIC-P0.2",
+      "supporting_identifiers": ["HR-V0-REQ-ATOMIC-P0.1", "GOV-001", "SOL-R12-N-004", "HR-V0-GOV-P0.3"],
+      "release_state": "internally_audited_atomic_child_candidate_all_draft_unexecuted_unapproved_independent_review_required_not_approved"
     }
   ],
   "historical_or_out_of_scope_products": [
