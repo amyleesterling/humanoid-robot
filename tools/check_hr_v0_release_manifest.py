@@ -87,6 +87,7 @@ def main() -> None:
         "HR-V0-WD-PCBA-RFI-P0.1",
         "HR-V0-WD-PCBA-DATA-P0.2",
         "HR-V0-WD-BOM-BIND-P0.1",
+        "HR-V0-WD-CAM-P0.1",
         "DXL-STAR-P0.1",
         "HR-V0-CP-P0.6",
         "HR-V0-COMPUTE-INSTALL-P0.1",

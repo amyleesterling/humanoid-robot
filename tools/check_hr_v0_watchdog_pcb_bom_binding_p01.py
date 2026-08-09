@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSEMBLY = ROOT / "electrical" / "manufacturing" / "hr-v0-watchdog-pcba-assembly-data-p0.2"
+CAM = ROOT / "release" / "hr-v0" / "watchdog-pcb-cam-p0.1"
 OUT = ROOT / "release" / "hr-v0" / "watchdog-pcb-bom-binding-p0.1"
 BINDING = ROOT / "bom" / "hr-v0-watchdog-pcb-binding.csv"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
@@ -40,6 +41,7 @@ def main() -> int:
     release = json.loads((ROOT / "release" / "hr-v0" / "release-candidate.json").read_text(encoding="utf-8"))
     gates = {row["gate_id"]: row for row in rows(ROOT / "requirements" / "hr-v0-energization-gates.csv")}
     guide = (OUT / "index.html").read_text(encoding="utf-8")
+    cam_status = json.loads((CAM / "package-status.json").read_text(encoding="utf-8"))
 
     if len(binding_rows) != 1:
         errors.append("binding register is not exactly one BOM-048 row")
@@ -54,7 +56,9 @@ def main() -> int:
         "populated_references": "42",
         "bom_lines": "16",
         "mechanical_features": "4",
-        "cam_exists": "FALSE",
+        "cam_exists_at_issue": "FALSE",
+        "current_cam_review_identifier": "HR-V0-WD-CAM-P0.1",
+        "current_cam_review_exists": "TRUE",
         "supplier_xyrs_exists": "FALSE",
         "fabrication_authorized": "FALSE",
         "warning": WARNING,
@@ -90,18 +94,25 @@ def main() -> int:
         if file_states.get(file_id, {}).get("state") != required_state:
             errors.append(f"{file_id} absence state changed")
 
-    for key in ("provider_selected", "provider_contacted", "files_uploaded", "supplier_normalized_xyrs_exists", "cam_exists", "physical_article_exists", "fabrication_authorized", "assembly_authorized", "connection_authorized", "motion_authorized", "energization_authorized", "safety_credit"):
+    for key in ("provider_selected", "provider_contacted", "files_uploaded", "supplier_normalized_xyrs_exists", "physical_article_exists", "fabrication_authorized", "assembly_authorized", "connection_authorized", "motion_authorized", "energization_authorized", "safety_credit"):
         if status.get(key) is not False:
             errors.append(f"binding package status {key} is not false")
+    if status.get("cam_exists_at_issue") is not False or status.get("current_cam_review_exists") is not True or status.get("current_cam_review_released") is not False:
+        errors.append("binding package does not distinguish R149 absence from current quarantined CAM")
     if status.get("identifier") != "HR-V0-WD-BOM-BIND-P0.1" or status.get("open_assembly_holds") != 12:
         errors.append("binding package identity or hold count changed")
     source_hashes = status.get("source_hashes", {})
-    if len(source_hashes) != 7:
-        errors.append("binding package does not hash exactly seven controlled sources")
+    if len(source_hashes) != 9:
+        errors.append("binding package does not hash exactly nine controlled sources")
     for relative, expected_hash in source_hashes.items():
         path = ROOT / relative
         if not path.is_file() or digest(path) != expected_hash:
             errors.append(f"binding package source hash mismatch: {relative}")
+    if cam_status.get("identifier") != "HR-V0-WD-CAM-P0.1" or cam_status.get("cam_generated") is not True or cam_status.get("cam_released") is not False:
+        errors.append("current CAM review package state is missing or released")
+    for key in ("supplier_normalized_xyrs_exists", "supplier_selected", "supplier_contacted", "files_uploaded", "quotation_requested", "fabrication_authorized", "assembly_authorized", "physical_article_exists", "connection_authorized", "motion_authorized", "energization_authorized", "safety_credit"):
+        if cam_status.get(key) is not False:
+            errors.append(f"current CAM review package {key} is not false")
 
     products = release.get("current_products", [])
     electrical = next((x for x in products if x.get("domain") == "electrical"), {})
@@ -113,7 +124,7 @@ def main() -> int:
         gate = gates.get(gate_id, {})
         if gate.get("status") != "partial" or "bom/hr-v0-watchdog-pcb-binding.csv" not in gate.get("evidence_location", ""):
             errors.append(f"{gate_id} does not retain partial status with binding evidence")
-    for token in ("font:clamp(16px", "PCB-P0.9", "Historical PCB-P0.5", "42", "16", "Twelve holds remain open", "NOT MACHINE XYRS"):
+    for token in ("font:clamp(16px", "PCB-P0.9", "Historical PCB-P0.5", "HR-V0-WD-CAM-P0.1", "42", "16", "Twelve assembly holds remain open", "NOT MACHINE XYRS"):
         if token not in guide:
             errors.append(f"interactive guide omits {token!r}")
 
@@ -123,7 +134,7 @@ def main() -> int:
             print(f"- {error}")
         return 1
     print("HR-V0-WD-BOM-BIND-P0.1 PASS: BOM-048 binds PCB-P0.9 to P0.2 assembly data, 42 placements, 16 BOM lines and 4 NPTH features")
-    print("Twelve holds open; current CAM, supplier XYRS, fabrication, assembly, connection, motion, energization and safety credit remain false")
+    print("Twelve assembly holds open; current CAM review exists but supplier XYRS/release, fabrication, assembly, connection, motion, energization and safety credit remain false")
     return 0
 
 

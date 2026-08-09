@@ -1,8 +1,8 @@
 source_id,path,sha256,state
-release_candidate,release/hr-v0/release-candidate.json,95e7465d11146449336c18799db63e5bf427a2fe6ebd98e0e3bab617b51f38b8,CONTROLLED INPUT SNAPSHOT
+release_candidate,release/hr-v0/release-candidate.json,f4770e6ff9b4c50d299958588334b9109bcc37ffc557c0fb69ae1082bc90feb5,CONTROLLED INPUT SNAPSHOT
 release_manifest,release/hr-v0/HR-V0-RC-P0.1-file-manifest.csv,SELF-REFERENTIAL-MANIFEST-HASH-OMITTED,CONTROLLED INPUT; HASH OMITTED TO AVOID MANIFEST CYCLE
-energization_gates,requirements/hr-v0-energization-gates.csv,efcdc74681c1a98610dd3377daa8f9c8cc56af71889343df25451026de9d109f,CONTROLLED INPUT SNAPSHOT
-bom_closure,bom/hr-v0-bom-closure.csv,763fd5b5d18aa8d15347b2118b304e1ad1a078eab31a8628ea21480a60d1f659,CONTROLLED INPUT SNAPSHOT
+energization_gates,requirements/hr-v0-energization-gates.csv,eef85133fa2bb9240acf793b15789d0c742deb451f8855f2249683743483535a,CONTROLLED INPUT SNAPSHOT
+bom_closure,bom/hr-v0-bom-closure.csv,e305169339360dcad52dd874909fb249c14d7aad370c215ee15fdbb4bd4b694d,CONTROLLED INPUT SNAPSHOT
 mechanical_release,docs/hr-v0-mechanical-release-p0.6.md,ed680efa791b5fb8f0b5a8a4dcf438e15ce431e98067ca14dd9153fbf105dbde,CONTROLLED INPUT SNAPSHOT
 mechanical_dfm,docs/hr-v0-mechanical-dfm-data-p0.1.md,fece3ef124fb19a04f6a7f02cbd40d65ba1e4ca6f52682d9422ab90bf9c4a735,CONTROLLED INPUT SNAPSHOT
 control_panel,docs/hr-v0-control-panel-p0.6.md,850423ac0c215d60b98240c55a4fb4339dcfa84008dabb740ac52f32e2806678,CONTROLLED INPUT SNAPSHOT

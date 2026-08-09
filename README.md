@@ -505,6 +505,13 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R149 independent review request](docs/reviews/2026-08-09-r149-independent-review-request.md)
 - [R149 validation record](docs/reviews/2026-08-09-r149-validation-record.md)
 - [Sol R12 findings rechecked after R149](docs/reviews/2026-08-09-sol-r12-post-r149-status.md)
+- [R150 current PCB-P0.9 CAM review package](docs/hr-v0-watchdog-cam-p0.1.md)
+- [R150 interactive CAM review guide](release/hr-v0/watchdog-pcb-cam-p0.1/index.html)
+- [R150 CAM output register](release/hr-v0/watchdog-pcb-cam-p0.1/cam-output-register.csv)
+- [R150 42-reference position parity](release/hr-v0/watchdog-pcb-cam-p0.1/cam-assembly-parity.csv)
+- [R150 independent review request](docs/reviews/2026-08-09-r150-independent-review-request.md)
+- [R150 validation record](docs/reviews/2026-08-09-r150-validation-record.md)
+- [Sol R12 findings rechecked after R150](docs/reviews/2026-08-09-sol-r12-post-r150-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -536,7 +543,9 @@ Run `python tools/generate_hr_v0_actuator_ac_cord.py` and `python tools/check_hr
 
 Run `python tools/generate_hr_v0_mechanical_bom_binding.py` and `python tools/check_hr_v0_mechanical_bom_binding_p01.py` for R148. Passing proves that `BOM-027` binds exactly one each P0.7 `MV0-C01/C04/C05/C06/C07` to the fifteen existing hashed STEP/DXF/SVG identities and remains an exact-candidate hold with all fifteen DFM holds open. It does not authorize provider contact, file upload, quotation, purchase, first article, fabrication, assembly, motion or energization.
 
-Run `python tools/generate_hr_v0_watchdog_pcb_bom_binding.py` and `python tools/check_hr_v0_watchdog_pcb_bom_binding_p01.py` for R149. Passing proves that `BOM-048` binds current PCB-P0.9 / Electrical V3-P1.14 to `HR-V0-WD-PCBA-DATA-P0.2`, including one native PCB hash, sixteen BOM lines totaling 42 populated references, 42 placement rows, four NPTH features and twelve open assembly holds. It also proves current CAM, supplier-normalized XYRS, provider, fabrication, assembly, connection, motion, energization and safety credit remain absent or false.
+Run `python tools/generate_hr_v0_watchdog_pcb_bom_binding.py` and `python tools/check_hr_v0_watchdog_pcb_bom_binding_p01.py` for R149 as synchronized by R150. Passing proves that `BOM-048` binds current PCB-P0.9 / Electrical V3-P1.14 to `HR-V0-WD-PCBA-DATA-P0.2`, including one native PCB hash, sixteen BOM lines totaling 42 populated references, 42 placement rows, four NPTH features and twelve open assembly holds. It also distinguishes the R149 at-issue CAM absence from R150's current quarantined CAM review set and proves supplier-normalized XYRS, provider release, fabrication, assembly, connection, motion, energization and safety credit remain absent or false.
+
+Generate R150 with `python tools/generate_hr_v0_watchdog_cam_p01.py`, then run `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_watchdog_cam_p01.py`. Passing proves the current PCB-P0.9 source generated ten Gerber/job and five drill/map/report files, IPC-D-356, board statistics, native DRC 0 and exact 42-reference internal position parity. It also proves the position file is not supplier-normalized XYRS, all eighteen holds remain open, eleven manufacturing selections remain unresolved, no upload archive exists and every supplier/contact/quotation/fabrication/assembly/physical/connection/motion/energization/safety-credit flag remains false.
 
 Run `python tools/check_hr_v0_panel_rail_duct_p01.py` for R123. Passing proves the corrected two-stock `1207648` rail branch, `3240189` duct, six `3022218` DR1-DR3 brackets, seven planning cuts, twelve holds, three current primary sources, eighteen blank receiving rows and sixteen blank installation rows stay synchronized. It does not prove received identity, final lengths, kerf, tools, holes, fasteners, DR4 retention, bonding, pull/vibration, fill, thermal behavior, qualified review or readiness.
 
@@ -580,7 +589,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred forty-nine review/control rounds are complete: R01-R149. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R149 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R149 removes the live PCB-P0.5 BOM contradiction: `BOM-048` now binds current PCB-P0.9 / Electrical V3-P1.14 to `HR-V0-WD-PCBA-DATA-P0.2`, bringing the closure register to 39 exact holds and 21 selection-required groups while retaining all current CAM, supplier, physical and qualified-review holds.
+One hundred fifty review/control rounds are complete: R01-R150. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R150 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R150 replaces the absence of current PCB-P0.9 CAM with a quarantined source-bound review set while retaining supplier normalization, process, physical, qualified-review and every work-authorization hold.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -732,7 +741,8 @@ One hundred forty-nine review/control rounds are complete: R01-R149. R11 Fable a
 | R146 | Evaluation Batch A unit receiving, quarantine and historical-governance-snapshot correction | Issued `HR-V0-EVAL-BATCH-A-RCV-P0.1`: 21 deterministic unit IDs, twelve receiving steps per unit, seven evidence placeholders per unit and 21 printable quarantine labels. Corrected P0.1/P0.2 governance checkers to validate their recorded historical hashes while current P0.3 follows live sources. All 252 traveler records and 147 evidence records are unexecuted; zero units are authorized, ordered, received or accepted for machine use. |
 | R147 | Actuator-source AC cord catalog-selection correction | Issued `HR-V0-ACT-AC-CORD-P0.1`; advanced BOM-063 to exact-candidate hold for Eaton `P006-006` against the MEAN WELL GST280A12-C6P C14/Class-I basis. Eighteen controls, twelve holds and thirty physical records retain the exact site, branch, code, PE, fit, inrush, route, thermal and qualified-review boundaries. No purchase, connection or energization authority exists. |
 | R148 | P0.7 mechanical BOM binding correction | Issued `HR-V0-MECH-BOM-BIND-P0.1`; replaced the live P0.5 `BOM-027` mix with one each `MV0-C01/C04/C05/C06/C07`, bound all five to fifteen existing hashed STEP/DXF/SVG identities, and advanced the row to exact-candidate hold. All fifteen DFM holds remain open; no provider contact, upload, quote, purchase, fabrication, assembly, motion or energization authority exists. |
-| R149 | Watchdog PCB BOM binding correction | Issued `HR-V0-WD-BOM-BIND-P0.1`; replaced historical PCB-P0.5 in live `BOM-048` with current PCB-P0.9 / Electrical V3-P1.14 and P0.2 assembly data, hash-binding 42 populated references, sixteen BOM lines, 42 placements and four NPTH features. Current CAM, supplier XYRS, provider/process, physical and qualified evidence remain absent; no physical-work or energization authority exists. |
+| R149 | Watchdog PCB BOM binding correction | Issued `HR-V0-WD-BOM-BIND-P0.1`; replaced historical PCB-P0.5 in live `BOM-048` with current PCB-P0.9 / Electrical V3-P1.14 and P0.2 assembly data, hash-binding 42 populated references, sixteen BOM lines, 42 placements and four NPTH features. CAM was absent at issuance; supplier XYRS, provider/process, physical and qualified evidence remain absent; no physical-work or energization authority exists. |
+| R150 | Current PCB-P0.9 CAM review correction | Issued `HR-V0-WD-CAM-P0.1`; generated ten Gerber/job and five drill/map/report files, IPC-D-356, statistics and native DRC 0 from current PCB-P0.9; proved exact internal parity for all 42 placement references. No archive, supplier XYRS, provider/process acceptance, physical article, fabrication, assembly, connection, motion or energization authority exists. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

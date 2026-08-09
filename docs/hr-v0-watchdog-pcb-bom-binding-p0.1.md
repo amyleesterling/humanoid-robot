@@ -29,7 +29,7 @@ The binding and its hashes are machine-readable in `bom/hr-v0-watchdog-pcb-bindi
 
 The current BOM no longer points at a superseded board. The `exact_candidate_hold` classification means that the configuration identity and candidate quantity are exact enough for controlled review. It does not make a build package.
 
-Current Gerber/drill CAM does not exist for PCB-P0.9. Supplier-normalized XYRS does not exist. A supplier packet does not exist. Provider, board process, stackup, finish, stencil, paste, reflow, THT, cleanliness, inspection, electrical test, first article, physical, HIL, EMC, thermal and qualified-review evidence remain unresolved.
+At R149 issuance, current Gerber/drill CAM did not exist for PCB-P0.9. R150 now supplies `HR-V0-WD-CAM-P0.1`, a quarantined internal review set; it is not supplier-released. Supplier-normalized XYRS and an accepted supplier packet still do not exist. Provider, board process, stackup, finish, stencil, paste, reflow, THT, cleanliness, inspection, electrical test, first article, physical, HIL, EMC, thermal and qualified-review evidence remain unresolved.
 
 Historical PCB-P0.5 CAM is prohibited from upload or order against PCB-P0.9. No provider has been selected or contacted; no files have been uploaded; and no quotation, fabrication, assembly, connection, motion, energization or safety credit is authorized.
 
