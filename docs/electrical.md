@@ -15,7 +15,7 @@ Status: architecture baseline with a native connected V3 candidate; qualified re
 
 The V3 candidate contains no project-built mains wiring, exposed AC terminal, internal AC supply, or project mains splitter. The factory adapters remain external and unmodified. Site cords, receptacles, branch protection, GFCI/code basis, source application review, and disconnect access remain open.
 
-The GST280A12-C6P manufacturer schematic bonds output `-V` to incoming protective earth inside the adapter. V3 therefore marks the former project `0 V`/PE star point `SP1` **DNP - PROHIBITED**. Robot-frame and cable-shield treatment remain open pending EMC and parallel-path review; replacing the source requires a fresh bonding assessment.
+The GST280A12-C6P manufacturer schematic bonds output `-V` to incoming protective earth inside the adapter. V3 therefore marks the former project `0 V`/PE system-reference bond `SP1` **DNP - PROHIBITED**. R118 `HR-V0-GND-BOND-P0.1` separates that manufacturer-internal relationship from the still-open equipment protective-bonding network and cable-shield/EMC decisions. Robot frame, steel backplate, DIN rails, actuator cases, USB shells, guard frame, `SAFETY_0V`, `COMPUTE_0V` and every cable shield remain unselected pending received measurements, fault/EMC analysis, exact hardware, synchronized ECAD and qualified review. Replacing the source requires a fresh bonding assessment.
 
 ## Safety chain
 
