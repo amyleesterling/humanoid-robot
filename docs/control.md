@@ -64,13 +64,15 @@ Emergency-stop and credited safety-circuit faults bypass `CONTROLLED_STOP` when 
 
 | Limit | J1 | J2 | Gripper |
 |---|---:|---:|---:|
-| Position | -20° to +70° | 15° to 125° | CAD-defined 20–75 mm stroke |
+| Position | -20° to +70° | 15° to 115° | CAD-defined 20–75 mm stroke |
 | Auto speed | 30°/s | 30°/s | 20 mm/s |
 | Setup speed | 10°/s | 10°/s | 10 mm/s |
 | Command age | 100 ms | 100 ms | 100 ms |
 | Temperature fault | 65 °C provisional | 65 °C provisional | 60 °C provisional |
 
 Current limits are intentionally not frozen until single-joint characterization. The characterization procedure starts low and establishes the smallest current that completes the proof trajectory with margin. It may never exceed the actuator manufacturer's permitted setting.
+
+The speed rows are provisional planning ceilings, not released DYNAMIXEL profile values. `HR-V0-STOP-BUDGET-P0.1` shows that the J2-positive `115°` software ceiling to `118°` nominal metal backup leaves only `300 ms` at `10°/s` or `100 ms` at `30°/s` before nominal contact. Every actual speed/profile remains inhibited until the missing J1/J2-negative stops, total response, rail decay, residual travel, uncertainty, guard reconciliation and qualified acceptance close. The ordinary 300 ms `DF-01` heartbeat detection consumes the entire three-degree approach at `10°/s` before downstream delay and therefore receives no stopping-distance or safety credit.
 
 ## Fault response table
 
