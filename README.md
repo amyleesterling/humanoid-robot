@@ -433,6 +433,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R136 validation record](docs/reviews/2026-08-09-r136-validation-record.md)
 - [R136 independent review request](docs/reviews/2026-08-09-r136-independent-review-request.md)
 - [Sol R12 findings rechecked after R136](docs/reviews/2026-08-09-sol-r12-post-r136-status.md)
+- [R137 conventional drawing and finished-DXF candidate](docs/hr-v0-manufacturing-drawing-p0.1.md)
+- [R137 interactive drawing-definition guide](release/hr-v0/mechanical-drawing-p0.1/index.html)
+- [R137 validation record](docs/reviews/2026-08-09-r137-validation-record.md)
+- [R137 independent review request](docs/reviews/2026-08-09-r137-independent-review-request.md)
+- [Sol R12 findings rechecked after R137](docs/reviews/2026-08-09-sol-r12-post-r137-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -502,7 +507,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred thirty-six review/control rounds are complete: R01-R136. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R136 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R136 preserves P0.7 and issues four nonselected P0.8 candidates that correct eight nominal countersinks from Ø11.40 x 3.10 mm / 87.159469° derived geometry to Ø11.30 x 2.90 mm / 90° geometry with unchanged external envelopes. Five selection decisions and three findings remain open. It authorizes no provider contact, quotation, fabrication, motion or energization.
+One hundred thirty-seven review/control rounds are complete: R01-R137. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R137 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R137 issues five conventional drawings, five STEP-derived finished DXFs, 26/26 drawing-explicit controls, five candidate ICF-01 inspection registrations and 30 hash-bound unexecuted FAI rows. The P0.8 drawing set remains nonselected; formal datum/GD&T acceptance, provider DFM, physical evidence and qualified release remain open. It authorizes no provider contact, quotation, fabrication, motion or energization.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -642,6 +647,7 @@ One hundred thirty-six review/control rounds are complete: R01-R136. R11 Fable a
 | R134 | Mechanical DFM and first-article review-data correction | Issued `HR-V0-MECH-DFM-DATA-P0.1`; corrected the stale statement that the X430 comparison had not been produced, retained P1.1/X430 as nonselected and P0.7 as controlled, and bound five parts to fifteen exact geometry identities, twenty-six source controls, thirty unexecuted FAI operations, twelve unsent DFM questions and fifteen open holds. No provider contact, upload, quote, purchase, first article, fabrication, assembly, motion or energization is authorized. |
 | R135 | Mechanical STEP/DXF/drawing parity audit | Issued `HR-V0-MECH-PARITY-P0.1`; independently parsed all five DXFs and STEP solids, matched five profile extents, thirty exact nominal holes and eight countersink positions at the controlled upper-limit model diameter, traced all twenty-six drawing controls and published interactive feature maps. Four findings remain open; no file alone is a machining authority and no provider, fabrication, assembly, motion or energization action is authorized. |
 | R136 | Countersink model-definition correction candidate | Preserved P0.7 and issued `HR-V0-CSK-MBD-P0.1` plus four nonselected P0.8 candidate STEP parts. Eight countersinks now represent the controlled Ø11.30 nominal and exact 90° geometry at 2.90 mm depth; maximum Ø11.40 and 3.10 mm depth remain separate conservative screens. External envelopes are unchanged; five decisions and three findings remain open; no external action is authorized. |
+| R137 | Conventional drawing and finished-profile definition candidate | Issued `HR-V0-MECH-DWG-P0.1`: five conventional SVG drawings, five STEP-derived finished-feature DXFs and five exact STEP bindings. C06/C07 each carry twelve LINE plus twelve ARC finished-profile entities; all 26 source controls are drawing-explicit; five ICF-01 CMM registrations and all 30 FAI rows remain candidate/unexecuted. P0.7 remains controlled and no external action is authorized. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
