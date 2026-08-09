@@ -86,6 +86,7 @@ def main() -> None:
         "HR-V0-K1K2-APP-P0.2",
         "HR-V0-GND-BOND-P0.1",
         "HR-V0-COMPUTE-SEL-P0.1",
+        "HR-V0-COMPUTE-SUBASM-P0.1",
         "HR-V0-SD-P0.2",
         "HR-V0-24V-IF-P0.2",
         "HR-V0-E2-HW-P0.2",
