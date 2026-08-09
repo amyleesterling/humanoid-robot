@@ -187,7 +187,7 @@ def main() -> int:
             "PCB renders missing or unexpectedly small", failures)
     prohibited_suffixes = {".gbr", ".ger", ".drl", ".pos", ".zip"}
     require(not any(path.suffix.lower() in prohibited_suffixes for path in OUT.rglob("*") if path.is_file()),
-            "fabrication/placement output exists despite the release gate", failures)
+            "source tree contains embedded fabrication/placement output", failures)
 
     manifest = {row["file"]: row["sha256"] for row in read_csv("SOURCE-MANIFEST.csv")}
     current = {
@@ -203,7 +203,7 @@ def main() -> int:
         return 1
     print("HR-V0 DXL star-injection validation: PASS")
     print("7 connectors; 18 terminals; 17 routed segments; 1 return zone; native ERC/DRC 0/0")
-    print("U2D2 pin 2 unrouted; three positive rails isolated; no Gerber/drill/placement outputs")
+    print("U2D2 pin 2 unrouted; three positive rails isolated; source tree contains no embedded CAM/archive")
     print(WARNING)
     return 0
 

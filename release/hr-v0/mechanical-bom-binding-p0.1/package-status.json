@@ -12,7 +12,7 @@
     "release/hr-v0/mechanical-dfm-data-p0.1/part-register.csv": "76756aad9fc1c59eb231e269014dc936b8ddd982d30fa7b2997048bb7eb85616",
     "release/hr-v0/mechanical-dfm-data-p0.1/geometry-file-register.csv": "d3ff37cb7dad57bc7a0c13135f0936debf57973563885a36597133d730c2d877",
     "release/hr-v0/mechanical-dfm-data-p0.1/hold-register.csv": "0d43e7d5823afa5cb4d63dac738c549291897145a257a554298e2b008b48b4d3",
-    "bom/bom.csv": "e78e3e9937b8667a9d0e76831e255d0b83b161333f8e816ec2cf50098b37ebb4",
+    "bom/bom.csv": "0dacdc36760a801dbebb3dfd91004e46e29e2714b1422cee1e42f69429ad97b9",
     "bom/hr-v0-mechanical-custom-part-binding.csv": "adac8656ce93e1c5f1806b1cf7c2d90d9de598b95b420d1ef2a6dcc49d3fcb37"
   },
   "provider_contacted": false,

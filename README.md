@@ -109,6 +109,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [E2 control-only hardware slice P0.2](electrical/e2/hr-v0-e2-hardware-p0.2/HR-V0_e2-hardware-guide.html)
 - [Native KiCad DXL-STAR-P0.1 injection-board candidate](electrical/kicad/hr-v0-dxl-star/README.md)
 - [HR-V0 DYNAMIXEL star-injection evidence basis](docs/hr-v0-dxl-star-injection-p0.1.md)
+- [HR-V0 DYNAMIXEL star manufacturing review package P0.1](docs/hr-v0-dxl-star-manufacturing-p0.1.md)
+- [Interactive DYNAMIXEL star manufacturing review guide](release/hr-v0/dxl-star-manufacturing-p0.1/index.html)
 - [HR-V0 Electrical V3 candidate architecture](docs/hr-v0-electrical-v3-candidate.md)
 - [HR-V0 Electrical terminal closure R27](docs/hr-v0-electrical-terminal-closure-r27.md)
 - [HR-V0 RESET/ARM received-lot closure P0.1](docs/hr-v0-reset-arm-receiving-p0.1.md)
@@ -512,6 +514,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R150 independent review request](docs/reviews/2026-08-09-r150-independent-review-request.md)
 - [R150 validation record](docs/reviews/2026-08-09-r150-validation-record.md)
 - [Sol R12 findings rechecked after R150](docs/reviews/2026-08-09-sol-r12-post-r150-status.md)
+- [R151 DXL-STAR-P0.1 manufacturing review package](docs/hr-v0-dxl-star-manufacturing-p0.1.md)
+- [R151 interactive DXL-star manufacturing review guide](release/hr-v0/dxl-star-manufacturing-p0.1/index.html)
+- [R151 terminal parity register](release/hr-v0/dxl-star-manufacturing-p0.1/terminal-parity-register.csv)
+- [R151 independent review request](docs/reviews/2026-08-09-r151-independent-review-request.md)
+- [R151 validation record](docs/reviews/2026-08-09-r151-validation-record.md)
+- [Sol R12 findings rechecked after R151](docs/reviews/2026-08-09-sol-r12-post-r151-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -546,6 +554,8 @@ Run `python tools/generate_hr_v0_mechanical_bom_binding.py` and `python tools/ch
 Run `python tools/generate_hr_v0_watchdog_pcb_bom_binding.py` and `python tools/check_hr_v0_watchdog_pcb_bom_binding_p01.py` for R149 as synchronized by R150. Passing proves that `BOM-048` binds current PCB-P0.9 / Electrical V3-P1.14 to `HR-V0-WD-PCBA-DATA-P0.2`, including one native PCB hash, sixteen BOM lines totaling 42 populated references, 42 placement rows, four NPTH features and twelve open assembly holds. It also distinguishes the R149 at-issue CAM absence from R150's current quarantined CAM review set and proves supplier-normalized XYRS, provider release, fabrication, assembly, connection, motion, energization and safety credit remain absent or false.
 
 Generate R150 with `python tools/generate_hr_v0_watchdog_cam_p01.py`, then run `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/check_hr_v0_watchdog_cam_p01.py`. Passing proves the current PCB-P0.9 source generated ten Gerber/job and five drill/map/report files, IPC-D-356, board statistics, native DRC 0 and exact 42-reference internal position parity. It also proves the position file is not supplier-normalized XYRS, all eighteen holds remain open, eleven manufacturing selections remain unresolved, no upload archive exists and every supplier/contact/quotation/fabrication/assembly/physical/connection/motion/energization/safety-credit flag remains false.
+
+Generate R151 with `"C:\Program Files\KiCad\10.0\bin\python.exe" tools/generate_hr_v0_dxl_star_manufacturing_p01.py`, then run the matching `tools/check_hr_v0_dxl_star_manufacturing_p01.py` with the same interpreter. Passing proves DXL-STAR-P0.1 generated ten Gerber/job and five drill/map/report files, IPC-D-356, statistics, native DRC 0, exact parity for seven connector placements and eighteen terminal mappings, and four NPTH records. It also proves JC1.2 remains no-net/no-copper, all eighteen holds and eleven manufacturing selections remain open, no upload archive exists and every supplier/contact/quotation/fabrication/assembly/physical/connection/motion/energization/safety-credit flag remains false.
 
 Run `python tools/check_hr_v0_panel_rail_duct_p01.py` for R123. Passing proves the corrected two-stock `1207648` rail branch, `3240189` duct, six `3022218` DR1-DR3 brackets, seven planning cuts, twelve holds, three current primary sources, eighteen blank receiving rows and sixteen blank installation rows stay synchronized. It does not prove received identity, final lengths, kerf, tools, holes, fasteners, DR4 retention, bonding, pull/vibration, fill, thermal behavior, qualified review or readiness.
 
@@ -589,7 +599,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred fifty review/control rounds are complete: R01-R150. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R150 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R150 replaces the absence of current PCB-P0.9 CAM with a quarantined source-bound review set while retaining supplier normalization, process, physical, qualified-review and every work-authorization hold.
+One hundred fifty-one review/control rounds are complete: R01-R151. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R151 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R151 replaces the absence of DXL-star manufacturing outputs with a quarantined source-bound review set while retaining connector/current, harness, protection, waveform, no-backfeed, grounding, thermal, supplier, process, physical, qualified-review and every work-authorization hold.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -743,6 +753,7 @@ One hundred fifty review/control rounds are complete: R01-R150. R11 Fable and R1
 | R148 | P0.7 mechanical BOM binding correction | Issued `HR-V0-MECH-BOM-BIND-P0.1`; replaced the live P0.5 `BOM-027` mix with one each `MV0-C01/C04/C05/C06/C07`, bound all five to fifteen existing hashed STEP/DXF/SVG identities, and advanced the row to exact-candidate hold. All fifteen DFM holds remain open; no provider contact, upload, quote, purchase, fabrication, assembly, motion or energization authority exists. |
 | R149 | Watchdog PCB BOM binding correction | Issued `HR-V0-WD-BOM-BIND-P0.1`; replaced historical PCB-P0.5 in live `BOM-048` with current PCB-P0.9 / Electrical V3-P1.14 and P0.2 assembly data, hash-binding 42 populated references, sixteen BOM lines, 42 placements and four NPTH features. CAM was absent at issuance; supplier XYRS, provider/process, physical and qualified evidence remain absent; no physical-work or energization authority exists. |
 | R150 | Current PCB-P0.9 CAM review correction | Issued `HR-V0-WD-CAM-P0.1`; generated ten Gerber/job and five drill/map/report files, IPC-D-356, statistics and native DRC 0 from current PCB-P0.9; proved exact internal parity for all 42 placement references. No archive, supplier XYRS, provider/process acceptance, physical article, fabrication, assembly, connection, motion or energization authority exists. |
+| R151 | DXL-STAR-P0.1 manufacturing-evidence correction | Issued `HR-V0-DXL-STAR-MFG-P0.1`; generated ten Gerber/job and five drill/map/report files, IPC-D-356, statistics and native DRC 0; proved exact encoded parity for seven connector placements and eighteen terminals and recorded four NPTH features. Advanced BOM-051 to exact-candidate hold. Eighteen release holds and eleven manufacturing selections remain open; no external work or energization authority exists. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
