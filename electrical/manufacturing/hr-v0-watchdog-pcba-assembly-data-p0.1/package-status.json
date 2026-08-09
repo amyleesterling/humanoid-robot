@@ -1,0 +1,23 @@
+{
+  "identifier": "HR-V0-WD-PCBA-DATA-P0.1",
+  "round": "R133",
+  "board": "PCB-P0.7",
+  "board_sha256": "353e4e53c992f1abb2cb9e815d045abfa2a29207e930e796b06649ca686293ed",
+  "populated_references": 42,
+  "mechanical_features": 4,
+  "bom_lines": 16,
+  "smd": 38,
+  "tht": 4,
+  "all_top_side": true,
+  "internal_review_only": true,
+  "supplier_normalized_xyrs_exists": false,
+  "cam_exists": false,
+  "provider_selected": false,
+  "provider_contacted": false,
+  "files_uploaded": false,
+  "fabrication_authorized": false,
+  "assembly_authorized": false,
+  "physical_article_exists": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
+}

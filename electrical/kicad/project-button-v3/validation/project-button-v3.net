@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-09T03:27:56")
+		(date "2026-08-09T04:07:24")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")

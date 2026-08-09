@@ -10,6 +10,6 @@ PCBA-HOLD-008,inspection and rework,OPEN,"AOI/manual criteria, first-article pla
 PCBA-HOLD-009,bare-board test,OPEN,"agreed netlist method, acceptance criteria, raw records and certificate",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
 PCBA-HOLD-010,unpowered assembly test,OPEN,"fixture, pin map, continuity/isolation/no-backfeed limits and approved work instruction",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
 PCBA-HOLD-011,mounting stack/panel interface,PARTIAL,"R131 candidates exist; received THT envelope, exact hardware, drilling, torque and load proof open",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
-PCBA-HOLD-012,supplier data package,OPEN,hash-bound current CAM/BOM/centroid/drawings/traveler generated only after prior holds close,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-HOLD-012,supplier data package,OPEN,R133 internal BOM/placement/map review data exist; accepted hash-bound CAM/BOM/normalized XYRS/drawings/traveler packet still requires prior holds and separate release,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
 PCBA-HOLD-013,independent/qualified review,OPEN,independent PCB/assembly and qualified electrical/insulation/mechanical disposition,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
 PCBA-HOLD-014,work authorization,OPEN,separate written quotation/upload/fabrication/assembly authorization for accepted immutable configuration,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION

@@ -33,7 +33,7 @@ The machine-readable package at `electrical/manufacturing/hr-v0-watchdog-pcba-rf
 - a nine-group current-geometry reconciliation covering all 21 retained R89 corrections plus sixteen R132 rectangular Harwin lands, with every process-dependent decision still explicit;
 - twenty mandatory assembly requirements, including no silent substitutions;
 - twenty-four blank capability questions marked `NOT SENT`;
-- a ten-item file-release register showing that current CAM does not exist and all supplier artifacts remain withheld;
+- a ten-item file-release register showing that current CAM does not exist; R133 supplies only an internal exact-BOM, board-origin placement and top-reference-map candidate, while all supplier-ready artifacts remain withheld or absent;
 - fourteen closure holds: eleven `OPEN`, three `PARTIAL`;
 - twenty-four blank first-article/receiving records marked `NOT EXECUTED - NO ARTICLE`;
 - four unselected provider routes and sixteen dated source records; and
@@ -45,7 +45,7 @@ The machine-readable package at `electrical/manufacturing/hr-v0-watchdog-pcba-rf
 2. The program owner must separately authorize sending only the bounded capability questions.
 3. Candidate providers must return reference-level DFM redlines and exact process/quality answers without starting work.
 4. Qualified electrical, insulation and mechanical reviewers must accept the selected response and close the relevant holds.
-5. Only then may a separately identified, hash-bound PCB-P0.7-or-later fabrication/assembly data candidate be generated for independent CAM review.
+5. R133 internal review BOM/placement/map data must be independently reconciled; only after the preceding response/review holds close may a separately identified, hash-bound PCB-P0.7-or-later supplier fabrication/assembly packet be generated for independent CAM review.
 6. Upload, quotation, purchase, fabrication and assembly each require a separate written authorization against one immutable configuration.
 7. A held first article must pass receiving, bare-board, assembly and unpowered electrical evidence before any later powered-work decision.
 
