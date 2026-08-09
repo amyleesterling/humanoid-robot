@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "electrical" / "kicad" / "project-button-v3"
 PROJECT = "project-button-v3"
-REV = "V3-P1.13"
+REV = "V3-P1.14"
 PROJECT_TITLE = "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE"
 PROJECT_SUBTITLE = "Direct dual-channel E-stop inputs, watchdog-gated SR1 supply, separate RESET/ARM, redundant actuator interruption."
 DATE = "2026-08-08"
@@ -190,13 +190,13 @@ def sheets() -> list[Sheet]:
                   "SELECTION REQUIRED",
                   "Separate protection function downstream of J24V1. Select only after source fault current, inrush, downstream conductor/connector limits, ambient, bundling, cable length, time-current coordination and jurisdiction are accepted.",
                   position=(75, 245), width=92),
-        Component("PSU3", "Raspberry Pi 27W USB-C Power Supply US; color/SKU unresolved",
+        Component("PSU3", "Raspberry Pi 27W USB-C Power Supply US Type A black, SC1158",
                   [pn("PS5A", "USB-C-VBUS", "+5V COMPUTE", "COMPUTE_5V", "right"),
                    pn("PS5A", "USB-C-GND", "COMPUTE GND", "COMPUTE_0V", "right"),
                    pn("PS5A", "AC-FACTORY", "FACTORY AC", "FACTORY_AC_COMPUTE", "left")],
-                  "SELECTION REQUIRED - US SKU / COLOR / RETENTION", "Official US Type-A regional model is frozen. Raspberry Pi's current primary portal lists twelve family SKUs without mapping each SKU to region/color, so the exact order code must not be inferred. Compute remains powered for diagnostics during E-stop and has no safety authority.",
-                  "https://pip-assets.raspberrypi.com/categories/898-raspberry-pi-27w-usb-c-power-supply",
-                  "Raspberry Pi product brief RP-008245-DS-1, published October 2023 and portal-updated 2025-10-06; rechecked 2026-08-06.", position=(210, 175), width=78),
+                  "EXACT CANDIDATE - RECEIVING / RETENTION / APPLICATION OPEN", "The current Raspberry Pi configurator maps the selected US Type-A black model to SC1158 through manufacturer-generated approved-reseller links. The product brief specifies 5.1 V / 5 A and a 1.2 m captive 17 AWG cable. Received identity, site/receptacle suitability, cable and USB-C retention, load/startup/brownout, thermal behavior and physical verification remain open. Compute remains powered for diagnostics during E-stop and has no safety authority.",
+                  "https://www.raspberrypi.com/products/27w-power-supply/",
+                  "Raspberry Pi 27W USB-C Power Supply product brief RP-008245-DS-1, published October 2023; portal/product/configurator and US authorization records rechecked 2026-08-08. Selected model: US Type A black; manufacturer-generated DigiKey/Mouser links identify SC1158.", position=(210, 175), width=78),
         Component("SP1", "Project-added DC 0V / PE star point",
                   [pn("SP1", "1", "ACTUATOR 0V", "INTENTIONALLY_NOT_CONNECTED_SP1_A", "left"),
                    pn("SP1", "2", "PE", "INTENTIONALLY_NOT_CONNECTED_SP1_B", "right")],
@@ -496,16 +496,16 @@ def sheets() -> list[Sheet]:
                   [pn("RPD2", "1", "PICO INPUT", "WD2_NC_DIAG", "left"), pn("RPD2", "2", "LOGIC RETURN", "SAFETY_0V", "right")],
                   "PROPOSED - VERIFICATION REQUIRED: PCB/BROWNOUT/FAULT", "Exact order code frozen. Same exact default-low candidate and open physical evidence as channel 1.",
                   "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ6ENF1002V", "Panasonic current product page; accessed 2026-08-06.", position=(300, 230), width=50, footprint="PBV3_Footprints:Panasonic_ERJ6_Reflow_Nominal"),
-        Component("PI1", "Raspberry Pi 5 8GB high-level compute",
+        Component("PI1", "Raspberry Pi 5 8GB unit-only high-level compute, SC1112",
                   [pn("PI1", "USB-C-VBUS", "+5V INPUT", "COMPUTE_5V", "left"),
                    pn("PI1", "USB-C-GND", "USB-C POWER RETURN", "COMPUTE_0V", "left"),
                    pn("PI1", "HDR40-6", "GPIO HEADER GND", "COMPUTE_0V", "left"),
                    pn("PI1", "HDR40-11", "GPIO17 HEARTBEAT OUT", "PI_HEARTBEAT", "right"),
                    pn("PI1", "USB-U2D2", "USB TO U2D2", "PI_USB_U2D2", "right")],
-                  "PROPOSED - GPIO PIN FROZEN; CABLE/RUNTIME/RETENTION OPEN",
-                  "High-level compute and logger. BCM GPIO17 on physical header pin 11 is reserved for the ordinary heartbeat output; physical header pin 6 is its compute-domain return. Output must remain inactive until explicitly configured. It never owns the hardware safety function or directly restores contactors.",
-                  "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html",
-                  "Raspberry Pi current hardware documentation and Raspberry Pi 5 product brief accessed 2026-08-08; GPIO17/header pin 11, 3.3 V output semantics, 40-pin header and pin 6 ground cross-checked. Cable, GPIO backend, startup state and physical verification remain open.",
+                  "EXACT CANDIDATE - GPIO PIN FROZEN; COOLING/STORAGE/RUNTIME/RETENTION OPEN",
+                  "High-level compute and logger. The current Raspberry Pi configurator maps the 8GB unit-only selection to SC1112 through a manufacturer-generated approved-reseller link. BCM GPIO17 on physical header pin 11 is reserved for the ordinary heartbeat output; physical header pin 6 is its compute-domain return. Output must remain inactive until explicitly configured. It never owns the hardware safety function or directly restores contactors.",
+                  "https://www.raspberrypi.com/products/raspberry-pi-5/",
+                  "Raspberry Pi 5 product page, product brief and current hardware documentation accessed 2026-08-08. Selected model: 8GB RAM unit only; manufacturer-generated TME link identifies SC1112. GPIO17/header pin 11, 3.3 V output semantics, 40-pin header and pin 6 ground cross-checked. Received identity, active cooling, storage/image, cable, GPIO backend, startup state, retention, thermal and physical verification remain open.",
                   position=(325, 225), width=82),
     ]
     s5.notes = ["Power-up, brownout, clock failure, stuck GPIO, held heartbeat and firmware-corruption tests are mandatory.",

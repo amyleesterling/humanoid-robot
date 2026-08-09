@@ -88,10 +88,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 functional-safety allocation and diagnostic-credit boundary P0.1](docs/hr-v0-functional-safety-allocation-p0.1.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
-- [Native KiCad Electrical V3-P1.13 correction candidate](electrical/kicad/project-button-v3/README.md)
+- [Native KiCad Electrical V3-P1.14 correction candidate](electrical/kicad/project-button-v3/README.md)
 - [HR-V0 control-panel physical-definition candidate P0.5](docs/hr-v0-control-panel-p0.5.md)
 - [HR-V0 24 V source-interface candidate P0.2](docs/hr-v0-24v-interface-p0.2.md)
 - [HR-V0 compute-heartbeat and watchdog-debug interface P0.1](docs/hr-v0-compute-debug-interface-p0.1.md)
+- [HR-V0 exact compute and compute-power candidates P0.1](docs/hr-v0-compute-selection-p0.1.md)
+- [Interactive compute selection guide](release/hr-v0/compute-selection-p0.1/index.html)
 - [E2 control-only hardware slice P0.2](electrical/e2/hr-v0-e2-hardware-p0.2/HR-V0_e2-hardware-guide.html)
 - [Native KiCad DXL-STAR-P0.1 injection-board candidate](electrical/kicad/hr-v0-dxl-star/README.md)
 - [HR-V0 DYNAMIXEL star-injection evidence basis](docs/hr-v0-dxl-star-injection-p0.1.md)
@@ -332,6 +334,10 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R118 validation record](docs/reviews/2026-08-08-r118-validation-record.md)
 - [R118 independent review request](docs/reviews/2026-08-08-r118-independent-review-request.md)
 - [Sol R12 findings rechecked after R118](docs/reviews/2026-08-08-sol-r12-post-r118-status.md)
+- [R119 compute selection correction](docs/hr-v0-compute-selection-p0.1.md)
+- [R119 validation record](docs/reviews/2026-08-08-r119-validation-record.md)
+- [R119 independent review request](docs/reviews/2026-08-08-r119-independent-review-request.md)
+- [Sol R12 findings rechecked after R119](docs/reviews/2026-08-08-sol-r12-post-r119-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -353,6 +359,7 @@ Run `python tools/check_hr_v0_fabrication_rfi_packets.py` to verify that every o
 Run `python tools/check_hr_v0_safety_allocation.py` to verify that the ordinary heartbeat path retains zero safety credit and every PLr/SIL allocation remains unresolved until qualified execution.
 Run `python tools/generate_hr_v0_release_manifest.py` only after deliberate package changes, then run `python tools/check_hr_v0_release_manifest.py`. A committed clean clone must additionally pass `python tools/check_hr_v0_release_manifest.py --require-clean`; this proves package identity, not fabrication or energization readiness.
 Run `python tools/generate_hr_v0_bom_closure.py` after deliberate system-BOM changes, then `python tools/check_hr_v0_bom.py`. The checker must retain `EG-003` as partial until a complete signed machine BOM exists; Evaluation Batch A and the R73 unpowered mechanical subset are not blanket purchase authority.
+Run `python tools/check_hr_v0_compute_selection_p01.py` for the R119 `SC1112` / `SC1158` identity package. Passing proves source/BOM/ECAD/receiving-form synchronization only; cooling, storage/image, harness, retention, site, load, PD, brownout, thermal, physical and qualified-review evidence remain open.
 Generate exact vendor-coordinate evidence with `C:\Users\amyle\Documents\New project\.venvs\hr-v0-cad\Scripts\python.exe tools/generate_hr_v0_robotis_interface.py`, then run its checker. Generate the current R69 / `HR-V0-ARM-ARCH-P0.7` candidate with the same interpreter using `tools/generate_hr_v0_arm_architecture.py`, then run `tools/check_hr_v0_arm_architecture.py`. Run `tools/generate_hr_v0_mechanical_release.py` and its checker after deliberate mechanical-control changes. `HR-V0-MECH-P0.6` remains the release hold. The certificate closes nominal body between-sample clearance only and C06/C07 are analytical only; all fabrication packets remain withdrawn until bumper selection, received MTR/FAI/fit, T-slot/fastener/stop analysis, cables/guard, physical contact/stopping/tolerance proof and qualified review close `MECH-005` and `MECH-006`.
 Generate and check `HR-V0-STOP-REGION-P0.1` with the CAD interpreter using `tools/generate_hr_v0_stop_region_clearance.py` and `tools/check_hr_v0_stop_region_clearance.py`. Its 6,411 sampled poses and 131 continuous certificates establish nominal free space only in the J1-minimum, J1-maximum and J2-minimum study regions. All 20 received/interface inputs remain open; no stop topology, angle, part, fabrication or motion envelope is released.
 Generate and check the nonselected R70 mass-reduction study with the CAD interpreter using `tools/generate_hr_v0_mass_reduction_study.py` and `tools/check_hr_v0_mass_reduction_study.py`. Its exact-subset result and 57.983 g CAD reduction do not supersede P0.7, close `MASS-002`, or release C01R/C04R/C06R/C07R for quotation or fabrication.
@@ -382,7 +389,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred eighteen review/control rounds are complete: R01-R118. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R53-R118 are project-owned exact-geometry, release-boundary, sourcing, physical-panel, H1, protection, service-disconnect, transport, mechanical-integration, continuous-clearance, control-binding, positive-stop, mass-reduction, gripper-source, datum/acquisition, unpowered-evaluation, fixed-guard, measurement-method, E2 configuration, source-interface, compute/debug, hard-stop-region, joint-stack-metrology, physical-acquisition, watchdog-dependent-failure, watchdog-supply-gate, watchdog-PCB fabrication-candidate/land-pattern, Boston fabrication-route, elbow/moving-mass architecture, exact-coordinate X430 elbow, full-arm integration, stop-sequencing clearance, lowered-forearm allocation, load-basis, FR12 received-metrology, X430 duty-characterization, duty-fixture topology, adapter-interface, fixture-support, horizontal load-rig, exact HN12/output-interface, corrected PT/brake-support, FX104 part definition, FX103 two-piece output-adapter, fastener-stack, gripper orderable-subassembly, official frame-source, current publisher-route, alternate-gripper source control, direct-adapter/native-interface, fail-closed gripper-selection, controlled-object/handoff evidence, H104 source-provenance, PNOZ source/path-conformance, K1/K2 application-closure and grounding/bonding corrections, not additional independent reviews.
+One hundred nineteen review/control rounds are complete: R01-R119. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R119 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R119 controls exact held Raspberry Pi `SC1112` and `SC1158` candidates while leaving every application, physical, authorization, buildability, functional-safety, stopping, mass/inertia and walking blocker open.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -504,6 +511,7 @@ One hundred eighteen review/control rounds are complete: R01-R118. R11 Fable and
 | R116 | PNOZ source/path conformance and narrative correction | Hash-controlled Pilz manual 21396-EN-23, mapped fourteen exact V3-P1.13 terminal/net checks, removed stale watchdog-in-input-loop claims, recorded anonymous gripper routes exhausted and retained every physical, application, safety-allocation and energization hold. |
 | R117 | K1/K2 contactor application closure packet | Controlled current Schneider source identities, 33 application inputs, 18 pre-query holds, twelve unexecuted stages and an exact UNSENT manufacturer request while retaining partial EG-013 and every physical/application hold. |
 | R118 | Grounding, bonding, and shield closure packet | Distinguished the source-internal actuator-return/PE relationship from equipment protective bonding and EMC shield decisions; controlled eight sources, fifteen nodes, twelve holds and eighteen unexecuted surveys while retaining partial EG-016 and every physical/site/qualified-review hold. |
+| R119 | Exact compute and compute-power identity correction | Mapped Raspberry Pi's current configurators to PI1 `SC1112` and PSU3 `SC1158`; advanced Electrical V3 to P1.14 and BOM-001/BOM-002 to exact-candidate holds while retaining all receiving, cooling, storage/image, harness, retention, site, PD/load/brownout/thermal, grounding, runtime, physical and review holds. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

@@ -2,12 +2,12 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\project-button-v3\\project-button-v3.kicad_sch")
-		(date "2026-08-08T20:08:10")
+		(date "2026-08-08T21:08:50")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
 		(textvar
-			(name "REVISION") "V3-P1.13")
+			(name "REVISION") "V3-P1.14")
 		(sheet
 			(number "1")
 			(name "/")
@@ -15,7 +15,7 @@
 			(title_block
 				(title "PROJECT BUTTON HR-V0 ELECTRICAL V3 CONNECTED CANDIDATE index")
 				(company "Project Button")
-				(rev "V3-P1.13")
+				(rev "V3-P1.14")
 				(date "2026-08-08")
 				(source "project-button-v3.kicad_sch")
 				(comment
@@ -61,9 +61,9 @@
 			(name "/01 External listed sources and DC boundaries/")
 			(tstamps "/3f9bc49d-d82c-5e1c-b255-9345a0f9b82f/")
 			(title_block
-				(title "PB HR-V0 V3-P1.13 - 01")
+				(title "PB HR-V0 V3-P1.14 - 01")
 				(company "Project Button")
-				(rev "V3-P1.13")
+				(rev "V3-P1.14")
 				(date "2026-08-08")
 				(source "01_external_sources.kicad_sch")
 				(comment
@@ -109,9 +109,9 @@
 			(name "/02 Dual-channel E-stop and RESET eligibility/")
 			(tstamps "/1abf679f-5cd5-5479-8b91-6a232acf93b9/")
 			(title_block
-				(title "PB HR-V0 V3-P1.13 - 02")
+				(title "PB HR-V0 V3-P1.14 - 02")
 				(company "Project Button")
-				(rev "V3-P1.13")
+				(rev "V3-P1.14")
 				(date "2026-08-08")
 				(source "02_estop_eligibility.kicad_sch")
 				(comment
@@ -157,9 +157,9 @@
 			(name "/03 Distinct ARM and watchdog-gated SR1 supply/")
 			(tstamps "/54d42e14-e04a-5162-8af0-7d64d2d76fae/")
 			(title_block
-				(title "PB HR-V0 V3-P1.13 - 03")
+				(title "PB HR-V0 V3-P1.14 - 03")
 				(company "Project Button")
-				(rev "V3-P1.13")
+				(rev "V3-P1.14")
 				(date "2026-08-08")
 				(source "03_arm_watchdog_eligibility.kicad_sch")
 				(comment
@@ -205,9 +205,9 @@
 			(name "/04 Contactor coils, mirror contacts and EDM/")
 			(tstamps "/6cf27f97-627c-5512-ba58-751093298e6c/")
 			(title_block
-				(title "PB HR-V0 V3-P1.13 - 04")
+				(title "PB HR-V0 V3-P1.14 - 04")
 				(company "Project Button")
-				(rev "V3-P1.13")
+				(rev "V3-P1.14")
 				(date "2026-08-08")
 				(source "04_contactor_edm.kicad_sch")
 				(comment
@@ -253,9 +253,9 @@
 			(name "/05 Redundant actuator-power interruption/")
 			(tstamps "/db315f6f-1ed6-5bc9-bdf8-106d0286ccb4/")
 			(title_block
-				(title "PB HR-V0 V3-P1.13 - 05")
+				(title "PB HR-V0 V3-P1.14 - 05")
 				(company "Project Button")
-				(rev "V3-P1.13")
+				(rev "V3-P1.14")
 				(date "2026-08-08")
 				(source "05_actuator_interruption.kicad_sch")
 				(comment
@@ -301,9 +301,9 @@
 			(name "/06 Protected actuator branches and central DYNAMIXEL star injection/")
 			(tstamps "/469e3ded-ca97-58c7-82af-88dcca390710/")
 			(title_block
-				(title "PB HR-V0 V3-P1.13 - 06")
+				(title "PB HR-V0 V3-P1.14 - 06")
 				(company "Project Button")
-				(rev "V3-P1.13")
+				(rev "V3-P1.14")
 				(date "2026-08-08")
 				(source "06_branches_and_injection.kicad_sch")
 				(comment
@@ -349,9 +349,9 @@
 			(name "/07 Independent watchdog power, controller and drivers/")
 			(tstamps "/1e917b32-0159-5cb8-a2f2-bc6334feedef/")
 			(title_block
-				(title "PB HR-V0 V3-P1.13 - 07")
+				(title "PB HR-V0 V3-P1.14 - 07")
 				(company "Project Button")
-				(rev "V3-P1.13")
+				(rev "V3-P1.14")
 				(date "2026-08-08")
 				(source "07_watchdog_control.kicad_sch")
 				(comment
@@ -397,9 +397,9 @@
 			(name "/08 Calculated dual-channel 24 V watchdog feedback/")
 			(tstamps "/e5abd848-cff2-50c5-affe-1fd03fc0d0ce/")
 			(title_block
-				(title "PB HR-V0 V3-P1.13 - 08")
+				(title "PB HR-V0 V3-P1.14 - 08")
 				(company "Project Button")
-				(rev "V3-P1.13")
+				(rev "V3-P1.14")
 				(date "2026-08-08")
 				(source "08_watchdog_feedback_interface.kicad_sch")
 				(comment
@@ -445,9 +445,9 @@
 			(name "/09 Compute and control terminals/")
 			(tstamps "/f3a60727-2e66-5730-a829-00cc7c809e89/")
 			(title_block
-				(title "PB HR-V0 V3-P1.13 - 09")
+				(title "PB HR-V0 V3-P1.14 - 09")
 				(company "Project Button")
-				(rev "V3-P1.13")
+				(rev "V3-P1.14")
 				(date "2026-08-08")
 				(source "09_compute_and_control_terminals.kicad_sch")
 				(comment
@@ -493,9 +493,9 @@
 			(name "/10 U2D2, actuator ports and bonding boundary/")
 			(tstamps "/11f6090f-9f69-5145-93e3-5ccb2d8899ac/")
 			(title_block
-				(title "PB HR-V0 V3-P1.13 - 10")
+				(title "PB HR-V0 V3-P1.14 - 10")
 				(company "Project Button")
-				(rev "V3-P1.13")
+				(rev "V3-P1.14")
 				(date "2026-08-08")
 				(source "10_actuator_interfaces.kicad_sch")
 				(comment
@@ -541,9 +541,9 @@
 			(name "/11 Watchdog PCB external connectors/")
 			(tstamps "/6e16a5a8-d40c-518b-9320-2dd1b7122c9a/")
 			(title_block
-				(title "PB HR-V0 V3-P1.13 - 11")
+				(title "PB HR-V0 V3-P1.14 - 11")
 				(company "Project Button")
-				(rev "V3-P1.13")
+				(rev "V3-P1.14")
 				(date "2026-08-08")
 				(source "11_watchdog_pcb_connectors.kicad_sch")
 				(comment
@@ -589,9 +589,9 @@
 			(name "/12 Watchdog PCB test access/")
 			(tstamps "/b1f3fab1-0d58-57ed-8134-01c419d204c2/")
 			(title_block
-				(title "PB HR-V0 V3-P1.13 - 12")
+				(title "PB HR-V0 V3-P1.14 - 12")
 				(company "Project Button")
-				(rev "V3-P1.13")
+				(rev "V3-P1.14")
 				(date "2026-08-08")
 				(source "12_watchdog_pcb_test_access.kicad_sch")
 				(comment
@@ -1008,40 +1008,40 @@
 		)
 		(comp
 			(ref "PSU3")
-			(value "Raspberry Pi 27W USB-C Power Supply US; color/SKU unresolved")
-			(datasheet "https://pip-assets.raspberrypi.com/categories/898-raspberry-pi-27w-usb-c-power-supply")
-			(description "Official US Type-A regional model is frozen. Raspberry Pi's current primary portal lists twelve family SKUs without mapping each SKU to region/color, so the exact order code must not be inferred. Compute remains powered for diagnostics during E-stop and has no safety authority.")
+			(value "Raspberry Pi 27W USB-C Power Supply US Type A black, SC1158")
+			(datasheet "https://www.raspberrypi.com/products/27w-power-supply/")
+			(description "The current Raspberry Pi configurator maps the selected US Type-A black model to SC1158 through manufacturer-generated approved-reseller links. The product brief specifies 5.1 V / 5 A and a 1.2 m captive 17 AWG cable. Received identity, site/receptacle suitability, cable and USB-C retention, load/startup/brownout, thermal behavior and physical verification remain open. Compute remains powered for diagnostics during E-stop and has no safety authority.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - US SKU / COLOR / RETENTION")
+					(name "Status") "EXACT CANDIDATE - RECEIVING / RETENTION / APPLICATION OPEN")
 				(field
-					(name "Evidence") "Raspberry Pi product brief RP-008245-DS-1, published October 2023 and portal-updated 2025-10-06; rechecked 2026-08-06.")
+					(name "Evidence") "Raspberry Pi 27W USB-C Power Supply product brief RP-008245-DS-1, published October 2023; portal/product/configurator and US authorization records rechecked 2026-08-08. Selected model: US Type A black; manufacturer-generated DigiKey/Mouser links identify SC1158.")
 				(field
-					(name "Display") "Raspberry Pi 27W USB-C Power Supply US; color/SKU unresolved")
+					(name "Display") "Raspberry Pi 27W USB-C Power Supply US Type A black, SC1158")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://pip-assets.raspberrypi.com/categories/898-raspberry-pi-27w-usb-c-power-supply")
+					(name "Datasheet") "https://www.raspberrypi.com/products/27w-power-supply/")
 				(field
-					(name "Description") "Official US Type-A regional model is frozen. Raspberry Pi's current primary portal lists twelve family SKUs without mapping each SKU to region/color, so the exact order code must not be inferred. Compute remains powered for diagnostics during E-stop and has no safety authority.")
+					(name "Description") "The current Raspberry Pi configurator maps the selected US Type-A black model to SC1158 through manufacturer-generated approved-reseller links. The product brief specifies 5.1 V / 5 A and a 1.2 m captive 17 AWG cable. Received identity, site/receptacle suitability, cable and USB-C retention, load/startup/brownout, thermal behavior and physical verification remain open. Compute remains powered for diagnostics during E-stop and has no safety authority.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "PSU3")
-				(description "Official US Type-A regional model is frozen. Raspberry Pi's current primary portal lists twelve family SKUs without mapping each SKU to region/color, so the exact order code must not be inferred. Compute remains powered for diagnostics during E-stop and has no safety authority.")
+				(description "The current Raspberry Pi configurator maps the selected US Type-A black model to SC1158 through manufacturer-generated approved-reseller links. The product brief specifies 5.1 V / 5 A and a 1.2 m captive 17 AWG cable. Received identity, site/receptacle suitability, cable and USB-C retention, load/startup/brownout, thermal behavior and physical verification remain open. Compute remains powered for diagnostics during E-stop and has no safety authority.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - US SKU / COLOR / RETENTION")
+				(value "EXACT CANDIDATE - RECEIVING / RETENTION / APPLICATION OPEN")
 			)
 			(property
 				(name "Evidence")
-				(value "Raspberry Pi product brief RP-008245-DS-1, published October 2023 and portal-updated 2025-10-06; rechecked 2026-08-06.")
+				(value "Raspberry Pi 27W USB-C Power Supply product brief RP-008245-DS-1, published October 2023; portal/product/configurator and US authorization records rechecked 2026-08-08. Selected model: US Type A black; manufacturer-generated DigiKey/Mouser links identify SC1158.")
 			)
 			(property
 				(name "Display")
-				(value "Raspberry Pi 27W USB-C Power Supply US; color/SKU unresolved")
+				(value "Raspberry Pi 27W USB-C Power Supply US Type A black, SC1158")
 			)
 			(property
 				(name "Sheetname")
@@ -4286,40 +4286,40 @@
 		)
 		(comp
 			(ref "PI1")
-			(value "Raspberry Pi 5 8GB high-level compute")
-			(datasheet "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html")
-			(description "High-level compute and logger. BCM GPIO17 on physical header pin 11 is reserved for the ordinary heartbeat output; physical header pin 6 is its compute-domain return. Output must remain inactive until explicitly configured. It never owns the hardware safety function or directly restores contactors.")
+			(value "Raspberry Pi 5 8GB unit-only high-level compute, SC1112")
+			(datasheet "https://www.raspberrypi.com/products/raspberry-pi-5/")
+			(description "High-level compute and logger. The current Raspberry Pi configurator maps the 8GB unit-only selection to SC1112 through a manufacturer-generated approved-reseller link. BCM GPIO17 on physical header pin 11 is reserved for the ordinary heartbeat output; physical header pin 6 is its compute-domain return. Output must remain inactive until explicitly configured. It never owns the hardware safety function or directly restores contactors.")
 			(fields
 				(field
-					(name "Status") "PROPOSED - GPIO PIN FROZEN; CABLE/RUNTIME/RETENTION OPEN")
+					(name "Status") "EXACT CANDIDATE - GPIO PIN FROZEN; COOLING/STORAGE/RUNTIME/RETENTION OPEN")
 				(field
-					(name "Evidence") "Raspberry Pi current hardware documentation and Raspberry Pi 5 product brief accessed 2026-08-08; GPIO17/header pin 11, 3.3 V output semantics, 40-pin header and pin 6 ground cross-checked. Cable, GPIO backend, startup state and physical verification remain open.")
+					(name "Evidence") "Raspberry Pi 5 product page, product brief and current hardware documentation accessed 2026-08-08. Selected model: 8GB RAM unit only; manufacturer-generated TME link identifies SC1112. GPIO17/header pin 11, 3.3 V output semantics, 40-pin header and pin 6 ground cross-checked. Received identity, active cooling, storage/image, cable, GPIO backend, startup state, retention, thermal and physical verification remain open.")
 				(field
-					(name "Display") "Raspberry Pi 5 8GB high-level compute")
+					(name "Display") "Raspberry Pi 5 8GB unit-only high-level compute, SC1112")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html")
+					(name "Datasheet") "https://www.raspberrypi.com/products/raspberry-pi-5/")
 				(field
-					(name "Description") "High-level compute and logger. BCM GPIO17 on physical header pin 11 is reserved for the ordinary heartbeat output; physical header pin 6 is its compute-domain return. Output must remain inactive until explicitly configured. It never owns the hardware safety function or directly restores contactors.")
+					(name "Description") "High-level compute and logger. The current Raspberry Pi configurator maps the 8GB unit-only selection to SC1112 through a manufacturer-generated approved-reseller link. BCM GPIO17 on physical header pin 11 is reserved for the ordinary heartbeat output; physical header pin 6 is its compute-domain return. Output must remain inactive until explicitly configured. It never owns the hardware safety function or directly restores contactors.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "PI1")
-				(description "High-level compute and logger. BCM GPIO17 on physical header pin 11 is reserved for the ordinary heartbeat output; physical header pin 6 is its compute-domain return. Output must remain inactive until explicitly configured. It never owns the hardware safety function or directly restores contactors.")
+				(description "High-level compute and logger. The current Raspberry Pi configurator maps the 8GB unit-only selection to SC1112 through a manufacturer-generated approved-reseller link. BCM GPIO17 on physical header pin 11 is reserved for the ordinary heartbeat output; physical header pin 6 is its compute-domain return. Output must remain inactive until explicitly configured. It never owns the hardware safety function or directly restores contactors.")
 			)
 			(property
 				(name "Status")
-				(value "PROPOSED - GPIO PIN FROZEN; CABLE/RUNTIME/RETENTION OPEN")
+				(value "EXACT CANDIDATE - GPIO PIN FROZEN; COOLING/STORAGE/RUNTIME/RETENTION OPEN")
 			)
 			(property
 				(name "Evidence")
-				(value "Raspberry Pi current hardware documentation and Raspberry Pi 5 product brief accessed 2026-08-08; GPIO17/header pin 11, 3.3 V output semantics, 40-pin header and pin 6 ground cross-checked. Cable, GPIO backend, startup state and physical verification remain open.")
+				(value "Raspberry Pi 5 product page, product brief and current hardware documentation accessed 2026-08-08. Selected model: 8GB RAM unit only; manufacturer-generated TME link identifies SC1112. GPIO17/header pin 11, 3.3 V output semantics, 40-pin header and pin 6 ground cross-checked. Received identity, active cooling, storage/image, cable, GPIO backend, startup state, retention, thermal and physical verification remain open.")
 			)
 			(property
 				(name "Display")
-				(value "Raspberry Pi 5 8GB high-level compute")
+				(value "Raspberry Pi 5 8GB unit-only high-level compute, SC1112")
 			)
 			(property
 				(name "Sheetname")
@@ -7393,26 +7393,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "PI1")
-			(description "High-level compute and logger. BCM GPIO17 on physical header pin 11 is reserved for the ordinary heartbeat output; physical header pin 6 is its compute-domain return. Output must remain inactive until explicitly configured. It never owns the hardware safety function or directly restores contactors.")
-			(docs "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html")
+			(description "High-level compute and logger. The current Raspberry Pi configurator maps the 8GB unit-only selection to SC1112 through a manufacturer-generated approved-reseller link. BCM GPIO17 on physical header pin 11 is reserved for the ordinary heartbeat output; physical header pin 6 is its compute-domain return. Output must remain inactive until explicitly configured. It never owns the hardware safety function or directly restores contactors.")
+			(docs "https://www.raspberrypi.com/products/raspberry-pi-5/")
 			(fields
 				(field
 					(name "Reference") "PI1")
 				(field
-					(name "Value") "Raspberry Pi 5 8GB high-level compute")
+					(name "Value") "Raspberry Pi 5 8GB unit-only high-level compute, SC1112")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html")
+					(name "Datasheet") "https://www.raspberrypi.com/products/raspberry-pi-5/")
 				(field
-					(name "Description") "High-level compute and logger. BCM GPIO17 on physical header pin 11 is reserved for the ordinary heartbeat output; physical header pin 6 is its compute-domain return. Output must remain inactive until explicitly configured. It never owns the hardware safety function or directly restores contactors.")
+					(name "Description") "High-level compute and logger. The current Raspberry Pi configurator maps the 8GB unit-only selection to SC1112 through a manufacturer-generated approved-reseller link. BCM GPIO17 on physical header pin 11 is reserved for the ordinary heartbeat output; physical header pin 6 is its compute-domain return. Output must remain inactive until explicitly configured. It never owns the hardware safety function or directly restores contactors.")
 				(field
-					(name "Status") "PROPOSED - GPIO PIN FROZEN; CABLE/RUNTIME/RETENTION OPEN")
+					(name "Status") "EXACT CANDIDATE - GPIO PIN FROZEN; COOLING/STORAGE/RUNTIME/RETENTION OPEN")
 				(field
-					(name "Evidence") "Raspberry Pi current hardware documentation and Raspberry Pi 5 product brief accessed 2026-08-08; GPIO17/header pin 11, 3.3 V output semantics, 40-pin header and pin 6 ground cross-checked. Cable, GPIO backend, startup state and physical verification remain open.")
+					(name "Evidence") "Raspberry Pi 5 product page, product brief and current hardware documentation accessed 2026-08-08. Selected model: 8GB RAM unit only; manufacturer-generated TME link identifies SC1112. GPIO17/header pin 11, 3.3 V output semantics, 40-pin header and pin 6 ground cross-checked. Received identity, active cooling, storage/image, cable, GPIO backend, startup state, retention, thermal and physical verification remain open.")
 				(field
-					(name "Display") "Raspberry Pi 5 8GB high-level compute")
+					(name "Display") "Raspberry Pi 5 8GB unit-only high-level compute, SC1112")
 			)
 			(pins
 				(pin
@@ -7574,26 +7574,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "PSU3")
-			(description "Official US Type-A regional model is frozen. Raspberry Pi's current primary portal lists twelve family SKUs without mapping each SKU to region/color, so the exact order code must not be inferred. Compute remains powered for diagnostics during E-stop and has no safety authority.")
-			(docs "https://pip-assets.raspberrypi.com/categories/898-raspberry-pi-27w-usb-c-power-supply")
+			(description "The current Raspberry Pi configurator maps the selected US Type-A black model to SC1158 through manufacturer-generated approved-reseller links. The product brief specifies 5.1 V / 5 A and a 1.2 m captive 17 AWG cable. Received identity, site/receptacle suitability, cable and USB-C retention, load/startup/brownout, thermal behavior and physical verification remain open. Compute remains powered for diagnostics during E-stop and has no safety authority.")
+			(docs "https://www.raspberrypi.com/products/27w-power-supply/")
 			(fields
 				(field
 					(name "Reference") "PSU3")
 				(field
-					(name "Value") "Raspberry Pi 27W USB-C Power Supply US; color/SKU unresolved")
+					(name "Value") "Raspberry Pi 27W USB-C Power Supply US Type A black, SC1158")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://pip-assets.raspberrypi.com/categories/898-raspberry-pi-27w-usb-c-power-supply")
+					(name "Datasheet") "https://www.raspberrypi.com/products/27w-power-supply/")
 				(field
-					(name "Description") "Official US Type-A regional model is frozen. Raspberry Pi's current primary portal lists twelve family SKUs without mapping each SKU to region/color, so the exact order code must not be inferred. Compute remains powered for diagnostics during E-stop and has no safety authority.")
+					(name "Description") "The current Raspberry Pi configurator maps the selected US Type-A black model to SC1158 through manufacturer-generated approved-reseller links. The product brief specifies 5.1 V / 5 A and a 1.2 m captive 17 AWG cable. Received identity, site/receptacle suitability, cable and USB-C retention, load/startup/brownout, thermal behavior and physical verification remain open. Compute remains powered for diagnostics during E-stop and has no safety authority.")
 				(field
-					(name "Status") "SELECTION REQUIRED - US SKU / COLOR / RETENTION")
+					(name "Status") "EXACT CANDIDATE - RECEIVING / RETENTION / APPLICATION OPEN")
 				(field
-					(name "Evidence") "Raspberry Pi product brief RP-008245-DS-1, published October 2023 and portal-updated 2025-10-06; rechecked 2026-08-06.")
+					(name "Evidence") "Raspberry Pi 27W USB-C Power Supply product brief RP-008245-DS-1, published October 2023; portal/product/configurator and US authorization records rechecked 2026-08-08. Selected model: US Type A black; manufacturer-generated DigiKey/Mouser links identify SC1158.")
 				(field
-					(name "Display") "Raspberry Pi 27W USB-C Power Supply US; color/SKU unresolved")
+					(name "Display") "Raspberry Pi 27W USB-C Power Supply US Type A black, SC1158")
 			)
 			(pins
 				(pin

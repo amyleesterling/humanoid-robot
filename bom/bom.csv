@@ -1,6 +1,6 @@
 item_id,subsystem,manufacturer,manufacturer_part_number,quantity,baseline_status,selection_basis
-BOM-001,compute,Raspberry Pi,Raspberry Pi 5 8GB,1,proposed,"Separate high-level compute; official supply retained during E-stop"
-BOM-002,compute,Raspberry Pi,27W USB-C Power Supply,1,proposed,"Official 5.1V/5A-class supply for Pi 5"
+BOM-001,compute,Raspberry Pi,"Raspberry Pi 5 8GB unit only; SC1112",1,proposed,"Exact current 8GB unit-only candidate from the Raspberry Pi configurator; receiving, cooling, storage/image, retention, runtime, thermal and application evidence remain open"
+BOM-002,compute,Raspberry Pi,"27W USB-C Power Supply US Type A black; SC1158",1,proposed,"Exact current US Type-A black candidate from the Raspberry Pi configurator; received identity, site, cable retention, load/startup/brownout and thermal evidence remain open"
 BOM-003,interface,ROBOTIS,"U2D2; SKU 902-0132-000",1,proposed,"USB to DYNAMIXEL TTL/RS-485 interface; received USB connector revision and retained cable remain acceptance inputs"
 BOM-004,interface,ROBOTIS,"U2D2 Power Hub Board Set; SKU 902-0145-001",1,dnp_development_only,"Official maximum is 10.0 A versus 11.1 A summed actuator stall screen; prohibited from carrying operational HR-V0 actuator current"
 BOM-005,shoulder,ROBOTIS,"XM540-W270-T; SKU 902-0137-000",1,proposed,"12 V TTL actuator; 10.6 N m stall at 12 V and 4.4 A; stall is not a continuous rating; verify received -T interface and model readback"

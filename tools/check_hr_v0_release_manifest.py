@@ -62,7 +62,7 @@ def main() -> None:
         if isinstance(item, dict)
     }
     required_identifiers = {
-        "Project Button Electrical V3-P1.13",
+        "Project Button Electrical V3-P1.14",
         "HR-V0-MECH-P0.6",
         "HR-V0-FW-P0.4",
         "HR-V0-FSA-P0.1",
@@ -73,7 +73,7 @@ def main() -> None:
     if missing_identifiers:
         errors.append(f"metadata missing current product identifiers: {sorted(missing_identifiers)}")
     electrical_product = next(
-        (item for item in products if isinstance(item, dict) and item.get("identifier") == "Project Button Electrical V3-P1.13"),
+        (item for item in products if isinstance(item, dict) and item.get("identifier") == "Project Button Electrical V3-P1.14"),
         {},
     )
     if electrical_product.get("supporting_identifiers") != [
@@ -85,13 +85,14 @@ def main() -> None:
         "HR-V0-PNOZ-CONF-P0.1",
         "HR-V0-K1K2-APP-P0.2",
         "HR-V0-GND-BOND-P0.1",
+        "HR-V0-COMPUTE-SEL-P0.1",
         "HR-V0-SD-P0.2",
         "HR-V0-24V-IF-P0.2",
         "HR-V0-E2-HW-P0.2",
         "HR-V0-COMPUTE-IF-P0.1",
         "HR-V0-GRIP-ELEC-P0.1",
     ] or electrical_product.get("release_state") != "correction_candidate_not_released":
-        errors.append("Electrical V3-P1.13 supporting identifiers or release state changed")
+        errors.append("Electrical V3-P1.14 supporting identifiers or release state changed")
     safety_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FSA-P0.1"),
         {},

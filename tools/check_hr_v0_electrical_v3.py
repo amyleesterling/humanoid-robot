@@ -71,7 +71,7 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P1.13", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P1.14", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
@@ -221,7 +221,7 @@ def main() -> int:
         for row in unresolved_rows
     }
     require(actual_unresolved == expected_unresolved, "unresolved-selection register differs from model", failures)
-    require(len(unresolved_rows) == 64, f"expected 64 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
+    require(len(unresolved_rows) == 63, f"expected 63 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
 
     require("JC1" not in components, "obsolete combined system-level JC1 block remains", failures)
     require("JDBG1" not in components, "invented installed watchdog debug connector remains", failures)
@@ -232,6 +232,10 @@ def main() -> int:
     }, "Pi power, heartbeat or return pin allocation changed", failures)
     require("GPIO17" in components["PI1"].description and "physical header pin 11" in components["PI1"].description,
             "Pi heartbeat GPIO binding is not explicit", failures)
+    require("SC1112" in components["PI1"].value and "SC1158" in components["PSU3"].value,
+            "exact compute or compute-supply candidate identity is missing", failures)
+    require("COOLING/STORAGE" in components["PI1"].status and "RECEIVING / RETENTION / APPLICATION OPEN" in components["PSU3"].status,
+            "compute application holds were weakened", failures)
     require(pin_map(components, "J24") == {
         "1": "SAFETY_24V_RAW", "2": "INTENTIONALLY_NOT_CONNECTED_J24_2",
         "3": "SAFETY_0V", "4": "INTENTIONALLY_NOT_CONNECTED_J24_4",
@@ -501,7 +505,7 @@ def main() -> int:
         return 1
 
     print("HR-V0 Electrical V3 validation: PASS")
-    print("13 native pages; 76 component blocks; 296 terminals; 64 named connected + 39 unconnected nets; 257 unique wire labels; 64 unresolved rows")
+    print("13 native pages; 76 component blocks; 296 terminals; 64 named connected + 39 unconnected nets; 257 unique wire labels; 63 unresolved rows")
     print(WARNING)
     print("ERC/export consistency is not design approval or permission to energize.")
     return 0
