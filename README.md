@@ -548,6 +548,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R156 independent review request](docs/reviews/2026-08-09-r156-independent-review-request.md)
 - [R156 validation record](docs/reviews/2026-08-09-r156-validation-record.md)
 - [Sol R12 findings rechecked after R156](docs/reviews/2026-08-09-sol-r12-post-r156-status.md)
+- [R157 branch-fault validation definition](docs/hr-v0-branch-fault-validation-p0.1.md)
+- [R157 interactive fault/no-backfeed guide](release/hr-v0/branch-fault-validation-p0.1/index.html)
+- [R157 independent review request](docs/reviews/2026-08-09-r157-independent-review-request.md)
+- [R157 validation record](docs/reviews/2026-08-09-r157-validation-record.md)
+- [Sol R12 findings rechecked after R157](docs/reviews/2026-08-09-sol-r12-post-r157-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -797,6 +802,7 @@ One hundred fifty-six review/control rounds are complete: R01-R156. R11 Fable an
 | R154 | DXL current-envelope and runtime-invariant correction | Issued `HR-V0-DXL-CURRENT-ENV-P0.1`; derived the 2.152 A raw-800 internal screen, rejected fuse-only connector protection, retained the present architecture for guarded qualification only, added per-sample Current Limit/Goal Current drift checks, and preserved fourteen open physical/qualified/work-authority gates. |
 | R155 | Native DXL branch-protection and regeneration evaluation | Issued `HR-V0-DXL-PROT-EVAL-P0.1`; added five connected KiCad sheets at ERC 0/0 for three exact TPS259461LRPWR branch candidates and one Pololu 3771 pulse-shunt candidate, rejected true reverse blocking for the present regenerative path, and retained fourteen blank tests, eighteen open holds and an unchanged robot baseline. |
 | R156 | Native DXL protection-carrier correction | Issued `HR-V0-DXL-PROT-CARRIER-P0.1`; added five legible native KiCad sheets, a routed four-layer single-channel carrier, exact source-backed part candidates, 20 placements, three controlled variants, review CAM, ten blank tests and sixteen open holds at ERC/DRC 0/0; rejected the initial crowded export and retained zero robot-baseline, fabrication or energization authority. |
+| R157 | Branch-fault and no-backfeed validation definition | Issued `HR-V0-BRANCH-FAULT-P0.1`; bound 24 blank cases to the exact V3 refs/nets across unpowered, limited-energy, guarded-fault and configured-distribution stages; supplied the missing EG-024 evidence location and an interactive guide while keeping the gate open and every physical result/authorization absent. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
