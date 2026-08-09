@@ -1,0 +1,11 @@
+hold_id,required_evidence,state,warning
+FCH-001,physically mark/survey A0 and J1/J2 axes on the accepted assembly,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"
+FCH-002,receive each actuator and record model/firmware/unique identity,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"
+FCH-003,measure two independent points per axis and solve raw sign/scale/zero with uncertainty,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"
+FCH-004,prove commanded positive engineering motion matches metrology at torque-limited guarded HIL,OPEN - POWERED TEST NOT AUTHORIZED,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"
+FCH-005,freeze start-pose tolerances and accepted calibration/configuration hashes,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"
+FCH-006,complete H104-to-gripper/TCP rigid transform and usable-opening calibration,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"
+FCH-007,replace legacy guard layout axes in the next guard revision and survey G0_RH,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"
+FCH-008,release separate HR-30 world/body/left/right mirrored frame convention,OPEN - HR-30 STAGE,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"
+FCH-009,"qualified mechanical/controls review of signs, zeros, tolerances and collision binding",OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"
+FCH-010,execute CFG-002 polarity/mirror mismatch inhibition and retained evidence,OPEN,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"

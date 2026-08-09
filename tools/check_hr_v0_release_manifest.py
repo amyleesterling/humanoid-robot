@@ -162,6 +162,8 @@ def main() -> None:
         "HR-V0-FRAME-P0.2",
     ]:
         errors.append("HR-V0-MECH-P0.6 supporting identifiers changed or are incomplete")
+    if mechanical_product.get("coordinate_convention") != "HR-V0-FRAME-CONV-P0.1":
+        errors.append("HR-V0-MECH-P0.6 coordinate convention missing or changed")
     if mechanical_product.get("release_state") != "integrated_exact_coordinate_candidate_not_released_for_fabrication_or_energization":
         errors.append("HR-V0-MECH-P0.6 fail-closed release state changed")
     firmware_product = next(

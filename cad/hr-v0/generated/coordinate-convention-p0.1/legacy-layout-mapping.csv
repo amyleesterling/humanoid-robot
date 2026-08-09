@@ -1,0 +1,5 @@
+mapping_id,legacy_quantity,controlled_quantity,equation,allowed_use,state
+MAP-001,G0_LEGACY_LAYOUT x_depth,G0_RH +Y / A0 +Y,y_RH = x_legacy,historical dimension interpretation only,CONTROLLED MAPPING
+MAP-002,G0_LEGACY_LAYOUT y_width,G0_RH +X / A0 +X,x_RH = y_legacy,historical dimension interpretation only,CONTROLLED MAPPING
+MAP-003,G0_LEGACY_LAYOUT z_height,G0_RH +Z / A0 +Z,z_RH = z_legacy,historical dimension interpretation only,CONTROLLED MAPPING
+MAP-004,legacy orientation/cross product/torque,NONE,PROHIBITED,none,FAIL CLOSED - use A0 or G0_RH
