@@ -1,0 +1,21 @@
+record_id,article,inspection,acceptance,state,actual,evidence_hash,authorization,warning
+CIR-001,PJ302410RT,Manufacturer and part marking,Exact readable PJ302410RT identity,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-002,PJ302410RT,Outside and usable internal envelope,Calibrated values recorded with uncertainty and no conflict disposition hidden,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-003,PJ302410RT,Door hinge latch rib and insert survey,Complete photo-indexed usable-zone record,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-004,18P2721,Manufacturer and part marking,Exact readable 18P2721 identity,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-005,18P2721,Dimensions flatness coating and enclosure fit,Measured results accepted by qualified layout reviewer,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-006,PI5-CASE-D,Manufacturer SKU and contents,PI5-CASE-D / 26087 case bracket and hardware photographed and counted,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-007,PI5-CASE-D,Outer envelope,90.5 x 87 x 49.5 mm catalog values checked against received article,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-008,PI5-CASE-D,Screws standoffs bracket and tool,Every thread length material position and supplied quantity identified without inference,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-009,SC1112/SC1148,Unpowered case assembly,Pi and official Active Cooler fit without invented hardware damage or blocked port,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-010,DR4/CCASE1,Rail engagement and service access,Received bracket engages selected rail and can be removed without disturbing safety wiring,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-011,U2D2,Manufacturer SKU and USB revision,902-0132-000 received and Type-C or deviation explicitly recorded,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-012,U2D2,Enclosed USB cable,Both end connectors length markings shielding evidence and OD recorded,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-013,GTM500C2,Manufacturer article dimensions and material,Article 130-95000 identity and nominal 63.5 x 25.4 mm envelope confirmed,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-014,GT.50X80C2,Manufacturer article dimensions and material,Article 854-44353 identity and nominal 203.2 x 12.7 mm envelope confirmed,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-015,U2D2/GTM1,Unpowered port clearance and compression,All ports visible and usable with no housing distortion or sharp contact,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-016,U2D2/GTM1,Pull slip vibration and repeated service,Qualified protocol and acceptance values selected then passed,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-017,SC1158/GTM2,Cable bend pull abrasion and connector load,Qualified protocol and acceptance values selected then passed,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-018,PI-U2D2/GTM3,Exact selected cable fit and retention,Selected order code and received construction pass bend pull and connector-load inspection,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-019,Complete panel,Depth access and closed-cover inspection,No interference and service access documented against received configuration,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIR-020,Complete panel,Grounding EMC thermal and qualified review,All separate evidence records accepted and signed before any work release,NOT_EXECUTED,,,NOT_AUTHORIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION

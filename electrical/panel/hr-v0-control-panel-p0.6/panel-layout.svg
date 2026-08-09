@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Project Button HR-V0 control-panel candidate P0.6</title>
+  <desc id="desc">Catalog-envelope planning view of the enlarged Hammond 18P2721 inner panel with inherited electrical allocations, a separated Raspberry Pi case column, U2D2 retention and two cable-loop retention positions. No holes, fabrication or energization are released.</desc>
+  <style>
+    text{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}.title{font-size:34px;font-weight:800}.subtitle{font-size:24px;font-weight:800}.label{font-size:16px;font-weight:700}.small{font-size:14px}.warn{font-size:20px;font-weight:800;fill:#7a3500}.panel{fill:#fff;stroke:#0b4f8a;stroke-width:4}.duct{fill:#d8ecfb;stroke:#0b4f8a;stroke-width:2}.legacy{fill:#e5f7ee;stroke:#17663b;stroke-width:2}.compute{fill:#fff3cc;stroke:#c48700;stroke-width:3}.hold{fill:#ffe4d6;stroke:#a03c17;stroke-width:2}.reserve{fill:#f3eefc;stroke:#6746a0;stroke-width:2;stroke-dasharray:9 7}.rail{stroke:#333;stroke-width:8}.leader{fill:none;stroke:#0b4f8a;stroke-width:2}.dim{fill:none;stroke:#567;stroke-width:2;marker-start:url(#arrow);marker-end:url(#arrow)}</style>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M8 0L0 4L8 8Z" fill="#567"/></marker></defs>
+  <rect width="1600" height="1100" fill="#e7f6ff"/>
+  <text x="55" y="58" class="title">HR-V0 CONTROL PANEL · P0.6</text>
+  <text x="55" y="98" class="warn">PRELIMINARY · NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, OR ENERGIZATION</text>
+  <text x="55" y="138">Hammond PJ302410RT + 18P2721 exact catalog candidates · all coordinates are planning envelopes only</text>
+  <g transform="translate(95 205) scale(.98)">
+    <rect class="panel" x="0" y="0" width="533.4" height="685.8" rx="5"/>
+    <rect class="duct" x="8" y="10" width="40" height="665.8"/><text x="28" y="346" class="small" text-anchor="middle" transform="rotate(-90 28 346)">WD1</text>
+    <rect class="duct" x="383.8" y="10" width="40" height="665.8"/><text x="403.8" y="346" class="small" text-anchor="middle" transform="rotate(-90 403.8 346)">WD2 · segregation boundary</text>
+    <line class="rail" x1="54" y1="48" x2="378" y2="48"/><text x="60" y="38" class="small">DR1</text>
+    <rect class="legacy" x="54" y="55" width="254" height="115" rx="5"/><text x="181" y="105" class="label" text-anchor="middle">Safety relays, watchdog relays</text><text x="181" y="130" class="label" text-anchor="middle">and K1/K2 contactors</text>
+    <rect class="duct" x="54" y="180" width="323.8" height="40"/><text x="216" y="206" class="small" text-anchor="middle">WD3</text>
+    <rect class="legacy" x="54" y="230" width="160" height="100" rx="5"/><text x="134" y="282" class="label" text-anchor="middle">Watchdog PCB-P0.6</text>
+    <rect class="legacy" x="224" y="230" width="100" height="60" rx="5"/><text x="274" y="264" class="label" text-anchor="middle">DXL-STAR</text>
+    <rect class="legacy" x="224" y="318" width="100" height="48" rx="5"/><text x="274" y="347" class="label" text-anchor="middle">XT1</text>
+    <rect class="hold" x="54" y="385" width="100" height="130" rx="5"/><text x="104" y="445" class="label" text-anchor="middle">F1/F2/F3</text><text x="104" y="469" class="label" text-anchor="middle">block</text>
+    <rect class="hold" x="170" y="375" width="70" height="140" rx="5"/><text x="205" y="445" class="label" text-anchor="middle">FSR1/2</text><text x="205" y="469" class="label" text-anchor="middle">+ F0</text>
+    <rect class="reserve" x="250" y="375" width="127.8" height="140" rx="5"/><text x="314" y="441" class="label" text-anchor="middle">Protection / J24</text><text x="314" y="466" class="label" text-anchor="middle">selection reserve</text>
+    <rect class="reserve" x="54" y="533.4" width="323.8" height="142.4" rx="5"/><text x="216" y="600" class="label" text-anchor="middle">ADDED LOWER RESERVE</text><text x="216" y="625" class="small" text-anchor="middle">unallocated · no drilling credit</text>
+    <line class="rail" x1="428" y1="48" x2="528" y2="48"/><text x="430" y="38" class="small">DR4</text>
+    <rect class="compute" x="433" y="55" width="90.5" height="87" rx="5"/><text x="478" y="93" class="label" text-anchor="middle">PI5-CASE-D</text><text x="478" y="118" class="small" text-anchor="middle">Pi 5 + SC1148</text>
+    <rect class="compute" x="440" y="160" width="63.5" height="25.4" rx="5"/><text x="472" y="178" class="small" text-anchor="middle">U2D2 + GTM1</text>
+    <rect class="compute" x="440" y="205" width="63.5" height="25.4" rx="5"/><text x="472" y="223" class="small" text-anchor="middle">PSU cable + GTM2</text>
+    <rect class="compute" x="440" y="250" width="63.5" height="25.4" rx="5"/><text x="472" y="268" class="small" text-anchor="middle">USB cable + GTM3</text>
+    <path class="leader" d="M523 98H610"/><text x="620" y="92" class="label">Compute column</text><text x="620" y="117" class="small">catalog fit only</text>
+    <path class="leader" d="M503 173H610"/><text x="620" y="178" class="small">rigid-device retention unproved</text>
+  </g>
+  <line class="dim" x1="95" y1="915" x2="618" y2="915"/><text x="356" y="945" text-anchor="middle">533.4 mm nominal</text>
+  <line class="dim" x1="72" y1="205" x2="72" y2="877"/><text x="42" y="541" text-anchor="middle" transform="rotate(-90 42 541)">685.8 mm nominal</text>
+  <rect x="900" y="230" width="620" height="520" rx="18" fill="#fff" stroke="#0b4f8a" stroke-width="3"/>
+  <text x="940" y="280" class="subtitle">What P0.6 fixes</text>
+  <text x="940" y="325">• Replaces the too-small P0.5 cabinet candidate.</text>
+  <text x="940" y="365">• Gives the compute stack its own separated column.</text>
+  <text x="940" y="405">• Keeps protection and future-fit reserves visible.</text>
+  <text x="940" y="455" class="subtitle">What remains open</text>
+  <text x="940" y="500">• Every hole, cut, fastener, cable and entry fitting.</text>
+  <text x="940" y="540">• Rail engagement, U2D2 retention and cable pull.</text>
+  <text x="940" y="580">• Depth, bend space, duct fill and service access.</text>
+  <text x="940" y="620">• Grounding, shields, EMC and enclosure heat rise.</text>
+  <text x="940" y="660">• Qualified electrical and enclosure-system review.</text>
+  <text x="940" y="710" class="warn">NO FABRICATION OR ENERGIZATION AUTHORITY</text>
+  <text x="55" y="1045" class="small">HR-V0-CP-P0.6 · HR-V0-COMPUTE-INSTALL-P0.1 · 2026-08-08 · catalog-envelope planning view</text>
+</svg>

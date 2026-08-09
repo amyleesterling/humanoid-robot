@@ -96,6 +96,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Interactive compute selection guide](release/hr-v0/compute-selection-p0.1/index.html)
 - [HR-V0 compute subassembly candidate P0.1](docs/hr-v0-compute-subassembly-p0.1.md)
 - [Interactive compute subassembly guide](release/hr-v0/compute-subassembly-p0.1/index.html)
+- [HR-V0 control-panel and compute-installation candidate P0.6](docs/hr-v0-control-panel-p0.6.md)
+- [Interactive compute installation guide](release/hr-v0/compute-installation-p0.1/index.html)
 - [E2 control-only hardware slice P0.2](electrical/e2/hr-v0-e2-hardware-p0.2/HR-V0_e2-hardware-guide.html)
 - [Native KiCad DXL-STAR-P0.1 injection-board candidate](electrical/kicad/hr-v0-dxl-star/README.md)
 - [HR-V0 DYNAMIXEL star-injection evidence basis](docs/hr-v0-dxl-star-injection-p0.1.md)
@@ -344,6 +346,10 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R120 validation record](docs/reviews/2026-08-08-r120-validation-record.md)
 - [R120 independent review request](docs/reviews/2026-08-08-r120-independent-review-request.md)
 - [Sol R12 findings rechecked after R120](docs/reviews/2026-08-08-sol-r12-post-r120-status.md)
+- [R121 compute-installation correction](docs/hr-v0-control-panel-p0.6.md)
+- [R121 validation record](docs/reviews/2026-08-08-r121-validation-record.md)
+- [R121 independent review request](docs/reviews/2026-08-08-r121-independent-review-request.md)
+- [Sol R12 findings rechecked after R121](docs/reviews/2026-08-08-sol-r12-post-r121-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -367,6 +373,7 @@ Run `python tools/generate_hr_v0_release_manifest.py` only after deliberate pack
 Run `python tools/generate_hr_v0_bom_closure.py` after deliberate system-BOM changes, then `python tools/check_hr_v0_bom.py`. The checker must retain `EG-003` as partial until a complete signed machine BOM exists; Evaluation Batch A and the R73 unpowered mechanical subset are not blanket purchase authority.
 Run `python tools/check_hr_v0_compute_selection_p01.py` for the R119 `SC1112` / `SC1158` identity package. Passing proves source/BOM/ECAD/receiving-form synchronization only; cooling, storage/image, harness, retention, site, load, PD, brownout, thermal, physical and qualified-review evidence remain open.
 Run `python tools/check_hr_v0_compute_subassembly_p01.py` for R120. Passing proves synchronization of the held `SC1112` / `SC1158` / `SC1148` identities, order-code-open 64 GB storage branch, pinned/unexecuted OS image, receiving forms and partial gates only. It does not prove mounting, retention, installed load, thermal behavior, power-loss recovery, HIL or readiness.
+Run `python tools/check_hr_v0_compute_installation_p01.py` for R121. Passing proves that the enlarged `PJ302410RT` / `18P2721` branch, `PI5-CASE-D`, U2D2, three exact base/strap candidates, 26 planning envelopes, sixteen holds and twenty blank receiving records stay synchronized. It does not prove holes, fasteners, cable selection, fit, pull/vibration, depth, thermal behavior, grounding/EMC or readiness.
 Generate exact vendor-coordinate evidence with `C:\Users\amyle\Documents\New project\.venvs\hr-v0-cad\Scripts\python.exe tools/generate_hr_v0_robotis_interface.py`, then run its checker. Generate the current R69 / `HR-V0-ARM-ARCH-P0.7` candidate with the same interpreter using `tools/generate_hr_v0_arm_architecture.py`, then run `tools/check_hr_v0_arm_architecture.py`. Run `tools/generate_hr_v0_mechanical_release.py` and its checker after deliberate mechanical-control changes. `HR-V0-MECH-P0.6` remains the release hold. The certificate closes nominal body between-sample clearance only and C06/C07 are analytical only; all fabrication packets remain withdrawn until bumper selection, received MTR/FAI/fit, T-slot/fastener/stop analysis, cables/guard, physical contact/stopping/tolerance proof and qualified review close `MECH-005` and `MECH-006`.
 Generate and check `HR-V0-STOP-REGION-P0.1` with the CAD interpreter using `tools/generate_hr_v0_stop_region_clearance.py` and `tools/check_hr_v0_stop_region_clearance.py`. Its 6,411 sampled poses and 131 continuous certificates establish nominal free space only in the J1-minimum, J1-maximum and J2-minimum study regions. All 20 received/interface inputs remain open; no stop topology, angle, part, fabrication or motion envelope is released.
 Generate and check the nonselected R70 mass-reduction study with the CAD interpreter using `tools/generate_hr_v0_mass_reduction_study.py` and `tools/check_hr_v0_mass_reduction_study.py`. Its exact-subset result and 57.983 g CAD reduction do not supersede P0.7, close `MASS-002`, or release C01R/C04R/C06R/C07R for quotation or fabrication.
@@ -396,7 +403,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred twenty review/control rounds are complete: R01-R120. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R120 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R120 adds held `SC1148`, an order-code-open 64 GB storage branch and a pinned/unexecuted OS image while leaving every installed application, physical, authorization, buildability, functional-safety, stopping, mass/inertia and walking blocker open.
+One hundred twenty-one review/control rounds are complete: R01-R121. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R121 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R121 supersedes the too-small P0.5 physical-layout candidate with exact held `PJ302410RT` / `18P2721`, allocates `PI5-CASE-D`, U2D2 and three base/strap positions, and leaves every physical test, authorization, buildability, functional-safety, stopping, mass/inertia and walking blocker open.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -520,6 +527,7 @@ One hundred twenty review/control rounds are complete: R01-R120. R11 Fable and R
 | R118 | Grounding, bonding, and shield closure packet | Distinguished the source-internal actuator-return/PE relationship from equipment protective bonding and EMC shield decisions; controlled eight sources, fifteen nodes, twelve holds and eighteen unexecuted surveys while retaining partial EG-016 and every physical/site/qualified-review hold. |
 | R119 | Exact compute and compute-power identity correction | Mapped Raspberry Pi's current configurators to PI1 `SC1112` and PSU3 `SC1158`; advanced Electrical V3 to P1.14 and BOM-001/BOM-002 to exact-candidate holds while retaining all receiving, cooling, storage/image, harness, retention, site, PD/load/brownout/thermal, grounding, runtime, physical and review holds. |
 | R120 | Compute cooling, storage and OS-image evidence correction | Added held Active Cooler `SC1148`, retained the 64 GB unprogrammed official SD-card branch with exact order code `SELECTION REQUIRED`, pinned the official 2026-06-18 Raspberry Pi OS Lite image/hash without claiming download or deployment, and retained all enclosure, mounting, cable, installed-load, thermal, recovery, EMC/HIL and review holds. |
+| R121 | Compute physical-installation and enclosure-fit correction | Confirmed P0.5 could not honestly absorb the compute installation; issued `HR-V0-CP-P0.6` / `HR-V0-COMPUTE-INSTALL-P0.1` with exact held `PJ302410RT`, `18P2721`, `PI5-CASE-D`, `GTM500C2` and `GT.50X80C2` candidates; allocated a separated compute column and added lower reserve; retained `BOM-070`, every hole/fastener, fit, pull/vibration, depth, thermal, grounding/EMC and review hold. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

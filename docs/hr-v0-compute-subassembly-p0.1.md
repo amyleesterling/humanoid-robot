@@ -50,7 +50,7 @@ The official resilient-filesystem whitepaper supports treating abrupt power loss
 
 ## Installation boundary
 
-The installed design remains blocked by `BOM-058`, `BOM-059` and `BOM-070`. Exact enclosure, removable tray, standoffs, fasteners, insulation, ventilation, cable retention, USB route, fan clearance, service access and grounding/EMC treatment are all **SELECTION REQUIRED**. Reference drawings may be used for a fit study only; the received board and cooler must be measured before releasing production holes.
+R121 supersedes this installation snapshot with `HR-V0-CP-P0.6` / `HR-V0-COMPUTE-INSTALL-P0.1`. `BOM-058` now has an exact held enlarged enclosure/backplate branch and `BOM-080` through `BOM-082` add exact held case/base/strap candidates. `BOM-059` and `BOM-070` remain **SELECTION REQUIRED**, and every standoff, fastener, cable entry, USB cable, production hole, installed fit, retention test, fan clearance, service access, grounding/EMC and thermal result remains open. Reference drawings provide catalog-envelope evidence only; received hardware must be measured and accepted before any fabrication release.
 
 ## Sol R12 disposition
 
