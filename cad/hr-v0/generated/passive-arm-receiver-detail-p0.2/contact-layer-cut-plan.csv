@@ -1,0 +1,4 @@
+cut_id,source_part,source_size_in,finished_x_mm,finished_y_mm,finished_t_mm_nominal,source_tolerance,retention,state
+PAD-1,0212037-50-10,12 x 12 x 0.375,180.0,266.7,9.525,+/-0.025 in (+/-0.635 mm),SELECTION REQUIRED,CUT CANDIDATE - NOT RELEASED
+PAD-2,0212037-50-10,12 x 12 x 0.375,180.0,266.6,9.525,+/-0.025 in (+/-0.635 mm),SELECTION REQUIRED,CUT CANDIDATE - NOT RELEASED
+PAD-3,0212037-50-10,12 x 12 x 0.375,180.0,266.7,9.525,+/-0.025 in (+/-0.635 mm),SELECTION REQUIRED,CUT CANDIDATE - NOT RELEASED

@@ -1,0 +1,9 @@
+load_id,case,value,unit,method,disposition
+REC-LD-001,provisional platen input,2000,N,retained R127 screen,NOT AN ACCEPTANCE OR PEAK LOAD
+REC-LD-002,three-shock ideal share,666.667,N/unit,2000/3,UNEQUAL SHARING AND DYNAMIC REACTION OPEN
+REC-LD-003,one shock unavailable; two-unit ideal share,1000.000,N/unit,2000/2,FAILURE CASE ONLY; NO ACE APPROVAL
+REC-LD-004,four-catch ideal share,500.000,N/catch,2000/4,CONTACT/SHARING/PEAK/PROOF OPEN
+REC-LD-005,single-catch conservative screen,2000.000,N/catch,no sharing credit,CANDIDATE INPUT; STOP HARDWARE UNSELECTED
+REC-LD-006,TWA/TS 01-20 published static C0Z,3700,N/system datum,igus current technical table,DIRECTION/MOMENT/DYNAMIC SHOCK/APPLICATION CHECK OPEN
+REC-LD-007,TW-01-20 single gliding-element maximum,830,N,igus horizontal system-design page; TWA equivalence not assumed,REFERENCE ONLY - DO NOT APPLY TO TWA WITHOUT IGUS REVIEW
+REC-LD-008,20-4113 joint allowable,SELECTION REQUIRED,N,"manufacturer page supplies geometry and suggested hardware, not joint capacity",BLOCKS STRUCTURAL RELEASE
