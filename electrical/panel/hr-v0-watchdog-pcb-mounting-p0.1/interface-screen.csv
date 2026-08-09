@@ -1,0 +1,7 @@
+screen_id,subject,input,result,status,boundary
+WDM-SCR-001,board outline,160 x 100 mm; 1.6 mm source thickness,controlled native-source dimensions,SOURCE CONFIRMED,received board thickness and tolerance remain required
+WDM-SCR-002,mount pattern,MH1..MH4 at 5 mm from adjacent board edges,150 x 90 mm rectangular center pattern,SOURCE CONFIRMED,panel coordinates are candidates until received panel survey
+WDM-SCR-003,standoff edge envelope,5.5 mm A/F regular hex; 5 mm hole-center edge distance,1.824574 mm nominal material-envelope margin to each adjacent board edge,ARITHMETIC SCREEN ONLY,washer/screw head/enclosure acceptance remains open
+WDM-SCR-004,10 mm candidate mounted plane,10.0 mm standoff plus 1.6 mm source board thickness,11.6 mm nominal board-top plane above panel before coating/flatness,ARITHMETIC SCREEN ONLY,underside lead trim and panel stack remain open
+WDM-SCR-005,four-standoff mass,Harwin published per-unit weights,0.904 g / 1.176 g / 1.356 g for 10 / 13 / 15 mm variants,CATALOG ARITHMETIC ONLY,"screws, washers and received mass excluded"
+WDM-SCR-006,ISO1 current land,centers +/-4.765 mm; copper width 1.52 mm,8.010 mm inner gap; 11.050 mm overall span,CURRENT SOURCE CONFIRMED,mask/stencil/cleaning/system insulation acceptance remains open

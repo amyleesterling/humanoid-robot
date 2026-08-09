@@ -1,0 +1,9 @@
+record_id,item,measurement,instrument,result,acceptance,state
+WDM-RCV-001,MH1,received hole diameter and X/Y center from board datums,SELECTION REQUIRED,,SELECTION REQUIRED,NOT EXECUTED / NOT AUTHORIZED
+WDM-RCV-002,MH2,received hole diameter and X/Y center from board datums,SELECTION REQUIRED,,SELECTION REQUIRED,NOT EXECUTED / NOT AUTHORIZED
+WDM-RCV-003,MH3,received hole diameter and X/Y center from board datums,SELECTION REQUIRED,,SELECTION REQUIRED,NOT EXECUTED / NOT AUTHORIZED
+WDM-RCV-004,MH4,received hole diameter and X/Y center from board datums,SELECTION REQUIRED,,SELECTION REQUIRED,NOT EXECUTED / NOT AUTHORIZED
+WDM-RCV-005,BP1,received panel thickness/flatness/coating,SELECTION REQUIRED,,SELECTION REQUIRED,NOT EXECUTED / NOT AUTHORIZED
+WDM-RCV-006,STACK,selected hardware identity and complete installed height,SELECTION REQUIRED,,SELECTION REQUIRED,NOT EXECUTED / NOT AUTHORIZED
+WDM-RCV-007,CLEARANCE,minimum underside clearance after lead trim,SELECTION REQUIRED,,SELECTION REQUIRED,NOT EXECUTED / NOT AUTHORIZED
+WDM-RCV-008,PROOF,static/vibration/service result,SELECTION REQUIRED,,SELECTION REQUIRED,NOT EXECUTED / NOT AUTHORIZED

@@ -1,0 +1,7 @@
+source_id,organization,record,revision_date,url,use
+WDM-SRC-001,Vishay,VO618A datasheet 83432,Rev 2.1; 2025-01-22; rechecked 2026-08-09,https://www.vishay.com/docs/83432/vo618a.pdf,current ISO1 option-7 land reconciliation
+WDM-SRC-002,Harwin,R30-1611000 product record,live record; rechecked 2026-08-09,https://www.harwin.com/products/R30-1611000,10 mm exact standoff candidate
+WDM-SRC-003,Harwin,R30-1611300 product record,live record; rechecked 2026-08-09,https://www.harwin.com/products/R30-1611300,13 mm exact standoff candidate
+WDM-SRC-004,Harwin,R30-1611500 product record,live record; rechecked 2026-08-09,https://www.harwin.com/products/R30-1611500,15 mm exact standoff candidate and minimum thread note
+WDM-SRC-005,Hammond Manufacturing,18P2721 product record,live record; rechecked 2026-08-09,https://www.hammfg.com/part/18P2721,held steel inner-panel identity; thickness/stack not released
+WDM-SRC-006,Project Button,PCB-P0.6 native board and R131 native DRC,KiCad 10.0.5; checked 2026-08-09,electrical/kicad/project-button-v3/project-button-v3.kicad_pcb,"current geometry, hole coordinates and DRC evidence"

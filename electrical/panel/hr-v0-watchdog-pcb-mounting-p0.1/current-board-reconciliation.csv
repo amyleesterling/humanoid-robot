@@ -1,0 +1,3 @@
+record_id,configuration,pad_centers_x_mm,pad_size_mm,derived_inner_gap_mm,derived_overall_span_mm,disposition,evidence
+WDM-REC-001,PCB-P0.5 immutable historical CAM source,+/-4.400,2.00 x 1.60,6.800,10.800,SUPERSEDED - DOES NOT MEET CONTROLLED OPTION-7 GEOMETRY,release/hr-v0/watchdog-pcb-fabrication-candidate-p0.1/source/project-button-v3.kicad_pcb
+WDM-REC-002,PCB-P0.6 current native board,+/-4.765,1.52 x 1.78,8.010,11.050,CURRENT SOURCE GEOMETRY MATCHES CONTROLLED VISHAY OPTION-7 LAND DIMENSIONS,electrical/kicad/project-button-v3/project-button-v3.kicad_pcb

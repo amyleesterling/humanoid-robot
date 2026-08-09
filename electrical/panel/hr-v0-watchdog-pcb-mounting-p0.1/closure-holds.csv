@@ -1,0 +1,13 @@
+hold_id,subject,status,evidence_needed
+WDM-HOLD-001,standoff height,OPEN,received board and installed THT lead-trim envelope; select one height and reject the others
+WDM-HOLD-002,top fastener,OPEN,"exact screw, washer if used, head envelope, material, thread engagement, torque and locking method"
+WDM-HOLD-003,panel fastener,OPEN,"exact screw/washer/nut or stud system, panel-side access, thread engagement, torque and locking method"
+WDM-HOLD-004,received panel,OPEN,"18P2721 identity, thickness, flatness, coating, enclosure fit, inserts/keepouts and rear access survey"
+WDM-HOLD-005,panel drilling,OPEN,"released hole diameter/tolerance, coordinate datum, drill/deburr/coating-repair method and first-article measurement"
+WDM-HOLD-006,underside clearance,OPEN,"received THT protrusion and solder-fillet measurements, lead-trim limit, contamination clearance and no-contact inspection"
+WDM-HOLD-007,electrical isolation/bonding,OPEN,"qualified disposition for plastic hardware, PCB domains, steel panel bond and fault/EMC behavior"
+WDM-HOLD-008,mechanical proof,OPEN,"board mass/COM, connector insertion and conductor-torque loads, static pull, vibration and service-cycle acceptance"
+WDM-HOLD-009,assembly process,PARTIAL,"assembler acceptance of lands, stencil, mask, paste, reflow/manual-THT, cleaning, AOI and rework limits"
+WDM-HOLD-010,ISO1 insulation system,PARTIAL,"working voltage, OVC, pollution degree, material group, coating, altitude, environment, standard/jurisdiction and qualified calculation"
+WDM-HOLD-011,physical first article,OPEN,"received-board dimensions, holes, warp, isolation gap, polarity, solder, contamination and mounting inspection"
+WDM-HOLD-012,authorization,OPEN,independent PCB/assembly review plus controlled fabrication and later energization work authorization
