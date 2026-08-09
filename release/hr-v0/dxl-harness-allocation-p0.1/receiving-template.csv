@@ -1,0 +1,5 @@
+record_id,date_utc,operator,reviewer,harness_id,parent_actuator_item,actuator_serial,cable_marking,measured_length_mm,end_a_orientation,end_b_orientation,pin1_continuity,pin2_continuity,pin3_continuity,pin1_pin2_isolation,pin1_pin3_isolation,pin2_pin3_isolation,retention_result,visual_result,instrument_ids,calibration_ids,raw_data_uri,result,nonconformance_id,approver,approval_date,notes
+HRR-001,,,,HAR-CTRL,BOM-061,,,,,,,,,,,,,,,,,NOT EXECUTED,,,,
+HRR-002,,,,HAR-J1,BOM-005,,,,,,,,,,,,,,,,,NOT EXECUTED,,,,
+HRR-003,,,,HAR-J2,BOM-006,,,,,,,,,,,,,,,,,NOT EXECUTED,,,,
+HRR-004,,,,HAR-G1,BOM-007,,,,,,,,,,,,,,,,,NOT EXECUTED,,,,

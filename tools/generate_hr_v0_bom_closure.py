@@ -33,7 +33,7 @@ EXACT_HOLD_IDS = {
 }
 GROUPED_HOLD_IDS = {"BOM-033", "BOM-038", "BOM-043"}
 HISTORICAL_OR_DNP_IDS = {"BOM-004", "BOM-008", "BOM-009", "BOM-016"}
-INTEGRATED_IDS = {"BOM-020", "BOM-035"}
+INTEGRATED_IDS = {"BOM-020", "BOM-035", "BOM-086"}
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
