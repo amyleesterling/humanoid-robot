@@ -93,6 +93,7 @@ def main() -> int:
         "HR-V0-PASSIVE-ARM-RECEIVER-P0.1",
         "HR-V0-PASSIVE-ARM-RECEIVER-VERIFY-P0.1",
         "HR-V0-PASSIVE-ARM-RECEIVER-DETAIL-P0.2",
+        "HR-V0-RECEIVER-GUIDE-IF-P0.1",
     ]
     assert safety["release_state"] == "allocation_candidate_no_plr_or_sil_assigned"
 

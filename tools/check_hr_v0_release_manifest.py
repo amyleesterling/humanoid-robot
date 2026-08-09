@@ -101,7 +101,7 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FSA-P0.1"),
         {},
     )
-    if safety_product.get("supporting_identifiers") != ["DF-01 ZERO SAFETY CREDIT", "HR-V0-WD-SUPPLY-P0.1", "HR-V0-POWERLOSS-P0.1", "HR-V0-PASSIVE-ARM-RECEIVER-P0.1", "HR-V0-PASSIVE-ARM-RECEIVER-VERIFY-P0.1", "HR-V0-PASSIVE-ARM-RECEIVER-DETAIL-P0.2"] or safety_product.get("release_state") != "allocation_candidate_no_plr_or_sil_assigned":
+    if safety_product.get("supporting_identifiers") != ["DF-01 ZERO SAFETY CREDIT", "HR-V0-WD-SUPPLY-P0.1", "HR-V0-POWERLOSS-P0.1", "HR-V0-PASSIVE-ARM-RECEIVER-P0.1", "HR-V0-PASSIVE-ARM-RECEIVER-VERIFY-P0.1", "HR-V0-PASSIVE-ARM-RECEIVER-DETAIL-P0.2", "HR-V0-RECEIVER-GUIDE-IF-P0.1"] or safety_product.get("release_state") != "allocation_candidate_no_plr_or_sil_assigned":
         errors.append("HR-V0-FSA-P0.1 supporting identifiers or fail-closed state changed")
     mechanical_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-MECH-P0.6"),
@@ -133,6 +133,7 @@ def main() -> None:
         "HR-V0-PASSIVE-ARM-RECEIVER-P0.1",
         "HR-V0-PASSIVE-ARM-RECEIVER-VERIFY-P0.1",
         "HR-V0-PASSIVE-ARM-RECEIVER-DETAIL-P0.2",
+        "HR-V0-RECEIVER-GUIDE-IF-P0.1",
         "HR-V0-ELBOW-TRADE-P0.1",
         "HR-V0-GRIP-P0.2",
         "HR-V0-GRIP-CAD-ACQ-P0.1",

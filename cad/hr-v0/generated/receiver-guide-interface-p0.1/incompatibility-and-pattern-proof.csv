@@ -1,0 +1,5 @@
+proof_id,candidate,required_pattern_mm,available_face_mm,shortfall_mm,result
+GUIDE-PROOF-001,R129 FAB-REC-003 orientation 20 across 53; 50 across 40,53 x 40,20 x 50,33 x 0,FAIL - CANNOT COVER K2 PATTERN
+GUIDE-PROOF-002,R129 FAB-REC-003 rotated,53 x 40,50 x 20,3 x 20,FAIL - CANNOT COVER K2 PATTERN
+GUIDE-PROOF-003,R130 FAB-REC-004 vertical face,53 x 40,73 x 80,0 x 0,NOMINAL COVERAGE ONLY - HOLES/LOAD PROOF OPEN
+GUIDE-PROOF-004,TS-01-20 120 mm standard pattern derivation,C4=60; C5=C6; range 20..49.5,C5=C6=30,0,ARITHMETIC CONSISTENT - CONFIGURED CODE/CAD OPEN

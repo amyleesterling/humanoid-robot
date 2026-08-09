@@ -1,0 +1,5 @@
+interface_id,from,to,controlled_geometry,hardware,status
+GUIDE-IF-001,TWA-01-20 K2 face,FAB-REC-004 vertical face,four centers on 53 x 40 mm rectangle,M6 mating thread known; all screw details SELECTION REQUIRED,PARTIAL - CATALOG COORDINATES; RECEIVED CAD/THREAD DEPTH OPEN
+GUIDE-IF-002,FAB-REC-004 horizontal flange,FAB-REC-001 platen,two project centers at X +/-80 and Y guide center +/-25,SELECTION REQUIRED,OPEN - DIAMETER/FASTENER/LOCAL STRENGTH/FAI
+GUIDE-IF-003,TS-01-20 120 mm candidate,fixed support,derived two-hole standard pattern at 30 and 90 mm,K1 for DIN 912 M5; all screw/hole details SELECTION REQUIRED,PARTIAL - CONFIGURED CODE/CAD/APPLICATION OPEN
+GUIDE-IF-004,four independent rails,one moving platen,axes X +/-110; Y +/-350; vertical stroke envelope 120 mm,SELECTION REQUIRED,OPEN - OVERCONSTRAINT/ALIGNMENT/FLOATING ARRANGEMENT/IGUS REVIEW
