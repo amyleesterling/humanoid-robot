@@ -2,6 +2,8 @@
 
 > **PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION**
 
+> **SUPERSEDED FOR CURRENT NATIVE/MANUFACTURING REVIEW:** R159/P0.3 retains this revision's RPW copper/mask/paste geometry but corrects the native soldermask-dam rule and adds board fiducials plus a controlled DFM inquiry. P0.2 remains historical review evidence and is not a supplier release.
+
 - Identifier: `HR-V0-DXL-PROT-CARRIER-P0.2`
 - Review round: R158
 - Date: 2026-08-09
