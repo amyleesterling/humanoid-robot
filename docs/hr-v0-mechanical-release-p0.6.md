@@ -31,6 +31,12 @@ Nominal C06/C07 metal contact is `117.999985 deg`; nominal body contact remains 
 - `tools/check_hr_v0_arm_architecture.py`
 - `tools/generate_hr_v0_mechanical_release.py`
 - `tools/check_hr_v0_mechanical_release.py`
+- `docs/hr-v0-mechanical-parity-p0.1.md`
+- `release/hr-v0/mechanical-parity-p0.1/`
+- `tools/generate_hr_v0_mechanical_parity.py`
+- `tools/check_hr_v0_mechanical_parity.py`
+
+R135 independently confirms the five STEP/DXF profile extents and all thirty nominal hole features. It also identifies eight countersink pairs whose centers agree but whose STEP opening is modeled at `Ø11.40 mm`, the upper limit of the drawing/DXF `Ø11.30 +0.10/-0.00 mm` control. That semantic difference remains an open qualified-review disposition; no supplier may infer nominal or tolerance from STEP alone. Six drawing controls also remain schedule-bound instead of fully displayed on the readable SVGs.
 
 ## Remaining release boundary
 

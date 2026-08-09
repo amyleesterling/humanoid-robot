@@ -157,9 +157,9 @@ ERC validates modeled connectivity and annotation only. It does not establish ph
 
 ## Review history and independent findings
 
-One hundred thirty-four review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R134 are controlled project responses, not independent approvals. No round authorizes purchase, quotation, fabrication, powered testing, motion, connection or energization.
+One hundred thirty-five review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R135 are controlled project responses, not independent approvals. No round authorizes purchase, quotation, fabrication, powered testing, motion, connection or energization.
 
-R80-R133 are historical project corrections. R134 is the current project-owned correction pass. None is an additional independent review or approval. Sol's resupplied verdict remains R12 and is not double-counted.
+R80-R134 are historical project corrections. R135 is the current project-owned correction pass. None is an additional independent review or approval. Sol's resupplied verdict remains R12 and is not double-counted.
 
 ## Principal unresolved engineering blockers
 
@@ -246,6 +246,8 @@ Each review must separately assess:
 No reviewer should interpret clean ERC, traceability, simulation, website publication, or a correction disposition as physical verification or approval.
 
 ## Next controlled action
+
+R135 exposes the current mechanical-definition choice that must be qualified before any supplier payload exists. Independently review all five profile results, thirty exact hole matches, eight Ø11.40 STEP versus Ø11.30 nominal countersink rows, twenty-six drawing-control bindings and four open findings in `HR-V0-MECH-PARITY-P0.1`. Decide whether the four affected STEP solids must be remodeled at nominal or explicitly identified as upper-limit models, and whether conventional fully dimensioned released drawings must replace the six schedule-bound controls. Do not ask a provider to infer tolerance or manufacturing intent from STEP or DXF alone. No contact, upload, quotation, purchase, first article, fabrication, assembly, motion or energization is authorized.
 
 R134 makes the current five-part P0.7 metal definition inspectable without creating a supplier payload. Independently verify all fifteen hashes, twenty-six source controls, thirty blank FAI operations, twelve unsent DFM questions and fifteen open holds in `HR-V0-MECH-DFM-DATA-P0.1`. Obtain qualified mechanical disposition of the exact material, datum, tolerance, inspection, stop-load and received-interface basis before any provider contact. P1.1/X430 comparison evidence exists but remains nonselected; do not use it to release P0.7 or substitute a new architecture. No file upload, quotation, purchase, first article, fabrication, assembly, motion or energization is authorized.
 

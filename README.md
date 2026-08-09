@@ -423,6 +423,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R134 validation record](docs/reviews/2026-08-09-r134-validation-record.md)
 - [R134 independent review request](docs/reviews/2026-08-09-r134-independent-review-request.md)
 - [Sol R12 findings rechecked after R134](docs/reviews/2026-08-09-sol-r12-post-r134-status.md)
+- [R135 STEP/DXF/drawing parity audit](docs/hr-v0-mechanical-parity-p0.1.md)
+- [R135 interactive geometry-parity guide](release/hr-v0/mechanical-parity-p0.1/index.html)
+- [R135 validation record](docs/reviews/2026-08-09-r135-validation-record.md)
+- [R135 independent review request](docs/reviews/2026-08-09-r135-independent-review-request.md)
+- [Sol R12 findings rechecked after R135](docs/reviews/2026-08-09-sol-r12-post-r135-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -492,7 +497,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred thirty-four review/control rounds are complete: R01-R134. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R134 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R134 corrects the stale pre-X430-comparison route statement and binds the five current P0.7 custom parts to fifteen hashed geometry files, twenty-six source controls, thirty unexecuted first-article operations, twelve unsent DFM questions and fifteen open holds. It authorizes no provider contact, quotation, fabrication, motion or energization.
+One hundred thirty-five review/control rounds are complete: R01-R135. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R135 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R135 independently matches all five STEP/DXF profile extents, thirty nominal hole features and eight controlled-upper-limit countersinks; traces twenty-six drawing controls; and exposes four open findings, including schedule-bound drawings, pre-fillet stop DXFs and Ø11.40 STEP versus Ø11.30 nominal countersink semantics. It authorizes no provider contact, quotation, fabrication, motion or energization.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -630,6 +635,7 @@ One hundred thirty-four review/control rounds are complete: R01-R134. R11 Fable 
 | R132 | Watchdog PCBA capability/DFM inquiry and Harwin land-shape correction | Issued `PCB-P0.7 / HR-V0-WD-PCBA-RFI-P0.1`; changes only TP1-TP16 to Harwin's exact rectangular 3.45 x 1.85 mm copper, preserves native DRC 0/0/0, and controls 46 references, four provider routes, twenty requirements, twenty-four unsent questions, fourteen holds and twenty-four blank first-article rows. No provider, CAM, process, fabrication, assembly, physical result or energization is released. |
 | R133 | Watchdog PCBA assembly-data definition | Issued `HR-V0-WD-PCBA-DATA-P0.1`; reconciles 42 populated references into sixteen exact-MPN BOM lines, controls 38 SMD / four THT placements plus four NPTH features, derives the 160 x 100 mm board-relative coordinate convention, and adds explicit orientation notes and an interactive map. Supplier-normalized XYRS, CAM, process acceptance, fabrication, assembly, physical evidence and energization remain unreleased. |
 | R134 | Mechanical DFM and first-article review-data correction | Issued `HR-V0-MECH-DFM-DATA-P0.1`; corrected the stale statement that the X430 comparison had not been produced, retained P1.1/X430 as nonselected and P0.7 as controlled, and bound five parts to fifteen exact geometry identities, twenty-six source controls, thirty unexecuted FAI operations, twelve unsent DFM questions and fifteen open holds. No provider contact, upload, quote, purchase, first article, fabrication, assembly, motion or energization is authorized. |
+| R135 | Mechanical STEP/DXF/drawing parity audit | Issued `HR-V0-MECH-PARITY-P0.1`; independently parsed all five DXFs and STEP solids, matched five profile extents, thirty exact nominal holes and eight countersink positions at the controlled upper-limit model diameter, traced all twenty-six drawing controls and published interactive feature maps. Four findings remain open; no file alone is a machining authority and no provider, fabrication, assembly, motion or energization action is authorized. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
