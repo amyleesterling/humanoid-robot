@@ -73,15 +73,15 @@ def main() -> int:
     need(status.get("open_holds") == 14, "status must record 14 open holds", failures)
 
     controlled_board = OUT / "source" / "project-button-v3.kicad_pcb"
-    # R89 advances the live source to PCB-P0.6. The R88 package is immutable
+    # R89 advanced the live source to PCB-P0.6; R132 advances it to PCB-P0.7. The R88 package is immutable
     # historical evidence and must now differ from, never masquerade as, the
     # current source. Its own file manifest still protects every stored byte.
     need(sha256(controlled_board) != sha256(SOURCE / controlled_board.name),
-         "historical PCB-P0.5 unexpectedly equals current PCB-P0.6 source", failures)
+         "historical PCB-P0.5 unexpectedly equals current PCB-P0.7 source", failures)
     need(sha256(OUT / "source" / "project-button-v3.kicad_pro") != sha256(SOURCE / "project-button-v3.kicad_pro"),
          "historical project unexpectedly equals current land-corrected project", failures)
-    need('rev "PCB-P0.6 / Electrical V3-P1.13"' in (SOURCE / controlled_board.name).read_text(encoding="utf-8-sig"),
-         "live source is not the controlled PCB-P0.6 successor", failures)
+    need('rev "PCB-P0.7 / Electrical V3-P1.13"' in (SOURCE / controlled_board.name).read_text(encoding="utf-8-sig"),
+         "live source is not the controlled PCB-P0.7 successor", failures)
     board = pcbnew.LoadBoard(str(controlled_board))
     footprints = {fp.GetReference(): fp for fp in board.GetFootprints()}
     need(set(footprints) == BOARD_REFS | {"MH1", "MH2", "MH3", "MH4"}, "board footprint membership changed", failures)
@@ -150,7 +150,7 @@ def main() -> int:
     print("HR-V0-WD-FAB-P0.1 HISTORICAL RECORD PASS")
     print("  42 assembly references + 4 mechanical holes; zero native DRC violations")
     print("  deterministic Gerber/drill/position/IPC-D-356 outputs; 14 holds OPEN")
-    print("  superseded by PCB-P0.6 for current review; do not upload or order PCB-P0.5")
+    print("  superseded by PCB-P0.7 for current review; do not upload or order PCB-P0.5")
     print("  fabrication, assembly, energization and safety credit remain prohibited")
     return 0
 

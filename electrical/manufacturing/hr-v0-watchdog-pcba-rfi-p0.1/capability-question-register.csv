@@ -1,0 +1,25 @@
+question_id,topic,question,response,state,warning
+PCBA-Q-001,all,Can you review this package without a portal upload or order and return a reference-level DFM disposition?,,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-002,bare board,"What exact laminate, Tg, copper weight, board thickness tolerance, finish, mask and legend system would you propose?",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-003,bare board,"What panelization, tooling rails, fiducials, coupons, serialization and breakaway features are required?",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-004,bare board,"What IPC class and acceptability standards would govern bare board and assembly, and what objective records are supplied?",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-005,lands,"Will you accept every R89/R132 land verbatim; if not, identify reference, dimension, reason and proposed controlled change?",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-006,mask,What solder-mask expansion and registration capability applies to each land family and the ISO1 isolation region?,,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-007,stencil,"What stencil thickness, aperture geometry, area-ratio rule and step-stencil need applies across TI, Pico, passives, optocoupler and test points?",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-008,SMT,"State paste, alloy, flux, placement equipment, reflow profile method and profile-record availability.",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-009,Pico,"Can you place/reflow SC0915 as a module using Raspberry Pi's official footprint, and how will hidden/edge joints be inspected?",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-010,THT,State the exact post-reflow method for DC1/JWP1/JWF1/JWH1 and how terminal-block seating/torque loads are controlled.,,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-011,mixed process,Are the proposed SMT and THT alloys/fluxes compatible with the sequence and later rework?,,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-012,cleanliness,"What cleaning/no-clean process and ionic-residue evidence can be supplied, especially across ISO1?",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-013,inspection,"Which AOI, optical, X-ray or manual inspections cover each package family and polarity/orientation?",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-014,test,Can you provide netlist bare-board electrical test and an unpowered assembled continuity/isolation fixture service?,,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-015,traceability,"What component lot/date-code, PCB lot, process, inspection, deviation and rework traceability is standard or optional?",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-016,sourcing,Can exact MPN-only sourcing and customer-consigned SC0915/other parts be enforced with no alternates?,,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-017,first article,Can one first article be held for Project Button review before remaining quantity proceeds?,,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-018,nonconformance,"How are DFM exceptions, substitutions, deviations and rework requests presented for written approval?",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-019,data,"Which native KiCad, Gerber/drill, IPC-356, BOM, centroid, drawing and traveler inputs are required?",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-020,data,"Can every received file be bound to name, revision and SHA-256 in the work order/traveler?",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-021,quantity,"State prototype minimum, attrition quantities, overage rules and consignment packaging requirements.",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-022,commercial,"State DFM/NRE, first-article, fabrication, assembly, test, documentation, shipping cost and lead time separately.",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-023,quality,"Identify the actual facility, certifications, standards, responsible quality contact and record-retention period.",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+PCBA-Q-024,release boundary,"Confirm that no upload, quote, acknowledgment or DFM response by itself starts fabrication or assembly.",,NOT SENT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION

@@ -77,11 +77,11 @@ Build BVH for holes and vias
 Load Raytracing: board
 Load Raytracing: layers
 Loading 3D models...
-Reload time 0.224 s
+Reload time 0.204 s
 Rendering: 100
-Rendering time 0.261 s
+Rendering time 0.282 s
 Successfully created 3D render image
-6:35:13 AM: Error: Directory 'C:\Users\amyle\AppData\Roaming\kicad\10.0\3d' couldn't be created (error 5: Access is denied.)
+3:24:10 AM: Error: Directory 'C:\Users\amyle\AppData\Roaming\kicad\10.0\3d' couldn't be created (error 5: Access is denied.)
 exit=0
 
 $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb render --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\output\project-button-v3-pcb-test-access-bottom.png" --width 1800 --height 1100 --side bottom --background opaque "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3\project-button-v3.kicad_pcb"
@@ -156,9 +156,9 @@ Build BVH for holes and vias
 Load Raytracing: board
 Load Raytracing: layers
 Loading 3D models...
-Reload time 0.214 s
+Reload time 0.206 s
 Rendering: 100
-Rendering time 0.276 s
+Rendering time 0.252 s
 Successfully created 3D render image
-6:35:15 AM: Error: Directory 'C:\Users\amyle\AppData\Roaming\kicad\10.0\3d' couldn't be created (error 5: Access is denied.)
+3:24:11 AM: Error: Directory 'C:\Users\amyle\AppData\Roaming\kicad\10.0\3d' couldn't be created (error 5: Access is denied.)
 exit=0

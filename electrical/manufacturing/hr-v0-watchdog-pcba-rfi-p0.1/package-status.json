@@ -1,0 +1,28 @@
+{
+  "identifier": "HR-V0-WD-PCBA-RFI-P0.1",
+  "round": "R132",
+  "current_board": "PCB-P0.7",
+  "board_changed": true,
+  "board_sha256": "353e4e53c992f1abb2cb9e815d045abfa2a29207e930e796b06649ca686293ed",
+  "counts": {
+    "footprints": 46,
+    "smd": 38,
+    "tht": 4,
+    "mechanical": 4
+  },
+  "current_conformance_groups": 9,
+  "current_conformance_references": 37,
+  "providers_screened": 4,
+  "questions": 24,
+  "holds": 14,
+  "provider_selected": false,
+  "provider_contacted": false,
+  "files_uploaded": false,
+  "quote_requested": false,
+  "cam_released": false,
+  "fabrication_authorized": false,
+  "assembly_authorized": false,
+  "physical_article_exists": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
+}

@@ -1,6 +1,6 @@
 {
   "status": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION",
-  "board_revision": "PCB-P0.6",
+  "board_revision": "PCB-P0.7",
   "electrical_revision": "Electrical V3-P1.13",
   "generated_date": "2026-08-08",
   "manufacturer_sources": [
@@ -226,7 +226,7 @@
   },
   "limitations": [
     "Zero native DRC violations proves only the encoded geometric/connectivity rules.",
-    "PCB-P0.6 encodes a 0.1524 mm (6 mil) minimum trace/clearance candidate envelope and controlled TI example land patterns; fabricator/assembler acceptance remains required.",
+    "PCB-P0.7 encodes a 0.1524 mm (6 mil) minimum trace/clearance candidate envelope, controlled TI example lands and rectangular Harwin issue-10 test-point lands; fabricator/assembler acceptance remains required.",
     "The proposed OSH Park two-layer process is not a released purchase or fabrication selection.",
     "No fabrication, EMC, thermal, COM-slew, physical probe-access or fault evidence is released.",
     "UFB1 field and logic returns share SAFETY_0V; no galvanic-isolation or safety credit is claimed."

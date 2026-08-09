@@ -272,6 +272,8 @@ def main() -> int:
         require(abs(pcbnew.ToMM(test_pad.GetSizeX()) - 3.45) < 0.001 and
                 abs(pcbnew.ToMM(test_pad.GetSizeY()) - 1.85) < 0.001,
                 f"{ref} pad differs from the 3.45 mm x 1.85 mm Harwin land pattern", failures)
+        require(test_pad.GetShape() == pcbnew.PAD_SHAPE_RECT,
+                f"{ref} pad is not the rectangular Harwin issue-10 land", failures)
         require(test_pad.IsOnLayer(pcbnew.F_Cu), f"{ref} is not top-side probe accessible", failures)
 
     # Vishay VO618A option-7 document 83432 Rev. 2.1 freezes the SMD land
@@ -395,7 +397,7 @@ def main() -> int:
                 f"CDRV{channel} is not compact to UDRV{channel} GND", failures)
 
     title = board.GetTitleBlock()
-    require(title.GetRevision() == "PCB-P0.6 / Electrical V3-P1.13", "PCB title-block revision mismatch", failures)
+    require(title.GetRevision() == "PCB-P0.7 / Electrical V3-P1.13", "PCB title-block revision mismatch", failures)
     require(WARNING in board_path.read_text(encoding="utf-8-sig"), "PCB warning missing", failures)
     require("ROUTED/TEST-ACCESS CANDIDATE" in board_path.read_text(encoding="utf-8-sig"),
             "routed/test-access candidate status missing from PCB", failures)
@@ -437,7 +439,7 @@ def main() -> int:
 
     constraint_evidence = {
         "status": WARNING,
-        "board_revision": "PCB-P0.6",
+        "board_revision": "PCB-P0.7",
         "electrical_revision": "Electrical V3-P1.13",
         "generated_date": "2026-08-08",
         "manufacturer_sources": [
@@ -551,7 +553,7 @@ def main() -> int:
         },
         "limitations": [
             "Zero native DRC violations proves only the encoded geometric/connectivity rules.",
-            "PCB-P0.6 encodes a 0.1524 mm (6 mil) minimum trace/clearance candidate envelope and controlled TI example land patterns; fabricator/assembler acceptance remains required.",
+            "PCB-P0.7 encodes a 0.1524 mm (6 mil) minimum trace/clearance candidate envelope, controlled TI example lands and rectangular Harwin issue-10 test-point lands; fabricator/assembler acceptance remains required.",
             "The proposed OSH Park two-layer process is not a released purchase or fabrication selection.",
             "No fabrication, EMC, thermal, COM-slew, physical probe-access or fault evidence is released.",
             "UFB1 field and logic returns share SAFETY_0V; no galvanic-isolation or safety credit is claimed.",

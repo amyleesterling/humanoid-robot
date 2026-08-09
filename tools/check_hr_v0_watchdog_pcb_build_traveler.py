@@ -54,7 +54,7 @@ def main() -> int:
     with (ROOT / "electrical" / "e2" / "hr-v0-e2-hardware-p0.2" / "e2-blocking-holds.csv").open(newline="", encoding="utf-8-sig") as handle:
         e2_holds = list(csv.DictReader(handle))
     hold8 = next((row for row in e2_holds if row["hold_id"] == "E2-HOLD-008"), None)
-    if not hold8 or "PCB-P0.6" not in hold8["open_item"] or "no CAM or manufacturing release" not in hold8["open_item"] or "PCB-P0.5 CAM is superseded" not in hold8["open_item"]:
+    if not hold8 or "PCB-P0.7" not in hold8["open_item"] or "no CAM or manufacturing release" not in hold8["open_item"] or "PCB-P0.5 CAM" not in hold8["open_item"]:
         failures.append("E2-HOLD-008 disposition not synchronized")
 
     with (ROOT / "tests" / "procedures" / "procedure-registry.csv").open(newline="", encoding="utf-8-sig") as handle:
@@ -75,7 +75,7 @@ def main() -> int:
     print("HR-V0-WD-TRAVELER-P0.1 PASS")
     print("  24 CAM + 18 receiving/assembly + 16 bring-up + 13 inspection rows")
     print("  9 phase gates; all physical rows NOT_EXECUTED and OPEN")
-    print("  Historical PCB-P0.5 route only; E2-HOLD-008 now points to PCB-P0.6 with no current CAM")
+    print("  Historical PCB-P0.5 route only; E2-HOLD-008 now points to PCB-P0.7 with no current CAM")
     print("  Fabrication and energization remain prohibited")
     return 0
 
