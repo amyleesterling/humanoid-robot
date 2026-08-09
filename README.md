@@ -19,6 +19,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [HR-V0 carrier-integrated configuration reconciliation P0.1](docs/hr-v0-configuration-reconciliation-p0.1.md)
+- [Interactive carrier-integrated configuration guide](release/hr-v0/configuration-reconciliation-p0.1/index.html)
 - [Configuration management and revision hierarchy](docs/configuration-management.md)
 - [HR-V0 deterministic release-candidate configuration P0.1](docs/hr-v0-release-candidate-p0.1.md)
 - [HR-V0 integrated arm architecture P0.7](docs/hr-v0-arm-architecture-p0.7.md)
@@ -96,7 +98,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 functional-safety allocation and diagnostic-credit boundary P0.1](docs/hr-v0-functional-safety-allocation-p0.1.md)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
-- [Native KiCad Electrical V3-P1.14 correction candidate](electrical/kicad/project-button-v3/README.md)
+- [Native KiCad Electrical V3-P1.15 carrier-aware candidate](electrical/kicad/project-button-v3-p1.15-carrier-candidate/README.md)
 - [HR-V0 control-panel physical-definition candidate P0.5](docs/hr-v0-control-panel-p0.5.md)
 - [HR-V0 24 V source-interface candidate P0.2](docs/hr-v0-24v-interface-p0.2.md)
 - [HR-V0 compute-heartbeat and watchdog-debug interface P0.1](docs/hr-v0-compute-debug-interface-p0.1.md)
@@ -107,7 +109,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 control-panel and compute-installation candidate P0.6](docs/hr-v0-control-panel-p0.6.md)
 - [Interactive compute installation guide](release/hr-v0/compute-installation-p0.1/index.html)
 - [E2 control-only hardware slice P0.2](electrical/e2/hr-v0-e2-hardware-p0.2/HR-V0_e2-hardware-guide.html)
-- [Native KiCad DXL-STAR-P0.1 injection-board candidate](electrical/kicad/hr-v0-dxl-star/README.md)
+- [Native KiCad DXL-STAR-P0.2 carrier-aware candidate](electrical/kicad/hr-v0-dxl-star-p0.2-carrier-candidate/README.md)
 - [HR-V0 DYNAMIXEL star-injection evidence basis](docs/hr-v0-dxl-star-injection-p0.1.md)
 - [HR-V0 DYNAMIXEL star manufacturing review package P0.1](docs/hr-v0-dxl-star-manufacturing-p0.1.md)
 - [Interactive DYNAMIXEL star manufacturing review guide](release/hr-v0/dxl-star-manufacturing-p0.1/index.html)

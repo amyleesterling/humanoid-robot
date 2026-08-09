@@ -89,8 +89,8 @@ def main() -> int:
     bom035 = system_bom.get("BOM-035", {})
     bom051 = system_bom.get("BOM-051", {})
     need(bom035.get("baseline_status") == "integrated_candidate" and bom035.get("quantity") == "1", "BOM-035 is not integrated with parent-controlled quantity")
-    need("Integrated in BOM-051" in bom035.get("manufacturer_part_number", "") and "no separate purchase" in bom035.get("selection_basis", "").lower(), "BOM-035 integration boundary missing")
-    need(bom051.get("baseline_status") == "exact_candidate_hold" and "HR-V0-DXL-STAR-MFG-P0.1" in bom051.get("manufacturer_part_number", ""), "BOM-051 parent hold changed")
+    need("Integrated in BOM-051" in bom035.get("manufacturer_part_number", "") and "no separate item" in bom035.get("manufacturer_part_number", "").lower(), "BOM-035 integration boundary missing")
+    need(bom051.get("baseline_status") == "exact_candidate_hold" and "DXL-STAR-P0.2-CARRIER-CANDIDATE" in bom051.get("manufacturer_part_number", "") and "SELECTION REQUIRED" in bom051.get("manufacturer_part_number", ""), "BOM-051 current parent hold changed")
     closure = {row["item_id"]: row for row in read_csv(ROOT / "bom/hr-v0-bom-closure.csv")}
     need(closure.get("BOM-035", {}).get("closure_class") == "integrated_no_separate_purchase", "BOM-035 closure class mismatch")
     need(closure.get("BOM-035", {}).get("allowed_action") == "INTEGRATED NO SEPARATE PURCHASE", "BOM-035 allowed action mismatch")

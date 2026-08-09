@@ -92,7 +92,7 @@ def main() -> int:
     electrical_product = next(
         (item for item in release.get("current_products", []) if item.get("domain") == "electrical"), {}
     )
-    need("HR-V0-WD-CAM-P0.1" in electrical_product.get("supporting_identifiers", []), "release candidate omits current CAM review identifier")
+    need("HR-V0-WD-CAM-P0.1-P1.14-HISTORICAL-REVIEW" in electrical_product.get("supporting_identifiers", []), "release candidate omits the P1.14 historical CAM-review boundary")
     gates = {row["gate_id"]: row for row in read_csv(ROOT / "requirements" / "hr-v0-energization-gates.csv")}
     eg004 = gates.get("EG-004", {})
     need(

@@ -39,7 +39,7 @@ def main() -> None:
     doc = (ROOT / "docs" / "hr-v0-panel-rail-duct-p0.1.md").read_text(encoding="utf-8")
     guide = (ROOT / "release" / "hr-v0" / "panel-rail-duct-p0.1" / "index.html").read_text(encoding="utf-8")
 
-    require(len(bom) == 86, "system BOM must contain 86 groups")
+    require(len(bom) >= 86, "system BOM must retain all 86 groups controlled at R123")
     require(len(panel_bom) == 34, "P0.6 panel BOM must remain 34 rows")
     require(len(cut_plan) == 7, "cut plan must contain seven planning segments")
     require(len(holds) == 12, "rail/duct package must retain 12 holds")

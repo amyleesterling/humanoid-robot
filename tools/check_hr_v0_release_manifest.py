@@ -62,7 +62,7 @@ def main() -> None:
         if isinstance(item, dict)
     }
     required_identifiers = {
-        "Project Button Electrical V3-P1.14",
+        "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE",
         "HR-V0-MECH-P0.6",
         "HR-V0-FW-P0.4",
         "HR-V0-FSA-P0.1",
@@ -76,25 +76,29 @@ def main() -> None:
     if missing_identifiers:
         errors.append(f"metadata missing current product identifiers: {sorted(missing_identifiers)}")
     electrical_product = next(
-        (item for item in products if isinstance(item, dict) and item.get("identifier") == "Project Button Electrical V3-P1.14"),
+        (item for item in products if isinstance(item, dict) and item.get("identifier") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE"),
         {},
     )
     if electrical_product.get("supporting_identifiers") != [
-        "PCB-P0.9",
+        "PCB-P0.9-P1.14-COMPATIBILITY-HOLD",
         "HR-V0-WD-IC-META-P0.1",
         "HR-V0-WD-LAND-P0.1",
         "HR-V0-WD-MOUNT-IF-P0.1",
         "HR-V0-WD-PCBA-RFI-P0.1",
         "HR-V0-WD-PCBA-DATA-P0.2",
         "HR-V0-WD-BOM-BIND-P0.1",
-        "HR-V0-WD-CAM-P0.1",
-        "DXL-STAR-P0.1",
-        "HR-V0-DXL-STAR-MFG-P0.1",
+        "HR-V0-WD-CAM-P0.1-P1.14-HISTORICAL-REVIEW",
+        "DXL-STAR-P0.2-CARRIER-CANDIDATE",
         "HR-V0-DXL-INJECT-BIND-P0.1",
         "HR-V0-DXL-HARNESS-ALLOC-P0.1",
         "HR-V0-DXL-CURRENT-ENV-P0.1",
         "HR-V0-DXL-PROT-EVAL-P0.1",
-        "HR-V0-DXL-PROT-CARRIER-P0.1",
+        "HR-V0-DXL-PROT-CARRIER-P0.3",
+        "HR-V0-DXL-PROT-DFM-P0.1",
+        "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1",
+        "HR-V0-DXL-CARRIER-INTEGRATION-P0.1",
+        "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1",
+        "HR-V0-CONFIG-REC-P0.1",
         "HR-V0-CP-P0.6",
         "HR-V0-COMPUTE-INSTALL-P0.1",
         "HR-V0-U2D2-USB-P0.1",
@@ -107,12 +111,12 @@ def main() -> None:
         "HR-V0-COMPUTE-SUBASM-P0.1",
         "HR-V0-SD-P0.2",
         "HR-V0-24V-IF-P0.2",
-        "HR-V0-E2-HW-P0.3",
+        "HR-V0-E2-HW-P0.3-P1.14-COMPATIBILITY-HOLD",
         "HR-V0-COMPUTE-IF-P0.1",
         "HR-V0-GRIP-ELEC-P0.1",
         "HR-V0-ACT-AC-CORD-P0.1",
-    ] or electrical_product.get("release_state") != "correction_candidate_not_released":
-        errors.append("Electrical V3-P1.14 supporting identifiers or release state changed")
+    ] or electrical_product.get("release_state") != "carrier_integrated_configuration_candidate_not_released_current_cam_and_physical_evidence_absent":
+        errors.append("Electrical V3-P1.15 supporting identifiers or release state changed")
     safety_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FSA-P0.1"),
         {},
@@ -201,7 +205,7 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BOM-P0.1"),
         {},
     )
-    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.1", "HR-V0-WD-BOM-BIND-P0.1", "HR-V0-DXL-STAR-MFG-P0.1", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1"] or bom_product.get("release_state") != (
+    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.1", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1", "HR-V0-CONFIG-REC-P0.1"] or bom_product.get("release_state") != (
         "closure_register_candidate_no_complete_machine_procurement_release"
     ):
         errors.append("HR-V0-BOM-P0.1 supporting identifiers or fail-closed release state changed")
@@ -241,7 +245,7 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BUILD-TRAVELER-P0.1"),
         {},
     )
-    if assembly_product.get("supporting_identifiers") != ["HR-V0-MECH-P0.6", "Project Button Electrical V3-P1.14", "HR-V0-E2-SEQ-P0.1", "HR-V0-GOV-P0.3"] or assembly_product.get("release_state") != (
+    if assembly_product.get("supporting_identifiers") != ["HR-V0-MECH-P0.6", "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "HR-V0-E2-SEQ-P0.1", "HR-V0-GOV-P0.3", "HR-V0-CONFIG-REC-P0.1"] or assembly_product.get("release_state") != (
         "integrated_unpowered_sequence_candidate_all_steps_not_authorized_not_executed_connection_and_energization_prohibited_not_approved"
     ):
         errors.append("HR-V0-BUILD-TRAVELER-P0.1 supporting identifiers or fail-closed state changed")

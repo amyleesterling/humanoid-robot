@@ -54,7 +54,7 @@ def main() -> None:
     require(gates.get("EG-003", {}).get("status") == "partial" and gates.get("EG-010", {}).get("status") == "partial", "compute work improperly closed an energization gate")
     require("hr-v0-compute-selection-p0.1.csv" in gates["EG-003"]["evidence_location"] and "hr-v0-compute-power-selection-p0.1.csv" in gates["EG-010"]["evidence_location"], "gate evidence is not synchronized")
     electrical = next((item for item in metadata.get("current_products", []) if item.get("domain") == "electrical"), {})
-    require(electrical.get("identifier") == "Project Button Electrical V3-P1.14" and "HR-V0-COMPUTE-SEL-P0.1" in electrical.get("supporting_identifiers", []), "release metadata is not synchronized")
+    require(electrical.get("identifier") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE" and "HR-V0-COMPUTE-SEL-P0.1" in electrical.get("supporting_identifiers", []), "release metadata is not synchronized")
     combined = doc + guide + "\n".join(str(value) for row in sources + selection + interfaces + receiving for value in row.values())
     for token in ("SC1112", "SC1158", "zero functional-safety credit", "SELECTION REQUIRED", "NOT APPROVED", "NOT_EXECUTED", "NOT_AUTHORIZED"):
         require(token.lower() in combined.lower(), f"required fail-closed token missing: {token}")

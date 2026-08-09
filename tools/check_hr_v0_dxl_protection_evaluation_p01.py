@@ -134,7 +134,7 @@ def main() -> int:
     need("TPS259461LRPWR" not in system_bom and "Pololu item 3771" not in system_bom, "evaluation candidate entered robot BOM")
     release_candidate = json.loads((ROOT / "release" / "hr-v0" / "release-candidate.json").read_text(encoding="utf-8"))
     electrical_product = next((row for row in release_candidate.get("current_products", []) if row.get("domain") == "electrical"), {})
-    need(electrical_product.get("identifier") == "Project Button Electrical V3-P1.14", "main electrical revision changed")
+    need(electrical_product.get("identifier") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "main electrical revision changed")
 
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in (

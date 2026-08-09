@@ -92,15 +92,17 @@ def main() -> int:
     release = json.loads((ROOT / "release" / "hr-v0" / "release-candidate.json").read_text(encoding="utf-8"))
     electrical_product = next((item for item in release.get("current_products", []) if item.get("domain") == "electrical"), {})
     bom_product = next((item for item in release.get("current_products", []) if item.get("domain") == "bill_of_materials"), {})
-    need("HR-V0-DXL-STAR-MFG-P0.1" in electrical_product.get("supporting_identifiers", []), "release candidate electrical product omits package")
-    need("HR-V0-DXL-STAR-MFG-P0.1" in bom_product.get("supporting_identifiers", []), "release candidate BOM product omits package")
+    need("HR-V0-DXL-STAR-MFG-P0.1" not in electrical_product.get("supporting_identifiers", []), "historical P0.1 CAM remains in current electrical support")
+    need("HR-V0-DXL-STAR-MFG-P0.1" not in bom_product.get("supporting_identifiers", []), "historical P0.1 CAM remains in current BOM support")
+    need(any("HR-V0-DXL-STAR-MFG-P0.1" in item.get("identifier", "") and "must not be used" in item.get("disposition", "") for item in release.get("historical_or_out_of_scope_products", [])), "historical P0.1 CAM quarantine is missing")
     bom051 = next((row for row in read_csv(ROOT / "bom" / "bom.csv") if row.get("item_id") == "BOM-051"), {})
     need(
         bom051.get("baseline_status") == "exact_candidate_hold"
-        and "HR-V0-DXL-STAR-MFG-P0.1" in bom051.get("manufacturer_part_number", "")
-        and "not supplier-released" in bom051.get("selection_basis", "")
-        and "3 A EH versus 4.4 A XM540 stall-current conflict" in bom051.get("selection_basis", ""),
-        "BOM-051 does not retain exact hold and current package/current-conflict boundary",
+        and "DXL-STAR-P0.2-CARRIER-CANDIDATE" in bom051.get("manufacturer_part_number", "")
+        and "current manufacturing data SELECTION REQUIRED" in bom051.get("manufacturer_part_number", "")
+        and "P0.1 CAM package is historical" in bom051.get("selection_basis", "")
+        and "connector/current" in bom051.get("selection_basis", ""),
+        "BOM-051 does not retain current P0.2 hold and historical P0.1 boundary",
     )
     gates = {row["gate_id"]: row for row in read_csv(ROOT / "requirements" / "hr-v0-energization-gates.csv")}
     need(

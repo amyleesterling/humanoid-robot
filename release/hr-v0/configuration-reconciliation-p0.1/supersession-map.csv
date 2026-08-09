@@ -1,0 +1,6 @@
+record_id,prior_identifier,current_or_required_successor,disposition,use_authorized,warning
+SUP-01,Project Button Electrical V3-P1.14,Project Button Electrical V3-P1.15-CARRIER-CANDIDATE,historical/compatibility source; does not contain the inserted carrier interfaces,NO,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
+SUP-02,DXL-STAR-P0.1,DXL-STAR-P0.2-CARRIER-CANDIDATE,historical topology source; terminal names differ at the limited outputs,NO,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
+SUP-03,HR-V0-DXL-STAR-MFG-P0.1,SELECTION REQUIRED,historical P0.1 CAM; prohibited for fabrication of P0.2,NO,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
+SUP-04,PCB-P0.9 / HR-V0-WD-CAM-P0.1,SELECTION REQUIRED,P1.14-compatible watchdog-board data retained for review; P1.15 parity and supplier release remain open,NO,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
+SUP-05,HR-V0-E2-HW-P0.3,SELECTION REQUIRED,P1.14-compatible control-only slice; P1.15 parity must be established before any E2 release review,NO,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
