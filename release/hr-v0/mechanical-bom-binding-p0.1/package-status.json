@@ -1,0 +1,27 @@
+{
+  "identifier": "HR-V0-MECH-BOM-BIND-P0.1",
+  "date": "2026-08-09",
+  "round": "R148",
+  "controlled_architecture": "HR-V0-ARM-ARCH-P0.7",
+  "bom_item_id": "BOM-027",
+  "part_count": 5,
+  "total_candidate_quantity": 5,
+  "geometry_identity_count": 15,
+  "inherited_open_hold_count": 15,
+  "source_hashes": {
+    "release/hr-v0/mechanical-dfm-data-p0.1/part-register.csv": "76756aad9fc1c59eb231e269014dc936b8ddd982d30fa7b2997048bb7eb85616",
+    "release/hr-v0/mechanical-dfm-data-p0.1/geometry-file-register.csv": "d3ff37cb7dad57bc7a0c13135f0936debf57973563885a36597133d730c2d877",
+    "release/hr-v0/mechanical-dfm-data-p0.1/hold-register.csv": "0d43e7d5823afa5cb4d63dac738c549291897145a257a554298e2b008b48b4d3",
+    "bom/bom.csv": "c836e6ace8600eebfb10a0e3bdcb75f4952785774636d6c4dad7494396e623be",
+    "bom/hr-v0-mechanical-custom-part-binding.csv": "adac8656ce93e1c5f1806b1cf7c2d90d9de598b95b420d1ef2a6dcc49d3fcb37"
+  },
+  "provider_contacted": false,
+  "upload_authorized": false,
+  "quotation_authorized": false,
+  "purchase_authorized": false,
+  "fabrication_authorized": false,
+  "assembly_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR QUOTATION, FABRICATION, ASSEMBLY, MOTION, OR ENERGIZATION"
+}

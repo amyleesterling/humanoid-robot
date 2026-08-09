@@ -160,6 +160,7 @@ def main() -> None:
         "HR-V0-FAB-SRC-P0.5",
         "HR-V0-BOSTON-FAB-ROUTE-P0.2",
         "HR-V0-MECH-DFM-DATA-P0.1",
+        "HR-V0-MECH-BOM-BIND-P0.1",
         "HR-V0-MECH-PARITY-P0.1",
         "HR-V0-MECH-R0.1-PRELIMINARY-SUPERSEDED-ARM",
         "HR-V0-FAB-RFI-P0.2-WITHDRAWN",
@@ -191,7 +192,7 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BOM-P0.1"),
         {},
     )
-    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1"] or bom_product.get("release_state") != (
+    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.1"] or bom_product.get("release_state") != (
         "closure_register_candidate_no_complete_machine_procurement_release"
     ):
         errors.append("HR-V0-BOM-P0.1 supporting identifiers or fail-closed release state changed")
