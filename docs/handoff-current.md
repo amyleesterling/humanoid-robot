@@ -157,9 +157,9 @@ ERC validates modeled connectivity and annotation only. It does not establish ph
 
 ## Review history and independent findings
 
-One hundred thirty-three review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R133 are controlled project responses, not independent approvals. No round authorizes purchase, quotation, fabrication, powered testing, motion, connection or energization.
+One hundred thirty-four review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R134 are controlled project responses, not independent approvals. No round authorizes purchase, quotation, fabrication, powered testing, motion, connection or energization.
 
-R80-R132 are historical project corrections. R133 is the current project-owned correction pass. None is an additional independent review or approval. Sol's resupplied verdict remains R12 and is not double-counted.
+R80-R133 are historical project corrections. R134 is the current project-owned correction pass. None is an additional independent review or approval. Sol's resupplied verdict remains R12 and is not double-counted.
 
 ## Principal unresolved engineering blockers
 
@@ -246,6 +246,8 @@ Each review must separately assess:
 No reviewer should interpret clean ERC, traceability, simulation, website publication, or a correction disposition as physical verification or approval.
 
 ## Next controlled action
+
+R134 makes the current five-part P0.7 metal definition inspectable without creating a supplier payload. Independently verify all fifteen hashes, twenty-six source controls, thirty blank FAI operations, twelve unsent DFM questions and fifteen open holds in `HR-V0-MECH-DFM-DATA-P0.1`. Obtain qualified mechanical disposition of the exact material, datum, tolerance, inspection, stop-load and received-interface basis before any provider contact. P1.1/X430 comparison evidence exists but remains nonselected; do not use it to release P0.7 or substitute a new architecture. No file upload, quotation, purchase, first article, fabrication, assembly, motion or energization is authorized.
 
 R133 makes the immediate watchdog-PCBA data action exact. Independently reconcile the sixteen BOM lines and all 42 placement/orientation rows to PCB-P0.7 and R132. Then have a qualified assembler answer the R132 capability/DFM questions and define its origin, axes, rotation, side, centroid and feeder conventions without treating the internal placement register as machine XYRS. Select no provider and upload no CAM until the project owner separately authorizes contact and the applicable inquiry holds close. Require the assembler to return a transformed placement file and reference-level redlines for written disposition. In parallel, close the complete standoff/screw/washer/panel stack from received measurements and qualified mechanical/electrical review. No current CAM, fabrication, assembly, connection or energization is authorized.
 

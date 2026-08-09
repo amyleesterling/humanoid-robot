@@ -12,7 +12,7 @@ Sourcing basis: `HR-V0-FAB-SRC-P0.5`
 
 ## Decision
 
-**R91 architecture hold:** do not initiate the capability inquiry or quote request yet. `HR-V0-ELBOW-TRADE-P0.1` shows that P0.7 has only 57.242 g of incomplete mass headroom before mandatory missing items and requires an exact-coordinate X430/P0.8 comparison before custom metal is dispositioned. This P0.2 supplier route remains valid process research, but it is not the next authorized action.
+**R91 architecture hold, reconciled through R134:** do not initiate the capability inquiry or quote request yet. `HR-V0-ELBOW-TRADE-P0.1` showed that P0.7 had only 57.242 g of incomplete mass headroom before mandatory missing items. R92-R98 subsequently produced the exact-coordinate X430 comparison through the nonselected P1.1 geometry, moving-load and duty-evidence route. That comparison does not close complete mass/COM/inertia, continuous duty, tolerance, stop, received-interface or physical-proof evidence and does not select X430. P0.7 remains the controlled architecture. This P0.2 supplier route remains valid process research, while `HR-V0-MECH-DFM-DATA-P0.1` is the current internal qualified-review dataset; neither authorizes provider contact, upload or quotation.
 
 The current five custom aluminum parts are plausible conventional CNC-mill work, but no supplier has accepted the drawings and no fabrication release exists. Use one high-requirement 3-axis CNC supplier for C01/C04/C05/C06/C07 after qualified mechanical review. Xometry is the primary capability-inquiry candidate and Protolabs is the alternate. This is a route ranking, not a supplier selection.
 
