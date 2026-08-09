@@ -70,6 +70,7 @@ def main() -> None:
         "HR-V0-E2-SEQ-P0.1",
         "HR-V0-GOV-P0.3",
         "HR-V0-REQ-ATOMIC-P0.2",
+        "HR-V0-BUILD-TRAVELER-P0.1",
     }
     missing_identifiers = required_identifiers - identifiers
     if missing_identifiers:
@@ -225,6 +226,14 @@ def main() -> None:
         "internally_audited_atomic_child_candidate_all_draft_unexecuted_unapproved_independent_review_required_not_approved"
     ):
         errors.append("HR-V0-REQ-ATOMIC-P0.2 supporting identifiers or fail-closed state changed")
+    assembly_product = next(
+        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BUILD-TRAVELER-P0.1"),
+        {},
+    )
+    if assembly_product.get("supporting_identifiers") != ["HR-V0-MECH-P0.6", "Project Button Electrical V3-P1.14", "HR-V0-E2-SEQ-P0.1", "HR-V0-GOV-P0.3"] or assembly_product.get("release_state") != (
+        "integrated_unpowered_sequence_candidate_all_steps_not_authorized_not_executed_connection_and_energization_prohibited_not_approved"
+    ):
+        errors.append("HR-V0-BUILD-TRAVELER-P0.1 supporting identifiers or fail-closed state changed")
 
     if not MANIFEST.is_file():
         errors.append(f"manifest missing: {MANIFEST_REL}")

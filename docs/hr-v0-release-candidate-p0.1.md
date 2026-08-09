@@ -29,6 +29,7 @@ The manifest hashes Git's canonical staged blobs, not platform-dependent checkou
 | Functional safety | `HR-V0-FSA-P0.1` | allocation candidate; `DF-01` has zero safety credit; no PLr/SIL assigned |
 | E2 commissioning | `HR-V0-E2-SEQ-P0.1` | 15-step control-only procedure candidate; actuator source absent; five forms not executed; authorization `NOT AUTHORIZED` |
 | Governance | `HR-V0-GOV-P0.3` / `HR-V0-REQ-ATOMIC-P0.2` | complete source-bound coverage of 81 requirements, 40 risks and 30 gates; 458 draft child candidates plus blank acceptance rows cover all 66 compound parents after 62 internal separations; independent atomicity/coverage acceptance, named people, qualifications, history, executed evidence, residual-risk decisions, signatures and approvals remain open |
+| Assembly sequence | `HR-V0-BUILD-TRAVELER-P0.1` | integrated 14-phase / 85-step unpowered build-order candidate with 21 through-E2 gates and 14 holds mapped; zero steps authorized/executed; BT-P13 connection and powered work prohibited |
 
 Electrical V2.1 remains preserved as a reviewed historical baseline. It does not override V3's HR-V0 correction intent. HR-30A/B/C/D/W remain later program stages and are not released by this HR-V0 candidate.
 

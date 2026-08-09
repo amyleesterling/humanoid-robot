@@ -473,6 +473,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R143 independent review request](docs/reviews/2026-08-09-r143-independent-review-request.md)
 - [R143 validation record](docs/reviews/2026-08-09-r143-validation-record.md)
 - [Sol R12 findings rechecked after R143](docs/reviews/2026-08-09-sol-r12-post-r143-status.md)
+- [R144 integrated unpowered build traveler](docs/hr-v0-build-traveler-p0.1.md)
+- [R144 interactive build guide](release/hr-v0/build-traveler-p0.1/index.html)
+- [R144 independent review request](docs/reviews/2026-08-09-r144-independent-review-request.md)
+- [R144 validation record](docs/reviews/2026-08-09-r144-validation-record.md)
+- [Sol R12 findings rechecked after R144](docs/reviews/2026-08-09-sol-r12-post-r144-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -542,7 +547,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred forty-three review/control rounds are complete: R01-R143. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R143 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R143 separates 62 multi-duty records missed by R142, producing 458 draft child candidates plus 458 blank child-specific acceptance rows; independent acceptance, every named person, executed evidence, approval, residual-risk decision and historical row-level change trail remain open.
+One hundred forty-four review/control rounds are complete: R01-R144. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R144 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R144 adds one integrated 14-phase, 85-step unpowered build sequence with all 21 through-E2 gates and 14 hold points mapped; every step remains unauthorized/unexecuted and connection/power remains prohibited.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -689,6 +694,7 @@ One hundred forty-three review/control rounds are complete: R01-R143. R11 Fable 
 | R141 | Requirement/risk/gate governance-control correction | Issued `HR-V0-GOV-P0.1`; covers 151 source-bound records, identifies candidate owner/approver roles, catalogs 66 compound requirements and keeps nine governance holds open. No person, evidence, signature, approval, residual-risk decision, atomic child register or energization authority is invented. |
 | R142 | Atomic-requirement and governance P0.2 correction | Issued `HR-V0-REQ-ATOMIC-P0.1` with 396 stable draft children covering all 66 compound parents and `HR-V0-GOV-P0.2` binding the child register. Eight atomic and nine governance holds remain open; zero named people, evidence, approvals or work authority are represented. |
 | R143 | Second-method atomicity and acceptance-schema correction | Issued `HR-V0-REQ-ATOMIC-P0.2` with 458 draft children after separating 62 R142 multi-duty records, 458 blank acceptance rows and `HR-V0-GOV-P0.3`. Internal screening is not independent acceptance; zero people, evidence, approvals or work authority are represented. |
+| R144 | Integrated unpowered build-traveler correction | Issued `HR-V0-BUILD-TRAVELER-P0.1`: 14 dependency-ordered phases, 85 concrete steps, 21 through-E2 gate mappings and 14 hold points. Zero steps are authorized or executed; BT-P13 prohibits connection and energization. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

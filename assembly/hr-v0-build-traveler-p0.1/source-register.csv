@@ -1,0 +1,14 @@
+source_id,path,sha256,state
+release_candidate,release/hr-v0/release-candidate.json,33f83ff9fdd16f3789c62018f45ee3d621cd85ae31ff2811bb3b9f8f99b6ce95,CONTROLLED INPUT SNAPSHOT
+release_manifest,release/hr-v0/HR-V0-RC-P0.1-file-manifest.csv,87269f6c8a9db62db43142287883f1e8073a174fff5434efe3d368295adafd10,CONTROLLED INPUT SNAPSHOT
+energization_gates,requirements/hr-v0-energization-gates.csv,faba0c88ac147282a424a6df54d40627bfda100d4e8120e5f12e386525f22a4b,CONTROLLED INPUT SNAPSHOT
+bom_closure,bom/hr-v0-bom-closure.csv,be72127deb5f260760dbc4de04b9d196098f9e1513a5dc9df0ca50b17d5e6b68,CONTROLLED INPUT SNAPSHOT
+mechanical_release,docs/hr-v0-mechanical-release-p0.6.md,ed680efa791b5fb8f0b5a8a4dcf438e15ce431e98067ca14dd9153fbf105dbde,CONTROLLED INPUT SNAPSHOT
+mechanical_dfm,docs/hr-v0-mechanical-dfm-data-p0.1.md,fece3ef124fb19a04f6a7f02cbd40d65ba1e4ca6f52682d9422ab90bf9c4a735,CONTROLLED INPUT SNAPSHOT
+control_panel,docs/hr-v0-control-panel-p0.6.md,850423ac0c215d60b98240c55a4fb4339dcfa84008dabb740ac52f32e2806678,CONTROLLED INPUT SNAPSHOT
+joint_metrology,docs/hr-v0-joint-stack-metrology-p0.1.md,7b036260874a2f223c0274e56c25bef918138cd96c50dea55b67f6a4f6d818a7,CONTROLLED INPUT SNAPSHOT
+guard,docs/hr-v0-fixed-guard-receiver-p0.3.md,3bd94322cf0f27e2feb15f91bc73fbca4847f4c9e400cbf1beebb18acdff3de2,CONTROLLED INPUT SNAPSHOT
+receiver,docs/hr-v0-passive-arm-receiver-detail-p0.2.md,cafe52b8c38ca2dda4ecded7e78965a31c912d3014f831749f107e01b85c74bb,CONTROLLED INPUT SNAPSHOT
+electrical,docs/hr-v0-electrical-v3-candidate.md,2eb199a0bbcd4d3bd3cde51801a3abca422ec01f12f6cb5a170a93dc88ab52ef,CONTROLLED INPUT SNAPSHOT
+e2_sequence,docs/hr-v0-e2-control-only-energization-p0.1.md,d96db2b40c1edadac16e6709d89367c58baf2a3994667199b7322a2284ec1f53,CONTROLLED INPUT SNAPSHOT
+procedure_registry,tests/procedures/procedure-registry.csv,3e483e1d21e0f743d71ce8447b9d3d511ac8041ceab5b0b55b035844d5300e6a,CONTROLLED INPUT SNAPSHOT
