@@ -80,14 +80,16 @@ def main() -> None:
         {},
     )
     if electrical_product.get("supporting_identifiers") != [
-        "PCB-P0.9-P1.14-COMPATIBILITY-HOLD",
+        "PCB-P0.9-P1.15-PARITY-CONTROLLED",
         "HR-V0-WD-IC-META-P0.1",
         "HR-V0-WD-LAND-P0.1",
         "HR-V0-WD-MOUNT-IF-P0.1",
         "HR-V0-WD-PCBA-RFI-P0.1",
         "HR-V0-WD-PCBA-DATA-P0.2",
         "HR-V0-WD-BOM-BIND-P0.1",
-        "HR-V0-WD-CAM-P0.1-P1.14-HISTORICAL-REVIEW",
+        "HR-V0-WD-CAM-P0.1",
+        "HR-V0-E2-P115-PARITY-P0.1",
+        "HR-V0-E2-HW-P0.4",
         "DXL-STAR-P0.2-CARRIER-CANDIDATE",
         "HR-V0-DXL-STAR-MFG-P0.2",
         "HR-V0-DXL-INJECT-BIND-P0.1",
@@ -112,11 +114,10 @@ def main() -> None:
         "HR-V0-COMPUTE-SUBASM-P0.1",
         "HR-V0-SD-P0.2",
         "HR-V0-24V-IF-P0.2",
-        "HR-V0-E2-HW-P0.3-P1.14-COMPATIBILITY-HOLD",
         "HR-V0-COMPUTE-IF-P0.1",
         "HR-V0-GRIP-ELEC-P0.1",
         "HR-V0-ACT-AC-CORD-P0.1",
-    ] or electrical_product.get("release_state") != "carrier_integrated_configuration_candidate_current_cam_review_exists_not_supplier_released_physical_evidence_absent":
+    ] or electrical_product.get("release_state") != "carrier_integrated_configuration_candidate_p115_watchdog_e2_digital_parity_controlled_current_cam_review_exists_not_supplier_released_physical_evidence_absent":
         errors.append("Electrical V3-P1.15 supporting identifiers or release state changed")
     safety_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FSA-P0.1"),
@@ -215,7 +216,8 @@ def main() -> None:
         {},
     )
     if commissioning_product.get("supporting_identifiers") != [
-        "HR-V0-E2-HW-P0.3",
+        "HR-V0-E2-HW-P0.4",
+        "HR-V0-E2-P115-PARITY-P0.1",
         "AUDIT-ELEC-002",
         "INSPECT-ELEC-010",
         "TEST-ELEC-008",

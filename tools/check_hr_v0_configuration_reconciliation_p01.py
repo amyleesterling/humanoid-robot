@@ -33,9 +33,9 @@ def main() -> int:
         need(not any(p.suffix.lower() in {".zip", ".pdf", ".7z", ".rar"} for p in directory.iterdir()), "archives/PDFs prohibited")
 
     status = json.loads((OUT / "package-status.json").read_text(encoding="utf-8"))
-    need(status.get("identifier") == "HR-V0-CONFIG-REC-P0.1" and status.get("round") == "R163+R164-SYNCHRONIZED", "identity changed")
+    need(status.get("identifier") == "HR-V0-CONFIG-REC-P0.1" and status.get("round") == "R163+R164+R165-SYNCHRONIZED", "identity changed")
     need(status.get("current_electrical_identifier") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "current electrical identity changed")
-    for key, value in {"system_bom_groups":91,"current_records":9,"supersession_records":5,"bom_integration_records":7,"gate_records":5,"open_holds":10,"acceptance_rows":8}.items():
+    for key, value in {"system_bom_groups":91,"current_records":11,"supersession_records":5,"bom_integration_records":7,"gate_records":5,"open_holds":10,"acceptance_rows":8}.items():
         need(status.get(key) == value, f"status count changed: {key}")
     need(status.get("current_p02_cam_exists") is True, "current P0.2 CAM review must be recorded")
     for key in ("all_acceptance_executed", "physical_article_exists", "physical_test_executed", "qualified_review_complete", "procurement_authorized", "fabrication_authorized", "assembly_authorized", "connection_authorized", "motion_authorized", "energization_authorized", "safety_credit"):
@@ -43,16 +43,16 @@ def main() -> int:
     need(status.get("warning") == WARNING, "warning changed")
 
     current = csv_rows(OUT / "current-configuration-map.csv")
-    need(len(current) == 9, "current map count changed")
+    need(len(current) == 11, "current map count changed")
     identifiers = {r["identifier"] for r in current}
-    for value in ("Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1", "HR-V0-BOM-P0.1"):
+    for value in ("Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1", "HR-V0-E2-P115-PARITY-P0.1", "HR-V0-E2-HW-P0.4", "HR-V0-BOM-P0.1"):
         need(value in identifiers, f"current identifier missing: {value}")
     need(all(r["warning"] == WARNING for r in current), "current map warning changed")
 
     release = json.loads((ROOT / "release/hr-v0/release-candidate.json").read_text(encoding="utf-8"))
     electrical = next(r for r in release["current_products"] if r["domain"] == "electrical")
     need(electrical["identifier"] == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "release candidate is stale")
-    for value in ("DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1", "HR-V0-CONFIG-REC-P0.1"):
+    for value in ("DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1", "HR-V0-E2-P115-PARITY-P0.1", "HR-V0-E2-HW-P0.4", "HR-V0-CONFIG-REC-P0.1"):
         need(value in electrical["supporting_identifiers"], f"release support missing: {value}")
 
     bom = {r["item_id"]: r for r in csv_rows(ROOT / "bom/bom.csv")}
@@ -92,7 +92,7 @@ def main() -> int:
         source = ROOT / row["source_path"]
         need(source.exists() and digest(source) == row["sha256"], f"source hash mismatch: {row['source_path']}")
     page = (OUT / "index.html").read_text(encoding="utf-8")
-    for token in ("font:clamp(16px", "One carrier-integrated candidate", "V3-P1.15", "91 groups", "Do not drill", WARNING):
+    for token in ("font:clamp(16px", "One carrier-integrated candidate", "V3-P1.15", "91 groups", "E2 P0.4 is current", "Do not drill", WARNING):
         need(token.lower() in page.lower(), f"guide token missing: {token}")
     for name in common - {"file-manifest.csv"}:
         need((ENG / name).read_bytes() == (OUT / name).read_bytes(), f"engineering/release mismatch: {name}")

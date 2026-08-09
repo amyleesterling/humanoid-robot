@@ -92,7 +92,19 @@ def main() -> int:
     electrical_product = next(
         (item for item in release.get("current_products", []) if item.get("domain") == "electrical"), {}
     )
-    need("HR-V0-WD-CAM-P0.1-P1.14-HISTORICAL-REVIEW" in electrical_product.get("supporting_identifiers", []), "release candidate omits the P1.14 historical CAM-review boundary")
+    need(
+        "HR-V0-WD-CAM-P0.1" in electrical_product.get("supporting_identifiers", []),
+        "release candidate omits the controlled watchdog CAM-review package",
+    )
+    historical_products = release.get("historical_or_out_of_scope_products", [])
+    need(
+        any(
+            "V3-P1.14" in item.get("identifier", "")
+            and "historical review evidence" in item.get("disposition", "")
+            for item in historical_products
+        ),
+        "release candidate omits the P1.14 historical source boundary",
+    )
     gates = {row["gate_id"]: row for row in read_csv(ROOT / "requirements" / "hr-v0-energization-gates.csv")}
     eg004 = gates.get("EG-004", {})
     need(
