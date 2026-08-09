@@ -1,0 +1,988 @@
+(export
+	(version "E")
+	(design
+		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\hr-v0-dxl-star-p0.2-carrier-candidate\\hr-v0-dxl-star-p0.2-carrier-candidate.kicad_sch")
+		(date "2026-08-09T16:39:10")
+		(tool "Eeschema 10.0.5")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title "PROJECT BUTTON HR-V0 DYNAMIXEL STAR INJECTION BOARD index")
+				(company "Project Button")
+				(rev "DXL-STAR-P0.2-CARRIER-CANDIDATE")
+				(date "2026-08-08")
+				(source "hr-v0-dxl-star-p0.2-carrier-candidate.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "2")
+			(name "/01 Three-branch DYNAMIXEL TTL star injection/")
+			(tstamps "/e4b701e4-6b0f-5ddf-9ca0-274a481c3dca/")
+			(title_block
+				(title "PB HR-V0 DXL-STAR-P0.2-CARRIER-CANDIDATE - 01")
+				(company "Project Button")
+				(rev "DXL-STAR-P0.2-CARRIER-CANDIDATE")
+				(date "2026-08-08")
+				(source "01_star_injection.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "JA1")
+			(value "JST B3B-EH-A actuator J1 output")
+			(footprint "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical")
+			(datasheet "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+			(description "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - CABLE/LIMIT TEST REQUIRED")
+				(field
+					(name "Evidence") "ROBOTIS X-series connector table and JST EH page rechecked 2026-08-07; no permission to exceed published connector limits.")
+				(field
+					(name "Display") "JST B3B-EH-A actuator J1 output")
+				(field
+					(name "Footprint") "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical")
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+				(field
+					(name "Description") "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JA1")
+				(description "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - CABLE/LIMIT TEST REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "ROBOTIS X-series connector table and JST EH page rechecked 2026-08-07; no permission to exceed published connector limits.")
+			)
+			(property
+				(name "Display")
+				(value "JST B3B-EH-A actuator J1 output")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Three-branch DYNAMIXEL TTL star injection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_star_injection.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Three-branch DYNAMIXEL TTL star injection/")
+				(tstamps "/e4b701e4-6b0f-5ddf-9ca0-274a481c3dca/")
+			)
+			(tstamps "694565a0-3a4b-5808-9e81-86043d372c44")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JA2")
+			(value "JST B3B-EH-A actuator J2 output")
+			(footprint "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical")
+			(datasheet "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+			(description "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - CABLE/LIMIT TEST REQUIRED")
+				(field
+					(name "Evidence") "ROBOTIS X-series connector table and JST EH page rechecked 2026-08-07; no permission to exceed published connector limits.")
+				(field
+					(name "Display") "JST B3B-EH-A actuator J2 output")
+				(field
+					(name "Footprint") "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical")
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+				(field
+					(name "Description") "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JA2")
+				(description "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - CABLE/LIMIT TEST REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "ROBOTIS X-series connector table and JST EH page rechecked 2026-08-07; no permission to exceed published connector limits.")
+			)
+			(property
+				(name "Display")
+				(value "JST B3B-EH-A actuator J2 output")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Three-branch DYNAMIXEL TTL star injection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_star_injection.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Three-branch DYNAMIXEL TTL star injection/")
+				(tstamps "/e4b701e4-6b0f-5ddf-9ca0-274a481c3dca/")
+			)
+			(tstamps "a99623d2-d5b2-547e-af4c-521f59f0b3d6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JA3")
+			(value "JST B3B-EH-A actuator J3 output")
+			(footprint "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical")
+			(datasheet "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+			(description "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - CABLE/LIMIT TEST REQUIRED")
+				(field
+					(name "Evidence") "ROBOTIS X-series connector table and JST EH page rechecked 2026-08-07; no permission to exceed published connector limits.")
+				(field
+					(name "Display") "JST B3B-EH-A actuator J3 output")
+				(field
+					(name "Footprint") "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical")
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+				(field
+					(name "Description") "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JA3")
+				(description "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - CABLE/LIMIT TEST REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "ROBOTIS X-series connector table and JST EH page rechecked 2026-08-07; no permission to exceed published connector limits.")
+			)
+			(property
+				(name "Display")
+				(value "JST B3B-EH-A actuator J3 output")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Three-branch DYNAMIXEL TTL star injection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_star_injection.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Three-branch DYNAMIXEL TTL star injection/")
+				(tstamps "/e4b701e4-6b0f-5ddf-9ca0-274a481c3dca/")
+			)
+			(tstamps "d227b094-7c58-5656-82b6-50000fb3a1d2")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JC1")
+			(value "JST B3B-EH-A U2D2 data/reference input")
+			(footprint "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical")
+			(datasheet "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+			(description "Use EHR-3 housing with pin-2 cavity empty at both ends; exact wire, contacts, crimp tooling, length, strain relief and received continuity remain open. Pin 2 has no assigned PCB net or route.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - TWO-WIRE CABLE TEST REQUIRED")
+				(field
+					(name "Evidence") "ROBOTIS U2D2 and JST EH live pages rechecked 2026-08-07; exact header family/pins supported, harness application not released.")
+				(field
+					(name "Display") "JST B3B-EH-A U2D2 data/reference input")
+				(field
+					(name "Footprint") "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical")
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+				(field
+					(name "Description") "Use EHR-3 housing with pin-2 cavity empty at both ends; exact wire, contacts, crimp tooling, length, strain relief and received continuity remain open. Pin 2 has no assigned PCB net or route.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JC1")
+				(description "Use EHR-3 housing with pin-2 cavity empty at both ends; exact wire, contacts, crimp tooling, length, strain relief and received continuity remain open. Pin 2 has no assigned PCB net or route.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - TWO-WIRE CABLE TEST REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "ROBOTIS U2D2 and JST EH live pages rechecked 2026-08-07; exact header family/pins supported, harness application not released.")
+			)
+			(property
+				(name "Display")
+				(value "JST B3B-EH-A U2D2 data/reference input")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Three-branch DYNAMIXEL TTL star injection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_star_injection.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Three-branch DYNAMIXEL TTL star injection/")
+				(tstamps "/e4b701e4-6b0f-5ddf-9ca0-274a481c3dca/")
+			)
+			(tstamps "73905369-4e9a-59ed-956d-ab1dd7c5d1ef")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JP1")
+			(value "JST B2P-VH post-limiter branch 1 power input")
+			(footprint "Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(description "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - WIRE/THERMAL TEST REQUIRED")
+				(field
+					(name "Evidence") "JST VH English catalog current asset rechecked 2026-08-07; B2P-VH/VHR-2N/SVH-21T-P1.1 family evidence only.")
+				(field
+					(name "Display") "JST B2P-VH post-limiter branch 1 power input")
+				(field
+					(name "Footprint") "Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical")
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JP1")
+				(description "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - WIRE/THERMAL TEST REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "JST VH English catalog current asset rechecked 2026-08-07; B2P-VH/VHR-2N/SVH-21T-P1.1 family evidence only.")
+			)
+			(property
+				(name "Display")
+				(value "JST B2P-VH post-limiter branch 1 power input")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Three-branch DYNAMIXEL TTL star injection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_star_injection.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Three-branch DYNAMIXEL TTL star injection/")
+				(tstamps "/e4b701e4-6b0f-5ddf-9ca0-274a481c3dca/")
+			)
+			(tstamps "6d25ebfc-e60e-528f-8e2b-3a0f07de4feb")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JP2")
+			(value "JST B2P-VH post-limiter branch 2 power input")
+			(footprint "Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(description "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - WIRE/THERMAL TEST REQUIRED")
+				(field
+					(name "Evidence") "JST VH English catalog current asset rechecked 2026-08-07; B2P-VH/VHR-2N/SVH-21T-P1.1 family evidence only.")
+				(field
+					(name "Display") "JST B2P-VH post-limiter branch 2 power input")
+				(field
+					(name "Footprint") "Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical")
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JP2")
+				(description "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - WIRE/THERMAL TEST REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "JST VH English catalog current asset rechecked 2026-08-07; B2P-VH/VHR-2N/SVH-21T-P1.1 family evidence only.")
+			)
+			(property
+				(name "Display")
+				(value "JST B2P-VH post-limiter branch 2 power input")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Three-branch DYNAMIXEL TTL star injection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_star_injection.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Three-branch DYNAMIXEL TTL star injection/")
+				(tstamps "/e4b701e4-6b0f-5ddf-9ca0-274a481c3dca/")
+			)
+			(tstamps "40dc5978-b263-5168-b669-2fb3bca7271d")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JP3")
+			(value "JST B2P-VH post-limiter branch 3 power input")
+			(footprint "Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(description "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+			(fields
+				(field
+					(name "Status") "PROPOSED - WIRE/THERMAL TEST REQUIRED")
+				(field
+					(name "Evidence") "JST VH English catalog current asset rechecked 2026-08-07; B2P-VH/VHR-2N/SVH-21T-P1.1 family evidence only.")
+				(field
+					(name "Display") "JST B2P-VH post-limiter branch 3 power input")
+				(field
+					(name "Footprint") "Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical")
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JP3")
+				(description "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+			)
+			(property
+				(name "Status")
+				(value "PROPOSED - WIRE/THERMAL TEST REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "JST VH English catalog current asset rechecked 2026-08-07; B2P-VH/VHR-2N/SVH-21T-P1.1 family evidence only.")
+			)
+			(property
+				(name "Display")
+				(value "JST B2P-VH post-limiter branch 3 power input")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Three-branch DYNAMIXEL TTL star injection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_star_injection.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Three-branch DYNAMIXEL TTL star injection/")
+				(tstamps "/e4b701e4-6b0f-5ddf-9ca0-274a481c3dca/")
+			)
+			(tstamps "9069d09e-0e59-5acb-a72b-c1b7bdc602b6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "PBV3")
+			(part "JA1")
+			(description "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+			(docs "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+			(fields
+				(field
+					(name "Reference") "JA1")
+				(field
+					(name "Value") "JST B3B-EH-A actuator J1 output")
+				(field
+					(name "Footprint") "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical")
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+				(field
+					(name "Description") "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+				(field
+					(name "Status") "PROPOSED - CABLE/LIMIT TEST REQUIRED")
+				(field
+					(name "Evidence") "ROBOTIS X-series connector table and JST EH page rechecked 2026-08-07; no permission to exceed published connector limits.")
+				(field
+					(name "Display") "JST B3B-EH-A actuator J1 output")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "J1_VDD")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "DATA")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JA2")
+			(description "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+			(docs "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+			(fields
+				(field
+					(name "Reference") "JA2")
+				(field
+					(name "Value") "JST B3B-EH-A actuator J2 output")
+				(field
+					(name "Footprint") "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical")
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+				(field
+					(name "Description") "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+				(field
+					(name "Status") "PROPOSED - CABLE/LIMIT TEST REQUIRED")
+				(field
+					(name "Evidence") "ROBOTIS X-series connector table and JST EH page rechecked 2026-08-07; no permission to exceed published connector limits.")
+				(field
+					(name "Display") "JST B3B-EH-A actuator J2 output")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "J2_VDD")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "DATA")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JA3")
+			(description "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+			(docs "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+			(fields
+				(field
+					(name "Reference") "JA3")
+				(field
+					(name "Value") "JST B3B-EH-A actuator J3 output")
+				(field
+					(name "Footprint") "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical")
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+				(field
+					(name "Description") "Mates the exact X-series TTL connector family. Cable length and received identity remain open; XM540 4.4 A stall versus JST EH 3 A series basis remains a protection/thermal blocker.")
+				(field
+					(name "Status") "PROPOSED - CABLE/LIMIT TEST REQUIRED")
+				(field
+					(name "Evidence") "ROBOTIS X-series connector table and JST EH page rechecked 2026-08-07; no permission to exceed published connector limits.")
+				(field
+					(name "Display") "JST B3B-EH-A actuator J3 output")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "J3_VDD")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "DATA")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JC1")
+			(description "Use EHR-3 housing with pin-2 cavity empty at both ends; exact wire, contacts, crimp tooling, length, strain relief and received continuity remain open. Pin 2 has no assigned PCB net or route.")
+			(docs "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+			(fields
+				(field
+					(name "Reference") "JC1")
+				(field
+					(name "Value") "JST B3B-EH-A U2D2 data/reference input")
+				(field
+					(name "Footprint") "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical")
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/index.php?lang=2&series=58")
+				(field
+					(name "Description") "Use EHR-3 housing with pin-2 cavity empty at both ends; exact wire, contacts, crimp tooling, length, strain relief and received continuity remain open. Pin 2 has no assigned PCB net or route.")
+				(field
+					(name "Status") "PROPOSED - TWO-WIRE CABLE TEST REQUIRED")
+				(field
+					(name "Evidence") "ROBOTIS U2D2 and JST EH live pages rechecked 2026-08-07; exact header family/pins supported, harness application not released.")
+				(field
+					(name "Display") "JST B3B-EH-A U2D2 data/reference input")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "VDD_OMITTED")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "DATA")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JP1")
+			(description "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(fields
+				(field
+					(name "Reference") "JP1")
+				(field
+					(name "Value") "JST B2P-VH post-limiter branch 1 power input")
+				(field
+					(name "Footprint") "Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical")
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+				(field
+					(name "Status") "PROPOSED - WIRE/THERMAL TEST REQUIRED")
+				(field
+					(name "Evidence") "JST VH English catalog current asset rechecked 2026-08-07; B2P-VH/VHR-2N/SVH-21T-P1.1 family evidence only.")
+				(field
+					(name "Display") "JST B2P-VH post-limiter branch 1 power input")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "J1_FUSED_VDD")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "COMMON_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JP2")
+			(description "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(fields
+				(field
+					(name "Reference") "JP2")
+				(field
+					(name "Value") "JST B2P-VH post-limiter branch 2 power input")
+				(field
+					(name "Footprint") "Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical")
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+				(field
+					(name "Status") "PROPOSED - WIRE/THERMAL TEST REQUIRED")
+				(field
+					(name "Evidence") "JST VH English catalog current asset rechecked 2026-08-07; B2P-VH/VHR-2N/SVH-21T-P1.1 family evidence only.")
+				(field
+					(name "Display") "JST B2P-VH post-limiter branch 2 power input")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "J2_FUSED_VDD")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "COMMON_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JP3")
+			(description "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+			(fields
+				(field
+					(name "Reference") "JP3")
+				(field
+					(name "Value") "JST B2P-VH post-limiter branch 3 power input")
+				(field
+					(name "Footprint") "Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical")
+				(field
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf")
+				(field
+					(name "Description") "Mates VHR-2N with SVH-21T-P1.1 candidate contacts. Project pin 1 is positive and pin 2 return; exact 18/16 AWG choice, crimp tooling, pull force, branch protection and thermal evidence remain open.")
+				(field
+					(name "Status") "PROPOSED - WIRE/THERMAL TEST REQUIRED")
+				(field
+					(name "Evidence") "JST VH English catalog current asset rechecked 2026-08-07; B2P-VH/VHR-2N/SVH-21T-P1.1 family evidence only.")
+				(field
+					(name "Display") "JST B2P-VH post-limiter branch 3 power input")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "J3_FUSED_VDD")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "COMMON_RETURN")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "PBV3")
+			(uri "${KIPRJMOD}/hr-v0-dxl-star-p0.2-carrier-candidate.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "ACT_0V_PE_BONDED")
+			(class "Default")
+			(node
+				(ref "JA1")
+				(pin "1")
+				(pinfunction "GND_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JA2")
+				(pin "1")
+				(pinfunction "GND_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JA3")
+				(pin "1")
+				(pinfunction "GND_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JC1")
+				(pin "1")
+				(pinfunction "GND_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JP1")
+				(pin "2")
+				(pinfunction "COMMON_RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "JP2")
+				(pin "2")
+				(pinfunction "COMMON_RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "JP3")
+				(pin "2")
+				(pinfunction "COMMON_RETURN_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "2")
+			(name "DXL_TTL_DATA")
+			(class "Default")
+			(node
+				(ref "JA1")
+				(pin "3")
+				(pinfunction "DATA_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "JA2")
+				(pin "3")
+				(pinfunction "DATA_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "JA3")
+				(pin "3")
+				(pinfunction "DATA_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "JC1")
+				(pin "3")
+				(pinfunction "DATA_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "3")
+			(name "J1_LIMITED_VDD")
+			(class "Default")
+			(node
+				(ref "JA1")
+				(pin "2")
+				(pinfunction "J1_VDD_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "JP1")
+				(pin "1")
+				(pinfunction "J1_FUSED_VDD_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "4")
+			(name "J2_LIMITED_VDD")
+			(class "Default")
+			(node
+				(ref "JA2")
+				(pin "2")
+				(pinfunction "J2_VDD_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "JP2")
+				(pin "1")
+				(pinfunction "J2_FUSED_VDD_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "5")
+			(name "J3_LIMITED_VDD")
+			(class "Default")
+			(node
+				(ref "JA3")
+				(pin "2")
+				(pinfunction "J3_VDD_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "JP3")
+				(pin "1")
+				(pinfunction "J3_FUSED_VDD_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "unconnected-(JC1-VDD_OMITTED-Pad2)")
+			(class "Default")
+			(node
+				(ref "JC1")
+				(pin "2")
+				(pinfunction "VDD_OMITTED_2")
+				(pintype "passive+no_connect")
+			)
+		)
+	)
+)

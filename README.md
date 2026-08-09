@@ -572,6 +572,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R160 independent review request](docs/reviews/2026-08-09-r160-independent-review-request.md)
 - [R160 validation record](docs/reviews/2026-08-09-r160-validation-record.md)
 - [Sol R12 findings rechecked after R160](docs/reviews/2026-08-09-sol-r12-post-r160-status.md)
+- [R161 carrier-integrated ECAD candidate](docs/hr-v0-dxl-carrier-integration-p0.1.md)
+- [R161 interactive carrier-integration guide](release/hr-v0/dxl-carrier-integration-p0.1/index.html)
+- [R161 net-transition matrix](electrical/integration/hr-v0-dxl-carrier-integration-p0.1/net-transition-matrix.csv)
+- [R161 independent review request](docs/reviews/2026-08-09-r161-independent-review-request.md)
+- [R161 validation record](docs/reviews/2026-08-09-r161-validation-record.md)
+- [Sol R12 findings rechecked after R161](docs/reviews/2026-08-09-sol-r12-post-r161-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -661,7 +667,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred sixty review/control rounds are complete: R01-R160. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R160 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R160 freezes exact P0.3 carrier-side JST VH and 18 AWG Belden wire candidates plus a two-harness interface map, while keeping the source-side termination, route, cut/crimp process, installed limits, physical tests, safety credit and every work authority open.
+One hundred sixty-one review/control rounds are complete: R01-R161. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R161 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R161 issues separate carrier-aware Electrical V3 and DXL-star candidates with distinct fused-prelimit and limited-postcarrier nets, three nominal no-overlap placements and held route screens. It keeps received fit, cut/crimp data, installed limits, physical tests, safety credit and every work authority open.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -825,6 +831,7 @@ One hundred sixty review/control rounds are complete: R01-R160. R11 Fable and R1
 | R158 | RPW0010A footprint defect correction | Found eight material P0.1 transcription failures against TI drawing `4225183/A`; prohibited P0.1 for supplier use and issued a separate P0.2 candidate with exact 14-copper/16-paste primitive parity and KiCad ERC/DRC 0/0. Independent footprint, assembler/stencil DFM, first-article and every physical/work-authority hold remain open. |
 | R159 | Carrier native-rule and PCBA DFM inquiry correction | Issued P0.3 with a 0.100 mm mask/clearance floor and three global fiducials; added 24 provider capability rows, 24 unsent DFM questions, 23 hash-bound proposed files and 18 blank first-article checks. No provider action, external work, physical evidence or energization authority exists. |
 | R160 | P0.3 carrier harness interface-control correction | Froze exact `VHR-2N` / `SVH-21T-P1.1` and Belden 9918 red/black candidates; bound two harness identities across eight pin/interface rows; added four held cut/crimp rows, ten unexecuted process steps, eighteen blank acceptance rows and nine unresolved selections. No harness, physical result or work authority exists. |
+| R161 | Carrier-integrated ECAD and panel-route correction | Issued `V3-P1.15-CARRIER-CANDIDATE`, `DXL-STAR-P0.2-CARRIER-CANDIDATE` and `HR-V0-DXL-CARRIER-INTEGRATION-P0.1`; separated all three fused-prelimit and limited-postcarrier rails, preserved star-board copper geometry under the explicit net map, and added three nominal placement/twelve-hole/six held-route screens. Twelve selections and 24 acceptance rows remain open; no drilling, harness, physical result or work authority exists. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
