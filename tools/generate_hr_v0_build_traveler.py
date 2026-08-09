@@ -227,10 +227,24 @@ def main() -> int:
         })
     write_csv(OUT / "hold-points.csv", hold_rows)
 
-    source_rows = [{
-        "source_id": key, "path": str(path.relative_to(ROOT)).replace("\\", "/"),
-        "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "state": "CONTROLLED INPUT SNAPSHOT",
-    } for key, path in SOURCES.items()]
+    source_rows = []
+    for key, path in SOURCES.items():
+        source_rows.append({
+            "source_id": key,
+            "path": str(path.relative_to(ROOT)).replace("\\", "/"),
+            # The release manifest includes this source register. Hashing it here
+            # would create an unsatisfiable manifest -> register -> manifest cycle.
+            "sha256": (
+                "SELF-REFERENTIAL-MANIFEST-HASH-OMITTED"
+                if key == "release_manifest"
+                else hashlib.sha256(path.read_bytes()).hexdigest()
+            ),
+            "state": (
+                "CONTROLLED INPUT; HASH OMITTED TO AVOID MANIFEST CYCLE"
+                if key == "release_manifest"
+                else "CONTROLLED INPUT SNAPSHOT"
+            ),
+        })
     write_csv(OUT / "source-register.csv", source_rows)
 
     summary = {

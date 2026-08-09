@@ -478,6 +478,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R144 independent review request](docs/reviews/2026-08-09-r144-independent-review-request.md)
 - [R144 validation record](docs/reviews/2026-08-09-r144-validation-record.md)
 - [Sol R12 findings rechecked after R144](docs/reviews/2026-08-09-sol-r12-post-r144-status.md)
+- [R145 complete Evaluation Batch A acquisition decision](docs/hr-v0-evaluation-batch-a-acquisition-p0.1.md)
+- [R145 interactive acquisition guide](procurement/hr-v0/evaluation-batch-a-acquisition-p0.1/index.html)
+- [R145 independent review request](docs/reviews/2026-08-09-r145-independent-review-request.md)
+- [R145 validation record](docs/reviews/2026-08-09-r145-validation-record.md)
+- [Sol R12 findings rechecked after R145](docs/reviews/2026-08-09-sol-r12-post-r145-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -498,7 +503,7 @@ Run `python tools/check_hr_v0_control_panel.py` to cross-check the R64 25-row pa
 Run `python tools/check_hr_v0_fabrication_rfi_packets.py` to verify that every obsolete P0.1 supplier packet remains withdrawn and that zero ZIPs are active. The earlier manufacturing/route artifacts are historical inputs only until a replacement arm architecture closes `MECH-005`.
 Run `python tools/check_hr_v0_safety_allocation.py` to verify that the ordinary heartbeat path retains zero safety credit and every PLr/SIL allocation remains unresolved until qualified execution.
 Run `python tools/generate_hr_v0_release_manifest.py` only after deliberate package changes, then run `python tools/check_hr_v0_release_manifest.py`. A committed clean clone must additionally pass `python tools/check_hr_v0_release_manifest.py --require-clean`; this proves package identity, not fabrication or energization readiness.
-Run `python tools/generate_hr_v0_bom_closure.py` after deliberate system-BOM changes, then `python tools/check_hr_v0_bom.py`. The checker must retain `EG-003` as partial until a complete signed machine BOM exists; Evaluation Batch A and the R73 unpowered mechanical subset are not blanket purchase authority.
+Run `python tools/generate_hr_v0_bom_closure.py` after deliberate system-BOM changes, then `python tools/check_hr_v0_bom.py`. Run `python tools/generate_hr_v0_evaluation_batch_a_acquisition.py` and `python tools/check_hr_v0_evaluation_batch_a_acquisition.py` after any Evaluation Batch A identity, quantity, source, lot or price-snapshot change. The checkers must retain `EG-003` as partial until a complete signed machine BOM and executed receiving evidence exist; Evaluation Batch A, the R73 unpowered subset and the R145 decision packet are not blanket purchase authority.
 Run `python tools/check_hr_v0_compute_selection_p01.py` for the R119 `SC1112` / `SC1158` identity package. Passing proves source/BOM/ECAD/receiving-form synchronization only; cooling, storage/image, harness, retention, site, load, PD, brownout, thermal, physical and qualified-review evidence remain open.
 Run `python tools/check_hr_v0_compute_subassembly_p01.py` for R120. Passing proves synchronization of the held `SC1112` / `SC1158` / `SC1148` identities, order-code-open 64 GB storage branch, pinned/unexecuted OS image, receiving forms and partial gates only. It does not prove mounting, retention, installed load, thermal behavior, power-loss recovery, HIL or readiness.
 Run `python tools/check_hr_v0_compute_installation_p01.py` for the R121 installation package as synchronized through R122. Passing proves that the enlarged `PJ302410RT` / `18P2721` branch, `PI5-CASE-D`, U2D2, three exact base/strap candidates, held `USB2AC50CM`, 26 planning envelopes, 34 panel-BOM rows, sixteen holds and twenty blank receiving records stay synchronized. It does not prove holes, fasteners, received connector/fit, bend/retention, pull/vibration, depth, thermal behavior, grounding/EMC or readiness.
@@ -547,7 +552,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred forty-four review/control rounds are complete: R01-R144. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R144 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R144 adds one integrated 14-phase, 85-step unpowered build sequence with all 21 through-E2 gates and 14 hold points mapped; every step remains unauthorized/unexecuted and connection/power remains prohibited.
+One hundred forty-five review/control rounds are complete: R01-R145. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R145 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R145 reconciles all 17 evaluation lines / 21 units into four fail-closed acquisition lots with a $1,864.73 known manufacturer-price floor and eight quote-required lines; zero items are authorized, ordered or received.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -695,6 +700,7 @@ One hundred forty-four review/control rounds are complete: R01-R144. R11 Fable a
 | R142 | Atomic-requirement and governance P0.2 correction | Issued `HR-V0-REQ-ATOMIC-P0.1` with 396 stable draft children covering all 66 compound parents and `HR-V0-GOV-P0.2` binding the child register. Eight atomic and nine governance holds remain open; zero named people, evidence, approvals or work authority are represented. |
 | R143 | Second-method atomicity and acceptance-schema correction | Issued `HR-V0-REQ-ATOMIC-P0.2` with 458 draft children after separating 62 R142 multi-duty records, 458 blank acceptance rows and `HR-V0-GOV-P0.3`. Internal screening is not independent acceptance; zero people, evidence, approvals or work authority are represented. |
 | R144 | Integrated unpowered build-traveler correction | Issued `HR-V0-BUILD-TRAVELER-P0.1`: 14 dependency-ordered phases, 85 concrete steps, 21 through-E2 gate mappings and 14 hold points. Zero steps are authorized or executed; BT-P13 prohibits connection and energization. |
+| R145 | Complete Evaluation Batch A acquisition-decision and manifest-cycle correction | Issued `HR-V0-EVAL-BATCH-A-ACQ-P0.1`: all 17 controlled lines / 21 units grouped into four lots; current known manufacturer-price floor $1,864.73; eight quote-required lines; 15 current official product records. Removed the inherited unsatisfiable manifest/build-traveler hash cycle with an explicit machine-checked self-reference marker while retaining the independent manifest check. Zero lines/lots are authorized, ordered or received; no checkout, fabrication, connection, motion or energization is authorized. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

@@ -95,7 +95,12 @@ def main() -> int:
             path = SOURCES[row["source_id"]]
             if row["path"] != str(path.relative_to(ROOT)).replace("\\", "/"):
                 fail(f"source path changed: {row['source_id']}")
-            if row["sha256"] != hashlib.sha256(path.read_bytes()).hexdigest():
+            if row["source_id"] == "release_manifest":
+                if row["sha256"] != "SELF-REFERENTIAL-MANIFEST-HASH-OMITTED":
+                    fail("release-manifest self-reference marker changed")
+                if row["state"] != "CONTROLLED INPUT; HASH OMITTED TO AVOID MANIFEST CYCLE":
+                    fail("release-manifest self-reference state changed")
+            elif row["sha256"] != hashlib.sha256(path.read_bytes()).hexdigest():
                 fail(f"source hash mismatch: {row['source_id']}")
 
         for token in (WARNING, "HR-V0-BUILD-TRAVELER-P0.1", "R144", "font:16px", "14", "85", "21", "0", "BT-P13", "PROHIBITED", "overflow:auto"):

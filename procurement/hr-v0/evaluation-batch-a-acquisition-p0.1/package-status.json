@@ -1,0 +1,18 @@
+{
+  "revision": "HR-V0-EVAL-BATCH-A-ACQ-P0.1",
+  "source_batch": "EVALUATION-BATCH-A",
+  "line_count": 17,
+  "physical_unit_count": 21,
+  "lot_count": 4,
+  "official_web_known_price_floor_usd": "1864.73",
+  "quote_required_line_count": 8,
+  "shipping_tax_fees_included": false,
+  "purchase_authorized": false,
+  "order_placed": false,
+  "physical_evidence_received": false,
+  "fabrication_authorized": false,
+  "connection_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - EVALUATION ACQUISITION DECISION ONLY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+}

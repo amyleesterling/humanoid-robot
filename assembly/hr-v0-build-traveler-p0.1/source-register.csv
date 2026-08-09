@@ -1,6 +1,6 @@
 source_id,path,sha256,state
-release_candidate,release/hr-v0/release-candidate.json,33f83ff9fdd16f3789c62018f45ee3d621cd85ae31ff2811bb3b9f8f99b6ce95,CONTROLLED INPUT SNAPSHOT
-release_manifest,release/hr-v0/HR-V0-RC-P0.1-file-manifest.csv,87269f6c8a9db62db43142287883f1e8073a174fff5434efe3d368295adafd10,CONTROLLED INPUT SNAPSHOT
+release_candidate,release/hr-v0/release-candidate.json,49af708c3413f6e12bc8c9a43b847c4650cd7a0132ce4f3e736c05e6b1a4dd0c,CONTROLLED INPUT SNAPSHOT
+release_manifest,release/hr-v0/HR-V0-RC-P0.1-file-manifest.csv,SELF-REFERENTIAL-MANIFEST-HASH-OMITTED,CONTROLLED INPUT; HASH OMITTED TO AVOID MANIFEST CYCLE
 energization_gates,requirements/hr-v0-energization-gates.csv,faba0c88ac147282a424a6df54d40627bfda100d4e8120e5f12e386525f22a4b,CONTROLLED INPUT SNAPSHOT
 bom_closure,bom/hr-v0-bom-closure.csv,be72127deb5f260760dbc4de04b9d196098f9e1513a5dc9df0ca50b17d5e6b68,CONTROLLED INPUT SNAPSHOT
 mechanical_release,docs/hr-v0-mechanical-release-p0.6.md,ed680efa791b5fb8f0b5a8a4dcf438e15ce431e98067ca14dd9153fbf105dbde,CONTROLLED INPUT SNAPSHOT
