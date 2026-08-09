@@ -21,6 +21,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 - [HR-V0 carrier-integrated configuration reconciliation P0.1](docs/hr-v0-configuration-reconciliation-p0.1.md)
 - [Interactive carrier-integrated configuration guide](release/hr-v0/configuration-reconciliation-p0.1/index.html)
+- [Current P0.2 DXL-star manufacturing review](docs/hr-v0-dxl-star-manufacturing-p0.2.md)
+- [Interactive P0.2 DXL-star CAM review guide](release/hr-v0/dxl-star-manufacturing-p0.2/index.html)
 - [Configuration management and revision hierarchy](docs/configuration-management.md)
 - [HR-V0 deterministic release-candidate configuration P0.1](docs/hr-v0-release-candidate-p0.1.md)
 - [HR-V0 integrated arm architecture P0.7](docs/hr-v0-arm-architecture-p0.7.md)
@@ -841,6 +843,8 @@ One hundred sixty-two review/control rounds are complete: R01-R162. R11 Fable an
 | R160 | P0.3 carrier harness interface-control correction | Froze exact `VHR-2N` / `SVH-21T-P1.1` and Belden 9918 red/black candidates; bound two harness identities across eight pin/interface rows; added four held cut/crimp rows, ten unexecuted process steps, eighteen blank acceptance rows and nine unresolved selections. No harness, physical result or work authority exists. |
 | R161 | Carrier-integrated ECAD and panel-route correction | Issued `V3-P1.15-CARRIER-CANDIDATE`, `DXL-STAR-P0.2-CARRIER-CANDIDATE` and `HR-V0-DXL-CARRIER-INTEGRATION-P0.1`; separated all three fused-prelimit and limited-postcarrier rails, preserved star-board copper geometry under the explicit net map, and added three nominal placement/twelve-hole/six held-route screens. Twelve selections and 24 acceptance rows remain open; no drilling, harness, physical result or work authority exists. |
 | R162 | DXL carrier mounting-interface and no-drill fit correction | Issued `HR-V0-DXL-CARRIER-MOUNT-IF-P0.1`; corrected the R161 zero-left-margin placement, proposed exact 10 mm M3 insulating standoffs and M3 x 6 mm nylon screws, derived twelve center-only coordinates and added a ten-row received-fit procedure. Hole/process, tolerance, torque, creep/load, connector/cover/rear clearance, route recomputation, fourteen selections and twelve acceptance rows remain open; no procurement, drilling, assembly or work authority exists. |
+| R163 | Current-configuration reconciliation | Issued `HR-V0-CONFIG-REC-P0.1`; reconciled the carrier-aware P1.15 system, P0.2 DXL star, P0.3 protection carriers, harness, mounting and 91-group BOM while quarantining P1.14/P0.1 CAM as historical. Thirty energization gates remain unresolved; no fabrication, assembly, motion or energization authority exists. |
+| R164 | Current P0.2 DXL-star manufacturing-review evidence | Issued `HR-V0-DXL-STAR-MFG-P0.2` directly from `DXL-STAR-P0.2-CARRIER-CANDIDATE`; recorded native DRC 0, ten Gerber/job outputs, five drill/map/report outputs, seven placement references, eighteen terminal-parity rows and eighteen explicit holds. This closes only the absence of current internal CAM evidence; provider/process/XYRS/DFM/FAI/current/harness/physical validation and all work authority remain open. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

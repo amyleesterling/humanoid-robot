@@ -1,0 +1,94 @@
+{
+  "metadata": {
+    "date": "2026-08-09T18:46:32",
+    "generator": "KiCad 10.0.5",
+    "project": "hr-v0-dxl-star-p0.2-carrier-candidate",
+    "board_name": "hr-v0-dxl-star-p0.2-carrier-candidate"
+  },
+  "board": {
+    "has_outline": true,
+    "width": "100.0000 mm",
+    "height": "60.0000 mm",
+    "area": "6000.00 mm²",
+    "front_component_density": "10.19",
+    "back_component_density": "2.21",
+    "front_copper_area": "387.263 mm²",
+    "back_copper_area": "5586.163 mm²",
+    "min_track_clearance": "20.8528 mm",
+    "min_track_width": "0.2500 mm",
+    "min_drill_diameter": "0.9500 mm",
+    "board_thickness": "1.6000 mm",
+    "front_footprint_area": "611.595 mm²",
+    "back_footprint_area": "132.72 mm²",
+    "front_footprint_density": "10.19",
+    "back_footprint_density": "2.21"
+  },
+  "pads": {
+    "through_hole": 18,
+    "smd": 0,
+    "connector": 0,
+    "npth": 4,
+    "castellated": 0,
+    "press_fit": 0
+  },
+  "vias": {
+    "through": 0,
+    "blind": 0,
+    "buried": 0,
+    "micro": 0
+  },
+  "components": {
+    "tht": {
+      "front": 7,
+      "back": 0,
+      "total": 7
+    },
+    "smd": {
+      "front": 0,
+      "back": 0,
+      "total": 0
+    },
+    "unspecified": {
+      "front": 4,
+      "back": 0,
+      "total": 4
+    },
+    "total": {
+      "front": 11,
+      "back": 0,
+      "total": 11
+    }
+  },
+  "drill_holes": [
+    {
+      "count": 12,
+      "shape": "Round",
+      "x_size": "0.9500 mm",
+      "y_size": "0.9500 mm",
+      "plated": true,
+      "source": "Pad",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 6,
+      "shape": "Round",
+      "x_size": "1.7000 mm",
+      "y_size": "1.7000 mm",
+      "plated": true,
+      "source": "Pad",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 4,
+      "shape": "Round",
+      "x_size": "3.2000 mm",
+      "y_size": "3.2000 mm",
+      "plated": false,
+      "source": "Pad",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    }
+  ]
+}

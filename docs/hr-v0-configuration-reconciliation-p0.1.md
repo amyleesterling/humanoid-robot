@@ -27,7 +27,7 @@ This corrects configuration metadata that still identified P1.14 and DXL-STAR-P0
 - Electrical V3-P1.14 remains historical and a compatibility source for the current PCB-P0.9 watchdog and E2 P0.3 records.
 - DXL-STAR-P0.1 remains historical evidence.
 - `HR-V0-DXL-STAR-MFG-P0.1` is P0.1 CAM and **must not** be used to fabricate P0.2.
-- Current P0.2 CAM is `SELECTION REQUIRED`.
+- Current P0.2 internal CAM review exists through `HR-V0-DXL-STAR-MFG-P0.2`; supplier/process acceptance, normalized XYRS, DFM and first article remain open.
 - PCB-P0.9/P1.15 parity, a current supplier-normalized watchdog manufacturing package, and E2 P0.3/P1.15 parity remain open.
 
 ## BOM reconciliation
@@ -42,7 +42,7 @@ R163 adds:
 - `BOM-090`: twelve held Essentra standoff candidates; and
 - `BOM-091`: twenty-four held Essentra screw candidates.
 
-The carrier PCBAs have no selected provider/process or accepted first article. Harness source/star terminations and exact cut lengths remain selection required. Mounting coordinates are center candidates only and do not authorize drilling.
+The P0.2 star CAM is internal review evidence only. The star board and carrier PCBAs have no selected provider/process or accepted first article. Harness source/star terminations and exact cut lengths remain selection required. Mounting coordinates are center candidates only and do not authorize drilling.
 
 ## Gate effect
 

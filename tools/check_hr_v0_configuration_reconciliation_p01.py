@@ -33,18 +33,19 @@ def main() -> int:
         need(not any(p.suffix.lower() in {".zip", ".pdf", ".7z", ".rar"} for p in directory.iterdir()), "archives/PDFs prohibited")
 
     status = json.loads((OUT / "package-status.json").read_text(encoding="utf-8"))
-    need(status.get("identifier") == "HR-V0-CONFIG-REC-P0.1" and status.get("round") == "R163", "identity changed")
+    need(status.get("identifier") == "HR-V0-CONFIG-REC-P0.1" and status.get("round") == "R163+R164-SYNCHRONIZED", "identity changed")
     need(status.get("current_electrical_identifier") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "current electrical identity changed")
-    for key, value in {"system_bom_groups":91,"current_records":8,"supersession_records":5,"bom_integration_records":7,"gate_records":5,"open_holds":10,"acceptance_rows":8}.items():
+    for key, value in {"system_bom_groups":91,"current_records":9,"supersession_records":5,"bom_integration_records":7,"gate_records":5,"open_holds":10,"acceptance_rows":8}.items():
         need(status.get(key) == value, f"status count changed: {key}")
-    for key in ("all_acceptance_executed", "current_p02_cam_exists", "physical_article_exists", "physical_test_executed", "qualified_review_complete", "procurement_authorized", "fabrication_authorized", "assembly_authorized", "connection_authorized", "motion_authorized", "energization_authorized", "safety_credit"):
+    need(status.get("current_p02_cam_exists") is True, "current P0.2 CAM review must be recorded")
+    for key in ("all_acceptance_executed", "physical_article_exists", "physical_test_executed", "qualified_review_complete", "procurement_authorized", "fabrication_authorized", "assembly_authorized", "connection_authorized", "motion_authorized", "energization_authorized", "safety_credit"):
         need(status.get(key) is False, f"{key} must remain false")
     need(status.get("warning") == WARNING, "warning changed")
 
     current = csv_rows(OUT / "current-configuration-map.csv")
-    need(len(current) == 8, "current map count changed")
+    need(len(current) == 9, "current map count changed")
     identifiers = {r["identifier"] for r in current}
-    for value in ("Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1", "HR-V0-BOM-P0.1"):
+    for value in ("Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1", "HR-V0-BOM-P0.1"):
         need(value in identifiers, f"current identifier missing: {value}")
     need(all(r["warning"] == WARNING for r in current), "current map warning changed")
 
@@ -59,7 +60,7 @@ def main() -> int:
     for item in ("BOM-035", "BOM-051", "BOM-087", "BOM-088", "BOM-089", "BOM-090", "BOM-091"):
         need(item in bom, f"integrated BOM item missing: {item}")
     need("P0.2-CARRIER-CANDIDATE" in bom["BOM-051"]["manufacturer_part_number"], "BOM-051 is stale")
-    need("current manufacturing data SELECTION REQUIRED" in bom["BOM-051"]["manufacturer_part_number"], "P0.2 CAM absence hidden")
+    need("HR-V0-DXL-STAR-MFG-P0.2" in bom["BOM-051"]["manufacturer_part_number"], "P0.2 CAM review binding missing")
 
     reports = [
         ROOT / "electrical/kicad/project-button-v3-p1.15-carrier-candidate/validation/project-button-v3-p1.15-carrier-candidate-erc.rpt",

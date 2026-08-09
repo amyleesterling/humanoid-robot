@@ -99,8 +99,8 @@ def main() -> int:
     need(
         bom051.get("baseline_status") == "exact_candidate_hold"
         and "DXL-STAR-P0.2-CARRIER-CANDIDATE" in bom051.get("manufacturer_part_number", "")
-        and "current manufacturing data SELECTION REQUIRED" in bom051.get("manufacturer_part_number", "")
-        and "P0.1 CAM package is historical" in bom051.get("selection_basis", "")
+        and "HR-V0-DXL-STAR-MFG-P0.2" in bom051.get("manufacturer_part_number", "")
+        and "P0.1 CAM remains historical" in bom051.get("selection_basis", "")
         and "connector/current" in bom051.get("selection_basis", ""),
         "BOM-051 does not retain current P0.2 hold and historical P0.1 boundary",
     )
