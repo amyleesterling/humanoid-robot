@@ -578,6 +578,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R161 independent review request](docs/reviews/2026-08-09-r161-independent-review-request.md)
 - [R161 validation record](docs/reviews/2026-08-09-r161-validation-record.md)
 - [Sol R12 findings rechecked after R161](docs/reviews/2026-08-09-sol-r12-post-r161-status.md)
+- [R162 carrier mounting-interface candidate](docs/hr-v0-dxl-carrier-mount-p0.1.md)
+- [R162 interactive no-drill mounting guide](release/hr-v0/dxl-carrier-mount-p0.1/index.html)
+- [R162 no-drill metrology form](electrical/mechanical/hr-v0-dxl-carrier-mount-p0.1/no-drill-metrology-form.csv)
+- [R162 independent review request](docs/reviews/2026-08-09-r162-independent-review-request.md)
+- [R162 validation record](docs/reviews/2026-08-09-r162-validation-record.md)
+- [Sol R12 findings rechecked after R162](docs/reviews/2026-08-09-sol-r12-post-r162-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -667,7 +673,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred sixty-one review/control rounds are complete: R01-R161. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R161 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R161 issues separate carrier-aware Electrical V3 and DXL-star candidates with distinct fused-prelimit and limited-postcarrier nets, three nominal no-overlap placements and held route screens. It keeps received fit, cut/crimp data, installed limits, physical tests, safety credit and every work authority open.
+One hundred sixty-two review/control rounds are complete: R01-R162. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R162 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R162 replaces R161's zero-left-margin placement with a re-centered mounting candidate, exact but unreleased standoff/screw candidates and a no-drill received-fit route. It keeps hole diameter/tolerance, physical fit, torque/load/creep, cut/crimp data, installed limits, physical tests, safety credit and every work authority open.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -832,6 +838,7 @@ One hundred sixty-one review/control rounds are complete: R01-R161. R11 Fable an
 | R159 | Carrier native-rule and PCBA DFM inquiry correction | Issued P0.3 with a 0.100 mm mask/clearance floor and three global fiducials; added 24 provider capability rows, 24 unsent DFM questions, 23 hash-bound proposed files and 18 blank first-article checks. No provider action, external work, physical evidence or energization authority exists. |
 | R160 | P0.3 carrier harness interface-control correction | Froze exact `VHR-2N` / `SVH-21T-P1.1` and Belden 9918 red/black candidates; bound two harness identities across eight pin/interface rows; added four held cut/crimp rows, ten unexecuted process steps, eighteen blank acceptance rows and nine unresolved selections. No harness, physical result or work authority exists. |
 | R161 | Carrier-integrated ECAD and panel-route correction | Issued `V3-P1.15-CARRIER-CANDIDATE`, `DXL-STAR-P0.2-CARRIER-CANDIDATE` and `HR-V0-DXL-CARRIER-INTEGRATION-P0.1`; separated all three fused-prelimit and limited-postcarrier rails, preserved star-board copper geometry under the explicit net map, and added three nominal placement/twelve-hole/six held-route screens. Twelve selections and 24 acceptance rows remain open; no drilling, harness, physical result or work authority exists. |
+| R162 | DXL carrier mounting-interface and no-drill fit correction | Issued `HR-V0-DXL-CARRIER-MOUNT-IF-P0.1`; corrected the R161 zero-left-margin placement, proposed exact 10 mm M3 insulating standoffs and M3 x 6 mm nylon screws, derived twelve center-only coordinates and added a ten-row received-fit procedure. Hole/process, tolerance, torque, creep/load, connector/cover/rear clearance, route recomputation, fourteen selections and twelve acceptance rows remain open; no procurement, drilling, assembly or work authority exists. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
