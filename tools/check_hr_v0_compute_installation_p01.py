@@ -39,7 +39,7 @@ def main() -> None:
     guide = (ROOT / "release" / "hr-v0" / "compute-installation-p0.1" / "index.html").read_text(encoding="utf-8")
 
     require(len(layout) == 26, "P0.6 layout must contain 26 planning envelopes")
-    require(len(panel_bom) == 33, "P0.6 panel BOM must contain 33 rows")
+    require(len(panel_bom) == 34, "P0.6 panel BOM must contain 34 rows after R122 cable hold")
     require(len(thermal) == 15, "thermal/space screen must contain 15 rows")
     require(len(holds) == 16, "compute installation must retain 16 explicit holds")
     require(len(receiving) == 20, "receiving template must contain 20 rows")
@@ -66,6 +66,7 @@ def main() -> None:
         "PI1": "SC1112", "COOL1": "SC1148", "U2D2": "902-0132-000",
         "GTM1/GTM2/GTM3": "GTM500C2; article 130-95000",
         "GT1/GT2/GT3": "GT.50X80C2; article 854-44353", "PSU3": "SC1158",
+        "PI-U2D2-CABLE": "USB2AC50CM",
     }
     for ref, part_number in expected.items():
         require(parts.get(ref, {}).get("manufacturer_part_number") == part_number, f"{ref} exact candidate identity changed")
@@ -81,7 +82,9 @@ def main() -> None:
     for item_id, part_number in expected_bom.items():
         require(system_bom.get(item_id, {}).get("manufacturer_part_number") == part_number, f"{item_id} system BOM identity changed")
         require(closure.get(item_id, {}).get("closure_class") == "exact_candidate_hold" and closure.get(item_id, {}).get("allowed_action") == "HOLD", f"{item_id} is not a fail-closed exact candidate")
-    require(system_bom.get("BOM-070", {}).get("baseline_status") == "selection_required", "BOM-070 cable must remain selection required")
+    require(system_bom.get("BOM-070", {}).get("manufacturer_part_number") == "USB2AC50CM", "BOM-070 exact cable identity changed")
+    require(system_bom.get("BOM-070", {}).get("baseline_status") == "exact_candidate_hold", "BOM-070 must remain an exact candidate hold")
+    require(closure.get("BOM-070", {}).get("closure_class") == "exact_candidate_hold" and closure.get("BOM-070", {}).get("allowed_action") == "HOLD", "BOM-070 closure must remain fail-closed")
 
     for gate_id in ("EG-003", "EG-010", "EG-017"):
         require(gates.get(gate_id, {}).get("status") == "partial", f"{gate_id} must remain partial")
@@ -102,8 +105,8 @@ def main() -> None:
 
     if failures:
         raise SystemExit("HR-V0 compute-installation check failed:\n- " + "\n- ".join(failures))
-    print("HR-V0 compute-installation P0.1 check passed: 26 bounded planning envelopes, 33 panel BOM rows, 16 fail-closed holds and 20 unexecuted receiving rows")
-    print("BOM-070 remains SELECTION REQUIRED; EG-003, EG-010 and EG-017 remain PARTIAL")
+    print("HR-V0 compute-installation P0.1 check passed: 26 bounded planning envelopes, 34 panel BOM rows, 16 fail-closed holds and 20 unexecuted receiving rows")
+    print("BOM-070 is an exact held cable candidate only; EG-003, EG-010 and EG-017 remain PARTIAL")
     print(WARNING)
 
 

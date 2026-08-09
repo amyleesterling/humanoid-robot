@@ -50,7 +50,7 @@ The official resilient-filesystem whitepaper supports treating abrupt power loss
 
 ## Installation boundary
 
-R121 supersedes this installation snapshot with `HR-V0-CP-P0.6` / `HR-V0-COMPUTE-INSTALL-P0.1`. `BOM-058` now has an exact held enlarged enclosure/backplate branch and `BOM-080` through `BOM-082` add exact held case/base/strap candidates. `BOM-059` and `BOM-070` remain **SELECTION REQUIRED**, and every standoff, fastener, cable entry, USB cable, production hole, installed fit, retention test, fan clearance, service access, grounding/EMC and thermal result remains open. Reference drawings provide catalog-envelope evidence only; received hardware must be measured and accepted before any fabrication release.
+R121 supersedes this installation snapshot with `HR-V0-CP-P0.6` / `HR-V0-COMPUTE-INSTALL-P0.1`. `BOM-058` now has an exact held enlarged enclosure/backplate branch and `BOM-080` through `BOM-082` add exact held case/base/strap candidates. R122 advances `BOM-070` to an exact held StarTech.com `USB2AC50CM` candidate through `HR-V0-U2D2-USB-P0.1`; this closes only the catalog identity. `BOM-059`, every standoff, fastener, cable entry, production hole, installed cable fit/bend/retention, fan clearance, service access, signal/common-mode/no-backfeed behavior, grounding/EMC and thermal result remains open. Reference drawings provide catalog-envelope evidence only; received hardware must be measured and accepted before any fabrication release.
 
 ## Sol R12 disposition
 

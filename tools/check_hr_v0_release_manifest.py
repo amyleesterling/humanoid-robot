@@ -82,6 +82,7 @@ def main() -> None:
         "DXL-STAR-P0.1",
         "HR-V0-CP-P0.6",
         "HR-V0-COMPUTE-INSTALL-P0.1",
+        "HR-V0-U2D2-USB-P0.1",
         "HR-V0-WD-SUPPLY-P0.1",
         "HR-V0-PNOZ-CONF-P0.1",
         "HR-V0-K1K2-APP-P0.2",

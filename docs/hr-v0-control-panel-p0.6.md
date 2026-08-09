@@ -33,7 +33,7 @@ P0.6 adds these exact held candidates:
 
 One base/strap pair is allocated around the U2D2 body. Two pairs are allocated for the compute-power and Pi-to-U2D2 cable service loops. HellermannTyton publishes the strap system for cables; it does not publish the rigid U2D2 application. P0.6 therefore takes no retention credit until received-article pull, slip, vibration, abrasion, connector-load and repeated-service tests are accepted.
 
-The current U2D2 e-Manual says the product connects with an enclosed USB cable and that current production changed to Type-C in August 2025. It does not identify the host connector, cable length, shielding or outside diameter in the controlled text. `BOM-070` remains **SELECTION REQUIRED** and no USB cable route is released.
+The current U2D2 e-Manual says the product connects with an enclosed USB cable and that current production changed to Type-C in August 2025. It does not identify the enclosed cable's host connector, length, shielding or outside diameter in the controlled text. R122 separately advances `BOM-070` to an exact held StarTech.com `USB2AC50CM` candidate through `HR-V0-U2D2-USB-P0.1`; no received fit, bend/retention, electrical/EMC/HIL or USB cable route is released.
 
 The compute heartbeat, U2D2 path and every retention candidate retain **zero functional-safety credit**.
 
@@ -63,7 +63,7 @@ The catalog screen does not establish bracket offset, rail engagement, depth, co
 1. Receive and identify every exact candidate, including U2D2 connector revision and every supplied screw/standoff.
 2. Obtain written Waveshare clarification or a controlled received-article assembly trial showing `SC1148` installation without invented hardware.
 3. Measure the enclosure, panel, case, bracket, ports and cables; update the three-dimensional fit model and hole schedule.
-4. Select rail ends, panel fasteners, retention hardware, cable entries and the exact USB cable from measured loads and cable construction.
+4. Select rail ends, panel fasteners, retention hardware and cable entries; receive and prove the exact USB cable against measured fit, bend, pull, connector-load, thermal, electrical and EMC evidence.
 5. Execute unpowered rail-pull, U2D2 slip/pull/vibration, cable-pull, abrasion, access and closed-cover inspections.
 6. Resolve metal-case, steel-panel, rail, PE/DC 0 V and shield treatment through the current grounding/bonding package and qualified review.
 7. Close duct fill, cable separation, installed current, brownout, blocked-fan, worst-case ambient and calibrated enclosure temperature-rise evidence.

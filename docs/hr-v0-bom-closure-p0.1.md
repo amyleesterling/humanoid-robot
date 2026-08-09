@@ -6,11 +6,11 @@ Control date: 2026-08-07
 
 ## Result
 
-The system BOM now contains 73 configuration groups. R46 added thirteen groups that were previously invisible assembly assumptions: the control enclosure, panel hardware, stationary wire, actuator signal harness, labels, AC cords, boot media, bench anchors, project-added structural fasteners, cable-entry/strain-relief hardware, guard access hardware, wire terminations, and the Raspberry Pi-to-U2D2 USB cable. R49 corrects `BOM-071` to twelve exact `75-3422` frame-joint bolt assemblies and binds `BOM-024`/`BOM-025` to the non-overlapping `40-4040` cut schedule and six `40-4332` brackets under `HR-V0-FRAME-P0.2`; none is application-released.
+The system BOM now contains 82 configuration groups: 17 evaluation candidates, 33 exact candidates on hold, three grouped-component holds, 24 selection-required groups, four exclusions and one integrated item. R46 exposed previously invisible assembly assumptions; later controlled passes add exact source, enclosure, compute-carrier and retention candidates. R122 advances only the Pi-to-U2D2 catalog cable to held StarTech.com `USB2AC50CM`. None of these changes is a complete procurement or application release.
 
 R61 advances `BOM-041` from `selection_required` to `exact_candidate_hold` for IDEC `HW1P-1FQD-A-24V`. This removes the obsolete `SAFE ELIGIBLE` value and synchronizes the system BOM with Electrical V3-P1.5 and `HR-V0-CP-P0.1`. It is not added to Evaluation Batch A and is not procurement- or wiring-released; `HR-V0-H1-RCV-P0.1` remains unexecuted.
 
-R62 advances `BOM-019` to an exact-candidate hold for two Phoenix `PT 4-HESI (5X20)` item `3211861` holders and adds `BOM-072` for the two still-unresolved fuse links. R63 adds exact-candidate-hold `BOM-073` for one Phoenix `D-ST 4` item `3030420` end cover. R64 advances `BOM-042` to exact-candidate hold for Littelfuse `75920-01`; conductor/lug, source-fault, load-break, touch-protection, cutout, zero-energy/padlock, human-factors, Boston application and physical tests remain open. Electrical V3-P1.9 and `HR-V0-CP-P0.4` carry the same identities. The current closure register contains 21 exact-candidate holds and 28 selection-required groups. Both FSR fuse links, received accessory compatibility/grouping, all protection calculations and all physical evidence remain open; manufacturer maximum ratings are not project fuse or conductor ratings.
+R62 advances `BOM-019` to an exact-candidate hold for two Phoenix `PT 4-HESI (5X20)` item `3211861` holders and adds `BOM-072` for the two still-unresolved fuse links. R63 adds exact-candidate-hold `BOM-073` for one Phoenix `D-ST 4` item `3030420` end cover. R64 advances `BOM-042` to exact-candidate hold for Littelfuse `75920-01`; conductor/lug, source-fault, load-break, touch-protection, cutout, zero-energy/padlock, human-factors, Boston application and physical tests remain open. Those historical counts have since been superseded by the current 82-group closure totals above. Both FSR fuse links, received accessory compatibility/grouping, all protection calculations and all physical evidence remain open; manufacturer maximum ratings are not project fuse or conductor ratings.
 
 R66 reconciles custom mechanical group `BOM-027` to the P0.5 geometry: three `MV0-C01`, one `MV0-C04`, and one `MV0-C05` candidate. The group remains `selection_required` in the closure register because supplier/process/quote, received material, separate first article per geometry, fit, T-slot proof, physical proof, and qualified release are not selected or executed. This quantity correction does not change the closure-class totals or authorize fabrication.
 
@@ -46,7 +46,7 @@ After separately approving any purchase, quarantine each received unit and execu
 
 The 2026-08-07 primary-source recheck found two reasons the receiving boundary cannot be skipped:
 
-- ROBOTIS' current U2D2 page identifies SKU `902-0132-000` and says the product was upgraded to USB-C, while the same page still lists a Micro-USB cable and Micro-USB connector in its package/table text. Record the actual received connector revision and retained cable; `BOM-070` remains `SELECTION REQUIRED`.
+- R122 advances `BOM-070` to an exact held StarTech.com `USB2AC50CM` candidate using the current official product page and generated datasheet. The catalog record closes connector/length/shield/OD selection only. Received U2D2 Type-C revision, Pi/case fit, bend/retention, enumeration, waveform/error, common-mode, no-backfeed, EMC, thermal, HIL and qualified application evidence remain open.
 - The current `XM540-W270-T` and `XM430-W350-T` pages identify SKUs `902-0137-000` and `902-0124-000`, but their package-content tables name `-R` actuators. The purchase record must state the required TTL `-T` model, prohibit unreviewed substitution, and quarantine any unit whose label/model readback does not match.
 
 These conflicts do not invalidate evaluation of the candidate SKU. They prohibit treating a store title or packing list as received configuration evidence.
@@ -54,7 +54,7 @@ These conflicts do not invalidate evaluation of the candidate SKU. They prohibit
 ## What remains before EG-003 can close
 
 1. Expand grouped assemblies into individual orderable lines, especially the watchdog input/feedback circuits and Molex harness.
-2. Select exact Pi 5/US supply SKUs, remaining enclosure/panel application hardware, conductors, cables, labels, cord sets, storage, anchoring, fasteners, guard, receiver and termination hardware; execute the held H1 received-evidence route before wiring.
+2. Execute received/application evidence for the held Pi 5, US supply, enclosure, carrier, retention and USB-cable candidates; select remaining panel hardware, conductors, DYNAMIXEL-side harness, labels, cord sets, storage, anchoring, fasteners, guard, receiver and termination hardware; execute the held H1 received-evidence route before wiring.
 3. Resolve the XM540 4.4 A stall screen versus the JST EH 3 A series basis before releasing the actuator harness.
 4. Select protection only after measured source fault/current/regeneration, cable, connector, inrush, ambient, bundling and clearing evidence closes.
 5. Complete supplier DFM and first articles before ordering custom plates or either PCB.
