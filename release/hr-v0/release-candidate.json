@@ -44,6 +44,12 @@
       "identifier": "HR-V0-E2-SEQ-P0.1",
       "supporting_identifiers": ["HR-V0-E2-HW-P0.3", "AUDIT-ELEC-002", "INSPECT-ELEC-010", "TEST-ELEC-008", "INSPECT-E2-001", "INSPECT-E2-002", "TEST-E2-001", "TEST-E2-002", "AUDIT-E2-001"],
       "release_state": "templates_not_executed_not_authorized_for_energization"
+    },
+    {
+      "domain": "governance",
+      "identifier": "HR-V0-GOV-P0.1",
+      "supporting_identifiers": ["GOV-001", "AUDIT-GOV-001", "SOL-R12-B-018"],
+      "release_state": "coverage_snapshot_roles_candidate_people_evidence_approval_history_open_not_approved"
     }
   ],
   "historical_or_out_of_scope_products": [

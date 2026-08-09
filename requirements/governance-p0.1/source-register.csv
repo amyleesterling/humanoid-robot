@@ -1,0 +1,5 @@
+source_id,path,sha256,state
+requirements,requirements/requirements.csv,05f6f873a4bc34ca7727256e643bb176ff86ea5759a315d397602c920d430049,CONTROLLED INPUT SNAPSHOT
+risks,safety/risk-register.csv,042ee76a4b50ba655fc0ee4b01d9c474f4bf444ec8e8050fe88f17a662a7dad5,CONTROLLED INPUT SNAPSHOT
+gates,requirements/hr-v0-energization-gates.csv,faba0c88ac147282a424a6df54d40627bfda100d4e8120e5f12e386525f22a4b,CONTROLLED INPUT SNAPSHOT
+procedures,tests/procedures/procedure-registry.csv,3e483e1d21e0f743d71ce8447b9d3d511ac8041ceab5b0b55b035844d5300e6a,CONTROLLED INPUT SNAPSHOT

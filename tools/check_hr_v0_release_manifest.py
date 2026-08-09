@@ -207,6 +207,14 @@ def main() -> None:
         "AUDIT-E2-001",
     ] or commissioning_product.get("release_state") != "templates_not_executed_not_authorized_for_energization":
         errors.append("HR-V0-E2-SEQ-P0.1 supporting identifiers or fail-closed state changed")
+    governance_product = next(
+        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-GOV-P0.1"),
+        {},
+    )
+    if governance_product.get("supporting_identifiers") != ["GOV-001", "AUDIT-GOV-001", "SOL-R12-B-018"] or governance_product.get("release_state") != (
+        "coverage_snapshot_roles_candidate_people_evidence_approval_history_open_not_approved"
+    ):
+        errors.append("HR-V0-GOV-P0.1 supporting identifiers or fail-closed state changed")
 
     if not MANIFEST.is_file():
         errors.append(f"manifest missing: {MANIFEST_REL}")
