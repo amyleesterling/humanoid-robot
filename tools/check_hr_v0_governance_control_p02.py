@@ -89,20 +89,24 @@ def main() -> int:
         if any(row["approval_effect"] != "NONE - source requirement remains draft" for row in atomicity):
             fail("atomicity screen implies approval")
 
+        # P0.2 is a historical snapshot. Validate its recorded path/hash identity;
+        # do not compare old hashes to later live source revisions.
         expected_sources = {
-            "requirements": ROOT / "requirements/requirements.csv",
-            "risks": ROOT / "safety/risk-register.csv",
-            "gates": ROOT / "requirements/hr-v0-energization-gates.csv",
-            "procedures": ROOT / "tests/procedures/procedure-registry.csv",
-            "atomic_requirements": ROOT / "requirements/atomic-p0.1/atomic-requirements.csv",
-            "atomic_requirements_summary": ROOT / "requirements/atomic-p0.1/atomic-requirements-summary.json",
+            "requirements": (ROOT / "requirements/requirements.csv", "05f6f873a4bc34ca7727256e643bb176ff86ea5759a315d397602c920d430049"),
+            "risks": (ROOT / "safety/risk-register.csv", "042ee76a4b50ba655fc0ee4b01d9c474f4bf444ec8e8050fe88f17a662a7dad5"),
+            "gates": (ROOT / "requirements/hr-v0-energization-gates.csv", "faba0c88ac147282a424a6df54d40627bfda100d4e8120e5f12e386525f22a4b"),
+            "procedures": (ROOT / "tests/procedures/procedure-registry.csv", "3e483e1d21e0f743d71ce8447b9d3d511ac8041ceab5b0b55b035844d5300e6a"),
+            "atomic_requirements": (ROOT / "requirements/atomic-p0.1/atomic-requirements.csv", "536727b787d04a729cb245c71e5e9e6ddcc5eb2acea0ff739eb1c1744b845c96"),
+            "atomic_requirements_summary": (ROOT / "requirements/atomic-p0.1/atomic-requirements-summary.json", "f7c246677e3fc179046251f050432b27980bc7aedcb134069c7090b1400802a5"),
         }
         if {row["source_id"] for row in sources} != set(expected_sources):
             fail("source set changed")
         for row in sources:
-            path = expected_sources[row["source_id"]]
-            if row["sha256"] != hashlib.sha256(path.read_bytes()).hexdigest():
-                fail(f"source hash mismatch: {row['source_id']}")
+            path, snapshot_hash = expected_sources[row["source_id"]]
+            if row["path"] != str(path.relative_to(ROOT)).replace("\\", "/"):
+                fail(f"source path changed: {row['source_id']}")
+            if row["sha256"] != snapshot_hash:
+                fail(f"historical source hash changed: {row['source_id']}")
 
         for token in (WARNING, "HR-V0-GOV-P0.2", "R142", "font:16px", "396", "GOV-001", "Sol B-018", "SELECTION REQUIRED", "overflow:auto"):
             if token not in page:

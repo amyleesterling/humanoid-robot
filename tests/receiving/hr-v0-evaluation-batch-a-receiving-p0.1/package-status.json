@@ -1,0 +1,22 @@
+{
+  "revision": "HR-V0-EVAL-BATCH-A-RCV-P0.1",
+  "source_batch": "EVALUATION-BATCH-A",
+  "source_acquisition": "HR-V0-EVAL-BATCH-A-ACQ-P0.1",
+  "line_count": 17,
+  "physical_unit_count": 21,
+  "traveler_step_count_per_unit": 12,
+  "traveler_record_count": 252,
+  "evidence_category_count_per_unit": 7,
+  "evidence_placeholder_count": 147,
+  "quarantine_label_count": 21,
+  "authorized_unit_count": 0,
+  "received_unit_count": 0,
+  "executed_traveler_record_count": 0,
+  "captured_evidence_count": 0,
+  "accepted_for_machine_use_count": 0,
+  "fabrication_authorized": false,
+  "connection_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+}

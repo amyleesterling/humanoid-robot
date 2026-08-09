@@ -42,6 +42,8 @@ The batch is not a shopping instruction. Every line states:
 
 After separately approving any purchase, quarantine each received unit and execute `INSPECT-BOM-001` using `tests/forms/hr-v0-evaluation-batch-a-receiving-template.csv`. Item-specific procedures remain mandatory. Receipt does not release a component for machine use.
 
+R146 replaces the anonymous “duplicate this row” execution ambiguity with `HR-V0-EVAL-BATCH-A-RCV-P0.1`: 21 deterministic unit IDs, twelve receiving steps per unit, seven evidence placeholders per unit and one quarantine label per unit. The original form remains historical/generic; the current execution scaffold is `tests/forms/hr-v0-evaluation-batch-a-unit-receiving-template-p0.1.csv`. Every record remains `NOT AUTHORIZED`, `NOT ORDERED`, `NOT RECEIVED` and `NOT EXECUTED`.
+
 ## Current manufacturer-page contradictions
 
 The 2026-08-07 primary-source recheck found two reasons the receiving boundary cannot be skipped:
