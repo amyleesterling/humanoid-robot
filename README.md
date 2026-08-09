@@ -428,6 +428,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R135 validation record](docs/reviews/2026-08-09-r135-validation-record.md)
 - [R135 independent review request](docs/reviews/2026-08-09-r135-independent-review-request.md)
 - [Sol R12 findings rechecked after R135](docs/reviews/2026-08-09-sol-r12-post-r135-status.md)
+- [R136 countersink model-definition correction candidate](docs/hr-v0-countersink-mbd-p0.1.md)
+- [R136 interactive countersink comparison guide](release/hr-v0/countersink-mbd-p0.1/index.html)
+- [R136 validation record](docs/reviews/2026-08-09-r136-validation-record.md)
+- [R136 independent review request](docs/reviews/2026-08-09-r136-independent-review-request.md)
+- [Sol R12 findings rechecked after R136](docs/reviews/2026-08-09-sol-r12-post-r136-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -497,7 +502,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred thirty-five review/control rounds are complete: R01-R135. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R135 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R135 independently matches all five STEP/DXF profile extents, thirty nominal hole features and eight controlled-upper-limit countersinks; traces twenty-six drawing controls; and exposes four open findings, including schedule-bound drawings, pre-fillet stop DXFs and Ø11.40 STEP versus Ø11.30 nominal countersink semantics. It authorizes no provider contact, quotation, fabrication, motion or energization.
+One hundred thirty-six review/control rounds are complete: R01-R136. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R136 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R136 preserves P0.7 and issues four nonselected P0.8 candidates that correct eight nominal countersinks from Ø11.40 x 3.10 mm / 87.159469° derived geometry to Ø11.30 x 2.90 mm / 90° geometry with unchanged external envelopes. Five selection decisions and three findings remain open. It authorizes no provider contact, quotation, fabrication, motion or energization.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -636,6 +641,7 @@ One hundred thirty-five review/control rounds are complete: R01-R135. R11 Fable 
 | R133 | Watchdog PCBA assembly-data definition | Issued `HR-V0-WD-PCBA-DATA-P0.1`; reconciles 42 populated references into sixteen exact-MPN BOM lines, controls 38 SMD / four THT placements plus four NPTH features, derives the 160 x 100 mm board-relative coordinate convention, and adds explicit orientation notes and an interactive map. Supplier-normalized XYRS, CAM, process acceptance, fabrication, assembly, physical evidence and energization remain unreleased. |
 | R134 | Mechanical DFM and first-article review-data correction | Issued `HR-V0-MECH-DFM-DATA-P0.1`; corrected the stale statement that the X430 comparison had not been produced, retained P1.1/X430 as nonselected and P0.7 as controlled, and bound five parts to fifteen exact geometry identities, twenty-six source controls, thirty unexecuted FAI operations, twelve unsent DFM questions and fifteen open holds. No provider contact, upload, quote, purchase, first article, fabrication, assembly, motion or energization is authorized. |
 | R135 | Mechanical STEP/DXF/drawing parity audit | Issued `HR-V0-MECH-PARITY-P0.1`; independently parsed all five DXFs and STEP solids, matched five profile extents, thirty exact nominal holes and eight countersink positions at the controlled upper-limit model diameter, traced all twenty-six drawing controls and published interactive feature maps. Four findings remain open; no file alone is a machining authority and no provider, fabrication, assembly, motion or energization action is authorized. |
+| R136 | Countersink model-definition correction candidate | Preserved P0.7 and issued `HR-V0-CSK-MBD-P0.1` plus four nonselected P0.8 candidate STEP parts. Eight countersinks now represent the controlled Ø11.30 nominal and exact 90° geometry at 2.90 mm depth; maximum Ø11.40 and 3.10 mm depth remain separate conservative screens. External envelopes are unchanged; five decisions and three findings remain open; no external action is authorized. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
