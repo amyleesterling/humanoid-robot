@@ -168,9 +168,9 @@ ERC validates modeled connectivity and annotation only. It does not establish ph
 
 ## Review history and independent findings
 
-One hundred fifty-six review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R156 are controlled project responses, not independent approvals. No round authorizes purchase, quotation, fabrication, powered testing, motion, connection or energization.
+One hundred fifty-eight review/control rounds are complete and recorded in `docs/review-ledger.md`. R11 Fable and R12 Sol were commissioned independently against GitHub `main` at `ee276af...` before the R13/R14 corrections. R11 reported 7 BLOCKER, 11 MAJOR, and 12 MINOR findings. R12 reported 18 BLOCKER, 30 MAJOR, and 8 MINOR findings; the resupplied analysis is the same R12 verdict and is not double-counted. R13-R158 are controlled project responses, not independent approvals. R158 corrects and separately versions the R156 P0.1 RPW footprint defect while retaining independent DFM/first-article and all physical/work-authority holds. No round authorizes purchase, quotation, fabrication, powered testing, motion, connection or energization.
 
-R80-R154 are historical project corrections. R155 is the current project-owned correction pass. None is an additional independent review or approval. Sol's resupplied verdict remains R12 and is not double-counted.
+R80-R157 are historical project corrections. R158 is the current project-owned correction pass. None is an additional independent review or approval. Sol's resupplied verdict remains R12 and is not double-counted.
 
 ## Principal unresolved engineering blockers
 

@@ -1,0 +1,11 @@
+check_id,feature,ti_value,unit,p0_1_encoded,p0_2_encoded,disposition
+RPW-001,side pitch,0.45,mm,0.475,0.45,P0.1 FAIL / P0.2 PASS
+RPW-002,pads 2/3/8/9 copper,0.60 x 0.25,mm,0.60 x 0.25,0.60 x 0.25,PASS
+RPW-003,pads 5/6 copper,0.30 x 2.40,mm,0.30 x 1.80,0.30 x 2.40,P0.1 FAIL / P0.2 PASS
+RPW-004,corner horizontal copper,0.60 x 0.30,mm,0.60 x 0.25,0.60 x 0.30,P0.1 FAIL / P0.2 PASS
+RPW-005,corner vertical copper,0.25 x 0.65,mm,0.20 x 0.42,0.25 x 0.65,P0.1 FAIL / P0.2 PASS
+RPW-006,corner vertical center x,+/-0.725,mm,+/-0.620,+/-0.725,P0.1 FAIL / P0.2 PASS
+RPW-007,pads 5/6 paste,2 x (0.28 x 1.06),mm per copper pad,full copper 0.30 x 1.80,2 x (0.28 x 1.06),P0.1 FAIL / P0.2 PASS
+RPW-008,corner paste horizontal,0.60 x 0.275,mm,full copper,0.60 x 0.275,P0.1 FAIL / P0.2 PASS
+RPW-009,corner paste vertical,0.225 x 0.63,mm,full copper,0.225 x 0.63,P0.1 FAIL / P0.2 PASS
+RPW-010,preferred mask expansion,0.05,mm nominal candidate,board default/implicit,0.05,P0.2 ENCODED; FABRICATOR TOLERANCE OPEN

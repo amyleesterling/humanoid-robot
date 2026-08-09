@@ -553,6 +553,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R157 independent review request](docs/reviews/2026-08-09-r157-independent-review-request.md)
 - [R157 validation record](docs/reviews/2026-08-09-r157-validation-record.md)
 - [Sol R12 findings rechecked after R157](docs/reviews/2026-08-09-sol-r12-post-r157-status.md)
+- [R158 corrected RPW carrier candidate](docs/hr-v0-dxl-protection-carrier-p0.2.md)
+- [R158 interactive footprint-correction guide](release/hr-v0/dxl-protection-carrier-p0.2/index.html)
+- [R158 exact RPW parity register](release/hr-v0/dxl-protection-carrier-p0.2/rpw-land-pattern-parity.csv)
+- [R158 independent review request](docs/reviews/2026-08-09-r158-independent-review-request.md)
+- [R158 validation record](docs/reviews/2026-08-09-r158-validation-record.md)
+- [Sol R12 findings rechecked after R158](docs/reviews/2026-08-09-sol-r12-post-r158-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -642,7 +648,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred fifty-six review/control rounds are complete: R01-R156. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R156 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R156 supplies a native four-layer measurement-carrier candidate for R155 while retaining the released robot baseline, zero safety credit and every reverse-current, pulse-energy, footprint/DFM, harness, protection, thermal, HIL, qualified-review and work-authorization hold.
+One hundred fifty-eight review/control rounds are complete: R01-R158. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R158 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R158 supersedes the defective P0.1 RPW footprint with a separately versioned P0.2 internal drawing-parity candidate while retaining the robot baseline, zero physical tests, zero safety credit and every independent/DFM/first-article, reverse-current, pulse-energy, harness, protection, thermal, HIL, qualified-review and work-authorization hold.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -803,6 +809,7 @@ One hundred fifty-six review/control rounds are complete: R01-R156. R11 Fable an
 | R155 | Native DXL branch-protection and regeneration evaluation | Issued `HR-V0-DXL-PROT-EVAL-P0.1`; added five connected KiCad sheets at ERC 0/0 for three exact TPS259461LRPWR branch candidates and one Pololu 3771 pulse-shunt candidate, rejected true reverse blocking for the present regenerative path, and retained fourteen blank tests, eighteen open holds and an unchanged robot baseline. |
 | R156 | Native DXL protection-carrier correction | Issued `HR-V0-DXL-PROT-CARRIER-P0.1`; added five legible native KiCad sheets, a routed four-layer single-channel carrier, exact source-backed part candidates, 20 placements, three controlled variants, review CAM, ten blank tests and sixteen open holds at ERC/DRC 0/0; rejected the initial crowded export and retained zero robot-baseline, fabrication or energization authority. |
 | R157 | Branch-fault and no-backfeed validation definition | Issued `HR-V0-BRANCH-FAULT-P0.1`; bound 24 blank cases to the exact V3 refs/nets across unpowered, limited-energy, guarded-fault and configured-distribution stages; supplied the missing EG-024 evidence location and an interactive guide while keeping the gate open and every physical result/authorization absent. |
+| R158 | RPW0010A footprint defect correction | Found eight material P0.1 transcription failures against TI drawing `4225183/A`; prohibited P0.1 for supplier use and issued a separate P0.2 candidate with exact 14-copper/16-paste primitive parity and KiCad ERC/DRC 0/0. Independent footprint, assembler/stencil DFM, first-article and every physical/work-authority hold remain open. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

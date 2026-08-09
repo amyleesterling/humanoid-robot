@@ -2,6 +2,8 @@
 
 > **PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION**
 
+> **SUPERSEDED / PROHIBITED FOR SUPPLIER USE:** R158 found material RPW0010A land-pattern transcription errors in this P0.1 source. Use it only as historical evidence. The separately versioned P0.2 review candidate corrects those dimensions but is also not released for physical work.
+
 - Identifier: `HR-V0-DXL-PROT-CARRIER-P0.1`
 - Review round: R156
 - Date: 2026-08-09
@@ -37,4 +39,4 @@ The package contains ten blank tests and sixteen open hold groups. It does not c
 - Generator: `tools/generate_hr_v0_dxl_protection_carrier_p01.py`
 - Checker: `tools/check_hr_v0_dxl_protection_carrier_p01.py`
 
-This is the physical-evidence route Sol found missing. It does not make HR-V0 build-ready or energization-ready.
+This historical package does not make HR-V0 build-ready or energization-ready and must not be used for quotation, fabrication or assembly.

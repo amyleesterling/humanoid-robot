@@ -28,6 +28,7 @@ RELEASE = ROOT / "release" / "hr-v0" / "dxl-protection-carrier-p0.1"
 PROJECT = "hr-v0-dxl-protection-carrier"
 IDENTIFIER = "HR-V0-DXL-PROT-CARRIER-P0.1"
 REVISION = "DXL-PROT-CARRIER-P0.1"
+SILK_REVISION = "P0.1"
 DATE = "2026-08-09"
 WARNING = (
     "PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, PROCUREMENT, "
@@ -174,8 +175,8 @@ def write_schematic(model, items):
     (OUT / f"{PROJECT}.kicad_pro").write_text(json.dumps(project, indent=2) + "\n", encoding="utf-8")
     symbols = [model.lib_symbol(item).replace(f'(symbol "PBV3:{item.ref}"', f'(symbol "{item.ref}"', 1) for item in items]
     (OUT / f"{PROJECT}.kicad_sym").write_text('(kicad_symbol_lib\n  (version 20251024) (generator "kicad_symbol_editor") (generator_version "10.0")\n  ' + "\n".join(symbols) + "\n)\n", encoding="utf-8")
-    (OUT / "sym-lib-table").write_text(f'(sym_lib_table\n  (version 7)\n  (lib (name "PBV3")(type "KiCad")(uri "${{KIPRJMOD}}/{PROJECT}.kicad_sym")(options "")(descr "R156 carrier symbols"))\n)\n', encoding="utf-8")
-    (OUT / "fp-lib-table").write_text('(fp_lib_table\n  (version 7)\n  (lib (name "ProjectButton_RPW.pretty")(type "KiCad")(uri "${KIPRJMOD}/ProjectButton_RPW.pretty")(options "")(descr "Drawing-derived TI RPW0010A candidate"))\n)\n', encoding="utf-8")
+    (OUT / "sym-lib-table").write_text(f'(sym_lib_table\n  (version 7)\n  (lib (name "PBV3")(type "KiCad")(uri "${{KIPRJMOD}}/{PROJECT}.kicad_sym")(options "")(descr "Controlled DXL protection-carrier symbols"))\n)\n', encoding="utf-8")
+    (OUT / "fp-lib-table").write_text('(fp_lib_table\n  (version 7)\n  (lib (name "ProjectButton_RPW.pretty")(type "KiCad")(uri "${KIPRJMOD}/ProjectButton_RPW.pretty")(options "")(descr "Controlled TI RPW0010A candidate"))\n)\n', encoding="utf-8")
     (OUT / f"{PROJECT}.kicad_sch").write_text(model.root_schematic(root_uuid, sheets), encoding="utf-8")
     for child in sheets: (OUT / child.filename).write_text(model.child_schematic(root_uuid, child, net_counts, wires), encoding="utf-8")
     write_csv(OUT / "bom.csv", ["reference", "manufacturer", "manufacturer_part_number", "value", "quantity", "assembly_variant", "status", "evidence"], [
@@ -352,7 +353,7 @@ def write_board(items):
         zone = pcbnew.ZONE(board); zone.SetLayer(layer); zone.SetNet(nets["ACT_0V_PE_BONDED"]); zone.SetLocalClearance(pcbnew.FromMM(0.25)); polygon = zone.Outline(); polygon.NewOutline()
         for point in ((0.8, 0.8), (99.2, 0.8), (99.2, 59.2), (0.8, 59.2)): polygon.Append(pcbnew.VECTOR2I_MM(*point))
         zone.SetMinThickness(pcbnew.FromMM(0.254)); board.Add(zone)
-    add_text(board, "R156 EVALUATION CARRIER - NO ROBOT RELEASE", 28, 56, 1.0, pcbnew.F_SilkS)
+    add_text(board, f"{SILK_REVISION} EVALUATION CARRIER - NO ROBOT RELEASE", 28, 56, 1.0, pcbnew.F_SilkS)
     add_text(board, "VIN", 6, 23, 1.0, pcbnew.F_SilkS); add_text(board, "VOUT", 90, 23, 1.0, pcbnew.F_SilkS)
     add_text(board, "PRELIMINARY - NOT APPROVED FOR FABRICATION", 25, 5, 0.8, pcbnew.F_SilkS)
     add_text(board, "NO CONNECTION / MOTION / ENERGIZATION", 30, 8, 0.8, pcbnew.F_SilkS)
