@@ -29,7 +29,7 @@
     {
       "domain": "functional_safety",
       "identifier": "HR-V0-FSA-P0.1",
-      "supporting_identifiers": ["DF-01 ZERO SAFETY CREDIT", "HR-V0-WD-SUPPLY-P0.1"],
+      "supporting_identifiers": ["DF-01 ZERO SAFETY CREDIT", "HR-V0-WD-SUPPLY-P0.1", "HR-V0-POWERLOSS-P0.1"],
       "release_state": "allocation_candidate_no_plr_or_sil_assigned"
     },
     {
