@@ -1,0 +1,7 @@
+item,mass_g,basis,boundary
+Active incomplete known/CAD subtotal with XM430,692.758000,active moving-mass ledger,many received/moving items absent
+Remove XM430 published mass,-82.000000,manufacturer published,active configuration unchanged
+Add XC330 published mass,23.000000,manufacturer published,received mass required
+Add P0.2 custom full-density calculation,45.366713,PETG 1.27 g/cm3 and pad 1.15 g/cm3 assumptions,not sliced or measured
+P0.2 incomplete screen subtotal,679.124713,arithmetic,"two FPX frames, all fasteners/nuts, cable, strain relief, bumper and integration hardware excluded"
+Shared incomplete headroom to 750 g screen,70.875287,750 minus incomplete subtotal,not mass closure or a gripper allocation

@@ -8,6 +8,8 @@ Round: **R190**
 
 Date: 2026-08-10
 
+> **Superseded interface detail:** R191 `HR-V0-GRIP-XC330-P0.2` replaces this branch's provisional frame and trapezoidal-tooth assumptions with official FPX330-S101 geometry and an involute candidate. P0.1 remains historical evidence and was never selected.
+
 ## Decision
 
 The current RM-X52/XM430 proposal remains the active but unselected gripper path. R190 adds a separate **preferred lightweight feasibility branch** around exact ROBOTIS `XC330-T288-T`, SKU `902-0171-000`. It does not select that branch, update `GRIP-002`, or silently change the active electrical, firmware, CAD, BOM or moving-mass baseline.

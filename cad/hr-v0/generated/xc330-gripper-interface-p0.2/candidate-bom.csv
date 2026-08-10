@@ -1,0 +1,8 @@
+item,quantity,manufacturer,order_code,description,state,evidence
+XG2-001,1,ROBOTIS,902-0171-000,"DYNAMIXEL XC330-T288-T including cable, PHS M2x6 TAP and PHS M2x8 TAP package hardware",EXACT CANDIDATE - NOT SELECTED,current official product page; received lot required
+XG2-002,1,ROBOTIS,903-0301-000,FPX330-S101 4pcs Set; allocate two frames to candidate and quarantine surplus,EXACT CANDIDATE - NOT SELECTED,current official product page; allocation/received evidence required
+XG2-003,1,SELECTION REQUIRED,SELECTION REQUIRED,"P0.2 printed U-base, cover, involute pinion and two rack-jaw parts",MATERIAL/PROCESS/FAI REQUIRED,native STEP/STL exists; production controls absent
+XG2-004,2,SELECTION REQUIRED,SELECTION REQUIRED,1 mm compliant pads with positive retention,SELECTION REQUIRED,material/durometer/retention/object testing absent
+XG2-005,8,SELECTION REQUIRED,SELECTION REQUIRED,M2 ear-to-S101 fasteners plus nuts/washers as selected from received stack,SELECTION REQUIRED,length/head/washer/torque/locking absent
+XG2-006,4,SELECTION REQUIRED,SELECTION REQUIRED,cover fasteners and retained threaded features,SELECTION REQUIRED,threaded-feature process/length/torque/locking absent
+XG2-007,1,SELECTION REQUIRED,SELECTION REQUIRED,travel-slot bellows or fixed secondary guard and strain-relieved cable route,DESIGN AND SELECTION REQUIRED,probe/retention/flex/drop evidence absent

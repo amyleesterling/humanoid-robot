@@ -1,0 +1,9 @@
+screen,value_mm_or_mm3,status
+official +X frame vs official actuator,0.000000000 mm3,zero positive-volume nominal interference
+official -X frame vs official actuator,0.000000000 mm3,zero positive-volume nominal interference
+official frames mutually,0.000000000 mm3,zero positive-volume nominal interference
+official actuator vs custom base,0.000000000 mm3,zero positive-volume nominal interference
+S101 frames vs U-base,0.000000000 mm3,zero positive-volume nominal interference; contact faces require received fit
+hub radial clearance in base,0.400000 mm diametral,nominal only; print/runout/thermal tolerance open
+rack lateral guide clearance,0.300000 mm per constrained side,"candidate only; print coupon, debris and wear proof open"
+rack vertical cover clearance,0.500000 mm,candidate only; warp/fastener/tolerance proof open

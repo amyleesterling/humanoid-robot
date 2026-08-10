@@ -1,0 +1,17 @@
+interface,side,x_mm,y_mm,z_mm,diameter_mm,basis,use
+S101 flange to XC330 body,+X,8.000000,-22.500000,axis,1.600 nominal actuator tap / 2.050 frame clearance,official B-Rep axis registration,PHS M2x8 TAP candidate
+S101 flange to XC330 body,+X,8.000000,7.500000,axis,1.600 nominal actuator tap / 2.050 frame clearance,official B-Rep axis registration,PHS M2x8 TAP candidate
+S101 flange to XC330 body,-X,-8.000000,-22.500000,axis,1.600 nominal actuator tap / 2.050 frame clearance,official B-Rep axis registration,PHS M2x8 TAP candidate
+S101 flange to XC330 body,-X,-8.000000,7.500000,axis,1.600 nominal actuator tap / 2.050 frame clearance,official B-Rep axis registration,PHS M2x8 TAP candidate
+pinion hub to XC330 output,output,6.000000,0.000000,output axis,1.600 nominal tap / 2.200 project clearance candidate,official drawing PCD12 and B-Rep,PHS M2x6 TAP candidate; 3.0 mm custom stack
+pinion hub to XC330 output,output,-6.000000,0.000000,output axis,1.600 nominal tap / 2.200 project clearance candidate,official drawing PCD12 and B-Rep,PHS M2x6 TAP candidate; 3.0 mm custom stack
+pinion hub to XC330 output,output,0.000000,6.000000,output axis,1.600 nominal tap / 2.200 project clearance candidate,official drawing PCD12 and B-Rep,PHS M2x6 TAP candidate; 3.0 mm custom stack
+pinion hub to XC330 output,output,0.000000,-6.000000,output axis,1.600 nominal tap / 2.200 project clearance candidate,official drawing PCD12 and B-Rep,PHS M2x6 TAP candidate; 3.0 mm custom stack
+custom U-base ear to S101 PCD16 field,+X ear,14.500000,-5.656854,-13.656854,2.200 project clearance candidate / 2.050 frame through,official frame PCD16 axis plus project ear,fastener length/order code SELECTION REQUIRED
+custom U-base ear to S101 PCD16 field,+X ear,14.500000,-5.656854,-2.343146,2.200 project clearance candidate / 2.050 frame through,official frame PCD16 axis plus project ear,fastener length/order code SELECTION REQUIRED
+custom U-base ear to S101 PCD16 field,+X ear,14.500000,5.656854,-13.656854,2.200 project clearance candidate / 2.050 frame through,official frame PCD16 axis plus project ear,fastener length/order code SELECTION REQUIRED
+custom U-base ear to S101 PCD16 field,+X ear,14.500000,5.656854,-2.343146,2.200 project clearance candidate / 2.050 frame through,official frame PCD16 axis plus project ear,fastener length/order code SELECTION REQUIRED
+custom U-base ear to S101 PCD16 field,-X ear,-14.500000,-5.656854,-13.656854,2.200 project clearance candidate / 2.050 frame through,official frame PCD16 axis plus project ear,fastener length/order code SELECTION REQUIRED
+custom U-base ear to S101 PCD16 field,-X ear,-14.500000,-5.656854,-2.343146,2.200 project clearance candidate / 2.050 frame through,official frame PCD16 axis plus project ear,fastener length/order code SELECTION REQUIRED
+custom U-base ear to S101 PCD16 field,-X ear,-14.500000,5.656854,-13.656854,2.200 project clearance candidate / 2.050 frame through,official frame PCD16 axis plus project ear,fastener length/order code SELECTION REQUIRED
+custom U-base ear to S101 PCD16 field,-X ear,-14.500000,5.656854,-2.343146,2.200 project clearance candidate / 2.050 frame through,official frame PCD16 axis plus project ear,fastener length/order code SELECTION REQUIRED

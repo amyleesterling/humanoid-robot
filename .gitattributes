@@ -33,6 +33,8 @@ cad/vendor/8020/*.jpg binary
 cad/vendor/8020/*.EPRT binary
 cad/vendor/robotis/open-manipulator-9187eca/* binary
 cad/vendor/robotis/xc330/*.stp binary
+cad/vendor/robotis/xc330/*.step binary
+cad/vendor/robotis/xc330/*.pdf binary
 cad/vendor/pololu/**/*.step binary
 electrical/vendor/**/*.step binary
 release/**/*.zip binary

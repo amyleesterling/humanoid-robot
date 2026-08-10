@@ -42,11 +42,12 @@ def check_source() -> None:
     assert SOURCE.read_bytes().startswith(b"ISO-10303-21")
     assert digest(SOURCE) == EXPECTED_SOURCE_SHA256
     manifest = rows(VENDOR / "source-manifest-p0.1.csv")
-    assert len(manifest) == 1
-    assert manifest[0]["artifact_id"] == "R190-XC330-001"
-    assert manifest[0]["sha256"] == EXPECTED_SOURCE_SHA256
-    assert manifest[0]["access_date"] == "2026-08-10"
-    assert "NO FABRICATION OR ENERGIZATION RELEASE" in manifest[0]["release_boundary"]
+    own_rows = [row for row in manifest if row["artifact_id"] == "R190-XC330-001"]
+    assert len(own_rows) == 1
+    own_row = own_rows[0]
+    assert own_row["sha256"] == EXPECTED_SOURCE_SHA256
+    assert own_row["access_date"] == "2026-08-10"
+    assert "NO FABRICATION OR ENERGIZATION RELEASE" in own_row["release_boundary"]
 
     shape = cq.importers.importStep(str(SOURCE))
     assert len(shape.solids().vals()) == 15
