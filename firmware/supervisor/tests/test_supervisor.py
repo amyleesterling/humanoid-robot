@@ -15,10 +15,12 @@ from project_button_supervisor import (  # noqa: E402
     JointRule,
     MotionMode,
     OperatingState,
+    PlanarKinematicModel,
     Supervisor,
     SupervisorConfig,
     TrajectoryCommand,
     TrajectorySample,
+    canonical_model_hash,
 )
 
 
@@ -29,9 +31,24 @@ JOINTS = {
 }
 START = {"J1": 0.0, "J2": 30.0, "GRIPPER": 40.0}
 END = {"J1": 5.0, "J2": 35.0, "GRIPPER": 42.0}
+KINEMATIC_BLOCK = {
+    "identifier": "HR-V0-KIN-P0.1",
+    "model_type": "PLANAR_PARALLEL_X_AXES_CONSERVATIVE_RATE_BOUND",
+    "shoulder_to_elbow_m": 0.20255,
+    "elbow_to_h104_m": 0.12905,
+    "tool_reach_from_h104_m": 0.100,
+    "source_frame_revision": "HR-V0-FRAME-CONV-P0.1",
+    "mechanical_revision": "HR-V0-MECH-P0.6",
+    "release_state": "ACCEPTED-FOR-GUARDED-HIL",
+    "acceptance_evidence_hash": "D" * 64,
+}
+KINEMATIC_HASH = canonical_model_hash(KINEMATIC_BLOCK)
 
 
 def config() -> SupervisorConfig:
+    kinematic_model = PlanarKinematicModel.from_mapping(
+        {"kinematic_model_hash": KINEMATIC_HASH, "kinematic_model": KINEMATIC_BLOCK}
+    )
     return SupervisorConfig(
         configuration_id="HR-V0-SUP-P0.3",
         configuration_hash="A" * 64,
@@ -42,7 +59,8 @@ def config() -> SupervisorConfig:
         automatic_gripper_speed_mm_s=20.0,
         setup_gripper_speed_mm_s=10.0,
         joints=JOINTS,
-        kinematic_model_hash="B" * 64,
+        kinematic_model_hash=KINEMATIC_HASH,
+        kinematic_model=kinematic_model,
         mechanical_limit_binding={
             "limit_set_id": "HR-V0-LIMITS-P0.2",
             "mechanical_revision": "HR-V0-MECH-P0.6",
@@ -85,7 +103,7 @@ def command(sequence: int = 1, now_ms: int = 1000, mode: MotionMode = MotionMode
         validity_deadline_ms=now_ms + 100,
         execution_deadline_ms=now_ms + 250,
         configuration_hash="A" * 64,
-        kinematic_model_hash="B" * 64,
+        kinematic_model_hash=KINEMATIC_HASH,
         sender_state=OperatingState.ARMED.value,
         mode=mode,
         starting_positions=START,

@@ -4,5 +4,5 @@ arm_summary,cad/hr-v0/generated/arm-architecture-p0.7/architecture-summary.json,
 mechanical_release,cad/hr-v0/generated/assembly/mechanical-release-summary.json,84ec628302d944cd91a1e834129030c1578e7de1a70507736b97041c107709c5,controlled input; no physical acceptance implied
 mechanical_parameters,cad/hr-v0/mechanical-release-data.csv,e6c6986974a4a6b8af074173e39e2e4b5f07d11986d037b985c24f6af88c8800,controlled input; no physical acceptance implied
 actuator_config,firmware/supervisor/actuator-config.json,67d89dcf835c0c2d2ec2143a85113945e3e7e404adce824f3870f1cb05b504eb,controlled input; no physical acceptance implied
-supervisor_config,firmware/supervisor/supervisor-config.json,983d7535f860e9ad1240d024c8011e7b65101c54e49dd3be04978baa3269238d,controlled input; no physical acceptance implied
+supervisor_config,firmware/supervisor/supervisor-config.json,2f602dcb461020f89021eb0788c83a285b7301d0de62a83ec48b06b0eda606fb,controlled input; no physical acceptance implied
 legacy_guard_summary,cad/hr-v0/guard-receiver-p0.2/guard-receiver-summary.json,a61c6790faa5a7c537e2af277faca652e14cc4e174ba81bf543425341a7f33de,controlled input; no physical acceptance implied

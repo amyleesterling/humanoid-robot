@@ -25,6 +25,7 @@ from .mechanical_binding import (
     evidence_is_accepted,
     is_sha256,
 )
+from .kinematics import PlanarKinematicModel
 
 
 WARNING = "PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION"
@@ -81,11 +82,13 @@ class SupervisorConfig:
     setup_gripper_speed_mm_s: float
     joints: Mapping[str, JointRule]
     kinematic_model_hash: str
+    kinematic_model: PlanarKinematicModel
     mechanical_limit_binding: Mapping[str, object]
 
     @classmethod
     def from_json(cls, path: Path) -> "SupervisorConfig":
         raw = json.loads(path.read_text(encoding="utf-8"))
+        kinematic_model = PlanarKinematicModel.from_mapping(raw)
         return cls(
             configuration_id=raw["configuration_id"],
             configuration_hash=raw["configuration_hash"],
@@ -97,6 +100,7 @@ class SupervisorConfig:
             setup_gripper_speed_mm_s=float(raw["setup_gripper_speed_mm_s"]),
             joints={name: JointRule(**rule) for name, rule in raw["joints"].items()},
             kinematic_model_hash=raw["kinematic_model_hash"],
+            kinematic_model=kinematic_model,
             mechanical_limit_binding=dict(raw["mechanical_limit_binding"]),
         )
 
@@ -120,6 +124,8 @@ class SupervisorConfig:
             and hashes_closed
             and tolerances_closed
             and limits_current
+            and self.kinematic_model.selections_closed
+            and self.kinematic_model.configured_model_hash == self.kinematic_model_hash
             and binding_is_current(self.mechanical_limit_binding)
             and evidence_is_accepted(self.mechanical_limit_binding)
         )
@@ -201,6 +207,13 @@ class Supervisor:
         self._reset_required_seen = False
         self._watchdog_ever_healthy = False
         self.events: list[EventRecord] = []
+
+    @classmethod
+    def from_json(cls, path: Path, session_id: str) -> "Supervisor":
+        """Build only with the validator bound to the same configuration file."""
+
+        config = SupervisorConfig.from_json(path)
+        return cls(config, config.kinematic_model.validator(), session_id)
 
     @property
     def outputs(self) -> SupervisorOutputs:

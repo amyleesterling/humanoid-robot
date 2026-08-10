@@ -14,6 +14,11 @@ from .model import (
     TrajectorySample,
 )
 from .dynamixel_bus import ActuatorTelemetry, BusError, DynamixelBusController
+from .kinematics import (
+    KinematicConfigurationError,
+    PlanarKinematicModel,
+    canonical_model_hash,
+)
 
 __all__ = [
     "ActuatorConfiguration",
@@ -32,4 +37,7 @@ __all__ = [
     "ActuatorTelemetry",
     "BusError",
     "DynamixelBusController",
+    "KinematicConfigurationError",
+    "PlanarKinematicModel",
+    "canonical_model_hash",
 ]

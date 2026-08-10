@@ -14,6 +14,17 @@
     "GRIPPER": {"minimum": 20.0, "maximum": 75.0, "unit": "mm", "start_tolerance": null}
   },
   "kinematic_model_hash": "SELECTION REQUIRED",
+  "kinematic_model": {
+    "identifier": "HR-V0-KIN-P0.1",
+    "model_type": "PLANAR_PARALLEL_X_AXES_CONSERVATIVE_RATE_BOUND",
+    "shoulder_to_elbow_m": 0.20255,
+    "elbow_to_h104_m": 0.12905,
+    "tool_reach_from_h104_m": "SELECTION REQUIRED",
+    "source_frame_revision": "HR-V0-FRAME-CONV-P0.1",
+    "mechanical_revision": "HR-V0-MECH-P0.6",
+    "release_state": "CANDIDATE-NOT-RELEASED",
+    "acceptance_evidence_hash": "SELECTION REQUIRED"
+  },
   "mechanical_limit_binding": {
     "limit_set_id": "HR-V0-LIMITS-P0.2",
     "mechanical_revision": "HR-V0-MECH-P0.6",

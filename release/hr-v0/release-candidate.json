@@ -25,8 +25,8 @@
     {
       "domain": "firmware",
       "identifier": "HR-V0-FW-P0.4",
-      "supporting_identifiers": ["HR-V0-WD-BUILD-P0.2", "HR-V0-SUP-P0.3", "HR-V0-ACT-P0.3", "HR-V0-DXL-TRANSPORT-P0.3", "HR-V0-DXL-CURRENT-ENV-P0.1", "HR-V0-LIMITS-P0.2", "HR-V0-MECH-P0.6", "HR-V0-ARM-ARCH-P0.7", "HR-V0-HS-P0.3", "HR-V0-HOST-DEPLOY-P0.1", "HR-V0-RPI-OS-SBOM-P0.1", "HR-V0-STALE-AUTH-P0.1"],
-      "release_state": "source_transport_reproducible_watchdog_disabled_fail_closed_host_overlay_publisher_sbom_lock_and_stale_replay_rejection_candidate_not_installed_flashed_connected_or_hil_validated"
+      "supporting_identifiers": ["HR-V0-WD-BUILD-P0.2", "HR-V0-SUP-P0.3", "HR-V0-ACT-P0.3", "HR-V0-DXL-TRANSPORT-P0.3", "HR-V0-DXL-CURRENT-ENV-P0.1", "HR-V0-LIMITS-P0.2", "HR-V0-MECH-P0.6", "HR-V0-ARM-ARCH-P0.7", "HR-V0-HS-P0.3", "HR-V0-HOST-DEPLOY-P0.1", "HR-V0-RPI-OS-SBOM-P0.1", "HR-V0-STALE-AUTH-P0.1", "HR-V0-KIN-P0.1"],
+      "release_state": "source_transport_reproducible_watchdog_disabled_fail_closed_host_overlay_publisher_sbom_lock_stale_replay_rejection_and_unreleased_kinematic_bound_candidate_not_installed_flashed_connected_or_hil_validated"
     },
     {
       "domain": "functional_safety",
