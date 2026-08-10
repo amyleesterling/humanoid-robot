@@ -6,6 +6,8 @@ Recorded: 2026-08-06
 
 Code-route recheck: 2026-08-08
 
+Superseding site-control supplement: `HR-V0-BOSTON-SITE-P0.2` / R194 / 2026-08-10
+
 Applies to: HR-V0 only
 
 ## Frozen program inputs
@@ -25,6 +27,8 @@ Applies to: HR-V0 only
 The 120 VAC/60 Hz entry identifies the nominal regional supply only. It is not evidence that a particular receptacle or branch circuit is suitable.
 
 ## Inputs required to close EG-001
+
+R194 converts these narrative inputs into the twenty-row completion form at `configuration/hr-v0-boston-site-p0.2/premises-input-template.csv` and records eight fail-closed holds. This document remains the program-input basis; the R194 package is the current machine-readable site-control record.
 
 The Massachusetts Department of Fire Services current page identifies 527 CMR 12.00 as based on the 2026 edition of NFPA 70, effective 2026-04-24. Boston's current permit page identifies the licensed-contractor application and inspection route for covered electrical installation work. These current routes do not determine applicability to a not-yet-selected home, library, makerspace or workplace test site. The exact site representative and qualified local reviewer must record the site/work-scope determination.
 

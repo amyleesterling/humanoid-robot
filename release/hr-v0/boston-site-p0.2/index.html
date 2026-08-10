@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HR-V0 Boston site readiness guide</title>
+  <style>
+    :root{--sky:#dff3ff;--navy:#102a56;--blue:#245aa6;--gold:#f2b827;--paper:#f8fbff;--ink:#14213d;--red:#7c2525;--green:#12624a}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,sans-serif}.warn{background:var(--gold);color:#17223f;font-size:16px;font-weight:850;padding:16px 20px;border-bottom:3px solid var(--navy)}
+    header{background:linear-gradient(135deg,var(--navy),var(--blue));color:white;padding:clamp(30px,6vw,76px)}header p{max-width:78ch}main{max-width:1180px;margin:auto;padding:24px}h1{font-size:clamp(2.2rem,6vw,4.8rem);line-height:1.02;margin:.15em 0}h2{font-size:clamp(1.5rem,3vw,2.3rem);color:var(--navy)}h3{font-size:1.2rem}.eyebrow,.tag{font-size:14px;font-weight:800}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}.card{background:white;border:2px solid var(--sky);border-radius:16px;padding:20px;box-shadow:0 7px 20px #102a5617}.metric{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:850;color:var(--blue)}.hold{border-left:8px solid var(--gold)}.blocked{border-left:8px solid var(--red)}.known{border-left:8px solid var(--green)}
+    .filters{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.filters button{font:700 16px/1.2 system-ui,sans-serif;padding:12px 16px;border:2px solid var(--navy);border-radius:999px;background:white;color:var(--navy);cursor:pointer}.filters button[aria-pressed="true"]{background:var(--navy);color:white}.step{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}.number{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:900}
+    table{border-collapse:collapse;width:100%;min-width:780px}th,td{padding:14px;border-bottom:1px solid #a8c8df;text-align:left;vertical-align:top}th{background:var(--sky)}.scroll{overflow:auto;border:2px solid var(--blue);border-radius:14px;background:white}a{color:#0b4f8a;font-weight:700}.hidden{display:none}footer{margin-top:30px;background:var(--navy);color:white;padding:24px}@media(max-width:620px){main{padding:16px}.warn{padding:14px 16px}.step{grid-template-columns:1fr}.number{width:38px;height:38px}}
+  </style>
+</head>
+<body>
+  <div class="warn">PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION</div>
+  <header><div class="eyebrow">R194 · HR-V0-BOSTON-SITE-P0.2</div><h1>Boston is known. The test site is not.</h1><p>This guide separates three different questions: which laws and authorities are relevant, where the robot may be assembled and tested, and who might machine its five aluminum parts. None of those answers authorizes energization.</p></header>
+  <main>
+    <section class="grid">
+      <article class="card known"><div class="metric">8 controlled facts</div><p>Boston jurisdiction, regional supply basis, adult-only indoor bench use and child exclusion are recorded.</p></article>
+      <article class="card blocked"><div class="metric">20 site inputs open</div><p>The exact facility, branch circuit, bench, environment, emergency plan and E2 authority remain blank.</p></article>
+      <article class="card blocked"><div class="metric">0 gates closed</div><p>EG-001 and EG-022 remain partial. No connection or powered test is authorized.</p></article>
+    </section>
+
+    <section><h2>What kind of place are we choosing?</h2><div class="filters" role="group" aria-label="Filter site roles">
+      <button type="button" data-filter="all" aria-pressed="true">Show all</button><button type="button" data-filter="test" aria-pressed="false">Assembly and test</button><button type="button" data-filter="prototype" aria-pressed="false">Prototype making</button><button type="button" data-filter="cnc" aria-pressed="false">Structural CNC</button>
+    </div><div class="grid" id="siteCards">
+      <article class="card hold" data-role="test"><span class="tag">Selection required</span><h3>Assembly and energization premises</h3><p>An exact Boston-area facility, room and bench must be selected. Written permission, a branch/receptacle survey, restraint survey, exclusion plan and qualified applicability review are required.</p></article>
+      <article class="card" data-role="prototype"><span class="tag">Nonstructural only on current evidence</span><h3>Boston Public Library</h3><p>Published CAD, media and MakerBot resources. The reviewed pages publish no CNC mill or structural-metal capability; KBLIC currently says 3D printing is temporarily unavailable.</p></article>
+      <article class="card" data-role="prototype"><span class="tag">Inquiry candidate</span><h3>Hatch Makerspace</h3><p>Watertown Library publishes a makerspace and laser-cutter learning route. No reviewed evidence closes the robot's 6061-T651, tight-tolerance, CMM or first-article requirements.</p></article>
+      <article class="card" data-role="cnc"><span class="tag">Best local published screen</span><h3>Kontrast4D</h3><p>Salem, Massachusetts. Published multi-axis CNC, numerical tolerance, CMM and FAI capability. Project-specific material and full-drawing acceptance remain open.</p></article>
+      <article class="card" data-role="cnc"><span class="tag">Online review routes</span><h3>Protolabs and Xometry</h3><p>Useful commercial alternatives. C06/C07 rail datum, step, coplanarity, surface-map and exact-material acceptance still require written review.</p></article>
+    </div></section>
+
+    <section><h2>The shortest honest path to a usable site</h2><div class="grid">
+      <article class="card step"><div class="number">1</div><div><h3>Name the exact premises</h3><p>Facility, street address, room, bench, responsible representative and written permission.</p></div></article>
+      <article class="card step"><div class="number">2</div><div><h3>Survey power and the bench</h3><p>Receptacle, branch, ground, polarity, GFCI, fault-current basis, cord path, bench structure and restraint.</p></div></article>
+      <article class="card step"><div class="number">3</div><div><h3>Set people and emergency controls</h3><p>Exclusion boundary, adult supervision, child lockout, emergency contacts, shutdown and fire-response rules.</p></div></article>
+      <article class="card step"><div class="number">4</div><div><h3>Obtain qualified dispositions</h3><p>Code/permit applicability, electrical review and a configuration-specific written E2 authorization with stop conditions.</p></div></article>
+    </div></section>
+
+    <section><h2>Current official route evidence</h2><div class="scroll"><table><thead><tr><th>Authority or facility</th><th>What the page establishes</th><th>What it does not establish</th></tr></thead><tbody>
+      <tr><td>Massachusetts DFS</td><td>Current 527 CMR 12.00 route; 2026 NFPA 70 basis effective 2026-04-24</td><td>Project-specific applicability, compliance or approval</td></tr>
+      <tr><td>City of Boston</td><td>Licensed-contractor permit and inspection route for covered work</td><td>Whether this exact premises and work scope require a permit</td></tr>
+      <tr><td>Boston Public Library</td><td>MakerBot and design/media resources</td><td>CNC structural-aluminum capability or test-site permission</td></tr>
+      <tr><td>Watertown Hatch</td><td>Makerspace and laser-cutter learning route</td><td>Acceptance of the five controlled aluminum parts</td></tr>
+    </tbody></table></div></section>
+
+    <section class="card hold"><h2>Use the facility survey, not assumptions</h2><p>The twenty-row premises form is the closure checklist. Regional voltage, a familiar-looking outlet, a library membership or a supplier capability page cannot fill its blank evidence fields.</p><p><a href="../../../configuration/hr-v0-boston-site-p0.2/premises-input-template.csv">Open the premises input template</a> · <a href="../boston-fabrication-route-p0.3/index.html">Open the custom-metal route guide</a></p></section>
+  </main>
+  <footer>This page is a planning and evidence-control guide. It does not authorize a provider contact, quote, procurement, fabrication, assembly, connection, powered test, motion or energization.</footer>
+  <script>
+    const buttons=[...document.querySelectorAll('[data-filter]')],cards=[...document.querySelectorAll('[data-role]')];
+    buttons.forEach(button=>button.addEventListener('click',()=>{const filter=button.dataset.filter;buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));cards.forEach(card=>card.classList.toggle('hidden',filter!=='all'&&card.dataset.role!==filter));}));
+  </script>
+</body>
+</html>
