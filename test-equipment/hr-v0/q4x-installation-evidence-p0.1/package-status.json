@@ -1,0 +1,16 @@
+{
+  "identifier": "HR-V0-Q4X-INSTALL-EVIDENCE-P0.1",
+  "round": "R186",
+  "date": "2026-08-10",
+  "manufacturer_torque_baseline_Nm": 1.5,
+  "through_hole_diameter": "SELECTION REQUIRED",
+  "separate_locknut_torque_certificate_field": "blank",
+  "receiving_lines": 10,
+  "metrology_steps": 10,
+  "open_holds": 11,
+  "executed_physical_steps": 0,
+  "procurement_authorized": false,
+  "fabrication_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - RECEIVING AND METROLOGY PLAN ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, DRILLING, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}
