@@ -4,7 +4,7 @@ Status: **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
 Identifier: `HR-V0-E2-HW-P0.4`
 
-P0.4 supersedes the P1.14-bound P0.3 slice. It binds the first control-only commissioning configuration to `Project Button Electrical V3-P1.15-CARRIER-CANDIDATE`, `PCB-P0.9`, `HR-V0-WD-PCBA-DATA-P0.2`, `HR-V0-WD-CAM-P0.1` and `HR-V0-E2-P115-PARITY-P0.1`.
+P0.4 supersedes the P1.14-bound P0.3 slice. It binds the first control-only commissioning configuration to `Project Button Electrical V3-P1.15-CARRIER-CANDIDATE`, `PCB-P0.9`, `HR-V0-WD-PCBA-DATA-P0.2`, current `HR-V0-WD-CAM-P0.2` and `HR-V0-E2-P115-PARITY-P0.1`.
 
 The configuration retains 23 installed/absent/DNP/selection rows, six exact XT1 position candidates, three source-domain rows and twelve blocking holds. Only the held 24 V control and 5.1 V compute domains may eventually be considered under a separately authorized E2 procedure.
 

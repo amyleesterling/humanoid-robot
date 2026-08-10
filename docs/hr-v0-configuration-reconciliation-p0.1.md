@@ -4,7 +4,7 @@ Status: **PRELIMINARY—NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CON
 
 Identifier: `HR-V0-CONFIG-REC-P0.1`
 
-Review synchronization: R163-R165
+Review synchronization: R163-R166
 
 Date: 2026-08-09
 
@@ -47,6 +47,6 @@ The P0.2 star CAM is internal review evidence only. The star board and carrier P
 
 ## Gate effect
 
-`EG-002`, `EG-003`, `EG-004`, `EG-014`, and `EG-015` remain `partial`. R163-R165 improve traceability and digital parity but supply no received article, physical fit, wiring, thermal/fault/EMC result, functional-safety validation, independent acceptance, or qualified authorization.
+`EG-002`, `EG-003`, `EG-004`, `EG-014`, and `EG-015` remain `partial`. R163-R166 improve traceability, digital parity, and current watchdog CAM binding but supply no received article, physical fit, wiring, thermal/fault/EMC result, supplier/process acceptance, functional-safety validation, independent acceptance, or qualified authorization.
 
 The machine-readable package is in `configuration/hr-v0-config-reconciliation-p0.1/`; the human-readable guide is in `release/hr-v0/configuration-reconciliation-p0.1/`.

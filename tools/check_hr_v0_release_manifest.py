@@ -87,7 +87,7 @@ def main() -> None:
         "HR-V0-WD-PCBA-RFI-P0.1",
         "HR-V0-WD-PCBA-DATA-P0.2",
         "HR-V0-WD-BOM-BIND-P0.1",
-        "HR-V0-WD-CAM-P0.1",
+        "HR-V0-WD-CAM-P0.2",
         "HR-V0-E2-P115-PARITY-P0.1",
         "HR-V0-E2-HW-P0.4",
         "DXL-STAR-P0.2-CARRIER-CANDIDATE",
@@ -117,7 +117,7 @@ def main() -> None:
         "HR-V0-COMPUTE-IF-P0.1",
         "HR-V0-GRIP-ELEC-P0.1",
         "HR-V0-ACT-AC-CORD-P0.1",
-    ] or electrical_product.get("release_state") != "carrier_integrated_configuration_candidate_p115_watchdog_e2_digital_parity_controlled_current_cam_review_exists_not_supplier_released_physical_evidence_absent":
+    ] or electrical_product.get("release_state") != "carrier_integrated_configuration_candidate_p115_watchdog_e2_digital_parity_controlled_p115_bound_cam_review_exists_not_supplier_released_physical_evidence_absent":
         errors.append("Electrical V3-P1.15 supporting identifiers or release state changed")
     safety_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FSA-P0.1"),

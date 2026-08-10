@@ -32,7 +32,7 @@ def changed_config() -> list[tuple[str, ...]]:
     for row in base.CONFIG:
         values = list(row)
         if row[0] == "E2-CFG-011":
-            values[2] = "Project Button PCB-P0.9 / HR-V0-WD-PCBA-DATA-P0.2 / HR-V0-WD-CAM-P0.1 / HR-V0-E2-P115-PARITY-P0.1"
+            values[2] = "Project Button PCB-P0.9 / HR-V0-WD-PCBA-DATA-P0.2 / HR-V0-WD-CAM-P0.2 / HR-V0-E2-P115-PARITY-P0.1"
             values[3] = "P1.15-PARITY INSTALL CANDIDATE"
             values[5] = "P1.15 schedule/native-net parity is controlled and current internal CAM exists; supplier-normalized XYRS, assembler/process acceptance, fabrication, bare-board, assembly, HIL, fault, EMC, thermal and qualified evidence remain absent."
         elif row[0] == "E2-CFG-018":
@@ -60,7 +60,7 @@ def source_paths() -> dict[str, Path]:
         "p115_native_netlist": ROOT / "electrical" / "kicad" / "project-button-v3-p1.15-carrier-candidate" / "validation" / "project-button-v3-p1.15-carrier-candidate.net",
         "p115_native_erc": ROOT / "electrical" / "kicad" / "project-button-v3-p1.15-carrier-candidate" / "validation" / "project-button-v3-p1.15-carrier-candidate-erc.rpt",
         "p115_e2_parity": ROOT / "release" / "hr-v0" / "e2-p115-parity-p0.1" / "package-status.json",
-        "watchdog_cam": ROOT / "release" / "hr-v0" / "watchdog-pcb-cam-p0.1" / "package-status.json",
+        "watchdog_cam": ROOT / "release" / "hr-v0" / "watchdog-pcb-cam-p0.2" / "package-status.json",
         "e2_sequence": ROOT / "tests" / "e2" / "hr-v0-e2-control-only-sequence.csv",
     }
 
@@ -91,7 +91,7 @@ def generate_target(target: Path) -> None:
     summary = {
         "identifier": IDENTIFIER,
         "date": "2026-08-09",
-        "round": "R165",
+        "round": "R165+R166-SYNCHRONIZED",
         "warning": WARNING,
         "electrical_baseline": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE / PCB-P0.9 / HR-V0-WD-PCBA-DATA-P0.2",
         "parity_evidence": PARITY,

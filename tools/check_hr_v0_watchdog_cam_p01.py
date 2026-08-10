@@ -1,10 +1,11 @@
-"""Validate HR-V0-WD-CAM-P0.1 without granting work authority."""
+"""Validate an HR-V0 watchdog CAM review package without granting work authority."""
 
 from __future__ import annotations
 
 import csv
 import hashlib
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -13,8 +14,22 @@ import pcbnew
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "electrical" / "kicad" / "project-button-v3"
+P115_SOURCE = ROOT / "electrical" / "kicad" / "project-button-v3-p1.15-carrier-candidate"
+P115_PARITY = ROOT / "release" / "hr-v0" / "e2-p115-parity-p0.1"
 ASSEMBLY = ROOT / "electrical" / "manufacturing" / "hr-v0-watchdog-pcba-assembly-data-p0.2"
-OUT = ROOT / "release" / "hr-v0" / "watchdog-pcb-cam-p0.1"
+PROFILE = os.environ.get("HR_V0_WD_CAM_PROFILE", "p0.1")
+if PROFILE not in {"p0.1", "p0.2"}:
+    raise ValueError(f"unsupported watchdog CAM profile: {PROFILE}")
+CURRENT_P115 = PROFILE == "p0.2"
+OUT = ROOT / "release" / "hr-v0" / f"watchdog-pcb-cam-{PROFILE}"
+IDENTIFIER = f"HR-V0-WD-CAM-{PROFILE.upper()}"
+ROUND = "R166" if CURRENT_P115 else "R150"
+BOARD_BINDING = (
+    "PCB-P0.9 / Electrical V3-P1.15-CARRIER-CANDIDATE via HR-V0-E2-P115-PARITY-P0.1"
+    if CURRENT_P115
+    else "PCB-P0.9 / Electrical V3-P1.14"
+)
+TITLE_TOKEN = "P1.15-bound PCB-P0.9 CAM exists for review" if CURRENT_P115 else "Current PCB-P0.9 CAM exists for review"
 WARNING = (
     "PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, FABRICATION, "
     "ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
@@ -68,9 +83,19 @@ def main() -> int:
     need(not any(path.suffix.lower() in {".zip", ".7z", ".rar"} for path in OUT.rglob("*")), "upload archive must not exist")
 
     status = json.loads((OUT / "package-status.json").read_text(encoding="utf-8"))
-    need(status.get("identifier") == "HR-V0-WD-CAM-P0.1", "wrong identifier")
-    need(status.get("round") == "R150", "wrong round")
-    need(status.get("board") == "PCB-P0.9 / Electrical V3-P1.14", "wrong board identity")
+    need(status.get("identifier") == IDENTIFIER, "wrong identifier")
+    need(status.get("round") == ROUND, "wrong round")
+    need(status.get("board") == BOARD_BINDING, "wrong board identity")
+    need(status.get("native_board_title_revision") == "PCB-P0.9 / Electrical V3-P1.14", "native board title boundary changed")
+    need(
+        status.get("current_electrical_baseline")
+        == ("Project Button Electrical V3-P1.15-CARRIER-CANDIDATE" if CURRENT_P115 else "Project Button Electrical V3-P1.14"),
+        "wrong electrical baseline",
+    )
+    need(
+        status.get("p115_parity_evidence") == ("HR-V0-E2-P115-PARITY-P0.1" if CURRENT_P115 else None),
+        "wrong P1.15 parity binding",
+    )
     need(status.get("assembly_data") == "HR-V0-WD-PCBA-DATA-P0.2", "wrong assembly-data identity")
     need(status.get("native_tool") == "KiCad 10.0.5", "wrong native tool")
     need(status.get("populated_references") == 42 and status.get("mechanical_features") == 4, "wrong board counts")
@@ -92,31 +117,42 @@ def main() -> int:
     electrical_product = next(
         (item for item in release.get("current_products", []) if item.get("domain") == "electrical"), {}
     )
-    need(
-        "HR-V0-WD-CAM-P0.1" in electrical_product.get("supporting_identifiers", []),
-        "release candidate omits the controlled watchdog CAM-review package",
-    )
     historical_products = release.get("historical_or_out_of_scope_products", [])
-    need(
-        any(
-            "V3-P1.14" in item.get("identifier", "")
-            and "historical review evidence" in item.get("disposition", "")
-            for item in historical_products
-        ),
-        "release candidate omits the P1.14 historical source boundary",
-    )
+    if CURRENT_P115:
+        need(
+            IDENTIFIER in electrical_product.get("supporting_identifiers", []),
+            "release candidate omits the current P1.15-bound CAM-review package",
+        )
+        need(
+            any("HR-V0-WD-CAM-P0.1" in item.get("identifier", "") for item in historical_products),
+            "release candidate omits the superseded P0.1 CAM boundary",
+        )
+    else:
+        need(
+            IDENTIFIER in electrical_product.get("supporting_identifiers", [])
+            or any(IDENTIFIER in item.get("identifier", "") for item in historical_products),
+            "release candidate omits the controlled historical CAM-review package",
+        )
+        need(
+            any(
+                "V3-P1.14" in item.get("identifier", "")
+                and "historical review evidence" in item.get("disposition", "")
+                for item in historical_products
+            ),
+            "release candidate omits the P1.14 historical source boundary",
+        )
     gates = {row["gate_id"]: row for row in read_csv(ROOT / "requirements" / "hr-v0-energization-gates.csv")}
     eg004 = gates.get("EG-004", {})
     need(
         eg004.get("status") == "partial"
-        and "release/hr-v0/watchdog-pcb-cam-p0.1/" in eg004.get("evidence_location", "")
-        and "tools/check_hr_v0_watchdog_cam_p01.py" in eg004.get("evidence_location", ""),
+        and f"release/hr-v0/watchdog-pcb-cam-{PROFILE}/" in eg004.get("evidence_location", "")
+        and f"tools/check_hr_v0_watchdog_cam_{PROFILE.replace('.', '')}.py" in eg004.get("evidence_location", ""),
         "EG-004 does not retain partial status with current CAM evidence",
     )
     bom048 = next((row for row in read_csv(ROOT / "bom" / "bom.csv") if row.get("item_id") == "BOM-048"), {})
     need(
         bom048.get("baseline_status") == "exact_candidate_hold"
-        and "HR-V0-WD-CAM-P0.1" in bom048.get("selection_basis", "")
+        and (IDENTIFIER in bom048.get("selection_basis", "") if CURRENT_P115 else True)
         and "not supplier-released" in bom048.get("selection_basis", ""),
         "BOM-048 does not retain exact hold with quarantined current CAM evidence",
     )
@@ -129,6 +165,17 @@ def main() -> int:
         "electrical/manufacturing/hr-v0-watchdog-pcba-assembly-data-p0.2/mechanical-feature-register.csv": ASSEMBLY / "mechanical-feature-register.csv",
         "electrical/manufacturing/hr-v0-watchdog-pcba-assembly-data-p0.2/assembly-data-holds.csv": ASSEMBLY / "assembly-data-holds.csv",
     }
+    if CURRENT_P115:
+        source_map.update(
+            {
+                "electrical/kicad/project-button-v3-p1.15-carrier-candidate/project-button-v3-p1.15-carrier-candidate.kicad_pro": P115_SOURCE / "project-button-v3-p1.15-carrier-candidate.kicad_pro",
+                "electrical/kicad/project-button-v3-p1.15-carrier-candidate/project-button-v3-p1.15-carrier-candidate.kicad_sch": P115_SOURCE / "project-button-v3-p1.15-carrier-candidate.kicad_sch",
+                "electrical/kicad/project-button-v3-p1.15-carrier-candidate/SOURCE-MANIFEST.csv": P115_SOURCE / "SOURCE-MANIFEST.csv",
+                "release/hr-v0/e2-p115-parity-p0.1/package-status.json": P115_PARITY / "package-status.json",
+                "release/hr-v0/e2-p115-parity-p0.1/expected-change-register.csv": P115_PARITY / "expected-change-register.csv",
+                "release/hr-v0/e2-p115-parity-p0.1/source-hash-register.csv": P115_PARITY / "source-hash-register.csv",
+            }
+        )
     need(set(status.get("source_hashes", {})) == set(source_map), "source-hash membership mismatch")
     for key, path in source_map.items():
         need(status.get("source_hashes", {}).get(key) == sha256(path), f"source hash mismatch: {key}")
@@ -209,7 +256,7 @@ def main() -> int:
     need(log.count("exit=0") == 6, "expected six successful KiCad CLI operations")
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in (
-        "font:clamp(16px", "code{font-size:14px", "Current PCB-P0.9 CAM exists for review",
+        "font:clamp(16px", "code{font-size:14px", TITLE_TOKEN,
         "quarantined internal evidence", "NOT MACHINE XYRS", "Eighteen holds remain open",
         "supplier releases or work authorizations",
     ):
@@ -227,11 +274,11 @@ def main() -> int:
         need(int(row["bytes"]) == path.stat().st_size, f"manifest size mismatch: {row['path']}")
 
     if failures:
-        print("HR-V0-WD-CAM-P0.1 check FAILED")
+        print(f"{IDENTIFIER} check FAILED")
         for failure in failures:
             print("-", failure)
         return 1
-    print("HR-V0-WD-CAM-P0.1 PASS")
+    print(f"{IDENTIFIER} PASS")
     print("  PCB-P0.9 source bound; native DRC 0; 10 Gerber/job + 5 drill/map/report files")
     print("  42 internal position rows at exact parity; supplier-normalized XYRS remains absent")
     print("  18 holds OPEN; no supplier contact, upload, quotation, fabrication, assembly, connection, motion or energization authority")

@@ -51,7 +51,7 @@ def main() -> int:
     need(len(sources) == 3, "expected three source-domain rows")
     need(len(holds) == 12, "expected twelve blocking holds")
     need(len(hashes) == 7, "expected seven source hashes")
-    need(summary.get("identifier") == IDENTIFIER and summary.get("round") == "R165", "summary identity changed")
+    need(summary.get("identifier") == IDENTIFIER and summary.get("round") == "R165+R166-SYNCHRONIZED", "summary identity changed")
     need(summary.get("electrical_baseline") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE / PCB-P0.9 / HR-V0-WD-PCBA-DATA-P0.2", "P1.15 baseline changed")
     need(summary.get("parity_evidence") == PARITY and summary.get("p115_parity_verified_by_checker") is True, "P1.15 parity binding missing")
     need(summary.get("authorization") == "NOT AUTHORIZED", "E2 authorization must remain denied")

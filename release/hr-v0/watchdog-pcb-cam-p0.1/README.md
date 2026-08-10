@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION**
 
-This is a source-bound CAM **review** package for current watchdog board `PCB-P0.9 / Electrical V3-P1.14`. It contains no supplier release and no machine-ready assembler XYRS.
+This is a source-bound CAM **review** package for `PCB-P0.9 / Electrical V3-P1.14`. It contains no supplier release and no machine-ready assembler XYRS.
 
 ## What exists
 

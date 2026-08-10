@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSEMBLY = ROOT / "electrical" / "manufacturing" / "hr-v0-watchdog-pcba-assembly-data-p0.2"
-CAM = ROOT / "release" / "hr-v0" / "watchdog-pcb-cam-p0.1"
+CAM = ROOT / "release" / "hr-v0" / "watchdog-pcb-cam-p0.2"
 OUT = ROOT / "release" / "hr-v0" / "watchdog-pcb-bom-binding-p0.1"
 BINDING = ROOT / "bom" / "hr-v0-watchdog-pcb-binding.csv"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
@@ -52,12 +52,13 @@ def main() -> int:
         "bom_item_id": "BOM-048",
         "board_id": "PCB-P0.9",
         "electrical_revision": "Project Button Electrical V3-P1.14",
+        "current_system_binding": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE via HR-V0-E2-P115-PARITY-P0.1",
         "assembly_data_id": "HR-V0-WD-PCBA-DATA-P0.2",
         "populated_references": "42",
         "bom_lines": "16",
         "mechanical_features": "4",
         "cam_exists_at_issue": "FALSE",
-        "current_cam_review_identifier": "HR-V0-WD-CAM-P0.1",
+        "current_cam_review_identifier": "HR-V0-WD-CAM-P0.2",
         "current_cam_review_exists": "TRUE",
         "supplier_xyrs_exists": "FALSE",
         "fabrication_authorized": "FALSE",
@@ -72,7 +73,7 @@ def main() -> int:
             errors.append(f"binding file/hash mismatch: {path_field}")
 
     item = bom.get("BOM-048", {})
-    expected_mpn = "Project Button watchdog PCB PCB-P0.9 / Electrical V3-P1.14; assembly data HR-V0-WD-PCBA-DATA-P0.2"
+    expected_mpn = "Project Button watchdog PCB PCB-P0.9 / Electrical V3-P1.15 parity-bound; assembly data HR-V0-WD-PCBA-DATA-P0.2"
     if item.get("manufacturer") != "Custom PCB / provider SELECTION REQUIRED" or item.get("manufacturer_part_number") != expected_mpn or item.get("quantity") != "1" or item.get("baseline_status") != "exact_candidate_hold":
         errors.append("BOM-048 does not carry the exact held current PCB identity")
     closed = closure.get("BOM-048", {})
@@ -102,13 +103,13 @@ def main() -> int:
     if status.get("identifier") != "HR-V0-WD-BOM-BIND-P0.1" or status.get("open_assembly_holds") != 12:
         errors.append("binding package identity or hold count changed")
     source_hashes = status.get("source_hashes", {})
-    if len(source_hashes) != 9:
-        errors.append("binding package does not hash exactly nine controlled sources")
+    if len(source_hashes) != 10:
+        errors.append("binding package does not hash exactly ten controlled sources")
     for relative, expected_hash in source_hashes.items():
         path = ROOT / relative
         if not path.is_file() or digest(path) != expected_hash:
             errors.append(f"binding package source hash mismatch: {relative}")
-    if cam_status.get("identifier") != "HR-V0-WD-CAM-P0.1" or cam_status.get("cam_generated") is not True or cam_status.get("cam_released") is not False:
+    if cam_status.get("identifier") != "HR-V0-WD-CAM-P0.2" or cam_status.get("p115_parity_evidence") != "HR-V0-E2-P115-PARITY-P0.1" or cam_status.get("cam_generated") is not True or cam_status.get("cam_released") is not False:
         errors.append("current CAM review package state is missing or released")
     for key in ("supplier_normalized_xyrs_exists", "supplier_selected", "supplier_contacted", "files_uploaded", "quotation_requested", "fabrication_authorized", "assembly_authorized", "physical_article_exists", "connection_authorized", "motion_authorized", "energization_authorized", "safety_credit"):
         if cam_status.get(key) is not False:
@@ -124,7 +125,7 @@ def main() -> int:
         gate = gates.get(gate_id, {})
         if gate.get("status") != "partial" or "bom/hr-v0-watchdog-pcb-binding.csv" not in gate.get("evidence_location", ""):
             errors.append(f"{gate_id} does not retain partial status with binding evidence")
-    for token in ("font:clamp(16px", "PCB-P0.9", "Historical PCB-P0.5", "HR-V0-WD-CAM-P0.1", "42", "16", "Twelve assembly holds remain open", "NOT MACHINE XYRS"):
+    for token in ("font:clamp(16px", "PCB-P0.9", "Historical P0.1 CAM", "HR-V0-WD-CAM-P0.2", "HR-V0-E2-P115-PARITY-P0.1", "42", "16", "Twelve assembly holds remain open", "NOT MACHINE XYRS"):
         if token not in guide:
             errors.append(f"interactive guide omits {token!r}")
 

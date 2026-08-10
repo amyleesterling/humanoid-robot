@@ -1,4 +1,4 @@
-"""Generate the source-bound PCB-P0.9 CAM review package for R150.
+"""Generate a source-bound PCB-P0.9 CAM review package.
 
 The package is review evidence only. It never authorizes supplier contact,
 upload, quotation, fabrication, assembly, connection, motion, energization,
@@ -19,10 +19,23 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "electrical" / "kicad" / "project-button-v3"
+P115_SOURCE = ROOT / "electrical" / "kicad" / "project-button-v3-p1.15-carrier-candidate"
+P115_PARITY = ROOT / "release" / "hr-v0" / "e2-p115-parity-p0.1"
 ASSEMBLY = ROOT / "electrical" / "manufacturing" / "hr-v0-watchdog-pcba-assembly-data-p0.2"
-OUT = ROOT / "release" / "hr-v0" / "watchdog-pcb-cam-p0.1"
 KICAD = Path(os.environ.get("KICAD_CLI", r"C:\Program Files\KiCad\10.0\bin\kicad-cli.exe"))
-IDENTIFIER = "HR-V0-WD-CAM-P0.1"
+PROFILE = os.environ.get("HR_V0_WD_CAM_PROFILE", "p0.1")
+if PROFILE not in {"p0.1", "p0.2"}:
+    raise ValueError(f"unsupported watchdog CAM profile: {PROFILE}")
+CURRENT_P115 = PROFILE == "p0.2"
+OUT = ROOT / "release" / "hr-v0" / f"watchdog-pcb-cam-{PROFILE}"
+IDENTIFIER = f"HR-V0-WD-CAM-{PROFILE.upper()}"
+ROUND = "R166" if CURRENT_P115 else "R150"
+BOARD_BINDING = (
+    "PCB-P0.9 / Electrical V3-P1.15-CARRIER-CANDIDATE via HR-V0-E2-P115-PARITY-P0.1"
+    if CURRENT_P115
+    else "PCB-P0.9 / Electrical V3-P1.14"
+)
+TITLE_TOKEN = "P1.15-bound PCB-P0.9 CAM exists for review" if CURRENT_P115 else "Current PCB-P0.9 CAM exists for review"
 WARNING = (
     "PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, FABRICATION, "
     "ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
@@ -87,7 +100,7 @@ def main() -> None:
     if OUT.exists():
         resolved = OUT.resolve()
         expected_parent = (ROOT / "release" / "hr-v0").resolve()
-        if resolved.parent != expected_parent or resolved.name != "watchdog-pcb-cam-p0.1":
+        if resolved.parent != expected_parent or resolved.name != f"watchdog-pcb-cam-{PROFILE}":
             raise RuntimeError(f"refusing to replace unexpected path: {resolved}")
         shutil.rmtree(resolved)
     for directory in (OUT / "source", OUT / "cam" / "gerbers", OUT / "cam" / "drill"):
@@ -247,7 +260,7 @@ def main() -> None:
 
     stats = json.loads((OUT / "cam" / "project-button-v3-stats.json").read_text(encoding="utf-8"))
     inputs = [
-        ("WD-MFG-IN-001", "native board identity", "PCB-P0.9 / Electrical V3-P1.14", "SOURCE BOUND"),
+        ("WD-MFG-IN-001", "native board identity", BOARD_BINDING, "SOURCE BOUND"),
         ("WD-MFG-IN-002", "board outline", f"{stats['board']['width']} x {stats['board']['height']}", "SOURCE BOUND"),
         ("WD-MFG-IN-003", "native thickness setting", stats["board"]["board_thickness"], "REVIEW INPUT - SUPPLIER TOLERANCE REQUIRED"),
         ("WD-MFG-IN-004", "minimum routed track width", stats["board"]["min_track_width"], "SOURCE BOUND - CAPABILITY ACCEPTANCE REQUIRED"),
@@ -274,6 +287,17 @@ def main() -> None:
             for input_id, subject, value, state in inputs
         ],
     )
+
+    # KiCad's drill-map SVG exporter emits trailing spaces on many lines. They
+    # are semantically irrelevant but make a newly added controlled package
+    # fail the repository whitespace check, so normalize only those text maps
+    # before computing output hashes.
+    for svg_path in sorted((OUT / "cam" / "drill").glob("*.svg")):
+        svg_text = svg_path.read_text(encoding="utf-8")
+        svg_path.write_text(
+            "\n".join(line.rstrip() for line in svg_text.splitlines()) + "\n",
+            encoding="utf-8",
+        )
 
     gerber_paths = sorted((OUT / "cam" / "gerbers").glob("*"))
     drill_paths = sorted((OUT / "cam" / "drill").glob("*"))
@@ -321,12 +345,29 @@ def main() -> None:
         project,
         *(ASSEMBLY / name for name in required_assembly),
     ]
+    if CURRENT_P115:
+        source_paths.extend(
+            [
+                P115_SOURCE / "project-button-v3-p1.15-carrier-candidate.kicad_pro",
+                P115_SOURCE / "project-button-v3-p1.15-carrier-candidate.kicad_sch",
+                P115_SOURCE / "SOURCE-MANIFEST.csv",
+                P115_PARITY / "package-status.json",
+                P115_PARITY / "expected-change-register.csv",
+                P115_PARITY / "source-hash-register.csv",
+            ]
+        )
+        for path in source_paths:
+            if not path.exists():
+                raise FileNotFoundError(path)
     source_hashes = {path.relative_to(ROOT).as_posix(): sha256(path) for path in source_paths}
     status = {
         "identifier": IDENTIFIER,
-        "round": "R150",
+        "round": ROUND,
         "date": "2026-08-09",
-        "board": "PCB-P0.9 / Electrical V3-P1.14",
+        "board": BOARD_BINDING,
+        "native_board_title_revision": "PCB-P0.9 / Electrical V3-P1.14",
+        "current_electrical_baseline": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE" if CURRENT_P115 else "Project Button Electrical V3-P1.14",
+        "p115_parity_evidence": "HR-V0-E2-P115-PARITY-P0.1" if CURRENT_P115 else None,
         "assembly_data": "HR-V0-WD-PCBA-DATA-P0.2",
         "native_tool": "KiCad 10.0.5",
         "source_hashes": source_hashes,
@@ -357,7 +398,12 @@ def main() -> None:
     }
     write_text_lf(OUT / "package-status.json", json.dumps(status, indent=2) + "\n")
 
-    readme = f"""# {IDENTIFIER}\n\n> **{WARNING}**\n\nThis is a source-bound CAM **review** package for current watchdog board `PCB-P0.9 / Electrical V3-P1.14`. It contains no supplier release and no machine-ready assembler XYRS.\n\n## What exists\n\n- current native KiCad board/project copies and their hashes;\n- fresh KiCad 10.0.5 DRC, Gerber/job, separate PTH/NPTH drill, IPC-D-356, raw position and statistics outputs;\n- exact source hashes for the P0.2 assembly BOM, internal placement reference, mechanical-feature register and twelve open assembly holds;\n- a 42-reference exact internal-coordinate parity proof between the raw KiCad position export and P0.2 placement reference;\n- eighteen manufacturing inputs and eighteen open release holds; and\n- a checksum manifest for every package file.\n\n## Boundary\n\nThe raw KiCad position export is not supplier-normalized XYRS and is prohibited from machine import. Material, stackup, copper, finish, mask, legend, hole/profile tolerances, panelization, electrical test, provider/process, DFM, first article, physical tests and qualified release remain unresolved. No archive or upload bundle is produced.\n\nPassing the checker proves only source/output membership, hashes, native DRC and internal coordinate parity. It does not prove manufacturability, physical correctness, electrical performance, functional safety or permission to perform work.\n"""
+    parity_text = (
+        " The package also hash-binds the complete P1.15 native source manifest and the R165 P1.14-to-P1.15 parity evidence."
+        if CURRENT_P115
+        else ""
+    )
+    readme = f"""# {IDENTIFIER}\n\n> **{WARNING}**\n\nThis is a source-bound CAM **review** package for `{BOARD_BINDING}`. It contains no supplier release and no machine-ready assembler XYRS.{parity_text}\n\n## What exists\n\n- current native KiCad board/project copies and their hashes;\n- fresh KiCad 10.0.5 DRC, Gerber/job, separate PTH/NPTH drill, IPC-D-356, raw position and statistics outputs;\n- exact source hashes for the P0.2 assembly BOM, internal placement reference, mechanical-feature register and twelve open assembly holds;\n- a 42-reference exact internal-coordinate parity proof between the raw KiCad position export and P0.2 placement reference;\n- eighteen manufacturing inputs and eighteen open release holds; and\n- a checksum manifest for every package file.\n\n## Boundary\n\nThe raw KiCad position export is not supplier-normalized XYRS and is prohibited from machine import. Material, stackup, copper, finish, mask, legend, hole/profile tolerances, panelization, electrical test, provider/process, DFM, first article, physical tests and qualified release remain unresolved. No archive or upload bundle is produced.\n\nPassing the checker proves only source/output membership, hashes, native DRC and internal coordinate parity. It does not prove manufacturability, physical correctness, electrical performance, functional safety or permission to perform work.\n"""
     write_text_lf(OUT / "README.md", readme)
 
     hold_items = "".join(
@@ -371,7 +417,7 @@ def main() -> None:
         ("0", "supplier releases or work authorizations"),
     ]
     card_html = "".join(f"<article><b>{value}</b><span>{html.escape(label)}</span></article>" for value, label in cards)
-    page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{IDENTIFIER}</title><style>:root{{--sky:#b9e8ff;--navy:#082f58;--blue:#12669f;--gold:#f2b928;--paper:#f7fcff;--hold:#fff0b8}}*{{box-sizing:border-box}}body{{margin:0;color:var(--navy);font:clamp(16px,1.1vw,19px)/1.5 Arial,sans-serif;background:white}}header{{padding:clamp(1.5rem,5vw,4rem);background:linear-gradient(135deg,var(--sky),#effaff);border-bottom:7px solid var(--gold)}}h1{{font-size:clamp(2.3rem,5.5vw,4.8rem);line-height:1.03;max-width:17ch;margin:.25rem 0 1rem}}h2{{font-size:clamp(1.6rem,3vw,2.7rem)}}main{{max-width:1380px;margin:auto;padding:2rem clamp(1rem,4vw,3.5rem)}}.warning{{background:var(--hold);border:3px solid #ad7500;border-radius:.8rem;padding:1rem;font-weight:800}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1rem;margin:2rem 0}}article{{border:3px solid var(--blue);border-radius:1rem;padding:1.1rem;background:var(--paper)}}article b{{display:block;font-size:clamp(2rem,4vw,3.5rem)}}article span{{display:block}}.boundary{{border-left:7px solid var(--gold);padding-left:1rem;margin:2rem 0}}.table-wrap{{overflow:auto;border:2px solid #93b8ce;border-radius:.7rem}}table{{border-collapse:collapse;width:100%;min-width:980px}}th,td{{padding:.8rem;text-align:left;vertical-align:top;border-bottom:1px solid #bdd0dc}}th{{background:var(--navy);color:white}}code{{font-size:14px;overflow-wrap:anywhere}}li{{margin:.8rem 0}}li span{{font-size:14px}}a{{color:#075d98}}</style></head><body><header><div>{IDENTIFIER} · R150 · 2026-08-09</div><h1>Current PCB-P0.9 CAM exists for review.</h1><div class="warning">{WARNING}. The files are quarantined internal evidence, not a supplier packet.</div></header><main><p>KiCad 10.0.5 generated a fresh, source-bound CAM review set from current PCB-P0.9. This removes the absence of current outputs; it does not release them.</p><section class="grid">{card_html}</section><div class="boundary"><h2>Exact internal parity, not machine XYRS</h2><p>All 42 populated references reconcile exactly between the raw KiCad position export and the P0.2 internal placement register after one derived coordinate transform. Supplier origin, axes, side, centroid, feeder and rotation conventions remain unresolved. Machine import is prohibited.</p></div><h2>Controlled package</h2><div class="table-wrap"><table><thead><tr><th>Artifact</th><th>State</th><th>Use</th></tr></thead><tbody><tr><td><code>cam/gerbers/</code></td><td>{len(gerber_paths)} files</td><td>INTERNAL LAYER PREVIEW ONLY</td></tr><tr><td><code>cam/drill/</code></td><td>{len(drill_paths)} files</td><td>INTERNAL DRILL PREVIEW ONLY</td></tr><tr><td><code>cam/project-button-v3-all-pos.csv</code></td><td>42 references</td><td>NOT MACHINE XYRS</td></tr><tr><td><code>cam/project-button-v3.d356</code></td><td>generated</td><td>INTERNAL NET REVIEW ONLY</td></tr><tr><td><code>manufacturing-input-register.csv</code></td><td>18 inputs</td><td>OPEN SELECTIONS RETAINED</td></tr></tbody></table></div><div class="boundary"><h2>Eighteen holds remain open</h2><ol>{hold_items}</ol></div><p><a href="cam-output-register.csv">CAM output register</a> · <a href="cam-assembly-parity.csv">42-reference parity</a> · <a href="manufacturing-input-register.csv">manufacturing inputs</a></p></main></body></html>'''
+    page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{IDENTIFIER}</title><style>:root{{--sky:#b9e8ff;--navy:#082f58;--blue:#12669f;--gold:#f2b928;--paper:#f7fcff;--hold:#fff0b8}}*{{box-sizing:border-box}}html,body{{max-width:100%;overflow-x:hidden}}body{{margin:0;color:var(--navy);font:clamp(16px,1.1vw,19px)/1.5 Arial,sans-serif;background:white;overflow-wrap:anywhere}}header{{padding:clamp(1.5rem,5vw,4rem);background:linear-gradient(135deg,var(--sky),#effaff);border-bottom:7px solid var(--gold)}}h1{{font-size:clamp(2.3rem,5.5vw,4.8rem);line-height:1.03;max-width:17ch;margin:.25rem 0 1rem}}h2{{font-size:clamp(1.6rem,3vw,2.7rem)}}main{{max-width:1380px;margin:auto;padding:2rem clamp(1rem,4vw,3.5rem)}}.warning{{max-width:100%;background:var(--hold);border:3px solid #ad7500;border-radius:.8rem;padding:1rem;font-weight:800}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1rem;margin:2rem 0}}article{{min-width:0;border:3px solid var(--blue);border-radius:1rem;padding:1.1rem;background:var(--paper)}}article b{{display:block;font-size:clamp(2rem,4vw,3.5rem)}}article span{{display:block}}.boundary{{border-left:7px solid var(--gold);padding-left:1rem;margin:2rem 0}}.table-wrap{{max-width:100%;overflow:auto;border:2px solid #93b8ce;border-radius:.7rem}}table{{border-collapse:collapse;width:100%;min-width:980px}}th,td{{padding:.8rem;text-align:left;vertical-align:top;border-bottom:1px solid #bdd0dc}}th{{background:var(--navy);color:white}}code{{font-size:14px;overflow-wrap:anywhere}}li{{margin:.8rem 0}}li span{{font-size:14px}}a{{color:#075d98}}@media(max-width:480px){{header{{padding:1.5rem 1.25rem}}main{{padding:1.5rem 1.25rem 3rem}}h1{{font-size:clamp(2rem,10vw,2.6rem)}}.warning{{font-size:16px}}}}</style></head><body><header><div>{IDENTIFIER} · {ROUND} · 2026-08-09</div><h1>{TITLE_TOKEN}.</h1><div class="warning">{WARNING}. The files are quarantined internal evidence, not a supplier packet.</div></header><main><p>KiCad 10.0.5 generated a fresh, source-bound CAM review set from PCB-P0.9.{parity_text} This removes the active-baseline output mismatch; it does not release the outputs.</p><section class="grid">{card_html}</section><div class="boundary"><h2>Exact internal parity, not machine XYRS</h2><p>All 42 populated references reconcile exactly between the raw KiCad position export and the P0.2 internal placement register after one derived coordinate transform. Supplier origin, axes, side, centroid, feeder and rotation conventions remain unresolved. Machine import is prohibited.</p></div><h2>Controlled package</h2><div class="table-wrap"><table><thead><tr><th>Artifact</th><th>State</th><th>Use</th></tr></thead><tbody><tr><td><code>cam/gerbers/</code></td><td>{len(gerber_paths)} files</td><td>INTERNAL LAYER PREVIEW ONLY</td></tr><tr><td><code>cam/drill/</code></td><td>{len(drill_paths)} files</td><td>INTERNAL DRILL PREVIEW ONLY</td></tr><tr><td><code>cam/project-button-v3-all-pos.csv</code></td><td>42 references</td><td>NOT MACHINE XYRS</td></tr><tr><td><code>cam/project-button-v3.d356</code></td><td>generated</td><td>INTERNAL NET REVIEW ONLY</td></tr><tr><td><code>manufacturing-input-register.csv</code></td><td>18 inputs</td><td>OPEN SELECTIONS RETAINED</td></tr></tbody></table></div><div class="boundary"><h2>Eighteen holds remain open</h2><ol>{hold_items}</ol></div><p><a href="cam-output-register.csv">CAM output register</a> · <a href="cam-assembly-parity.csv">42-reference parity</a> · <a href="manufacturing-input-register.csv">manufacturing inputs</a></p></main></body></html>'''
     write_text_lf(OUT / "index.html", page)
 
     manifest_rows = []

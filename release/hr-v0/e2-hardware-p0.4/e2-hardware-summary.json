@@ -1,7 +1,7 @@
 {
   "identifier": "HR-V0-E2-HW-P0.4",
   "date": "2026-08-09",
-  "round": "R165",
+  "round": "R165+R166-SYNCHRONIZED",
   "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION",
   "electrical_baseline": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE / PCB-P0.9 / HR-V0-WD-PCBA-DATA-P0.2",
   "parity_evidence": "HR-V0-E2-P115-PARITY-P0.1",
@@ -24,7 +24,7 @@
     "electrical/kicad/project-button-v3-p1.15-carrier-candidate/validation/project-button-v3-p1.15-carrier-candidate.net": "3d7b30e79e5c907ecce64240298bf35ca09d568982e27ec7e1d6f4b534aa4984",
     "electrical/kicad/project-button-v3-p1.15-carrier-candidate/validation/project-button-v3-p1.15-carrier-candidate-erc.rpt": "3a81461bd7c722d58703c533fde1482c385695d75f98c9e3f7d4d14f357dcf2f",
     "release/hr-v0/e2-p115-parity-p0.1/package-status.json": "3b7d64b01121b4c035bf8285cbf5dba3ee21c5c0819d1409e9163b17b42b5e68",
-    "release/hr-v0/watchdog-pcb-cam-p0.1/package-status.json": "f87c93510ad80ab8ae3d76e9b6439ad28ab9e3b8142cd53f0563e9908d58828e",
+    "release/hr-v0/watchdog-pcb-cam-p0.2/package-status.json": "bb6a2e3434c88cfe08f770a3e682343dde5f7d242d439f092c4eade4b874d39b",
     "tests/e2/hr-v0-e2-control-only-sequence.csv": "95a8bece7a12b8631fbecb4539a60670e8ef24b3ab3cd7da6f89c0588c5e33e6"
   },
   "p115_parity_verified_by_checker": true,
