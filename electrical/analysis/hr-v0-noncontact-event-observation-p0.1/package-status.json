@@ -1,0 +1,17 @@
+{
+  "identifier": "HR-V0-NONCONTACT-EVENT-OBS-P0.1",
+  "date": "2026-08-10",
+  "status": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "exact_logical_conductor_count": 7,
+  "electrical_field_tap_count": 0,
+  "permanent_adapter_released_count": 0,
+  "exact_probe_candidate_count": 1,
+  "selected_host_count": 0,
+  "open_hold_count": 12,
+  "executed_physical_test_count": 0,
+  "safety_function_credit": "ZERO",
+  "decision": "REJECT PERMANENT PASSIVE DIVIDER FOR CURRENT BASELINE; RETAIN NON-CONTACT CURRENT OBSERVATION AS EVALUATION-ONLY ROUTE",
+  "eg_025": "OPEN",
+  "eg_026": "PARTIAL",
+  "release_effect": "NONE"
+}
