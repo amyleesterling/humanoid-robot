@@ -1,0 +1,109 @@
+(footprint "Murata_GRM21_Reflow_Nominal"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" ""
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "26102e5d-f743-4f76-971b-8fdd3a0c718e")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Murata_GRM21_Reflow_Nominal"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "23acb922-b4e7-4bc7-ad6d-024238cb9bba")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3ba024ea-d0a7-419c-a6e0-6f9f17f78483")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6479d7f7-a082-45a4-9323-ba73bd6836b3")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -1.55 -0.58)
+		(end 1.55 -0.58)
+		(stroke
+			(width 0.18)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "c79ea3d9-0111-41a0-9c65-744170c5e0a1")
+	)
+	(fp_line
+		(start -1.55 0.58)
+		(end -1.55 -0.58)
+		(stroke
+			(width 0.18)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "ac327b49-a7ac-452c-9a2e-ff646ad52080")
+	)
+	(fp_line
+		(start 1.55 -0.58)
+		(end 1.55 0.58)
+		(stroke
+			(width 0.18)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "13f43fa0-f04c-411b-88b3-2cd4b81072b9")
+	)
+	(fp_line
+		(start 1.55 0.58)
+		(end -1.55 0.58)
+		(stroke
+			(width 0.18)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "4cd34fdd-3171-48ac-805e-4781451e4aec")
+	)
+	(pad "1" smd roundrect
+		(at -1.024999 0)
+		(size 0.95 0.95)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(thermal_bridge_angle 45)
+		(uuid "c1ac1b01-94b8-498b-854e-ab20af48242c")
+	)
+	(pad "2" smd roundrect
+		(at 1.024999 0)
+		(size 0.95 0.95)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(thermal_bridge_angle 45)
+		(uuid "6b0a35dd-9508-42f5-9079-85bb609e269a")
+	)
+	(embedded_fonts no)
+)

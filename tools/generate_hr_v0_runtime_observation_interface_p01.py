@@ -25,6 +25,11 @@ REV = "R201 / P0.1"
 DATE = "2026-08-10"
 WARNING = "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
 KICAD_ROOT = Path(r"C:\Program Files\KiCad\10.0")
+CONNECTOR_VALUE = "Phoenix MKDS field terminal candidates: 1751264 plus 1751248"
+CONNECTOR_FOOTPRINT = ""
+FOOTPRINTS: dict[str, str] = {}
+BOUNDARY_QUANTITY = 1
+H1EXT_QUANTITY = 1
 
 
 SOURCES = [
@@ -85,11 +90,12 @@ def load_model():
 
 
 def resistor(model, ref: str, value: str, mpn: str, net1: str, net2: str, position: tuple[float, float], purpose: str):
-    return model.Component(ref, f"{value}; {mpn}", [model.pn(ref, "1", purpose + " A", net1, "left"), model.pn(ref, "2", purpose + " B", net2, "right")], "EXACT COMPONENT CANDIDATE - APPLICATION/PCB/PHYSICAL HOLD", purpose + "; exact component identity inherited from the controlled watchdog receiver network. No fabrication or connection release.", position=position, width=52)
+    return model.Component(ref, f"{value}; {mpn}", [model.pn(ref, "1", purpose + " A", net1, "left"), model.pn(ref, "2", purpose + " B", net2, "right")], "EXACT COMPONENT CANDIDATE - APPLICATION/PCB/PHYSICAL HOLD", purpose + "; exact component identity inherited from the controlled watchdog receiver network. No fabrication or connection release.", position=position, width=52, footprint=FOOTPRINTS.get(mpn, ""))
 
 
 def capacitor(model, ref: str, net1: str, net2: str, position: tuple[float, float], purpose: str):
-    return model.Component(ref, "10 nF 50 V X7R; TDK CGA3E2X7R1H103K080AA", [model.pn(ref, "1", "SENSE", net1, "left"), model.pn(ref, "2", "FIELD RETURN", net2, "right")], "EXACT COMPONENT CANDIDATE - DC-BIAS/PCB/EMC HOLD", purpose + "; 10 nF nominal is not credited until bias/tolerance/temperature and installed EMC evidence exist.", position=position, width=52)
+    mpn = "TDK CGA3E2X7R1H103K080AA"
+    return model.Component(ref, "10 nF 50 V X7R; " + mpn, [model.pn(ref, "1", "SENSE", net1, "left"), model.pn(ref, "2", "FIELD RETURN", net2, "right")], "EXACT COMPONENT CANDIDATE - DC-BIAS/PCB/EMC HOLD", purpose + "; 10 nF nominal is not credited until bias/tolerance/temperature and installed EMC evidence exist.", position=position, width=52, footprint=FOOTPRINTS.get(mpn, ""))
 
 
 def iso1212(model, ref: str, ch1: str, ch2: str, out1: str, out2: str, position: tuple[float, float]):
@@ -103,7 +109,7 @@ def iso1212(model, ref: str, ch1: str, ch2: str, out1: str, out2: str, position:
         pn(ref, "11", "IN2", f"{ch2}_IN", "left"), pn(ref, "12", "FGND2", "SAFETY_0V", "left"),
         pn(ref, "13", "SUB1 FLOAT", f"INTENTIONALLY_UNUSED_{ref}_13", "right"), pn(ref, "14", "FGND1", "SAFETY_0V", "left"),
         pn(ref, "15", "IN1", f"{ch1}_IN", "left"), pn(ref, "16", "SENSE1", f"{ch1}_SENSE", "left"),
-    ], "EXACT IC CANDIDATE - PCB/EMC/FAULT/PHYSICAL HOLD", "Logic GND1 is COMPUTE_0V; field FGND is SAFETY_0V. SUB pins require separate floating copper and no connection. Device isolation is not system safety approval.", "https://www.ti.com/lit/ds/symlink/iso1212.pdf", "SLLSEY7G revised February 2025; rechecked 2026-08-10.", position=position, width=76)
+    ], "EXACT IC CANDIDATE - PCB/EMC/FAULT/PHYSICAL HOLD", "Logic GND1 is COMPUTE_0V; field FGND is SAFETY_0V. SUB pins require separate floating copper and no connection. Device isolation is not system safety approval.", "https://www.ti.com/lit/ds/symlink/iso1212.pdf", "SLLSEY7G revised February 2025; rechecked 2026-08-10.", position=position, width=76, footprint=FOOTPRINTS.get("ISO1212DBQ", ""))
 
 
 def channel_parts(model, index: int, source: str, prefix: str, x: float, shunt: bool):
@@ -121,23 +127,23 @@ def build_ecad() -> None:
     model = load_model()
     pn, Component, Sheet = model.pn, model.Component, model.Sheet
 
-    jfield = Component("JFIELD1", "Phoenix MKDS field terminal candidates: 1751264 plus 1751248", [
+    jfield = Component("JFIELD1", CONNECTOR_VALUE, [
         pn("JFIELD1", "1", "SR1 STATUS", "SR1_STATUS", "right"), pn("JFIELD1", "2", "SRA1 STATUS", "SRA1_STATUS", "right"),
         pn("JFIELD1", "3", "K1 STATUS", "K1_STATUS", "right"), pn("JFIELD1", "4", "K2 STATUS", "K2_STATUS", "right"),
         pn("JFIELD1", "5", "FIELD RETURN", "SAFETY_0V", "right"), pn("JFIELD1", "6", "N/C", "INTENTIONALLY_UNUSED_JFIELD1_6", "right"),
-    ], "EXACT PCB TERMINAL CANDIDATES - MATING/HARNESS/PCB HOLD", "Four positive status nets plus one field return and one deliberate no-connect. Position numbering is project-defined and not a harness release.", position=(76, 92), width=74)
-    jlogic = Component("JLOGIC1", "Phoenix MKDS compute terminal candidates: 1751264 plus 1751248", [
+    ], "EXACT PCB TERMINAL CANDIDATES - MATING/HARNESS/PCB HOLD", "Four positive status nets plus one field return and one deliberate no-connect. Position numbering is project-defined and not a harness release.", position=(76, 92), width=74, footprint=CONNECTOR_FOOTPRINT)
+    jlogic = Component("JLOGIC1", CONNECTOR_VALUE, [
         pn("JLOGIC1", "1", "PI 3V3 CANDIDATE", "PI_3V3_CANDIDATE", "left"), pn("JLOGIC1", "2", "COMPUTE RETURN", "COMPUTE_0V", "left"),
         pn("JLOGIC1", "3", "OBS SR1", "OBS_SR1_PI", "left"), pn("JLOGIC1", "4", "OBS SRA1", "OBS_SRA1_PI", "left"),
         pn("JLOGIC1", "5", "OBS K1", "OBS_K1_PI", "left"), pn("JLOGIC1", "6", "OBS K2", "OBS_K2_PI", "left"),
-    ], "EXACT PCB TERMINAL CANDIDATES - PI PINS/HARNESS/PCB HOLD", "No Raspberry Pi GPIO or header pin is selected. Exact mating cable/contact system and external 3V3-load acceptance remain open.", position=(300, 92), width=74)
-    boundary = Component("BOUNDARY1", "GALVANIC DOMAIN BOUNDARY - ZERO SAFETY CREDIT", [pn("BOUNDARY1", "FIELD", "FIELD FGND", "SAFETY_0V", "left"), pn("BOUNDARY1", "LOGIC", "LOGIC GND1", "COMPUTE_0V", "right")], "SYSTEM GROUNDING/INSULATION REVIEW REQUIRED", "The ISO1212 barriers separate these schematic domains. Cable, PCB, enclosure, PE, parasitic capacitance and fault paths determine the real system boundary.", position=(190, 202), width=98)
+    ], "EXACT PCB TERMINAL CANDIDATES - PI PINS/HARNESS/PCB HOLD", "No Raspberry Pi GPIO or header pin is selected. Exact mating cable/contact system and external 3V3-load acceptance remain open.", position=(300, 92), width=74, footprint=CONNECTOR_FOOTPRINT)
+    boundary = Component("BOUNDARY1", "GALVANIC DOMAIN BOUNDARY - ZERO SAFETY CREDIT", [pn("BOUNDARY1", "FIELD", "FIELD FGND", "SAFETY_0V", "left"), pn("BOUNDARY1", "LOGIC", "LOGIC GND1", "COMPUTE_0V", "right")], "SYSTEM GROUNDING/INSULATION REVIEW REQUIRED", "The ISO1212 barriers separate these schematic domains. Cable, PCB, enclosure, PE, parasitic capacitance and fault paths determine the real system boundary.", position=(190, 202), width=98, quantity=BOUNDARY_QUANTITY)
     s1 = Sheet(1, "01_boundaries.kicad_sch", "Field and compute boundaries", "Six-position field and logic terminal candidates; no Pi GPIO allocation.", compact=True)
     s1.components = [jfield, jlogic, boundary]
     s1.notes = ["Four positive diagnostic states only. No receiver output commands motion.", "SAFETY_0V and COMPUTE_0V remain distinct; no new bond is authorized."]
 
     u1 = iso1212(model, "UOBS1", "SR1", "SRA1", "OBS_SR1_RAW", "OBS_SRA1_RAW", (210, 136))
-    h1 = Component("H1EXT", "Existing IDEC HW1P-1FQD-A-24V load outside this board", [pn("H1EXT", "TBD-HA", "UNVERIFIED INPUT", "SR1_STATUS", "left"), pn("H1EXT", "TBD-HB", "UNVERIFIED RETURN", "SAFETY_0V", "right")], "EXTERNAL LOAD - RECEIVED CURRENT/TERMINALS/BRIGHTNESS HOLD", "Catalog screen is 7 mA DC, but exact received current and Y32 low-voltage brightness are not accepted.", position=(210, 246), width=76)
+    h1 = Component("H1EXT", "Existing IDEC HW1P-1FQD-A-24V load outside this board", [pn("H1EXT", "TBD-HA", "UNVERIFIED INPUT", "SR1_STATUS", "left"), pn("H1EXT", "TBD-HB", "UNVERIFIED RETURN", "SAFETY_0V", "right")], "EXTERNAL LOAD - RECEIVED CURRENT/TERMINALS/BRIGHTNESS HOLD", "Catalog screen is 7 mA DC, but exact received current and Y32 low-voltage brightness are not accepted.", position=(210, 246), width=76, quantity=H1EXT_QUANTITY)
     s2 = Sheet(2, "02_sr1_sra1_inputs.kicad_sch", "SR1 and SRA1 Type-3 inputs", "Y32 load budget and existing H1 application remain held.", compact=True)
     s2.components = channel_parts(model, 1, "SR1_STATUS", "SR1", 62, False) + [u1] + channel_parts(model, 2, "SRA1_STATUS", "SRA1", 360, True) + [h1]
     s2.notes = ["SR1 has no added shunt because H1 is already in parallel; received H1 evidence is mandatory.", "SRA1 uses the exact 2.70 kohm candidate: 10.41 to 12.18 mA total derived screen."]
@@ -156,8 +162,9 @@ def build_ecad() -> None:
             resistor(model, f"RSO{i}", "1.00 kohm 1% 0.125 W 0805", "Panasonic ERJ6ENF1001V", f"OBS_{name}_RAW", f"OBS_{name}_PI", (x, 88), "OUTPUT SERIES"),
             resistor(model, f"RPD{i}", "10.0 kohm 1% 0.125 W 0805", "Panasonic ERJ6ENF1002V", f"OBS_{name}_PI", "COMPUTE_0V", (x, 158), "FAIL-LOW PULLDOWN"),
         ])
-    cdec1 = Component("CDEC1", "100 nF 50 V X7R; Murata GRM21BR71H104KA01L", [pn("CDEC1", "1", "VCC1", "PI_3V3_CANDIDATE", "left"), pn("CDEC1", "2", "GND1", "COMPUTE_0V", "right")], "EXACT COMPONENT CANDIDATE - PLACEMENT/PCB HOLD", "Place at UOBS1 within TI guidance; received capacitance and layout remain open.", position=(145, 230), width=68)
-    cdec2 = Component("CDEC2", "100 nF 50 V X7R; Murata GRM21BR71H104KA01L", [pn("CDEC2", "1", "VCC1", "PI_3V3_CANDIDATE", "left"), pn("CDEC2", "2", "GND1", "COMPUTE_0V", "right")], "EXACT COMPONENT CANDIDATE - PLACEMENT/PCB HOLD", "Place at UOBS2 within TI guidance; received capacitance and layout remain open.", position=(285, 230), width=68)
+    cdec_mpn = "Murata GRM21BR71H104KA01L"
+    cdec1 = Component("CDEC1", "100 nF 50 V X7R; " + cdec_mpn, [pn("CDEC1", "1", "VCC1", "PI_3V3_CANDIDATE", "left"), pn("CDEC1", "2", "GND1", "COMPUTE_0V", "right")], "EXACT COMPONENT CANDIDATE - PLACEMENT/PCB HOLD", "Place at UOBS1 within TI guidance; received capacitance and layout remain open.", position=(145, 230), width=68, footprint=FOOTPRINTS.get(cdec_mpn, ""))
+    cdec2 = Component("CDEC2", "100 nF 50 V X7R; " + cdec_mpn, [pn("CDEC2", "1", "VCC1", "PI_3V3_CANDIDATE", "left"), pn("CDEC2", "2", "GND1", "COMPUTE_0V", "right")], "EXACT COMPONENT CANDIDATE - PLACEMENT/PCB HOLD", "Place at UOBS2 within TI guidance; received capacitance and layout remain open.", position=(285, 230), width=68, footprint=FOOTPRINTS.get(cdec_mpn, ""))
     s4 = Sheet(4, "04_compute_outputs.kicad_sch", "Fail-low compute outputs", "Four 1 kohm series outputs and 10 kohm pulldowns; Pi pins remain selection required.", compact=True)
     s4.components = outputs + [cdec1, cdec2]
     s4.notes = ["Two ISO1212 devices plus four pulldowns screen at no more than 5.0 mA from 3.3 V; this is not a Pi external-load approval.", "Exact Pi GPIOs, header contacts, thresholds, pulls, boot state and cable remain SELECTION REQUIRED."]

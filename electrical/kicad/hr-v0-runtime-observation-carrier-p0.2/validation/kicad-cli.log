@@ -1,0 +1,26 @@
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.2\validation\hr-v0-runtime-observation-carrier-p0.2-erc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.2\hr-v0-runtime-observation-carrier-p0.2.kicad_sch"
+Found 0 violations
+Saved ERC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/hr-v0-runtime-observation-carrier-p0.2/validation/hr-v0-runtime-observation-carrier-p0.2-erc.rpt
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.2\validation\hr-v0-runtime-observation-carrier-p0.2.net" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.2\hr-v0-runtime-observation-carrier-p0.2.kicad_sch"
+Warning: schematic has annotation errors, please use the schematic editor to fix them
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export pdf --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.2\output\hr-v0-runtime-observation-carrier-p0.2-preliminary.pdf" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.2\hr-v0-runtime-observation-carrier-p0.2.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.2\output\hr-v0-runtime-observation-carrier-p0.2-preliminary.pdf'.
+Done.
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export svg --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.2\output" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.2\hr-v0-runtime-observation-carrier-p0.2.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.2\output\hr-v0-runtime-observation-carrier-p0.2.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.2\output\hr-v0-runtime-observation-carrier-p0.2-01 Field and compute boundaries.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.2\output\hr-v0-runtime-observation-carrier-p0.2-02 SR1 and SRA1 Type-3 inputs.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.2\output\hr-v0-runtime-observation-carrier-p0.2-03 K1 and K2 diagnostic auxiliary inputs.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.2\output\hr-v0-runtime-observation-carrier-p0.2-04 Fail-low compute outputs.svg'.
+Done.
+
+exit=0

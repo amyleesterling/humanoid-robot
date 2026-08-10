@@ -125,6 +125,7 @@ def main() -> None:
         "HR-V0-XT1-P0.1",
         "HR-V0-LABEL-P0.1",
         "HR-V0-RUNTIME-OBS-IF-P0.1",
+        "HR-V0-RUNTIME-OBS-CARRIER-P0.2",
     ] or electrical_product.get("release_state") != "carrier_integrated_configuration_candidate_p115_watchdog_pcb_p10_direct_native_binding_cam_review_exists_not_supplier_released_physical_evidence_absent":
         errors.append("Electrical V3-P1.15 supporting identifiers or release state changed")
     safety_product = next(
