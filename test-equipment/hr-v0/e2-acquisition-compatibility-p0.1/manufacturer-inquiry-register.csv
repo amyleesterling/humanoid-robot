@@ -1,0 +1,3 @@
+inquiry_id,recipient,question,state,authority
+INQ-001,Tektronix technical support,"Confirm current supported simultaneous population of four TCP0030A and four TIVP02 on an MSO58B, balanced as two plus two per bank, and identify any firmware/configuration/calibration restrictions.",NOT SENT,NONE
+INQ-002,Banner Engineering technical support,Confirm Q4XFULAF110-Q8 suitability for sub-millimeter no-motion witnessing at the proposed target distance/material after the exact mount and acceptance threshold are defined; confirm recommended cordset and shield treatment.,NOT SENT,NONE

@@ -1,0 +1,11 @@
+input_id,input,evidence_required,blocks,state
+LOAD-OPEN-01,FR12-H101/idler mass COM and inertia,calibrated received-subassembly measurement or accepted manufacturer mass-property record,complete mass COM inertia gravity and energy,OPEN
+LOAD-OPEN-02,moving fasteners bumper connectors guides strain relief and harness,selected BOM plus received mass/geometry and assembled routing,complete mass COM inertia collision and load,OPEN
+LOAD-OPEN-03,complete gripper mass distribution and payload retention,released mechanism CAD plus calibrated mass/COM/inertia and retained payload test,gripper allocation and reference point model,OPEN
+LOAD-OPEN-04,joint speed acceleration duty and trajectory,released limits plus HIL and bounded physical characterization,kinetic energy and actuator demand,OPEN
+LOAD-OPEN-05,reflected rotor/gear inertia efficiency backlash and compliance,manufacturer/application data and measured drive-line characterization,complete stop energy peak load and control model,OPEN
+LOAD-OPEN-06,bumper stiffness damping stroke retention temperature and life,selected part/material characterization plus dynamic proof,stop force deformation rebound and life,OPEN
+LOAD-OPEN-07,two-rail contact distribution tolerance friction and local stress,accepted nonlinear/contact analysis correlated to marked physical proof,rail/adapter/fastener capacity,OPEN
+LOAD-OPEN-08,continuous/cyclic actuator torque current and temperature,bounded duty test with external current and calibrated temperature evidence,X430 selection and worst-duty release,OPEN
+LOAD-OPEN-09,material allowables fatigue method proof multiplier and acceptance,MTR FAI qualified calculation review and signed proof procedure/results,structural fabrication and proof release,OPEN
+LOAD-OPEN-10,measurement uncertainty,approved instruments calibration and measurement-system analysis,physical comparison to calculated limits,OPEN

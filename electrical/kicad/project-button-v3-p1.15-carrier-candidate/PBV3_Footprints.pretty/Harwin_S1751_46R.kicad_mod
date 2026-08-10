@@ -1,0 +1,38 @@
+(footprint "Harwin_S1751_46R"
+  (version 20241229)
+  (generator "pcbnew")
+  (generator_version "10.0")
+  (layer "F.Cu")
+  (descr "Harwin S1751-46R SMT test point; rectangular recommended pad 3.45 x 1.85 mm per drawing S1751-XXR issue 10, 2023-02-15")
+  (tags "test point Harwin S1751-46R")
+  (property "Reference" "REF**"
+    (at 0 -2.2 0)
+    (layer "F.SilkS")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (property "Value" "Harwin_S1751_46R"
+    (at 0 2.2 0)
+    (layer "F.Fab")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (attr smd)
+  (fp_rect
+    (start -1.825 -1.025)
+    (end 1.825 1.025)
+    (stroke (width 0.05) (type default))
+    (fill none)
+    (layer "F.CrtYd")
+  )
+  (fp_rect
+    (start -1.625 -0.815)
+    (end 1.625 0.815)
+    (stroke (width 0.1) (type default))
+    (fill none)
+    (layer "F.Fab")
+  )
+  (pad "1" smd rect
+    (at 0 0)
+    (size 3.45 1.85)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+  )
+)

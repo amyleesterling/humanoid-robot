@@ -1,0 +1,12 @@
+{
+  "schema": "project-button-hr-v0-dynamic-trace-config-p0.2",
+  "status": "PRELIMINARY - ANALYSIS CANDIDATE ONLY - QUALIFIED DISPOSITION REQUIRED - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "analysis_mode": "PHYSICAL_TRACE",
+  "expected_sample_interval_s": "SELECTION REQUIRED",
+  "sample_interval_relative_tolerance": "SELECTION REQUIRED",
+  "qualified_acceptance_reference": "SELECTION REQUIRED",
+  "run_type": "RESET_ARM",
+  "minimum_reset_to_arm_interval_s": "SELECTION REQUIRED",
+  "reset_motion_noise_deg": "SELECTION REQUIRED",
+  "control_source_valid_min_v": "SELECTION REQUIRED"
+}

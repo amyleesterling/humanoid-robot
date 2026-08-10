@@ -1,0 +1,2 @@
+gate_id,round,artifact_id,evidence,state,remaining,warning
+EG-002,R189,HR-V0-CLEAN-CLONE-AUDIT-P0.1,"docs/hr-v0-clean-clone-audit-p0.1.md; configuration/hr-v0-clean-clone-audit-p0.1/audit-summary.json; configuration/hr-v0-clean-clone-audit-p0.1/failure-disposition.csv; .gitattributes; tools/generate_hr_v0_checkout_eol_contract.py",REMAINS PARTIAL,"merge or immutable acceptance; named configuration authority; qualified configuration review; formal baseline acceptance",PRELIMINARY - NOT APPROVED FOR PROCUREMENT FABRICATION CONNECTION POWERED TESTING MOTION OR ENERGIZATION

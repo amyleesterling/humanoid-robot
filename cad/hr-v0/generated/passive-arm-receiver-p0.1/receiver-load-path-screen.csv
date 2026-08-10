@@ -1,0 +1,8 @@
+record,quantity,value,unit,method,result
+LOAD-001,provisional vertical platen input,2000.000000,N,round candidate screen above full-capacity average force; peak force remains unknown,NOT AN ACCEPTANCE LOAD
+LOAD-002,load per rail,1000.000000,N,ideal equal sharing,UNEQUAL SHARING OPEN
+LOAD-003,maximum simple-span rail moment,210000.000000,N mm,each rail simply supported; central point load,SCREEN
+LOAD-004,nominal strong-axis bending stress,92.598717,MPa,M c / I with published Ix 4.5357 cm4,BELOW PUBLISHED YIELD; NOT AN ALLOWABLE PASS
+LOAD-005,nominal simple-span deflection,3.951237,mm,P L3 / 48 E I; E=68.9 GPa typical,TYPICAL-PROPERTY SCREEN ONLY
+LOAD-006,ideal reaction per rail end,500.000000,N,two rails; two supports each,JOINT/POST/BASE CAPACITY OPEN
+LOAD-007,80/20 published yield comparison,172.370000,MPa,live 20-2040 page,PUBLISHED VALUE; NOT PROJECT ALLOWABLE

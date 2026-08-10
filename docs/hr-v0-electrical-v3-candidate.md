@@ -1,8 +1,12 @@
 # HR-V0 Electrical V3 Candidate Architecture
 
+Current superseding status: native connected design candidate `V3-P1.14`. P1.14 preserves P1.13 connectivity and replaces only the unresolved compute product-family identities with exact held candidates: PI1 `SC1112` and PSU3 `SC1158`. See `docs/hr-v0-compute-selection-p0.1.md`. P1.13 remains the topology correction that connects both S0 channels directly to SR1 and moves KWD1/KWD2 into a series gate on `SR1:A1`.
+
 > **PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 
-Status: native connected design candidate `V3-P0.2`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` is retained as the historical R16 configuration; P0.2 is a material restart-chain correction.
+Current identifier: `V3-P1.14`. The following P1.13 paragraph is retained as the unchanged topology narrative; P1.14 changes only PI1/PSU3 identity and evidence fields.
+
+Status: native connected design candidate `V3-P1.13`. It is not a wiring instruction and does not supersede the independently reviewed Electrical V2.1 package until exact selections, calculations, physical tests, and qualified review are complete. `V3-P0.1` through P1.12 are retained as historical configurations. P1.13 removes KWD1/KWD2 from both SR1 input returns and places their ordinary NO contacts in series with `SR1:A1` only. P1.3 records current Schneider contactor application evidence and the catalog's lower-current/critical-current blocker without releasing K1/K2. P1.4 adds a received-lot terminal-control boundary for RESET and ARM. P1.5 freezes exact amber H1 and retains two project placeholder terminals pending received evidence. P1.6 freezes the Phoenix `3211861` FSR1/FSR2 holder candidates; P1.7 freezes `D-ST 4` item `3030420` as the group end-cover candidate. P1.8 freezes active Littelfuse `75920-01` only as the exact SPST high-side SD1 catalog candidate. P1.9 reconciles the exact XT1 Phoenix family and six position-to-net candidates with the physical-panel record. P1.10 replaced the ambiguous system `JC1` block with `J24` and separate `F24`. P1.11 replaces the unsupported P1J conversion chain with exact GlobTek `WR9QI1660YL4NKITR6B` and its factory `YL4/C40337` cord, assigns pin 1 to +24 V and pin 3/shield to return, keeps pins 2/4 intentionally unconnected, and screens 27.024 W / 1.126 A of control load. P1.12 removes the invented installed `JDBG1`, freezes Pi BCM GPIO17 at physical header pin 11 with physical pin 6 return, and limits watchdog debug access to existing exact Harwin TP15/TP16/TP2 test points. Heartbeat harness, runtime, startup, waveform/timing, HIL, programmer, unpowered fixture, no-back-power proof, EMC/retention, receiving and qualified review remain open. Received source plug identity/fit, exact H1 current, startup/simultaneous pickup, PCB/harness, panel mounting/retention, F24 selection, conductors, thermal/fault behavior and physical tests also remain open. `TBD-IN/TBD-OUT`, conductor/lug, source fault, load-break, touch protection, cutout, zero-energy/padlock application, human factors and qualified Boston review remain open, as do both FSR fuse links, received compatibility/grouping, XT1 conductor/protection/physical evidence, protection coordination and physical evidence. The separate PCB-P0.6 watchdog board and DXL-STAR-P0.1 actuator board are routed native candidates while retaining supplier acceptance, received, protection, harness, derating, physical, fault, EMC and qualified-review gates.
 
 - Native source: `electrical/kicad/project-button-v3/project-button-v3.kicad_pro`
 - Generator: `tools/generate_hr_v0_electrical_v3.py`
@@ -21,27 +25,31 @@ The candidate also removes custom mains wiring from HR-V0. All project-built wir
 
 | Rail | Candidate | Manufacturer facts used | Release state |
 |---|---|---|---|
-| actuator 12 V | Mean Well `GST280A12-C6P` | 12 V, 21 A, 252 W; IEC C14 inlet; enclosed adapter; `-V` connected to AC protective earth; standard C6P output is a Molex 39-01-2060-equivalent six-position plug with pins 1-3 `+Vo` and 4-6 `-Vo`; file `GST280A-SPEC 2026-04-03` | candidate only; mating connector/contact order codes, source reverse-current behavior, regeneration, branch protection, and received-unit tests remain open |
-| safety/control 24 V | Mean Well `GST40A24-P1J` | 24 V, 1.67 A, 40 W; class I IEC C14 adapter; center-positive 2.1 x 5.5 mm plug; `-V` is not connected to AC protective earth; file `GST40A-SPEC 2026-04-03` | candidate only; locking DC connector/interface, load/inrush budget, branch protection, and received-unit tests remain open |
-| compute | official Raspberry Pi 27 W USB-C supply | independent compute power remains present for diagnostics when actuator energy is removed | regional order code and cable retention remain open |
+| actuator 12 V | Mean Well `GST280A12-C6P` with proposed project-side Molex `39012066` housing and six `444783112` HCS male contacts | 12 V, 21 A, 252 W; IEC C14 inlet; enclosed adapter; `-V` connected to AC protective earth; C6P output is a Molex 39-01-2060-equivalent receptacle with pins 1-3 `+Vo` and 4-6 `-Vo`; project contacts are 16 AWG HCS candidates with an 11 A/contact manufacturer guideline for 4-6 circuits | candidate only; source-side contact construction, actual current division, exact wire/length, crimp/retention, strain relief, reverse-current behavior, regeneration, branch protection, thermal evidence, and received-unit tests remain open |
+| safety/control 24 V | GlobTek `WR9QI1660YL4NKITR6B` with factory `YL4/C40337` locking cord | 24 V, 1.66 A, 40 W; Class II/floating wall adapter; factory cord pin 1 `+V`, pin 3 `-V`/shield, pins 2/4 N/C; 1200 mm UL1185 16 AWG cable; specification Rev B | candidate only; received plug identity/fit, exact H1 current, startup/simultaneous pickup, F24/branch protection, conductors, thermal/fault behavior and received-unit tests remain open |
+| compute | official `Raspberry Pi 27W USB-C Power Supply US` | independent compute power remains present for diagnostics when actuator energy is removed; official brief `RP-008245-DS-1` identifies the US/Canada Type-A model, 5.1 V / 5 A profile, 1.2 m 17 AWG fixed cable, and production through at least January 2035 | the primary portal lists twelve family SKUs but does not map them to region/color; exact SKU, color, mechanical retention, site receptacle, and received-unit test remain open |
 
 The three external AC inputs shall use site-appropriate listed cords/receptacles and branch protection. No project-built mains splitter, inlet, disconnect, fuse holder, exposed terminal, or internal AC wiring is permitted in this candidate. This change can remove the current internal-mains sheet from the HR-V0 implementation, but it does not close site jurisdiction, adapter suitability, EMC, protective-earth, or inspection obligations.
 
 The `GST280A12-C6P` bonds actuator `0 V` to incoming protective earth inside the adapter. Therefore V3 shall not add `SP1` or any second 0 V/PE bond. Any robot-frame or shield connection must be reviewed against this fixed source bond and checked for unintended parallel paths. Replacing the source changes that conclusion and requires a new bonding review.
 
+P0.7 allocates `JA1` pins 1-3 to three separate `ACT_12V_RAW` conductors and pins 4-6 to three separate `ACT_0V_PE_BONDED` conductors. The idealized screen is `21 A / 3 = 7 A/contact` versus the project-side HCS 11 A guideline, but neither equal sharing nor source-side contact capacity is assumed. `INSPECT-ELEC-004` requires received-part identity, controlled crimping, destructive pull samples, retention/continuity/polarity checks, six-leg current measurement and stabilized thermal evidence in the released arrangement before this interface can be released.
+
 ## Corrected reset, watchdog, ARM, and EDM topology
 
 V3 uses two separately identified PNOZ s4 750104 relays:
 
-- `SR1` is the E-stop/watchdog eligibility relay. Each input path contains one positively opening E-stop NC contact in series with one independent watchdog NO contact. It accepts the physical `RESET` action. Its outputs do not drive K1/K2 directly.
+- `SR1` is the E-stop eligibility relay. Each input path contains one positively opening E-stop NC contact only. KWD1/KWD2 are absent from both input returns and instead series-gate only `SR1:A1`. SR1 accepts the physical `RESET` action. Its outputs do not drive K1/K2 directly.
 - `SRA1` is the final ARM/EDM relay. Its two input channels are fed by separate force-guided outputs from `SR1`. `SRA1` uses monitored falling-edge start. Its start/feedback loop contains the distinct physical `ARM` pushbutton followed by the valid NC mirror contacts of K1 and K2. Its separate safety outputs drive the K1 and K2 coils.
 
 Proposed logical paths:
 
 ```text
-SR1 S11 -- E-STOP CH1 NC -- WD relay A NO -- SR1 S12
-SR1 S21 -- E-STOP CH2 NC -- WD relay B NO -- SR1 S22
+SR1 S11 -- E-STOP CH1 NC -- SR1 S12
+SR1 S21 -- E-STOP CH2 NC -- SR1 S22
 RESET + SR1 feedback/start mode ---- SR1 S34
+
+SAFETY_24V -- KWD1 NO -- KWD2 NO -- SR1 A1
 
 SR1 safety output A ---- SRA1 input channel 1
 SR1 safety output B ---- SRA1 input channel 2
@@ -54,31 +62,37 @@ K1 and K2 main contacts remain in series in the 12 V actuator rail
 
 Required sequence:
 
-1. E-stop channels close and heartbeat recovery closes both watchdog contacts, but SR1 remains dropped.
+1. E-stop channels close and heartbeat recovery closes the two-contact SR1 A1 supply gate, but SR1 remains dropped.
 2. The operator actuates and releases `RESET`; `SR1` becomes eligible.
 3. K1 and K2 remain de-energized because `SRA1` has not accepted ARM.
 4. The operator separately actuates and releases `ARM`; only then may `SRA1` energize K1/K2.
 5. Motion remains inhibited until contactor feedback, actuator state, limits, configuration, and a fresh trajectory all pass in software.
 
+P0.5 freezes `S1` as IDEC `HW1B-M1F10-B` (black) with the explicit `RESET` legend and `S2` as IDEC `HW1B-M1F10-G` (green) with the explicit `ARM` legend. IDEC's current US pages and `HW Series Catalog_Screw` dated 2026-07-23 identify both as flush momentary 1NO screw-terminal complete assemblies and identify `B` and `G` as the black and green color codes. This corrects the earlier same-black-operator ambiguity. P1.4 adds a fail-closed received-lot control: IDEC's 2026-07-14 specification-change notice says prior and redesigned assemblies may ship under the same complete order codes and internal BOM codes changed, while the live product-page BOM returned no component detail on 2026-08-07. The project therefore freezes no internal contact block or terminal number. S1/S2 physical terminals, panel spacing, guarding, location and human-factors acceptance remain open until `docs/hr-v0-reset-arm-receiving-p0.1.md` and `tests/forms/hr-v0-reset-arm-receiving-template.csv` are executed and independently checked.
+
+P1.5 freezes H1 as IDEC `HW1P-1FQD-A-24V`, which the current IDEC USA page identifies as an amber round-flush pilot light with black plastic bezel, screw terminals and 24 VAC/DC illumination. The previous value `SAFE ELIGIBLE indicator interface` and `+/-` pin names were misleading because H1 reports only `SR1_STATUS` and received terminal/internal-circuit/polarity evidence does not exist. H1 is now **RESET STAGE READY - DIAGNOSTIC ONLY / NO MOTION AUTHORITY**, receives no safety credit, and uses `TBD-HA/TBD-HB` project placeholders. Execute `docs/hr-v0-h1-receiving-p0.1.md` and its fourteen-row evidence form before replacing either placeholder or issuing a wire instruction.
+
+P0.6 freezes only the manufacturer-supported XW E-stop contact positions. In the IDEC screw-terminal non-illuminated 2NC bottom view, with `TOP` up, one NC pair marked `1-2` is on the right and one is on the left. Project channel 1 is allocated to the right pair and channel 2 to the left pair. KiCad uses `R-1`, `R-2`, `L-1`, and `L-2` to keep the duplicate manufacturer markings unique; `R-` and `L-` are project prefixes, not markings claimed to exist on the switch. Received orientation, markings, positive-opening continuity and channel separation remain mandatory.
+
 Any E-stop opening, watchdog-channel opening, SR1 dropout, channel discrepancy, K1/K2 mirror-contact fault, or SRA1 fault drops the final outputs. E-stop release, heartbeat restoration, controller reboot, a held RESET, or stale commands cannot energize K1/K2. After any dropout the complete RESET-then-ARM sequence is required.
 
 ## Watchdog-channel boundary
 
-The current RP2040-class watchdog is not safety-rated. V3 replaces the single KWD1 contact with two independently driven, normally-open relay channels and routes one through each SR1 input return. This makes physical RESET part of the nominal recovery after heartbeat loss; SRA1 then still requires the later physical ARM. The final parts, drivers, feedback contacts, startup tests, brownout behavior, diagnostic coverage, common-cause controls, and firmware remain `SELECTION REQUIRED`.
+The current RP2040-class watchdog is not safety-rated. V3-P1.13 uses two independently driven ordinary normally-open relay contacts in series with `SR1:A1`; neither appears in an S0 input return. A heartbeat dropout removes SR1 supply eligibility. After heartbeat recovery, physical RESET remains part of nominal SR1 recovery and SRA1 still requires the later physical ARM through K1/K2 EDM. The KWD gate receives zero functional-safety credit. Contact application, startup, brownout/recovery behavior, diagnostic coverage, common-cause controls, physical separation, firmware binding, PCB, physical derating, fault injection and HIL remain unreleased.
 
-The modeled relay-coil path is `SAFETY_24V -> relay coil -> default-off low-side driver -> SAFETY_0V`. The proposed DC/DC converter is therefore non-isolated and the Pico/driver reference is `SAFETY_0V`; selecting an isolated converter would require isolated output drivers and a fresh grounding/fault review. The relay's exact received coil terminals and integrated-diode polarity remain `TBD-*` until the official terminal drawing and received continuity/polarity evidence are frozen.
+The modeled relay-coil path is `SAFETY_24V -> relay coil -> default-off low-side driver -> SAFETY_0V`. P0.7 proposes the non-isolated TRACO POWER `TSR 1-2450`: pin 1 `+VIN` to `SAFETY_24V`, pin 2 `GND` to `SAFETY_0V`, and pin 3 `+VOUT` to `WD_5V`. Its 6.5-36 V input and 5 V/1 A output support a candidate, not an application release. Branch protection, load budget, startup, slow-ramp brownout, fast dropout/recovery, stuck/overvoltage faults, EMC and enclosure thermal behavior remain open under `INSPECT-ELEC-004`. Selecting an isolated converter would require isolated output drivers and a fresh grounding/fault review. The official Phoenix product PDF freezes the candidate terminal designations `A1/A2`, `11-12-14`, and `21-22-24`, while received continuity and polarity evidence remain mandatory. P1.13 uses both `11-14` NO contacts in series only in the SR1 A1 supply gate. Each `21-22` NC contact remains a separate 24 V diagnostic feed that terminates at the `UFB1` ISO1212DBQ field-input network and is prohibited from reaching a Pico GPIO directly.
 
-This topology improves restart behavior and single-channel diagnostics. It does **not** establish a Performance Level or SIL because both channels may still share a non-safety controller, power source, clock, firmware, or common-cause failure. Qualified risk assessment shall either:
+The feedback sheet uses TI's exact DBQ pinout and Type-3 values: 1 kOhm `RTHR` from module input to `SENSE`, 562 Ohm `RSENSE` between `SENSE` and `IN`, and 10 nF `CIN` from `SENSE` to `FGND` per channel. A calculated 2.70 kOhm 1%, 0.5 W parallel wetting load raises the screened minimum Phoenix contact current above its documented 10 mA minimum at the Mean Well rail minimum. Outputs use 1 kOhm series resistors and 10 kOhm pulldowns before the Pico. P0.9 freezes the exact proposed Vishay, Panasonic, TDK and Murata passive order codes listed in `docs/hr-v0-watchdog-feedback-passive-closure-r30.md`. `GND1`, `FGND1`, and `FGND2` all return to `SAFETY_0V`, so no galvanic-isolation or safety-integrity credit is claimed. PCB, received measurements, DC-bias/power/pulse derating, terminals, EMC, thermal, brownout, fault injection and HIL remain open.
 
-- allocate and validate an integrity target that this implementation can meet;
-- replace the watchdog source with an accepted safety-rated architecture; or
-- treat watchdog stopping as a non-safety diagnostic while independent guarding/E-stop functions carry the risk reduction.
+P0.8 routes `PI_HEARTBEAT` through Panasonic `ERJ6ENF9100V` and Vishay `VO618A-4X017T`; the watchdog collector is pulled to `WD_3V3` by `ERJ6ENF1002V`. Two distinct `TPL7407LPWR` packages use only channel 1: unused inputs are tied low, unused outputs are explicit no-connects, COM connects to `SAFETY_24V`, and each package has a proposed `GRM21BR71H104KA01L` bypass. See `docs/hr-v0-heartbeat-driver-closure-r29.md`. The bypass does not prove TI's COM-slew limit, and none of these parts receives safety credit before `TEST-ELEC-005`, FMEA and qualified review.
+
+This topology improves restart behavior and single-channel diagnostics. It does **not** establish a Performance Level or SIL because both channels share or may share a non-safety controller, power source, clock, firmware, ordinary relays, or common-cause failure. R44 selects the only presently supportable HR-V0 classification: this is `DF-01`, an uncredited diagnostic whose failure is assumed. `SF-01` E-stop, `SF-03` restart prevention and the physically released `PG-01` fixed guard must carry the HR-V0 risk reduction. Any HR-V0 configuration whose fixed guard cannot contain assumed diagnostic failure, and all exposed HR-30 motion, require a separately selected and validated safety-rated `SF-02`. See `docs/hr-v0-functional-safety-allocation-p0.1.md`.
 
 ## Contactor candidate boundary
 
-`LC1D25BD` remains only a candidate. Current Schneider data identify a 24 VDC coil, mechanically linked 1NO+1NC auxiliaries with an NC mirror contact, built-in bidirectional peak-limiting diode suppression, 16-24 ms opening time, and a 2.5 N m power-terminal torque. The current DC-1 selection table includes an LC1D25-class rating above the screened HR-V0 current at 24 VDC, but the robot is a capacitive, inductive, and potentially regenerative electronic load rather than a proved DC-1 resistive load.
+`LC1D25BD` remains only a candidate. Current Schneider data identify a 24 VDC coil, mechanically linked 1NO+1NC auxiliaries with an NC mirror contact, built-in bidirectional peak-limiting diode suppression, 16-24 ms opening time, and a 2.5 N m power-terminal torque. Schneider catalog `MKTED210011EN` (Catalog 2026, pp. A5/120-A5/123) gives 32 A at 24 V for the LC1D25 column with one, two or three poles in series. The same catalog warns that lower currents can have durability below the IEC 60947-4-1 definition because of critical current and directs the application to Schneider technical support. The 11.1 A HR-V0 summed-stall screen is below that row, and the robot is a capacitive, inductive, and potentially regenerative electronic load rather than a proved DC-1 resistive load.
 
-V3 may show all three power poles in series per contactor only after Schneider application guidance confirms the exact 12 VDC making/breaking arrangement. Final release still requires prospective fault current, downstream capacitance, regeneration energy, source behavior, conductor/protection coordination, loaded interruption, contact-weld injection, dropout, rail-decay, and stopping-distance tests. The built-in `BD` suppression shall not be duplicated by an assumed external network.
+V3 shows all three power poles in series per contactor as a proposed topology because the catalog expressly publishes one-through-three-pole series arrangements; it does not treat the 24 V row as a released 12 V application rating. Final release still requires measured break current and voltage, Schneider's identifiable application disposition for the low-current electronic/regenerative load, prospective fault current, downstream capacitance, regeneration energy, source behavior, conductor/protection coordination, loaded interruption, contact-weld injection, dropout, rail-decay, and stopping-distance tests. The built-in `BD` suppression shall not be duplicated by an assumed external network. See `docs/hr-v0-contactor-application-p0.1.md`.
 
 ## Preliminary 24 V load screen
 
@@ -92,14 +106,14 @@ The 40 W / 1.67 A adapter has apparent nameplate headroom, but this is not a rel
 
 ## TTL power-injection boundary
 
-The U2D2 and all three actuator ports share `ACT_0V_PE_BONDED` as the TTL reference and share `DXL_TTL_DATA`. U2D2 pin 2 is intentionally omitted. Each actuator receives VDD only from its own protected branch through `INJ1`, `INJ2`, or `INJ3`; no VDD conductor may continue between actuator ports. The common reference means the Pi/U2D2 path can couple compute ground to actuator 0 V/PE, so the exact USB cable, shield, frame, and EMC implementation still require review and continuity/insulation tests.
+The U2D2 and all three actuator ports share `ACT_0V_PE_BONDED` as the TTL reference and share `DXL_TTL_DATA`. Electrical V3-P1.9 represents one central `INJ1`; its separate native `DXL-STAR-P0.1` project fixes `JC1:1` to return, `JC1:2` to no net/no copper and `JC1:3` to TTL data. `JP1`-`JP3` accept separately protected VDD branches and common return; `JA1`-`JA3` carry only their respective VDD plus common data/return. No VDD conductor joins actuator branches or reaches U2D2. The common reference means the Pi/U2D2 path can couple compute ground to actuator 0 V/PE, so exact USB and actuator cables, shields, frame, protection, EMC, signal integrity, thermal and power-sequencing/no-backfeed behavior still require physical review and test. See `docs/hr-v0-dxl-star-injection-p0.1.md`.
 
 ## Mandatory V3 deliverables
 
 Before this candidate can replace V2.1:
 
 1. **candidate complete:** create connected native KiCad sheets with separate `RESET` and `ARM`, two PNOZ devices, two watchdog channels, explicit K1/K2 poles and mirror contacts, and the external-adapter boundary;
-2. freeze every terminal and connector from exact manufacturer drawings;
+2. freeze every remaining terminal, connector and passive order code from exact manufacturer drawings and application evidence;
 3. regenerate BOM, connector schedule, wire table, netlist, PDF/SVG, unresolved register, source manifest, and ERC output from the same commit;
 4. perform PLr/SIL and common-cause analysis without crediting ordinary firmware by assertion;
 5. execute `TEST-SAFE-001` through `TEST-SAFE-003` first with contactor loads disconnected and then under the released load; and
@@ -107,19 +121,19 @@ Before this candidate can replace V2.1:
 
 ## Native candidate validation record
 
-The generated `V3-P0.2` candidate currently contains:
+The generated `V3-P1.14` candidate currently contains:
 
-- one root index plus nine focused child sheets;
-- 41 component blocks and 198 modeled terminals;
-- 76 native nets: 53 named connected nets plus 23 deliberate auto-generated unconnected nets;
-- 175 unique wire labels synchronized to `wire-number-table.csv`;
-- 39 nonzero-quantity V3 BOM records;
-- 29 unresolved component/interface records; and
-- 85 terminal designations deliberately retained as `TBD-*`.
+- one root index plus twelve focused child sheets;
+- 76 component blocks and 296 modeled terminals;
+- 103 native nets: 64 named connected nets plus 39 deliberate auto-generated unconnected nets;
+- 257 unique wire labels synchronized to `wire-number-table.csv`;
+- 74 nonzero-quantity V3 BOM records;
+- 63 unresolved component/interface records; and
+- 10 terminal designations deliberately retained as `TBD-*`.
 
-KiCad 10.0.5 parsed the root and all nine children, exported the native netlist, a ten-page A3 PDF, and ten SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 41 native component references and all 198 exported `(reference, terminal, net)` nodes against the generated schedules, including the 23 deliberate no-connect terminals. This check caught and corrected an early generator Y-axis transform that had attached visually aligned labels to reversed terminal rows; clean ERC alone did not detect that defect.
+KiCad 10.0.5 parsed the root and all twelve children, exported the native netlist, a thirteen-page A3 PDF and thirteen SVG pages, and reported `0 errors / 0 warnings` in ERC. The checker independently compares all 76 native component references and all 296 exported `(reference, terminal, net)` nodes against the generated schedules, including 39 deliberate unconnected nets. It freezes every ISO1212, VO618A and TPL7407L pin, their supporting networks, the watchdog-board terminals, the 18-terminal DXL-star system boundary, Pi GPIO17/header pin 11, header pin 6 return and TP15/TP16/TP2 debug access. Clean ERC did not detect the historical P0.4 `RSENSE` application error, illustrating why exact-net, primary-source and physical checks remain separate.
 
-The export was rendered at 150 dpi and visually checked page by page after reorganizing the earlier crowded six-sheet layout. No remaining clipping, border collision, note-order reversal, or connection-label overlap was observed in the current export. The same audit corrected the watchdog low-side coil path, made the shared TTL ground explicit, and replaced duplicate per-component wire labels with 175 unique per-sheet labels before this candidate was recorded.
+The export is rendered at 150 dpi and visually checked after each material layout change. P1.3 retains the pin-level watchdog circuits, exact test points and DXL-star boundary while adding the controlled K1/K2 application evidence; it has 259 synchronized wire labels. The separate native PCB-P0.5 watchdog source retains 42 schematic references, 201 segments, 56 vias and three filled B.Cu zones. DXL-STAR-P0.1 has seven connector references, four board-only holes, 17 segments and one return zone. Both native DRC runs report zero violations/routed unconnected pads; neither project has fabrication outputs.
 
 The KiCad CLI logs Windows registry-access messages for `HKCU\Software\kicad-cli` in this restricted execution environment. Every command still returned exit code 0 and produced the expected artifact; the messages are retained in `validation/kicad-cli.log` rather than hidden.
 

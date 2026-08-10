@@ -1,0 +1,7 @@
+interface,from,to,state,missing
+LR-IF-01,X430 output / HN12-N101,custom 15 mm shaft adapter,OPEN,"controlled horn CAD, attachment subset, fasteners, fit, torque, retention and proof"
+LR-IF-02,custom 15 mm shaft adapter,MJC33 input hub,OPEN,"shaft tolerance, clamp/key strategy, axial retention, runout and application acceptance"
+LR-IF-03,MJC33 output hub,HB-450M-2 15 mm shaft,OPEN,"received shaft dimensions, clamp/key strategy, axial position and proof"
+LR-IF-04,HB-450M-2 front flange/body,brake riser/PT-600,OPEN,"base-mount identity or designed riser, M5 interface, fasteners, alignment and load proof"
+LR-IF-05,FUTEK/X430 fixed-side stack,PT-600,OPEN,"horizontal support geometry, T-slot hardware, alignment, reaction load path and proof"
+LR-IF-06,PT-600,qualified bench/foundation,OPEN,"site survey, support/anchor design, permission, installation and proof"

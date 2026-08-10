@@ -1,0 +1,20 @@
+{
+  "identifier": "HR-V0-ACT-AC-CORD-P0.1",
+  "date": "2026-08-09",
+  "build_location_basis": "Boston, Massachusetts, USA",
+  "source_candidate": "MEAN WELL GST280A12-C6P",
+  "cord_candidate": "Eaton Tripp Lite series P006-006",
+  "interface_control_count": 18,
+  "open_hold_count": 12,
+  "receiving_record_count": 16,
+  "site_fit_record_count": 14,
+  "catalog_candidate_identified": true,
+  "application_selected": false,
+  "purchase_authorized": false,
+  "received_evidence_present": false,
+  "site_evidence_present": false,
+  "connection_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION"
+}

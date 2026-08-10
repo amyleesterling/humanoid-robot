@@ -1,0 +1,88 @@
+{
+  "schema": "project-button-hr-v0-dynamic-trace-analysis-p0.2",
+  "status": "PRELIMINARY - ANALYSIS CANDIDATE ONLY - QUALIFIED DISPOSITION REQUIRED - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "analysis_mode": "SYNTHETIC_VALIDATION_ONLY",
+  "run_type": "STOP",
+  "trace": "analysis/hr-v0/dynamic-trace-p0.2/synthetic/fail-motion-stop-trace.csv",
+  "config": "analysis/hr-v0/dynamic-trace-p0.2/synthetic/stop-synthetic-config.json",
+  "run_id": "SYN-FAIL-MOTION-001",
+  "configuration_commit": "synthetic-validation-not-hardware",
+  "sample_count": 151,
+  "computed_result": "FAIL",
+  "run_disposition": "REJECT",
+  "release_effect": "NONE",
+  "event_metrics": {
+    "stop_event_time_s": 0.05,
+    "e2_observation_end_time_s": 0.1,
+    "maximum_e2_angle_delta_deg": 0.060000000000002274,
+    "k1_coil_drop_time_s": 0.055,
+    "k2_coil_drop_time_s": 0.056,
+    "common_edm_chain_close_time_s": 0.062,
+    "k1_aux_open_time_s": 0.06,
+    "k2_aux_open_time_s": 0.061,
+    "control_source_minimum_observed_v": 24.0
+  },
+  "checks": [
+    {
+      "check_id": "DTA2-001",
+      "applicable": true,
+      "passed": true,
+      "detail": "sequential=True; interval_ok=True; metadata_ok=True; no_drops=True; no_saturation=True"
+    },
+    {
+      "check_id": "DTA2-002",
+      "applicable": true,
+      "passed": true,
+      "detail": "stop_event_rising_edges=[50]"
+    },
+    {
+      "check_id": "DTA2-003",
+      "applicable": true,
+      "passed": true,
+      "detail": "preconditions=True; falling={'k1_coil_state': [55], 'k2_coil_state': [56], 'k1_aux_status_state': [60], 'k2_aux_status_state': [61]}; common_edm_rising=[62]; auxiliaries_diagnostic_only=true"
+    },
+    {
+      "check_id": "DTA2-004",
+      "applicable": true,
+      "passed": true,
+      "detail": "control_source_valid=True; observation_end=100; minimum_V=20.0"
+    },
+    {
+      "check_id": "DTA2-005",
+      "applicable": true,
+      "passed": false,
+      "detail": "disconnected_load_e2=true; maximum_angle_delta_deg=0.060000000; limit_deg=0.05"
+    },
+    {
+      "check_id": "DTA2-006",
+      "applicable": true,
+      "passed": true,
+      "detail": "transition_delays_s={'k1_coil': 0.0049999999999999975, 'k2_coil': 0.005999999999999998, 'common_edm': 0.011999999999999997, 'k1_aux': 0.009999999999999995, 'k2_aux': 0.010999999999999996}; accepted_limits={k1_coil:0.02, k2_coil:0.02, common_edm:0.025, k1_aux:0.025, k2_aux:0.025}"
+    },
+    {
+      "check_id": "DTA2-007",
+      "applicable": false,
+      "passed": null,
+      "detail": "RESET/ARM separation is evaluated in a separate eight-channel RESET_ARM run"
+    },
+    {
+      "check_id": "DTA2-008",
+      "applicable": true,
+      "passed": true,
+      "detail": "K1/K2 NO auxiliary channels are diagnostic only; safety_function_credit=ZERO"
+    },
+    {
+      "check_id": "DTA2-009",
+      "applicable": true,
+      "passed": false,
+      "detail": "computed PASS remains HOLD; qualified configuration-specific disposition required"
+    }
+  ],
+  "interpretation_limits": [
+    "The NC mirror contacts are represented by one common series-EDM chain; two series points are never treated as independent contact states.",
+    "K1/K2 NO auxiliary channels are diagnostic corroboration only and receive zero safety-function credit.",
+    "STOP and RESET_ARM are separate eight-channel physical runs; sequential runs cannot prove cross-run simultaneity.",
+    "The STOP schema is restricted to disconnected-load E2 with the actuator source absent; it cannot prove powered-motion stopping time, travel, or clearance.",
+    "A computed PASS is not an approved result or work authorization."
+  ]
+}

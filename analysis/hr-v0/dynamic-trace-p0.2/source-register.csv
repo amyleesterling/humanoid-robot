@@ -1,0 +1,4 @@
+source_id,source,locator,controlled_use
+DTS2-001,R180 event-observation correction,docs/hr-v0-event-observation-correction-p0.1.md,one common EDM chain; separate diagnostic auxiliaries; two eight-channel allocations
+DTS2-002,Electrical V3-P1.15 net schedule,electrical/kicad/project-button-v3-p1.15-carrier-candidate/net-schedule.csv,K1/K2 NC series topology and individual NO auxiliary nets
+DTS2-003,HR-V0-DYN-TRACE-P0.1,analysis/hr-v0/dynamic-trace-p0.1/,historical algorithm and limits; superseded channel semantics

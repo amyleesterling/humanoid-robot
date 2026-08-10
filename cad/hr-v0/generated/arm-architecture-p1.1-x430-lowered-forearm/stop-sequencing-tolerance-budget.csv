@@ -1,0 +1,8 @@
+budget_id,source,maximum_adverse_contribution_mm,evidence,state
+P11-TOL-01,part_profile_thickness,0.250,"released drawing, supplier DFM and calibrated FAI",ALLOCATED ACCEPTANCE LIMIT - UNVERIFIED
+P11-TOL-02,frame_actuator_registration_runout,0.500,received joint-stack metrology with uncertainty,ALLOCATED ACCEPTANCE LIMIT - UNVERIFIED
+P11-TOL-03,joint_play_and_calibration,0.500,loaded bidirectional measurement over temperature and wear,ALLOCATED ACCEPTANCE LIMIT - UNVERIFIED
+P11-TOL-04,fastener_projection,0.250,"selected stack, received inspection and access/torque trial",ALLOCATED ACCEPTANCE LIMIT - UNVERIFIED
+P11-TOL-05,stop_deformation_and_bumper,0.750,"accepted structural model, proof and dynamic stop tests",ALLOCATED ACCEPTANCE LIMIT - UNVERIFIED
+P11-TOL-06,measurement_uncertainty,0.250,approved measurement-system analysis and calibrated instruments,ALLOCATED ACCEPTANCE LIMIT - UNVERIFIED
+P11-TOL-SUM,combined worst-case adverse variation,2.500,must be <= 2.869402 mm to preserve >= 1.500 mm physical residual,PROVISIONAL ALLOCATION PASS - ALL INPUTS UNVERIFIED

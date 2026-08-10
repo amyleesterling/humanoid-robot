@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="760" viewBox="0 0 1100 760">
+      <style>
+        text { font: 16px system-ui, sans-serif; fill: #082554; }
+        .title { font-size: 28px; font-weight: 700; }
+        .warning { font-size: 18px; font-weight: 700; fill: #8a4b00; }
+        .link { stroke: #082554; stroke-width: 42; stroke-linecap: round; }
+        .joint { fill: #d9efff; stroke: #082554; stroke-width: 4; }
+        .route { fill: none; stroke: #b17700; stroke-width: 8; stroke-linecap: round; stroke-dasharray: 12 8; }
+        .zone { fill: none; stroke: #0b72b9; stroke-width: 3; stroke-dasharray: 8 6; }
+      </style>
+      <text x="45" y="45" class="title">HR-V0 CABLE-ROUTE DATUM STUDY</text>
+      <text x="45" y="78" class="warning">CENTERLINE SPACE ONLY - NO CABLE, CLAMP, LOOP OR BEND RADIUS IS RELEASED</text>
+      <line x1="170" y1="330" x2="500" y2="330" class="link"/><line x1="500" y1="330" x2="830" y2="330" class="link"/>
+      <circle cx="170" cy="330" r="34" class="joint"/><circle cx="500" cy="330" r="34" class="joint"/><circle cx="830" cy="330" r="34" class="joint"/>
+      <circle cx="170" cy="330" r="100" class="zone"/><circle cx="500" cy="330" r="100" class="zone"/>
+      <path d="M70,460 C95,390 100,255 170,245 C240,235 275,260 335,270 L430,270 C470,270 480,245 500,245 C570,235 605,260 665,270 L780,270 C820,270 840,250 900,250" class="route"/>
+      <text x="55" y="510">CR-001 fixed entry / J1 loop: DESIGN REQUIRED</text>
+      <text x="235" y="220">CR-002 upper-link neutral zone</text>
+      <text x="420" y="510">CR-003 J2 service loop: DESIGN REQUIRED</text>
+      <text x="610" y="220">CR-004 forearm neutral zone</text>
+      <text x="790" y="510">CR-005 gripper pigtail: DESIGN REQUIRED</text>
+      <text x="45" y="560">Blue circles reserve the 50 mm hard-stop contact-radius study.</text>
+      <text x="45" y="590">Cable must not enter any final stop, pinch, connector or guard-contact path.</text>
+      <text x="45" y="620">Exact bundle, conductor/connector, bend radius, torsion and tension remain SELECTION REQUIRED.</text>
+      <text x="45" y="650">Clamp spacing, flex life, abrasion protection and moving mass also remain SELECTION REQUIRED.</text>
+      <text x="45" y="700" class="warning">VERIFY ALL COMBINED JOINT POSES ON THE UNPOWERED ARTICLE BEFORE ANY ACTUATOR CONNECTION</text>
+      <text x="45" y="736" class="warning">PRELIMINARY - NOT A HARNESS DRAWING OR PERMISSION TO ENERGIZE</text>
+    </svg>

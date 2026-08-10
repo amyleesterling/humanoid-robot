@@ -1,0 +1,8 @@
+event_input_net,project_net_candidate,meaning,unaccepted_risk,warning
+EVMA_IN1,SR1_S12,S0 channel-1 return,Pilz diagnostic/test circuit; waveform and allowed added load not accepted,"PRELIMINARY - BENCH R&D EQUIPMENT ONLY - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+EVMA_IN2,SR1_START_RETURN,manual RESET return,monitored reset; added load and stuck/high fault effect not accepted,"PRELIMINARY - BENCH R&D EQUIPMENT ONLY - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+EVMA_IN3,ARM_AFTER_S2,manual ARM/start return,monitored start; added load and stuck/high fault effect not accepted,"PRELIMINARY - BENCH R&D EQUIPMENT ONLY - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+EVMA_IN4,K1_A1,K1 coil command,parallel input load/dropout and surge behavior not accepted,"PRELIMINARY - BENCH R&D EQUIPMENT ONLY - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+EVMB_IN1,K2_A1,K2 coil command,parallel input load/dropout and surge behavior not accepted,"PRELIMINARY - BENCH R&D EQUIPMENT ONLY - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+EVMB_IN2,EDM_K1_OUT,K1 mirror-contact chain,EDM diagnostic behavior with added input not accepted,"PRELIMINARY - BENCH R&D EQUIPMENT ONLY - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+EVMB_IN3,SRA1_START_RETURN,K2 mirror-contact chain,EDM diagnostic behavior with added input not accepted,"PRELIMINARY - BENCH R&D EQUIPMENT ONLY - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

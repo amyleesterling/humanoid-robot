@@ -7,7 +7,49 @@
     "link_width_mm": 44.0,
     "link_thickness_mm": 4.75,
     "robotis_frame_pcd_mm": 22.0,
+    "s102_selected_tapped_rectangle_mm": [
+      32.0,
+      16.0
+    ],
     "candidate_frame_hole_mm": 2.7,
+    "fabrication_rfq_identifier": "HR-V0-FAB-RFQ-P0.1",
+    "fit_coupon_mm": [
+      38.0,
+      14.0,
+      2.0
+    ],
+    "s102_fit_coupon_mm": [
+      44.0,
+      30.0,
+      2.0
+    ],
+    "gripper_h104_selected_rectangle_mm": [
+      24.0,
+      12.0
+    ],
+    "gripper_fit_coupon_mm": [
+      36.0,
+      24.0,
+      2.0
+    ],
+    "hard_stop_contact_radius_mm": 50.0,
+    "hard_stop_nominal_margin_deg": 5.0,
+    "j1_software_limit_deg": [
+      -20.0,
+      70.0
+    ],
+    "j1_mechanical_datum_deg": [
+      -25.0,
+      75.0
+    ],
+    "j2_internal_software_limit_deg": [
+      15.0,
+      125.0
+    ],
+    "j2_internal_mechanical_datum_deg": [
+      10.0,
+      130.0
+    ],
     "adapter_mm": [
       90.0,
       110.0,
@@ -17,13 +59,68 @@
       100.0,
       80.0,
       6.35
+    ],
+    "base_frame_candidate_mm": {
+      "outside_x": 500.0,
+      "outside_y": 320.0,
+      "longitudinal_cuts": [
+        500.0,
+        500.0
+      ],
+      "transverse_cuts": [
+        240.0,
+        240.0
+      ],
+      "column_cut": 500.0,
+      "column_bottom_z": 40.0,
+      "frame_joint_identifier": "HR-V0-FRAME-P0.2"
+    },
+    "assembly_datum_chain_candidate_mm": {
+      "column_center_x": -210.0,
+      "j1": [
+        -166.0,
+        0.0,
+        500.0
+      ],
+      "j2_neutral": [
+        -6.0,
+        0.0,
+        500.0
+      ],
+      "gripper_neutral": [
+        154.0,
+        0.0,
+        500.0
+      ]
+    },
+    "guard_space_reservation_mm": {
+      "radial_envelope": 450.0,
+      "internal_width": 900.0,
+      "internal_depth": 400.0,
+      "internal_height": 950.0,
+      "candidate_panel_thickness": 6.0
+    },
+    "guard_provisional_allowances_mm": {
+      "stopping_travel": 25.0,
+      "guard_clearance": 25.0,
+      "envelope_tolerance": 5.0
+    },
+    "catch_tray_space_reservation_mm": [
+      820.0,
+      320.0,
+      50.0,
+      3.0
     ]
   },
   "release_gates": [
-    "Overlay DXF against physical FR13-H101K and FR13-S102K fit-check coupons",
+    "Execute INSPECT-MECH-003 with MV0-FC01 against received FR13-H101K and FR13-S102K parts",
+    "Execute INSPECT-MECH-004 with MV0-FC02 against the received FR13-S102K selected tapped pattern",
     "Resolve M2.5 fastener grade, engagement, torque and retention",
-    "Resolve T-slot fasteners, torque, anti-rotation and bracket arrangement",
+    "Execute INSPECT-MECH-008 with MV0-FC03 against the received FR12-H104K and verify seating and fastener access",
+    "Release hard-stop bracket, bumper, load path, tolerance stack and impact validation before actuator motion",
+    "Execute INSPECT-MECH-010 on six 40-4332 / twelve 75-3422 candidates; resolve fit, tool access, torque, slip, proof and qualified disposition",
     "Survey actual bench and select anchor fasteners from substrate evidence",
-    "Complete structural, hard-stop, cable, guard and proof-test release"
+    "Complete structural, hard-stop, cable, guard and proof-test release",
+    "Execute INSPECT-GUARD-001 INSPECT-CABLE-001 and TEST-DROP-001 on the frozen unpowered article before actuator connection"
   ]
 }

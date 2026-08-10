@@ -1,0 +1,12 @@
+{
+  "revision": "HR-V0-ROBOTIS-IF-P0.1",
+  "warning": "PRELIMINARY - ORIENTATION EVIDENCE ONLY - NO BUILDABLE ARM GEOMETRY",
+  "coordinate_basis": "manufacturer STEP files imported without transforms",
+  "source_count": 5,
+  "pairwise_intersection_volume_mm3": {
+    "actuator_h101": "0",
+    "actuator_s102": "0",
+    "h101_s102": "0"
+  },
+  "engineering_disposition": "P0.2 flat-link and shoulder-adapter geometry withdrawn; replacement architecture selection required"
+}

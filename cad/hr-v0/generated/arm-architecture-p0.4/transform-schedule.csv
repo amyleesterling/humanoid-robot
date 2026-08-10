@@ -1,0 +1,6 @@
+item,parent,tx_mm,ty_mm,tz_mm,rx_deg,matrix_4x4_row_major,status
+J1 XM540 body,J1 frame,1.75,0,0,proper axis-map,"[[0.0, 0.0, -1.0, 1.75], [1.0, 0.0, 0.0, 0.0], [0.0, -1.0, 0.0, 0.0], [0.0, 0.0, 0.0, 1.0]]",axis and S102 hole registration exact; axial horn/idler stack candidate only
+J1 H101 output reference,J1 output,0,0,0,0,"[[1.0, 0.0, 0.0, 0], [0.0, 1.0, -0.0, 0], [0.0, 0.0, 1.0, 0], [0.0, 0.0, 0.0, 1.0]]",exact vendor geometry; fastener stack open
+J2 joint package and S102,WORLD,0,202.55,0,90,"[[1.0, 0.0, 0.0, 0], [0.0, 0.0, -1.0, 202.55], [0.0, 1.0, 0.0, 0], [0.0, 0.0, 0.0, 1.0]]",package roll exact; internal XM540 uses the recorded actuator axis-map
+J2 H101 straight-reference pose,WORLD,0,202.55,0,0,"[[1.0, 0.0, 0.0, 0], [0.0, 1.0, -0.0, 202.55], [0.0, 0.0, 1.0, 0], [0.0, 0.0, 0.0, 1.0]]",requires -90 deg output offset relative J2 body
+G1 H104 frame,WORLD,0,331.6,0,180,"[[1.0, 0.0, 0.0, 0], [0.0, -1.0, -0.0, 331.6], [0.0, 0.0, -1.0, 0], [0.0, 0.0, 0.0, 1.0]]",candidate frame only; gripper transform open

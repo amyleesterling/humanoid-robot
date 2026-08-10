@@ -1,5 +1,6 @@
 """Project Button HR-V0 non-safety motion-authority supervisor."""
 
+from .actuator_config import ActuatorConfiguration, ActuatorReadback, ActuatorRule
 from .model import (
     FaultCode,
     HardwareSnapshot,
@@ -12,8 +13,12 @@ from .model import (
     TrajectoryCommand,
     TrajectorySample,
 )
+from .dynamixel_bus import ActuatorTelemetry, BusError, DynamixelBusController
 
 __all__ = [
+    "ActuatorConfiguration",
+    "ActuatorReadback",
+    "ActuatorRule",
     "FaultCode",
     "HardwareSnapshot",
     "JointRule",
@@ -24,4 +29,7 @@ __all__ = [
     "SupervisorOutputs",
     "TrajectoryCommand",
     "TrajectorySample",
+    "ActuatorTelemetry",
+    "BusError",
+    "DynamixelBusController",
 ]

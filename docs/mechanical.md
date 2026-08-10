@@ -1,22 +1,32 @@
 # Mechanical Concept and Preliminary Load Model
 
+> **R98 OVERRIDING ARCHITECTURE/LOAD HOLD:** `HR-V0-ARM-ARCH-P0.7` remains the controlled unreleased geometry and its custom-metal route remains held. The nonselected P1.1 comparison preserves the R95 geometry and R96 incomplete load basis. `HR-V0-FR12-MASS-MET-P0.1` defines an unexecuted physical mass-property route for `LOAD-OPEN-01`; `HR-V0-X430-DUTY-P0.1` defines an unexecuted instrumented route for `LOAD-OPEN-08` with all seven powered stages blocked. The gripper, FR12 measured properties, hardware/harness, complete COM/inertia, drive/reflected inertia, bumper, accepted continuous torque/thermal limits and measured dynamics remain unresolved. P1.0/P1.1 and X430 are unselected; P0.7 is not superseded and no purchase or external work is authorized.
+
+> **R70 CURRENT BOUNDARY:** The historical P0.2 flat-arm architecture and R54/P0.1 through R67/P0.6 arm candidates remain superseded. `HR-V0-ARM-ARCH-P0.7` remains the controlled geometry with integrated A00-A07 plus HS-J2-POS, a 40,001-pose body sweep, a continuous nominal clearance certificate for 69 non-intentional rigid-body pairs through J2=120 degrees, and a separately analyzed twin-rail positive-stop contact. `HR-V0-MASS-REDUCTION-P0.1` adds four nonselected subtractive relief candidates; it does not supersede P0.7. `HR-V0-MECH-P0.6` remains the release hold. No adapter, support, beam, fastener, bumper, motion limit or supplier packet is released.
+
 **PRELIMINARY—NOT APPROVED FOR ENERGIZATION**
 
-Status: correction-stage feasibility model. Native HR-V0 R0.1 quote geometry, four custom-part neutral files, preliminary mass properties, and reproducible structural screens now exist; fit coupons, released drawings, complete mass closure, hard stops, guards, cable routing, gripper mechanics, bench anchors, proof tests, and mechanical release are not complete. See [the R0.1 mechanical baseline](hr-v0-mechanical-r0.1.md) and [R11 engineering calculations](r11-engineering-calculations.md).
+Status: correction-stage feasibility model. Exact vendor-coordinate arm source, explicit integrated transforms, an interactive candidate model, controlled C01/C04/C05/C06/C07 drawings/DXFs, a same-interface relief study, preliminary mass properties, reproducible structural screens, continuous nominal body-clearance evidence, analytical positive-stop geometry, controlled fit-coupon packages, an exact-revision gripper collision/kinematic reference, a proposed orderable gripper mechanism allocation, and guard/catch/cable space studies now exist. Received MTR/FAI, qualified analytical acceptance, T-slot capacity, received fastener stacks, torque/locking/reuse rules, physical coupon/kit inspection, complete gripper manufacturing definition and H104 registration, complete mass closure, selected bumper, measured stopping/drop/sweep evidence, exact guard/receiver/harness parts, gripper force/fasteners, bench anchors, continuous-duty/thermal evidence, proof tests, and mechanical release are not complete. See [the R69 arm architecture candidate](hr-v0-arm-architecture-p0.7.md), [the R96 P1.1 load basis](hr-v0-x430-load-basis-p1.1.md), [the R97 FR12 metrology route](hr-v0-fr12-moving-mass-metrology-p0.1.md), [the R98 X430 duty route](hr-v0-x430-duty-characterization-p0.1.md), [the R70 mass-reduction study](hr-v0-mass-reduction-study-p0.1.md), [the P0.6 mechanical hold](hr-v0-mechanical-release-p0.6.md), [joint-interface basis](hr-v0-joint-interface-fasteners-p0.1.md), [gripper architecture](hr-v0-gripper-architecture-p0.2.md), [guard/receiver/cable architecture](hr-v0-guard-receiver-cable-p0.1.md), and [hard-stop basis](hr-v0-hard-stop-design-basis-p0.3.md).
 
-## Geometry
+## Current exact-coordinate candidate
 
-The HR-V0 mechanism is a planar two-link arm mounted to a rigid vertical bench column.
+R69 preserves the controlled XM540-to-S102 registration and parallel reference J1/J2 axes. J1 is at `(-210,81.025,500) mm` from A0. Candidate J1-to-J2 spacing is 202.550 mm; H104 G1 is 129.050 mm beyond J2 and 331.600 mm from J1, reserving 28.400 mm to the 360 mm object-center ceiling. The upper/forearm members are 100/50 mm vertical `20-2040` envelopes between candidate 9.525 mm adapters. An adaptive certificate covers all 69 non-intentional nominal rigid-body pairs through J2=120° with at least 0.75 mm conservative lower-bound clearance and locates first nominal body contact at 121.643289°. The separately analyzed C06/C07 twin-rail stop contacts at nominal J2=117.999985° while the body retains 2.114900 mm clearance. The candidate software ceiling remains 115°. Bumper selection, cables, guards, stopping overtravel, backlash, compliance, manufacturing variation, deformation and physical tolerances remain excluded.
+
+The R69 partial screen is 2.018 N·m shoulder gravity and 0.515 N·m elbow gravity; after the 2.25 screening multiplier, 4.541 N·m and 1.158 N·m. It uses current C01/C04/C06/C07/member CAD estimates but still uses legacy elbow/gripper/payload allocations and omits frames, fasteners, cables and final gripper mechanics, so it is incomplete and may rise. The member/thread/adapter screens are indicative only; typical material values are not allowables. Certified properties, local contact/prying, preload, fatigue, impact and physical proof remain open.
+
+## Historical P0.2 geometry — withdrawn
+
+The following P0.2 geometry is retained only to explain earlier calculations. It must not be fabricated or used as the current arm definition.
 
 - J1 shoulder pitch: commanded range −20° to +70° from horizontal datum.
-- J2 elbow pitch: commanded range 15° to 125° internal angle.
+- J2 elbow pitch: historical commanded range 15° to 125° internal angle; **withdrawn and prohibited for the current candidate**.
 - Upper link, shoulder axis to elbow axis: 160 ±0.5 mm.
 - Forearm, elbow axis to gripper datum: 160 ±0.5 mm.
 - Payload center: up to 200 mm from elbow and 360 mm from shoulder in the screened horizontal pose.
-- Mechanical hard stops shall sit at least 5° beyond software limits and before any cable, connector, or shield contact.
+- Historical 5° hard-stop rule: **withdrawn**. The current unreleased allocation is a 115° software ceiling and 118° positive metal contact, governed by `HR-V0-HS-P0.3`.
 - Each rotating joint requires dual-supported output geometry. Actuator output bearings alone shall not carry cantilevered link loads unless the actuator manufacturer explicitly approves the final force, moment, duty, shock, and life case.
 
-Links are initially specified as flat 4.75 mm nominal 6061-T6 aluminum plates using ROBOTIS FR13-H101K output frames and FR13-S102K actuator-body frames. Polymer parts may be used for fit coupons, covers, cable guides, and gripper fingers, but not as the sole primary shoulder load path in the first build release.
+Links are initially specified as flat 4.75 mm nominal 6061-T6 aluminum plates using ROBOTIS FR13-H101K output frames and FR13-S102K actuator-body frames. The interfaces are deliberately asymmetric: H101 output uses the PCD22 clearance pattern, S102 body-frame mounting uses the selected 32 x 16 tapped rectangle, and the proposed FR12-H104K gripper frame uses a selected 24 x 12 mm four-hole subset. `MV0-FC03` physical seating and fastener-access evidence is mandatory; the H104-to-official-URDF transform, fastener stack and load path remain unreleased. Polymer parts may be used for fit coupons, covers, cable guides, and gripper fingers, but not as the sole primary shoulder load path in the first build release. See [the joint-interface and fastener basis](hr-v0-joint-interface-fasteners-p0.1.md) and [the gripper architecture](hr-v0-gripper-architecture-p0.2.md).
 
 ## Mass budget
 
@@ -28,9 +38,9 @@ Links are initially specified as flat 4.75 mm nominal 6061-T6 aluminum plates us
 | Gripper assembly | 0.21 kg | 0.16 m from elbow |
 | Payload | 0.10 kg | 0.20 m from elbow, 0.36 m from shoulder |
 
-Maximum moving mass from this budget is 0.75 kg. This is an allocation, not a measured assembly mass. Each item requires a supplier or CAD source, local center of mass, inertia, configuration revision, and later a measured value.
+Maximum moving mass from this budget is 0.75 kg, including the 0.10 kg payload and excluding the fixed shoulder actuator/base. R69’s controlled C01/C04/C06/C07/member estimates plus the two actuator masses and payload produce a 692.758 g subtotal, leaving only 57.242 g before frames, fasteners, bumper, gripper mechanics and moving cables. The upper and forearm buckets are already exceeded. R70's nonselected relief set would reduce the incomplete subtotal to 634.775 g and raise provisional headroom to 115.225 g, but does not account for or measure the missing items. This remains a mass-budget blocker, not a measured pass. See [the moving-mass closure record](hr-v0-moving-mass-closure-p0.1.md).
 
-## Worst-case static gravity torque
+## Historical P0.2 static gravity torque — superseded by the R57 candidate screen
 
 The conservative pose places both links horizontal. Using `g = 9.80665 m/s²`:
 
@@ -78,6 +88,8 @@ The HR-V0 arm requires the same form of proof using the selected actuator's own 
 - correlation of CAD mass properties with measured parts.
 
 Minimum mechanical proof factor is 3.0 against the maximum permitted operational load for non-brittle metal primary structure. This is a project rule, not a standards claim. It does not replace joint-specific fatigue, impact, fastener, bearing, or restraint analysis.
+
+The current hard-stop screen records the allocated-mass energies and candidate 50 mm contact datums but is not a stop-part release. Reflected drive inertia, bumper force/displacement, current persisting during stop-detection latency, rebound, wear, tolerance and repeated-cycle evidence remain required under `INSPECT-MECH-006` and `TEST-MECH-002`.
 
 ## Serviceability and pinch control
 

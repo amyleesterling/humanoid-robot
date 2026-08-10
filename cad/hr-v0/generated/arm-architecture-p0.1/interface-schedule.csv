@@ -1,0 +1,8 @@
+interface,from,to,plane_world,pattern,fasteners,status
+A01,J1 H101 outside broad face,upper proximal adapter,Y=32.0 mm,8 x dia 2.5 manufacturer thru on PCD22; candidate adapter dia 2.70,SELECTION REQUIRED,geometrically_registered_not_released
+A02,upper proximal adapter,20-2040 end,Y=36.0 mm,candidate two-hole M5 end-tap route at X=+/-10 mm; exact controlled profile CAD/received inspection required,SELECTION REQUIRED,envelope_candidate_only
+A03,20-2040 end,upper distal adapter,Y=136.0 mm,candidate two-hole M5 end-tap route at X=+/-10 mm; exact controlled profile CAD/received inspection required,SELECTION REQUIRED,envelope_candidate_only
+A04,upper distal adapter,J2 S102 outside broad face,Y=140.0 mm,8 x dia 2.5 manufacturer thru on PCD22; candidate adapter dia 2.70,SELECTION REQUIRED,geometrically_registered_not_released
+A05,J2 H101 outside broad face,forearm proximal adapter,Y=223.5 mm at straight reference,8 x dia 2.5 manufacturer thru on PCD22; candidate adapter dia 2.70,SELECTION REQUIRED,geometrically_registered_not_released
+A06,forearm beam,forearm adapters,Y=227.5 and 277.5 mm at straight reference,candidate two-hole M5 end-tap route; exact controlled profile CAD/received inspection required,SELECTION REQUIRED,envelope_candidate_only
+A07,forearm distal adapter,H104 outside broad face,Y=281.5 mm at straight reference,manufacturer broad-face pattern; final subset and adapter holes SELECTION REQUIRED,SELECTION REQUIRED,transform_candidate_pattern_open

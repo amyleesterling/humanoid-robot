@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HR-V0 host deployment P0.1</title>
+<style>
+:root{--sky:#d9f1ff;--blue:#082b59;--mid:#1769aa;--gold:#f4bd28;--ink:#10243d;--paper:#f7fbff;--line:#8db7d7;--hold:#fff2c8}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}header{background:linear-gradient(135deg,var(--sky),#fff 70%);border-bottom:6px solid var(--gold);padding:clamp(24px,5vw,64px)}main{max-width:1180px;margin:auto;padding:28px 20px 60px}h1{font-size:clamp(2rem,5vw,4.5rem);line-height:1.04;margin:.2em 0;color:var(--blue)}h2{font-size:clamp(1.45rem,3vw,2.3rem);line-height:1.2;color:var(--blue)}p,li,button{font-size:16px}.eyebrow,.tech{font-size:14px;font-weight:700;color:var(--mid)}.warning{background:var(--blue);color:white;padding:14px 20px;font-weight:800;border-radius:12px;max-width:1020px}.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:24px 0}.metric{background:white;border:2px solid var(--line);border-radius:16px;padding:18px}.metric strong{display:block;font-size:clamp(1.7rem,4vw,2.6rem);color:var(--blue)}nav{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0}button{min-height:46px;padding:10px 16px;border:2px solid var(--blue);border-radius:999px;background:white;color:var(--blue);font-weight:750;cursor:pointer}button[aria-pressed="true"]{background:var(--gold);color:var(--blue)}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{background:white;border:2px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 5px 0 rgba(8,43,89,.1)}.card[hidden]{display:none}.hold{background:var(--hold)}code{background:#e8f3fb;padding:.1em .35em;border-radius:5px;font-size:14px;overflow-wrap:anywhere}.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;align-items:stretch;margin:18px 0}.step{border:2px solid var(--line);border-radius:12px;padding:14px;background:var(--sky);font-size:14px;font-weight:700}.stop{background:var(--hold);border-color:var(--gold)}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;vertical-align:top;border-bottom:1px solid var(--line);padding:10px}th{color:var(--blue)}footer{border-top:2px solid var(--line);padding:22px 0;margin-top:32px}.small{font-size:14px}@media(max-width:760px){.summary,.cards{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.step{font-size:14px}header{padding:24px 18px}main{padding-inline:16px}table{display:block;overflow-x:auto}button{width:100%}}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">PROJECT BUTTON · REVIEW ROUND R171</div>
+  <h1>Host startup that stops safely.</h1>
+  <p class="warning">PRELIMINARY — NOT APPROVED FOR INSTALLATION, CONNECTION, POWERED TEST, MOTION, OR ENERGIZATION.</p>
+  <p>HR-V0-HOST-DEPLOY-P0.1 defines the missing bridge between the pinned Raspberry Pi OS candidate and the supervisor source. The current bridge deliberately refuses to cross.</p>
+</header>
+<main>
+  <section class="summary" aria-label="Package summary">
+    <div class="metric"><strong>23</strong><span>current preflight holds</span></div>
+    <div class="metric"><strong>18</strong><span>open closure groups</span></div>
+    <div class="metric"><strong>21</strong><span>blank execution records</span></div>
+    <div class="metric"><strong>0</strong><span>hardware backends or safety credit</span></div>
+  </section>
+  <nav aria-label="Filter guide">
+    <button data-filter="all" aria-pressed="true">Everything</button>
+    <button data-filter="startup" aria-pressed="false">Startup path</button>
+    <button data-filter="holds" aria-pressed="false">Open evidence</button>
+    <button data-filter="boundary" aria-pressed="false">Safety boundary</button>
+  </nav>
+  <section class="cards">
+    <article class="card" data-kind="startup">
+      <div class="tech">CONTROLLED SEQUENCE</div><h2>Files first. Hardware never.</h2>
+      <div class="flow" aria-label="Startup sequence">
+        <div class="step">systemd calls launcher</div><div class="step">pure-file preflight</div><div class="step stop">any hold → exit 78</div><div class="step">future released runtime</div><div class="step">hardware access only after release</div>
+      </div>
+      <p>The committed configuration stops at the third box. It is disabled by preset, uses <code>Restart=no</code>, and cannot automatically retry into a changed state.</p>
+    </article>
+    <article class="card hold" data-kind="holds">
+      <div class="tech">WHAT IS STILL MISSING</div><h2>Digital definition, not a target image.</h2>
+      <ul><li>exact target packages, interpreter and immutable hashes;</li><li>GPIO backend, serial identity, account and permissions;</li><li>released supervisor/actuator/interface configurations;</li><li>write/readback, HIL, power-loss, recovery and rollback evidence;</li><li>qualified reviews and separate written authorization.</li></ul>
+    </article>
+    <article class="card" data-kind="boundary">
+      <div class="tech">FAIL-CLOSED BOUNDARY</div><h2>No GPIO. No serial. No motion.</h2>
+      <p>The controlled host modules import no GPIO, serial or DYNAMIXEL backend. A reset or E-stop release cannot produce motion through this package because there is no command-producing runtime or stale-command store.</p>
+      <p><strong>That is source evidence, not physical validation.</strong> Heartbeat timing, watchdog interruption, actuator response and reset-to-motion behavior still need isolated HIL with raw traces.</p>
+    </article>
+    <article class="card" data-kind="holds">
+      <div class="tech">GATE EFFECT</div><h2>EG-017 remains partial.</h2>
+      <table><thead><tr><th>Gate</th><th>R171 effect</th><th>Still required</th></tr></thead><tbody><tr><td>EG-003</td><td>Overlay paths and states controlled</td><td>installed identities and promoted image</td></tr><tr><td>EG-017</td><td>fail-closed host source added</td><td>target deployment, HIL and review</td></tr><tr><td>EG-021</td><td>fault paths unit-tested</td><td>physical safety-logic traces and witness</td></tr></tbody></table>
+    </article>
+  </section>
+  <footer>
+    <p><strong>Zero functional-safety credit.</strong> The general-purpose compute, heartbeat, launcher and supervisor do not replace the physical safety system or qualified validation.</p>
+    <p class="small">Controlled source: <code>software/host/hr-v0-host-deploy-p0.1/</code> · Evidence form: <code>tests/forms/hr-v0-host-deployment-template-p0.1.csv</code></p>
+  </footer>
+</main>
+<script>
+const buttons=[...document.querySelectorAll('[data-filter]')],cards=[...document.querySelectorAll('[data-kind]')];buttons.forEach(button=>button.addEventListener('click',()=>{const filter=button.dataset.filter;buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));cards.forEach(card=>card.hidden=filter!=='all'&&card.dataset.kind!==filter)}));
+</script>
+</body>
+</html>

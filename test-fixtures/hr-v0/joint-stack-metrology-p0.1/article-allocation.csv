@@ -1,0 +1,7 @@
+article_id,joint,subset_line,parent_item,exact_identity,quantity,allocation,substitution_rule,initial_state
+JSM-ART-001,J1,MEV-001,BOM-005,ROBOTIS XM540-W270-T; SKU 902-0137-000,1,J1 actuator; immutable serial/lot assignment after receiving,No substitution,PROGRAM OWNER APPROVAL REQUIRED; NOT RECEIVED
+JSM-ART-002,J2,MEV-002,BOM-006,ROBOTIS XM540-W270-T; SKU 902-0137-000,1,J2 actuator; immutable serial/lot assignment after receiving,No substitution,PROGRAM OWNER APPROVAL REQUIRED; NOT RECEIVED
+JSM-ART-003,J1,MEV-005,BOM-021,ROBOTIS FR13-H101K Set; SKU 903-0270-300,1,J1 moving hinge frame and included FR13-I101 idler,Reject HNX540-C101/HN13-C101; manufacturer states it is not compatible with FR13-H101K,PROGRAM OWNER APPROVAL REQUIRED; NOT RECEIVED
+JSM-ART-004,J2,MEV-006,BOM-022,ROBOTIS FR13-H101K Set; SKU 903-0270-300,1,J2 moving hinge frame and included FR13-I101 idler,Reject HNX540-C101/HN13-C101; manufacturer states it is not compatible with FR13-H101K,PROGRAM OWNER APPROVAL REQUIRED; NOT RECEIVED
+JSM-ART-005,J1,MEV-007,BOM-023,ROBOTIS FR13-S102K Set; SKU 903-0269-300,1 of 2,J1 fixed/body bottom-side frame; physical allocation A from the two-unit MEV-007 line,No substitution; preserve kit contents separately,PROGRAM OWNER APPROVAL REQUIRED; NOT RECEIVED
+JSM-ART-006,J2,MEV-007,BOM-023,ROBOTIS FR13-S102K Set; SKU 903-0269-300,1 of 2,J2 fixed/body bottom-side frame; physical allocation B from the two-unit MEV-007 line,No substitution; preserve kit contents separately,PROGRAM OWNER APPROVAL REQUIRED; NOT RECEIVED

@@ -1,0 +1,13 @@
+hold_id,closure_needed,traceability,state
+DUTY-HOLD-01,"Complete accepted moving mass, COM and inertia",LOAD-OPEN-01/02/03; MASS-002,OPEN
+DUTY-HOLD-02,"Frozen speed, acceleration, dwell, duty, cycle count and trajectory",LOAD-OPEN-04,OPEN
+DUTY-HOLD-03,"Reflected drive inertia, efficiency, backlash and compliance",LOAD-OPEN-05,OPEN
+DUTY-HOLD-04,"Exact received XM430-W350-T identity, firmware and connector interface",INSPECT-BOM-001; INSPECT-CTRL-001,OPEN
+DUTY-HOLD-05,"Approved branch source, protection, conductor, connector and reverse-energy limits",EG-003; EG-004; EG-005,OPEN
+DUTY-HOLD-06,Released external current/PWM/velocity/acceleration limits,TEST-CTRL-006,OPEN
+DUTY-HOLD-07,"Selected calibrated instruments, acquisition rate/bandwidth and uncertainty budget",HR-V0-DYN-CHAR-P0.1,OPEN
+DUTY-HOLD-08,"Buildable reviewed fixture drawing, catch, guard and proof evidence",EG-009; EG-025,OPEN
+DUTY-HOLD-09,"Qualified temperature, temperature-rise, slope and cool-down limits",TEST-THERM-001,OPEN
+DUTY-HOLD-10,Accepted abort logic and independent branch-power interruption,EG-016; EG-020; EG-022,OPEN
+DUTY-HOLD-11,Payload retention and gripper-force evidence for payload stages,TEST-GRIP-001; TEST-GRIP-002,OPEN
+DUTY-HOLD-12,Signed powered-work authorization by required qualified reviewers,EG-024; EG-025,OPEN

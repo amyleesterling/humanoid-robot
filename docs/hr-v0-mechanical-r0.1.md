@@ -1,10 +1,14 @@
 # HR-V0 Mechanical R0.1 Preliminary Baseline
 
+> **SUPERSEDED ARM GEOMETRY:** R53 found that this model does not preserve the exact ROBOTIS H101/S101/S102 interface orientations. Retain it as a historical space model only. The base/frame work remains candidate evidence; no arm part may be quoted or fabricated from this revision.
+
 **PRELIMINARY—NOT RELEASED FOR FABRICATION OR ENERGIZATION**
 
 Date: 2026-08-06  
 Native source: `cad/hr-v0/src/hr_v0_cad.py`  
 Reproducible screens: `cad/hr-v0/src/mechanical_checks.py`
+
+Current coordination overlay: `HR-V0-MECH-P0.6` in `docs/hr-v0-mechanical-release-p0.6.md`, with `HR-V0-ARM-ARCH-P0.7` as the current geometry candidate. This R0.1 document does not advance or define current quote geometry.
 
 ## Design decision
 
@@ -18,7 +22,7 @@ The first structural architecture uses:
 - 80/20 40-series catalog gussets; and
 - flat 6.35 mm nominal 6061-T6 adapter and bench-anchor plates.
 
-No welding or custom bent 6061 part is required. The base must be physically secured to a surveyed bench; the free-standing assembly model is not an operating configuration.
+No welding or custom bent 6061 part is required. R50 permits `MV0-001` through `MV0-003` to be quoted either as one-stop CNC mill/drill or as a hole-free profile blank plus qualified secondary machining; their 2.70 mm candidate holes may not be ordered as direct profile-cut finished features. `MV0-004` remains on site hold until the bench survey. See `docs/hr-v0-flat-plate-manufacturing-p0.1.md` and `docs/hr-v0-boston-fabrication-route-p0.1.md`. The base must be physically secured to a surveyed bench; the free-standing assembly model is not an operating configuration.
 
 ## Custom part mass closure
 
@@ -26,10 +30,10 @@ No welding or custom bent 6061 part is required. The base must be physically sec
 |---|---:|---|
 | MV0-001 upper link | 109.2 g | Fits the old 120 g plate-only intent, but leaves insufficient room for frame/fasteners. Allocation must be regrouped. |
 | MV0-002 forearm | 109.2 g | Same issue. |
-| MV0-003 shoulder adapter | 166.8 g | Fixed, not part of moving mass. |
+| MV0-003 shoulder adapter | 167.2 g | Fixed, not part of moving mass. |
 | MV0-004 anchor plate | 126.9 g each | Fixed; two required. |
 
-The prior mass rows are not a valid closed BOM because they mix plates, frames, fasteners and actuators. Before torque is re-released, the program must weigh each purchased frame/fastener and use the actual gripper assembly. The 0.75 kg moving-mass ceiling remains a system requirement, not a claim that the current assembly has achieved it.
+The controlled 17-row ledger in `bom/hr-v0-moving-mass-ledger.csv` currently supports a 692.758 g known/CAD-estimated subtotal and leaves only 57.242 g unresolved under the 750 g screen. That headroom must still contain every unresolved moving frame, fastener, spacer, bumper, cable guide, connector, moving harness segment, and the complete gripper mechanism. R70's nonselected relief study would increase provisional incomplete headroom to 115.225 g but is not the controlled geometry. See `docs/hr-v0-moving-mass-closure-p0.1.md`. This is not mass closure; all received items require measured mass, local center of mass, and inertia evidence for the exact configuration before torque is re-released.
 
 ## Preliminary structural screens
 
@@ -46,13 +50,14 @@ Using the manufacturer-published 80/20 40-4040 inertia of 13.787 cm⁴ and an al
 
 ## Release blockers
 
-1. Cut a cheap fit coupon and overlay it against purchased FR13-H101K and FR13-S102K parts. The candidate ⌀2.70 holes are not released until physical fit is recorded.
-2. Select exact M2.5/M8 fasteners, engagement, torque, locking and inspection marks. The structural screen does not prove unknown fasteners.
-3. Add positive mechanical hard stops outside the software range and calculate/test their maximum-energy impact.
-4. Release the gripper mechanism, compliant pads, detachment retention and force/current characterization.
-5. Add cable paths, bend-radius checks, strain relief and swept-volume collision evidence.
-6. Design the fixed polycarbonate guard and receiver fixture from the measured stop trajectory.
-7. Survey the actual bench substrate and select anchor hardware using pull-out/shear and edge-distance evidence.
-8. Correlate CAD masses and geometry with the first article, then obtain qualified mechanical review.
+1. `MV0-FC01`/`INSPECT-MECH-003` control the PCD22 check, `MV0-FC02`/`INSPECT-MECH-004` control the selected S102 32 x 16 tapped rectangle, and `MV0-FC03`/`INSPECT-MECH-008` control the gripper subset. Execute them against received parts. Candidate 2.70 mm holes remain unreleased until physical fit, gauge/thread criteria, CNC process capability, diameter/location tolerances, supplier DFM and `INSPECT-MECH-009` first-article evidence are recorded and independently reviewed.
+2. R21 corrected the invalid assumption that both ends of both links use PCD22. `MV0-001` distinguishes H101 output and S102 body-frame interfaces; `MV0-003` uses the selected S102 pattern. R24 adds a candidate FR12-H104K 24 x 12 mm four-hole subset to `MV0-002` plus `MV0-FC03`; R71 adds exact-source collision/kinematic inputs without releasing the H104-to-URDF transform. Physical seating, fastener access, tolerance and proof remain mandatory. See `docs/hr-v0-joint-interface-fasteners-p0.1.md` and `docs/hr-v0-gripper-architecture-p0.2.md`.
+3. Receive and identify every kit component under `INSPECT-MECH-005`, then select exact M2.5/M8 fasteners, engagement, torque, locking and inspection marks. The expected kit inventory does not prove screw grade, allocation, preload or structural capacity.
+4. The P0.1 hard-stop study defines the J1/J2 convention, four candidate 5-degree-offset datums, 50 mm contact-radius study, allocated-mass energy cases and validation route. Release the actual backed-up bumper/catch, brackets, fasteners, tolerance stack and guarded impact evidence before motion.
+5. Use `HR-V0-GRIP-P0.2` only as exact-source collision/kinematic input; receive and allocate the proposed RM-X52 gripper mechanism kit, prove the H104-to-carrier transform, execute `INSPECT-MECH-008` and `INSPECT-GRIP-001`, then release its local guard, compliant pads, exact fasteners, detachment retention and force/current characterization.
+6. R25 adds five preliminary cable zones and complete-range records. Freeze exact cable/connector/clamp parts, bend/twist/tension limits, strain relief and full 3D articulation evidence under `INSPECT-CABLE-001`.
+7. R25 reserves a preliminary 900 x 400 x 950 mm internal guard and 820 x 320 x 50 mm catch space. The 25 mm stopping/clearance and 6 mm panel values are not released; complete measured sweep/stop/drop evidence, exact panels/frame/fasteners and `INSPECT-GUARD-001`/`TEST-DROP-001` remain mandatory. See `docs/hr-v0-guard-receiver-cable-p0.1.md`.
+8. Survey the actual bench substrate and select anchor hardware using pull-out/shear and edge-distance evidence.
+9. Issue a separate controlled first-article drawing revision after coupons and DFM; correlate its mass and geometry under `INSPECT-MECH-009`, then obtain qualified mechanical review.
 
 The generated DXF/STEP files are suitable for comparable quotations only. They are not suitable for an approved cutting order.

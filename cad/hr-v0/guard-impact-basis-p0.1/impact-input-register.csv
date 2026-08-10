@@ -1,0 +1,16 @@
+input_id,input,value,unit,basis,maturity
+GII-001,maximum permitted payload mass,0.100,kg,SYS-002,REQUIREMENT CEILING
+GII-002,maximum automatic TCP speed,0.150,m/s,SYS-004,REQUIREMENT CEILING; ENFORCEMENT UNVALIDATED
+GII-003,moving assembly mass ceiling including payload,0.750,kg,MASS-002,ALLOCATION CEILING; ACTUAL MASS/COM/INERTIA OPEN
+GII-004,maximum J1-to-object-center radius,0.360,m,SYS-003,REQUIREMENT CEILING; AS-BUILT INSPECTION OPEN
+GII-005,maximum J2-to-object-center radius,0.15745,m,HR-V0-ARM-ARCH-P0.7: 129.05 mm plus 28.40 mm reserve,CANDIDATE GEOMETRY
+GII-006,guard internal top release height,0.950,m,HR-V0-GUARD-P0.3,CANDIDATE ENCLOSURE HEIGHT
+GII-007,XM540-W270 no-load speed at 12 V,30,rev/min,ROBOTIS current e-Manual,CATALOG ENDPOINT; NOT AN ALLOWED SPEED OR PHYSICAL MAXIMUM
+GII-008,XM430-W350 no-load speed at 12 V,46,rev/min,ROBOTIS current e-Manual,CATALOG ENDPOINT; GRIPPER RADIUS/INERTIA OPEN
+GII-009,XM540 RAW 800 ideal torque-line screen,5.18,N m,HR-V0-ACT-P0.3 project conversion,GUARDED TEST CANDIDATE; NOT CONTINUOUS OR MEASURED TORQUE
+GII-010,XM540 stall endpoint at 12 V,10.6,N m,ROBOTIS current e-Manual,MOMENTARY ZERO-SPEED ENDPOINT; NOT SIMULTANEOUS WITH NO-LOAD SPEED
+GII-011,test-energy multiplier,SELECTION REQUIRED,-,qualified risk and test-method review,UNRESOLVED
+GII-012,effective/reflected drive inertia,SELECTION REQUIRED,kg m^2,guarded physical characterization,UNRESOLVED
+GII-013,continued drive angle/time after contact,SELECTION REQUIRED,deg or s,measured detection and energy-removal response,UNRESOLVED
+GII-014,"largest credible detached item mass, shape, speed and direction",SELECTION REQUIRED,configuration,"released BOM, retention analysis and fault review",UNRESOLVED
+GII-015,static panel push-out and access-probe load,SELECTION REQUIRED,N,qualified guarding method and site review,UNRESOLVED

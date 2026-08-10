@@ -1,0 +1,46 @@
+{
+  "identifier": "HR-V0-GRIP-XC330-P0.2",
+  "date": "2026-08-10",
+  "status": "PREFERRED SOURCE-BOUND FEASIBILITY BRANCH - NOT SELECTED",
+  "xc_step_sha256": "E2F7B060801A1D6A21F23BCA2554F29A402F7D73B8498CB201C9E6ADF3139EB6",
+  "xc_pdf_sha256": "948B707CB26A64501C03FC45B1A9557B69A554DD5D6934F02E8E6F86CF2B46C2",
+  "frame_step_sha256": "4FFEE845A49FADF7B91862EBECEE8DEBFE3801E7213F35BEBC3D9007CC25300E",
+  "frame_pdf_sha256": "177C5F3EA6803CD1F68DC1342C5BA6F687E3580EEB8C8D90F53B523E1606C357",
+  "actuator_solids": 15,
+  "frame_solids": 1,
+  "frame_bounds_mm": [
+    34.0,
+    7.0,
+    28.600000001
+  ],
+  "frame_axis_residual_mm": 0.0,
+  "frame_actuator_intersection_mm3": 0.0,
+  "module_mm": 0.8,
+  "teeth": 20,
+  "pressure_angle_deg": 20.0,
+  "pitch_radius_mm": 8.0,
+  "pair_backlash_candidate_mm": 0.15,
+  "hard_opening_mm": [
+    40.0,
+    76.0
+  ],
+  "nominal_padded_opening_mm": [
+    38.0,
+    74.0
+  ],
+  "custom_full_density_calculation_mass_g": 45.366713,
+  "screen_subtotal_g": 679.124713,
+  "remaining_incomplete_headroom_g": 70.875287,
+  "excluded_mass": "two FPX330-S101 frames; all screws/nuts/washers; cable; strain relief; bellows/guard; integration hardware; print/process variation",
+  "open_holds": 16,
+  "requirements_closed": 0,
+  "energization_gates_closed": 0,
+  "sol_blockers_closed": 0,
+  "procurement_release": false,
+  "fabrication_release": false,
+  "assembly_release": false,
+  "connection_release": false,
+  "motion_release": false,
+  "energization_release": false,
+  "warning": "PRELIMINARY INTERFACE CANDIDATE - NOT SELECTED - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
+}

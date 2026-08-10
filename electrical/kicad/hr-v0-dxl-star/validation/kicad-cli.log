@@ -1,0 +1,204 @@
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\validation\hr-v0-dxl-star-erc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\hr-v0-dxl-star.kicad_sch"
+Found 0 violations
+Saved ERC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/hr-v0-dxl-star/validation/hr-v0-dxl-star-erc.rpt
+00:45:05: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+00:45:05: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\validation\hr-v0-dxl-star.net" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\hr-v0-dxl-star.kicad_sch"
+00:45:08: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+00:45:08: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export pdf --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\output\hr-v0-dxl-star-preliminary.pdf" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\hr-v0-dxl-star.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\output\hr-v0-dxl-star-preliminary.pdf'.
+Done.
+00:45:09: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+00:45:09: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export svg --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\output" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\hr-v0-dxl-star.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\output\hr-v0-dxl-star.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\output\hr-v0-dxl-star-01 Three-branch DYNAMIXEL TTL star injection.svg'.
+Done.
+00:45:11: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+00:45:11: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb drc --exit-code-violations --refill-zones --save-board --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\validation\hr-v0-dxl-star-drc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\hr-v0-dxl-star.kicad_pcb"
+Found 0 violations
+Found 0 unconnected items
+Saved DRC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/hr-v0-dxl-star/validation/hr-v0-dxl-star-drc.rpt
+Saved board
+00:45:11: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+00:45:11: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb render --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\output\hr-v0-dxl-star-top.png" --width 1600 --height 1000 --side top --background opaque "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\hr-v0-dxl-star.kicad_pcb"
+Loading…
+Build board outline
+
+Create layers
+Create tracks and vias
+Create zones
+Build Tech layers
+Build Tech layer 11
+Build Tech layer 9
+Build Tech layer 15
+Build Tech layer 13
+Build Tech layer 7
+Build Tech layer 5
+Build Tech layer 3
+Build Tech layer 1
+Build Tech layer 17
+Build Tech layer 19
+Build Tech layer 21
+Build Tech layer 23
+Build Tech layer 39
+Build Tech layer 41
+Build Tech layer 43
+Build Tech layer 45
+Build Tech layer 47
+Build Tech layer 49
+Build Tech layer 51
+Build Tech layer 53
+Build Tech layer 55
+Build Tech layer 57
+Build Tech layer 59
+Build Tech layer 61
+Build Tech layer 63
+Build Tech layer 65
+Build Tech layer 67
+Build Tech layer 69
+Build Tech layer 71
+Build Tech layer 73
+Build Tech layer 75
+Build Tech layer 77
+Build Tech layer 79
+Build Tech layer 81
+Build Tech layer 83
+Build Tech layer 85
+Build Tech layer 87
+Build Tech layer 89
+Build Tech layer 91
+Build Tech layer 93
+Build Tech layer 95
+Build Tech layer 97
+Build Tech layer 99
+Build Tech layer 101
+Build Tech layer 103
+Build Tech layer 105
+Build Tech layer 107
+Build Tech layer 109
+Build Tech layer 111
+Build Tech layer 113
+Build Tech layer 115
+Build Tech layer 117
+Build Tech layer 119
+Build Tech layer 121
+Build Tech layer 123
+Build Tech layer 125
+Build Tech layer 127
+Simplifying copper layer polygons
+Calculating plated copper
+Simplify holes contours
+Build BVH for holes and vias
+Load Raytracing: board
+Load Raytracing: layers
+Loading 3D models...
+Reload time 0.132 s
+Rendering: 100
+Rendering time 0.233 s
+Successfully created 3D render image
+00:45:14: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+00:45:14: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+12:45:15 AM: Error: Directory 'C:\Users\amyle\AppData\Roaming\kicad\10.0\3d' couldn't be created (error 5: Access is denied.)
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb render --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\output\hr-v0-dxl-star-bottom.png" --width 1600 --height 1000 --side bottom --background opaque "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-star\hr-v0-dxl-star.kicad_pcb"
+Loading…
+Build board outline
+
+Create layers
+Create tracks and vias
+Create zones
+Build Tech layers
+Build Tech layer 11
+Build Tech layer 9
+Build Tech layer 15
+Build Tech layer 13
+Build Tech layer 7
+Build Tech layer 5
+Build Tech layer 3
+Build Tech layer 1
+Build Tech layer 17
+Build Tech layer 19
+Build Tech layer 21
+Build Tech layer 23
+Build Tech layer 39
+Build Tech layer 41
+Build Tech layer 43
+Build Tech layer 45
+Build Tech layer 47
+Build Tech layer 49
+Build Tech layer 51
+Build Tech layer 53
+Build Tech layer 55
+Build Tech layer 57
+Build Tech layer 59
+Build Tech layer 61
+Build Tech layer 63
+Build Tech layer 65
+Build Tech layer 67
+Build Tech layer 69
+Build Tech layer 71
+Build Tech layer 73
+Build Tech layer 75
+Build Tech layer 77
+Build Tech layer 79
+Build Tech layer 81
+Build Tech layer 83
+Build Tech layer 85
+Build Tech layer 87
+Build Tech layer 89
+Build Tech layer 91
+Build Tech layer 93
+Build Tech layer 95
+Build Tech layer 97
+Build Tech layer 99
+Build Tech layer 101
+Build Tech layer 103
+Build Tech layer 105
+Build Tech layer 107
+Build Tech layer 109
+Build Tech layer 111
+Build Tech layer 113
+Build Tech layer 115
+Build Tech layer 117
+Build Tech layer 119
+Build Tech layer 121
+Build Tech layer 123
+Build Tech layer 125
+Build Tech layer 127
+Simplifying copper layer polygons
+Calculating plated copper
+Simplify holes contours
+Build BVH for holes and vias
+Load Raytracing: board
+Load Raytracing: layers
+Loading 3D models...
+Reload time 0.126 s
+Rendering: 100
+Rendering time 0.231 s
+Successfully created 3D render image
+00:45:15: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+00:45:15: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+12:45:16 AM: Error: Directory 'C:\Users\amyle\AppData\Roaming\kicad\10.0\3d' couldn't be created (error 5: Access is denied.)
+
+exit=0

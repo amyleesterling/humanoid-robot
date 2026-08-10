@@ -1,0 +1,9 @@
+rfi,recipient,question,state
+BS-RFI-01,Magtrol applications,"Confirm current model 4866 identity, availability and suitability for HB-450M-2 on a PT-600 low-speed bidirectional characterization rig; provide controlled CAD/drawing, material, mass, supplied hardware, allowables and acceptance conditions.",NOT SENT
+BS-RFI-02,Magtrol applications,"Provide PT-600 CAD, countersunk-hole pattern, profile/slot tolerances, compatible T-nut/bolt order identities, tightening guidance, allowable clamp/structural loads and base anchoring requirements.",NOT SENT
+BS-RFI-03,Magtrol applications,"Review the 24 mm FX104-C01 adapter concept bridging 4866's 104 mm base spacing to PT slots 100 mm apart; accept or correct hole layout, fastening and alignment method.",NOT SENT
+BS-RFI-04,Ruland applications,Review the assembled support stiffness/alignment assumptions with the two-clamp-hub coupling and state allowable parallel/angular/axial misalignment and full-bearing-support conditions.,NOT SENT
+BS-RFI-05,candidate machine shop,"DFM-review FX104-C01 only after manufacturer replies and qualified analysis; identify material, threads, GD&T, inspection and proof route. No quote or machining authorized.",NOT SENT
+BS-RFI-06,qualified mechanical reviewer,"Review brake weight/torque/fault load paths, 4866 accessory evidence, adapter plate, fasteners, PT profile, slip, fatigue, alignment and containment before any release.",NOT SENT
+BS-RFI-07,qualified metrology provider,"Propose received 4866/PT inspection, adapter FAI, installed center-height/coaxiality/runout/end-float measurement and uncertainty records.",NOT SENT
+BS-RFI-08,qualified facility/electrical reviewer,"Review common-bed anchoring, guard/catch, brake cable/control/thermal integration and powered-work authorization for the actual Boston site.",NOT SENT

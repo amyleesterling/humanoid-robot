@@ -1,0 +1,7 @@
+source_id,path,sha256,bytes,warning
+p115_root_schematic,electrical/kicad/project-button-v3-p1.15-carrier-candidate/project-button-v3-p1.15-carrier-candidate.kicad_sch,bc6d463f8e2a560ffece1a862541fbda92f68d1fc6a70b297cc617b8d0b928a9,9304,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+p115_connector_schedule,electrical/kicad/project-button-v3-p1.15-carrier-candidate/connector-schedule.csv,e5d4a0fee571b89966f06b1a09e88d4c5d63b98bde4303cdf6829362008fb674,39190,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+p115_native_netlist,electrical/kicad/project-button-v3-p1.15-carrier-candidate/validation/project-button-v3-p1.15-carrier-candidate.net,3d7b30e79e5c907ecce64240298bf35ca09d568982e27ec7e1d6f4b534aa4984,379388,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+p115_native_erc,electrical/kicad/project-button-v3-p1.15-carrier-candidate/validation/project-button-v3-p1.15-carrier-candidate-erc.rpt,3a81461bd7c722d58703c533fde1482c385695d75f98c9e3f7d4d14f357dcf2f,1098,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+watchdog_cam,release/hr-v0/watchdog-pcb-cam-p0.2/package-status.json,1021e5009846d07e7dc31bc936af4e2c74cf475e85c3391e4c36ed0f4105fcd5,2830,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+e2_sequence,tests/e2/hr-v0-e2-control-only-sequence.csv,95a8bece7a12b8631fbecb4539a60670e8ef24b3ab3cd7da6f89c0588c5e33e6,8917,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION

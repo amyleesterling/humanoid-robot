@@ -1,0 +1,5 @@
+record_id,date,inspector,repo_commit,electrical_revision,record_type,reference,expected_manufacturer,expected_order_code,received_order_code,lot_or_date_code,expected_pin_or_contact,observed_pin_or_contact,wire_part,wire_awg,wire_insulation_od_mm,strip_length_mm,conductor_crimp_height_mm,destructive_pull_force_n,terminal_retention_result,continuity_result,polarity_result,current_a,contact_1_a,contact_2_a,contact_3_a,ambient_c,max_contact_or_case_c,temperature_rise_c,input_v,output_v,output_current_a,startup_trace,brownout_trace,photo_or_trace_reference,calibration_reference,notes,disposition
+NOT-EXECUTED,,,,V3-P0.7,connector_housing,JA1,Molex,39012066,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,V3-P0.7,crimp_contact,JA1,Molex,444783112,,,,,16,,,,,,,,,,,,,,,,,,,,,,,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,V3-P0.7,crimp_tool,JA1,Molex,63819-0900,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TEMPLATE ROW,NOT EXECUTED
+NOT-EXECUTED,,,,V3-P0.7,regulator,DC1,TRACO POWER,TSR 1-2450,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TEMPLATE ROW,NOT EXECUTED

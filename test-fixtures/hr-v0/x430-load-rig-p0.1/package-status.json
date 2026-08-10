@@ -1,0 +1,24 @@
+{
+  "identifier": "HR-V0-X430-LOAD-RIG-P0.1",
+  "preferred_route": "LOAD-A",
+  "open_hold_count": 14,
+  "rfi_count": 8,
+  "rfi_state": "NOT SENT",
+  "pt_body_cad_present": false,
+  "output_adapter_fabrication_geometry_present": false,
+  "configured_h101_test_still_required": true,
+  "robot_24v_brake_supply_allowed": false,
+  "release_flags": {
+    "quotation": false,
+    "procurement": false,
+    "machining": false,
+    "assembly": false,
+    "connection": false,
+    "powered_test": false,
+    "motion": false,
+    "energization": false,
+    "safety_credit": false,
+    "build_release": false
+  },
+  "warning": "PRELIMINARY - LOAD-RIG/RFI CANDIDATE ONLY - NOT APPROVED FOR QUOTATION, PROCUREMENT, MACHINING, ASSEMBLY, CONNECTION, POWERED TEST, MOTION, OR ENERGIZATION"
+}

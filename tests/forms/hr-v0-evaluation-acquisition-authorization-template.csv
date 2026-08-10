@@ -1,0 +1,2 @@
+authorization_id,revision,source_commit,approved_cost_ids,maximum_spend_usd,ship_to,receiving_owner,permitted_use,program_owner_name,program_owner_signature,approval_date,purchase_order,decision,warning
+NOT-AUTHORIZED,HR-V0-EVAL-ACQ-P0.1,NOT EXECUTED,NOT AUTHORIZED,NOT AUTHORIZED,NOT AUTHORIZED,NOT AUTHORIZED,NOT AUTHORIZED,NOT EXECUTED,NOT EXECUTED,NOT EXECUTED,NOT EXECUTED,NOT AUTHORIZED,"PRELIMINARY - QUOTE AND AUTHORIZATION PACKET ONLY - NO ORDER, ASSEMBLY, MOTION OR ENERGIZATION RELEASE"

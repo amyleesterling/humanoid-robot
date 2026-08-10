@@ -8,6 +8,21 @@ from pathlib import Path
 
 
 WARNING = "PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION"
+UINT32_MASK = 0xFFFFFFFF
+UINT32_HALF_RANGE = 0x80000000
+
+
+def _u32(value: int) -> int:
+    return value & UINT32_MASK
+
+
+def _elapsed_ms(now_ms: int, then_ms: int) -> int:
+    return _u32(now_ms - then_ms)
+
+
+def _clock_regressed(now_ms: int, then_ms: int) -> bool:
+    """Fail closed for backward time or unsupported intervals >= 2^31 ms."""
+    return _elapsed_ms(now_ms, then_ms) >= UINT32_HALF_RANGE
 
 
 @dataclass(frozen=True)
@@ -54,6 +69,7 @@ class WatchdogModel:
         self._fault_reason: str | None = None
 
     def step(self, now_ms: int, heartbeat_level: bool, relay1_nc: bool, relay2_nc: bool) -> WatchdogOutputs:
+        now_ms = _u32(now_ms)
         if not self._initialized:
             self._initialized = True
             self._last_now_ms = now_ms
@@ -61,25 +77,26 @@ class WatchdogModel:
             self._drive_change_ms = now_ms
             return self.outputs(now_ms)
 
-        if now_ms < self._last_now_ms:
-            self._latch("monotonic clock moved backward")
+        if _clock_regressed(now_ms, self._last_now_ms):
+            self._last_now_ms = now_ms
+            self._latch("monotonic clock moved backward or exceeded supported half-range")
         self._last_now_ms = now_ms
 
-        if now_ms - self._drive_change_ms >= self.config.relay_feedback_settle_ms:
+        if _elapsed_ms(now_ms, self._drive_change_ms) >= self.config.relay_feedback_settle_ms:
             if relay1_nc != (not self._relay1_drive):
                 self._latch("relay 1 NC feedback disagrees with command")
             if relay2_nc != (not self._relay2_drive):
                 self._latch("relay 2 NC feedback disagrees with command")
 
         if heartbeat_level != self._last_heartbeat_level:
-            if self._last_edge_ms is not None and now_ms - self._last_edge_ms < self.config.heartbeat_minimum_edge_ms:
+            if self._last_edge_ms is not None and _elapsed_ms(now_ms, self._last_edge_ms) < self.config.heartbeat_minimum_edge_ms:
                 self._latch("heartbeat edge interval below configured minimum")
             else:
                 self._valid_edges += 1
                 self._last_edge_ms = now_ms
             self._last_heartbeat_level = heartbeat_level
 
-        fresh = self._last_edge_ms is not None and now_ms - self._last_edge_ms < self.config.heartbeat_timeout_ms
+        fresh = self._last_edge_ms is not None and _elapsed_ms(now_ms, self._last_edge_ms) < self.config.heartbeat_timeout_ms
         if not fresh:
             self._valid_edges = 0
         desired = self._fault_reason is None and fresh and self._valid_edges >= self.config.startup_valid_edges
@@ -90,7 +107,7 @@ class WatchdogModel:
         return self.outputs(now_ms)
 
     def outputs(self, now_ms: int) -> WatchdogOutputs:
-        fresh = self._last_edge_ms is not None and now_ms - self._last_edge_ms < self.config.heartbeat_timeout_ms
+        fresh = self._last_edge_ms is not None and _elapsed_ms(_u32(now_ms), self._last_edge_ms) < self.config.heartbeat_timeout_ms
         return WatchdogOutputs(
             relay1_drive=self._relay1_drive,
             relay2_drive=self._relay2_drive,

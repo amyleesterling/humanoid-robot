@@ -1,0 +1,4209 @@
+(export
+	(version "E")
+	(design
+		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\hr-v0-dynamic-event-ain-p0.1\\hr-v0-dynamic-event-ain-p0.1.kicad_sch")
+		(date "2026-08-10T02:10:45")
+		(tool "Eeschema 10.0.5")
+		(textvar
+			(name "PROJECT_STATUS") "PRELIMINARY - BENCH R&D EQUIPMENT ONLY - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+		(textvar
+			(name "REVISION") "R177 / P0.1")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title "PROJECT BUTTON HR-V0 LOW-LOADING ISOLATED EVENT ACQUISITION index")
+				(company "Project Button")
+				(rev "R177 / P0.1")
+				(date "2026-08-10")
+				(source "hr-v0-dynamic-event-ain-p0.1.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "2")
+			(name "/01 Held field adapters and AMC3330EVM channels 1-3/")
+			(tstamps "/d9d0b7ad-a387-5c64-af9a-bd521b459e0e/")
+			(title_block
+				(title "PB HR-V0 R177 / P0.1 - 01")
+				(company "Project Button")
+				(rev "R177 / P0.1")
+				(date "2026-08-10")
+				(source "01_field_and_evm_1.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "3")
+			(name "/02 Held field adapters and AMC3330EVM channels 4-5/")
+			(tstamps "/c84788ea-4a2d-55d2-b286-059b10fcba84/")
+			(title_block
+				(title "PB HR-V0 R177 / P0.1 - 02")
+				(company "Project Button")
+				(rev "R177 / P0.1")
+				(date "2026-08-10")
+				(source "02_field_and_evm_2.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "4")
+			(name "/03 Held field adapters and AMC3330EVM channels 6-7/")
+			(tstamps "/0acb0cd2-6418-5f5a-8ee8-1f57ce63adb3/")
+			(title_block
+				(title "PB HR-V0 R177 / P0.1 - 03")
+				(company "Project Button")
+				(rev "R177 / P0.1")
+				(date "2026-08-10")
+				(source "03_field_and_evm_3.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "5")
+			(name "/04 AMC3330EVM outputs to T7 pairs 0-7/")
+			(tstamps "/df619bea-2061-5abb-a1c8-079bc609d58b/")
+			(title_block
+				(title "PB HR-V0 R177 / P0.1 - 04")
+				(company "Project Button")
+				(rev "R177 / P0.1")
+				(date "2026-08-10")
+				(source "04_logic_outputs_1_4.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "6")
+			(name "/05 AMC3330EVM outputs 5-7 and sequential capture boundary/")
+			(tstamps "/0ee0e6a1-0bb9-5f75-bc9e-74f1291266a3/")
+			(title_block
+				(title "PB HR-V0 R177 / P0.1 - 05")
+				(company "Project Button")
+				(rev "R177 / P0.1")
+				(date "2026-08-10")
+				(source "05_logic_outputs_5_7_and_capture.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "ADP1")
+			(value "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			(datasheet "No manufacturer selected")
+			(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			(fields
+				(field
+					(name "Status") "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical boundary only; not buildable hardware.")
+				(field
+					(name "Display") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ADP1")
+				(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			)
+			(property
+				(name "Status")
+				(value "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+			)
+			(property
+				(name "Evidence")
+				(value "Logical boundary only; not buildable hardware.")
+			)
+			(property
+				(name "Display")
+				(value "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Held field adapters and AMC3330EVM channels 1-3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_field_and_evm_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Held field adapters and AMC3330EVM channels 1-3/")
+				(tstamps "/d9d0b7ad-a387-5c64-af9a-bd521b459e0e/")
+			)
+			(tstamps "311fa4bd-aa2e-50ce-ba2d-d96f7364c852")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FIELD")
+						)
+						(pin
+							(num "RETURN")
+						)
+						(pin
+							(num "INP")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ADP2")
+			(value "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			(datasheet "No manufacturer selected")
+			(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			(fields
+				(field
+					(name "Status") "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical boundary only; not buildable hardware.")
+				(field
+					(name "Display") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ADP2")
+				(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			)
+			(property
+				(name "Status")
+				(value "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+			)
+			(property
+				(name "Evidence")
+				(value "Logical boundary only; not buildable hardware.")
+			)
+			(property
+				(name "Display")
+				(value "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Held field adapters and AMC3330EVM channels 1-3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_field_and_evm_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Held field adapters and AMC3330EVM channels 1-3/")
+				(tstamps "/d9d0b7ad-a387-5c64-af9a-bd521b459e0e/")
+			)
+			(tstamps "8748201e-c637-56ab-8d6d-b2c463a8e22c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FIELD")
+						)
+						(pin
+							(num "RETURN")
+						)
+						(pin
+							(num "INP")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ADP3")
+			(value "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			(datasheet "No manufacturer selected")
+			(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			(fields
+				(field
+					(name "Status") "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical boundary only; not buildable hardware.")
+				(field
+					(name "Display") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ADP3")
+				(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			)
+			(property
+				(name "Status")
+				(value "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+			)
+			(property
+				(name "Evidence")
+				(value "Logical boundary only; not buildable hardware.")
+			)
+			(property
+				(name "Display")
+				(value "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Held field adapters and AMC3330EVM channels 1-3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_field_and_evm_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Held field adapters and AMC3330EVM channels 1-3/")
+				(tstamps "/d9d0b7ad-a387-5c64-af9a-bd521b459e0e/")
+			)
+			(tstamps "7004a6f1-bf87-5e95-8008-9dc8c127bfff")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FIELD")
+						)
+						(pin
+							(num "RETURN")
+						)
+						(pin
+							(num "INP")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVM1")
+			(value "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			(datasheet "TI SBAU330C")
+			(description "Output candidate for T7 AIN0-AIN1. Direct 24 V-class input is prohibited.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Board is not certified for high-voltage operation.")
+				(field
+					(name "Display") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C")
+				(field
+					(name "Description") "Output candidate for T7 AIN0-AIN1. Direct 24 V-class input is prohibited.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVM1")
+				(description "Output candidate for T7 AIN0-AIN1. Direct 24 V-class input is prohibited.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / BENCH R&D ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "Board is not certified for high-voltage operation.")
+			)
+			(property
+				(name "Display")
+				(value "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Held field adapters and AMC3330EVM channels 1-3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_field_and_evm_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Held field adapters and AMC3330EVM channels 1-3/")
+				(tstamps "/d9d0b7ad-a387-5c64-af9a-bd521b459e0e/")
+			)
+			(tstamps "24fddf0b-2f04-584e-9bee-93961639e602")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J2.3")
+						)
+						(pin
+							(num "J2.2")
+						)
+						(pin
+							(num "J2.1")
+						)
+						(pin
+							(num "J1.2")
+						)
+						(pin
+							(num "J1.1")
+						)
+						(pin
+							(num "J3.3")
+						)
+						(pin
+							(num "J3.1")
+						)
+						(pin
+							(num "J3.2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVM2")
+			(value "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			(datasheet "TI SBAU330C")
+			(description "Output candidate for T7 AIN2-AIN3. Direct 24 V-class input is prohibited.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Board is not certified for high-voltage operation.")
+				(field
+					(name "Display") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C")
+				(field
+					(name "Description") "Output candidate for T7 AIN2-AIN3. Direct 24 V-class input is prohibited.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVM2")
+				(description "Output candidate for T7 AIN2-AIN3. Direct 24 V-class input is prohibited.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / BENCH R&D ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "Board is not certified for high-voltage operation.")
+			)
+			(property
+				(name "Display")
+				(value "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Held field adapters and AMC3330EVM channels 1-3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_field_and_evm_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Held field adapters and AMC3330EVM channels 1-3/")
+				(tstamps "/d9d0b7ad-a387-5c64-af9a-bd521b459e0e/")
+			)
+			(tstamps "09454ce1-91d8-5ee5-99ef-81d5261c54e0")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J2.3")
+						)
+						(pin
+							(num "J2.2")
+						)
+						(pin
+							(num "J2.1")
+						)
+						(pin
+							(num "J1.2")
+						)
+						(pin
+							(num "J1.1")
+						)
+						(pin
+							(num "J3.3")
+						)
+						(pin
+							(num "J3.1")
+						)
+						(pin
+							(num "J3.2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVM3")
+			(value "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			(datasheet "TI SBAU330C")
+			(description "Output candidate for T7 AIN4-AIN5. Direct 24 V-class input is prohibited.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Board is not certified for high-voltage operation.")
+				(field
+					(name "Display") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C")
+				(field
+					(name "Description") "Output candidate for T7 AIN4-AIN5. Direct 24 V-class input is prohibited.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVM3")
+				(description "Output candidate for T7 AIN4-AIN5. Direct 24 V-class input is prohibited.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / BENCH R&D ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "Board is not certified for high-voltage operation.")
+			)
+			(property
+				(name "Display")
+				(value "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Held field adapters and AMC3330EVM channels 1-3")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_field_and_evm_1.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Held field adapters and AMC3330EVM channels 1-3/")
+				(tstamps "/d9d0b7ad-a387-5c64-af9a-bd521b459e0e/")
+			)
+			(tstamps "7858f104-d337-59e4-9b6e-6691ef425aab")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J2.3")
+						)
+						(pin
+							(num "J2.2")
+						)
+						(pin
+							(num "J2.1")
+						)
+						(pin
+							(num "J1.2")
+						)
+						(pin
+							(num "J1.1")
+						)
+						(pin
+							(num "J3.3")
+						)
+						(pin
+							(num "J3.1")
+						)
+						(pin
+							(num "J3.2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ADP4")
+			(value "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			(datasheet "No manufacturer selected")
+			(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			(fields
+				(field
+					(name "Status") "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical boundary only; not buildable hardware.")
+				(field
+					(name "Display") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ADP4")
+				(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			)
+			(property
+				(name "Status")
+				(value "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+			)
+			(property
+				(name "Evidence")
+				(value "Logical boundary only; not buildable hardware.")
+			)
+			(property
+				(name "Display")
+				(value "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Held field adapters and AMC3330EVM channels 4-5")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_field_and_evm_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Held field adapters and AMC3330EVM channels 4-5/")
+				(tstamps "/c84788ea-4a2d-55d2-b286-059b10fcba84/")
+			)
+			(tstamps "7848a6c8-fabf-581e-b392-4caef23c62d7")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FIELD")
+						)
+						(pin
+							(num "RETURN")
+						)
+						(pin
+							(num "INP")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ADP5")
+			(value "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			(datasheet "No manufacturer selected")
+			(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			(fields
+				(field
+					(name "Status") "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical boundary only; not buildable hardware.")
+				(field
+					(name "Display") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ADP5")
+				(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			)
+			(property
+				(name "Status")
+				(value "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+			)
+			(property
+				(name "Evidence")
+				(value "Logical boundary only; not buildable hardware.")
+			)
+			(property
+				(name "Display")
+				(value "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Held field adapters and AMC3330EVM channels 4-5")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_field_and_evm_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Held field adapters and AMC3330EVM channels 4-5/")
+				(tstamps "/c84788ea-4a2d-55d2-b286-059b10fcba84/")
+			)
+			(tstamps "40488dc8-1c18-5b9b-9201-60973f78fbea")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FIELD")
+						)
+						(pin
+							(num "RETURN")
+						)
+						(pin
+							(num "INP")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVM4")
+			(value "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			(datasheet "TI SBAU330C")
+			(description "Output candidate for T7 AIN6-AIN7. Direct 24 V-class input is prohibited.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Board is not certified for high-voltage operation.")
+				(field
+					(name "Display") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C")
+				(field
+					(name "Description") "Output candidate for T7 AIN6-AIN7. Direct 24 V-class input is prohibited.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVM4")
+				(description "Output candidate for T7 AIN6-AIN7. Direct 24 V-class input is prohibited.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / BENCH R&D ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "Board is not certified for high-voltage operation.")
+			)
+			(property
+				(name "Display")
+				(value "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Held field adapters and AMC3330EVM channels 4-5")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_field_and_evm_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Held field adapters and AMC3330EVM channels 4-5/")
+				(tstamps "/c84788ea-4a2d-55d2-b286-059b10fcba84/")
+			)
+			(tstamps "ed16e8f0-47e2-5fc4-a13e-7ab31b7bdf3b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J2.3")
+						)
+						(pin
+							(num "J2.2")
+						)
+						(pin
+							(num "J2.1")
+						)
+						(pin
+							(num "J1.2")
+						)
+						(pin
+							(num "J1.1")
+						)
+						(pin
+							(num "J3.3")
+						)
+						(pin
+							(num "J3.1")
+						)
+						(pin
+							(num "J3.2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVM5")
+			(value "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			(datasheet "TI SBAU330C")
+			(description "Output candidate for T7 AIN8-AIN9. Direct 24 V-class input is prohibited.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Board is not certified for high-voltage operation.")
+				(field
+					(name "Display") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C")
+				(field
+					(name "Description") "Output candidate for T7 AIN8-AIN9. Direct 24 V-class input is prohibited.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVM5")
+				(description "Output candidate for T7 AIN8-AIN9. Direct 24 V-class input is prohibited.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / BENCH R&D ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "Board is not certified for high-voltage operation.")
+			)
+			(property
+				(name "Display")
+				(value "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Held field adapters and AMC3330EVM channels 4-5")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_field_and_evm_2.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Held field adapters and AMC3330EVM channels 4-5/")
+				(tstamps "/c84788ea-4a2d-55d2-b286-059b10fcba84/")
+			)
+			(tstamps "137a179f-eec8-5c21-b3f0-b5df60acc01e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J2.3")
+						)
+						(pin
+							(num "J2.2")
+						)
+						(pin
+							(num "J2.1")
+						)
+						(pin
+							(num "J1.2")
+						)
+						(pin
+							(num "J1.1")
+						)
+						(pin
+							(num "J3.3")
+						)
+						(pin
+							(num "J3.1")
+						)
+						(pin
+							(num "J3.2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ADP6")
+			(value "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			(datasheet "No manufacturer selected")
+			(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			(fields
+				(field
+					(name "Status") "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical boundary only; not buildable hardware.")
+				(field
+					(name "Display") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ADP6")
+				(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			)
+			(property
+				(name "Status")
+				(value "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+			)
+			(property
+				(name "Evidence")
+				(value "Logical boundary only; not buildable hardware.")
+			)
+			(property
+				(name "Display")
+				(value "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Held field adapters and AMC3330EVM channels 6-7")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_field_and_evm_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Held field adapters and AMC3330EVM channels 6-7/")
+				(tstamps "/0acb0cd2-6418-5f5a-8ee8-1f57ce63adb3/")
+			)
+			(tstamps "01b77039-1069-50cf-aae1-1ad20b5da3df")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FIELD")
+						)
+						(pin
+							(num "RETURN")
+						)
+						(pin
+							(num "INP")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ADP7")
+			(value "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			(datasheet "No manufacturer selected")
+			(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			(fields
+				(field
+					(name "Status") "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical boundary only; not buildable hardware.")
+				(field
+					(name "Display") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ADP7")
+				(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			)
+			(property
+				(name "Status")
+				(value "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+			)
+			(property
+				(name "Evidence")
+				(value "Logical boundary only; not buildable hardware.")
+			)
+			(property
+				(name "Display")
+				(value "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Held field adapters and AMC3330EVM channels 6-7")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_field_and_evm_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Held field adapters and AMC3330EVM channels 6-7/")
+				(tstamps "/0acb0cd2-6418-5f5a-8ee8-1f57ce63adb3/")
+			)
+			(tstamps "3931a4b4-cb89-5d81-b2b2-0e0f0c445b1f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FIELD")
+						)
+						(pin
+							(num "RETURN")
+						)
+						(pin
+							(num "INP")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVM6")
+			(value "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			(datasheet "TI SBAU330C")
+			(description "Output candidate for T7 AIN10-AIN11. Direct 24 V-class input is prohibited.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Board is not certified for high-voltage operation.")
+				(field
+					(name "Display") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C")
+				(field
+					(name "Description") "Output candidate for T7 AIN10-AIN11. Direct 24 V-class input is prohibited.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVM6")
+				(description "Output candidate for T7 AIN10-AIN11. Direct 24 V-class input is prohibited.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / BENCH R&D ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "Board is not certified for high-voltage operation.")
+			)
+			(property
+				(name "Display")
+				(value "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Held field adapters and AMC3330EVM channels 6-7")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_field_and_evm_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Held field adapters and AMC3330EVM channels 6-7/")
+				(tstamps "/0acb0cd2-6418-5f5a-8ee8-1f57ce63adb3/")
+			)
+			(tstamps "b04ce470-62be-5f34-b1b3-9657e0d5d4b8")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J2.3")
+						)
+						(pin
+							(num "J2.2")
+						)
+						(pin
+							(num "J2.1")
+						)
+						(pin
+							(num "J1.2")
+						)
+						(pin
+							(num "J1.1")
+						)
+						(pin
+							(num "J3.3")
+						)
+						(pin
+							(num "J3.1")
+						)
+						(pin
+							(num "J3.2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVM7")
+			(value "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			(datasheet "TI SBAU330C")
+			(description "Output candidate for T7 AIN12-AIN13. Direct 24 V-class input is prohibited.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Board is not certified for high-voltage operation.")
+				(field
+					(name "Display") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C")
+				(field
+					(name "Description") "Output candidate for T7 AIN12-AIN13. Direct 24 V-class input is prohibited.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVM7")
+				(description "Output candidate for T7 AIN12-AIN13. Direct 24 V-class input is prohibited.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / BENCH R&D ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "Board is not certified for high-voltage operation.")
+			)
+			(property
+				(name "Display")
+				(value "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Held field adapters and AMC3330EVM channels 6-7")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_field_and_evm_3.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Held field adapters and AMC3330EVM channels 6-7/")
+				(tstamps "/0acb0cd2-6418-5f5a-8ee8-1f57ce63adb3/")
+			)
+			(tstamps "f59f78b3-8884-519b-bfe1-96549d0f3f0b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J2.3")
+						)
+						(pin
+							(num "J2.2")
+						)
+						(pin
+							(num "J2.1")
+						)
+						(pin
+							(num "J1.2")
+						)
+						(pin
+							(num "J1.1")
+						)
+						(pin
+							(num "J3.3")
+						)
+						(pin
+							(num "J3.1")
+						)
+						(pin
+							(num "J3.2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "DAQ1")
+			(value "LABJACK T7 + CB37 - EXACT EVALUATION CANDIDATES")
+			(datasheet "LabJack live T-Series datasheet accessed 2026-08-10")
+			(description "Seven adjacent differential pairs; eight-address scan includes FIO_STATE. Sequential, not simultaneous.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "AIN0-AIN3 duplicate terminals may not be used simultaneously.")
+				(field
+					(name "Display") "LABJACK T7 + CB37 - EXACT EVALUATION CANDIDATES")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "LabJack live T-Series datasheet accessed 2026-08-10")
+				(field
+					(name "Description") "Seven adjacent differential pairs; eight-address scan includes FIO_STATE. Sequential, not simultaneous.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "DAQ1")
+				(description "Seven adjacent differential pairs; eight-address scan includes FIO_STATE. Sequential, not simultaneous.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / ZERO SAFETY CREDIT")
+			)
+			(property
+				(name "Evidence")
+				(value "AIN0-AIN3 duplicate terminals may not be used simultaneously.")
+			)
+			(property
+				(name "Display")
+				(value "LABJACK T7 + CB37 - EXACT EVALUATION CANDIDATES")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 AMC3330EVM outputs to T7 pairs 0-7")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_logic_outputs_1_4.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 AMC3330EVM outputs to T7 pairs 0-7/")
+				(tstamps "/df619bea-2061-5abb-a1c8-079bc609d58b/")
+			)
+			(tstamps "06aa17ce-d491-52fa-a265-63c76ef6210c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "DB37-1")
+						)
+						(pin
+							(num "DB37-12")
+						)
+						(pin
+							(num "DB37-13")
+						)
+						(pin
+							(num "DB37-14")
+						)
+						(pin
+							(num "DB37-15")
+						)
+						(pin
+							(num "DB37-16")
+						)
+						(pin
+							(num "DB37-17")
+						)
+						(pin
+							(num "DB37-18")
+						)
+						(pin
+							(num "DB37-31")
+						)
+						(pin
+							(num "DB37-32")
+						)
+						(pin
+							(num "DB37-33")
+						)
+						(pin
+							(num "DB37-34")
+						)
+						(pin
+							(num "DB37-35")
+						)
+						(pin
+							(num "DB37-36")
+						)
+						(pin
+							(num "DB37-37")
+						)
+						(pin
+							(num "DB37-6")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVM1L")
+			(value "EVM1 LOGIC OUTPUT")
+			(datasheet "TI SBAU330C / LabJack T7 DB37")
+			(description "Candidate drives AIN0-AIN1 at DB37-37/18.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact output pins; power source still held.")
+				(field
+					(name "Display") "EVM1 LOGIC OUTPUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C / LabJack T7 DB37")
+				(field
+					(name "Description") "Candidate drives AIN0-AIN1 at DB37-37/18.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVM1L")
+				(description "Candidate drives AIN0-AIN1 at DB37-37/18.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / ZERO SAFETY CREDIT")
+			)
+			(property
+				(name "Evidence")
+				(value "Exact output pins; power source still held.")
+			)
+			(property
+				(name "Display")
+				(value "EVM1 LOGIC OUTPUT")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 AMC3330EVM outputs to T7 pairs 0-7")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_logic_outputs_1_4.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 AMC3330EVM outputs to T7 pairs 0-7/")
+				(tstamps "/df619bea-2061-5abb-a1c8-079bc609d58b/")
+			)
+			(tstamps "ceeb7689-374b-5be8-8245-dc8b582fe0a7")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J1.1")
+						)
+						(pin
+							(num "J3.3/J1.2")
+						)
+						(pin
+							(num "J3.1")
+						)
+						(pin
+							(num "J3.2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVM2L")
+			(value "EVM2 LOGIC OUTPUT")
+			(datasheet "TI SBAU330C / LabJack T7 DB37")
+			(description "Candidate drives AIN2-AIN3 at DB37-36/17.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact output pins; power source still held.")
+				(field
+					(name "Display") "EVM2 LOGIC OUTPUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C / LabJack T7 DB37")
+				(field
+					(name "Description") "Candidate drives AIN2-AIN3 at DB37-36/17.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVM2L")
+				(description "Candidate drives AIN2-AIN3 at DB37-36/17.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / ZERO SAFETY CREDIT")
+			)
+			(property
+				(name "Evidence")
+				(value "Exact output pins; power source still held.")
+			)
+			(property
+				(name "Display")
+				(value "EVM2 LOGIC OUTPUT")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 AMC3330EVM outputs to T7 pairs 0-7")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_logic_outputs_1_4.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 AMC3330EVM outputs to T7 pairs 0-7/")
+				(tstamps "/df619bea-2061-5abb-a1c8-079bc609d58b/")
+			)
+			(tstamps "b385459d-6a1e-541a-b994-9af64888471d")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J1.1")
+						)
+						(pin
+							(num "J3.3/J1.2")
+						)
+						(pin
+							(num "J3.1")
+						)
+						(pin
+							(num "J3.2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVM3L")
+			(value "EVM3 LOGIC OUTPUT")
+			(datasheet "TI SBAU330C / LabJack T7 DB37")
+			(description "Candidate drives AIN4-AIN5 at DB37-35/16.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact output pins; power source still held.")
+				(field
+					(name "Display") "EVM3 LOGIC OUTPUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C / LabJack T7 DB37")
+				(field
+					(name "Description") "Candidate drives AIN4-AIN5 at DB37-35/16.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVM3L")
+				(description "Candidate drives AIN4-AIN5 at DB37-35/16.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / ZERO SAFETY CREDIT")
+			)
+			(property
+				(name "Evidence")
+				(value "Exact output pins; power source still held.")
+			)
+			(property
+				(name "Display")
+				(value "EVM3 LOGIC OUTPUT")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 AMC3330EVM outputs to T7 pairs 0-7")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_logic_outputs_1_4.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 AMC3330EVM outputs to T7 pairs 0-7/")
+				(tstamps "/df619bea-2061-5abb-a1c8-079bc609d58b/")
+			)
+			(tstamps "320b4ea5-7b29-599a-8d2f-98a0c19fe564")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J1.1")
+						)
+						(pin
+							(num "J3.3/J1.2")
+						)
+						(pin
+							(num "J3.1")
+						)
+						(pin
+							(num "J3.2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVM4L")
+			(value "EVM4 LOGIC OUTPUT")
+			(datasheet "TI SBAU330C / LabJack T7 DB37")
+			(description "Candidate drives AIN6-AIN7 at DB37-34/15.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact output pins; power source still held.")
+				(field
+					(name "Display") "EVM4 LOGIC OUTPUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C / LabJack T7 DB37")
+				(field
+					(name "Description") "Candidate drives AIN6-AIN7 at DB37-34/15.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVM4L")
+				(description "Candidate drives AIN6-AIN7 at DB37-34/15.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / ZERO SAFETY CREDIT")
+			)
+			(property
+				(name "Evidence")
+				(value "Exact output pins; power source still held.")
+			)
+			(property
+				(name "Display")
+				(value "EVM4 LOGIC OUTPUT")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 AMC3330EVM outputs to T7 pairs 0-7")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_logic_outputs_1_4.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 AMC3330EVM outputs to T7 pairs 0-7/")
+				(tstamps "/df619bea-2061-5abb-a1c8-079bc609d58b/")
+			)
+			(tstamps "084e22c9-01b0-56de-8889-8bb06d9ff937")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J1.1")
+						)
+						(pin
+							(num "J3.3/J1.2")
+						)
+						(pin
+							(num "J3.1")
+						)
+						(pin
+							(num "J3.2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "DAQCFG1")
+			(value "T7 STREAM CONFIGURATION - SELECTION REQUIRED")
+			(datasheet "LabJack live stream docs accessed 2026-08-10")
+			(description "Eight addresses per scan: seven AIN readings plus FIO_STATE. Scan order, rate, thresholds and overflow policy remain open.")
+			(fields
+				(field
+					(name "Status") "NO RUN CONFIGURATION RELEASED")
+				(field
+					(name "Evidence") "12.5 kscan/s is an upper screen only under stated 100 ksamples/s conditions.")
+				(field
+					(name "Display") "T7 STREAM CONFIGURATION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "LabJack live stream docs accessed 2026-08-10")
+				(field
+					(name "Description") "Eight addresses per scan: seven AIN readings plus FIO_STATE. Scan order, rate, thresholds and overflow policy remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "DAQCFG1")
+				(description "Eight addresses per scan: seven AIN readings plus FIO_STATE. Scan order, rate, thresholds and overflow policy remain open.")
+			)
+			(property
+				(name "Status")
+				(value "NO RUN CONFIGURATION RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "12.5 kscan/s is an upper screen only under stated 100 ksamples/s conditions.")
+			)
+			(property
+				(name "Display")
+				(value "T7 STREAM CONFIGURATION - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 AMC3330EVM outputs 5-7 and sequential capture boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_logic_outputs_5_7_and_capture.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 AMC3330EVM outputs 5-7 and sequential capture boundary/")
+				(tstamps "/0ee0e6a1-0bb9-5f75-bc9e-74f1291266a3/")
+			)
+			(tstamps "22bd5aed-ab9d-5391-a658-b17e2469bf4e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "D0")
+						)
+						(pin
+							(num "A2")
+						)
+						(pin
+							(num "A1")
+						)
+						(pin
+							(num "A0")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVM5L")
+			(value "EVM5 LOGIC OUTPUT")
+			(datasheet "TI SBAU330C / LabJack T7 DB37")
+			(description "Candidate drives AIN8-AIN9 at DB37-33/14.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact output pins; power source still held.")
+				(field
+					(name "Display") "EVM5 LOGIC OUTPUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C / LabJack T7 DB37")
+				(field
+					(name "Description") "Candidate drives AIN8-AIN9 at DB37-33/14.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVM5L")
+				(description "Candidate drives AIN8-AIN9 at DB37-33/14.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / ZERO SAFETY CREDIT")
+			)
+			(property
+				(name "Evidence")
+				(value "Exact output pins; power source still held.")
+			)
+			(property
+				(name "Display")
+				(value "EVM5 LOGIC OUTPUT")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 AMC3330EVM outputs 5-7 and sequential capture boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_logic_outputs_5_7_and_capture.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 AMC3330EVM outputs 5-7 and sequential capture boundary/")
+				(tstamps "/0ee0e6a1-0bb9-5f75-bc9e-74f1291266a3/")
+			)
+			(tstamps "c3f5f9fa-d2b3-5254-bffe-32edeab1baa5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J1.1")
+						)
+						(pin
+							(num "J3.3/J1.2")
+						)
+						(pin
+							(num "J3.1")
+						)
+						(pin
+							(num "J3.2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVM6L")
+			(value "EVM6 LOGIC OUTPUT")
+			(datasheet "TI SBAU330C / LabJack T7 DB37")
+			(description "Candidate drives AIN10-AIN11 at DB37-32/13.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact output pins; power source still held.")
+				(field
+					(name "Display") "EVM6 LOGIC OUTPUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C / LabJack T7 DB37")
+				(field
+					(name "Description") "Candidate drives AIN10-AIN11 at DB37-32/13.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVM6L")
+				(description "Candidate drives AIN10-AIN11 at DB37-32/13.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / ZERO SAFETY CREDIT")
+			)
+			(property
+				(name "Evidence")
+				(value "Exact output pins; power source still held.")
+			)
+			(property
+				(name "Display")
+				(value "EVM6 LOGIC OUTPUT")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 AMC3330EVM outputs 5-7 and sequential capture boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_logic_outputs_5_7_and_capture.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 AMC3330EVM outputs 5-7 and sequential capture boundary/")
+				(tstamps "/0ee0e6a1-0bb9-5f75-bc9e-74f1291266a3/")
+			)
+			(tstamps "dada932b-35cc-5353-b105-a07702acd267")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J1.1")
+						)
+						(pin
+							(num "J3.3/J1.2")
+						)
+						(pin
+							(num "J3.1")
+						)
+						(pin
+							(num "J3.2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVM7L")
+			(value "EVM7 LOGIC OUTPUT")
+			(datasheet "TI SBAU330C / LabJack T7 DB37")
+			(description "Candidate drives AIN12-AIN13 at DB37-31/12.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact output pins; power source still held.")
+				(field
+					(name "Display") "EVM7 LOGIC OUTPUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C / LabJack T7 DB37")
+				(field
+					(name "Description") "Candidate drives AIN12-AIN13 at DB37-31/12.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVM7L")
+				(description "Candidate drives AIN12-AIN13 at DB37-31/12.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / ZERO SAFETY CREDIT")
+			)
+			(property
+				(name "Evidence")
+				(value "Exact output pins; power source still held.")
+			)
+			(property
+				(name "Display")
+				(value "EVM7 LOGIC OUTPUT")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 AMC3330EVM outputs 5-7 and sequential capture boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_logic_outputs_5_7_and_capture.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 AMC3330EVM outputs 5-7 and sequential capture boundary/")
+				(tstamps "/0ee0e6a1-0bb9-5f75-bc9e-74f1291266a3/")
+			)
+			(tstamps "6fab93b0-63a2-5680-9771-e06540667a72")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J1.1")
+						)
+						(pin
+							(num "J3.3/J1.2")
+						)
+						(pin
+							(num "J3.1")
+						)
+						(pin
+							(num "J3.2")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "PBV3")
+			(part "ADP1")
+			(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			(docs "No manufacturer selected")
+			(fields
+				(field
+					(name "Reference") "ADP1")
+				(field
+					(name "Value") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+				(field
+					(name "Status") "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical boundary only; not buildable hardware.")
+				(field
+					(name "Display") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "FIELD")
+					(name "S0_CHANNEL-1_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "INP")
+					(name "SCALED_OUTPUT")
+					(type "passive")
+				)
+				(pin
+					(num "RETURN")
+					(name "FIELD_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "ADP2")
+			(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			(docs "No manufacturer selected")
+			(fields
+				(field
+					(name "Reference") "ADP2")
+				(field
+					(name "Value") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+				(field
+					(name "Status") "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical boundary only; not buildable hardware.")
+				(field
+					(name "Display") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "FIELD")
+					(name "MANUAL_RESET_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "INP")
+					(name "SCALED_OUTPUT")
+					(type "passive")
+				)
+				(pin
+					(num "RETURN")
+					(name "FIELD_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "ADP3")
+			(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			(docs "No manufacturer selected")
+			(fields
+				(field
+					(name "Reference") "ADP3")
+				(field
+					(name "Value") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+				(field
+					(name "Status") "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical boundary only; not buildable hardware.")
+				(field
+					(name "Display") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "FIELD")
+					(name "MANUAL_ARM/START_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "INP")
+					(name "SCALED_OUTPUT")
+					(type "passive")
+				)
+				(pin
+					(num "RETURN")
+					(name "FIELD_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "ADP4")
+			(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			(docs "No manufacturer selected")
+			(fields
+				(field
+					(name "Reference") "ADP4")
+				(field
+					(name "Value") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+				(field
+					(name "Status") "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical boundary only; not buildable hardware.")
+				(field
+					(name "Display") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "FIELD")
+					(name "K1_COIL_COMMAND")
+					(type "passive")
+				)
+				(pin
+					(num "INP")
+					(name "SCALED_OUTPUT")
+					(type "passive")
+				)
+				(pin
+					(num "RETURN")
+					(name "FIELD_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "ADP5")
+			(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			(docs "No manufacturer selected")
+			(fields
+				(field
+					(name "Reference") "ADP5")
+				(field
+					(name "Value") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+				(field
+					(name "Status") "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical boundary only; not buildable hardware.")
+				(field
+					(name "Display") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "FIELD")
+					(name "K2_COIL_COMMAND")
+					(type "passive")
+				)
+				(pin
+					(num "INP")
+					(name "SCALED_OUTPUT")
+					(type "passive")
+				)
+				(pin
+					(num "RETURN")
+					(name "FIELD_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "ADP6")
+			(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			(docs "No manufacturer selected")
+			(fields
+				(field
+					(name "Reference") "ADP6")
+				(field
+					(name "Value") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+				(field
+					(name "Status") "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical boundary only; not buildable hardware.")
+				(field
+					(name "Display") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "FIELD")
+					(name "K1_MIRROR-CONTACT_CHAIN")
+					(type "passive")
+				)
+				(pin
+					(num "INP")
+					(name "SCALED_OUTPUT")
+					(type "passive")
+				)
+				(pin
+					(num "RETURN")
+					(name "FIELD_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "ADP7")
+			(description "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+			(docs "No manufacturer selected")
+			(fields
+				(field
+					(name "Reference") "ADP7")
+				(field
+					(name "Value") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Field envelope, divider, protection and fault behavior remain SELECTION REQUIRED.")
+				(field
+					(name "Status") "NO PARTS / NO VALUES / CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical boundary only; not buildable hardware.")
+				(field
+					(name "Display") "FIELD DIVIDER + PROTECTION - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "FIELD")
+					(name "K2_MIRROR-CONTACT_CHAIN")
+					(type "passive")
+				)
+				(pin
+					(num "INP")
+					(name "SCALED_OUTPUT")
+					(type "passive")
+				)
+				(pin
+					(num "RETURN")
+					(name "FIELD_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "DAQ1")
+			(description "Seven adjacent differential pairs; eight-address scan includes FIO_STATE. Sequential, not simultaneous.")
+			(docs "LabJack live T-Series datasheet accessed 2026-08-10")
+			(fields
+				(field
+					(name "Reference") "DAQ1")
+				(field
+					(name "Value") "LABJACK T7 + CB37 - EXACT EVALUATION CANDIDATES")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "LabJack live T-Series datasheet accessed 2026-08-10")
+				(field
+					(name "Description") "Seven adjacent differential pairs; eight-address scan includes FIO_STATE. Sequential, not simultaneous.")
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "AIN0-AIN3 duplicate terminals may not be used simultaneously.")
+				(field
+					(name "Display") "LABJACK T7 + CB37 - EXACT EVALUATION CANDIDATES")
+			)
+			(pins
+				(pin
+					(num "DB37-1")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-6")
+					(name "FIO0_TRIGGER_WITNESS")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-12")
+					(name "AIN13")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-13")
+					(name "AIN11")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-14")
+					(name "AIN9")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-15")
+					(name "AIN7")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-16")
+					(name "AIN5")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-17")
+					(name "AIN3")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-18")
+					(name "AIN1")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-31")
+					(name "AIN12")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-32")
+					(name "AIN10")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-33")
+					(name "AIN8")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-34")
+					(name "AIN6")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-35")
+					(name "AIN4")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-36")
+					(name "AIN2")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-37")
+					(name "AIN0")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "DAQCFG1")
+			(description "Eight addresses per scan: seven AIN readings plus FIO_STATE. Scan order, rate, thresholds and overflow policy remain open.")
+			(docs "LabJack live stream docs accessed 2026-08-10")
+			(fields
+				(field
+					(name "Reference") "DAQCFG1")
+				(field
+					(name "Value") "T7 STREAM CONFIGURATION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "LabJack live stream docs accessed 2026-08-10")
+				(field
+					(name "Description") "Eight addresses per scan: seven AIN readings plus FIO_STATE. Scan order, rate, thresholds and overflow policy remain open.")
+				(field
+					(name "Status") "NO RUN CONFIGURATION RELEASED")
+				(field
+					(name "Evidence") "12.5 kscan/s is an upper screen only under stated 100 ksamples/s conditions.")
+				(field
+					(name "Display") "T7 STREAM CONFIGURATION - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "A0")
+					(name "AIN8-9")
+					(type "passive")
+				)
+				(pin
+					(num "A1")
+					(name "AIN10-11")
+					(type "passive")
+				)
+				(pin
+					(num "A2")
+					(name "AIN12-13")
+					(type "passive")
+				)
+				(pin
+					(num "D0")
+					(name "FIO_STATE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVM1")
+			(description "Output candidate for T7 AIN0-AIN1. Direct 24 V-class input is prohibited.")
+			(docs "TI SBAU330C")
+			(fields
+				(field
+					(name "Reference") "EVM1")
+				(field
+					(name "Value") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C")
+				(field
+					(name "Description") "Output candidate for T7 AIN0-AIN1. Direct 24 V-class input is prohibited.")
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Board is not certified for high-voltage operation.")
+				(field
+					(name "Display") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			)
+			(pins
+				(pin
+					(num "J1.1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "J1.2")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "J2.1")
+					(name "INP")
+					(type "passive")
+				)
+				(pin
+					(num "J2.2")
+					(name "INN")
+					(type "passive")
+				)
+				(pin
+					(num "J2.3")
+					(name "HGND")
+					(type "passive")
+				)
+				(pin
+					(num "J3.1")
+					(name "OUTN")
+					(type "passive")
+				)
+				(pin
+					(num "J3.2")
+					(name "OUTP")
+					(type "passive")
+				)
+				(pin
+					(num "J3.3")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVM1L")
+			(description "Candidate drives AIN0-AIN1 at DB37-37/18.")
+			(docs "TI SBAU330C / LabJack T7 DB37")
+			(fields
+				(field
+					(name "Reference") "EVM1L")
+				(field
+					(name "Value") "EVM1 LOGIC OUTPUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C / LabJack T7 DB37")
+				(field
+					(name "Description") "Candidate drives AIN0-AIN1 at DB37-37/18.")
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact output pins; power source still held.")
+				(field
+					(name "Display") "EVM1 LOGIC OUTPUT")
+			)
+			(pins
+				(pin
+					(num "J1.1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "J3.1")
+					(name "OUTN")
+					(type "passive")
+				)
+				(pin
+					(num "J3.2")
+					(name "OUTP")
+					(type "passive")
+				)
+				(pin
+					(num "J3.3/J1.2")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVM2")
+			(description "Output candidate for T7 AIN2-AIN3. Direct 24 V-class input is prohibited.")
+			(docs "TI SBAU330C")
+			(fields
+				(field
+					(name "Reference") "EVM2")
+				(field
+					(name "Value") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C")
+				(field
+					(name "Description") "Output candidate for T7 AIN2-AIN3. Direct 24 V-class input is prohibited.")
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Board is not certified for high-voltage operation.")
+				(field
+					(name "Display") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			)
+			(pins
+				(pin
+					(num "J1.1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "J1.2")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "J2.1")
+					(name "INP")
+					(type "passive")
+				)
+				(pin
+					(num "J2.2")
+					(name "INN")
+					(type "passive")
+				)
+				(pin
+					(num "J2.3")
+					(name "HGND")
+					(type "passive")
+				)
+				(pin
+					(num "J3.1")
+					(name "OUTN")
+					(type "passive")
+				)
+				(pin
+					(num "J3.2")
+					(name "OUTP")
+					(type "passive")
+				)
+				(pin
+					(num "J3.3")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVM2L")
+			(description "Candidate drives AIN2-AIN3 at DB37-36/17.")
+			(docs "TI SBAU330C / LabJack T7 DB37")
+			(fields
+				(field
+					(name "Reference") "EVM2L")
+				(field
+					(name "Value") "EVM2 LOGIC OUTPUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C / LabJack T7 DB37")
+				(field
+					(name "Description") "Candidate drives AIN2-AIN3 at DB37-36/17.")
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact output pins; power source still held.")
+				(field
+					(name "Display") "EVM2 LOGIC OUTPUT")
+			)
+			(pins
+				(pin
+					(num "J1.1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "J3.1")
+					(name "OUTN")
+					(type "passive")
+				)
+				(pin
+					(num "J3.2")
+					(name "OUTP")
+					(type "passive")
+				)
+				(pin
+					(num "J3.3/J1.2")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVM3")
+			(description "Output candidate for T7 AIN4-AIN5. Direct 24 V-class input is prohibited.")
+			(docs "TI SBAU330C")
+			(fields
+				(field
+					(name "Reference") "EVM3")
+				(field
+					(name "Value") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C")
+				(field
+					(name "Description") "Output candidate for T7 AIN4-AIN5. Direct 24 V-class input is prohibited.")
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Board is not certified for high-voltage operation.")
+				(field
+					(name "Display") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			)
+			(pins
+				(pin
+					(num "J1.1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "J1.2")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "J2.1")
+					(name "INP")
+					(type "passive")
+				)
+				(pin
+					(num "J2.2")
+					(name "INN")
+					(type "passive")
+				)
+				(pin
+					(num "J2.3")
+					(name "HGND")
+					(type "passive")
+				)
+				(pin
+					(num "J3.1")
+					(name "OUTN")
+					(type "passive")
+				)
+				(pin
+					(num "J3.2")
+					(name "OUTP")
+					(type "passive")
+				)
+				(pin
+					(num "J3.3")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVM3L")
+			(description "Candidate drives AIN4-AIN5 at DB37-35/16.")
+			(docs "TI SBAU330C / LabJack T7 DB37")
+			(fields
+				(field
+					(name "Reference") "EVM3L")
+				(field
+					(name "Value") "EVM3 LOGIC OUTPUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C / LabJack T7 DB37")
+				(field
+					(name "Description") "Candidate drives AIN4-AIN5 at DB37-35/16.")
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact output pins; power source still held.")
+				(field
+					(name "Display") "EVM3 LOGIC OUTPUT")
+			)
+			(pins
+				(pin
+					(num "J1.1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "J3.1")
+					(name "OUTN")
+					(type "passive")
+				)
+				(pin
+					(num "J3.2")
+					(name "OUTP")
+					(type "passive")
+				)
+				(pin
+					(num "J3.3/J1.2")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVM4")
+			(description "Output candidate for T7 AIN6-AIN7. Direct 24 V-class input is prohibited.")
+			(docs "TI SBAU330C")
+			(fields
+				(field
+					(name "Reference") "EVM4")
+				(field
+					(name "Value") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C")
+				(field
+					(name "Description") "Output candidate for T7 AIN6-AIN7. Direct 24 V-class input is prohibited.")
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Board is not certified for high-voltage operation.")
+				(field
+					(name "Display") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			)
+			(pins
+				(pin
+					(num "J1.1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "J1.2")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "J2.1")
+					(name "INP")
+					(type "passive")
+				)
+				(pin
+					(num "J2.2")
+					(name "INN")
+					(type "passive")
+				)
+				(pin
+					(num "J2.3")
+					(name "HGND")
+					(type "passive")
+				)
+				(pin
+					(num "J3.1")
+					(name "OUTN")
+					(type "passive")
+				)
+				(pin
+					(num "J3.2")
+					(name "OUTP")
+					(type "passive")
+				)
+				(pin
+					(num "J3.3")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVM4L")
+			(description "Candidate drives AIN6-AIN7 at DB37-34/15.")
+			(docs "TI SBAU330C / LabJack T7 DB37")
+			(fields
+				(field
+					(name "Reference") "EVM4L")
+				(field
+					(name "Value") "EVM4 LOGIC OUTPUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C / LabJack T7 DB37")
+				(field
+					(name "Description") "Candidate drives AIN6-AIN7 at DB37-34/15.")
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact output pins; power source still held.")
+				(field
+					(name "Display") "EVM4 LOGIC OUTPUT")
+			)
+			(pins
+				(pin
+					(num "J1.1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "J3.1")
+					(name "OUTN")
+					(type "passive")
+				)
+				(pin
+					(num "J3.2")
+					(name "OUTP")
+					(type "passive")
+				)
+				(pin
+					(num "J3.3/J1.2")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVM5")
+			(description "Output candidate for T7 AIN8-AIN9. Direct 24 V-class input is prohibited.")
+			(docs "TI SBAU330C")
+			(fields
+				(field
+					(name "Reference") "EVM5")
+				(field
+					(name "Value") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C")
+				(field
+					(name "Description") "Output candidate for T7 AIN8-AIN9. Direct 24 V-class input is prohibited.")
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Board is not certified for high-voltage operation.")
+				(field
+					(name "Display") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			)
+			(pins
+				(pin
+					(num "J1.1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "J1.2")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "J2.1")
+					(name "INP")
+					(type "passive")
+				)
+				(pin
+					(num "J2.2")
+					(name "INN")
+					(type "passive")
+				)
+				(pin
+					(num "J2.3")
+					(name "HGND")
+					(type "passive")
+				)
+				(pin
+					(num "J3.1")
+					(name "OUTN")
+					(type "passive")
+				)
+				(pin
+					(num "J3.2")
+					(name "OUTP")
+					(type "passive")
+				)
+				(pin
+					(num "J3.3")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVM5L")
+			(description "Candidate drives AIN8-AIN9 at DB37-33/14.")
+			(docs "TI SBAU330C / LabJack T7 DB37")
+			(fields
+				(field
+					(name "Reference") "EVM5L")
+				(field
+					(name "Value") "EVM5 LOGIC OUTPUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C / LabJack T7 DB37")
+				(field
+					(name "Description") "Candidate drives AIN8-AIN9 at DB37-33/14.")
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact output pins; power source still held.")
+				(field
+					(name "Display") "EVM5 LOGIC OUTPUT")
+			)
+			(pins
+				(pin
+					(num "J1.1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "J3.1")
+					(name "OUTN")
+					(type "passive")
+				)
+				(pin
+					(num "J3.2")
+					(name "OUTP")
+					(type "passive")
+				)
+				(pin
+					(num "J3.3/J1.2")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVM6")
+			(description "Output candidate for T7 AIN10-AIN11. Direct 24 V-class input is prohibited.")
+			(docs "TI SBAU330C")
+			(fields
+				(field
+					(name "Reference") "EVM6")
+				(field
+					(name "Value") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C")
+				(field
+					(name "Description") "Output candidate for T7 AIN10-AIN11. Direct 24 V-class input is prohibited.")
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Board is not certified for high-voltage operation.")
+				(field
+					(name "Display") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			)
+			(pins
+				(pin
+					(num "J1.1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "J1.2")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "J2.1")
+					(name "INP")
+					(type "passive")
+				)
+				(pin
+					(num "J2.2")
+					(name "INN")
+					(type "passive")
+				)
+				(pin
+					(num "J2.3")
+					(name "HGND")
+					(type "passive")
+				)
+				(pin
+					(num "J3.1")
+					(name "OUTN")
+					(type "passive")
+				)
+				(pin
+					(num "J3.2")
+					(name "OUTP")
+					(type "passive")
+				)
+				(pin
+					(num "J3.3")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVM6L")
+			(description "Candidate drives AIN10-AIN11 at DB37-32/13.")
+			(docs "TI SBAU330C / LabJack T7 DB37")
+			(fields
+				(field
+					(name "Reference") "EVM6L")
+				(field
+					(name "Value") "EVM6 LOGIC OUTPUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C / LabJack T7 DB37")
+				(field
+					(name "Description") "Candidate drives AIN10-AIN11 at DB37-32/13.")
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact output pins; power source still held.")
+				(field
+					(name "Display") "EVM6 LOGIC OUTPUT")
+			)
+			(pins
+				(pin
+					(num "J1.1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "J3.1")
+					(name "OUTN")
+					(type "passive")
+				)
+				(pin
+					(num "J3.2")
+					(name "OUTP")
+					(type "passive")
+				)
+				(pin
+					(num "J3.3/J1.2")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVM7")
+			(description "Output candidate for T7 AIN12-AIN13. Direct 24 V-class input is prohibited.")
+			(docs "TI SBAU330C")
+			(fields
+				(field
+					(name "Reference") "EVM7")
+				(field
+					(name "Value") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C")
+				(field
+					(name "Description") "Output candidate for T7 AIN12-AIN13. Direct 24 V-class input is prohibited.")
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Board is not certified for high-voltage operation.")
+				(field
+					(name "Display") "TI AMC3330EVM - EXACT EVALUATION CANDIDATE")
+			)
+			(pins
+				(pin
+					(num "J1.1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "J1.2")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "J2.1")
+					(name "INP")
+					(type "passive")
+				)
+				(pin
+					(num "J2.2")
+					(name "INN")
+					(type "passive")
+				)
+				(pin
+					(num "J2.3")
+					(name "HGND")
+					(type "passive")
+				)
+				(pin
+					(num "J3.1")
+					(name "OUTN")
+					(type "passive")
+				)
+				(pin
+					(num "J3.2")
+					(name "OUTP")
+					(type "passive")
+				)
+				(pin
+					(num "J3.3")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVM7L")
+			(description "Candidate drives AIN12-AIN13 at DB37-31/12.")
+			(docs "TI SBAU330C / LabJack T7 DB37")
+			(fields
+				(field
+					(name "Reference") "EVM7L")
+				(field
+					(name "Value") "EVM7 LOGIC OUTPUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SBAU330C / LabJack T7 DB37")
+				(field
+					(name "Description") "Candidate drives AIN12-AIN13 at DB37-31/12.")
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact output pins; power source still held.")
+				(field
+					(name "Display") "EVM7 LOGIC OUTPUT")
+			)
+			(pins
+				(pin
+					(num "J1.1")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "J3.1")
+					(name "OUTN")
+					(type "passive")
+				)
+				(pin
+					(num "J3.2")
+					(name "OUTP")
+					(type "passive")
+				)
+				(pin
+					(num "J3.3/J1.2")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "PBV3")
+			(uri "${KIPRJMOD}/hr-v0-dynamic-event-ain-p0.1.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "CH1_INP_HELD")
+			(class "Default")
+			(node
+				(ref "ADP1")
+				(pin "INP")
+				(pinfunction "SCALED_OUTPUT_INP")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM1")
+				(pin "J2.1")
+				(pinfunction "INP_J2.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "2")
+			(name "CH1_OUTN")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-18")
+				(pinfunction "AIN1_DB37-18")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM1")
+				(pin "J3.1")
+				(pinfunction "OUTN_J3.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM1L")
+				(pin "J3.1")
+				(pinfunction "OUTN_J3.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "3")
+			(name "CH1_OUTP")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-37")
+				(pinfunction "AIN0_DB37-37")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM1")
+				(pin "J3.2")
+				(pinfunction "OUTP_J3.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM1L")
+				(pin "J3.2")
+				(pinfunction "OUTP_J3.2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "4")
+			(name "CH1_RETURN_HELD")
+			(class "Default")
+			(node
+				(ref "ADP1")
+				(pin "RETURN")
+				(pinfunction "FIELD_RETURN_RETURN")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM1")
+				(pin "J2.2")
+				(pinfunction "INN_J2.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM1")
+				(pin "J2.3")
+				(pinfunction "HGND_J2.3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "5")
+			(name "CH2_INP_HELD")
+			(class "Default")
+			(node
+				(ref "ADP2")
+				(pin "INP")
+				(pinfunction "SCALED_OUTPUT_INP")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM2")
+				(pin "J2.1")
+				(pinfunction "INP_J2.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "CH2_OUTN")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-17")
+				(pinfunction "AIN3_DB37-17")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM2")
+				(pin "J3.1")
+				(pinfunction "OUTN_J3.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM2L")
+				(pin "J3.1")
+				(pinfunction "OUTN_J3.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "7")
+			(name "CH2_OUTP")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-36")
+				(pinfunction "AIN2_DB37-36")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM2")
+				(pin "J3.2")
+				(pinfunction "OUTP_J3.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM2L")
+				(pin "J3.2")
+				(pinfunction "OUTP_J3.2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "8")
+			(name "CH2_RETURN_HELD")
+			(class "Default")
+			(node
+				(ref "ADP2")
+				(pin "RETURN")
+				(pinfunction "FIELD_RETURN_RETURN")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM2")
+				(pin "J2.2")
+				(pinfunction "INN_J2.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM2")
+				(pin "J2.3")
+				(pinfunction "HGND_J2.3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "9")
+			(name "CH3_INP_HELD")
+			(class "Default")
+			(node
+				(ref "ADP3")
+				(pin "INP")
+				(pinfunction "SCALED_OUTPUT_INP")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM3")
+				(pin "J2.1")
+				(pinfunction "INP_J2.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "10")
+			(name "CH3_OUTN")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-16")
+				(pinfunction "AIN5_DB37-16")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM3")
+				(pin "J3.1")
+				(pinfunction "OUTN_J3.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM3L")
+				(pin "J3.1")
+				(pinfunction "OUTN_J3.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "11")
+			(name "CH3_OUTP")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-35")
+				(pinfunction "AIN4_DB37-35")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM3")
+				(pin "J3.2")
+				(pinfunction "OUTP_J3.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM3L")
+				(pin "J3.2")
+				(pinfunction "OUTP_J3.2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "12")
+			(name "CH3_RETURN_HELD")
+			(class "Default")
+			(node
+				(ref "ADP3")
+				(pin "RETURN")
+				(pinfunction "FIELD_RETURN_RETURN")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM3")
+				(pin "J2.2")
+				(pinfunction "INN_J2.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM3")
+				(pin "J2.3")
+				(pinfunction "HGND_J2.3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "13")
+			(name "CH4_INP_HELD")
+			(class "Default")
+			(node
+				(ref "ADP4")
+				(pin "INP")
+				(pinfunction "SCALED_OUTPUT_INP")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM4")
+				(pin "J2.1")
+				(pinfunction "INP_J2.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "14")
+			(name "CH4_OUTN")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-15")
+				(pinfunction "AIN7_DB37-15")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM4")
+				(pin "J3.1")
+				(pinfunction "OUTN_J3.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM4L")
+				(pin "J3.1")
+				(pinfunction "OUTN_J3.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "15")
+			(name "CH4_OUTP")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-34")
+				(pinfunction "AIN6_DB37-34")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM4")
+				(pin "J3.2")
+				(pinfunction "OUTP_J3.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM4L")
+				(pin "J3.2")
+				(pinfunction "OUTP_J3.2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "16")
+			(name "CH4_RETURN_HELD")
+			(class "Default")
+			(node
+				(ref "ADP4")
+				(pin "RETURN")
+				(pinfunction "FIELD_RETURN_RETURN")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM4")
+				(pin "J2.2")
+				(pinfunction "INN_J2.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM4")
+				(pin "J2.3")
+				(pinfunction "HGND_J2.3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "17")
+			(name "CH5_INP_HELD")
+			(class "Default")
+			(node
+				(ref "ADP5")
+				(pin "INP")
+				(pinfunction "SCALED_OUTPUT_INP")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM5")
+				(pin "J2.1")
+				(pinfunction "INP_J2.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "18")
+			(name "CH5_OUTN")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-14")
+				(pinfunction "AIN9_DB37-14")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM5")
+				(pin "J3.1")
+				(pinfunction "OUTN_J3.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM5L")
+				(pin "J3.1")
+				(pinfunction "OUTN_J3.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "19")
+			(name "CH5_OUTP")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-33")
+				(pinfunction "AIN8_DB37-33")
+				(pintype "passive")
+			)
+			(node
+				(ref "DAQCFG1")
+				(pin "A0")
+				(pinfunction "AIN8-9_A0")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM5")
+				(pin "J3.2")
+				(pinfunction "OUTP_J3.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM5L")
+				(pin "J3.2")
+				(pinfunction "OUTP_J3.2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "20")
+			(name "CH5_RETURN_HELD")
+			(class "Default")
+			(node
+				(ref "ADP5")
+				(pin "RETURN")
+				(pinfunction "FIELD_RETURN_RETURN")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM5")
+				(pin "J2.2")
+				(pinfunction "INN_J2.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM5")
+				(pin "J2.3")
+				(pinfunction "HGND_J2.3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "21")
+			(name "CH6_INP_HELD")
+			(class "Default")
+			(node
+				(ref "ADP6")
+				(pin "INP")
+				(pinfunction "SCALED_OUTPUT_INP")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM6")
+				(pin "J2.1")
+				(pinfunction "INP_J2.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "22")
+			(name "CH6_OUTN")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-13")
+				(pinfunction "AIN11_DB37-13")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM6")
+				(pin "J3.1")
+				(pinfunction "OUTN_J3.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM6L")
+				(pin "J3.1")
+				(pinfunction "OUTN_J3.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "23")
+			(name "CH6_OUTP")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-32")
+				(pinfunction "AIN10_DB37-32")
+				(pintype "passive")
+			)
+			(node
+				(ref "DAQCFG1")
+				(pin "A1")
+				(pinfunction "AIN10-11_A1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM6")
+				(pin "J3.2")
+				(pinfunction "OUTP_J3.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM6L")
+				(pin "J3.2")
+				(pinfunction "OUTP_J3.2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "24")
+			(name "CH6_RETURN_HELD")
+			(class "Default")
+			(node
+				(ref "ADP6")
+				(pin "RETURN")
+				(pinfunction "FIELD_RETURN_RETURN")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM6")
+				(pin "J2.2")
+				(pinfunction "INN_J2.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM6")
+				(pin "J2.3")
+				(pinfunction "HGND_J2.3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "25")
+			(name "CH7_INP_HELD")
+			(class "Default")
+			(node
+				(ref "ADP7")
+				(pin "INP")
+				(pinfunction "SCALED_OUTPUT_INP")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM7")
+				(pin "J2.1")
+				(pinfunction "INP_J2.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "26")
+			(name "CH7_OUTN")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-12")
+				(pinfunction "AIN13_DB37-12")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM7")
+				(pin "J3.1")
+				(pinfunction "OUTN_J3.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM7L")
+				(pin "J3.1")
+				(pinfunction "OUTN_J3.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "27")
+			(name "CH7_OUTP")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-31")
+				(pinfunction "AIN12_DB37-31")
+				(pintype "passive")
+			)
+			(node
+				(ref "DAQCFG1")
+				(pin "A2")
+				(pinfunction "AIN12-13_A2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM7")
+				(pin "J3.2")
+				(pinfunction "OUTP_J3.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM7L")
+				(pin "J3.2")
+				(pinfunction "OUTP_J3.2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "28")
+			(name "CH7_RETURN_HELD")
+			(class "Default")
+			(node
+				(ref "ADP7")
+				(pin "RETURN")
+				(pinfunction "FIELD_RETURN_RETURN")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM7")
+				(pin "J2.2")
+				(pinfunction "INN_J2.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM7")
+				(pin "J2.3")
+				(pinfunction "HGND_J2.3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "29")
+			(name "COMMON_TRIGGER_LOGIC_HELD")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-6")
+				(pinfunction "FIO0_TRIGGER_WITNESS_DB37-6")
+				(pintype "passive")
+			)
+			(node
+				(ref "DAQCFG1")
+				(pin "D0")
+				(pinfunction "FIO_STATE_D0")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "30")
+			(name "DAQ_GND")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-1")
+				(pinfunction "GND_DB37-1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM1")
+				(pin "J1.2")
+				(pinfunction "GND_J1.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM1")
+				(pin "J3.3")
+				(pinfunction "GND_J3.3")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM1L")
+				(pin "J3.3/J1.2")
+				(pinfunction "GND_J3.3/J1.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM2")
+				(pin "J1.2")
+				(pinfunction "GND_J1.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM2")
+				(pin "J3.3")
+				(pinfunction "GND_J3.3")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM2L")
+				(pin "J3.3/J1.2")
+				(pinfunction "GND_J3.3/J1.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM3")
+				(pin "J1.2")
+				(pinfunction "GND_J1.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM3")
+				(pin "J3.3")
+				(pinfunction "GND_J3.3")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM3L")
+				(pin "J3.3/J1.2")
+				(pinfunction "GND_J3.3/J1.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM4")
+				(pin "J1.2")
+				(pinfunction "GND_J1.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM4")
+				(pin "J3.3")
+				(pinfunction "GND_J3.3")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM4L")
+				(pin "J3.3/J1.2")
+				(pinfunction "GND_J3.3/J1.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM5")
+				(pin "J1.2")
+				(pinfunction "GND_J1.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM5")
+				(pin "J3.3")
+				(pinfunction "GND_J3.3")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM5L")
+				(pin "J3.3/J1.2")
+				(pinfunction "GND_J3.3/J1.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM6")
+				(pin "J1.2")
+				(pinfunction "GND_J1.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM6")
+				(pin "J3.3")
+				(pinfunction "GND_J3.3")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM6L")
+				(pin "J3.3/J1.2")
+				(pinfunction "GND_J3.3/J1.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM7")
+				(pin "J1.2")
+				(pinfunction "GND_J1.2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM7")
+				(pin "J3.3")
+				(pinfunction "GND_J3.3")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM7L")
+				(pin "J3.3/J1.2")
+				(pinfunction "GND_J3.3/J1.2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "31")
+			(name "EVM_VDD_SELECTION_REQUIRED")
+			(class "Default")
+			(node
+				(ref "EVM1")
+				(pin "J1.1")
+				(pinfunction "VDD_J1.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM1L")
+				(pin "J1.1")
+				(pinfunction "VDD_J1.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM2")
+				(pin "J1.1")
+				(pinfunction "VDD_J1.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM2L")
+				(pin "J1.1")
+				(pinfunction "VDD_J1.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM3")
+				(pin "J1.1")
+				(pinfunction "VDD_J1.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM3L")
+				(pin "J1.1")
+				(pinfunction "VDD_J1.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM4")
+				(pin "J1.1")
+				(pinfunction "VDD_J1.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM4L")
+				(pin "J1.1")
+				(pinfunction "VDD_J1.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM5")
+				(pin "J1.1")
+				(pinfunction "VDD_J1.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM5L")
+				(pin "J1.1")
+				(pinfunction "VDD_J1.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM6")
+				(pin "J1.1")
+				(pinfunction "VDD_J1.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM6L")
+				(pin "J1.1")
+				(pinfunction "VDD_J1.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM7")
+				(pin "J1.1")
+				(pinfunction "VDD_J1.1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVM7L")
+				(pin "J1.1")
+				(pinfunction "VDD_J1.1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "32")
+			(name "unconnected-(ADP1-S0_CHANNEL-1_RETURN-PadFIELD)")
+			(class "Default")
+			(node
+				(ref "ADP1")
+				(pin "FIELD")
+				(pinfunction "S0_CHANNEL-1_RETURN_FIELD")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "33")
+			(name "unconnected-(ADP2-MANUAL_RESET_RETURN-PadFIELD)")
+			(class "Default")
+			(node
+				(ref "ADP2")
+				(pin "FIELD")
+				(pinfunction "MANUAL_RESET_RETURN_FIELD")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "34")
+			(name "unconnected-(ADP3-MANUAL_ARM{slash}START_RETURN-PadFIELD)")
+			(class "Default")
+			(node
+				(ref "ADP3")
+				(pin "FIELD")
+				(pinfunction "MANUAL_ARM/START_RETURN_FIELD")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "35")
+			(name "unconnected-(ADP4-K1_COIL_COMMAND-PadFIELD)")
+			(class "Default")
+			(node
+				(ref "ADP4")
+				(pin "FIELD")
+				(pinfunction "K1_COIL_COMMAND_FIELD")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "36")
+			(name "unconnected-(ADP5-K2_COIL_COMMAND-PadFIELD)")
+			(class "Default")
+			(node
+				(ref "ADP5")
+				(pin "FIELD")
+				(pinfunction "K2_COIL_COMMAND_FIELD")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "37")
+			(name "unconnected-(ADP6-K1_MIRROR-CONTACT_CHAIN-PadFIELD)")
+			(class "Default")
+			(node
+				(ref "ADP6")
+				(pin "FIELD")
+				(pinfunction "K1_MIRROR-CONTACT_CHAIN_FIELD")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "38")
+			(name "unconnected-(ADP7-K2_MIRROR-CONTACT_CHAIN-PadFIELD)")
+			(class "Default")
+			(node
+				(ref "ADP7")
+				(pin "FIELD")
+				(pinfunction "K2_MIRROR-CONTACT_CHAIN_FIELD")
+				(pintype "passive+no_connect")
+			)
+		)
+	)
+)

@@ -1,0 +1,61 @@
+{
+  "identifier": "HR-V0-PASSIVE-ARM-RECEIVER-VERIFY-P0.1",
+  "warning": "PRELIMINARY - INTERNAL SECOND-METHOD VERIFICATION ONLY - NOT APPROVED FOR FABRICATION, MOTION OR ENERGIZATION",
+  "parent_identifier": "HR-V0-PASSIVE-ARM-RECEIVER-P0.1",
+  "analytic_envelope": {
+    "minimum_z_mm": 384.14261888640146,
+    "maximum_z_mm": 826.5256541383853,
+    "j2_y_mm": 202.55,
+    "controlling_minimum": {
+      "component": "H104_FRAME",
+      "family": "fore",
+      "corner_xyz_mm": [
+        -20.50000005009775,
+        334.1,
+        -35.25000001686
+      ],
+      "q1_deg": -20.0,
+      "q2_deg": 14.999999999999998
+    },
+    "method": "closed-form trigonometric boundary minimization of all source-BRep AABB corners",
+    "scope": "known P0.7 B-Reps only; complete gripper, object, cables, tolerance and deformation excluded"
+  },
+  "r127_comparison": {
+    "sampled_minimum_z_mm": 384.14261888640146,
+    "released_conservative_minimum_z_mm": 383.10647837214253,
+    "released_conservative_clearance_mm": 63.10647837214253,
+    "analytic_minus_released_bound_mm": 1.036140514258932,
+    "disposition": "R127 conservative bound retained; analytic result corroborates but does not expand the release boundary"
+  },
+  "receiver_guard_fit": {
+    "step_bounds_mm": {
+      "xmin": -90.0,
+      "xmax": 90.0,
+      "ymin": -430.0,
+      "ymax": 430.0,
+      "zmin": 20.0,
+      "zmax": 320.0
+    },
+    "x_margin_each_side_mm": 110.0,
+    "y_margin_each_side_mm": 20.0,
+    "bottom_margin_mm": 20.0,
+    "top_margin_mm": 630.0,
+    "minimum_horizontal_guard_margin_mm": 20.0,
+    "scope": "nominal serialized STEP versus nominal guard internal envelope; panels, joints, tolerances and physical fit open"
+  },
+  "arithmetic": {
+    "ma30_each_j": 3.5025296998561175,
+    "ma30_total_j": 10.507589099568353,
+    "catalog_to_gravity_ratio": 1.9842146229888888,
+    "stroke_mm": 8.128,
+    "minimum_effective_mass_kg": 0.226796185,
+    "maximum_effective_mass_kg": 14.06136347,
+    "minimum_impact_speed_m_s": 0.67056,
+    "maximum_impact_speed_m_s": 4.45008,
+    "rail_moment_n_mm": 210000.0,
+    "rail_stress_mpa": 92.59871684635227,
+    "rail_deflection_mm": 3.951236974285569
+  },
+  "verification_state": "INTERNAL SECOND-METHOD CORROBORATION COMPLETE; ALL R127 PHYSICAL AND QUALIFIED HOLDS REMAIN OPEN",
+  "gate_state": "EG-008 AND EG-009 REMAIN PARTIAL"
+}

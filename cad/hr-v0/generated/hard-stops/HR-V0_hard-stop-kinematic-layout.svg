@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="720" viewBox="0 0 1000 720">
+      <style>
+        text { font: 16px system-ui, sans-serif; fill: #082554; }
+        .title { font-size: 28px; font-weight: 700; }
+        .subtitle { font-size: 20px; font-weight: 700; }
+        .warning { font-size: 18px; font-weight: 700; fill: #8a4b00; }
+        .joint { fill: #d9efff; stroke: #082554; stroke-width: 3; }
+        .sweep { fill: none; stroke: #9cb9d8; stroke-width: 2; stroke-dasharray: 8 6; }
+        .software { stroke: #0b72b9; stroke-width: 3; }
+        .mechanical { stroke: #b17700; stroke-width: 4; }
+        .software-point { fill: #0b72b9; stroke: white; stroke-width: 2; }
+        .mechanical-point { fill: #ffbf2f; stroke: #8a4b00; stroke-width: 2; }
+        .label { font-size: 15px; font-weight: 600; }
+      </style>
+      <text x="40" y="45" class="title">HR-V0 HARD-STOP KINEMATIC DATUM STUDY</text>
+      <text x="40" y="78" class="warning">NO BRACKET OR BUMPER IS RELEASED - NOT A FABRICATION DRAWING</text>
+      <text x="40" y="108">Candidate moving-contact radius: 50.0 mm. Orange rays are 5 deg beyond provisional software limits.</text>
+      <text x="250" y="155" text-anchor="middle" class="subtitle">J1 SHOULDER</text>
+      <text x="750" y="155" text-anchor="middle" class="subtitle">J2 ELBOW</text>
+      <circle cx="250" cy="360" r="175" class="sweep"/><circle cx="250" cy="360" r="25" class="joint"/>
+      <circle cx="750" cy="360" r="175" class="sweep"/><circle cx="750" cy="360" r="25" class="joint"/>
+      <line x1="250.0" y1="360.0" x2="414.4" y2="419.9" class="software"/><circle cx="414.4" cy="419.9" r="6" class="software-point"/><line x1="250.0" y1="360.0" x2="309.9" y2="195.6" class="software"/><circle cx="309.9" cy="195.6" r="6" class="software-point"/><line x1="250.0" y1="360.0" x2="408.6" y2="434.0" class="mechanical"/><circle cx="408.6" cy="434.0" r="6" class="mechanical-point"/><line x1="250.0" y1="360.0" x2="295.3" y2="191.0" class="mechanical"/><circle cx="295.3" cy="191.0" r="6" class="mechanical-point"/><line x1="750.0" y1="360.0" x2="581.0" y2="314.7" class="software"/><circle cx="581.0" cy="314.7" r="6" class="software-point"/><line x1="750.0" y1="360.0" x2="850.4" y2="216.6" class="software"/><circle cx="850.4" cy="216.6" r="6" class="software-point"/><line x1="750.0" y1="360.0" x2="577.7" y2="329.6" class="mechanical"/><circle cx="577.7" cy="329.6" r="6" class="mechanical-point"/><line x1="750.0" y1="360.0" x2="862.5" y2="225.9" class="mechanical"/><circle cx="862.5" cy="225.9" r="6" class="mechanical-point"/>
+      <text x="330" y="177" class="label">BLUE: SW +70 deg</text>
+      <text x="330" y="202" class="label">ORANGE: STOP +75 deg</text>
+      <text x="425" y="425" class="label">BLUE: SW -20 deg</text>
+      <text x="425" y="450" class="label">ORANGE: STOP -25 deg</text>
+      <text x="560" y="285" class="label">BLUE: SW internal 15 deg</text>
+      <text x="560" y="310" class="label">ORANGE: STOP internal 10 deg</text>
+      <text x="775" y="177" class="label">BLUE: SW internal 125 deg</text>
+      <text x="775" y="202" class="label">ORANGE: STOP internal 130 deg</text>
+      <text x="40" y="590">J1 convention: angle from horizontal +X; counter-clockwise positive.</text>
+      <text x="40" y="620">J2 convention: internal elbow angle; layout ray = 180 deg - internal angle.</text>
+      <text x="40" y="650">Final stop position must include measured backlash, calibration error, tolerance, bumper compression and stopping travel.</text>
+      <text x="40" y="690" class="warning">PRELIMINARY - HARD-STOP LOAD PATH, MATERIAL, FASTENERS AND IMPACT TEST REMAIN DESIGN REQUIRED</text>
+    </svg>

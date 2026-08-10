@@ -1,0 +1,7 @@
+packet_id,routes,state,reason,superseded_revision,replacement_condition
+RFI-001,FAB-001;FAB-002,WITHDRAWN,P0.1 finished geometry assumed coplanar H101/S102 interfaces; exact vendor STEP disproves that assumption,HR-V0-FAB-RFI-P0.1,Released replacement arm architecture and separately authorized inquiry packet
+RFI-002,FAB-003 profile operation only,WITHDRAWN,P0.1 blanks derive from the same invalid flat-link architecture,HR-V0-FAB-RFI-P0.1,Released replacement arm architecture and separately authorized inquiry packet
+RFI-003,FAB-004 local secondary operation,WITHDRAWN,P0.1 blank and finished context derive from the same invalid flat-link architecture,HR-V0-FAB-RFI-P0.1,Released replacement arm architecture and separately authorized inquiry packet
+RFI-004,FAB-005,WITHDRAWN,No structural prototype route is active,HR-V0-FAB-RFI-P0.1,Released replacement arm architecture and separately authorized inquiry packet
+RFI-005,FAB-006,WITHDRAWN,No structural-metal assignment is active,HR-V0-FAB-RFI-P0.1,Released replacement arm architecture and separately authorized inquiry packet
+RFI-006,FAB-007,SITE HOLD,MV0-004 remains blocked by the exact Boston bench survey,HR-V0-FAB-RFI-P0.1,Released replacement arm architecture and separately authorized inquiry packet

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "release_id": "HR-V0-WD-BUILD-P0.2",
+  "status": "PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION",
+  "verified_date": "2026-08-07",
+  "target": {
+    "board": "Raspberry Pi Pico 1 SC0915",
+    "mcu": "RP2040",
+    "pico_board": "pico",
+    "build_type": "MinSizeRel"
+  },
+  "dependencies": [
+    {
+      "name": "Raspberry Pi Pico SDK",
+      "version": "2.3.0",
+      "source_url": "https://github.com/raspberrypi/pico-sdk/releases/tag/2.3.0",
+      "git_url": "https://github.com/raspberrypi/pico-sdk.git",
+      "git_revision": "98a542c1a62fb549ffb5d66a3e5892b06276b670",
+      "verification": "official release tag resolved with git ls-remote on 2026-08-07"
+    },
+    {
+      "name": "Arm GNU Toolchain",
+      "version": "14.3.rel1 / GCC 14.3.1 build arm-14.174",
+      "source_url": "https://developer.arm.com/-/media/Files/downloads/gnu/14.3.rel1/binrel/arm-gnu-toolchain-14.3.rel1-mingw-w64-i686-arm-none-eabi.zip",
+      "sha256": "836ebe51fd71b6542dd7884c8fb2011192464b16c28e4b38fddc9350daba5ee8",
+      "verification": "matched Arm-published .sha256asc on 2026-08-07"
+    },
+    {
+      "name": "CMake",
+      "version": "4.3.3",
+      "source_url": "https://github.com/Kitware/CMake/releases/download/v4.3.3/cmake-4.3.3-windows-x86_64.zip",
+      "sha256": "935ade9e5e8723583c07f44c5592cea2a1c8f65c56ca7e07b34c025c880e0bd6",
+      "verification": "matched Kitware release SHA-256 file on 2026-08-07"
+    },
+    {
+      "name": "Ninja",
+      "version": "1.13.2",
+      "source_url": "https://github.com/ninja-build/ninja/releases/download/v1.13.2/ninja-win.zip",
+      "sha256": "07fc8261b42b20e71d1720b39068c2e14ffcee6396b76fb7a795fb460b78dc65",
+      "verification": "matched GitHub release-asset digest on 2026-08-07"
+    },
+    {
+      "name": "Raspberry Pi picotool prebuilt",
+      "version": "2.3.0 / pico-sdk-tools v2.3.0-0",
+      "source_url": "https://github.com/raspberrypi/pico-sdk-tools/releases/download/v2.3.0-0/picotool-2.3.0-x64-win.zip",
+      "sha256": "4dcad3bfbc9d126bdb3870bbce0668f5d300d0f2f505ce775b3444bfdd5eaa79",
+      "source_git_revision": "6f6458d792b93685a11423b244a585eaa99eafcf",
+      "verification": "matched GitHub release-asset digest on 2026-08-07"
+    },
+    {
+      "name": "Python embeddable package",
+      "version": "3.13.14",
+      "source_url": "https://www.python.org/ftp/python/3.13.14/python-3.13.14-embed-amd64.zip",
+      "sha256": "90b4e5b9898b72d744650524bff92377c367f44bd5fbd09e3148656c080ad907",
+      "verification": "matched Python.org release SHA-256 on 2026-08-07"
+    }
+  ],
+  "build_controls": {
+    "generator": "Ninja",
+    "stdio_usb_enabled": false,
+    "stdio_uart_enabled": false,
+    "linker_build_id": "disabled",
+    "source_date_epoch": 1786060800,
+    "source_date_utc": "2026-08-07T00:00:00Z",
+    "path_normalization": true,
+    "project_source_warnings": "-Wall -Wextra -Werror -Wformat=2 -Wshadow -Wstrict-prototypes -Wundef -Wstack-usage=256",
+    "stack_usage_files": true
+  },
+  "known_limits": [
+    "TinyUSB submodule is absent because USB stdio is disabled; Pico SDK emits a non-blocking configure warning.",
+    "This lock covers the Windows AMD64 evidence build. A containerized or second-host reproduction is still required before release.",
+    "A reproducible binary is not HIL evidence, functional-safety validation or permission to flash or energize hardware."
+  ]
+}

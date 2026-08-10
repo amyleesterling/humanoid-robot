@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HR-V0 Gripper Alternative P0.1</title>
+  <style>
+    :root{--sky:#8ed8f8;--navy:#082a55;--blue:#145da0;--gold:#f2bd2f;--paper:#f7fbff;--ink:#10233d;--line:#a9c7df;--held:#fff4cf}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+    header{background:linear-gradient(135deg,var(--navy),var(--blue));color:white;padding:clamp(24px,5vw,64px)}
+    header div,main{max-width:1100px;margin:auto} h1{font-size:clamp(32px,6vw,58px);line-height:1.05;margin:.2em 0} h2{font-size:clamp(24px,3vw,34px);color:var(--navy)} h3{font-size:21px}
+    .warning{background:var(--gold);color:#172238;font-weight:800;padding:14px 18px;border:3px solid var(--navy)}
+    main{padding:28px 20px 64px}.intro{font-size:20px;max-width:75ch}.controls{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
+    button{font:inherit;font-weight:750;color:var(--navy);background:white;border:2px solid var(--blue);border-radius:999px;padding:11px 18px;cursor:pointer} button[aria-pressed="true"]{background:var(--sky)} button:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{background:white;border:2px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 7px 0 #dcecf8}.card.preferred{border:4px solid var(--blue)}
+    .tag{display:inline-block;font-size:12px;line-height:1.2;font-weight:850;text-transform:uppercase;letter-spacing:.04em;border-radius:999px;padding:7px 9px;background:var(--held);border:1px solid #a87900}.metric{font-size:27px;font-weight:850;color:var(--navy)}
+    table{width:100%;border-collapse:collapse;background:white;min-width:720px}th,td{text-align:left;vertical-align:top;border:1px solid var(--line);padding:13px}th{background:var(--navy);color:white}.table-wrap{overflow-x:auto}
+    details{background:white;border:2px solid var(--line);border-radius:12px;margin:12px 0;padding:12px 16px}summary{font-weight:800;cursor:pointer;font-size:18px}.small{font-size:14px}.hidden{display:none}
+    a{color:#07549a;text-underline-offset:3px}@media(max-width:780px){.grid{grid-template-columns:1fr}header{padding:28px 20px}.intro{font-size:18px}}
+  </style>
+</head>
+<body>
+  <div class="warning">PRELIMINARY R113 CORRECTION — ALL CANDIDATES NOT SELECTED — NOT APPROVED FOR PROCUREMENT, FABRICATION, MOTION, OR ENERGIZATION</div>
+  <header><div><span class="tag">HR-V0-GRIP-ALT-P0.1 · HISTORICAL R111 STUDY</span><h1>A source-controlled gripper comparison</h1><p class="intro">R113 supersedes the former preference: Pololu item 3551 has complete CAD and a 30 g catalog mass, but its 32 mm opening fails the retained 40 mm object minimum.</p></div></header>
+  <main>
+    <h2>Compare candidates</h2>
+    <div class="controls" aria-label="Candidate filters">
+      <button data-filter="all" aria-pressed="true">Show all</button><button data-filter="preferred" aria-pressed="false">Pololu study</button><button data-filter="source" aria-pressed="false">CAD acquired</button>
+    </div>
+    <section class="grid" aria-live="polite">
+      <article class="card preferred" data-kinds="preferred source"><span class="tag">Fails current baseline · not selected</span><h3>Pololu 3551</h3><p class="metric">30 g · 32 mm</p><p>Catalog mass and internal opening. The opening is at least 8 mm below the retained 40 mm minimum before pads and uncertainty.</p><p><strong>Still missing:</strong> approved requirement change or different gripper, plus adapter, power/control, guard, pads, calibration and physical tests.</p></article>
+      <article class="card" data-kinds="source"><span class="tag">Fallback · not selected</span><h3>ServoCity 3219-0002-0002</h3><p class="metric">101 g · opening held</p><p>Complete assembly PDF, specification PDF and 43-solid STEP are controlled.</p><p><strong>Tradeoff:</strong> 71 g heavier than Pololu, no stated position feedback, and usable opening remains to be established.</p></article>
+      <article class="card" data-kinds=""><span class="tag">Baseline proposal · source held</span><h3>ROBOTIS RM-X52</h3><p class="metric">Mass and opening held</p><p>Fits the existing DYNAMIXEL concept, but the complete acquired manufacturing source and H104 registration remain unresolved.</p></article>
+    </section>
+
+    <h2>What the 30 g figure really means</h2>
+    <div class="table-wrap"><table><thead><tr><th>Screen</th><th>Arithmetic</th><th>Meaning</th></tr></thead><tbody>
+      <tr><td>Known P0.9 subtotal</td><td>577.091 g</td><td>Incomplete, nonselected moving-load basis.</td></tr>
+      <tr><td>With Pololu catalog mass</td><td>750 − 577.091 − 30 = <strong>142.909 g</strong></td><td>Remaining before adapter, guard, pads, cable and all omitted items. Not mass closure.</td></tr>
+      <tr><td>With ServoCity catalog mass</td><td>750 − 577.091 − 101 = <strong>71.909 g</strong></td><td>Same incomplete screen; less integration headroom.</td></tr>
+    </tbody></table></div>
+
+    <h2>Twelve holds before selection</h2>
+    <details open><summary>Mechanical: GAH-001 through GAH-005</summary><p>Direct adapter and exact fasteners; received mass/COM/inertia; merged moving envelope; fixed guard; compliant pads; characterized force.</p></details>
+    <details><summary>Electrical and controls: GAH-006 through GAH-009</summary><p>Protected post-K1/K2 6 V branch; exact PWM and analog-feedback interfaces; power-removal proof; reset must never cause a motion command.</p></details>
+    <details><summary>Evidence and authority: GAH-010 through GAH-012</summary><p>Received metrology and tests; formal disposition of solution-specific GRIP-002; independent mechanical, electrical, controls and functional-safety-boundary review.</p></details>
+
+    <h2>Primary manufacturer evidence</h2>
+    <p><a href="https://www.pololu.com/product/3551/resources">Pololu 3551 resources</a> · <a href="https://www.pololu.com/docs/0J76/all">Pololu gripper guide</a> · <a href="https://www.pololu.com/product/2859">Pololu 6 V regulator candidate</a> · <a href="https://www.servocity.com/servo-driven-gripper-kit-servo-included/">ServoCity complete kit</a></p>
+    <p class="small">Manufacturer files were accessed 2026-08-08 and are frozen with SHA-256 hashes in the repository. Approximate servo endpoints are characterization inputs only, never released commands.</p>
+  </main>
+  <script>
+    const buttons=[...document.querySelectorAll('[data-filter]')],cards=[...document.querySelectorAll('[data-kinds]')];
+    buttons.forEach(button=>button.addEventListener('click',()=>{buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));const f=button.dataset.filter;cards.forEach(card=>card.classList.toggle('hidden',f!=='all'&&!card.dataset.kinds.split(' ').includes(f)));}));
+  </script>
+</body>
+</html>

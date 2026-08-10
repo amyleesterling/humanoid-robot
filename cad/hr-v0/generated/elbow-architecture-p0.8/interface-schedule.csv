@@ -1,0 +1,4 @@
+interface,from,to,coordinates,fastener_state,status
+P08-A01,upper 20-2040 envelope,P08-C01 fixed catch / FR12-S102,"beam M5 axes X=0,Z=+/-10; frame axes X=+/-12,Z=+/-6; fixed face J2 Y=-40.5",SELECTION REQUIRED; existing P0.7 candidates are not inherited without stack proof,NOMINAL GEOMETRY REGISTERED; STRUCTURAL/FAI/PROOF OPEN
+P08-A02,FR12-H101 moving face,P08-C02 striker / forearm 20-2040,"frame axes X=+/-12,Z=+/-6; beam M5 axes X=0,Z=+/-10; moving face J2 Y=28",SELECTION REQUIRED; received screw/nut stack and access proof required,NOMINAL GEOMETRY REGISTERED; STRUCTURAL/FAI/PROOF OPEN
+P08-HS-J2,P08-C02 twin integral wings,P08-C01 twin integral wings,nominal first positive volume at 117.999991 deg; soft limit 115.0 deg,integral aluminum profiles; bumper material/retention SELECTION REQUIRED,CAD CANDIDATE ONLY; TOLERANCE/LOAD/STOPPING/REBOUND/PHYSICAL PROOF OPEN

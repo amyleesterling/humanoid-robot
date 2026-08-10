@@ -1,0 +1,9 @@
+source_id,organization,record,revision_date,locator,use
+IFS-001,FUTEK,TFF400 drawing FI1251-F,revision F; accessed 2026-08-08,https://media.futek.com/content/futek/files/pdf/productdrawings/fsh02588.pdf,"envelope, pilot, pattern, tapped depth, electrical/catalog fields"
+IFS-002,FUTEK,TFF Series Manual EM1040,current PDF accessed 2026-08-08,https://media.futek.com/content/futek/files/pdf/Manuals_and_Technical_Documents/TFFSeriesManual.pdf,"flat/inline mounting, installation torque, cable, connector, overload and calibration guidance"
+IFS-003,FUTEK,TFF400 extraneous load factors EL1065,current PDF accessed 2026-08-08,https://media.futek.com/content/futek/files/pdf/extraneous_load_factors/fsh03993.pdf,coefficient arithmetic and fatigue-reference screen
+IFS-004,FUTEK,hinge fatigue testing application 314,live page accessed 2026-08-08,https://www.futek.com/applications/hinge-fatigue-testing,reaction-torque dynamic precedent and less-than-360-degree cable note
+IFS-005,ROBOTIS,FR12-S102K Set 903-0242-000,live record accessed 2026-08-08,https://www.robotis.us/fr12-s102k-set/,exact set identity and factory fastener contents
+IFS-006,ROBOTIS,controlled X430/FR12 STEP and reference drawings,local controlled sources dated 2026-01-07,cad/vendor/robotis/x430-fr12-r91/,exact nominal geometry and axes
+IFS-007,Accu,SSC-8-32-3/4-A2-BL and HRDW-M4-A2,live records accessed 2026-08-08,https://www.accu.co.uk/imperial-cap-head-screws/165205-SSC-8-32-3-4-A2-BL,candidate dimensions only
+IFS-008,Accu,SHCL-M2.5-12-A2,live record accessed 2026-08-08,https://www.accu.co.uk/torx-low-cap-head-screws/14450-SHCL-M2-5-12-A2,candidate low-head envelope only

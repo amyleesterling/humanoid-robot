@@ -1,0 +1,22 @@
+{
+  "identifier": "HR-V0-WD-MOUNT-IF-P0.1",
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION",
+  "current_board": "PCB-P0.6",
+  "historical_board": "PCB-P0.5",
+  "iso1_current_inner_gap_mm": 8.01,
+  "iso1_current_overall_span_mm": 11.05,
+  "mount_pattern_mm": [
+    150.0,
+    90.0
+  ],
+  "mount_holes": 4,
+  "standoff_candidates": 3,
+  "holds": 12,
+  "hold_status": {
+    "partial": 2,
+    "open": 10
+  },
+  "physical_results": 0,
+  "selected_standoff": "SELECTION REQUIRED",
+  "selected_fasteners": "SELECTION REQUIRED"
+}

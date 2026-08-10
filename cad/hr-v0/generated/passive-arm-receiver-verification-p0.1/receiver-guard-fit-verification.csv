@@ -1,0 +1,6 @@
+record,quantity,value,unit,guard_limit,remaining_margin,result
+R128-FIT-001,receiver STEP X bounds,-90.000000..90.000000,mm,-200.000000..200.000000,110.000000 each limiting side,PASS NOMINAL STEP/ENVELOPE ONLY
+R128-FIT-002,receiver STEP Y bounds,-430.000000..430.000000,mm,-450.000000..450.000000,20.000000 each limiting side,PASS NOMINAL STEP/ENVELOPE ONLY
+R128-FIT-003,receiver STEP Z bounds,20.000000..320.000000,mm,0.000000..950.000000,bottom 20.000000; top 630.000000,PASS NOMINAL STEP/ENVELOPE ONLY
+R128-FIT-004,receiver imported solid count,1,objects,not applicable,not applicable,IMPORT PARSED
+R128-FIT-005,receiver imported volume sum,4097776.989913,mm3,not applicable,not applicable,GEOMETRY IDENTITY INPUT ONLY

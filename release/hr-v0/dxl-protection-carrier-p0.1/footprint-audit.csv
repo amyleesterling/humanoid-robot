@@ -1,0 +1,3 @@
+reference,footprint,source,state,evidence_needed,warning
+U1,TI_RPW0010A_HotRodQFN_2x2mm_P0.475mm_CANDIDATE,TI SLVSGA8B pages 41-46,DRAWING-DERIVED CANDIDATE - NOT INDEPENDENTLY ACCEPTED,independent land-pattern audit; assembler DFM; solder-mask/paste aperture decision; first-article AOI and X-ray,"PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
+JIN1/JOUT1,KiCad JST_VH_B2P-VH,https://www.jst-mfg.com/product/pdf/eng/eVH.pdf,LIBRARY FOOTPRINT; APPLICATION HELD,independent dimension parity; received fit; conductor/crimp/thermal evidence,"PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"

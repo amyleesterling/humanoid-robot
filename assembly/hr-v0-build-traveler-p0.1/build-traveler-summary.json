@@ -1,0 +1,16 @@
+{
+  "identifier": "HR-V0-BUILD-TRAVELER-P0.1",
+  "date": "2026-08-09",
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION",
+  "phase_count": 14,
+  "step_count": 85,
+  "through_e2_gate_count": 21,
+  "open_phase_count": 13,
+  "prohibited_phase_count": 1,
+  "authorized_step_count": 0,
+  "executed_step_count": 0,
+  "closed_hold_count": 0,
+  "fabrication_authorized": false,
+  "connection_authorized": false,
+  "energization_authorized": false
+}

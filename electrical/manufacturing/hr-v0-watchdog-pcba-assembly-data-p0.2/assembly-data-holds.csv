@@ -1,0 +1,13 @@
+hold_id,subject,status,evidence_needed,warning
+WD-DATA-HOLD-001,supplier coordinate convention,OPEN,"exact origin, axes, rotation zero/direction, side mirroring and centroid rule",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-HOLD-002,reference-level DFM,OPEN,written acceptance/redline for all 42 populated references and four holes,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-HOLD-003,exact sourcing route,OPEN,"provider, authorized distributor/consignment, lot/date code, attrition and no-alternate controls",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-HOLD-004,SMT process,OPEN,"paste/alloy/flux, stencil/apertures, placement, profile, cleaning and inspection",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-HOLD-005,THT process,OPEN,"method, fixture, seating, solder/flux, trim, cleaning and underside envelope",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-HOLD-006,ISO1 insulation/cleanliness,OPEN,"working environment, mask/process, contamination criterion and qualified disposition",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-HOLD-007,Pico presentation/inspection,OPEN,"SC0915 packaging, moisture/process, fixture, reflow and joint inspection",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-HOLD-008,fabrication definition,OPEN,"material, stack, copper, finish, mask, legend, panel, tolerances and electrical test",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-HOLD-009,first article,OPEN,"received article plus inspection, traceability, cleanliness and unpowered test evidence",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-HOLD-010,independent qualified review,OPEN,PCB/assembly/electrical/insulation/mechanical dispositions,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-HOLD-011,supplier packet,OPEN,accepted immutable CAM/BOM/XYRS/drawings/traveler and hashes,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-HOLD-012,work authorization,OPEN,separate written upload/quotation/fabrication/assembly authority,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION

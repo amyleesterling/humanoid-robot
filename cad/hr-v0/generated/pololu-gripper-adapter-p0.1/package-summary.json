@@ -1,0 +1,20 @@
+{
+  "identifier": "HR-V0-GRIP-ADAPT-P0.1",
+  "date": "2026-08-08",
+  "status": "CONDITIONAL NONSELECTED STUDY - FAILS CURRENT 40 MM OBJECT MINIMUM",
+  "adapter_volume_mm3": 9366.558784,
+  "adapter_mass_g": 25.289709,
+  "gripper_catalog_mass_g": 30.0,
+  "current_moving_subtotal_g": 577.091,
+  "remaining_arithmetic_headroom_g": 117.619291,
+  "minimum_nominal_clearance_mm": 0.3,
+  "rear_nominal_gap_mm": 0.5,
+  "hold_count": 12,
+  "requirements_closed": 0,
+  "procurement_release": false,
+  "fabrication_release": false,
+  "assembly_release": false,
+  "motion_release": false,
+  "energization_release": false,
+  "warning": "PRELIMINARY - NOT RELEASED FOR PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, OR ENERGIZATION"
+}

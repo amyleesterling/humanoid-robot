@@ -1,0 +1,6 @@
+screen_id,input,input_value,comparison,result,authority
+LPS-001,XM430 12 V stall endpoint,4.1 N m,TFF400 FSH04015 catalog capacity 11 N m,capacity/endpoint=2.682927,ARITHMETIC SCREEN ONLY; NEITHER CONTINUOUS RATING NOR FIXTURE ALLOWABLE
+LPS-002,TFF400 150% published safe overload,16.5 N m,XM430 12 V stall endpoint 4.1 N m,safe-overload/endpoint=4.024390,DO NOT USE AS OPERATING LIMIT; IMPACT/DYNAMICS/UNCERTAINTY/PROTECTION OPEN
+LPS-003,P1.1 incomplete 2.25x gravity screen,1.087329823 N m,TFF400 catalog capacity 11 N m,capacity/incomplete-screen=10.116526,INCOMPLETE LOAD MODEL; NOT A REQUIREMENT OR CAPACITY PROOF
+LPS-004,LSB205 FSH04097 capacity,111 N,100 mm perpendicular arm,nominal moment=11.100000 N m,IDEAL GEOMETRY ONLY; OFF-AXIS/ARM/FASTENER/SENSOR OVERLOAD OPEN
+LPS-005,XM430 stall endpoint current,2.3 A at 12 V,JS220 published 3 A continuous range,current ratio=1.304348,RANGE SCREEN ONLY; SOURCE TRANSIENTS/REGEN/PULSE DUTY/PROTECTION/TIMING OPEN

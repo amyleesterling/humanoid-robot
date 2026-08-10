@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="920" viewBox="0 0 1500 920">
+<style>text{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}.title{font-size:34px;font-weight:700}.sub{font-size:23px;font-weight:700}.warn{font-size:20px;font-weight:700;fill:#8a3b00}.axis{stroke:#0b4f8a;stroke-width:4}.part{fill:#66c7f4;stroke:#0b4f8a;stroke-width:3}.frame{fill:#f3b61f;stroke:#8a5a00;stroke-width:3}.note{fill:#fff4cd;stroke:#f3b61f;stroke-width:3}</style>
+<rect width="1500" height="920" fill="#f7fbff"/>
+<text x="40" y="55" class="title">HR-V0 exact-coordinate arm architecture candidate</text>
+<text x="40" y="92" class="warn">HR-V0-ARM-ARCH-P0.1 - PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
+<text x="40" y="145" class="sub">Straight reference pose, side elevation (Y horizontal, Z vertical)</text>
+<line x1="150" y1="370" x2="1330" y2="370" stroke="#b7cad9" stroke-width="2"/>
+<circle cx="190" cy="370" r="18" fill="#0b4f8a"/><text x="155" y="420">J1 Y=0</text>
+<rect x="220" y="330" width="54" height="80" class="frame"/>
+<rect x="274" y="350" width="400" height="40" class="part"/><text x="365" y="340">100 mm 20-2040 envelope + two 4 mm adapters</text>
+<circle cx="714" cy="370" r="18" fill="#0b4f8a"/><text x="655" y="420">J2 Y=191.5</text>
+<rect x="744" y="330" width="54" height="80" class="frame"/>
+<rect x="798" y="350" width="250" height="40" class="part"/><text x="840" y="340">50 mm forearm member</text>
+<rect x="1048" y="330" width="54" height="80" class="frame"/><text x="1000" y="440">G1 Y=309.5</text>
+<line x1="190" y1="480" x2="714" y2="480" class="axis"/><text x="350" y="512">J1-J2 = 191.5 mm candidate</text>
+<line x1="714" y1="550" x2="1102" y2="550" class="axis"/><text x="800" y="582">J2-G1 = 118.0 mm candidate</text>
+<rect x="70" y="640" width="1360" height="210" rx="14" class="note"/>
+<text x="100" y="690" class="sub">What this fixes</text>
+<text x="100" y="730">The J2 body and S102 are deliberately rolled +90 deg; the output reference is offset -90 deg.</text>
+<text x="100" y="766">This preserves parallel +X J1/J2 axes and places opposing broad faces at Y=32 and Y=140 mm.</text>
+<text x="100" y="802">G1 leaves 50.5 mm to the 360 mm object-center ceiling. The beams are conservative envelopes, not invented profile CAD.</text>
+<text x="100" y="838" class="warn">Fasteners, tolerances, cables, complete sweep, proof and qualified review remain open. Do not fabricate.</text>
+</svg>

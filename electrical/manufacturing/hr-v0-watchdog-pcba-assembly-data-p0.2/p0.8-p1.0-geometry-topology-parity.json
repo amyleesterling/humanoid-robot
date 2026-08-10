@@ -1,0 +1,13 @@
+{
+  "identifier": "HR-V0-WD-PCBA-DATA-P0.2",
+  "baseline_configuration": "PCB-P0.8 / Electrical V3-P1.14",
+  "current_configuration": "PCB-P1.0 / Electrical V3-P1.15",
+  "baseline_snapshot_sha256": "dc1f86c067e9617aed7e82b177bc7e1b0fb61b25cc3ab878e6c4440889c4c5ea",
+  "current_snapshot_sha256": "dc1f86c067e9617aed7e82b177bc7e1b0fb61b25cc3ab878e6c4440889c4c5ea",
+  "geometry_topology_equal": true,
+  "change_scope": "direct Electrical V3-P1.15 title binding only; P0.9 geometry, topology, placement, and native assembly fields unchanged",
+  "copper_changed": false,
+  "placement_changed": false,
+  "nets_changed": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
+}

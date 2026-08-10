@@ -1,0 +1,5 @@
+stop_id,joint,coordinate_definition,software_joint_value_deg,mechanical_datum_joint_value_deg,layout_ray_deg,moving_contact_radius_mm,contact_x_mm,contact_z_mm,required_nominal_margin_deg,status
+HS-J1-MIN,J1,shoulder angle from +X; CCW positive,-20.0,-25.0,-25.0,50.0,45.315,-21.131,5.0,DATUM STUDY ONLY - BRACKET BUMPER AND TOLERANCE DESIGN REQUIRED
+HS-J1-MAX,J1,shoulder angle from +X; CCW positive,70.0,75.0,75.0,50.0,12.941,48.296,5.0,DATUM STUDY ONLY - BRACKET BUMPER AND TOLERANCE DESIGN REQUIRED
+HS-J2-MIN,J2,internal elbow angle; layout ray = 180 - internal,15.0,10.0,170.0,50.0,-49.24,8.682,5.0,DATUM STUDY ONLY - BRACKET BUMPER AND TOLERANCE DESIGN REQUIRED
+HS-J2-MAX,J2,internal elbow angle; layout ray = 180 - internal,125.0,130.0,50.0,50.0,32.139,38.302,5.0,DATUM STUDY ONLY - BRACKET BUMPER AND TOLERANCE DESIGN REQUIRED

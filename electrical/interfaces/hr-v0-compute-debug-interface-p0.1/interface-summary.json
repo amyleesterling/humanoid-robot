@@ -1,0 +1,21 @@
+{
+  "identifier": "HR-V0-COMPUTE-IF-P0.1",
+  "date": "2026-08-08",
+  "electrical_baseline": "Project Button Electrical V3-P1.12",
+  "pin_rows": 9,
+  "hold_rows": 10,
+  "source_rows": 6,
+  "installed_debug_connector": "NONE",
+  "heartbeat_gpio_bcm": 17,
+  "heartbeat_physical_header_pin": 11,
+  "heartbeat_return_physical_header_pin": 6,
+  "test_points": [
+    "TP15",
+    "TP16",
+    "TP2"
+  ],
+  "firmware_binding": "HR-V0-COMPUTE-IF-P0.1",
+  "safety_credit": "NONE",
+  "release": "NOT AUTHORIZED",
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
+}

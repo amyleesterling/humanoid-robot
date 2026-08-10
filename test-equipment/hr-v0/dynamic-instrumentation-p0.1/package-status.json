@@ -1,0 +1,15 @@
+{
+  "identifier": "HR-V0-DYN-INST-P0.1",
+  "status": "PRELIMINARY - INSTRUMENTATION EVALUATION CANDIDATE ONLY - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "exact_product_candidate_count": 4,
+  "open_or_rejected_item_count": 6,
+  "channel_count": 15,
+  "open_hold_count": 15,
+  "executed_receiving_count": 0,
+  "executed_calibration_count": 0,
+  "executed_physical_run_count": 0,
+  "authorized_procurement_count": 0,
+  "authorized_connection_count": 0,
+  "authorized_powered_run_count": 0,
+  "release_effect": "NONE"
+}

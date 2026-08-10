@@ -10,6 +10,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import re
+import subprocess
 import sys
 from collections import Counter
 from pathlib import Path
@@ -70,18 +71,47 @@ def sexpr_blocks(text: str, head: str) -> list[str]:
 
 def main() -> int:
     failures: list[str] = []
-    require(gen.REV == "V3-P0.2", f"unexpected generated revision {gen.REV}", failures)
+    require(gen.REV == "V3-P1.14", f"unexpected generated revision {gen.REV}", failures)
     sheets = gen.sheets()
     components = {comp.ref: comp for sheet in sheets for comp in sheet.components}
     all_components = [(sheet, comp) for sheet in sheets for comp in sheet.components]
     all_pins = [(sheet, comp, pin) for sheet, comp in all_components for pin in comp.pins]
 
-    require(len(sheets) == 9, f"expected 9 child sheets, found {len(sheets)}", failures)
-    require(len(components) == 41, f"expected 41 unique component blocks, found {len(components)}", failures)
+    require(len(sheets) == 12, f"expected 12 child sheets, found {len(sheets)}", failures)
+    require(len(components) == 76, f"expected 76 unique component blocks, found {len(components)}", failures)
     require(len(all_components) == len(components), "duplicate component reference exists", failures)
-    require(len(all_pins) == 198, f"expected 198 modeled terminals, found {len(all_pins)}", failures)
+    require(len(all_pins) == 296, f"expected 296 modeled terminals, found {len(all_pins)}", failures)
     require(all(re.fullmatch(r"[A-Za-z]+[0-9]+", ref) for ref in components),
             "one or more references violate KiCad annotation syntax", failures)
+
+    contactor_status = "PROPOSED - CATALOG DC ENVELOPE FOUND; CRITICAL-CURRENT AND APPLICATION CONFIRMATION REQUIRED; TEST REQUIRED"
+    for ref in ("K1", "K2"):
+        require(components[ref].status == contactor_status,
+                f"{ref} contactor application status is not the controlled critical-current disposition", failures)
+        require("MKTED210011EN" in components[ref].evidence,
+                f"{ref} lacks current Schneider catalog evidence", failures)
+        require("critical-current" in components[ref].description.lower(),
+                f"{ref} description omits the lower-current critical-current boundary", failures)
+
+    for ref in ("FSR1", "FSR2"):
+        require("3211861" in components[ref].value and "3030420" in components[ref].value,
+                f"{ref} holder/end-cover identity changed", failures)
+        require("FUSE LINK AND COORDINATION SELECTION REQUIRED" in components[ref].status,
+                f"{ref} prematurely releases a fuse or coordination result", failures)
+        require("manufacturer maxima are not project selections" in components[ref].description,
+                f"{ref} omits the product-limit boundary", failures)
+
+    sd1 = components["SD1"]
+    require("75920-01" in sd1.value, "SD1 exact catalog candidate changed", failures)
+    require("SPST HIGH-SIDE TOPOLOGY FROZEN" in sd1.status,
+            "SD1 topology/order-code boundary changed", failures)
+    require([pin.number for pin in sd1.pins] == ["TBD-IN", "TBD-OUT"],
+            "SD1 source/load terminals were inferred", failures)
+    for required in ("4/0 cable", "not the E-stop", "no functional-safety credit"):
+        require(required in sd1.description,
+                f"SD1 description omits application boundary: {required}", failures)
+    require("Rev 091825" in sd1.evidence and "IF-165 Rev 010320-C" in sd1.evidence,
+            "SD1 current primary-document revisions are not recorded", failures)
 
     expected_schematics = {f"{gen.PROJECT}.kicad_sch", *(sheet.filename for sheet in sheets)}
     actual_schematics = {path.name for path in OUT.glob("*.kicad_sch")}
@@ -107,7 +137,7 @@ def main() -> int:
         for row in connector_rows
     )
     require(actual_connector == expected_connector, "connector schedule differs from generated model", failures)
-    require(sum(row["terminal"].startswith("TBD-") for row in connector_rows) == 85,
+    require(sum(row["terminal"].startswith("TBD-") for row in connector_rows) == 10,
             "controlled TBD-terminal count changed; review and update checker intentionally", failures)
 
     expected_net_counts = Counter(pin.net for _, _, pin in all_pins)
@@ -123,7 +153,7 @@ def main() -> int:
         for row in wire_rows
     )
     require(actual_wires == expected_wires, "wire-number table differs from generated schematic labels", failures)
-    require(len(wire_rows) == 175, f"expected 175 labeled connected terminals, found {len(wire_rows)}", failures)
+    require(len(wire_rows) == 257, f"expected 257 labeled connected terminals, found {len(wire_rows)}", failures)
     require(len({row["wire_number"] for row in wire_rows}) == len(wire_rows),
             "wire numbers are not unique", failures)
 
@@ -140,7 +170,7 @@ def main() -> int:
         count, actual_connections = actual_nets.get(net, (-1, []))
         require(count == len(connections) and actual_connections == connections,
                 f"net schedule mismatch for {net}", failures)
-    require(len(expected_nets) == 76, f"expected 76 modeled nets, found {len(expected_nets)}", failures)
+    require(len(expected_nets) == 103, f"expected 103 modeled nets, found {len(expected_nets)}", failures)
 
     native_text = (OUT / "validation" / f"{gen.PROJECT}.net").read_text(encoding="utf-8-sig")
     native_refs = set(re.findall(r'\(comp\s+\(ref "([^"]+)"\)', native_text))
@@ -158,10 +188,10 @@ def main() -> int:
             key = (ref, pin)
             require(key not in native_node_net, f"native terminal {ref}:{pin} appears on multiple nets", failures)
             native_node_net[key] = name
-    require(len(native_net_names) == 76, f"expected 76 native KiCad nets, found {len(native_net_names)}", failures)
-    require(sum(name.startswith("unconnected-(") for name in native_net_names) == 23,
-            "expected 23 deliberate native unconnected nets", failures)
-    require(len(native_node_net) == 198, f"expected 198 native KiCad netlist nodes, found {len(native_node_net)}", failures)
+    require(len(native_net_names) == 103, f"expected 103 native KiCad nets, found {len(native_net_names)}", failures)
+    require(sum(name.startswith("unconnected-(") for name in native_net_names) == 39,
+            "expected 39 deliberate native unconnected nets", failures)
+    require(len(native_node_net) == 296, f"expected 296 native KiCad netlist nodes, found {len(native_node_net)}", failures)
     for _, comp, pin in all_pins:
         native_name = native_node_net.get((comp.ref, pin.number), "")
         if expected_net_counts[pin.net] == 1:
@@ -171,16 +201,16 @@ def main() -> int:
             require(native_name == pin.net,
                     f"native net mismatch at {comp.ref}:{pin.number}: expected {pin.net}, found {native_name or 'MISSING'}", failures)
     require('(tool "Eeschema 10.0.5")' in native_text, "native netlist tool version is not Eeschema 10.0.5", failures)
-    require('(rev "V3-P0.2")' in native_text, "native netlist does not identify V3-P0.2", failures)
+    require(f'(rev "{gen.REV}")' in native_text, f"native netlist does not identify {gen.REV}", failures)
 
     bom_rows = read_csv("bom.csv")
     expected_bom_refs = {comp.ref for _, comp in all_components if comp.quantity}
     require({row["reference"] for row in bom_rows} == expected_bom_refs,
             "V3 BOM reference set differs from nonzero-quantity generated components", failures)
-    require(len(bom_rows) == 39, f"expected 39 BOM records, found {len(bom_rows)}", failures)
+    require(len(bom_rows) == 74, f"expected 74 BOM records, found {len(bom_rows)}", failures)
 
     unresolved_rows = read_csv("unresolved-selections.csv")
-    unresolved_keys = ("SELECTION REQUIRED", "DESIGN REQUIRED", "CONFIRMATION REQUIRED", "VERIFICATION REQUIRED", "RELEASE OPEN")
+    unresolved_keys = ("SELECTION REQUIRED", "DESIGN REQUIRED", "CONFIRMATION REQUIRED", "VERIFICATION REQUIRED", "MAPPING REQUIRED", "RELEASE OPEN")
     expected_unresolved = {
         (sheet.filename, comp.ref, comp.status, comp.description)
         for sheet, comp in all_components
@@ -191,17 +221,70 @@ def main() -> int:
         for row in unresolved_rows
     }
     require(actual_unresolved == expected_unresolved, "unresolved-selection register differs from model", failures)
-    require(len(unresolved_rows) == 29, f"expected 29 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
+    require(len(unresolved_rows) == 63, f"expected 63 unresolved component/interface rows, found {len(unresolved_rows)}", failures)
+
+    require("JC1" not in components, "obsolete combined system-level JC1 block remains", failures)
+    require("JDBG1" not in components, "invented installed watchdog debug connector remains", failures)
+    require(pin_map(components, "PI1") == {
+        "USB-C-VBUS": "COMPUTE_5V", "USB-C-GND": "COMPUTE_0V",
+        "HDR40-6": "COMPUTE_0V", "HDR40-11": "PI_HEARTBEAT",
+        "USB-U2D2": "PI_USB_U2D2",
+    }, "Pi power, heartbeat or return pin allocation changed", failures)
+    require("GPIO17" in components["PI1"].description and "physical header pin 11" in components["PI1"].description,
+            "Pi heartbeat GPIO binding is not explicit", failures)
+    require("SC1112" in components["PI1"].value and "SC1158" in components["PSU3"].value,
+            "exact compute or compute-supply candidate identity is missing", failures)
+    require("COOLING/STORAGE" in components["PI1"].status and "RECEIVING / RETENTION / APPLICATION OPEN" in components["PSU3"].status,
+            "compute application holds were weakened", failures)
+    require(pin_map(components, "J24") == {
+        "1": "SAFETY_24V_RAW", "2": "INTENTIONALLY_NOT_CONNECTED_J24_2",
+        "3": "SAFETY_0V", "4": "INTENTIONALLY_NOT_CONNECTED_J24_4",
+    }, "J24 YL4/KPPX pin allocation changed", failures)
+    require("KPJX-PM-4S" in components["J24"].value and "factory 4-pin locking output" in components["J24"].value,
+            "J24 exact source-cord/jack candidates changed", failures)
+    require("SOURCE-CORD FIT AND PHYSICAL VERIFICATION REQUIRED" in components["J24"].status,
+            "J24 appears physically or application released", failures)
+    require("WR9QI1660YL4NKITR6B" in components["PSU2"].value and
+            pin_map(components, "PSU2") == {
+                "Q-NA-L": "FACTORY_AC_L_CTL", "Q-NA-N": "FACTORY_AC_N_CTL",
+                "YL4-1": "SAFETY_24V_RAW", "YL4-2": "INTENTIONALLY_NOT_CONNECTED_PSU2_YL4_2",
+                "YL4-3": "SAFETY_0V", "YL4-4": "INTENTIONALLY_NOT_CONNECTED_PSU2_YL4_4",
+            }, "PSU2 exact GlobTek source or output pin map changed", failures)
+    require("Class II" in components["PSU2"].description and "floating output" in components["PSU2"].description,
+            "PSU2 Class II floating-output boundary changed", failures)
+    require(pin_map(components, "F24") == {"IN": "SAFETY_24V_RAW", "OUT": "SAFETY_24V"},
+            "F24 protection boundary changed", failures)
+    require(components["F24"].status == "SELECTION REQUIRED",
+            "F24 appears selected", failures)
+
+    require(pin_map(components, "XT1") == {
+        "XT1-01": "SAFETY_24V", "XT1-02": "SAFETY_0V", "XT1-03": "SR1_STATUS",
+        "XT1-04": "SRA1_STATUS", "XT1-05": "K1_STATUS", "XT1-06": "K2_STATUS",
+    }, "XT1 exact position-to-net allocation changed", failures)
+    require("3209510" in components["XT1"].value and "3209523" in components["XT1"].value and
+            "3030417" in components["XT1"].value and "3022218" in components["XT1"].value and
+            "0828734" in components["XT1"].value,
+            "XT1 exact terminal/accessory identities changed", failures)
+    require("SELECTION REQUIRED" not in components["XT1"].status and
+            "PHYSICAL VERIFICATION REQUIRED" in components["XT1"].status,
+            "XT1 catalog identity is either reopened or falsely physically released", failures)
 
     require(pin_map(components, "S0") == {
-        "TBD-C1A": "SR1_S11", "TBD-C1B": "WD1_SAFETY_IN",
-        "TBD-C2A": "SR1_S21", "TBD-C2B": "WD2_SAFETY_IN",
+        "R-1": "SR1_S11", "R-2": "SR1_S12",
+        "L-1": "SR1_S21", "L-2": "SR1_S22",
     }, "E-stop channel mapping changed", failures)
-    require(pin_map(components, "KWD1")["TBD-C1"] == "WD1_SAFETY_IN" and
-            pin_map(components, "KWD1")["TBD-NO1"] == "SR1_S12" and
-            pin_map(components, "KWD2")["TBD-C1"] == "WD2_SAFETY_IN" and
-            pin_map(components, "KWD2")["TBD-NO1"] == "SR1_S22",
-            "watchdog contacts no longer interrupt both SR1 input returns", failures)
+    require(pin_map(components, "SR1")["A1"] == "SR1_A1_WD_GATED",
+            "SR1 A1 is not controlled by the watchdog supply gate", failures)
+    require(pin_map(components, "KWD1")["11"] == "SAFETY_24V" and
+            pin_map(components, "KWD1")["14"] == "WD_SUPPLY_INTERMEDIATE" and
+            pin_map(components, "KWD2")["11"] == "WD_SUPPLY_INTERMEDIATE" and
+            pin_map(components, "KWD2")["14"] == "SR1_A1_WD_GATED",
+            "watchdog contacts no longer form the two-stage SR1 A1 supply gate", failures)
+    require("WD1_SAFETY_IN" not in expected_nets and "WD2_SAFETY_IN" not in expected_nets,
+            "superseded watchdog-in-E-stop-return nets remain", failures)
+    require("not in an E-stop input loop" in components["KWD1"].description and
+            "cannot bridge either S0 input contact" in components["KWD2"].description,
+            "KWD supply-gate negative-contribution boundary is not explicit", failures)
     require(pin_map(components, "SR1")["13"] == "SRA1_S11" and
             pin_map(components, "SR1")["14"] == "SRA1_S12" and
             pin_map(components, "SR1")["23"] == "SRA1_S21" and
@@ -211,17 +294,140 @@ def main() -> int:
             "RESET no longer returns only to SR1 monitored start", failures)
     require(pin_map(components, "S2")["TBD-A2"] == "ARM_AFTER_S2",
             "ARM output mapping changed", failures)
+    for ref in ("S1", "S2"):
+        device = components[ref]
+        require("COMPLETE ORDER CODE FROZEN" in device.status and
+                "RECEIVED-LOT TERMINAL MAPPING REQUIRED" in device.status,
+                f"{ref} received-lot terminal-mapping gate changed", failures)
+        require("2026-06-15" in device.description and
+                "no component detail" in device.description and
+                "Do not copy legacy or push-in terminal numbers" in device.description,
+                f"{ref} IDEC production-transition evidence changed", failures)
+    h1 = components["H1"]
+    require(h1.value == "IDEC HW1P-1FQD-A-24V amber diagnostic pilot light",
+            "H1 exact amber IDEC order code changed", failures)
+    require(h1.status == "PROPOSED - COMPLETE ORDER CODE FROZEN; RECEIVED TERMINAL/POLARITY VERIFICATION REQUIRED",
+            "H1 received-terminal/polarity hold changed", failures)
+    require(pin_map(components, "H1") == {"TBD-HA": "SR1_STATUS", "TBD-HB": "SAFETY_0V"},
+            "H1 placeholder-terminal mapping changed", failures)
+    require("project placeholders, not manufacturer markings" in h1.description and
+            "Do not call it SAFE or ARMED" in h1.description and
+            "no safety credit" in h1.description,
+            "H1 diagnostic-only and placeholder boundary changed", failures)
     require(pin_map(components, "K1")["22"] == "EDM_K1_OUT" and
             pin_map(components, "K2")["21"] == "EDM_K1_OUT" and
             pin_map(components, "K2")["22"] == "SRA1_START_RETURN",
             "K1/K2 mirror-contact EDM chain changed", failures)
-    require(pin_map(components, "KWD1")["TBD-COIL+"] == "SAFETY_24V" and
-            pin_map(components, "KWD1")["TBD-COIL-"] == "WD1_COIL_N" and
-            pin_map(components, "Q1")["TBD-COIL"] == "WD1_COIL_N" and
-            pin_map(components, "KWD2")["TBD-COIL+"] == "SAFETY_24V" and
-            pin_map(components, "KWD2")["TBD-COIL-"] == "WD2_COIL_N" and
-            pin_map(components, "Q2")["TBD-COIL"] == "WD2_COIL_N",
+    require(pin_map(components, "KWD1")["A1"] == "SAFETY_24V" and
+            pin_map(components, "KWD1")["A2"] == "WD1_COIL_N" and
+            pin_map(components, "UDRV1")["16"] == "WD1_COIL_N" and
+            pin_map(components, "KWD2")["A1"] == "SAFETY_24V" and
+            pin_map(components, "KWD2")["A2"] == "WD2_COIL_N" and
+            pin_map(components, "UDRV2")["16"] == "WD2_COIL_N",
             "watchdog relay low-side coil routing changed", failures)
+    require(pin_map(components, "KWD1")["21"] == "SAFETY_24V" and
+            pin_map(components, "KWD1")["22"] == "WD1_NC_24V" and
+            pin_map(components, "KWD2")["21"] == "SAFETY_24V" and
+            pin_map(components, "KWD2")["22"] == "WD2_NC_24V",
+            "watchdog NC feedback source mapping changed", failures)
+    require(pin_map(components, "UFB1") == {
+        "1": "SAFETY_0V", "2": "WD_3V3", "3": "WD_3V3", "4": "UFB_OUT1",
+        "5": "UFB_OUT2", "6": "INTENTIONALLY_UNUSED_UFB1_6",
+        "7": "INTENTIONALLY_UNUSED_UFB1_7", "8": "SAFETY_0V", "9": "SAFETY_0V",
+        "10": "FB_IN2", "11": "FB_SENSE2", "12": "INTENTIONALLY_UNUSED_UFB1_12",
+        "13": "INTENTIONALLY_UNUSED_UFB1_13", "14": "SAFETY_0V", "15": "FB_IN1",
+        "16": "FB_SENSE1",
+    }, "ISO1212DBQ pin-level mapping changed", failures)
+    require(components["UFB1"].footprint == "PBV3_Footprints:TI_DBQ0016A_Example_Land",
+            "ISO1212DBQ package candidate no longer uses the controlled TI DBQ0016A example land", failures)
+    require(pin_map(components, "RTH1") == {"1": "WD1_NC_24V", "2": "FB_SENSE1"} and
+            pin_map(components, "RSN1") == {"1": "FB_SENSE1", "2": "FB_IN1"} and
+            pin_map(components, "CFI1") == {"1": "FB_SENSE1", "2": "SAFETY_0V"} and
+            pin_map(components, "RW1") == {"1": "WD1_NC_24V", "2": "SAFETY_0V"} and
+            pin_map(components, "RSO1") == {"1": "UFB_OUT1", "2": "WD1_NC_DIAG"} and
+            pin_map(components, "RPD1") == {"1": "WD1_NC_DIAG", "2": "SAFETY_0V"},
+            "watchdog feedback channel 1 network changed", failures)
+    require(pin_map(components, "RTH2") == {"1": "WD2_NC_24V", "2": "FB_SENSE2"} and
+            pin_map(components, "RSN2") == {"1": "FB_SENSE2", "2": "FB_IN2"} and
+            pin_map(components, "CFI2") == {"1": "FB_SENSE2", "2": "SAFETY_0V"} and
+            pin_map(components, "RW2") == {"1": "WD2_NC_24V", "2": "SAFETY_0V"} and
+            pin_map(components, "RSO2") == {"1": "UFB_OUT2", "2": "WD2_NC_DIAG"} and
+            pin_map(components, "RPD2") == {"1": "WD2_NC_DIAG", "2": "SAFETY_0V"},
+            "watchdog feedback channel 2 network changed", failures)
+    require(pin_map(components, "CDEC1") == {"1": "WD_3V3", "2": "SAFETY_0V"},
+            "ISO1212 logic-side decoupling mapping changed", failures)
+    require(components["CDEC1"].footprint == "PBV3_Footprints:Murata_GRM21_Reflow_Nominal",
+            "CDEC1 footprint changed from the controlled Murata GRM21 reflow candidate", failures)
+    expected_feedback_values = {
+        "RTH1": "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF",
+        "RTH2": "Vishay MMA02040C1001FB300, 1.00 kOhm 1% 0.4 W MELF",
+        "RSN1": "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805",
+        "RSN2": "Panasonic ERJ6ENF5620V, 562 Ohm 1% 0805",
+        "CFI1": "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603",
+        "CFI2": "TDK CGA3E2X7R1H103K080AA, 10 nF 50 V X7R 0603",
+        "RW1": "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210",
+        "RW2": "Vishay CRCW12102K70FKEA, 2.70 kOhm 1% 0.5 W 1210",
+        "CDEC1": "Murata GRM21BR71H104KA01L, 100 nF 50 V X7R 0805",
+        "RSO1": "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805",
+        "RSO2": "Panasonic ERJ6ENF1001V, 1.00 kOhm 1% 0805",
+        "RPD1": "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805",
+        "RPD2": "Panasonic ERJ6ENF1002V, 10.0 kOhm 1% 0805",
+    }
+    require(all(components[ref].value == value for ref, value in expected_feedback_values.items()),
+            "watchdog feedback passive identity changed", failures)
+    require(pin_map(components, "ISO1") == {
+        "1": "HB_LED_A", "2": "COMPUTE_0V", "3": "SAFETY_0V", "4": "WD_HEARTBEAT",
+    }, "VO618A heartbeat optocoupler pin mapping changed", failures)
+    require(pin_map(components, "RHB1") == {"1": "PI_HEARTBEAT", "2": "HB_LED_A"} and
+            pin_map(components, "RHP1") == {"1": "WD_3V3", "2": "WD_HEARTBEAT"},
+            "heartbeat input resistor or watchdog pullup mapping changed", failures)
+    expected_unused_1 = {str(pin): f"INTENTIONALLY_UNUSED_UDRV1_{pin}" for pin in range(10, 16)}
+    expected_unused_2 = {str(pin): f"INTENTIONALLY_UNUSED_UDRV2_{pin}" for pin in range(10, 16)}
+    require(pin_map(components, "UDRV1") == {
+        "1": "WD1_DRIVE", **{str(pin): "SAFETY_0V" for pin in range(2, 9)},
+        "9": "SAFETY_24V", **expected_unused_1, "16": "WD1_COIL_N",
+    }, "TPL7407LPWR channel-1 pin mapping changed", failures)
+    require(pin_map(components, "UDRV2") == {
+        "1": "WD2_DRIVE", **{str(pin): "SAFETY_0V" for pin in range(2, 9)},
+        "9": "SAFETY_24V", **expected_unused_2, "16": "WD2_COIL_N",
+    }, "TPL7407LPWR channel-2 pin mapping changed", failures)
+    require(pin_map(components, "CDRV1") == {"1": "SAFETY_24V", "2": "SAFETY_0V"} and
+            pin_map(components, "CDRV2") == {"1": "SAFETY_24V", "2": "SAFETY_0V"},
+            "driver COM bypass mapping changed", failures)
+    require(pin_map(components, "WDCTRL1") == {
+        "39": "WD_5V", "38": "SAFETY_0V", "36": "WD_3V3", "4": "WD_HEARTBEAT",
+        "5": "WD1_DRIVE", "6": "WD2_DRIVE", "9": "WD1_NC_DIAG", "10": "WD2_NC_DIAG",
+        "D3": "WD_SWDIO", "D1": "WD_SWCLK", "D2": "SAFETY_0V",
+    }, "Pico power/GPIO assignment changed", failures)
+    require(pin_map(components, "JWP1") == {
+        "1": "SAFETY_24V", "2": "SAFETY_0V", "3": "WD1_COIL_N", "4": "WD2_COIL_N",
+    }, "watchdog PCB power/coil connector pin allocation changed", failures)
+    require(pin_map(components, "JWF1") == {
+        "1": "WD1_NC_24V", "2": "WD2_NC_24V",
+    }, "watchdog PCB feedback connector pin allocation changed", failures)
+    require(pin_map(components, "JWH1") == {
+        "1": "PI_HEARTBEAT", "2": "COMPUTE_0V",
+    }, "watchdog PCB heartbeat connector pin allocation changed", failures)
+    expected_testpoints = {
+        "TP1": "SAFETY_24V", "TP2": "SAFETY_0V", "TP3": "WD_5V", "TP4": "WD_3V3",
+        "TP5": "PI_HEARTBEAT", "TP6": "WD_HEARTBEAT", "TP7": "WD1_DRIVE", "TP8": "WD2_DRIVE",
+        "TP9": "WD1_COIL_N", "TP10": "WD2_COIL_N", "TP11": "WD1_NC_24V", "TP12": "WD2_NC_24V",
+        "TP13": "UFB_OUT1", "TP14": "UFB_OUT2", "TP15": "WD_SWDIO", "TP16": "WD_SWCLK",
+    }
+    require(all(pin_map(components, ref) == {"1": net} for ref, net in expected_testpoints.items()),
+            "watchdog PCB test-point net allocation changed", failures)
+    require(all(components[ref].footprint == "PBV3_Footprints:Harwin_S1751_46R" for ref in expected_testpoints),
+            "one or more test points no longer use the frozen Harwin footprint", failures)
+    expected_board_refs = {
+        "DC1", "ISO1", "RHB1", "RHP1", "WDCTRL1", "UDRV1", "UDRV2", "CDRV1", "CDRV2",
+        "UFB1", "RTH1", "RSN1", "CFI1", "RW1", "RTH2", "RSN2", "CFI2", "RW2",
+        "CDEC1", "RSO1", "RSO2", "RPD1", "RPD2", "JWP1", "JWF1", "JWH1",
+        *expected_testpoints,
+    }
+    require({ref for ref, comp in components.items() if comp.watchdog_pcb} == expected_board_refs,
+            "watchdog PCB membership changed", failures)
+    require(all(components[ref].footprint for ref in expected_board_refs),
+            "one or more board-mounted references lack a footprint", failures)
     require(pin_map(components, "KP1") == {
         "1L1": "K1_P1_IN", "2T1": "K1_J12", "3L2": "K1_J12",
         "4T2": "K1_J23", "5L3": "K1_J23", "6T3": "K1_OUT",
@@ -232,9 +438,19 @@ def main() -> int:
     }, "K2 three-pole series representation changed", failures)
     require(pin_map(components, "U1")["TTL-2"].startswith("INTENTIONALLY_UNUSED"),
             "U2D2 VDD is no longer explicitly omitted", failures)
+    injection = pin_map(components, "INJ1")
     require(pin_map(components, "U1")["TTL-1"] == "ACT_0V_PE_BONDED" and
-            all(pin_map(components, ref)["TBD-BI-G"] == "ACT_0V_PE_BONDED" for ref in ("INJ1", "INJ2", "INJ3")),
-            "TTL bus no longer shares the explicit actuator reference ground", failures)
+            injection["CTRL:1"] == "ACT_0V_PE_BONDED" and
+            injection["CTRL:2"].startswith("INTENTIONALLY_UNUSED") and
+            injection["CTRL:3"] == "DXL_TTL_DATA",
+            "U2D2/star-board reference, omitted VDD or DATA mapping changed", failures)
+    require({injection[f"PWR{index}:1"] for index in (1, 2, 3)} == {"J1_VDD", "J2_VDD", "J3_VDD"} and
+            all(injection[f"PWR{index}:2"] == "ACT_0V_PE_BONDED" for index in (1, 2, 3)),
+            "star-board branch-power inputs are no longer three separate VDD rails with common return", failures)
+    require({injection[f"ACT{index}:2"] for index in (1, 2, 3)} == {"J1_VDD", "J2_VDD", "J3_VDD"} and
+            all(injection[f"ACT{index}:1"] == "ACT_0V_PE_BONDED" and
+                injection[f"ACT{index}:3"] == "DXL_TTL_DATA" for index in (1, 2, 3)),
+            "star-board actuator outputs changed or positive rails are no longer isolated", failures)
     require({pin_map(components, ref)["2"] for ref in ("J1", "J2", "J3")} == {"J1_VDD", "J2_VDD", "J3_VDD"},
             "actuator VDD branches are no longer separate", failures)
     require({pin_map(components, ref)["3"] for ref in ("J1", "J2", "J3")} == {"DXL_TTL_DATA"},
@@ -244,6 +460,11 @@ def main() -> int:
     for ref in ("F0", "F1", "F2", "F3", "FSR1", "FSR2"):
         require("SELECTION REQUIRED" in components[ref].status,
                 f"{ref} appears released despite unresolved sizing", failures)
+    for ref in ("FSR1", "FSR2"):
+        require("PT 4-HESI (5X20)" in components[ref].value and "3211861" in components[ref].value,
+                f"{ref} exact holder candidate is not synchronized", failures)
+        require("fuse link SELECTION REQUIRED" in components[ref].value,
+                f"{ref} no longer exposes the unresolved fuse link", failures)
 
     erc = (OUT / "validation" / f"{gen.PROJECT}-erc.rpt").read_text(encoding="utf-8-sig")
     require("ERC messages: 0  Errors 0  Warnings 0" in erc, "KiCad ERC is not 0 errors / 0 warnings", failures)
@@ -252,14 +473,29 @@ def main() -> int:
     require("annotation errors" not in log.lower(), "KiCad reported annotation errors", failures)
 
     svg_files = sorted((OUT / "output").glob("*.svg"))
-    require(len(svg_files) == 10, f"expected 10 SVG pages including index, found {len(svg_files)}", failures)
+    require(len(svg_files) == 13, f"expected 13 SVG pages including index, found {len(svg_files)}", failures)
     for path in svg_files:
         require(WARNING.encode() in path.read_bytes(), f"warning missing from {path.name}", failures)
     pdf = OUT / "output" / f"{gen.PROJECT}-preliminary.pdf"
     require(pdf.is_file() and pdf.stat().st_size > 100_000, "native PDF export missing or unexpectedly small", failures)
+    pdfinfo_candidates = (
+        Path(r"C:\Users\amyle\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\poppler\Library\bin\pdfinfo.exe"),
+        Path(r"C:\Program Files\poppler\Library\bin\pdfinfo.exe"),
+    )
+    pdfinfo = next((candidate for candidate in pdfinfo_candidates if candidate.exists()), None)
+    if pdfinfo is not None and pdf.is_file():
+        info = subprocess.run(
+            [str(pdfinfo), "-f", "1", "-l", "13", "-box", str(pdf)],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        a3_pages = re.findall(r"Page\s+\d+ size:\s+[0-9.]+ x [0-9.]+ pts \(A3\)", info.stdout)
+        require(info.returncode == 0, "pdfinfo failed for synchronized PDF", failures)
+        require(len(a3_pages) == 13, f"expected all 13 PDF pages to be A3, found {len(a3_pages)}", failures)
     readme = (OUT / "README.md").read_text(encoding="utf-8-sig")
-    require(WARNING in readme and "# Project Button HR-V0 Electrical V3-P0.2" in readme and
-            "ERC proves only modeled connectivity/annotation" in readme,
+    require(WARNING in readme and f"# Project Button HR-V0 Electrical {gen.REV}" in readme and
+            "Generated ERC proves only modeled connectivity/annotation" in readme,
             "README warning/ERC caveat missing", failures)
 
     if failures:
@@ -269,7 +505,7 @@ def main() -> int:
         return 1
 
     print("HR-V0 Electrical V3 validation: PASS")
-    print("10 native pages; 41 component blocks; 198 terminals; 53 named connected + 23 unconnected nets; 175 unique wire labels; 29 unresolved rows")
+    print("13 native pages; 76 component blocks; 296 terminals; 64 named connected + 39 unconnected nets; 257 unique wire labels; 63 unresolved rows")
     print(WARNING)
     print("ERC/export consistency is not design approval or permission to energize.")
     return 0

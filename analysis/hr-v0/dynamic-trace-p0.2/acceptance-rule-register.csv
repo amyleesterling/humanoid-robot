@@ -1,0 +1,10 @@
+rule_id,rule,run_type,physical_boundary
+DTA2-001,"sample, timebase, metadata, loss and saturation integrity",both,physical timing budget and calibration evidence open
+DTA2-002,one controlled STOP or RESET rising edge,mode-specific,polarity and threshold evidence open
+DTA2-003,STOP: both coils and NO auxiliaries fall while one common EDM chain rises,STOP,auxiliaries diagnostic only; contact correlation open
+DTA2-004,control source remains valid throughout the E2 observation window,both,voltage threshold and measurement uncertainty open
+DTA2-005,disconnected-load E2 contains no measured motion,both,"motion calibration, noise and uncertainty open"
+DTA2-006,STOP contact and EDM transitions meet accepted time limits,STOP,qualified transition-time allocation remains open
+DTA2-007,RESET is distinct from ARM and cannot energize coils/auxiliaries or move,RESET_ARM,required repetitions and fault cases open
+DTA2-008,NO auxiliaries remain diagnostic with zero safety credit,both,schema invariant; qualified acceptance still required
+DTA2-009,computed PASS remains HOLD,both,signed configuration-specific disposition mandatory

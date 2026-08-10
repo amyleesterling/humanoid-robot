@@ -1,0 +1,7 @@
+control_id,source,document_date,control,status
+MCR-001,XL/XC-330 official drawing,2020-05-28,"4 x diameter 1.6 mm hole, depth 3.0 mm maximum, PCD 12 mm, using M2 tapping screw",manufacturer reference drawing; received verification required
+MCR-002,XL/XC-330 official drawing,2020-05-28,20 x 34 x 23 mm housing plus 3 mm output/idler projection; output and idler diameter 16 mm,manufacturer reference drawing; STEP governs nominal B-Rep
+MCR-003,FPX330-S101 official drawing,2021-03-19,34 x 30 x 7 mm envelope; internal width 23 mm; STEP bound 34 x 7 x 28.6 mm,drawing marked FOR REFERENCE ONLY; received verification required
+MCR-004,FPX330-S101 official drawing,2021-03-19,20 x diameter 2.05 through; 4 x diameter 1.6 through; 2 x diameter 8 through; PCD 12 and 16 mm patterns,exact STEP hole axes registered; tolerance absent
+MCR-005,XC330 product page,live page accessed 2026-08-10,package includes six PHS M2x6 TAP horn-attachment bolts and ten PHS M2x8 TAP frame-attachment bolts,exact included hardware identity; received lot/torque/locking/reuse evidence required
+MCR-006,FPX330-S101 product page,live page accessed 2026-08-10,"SKU 903-0301-000; four frames, twenty NUT M2, twenty PHS M2x4, twenty PHS M2x4 TAP and twenty PHS M2x8 TAP",exact kit contents; allocation and received evidence required

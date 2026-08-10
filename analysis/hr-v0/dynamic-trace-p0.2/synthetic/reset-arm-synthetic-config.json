@@ -1,0 +1,12 @@
+{
+  "schema": "project-button-hr-v0-dynamic-trace-config-p0.2",
+  "status": "PRELIMINARY - ANALYSIS CANDIDATE ONLY - QUALIFIED DISPOSITION REQUIRED - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "analysis_mode": "SYNTHETIC_VALIDATION_ONLY",
+  "expected_sample_interval_s": 0.001,
+  "sample_interval_relative_tolerance": 0.001,
+  "qualified_acceptance_reference": "SYNTHETIC ALGORITHM TEST ONLY - NO PHYSICAL ACCEPTANCE",
+  "run_type": "RESET_ARM",
+  "minimum_reset_to_arm_interval_s": 0.05,
+  "reset_motion_noise_deg": 0.05,
+  "control_source_valid_min_v": 20.0
+}

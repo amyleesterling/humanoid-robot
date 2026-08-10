@@ -24,7 +24,7 @@ from project_button_supervisor import (  # noqa: E402
 
 JOINTS = {
     "J1": JointRule(-20.0, 70.0, "deg", 1.0),
-    "J2": JointRule(15.0, 125.0, "deg", 1.0),
+    "J2": JointRule(15.0, 115.0, "deg", 1.0),
     "GRIPPER": JointRule(20.0, 75.0, "mm", 1.0),
 }
 START = {"J1": 0.0, "J2": 30.0, "GRIPPER": 40.0}
@@ -33,7 +33,7 @@ END = {"J1": 5.0, "J2": 35.0, "GRIPPER": 42.0}
 
 def config() -> SupervisorConfig:
     return SupervisorConfig(
-        configuration_id="TEST-CONFIG",
+        configuration_id="HR-V0-SUP-P0.3",
         configuration_hash="A" * 64,
         maximum_command_age_ms=100,
         maximum_tcp_speed_m_s=0.15,
@@ -43,6 +43,14 @@ def config() -> SupervisorConfig:
         setup_gripper_speed_mm_s=10.0,
         joints=JOINTS,
         kinematic_model_hash="B" * 64,
+        mechanical_limit_binding={
+            "limit_set_id": "HR-V0-LIMITS-P0.2",
+            "mechanical_revision": "HR-V0-MECH-P0.6",
+            "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.7",
+            "hard_stop_revision": "HR-V0-HS-P0.3",
+            "release_state": "ACCEPTED-FOR-GUARDED-HIL",
+            "acceptance_evidence_hash": "C" * 64,
+        },
     )
 
 
@@ -212,6 +220,54 @@ class SupervisorTests(unittest.TestCase):
         )
         self.assertFalse(supervisor.accept_trajectory(candidate, 1000))
         self.assertFalse(supervisor.outputs.torque_enable_request)
+
+    def test_current_j2_ceiling_is_accepted_and_above_ceiling_is_rejected(self) -> None:
+        at_limit = replace(
+            command(),
+            samples=(
+                command().samples[0],
+                replace(command().samples[1], positions={**END, "J2": 115.0}),
+            ),
+            expected_terminal_positions={**END, "J2": 115.0},
+        )
+        supervisor = armed_supervisor()
+        self.assertTrue(supervisor.accept_trajectory(at_limit, 1000))
+
+        above_limit = replace(
+            at_limit,
+            trajectory_id="trajectory-above-limit",
+            samples=(
+                at_limit.samples[0],
+                replace(at_limit.samples[1], positions={**END, "J2": 115.001}),
+            ),
+            expected_terminal_positions={**END, "J2": 115.001},
+        )
+        supervisor = armed_supervisor()
+        self.assertFalse(supervisor.accept_trajectory(above_limit, 1000))
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+
+    def test_stale_120_degree_limit_or_revision_mismatch_fails_closed(self) -> None:
+        stale_joints = {**JOINTS, "J2": JointRule(15.0, 120.0, "deg", 1.0)}
+        self.assertFalse(replace(config(), joints=stale_joints).selections_closed)
+        stale_binding = {
+            **config().mechanical_limit_binding,
+            "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.5",
+        }
+        self.assertFalse(replace(config(), mechanical_limit_binding=stale_binding).selections_closed)
+
+    def test_unaccepted_mechanical_limit_evidence_fails_closed(self) -> None:
+        unreleased = {
+            **config().mechanical_limit_binding,
+            "release_state": "CANDIDATE-NOT-RELEASED",
+            "acceptance_evidence_hash": "SELECTION REQUIRED",
+        }
+        self.assertFalse(replace(config(), mechanical_limit_binding=unreleased).selections_closed)
+        malformed_hash = {
+            **config().mechanical_limit_binding,
+            "acceptance_evidence_hash": "NOT-A-SHA256",
+        }
+        self.assertFalse(replace(config(), mechanical_limit_binding=malformed_hash).selections_closed)
+        self.assertFalse(replace(config(), configuration_id="HR-V0-SUP-P0.1").selections_closed)
 
     def test_watchdog_startup_grace_allows_heartbeat_to_begin_fail_closed(self) -> None:
         supervisor = Supervisor(config(), lambda samples: [0.0 for _ in samples], session_id="SESSION-TEST")

@@ -1,0 +1,13 @@
+control_id,control,acceptance_evidence,state
+FX-01,Rigid bench and fixture load path,Deflection and fastener capacity supported by calculation plus inspection,OPEN
+FX-02,Independent physical catch,Contains link and load with actuator unpowered and after any single test-fixture control failure,OPEN
+FX-03,Full moving-volume guard,Prevents access to pinch/sweep volume while allowing instrumentation,OPEN
+FX-04,Known torque-arm radius,As-built perpendicular distance measured with uncertainty; no nominal-only credit,OPEN
+FX-05,Force-sensor line of action,Alignment and off-axis sensitivity quantified across all test angles,OPEN
+FX-06,Load application,"No human-held weights, force gauges or straps inside the moving volume",OPEN
+FX-07,Branch current interruption,"Independent, accessible removal of actuator-branch energy; exact device/duty selection required",OPEN
+FX-08,Current limiting,External source limit and actuator register limit independently reviewed and recorded,OPEN
+FX-09,Reverse-energy behavior,"Source, wiring and interruption devices reviewed for regenerated/back-driven energy",OPEN
+FX-10,Thermal sensor retention,Attachment method does not insulate the case or enter moving/pinch paths,OPEN
+FX-11,Cable routing,"Strain relief, bend radius, separation and temperature-sensor locations documented",OPEN
+FX-12,Witnessed preflight,Qualified mechanical/electrical reviewers sign the as-built fixture and limits before powered work,OPEN

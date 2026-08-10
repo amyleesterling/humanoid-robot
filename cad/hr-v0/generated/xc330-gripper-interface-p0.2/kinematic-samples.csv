@@ -1,0 +1,4 @@
+pose,hard_opening_mm,padded_opening_mm,each_rack_displacement_from_closed_mm,pinion_rotation_from_closed_deg,step,glb
+closed,40.000,38.000,0.000,0.000000,hr-v0-xc330-gripper-interface-closed-pose-p0.2.step,hr-v0-xc330-gripper-interface-closed-pose-p0.2.glb
+mid,58.000,56.000,9.000,64.457752,hr-v0-xc330-gripper-interface-mid-pose-p0.2.step,hr-v0-xc330-gripper-interface-mid-pose-p0.2.glb
+open,76.000,74.000,18.000,128.915504,hr-v0-xc330-gripper-interface-open-pose-p0.2.step,hr-v0-xc330-gripper-interface-open-pose-p0.2.glb

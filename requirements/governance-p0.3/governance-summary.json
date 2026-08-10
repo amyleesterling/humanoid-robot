@@ -1,0 +1,20 @@
+{
+  "identifier": "HR-V0-GOV-P0.3",
+  "date": "2026-08-09",
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION",
+  "requirement_count": 81,
+  "risk_count": 40,
+  "gate_count": 30,
+  "compound_requirement_count": 66,
+  "decomposed_candidate_parent_count": 66,
+  "atomic_child_candidate_count": 458,
+  "internally_separated_r142_duty_count": 62,
+  "atomic_candidate_count": 15,
+  "open_hold_count": 9,
+  "named_accountable_person_count": 0,
+  "named_approver_person_count": 0,
+  "approved_record_count": 0,
+  "executed_evidence_record_count": 0,
+  "governance_requirement_closed": false,
+  "energization_authorized": false
+}

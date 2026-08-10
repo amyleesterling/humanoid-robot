@@ -1,0 +1,4 @@
+source_id,organization,document,revision_or_date,url,accessed,use
+SRC-001,OSH Park,2 Layer Prototype Service,No revision stated,https://docs.oshpark.com/services/two-layer/,2026-08-08,Candidate process envelope
+SRC-002,OSH Park,KiCad support,No revision stated; page identifies KiCad 9.x,https://docs.oshpark.com/design-tools/kicad/,2026-08-08,Native-version compatibility hold
+SRC-003,OSH Park,Generating KiCad Gerbers,No revision stated,https://docs.oshpark.com/design-tools/kicad/generating-kicad-gerbers/,2026-08-08,CAM layer set

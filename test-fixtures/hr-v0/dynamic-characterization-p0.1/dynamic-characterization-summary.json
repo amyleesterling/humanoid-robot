@@ -1,0 +1,20 @@
+{
+  "revision": "HR-V0-DYN-CHAR-P0.1",
+  "status": "PRELIMINARY - MEASUREMENT AND FIXTURE INPUT ONLY - NOT APPROVED FOR POWERED TESTING, MOTION, CONNECTION, OR ENERGIZATION",
+  "parent_inputs": [
+    "HR-V0-ARM-ARCH-P0.7",
+    "HR-V0-HS-P0.3",
+    "HR-V0-GUARD-IMPACT-P0.1"
+  ],
+  "channel_count": 15,
+  "primary_or_derived_channels": 14,
+  "supplemental_dxl_channels": 1,
+  "fixture_control_count": 12,
+  "test_stage_count": 12,
+  "powered_stage_count": 6,
+  "authorized_powered_stage_count": 0,
+  "timing_evidence_count": 8,
+  "raw_field_count": 35,
+  "daq_candidate": "LabJack T7 evaluation candidate only; not selected for procurement",
+  "release_state": "INPUT PACKAGE ONLY - ALL POWERED TESTS NOT AUTHORIZED"
+}

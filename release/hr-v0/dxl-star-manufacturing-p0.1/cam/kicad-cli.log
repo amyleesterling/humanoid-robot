@@ -1,0 +1,49 @@
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb drc --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\hr-v0-dxl-star-drc.rpt" --format report --units mm --severity-all --exit-code-violations "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\source\hr-v0-dxl-star.kicad_pcb"
+Found 0 violations
+Found 0 unconnected items
+Saved DRC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/release/hr-v0/dxl-star-manufacturing-p0.1/cam/hr-v0-dxl-star-drc.rpt
+
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export gerbers --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\gerbers" --layers F.Cu,B.Cu,F.Paste,B.Paste,F.Silkscreen,B.Silkscreen,F.Mask,B.Mask,Edge.Cuts --precision 6 --check-zones "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\source\hr-v0-dxl-star.kicad_pcb"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\gerbers\hr-v0-dxl-star-F_Cu.gtl'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\gerbers\hr-v0-dxl-star-B_Cu.gbl'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\gerbers\hr-v0-dxl-star-F_Paste.gtp'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\gerbers\hr-v0-dxl-star-B_Paste.gbp'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\gerbers\hr-v0-dxl-star-F_Silkscreen.gto'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\gerbers\hr-v0-dxl-star-B_Silkscreen.gbo'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\gerbers\hr-v0-dxl-star-F_Mask.gts'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\gerbers\hr-v0-dxl-star-B_Mask.gbs'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\gerbers\hr-v0-dxl-star-Edge_Cuts.gm1'.
+
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export drill --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\drill" --format excellon --excellon-units mm --excellon-separate-th --generate-map --map-format svg --generate-report --report-path "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\drill\hr-v0-dxl-star-drill-report.txt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\source\hr-v0-dxl-star.kicad_pcb"
+Created file 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\drill\hr-v0-dxl-star-PTH.drl'
+Created file 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\drill\hr-v0-dxl-star-NPTH.drl'
+Created file 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\drill\hr-v0-dxl-star-PTH-drl_map.svg'.
+Created file 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\drill\hr-v0-dxl-star-NPTH-drl_map.svg'.
+Done.
+
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export pos --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\hr-v0-dxl-star-all-pos.csv" --format csv --units mm --side both --exclude-dnp "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\source\hr-v0-dxl-star.kicad_pcb"
+Wrote position data to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\hr-v0-dxl-star-all-pos.csv'.
+
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export ipcd356 --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\hr-v0-dxl-star.d356" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\source\hr-v0-dxl-star.kicad_pcb"
+Successfully created IPC-D-356 file
+
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export stats --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\cam\hr-v0-dxl-star-stats.json" --format json --units mm "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-star-manufacturing-p0.1\source\hr-v0-dxl-star.kicad_pcb"
+Wrote board statistics to 'C:/Users/amyle/Documents/New project/humanoid-robot-publish/release/hr-v0/dxl-star-manufacturing-p0.1/cam/hr-v0-dxl-star-stats.json'.
+
+
+exit=0

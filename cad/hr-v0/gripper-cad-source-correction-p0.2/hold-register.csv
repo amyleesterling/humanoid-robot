@@ -1,0 +1,13 @@
+hold_id,domain,required_evidence,status
+GCH-001,SOURCE,"Immutable Onshape version identity plus publisher-authorized complete native export or controlled received-metrology substitute",OPEN
+GCH-002,CONFIGURATION,"Signed gripper selection and atomic requirement/BOM/ECAD/firmware/CAD disposition",OPEN
+GCH-003,MECHANICAL,"Complete mechanism/carrier/H104 transform with units axes mates materials tolerances and moving envelope",OPEN
+GCH-004,FASTENERS,"Exact fastener/washer/bushing stack engagement torque locking and access evidence",OPEN
+GCH-005,MASS,"Measured complete moving mass COM inertia cable and uncertainty closure",OPEN
+GCH-006,GUARDING,"Retained fixed guard and access-probe exclusion over complete tolerance-aware motion",OPEN
+GCH-007,POWER_LOSS,"Passive containment object catch and as-built power-loss/drop evidence",OPEN
+GCH-008,ACTUATION,"Grip-force current thermal wear duty and object-retention evidence",OPEN
+GCH-009,ELECTRICAL,"Selected branch voltage current protection connector harness grounding regen and interruption evidence",OPEN
+GCH-010,FIRMWARE,"Received model/firmware identity calibration limits per-actuator scaling watchdog and HIL evidence",OPEN
+GCH-011,PHYSICAL,"Received identity metrology fit collision cable endurance fault injection and raw test records",OPEN
+GCH-012,REVIEW,"Independent configuration review plus qualified mechanical electrical and functional-safety dispositions",OPEN

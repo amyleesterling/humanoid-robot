@@ -1,0 +1,7 @@
+interface,from,to,state,missing
+BS-IF-01,HB-450M front face,4866 pillow block,PARTIAL,"exact accessory CAD, supplied 3 x M5 fasteners, seating datum, torque/locking, allowable loads and received fit"
+BS-IF-02,4866 2 x Ø6.6 base holes at 104 mm,FX104-C01 candidate upper axes,OPEN,"thread/fastener selection, edge/engagement, preload, locking, analysis, FAI and proof"
+BS-IF-03,FX104-C01 four Ø6.6 review holes,PT slot centerlines y=±50 mm,OPEN,"exact T-nuts/bolts, slot tolerance/fit, clamp load, torque, slip and proof"
+BS-IF-04,PT-600,qualified bench/foundation,OPEN,"countersunk-hole pattern, anchors, substrate/site survey, permission, installation and proof"
+BS-IF-05,brake/support axis,R103 coupling/X430 axis,OPEN,"coaxiality, center-height, parallelism, end-float, runout and metrology uncertainty"
+BS-IF-06,support hardware,guard/catch/brake wiring/thermal instrumentation,OPEN,"complete physical integration, access, cable restraint, sensors, limits and validation"

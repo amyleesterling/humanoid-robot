@@ -1,0 +1,48 @@
+{
+  "revision": "HR-V0-STOP-REGION-P0.1",
+  "parent_arm_revision": "HR-V0-ARM-ARCH-P0.7",
+  "warning": "PRELIMINARY - NOMINAL CAD EVIDENCE ONLY - NO STOP OR MOTION RELEASE",
+  "sample_increment_deg": 0.5,
+  "sample_count": 6411,
+  "sample_regions": {
+    "j1_min": {
+      "j1_deg": [
+        -25.0,
+        -20.5
+      ],
+      "j2_deg": [
+        15.5,
+        120.0
+      ]
+    },
+    "j1_max": {
+      "j1_deg": [
+        70.5,
+        75.0
+      ],
+      "j2_deg": [
+        15.5,
+        120.0
+      ]
+    },
+    "j2_min": {
+      "j1_deg": [
+        -25.0,
+        75.0
+      ],
+      "j2_deg": [
+        10.0,
+        15.0
+      ]
+    }
+  },
+  "maximum_sampled_intersection_mm3": 0.0,
+  "continuous_certificate_count": 131,
+  "continuous_leaf_cell_count": 133,
+  "minimum_guaranteed_clearance_mm": 5.743912,
+  "required_guaranteed_clearance_mm": 0.75,
+  "measurement_inputs_open": 20,
+  "stop_topology_selected": false,
+  "interpretation": "The historical -25/+75 deg J1 and +10 deg J2 boundary regions are nominally free of non-intentional P0.7 rigid-body contact. This does not select those datums or prove room for stop hardware, cables, guards, tolerances, deformation, backlash, stopping travel or an as-built article.",
+  "status": "NOMINAL REGION FEASIBILITY ONLY - PHYSICAL INTERFACE ACQUISITION AND QUALIFIED STOP DESIGN REQUIRED"
+}

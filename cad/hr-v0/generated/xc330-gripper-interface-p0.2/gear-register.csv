@@ -1,0 +1,2 @@
+module_mm,teeth,pressure_angle_deg,pitch_radius_mm,base_radius_mm,outside_radius_mm,root_radius_mm,circular_pitch_mm,pair_backlash_candidate_mm,member_pitch_tooth_thickness_mm,minimum_full_depth_no_undercut_teeth,working_flank,root_process,status
+0.800000,20,20.000000,8.000000000,7.517540966,8.800000000,7.000000000,2.513274123,0.150000,1.181637061,17.097264,exact involute equation,radial transition; fillet/process compensation SELECTION REQUIRED,project candidate; coupon and wear proof required

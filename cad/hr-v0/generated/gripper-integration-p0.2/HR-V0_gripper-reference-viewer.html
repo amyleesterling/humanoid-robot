@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HR-V0 gripper reference geometry</title>
+<style>
+:root { --sky:#dff3ff; --blue:#123b68; --gold:#f4bd3e; --ink:#102a43; --warn:#8a4b00; }
+* { box-sizing:border-box; }
+body { margin:0; font:16px/1.5 Arial,sans-serif; color:var(--ink); background:#f8fbff; }
+header,main { width:calc(100% - 32px); max-width:1120px; margin:auto; }
+header { padding:28px 0 18px; }
+h1 { margin:0 0 8px; font-size:clamp(30px,5vw,48px); line-height:1.1; }
+h2 { font-size:24px; }
+.warning { padding:14px 18px; border:3px solid var(--warn); border-radius:12px; background:#fff8e7; color:#613600; font-weight:700; font-size:18px; }
+.card { margin:20px 0; padding:22px; border:2px solid var(--blue); border-radius:16px; background:white; }
+label { display:block; font-size:18px; font-weight:700; }
+input[type=range] { width:100%; min-height:42px; }
+.readout { font-size:22px; font-weight:700; color:var(--blue); }
+svg { width:100%; height:auto; min-height:420px; border:1px solid #8aa8bf; background:var(--sky); }
+.carrier { fill:#9dd8f5; stroke:var(--blue); stroke-width:2.5; }
+.palm { fill:var(--gold); stroke:var(--blue); stroke-width:2.5; }
+table { width:100%; border-collapse:collapse; font-size:16px; }
+th,td { padding:10px; border:1px solid #7890a4; text-align:left; }
+th { background:var(--sky); }
+.meta { font-size:14px; }
+code { font-size:15px; overflow-wrap:anywhere; }
+@media (max-width:650px) { .card { padding:16px; } svg { min-height:300px; } th,td { padding:8px; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>HR-V0 gripper reference geometry</h1>
+  <p class="warning">PRELIMINARY - REFERENCE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION, MOTION, OR ENERGIZATION</p>
+  <p>Exact ROBOTIS public mesh projections positioned by the official URDF. Blue is the fixed link5 carrier mesh; gold is the two moving palm meshes.</p>
+</header>
+<main>
+  <section class="card">
+    <label for="q">URDF joint displacement: <span class="readout" id="qValue">0.0 mm</span></label>
+    <input id="q" type="range" min="-11" max="20" step="0.1" value="0">
+    <svg viewBox="0 0 900 640" role="img" aria-label="Interactive top view of the official gripper reference meshes">
+      <polygon points="55.04,412.00 67.00,424.00 381.00,577.20 405.00,577.20 408.60,328.40 408.60,311.60 405.00,62.80 381.00,62.80 67.00,216.00 55.04,228.00" class="carrier"/>
+      <g id="leftPalm"><polygon points="369.40,205.60 461.80,284.60 467.38,284.60 714.60,236.00 721.17,233.60 721.80,215.60 721.31,201.60 477.80,125.60 369.40,125.60" class="palm"/></g>
+      <g id="rightPalm"><polygon points="369.40,514.40 477.80,514.40 721.31,438.40 721.80,424.40 721.17,406.40 714.60,404.00 467.38,355.40 461.80,355.40 369.40,434.40" class="palm"/></g>
+    </svg>
+    <p>The slider applies the URDF prismatic axes only. It does not model compliance, rubber-pad compression, linkage error, backlash, guard clearance, cable motion, or manufacturing tolerance.</p>
+  </section>
+  <section class="card">
+    <h2>Frozen sample checks</h2>
+    <table><thead><tr><th>Configuration</th><th>q (mm)</th><th>Closest mesh distance (mm)</th></tr></thead><tbody><tr><td>urdf_lower</td><td>-11.000</td><td>0.059329</td></tr><tr><td>urdf_neutral</td><td>0.000</td><td>19.939267</td></tr><tr><td>urdf_upper</td><td>20.000</td><td>59.106467</td></tr></tbody></table>
+    <p>Closest triangle-mesh distance is not certified jaw opening and is not the e-Manual stroke value. The received mechanism must be measured and reconciled before a usable opening is released.</p>
+  </section>
+  <section class="card">
+    <h2>Source and release boundary</h2>
+    <p>Official ROBOTIS OpenMANIPULATOR source commit: <code>9187eca0920458be04d2399906388f55242f81f1</code>. The repository files are collision/visualization references under the included upstream license; they are not Project Button manufacturing drawings.</p>
+    <p>Still required: complete mechanism manufacturing definition or received metrology, H104-to-carrier registration, guard and receiver CAD, received mass/COM, exact fasteners and cable path, force/current tests, power-off containment, wear tests, and qualified review.</p>
+    <p class="meta">Revision HR-V0-GRIP-P0.2. No fabrication, motion, energization, or functional-safety approval.</p>
+  </section>
+</main>
+<script>
+const slider=document.getElementById('q');
+const value=document.getElementById('qValue');
+const left=document.getElementById('leftPalm');
+const right=document.getElementById('rightPalm');
+const pxPerMm=4.0;
+function update() { const q=Number(slider.value); value.textContent=q.toFixed(1)+' mm'; left.setAttribute('transform','translate(0,'+(-q*pxPerMm)+')'); right.setAttribute('transform','translate(0,'+(q*pxPerMm)+')'); }
+slider.addEventListener('input',update); update();
+</script>
+</body>
+</html>

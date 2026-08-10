@@ -1,0 +1,4 @@
+part_number,description,revision,outer_diameter_mm,outer_x_mm,outer_z_mm,center_clearance_mm,hole_count,hole_diameter_mm,pcd_mm,pattern_x_mm,pattern_z_mm,thickness_mm,release_status
+MV0-FC01,ROBOTIS PCD22 non-structural fit coupon,HR-V0-MECH-R0.1-PRELIMINARY,38.0,,,14.0,8,2.7,22.0,,,2.0,FIT CHECK ONLY - PHYSICAL EVIDENCE REQUIRED
+MV0-FC02,FR13-S102K 32 x 16 tapped-pattern non-structural fit coupon,HR-V0-MECH-R0.1-PRELIMINARY,,44.0,30.0,,4,2.7,,32.0,16.0,2.0,FIT CHECK ONLY - PHYSICAL EVIDENCE REQUIRED
+MV0-FC03,FR12-H104K selected 24 x 12 pattern non-structural fit coupon,HR-V0-MECH-R0.1-PRELIMINARY,,36.0,24.0,,4,2.7,,24.0,12.0,2.0,FIT CHECK ONLY - PHYSICAL EVIDENCE REQUIRED

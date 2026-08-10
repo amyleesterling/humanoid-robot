@@ -1,0 +1,8 @@
+pose,pair,positive_intersection_mm3,minimum_distance_mm,status
+closed,official H104 versus complete P0.2 gripper,0.000000000,0.000000000,intentional nominal contact allowed; positive volume prohibited; received fit open
+mid,official H104 versus complete P0.2 gripper,0.000000000,0.000000000,intentional nominal contact allowed; positive volume prohibited; received fit open
+open,official H104 versus complete P0.2 gripper,0.000000000,0.000000000,intentional nominal contact allowed; positive volume prohibited; received fit open
+all,H104 versus +X bridge,0.000000000,0.000000000,intentional nominal face contact; physical tolerance and seating open
+all,P0.2 U-base versus +X bridge,0.000000000,0.000000000,intentional nominal ear-face contact; physical tolerance and seating open
+all,H104 versus -X bridge,0.000000000,0.000000000,intentional nominal face contact; physical tolerance and seating open
+all,P0.2 U-base versus -X bridge,0.000000000,0.000000000,intentional nominal ear-face contact; physical tolerance and seating open

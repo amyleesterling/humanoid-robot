@@ -1,0 +1,5 @@
+channel_id,field_name,type,purpose,acceptance_boundary,state
+DCH-X01,reset_input_state,boolean,monitored reset edge on common DAQ timebase,reset alone shall not energize K1/K2 enable torque or cause motion,INTERFACE REQUIRED
+DCH-X02,start_command_state,boolean,separate deliberate start edge on common DAQ timebase,must remain distinct from reset,INTERFACE REQUIRED
+DCH-X03,motion_enable_command_state,boolean,supervisor motion request witness,shall remain false in reset observation window,INTERFACE REQUIRED
+DCH-X04,torque_enable_feedback,boolean,actuator torque-enable state witness,shall remain false in reset observation window,INTERFACE REQUIRED

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HR-V0 stopping-budget screen P0.1</title>
+  <style>
+    :root{color-scheme:light;--sky:#e8f6ff;--blue:#082b55;--mid:#0b65a3;--gold:#f4bd2d;--paper:#fff;--warn:#8a3d00}
+    *{box-sizing:border-box}body{margin:0;background:var(--sky);color:var(--blue);font:17px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}header,main{max-width:1120px;margin:auto;padding:24px}header{padding-top:34px}.warning{padding:14px 18px;background:#fff1c2;border:3px solid var(--gold);border-radius:14px;font-weight:800;color:var(--warn)}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.08;margin:.7rem 0}h2{font-size:clamp(1.45rem,3vw,2rem);margin-top:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin:22px 0}.card{background:var(--paper);border:2px solid #91c9ea;border-radius:16px;padding:20px;box-shadow:0 4px 0 rgba(8,43,85,.12)}.gold{border-color:var(--gold)}label{display:block;font-weight:800;margin-bottom:8px}input[type=range]{width:100%}.value{font-size:2rem;font-weight:900;color:var(--mid)}.bad{color:#a12612}.metric{font-size:1.2rem;font-weight:800}.small{font-size:14px}.flow{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:12px;overflow-x:auto;padding-bottom:8px}.step{min-width:150px;background:#fff;border:2px solid var(--mid);border-radius:12px;padding:14px;font-size:16px}.step strong{display:block;margin-bottom:6px}.tag{display:inline-block;background:var(--gold);color:#3b2a00;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:900;letter-spacing:.03em}code{font-size:16px}footer{max-width:1120px;margin:auto;padding:0 24px 40px;font-size:14px}@media(max-width:520px){header,main{padding:18px}.flow{grid-template-columns:1fr;overflow:visible}.step{min-width:0}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="warning">PRELIMINARY — CALCULATION SCREEN ONLY — NOT APPROVED FOR MOTION OR ENERGIZATION</div>
+    <p class="tag">HR-V0-STOP-BUDGET-P0.1</p>
+    <h1>Three degrees is the whole J2-positive approach.</h1>
+    <p>The current candidate commands no farther than 115° and places nominal metal backup at 118°. This page shows the arithmetic; it does not predict or approve a real stop.</p>
+  </header>
+  <main>
+    <section class="grid">
+      <article class="card">
+        <h2>Explore the geometric bound</h2>
+        <label for="speed">Initial joint speed: <span id="speedText">10</span>°/s</label>
+        <input id="speed" type="range" min="1" max="30" value="10" step="1">
+        <p class="value"><span id="time">300</span> ms</p>
+        <p>Nominal time to traverse 3° at constant speed. Every electrical and mechanical delay must fit inside the accepted physical margin—not this calculator.</p>
+      </article>
+      <article class="card gold">
+        <h2>Ordinary heartbeat diagnostic</h2>
+        <p class="metric">300 ms candidate detection</p>
+        <p>Travel before downstream delay: <strong id="watchTravel">3.000°</strong></p>
+        <p id="watchVerdict" class="bad"><strong>No remaining approach at 10°/s.</strong></p>
+        <p><code>DF-01</code> has zero safety credit. Guard and hard-stop analysis must assume it can fail.</p>
+      </article>
+      <article class="card">
+        <h2>Current boundaries</h2>
+        <p><strong>J2 positive:</strong> nominal CAD candidate, physical proof open.</p>
+        <p><strong>J1 min/max:</strong> stop design required.</p>
+        <p><strong>J2 minimum:</strong> stop design required.</p>
+        <p><strong>EG-026:</strong> open.</p>
+      </article>
+    </section>
+    <section class="card">
+      <h2>What a real stopping record must capture</h2>
+      <div class="flow" aria-label="Stopping measurement chain">
+        <div class="step"><strong>1. Demand</strong>E-stop or controlled fault transition</div>
+        <div class="step"><strong>2. Logic</strong>Safety-relay output transition</div>
+        <div class="step"><strong>3. Isolation</strong>Both contactor pole states</div>
+        <div class="step"><strong>4. Rail</strong>Voltage below accepted torque threshold</div>
+        <div class="step"><strong>5. Motion</strong>Measured stop time, travel and uncertainty</div>
+      </div>
+      <p class="small">The blank sixteen-case form is evidence scaffolding only. Physical execution requires a separately accepted configuration, fixture, instruments, exclusion zone, authorization and qualified witnesses.</p>
+    </section>
+  </main>
+  <footer>Project Button · revision P0.1 · no fabrication, motion, functional-safety or energization approval</footer>
+  <script>
+    const speed=document.querySelector('#speed'),speedText=document.querySelector('#speedText'),time=document.querySelector('#time'),watchTravel=document.querySelector('#watchTravel'),watchVerdict=document.querySelector('#watchVerdict');
+    function update(){const s=Number(speed.value),t=3000/s,travel=.3*s,remain=3-travel;speedText.textContent=s.toFixed(0);time.textContent=t.toFixed(0);watchTravel.textContent=travel.toFixed(3)+'°';watchVerdict.innerHTML=remain>0?'<strong>'+remain.toFixed(3)+'° remains before downstream delay.</strong>':'<strong>Exceeds or consumes the whole 3° approach by '+Math.abs(remain).toFixed(3)+'°.</strong>'}
+    speed.addEventListener('input',update);update();
+  </script>
+</body>
+</html>

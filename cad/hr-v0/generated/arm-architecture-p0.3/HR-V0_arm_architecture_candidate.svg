@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="920" viewBox="0 0 1500 920">
+<style>text{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}.title{font-size:34px;font-weight:700}.sub{font-size:23px;font-weight:700}.warn{font-size:20px;font-weight:700;fill:#8a3b00}.axis{stroke:#0b4f8a;stroke-width:4}.part{fill:#66c7f4;stroke:#0b4f8a;stroke-width:3}.frame{fill:#f3b61f;stroke:#8a5a00;stroke-width:3}.note{fill:#fff4cd;stroke:#f3b61f;stroke-width:3}</style>
+<rect width="1500" height="920" fill="#f7fbff"/>
+<text x="40" y="55" class="title">HR-V0 strengthened exact-coordinate arm candidate</text>
+<text x="40" y="92" class="warn">HR-V0-ARM-ARCH-P0.3 - PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
+<text x="40" y="145" class="sub">Straight reference pose, side elevation (Y horizontal, Z vertical)</text>
+<line x1="150" y1="370" x2="1330" y2="370" stroke="#b7cad9" stroke-width="2"/>
+<circle cx="190" cy="370" r="18" fill="#0b4f8a"/><text x="155" y="420">J1 Y=0</text>
+<rect x="220" y="330" width="54" height="80" class="frame"/>
+<rect x="274" y="330" width="400" height="80" class="part"/><text x="300" y="315">100 mm 20-2040 vertical envelope + two 9.525 mm adapters</text>
+<circle cx="714" cy="370" r="18" fill="#0b4f8a"/><text x="635" y="440">J2 Y=202.5500</text>
+<rect x="744" y="330" width="54" height="80" class="frame"/>
+<rect x="798" y="330" width="250" height="80" class="part"/><text x="840" y="315">50 mm vertical forearm member</text>
+<rect x="1048" y="330" width="54" height="80" class="frame"/><text x="980" y="440">G1 Y=331.6000</text>
+<line x1="190" y1="480" x2="714" y2="480" class="axis"/><text x="350" y="512">J1-J2 = 202.5500 mm candidate</text>
+<line x1="714" y1="550" x2="1102" y2="550" class="axis"/><text x="800" y="582">J2-G1 = 129.0500 mm candidate</text>
+<rect x="70" y="640" width="1360" height="210" rx="14" class="note"/>
+<text x="100" y="690" class="sub">What this fixes</text>
+<text x="100" y="730">P0.2 is superseded: nominal adapter thickness is 9.525 mm with a 9.0 mm finished minimum.</text>
+<text x="100" y="766">Exact candidates: WF2563 M5 x 20, WF2339 M2.5 x 16 and WF1254 M2.5 nut. No torque is released.</text>
+<text x="100" y="802">G1 leaves 28.4000 mm. Provisional J2 ceiling is 120.0 deg; first nominal collision: 122.0 deg.</text>
+<text x="100" y="838" class="warn">Stopping overtravel, material allowables, local FEA, cables and physical proof remain open. Do not fabricate.</text>
+</svg>

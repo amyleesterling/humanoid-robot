@@ -1,0 +1,8 @@
+item,manufacturer,order_identity,quantity,state,missing
+BS-001,Magtrol,HB-450M-2 / stock code 004665 candidate,1,EXACT FAMILY CANDIDATE - NOT SELECTED,"application acceptance, received identity, coil/order certificate and installed limits"
+BS-002,Magtrol,4866 pillow block assembly for HB/MHB-450M,1,EXACT CATALOG IDENTITY - NOT SELECTED,"current availability, CAD/drawing, material, mass, supplied hardware, allowables and acceptance"
+BS-003,Magtrol,PT-600,1,DRAWING-DERIVED PROFILE - NOT SELECTED,"body CAD, countersunk pattern, tolerances, T-slot hardware, allowables and application acceptance"
+BS-004,SELECTION REQUIRED,FX104-C01 4866-to-PT adapter,1,DIMENSIONED REVIEW CANDIDATE ONLY,"material, finish, threads, GD&T, analysis, DFM, FAI and proof"
+BS-005,SELECTION REQUIRED,two 4866-to-adapter fasteners,2,NOT SELECTED,"exact MPN, class/material, length, engagement, preload, locking, torque and reuse"
+BS-006,SELECTION REQUIRED,four PT T-nut/bolt/washer sets,4 sets,NOT SELECTED,"Magtrol-compatible order identity, fit, class, length, preload, locking, torque and proof"
+BS-007,SELECTION REQUIRED,three HB-to-4866 M5 fasteners,3,NOT SELECTED,"exact MPN, head/tool envelope, length, 10 mm minimum brake thread depth use, preload, locking and torque"

@@ -1,0 +1,7 @@
+record,item,method,acceptance,result,reviewer
+RI-01,HN12-N101 received identity and package contents,photo + order/lot trace,SELECTION REQUIRED,NOT EXECUTED,UNASSIGNED
+RI-02,HN12 OD/thickness/pattern/serration/contact faces,qualified dimensional inspection,SELECTION REQUIRED,NOT EXECUTED,UNASSIGNED
+RI-03,FX103-C01 material certificate and heat/finish trace,certificate review + positive material identification if required,SELECTION REQUIRED,NOT EXECUTED,UNASSIGNED
+RI-04,FX103-C01 full FAI and surface finish,qualified metrology,released drawing required,NOT EXECUTED,UNASSIGNED
+RI-05,coupling hubs/spider/brake shaft fits and condition,identity + dimensional + visual inspection,manufacturer-approved plan required,NOT EXECUTED,UNASSIGNED
+RI-06,assembled coaxiality/runout/end float,qualified alignment record with uncertainty,SELECTION REQUIRED,NOT EXECUTED,UNASSIGNED

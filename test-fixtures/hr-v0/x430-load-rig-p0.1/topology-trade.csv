@@ -1,0 +1,5 @@
+route,topology,role,limitation,disposition
+LOAD-A,PT-600 common bed + standard HB-450M-2 + reviewed riser,regulated actuator/brake characterization,"base CAD, riser, attachment, control and application acceptance open",PREFERRED INQUIRY - NOT SELECTED
+LOAD-B,Magtrol metric base-mount special derived from HB-450M-2,remove custom brake riser,HB-451 statement applies to imperial family; metric identity/shaft/performance not established,MANUFACTURER RFI REQUIRED
+LOAD-C,R101 80/20 pedestal cantilever,reuse support concept,"5.85 kg brake, coaxial alignment and drivetrain load path not accepted",REJECT FOR CURRENT LOAD RIG
+LOAD-D,"friction belt, loose weights or human-held load",informal resistance,"uncontrolled stored energy, alignment and repeatability",PROHIBITED FOR POWERED CHARACTERIZATION

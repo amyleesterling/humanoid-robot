@@ -1,0 +1,83 @@
+{
+  "schema": "project-button-hr-v0-dynamic-trace-analysis-p0.2",
+  "status": "PRELIMINARY - ANALYSIS CANDIDATE ONLY - QUALIFIED DISPOSITION REQUIRED - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "analysis_mode": "SYNTHETIC_VALIDATION_ONLY",
+  "run_type": "RESET_ARM",
+  "trace": "analysis/hr-v0/dynamic-trace-p0.2/synthetic/fail-reset-motion-trace.csv",
+  "config": "analysis/hr-v0/dynamic-trace-p0.2/synthetic/reset-arm-synthetic-config.json",
+  "run_id": "SYN-FAIL-RESET-002",
+  "configuration_commit": "synthetic-validation-not-hardware",
+  "sample_count": 181,
+  "computed_result": "FAIL",
+  "run_disposition": "REJECT",
+  "release_effect": "NONE",
+  "event_metrics": {
+    "reset_event_time_s": 0.05,
+    "arm_event_time_s": 0.12,
+    "reset_to_arm_interval_s": 0.06999999999999999,
+    "maximum_reset_window_angle_delta_deg": 0.060000000000002274
+  },
+  "checks": [
+    {
+      "check_id": "DTA2-001",
+      "applicable": true,
+      "passed": true,
+      "detail": "sequential=True; interval_ok=True; metadata_ok=True; no_drops=True; no_saturation=True"
+    },
+    {
+      "check_id": "DTA2-002",
+      "applicable": true,
+      "passed": true,
+      "detail": "reset_event_rising_edges=[50]"
+    },
+    {
+      "check_id": "DTA2-003",
+      "applicable": false,
+      "passed": null,
+      "detail": "common EDM transition is evaluated in a separate eight-channel STOP run"
+    },
+    {
+      "check_id": "DTA2-004",
+      "applicable": true,
+      "passed": true,
+      "detail": "source_valid=True; minimum_V=20.0"
+    },
+    {
+      "check_id": "DTA2-005",
+      "applicable": true,
+      "passed": false,
+      "detail": "window_samples=70; unexpected_motion=True"
+    },
+    {
+      "check_id": "DTA2-006",
+      "applicable": false,
+      "passed": null,
+      "detail": "stop time/travel/clearance are evaluated in a separate eight-channel STOP run"
+    },
+    {
+      "check_id": "DTA2-007",
+      "applicable": true,
+      "passed": false,
+      "detail": "reset_edges=[50]; arm_edges=[120]; interval_ok=True; prohibited_state=True; unexpected_motion=True"
+    },
+    {
+      "check_id": "DTA2-008",
+      "applicable": true,
+      "passed": true,
+      "detail": "K1/K2 NO auxiliary channels are diagnostic only; safety_function_credit=ZERO"
+    },
+    {
+      "check_id": "DTA2-009",
+      "applicable": true,
+      "passed": false,
+      "detail": "computed PASS remains HOLD; qualified configuration-specific disposition required"
+    }
+  ],
+  "interpretation_limits": [
+    "The NC mirror contacts are represented by one common series-EDM chain; two series points are never treated as independent contact states.",
+    "K1/K2 NO auxiliary channels are diagnostic corroboration only and receive zero safety-function credit.",
+    "STOP and RESET_ARM are separate eight-channel physical runs; sequential runs cannot prove cross-run simultaneity.",
+    "The STOP schema is restricted to disconnected-load E2 with the actuator source absent; it cannot prove powered-motion stopping time, travel, or clearance.",
+    "A computed PASS is not an approved result or work authorization."
+  ]
+}

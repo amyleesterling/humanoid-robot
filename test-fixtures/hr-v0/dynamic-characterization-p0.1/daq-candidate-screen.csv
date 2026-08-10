@@ -1,0 +1,7 @@
+screen_id,candidate,verified_capability,official_limit_or_fact,project_disposition
+DAQ-001,LabJack T7 base model,14 analog inputs; USB and Ethernet; hardware-timed stream,T7 typical maximum 100 ksamples/s at +/-10 V and resolution index 0 or 1,EVALUATION CANDIDATE ONLY; not selected
+DAQ-002,T7 eight-address +/-10 V stream,12.5 kscans/s table value at resolution index 1,scan rate equals sample rate divided by address count,MANUFACTURER SCREEN ONLY; actual channel list and rate SELECTION REQUIRED
+DAQ-003,T7 scan timing,hardware-timed constant scan pulses,scan addresses are sampled sequentially after each clock pulse,interchannel skew must be measured and included
+DAQ-004,T7 triggered stream,stream start can use a DIO_EF trigger,T7 minimum firmware 1.0186 for triggered stream,received firmware and edge latency must be recorded
+DAQ-005,T7 externally clocked stream,external scan clock on CIO3,normal stream-rate limits still apply,candidate synchronization route; not required or released
+DAQ-006,T7-Pro,extra high-resolution ADC exists,high-resolution ADC indices 9-12 are model-specific and not a reason to infer stream performance,NO PREFERENCE OR SELECTION; base T7 remains sufficient for evaluation

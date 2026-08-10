@@ -1,0 +1,23 @@
+{
+  "identifier": "HR-V0-ELBOW-TRADE-P0.1",
+  "date": "2026-08-08",
+  "parent_configuration": "HR-V0-ARM-ARCH-P0.7",
+  "warning": "PRELIMINARY - NOT APPROVED FOR QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, CONNECTION, OR ENERGIZATION",
+  "decision": "Hold P0.7 custom-metal quotation until the moving-mass architecture is dispositioned; develop an exact-coordinate X430 elbow P0.8 branch for comparison without superseding P0.7.",
+  "p0_7_remains_controlled": true,
+  "p0_8_geometry_exists": false,
+  "xm430_elbow_selected": false,
+  "mass_requirement_closed": false,
+  "continuous_torque_verified": false,
+  "provider_contacted": false,
+  "quotation_authorized": false,
+  "procurement_authorized": false,
+  "fabrication_authorized": false,
+  "motion_authorized": false,
+  "connection_authorized": false,
+  "energization_authorized": false,
+  "trade_option_count": 4,
+  "source_count": 6,
+  "vendor_file_count": 5,
+  "open_hold_count": 12
+}

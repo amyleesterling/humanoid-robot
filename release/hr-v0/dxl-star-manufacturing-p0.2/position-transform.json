@@ -1,0 +1,13 @@
+{
+  "source": "KiCad CLI raw position export",
+  "comparison": "native DXL-STAR-P0.2-CARRIER-CANDIDATE footprint centers and rotations",
+  "reference_count": 7,
+  "derived_relation": "native_x = kicad_pos_x - x_offset; native_y = -kicad_pos_y - inverted_y_offset",
+  "x_offset_mm": 0.0,
+  "inverted_y_offset_mm": 0.0,
+  "max_position_error_mm": 0.0,
+  "max_rotation_error_deg": 0.0,
+  "supplier_normalized": false,
+  "machine_import_authorized": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
+}

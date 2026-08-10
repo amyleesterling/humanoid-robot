@@ -16,6 +16,15 @@ static uint32_t elapsed_ms(uint32_t now_ms, uint32_t then_ms) {
     return now_ms - then_ms;
 }
 
+static bool clock_regressed(uint32_t now_ms, uint32_t then_ms) {
+    /*
+     * Forward intervals smaller than 2^31 ms are valid, including uint32_t
+     * wrap. The upper half-range is fail-closed as a regression or an
+     * unsupported interval of 24.8 days or more.
+     */
+    return (elapsed_ms(now_ms, then_ms) & UINT32_C(0x80000000)) != 0u;
+}
+
 static void latch_fault(pb_wd_state_t *state, pb_wd_fault_t fault, uint32_t now_ms) {
     if (state->fault == PB_WD_FAULT_NONE) {
         state->fault = fault;
@@ -33,6 +42,7 @@ void pb_wd_init(pb_wd_state_t *state, uint32_t now_ms, bool heartbeat_level) {
     }
     *state = (pb_wd_state_t){
         .initialized = true,
+        .last_now_ms = now_ms,
         .last_heartbeat_level = heartbeat_level,
         .have_edge = false,
         .last_edge_ms = now_ms,
@@ -51,6 +61,11 @@ pb_wd_outputs_t pb_wd_step(pb_wd_state_t *state, pb_wd_inputs_t inputs) {
     if (!state->initialized) {
         pb_wd_init(state, inputs.now_ms, inputs.heartbeat_level);
     }
+
+    if (clock_regressed(inputs.now_ms, state->last_now_ms)) {
+        latch_fault(state, PB_WD_FAULT_CLOCK_REGRESSION, inputs.now_ms);
+    }
+    state->last_now_ms = inputs.now_ms;
 
     if (elapsed_ms(inputs.now_ms, state->drive_change_ms) >= PB_WD_RELAY_FEEDBACK_SETTLE_MS) {
         if (inputs.relay1_nc != !state->relay1_drive) {

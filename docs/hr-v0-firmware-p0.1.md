@@ -4,7 +4,7 @@
 
 Identifier: `HR-V0-FW-P0.1`  
 System baseline: `HR-30-SYS-R0.2`  
-Electrical dependency: `Project Button Electrical V3-P0.2` candidate
+Electrical dependency: `Project Button Electrical V3-P1.0` candidate
 
 ## Purpose and authority boundary
 
@@ -22,7 +22,7 @@ RESET and physical ARM never create or resume a trajectory. Every fault invalida
 
 ## Watchdog candidate
 
-`firmware/watchdog/src/pb_watchdog.c` is portable C state logic with no released GPIO/platform binding. The executable specification is `firmware/watchdog/reference_model.py`.
+`firmware/watchdog/src/pb_watchdog.c` is portable C state logic. `firmware/watchdog/platform/pico/main.c` is the compiled Raspberry Pi Pico 1 / RP2040 P0.1 binding; it is a source candidate, not released firmware. The executable specification is `firmware/watchdog/reference_model.py`.
 
 The candidate is default-off, requires three valid heartbeat edges, drops both output commands when the edge age reaches 300 ms, and requires three new edges after a timeout. It checks each relay's NC diagnostic feedback after a provisional 25 ms settling interval. Too-fast edges or feedback disagreement latch a service fault and drop both outputs.
 
@@ -34,6 +34,8 @@ Watchdog heartbeat recovery may make the two ordinary watchdog relays healthy ag
 
 `firmware/supervisor/project_button_supervisor/model.py` implements the authority state machine and trajectory checks. The repository configuration intentionally contains unresolved configuration/kinematic hashes and `null` start-pose tolerances. Therefore the repository configuration fails closed and cannot accept any trajectory.
 
+`firmware/supervisor/actuator-config.json` now defines `HR-V0-ACT-P0.1`, a fail-closed register-readback candidate. It requires Operating Mode 5, startup torque off, torque-on-goal-update off, torque initially off, and raw current candidates of 800 for J1/J2 and 300 for the gripper. Received model numbers, firmware versions and the external branch-current ceiling are deliberately unresolved, so the repository candidate still inhibits torque. See `docs/hr-v0-actuator-current-envelope-p0.1.md`.
+
 The candidate has no DYNAMIXEL transport, trajectory interpolator, Raspberry Pi service wrapper, real-time scheduler or released kinematic model. Those are required before bench motion.
 
 ## Current validation evidence
@@ -44,7 +46,7 @@ Run:
 python tools/check_hr_v0_firmware.py
 ```
 
-The current checker executes 17 standard-library unit tests covering:
+The current checker executes 25 standard-library unit tests covering:
 
 - default-off startup and stuck heartbeat;
 - exact 300 ms timeout and three-edge recovery;
@@ -55,19 +57,23 @@ The current checker executes 17 standard-library unit tests covering:
 - start-pose, joint limit, joint-speed and TCP-speed rejection;
 - target invalidation on fault and hardware restoration; and
 - execution-deadline and terminal-state behavior.
+- fail-closed actuator identity, mode, startup/drive-bit, torque-state, current-limit, goal-current and hardware-error readback.
 
-It also compares portable-C timing constants to `watchdog-config.json`, checks fail-closed source invariants, and verifies `firmware/SOURCE-MANIFEST.csv` against the source tree.
+It also compares portable-C timing constants to `watchdog-config.json`, checks fail-closed source and Pico-platform invariants, verifies the locked toolchain and controlled two-build artifact hashes, and verifies `firmware/SOURCE-MANIFEST.csv` against the source tree.
+
+`HR-V0-WD-BUILD-P0.1` now supplies warning-clean Project Button source compilation, exact GPIO binding, pinned tools, static size/stack evidence and matching ELF/UF2/BIN/HEX/map/canonical-disassembly hashes. See `docs/hr-v0-watchdog-build-p0.1.md` and `firmware/watchdog/output/P0.1/`. The binary has not been flashed or executed on received hardware.
 
 ## Evidence still required for release
 
-- exact GPIO/terminal assignment and received polarity/continuity records;
-- selected low-side drivers, input conditioning, protected wiring and feedback interface;
-- pinned Pico SDK/compiler/CMake/Ninja versions and a reproducible build environment;
-- warning-clean host and ARM compilation, static analysis, unit-test execution against the compiled C, `.elf`/`.uf2`/map hashes and size/stack evidence;
+- received-board default-off/input-conditioning proof for the compiled watchdog GPIO candidate, plus polarity/continuity records;
+- released PCB and protected wiring for the proposed VO618A heartbeat path, two separate TPL7407LPWR drivers and ISO1212 feedback interface, plus `TEST-ELEC-005` physical/HIL/fault evidence;
+- an independent second-host/container reproduction of the pinned Pico build;
+- static analysis beyond compiler diagnostics, unit-test execution against target-compiled C, and full call-chain/runtime stack-margin evidence;
 - selected Raspberry Pi deployment image, Python version, service supervision and immutable configuration hash;
-- selected kinematic model, tolerance values, DYNAMIXEL interface and torque-off semantics;
+- selected kinematic model, tolerance values, DYNAMIXEL transport and compiled torque-off/readback semantics;
+- received actuator identity/firmware records plus external branch-current, torque, connector-temperature and duty-cycle evidence under `INSPECT-CTRL-001` and `TEST-CTRL-006`;
 - code review by named controls/electrical reviewers;
-- HIL fault matrix and raw traces for `TEST-SAFE-001` through `TEST-SAFE-003` and `TEST-CTRL-001` through `TEST-CTRL-005`; and
+- HIL fault matrix and raw traces for `TEST-SAFE-001` through `TEST-SAFE-003` and `TEST-CTRL-001` through `TEST-CTRL-006`; and
 - qualified functional-safety review of the hardware boundary, diagnostics and common-cause failures.
 
-Gate `EG-017` is therefore only `partial`. Source tests and hashes do not authorize installing firmware or energizing the robot.
+Gate `EG-017` is therefore only `partial`. Source tests and reproducible binary hashes do not authorize flashing firmware or energizing the robot.

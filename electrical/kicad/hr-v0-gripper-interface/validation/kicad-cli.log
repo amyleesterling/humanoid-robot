@@ -1,0 +1,22 @@
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-gripper-interface\validation\hr-v0-gripper-interface-erc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-gripper-interface\hr-v0-gripper-interface.kicad_sch"
+Found 0 violations
+Saved ERC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/hr-v0-gripper-interface/validation/hr-v0-gripper-interface-erc.rpt
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-gripper-interface\validation\hr-v0-gripper-interface.net" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-gripper-interface\hr-v0-gripper-interface.kicad_sch"
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export pdf --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-gripper-interface\output\hr-v0-gripper-interface-preliminary.pdf" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-gripper-interface\hr-v0-gripper-interface.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-gripper-interface\output\hr-v0-gripper-interface-preliminary.pdf'.
+Done.
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export svg --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-gripper-interface\output" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-gripper-interface\hr-v0-gripper-interface.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-gripper-interface\output\hr-v0-gripper-interface.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-gripper-interface\output\hr-v0-gripper-interface-01 Protected 6 V _ PWM _ feedback candidate.svg'.
+Done.
+
+exit=0

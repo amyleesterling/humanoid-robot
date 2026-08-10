@@ -1,0 +1,11 @@
+hold_id,scope,evidence_required,warning
+CIH-001,HEARTBEAT HARNESS,"Exact Pi-header contact/housing or controlled individual-contact solution, JWH1 mate, conductor, length, strain relief, retention and assembly drawing",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIH-002,GPIO RUNTIME,"Pinned operating system, GPIO backend, permissions, startup sequence and proof that GPIO17 is not claimed by an overlay or alternate function",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIH-003,STARTUP/SHUTDOWN,"Oscilloscope evidence for boot, application start, normal stop, crash, reboot, brownout and power removal; no valid heartbeat before explicit supervisor control",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIH-004,ELECTRICAL LOAD,"Received voltage/current/load evidence through the exact cable and VO618A interface, including open/short/reversed/miswire fault cases",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIH-005,TIMING/HIL,"Accepted heartbeat period, duty, jitter, watchdog timeout, output-drop timing and fault-injection evidence against the compiled supervisor and watchdog builds",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIH-006,DEBUG FIXTURE,"Exact programmer, clip/pogo/hook fixture, lead assignment, isolation/no-back-power method, mechanical clearance and controlled work instruction",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIH-007,DEBUG DEFAULT-OFF,"Proof that connect, halt, reset, flash, disconnect, abandoned session and tool faults cannot assert either watchdog output or restore motion eligibility",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIH-008,EMC/RETENTION,"Installed routing separation, shielding decision, bend radius, connector retention, emission/immunity and disturbance evidence",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIH-009,RECEIVING,"Photographs and continuity records for Pi header orientation, JWH1, TP2/TP15/TP16 access and assembled harness",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIH-010,QUALIFIED REVIEW,"Qualified electrical, controls and functional-safety review; no safety credit is assigned by this package",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION

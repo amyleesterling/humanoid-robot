@@ -1,0 +1,8 @@
+screen,feature,demand_or_dimension,screen_limit,ratio_or_margin,result,boundary
+MR-LG-01,M5 countersink to outer profile,2.300 mm nominal,>= 2.0 mm nominal study criterion,0.300 mm,PASS STUDY CRITERION,"manufacturing tolerance, local conical contact, fatigue and proof open"
+MR-LG-02,M5 countersink to central relief,1.300 mm nominal,>= 1.0 mm nominal study criterion,0.300 mm,PASS STUDY CRITERION,"manufacturing tolerance, local conical contact, fatigue and proof open"
+MR-LG-03,M2.5 hole to central relief,3.650 mm nominal,>= 3.0 mm nominal study criterion,0.650 mm,PASS STUDY CRITERION,"manufacturing tolerance, edge tear-out, fatigue and proof open"
+MR-LG-04,M2.5 hole to outer profile,4.650 mm nominal,>= 4.0 mm nominal study criterion,0.650 mm,PASS STUDY CRITERION,"manufacturing tolerance, edge tear-out, fatigue and proof open"
+MR-LC-01,minimum net strip at M5 countersink,21.022 MPa at 681.12 N proof-screen row force,< 240.0 MPa project MTR minimum,11.42,ANALYTICAL SCREEN PASS - NOT AN ALLOWABLE,"prying, preload, local bending, notch, fatigue, impact, FEA and physical proof open"
+MR-LC-02,M2.5 inner-edge tear-out average shear,6.479 MPa at 425.70 N per screw,< 120.0 MPa project shear screen,18.52,ANALYTICAL SCREEN PASS - NOT AN ALLOWABLE,"load sharing, tolerance, fatigue and physical proof open"
+MR-LC-03,M2.5 average hole bearing,17.519 MPa at 425.70 N per screw,< 240.0 MPa project MTR minimum,13.70,ANALYTICAL SCREEN PASS - NOT AN ALLOWABLE,"load sharing, frame bearing, local bending, fatigue and physical proof open"

@@ -1,0 +1,7 @@
+frame_id,parent,origin_in_parent_mm,basis,handedness,use,status
+A0_BASE_CENTER,NONE,"0,0,0",+X right; +Y front; +Z up,RIGHT_HANDED,"authoritative HR-V0 assembly, kinematics, controls, load and metrology frame",CONTROLLED CANDIDATE - physical datum marking and survey open
+J1_LOCAL,A0_BASE_CENTER,"-210.000,81.025,500.000",+X joint axis; +Y straight upper-link direction; +Z completes right hand,RIGHT_HANDED,J1 engineering angle and upper-arm geometry,CONTROLLED NOMINAL - received axis survey open
+J2_ZERO,J1_LOCAL,"0.000,202.550,0.000",+X joint axis; +Y straight forearm direction at q2=0; +Z completes right hand,RIGHT_HANDED,J2 internal engineering angle; q2=0 is geometric reference and is outside command range,CONTROLLED NOMINAL - received axis survey open
+G1_H104_ZERO,J1_LOCAL,"0.000,331.600,0.000",H104 frame has Rx=180 deg in straight reference,RIGHT_HANDED,controlled H104 frame only; complete gripper/TCP transform remains open,PARTIAL - H104 fit and gripper registration open
+G0_RH,A0_BASE_CENTER,"-210.000,81.025,0.000","+X right; +Y front; +Z up, parallel to A0",RIGHT_HANDED,future guard/receiver measurements centered below J1,CONTROLLED SUCCESSOR CONVENTION - physical datum marking open
+G0_LEGACY_LAYOUT,"physical point below J1, not a rigid-transform parent","A0(-210.000,81.025,0.000)",+x legacy depth=A0 +Y; +y legacy width=A0 +X; +z=A0 +Z,NOT A KINEMATIC FRAME - axis swap has determinant -1,interpret historical guard P0.2/P0.3 dimension labels only,"LEGACY LAYOUT ONLY - prohibited for rotations, cross products, torques, or controls"

@@ -1,0 +1,8 @@
+screen_id,parameter,basis,result,limitation,warning
+LOAD-001,PNOZ s4 750104 steady input,2.5 W / 24 V,0.10417 A,catalog arithmetic only,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+LOAD-002,PNOZ s4 750104 startup pulse,manufacturer maximum A1 pulse,0.5 A for 5 ms,catalog value; received measurement open,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+LOAD-003,Phoenix 2967060 minimum switching,manufacturer catalog,10 mA at 5 V,does not prove electronic-load suitability,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+LOAD-004,Phoenix 2967060 limiting continuous current,manufacturer catalog,6 A,terminal/ambient/application derating open,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+LOAD-005,Phoenix 2967060 inrush statement,manufacturer catalog,15 A for 300 ms,load class/endurance coordination open,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+LOAD-006,steady-current margin screen,6 A / 0.10417 A,57.6x nominal,not a release criterion,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+LOAD-007,application conclusion,electronic supply load plus switching cycles,SELECTION REQUIRED,"manufacturer confirmation, protection and physical endurance test required",PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION

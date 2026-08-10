@@ -1,0 +1,22 @@
+{
+  "identifier": "HR-V0-Q4X-IF-P0.1",
+  "round": "R183",
+  "status": "PRELIMINARY - EVALUATION CANDIDATE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "exact_candidate_count": 5,
+  "selection_required_item_count": 2,
+  "pin_schedule_row_count": 8,
+  "domain_boundary_count": 6,
+  "configuration_row_count": 10,
+  "calibration_step_count": 10,
+  "source_count": 7,
+  "open_hold_count": 14,
+  "physical_run_count": 0,
+  "released_connection_count": 0,
+  "released_protection_count": 0,
+  "robot_baseline_change_count": 0,
+  "safety_function_credit": "ZERO",
+  "gate_effect": {
+    "EG-025": "OPEN",
+    "EG-026": "PARTIAL"
+  }
+}

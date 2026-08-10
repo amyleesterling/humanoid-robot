@@ -1,0 +1,16 @@
+hold_id,scope,state,close_condition,release_effect
+DIH-001,T7 received identity firmware and factory calibration,OPEN,"received serial/firmware; calibration record; functional check",NONE
+DIH-002,complete scan list address count rate skew and filter,OPEN,"frozen channel map plus measured timing/uncertainty budget",NONE
+DIH-003,DAQ host USB/Ethernet power and data isolation,OPEN,"selected host route; grounding/no-backfeed review; physical test",NONE
+DIH-004,CB37 cable terminal schedule enclosure and strain relief,OPEN,"exact cable and pin/terminal schedule; physical inspection",NONE
+DIH-005,isolated 24 V event-input bank,OPEN,"native schematic and exact parts; isolation/fault/delay tests",NONE
+DIH-006,current range and regeneration envelope,OPEN,"bounded fault/RMS/peak/polarity values against HLSR limits",NONE
+DIH-007,HLSR carrier supply reference layout and enclosure,OPEN,"reviewed native ECAD; built article; inspection and calibration",NONE
+DIH-008,independent angle/velocity chain,OPEN,"exact sensor/mount/interface; installed traceable calibration",NONE
+DIH-009,reaction-force range and chain,OPEN,"released fixture load cases; exact sensor/interface; installed calibration",NONE
+DIH-010,bumper-displacement range and chain,OPEN,"released stroke envelope; exact sensor/interface; installed calibration",NONE
+DIH-011,camera optical and trigger chain,OPEN,"exact lens/cable/host/mount; FOV/scale/latency/frame-integrity evidence",NONE
+DIH-012,sample-clock witness,OPEN,"exact timing instrument/interface; calibration; run-start/end witness procedure",NONE
+DIH-013,combined uncertainty and timing budget,OPEN,"accepted per-channel delay/skew/noise/calibration aggregation",NONE
+DIH-014,qualified electrical mechanical and independent-test dispositions,OPEN,"named competent reviewers approve exact configuration and test boundaries",NONE
+DIH-015,physical test authorization,OPEN,"separate written authorization after all applicable gates close",NONE

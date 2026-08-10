@@ -1,0 +1,6 @@
+source_id,manufacturer,document,revision_or_date,url,verified_fact
+GRS-001,80/20,20-2496 product page,live page; no formal revision exposed; accessed 2026-08-07,https://8020.net/20-2496.html,requires drill-through machining on panel; suggests one 75-3581
+GRS-002,80/20,12004 product page,live page; no formal revision exposed; accessed 2026-08-07,https://8020.net/12004.html,20-Series polypropylene reduction T-slot cover usable as panel gasket for 1-4 mm panels; 2 m length
+GRS-003,Plaskolite,TUFFAK fabrication guide FAB015,current 68-page guide; no printed revision exposed; accessed 2026-08-07,https://plaskolite.com/docs/default-source/fab/fab015_tuf_en.pdf,3/4.5/6 mm gauges; drilling and edge-distance guidance; thermal movement; all-edge engagement; through-bolting only when unavoidable
+GRS-004,Plaskolite,TUFFAK GP PDS004,code 122022; accessed 2026-08-07,https://plaskolite.com/docs/default-source/pds/pds004_tuf_gp.pdf,specific gravity 1.2 is typical and not for specification purposes
+GRS-005,80/20,20-2020 product page,live page; no formal revision exposed; accessed 2026-08-07,https://8020.net/20-2020.html,profile identity and 0.0247 lb/in mass basis retained from P0.3

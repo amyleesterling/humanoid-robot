@@ -1,0 +1,9 @@
+control_id,quantity,value_mm,evidence,release_state
+FXG-001,base envelope X/Y/T,400/600/12.7,topology allocation,CANDIDATE ONLY; MATERIAL/ANCHOR/JOIN/TOLERANCE SELECTION REQUIRED
+FXG-002,upright envelope X/Y/Z,12.7/300/300,topology allocation,CANDIDATE ONLY; MATERIAL/JOIN/TOLERANCE/DEFLECTION PROOF REQUIRED
+FXG-003,joint axis above base datum,180.0,model datum; 167.3 above base top,CANDIDATE ONLY
+FXG-004,TFF400 envelope OD/ID/length,50.2/16.8/50.8,FUTEK FI1251-F drawing-derived,ENVELOPE ONLY; RECEIVED INSPECTION REQUIRED
+FXG-005,TFF400 interface axes,"4 axes on BCD 31.75, both ends",FUTEK FI1251-F,AXES ONLY; HOLE/THREAD/FASTENER/ENGAGEMENT SELECTION REQUIRED
+FXG-006,FR12-S102 candidate axes,"Y=+/-11, Z=32 relative to J2",controlled exact ROBOTIS STEP axes,EXACT NOMINAL AXES; RECEIVED FIT/FASTENER/FAI OPEN
+FXG-007,fixture load-arm envelope,20 square x 160; start Y=28,topology allocation,NOT P1.1 HARDWARE; LOAD DEVICE/ADAPTER/INERTIA/RETENTION SELECTION REQUIRED
+FXG-008,static cross-check perpendicular arm,100.0,calculation datum only,AS-BUILT METROLOGY/UNCERTAINTY/ALIGNMENT REQUIRED

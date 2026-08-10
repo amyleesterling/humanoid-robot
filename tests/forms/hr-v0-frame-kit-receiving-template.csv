@@ -1,0 +1,12 @@
+record_id,date,inspector,repo_commit,kit_content_id,kit_sku,received_package_label,received_item_marking,expected_quantity,received_quantity,fastener_head_style,measured_length_mm,thread_gauge_result,material_or_grade_marking,coating_or_finish,photo_reference,damage_or_shortage,disposition,notes
+NOT-EXECUTED,,,,FKC-001,903-0270-300,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,FKC-002,903-0270-300,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,FKC-003,903-0270-300,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,FKC-004,903-0270-300,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,FKC-005,903-0270-300,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,FKC-006,903-0270-300,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,FKC-007,903-0269-300,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,FKC-008,903-0269-300,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,FKC-009,903-0269-300,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,FKC-010,903-0269-300,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,FKC-011,903-0269-300,,,,,,,,,,,,NOT EXECUTED,TEMPLATE ROW

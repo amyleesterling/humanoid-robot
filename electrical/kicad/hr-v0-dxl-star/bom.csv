@@ -1,0 +1,8 @@
+reference,value,quantity,status,evidence
+JC1,JST B3B-EH-A U2D2 data/reference input,1,PROPOSED - TWO-WIRE CABLE TEST REQUIRED,"ROBOTIS U2D2 and JST EH live pages rechecked 2026-08-07; exact header family/pins supported, harness application not released."
+JP1,JST B2P-VH protected branch 1 power input,1,PROPOSED - WIRE/THERMAL TEST REQUIRED,JST VH English catalog current asset rechecked 2026-08-07; B2P-VH/VHR-2N/SVH-21T-P1.1 family evidence only.
+JA1,JST B3B-EH-A actuator J1 output,1,PROPOSED - CABLE/LIMIT TEST REQUIRED,ROBOTIS X-series connector table and JST EH page rechecked 2026-08-07; no permission to exceed published connector limits.
+JP2,JST B2P-VH protected branch 2 power input,1,PROPOSED - WIRE/THERMAL TEST REQUIRED,JST VH English catalog current asset rechecked 2026-08-07; B2P-VH/VHR-2N/SVH-21T-P1.1 family evidence only.
+JA2,JST B3B-EH-A actuator J2 output,1,PROPOSED - CABLE/LIMIT TEST REQUIRED,ROBOTIS X-series connector table and JST EH page rechecked 2026-08-07; no permission to exceed published connector limits.
+JP3,JST B2P-VH protected branch 3 power input,1,PROPOSED - WIRE/THERMAL TEST REQUIRED,JST VH English catalog current asset rechecked 2026-08-07; B2P-VH/VHR-2N/SVH-21T-P1.1 family evidence only.
+JA3,JST B3B-EH-A actuator J3 output,1,PROPOSED - CABLE/LIMIT TEST REQUIRED,ROBOTIS X-series connector table and JST EH page rechecked 2026-08-07; no permission to exceed published connector limits.

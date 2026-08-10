@@ -1,0 +1,3 @@
+configuration,j2_actuator,j1_to_j2_mm,j2_to_g1_mm,candidate_object_center_mm,incomplete_known_mass_g,headroom_to_750_g,elbow_screen_nm,12v_stall_endpoint_ratio,status
+P0.7 controlled unreleased,XM540-W270-T,202.550,129.050,360.000,692.758,57.242,1.158,9.154,CONTROLLED BUT UNRELEASED; INCOMPLETE MASS AND PHYSICAL EVIDENCE
+P0.8 X430 exact-coordinate candidate,XM430-W350-T,191.550,125.050,345.000,577.091,172.909,1.104,3.713,COMPARISON CANDIDATE; FRAME/FASTENER/CABLE/GRIPPER/BUMPER MASS AND CONTINUOUS TORQUE OPEN

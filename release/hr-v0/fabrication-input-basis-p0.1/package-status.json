@@ -1,0 +1,12 @@
+{
+  "schema": "project-button-fabrication-input-basis-v1",
+  "identifier": "HR-V0-FAB-INPUT-P0.1",
+  "round": "R173",
+  "status": "PRELIMINARY_NOT_APPROVED_FOR_QUOTATION_FABRICATION_MOTION_OR_ENERGIZATION",
+  "reconciled_inputs": 1,
+  "partial_inputs": 2,
+  "open_or_selection_required_inputs": 6,
+  "not_authorized_inputs": 1,
+  "gate_effect": "EG-006_AND_EG-007_REMAIN_PARTIAL",
+  "warning": "PRELIMINARY - NOT APPROVED FOR QUOTATION FABRICATION MOTION OR ENERGIZATION"
+}

@@ -1,0 +1,49 @@
+{
+  "identifier": "HR-V0-FRAME-CONV-P0.1",
+  "date": "2026-08-09",
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION",
+  "frame_count": 6,
+  "right_handed_frame_count": 5,
+  "joint_count": 3,
+  "transform_count": 4,
+  "legacy_mapping_count": 4,
+  "calibration_record_count": 6,
+  "open_hold_count": 10,
+  "a0_axes": {
+    "x": "right",
+    "y": "front",
+    "z": "up"
+  },
+  "j1_origin_a0_mm": [
+    -210.0,
+    81.025,
+    500.0
+  ],
+  "j2_origin_j1_mm": [
+    0.0,
+    202.55,
+    0.0
+  ],
+  "g1_origin_j1_mm": [
+    0.0,
+    331.6,
+    0.0
+  ],
+  "j1_limits_deg": [
+    -20.0,
+    70.0
+  ],
+  "j2_limits_deg": [
+    15.0,
+    115.0
+  ],
+  "gripper_limits_mm": [
+    20.0,
+    75.0
+  ],
+  "raw_calibration_closed": false,
+  "physical_datum_closed": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "functional_safety_credit": false
+}

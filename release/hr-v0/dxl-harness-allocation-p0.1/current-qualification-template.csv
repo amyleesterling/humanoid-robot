@@ -1,0 +1,8 @@
+record_id,date_utc,operator,reviewer,harness_id,axis,actuator_model,serial_number,firmware_version,supply_source,source_limit_setting,branch_protection,current_limit_raw,goal_current_raw,profile_velocity_raw,profile_acceleration_raw,test_case,duty_definition,ambient_c,bundling_configuration,sample_rate_hz,analog_bandwidth_hz,peak_current_a,peak_duration_ms,rms_window_ms,rms_current_a,connector_start_c,connector_max_c,cable_max_c,actuator_max_c,branch_min_v,branch_max_v,dxl_error_count,instrument_ids,calibration_ids,raw_data_uri,manufacturer_disposition_uri,acceptance_basis,result,nonconformance_id,approver,approval_date,notes
+CUR-001,,,,HAR-J1,J1,XM540-W270-T,,,,,,200,200,,,TORQUE_OFF_BASELINE,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,NOT EXECUTED,,,,
+CUR-002,,,,HAR-J1,J1,XM540-W270-T,,,,,,400,400,,,LOADED_HOLD,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,NOT EXECUTED,,,,
+CUR-003,,,,HAR-J1,J1,XM540-W270-T,,,,,,600,600,,,BIDIRECTIONAL_MOTION,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,NOT EXECUTED,,,,
+CUR-004,,,,HAR-J1,J1,XM540-W270-T,,,,,,800,800,,,REPRESENTATIVE_DUTY,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,NOT EXECUTED,,,,
+CUR-005,,,,HAR-J2,J2,XM540-W270-T,,,,,,800,800,,,REPRESENTATIVE_DUTY,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,NOT EXECUTED,,,,
+CUR-006,,,,HAR-G1,G1,XM430-W350-T,,,,,,300,300,,,GRIPPER_DUTY,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,NOT EXECUTED,,,,
+CUR-007,,,,HAR-J1,J1,XM540-W270-T,,,,,,800,800,,,REVERSAL_REGENERATION,,,,,,,,,,,,,,,,,,,,,SELECTION REQUIRED,NOT EXECUTED,,,,

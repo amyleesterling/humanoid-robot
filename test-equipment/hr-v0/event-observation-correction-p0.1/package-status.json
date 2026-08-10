@@ -1,0 +1,18 @@
+{
+  "identifier": "HR-V0-EVENT-OBS-CORR-P0.1",
+  "round": "R180",
+  "date": "2026-08-10",
+  "status": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "corrected_false_independence_count": 1,
+  "simultaneous_host_channel_count": 8,
+  "run_type_count": 2,
+  "selected_host_base_model_count": 1,
+  "selected_host_order_configuration_count": 0,
+  "released_diagnostic_load_count": 0,
+  "released_connection_count": 0,
+  "executed_physical_test_count": 0,
+  "safety_function_credit": "ZERO",
+  "eg_025": "OPEN",
+  "eg_026": "PARTIAL",
+  "release_effect": "NONE"
+}

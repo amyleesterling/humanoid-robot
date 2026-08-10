@@ -1,0 +1,19 @@
+hold_id,scope,evidence_required,status,release_effect
+WRI-H01,CONFIGURATION/REQUIREMENT,Approve or reject the XC330 branch and formally disposition GRIP-002 before any active baseline change.,OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H02,RECEIVED H104,"Receive, identify, inspect and gauge the exact H104 frame including inside width, side flatness, all selected axes and M2 taps.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H03,BRIDGE MATERIAL,"Select exact stock/alloy/temper/MTR, corrosion treatment, process, grain orientation and finished-part controls.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H04,BRIDGE DRAWING/FAI,"Release tolerances, edge treatment, positional controls, flatness/parallelism and execute first-article inspection.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H05,H104 FASTENERS,"Select and prove exact H104 M2-tap screw identity, length, head/tool access, engagement, torque, locking and reuse.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H06,S101 SHARED STACK,"Select and prove the complete S101/U-base/bridge screw, nut, washer, protrusion, torque and locking stack.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H07,ASSEMBLY SEQUENCE,"Demonstrate an unpowered assembly/disassembly sequence with tool access, no forced alignment and service access.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H08,TOLERANCE CLOSURE,"Close H104/bridge/U-base/S101 tolerance, seating, parallelism and no-preload-deflection stack with received data.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H09,LOAD PATH,"Calculate and prove jaw/payload/jam loads through S101, U-base, bridges, H104, A07 and forearm including fatigue and fastener effects.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H10,COLLISION,Replace the 5-degree nominal sample with tolerance-aware continuous gripper/arm/cable/guard collision proof and as-built sweep.,OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H11,CABLE,"Define exact XC330 cable, connector, bend/twist envelope, route, clamp, strain relief, flex life and full-pose inspection.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H12,GUARD,"Design retained fixed guarding/bellows for every rack, pinion, slot, jaw and wrist pinch line and probe-test it.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H13,RECEIVER/OBJECT,Correlate the Y=358.6 mm nominal object datum to the fixed receiver and prove all release/fault/power-loss containment poses.,OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H14,MASS/COM/INERTIA,"Measure H104, FPX frames, bridges, fasteners, cable, guard and complete assembly; reconcile mass, COM and inertia.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H15,FORCE/CURRENT/THERMAL,"Execute calibrated grip-force, current, repeatability, temperature, wear and duty characterization.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H16,PHYSICAL FIT/PROOF,"Execute received dry fit, FAI, guarded no-load, low-energy, jam, fault and proof tests under authorized procedures.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H17,FUNCTIONAL SAFETY,"Allocate and validate guarding, restart, power-loss and receiver controls without assigning safety credit to ordinary control logic.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION
+WRI-H18,QUALIFIED REVIEW,"Obtain signed mechanical, electrical and safety review of one frozen as-built configuration before release changes.",OPEN,NO PROCUREMENT/FABRICATION/ASSEMBLY/CONNECTION/MOTION/ENERGIZATION

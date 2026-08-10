@@ -1,0 +1,3 @@
+part,solid_count,bbox_x_mm,bbox_y_mm,bbox_z_mm,volume_mm3,center_x_native_mm,center_y_native_mm,center_z_native_mm,derivation,release_boundary
+FR12-E170,1,37.000000,14.000000,87.740667,5837.452710,0.000000,1.422345,23.787578,"CadQuery import of SHA-controlled manufacturer STEP","geometry-only reference; native coordinates are not an assembly transform; no material or mass credit"
+FR12-E171,1,54.000000,47.998711,94.848224,8322.633440,-0.000255,12.217384,38.106643,"CadQuery import of SHA-controlled manufacturer STEP","geometry-only reference; native coordinates are not an assembly transform; no material or mass credit"

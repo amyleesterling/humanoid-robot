@@ -1,0 +1,3 @@
+case,torque_nm,ideal_each_jaw_force_n,equation,credit
+ROBOTIS product-page estimated rated torque disclosure,0.184,11.500,"F=T/(2*r), r=0.008 m",SCREEN ONLY - NOT A PROJECT RATING OR ACCEPTANCE VALUE
+manufacturer momentary stall torque at 11.1 V,0.920,57.500,"F=T/(2*r), r=0.008 m",NO CONTINUOUS OR REAL-WORLD FORCE CREDIT; DO NOT COMMAND STALL

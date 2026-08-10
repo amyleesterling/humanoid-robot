@@ -1,14 +1,27 @@
 {
-  "configuration_id": "HR-V0-WD-P0.1",
+  "configuration_id": "HR-V0-WD-P0.4",
   "status": "PRELIMINARY-NOT-APPROVED-FOR-ENERGIZATION",
   "heartbeat_nominal_edge_ms": 100,
   "heartbeat_timeout_ms": 300,
   "heartbeat_minimum_edge_ms": 20,
   "startup_valid_edges": 3,
   "relay_feedback_settle_ms": 25,
+  "processor_watchdog_timeout_ms": 100,
+  "polling_period_us": 1000,
   "relay_channels": 2,
   "feedback_contact_state": "NC_TRUE_WHEN_RELAY_DEENERGIZED",
-  "gpio_assignments": "SELECTION REQUIRED",
-  "platform_binding": "SELECTION REQUIRED",
+  "feedback_front_end": "TI_ISO1212DBQ_P0.1",
+  "heartbeat_front_end": "VISHAY_VO618A-4X017T_R910_PULLUP10K_P0.1",
+  "relay_driver": "2X_TI_TPL7407LPWR_OUT1_P0.1",
+  "feedback_gpio_active_high": true,
+  "gpio_assignments": {
+    "heartbeat_input": {"gpio": 2, "physical_pin": 4},
+    "relay1_drive": {"gpio": 3, "physical_pin": 5},
+    "relay2_drive": {"gpio": 4, "physical_pin": 6},
+    "relay1_nc_feedback": {"gpio": 6, "physical_pin": 9},
+    "relay2_nc_feedback": {"gpio": 7, "physical_pin": 10}
+  },
+  "platform_binding": "RASPBERRY_PI_PICO_SC0915_PICO_SDK_2.3.0_P0.2",
+  "platform_binding_status": "SOURCE-CANDIDATE-HIL-REQUIRED",
   "safety_credit": "NONE"
 }

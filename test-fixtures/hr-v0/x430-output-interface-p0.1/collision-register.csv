@@ -1,0 +1,5 @@
+check,pair,nominal_intersection_mm3,interpretation
+COL-01,HN12 exact geometry / X430 exact geometry,0.000000,nominal B-Rep noninterference only; no tolerance or received-hardware credit
+COL-02,FX103-C01 / HN12 exact geometry,0.000000,touching placement at X=25.95 mm; contact datum and tolerance remain open
+COL-03,FX103-C01 / X430 exact geometry,0.000000,nominal B-Rep noninterference only
+COL-04,eight candidate hole axes / HN12 nominal pattern,NOT A CAPACITY CHECK,axis/pattern review only; threads and fasteners not represented

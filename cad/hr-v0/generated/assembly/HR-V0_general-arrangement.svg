@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+<style>text{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}.title{font-size:36px;font-weight:700}.sub{font-size:23px;font-weight:700}.small{font-size:16px}.warn{font-size:20px;font-weight:700;fill:#8a3b00}.structure{fill:#66c7f4;stroke:#0b4f8a;stroke-width:3}.hold{fill:#fff4cd;stroke:#f3b61f;stroke-width:4}.datum{stroke:#0b4f8a;stroke-width:2;stroke-dasharray:8 6}</style>
+<rect width="1400" height="1000" fill="#f7fbff"/>
+<text x="40" y="58" class="title">Project Button HR-V0 mechanical coordination</text>
+<text x="40" y="98" class="warn">HR-V0-MECH-P0.6 - PRELIMINARY - INTEGRATED CANDIDATE ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
+<text x="40" y="150" class="sub">Integrated base, column and two-axis arm candidate</text>
+<rect x="80" y="545" width="500" height="40" class="structure"/>
+<rect x="80" y="505" width="40" height="40" class="structure"/><rect x="540" y="505" width="40" height="40" class="structure"/>
+<rect x="100" y="185" width="40" height="360" class="structure"/>
+<line x1="330" y1="600" x2="330" y2="625" class="datum"/><text x="300" y="653">A0</text>
+<line x1="120" y1="185" x2="120" y2="585" class="datum"/><text x="82" y="685">C0 X=-210 candidate</text>
+<text x="80" y="720">Five extrusion cuts and six frame joints remain on</text>
+<text x="80" y="755">received-fit, torque, slip and proof hold.</text>
+<text x="80" y="790">Bench anchors remain SELECTION REQUIRED for one surveyed Boston bench.</text>
+<rect x="680" y="150" width="670" height="600" rx="18" class="hold"/>
+<text x="720" y="205" class="sub">ARM RELEASE HOLD</text>
+<text x="720" y="250" class="warn">A00-A07 SOURCE GEOMETRY CLOSED AS A CANDIDATE</text>
+<text x="720" y="300">J1: (-210, 81.025, 500) mm from A0</text>
+<text x="720" y="340">J1-J2: 202.550 mm; J2-G1: 129.050 mm</text>
+<text x="720" y="380">J1/J2 axes parallel in the nominal native assembly</text>
+<text x="720" y="430">Continuous nominal first contact: J2=121.6433 deg</text>
+<text x="720" y="480">Candidate soft/stop datums: 115/118 deg; neither is released.</text>
+<text x="720" y="535">Still required before quotation/fabrication:</text>
+<text x="750" y="580">received material, fit, fastener and FAI evidence</text>
+<text x="750" y="620">bumper selection, cables, guard and stop overtravel proof</text>
+<text x="750" y="660">physical proof and qualified mechanical disposition</text>
+<text x="720" y="710" class="warn">NO PART OR ASSEMBLY IS RELEASED.</text>
+<rect x="40" y="820" width="1310" height="120" rx="14" class="hold"/>
+<text x="70" y="865">Interactive candidate: generated/arm-architecture-p0.7/HR-V0_arm_architecture_candidate.glb</text>
+<text x="70" y="903">Controlled STEP, drawings and stop evidence: generated/arm-architecture-p0.7/</text>
+<text x="40" y="975" class="warn">HR-V0-MECH-P0.6 - PRELIMINARY - INTEGRATED CANDIDATE ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
+</svg>

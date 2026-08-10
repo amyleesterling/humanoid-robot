@@ -1,0 +1,6 @@
+source,organization,record,revision_date,locator,local_sha256,use
+BS-SRC-001,Magtrol,HB/MHB Series datasheet,©2025; accessed 2026-08-08,cad/vendor/magtrol/hb-450m-r102/HB-MHB-datasheet-2025.pdf,51B4AB9868D6E1380DFADA6E7A489A6D37F6A4B202AFF6107C75209AB61A6DC0,HB-450M ratings/mass and 4866 pillow-block identity/dimensions
+BS-SRC-002,Magtrol,HB-450M drawing Rev A,Rev A 2004-01-29,cad/vendor/magtrol/hb-450m-r102/hb-450m-rev-a.pdf,B60AE3A2B5E4CB18BA8F9875AD1C44B6AD78002DC2E2E880331C67FFE1FEB77F,"brake 3 x M5 x 0.8, 10 mm minimum, PCD 60 and Ø32 h3 boss"
+BS-SRC-003,Magtrol,HB-450M official STEP,publisher revision not exposed; downloaded 2026-08-08,cad/vendor/magtrol/hb-450m-r102/HB-450M_B_EF.step,2EE1136C6CA3B2202A13BC11DEA1A18EEB9D261B7E7D776EE940699C7F89EDE1,exact brake geometry and nominal mount-face transform
+BS-SRC-004,Magtrol,PT Series T-slot base plates,US 02/2022; accessed 2026-08-08,cad/vendor/magtrol/pt-series-r104/PT-series-US-02-2022.pdf,5B1B991767A5801975485F22430931EBB6990B1E957D554CD8AE9B8D2CC00655,"corrected PT profile, pitch, length identity and mass"
+BS-SRC-005,Magtrol,current HB/MHB and PT product pages,live pages accessed 2026-08-08,https://www.magtrol.com/product/hysteresis-brakes/ ; https://www.magtrol.com/product/pt-series-t-slot-base-plates/,NOT DOWNLOADED,current product/download context only

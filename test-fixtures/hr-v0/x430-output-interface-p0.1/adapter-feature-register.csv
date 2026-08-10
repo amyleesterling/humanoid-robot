@@ -1,0 +1,9 @@
+feature,definition,authority,state
+AF-01,HN12 exact vendor body; native axis rotated to project X and placed at X=21.75 mm,controlled STEP + reference drawing,GEOMETRY CONTROLLED; APPLICATION OPEN
+AF-02,8 x Ø2.2 mm clearance-hole review axes on PCD Ø16 mm,candidate clearance derived from 8-M2 x 4 TAP THRU,REVIEW ALLOCATION ONLY
+AF-03,flange Ø32.0 x 8.0 mm; contact plane X=25.95 mm,project review allocation,NOT TOLERANCED OR RELEASED
+AF-04,integral output stub Ø15.0 x 18.0 mm,Ruland nominal bore and project review allocation,NOT TOLERANCED OR RELEASED
+AF-05,candidate shaft fit +0/-0.013 mm; not encoded in STEP,Ruland catalog shaft recommendation,MANUFACTURER ACCEPTANCE REQUIRED
+AF-06,"contact-face flatness, perpendicularity and total runout",SELECTION REQUIRED,OPEN
+AF-07,"material, heat treatment, coating and corrosion control",SELECTION REQUIRED,OPEN
+AF-08,"fillets, chamfers, balance and inspection datums",SELECTION REQUIRED,OPEN

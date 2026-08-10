@@ -10,7 +10,22 @@
       4.75
     ],
     "candidate_hole_d_mm": 2.7,
-    "column_I_mm4": 137870.0
+    "selected_interfaces": {
+      "H101_output": "8 clearance holes on 22 mm PCD",
+      "S102_body_frame": "4 clearance holes on selected 32 x 16 mm tapped rectangle",
+      "distal_gripper": "FR12-H104K selected four-hole subset on 24 x 12 mm rectangle; physical fit required"
+    },
+    "h101_frame_nominal_thickness_mm": 2.0,
+    "xm540_output_tap_depth_max_mm": 2.5,
+    "hard_stop_candidate_contact_radius_mm": 50.0,
+    "historical_p0_2_hard_stop_margin_deg_withdrawn": 5.0,
+    "historical_illustrative_bumper_stroke_mm_not_selected": 2.0,
+    "xm540_no_load_speed_rpm_at_12v_candidate_endpoint": 30.0,
+    "xm540_ideal_stall_torque_Nm_at_12v_endpoint": 10.6,
+    "column_I_mm4": 137870.0,
+    "moving_mass_ceiling_g": 750.0,
+    "xm540_manufacturer_mass_g": 165.0,
+    "xm430_manufacturer_mass_g": 82.0
   },
   "screens": {
     "link_gross_I_mm4": 33718.666666666664,
@@ -20,17 +35,91 @@
     "link_cantilever_deflection_mm": 0.04214239908398049,
     "conservative_two_bolt_force_each_N": 522.2727272727273,
     "candidate_plate_bearing_stress_MPa": 43.98086124401914,
+    "h101_output_stack_nominal_before_thread_mm": 6.75,
+    "h101_output_fastener_geometric_max_underhead_mm": 9.25,
     "column_tip_deflection_pure_moment_mm": 0.15097713346851635,
-    "minimum_anchor_couple_force_each_N": 27.357142857142858
+    "minimum_anchor_couple_force_each_N": 27.357142857142858,
+    "hard_stop": {
+      "allocated_shoulder_inertia_kg_m2_excludes_reflected_rotor": 0.047264,
+      "allocated_elbow_inertia_kg_m2_excludes_reflected_rotor": 0.010144,
+      "J1_energy_J_at_10_deg_s": 0.0007198718864399497,
+      "J1_energy_J_at_30_deg_s": 0.006478846977959547,
+      "J1_energy_J_at_30_rpm_no_load_endpoint": 0.23323849120654364,
+      "J2_energy_J_at_10_deg_s": 0.0001545019553158186,
+      "J2_energy_J_at_30_deg_s": 0.0013905175978423672,
+      "J2_energy_J_at_30_rpm_no_load_endpoint": 0.05005863352232521,
+      "J1_three_x_gravity_force_N_at_50_mm": 101.99999999999999,
+      "J2_three_x_gravity_force_N_at_50_mm": 37.199999999999996,
+      "ideal_stall_endpoint_force_N_at_50_mm": 211.99999999999997,
+      "J1_average_force_N_if_no_load_energy_absorbed_in_2_mm_excludes_rotor": 116.61924560327182,
+      "J2_average_force_N_if_no_load_energy_absorbed_in_2_mm_excludes_rotor": 25.029316761162605,
+      "screen_result": "HISTORICAL ALLOCATED-INERTIA SCREEN - CURRENT J2 STOP P0.1 EXISTS - IMPACT AND PHYSICAL RELEASE OPEN"
+    },
+    "moving_mass": {
+      "known_subtotal_g": 692.758,
+      "unresolved_headroom_g": 57.24199999999996,
+      "known_fraction_of_ceiling": 0.9236773333333334,
+      "bucket_allocation_g": {
+        "upper_link_hardware": 120.0,
+        "elbow_actuator_and_bracket": 200.0,
+        "forearm_hardware": 120.0,
+        "gripper_assembly": 210.0,
+        "payload": 100.0
+      },
+      "bucket_known_g": {
+        "upper_link_hardware": 190.289,
+        "elbow_actuator_and_bracket": 165.0,
+        "forearm_hardware": 155.469,
+        "gripper_assembly": 82.0,
+        "payload": 100.0
+      },
+      "bucket_unresolved_headroom_g": {
+        "upper_link_hardware": -70.28899999999999,
+        "elbow_actuator_and_bracket": 35.0,
+        "forearm_hardware": -35.468999999999994,
+        "gripper_assembly": 128.0,
+        "payload": 0.0
+      },
+      "unknown_items": [
+        "J1 and J2 H101 frames/idlers",
+        "J2 S102 body frame",
+        "all joint/frame/gripper fasteners and spacers",
+        "selected bumper and retention hardware",
+        "received OpenMANIPULATOR-X mechanism subset, pads, guard and retention",
+        "all moving cable, connectors, guides and strain relief"
+      ],
+      "screen_result": "692.758 g KNOWN/ESTIMATED SUBTOTAL; 57.242 g UNRESOLVED HEADROOM - LINK BUCKETS EXCEEDED - MASS CLOSURE OPEN"
+    },
+    "guard_receiver": {
+      "maximum_object_center_reach_mm": 360.0,
+      "maximum_object_half_extent_mm": 35.0,
+      "stopping_travel_space_reservation_mm_not_measured": 25.0,
+      "guard_clearance_space_reservation_mm_not_selected": 25.0,
+      "envelope_tolerance_space_reservation_mm_not_closed": 5.0,
+      "derived_radial_envelope_mm": 450.0,
+      "preliminary_internal_width_mm": 900.0,
+      "preliminary_internal_depth_mm": 400.0,
+      "preliminary_internal_height_mm": 950.0,
+      "screen_result": "SPACE RESERVATION ONLY - STOPPING CLEARANCE PANEL RECEIVER AND HARNESS RELEASE OPEN"
+    }
   },
   "not_credited_or_unresolved": [
     "Actual alloy/temper certificate, thickness tolerance, flatness and finish",
     "ROBOTIS frame material, measured mass, permissible load and fatigue behavior",
     "Exact M2.5 and M8 fastener part, grade, engagement, preload, torque and locking",
-    "Joint backlash, alignment, combined load, shock, fatigue and hard-stop impact",
+    "Physical FC01/FC02/FC03 pattern verification, received thread depth and stack tolerance",
+    "FR12-H104K exact fasteners, received seating, tolerance, guard clearance and retention load path",
+    "Measured mass, local COM and inertia for every row in the HR-V0 moving-mass ledger",
+    "Mass of frames, fasteners, stop hardware, cable guides, moving harness and complete gripper mechanics",
+    "C06/C07 positive-stop CAD candidate still requires bumper selection, received FAI, complete load/contact/tolerance analysis and physical proof",
+    "Measured maximum joint speed, reflected rotor/gear inertia, gear compliance, drive torque duration and stop-switch latency",
+    "Hard-stop tolerance stack including calibration error, backlash, bumper compression and stopping travel",
+    "Joint alignment, combined load, shock and fatigue",
     "Bench substrate, anchor part, edge distance, pull-out, shear and site permission",
     "Guard and receiver-fixture impact/retention",
+    "Complete measured 3D sweep and fault-specific stopping/drop envelope",
+    "Exact guard panels frame fasteners access probe service isolation catch and moving harness",
     "Correlation to measured first article and independent mechanical review"
   ],
-  "calculation_result": "GEOMETRY SCREEN PASSES; RELEASE REMAINS OPEN"
+  "calculation_result": "P0.2 ARM GEOMETRY SUPERSEDED; LEGACY STRUCTURAL SCREENS RETAINED AS HISTORICAL ONLY; CURRENT P0.7 EVIDENCE IS SEPARATELY CONTROLLED"
 }

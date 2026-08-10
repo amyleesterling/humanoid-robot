@@ -1,0 +1,4 @@
+edge_id,cut_length_mm,quantity,used_length_mm,basis
+GE-970,970,12,11640,four front/rear halves plus two sides
+GE-485,485,12,5820,four front/rear halves plus two top halves
+GE-440,440,8,3520,two sides plus two top halves

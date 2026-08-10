@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HR-V0 gripper native-source correction</title>
+  <style>
+    :root{--sky:#dff3ff;--navy:#102a56;--blue:#245aa6;--gold:#f2b827;--paper:#f8fbff;--ink:#14213d;--red:#7c2525}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,sans-serif}
+    .warn{background:var(--gold);color:#17223f;font-size:16px;font-weight:850;padding:16px 20px;border-bottom:3px solid var(--navy)}
+    header{background:linear-gradient(135deg,var(--navy),var(--blue));color:white;padding:clamp(28px,6vw,72px)}
+    header p{max-width:76ch}main{max-width:1180px;margin:auto;padding:24px}h1{font-size:clamp(2.2rem,6vw,4.8rem);line-height:1.02;margin:.15em 0}h2{font-size:clamp(1.5rem,3vw,2.3rem);color:var(--navy)}
+    .eyebrow,.tag{font-size:14px;font-weight:800}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}.card{background:white;border:2px solid var(--sky);border-radius:16px;padding:20px;box-shadow:0 7px 20px #102a5617}.metric{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:850;color:var(--blue)}
+    .hold{border-left:8px solid var(--gold)}.danger{border-color:#d49b9b}.danger .metric{color:var(--red)}table{border-collapse:collapse;width:100%;min-width:780px}th,td{padding:14px;border-bottom:1px solid #a8c8df;text-align:left;vertical-align:top}th{background:var(--sky)}.scroll{overflow:auto;border:2px solid var(--blue);border-radius:14px;background:white}a{color:#0b4f8a;font-weight:700}footer{margin-top:30px;background:var(--navy);color:white;padding:24px}@media(max-width:620px){main{padding:16px}.warn{padding:14px 16px}}
+  </style>
+</head>
+<body>
+  <div class="warn">PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION</div>
+  <header><div class="eyebrow">R193 · HR-V0-GRIP-CAD-ACQ-P0.2</div><h1>The native gripper source exists. It is not a release.</h1><p>The official ROBOTIS link now opens a real Onshape gripper assembly and separate part workspaces. That corrects the stale “broken link” record. The public source is still a mutable, view-only Main workspace with no anonymous export.</p></header>
+  <main>
+    <section class="grid">
+      <article class="card"><div class="metric">Native source found</div><p>One gripper assembly and five relevant part workspaces now have exact document/workspace/element identifiers.</p></article>
+      <article class="card danger"><div class="metric">No immutable export</div><p>No version-frozen STEP, Parasolid, drawing, tolerance, material or feature-history payload was acquired.</p></article>
+      <article class="card danger"><div class="metric">XC330 rail conflict</div><p>XC330 max is 12.0 V while the current nominal 12 V GST source tolerance can reach 12.6 V before transient and regeneration review.</p></article>
+    </section>
+    <section><h2>What the current public source exposes</h2><div class="scroll"><table><thead><tr><th>Workspace</th><th>Displayed identity</th><th>Engineering status</th></tr></thead><tbody>
+      <tr><td>Gripper assembly</td><td>Gripper · 57 public instances</td><td>Native view only; mutable Main workspace</td></tr>
+      <tr><td>Gripper Base</td><td>IRB-A01_OPEN</td><td>No export or fabrication release</td></tr>
+      <tr><td>Gripper Bolts</td><td>PR33_IFB-A01</td><td>No export or fabrication release</td></tr>
+      <tr><td>Gripper Horn</td><td>PR33_ICA-A01</td><td>No export or fabrication release</td></tr>
+      <tr><td>Gripper Link</td><td>PR33_ILR-A01</td><td>No export or fabrication release</td></tr>
+      <tr><td>Gripper Palm</td><td>IGP-A01_OPEN</td><td>No export or fabrication release</td></tr>
+    </tbody></table></div><p><a href="https://cad.onshape.com/documents/9442f03bd8ccac084fda9dd3/w/039e8dbd53e0782540ea5b0d/e/ff13f6a0595abaecccea4081">Open the public ROBOTIS gripper assembly</a></p></section>
+    <section class="grid"><article class="card hold"><h2>Current engineering direction</h2><p>Retain the XM430/OpenMANIPULATOR route as the active proposal because it matches current GRIP-002 and the existing electrical/firmware branch. It is not selected or released.</p></article><article class="card hold"><h2>Alternate branch</h2><p>Keep XC330 as a lightweight feasibility study. Do not connect it to the current rail. It needs a separate source/regulator/protection/regen design and per-actuator firmware scaling.</p></article></section>
+    <section class="card hold"><h2>Next evidence that actually matters</h2><p>Obtain an immutable publisher export or execute controlled received-kit metrology; then close the H104 transform, complete moving mass/COM/inertia, fasteners, cable path, retained guard, force/current/thermal limits, power-loss behavior and physical tests. Qualified independent review remains mandatory.</p></section>
+  </main>
+  <footer>This page corrects source provenance only. No procurement, fabrication, assembly, connection, powered test, motion or energization is authorized.</footer>
+</body>
+</html>

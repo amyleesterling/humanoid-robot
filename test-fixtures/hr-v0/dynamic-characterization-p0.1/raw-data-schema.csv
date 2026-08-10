@@ -1,0 +1,36 @@
+field_id,field_name,unit_or_type,definition,required_for_accepted_run
+DRF-001,run_id,text,immutable run identifier,YES
+DRF-002,configuration_commit,sha,tested repository commit,YES
+DRF-003,article_revision,text,exact fixture/article revision,YES
+DRF-004,sample_index,integer,monotonic DAQ sample index,YES
+DRF-005,daq_time_s,seconds,primary DAQ timebase,YES
+DRF-006,trigger_state,boolean,common hardware trigger,YES
+DRF-007,stop_command_state,boolean,operator or test stop edge,YES
+DRF-008,estop_state,boolean,isolated E-stop event monitor,YES
+DRF-009,source_voltage_V,V,external measured actuator bus voltage,YES
+DRF-010,source_current_A,A,external bidirectional current,YES
+DRF-011,k1_coil_state,boolean,isolated K1 coil command,YES
+DRF-012,k2_coil_state,boolean,isolated K2 coil command,YES
+DRF-013,k1_mirror_state,boolean,isolated K1 mirror feedback,YES
+DRF-014,k2_mirror_state,boolean,isolated K2 mirror feedback,YES
+DRF-015,external_angle_deg,deg,independent joint angle,YES
+DRF-016,external_velocity_deg_s,deg/s,declared-filter derivative,YES
+DRF-017,reaction_force_N,N,fixture reaction force,YES
+DRF-018,bumper_displacement_mm,mm,bumper compression,YES
+DRF-019,video_frame_id,integer,aligned high-speed video frame,YES
+DRF-020,video_time_s,seconds,verified video timebase,YES
+DRF-021,dxl_realtime_tick_ms,ms,supplemental actuator tick,SUPPLEMENTAL
+DRF-022,dxl_present_current_raw,count,supplemental register,SUPPLEMENTAL
+DRF-023,dxl_present_velocity_raw,count,supplemental register,SUPPLEMENTAL
+DRF-024,dxl_present_position_raw,count,supplemental register,SUPPLEMENTAL
+DRF-025,dxl_present_voltage_raw,count,supplemental register,SUPPLEMENTAL
+DRF-026,dxl_present_temperature_raw,count,supplemental register,SUPPLEMENTAL
+DRF-027,dropped_scan_count,integer,DAQ integrity counter,YES
+DRF-028,dxl_timeout_count,integer,supplemental transport counter,YES
+DRF-029,sensor_saturation_flags,bitfield,any range exceedance,YES
+DRF-030,filter_revision,text,velocity/force filtering identifier,YES
+DRF-031,calibration_bundle_hash,sha256,calibration evidence hash,YES
+DRF-032,timing_budget_revision,text,accepted error-budget identifier,YES
+DRF-033,operator_id,text,authorized test operator,YES
+DRF-034,witness_id,text,independent witness,YES
+DRF-035,run_disposition,enum,REJECTED ACCEPTED or HOLD; default HOLD,YES

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050">
+<style>text{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}.title{font-size:36px;font-weight:700}.head{font-size:24px;font-weight:700}.warn{font-size:20px;font-weight:700;fill:#8a3b00}.card{fill:#f7fbff;stroke:#0b4f8a;stroke-width:3}.hold{fill:#fff5d8;stroke:#d59600;stroke-width:3}.axis{stroke:#0b4f8a;stroke-width:7}.arc{fill:none;stroke:#66c7f4;stroke-width:18;stroke-linecap:round}.stop{stroke:#f3b61f;stroke-width:8}</style>
+<rect width="1600" height="1050" fill="#ffffff"/>
+<text x="60" y="70" class="title">HR-V0 hard-stop region evidence and acquisition boundary</text>
+<text x="60" y="112" class="warn">HR-V0-STOP-REGION-P0.1 / PRELIMINARY - NOMINAL CAD EVIDENCE ONLY - NO STOP OR MOTION RELEASE</text>
+<rect x="55" y="155" width="720" height="390" rx="16" class="card"/>
+<text x="90" y="205" class="head">What the nominal CAD now establishes</text>
+<circle cx="335" cy="365" r="18" fill="#0b4f8a"/>
+<path d="M 495 290 A 180 180 0 0 0 480 445" class="arc"/>
+<line x1="335" y1="365" x2="480" y2="297" class="axis"/>
+<line x1="335" y1="365" x2="382" y2="532" class="axis"/>
+<line x1="467" y1="285" x2="500" y2="309" class="stop"/>
+<line x1="365" y1="529" x2="400" y2="519" class="stop"/>
+<text x="95" y="505">J1 candidate regions screened continuously: -25..-20 deg and 70..75 deg</text>
+<text x="95" y="535">J2 candidate region screened continuously: 10..15 deg</text>
+<rect x="825" y="155" width="720" height="390" rx="16" class="hold"/>
+<text x="860" y="205" class="head">What remains physically unknown</text>
+<text x="860" y="255">• received horn/idler and frame axial stack</text>
+<text x="860" y="295">• approved fixed and moving attachment features</text>
+<text x="860" y="335">• side-plate, tool, cable and guard swept volumes</text>
+<text x="860" y="375">• stop material, bumper, retention and contact radius</text>
+<text x="860" y="415">• stopping travel, backlash, compliance and uncertainty</text>
+<text x="860" y="455">• impact, fatigue, prying, fastener and parent-load proof</text>
+<text x="860" y="505" class="warn">No topology or stop angle is released.</text>
+<rect x="55" y="585" width="1490" height="390" rx="16" class="card"/>
+<text x="90" y="640" class="head">Fail-closed next action</text>
+<text x="90" y="690">1. Receive and identify the exact J1/J2 actuator, H101, S102 and current custom-adapter articles.</text>
+<text x="90" y="735">2. Execute HSI-001..020 with calibrated instruments; preserve raw scans, uncertainty and photographs.</text>
+<text x="90" y="780">3. Select one topology only after attachment and swept-volume evidence is complete.</text>
+<text x="90" y="825">4. Generate integrated stop CAD, drawings, tolerance/load analysis and a guarded single-axis test article.</text>
+<text x="90" y="870">5. Measure contact, coast, stopping overtravel, impact and post-test condition before requesting motion credit.</text>
+<text x="90" y="925" class="warn">Do not order, fabricate, connect, move or energize from this diagram.</text>
+</svg>

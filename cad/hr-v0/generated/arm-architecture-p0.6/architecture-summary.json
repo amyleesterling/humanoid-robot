@@ -1,0 +1,271 @@
+{
+  "revision": "HR-V0-ARM-ARCH-P0.6",
+  "warning": "PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION",
+  "disposition": "integrated exact-coordinate arm/column candidate with closed source geometry at A00 through A07; material, received fit, physical proof, hard-stop, cable, guard and qualified release gates remain open; no part or assembly released",
+  "vendor_source_sha256": {
+    "XMHD-540.N101.I101.STP": "6E0DF65638B3A23B12C7EE1114D4D06F5EC2DE9E84E3FFDDD7E115E8F8FAF39F",
+    "FR13-H101K.stp": "269291E14F47A793A3C915358DD4A90B2B3F2AA4D2168E40D14F683C1BD21B1C",
+    "FR13-S102K.stp": "8203F33EF40C82BC503DB008C6A8D52DDEED25053960F2064DA2250332974C03",
+    "FR12-H104K.stp": "75BA58D2668D7D25802D1277A5393445C4FB7A8C565566E56CE76FEFC0E59F7D"
+  },
+  "vendor_8020_source_sha256": {
+    "20-2040-endview.svg": "0958DF1CB1AA380F05B0B5EECD9589F14CD2F643E38143781CD077D255084BDF",
+    "20-2040-dimensions.jpg": "169A2BBF2BADD6D1F7DEF5DDDEB193ACE8A378E9C710C2A8B1520DDF31A99906",
+    "20-2040-30mm.EPRT": "DDE2F6E3A19CDCA98F57F95431405DA6B7482A4232D2EBAD5720E13BF4A1641C"
+  },
+  "candidate_geometry_mm": {
+    "j1_to_j2_axis": 202.55,
+    "j2_to_g1_frame_origin": 129.05,
+    "j1_to_g1_frame_origin": 331.6,
+    "adapter_thickness": 9.525,
+    "adapter_finished_thickness_range": [
+      9.0,
+      10.0
+    ],
+    "adapter_envelope": [
+      48.0,
+      9.525,
+      40.0
+    ],
+    "gripper_adapter_envelope": [
+      48.0,
+      9.525,
+      40.0
+    ],
+    "shoulder_support_envelope": [
+      48.0,
+      9.525,
+      80.0
+    ],
+    "upper_beam_envelope": [
+      20.0,
+      100.0,
+      40.0
+    ],
+    "forearm_beam_envelope": [
+      20.0,
+      50.0,
+      40.0
+    ],
+    "reserved_g1_to_object_center_max": 28.4,
+    "robotis_rectangular_pattern": {
+      "x_centers": [
+        -16.0,
+        16.0
+      ],
+      "z_centers": [
+        -8.0,
+        8.0
+      ],
+      "hole_diameter": 2.7
+    },
+    "profile_end_tap_centers": {
+      "x": 0.0,
+      "z_centers": [
+        -10.0,
+        10.0
+      ],
+      "core_diameter": 4.19
+    },
+    "m5_countersink": {
+      "finished_diameter_range": [
+        11.3,
+        11.4
+      ],
+      "modeled_maximum_diameter": 11.4,
+      "maximum_depth_screen": 3.1,
+      "included_angle_deg_nominal": 90.0
+    },
+    "h104_selected_local_axes_xz": [
+      [
+        -11.0,
+        -8.0
+      ],
+      [
+        11.0,
+        -8.0
+      ],
+      [
+        -12.0,
+        6.0
+      ],
+      [
+        12.0,
+        6.0
+      ]
+    ],
+    "support_m8_axes_xz": [
+      [
+        0.0,
+        -30.0
+      ],
+      [
+        0.0,
+        30.0
+      ]
+    ],
+    "column_center_local_y": -81.025,
+    "j1_a0_transform_mm": [
+      -210.0,
+      81.025,
+      500.0
+    ]
+  },
+  "actuator_axis_registration": {
+    "matrix_3x3": [
+      [
+        0,
+        0,
+        -1
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0
+      ]
+    ],
+    "raw_output_axis": [
+      0,
+      0,
+      1
+    ],
+    "joint_output_axis": [
+      -1,
+      0,
+      0
+    ],
+    "raw_bottom_mount_axes": [
+      [
+        13.5,
+        -41.5
+      ],
+      [
+        -13.5,
+        -41.5
+      ]
+    ],
+    "registered_s102_axes_yz": [
+      [
+        13.5,
+        41.5
+      ],
+      [
+        -13.5,
+        41.5
+      ]
+    ],
+    "axial_translation_x_mm": 1.75,
+    "axial_translation_status": "candidate display placement; received horn/idler stack measurement required"
+  },
+  "axis_parallelism_math": {
+    "j1_direction": [
+      1,
+      0,
+      0
+    ],
+    "j2_direction": [
+      1,
+      0,
+      0
+    ],
+    "dot_product": 1.0,
+    "angular_difference_deg": 0.0
+  },
+  "reference_output_offset_deg": -90.0,
+  "collision_screen": {
+    "sampled_j1_range_deg": [
+      -20,
+      70
+    ],
+    "sampled_j2_range_deg": [
+      15,
+      125
+    ],
+    "increment_deg": 0.5,
+    "sample_count": 40001,
+    "provisional_soft_limit_deg": 115.0,
+    "candidate_positive_hard_stop_datum_deg": 118.0,
+    "continuous_analysis_j2_max_deg": 120.0,
+    "continuous_minimum_guaranteed_clearance_mm": 0.765783,
+    "continuous_first_nominal_contact_j2_deg": 121.643289,
+    "candidate_soft_to_stop_allowance_deg": 3.0,
+    "candidate_stop_to_contact_margin_deg": 3.643289,
+    "reserved_nominal_collision_guard_deg": 1.0,
+    "candidate_physical_uncertainty_budget_deg": 2.643289,
+    "first_sampled_positive_volume_collision_j2_deg": 122.0,
+    "maximum_positive_intersection_mm3_full_requested_range": 188.28278,
+    "maximum_positive_intersection_mm3_within_provisional_limit": 0.0,
+    "scope": "continuous adaptive nominal model-space separation certificate covers all 70 non-intentional body pairs through J2=120 deg; sampled exact-boolean sweep continues through J2=125 deg; cables, guards, tolerances, deformation, physical stops, stopping travel and qualified acceptance remain open"
+  },
+  "mass_and_load_screen": {
+    "20_2040_mass_basis_kg_per_m": 0.764321,
+    "one_100mm_upper_beam_mass_g": 76.432,
+    "one_50mm_forearm_beam_mass_g": 38.216,
+    "one_adapter_candidate_mass_g": 46.987,
+    "gripper_adapter_candidate_mass_g": 46.987,
+    "shoulder_support_candidate_mass_g": 95.248,
+    "upper_beam_plus_two_adapters_mass_g": 170.407,
+    "forearm_beam_plus_two_adapters_mass_g": 132.191,
+    "allocated_shoulder_gravity_nm": 1.858,
+    "allocated_elbow_gravity_nm": 0.498,
+    "screening_multiplier": 2.25,
+    "shoulder_screen_nm": 4.18,
+    "elbow_screen_nm": 1.122,
+    "status": "screen only; received masses, COM, inertia, continuous torque and thermal proof required"
+  },
+  "nominal_joint_screens": {
+    "nearest_m5_countersink_to_m2_5_hole_clearance_mm": 9.0745,
+    "m5_thread_engagement_mm": 10.475,
+    "m5_min_thread_engagement_screen_mm": 10.0,
+    "m2_5_nominal_protrusion_mm": 4.875,
+    "m2_5_geometric_min_protrusion_screen_mm": 4.2,
+    "m5_couple_force_n": 208.98,
+    "inferred_internal_thread_shear_capacity_n": 6856.9,
+    "20_2040_strong_axis_bending_stress_mpa": 1.8429,
+    "adapter_min_residual_below_countersink_mm": 5.9,
+    "adapter_punching_shear_demand_mpa": 2.0499,
+    "adapter_head_annular_average_pressure_mpa": 4.5347,
+    "proof_screen_multiplier_on_2_25_gravity_case": 3.0,
+    "proof_screen_moment_nm": 12.5385,
+    "proof_m5_couple_force_n": 626.93,
+    "proof_m2_5_each_force_n": 391.83,
+    "proof_adapter_punching_shear_mpa": 6.1497,
+    "proof_adapter_head_annular_average_pressure_mpa": 13.6042,
+    "proof_m2_5_bearing_mpa": 17.4146,
+    "project_mtr_minimum_yield_mpa": 240.0,
+    "status": "analytical screening only; typical material properties are not allowables; controlled tolerances exist but no fatigue, preload, prying, local bending, physical proof or qualified-acceptance credit is taken"
+  },
+  "candidate_primary_sources": {
+    "adapter_material_typical_properties": "Kaiser Aluminum Sheet Coil & Plate Alloy 6061, Rev. 05/06; typical T6/T651 yield 276 MPa; not a minimum allowable",
+    "adapter_raw_stock": "OnlineMetals part 1249, 3/8 inch 6061-T651 plate, ASTM B209 / AMS 4027, MTR available; live product page accessed 2026-08-07",
+    "m5_countersunk_screw": "Accu SHKL-M5-20-A2-R360, A2-70, AccuLock 360; live U.S. product page accessed 2026-08-07",
+    "m2_5_socket_screw": "MISUMI SCB2.5-20, A2-70, fully threaded; live U.S. configurator accessed 2026-08-07",
+    "m2_5_locknut": "Accu HNN-M2.5-A2, DIN 985 nylon-insert locking nut; live U.S. product page revision/stock record dated 2026-07-14 and accessed 2026-08-07",
+    "column_profile": "80/20 40-4040, 40 x 40 mm 6063-T6 four-open-slot profile; live product page accessed 2026-08-07",
+    "column_screw": "80/20 17-8520, M8 x 20 fully threaded stainless SHCS; live product page accessed 2026-08-07",
+    "column_t_nut": "80/20 13035, M8 self-aligning roll-in T-nut with ball spring, 304 stainless and 40-series compatible; live product page accessed 2026-08-07",
+    "column_mount_precedent": "80/20 40006-BP live product page pairs 17-8520 and 13035 for T-slot mounting; application proof remains project-specific",
+    "h104_frame": "ROBOTIS FR12-H104K controlled STEP and Aug-31-17 drawing; selected exact axes recorded in interface-feature-evidence.csv",
+    "s102_frame": "ROBOTIS FR13-S102K controlled STEP and 2026-01-07 drawing; selected exact axes recorded in interface-feature-evidence.csv"
+  },
+  "open_release_items": [
+    "supplier confirmation and received inspection for 20-2040 two-hole M5 end-tap service",
+    "separately authorized OnlineMetals 1249 receipt with one heat lot, MTR review against the project 240 MPa minimum-yield acceptance and stock inspection",
+    "qualified supplier DFM acceptance of the P0.5 adapter/support controls and one separately authorized first article per custom geometry",
+    "received SCB2.5-20/HNN-M2.5-A2 stack, screw-length tolerance, prevailing/installation torque, single-use rule, wrench envelope and proof",
+    "received SHKL-M5-20-A2-R360 identity, full-thread condition, seating, torque/cure/storage method, single-install rule and physical proof",
+    "received horn/idler axial stack and complete actuator/frame assembly fit",
+    "received MV0-C04/H104 and MV0-C05/S102/40-4040 fit with complete exact fastener stacks",
+    "17-8520/13035 engagement, anti-galling, installation torque, T-slot pullout/slip/prying and column-support proof",
+    "tool access, cable routing, connector sweep and strain relief",
+    "guard, cable, tolerance, deformation and as-built collision proof beyond the continuous nominal body certificate",
+    "physical J2 hard-stop design plus measured stopping overtravel, backlash, compliance, tolerance and uncertainty closure against the candidate allocation",
+    "qualified acceptance of the R66 analytical equivalent or requested local FEA plus joint-slip, preload, fatigue, impact and physical proof",
+    "received-part fit, first-article inspection and qualified mechanical approval"
+  ]
+}

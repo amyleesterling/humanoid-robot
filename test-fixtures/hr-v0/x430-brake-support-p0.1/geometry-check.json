@@ -1,0 +1,55 @@
+{
+  "identifier": "HR-V0-X430-BRAKE-SUP-P0.1",
+  "mount_face_x_mm": 93.47480000000006,
+  "pt_profile": {
+    "length_mm": 600.0,
+    "width_mm": 375.0,
+    "thickness_mm": 20.0,
+    "slot_count": 15,
+    "pitch_mm": 25.0,
+    "opening_mm": 8.0,
+    "lower_width_mm": 14.5,
+    "depth_mm": 12.0,
+    "lip_mm": 5.0
+  },
+  "pillow_block": {
+    "model": "4866",
+    "O_mm": 117.3,
+    "P_mm": 104.0,
+    "Q_mm": 12.7,
+    "R_mm": 76.0,
+    "S_mm": 120.4,
+    "T_mm": 14.2,
+    "U_mm": 60.0,
+    "W_mm": 6.6,
+    "X_mm": 6.4,
+    "Y_mm": 12.7,
+    "visual_clearance_diameter_mm": 50.0,
+    "visual_clearance_is_fabrication_dimension": false,
+    "body_cad_present": false
+  },
+  "adapter": {
+    "length_x_mm": 90.0,
+    "width_y_mm": 160.0,
+    "thickness_mm": 24.0,
+    "upper_axis_y_mm": [
+      -52.0,
+      52.0
+    ],
+    "lower_slot_y_mm": [
+      -50.0,
+      50.0
+    ],
+    "hole_x_mm": 85.67480000000006,
+    "fabrication_release": false
+  },
+  "nominal_axis_height_mm": 120.0,
+  "nominal_intersections_mm3": {
+    "pillow_brake": 0.0,
+    "pillow_coupling": 0.0,
+    "adapter_pt": 0.0,
+    "pillow_adapter": 0.0
+  },
+  "tolerance_credit": false,
+  "capacity_credit": false
+}

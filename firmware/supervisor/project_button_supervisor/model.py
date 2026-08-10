@@ -18,6 +18,14 @@ from enum import Enum
 from pathlib import Path
 from typing import Callable, Mapping, Sequence
 
+from .mechanical_binding import (
+    EXPECTED_ENGINEERING_LIMITS,
+    EXPECTED_SUPERVISOR_CONFIGURATION_ID,
+    binding_is_current,
+    evidence_is_accepted,
+    is_sha256,
+)
+
 
 WARNING = "PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 
@@ -73,6 +81,7 @@ class SupervisorConfig:
     setup_gripper_speed_mm_s: float
     joints: Mapping[str, JointRule]
     kinematic_model_hash: str
+    mechanical_limit_binding: Mapping[str, object]
 
     @classmethod
     def from_json(cls, path: Path) -> "SupervisorConfig":
@@ -88,14 +97,32 @@ class SupervisorConfig:
             setup_gripper_speed_mm_s=float(raw["setup_gripper_speed_mm_s"]),
             joints={name: JointRule(**rule) for name, rule in raw["joints"].items()},
             kinematic_model_hash=raw["kinematic_model_hash"],
+            mechanical_limit_binding=dict(raw["mechanical_limit_binding"]),
         )
 
     @property
     def selections_closed(self) -> bool:
         values = (self.configuration_hash, self.kinematic_model_hash)
-        hashes_closed = all("SELECTION" not in value.upper() and "REQUIRED" not in value.upper() for value in values)
+        hashes_closed = all(is_sha256(value) for value in values)
         tolerances_closed = all(rule.start_tolerance is not None for rule in self.joints.values())
-        return hashes_closed and tolerances_closed
+        exact_axes = set(self.joints) == set(EXPECTED_ENGINEERING_LIMITS)
+        limits_current = exact_axes and all(
+            (
+                self.joints[axis].minimum,
+                self.joints[axis].maximum,
+                self.joints[axis].unit,
+            )
+            == expected
+            for axis, expected in EXPECTED_ENGINEERING_LIMITS.items()
+        )
+        return (
+            self.configuration_id == EXPECTED_SUPERVISOR_CONFIGURATION_ID
+            and hashes_closed
+            and tolerances_closed
+            and limits_current
+            and binding_is_current(self.mechanical_limit_binding)
+            and evidence_is_accepted(self.mechanical_limit_binding)
+        )
 
 
 @dataclass(frozen=True)

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HR-V0 compute storage P0.2</title>
+  <style>
+    :root{--sky:#d9f2ff;--blue:#083b66;--mid:#1979b8;--gold:#f5bd25;--paper:#f8fcff;--ink:#102a43;--line:#78b9df}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+    header{background:linear-gradient(135deg,var(--blue),#0b5d96);color:#fff;padding:clamp(28px,6vw,72px) max(18px,calc((100vw - 1120px)/2))}
+    h1{font-size:clamp(34px,6vw,66px);line-height:1.06;margin:.25em 0;max-width:920px}
+    header p{max-width:900px}
+    .warning{background:#fff0b3;color:#302100;border-left:7px solid var(--gold);padding:16px;font-weight:750}
+    main{max-width:1120px;margin:auto;padding:28px 18px 70px}
+    h2{color:var(--blue);font-size:clamp(26px,4vw,40px);margin-top:42px}
+    .decision{background:#fff;border:2px solid var(--line);border-radius:18px;padding:20px;box-shadow:4px 5px 0 #c4e6f6}
+    .part{font:700 clamp(24px,4vw,38px)/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--blue);overflow-wrap:anywhere}
+    .chips,.controls{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{background:var(--sky);border:1px solid var(--mid);border-radius:999px;padding:8px 12px;font-size:16px;font-weight:700}
+    .controls{margin:18px 0}
+    button{font:inherit;font-size:16px;font-weight:700;line-height:1.2;border:2px solid var(--blue);border-radius:999px;padding:12px 16px;background:#fff;color:var(--blue);cursor:pointer}
+    button[aria-pressed="true"]{background:var(--gold);color:#17233a}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:18px;box-shadow:4px 5px 0 #c4e6f6}
+    .card h3{font-size:24px;color:var(--blue);margin:4px 0 10px}
+    .tag{display:inline-block;background:var(--gold);color:#17233a;border-radius:999px;padding:4px 10px;font-size:14px;font-weight:750}
+    .hold{border:2px solid var(--gold);background:#fff9df;padding:18px;border-radius:16px}
+    .tech{font:14px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}
+    a{color:#075d93;font-weight:700}
+    footer{margin-top:48px;border-top:2px solid var(--line);padding-top:18px;font-size:14px}
+    @media(max-width:520px){.controls button{width:100%}.card{padding:15px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="tech">R170 · HR-V0-COMPUTE-STORAGE-P0.2</div>
+    <h1>An exact storage candidate, with the evidence gaps left visible.</h1>
+    <p class="warning">PRELIMINARY — NOT APPROVED FOR PROCUREMENT, INSTALLATION, IMAGING, CONNECTION, POWERED TEST, OR ENERGIZATION.</p>
+  </header>
+  <main>
+    <h2>Candidate decision</h2>
+    <section class="decision">
+      <div class="tag">Exact candidate · HOLD</div>
+      <p class="part">Kingston SDCIT2/64GBSP</p>
+      <p>One 64 GB industrial microSDXC card, without an SD adapter. This supersedes only the unresolved STORE1 product branch.</p>
+      <div class="chips" aria-label="Published candidate properties">
+        <span class="chip">UHS-I · 3.3 V</span><span class="chip">Class 10 · U3 · V30 · A1</span><span class="chip">pSLC-mode TLC</span><span class="chip">30K P/E family claim</span><span class="chip">Power-failure protection listed</span><span class="chip">-40 °C to 85 °C</span>
+      </div>
+    </section>
+    <h2>Evidence map</h2>
+    <div class="controls" role="group" aria-label="Filter storage evidence">
+      <button type="button" data-filter="all" aria-pressed="true">Everything</button>
+      <button type="button" data-filter="source" aria-pressed="false">Published evidence</button>
+      <button type="button" data-filter="test" aria-pressed="false">Physical tests</button>
+      <button type="button" data-filter="boundary" aria-pressed="false">Safety boundaries</button>
+    </div>
+    <section class="cards">
+      <article class="card" data-kind="source"><span class="tag">Published</span><h3>Exact identity</h3><p>Kingston publishes <strong>SDCIT2/64GBSP</strong> as the 64 GB card-only part number.</p></article>
+      <article class="card" data-kind="source"><span class="tag">Published</span><h3>Host plausibility</h3><p>Raspberry Pi 5 provides a microSD slot with SDR104 capability. Raspberry Pi OS Lite needs at least 8 GB; 64 GB is below the documented 2 TB capacity ceiling.</p></article>
+      <article class="card" data-kind="test"><span class="tag">Not executed</span><h3>Required physical evidence</h3><p>Receiving identity, counterfeit screening, full-media write/read, Pi 5 boot and restart, negotiated mode, current, temperature, retention and endurance evidence remain open.</p></article>
+      <article class="card" data-kind="boundary"><span class="tag">Boundary</span><h3>Power-loss is unproven</h3><p>A catalog feature called power-failure protection does not prove filesystem survival, controlled recovery, or motion-inactive reboot. Fault injection and qualified review remain mandatory.</p></article>
+    </section>
+    <h2>Twelve holds remain</h2>
+    <p class="hold">No card has been bought, received, inserted, formatted, written or booted. No 64 GB TBW value is claimed. The operating-system image, filesystem policy, update/rollback process and recovery tests remain unexecuted.</p>
+    <p><a href="../../../bom/hr-v0-compute-storage-p0.2.csv">Candidate record</a> · <a href="../../../electrical/interfaces/hr-v0-compute-storage-p0.2.csv">Interface register</a> · <a href="../../../electrical/interfaces/hr-v0-compute-storage-holds-p0.2.csv">Hold register</a> · <a href="../../../tests/forms/hr-v0-compute-storage-receiving-template-p0.2.csv">Receiving template</a></p>
+    <footer>BOM-064 advances from selection required to an exact-candidate hold. EG-002, EG-003, EG-005, EG-010, EG-017, EG-021, EG-022 and EG-027 remain unresolved. STORE1 has zero functional-safety credit.</footer>
+  </main>
+  <script>
+    const buttons=[...document.querySelectorAll('[data-filter]')];
+    const cards=[...document.querySelectorAll('[data-kind]')];
+    buttons.forEach(button=>button.addEventListener('click',()=>{
+      buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+      cards.forEach(card=>{card.hidden=button.dataset.filter!=='all'&&card.dataset.kind!==button.dataset.filter;});
+    }));
+  </script>
+</body>
+</html>

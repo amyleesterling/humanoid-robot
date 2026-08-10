@@ -1,0 +1,16 @@
+hold_id,scope,evidence_required,status,release_effect
+XGH-001,CONFIGURATION,Approve or reject replacement of the current RM-X52/XM430 proposal and update GRIP-002/electrical/firmware/CAD together.,OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION
+XGH-002,ACTUATOR/FRAME,"Acquire and metrologically register received XC330-T288-T and FPX330-S101; control frame STEP/drawing, mass and exact fastener stack.",OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION
+XGH-003,OUTPUT INTERFACE,"Verify the four radial slots, screw head clearance, thread engagement, torque, locking, reuse and pinion seating on received parts.",OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION
+XGH-004,TOOTH FORM,"Complete involute/rack tooth engineering, backlash/tolerance stack, print orientation, process capability, lubrication policy and wear life.",OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION
+XGH-005,GUIDANCE,"Release rack guide geometry, running clearance, debris tolerance, end stops and retained behavior under external jaw loads.",OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION
+XGH-006,MATERIAL/PRINT,"Select exact filament/resin and supplier; release drying, machine, nozzle, layer, wall/infill, anneal/finish, coupon and lot evidence.",OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION
+XGH-007,WRIST ADAPTER,"Create and prove exact FR12-H104K-to-FPX330/base transform, fasteners, tolerance stack, cable clearance and structural load path.",OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION
+XGH-008,GUARD,"Eliminate access to both travel slots, pinion/rack mesh, jaw sweep and fixed/moving pinch lines with probe-tested retained guarding.",OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION
+XGH-009,PADS/OBJECT,"Select exact pad, adhesive/retention and reference foam; measure installed usable opening, parallelism, compression, damage and wear.",OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION
+XGH-010,FORCE/CURRENT,"Use a calibrated load cell to establish current, force, repeatability and thermal limits; stall figures receive zero acceptance credit.",OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION
+XGH-011,POWER/CABLE,"Recalculate branch protection/conductors/connectors/inrush/thermal and prove cable route, bend radius, strain relief and flex life.",OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION
+XGH-012,POWER LOSS/DROP,"Prove commanded-open, sudden power loss and object-drop containment into a fixed receiver with accepted abort criteria.",OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION
+XGH-013,MASS/INERTIA,Measure every received moving item and assembled mass/COM/inertia; reconcile without omission or double counting.,OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION
+XGH-014,PHYSICAL PROOF,"Execute fit, no-load, guarded low-energy, force, wear, fastener-retention and fault tests under approved work instructions.",OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION
+XGH-015,QUALIFIED REVIEW,"Obtain signed mechanical, electrical and safety review of one frozen configuration before any release state changes.",OPEN,NO PROCUREMENT/FABRICATION/CONNECTION/MOTION/ENERGIZATION

@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "PBV3")(type "KiCad")(uri "${KIPRJMOD}/hr-v0-dxl-protection-carrier-p0.2.kicad_sym")(options "")(descr "Controlled DXL protection-carrier symbols"))
+)

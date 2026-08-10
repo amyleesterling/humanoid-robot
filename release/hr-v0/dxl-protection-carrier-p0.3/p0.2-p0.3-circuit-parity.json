@@ -1,0 +1,17 @@
+{
+  "identifier": "HR-V0-DXL-PROT-P02-P03-PARITY-P0.1",
+  "review_round": "R159",
+  "p0_2_board": "electrical/kicad/hr-v0-dxl-protection-carrier-p0.2/hr-v0-dxl-protection-carrier-p0.2.kicad_pcb",
+  "p0_3_board": "electrical/kicad/hr-v0-dxl-protection-carrier-p0.3/hr-v0-dxl-protection-carrier-p0.3.kicad_pcb",
+  "fingerprint_scope": "tracks, vias, all non-fiducial pads/nets, Edge.Cuts, zones, layer count and thickness",
+  "excluded_intentional_changes": [
+    "native design-rule values",
+    "three FD* board-only fiducials",
+    "revision/status text and metadata"
+  ],
+  "p0_2_fingerprint_sha256": "5402DA4AED702A074AFE20733B399D2492300D549FBAD6E322B7637AA746456D",
+  "p0_3_fingerprint_sha256": "5402DA4AED702A074AFE20733B399D2492300D549FBAD6E322B7637AA746456D",
+  "circuit_geometry_parity": true,
+  "physical_tests_executed": 0,
+  "warning": "PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
+}

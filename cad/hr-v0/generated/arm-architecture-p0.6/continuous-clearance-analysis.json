@@ -1,0 +1,37 @@
+{
+  "revision": "HR-V0-ARM-ARCH-P0.6",
+  "method": "adaptive interval cover; center AABB lower bound or exact B-Rep distance minus additive rigid-body chord-displacement bounds",
+  "included_pair_groups": [
+    "fixed base versus upper",
+    "upper versus forearm",
+    "fixed base versus forearm"
+  ],
+  "intentional_interfaces_excluded": [
+    "J1_BODY:J1_H101",
+    "J1_S102:J1_H101",
+    "J2_BODY:J2_H101",
+    "J2_S102:J2_H101"
+  ],
+  "joint_domain_deg": {
+    "j1": [
+      -20.0,
+      70.0
+    ],
+    "j2": [
+      15.0,
+      120.0
+    ]
+  },
+  "required_certified_clearance_mm": 0.75,
+  "minimum_guaranteed_clearance_mm": 0.765783,
+  "pair_count": 70,
+  "certified_leaf_cell_count": 130,
+  "exact_brep_distance_call_count": 84,
+  "critical_pair": "UPPER_FORE:J2_BODY:FORE_PROX_ADAPTER",
+  "critical_pair_exact_clearance_at_j2_120_mm": 0.962813,
+  "critical_pair_exact_clearance_at_candidate_soft_limit_mm": 3.799484,
+  "continuous_first_contact_j2_deg_numeric": 121.643289,
+  "continuous_first_contact_threshold_mm": 1e-07,
+  "release_boundary": "nominal model-space separation only; tolerances, deformation, cables, guards, stops, stopping travel and physical proof excluded",
+  "status": "CERTIFIED_NOMINAL_MODEL_SPACE_NOT_A_PHYSICAL_OR_MOTION_RELEASE"
+}

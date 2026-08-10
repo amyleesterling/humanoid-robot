@@ -1,0 +1,5 @@
+screen,item,input,result,basis,status
+LS-01,M5 end-tap bolt couple,3.9988 N m / 20.0 mm,199.94 N,no clamp-friction credit; already includes 2.25 screening multiplier,STATIC SCREEN PASS; PROOF OPEN
+LS-02,6063-T6 internal-thread shear,4.19 mm core; 11.2375 mm engagement; 0.5 circumference; 0.577 x 172.37 MPa,7356.0 N capacity / 36.8 ratio,"conservative project inference from published yield; ignores preload, fatigue and countersink pull-through",STATIC SCREEN PASS; PHYSICAL PROOF OPEN
+LS-03,20-2040 strong-axis bending stress,M=3.9988 N m; c=20 mm; I=4.5357 cm^4,1.7632 MPa / 172.37 MPa published yield,purchased-section global bending only,STATIC SCREEN PASS; JOINT/DEFLECTION/FATIGUE OPEN
+LS-04,adapter countersink pull-through and local bending,4.7625 mm 6061-T6 candidate; 1.6625 mm nominal residual,SELECTION REQUIRED,"material certificate, tolerances and accepted local model absent",BLOCKER

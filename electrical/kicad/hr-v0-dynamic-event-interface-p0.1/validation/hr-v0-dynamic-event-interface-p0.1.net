@@ -1,0 +1,1760 @@
+(export
+	(version "E")
+	(design
+		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\hr-v0-dynamic-event-interface-p0.1\\hr-v0-dynamic-event-interface-p0.1.kicad_sch")
+		(date "2026-08-10T01:16:34")
+		(tool "Eeschema 10.0.5")
+		(textvar
+			(name "PROJECT_STATUS") "PRELIMINARY - BENCH R&D EQUIPMENT ONLY - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+		(textvar
+			(name "REVISION") "R176 / P0.1")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title "PROJECT BUTTON HR-V0 ISOLATED DYNAMIC EVENT INTERFACE index")
+				(company "Project Button")
+				(rev "R176 / P0.1")
+				(date "2026-08-10")
+				(source "hr-v0-dynamic-event-interface-p0.1.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "2")
+			(name "/01 EVM A field taps - connection prohibited/")
+			(tstamps "/12414f9d-97b7-57f0-96b1-8b6e3f76a4d7/")
+			(title_block
+				(title "PB HR-V0 R176 / P0.1 - 01")
+				(company "Project Button")
+				(rev "R176 / P0.1")
+				(date "2026-08-10")
+				(source "01_field_a.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "3")
+			(name "/02 EVM B field taps - connection prohibited/")
+			(tstamps "/5d036feb-5831-56fe-92fd-16f40b884aee/")
+			(title_block
+				(title "PB HR-V0 R176 / P0.1 - 02")
+				(company "Project Button")
+				(rev "R176 / P0.1")
+				(date "2026-08-10")
+				(source "02_field_b.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "4")
+			(name "/03 EVM logic-side connector allocation/")
+			(tstamps "/f5d2b879-3e37-5d01-845b-60ff1bf08236/")
+			(title_block
+				(title "PB HR-V0 R176 / P0.1 - 03")
+				(company "Project Button")
+				(rev "R176 / P0.1")
+				(date "2026-08-10")
+				(source "03_evm_logic.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "5")
+			(name "/04 Common-clock T7 capture and trigger witness/")
+			(tstamps "/baa0a73a-96a2-5fea-92f8-2f8daebc1998/")
+			(title_block
+				(title "PB HR-V0 R176 / P0.1 - 04")
+				(company "Project Button")
+				(rev "R176 / P0.1")
+				(date "2026-08-10")
+				(source "04_common_clock_capture.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "EVMAJ4")
+			(value "TI ISO1212EVM A FIELD CONNECTOR J4")
+			(datasheet "TI SLLU254A Rev A Figure 7")
+			(description "Unmodified fast channels only. J4 pin 1 is common FGND. No channel-to-channel isolation. Direct field connection prohibited.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Connector representation only.")
+				(field
+					(name "Display") "TI ISO1212EVM A FIELD CONNECTOR J4")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SLLU254A Rev A Figure 7")
+				(field
+					(name "Description") "Unmodified fast channels only. J4 pin 1 is common FGND. No channel-to-channel isolation. Direct field connection prohibited.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVMAJ4")
+				(description "Unmodified fast channels only. J4 pin 1 is common FGND. No channel-to-channel isolation. Direct field connection prohibited.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / BENCH R&D ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "Connector representation only.")
+			)
+			(property
+				(name "Display")
+				(value "TI ISO1212EVM A FIELD CONNECTOR J4")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 EVM A field taps - connection prohibited")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_field_a.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 EVM A field taps - connection prohibited/")
+				(tstamps "/12414f9d-97b7-57f0-96b1-8b6e3f76a4d7/")
+			)
+			(tstamps "e475ed11-6d01-568f-8222-b9f939a445ae")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J4-1")
+						)
+						(pin
+							(num "J4-6")
+						)
+						(pin
+							(num "J4-7")
+						)
+						(pin
+							(num "J4-8")
+						)
+						(pin
+							(num "J4-9")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JFIELDA")
+			(value "LOGICAL FIELD TEST POINTS - NO CONNECTOR RELEASED")
+			(datasheet "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE")
+			(description "Exact probes/adapters, noninterference, routing and guarding are SELECTION REQUIRED.")
+			(fields
+				(field
+					(name "Status") "DIRECT CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical names only; not physical terminals or authority.")
+				(field
+					(name "Display") "LOGICAL FIELD TEST POINTS - NO CONNECTOR RELEASED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE")
+				(field
+					(name "Description") "Exact probes/adapters, noninterference, routing and guarding are SELECTION REQUIRED.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JFIELDA")
+				(description "Exact probes/adapters, noninterference, routing and guarding are SELECTION REQUIRED.")
+			)
+			(property
+				(name "Status")
+				(value "DIRECT CONNECTION PROHIBITED")
+			)
+			(property
+				(name "Evidence")
+				(value "Logical names only; not physical terminals or authority.")
+			)
+			(property
+				(name "Display")
+				(value "LOGICAL FIELD TEST POINTS - NO CONNECTOR RELEASED")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 EVM A field taps - connection prohibited")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_field_a.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 EVM A field taps - connection prohibited/")
+				(tstamps "/12414f9d-97b7-57f0-96b1-8b6e3f76a4d7/")
+			)
+			(tstamps "f6513e6d-6fc0-5224-b5d8-7f2bd26beffb")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "SAFETY_0V")
+						)
+						(pin
+							(num "EVMA_IN4")
+						)
+						(pin
+							(num "EVMA_IN3")
+						)
+						(pin
+							(num "EVMA_IN2")
+						)
+						(pin
+							(num "EVMA_IN1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVMBJ4")
+			(value "TI ISO1212EVM B FIELD CONNECTOR J4")
+			(datasheet "TI SLLU254A Rev A Figure 7")
+			(description "Unmodified fast channels only. J4 pin 1 is common FGND. No channel-to-channel isolation. Direct field connection prohibited.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Connector representation only.")
+				(field
+					(name "Display") "TI ISO1212EVM B FIELD CONNECTOR J4")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SLLU254A Rev A Figure 7")
+				(field
+					(name "Description") "Unmodified fast channels only. J4 pin 1 is common FGND. No channel-to-channel isolation. Direct field connection prohibited.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVMBJ4")
+				(description "Unmodified fast channels only. J4 pin 1 is common FGND. No channel-to-channel isolation. Direct field connection prohibited.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / BENCH R&D ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "Connector representation only.")
+			)
+			(property
+				(name "Display")
+				(value "TI ISO1212EVM B FIELD CONNECTOR J4")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 EVM B field taps - connection prohibited")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_field_b.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 EVM B field taps - connection prohibited/")
+				(tstamps "/5d036feb-5831-56fe-92fd-16f40b884aee/")
+			)
+			(tstamps "91fb47cb-31b0-5ea9-86e6-8012f6fae567")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J4-1")
+						)
+						(pin
+							(num "J4-6")
+						)
+						(pin
+							(num "J4-7")
+						)
+						(pin
+							(num "J4-8")
+						)
+						(pin
+							(num "J4-9")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JFIELDB")
+			(value "LOGICAL FIELD TEST POINTS - NO CONNECTOR RELEASED")
+			(datasheet "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE")
+			(description "Exact probes/adapters, noninterference, routing and guarding are SELECTION REQUIRED.")
+			(fields
+				(field
+					(name "Status") "DIRECT CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical names only; not physical terminals or authority.")
+				(field
+					(name "Display") "LOGICAL FIELD TEST POINTS - NO CONNECTOR RELEASED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE")
+				(field
+					(name "Description") "Exact probes/adapters, noninterference, routing and guarding are SELECTION REQUIRED.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JFIELDB")
+				(description "Exact probes/adapters, noninterference, routing and guarding are SELECTION REQUIRED.")
+			)
+			(property
+				(name "Status")
+				(value "DIRECT CONNECTION PROHIBITED")
+			)
+			(property
+				(name "Evidence")
+				(value "Logical names only; not physical terminals or authority.")
+			)
+			(property
+				(name "Display")
+				(value "LOGICAL FIELD TEST POINTS - NO CONNECTOR RELEASED")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 EVM B field taps - connection prohibited")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_field_b.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 EVM B field taps - connection prohibited/")
+				(tstamps "/5d036feb-5831-56fe-92fd-16f40b884aee/")
+			)
+			(tstamps "38244246-011c-51bb-af09-a07ef296eabd")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "SAFETY_0V")
+						)
+						(pin
+							(num "EVMB_IN3")
+						)
+						(pin
+							(num "EVMB_IN2")
+						)
+						(pin
+							(num "EVMB_IN1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVMAJ2")
+			(value "TI ISO1212EVM A LOGIC J1/J2")
+			(datasheet "TI SLLU254A Rev A Figure 7")
+			(description "J3 must be received and verified in 1-2 ENABLE position. VCC budget and logic-level proof remain open.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "J1/J2 representation; no board modification.")
+				(field
+					(name "Display") "TI ISO1212EVM A LOGIC J1/J2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SLLU254A Rev A Figure 7")
+				(field
+					(name "Description") "J3 must be received and verified in 1-2 ENABLE position. VCC budget and logic-level proof remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVMAJ2")
+				(description "J3 must be received and verified in 1-2 ENABLE position. VCC budget and logic-level proof remain open.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / BENCH R&D ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "J1/J2 representation; no board modification.")
+			)
+			(property
+				(name "Display")
+				(value "TI ISO1212EVM A LOGIC J1/J2")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 EVM logic-side connector allocation")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_evm_logic.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 EVM logic-side connector allocation/")
+				(tstamps "/f5d2b879-3e37-5d01-845b-60ff1bf08236/")
+			)
+			(tstamps "d40eaa4c-9347-553d-b34f-97988d52229f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J1-1")
+						)
+						(pin
+							(num "J1-2")
+						)
+						(pin
+							(num "J2-7")
+						)
+						(pin
+							(num "J2-5")
+						)
+						(pin
+							(num "J2-3")
+						)
+						(pin
+							(num "J2-1")
+						)
+						(pin
+							(num "J2-8")
+						)
+						(pin
+							(num "J2-6")
+						)
+						(pin
+							(num "J2-4")
+						)
+						(pin
+							(num "J2-2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EVMBJ2")
+			(value "TI ISO1212EVM B LOGIC J1/J2")
+			(datasheet "TI SLLU254A Rev A Figure 7")
+			(description "J3 must be received and verified in 1-2 ENABLE position. VCC budget and logic-level proof remain open.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "J1/J2 representation; no board modification.")
+				(field
+					(name "Display") "TI ISO1212EVM B LOGIC J1/J2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SLLU254A Rev A Figure 7")
+				(field
+					(name "Description") "J3 must be received and verified in 1-2 ENABLE position. VCC budget and logic-level proof remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EVMBJ2")
+				(description "J3 must be received and verified in 1-2 ENABLE position. VCC budget and logic-level proof remain open.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / BENCH R&D ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "J1/J2 representation; no board modification.")
+			)
+			(property
+				(name "Display")
+				(value "TI ISO1212EVM B LOGIC J1/J2")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 EVM logic-side connector allocation")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_evm_logic.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 EVM logic-side connector allocation/")
+				(tstamps "/f5d2b879-3e37-5d01-845b-60ff1bf08236/")
+			)
+			(tstamps "8574ca68-3a48-5c5c-a63d-30b21109271e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "J1-1")
+						)
+						(pin
+							(num "J1-2")
+						)
+						(pin
+							(num "J2-7")
+						)
+						(pin
+							(num "J2-5")
+						)
+						(pin
+							(num "J2-3")
+						)
+						(pin
+							(num "J2-1")
+						)
+						(pin
+							(num "J2-8")
+						)
+						(pin
+							(num "J2-6")
+						)
+						(pin
+							(num "J2-4")
+						)
+						(pin
+							(num "J2-2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "DAQ1")
+			(value "LabJack T7 + CB37 - EXACT EVALUATION CANDIDATES")
+			(datasheet "LabJack live T-Series datasheet accessed 2026-08-10")
+			(description "FIO_STATE candidate scan: FIO0 witness plus FIO1-FIO7 inputs. Configuration, VS budget, host and timing proof remain open.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact DB37 pins; CB37 continuity required.")
+				(field
+					(name "Display") "LabJack T7 + CB37 - EXACT EVALUATION CANDIDATES")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "LabJack live T-Series datasheet accessed 2026-08-10")
+				(field
+					(name "Description") "FIO_STATE candidate scan: FIO0 witness plus FIO1-FIO7 inputs. Configuration, VS budget, host and timing proof remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "DAQ1")
+				(description "FIO_STATE candidate scan: FIO0 witness plus FIO1-FIO7 inputs. Configuration, VS budget, host and timing proof remain open.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED / ZERO SAFETY CREDIT")
+			)
+			(property
+				(name "Evidence")
+				(value "Exact DB37 pins; CB37 continuity required.")
+			)
+			(property
+				(name "Display")
+				(value "LabJack T7 + CB37 - EXACT EVALUATION CANDIDATES")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Common-clock T7 capture and trigger witness")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_common_clock_capture.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Common-clock T7 capture and trigger witness/")
+				(tstamps "/baa0a73a-96a2-5fea-92f8-2f8daebc1998/")
+			)
+			(tstamps "f02bd440-4743-560e-9b68-d8e1bf6b4afc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "DB37-21")
+						)
+						(pin
+							(num "DB37-3")
+						)
+						(pin
+							(num "DB37-22")
+						)
+						(pin
+							(num "DB37-4")
+						)
+						(pin
+							(num "DB37-23")
+						)
+						(pin
+							(num "DB37-5")
+						)
+						(pin
+							(num "DB37-24")
+						)
+						(pin
+							(num "DB37-1")
+						)
+						(pin
+							(num "DB37-27")
+						)
+						(pin
+							(num "DB37-6")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JTRIG1")
+			(value "TRIGGER RECEIVER - SELECTION REQUIRED")
+			(datasheet "No manufacturer selected")
+			(description "Driver, polarity, cable, delay and camera compatibility required.")
+			(fields
+				(field
+					(name "Status") "NO DIRECT CAMERA CONNECTION")
+				(field
+					(name "Evidence") "FIO0 external connection prohibited.")
+				(field
+					(name "Display") "TRIGGER RECEIVER - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Driver, polarity, cable, delay and camera compatibility required.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JTRIG1")
+				(description "Driver, polarity, cable, delay and camera compatibility required.")
+			)
+			(property
+				(name "Status")
+				(value "NO DIRECT CAMERA CONNECTION")
+			)
+			(property
+				(name "Evidence")
+				(value "FIO0 external connection prohibited.")
+			)
+			(property
+				(name "Display")
+				(value "TRIGGER RECEIVER - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Common-clock T7 capture and trigger witness")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_common_clock_capture.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Common-clock T7 capture and trigger witness/")
+				(tstamps "/baa0a73a-96a2-5fea-92f8-2f8daebc1998/")
+			)
+			(tstamps "08badb8a-e738-5409-9e94-42f6f67d9f45")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "RTN")
+						)
+						(pin
+							(num "IN")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "PBV3")
+			(part "DAQ1")
+			(description "FIO_STATE candidate scan: FIO0 witness plus FIO1-FIO7 inputs. Configuration, VS budget, host and timing proof remain open.")
+			(docs "LabJack live T-Series datasheet accessed 2026-08-10")
+			(fields
+				(field
+					(name "Reference") "DAQ1")
+				(field
+					(name "Value") "LabJack T7 + CB37 - EXACT EVALUATION CANDIDATES")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "LabJack live T-Series datasheet accessed 2026-08-10")
+				(field
+					(name "Description") "FIO_STATE candidate scan: FIO0 witness plus FIO1-FIO7 inputs. Configuration, VS budget, host and timing proof remain open.")
+				(field
+					(name "Status") "NOT SELECTED / ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "Exact DB37 pins; CB37 continuity required.")
+				(field
+					(name "Display") "LabJack T7 + CB37 - EXACT EVALUATION CANDIDATES")
+			)
+			(pins
+				(pin
+					(num "DB37-1")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-3")
+					(name "FIO6_EVENT")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-4")
+					(name "FIO4_EVENT")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-5")
+					(name "FIO2_EVENT")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-6")
+					(name "FIO0_TRIGGER/WITNESS")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-21")
+					(name "FIO7_EVENT")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-22")
+					(name "FIO5_EVENT")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-23")
+					(name "FIO3_EVENT")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-24")
+					(name "FIO1_EVENT")
+					(type "passive")
+				)
+				(pin
+					(num "DB37-27")
+					(name "VS_ABOUT_5_V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVMAJ2")
+			(description "J3 must be received and verified in 1-2 ENABLE position. VCC budget and logic-level proof remain open.")
+			(docs "TI SLLU254A Rev A Figure 7")
+			(fields
+				(field
+					(name "Reference") "EVMAJ2")
+				(field
+					(name "Value") "TI ISO1212EVM A LOGIC J1/J2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SLLU254A Rev A Figure 7")
+				(field
+					(name "Description") "J3 must be received and verified in 1-2 ENABLE position. VCC budget and logic-level proof remain open.")
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "J1/J2 representation; no board modification.")
+				(field
+					(name "Display") "TI ISO1212EVM A LOGIC J1/J2")
+			)
+			(pins
+				(pin
+					(num "J1-1")
+					(name "GND1")
+					(type "passive")
+				)
+				(pin
+					(num "J1-2")
+					(name "VCC1_MAX_5_V")
+					(type "passive")
+				)
+				(pin
+					(num "J2-1")
+					(name "GND1")
+					(type "passive")
+				)
+				(pin
+					(num "J2-2")
+					(name "OUTPUT_1")
+					(type "passive")
+				)
+				(pin
+					(num "J2-3")
+					(name "GND1")
+					(type "passive")
+				)
+				(pin
+					(num "J2-4")
+					(name "OUTPUT_2")
+					(type "passive")
+				)
+				(pin
+					(num "J2-5")
+					(name "GND1")
+					(type "passive")
+				)
+				(pin
+					(num "J2-6")
+					(name "OUTPUT_3")
+					(type "passive")
+				)
+				(pin
+					(num "J2-7")
+					(name "GND1")
+					(type "passive")
+				)
+				(pin
+					(num "J2-8")
+					(name "OUTPUT_4")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVMAJ4")
+			(description "Unmodified fast channels only. J4 pin 1 is common FGND. No channel-to-channel isolation. Direct field connection prohibited.")
+			(docs "TI SLLU254A Rev A Figure 7")
+			(fields
+				(field
+					(name "Reference") "EVMAJ4")
+				(field
+					(name "Value") "TI ISO1212EVM A FIELD CONNECTOR J4")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SLLU254A Rev A Figure 7")
+				(field
+					(name "Description") "Unmodified fast channels only. J4 pin 1 is common FGND. No channel-to-channel isolation. Direct field connection prohibited.")
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Connector representation only.")
+				(field
+					(name "Display") "TI ISO1212EVM A FIELD CONNECTOR J4")
+			)
+			(pins
+				(pin
+					(num "J4-1")
+					(name "FIELD_GND")
+					(type "passive")
+				)
+				(pin
+					(num "J4-6")
+					(name "FAST_INPUT_4")
+					(type "passive")
+				)
+				(pin
+					(num "J4-7")
+					(name "FAST_INPUT_3")
+					(type "passive")
+				)
+				(pin
+					(num "J4-8")
+					(name "FAST_INPUT_2")
+					(type "passive")
+				)
+				(pin
+					(num "J4-9")
+					(name "FAST_INPUT_1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVMBJ2")
+			(description "J3 must be received and verified in 1-2 ENABLE position. VCC budget and logic-level proof remain open.")
+			(docs "TI SLLU254A Rev A Figure 7")
+			(fields
+				(field
+					(name "Reference") "EVMBJ2")
+				(field
+					(name "Value") "TI ISO1212EVM B LOGIC J1/J2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SLLU254A Rev A Figure 7")
+				(field
+					(name "Description") "J3 must be received and verified in 1-2 ENABLE position. VCC budget and logic-level proof remain open.")
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "J1/J2 representation; no board modification.")
+				(field
+					(name "Display") "TI ISO1212EVM B LOGIC J1/J2")
+			)
+			(pins
+				(pin
+					(num "J1-1")
+					(name "GND1")
+					(type "passive")
+				)
+				(pin
+					(num "J1-2")
+					(name "VCC1_MAX_5_V")
+					(type "passive")
+				)
+				(pin
+					(num "J2-1")
+					(name "GND1")
+					(type "passive")
+				)
+				(pin
+					(num "J2-2")
+					(name "OUTPUT_1")
+					(type "passive")
+				)
+				(pin
+					(num "J2-3")
+					(name "GND1")
+					(type "passive")
+				)
+				(pin
+					(num "J2-4")
+					(name "OUTPUT_2")
+					(type "passive")
+				)
+				(pin
+					(num "J2-5")
+					(name "GND1")
+					(type "passive")
+				)
+				(pin
+					(num "J2-6")
+					(name "OUTPUT_3")
+					(type "passive")
+				)
+				(pin
+					(num "J2-7")
+					(name "GND1")
+					(type "passive")
+				)
+				(pin
+					(num "J2-8")
+					(name "OUTPUT_4")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EVMBJ4")
+			(description "Unmodified fast channels only. J4 pin 1 is common FGND. No channel-to-channel isolation. Direct field connection prohibited.")
+			(docs "TI SLLU254A Rev A Figure 7")
+			(fields
+				(field
+					(name "Reference") "EVMBJ4")
+				(field
+					(name "Value") "TI ISO1212EVM B FIELD CONNECTOR J4")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "TI SLLU254A Rev A Figure 7")
+				(field
+					(name "Description") "Unmodified fast channels only. J4 pin 1 is common FGND. No channel-to-channel isolation. Direct field connection prohibited.")
+				(field
+					(name "Status") "NOT SELECTED / BENCH R&D ONLY")
+				(field
+					(name "Evidence") "Connector representation only.")
+				(field
+					(name "Display") "TI ISO1212EVM B FIELD CONNECTOR J4")
+			)
+			(pins
+				(pin
+					(num "J4-1")
+					(name "FIELD_GND")
+					(type "passive")
+				)
+				(pin
+					(num "J4-6")
+					(name "FAST_INPUT_4")
+					(type "passive")
+				)
+				(pin
+					(num "J4-7")
+					(name "FAST_INPUT_3")
+					(type "passive")
+				)
+				(pin
+					(num "J4-8")
+					(name "FAST_INPUT_2")
+					(type "passive")
+				)
+				(pin
+					(num "J4-9")
+					(name "FAST_INPUT_1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JFIELDA")
+			(description "Exact probes/adapters, noninterference, routing and guarding are SELECTION REQUIRED.")
+			(docs "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE")
+			(fields
+				(field
+					(name "Reference") "JFIELDA")
+				(field
+					(name "Value") "LOGICAL FIELD TEST POINTS - NO CONNECTOR RELEASED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE")
+				(field
+					(name "Description") "Exact probes/adapters, noninterference, routing and guarding are SELECTION REQUIRED.")
+				(field
+					(name "Status") "DIRECT CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical names only; not physical terminals or authority.")
+				(field
+					(name "Display") "LOGICAL FIELD TEST POINTS - NO CONNECTOR RELEASED")
+			)
+			(pins
+				(pin
+					(num "EVMA_IN1")
+					(name "S0_channel-1_return")
+					(type "passive")
+				)
+				(pin
+					(num "EVMA_IN2")
+					(name "manual_RESET_return")
+					(type "passive")
+				)
+				(pin
+					(num "EVMA_IN3")
+					(name "manual_ARM/start_return")
+					(type "passive")
+				)
+				(pin
+					(num "EVMA_IN4")
+					(name "K1_coil_command")
+					(type "passive")
+				)
+				(pin
+					(num "SAFETY_0V")
+					(name "FIELD_REFERENCE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JFIELDB")
+			(description "Exact probes/adapters, noninterference, routing and guarding are SELECTION REQUIRED.")
+			(docs "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE")
+			(fields
+				(field
+					(name "Reference") "JFIELDB")
+				(field
+					(name "Value") "LOGICAL FIELD TEST POINTS - NO CONNECTOR RELEASED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE")
+				(field
+					(name "Description") "Exact probes/adapters, noninterference, routing and guarding are SELECTION REQUIRED.")
+				(field
+					(name "Status") "DIRECT CONNECTION PROHIBITED")
+				(field
+					(name "Evidence") "Logical names only; not physical terminals or authority.")
+				(field
+					(name "Display") "LOGICAL FIELD TEST POINTS - NO CONNECTOR RELEASED")
+			)
+			(pins
+				(pin
+					(num "EVMB_IN1")
+					(name "K2_coil_command")
+					(type "passive")
+				)
+				(pin
+					(num "EVMB_IN2")
+					(name "K1_mirror-contact_chain")
+					(type "passive")
+				)
+				(pin
+					(num "EVMB_IN3")
+					(name "K2_mirror-contact_chain")
+					(type "passive")
+				)
+				(pin
+					(num "SAFETY_0V")
+					(name "FIELD_REFERENCE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JTRIG1")
+			(description "Driver, polarity, cable, delay and camera compatibility required.")
+			(docs "No manufacturer selected")
+			(fields
+				(field
+					(name "Reference") "JTRIG1")
+				(field
+					(name "Value") "TRIGGER RECEIVER - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Driver, polarity, cable, delay and camera compatibility required.")
+				(field
+					(name "Status") "NO DIRECT CAMERA CONNECTION")
+				(field
+					(name "Evidence") "FIO0 external connection prohibited.")
+				(field
+					(name "Display") "TRIGGER RECEIVER - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "LOGIC_TRIGGER")
+					(type "passive")
+				)
+				(pin
+					(num "RTN")
+					(name "LOGIC_RETURN")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "PBV3")
+			(uri "${KIPRJMOD}/hr-v0-dynamic-event-interface-p0.1.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "COMMON_TRIGGER_LOGIC")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-6")
+				(pinfunction "FIO0_TRIGGER/WITNESS_DB37-6")
+				(pintype "passive")
+			)
+			(node
+				(ref "JTRIG1")
+				(pin "IN")
+				(pinfunction "LOGIC_TRIGGER_IN")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "2")
+			(name "DAQ_GND")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-1")
+				(pinfunction "GND_DB37-1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMAJ2")
+				(pin "J1-1")
+				(pinfunction "GND1_J1-1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMAJ2")
+				(pin "J2-1")
+				(pinfunction "GND1_J2-1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMAJ2")
+				(pin "J2-3")
+				(pinfunction "GND1_J2-3")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMAJ2")
+				(pin "J2-5")
+				(pinfunction "GND1_J2-5")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMAJ2")
+				(pin "J2-7")
+				(pinfunction "GND1_J2-7")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMBJ2")
+				(pin "J1-1")
+				(pinfunction "GND1_J1-1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMBJ2")
+				(pin "J2-1")
+				(pinfunction "GND1_J2-1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMBJ2")
+				(pin "J2-3")
+				(pinfunction "GND1_J2-3")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMBJ2")
+				(pin "J2-5")
+				(pinfunction "GND1_J2-5")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMBJ2")
+				(pin "J2-7")
+				(pinfunction "GND1_J2-7")
+				(pintype "passive")
+			)
+			(node
+				(ref "JTRIG1")
+				(pin "RTN")
+				(pinfunction "LOGIC_RETURN_RTN")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "3")
+			(name "DAQ_VS_5V_CANDIDATE")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-27")
+				(pinfunction "VS_ABOUT_5_V_DB37-27")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMAJ2")
+				(pin "J1-2")
+				(pinfunction "VCC1_MAX_5_V_J1-2")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMBJ2")
+				(pin "J1-2")
+				(pinfunction "VCC1_MAX_5_V_J1-2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "4")
+			(name "EVMA_IN1")
+			(class "Default")
+			(node
+				(ref "EVMAJ4")
+				(pin "J4-9")
+				(pinfunction "FAST_INPUT_1_J4-9")
+				(pintype "passive")
+			)
+			(node
+				(ref "JFIELDA")
+				(pin "EVMA_IN1")
+				(pinfunction "S0_channel-1_return_EVMA_IN1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "5")
+			(name "EVMA_IN2")
+			(class "Default")
+			(node
+				(ref "EVMAJ4")
+				(pin "J4-8")
+				(pinfunction "FAST_INPUT_2_J4-8")
+				(pintype "passive")
+			)
+			(node
+				(ref "JFIELDA")
+				(pin "EVMA_IN2")
+				(pinfunction "manual_RESET_return_EVMA_IN2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "EVMA_IN3")
+			(class "Default")
+			(node
+				(ref "EVMAJ4")
+				(pin "J4-7")
+				(pinfunction "FAST_INPUT_3_J4-7")
+				(pintype "passive")
+			)
+			(node
+				(ref "JFIELDA")
+				(pin "EVMA_IN3")
+				(pinfunction "manual_ARM/start_return_EVMA_IN3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "7")
+			(name "EVMA_IN4")
+			(class "Default")
+			(node
+				(ref "EVMAJ4")
+				(pin "J4-6")
+				(pinfunction "FAST_INPUT_4_J4-6")
+				(pintype "passive")
+			)
+			(node
+				(ref "JFIELDA")
+				(pin "EVMA_IN4")
+				(pinfunction "K1_coil_command_EVMA_IN4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "8")
+			(name "EVMA_OUT1")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-24")
+				(pinfunction "FIO1_EVENT_DB37-24")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMAJ2")
+				(pin "J2-2")
+				(pinfunction "OUTPUT_1_J2-2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "9")
+			(name "EVMA_OUT2")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-5")
+				(pinfunction "FIO2_EVENT_DB37-5")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMAJ2")
+				(pin "J2-4")
+				(pinfunction "OUTPUT_2_J2-4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "10")
+			(name "EVMA_OUT3")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-23")
+				(pinfunction "FIO3_EVENT_DB37-23")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMAJ2")
+				(pin "J2-6")
+				(pinfunction "OUTPUT_3_J2-6")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "11")
+			(name "EVMA_OUT4")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-4")
+				(pinfunction "FIO4_EVENT_DB37-4")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMAJ2")
+				(pin "J2-8")
+				(pinfunction "OUTPUT_4_J2-8")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "12")
+			(name "EVMB_IN1")
+			(class "Default")
+			(node
+				(ref "EVMBJ4")
+				(pin "J4-9")
+				(pinfunction "FAST_INPUT_1_J4-9")
+				(pintype "passive")
+			)
+			(node
+				(ref "JFIELDB")
+				(pin "EVMB_IN1")
+				(pinfunction "K2_coil_command_EVMB_IN1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "13")
+			(name "EVMB_IN2")
+			(class "Default")
+			(node
+				(ref "EVMBJ4")
+				(pin "J4-8")
+				(pinfunction "FAST_INPUT_2_J4-8")
+				(pintype "passive")
+			)
+			(node
+				(ref "JFIELDB")
+				(pin "EVMB_IN2")
+				(pinfunction "K1_mirror-contact_chain_EVMB_IN2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "14")
+			(name "EVMB_IN3")
+			(class "Default")
+			(node
+				(ref "EVMBJ4")
+				(pin "J4-7")
+				(pinfunction "FAST_INPUT_3_J4-7")
+				(pintype "passive")
+			)
+			(node
+				(ref "JFIELDB")
+				(pin "EVMB_IN3")
+				(pinfunction "K2_mirror-contact_chain_EVMB_IN3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "15")
+			(name "EVMB_OUT1")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-22")
+				(pinfunction "FIO5_EVENT_DB37-22")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMBJ2")
+				(pin "J2-2")
+				(pinfunction "OUTPUT_1_J2-2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "16")
+			(name "EVMB_OUT2")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-3")
+				(pinfunction "FIO6_EVENT_DB37-3")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMBJ2")
+				(pin "J2-4")
+				(pinfunction "OUTPUT_2_J2-4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "17")
+			(name "EVMB_OUT3")
+			(class "Default")
+			(node
+				(ref "DAQ1")
+				(pin "DB37-21")
+				(pinfunction "FIO7_EVENT_DB37-21")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMBJ2")
+				(pin "J2-6")
+				(pinfunction "OUTPUT_3_J2-6")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "18")
+			(name "SAFETY_0V_TAP_CANDIDATE")
+			(class "Default")
+			(node
+				(ref "EVMAJ4")
+				(pin "J4-1")
+				(pinfunction "FIELD_GND_J4-1")
+				(pintype "passive")
+			)
+			(node
+				(ref "EVMBJ4")
+				(pin "J4-1")
+				(pinfunction "FIELD_GND_J4-1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JFIELDA")
+				(pin "SAFETY_0V")
+				(pinfunction "FIELD_REFERENCE_SAFETY_0V")
+				(pintype "passive")
+			)
+			(node
+				(ref "JFIELDB")
+				(pin "SAFETY_0V")
+				(pinfunction "FIELD_REFERENCE_SAFETY_0V")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "19")
+			(name "unconnected-(EVMBJ2-OUTPUT_4-PadJ2-8)")
+			(class "Default")
+			(node
+				(ref "EVMBJ2")
+				(pin "J2-8")
+				(pinfunction "OUTPUT_4_J2-8")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "20")
+			(name "unconnected-(EVMBJ4-FAST_INPUT_4-PadJ4-6)")
+			(class "Default")
+			(node
+				(ref "EVMBJ4")
+				(pin "J4-6")
+				(pinfunction "FAST_INPUT_4_J4-6")
+				(pintype "passive+no_connect")
+			)
+		)
+	)
+)

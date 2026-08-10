@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HR-V0 compute installation P0.1</title>
+  <style>
+    :root{--sky:#e7f6ff;--blue:#082b4c;--mid:#0b4f8a;--gold:#ffc642;--paper:#fff;--open:#ffe4d6;--green:#e5f7ee;--line:#bfd7e8}*{box-sizing:border-box}body{margin:0;background:var(--sky);color:var(--blue);font:16px/1.55 Arial,sans-serif}header,main,footer{max-width:1180px;margin:auto;padding:28px 22px}.warning{background:var(--gold);border:3px solid var(--blue);padding:12px 16px;font-weight:800}.meta,.helper{font-size:14px}.badge{display:inline-block;border:2px solid var(--blue);border-radius:999px;padding:4px 9px;font-size:12px;font-weight:800;text-transform:uppercase}h1{font-size:clamp(36px,6vw,68px);line-height:1.02;margin:28px 0 12px}h2{font-size:clamp(26px,4vw,38px);line-height:1.15;margin-top:44px}h3{font-size:22px}.lede{font-size:20px;max-width:800px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card,section.panel{background:var(--paper);border:2px solid var(--mid);border-radius:16px;padding:20px}.card.open{background:var(--open)}.card.held{background:#fff8df}.part{font-weight:800}.layout-scroll{overflow:auto;border:2px solid var(--mid);background:white;border-radius:14px}.layout{display:block;width:100%;min-width:900px;aspect-ratio:1000/650;background:white}.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.controls button{font:inherit;font-weight:800;color:var(--blue);background:white;border:2px solid var(--blue);border-radius:999px;padding:9px 14px;cursor:pointer}.controls button[aria-pressed="true"]{background:var(--gold)}table{width:100%;border-collapse:collapse;background:white}th,td{text-align:left;vertical-align:top;border-bottom:1px solid var(--line);padding:12px;min-width:150px}th{background:#d8ecfb}.table-wrap{overflow:auto;border:2px solid var(--mid);border-radius:14px}a{color:#064f91;font-weight:700}.hidden{display:none!important}footer{font-size:14px}@media(max-width:760px){.grid{grid-template-columns:1fr}th,td{min-width:180px}header,main,footer{padding-left:16px;padding-right:16px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="warning">PRELIMINARY — NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TEST, OR ENERGIZATION</div>
+  <p class="meta">R121 · HR-V0-COMPUTE-INSTALL-P0.1 · HR-V0-CP-P0.6 · 2026-08-08</p>
+  <h1>The computer finally has a physical address.</h1>
+  <p class="lede">The too-small P0.5 cabinet branch is replaced by an enlarged exact Hammond candidate. A separated right-side column now contains exact held Pi-case and U2D2-retention candidates. The remaining physical tests stay visible and fail-closed.</p>
+</header>
+<main>
+  <section class="panel">
+    <span class="badge">layout candidate</span>
+    <h2>Panel fit, without imaginary holes</h2>
+    <p>The diagram is the controlled catalog-envelope screen. Use the buttons to isolate the compute column or the still-open evidence.</p>
+    <div class="controls" aria-label="Diagram filters">
+      <button type="button" data-mode="all" aria-pressed="true">Show all</button>
+      <button type="button" data-mode="compute" aria-pressed="false">Compute only</button>
+      <button type="button" data-mode="holds" aria-pressed="false">Open holds</button>
+    </div>
+    <div class="layout-scroll" tabindex="0" aria-label="Scrollable panel-layout diagram"><svg class="layout" viewBox="0 0 1000 650" role="img" aria-labelledby="lt ld">
+      <title id="lt">P0.6 control-panel allocation</title><desc id="ld">Large backplate with inherited equipment to the left, a wiring duct segregation boundary, and the Raspberry Pi case, U2D2 and cable retention candidates in a new right column.</desc>
+      <rect x="45" y="32" width="760" height="570" rx="8" fill="#fff" stroke="#0b4f8a" stroke-width="4"/>
+      <g data-kind="inherited"><rect x="75" y="62" width="510" height="105" rx="8" fill="#e5f7ee" stroke="#17663b" stroke-width="3"/><text x="330" y="112" text-anchor="middle" font-size="20" font-weight="700" fill="#082b4c">Inherited safety/control rail</text><text x="330" y="140" text-anchor="middle" font-size="16" fill="#082b4c">SR1 · SRA1 · KWD1/2 · K1/2</text><rect x="75" y="195" width="250" height="120" rx="8" fill="#e5f7ee" stroke="#17663b" stroke-width="3"/><text x="200" y="260" text-anchor="middle" font-size="18" font-weight="700" fill="#082b4c">Watchdog PCB</text><rect x="350" y="195" width="150" height="78" rx="8" fill="#e5f7ee" stroke="#17663b" stroke-width="3"/><text x="425" y="240" text-anchor="middle" font-size="18" font-weight="700" fill="#082b4c">DXL-STAR</text></g>
+      <rect x="605" y="48" width="58" height="535" fill="#d8ecfb" stroke="#0b4f8a" stroke-width="3"/><text x="634" y="315" text-anchor="middle" font-size="16" font-weight="700" fill="#082b4c" transform="rotate(-90 634 315)">WD2 segregation boundary</text>
+      <g data-kind="compute"><rect x="685" y="76" width="100" height="120" rx="8" fill="#fff3cc" stroke="#c48700" stroke-width="3"/><text x="735" y="122" text-anchor="middle" font-size="18" font-weight="700" fill="#082b4c">PI5-CASE-D</text><text x="735" y="150" text-anchor="middle" font-size="15" fill="#082b4c">Pi 5 + cooler</text><rect x="685" y="225" width="100" height="46" rx="8" fill="#fff3cc" stroke="#c48700" stroke-width="3"/><text x="735" y="254" text-anchor="middle" font-size="15" font-weight="700" fill="#082b4c">U2D2 + GTM1</text><rect x="685" y="300" width="100" height="46" rx="8" fill="#fff3cc" stroke="#c48700" stroke-width="3"/><text x="735" y="329" text-anchor="middle" font-size="15" font-weight="700" fill="#082b4c">Power + GTM2</text><rect x="685" y="375" width="100" height="46" rx="8" fill="#fff3cc" stroke="#c48700" stroke-width="3"/><text x="735" y="404" text-anchor="middle" font-size="15" font-weight="700" fill="#082b4c">USB + GTM3</text></g>
+      <g data-kind="holds"><rect x="75" y="355" width="510" height="112" rx="8" fill="#ffe4d6" stroke="#a03c17" stroke-width="3"/><text x="330" y="405" text-anchor="middle" font-size="19" font-weight="700" fill="#082b4c">Protection and interface reserves</text><text x="330" y="435" text-anchor="middle" font-size="16" fill="#082b4c">Fuse links, F24, J24 physical route remain open</text><rect x="75" y="490" width="510" height="80" rx="8" fill="#f3eefc" stroke="#6746a0" stroke-width="3" stroke-dasharray="9 7"/><text x="330" y="538" text-anchor="middle" font-size="18" font-weight="700" fill="#082b4c">Added unallocated reserve · no drilling credit</text></g>
+      <text x="835" y="92" font-size="16" font-weight="700" fill="#082b4c">Nominal screen</text><text x="835" y="122" font-size="14" fill="#082b4c">533.4 × 685.8 mm</text><text x="835" y="172" font-size="16" font-weight="700" fill="#a03c17">Not proved</text><text x="835" y="202" font-size="14" fill="#082b4c">depth</text><text x="835" y="228" font-size="14" fill="#082b4c">cable bends</text><text x="835" y="254" font-size="14" fill="#082b4c">thermal rise</text><text x="835" y="280" font-size="14" fill="#082b4c">grounding / EMC</text>
+    </svg></div>
+  </section>
+
+  <h2>Exact candidates, application still held</h2>
+  <div class="grid">
+    <article class="card held"><span class="badge">exact hold</span><h3>Enclosure and panel</h3><p class="part">PJ302410RT + 18P2721</p><p>The nominal inner panel grows from 431.8 × 533.4 mm to 533.4 × 685.8 mm. Support, door geometry, entries, thermal and completed-enclosure rating remain open.</p></article>
+    <article class="card held"><span class="badge">exact hold</span><h3>Pi carrier</h3><p class="part">Waveshare PI5-CASE-D · SKU 26087</p><p>Official Active Cooler compatibility and an included 35 mm rail bracket are published. Hardware identity, bracket offset, grounding/EMC and installed thermal behavior need physical proof.</p></article>
+    <article class="card held"><span class="badge">exact hold</span><h3>U2D2 body retention</h3><p class="part">GTM500C2 + GT.50X80C2</p><p>The published base contains the U2D2 plan envelope. The manufacturer specifies cable use, so rigid-device compression, slip, vibration and repeated service remain unproved.</p></article>
+    <article class="card open"><span class="badge">advanced in R122</span><h3>Pi-to-U2D2 cable</h3><p class="part">BOM-070 · USB2AC50CM</p><p>StarTech.com's exact 0.5 m straight USB-A-to-USB-C candidate is now held. Received U2D2 revision, fit, bend/retention, thermal, enumeration, waveform, common-mode, no-backfeed, EMC and HIL evidence remain open.</p></article>
+  </div>
+
+  <h2>Evidence needed before a hole exists</h2>
+  <div class="table-wrap"><table><thead><tr><th>Closure group</th><th>Required evidence</th><th>Current state</th></tr></thead><tbody>
+    <tr><td>Identity and fit</td><td>Received enclosure, panel, case, rail bracket, U2D2, bases, straps and supplied hardware; controlled measurements and three-dimensional fit update.</td><td>NOT EXECUTED</td></tr>
+    <tr><td>Retention</td><td>Selected panel fasteners/torques; rail pull; U2D2 slip/pull/vibration; cable pull, abrasion and repeated service.</td><td>NOT EXECUTED</td></tr>
+    <tr><td>Electrical interface</td><td>Received USB2AC50CM/U2D2/Pi fit; reference-voltage, common-mode, no-backfeed and waveform evidence; released routing and separation.</td><td>EXACT CANDIDATE HOLD</td></tr>
+    <tr><td>Thermal</td><td>Installed current, worst-case duty and ambient, blocked-fan case and calibrated closed-enclosure temperature survey.</td><td>NOT EXECUTED</td></tr>
+    <tr><td>Rail / grounding / EMC</td><td>R123 exact 1207648 rail stock; final cuts/holes/fasteners and DR4 retention; qualified metal-case/steel-panel/rail/PE/DC 0 V/shield disposition; continuity/impedance and no-damage evidence.</td><td>EXACT STOCK HOLD / INSTALLATION OPEN</td></tr>
+  </tbody></table></div>
+
+  <h2>Primary sources</h2>
+  <p><a href="https://www.hammfg.com/part/PJ302410RT">Hammond PJ302410RT</a> · <a href="https://www.hammfg.com/electrical/products/accessories/18p">Hammond 18P panels</a> · <a href="https://www.waveshare.com/pi5-case-d.htm">Waveshare PI5-CASE-D</a> · <a href="https://emanual.robotis.com/docs/en/parts/interface/u2d2/">ROBOTIS U2D2</a> · <a href="https://www.hellermanntyton.us/products/130-95000/">HellermannTyton GTM500C2</a> · <a href="https://www.hellermanntyton.us/products/854-44353/">HellermannTyton GT.50X8</a></p>
+</main>
+<footer>Passing repository checks proves configuration consistency only. It does not authorize purchase, fabrication, wiring, powered test, motion or energization.</footer>
+<script>
+  const buttons=[...document.querySelectorAll('[data-mode]')];
+  buttons.forEach(button=>button.addEventListener('click',()=>{
+    const mode=button.dataset.mode; buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+    document.querySelectorAll('[data-kind]').forEach(group=>group.classList.toggle('hidden',mode!=='all'&&group.dataset.kind!==mode));
+  }));
+</script>
+</body>
+</html>

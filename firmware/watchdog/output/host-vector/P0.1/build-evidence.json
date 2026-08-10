@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "release_id": "HR-V0-WD-HOST-VECTOR-P0.1",
+  "status": "PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION",
+  "build_date": "2026-08-07",
+  "source_parent_commit": "1c849d8f2a790171066b10f3a61a07cb5b4da836",
+  "source_hashes": {
+    "firmware/watchdog/tests/c_vector_runner.c": "29efb146b4d57ccf564e77f62cbe680a92058a0dc5aad59dfcefef120588c44e",
+    "firmware/watchdog/tests/test_compiled_watchdog.py": "6e39998efc172bdaf15088a65b0f8bff58504d0a6aa0ef119986c24eb61b245a",
+    "firmware/watchdog/reference_model.py": "70c265f770dee4c1f9f942a4cd5626d34d985d65fbd48f3ee707be326aeef36f",
+    "firmware/watchdog/src/pb_watchdog.c": "3180e7bd9f78c7892285f0487e453e79684c787e85bfcd2b7535b470de770066",
+    "firmware/watchdog/include/pb_watchdog.h": "13cc6f3e2e5c84fbc4f141fffb92e128d03efee369cd2494d821e319b9281810"
+  },
+  "toolchain_lock": "firmware/watchdog/host-test-toolchain-lock.json",
+  "build_script": "tools/build_hr_v0_watchdog_host_runner.ps1",
+  "builds": [
+    {"id": "build-a", "clean_directory": true, "compile_exit_code": 0},
+    {"id": "build-b", "clean_directory": true, "compile_exit_code": 0}
+  ],
+  "artifact": {
+    "path": "firmware/watchdog/output/host-vector/P0.1/pb_watchdog_vector_runner.exe",
+    "bytes": 91136,
+    "sha256": "45ab2752513c5f930516306cb8176ce2b2f8325d031b562eba7ed873b24f5180",
+    "build_a_matches_build_b": true
+  },
+  "differential_execution": {
+    "result": "PASS",
+    "scenario_count": 9,
+    "step_count": 44,
+    "model": "firmware/watchdog/reference_model.py",
+    "vectors": "firmware/watchdog/tests/test_compiled_watchdog.py",
+    "covered": [
+      "three-edge startup permit",
+      "19/20 ms minimum edge boundary",
+      "24/25 ms feedback-settle boundary",
+      "299/300 ms freshness boundary",
+      "relay 1 and relay 2 feedback faults",
+      "three-edge recovery after timeout",
+      "uint32 clock wrap",
+      "clock regression",
+      "half-range fail-closed rule"
+    ]
+  },
+  "verification_boundary": {
+    "verified": [
+      "strict C11 host compilation with warnings as errors",
+      "two-clean-build executable reproducibility",
+      "compiled C output matches the Python model for all 44 controlled steps"
+    ],
+    "not_verified": [
+      "RP2040 target execution, timing, GPIO, electrical levels or relay behavior",
+      "HIL, fault injection, EMC, functional-safety integrity or stopping performance",
+      "permission to flash, fabricate or energize"
+    ],
+    "gate_disposition": "EG-017 remains partial; host execution closes no target-HIL requirement."
+  }
+}

@@ -1,0 +1,7 @@
+record_id,axis_id,reference_condition,nominal_engineering_value,unit,received_model_number,received_firmware_version,measured_engineering_value,measured_raw_value,raw_direction_result,instrument_id,uncertainty,witness,evidence_uri,result,warning
+CAL-J1-01,J1,zero-reference fixture,0.000,deg,,,,,,,,,,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"
+CAL-J1-02,J1,independent positive reference,SELECTION REQUIRED,deg,,,,,,,,,,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"
+CAL-J2-01,J2,command-minimum fixture,15.000,deg,,,,,,,,,,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"
+CAL-J2-02,J2,independent positive reference below stop,SELECTION REQUIRED,deg,,,,,,,,,,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"
+CAL-G1-01,GRIPPER,minimum verified usable opening,20.000 candidate,mm,,,,,,,,,,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"
+CAL-G1-02,GRIPPER,maximum verified usable opening,75.000 candidate,mm,,,,,,,,,,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION"

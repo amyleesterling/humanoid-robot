@@ -1,0 +1,5 @@
+option_id,architecture,decision,basis,warning
+OPT-001,KWD contacts in SR1 input returns,REJECTED,A1/21-to-14 fault can inject downstream of S0,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+OPT-002,KWD contacts only in reset/start loop,NOT SELECTED,may not drop an already latched relay; manufacturer validation absent,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+OPT-003,KWD contacts only downstream at contactor coils,REJECTED,restored heartbeat could repower coils while upstream eligibility remains latched,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+OPT-004,KWD contacts series-gate SR1:A1; S0 direct,SELECTED CANDIDATE,removes encoded KWD-to-E-stop-return injection; physical/qualified proof open,PRELIMINARY - ANALYSIS AND UNEXECUTED TEST CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION

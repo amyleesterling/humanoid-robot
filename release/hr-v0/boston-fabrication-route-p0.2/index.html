@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Button - Boston metal fabrication route P0.2</title>
+  <style>
+    :root { --navy:#082f5b; --blue:#1167a8; --sky:#dff3ff; --gold:#f4bd32; --ink:#102a43; --paper:#f8fcff; --line:#8abada; --danger:#9b2c2c; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    header { background:linear-gradient(135deg,var(--navy),var(--blue)); color:white; padding:clamp(28px,5vw,64px) max(20px,calc((100vw - 1180px)/2)); border-bottom:8px solid var(--gold); }
+    h1 { margin:0 0 12px; font-size:clamp(32px,5vw,58px); line-height:1.05; }
+    h2 { color:var(--navy); font-size:clamp(24px,3vw,34px); }
+    p { max-width:78ch; }
+    .warning { margin-top:20px; padding:14px 16px; background:#fff4cf; color:#4d3300; border:2px solid var(--gold); border-radius:10px; font-weight:750; }
+    main { max-width:1180px; margin:auto; padding:32px 20px 72px; }
+    .correction { background:white; border-left:8px solid var(--danger); border-radius:12px; padding:20px 22px; box-shadow:0 4px 18px #082f5b12; }
+    .correction strong { color:var(--danger); }
+    .filters { display:flex; gap:10px; flex-wrap:wrap; margin:24px 0; }
+    button { min-height:44px; border:2px solid var(--navy); background:white; color:var(--navy); border-radius:999px; padding:9px 16px; font:700 16px/1.2 inherit; cursor:pointer; }
+    button.active, button:hover { background:var(--navy); color:white; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr)); gap:18px; }
+    article { background:white; border:2px solid var(--line); border-radius:14px; padding:20px; box-shadow:0 4px 16px #082f5b10; }
+    article h3 { margin:8px 0 4px; color:var(--navy); font-size:23px; }
+    .badge { display:inline-block; padding:4px 9px; border-radius:999px; background:var(--sky); color:var(--navy); font-size:13px; font-weight:800; letter-spacing:.02em; }
+    .excluded { border-color:#d77; }
+    .excluded .badge { background:#ffe0e0; color:#7b1717; }
+    dt { margin-top:14px; font-weight:800; color:var(--navy); }
+    dd { margin:3px 0 0; }
+    a { color:#075b99; text-underline-offset:3px; }
+    .files { background:var(--sky); border-radius:12px; padding:18px 20px; margin-top:30px; }
+    footer { max-width:1180px; margin:auto; padding:0 20px 40px; color:#365a75; font-size:14px; }
+    @media (max-width:520px) { main { padding-top:22px; } article { padding:17px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="badge">HR-V0-BOSTON-FAB-ROUTE-P0.2</div>
+    <h1>How the custom metal could be made</h1>
+    <p>A controlled Boston-area route comparison for the five current P0.7 aluminum parts. This is a supplier-research and review aid, not an order page.</p>
+    <div class="warning">PRELIMINARY - NOT APPROVED FOR QUOTATION, FABRICATION, ASSEMBLY, MOTION, OR ENERGIZATION</div>
+  </header>
+  <main>
+    <section class="correction">
+      <h2>Critical correction</h2>
+      <p><strong>Do not use the earlier 4.75 mm plate suggestion.</strong> C01, C04, C05, C06 and C07 are all controlled at 9.525 mm nominal, with a 9.00-10.00 mm finished range.</p>
+      <p>SendCutSend is not acceptable for these finished parts under the current controls. Its published +/-0.381 mm accuracy and standard 10 mm M5 countersink do not satisfy the project's tighter locations, rail datums, coplanarity or 11.30 mm countersink.</p>
+    </section>
+
+    <h2>Compare routes</h2>
+    <div class="filters" role="group" aria-label="Filter fabrication routes">
+      <button class="active" data-filter="all">All routes</button>
+      <button data-filter="candidate">Candidates</button>
+      <button data-filter="local">Boston local</button>
+      <button data-filter="excluded">Excluded</button>
+    </div>
+    <div class="grid" id="routes"></div>
+
+    <section class="files">
+      <h2>Controlled evidence</h2>
+      <p><a href="route-comparison.csv">Route comparison CSV</a> | <a href="source-register.csv">Primary-source register CSV</a> | <a href="geometry-file-register.csv">Exact geometry/hash register CSV</a> | <a href="package-status.json">Authorization status JSON</a></p>
+      <p>The current preferred path is a written high-requirement CNC capability review after qualified drawing acceptance. No provider has been contacted or selected, and no file upload is authorized.</p>
+    </section>
+  </main>
+  <footer>Project Button HR-V0 - Boston fabrication research - 2026-08-08. Provider claims are capability evidence only; the exact written quote, process, inspection plan and qualified disposition control.</footer>
+  <script>
+    const routes = [
+      {id:'BFR-001',tags:'candidate',name:'Xometry',state:'Primary capability-inquiry candidate',scope:'All five parts by high-requirement 3-axis CNC',why:'Can accept drawings, material certification and inspection options. Default tolerance is not enough.',hold:'Explicit written acceptance of every P0.7 tolerance, 6061-T651/MTR, one first article per geometry, and FAI/CMM results.',url:'https://www.xometry.com/capabilities/cnc-machining-service/'},
+      {id:'BFR-002',tags:'candidate',name:'Protolabs',state:'Alternate capability-inquiry candidate',scope:'All five parts through a precision or network route',why:'Lists 6061-T651 and tighter drawing-defined machining options.',hold:'The exact factory/network path, quoted tolerances, material certificate and inspection package must be accepted.',url:'https://www.protolabs.com/services/cnc-machining/precision-machining-tolerances/'},
+      {id:'BFR-003',tags:'excluded',name:'SendCutSend - finished parts',state:'Excluded',scope:'Direct finished C01/C04/C05/C06/C07 parts',why:'Published process accuracy and M5 countersink geometry conflict with current controls.',hold:'No closure route under current P0.7 finished-part controls.',url:'https://sendcutsend.com/services/countersinking/'},
+      {id:'BFR-004',tags:'candidate',name:'SendCutSend - blank contingency',state:'Research only',scope:'Oversized 9.53 mm blank followed by qualified secondary CNC',why:'May reduce roughing work, but creates a two-supplier datum and traceability chain.',hold:'A new oversized blank artifact, T6/T651 disposition, chain of custody, secondary fixture plan and FAI are all missing.',url:'https://sendcutsend.com/materials/6061-aluminum/'},
+      {id:'BFR-005',tags:'candidate local',name:'Artisans Asylum',state:'Boston capability candidate',scope:'Fixture, training, secondary machining or supplemental inspection',why:'The Allston machine shop lists a Bridgeport CNC mill.',hold:'Operator, material policy, workholding/CAM, exact tolerance, calibrated metrology and FAI responsibility are unverified.',url:'https://www.artisansasylum.com/shops/machine'},
+      {id:'BFR-006',tags:'candidate',name:'80/20',state:'Catalog candidate',scope:'Two 20-2040 link members with M5 end-tap service',why:'Avoids custom machining for the straight profile members.',hold:'Written configuration plus received length, squareness, tap-depth, thread-gauge and joint-proof evidence.',url:'https://8020.net/20-2040.html'}
+    ];
+    const host = document.getElementById('routes');
+    function render(filter='all') {
+      host.innerHTML = routes.filter(r => filter==='all' || r.tags.includes(filter)).map(r => `
+        <article class="${r.tags.includes('excluded')?'excluded':''}">
+          <span class="badge">${r.id} - ${r.state}</span><h3>${r.name}</h3>
+          <dl><dt>Scope</dt><dd>${r.scope}</dd><dt>Why it is here</dt><dd>${r.why}</dd><dt>What blocks use</dt><dd>${r.hold}</dd></dl>
+          <p><a href="${r.url}" target="_blank" rel="noreferrer">Official source</a></p>
+        </article>`).join('');
+    }
+    document.querySelectorAll('button[data-filter]').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('button[data-filter]').forEach(b => b.classList.remove('active'));
+      button.classList.add('active'); render(button.dataset.filter);
+    }));
+    render();
+  </script>
+</body>
+</html>

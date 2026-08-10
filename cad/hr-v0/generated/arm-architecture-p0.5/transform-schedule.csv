@@ -1,0 +1,9 @@
+item,parent,tx_mm,ty_mm,tz_mm,rx_deg,matrix_4x4_row_major,status
+40-4040 column envelope,J1_LOCAL,0,-81.025,-460.0,0,"[[1.0, 0.0, 0.0, 0], [0.0, 1.0, -0.0, -81.025], [0.0, 0.0, 1.0, -460.0], [0.0, 0.0, 0.0, 1.0]]",conservative purchased-profile envelope; received cross-section and support proof open
+MV0-C05 shoulder support,J1_LOCAL,0,-61.025,-40.0,0,"[[1.0, 0.0, 0.0, 0], [0.0, 1.0, -0.0, -61.025], [0.0, 0.0, 1.0, -40.0], [0.0, 0.0, 0.0, 1.0]]",exact candidate geometry; T-slot stack torque pullout and proof open
+J1 XM540 body and S102,J1_LOCAL,0,0,0,90,"[[1.0, 0.0, 0.0, 0], [0.0, 0.0, -1.0, 0], [0.0, 1.0, 0.0, 0], [0.0, 0.0, 0.0, 1.0]]",package roll exact; internal XM540 uses the recorded actuator axis-map
+J1 H101 straight-reference pose,J1_LOCAL,0,0,0,0,"[[1.0, 0.0, 0.0, 0], [0.0, 1.0, -0.0, 0], [0.0, 0.0, 1.0, 0], [0.0, 0.0, 0.0, 1.0]]",requires -90 deg output offset relative J1 body
+J2 joint package and S102,WORLD,0,202.55,0,90,"[[1.0, 0.0, 0.0, 0], [0.0, 0.0, -1.0, 202.55], [0.0, 1.0, 0.0, 0], [0.0, 0.0, 0.0, 1.0]]",package roll exact; internal XM540 uses the recorded actuator axis-map
+J2 H101 straight-reference pose,WORLD,0,202.55,0,0,"[[1.0, 0.0, 0.0, 0], [0.0, 1.0, -0.0, 202.55], [0.0, 0.0, 1.0, 0], [0.0, 0.0, 0.0, 1.0]]",requires -90 deg output offset relative J2 body
+G1 H104 frame,WORLD,0,331.6,0,180,"[[1.0, 0.0, 0.0, 0], [0.0, -1.0, -0.0, 331.6], [0.0, 0.0, -1.0, 0], [0.0, 0.0, 0.0, 1.0]]",four exact broad-face axes registered to MV0-C04; received fit and gripper kit assembly remain open
+J1 local frame,A0_BASE_CENTER,-210.0,81.025,500.0,0,"[[1.0, 0.0, 0.0, -210.0], [0.0, 1.0, -0.0, 81.025], [0.0, 0.0, 1.0, 500.0], [0.0, 0.0, 0.0, 1.0]]",candidate full-assembly placement; base/column receipt and inspection open

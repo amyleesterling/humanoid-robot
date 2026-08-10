@@ -1,0 +1,7 @@
+analysis_id,quantity,result,basis,boundary
+PAA-001,adapter nominal volume,9366.558784 mm3,CadQuery solid,stock/finish/tolerance not included
+PAA-002,adapter calculated mass,25.289709 g,volume x 2.70 g/cm3,not measured; optional hardware excluded
+PAA-003,remaining arithmetic moving-mass headroom,117.619291 g,750 - 577.091 - 30 - adapter,guard/pads/fasteners/cable/adhesive and received mass excluded
+PAA-004,gravity sensitivity moment,0.085890 N m at 1x; 0.858897 N m at 10x,100 g payload and conservative far-tip gripper/adapter placement,accepted multiplier and dynamic case SELECTION REQUIRED
+PAA-005,narrow-web bending screen at 10x,13.420 MPa,combined idealized section modulus 64.000 mm3,"screen only; no allowable, fatigue, notch or proof credit"
+PAA-006,M4-axis ideal couple at 10x,70.449 N over 12.191801 mm,ideal two-point couple,POM bearing/bypass/bending and load distribution open

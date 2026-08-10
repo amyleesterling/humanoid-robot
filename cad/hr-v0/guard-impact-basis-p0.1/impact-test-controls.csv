@@ -1,0 +1,13 @@
+control_id,control,evidence_required,state
+GIC-001,"Keep payload, moving-link, detached-part, drive-persistence and static-access cases separate.",signed final hazard-to-test allocation,OPEN
+GIC-002,"Measure the exact moving assembly mass, local COM and effective/reflected inertia before releasing link-impact energy.",closed MASS-002 ledger and guarded inertia characterization,NOT EXECUTED
+GIC-003,"Measure maximum speed, stop/contact response, current persistence, gravity contribution, compliance and rebound for each released fault case.","time-synchronized angle, velocity, current, force and high-speed video",NOT EXECUTED
+GIC-004,"Define the largest credible detached component/tool and prove its retention or include its mass, shape, direction and speed in containment tests.",released BOM/fastener FMEA and projectile definition,SELECTION REQUIRED
+GIC-005,"Select test-energy multipliers, impactor geometry, conditioning, support condition, location, direction, repeats and acceptance criteria through qualified review.",approved test specification and applicable licensed standards,SELECTION REQUIRED
+GIC-006,"Test the exact sheet lot, edge finish, gasket, engagement, frame, joints, anchors and cable entries; coupons alone cannot release the installed guard.",traceable coupon correlation plus full installed proof,NOT EXECUTED
+GIC-007,Condition the guard at accepted temperature and aging bounds before applicable impact and retention tests.,released environment profile and conditioned raw results,SELECTION REQUIRED
+GIC-008,"Require no escape, no loss of edge engagement, no hazardous opening or fragment, and acceptable frame/joint/anchor condition after each test.",quantified acceptance limits and signed inspection,SELECTION REQUIRED
+GIC-009,Do not add no-load-speed kinetic energy and stall torque as simultaneous motor performance points.,qualified calculation review,OPEN
+GIC-010,Do not select nominal 3 mm TUFFAK or credit 12004 retention from these calculations.,all blocking cases closed plus physical proof and qualified selection,HOLD
+GIC-011,Do not treat ISO 14120 metadata or OSHA 1910.212 as a project-specific test-energy value.,licensed-standard applicability review and released test method,OPEN
+GIC-012,"Any guard change requires rerunning sweep, stopping, mass, stability, access, thermal-fit and containment evidence.",configuration-controlled validation matrix,OPEN

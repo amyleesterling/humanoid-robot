@@ -1,0 +1,25 @@
+{
+  "identifier": "HR-V0-FR12-MASS-MET-P0.1",
+  "status": "PRELIMINARY - UNPOWERED MEASUREMENT ROUTE ONLY",
+  "source_step": "cad/vendor/robotis/x430-fr12-r91/fr12_h101.stp",
+  "source_sha256": "18C2021EB0DF523E5879B745D58201FF30FC4E812DF8A2E83829A59A8D9FEE4C",
+  "solid_count": 1,
+  "volume_mm3": 2854.117032171,
+  "uniform_geometry_centroid_mm": {
+    "x": 0.0,
+    "y": 20.04663703,
+    "z": 0.0
+  },
+  "bounding_box_mm": {
+    "x_min": -20.5,
+    "x_max": 20.5,
+    "y_min": -2.5,
+    "y_max": 28.0,
+    "z_min": -12.0,
+    "z_max": 12.0
+  },
+  "maximum_vertex_radius_about_j2_x_mm": 29.904013109,
+  "conservative_bbox_corner_radius_about_j2_x_mm": 30.463092423,
+  "uniform_geometry_ixx_about_j2_per_unit_mass_mm2": 534.595254248,
+  "boundary": "FRAME GEOMETRY ONLY; IDLER, OUTPUT-SIDE MOVING HARDWARE, FASTENERS AND RECEIVED VARIATION EXCLUDED"
+}

@@ -1,0 +1,13 @@
+hold_id,evidence_required,status,release_effect
+REC2-HOLD-001,complete gripper/object/cable geometry,OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC2-HOLD-002,"measured mass, inertia, contact speed and drive persistence",OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC2-HOLD-003,ACE written application acceptance and exact mounting,OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC2-HOLD-004,"received igus CAD, configured rail code, load/life review and guide proof",PARTIAL,BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC2-HOLD-005,"Sorbothane cut/retention, dynamic deflection, rebound, wear and flammability",PARTIAL,BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC2-HOLD-006,"platen material/tolerance, final holes, local strength, fatigue and inspection",PARTIAL,BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC2-HOLD-007,"joint, post, brace, base, guard and anchor allowables/proof",PARTIAL,BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC2-HOLD-008,all four joint-boundary stops,OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC2-HOLD-009,"guard access, pinch, rebound and final-rest proof",OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC2-HOLD-010,"continued-drive, regeneration, elastic and detached-part cases",OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC2-HOLD-011,"FAI, metrology, drop/backdrive/fault tests and uncertainty",OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION
+REC2-HOLD-012,qualified mechanical/functional-safety disposition and work authorization,OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION

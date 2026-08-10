@@ -1,0 +1,18 @@
+{
+  "identifier": "HR-V0-REQ-ATOMIC-P0.2",
+  "date": "2026-08-09",
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION, CONNECTION, MOTION, OR ENERGIZATION",
+  "parent_count": 66,
+  "child_count": 458,
+  "r142_child_count": 396,
+  "newly_separated_duty_count": 62,
+  "covered_r141_compound_parent_count": 66,
+  "minimum_children_per_parent": 2,
+  "maximum_children_per_parent": 28,
+  "open_hold_count": 8,
+  "executed_evidence_count": 0,
+  "approved_child_count": 0,
+  "approved_parent_count": 0,
+  "governance_requirement_closed": false,
+  "energization_authorized": false
+}

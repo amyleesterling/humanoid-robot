@@ -1,0 +1,42 @@
+{
+  "status": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION",
+  "board_revision": "PCB-P0.2",
+  "electrical_revision": "Electrical V3-P1.0",
+  "generated_date": "2026-08-06",
+  "manufacturer_sources": [
+    {
+      "manufacturer": "Texas Instruments",
+      "document": "ISO121x datasheet SLLSEY7G",
+      "revision": "G, revised February 2025",
+      "accessed": "2026-08-06",
+      "url": "https://www.ti.com/lit/ds/symlink/iso1211.pdf"
+    },
+    {
+      "manufacturer": "Texas Instruments",
+      "document": "TPL7407L datasheet SLRS066D",
+      "revision": "D, revised March 2016",
+      "accessed": "2026-08-06",
+      "url": "https://www.ti.com/lit/ds/symlink/tpl7407l.pdf"
+    }
+  ],
+  "measured_placement_screens_mm": {
+    "CDEC1_VCC_to_UFB1_VCC_edge_max": 1.025,
+    "CDEC1_GND_to_UFB1_GND_edge_max": 1.025,
+    "CFI1_to_UFB1_SENSE1_centres": 3.223,
+    "CFI2_to_UFB1_SENSE2_centres": 3.4691,
+    "RTH1_high_voltage_to_protected_copper_min": 16.0811,
+    "RTH2_high_voltage_to_protected_copper_min": 16.0811,
+    "CDRV1_to_UDRV1_COM_centres": 3.2797,
+    "CDRV2_to_UDRV2_COM_centres": 3.2797
+  },
+  "routing_state": {
+    "tracks": 0,
+    "zones": 0,
+    "unconnected_pads": 68
+  },
+  "limitations": [
+    "Placement screens are not routed-copper path measurements.",
+    "No trace-width, stack-up, fabrication, EMC, thermal, COM-slew or fault evidence is released.",
+    "UFB1 field and logic returns share SAFETY_0V; no galvanic-isolation or safety credit is claimed."
+  ]
+}

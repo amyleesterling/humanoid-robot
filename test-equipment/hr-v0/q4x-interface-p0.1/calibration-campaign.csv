@@ -1,0 +1,11 @@
+step_id,stage,action,required_evidence,execution_state,acceptance
+CAL-001,receiving,"record exact Q4X, cordset, bracket, supply and probe identities, labels, condition and calibration state","photos, serials, certificates/status and quarantine disposition",NOT EXECUTED,SELECTION REQUIRED
+CAL-002,unpowered continuity,prove cordset conductor-to-M12-pin identity and absence of unintended conductor/shield shorts,"meter identity, raw readings and second-person witness",NOT EXECUTED,SELECTION REQUIRED
+CAL-003,unpowered isolation,"prove Q4X domain isolation from robot returns, PE/chassis and other supply channel","accepted method, instrument, raw readings and connection photos",NOT EXECUTED,SELECTION REQUIRED
+CAL-004,fixture inspection,"verify selected target, 35-110 mm geometry, rigidity, fastener retention, full-stroke clearance, occlusion and cross-axis rejection",dimensioned as-built record and photographs,NOT EXECUTED,SELECTION REQUIRED
+CAL-005,configuration,"record output voltage/current limit, Q4X teach/slope/rate/averaging/remote/loss settings and scope setup",configuration snapshot and independent check,NOT EXECUTED,SELECTION REQUIRED
+CAL-006,warm-up,allow at least the manufacturer-recommended 10 minute warm-up before optimum-performance calibration,timestamped log,NOT EXECUTED,10 minutes minimum after authorized power application
+CAL-007,static calibration,collect repeated sensor-display and analog-output data over selected distances after power cycles and connector re-seats,"immutable raw data, configuration hash and witness",NOT EXECUTED,repetitions/distances SELECTION REQUIRED
+CAL-008,environment / nuisance,"repeat at accepted ambient range, target orientations and alignment offsets; record saturation/loss flags",raw data and uncertainty components,NOT EXECUTED,campaign bounds SELECTION REQUIRED
+CAL-009,analysis,"fit accepted voltage-to-displacement mapping and calculate repeatability, drift, noise and complete uncertainty",versioned analysis and independent review,NOT EXECUTED,method and limit SELECTION REQUIRED
+CAL-010,E2 release review,select no-motion threshold only from received calibration and reconcile it with R181 acquisition/timing contract,signed qualified electrical and functional-safety disposition,NOT EXECUTED,SELECTION REQUIRED

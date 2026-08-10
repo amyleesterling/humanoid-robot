@@ -1,0 +1,7 @@
+budget_id,source,maximum_adverse_contribution_mm,evidence,state
+P10-TOL-01,adapter contour/profile and thickness,SELECTION REQUIRED,"released drawing tolerance, DFM, calibrated FAI",OPEN
+P10-TOL-02,X430/FR12 axial registration and runout,SELECTION REQUIRED,received joint-stack metrology with uncertainty,OPEN
+P10-TOL-03,bearing/gear/frame play and calibration error,SELECTION REQUIRED,loaded bidirectional measurement over temperature and wear,OPEN
+P10-TOL-04,fastener head/nut/washer projection,SELECTION REQUIRED,"exact selected stack, received inspection, torque/access trial",OPEN
+P10-TOL-05,elastic/impact deformation and bumper behavior,SELECTION REQUIRED,"accepted structural model, proof and dynamic stop tests",OPEN
+P10-TOL-SUM,combined worst-case adverse variation,<=1.491516,worst-case stack must preserve >=1.000 mm X430/body clearance at first stop contact,UNALLOCATED_OPEN_LIMIT

@@ -1,0 +1,15 @@
+test_id,test,configuration,pass_basis,result,authorization
+TST-001,source and candidate receiving identity,unpowered,"part marking, package, values, polarity and lot records match",NOT EXECUTED,NOT AUTHORIZED
+TST-002,schematic-to-article continuity and resistance,unpowered,all terminal paths and deliberate opens match; no shorts,NOT EXECUTED,NOT AUTHORIZED
+TST-003,UVLO/OVLO thresholds per channel,"current-limited bench source, no actuator",measured rising/falling thresholds within qualified limits,NOT EXECUTED,NOT AUTHORIZED
+TST-004,forward current limiting per channel,"electronic load, no actuator","threshold, overshoot, foldback, latch and thermal response accepted",NOT EXECUTED,NOT AUTHORIZED
+TST-005,output short-circuit response,"protected fixture, no actuator","peak, duration, temperature and latch response accepted",NOT EXECUTED,NOT AUTHORIZED
+TST-006,reverse-current injection,"bidirectional source/load, no actuator",OUT-to-IN waveform proves absence/bounds of reverse limit and bus effect,NOT EXECUTED,NOT AUTHORIZED
+TST-007,shunt threshold and pulse,"current-limited source, no actuator","setpoint, pulse current, temperature and recovery accepted",NOT EXECUTED,NOT AUTHORIZED
+TST-008,source plus shunt nuisance margin,"received GST280A12-C6P, no actuator",all line/load/ripple cases avoid nuisance clamp,NOT EXECUTED,NOT AUTHORIZED
+TST-009,single received actuator startup,guarded fixture,"startup, current limit, voltage and diagnostic waveforms accepted",NOT EXECUTED,NOT AUTHORIZED
+TST-010,single-axis regeneration,guarded fixture,"reverse current, bus voltage, shunt pulse and temperatures accepted",NOT EXECUTED,NOT AUTHORIZED
+TST-011,K1/K2 dropout during accepted motion,guarded fixture,"bus decay, eFuse state, shunt pulse and restart prevention accepted",NOT EXECUTED,NOT AUTHORIZED
+TST-012,simultaneous worst-case duty and thermal,guarded representative assembly,all connector/PCB/eFuse/shunt/source temperatures and waveforms accepted,NOT EXECUTED,NOT AUTHORIZED
+TST-013,DXL communication integrity,representative harness,"waveform, error rate, latency and watchdog timing accepted",NOT EXECUTED,NOT AUTHORIZED
+TST-014,fault injection and HIL,received complete electrical assembly,open/short/drift/thermal/unplug/brownout cases fail closed,NOT EXECUTED,NOT AUTHORIZED

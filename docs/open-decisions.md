@@ -4,14 +4,14 @@ These questions intentionally remain open. They must be answered with evidence, 
 
 | Gate | Decision | Evidence required | Owner | Due before |
 |---|---|---|---|---|
-| G-01 | Final J1/J2 actuator and allowable current | CAD mass properties, torque model, single-joint thermal test | mechanical + controls | actuator procurement release |
-| G-02 | Custom link/bearing geometry | R0.1 native quote geometry exists; still requires physical FR13 fit coupon, released CAD, shaft/frame load calculation, fastener selection and tolerance stack | mechanical | fabrication |
+| G-01 | Final J1/J2 actuator and allowable current | R91 holds the P0.7 quote and opens a nonselecting X430 elbow comparison; R98 defines but does not execute the P1.1 X430 duty/current/thermal route. Close complete CAD/received mass properties, exact fixture/source/protection/connector/current limits, representative speed/duty, calibrated continuous/cyclic evidence, stopping and single-joint physical tests before selection | mechanical + controls + electrical | actuator procurement release |
+| G-02 | Custom link/bearing geometry | R21 corrects the invalid symmetric PCD22 assumption and adds FC01/FC02 plus the expected frame-kit schedule; R22/R23 add stop and moving-mass evidence routes; R24 selects the proposed RM-X52 gripper subset and FC03 interface check; R71 freezes exact official gripper reference meshes/URDF; R91 holds P0.7 custom-metal quoting; R92-R96 create the nonselected exact-coordinate X430/P1.1 comparison and incomplete load basis; R97 defines but does not execute the FR12 received-mass/COM/envelope route; still requires complete part definition, registration, measured mass/COM/inertia, guard/receiver, force/drop, fastener/cable, hard-stop, load, tolerance, coupon/receiving and proof evidence | mechanical | fabrication |
 | G-25 | Watchdog restart interlock | reviewed hardware topology proving heartbeat restoration cannot restore contactor power without monitored physical reset; fault analysis and TEST-SAFE-002 record | functional safety | energization |
 | G-26 | Actuator-rail battery architecture | selected chemistry, series count or regulated conversion, full-charge and loaded end-of-discharge bounds, transient/regeneration data, thermal and efficiency evidence | electrical/power | HR-30W design |
 | G-27 | Full-body mass feasibility | supplier and measured part-level ledger closing all subsystem allocations, center of mass, inertia, wiring, fasteners, covers, guards, battery/conversion, and contingency | mechanical/systems | actuator procurement |
 | G-03 | Exact safety-relay and contactor wiring | manufacturer manuals, reviewed ECAD, dropout test plan | electrical safety reviewer | panel wiring |
 | G-04 | Fuse types and conductor sizing | measured/inferred fault current, connector ratings, coordination review | electrical | energization |
-| G-05 | Guard material/thickness and clearances | swept-volume CAD, stopping-travel test, impact assessment | mechanical safety | integrated motion |
+| G-05 | Guard material/thickness and clearances | R25 reserves a 900 x 400 x 950 mm internal enclosure and catch space but treats 25 mm stopping/clearance and 6 mm panel geometry as provisional; close with complete 3D sweep, measured stopping/drop envelope, exact material/frame/fasteners, access probe, impact/retention and service-isolation evidence | mechanical safety | before actuator connection and integrated motion |
 | G-06 | Final software current/temperature limits | T3 characterization data | controls | payload motion |
 | G-07 | Receiver fixture sensing method | fault analysis and validation data | systems | handoff test |
 | G-08 | Any adult handoff | completed fixture endurance, contact-force assessment, new risk review | independent reviewer | human exposure |
@@ -39,7 +39,7 @@ The following program inputs are now frozen:
 - Build/use location: Boston, Massachusetts, USA.
 - Nominal building supply basis: 120 VAC, 60 Hz. The actual receptacle, branch-circuit protection, grounding, GFCI requirements, and site permission remain to be inspected before any energization.
 - HR-V0 use boundary: indoor, bench-mounted experimental machinery operated by adults in a controlled work area. Children are excluded from the build and test area.
-- HR-V0 payload: one soft foam object, 100 g maximum and 70 mm maximum characteristic dimension.
+- HR-V0 payload: one serialized soft-foam object, no more than 100 g, with each principal dimension from 40 mm through 70 mm. Exact material/product/lot, size within that envelope, grip axis, conditioning, dimensional measurement force, uncertainty and damage/permanent-set limits remain `SELECTION REQUIRED`.
 - Cost/strength direction: favor a low-cost, low-mass, low-force demonstrator; this does not relax structural proof, guarding, current limiting, stopping, or fault-response requirements.
 - Program end-state: 762 mm nominal overall height and untethered level-floor walking, reached only through the staged HR-30 release sequence.
 

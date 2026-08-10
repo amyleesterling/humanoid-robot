@@ -1,0 +1,5 @@
+candidate_part,parent_part,plate_thickness_mm,finished_minimum_thickness_mm,m2_5_axes,m5_axes,m5_clearance_and_countersink_mm,result,remaining_evidence
+MV0-C01R,MV0-C01,9.525,9.000,X=+/-16; Z=+/-8 (C04 retains exact H104 subset instead),X=0; Z=+/-10,5.50; 11.30 nominal/11.40 max,UNCHANGED BY SUBTRACTIVE CONSTRUCTION,"CMM/pin/optical FAI, received fit, exact material, proof and qualified acceptance"
+MV0-C04R,MV0-C04,9.525,9.000,X=+/-16; Z=+/-8 (C04 retains exact H104 subset instead),X=0; Z=+/-10,5.50; 11.30 nominal/11.40 max,UNCHANGED BY SUBTRACTIVE CONSTRUCTION,"CMM/pin/optical FAI, received fit, exact material, proof and qualified acceptance"
+MV0-C06R,MV0-C06,9.525,9.000,X=+/-16; Z=+/-8 (C04 retains exact H104 subset instead),X=0; Z=+/-10,5.50; 11.30 nominal/11.40 max,UNCHANGED BY SUBTRACTIVE CONSTRUCTION,"CMM/pin/optical FAI, received fit, exact material, proof and qualified acceptance"
+MV0-C07R,MV0-C07,9.525,9.000,X=+/-16; Z=+/-8 (C04 retains exact H104 subset instead),X=0; Z=+/-10,5.50; 11.30 nominal/11.40 max,UNCHANGED BY SUBTRACTIVE CONSTRUCTION,"CMM/pin/optical FAI, received fit, exact material, proof and qualified acceptance"

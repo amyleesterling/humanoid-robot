@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "release_id": "HR-V0-WD-BUILD-P0.2",
+  "status": "PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION",
+  "build_date": "2026-08-07",
+  "source_parent_commit": "1c849d8f2a790171066b10f3a61a07cb5b4da836",
+  "source_hashes": {
+    "firmware/watchdog/CMakeLists.txt": "22a88e524fd1527641b682ff276759e62a16092b7f99bf5c4574ed60d3897e56",
+    "firmware/watchdog/platform/pico/main.c": "cb1156207495509b0db955aa51b3a7450b470dade37d89c44e535c8162d6d1cf",
+    "firmware/watchdog/src/pb_watchdog.c": "3180e7bd9f78c7892285f0487e453e79684c787e85bfcd2b7535b470de770066",
+    "firmware/watchdog/include/pb_watchdog.h": "13cc6f3e2e5c84fbc4f141fffb92e128d03efee369cd2494d821e319b9281810",
+    "firmware/watchdog/watchdog-config.json": "7fa87c266709a59373ef17f9dfb9ebd02069e98d9de60890031fcd6e26d352f4"
+  },
+  "host": {
+    "os": "Microsoft Windows NT 10.0.26200.0",
+    "architecture": "AMD64",
+    "powershell": "5.1.26100.8875"
+  },
+  "toolchain_lock": "firmware/watchdog/toolchain-lock.json",
+  "source_date_epoch": 1786060800,
+  "builds": [
+    {"id": "build-a", "clean_directory": true, "configure_exit_code": 0, "build_exit_code": 0},
+    {"id": "build-b", "clean_directory": true, "configure_exit_code": 0, "build_exit_code": 0}
+  ],
+  "reproducibility": {
+    "elf_match": true,
+    "uf2_match": true,
+    "bin_match": true,
+    "hex_match": true,
+    "linker_map_match": true,
+    "canonical_disassembly_match": true,
+    "stack_usage_match": true,
+    "canonical_size_match": true,
+    "artifact_manifest": "firmware/watchdog/output/P0.2/artifact-manifest.csv"
+  },
+  "memory_summary_bytes": {
+    "boot2": 256,
+    "text": 6620,
+    "rodata": 316,
+    "binary_info": 36,
+    "data": 344,
+    "bss": 980,
+    "configured_heap": 2048,
+    "configured_stack_dummy": 2048
+  },
+  "project_source_static_stack_bytes": {
+    "initialize_drive_off": 16,
+    "initialize_input": 16,
+    "main": 72,
+    "pb_wd_init": 0,
+    "pb_wd_step": 40
+  },
+  "build_diagnostics": {
+    "project_source_compiler_errors": 0,
+    "project_source_compiler_warnings": 0,
+    "cmake_warnings": [
+      "TinyUSB submodule was not initialized; USB support is intentionally disabled for this target."
+    ]
+  },
+  "verification_boundary": {
+    "verified": [
+      "exact RP2040/Pico GPIO binding compiles",
+      "clock regression is latched while legitimate uint32 wrap remains valid",
+      "both relay-drive GPIOs are initialized low before being made outputs",
+      "hardware watchdog is configured for 100 ms with pause-on-debug disabled",
+      "control loop target period is 1 ms",
+      "strict project-source compilation and two-build artifact reproducibility",
+      "fixed source date visible in Pico binary metadata",
+      "static section sizes and per-function stack-usage files"
+    ],
+    "not_verified": [
+      "flashing or executing this binary on a received Pico",
+      "GPIO polarity and continuity on received hardware",
+      "default-off behavior through power-up, brownout, reset and debug halt",
+      "heartbeat and feedback input voltage/noise margins",
+      "relay timing, welded-contact fault injection and total stopping time",
+      "clock-fault behavior on target, EMC, HIL or functional-safety performance",
+      "qualified controls, electrical or functional-safety review"
+    ],
+    "gate_disposition": "EG-017 remains partial; no permission to flash, fabricate or energize."
+  }
+}

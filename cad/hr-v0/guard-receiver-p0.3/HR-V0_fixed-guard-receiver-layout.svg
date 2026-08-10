@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080">
+<style>
+text { font-family: Arial, sans-serif; fill: #102a43; font-size: 18px; }
+.title { font-size: 34px; font-weight: 700; } .head { font-size: 23px; font-weight: 700; }
+.warn { font-size: 19px; font-weight: 700; fill: #7b3f00; }
+.frame { fill: none; stroke: #123b68; stroke-width: 8; } .panel { fill: #9dd8f5; fill-opacity: .30; stroke: #2878a8; stroke-width: 3; }
+.sweep { fill: #f4bd3e; fill-opacity: .20; stroke: #c38300; stroke-width: 4; stroke-dasharray: 12 8; }
+.catch { fill: #f4bd3e; fill-opacity: .55; stroke: #123b68; stroke-width: 3; }
+.dim { stroke: #526d82; stroke-width: 2; marker-start: url(#a); marker-end: url(#a); }
+</style>
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,4 L8,0 L8,8 Z" fill="#526d82"/></marker></defs>
+<rect width="1600" height="1080" fill="#f8fbff"/>
+<text x="55" y="62" class="title">HR-V0 fixed guard and receiver candidate</text>
+<text x="55" y="102" class="warn">PRELIMINARY - DESIGN CANDIDATE ONLY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION</text>
+<text x="55" y="140">Revision HR-V0-GUARD-P0.3 • arm basis HR-V0-ARM-ARCH-P0.7 • all dimensions millimetres</text>
+<text x="110" y="205" class="head">Front elevation (Y–Z at guard datum G0)</text>
+<rect x="130" y="235" width="620" height="655" class="panel"/><rect x="130" y="235" width="620" height="655" class="frame"/>
+<line x1="440" y1="235" x2="440" y2="890" class="frame"/>
+<circle cx="440" cy="545" r="295" class="sweep"/><circle cx="440" cy="545" r="8" fill="#123b68"/>
+<rect x="170" y="820" width="540" height="40" class="catch"/>
+<line x1="130" y1="925" x2="750" y2="925" class="dim"/><text x="388" y="956">900 internal</text>
+<line x1="90" y1="235" x2="90" y2="890" class="dim"/><text x="25" y="565" transform="rotate(-90 25 565)">950 internal</text>
+<text x="455" y="535">J1 axis, Z = 500</text><text x="455" y="570">450 reserved radial space</text>
+<text x="170" y="812">820 × 320 receiver clear region, 50 wall</text>
+
+<text x="900" y="205" class="head">Plan (X–Y at bench)</text>
+<rect x="920" y="265" width="310" height="620" class="panel"/><rect x="920" y="265" width="310" height="620" class="frame"/>
+<rect x="950" y="300" width="250" height="550" class="catch"/>
+<line x1="920" y1="920" x2="1230" y2="920" class="dim"/><text x="1015" y="952">400 internal</text>
+<line x1="1270" y1="265" x2="1270" y2="885" class="dim"/><text x="1295" y="610" transform="rotate(-90 1295 610)">900 internal</text>
+<text x="920" y="995">Six posts; sixteen exact-candidate 80/20 20-2020 pieces.</text>
+<text x="920" y="1028">Eight outer plus five receiver 6 mm TUFFAK GP geometry candidates.</text>
+
+<rect x="55" y="970" width="790" height="80" rx="14" fill="#fff3d6" stroke="#c38300" stroke-width="3"/>
+<text x="75" y="1002">These dimensions reserve space only. Measured stopping, full gripper/cable sweep,</text>
+<text x="75" y="1035">panel grade, retention, impact, access, anchors and qualified review remain open.</text>
+</svg>

@@ -1,0 +1,2 @@
+decision_id,candidate,decision,selection_effect,evidence_required,prohibited_use
+MR-D01,C01R/C04R/C06R/C07R same-interface relief set,HOLD FOR INDEPENDENT REVIEW,would replace four P0.7 moving custom parts without changing kinematics or candidate fastener interfaces,independent mechanical review; exact material/stock; FEA or qualified equivalent; prototype FAI; received fit; 3x proof; stop impact; measured mass/COM; fatigue disposition,"quotation, fabrication, assembly, proof, motion or energization"

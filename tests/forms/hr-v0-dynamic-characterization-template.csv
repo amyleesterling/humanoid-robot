@@ -1,0 +1,13 @@
+record_id,date,repo_commit,stage_id,article_revision,fixture_revision,article_serial,actuator_model,actuator_serial,surrogate_id,surrogate_mass_kg,surrogate_com_mm,daq_model,daq_serial,daq_firmware,scan_list,requested_scan_rate_hz,measured_scan_rate_hz,calibration_bundle_hash,timing_budget_revision,raw_data_ref,video_ref,preinspection_ref,postinspection_ref,authorization_ref,operator,witness,run_disposition,notes
+NOT-EXECUTED,,,DYN-00,,,,,,,,,,,,,,,,,,,,,,,,HOLD,TEMPLATE ROW - NOT AUTHORIZED
+NOT-EXECUTED,,,DYN-01,,,,,,,,,,,,,,,,,,,,,,,,HOLD,TEMPLATE ROW - NOT EXECUTED
+NOT-EXECUTED,,,DYN-02,,,,,,,,,,,,,,,,,,,,,,,,HOLD,TEMPLATE ROW - NOT EXECUTED
+NOT-EXECUTED,,,DYN-03,,,,,,,,,,,,,,,,,,,,,,,,HOLD,TEMPLATE ROW - NOT EXECUTED
+NOT-EXECUTED,,,DYN-04,,,,,,,,,,,,,,,,,,,,,,,,HOLD,TEMPLATE ROW - NOT EXECUTED
+NOT-EXECUTED,,,DYN-05,,,,,,,,,,,,,,,,,,,,,,,,HOLD,TEMPLATE ROW - NOT EXECUTED
+NOT-EXECUTED,,,DYN-06,,,,,,,,,,,,,,,,,,,,,,,,HOLD,TEMPLATE ROW - POWERED STAGE NOT AUTHORIZED
+NOT-EXECUTED,,,DYN-07,,,,,,,,,,,,,,,,,,,,,,,,HOLD,TEMPLATE ROW - POWERED STAGE NOT AUTHORIZED
+NOT-EXECUTED,,,DYN-08,,,,,,,,,,,,,,,,,,,,,,,,HOLD,TEMPLATE ROW - MOTION STAGE NOT AUTHORIZED
+NOT-EXECUTED,,,DYN-09,,,,,,,,,,,,,,,,,,,,,,,,HOLD,TEMPLATE ROW - MOTION STAGE NOT AUTHORIZED
+NOT-EXECUTED,,,DYN-10,,,,,,,,,,,,,,,,,,,,,,,,HOLD,TEMPLATE ROW - CONTACT STAGE NOT AUTHORIZED
+NOT-EXECUTED,,,DYN-11,,,,,,,,,,,,,,,,,,,,,,,,HOLD,TEMPLATE ROW - FAULT MATRIX NOT AUTHORIZED

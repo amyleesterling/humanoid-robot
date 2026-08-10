@@ -1,0 +1,5 @@
+source_id,source,locator,controlled_use
+DTS-001,HR-V0-DYN-CHAR-P0.1,docs/hr-v0-dynamic-characterization-p0.1.md,15-channel measurement architecture and raw-data evidence boundary
+DTS-002,HR-V0-STOP-BUDGET-P0.1,docs/hr-v0-stopping-budget-p0.1.md,3-degree positive J2 approach and unresolved total-stop allocation
+DTS-003,R173 fabrication input reconciliation,release/hr-v0/fabrication-input-basis-p0.1/kinematic-screens.csv,draft 10/30 deg/s limits and 0.15 m/s TCP constraint reconciliation
+DTS-004,HR-V0 electrical P1.15 candidate,electrical/kicad/project-button-v3/,K1 K2 event and mirror signal identities; ECAD connectivity only

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+<style>text{font-family:Arial,sans-serif;fill:#10253d;font-size:18px}.title{font-size:36px;font-weight:700}.head{font-size:25px;font-weight:700;fill:#07579f}.warn{font-size:19px;font-weight:700;fill:#071c36}.axis{stroke-width:5}.part{stroke:#07579f;stroke-width:10;stroke-linecap:round}.panel{fill:#fff;stroke:#07579f;stroke-width:3}.gold{fill:#f4bd28}</style>
+<rect width="1400" height="900" fill="#f4f9ff"/><rect width="1400" height="90" class="gold"/><text x="40" y="55" class="warn">PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION, CONNECTION, OR ENERGIZATION</text>
+<text x="40" y="145" class="title">HR-V0 right-handed frame and sign convention</text>
+<rect x="40" y="185" width="600" height="650" rx="18" class="panel"/><text x="75" y="235" class="head">A0 assembly frame</text>
+<circle cx="220" cy="600" r="8" fill="#10253d"/><line x1="220" y1="600" x2="430" y2="600" class="axis" stroke="#07579f"/><polygon points="430,600 405,588 405,612" fill="#07579f"/><text x="440" y="607">+X right</text>
+<line x1="220" y1="600" x2="220" y2="380" class="axis" stroke="#f4bd28"/><polygon points="220,380 208,405 232,405" fill="#f4bd28"/><text x="238" y="395">+Z up</text>
+<circle cx="220" cy="600" r="24" fill="none" stroke="#0a8f6a" stroke-width="5"/><circle cx="220" cy="600" r="5" fill="#0a8f6a"/><text x="100" y="650">+Y front, out of page</text><text x="75" y="700">+q is right-hand rotation about +X.</text><text x="75" y="735">At zero, each link points along local +Y.</text><text x="75" y="780">Positive q moves +Y toward +Z.</text>
+<rect x="680" y="185" width="680" height="650" rx="18" class="panel"/><text x="715" y="235" class="head">Straight-reference Y-Z projection</text>
+<circle cx="800" cy="650" r="12" fill="#07579f"/><line x1="800" y1="650" x2="1050" y2="650" class="part"/><circle cx="1050" cy="650" r="12" fill="#07579f"/><line x1="1050" y1="650" x2="1220" y2="650" class="part"/><text x="760" y="690">J1</text><text x="1020" y="690">J2</text><text x="1190" y="690">G1</text>
+<text x="760" y="745">J1-J2 202.550 mm</text><text x="1030" y="780">J2-G1 129.050 mm</text>
+<line x1="800" y1="650" x2="800" y2="400" class="axis" stroke="#f4bd28"/><polygon points="800,400 788,425 812,425" fill="#f4bd28"/><text x="820" y="420">+Z</text><line x1="800" y1="650" x2="1240" y2="650" class="axis" stroke="#07579f"/><polygon points="1240,650 1215,638 1215,662" fill="#07579f"/><text x="1250" y="657">+Y</text>
+<text x="715" y="300">J2 q=0 is a geometric datum, not an allowed command.</text><text x="715" y="335">J2 commands remain 15..115 degrees candidate-only.</text><text x="715" y="370">Raw encoder sign, scale and zero remain uncalibrated.</text>
+<text x="40" y="875" class="warn">Legacy G0 depth/width labels are layout-only; use A0/G0_RH for kinematics, torque, rotation and controls.</text></svg>

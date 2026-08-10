@@ -1,0 +1,6 @@
+stack_id,quantity,nominal_mm,variation_mm,result_or_margin_mm,authority
+TOL-001,TFF male pilot,18.98,±0.02,against published pilot 19.05..19.0754: diametral clearance 0.050..0.1154,CANDIDATE - FUTEK MUST ACCEPT FIT
+TOL-002,#8 screw engagement,5.05,4.688..5.650,published minimum tapped depth interpreted as 6.096; minimum remaining depth margin 0.446,ARITHMETIC ONLY - VENDOR CONFIRMATION REQUIRED
+TOL-003,low-head to X430 gap,1.900,UNALLOCATED,received/cumulative adverse variation unknown,OPEN - NO FIT CREDIT
+TOL-004,TFF pattern true position,BCD31.75 basic,Ø0.10 candidate,not allocated against sensor thread/pilot,OPEN - GD&T REVIEW REQUIRED
+TOL-005,mating face flatness,0.05 per 50,candidate,not linked to torque uncertainty/overload,OPEN - FEA/VENDOR/MACHINIST REVIEW REQUIRED

@@ -1,0 +1,21 @@
+{
+  "identifier": "HR-V0-X430-FIXTURE-SUP-P0.1",
+  "preferred_route": "SUP-A",
+  "open_hold_count": 10,
+  "rfi_state": "NOT SENT",
+  "pedestal_body_cad_present": false,
+  "horizontal_test_still_required": true,
+  "release_flags": {
+    "quotation": false,
+    "procurement": false,
+    "machining": false,
+    "floor_work": false,
+    "assembly": false,
+    "powered_test": false,
+    "motion": false,
+    "energization": false,
+    "safety_credit": false,
+    "build_release": false
+  },
+  "warning": "PRELIMINARY - SUPPORT/RFI CANDIDATE ONLY - NOT APPROVED FOR QUOTATION, PROCUREMENT, MACHINING, FLOOR WORK, ASSEMBLY, POWERED TEST, MOTION, OR ENERGIZATION"
+}

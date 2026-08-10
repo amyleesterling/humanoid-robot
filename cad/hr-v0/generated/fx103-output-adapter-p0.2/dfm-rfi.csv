@@ -1,0 +1,8 @@
+rfi,recipient,question,state
+OA-RFI-01,ROBOTIS applications,"Review the separated HN12-to-C01 PCD-16 interface for guarded low-speed external-brake characterization; provide accepted screw type/length, engagement, torque, locking/reuse, horn/thread/serration limits and extraneous-load limits.",NOT SENT
+OA-RFI-02,Ruland applications,"Review C02 Ø15.000 +0/-0.013 stub, 14.95 mm insertion, 5.05 mm flange gap and the full two-hub 92Y coupling for the bidirectional spectrum; confirm support, alignment, gap, seating torque and proof requirements.",NOT SENT
+OA-RFI-03,candidate machine shop,"DFM-review both H1150 parts, including PCD-16 recessed holes, PCD-28 M4 threads, Ø10 H7/h6 pilot pair, Ø15 +0/-0.013 stub, 0.03 runout/face controls, R1 root and complete FAI. No quote or machining authorized.",NOT SENT
+OA-RFI-04,qualified mechanical reviewer,"Review rejection of the one-piece geometry and the two-piece load path, fastener/joint slip, pilot zero-torque-credit rule, stress concentration, fatigue/fault loads, proof multiplier and containment.",NOT SENT
+OA-RFI-05,qualified materials reviewer,"Confirm or correct ASTM A564/A564M Type 630 H1150, stock/heat-treatment route, certificate/PMI requirements, passivation/galvanic disposition and released design allowables.",NOT SENT
+OA-RFI-06,qualified metrology provider,"Confirm inspectability and uncertainty for pattern position, H7/h6 pilot, shaft diameter/runout, root radius, face flatness/parallelism and assembled coaxiality; return a ballooned FAI plan.",NOT SENT
+OA-RFI-07,qualified test/facility reviewer,"Define a guarded static proof and post-proof inspection that does not energize the actuator, then separately disposition the full brake rig before powered work.",NOT SENT

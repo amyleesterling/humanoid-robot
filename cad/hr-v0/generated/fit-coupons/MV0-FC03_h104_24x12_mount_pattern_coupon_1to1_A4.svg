@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 210 297">
+      <style>
+        text { font-family: Arial, sans-serif; font-size: 5px; fill: #082554; }
+        .title { font-size: 7px; font-weight: 700; }
+        .warning { font-size: 5px; font-weight: 700; fill: #8a4b00; }
+        .coupon { fill: none; stroke: #082554; stroke-width: 0.35; }
+        .hole { fill: none; stroke: #b17700; stroke-width: 0.35; }
+        .center { stroke: #0b72b9; stroke-width: 0.25; stroke-dasharray: 2 1; }
+        .scale { stroke: #082554; stroke-width: 0.6; }
+      </style>
+      <text x="15" y="15" class="title">MV0-FC03 - FR12-H104K SELECTED 24 x 12 PATTERN</text>
+      <text x="15" y="23" class="title">1:1 A4 OVERLAY</text>
+      <text x="15" y="32" class="warning">FIT CHECK ONLY - NOT A STRUCTURAL OR FABRICATION-RELEASED PART</text>
+      <text x="15" y="40">Print at ACTUAL SIZE / 100%. Disable Fit, Shrink, and Scale-to-page.</text>
+      <rect x="87.000" y="70.000" width="36.000" height="24.000" class="coupon"/>
+      <circle cx="93.000" cy="76.000" r="1.350" class="hole"/><circle cx="93.000" cy="88.000" r="1.350" class="hole"/><circle cx="117.000" cy="76.000" r="1.350" class="hole"/><circle cx="117.000" cy="88.000" r="1.350" class="hole"/>
+      <line x1="81.0" y1="82.0" x2="129.0" y2="82.0" class="center"/>
+      <line x1="105.0" y1="62.0" x2="105.0" y2="102.0" class="center"/>
+      <text x="15" y="116">4 x dia 2.70 candidate clearance holes on a 24.00 x 12.00 rectangle.</text>
+      <text x="15" y="124">Selected four received-STEP features on the FR12-H104K broad face.</text>
+      <text x="15" y="132">Coupon 36.0 x 24.0 x 2.0 nominal. It does not validate the final load path.</text>
+      <text x="15" y="144">Verify seating against the received FR12-H104K without forcing.</text>
+      <text x="15" y="152">Record proposed fastener and nut/tool access at every selected hole.</text>
+      <text x="15" y="160">Fastener length, grade, torque, retention and guard clearance remain SELECTION REQUIRED.</text>
+      <line x1="15" y1="174" x2="115" y2="174" class="scale"/>
+      <line x1="15" y1="170" x2="15" y2="178" class="scale"/>
+      <line x1="115" y1="170" x2="115" y2="178" class="scale"/>
+      <text x="15" y="186">X PRINT SCALE CHECK: 100.00 mm</text>
+      <text x="15" y="194">Record measured X before using the overlay.</text>
+      <line x1="155" y1="174" x2="155" y2="274" class="scale"/>
+      <line x1="151" y1="174" x2="159" y2="174" class="scale"/>
+      <line x1="151" y1="274" x2="159" y2="274" class="scale"/>
+      <text x="163" y="186">Y SCALE</text><text x="163" y="194">100.00 mm</text><text x="163" y="202">Record Y</text>
+      <text x="15" y="222">Source: ROBOTIS FR12-H104K reference drawing dated Aug-31-17</text>
+      <text x="15" y="230">and received manufacturer STEP. Drawing states FOR REFERENCE ONLY.</text>
+      <text x="15" y="240">Received part governs. Hashes and URLs:</text>
+      <text x="15" y="248">cad/vendor/robotis/vendor-manifest.csv</text>
+      <text x="15" y="286" class="warning">PRELIMINARY - PHYSICAL FIT AND FASTENER ACCESS INSPECTION REQUIRED</text>
+      <text x="15" y="294" class="warning">NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
+    </svg>

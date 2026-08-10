@@ -1,19 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="920" height="450" viewBox="0 0 920 450">
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="570" viewBox="0 0 920 570">
       <style>
         text { font: 16px system-ui, sans-serif; fill: #082554; }
         .title { font-size: 24px; font-weight: 700; }
         .warning { font-size: 18px; font-weight: 700; fill: #8a4b00; }
+        .rfq-note text { font-size: 16px; font-weight: 650; fill: #082554; }
         .part { fill: #d9efff; stroke: #082554; stroke-width: 3; }
         .hole { fill: white; stroke: #082554; stroke-width: 2; }
         .dim { stroke: #b17700; stroke-width: 2; marker-start: url(#arrow); marker-end: url(#arrow); }
       </style>
       <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b17700"/></marker></defs>
       <text x="30" y="32" class="title">MV0-004 · BENCH ANCHOR PLATE</text>
-      
-          <rect x="170" y="80" width="500" height="260" class="part"/>
+      <rect x="170" y="80" width="500" height="260" class="part"/>
           <g class="hole"><circle cx="320" cy="145" r="22"/><circle cx="520" cy="145" r="22"/><rect x="265" y="235" width="110" height="32" rx="16"/><rect x="465" y="235" width="110" height="32" rx="16"/></g>
           <text x="170" y="55">100.0 × 80.0 × 6.35 mm NOMINAL</text>
           <text x="690" y="145">2 × ⌀9.0 FRAME</text><text x="690" y="252">2 × 28 × 9 SLOT</text>
           <text x="170" y="395">BENCH FASTENER, EDGE DISTANCE, SUBSTRATE AND PULL-OUT: SELECTION REQUIRED AFTER SITE SURVEY</text>
-      <text x="30" y="436" class="warning">HR-V0-MECH-R0.1-PRELIMINARY · PRELIMINARY—NOT RELEASED FOR FABRICATION</text>
+      <g class="rfq-note">
+        <text x="30" y="425">RFQ PROCESS: PROFILE CUT CANDIDATE; BENCH-SLOT RELEASE REQUIRES COMPLETED SITE SURVEY</text>
+        <text x="30" y="450">GENERAL RFQ BASIS: XOMETRY CNC STANDARD +/-0.127 mm; QUOTED CAPABILITY SHALL GOVERN</text>
+        <text x="30" y="475">CRITICAL HOLE SIZE/POSITION: SELECTION REQUIRED AFTER RECEIVED-FRAME COUPON EVIDENCE</text>
+        <text x="30" y="500">NO BEND - NO WELD - DEBURR/BREAK SHARP EDGES - DO NOT SCALE - FIRST ARTICLE INSPECTION REQUIRED</text>
+      </g>
+      <text x="30" y="556" class="warning">HR-V0-MECH-R0.1-PRELIMINARY · HR-V0-PLATE-RFQ-P0.1 · PRELIMINARY—NOT RELEASED FOR FABRICATION</text>
     </svg>

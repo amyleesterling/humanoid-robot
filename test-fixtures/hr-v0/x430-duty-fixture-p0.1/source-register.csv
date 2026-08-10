@@ -1,0 +1,9 @@
+source_id,manufacturer,document,revision_or_date,locator,evidence_use
+FXS-001,ROBOTIS,XM430-W350 e-Manual,live page; no formal revision shown; accessed 2026-08-08,https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/,stall endpoint and continuous-output warning; not a continuous rating
+FXS-002,FUTEK,TFF400 drawing FI1251-F and FSH04015 live product record,drawing revision F; live record accessed 2026-08-08,https://media.futek.com/content/futek/files/pdf/productdrawings/fsh02588.pdf,"sensor envelope, interfaces and catalog characteristics"
+FXS-003,FUTEK,IAA100 drawing FI1573,drawing number FI1573; accessed 2026-08-08,https://media.futek.com/content/futek/files/pdf/productdrawings/iaa100.pdf,candidate conditioner characteristics
+FXS-004,FUTEK,LSB205 drawing FI1452-C,drawing revision C; accessed 2026-08-08,https://media.futek.com/content/futek/files/pdf/productdrawings/fsh04100.pdf,candidate static cross-check sensor characteristics
+FXS-005,LabJack,T7 analog inputs / T-Series datasheet,live documentation; accessed 2026-08-08,https://support.labjack.com/docs/14-3-0-analog-inputs-t7-t-series-datasheet,candidate DAQ channel/range/stream facts
+FXS-006,Joulescope,JS220 User Guide,revision 1.10; last revised 2025-01-27; accessed 2026-08-08,https://download.joulescope.com/products/JS220/JS220-K000/users_guide/Joulescope%20JS220%20User%27s%20Guide.pdf,candidate branch current/voltage instrument limits
+FXS-007,OMEGA,SA1 self-adhesive thermocouple instruction sheet,M0503/0417,https://assets.omega.com/manuals/test-and-measurement-equipment/temperature/sensors/thermocouple-probes/M0503.pdf,surface sensor construction and placement limits
+FXS-008,ROBOTIS,controlled X430/FR12 STEP files,repository-controlled R91 acquisition,cad/vendor/robotis/x430-fr12-r91/,nominal actuator/frame geometry and interface axes

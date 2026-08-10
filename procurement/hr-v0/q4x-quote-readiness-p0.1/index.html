@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>R188 Q4X quote readiness</title>
+<style>
+:root{--sky:#dff4ff;--blue:#082f62;--gold:#f4bd32;--ink:#10243e;--paper:#f8fbff;--line:#9ec9e8}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,sans-serif}
+header{background:linear-gradient(135deg,var(--sky),#fff);border-bottom:5px solid var(--gold);padding:clamp(24px,5vw,64px)}
+main{max-width:1180px;margin:auto;padding:24px} h1{color:var(--blue);font-size:clamp(2rem,6vw,4.5rem);line-height:1.02;margin:.25rem 0 1rem}
+.warning{background:var(--blue);color:#fff;border-left:10px solid var(--gold);padding:18px;font-size:clamp(16px,2vw,20px);font-weight:800}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:24px 0} .card{background:#fff;border:2px solid var(--line);border-radius:16px;padding:18px}
+.card strong{display:block;color:var(--blue);font-size:clamp(1.6rem,4vw,2.4rem)} nav{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}
+button{font:700 16px/1.2 system-ui;padding:12px 16px;border:2px solid var(--blue);border-radius:999px;background:#fff;color:var(--blue);cursor:pointer}
+button[aria-selected='true']{background:var(--blue);color:#fff} section[hidden]{display:none} section{background:#fff;border:2px solid var(--line);border-radius:16px;padding:20px;margin-bottom:24px}
+.scroll{overflow:auto} table{border-collapse:collapse;min-width:850px;width:100%} th,td{border:1px solid #b8cfe3;padding:12px;text-align:left;vertical-align:top;font-size:14px} th{background:var(--sky);color:var(--blue)}
+.hold{color:#7a3700;font-weight:800} code{font-size:14px} @media(max-width:520px){main{padding:14px} header{padding:22px 14px} section{padding:14px}}
+</style></head><body>
+<header><div class='warning'>PRELIMINARY - COMMERCIAL EVIDENCE AMENDMENT ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, DRILLING, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION</div><p>Project Button · R188 · HR-V0-Q4X-QUOTE-READINESS-P0.1</p><h1>Quote readiness, without checkout.</h1><p>Two previously ambiguous commercial lines now have direct seller evidence. One becomes quote-ready; the other becomes an explicit zero-stock hold.</p></header>
+<main><div class='metrics'>
+<div class='card'><span>Corrected fit-lot snapshot</span><strong>$211.63</strong></div>
+<div class='card'><span>PTCB snapshot</span><strong>$22.83</strong><span class='hold'>0 in stock</span></div>
+<div class='card'><span>Combined snapshot</span><strong>$234.46</strong></div>
+<div class='card'><span>Authority created</span><strong>0</strong><span>No cart, quote, order or work authority</span></div>
+</div>
+<nav aria-label='Guide sections'><button data-tab='result' aria-selected='true'>Result</button><button data-tab='lines' aria-selected='false'>Line evidence</button><button data-tab='cost' aria-selected='false'>Cost reconciliation</button></nav>
+<section data-panel='result'><h2>Decision result</h2><p><code>QRL-002</code> now has direct DigiKey identity, order code and availability evidence. <code>QRL-006</code> now has direct DigiKey evidence showing zero stock and an eight-week manufacturer lead time.</p><p class='hold'>Neither lot is approved for checkout. The PTCB lot needs a supply/delivery decision; substitution is prohibited.</p><p>The $234.46 figure excludes shipping, tax, tariffs, fees and price movement. A same-session cart or written quote plus explicit human authorization remains mandatory.</p></section>
+<section data-panel='lines' hidden><h2>Exact line evidence</h2><div class='scroll'><table><thead><tr><th>Line Id</th><th>Base Exact Mpn</th><th>Exact Seller Order Code</th><th>Current Commercial State</th><th>Decision Effect</th><th>Checkout State</th></tr></thead><tbody><tr><td>QRL-002</td><td>14F0907</td><td>14F0907-ND</td><td>AVAILABLE TO ORDER; FACTORY STOCK 60; 4-WEEK MANUFACTURER STANDARD LEAD TIME</td><td>Former direct-line ambiguity closed; same-session cart or quote still mandatory</td><td>NOT READY - NO CART OR QUOTE</td></tr><tr><td>QRL-006</td><td>1464484</td><td>277-1464484-ND</td><td>IN-STOCK 0; 8-WEEK MANUFACTURER STANDARD LEAD TIME; TARIFF MAY APPLY</td><td>Unknown availability replaced by explicit zero-stock/back-order hold; no substitution authorized</td><td>NOT READY - SUPPLY/DELIVERY DECISION REQUIRED</td></tr></tbody></table></div></section>
+<section data-panel='cost' hidden><h2>Cost reconciliation</h2><div class='scroll'><table><thead><tr><th>Lot Id</th><th>R187 Snapshot Subtotal Usd</th><th>R188 Delta Usd</th><th>R188 Snapshot Subtotal Usd</th><th>Quote Readiness</th><th>Blocking Condition</th></tr></thead><tbody><tr><td>LOT-Q4X-FIT</td><td>211.30</td><td>0.33</td><td>211.63</td><td>READY FOR SAME-SESSION CART OR WRITTEN QUOTE ASSEMBLY; NOT CHECKOUT</td><td>No cart/quote, shipping, tax, delivery allocation, Boston ship-to or authorization</td></tr><tr><td>LOT-Q4X-PTCB</td><td>22.83</td><td>0.00</td><td>22.83</td><td>NOT READY FOR IMMEDIATE CHECKOUT</td><td>DigiKey in-stock 0; supply/delivery route and same-session cart/quote required</td></tr><tr><td>COMBINED</td><td>234.13</td><td>0.33</td><td>234.46</td><td>NOT READY FOR CHECKOUT</td><td>PTCB zero stock plus all landed-cost and authorization fields remain open</td></tr></tbody></table></div></section>
+</main><script>document.querySelectorAll('button[data-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('button[data-tab]').forEach(x=>x.setAttribute('aria-selected',String(x===b)));document.querySelectorAll('section[data-panel]').forEach(s=>s.hidden=s.dataset.panel!==b.dataset.tab)}));</script>
+</body></html>

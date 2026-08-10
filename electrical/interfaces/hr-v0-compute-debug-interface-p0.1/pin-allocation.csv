@@ -1,0 +1,10 @@
+record_id,reference,pin,function,net,basis,verification,warning
+CIPIN-001,PI1,USB-C-VBUS,+5 V input,COMPUTE_5V,Existing compute power boundary,Exact PSU SKU and retention remain open,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIPIN-002,PI1,USB-C-GND,USB-C power return,COMPUTE_0V,Existing compute power boundary,Verify on received power path,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIPIN-003,PI1,HDR40-6,GPIO header ground,COMPUTE_0V,Raspberry Pi current GPIO documentation,Verify physical header orientation and continuity before harness construction,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIPIN-004,PI1,HDR40-11,BCM GPIO17 heartbeat output,PI_HEARTBEAT,Raspberry Pi current GPIO documentation,"Reserve GPIO17; verify startup, logic level, load, waveform and fault behavior",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIPIN-005,JWH1,1,isolated heartbeat input,PI_HEARTBEAT,PCB-P0.7 exact connector allocation,"Harness connector, contacts, wire and retention remain open",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIPIN-006,JWH1,2,compute-domain return,COMPUTE_0V,PCB-P0.7 exact connector allocation,"Harness connector, contacts, wire and retention remain open",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIPIN-007,TP15,1,watchdog SWDIO test access,WD_SWDIO,PCB-P0.7 exact rectangular Harwin test point,Unpowered fixture and programmer selection required,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIPIN-008,TP16,1,watchdog SWCLK test access,WD_SWCLK,PCB-P0.7 exact rectangular Harwin test point,Unpowered fixture and programmer selection required,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+CIPIN-009,TP2,1,watchdog debug return,SAFETY_0V,PCB-P0.7 exact rectangular Harwin test point,Unpowered fixture and no-back-power proof required,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION

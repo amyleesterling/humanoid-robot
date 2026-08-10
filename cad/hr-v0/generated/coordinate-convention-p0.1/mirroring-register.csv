@@ -1,0 +1,3 @@
+scope,rule,configuration_action,state
+HR-V0,single bench arm; no left/right mirrored joint exists,do not synthesize or mirror actuator direction,NOT APPLICABLE TO HR-V0
+HR-30,"left/right frame transforms, joint signs, zero poses and raw polarity require a separately released full-body convention",mirrored-joint mismatch must inhibit drive enable under CFG-002,SELECTION REQUIRED - NOT INHERITED FROM HR-V0

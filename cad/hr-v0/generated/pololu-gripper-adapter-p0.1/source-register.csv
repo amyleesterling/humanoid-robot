@@ -1,0 +1,4 @@
+source_id,record,revision_date,locator,sha256,use
+PAS-001,Pololu Micro Gripper with Position Feedback Servo item 3551 dimensions,drawing 31 August 2018; accessed 2026-08-08,cad/vendor/pololu/micro-gripper-3551-r111/micro-gripper-dimensions.pdf,D3B60CF2741D9294605AD1028FDDAF242BCE0D31A00DA814B73EF82C846FF5A4,mounting axes and nominal envelope
+PAS-002,Pololu item 3551 manufacturer STEP,current resource payload accessed 2026-08-08; no embedded printed revision,cad/vendor/pololu/micro-gripper-3551-r111/micro-gripper.step,E170D7E1AAF27A2137C585112AD3FCD4571B6332AAB88226C4302CE78A6C6CDA,exact-source nominal collision and axis reconstruction
+PAS-003,"Kaiser 6061 Sheet, Coil and Plate",Sheet Rev 05 / Plate Rev 06; controlled R105 copy,cad/vendor/kaiser/6061-t651-r105/Kaiser_Aluminum_6061_Sheet_Coil_and_Plate.pdf,93BF49F80542098953171C9FB72E4AF72505AA8204AE39A4AFB97102A69EEC05,material identity/density screen; typical values are not allowables

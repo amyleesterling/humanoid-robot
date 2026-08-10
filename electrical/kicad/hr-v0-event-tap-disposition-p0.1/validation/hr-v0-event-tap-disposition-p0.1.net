@@ -1,0 +1,1639 @@
+(export
+	(version "E")
+	(design
+		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\hr-v0-event-tap-disposition-p0.1\\hr-v0-event-tap-disposition-p0.1.kicad_sch")
+		(date "2026-08-10T02:58:48")
+		(tool "Eeschema 10.0.5")
+		(textvar
+			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+		(textvar
+			(name "REVISION") "R178 / P0.1")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title "PROJECT BUTTON HR-V0 EVENT-TAP DISPOSITION index")
+				(company "Project Button")
+				(rev "R178 / P0.1")
+				(date "2026-08-10")
+				(source "hr-v0-event-tap-disposition-p0.1.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "2")
+			(name "/01 Pilz input, RESET and ARM nodes/")
+			(tstamps "/723cca45-555e-5355-aaf9-ae6a3d98a4b6/")
+			(title_block
+				(title "PB HR-V0 R178 / P0.1 - 01")
+				(company "Project Button")
+				(rev "R178 / P0.1")
+				(date "2026-08-10")
+				(source "01_pilz_inputs.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "DISPOSITION RECORD - NO FIELD TAP RELEASED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "3")
+			(name "/02 Schneider K1/K2 coil nodes/")
+			(tstamps "/9b355f4a-dd6c-557d-ad29-4da489be80e0/")
+			(title_block
+				(title "PB HR-V0 R178 / P0.1 - 02")
+				(company "Project Button")
+				(rev "R178 / P0.1")
+				(date "2026-08-10")
+				(source "02_coil_nodes.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "DISPOSITION RECORD - NO FIELD TAP RELEASED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "4")
+			(name "/03 Pilz EDM return nodes/")
+			(tstamps "/e963ff9b-8542-5d92-a4c9-40000a15e3bb/")
+			(title_block
+				(title "PB HR-V0 R178 / P0.1 - 03")
+				(company "Project Button")
+				(rev "R178 / P0.1")
+				(date "2026-08-10")
+				(source "03_edm_returns.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "DISPOSITION RECORD - NO FIELD TAP RELEASED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "HOLD1")
+			(value "OBSERVATION BOUNDARY - NO CONNECTION")
+			(datasheet "R178 source/application review")
+			(description "Manufacturer allowable parallel load and tap-fault behavior are not published; protected/separate start wiring and physical noninterference evidence required")
+			(fields
+				(field
+					(name "Status") "PERMANENT PASSIVE TAP NOT RELEASED")
+				(field
+					(name "Evidence") "AMC3330EVM and field adapter remain physically absent.")
+				(field
+					(name "Display") "OBSERVATION BOUNDARY - NO CONNECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "R178 source/application review")
+				(field
+					(name "Description") "Manufacturer allowable parallel load and tap-fault behavior are not published; protected/separate start wiring and physical noninterference evidence required")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "HOLD1")
+				(description "Manufacturer allowable parallel load and tap-fault behavior are not published; protected/separate start wiring and physical noninterference evidence required")
+			)
+			(property
+				(name "Status")
+				(value "PERMANENT PASSIVE TAP NOT RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "AMC3330EVM and field adapter remain physically absent.")
+			)
+			(property
+				(name "Display")
+				(value "OBSERVATION BOUNDARY - NO CONNECTION")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Pilz input, RESET and ARM nodes")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_pilz_inputs.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Pilz input, RESET and ARM nodes/")
+				(tstamps "/723cca45-555e-5355-aaf9-ae6a3d98a4b6/")
+			)
+			(tstamps "51c1a195-6202-54fc-a4f6-372d6ea4f238")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "NODE")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "HOLD2")
+			(value "OBSERVATION BOUNDARY - NO CONNECTION")
+			(datasheet "R178 source/application review")
+			(description "Published manual does not define allowable parallel observer load or resulting falling-edge timing/error behavior")
+			(fields
+				(field
+					(name "Status") "PERMANENT PASSIVE TAP NOT RELEASED")
+				(field
+					(name "Evidence") "AMC3330EVM and field adapter remain physically absent.")
+				(field
+					(name "Display") "OBSERVATION BOUNDARY - NO CONNECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "R178 source/application review")
+				(field
+					(name "Description") "Published manual does not define allowable parallel observer load or resulting falling-edge timing/error behavior")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "HOLD2")
+				(description "Published manual does not define allowable parallel observer load or resulting falling-edge timing/error behavior")
+			)
+			(property
+				(name "Status")
+				(value "PERMANENT PASSIVE TAP NOT RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "AMC3330EVM and field adapter remain physically absent.")
+			)
+			(property
+				(name "Display")
+				(value "OBSERVATION BOUNDARY - NO CONNECTION")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Pilz input, RESET and ARM nodes")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_pilz_inputs.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Pilz input, RESET and ARM nodes/")
+				(tstamps "/723cca45-555e-5355-aaf9-ae6a3d98a4b6/")
+			)
+			(tstamps "0855942b-7528-5a58-b1f3-fb482395589e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "NODE")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "HOLD3")
+			(value "OBSERVATION BOUNDARY - NO CONNECTION")
+			(datasheet "R178 source/application review")
+			(description "Additional wiring enters a start/feedback path whose shorts are not detected; qualified fault-exclusion and waveform evidence required")
+			(fields
+				(field
+					(name "Status") "PERMANENT PASSIVE TAP NOT RELEASED")
+				(field
+					(name "Evidence") "AMC3330EVM and field adapter remain physically absent.")
+				(field
+					(name "Display") "OBSERVATION BOUNDARY - NO CONNECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "R178 source/application review")
+				(field
+					(name "Description") "Additional wiring enters a start/feedback path whose shorts are not detected; qualified fault-exclusion and waveform evidence required")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "HOLD3")
+				(description "Additional wiring enters a start/feedback path whose shorts are not detected; qualified fault-exclusion and waveform evidence required")
+			)
+			(property
+				(name "Status")
+				(value "PERMANENT PASSIVE TAP NOT RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "AMC3330EVM and field adapter remain physically absent.")
+			)
+			(property
+				(name "Display")
+				(value "OBSERVATION BOUNDARY - NO CONNECTION")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Pilz input, RESET and ARM nodes")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_pilz_inputs.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Pilz input, RESET and ARM nodes/")
+				(tstamps "/723cca45-555e-5355-aaf9-ae6a3d98a4b6/")
+			)
+			(tstamps "ad08537b-d49b-5a20-b6aa-180a66ee16ea")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "NODE")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SRC1")
+			(value "EXISTING CIRCUIT NODE: SR1_S12")
+			(datasheet "Project Button Electrical V3-P1.15")
+			(description "Pilz input/start feed")
+			(fields
+				(field
+					(name "Status") "EXISTING P1.15 LOGICAL NODE")
+				(field
+					(name "Evidence") "50 mA DC; 0.2 A / 100 ms input inrush")
+				(field
+					(name "Display") "EXISTING CIRCUIT NODE: SR1_S12")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15")
+				(field
+					(name "Description") "Pilz input/start feed")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SRC1")
+				(description "Pilz input/start feed")
+			)
+			(property
+				(name "Status")
+				(value "EXISTING P1.15 LOGICAL NODE")
+			)
+			(property
+				(name "Evidence")
+				(value "50 mA DC; 0.2 A / 100 ms input inrush")
+			)
+			(property
+				(name "Display")
+				(value "EXISTING CIRCUIT NODE: SR1_S12")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Pilz input, RESET and ARM nodes")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_pilz_inputs.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Pilz input, RESET and ARM nodes/")
+				(tstamps "/723cca45-555e-5355-aaf9-ae6a3d98a4b6/")
+			)
+			(tstamps "ef3a4130-0131-533d-a5dc-d3ec2ca4a51d")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FIELD")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SRC2")
+			(value "EXISTING CIRCUIT NODE: SR1_START_RETURN")
+			(datasheet "Project Button Electrical V3-P1.15")
+			(description "Pilz monitored RESET return")
+			(fields
+				(field
+					(name "Status") "EXISTING P1.15 LOGICAL NODE")
+				(field
+					(name "Evidence") "50 mA DC; 0.2 A / 15 ms start inrush")
+				(field
+					(name "Display") "EXISTING CIRCUIT NODE: SR1_START_RETURN")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15")
+				(field
+					(name "Description") "Pilz monitored RESET return")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SRC2")
+				(description "Pilz monitored RESET return")
+			)
+			(property
+				(name "Status")
+				(value "EXISTING P1.15 LOGICAL NODE")
+			)
+			(property
+				(name "Evidence")
+				(value "50 mA DC; 0.2 A / 15 ms start inrush")
+			)
+			(property
+				(name "Display")
+				(value "EXISTING CIRCUIT NODE: SR1_START_RETURN")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Pilz input, RESET and ARM nodes")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_pilz_inputs.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Pilz input, RESET and ARM nodes/")
+				(tstamps "/723cca45-555e-5355-aaf9-ae6a3d98a4b6/")
+			)
+			(tstamps "6b13caeb-1570-52fa-9214-1b1c8b4ddf5b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FIELD")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SRC3")
+			(value "EXISTING CIRCUIT NODE: ARM_AFTER_S2")
+			(datasheet "Project Button Electrical V3-P1.15")
+			(description "Pilz monitored ARM/EDM chain")
+			(fields
+				(field
+					(name "Status") "EXISTING P1.15 LOGICAL NODE")
+				(field
+					(name "Evidence") "50 mA DC; 0.2 A / 15 ms start/feedback inrush")
+				(field
+					(name "Display") "EXISTING CIRCUIT NODE: ARM_AFTER_S2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15")
+				(field
+					(name "Description") "Pilz monitored ARM/EDM chain")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SRC3")
+				(description "Pilz monitored ARM/EDM chain")
+			)
+			(property
+				(name "Status")
+				(value "EXISTING P1.15 LOGICAL NODE")
+			)
+			(property
+				(name "Evidence")
+				(value "50 mA DC; 0.2 A / 15 ms start/feedback inrush")
+			)
+			(property
+				(name "Display")
+				(value "EXISTING CIRCUIT NODE: ARM_AFTER_S2")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Pilz input, RESET and ARM nodes")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_pilz_inputs.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Pilz input, RESET and ARM nodes/")
+				(tstamps "/723cca45-555e-5355-aaf9-ae6a3d98a4b6/")
+			)
+			(tstamps "6a0d5a65-e178-5695-a48d-05baa3743a16")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FIELD")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "HOLD4")
+			(value "OBSERVATION BOUNDARY - NO CONNECTION")
+			(datasheet "R178 source/application review")
+			(description "Built-in bidirectional suppressor is verified, but clamp voltage, external-tap limit, FSR1 and installed transient envelope remain unresolved")
+			(fields
+				(field
+					(name "Status") "DIVIDER DESIGN HELD")
+				(field
+					(name "Evidence") "AMC3330EVM and field adapter remain physically absent.")
+				(field
+					(name "Display") "OBSERVATION BOUNDARY - NO CONNECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "R178 source/application review")
+				(field
+					(name "Description") "Built-in bidirectional suppressor is verified, but clamp voltage, external-tap limit, FSR1 and installed transient envelope remain unresolved")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "HOLD4")
+				(description "Built-in bidirectional suppressor is verified, but clamp voltage, external-tap limit, FSR1 and installed transient envelope remain unresolved")
+			)
+			(property
+				(name "Status")
+				(value "DIVIDER DESIGN HELD")
+			)
+			(property
+				(name "Evidence")
+				(value "AMC3330EVM and field adapter remain physically absent.")
+			)
+			(property
+				(name "Display")
+				(value "OBSERVATION BOUNDARY - NO CONNECTION")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Schneider K1/K2 coil nodes")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_coil_nodes.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Schneider K1/K2 coil nodes/")
+				(tstamps "/9b355f4a-dd6c-557d-ad29-4da489be80e0/")
+			)
+			(tstamps "79b91c09-27c9-5f58-b742-644a56bdf70c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "NODE")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "HOLD5")
+			(value "OBSERVATION BOUNDARY - NO CONNECTION")
+			(datasheet "R178 source/application review")
+			(description "Built-in bidirectional suppressor is verified, but clamp voltage, external-tap limit, FSR2 and installed transient envelope remain unresolved")
+			(fields
+				(field
+					(name "Status") "DIVIDER DESIGN HELD")
+				(field
+					(name "Evidence") "AMC3330EVM and field adapter remain physically absent.")
+				(field
+					(name "Display") "OBSERVATION BOUNDARY - NO CONNECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "R178 source/application review")
+				(field
+					(name "Description") "Built-in bidirectional suppressor is verified, but clamp voltage, external-tap limit, FSR2 and installed transient envelope remain unresolved")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "HOLD5")
+				(description "Built-in bidirectional suppressor is verified, but clamp voltage, external-tap limit, FSR2 and installed transient envelope remain unresolved")
+			)
+			(property
+				(name "Status")
+				(value "DIVIDER DESIGN HELD")
+			)
+			(property
+				(name "Evidence")
+				(value "AMC3330EVM and field adapter remain physically absent.")
+			)
+			(property
+				(name "Display")
+				(value "OBSERVATION BOUNDARY - NO CONNECTION")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Schneider K1/K2 coil nodes")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_coil_nodes.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Schneider K1/K2 coil nodes/")
+				(tstamps "/9b355f4a-dd6c-557d-ad29-4da489be80e0/")
+			)
+			(tstamps "d9bc4769-aa4e-547c-a7dd-0ec4c66ade72")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "NODE")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SRC4")
+			(value "EXISTING CIRCUIT NODE: K1_A1")
+			(datasheet "Project Button Electrical V3-P1.15")
+			(description "Schneider K1 24 VDC coil")
+			(fields
+				(field
+					(name "Status") "EXISTING P1.15 LOGICAL NODE")
+				(field
+					(name "Evidence") "24 VDC; 5.4 W at 20 C; 0.7..1.25 Uc operational; 0.1..0.25 Uc dropout")
+				(field
+					(name "Display") "EXISTING CIRCUIT NODE: K1_A1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15")
+				(field
+					(name "Description") "Schneider K1 24 VDC coil")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SRC4")
+				(description "Schneider K1 24 VDC coil")
+			)
+			(property
+				(name "Status")
+				(value "EXISTING P1.15 LOGICAL NODE")
+			)
+			(property
+				(name "Evidence")
+				(value "24 VDC; 5.4 W at 20 C; 0.7..1.25 Uc operational; 0.1..0.25 Uc dropout")
+			)
+			(property
+				(name "Display")
+				(value "EXISTING CIRCUIT NODE: K1_A1")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Schneider K1/K2 coil nodes")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_coil_nodes.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Schneider K1/K2 coil nodes/")
+				(tstamps "/9b355f4a-dd6c-557d-ad29-4da489be80e0/")
+			)
+			(tstamps "c82cc7a9-e967-5332-bb0a-9dcaf9272274")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FIELD")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SRC5")
+			(value "EXISTING CIRCUIT NODE: K2_A1")
+			(datasheet "Project Button Electrical V3-P1.15")
+			(description "Schneider K2 24 VDC coil")
+			(fields
+				(field
+					(name "Status") "EXISTING P1.15 LOGICAL NODE")
+				(field
+					(name "Evidence") "24 VDC; 5.4 W at 20 C; 0.7..1.25 Uc operational; 0.1..0.25 Uc dropout")
+				(field
+					(name "Display") "EXISTING CIRCUIT NODE: K2_A1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15")
+				(field
+					(name "Description") "Schneider K2 24 VDC coil")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SRC5")
+				(description "Schneider K2 24 VDC coil")
+			)
+			(property
+				(name "Status")
+				(value "EXISTING P1.15 LOGICAL NODE")
+			)
+			(property
+				(name "Evidence")
+				(value "24 VDC; 5.4 W at 20 C; 0.7..1.25 Uc operational; 0.1..0.25 Uc dropout")
+			)
+			(property
+				(name "Display")
+				(value "EXISTING CIRCUIT NODE: K2_A1")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Schneider K1/K2 coil nodes")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_coil_nodes.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Schneider K1/K2 coil nodes/")
+				(tstamps "/9b355f4a-dd6c-557d-ad29-4da489be80e0/")
+			)
+			(tstamps "a176763e-7cac-582f-bb53-d573ae56cf83")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FIELD")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "HOLD6")
+			(value "OBSERVATION BOUNDARY - NO CONNECTION")
+			(datasheet "R178 source/application review")
+			(description "Parallel return path could affect EDM state or expose undetected short faults; manufacturer/application and physical fault evidence required")
+			(fields
+				(field
+					(name "Status") "PERMANENT PASSIVE TAP NOT RELEASED")
+				(field
+					(name "Evidence") "AMC3330EVM and field adapter remain physically absent.")
+				(field
+					(name "Display") "OBSERVATION BOUNDARY - NO CONNECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "R178 source/application review")
+				(field
+					(name "Description") "Parallel return path could affect EDM state or expose undetected short faults; manufacturer/application and physical fault evidence required")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "HOLD6")
+				(description "Parallel return path could affect EDM state or expose undetected short faults; manufacturer/application and physical fault evidence required")
+			)
+			(property
+				(name "Status")
+				(value "PERMANENT PASSIVE TAP NOT RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "AMC3330EVM and field adapter remain physically absent.")
+			)
+			(property
+				(name "Display")
+				(value "OBSERVATION BOUNDARY - NO CONNECTION")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Pilz EDM return nodes")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_edm_returns.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Pilz EDM return nodes/")
+				(tstamps "/e963ff9b-8542-5d92-a4c9-40000a15e3bb/")
+			)
+			(tstamps "f388b460-39a3-5b0c-9079-1bede2aa2865")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "NODE")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "HOLD7")
+			(value "OBSERVATION BOUNDARY - NO CONNECTION")
+			(datasheet "R178 source/application review")
+			(description "Published manual does not define allowable parallel observer load or resulting falling-edge/EDM behavior")
+			(fields
+				(field
+					(name "Status") "PERMANENT PASSIVE TAP NOT RELEASED")
+				(field
+					(name "Evidence") "AMC3330EVM and field adapter remain physically absent.")
+				(field
+					(name "Display") "OBSERVATION BOUNDARY - NO CONNECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "R178 source/application review")
+				(field
+					(name "Description") "Published manual does not define allowable parallel observer load or resulting falling-edge/EDM behavior")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "HOLD7")
+				(description "Published manual does not define allowable parallel observer load or resulting falling-edge/EDM behavior")
+			)
+			(property
+				(name "Status")
+				(value "PERMANENT PASSIVE TAP NOT RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "AMC3330EVM and field adapter remain physically absent.")
+			)
+			(property
+				(name "Display")
+				(value "OBSERVATION BOUNDARY - NO CONNECTION")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Pilz EDM return nodes")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_edm_returns.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Pilz EDM return nodes/")
+				(tstamps "/e963ff9b-8542-5d92-a4c9-40000a15e3bb/")
+			)
+			(tstamps "5f5739a0-1b9b-5327-8a82-77ec66f4beea")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "NODE")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SRC6")
+			(value "EXISTING CIRCUIT NODE: EDM_K1_OUT")
+			(datasheet "Project Button Electrical V3-P1.15")
+			(description "Pilz EDM chain between mirror contacts")
+			(fields
+				(field
+					(name "Status") "EXISTING P1.15 LOGICAL NODE")
+				(field
+					(name "Evidence") "50 mA DC; 0.2 A / 15 ms feedback inrush")
+				(field
+					(name "Display") "EXISTING CIRCUIT NODE: EDM_K1_OUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15")
+				(field
+					(name "Description") "Pilz EDM chain between mirror contacts")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SRC6")
+				(description "Pilz EDM chain between mirror contacts")
+			)
+			(property
+				(name "Status")
+				(value "EXISTING P1.15 LOGICAL NODE")
+			)
+			(property
+				(name "Evidence")
+				(value "50 mA DC; 0.2 A / 15 ms feedback inrush")
+			)
+			(property
+				(name "Display")
+				(value "EXISTING CIRCUIT NODE: EDM_K1_OUT")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Pilz EDM return nodes")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_edm_returns.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Pilz EDM return nodes/")
+				(tstamps "/e963ff9b-8542-5d92-a4c9-40000a15e3bb/")
+			)
+			(tstamps "c3bdd6f1-c352-50ed-bac0-406448e64995")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FIELD")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SRC7")
+			(value "EXISTING CIRCUIT NODE: SRA1_START_RETURN")
+			(datasheet "Project Button Electrical V3-P1.15")
+			(description "Pilz monitored ARM/EDM return")
+			(fields
+				(field
+					(name "Status") "EXISTING P1.15 LOGICAL NODE")
+				(field
+					(name "Evidence") "50 mA DC; 0.2 A / 15 ms start/feedback inrush")
+				(field
+					(name "Display") "EXISTING CIRCUIT NODE: SRA1_START_RETURN")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15")
+				(field
+					(name "Description") "Pilz monitored ARM/EDM return")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SRC7")
+				(description "Pilz monitored ARM/EDM return")
+			)
+			(property
+				(name "Status")
+				(value "EXISTING P1.15 LOGICAL NODE")
+			)
+			(property
+				(name "Evidence")
+				(value "50 mA DC; 0.2 A / 15 ms start/feedback inrush")
+			)
+			(property
+				(name "Display")
+				(value "EXISTING CIRCUIT NODE: SRA1_START_RETURN")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Pilz EDM return nodes")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_edm_returns.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Pilz EDM return nodes/")
+				(tstamps "/e963ff9b-8542-5d92-a4c9-40000a15e3bb/")
+			)
+			(tstamps "958a9434-a281-5ca0-ab4f-dad232340281")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FIELD")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "PBV3")
+			(part "HOLD1")
+			(description "Manufacturer allowable parallel load and tap-fault behavior are not published; protected/separate start wiring and physical noninterference evidence required")
+			(docs "R178 source/application review")
+			(fields
+				(field
+					(name "Reference") "HOLD1")
+				(field
+					(name "Value") "OBSERVATION BOUNDARY - NO CONNECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "R178 source/application review")
+				(field
+					(name "Description") "Manufacturer allowable parallel load and tap-fault behavior are not published; protected/separate start wiring and physical noninterference evidence required")
+				(field
+					(name "Status") "PERMANENT PASSIVE TAP NOT RELEASED")
+				(field
+					(name "Evidence") "AMC3330EVM and field adapter remain physically absent.")
+				(field
+					(name "Display") "OBSERVATION BOUNDARY - NO CONNECTION")
+			)
+			(pins
+				(pin
+					(num "NODE")
+					(name "SR1_S12")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "HOLD2")
+			(description "Published manual does not define allowable parallel observer load or resulting falling-edge timing/error behavior")
+			(docs "R178 source/application review")
+			(fields
+				(field
+					(name "Reference") "HOLD2")
+				(field
+					(name "Value") "OBSERVATION BOUNDARY - NO CONNECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "R178 source/application review")
+				(field
+					(name "Description") "Published manual does not define allowable parallel observer load or resulting falling-edge timing/error behavior")
+				(field
+					(name "Status") "PERMANENT PASSIVE TAP NOT RELEASED")
+				(field
+					(name "Evidence") "AMC3330EVM and field adapter remain physically absent.")
+				(field
+					(name "Display") "OBSERVATION BOUNDARY - NO CONNECTION")
+			)
+			(pins
+				(pin
+					(num "NODE")
+					(name "SR1_START_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "HOLD3")
+			(description "Additional wiring enters a start/feedback path whose shorts are not detected; qualified fault-exclusion and waveform evidence required")
+			(docs "R178 source/application review")
+			(fields
+				(field
+					(name "Reference") "HOLD3")
+				(field
+					(name "Value") "OBSERVATION BOUNDARY - NO CONNECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "R178 source/application review")
+				(field
+					(name "Description") "Additional wiring enters a start/feedback path whose shorts are not detected; qualified fault-exclusion and waveform evidence required")
+				(field
+					(name "Status") "PERMANENT PASSIVE TAP NOT RELEASED")
+				(field
+					(name "Evidence") "AMC3330EVM and field adapter remain physically absent.")
+				(field
+					(name "Display") "OBSERVATION BOUNDARY - NO CONNECTION")
+			)
+			(pins
+				(pin
+					(num "NODE")
+					(name "ARM_AFTER_S2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "HOLD4")
+			(description "Built-in bidirectional suppressor is verified, but clamp voltage, external-tap limit, FSR1 and installed transient envelope remain unresolved")
+			(docs "R178 source/application review")
+			(fields
+				(field
+					(name "Reference") "HOLD4")
+				(field
+					(name "Value") "OBSERVATION BOUNDARY - NO CONNECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "R178 source/application review")
+				(field
+					(name "Description") "Built-in bidirectional suppressor is verified, but clamp voltage, external-tap limit, FSR1 and installed transient envelope remain unresolved")
+				(field
+					(name "Status") "DIVIDER DESIGN HELD")
+				(field
+					(name "Evidence") "AMC3330EVM and field adapter remain physically absent.")
+				(field
+					(name "Display") "OBSERVATION BOUNDARY - NO CONNECTION")
+			)
+			(pins
+				(pin
+					(num "NODE")
+					(name "K1_A1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "HOLD5")
+			(description "Built-in bidirectional suppressor is verified, but clamp voltage, external-tap limit, FSR2 and installed transient envelope remain unresolved")
+			(docs "R178 source/application review")
+			(fields
+				(field
+					(name "Reference") "HOLD5")
+				(field
+					(name "Value") "OBSERVATION BOUNDARY - NO CONNECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "R178 source/application review")
+				(field
+					(name "Description") "Built-in bidirectional suppressor is verified, but clamp voltage, external-tap limit, FSR2 and installed transient envelope remain unresolved")
+				(field
+					(name "Status") "DIVIDER DESIGN HELD")
+				(field
+					(name "Evidence") "AMC3330EVM and field adapter remain physically absent.")
+				(field
+					(name "Display") "OBSERVATION BOUNDARY - NO CONNECTION")
+			)
+			(pins
+				(pin
+					(num "NODE")
+					(name "K2_A1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "HOLD6")
+			(description "Parallel return path could affect EDM state or expose undetected short faults; manufacturer/application and physical fault evidence required")
+			(docs "R178 source/application review")
+			(fields
+				(field
+					(name "Reference") "HOLD6")
+				(field
+					(name "Value") "OBSERVATION BOUNDARY - NO CONNECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "R178 source/application review")
+				(field
+					(name "Description") "Parallel return path could affect EDM state or expose undetected short faults; manufacturer/application and physical fault evidence required")
+				(field
+					(name "Status") "PERMANENT PASSIVE TAP NOT RELEASED")
+				(field
+					(name "Evidence") "AMC3330EVM and field adapter remain physically absent.")
+				(field
+					(name "Display") "OBSERVATION BOUNDARY - NO CONNECTION")
+			)
+			(pins
+				(pin
+					(num "NODE")
+					(name "EDM_K1_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "HOLD7")
+			(description "Published manual does not define allowable parallel observer load or resulting falling-edge/EDM behavior")
+			(docs "R178 source/application review")
+			(fields
+				(field
+					(name "Reference") "HOLD7")
+				(field
+					(name "Value") "OBSERVATION BOUNDARY - NO CONNECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "R178 source/application review")
+				(field
+					(name "Description") "Published manual does not define allowable parallel observer load or resulting falling-edge/EDM behavior")
+				(field
+					(name "Status") "PERMANENT PASSIVE TAP NOT RELEASED")
+				(field
+					(name "Evidence") "AMC3330EVM and field adapter remain physically absent.")
+				(field
+					(name "Display") "OBSERVATION BOUNDARY - NO CONNECTION")
+			)
+			(pins
+				(pin
+					(num "NODE")
+					(name "SRA1_START_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SRC1")
+			(description "Pilz input/start feed")
+			(docs "Project Button Electrical V3-P1.15")
+			(fields
+				(field
+					(name "Reference") "SRC1")
+				(field
+					(name "Value") "EXISTING CIRCUIT NODE: SR1_S12")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15")
+				(field
+					(name "Description") "Pilz input/start feed")
+				(field
+					(name "Status") "EXISTING P1.15 LOGICAL NODE")
+				(field
+					(name "Evidence") "50 mA DC; 0.2 A / 100 ms input inrush")
+				(field
+					(name "Display") "EXISTING CIRCUIT NODE: SR1_S12")
+			)
+			(pins
+				(pin
+					(num "FIELD")
+					(name "SR1:S12;_S0:R-2;_S1:TBD-R1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SRC2")
+			(description "Pilz monitored RESET return")
+			(docs "Project Button Electrical V3-P1.15")
+			(fields
+				(field
+					(name "Reference") "SRC2")
+				(field
+					(name "Value") "EXISTING CIRCUIT NODE: SR1_START_RETURN")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15")
+				(field
+					(name "Description") "Pilz monitored RESET return")
+				(field
+					(name "Status") "EXISTING P1.15 LOGICAL NODE")
+				(field
+					(name "Evidence") "50 mA DC; 0.2 A / 15 ms start inrush")
+				(field
+					(name "Display") "EXISTING CIRCUIT NODE: SR1_START_RETURN")
+			)
+			(pins
+				(pin
+					(num "FIELD")
+					(name "SR1:S34;_S1:TBD-R2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SRC3")
+			(description "Pilz monitored ARM/EDM chain")
+			(docs "Project Button Electrical V3-P1.15")
+			(fields
+				(field
+					(name "Reference") "SRC3")
+				(field
+					(name "Value") "EXISTING CIRCUIT NODE: ARM_AFTER_S2")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15")
+				(field
+					(name "Description") "Pilz monitored ARM/EDM chain")
+				(field
+					(name "Status") "EXISTING P1.15 LOGICAL NODE")
+				(field
+					(name "Evidence") "50 mA DC; 0.2 A / 15 ms start/feedback inrush")
+				(field
+					(name "Display") "EXISTING CIRCUIT NODE: ARM_AFTER_S2")
+			)
+			(pins
+				(pin
+					(num "FIELD")
+					(name "S2:TBD-A2;_K1:21")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SRC4")
+			(description "Schneider K1 24 VDC coil")
+			(docs "Project Button Electrical V3-P1.15")
+			(fields
+				(field
+					(name "Reference") "SRC4")
+				(field
+					(name "Value") "EXISTING CIRCUIT NODE: K1_A1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15")
+				(field
+					(name "Description") "Schneider K1 24 VDC coil")
+				(field
+					(name "Status") "EXISTING P1.15 LOGICAL NODE")
+				(field
+					(name "Evidence") "24 VDC; 5.4 W at 20 C; 0.7..1.25 Uc operational; 0.1..0.25 Uc dropout")
+				(field
+					(name "Display") "EXISTING CIRCUIT NODE: K1_A1")
+			)
+			(pins
+				(pin
+					(num "FIELD")
+					(name "FSR1:2;_K1:A1;_return_K1:A2/SAFETY_0V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SRC5")
+			(description "Schneider K2 24 VDC coil")
+			(docs "Project Button Electrical V3-P1.15")
+			(fields
+				(field
+					(name "Reference") "SRC5")
+				(field
+					(name "Value") "EXISTING CIRCUIT NODE: K2_A1")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15")
+				(field
+					(name "Description") "Schneider K2 24 VDC coil")
+				(field
+					(name "Status") "EXISTING P1.15 LOGICAL NODE")
+				(field
+					(name "Evidence") "24 VDC; 5.4 W at 20 C; 0.7..1.25 Uc operational; 0.1..0.25 Uc dropout")
+				(field
+					(name "Display") "EXISTING CIRCUIT NODE: K2_A1")
+			)
+			(pins
+				(pin
+					(num "FIELD")
+					(name "FSR2:2;_K2:A1;_return_K2:A2/SAFETY_0V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SRC6")
+			(description "Pilz EDM chain between mirror contacts")
+			(docs "Project Button Electrical V3-P1.15")
+			(fields
+				(field
+					(name "Reference") "SRC6")
+				(field
+					(name "Value") "EXISTING CIRCUIT NODE: EDM_K1_OUT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15")
+				(field
+					(name "Description") "Pilz EDM chain between mirror contacts")
+				(field
+					(name "Status") "EXISTING P1.15 LOGICAL NODE")
+				(field
+					(name "Evidence") "50 mA DC; 0.2 A / 15 ms feedback inrush")
+				(field
+					(name "Display") "EXISTING CIRCUIT NODE: EDM_K1_OUT")
+			)
+			(pins
+				(pin
+					(num "FIELD")
+					(name "K1:22;_K2:21")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SRC7")
+			(description "Pilz monitored ARM/EDM return")
+			(docs "Project Button Electrical V3-P1.15")
+			(fields
+				(field
+					(name "Reference") "SRC7")
+				(field
+					(name "Value") "EXISTING CIRCUIT NODE: SRA1_START_RETURN")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.15")
+				(field
+					(name "Description") "Pilz monitored ARM/EDM return")
+				(field
+					(name "Status") "EXISTING P1.15 LOGICAL NODE")
+				(field
+					(name "Evidence") "50 mA DC; 0.2 A / 15 ms start/feedback inrush")
+				(field
+					(name "Display") "EXISTING CIRCUIT NODE: SRA1_START_RETURN")
+			)
+			(pins
+				(pin
+					(num "FIELD")
+					(name "K2:22;_SRA1:S34")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "PBV3")
+			(uri "${KIPRJMOD}/hr-v0-event-tap-disposition-p0.1.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "ETD_1_EXISTING")
+			(class "Default")
+			(node
+				(ref "HOLD1")
+				(pin "NODE")
+				(pinfunction "SR1_S12_NODE")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRC1")
+				(pin "FIELD")
+				(pinfunction "SR1:S12;_S0:R-2;_S1:TBD-R1_FIELD")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "2")
+			(name "ETD_2_EXISTING")
+			(class "Default")
+			(node
+				(ref "HOLD2")
+				(pin "NODE")
+				(pinfunction "SR1_START_RETURN_NODE")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRC2")
+				(pin "FIELD")
+				(pinfunction "SR1:S34;_S1:TBD-R2_FIELD")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "3")
+			(name "ETD_3_EXISTING")
+			(class "Default")
+			(node
+				(ref "HOLD3")
+				(pin "NODE")
+				(pinfunction "ARM_AFTER_S2_NODE")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRC3")
+				(pin "FIELD")
+				(pinfunction "S2:TBD-A2;_K1:21_FIELD")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "4")
+			(name "ETD_4_EXISTING")
+			(class "Default")
+			(node
+				(ref "HOLD4")
+				(pin "NODE")
+				(pinfunction "K1_A1_NODE")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRC4")
+				(pin "FIELD")
+				(pinfunction "FSR1:2;_K1:A1;_return_K1:A2/SAFETY_0V_FIELD")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "5")
+			(name "ETD_5_EXISTING")
+			(class "Default")
+			(node
+				(ref "HOLD5")
+				(pin "NODE")
+				(pinfunction "K2_A1_NODE")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRC5")
+				(pin "FIELD")
+				(pinfunction "FSR2:2;_K2:A1;_return_K2:A2/SAFETY_0V_FIELD")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "ETD_6_EXISTING")
+			(class "Default")
+			(node
+				(ref "HOLD6")
+				(pin "NODE")
+				(pinfunction "EDM_K1_OUT_NODE")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRC6")
+				(pin "FIELD")
+				(pinfunction "K1:22;_K2:21_FIELD")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "7")
+			(name "ETD_7_EXISTING")
+			(class "Default")
+			(node
+				(ref "HOLD7")
+				(pin "NODE")
+				(pinfunction "SRA1_START_RETURN_NODE")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRC7")
+				(pin "FIELD")
+				(pinfunction "K2:22;_SRA1:S34_FIELD")
+				(pintype "passive")
+			)
+		)
+	)
+)

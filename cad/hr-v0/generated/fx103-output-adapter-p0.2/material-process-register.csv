@@ -1,0 +1,7 @@
+control,requirement,evidence,state
+MP01,"17-4 PH stainless steel, UNS S17400, ASTM A564/A564M Type 630, H1150, certified","certificate with specification, type, H1150 condition, heat/lot and product form",DEFINED; RECEIVED EVIDENCE OPEN
+MP02,machine both parts from certified H1150 round bar at least Ø40 mm; finished Condition A prohibited,"shop traveler, certificate and receiving inspection",DEFINED; DFM/EXECUTION OPEN
+MP03,"finish critical faces, pilot, bore and shaft after all heat treatment",shop traveler and FAI,DEFINED; DFM/EXECUTION OPEN
+MP04,"passivation/cleaning process SELECTION REQUIRED after galvanic, fit and manufacturer review",qualified process disposition,OPEN; NO COATING OR PASSIVATION RELEASE
+MP05,"no welding, plating, repair or material/condition substitution",shop traveler and visual/certificate review,DEFINED; EXECUTION OPEN
+MP06,"protect A/B/C, threads, pilot, bore and stub; removable part/revision tag only",receiving inspection,DEFINED; EXECUTION OPEN

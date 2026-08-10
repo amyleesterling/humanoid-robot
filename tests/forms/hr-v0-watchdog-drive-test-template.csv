@@ -1,0 +1,13 @@
+record_status,test_date,configuration,board_serial,instrument_id,calibration_due,test_step,channel,input_condition,measured_gpio_v,measured_led_ma,measured_wd_node_v,measured_coil_ma,measured_com_slew_v_per_us,pickup_ms,dropout_ms,driver_temp_c,relay_state,feedback_state,expected_result,actual_result,raw_evidence_path,reviewer,disposition,notes
+NOT-EXECUTED,,V3-P0.9,,,,received_identity,all,,,,,,,,,,,,Exact order codes and orientation match controlled BOM,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,,power_off_default,all,all supplies off,,,,,,,,,deenergized,,Both relays deenergized,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,,gpio_level_and_led_current,heartbeat,valid square wave,,,,,,,,,,,Levels current and timing meet released limits,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,,heartbeat_static_high,heartbeat,static high,,,,,,,,,deenergized,,Timeout removes both relay drives,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,,heartbeat_static_low,heartbeat,static low,,,,,,,,,deenergized,,Timeout removes both relay drives,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,,heartbeat_open,heartbeat,disconnected,,,,,,,,,deenergized,,No valid continuing edges and both drives off,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,,brownout,all,controlled slow ramp and dropout,,,,,,,,,deenergized,,No unintended pickup or restart,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,,com_hotplug,1,controlled hot plug,,,,,,,,,,,COM slew remains below released limit,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,,com_hotplug,2,controlled hot plug,,,,,,,,,,,COM slew remains below released limit,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,,open_short_fault,each,each released fault-injection case,,,,,,,,,deenergized,,Fault produces released fail-closed response,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,,cross_channel_fault,all,each released cross-channel case,,,,,,,,,deenergized,,No silent common permission and discrepancy is detected,,TEMPLATE ROW - NOT EXECUTED,,,
+NOT-EXECUTED,,V3-P0.9,,,,restart_sequence,all,heartbeat restored after dropout,,,,,,,,,deenergized,,No motion or coil pickup before physical RESET then distinct ARM,,TEMPLATE ROW - NOT EXECUTED,,,

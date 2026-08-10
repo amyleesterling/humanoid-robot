@@ -1,0 +1,13 @@
+interface_id,from,to,controlled_datum,unresolved,state
+FXI-001,site bench,candidate base,base envelope only,"site permission, substrate, exact anchor, edge distance, installation, proof",OPEN
+FXI-002,candidate base,candidate upright,orthogonal touching envelopes,"material, weld/bolt topology, features, tolerance, stiffness, proof",OPEN
+FXI-003,upright,TFF400 fixed end,J2 axis; four axes on 31.75 mm BCD,"pilot, holes, #8-32 screw selection/engagement/torque/locking/access",OPEN
+FXI-004,TFF400 active end,custom active adapter,J2 axis; four axes on 31.75 mm BCD,"FUTEK application approval, pilot, holes, fastener stack, stiffness",OPEN
+FXI-005,custom active adapter,FR12-S102/X430 fixed assembly,Y=+/-11 Z=32 exact nominal axes,"detailed part, collision/tolerance, fastener, received fit, FAI, proof",OPEN
+FXI-006,FR12-H101 moving frame,fixture load arm,straight reference at J2,"adapter, holes, fastener stack, balance, inertia, proof",OPEN
+FXI-007,load arm,controlled load device,160 mm envelope only,"brake/mass/spring topology, retention, load profile, fail-safe behavior",OPEN
+FXI-008,TFF400,IAA100,4-wire bridge functions only,"exact CC4 cable/order code, shield/chassis, calibration configuration",OPEN
+FXI-009,IAA100,LabJack T7,candidate differential voltage path,"range, gain, span, bandwidth, common mode, pin/terminal, settling",OPEN
+FXI-010,actuator branch,JS220-K000,series current/parallel voltage concept,"source/transient limits, connector/wire, protection, regen, burden, timing",OPEN
+FXI-011,actuator/connector/cable surfaces,temperature acquisition,three retained surface channels,"exact sensors/order codes, placement, CJC, retention, insulation bias",OPEN
+FXI-012,fixture volume,guard/catch/access system,none released,"full swept volume, access closure, catch, impact, retention, cable entry, proof",OPEN

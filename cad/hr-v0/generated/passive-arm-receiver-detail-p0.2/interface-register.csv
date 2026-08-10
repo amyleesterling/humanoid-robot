@@ -1,0 +1,8 @@
+interface_id,from,to,controlled_geometry,hardware,status
+REC-IF-001,platen,four guide tabs,"tab envelope 20 x 50 x 6.35 at X +/-90..110, Y +/-350",SELECTION REQUIRED,OPEN - RECEIVED IGUS CAD AND HOLE PATTERN REQUIRED
+REC-IF-002,guide tabs,TWA-01-20 carriages,carriage envelope 30 x 63 x 81; K2 M6 published,SELECTION REQUIRED,OPEN - DO NOT INFER THREAD PATTERN
+REC-IF-003,TS-01-20 rails,fixed guide supports,"four 120 mm vertical rail envelopes at X +/-110, Y +/-350",SELECTION REQUIRED,OPEN - CONFIGURED RAIL HOLES AND SUPPORTS REQUIRED
+REC-IF-004,platen,three MA30M units,Y -300/0/+300; axial Z; M8x1 published,SELECTION REQUIRED,OPEN - ACE APPLICATION AND RETENTION REQUIRED
+REC-IF-005,platen,four backup catches,nominal gap 9.625 mm; 1.497 mm after catalog stroke,SELECTION REQUIRED,"OPEN - TOLERANCE, PEAK LOAD AND FAILURE CONTAINMENT REQUIRED"
+REC-IF-006,20-2020 posts,20-2040 rails,eight 90 degree joints,20-4113 + four 11-5308 + four 14122 per joint,PARTIAL - EXACT CANDIDATES; NO PUBLISHED JOINT ALLOWABLE OR PROOF
+REC-IF-007,receiver subframe,guard/base/site,SELECTION REQUIRED,SELECTION REQUIRED,OPEN - NO ANCHOR OR GUARD LOAD CREDIT

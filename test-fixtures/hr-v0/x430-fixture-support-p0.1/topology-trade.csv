@@ -1,0 +1,5 @@
+route,topology,evidence_role,limitation,disposition
+SUP-A,40200-SP-K 300 mm floor-mounted static pedestal plus modified 40006-BP,vertical-axis sensor chain and controlled duty development,catalog torque applies only floor-mounted; site/anchors/CAD/application open; gravity torque absent,PREFERRED INQUIRY CANDIDATE - NOT SELECTED
+SUP-B,horizontal custom C-frame,representative gravity/bearing/configured-joint duty,complete frame/joint/anchor/guard design and proof absent,REQUIRED LATER - DESIGN OPEN
+SUP-C,weighted or mobile pedestal,portable support,40200-SP-K 2040 N m statement cannot be transferred to an unanchored base,REJECT FOR CATALOG TORQUE CREDIT
+SUP-D,bench clamps or temporary woodworking clamps,temporary positioning only,"unrated slip, pry, substrate and release behavior",PROHIBITED AS PRIMARY SUPPORT

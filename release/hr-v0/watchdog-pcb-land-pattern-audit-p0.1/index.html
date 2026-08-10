@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Button PCB-P0.6 Land-Pattern Audit</title>
+  <style>
+    :root { --sky:#7dd3fc; --blue:#082f64; --deep:#061b36; --gold:#f4c542; --paper:#f8fbff; --line:#b8d7ee; --ink:#10243e; --bad:#b42318; }
+    * { box-sizing:border-box; }
+    body { margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif; color:var(--ink); background:var(--paper); }
+    header { padding:clamp(24px,5vw,64px); color:white; background:linear-gradient(135deg,var(--deep),var(--blue)); border-bottom:8px solid var(--gold); }
+    h1 { margin:0 0 12px; font-size:clamp(30px,5vw,58px); line-height:1.05; }
+    h2 { font-size:clamp(24px,3vw,36px); color:var(--blue); }
+    .warning { margin-top:20px; padding:14px 18px; color:#271c00; background:var(--gold); border:2px solid #8b6500; font-weight:800; }
+    main { width:min(1440px,94vw); margin:0 auto; padding:30px 0 64px; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; }
+    .card { padding:20px; background:white; border:2px solid var(--line); border-radius:14px; box-shadow:0 5px 16px #082f6414; }
+    .number { display:block; font-size:34px; font-weight:850; color:var(--blue); }
+    .controls { display:flex; flex-wrap:wrap; gap:12px; margin:24px 0 16px; }
+    input,select { min-height:46px; padding:10px 12px; border:2px solid #7aaaca; border-radius:8px; background:white; color:var(--ink); font:inherit; }
+    input { flex:1 1 320px; }
+    .table-wrap { overflow:auto; border:2px solid var(--line); border-radius:12px; background:white; }
+    table { width:100%; border-collapse:collapse; min-width:1180px; }
+    th,td { padding:12px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; font-size:14px; }
+    th { position:sticky; top:0; color:white; background:var(--blue); font-size:15px; }
+    tr:hover td { background:#eef8ff; }
+    code { font-size:14px; color:#062a58; }
+    .status { display:inline-block; padding:4px 8px; border-radius:999px; font-size:12px; font-weight:800; background:#dff3ff; border:1px solid #6aaed6; }
+    .hold { color:var(--bad); font-weight:750; }
+    a { color:#075ca8; }
+    footer { padding:24px; color:white; background:var(--deep); text-align:center; }
+  </style>
+</head>
+<body>
+  <header>
+    <p>Project Button · HR-V0 · PCB-P0.6 · R89</p>
+    <h1>Land-pattern audit</h1>
+    <p>Reference-by-reference manufacturer evidence and the remaining path to an assembly-reviewable watchdog board.</p>
+    <div class="warning">PRELIMINARY — NOT APPROVED FOR FABRICATION OR ENERGIZATION</div>
+  </header>
+  <main>
+    <section class="cards" aria-label="Audit summary">
+      <div class="card"><span class="number">46</span>audited board references, including four board-only holes</div>
+      <div class="card"><span class="number">86</span>source lands corrected across 21 references</div>
+      <div class="card"><span class="number">0</span>KiCad DRC violations or routed unconnected pads</div>
+      <div class="card"><span class="number">0</span>fabrication, assembly, or energization approvals</div>
+    </section>
+
+    <section>
+      <h2>What changed</h2>
+      <p>The former VO618A footprint violated Vishay’s option-7 inner-land gap. Two TI packages used undocumented alternate lands, and seventeen passives fell outside the cited manufacturer patterns. PCB-P0.6 replaces those with controlled manufacturer-traced candidates. The prior PCB-P0.5 CAM package is historical and must not be ordered.</p>
+      <p class="hold">Open holds include assembly-house acceptance, stencil/mask/paste/process definition, system creepage, Phoenix torque support, DC1 land rationale, Pico reflow evidence, probe access, mounting hardware, first-article inspection, and independent review.</p>
+    </section>
+
+    <section>
+      <h2>Audit register</h2>
+      <div class="controls">
+        <input id="search" type="search" placeholder="Filter by reference, part, footprint, finding, or evidence">
+        <select id="disposition" aria-label="Filter disposition"><option value="">All dispositions</option></select>
+      </div>
+      <p id="count" aria-live="polite">Loading register…</p>
+      <div class="table-wrap"><table><thead><tr>
+        <th>Reference</th><th>Part</th><th>Footprint / process</th><th>Source</th><th>Geometry / orientation</th><th>Disposition</th><th>Evidence still needed</th>
+      </tr></thead><tbody id="rows"></tbody></table></div>
+    </section>
+  </main>
+  <footer>Project Button · engineering review artifact · no fabrication or energization permission</footer>
+  <script>
+    const parseCSV = text => {
+      const rows=[]; let row=[], field='', quote=false;
+      for(let i=0;i<text.length;i++){ const c=text[i], n=text[i+1];
+        if(c==='"' && quote && n==='"'){field+='"';i++;}
+        else if(c==='"'){quote=!quote;}
+        else if(c===',' && !quote){row.push(field);field='';}
+        else if((c==='\n'||c==='\r')&&!quote){if(c==='\r'&&n==='\n')i++;row.push(field);field='';if(row.some(Boolean))rows.push(row);row=[];}
+        else field+=c;
+      } if(field||row.length){row.push(field);rows.push(row);} return rows;
+    };
+    const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    fetch('land-pattern-audit.csv').then(r=>r.text()).then(text=>{
+      const data=parseCSV(text), head=data.shift(), items=data.map(r=>Object.fromEntries(head.map((h,i)=>[h,r[i]||''])));
+      const select=document.querySelector('#disposition');
+      [...new Set(items.map(x=>x.disposition))].sort().forEach(v=>select.insertAdjacentHTML('beforeend',`<option>${esc(v)}</option>`));
+      const draw=()=>{const q=document.querySelector('#search').value.toLowerCase(), d=select.value;
+        const view=items.filter(x=>(!d||x.disposition===d)&&Object.values(x).join(' ').toLowerCase().includes(q));
+        document.querySelector('#count').textContent=`Showing ${view.length} of ${items.length} references`;
+        document.querySelector('#rows').innerHTML=view.map(x=>`<tr><td><strong>${esc(x.reference)}</strong></td><td>${esc(x.manufacturer_part)}</td><td><code>${esc(x.board_footprint)}</code><br>${esc(x.proposed_process)}</td><td>${esc(x.primary_document)}<br>${esc(x.revision_date)}</td><td>${esc(x.encoded_geometry)}<br>${esc(x.orientation)}</td><td><span class="status">${esc(x.disposition)}</span><br><span class="hold">${esc(x.release_state)}</span></td><td>${esc(x.evidence_needed)}</td></tr>`).join('');
+      }; document.querySelector('#search').addEventListener('input',draw); select.addEventListener('change',draw); draw();
+    }).catch(()=>{document.querySelector('#count').textContent='Register could not be loaded. Open land-pattern-audit.csv directly.'});
+  </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "revision": "HR-V0-EVAL-ACQ-P0.1",
+  "cost_line_count": 3,
+  "physical_article_count": 6,
+  "web_price_subtotal_usd": "1182.22",
+  "shipping_tax_fees_included": false,
+  "provider_candidate_count": 4,
+  "provider_selected": false,
+  "provider_contacted": false,
+  "rfq_question_count": 24,
+  "decision_hold_count": 10,
+  "purchase_authorized": false,
+  "order_placed": false,
+  "physical_evidence_received": false,
+  "warning": "PRELIMINARY - QUOTE AND AUTHORIZATION PACKET ONLY - NO ORDER, ASSEMBLY, MOTION OR ENERGIZATION RELEASE"
+}

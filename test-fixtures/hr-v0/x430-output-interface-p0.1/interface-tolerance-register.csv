@@ -1,0 +1,6 @@
+interface,from,to,candidate,missing,state
+OI-IF-01,X430 output serration,HN12 DC12 serration,exact vendor geometry,"received fit, backlash, allowable torque/duty, installation and retention evidence",PARTIAL
+OI-IF-02,HN12 8 x M2 tapped pattern,FX103-C01 8 x Ø2.2 candidate holes,PCD Ø16; nominal axes aligned,"datum tolerance, screw identity, engagement, preload, locking, bearing/shear/slip analysis and proof",OPEN
+OI-IF-03,FX103-C01 Ø15 stub,MJC33-15-A clamp hub,14.95 mm insertion; shaft +0/-0.013 mm catalog target,"runout, surface finish, clamp procedure, full bearing support and application acceptance",OPEN
+OI-IF-04,second MJC33-15-A clamp hub,HB-450M-2 smooth h4 shaft,15.0 mm insertion envelope,"received shaft, surface/fit, clamp acceptance, axial location and proof",OPEN
+OI-IF-05,rotating drivetrain,fixed support/guard/instrumentation,SELECTION REQUIRED,"alignment, end float, reaction path, guard, catch, sensors and validation",OPEN

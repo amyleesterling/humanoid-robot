@@ -1,0 +1,28 @@
+{
+  "revision": "HR-V0-ARM-ARCH-P0.9-X430-INTEGRATED-CANDIDATE",
+  "method": "adaptive interval cover using exact/AABB center distance minus rigid-body chord bounds",
+  "joint_domain_deg": {
+    "j1": [
+      -20.0,
+      70.0
+    ],
+    "j2": [
+      15.0,
+      115.0
+    ]
+  },
+  "required_certified_clearance_mm": 0.75,
+  "minimum_guaranteed_clearance_mm": 0.862928,
+  "pair_count": 69,
+  "leaf_cell_count": 130,
+  "exact_brep_distance_calls": 85,
+  "excluded_intentional_interfaces": [
+    "J1_BODY:J1_H101",
+    "J1_S102:J1_H101",
+    "J2_FR12_S102:J2_FR12_H101",
+    "J2_X430:J2_FR12_H101",
+    "P09_FIXED_CATCH:P09_MOVING_STRIKER"
+  ],
+  "release_boundary": "nominal solids through software limit only; tolerances, cables, connectors, guards, deformation and stopping travel excluded",
+  "status": "CERTIFIED_NOMINAL_MODEL_SPACE_NOT_A_PHYSICAL_OR_MOTION_RELEASE"
+}

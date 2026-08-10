@@ -1,0 +1,12 @@
+hold_id,missing_evidence,state,effect
+OA-HOLD-01,"independent mechanical/GD&T review of the two-piece topology, stress path, fatigue, fits, fasteners and proof basis",PARTIAL,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+OA-HOLD-02,"ROBOTIS written acceptance of HN12 for external-brake characterization plus SCB2-8 candidate and exact horn fastener, engagement, torque, locking and reuse controls",PARTIAL,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+OA-HOLD-03,"Ruland written acceptance of MJC33-15-A/JD21-33-92Y for the spectrum, support, fit, insertion, gap, reversal and proof",PARTIAL,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+OA-HOLD-04,"machine-shop DFM for both parts, thread/counterbore access, H7/h6 fit, runout, finish, root fillet, stock and inspection",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+OA-HOLD-05,"SCB2-8 and CB4-15 candidates identified; received lot identity, tolerance stack, protrusion, torque/preload, locking, corrosion, reuse and proof remain open",PARTIAL,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+OA-HOLD-06,"received H1150 material certificates, heat/lot trace and completed signed FAI",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+OA-HOLD-07,"qualified horn/adapter/coupling static, fatigue, slip and fault-load analysis plus approved proof procedure",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+OA-HOLD-08,executed proof and post-proof dimensional/visual inspection,OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+OA-HOLD-09,"assembled HN12/C01/C02/coupling coaxiality, runout, end float, uncertainty and full-bearing-support evidence",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+OA-HOLD-10,"complete brake mount, guard/catch, controls, instrumentation, anchoring and powered-work authorization",OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION
+OA-HOLD-11,final configured FR12-H101 gravity/bearing/cable/moving-mass test and qualified acceptance,OPEN,BLOCKS QUOTATION/PROCUREMENT/MACHINING/ASSEMBLY/CONNECTION/POWERED TEST/MOTION/ENERGIZATION

@@ -1,0 +1,19 @@
+{
+  "identifier": "HR-V0-BOSTON-FAB-ROUTE-P0.3",
+  "review_round": "R167",
+  "date": "2026-08-09",
+  "status": "PRELIMINARY_NOT_APPROVED_FOR_QUOTATION_FABRICATION_OR_ENERGIZATION",
+  "controlled_material": "6061-T651",
+  "controlled_parts": ["C01", "C04", "C05", "C06", "C07"],
+  "strongest_local_candidate": "Kontrast4D",
+  "online_candidates": ["Protolabs", "Xometry"],
+  "qualified_provider_selected": false,
+  "supplier_contacted": false,
+  "files_uploaded": false,
+  "quote_requested": false,
+  "fabrication_authorized": false,
+  "energization_authorized": false,
+  "open_design_inputs": 10,
+  "route_records": 10,
+  "source_records": 10
+}

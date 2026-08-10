@@ -1,0 +1,7 @@
+stack_id,quantity,nominal_mm,plus_mm,minus_mm,source,status
+REC-TOL-001,receiver top Z,320.000,SELECTION REQUIRED,SELECTION REQUIRED,assembly datum,OPEN
+REC-TOL-002,Sorbothane thickness,9.525,0.635,0.635,0212037-50-10 product page +/-0.025 in,CONTROLLED SOURCE TOLERANCE
+REC-TOL-003,platen thickness,6.350,SELECTION REQUIRED,SELECTION REQUIRED,supplier/material certificate required,OPEN
+REC-TOL-004,backup catch gap,9.625,SELECTION REQUIRED,SELECTION REQUIRED,"plate, shock, mount and stop stack",OPEN
+REC-TOL-005,catalog stroke residual before catch,1.497,SELECTION REQUIRED,SELECTION REQUIRED,nominal gap minus 8.128 mm catalog stroke,OPEN - MUST REMAIN POSITIVE AFTER ACCEPTED STACK
+REC-TOL-006,known commanded clearance,63.106478,0,SELECTION REQUIRED,R127 retained lower bound minus receiver top,OPEN - COMPLETE MOVING GEOMETRY AND AS-BUILT STACK REQUIRED

@@ -1,0 +1,54 @@
+{
+  "revision": "HR-V0-ARM-ARCH-P0.8-X430-CANDIDATE",
+  "warning": "PRELIMINARY - COMPARISON CANDIDATE ONLY - NOT APPROVED FOR QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, CONNECTION, OR ENERGIZATION",
+  "configuration_disposition": "P0.8 comparison candidate only; P0.7 remains controlled and XM430 is not selected",
+  "geometry_mm": {
+    "j1_to_j2_axis": 191.55,
+    "j2_to_g1_frame_origin": 125.05,
+    "candidate_object_center_from_j1": 345.0,
+    "fr12_s102_local_z_registration_shift": 21.0,
+    "fr12_s102_fixed_face_offset": 40.5,
+    "fr12_h101_moving_face_offset": 28.0
+  },
+  "assembly_model_overlap_review_mm3": {
+    "x430_with_fr12_s102": 200.75725,
+    "x430_with_fr12_h101_straight_reference": 221.902962,
+    "fr12_s102_with_fr12_h101_straight_reference": 0.0,
+    "status": "intentional assembly-interface candidate overlaps; independent transform audit and received fit required"
+  },
+  "stop": {
+    "soft_limit_deg": 115.0,
+    "nominal_first_contact_deg": 117.999991,
+    "maximum_nonintentional_intersection_through_soft_limit_mm3": 0.0,
+    "maximum_nonintentional_intersection_through_stop_mm3": 0.0,
+    "first_sampled_nonintentional_collision_deg": 120.0,
+    "status": "nominal rigid-body sampled evidence only; continuous/tolerance/cable/guard/stopping/physical proof open"
+  },
+  "mass_and_load": {
+    "fixed_catch_cad_mass_g": 52.234,
+    "moving_striker_cad_mass_g": 52.234,
+    "incomplete_known_mass_g": 577.091,
+    "provisional_headroom_to_750_g": 172.909,
+    "elbow_gravity_nm": 0.491,
+    "elbow_2_25_screen_nm": 1.104,
+    "xm430_12v_stall_endpoint_ratio_only": 3.713,
+    "status": "incomplete screen; not continuous capacity, safety factor, thermal proof, or mass closure"
+  },
+  "source_sha256": {
+    "x-430_idle.stp": "7FF4E39475245D5C1FC4F703E9241FCA1A09D57AED920274498DBE2CD5E31E22",
+    "fr12_h101.stp": "18C2021EB0DF523E5879B745D58201FF30FC4E812DF8A2E83829A59A8D9FEE4C",
+    "fr12_s102.stp": "671C847A9A946F5F3BB0B42EF9816A8476BECEBB36D1B0CC8B826FF2FA7667A8",
+    "FR12-H104K.stp": "75BA58D2668D7D25802D1277A5393445C4FB7A8C565566E56CE76FEFC0E59F7D"
+  },
+  "release_flags": {
+    "supersedes_p0_7": false,
+    "xm430_selected": false,
+    "quotation_authorized": false,
+    "procurement_authorized": false,
+    "fabrication_authorized": false,
+    "assembly_authorized": false,
+    "motion_authorized": false,
+    "connection_authorized": false,
+    "energization_authorized": false
+  }
+}

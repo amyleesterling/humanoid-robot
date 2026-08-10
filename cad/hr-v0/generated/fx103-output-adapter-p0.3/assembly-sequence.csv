@@ -1,0 +1,7 @@
+step,operation,prerequisite,authority
+AS-01,"verify received HN12, C01, C02 and both fastener lots against signed receiving/FAI records",all physical records executed and accepted,NOT EXECUTED; NO ASSEMBLY RELEASE
+AS-02,seat C01 on HN12 datum face and install eight SCB2-8 candidates in controlled cross pattern,ROBOTIS acceptance plus released torque/locking/reuse procedure,NOT EXECUTED; NO ASSEMBLY RELEASE
+AS-03,verify no M2 bottoming/protrusion/interference and record face seating/runout,released metrology method and acceptance,NOT EXECUTED; NO ASSEMBLY RELEASE
+AS-04,pilot C02 onto C01 and install four CB4-15 candidates in controlled cross pattern,released torque/preload/locking procedure,NOT EXECUTED; NO ASSEMBLY RELEASE
+AS-05,"verify M4 head seating, engagement and tool withdrawal before coupling installation",released inspection method and acceptance,NOT EXECUTED; NO ASSEMBLY RELEASE
+AS-06,install coupling hub only after M4 inspection; remove hub before any later M4 service,Ruland acceptance and released hub procedure,NOT EXECUTED; NO ASSEMBLY RELEASE

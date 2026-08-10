@@ -1,0 +1,239 @@
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\validation\hr-v0-dxl-protection-carrier-p0.3-erc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-carrier-p0.3\hr-v0-dxl-protection-carrier-p0.3.kicad_sch"
+Found 0 violations
+Saved ERC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/release/hr-v0/dxl-protection-carrier-p0.3/validation/hr-v0-dxl-protection-carrier-p0.3-erc.rpt
+
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\validation\hr-v0-dxl-protection-carrier-p0.3.net" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-carrier-p0.3\hr-v0-dxl-protection-carrier-p0.3.kicad_sch"
+Warning: schematic has annotation errors, please use the schematic editor to fix them
+
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export pdf --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\output\hr-v0-dxl-protection-carrier-p0.3-preliminary.pdf" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-carrier-p0.3\hr-v0-dxl-protection-carrier-p0.3.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\output\hr-v0-dxl-protection-carrier-p0.3-preliminary.pdf'.
+Done.
+
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export svg --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\output" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-carrier-p0.3\hr-v0-dxl-protection-carrier-p0.3.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\output\hr-v0-dxl-protection-carrier-p0.3.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\output\hr-v0-dxl-protection-carrier-p0.3-01 Single-channel DXL branch protection core.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\output\hr-v0-dxl-protection-carrier-p0.3-02 UVLO and OVLO threshold candidates.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\output\hr-v0-dxl-protection-carrier-p0.3-03 Bypass, slew and transient candidates.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\output\hr-v0-dxl-protection-carrier-p0.3-04 Measurement and diagnostic points.svg'.
+Done.
+
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb drc --exit-code-violations --refill-zones --save-board --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\validation\hr-v0-dxl-protection-carrier-p0.3-drc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-carrier-p0.3\hr-v0-dxl-protection-carrier-p0.3.kicad_pcb"
+Found 0 violations
+Found 0 unconnected items
+Saved DRC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/release/hr-v0/dxl-protection-carrier-p0.3/validation/hr-v0-dxl-protection-carrier-p0.3-drc.rpt
+Saved board
+
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb render --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\output\hr-v0-dxl-protection-carrier-p0.3-top.png" --width 1600 --height 1000 --side top --background opaque "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-carrier-p0.3\hr-v0-dxl-protection-carrier-p0.3.kicad_pcb"
+Loading…
+Build board outline
+
+Create layers
+Create tracks and vias
+Create zones
+Build Tech layers
+Build Tech layer 11
+Build Tech layer 9
+Build Tech layer 15
+Build Tech layer 13
+Build Tech layer 7
+Build Tech layer 5
+Build Tech layer 3
+Build Tech layer 1
+Build Tech layer 17
+Build Tech layer 19
+Build Tech layer 21
+Build Tech layer 23
+Build Tech layer 39
+Build Tech layer 41
+Build Tech layer 43
+Build Tech layer 45
+Build Tech layer 47
+Build Tech layer 49
+Build Tech layer 51
+Build Tech layer 53
+Build Tech layer 55
+Build Tech layer 57
+Build Tech layer 59
+Build Tech layer 61
+Build Tech layer 63
+Build Tech layer 65
+Build Tech layer 67
+Build Tech layer 69
+Build Tech layer 71
+Build Tech layer 73
+Build Tech layer 75
+Build Tech layer 77
+Build Tech layer 79
+Build Tech layer 81
+Build Tech layer 83
+Build Tech layer 85
+Build Tech layer 87
+Build Tech layer 89
+Build Tech layer 91
+Build Tech layer 93
+Build Tech layer 95
+Build Tech layer 97
+Build Tech layer 99
+Build Tech layer 101
+Build Tech layer 103
+Build Tech layer 105
+Build Tech layer 107
+Build Tech layer 109
+Build Tech layer 111
+Build Tech layer 113
+Build Tech layer 115
+Build Tech layer 117
+Build Tech layer 119
+Build Tech layer 121
+Build Tech layer 123
+Build Tech layer 125
+Build Tech layer 127
+Simplifying copper layer polygons
+Calculating plated copper
+Simplify holes contours
+Build BVH for holes and vias
+Load Raytracing: board
+Load Raytracing: layers
+Loading 3D models...
+Reload time 0.138 s
+Rendering: 100
+Rendering time 0.238 s
+Successfully created 3D render image
+
+4:04:01 PM: Error: Directory 'C:\Users\amyle\AppData\Roaming\kicad\10.0\3d' couldn't be created (error 5: Access is denied.)
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb render --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\output\hr-v0-dxl-protection-carrier-p0.3-bottom.png" --width 1600 --height 1000 --side bottom --background opaque "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-carrier-p0.3\hr-v0-dxl-protection-carrier-p0.3.kicad_pcb"
+Loading…
+Build board outline
+
+Create layers
+Create tracks and vias
+Create zones
+Build Tech layers
+Build Tech layer 11
+Build Tech layer 9
+Build Tech layer 15
+Build Tech layer 13
+Build Tech layer 7
+Build Tech layer 5
+Build Tech layer 3
+Build Tech layer 1
+Build Tech layer 17
+Build Tech layer 19
+Build Tech layer 21
+Build Tech layer 23
+Build Tech layer 39
+Build Tech layer 41
+Build Tech layer 43
+Build Tech layer 45
+Build Tech layer 47
+Build Tech layer 49
+Build Tech layer 51
+Build Tech layer 53
+Build Tech layer 55
+Build Tech layer 57
+Build Tech layer 59
+Build Tech layer 61
+Build Tech layer 63
+Build Tech layer 65
+Build Tech layer 67
+Build Tech layer 69
+Build Tech layer 71
+Build Tech layer 73
+Build Tech layer 75
+Build Tech layer 77
+Build Tech layer 79
+Build Tech layer 81
+Build Tech layer 83
+Build Tech layer 85
+Build Tech layer 87
+Build Tech layer 89
+Build Tech layer 91
+Build Tech layer 93
+Build Tech layer 95
+Build Tech layer 97
+Build Tech layer 99
+Build Tech layer 101
+Build Tech layer 103
+Build Tech layer 105
+Build Tech layer 107
+Build Tech layer 109
+Build Tech layer 111
+Build Tech layer 113
+Build Tech layer 115
+Build Tech layer 117
+Build Tech layer 119
+Build Tech layer 121
+Build Tech layer 123
+Build Tech layer 125
+Build Tech layer 127
+Simplifying copper layer polygons
+Calculating plated copper
+Simplify holes contours
+Build BVH for holes and vias
+Load Raytracing: board
+Load Raytracing: layers
+Loading 3D models...
+Reload time 0.137 s
+Rendering: 100
+Rendering time 0.224 s
+Successfully created 3D render image
+
+4:04:03 PM: Error: Directory 'C:\Users\amyle\AppData\Roaming\kicad\10.0\3d' couldn't be created (error 5: Access is denied.)
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export gerbers --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\gerbers" --layers F.Cu,In1.Cu,In2.Cu,B.Cu,F.Paste,B.Paste,F.Silkscreen,B.Silkscreen,F.Mask,B.Mask,Edge.Cuts --precision 6 --check-zones "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-carrier-p0.3\hr-v0-dxl-protection-carrier-p0.3.kicad_pcb"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\gerbers\hr-v0-dxl-protection-carrier-p0.3-F_Cu.gtl'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\gerbers\hr-v0-dxl-protection-carrier-p0.3-In1_Cu.g1'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\gerbers\hr-v0-dxl-protection-carrier-p0.3-In2_Cu.g2'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\gerbers\hr-v0-dxl-protection-carrier-p0.3-B_Cu.gbl'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\gerbers\hr-v0-dxl-protection-carrier-p0.3-F_Paste.gtp'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\gerbers\hr-v0-dxl-protection-carrier-p0.3-B_Paste.gbp'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\gerbers\hr-v0-dxl-protection-carrier-p0.3-F_Silkscreen.gto'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\gerbers\hr-v0-dxl-protection-carrier-p0.3-B_Silkscreen.gbo'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\gerbers\hr-v0-dxl-protection-carrier-p0.3-F_Mask.gts'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\gerbers\hr-v0-dxl-protection-carrier-p0.3-B_Mask.gbs'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\gerbers\hr-v0-dxl-protection-carrier-p0.3-Edge_Cuts.gm1'.
+
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export drill --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\drill" --format excellon --excellon-units mm --excellon-separate-th --generate-map --map-format svg --generate-report --report-path "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\drill\hr-v0-dxl-protection-carrier-p0.3-drill-report.txt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-carrier-p0.3\hr-v0-dxl-protection-carrier-p0.3.kicad_pcb"
+Created file 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\drill\hr-v0-dxl-protection-carrier-p0.3-PTH.drl'
+Created file 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\drill\hr-v0-dxl-protection-carrier-p0.3-NPTH.drl'
+Created file 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\drill\hr-v0-dxl-protection-carrier-p0.3-PTH-drl_map.svg'.
+Created file 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\drill\hr-v0-dxl-protection-carrier-p0.3-NPTH-drl_map.svg'.
+Done.
+
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export pos --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\hr-v0-dxl-protection-carrier-p0.3-all-pos.csv" --format csv --units mm --side both --exclude-dnp "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-carrier-p0.3\hr-v0-dxl-protection-carrier-p0.3.kicad_pcb"
+Wrote position data to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\hr-v0-dxl-protection-carrier-p0.3-all-pos.csv'.
+
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export stats --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\release\hr-v0\dxl-protection-carrier-p0.3\cam\hr-v0-dxl-protection-carrier-p0.3-stats.json" --format json --units mm "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-dxl-protection-carrier-p0.3\hr-v0-dxl-protection-carrier-p0.3.kicad_pcb"
+Wrote board statistics to 'C:/Users/amyle/Documents/New project/humanoid-robot-publish/release/hr-v0/dxl-protection-carrier-p0.3/cam/hr-v0-dxl-protection-carrier-p0.3-stats.json'.
+
+
+exit=0

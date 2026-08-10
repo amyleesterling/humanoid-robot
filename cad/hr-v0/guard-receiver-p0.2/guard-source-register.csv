@@ -1,0 +1,5 @@
+source_id,organization,document,revision_or_date,url,use,verification
+GS-001,OSHA,29 CFR 1910.212 General requirements for all machines,current electronic regulation accessed 2026-08-07,https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.212,guard affixing and no-new-hazard design input,PRIMARY SOURCE VERIFIED
+GS-002,ISO,ISO 14120:2015 Edition 2,published 2015-11; confirmed 2021; systematic review opened 2026-01-15,https://www.iso.org/standard/59545.html,fixed and movable guard design framework,PRIMARY SOURCE METADATA VERIFIED; LICENSED STANDARD REVIEW REQUIRED
+GS-003,80/20,20-2020 product route,access attempted 2026-08-07; anti-bot interstitial prevented content verification,https://8020.net/20-2020.html,possible 20 x 20 frame profile,NOT VERIFIED - SELECTION REQUIRED
+GS-004,SELECTION REQUIRED,transparent guard sheet product and technical data,not selected,SELECTION REQUIRED,panel material and thickness qualification,NOT VERIFIED - SELECTION REQUIRED

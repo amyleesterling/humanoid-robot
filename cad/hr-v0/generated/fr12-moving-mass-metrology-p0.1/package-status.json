@@ -1,0 +1,21 @@
+{
+  "identifier": "HR-V0-FR12-MASS-MET-P0.1",
+  "state": "MEASUREMENT ROUTE DEFINED - ZERO PHYSICAL EXECUTION",
+  "commerce_weight_credit": false,
+  "received_article_exists": false,
+  "measurement_executed": false,
+  "load_open_01_closed": false,
+  "mass_closed": false,
+  "com_closed": false,
+  "inertia_closed": false,
+  "x430_selected": false,
+  "p1_1_selected": false,
+  "fabrication_released": false,
+  "motion_released": false,
+  "connection_released": false,
+  "energization_released": false,
+  "open_holds": [
+    "FR12-HOLD-01",
+    "FR12-HOLD-02"
+  ]
+}

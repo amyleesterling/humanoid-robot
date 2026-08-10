@@ -1,0 +1,4 @@
+joint_group,joint_count,members,bracket_candidate,hardware_per_joint,state
+GJ-Y-END,8,four Y rails to four corner posts,80/20 14201,two 75-3581 assemblies,EXACT CATALOG CANDIDATE; STRENGTH TORQUE FIT AND PROOF OPEN
+GJ-X-SIDE-END,8,four side X rails to four corner posts,80/20 14201,two 75-3581 assemblies,EXACT CATALOG CANDIDATE; STRENGTH TORQUE FIT AND PROOF OPEN
+GJ-X-CENTER-END,4,two center X rails to two center posts,80/20 14201,two 75-3581 assemblies,EXACT CATALOG CANDIDATE; STRENGTH TORQUE FIT AND PROOF OPEN

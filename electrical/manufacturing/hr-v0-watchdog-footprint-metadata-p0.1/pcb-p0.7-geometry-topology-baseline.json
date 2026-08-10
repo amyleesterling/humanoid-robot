@@ -1,0 +1,8445 @@
+{
+  "configuration": "PCB-P0.7 / Electrical V3-P1.13 before R138 metadata",
+  "purpose": "field-independent geometry/topology baseline",
+  "snapshot_sha256": "dc1f86c067e9617aed7e82b177bc7e1b0fb61b25cc3ab878e6c4440889c4c5ea",
+  "snapshot": {
+    "footprints": [
+      {
+        "reference": "CDEC1",
+        "library_item": "Murata_GRM21_Reflow_Nominal",
+        "position_nm": [
+          94200000,
+          73500000
+        ],
+        "orientation_deg": 90.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              94200000,
+              74525000
+            ],
+            "size_nm": [
+              950000,
+              950000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD_3V3"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              94200000,
+              72475000
+            ],
+            "size_nm": [
+              950000,
+              950000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          }
+        ]
+      },
+      {
+        "reference": "CDRV1",
+        "library_item": "Murata_GRM21_Reflow_Nominal",
+        "position_nm": [
+          92000000,
+          39000000
+        ],
+        "orientation_deg": 180.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              93025000,
+              39000000
+            ],
+            "size_nm": [
+              950000,
+              950000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_24V"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              90975000,
+              39000000
+            ],
+            "size_nm": [
+              950000,
+              950000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          }
+        ]
+      },
+      {
+        "reference": "CDRV2",
+        "library_item": "Murata_GRM21_Reflow_Nominal",
+        "position_nm": [
+          124000000,
+          39000000
+        ],
+        "orientation_deg": 180.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              125025000,
+              39000000
+            ],
+            "size_nm": [
+              950000,
+              950000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_24V"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              122975000,
+              39000000
+            ],
+            "size_nm": [
+              950000,
+              950000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          }
+        ]
+      },
+      {
+        "reference": "CFI1",
+        "library_item": "TDK_CGA3_Reflow_Nominal",
+        "position_nm": [
+          104000000,
+          70000000
+        ],
+        "orientation_deg": 90.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              104000000,
+              70700000
+            ],
+            "size_nm": [
+              700000,
+              700000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "FB_SENSE1"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              104000000,
+              69300000
+            ],
+            "size_nm": [
+              700000,
+              700000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          }
+        ]
+      },
+      {
+        "reference": "CFI2",
+        "library_item": "TDK_CGA3_Reflow_Nominal",
+        "position_nm": [
+          104000000,
+          80800000
+        ],
+        "orientation_deg": -90.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              104000000,
+              80100000
+            ],
+            "size_nm": [
+              700000,
+              700000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "FB_SENSE2"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              104000000,
+              81500000
+            ],
+            "size_nm": [
+              700000,
+              700000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          }
+        ]
+      },
+      {
+        "reference": "DC1",
+        "library_item": "Converter_DCDC_TRACO_TSR-1_THT",
+        "position_nm": [
+          50000000,
+          34000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              50000000,
+              34000000
+            ],
+            "size_nm": [
+              1500000,
+              2500000
+            ],
+            "drill_nm": [
+              1000000,
+              1000000
+            ],
+            "shape": 1,
+            "attribute": 0,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": "SAFETY_24V"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              52540000,
+              34000000
+            ],
+            "size_nm": [
+              1500000,
+              2500000
+            ],
+            "drill_nm": [
+              1000000,
+              1000000
+            ],
+            "shape": 2,
+            "attribute": 0,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "3",
+            "position_nm": [
+              55080000,
+              34000000
+            ],
+            "size_nm": [
+              1500000,
+              2500000
+            ],
+            "drill_nm": [
+              1000000,
+              1000000
+            ],
+            "shape": 2,
+            "attribute": 0,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": "WD_5V"
+          }
+        ]
+      },
+      {
+        "reference": "ISO1",
+        "library_item": "VO618A_Option7_SMD",
+        "position_nm": [
+          62000000,
+          108000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              57235000,
+              106730000
+            ],
+            "size_nm": [
+              1520000,
+              1780000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "HB_LED_A"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              57235000,
+              109270000
+            ],
+            "size_nm": [
+              1520000,
+              1780000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "COMPUTE_0V"
+          },
+          {
+            "number": "3",
+            "position_nm": [
+              66765000,
+              109270000
+            ],
+            "size_nm": [
+              1520000,
+              1780000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "4",
+            "position_nm": [
+              66765000,
+              106730000
+            ],
+            "size_nm": [
+              1520000,
+              1780000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD_HEARTBEAT"
+          }
+        ]
+      },
+      {
+        "reference": "JWF1",
+        "library_item": "MKDS_1_2_3P5",
+        "position_nm": [
+          150000000,
+          76000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              150000000,
+              76000000
+            ],
+            "size_nm": [
+              2100000,
+              2100000
+            ],
+            "drill_nm": [
+              1100000,
+              1100000
+            ],
+            "shape": 4,
+            "attribute": 0,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": "WD1_NC_24V"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              153500000,
+              76000000
+            ],
+            "size_nm": [
+              2100000,
+              2100000
+            ],
+            "drill_nm": [
+              1100000,
+              1100000
+            ],
+            "shape": 0,
+            "attribute": 0,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": "WD2_NC_24V"
+          }
+        ]
+      },
+      {
+        "reference": "JWH1",
+        "library_item": "MKDS_1_2_3P5",
+        "position_nm": [
+          30000000,
+          108000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              30000000,
+              108000000
+            ],
+            "size_nm": [
+              2100000,
+              2100000
+            ],
+            "drill_nm": [
+              1100000,
+              1100000
+            ],
+            "shape": 4,
+            "attribute": 0,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": "PI_HEARTBEAT"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              33500000,
+              108000000
+            ],
+            "size_nm": [
+              2100000,
+              2100000
+            ],
+            "drill_nm": [
+              1100000,
+              1100000
+            ],
+            "shape": 0,
+            "attribute": 0,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": "COMPUTE_0V"
+          }
+        ]
+      },
+      {
+        "reference": "JWP1",
+        "library_item": "MKDS_1_4_3P5",
+        "position_nm": [
+          30000000,
+          34000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              30000000,
+              34000000
+            ],
+            "size_nm": [
+              2100000,
+              2100000
+            ],
+            "drill_nm": [
+              1100000,
+              1100000
+            ],
+            "shape": 4,
+            "attribute": 0,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": "SAFETY_24V"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              33500000,
+              34000000
+            ],
+            "size_nm": [
+              2100000,
+              2100000
+            ],
+            "drill_nm": [
+              1100000,
+              1100000
+            ],
+            "shape": 0,
+            "attribute": 0,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "3",
+            "position_nm": [
+              37000000,
+              34000000
+            ],
+            "size_nm": [
+              2100000,
+              2100000
+            ],
+            "drill_nm": [
+              1100000,
+              1100000
+            ],
+            "shape": 0,
+            "attribute": 0,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": "WD1_COIL_N"
+          },
+          {
+            "number": "4",
+            "position_nm": [
+              40500000,
+              34000000
+            ],
+            "size_nm": [
+              2100000,
+              2100000
+            ],
+            "drill_nm": [
+              1100000,
+              1100000
+            ],
+            "shape": 0,
+            "attribute": 0,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": "WD2_COIL_N"
+          }
+        ]
+      },
+      {
+        "reference": "MH1",
+        "library_item": "MountingHole_3.2mm_M3",
+        "position_nm": [
+          25000000,
+          25000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "",
+            "position_nm": [
+              25000000,
+              25000000
+            ],
+            "size_nm": [
+              3200000,
+              3200000
+            ],
+            "drill_nm": [
+              3200000,
+              3200000
+            ],
+            "shape": 0,
+            "attribute": 3,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": ""
+          }
+        ]
+      },
+      {
+        "reference": "MH2",
+        "library_item": "MountingHole_3.2mm_M3",
+        "position_nm": [
+          175000000,
+          25000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "",
+            "position_nm": [
+              175000000,
+              25000000
+            ],
+            "size_nm": [
+              3200000,
+              3200000
+            ],
+            "drill_nm": [
+              3200000,
+              3200000
+            ],
+            "shape": 0,
+            "attribute": 3,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": ""
+          }
+        ]
+      },
+      {
+        "reference": "MH3",
+        "library_item": "MountingHole_3.2mm_M3",
+        "position_nm": [
+          25000000,
+          115000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "",
+            "position_nm": [
+              25000000,
+              115000000
+            ],
+            "size_nm": [
+              3200000,
+              3200000
+            ],
+            "drill_nm": [
+              3200000,
+              3200000
+            ],
+            "shape": 0,
+            "attribute": 3,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": ""
+          }
+        ]
+      },
+      {
+        "reference": "MH4",
+        "library_item": "MountingHole_3.2mm_M3",
+        "position_nm": [
+          175000000,
+          115000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "",
+            "position_nm": [
+              175000000,
+              115000000
+            ],
+            "size_nm": [
+              3200000,
+              3200000
+            ],
+            "drill_nm": [
+              3200000,
+              3200000
+            ],
+            "shape": 0,
+            "attribute": 3,
+            "layers": "00000000_00000000_55555555_5555555f",
+            "net": ""
+          }
+        ]
+      },
+      {
+        "reference": "RHB1",
+        "library_item": "Panasonic_ERJ6_Reflow_Nominal",
+        "position_nm": [
+          48000000,
+          108000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              46825000,
+              108000000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "PI_HEARTBEAT"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              49175000,
+              108000000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "HB_LED_A"
+          }
+        ]
+      },
+      {
+        "reference": "RHP1",
+        "library_item": "Panasonic_ERJ6_Reflow_Nominal",
+        "position_nm": [
+          50000000,
+          98000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              48825000,
+              98000000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD_3V3"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              51175000,
+              98000000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD_HEARTBEAT"
+          }
+        ]
+      },
+      {
+        "reference": "RPD1",
+        "library_item": "Panasonic_ERJ6_Reflow_Nominal",
+        "position_nm": [
+          91000000,
+          68000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              89825000,
+              68000000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD1_NC_DIAG"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              92175000,
+              68000000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          }
+        ]
+      },
+      {
+        "reference": "RPD2",
+        "library_item": "Panasonic_ERJ6_Reflow_Nominal",
+        "position_nm": [
+          91000000,
+          88000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              89825000,
+              88000000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD2_NC_DIAG"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              92175000,
+              88000000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          }
+        ]
+      },
+      {
+        "reference": "RSN1",
+        "library_item": "Panasonic_ERJ6_Reflow_Nominal",
+        "position_nm": [
+          109000000,
+          73500000
+        ],
+        "orientation_deg": -90.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              109000000,
+              72325000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "FB_SENSE1"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              109000000,
+              74675000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "FB_IN1"
+          }
+        ]
+      },
+      {
+        "reference": "RSN2",
+        "library_item": "Panasonic_ERJ6_Reflow_Nominal",
+        "position_nm": [
+          109000000,
+          78500000
+        ],
+        "orientation_deg": -90.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              109000000,
+              77325000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "FB_SENSE2"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              109000000,
+              79675000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "FB_IN2"
+          }
+        ]
+      },
+      {
+        "reference": "RSO1",
+        "library_item": "Panasonic_ERJ6_Reflow_Nominal",
+        "position_nm": [
+          91000000,
+          64000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              89825000,
+              64000000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "UFB_OUT1"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              92175000,
+              64000000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD1_NC_DIAG"
+          }
+        ]
+      },
+      {
+        "reference": "RSO2",
+        "library_item": "Panasonic_ERJ6_Reflow_Nominal",
+        "position_nm": [
+          91000000,
+          84000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              89825000,
+              84000000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "UFB_OUT2"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              92175000,
+              84000000
+            ],
+            "size_nm": [
+              1150000,
+              1150000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD2_NC_DIAG"
+          }
+        ]
+      },
+      {
+        "reference": "RTH1",
+        "library_item": "Vishay_MMA0204_IPC_Reflow",
+        "position_nm": [
+          125000000,
+          70000000
+        ],
+        "orientation_deg": 180.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              126500000,
+              70000000
+            ],
+            "size_nm": [
+              1400000,
+              1550000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD1_NC_24V"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              123500000,
+              70000000
+            ],
+            "size_nm": [
+              1400000,
+              1550000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "FB_SENSE1"
+          }
+        ]
+      },
+      {
+        "reference": "RTH2",
+        "library_item": "Vishay_MMA0204_IPC_Reflow",
+        "position_nm": [
+          125000000,
+          82000000
+        ],
+        "orientation_deg": 180.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              126500000,
+              82000000
+            ],
+            "size_nm": [
+              1400000,
+              1550000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD2_NC_24V"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              123500000,
+              82000000
+            ],
+            "size_nm": [
+              1400000,
+              1550000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "FB_SENSE2"
+          }
+        ]
+      },
+      {
+        "reference": "RW1",
+        "library_item": "Vishay_CRCW1210_Reflow",
+        "position_nm": [
+          136000000,
+          70000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              134600000,
+              70000000
+            ],
+            "size_nm": [
+              1100000,
+              2800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD1_NC_24V"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              137400000,
+              70000000
+            ],
+            "size_nm": [
+              1100000,
+              2800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          }
+        ]
+      },
+      {
+        "reference": "RW2",
+        "library_item": "Vishay_CRCW1210_Reflow",
+        "position_nm": [
+          136000000,
+          82000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              134600000,
+              82000000
+            ],
+            "size_nm": [
+              1100000,
+              2800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD2_NC_24V"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              137400000,
+              82000000
+            ],
+            "size_nm": [
+              1100000,
+              2800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          }
+        ]
+      },
+      {
+        "reference": "TP1",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          72000000,
+          40000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              72000000,
+              40000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_24V"
+          }
+        ]
+      },
+      {
+        "reference": "TP10",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          108000000,
+          21500000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              108000000,
+              21500000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD2_COIL_N"
+          }
+        ]
+      },
+      {
+        "reference": "TP11",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          154000000,
+          66000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              154000000,
+              66000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD1_NC_24V"
+          }
+        ]
+      },
+      {
+        "reference": "TP12",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          166000000,
+          88000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              166000000,
+              88000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD2_NC_24V"
+          }
+        ]
+      },
+      {
+        "reference": "TP13",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          90000000,
+          58000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              90000000,
+              58000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "UFB_OUT1"
+          }
+        ]
+      },
+      {
+        "reference": "TP14",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          86000000,
+          90000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              86000000,
+              90000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "UFB_OUT2"
+          }
+        ]
+      },
+      {
+        "reference": "TP15",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          96000000,
+          58000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              96000000,
+              58000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD_SWDIO"
+          }
+        ]
+      },
+      {
+        "reference": "TP16",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          90000000,
+          78000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              90000000,
+              78000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD_SWCLK"
+          }
+        ]
+      },
+      {
+        "reference": "TP2",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          76000000,
+          36000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              76000000,
+              36000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          }
+        ]
+      },
+      {
+        "reference": "TP3",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          62000000,
+          32000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              62000000,
+              32000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD_5V"
+          }
+        ]
+      },
+      {
+        "reference": "TP4",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          70000000,
+          46000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              70000000,
+              46000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD_3V3"
+          }
+        ]
+      },
+      {
+        "reference": "TP5",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          38000000,
+          105000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              38000000,
+              105000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "PI_HEARTBEAT"
+          }
+        ]
+      },
+      {
+        "reference": "TP6",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          50000000,
+          92000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              50000000,
+              92000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD_HEARTBEAT"
+          }
+        ]
+      },
+      {
+        "reference": "TP7",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          78000000,
+          52000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              78000000,
+              52000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD1_DRIVE"
+          }
+        ]
+      },
+      {
+        "reference": "TP8",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          108000000,
+          54000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              108000000,
+              54000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD2_DRIVE"
+          }
+        ]
+      },
+      {
+        "reference": "TP9",
+        "library_item": "Harwin_S1751_46R",
+        "position_nm": [
+          74000000,
+          24000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              74000000,
+              24000000
+            ],
+            "size_nm": [
+              3450000,
+              1850000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD1_COIL_N"
+          }
+        ]
+      },
+      {
+        "reference": "UDRV1",
+        "library_item": "TI_PW0016A_Example_Land",
+        "position_nm": [
+          92000000,
+          34000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              89100000,
+              31725000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD1_DRIVE"
+          },
+          {
+            "number": "10",
+            "position_nm": [
+              94900000,
+              35625000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UDRV1_10"
+          },
+          {
+            "number": "11",
+            "position_nm": [
+              94900000,
+              34975000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UDRV1_11"
+          },
+          {
+            "number": "12",
+            "position_nm": [
+              94900000,
+              34325000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UDRV1_12"
+          },
+          {
+            "number": "13",
+            "position_nm": [
+              94900000,
+              33675000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UDRV1_13"
+          },
+          {
+            "number": "14",
+            "position_nm": [
+              94900000,
+              33025000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UDRV1_14"
+          },
+          {
+            "number": "15",
+            "position_nm": [
+              94900000,
+              32375000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UDRV1_15"
+          },
+          {
+            "number": "16",
+            "position_nm": [
+              94900000,
+              31725000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD1_COIL_N"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              89100000,
+              32375000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "3",
+            "position_nm": [
+              89100000,
+              33025000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "4",
+            "position_nm": [
+              89100000,
+              33675000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "5",
+            "position_nm": [
+              89100000,
+              34325000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "6",
+            "position_nm": [
+              89100000,
+              34975000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "7",
+            "position_nm": [
+              89100000,
+              35625000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "8",
+            "position_nm": [
+              89100000,
+              36275000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "9",
+            "position_nm": [
+              94900000,
+              36275000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_24V"
+          }
+        ]
+      },
+      {
+        "reference": "UDRV2",
+        "library_item": "TI_PW0016A_Example_Land",
+        "position_nm": [
+          124000000,
+          34000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              121100000,
+              31725000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD2_DRIVE"
+          },
+          {
+            "number": "10",
+            "position_nm": [
+              126900000,
+              35625000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UDRV2_10"
+          },
+          {
+            "number": "11",
+            "position_nm": [
+              126900000,
+              34975000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UDRV2_11"
+          },
+          {
+            "number": "12",
+            "position_nm": [
+              126900000,
+              34325000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UDRV2_12"
+          },
+          {
+            "number": "13",
+            "position_nm": [
+              126900000,
+              33675000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UDRV2_13"
+          },
+          {
+            "number": "14",
+            "position_nm": [
+              126900000,
+              33025000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UDRV2_14"
+          },
+          {
+            "number": "15",
+            "position_nm": [
+              126900000,
+              32375000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UDRV2_15"
+          },
+          {
+            "number": "16",
+            "position_nm": [
+              126900000,
+              31725000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD2_COIL_N"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              121100000,
+              32375000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "3",
+            "position_nm": [
+              121100000,
+              33025000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "4",
+            "position_nm": [
+              121100000,
+              33675000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "5",
+            "position_nm": [
+              121100000,
+              34325000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "6",
+            "position_nm": [
+              121100000,
+              34975000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "7",
+            "position_nm": [
+              121100000,
+              35625000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "8",
+            "position_nm": [
+              121100000,
+              36275000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "9",
+            "position_nm": [
+              126900000,
+              36275000
+            ],
+            "size_nm": [
+              1500000,
+              450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_24V"
+          }
+        ]
+      },
+      {
+        "reference": "UFB1",
+        "library_item": "TI_DBQ0016A_Example_Land",
+        "position_nm": [
+          100000000,
+          76000000
+        ],
+        "orientation_deg": 0.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "1",
+            "position_nm": [
+              97300000,
+              73777500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "10",
+            "position_nm": [
+              102700000,
+              77587500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "FB_IN2"
+          },
+          {
+            "number": "11",
+            "position_nm": [
+              102700000,
+              76952500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "FB_SENSE2"
+          },
+          {
+            "number": "12",
+            "position_nm": [
+              102700000,
+              76317500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UFB1_12"
+          },
+          {
+            "number": "13",
+            "position_nm": [
+              102700000,
+              75682500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UFB1_13"
+          },
+          {
+            "number": "14",
+            "position_nm": [
+              102700000,
+              75047500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "15",
+            "position_nm": [
+              102700000,
+              74412500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "FB_IN1"
+          },
+          {
+            "number": "16",
+            "position_nm": [
+              102700000,
+              73777500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "FB_SENSE1"
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              97300000,
+              74412500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD_3V3"
+          },
+          {
+            "number": "3",
+            "position_nm": [
+              97300000,
+              75047500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "WD_3V3"
+          },
+          {
+            "number": "4",
+            "position_nm": [
+              97300000,
+              75682500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "UFB_OUT1"
+          },
+          {
+            "number": "5",
+            "position_nm": [
+              97300000,
+              76317500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "UFB_OUT2"
+          },
+          {
+            "number": "6",
+            "position_nm": [
+              97300000,
+              76952500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UFB1_6"
+          },
+          {
+            "number": "7",
+            "position_nm": [
+              97300000,
+              77587500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "INTENTIONALLY_UNUSED_UFB1_7"
+          },
+          {
+            "number": "8",
+            "position_nm": [
+              97300000,
+              78222500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "9",
+            "position_nm": [
+              102700000,
+              78222500
+            ],
+            "size_nm": [
+              1600000,
+              410000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": "SAFETY_0V"
+          }
+        ]
+      },
+      {
+        "reference": "WDCTRL1",
+        "library_item": "RaspberryPi_Pico_SMD",
+        "position_nm": [
+          60000000,
+          72000000
+        ],
+        "orientation_deg": 90.0,
+        "layer": 0,
+        "pads": [
+          {
+            "number": "",
+            "position_nm": [
+              35870000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              35870000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              36000000,
+              69275000
+            ],
+            "size_nm": [
+              1100000,
+              1800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 2,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              36000000,
+              74725000
+            ],
+            "size_nm": [
+              1100000,
+              1800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 2,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              38410000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              38410000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              39030000,
+              69575000
+            ],
+            "size_nm": [
+              1050000,
+              1450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 2,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              39030000,
+              74425000
+            ],
+            "size_nm": [
+              1050000,
+              1450000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 2,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              40950000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              40950000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              43490000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              43490000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              46030000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              46030000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              48570000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              48570000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              51110000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              51110000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              53650000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              53650000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              56190000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              56190000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              58730000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              58730000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              61270000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              61270000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              63810000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              63810000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              66350000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              66350000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              68890000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              68890000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              71430000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              71430000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              73970000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              73970000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              76510000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              76510000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              79050000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              79050000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              81590000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              81590000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              83900000,
+              69460000
+            ],
+            "size_nm": [
+              2200000,
+              3800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              83900000,
+              72000000
+            ],
+            "size_nm": [
+              2200000,
+              3800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              83900000,
+              74540000
+            ],
+            "size_nm": [
+              2200000,
+              3800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              84130000,
+              63110000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "",
+            "position_nm": [
+              84130000,
+              80890000
+            ],
+            "size_nm": [
+              3800000,
+              2200000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 1,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002000",
+            "net": ""
+          },
+          {
+            "number": "1",
+            "position_nm": [
+              35870000,
+              81690000
+            ],
+            "size_nm": [
+              1600000,
+              800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 6,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "10",
+            "position_nm": [
+              58730000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": "WD2_NC_DIAG"
+          },
+          {
+            "number": "11",
+            "position_nm": [
+              61270000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "12",
+            "position_nm": [
+              63810000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "13",
+            "position_nm": [
+              66350000,
+              81690000
+            ],
+            "size_nm": [
+              1600000,
+              800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 6,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "14",
+            "position_nm": [
+              68890000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "15",
+            "position_nm": [
+              71430000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "16",
+            "position_nm": [
+              73970000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "17",
+            "position_nm": [
+              76510000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "18",
+            "position_nm": [
+              79050000,
+              81690000
+            ],
+            "size_nm": [
+              1600000,
+              800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 6,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "19",
+            "position_nm": [
+              81590000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "2",
+            "position_nm": [
+              38410000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "20",
+            "position_nm": [
+              84130000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "21",
+            "position_nm": [
+              84130000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "22",
+            "position_nm": [
+              81590000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "23",
+            "position_nm": [
+              79050000,
+              62310000
+            ],
+            "size_nm": [
+              1600000,
+              800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 6,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "24",
+            "position_nm": [
+              76510000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "25",
+            "position_nm": [
+              73970000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "26",
+            "position_nm": [
+              71430000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "27",
+            "position_nm": [
+              68890000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "28",
+            "position_nm": [
+              66350000,
+              62310000
+            ],
+            "size_nm": [
+              1600000,
+              800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 6,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "29",
+            "position_nm": [
+              63810000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "3",
+            "position_nm": [
+              40950000,
+              81690000
+            ],
+            "size_nm": [
+              1600000,
+              800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 6,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "30",
+            "position_nm": [
+              61270000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "31",
+            "position_nm": [
+              58730000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "32",
+            "position_nm": [
+              56190000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "33",
+            "position_nm": [
+              53650000,
+              62310000
+            ],
+            "size_nm": [
+              1600000,
+              800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 6,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "34",
+            "position_nm": [
+              51110000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "35",
+            "position_nm": [
+              48570000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "36",
+            "position_nm": [
+              46030000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": "WD_3V3"
+          },
+          {
+            "number": "37",
+            "position_nm": [
+              43490000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "38",
+            "position_nm": [
+              40950000,
+              62310000
+            ],
+            "size_nm": [
+              1600000,
+              800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 6,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "39",
+            "position_nm": [
+              38410000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": "WD_5V"
+          },
+          {
+            "number": "4",
+            "position_nm": [
+              43490000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": "WD_HEARTBEAT"
+          },
+          {
+            "number": "40",
+            "position_nm": [
+              35870000,
+              62310000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "5",
+            "position_nm": [
+              46030000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": "WD1_DRIVE"
+          },
+          {
+            "number": "6",
+            "position_nm": [
+              48570000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": "WD2_DRIVE"
+          },
+          {
+            "number": "7",
+            "position_nm": [
+              51110000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "8",
+            "position_nm": [
+              53650000,
+              81690000
+            ],
+            "size_nm": [
+              1600000,
+              800000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 6,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": ""
+          },
+          {
+            "number": "9",
+            "position_nm": [
+              56190000,
+              81690000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": "WD1_NC_DIAG"
+          },
+          {
+            "number": "D1",
+            "position_nm": [
+              83900000,
+              74540000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": "WD_SWCLK"
+          },
+          {
+            "number": "D2",
+            "position_nm": [
+              83900000,
+              72000000
+            ],
+            "size_nm": [
+              1600000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 6,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": "SAFETY_0V"
+          },
+          {
+            "number": "D3",
+            "position_nm": [
+              83900000,
+              69460000
+            ],
+            "size_nm": [
+              3200000,
+              1600000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00000003",
+            "net": "WD_SWDIO"
+          },
+          {
+            "number": "TP1",
+            "position_nm": [
+              39000000,
+              72000000
+            ],
+            "size_nm": [
+              1500000,
+              1500000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": ""
+          },
+          {
+            "number": "TP2",
+            "position_nm": [
+              35700000,
+              71000000
+            ],
+            "size_nm": [
+              1500000,
+              1500000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": ""
+          },
+          {
+            "number": "TP3",
+            "position_nm": [
+              35700000,
+              73000000
+            ],
+            "size_nm": [
+              1500000,
+              1500000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": ""
+          },
+          {
+            "number": "TP4",
+            "position_nm": [
+              42500000,
+              74500000
+            ],
+            "size_nm": [
+              1500000,
+              1500000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": ""
+          },
+          {
+            "number": "TP5",
+            "position_nm": [
+              45000000,
+              74500000
+            ],
+            "size_nm": [
+              1500000,
+              1500000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": ""
+          },
+          {
+            "number": "TP6",
+            "position_nm": [
+              47500000,
+              74500000
+            ],
+            "size_nm": [
+              1500000,
+              1500000
+            ],
+            "drill_nm": [
+              0,
+              0
+            ],
+            "shape": 4,
+            "attribute": 1,
+            "layers": "00000000_00000000_00000000_00002003",
+            "net": ""
+          }
+        ]
+      }
+    ],
+    "tracks_and_vias": [
+      {
+        "kind": "via",
+        "start_nm": [
+          104000000,
+          75047500
+        ],
+        "end_nm": [
+          104000000,
+          75047500
+        ],
+        "width_nm": 600000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 300000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          104500000,
+          76317500
+        ],
+        "end_nm": [
+          104500000,
+          76317500
+        ],
+        "width_nm": 600000,
+        "layer": 0,
+        "net": "INTENTIONALLY_UNUSED_UFB1_12",
+        "drill_nm": 300000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          105000000,
+          75200000
+        ],
+        "end_nm": [
+          105000000,
+          75200000
+        ],
+        "width_nm": 600000,
+        "layer": 0,
+        "net": "INTENTIONALLY_UNUSED_UFB1_13",
+        "drill_nm": 300000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          105500000,
+          76953000
+        ],
+        "end_nm": [
+          105500000,
+          76953000
+        ],
+        "width_nm": 600000,
+        "layer": 0,
+        "net": "FB_SENSE2",
+        "drill_nm": 300000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          105500000,
+          80138000
+        ],
+        "end_nm": [
+          105500000,
+          80138000
+        ],
+        "width_nm": 600000,
+        "layer": 0,
+        "net": "FB_SENSE2",
+        "drill_nm": 300000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          100000000,
+          70500000
+        ],
+        "end_nm": [
+          100000000,
+          70500000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          103200000,
+          83500000
+        ],
+        "end_nm": [
+          103200000,
+          83500000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          108000000,
+          50000000
+        ],
+        "end_nm": [
+          108000000,
+          50000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD2_DRIVE",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          116000000,
+          29500000
+        ],
+        "end_nm": [
+          116000000,
+          29500000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD2_DRIVE",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          118000000,
+          46000000
+        ],
+        "end_nm": [
+          118000000,
+          46000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD_3V3",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          38410000,
+          65500000
+        ],
+        "end_nm": [
+          38410000,
+          65500000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD_5V",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          42000000,
+          84000000
+        ],
+        "end_nm": [
+          42000000,
+          84000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD_HEARTBEAT",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          44000000,
+          46000000
+        ],
+        "end_nm": [
+          44000000,
+          46000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD_3V3",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          44000000,
+          58000000
+        ],
+        "end_nm": [
+          44000000,
+          58000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD_3V3",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          46030000,
+          85000000
+        ],
+        "end_nm": [
+          46030000,
+          85000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD1_DRIVE",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          48570000,
+          86500000
+        ],
+        "end_nm": [
+          48570000,
+          86500000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD2_DRIVE",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          53000000,
+          96000000
+        ],
+        "end_nm": [
+          53000000,
+          96000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD_HEARTBEAT",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          54000000,
+          104000000
+        ],
+        "end_nm": [
+          54000000,
+          104000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD_3V3",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          56000000,
+          79000000
+        ],
+        "end_nm": [
+          56000000,
+          79000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD1_NC_DIAG",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          60000000,
+          93500000
+        ],
+        "end_nm": [
+          60000000,
+          93500000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD2_NC_DIAG",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          60000000,
+          96000000
+        ],
+        "end_nm": [
+          60000000,
+          96000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD2_NC_DIAG",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          78000000,
+          48000000
+        ],
+        "end_nm": [
+          78000000,
+          48000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD1_DRIVE",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          82000000,
+          68000000
+        ],
+        "end_nm": [
+          82000000,
+          68000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD1_NC_DIAG",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          84000000,
+          29500000
+        ],
+        "end_nm": [
+          84000000,
+          29500000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD1_DRIVE",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          84000000,
+          88000000
+        ],
+        "end_nm": [
+          84000000,
+          88000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD2_NC_DIAG",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          84000000,
+          96000000
+        ],
+        "end_nm": [
+          84000000,
+          96000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD2_NC_DIAG",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          86000000,
+          64000000
+        ],
+        "end_nm": [
+          86000000,
+          64000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "UFB_OUT1",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          86000000,
+          84000000
+        ],
+        "end_nm": [
+          86000000,
+          84000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "UFB_OUT2",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          86000000,
+          92000000
+        ],
+        "end_nm": [
+          86000000,
+          92000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "UFB_OUT2",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          88000000,
+          69460000
+        ],
+        "end_nm": [
+          88000000,
+          69460000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD_SWDIO",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          92000000,
+          72550000
+        ],
+        "end_nm": [
+          92000000,
+          72550000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          92000000,
+          74450000
+        ],
+        "end_nm": [
+          92000000,
+          74450000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD_3V3",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          93000000,
+          75683000
+        ],
+        "end_nm": [
+          93000000,
+          75683000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "UFB_OUT1",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          94000000,
+          76317500
+        ],
+        "end_nm": [
+          94000000,
+          76317500
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "UFB_OUT2",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          95000000,
+          79500000
+        ],
+        "end_nm": [
+          95000000,
+          79500000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          96000000,
+          60000000
+        ],
+        "end_nm": [
+          96000000,
+          60000000
+        ],
+        "width_nm": 800000,
+        "layer": 0,
+        "net": "WD_SWDIO",
+        "drill_nm": 400000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          106000000,
+          68500000
+        ],
+        "end_nm": [
+          106000000,
+          68500000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          106000000,
+          82500000
+        ],
+        "end_nm": [
+          106000000,
+          82500000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          108000000,
+          24000000
+        ],
+        "end_nm": [
+          108000000,
+          24000000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "WD2_COIL_N",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          119000000,
+          38000000
+        ],
+        "end_nm": [
+          119000000,
+          38000000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          128500000,
+          29500000
+        ],
+        "end_nm": [
+          128500000,
+          29500000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "WD2_COIL_N",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          132000000,
+          68000000
+        ],
+        "end_nm": [
+          132000000,
+          68000000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "WD1_NC_24V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          132000000,
+          84000000
+        ],
+        "end_nm": [
+          132000000,
+          84000000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "WD2_NC_24V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          141500000,
+          65500000
+        ],
+        "end_nm": [
+          141500000,
+          65500000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          141500000,
+          86500000
+        ],
+        "end_nm": [
+          141500000,
+          86500000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          147000000,
+          68000000
+        ],
+        "end_nm": [
+          147000000,
+          68000000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "WD1_NC_24V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          147000000,
+          74000000
+        ],
+        "end_nm": [
+          147000000,
+          74000000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "WD1_NC_24V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          160000000,
+          82000000
+        ],
+        "end_nm": [
+          160000000,
+          82000000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "WD2_NC_24V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          160000000,
+          84000000
+        ],
+        "end_nm": [
+          160000000,
+          84000000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "WD2_NC_24V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          40950000,
+          65500000
+        ],
+        "end_nm": [
+          40950000,
+          65500000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          70000000,
+          102500000
+        ],
+        "end_nm": [
+          70000000,
+          102500000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          76000000,
+          38500000
+        ],
+        "end_nm": [
+          76000000,
+          38500000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          83500000,
+          72000000
+        ],
+        "end_nm": [
+          83500000,
+          72000000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          87000000,
+          38000000
+        ],
+        "end_nm": [
+          87000000,
+          38000000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          93500000,
+          68000000
+        ],
+        "end_nm": [
+          93500000,
+          68000000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "via",
+        "start_nm": [
+          93500000,
+          88000000
+        ],
+        "end_nm": [
+          93500000,
+          88000000
+        ],
+        "width_nm": 1000000,
+        "layer": 0,
+        "net": "SAFETY_0V",
+        "drill_nm": 500000,
+        "layers": "00000000_00000000_00000000_00000005"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          97300000,
+          73777500
+        ],
+        "end_nm": [
+          100000000,
+          70500000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          102700000,
+          78222500
+        ],
+        "end_nm": [
+          103200000,
+          78222000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          103200000,
+          78222000
+        ],
+        "end_nm": [
+          103200000,
+          83500000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          104500000,
+          70862000
+        ],
+        "end_nm": [
+          104000000,
+          70700000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_SENSE1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          102700000,
+          75047500
+        ],
+        "end_nm": [
+          104000000,
+          75047500
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          102700000,
+          75682500
+        ],
+        "end_nm": [
+          104000000,
+          75682500
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "INTENTIONALLY_UNUSED_UFB1_13"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          105500000,
+          80138000
+        ],
+        "end_nm": [
+          104000000,
+          80100000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "FB_SENSE2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          104500000,
+          76317500
+        ],
+        "end_nm": [
+          104000000,
+          80500000
+        ],
+        "width_nm": 200000,
+        "layer": 2,
+        "net": "INTENTIONALLY_UNUSED_UFB1_12"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          104500000,
+          73778000
+        ],
+        "end_nm": [
+          104500000,
+          70862000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_SENSE1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          102700000,
+          73777500
+        ],
+        "end_nm": [
+          104500000,
+          73778000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_SENSE1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          102700000,
+          74412500
+        ],
+        "end_nm": [
+          104500000,
+          74412000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_IN1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          102700000,
+          76317500
+        ],
+        "end_nm": [
+          104500000,
+          76317500
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "INTENTIONALLY_UNUSED_UFB1_12"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          102700000,
+          77587500
+        ],
+        "end_nm": [
+          104500000,
+          77588000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_IN2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          104000000,
+          75682500
+        ],
+        "end_nm": [
+          105000000,
+          75200000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "INTENTIONALLY_UNUSED_UFB1_13"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          102700000,
+          76952500
+        ],
+        "end_nm": [
+          105500000,
+          76953000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "FB_SENSE2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          105500000,
+          76953000
+        ],
+        "end_nm": [
+          105500000,
+          80138000
+        ],
+        "width_nm": 152400,
+        "layer": 2,
+        "net": "FB_SENSE2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          104000000,
+          69300000
+        ],
+        "end_nm": [
+          106000000,
+          68500000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          104000000,
+          70700000
+        ],
+        "end_nm": [
+          106000000,
+          72500000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_SENSE1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          104500000,
+          74412000
+        ],
+        "end_nm": [
+          106000000,
+          74500000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_IN1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          104500000,
+          77588000
+        ],
+        "end_nm": [
+          106000000,
+          79500000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_IN2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          104000000,
+          81500000
+        ],
+        "end_nm": [
+          106000000,
+          82500000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          104000000,
+          80100000
+        ],
+        "end_nm": [
+          107000000,
+          80138000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "FB_SENSE2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          107000000,
+          80138000
+        ],
+        "end_nm": [
+          107000000,
+          83000000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "FB_SENSE2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          108000000,
+          21500000
+        ],
+        "end_nm": [
+          108000000,
+          24000000
+        ],
+        "width_nm": 750000,
+        "layer": 0,
+        "net": "WD2_COIL_N"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          108000000,
+          54000000
+        ],
+        "end_nm": [
+          108000000,
+          50000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD2_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          48570000,
+          50000000
+        ],
+        "end_nm": [
+          108000000,
+          50000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD2_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          104000000,
+          80500000
+        ],
+        "end_nm": [
+          108000000,
+          82000000
+        ],
+        "width_nm": 200000,
+        "layer": 2,
+        "net": "INTENTIONALLY_UNUSED_UFB1_12"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          108000000,
+          82000000
+        ],
+        "end_nm": [
+          108000000,
+          88000000
+        ],
+        "width_nm": 200000,
+        "layer": 2,
+        "net": "INTENTIONALLY_UNUSED_UFB1_12"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          106000000,
+          72500000
+        ],
+        "end_nm": [
+          109000000,
+          72325000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_SENSE1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          106000000,
+          74500000
+        ],
+        "end_nm": [
+          109000000,
+          74675000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_IN1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          115000000,
+          77500000
+        ],
+        "end_nm": [
+          109000000,
+          77325000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "FB_SENSE2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          106000000,
+          79500000
+        ],
+        "end_nm": [
+          109000000,
+          79675000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_IN2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          105000000,
+          75200000
+        ],
+        "end_nm": [
+          112000000,
+          75200000
+        ],
+        "width_nm": 200000,
+        "layer": 2,
+        "net": "INTENTIONALLY_UNUSED_UFB1_13"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          108000000,
+          88000000
+        ],
+        "end_nm": [
+          112000000,
+          88000000
+        ],
+        "width_nm": 200000,
+        "layer": 2,
+        "net": "INTENTIONALLY_UNUSED_UFB1_12"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          109000000,
+          72325000
+        ],
+        "end_nm": [
+          115000000,
+          72500000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_SENSE1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          115000000,
+          83000000
+        ],
+        "end_nm": [
+          115000000,
+          77500000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "FB_SENSE2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          115000000,
+          77500000
+        ],
+        "end_nm": [
+          115000000,
+          82000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_SENSE2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          107000000,
+          83000000
+        ],
+        "end_nm": [
+          115000000,
+          83000000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "FB_SENSE2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          116000000,
+          50000000
+        ],
+        "end_nm": [
+          116000000,
+          29500000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD2_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          108000000,
+          50000000
+        ],
+        "end_nm": [
+          116000000,
+          50000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD2_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          118000000,
+          46000000
+        ],
+        "end_nm": [
+          118000000,
+          100000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          70000000,
+          46000000
+        ],
+        "end_nm": [
+          118000000,
+          46000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          118000000,
+          100000000
+        ],
+        "end_nm": [
+          118000000,
+          72500000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          116000000,
+          29500000
+        ],
+        "end_nm": [
+          119000000,
+          29500000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD2_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          121100000,
+          36275000
+        ],
+        "end_nm": [
+          119000000,
+          38000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          122975000,
+          39000000
+        ],
+        "end_nm": [
+          119000000,
+          38000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          119000000,
+          29500000
+        ],
+        "end_nm": [
+          121100000,
+          31725000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD2_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          121100000,
+          32375000
+        ],
+        "end_nm": [
+          121100000,
+          33025000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          121100000,
+          33025000
+        ],
+        "end_nm": [
+          121100000,
+          33675000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          121100000,
+          33675000
+        ],
+        "end_nm": [
+          121100000,
+          34325000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          121100000,
+          34325000
+        ],
+        "end_nm": [
+          121100000,
+          34975000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          121100000,
+          34975000
+        ],
+        "end_nm": [
+          121100000,
+          35625000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          121100000,
+          35625000
+        ],
+        "end_nm": [
+          121100000,
+          36275000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          115000000,
+          72500000
+        ],
+        "end_nm": [
+          123500000,
+          70000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_SENSE1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          115000000,
+          82000000
+        ],
+        "end_nm": [
+          123500000,
+          82000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "FB_SENSE2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          125037500,
+          43000000
+        ],
+        "end_nm": [
+          125025000,
+          39000000
+        ],
+        "width_nm": 750000,
+        "layer": 0,
+        "net": "SAFETY_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          93037500,
+          43000000
+        ],
+        "end_nm": [
+          125037500,
+          43000000
+        ],
+        "width_nm": 750000,
+        "layer": 0,
+        "net": "SAFETY_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          128500000,
+          31725000
+        ],
+        "end_nm": [
+          126900000,
+          31725000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "WD2_COIL_N"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          128500000,
+          36275000
+        ],
+        "end_nm": [
+          126900000,
+          36275000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          40500000,
+          24000000
+        ],
+        "end_nm": [
+          128500000,
+          24000000
+        ],
+        "width_nm": 750000,
+        "layer": 2,
+        "net": "WD2_COIL_N"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          128500000,
+          24000000
+        ],
+        "end_nm": [
+          128500000,
+          29500000
+        ],
+        "width_nm": 750000,
+        "layer": 2,
+        "net": "WD2_COIL_N"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          128500000,
+          29500000
+        ],
+        "end_nm": [
+          128500000,
+          31725000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD2_COIL_N"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          128500000,
+          39000000
+        ],
+        "end_nm": [
+          128500000,
+          36275000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          125025000,
+          39000000
+        ],
+        "end_nm": [
+          128500000,
+          39000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          134600000,
+          70000000
+        ],
+        "end_nm": [
+          132000000,
+          68000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD1_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          134600000,
+          82000000
+        ],
+        "end_nm": [
+          132000000,
+          84000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD2_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          126500000,
+          70000000
+        ],
+        "end_nm": [
+          134600000,
+          70000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD1_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          126500000,
+          82000000
+        ],
+        "end_nm": [
+          134600000,
+          82000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD2_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          137400000,
+          70000000
+        ],
+        "end_nm": [
+          141500000,
+          65500000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          137400000,
+          82000000
+        ],
+        "end_nm": [
+          141500000,
+          86500000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          132000000,
+          68000000
+        ],
+        "end_nm": [
+          142000000,
+          68000000
+        ],
+        "width_nm": 500000,
+        "layer": 2,
+        "net": "WD1_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          132000000,
+          84000000
+        ],
+        "end_nm": [
+          142000000,
+          84000000
+        ],
+        "width_nm": 500000,
+        "layer": 2,
+        "net": "WD2_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          150000000,
+          68000000
+        ],
+        "end_nm": [
+          147000000,
+          68000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD1_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          142000000,
+          68000000
+        ],
+        "end_nm": [
+          147000000,
+          68000000
+        ],
+        "width_nm": 500000,
+        "layer": 2,
+        "net": "WD1_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          147000000,
+          68000000
+        ],
+        "end_nm": [
+          147000000,
+          74000000
+        ],
+        "width_nm": 500000,
+        "layer": 2,
+        "net": "WD1_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          154000000,
+          66000000
+        ],
+        "end_nm": [
+          150000000,
+          68000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD1_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          147000000,
+          74000000
+        ],
+        "end_nm": [
+          150000000,
+          76000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD1_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          160000000,
+          76000000
+        ],
+        "end_nm": [
+          153500000,
+          76000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD2_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          160000000,
+          82000000
+        ],
+        "end_nm": [
+          160000000,
+          76000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD2_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          160000000,
+          84000000
+        ],
+        "end_nm": [
+          160000000,
+          82000000
+        ],
+        "width_nm": 500000,
+        "layer": 2,
+        "net": "WD2_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          162000000,
+          84000000
+        ],
+        "end_nm": [
+          160000000,
+          84000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD2_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          142000000,
+          84000000
+        ],
+        "end_nm": [
+          160000000,
+          84000000
+        ],
+        "width_nm": 500000,
+        "layer": 2,
+        "net": "WD2_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          166000000,
+          88000000
+        ],
+        "end_nm": [
+          162000000,
+          84000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD2_NC_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          30000000,
+          108000000
+        ],
+        "end_nm": [
+          30000000,
+          105000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "PI_HEARTBEAT"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          30000000,
+          34000000
+        ],
+        "end_nm": [
+          30000000,
+          43000000
+        ],
+        "width_nm": 750000,
+        "layer": 0,
+        "net": "SAFETY_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          60000000,
+          44000000
+        ],
+        "end_nm": [
+          32000000,
+          44000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_5V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          32000000,
+          44000000
+        ],
+        "end_nm": [
+          32000000,
+          65500000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_5V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          33500000,
+          108000000
+        ],
+        "end_nm": [
+          33500000,
+          113000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "COMPUTE_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          37000000,
+          34000000
+        ],
+        "end_nm": [
+          37000000,
+          27000000
+        ],
+        "width_nm": 750000,
+        "layer": 0,
+        "net": "WD1_COIL_N"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          30000000,
+          105000000
+        ],
+        "end_nm": [
+          38000000,
+          105000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "PI_HEARTBEAT"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          38410000,
+          65500000
+        ],
+        "end_nm": [
+          38410000,
+          62310000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD_5V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          32000000,
+          65500000
+        ],
+        "end_nm": [
+          38410000,
+          65500000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_5V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          40500000,
+          34000000
+        ],
+        "end_nm": [
+          40500000,
+          24000000
+        ],
+        "width_nm": 750000,
+        "layer": 2,
+        "net": "WD2_COIL_N"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          40950000,
+          62310000
+        ],
+        "end_nm": [
+          40950000,
+          65500000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          42000000,
+          96000000
+        ],
+        "end_nm": [
+          42000000,
+          84000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_HEARTBEAT"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          53000000,
+          96000000
+        ],
+        "end_nm": [
+          42000000,
+          96000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_HEARTBEAT"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          42000000,
+          84000000
+        ],
+        "end_nm": [
+          43490000,
+          81690000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_HEARTBEAT"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          44000000,
+          58000000
+        ],
+        "end_nm": [
+          44000000,
+          46000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          46030000,
+          58000000
+        ],
+        "end_nm": [
+          44000000,
+          58000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          46030000,
+          85000000
+        ],
+        "end_nm": [
+          46030000,
+          48000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD1_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          46030000,
+          62310000
+        ],
+        "end_nm": [
+          46030000,
+          58000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          46030000,
+          81690000
+        ],
+        "end_nm": [
+          46030000,
+          85000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD1_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          47000000,
+          105000000
+        ],
+        "end_nm": [
+          46825000,
+          108000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "PI_HEARTBEAT"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          38000000,
+          105000000
+        ],
+        "end_nm": [
+          47000000,
+          105000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "PI_HEARTBEAT"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          48570000,
+          86500000
+        ],
+        "end_nm": [
+          48570000,
+          50000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD2_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          48570000,
+          81690000
+        ],
+        "end_nm": [
+          48570000,
+          86500000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD2_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          48825000,
+          98000000
+        ],
+        "end_nm": [
+          49000000,
+          104000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          50000000,
+          34000000
+        ],
+        "end_nm": [
+          50000000,
+          43000000
+        ],
+        "width_nm": 750000,
+        "layer": 0,
+        "net": "SAFETY_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          53000000,
+          96000000
+        ],
+        "end_nm": [
+          50000000,
+          92000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_HEARTBEAT"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          55000000,
+          101000000
+        ],
+        "end_nm": [
+          51175000,
+          98000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_HEARTBEAT"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          49175000,
+          108000000
+        ],
+        "end_nm": [
+          53000000,
+          108000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "HB_LED_A"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          51175000,
+          98000000
+        ],
+        "end_nm": [
+          53000000,
+          96000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_HEARTBEAT"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          118000000,
+          100000000
+        ],
+        "end_nm": [
+          54000000,
+          100000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          49000000,
+          104000000
+        ],
+        "end_nm": [
+          54000000,
+          104000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          54000000,
+          100000000
+        ],
+        "end_nm": [
+          54000000,
+          104000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          55080000,
+          34000000
+        ],
+        "end_nm": [
+          54000000,
+          34000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD_5V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          60000000,
+          106730000
+        ],
+        "end_nm": [
+          55000000,
+          101000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_HEARTBEAT"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          53000000,
+          108000000
+        ],
+        "end_nm": [
+          55000000,
+          106730000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "HB_LED_A"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          56190000,
+          81690000
+        ],
+        "end_nm": [
+          56000000,
+          79000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD1_NC_DIAG"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          56000000,
+          92000000
+        ],
+        "end_nm": [
+          56000000,
+          79000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD1_NC_DIAG"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          82000000,
+          92000000
+        ],
+        "end_nm": [
+          56000000,
+          92000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD1_NC_DIAG"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          55000000,
+          106730000
+        ],
+        "end_nm": [
+          57235000,
+          106730000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "HB_LED_A"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          57600000,
+          113000000
+        ],
+        "end_nm": [
+          57235000,
+          109270000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "COMPUTE_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          33500000,
+          113000000
+        ],
+        "end_nm": [
+          57600000,
+          113000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "COMPUTE_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          54000000,
+          34000000
+        ],
+        "end_nm": [
+          58000000,
+          32000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD_5V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          66765000,
+          106730000
+        ],
+        "end_nm": [
+          60000000,
+          106730000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_HEARTBEAT"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          55080000,
+          34000000
+        ],
+        "end_nm": [
+          60000000,
+          34000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_5V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          60000000,
+          34000000
+        ],
+        "end_nm": [
+          60000000,
+          44000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_5V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          58730000,
+          81690000
+        ],
+        "end_nm": [
+          60000000,
+          79000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD2_NC_DIAG"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          60000000,
+          93500000
+        ],
+        "end_nm": [
+          60000000,
+          79000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD2_NC_DIAG"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          60000000,
+          96000000
+        ],
+        "end_nm": [
+          60000000,
+          93500000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD2_NC_DIAG"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          84000000,
+          96000000
+        ],
+        "end_nm": [
+          60000000,
+          96000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD2_NC_DIAG"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          58000000,
+          32000000
+        ],
+        "end_nm": [
+          62000000,
+          32000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "WD_5V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          70000000,
+          109270000
+        ],
+        "end_nm": [
+          70000000,
+          102500000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          66765000,
+          109270000
+        ],
+        "end_nm": [
+          70000000,
+          109270000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          44000000,
+          46000000
+        ],
+        "end_nm": [
+          70000000,
+          46000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          30000000,
+          43000000
+        ],
+        "end_nm": [
+          72000000,
+          43000000
+        ],
+        "width_nm": 750000,
+        "layer": 0,
+        "net": "SAFETY_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          72000000,
+          40000000
+        ],
+        "end_nm": [
+          72000000,
+          43000000
+        ],
+        "width_nm": 750000,
+        "layer": 0,
+        "net": "SAFETY_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          37000000,
+          27000000
+        ],
+        "end_nm": [
+          74000000,
+          27000000
+        ],
+        "width_nm": 750000,
+        "layer": 0,
+        "net": "WD1_COIL_N"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          74000000,
+          24000000
+        ],
+        "end_nm": [
+          74000000,
+          27000000
+        ],
+        "width_nm": 750000,
+        "layer": 0,
+        "net": "WD1_COIL_N"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          76000000,
+          36000000
+        ],
+        "end_nm": [
+          76000000,
+          38500000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          78000000,
+          52000000
+        ],
+        "end_nm": [
+          78000000,
+          48000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD1_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          46030000,
+          48000000
+        ],
+        "end_nm": [
+          78000000,
+          48000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD1_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          89825000,
+          68000000
+        ],
+        "end_nm": [
+          82000000,
+          68000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD1_NC_DIAG"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          82000000,
+          68000000
+        ],
+        "end_nm": [
+          82000000,
+          92000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD1_NC_DIAG"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          83900000,
+          72000000
+        ],
+        "end_nm": [
+          83500000,
+          72000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          84000000,
+          48000000
+        ],
+        "end_nm": [
+          84000000,
+          29500000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD1_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          78000000,
+          48000000
+        ],
+        "end_nm": [
+          84000000,
+          48000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD1_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          89825000,
+          88000000
+        ],
+        "end_nm": [
+          84000000,
+          88000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD2_NC_DIAG"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          84000000,
+          88000000
+        ],
+        "end_nm": [
+          84000000,
+          96000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD2_NC_DIAG"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          86000000,
+          64000000
+        ],
+        "end_nm": [
+          86000000,
+          58000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "UFB_OUT1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          86000000,
+          75683000
+        ],
+        "end_nm": [
+          86000000,
+          64000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "UFB_OUT1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          83900000,
+          74540000
+        ],
+        "end_nm": [
+          86000000,
+          74540000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_SWCLK"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          93000000,
+          75683000
+        ],
+        "end_nm": [
+          86000000,
+          75683000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "UFB_OUT1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          94000000,
+          77000000
+        ],
+        "end_nm": [
+          86000000,
+          77000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "UFB_OUT2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          86000000,
+          74540000
+        ],
+        "end_nm": [
+          86000000,
+          78000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_SWCLK"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          86000000,
+          77000000
+        ],
+        "end_nm": [
+          86000000,
+          84000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "UFB_OUT2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          86000000,
+          92000000
+        ],
+        "end_nm": [
+          86000000,
+          90000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "UFB_OUT2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          86000000,
+          84000000
+        ],
+        "end_nm": [
+          86000000,
+          92000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "UFB_OUT2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          84000000,
+          29500000
+        ],
+        "end_nm": [
+          87000000,
+          29500000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD1_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          89100000,
+          36275000
+        ],
+        "end_nm": [
+          87000000,
+          38000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          90975000,
+          39000000
+        ],
+        "end_nm": [
+          87000000,
+          38000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          83900000,
+          69460000
+        ],
+        "end_nm": [
+          88000000,
+          69460000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_SWDIO"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          87000000,
+          29500000
+        ],
+        "end_nm": [
+          89100000,
+          31725000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD1_DRIVE"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          89100000,
+          32375000
+        ],
+        "end_nm": [
+          89100000,
+          33025000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          89100000,
+          33025000
+        ],
+        "end_nm": [
+          89100000,
+          33675000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          89100000,
+          33675000
+        ],
+        "end_nm": [
+          89100000,
+          34325000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          89100000,
+          34325000
+        ],
+        "end_nm": [
+          89100000,
+          34975000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          89100000,
+          34975000
+        ],
+        "end_nm": [
+          89100000,
+          35625000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          89100000,
+          35625000
+        ],
+        "end_nm": [
+          89100000,
+          36275000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          86000000,
+          64000000
+        ],
+        "end_nm": [
+          89825000,
+          64000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "UFB_OUT1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          92175000,
+          64000000
+        ],
+        "end_nm": [
+          89825000,
+          68000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD1_NC_DIAG"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          86000000,
+          84000000
+        ],
+        "end_nm": [
+          89825000,
+          84000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "UFB_OUT2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          92175000,
+          84000000
+        ],
+        "end_nm": [
+          89825000,
+          88000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD2_NC_DIAG"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          86000000,
+          58000000
+        ],
+        "end_nm": [
+          90000000,
+          58000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "UFB_OUT1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          86000000,
+          78000000
+        ],
+        "end_nm": [
+          90000000,
+          78000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_SWCLK"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          94200000,
+          72475000
+        ],
+        "end_nm": [
+          92000000,
+          72550000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          94200000,
+          74525000
+        ],
+        "end_nm": [
+          92000000,
+          74450000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          93500000,
+          74450000
+        ],
+        "end_nm": [
+          92000000,
+          74450000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          97300000,
+          75682500
+        ],
+        "end_nm": [
+          93000000,
+          75683000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "UFB_OUT1"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          93037500,
+          43000000
+        ],
+        "end_nm": [
+          93025000,
+          39000000
+        ],
+        "width_nm": 750000,
+        "layer": 0,
+        "net": "SAFETY_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          72000000,
+          43000000
+        ],
+        "end_nm": [
+          93037500,
+          43000000
+        ],
+        "width_nm": 750000,
+        "layer": 0,
+        "net": "SAFETY_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          92175000,
+          68000000
+        ],
+        "end_nm": [
+          93500000,
+          68000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          118000000,
+          72500000
+        ],
+        "end_nm": [
+          93500000,
+          72500000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          93500000,
+          72500000
+        ],
+        "end_nm": [
+          93500000,
+          74450000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          92175000,
+          88000000
+        ],
+        "end_nm": [
+          93500000,
+          88000000
+        ],
+        "width_nm": 500000,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          97300000,
+          76317500
+        ],
+        "end_nm": [
+          94000000,
+          76317500
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "UFB_OUT2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          94000000,
+          76317500
+        ],
+        "end_nm": [
+          94000000,
+          77000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "UFB_OUT2"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          94500000,
+          75047000
+        ],
+        "end_nm": [
+          94200000,
+          74525000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          95000000,
+          74412000
+        ],
+        "end_nm": [
+          94200000,
+          74525000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          97300000,
+          75047500
+        ],
+        "end_nm": [
+          94500000,
+          75047000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          96500000,
+          31725000
+        ],
+        "end_nm": [
+          94900000,
+          31725000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "WD1_COIL_N"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          96500000,
+          36275000
+        ],
+        "end_nm": [
+          94900000,
+          36275000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          97300000,
+          74412500
+        ],
+        "end_nm": [
+          95000000,
+          74412000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "WD_3V3"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          97300000,
+          78222500
+        ],
+        "end_nm": [
+          95000000,
+          79500000
+        ],
+        "width_nm": 152400,
+        "layer": 0,
+        "net": "SAFETY_0V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          96000000,
+          60000000
+        ],
+        "end_nm": [
+          96000000,
+          58000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "WD_SWDIO"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          88000000,
+          69460000
+        ],
+        "end_nm": [
+          96000000,
+          60000000
+        ],
+        "width_nm": 250000,
+        "layer": 2,
+        "net": "WD_SWDIO"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          74000000,
+          27000000
+        ],
+        "end_nm": [
+          96500000,
+          27000000
+        ],
+        "width_nm": 750000,
+        "layer": 0,
+        "net": "WD1_COIL_N"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          96500000,
+          27000000
+        ],
+        "end_nm": [
+          96500000,
+          31725000
+        ],
+        "width_nm": 750000,
+        "layer": 0,
+        "net": "WD1_COIL_N"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          96500000,
+          39000000
+        ],
+        "end_nm": [
+          96500000,
+          36275000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_24V"
+      },
+      {
+        "kind": "segment",
+        "start_nm": [
+          93025000,
+          39000000
+        ],
+        "end_nm": [
+          96500000,
+          39000000
+        ],
+        "width_nm": 250000,
+        "layer": 0,
+        "net": "SAFETY_24V"
+      }
+    ],
+    "edge_cuts": [
+      {
+        "shape": 0,
+        "start_nm": [
+          180000000,
+          20000000
+        ],
+        "end_nm": [
+          180000000,
+          120000000
+        ],
+        "width_nm": 250000
+      },
+      {
+        "shape": 0,
+        "start_nm": [
+          20000000,
+          20000000
+        ],
+        "end_nm": [
+          180000000,
+          20000000
+        ],
+        "width_nm": 250000
+      },
+      {
+        "shape": 0,
+        "start_nm": [
+          180000000,
+          120000000
+        ],
+        "end_nm": [
+          20000000,
+          120000000
+        ],
+        "width_nm": 250000
+      },
+      {
+        "shape": 0,
+        "start_nm": [
+          20000000,
+          120000000
+        ],
+        "end_nm": [
+          20000000,
+          20000000
+        ],
+        "width_nm": 250000
+      }
+    ],
+    "zones": [
+      {
+        "net": "INTENTIONALLY_UNUSED_UFB1_12",
+        "layers": "00000000_00000000_00000000_00000004",
+        "outlines_nm": [
+          [
+            [
+              111000000,
+              87000000
+            ],
+            [
+              113000000,
+              87000000
+            ],
+            [
+              113000000,
+              89000000
+            ],
+            [
+              111000000,
+              89000000
+            ]
+          ]
+        ]
+      },
+      {
+        "net": "INTENTIONALLY_UNUSED_UFB1_13",
+        "layers": "00000000_00000000_00000000_00000004",
+        "outlines_nm": [
+          [
+            [
+              111000000,
+              74200000
+            ],
+            [
+              113000000,
+              74200000
+            ],
+            [
+              113000000,
+              76200000
+            ],
+            [
+              111000000,
+              76200000
+            ]
+          ]
+        ]
+      },
+      {
+        "net": "SAFETY_0V",
+        "layers": "00000000_00000000_00000000_00000004",
+        "outlines_nm": [
+          [
+            [
+              22000000,
+              22000000
+            ],
+            [
+              178000000,
+              22000000
+            ],
+            [
+              178000000,
+              103000000
+            ],
+            [
+              22000000,
+              103000000
+            ]
+          ]
+        ]
+      }
+    ]
+  },
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
+}

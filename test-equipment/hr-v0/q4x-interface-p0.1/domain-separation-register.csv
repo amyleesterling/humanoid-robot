@@ -1,0 +1,7 @@
+boundary_id,from_domain,to_domain,required_state,verification,state
+DB-001,Q4X temporary instrumentation domain,robot SAFETY_24V / SAFETY_0V,NO INTENTIONAL CONNECTION,unpowered isolation measurement method and acceptance limit SELECTION REQUIRED,HOLD
+DB-002,Q4X temporary instrumentation domain,protective earth / chassis,NO INTENTIONAL CONNECTION unless qualified review explicitly selects a point,unpowered isolation measurement and visual inspection,HOLD
+DB-003,Q4X temporary instrumentation domain,contactor / E-stop / reset / watchdog circuits,NO CONNECTION,independent second-person wire trace before any authorized run,HOLD
+DB-004,Q4X temporary instrumentation domain,actuator source / DXL rails / DXL returns,NO CONNECTION,unpowered isolation measurement and visual inspection,HOLD
+DB-005,Q4X analog pair,MSO58B chassis,only through received TIVP02 isolated measurement system,"received probe identity, calibration, self-check and permitted-lead inspection",HOLD
+DB-006,PS-Q4X1 CH1,other 2220-30-1 channel,independent isolated outputs retained; CH2 disabled and unconnected,received-instrument configuration and isolation test,HOLD

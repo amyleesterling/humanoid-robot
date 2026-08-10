@@ -1,0 +1,6 @@
+source,organization,record,revision_date,locator,local_sha256,use
+OI-SRC-001,ROBOTIS,HN12-N101 STEP; download-center record 1748,publisher revision not exposed; accessed 2026-08-08,cad/vendor/robotis/hn12-n101-r103/HN12-N101-official.step,6DE6851B85132EC496F24A177729ECA5CE43416707652E79183BFA51E7F978FD,exact vendor geometry
+OI-SRC-002,ROBOTIS,HN12-N101 reference drawing; record 1735,drawing 2019-05-22; accessed 2026-08-08,cad/vendor/robotis/hn12-n101-r103/HN12-N101-official.pdf,0D6C309F8A45D81FFAABDB45982B7DE0B6E7F74742CAE850CFF4E938B86A81FA,reference dimensions/pattern; marked FOR REFERENCE ONLY
+OI-SRC-003,ROBOTIS,HN12-N101 Set product page,live page accessed 2026-08-08,https://www.robotis.us/hn12-n101-set/,NOT DOWNLOADED,"product SKU, compatibility and package contents"
+OI-SRC-004,Ruland,MJC33-15-A / JD21/33-92Y / MJS33-15-A product data,live page accessed 2026-08-08,https://www.ruland.com/mjc33-15-a-jd21-33-92y-mjs33-15-a.html,NOT DOWNLOADED,"hub/spider envelope, shaft fit, seating torque and bearing-support boundary"
+OI-SRC-005,Magtrol,HB-450M Rev A drawing + controlled STEP,drawing Rev A 2004-01-29; STEP publisher revision not exposed,cad/vendor/magtrol/hb-450m-r102/,2EE1136C6CA3B2202A13BC11DEA1A18EEB9D261B7E7D776EE940699C7F89EDE1,brake shaft/body geometry and provisional placement

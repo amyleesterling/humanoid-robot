@@ -1,0 +1,11 @@
+hold_id,evidence_required,status,release_effect
+GUIDE-HOLD-001,received manufacturer CAD and revision identity for TWA-01-20 and configured TS-01-20 rail,PARTIAL,BLOCKS FABRICATION MOTION AND ENERGIZATION
+GUIDE-HOLD-002,"configured 120 mm rail order code, end tolerance and hole/counterbore geometry",PARTIAL,BLOCKS FABRICATION MOTION AND ENERGIZATION
+GUIDE-HOLD-003,"K2 thread depth, screw length/grade/washer/locking/engagement and released torque",OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION
+GUIDE-HOLD-004,"platen-side hole diameter, hardware, edge distance, local strength and fatigue",OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION
+GUIDE-HOLD-005,"igus vertical shock application, load/life, floating arrangement and alignment acceptance",OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION
+GUIDE-HOLD-006,"FAB-REC-004 material, process, tolerances, fillet/tool radius, coating and FAI",OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION
+GUIDE-HOLD-007,"peak reaction, guide sharing, bracket/plate/rail/support/anchor allowables and proof",OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION
+GUIDE-HOLD-008,"received fit, stroke, binding, backlash, pull and fault/drop tests",OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION
+GUIDE-HOLD-009,qualified mechanical and functional-safety review,OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION
+GUIDE-HOLD-010,written work authorization,OPEN,BLOCKS FABRICATION MOTION AND ENERGIZATION

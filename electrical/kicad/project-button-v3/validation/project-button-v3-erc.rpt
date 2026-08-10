@@ -1,4 +1,4 @@
-ERC report (2026-08-06T15:17:20, Encoding UTF8)
+ERC report (2026-08-09T06:29:46, Encoding UTF8)
 Report includes: Errors, Warnings
 
 ***** Sheet /
@@ -7,19 +7,25 @@ Report includes: Errors, Warnings
 
 ***** Sheet /02 Dual-channel E-stop and RESET eligibility/
 
-***** Sheet /03 Distinct ARM and watchdog eligibility/
+***** Sheet /03 Distinct ARM and watchdog-gated SR1 supply/
 
 ***** Sheet /04 Contactor coils, mirror contacts and EDM/
 
 ***** Sheet /05 Redundant actuator-power interruption/
 
-***** Sheet /06 Protected actuator branches and VDD-isolating injection/
+***** Sheet /06 Protected actuator branches and central DYNAMIXEL star injection/
 
 ***** Sheet /07 Independent watchdog power, controller and drivers/
 
-***** Sheet /08 Compute, debug and control terminals/
+***** Sheet /08 Calculated dual-channel 24 V watchdog feedback/
 
-***** Sheet /09 U2D2, actuator ports and bonding boundary/
+***** Sheet /09 Compute and control terminals/
+
+***** Sheet /10 U2D2, actuator ports and bonding boundary/
+
+***** Sheet /11 Watchdog PCB external connectors/
+
+***** Sheet /12 Watchdog PCB test access/
 
  ** ERC messages: 0  Errors 0  Warnings 0
 

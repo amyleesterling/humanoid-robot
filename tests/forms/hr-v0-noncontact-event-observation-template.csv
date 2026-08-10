@@ -1,0 +1,1 @@
+run_id,configuration_commit,wire_number,terminal,jaw_state,probe_serial,host_serial,calibration_evidence_uri,range,sample_rate,threshold,current_trace_uri,source_trace_uri,motion_trace_uri,video_uri,result,deviation_id,executor,utc_timestamp,reviewer,decision,warning

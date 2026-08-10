@@ -1,0 +1,15 @@
+hold_id,hold,state,closure_evidence
+WD-FAB-HOLD-01,Independent schematic-to-PCB parity and layout review,OPEN,NONE
+WD-FAB-HOLD-02,"Official land-pattern, paste, mask, polarity and orientation review",OPEN,NONE
+WD-FAB-HOLD-03,"Independent CAM preview of every copper, mask, silkscreen, outline and drill layer",OPEN,NONE
+WD-FAB-HOLD-04,Supplier portal preview and written acceptance of the controlled archive,OPEN,NONE
+WD-FAB-HOLD-05,KiCad 10 source compatibility disposition; Gerber archive is mandatory for candidate submission,OPEN,NONE
+WD-FAB-HOLD-06,Exact-part availability and written alternate-part control,OPEN,NONE
+WD-FAB-HOLD-07,"Fault-current, foldback, protection, connector and trace coordination",OPEN,NONE
+WD-FAB-HOLD-08,"Assembly process, ESD, cleanliness and rework controls",OPEN,NONE
+WD-FAB-HOLD-09,"Bare-board continuity, isolation and dimensional inspection",OPEN,NONE
+WD-FAB-HOLD-10,Assembled-board receiving inspection and AOI/manual inspection,OPEN,NONE
+WD-FAB-HOLD-11,Current-limited staged bring-up with no safety or actuator source connected,OPEN,NONE
+WD-FAB-HOLD-12,"HIL, fault injection, brownout, thermal and EMC/surge evidence",OPEN,NONE
+WD-FAB-HOLD-13,"Enclosure, mounting, harness, strain relief, segregation and service-access definition",OPEN,NONE
+WD-FAB-HOLD-14,Qualified electrical and functional-safety review and written authorization,OPEN,NONE

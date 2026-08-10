@@ -1,0 +1,19 @@
+{
+  "revision": "HR-V0-ARM-LOAD-P1.1-X430-CANDIDATE",
+  "state": "ANALYTICAL_CANDIDATE_NOT_SELECTED",
+  "warning": "PRELIMINARY - ANALYTICAL CANDIDATE ONLY - NOT APPROVED FOR QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, CONNECTION, OR ENERGIZATION",
+  "release_flags": {
+    "p1_1_selected": false,
+    "x430_selected": false,
+    "mass_closed": false,
+    "com_closed": false,
+    "inertia_closed": false,
+    "continuous_torque_closed": false,
+    "stop_load_closed": false,
+    "structural_release": false,
+    "motion_authorized": false,
+    "fabrication_authorized": false,
+    "connection_authorized": false,
+    "energization_authorized": false
+  }
+}

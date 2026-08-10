@@ -1,0 +1,18 @@
+{
+  "identifier": "HR-V0-DYN-EVENT-AIN-P0.1",
+  "date": "2026-08-10",
+  "status": "PRELIMINARY - BENCH R&D EQUIPMENT ONLY - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "exact_new_evaluation_candidate_count": 1,
+  "exact_new_evaluation_unit_count": 7,
+  "field_event_count": 7,
+  "differential_pair_count": 7,
+  "scan_address_count": 8,
+  "open_hold_count": 15,
+  "authorized_procurement_count": 0,
+  "authorized_connection_count": 0,
+  "authorized_powered_run_count": 0,
+  "executed_physical_run_count": 0,
+  "safety_function_credit": "ZERO",
+  "r176_disposition": "ISO1212EVM direct-tap route retained as historical candidate but not preferred because approximately 2.25 mA typical load is unresolved",
+  "release_effect": "NONE"
+}

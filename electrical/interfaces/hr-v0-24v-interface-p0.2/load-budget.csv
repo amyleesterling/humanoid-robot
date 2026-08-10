@@ -1,0 +1,6 @@
+load_id,references,basis,quantity,per_unit_w,subtotal_w,current_a_at_24v,evidence_class,open_evidence,warning
+24LOAD-001,K1/K2,Schneider published DC coil consumption,2,5.4,10.800,0.450000,PUBLISHED OPERATING SCREEN,"Pickup transient, tolerance, duty and received coil behavior remain open",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24LOAD-002,SR1/SRA1,Pilz published power consumption,2,2.5,5.000,0.208333,PUBLISHED OPERATING SCREEN,Startup/input tolerance and installed configuration remain open,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24LOAD-003,KWD1/KWD2,Phoenix Contact typical input current converted at 24 V,2,0.432,0.864,0.036000,TYPICAL SCREEN ONLY,"Maximum current, simultaneous pickup and received behavior remain open",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24LOAD-004,H1,IDEC HW family 24 V LED-lamp catalog screen,1,0.36,0.360,0.015000,FAMILY SCREEN ONLY,"Exact complete-assembly mapping, current, polarity and received behavior remain open",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+24LOAD-005,WDPCB1/DC1,Project continuous design reserve; not a component rating,1,10.0,10.000,0.416667,CONSERVATIVE PROJECT RESERVE,"Measure actual startup, steady-state, brownout, fault and thermal behavior; independently accept the reserve",PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION

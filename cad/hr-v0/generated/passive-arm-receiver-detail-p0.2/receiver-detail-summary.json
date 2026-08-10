@@ -1,0 +1,31 @@
+{
+  "identifier": "HR-V0-PASSIVE-ARM-RECEIVER-DETAIL-P0.2",
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION, MOTION OR ENERGIZATION",
+  "parent_identifiers": [
+    "HR-V0-PASSIVE-ARM-RECEIVER-P0.1",
+    "HR-V0-PASSIVE-ARM-RECEIVER-VERIFY-P0.1"
+  ],
+  "receiver_top_z_mm": 320.0,
+  "platen_bottom_z_mm": 304.125,
+  "backup_stop_top_z_mm": 294.5,
+  "backup_gap_mm": 9.625,
+  "catalog_stroke_mm": 8.128,
+  "nominal_residual_after_catalog_stroke_mm": 1.4969999999999999,
+  "known_commanded_clearance_mm": 63.10647837214253,
+  "assembly_bounds_and_guard_margins": {
+    "x_min_mm": -125.0,
+    "x_max_mm": 125.0,
+    "y_min_mm": -430.0,
+    "y_max_mm": 430.0,
+    "z_min_mm": 20.0,
+    "z_max_mm": 320.0,
+    "guard_x_margin_left_mm": 75.0,
+    "guard_x_margin_right_mm": 75.0,
+    "guard_y_margin_front_mm": 20.0,
+    "guard_y_margin_rear_mm": 20.0
+  },
+  "bom_rows": 16,
+  "interface_rows": 7,
+  "hold_rows": 12,
+  "gate_state": "EG-008 AND EG-009 REMAIN PARTIAL"
+}

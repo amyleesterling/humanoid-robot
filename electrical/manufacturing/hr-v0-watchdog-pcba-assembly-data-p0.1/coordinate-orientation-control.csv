@@ -1,0 +1,6 @@
+control_id,subject,controlled_definition,use,state,warning
+WD-DATA-001,board outline,160.000 x 100.000 mm Edge.Cuts bounding box; source absolute minimum X/Y 20.000/20.000 mm,derive review coordinates only,CONTROLLED SOURCE FACT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-002,review origin,board-relative origin at minimum Edge.Cuts X/Y; +X right; +Y down; millimetres,human review and assembler discussion,INTERNAL REVIEW CONVENTION,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-003,rotation,native KiCad footprint orientation degrees copied without supplier transform,source-parity review only,NOT ASSEMBLER-NORMALIZED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-004,side,all 42 populated references are on top side,assembly planning,CONTROLLED SOURCE FACT,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION
+WD-DATA-005,machine import,"supplier must define centroid, zero-angle, axis, side and feeder conventions and return a transformed file for written disposition",prevents direct machine import,PROHIBITED UNTIL SUPPLIER CONVENTION ACCEPTED,PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION

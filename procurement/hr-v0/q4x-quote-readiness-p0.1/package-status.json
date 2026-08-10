@@ -1,0 +1,21 @@
+{
+  "revision": "HR-V0-Q4X-QUOTE-READINESS-P0.1",
+  "date": "2026-08-10",
+  "supersedes_commercial_snapshot": "HR-V0-Q4X-UNPOWERED-ACQ-P0.1",
+  "source_delta_count": 2,
+  "direct_line_ambiguities_closed": 1,
+  "explicit_zero_stock_holds": 1,
+  "fit_lot_snapshot_subtotal_usd": "211.63",
+  "ptcb_lot_snapshot_subtotal_usd": "22.83",
+  "combined_snapshot_subtotal_usd": "234.46",
+  "cart_executed": false,
+  "quote_received": false,
+  "purchase_authorized": false,
+  "order_placed": false,
+  "physical_evidence_received": false,
+  "fabrication_authorized": false,
+  "connection_authorized": false,
+  "energization_authorized": false,
+  "sol_r12_blockers_closed": 0,
+  "warning": "PRELIMINARY - COMMERCIAL EVIDENCE AMENDMENT ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, DRILLING, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

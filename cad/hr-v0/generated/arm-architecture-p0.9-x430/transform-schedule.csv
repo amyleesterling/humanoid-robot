@@ -1,0 +1,6 @@
+item,parent,transform,evidence,state
+J1/column package,J1,identical to controlled P0.7,P0.7 exact-coordinate source,CARRIED FOR COMPARISON; P0.7 HARDWARE HOLDS REMAIN
+X430 actuator,J2,raw +Z to joint -X; Tx=2.35; package Rx=90; Ty=191.550,"rear case axes local Z X=+/-11,Y=-32",EXACT MODEL; RECEIVED FIT OPEN
+FR12-S102,J2,local Tz=21; package Rx=90; Ty=191.550,"side axes local X Y=+/-11,Z=11 register at Z=32",EXACT MODEL; RECEIVED FIT OPEN
+FR12-H101,J2 moving,identity straight reference; Ty=191.550; rotate about J2 +X,"outside face 28 mm; link axes X=+/-12,Z=+/-6",EXACT MODEL; RECEIVED FIT OPEN
+G1 H104,J2 moving,Rx=180; straight-reference Ty=316.600,P0.7 exact selected H104 axes,EXACT MODEL; GRIPPER DATUM/RECEIVED FIT OPEN

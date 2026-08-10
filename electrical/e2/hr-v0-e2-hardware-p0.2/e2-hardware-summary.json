@@ -1,0 +1,20 @@
+{
+  "identifier": "HR-V0-E2-HW-P0.2",
+  "date": "2026-08-08",
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION",
+  "electrical_baseline": "Project Button Electrical V3-P1.12",
+  "sequence_baseline": "HR-V0-E2-SEQ-P0.1",
+  "configuration_rows": 23,
+  "terminal_rows": 6,
+  "source_rows": 3,
+  "blocking_holds": 12,
+  "permitted_power_domains": [
+    "24 V safety/control candidate",
+    "5.1 V compute candidate"
+  ],
+  "prohibited_power_domains": [
+    "12 V actuator",
+    "powered U2D2/actuator branches"
+  ],
+  "authorization": "NOT AUTHORIZED"
+}

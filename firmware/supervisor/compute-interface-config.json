@@ -1,0 +1,32 @@
+{
+  "schema": "project-button-compute-interface-v1",
+  "identifier": "HR-V0-COMPUTE-IF-P0.1",
+  "date": "2026-08-08",
+  "compute": "Raspberry Pi 5 8GB candidate",
+  "heartbeat": {
+    "gpio_numbering": "BCM",
+    "gpio": 17,
+    "physical_header_pin": 11,
+    "return_physical_header_pin": 6,
+    "net": "PI_HEARTBEAT",
+    "return_net": "COMPUTE_0V",
+    "nominal_output_logic": "3.3 V GPIO",
+    "startup_state": "INPUT_OR_HIGH_IMPEDANCE_UNTIL_EXPLICITLY_CONFIGURED",
+    "runtime_backend": "SELECTION REQUIRED",
+    "timing_and_waveform": "PHYSICAL HIL EVIDENCE REQUIRED",
+    "safety_credit": "NONE"
+  },
+  "watchdog_debug": {
+    "installed_connector": "NONE",
+    "swdio": "TP15 / WD_SWDIO / Harwin S1751-46R",
+    "swclk": "TP16 / WD_SWCLK / Harwin S1751-46R",
+    "return": "TP2 / SAFETY_0V / Harwin S1751-46R",
+    "programmer": "SELECTION REQUIRED",
+    "fixture": "SELECTION REQUIRED",
+    "powered_debug": "PROHIBITED UNTIL A SEPARATE CONTROLLED PROCEDURE IS APPROVED",
+    "back_power_or_bypass": "PROHIBITED",
+    "safety_credit": "NONE"
+  },
+  "release": "NOT AUTHORIZED",
+  "warning": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
+}

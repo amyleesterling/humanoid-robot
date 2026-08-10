@@ -1,0 +1,32 @@
+{
+  "identifier": "HR-V0-X430-DUTY-P0.1",
+  "parent_configuration": "HR-V0-ARM-ARCH-P1.1-X430-LOWERED-FOREARM-CANDIDATE",
+  "status": "PRELIMINARY_NOT_APPROVED_FOR_POWERED_TEST_OR_ENERGIZATION",
+  "open_holds": [
+    "DUTY-HOLD-01",
+    "DUTY-HOLD-02",
+    "DUTY-HOLD-03",
+    "DUTY-HOLD-04",
+    "DUTY-HOLD-05",
+    "DUTY-HOLD-06",
+    "DUTY-HOLD-07",
+    "DUTY-HOLD-08",
+    "DUTY-HOLD-09",
+    "DUTY-HOLD-10",
+    "DUTY-HOLD-11",
+    "DUTY-HOLD-12"
+  ],
+  "powered_stages_authorized": false,
+  "test_fixture_buildable": false,
+  "current_limit_released": false,
+  "duty_profile_released": false,
+  "thermal_limits_released": false,
+  "continuous_torque_verified": false,
+  "x430_selected": false,
+  "p1_1_selected": false,
+  "motion_released": false,
+  "connection_released": false,
+  "energization_released": false,
+  "load_open_08_closed": false,
+  "note": "This package defines the configuration-specific evidence route. It contains no executed physical data and no current or temperature acceptance value."
+}

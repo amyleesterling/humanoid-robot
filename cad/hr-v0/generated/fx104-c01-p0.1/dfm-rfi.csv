@@ -1,0 +1,6 @@
+rfi,recipient,question,state
+DFM-01,candidate machine shop,Can FX104-C01 be machined and inspected exactly as defined from certified ASTM B209 6061-T651 plate at least 25.4 mm thick? Identify all required drawing changes.,NOT SENT
+DFM-02,candidate machine shop,"Confirm achievable datum A flatness, top-face parallelism, Ra limits, M6 thread position/depth and Ø6.6 position; propose inspection methods and quote FAI separately.",NOT SENT
+DFM-03,candidate machine shop,"State proposed stock producer, product form, heat/lot trace, material certificate contents and whether 24.00 ±0.05 mm is produced by facing both sides.",NOT SENT
+DFM-04,qualified mechanical reviewer,"Independently review R105 load cases, project factors, gross-section/bearing/thread screens, unmodeled 4866 load transfer, fatigue/local/contact risks and proof requirements.",NOT SENT
+DFM-05,Magtrol applications,"Review FX104-C01's 2X M6 axes at 104 mm and 4X Ø6.6 PT axes at 100 mm; provide 4866/PT tolerances, hardware, load limits and written application acceptance or corrections.",NOT SENT

@@ -1,5 +1,5 @@
 {
-  "configuration_id": "HR-V0-SUP-P0.1",
+  "configuration_id": "HR-V0-SUP-P0.3",
   "status": "PRELIMINARY-NOT-APPROVED-FOR-ENERGIZATION",
   "configuration_hash": "HR-V0-SYS-CONFIG-SELECTION-REQUIRED",
   "maximum_command_age_ms": 100,
@@ -10,10 +10,18 @@
   "setup_gripper_speed_mm_s": 10.0,
   "joints": {
     "J1": {"minimum": -20.0, "maximum": 70.0, "unit": "deg", "start_tolerance": null},
-    "J2": {"minimum": 15.0, "maximum": 125.0, "unit": "deg", "start_tolerance": null},
+    "J2": {"minimum": 15.0, "maximum": 115.0, "unit": "deg", "start_tolerance": null},
     "GRIPPER": {"minimum": 20.0, "maximum": 75.0, "unit": "mm", "start_tolerance": null}
   },
   "kinematic_model_hash": "SELECTION REQUIRED",
+  "mechanical_limit_binding": {
+    "limit_set_id": "HR-V0-LIMITS-P0.2",
+    "mechanical_revision": "HR-V0-MECH-P0.6",
+    "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.7",
+    "hard_stop_revision": "HR-V0-HS-P0.3",
+    "release_state": "CANDIDATE-NOT-RELEASED",
+    "acceptance_evidence_hash": "SELECTION REQUIRED"
+  },
   "dynamixel_transport": "SELECTION REQUIRED",
   "safety_credit": "NONE"
 }

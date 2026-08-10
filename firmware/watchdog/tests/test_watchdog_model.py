@@ -88,6 +88,25 @@ class WatchdogModelTests(unittest.TestCase):
         self.assertFalse(output.relay1_drive)
         self.assertFalse(output.relay2_drive)
 
+    def test_uint32_clock_wrap_remains_valid(self) -> None:
+        watchdog = model()
+        start = 0xFFFFFF00
+        self.assertFalse(watchdog.step(start, False, True, True).relay1_drive)
+        self.assertFalse(watchdog.step((start + 100) & 0xFFFFFFFF, True, True, True).relay1_drive)
+        self.assertFalse(watchdog.step((start + 200) & 0xFFFFFFFF, False, True, True).relay1_drive)
+        output = watchdog.step((start + 300) & 0xFFFFFFFF, True, True, True)
+        self.assertTrue(output.relay1_drive)
+        self.assertTrue(output.relay2_drive)
+        self.assertFalse(output.fault_latched)
+
+    def test_half_range_jump_fails_closed(self) -> None:
+        watchdog = model()
+        watchdog.step(0, False, True, True)
+        output = watchdog.step(0x80000000, False, True, True)
+        self.assertTrue(output.fault_latched)
+        self.assertFalse(output.relay1_drive)
+        self.assertIn("half-range", output.fault_reason or "")
+
 
 if __name__ == "__main__":
     unittest.main()

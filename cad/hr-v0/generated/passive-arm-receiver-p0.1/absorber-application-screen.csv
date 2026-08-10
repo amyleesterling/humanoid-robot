@@ -1,0 +1,8 @@
+record,input,value,unit,source,disposition
+ABS-001,MA30M published energy per cycle,3.502530,J,ACE live MA30M product page; 31 in-lb/cycle,CATALOG ENDPOINT ONLY
+ABS-002,three-unit arithmetic capacity,10.507589,J,3 x ABS-001,LOAD SHARING AND APPLICATION APPROVAL REQUIRED
+ABS-003,capacity / gravitational allocation,1.984215,ratio,ABS-002 / 5.295591 J,NOT AN ACCEPTED DESIGN FACTOR
+ABS-004,nominal mass share,0.250000,kg/unit,0.750 kg / 3,EFFECTIVE MASS MUST BE CALCULATED; PLATEN AND COUPLING DYNAMICS OMITTED
+ABS-005,published effective-weight range,0.226796..14.061363,kg/unit,ACE live MA30M product page; 0.5..31 lb,NOMINAL SHARE FALLS INSIDE; APPLICATION NOT VALIDATED
+ABS-006,published impact-velocity range,0.670560..4.450080,m/s,ACE live MA30M product page; 2.2..14.6 ft/s,ACTUAL CONTACT VELOCITY UNKNOWN; SLOW CASE MAY FALL BELOW RANGE
+ABS-007,stroke,8.128000,mm,ACE live MA30M product page; 0.32 in,FULL STROKE AND POSITIVE-STOP CLEARANCE REQUIRED

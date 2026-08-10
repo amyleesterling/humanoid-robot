@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+<style>text{font-family:Arial,sans-serif;fill:#102a43;font-size:20px}.h{font-size:34px;font-weight:700;fill:#082b55}.w{font-weight:700;fill:#9b1c1c}.p{stroke:#082b55;stroke-width:3;fill:#e4f6ff}.d{stroke:#f4b942;stroke-width:3;fill:none}.c{stroke:#9b1c1c;stroke-width:2}</style>
+<rect width="1200" height="800" fill="#f7fbff"/><text x="45" y="60" class="h">P10-C02 relieved X430 moving-striker candidate</text>
+<text x="45" y="100" class="w">PRELIMINARY - COMPARISON CANDIDATE ONLY - NOT APPROVED FOR QUOTATION, PROCUREMENT, FABRICATION, ASSEMBLY, MOTION, CONNECTION, OR ENERGIZATION</text>
+<path d="M260 610 L260 330 L420 330 L420 290 L580 290 L580 330 L740 330 L740 610 Z" class="p"/>
+<path d="M90 250 L260 250 L260 330 L90 330 Z M740 250 L910 250 L910 330 L740 330 Z" class="p"/>
+<circle cx="420" cy="470" r="13" class="d"/><circle cx="580" cy="470" r="13" class="d"/><circle cx="420" cy="550" r="13" class="d"/><circle cx="580" cy="550" r="13" class="d"/>
+<circle cx="500" cy="410" r="30" class="d"/><circle cx="500" cy="570" r="30" class="d"/>
+<line x1="500" y1="200" x2="500" y2="650" class="c"/><line x1="60" y1="490" x2="950" y2="490" class="c"/>
+<text x="45" y="690">Base contour Z=-20..+15 mm; local M5 boss X=±8 mm, Z=+15..+17 mm; external lobes preserve the P0.9 stop surface.</text>
+<text x="45" y="725">Nominal 9.525 mm thickness. Hole axes remain X=±12,Z=±6 and X=0,Z=±10. Exact tolerance/material/fasteners remain SELECTION REQUIRED.</text>
+<text x="45" y="770" class="w">DO NOT QUOTE OR FABRICATE FROM THIS REVIEW DRAWING.</text></svg>

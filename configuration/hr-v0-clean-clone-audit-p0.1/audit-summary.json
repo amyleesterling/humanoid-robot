@@ -1,0 +1,45 @@
+{
+  "schema": "project-button-hr-v0-clean-clone-audit-p0.1",
+  "status": "PRELIMINARY - CONFIGURATION EVIDENCE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "artifact_id": "HR-V0-CLEAN-CLONE-AUDIT-P0.1",
+  "round": "R189",
+  "audit_date": "2026-08-10",
+  "audited_source_commit": "221035ed307f4e3501abad82cf7afa42f6e7cc36",
+  "operating_system": "Windows",
+  "git_version": "2.37.0.windows.1",
+  "git_core_autocrlf": true,
+  "cad_runtime": {
+    "python_version": "3.12.13",
+    "cadquery_version": "2.8.0"
+  },
+  "kicad_runtime": {
+    "python_version": "3.11.5",
+    "kicad_version": "10.0.5"
+  },
+  "final_result": {
+    "checker_count": 145,
+    "checker_name_list_sha256": "2cf09e2aa9a8245551dcb47b26c9596d8f23bf414e341aabe2f825790f4bdb1b",
+    "non_pcbnew_pass": 132,
+    "non_pcbnew_total": 132,
+    "pcbnew_pass": 13,
+    "pcbnew_total": 13,
+    "failure_count": 0,
+    "clone_clean_after_execution": true,
+    "release_manifest_file_count": 3206,
+    "release_manifest_require_clean_pass": true
+  },
+  "checkout_contract": {
+    "default": "text=auto eol=lf",
+    "exact_crlf_path_count": 989,
+    "mixed_eol_opaque_path_count": 5,
+    "generator": "tools/generate_hr_v0_checkout_eol_contract.py"
+  },
+  "gate_effect": {
+    "gate_id": "EG-002",
+    "state": "REMAINS PARTIAL",
+    "closed": false,
+    "remaining": "merge or immutable acceptance; named configuration authority; qualified configuration review; formal baseline acceptance"
+  },
+  "physical_evidence_created": false,
+  "energization_authority": false
+}

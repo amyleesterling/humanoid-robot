@@ -1,0 +1,11 @@
+parameter_id,parameter,candidate,release_state,closure_evidence
+CFG-QX-001,PS-Q4X1 output voltage,24.0 Vdc,CANDIDATE / NOT RELEASED,"received supply accuracy check, voltage-drop budget and qualified acceptance"
+CFG-QX-002,PS-Q4X1 current limit,SELECTION REQUIRED,NOT RELEASED,"sensor/cable/protection limits, low-setting behavior, inrush and fault campaign"
+CFG-QX-003,PROT-Q4X1 protection,SELECTION REQUIRED,NOT RELEASED,"available fault current, interrupting capability, conductor/terminal limits and jurisdiction"
+CFG-QX-004,operating distance,within manufacturer 35-110 mm range,EXACT DISTANCE NOT RELEASED,"selected target, support geometry, full-stroke clearance and calibration"
+CFG-QX-005,base response / averaging,0.3 ms + average 1 timing screen OR 0.3 ms + average 16 repeatability screen,CONTROLLED ALTERNATIVES / NOT RELEASED,received-sensor tests and E2 timing/uncertainty budget
+CFG-QX-006,teach endpoints / slope / output mapping,SELECTION REQUIRED,NOT RELEASED,"fixture travel, target and analyzer convention"
+CFG-QX-007,remote-input function,inactive/off,CANDIDATE / VERIFY ON RECEIVED SENSOR,locked configuration record and reset/power-cycle persistence test
+CFG-QX-008,loss-of-signal behavior,SELECTION REQUIRED,NOT RELEASED,fault injection and fail-closed analyzer disposition
+CFG-QX-009,no-motion acceptance threshold,SELECTION REQUIRED,CATALOG VALUE PROHIBITED,"received calibration, uncertainty, drift, fixture stiffness, reflectance, alignment and temperature"
+CFG-QX-010,scope range / timebase / record / trigger / deskew / filtering,SELECTION REQUIRED,NOT RELEASED,complete R181 E2 timing contract and received acquisition stack

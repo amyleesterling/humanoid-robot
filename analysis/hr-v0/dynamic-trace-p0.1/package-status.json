@@ -1,0 +1,11 @@
+{
+  "identifier": "HR-V0-DYN-TRACE-P0.1",
+  "status": "PRELIMINARY - ANALYSIS CANDIDATE ONLY - QUALIFIED DISPOSITION REQUIRED - NOT APPROVED FOR POWERED TESTING, MOTION, OR ENERGIZATION",
+  "physical_trace_config_state": "ALL NUMERIC ACCEPTANCE INPUTS SELECTION REQUIRED",
+  "synthetic_trace_count": 4,
+  "acceptance_rule_count": 9,
+  "event_channel_extension_count": 4,
+  "executed_physical_run_count": 0,
+  "authorized_powered_run_count": 0,
+  "release_effect": "NONE"
+}

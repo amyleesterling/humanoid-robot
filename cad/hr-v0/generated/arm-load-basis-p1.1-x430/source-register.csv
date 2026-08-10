@@ -1,0 +1,5 @@
+source_id,path,sha256,use
+LOAD-SRC-01,cad/hr-v0/generated/arm-architecture-p1.1-x430-lowered-forearm/architecture-summary.json,90C29B54DA966A2A22406C4D79B87EB90C2997CEEA163995656D36017797B6A7,"P1.1 transforms, stop and mass boundary"
+LOAD-SRC-02,cad/hr-v0/generated/arm-architecture-p1.1-x430-lowered-forearm/HR-V0_arm_P1.1_X430_lowered_forearm_candidate.step,8300516DBB9B4892CF79FEB10355B8C1E33B038322373916C8D258720CD63490,controlled nominal assembly geometry
+LOAD-SRC-03,tools/generate_hr_v0_x430_lowered_forearm.py,96862B1C3243F0EA5D341CD46BBCD261329CE73C28E4E499C0E35D9F5C595FAC,reproducible P1.1 component construction
+LOAD-SRC-04,cad/vendor/8020/README.md,3090196CC8FDC753DE06601A604905F5E927E26BFF106E1F5BB4539A26EC30A0,controlled 20-2040 material and 0.0428 lb/in catalog-mass evidence

@@ -1,0 +1,19 @@
+{
+  "retrieved": "2026-08-10",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "document": "SBASA34B",
+    "revision": "June 2020; revised August 2024",
+    "locator": "https://www.ti.com/lit/ds/symlink/amc3330.pdf",
+    "bytes": 1580557,
+    "sha256": "1AC6B81FFB52DFDBDE49C86CA31F3A0BEAA7D52BFF60547834F34EC75A58B288"
+  },
+  "evm_guide": {
+    "document": "SBAU330C",
+    "revision": "June 2019; revised January 2022",
+    "locator": "https://www.ti.com/lit/pdf/SBAU330",
+    "bytes": 683693,
+    "sha256": "75F5FC38B39B2C60C2D5D363812AFEBFA66EE78C523358F63221A48DAF8552D1"
+  },
+  "warning": "PRELIMINARY - BENCH R&D EQUIPMENT ONLY - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

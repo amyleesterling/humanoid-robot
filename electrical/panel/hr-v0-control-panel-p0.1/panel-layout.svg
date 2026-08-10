@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1120" viewBox="0 0 1600 1120" role="img" aria-labelledby="title desc">
+  <title id="title">Project Button HR-V0 preliminary control-panel candidate</title>
+  <desc id="desc">Dimensioned candidate front views of the P1868 backplate and PJU181610H door. Every position remains on hold and no drilling is released.</desc>
+  <defs>
+    <pattern id="holdHatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="14" height="14" fill="#fff4c2"/>
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#d29c00" stroke-width="5"/>
+    </pattern>
+    <style>
+      text { font-family: Inter, Arial, sans-serif; fill: #102a43; }
+      .title { font-size: 34px; font-weight: 800; }
+      .subtitle { font-size: 22px; font-weight: 700; }
+      .body { font-size: 18px; }
+      .label { font-size: 18px; font-weight: 750; }
+      .small { font-size: 16px; }
+      .warning { font-size: 20px; font-weight: 800; fill: #7a2400; }
+      .outline { fill: #f5fbff; stroke: #123c69; stroke-width: 4; }
+      .duct { fill: #d9edf7; stroke: #277da1; stroke-width: 2; }
+      .rail { fill: #ccd6df; stroke: #475569; stroke-width: 2; }
+      .device { fill: #e6f4ff; stroke: #1261a0; stroke-width: 2; }
+      .safety { fill: #dff4e7; stroke: #207544; stroke-width: 2; }
+      .ordinary { fill: #e8e5ff; stroke: #5746af; stroke-width: 2; }
+      .power { fill: #ffe6df; stroke: #b54525; stroke-width: 2; }
+      .pcb { fill: #dff5f0; stroke: #13795b; stroke-width: 2; }
+      .terminal { fill: #eef2f6; stroke: #4b5563; stroke-width: 2; }
+      .dim { stroke: #51606e; stroke-width: 2; marker-start: url(#arrow); marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#51606e"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="1120" fill="#f7fbff"/>
+  <text x="60" y="58" class="title">HR-V0 CONTROL-PANEL CANDIDATE · P0.1</text>
+  <text x="60" y="94" class="warning">PRELIMINARY — NOT APPROVED FOR FABRICATION OR ENERGIZATION</text>
+  <text x="60" y="126" class="body">Catalog dimensions establish only a planning envelope. Received fit, depth, heat, wiring and bonding remain open.</text>
+  <text x="60" y="154" class="body">No drilling, cutting, assembly, fabrication or energization work is released.</text>
+
+  <text x="80" y="194" class="subtitle">Backplate allocation · Hammond P1868</text>
+  <text x="80" y="222" class="body">Nominal 377.825 × 428.625 mm</text>
+  <g transform="translate(80 245) scale(1.35)">
+    <rect class="outline" x="0" y="0" width="377.825" height="428.625" rx="3"/>
+    <rect class="duct" x="8" y="10" width="40" height="408"/>
+    <text x="28" y="214" class="small" text-anchor="middle" transform="rotate(-90 28 214)">WD1 · 40 × 40 DUCT</text>
+    <rect class="duct" x="329.825" y="10" width="40" height="408"/>
+    <text x="350" y="214" class="small" text-anchor="middle" transform="rotate(90 350 214)">WD2 · 40 × 40 DUCT</text>
+
+    <rect class="rail" x="54" y="45" width="270" height="7.5"/>
+    <text x="189" y="40" class="small" text-anchor="middle">DR1 · 270 mm ALLOCATION</text>
+    <rect class="safety" x="54" y="55" width="32" height="115"/>
+    <text x="70" y="110" class="label" text-anchor="middle" transform="rotate(-90 70 110)">SR1</text>
+    <rect class="safety" x="92" y="55" width="32" height="115"/>
+    <text x="108" y="110" class="label" text-anchor="middle" transform="rotate(-90 108 110)">SRA1</text>
+    <rect class="ordinary" x="130" y="55" width="20" height="105"/>
+    <text x="140" y="108" class="small" text-anchor="middle" transform="rotate(-90 140 108)">KWD1</text>
+    <rect class="ordinary" x="156" y="55" width="20" height="105"/>
+    <text x="166" y="108" class="small" text-anchor="middle" transform="rotate(-90 166 108)">KWD2</text>
+    <rect class="power" x="184" y="55" width="58" height="115"/>
+    <text x="213" y="110" class="label" text-anchor="middle">K1</text>
+    <text x="213" y="136" class="small" text-anchor="middle">FIT + DC</text>
+    <text x="213" y="156" class="small" text-anchor="middle">DUTY OPEN</text>
+    <rect class="power" x="250" y="55" width="58" height="115"/>
+    <text x="279" y="110" class="label" text-anchor="middle">K2</text>
+    <text x="279" y="136" class="small" text-anchor="middle">FIT + DC</text>
+    <text x="279" y="156" class="small" text-anchor="middle">DUTY OPEN</text>
+
+    <rect class="duct" x="54" y="180" width="270" height="40"/>
+    <text x="189" y="198" class="label" text-anchor="middle">WD3 · ROUTE DUCT</text>
+    <text x="189" y="216" class="small" text-anchor="middle">SEGREGATION REVIEW OPEN</text>
+
+    <rect class="pcb" x="54" y="230" width="160" height="100"/>
+    <text x="134" y="263" class="label" text-anchor="middle">WD PCB</text>
+    <text x="134" y="288" class="small" text-anchor="middle">PCB-P0.5 · 160 × 100</text>
+    <text x="134" y="315" class="small" text-anchor="middle">NO FABRICATION OUTPUTS</text>
+    <rect class="pcb" x="224" y="230" width="100" height="60"/>
+    <text x="274" y="252" class="label" text-anchor="middle">DXL STAR</text>
+    <text x="274" y="277" class="small" text-anchor="middle">P0.1 · HOLD</text>
+
+    <rect class="rail" x="224" y="309" width="100" height="7.5"/>
+    <rect class="terminal" x="224" y="318" width="100" height="48"/>
+    <text x="274" y="337" class="label" text-anchor="middle">XT1 · 01–06</text>
+    <text x="274" y="359" class="small" text-anchor="middle">WIRING HOLD</text>
+
+    <rect x="54" y="375" width="270" height="43" fill="url(#holdHatch)" stroke="#8a5a00" stroke-width="2"/>
+    <text x="189" y="394" class="label" text-anchor="middle">SELECTION RESERVE</text>
+    <text x="189" y="414" class="small" text-anchor="middle">NO DRILLING · PARTS OPEN</text>
+  </g>
+  <line x1="80" y1="838" x2="590" y2="838" class="dim"/>
+  <text x="335" y="872" class="body" text-anchor="middle">377.825 mm nominal</text>
+  <line x1="612" y1="245" x2="612" y2="824" class="dim"/>
+  <text x="642" y="535" class="body" text-anchor="middle" transform="rotate(90 642 535)">428.625 mm nominal</text>
+
+  <text x="820" y="194" class="subtitle">Door operator allocation · PJU181610H</text>
+  <text x="820" y="222" class="body">Nominal face width 420 mm</text>
+  <g transform="translate(820 245) scale(1.45)">
+    <rect class="outline" x="0" y="0" width="420" height="465" rx="8"/>
+    <text x="210" y="32" class="small" text-anchor="middle">FRONT VIEW · NO CUTOUTS RELEASED</text>
+
+    <circle cx="55" cy="85" r="27" fill="#e3342f" stroke="#7a120f" stroke-width="3"/>
+    <text x="55" y="132" class="label" text-anchor="middle">S0</text>
+    <text x="55" y="154" class="small" text-anchor="middle">E-STOP</text>
+
+    <circle cx="155" cy="85" r="18" fill="#1f2937" stroke="#000" stroke-width="3"/>
+    <text x="155" y="132" class="label" text-anchor="middle">S1</text>
+    <text x="155" y="154" class="small" text-anchor="middle">RESET</text>
+
+    <circle cx="255" cy="85" r="18" fill="#2e9b57" stroke="#14532d" stroke-width="3"/>
+    <text x="255" y="132" class="label" text-anchor="middle">S2</text>
+    <text x="255" y="154" class="small" text-anchor="middle">ARM REQUEST</text>
+
+    <circle cx="355" cy="85" r="18" fill="#f2b705" stroke="#805b00" stroke-width="3"/>
+    <text x="355" y="132" class="label" text-anchor="middle">H1</text>
+    <text x="355" y="154" class="small" text-anchor="middle">RESET STAGE</text>
+
+    <rect x="45" y="190" width="330" height="74" rx="8" fill="#fff4c2" stroke="#8a5a00" stroke-width="3"/>
+    <text x="210" y="216" class="label" text-anchor="middle">H1 IS AMBER DIAGNOSTIC ONLY</text>
+    <text x="210" y="240" class="small" text-anchor="middle">NO MOTION AUTHORITY</text>
+    <text x="210" y="260" class="small" text-anchor="middle">NOT “SAFE” · NOT “ARMED”</text>
+
+    <rect x="45" y="294" width="330" height="112" rx="8" fill="#ffe8e0" stroke="#a33b20" stroke-width="3"/>
+    <text x="210" y="323" class="label" text-anchor="middle">CUTOUT RELEASE BLOCKED</text>
+    <text x="210" y="351" class="small" text-anchor="middle">RECEIVED TEMPLATES + REAR BODY DEPTH</text>
+    <text x="210" y="376" class="small" text-anchor="middle">COVER RIBS / INSERTS + TOOL ACCESS</text>
+    <text x="210" y="400" class="small" text-anchor="middle">DOOR LOOM + HUMAN-FACTORS REVIEW</text>
+
+    <text x="210" y="447" class="small" text-anchor="middle">100 mm nominal center spacing · received validation required</text>
+  </g>
+
+  <rect x="60" y="930" width="1480" height="135" rx="12" fill="#e8f4ff" stroke="#123c69" stroke-width="3"/>
+  <text x="88" y="968" class="subtitle">What this drawing establishes</text>
+  <text x="88" y="1002" class="body">A traceable planning envelope for exact catalog candidates, V3 references, service space, terminal positions, and unresolved selections.</text>
+  <text x="88" y="1038" class="subtitle">What it does not establish</text>
+  <text x="88" y="1072" class="body">No hole, cut length, wire, fuse, PE bond, cable entry, PCB order, enclosure rating, functional-safety credit, fabrication, or energization release.</text>
+</svg>

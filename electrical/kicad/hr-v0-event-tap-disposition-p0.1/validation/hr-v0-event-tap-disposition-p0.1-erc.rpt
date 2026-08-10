@@ -1,0 +1,18 @@
+ERC report (2026-08-10T02:58:47, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+
+***** Sheet /01 Pilz input, RESET and ARM nodes/
+
+***** Sheet /02 Schneider K1/K2 coil nodes/
+
+***** Sheet /03 Pilz EDM return nodes/
+
+ ** ERC messages: 0  Errors 0  Warnings 0
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

@@ -1,0 +1,16 @@
+{
+  "identifier": "HR-V0-EVENT-TAP-DISP-P0.1",
+  "date": "2026-08-10",
+  "status": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "node_count": 7,
+  "pilz_path_node_count": 5,
+  "coil_node_count": 2,
+  "permanent_passive_tap_released_count": 0,
+  "divider_design_released_count": 0,
+  "authorized_connection_count": 0,
+  "executed_physical_test_count": 0,
+  "open_hold_count": 10,
+  "safety_function_credit": "ZERO",
+  "r177_effect": "AMC3330EVM output-side candidate retained; all seven field adapter connections remain prohibited",
+  "release_effect": "NONE"
+}

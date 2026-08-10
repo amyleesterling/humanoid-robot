@@ -1,0 +1,4 @@
+calculation_id,expression,result,status,boundary
+GCAL-001,360 + 35 + 25 + 25 + 5,450 mm,SPACE RESERVATION ONLY,stopping clearance and tolerance terms remain provisional
+GCAL-002,0.100 kg x 9.80665 m/s2 x 0.950 m,0.931632 J,TEST INPUT ONLY,not a guard or receiver impact rating
+GCAL-003,6 posts x 970 + 4 x 900 + 6 x 400,11820 mm profile envelope,CUT-LENGTH CANDIDATE,saw allowance and joint method absent

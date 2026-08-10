@@ -1,0 +1,6 @@
+topology_id,concept,potential_advantage,blocking_evidence,disposition
+HST-001,coaxial cam or sector ring,direct angle definition and compact tangential contact,"HSI-003..006 axial stack; HSI-009..012 approved attachment; HSI-015..020 cable, load, bumper and manufacturing closure",CANDIDATE ROUTE - NOT SELECTED
+HST-002,external side-plate sector and moving striker,keeps contact outside actuator case and can use replaceable metal/bumper elements,"HSI-007..012 side volume and attachment; HSI-015..020 cable, load, bumper and manufacturing closure",CANDIDATE ROUTE - NOT SELECTED
+HST-003,integral three-dimensional C01/C05 and C06/C07 stop extensions,direct load path through current custom adapters,"requires new non-planar parts, exact received clearance, qualified parent-part analysis and supplier DFM",CANDIDATE ROUTE - NOT SELECTED
+HST-004,"actuator case, connector, cable, guard or cosmetic cover as stop",none accepted,prohibited load path under SAFE-007 and MECH-006,REJECTED
+HST-005,software limit without independent metal backup,none accepted,does not satisfy independent physical restraint requirement,REJECTED

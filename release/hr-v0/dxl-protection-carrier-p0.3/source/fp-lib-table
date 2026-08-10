@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "ProjectButton_RPW.pretty")(type "KiCad")(uri "${KIPRJMOD}/ProjectButton_RPW.pretty")(options "")(descr "Controlled TI RPW0010A candidate"))
+)

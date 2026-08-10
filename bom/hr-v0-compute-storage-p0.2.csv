@@ -1,0 +1,2 @@
+record_id,item_id,reference,manufacturer,part_number,quantity,capacity,form_factor,interface,published_features,candidate_state,application_state,allowed_action,warning
+CSTORE-001,BOM-064,STORE1,Kingston Technology,SDCIT2/64GBSP,1,64 GB,microSDXC,UHS-I 3.3 V,"Class 10 U3 V30 A1; pSLC-mode TLC; 30K P/E family claim; ECC; wear levelling; power-failure protection; health monitoring",EXACT_CANDIDATE,HOLD,HOLD,PRELIMINARY - NOT APPROVED FOR PROCUREMENT INSTALLATION IMAGING CONNECTION POWERED TEST OR ENERGIZATION

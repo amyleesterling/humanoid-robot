@@ -1,0 +1,29 @@
+{
+  "identifier": "HR-V0-X430-OUTPUT-IF-P0.1",
+  "parent": "HR-V0-X430-LOAD-RIG-P0.1",
+  "preferred_route": "OUT-A",
+  "exact_hn12_geometry_present": true,
+  "adapter_review_geometry_present": true,
+  "adapter_fabrication_release_present": false,
+  "fastener_selection_complete": false,
+  "material_selection_complete": false,
+  "manufacturer_application_acceptance": false,
+  "open_hold_count": 11,
+  "partial_hold_count": 1,
+  "rfi_count": 8,
+  "rfi_state": "NOT SENT",
+  "configured_h101_test_still_required": true,
+  "release_flags": {
+    "quotation": false,
+    "procurement": false,
+    "machining": false,
+    "assembly": false,
+    "connection": false,
+    "powered_test": false,
+    "motion": false,
+    "energization": false,
+    "safety_credit": false,
+    "build_release": false
+  },
+  "warning": "PRELIMINARY - OUTPUT-INTERFACE/RFI CANDIDATE ONLY - NOT APPROVED FOR QUOTATION, PROCUREMENT, MACHINING, ASSEMBLY, CONNECTION, POWERED TEST, MOTION, OR ENERGIZATION"
+}

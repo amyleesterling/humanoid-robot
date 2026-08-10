@@ -1,0 +1,13 @@
+hold_id,scope,evidence_required,state
+PAH-001,CANDIDATE SELECTION,Approved task/GRIP-002 disposition and signed configuration choice,OPEN
+PAH-002,MATERIAL,"Exact 6061 stock/temper/spec certificate, finish and released allowables",OPEN
+PAH-003,TOLERANCE,Qualified drawing tolerance/GD&T and full received stack including 0.30 mm cheek clearance,OPEN
+PAH-004,BEAM FASTENERS,"Exact retained/new M5 identity, length, countersink fit, engagement, torque, locking and reuse",OPEN
+PAH-005,GRIPPER FASTENERS,"Exact M4 screws, washers, spacers, nuts, length, torque, locking and retention",OPEN
+PAH-006,POM EARS,Manufacturer material grade/allowables or accepted physical bearing/bypass/bending proof,OPEN
+PAH-007,LOAD CASE,"Accepted payload, lever arm, duty, misuse and static/dynamic proof multiplier",OPEN
+PAH-008,GUARD/CABLE,"Guard, pads, pinch boundary and moving power/PWM/feedback cable path",OPEN
+PAH-009,DFM/FAI,"Qualified machining review, deburr/finish route and first-article inspection",OPEN
+PAH-010,RECEIVED FIT,"Identity, dimensions, mass, free motion, noninterference and fastener inspection",OPEN
+PAH-011,PHYSICAL PROOF,"Accepted fixture, calibrated load, deformation/damage criteria and executed record",OPEN
+PAH-012,QUALIFIED REVIEW,Signed mechanical review and separate work authorization,OPEN

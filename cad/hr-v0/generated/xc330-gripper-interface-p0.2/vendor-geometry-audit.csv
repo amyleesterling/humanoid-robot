@@ -1,0 +1,3 @@
+source,solids,x_mm,y_mm,z_mm,volume_mm3,credit
+XC330 official STEP,15,20.000000322,34.000000213,29.006943910,15864.536971092,exact vendor geometry; material/mass not inferred from volume
+FPX330-S101 official STEP,1,34.000000000,7.000000000,28.600000001,1747.950519978,exact vendor geometry; manufacturer only states engineering plastic; mass not inferred

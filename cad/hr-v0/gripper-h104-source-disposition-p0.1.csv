@@ -1,0 +1,8 @@
+control_id,question,evidence,disposition,remaining_evidence,status
+HSD-001,Is an official H104 DWG controlled?,ROBOTIS endpoint 646 plus SHA-256 and AC1015 signature,YES - REFERENCE SOURCE ONLY,Material tolerance revision and fabrication authority remain absent,PARTIAL
+HSD-002,Does the official PDF correlate to the controlled repository copy?,ROBOTIS endpoint 647 resolves to the identical 72806-byte SHA-256 and the drawing states FOR REFERENCE ONLY,YES - BYTE IDENTICAL,Drawing material and tolerances remain blank; received article proof remains open,PARTIAL
+HSD-003,Does the official STEP correlate to the controlled repository copy?,ROBOTIS endpoint 648 resolves to the identical 229070-byte SHA-256 and parses as one solid,YES - BYTE IDENTICAL,Source coordinates do not define the H104-to-link5/carrier transform,PARTIAL
+HSD-004,Is the arm-side H104 subset source controlled?,Existing FEAT-H104-001 extracts four exact cylinder axes from the identical STEP,YES - NOMINAL SOURCE GEOMETRY ONLY,Received fit FAI fastener stack tolerance and proof remain open,PARTIAL
+HSD-005,Is the H104-to-complete-gripper transform closed?,GDC-001 through GDC-007 remain SELECTION REQUIRED,NO,Controlled complete assembly or received-part metrology plus qualified disposition,OPEN
+HSD-006,Is the complete gripper manufacturing definition closed?,GRH-001 and GRH-002 remain open,NO,Complete mechanism geometry mates tolerances materials mass guard force and physical evidence,OPEN
+HSD-007,Does this source correction authorize work?,No procurement fabrication assembly motion or energization flag is true,NO,Separate controlled releases and executed evidence,OPEN

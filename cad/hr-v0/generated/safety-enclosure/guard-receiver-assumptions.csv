@@ -1,0 +1,15 @@
+parameter,value,unit,status,evidence_required
+shoulder_axis_height,500.0,mm,CONTROLLED CURRENT CAD DATUM,Correlate to surveyed bench and assembled article
+maximum_object_center_reach,360.0,mm,CONTROLLED REQUIREMENT,Verify under INSPECT-MECH-001
+maximum_object_half_extent,35.0,mm,DERIVED FROM 70 MM MAXIMUM OBJECT,Freeze reference foam dimensions and tolerance
+stopping_travel_space_reservation,25.0,mm,PROVISIONAL - SELECTION REQUIRED,Measure worst pose and fault stopping travel; enlarge guard if exceeded
+guard_clearance_space_reservation,25.0,mm,PROVISIONAL - SELECTION REQUIRED,Select access probe and released minimum clearance
+envelope_tolerance_space_reservation,5.0,mm,PROVISIONAL - SELECTION REQUIRED,Close CAD build calibration and measurement tolerance stack
+guard_radial_envelope,450.0,mm,DERIVED PRELIMINARY SPACE CLAIM,Must be at least the released swept stopping payload and tolerance union
+guard_internal_width,900.0,mm,PRELIMINARY SPACE CLAIM,Site footprint and guard-frame design required
+guard_internal_depth,400.0,mm,PROVISIONAL - SELECTION REQUIRED,Complete 3D sweep cable and service-volume study
+guard_internal_height,950.0,mm,PRELIMINARY SPACE CLAIM,Site footprint and guard-frame design required
+candidate_panel_thickness,6.0,mm,PROVISIONAL - SELECTION REQUIRED,Exact material grade impact retention fasteners and support spacing required
+catch_tray_plan,820 x 320,mm,PRELIMINARY SPACE CLAIM,Execute payload drop and rebound containment tests
+catch_tray_wall_height,50.0,mm,PROVISIONAL - SELECTION REQUIRED,Validate maximum bounce slide and receiver-fixture interference
+catch_tray_bottom_thickness,3.0,mm,PROVISIONAL - SELECTION REQUIRED,Exact material support span and impact/retention proof required

@@ -1,0 +1,13 @@
+coordinate_id,item,quantity,value_mm,tolerance,source,release_boundary
+GUIDE-CAT-001,TWA-01-20,A,63.0,not published in controlled row,official TWA product/CAD view,catalog dimension only
+GUIDE-CAT-002,TWA-01-20,C,81.0,not published in controlled row,official TWA product/CAD view,catalog dimension only
+GUIDE-CAT-003,TWA-01-20,body height,25.0,SELECTION REQUIRED,official CADClick dimension view,system height remains separate
+GUIDE-CAT-004,TWA-01-20 on TS-01-20,H system height,30.0,+/-0.35,official drylin T table,as-built stack open
+GUIDE-CAT-005,TWA-01-20,A2 K2 row spacing,53.0,not published,official drawing/table,received CAD/metrology required
+GUIDE-CAT-006,TWA-01-20,C2 K2 column spacing,40.0,not published,official drawing/table,received CAD/metrology required
+GUIDE-CAT-007,TWA-01-20,K2 thread,M6,thread depth not published,official drawing/table,screw length/engagement open
+GUIDE-CAT-008,TWA-01-20,K2 maximum torque,1.84 N m,maximum catalog datum,official drylin T catalog,not project torque release
+GUIDE-CAT-009,TS-01-20,a,20.0,-0.2,official rail table,configured article open
+GUIDE-CAT-010,TS-01-20,C4 pitch,60.0,not published,official rail table,configured article open
+GUIDE-CAT-011,TS-01-20,C5/C6 permitted end spacing,20.0..49.5,standard pattern symmetric,official rail table,derived 120 mm pattern only
+GUIDE-CAT-012,TS-01-20 120 mm candidate,derived C5=C6,30.0,SELECTION REQUIRED,(120-60)/2,not a configured order release

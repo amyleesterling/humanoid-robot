@@ -1,0 +1,8 @@
+item_id,manufacturer,exact_model_or_part,role,controlled_fact,state,safety_credit
+Q4X1,Banner Engineering,Q4XFULAF110-Q8 / 97540,independent displacement witness for guarded disconnected-load E2 only,12-30 Vdc; 0-10 V; 35-110 mm; 5-pin M12; Class 1 laser,EXACT EVALUATION CANDIDATE / HOLD,ZERO
+CBL-Q4X1,Banner Engineering,BC-M12F5-22-2-SF / 815158,sensor-to-flying-lead cordset,2 m; single-ended M12 5-pin straight female; five 22 AWG conductors; black PVC; shielded,EXACT EVALUATION CANDIDATE / HOLD,ZERO
+BR-Q4X1,Banner Engineering,SMBQ4XFA / 91512,Q4X pan/tilt bracket on a later selected 12 mm rod/support,zinc Zamak; Q4X-compatible; pan/tilt; mounting hardware included; official bolt-length records disagree,EXACT EVALUATION CANDIDATE / MANUFACTURER CLARIFICATION REQUIRED,ZERO
+PS-Q4X1,Keithley / Tektronix,"2220-30-1, channel 1 only",temporary independent floating Q4X instrumentation source,two independent isolated 0-30 V / 0-1.5 A channels; independently controlled outputs; linear supply,EXACT EVALUATION CANDIDATE / HOLD,ZERO
+VP-Q4X1,Tektronix,TIVP02 + TIVPMX10X,isolated observation of Q4X analog output,positive observes pin 4; negative observes pin 5; physical lead arrangement remains held,R182 EXACT EVALUATION CANDIDATE / HOLD,ZERO
+PROT-Q4X1,SELECTION REQUIRED,SELECTION REQUIRED,Q4X instrumentation-source branch protection and termination enclosure,"rating, interrupting capability, terminals, conductor, enclosure and location unresolved",SELECTION REQUIRED,ZERO
+TGT-Q4X1,SELECTION REQUIRED,SELECTION REQUIRED,calibration and no-motion witness target,"material, finish, dimensions, mounting and reflectance unresolved; BRT-Q4X-60X50 is not selected",SELECTION REQUIRED,ZERO

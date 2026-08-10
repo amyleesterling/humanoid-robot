@@ -1,0 +1,19 @@
+{
+  "identifier": "HR-V0-LABEL-P0.1",
+  "review_round": "R169",
+  "date": "2026-08-09",
+  "status": "PRELIMINARY_NOT_APPROVED_FOR_WIRING_OR_ENERGIZATION",
+  "terminal_marker_rows": 6,
+  "device_and_operator_marker_rows": 34,
+  "large_legend_rows": 4,
+  "open_holds": 12,
+  "wire_marker_selection_complete": false,
+  "printer_or_service_selected": false,
+  "artwork_approved": false,
+  "procurement_authorized": false,
+  "printing_authorized": false,
+  "installation_authorized": false,
+  "wiring_authorized": false,
+  "energization_authorized": false,
+  "safety_credit_claimed": false
+}

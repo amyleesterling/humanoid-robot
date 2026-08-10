@@ -1,0 +1,5 @@
+attempt_id,source_commit,environment,passed,total,failed,observed_failure,disposition,authority
+CCA-001,4747588583265758f7df416451ef5c20ef99ba3e,Windows Git 2.37.0 core.autocrlf=true,112,145,33,Hash-bound working bytes varied with global newline conversion,REJECTED - repository checkout contract required,NONE
+CCA-002,c93398e5e8acee0b99882a4f311c1249b5ac9dff,Windows Git 2.37.0 core.autocrlf=true,99,145,46,Blanket LF checkout contradicted historical controlled working bytes,REJECTED - exact exceptions required,NONE
+CCA-003,f48fbcd98138b3c52c5fc907b7e9fd334361fafe,Windows Git 2.37.0 core.autocrlf=true,144,145,1,Synthetic dynamic-trace results embedded originating absolute repository paths,CORRECTED - analyzer now emits repository-relative identifiers,NONE
+CCA-004,221035ed307f4e3501abad82cf7afa42f6e7cc36,Windows Git 2.37.0 core.autocrlf=true,145,145,0,No checker failure and clone remained clean,ACCEPTED AS REPRODUCIBILITY EVIDENCE ONLY,NONE

@@ -1,0 +1,4 @@
+parent,artifact,sha256,use
+HR-V0-X430-BRAKE-SUP-P0.1,test-fixtures/hr-v0/x430-brake-support-p0.1/geometry-check.json,42B18C6B750CD51EBF87E55F88FAF4E164E31B9F167CE64DCE7C51436DEB77C8,"4866/PT axes, 20 mm PT thickness and 120 mm nominal axis chain"
+HR-V0-X430-BRAKE-SUP-P0.1,test-fixtures/hr-v0/x430-brake-support-p0.1/dimension-register.csv,FF07CB21EF7BA73D9EF201693A8EB01A2E806C6BA5A67E03E0AEFC2704225CC9,drawing-controlled Magtrol/PT values and open tolerances
+HR-V0-X430-LOAD-RIG-P0.1,test-fixtures/hr-v0/x430-load-rig-p0.1/load-capacity-screen.csv,C5C3A695DE194E4A84542E1C8B14EC025151DB7BFFE349A0F1131747FB3096EE,brake mass/torque and X430 endpoint context

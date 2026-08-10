@@ -1,0 +1,61 @@
+{
+  "identifier": "HR-V0-XC330-WRIST-P0.1",
+  "date": "2026-08-10",
+  "status": "SOURCE-BOUND WRIST-INTEGRATION CANDIDATE - NOT SELECTED",
+  "h104_step_sha256": "75BA58D2668D7D25802D1277A5393445C4FB7A8C565566E56CE76FEFC0E59F7D",
+  "h104_pdf_sha256": "3FA377719C8FAA1235054D76D0913511A4EB37FBA746C60392385E40BE18E5B0",
+  "gripper_identifier": "HR-V0-GRIP-XC330-P0.2",
+  "arm_identifier": "HR-V0-ARM-ARCH-P0.7",
+  "gripper_to_h104_translation_mm": [
+    0.0,
+    4.0,
+    13.5
+  ],
+  "gripper_to_h104_rx_deg": 90.0,
+  "gripper_world_translation_mm": [
+    0.0,
+    327.6,
+    -13.5
+  ],
+  "gripper_world_rx_deg": 270.0,
+  "nominal_object_center_h104_mm": [
+    0.0,
+    -27.0,
+    13.5
+  ],
+  "nominal_object_center_world_mm": [
+    0.0,
+    358.6,
+    -13.5
+  ],
+  "world_y_reach_reserve_mm": 1.3999999999999773,
+  "bridge_pair_mass_screen_g": 9.836511,
+  "screen_subtotal_g": 688.961224,
+  "remaining_incomplete_headroom_g": 61.038776,
+  "collision_screen": {
+    "samples": 399,
+    "increment_deg": 5.0,
+    "j1_limits_deg": [
+      -20.0,
+      70.0
+    ],
+    "j2_limits_deg": [
+      15.0,
+      115.0
+    ],
+    "collision_samples": 0,
+    "maximum_positive_intersection_mm3": 0.0,
+    "status": "NOMINAL SAMPLED SCREEN ONLY - PHYSICAL AND CONTINUOUS PROOF OPEN"
+  },
+  "open_holds": 18,
+  "requirements_closed": 0,
+  "energization_gates_closed": 0,
+  "sol_blockers_closed": 0,
+  "procurement_release": false,
+  "fabrication_release": false,
+  "assembly_release": false,
+  "connection_release": false,
+  "motion_release": false,
+  "energization_release": false,
+  "warning": "PRELIMINARY WRIST-INTEGRATION CANDIDATE - NOT SELECTED - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
+}

@@ -1,0 +1,5 @@
+source_id,record,locator,revision_date,sha256,use
+WRI-S01,ROBOTIS FR12-H104K STEP,cad/vendor/robotis/FR12-H104K.stp,drawing family 2017-08-31; retrieved 2026-08-06,75BA58D2668D7D25802D1277A5393445C4FB7A8C565566E56CE76FEFC0E59F7D,"exact H104 B-Rep, inner faces and feature axes"
+WRI-S02,ROBOTIS FR12-H104K reference drawing,cad/vendor/robotis/FR12-H104K.pdf,2017-08-31; marked FOR REFERENCE ONLY,3FA377719C8FAA1235054D76D0913511A4EB37FBA746C60392385E40BE18E5B0,"38 mm inside width, 1.5 mm side stock, hole-family and M2-tap labels"
+WRI-S03,controlled arm architecture P0.7,cad/hr-v0/generated/arm-architecture-p0.7/architecture-summary.json,2026-08-07,F681850AD1F644014371A9849552E9B896933DC35478850E163CB865BF1F4DF1,"A07/G1 transforms, limits, collision and reach reserve"
+WRI-S04,XC330 gripper interface P0.2,cad/hr-v0/generated/xc330-gripper-interface-p0.2/package-summary.json,2026-08-10,27061F6E2217AF7EDC9780A17839B4A3950B69F32AC7E33E33A74CDE11988C74,"exact actuator/frame branch, PCD16 field, kinematics and incomplete mass basis"

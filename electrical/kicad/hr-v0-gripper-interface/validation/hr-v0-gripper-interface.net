@@ -1,0 +1,1169 @@
+(export
+	(version "E")
+	(design
+		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\hr-v0-gripper-interface\\hr-v0-gripper-interface.kicad_sch")
+		(date "2026-08-08T18:20:38")
+		(tool "Eeschema 10.0.5")
+		(textvar
+			(name "PROJECT_STATUS") "PRELIMINARY - ORDINARY CONTROL ONLY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+		(textvar
+			(name "REVISION") "HR-V0-GRIP-ELEC-P0.1")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title "PROJECT BUTTON HR-V0 GRIPPER ORDINARY-CONTROL CANDIDATE index")
+				(company "Project Button")
+				(rev "HR-V0-GRIP-ELEC-P0.1")
+				(date "2026-08-08")
+				(source "hr-v0-gripper-interface.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "2")
+			(name "/01 Protected 6 V / PWM / feedback candidate/")
+			(tstamps "/1a3f4c01-7700-56be-8275-125d799ffc16/")
+			(title_block
+				(title "PB HR-V0 HR-V0-GRIP-ELEC-P0.1 - 01")
+				(company "Project Button")
+				(rev "HR-V0-GRIP-ELEC-P0.1")
+				(date "2026-08-08")
+				(source "01_gripper_interface.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "DCGRIP1")
+			(value "Pololu D24V22F6 item 2859 - PREFERRED EVALUATION CANDIDATE")
+			(datasheet "https://www.pololu.com/product/2859")
+			(description "EN is represented by an isolated logical stub and shall have no external connection in this candidate. Carrier, terminals, thermal/noise/inrush/capacitance and protection remain open.")
+			(fields
+				(field
+					(name "Status") "NOT SELECTED")
+				(field
+					(name "Evidence") "Product page current 2026; dimension drawing 12 November 2015. Typical current is not a released Project Button capacity.")
+				(field
+					(name "Display") "Pololu D24V22F6 item 2859 - PREFERRED EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pololu.com/product/2859")
+				(field
+					(name "Description") "EN is represented by an isolated logical stub and shall have no external connection in this candidate. Carrier, terminals, thermal/noise/inrush/capacitance and protection remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "DCGRIP1")
+				(description "EN is represented by an isolated logical stub and shall have no external connection in this candidate. Carrier, terminals, thermal/noise/inrush/capacitance and protection remain open.")
+			)
+			(property
+				(name "Status")
+				(value "NOT SELECTED")
+			)
+			(property
+				(name "Evidence")
+				(value "Product page current 2026; dimension drawing 12 November 2015. Typical current is not a released Project Button capacity.")
+			)
+			(property
+				(name "Display")
+				(value "Pololu D24V22F6 item 2859 - PREFERRED EVALUATION CANDIDATE")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Protected 6 V / PWM / feedback candidate")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_gripper_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Protected 6 V / PWM / feedback candidate/")
+				(tstamps "/1a3f4c01-7700-56be-8275-125d799ffc16/")
+			)
+			(tstamps "75510fc8-b0c7-547f-ab97-f0091f841e32")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "GND")
+						)
+						(pin
+							(num "VIN")
+						)
+						(pin
+							(num "EN")
+						)
+						(pin
+							(num "PG")
+						)
+						(pin
+							(num "VOUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FGRIP1")
+			(value "BRANCH PROTECTION - SELECTION REQUIRED")
+			(datasheet "No manufacturer selected")
+			(description "Fault current, cable, inrush, regulator behavior, ambient, bundling, connector limits and jurisdiction required.")
+			(fields
+				(field
+					(name "Status") "VALUE/MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "No value or order code released.")
+				(field
+					(name "Display") "BRANCH PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Fault current, cable, inrush, regulator behavior, ambient, bundling, connector limits and jurisdiction required.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "FGRIP1")
+				(description "Fault current, cable, inrush, regulator behavior, ambient, bundling, connector limits and jurisdiction required.")
+			)
+			(property
+				(name "Status")
+				(value "VALUE/MPN SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "No value or order code released.")
+			)
+			(property
+				(name "Display")
+				(value "BRANCH PROTECTION - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Protected 6 V / PWM / feedback candidate")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_gripper_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Protected 6 V / PWM / feedback candidate/")
+				(tstamps "/1a3f4c01-7700-56be-8275-125d799ffc16/")
+			)
+			(tstamps "91169d91-22e3-54e3-acdd-880443e0ab18")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JGIN1")
+			(value "POST-K1/K2 branch - SELECTION REQUIRED")
+			(datasheet "Project Button Electrical V3-P1.13")
+			(description "Logical terminal identifiers are not connector pin numbers or pad positions. Physical implementation is SELECTION REQUIRED.")
+			(fields
+				(field
+					(name "Status") "INTERFACE SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Actuator-power removal boundary only; connector and conductors not released.")
+				(field
+					(name "Display") "POST-K1/K2 branch - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.13")
+				(field
+					(name "Description") "Logical terminal identifiers are not connector pin numbers or pad positions. Physical implementation is SELECTION REQUIRED.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JGIN1")
+				(description "Logical terminal identifiers are not connector pin numbers or pad positions. Physical implementation is SELECTION REQUIRED.")
+			)
+			(property
+				(name "Status")
+				(value "INTERFACE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "Actuator-power removal boundary only; connector and conductors not released.")
+			)
+			(property
+				(name "Display")
+				(value "POST-K1/K2 branch - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Protected 6 V / PWM / feedback candidate")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_gripper_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Protected 6 V / PWM / feedback candidate/")
+				(tstamps "/1a3f4c01-7700-56be-8275-125d799ffc16/")
+			)
+			(tstamps "256f28c3-6c35-529e-a51f-93013fee8c7f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "RTN")
+						)
+						(pin
+							(num "PWR")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JUSB1")
+			(value "Raspberry Pi USB host - SELECTION REQUIRED")
+			(datasheet "Raspberry Pi host boundary")
+			(description "Exact Pi port, cable, retention, enumeration, disconnect and EMC evidence remain open.")
+			(fields
+				(field
+					(name "Status") "CABLE/PORT SELECTION REQUIRED")
+				(field
+					(name "Evidence") "No connector order code released.")
+				(field
+					(name "Display") "Raspberry Pi USB host - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Raspberry Pi host boundary")
+				(field
+					(name "Description") "Exact Pi port, cable, retention, enumeration, disconnect and EMC evidence remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JUSB1")
+				(description "Exact Pi port, cable, retention, enumeration, disconnect and EMC evidence remain open.")
+			)
+			(property
+				(name "Status")
+				(value "CABLE/PORT SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "No connector order code released.")
+			)
+			(property
+				(name "Display")
+				(value "Raspberry Pi USB host - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Protected 6 V / PWM / feedback candidate")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_gripper_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Protected 6 V / PWM / feedback candidate/")
+				(tstamps "/1a3f4c01-7700-56be-8275-125d799ffc16/")
+			)
+			(tstamps "0d76bebe-332a-5172-89a3-69f486dd9554")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "GND")
+						)
+						(pin
+							(num "D+")
+						)
+						(pin
+							(num "D-")
+						)
+						(pin
+							(num "VBUS")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "MGRIP1")
+			(value "Pololu item 3551 FS90-FB gripper - NOT SELECTED")
+			(datasheet "https://www.pololu.com/product/3551 and https://www.pololu.com/product/3436")
+			(description "Received identity, exact connector mapping, endpoints, feedback correlation, current/thermal behavior, guard and stalling/backdrive proof remain open.")
+			(fields
+				(field
+					(name "Status") "PREFERRED EVALUATION CANDIDATE - NOT SELECTED")
+				(field
+					(name "Evidence") "Product records current 2026; item 3551 drawing 31 August 2018.")
+				(field
+					(name "Display") "Pololu item 3551 FS90-FB gripper - NOT SELECTED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pololu.com/product/3551 and https://www.pololu.com/product/3436")
+				(field
+					(name "Description") "Received identity, exact connector mapping, endpoints, feedback correlation, current/thermal behavior, guard and stalling/backdrive proof remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "MGRIP1")
+				(description "Received identity, exact connector mapping, endpoints, feedback correlation, current/thermal behavior, guard and stalling/backdrive proof remain open.")
+			)
+			(property
+				(name "Status")
+				(value "PREFERRED EVALUATION CANDIDATE - NOT SELECTED")
+			)
+			(property
+				(name "Evidence")
+				(value "Product records current 2026; item 3551 drawing 31 August 2018.")
+			)
+			(property
+				(name "Display")
+				(value "Pololu item 3551 FS90-FB gripper - NOT SELECTED")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Protected 6 V / PWM / feedback candidate")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_gripper_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Protected 6 V / PWM / feedback candidate/")
+				(tstamps "/1a3f4c01-7700-56be-8275-125d799ffc16/")
+			)
+			(tstamps "788df028-0ef5-5cd0-8fa8-55b8ced0c831")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FB")
+						)
+						(pin
+							(num "PWM")
+						)
+						(pin
+							(num "GND")
+						)
+						(pin
+							(num "6V")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RPG1")
+			(value "10 kOhm PG pull-up candidate")
+			(datasheet "Panasonic ERJ-6ENF1002V record already controlled in Electrical V3")
+			(description "Exact placement/carrier/termination and application review remain open.")
+			(fields
+				(field
+					(name "Status") "IMPLEMENTATION SELECTION REQUIRED")
+				(field
+					(name "Evidence") "10 kOhm exact resistor candidate; no carrier released.")
+				(field
+					(name "Display") "10 kOhm PG pull-up candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Panasonic ERJ-6ENF1002V record already controlled in Electrical V3")
+				(field
+					(name "Description") "Exact placement/carrier/termination and application review remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RPG1")
+				(description "Exact placement/carrier/termination and application review remain open.")
+			)
+			(property
+				(name "Status")
+				(value "IMPLEMENTATION SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "10 kOhm exact resistor candidate; no carrier released.")
+			)
+			(property
+				(name "Display")
+				(value "10 kOhm PG pull-up candidate")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Protected 6 V / PWM / feedback candidate")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_gripper_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Protected 6 V / PWM / feedback candidate/")
+				(tstamps "/1a3f4c01-7700-56be-8275-125d799ffc16/")
+			)
+			(tstamps "4e6f952e-f6fd-5a40-be0b-5eaeb0c37aac")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "UGRIP1")
+			(value "Pololu Micro Maestro 6 item 1350 - ORDINARY CONTROL")
+			(datasheet "https://www.pololu.com/product/1350/")
+			(description "Internal script empty; run-on-startup disabled; CH0 startup/error Off; CH1/CH2 inputs; nonzero serial timeout and all endpoints/speed/acceleration SELECTION REQUIRED and HIL validation required.")
+			(fields
+				(field
+					(name "Status") "PREFERRED EVALUATION CANDIDATE - ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "User guide copyright 2001-2022; product page current 2026. Not safety rated or credited.")
+				(field
+					(name "Display") "Pololu Micro Maestro 6 item 1350 - ORDINARY CONTROL")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pololu.com/product/1350/")
+				(field
+					(name "Description") "Internal script empty; run-on-startup disabled; CH0 startup/error Off; CH1/CH2 inputs; nonzero serial timeout and all endpoints/speed/acceleration SELECTION REQUIRED and HIL validation required.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "UGRIP1")
+				(description "Internal script empty; run-on-startup disabled; CH0 startup/error Off; CH1/CH2 inputs; nonzero serial timeout and all endpoints/speed/acceleration SELECTION REQUIRED and HIL validation required.")
+			)
+			(property
+				(name "Status")
+				(value "PREFERRED EVALUATION CANDIDATE - ZERO SAFETY CREDIT")
+			)
+			(property
+				(name "Evidence")
+				(value "User guide copyright 2001-2022; product page current 2026. Not safety rated or credited.")
+			)
+			(property
+				(name "Display")
+				(value "Pololu Micro Maestro 6 item 1350 - ORDINARY CONTROL")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Protected 6 V / PWM / feedback candidate")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_gripper_interface.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Protected 6 V / PWM / feedback candidate/")
+				(tstamps "/1a3f4c01-7700-56be-8275-125d799ffc16/")
+			)
+			(tstamps "b8ab94ad-a2c2-5a24-ae43-78101f12e8c7")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "GND")
+						)
+						(pin
+							(num "USB_D+")
+						)
+						(pin
+							(num "USB_D-")
+						)
+						(pin
+							(num "USB5V")
+						)
+						(pin
+							(num "CH2")
+						)
+						(pin
+							(num "CH1")
+						)
+						(pin
+							(num "CH0")
+						)
+						(pin
+							(num "5V")
+						)
+						(pin
+							(num "SERVO_PWR")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "PBV3")
+			(part "DCGRIP1")
+			(description "EN is represented by an isolated logical stub and shall have no external connection in this candidate. Carrier, terminals, thermal/noise/inrush/capacitance and protection remain open.")
+			(docs "https://www.pololu.com/product/2859")
+			(fields
+				(field
+					(name "Reference") "DCGRIP1")
+				(field
+					(name "Value") "Pololu D24V22F6 item 2859 - PREFERRED EVALUATION CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pololu.com/product/2859")
+				(field
+					(name "Description") "EN is represented by an isolated logical stub and shall have no external connection in this candidate. Carrier, terminals, thermal/noise/inrush/capacitance and protection remain open.")
+				(field
+					(name "Status") "NOT SELECTED")
+				(field
+					(name "Evidence") "Product page current 2026; dimension drawing 12 November 2015. Typical current is not a released Project Button capacity.")
+				(field
+					(name "Display") "Pololu D24V22F6 item 2859 - PREFERRED EVALUATION CANDIDATE")
+			)
+			(pins
+				(pin
+					(num "EN")
+					(name "ENABLE_-_NO_EXTERNAL_CONNECTION")
+					(type "passive")
+				)
+				(pin
+					(num "GND")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "PG")
+					(name "POWER_GOOD")
+					(type "passive")
+				)
+				(pin
+					(num "VIN")
+					(name "VIN")
+					(type "passive")
+				)
+				(pin
+					(num "VOUT")
+					(name "6_V_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "FGRIP1")
+			(description "Fault current, cable, inrush, regulator behavior, ambient, bundling, connector limits and jurisdiction required.")
+			(docs "No manufacturer selected")
+			(fields
+				(field
+					(name "Reference") "FGRIP1")
+				(field
+					(name "Value") "BRANCH PROTECTION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Fault current, cable, inrush, regulator behavior, ambient, bundling, connector limits and jurisdiction required.")
+				(field
+					(name "Status") "VALUE/MPN SELECTION REQUIRED")
+				(field
+					(name "Evidence") "No value or order code released.")
+				(field
+					(name "Display") "BRANCH PROTECTION - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "SOURCE")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "PROTECTED")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JGIN1")
+			(description "Logical terminal identifiers are not connector pin numbers or pad positions. Physical implementation is SELECTION REQUIRED.")
+			(docs "Project Button Electrical V3-P1.13")
+			(fields
+				(field
+					(name "Reference") "JGIN1")
+				(field
+					(name "Value") "POST-K1/K2 branch - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Project Button Electrical V3-P1.13")
+				(field
+					(name "Description") "Logical terminal identifiers are not connector pin numbers or pad positions. Physical implementation is SELECTION REQUIRED.")
+				(field
+					(name "Status") "INTERFACE SELECTION REQUIRED")
+				(field
+					(name "Evidence") "Actuator-power removal boundary only; connector and conductors not released.")
+				(field
+					(name "Display") "POST-K1/K2 branch - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "PWR")
+					(name "POST-K1/K2_+24_V")
+					(type "passive")
+				)
+				(pin
+					(num "RTN")
+					(name "0_V_return")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JUSB1")
+			(description "Exact Pi port, cable, retention, enumeration, disconnect and EMC evidence remain open.")
+			(docs "Raspberry Pi host boundary")
+			(fields
+				(field
+					(name "Reference") "JUSB1")
+				(field
+					(name "Value") "Raspberry Pi USB host - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Raspberry Pi host boundary")
+				(field
+					(name "Description") "Exact Pi port, cable, retention, enumeration, disconnect and EMC evidence remain open.")
+				(field
+					(name "Status") "CABLE/PORT SELECTION REQUIRED")
+				(field
+					(name "Evidence") "No connector order code released.")
+				(field
+					(name "Display") "Raspberry Pi USB host - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "D+")
+					(name "USB_D+")
+					(type "passive")
+				)
+				(pin
+					(num "D-")
+					(name "USB_D-")
+					(type "passive")
+				)
+				(pin
+					(num "GND")
+					(name "USB_GND")
+					(type "passive")
+				)
+				(pin
+					(num "VBUS")
+					(name "USB_VBUS")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "MGRIP1")
+			(description "Received identity, exact connector mapping, endpoints, feedback correlation, current/thermal behavior, guard and stalling/backdrive proof remain open.")
+			(docs "https://www.pololu.com/product/3551 and https://www.pololu.com/product/3436")
+			(fields
+				(field
+					(name "Reference") "MGRIP1")
+				(field
+					(name "Value") "Pololu item 3551 FS90-FB gripper - NOT SELECTED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pololu.com/product/3551 and https://www.pololu.com/product/3436")
+				(field
+					(name "Description") "Received identity, exact connector mapping, endpoints, feedback correlation, current/thermal behavior, guard and stalling/backdrive proof remain open.")
+				(field
+					(name "Status") "PREFERRED EVALUATION CANDIDATE - NOT SELECTED")
+				(field
+					(name "Evidence") "Product records current 2026; item 3551 drawing 31 August 2018.")
+				(field
+					(name "Display") "Pololu item 3551 FS90-FB gripper - NOT SELECTED")
+			)
+			(pins
+				(pin
+					(num "6V")
+					(name "SERVO_+")
+					(type "passive")
+				)
+				(pin
+					(num "FB")
+					(name "GREEN_FEEDBACK")
+					(type "passive")
+				)
+				(pin
+					(num "GND")
+					(name "SERVO_GND")
+					(type "passive")
+				)
+				(pin
+					(num "PWM")
+					(name "SERVO_PWM")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RPG1")
+			(description "Exact placement/carrier/termination and application review remain open.")
+			(docs "Panasonic ERJ-6ENF1002V record already controlled in Electrical V3")
+			(fields
+				(field
+					(name "Reference") "RPG1")
+				(field
+					(name "Value") "10 kOhm PG pull-up candidate")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Panasonic ERJ-6ENF1002V record already controlled in Electrical V3")
+				(field
+					(name "Description") "Exact placement/carrier/termination and application review remain open.")
+				(field
+					(name "Status") "IMPLEMENTATION SELECTION REQUIRED")
+				(field
+					(name "Evidence") "10 kOhm exact resistor candidate; no carrier released.")
+				(field
+					(name "Display") "10 kOhm PG pull-up candidate")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "MAESTRO_5_V")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "PG_SENSE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "UGRIP1")
+			(description "Internal script empty; run-on-startup disabled; CH0 startup/error Off; CH1/CH2 inputs; nonzero serial timeout and all endpoints/speed/acceleration SELECTION REQUIRED and HIL validation required.")
+			(docs "https://www.pololu.com/product/1350/")
+			(fields
+				(field
+					(name "Reference") "UGRIP1")
+				(field
+					(name "Value") "Pololu Micro Maestro 6 item 1350 - ORDINARY CONTROL")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pololu.com/product/1350/")
+				(field
+					(name "Description") "Internal script empty; run-on-startup disabled; CH0 startup/error Off; CH1/CH2 inputs; nonzero serial timeout and all endpoints/speed/acceleration SELECTION REQUIRED and HIL validation required.")
+				(field
+					(name "Status") "PREFERRED EVALUATION CANDIDATE - ZERO SAFETY CREDIT")
+				(field
+					(name "Evidence") "User guide copyright 2001-2022; product page current 2026. Not safety rated or credited.")
+				(field
+					(name "Display") "Pololu Micro Maestro 6 item 1350 - ORDINARY CONTROL")
+			)
+			(pins
+				(pin
+					(num "5V")
+					(name "5_V_LOGIC_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "CH0")
+					(name "PWM_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "CH1")
+					(name "FEEDBACK_ANALOG_IN")
+					(type "passive")
+				)
+				(pin
+					(num "CH2")
+					(name "POWER-GOOD_ANALOG_IN")
+					(type "passive")
+				)
+				(pin
+					(num "GND")
+					(name "COMMON_GND")
+					(type "passive")
+				)
+				(pin
+					(num "SERVO_PWR")
+					(name "SERVO_POWER_RAIL")
+					(type "passive")
+				)
+				(pin
+					(num "USB5V")
+					(name "USB_logic_power")
+					(type "passive")
+				)
+				(pin
+					(num "USB_D+")
+					(name "USB_D+")
+					(type "passive")
+				)
+				(pin
+					(num "USB_D-")
+					(name "USB_D-")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "PBV3")
+			(uri "${KIPRJMOD}/hr-v0-gripper-interface.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "GRIP_0V")
+			(class "Default")
+			(node
+				(ref "DCGRIP1")
+				(pin "GND")
+				(pinfunction "GND_GND")
+				(pintype "passive")
+			)
+			(node
+				(ref "JGIN1")
+				(pin "RTN")
+				(pinfunction "0_V_return_RTN")
+				(pintype "passive")
+			)
+			(node
+				(ref "JUSB1")
+				(pin "GND")
+				(pinfunction "USB_GND_GND")
+				(pintype "passive")
+			)
+			(node
+				(ref "MGRIP1")
+				(pin "GND")
+				(pinfunction "SERVO_GND_GND")
+				(pintype "passive")
+			)
+			(node
+				(ref "UGRIP1")
+				(pin "GND")
+				(pinfunction "COMMON_GND_GND")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "2")
+			(name "GRIP_6V")
+			(class "Default")
+			(node
+				(ref "DCGRIP1")
+				(pin "VOUT")
+				(pinfunction "6_V_OUT_VOUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "MGRIP1")
+				(pin "6V")
+				(pinfunction "SERVO_+_6V")
+				(pintype "passive")
+			)
+			(node
+				(ref "UGRIP1")
+				(pin "SERVO_PWR")
+				(pinfunction "SERVO_POWER_RAIL_SERVO_PWR")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "3")
+			(name "GRIP_24V_PROTECTED")
+			(class "Default")
+			(node
+				(ref "DCGRIP1")
+				(pin "VIN")
+				(pinfunction "VIN_VIN")
+				(pintype "passive")
+			)
+			(node
+				(ref "FGRIP1")
+				(pin "OUT")
+				(pinfunction "PROTECTED_OUT")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "4")
+			(name "GRIP_FB")
+			(class "Default")
+			(node
+				(ref "MGRIP1")
+				(pin "FB")
+				(pinfunction "GREEN_FEEDBACK_FB")
+				(pintype "passive")
+			)
+			(node
+				(ref "UGRIP1")
+				(pin "CH1")
+				(pinfunction "FEEDBACK_ANALOG_IN_CH1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "5")
+			(name "GRIP_PG_SENSE")
+			(class "Default")
+			(node
+				(ref "DCGRIP1")
+				(pin "PG")
+				(pinfunction "POWER_GOOD_PG")
+				(pintype "passive")
+			)
+			(node
+				(ref "RPG1")
+				(pin "2")
+				(pinfunction "PG_SENSE_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "UGRIP1")
+				(pin "CH2")
+				(pinfunction "POWER-GOOD_ANALOG_IN_CH2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "GRIP_PWM")
+			(class "Default")
+			(node
+				(ref "MGRIP1")
+				(pin "PWM")
+				(pinfunction "SERVO_PWM_PWM")
+				(pintype "passive")
+			)
+			(node
+				(ref "UGRIP1")
+				(pin "CH0")
+				(pinfunction "PWM_OUT_CH0")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "7")
+			(name "MAESTRO_5V")
+			(class "Default")
+			(node
+				(ref "RPG1")
+				(pin "1")
+				(pinfunction "MAESTRO_5_V_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "UGRIP1")
+				(pin "5V")
+				(pinfunction "5_V_LOGIC_OUT_5V")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "8")
+			(name "PI_USB_5V")
+			(class "Default")
+			(node
+				(ref "JUSB1")
+				(pin "VBUS")
+				(pinfunction "USB_VBUS_VBUS")
+				(pintype "passive")
+			)
+			(node
+				(ref "UGRIP1")
+				(pin "USB5V")
+				(pinfunction "USB_logic_power_USB5V")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "9")
+			(name "POST_K1_K2_24V")
+			(class "Default")
+			(node
+				(ref "FGRIP1")
+				(pin "IN")
+				(pinfunction "SOURCE_IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "JGIN1")
+				(pin "PWR")
+				(pinfunction "POST-K1/K2_+24_V_PWR")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "10")
+			(name "USB_D_MINUS")
+			(class "Default")
+			(node
+				(ref "JUSB1")
+				(pin "D-")
+				(pinfunction "USB_D-_D-")
+				(pintype "passive")
+			)
+			(node
+				(ref "UGRIP1")
+				(pin "USB_D-")
+				(pinfunction "USB_D-_USB_D-")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "11")
+			(name "USB_D_PLUS")
+			(class "Default")
+			(node
+				(ref "JUSB1")
+				(pin "D+")
+				(pinfunction "USB_D+_D+")
+				(pintype "passive")
+			)
+			(node
+				(ref "UGRIP1")
+				(pin "USB_D+")
+				(pinfunction "USB_D+_USB_D+")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "12")
+			(name "unconnected-(DCGRIP1-ENABLE_-_NO_EXTERNAL_CONNECTION-PadEN)")
+			(class "Default")
+			(node
+				(ref "DCGRIP1")
+				(pin "EN")
+				(pinfunction "ENABLE_-_NO_EXTERNAL_CONNECTION_EN")
+				(pintype "passive+no_connect")
+			)
+		)
+	)
+)

@@ -1,0 +1,13 @@
+record_id,date,repo_commit,source_route,request_or_download_reference,part_id,expected_item,requested_format,received_filename,received_revision_or_version,publication_or_file_date,license,source_url,sha256,units_and_coordinate_system,manufacturing_release_claim,reviewer,disposition,notes
+NOT-EXECUTED,,,,,GCA-001,PALM GRIPPER left and right,"native STEP or Parasolid preferred; STL accepted only as labeled reference",,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,GCA-002,LINK ROD x2,"native STEP or Parasolid preferred; STL accepted only as labeled reference",,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,GCA-003,FLANGE BUSH x4,"native STEP or Parasolid or controlled catalog drawing",,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,GCA-004,CRANK ARM x1,"native STEP or Parasolid preferred; STL accepted only as labeled reference",,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,GCA-005,RAIL BLOCK x2,"native STEP or Parasolid preferred; STL accepted only as labeled reference",,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,GCA-006,RAIL BRACKET LEFT x1,"native STEP or Parasolid preferred; STL accepted only as labeled reference",,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,GCA-007,RAIL BRACKET RIGHT x1,"native STEP or Parasolid preferred; STL accepted only as labeled reference",,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,GCA-008,link5 or gripper carrier,"native STEP or Parasolid with datum definition",,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,GCA-009,H104-to-carrier assembly datum,"native assembly or dimensioned datum drawing",,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,GCA-010,complete gripper assembly,"native assembly with mates and component identities",,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,GCA-011,source revision and license record,"publisher document or repository release record",,,,,,,,,,NOT EXECUTED,TEMPLATE ROW
+NOT-EXECUTED,,,,,GCA-012,part material and mass records,"publisher data or received calibrated measurement",,,,,,,,,,NOT EXECUTED,TEMPLATE ROW

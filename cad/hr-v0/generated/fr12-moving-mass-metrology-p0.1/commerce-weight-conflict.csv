@@ -1,0 +1,3 @@
+record_id,official_product,sku,commerce_weight_field,package_relationship,source,checked,disposition,reason
+FR12-WEIGHT-01,FR12-H101K Set,903-0239-000,0.10 lb,"contains one HN12-I101 Set plus frame, bolts and spacer rings",https://www.robotis.us/fr12-h101k-set/,2026-08-08,REJECT FOR MASS CREDIT,rounded storefront field is lower than the separately listed included idler-set field; semantics and rounding are not a component mass-property record
+FR12-WEIGHT-02,HN12-I101 Set,903-0240-000,0.20 lb,included within FR12-H101K Set,https://www.robotis.us/hn12-i101-set/,2026-08-08,REJECT FOR MASS CREDIT,"field conflicts with the containing kit field and cannot establish installed moving mass, COM or inertia"
