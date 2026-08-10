@@ -82,6 +82,9 @@ class SupervisorConfig:
     automatic_gripper_speed_mm_s: float
     setup_gripper_speed_mm_s: float
     maximum_sample_lateness_ms: int | None
+    maximum_trajectory_samples: int | None
+    maximum_trajectory_duration_ms: int | None
+    maximum_execution_slack_ms: int | None
     joints: Mapping[str, JointRule]
     kinematic_model_hash: str
     kinematic_model: PlanarKinematicModel
@@ -104,6 +107,24 @@ class SupervisorConfig:
                 int(raw["maximum_sample_lateness_ms"])
                 if isinstance(raw.get("maximum_sample_lateness_ms"), int)
                 and not isinstance(raw.get("maximum_sample_lateness_ms"), bool)
+                else None
+            ),
+            maximum_trajectory_samples=(
+                int(raw["maximum_trajectory_samples"])
+                if isinstance(raw.get("maximum_trajectory_samples"), int)
+                and not isinstance(raw.get("maximum_trajectory_samples"), bool)
+                else None
+            ),
+            maximum_trajectory_duration_ms=(
+                int(raw["maximum_trajectory_duration_ms"])
+                if isinstance(raw.get("maximum_trajectory_duration_ms"), int)
+                and not isinstance(raw.get("maximum_trajectory_duration_ms"), bool)
+                else None
+            ),
+            maximum_execution_slack_ms=(
+                int(raw["maximum_execution_slack_ms"])
+                if isinstance(raw.get("maximum_execution_slack_ms"), int)
+                and not isinstance(raw.get("maximum_execution_slack_ms"), bool)
                 else None
             ),
             joints={name: JointRule(**rule) for name, rule in raw["joints"].items()},
@@ -136,6 +157,12 @@ class SupervisorConfig:
             and tolerances_closed
             and self.maximum_sample_lateness_ms is not None
             and self.maximum_sample_lateness_ms >= 0
+            and self.maximum_trajectory_samples is not None
+            and self.maximum_trajectory_samples > 0
+            and self.maximum_trajectory_duration_ms is not None
+            and self.maximum_trajectory_duration_ms > 0
+            and self.maximum_execution_slack_ms is not None
+            and self.maximum_execution_slack_ms >= 0
             and limits_current
             and self.kinematic_model.selections_closed
             and self.kinematic_model.configured_model_hash == self.kinematic_model_hash
@@ -399,6 +426,8 @@ class Supervisor:
             return "measured starting pose outside tolerance"
         if not command.samples:
             return "trajectory has no samples"
+        if self.config.maximum_trajectory_samples is None or len(command.samples) > self.config.maximum_trajectory_samples:
+            return "trajectory sample count exceeds the released bound"
 
         last_offset = -1
         expected_axes = set(self.config.joints)
@@ -420,6 +449,12 @@ class Supervisor:
                 if velocity > limit:
                     return f"{axis} velocity outside configured {command.mode.value} limit"
 
+        if (
+            self.config.maximum_trajectory_duration_ms is None
+            or command.samples[-1].offset_ms > self.config.maximum_trajectory_duration_ms
+        ):
+            return "trajectory duration exceeds the released bound"
+
         tcp_speeds = list(self._kinematic_validator(command.samples))
         if len(tcp_speeds) != len(command.samples):
             return "kinematic validator returned wrong sample count"
@@ -427,6 +462,14 @@ class Supervisor:
             return "computed TCP speed outside configured limit"
         if command.execution_deadline_ms < command.source_time_ms + command.samples[-1].offset_ms:
             return "execution deadline precedes the final trajectory sample"
+        if (
+            self.config.maximum_execution_slack_ms is None
+            or command.execution_deadline_ms
+            > command.source_time_ms
+            + command.samples[-1].offset_ms
+            + self.config.maximum_execution_slack_ms
+        ):
+            return "execution deadline slack exceeds the released bound"
         if set(command.expected_terminal_positions) != expected_axes:
             return "terminal-position axis set mismatch"
         if not self._positions_match(command.samples[-1].positions, command.expected_terminal_positions):

@@ -9,6 +9,9 @@
   "automatic_gripper_speed_mm_s": 20.0,
   "setup_gripper_speed_mm_s": 10.0,
   "maximum_sample_lateness_ms": null,
+  "maximum_trajectory_samples": null,
+  "maximum_trajectory_duration_ms": null,
+  "maximum_execution_slack_ms": null,
   "joints": {
     "J1": {"minimum": -20.0, "maximum": 70.0, "unit": "deg", "start_tolerance": null, "terminal_tolerance": null},
     "J2": {"minimum": 15.0, "maximum": 115.0, "unit": "deg", "start_tolerance": null, "terminal_tolerance": null},

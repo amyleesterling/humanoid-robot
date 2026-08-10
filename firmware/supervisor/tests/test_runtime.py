@@ -62,6 +62,7 @@ class FakeHardware:
         self.k1_feedback = False
         self.k2_feedback = False
         self.heartbeat: list[bool] = []
+        self.heartbeat_service: list[tuple[int, bool]] = []
         self.closed = False
         self.fail_heartbeat = False
 
@@ -80,8 +81,14 @@ class FakeHardware:
             positions=dict(positions),
         )
 
-    def set_heartbeat_allowed(self, allowed: bool) -> None:
+    def service_heartbeat(self, now_ms: int, allowed: bool) -> None:
+        self.heartbeat_service.append((now_ms, bool(allowed)))
         self.heartbeat.append(bool(allowed))
+        if self.fail_heartbeat:
+            raise RuntimeError("injected heartbeat driver failure")
+
+    def disable_heartbeat(self) -> None:
+        self.heartbeat.append(False)
         if self.fail_heartbeat:
             raise RuntimeError("injected heartbeat driver failure")
 

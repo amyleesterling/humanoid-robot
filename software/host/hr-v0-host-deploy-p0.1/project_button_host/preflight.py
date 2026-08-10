@@ -71,6 +71,8 @@ def evaluate(config_path: Path, root: Path = Path("/")) -> PreflightResult:
         "python_interpreter_sha256",
         "package_lock_sha256",
         "runtime_entrypoint_sha256",
+        "runtime_backend_sha256",
+        "gpio_backend_sha256",
         "supervisor_config_sha256",
         "actuator_config_sha256",
         "compute_interface_config_sha256",
@@ -122,6 +124,8 @@ def evaluate(config_path: Path, root: Path = Path("/")) -> PreflightResult:
         ("actuator_config_path", "actuator_config_sha256"),
         ("compute_interface_config_path", "compute_interface_config_sha256"),
         ("runtime_entrypoint", "runtime_entrypoint_sha256"),
+        ("runtime_backend_path", "runtime_backend_sha256"),
+        ("gpio_backend_path", "gpio_backend_sha256"),
     )
     for path_key, hash_key in file_bindings:
         target = config.get(path_key)
@@ -134,6 +138,58 @@ def evaluate(config_path: Path, root: Path = Path("/")) -> PreflightResult:
             holds.append(f"host config: {path_key} target absent")
         elif _is_sha256(expected) and _sha256(candidate) != expected.lower():
             holds.append(f"host config: {path_key} hash mismatch")
+
+    if config.get("runtime_backend") != "project_button_host.unix_command_source:factory":
+        holds.append("host config: controlled command backend changed")
+    if config.get("gpio_backend") != "project_button_host.gpiod_hardware:factory":
+        holds.append("host config: controlled GPIO backend changed")
+
+    command = config.get("command_source")
+    if not isinstance(command, dict):
+        holds.append("host config: command-source configuration absent")
+    else:
+        if command.get("socket_path") != "/run/project-button/trajectory.sock":
+            holds.append("host config: command socket path changed")
+        if command.get("socket_mode") != "0o660":
+            holds.append("host config: command socket mode changed")
+        for key in ("allowed_uid", "allowed_gid"):
+            value = command.get(key)
+            if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+                holds.append(f"host config: command-source {key} unresolved")
+        size = command.get("maximum_datagram_bytes")
+        if isinstance(size, bool) or not isinstance(size, int) or not 256 <= size <= 1_048_576:
+            holds.append("host config: command datagram bound unresolved")
+
+    gpio = config.get("gpio")
+    input_names = {
+        "control_power", "estop_healthy", "watchdog_healthy", "edm_healthy",
+        "compute_undervoltage", "sr1_ready", "sra1_armed", "k1_feedback", "k2_feedback",
+    }
+    if not isinstance(gpio, dict):
+        holds.append("host config: GPIO allocation absent")
+    else:
+        for key in ("distribution", "version", "chip_path"):
+            value = gpio.get(key)
+            if not isinstance(value, str) or not value.strip() or value.strip().upper() in UNRESOLVED_MARKERS:
+                holds.append(f"host config: GPIO {key} unresolved")
+        for key in ("heartbeat_line", "heartbeat_half_period_ms", "maximum_edge_lateness_ms"):
+            value = gpio.get(key)
+            if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+                holds.append(f"host config: GPIO {key} unresolved")
+        inputs = gpio.get("inputs")
+        if not isinstance(inputs, dict) or set(inputs) != input_names:
+            holds.append("host config: GPIO observation set unresolved")
+        else:
+            for name in sorted(input_names):
+                item = inputs[name]
+                if not isinstance(item, dict):
+                    holds.append(f"host config: GPIO input {name} unresolved")
+                    continue
+                line = item.get("line")
+                if isinstance(line, bool) or not isinstance(line, int) or line < 0:
+                    holds.append(f"host config: GPIO input {name} line unresolved")
+                if not isinstance(item.get("active_high"), bool):
+                    holds.append(f"host config: GPIO input {name} polarity unresolved")
 
     return PreflightResult(not holds, tuple(holds))
 

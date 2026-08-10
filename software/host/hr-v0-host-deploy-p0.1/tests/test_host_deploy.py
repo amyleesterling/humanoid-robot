@@ -34,7 +34,7 @@ class HostDeployTests(unittest.TestCase):
         result = self.preflight.evaluate(PACKAGE / "host-deploy-config.json")
         self.assertFalse(result.ready)
         self.assertGreaterEqual(len(result.holds), 15)
-        self.assertTrue(any("runtime_backend unresolved" in hold for hold in result.holds))
+        self.assertTrue(any("GPIO input sr1_ready line unresolved" in hold for hold in result.holds))
 
     def test_launcher_does_not_spawn_for_committed_configuration(self):
         with mock.patch.object(self.launcher.subprocess, "run") as run:

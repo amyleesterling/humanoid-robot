@@ -136,11 +136,29 @@ def run(config_path: Path, root: Path = Path("/")) -> int:
                     file=sys.stderr,
                 )
         else:
+            cleanup_errors = []
             if commands is not None:
-                commands.close()
+                try:
+                    commands.close()
+                except Exception as cleanup_exc:
+                    cleanup_errors.append(f"commands: {cleanup_exc}")
             if hardware is not None:
-                hardware.set_heartbeat_allowed(False)
-                hardware.close()
+                try:
+                    hardware.disable_heartbeat()
+                except Exception as cleanup_exc:
+                    cleanup_errors.append(f"heartbeat: {cleanup_exc}")
+                try:
+                    hardware.close()
+                except Exception as cleanup_exc:
+                    cleanup_errors.append(f"hardware: {cleanup_exc}")
+            if cleanup_errors:
+                print(
+                    json.dumps(
+                        {"ready": False, "holds": ["partial-start cleanup failures: " + "; ".join(cleanup_errors)], "motion_authority": "NONE"},
+                        sort_keys=True,
+                    ),
+                    file=sys.stderr,
+                )
 
 
 def main() -> int:

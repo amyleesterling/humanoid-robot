@@ -6,13 +6,13 @@ Artifact: `HR-V0-RUNTIME-P0.1`
 
 Configuration: `HR-V0-HOST-DEPLOY-P0.1` / `HR-V0-SUP-P0.3` / `HR-V0-DXL-TRANSPORT-P0.3` / `HR-V0-KIN-P0.1`
 
-Review/control round: R198
+Review/control round: R198; backend correction R199
 
 ## Correction
 
-The R171 host overlay stopped safely but its target entrypoint was `SELECTION REQUIRED` and no source connected hardware observation, supervisor authority, heartbeat permission, sample scheduling and the actuator bus. R198 adds that missing executable boundary rather than treating a launcher as a runtime.
+The R171 host overlay stopped safely but its target entrypoint was `SELECTION REQUIRED` and no source connected hardware observation, supervisor authority, heartbeat permission, sample scheduling and the actuator bus. R198 added that missing executable boundary rather than treating a launcher as a runtime. R199 corrects the heartbeat contract and adds exact GPIO/command-source candidates.
 
-The proposed overlay now maps nineteen exact repository sources: seven host/systemd files, eight supervisor modules, three configurations and the pinned SDK lock. `runtime_entrypoint.py` has an exact target path and SHA-256. The hold register now has seventeen open records and one partial record: `HOST-006` advances from open to partial on source evidence only.
+The proposed overlay now maps 21 exact repository sources, including hash-bound `gpiod_hardware.py` and `unix_command_source.py`. `runtime_entrypoint.py` has an exact target path and SHA-256. The committed preflight reports 50 holds and exits 78. The hold register has seventeen open records and one partial record: `HOST-006` remains partial on source evidence only.
 
 ## Runtime sequence
 
@@ -23,8 +23,8 @@ The committed configuration still returns exit 78 during pure-file preflight. A 
 3. requires every configuration selection and physical acceptance hash to close;
 4. binds the process to a boot-unique session identifier;
 5. verifies host and actuator serial-device parity;
-6. imports only the selected GPIO/hardware-observation and authenticated command-source factories;
-7. starts with heartbeat disallowed and opens the actuator bus torque-off;
+6. imports only the exact hash-bound GPIO/hardware-observation and authenticated command-source factories;
+7. starts with heartbeat inactive, then services a monotonic edge schedule only while ordinary heartbeat permission remains true, and opens the actuator bus torque-off;
 8. observes received positions and physical state before applying supervisor authority;
 9. accepts only a fresh session-valid trajectory after the distinct hardware RESET and ARM sequence;
 10. writes one due sample at a time within a released lateness bound;
@@ -35,8 +35,12 @@ The active bus invariant was corrected during integration: torque-off now requir
 
 ## Executable evidence
 
-The firmware suite now has 72 executable tests, including runtime startup, RESET/ARM without motion, ordered trajectory execution, hardware dropout, missed-sample failure, shutdown ordering, inverse calibration, independent terminal tolerance and torque/goal-current clearing. The host package has eight tests, including committed preflight refusal, no child process, no backend import and exact entrypoint hash binding.
+The firmware suite now has 75 executable tests. The host package has 16 tests, including committed preflight refusal, no child process, no backend import, exact source hashing, heartbeat edge scheduling, lateness/time-reversal shutdown, input polarity, kernel credential checking and strict finite command parsing.
 
 ## Remaining evidence
 
-The repository still selects no GPIO backend, authenticated command source, cycle period, serial device, service identity, package lock, target interpreter, accepted runtime configuration or approval. There is no installed image, target execution, waveform, serial trace, physical HIL, power-loss, rollback, stopping or qualified evidence. All 21 host evidence rows remain `NOT_AUTHORIZED / NOT_EXECUTED`; EG-017 remains partial. The general-purpose runtime and heartbeat receive zero functional-safety credit. No finding, requirement or energization gate closes.
+The repository now controls backend source identities but selects no libgpiod package/chip/line/polarity/timing allocation, command sender UID/GID, cycle period, serial device, service identity, package lock, target interpreter, accepted runtime configuration or approval. Its nine required hardware observations have no released Raspberry Pi allocation or connected observation circuit. There is no installed image, target execution, waveform, serial trace, physical HIL, power-loss, rollback, stopping or qualified evidence. All 21 host evidence rows remain `NOT_AUTHORIZED / NOT_EXECUTED`; EG-017 remains partial. The general-purpose runtime and heartbeat receive zero functional-safety credit. No finding, requirement or energization gate closes.
+
+## R199 supplement
+
+`HR-V0-RUNTIME-BACKENDS-P0.1` records the exact backend-source hashes, 50 fail-closed preflight holds and the unresolved physical observation interface. Three new trajectory limits—maximum samples, maximum duration and maximum execution slack—remain `null` and therefore prevent release construction. A source-level GPIO adapter is not a schematic, wiring allocation, installed driver or HIL result.

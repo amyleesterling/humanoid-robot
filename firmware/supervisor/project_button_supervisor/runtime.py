@@ -31,7 +31,8 @@ class HardwareIO(Protocol):
     """Selected backend contract; implementations remain selection-required."""
 
     def snapshot(self, positions: Mapping[str, float]) -> HardwareSnapshot: ...
-    def set_heartbeat_allowed(self, allowed: bool) -> None: ...
+    def service_heartbeat(self, now_ms: int, allowed: bool) -> None: ...
+    def disable_heartbeat(self) -> None: ...
     def close(self) -> None: ...
 
 
@@ -108,13 +109,13 @@ class RuntimeExecutive:
 
         if self.started:
             raise RuntimeExecutionError("runtime is already started")
-        self.hardware.set_heartbeat_allowed(False)
+        self.hardware.disable_heartbeat()
         try:
             self.bus.connect_and_configure()
         except Exception as exc:
             heartbeat_error: Exception | None = None
             try:
-                self.hardware.set_heartbeat_allowed(False)
+                self.hardware.disable_heartbeat()
             except Exception as heartbeat_exc:
                 heartbeat_error = heartbeat_exc
             finally:
@@ -134,7 +135,7 @@ class RuntimeExecutive:
             raise RuntimeExecutionError("runtime is not started")
         try:
             self.supervisor.tick(now_ms)
-            self._synchronize_outputs()
+            self._synchronize_outputs(now_ms)
             if self.supervisor.state is OperatingState.FAULT_LATCHED:
                 return self.status
 
@@ -143,7 +144,7 @@ class RuntimeExecutive:
             )
             snapshot = self.hardware.snapshot(positions)
             self.supervisor.observe_hardware(snapshot, now_ms)
-            self._synchronize_outputs()
+            self._synchronize_outputs(now_ms)
             if self.supervisor.state is OperatingState.FAULT_LATCHED:
                 return self.status
 
@@ -163,7 +164,7 @@ class RuntimeExecutive:
 
             if self.supervisor.active_command is not None:
                 self._execute_active(now_ms)
-            self._synchronize_outputs()
+            self._synchronize_outputs(now_ms)
             return self.status
         except RuntimeExecutionError:
             self._fail_active(now_ms)
@@ -177,7 +178,7 @@ class RuntimeExecutive:
 
         errors: list[str] = []
         try:
-            self.hardware.set_heartbeat_allowed(False)
+            self.hardware.disable_heartbeat()
         except Exception as exc:
             errors.append(f"heartbeat: {exc}")
         finally:
@@ -254,10 +255,10 @@ class RuntimeExecutive:
             for axis, rule in self.supervisor.config.joints.items()
         )
 
-    def _synchronize_outputs(self) -> None:
+    def _synchronize_outputs(self, now_ms: int) -> None:
         outputs = self.supervisor.outputs
         try:
-            self.hardware.set_heartbeat_allowed(outputs.heartbeat_allowed)
+            self.hardware.service_heartbeat(now_ms, outputs.heartbeat_allowed)
         finally:
             if not outputs.torque_enable_request and self.bus.torque_enabled:
                 self.bus.stop()
@@ -265,7 +266,7 @@ class RuntimeExecutive:
     def _fail_active(self, now_ms: int) -> None:
         heartbeat_error: Exception | None = None
         try:
-            self.hardware.set_heartbeat_allowed(False)
+            self.hardware.disable_heartbeat()
         except Exception as exc:
             heartbeat_error = exc
         finally:

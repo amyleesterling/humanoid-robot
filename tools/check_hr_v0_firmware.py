@@ -313,6 +313,9 @@ def main() -> int:
         "command.session_id != self.session_id",
         "waiting for three valid watchdog heartbeat edges",
         "computed TCP speed outside configured limit",
+        "trajectory sample count exceeds the released bound",
+        "trajectory duration exceeds the released bound",
+        "execution deadline slack exceeds the released bound",
         "limits_current",
         "evidence_is_accepted(self.mechanical_limit_binding)",
     ):
@@ -453,7 +456,8 @@ def main() -> int:
     runtime_source = (FIRMWARE / "supervisor" / "project_button_supervisor" / "runtime.py").read_text(encoding="utf-8")
     for required in (
         "maximum sample lateness remains SELECTION REQUIRED",
-        "self.hardware.set_heartbeat_allowed(False)",
+        "self.hardware.disable_heartbeat()",
+        "self.hardware.service_heartbeat(now_ms, outputs.heartbeat_allowed)",
         "self.bus.connect_and_configure()",
         "self.supervisor.observe_hardware(snapshot, now_ms)",
         "self.bus.start_trajectory",

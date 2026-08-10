@@ -59,6 +59,9 @@ def config() -> SupervisorConfig:
         automatic_gripper_speed_mm_s=20.0,
         setup_gripper_speed_mm_s=10.0,
         maximum_sample_lateness_ms=10,
+        maximum_trajectory_samples=100,
+        maximum_trajectory_duration_ms=5000,
+        maximum_execution_slack_ms=100,
         joints=JOINTS,
         kinematic_model_hash=KINEMATIC_HASH,
         kinematic_model=kinematic_model,
@@ -123,6 +126,16 @@ def armed_supervisor() -> Supervisor:
     return supervisor
 
 
+def armed_supervisor_with(candidate: SupervisorConfig) -> Supervisor:
+    supervisor = Supervisor(candidate, lambda samples: [0.0, 0.10], session_id="SESSION-TEST")
+    supervisor.observe_hardware(snapshot(sr1_ready=False), 900)
+    supervisor.observe_hardware(snapshot(sr1_ready=True), 910)
+    supervisor.observe_hardware(
+        snapshot(sr1_ready=True, sra1_armed=True, k1_feedback=True, k2_feedback=True), 920
+    )
+    return supervisor
+
+
 class SupervisorTests(unittest.TestCase):
     def test_reset_and_arm_never_create_motion(self) -> None:
         supervisor = Supervisor(config(), lambda samples: [0.0 for _ in samples], session_id="SESSION-TEST")
@@ -147,6 +160,21 @@ class SupervisorTests(unittest.TestCase):
         self.assertTrue(supervisor.outputs.torque_enable_request)
         self.assertTrue(supervisor.complete_trajectory(1200, True, END))
         self.assertEqual(supervisor.state, OperatingState.ARMED)
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+
+    def test_trajectory_sample_count_is_bounded(self) -> None:
+        supervisor = armed_supervisor_with(replace(config(), maximum_trajectory_samples=1))
+        self.assertFalse(supervisor.accept_trajectory(command(), 1000))
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+
+    def test_trajectory_duration_is_bounded(self) -> None:
+        supervisor = armed_supervisor_with(replace(config(), maximum_trajectory_duration_ms=199))
+        self.assertFalse(supervisor.accept_trajectory(command(), 1000))
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+
+    def test_execution_deadline_slack_is_bounded(self) -> None:
+        supervisor = armed_supervisor_with(replace(config(), maximum_execution_slack_ms=49))
+        self.assertFalse(supervisor.accept_trajectory(command(), 1000))
         self.assertFalse(supervisor.outputs.torque_enable_request)
 
     def test_terminal_tolerance_is_independent_from_start_tolerance(self) -> None:
