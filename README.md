@@ -677,6 +677,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R179 independent review request](docs/reviews/2026-08-10-r179-independent-review-request.md)
 - [R179 validation record](docs/reviews/2026-08-10-r179-validation-record.md)
 - [Sol R12 findings rechecked after R179](docs/reviews/2026-08-10-sol-r12-post-r179-status.md)
+- [R180 event-observation independence correction](docs/hr-v0-event-observation-correction-p0.1.md)
+- [R180 interactive eight-channel correction guide](release/hr-v0/event-observation-correction-p0.1/index.html)
+- [R180 independent review request](docs/reviews/2026-08-10-r180-independent-review-request.md)
+- [R180 validation record](docs/reviews/2026-08-10-r180-validation-record.md)
+- [Sol R12 findings rechecked after R180](docs/reviews/2026-08-10-sol-r12-post-r180-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -716,6 +721,8 @@ Run `python tools/generate_hr_v0_dynamic_event_ain_p01.py` and `python tools/che
 
 Run `python tools/generate_hr_v0_event_tap_disposition_p01.py` and `python tools/check_hr_v0_event_tap_disposition_p01.py` for R178. Passing verifies seven exact P1.15 node/terminal groups, five source-controlled manufacturer records, ten open closure holds and root plus three native KiCad disposition sheets at ERC 0/0. It proves no catalog-only field tap or divider has been released; it does not establish allowable parallel loading, transient limits, noninterference, physical timing, safety credit or work authority.
 Run `python tools/generate_hr_v0_noncontact_event_observation_p01.py` and `python tools/check_hr_v0_noncontact_event_observation_p01.py` for R179. Passing verifies seven exact logical conductor locations, one exact current-probe evaluation candidate, five source records, twelve open holds, nine unexecuted E2 comparison steps, zero electrical field taps and zero safety credit. It does not prove as-built wire identity, jaw fit, compatible-host selection, simultaneity, calibration, thresholds, source/motion witnesses, noninterference, timing uncertainty or permission to perform a powered test.
+
+Run `python tools/generate_hr_v0_event_observation_correction_p01.py` and `python tools/check_hr_v0_event_observation_correction_p01.py` for R180. Passing verifies that one false EDM-channel-independence assumption is superseded, both STOP and RESET/ARM plans allocate eight simultaneous channels, the `MSO58B`/`TCP0030A`/`TIVP02` records remain evaluation-only, no diagnostic load or connection is released and zero physical tests or safety credit exist. It does not prove probe-power compatibility, diagnostic-contact application, as-built identity, motion/source sensing, noninterference, thresholds, uncertainty or work authority.
 
 Run `python tools/check_hr_v0_control_panel.py` to cross-check the R64 25-row panel BOM, nominal allocations, exact XT1 mapping, all 66 bounded V3 wire endpoints, one fail-closed SD1 sidewall option, unreleased physical-wire fields, cable-entry holds, thermal/space screens, readable SVG warning content and twenty-two unexecuted panel records. Run `python tools/check_hr_v0_service_disconnect.py` to prove the exact `75920-01` catalog candidate remains application-held, all 15 SD1 rows remain unexecuted, and no cutout, conductor, lockout procedure or wiring release exists. Passing either checker releases no drilling, cutting, wiring, assembly, PCB fabrication, or energization work.
 
@@ -791,7 +798,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred seventy-nine review/control rounds are complete: R01-R179. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R179 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R179 rejects the current permanent passive-divider route and retains a non-contact current-observation candidate at seven exact logical conductors. Every as-built identity, fit, host, calibration, threshold, simultaneity, source/motion witness, noninterference, uncertainty, physical, qualified-review and work-authority hold remains.
+One hundred eighty review/control rounds are complete: R01-R180. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R180 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R180 corrects the false assumption that two conductors in one series EDM chain are independent contact-state channels and allocates one common-chain witness plus two non-safety-credit diagnostic auxiliaries on an eight-channel evaluation host. Every exact configuration, probe-power, diagnostic-load, as-built, calibration, threshold, source/motion, noninterference, uncertainty, physical, qualified-review and work-authority hold remains.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -974,6 +981,7 @@ One hundred seventy-nine review/control rounds are complete: R01-R179. R11 Fable
 | R177 | Low-loading isolated event-acquisition candidate | Issued `HR-V0-DYN-EVENT-AIN-P0.1`; retained R176 as historical/not preferred, named seven exact TI `AMC3330EVM` units, mapped their outputs to all seven T7 differential pairs and issued five readable native KiCad child sheets at ERC 0/0. Every field adapter remains `SELECTION REQUIRED`; direct 24 V-class connection is prohibited; EG-025 remains open and EG-026 partial. |
 | R178 | Event-tap noninterference disposition | Issued `HR-V0-EVENT-TAP-DISP-P0.1`; traced all seven proposed taps to exact P1.15 terminals, verified current Pilz/Schneider/TI application limits, corrected the LC1D25BD built-in suppressor record and rejected catalog-only field-adapter selection. Three native disposition sheets parse at ERC 0/0; zero taps or divider designs are released and EG-025/026 remain open/partial. |
 | R179 | Non-contact event-observation correction | Issued `HR-V0-NONCONTACT-EVENT-OBS-P0.1`; rejected the permanent passive-divider/AMC3330 route for the current baseline and mapped an exact Tektronix `TCP0030A` evaluation candidate to seven logical P1.15 conductors. Zero electrical taps and zero physical tests exist; twelve holds retain as-built identity, jaw fit, host, simultaneity, calibration, thresholds, source/motion witnesses, noninterference, uncertainty and qualified review. EG-025/026 remain open/partial. |
+| R180 | Event-observation independence correction | Issued `HR-V0-EVENT-OBS-CORR-P0.1`; corrected the false independence assigned to two points in one series EDM chain, allocated one common-chain witness plus individual K1/K2 diagnostic auxiliaries, and named an eight-input Tektronix evaluation population. No diagnostic load, connection or physical result exists; EG-025/026 remain open/partial. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
