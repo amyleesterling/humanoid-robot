@@ -33,7 +33,8 @@ def main() -> None:
     need(sum(row["provider_class"] == "positive panel status" for row in mapping) == 4, "exactly four positive panel statuses required")
     need(sum(row["current_disposition"] == "SELECTION REQUIRED" for row in mapping) == 5, "exactly five health providers must remain selection-required")
     need(all(row["warning"] == WARNING for row in mapping), "observation warning changed")
-    need(len(holds) == 12 and all(row["state"] == "OPEN" for row in holds), "twelve observation holds must remain open")
+    need(len(holds) == 12 and sum(row["state"] == "OPEN" for row in holds) == 11 and sum(row["state"] == "PARTIAL" for row in holds) == 1, "observation holds must contain eleven open and one partial")
+    need(next(row for row in holds if row["hold_id"] == "ROH-006")["state"] == "PARTIAL", "GPIO allocation hold did not advance only to partial")
     need(all(row["warning"] == WARNING for row in holds), "hold warning changed")
 
     model = (ROOT / "firmware/supervisor/project_button_supervisor/model.py").read_text(encoding="utf-8")
@@ -74,8 +75,8 @@ def main() -> None:
 
     if failures:
         raise SystemExit("HR-V0 runtime observation P0.1 check failed:\n- " + "\n- ".join(failures))
-    print("HR-V0 runtime observation P0.1 check passed: 4 positive panel statuses, 5 unavailable health providers, 1 software bus result, 12 open holds, 67 supervisor/runtime tests, 16 host tests")
-    print("No connected receiver, GPIO allocation, health provider, HIL evidence, safety credit or work authority exists")
+    print("HR-V0 runtime observation P0.1 check passed: 4 positive panel statuses, 5 unavailable health providers, 1 software bus result, 11 open plus 1 partial hold, 67 supervisor/runtime tests, 16 host tests")
+    print("GPIO lines are source-bound; no connected receiver/harness, target gpiochip, health provider, HIL evidence, safety credit or work authority exists")
     print(WARNING)
 
 

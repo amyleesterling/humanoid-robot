@@ -6,13 +6,13 @@ Artifact: `HR-V0-RUNTIME-P0.1`
 
 Configuration: `HR-V0-HOST-DEPLOY-P0.1` / `HR-V0-SUP-P0.3` / `HR-V0-DXL-TRANSPORT-P0.3` / `HR-V0-KIN-P0.1`
 
-Review/control round: R198; backend correction R199
+Review/control round: R198; backend correction R199; observation correction R200; GPIO allocation correction R203
 
 ## Correction
 
 The R171 host overlay stopped safely but its target entrypoint was `SELECTION REQUIRED` and no source connected hardware observation, supervisor authority, heartbeat permission, sample scheduling and the actuator bus. R198 added that missing executable boundary rather than treating a launcher as a runtime. R199 corrects the heartbeat contract and adds exact GPIO/command-source candidates.
 
-The proposed overlay now maps 21 exact repository sources, including hash-bound `gpiod_hardware.py` and `unix_command_source.py`. `runtime_entrypoint.py` has an exact target path and SHA-256. After the R200 observation-semantics correction, the committed preflight reports 45 holds and exits 78. The hold register has seventeen open records and one partial record: `HOST-006` remains partial on source evidence only.
+The proposed overlay now maps 21 exact repository sources, including hash-bound `gpiod_hardware.py` and `unix_command_source.py`. `runtime_entrypoint.py` has an exact target path and SHA-256. R203 binds source-level heartbeat line 17 and four active-high diagnostic lines 22 through 25. The committed preflight reports 36 holds and exits 78. The hold register has sixteen open records and two partial records: `HOST-004` and `HOST-006` remain partial on source evidence only.
 
 ## Runtime sequence
 
@@ -35,11 +35,11 @@ The active bus invariant was corrected during integration: torque-off now requir
 
 ## Executable evidence
 
-The firmware suite now has 75 executable tests. The host package has 16 tests, including committed preflight refusal, no child process, no backend import, exact source hashing, heartbeat edge scheduling, lateness/time-reversal shutdown, input polarity, kernel credential checking and strict finite command parsing.
+The firmware suite now has 78 executable tests. The host package has 16 tests, including committed preflight refusal, no child process, no backend import, exact source hashing, heartbeat edge scheduling, lateness/time-reversal shutdown, input polarity, kernel credential checking and strict finite command parsing.
 
 ## Remaining evidence
 
-The repository now controls backend source identities but selects no libgpiod package/chip/line/polarity/timing allocation, command sender UID/GID, cycle period, serial device, service identity, package lock, target interpreter, accepted runtime configuration or approval. Its nine required hardware observations have no released Raspberry Pi allocation or connected observation circuit. There is no installed image, target execution, waveform, serial trace, physical HIL, power-loss, rollback, stopping or qualified evidence. All 21 host evidence rows remain `NOT_AUTHORIZED / NOT_EXECUTED`; EG-017 remains partial. The general-purpose runtime and heartbeat receive zero functional-safety credit. No finding, requirement or energization gate closes.
+The repository now controls backend source identities plus line/polarity allocation, but selects no libgpiod package/chip path/timing, command sender UID/GID, cycle period, serial device, service identity, package lock, target interpreter, accepted runtime configuration or approval. Four positive status semantics have source-level Pi allocations; five health providers remain unselected and no physical observation harness or connected circuit exists. There is no installed image, target execution, waveform, serial trace, physical HIL, power-loss, rollback, stopping or qualified evidence. All 21 host evidence rows remain `NOT_AUTHORIZED / NOT_EXECUTED`; EG-017 remains partial. The general-purpose runtime and heartbeat receive zero functional-safety credit. No finding, requirement or energization gate closes.
 
 ## R199 supplement
 

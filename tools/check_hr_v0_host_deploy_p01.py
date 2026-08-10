@@ -83,10 +83,11 @@ def main() -> None:
     require(len(overlay) == 21, "overlay manifest must contain twenty-one proposed files")
     require(
         len(holds) == 18
-        and sum(row["current_state"] == "OPEN" for row in holds) == 17
-        and sum(row["current_state"] == "PARTIAL" for row in holds) == 1
+        and sum(row["current_state"] == "OPEN" for row in holds) == 16
+        and sum(row["current_state"] == "PARTIAL" for row in holds) == 2
+        and next(row for row in holds if row["hold_id"] == "HOST-004")["current_state"] == "PARTIAL"
         and next(row for row in holds if row["hold_id"] == "HOST-006")["current_state"] == "PARTIAL",
-        "host hold register must contain seventeen open and one partial hold",
+        "host hold register must contain sixteen open and two partial holds",
     )
     require(len(execution) == 21, "host deployment execution template must contain twenty-one rows")
     require(all(row["authorization"] == "NOT_AUTHORIZED" and row["state"] == "NOT_EXECUTED" and not row["actual_result"] and not row["evidence_hash"] for row in execution), "execution template contains authority or result evidence")
@@ -133,6 +134,10 @@ def main() -> None:
     require(config.get("gpio_backend_sha256") == hashlib.sha256(gpio_backend.read_bytes()).hexdigest(), "GPIO backend hash binding changed")
     require(config.get("runtime_backend_sha256") == hashlib.sha256(command_backend.read_bytes()).hexdigest(), "command backend hash binding changed")
     require(config.get("runtime_cycle_period_ms") == "SELECTION REQUIRED", "unreleased runtime cycle period was populated")
+    require(config.get("gpio", {}).get("heartbeat_line") == 17, "source-bound heartbeat line changed")
+    require({name: item.get("line") for name, item in config.get("gpio", {}).get("inputs", {}).items()} == {"sr1_status": 22, "sra1_status": 23, "k1_status": 24, "k2_status": 25}, "source-bound observation lines changed")
+    require(all(item.get("active_high") is True for item in config.get("gpio", {}).get("inputs", {}).values()), "source-bound observation polarity changed")
+    require(config.get("gpio", {}).get("chip_path") == "SELECTION REQUIRED", "target gpiochip path was inferred")
 
     unit = (PACKAGE / "systemd/project-button-supervisor.service").read_text(encoding="utf-8")
     preset = (PACKAGE / "systemd/00-project-button.preset").read_text(encoding="utf-8")
@@ -159,7 +164,7 @@ def main() -> None:
     firmware_product = next((item for item in metadata.get("current_products", []) if item.get("domain") == "firmware"), {})
     require(IDENTIFIER in firmware_product.get("supporting_identifiers", []), "release metadata lacks host deployment identifier")
     require(IDENTIFIER in doc and IDENTIFIER in guide, "document or guide lacks identifier")
-    require("45" in doc and "seventeen" in doc.lower() and "one partial" in doc.lower() and "21" in doc, "documented hold/evidence counts changed")
+    require("36" in doc and "sixteen" in doc.lower() and "two partial" in doc.lower() and "21" in doc, "documented hold/evidence counts changed")
     require("font:16px" in guide and "font-size:16px" in guide and "font-size:14px" in guide, "guide text floors are not explicit")
     require(guide.count("data-filter=") == 4 and guide.count("data-kind=") == 4, "guide filter/card structure changed")
     for token in ("disabled", "exit 78", "GPIO allocation", "no serial", "zero functional-safety credit", "not approved"):
@@ -174,11 +179,11 @@ def main() -> None:
         capture_output=True,
     )
     preflight_count = len(json.loads(preflight.stdout)["holds"]) if preflight.returncode == 78 else -1
-    require(preflight_count == 45, "committed preflight must expose exactly 45 holds")
+    require(preflight_count == 36, "committed preflight must expose exactly 36 holds")
     if failures:
         raise SystemExit("HR-V0 host deployment P0.1 check failed:\n- " + "\n- ".join(failures))
-    print("HR-V0 host deployment P0.1 check passed: 21-file disabled overlay, 45 current preflight holds, 17 open plus 1 partial closure hold, 21 unexecuted evidence rows, 16 host tests")
-    print("EG-017 remains PARTIAL; backend source exists but GPIO/observation allocation, target image, installation, HIL, motion and energization authority do not")
+    print("HR-V0 host deployment P0.1 check passed: 21-file disabled overlay, 36 current preflight holds, 16 open plus 2 partial closure holds, 21 unexecuted evidence rows, 16 host tests")
+    print("EG-017 remains PARTIAL; GPIO lines are source-bound but target gpiochip, physical interface, target image, installation, HIL, motion and energization authority do not exist")
     print(WARNING)
 
 

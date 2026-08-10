@@ -54,6 +54,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Interactive kinematic speed-bound calculator](release/hr-v0/kinematic-speed-bound-p0.1/index.html)
 - [HR-V0 runtime execution boundary P0.1](docs/hr-v0-runtime-execution-boundary-p0.1.md)
 - [HR-V0 runtime backend source candidates P0.1](docs/hr-v0-runtime-backends-p0.1.md)
+- [HR-V0 Raspberry Pi observation pin map P0.1](docs/hr-v0-runtime-observation-pi-pinmap-p0.1.md)
+- [Interactive Raspberry Pi observation pin-map guide](release/hr-v0/runtime-observation-pi-pinmap-p0.1/index.html)
 - [HR-V0 fail-closed host deployment candidate P0.1](docs/hr-v0-host-deployment-p0.1.md)
 - [Interactive host deployment guide](release/hr-v0/host-deployment-p0.1/index.html)
 - [HR-V0 Raspberry Pi OS publisher-SBOM lock P0.1](docs/hr-v0-rpi-os-sbom-p0.1.md)
@@ -909,12 +911,14 @@ One hundred ninety-four review/control rounds are complete: R01-R194. R11 Fable 
 
 ## Current review state
 
-Two hundred two review/control rounds are complete: R01-R202. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R202 are project-owned correction, evidence-control or validation passes, not additional independent approvals. R195 directly binds watchdog PCB-P1.0 to Electrical V3-P1.15. R196 proves source-level stale-command invalidation and replay rejection. R197 adds the conservative TCP-rate source bound. R198 adds the runtime executive. R199 replaces the abstract backend boundary with two hash-bound source candidates and an actual heartbeat edge scheduler. R200 corrects R199's false nine-physical-input framing. R201 adds a separate five-sheet native KiCad evaluation candidate for the four positive status channels. R202 replaces the compound terminal candidate with exact six-position Phoenix item 1751280 and adds a routed four-layer 120 x 90 mm carrier at native ERC/DRC 0. Fourteen carrier evidence holds, five health providers, exact Pi pins, released harness/assembly data, physical tests and all safety/work authority remain open.
+Two hundred three review/control rounds are complete: R01-R203. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R203 are project-owned correction, evidence-control or validation passes, not additional independent approvals. R195 directly binds watchdog PCB-P1.0 to Electrical V3-P1.15. R196 proves source-level stale-command invalidation and replay rejection. R197 adds the conservative TCP-rate source bound. R198 adds the runtime executive. R199 replaces the abstract backend boundary with two hash-bound source candidates and an actual heartbeat edge scheduler. R200 corrects R199's false nine-physical-input framing. R201 adds a separate five-sheet native KiCad evaluation candidate for the four positive status channels. R202 replaces the compound terminal candidate with exact six-position Phoenix item 1751280 and adds a routed four-layer 120 x 90 mm carrier at native ERC/DRC 0. R203 source-binds heartbeat GPIO17 and four active-high diagnostic inputs on GPIO22-25 with exact physical header pins while leaving the target gpiochip, physical mate/harness, installed ownership, HIL and all work authority open.
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)
 - [R202 interactive routed-carrier guide](release/hr-v0/runtime-observation-carrier-p0.2/index.html)
 - [R202 native schematic and routed PCB source](electrical/kicad/hr-v0-runtime-observation-carrier-p0.2/)
+- [R203 interactive Raspberry Pi observation pin-map guide](release/hr-v0/runtime-observation-pi-pinmap-p0.1/index.html)
+- [R203 machine-readable pin allocation and holds](electrical/interfaces/hr-v0-runtime-observation-pi-pinmap-p0.1/)
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -1120,6 +1124,7 @@ Two hundred two review/control rounds are complete: R01-R202. R11 Fable and R12 
 | R200 | Runtime observation-semantics correction | Issued `HR-V0-RUNTIME-OBS-P0.1`; traced four positive panel statuses, separated five unselected health providers plus software-derived bus health, rejected NC-contact inversion and made unknown values fail closed. Preflight exits 78 with 45 holds; twelve interface holds remain open. No connected receiver, target/HIL evidence, safety credit, gate or work authority closes. |
 | R201 | Four-channel runtime-observation receiver correction | Issued `HR-V0-RUNTIME-OBS-IF-P0.1`; added root plus four connected native KiCad sheets for two `ISO1212DBQ` devices, four Type-3 input networks, three 2.70 kohm wetting/bleed shunts, isolated field/compute returns and fail-low outputs. ERC is 0/0; 33 component blocks and 33 nets reconcile. SR1 H1 current/brightness, Pi GPIOs, PCB/layout, harness, EMC, fault injection and all ten evidence holds remain open. Zero safety credit and no work authority close. |
 | R202 | Routed runtime-observation carrier correction | Issued `HR-V0-RUNTIME-OBS-CARRIER-P0.2`; replaced the compound 4+2 connector candidate with exact six-position Phoenix Contact item 1751280 and added a 120 x 90 mm four-layer PCB candidate. Root plus four sheets, 29 mounted parts, four holes, 143 tracks, 56 vias and three internal zones check at ERC/DRC 0 with pad/net parity. Fourteen physical-evidence holds remain; no CAM, fabrication, connection, safety or energization authority exists. |
+| R203 | Raspberry Pi diagnostic-input allocation correction | Issued `HR-V0-RUNTIME-OBS-PINMAP-P0.1`; bound JLOGIC1 to Pi physical pins 17/20/15/16/18/22, allocated active-high GPIO22-25 to SR1/SRA1/K1/K2, preserved heartbeat GPIO17/pin 11 plus pin 6 return, and recorded JTAG/DPI conflicts. Host preflight remains fail-closed at exit 78 with 36 holds. Eight local physical/target/review holds remain; no mate, harness, installed gpiochip/readback, HIL, safety credit or work authority exists. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

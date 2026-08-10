@@ -10,16 +10,16 @@
 </head>
 <body>
 <header>
-  <div class="eyebrow">PROJECT BUTTON · REVIEW ROUND R199</div>
-  <h1>Real backend source. No invented physical interface.</h1>
+  <div class="eyebrow">PROJECT BUTTON · CURRENT THROUGH REVIEW ROUND R203</div>
+  <h1>GPIO lines allocated. Physical interface still held.</h1>
   <p class="warning">PRELIMINARY - NOT APPROVED FOR INSTALLATION, CONNECTION, POWERED TEST, MOTION, OR ENERGIZATION.</p>
-  <p>HR-V0-HOST-DEPLOY-P0.1 now contains hash-bound GPIO and local command-source candidates. The committed bridge still stops at pure-file preflight because no physical observation circuit or target allocation is released.</p>
+  <p>HR-V0-HOST-DEPLOY-P0.1 contains hash-bound GPIO and local command-source candidates. R203 binds GPIO17 and active-high GPIO22–25, but the committed bridge still stops at pure-file preflight because no target gpiochip, harness, installed image or physical observation evidence is released.</p>
 </header>
 <main>
   <section class="summary" aria-label="Package summary">
-    <div class="metric"><strong>50</strong><span>current preflight holds</span></div>
-    <div class="metric"><strong>17</strong><span>open closure groups</span></div>
-    <div class="metric"><strong>1</strong><span>partial source hold</span></div>
+    <div class="metric"><strong>36</strong><span>current preflight holds</span></div>
+    <div class="metric"><strong>16</strong><span>open closure groups</span></div>
+    <div class="metric"><strong>2</strong><span>partial source holds</span></div>
     <div class="metric"><strong>21</strong><span>blank execution records</span></div>
     <div class="metric"><strong>2</strong><span>backend source candidates</span></div>
   </section>
@@ -39,10 +39,10 @@
     </article>
     <article class="card hold" data-kind="holds">
       <div class="tech">WHAT IS STILL MISSING</div><h2>Source candidates are not connected hardware.</h2>
-      <ul><li>exact libgpiod package, GPIO chip, lines, polarities and heartbeat timing;</li><li>a qualified four-channel positive-status receiver plus distinct providers for control power, E-stop, watchdog, EDM and compute undervoltage;</li><li>command sender UID/GID, cycle and trajectory resource bounds, serial identity and permissions;</li><li>write/readback, waveform, HIL, power-loss, recovery and rollback evidence;</li><li>qualified reviews and separate written authorization.</li></ul>
+      <ul><li>exact libgpiod package, RP1 gpiochip identity, installed pin ownership and heartbeat timing;</li><li>a qualified four-channel positive-status receiver and retained harness plus distinct providers for control power, E-stop, watchdog, EDM and compute undervoltage;</li><li>command sender UID/GID, cycle and trajectory resource bounds, serial identity and permissions;</li><li>write/readback, waveform, HIL, power-loss, recovery and rollback evidence;</li><li>qualified reviews and separate written authorization.</li></ul>
     </article>
     <article class="card" data-kind="boundary">
-      <div class="tech">FAIL-CLOSED BOUNDARY</div><h2>No released GPIO allocation. No observation circuit. No motion authority.</h2>
+      <div class="tech">FAIL-CLOSED BOUNDARY</div><h2>Source GPIO allocation only. No observation harness. No motion authority.</h2>
       <p>The committed configuration reaches neither backend nor the bus. No serial device is released. In source tests, RESET and ARM cannot enable torque; only a fresh validated trajectory can. Dropout, heartbeat-edge lateness, clock reversal or missed sample timing force heartbeat inactive and remove torque.</p>
       <p><strong>That is source evidence, not physical validation.</strong> R200 rejects the earlier nine-GPIO assumption. Four positive panel states are traceable; five health providers remain unselected. The receiver, GPIO waveform, watchdog interruption, actuator response and reset-to-motion behavior still need qualified design and isolated HIL with raw traces.</p>
     </article>

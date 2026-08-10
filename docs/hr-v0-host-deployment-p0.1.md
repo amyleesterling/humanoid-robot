@@ -3,16 +3,16 @@
 > **PRELIMINARY - NOT APPROVED FOR INSTALLATION, CONNECTION, POWERED TEST, MOTION, OR ENERGIZATION.**
 
 Identifier: `HR-V0-HOST-DEPLOY-P0.1`
-Review round: R171; runtime correction R198; backend correction R199
+Review round: R171; runtime correction R198; backend correction R199; GPIO allocation correction R203
 Date: 2026-08-09
 Parent image: `HR-V0-RPI-OS-LITE-P0.1`
 Storage candidate: `HR-V0-COMPUTE-STORAGE-P0.2` / Kingston `SDCIT2/64GBSP` on hold
 
 ## Result
 
-R171 added the host-side deployment definition between the pinned Raspberry Pi OS image and the supervisor model. R198 added the executable runtime boundary. R199 adds exact hash-bound libgpiod and AF_UNIX command-source candidates, corrects heartbeat permission into a monotonic edge scheduler, and adds trajectory resource/time holds. It remains a **source candidate**, not an installable or promoted machine image.
+R171 added the host-side deployment definition between the pinned Raspberry Pi OS image and the supervisor model. R198 added the executable runtime boundary. R199 adds exact hash-bound libgpiod and AF_UNIX command-source candidates, corrects heartbeat permission into a monotonic edge scheduler, and adds trajectory resource/time holds. R203 freezes BCM/RP1 heartbeat line 17 and four active-high diagnostic inputs on lines 22 through 25 while retaining the target gpiochip, boot-overlay, harness and HIL holds. It remains a **source candidate**, not an installable or promoted machine image.
 
-The committed configuration has 45 explicit preflight failures after the R200 observation-semantics correction. The launcher and the runtime entrypoint both return exit code 78 before importing a backend. The package supplies no install script, disables its systemd service by preset, uses `Restart=no`, restricts the candidate service to AF_UNIX with IP denied, and retains `motion_authority: NONE` and `functional_safety_credit: NONE`.
+The committed configuration has 36 explicit preflight failures after the R203 GPIO-allocation correction. The launcher and the runtime entrypoint both return exit code 78 before importing a backend. The package supplies no install script, disables its systemd service by preset, uses `Restart=no`, restricts the candidate service to AF_UNIX with IP denied, and retains `motion_authority: NONE` and `functional_safety_credit: NONE`.
 
 This improves the digital evidence behind `EG-017`; it does not close that gate.
 
@@ -37,13 +37,13 @@ The service hardening candidate includes a strict read-only system boundary, pri
 
 ## Evidence still required
 
-The eighteen-line hold register now contains seventeen open holds and one partial hold. `HOST-006` is partial because source, target path and entrypoint hash exist; target installation, backend integration, timing and HIL are still absent. Remaining evidence requires, at minimum:
+The eighteen-line hold register now contains sixteen open holds and two partial holds. `HOST-004` is partial because the source backend, line numbers and polarities exist; `HOST-006` is partial because source, target path and entrypoint hash exist. Target gpiochip identity, installation, backend integration, timing and HIL are still absent. Remaining evidence requires, at minimum:
 
 - exact target package versions, repositories, lock hash, interpreter and binary hash;
-- selected GPIO and serial backends with stable device identity and permissions;
+- exact target libgpiod package and stable RP1 gpiochip identity/permissions; the GPIO17 and GPIO22-25 line allocation is source-bound but not target-validated;
 - released supervisor, actuator and compute-interface configurations with exact hashes;
-- a released 1..50 ms runtime cycle period, exact libgpiod package/chip/line/polarity/timing allocation, exact command sender UID/GID and measured resource/time bounds;
-- a qualified physical observation circuit for all nine inputs, including terminal allocation, isolation/loading, protection, cable, grounding, startup state and noninterference proof;
+- a released 1..50 ms runtime cycle period, exact libgpiod package/chip/timing allocation, exact command sender UID/GID and measured resource/time bounds;
+- a qualified physical observation circuit and harness for the four positive status inputs plus distinct providers for five health semantics, including terminal allocation, isolation/loading, protection, cable, grounding, startup state and noninterference proof;
 - controlled image download, write, full readback and promoted image manifest;
 - disabled-start, missing/malformed/hash-mismatch, GPIO waveform, U2D2, torque-off-before-discovery, stale-command, reset-no-motion and heartbeat-loss HIL;
 - filesystem, logging, abrupt-power-loss, recovery and offline rollback evidence;
@@ -54,7 +54,7 @@ All 21 execution rows in `tests/forms/hr-v0-host-deployment-template-p0.1.csv` r
 
 ## Configuration boundary
 
-The official Raspberry Pi image hash remains only a publisher-provided candidate value. It has not been downloaded or locally reproduced. The Kingston card has not been purchased, received, inserted, written, booted or tested. No target package lock, filesystem policy, service UID/GID, GPIO allocation, observation circuit or device path has been selected. Backend source exists; its target dependencies and physical interfaces do not.
+The official Raspberry Pi image hash remains only a publisher-provided candidate value. It has not been downloaded or locally reproduced. The Kingston card has not been purchased, received, inserted, written, booted or tested. No target package lock, filesystem policy, service UID/GID, gpiochip path/label, observation harness/circuit or serial device path has been selected. Source-level GPIO lines and polarities exist; their target dependencies and physical interfaces do not.
 
 The general-purpose compute, heartbeat, launcher, supervisor and watchdog diagnostic function retain **zero functional-safety credit**. Physical safety functions, PLr/SIL allocation, qualified validation and a separate written work authorization remain mandatory.
 
@@ -71,4 +71,4 @@ The general-purpose compute, heartbeat, launcher, supervisor and watchdog diagno
 - `release/hr-v0/host-deployment-p0.1/index.html`
 - `tools/check_hr_v0_host_deploy_p01.py`
 
-Passing repository tests proves file integrity and reference-model behavior only. The current preflight has 45 holds, the overlay has 21 rows, the hold register has seventeen open plus one partial record, and all 21 execution records remain blank. The 78 firmware tests and 16 host tests are not target/HIL evidence. This package does not authorize installation, imaging, connection, powered testing, motion or energization.
+Passing repository tests proves file integrity and reference-model behavior only. The current preflight has 36 holds, the overlay has 21 rows, the hold register has sixteen open plus two partial records, and all 21 execution records remain blank. The 78 firmware tests and 16 host tests are not target/HIL evidence. This package does not authorize installation, imaging, connection, powered testing, motion or energization.

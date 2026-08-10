@@ -126,6 +126,7 @@ def main() -> None:
         "HR-V0-LABEL-P0.1",
         "HR-V0-RUNTIME-OBS-IF-P0.1",
         "HR-V0-RUNTIME-OBS-CARRIER-P0.2",
+        "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
     ] or electrical_product.get("release_state") != "carrier_integrated_configuration_candidate_p115_watchdog_pcb_p10_direct_native_binding_cam_review_exists_not_supplier_released_physical_evidence_absent":
         errors.append("Electrical V3-P1.15 supporting identifiers or release state changed")
     safety_product = next(
@@ -217,8 +218,9 @@ def main() -> None:
         "HR-V0-KIN-P0.1",
         "HR-V0-RUNTIME-P0.1",
         "HR-V0-RUNTIME-BACKENDS-P0.1",
+        "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
     ] or firmware_product.get("release_state") != (
-        "source_transport_reproducible_watchdog_disabled_fail_closed_21_file_host_overlay_publisher_sbom_lock_stale_replay_rejection_unreleased_kinematic_bound_runtime_execution_and_backend_source_candidates_not_installed_flashed_connected_or_hil_validated"
+        "source_transport_reproducible_watchdog_disabled_fail_closed_21_file_host_overlay_publisher_sbom_lock_stale_replay_rejection_unreleased_kinematic_bound_runtime_execution_backend_and_gpio_line_source_candidates_not_installed_flashed_connected_or_hil_validated"
     ):
         errors.append("HR-V0-FW-P0.4 supporting identifiers or fail-closed release state changed")
     bom_product = next(

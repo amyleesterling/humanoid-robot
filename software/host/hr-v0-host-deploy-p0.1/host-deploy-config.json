@@ -34,14 +34,14 @@
     "distribution": "SELECTION REQUIRED",
     "version": "SELECTION REQUIRED",
     "chip_path": "SELECTION REQUIRED",
-    "heartbeat_line": "SELECTION REQUIRED",
+    "heartbeat_line": 17,
     "heartbeat_half_period_ms": "SELECTION REQUIRED",
     "maximum_edge_lateness_ms": "SELECTION REQUIRED",
     "inputs": {
-      "sr1_status": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"},
-      "sra1_status": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"},
-      "k1_status": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"},
-      "k2_status": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"}
+      "sr1_status": {"line": 22, "active_high": true},
+      "sra1_status": {"line": 23, "active_high": true},
+      "k1_status": {"line": 24, "active_high": true},
+      "k2_status": {"line": 25, "active_high": true}
     }
   },
   "required_observation_providers": {
