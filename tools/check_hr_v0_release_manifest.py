@@ -112,6 +112,7 @@ def main() -> None:
         "HR-V0-GND-BOND-P0.1",
         "HR-V0-COMPUTE-SEL-P0.1",
         "HR-V0-COMPUTE-SUBASM-P0.1",
+        "HR-V0-COMPUTE-STORAGE-P0.2",
         "HR-V0-SD-P0.2",
         "HR-V0-24V-IF-P0.2",
         "HR-V0-COMPUTE-IF-P0.1",
@@ -209,7 +210,7 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BOM-P0.1"),
         {},
     )
-    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.1", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1", "HR-V0-CONFIG-REC-P0.1", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1"] or bom_product.get("release_state") != (
+    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.1", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.1", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2"] or bom_product.get("release_state") != (
         "closure_register_candidate_no_complete_machine_procurement_release"
     ):
         errors.append("HR-V0-BOM-P0.1 supporting identifiers or fail-closed release state changed")

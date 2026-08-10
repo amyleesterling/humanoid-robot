@@ -620,6 +620,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R169 label-system independent review request](docs/reviews/2026-08-09-r169-independent-review-request.md)
 - [R169 label-system validation record](docs/reviews/2026-08-09-r169-validation-record.md)
 - [Sol R12 findings rechecked after R169](docs/reviews/2026-08-09-sol-r12-post-r169-status.md)
+- [R170 compute-storage candidate](docs/hr-v0-compute-storage-p0.2.md)
+- [R170 interactive compute-storage guide](release/hr-v0/compute-storage-p0.2/index.html)
+- [R170 compute-storage independent review request](docs/reviews/2026-08-09-r170-independent-review-request.md)
+- [R170 compute-storage validation record](docs/reviews/2026-08-09-r170-validation-record.md)
+- [Sol R12 findings rechecked after R170](docs/reviews/2026-08-09-sol-r12-post-r170-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -640,6 +645,8 @@ Run `python tools/check_hr_v0_boston_fabrication_route_p03.py` for the R167 Bost
 Run `python tools/check_hr_v0_xt1_terminal_group_p01.py` for R168. Passing proves exact catalog/position parity for six XT1 bodies, one end cover, zero jumpers and shared-accessory ownership without releasing a conductor, termination, label, installed terminal, point-to-point result or work authority.
 
 Run `python tools/check_hr_v0_label_system_p01.py` for R169. Passing proves six physically short XT1 texts, 34 small device/operator records, four large legends, exact candidate material stocks and twelve open holds. It does not select a printer/service, wire markers, adhesion, regulatory markings or installed evidence, and authorizes no work.
+
+Run `python tools/check_hr_v0_compute_storage_p02.py` for R170. Passing proves exact Kingston `SDCIT2/64GBSP` identity, three current primary source records, thirteen evidence-classed interfaces, twelve open holds and ten unexecuted receiving checks. It does not prove Pi 5 compatibility, capacity integrity, card-specific endurance, imaging, filesystem resilience, recovery, retention, current/thermal behavior or safety performance.
 
 Run `python tools/check_hr_v0_control_panel.py` to cross-check the R64 25-row panel BOM, nominal allocations, exact XT1 mapping, all 66 bounded V3 wire endpoints, one fail-closed SD1 sidewall option, unreleased physical-wire fields, cable-entry holds, thermal/space screens, readable SVG warning content and twenty-two unexecuted panel records. Run `python tools/check_hr_v0_service_disconnect.py` to prove the exact `75920-01` catalog candidate remains application-held, all 15 SD1 rows remain unexecuted, and no cutout, conductor, lockout procedure or wiring release exists. Passing either checker releases no drilling, cutting, wiring, assembly, PCB fabrication, or energization work.
 
@@ -888,6 +895,7 @@ One hundred sixty-two review/control rounds are complete: R01-R162. R11 Fable an
 | R167 | Boston/US custom-metal capability refresh | Issued `HR-V0-BOSTON-FAB-ROUTE-P0.3`; screened ten routes against ten current official records, identified Kontrast4D as the strongest published local candidate and Protolabs/Xometry as the strongest online review routes, preserved exact 6061-T651, and exposed ten open design/application inputs. No provider is qualified or contacted; no upload, quote, first article, fabrication, assembly, motion or energization authority exists. |
 | R168 | XT1 control-terminal group reconciliation | Issued `HR-V0-XT1-P0.1`; reconciled BOM-039 to five gray 3209510 bodies, one blue 3209523 body, one 3030417 end cover, six exact position/net mappings and zero jumpers. Kept shared 3022218 restraint under BOM-085 and labels under BOM-062. Twelve holds and all work-authority boundaries remain open; EG-003/015 remain partial. |
 | R169 | Panel identification and XT1 marker correction | Issued `HR-V0-LABEL-P0.1`; replaced overlong XT1 marker prose with `01` through `06`, added separate group/device/operator/status schedules, and advanced BOM-062 to an exact-candidate material/text hold. Printing, artwork, adhesion, placement, wire markers, code marking and physical/qualified evidence remain open; EG-003/015 remain partial. |
+| R170 | Exact compute-storage candidate | Issued `HR-V0-COMPUTE-STORAGE-P0.2`; superseded only the order-code-open STORE1 branch with exact Kingston `SDCIT2/64GBSP` on hold. Recorded pSLC-mode TLC, 30K P/E and power-failure/ECC/wear/monitoring family claims without assigning the family maximum TBW to 64 GB. Pi 5 compatibility, receiving, media integrity, imaging, filesystem, abrupt-loss, recovery, retention, thermal/current and qualified evidence remain open. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

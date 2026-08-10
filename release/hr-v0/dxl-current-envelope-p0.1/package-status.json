@@ -13,7 +13,7 @@
     "firmware/supervisor/project_button_supervisor/actuator_config.py": "0c2784fa0b0c5b2fd3331340ef377831fcf2d1362141ad8d54ac48220f4f0e9a",
     "firmware/supervisor/project_button_supervisor/dynamixel_bus.py": "8530dc751e9e6ee1c375893623f49184fad29569d8899ffd088bcc2f8f3acce6",
     "firmware/supervisor/tests/test_dynamixel_bus.py": "30e8aa9e666394e26901019b5b0ff44f4849aa019a8848e80ad97580b1c3f2e9",
-    "bom/bom.csv": "36dba14adb0c6a85b9a47151800d3e03686a9e13e0bc067a03196bfeef1d288e",
+    "bom/bom.csv": "e5d1af71c94158836d00edbdd2c18130b985d5eb2567649eab814c86d250b8d7",
     "electrical/hr-v0-protection-coordination-inputs.csv": "dd53ea90945ee0d6a0a3b8ac1a5df7ad02b63cdee3827d6ac1a166a331ba9b79",
     "release/hr-v0/dxl-harness-allocation-p0.1/current-qualification-template.csv": "b55bdb339676181f84cd699f4a18279da9b774e208ecedd4f8a9c4656720d4a6"
   },

@@ -6,6 +6,8 @@ Identifier: `HR-V0-COMPUTE-SUBASM-P0.1`
 
 Date: 2026-08-08
 
+> **Current storage supersession:** R170 / `HR-V0-COMPUTE-STORAGE-P0.2` supersedes only this document's order-code-open `STORE1` branch with exact Kingston candidate `SDCIT2/64GBSP` on hold. This P0.1 record remains the historical decision snapshot.
+
 Parent selection: `HR-V0-COMPUTE-SEL-P0.1`
 
 Electrical baseline: `Project Button Electrical V3-P1.14`

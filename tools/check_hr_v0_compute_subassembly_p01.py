@@ -48,9 +48,9 @@ def main() -> None:
     store = next(row for row in stack if row["reference"] == "STORE1")
     require(store["order_code_state"] == "SELECTION REQUIRED" and store["application_state"] == "OPEN", "storage must remain fail-closed")
     require(bom.get("BOM-079", {}).get("manufacturer_part_number") == "SC1148", "BOM-079 exact cooler identity missing")
-    require("exact order code SELECTION REQUIRED" in bom.get("BOM-064", {}).get("manufacturer_part_number", ""), "BOM-064 improperly claims an exact card order code")
+    require(bom.get("BOM-064", {}).get("manufacturer_part_number") == "SDCIT2/64GBSP", "BOM-064 current exact storage candidate missing")
     require(closure.get("BOM-079", {}).get("closure_class") == "exact_candidate_hold" and closure.get("BOM-079", {}).get("allowed_action") == "HOLD", "BOM-079 is not an exact-candidate hold")
-    require(closure.get("BOM-064", {}).get("closure_class") == "selection_required", "BOM-064 must remain selection required")
+    require(closure.get("BOM-064", {}).get("closure_class") == "exact_candidate_hold", "BOM-064 current candidate must remain on hold")
     require(image["official_sha256_published"] == IMAGE_HASH and image["release_date"] == "2026-06-18", "pinned OS identity changed")
     require(all(image[key] == "NOT_EXECUTED" for key in ("local_download_state", "local_sha256_state", "media_write_state", "readback_verification_state", "boot_validation_state", "power_loss_recovery_state")), "image record contains executed evidence")
     require(all(row["authorization"] == "NOT_AUTHORIZED" and row["state"] == "NOT_EXECUTED" and not row["actual"] and not row["evidence_hash"] for row in receiving), "receiving template contains an executed or authorized result")
@@ -74,7 +74,7 @@ def main() -> None:
 
     if failures:
         raise SystemExit("HR-V0 compute-subassembly check failed:\n- " + "\n- ".join(failures))
-    print("HR-V0 compute-subassembly check passed: three exact hardware candidates, one selection-required storage branch and one pinned/unexecuted OS image")
+    print("HR-V0 compute-subassembly P0.1 historical snapshot check passed; R170 superseding storage candidate remains an exact-candidate hold")
     print("EG-003, EG-010 and EG-017 remain PARTIAL; no procurement, connection, powered-test or energization authority")
     print(WARNING)
 
