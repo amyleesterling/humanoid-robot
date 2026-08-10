@@ -1,0 +1,22 @@
+{
+  "identifier": "HR-V0-Q4X-BOX-LAYOUT-P0.1",
+  "round": "R185",
+  "date": "2026-08-10",
+  "status": "PRELIMINARY - DIMENSIONAL REVIEW CANDIDATE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, DRILLING, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "source_records": 14,
+  "dimension_records": 17,
+  "layout_records": 9,
+  "open_holds": 12,
+  "released_drill_holes": 0,
+  "released_fasteners": 0,
+  "authorized_procurement": 0,
+  "authorized_fabrication": 0,
+  "authorized_connection": 0,
+  "authorized_energization": 0,
+  "safety_function_credit": "ZERO",
+  "correction": "14F0907 short side corrected from R184 174.75 mm to 174.498 mm catalog geometry",
+  "gate_effect": {
+    "EG-025": "OPEN",
+    "EG-026": "PARTIAL"
+  }
+}
