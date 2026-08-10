@@ -74,7 +74,7 @@ def main() -> int:
     product = next((item for item in release["current_products"] if item.get("identifier") == "HR-V0-DYN-EVENT-AIN-P0.1"), None)
     need(errors, product is not None, "release candidate lacks R177 event AIN product")
     if product:
-        need(errors, "direct_24v_connection_prohibited" in product["release_state"] and "zero_safety_credit" in product["release_state"], "release state is not fail-closed")
+        need(errors, "all_field_connections_prohibited" in product["release_state"] and "zero_safety_credit" in product["release_state"], "release state is not fail-closed")
     gates = {r["gate_id"]: r for r in rows(ROOT / "requirements/hr-v0-energization-gates.csv")}
     need(errors, gates["EG-025"]["status"] == "open" and "hr-v0-gate-evidence-supplement-r177.csv" in gates["EG-025"]["evidence_location"], "EG-025 state/evidence changed")
     need(errors, gates["EG-026"]["status"] == "partial" and "hr-v0-gate-evidence-supplement-r177.csv" in gates["EG-026"]["evidence_location"], "EG-026 state/evidence changed")

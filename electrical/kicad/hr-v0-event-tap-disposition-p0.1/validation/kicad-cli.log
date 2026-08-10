@@ -1,0 +1,23 @@
+COMMAND: "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-event-tap-disposition-p0.1\validation\hr-v0-event-tap-disposition-p0.1-erc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-event-tap-disposition-p0.1\hr-v0-event-tap-disposition-p0.1.kicad_sch"
+EXIT: 0
+Found 0 violations
+Saved ERC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/hr-v0-event-tap-disposition-p0.1/validation/hr-v0-event-tap-disposition-p0.1-erc.rpt
+
+
+COMMAND: "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-event-tap-disposition-p0.1\validation\hr-v0-event-tap-disposition-p0.1.net" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-event-tap-disposition-p0.1\hr-v0-event-tap-disposition-p0.1.kicad_sch"
+EXIT: 0
+
+
+COMMAND: "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export pdf --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-event-tap-disposition-p0.1\output\hr-v0-event-tap-disposition-p0.1-preliminary.pdf" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-event-tap-disposition-p0.1\hr-v0-event-tap-disposition-p0.1.kicad_sch"
+EXIT: 0
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-event-tap-disposition-p0.1\output\hr-v0-event-tap-disposition-p0.1-preliminary.pdf'.
+Done.
+
+
+COMMAND: "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export svg --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-event-tap-disposition-p0.1\output" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-event-tap-disposition-p0.1\hr-v0-event-tap-disposition-p0.1.kicad_sch"
+EXIT: 0
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-event-tap-disposition-p0.1\output\hr-v0-event-tap-disposition-p0.1.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-event-tap-disposition-p0.1\output\hr-v0-event-tap-disposition-p0.1-01 Pilz input, RESET and ARM nodes.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-event-tap-disposition-p0.1\output\hr-v0-event-tap-disposition-p0.1-02 Schneider K1_K2 coil nodes.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-event-tap-disposition-p0.1\output\hr-v0-event-tap-disposition-p0.1-03 Pilz EDM return nodes.svg'.
+Done.
