@@ -1,0 +1,31 @@
+{
+  "schema": "project-button-publisher-sbom-lock-v1",
+  "identifier": "HR-V0-RPI-OS-SBOM-P0.1",
+  "status": "PUBLISHER_SBOM_LOCKED_TARGET_NOT_VERIFIED",
+  "parent_image_identifier": "HR-V0-RPI-OS-LITE-P0.1",
+  "document_name": "raspios-trixie-arm64-lite",
+  "spdx_version": "SPDX-2.3",
+  "document_namespace": "https://anchore.com/syft/dir/raspios-trixie-arm64-lite-5a7e10b9-37c4-4804-a9f6-ae5b91745622",
+  "created_utc": "2026-06-18T00:27:22Z",
+  "creators": [
+    "Organization: Anchore, Inc",
+    "Tool: syft-1.45.1"
+  ],
+  "compressed_payload_bytes": 5336108,
+  "compressed_payload_sha256": "7a82f353f58d925543ed196e56b551342138551132fcb59111917df64c683959",
+  "decompressed_bytes": 50522646,
+  "decompressed_sha256": "ff04dbd1ffb6742bec8778a8c455b7f20ed84f218b0c140fcf786e0a29ad27c0",
+  "total_spdx_packages": 4743,
+  "dpkg_packages": 632,
+  "generic_packages": 3791,
+  "packages_without_supported_purl": 320,
+  "unique_dpkg_name_version_pairs": 632,
+  "dpkg_package_lock_sha256": "8146766fb15bc3a5cbceaed00ef53cc5aa0af2d9a085762df6a34a23f9174e02",
+  "image_download_state": "NOT_EXECUTED",
+  "target_dpkg_readback_state": "NOT_EXECUTED",
+  "gpio_backend_selection": "SELECTION REQUIRED",
+  "serial_runtime_selection": "SELECTION REQUIRED",
+  "motion_authority": "NONE",
+  "functional_safety_credit": "NONE",
+  "warning": "PRELIMINARY - NOT APPROVED FOR IMAGING INSTALLATION CONNECTION POWERED TEST MOTION OR ENERGIZATION"
+}
