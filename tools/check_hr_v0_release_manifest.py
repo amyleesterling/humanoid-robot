@@ -211,8 +211,9 @@ def main() -> None:
         "HR-V0-HS-P0.3",
         "HR-V0-HOST-DEPLOY-P0.1",
         "HR-V0-RPI-OS-SBOM-P0.1",
+        "HR-V0-STALE-AUTH-P0.1",
     ] or firmware_product.get("release_state") != (
-        "source_transport_reproducible_watchdog_disabled_fail_closed_host_overlay_and_publisher_sbom_lock_candidate_not_installed_flashed_connected_or_hil_validated"
+        "source_transport_reproducible_watchdog_disabled_fail_closed_host_overlay_publisher_sbom_lock_and_stale_replay_rejection_candidate_not_installed_flashed_connected_or_hil_validated"
     ):
         errors.append("HR-V0-FW-P0.4 supporting identifiers or fail-closed release state changed")
     bom_product = next(
@@ -229,6 +230,7 @@ def main() -> None:
     )
     if commissioning_product.get("supporting_identifiers") != [
         "HR-V0-E2-HW-P0.4",
+        "HR-V0-STALE-AUTH-P0.1",
         "AUDIT-ELEC-002",
         "INSPECT-ELEC-010",
         "TEST-ELEC-008",

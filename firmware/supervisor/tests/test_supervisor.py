@@ -152,6 +152,40 @@ class SupervisorTests(unittest.TestCase):
         self.assertEqual(supervisor.state, OperatingState.RESET_REQUIRED)
         self.assertFalse(supervisor.outputs.torque_enable_request)
 
+    def test_dropout_rearm_rejects_stale_replay_and_requires_new_sequence(self) -> None:
+        supervisor = armed_supervisor()
+        stale = command(sequence=1, now_ms=1000)
+        self.assertTrue(supervisor.accept_trajectory(stale, 1000))
+
+        supervisor.observe_hardware(snapshot(estop_healthy=False), 1010)
+        self.assertIsNone(supervisor.active_command)
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+
+        supervisor.observe_hardware(snapshot(sr1_ready=False), 1020)
+        self.assertTrue(supervisor.acknowledge_fault(1030, operator_acknowledged=True))
+        supervisor.observe_hardware(snapshot(sr1_ready=False), 1040)
+        supervisor.observe_hardware(snapshot(sr1_ready=True), 1050)
+        supervisor.observe_hardware(
+            snapshot(sr1_ready=True, sra1_armed=True, k1_feedback=True, k2_feedback=True), 1060
+        )
+
+        self.assertEqual(supervisor.state, OperatingState.ARMED)
+        self.assertIsNone(supervisor.active_command)
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+        replay = replace(
+            stale,
+            source_time_ms=1070,
+            validity_deadline_ms=1170,
+            execution_deadline_ms=1320,
+        )
+        self.assertFalse(supervisor.accept_trajectory(replay, 1070))
+        self.assertIn("duplicate or out-of-order sequence", supervisor.events[-1].detail)
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+
+        fresh = command(sequence=2, now_ms=1080)
+        self.assertTrue(supervisor.accept_trajectory(fresh, 1080))
+        self.assertTrue(supervisor.outputs.torque_enable_request)
+
     def test_arm_without_observed_safe_ready_latches_fault(self) -> None:
         supervisor = Supervisor(config(), lambda samples: [0.0 for _ in samples], session_id="SESSION-TEST")
         supervisor.observe_hardware(
