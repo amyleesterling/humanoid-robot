@@ -1,0 +1,35 @@
+{
+  "identifier": "HR-V0-GRIP-XC330-P0.1",
+  "date": "2026-08-10",
+  "status": "PREFERRED LIGHTWEIGHT FEASIBILITY BRANCH - NOT SELECTED",
+  "source_step_sha256": "E2F7B060801A1D6A21F23BCA2554F29A402F7D73B8498CB201C9E6ADF3139EB6",
+  "actuator_model": "XC330-T288-T",
+  "actuator_sku": "902-0171-000",
+  "actuator_mass_g": 23.0,
+  "hard_opening_mm": [
+    40.0,
+    76.0
+  ],
+  "nominal_padded_opening_mm": [
+    38.0,
+    74.0
+  ],
+  "required_object_dimension_mm": [
+    40.0,
+    70.0
+  ],
+  "pitch_radius_mm": 8.0,
+  "full_travel_rotation_deg": 128.915504,
+  "custom_full_density_calculation_mass_g": 40.016792,
+  "screen_subtotal_g": 673.774792,
+  "remaining_incomplete_headroom_g": 76.225208,
+  "open_holds": 15,
+  "requirements_closed": 0,
+  "sol_blockers_closed": 0,
+  "procurement_release": false,
+  "fabrication_release": false,
+  "connection_release": false,
+  "motion_release": false,
+  "energization_release": false,
+  "warning": "PRELIMINARY FEASIBILITY BRANCH - NOT SELECTED - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
+}

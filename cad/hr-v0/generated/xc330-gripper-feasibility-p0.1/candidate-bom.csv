@@ -1,0 +1,7 @@
+item,quantity,manufacturer,order_code,description,state,evidence
+XGB-001,1,ROBOTIS,902-0171-000,DYNAMIXEL XC330-T288-T; package includes one 180 mm X3P cable and stated M2 fasteners,EXACT FEASIBILITY CANDIDATE - NOT SELECTED,official product page; current availability/received identity required
+XGB-002,1,ROBOTIS,903-0301-000,FPX330-S101 4pcs Set,EXACT INTERFACE CANDIDATE - NOT SELECTED,"official product page; exact allocated quantity, geometry and received mass required"
+XGB-003,1,SELECTION REQUIRED,SELECTION REQUIRED,"printed base, cover, pinion, two racks and two jaws from controlled source",PROCESS/MATERIAL/DFM/PROOF REQUIRED,native STEP/STL exists; exact material/process and FAI absent
+XGB-004,2,SELECTION REQUIRED,SELECTION REQUIRED,1.0 mm broad compliant pad plus positive retention,SELECTION REQUIRED,"durometer, tear/compression, adhesive/retention and object tests absent"
+XGB-005,1,SELECTION REQUIRED,SELECTION REQUIRED,base/cover/wrist fasteners and locking features,SELECTION REQUIRED,"exact lengths, materials, strengths, torque, locking and reuse absent"
+XGB-006,1,SELECTION REQUIRED,SELECTION REQUIRED,fixed guard/bellows and strain-relieved cable route,DESIGN AND SELECTION REQUIRED,"access-probe, retention, flex and drop evidence absent"
