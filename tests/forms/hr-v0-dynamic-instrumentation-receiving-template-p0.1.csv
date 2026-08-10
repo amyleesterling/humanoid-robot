@@ -1,0 +1,5 @@
+record_id,item_id,serial_or_lot,received_identity,firmware_or_revision,calibration_id,calibration_due,inspection_result,evidence_hash,reviewer,status
+DIR-001,TE-001,,,,,,,,SELECTION REQUIRED,NOT EXECUTED
+DIR-002,TE-002,,,,,,,,SELECTION REQUIRED,NOT EXECUTED
+DIR-003,TE-004,,,,,,,,SELECTION REQUIRED,NOT EXECUTED
+DIR-004,TE-005,,,,,,,,SELECTION REQUIRED,NOT EXECUTED

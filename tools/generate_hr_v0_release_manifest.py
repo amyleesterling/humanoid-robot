@@ -66,6 +66,8 @@ def role_for(path: str) -> str:
         return "bill_of_materials_control"
     if path.startswith("tests/"):
         return "verification_procedure_or_form"
+    if path.startswith("test-equipment/"):
+        return "test_instrumentation_candidate"
     if path.startswith("references/") or "/vendor/" in path:
         return "primary_or_vendor_reference"
     if path.startswith("cad/"):
