@@ -162,8 +162,7 @@ def evaluate(config_path: Path, root: Path = Path("/")) -> PreflightResult:
 
     gpio = config.get("gpio")
     input_names = {
-        "control_power", "estop_healthy", "watchdog_healthy", "edm_healthy",
-        "compute_undervoltage", "sr1_ready", "sra1_armed", "k1_feedback", "k2_feedback",
+        "sr1_status", "sra1_status", "k1_status", "k2_status",
     }
     if not isinstance(gpio, dict):
         holds.append("host config: GPIO allocation absent")
@@ -190,6 +189,19 @@ def evaluate(config_path: Path, root: Path = Path("/")) -> PreflightResult:
                     holds.append(f"host config: GPIO input {name} line unresolved")
                 if not isinstance(item.get("active_high"), bool):
                     holds.append(f"host config: GPIO input {name} polarity unresolved")
+
+    providers = config.get("required_observation_providers")
+    provider_names = {
+        "control_power", "estop_healthy", "watchdog_healthy", "edm_healthy",
+        "compute_undervoltage",
+    }
+    if not isinstance(providers, dict) or set(providers) != provider_names:
+        holds.append("host config: required health-observation provider set unresolved")
+    else:
+        for name in sorted(provider_names):
+            value = providers[name]
+            if not isinstance(value, str) or not value.strip() or value.strip().upper() in UNRESOLVED_MARKERS:
+                holds.append(f"host config: observation provider {name} unresolved")
 
     return PreflightResult(not holds, tuple(holds))
 

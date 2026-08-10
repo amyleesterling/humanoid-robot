@@ -23,7 +23,7 @@ Date: 2026-08-10
 - Complete standard-runtime sweep: 142/142 checkers passed, including the staged release-manifest checker.
 - Native KiCad `pcbnew` sweep: 13/13 checkers passed.
 - Deterministic release manifest: 3,392 package files before this final validation-record refresh; regenerated after the refresh.
-- `check_energization_gates.py --through E2 --require-ready` returned nonzero exit 1 as required: 0/21 gates closed and all 21 remain partial.
+- R200 correction: `check_energization_gates.py --through E2 --require-ready` returns exit 2 for a valid but unresolved register. R199 incorrectly recorded exit 1. The substantive result was and remains 0/21 gates closed with all 21 partial.
 
 ## Web-guide inspection boundary
 

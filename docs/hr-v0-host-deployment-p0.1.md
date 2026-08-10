@@ -12,7 +12,7 @@ Storage candidate: `HR-V0-COMPUTE-STORAGE-P0.2` / Kingston `SDCIT2/64GBSP` on ho
 
 R171 added the host-side deployment definition between the pinned Raspberry Pi OS image and the supervisor model. R198 added the executable runtime boundary. R199 adds exact hash-bound libgpiod and AF_UNIX command-source candidates, corrects heartbeat permission into a monotonic edge scheduler, and adds trajectory resource/time holds. It remains a **source candidate**, not an installable or promoted machine image.
 
-The committed configuration has 50 explicit preflight failures. The launcher and the runtime entrypoint both return exit code 78 before importing a backend. The package supplies no install script, disables its systemd service by preset, uses `Restart=no`, restricts the candidate service to AF_UNIX with IP denied, and retains `motion_authority: NONE` and `functional_safety_credit: NONE`.
+The committed configuration has 45 explicit preflight failures after the R200 observation-semantics correction. The launcher and the runtime entrypoint both return exit code 78 before importing a backend. The package supplies no install script, disables its systemd service by preset, uses `Restart=no`, restricts the candidate service to AF_UNIX with IP denied, and retains `motion_authority: NONE` and `functional_safety_credit: NONE`.
 
 This improves the digital evidence behind `EG-017`; it does not close that gate.
 
@@ -71,4 +71,4 @@ The general-purpose compute, heartbeat, launcher, supervisor and watchdog diagno
 - `release/hr-v0/host-deployment-p0.1/index.html`
 - `tools/check_hr_v0_host_deploy_p01.py`
 
-Passing repository tests proves file integrity and reference-model behavior only. The current preflight has 50 holds, the overlay has 21 rows, the hold register has seventeen open plus one partial record, and all 21 execution records remain blank. The 75 firmware tests and 16 host tests are not target/HIL evidence. This package does not authorize installation, imaging, connection, powered testing, motion or energization.
+Passing repository tests proves file integrity and reference-model behavior only. The current preflight has 45 holds, the overlay has 21 rows, the hold register has seventeen open plus one partial record, and all 21 execution records remain blank. The 78 firmware tests and 16 host tests are not target/HIL evidence. This package does not authorize installation, imaging, connection, powered testing, motion or energization.

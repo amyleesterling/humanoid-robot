@@ -12,7 +12,7 @@ Review/control round: R198; backend correction R199
 
 The R171 host overlay stopped safely but its target entrypoint was `SELECTION REQUIRED` and no source connected hardware observation, supervisor authority, heartbeat permission, sample scheduling and the actuator bus. R198 added that missing executable boundary rather than treating a launcher as a runtime. R199 corrects the heartbeat contract and adds exact GPIO/command-source candidates.
 
-The proposed overlay now maps 21 exact repository sources, including hash-bound `gpiod_hardware.py` and `unix_command_source.py`. `runtime_entrypoint.py` has an exact target path and SHA-256. The committed preflight reports 50 holds and exits 78. The hold register has seventeen open records and one partial record: `HOST-006` remains partial on source evidence only.
+The proposed overlay now maps 21 exact repository sources, including hash-bound `gpiod_hardware.py` and `unix_command_source.py`. `runtime_entrypoint.py` has an exact target path and SHA-256. After the R200 observation-semantics correction, the committed preflight reports 45 holds and exits 78. The hold register has seventeen open records and one partial record: `HOST-006` remains partial on source evidence only.
 
 ## Runtime sequence
 

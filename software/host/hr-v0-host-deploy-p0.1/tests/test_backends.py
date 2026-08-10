@@ -98,18 +98,26 @@ class BackendTests(unittest.TestCase):
 
     def test_snapshot_applies_explicit_input_polarity(self) -> None:
         access = FakeAccess()
-        access.inputs["control_power"] = True
+        access.inputs["sr1_status"] = False
+        access.inputs["sra1_status"] = True
+        access.inputs["k1_status"] = True
         active_high = {name: True for name in INPUT_NAMES}
-        active_high["compute_undervoltage"] = False
         hardware = GpiodHardware(access, active_high, 50, 5)
         snapshot = hardware.snapshot({"J1": 0.0, "J2": 30.0, "GRIPPER": 40.0})
-        self.assertTrue(snapshot.control_power)
-        self.assertTrue(snapshot.compute_undervoltage)
+        self.assertIsNone(snapshot.control_power)
+        self.assertIsNone(snapshot.estop_healthy)
+        self.assertIsNone(snapshot.watchdog_healthy)
+        self.assertIsNone(snapshot.edm_healthy)
+        self.assertIsNone(snapshot.compute_undervoltage)
         self.assertTrue(snapshot.bus_healthy)
+        self.assertFalse(snapshot.sr1_ready)
+        self.assertTrue(snapshot.sra1_armed)
+        self.assertTrue(snapshot.k1_feedback)
+        self.assertFalse(snapshot.k2_feedback)
 
     def test_snapshot_rejects_missing_input(self) -> None:
         access = FakeAccess()
-        del access.inputs["edm_healthy"]
+        del access.inputs["k2_status"]
         hardware = GpiodHardware(access, {name: True for name in INPUT_NAMES}, 50, 5)
         with self.assertRaisesRegex(HardwareBackendError, "incomplete"):
             hardware.snapshot({"J1": 0.0, "J2": 30.0, "GRIPPER": 40.0})

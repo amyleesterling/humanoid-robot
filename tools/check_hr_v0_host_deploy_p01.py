@@ -159,7 +159,7 @@ def main() -> None:
     firmware_product = next((item for item in metadata.get("current_products", []) if item.get("domain") == "firmware"), {})
     require(IDENTIFIER in firmware_product.get("supporting_identifiers", []), "release metadata lacks host deployment identifier")
     require(IDENTIFIER in doc and IDENTIFIER in guide, "document or guide lacks identifier")
-    require("50" in doc and "seventeen" in doc.lower() and "one partial" in doc.lower() and "21" in doc, "documented hold/evidence counts changed")
+    require("45" in doc and "seventeen" in doc.lower() and "one partial" in doc.lower() and "21" in doc, "documented hold/evidence counts changed")
     require("font:16px" in guide and "font-size:16px" in guide and "font-size:14px" in guide, "guide text floors are not explicit")
     require(guide.count("data-filter=") == 4 and guide.count("data-kind=") == 4, "guide filter/card structure changed")
     for token in ("disabled", "exit 78", "GPIO allocation", "no serial", "zero functional-safety credit", "not approved"):
@@ -167,7 +167,17 @@ def main() -> None:
 
     if failures:
         raise SystemExit("HR-V0 host deployment P0.1 check failed:\n- " + "\n- ".join(failures))
-    print("HR-V0 host deployment P0.1 check passed: 21-file disabled overlay, 50 current preflight holds, 17 open plus 1 partial closure hold, 21 unexecuted evidence rows, 16 host tests")
+    preflight = subprocess.run(
+        [sys.executable, str(PACKAGE / "project_button_host/preflight.py"), "--config", str(PACKAGE / "host-deploy-config.json")],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+    )
+    preflight_count = len(json.loads(preflight.stdout)["holds"]) if preflight.returncode == 78 else -1
+    require(preflight_count == 45, "committed preflight must expose exactly 45 holds")
+    if failures:
+        raise SystemExit("HR-V0 host deployment P0.1 check failed:\n- " + "\n- ".join(failures))
+    print("HR-V0 host deployment P0.1 check passed: 21-file disabled overlay, 45 current preflight holds, 17 open plus 1 partial closure hold, 21 unexecuted evidence rows, 16 host tests")
     print("EG-017 remains PARTIAL; backend source exists but GPIO/observation allocation, target image, installation, HIL, motion and energization authority do not")
     print(WARNING)
 

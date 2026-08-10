@@ -20,7 +20,7 @@ The proposed host overlay now contains 21 exact source-to-target mappings. The c
 
 - import only after successful pure-file preflight;
 - exact distribution, version, chip, line, polarity and timing configuration requirements;
-- disabled input bias and an exact nine-input runtime schema;
+- disabled input bias and a four-status GPIO schema corrected by R200;
 - a monotonic heartbeat edge scheduler rather than a static permission level; and
 - forced inactive output on disable, missed edge deadline, clock reversal, startup failure and close.
 
@@ -43,15 +43,15 @@ The sender identity, UID, GID, process confinement, producer protocol, queue/flo
 
 R199 adds three mandatory supervisor selections: maximum trajectory sample count, maximum trajectory duration and maximum execution slack. All remain `null` in the committed configuration. The existing maximum sample-lateness selection also remains unresolved. Repository construction therefore fails closed rather than inventing target limits.
 
-## Critical physical-interface gap
+## Critical physical-interface gap and R200 correction
 
-The runtime requires nine physical observations: control power, E-stop health, watchdog health, EDM health, compute undervoltage, SR1 ready, SRA1 armed, K1 feedback and K2 feedback. No released Raspberry Pi allocation or connected input circuit exists for these signals.
+R199 incorrectly called all nine non-bus fields physical observations. R200 supersedes that statement. Four positive panel status candidates are traceable: `SR1_STATUS`, `SRA1_STATUS`, `K1_STATUS` and `K2_STATUS`. Control power, E-stop health, watchdog health, EDM health and compute undervoltage still require distinct providers; bus health is software-derived from exact transport operations.
 
-The electrical candidate contains potential status sources such as SR1 and SRA1 auxiliary/semiconductor outputs and K1/K2 auxiliary contacts, but R199 does not connect them. Closure requires a qualified electrical design defining every terminal, isolation/input receiver, loading, protection, cable, connector, grounding, startup state, GPIO allocation, diagnostic coverage and noninterference argument, followed by received-hardware inspection and fault-injection evidence. No pin, polarity or circuit may be inferred from this source package.
+The host backend now reads only the four positive status candidates and returns unknown for all five unavailable health providers. Unknown is fail-closed. No released Raspberry Pi allocation or connected input circuit exists. See `docs/hr-v0-runtime-observation-semantics-p0.1.md`.
 
 ## Evidence state
 
-- 75 firmware tests pass: 64 supervisor/runtime tests and 11 watchdog tests.
+- 78 firmware tests pass: 67 supervisor/runtime tests and 11 watchdog tests.
 - 16 host tests pass, including eight backend-source tests.
 - 21 overlay rows are controlled and not authorized.
 - 50 committed preflight holds are reported before backend import.

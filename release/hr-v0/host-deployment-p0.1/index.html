@@ -39,12 +39,12 @@
     </article>
     <article class="card hold" data-kind="holds">
       <div class="tech">WHAT IS STILL MISSING</div><h2>Source candidates are not connected hardware.</h2>
-      <ul><li>exact libgpiod package, GPIO chip, lines, polarities and heartbeat timing;</li><li>a qualified circuit for all nine physical observations;</li><li>command sender UID/GID, cycle and trajectory resource bounds, serial identity and permissions;</li><li>write/readback, waveform, HIL, power-loss, recovery and rollback evidence;</li><li>qualified reviews and separate written authorization.</li></ul>
+      <ul><li>exact libgpiod package, GPIO chip, lines, polarities and heartbeat timing;</li><li>a qualified four-channel positive-status receiver plus distinct providers for control power, E-stop, watchdog, EDM and compute undervoltage;</li><li>command sender UID/GID, cycle and trajectory resource bounds, serial identity and permissions;</li><li>write/readback, waveform, HIL, power-loss, recovery and rollback evidence;</li><li>qualified reviews and separate written authorization.</li></ul>
     </article>
     <article class="card" data-kind="boundary">
       <div class="tech">FAIL-CLOSED BOUNDARY</div><h2>No released GPIO allocation. No observation circuit. No motion authority.</h2>
       <p>The committed configuration reaches neither backend nor the bus. No serial device is released. In source tests, RESET and ARM cannot enable torque; only a fresh validated trajectory can. Dropout, heartbeat-edge lateness, clock reversal or missed sample timing force heartbeat inactive and remove torque.</p>
-      <p><strong>That is source evidence, not physical validation.</strong> The nine-input observation circuit, GPIO waveform, watchdog interruption, actuator response and reset-to-motion behavior still need qualified design and isolated HIL with raw traces.</p>
+      <p><strong>That is source evidence, not physical validation.</strong> R200 rejects the earlier nine-GPIO assumption. Four positive panel states are traceable; five health providers remain unselected. The receiver, GPIO waveform, watchdog interruption, actuator response and reset-to-motion behavior still need qualified design and isolated HIL with raw traces.</p>
     </article>
     <article class="card" data-kind="holds">
       <div class="tech">GATE EFFECT</div><h2>EG-017 remains partial.</h2>

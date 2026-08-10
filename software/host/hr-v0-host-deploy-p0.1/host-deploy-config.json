@@ -22,7 +22,7 @@
   "serial_device": "SELECTION REQUIRED",
   "gpio_backend": "project_button_host.gpiod_hardware:factory",
   "gpio_backend_path": "/opt/project-button/lib/project_button_host/gpiod_hardware.py",
-  "gpio_backend_sha256": "6caeb350231596e74054186f7783580794628042b3810888e08cbe3e380d2c2e",
+  "gpio_backend_sha256": "0f1bfe45694e8dd7e57075b2627cd3f2bbc3b64b50636e6293fbe7853753250c",
   "command_source": {
     "socket_path": "/run/project-button/trajectory.sock",
     "socket_mode": "0o660",
@@ -38,16 +38,18 @@
     "heartbeat_half_period_ms": "SELECTION REQUIRED",
     "maximum_edge_lateness_ms": "SELECTION REQUIRED",
     "inputs": {
-      "control_power": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"},
-      "estop_healthy": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"},
-      "watchdog_healthy": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"},
-      "edm_healthy": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"},
-      "compute_undervoltage": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"},
-      "sr1_ready": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"},
-      "sra1_armed": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"},
-      "k1_feedback": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"},
-      "k2_feedback": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"}
+      "sr1_status": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"},
+      "sra1_status": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"},
+      "k1_status": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"},
+      "k2_status": {"line": "SELECTION REQUIRED", "active_high": "SELECTION REQUIRED"}
     }
+  },
+  "required_observation_providers": {
+    "control_power": "SELECTION REQUIRED",
+    "estop_healthy": "SELECTION REQUIRED",
+    "watchdog_healthy": "SELECTION REQUIRED",
+    "edm_healthy": "SELECTION REQUIRED",
+    "compute_undervoltage": "SELECTION REQUIRED"
   },
   "boot_id_path": "/proc/sys/kernel/random/boot_id",
   "supervisor_config_path": "/etc/project-button/supervisor-config.json",

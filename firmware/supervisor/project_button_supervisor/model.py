@@ -173,12 +173,15 @@ class SupervisorConfig:
 
 @dataclass(frozen=True)
 class HardwareSnapshot:
-    control_power: bool
-    estop_healthy: bool
-    watchdog_healthy: bool
-    edm_healthy: bool
-    bus_healthy: bool
-    compute_undervoltage: bool
+    # None means the observation is unavailable or has no selected physical
+    # provider.  Unknown is never coerced to healthy: it inhibits heartbeat
+    # and motion authority until an exact provider supplies a boolean result.
+    control_power: bool | None
+    estop_healthy: bool | None
+    watchdog_healthy: bool | None
+    edm_healthy: bool | None
+    bus_healthy: bool | None
+    compute_undervoltage: bool | None
     sr1_ready: bool
     sra1_armed: bool
     k1_feedback: bool
@@ -257,9 +260,20 @@ class Supervisor:
 
     @property
     def outputs(self) -> SupervisorOutputs:
-        control_power = bool(self._last_snapshot and self._last_snapshot.control_power)
+        snapshot = self._last_snapshot
+        heartbeat_preconditions_known_good = bool(
+            snapshot
+            and snapshot.control_power is True
+            and snapshot.estop_healthy is True
+            and snapshot.edm_healthy is True
+            and snapshot.bus_healthy is True
+            and snapshot.compute_undervoltage is False
+        )
         return SupervisorOutputs(
-            heartbeat_allowed=control_power and self.state is not OperatingState.FAULT_LATCHED,
+            heartbeat_allowed=(
+                heartbeat_preconditions_known_good
+                and self.state is not OperatingState.FAULT_LATCHED
+            ),
             torque_enable_request=self.state is OperatingState.DRIVE_ENABLED and self.active_command is not None,
             state=self.state,
             active_trajectory_id=self.active_command.trajectory_id if self.active_command else None,
@@ -267,13 +281,20 @@ class Supervisor:
 
     def observe_hardware(self, snapshot: HardwareSnapshot, now_ms: int) -> None:
         self._last_snapshot = snapshot
-        if not snapshot.control_power:
+        if snapshot.control_power is not True:
             self._invalidate_target()
             self._safe_ready_seen = False
             self._reset_required_seen = False
             self._watchdog_ever_healthy = False
             self.fault = None
-            self._transition(OperatingState.POWER_OFF, now_ms, "control power absent")
+            detail = (
+                "control-power observation unavailable"
+                if snapshot.control_power is None
+                else "control power absent"
+            )
+            self._transition(OperatingState.POWER_OFF, now_ms, detail)
+            if snapshot.control_power is None:
+                self._record(now_ms, "OBSERVATION_HOLD", detail)
             return
 
         if self.state is OperatingState.POWER_OFF:
@@ -283,23 +304,54 @@ class Supervisor:
             return
 
         for condition, code, detail in (
-            (not snapshot.estop_healthy, FaultCode.ESTOP_OPEN, "E-stop channel not healthy"),
-            (not snapshot.edm_healthy, FaultCode.EDM_UNHEALTHY, "EDM not healthy"),
-            (not snapshot.bus_healthy, FaultCode.BUS_UNHEALTHY, "actuator bus not healthy"),
-            (snapshot.compute_undervoltage, FaultCode.COMPUTE_UNDERVOLTAGE, "compute undervoltage"),
+            (snapshot.estop_healthy is False, FaultCode.ESTOP_OPEN, "E-stop channel not healthy"),
+            (snapshot.edm_healthy is False, FaultCode.EDM_UNHEALTHY, "EDM not healthy"),
+            (snapshot.bus_healthy is False, FaultCode.BUS_UNHEALTHY, "actuator bus not healthy"),
+            (snapshot.compute_undervoltage is True, FaultCode.COMPUTE_UNDERVOLTAGE, "compute undervoltage"),
         ):
             if condition:
                 self._latch_fault(code, now_ms, detail)
                 return
 
-        if snapshot.watchdog_healthy:
+        unavailable = tuple(
+            name
+            for name, value in (
+                ("estop_healthy", snapshot.estop_healthy),
+                ("edm_healthy", snapshot.edm_healthy),
+                ("bus_healthy", snapshot.bus_healthy),
+                ("compute_undervoltage", snapshot.compute_undervoltage),
+            )
+            if value is None
+        )
+        if unavailable:
+            self._invalidate_target()
+            self._transition(
+                OperatingState.SAFE_DISABLED,
+                now_ms,
+                "required observation unavailable: " + ", ".join(unavailable),
+            )
+            self._record(
+                now_ms,
+                "OBSERVATION_HOLD",
+                "required observation unavailable: " + ", ".join(unavailable),
+            )
+            return
+
+        if snapshot.watchdog_healthy is True:
             self._watchdog_ever_healthy = True
-        elif self._watchdog_ever_healthy:
+        elif snapshot.watchdog_healthy is False and self._watchdog_ever_healthy:
             self._latch_fault(FaultCode.WATCHDOG_UNHEALTHY, now_ms, "watchdog permit dropped after becoming healthy")
             return
         else:
             self._invalidate_target()
-            self._transition(OperatingState.SAFE_DISABLED, now_ms, "waiting for three valid watchdog heartbeat edges")
+            detail = (
+                "watchdog-health observation unavailable"
+                if snapshot.watchdog_healthy is None
+                else "waiting for three valid watchdog heartbeat edges"
+            )
+            self._transition(OperatingState.SAFE_DISABLED, now_ms, detail)
+            if snapshot.watchdog_healthy is None:
+                self._record(now_ms, "OBSERVATION_HOLD", detail)
             return
 
         if snapshot.k1_feedback != snapshot.k2_feedback or snapshot.sra1_armed != (snapshot.k1_feedback and snapshot.k2_feedback):
@@ -346,11 +398,11 @@ class Supervisor:
         if self.state is not OperatingState.FAULT_LATCHED or not operator_acknowledged or snapshot is None:
             return False
         cause_absent = (
-            snapshot.control_power
-            and snapshot.estop_healthy
-            and snapshot.edm_healthy
-            and snapshot.bus_healthy
-            and not snapshot.compute_undervoltage
+            snapshot.control_power is True
+            and snapshot.estop_healthy is True
+            and snapshot.edm_healthy is True
+            and snapshot.bus_healthy is True
+            and snapshot.compute_undervoltage is False
             and not snapshot.sra1_armed
             and not snapshot.k1_feedback
             and not snapshot.k2_feedback

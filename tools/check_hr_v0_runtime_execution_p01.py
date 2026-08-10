@@ -130,7 +130,7 @@ def main() -> None:
         preflight_result = json.loads(preflight.stdout)
     except json.JSONDecodeError:
         preflight_result = {}
-    need(preflight_result.get("ready") is False and len(preflight_result.get("holds", [])) == 50, "committed preflight must expose exactly 50 holds")
+    need(preflight_result.get("ready") is False and len(preflight_result.get("holds", [])) == 45, "committed preflight must expose exactly 45 holds")
 
     combined = doc + guide
     for token in ("HR-V0-RUNTIME-P0.1", "R199", "21", "50", "17", "one partial", "exit 78", "zero functional-safety credit", WARNING):
@@ -140,8 +140,8 @@ def main() -> None:
 
     if failures:
         raise SystemExit("HR-V0 runtime execution check failed:\n- " + "\n- ".join(failures))
-    print("HR-V0 runtime execution check passed: 21 overlay rows, 50 preflight holds, HOST-006 partial, 14 controls")
-    print("75 firmware tests and 16 host tests are source evidence only; target execution and HIL remain NOT EXECUTED")
+    print("HR-V0 runtime execution check passed: 21 overlay rows, 45 preflight holds, HOST-006 partial, 14 controls")
+    print("78 firmware tests and 16 host tests are source evidence only; target execution and HIL remain NOT EXECUTED")
     print("EG-017 remains PARTIAL; backend source exists but physical observations, installation, connection, motion and energization authority do not")
     print(WARNING)
 

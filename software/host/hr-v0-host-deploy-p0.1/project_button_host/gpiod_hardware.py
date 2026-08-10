@@ -6,6 +6,9 @@ The module is safe to import on a development host: libgpiod is imported only
 inside the selected factory, after the pure-file preflight has passed.  The
 committed configuration deliberately leaves the GPIO chip, line allocation,
 polarity, timing, package version and physical observation circuit unresolved.
+Only four panel contact-state observations are allocated by this source model.
+It does not manufacture control-power, E-stop, watchdog, EDM or compute-voltage
+health from those contacts.
 """
 
 from __future__ import annotations
@@ -17,17 +20,13 @@ from typing import Any, Mapping, Protocol
 from project_button_supervisor import HardwareSnapshot
 
 
-INPUT_NAMES = (
-    "control_power",
-    "estop_healthy",
-    "watchdog_healthy",
-    "edm_healthy",
-    "compute_undervoltage",
-    "sr1_ready",
-    "sra1_armed",
-    "k1_feedback",
-    "k2_feedback",
+PHYSICAL_INPUT_NAMES = (
+    "sr1_status",
+    "sra1_status",
+    "k1_status",
+    "k2_status",
 )
+INPUT_NAMES = PHYSICAL_INPUT_NAMES
 
 
 class HardwareBackendError(RuntimeError):
@@ -104,8 +103,10 @@ class GpiodHardware:
         heartbeat_half_period_ms: int,
         maximum_edge_lateness_ms: int,
     ) -> None:
-        if set(input_active_high) != set(INPUT_NAMES):
-            raise HardwareBackendError("GPIO input allocation does not exactly match the runtime observation set")
+        if set(input_active_high) != set(PHYSICAL_INPUT_NAMES):
+            raise HardwareBackendError(
+                "GPIO input allocation does not exactly match the four physical contact-state observations"
+            )
         if any(not isinstance(value, bool) for value in input_active_high.values()):
             raise HardwareBackendError("every GPIO input polarity must be an exact boolean")
         self.access = access
@@ -127,23 +128,23 @@ class GpiodHardware:
         if self.closed:
             raise HardwareBackendError("GPIO backend is closed")
         raw = dict(self.access.read_inputs())
-        if set(raw) != set(INPUT_NAMES) or any(not isinstance(value, bool) for value in raw.values()):
+        if set(raw) != set(PHYSICAL_INPUT_NAMES) or any(not isinstance(value, bool) for value in raw.values()):
             raise HardwareBackendError("GPIO readback is incomplete or not boolean")
         logical = {
             name: raw[name] if self.input_active_high[name] else not raw[name]
-            for name in INPUT_NAMES
+            for name in PHYSICAL_INPUT_NAMES
         }
         return HardwareSnapshot(
-            control_power=logical["control_power"],
-            estop_healthy=logical["estop_healthy"],
-            watchdog_healthy=logical["watchdog_healthy"],
-            edm_healthy=logical["edm_healthy"],
+            control_power=None,
+            estop_healthy=None,
+            watchdog_healthy=None,
+            edm_healthy=None,
             bus_healthy=True,
-            compute_undervoltage=logical["compute_undervoltage"],
-            sr1_ready=logical["sr1_ready"],
-            sra1_armed=logical["sra1_armed"],
-            k1_feedback=logical["k1_feedback"],
-            k2_feedback=logical["k2_feedback"],
+            compute_undervoltage=None,
+            sr1_ready=logical["sr1_status"],
+            sra1_armed=logical["sra1_status"],
+            k1_feedback=logical["k1_status"],
+            k2_feedback=logical["k2_status"],
             positions=dict(positions),
         )
 
@@ -236,11 +237,11 @@ def factory(host: Mapping[str, Any], root: Path) -> GpiodHardware:
     half_period = _selected_int(gpio.get("heartbeat_half_period_ms"), "heartbeat half-period", 1)
     lateness = _selected_int(gpio.get("maximum_edge_lateness_ms"), "heartbeat edge lateness")
     inputs = gpio.get("inputs")
-    if not isinstance(inputs, dict) or set(inputs) != set(INPUT_NAMES):
-        raise HardwareBackendError("runtime GPIO inputs remain SELECTION REQUIRED")
+    if not isinstance(inputs, dict) or set(inputs) != set(PHYSICAL_INPUT_NAMES):
+        raise HardwareBackendError("four physical GPIO inputs remain SELECTION REQUIRED")
     input_lines: dict[str, int] = {}
     active_high: dict[str, bool] = {}
-    for name in INPUT_NAMES:
+    for name in PHYSICAL_INPUT_NAMES:
         item = inputs[name]
         if not isinstance(item, dict):
             raise HardwareBackendError(f"GPIO input {name} remains SELECTION REQUIRED")
@@ -264,5 +265,6 @@ __all__ = [
     "HardwareBackendError",
     "HeartbeatScheduler",
     "INPUT_NAMES",
+    "PHYSICAL_INPUT_NAMES",
     "factory",
 ]

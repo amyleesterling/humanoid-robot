@@ -395,6 +395,30 @@ class SupervisorTests(unittest.TestCase):
         self.assertEqual(supervisor.fault, FaultCode.HARDWARE_PERMIT_DROPPED)
         self.assertFalse(supervisor.outputs.torque_enable_request)
 
+    def test_unknown_control_power_remains_power_off_and_removes_heartbeat(self) -> None:
+        supervisor = Supervisor(config(), lambda samples: [0.0 for _ in samples], session_id="SESSION-TEST")
+        supervisor.observe_hardware(snapshot(control_power=None), 0)
+        self.assertEqual(supervisor.state, OperatingState.POWER_OFF)
+        self.assertFalse(supervisor.outputs.heartbeat_allowed)
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+        self.assertIn("unavailable", supervisor.events[-1].detail)
+
+    def test_unknown_health_observation_inhibits_heartbeat_and_motion(self) -> None:
+        supervisor = Supervisor(config(), lambda samples: [0.0 for _ in samples], session_id="SESSION-TEST")
+        supervisor.observe_hardware(snapshot(edm_healthy=None), 0)
+        self.assertEqual(supervisor.state, OperatingState.SAFE_DISABLED)
+        self.assertFalse(supervisor.outputs.heartbeat_allowed)
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+        self.assertIn("edm_healthy", supervisor.events[-1].detail)
+
+    def test_unknown_watchdog_observation_is_not_coerced_healthy(self) -> None:
+        supervisor = Supervisor(config(), lambda samples: [0.0 for _ in samples], session_id="SESSION-TEST")
+        supervisor.observe_hardware(snapshot(watchdog_healthy=None), 0)
+        self.assertEqual(supervisor.state, OperatingState.SAFE_DISABLED)
+        self.assertIsNone(supervisor.fault)
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+        self.assertIn("unavailable", supervisor.events[-1].detail)
+
 
 if __name__ == "__main__":
     unittest.main()
