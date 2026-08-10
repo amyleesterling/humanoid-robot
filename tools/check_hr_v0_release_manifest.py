@@ -172,7 +172,7 @@ def main() -> None:
         "HR-V0-GUARD-IMPACT-P0.1",
         "HR-V0-DYN-CHAR-P0.1",
         "HR-V0-FAB-SRC-P0.5",
-        "HR-V0-BOSTON-FAB-ROUTE-P0.2",
+        "HR-V0-BOSTON-FAB-ROUTE-P0.3",
         "HR-V0-MECH-DFM-DATA-P0.1",
         "HR-V0-MECH-BOM-BIND-P0.1",
         "HR-V0-MECH-PARITY-P0.1",
