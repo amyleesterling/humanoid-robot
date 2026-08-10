@@ -1,0 +1,18 @@
+{
+  "identifier": "HR-V0-XT1-P0.1",
+  "review_round": "R168",
+  "date": "2026-08-09",
+  "status": "PRELIMINARY_NOT_APPROVED_FOR_WIRING_OR_ENERGIZATION",
+  "positions": 6,
+  "gray_3209510": 5,
+  "blue_3209523": 1,
+  "end_cover_3030417": 1,
+  "installed_shared_clipfix_3022218": 2,
+  "jumpers": 0,
+  "open_holds": 12,
+  "procurement_authorized": false,
+  "assembly_authorized": false,
+  "wiring_authorized": false,
+  "energization_authorized": false,
+  "safety_credit_claimed": false
+}

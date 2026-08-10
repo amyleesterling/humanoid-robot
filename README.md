@@ -610,6 +610,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R167 Boston/US fabrication-route validation](docs/reviews/2026-08-09-r167-validation-record.md)
 - [R167 fabrication-route independent review request](docs/reviews/2026-08-09-r167-independent-review-request.md)
 - [Sol R12 findings rechecked after R167](docs/reviews/2026-08-09-sol-r12-post-r167-status.md)
+- [R168 XT1 control-terminal group](docs/hr-v0-xt1-terminal-group-p0.1.md)
+- [R168 interactive XT1 position guide](release/hr-v0/xt1-terminal-group-p0.1/index.html)
+- [R168 XT1 independent review request](docs/reviews/2026-08-09-r168-independent-review-request.md)
+- [R168 XT1 validation record](docs/reviews/2026-08-09-r168-validation-record.md)
+- [Sol R12 findings rechecked after R168](docs/reviews/2026-08-09-sol-r12-post-r168-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -626,6 +631,8 @@ Run `python tools/check_traceability.py` from this directory to ensure every req
 Run `python tools/check_hr_v0_e2_commissioning.py` to validate the fail-closed 15-step E2 sequence, 20 disconnected-load logic cases, five unexecuted evidence forms and partial-only authorization boundary. Run `python tools/check_hr_v0_r57_fabrication_sourcing.py` to verify that the current Boston route contains only held/excluded R57 candidates and unexecuted inquiry records. A passing checker is not permission to order, fabricate, or connect a source.
 
 Run `python tools/check_hr_v0_boston_fabrication_route_p03.py` for the R167 Boston/US provider-capability refresh. Passing proves only that ten routes, ten official source records, ten open inputs and every denial flag remain synchronized; it is not provider qualification or authority to contact, upload, quote, purchase, fabricate, assemble, move or energize.
+
+Run `python tools/check_hr_v0_xt1_terminal_group_p01.py` for R168. Passing proves exact catalog/position parity for six XT1 bodies, one end cover, zero jumpers and shared-accessory ownership without releasing a conductor, termination, label, installed terminal, point-to-point result or work authority.
 
 Run `python tools/check_hr_v0_control_panel.py` to cross-check the R64 25-row panel BOM, nominal allocations, exact XT1 mapping, all 66 bounded V3 wire endpoints, one fail-closed SD1 sidewall option, unreleased physical-wire fields, cable-entry holds, thermal/space screens, readable SVG warning content and twenty-two unexecuted panel records. Run `python tools/check_hr_v0_service_disconnect.py` to prove the exact `75920-01` catalog candidate remains application-held, all 15 SD1 rows remain unexecuted, and no cutout, conductor, lockout procedure or wiring release exists. Passing either checker releases no drilling, cutting, wiring, assembly, PCB fabrication, or energization work.
 
@@ -872,6 +879,7 @@ One hundred sixty-two review/control rounds are complete: R01-R162. R11 Fable an
 | R165 | P1.15 watchdog/E2 parity and current control-only slice | Issued `HR-V0-E2-P115-PARITY-P0.1` and `HR-V0-E2-HW-P0.4`; proved 69 unchanged references and 263 terminals, including 28 explicit E2 references, at exact P1.14/P1.15 schedule and native-net parity. The only declared system changes are seven actuator references plus three limiter carriers. P0.4 remains fail-closed with the complete actuator subset absent or unwired, twelve holds open and no test or work authorization. |
 | R166 | P1.15-bound watchdog CAM review | Issued `HR-V0-WD-CAM-P0.2`; regenerated the PCB-P0.9 CAM set with KiCad 10.0.5 and hash-bound it to the complete P1.15 source manifest plus R165 parity evidence. Native DRC remains zero and all 42 placements retain exact internal parity. P0.1 is historical; supplier-normalized XYRS, provider/process acceptance, DFM, first article, physical evidence and all work authority remain open. |
 | R167 | Boston/US custom-metal capability refresh | Issued `HR-V0-BOSTON-FAB-ROUTE-P0.3`; screened ten routes against ten current official records, identified Kontrast4D as the strongest published local candidate and Protolabs/Xometry as the strongest online review routes, preserved exact 6061-T651, and exposed ten open design/application inputs. No provider is qualified or contacted; no upload, quote, first article, fabrication, assembly, motion or energization authority exists. |
+| R168 | XT1 control-terminal group reconciliation | Issued `HR-V0-XT1-P0.1`; reconciled BOM-039 to five gray 3209510 bodies, one blue 3209523 body, one 3030417 end cover, six exact position/net mappings and zero jumpers. Kept shared 3022218 restraint under BOM-085 and labels under BOM-062. Twelve holds and all work-authority boundaries remain open; EG-003/015 remain partial. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
