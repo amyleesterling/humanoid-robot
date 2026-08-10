@@ -1,0 +1,13 @@
+{
+  "identifier": "HR-V0-DYN-TRACE-P0.2",
+  "round": "R181",
+  "status": "PRELIMINARY - ANALYSIS CANDIDATE ONLY - QUALIFIED DISPOSITION REQUIRED - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "physical_run_type_count": 2,
+  "physical_channel_count_per_run": 8,
+  "synthetic_trace_count": 6,
+  "acceptance_rule_count": 9,
+  "executed_physical_run_count": 0,
+  "released_threshold_count": 0,
+  "safety_function_credit": "ZERO",
+  "release_effect": "NONE"
+}

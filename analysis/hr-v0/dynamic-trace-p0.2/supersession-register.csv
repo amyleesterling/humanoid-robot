@@ -1,0 +1,4 @@
+record_id,superseded,reason,replacement,state
+DTSUP-001,HR-V0-DYN-TRACE-P0.1 DTA-003,two mirror channels incorrectly represented one series EDM path as independent contact states,DTA2-003: one common EDM-chain rising transition plus two diagnostic NO auxiliary falling transitions,SUPERSEDED FOR CURRENT USE
+DTSUP-002,P0.1 single combined trace,combined STOP and RESET fields exceed the R180 eight-channel simultaneous allocation,separate STOP and RESET_ARM trace schemas; no cross-run simultaneity claim,SUPERSEDED FOR CURRENT USE
+DTSUP-003,P0.1 external_velocity_deg_s physical channel,R180 reserves one physical channel for independent angle/displacement,velocity derived from the independent angle trace; filter/delay acceptance remains open,SUPERSEDED FOR CURRENT USE

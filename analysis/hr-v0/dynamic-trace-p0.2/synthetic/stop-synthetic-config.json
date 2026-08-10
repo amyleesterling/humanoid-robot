@@ -1,0 +1,17 @@
+{
+  "schema": "project-button-hr-v0-dynamic-trace-config-p0.2",
+  "status": "PRELIMINARY - ANALYSIS CANDIDATE ONLY - QUALIFIED DISPOSITION REQUIRED - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "analysis_mode": "SYNTHETIC_VALIDATION_ONLY",
+  "expected_sample_interval_s": 0.001,
+  "sample_interval_relative_tolerance": 0.001,
+  "qualified_acceptance_reference": "SYNTHETIC ALGORITHM TEST ONLY - NO PHYSICAL ACCEPTANCE",
+  "run_type": "STOP",
+  "control_source_valid_min_v": 20.0,
+  "e2_stop_observation_s": 0.05,
+  "e2_motion_noise_deg": 0.05,
+  "maximum_k1_coil_drop_time_s": 0.02,
+  "maximum_k2_coil_drop_time_s": 0.02,
+  "maximum_common_edm_close_time_s": 0.025,
+  "maximum_k1_aux_open_time_s": 0.025,
+  "maximum_k2_aux_open_time_s": 0.025
+}
