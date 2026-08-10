@@ -432,7 +432,7 @@ def main() -> int:
         ("WRI-H07", "ASSEMBLY SEQUENCE", "Demonstrate an unpowered assembly/disassembly sequence with tool access, no forced alignment and service access."),
         ("WRI-H08", "TOLERANCE CLOSURE", "Close H104/bridge/U-base/S101 tolerance, seating, parallelism and no-preload-deflection stack with received data."),
         ("WRI-H09", "LOAD PATH", "Calculate and prove jaw/payload/jam loads through S101, U-base, bridges, H104, A07 and forearm including fatigue and fastener effects."),
-        ("WRI-H10", "COLLISION", "Replace the 1-degree nominal sample with tolerance-aware continuous gripper/arm/cable/guard collision proof and as-built sweep."),
+        ("WRI-H10", "COLLISION", "Replace the 5-degree nominal sample with tolerance-aware continuous gripper/arm/cable/guard collision proof and as-built sweep."),
         ("WRI-H11", "CABLE", "Define exact XC330 cable, connector, bend/twist envelope, route, clamp, strain relief, flex life and full-pose inspection."),
         ("WRI-H12", "GUARD", "Design retained fixed guarding/bellows for every rack, pinion, slot, jaw and wrist pinch line and probe-test it."),
         ("WRI-H13", "RECEIVER/OBJECT", "Correlate the Y=358.6 mm nominal object datum to the fixed receiver and prove all release/fault/power-loss containment poses."),
