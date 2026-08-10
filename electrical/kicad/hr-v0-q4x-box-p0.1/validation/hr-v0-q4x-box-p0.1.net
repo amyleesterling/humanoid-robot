@@ -1,0 +1,1767 @@
+(export
+	(version "E")
+	(design
+		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\hr-v0-q4x-box-p0.1\\hr-v0-q4x-box-p0.1.kicad_sch")
+		(date "2026-08-10T05:13:32")
+		(tool "Eeschema 10.0.5")
+		(textvar
+			(name "PROJECT_STATUS") "PRELIMINARY - BENCH R&D CANDIDATE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+		(textvar
+			(name "REVISION") "R184 / P0.1")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title "PROJECT BUTTON HR-V0 Q4X TEMPORARY INTERFACE BOX index")
+				(company "Project Button")
+				(rev "R184 / P0.1")
+				(date "2026-08-10")
+				(source "hr-v0-q4x-box-p0.1.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - BENCH R&D CANDIDATE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "2")
+			(name "/01 Isolated source, cable and 0.1 A branch protection/")
+			(tstamps "/9d5190da-7a7e-5b13-974e-1734684bd366/")
+			(title_block
+				(title "PB HR-V0 R184 / P0.1 - 01")
+				(company "Project Button")
+				(rev "R184 / P0.1")
+				(date "2026-08-10")
+				(source "01_source_and_protection.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - BENCH R&D CANDIDATE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "3")
+			(name "/02 Q4X pins, parking terminals and isolated analog boundary/")
+			(tstamps "/4b45b05b-551a-5d86-8aea-b80dfde49a59/")
+			(title_block
+				(title "PB HR-V0 R184 / P0.1 - 02")
+				(company "Project Button")
+				(rev "R184 / P0.1")
+				(date "2026-08-10")
+				(source "02_sensor_and_signal.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - BENCH R&D CANDIDATE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "CBLPS1")
+			(value "Alpha Wire 881802 - 2C 18 AWG")
+			(datasheet "Alpha Wire live 881802 page")
+			(description "Unshielded 2C 18 AWG; nominal 5.64 mm OD fits the selected 3.5-7 mm gland arithmetically. Received OD and gland retention required.")
+			(fields
+				(field
+					(name "Status") "EXACT DESIGNATION / LENGTH AND PROCUREMENT FORM NOT RELEASED")
+				(field
+					(name "Evidence") "Cable is a pass-through assembly representation.")
+				(field
+					(name "Display") "Alpha Wire 881802 - 2C 18 AWG")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Alpha Wire live 881802 page")
+				(field
+					(name "Description") "Unshielded 2C 18 AWG; nominal 5.64 mm OD fits the selected 3.5-7 mm gland arithmetically. Received OD and gland retention required.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "CBLPS1")
+				(description "Unshielded 2C 18 AWG; nominal 5.64 mm OD fits the selected 3.5-7 mm gland arithmetically. Received OD and gland retention required.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT DESIGNATION / LENGTH AND PROCUREMENT FORM NOT RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "Cable is a pass-through assembly representation.")
+			)
+			(property
+				(name "Display")
+				(value "Alpha Wire 881802 - 2C 18 AWG")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Isolated source, cable and 0.1 A branch protection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_source_and_protection.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Isolated source, cable and 0.1 A branch protection/")
+				(tstamps "/9d5190da-7a7e-5b13-974e-1734684bd366/")
+			)
+			(tstamps "07bef34a-0dcd-520e-b113-14b92b0c4eb0")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "PS-BK")
+						)
+						(pin
+							(num "PS-RD")
+						)
+						(pin
+							(num "BOX-BK")
+						)
+						(pin
+							(num "BOX-RD")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "PS1")
+			(value "Keithley 2220-30-1 CH1 ONLY")
+			(datasheet "Tektronix 2220S-905-01 Rev B")
+			(description "24.0 V candidate. Current-limit value, lock and received tests remain SELECTION REQUIRED. CH2 disabled and unconnected.")
+			(fields
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "Zero safety credit; no robot-domain connection.")
+				(field
+					(name "Display") "Keithley 2220-30-1 CH1 ONLY")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Tektronix 2220S-905-01 Rev B")
+				(field
+					(name "Description") "24.0 V candidate. Current-limit value, lock and received tests remain SELECTION REQUIRED. CH2 disabled and unconnected.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "PS1")
+				(description "24.0 V candidate. Current-limit value, lock and received tests remain SELECTION REQUIRED. CH2 disabled and unconnected.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "Zero safety credit; no robot-domain connection.")
+			)
+			(property
+				(name "Display")
+				(value "Keithley 2220-30-1 CH1 ONLY")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Isolated source, cable and 0.1 A branch protection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_source_and_protection.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Isolated source, cable and 0.1 A branch protection/")
+				(tstamps "/9d5190da-7a7e-5b13-974e-1734684bd366/")
+			)
+			(tstamps "61ad08a9-9a90-5136-8639-2645c1304cba")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "CH1-")
+						)
+						(pin
+							(num "CH1+")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "PTCB1")
+			(value "Phoenix PTCB E1 24DC/0.1A NO / 1464484")
+			(datasheet "Phoenix Contact live page checked 2026-08-10")
+			(description "Fixed 0.1 A electronic breaker. Typical 1.2x active limiting is not treated as a guaranteed hard ceiling. Remote contact is deliberately unwired.")
+			(fields
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "300 A switching capacity; source catalog maximum 1.5 A does not trigger the catalog backup-fuse condition, but installed fault tests remain mandatory.")
+				(field
+					(name "Display") "Phoenix PTCB E1 24DC/0.1A NO / 1464484")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Phoenix Contact live page checked 2026-08-10")
+				(field
+					(name "Description") "Fixed 0.1 A electronic breaker. Typical 1.2x active limiting is not treated as a guaranteed hard ceiling. Remote contact is deliberately unwired.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "PTCB1")
+				(description "Fixed 0.1 A electronic breaker. Typical 1.2x active limiting is not treated as a guaranteed hard ceiling. Remote contact is deliberately unwired.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "300 A switching capacity; source catalog maximum 1.5 A does not trigger the catalog backup-fuse condition, but installed fault tests remain mandatory.")
+			)
+			(property
+				(name "Display")
+				(value "Phoenix PTCB E1 24DC/0.1A NO / 1464484")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Isolated source, cable and 0.1 A branch protection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_source_and_protection.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Isolated source, cable and 0.1 A branch protection/")
+				(tstamps "/9d5190da-7a7e-5b13-974e-1734684bd366/")
+			)
+			(tstamps "7e12bbfd-c1b1-53be-af49-0c3b34ad5843")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN-")
+						)
+						(pin
+							(num "IN+")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "XQ1.1")
+			(value "Phoenix PT 2,5-QUATTRO / 3209578")
+			(datasheet "Phoenix 3209578 product data")
+			(description "One potential, four push-in connections. Port D has no conductor in the candidate assembly.")
+			(fields
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "No bridge or PE bond.")
+				(field
+					(name "Display") "Phoenix PT 2,5-QUATTRO / 3209578")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Phoenix 3209578 product data")
+				(field
+					(name "Description") "One potential, four push-in connections. Port D has no conductor in the candidate assembly.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "XQ1.1")
+				(description "One potential, four push-in connections. Port D has no conductor in the candidate assembly.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "No bridge or PE bond.")
+			)
+			(property
+				(name "Display")
+				(value "Phoenix PT 2,5-QUATTRO / 3209578")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Isolated source, cable and 0.1 A branch protection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_source_and_protection.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Isolated source, cable and 0.1 A branch protection/")
+				(tstamps "/9d5190da-7a7e-5b13-974e-1734684bd366/")
+			)
+			(tstamps "1ccf6154-2728-509e-ab34-2afe6a77bc8e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "B")
+						)
+						(pin
+							(num "A")
+						)
+						(pin
+							(num "D")
+						)
+						(pin
+							(num "C")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "XQ1.2")
+			(value "Phoenix PT 2,5 / 3209510")
+			(datasheet "Phoenix 3209510 product data")
+			(description "Protected-positive feed-through terminal.")
+			(fields
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "No bridge.")
+				(field
+					(name "Display") "Phoenix PT 2,5 / 3209510")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Phoenix 3209510 product data")
+				(field
+					(name "Description") "Protected-positive feed-through terminal.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "XQ1.2")
+				(description "Protected-positive feed-through terminal.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "No bridge.")
+			)
+			(property
+				(name "Display")
+				(value "Phoenix PT 2,5 / 3209510")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Isolated source, cable and 0.1 A branch protection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_source_and_protection.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Isolated source, cable and 0.1 A branch protection/")
+				(tstamps "/9d5190da-7a7e-5b13-974e-1734684bd366/")
+			)
+			(tstamps "38e85211-9016-5b12-9866-95a1882c806c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "A")
+						)
+						(pin
+							(num "B")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "CBLQ4X1")
+			(value "Banner BC-M12F5-22-2-SF / 815158")
+			(datasheet "Banner part 815158 live page")
+			(description "2 m 5x22 AWG cordset. Manufacturer wording says shield floating to drain; drain parks only at XQ1.6.")
+			(fields
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "No PE, rail, chassis or 0 V bond.")
+				(field
+					(name "Display") "Banner BC-M12F5-22-2-SF / 815158")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Banner part 815158 live page")
+				(field
+					(name "Description") "2 m 5x22 AWG cordset. Manufacturer wording says shield floating to drain; drain parks only at XQ1.6.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "CBLQ4X1")
+				(description "2 m 5x22 AWG cordset. Manufacturer wording says shield floating to drain; drain parks only at XQ1.6.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "No PE, rail, chassis or 0 V bond.")
+			)
+			(property
+				(name "Display")
+				(value "Banner BC-M12F5-22-2-SF / 815158")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Q4X pins, parking terminals and isolated analog boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_sensor_and_signal.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Q4X pins, parking terminals and isolated analog boundary/")
+				(tstamps "/4b45b05b-551a-5d86-8aea-b80dfde49a59/")
+			)
+			(tstamps "d78fcb7b-ebf7-5be6-85b0-55c17082ae40")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "DRN")
+						)
+						(pin
+							(num "5-GY")
+						)
+						(pin
+							(num "4-BK")
+						)
+						(pin
+							(num "2-WH")
+						)
+						(pin
+							(num "3-BU")
+						)
+						(pin
+							(num "1-BN")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "Q4X1")
+			(value "Banner Q4XFULAF110-Q8 / 97540")
+			(datasheet "Banner manual 185624 Rev J")
+			(description "Independent displacement witness only. Pin 2 is parked and must be configured inactive. Pin 5 is not inferred to be identical to pin 3.")
+			(fields
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "Less than 675 mW excluding load; zero safety credit.")
+				(field
+					(name "Display") "Banner Q4XFULAF110-Q8 / 97540")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Banner manual 185624 Rev J")
+				(field
+					(name "Description") "Independent displacement witness only. Pin 2 is parked and must be configured inactive. Pin 5 is not inferred to be identical to pin 3.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "Q4X1")
+				(description "Independent displacement witness only. Pin 2 is parked and must be configured inactive. Pin 5 is not inferred to be identical to pin 3.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "Less than 675 mW excluding load; zero safety credit.")
+			)
+			(property
+				(name "Display")
+				(value "Banner Q4XFULAF110-Q8 / 97540")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Q4X pins, parking terminals and isolated analog boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_sensor_and_signal.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Q4X pins, parking terminals and isolated analog boundary/")
+				(tstamps "/4b45b05b-551a-5d86-8aea-b80dfde49a59/")
+			)
+			(tstamps "5197b415-2b0f-51a6-9f8b-e50f2c6a72eb")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "4")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TEST1")
+			(value "ISOLATED ANALOG LEAD FIXTURE - SELECTION REQUIRED")
+			(datasheet "No manufacturer selected")
+			(description "Guarded physical lead fixture, touch protection, strain relief and isolation are unresolved.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED / NO CONNECTION RELEASED")
+				(field
+					(name "Evidence") "TIVP02 observation system receives zero safety credit.")
+				(field
+					(name "Display") "ISOLATED ANALOG LEAD FIXTURE - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Guarded physical lead fixture, touch protection, strain relief and isolation are unresolved.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "TEST1")
+				(description "Guarded physical lead fixture, touch protection, strain relief and isolation are unresolved.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED / NO CONNECTION RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "TIVP02 observation system receives zero safety credit.")
+			)
+			(property
+				(name "Display")
+				(value "ISOLATED ANALOG LEAD FIXTURE - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Q4X pins, parking terminals and isolated analog boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_sensor_and_signal.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Q4X pins, parking terminals and isolated analog boundary/")
+				(tstamps "/4b45b05b-551a-5d86-8aea-b80dfde49a59/")
+			)
+			(tstamps "28adb79f-24f7-564b-b18f-b29c00d93e0d")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "-")
+						)
+						(pin
+							(num "+")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "XQ1.3")
+			(value "Phoenix PT 2,5 / 3209510")
+			(datasheet "Phoenix 3209510 product data")
+			(description "Insulated remote-input parking potential; no external drive.")
+			(fields
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "Label REMOTE PARK - DO NOT CONNECT.")
+				(field
+					(name "Display") "Phoenix PT 2,5 / 3209510")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Phoenix 3209510 product data")
+				(field
+					(name "Description") "Insulated remote-input parking potential; no external drive.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "XQ1.3")
+				(description "Insulated remote-input parking potential; no external drive.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "Label REMOTE PARK - DO NOT CONNECT.")
+			)
+			(property
+				(name "Display")
+				(value "Phoenix PT 2,5 / 3209510")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Q4X pins, parking terminals and isolated analog boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_sensor_and_signal.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Q4X pins, parking terminals and isolated analog boundary/")
+				(tstamps "/4b45b05b-551a-5d86-8aea-b80dfde49a59/")
+			)
+			(tstamps "676b20e5-3852-5493-a816-9891806c4837")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "A")
+						)
+						(pin
+							(num "B")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "XQ1.4")
+			(value "Phoenix PT 2,5 / 3209510")
+			(datasheet "Phoenix 3209510 product data")
+			(description "Analog output feed-through.")
+			(fields
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / TEST FIXTURE OPEN")
+				(field
+					(name "Evidence") "No chassis-referenced probe.")
+				(field
+					(name "Display") "Phoenix PT 2,5 / 3209510")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Phoenix 3209510 product data")
+				(field
+					(name "Description") "Analog output feed-through.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "XQ1.4")
+				(description "Analog output feed-through.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT EVALUATION CANDIDATE / TEST FIXTURE OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "No chassis-referenced probe.")
+			)
+			(property
+				(name "Display")
+				(value "Phoenix PT 2,5 / 3209510")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Q4X pins, parking terminals and isolated analog boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_sensor_and_signal.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Q4X pins, parking terminals and isolated analog boundary/")
+				(tstamps "/4b45b05b-551a-5d86-8aea-b80dfde49a59/")
+			)
+			(tstamps "8585fc45-750b-5265-aa40-57b460c08974")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "A")
+						)
+						(pin
+							(num "B")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "XQ1.5")
+			(value "Phoenix PT 2,5 / 3209510")
+			(datasheet "Phoenix 3209510 product data")
+			(description "Analog-ground feed-through; not bonded to Q4X 0 V by project wiring.")
+			(fields
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / TEST FIXTURE OPEN")
+				(field
+					(name "Evidence") "No PE/rail/chassis bond.")
+				(field
+					(name "Display") "Phoenix PT 2,5 / 3209510")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Phoenix 3209510 product data")
+				(field
+					(name "Description") "Analog-ground feed-through; not bonded to Q4X 0 V by project wiring.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "XQ1.5")
+				(description "Analog-ground feed-through; not bonded to Q4X 0 V by project wiring.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT EVALUATION CANDIDATE / TEST FIXTURE OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "No PE/rail/chassis bond.")
+			)
+			(property
+				(name "Display")
+				(value "Phoenix PT 2,5 / 3209510")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Q4X pins, parking terminals and isolated analog boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_sensor_and_signal.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Q4X pins, parking terminals and isolated analog boundary/")
+				(tstamps "/4b45b05b-551a-5d86-8aea-b80dfde49a59/")
+			)
+			(tstamps "ebf7e999-f58b-5f95-9cd3-d50eed50715e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "A")
+						)
+						(pin
+							(num "B")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "XQ1.6")
+			(value "Phoenix PT 2,5 / 3209510")
+			(datasheet "Phoenix 3209510 product data")
+			(description "Drain parking terminal only.")
+			(fields
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "Label SHIELD PARK - NO PE/0V CONNECTION.")
+				(field
+					(name "Display") "Phoenix PT 2,5 / 3209510")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Phoenix 3209510 product data")
+				(field
+					(name "Description") "Drain parking terminal only.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "XQ1.6")
+				(description "Drain parking terminal only.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "Label SHIELD PARK - NO PE/0V CONNECTION.")
+			)
+			(property
+				(name "Display")
+				(value "Phoenix PT 2,5 / 3209510")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Q4X pins, parking terminals and isolated analog boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_sensor_and_signal.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Q4X pins, parking terminals and isolated analog boundary/")
+				(tstamps "/4b45b05b-551a-5d86-8aea-b80dfde49a59/")
+			)
+			(tstamps "d7db5100-83e7-5a52-a371-ad0fa8410540")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "A")
+						)
+						(pin
+							(num "B")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "PBV3")
+			(part "CBLPS1")
+			(description "Unshielded 2C 18 AWG; nominal 5.64 mm OD fits the selected 3.5-7 mm gland arithmetically. Received OD and gland retention required.")
+			(docs "Alpha Wire live 881802 page")
+			(fields
+				(field
+					(name "Reference") "CBLPS1")
+				(field
+					(name "Value") "Alpha Wire 881802 - 2C 18 AWG")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Alpha Wire live 881802 page")
+				(field
+					(name "Description") "Unshielded 2C 18 AWG; nominal 5.64 mm OD fits the selected 3.5-7 mm gland arithmetically. Received OD and gland retention required.")
+				(field
+					(name "Status") "EXACT DESIGNATION / LENGTH AND PROCUREMENT FORM NOT RELEASED")
+				(field
+					(name "Evidence") "Cable is a pass-through assembly representation.")
+				(field
+					(name "Display") "Alpha Wire 881802 - 2C 18 AWG")
+			)
+			(pins
+				(pin
+					(num "BOX-BK")
+					(name "BLACK_AT_BOX")
+					(type "passive")
+				)
+				(pin
+					(num "BOX-RD")
+					(name "RED_AT_BOX")
+					(type "passive")
+				)
+				(pin
+					(num "PS-BK")
+					(name "BLACK_AT_SUPPLY")
+					(type "passive")
+				)
+				(pin
+					(num "PS-RD")
+					(name "RED_AT_SUPPLY")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "CBLQ4X1")
+			(description "2 m 5x22 AWG cordset. Manufacturer wording says shield floating to drain; drain parks only at XQ1.6.")
+			(docs "Banner part 815158 live page")
+			(fields
+				(field
+					(name "Reference") "CBLQ4X1")
+				(field
+					(name "Value") "Banner BC-M12F5-22-2-SF / 815158")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Banner part 815158 live page")
+				(field
+					(name "Description") "2 m 5x22 AWG cordset. Manufacturer wording says shield floating to drain; drain parks only at XQ1.6.")
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "No PE, rail, chassis or 0 V bond.")
+				(field
+					(name "Display") "Banner BC-M12F5-22-2-SF / 815158")
+			)
+			(pins
+				(pin
+					(num "1-BN")
+					(name "BROWN_/_PIN_1")
+					(type "passive")
+				)
+				(pin
+					(num "2-WH")
+					(name "WHITE_/_PIN_2")
+					(type "passive")
+				)
+				(pin
+					(num "3-BU")
+					(name "BLUE_/_PIN_3")
+					(type "passive")
+				)
+				(pin
+					(num "4-BK")
+					(name "BLACK_/_PIN_4")
+					(type "passive")
+				)
+				(pin
+					(num "5-GY")
+					(name "GRAY_/_PIN_5")
+					(type "passive")
+				)
+				(pin
+					(num "DRN")
+					(name "FLOATING_DRAIN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "PS1")
+			(description "24.0 V candidate. Current-limit value, lock and received tests remain SELECTION REQUIRED. CH2 disabled and unconnected.")
+			(docs "Tektronix 2220S-905-01 Rev B")
+			(fields
+				(field
+					(name "Reference") "PS1")
+				(field
+					(name "Value") "Keithley 2220-30-1 CH1 ONLY")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Tektronix 2220S-905-01 Rev B")
+				(field
+					(name "Description") "24.0 V candidate. Current-limit value, lock and received tests remain SELECTION REQUIRED. CH2 disabled and unconnected.")
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "Zero safety credit; no robot-domain connection.")
+				(field
+					(name "Display") "Keithley 2220-30-1 CH1 ONLY")
+			)
+			(pins
+				(pin
+					(num "CH1+")
+					(name "0-30_V_SOURCE_POSITIVE")
+					(type "passive")
+				)
+				(pin
+					(num "CH1-")
+					(name "ISOLATED_SOURCE_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "PTCB1")
+			(description "Fixed 0.1 A electronic breaker. Typical 1.2x active limiting is not treated as a guaranteed hard ceiling. Remote contact is deliberately unwired.")
+			(docs "Phoenix Contact live page checked 2026-08-10")
+			(fields
+				(field
+					(name "Reference") "PTCB1")
+				(field
+					(name "Value") "Phoenix PTCB E1 24DC/0.1A NO / 1464484")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Phoenix Contact live page checked 2026-08-10")
+				(field
+					(name "Description") "Fixed 0.1 A electronic breaker. Typical 1.2x active limiting is not treated as a guaranteed hard ceiling. Remote contact is deliberately unwired.")
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "300 A switching capacity; source catalog maximum 1.5 A does not trigger the catalog backup-fuse condition, but installed fault tests remain mandatory.")
+				(field
+					(name "Display") "Phoenix PTCB E1 24DC/0.1A NO / 1464484")
+			)
+			(pins
+				(pin
+					(num "13")
+					(name "REMOTE_NO_DNP")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "REMOTE_NO_DNP")
+					(type "passive")
+				)
+				(pin
+					(num "IN+")
+					(name "SOURCE_POSITIVE")
+					(type "passive")
+				)
+				(pin
+					(num "IN-")
+					(name "SOURCE_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "PROTECTED_OUTPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "Q4X1")
+			(description "Independent displacement witness only. Pin 2 is parked and must be configured inactive. Pin 5 is not inferred to be identical to pin 3.")
+			(docs "Banner manual 185624 Rev J")
+			(fields
+				(field
+					(name "Reference") "Q4X1")
+				(field
+					(name "Value") "Banner Q4XFULAF110-Q8 / 97540")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Banner manual 185624 Rev J")
+				(field
+					(name "Description") "Independent displacement witness only. Pin 2 is parked and must be configured inactive. Pin 5 is not inferred to be identical to pin 3.")
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "Less than 675 mW excluding load; zero safety credit.")
+				(field
+					(name "Display") "Banner Q4XFULAF110-Q8 / 97540")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "12-30_VDC")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "REMOTE_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "DC_COMMON")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "0-10_V_OUTPUT")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "ANALOG_GROUND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "TEST1")
+			(description "Guarded physical lead fixture, touch protection, strain relief and isolation are unresolved.")
+			(docs "No manufacturer selected")
+			(fields
+				(field
+					(name "Reference") "TEST1")
+				(field
+					(name "Value") "ISOLATED ANALOG LEAD FIXTURE - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "No manufacturer selected")
+				(field
+					(name "Description") "Guarded physical lead fixture, touch protection, strain relief and isolation are unresolved.")
+				(field
+					(name "Status") "SELECTION REQUIRED / NO CONNECTION RELEASED")
+				(field
+					(name "Evidence") "TIVP02 observation system receives zero safety credit.")
+				(field
+					(name "Display") "ISOLATED ANALOG LEAD FIXTURE - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "+")
+					(name "TIVPMX10X_POSITIVE")
+					(type "passive")
+				)
+				(pin
+					(num "-")
+					(name "TIVPMX10X_NEGATIVE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "XQ1.1")
+			(description "One potential, four push-in connections. Port D has no conductor in the candidate assembly.")
+			(docs "Phoenix 3209578 product data")
+			(fields
+				(field
+					(name "Reference") "XQ1.1")
+				(field
+					(name "Value") "Phoenix PT 2,5-QUATTRO / 3209578")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Phoenix 3209578 product data")
+				(field
+					(name "Description") "One potential, four push-in connections. Port D has no conductor in the candidate assembly.")
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "No bridge or PE bond.")
+				(field
+					(name "Display") "Phoenix PT 2,5-QUATTRO / 3209578")
+			)
+			(pins
+				(pin
+					(num "A")
+					(name "SOURCE_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "B")
+					(name "PTCB_IN-")
+					(type "passive")
+				)
+				(pin
+					(num "C")
+					(name "Q4X_PIN_3_BLUE")
+					(type "passive")
+				)
+				(pin
+					(num "D")
+					(name "EMPTY_TEST_PORT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "XQ1.2")
+			(description "Protected-positive feed-through terminal.")
+			(docs "Phoenix 3209510 product data")
+			(fields
+				(field
+					(name "Reference") "XQ1.2")
+				(field
+					(name "Value") "Phoenix PT 2,5 / 3209510")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Phoenix 3209510 product data")
+				(field
+					(name "Description") "Protected-positive feed-through terminal.")
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "No bridge.")
+				(field
+					(name "Display") "Phoenix PT 2,5 / 3209510")
+			)
+			(pins
+				(pin
+					(num "A")
+					(name "PTCB_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "B")
+					(name "Q4X_PIN_1_BROWN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "XQ1.3")
+			(description "Insulated remote-input parking potential; no external drive.")
+			(docs "Phoenix 3209510 product data")
+			(fields
+				(field
+					(name "Reference") "XQ1.3")
+				(field
+					(name "Value") "Phoenix PT 2,5 / 3209510")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Phoenix 3209510 product data")
+				(field
+					(name "Description") "Insulated remote-input parking potential; no external drive.")
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "Label REMOTE PARK - DO NOT CONNECT.")
+				(field
+					(name "Display") "Phoenix PT 2,5 / 3209510")
+			)
+			(pins
+				(pin
+					(num "A")
+					(name "Q4X_PIN_2_WHITE")
+					(type "passive")
+				)
+				(pin
+					(num "B")
+					(name "NO_EXTERNAL_CONDUCTOR")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "XQ1.4")
+			(description "Analog output feed-through.")
+			(docs "Phoenix 3209510 product data")
+			(fields
+				(field
+					(name "Reference") "XQ1.4")
+				(field
+					(name "Value") "Phoenix PT 2,5 / 3209510")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Phoenix 3209510 product data")
+				(field
+					(name "Description") "Analog output feed-through.")
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / TEST FIXTURE OPEN")
+				(field
+					(name "Evidence") "No chassis-referenced probe.")
+				(field
+					(name "Display") "Phoenix PT 2,5 / 3209510")
+			)
+			(pins
+				(pin
+					(num "A")
+					(name "Q4X_PIN_4_BLACK")
+					(type "passive")
+				)
+				(pin
+					(num "B")
+					(name "ISOLATED_PROBE_POSITIVE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "XQ1.5")
+			(description "Analog-ground feed-through; not bonded to Q4X 0 V by project wiring.")
+			(docs "Phoenix 3209510 product data")
+			(fields
+				(field
+					(name "Reference") "XQ1.5")
+				(field
+					(name "Value") "Phoenix PT 2,5 / 3209510")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Phoenix 3209510 product data")
+				(field
+					(name "Description") "Analog-ground feed-through; not bonded to Q4X 0 V by project wiring.")
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / TEST FIXTURE OPEN")
+				(field
+					(name "Evidence") "No PE/rail/chassis bond.")
+				(field
+					(name "Display") "Phoenix PT 2,5 / 3209510")
+			)
+			(pins
+				(pin
+					(num "A")
+					(name "Q4X_PIN_5_GRAY")
+					(type "passive")
+				)
+				(pin
+					(num "B")
+					(name "ISOLATED_PROBE_NEGATIVE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "XQ1.6")
+			(description "Drain parking terminal only.")
+			(docs "Phoenix 3209510 product data")
+			(fields
+				(field
+					(name "Reference") "XQ1.6")
+				(field
+					(name "Value") "Phoenix PT 2,5 / 3209510")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "Phoenix 3209510 product data")
+				(field
+					(name "Description") "Drain parking terminal only.")
+				(field
+					(name "Status") "EXACT EVALUATION CANDIDATE / NOT RELEASED")
+				(field
+					(name "Evidence") "Label SHIELD PARK - NO PE/0V CONNECTION.")
+				(field
+					(name "Display") "Phoenix PT 2,5 / 3209510")
+			)
+			(pins
+				(pin
+					(num "A")
+					(name "CORDSET_DRAIN")
+					(type "passive")
+				)
+				(pin
+					(num "B")
+					(name "NO_CONDUCTOR_/_NO_BRIDGE")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "PBV3")
+			(uri "${KIPRJMOD}/hr-v0-q4x-box-p0.1.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "Q4X_0V")
+			(class "Default")
+			(node
+				(ref "CBLPS1")
+				(pin "BOX-BK")
+				(pinfunction "BLACK_AT_BOX_BOX-BK")
+				(pintype "passive")
+			)
+			(node
+				(ref "CBLPS1")
+				(pin "PS-BK")
+				(pinfunction "BLACK_AT_SUPPLY_PS-BK")
+				(pintype "passive")
+			)
+			(node
+				(ref "CBLQ4X1")
+				(pin "3-BU")
+				(pinfunction "BLUE_/_PIN_3_3-BU")
+				(pintype "passive")
+			)
+			(node
+				(ref "PS1")
+				(pin "CH1-")
+				(pinfunction "ISOLATED_SOURCE_RETURN_CH1-")
+				(pintype "passive")
+			)
+			(node
+				(ref "PTCB1")
+				(pin "IN-")
+				(pinfunction "SOURCE_RETURN_IN-")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q4X1")
+				(pin "3")
+				(pinfunction "DC_COMMON_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "XQ1.1")
+				(pin "A")
+				(pinfunction "SOURCE_RETURN_A")
+				(pintype "passive")
+			)
+			(node
+				(ref "XQ1.1")
+				(pin "B")
+				(pinfunction "PTCB_IN-_B")
+				(pintype "passive")
+			)
+			(node
+				(ref "XQ1.1")
+				(pin "C")
+				(pinfunction "Q4X_PIN_3_BLUE_C")
+				(pintype "passive")
+			)
+			(node
+				(ref "XQ1.1")
+				(pin "D")
+				(pinfunction "EMPTY_TEST_PORT_D")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "2")
+			(name "Q4X_24V_PROTECTED")
+			(class "Default")
+			(node
+				(ref "CBLQ4X1")
+				(pin "1-BN")
+				(pinfunction "BROWN_/_PIN_1_1-BN")
+				(pintype "passive")
+			)
+			(node
+				(ref "PTCB1")
+				(pin "OUT")
+				(pinfunction "PROTECTED_OUTPUT_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q4X1")
+				(pin "1")
+				(pinfunction "12-30_VDC_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "XQ1.2")
+				(pin "A")
+				(pinfunction "PTCB_OUT_A")
+				(pintype "passive")
+			)
+			(node
+				(ref "XQ1.2")
+				(pin "B")
+				(pinfunction "Q4X_PIN_1_BROWN_B")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "3")
+			(name "Q4X_ANALOG_GND")
+			(class "Default")
+			(node
+				(ref "CBLQ4X1")
+				(pin "5-GY")
+				(pinfunction "GRAY_/_PIN_5_5-GY")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q4X1")
+				(pin "5")
+				(pinfunction "ANALOG_GROUND_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "TEST1")
+				(pin "-")
+				(pinfunction "TIVPMX10X_NEGATIVE_-")
+				(pintype "passive")
+			)
+			(node
+				(ref "XQ1.5")
+				(pin "A")
+				(pinfunction "Q4X_PIN_5_GRAY_A")
+				(pintype "passive")
+			)
+			(node
+				(ref "XQ1.5")
+				(pin "B")
+				(pinfunction "ISOLATED_PROBE_NEGATIVE_B")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "4")
+			(name "Q4X_ANALOG_OUT")
+			(class "Default")
+			(node
+				(ref "CBLQ4X1")
+				(pin "4-BK")
+				(pinfunction "BLACK_/_PIN_4_4-BK")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q4X1")
+				(pin "4")
+				(pinfunction "0-10_V_OUTPUT_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "TEST1")
+				(pin "+")
+				(pinfunction "TIVPMX10X_POSITIVE_+")
+				(pintype "passive")
+			)
+			(node
+				(ref "XQ1.4")
+				(pin "A")
+				(pinfunction "Q4X_PIN_4_BLACK_A")
+				(pintype "passive")
+			)
+			(node
+				(ref "XQ1.4")
+				(pin "B")
+				(pinfunction "ISOLATED_PROBE_POSITIVE_B")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "5")
+			(name "Q4X_REMOTE_PARK")
+			(class "Default")
+			(node
+				(ref "CBLQ4X1")
+				(pin "2-WH")
+				(pinfunction "WHITE_/_PIN_2_2-WH")
+				(pintype "passive")
+			)
+			(node
+				(ref "Q4X1")
+				(pin "2")
+				(pinfunction "REMOTE_INPUT_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "XQ1.3")
+				(pin "A")
+				(pinfunction "Q4X_PIN_2_WHITE_A")
+				(pintype "passive")
+			)
+			(node
+				(ref "XQ1.3")
+				(pin "B")
+				(pinfunction "NO_EXTERNAL_CONDUCTOR_B")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "Q4X_SHIELD_PARK")
+			(class "Default")
+			(node
+				(ref "CBLQ4X1")
+				(pin "DRN")
+				(pinfunction "FLOATING_DRAIN_DRN")
+				(pintype "passive")
+			)
+			(node
+				(ref "XQ1.6")
+				(pin "A")
+				(pinfunction "CORDSET_DRAIN_A")
+				(pintype "passive")
+			)
+			(node
+				(ref "XQ1.6")
+				(pin "B")
+				(pinfunction "NO_CONDUCTOR_/_NO_BRIDGE_B")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "7")
+			(name "Q4X_SRC_24V_RAW")
+			(class "Default")
+			(node
+				(ref "CBLPS1")
+				(pin "BOX-RD")
+				(pinfunction "RED_AT_BOX_BOX-RD")
+				(pintype "passive")
+			)
+			(node
+				(ref "CBLPS1")
+				(pin "PS-RD")
+				(pinfunction "RED_AT_SUPPLY_PS-RD")
+				(pintype "passive")
+			)
+			(node
+				(ref "PS1")
+				(pin "CH1+")
+				(pinfunction "0-30_V_SOURCE_POSITIVE_CH1+")
+				(pintype "passive")
+			)
+			(node
+				(ref "PTCB1")
+				(pin "IN+")
+				(pinfunction "SOURCE_POSITIVE_IN+")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "8")
+			(name "unconnected-(PTCB1-REMOTE_NO_DNP-Pad13)")
+			(class "Default")
+			(node
+				(ref "PTCB1")
+				(pin "13")
+				(pinfunction "REMOTE_NO_DNP_13")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "9")
+			(name "unconnected-(PTCB1-REMOTE_NO_DNP-Pad14)")
+			(class "Default")
+			(node
+				(ref "PTCB1")
+				(pin "14")
+				(pinfunction "REMOTE_NO_DNP_14")
+				(pintype "passive+no_connect")
+			)
+		)
+	)
+)

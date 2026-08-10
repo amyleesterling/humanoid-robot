@@ -1,0 +1,21 @@
+{
+  "identifier": "HR-V0-Q4X-BOX-P0.1",
+  "round": "R184",
+  "date": "2026-08-10",
+  "status": "PRELIMINARY - BENCH R&D CANDIDATE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "candidate_bom_rows": 19,
+  "source_records": 14,
+  "open_holds": 14,
+  "native_schematic_sheets_including_root": 3,
+  "released_connections": 0,
+  "authorized_procurement": 0,
+  "authorized_fabrication": 0,
+  "authorized_powered_runs": 0,
+  "executed_physical_runs": 0,
+  "robot_baseline_changes": 0,
+  "safety_function_credit": "ZERO",
+  "gate_effect": {
+    "EG-025": "OPEN",
+    "EG-026": "PARTIAL"
+  }
+}
