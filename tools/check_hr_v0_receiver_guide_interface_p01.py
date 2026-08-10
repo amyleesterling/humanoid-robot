@@ -135,7 +135,8 @@ def main() -> int:
     mechanical = next(item for item in release["current_products"] if item["identifier"] == "HR-V0-MECH-P0.6")
     safety = next(item for item in release["current_products"] if item["identifier"] == "HR-V0-FSA-P0.1")
     assert IDENTIFIER in mechanical["supporting_identifiers"] and IDENTIFIER in safety["supporting_identifiers"]
-    assert mechanical["release_state"] == "integrated_exact_coordinate_candidate_not_released_for_fabrication_or_energization"
+    assert mechanical["release_state"] == "integrated_exact_coordinate_candidate_requirements_input_reconciled_dynamic_and_physical_evidence_open_not_released_for_fabrication_or_energization"
+    assert "HR-V0-FAB-INPUT-P0.1" in mechanical["supporting_identifiers"]
     assert safety["release_state"] == "allocation_candidate_no_plr_or_sil_assigned"
     assert "receiver-guide-interface-p0.1/guide-interface-summary.json" in MANIFEST.read_text(encoding="utf-8")
     assert WARNING in (OUT / "FAB-REC-004-guide-angle-coordinate-drawing.svg").read_text(encoding="utf-8")

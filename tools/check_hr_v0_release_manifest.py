@@ -176,6 +176,7 @@ def main() -> None:
         "HR-V0-DYN-CHAR-P0.1",
         "HR-V0-FAB-SRC-P0.5",
         "HR-V0-BOSTON-FAB-ROUTE-P0.3",
+        "HR-V0-FAB-INPUT-P0.1",
         "HR-V0-MECH-DFM-DATA-P0.1",
         "HR-V0-MECH-BOM-BIND-P0.1",
         "HR-V0-MECH-PARITY-P0.1",
@@ -186,7 +187,7 @@ def main() -> None:
         errors.append("HR-V0-MECH-P0.6 supporting identifiers changed or are incomplete")
     if mechanical_product.get("coordinate_convention") != "HR-V0-FRAME-CONV-P0.1":
         errors.append("HR-V0-MECH-P0.6 coordinate convention missing or changed")
-    if mechanical_product.get("release_state") != "integrated_exact_coordinate_candidate_not_released_for_fabrication_or_energization":
+    if mechanical_product.get("release_state") != "integrated_exact_coordinate_candidate_requirements_input_reconciled_dynamic_and_physical_evidence_open_not_released_for_fabrication_or_energization":
         errors.append("HR-V0-MECH-P0.6 fail-closed release state changed")
     firmware_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FW-P0.4"),
