@@ -1,0 +1,6 @@
+record_id,item,controlled_fact,source_state,release_state
+MW-001,Banner Q4XFULAF110-Q8 / part 97540,flush-mount Class 1 visible-red laser; 35-110 mm; 0-10 V; 12-30 Vdc; 5-pin M12; 0.5 ms minimum response,VERIFIED IN CURRENT MANUFACTURER PRODUCT PAGE AND 27-MAR-2026 MANUAL,EXACT EVALUATION CANDIDATE / HOLD
+MW-002,Q4X analog interface,pin 4 black analog out relative to pin 5 gray analog ground; Q4X..U load resistance 2.5 kohm minimum,VERIFIED IN MANUAL,TIVP02 connection candidate only; no cable or field connection released
+MW-003,Q4X power/interface,pin 1 brown 12-30 Vdc; pin 3 blue supply return; pin 2 white remote input; shield shown separately,VERIFIED IN MANUAL,"instrumentation supply, overcurrent protection, shield termination and cable are SELECTION REQUIRED"
+MW-004,TIVP02 + TIVPMX10X observation,200 MHz; +/-50 V differential range; 10 Mohm || 2.8 pF; 18.3 ns 2 m propagation delay,VERIFIED IN CURRENT TEKTRONIX DATA,loading arithmetic is compatible on paper; physical connection and deskew remain open
+MW-005,E2 interpretation,Q4X is an independent displacement witness only for guarded disconnected-load no-motion evidence,PROJECT BOUNDARY,"no joint-angle, powered stopping, clearance or safety-function credit"

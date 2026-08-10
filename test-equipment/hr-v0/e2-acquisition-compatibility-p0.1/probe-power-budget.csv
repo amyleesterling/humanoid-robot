@@ -1,0 +1,4 @@
+scope,tcp0030a_count,tivp02_count,calculated_max_W,manufacturer_limit_W,margin_W,arithmetic_state,release_state
+MSO58B channels 1-4,2,2,35.8,40.0,4.2,PASS ON DOCUMENTED MAXIMA,HOLD - physical compatibility not executed
+MSO58B channels 5-8,2,2,35.8,40.0,4.2,PASS ON DOCUMENTED MAXIMA,HOLD - physical compatibility not executed
+MSO58B total,4,4,71.6,80.0,8.4,PASS ON DOCUMENTED MAXIMA,"HOLD - exact host configuration, firmware and installed-probe check open"

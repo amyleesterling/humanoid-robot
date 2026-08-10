@@ -1,0 +1,9 @@
+channel,bank,probe,max_probe_power_W,stop_role,reset_arm_role,physical_interface,state
+CH1,1-4,TCP0030A,8.4,SR1_S12 stop-event current,SR1_START_RETURN reset-event current,R180 controlled conductor; received wire identity and jaw fit remain open,CANDIDATE / HOLD
+CH2,1-4,TCP0030A,8.4,K1_A1 coil current,ARM_AFTER_S2 arm-event current,R180 controlled conductor; S2 received terminal remains open,CANDIDATE / HOLD
+CH3,1-4,TIVP02 + TIVPMX10X,9.5,K1_STATUS diagnostic voltage,K1_STATUS diagnostic voltage,protected diagnostic load and return are SELECTION REQUIRED; zero safety credit,CANDIDATE / HOLD
+CH4,1-4,TIVP02 + TIVPMX10X,9.5,K2_STATUS diagnostic voltage,K2_STATUS diagnostic voltage,protected diagnostic load and return are SELECTION REQUIRED; zero safety credit,CANDIDATE / HOLD
+CH5,5-8,TCP0030A,8.4,K2_A1 coil current,K1_A1 coil current,R180 controlled conductor; received wire identity and jaw fit remain open,CANDIDATE / HOLD
+CH6,5-8,TCP0030A,8.4,common SRA1_START_RETURN EDM-chain current,K2_A1 coil current,one series-chain observation only; no individual mirror-contact identity,CANDIDATE / HOLD
+CH7,5-8,TIVP02 + TIVPMX10X,9.5,SAFETY_24V relative to SAFETY_0V,SAFETY_24V relative to SAFETY_0V,exact protected test points and connection method are SELECTION REQUIRED,CANDIDATE / HOLD
+CH8,5-8,TIVP02 + TIVPMX10X,9.5,Q4X analog independent no-motion witness,Q4X analog independent no-motion witness,"Q4X pin 4 analog out relative to pin 5 analog ground; cable, supply, mount, target and limits remain open",CANDIDATE / HOLD
