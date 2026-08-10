@@ -1,0 +1,9 @@
+record_id,source,intermediate,destination,candidate_function,released,hold
+IF-001,PS-Q4X1 CH1 positive,PROT-Q4X1 exact device/terminals SELECTION REQUIRED,CBL-Q4X1 brown -> Q4X1 pin 1,sensor supply positive; 24.0 V candidate,NO,"protection, conductor termination, enclosure, current limit and received continuity"
+IF-002,PS-Q4X1 CH1 negative,exact terminal/termination SELECTION REQUIRED,CBL-Q4X1 blue -> Q4X1 pin 3,sensor supply return inside temporary instrumentation domain,NO,"termination, isolation measurement and received continuity"
+IF-003,CBL-Q4X1 white -> Q4X1 pin 2,separately insulated identified parking terminal SELECTION REQUIRED,NO EXTERNAL DRIVE,remote input left inactive; configuration must be verified,NO,exact parking terminal/enclosure and locked sensor setup
+IF-004,CBL-Q4X1 black -> Q4X1 pin 4,TIVPMX10X positive lead,TIVP02 / MSO58B CH8,0-10 V analog displacement observation,NO,"received continuity, lead arrangement, range, deskew and calibration"
+IF-005,CBL-Q4X1 gray -> Q4X1 pin 5,TIVPMX10X negative lead,TIVP02 / MSO58B CH8,analog ground reference only inside Q4X domain,NO,"received continuity, lead arrangement and domain isolation"
+IF-006,CBL-Q4X1 shield/drain,labeled isolated shield terminal SELECTION REQUIRED,SELECTION REQUIRED,shield treatment must follow accepted EMI/grounding review,NO,termination end/location and chassis/PE decision
+IF-007,PS-Q4X1 CH1 remote-sense terminals,NONE,NO CONNECTION CANDIDATE,local sensing only unless later selected and verified,NO,received setup and manufacturer-compliant configuration
+IF-008,PS-Q4X1 channel 2 and other outputs,NONE,NO CONNECTION,remain disabled for this candidate,NO,pre-use configuration inspection
