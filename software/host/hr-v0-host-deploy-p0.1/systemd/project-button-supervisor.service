@@ -1,0 +1,24 @@
+[Unit]
+Description=Project Button HR-V0 supervisor candidate (preliminary; disabled)
+After=local-fs.target
+ConditionPathIsReadWrite=/var/lib/project-button
+
+[Service]
+Type=simple
+User=project-button
+Group=project-button
+Environment=PYTHONPATH=/opt/project-button/lib
+ExecStart=/usr/bin/python3 /opt/project-button/lib/project_button_host/launcher.py --config /etc/project-button/host-deploy-config.json
+Restart=no
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictSUIDSGID=true
+ReadWritePaths=/var/lib/project-button /var/log/project-button
+
+[Install]
+WantedBy=multi-user.target

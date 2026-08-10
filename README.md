@@ -50,6 +50,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 watchdog-gated SR1 supply correction P0.1](docs/hr-v0-watchdog-supply-gate-p0.1.md)
 - [Interactive watchdog supply-gate correction guide](safety/hr-v0-watchdog-supply-gate-p0.1/index.html)
 - [HR-V0 firmware implementation candidate P0.4](docs/hr-v0-firmware-p0.4.md)
+- [HR-V0 fail-closed host deployment candidate P0.1](docs/hr-v0-host-deployment-p0.1.md)
+- [Interactive host deployment guide](release/hr-v0/host-deployment-p0.1/index.html)
 - [HR-V0 DYNAMIXEL transport candidate P0.3](docs/hr-v0-dynamixel-transport-p0.3.md)
 - [HR-V0 E2 control-only commissioning package P0.1](docs/hr-v0-e2-control-only-energization-p0.1.md)
 - [HR-V0 BOM closure and evaluation boundary P0.1](docs/hr-v0-bom-closure-p0.1.md)
@@ -625,6 +627,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R170 compute-storage independent review request](docs/reviews/2026-08-09-r170-independent-review-request.md)
 - [R170 compute-storage validation record](docs/reviews/2026-08-09-r170-validation-record.md)
 - [Sol R12 findings rechecked after R170](docs/reviews/2026-08-09-sol-r12-post-r170-status.md)
+- [R171 fail-closed host deployment candidate](docs/hr-v0-host-deployment-p0.1.md)
+- [R171 interactive host deployment guide](release/hr-v0/host-deployment-p0.1/index.html)
+- [R171 host deployment independent review request](docs/reviews/2026-08-09-r171-independent-review-request.md)
+- [R171 host deployment validation record](docs/reviews/2026-08-09-r171-validation-record.md)
+- [Sol R12 findings rechecked after R171](docs/reviews/2026-08-09-sol-r12-post-r171-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -647,6 +654,8 @@ Run `python tools/check_hr_v0_xt1_terminal_group_p01.py` for R168. Passing prove
 Run `python tools/check_hr_v0_label_system_p01.py` for R169. Passing proves six physically short XT1 texts, 34 small device/operator records, four large legends, exact candidate material stocks and twelve open holds. It does not select a printer/service, wire markers, adhesion, regulatory markings or installed evidence, and authorizes no work.
 
 Run `python tools/check_hr_v0_compute_storage_p02.py` for R170. Passing proves exact Kingston `SDCIT2/64GBSP` identity, three current primary source records, thirteen evidence-classed interfaces, twelve open holds and ten unexecuted receiving checks. It does not prove Pi 5 compatibility, capacity integrity, card-specific endurance, imaging, filesystem resilience, recovery, retention, current/thermal behavior or safety performance.
+
+Run `python tools/check_hr_v0_host_deploy_p01.py` for R171. Passing proves a six-file disabled overlay, 23 current preflight failures, eighteen open closure holds, 21 unexecuted target evidence rows, six host source tests and source-manifest integrity. It does not prove an installed target image, package/interpreter identity, service permissions, GPIO or serial behavior, HIL timing, power-loss recovery, rollback, motion safety or functional-safety performance.
 
 Run `python tools/check_hr_v0_control_panel.py` to cross-check the R64 25-row panel BOM, nominal allocations, exact XT1 mapping, all 66 bounded V3 wire endpoints, one fail-closed SD1 sidewall option, unreleased physical-wire fields, cable-entry holds, thermal/space screens, readable SVG warning content and twenty-two unexecuted panel records. Run `python tools/check_hr_v0_service_disconnect.py` to prove the exact `75920-01` catalog candidate remains application-held, all 15 SD1 rows remain unexecuted, and no cutout, conductor, lockout procedure or wiring release exists. Passing either checker releases no drilling, cutting, wiring, assembly, PCB fabrication, or energization work.
 
@@ -722,7 +731,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred sixty-two review/control rounds are complete: R01-R162. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R162 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R162 replaces R161's zero-left-margin placement with a re-centered mounting candidate, exact but unreleased standoff/screw candidates and a no-drill received-fit route. It keeps hole diameter/tolerance, physical fit, torque/load/creep, cut/crimp data, installed limits, physical tests, safety credit and every work authority open.
+One hundred seventy-one review/control rounds are complete: R01-R171. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R171 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R171 adds a disabled-by-default host overlay and fail-closed preflight that currently stops before any subprocess or hardware access. All target-image, backend, HIL, power-loss, rollback, qualified-review and work-authority evidence remains open.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -896,6 +905,7 @@ One hundred sixty-two review/control rounds are complete: R01-R162. R11 Fable an
 | R168 | XT1 control-terminal group reconciliation | Issued `HR-V0-XT1-P0.1`; reconciled BOM-039 to five gray 3209510 bodies, one blue 3209523 body, one 3030417 end cover, six exact position/net mappings and zero jumpers. Kept shared 3022218 restraint under BOM-085 and labels under BOM-062. Twelve holds and all work-authority boundaries remain open; EG-003/015 remain partial. |
 | R169 | Panel identification and XT1 marker correction | Issued `HR-V0-LABEL-P0.1`; replaced overlong XT1 marker prose with `01` through `06`, added separate group/device/operator/status schedules, and advanced BOM-062 to an exact-candidate material/text hold. Printing, artwork, adhesion, placement, wire markers, code marking and physical/qualified evidence remain open; EG-003/015 remain partial. |
 | R170 | Exact compute-storage candidate | Issued `HR-V0-COMPUTE-STORAGE-P0.2`; superseded only the order-code-open STORE1 branch with exact Kingston `SDCIT2/64GBSP` on hold. Recorded pSLC-mode TLC, 30K P/E and power-failure/ECC/wear/monitoring family claims without assigning the family maximum TBW to 64 GB. Pi 5 compatibility, receiving, media integrity, imaging, filesystem, abrupt-loss, recovery, retention, thermal/current and qualified evidence remain open. |
+| R171 | Fail-closed host deployment candidate | Issued `HR-V0-HOST-DEPLOY-P0.1`; added a six-file disabled overlay, pure-file preflight, exit-78 launcher, 23 current preflight holds, eighteen open closure groups, 21 blank execution rows and six source tests. No target image, hardware backend, installation, HIL, safety credit, gate closure or work authority exists. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
