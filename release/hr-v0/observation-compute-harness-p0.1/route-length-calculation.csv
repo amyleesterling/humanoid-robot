@@ -1,0 +1,2 @@
+route,r205_manhattan_screen_mm,bend_count,candidate_min_stationary_bend_radius_mm,rounded_centerline_screen_mm,equation,cut_length_mm,unknown_addends,state,warning
+R202 JLOGIC1 to R204 JOBS1,335.4,2,15.0,322.5,335.4 + 2*(pi/2 - 2)*15,SELECTION REQUIRED,received Pi/case/carrier transform; exact connector exits; service loop; termination allowance; strain relief; tolerance,GEOMETRIC SCREEN ONLY - DO NOT CUT,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

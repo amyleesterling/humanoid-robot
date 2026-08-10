@@ -1,0 +1,2 @@
+conductor_count,nominal_od_each_mm,sum_bare_circular_area_mm2,equation,duct_fill_percent,not_included,state,warning
+6,1.6,12.06,6*pi*(1.6/2)^2,SELECTION REQUIRED,packing inefficiency; labels; ties; bend space; other WD2 occupancy; cover clearance; separation,AREA INPUT ONLY - NOT A DUCT-FILL RESULT,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
