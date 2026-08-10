@@ -11,8 +11,9 @@
     {
       "domain": "electrical",
       "identifier": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE",
-      "supporting_identifiers": ["PCB-P0.9-P1.15-PARITY-CONTROLLED", "HR-V0-WD-IC-META-P0.1", "HR-V0-WD-LAND-P0.1", "HR-V0-WD-MOUNT-IF-P0.1", "HR-V0-WD-PCBA-RFI-P0.1", "HR-V0-WD-PCBA-DATA-P0.2", "HR-V0-WD-BOM-BIND-P0.1", "HR-V0-WD-CAM-P0.2", "HR-V0-E2-P115-PARITY-P0.1", "HR-V0-E2-HW-P0.4", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-CURRENT-ENV-P0.1", "HR-V0-DXL-PROT-EVAL-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-DFM-P0.1", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1", "HR-V0-CONFIG-REC-P0.1", "HR-V0-CP-P0.6", "HR-V0-COMPUTE-INSTALL-P0.1", "HR-V0-U2D2-USB-P0.1", "HR-V0-PANEL-RD-P0.1", "HR-V0-WD-SUPPLY-P0.1", "HR-V0-PNOZ-CONF-P0.1", "HR-V0-K1K2-APP-P0.2", "HR-V0-GND-BOND-P0.1", "HR-V0-COMPUTE-SEL-P0.1", "HR-V0-COMPUTE-SUBASM-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2", "HR-V0-SD-P0.2", "HR-V0-24V-IF-P0.2", "HR-V0-COMPUTE-IF-P0.1", "HR-V0-GRIP-ELEC-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1"],
-      "release_state": "carrier_integrated_configuration_candidate_p115_watchdog_e2_digital_parity_controlled_p115_bound_cam_review_exists_not_supplier_released_physical_evidence_absent"
+      "correction_identifier": "HR-V0-WD-P115-ID-P0.1",
+      "supporting_identifiers": ["PCB-P1.0-P1.15-DIRECT", "HR-V0-WD-IC-META-P0.1", "HR-V0-WD-LAND-P0.1", "HR-V0-WD-MOUNT-IF-P0.1", "HR-V0-WD-PCBA-RFI-P0.1", "HR-V0-WD-PCBA-DATA-P0.2", "HR-V0-WD-BOM-BIND-P0.1", "HR-V0-WD-CAM-P0.2", "HR-V0-E2-HW-P0.4", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-CURRENT-ENV-P0.1", "HR-V0-DXL-PROT-EVAL-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-DFM-P0.1", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1", "HR-V0-CONFIG-REC-P0.1", "HR-V0-CP-P0.6", "HR-V0-COMPUTE-INSTALL-P0.1", "HR-V0-U2D2-USB-P0.1", "HR-V0-PANEL-RD-P0.1", "HR-V0-WD-SUPPLY-P0.1", "HR-V0-PNOZ-CONF-P0.1", "HR-V0-K1K2-APP-P0.2", "HR-V0-GND-BOND-P0.1", "HR-V0-COMPUTE-SEL-P0.1", "HR-V0-COMPUTE-SUBASM-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2", "HR-V0-SD-P0.2", "HR-V0-24V-IF-P0.2", "HR-V0-COMPUTE-IF-P0.1", "HR-V0-GRIP-ELEC-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1"],
+      "release_state": "carrier_integrated_configuration_candidate_p115_watchdog_pcb_p10_direct_native_binding_cam_review_exists_not_supplier_released_physical_evidence_absent"
     },
     {
       "domain": "mechanical",
@@ -42,7 +43,7 @@
     {
       "domain": "commissioning",
       "identifier": "HR-V0-E2-SEQ-P0.1",
-      "supporting_identifiers": ["HR-V0-E2-HW-P0.4", "HR-V0-E2-P115-PARITY-P0.1", "AUDIT-ELEC-002", "INSPECT-ELEC-010", "TEST-ELEC-008", "INSPECT-E2-001", "INSPECT-E2-002", "TEST-E2-001", "TEST-E2-002", "AUDIT-E2-001"],
+      "supporting_identifiers": ["HR-V0-E2-HW-P0.4", "AUDIT-ELEC-002", "INSPECT-ELEC-010", "TEST-ELEC-008", "INSPECT-E2-001", "INSPECT-E2-002", "TEST-E2-001", "TEST-E2-002", "AUDIT-E2-001"],
       "release_state": "templates_not_executed_not_authorized_for_energization"
     },
     {
@@ -98,6 +99,10 @@
     {
       "identifier": "HR-V0-E2-HW-P0.3",
       "disposition": "historical P1.14-bound control-only slice; superseded by P1.15-bound HR-V0-E2-HW-P0.4 and not an energization authorization"
+    },
+    {
+      "identifier": "HR-V0-E2-P115-PARITY-P0.1",
+      "disposition": "historical R165 P1.14-to-P1.15 parity evidence; retained for audit history but no longer required by direct-bound PCB-P1.0 or current E2 P0.4"
     },
     {
       "identifier": "HR-30A/B/C/D/W",

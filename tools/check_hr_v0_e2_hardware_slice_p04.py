@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ENG = ROOT / "electrical" / "e2" / "hr-v0-e2-hardware-p0.4"
 REL = ROOT / "release" / "hr-v0" / "e2-hardware-p0.4"
 IDENTIFIER = "HR-V0-E2-HW-P0.4"
-PARITY = "HR-V0-E2-P115-PARITY-P0.1"
+DIRECT_BINDING = "PCB-P1.0 / Electrical V3-P1.15"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 
 
@@ -50,10 +50,10 @@ def main() -> int:
     need(len(terminals) == 6, "expected six XT1 positions")
     need(len(sources) == 3, "expected three source-domain rows")
     need(len(holds) == 12, "expected twelve blocking holds")
-    need(len(hashes) == 7, "expected seven source hashes")
-    need(summary.get("identifier") == IDENTIFIER and summary.get("round") == "R165+R166-SYNCHRONIZED", "summary identity changed")
-    need(summary.get("electrical_baseline") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE / PCB-P0.9 / HR-V0-WD-PCBA-DATA-P0.2", "P1.15 baseline changed")
-    need(summary.get("parity_evidence") == PARITY and summary.get("p115_parity_verified_by_checker") is True, "P1.15 parity binding missing")
+    need(len(hashes) == 6, "expected six source hashes")
+    need(summary.get("identifier") == IDENTIFIER and summary.get("round") == "R195-SYNCHRONIZED", "summary identity changed")
+    need(summary.get("electrical_baseline") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE / PCB-P1.0 / HR-V0-WD-PCBA-DATA-P0.2", "P1.15 baseline changed")
+    need(summary.get("configuration_binding") == DIRECT_BINDING and summary.get("p115_direct_binding_verified_by_checker") is True, "P1.15 direct binding missing")
     need(summary.get("authorization") == "NOT AUTHORIZED", "E2 authorization must remain denied")
     for key in ("physical_configuration_verified", "run_authorized", "fabrication_authorized", "connection_authorized", "motion_authorized", "energization_authorized", "safety_credit"):
         need(summary.get(key) is False, f"{key} must remain false")
@@ -70,7 +70,7 @@ def main() -> int:
     config_by_id = {row["record_id"]: row for row in config}
     wd = config_by_id.get("E2-CFG-011", {})
     actuator = config_by_id.get("E2-CFG-018", {})
-    need(PARITY in wd.get("candidate", "") and "P1.15-PARITY INSTALL CANDIDATE" == wd.get("physical_state"), "watchdog P1.15 identity not synchronized")
+    need("PCB-P1.0" in wd.get("candidate", "") and "P1.15-DIRECT INSTALL CANDIDATE" == wd.get("physical_state"), "watchdog P1.15 identity not synchronized")
     need("current internal CAM exists" in wd.get("open_evidence", "") and "supplier-normalized XYRS" in wd.get("open_evidence", ""), "watchdog CAM/process boundary changed")
     need("P0.3 limiter carriers" in actuator.get("candidate", "") and "DXL-STAR-P0.2-CARRIER-CANDIDATE" in actuator.get("candidate", ""), "current actuator subset identity missing")
     need(actuator.get("physical_state") == "PHYSICALLY ABSENT OR UNWIRED" and actuator.get("e2_boundary") == "NO ACTUATOR CURRENT PATH", "actuator subset incorrectly permitted at E2")
@@ -78,8 +78,8 @@ def main() -> int:
     need(all(row["warning"] == WARNING for row in config + terminals + sources + holds), "warning missing from a package row")
     need(all("NOT EXECUTED" not in row.values() for row in config), "configuration slice contains an execution claim field")
     hold_by_id = {row["hold_id"]: row for row in holds}
-    need("machine-checked P1.15 system parity" in hold_by_id.get("E2-HOLD-008", {}).get("open_item", ""), "P1.15 parity hold disposition missing")
-    need("Independent P1.15 parity acceptance" in hold_by_id.get("E2-HOLD-008", {}).get("evidence_needed", ""), "independent parity acceptance not retained")
+    need("directly matches P1.15 system identity" in hold_by_id.get("E2-HOLD-008", {}).get("open_item", ""), "P1.15 direct-binding hold disposition missing")
+    need("Independent P1.15 configuration acceptance" in hold_by_id.get("E2-HOLD-008", {}).get("evidence_needed", ""), "independent configuration acceptance not retained")
 
     combined = "\n".join(str(value) for row in config + terminals + sources + holds for value in row.values()) + page
     for token in ("WR9QI1660YL4NKITR6B", "KPJX-PM-4S", "F24", "TP15/TP16/TP2", "TOOL/DEBUG CONNECTION ABSENT", "PHYSICALLY ABSENT", "LOAD POLES UNSOURCED AND UNWIRED", "NO FUSE LINK SELECTED", "NOT APPROVED FOR FABRICATION OR ENERGIZATION"):
@@ -105,7 +105,7 @@ def main() -> int:
             print("-", failure)
         return 1
     print(f"{IDENTIFIER} PASS")
-    print("  P1.15 parity bound / 23 configuration rows / 6 XT1 rows / 12 holds")
+    print("  P1.15 directly bound / 23 configuration rows / 6 XT1 rows / 12 holds")
     print("  actuator source and branches absent or unwired; physical evidence and authorization remain false")
     return 0
 

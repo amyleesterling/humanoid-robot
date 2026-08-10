@@ -326,10 +326,7 @@
     "top_level_sheets": []
   },
   "sheets": [],
-  "text_variables": {
-    "PROJECT_STATUS": "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION",
-    "REVISION": "V3-P1.14"
-  },
+  "text_variables": {},
   "tuning_profiles": {
     "meta": {
       "version": 0

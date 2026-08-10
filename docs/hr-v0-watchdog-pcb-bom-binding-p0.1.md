@@ -6,7 +6,7 @@ Identifier: `HR-V0-WD-BOM-BIND-P0.1`
 
 Round: R149
 
-Controlled board: `PCB-P0.9 / Project Button Electrical V3-P1.14`
+Controlled board: `PCB-P1.0 / Project Button Electrical V3-P1.15`
 
 Controlled assembly data: `HR-V0-WD-PCBA-DATA-P0.2`
 
@@ -16,7 +16,7 @@ The live system BOM still described `BOM-048` as historical `PCB-P0.5`. That con
 
 `BOM-048` now binds the current native board SHA-256 identity to the P0.2 assembly package:
 
-- native PCB SHA-256 `65394e64e79097ff1cbc63a6bb395d5ae39ca9fd462876c1f9246ae70fc923f2`;
+- native PCB SHA-256 `4e893c7d0d8e18ad933487bd51e390ef4497f9d021df8e67b7821797db296720`;
 - 42 populated references;
 - sixteen exact-MPN assembly-BOM lines totaling 42 components;
 - 42 internal placement-reference rows;
@@ -29,9 +29,9 @@ The binding and its hashes are machine-readable in `bom/hr-v0-watchdog-pcb-bindi
 
 The current BOM no longer points at a superseded board. The `exact_candidate_hold` classification means that the configuration identity and candidate quantity are exact enough for controlled review. It does not make a build package.
 
-At R149 issuance, current Gerber/drill CAM did not exist for PCB-P0.9. R150 supplied historical `HR-V0-WD-CAM-P0.1`; R166 now supplies `HR-V0-WD-CAM-P0.2`, a P1.15 parity-bound quarantined internal review set. Neither package is supplier-released, and P0.1 is prohibited for current supplier use. Supplier-normalized XYRS and an accepted supplier packet still do not exist. Provider, board process, stackup, finish, stencil, paste, reflow, THT, cleanliness, inspection, electrical test, first article, physical, HIL, EMC, thermal and qualified-review evidence remain unresolved.
+At R149 issuance, current Gerber/drill CAM did not exist. R150 supplied historical `HR-V0-WD-CAM-P0.1`; R195 synchronizes `HR-V0-WD-CAM-P0.2` to direct-bound PCB-P1.0 as a quarantined internal review set. Neither package is supplier-released, and P0.1 is prohibited for current supplier use. Supplier-normalized XYRS and an accepted supplier packet still do not exist. Provider, board process, stackup, finish, stencil, paste, reflow, THT, cleanliness, inspection, electrical test, first article, physical, HIL, EMC, thermal and qualified-review evidence remain unresolved.
 
-Historical PCB-P0.5 CAM is prohibited from upload or order against PCB-P0.9. No provider has been selected or contacted; no files have been uploaded; and no quotation, fabrication, assembly, connection, motion, energization or safety credit is authorized.
+Historical PCB-P0.5 and PCB-P0.9 artifacts are prohibited from upload or order against PCB-P1.0. No provider has been selected or contacted; no files have been uploaded; and no quotation, fabrication, assembly, connection, motion, energization or safety credit is authorized.
 
 ## Controlled evidence
 

@@ -2,7 +2,7 @@
 
 > **PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION**
 
-This is a source-bound CAM **review** package for `PCB-P0.9 / Electrical V3-P1.15-CARRIER-CANDIDATE via HR-V0-E2-P115-PARITY-P0.1`. It contains no supplier release and no machine-ready assembler XYRS. The package also hash-binds the complete P1.15 native source manifest and the R165 P1.14-to-P1.15 parity evidence.
+This is a source-bound CAM **review** package for `PCB-P1.0 / Electrical V3-P1.15-CARRIER-CANDIDATE (DIRECT NATIVE BINDING)`. It contains no supplier release and no machine-ready assembler XYRS. The package directly binds the PCB-P1.0 native title to Electrical V3-P1.15 and hash-binds the complete P1.15 native source manifest.
 
 ## What exists
 

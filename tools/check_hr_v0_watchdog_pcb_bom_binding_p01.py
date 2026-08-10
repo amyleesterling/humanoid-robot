@@ -50,9 +50,9 @@ def main() -> int:
         binding = binding_rows[0]
     expected_identity = {
         "bom_item_id": "BOM-048",
-        "board_id": "PCB-P0.9",
-        "electrical_revision": "Project Button Electrical V3-P1.14",
-        "current_system_binding": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE via HR-V0-E2-P115-PARITY-P0.1",
+        "board_id": "PCB-P1.0",
+        "electrical_revision": "Project Button Electrical V3-P1.15",
+        "current_system_binding": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE / PCB-P1.0 direct native binding",
         "assembly_data_id": "HR-V0-WD-PCBA-DATA-P0.2",
         "populated_references": "42",
         "bom_lines": "16",
@@ -73,16 +73,18 @@ def main() -> int:
             errors.append(f"binding file/hash mismatch: {path_field}")
 
     item = bom.get("BOM-048", {})
-    expected_mpn = "Project Button watchdog PCB PCB-P0.9 / Electrical V3-P1.15 parity-bound; assembly data HR-V0-WD-PCBA-DATA-P0.2"
+    expected_mpn = "Project Button watchdog PCB PCB-P1.0 / Electrical V3-P1.15 direct-bound; assembly data HR-V0-WD-PCBA-DATA-P0.2"
     if item.get("manufacturer") != "Custom PCB / provider SELECTION REQUIRED" or item.get("manufacturer_part_number") != expected_mpn or item.get("quantity") != "1" or item.get("baseline_status") != "exact_candidate_hold":
         errors.append("BOM-048 does not carry the exact held current PCB identity")
     closed = closure.get("BOM-048", {})
     if closed.get("closure_class") != "exact_candidate_hold" or closed.get("order_code_state") != "EXACT CANDIDATE" or closed.get("allowed_action") != "HOLD":
         errors.append("BOM-048 closure state is not exact-candidate hold")
 
-    if assembly_status.get("board") != "PCB-P0.9 / Electrical V3-P1.14" or assembly_status.get("board_sha256") != binding.get("native_pcb_sha256"):
+    if assembly_status.get("board") != "PCB-P1.0 / Electrical V3-P1.15" or assembly_status.get("board_sha256") != binding.get("native_pcb_sha256"):
         errors.append("P0.2 assembly status board identity differs from binding")
-    for key in ("supplier_normalized_xyrs_exists", "cam_exists", "provider_selected", "provider_contacted", "files_uploaded", "fabrication_authorized", "assembly_authorized", "physical_article_exists", "energization_authorized", "safety_credit"):
+    if assembly_status.get("cam_exists") is not True or assembly_status.get("cam_released") is not False:
+        errors.append("P0.2 assembly status does not encode current quarantined CAM")
+    for key in ("supplier_normalized_xyrs_exists", "provider_selected", "provider_contacted", "files_uploaded", "fabrication_authorized", "assembly_authorized", "physical_article_exists", "energization_authorized", "safety_credit"):
         if assembly_status.get(key) is not False:
             errors.append(f"P0.2 assembly status {key} is not false")
     if len(assembly_bom) != 16 or sum(int(row.get("quantity_per_board", "0")) for row in assembly_bom) != 42:
@@ -91,7 +93,7 @@ def main() -> int:
         errors.append("placement/mechanical-feature counts differ from 42/4")
     if len(holds) != 12 or any(row.get("status") != "OPEN" for row in holds):
         errors.append("the twelve P0.2 assembly holds are not all open")
-    for file_id, required_state in (("WD-FILE-006", "DOES NOT EXIST FOR PCB-P0.9"), ("WD-FILE-008", "DOES NOT EXIST"), ("WD-FILE-010", "DOES NOT EXIST")):
+    for file_id, required_state in (("WD-FILE-006", "INTERNAL REVIEW EXISTS - NOT SUPPLIER RELEASED"), ("WD-FILE-008", "DOES NOT EXIST"), ("WD-FILE-010", "DOES NOT EXIST")):
         if file_states.get(file_id, {}).get("state") != required_state:
             errors.append(f"{file_id} absence state changed")
 
@@ -103,13 +105,13 @@ def main() -> int:
     if status.get("identifier") != "HR-V0-WD-BOM-BIND-P0.1" or status.get("open_assembly_holds") != 12:
         errors.append("binding package identity or hold count changed")
     source_hashes = status.get("source_hashes", {})
-    if len(source_hashes) != 10:
-        errors.append("binding package does not hash exactly ten controlled sources")
+    if len(source_hashes) != 9:
+        errors.append("binding package does not hash exactly nine controlled sources")
     for relative, expected_hash in source_hashes.items():
         path = ROOT / relative
         if not path.is_file() or digest(path) != expected_hash:
             errors.append(f"binding package source hash mismatch: {relative}")
-    if cam_status.get("identifier") != "HR-V0-WD-CAM-P0.2" or cam_status.get("p115_parity_evidence") != "HR-V0-E2-P115-PARITY-P0.1" or cam_status.get("cam_generated") is not True or cam_status.get("cam_released") is not False:
+    if cam_status.get("identifier") != "HR-V0-WD-CAM-P0.2" or cam_status.get("direct_p115_binding") is not True or cam_status.get("p115_parity_evidence") is not None or cam_status.get("cam_generated") is not True or cam_status.get("cam_released") is not False:
         errors.append("current CAM review package state is missing or released")
     for key in ("supplier_normalized_xyrs_exists", "supplier_selected", "supplier_contacted", "files_uploaded", "quotation_requested", "fabrication_authorized", "assembly_authorized", "physical_article_exists", "connection_authorized", "motion_authorized", "energization_authorized", "safety_credit"):
         if cam_status.get(key) is not False:
@@ -125,7 +127,7 @@ def main() -> int:
         gate = gates.get(gate_id, {})
         if gate.get("status") != "partial" or "bom/hr-v0-watchdog-pcb-binding.csv" not in gate.get("evidence_location", ""):
             errors.append(f"{gate_id} does not retain partial status with binding evidence")
-    for token in ("font:clamp(16px", "PCB-P0.9", "Historical P0.1 CAM", "HR-V0-WD-CAM-P0.2", "HR-V0-E2-P115-PARITY-P0.1", "42", "16", "Twelve assembly holds remain open", "NOT MACHINE XYRS"):
+    for token in ("font:clamp(16px", "PCB-P1.0", "Historical P0.1 CAM", "HR-V0-WD-CAM-P0.2", "Electrical V3-P1.15", "42", "16", "Twelve assembly holds remain open", "NOT MACHINE XYRS"):
         if token not in guide:
             errors.append(f"interactive guide omits {token!r}")
 
@@ -134,7 +136,7 @@ def main() -> int:
         for error in errors:
             print(f"- {error}")
         return 1
-    print("HR-V0-WD-BOM-BIND-P0.1 PASS: BOM-048 binds PCB-P0.9 to P0.2 assembly data, 42 placements, 16 BOM lines and 4 NPTH features")
+    print("HR-V0-WD-BOM-BIND-P0.1 PASS: BOM-048 binds PCB-P1.0 to P0.2 assembly data, 42 placements, 16 BOM lines and 4 NPTH features")
     print("Twelve assembly holds open; current CAM review exists but supplier XYRS/release, fabrication, assembly, connection, motion, energization and safety credit remain false")
     return 0
 

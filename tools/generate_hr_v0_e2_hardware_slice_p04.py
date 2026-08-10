@@ -19,7 +19,7 @@ import generate_hr_v0_e2_hardware_slice as base  # noqa: E402
 ENG = ROOT / "electrical" / "e2" / "hr-v0-e2-hardware-p0.4"
 REL = ROOT / "release" / "hr-v0" / "e2-hardware-p0.4"
 IDENTIFIER = "HR-V0-E2-HW-P0.4"
-PARITY = "HR-V0-E2-P115-PARITY-P0.1"
+DIRECT_BINDING = "PCB-P1.0 / Electrical V3-P1.15"
 WARNING = "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION"
 
 
@@ -32,9 +32,9 @@ def changed_config() -> list[tuple[str, ...]]:
     for row in base.CONFIG:
         values = list(row)
         if row[0] == "E2-CFG-011":
-            values[2] = "Project Button PCB-P0.9 / HR-V0-WD-PCBA-DATA-P0.2 / HR-V0-WD-CAM-P0.2 / HR-V0-E2-P115-PARITY-P0.1"
-            values[3] = "P1.15-PARITY INSTALL CANDIDATE"
-            values[5] = "P1.15 schedule/native-net parity is controlled and current internal CAM exists; supplier-normalized XYRS, assembler/process acceptance, fabrication, bare-board, assembly, HIL, fault, EMC, thermal and qualified evidence remain absent."
+            values[2] = "Project Button PCB-P1.0 / HR-V0-WD-PCBA-DATA-P0.2 / HR-V0-WD-CAM-P0.2"
+            values[3] = "P1.15-DIRECT INSTALL CANDIDATE"
+            values[5] = "PCB-P1.0 is natively bound to P1.15 and current internal CAM exists; supplier-normalized XYRS, assembler/process acceptance, fabrication, bare-board, assembly, HIL, fault, EMC, thermal and qualified evidence remain absent."
         elif row[0] == "E2-CFG-018":
             values[2] = "F1/F2/F3, three P0.3 limiter carriers and DXL-STAR-P0.2-CARRIER-CANDIDATE"
             values[5] = "Current P1.15 actuator subset exists only as digital candidate evidence; all protection, current coordination, branch harness and physical evidence remain open and the complete subset is absent or unwired at E2."
@@ -47,8 +47,8 @@ def changed_holds() -> list[tuple[str, ...]]:
     for row in base.HOLDS:
         values = list(row)
         if row[0] == "E2-HOLD-008":
-            values[2] = "PCB-P0.9 has current exact identity/BOM/placement data, internal CAM review and machine-checked P1.15 system parity; no supplier-normalized XYRS, accepted process, physical article or manufacturing release"
-            values[3] = "Independent P1.15 parity acceptance; assembler/supplier process and coordinate-transform acceptance; bare-board test; assembly; HIL/fault/EMC/thermal evidence"
+            values[2] = "PCB-P1.0 directly matches P1.15 system identity and has current exact identity/BOM/placement data plus internal CAM review; no supplier-normalized XYRS, accepted process, physical article or manufacturing release"
+            values[3] = "Independent P1.15 configuration acceptance; assembler/supplier process and coordinate-transform acceptance; bare-board test; assembly; HIL/fault/EMC/thermal evidence"
         result.append(tuple(values))
     return result
 
@@ -59,7 +59,6 @@ def source_paths() -> dict[str, Path]:
         "p115_connector_schedule": ROOT / "electrical" / "kicad" / "project-button-v3-p1.15-carrier-candidate" / "connector-schedule.csv",
         "p115_native_netlist": ROOT / "electrical" / "kicad" / "project-button-v3-p1.15-carrier-candidate" / "validation" / "project-button-v3-p1.15-carrier-candidate.net",
         "p115_native_erc": ROOT / "electrical" / "kicad" / "project-button-v3-p1.15-carrier-candidate" / "validation" / "project-button-v3-p1.15-carrier-candidate-erc.rpt",
-        "p115_e2_parity": ROOT / "release" / "hr-v0" / "e2-p115-parity-p0.1" / "package-status.json",
         "watchdog_cam": ROOT / "release" / "hr-v0" / "watchdog-pcb-cam-p0.2" / "package-status.json",
         "e2_sequence": ROOT / "tests" / "e2" / "hr-v0-e2-control-only-sequence.csv",
     }
@@ -90,11 +89,11 @@ def generate_target(target: Path) -> None:
     source_hashes = {path.relative_to(ROOT).as_posix(): sha256(path) for path in sources.values()}
     summary = {
         "identifier": IDENTIFIER,
-        "date": "2026-08-09",
-        "round": "R165+R166-SYNCHRONIZED",
+        "date": "2026-08-10",
+        "round": "R195-SYNCHRONIZED",
         "warning": WARNING,
-        "electrical_baseline": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE / PCB-P0.9 / HR-V0-WD-PCBA-DATA-P0.2",
-        "parity_evidence": PARITY,
+        "electrical_baseline": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE / PCB-P1.0 / HR-V0-WD-PCBA-DATA-P0.2",
+        "configuration_binding": DIRECT_BINDING,
         "sequence_baseline": "HR-V0-E2-SEQ-P0.1",
         "configuration_rows": len(config),
         "terminal_rows": len(base.TERMINALS),
@@ -103,7 +102,7 @@ def generate_target(target: Path) -> None:
         "permitted_power_domains": ["24 V safety/control candidate", "5.1 V compute candidate"],
         "prohibited_power_domains": ["12 V actuator", "powered U2D2/actuator branches"],
         "source_hashes": source_hashes,
-        "p115_parity_verified_by_checker": True,
+        "p115_direct_binding_verified_by_checker": True,
         "physical_configuration_verified": False,
         "run_authorized": False,
         "fabrication_authorized": False,
@@ -118,7 +117,7 @@ def generate_target(target: Path) -> None:
     (target / "HR-V0_e2-hardware-guide.html").write_text(page, encoding="utf-8")
     source_rows = [{"source_id": key, "path": path.relative_to(ROOT).as_posix(), "sha256": sha256(path), "bytes": str(path.stat().st_size), "warning": WARNING} for key, path in sources.items()]
     write_csv(target / "source-hash-register.csv", ["source_id", "path", "sha256", "bytes", "warning"], source_rows)
-    (target / "README.md").write_text(f"# {IDENTIFIER}\n\n{WARNING}\n\nThis P1.15-bound control-only hardware slice uses {PARITY}. It authorizes no purchase, fabrication, wiring, connection, test, motion or energization. The actuator source and complete actuator branch subset remain physically absent or unwired at E2.\n", encoding="utf-8")
+    (target / "README.md").write_text(f"# {IDENTIFIER}\n\n{WARNING}\n\nThis control-only hardware slice uses the direct native binding `{DIRECT_BINDING}`. It authorizes no purchase, fabrication, wiring, connection, test, motion or energization. The actuator source and complete actuator branch subset remain physically absent or unwired at E2.\n", encoding="utf-8")
     files = [{"path": path.relative_to(target).as_posix(), "bytes": str(path.stat().st_size), "sha256": sha256(path)} for path in sorted(p for p in target.rglob("*") if p.is_file() and p.name != "file-manifest.csv")]
     write_csv(target / "file-manifest.csv", ["path", "bytes", "sha256"], files)
 
@@ -130,7 +129,7 @@ def main() -> int:
     generate_target(ENG)
     generate_target(REL)
     print(f"Generated {IDENTIFIER}: 23 configuration rows / 6 XT1 rows / 12 holds")
-    print("P1.15 parity bound; actuator source/branches physically absent or unwired; run NOT AUTHORIZED")
+    print("P1.15 directly bound; actuator source/branches physically absent or unwired; run NOT AUTHORIZED")
     print(WARNING)
     return 0
 

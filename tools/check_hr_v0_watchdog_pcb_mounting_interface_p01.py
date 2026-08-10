@@ -56,7 +56,7 @@ def main() -> int:
 
     current = BOARD.read_text(encoding="utf-8-sig")
     historical = OLD_BOARD.read_text(encoding="utf-8-sig")
-    for token in ('rev "PCB-P0.9 / Electrical V3-P1.14"', '(at -4.765 -1.27)', '(size 1.52 1.78)', 'https://www.vishay.com/docs/83432/vo618a.pdf'):
+    for token in ('rev "PCB-P1.0 / Electrical V3-P1.15"', '(at -4.765 -1.27)', '(size 1.52 1.78)', 'https://www.vishay.com/docs/83432/vo618a.pdf'):
         if token not in current:
             failures.append(f"current board missing {token}")
     for token in ('rev "PCB-P0.5 / Electrical V3-P1.1"', '(at -4.4 -1.27)', '(size 2 1.6)', '(property "Datasheet" ""'):

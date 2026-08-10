@@ -1,4 +1,4 @@
-"""Generate a source-bound PCB-P0.9 CAM review package.
+"""Generate a source-bound watchdog PCB CAM review package.
 
 The package is review evidence only. It never authorizes supplier contact,
 upload, quotation, fabrication, assembly, connection, motion, energization,
@@ -29,13 +29,13 @@ if PROFILE not in {"p0.1", "p0.2"}:
 CURRENT_P115 = PROFILE == "p0.2"
 OUT = ROOT / "release" / "hr-v0" / f"watchdog-pcb-cam-{PROFILE}"
 IDENTIFIER = f"HR-V0-WD-CAM-{PROFILE.upper()}"
-ROUND = "R166" if CURRENT_P115 else "R150"
+ROUND = "R195" if CURRENT_P115 else "R150"
 BOARD_BINDING = (
-    "PCB-P0.9 / Electrical V3-P1.15-CARRIER-CANDIDATE via HR-V0-E2-P115-PARITY-P0.1"
+    "PCB-P1.0 / Electrical V3-P1.15-CARRIER-CANDIDATE (DIRECT NATIVE BINDING)"
     if CURRENT_P115
     else "PCB-P0.9 / Electrical V3-P1.14"
 )
-TITLE_TOKEN = "P1.15-bound PCB-P0.9 CAM exists for review" if CURRENT_P115 else "Current PCB-P0.9 CAM exists for review"
+TITLE_TOKEN = "Direct-bound P1.15 PCB-P1.0 CAM exists for review" if CURRENT_P115 else "Current PCB-P0.9 CAM exists for review"
 WARNING = (
     "PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, FABRICATION, "
     "ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
@@ -351,9 +351,6 @@ def main() -> None:
                 P115_SOURCE / "project-button-v3-p1.15-carrier-candidate.kicad_pro",
                 P115_SOURCE / "project-button-v3-p1.15-carrier-candidate.kicad_sch",
                 P115_SOURCE / "SOURCE-MANIFEST.csv",
-                P115_PARITY / "package-status.json",
-                P115_PARITY / "expected-change-register.csv",
-                P115_PARITY / "source-hash-register.csv",
             ]
         )
         for path in source_paths:
@@ -363,11 +360,12 @@ def main() -> None:
     status = {
         "identifier": IDENTIFIER,
         "round": ROUND,
-        "date": "2026-08-09",
+        "date": "2026-08-10" if CURRENT_P115 else "2026-08-09",
         "board": BOARD_BINDING,
-        "native_board_title_revision": "PCB-P0.9 / Electrical V3-P1.14",
+        "native_board_title_revision": "PCB-P1.0 / Electrical V3-P1.15" if CURRENT_P115 else "PCB-P0.9 / Electrical V3-P1.14",
         "current_electrical_baseline": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE" if CURRENT_P115 else "Project Button Electrical V3-P1.14",
-        "p115_parity_evidence": "HR-V0-E2-P115-PARITY-P0.1" if CURRENT_P115 else None,
+        "p115_parity_evidence": None,
+        "direct_p115_binding": CURRENT_P115,
         "assembly_data": "HR-V0-WD-PCBA-DATA-P0.2",
         "native_tool": "KiCad 10.0.5",
         "source_hashes": source_hashes,
@@ -399,7 +397,7 @@ def main() -> None:
     write_text_lf(OUT / "package-status.json", json.dumps(status, indent=2) + "\n")
 
     parity_text = (
-        " The package also hash-binds the complete P1.15 native source manifest and the R165 P1.14-to-P1.15 parity evidence."
+        " The package directly binds the PCB-P1.0 native title to Electrical V3-P1.15 and hash-binds the complete P1.15 native source manifest."
         if CURRENT_P115
         else ""
     )
@@ -418,6 +416,9 @@ def main() -> None:
     ]
     card_html = "".join(f"<article><b>{value}</b><span>{html.escape(label)}</span></article>" for value, label in cards)
     page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{IDENTIFIER}</title><style>:root{{--sky:#b9e8ff;--navy:#082f58;--blue:#12669f;--gold:#f2b928;--paper:#f7fcff;--hold:#fff0b8}}*{{box-sizing:border-box}}html,body{{max-width:100%;overflow-x:hidden}}body{{margin:0;color:var(--navy);font:clamp(16px,1.1vw,19px)/1.5 Arial,sans-serif;background:white;overflow-wrap:anywhere}}header{{padding:clamp(1.5rem,5vw,4rem);background:linear-gradient(135deg,var(--sky),#effaff);border-bottom:7px solid var(--gold)}}h1{{font-size:clamp(2.3rem,5.5vw,4.8rem);line-height:1.03;max-width:17ch;margin:.25rem 0 1rem}}h2{{font-size:clamp(1.6rem,3vw,2.7rem)}}main{{max-width:1380px;margin:auto;padding:2rem clamp(1rem,4vw,3.5rem)}}.warning{{max-width:100%;background:var(--hold);border:3px solid #ad7500;border-radius:.8rem;padding:1rem;font-weight:800}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1rem;margin:2rem 0}}article{{min-width:0;border:3px solid var(--blue);border-radius:1rem;padding:1.1rem;background:var(--paper)}}article b{{display:block;font-size:clamp(2rem,4vw,3.5rem)}}article span{{display:block}}.boundary{{border-left:7px solid var(--gold);padding-left:1rem;margin:2rem 0}}.table-wrap{{max-width:100%;overflow:auto;border:2px solid #93b8ce;border-radius:.7rem}}table{{border-collapse:collapse;width:100%;min-width:980px}}th,td{{padding:.8rem;text-align:left;vertical-align:top;border-bottom:1px solid #bdd0dc}}th{{background:var(--navy);color:white}}code{{font-size:14px;overflow-wrap:anywhere}}li{{margin:.8rem 0}}li span{{font-size:14px}}a{{color:#075d98}}@media(max-width:480px){{header{{padding:1.5rem 1.25rem}}main{{padding:1.5rem 1.25rem 3rem}}h1{{font-size:clamp(2rem,10vw,2.6rem)}}.warning{{font-size:16px}}}}</style></head><body><header><div>{IDENTIFIER} · {ROUND} · 2026-08-09</div><h1>{TITLE_TOKEN}.</h1><div class="warning">{WARNING}. The files are quarantined internal evidence, not a supplier packet.</div></header><main><p>KiCad 10.0.5 generated a fresh, source-bound CAM review set from PCB-P0.9.{parity_text} This removes the active-baseline output mismatch; it does not release the outputs.</p><section class="grid">{card_html}</section><div class="boundary"><h2>Exact internal parity, not machine XYRS</h2><p>All 42 populated references reconcile exactly between the raw KiCad position export and the P0.2 internal placement register after one derived coordinate transform. Supplier origin, axes, side, centroid, feeder and rotation conventions remain unresolved. Machine import is prohibited.</p></div><h2>Controlled package</h2><div class="table-wrap"><table><thead><tr><th>Artifact</th><th>State</th><th>Use</th></tr></thead><tbody><tr><td><code>cam/gerbers/</code></td><td>{len(gerber_paths)} files</td><td>INTERNAL LAYER PREVIEW ONLY</td></tr><tr><td><code>cam/drill/</code></td><td>{len(drill_paths)} files</td><td>INTERNAL DRILL PREVIEW ONLY</td></tr><tr><td><code>cam/project-button-v3-all-pos.csv</code></td><td>42 references</td><td>NOT MACHINE XYRS</td></tr><tr><td><code>cam/project-button-v3.d356</code></td><td>generated</td><td>INTERNAL NET REVIEW ONLY</td></tr><tr><td><code>manufacturing-input-register.csv</code></td><td>18 inputs</td><td>OPEN SELECTIONS RETAINED</td></tr></tbody></table></div><div class="boundary"><h2>Eighteen holds remain open</h2><ol>{hold_items}</ol></div><p><a href="cam-output-register.csv">CAM output register</a> · <a href="cam-assembly-parity.csv">42-reference parity</a> · <a href="manufacturing-input-register.csv">manufacturing inputs</a></p></main></body></html>'''
+    if CURRENT_P115:
+        page = page.replace("2026-08-09", "2026-08-10")
+        page = page.replace("from PCB-P0.9.", "from PCB-P1.0.")
     write_text_lf(OUT / "index.html", page)
 
     manifest_rows = []

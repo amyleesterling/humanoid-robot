@@ -1,4 +1,4 @@
-"""Generate current PCB-P0.9 assembly-data and native-identity evidence.
+"""Generate current PCB-P1.0 assembly-data and native-identity evidence.
 
 Run with KiCad 10's bundled Python. This package is internal review data, not
 assembler-normalized XYRS, CAM, a manufacturing release, or energization authority.
@@ -71,8 +71,8 @@ def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     WEB.mkdir(parents=True, exist_ok=True)
     board = pcbnew.LoadBoard(str(BOARD))
-    if board.GetTitleBlock().GetRevision() != "PCB-P0.9 / Electrical V3-P1.14":
-        raise RuntimeError("current board is not PCB-P0.9 / Electrical V3-P1.14")
+    if board.GetTitleBlock().GetRevision() != "PCB-P1.0 / Electrical V3-P1.15":
+        raise RuntimeError("current board is not PCB-P1.0 / Electrical V3-P1.15")
 
     baseline = json.loads((R138 / "pcb-p0.8-geometry-topology-current.json").read_text(encoding="utf-8"))
     current_snapshot = snapshot(board)
@@ -81,17 +81,17 @@ def main() -> int:
     parity = {
         "identifier": IDENTIFIER,
         "baseline_configuration": "PCB-P0.8 / Electrical V3-P1.14",
-        "current_configuration": "PCB-P0.9 / Electrical V3-P1.14",
+        "current_configuration": "PCB-P1.0 / Electrical V3-P1.15",
         "baseline_snapshot_sha256": baseline["snapshot_sha256"],
         "current_snapshot_sha256": current_digest,
         "geometry_topology_equal": geometry_equal,
-        "change_scope": "hidden native assembly identity/process-state fields and title-block revision only",
+        "change_scope": "direct Electrical V3-P1.15 title binding only; P0.9 geometry, topology, placement, and native assembly fields unchanged",
         "copper_changed": False,
         "placement_changed": False,
         "nets_changed": False,
         "warning": WARNING,
     }
-    (OUT / "p0.8-p0.9-geometry-topology-parity.json").write_text(json.dumps(parity, indent=2) + "\n", encoding="utf-8")
+    (OUT / "p0.8-p1.0-geometry-topology-parity.json").write_text(json.dumps(parity, indent=2) + "\n", encoding="utf-8")
 
     edge_points = []
     for drawing in board.GetDrawings():
@@ -125,7 +125,7 @@ def main() -> int:
             mechanical.append(row)
             old = old_mechanical[ref]
             match = all(row[key] == old[key] for key in ("reference", "feature", "board_x_mm", "board_y_mm", "hardware_state"))
-            assembly_parity.append({"reference":ref,"kind":"MECHANICAL_NPTH","p0.7_identity":old["feature"],"p0.9_identity":row["feature"],"position_match":str(match).upper(),"rotation_match":"N/A","identity_match":str(match).upper(),"overall_match":str(match).upper(),"warning":WARNING})
+            assembly_parity.append({"reference":ref,"kind":"MECHANICAL_NPTH","p0.7_identity":old["feature"],"p1.0_identity":row["feature"],"position_match":str(match).upper(),"rotation_match":"N/A","identity_match":str(match).upper(),"overall_match":str(match).upper(),"warning":WARNING})
             continue
         if ref not in ASSEMBLY_IDENTITIES:
             raise RuntimeError(f"missing identity for {ref}")
@@ -148,7 +148,7 @@ def main() -> int:
         identity_match = all(row[key] == old[key] for key in ("manufacturer", "manufacturer_part_number", "description", "footprint", "process_class", "side", "orientation_control"))
         position_match = all(row[key] == old[key] for key in ("board_x_mm", "board_y_mm"))
         rotation_match = row["source_rotation_deg"] == old["source_rotation_deg"]
-        assembly_parity.append({"reference":ref,"kind":"POPULATED","p0.7_identity":old["manufacturer"]+" "+old["manufacturer_part_number"],"p0.9_identity":manufacturer+" "+mpn,"position_match":str(position_match).upper(),"rotation_match":str(rotation_match).upper(),"identity_match":str(identity_match).upper(),"overall_match":str(identity_match and position_match and rotation_match).upper(),"warning":WARNING})
+        assembly_parity.append({"reference":ref,"kind":"POPULATED","p0.7_identity":old["manufacturer"]+" "+old["manufacturer_part_number"],"p1.0_identity":manufacturer+" "+mpn,"position_match":str(position_match).upper(),"rotation_match":str(rotation_match).upper(),"identity_match":str(identity_match).upper(),"overall_match":str(identity_match and position_match and rotation_match).upper(),"warning":WARNING})
         expected_fields = {
             "Manufacturer": manufacturer, "ManufacturerPartNumber": mpn, "AssemblyDescription": description,
             "ProcessClass": process, "AlternatePolicy": "NO ALTERNATES WITHOUT WRITTEN PROJECT DISPOSITION",
@@ -162,7 +162,7 @@ def main() -> int:
         raise RuntimeError("board membership/native identity count mismatch")
     write_csv(OUT / "assembly-placement-reference.csv", populated)
     write_csv(OUT / "mechanical-feature-register.csv", mechanical)
-    write_csv(OUT / "assembly-parity-p0.7-to-p0.9.csv", assembly_parity)
+    write_csv(OUT / "assembly-parity-p0.7-to-p1.0.csv", assembly_parity)
     write_csv(OUT / "native-identity-field-register.csv", identity_rows)
 
     grouped = defaultdict(list)
@@ -173,25 +173,29 @@ def main() -> int:
         bom.append({"line_id":f"WD-BOM-{index:03d}","manufacturer":manufacturer,"manufacturer_part_number":mpn,"description":description,"quantity_per_board":str(len(refs)),"references":";".join(sorted(refs)),"process_class":process,"alternate_policy":"NO ALTERNATES WITHOUT WRITTEN PROJECT DISPOSITION","sourcing_state":"EXACT MPN CANDIDATE - PROVIDER/LOT/DATE-CODE/ATTRITION RELEASE OPEN","warning":WARNING})
     write_csv(OUT / "board-assembly-bom.csv", bom)
 
-    replacements = {"PCB-P0.7":"PCB-P0.9", "HR-V0-WD-PCBA-DATA-P0.1":"HR-V0-WD-PCBA-DATA-P0.2"}
+    replacements = {"PCB-P0.7":"PCB-P1.0", "HR-V0-WD-PCBA-DATA-P0.1":"HR-V0-WD-PCBA-DATA-P0.2"}
     for name in ("coordinate-orientation-control.csv", "assembly-note-register.csv", "assembly-data-holds.csv"):
         write_csv(OUT / name, transform_rows(name, replacements))
     file_states = transform_rows("assembly-data-file-state.csv", replacements)
+    for row in file_states:
+        if row["file_id"] == "WD-FILE-006":
+            row["definition"] = "HR-V0-WD-CAM-P0.2 quarantined internal review outputs"
+            row["state"] = "INTERNAL REVIEW EXISTS - NOT SUPPLIER RELEASED"
     write_csv(OUT / "assembly-data-file-state.csv", file_states)
     sources = transform_rows("source-register.csv", replacements)
-    sources[0]["record"] = "PCB-P0.9 native board with 42 native identity records"
-    sources[0]["revision_date"] = "KiCad 10.0.5; R139; checked 2026-08-09"
+    sources[0]["record"] = "PCB-P1.0 native board with 42 native identity records; direct Electrical V3-P1.15 binding"
+    sources[0]["revision_date"] = "KiCad 10.0.5; R195; checked 2026-08-10"
     sources.append({"source_id":"WD-DATA-SRC-011","organization":"Project Button","record":"R138 P0.8 structural snapshot and four-critical-IC metadata package","revision_date":"R138; 2026-08-09","locator":"electrical/manufacturing/hr-v0-watchdog-footprint-metadata-p0.1/","use":"immutable P0.8 geometry/topology baseline and critical field provenance","warning":WARNING})
     write_csv(OUT / "source-register.csv", sources)
 
     status = {
-        "identifier": IDENTIFIER, "round":"R139", "board":"PCB-P0.9 / Electrical V3-P1.14",
+        "identifier": IDENTIFIER, "round":"R195-CORRECTED", "board":"PCB-P1.0 / Electrical V3-P1.15",
         "board_sha256": hashlib.sha256(BOARD.read_bytes()).hexdigest(),
         "populated_references":42, "mechanical_features":4, "bom_lines":len(bom), "native_identity_fields":len(identity_rows),
         "smd":38, "tht":4, "all_top_side":True,
         "p0.7_assembly_parity": all(row["overall_match"] == "TRUE" for row in assembly_parity),
         "p0.8_geometry_topology_parity": geometry_equal,
-        "internal_review_only":True, "supplier_normalized_xyrs_exists":False, "cam_exists":False,
+        "internal_review_only":True, "supplier_normalized_xyrs_exists":False, "cam_exists":True, "cam_released":False,
         "provider_selected":False, "provider_contacted":False, "files_uploaded":False,
         "fabrication_authorized":False, "assembly_authorized":False, "physical_article_exists":False,
         "energization_authorized":False, "safety_credit":False, "warning":WARNING,
@@ -199,10 +203,19 @@ def main() -> int:
     (OUT / "package-status.json").write_text(json.dumps(status, indent=2)+"\n", encoding="utf-8")
 
     data_json = json.dumps([{key:row[key] for key in ("reference","manufacturer","manufacturer_part_number","process_class","board_x_mm","board_y_mm","source_rotation_deg")} for row in populated])
-    page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PCB-P0.9 assembly identity</title><style>
+    page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PCB-P1.0 assembly identity</title><style>
 :root{{--sky:#8ed5ff;--blue:#07579f;--dark:#082f5b;--gold:#f4bd28;--paper:#f4f9ff;--ink:#10253d}}*{{box-sizing:border-box}}body{{margin:0;font:16px/1.55 system-ui,sans-serif;color:var(--ink);background:var(--paper)}}.warning{{padding:14px 5vw;background:var(--gold);color:#071c36;font-weight:850}}header,main,footer{{padding:28px 5vw}}header{{background:var(--sky)}}h1{{font-size:clamp(32px,5vw,58px);line-height:1.08;max-width:950px;color:var(--dark)}}h2{{font-size:clamp(25px,3vw,38px);color:var(--blue)}}.metrics{{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}}.metric,.panel{{background:#fff;border:2px solid var(--blue);border-radius:14px;padding:18px}}.metric strong{{display:block;font-size:32px}}.controls{{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}}button,input{{font:inherit;min-font-size:16px;padding:10px 14px;border:2px solid var(--blue);border-radius:9px;background:white}}button[aria-pressed="true"]{{background:var(--gold)}}.table-wrap{{overflow:auto;border:2px solid var(--blue);border-radius:12px}}table{{border-collapse:collapse;width:100%;min-width:850px}}th,td{{padding:11px;text-align:left;border-bottom:1px solid #b8d3e7;vertical-align:top}}th{{background:var(--dark);color:white}}a{{color:var(--blue);font-weight:700}}footer{{background:var(--dark);color:white;margin-top:28px}}@media(max-width:600px){{header,main,footer{{padding:20px}}}}
 </style></head><body><div class="warning">{WARNING}</div><header><p>{IDENTIFIER} · R139 · PCB-P0.9</p><h1>Every populated footprint now carries its exact assembly identity.</h1><p>Forty-two manufacturer/MPN records travel with the native board. Geometry, copper, nets, placement and rotation are unchanged. This is still internal review data—not machine XYRS or a manufacturing release.</p></header><main><section><div class="metrics"><div class="metric"><strong>42/42</strong>native identity matches</div><div class="metric"><strong>294</strong>hidden base fields</div><div class="metric"><strong>16</strong>exact-MPN BOM lines</div><div class="metric"><strong>0</strong>released CAM files</div></div></section><section><h2>Search the assembly</h2><div class="controls"><button data-filter="all" aria-pressed="true">All</button><button data-filter="SMD_REFLOW" aria-pressed="false">SMD</button><button data-filter="MANUAL_THT_POST_REFLOW" aria-pressed="false">THT</button><input id="search" aria-label="Find a reference or part" placeholder="Find TP1 or ISO1212DBQ"></div><div class="table-wrap"><table><thead><tr><th>Reference</th><th>Exact identity</th><th>Process class</th><th>X / Y mm</th><th>Native rotation</th></tr></thead><tbody id="rows"></tbody></table></div></section><section><h2>Evidence</h2><p><a href="../../../electrical/manufacturing/hr-v0-watchdog-pcba-assembly-data-p0.2/board-assembly-bom.csv">Board BOM</a> · <a href="../../../electrical/manufacturing/hr-v0-watchdog-pcba-assembly-data-p0.2/assembly-placement-reference.csv">Placement register</a> · <a href="../../../electrical/manufacturing/hr-v0-watchdog-pcba-assembly-data-p0.2/native-identity-field-register.csv">Native fields</a> · <a href="../../../electrical/manufacturing/hr-v0-watchdog-pcba-assembly-data-p0.2/assembly-parity-p0.7-to-p0.9.csv">P0.7/P0.9 assembly parity</a> · <a href="../../../electrical/manufacturing/hr-v0-watchdog-pcba-assembly-data-p0.2/p0.8-p0.9-geometry-topology-parity.json">P0.8/P0.9 structural parity</a> · <a href="../../../electrical/manufacturing/hr-v0-watchdog-pcba-assembly-data-p0.2/package-status.json">Status</a></p></section></main><footer>{WARNING}. Supplier transform, process acceptance, CAM, fabrication, assembly, connection and energization remain unauthorized.</footer><script>const data={data_json};let filter='all';const body=document.querySelector('#rows'),search=document.querySelector('#search');function esc(v){{return String(v).replace(/[&<>"']/g,c=>({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[c]))}}function draw(){{const q=search.value.trim().toLowerCase();body.innerHTML=data.filter(r=>(filter==='all'||r.process_class===filter)&&(!q||(r.reference+' '+r.manufacturer_part_number).toLowerCase().includes(q))).map(r=>`<tr><td><strong>${{esc(r.reference)}}</strong></td><td>${{esc(r.manufacturer)}}<br>${{esc(r.manufacturer_part_number)}}</td><td>${{esc(r.process_class)}}</td><td>${{esc(r.board_x_mm)}} / ${{esc(r.board_y_mm)}}</td><td>${{esc(r.source_rotation_deg)}}°</td></tr>`).join('')}}document.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{{filter=b.dataset.filter;document.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));draw()}}));search.addEventListener('input',draw);draw();</script></body></html>'''
     page = page.replace("min-font-size:16px", "font-size:16px")
+    page = page.replace("R139 · PCB-P0.9", "R195 · PCB-P1.0")
+    page = page.replace(
+        "Forty-two manufacturer/MPN records travel with the native board.",
+        "Forty-two manufacturer/MPN records travel with the native board, now directly bound to Electrical V3-P1.15.",
+    )
+    page = page.replace("assembly-parity-p0.7-to-p0.9.csv", "assembly-parity-p0.7-to-p1.0.csv")
+    page = page.replace("P0.7/P0.9 assembly parity", "P0.7/P1.0 assembly parity")
+    page = page.replace("p0.8-p0.9-geometry-topology-parity.json", "p0.8-p1.0-geometry-topology-parity.json")
+    page = page.replace("P0.8/P0.9 structural parity", "P0.8/P1.0 structural parity")
     page = page.replace(
         "<main><section>",
         '<main><p class="panel"><strong>Assembly process: SELECTION REQUIRED.</strong> '
@@ -211,7 +224,7 @@ def main() -> int:
     )
     (WEB / "index.html").write_text(page, encoding="utf-8")
     print(f"{IDENTIFIER}: 42 identities / 294 fields / {len(bom)} BOM lines")
-    print(f"P0.7 assembly parity={status['p0.7_assembly_parity']}; P0.8 structural parity={geometry_equal}")
+    print(f"P0.7/P1.0 assembly parity={status['p0.7_assembly_parity']}; P0.8/P1.0 structural parity={geometry_equal}")
     print(WARNING)
     return 0 if geometry_equal and status["p0.7_assembly_parity"] else 1
 

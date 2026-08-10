@@ -5,13 +5,13 @@
       "Application": "Pcbnew",
       "Version": "10.0.5"
     },
-    "CreationDate": "2026-08-09T20:04:38-04:00"
+    "CreationDate": "2026-08-10T12:04:03-04:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
       "Name": "project-button-v3",
       "GUID": "70726f6a-6563-4742-9d62-7574746f6e2d",
-      "Revision": "PCB-P0.9 / Electrical V3-P1.14"
+      "Revision": "PCB-P1.0 / Electrical V3-P1.15"
     },
     "Size": {
       "X": 160.25,

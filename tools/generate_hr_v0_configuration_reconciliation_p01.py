@@ -41,7 +41,7 @@ def rows() -> dict[str, list[dict[str, object]]]:
         ("CFG-07", "system BOM", "HR-V0-BOM-P0.1", "bom/bom.csv", "CURRENT CLOSURE REGISTER", "91 groups; not a procurement release"),
         ("CFG-08", "release metadata", "HR-V0-RC-P0.1", "release/hr-v0/release-candidate.json", "CURRENT CANDIDATE", "exact accepted commit and qualified signatures absent"),
         ("CFG-09", "actuator star manufacturing review", "HR-V0-DXL-STAR-MFG-P0.2", "release/hr-v0/dxl-star-manufacturing-p0.2/package-status.json", "CURRENT REVIEW EVIDENCE", "quarantined internal CAM only; supplier/process/physical release remains absent"),
-        ("CFG-10", "P1.15 watchdog/E2 parity", "HR-V0-E2-P115-PARITY-P0.1", "release/hr-v0/e2-p115-parity-p0.1/package-status.json", "CURRENT DIGITAL PARITY EVIDENCE", "69 unchanged refs and 263 terminals at exact parity; independent acceptance and all physical evidence remain absent"),
+        ("CFG-10", "watchdog P1.15 native identity", "HR-V0-WD-P115-ID-P0.1", "docs/hr-v0-watchdog-p115-identity-correction-p0.1.md", "CURRENT DIRECT-BINDING EVIDENCE", "PCB-P1.0 directly names Electrical V3-P1.15; independent acceptance and all physical evidence remain absent"),
         ("CFG-11", "control-only hardware slice", "HR-V0-E2-HW-P0.4", "release/hr-v0/e2-hardware-p0.4/e2-hardware-summary.json", "CURRENT FAIL-CLOSED CANDIDATE", "P1.15-bound; actuator source/branches absent or unwired; run not authorized"),
         ("CFG-12", "watchdog CAM review", "HR-V0-WD-CAM-P0.2", "release/hr-v0/watchdog-pcb-cam-p0.2/package-status.json", "CURRENT P1.15-BOUND REVIEW EVIDENCE", "quarantined CAM only; supplier-normalized XYRS, provider/process acceptance, first article and all work authority remain absent"),
     ]
@@ -51,9 +51,9 @@ def rows() -> dict[str, list[dict[str, object]]]:
         ("SUP-01", "Project Button Electrical V3-P1.14", "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "historical/compatibility source; does not contain the inserted carrier interfaces"),
         ("SUP-02", "DXL-STAR-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "historical topology source; terminal names differ at the limited outputs"),
         ("SUP-03", "HR-V0-DXL-STAR-MFG-P0.1", "SELECTION REQUIRED", "historical P0.1 CAM; prohibited for fabrication of P0.2"),
-        ("SUP-04", "PCB-P0.9 / HR-V0-WD-CAM-P0.1 P1.14 compatibility hold", "HR-V0-E2-P115-PARITY-P0.1", "digital P1.15 parity proved; supplier-normalized data, process acceptance and physical evidence remain open"),
+        ("SUP-04", "PCB-P0.9 / HR-V0-E2-P115-PARITY-P0.1 compatibility route", "PCB-P1.0 / HR-V0-WD-P115-ID-P0.1", "historical parity evidence retained; current board directly names P1.15; supplier-normalized data, process acceptance and physical evidence remain open"),
         ("SUP-05", "HR-V0-E2-HW-P0.3", "HR-V0-E2-HW-P0.4", "P1.14-bound slice superseded by a P1.15-bound fail-closed slice; no run authorization"),
-        ("SUP-06", "HR-V0-WD-CAM-P0.1", "HR-V0-WD-CAM-P0.2", "historical P1.14-bound internal CAM review; P0.2 is the current P1.15 parity-bound review and remains prohibited for supplier use"),
+        ("SUP-06", "HR-V0-WD-CAM-P0.1", "HR-V0-WD-CAM-P0.2", "historical P1.14-bound internal CAM review; P0.2 is the current direct P1.15-bound review and remains prohibited for supplier use"),
     ]
     superseded_rows = [warned({"record_id": a, "prior_identifier": b, "current_or_required_successor": c, "disposition": d, "use_authorized": "NO"}) for a,b,c,d in superseded]
 
@@ -79,7 +79,7 @@ def rows() -> dict[str, list[dict[str, object]]]:
 
     holds = [
         ("HOLD-01", "P0.2 CAM supplier/process acceptance, normalized XYRS, DFM and first article", "OPEN"),
-        ("HOLD-02", "Watchdog PCB-P0.9 supplier-normalized manufacturing package, provider/process acceptance and first article", "SELECTION REQUIRED"),
+        ("HOLD-02", "Watchdog PCB-P1.0 supplier-normalized manufacturing package, provider/process acceptance and first article", "SELECTION REQUIRED"),
         ("HOLD-03", "E2 received physical configuration, continuity/isolation/no-backfeed evidence and four-role authorization", "NOT EXECUTED"),
         ("HOLD-04", "Limiter-carrier provider, process, stackup acceptance and first article", "SELECTION REQUIRED"),
         ("HOLD-05", "Carrier input-harness source-side terminals and exact cut lengths", "SELECTION REQUIRED"),
@@ -135,10 +135,10 @@ def main() -> None:
         directory.mkdir(parents=True, exist_ok=True)
         for name, values in data.items():
             write_csv(directory / name, values)
-        readme = f"# HR-V0 configuration reconciliation P0.1\n\n> **{WARNING}**\n\nR163-R166 bind the carrier-integrated P1.15 candidate, watchdog manufacturing package P0.2, P1.15-bound watchdog CAM review P0.2, and the P1.15-bound E2 hardware slice P0.4 into one fail-closed configuration. The P1.14 source and P0.1 CAM remain controlled historical evidence. Physical evidence and qualified acceptance remain open.\n"
+        readme = f"# HR-V0 configuration reconciliation P0.1\n\n> **{WARNING}**\n\nR195 synchronizes the carrier-integrated P1.15 candidate, direct-bound watchdog PCB-P1.0, watchdog manufacturing package P0.2, CAM review P0.2 and E2 hardware slice P0.4 into one fail-closed configuration. The P1.14 source, R165 parity record and P0.1 CAM remain controlled historical evidence. Physical evidence and qualified acceptance remain open.\n"
         (directory / "README.md").write_text(readme, encoding="utf-8")
         status = {
-            "identifier": "HR-V0-CONFIG-REC-P0.1", "round": "R163+R164+R165+R166-SYNCHRONIZED", "date": "2026-08-09",
+            "identifier": "HR-V0-CONFIG-REC-P0.1", "round": "R195-SYNCHRONIZED", "date": "2026-08-10",
             "current_electrical_identifier": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE",
             "system_bom_groups": 91, "current_records": 12, "supersession_records": 6,
             "bom_integration_records": 7, "gate_records": 5, "open_holds": 10, "acceptance_rows": 8,

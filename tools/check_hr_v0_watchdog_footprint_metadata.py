@@ -21,8 +21,8 @@ def main() -> int:
     failures = []
     board = pcbnew.LoadBoard(str(BOARD))
     fps = {fp.GetReference(): fp for fp in board.GetFootprints()}
-    if board.GetTitleBlock().GetRevision() != "PCB-P0.9 / Electrical V3-P1.14":
-        failures.append("native board is not the metadata-only PCB-P0.9 successor")
+    if board.GetTitleBlock().GetRevision() != "PCB-P1.0 / Electrical V3-P1.15":
+        failures.append("native board is not the direct-bound PCB-P1.0 successor")
     for ref, expected in FOOTPRINT_METADATA.items():
         if ref not in fps:
             failures.append(f"missing footprint {ref}")
@@ -62,7 +62,7 @@ def main() -> int:
         return 1
     print("HR-V0-WD-IC-META-P0.1 PASS")
     print("  4 critical references; 36 exact hidden native fields")
-    print("  historical P0.7/P0.8 fingerprint remains controlled; four critical field sets persist in P0.9")
+    print("  historical P0.7/P0.8 fingerprint remains controlled; four critical field sets persist in P1.0")
     print("  assembly process, fabrication, energization and safety credit remain false")
     return 0
 

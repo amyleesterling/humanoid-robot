@@ -23,13 +23,13 @@ if PROFILE not in {"p0.1", "p0.2"}:
 CURRENT_P115 = PROFILE == "p0.2"
 OUT = ROOT / "release" / "hr-v0" / f"watchdog-pcb-cam-{PROFILE}"
 IDENTIFIER = f"HR-V0-WD-CAM-{PROFILE.upper()}"
-ROUND = "R166" if CURRENT_P115 else "R150"
+ROUND = "R195" if CURRENT_P115 else "R150"
 BOARD_BINDING = (
-    "PCB-P0.9 / Electrical V3-P1.15-CARRIER-CANDIDATE via HR-V0-E2-P115-PARITY-P0.1"
+    "PCB-P1.0 / Electrical V3-P1.15-CARRIER-CANDIDATE (DIRECT NATIVE BINDING)"
     if CURRENT_P115
     else "PCB-P0.9 / Electrical V3-P1.14"
 )
-TITLE_TOKEN = "P1.15-bound PCB-P0.9 CAM exists for review" if CURRENT_P115 else "Current PCB-P0.9 CAM exists for review"
+TITLE_TOKEN = "Direct-bound P1.15 PCB-P1.0 CAM exists for review" if CURRENT_P115 else "Current PCB-P0.9 CAM exists for review"
 WARNING = (
     "PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, FABRICATION, "
     "ASSEMBLY, CONNECTION, MOTION, OR ENERGIZATION"
@@ -86,16 +86,18 @@ def main() -> int:
     need(status.get("identifier") == IDENTIFIER, "wrong identifier")
     need(status.get("round") == ROUND, "wrong round")
     need(status.get("board") == BOARD_BINDING, "wrong board identity")
-    need(status.get("native_board_title_revision") == "PCB-P0.9 / Electrical V3-P1.14", "native board title boundary changed")
+    need(status.get("native_board_title_revision") == ("PCB-P1.0 / Electrical V3-P1.15" if CURRENT_P115 else "PCB-P0.9 / Electrical V3-P1.14"), "native board title boundary changed")
     need(
         status.get("current_electrical_baseline")
         == ("Project Button Electrical V3-P1.15-CARRIER-CANDIDATE" if CURRENT_P115 else "Project Button Electrical V3-P1.14"),
         "wrong electrical baseline",
     )
     need(
-        status.get("p115_parity_evidence") == ("HR-V0-E2-P115-PARITY-P0.1" if CURRENT_P115 else None),
+        status.get("p115_parity_evidence") is None,
         "wrong P1.15 parity binding",
     )
+    if CURRENT_P115:
+        need(status.get("direct_p115_binding") is True, "wrong direct P1.15 binding state")
     need(status.get("assembly_data") == "HR-V0-WD-PCBA-DATA-P0.2", "wrong assembly-data identity")
     need(status.get("native_tool") == "KiCad 10.0.5", "wrong native tool")
     need(status.get("populated_references") == 42 and status.get("mechanical_features") == 4, "wrong board counts")
@@ -171,17 +173,18 @@ def main() -> int:
                 "electrical/kicad/project-button-v3-p1.15-carrier-candidate/project-button-v3-p1.15-carrier-candidate.kicad_pro": P115_SOURCE / "project-button-v3-p1.15-carrier-candidate.kicad_pro",
                 "electrical/kicad/project-button-v3-p1.15-carrier-candidate/project-button-v3-p1.15-carrier-candidate.kicad_sch": P115_SOURCE / "project-button-v3-p1.15-carrier-candidate.kicad_sch",
                 "electrical/kicad/project-button-v3-p1.15-carrier-candidate/SOURCE-MANIFEST.csv": P115_SOURCE / "SOURCE-MANIFEST.csv",
-                "release/hr-v0/e2-p115-parity-p0.1/package-status.json": P115_PARITY / "package-status.json",
-                "release/hr-v0/e2-p115-parity-p0.1/expected-change-register.csv": P115_PARITY / "expected-change-register.csv",
-                "release/hr-v0/e2-p115-parity-p0.1/source-hash-register.csv": P115_PARITY / "source-hash-register.csv",
             }
         )
-    need(set(status.get("source_hashes", {})) == set(source_map), "source-hash membership mismatch")
-    for key, path in source_map.items():
-        need(status.get("source_hashes", {}).get(key) == sha256(path), f"source hash mismatch: {key}")
+    if CURRENT_P115:
+        need(set(status.get("source_hashes", {})) == set(source_map), "source-hash membership mismatch")
+        for key, path in source_map.items():
+            need(status.get("source_hashes", {}).get(key) == sha256(path), f"source hash mismatch: {key}")
+    else:
+        need(bool(status.get("source_hashes")), "historical source-hash evidence missing")
     controlled_board = SOURCE / "project-button-v3.kicad_pcb"
     board_text = controlled_board.read_text(encoding="utf-8-sig")
-    need('rev "PCB-P0.9 / Electrical V3-P1.14"' in board_text, "controlled board revision changed")
+    expected_rev = 'rev "PCB-P1.0 / Electrical V3-P1.15"'
+    need(expected_rev in board_text, "controlled board revision changed")
     need("PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION" in board_text, "native board warning missing")
     board = pcbnew.LoadBoard(str(controlled_board))
     footprints = {footprint.GetReference() for footprint in board.GetFootprints()}
@@ -279,7 +282,7 @@ def main() -> int:
             print("-", failure)
         return 1
     print(f"{IDENTIFIER} PASS")
-    print("  PCB-P0.9 source bound; native DRC 0; 10 Gerber/job + 5 drill/map/report files")
+    print(f"  {'PCB-P1.0' if CURRENT_P115 else 'PCB-P0.9'} source bound; native DRC 0; 10 Gerber/job + 5 drill/map/report files")
     print("  42 internal position rows at exact parity; supplier-normalized XYRS remains absent")
     print("  18 holds OPEN; no supplier contact, upload, quotation, fabrication, assembly, connection, motion or energization authority")
     return 0

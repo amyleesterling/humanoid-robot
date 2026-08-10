@@ -4,13 +4,13 @@ Status: **PRELIMINARY - NOT APPROVED FOR SUPPLIER UPLOAD, QUOTATION, FABRICATION
 
 Identifier: `HR-V0-WD-CAM-P0.2`
 
-## What R166 closes
+## What R195 corrects
 
-P0.2 removes the internal configuration mismatch between the active `Project Button Electrical V3-P1.15-CARRIER-CANDIDATE` baseline and the historical P1.14-bound watchdog CAM review. It hash-binds:
+P0.2 now removes the native configuration exception between the active `Project Button Electrical V3-P1.15-CARRIER-CANDIDATE` baseline and the watchdog CAM review. It hash-binds:
 
-- native watchdog board `PCB-P0.9`, whose title block intentionally retains `Electrical V3-P1.14`;
+- native watchdog board `PCB-P1.0`, whose title block directly identifies `Electrical V3-P1.15`;
 - the complete P1.15 native source manifest;
-- `HR-V0-E2-P115-PARITY-P0.1`, which proves the watchdog/E2 subset is unchanged at 69 references and 263 terminals;
+- the historical `HR-V0-E2-P115-PARITY-P0.1` only as audit history, not as a current dependency;
 - `HR-V0-WD-PCBA-DATA-P0.2`; and
 - fresh KiCad 10.0.5 CAM outputs generated from the controlled board source.
 

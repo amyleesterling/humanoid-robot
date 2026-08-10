@@ -25,7 +25,7 @@ def rows(name: str) -> list[dict[str, str]]:
 def main() -> int:
     failures = []
     board = pcbnew.LoadBoard(str(BOARD))
-    if board.GetTitleBlock().GetRevision() != "PCB-P0.9 / Electrical V3-P1.14":
+    if board.GetTitleBlock().GetRevision() != "PCB-P1.0 / Electrical V3-P1.15":
         failures.append("native board revision mismatch")
     footprints = {fp.GetReference():fp for fp in board.GetFootprints()}
     if set(ASSEMBLY_IDENTITIES) != {ref for ref in footprints if not ref.startswith("MH")}:
@@ -37,12 +37,12 @@ def main() -> int:
         for field in BASE_IDENTITY_FIELDS:
             if not fp.HasField(field) or fp.GetField(field).GetText() != expected[field] or fp.GetField(field).IsVisible():
                 failures.append(f"{ref} native field mismatch: {field}")
-    parity = json.loads((OUT / "p0.8-p0.9-geometry-topology-parity.json").read_text(encoding="utf-8"))
+    parity = json.loads((OUT / "p0.8-p1.0-geometry-topology-parity.json").read_text(encoding="utf-8"))
     if not parity.get("geometry_topology_equal") or parity.get("baseline_snapshot_sha256") != parity.get("current_snapshot_sha256"):
-        failures.append("P0.8/P0.9 structural parity failed")
-    assembly = rows("assembly-parity-p0.7-to-p0.9.csv")
+        failures.append("P0.8/P1.0 structural parity failed")
+    assembly = rows("assembly-parity-p0.7-to-p1.0.csv")
     if len(assembly) != 46 or any(row["overall_match"] != "TRUE" for row in assembly):
-        failures.append("P0.7/P0.9 assembly parity is not 46/46")
+        failures.append("P0.7/P1.0 assembly parity is not 46/46")
     placements, mechanical, bom, identities = rows("assembly-placement-reference.csv"), rows("mechanical-feature-register.csv"), rows("board-assembly-bom.csv"), rows("native-identity-field-register.csv")
     if len(placements) != 42 or len(mechanical) != 4 or len(bom) != 16 or sum(int(row["quantity_per_board"]) for row in bom) != 42:
         failures.append("assembly membership/BOM counts changed")
@@ -56,11 +56,13 @@ def main() -> int:
     if len(holds) != 12 or any(row["status"] != "OPEN" for row in holds):
         failures.append("twelve assembly-data holds must remain open")
     status = json.loads((OUT / "package-status.json").read_text(encoding="utf-8"))
-    if status.get("identifier") != "HR-V0-WD-PCBA-DATA-P0.2" or status.get("board") != "PCB-P0.9 / Electrical V3-P1.14" or status.get("native_identity_fields") != 294:
+    if status.get("identifier") != "HR-V0-WD-PCBA-DATA-P0.2" or status.get("board") != "PCB-P1.0 / Electrical V3-P1.15" or status.get("native_identity_fields") != 294:
         failures.append("package status identity/count mismatch")
     if status.get("p0.7_assembly_parity") is not True or status.get("p0.8_geometry_topology_parity") is not True:
         failures.append("package parity flags are not true")
-    for key in ("supplier_normalized_xyrs_exists","cam_exists","provider_selected","provider_contacted","files_uploaded","fabrication_authorized","assembly_authorized","physical_article_exists","energization_authorized","safety_credit"):
+    if status.get("cam_exists") is not True or status.get("cam_released") is not False:
+        failures.append("current quarantined CAM state is not encoded")
+    for key in ("supplier_normalized_xyrs_exists","provider_selected","provider_contacted","files_uploaded","fabrication_authorized","assembly_authorized","physical_article_exists","energization_authorized","safety_credit"):
         if status.get(key) is not False:
             failures.append(f"{key} must be false")
     page = WEB.read_text(encoding="utf-8")
@@ -74,8 +76,8 @@ def main() -> int:
         return 1
     print("HR-V0-WD-PCBA-DATA-P0.2 PASS")
     print("  42 populated references; 294 exact hidden native fields; 16 BOM lines")
-    print("  P0.7 assembly and P0.8 geometry/topology parity PASS")
-    print("  supplier XYRS, CAM, fabrication, assembly, energization and safety credit remain false")
+    print("  P0.7/P1.0 assembly and P0.8/P1.0 geometry/topology parity PASS")
+    print("  quarantined CAM exists; supplier XYRS/release, fabrication, assembly, energization and safety credit remain false")
     return 0
 
 

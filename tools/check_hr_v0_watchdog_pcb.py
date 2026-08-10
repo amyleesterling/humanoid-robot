@@ -397,7 +397,7 @@ def main() -> int:
                 f"CDRV{channel} is not compact to UDRV{channel} GND", failures)
 
     title = board.GetTitleBlock()
-    require(title.GetRevision() == "PCB-P0.9 / Electrical V3-P1.14", "PCB title-block revision mismatch", failures)
+    require(title.GetRevision() == "PCB-P1.0 / Electrical V3-P1.15", "PCB title-block revision mismatch", failures)
     require(WARNING in board_path.read_text(encoding="utf-8-sig"), "PCB warning missing", failures)
     require("ROUTED/TEST-ACCESS CANDIDATE" in board_path.read_text(encoding="utf-8-sig"),
             "routed/test-access candidate status missing from PCB", failures)
@@ -439,9 +439,9 @@ def main() -> int:
 
     constraint_evidence = {
         "status": WARNING,
-        "board_revision": "PCB-P0.9",
-        "electrical_revision": "Electrical V3-P1.14",
-        "generated_date": "2026-08-09",
+        "board_revision": "PCB-P1.0",
+        "electrical_revision": "Electrical V3-P1.15",
+        "generated_date": "2026-08-10",
         "manufacturer_sources": [
             {
                 "manufacturer": "Texas Instruments",
@@ -553,7 +553,7 @@ def main() -> int:
         },
         "limitations": [
             "Zero native DRC violations proves only the encoded geometric/connectivity rules.",
-            "PCB-P0.9 adds exact hidden assembly identity/process-state fields for all 42 populated references without changing the P0.8 geometry/topology, 0.1524 mm (6 mil) minimum trace/clearance candidate envelope, controlled lands or rectangular Harwin test-point lands; fabricator/assembler acceptance remains required.",
+            "PCB-P1.0 directly binds the unchanged P0.9 geometry/topology and exact hidden assembly identity/process-state fields to Electrical V3-P1.15. The 0.1524 mm (6 mil) minimum trace/clearance candidate envelope, controlled lands and rectangular Harwin test-point lands are unchanged; fabricator/assembler acceptance remains required.",
             "The proposed OSH Park two-layer process is not a released purchase or fabrication selection.",
             "No fabrication, EMC, thermal, COM-slew, physical probe-access or fault evidence is released.",
             "UFB1 field and logic returns share SAFETY_0V; no galvanic-isolation or safety credit is claimed.",
