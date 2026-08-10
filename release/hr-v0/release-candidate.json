@@ -48,8 +48,14 @@
     {
       "domain": "test_instrumentation",
       "identifier": "HR-V0-DYN-INST-P0.1",
-      "supporting_identifiers": ["HR-V0-DYN-CHAR-P0.1", "HR-V0-DYN-TRACE-P0.1", "EG-025", "EG-026"],
+      "supporting_identifiers": ["HR-V0-DYN-CHAR-P0.1", "HR-V0-DYN-TRACE-P0.1", "HR-V0-DYN-EVENT-IF-P0.1", "EG-025", "EG-026"],
       "release_state": "four_exact_evaluation_candidates_complete_physical_chain_ranges_calibration_and_authority_open_no_safety_credit"
+    },
+    {
+      "domain": "test_event_interface",
+      "identifier": "HR-V0-DYN-EVENT-IF-P0.1",
+      "supporting_identifiers": ["TE-009", "DCH-001", "DCH-008", "DCH-009", "DCH-010", "DCH-011", "DCH-014", "DCH-X01", "DCH-X02", "EG-025", "EG-026"],
+      "release_state": "two_exact_iso1212evm_evaluation_candidates_native_connected_ecad_erc_clean_field_connection_prohibited_noninterference_timing_physical_evidence_and_qualified_review_open_zero_safety_credit"
     },
     {
       "domain": "governance",

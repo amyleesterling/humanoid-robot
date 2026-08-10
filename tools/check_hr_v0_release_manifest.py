@@ -69,6 +69,7 @@ def main() -> None:
         "HR-V0-BOM-P0.1",
         "HR-V0-E2-SEQ-P0.1",
         "HR-V0-DYN-INST-P0.1",
+        "HR-V0-DYN-EVENT-IF-P0.1",
         "HR-V0-GOV-P0.3",
         "HR-V0-REQ-ATOMIC-P0.2",
         "HR-V0-BUILD-TRAVELER-P0.1",
@@ -240,10 +241,18 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-DYN-INST-P0.1"),
         {},
     )
-    if instrumentation_product.get("supporting_identifiers") != ["HR-V0-DYN-CHAR-P0.1", "HR-V0-DYN-TRACE-P0.1", "EG-025", "EG-026"] or instrumentation_product.get("release_state") != (
+    if instrumentation_product.get("supporting_identifiers") != ["HR-V0-DYN-CHAR-P0.1", "HR-V0-DYN-TRACE-P0.1", "HR-V0-DYN-EVENT-IF-P0.1", "EG-025", "EG-026"] or instrumentation_product.get("release_state") != (
         "four_exact_evaluation_candidates_complete_physical_chain_ranges_calibration_and_authority_open_no_safety_credit"
     ):
         errors.append("HR-V0-DYN-INST-P0.1 supporting identifiers or fail-closed state changed")
+    event_product = next(
+        (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-DYN-EVENT-IF-P0.1"),
+        {},
+    )
+    if event_product.get("supporting_identifiers") != ["TE-009", "DCH-001", "DCH-008", "DCH-009", "DCH-010", "DCH-011", "DCH-014", "DCH-X01", "DCH-X02", "EG-025", "EG-026"] or event_product.get("release_state") != (
+        "two_exact_iso1212evm_evaluation_candidates_native_connected_ecad_erc_clean_field_connection_prohibited_noninterference_timing_physical_evidence_and_qualified_review_open_zero_safety_credit"
+    ):
+        errors.append("HR-V0-DYN-EVENT-IF-P0.1 supporting identifiers or fail-closed state changed")
     governance_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-GOV-P0.3"),
         {},

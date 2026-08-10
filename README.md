@@ -654,6 +654,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R175 independent review request](docs/reviews/2026-08-10-r175-independent-review-request.md)
 - [R175 validation record](docs/reviews/2026-08-10-r175-validation-record.md)
 - [Sol R12 findings rechecked after R175](docs/reviews/2026-08-10-sol-r12-post-r175-status.md)
+- [R176 isolated dynamic-event interface](docs/hr-v0-dynamic-event-interface-p0.1.md)
+- [R176 interactive event-interface guide](release/hr-v0/dynamic-event-interface-p0.1/index.html)
+- [R176 native KiCad event-interface source](electrical/kicad/hr-v0-dynamic-event-interface-p0.1/)
+- [R176 independent review request](docs/reviews/2026-08-10-r176-independent-review-request.md)
+- [R176 validation record](docs/reviews/2026-08-10-r176-validation-record.md)
+- [Sol R12 findings rechecked after R176](docs/reviews/2026-08-10-sol-r12-post-r176-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -686,6 +692,8 @@ Run `python tools/check_hr_v0_fabrication_input_basis_p01.py` for R173. Passing 
 Run `python tools/generate_hr_v0_dynamic_trace_analysis_p01.py` and `python tools/check_hr_v0_dynamic_trace_analysis_p01.py` for R174. The checker proves the unresolved physical configuration is rejected, the nominal synthetic trace computes 0.030 s / 0.435 degree / 6.065 degree results but remains on qualified HOLD, reset-driven motion fails `DTA-007`, and a sample-index/drop fault fails `DTA-001`. It does not select a physical threshold, authorize a test, or supply executed stopping/reset evidence.
 
 Run `python tools/check_hr_v0_dynamic_instrumentation_p01.py` for R175. It verifies ten equipment rows, all fifteen dynamic channels, eight no-connect/interface boundaries, fifteen open holds, four blank receiving records, zero work authority, `EG-025` open and `EG-026` partial. It does not accept a sensor range, release procurement, authorize connection, or supply physical evidence.
+
+Run `python tools/generate_hr_v0_dynamic_event_interface_p01.py` and `python tools/check_hr_v0_dynamic_event_interface_p01.py` for R176. Passing verifies two exact TI `ISO1212EVM` evaluation units, seven field events, exact J4/J2/J1 and T7 DB37 mappings, one FIO0-FIO7 `FIO_STATE` capture word, root plus four native KiCad child sheets at ERC 0/0, fifteen open holds and four blank receiving rows. It does not authorize a field tap: Pilz/Schneider loading, diagnostic-pulse, EDM, dropout, field-ground, timing, fault-injection, physical and qualified noninterference evidence remains open, and all test equipment has zero safety credit.
 
 Run `python tools/check_hr_v0_control_panel.py` to cross-check the R64 25-row panel BOM, nominal allocations, exact XT1 mapping, all 66 bounded V3 wire endpoints, one fail-closed SD1 sidewall option, unreleased physical-wire fields, cable-entry holds, thermal/space screens, readable SVG warning content and twenty-two unexecuted panel records. Run `python tools/check_hr_v0_service_disconnect.py` to prove the exact `75920-01` catalog candidate remains application-held, all 15 SD1 rows remain unexecuted, and no cutout, conductor, lockout procedure or wiring release exists. Passing either checker releases no drilling, cutting, wiring, assembly, PCB fabrication, or energization work.
 
@@ -761,7 +769,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred seventy-five review/control rounds are complete: R01-R175. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R175 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R175 names an evaluation-only instrumentation backbone and explicit no-connect boundaries while retaining every physical, statistical, qualified-review and work-authority hold.
+One hundred seventy-six review/control rounds are complete: R01-R176. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R176 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R176 names an exact isolated event-input evaluation candidate and connected native ECAD while retaining every connection, noninterference, physical, statistical, qualified-review and work-authority hold.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -940,6 +948,7 @@ One hundred seventy-five review/control rounds are complete: R01-R175. R11 Fable
 | R173 | Fabrication-input requirements reconciliation | Issued `HR-V0-FAB-INPUT-P0.1`; bound the existing draft 100 g / 40-70 mm object and 0.15 m/s TCP / 30 deg/s automatic-joint / 10 deg/s setup limits to ten fabrication inputs and reproduced five energy/kinematic screens. One false wholly-unknown label is corrected; seven dynamic, physical or work-authority inputs remain partial/open/unauthorized and EG-006/007 remain partial. |
 | R174 | Dynamic trace analysis and reset-rejection path | Issued `HR-V0-DYN-TRACE-P0.1`; added nine deterministic rules, four common-clock event channels, four synthetic fixtures and four blank qualified dispositions. Nominal computation remains on HOLD; reset-motion, early-start and data-integrity faults are rejected. EG-026 advances to partial, with every physical input/result and work authority still open. |
 | R175 | Dynamic instrumentation backbone candidate | Issued `HR-V0-DYN-INST-P0.1`; named four exact evaluation candidates, mapped all fifteen channels, imposed eight no-connect/interface boundaries and retained fifteen open holds. Rejected a ground-referenced divider as a completed isolated 24 V event interface. EG-025 remains open and EG-026 partial; no procurement, connection, physical evidence, safety credit or work authority exists. |
+| R176 | Isolated dynamic-event interface candidate | Issued `HR-V0-DYN-EVENT-IF-P0.1`; named two exact TI `ISO1212EVM` evaluation units, mapped seven field events plus FIO0 trigger witness into one T7 `FIO_STATE` word and created four legible connected KiCad child sheets at ERC 0/0. Every field tap remains prohibited pending noninterference, timing, physical and qualified evidence; EG-025 remains open and EG-026 partial. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
