@@ -1,0 +1,21 @@
+{
+  "schema": "project-button-hr-v0-dynamic-trace-config-p0.1",
+  "status": "PRELIMINARY - ANALYSIS CANDIDATE ONLY - QUALIFIED DISPOSITION REQUIRED - NOT APPROVED FOR POWERED TESTING, MOTION, OR ENERGIZATION",
+  "analysis_mode": "PHYSICAL_TRACE",
+  "stop_event_field": "SELECTION REQUIRED",
+  "motion_direction": "SELECTION REQUIRED",
+  "expected_sample_interval_s": "SELECTION REQUIRED",
+  "sample_interval_relative_tolerance": "SELECTION REQUIRED",
+  "stop_velocity_threshold_deg_s": "SELECTION REQUIRED",
+  "stop_dwell_s": "SELECTION REQUIRED",
+  "stop_angle_band_deg": "SELECTION REQUIRED",
+  "rail_below_torque_threshold_v": "SELECTION REQUIRED",
+  "rail_dwell_s": "SELECTION REQUIRED",
+  "maximum_total_stop_time_s": "SELECTION REQUIRED",
+  "maximum_residual_travel_deg": "SELECTION REQUIRED",
+  "hard_stop_angle_deg": "SELECTION REQUIRED",
+  "minimum_endpoint_clearance_deg": "SELECTION REQUIRED",
+  "reset_observation_s": "SELECTION REQUIRED",
+  "reset_motion_noise_deg": "SELECTION REQUIRED",
+  "qualified_acceptance_reference": "SELECTION REQUIRED"
+}

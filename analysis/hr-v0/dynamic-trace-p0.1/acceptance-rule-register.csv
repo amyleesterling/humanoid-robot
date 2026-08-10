@@ -1,0 +1,10 @@
+rule_id,rule,computed_output,physical_acceptance_input,state
+DTA-001,Sample index timebase metadata loss and saturation integrity,integrity pass/fail,accepted timing budget calibration hashes and zero unexplained loss,PHYSICAL ACCEPTANCE INPUT OPEN
+DTA-002,Exactly controlled rising stop-event edge,stop edge time,selected isolated event channel and polarity proof,PHYSICAL ACCEPTANCE INPUT OPEN
+DTA-003,Both coil commands and both mirror channels open after event,four edge times,contact bounce propagation and pole-state correlation,PHYSICAL ACCEPTANCE INPUT OPEN
+DTA-004,Measured source rail remains below selected torque threshold,rail threshold time,actuator-specific torque-loss voltage and dwell,SELECTION REQUIRED
+DTA-005,Independent angle and velocity satisfy sustained stop window,motion-stop time,noise filter delay dwell and uncertainty,SELECTION REQUIRED
+DTA-006,Time travel and endpoint clearance each meet configuration limits,three bounded metrics,qualified safety-function allocation and guard/stop reconciliation,SELECTION REQUIRED
+DTA-007,Reset observation contains no coil torque-enable motion request or measured motion before separate start,reset interlock pass/fail,complete reset/start channel proof and required repetitions/fault cases,PHYSICAL ACCEPTANCE INPUT OPEN
+DTA-008,Peak current force displacement and positive compression work reported without rating credit,range metrics,calibration uncertainty structural and absorber application acceptance,PHYSICAL ACCEPTANCE INPUT OPEN
+DTA-009,Computed pass remains HOLD pending qualified disposition,release effect NONE,named competent reviewers signed configuration-specific record,MANDATORY HOLD

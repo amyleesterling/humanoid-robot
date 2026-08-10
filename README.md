@@ -644,6 +644,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [R173 fabrication-input independent review request](docs/reviews/2026-08-10-r173-independent-review-request.md)
 - [R173 fabrication-input validation record](docs/reviews/2026-08-10-r173-validation-record.md)
 - [Sol R12 findings rechecked after R173](docs/reviews/2026-08-10-sol-r12-post-r173-status.md)
+- [R174 dynamic trace analysis](docs/hr-v0-dynamic-trace-analysis-p0.1.md)
+- [R174 interactive trace-analysis guide](release/hr-v0/dynamic-trace-analysis-p0.1/index.html)
+- [R174 independent review request](docs/reviews/2026-08-10-r174-independent-review-request.md)
+- [R174 validation record](docs/reviews/2026-08-10-r174-validation-record.md)
+- [Sol R12 findings rechecked after R174](docs/reviews/2026-08-10-sol-r12-post-r174-status.md)
 - [Mechanical P0.7/P0.6 positive-stop independent review request](docs/reviews/2026-08-07-mechanical-p0.7-independent-review-request.md)
 - [Mass-reduction P0.1 independent review request](docs/reviews/2026-08-07-mass-reduction-p0.1-independent-review-request.md)
 - [Gripper P0.2 independent review request](docs/reviews/2026-08-07-gripper-p0.2-independent-review-request.md)
@@ -672,6 +677,8 @@ Run `python tools/check_hr_v0_host_deploy_p01.py` for R171. Passing proves a six
 Run `python tools/generate_hr_v0_rpi_os_sbom_p01.py` and `python tools/check_hr_v0_rpi_os_sbom_p01.py` for R172. Passing reproduces the official 5,336,108-byte SPDX payload hash, 4,743 package records, 632 unique DPKG identities, fifteen critical-package rows and twelve blank target-verification records. It does not prove disk-image acquisition, media write/readback, target package or executable identity, booted kernel, backend selection, security, HIL, recovery, rollback or safety performance.
 
 Run `python tools/check_hr_v0_fabrication_input_basis_p01.py` for R173. Passing proves exact trace from the existing draft 100 g / 40-70 mm object and 0.15 m/s TCP / 30 deg/s automatic-joint / 10 deg/s setup limits to ten fabrication-input rows and five arithmetic screens. It does not supply duty, acceleration, jerk, restraint, safety factors, complete loads, physical evidence, qualified acceptance or work authority.
+
+Run `python tools/generate_hr_v0_dynamic_trace_analysis_p01.py` and `python tools/check_hr_v0_dynamic_trace_analysis_p01.py` for R174. The checker proves the unresolved physical configuration is rejected, the nominal synthetic trace computes 0.030 s / 0.435 degree / 6.065 degree results but remains on qualified HOLD, reset-driven motion fails `DTA-007`, and a sample-index/drop fault fails `DTA-001`. It does not select a physical threshold, authorize a test, or supply executed stopping/reset evidence.
 
 Run `python tools/check_hr_v0_control_panel.py` to cross-check the R64 25-row panel BOM, nominal allocations, exact XT1 mapping, all 66 bounded V3 wire endpoints, one fail-closed SD1 sidewall option, unreleased physical-wire fields, cable-entry holds, thermal/space screens, readable SVG warning content and twenty-two unexecuted panel records. Run `python tools/check_hr_v0_service_disconnect.py` to prove the exact `75920-01` catalog candidate remains application-held, all 15 SD1 rows remain unexecuted, and no cutout, conductor, lockout procedure or wiring release exists. Passing either checker releases no drilling, cutting, wiring, assembly, PCB fabrication, or energization work.
 
@@ -747,7 +754,7 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 ## Review history
 
-One hundred seventy-three review/control rounds are complete: R01-R173. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R173 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R173 reconciles existing draft payload and speed limits into the fabrication evidence chain while retaining every dynamic, physical, qualified-review and work-authority hold.
+One hundred seventy-four review/control rounds are complete: R01-R174. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R174 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R174 adds the deterministic trace-analysis and reset-rejection path while retaining every physical, statistical, qualified-review and work-authority hold.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -924,6 +931,7 @@ One hundred seventy-three review/control rounds are complete: R01-R173. R11 Fabl
 | R171 | Fail-closed host deployment candidate | Issued `HR-V0-HOST-DEPLOY-P0.1`; added a six-file disabled overlay, pure-file preflight, exit-78 launcher, 23 current preflight holds, eighteen open closure groups, 21 blank execution rows and six source tests. No target image, hardware backend, installation, HIL, safety credit, gate closure or work authority exists. |
 | R172 | Raspberry Pi OS publisher-SBOM lock | Issued `HR-V0-RPI-OS-SBOM-P0.1`; controlled the official 5,336,108-byte SPDX payload and local hash, normalized 4,743 package records into 632 unique DPKG identities, and recorded fifteen critical rows plus twelve blank target checks. No disk image, media write/readback, target inventory, backend, HIL, safety credit, gate closure or work authority exists. |
 | R173 | Fabrication-input requirements reconciliation | Issued `HR-V0-FAB-INPUT-P0.1`; bound the existing draft 100 g / 40-70 mm object and 0.15 m/s TCP / 30 deg/s automatic-joint / 10 deg/s setup limits to ten fabrication inputs and reproduced five energy/kinematic screens. One false wholly-unknown label is corrected; seven dynamic, physical or work-authority inputs remain partial/open/unauthorized and EG-006/007 remain partial. |
+| R174 | Dynamic trace analysis and reset-rejection path | Issued `HR-V0-DYN-TRACE-P0.1`; added nine deterministic rules, four common-clock event channels, four synthetic fixtures and four blank qualified dispositions. Nominal computation remains on HOLD; reset-motion, early-start and data-integrity faults are rejected. EG-026 advances to partial, with every physical input/result and work authority still open. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

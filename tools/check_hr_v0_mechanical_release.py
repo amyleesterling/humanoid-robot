@@ -71,7 +71,7 @@ def main() -> int:
     if "MV0-001" not in summary.get("superseded", []) or summary.get("counts", {}).get("vendor_interface_sources") != 5: errors.append("summary lacks supersession/vendor evidence")
     release = json.loads((ROOT / "release" / "hr-v0" / "release-candidate.json").read_text(encoding="utf-8"))
     mech = next((p for p in release["current_products"] if p["domain"] == "mechanical"), {})
-    if mech.get("identifier") != REVISION or ARM_REVISION not in mech.get("supporting_identifiers", []) or STOP_REVISION not in mech.get("supporting_identifiers", []) or "HR-V0-FAB-INPUT-P0.1" not in mech.get("supporting_identifiers", []) or mech.get("release_state") != "integrated_exact_coordinate_candidate_requirements_input_reconciled_dynamic_and_physical_evidence_open_not_released_for_fabrication_or_energization": errors.append("release candidate does not enforce the current P0.6 hold")
+    if mech.get("identifier") != REVISION or ARM_REVISION not in mech.get("supporting_identifiers", []) or STOP_REVISION not in mech.get("supporting_identifiers", []) or "HR-V0-FAB-INPUT-P0.1" not in mech.get("supporting_identifiers", []) or "HR-V0-DYN-TRACE-P0.1" not in mech.get("supporting_identifiers", []) or mech.get("release_state") != "integrated_exact_coordinate_candidate_requirements_input_reconciled_dynamic_trace_analysis_defined_physical_evidence_open_not_released_for_fabrication_or_energization": errors.append("release candidate does not enforce the current P0.6 hold")
     try:
         tree = ET.parse(OUT / "HR-V0_general-arrangement.svg")
         text = " ".join(node.text or "" for node in tree.iter() if node.tag.endswith("text"))

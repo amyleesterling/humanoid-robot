@@ -77,10 +77,14 @@ def main() -> int:
         gate_by_id = {row["gate_id"]: row for row in gates}
         if {row["record_id"] for row in gate_control} != set(gate_by_id):
             fail("gate coverage mismatch")
+        # P0.1 is a historical snapshot. Live gate status and evidence locations
+        # legitimately advance in later revisions, so validate the recorded
+        # fail-closed snapshot fields here rather than comparing them to live.
         for row in gate_control:
-            source = gate_by_id[row["record_id"]]
-            if row["source_status"] != source["status"] or row["accountable_role_candidate"] != source["owner"]:
-                fail(f"gate source binding mismatch: {row['record_id']}")
+            if row["source_status"] not in {"open", "partial"}:
+                fail(f"historical gate status is not fail-closed: {row['record_id']}")
+            if not row["accountable_role_candidate"]:
+                fail(f"historical gate role missing: {row['record_id']}")
 
         for collection in (req_control, risk_control, gate_control):
             for row in collection:

@@ -1,0 +1,21 @@
+{
+  "schema": "project-button-hr-v0-dynamic-trace-config-p0.1",
+  "status": "PRELIMINARY - ANALYSIS CANDIDATE ONLY - QUALIFIED DISPOSITION REQUIRED - NOT APPROVED FOR POWERED TESTING, MOTION, OR ENERGIZATION",
+  "analysis_mode": "SYNTHETIC_VALIDATION_ONLY",
+  "stop_event_field": "estop_state",
+  "motion_direction": "POSITIVE",
+  "expected_sample_interval_s": 0.001,
+  "sample_interval_relative_tolerance": 0.001,
+  "stop_velocity_threshold_deg_s": 0.5,
+  "stop_dwell_s": 0.01,
+  "stop_angle_band_deg": 0.01,
+  "rail_below_torque_threshold_v": 4.0,
+  "rail_dwell_s": 0.005,
+  "maximum_total_stop_time_s": 0.05,
+  "maximum_residual_travel_deg": 0.6,
+  "hard_stop_angle_deg": 118.0,
+  "minimum_endpoint_clearance_deg": 3.0,
+  "reset_observation_s": 0.05,
+  "reset_motion_noise_deg": 0.05,
+  "qualified_acceptance_reference": "SYNTHETIC ALGORITHM TEST ONLY - NO PHYSICAL ACCEPTANCE"
+}
