@@ -15,6 +15,16 @@ WARNING = (
     "PRELIMINARY - ANALYSIS CANDIDATE ONLY - QUALIFIED DISPOSITION REQUIRED - "
     "NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
 )
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def repository_path(path: Path) -> str:
+    """Return a stable repository-relative identifier for an input artifact."""
+    resolved = path.resolve()
+    try:
+        return resolved.relative_to(ROOT).as_posix()
+    except ValueError:
+        return resolved.as_posix()
 
 COMMON_COLUMNS = {
     "sample_index", "daq_time_s", "source_voltage_V", "external_angle_deg",
@@ -291,8 +301,8 @@ def analyze(trace_path: Path, config_path: Path) -> dict[str, Any]:
         "status": WARNING,
         "analysis_mode": config["analysis_mode"],
         "run_type": run_type,
-        "trace": trace_path.as_posix(),
-        "config": config_path.as_posix(),
+        "trace": repository_path(trace_path),
+        "config": repository_path(config_path),
         "run_id": rows[0]["run_id"],
         "configuration_commit": rows[0]["configuration_commit"],
         "sample_count": len(rows),
