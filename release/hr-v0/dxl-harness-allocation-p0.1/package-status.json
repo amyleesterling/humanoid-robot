@@ -12,8 +12,8 @@
   "acceptance_rows": 10,
   "residual_holds": 14,
   "source_hashes": {
-    "bom/bom.csv": "661fd42b79bd45378321fc5a6e3fc510a83da4b07eee936312833d51e8af4d88",
-    "bom/hr-v0-bom-closure.csv": "20a37a5510755b5af9a34b4bdb7975d8fc0630cbe717213797f9ee963b6daadc",
+    "bom/bom.csv": "36dba14adb0c6a85b9a47151800d3e03686a9e13e0bc067a03196bfeef1d288e",
+    "bom/hr-v0-bom-closure.csv": "aba87c050e4aacb94842a0984123ddbe4348c54774d4d118f29f6a3b3e548227",
     "electrical/kicad/project-button-v3/connector-schedule.csv": "59a20a2e7b2747492acb900b8bb3ad4bd42945113cf3a2a8815fd3908f2093af",
     "electrical/kicad/hr-v0-dxl-star/connector-schedule.csv": "06f702af82ccdb8980ab3aa4fdebb7f051e5344dfcbeaa49b54a4ed7a897853c",
     "firmware/supervisor/actuator-config.json": "67d89dcf835c0c2d2ec2143a85113945e3e7e404adce824f3870f1cb05b504eb"

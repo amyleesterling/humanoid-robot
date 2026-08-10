@@ -49,7 +49,7 @@ def main() -> None:
     need(b.get("manufacturer")=="Phoenix Contact" and "3209510 x5" in b.get("manufacturer_part_number","") and "3209523 x1" in b.get("manufacturer_part_number","") and "3030417 x1" in b.get("manufacturer_part_number","") and "NO JUMPERS" in b.get("manufacturer_part_number","") and b.get("baseline_status")=="exact_candidate_hold", "BOM-039 identity/state changed")
     need(c.get("closure_class")=="exact_candidate_hold" and c.get("allowed_action")=="HOLD", "BOM-039 closure weakened")
     need(bom.get("BOM-085",{}).get("manufacturer_part_number")=="CLIPFIX 35; item 3022218" and bom.get("BOM-085",{}).get("quantity")=="6", "shared CLIPFIX stock changed")
-    need(bom.get("BOM-062",{}).get("baseline_status") in {"selection_required","design_required"}, "label group was falsely closed")
+    need(bom.get("BOM-062",{}).get("baseline_status") in {"selection_required","design_required","exact_candidate_hold"}, "label group state is not fail-closed")
     for gate in ("EG-003","EG-015"):
         need(gates.get(gate,{}).get("status")=="partial", f"{gate} must remain partial")
         need(supplement.get(gate,{}).get("package_id")=="HR-V0-XT1-P0.1" and supplement.get(gate,{}).get("status_effect")=="REMAINS PARTIAL" and "check_hr_v0_xt1_terminal_group_p01.py" in supplement.get(gate,{}).get("evidence_locations",""), f"{gate} supplement missing or weakened")
