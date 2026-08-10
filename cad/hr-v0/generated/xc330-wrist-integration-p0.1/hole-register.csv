@@ -1,0 +1,13 @@
+interface,side,y_mm,z_mm,source_feature,bridge_hole,fastener,status
+H104 to bridge,+X,22.500000,-8.000000,M2 tap; STEP minor cylinder 1.567 mm; drawing 4-M2 tap,diameter 2.20 mm candidate clearance,SELECTION REQUIRED,received thread/engagement/access/proof open
+H104 to bridge,+X,22.500000,8.000000,M2 tap; STEP minor cylinder 1.567 mm; drawing 4-M2 tap,diameter 2.20 mm candidate clearance,SELECTION REQUIRED,received thread/engagement/access/proof open
+S101/U-base to bridge,+X,17.656854,7.843146,S101 PCD16 transformed field,diameter 2.20 mm candidate clearance,SELECTION REQUIRED,complete shared stack/engagement/access/proof open
+S101/U-base to bridge,+X,6.343146,7.843146,S101 PCD16 transformed field,diameter 2.20 mm candidate clearance,SELECTION REQUIRED,complete shared stack/engagement/access/proof open
+S101/U-base to bridge,+X,17.656854,19.156854,S101 PCD16 transformed field,diameter 2.20 mm candidate clearance,SELECTION REQUIRED,complete shared stack/engagement/access/proof open
+S101/U-base to bridge,+X,6.343146,19.156854,S101 PCD16 transformed field,diameter 2.20 mm candidate clearance,SELECTION REQUIRED,complete shared stack/engagement/access/proof open
+H104 to bridge,-X,22.500000,-8.000000,M2 tap; STEP minor cylinder 1.567 mm; drawing 4-M2 tap,diameter 2.20 mm candidate clearance,SELECTION REQUIRED,received thread/engagement/access/proof open
+H104 to bridge,-X,22.500000,8.000000,M2 tap; STEP minor cylinder 1.567 mm; drawing 4-M2 tap,diameter 2.20 mm candidate clearance,SELECTION REQUIRED,received thread/engagement/access/proof open
+S101/U-base to bridge,-X,17.656854,7.843146,S101 PCD16 transformed field,diameter 2.20 mm candidate clearance,SELECTION REQUIRED,complete shared stack/engagement/access/proof open
+S101/U-base to bridge,-X,6.343146,7.843146,S101 PCD16 transformed field,diameter 2.20 mm candidate clearance,SELECTION REQUIRED,complete shared stack/engagement/access/proof open
+S101/U-base to bridge,-X,17.656854,19.156854,S101 PCD16 transformed field,diameter 2.20 mm candidate clearance,SELECTION REQUIRED,complete shared stack/engagement/access/proof open
+S101/U-base to bridge,-X,6.343146,19.156854,S101 PCD16 transformed field,diameter 2.20 mm candidate clearance,SELECTION REQUIRED,complete shared stack/engagement/access/proof open

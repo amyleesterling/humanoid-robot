@@ -1,0 +1,5 @@
+item,mass_g,basis,boundary
+P0.2 incomplete subtotal before wrist bridges,679.124713,R191 screen,"H104, FPX frames, hardware, cable, guard and variation excluded"
+two bridge candidates,9.836511,native volume at 2.70 g/cm3,screening assumption; exact material/process/FAI/measured mass open
+P0.1 wrist-integrated incomplete subtotal,688.961224,arithmetic,not mass closure
+remaining incomplete headroom to 750 g,61.038776,750 - subtotal,must cover every excluded received item and variation

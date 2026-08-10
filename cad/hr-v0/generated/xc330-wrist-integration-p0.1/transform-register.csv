@@ -1,0 +1,6 @@
+item,parent,translation_mm,rotation,result
+G1 H104 frame,WORLD,"(0.0,331.6,0.0)",Rx 180 deg,controlled P0.7 transform; received A07 fit open
+XC330 gripper root,G1 H104,"(0.0,4.0,13.5)",Rx +90 deg,exact source-coordinate candidate; not selected
+XC330 gripper root,WORLD,"(0.0,327.6,-13.5)",Rx 270 deg,matrix-composed reference pose
+nominal pad/object center,G1 H104,"(0.0,-27.0,13.5)",point datum,nominal CAD only; installed pad calibration open
+nominal pad/object center,WORLD,"(0.0,358.6,-13.5)",point datum,world Y is 1.4 mm inside retained 360 mm reserve

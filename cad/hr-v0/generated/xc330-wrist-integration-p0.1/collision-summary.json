@@ -1,0 +1,15 @@
+{
+  "samples": 399,
+  "increment_deg": 5.0,
+  "j1_limits_deg": [
+    -20.0,
+    70.0
+  ],
+  "j2_limits_deg": [
+    15.0,
+    115.0
+  ],
+  "collision_samples": 0,
+  "maximum_positive_intersection_mm3": 0.0,
+  "status": "NOMINAL SAMPLED SCREEN ONLY - PHYSICAL AND CONTINUOUS PROOF OPEN"
+}

@@ -1,0 +1,4 @@
+stack_id,interface,quantity,order_code,known_source,unknowns,state
+WRI-F01,H104 M2 taps to two bridge plates,4,SELECTION REQUIRED,FR12-H104 drawing identifies 4-M2 tap; exact transverse axes from STEP,screw type/length/head/tool/engagement/torque/locking/reuse/material and received thread quality,OPEN - NO ASSEMBLY RELEASE
+WRI-F02,S101 PCD16 plus P0.2 U-base ear plus bridge,8,SELECTION REQUIRED,exact transformed PCD16 axes; nominal 7 mm frame + 3 mm ear + 3 mm bridge geometry,"received stack, screw/nut/washer identity, length, head/tool, protrusion, torque, locking and reuse",OPEN - NO ASSEMBLY RELEASE
+WRI-F03,existing MV0-C04 to H104 A07,4,SCB2.5-20 + HNN-M2.5-A2 EXACT CANDIDATE HOLD,controlled P0.7 stack unchanged by bridge topology,received identity/stack/tolerance/protrusion/torque/access/proof and qualified acceptance,OPEN - NO ASSEMBLY RELEASE
