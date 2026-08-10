@@ -8,10 +8,11 @@
   "setup_joint_speed_deg_s": 10.0,
   "automatic_gripper_speed_mm_s": 20.0,
   "setup_gripper_speed_mm_s": 10.0,
+  "maximum_sample_lateness_ms": null,
   "joints": {
-    "J1": {"minimum": -20.0, "maximum": 70.0, "unit": "deg", "start_tolerance": null},
-    "J2": {"minimum": 15.0, "maximum": 115.0, "unit": "deg", "start_tolerance": null},
-    "GRIPPER": {"minimum": 20.0, "maximum": 75.0, "unit": "mm", "start_tolerance": null}
+    "J1": {"minimum": -20.0, "maximum": 70.0, "unit": "deg", "start_tolerance": null, "terminal_tolerance": null},
+    "J2": {"minimum": 15.0, "maximum": 115.0, "unit": "deg", "start_tolerance": null, "terminal_tolerance": null},
+    "GRIPPER": {"minimum": 20.0, "maximum": 75.0, "unit": "mm", "start_tolerance": null, "terminal_tolerance": null}
   },
   "kinematic_model_hash": "SELECTION REQUIRED",
   "kinematic_model": {

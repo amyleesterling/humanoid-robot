@@ -25,9 +25,10 @@ class HostDeployTests(unittest.TestCase):
     def setUpClass(cls):
         import sys
         sys.path.insert(0, str(PACKAGE))
-        from project_button_host import launcher, preflight
+        from project_button_host import launcher, preflight, runtime_entrypoint
         cls.launcher = launcher
         cls.preflight = preflight
+        cls.runtime_entrypoint = runtime_entrypoint
 
     def test_committed_configuration_fails_closed(self):
         result = self.preflight.evaluate(PACKAGE / "host-deploy-config.json")
@@ -61,6 +62,7 @@ class HostDeployTests(unittest.TestCase):
             "runtime_backend": "candidate-backend",
             "serial_device": "/dev/serial/by-id/candidate",
             "gpio_backend": "candidate-gpio",
+            "runtime_cycle_period_ms": 10,
         })
         for key in [key for key in config if key.endswith("_sha256")]:
             config[key] = "0" * 64
@@ -72,9 +74,23 @@ class HostDeployTests(unittest.TestCase):
         self.assertTrue(any("target absent" in hold for hold in result.holds))
 
     def test_sources_have_no_hardware_backend_import(self):
-        source = "\n".join((PACKAGE / "project_button_host" / name).read_text(encoding="utf-8") for name in ("preflight.py", "launcher.py"))
+        source = "\n".join((PACKAGE / "project_button_host" / name).read_text(encoding="utf-8") for name in ("preflight.py", "launcher.py", "runtime_entrypoint.py"))
         for forbidden in ("import gpiod", "import gpiozero", "import serial", "import dynamixel_sdk"):
             self.assertNotIn(forbidden, source)
+
+    def test_runtime_entrypoint_does_not_import_selected_backends_on_hold(self):
+        with mock.patch.object(self.runtime_entrypoint.importlib, "import_module") as imported:
+            code = self.runtime_entrypoint.run(PACKAGE / "host-deploy-config.json")
+        self.assertEqual(code, 78)
+        imported.assert_not_called()
+
+    def test_runtime_entrypoint_is_exact_and_hash_bound(self):
+        import hashlib
+
+        config = json.loads((PACKAGE / "host-deploy-config.json").read_text(encoding="utf-8"))
+        path = PACKAGE / "project_button_host/runtime_entrypoint.py"
+        self.assertEqual(config["runtime_entrypoint"], "/opt/project-button/lib/project_button_host/runtime_entrypoint.py")
+        self.assertEqual(config["runtime_entrypoint_sha256"], hashlib.sha256(path.read_bytes()).hexdigest())
 
     def test_preset_is_disabled_and_restart_is_off(self):
         preset = (PACKAGE / "systemd/00-project-button.preset").read_text(encoding="utf-8")

@@ -10,9 +10,9 @@
   "residual_holds": 14,
   "source_hashes": {
     "firmware/supervisor/actuator-config.json": "67d89dcf835c0c2d2ec2143a85113945e3e7e404adce824f3870f1cb05b504eb",
-    "firmware/supervisor/project_button_supervisor/actuator_config.py": "0c2784fa0b0c5b2fd3331340ef377831fcf2d1362141ad8d54ac48220f4f0e9a",
-    "firmware/supervisor/project_button_supervisor/dynamixel_bus.py": "8530dc751e9e6ee1c375893623f49184fad29569d8899ffd088bcc2f8f3acce6",
-    "firmware/supervisor/tests/test_dynamixel_bus.py": "30e8aa9e666394e26901019b5b0ff44f4849aa019a8848e80ad97580b1c3f2e9",
+    "firmware/supervisor/project_button_supervisor/actuator_config.py": "5b78ecb4982b0ab47ba81ef63957c70059fa921341e5b183a0d814384b11bdf4",
+    "firmware/supervisor/project_button_supervisor/dynamixel_bus.py": "02ea04371d1fbd728cc5ac85438e1794c70d84b8380e53d4600f1b4d7c33219f",
+    "firmware/supervisor/tests/test_dynamixel_bus.py": "6bd4376d9f38ba572f609fb675baa068cc4833d2c9c2e7f051b24bdf95360a79",
     "bom/bom.csv": "cba65e75b6557ac8be6471ad50153f3882781114739a09a033c2df422b88fb68",
     "electrical/hr-v0-protection-coordination-inputs.csv": "dd53ea90945ee0d6a0a3b8ac1a5df7ad02b63cdee3827d6ac1a166a331ba9b79",
     "release/hr-v0/dxl-harness-allocation-p0.1/current-qualification-template.csv": "b55bdb339676181f84cd699f4a18279da9b774e208ecedd4f8a9c4656720d4a6"

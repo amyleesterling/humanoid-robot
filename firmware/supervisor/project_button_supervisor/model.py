@@ -68,6 +68,7 @@ class JointRule:
     maximum: float
     unit: str
     start_tolerance: float | None
+    terminal_tolerance: float | None
 
 
 @dataclass(frozen=True)
@@ -80,6 +81,7 @@ class SupervisorConfig:
     setup_joint_speed_deg_s: float
     automatic_gripper_speed_mm_s: float
     setup_gripper_speed_mm_s: float
+    maximum_sample_lateness_ms: int | None
     joints: Mapping[str, JointRule]
     kinematic_model_hash: str
     kinematic_model: PlanarKinematicModel
@@ -98,6 +100,12 @@ class SupervisorConfig:
             setup_joint_speed_deg_s=float(raw["setup_joint_speed_deg_s"]),
             automatic_gripper_speed_mm_s=float(raw["automatic_gripper_speed_mm_s"]),
             setup_gripper_speed_mm_s=float(raw["setup_gripper_speed_mm_s"]),
+            maximum_sample_lateness_ms=(
+                int(raw["maximum_sample_lateness_ms"])
+                if isinstance(raw.get("maximum_sample_lateness_ms"), int)
+                and not isinstance(raw.get("maximum_sample_lateness_ms"), bool)
+                else None
+            ),
             joints={name: JointRule(**rule) for name, rule in raw["joints"].items()},
             kinematic_model_hash=raw["kinematic_model_hash"],
             kinematic_model=kinematic_model,
@@ -108,7 +116,10 @@ class SupervisorConfig:
     def selections_closed(self) -> bool:
         values = (self.configuration_hash, self.kinematic_model_hash)
         hashes_closed = all(is_sha256(value) for value in values)
-        tolerances_closed = all(rule.start_tolerance is not None for rule in self.joints.values())
+        tolerances_closed = all(
+            rule.start_tolerance is not None and rule.terminal_tolerance is not None
+            for rule in self.joints.values()
+        )
         exact_axes = set(self.joints) == set(EXPECTED_ENGINEERING_LIMITS)
         limits_current = exact_axes and all(
             (
@@ -123,6 +134,8 @@ class SupervisorConfig:
             self.configuration_id == EXPECTED_SUPERVISOR_CONFIGURATION_ID
             and hashes_closed
             and tolerances_closed
+            and self.maximum_sample_lateness_ms is not None
+            and self.maximum_sample_lateness_ms >= 0
             and limits_current
             and self.kinematic_model.selections_closed
             and self.kinematic_model.configured_model_hash == self.kinematic_model_hash
@@ -347,7 +360,9 @@ class Supervisor:
         command = self.active_command
         if self.state is not OperatingState.DRIVE_ENABLED or command is None:
             return False
-        if not success or not self._positions_match(terminal_positions, command.expected_terminal_positions):
+        if not success or not self._positions_match(
+            terminal_positions, command.expected_terminal_positions, terminal=True
+        ):
             self._latch_fault(FaultCode.EXECUTION_FAILED, now_ms, "trajectory failed or terminal state mismatched")
             return False
         self._invalidate_target()
@@ -418,12 +433,21 @@ class Supervisor:
             return "last sample does not match expected terminal state"
         return None
 
-    def _positions_match(self, measured: Mapping[str, float], expected: Mapping[str, float]) -> bool:
+    def _positions_match(
+        self,
+        measured: Mapping[str, float],
+        expected: Mapping[str, float],
+        *,
+        terminal: bool = False,
+    ) -> bool:
         if set(measured) != set(self.config.joints) or set(expected) != set(self.config.joints):
             return False
-        return all(rule.start_tolerance is not None and
-                   abs(float(measured[axis]) - float(expected[axis])) <= rule.start_tolerance
-                   for axis, rule in self.config.joints.items())
+        return all(
+            (rule.terminal_tolerance if terminal else rule.start_tolerance) is not None
+            and abs(float(measured[axis]) - float(expected[axis]))
+            <= float(rule.terminal_tolerance if terminal else rule.start_tolerance)
+            for axis, rule in self.config.joints.items()
+        )
 
     def _latch_fault(self, code: FaultCode, now_ms: int, detail: str) -> None:
         self.fault = code

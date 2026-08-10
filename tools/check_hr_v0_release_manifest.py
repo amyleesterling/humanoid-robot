@@ -213,8 +213,9 @@ def main() -> None:
         "HR-V0-RPI-OS-SBOM-P0.1",
         "HR-V0-STALE-AUTH-P0.1",
         "HR-V0-KIN-P0.1",
+        "HR-V0-RUNTIME-P0.1",
     ] or firmware_product.get("release_state") != (
-        "source_transport_reproducible_watchdog_disabled_fail_closed_host_overlay_publisher_sbom_lock_stale_replay_rejection_and_unreleased_kinematic_bound_candidate_not_installed_flashed_connected_or_hil_validated"
+        "source_transport_reproducible_watchdog_disabled_fail_closed_19_file_host_overlay_publisher_sbom_lock_stale_replay_rejection_unreleased_kinematic_bound_and_runtime_execution_candidate_not_installed_flashed_connected_or_hil_validated"
     ):
         errors.append("HR-V0-FW-P0.4 supporting identifiers or fail-closed release state changed")
     bom_product = next(

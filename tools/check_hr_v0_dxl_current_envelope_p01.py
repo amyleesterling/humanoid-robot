@@ -102,7 +102,7 @@ def main() -> int:
     need(config.get("current_envelope_binding") == {"identifier": "HR-V0-DXL-CURRENT-ENV-P0.1", "release_state": "CANDIDATE-NOT-RELEASED", "acceptance_evidence_hash": "SELECTION REQUIRED"}, "firmware current-envelope binding changed")
     bus = (ROOT / "firmware" / "supervisor" / "project_button_supervisor" / "dynamixel_bus.py").read_text(encoding="utf-8")
     tests = (ROOT / "firmware" / "supervisor" / "tests" / "test_dynamixel_bus.py").read_text(encoding="utf-8")
-    for token in ("configured-current-limit readback changed during execution", "goal-current readback changed during execution"):
+    for token in ("configured-current-limit readback changed during execution", "goal-current readback disagrees with torque state", "torque is enabled outside motion authority", "_best_effort_goal_current_zero"):
         need(token in bus, f"runtime current invariant missing: {token}")
     for token in ("CURRENT_LIMIT.address, 801", "GOAL_CURRENT.address, 799"):
         need(token in tests, f"current fault-injection source test missing: {token}")

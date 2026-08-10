@@ -224,6 +224,38 @@ class DynamixelBusController:
                 raise
             raise BusError(f"sample execution failed: {exc}") from exc
 
+    def read_positions_engineering(self, *, require_torque: bool) -> Mapping[str, float]:
+        """Return received positions through the released calibration only."""
+
+        telemetry = self.poll_telemetry(require_torque=require_torque)
+        return self.positions_from_telemetry(telemetry)
+
+    def write_sample_engineering(
+        self,
+        authority: MotionAuthority,
+        trajectory_id: str,
+        positions: Mapping[str, float],
+    ) -> Mapping[str, float]:
+        """Write one sample and return the checked received engineering pose."""
+
+        telemetry = self.write_sample(authority, trajectory_id, positions)
+        return self.positions_from_telemetry(telemetry)
+
+    def positions_from_telemetry(
+        self, telemetry: Mapping[str, ActuatorTelemetry]
+    ) -> Mapping[str, float]:
+        if set(telemetry) != set(self.config.rules):
+            raise BusError("telemetry joint set mismatch")
+        try:
+            return {
+                joint: self.config.raw_to_engineering(
+                    joint, telemetry[joint].present_position_raw
+                )
+                for joint in self.config.rules
+            }
+        except (KeyError, TypeError, ValueError) as exc:
+            raise BusError(f"received position conversion failed: {exc}") from exc
+
     def poll_telemetry(self, *, require_torque: bool) -> Mapping[str, ActuatorTelemetry]:
         """Read all execution invariants and force torque-off on any failure."""
 
@@ -258,10 +290,13 @@ class DynamixelBusController:
                 raise BusError(f"{joint} bus watchdog expired")
             if item.configured_current_limit_raw != rule.current_limit_raw:
                 raise BusError(f"{joint} configured-current-limit readback changed during execution")
-            if item.active_goal_current_raw != rule.goal_current_max_raw:
-                raise BusError(f"{joint} goal-current readback changed during execution")
+            expected_goal_current = rule.goal_current_max_raw if require_torque else 0
+            if item.active_goal_current_raw != expected_goal_current:
+                raise BusError(f"{joint} goal-current readback disagrees with torque state")
             if require_torque and item.torque_enable != 1:
                 raise BusError(f"{joint} torque dropped during execution")
+            if not require_torque and item.torque_enable != 0:
+                raise BusError(f"{joint} torque is enabled outside motion authority")
             if abs(item.present_current_raw) > rule.current_limit_raw:
                 raise BusError(f"{joint} present-current readback exceeds configured raw limit")
             assert rule.minimum_input_voltage_raw is not None
@@ -276,6 +311,7 @@ class DynamixelBusController:
 
     def stop(self) -> None:
         self._best_effort_torque_off(set(self.joint_by_id))
+        self._best_effort_goal_current_zero(set(self.joint_by_id))
         self.torque_enabled = False
         self.active_trajectory_id = None
 
@@ -343,6 +379,15 @@ class DynamixelBusController:
         for actuator_id in sorted(ids):
             try:
                 self._write(actuator_id, TORQUE_ENABLE, 0)
+            except Exception:
+                pass
+
+    def _best_effort_goal_current_zero(self, ids: set[int]) -> None:
+        if not self.is_open:
+            return
+        for actuator_id in sorted(ids):
+            try:
+                self._write(actuator_id, GOAL_CURRENT, 0)
             except Exception:
                 pass
 

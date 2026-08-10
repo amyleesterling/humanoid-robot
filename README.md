@@ -52,6 +52,7 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 firmware implementation candidate P0.4](docs/hr-v0-firmware-p0.4.md)
 - [HR-V0 conservative kinematic speed bound P0.1](docs/hr-v0-kinematic-speed-bound-p0.1.md)
 - [Interactive kinematic speed-bound calculator](release/hr-v0/kinematic-speed-bound-p0.1/index.html)
+- [HR-V0 runtime execution boundary P0.1](docs/hr-v0-runtime-execution-boundary-p0.1.md)
 - [HR-V0 fail-closed host deployment candidate P0.1](docs/hr-v0-host-deployment-p0.1.md)
 - [Interactive host deployment guide](release/hr-v0/host-deployment-p0.1/index.html)
 - [HR-V0 Raspberry Pi OS publisher-SBOM lock P0.1](docs/hr-v0-rpi-os-sbom-p0.1.md)
@@ -907,7 +908,7 @@ One hundred ninety-four review/control rounds are complete: R01-R194. R11 Fable 
 
 ## Current review state
 
-One hundred ninety-seven review/control rounds are complete: R01-R197. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R197 are project-owned correction, evidence-control or validation passes, not additional independent approvals. R195 directly binds watchdog PCB-P1.0 to Electrical V3-P1.15. R196 proves source-level stale-command invalidation and replay rejection after dropout/re-arm. R197 adds the missing conservative TCP-rate source bound and exact fail-closed configuration binding while the tool reach and physical acceptance remain unresolved. All manufacturing, physical-test, functional-safety, qualified-review and work-authorization holds remain open.
+One hundred ninety-eight review/control rounds are complete: R01-R198. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R198 are project-owned correction, evidence-control or validation passes, not additional independent approvals. R195 directly binds watchdog PCB-P1.0 to Electrical V3-P1.15. R196 proves source-level stale-command invalidation and replay rejection. R197 adds the conservative TCP-rate source bound. R198 adds the missing runtime executive, exact target entrypoint and nineteen-source proposed host overlay while all target and physical evidence remains unresolved. All manufacturing, physical-test, functional-safety, qualified-review and work-authorization holds remain open.
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -1108,6 +1109,7 @@ One hundred ninety-seven review/control rounds are complete: R01-R197. R11 Fable
 | R195 | Watchdog PCB P1.15 native-identity correction | Issued `HR-V0-WD-P115-ID-P0.1` and PCB-P1.0; directly bound the unchanged watchdog geometry/topology/placement/native assembly fields to Electrical V3-P1.15 and regenerated current assembly/CAM/BOM/E2 evidence. R165 parity remains historical. All 18 CAM/manufacturing and 12 E2 holds remain open; EG-002/004 stay partial. |
 | R196 | Stale-command and restart-authority correction | Issued `HR-V0-STALE-AUTH-P0.1`; bound all twenty E2 logic cases to supervisor state, active-target, torque-request and replay observations. Added a source regression proving dropout clears the target, valid RESET/ARM does not request torque, the old sequence is rejected and only a later fresh sequence may request torque. The entire E2 evidence form remains unexecuted; zero safety credit and no gate/work authority close. |
 | R197 | Conservative kinematic speed-bound correction | Issued `HR-V0-KIN-P0.1`; bound the current J1/J2/H104 candidate geometry to a triangle-inequality TCP-rate model, exact configuration hashing and a same-file supervisor constructor. Tool reach and acceptance hashes remain `SELECTION REQUIRED`, so the repository validator refuses construction. No physical evidence, safety credit, gate or work authority closes. |
+| R198 | Runtime execution-boundary correction | Issued `HR-V0-RUNTIME-P0.1`; added the exact entrypoint, nineteen-source overlay, received-position conversion, torque/goal-current parity and deterministic heartbeat/authority/sample/terminal/shutdown sequencing. The committed preflight still exits 78 with 24 holds; target backends, image, HIL and approvals remain absent. No gate or work authority closes. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

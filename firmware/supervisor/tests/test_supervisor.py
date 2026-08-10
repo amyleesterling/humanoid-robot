@@ -25,9 +25,9 @@ from project_button_supervisor import (  # noqa: E402
 
 
 JOINTS = {
-    "J1": JointRule(-20.0, 70.0, "deg", 1.0),
-    "J2": JointRule(15.0, 115.0, "deg", 1.0),
-    "GRIPPER": JointRule(20.0, 75.0, "mm", 1.0),
+    "J1": JointRule(-20.0, 70.0, "deg", 1.0, 1.0),
+    "J2": JointRule(15.0, 115.0, "deg", 1.0, 1.0),
+    "GRIPPER": JointRule(20.0, 75.0, "mm", 1.0, 1.0),
 }
 START = {"J1": 0.0, "J2": 30.0, "GRIPPER": 40.0}
 END = {"J1": 5.0, "J2": 35.0, "GRIPPER": 42.0}
@@ -58,6 +58,7 @@ def config() -> SupervisorConfig:
         setup_joint_speed_deg_s=10.0,
         automatic_gripper_speed_mm_s=20.0,
         setup_gripper_speed_mm_s=10.0,
+        maximum_sample_lateness_ms=10,
         joints=JOINTS,
         kinematic_model_hash=KINEMATIC_HASH,
         kinematic_model=kinematic_model,
@@ -147,6 +148,29 @@ class SupervisorTests(unittest.TestCase):
         self.assertTrue(supervisor.complete_trajectory(1200, True, END))
         self.assertEqual(supervisor.state, OperatingState.ARMED)
         self.assertFalse(supervisor.outputs.torque_enable_request)
+
+    def test_terminal_tolerance_is_independent_from_start_tolerance(self) -> None:
+        joints = {**JOINTS, "J1": JointRule(-20.0, 70.0, "deg", 1.0, 0.1)}
+        supervisor = Supervisor(
+            replace(config(), joints=joints),
+            lambda samples: [0.0 for _ in samples],
+            session_id="SESSION-TEST",
+        )
+        supervisor.observe_hardware(snapshot(sr1_ready=False), 900)
+        supervisor.observe_hardware(snapshot(sr1_ready=True), 910)
+        supervisor.observe_hardware(
+            snapshot(
+                sr1_ready=True,
+                sra1_armed=True,
+                k1_feedback=True,
+                k2_feedback=True,
+                positions={**START, "J1": 0.5},
+            ),
+            920,
+        )
+        self.assertTrue(supervisor.accept_trajectory(command(), 1000))
+        self.assertFalse(supervisor.complete_trajectory(1200, True, {**END, "J1": 5.5}))
+        self.assertEqual(supervisor.fault, FaultCode.EXECUTION_FAILED)
 
     def test_fault_invalidates_target_and_hardware_restore_cannot_resume(self) -> None:
         supervisor = armed_supervisor()
@@ -299,7 +323,7 @@ class SupervisorTests(unittest.TestCase):
         self.assertFalse(supervisor.outputs.torque_enable_request)
 
     def test_stale_120_degree_limit_or_revision_mismatch_fails_closed(self) -> None:
-        stale_joints = {**JOINTS, "J2": JointRule(15.0, 120.0, "deg", 1.0)}
+        stale_joints = {**JOINTS, "J2": JointRule(15.0, 120.0, "deg", 1.0, 1.0)}
         self.assertFalse(replace(config(), joints=stale_joints).selections_closed)
         stale_binding = {
             **config().mechanical_limit_binding,

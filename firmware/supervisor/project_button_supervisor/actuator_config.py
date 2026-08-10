@@ -238,6 +238,38 @@ class ActuatorConfiguration:
             raise ValueError(f"{joint} raw target outside released calibration envelope")
         return raw
 
+    def raw_to_engineering(self, joint: str, raw_position: int) -> float:
+        """Convert received raw position using the same released calibration.
+
+        This is the inverse of :meth:`engineering_to_raw`.  It refuses any
+        unresolved scale, direction, zero, or raw value outside the released
+        actuator envelope.
+        """
+
+        rule = self.rules[joint]
+        required = (
+            rule.position_zero_raw,
+            rule.position_zero_engineering,
+            rule.raw_per_unit,
+            rule.direction,
+            rule.minimum_raw,
+            rule.maximum_raw,
+        )
+        if any(value is None for value in required):
+            raise ValueError(f"{joint} received calibration remains SELECTION REQUIRED")
+        assert rule.position_zero_raw is not None
+        assert rule.position_zero_engineering is not None
+        assert rule.raw_per_unit is not None
+        assert rule.direction is not None
+        assert rule.minimum_raw is not None
+        assert rule.maximum_raw is not None
+        raw = int(raw_position)
+        if not rule.minimum_raw <= raw <= rule.maximum_raw:
+            raise ValueError(f"{joint} raw position is outside the released range")
+        return rule.position_zero_engineering + rule.direction * (
+            (raw - rule.position_zero_raw) / rule.raw_per_unit
+        )
+
     def torque_enable_inhibits(self, joint: str, readback: ActuatorReadback) -> tuple[str, ...]:
         """Return every reason torque enable must remain false."""
 

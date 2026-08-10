@@ -70,6 +70,7 @@ def evaluate(config_path: Path, root: Path = Path("/")) -> PreflightResult:
     hash_values = (
         "python_interpreter_sha256",
         "package_lock_sha256",
+        "runtime_entrypoint_sha256",
         "supervisor_config_sha256",
         "actuator_config_sha256",
         "compute_interface_config_sha256",
@@ -97,6 +98,13 @@ def evaluate(config_path: Path, root: Path = Path("/")) -> PreflightResult:
         if not _is_sha256(config.get(key)):
             holds.append(f"host config: {key} is not an exact SHA-256")
 
+    period = config.get("runtime_cycle_period_ms")
+    if isinstance(period, bool) or not isinstance(period, int) or not 1 <= period <= 50:
+        holds.append("host config: runtime_cycle_period_ms is not a released integer from 1 through 50")
+    boot_id_path = config.get("boot_id_path")
+    if not isinstance(boot_id_path, str) or not boot_id_path.startswith("/"):
+        holds.append("host config: boot_id_path is not an absolute target path")
+
     startup = config.get("startup_policy", {})
     required_policy = {
         "service_default": "DISABLED",
@@ -113,6 +121,7 @@ def evaluate(config_path: Path, root: Path = Path("/")) -> PreflightResult:
         ("supervisor_config_path", "supervisor_config_sha256"),
         ("actuator_config_path", "actuator_config_sha256"),
         ("compute_interface_config_path", "compute_interface_config_sha256"),
+        ("runtime_entrypoint", "runtime_entrypoint_sha256"),
     )
     for path_key, hash_key in file_bindings:
         target = config.get(path_key)

@@ -19,6 +19,7 @@ from .kinematics import (
     PlanarKinematicModel,
     canonical_model_hash,
 )
+from .runtime import RuntimeExecutionError, RuntimeExecutive, RuntimeStatus
 
 __all__ = [
     "ActuatorConfiguration",
@@ -40,4 +41,7 @@ __all__ = [
     "KinematicConfigurationError",
     "PlanarKinematicModel",
     "canonical_model_hash",
+    "RuntimeExecutionError",
+    "RuntimeExecutive",
+    "RuntimeStatus",
 ]

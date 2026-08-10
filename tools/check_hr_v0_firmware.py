@@ -296,6 +296,7 @@ def main() -> int:
         "maximum": 115.0,
         "unit": "deg",
         "start_tolerance": None,
+        "terminal_tolerance": None,
     }:
         failures.append("supervisor J2 candidate is not the fail-closed 15..115 degree envelope")
     for field in ("configuration_hash", "kinematic_model_hash"):
@@ -361,6 +362,7 @@ def main() -> int:
         "HARDWARE_ERROR_PRESENT",
         "DRIVE_MODE_MISMATCH",
         "def engineering_to_raw",
+        "def raw_to_engineering",
         "actuator transport/calibration selections remain open",
         "engineering target outside controlled motion envelope",
         "evidence_is_accepted(self.mechanical_limit_binding)",
@@ -375,7 +377,9 @@ def main() -> int:
         "configured_current_limit_raw=self._read(actuator_id, CURRENT_LIMIT)",
         "active_goal_current_raw=self._read(actuator_id, GOAL_CURRENT)",
         "configured-current-limit readback changed during execution",
-        "goal-current readback changed during execution",
+        "goal-current readback disagrees with torque state",
+        "torque is enabled outside motion authority",
+        "self._best_effort_goal_current_zero",
         "Read all execution invariants and force torque-off on any failure.",
     ):
         if required not in dynamixel_bus:
@@ -445,6 +449,20 @@ def main() -> int:
             failures.append(f"DYNAMIXEL bus fail-closed invariant missing: {required}")
     if bus_source.find("self._sync_write(GOAL_POSITION, raw_targets)") > bus_source.find("self._sync_write(TORQUE_ENABLE"):
         failures.append("DYNAMIXEL torque enable appears before the zero-jump start target")
+
+    runtime_source = (FIRMWARE / "supervisor" / "project_button_supervisor" / "runtime.py").read_text(encoding="utf-8")
+    for required in (
+        "maximum sample lateness remains SELECTION REQUIRED",
+        "self.hardware.set_heartbeat_allowed(False)",
+        "self.bus.connect_and_configure()",
+        "self.supervisor.observe_hardware(snapshot, now_ms)",
+        "self.bus.start_trajectory",
+        "missed its released lateness bound",
+        "self.supervisor.complete_trajectory",
+        "self.bus.stop()",
+    ):
+        if required not in runtime_source:
+            failures.append(f"runtime execution invariant missing: {required}")
 
     sdk_source = (FIRMWARE / "supervisor" / "project_button_supervisor" / "sdk_transport.py").read_text(encoding="utf-8")
     for required in (

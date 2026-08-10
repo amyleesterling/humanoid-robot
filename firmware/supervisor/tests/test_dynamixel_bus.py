@@ -166,6 +166,25 @@ def connected() -> tuple[ActuatorConfiguration, FakeTransport, DynamixelBusContr
 
 
 class DynamixelBusTests(unittest.TestCase):
+    def test_received_positions_use_released_inverse_calibration(self):
+        config, transport, controller = connected()
+        expected = {"J1": 5.0, "J2": 40.0, "GRIPPER": 50.0}
+        for joint, position in expected.items():
+            rule = config.rules[joint]
+            transport.registers[(rule.actuator_id, PRESENT_POSITION.address)] = config.engineering_to_raw(joint, position)
+        measured = controller.read_positions_engineering(require_torque=False)
+        for joint, position in expected.items():
+            self.assertAlmostEqual(measured[joint], position, delta=1.0 / float(config.rules[joint].raw_per_unit))
+
+    def test_stop_clears_torque_and_goal_current(self):
+        config, transport, controller = connected()
+        authority = Authority(True, "trajectory-stop-test")
+        controller.start_trajectory(authority, "trajectory-stop-test", START)
+        controller.stop()
+        for rule in config.rules.values():
+            self.assertEqual(transport.registers[(rule.actuator_id, TORQUE_ENABLE.address)], 0)
+            self.assertEqual(transport.registers[(rule.actuator_id, GOAL_CURRENT.address)], 0)
+
     def test_repository_config_refuses_to_open_transport(self):
         config = ActuatorConfiguration.from_json(CONFIG_PATH)
         transport = FakeTransport(frozen_config())
