@@ -1,3 +1,5 @@
+* text=auto eol=lf
+
 firmware/**/*.c text eol=lf
 firmware/**/*.h text eol=lf
 firmware/**/*.py text eol=lf
