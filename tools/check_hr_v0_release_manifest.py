@@ -107,6 +107,7 @@ def main() -> None:
         "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1",
         "HR-V0-CONFIG-REC-P0.3",
         "HR-V0-CP-P0.6",
+        "HR-V0-CP-CONFIG-P0.1",
         "HR-V0-COMPUTE-INSTALL-P0.1",
         "HR-V0-U2D2-USB-P0.1",
         "HR-V0-PANEL-RD-P0.1",
@@ -131,7 +132,7 @@ def main() -> None:
         "HR-V0-OBSERVATION-FIELD-HARNESS-P0.1",
         "HR-V0-OBSERVATION-COMPUTE-HARNESS-P0.1",
         "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
-    ] or electrical_product.get("release_state") != "carrier_integrated_p115_direct_core_with_parity_checked_p117_p05_observation_view_not_supplier_released_physical_evidence_absent":
+    ] or electrical_product.get("release_state") != "carrier_integrated_p115_direct_core_panel_current_identity_overlay_physical_and_supplier_evidence_absent" or electrical_product.get("control_panel_configuration") != "HR-V0-CP-CONFIG-P0.1" or electrical_product.get("control_panel_geometry_basis") != "HR-V0-CP-P0.6":
         errors.append("Electrical V3-P1.15 supporting identifiers or release state changed")
     safety_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FSA-P0.1"),

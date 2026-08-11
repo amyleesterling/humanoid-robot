@@ -91,6 +91,8 @@ def main() -> None:
         require("check_hr_v0_compute_installation_p01.py" in gates[gate_id]["evidence_location"], f"{gate_id} evidence is not synchronized")
     electrical = next((item for item in metadata.get("current_products", []) if item.get("domain") == "electrical"), {})
     require("HR-V0-CP-P0.6" in electrical.get("supporting_identifiers", []), "release metadata lacks P0.6")
+    require("HR-V0-CP-CONFIG-P0.1" in electrical.get("supporting_identifiers", []), "release metadata lacks current panel configuration overlay")
+    require(electrical.get("control_panel_configuration") == "HR-V0-CP-CONFIG-P0.1", "release metadata current panel configuration changed")
     require("HR-V0-COMPUTE-INSTALL-P0.1" in electrical.get("supporting_identifiers", []), "release metadata lacks compute-install identifier")
 
     try:
