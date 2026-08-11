@@ -17,6 +17,11 @@ IDENTIFIER = "HR-V0-CONFIG-REC-P0.4"
 WARNING = "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
 
 
+def write_text_lf(path: Path, value: str) -> None:
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write(value)
+
+
 def rows(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8-sig") as handle:
         return list(csv.DictReader(handle))
@@ -107,10 +112,10 @@ def main() -> None:
         directory.mkdir(parents=True, exist_ok=True)
         for name, records in data.items():
             write_csv(directory / name, records)
-        (directory / "README.md").write_text(f"# {IDENTIFIER}\n\n> **{WARNING}**\n\nR223 reconciles P1.15 current identity with the unaccepted P1.18 topology, explicit P2P schedule, held node placement and 95-group covered BOM. No physical or work gate closes.\n", encoding="utf-8", newline="\n")
+        write_text_lf(directory / "README.md", f"# {IDENTIFIER}\n\n> **{WARNING}**\n\nR223 reconciles P1.15 current identity with the unaccepted P1.18 topology, explicit P2P schedule, held node placement and 95-group covered BOM. No physical or work gate closes.\n")
         status = {"identifier": IDENTIFIER, "round": "R223", "date": "2026-08-11", "current_core_electrical_identifier": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "unaccepted_panel_topology_candidate": "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE", "system_bom_groups": 95, "current_records": 23, "supersession_records": 11, "bom_integration_records": 15, "gate_records": 11, "open_holds": 26, "acceptance_rows": 24, "all_acceptance_executed": False, "physical_article_exists": False, "physical_test_executed": False, "qualified_review_complete": False, "procurement_authorized": False, "fabrication_authorized": False, "assembly_authorized": False, "connection_authorized": False, "powered_testing_authorized": False, "motion_authorized": False, "energization_authorized": False, "safety_credit": False, "warning": WARNING}
-        (directory / "package-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8", newline="\n")
-    (OUT / "index.html").write_text(page(data), encoding="utf-8", newline="\n")
+        write_text_lf(directory / "package-status.json", json.dumps(status, indent=2) + "\n")
+    write_text_lf(OUT / "index.html", page(data))
     sources = [ROOT / row["source_path"] for row in data["current-configuration-map.csv"]]
     source_rows = [warned({"source_path": path.relative_to(ROOT).as_posix(), "sha256": digest(path), "role": "current configuration evidence"}) for path in sources]
     for directory in (ENG, OUT):

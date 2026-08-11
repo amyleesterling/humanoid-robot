@@ -76,9 +76,10 @@
         "HR-V0-P120-WD-INTERLOCK-P0.1",
         "HR-V0-PNOZ-KWD-APP-P0.2",
         "V3-P1.21-SRA1-SUPPLY-WATCHDOG-CANDIDATE",
-        "HR-V0-P121-SRA1-SUPPLY-WD-P0.1"
+        "HR-V0-P121-SRA1-SUPPLY-WD-P0.1",
+        "HR-V0-P121-APP-EVID-P0.1"
       ],
-      "release_state": "p115_current_p118_p119_p120_p121_unaccepted_r234_sra1_supply_watchdog_candidate_complete_manufacturer_routing_physical_tests_qualified_disposition_and_authority_open",
+      "release_state": "p115_current_p118_p119_p120_p121_unaccepted_r235_application_evidence_route_complete_all_questions_unsent_tests_unexecuted_manufacturer_qualified_and_authority_open",
       "control_panel_configuration": "HR-V0-CP-CONFIG-P0.1",
       "control_panel_geometry_basis": "HR-V0-CP-P0.6",
       "control_panel_conductor_basis": "HR-V0-PANEL-COND-P0.1",
@@ -105,7 +106,9 @@
       "p120_pnoz_kwd_application_summary": "31 terminal-path rows; 12 source/derived electrical screens; 10 fault cases; 9 open holds; Sol B-005 partially addressed/open; P1.20 remains unaccepted with zero safety credit",
       "sra1_supply_watchdog_candidate": "V3-P1.21-SRA1-SUPPLY-WATCHDOG-CANDIDATE",
       "p121_sra1_supply_watchdog_dossier": "HR-V0-P121-SRA1-SUPPLY-WD-P0.1",
-      "p121_sra1_supply_watchdog_summary": "7 exact terminal changes; 14 fault cases; 9 paper supply/contact screens; 11 open holds; P1.15 remains current and P1.21 unaccepted; DF-01 zero safety credit"
+      "p121_sra1_supply_watchdog_summary": "7 exact terminal changes; 14 fault cases; 9 paper supply/contact screens; 11 open holds; P1.15 remains current and P1.21 unaccepted; DF-01 zero safety credit",
+      "p121_application_evidence_dossier": "HR-V0-P121-APP-EVID-P0.1",
+      "p121_application_evidence_summary": "13 unsent manufacturer questions; 12 response controls; 10 open authorization prerequisites; 15 signals; 18 unexecuted tests; 14 open holds; no manufacturer response or authority"
     },
     {
       "domain": "mechanical",
@@ -217,13 +220,15 @@
         "HR-V0-WD-PERMIT-TOPOLOGY-P0.1",
         "HR-V0-P120-WD-INTERLOCK-P0.1",
         "HR-V0-PNOZ-KWD-APP-P0.2",
-        "HR-V0-P121-SRA1-SUPPLY-WD-P0.1"
+        "HR-V0-P121-SRA1-SUPPLY-WD-P0.1",
+        "HR-V0-P121-APP-EVID-P0.1"
       ],
-      "release_state": "r234_p121_sra1_supply_watchdog_candidate_zero_safety_credit_manufacturer_routing_physical_validation_plr_sil_and_qualified_review_open",
+      "release_state": "r235_p121_application_evidence_route_zero_safety_credit_questions_unsent_tests_unexecuted_plr_sil_and_qualified_review_open",
       "watchdog_permit_topology_proof": "HR-V0-WD-PERMIT-TOPOLOGY-P0.1",
       "watchdog_interlock_candidate": "HR-V0-P120-WD-INTERLOCK-P0.1",
       "p120_pnoz_kwd_application_dossier": "HR-V0-PNOZ-KWD-APP-P0.2",
-      "p121_sra1_supply_watchdog_dossier": "HR-V0-P121-SRA1-SUPPLY-WD-P0.1"
+      "p121_sra1_supply_watchdog_dossier": "HR-V0-P121-SRA1-SUPPLY-WD-P0.1",
+      "p121_application_evidence_dossier": "HR-V0-P121-APP-EVID-P0.1"
     },
     {
       "domain": "bill_of_materials",

@@ -114,11 +114,12 @@ def main() -> int:
     candidate = json.loads((ROOT / "release/hr-v0/release-candidate.json").read_text(encoding="utf-8"))
     safety = next((item for item in candidate.get("current_products", []) if item.get("domain") == "functional_safety"), {})
     need("HR-V0-FS-REVIEW-ROUTE-P0.1" in safety.get("supporting_identifiers", []), "release candidate lacks reviewer route")
-    need(safety.get("release_state") == "r234_p121_sra1_supply_watchdog_candidate_zero_safety_credit_manufacturer_routing_physical_validation_plr_sil_and_qualified_review_open", "functional-safety state changed")
+    need(safety.get("release_state") == "r235_p121_application_evidence_route_zero_safety_credit_questions_unsent_tests_unexecuted_plr_sil_and_qualified_review_open", "functional-safety state changed")
     need(safety.get("watchdog_permit_topology_proof") == "HR-V0-WD-PERMIT-TOPOLOGY-P0.1", "R225 watchdog topology proof missing")
     need(safety.get("watchdog_interlock_candidate") == "HR-V0-P120-WD-INTERLOCK-P0.1", "R232 watchdog interlock candidate missing")
     need(safety.get("p120_pnoz_kwd_application_dossier") == "HR-V0-PNOZ-KWD-APP-P0.2", "R233 PNOZ/KWD dossier missing")
     need(safety.get("p121_sra1_supply_watchdog_dossier") == "HR-V0-P121-SRA1-SUPPLY-WD-P0.1", "R234 P1.21 dossier missing")
+    need(safety.get("p121_application_evidence_dossier") == "HR-V0-P121-APP-EVID-P0.1", "R235 P1.21 application evidence missing")
 
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in (WARNING, "HR-V0-FS-REVIEW-ROUTE-P0.1", "font:clamp(16px", "font-size:14px", 'data-filter="local"', 'data-filter="full"', 'data-filter="consulting"'):
