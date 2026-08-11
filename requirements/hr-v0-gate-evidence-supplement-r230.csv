@@ -1,0 +1,4 @@
+round,gate_id,status,evidence_added,remaining_evidence,authority_added,warning
+R230,EG-002,partial,HR-V0-P119-VISUAL-CORRECTION-P0.1,independent and qualified P1.19 review; accepted ECAD promotion; physical panel/harness evidence,NO,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+R230,EG-004,partial,HR-V0-P119-VISUAL-CORRECTION-P0.1,released protection/grounding/termination design; executed pre-power and fault evidence; qualified disposition,NO,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+R230,EG-020,partial,HR-V0-P119-VISUAL-CORRECTION-P0.1,"accepted wiring baseline, physical continuity/isolation/backfeed results and signed release",NO,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

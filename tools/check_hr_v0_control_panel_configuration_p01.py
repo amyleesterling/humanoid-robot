@@ -132,11 +132,13 @@ def main() -> int:
     need(electrical.get("configuration_reconciliation") == "HR-V0-CONFIG-REC-P0.4", "R223 configuration reconciliation missing")
     need(electrical.get("ecad_web_review_surface") == "HR-V0-ECAD-WEB-REVIEW-P0.1", "R224 ECAD web-review surface missing")
     need(electrical.get("identifier") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "P1.15 current identity changed")
-    need(electrical.get("release_state") == "p115_current_p118_unaccepted_r229_parity_dossier_complete_qualified_disposition_physical_selections_tests_and_authority_open", "electrical release state changed")
+    need(electrical.get("release_state") == "p115_current_p118_p119_unaccepted_r230_visual_and_semantic_parity_complete_qualified_disposition_physical_selections_tests_and_authority_open", "electrical release state changed")
     need(electrical.get("contactor_application_record") == "HR-V0-K1K2-APP-P0.3", "current contactor application record missing")
     need(electrical.get("e2_grounding_boundary") == "HR-V0-E2-GND-BOUNDARY-P0.1", "R227 E2 grounding boundary missing")
     need(electrical.get("e2_prepower_test_candidate") == "HR-V0-E2-PREPOWER-P0.1", "R228 E2 pre-power candidate missing")
     need(electrical.get("p118_disposition_dossier") == "HR-V0-P118-DISPOSITION-P0.1", "R229 P1.18 disposition dossier missing")
+    need(electrical.get("panel_visual_correction_candidate") == "V3-P1.19-VISUAL-CORRECTION-CANDIDATE", "R230 P1.19 candidate missing")
+    need(electrical.get("p119_visual_correction_dossier") == "HR-V0-P119-VISUAL-CORRECTION-P0.1", "R230 visual-correction dossier missing")
 
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in (WARNING, "HR-V0-CP-CONFIG-P0.1", "font:clamp(16px", "font-size:14px", "66 / 66", "PCB-P1.0", "DXL-STAR-P0.2", "12</b>physical closure holds"):

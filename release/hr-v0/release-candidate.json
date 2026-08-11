@@ -69,9 +69,11 @@
         "HR-V0-K1K2-APP-P0.3",
         "HR-V0-E2-GND-BOUNDARY-P0.1",
         "HR-V0-E2-PREPOWER-P0.1",
-        "HR-V0-P118-DISPOSITION-P0.1"
+        "HR-V0-P118-DISPOSITION-P0.1",
+        "V3-P1.19-VISUAL-CORRECTION-CANDIDATE",
+        "HR-V0-P119-VISUAL-CORRECTION-P0.1"
       ],
-      "release_state": "p115_current_p118_unaccepted_r229_parity_dossier_complete_qualified_disposition_physical_selections_tests_and_authority_open",
+      "release_state": "p115_current_p118_p119_unaccepted_r230_visual_and_semantic_parity_complete_qualified_disposition_physical_selections_tests_and_authority_open",
       "control_panel_configuration": "HR-V0-CP-CONFIG-P0.1",
       "control_panel_geometry_basis": "HR-V0-CP-P0.6",
       "control_panel_conductor_basis": "HR-V0-PANEL-COND-P0.1",
@@ -87,7 +89,10 @@
       "e2_prepower_test_candidate": "HR-V0-E2-PREPOWER-P0.1",
       "e2_prepower_configuration_binding": "55 P1.18 conductor rows; 45 fixed-internal method candidates; 10 blocked door rows; zero released limits or results",
       "p118_disposition_dossier": "HR-V0-P118-DISPOSITION-P0.1",
-      "p118_disposition_summary": "77 BOM and 308 terminal rows preserved; 106 net names preserved; five nodes and 32 node terminals added; P1.18 remains unaccepted"
+      "p118_disposition_summary": "77 BOM and 308 terminal rows preserved; 106 net names preserved; five nodes and 32 node terminals added; P1.18 remains unaccepted",
+      "panel_visual_correction_candidate": "V3-P1.19-VISUAL-CORRECTION-CANDIDATE",
+      "p119_visual_correction_dossier": "HR-V0-P119-VISUAL-CORRECTION-P0.1",
+      "p119_visual_correction_summary": "84 components, 106 native nets and five synchronized schedules unchanged; 13 project visual passes; P1.19 remains unaccepted"
     },
     {
       "domain": "mechanical",
