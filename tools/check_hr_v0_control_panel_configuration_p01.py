@@ -132,7 +132,7 @@ def main() -> int:
     need(electrical.get("configuration_reconciliation") == "HR-V0-CONFIG-REC-P0.4", "R223 configuration reconciliation missing")
     need(electrical.get("ecad_web_review_surface") == "HR-V0-ECAD-WEB-REVIEW-P0.1", "R224 ECAD web-review surface missing")
     need(electrical.get("identifier") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "P1.15 current identity changed")
-    need(electrical.get("release_state") == "p115_current_p118_p119_p120_unaccepted_r232_dual_sra1_interlock_source_parity_complete_common_cause_physical_tests_qualified_disposition_and_authority_open", "electrical release state changed")
+    need(electrical.get("release_state") == "p115_current_p118_p119_p120_unaccepted_r233_pnoz_kwd_application_screen_complete_common_cause_routing_physical_tests_qualified_disposition_and_authority_open", "electrical release state changed")
     need(electrical.get("contactor_application_record") == "HR-V0-K1K2-APP-P0.3", "current contactor application record missing")
     need(electrical.get("e2_grounding_boundary") == "HR-V0-E2-GND-BOUNDARY-P0.1", "R227 E2 grounding boundary missing")
     need(electrical.get("e2_prepower_test_candidate") == "HR-V0-E2-PREPOWER-P0.1", "R228 E2 pre-power candidate missing")
@@ -141,6 +141,7 @@ def main() -> int:
     need(electrical.get("p119_visual_correction_dossier") == "HR-V0-P119-VISUAL-CORRECTION-P0.1", "R230 visual-correction dossier missing")
     need(electrical.get("watchdog_interlock_candidate") == "V3-P1.20-WATCHDOG-INTERLOCK-CANDIDATE", "R232 P1.20 candidate missing")
     need(electrical.get("p120_watchdog_interlock_dossier") == "HR-V0-P120-WD-INTERLOCK-P0.1", "R232 watchdog-interlock dossier missing")
+    need(electrical.get("p120_pnoz_kwd_application_dossier") == "HR-V0-PNOZ-KWD-APP-P0.2", "R233 PNOZ/KWD application dossier missing")
 
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in (WARNING, "HR-V0-CP-CONFIG-P0.1", "font:clamp(16px", "font-size:14px", "66 / 66", "PCB-P1.0", "DXL-STAR-P0.2", "12</b>physical closure holds"):

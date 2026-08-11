@@ -149,9 +149,10 @@ def main() -> int:
     need(safety.get("identifier") == "HR-V0-FSA-P0.1", "functional-safety parent identity changed")
     need("HR-V0-SRS-P0.2" in safety.get("supporting_identifiers", []), "release candidate lacks SRS P0.2")
     need("HR-V0-FS-REVIEW-ROUTE-P0.1" in safety.get("supporting_identifiers", []), "release candidate lacks R219 reviewer route")
-    need(safety.get("release_state") == "r232_separate_sra1_input_return_interlocks_source_proved_zero_safety_credit_common_cause_physical_validation_plr_sil_and_qualified_review_open", "release safety state changed")
+    need(safety.get("release_state") == "r233_p120_pnoz_kwd_application_screen_pass_zero_safety_credit_common_cause_routing_physical_validation_plr_sil_and_qualified_review_open", "release safety state changed")
     need(safety.get("watchdog_permit_topology_proof") == "HR-V0-WD-PERMIT-TOPOLOGY-P0.1", "R225 watchdog topology proof missing")
     need(safety.get("watchdog_interlock_candidate") == "HR-V0-P120-WD-INTERLOCK-P0.1", "R232 watchdog interlock candidate missing")
+    need(safety.get("p120_pnoz_kwd_application_dossier") == "HR-V0-PNOZ-KWD-APP-P0.2", "R233 PNOZ/KWD dossier missing")
 
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in (WARNING, "HR-V0-SRS-P0.2", "font:clamp(16px", "font-size:14px", "data-filter=\"SF-01\"", "data-filter=\"SF-03\"", "data-filter=\"open\"", "200 ms", "2.000 deg", "0</strong>PLr/SIL"):

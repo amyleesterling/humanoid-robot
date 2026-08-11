@@ -73,9 +73,10 @@
         "V3-P1.19-VISUAL-CORRECTION-CANDIDATE",
         "HR-V0-P119-VISUAL-CORRECTION-P0.1",
         "V3-P1.20-WATCHDOG-INTERLOCK-CANDIDATE",
-        "HR-V0-P120-WD-INTERLOCK-P0.1"
+        "HR-V0-P120-WD-INTERLOCK-P0.1",
+        "HR-V0-PNOZ-KWD-APP-P0.2"
       ],
-      "release_state": "p115_current_p118_p119_p120_unaccepted_r232_dual_sra1_interlock_source_parity_complete_common_cause_physical_tests_qualified_disposition_and_authority_open",
+      "release_state": "p115_current_p118_p119_p120_unaccepted_r233_pnoz_kwd_application_screen_complete_common_cause_routing_physical_tests_qualified_disposition_and_authority_open",
       "control_panel_configuration": "HR-V0-CP-CONFIG-P0.1",
       "control_panel_geometry_basis": "HR-V0-CP-P0.6",
       "control_panel_conductor_basis": "HR-V0-PANEL-COND-P0.1",
@@ -97,7 +98,9 @@
       "p119_visual_correction_summary": "84 components, 106 native nets and five synchronized schedules unchanged; 13 project visual passes; P1.19 remains unaccepted",
       "watchdog_interlock_candidate": "V3-P1.20-WATCHDOG-INTERLOCK-CANDIDATE",
       "p120_watchdog_interlock_dossier": "HR-V0-P120-WD-INTERLOCK-P0.1",
-      "p120_watchdog_interlock_summary": "84 component identities unchanged; exactly seven terminal/net and seven native-net-membership changes; 12 fault screens; 9 open holds; P1.20 remains unaccepted with zero safety credit"
+      "p120_watchdog_interlock_summary": "84 component identities unchanged; exactly seven terminal/net and seven native-net-membership changes; 12 fault screens; 9 open holds; P1.20 remains unaccepted with zero safety credit",
+      "p120_pnoz_kwd_application_dossier": "HR-V0-PNOZ-KWD-APP-P0.2",
+      "p120_pnoz_kwd_application_summary": "31 terminal-path rows; 12 source/derived electrical screens; 10 fault cases; 9 open holds; Sol B-005 partially addressed/open; P1.20 remains unaccepted with zero safety credit"
     },
     {
       "domain": "mechanical",
@@ -207,11 +210,13 @@
         "HR-V0-SRS-P0.2",
         "HR-V0-FS-REVIEW-ROUTE-P0.1",
         "HR-V0-WD-PERMIT-TOPOLOGY-P0.1",
-        "HR-V0-P120-WD-INTERLOCK-P0.1"
+        "HR-V0-P120-WD-INTERLOCK-P0.1",
+        "HR-V0-PNOZ-KWD-APP-P0.2"
       ],
-      "release_state": "r232_separate_sra1_input_return_interlocks_source_proved_zero_safety_credit_common_cause_physical_validation_plr_sil_and_qualified_review_open",
+      "release_state": "r233_p120_pnoz_kwd_application_screen_pass_zero_safety_credit_common_cause_routing_physical_validation_plr_sil_and_qualified_review_open",
       "watchdog_permit_topology_proof": "HR-V0-WD-PERMIT-TOPOLOGY-P0.1",
-      "watchdog_interlock_candidate": "HR-V0-P120-WD-INTERLOCK-P0.1"
+      "watchdog_interlock_candidate": "HR-V0-P120-WD-INTERLOCK-P0.1",
+      "p120_pnoz_kwd_application_dossier": "HR-V0-PNOZ-KWD-APP-P0.2"
     },
     {
       "domain": "bill_of_materials",

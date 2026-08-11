@@ -1,0 +1,16 @@
+{
+  "identifier": "HR-V0-PNOZ-KWD-APP-P0.2",
+  "round": "R233",
+  "candidate": "V3-P1.20-WATCHDOG-INTERLOCK-CANDIDATE",
+  "current_electrical_product": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE",
+  "application_disposition": "SOURCE_APPLICATION_SCREEN_PASS_QUALIFIED_AND_PHYSICAL_CLOSURE_OPEN",
+  "b005_disposition": "PARTIALLY_ADDRESSED_OPEN",
+  "terminal_path_rows": 31,
+  "compatibility_screens": 12,
+  "fault_cases": 10,
+  "open_holds": 9,
+  "p120_accepted": false,
+  "safety_credit": "NONE",
+  "work_authority": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}
