@@ -124,7 +124,9 @@ def main() -> int:
     need(electrical.get("control_panel_configuration") == "HR-V0-CP-CONFIG-P0.1", "release candidate lacks current panel configuration")
     need(electrical.get("control_panel_geometry_basis") == "HR-V0-CP-P0.6", "panel geometry basis changed")
     need("HR-V0-CP-CONFIG-P0.1" in electrical.get("supporting_identifiers", []), "supporting identifier missing")
-    need(electrical.get("release_state") == "carrier_integrated_p115_direct_core_panel_current_identity_overlay_physical_and_supplier_evidence_absent", "electrical release state changed")
+    need(electrical.get("control_panel_conductor_basis") == "HR-V0-PANEL-COND-P0.1", "R221 conductor basis missing")
+    need("HR-V0-PANEL-COND-P0.1" in electrical.get("supporting_identifiers", []), "R221 supporting identifier missing")
+    need(electrical.get("release_state") == "carrier_integrated_p115_direct_core_panel_current_identity_and_fixed_internal_conductor_family_candidate_physical_protection_and_supplier_evidence_absent", "electrical release state changed")
 
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in (WARNING, "HR-V0-CP-CONFIG-P0.1", "font:clamp(16px", "font-size:14px", "66 / 66", "PCB-P1.0", "DXL-STAR-P0.2", "12</b>physical closure holds"):
