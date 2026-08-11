@@ -66,9 +66,10 @@
         "HR-V0-OBSERVATION-FIELD-HARNESS-P0.1",
         "HR-V0-OBSERVATION-COMPUTE-HARNESS-P0.1",
         "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
-        "HR-V0-K1K2-APP-P0.3"
+        "HR-V0-K1K2-APP-P0.3",
+        "HR-V0-E2-GND-BOUNDARY-P0.1"
       ],
-      "release_state": "p115_current_p118_unaccepted_k1k2_32_row_parity_proved_dc_application_protection_physical_tests_and_qualified_acceptance_open",
+      "release_state": "p115_current_p118_unaccepted_e2_grounding_boundary_bound_k1k2_dc_application_protection_physical_tests_and_qualified_acceptance_open",
       "control_panel_configuration": "HR-V0-CP-CONFIG-P0.1",
       "control_panel_geometry_basis": "HR-V0-CP-P0.6",
       "control_panel_conductor_basis": "HR-V0-PANEL-COND-P0.1",
@@ -78,7 +79,9 @@
       "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.4",
       "ecad_web_review_surface": "HR-V0-ECAD-WEB-REVIEW-P0.1",
       "contactor_application_record": "HR-V0-K1K2-APP-P0.3",
-      "contactor_configuration_binding": "P1.15 current and P1.18 unaccepted contain 32 identical contactor-critical terminal/net rows"
+      "contactor_configuration_binding": "P1.15 current and P1.18 unaccepted contain 32 identical contactor-critical terminal/net rows",
+      "e2_grounding_boundary": "HR-V0-E2-GND-BOUNDARY-P0.1",
+      "e2_grounding_configuration_binding": "26 source/frame/shield endpoint rows identical; SAFETY_0V explicitly differs 41 to 49 through XD0"
     },
     {
       "domain": "mechanical",
@@ -227,6 +230,7 @@
       "supporting_identifiers": [
         "HR-V0-E2-HW-P0.4",
         "HR-V0-E2-EVIDENCE-P0.2",
+        "HR-V0-E2-GND-BOUNDARY-P0.1",
         "HR-V0-STALE-AUTH-P0.1",
         "AUDIT-ELEC-002",
         "INSPECT-ELEC-010",
@@ -237,7 +241,7 @@
         "TEST-E2-002",
         "AUDIT-E2-001"
       ],
-      "release_state": "templates_not_executed_not_authorized_for_energization"
+      "release_state": "e2_grounding_boundary_controlled_templates_not_executed_not_authorized_for_connection_or_energization"
     },
     {
       "domain": "test_instrumentation",
