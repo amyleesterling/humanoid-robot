@@ -1,5 +1,5 @@
 source_id,path,sha256,state
-release_candidate,release/hr-v0/release-candidate.json,d185f85f242b4eceb2273e13ea0d0a056f8b656219cf0500cee3957d3546dd06,CONTROLLED INPUT SNAPSHOT
+release_candidate,release/hr-v0/release-candidate.json,8fd925f38ff478b2b4a5f36dd2fec01bdf2b4ae0100272da2f2ff2912049008b,CONTROLLED INPUT SNAPSHOT
 release_manifest,release/hr-v0/HR-V0-RC-P0.1-file-manifest.csv,SELF-REFERENTIAL-MANIFEST-HASH-OMITTED,CONTROLLED INPUT; HASH OMITTED TO AVOID MANIFEST CYCLE
 energization_gates,requirements/hr-v0-energization-gates.csv,fe5cff81f7b165dee26eb16951f769232bf7a3e1b71c9b46178352bdb52d45cc,CONTROLLED INPUT SNAPSHOT
 bom_closure,bom/hr-v0-bom-closure.csv,c07f744ccc7c55723d748ddef8f6a532284f71f5ef519ce90ec8c17803957a6d,CONTROLLED INPUT SNAPSHOT

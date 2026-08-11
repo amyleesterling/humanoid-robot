@@ -79,7 +79,8 @@
         "HR-V0-P121-SRA1-SUPPLY-WD-P0.1",
         "HR-V0-P121-APP-EVID-P0.1",
         "HR-V0-P121-CONSOLIDATED-REVIEW-P0.1",
-        "HR-V0-P121-VISUAL-REVIEW-P0.1"
+        "HR-V0-P121-VISUAL-REVIEW-P0.1",
+        "HR-V0-P121-ROUTING-P0.1"
       ],
       "release_state": "p115_current_p118_p119_p120_p121_unaccepted_r235_application_evidence_route_complete_all_questions_unsent_tests_unexecuted_manufacturer_qualified_and_authority_open",
       "control_panel_configuration": "HR-V0-CP-CONFIG-P0.1",
@@ -114,7 +115,9 @@
       "p121_consolidated_review_dossier": "HR-V0-P121-CONSOLIDATED-REVIEW-P0.1",
       "p121_consolidated_review_summary": "P1.21 transitively inherits P1.19 layout and P1.18 panel nodes; 13 native sheets; 6 keyed P1.19-to-P1.21 terminal changes; 11 open holds; P1.15 remains current and P1.21 unaccepted",
       "p121_visual_review_dossier": "HR-V0-P121-VISUAL-REVIEW-P0.1",
-      "p121_visual_review_summary": "13 project visual passes; pages 2 and 3 freshly inspected; 0 project visual findings; 10 substantive holds remain open; independent and qualified review absent"
+      "p121_visual_review_summary": "13 project visual passes; pages 2 and 3 freshly inspected; 0 project visual findings; 10 substantive holds remain open; independent and qualified review absent",
+      "p121_protected_routing_dossier": "HR-V0-P121-ROUTING-P0.1",
+      "p121_protected_routing_summary": "7 route deltas; 9 coordinate-bound planning routes; 14 hot-versus-credited pairs with zero nominal centerline crossings; 9 physical and qualified holds open; no route released"
     },
     {
       "domain": "mechanical",

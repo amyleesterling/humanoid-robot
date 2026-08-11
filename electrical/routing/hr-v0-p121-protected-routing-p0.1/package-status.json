@@ -1,0 +1,21 @@
+{
+  "identifier": "HR-V0-P121-ROUTING-P0.1",
+  "round": "R240",
+  "date": "2026-08-11",
+  "current_candidate": "V3-P1.15-CARRIER-CANDIDATE",
+  "review_candidate": "V3-P1.21-SRA1-SUPPLY-WATCHDOG-CANDIDATE",
+  "panel_basis": "HR-V0-PANEL-NODE-PLACEMENT-P0.1 / P0.7 planning geometry",
+  "route_delta_records": 7,
+  "route_records": 9,
+  "crossing_screens": 14,
+  "nominal_centerline_crossings": 0,
+  "open_holds": 9,
+  "protected_route_released": false,
+  "p121_accepted": false,
+  "physical_evidence_complete": false,
+  "qualified_review_complete": false,
+  "functional_safety_approved": false,
+  "work_authority": false,
+  "sol_review_lineage": "Same R12 summary; confirmed against current disposition and not double-counted",
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}
