@@ -1,0 +1,59 @@
+{
+  "identifier": "HR-V0-FW-MECH-SRC-BIND-P0.1",
+  "round": "R245",
+  "date": "2026-08-11",
+  "mechanical_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+  "kinematic_basis_revision": "HR-V0-ARM-ARCH-P0.7",
+  "custom_part_manufacturing_revision": "HR-V0-MECH-BOM-BIND-P0.3",
+  "hard_stop_revision": "HR-V0-HS-P0.3",
+  "release_state": "CANDIDATE-NOT-RELEASED",
+  "acceptance_evidence_hash": "SELECTION REQUIRED",
+  "sources": [
+    {
+      "path": "release/hr-v0/arm-architecture-p0.8-dwg-integrated/source-hash-register.csv",
+      "sha256": "471e15731c468437b0ee4e4159988a910c1ccb5ccfd458f6a04f72f7d2b34cfb",
+      "role": "integrated P0.8 generated-source identity register"
+    },
+    {
+      "path": "release/hr-v0/arm-architecture-p0.8-dwg-integrated/package-status.json",
+      "sha256": "494b8997a905c7d9316ad22a33a2410f524cb5ae838a22a24fe785b1d3c12e2d",
+      "role": "integrated P0.8 release boundary"
+    },
+    {
+      "path": "release/hr-v0/mechanical-bom-binding-p0.3/source-hash-register.csv",
+      "sha256": "d15b81589c29affd351436395d72801656c96c1d1f3c3b5c01536077015ddf2f",
+      "role": "current custom-part source identity register"
+    },
+    {
+      "path": "release/hr-v0/mechanical-bom-binding-p0.3/package-status.json",
+      "sha256": "acb435497ff521ea0bca347f7743de3fb9803f59c80c9015695cdd85c6237912",
+      "role": "current custom-part release boundary"
+    },
+    {
+      "path": "cad/hr-v0/generated/arm-architecture-p0.7/transform-schedule.csv",
+      "sha256": "c16e15d7396643d1cde8f95110253ea4efc8e55b67f8385cd97cfeb0df8b026c",
+      "role": "inherited P0.7 transform basis"
+    },
+    {
+      "path": "cad/hr-v0/generated/arm-architecture-p0.7/interface-schedule.csv",
+      "sha256": "98635831a6eadea47cccd5d4227340516dcf59cd8c4a33ee5cdcd26980713ed4",
+      "role": "inherited P0.7 interface basis"
+    },
+    {
+      "path": "cad/hr-v0/generated/arm-architecture-p0.7/hard-stop-allocation.csv",
+      "sha256": "05db37ca424bc54a7b9200fe1ae8b3b38b9d4623afbb3402fd079ea25f5f5d99",
+      "role": "inherited positive-stop allocation"
+    },
+    {
+      "path": "cad/hr-v0/generated/hard-stops/hard-stop-datums.csv",
+      "sha256": "7e4ad54ad5c3f0b24db507e281a1345494362c1cc2a4e7a02387746bd280726c",
+      "role": "hard-stop datum basis"
+    }
+  ],
+  "physical_article_exists": false,
+  "physical_acceptance_executed": false,
+  "qualified_review_complete": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

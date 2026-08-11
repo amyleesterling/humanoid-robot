@@ -286,8 +286,10 @@ def main() -> int:
         "mechanical_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
         "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
         "kinematic_basis_revision": "HR-V0-ARM-ARCH-P0.7",
-        "custom_part_manufacturing_revision": "HR-V0-MECH-BOM-BIND-P0.2",
+        "custom_part_manufacturing_revision": "HR-V0-MECH-BOM-BIND-P0.3",
         "hard_stop_revision": "HR-V0-HS-P0.3",
+        "source_binding_identifier": "HR-V0-FW-MECH-SRC-BIND-P0.1",
+        "source_binding_manifest_sha256": "5adc34ff41f2f84b1d8cf60e2a95b6f93ebc8eba1f2ac6b93642dd429b237c8a",
         "release_state": "CANDIDATE-NOT-RELEASED",
         "acceptance_evidence_hash": "SELECTION REQUIRED",
     }

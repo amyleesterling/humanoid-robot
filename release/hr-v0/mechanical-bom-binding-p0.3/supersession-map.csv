@@ -1,0 +1,2 @@
+prior_identifier,successor_identifier,change,prior_artifacts_historical,fabrication_authorized,warning
+HR-V0-MECH-BOM-BIND-P0.2,HR-V0-MECH-BOM-BIND-P0.3,corrects all five architecture_id values to HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE; geometry and fifteen STEP/DXF/drawing hashes are unchanged,TRUE,FALSE,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
