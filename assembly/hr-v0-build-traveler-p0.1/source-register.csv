@@ -1,5 +1,5 @@
 source_id,path,sha256,state
-release_candidate,release/hr-v0/release-candidate.json,26b24afe1675f542af2b1351ae13f0d07c09b4f56ae41acb487d7a298d2fa1d6,CONTROLLED INPUT SNAPSHOT
+release_candidate,release/hr-v0/release-candidate.json,78d0eba179e2b48f6e242ec06eb6258d27f67c9714fa2b5c21a3ecbab2d1d55d,CONTROLLED INPUT SNAPSHOT
 release_manifest,release/hr-v0/HR-V0-RC-P0.1-file-manifest.csv,SELF-REFERENTIAL-MANIFEST-HASH-OMITTED,CONTROLLED INPUT; HASH OMITTED TO AVOID MANIFEST CYCLE
 energization_gates,requirements/hr-v0-energization-gates.csv,fe5cff81f7b165dee26eb16951f769232bf7a3e1b71c9b46178352bdb52d45cc,CONTROLLED INPUT SNAPSHOT
 bom_closure,bom/hr-v0-bom-closure.csv,c07f744ccc7c55723d748ddef8f6a532284f71f5ef519ce90ec8c17803957a6d,CONTROLLED INPUT SNAPSHOT
@@ -13,4 +13,4 @@ guard,docs/hr-v0-fixed-guard-receiver-p0.3.md,3bd94322cf0f27e2feb15f91bc73fbca48
 receiver,docs/hr-v0-passive-arm-receiver-detail-p0.2.md,cafe52b8c38ca2dda4ecded7e78965a31c912d3014f831749f107e01b85c74bb,CONTROLLED INPUT SNAPSHOT
 electrical,docs/hr-v0-electrical-v3-candidate.md,2eb199a0bbcd4d3bd3cde51801a3abca422ec01f12f6cb5a170a93dc88ab52ef,CONTROLLED INPUT SNAPSHOT
 e2_sequence,docs/hr-v0-e2-control-only-energization-p0.1.md,355fef99467e968c0af021fb0d249ecb36255668d2b557d4981b96d9c007096c,CONTROLLED INPUT SNAPSHOT
-procedure_registry,tests/procedures/procedure-registry.csv,3e483e1d21e0f743d71ce8447b9d3d511ac8041ceab5b0b55b035844d5300e6a,CONTROLLED INPUT SNAPSHOT
+procedure_registry,tests/procedures/procedure-registry.csv,77acbb9359b917f663e88d0f0b7816a28491ea1e29d37df704f6004ec517f805,CONTROLLED INPUT SNAPSHOT

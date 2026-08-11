@@ -20,6 +20,13 @@ from .kinematics import (
     canonical_model_hash,
 )
 from .runtime import RuntimeExecutionError, RuntimeExecutive, RuntimeStatus
+from .evidence_log import (
+    EvidenceContext,
+    EvidenceLogError,
+    HashChainedJsonlSink,
+    LogVerification,
+    verify_log,
+)
 
 __all__ = [
     "ActuatorConfiguration",
@@ -44,4 +51,9 @@ __all__ = [
     "RuntimeExecutionError",
     "RuntimeExecutive",
     "RuntimeStatus",
+    "EvidenceContext",
+    "EvidenceLogError",
+    "HashChainedJsonlSink",
+    "LogVerification",
+    "verify_log",
 ]

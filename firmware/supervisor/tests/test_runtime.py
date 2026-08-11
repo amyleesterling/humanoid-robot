@@ -108,12 +108,30 @@ class FakeCommands:
         self.closed = True
 
 
-def runtime() -> tuple[RuntimeExecutive, FakeBus, FakeHardware, FakeCommands]:
+class FakeEvidence:
+    def __init__(self) -> None:
+        self.records: list[tuple[int, str, dict[str, object]]] = []
+        self.closed = False
+        self.fail = False
+
+    def record(self, monotonic_ms: int, event: str, payload) -> None:
+        if self.fail:
+            raise RuntimeError("injected evidence failure")
+        self.records.append((monotonic_ms, event, dict(payload)))
+
+    def close(self, monotonic_ms: int) -> None:
+        if self.fail:
+            raise RuntimeError("injected evidence failure")
+        self.closed = True
+
+
+def runtime() -> tuple[RuntimeExecutive, FakeBus, FakeHardware, FakeCommands, FakeEvidence]:
     bus = FakeBus()
     hardware = FakeHardware()
     commands = FakeCommands()
+    evidence = FakeEvidence()
     supervisor = Supervisor(config(), lambda samples: [0.0 for _ in samples], "SESSION-TEST")
-    return RuntimeExecutive(supervisor, bus, hardware, commands), bus, hardware, commands
+    return RuntimeExecutive(supervisor, bus, hardware, commands, evidence), bus, hardware, commands, evidence
 
 
 def arm(executive: RuntimeExecutive, hardware: FakeHardware) -> None:
@@ -131,18 +149,19 @@ class RuntimeTests(unittest.TestCase):
         candidate = SupervisorConfig.from_json(SUPERVISOR_ROOT / "supervisor-config.json")
         supervisor = Supervisor(candidate, lambda samples: [0.0 for _ in samples], "test")
         with self.assertRaisesRegex(RuntimeExecutionError, "SELECTION REQUIRED"):
-            RuntimeExecutive(supervisor, FakeBus(), FakeHardware(), FakeCommands())
+            RuntimeExecutive(supervisor, FakeBus(), FakeHardware(), FakeCommands(), FakeEvidence())
 
     def test_start_connects_torque_off_with_heartbeat_disallowed(self) -> None:
-        executive, bus, hardware, _ = runtime()
-        executive.start()
+        executive, bus, hardware, _, evidence = runtime()
+        executive.start(0)
         self.assertEqual(bus.log[0], ("connect",))
         self.assertEqual(hardware.heartbeat[0], False)
         self.assertFalse(bus.torque_enabled)
+        self.assertEqual(evidence.records[-1][1], "RUNTIME_STARTED")
 
     def test_reset_and_arm_without_command_never_enable_torque(self) -> None:
-        executive, bus, hardware, _ = runtime()
-        executive.start()
+        executive, bus, hardware, _, _ = runtime()
+        executive.start(0)
         arm(executive, hardware)
         self.assertEqual(executive.status.state, OperatingState.ARMED)
         self.assertFalse(executive.status.torque_enable_request)
@@ -150,8 +169,8 @@ class RuntimeTests(unittest.TestCase):
         self.assertFalse(any(entry[0] == "start" for entry in bus.log))
 
     def test_fresh_command_executes_ordered_samples_then_removes_torque(self) -> None:
-        executive, bus, hardware, commands = runtime()
-        executive.start()
+        executive, bus, hardware, commands, evidence = runtime()
+        executive.start(0)
         executive.cycle(0)
         hardware.sr1_ready = True
         executive.cycle(10)
@@ -165,10 +184,12 @@ class RuntimeTests(unittest.TestCase):
         self.assertFalse(bus.torque_enabled)
         writes = [entry for entry in bus.log if entry[0] == "write"]
         self.assertEqual([entry[2] for entry in writes], [dict(command(now_ms=20).samples[0].positions), dict(command(now_ms=20).samples[1].positions)])
+        self.assertIn("FEEDBACK_SAMPLE", [record[1] for record in evidence.records])
+        self.assertEqual(evidence.records[-1][1], "CYCLE_OUTPUT")
 
     def test_hardware_dropout_removes_heartbeat_and_bus_torque(self) -> None:
-        executive, bus, hardware, commands = runtime()
-        executive.start()
+        executive, bus, hardware, commands, _ = runtime()
+        executive.start(0)
         executive.cycle(0)
         hardware.sr1_ready = True
         executive.cycle(10)
@@ -183,8 +204,8 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(hardware.heartbeat[-1], False)
 
     def test_missed_sample_lateness_fails_active_trajectory_closed(self) -> None:
-        executive, bus, hardware, commands = runtime()
-        executive.start()
+        executive, bus, hardware, commands, _ = runtime()
+        executive.start(0)
         executive.cycle(0)
         hardware.sr1_ready = True
         executive.cycle(10)
@@ -198,29 +219,30 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(hardware.heartbeat[-1], False)
 
     def test_shutdown_removes_heartbeat_before_closing_resources(self) -> None:
-        executive, bus, hardware, commands = runtime()
-        executive.start()
-        executive.shutdown()
+        executive, bus, hardware, commands, evidence = runtime()
+        executive.start(0)
+        executive.shutdown(10)
         self.assertEqual(hardware.heartbeat[-1], False)
         self.assertIn(("close",), bus.log)
         self.assertTrue(hardware.closed)
         self.assertTrue(commands.closed)
         self.assertFalse(executive.started)
+        self.assertTrue(evidence.closed)
 
     def test_shutdown_attempts_every_cleanup_after_heartbeat_failure(self) -> None:
-        executive, bus, hardware, commands = runtime()
-        executive.start()
+        executive, bus, hardware, commands, _ = runtime()
+        executive.start(0)
         hardware.fail_heartbeat = True
         with self.assertRaisesRegex(RuntimeExecutionError, "attempted every output"):
-            executive.shutdown()
+            executive.shutdown(10)
         self.assertIn(("close",), bus.log)
         self.assertTrue(hardware.closed)
         self.assertTrue(commands.closed)
         self.assertFalse(executive.started)
 
     def test_heartbeat_failure_cannot_skip_bus_stop(self) -> None:
-        executive, bus, hardware, commands = runtime()
-        executive.start()
+        executive, bus, hardware, commands, _ = runtime()
+        executive.start(0)
         executive.cycle(0)
         hardware.sr1_ready = True
         executive.cycle(10)
@@ -233,6 +255,22 @@ class RuntimeTests(unittest.TestCase):
             executive.cycle(30)
         self.assertFalse(bus.torque_enabled)
         self.assertIn(("stop",), bus.log)
+
+    def test_evidence_failure_during_motion_fails_closed(self) -> None:
+        executive, bus, hardware, commands, evidence = runtime()
+        executive.start(0)
+        executive.cycle(0)
+        hardware.sr1_ready = True
+        executive.cycle(10)
+        hardware.sra1_armed = hardware.k1_feedback = hardware.k2_feedback = True
+        commands.queue.append(command(sequence=1, now_ms=20))
+        executive.cycle(20)
+        self.assertTrue(bus.torque_enabled)
+        evidence.fail = True
+        with self.assertRaisesRegex(RuntimeExecutionError, "evidence failure"):
+            executive.cycle(30)
+        self.assertFalse(bus.torque_enabled)
+        self.assertEqual(hardware.heartbeat[-1], False)
 
 
 if __name__ == "__main__":

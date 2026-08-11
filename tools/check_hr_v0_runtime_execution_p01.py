@@ -53,7 +53,7 @@ def main() -> None:
     need(next(row for row in controls if row["control_id"] == "RTE-012")["current_state"] == "NOT EXECUTED", "target HIL was falsely executed")
     need(next(row for row in controls if row["control_id"] == "RTE-013")["current_state"] == "NOT AUTHORIZED", "motion was falsely authorized")
 
-    need(len(overlay) == 21 and len({row["target"] for row in overlay}) == 21, "twenty-one exact overlay rows are required")
+    need(len(overlay) == 22 and len({row["target"] for row in overlay}) == 22, "twenty-two exact overlay rows are required")
     need(all((ROOT / row["source"]).is_file() for row in overlay), "overlay source is absent")
     need(len(holds) == 18 and sum(row["current_state"] == "PARTIAL" for row in holds) == 2, "host hold state count changed")
     need(next(row for row in holds if row["hold_id"] == "HOST-004")["current_state"] == "PARTIAL", "HOST-004 GPIO allocation progress changed")
@@ -131,18 +131,18 @@ def main() -> None:
         preflight_result = json.loads(preflight.stdout)
     except json.JSONDecodeError:
         preflight_result = {}
-    need(preflight_result.get("ready") is False and len(preflight_result.get("holds", [])) == 36, "committed preflight must expose exactly 36 holds")
+    need(preflight_result.get("ready") is False and len(preflight_result.get("holds", [])) == 49, "committed preflight must expose exactly 49 holds")
 
     combined = doc + guide
-    for token in ("HR-V0-RUNTIME-P0.1", "R199", "R203", "21", "36", "16", "two partial", "exit 78", "zero functional-safety credit", WARNING):
+    for token in ("HR-V0-RUNTIME-P0.1", "R199", "R203", "21", "22", "49", "16", "two partial", "exit 78", "zero functional-safety credit", WARNING):
         need(token.lower() in combined.lower(), f"controlled R198 token missing: {token}")
     need("font:16px" in guide and "font-size:16px" in guide and "font-size:14px" in guide, "guide text floors missing")
     need(not re.search(r"(?:font-size|font):\s*(?:1[0-3]|[0-9])px", guide), "undersized guide CSS declaration found")
 
     if failures:
         raise SystemExit("HR-V0 runtime execution check failed:\n- " + "\n- ".join(failures))
-    print("HR-V0 runtime execution check passed: 21 overlay rows, 36 preflight holds, HOST-004/HOST-006 partial, 14 controls")
-    print("78 firmware tests and 16 host tests are source evidence only; target execution and HIL remain NOT EXECUTED")
+    print("HR-V0 runtime execution check passed: 22 overlay rows, 49 preflight holds, HOST-004/HOST-006 partial, 14 controls")
+    print("86 firmware tests and 16 host tests are source evidence only; target execution and HIL remain NOT EXECUTED")
     print("EG-017 remains PARTIAL; backend source exists but physical observations, installation, connection, motion and energization authority do not")
     print(WARNING)
 

@@ -12,7 +12,7 @@ Storage candidate: `HR-V0-COMPUTE-STORAGE-P0.2` / Kingston `SDCIT2/64GBSP` on ho
 
 R171 added the host-side deployment definition between the pinned Raspberry Pi OS image and the supervisor model. R198 added the executable runtime boundary. R199 adds exact hash-bound libgpiod and AF_UNIX command-source candidates, corrects heartbeat permission into a monotonic edge scheduler, and adds trajectory resource/time holds. R203 freezes BCM/RP1 heartbeat line 17 and four active-high diagnostic inputs on lines 22 through 25 while retaining the target gpiochip, boot-overlay, harness and HIL holds. It remains a **source candidate**, not an installable or promoted machine image.
 
-The committed configuration has 36 explicit preflight failures after the R203 GPIO-allocation correction. The launcher and the runtime entrypoint both return exit code 78 before importing a backend. The package supplies no install script, disables its systemd service by preset, uses `Restart=no`, restricts the candidate service to AF_UNIX with IP denied, and retains `motion_authority: NONE` and `functional_safety_credit: NONE`.
+The committed configuration has 49 explicit preflight failures after the R236 evidence-log correction. The launcher and the runtime entrypoint both return exit code 78 before importing a backend. The package supplies no install script, disables its systemd service by preset, uses `Restart=no`, restricts the candidate service to AF_UNIX with IP denied, and retains `motion_authority: NONE` and `functional_safety_credit: NONE`.
 
 This improves the digital evidence behind `EG-017`; it does not close that gate.
 
@@ -31,7 +31,7 @@ Reset or E-stop release cannot command motion through the runtime model: the exe
 
 ## Proposed target overlay
 
-`software/host/hr-v0-host-deploy-p0.1/overlay-manifest.csv` maps 21 repository sources to proposed target paths, including the two backend candidates. All 21 rows are `NOT_AUTHORIZED`. The `project-button` account/group names in the systemd candidate are proposed names only; account creation, UID/GID, supplementary device groups and least-privilege permissions remain `SELECTION REQUIRED` under `HOST-003`.
+`software/host/hr-v0-host-deploy-p0.1/overlay-manifest.csv` maps 22 repository sources to proposed target paths, including the two backend candidates and the required evidence-log module. All 22 rows are `NOT_AUTHORIZED`. The `project-button` account/group names in the systemd candidate are proposed names only; account creation, UID/GID, supplementary device groups and least-privilege permissions remain `SELECTION REQUIRED` under `HOST-003`.
 
 The service hardening candidate includes a strict read-only system boundary, private temporary storage, no new privileges, no automatic restart and writable access only to proposed state/log directories. Target systemd compatibility and required device access must be tested; these directives are not assumed compatible with the final GPIO/serial backend.
 
@@ -42,7 +42,7 @@ The eighteen-line hold register now contains sixteen open holds and two partial 
 - exact target package versions, repositories, lock hash, interpreter and binary hash;
 - exact target libgpiod package and stable RP1 gpiochip identity/permissions; the GPIO17 and GPIO22-25 line allocation is source-bound but not target-validated;
 - released supervisor, actuator and compute-interface configurations with exact hashes;
-- a released 1..50 ms runtime cycle period, exact libgpiod package/chip/timing allocation, exact command sender UID/GID and measured resource/time bounds;
+- a released 1..10 ms runtime cycle period, exact libgpiod package/chip/timing allocation, exact command sender UID/GID and measured resource/time bounds;
 - a qualified physical observation circuit and harness for the four positive status inputs plus distinct providers for five health semantics, including terminal allocation, isolation/loading, protection, cable, grounding, startup state and noninterference proof;
 - controlled image download, write, full readback and promoted image manifest;
 - disabled-start, missing/malformed/hash-mismatch, GPIO waveform, U2D2, torque-off-before-discovery, stale-command, reset-no-motion and heartbeat-loss HIL;
@@ -71,4 +71,4 @@ The general-purpose compute, heartbeat, launcher, supervisor and watchdog diagno
 - `release/hr-v0/host-deployment-p0.1/index.html`
 - `tools/check_hr_v0_host_deploy_p01.py`
 
-Passing repository tests proves file integrity and reference-model behavior only. The current preflight has 36 holds, the overlay has 21 rows, the hold register has sixteen open plus two partial records, and all 21 execution records remain blank. The 78 firmware tests and 16 host tests are not target/HIL evidence. This package does not authorize installation, imaging, connection, powered testing, motion or energization.
+Passing repository tests proves file integrity and reference-model behavior only. The current preflight has 49 holds, the overlay has 22 rows, the hold register has sixteen open plus two partial records, and all 21 execution records remain blank. The 86 firmware tests and 16 host tests are not target/HIL evidence. This package does not authorize installation, imaging, connection, powered testing, motion or energization.

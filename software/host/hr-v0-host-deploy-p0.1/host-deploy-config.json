@@ -14,7 +14,7 @@
   "python_interpreter_sha256": "SELECTION REQUIRED",
   "package_lock_sha256": "SELECTION REQUIRED",
   "runtime_entrypoint": "/opt/project-button/lib/project_button_host/runtime_entrypoint.py",
-  "runtime_entrypoint_sha256": "47b50066cb5f6e0d323ccee2abe4602c4a62e243f1ed890bf47474d617321fdf",
+  "runtime_entrypoint_sha256": "df065f7a759b672dc839f604cf06f4eb5c4e63ac5fd84154b9ffd627638f2663",
   "runtime_cycle_period_ms": "SELECTION REQUIRED",
   "runtime_backend": "project_button_host.unix_command_source:factory",
   "runtime_backend_path": "/opt/project-button/lib/project_button_host/unix_command_source.py",
@@ -50,6 +50,32 @@
     "watchdog_healthy": "SELECTION REQUIRED",
     "edm_healthy": "SELECTION REQUIRED",
     "compute_undervoltage": "SELECTION REQUIRED"
+  },
+  "evidence_log": {
+    "schema_id": "HR-V0-EVID-LOG-P0.1",
+    "directory": "/var/lib/project-button/logs",
+    "clock_source": "CLOCK_MONOTONIC_PLUS_CLOCK_REALTIME_UTC_UNQUALIFIED",
+    "maximum_file_bytes": "SELECTION REQUIRED",
+    "minimum_free_bytes": "SELECTION REQUIRED",
+    "retention_days": "SELECTION REQUIRED",
+    "identities": {
+      "release_candidate_id": "HR-V0-RC-P0.1",
+      "electrical_revision": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE",
+      "mechanical_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+      "bom_revision": "HR-V0-BOM-P0.1",
+      "calibration_set_id": "SELECTION REQUIRED",
+      "test_procedure_id": "SELECTION REQUIRED"
+    },
+    "hashes": {
+      "system_configuration_sha256": "SELECTION REQUIRED",
+      "supervisor_file_sha256": "SELECTION REQUIRED",
+      "actuator_file_sha256": "SELECTION REQUIRED",
+      "compute_interface_file_sha256": "SELECTION REQUIRED",
+      "firmware_source_manifest_sha256": "SELECTION REQUIRED",
+      "release_manifest_sha256": "SELECTION REQUIRED",
+      "calibration_set_sha256": "SELECTION REQUIRED",
+      "test_procedure_sha256": "SELECTION REQUIRED"
+    }
   },
   "boot_id_path": "/proc/sys/kernel/random/boot_id",
   "supervisor_config_path": "/etc/project-button/supervisor-config.json",

@@ -101,8 +101,8 @@ def evaluate(config_path: Path, root: Path = Path("/")) -> PreflightResult:
             holds.append(f"host config: {key} is not an exact SHA-256")
 
     period = config.get("runtime_cycle_period_ms")
-    if isinstance(period, bool) or not isinstance(period, int) or not 1 <= period <= 50:
-        holds.append("host config: runtime_cycle_period_ms is not a released integer from 1 through 50")
+    if isinstance(period, bool) or not isinstance(period, int) or not 1 <= period <= 10:
+        holds.append("host config: runtime_cycle_period_ms is not a released integer from 1 through 10")
     boot_id_path = config.get("boot_id_path")
     if not isinstance(boot_id_path, str) or not boot_id_path.startswith("/"):
         holds.append("host config: boot_id_path is not an absolute target path")
@@ -202,6 +202,56 @@ def evaluate(config_path: Path, root: Path = Path("/")) -> PreflightResult:
             value = providers[name]
             if not isinstance(value, str) or not value.strip() or value.strip().upper() in UNRESOLVED_MARKERS:
                 holds.append(f"host config: observation provider {name} unresolved")
+
+    evidence = config.get("evidence_log")
+    required_identities = {
+        "release_candidate_id", "electrical_revision", "mechanical_revision",
+        "bom_revision", "calibration_set_id", "test_procedure_id",
+    }
+    required_hashes = {
+        "system_configuration_sha256", "supervisor_file_sha256",
+        "actuator_file_sha256", "compute_interface_file_sha256",
+        "firmware_source_manifest_sha256", "release_manifest_sha256",
+        "calibration_set_sha256", "test_procedure_sha256",
+    }
+    if not isinstance(evidence, dict):
+        holds.append("host config: evidence-log configuration absent")
+    else:
+        if evidence.get("schema_id") != "HR-V0-EVID-LOG-P0.1":
+            holds.append("host config: evidence-log schema changed")
+        directory = evidence.get("directory")
+        if not isinstance(directory, str) or not directory.startswith("/"):
+            holds.append("host config: evidence-log directory is not absolute")
+        identities = evidence.get("identities")
+        if not isinstance(identities, dict) or set(identities) != required_identities:
+            holds.append("host config: evidence-log identity set unresolved")
+        else:
+            for key in sorted(required_identities):
+                value = identities[key]
+                if not isinstance(value, str) or value.strip().upper() in UNRESOLVED_MARKERS:
+                    holds.append(f"host config: evidence-log identity {key} unresolved")
+        hashes = evidence.get("hashes")
+        if not isinstance(hashes, dict) or set(hashes) != required_hashes:
+            holds.append("host config: evidence-log hash set unresolved")
+        else:
+            for key in sorted(required_hashes):
+                if not _is_sha256(hashes[key]):
+                    holds.append(f"host config: evidence-log hash {key} unresolved")
+            for evidence_key, host_key in (
+                ("supervisor_file_sha256", "supervisor_config_sha256"),
+                ("actuator_file_sha256", "actuator_config_sha256"),
+                ("compute_interface_file_sha256", "compute_interface_config_sha256"),
+            ):
+                if _is_sha256(hashes.get(evidence_key)) and hashes[evidence_key].lower() != str(config.get(host_key, "")).lower():
+                    holds.append(f"host config: evidence-log {evidence_key} disagrees with bound host file")
+        for key, minimum, maximum in (
+            ("maximum_file_bytes", 1_048_576, 1_073_741_824),
+            ("minimum_free_bytes", 16_777_216, 1_099_511_627_776),
+            ("retention_days", 1, 3650),
+        ):
+            value = evidence.get(key)
+            if isinstance(value, bool) or not isinstance(value, int) or not minimum <= value <= maximum:
+                holds.append(f"host config: evidence-log {key} unresolved")
 
     return PreflightResult(not holds, tuple(holds))
 

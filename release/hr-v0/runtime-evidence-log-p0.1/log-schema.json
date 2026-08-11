@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:project-button:hr-v0:evidence-log:p0.1",
+  "title": "HR-V0-EVID-LOG-P0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id",
+    "sequence",
+    "monotonic_ms",
+    "wall_time_utc",
+    "event",
+    "context_sha256",
+    "previous_sha256",
+    "payload",
+    "record_sha256"
+  ],
+  "properties": {
+    "schema_id": {
+      "const": "HR-V0-EVID-LOG-P0.1"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "monotonic_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "wall_time_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "event": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]{2,63}$"
+    },
+    "context_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "previous_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "payload": {
+      "type": "object"
+    },
+    "record_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "verification_boundary": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

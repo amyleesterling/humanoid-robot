@@ -80,7 +80,7 @@ def main() -> None:
     require(startup.get("serial_open_before_preflight") is False and startup.get("gpio_access_before_preflight") is False, "preflight hardware-access prohibition changed")
     require(startup.get("stale_motion_resume") is False, "stale motion resume is no longer prohibited")
 
-    require(len(overlay) == 21, "overlay manifest must contain twenty-one proposed files")
+    require(len(overlay) == 22, "overlay manifest must contain twenty-two proposed files")
     require(
         len(holds) == 18
         and sum(row["current_state"] == "OPEN" for row in holds) == 16
@@ -109,6 +109,7 @@ def main() -> None:
         "firmware/supervisor/project_button_supervisor/__init__.py",
         "firmware/supervisor/project_button_supervisor/actuator_config.py",
         "firmware/supervisor/project_button_supervisor/dynamixel_bus.py",
+        "firmware/supervisor/project_button_supervisor/evidence_log.py",
         "firmware/supervisor/project_button_supervisor/kinematics.py",
         "firmware/supervisor/project_button_supervisor/mechanical_binding.py",
         "firmware/supervisor/project_button_supervisor/model.py",
@@ -120,7 +121,7 @@ def main() -> None:
         "firmware/supervisor/dynamixel-sdk-lock.json",
     }, "overlay source set changed")
     require(all(row["install_state"] == "NOT_AUTHORIZED" and row["warning"] == WARNING for row in overlay), "overlay contains an authorized row or changed warning")
-    require(len({row["target"] for row in overlay}) == 21, "overlay target path is duplicated")
+    require(len({row["target"] for row in overlay}) == 22, "overlay target path is duplicated")
     require(all((ROOT / row["source"]).is_file() for row in overlay), "overlay contains an absent repository source")
     require(all(row["warning"] == WARNING for row in holds), "hold warning changed")
 
@@ -164,7 +165,7 @@ def main() -> None:
     firmware_product = next((item for item in metadata.get("current_products", []) if item.get("domain") == "firmware"), {})
     require(IDENTIFIER in firmware_product.get("supporting_identifiers", []), "release metadata lacks host deployment identifier")
     require(IDENTIFIER in doc and IDENTIFIER in guide, "document or guide lacks identifier")
-    require("36" in doc and "sixteen" in doc.lower() and "two partial" in doc.lower() and "21" in doc, "documented hold/evidence counts changed")
+    require("49" in doc and "sixteen" in doc.lower() and "two partial" in doc.lower() and "22" in doc and "21" in doc, "documented hold/evidence counts changed")
     require("font:16px" in guide and "font-size:16px" in guide and "font-size:14px" in guide, "guide text floors are not explicit")
     require(guide.count("data-filter=") == 4 and guide.count("data-kind=") == 4, "guide filter/card structure changed")
     for token in ("disabled", "exit 78", "GPIO allocation", "no serial", "zero functional-safety credit", "not approved"):
@@ -179,10 +180,10 @@ def main() -> None:
         capture_output=True,
     )
     preflight_count = len(json.loads(preflight.stdout)["holds"]) if preflight.returncode == 78 else -1
-    require(preflight_count == 36, "committed preflight must expose exactly 36 holds")
+    require(preflight_count == 49, "committed preflight must expose exactly 49 holds")
     if failures:
         raise SystemExit("HR-V0 host deployment P0.1 check failed:\n- " + "\n- ".join(failures))
-    print("HR-V0 host deployment P0.1 check passed: 21-file disabled overlay, 36 current preflight holds, 16 open plus 2 partial closure holds, 21 unexecuted evidence rows, 16 host tests")
+    print("HR-V0 host deployment P0.1 check passed: 22-file disabled overlay, 49 current preflight holds, 16 open plus 2 partial closure holds, 21 unexecuted evidence rows, 16 host tests")
     print("EG-017 remains PARTIAL; GPIO lines are source-bound but target gpiochip, physical interface, target image, installation, HIL, motion and energization authority do not exist")
     print(WARNING)
 

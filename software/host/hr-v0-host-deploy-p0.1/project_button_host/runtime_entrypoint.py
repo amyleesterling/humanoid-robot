@@ -60,11 +60,14 @@ def run(config_path: Path, root: Path = Path("/")) -> int:
     executive = None
     hardware = None
     commands = None
+    evidence = None
     try:
         host: Mapping[str, Any] = json.loads(config_path.read_text(encoding="utf-8"))
         from project_button_supervisor import (
             ActuatorConfiguration,
             DynamixelBusController,
+            EvidenceContext,
+            HashChainedJsonlSink,
             RuntimeExecutive,
             Supervisor,
         )
@@ -72,7 +75,8 @@ def run(config_path: Path, root: Path = Path("/")) -> int:
         supervisor_path = _target(root, str(host["supervisor_config_path"]))
         actuator_path = _target(root, str(host["actuator_config_path"]))
         boot_id_path = _target(root, str(host["boot_id_path"]))
-        supervisor = Supervisor.from_json(supervisor_path, _boot_session(boot_id_path))
+        session_id = _boot_session(boot_id_path)
+        supervisor = Supervisor.from_json(supervisor_path, session_id)
         actuators = ActuatorConfiguration.from_json(actuator_path)
         if not supervisor.config.selections_closed:
             raise ValueError("supervisor selections remain open")
@@ -82,8 +86,20 @@ def run(config_path: Path, root: Path = Path("/")) -> int:
             raise ValueError("host and actuator serial-device selections disagree")
 
         period = host.get("runtime_cycle_period_ms")
-        if isinstance(period, bool) or not isinstance(period, int) or not 1 <= period <= 50:
-            raise ValueError("runtime cycle period is not released in the 1..50 ms source bound")
+        if isinstance(period, bool) or not isinstance(period, int) or not 1 <= period <= 10:
+            raise ValueError("runtime cycle period is not released in the 1..10 ms logging bound")
+
+        log_config = host["evidence_log"]
+        context = EvidenceContext(
+            session_id=session_id,
+            identities=dict(log_config["identities"]),
+            hashes=dict(log_config["hashes"]),
+        )
+        log_directory = _target(root, str(log_config["directory"]))
+        now_ms = time.monotonic_ns() // 1_000_000
+        evidence = HashChainedJsonlSink(
+            log_directory / f"{session_id}.jsonl", context, now_ms
+        )
 
         # Selected modules are first imported here, after every pure-file and
         # source-configuration condition above has closed.
@@ -95,7 +111,7 @@ def run(config_path: Path, root: Path = Path("/")) -> int:
             str(host["serial_device"]), int(actuators.transport["baud_rate"])
         )
         bus = DynamixelBusController(transport, actuators)
-        executive = RuntimeExecutive(supervisor, bus, hardware, commands)
+        executive = RuntimeExecutive(supervisor, bus, hardware, commands, evidence)
 
         stop_requested = False
 
@@ -105,7 +121,7 @@ def run(config_path: Path, root: Path = Path("/")) -> int:
 
         signal.signal(signal.SIGTERM, request_stop)
         signal.signal(signal.SIGINT, request_stop)
-        executive.start()
+        executive.start(time.monotonic_ns() // 1_000_000)
         while not stop_requested:
             executive.cycle(time.monotonic_ns() // 1_000_000)
             time.sleep(period / 1000.0)
@@ -126,7 +142,7 @@ def run(config_path: Path, root: Path = Path("/")) -> int:
     finally:
         if executive is not None:
             try:
-                executive.shutdown()
+                executive.shutdown(time.monotonic_ns() // 1_000_000)
             except Exception as shutdown_exc:
                 print(
                     json.dumps(
@@ -151,6 +167,11 @@ def run(config_path: Path, root: Path = Path("/")) -> int:
                     hardware.close()
                 except Exception as cleanup_exc:
                     cleanup_errors.append(f"hardware: {cleanup_exc}")
+            if evidence is not None:
+                try:
+                    evidence.close(time.monotonic_ns() // 1_000_000)
+                except Exception as cleanup_exc:
+                    cleanup_errors.append(f"evidence: {cleanup_exc}")
             if cleanup_errors:
                 print(
                     json.dumps(

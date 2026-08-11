@@ -64,7 +64,7 @@ def main() -> None:
         text=True,
         capture_output=True,
     )
-    need(tests.returncode == 0 and "Ran 67 tests" in tests.stderr, "67 supervisor/runtime tests did not pass")
+    need(tests.returncode == 0 and "Ran 75 tests" in tests.stderr, "75 supervisor/runtime/logging tests did not pass")
     host = subprocess.run(
         [sys.executable, "-m", "unittest", "discover", "-s", "software/host/hr-v0-host-deploy-p0.1/tests"],
         cwd=ROOT,
@@ -75,7 +75,7 @@ def main() -> None:
 
     if failures:
         raise SystemExit("HR-V0 runtime observation P0.1 check failed:\n- " + "\n- ".join(failures))
-    print("HR-V0 runtime observation P0.1 check passed: 4 positive panel statuses, 5 unavailable health providers, 1 software bus result, 11 open plus 1 partial hold, 67 supervisor/runtime tests, 16 host tests")
+    print("HR-V0 runtime observation P0.1 check passed: 4 positive panel statuses, 5 unavailable health providers, 1 software bus result, 11 open plus 1 partial hold, 75 supervisor/runtime/logging tests, 16 host tests")
     print("GPIO lines are source-bound; no connected receiver/harness, target gpiochip, health provider, HIL evidence, safety credit or work authority exists")
     print(WARNING)
 

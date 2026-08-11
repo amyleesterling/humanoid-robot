@@ -246,11 +246,12 @@ def main() -> None:
         "HR-V0-RUNTIME-P0.1",
         "HR-V0-RUNTIME-BACKENDS-P0.1",
         "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
+        "HR-V0-EVID-LOG-P0.1",
         "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
         "HR-V0-MECH-BOM-BIND-P0.2",
     ] or firmware_product.get("release_state") != (
-        "source_transport_reproducible_fail_closed_integrated_p08_mechanical_identity_with_p07_kinematic_basis_acceptance_hashes_target_hil_and_physical_evidence_unresolved"
-    ) or firmware_product.get("inherited_kinematic_basis") != "HR-V0-ARM-ARCH-P0.7":
+        "r236_required_hash_chained_runtime_evidence_sink_source_tested_configuration_calibration_timing_storage_target_hil_and_physical_evidence_unresolved"
+    ) or firmware_product.get("inherited_kinematic_basis") != "HR-V0-ARM-ARCH-P0.7" or firmware_product.get("runtime_evidence_log") != "HR-V0-EVID-LOG-P0.1":
         errors.append("HR-V0-FW-P0.4 supporting identifiers or fail-closed release state changed")
     bom_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BOM-P0.1"),
