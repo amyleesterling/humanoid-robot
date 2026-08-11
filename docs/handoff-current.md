@@ -1,6 +1,8 @@
 # Project Button Current Engineering Handoff
 
 Handoff date: 2026-08-11
+R222 panel point-to-point candidate: **`HR-V0-PANEL-P2P-P0.1` converts the 66 R221 one-ended labels into 55 explicit two-ended conductor candidates and maps every legacy endpoint exactly once. Unaccepted `V3-P1.18-PANEL-TOPOLOGY-CANDIDATE` adds `XD24`, `XD0`, `XN1`, `XN2` and `XN3` so no multi-drop requires a hidden splice or double-lug assumption; native ERC is 0/0. P1.15 remains the current system ECAD. Ten moving-door conductors and all exact color/order codes, lengths, routes, terminations, sizing/protection calculations, placement and physical evidence remain open. Ten holds and EG-002/003/004/010/014/015/018/020 remain partial; no wiring or energization authority exists.**
+
 R221 current panel-conductor basis: **`HR-V0-PANEL-COND-P0.1` rejects the existing 22 AWG observation-wire family at Schneider `LC1D25BD` control terminals because the published minimum is 1 mm2. Belden 3057 16 AWG is a source-controlled family/gauge candidate for 56 fixed internal endpoint records only. The ten `S0/S1/S2/H1` door-loom endpoints remain unselected because only stationary bend data are published. All colors/order codes, cut lengths, two-ended topology, terminations, DCR/voltage drop, ampacity/bundling, routes and protection remain open; `F24` is still `SELECTION REQUIRED`. Twelve holds remain and EG-003/004/010/015/018/020 stay partial.**
 
 R220 current control-panel configuration: **`HR-V0-CP-CONFIG-P0.1` prevents the P0.6 planning model's historical P1.14 / PCB-P0.7 / DXL-STAR-P0.1 labels from being treated as current. It SHA-256 binds P0.6 geometry to P1.15, PCB-P1.0 and DXL-STAR-P0.2; all 66 panel wire endpoints match exactly. Current 34-row BOM and 26-row layout views retain twelve open installation holds. No supplier packet, hole, cut, conductor, protection selection, assembly, connection or powered-work authority exists; EG-002/003/004/018/020 remain partial.**
@@ -232,6 +234,7 @@ The authoritative repository controls engineering intent and contains the review
 - 181 total KiCad nets, including 13 auto-generated unconnected nets
 - 168 named electrical nets
 - 106 unresolved electrical selections/interfaces
+- R222 panel topology candidate: 13 native KiCad pages, 84 component blocks, 340 modeled terminals, 55 two-ended conductors, 66/66 legacy endpoints mapped once, five explicit distribution/junction nodes, ten door conductors without a dynamic-flex candidate, and ten open holds
 - 91 system BOM groups: 17 evaluation candidates, 46 exact candidates on hold, three grouped-component holds, 18 selection-required groups, four historical/DNP exclusions, and three integrated items
 - KiCad 10.0.5 ERC: 0 errors and 0 warnings
 - HR-V0 gate status: 30 total, 0 closed, 22 partial, 8 open; all physical and authorization records remain unexecuted

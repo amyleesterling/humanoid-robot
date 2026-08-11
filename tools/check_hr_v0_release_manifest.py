@@ -109,6 +109,8 @@ def main() -> None:
         "HR-V0-CP-P0.6",
         "HR-V0-CP-CONFIG-P0.1",
         "HR-V0-PANEL-COND-P0.1",
+        "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE",
+        "HR-V0-PANEL-P2P-P0.1",
         "HR-V0-COMPUTE-INSTALL-P0.1",
         "HR-V0-U2D2-USB-P0.1",
         "HR-V0-PANEL-RD-P0.1",
@@ -133,7 +135,7 @@ def main() -> None:
         "HR-V0-OBSERVATION-FIELD-HARNESS-P0.1",
         "HR-V0-OBSERVATION-COMPUTE-HARNESS-P0.1",
         "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
-    ] or electrical_product.get("release_state") != "carrier_integrated_p115_direct_core_panel_current_identity_and_fixed_internal_conductor_family_candidate_physical_protection_and_supplier_evidence_absent" or electrical_product.get("control_panel_configuration") != "HR-V0-CP-CONFIG-P0.1" or electrical_product.get("control_panel_geometry_basis") != "HR-V0-CP-P0.6" or electrical_product.get("control_panel_conductor_basis") != "HR-V0-PANEL-COND-P0.1":
+    ] or electrical_product.get("release_state") != "p115_current_p118_explicit_panel_topology_unaccepted_lengths_terminations_protection_physical_evidence_and_work_authority_absent" or electrical_product.get("control_panel_configuration") != "HR-V0-CP-CONFIG-P0.1" or electrical_product.get("control_panel_geometry_basis") != "HR-V0-CP-P0.6" or electrical_product.get("control_panel_conductor_basis") != "HR-V0-PANEL-COND-P0.1" or electrical_product.get("panel_topology_candidate") != "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE" or electrical_product.get("panel_point_to_point_candidate") != "HR-V0-PANEL-P2P-P0.1":
         errors.append("Electrical V3-P1.15 supporting identifiers or release state changed")
     safety_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FSA-P0.1"),
