@@ -1,0 +1,11 @@
+gate_id,decision,evidence_required,state,warning
+LAG-001,Resolve the -T/-R sales-page contradiction,LAQ-001/002 accepted written response,OPEN,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+LAG-002,Confirm allocated stock for all six articles,LAQ-003/004/005 dated response or exact cart,OPEN,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+LAG-003,Freeze exact seller and cart/quote,ROBOTIS US dated cart/quote identity,OPEN,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+LAG-004,Close complete landed-cost basis,"shipping, tax/exemption, fees and expiration",OPEN,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+LAG-005,Set a maximum spend,program-owner numerical authorization,OPEN,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+LAG-006,Freeze ship-to and receiving owner,named Boston-area address and adult receiving owner,OPEN,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+LAG-007,Freeze candidate commit and line identities,clean commit and manifest recorded in authorization,OPEN,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+LAG-008,Accept no-substitution rule,written rejection of -R or alternate frames without new review,OPEN,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+LAG-009,Approve receipt/quarantine-only scope,"signed authorization excludes assembly, power and use",OPEN,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+LAG-010,Prepare receiving evidence locations,"serialized photo, label, lot, contents and discrepancy records",OPEN,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

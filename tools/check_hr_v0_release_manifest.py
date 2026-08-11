@@ -257,9 +257,9 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BOM-P0.1"),
         {},
     )
-    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.2", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.3", "HR-V0-PANEL-NODE-PLACEMENT-P0.1", "HR-V0-CONFIG-REC-P0.4", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2"] or bom_product.get("release_state") != (
-        "95_group_covered_bom_with_r223_panel_nodes_and_accessory_hold_no_complete_machine_procurement_release"
-    ) or bom_product.get("system_group_count") != 95 or bom_product.get("configuration_reconciliation") != "HR-V0-CONFIG-REC-P0.4":
+    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.2", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.3", "HR-V0-PANEL-NODE-PLACEMENT-P0.1", "HR-V0-CONFIG-REC-P0.4", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2", "HR-V0-LOT-A-SRC-P0.1"] or bom_product.get("release_state") != (
+        "r237_lot_a_six_article_source_reconciliation_purchase_blocked_by_xm540_t_r_contradiction_questions_unsent_no_complete_machine_procurement_release"
+    ) or bom_product.get("system_group_count") != 95 or bom_product.get("configuration_reconciliation") != "HR-V0-CONFIG-REC-P0.4" or bom_product.get("lot_a_source_reconciliation") != "HR-V0-LOT-A-SRC-P0.1" or "HR-V0-LOT-A-SRC-P0.1" not in bom_product.get("supporting_identifiers", []):
         errors.append("HR-V0-BOM-P0.1 supporting identifiers or fail-closed release state changed")
     commissioning_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-E2-SEQ-P0.1"),

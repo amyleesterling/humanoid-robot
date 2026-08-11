@@ -1,0 +1,23 @@
+{
+  "identifier": "HR-V0-LOT-A-SRC-P0.1",
+  "round": "R237",
+  "date": "2026-08-11",
+  "unique_item_count": 3,
+  "physical_unit_count": 6,
+  "official_page_visible_subtotal_usd": "1182.22",
+  "source_fact_count": 13,
+  "open_anomaly_count": 4,
+  "blocker_count": 1,
+  "unsent_question_count": 8,
+  "open_decision_gate_count": 10,
+  "unexecuted_receiving_record_count": 12,
+  "purchase_authorized": false,
+  "article_received": false,
+  "assembly_authorized": false,
+  "connection_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

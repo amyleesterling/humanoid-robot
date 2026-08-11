@@ -256,11 +256,14 @@
         "HR-V0-CONFIG-REC-P0.4",
         "HR-V0-XT1-P0.1",
         "HR-V0-LABEL-P0.1",
-        "HR-V0-COMPUTE-STORAGE-P0.2"
+        "HR-V0-COMPUTE-STORAGE-P0.2",
+        "HR-V0-LOT-A-SRC-P0.1"
       ],
-      "release_state": "95_group_covered_bom_with_r223_panel_nodes_and_accessory_hold_no_complete_machine_procurement_release",
+      "release_state": "r237_lot_a_six_article_source_reconciliation_purchase_blocked_by_xm540_t_r_contradiction_questions_unsent_no_complete_machine_procurement_release",
       "system_group_count": 95,
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.4"
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.4",
+      "lot_a_source_reconciliation": "HR-V0-LOT-A-SRC-P0.1",
+      "lot_a_summary": "6 physical articles; $1,182.22 official-page visible subtotal; 13 facts; 4 open anomalies; 1 purchase blocker; 8 unsent questions; 10 open decision gates; 12 unexecuted receiving rows; no purchase authority"
     },
     {
       "domain": "commissioning",
