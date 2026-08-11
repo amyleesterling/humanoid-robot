@@ -1,0 +1,29 @@
+{
+  "identifier": "HR-V0-P120-WD-INTERLOCK-P0.1",
+  "round": "R232",
+  "p119": "V3-P1.19-VISUAL-CORRECTION-CANDIDATE",
+  "p120": "V3-P1.20-WATCHDOG-INTERLOCK-CANDIDATE",
+  "native_sheets": 13,
+  "components": 84,
+  "modeled_terminals": 340,
+  "named_nets": 106,
+  "unchanged_terminal_net_assignments": 333,
+  "changed_terminal_net_assignments": 7,
+  "native_netlist_component_value_footprint_identity_equal": true,
+  "native_netlist_changed_net_memberships": 7,
+  "removed_nets": [
+    "SR1_A1_WD_GATED",
+    "WD_SUPPLY_INTERMEDIATE"
+  ],
+  "added_nets": [
+    "SR1_OUT1_TO_KWD1",
+    "SR1_OUT2_TO_KWD2"
+  ],
+  "erc_errors": 0,
+  "erc_warnings": 0,
+  "p115_current": true,
+  "p120_accepted": false,
+  "safety_credit": "NONE",
+  "work_authority": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

@@ -71,9 +71,11 @@
         "HR-V0-E2-PREPOWER-P0.1",
         "HR-V0-P118-DISPOSITION-P0.1",
         "V3-P1.19-VISUAL-CORRECTION-CANDIDATE",
-        "HR-V0-P119-VISUAL-CORRECTION-P0.1"
+        "HR-V0-P119-VISUAL-CORRECTION-P0.1",
+        "V3-P1.20-WATCHDOG-INTERLOCK-CANDIDATE",
+        "HR-V0-P120-WD-INTERLOCK-P0.1"
       ],
-      "release_state": "p115_current_p118_p119_unaccepted_r230_visual_and_semantic_parity_complete_qualified_disposition_physical_selections_tests_and_authority_open",
+      "release_state": "p115_current_p118_p119_p120_unaccepted_r232_dual_sra1_interlock_source_parity_complete_common_cause_physical_tests_qualified_disposition_and_authority_open",
       "control_panel_configuration": "HR-V0-CP-CONFIG-P0.1",
       "control_panel_geometry_basis": "HR-V0-CP-P0.6",
       "control_panel_conductor_basis": "HR-V0-PANEL-COND-P0.1",
@@ -92,7 +94,10 @@
       "p118_disposition_summary": "77 BOM and 308 terminal rows preserved; 106 net names preserved; five nodes and 32 node terminals added; P1.18 remains unaccepted",
       "panel_visual_correction_candidate": "V3-P1.19-VISUAL-CORRECTION-CANDIDATE",
       "p119_visual_correction_dossier": "HR-V0-P119-VISUAL-CORRECTION-P0.1",
-      "p119_visual_correction_summary": "84 components, 106 native nets and five synchronized schedules unchanged; 13 project visual passes; P1.19 remains unaccepted"
+      "p119_visual_correction_summary": "84 components, 106 native nets and five synchronized schedules unchanged; 13 project visual passes; P1.19 remains unaccepted",
+      "watchdog_interlock_candidate": "V3-P1.20-WATCHDOG-INTERLOCK-CANDIDATE",
+      "p120_watchdog_interlock_dossier": "HR-V0-P120-WD-INTERLOCK-P0.1",
+      "p120_watchdog_interlock_summary": "84 component identities unchanged; exactly seven terminal/net and seven native-net-membership changes; 12 fault screens; 9 open holds; P1.20 remains unaccepted with zero safety credit"
     },
     {
       "domain": "mechanical",
@@ -201,10 +206,12 @@
         "HR-V0-RECEIVER-GUIDE-IF-P0.1",
         "HR-V0-SRS-P0.2",
         "HR-V0-FS-REVIEW-ROUTE-P0.1",
-        "HR-V0-WD-PERMIT-TOPOLOGY-P0.1"
+        "HR-V0-WD-PERMIT-TOPOLOGY-P0.1",
+        "HR-V0-P120-WD-INTERLOCK-P0.1"
       ],
-      "release_state": "r225_two_series_ordinary_watchdog_contacts_source_proved_zero_safety_credit_common_cause_physical_validation_plr_sil_and_qualified_review_open",
-      "watchdog_permit_topology_proof": "HR-V0-WD-PERMIT-TOPOLOGY-P0.1"
+      "release_state": "r232_separate_sra1_input_return_interlocks_source_proved_zero_safety_credit_common_cause_physical_validation_plr_sil_and_qualified_review_open",
+      "watchdog_permit_topology_proof": "HR-V0-WD-PERMIT-TOPOLOGY-P0.1",
+      "watchdog_interlock_candidate": "HR-V0-P120-WD-INTERLOCK-P0.1"
     },
     {
       "domain": "bill_of_materials",
