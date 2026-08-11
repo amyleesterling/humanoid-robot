@@ -154,7 +154,8 @@ def main() -> int:
     assert r213_mechanical_successor_is_controlled(ROOT)
     assert "HR-V0-FAB-INPUT-P0.1" in mechanical["supporting_identifiers"]
     assert "HR-V0-DYN-TRACE-P0.1" in mechanical["supporting_identifiers"]
-    assert safety["release_state"] == "measurable_srs_candidate_reviewer_route_open_no_provider_selected_no_plr_or_sil_no_physical_validation"
+    assert safety["release_state"] == "r225_two_series_ordinary_watchdog_contacts_source_proved_zero_safety_credit_common_cause_physical_validation_plr_sil_and_qualified_review_open"
+    assert safety["watchdog_permit_topology_proof"] == "HR-V0-WD-PERMIT-TOPOLOGY-P0.1"
     assert "HR-V0-SRS-P0.2" in safety["supporting_identifiers"]
     assert "HR-V0-FS-REVIEW-ROUTE-P0.1" in safety["supporting_identifiers"]
 

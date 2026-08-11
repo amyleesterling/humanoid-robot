@@ -114,7 +114,8 @@ def main() -> int:
     candidate = json.loads((ROOT / "release/hr-v0/release-candidate.json").read_text(encoding="utf-8"))
     safety = next((item for item in candidate.get("current_products", []) if item.get("domain") == "functional_safety"), {})
     need("HR-V0-FS-REVIEW-ROUTE-P0.1" in safety.get("supporting_identifiers", []), "release candidate lacks reviewer route")
-    need(safety.get("release_state") == "measurable_srs_candidate_reviewer_route_open_no_provider_selected_no_plr_or_sil_no_physical_validation", "functional-safety state changed")
+    need(safety.get("release_state") == "r225_two_series_ordinary_watchdog_contacts_source_proved_zero_safety_credit_common_cause_physical_validation_plr_sil_and_qualified_review_open", "functional-safety state changed")
+    need(safety.get("watchdog_permit_topology_proof") == "HR-V0-WD-PERMIT-TOPOLOGY-P0.1", "R225 watchdog topology proof missing")
 
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in (WARNING, "HR-V0-FS-REVIEW-ROUTE-P0.1", "font:clamp(16px", "font-size:14px", 'data-filter="local"', 'data-filter="full"', 'data-filter="consulting"'):

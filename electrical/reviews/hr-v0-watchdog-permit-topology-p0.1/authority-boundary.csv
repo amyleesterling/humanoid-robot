@@ -1,0 +1,5 @@
+activity,permitted,boundary,warning
+read-only engineering review and correction,TRUE,no physical access or work,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+procurement/fabrication/assembly/wiring,FALSE,all physical selections and acceptance remain open,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+connection/powered testing/fault injection,FALSE,no authorized physical procedure or qualified approval,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+motion/energization,FALSE,all applicable gates remain unresolved,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
