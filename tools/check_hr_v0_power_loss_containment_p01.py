@@ -95,8 +95,9 @@ def main() -> int:
         "HR-V0-PASSIVE-ARM-RECEIVER-DETAIL-P0.2",
         "HR-V0-RECEIVER-GUIDE-IF-P0.1",
         "HR-V0-SRS-P0.2",
+        "HR-V0-FS-REVIEW-ROUTE-P0.1",
     ]
-    assert safety["release_state"] == "measurable_srs_candidate_no_plr_or_sil_assigned_no_physical_validation"
+    assert safety["release_state"] == "measurable_srs_candidate_reviewer_route_open_no_provider_selected_no_plr_or_sil_no_physical_validation"
 
     html = GUIDE.read_text(encoding="utf-8")
     for required in (

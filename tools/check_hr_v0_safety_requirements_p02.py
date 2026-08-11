@@ -148,7 +148,8 @@ def main() -> int:
     safety = next((item for item in candidate.get("current_products", []) if item.get("domain") == "functional_safety"), {})
     need(safety.get("identifier") == "HR-V0-FSA-P0.1", "functional-safety parent identity changed")
     need("HR-V0-SRS-P0.2" in safety.get("supporting_identifiers", []), "release candidate lacks SRS P0.2")
-    need(safety.get("release_state") == "measurable_srs_candidate_no_plr_or_sil_assigned_no_physical_validation", "release safety state changed")
+    need("HR-V0-FS-REVIEW-ROUTE-P0.1" in safety.get("supporting_identifiers", []), "release candidate lacks R219 reviewer route")
+    need(safety.get("release_state") == "measurable_srs_candidate_reviewer_route_open_no_provider_selected_no_plr_or_sil_no_physical_validation", "release safety state changed")
 
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in (WARNING, "HR-V0-SRS-P0.2", "font:clamp(16px", "font-size:14px", "data-filter=\"SF-01\"", "data-filter=\"SF-03\"", "data-filter=\"open\"", "200 ms", "2.000 deg", "0</strong>PLr/SIL"):

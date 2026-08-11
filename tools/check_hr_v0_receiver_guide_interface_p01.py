@@ -141,8 +141,9 @@ def main() -> int:
     assert r213_mechanical_successor_is_controlled(ROOT)
     assert "HR-V0-FAB-INPUT-P0.1" in mechanical["supporting_identifiers"]
     assert "HR-V0-DYN-TRACE-P0.1" in mechanical["supporting_identifiers"]
-    assert safety["release_state"] == "measurable_srs_candidate_no_plr_or_sil_assigned_no_physical_validation"
+    assert safety["release_state"] == "measurable_srs_candidate_reviewer_route_open_no_provider_selected_no_plr_or_sil_no_physical_validation"
     assert "HR-V0-SRS-P0.2" in safety["supporting_identifiers"]
+    assert "HR-V0-FS-REVIEW-ROUTE-P0.1" in safety["supporting_identifiers"]
     assert "receiver-guide-interface-p0.1/guide-interface-summary.json" in MANIFEST.read_text(encoding="utf-8")
     assert WARNING in (OUT / "FAB-REC-004-guide-angle-coordinate-drawing.svg").read_text(encoding="utf-8")
 

@@ -1,0 +1,23 @@
+{
+  "identifier": "HR-V0-FS-REVIEW-ROUTE-P0.1",
+  "round": "R219",
+  "date": "2026-08-11",
+  "configuration_bindings": 8,
+  "provider_routes": 4,
+  "source_records": 9,
+  "competence_criteria": 12,
+  "scope_records": 10,
+  "capability_questions": 10,
+  "deliverable_records": 16,
+  "provider_selected": false,
+  "provider_contacted": false,
+  "files_uploaded": false,
+  "quote_requested": false,
+  "contract_authorized": false,
+  "named_reviewer_accepted": false,
+  "plr_or_sil_assigned": false,
+  "physical_validation_executed": false,
+  "functional_safety_approved": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}
