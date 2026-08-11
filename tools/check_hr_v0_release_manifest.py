@@ -191,6 +191,7 @@ def main() -> None:
         "HR-V0-FAB-INPUT-P0.1",
         "HR-V0-MECH-DFM-DATA-P0.1",
         "HR-V0-MECH-BOM-BIND-P0.2",
+        "HR-V0-MECH-MFG-REVIEW-P0.1",
         "HR-V0-MECH-PARITY-P0.1",
         "HR-V0-MECH-R0.1-PRELIMINARY-SUPERSEDED-ARM",
         "HR-V0-FAB-RFI-P0.2-WITHDRAWN",

@@ -1,0 +1,8 @@
+activity,permitted_by_this_package,condition,state,warning
+internal qualified mechanical review,TRUE,read-only review and controlled redlines only,AVAILABLE,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+provider contact or file upload,FALSE,separate written program authority required,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+quotation or commercial commitment,FALSE,MCP-H01 and explicit commercial authorization required,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+procurement,FALSE,released BOM and separate written procurement authority required,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+fabrication,FALSE,all applicable mechanical release holds and separate written authority required,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+assembly or connection,FALSE,received-part acceptance and released traveler required,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+"powered testing, motion, or energization",FALSE,not within this package; applicable energization gates and separate authorization required,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

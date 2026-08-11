@@ -19,6 +19,8 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [Current HR-V0 mechanical manufacturing-review package P0.1](docs/hr-v0-mechanical-manufacturing-review-p0.1.md)
+- [Interactive mechanical manufacturing-review guide](release/hr-v0/mechanical-manufacturing-review-p0.1/index.html)
 - [HR-V0 carrier-integrated configuration reconciliation P0.1](docs/hr-v0-configuration-reconciliation-p0.1.md)
 - [Interactive carrier-integrated configuration guide](release/hr-v0/configuration-reconciliation-p0.1/index.html)
 - [Current P0.2 DXL-star manufacturing review](docs/hr-v0-dxl-star-manufacturing-p0.2.md)
@@ -1171,6 +1173,7 @@ Two hundred fourteen review/control rounds are complete: R01-R214. R11 Fable and
 | R212 | P0.5 system-integration and configuration reconciliation | Issued `V3-P1.17-OBSERVATION-P0.5-CANDIDATE` and `HR-V0-CONFIG-REC-P0.2`. Machine checks prove all 79 P1.15 core component definitions are unchanged, only OBS1/PIOBS1 are added, the P0.5 and Pi-carrier terminal maps match exactly, and the bound source/connector hashes are current. P1.16, observation P0.2-P0.4 and configuration P0.1 are historical. Seven affected gates remain partial; 15 configuration holds and 12 acceptance rows remain open. No work authority exists. |
 | R213 | Corrected custom-metal/BOM manufacturing baseline | Issued `HR-V0-MECH-BOM-BIND-P0.2`; replaced BOM-027's P0.7 manufacturing identities with the corrected P0.8 five-part STEP/DXF/drawing chain while retaining P0.7 only as the unchanged placement/collision basis. The binding controls 15 geometry identities, 26 drawing-explicit controls and 30 blank FAI operations. Twelve holds remain open; provider contact, quotation, purchase, fabrication, assembly, motion and energization remain prohibited. |
 | R214 | Sol-review intake and exact-part complete-arm integration | Logged the supplied review summary, imported all five exact P0.8 custom-part STEP identities into `HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE`, regenerated the complete STEP/GLB and nominal collision/clearance/stop evidence, and synchronized firmware, gates, build traveler and `HR-V0-CONFIG-REC-P0.3`. P0.7 is inherited analytical/kinematic basis only. Every physical, DFM, FAI, stopping, structural, continuous-duty, functional-safety, qualified-review and work-authorization hold remains open. |
+| R215 | Mechanical manufacturing qualified-review front door | Issued `HR-V0-MECH-MFG-REVIEW-P0.1`; collected the five current drawing/DXF/STEP sets, 26 controls, 30 blank FAI operations, nine interfaces, six fastener candidates, twelve DFM questions and twelve holds behind explicit precedence and authority rules. Current 80/20 source identities were refreshed; MISUMI/Accu live availability remains unresolved. No provider contact, quote, purchase, fabrication, assembly, connection, motion or energization authority exists. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
