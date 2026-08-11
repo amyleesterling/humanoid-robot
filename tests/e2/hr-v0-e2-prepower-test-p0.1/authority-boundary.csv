@@ -1,0 +1,5 @@
+activity,permitted,boundary,warning
+read-only engineering/configuration review,TRUE,repository and current primary-source evidence only,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+unpowered probing,FALSE,"exact accepted configuration, qualified method, instruments, limits and written work authority required","PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+no-backfeed injection,FALSE,fixture and every stimulus limit unresolved,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+source connection/powered testing/motion,FALSE,all applicable gates and EG-022 authorization remain unresolved,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

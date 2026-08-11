@@ -140,7 +140,8 @@ def main() -> None:
         "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
         "HR-V0-K1K2-APP-P0.3",
         "HR-V0-E2-GND-BOUNDARY-P0.1",
-    ] or electrical_product.get("release_state") != "p115_current_p118_unaccepted_e2_grounding_boundary_bound_k1k2_dc_application_protection_physical_tests_and_qualified_acceptance_open" or electrical_product.get("control_panel_configuration") != "HR-V0-CP-CONFIG-P0.1" or electrical_product.get("control_panel_geometry_basis") != "HR-V0-CP-P0.6" or electrical_product.get("control_panel_conductor_basis") != "HR-V0-PANEL-COND-P0.1" or electrical_product.get("panel_topology_candidate") != "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE" or electrical_product.get("panel_point_to_point_candidate") != "HR-V0-PANEL-P2P-P0.1" or electrical_product.get("control_panel_node_placement_candidate") != "HR-V0-PANEL-NODE-PLACEMENT-P0.1" or electrical_product.get("configuration_reconciliation") != "HR-V0-CONFIG-REC-P0.4" or electrical_product.get("ecad_web_review_surface") != "HR-V0-ECAD-WEB-REVIEW-P0.1" or electrical_product.get("contactor_application_record") != "HR-V0-K1K2-APP-P0.3" or electrical_product.get("contactor_configuration_binding") != "P1.15 current and P1.18 unaccepted contain 32 identical contactor-critical terminal/net rows" or electrical_product.get("e2_grounding_boundary") != "HR-V0-E2-GND-BOUNDARY-P0.1" or electrical_product.get("e2_grounding_configuration_binding") != "26 source/frame/shield endpoint rows identical; SAFETY_0V explicitly differs 41 to 49 through XD0":
+        "HR-V0-E2-PREPOWER-P0.1",
+    ] or electrical_product.get("release_state") != "p115_current_p118_unaccepted_e2_grounding_and_prepower_candidates_bound_zero_limits_results_or_authority_k1k2_dc_application_protection_and_qualified_acceptance_open" or electrical_product.get("control_panel_configuration") != "HR-V0-CP-CONFIG-P0.1" or electrical_product.get("control_panel_geometry_basis") != "HR-V0-CP-P0.6" or electrical_product.get("control_panel_conductor_basis") != "HR-V0-PANEL-COND-P0.1" or electrical_product.get("panel_topology_candidate") != "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE" or electrical_product.get("panel_point_to_point_candidate") != "HR-V0-PANEL-P2P-P0.1" or electrical_product.get("control_panel_node_placement_candidate") != "HR-V0-PANEL-NODE-PLACEMENT-P0.1" or electrical_product.get("configuration_reconciliation") != "HR-V0-CONFIG-REC-P0.4" or electrical_product.get("ecad_web_review_surface") != "HR-V0-ECAD-WEB-REVIEW-P0.1" or electrical_product.get("contactor_application_record") != "HR-V0-K1K2-APP-P0.3" or electrical_product.get("contactor_configuration_binding") != "P1.15 current and P1.18 unaccepted contain 32 identical contactor-critical terminal/net rows" or electrical_product.get("e2_grounding_boundary") != "HR-V0-E2-GND-BOUNDARY-P0.1" or electrical_product.get("e2_grounding_configuration_binding") != "26 source/frame/shield endpoint rows identical; SAFETY_0V explicitly differs 41 to 49 through XD0" or electrical_product.get("e2_prepower_test_candidate") != "HR-V0-E2-PREPOWER-P0.1" or electrical_product.get("e2_prepower_configuration_binding") != "55 P1.18 conductor rows; 45 fixed-internal method candidates; 10 blocked door rows; zero released limits or results":
         errors.append("Electrical V3-P1.15 supporting identifiers or release state changed")
     safety_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FSA-P0.1"),
@@ -258,6 +259,7 @@ def main() -> None:
         "HR-V0-E2-HW-P0.4",
         "HR-V0-E2-EVIDENCE-P0.2",
         "HR-V0-E2-GND-BOUNDARY-P0.1",
+        "HR-V0-E2-PREPOWER-P0.1",
         "HR-V0-STALE-AUTH-P0.1",
         "AUDIT-ELEC-002",
         "INSPECT-ELEC-010",
@@ -267,7 +269,7 @@ def main() -> None:
         "TEST-E2-001",
         "TEST-E2-002",
         "AUDIT-E2-001",
-    ] or commissioning_product.get("release_state") != "e2_grounding_boundary_controlled_templates_not_executed_not_authorized_for_connection_or_energization":
+    ] or commissioning_product.get("release_state") != "e2_grounding_and_prepower_candidates_controlled_zero_limits_results_or_authority_not_authorized_for_connection_or_energization" or commissioning_product.get("prepower_test_candidate") != "HR-V0-E2-PREPOWER-P0.1":
         errors.append("HR-V0-E2-SEQ-P0.1 supporting identifiers or fail-closed state changed")
     instrumentation_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-DYN-INST-P0.1"),
