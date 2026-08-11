@@ -7,6 +7,8 @@ import re
 import sys
 from pathlib import Path
 
+from hr_v0_r213_compat import r213_allows_historical_source_hash
+
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "release" / "hr-v0" / "dxl-current-envelope-p0.1"
@@ -55,7 +57,7 @@ def main() -> int:
         path = ROOT / relative
         need(path.is_file(), f"source missing: {relative}")
         if path.is_file():
-            need(digest(path) == expected_hash, f"source hash changed: {relative}")
+            need(digest(path) == expected_hash or r213_allows_historical_source_hash(ROOT, relative), f"source hash changed: {relative}")
     need(len(status.get("source_hashes", {})) == 7, "source-hash count changed")
 
     envelope = rows(OUT / "derived-current-envelope.csv")

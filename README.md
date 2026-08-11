@@ -913,7 +913,7 @@ One hundred ninety-four review/control rounds are complete: R01-R194. R11 Fable 
 
 ## Current review state
 
-Two hundred twelve review/control rounds are complete: R01-R212. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R212 are project-owned correction, evidence-control or validation passes, not additional independent approvals. R208 exposes the 1.00 kohm RSO hard-short blocker; R209-R211 replace it with the source-audited P0.5 open-drain candidate. R212 corrects the remaining configuration mismatch: P1.17 preserves all 79 P1.15 core components and adds only OBS1/PIOBS1, exact P0.5/Pi-carrier terminal-map parity and hash-level subassembly binding. `HR-V0-CONFIG-REC-P0.2` makes P0.5 current and marks P1.16, observation P0.2-P0.4 and configuration P0.1 historical. Native ERC and the configuration checkers pass, but Pi 5/RP1 DC acceptance, BOM additions, exact harness lengths, STANDBY/ramp/brownout tests, manufacturing, physical evidence, qualified review and work authority remain open.
+Two hundred thirteen review/control rounds are complete: R01-R213. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R213 are project-owned correction, evidence-control or validation passes, not additional independent approvals. R208 exposes the 1.00 kohm RSO hard-short blocker; R209-R211 replace it with the source-audited P0.5 open-drain candidate. R212 reconciles the observation system as P1.17/P0.5/configuration P0.2. R213 then corrects the custom-metal manufacturing identity: `HR-V0-MECH-BOM-BIND-P0.2` makes the P0.8 STEP/DXF/drawing chain current for qualified review while retaining P0.7 solely as the unchanged system-placement/collision basis. Four countersinks are nominal 11.30 mm x 2.90 mm at 90 degrees, C05 is unchanged, and all twelve release holds remain open. Native/repository checks do not supply Pi acceptance, DFM, FAI, physical evidence, qualified review or work authority.
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)
@@ -944,6 +944,10 @@ Two hundred twelve review/control rounds are complete: R01-R212. R11 Fable and R
 - [R212 engineering disposition](docs/hr-v0-observation-system-integration-p0.2.md)
 - [R212 validation record](docs/reviews/2026-08-10-r212-validation-record.md)
 - [R212 independent review request](docs/reviews/2026-08-10-r212-independent-review-request.md)
+- [R213 corrected custom-part/BOM binding](docs/hr-v0-mechanical-bom-binding-p0.2.md)
+- [R213 interactive corrected custom-part guide](release/hr-v0/mechanical-bom-binding-p0.2/index.html)
+- [R213 validation record](docs/reviews/2026-08-10-r213-validation-record.md)
+- [R213 independent review request](docs/reviews/2026-08-10-r213-independent-review-request.md)
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -1159,6 +1163,7 @@ Two hundred twelve review/control rounds are complete: R01-R212. R11 Fable and R
 | R210 | Source-audited push-pull observation-carrier correction - superseded | Issued `HR-V0-RUNTIME-OBS-CARRIER-P0.4` and corrected the R209 land-pattern and narrow-margin defects, but R211 found the hard-grounded OE and positive push-pull power-state path. P0.4 is historical and prohibited for current fabrication review. |
 | R211 | Open-drain observation-carrier power-state correction | Issued `HR-V0-RUNTIME-OBS-CARRIER-P0.5`; replaced all four G125 stages with exact `SN74LVC1G07DBVR`, added exact Panasonic `ERJ6ENF1002V` 10.0 kohm pull-ups ahead of the retained 39.0 kohm limiters and retained 330 kohm fail-low biases. The 2.598 V HIGH, 0.356 V LOW, 0.367 mA pull-up hard-short and 7.612 mA steady 3V3 values are analytical screens. Native ERC/DRC and the dedicated checker pass; Pi acceptance, power-state testing, physical evidence, qualified review and all work authority remain open. |
 | R212 | P0.5 system-integration and configuration reconciliation | Issued `V3-P1.17-OBSERVATION-P0.5-CANDIDATE` and `HR-V0-CONFIG-REC-P0.2`. Machine checks prove all 79 P1.15 core component definitions are unchanged, only OBS1/PIOBS1 are added, the P0.5 and Pi-carrier terminal maps match exactly, and the bound source/connector hashes are current. P1.16, observation P0.2-P0.4 and configuration P0.1 are historical. Seven affected gates remain partial; 15 configuration holds and 12 acceptance rows remain open. No work authority exists. |
+| R213 | Corrected custom-metal/BOM manufacturing baseline | Issued `HR-V0-MECH-BOM-BIND-P0.2`; replaced BOM-027's P0.7 manufacturing identities with the corrected P0.8 five-part STEP/DXF/drawing chain while retaining P0.7 only as the unchanged placement/collision basis. The binding controls 15 geometry identities, 26 drawing-explicit controls and 30 blank FAI operations. Twelve holds remain open; provider contact, quotation, purchase, fabrication, assembly, motion and energization remain prohibited. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

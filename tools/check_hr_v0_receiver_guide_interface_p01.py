@@ -9,6 +9,8 @@ from pathlib import Path
 
 import cadquery as cq
 
+from hr_v0_r213_compat import R213_MECHANICAL_RELEASE_STATE, r213_mechanical_successor_is_controlled
+
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "cad" / "hr-v0" / "generated" / "receiver-guide-interface-p0.1"
@@ -135,7 +137,8 @@ def main() -> int:
     mechanical = next(item for item in release["current_products"] if item["identifier"] == "HR-V0-MECH-P0.6")
     safety = next(item for item in release["current_products"] if item["identifier"] == "HR-V0-FSA-P0.1")
     assert IDENTIFIER in mechanical["supporting_identifiers"] and IDENTIFIER in safety["supporting_identifiers"]
-    assert mechanical["release_state"] == "integrated_exact_coordinate_candidate_requirements_input_reconciled_dynamic_trace_analysis_defined_physical_evidence_open_not_released_for_fabrication_or_energization"
+    assert mechanical["release_state"] == R213_MECHANICAL_RELEASE_STATE
+    assert r213_mechanical_successor_is_controlled(ROOT)
     assert "HR-V0-FAB-INPUT-P0.1" in mechanical["supporting_identifiers"]
     assert "HR-V0-DYN-TRACE-P0.1" in mechanical["supporting_identifiers"]
     assert safety["release_state"] == "allocation_candidate_no_plr_or_sil_assigned"

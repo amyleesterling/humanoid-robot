@@ -191,7 +191,7 @@ def main() -> None:
         "HR-V0-BOSTON-FAB-ROUTE-P0.3",
         "HR-V0-FAB-INPUT-P0.1",
         "HR-V0-MECH-DFM-DATA-P0.1",
-        "HR-V0-MECH-BOM-BIND-P0.1",
+        "HR-V0-MECH-BOM-BIND-P0.2",
         "HR-V0-MECH-PARITY-P0.1",
         "HR-V0-MECH-R0.1-PRELIMINARY-SUPERSEDED-ARM",
         "HR-V0-FAB-RFI-P0.2-WITHDRAWN",
@@ -200,7 +200,7 @@ def main() -> None:
         errors.append("HR-V0-MECH-P0.6 supporting identifiers changed or are incomplete")
     if mechanical_product.get("coordinate_convention") != "HR-V0-FRAME-CONV-P0.1":
         errors.append("HR-V0-MECH-P0.6 coordinate convention missing or changed")
-    if mechanical_product.get("release_state") != "integrated_exact_coordinate_candidate_requirements_input_reconciled_dynamic_trace_analysis_defined_physical_evidence_open_not_released_for_fabrication_or_energization":
+    if mechanical_product.get("release_state") != "integrated_p06_system_placement_with_corrected_p08_custom_part_review_candidate_physical_evidence_open_qualified_release_open":
         errors.append("HR-V0-MECH-P0.6 fail-closed release state changed")
     firmware_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FW-P0.4"),
@@ -231,8 +231,8 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BOM-P0.1"),
         {},
     )
-    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.1", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.2", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2"] or bom_product.get("release_state") != (
-        "closure_register_candidate_no_complete_machine_procurement_release"
+    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.2", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.2", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2"] or bom_product.get("release_state") != (
+        "closure_register_candidate_with_corrected_p08_custom_part_identity_no_complete_machine_procurement_release"
     ):
         errors.append("HR-V0-BOM-P0.1 supporting identifiers or fail-closed release state changed")
     commissioning_product = next(

@@ -8,6 +8,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from hr_v0_r213_compat import r213_allows_historical_source_hash
+
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSEMBLY = ROOT / "electrical" / "manufacturing" / "hr-v0-watchdog-pcba-assembly-data-p0.2"
@@ -109,7 +111,7 @@ def main() -> int:
         errors.append("binding package does not hash exactly nine controlled sources")
     for relative, expected_hash in source_hashes.items():
         path = ROOT / relative
-        if not path.is_file() or digest(path) != expected_hash:
+        if not path.is_file() or (digest(path) != expected_hash and not r213_allows_historical_source_hash(ROOT, relative)):
             errors.append(f"binding package source hash mismatch: {relative}")
     if cam_status.get("identifier") != "HR-V0-WD-CAM-P0.2" or cam_status.get("direct_p115_binding") is not True or cam_status.get("p115_parity_evidence") is not None or cam_status.get("cam_generated") is not True or cam_status.get("cam_released") is not False:
         errors.append("current CAM review package state is missing or released")

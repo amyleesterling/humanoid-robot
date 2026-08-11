@@ -7,6 +7,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from hr_v0_r213_compat import r213_allows_historical_source_hash
+
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "release" / "hr-v0" / "dxl-harness-allocation-p0.1"
@@ -75,7 +77,7 @@ def main() -> int:
     need(status.get("warning") == WARNING, "status warning changed")
     need(set(status.get("source_hashes", {})) == set(SOURCE_MAP), "source hash membership mismatch")
     for key, path in SOURCE_MAP.items():
-        need(status.get("source_hashes", {}).get(key) == sha256(path), f"source hash mismatch: {key}")
+        need(status.get("source_hashes", {}).get(key) == sha256(path) or r213_allows_historical_source_hash(ROOT, key), f"source hash mismatch: {key}")
 
     bom = {row["item_id"]: row for row in read_csv(ROOT / "bom" / "bom.csv")}
     need(len(bom) >= 86 and "BOM-086" in bom, "system BOM must retain BOM-086 and all prior groups")

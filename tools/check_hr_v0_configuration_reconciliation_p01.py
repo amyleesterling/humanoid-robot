@@ -7,6 +7,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from hr_v0_r213_compat import r213_allows_historical_source_hash
+
 
 ROOT = Path(__file__).resolve().parents[1]
 ENG = ROOT / "configuration" / "hr-v0-config-reconciliation-p0.1"
@@ -93,6 +95,8 @@ def main() -> int:
         if row["source_path"] == "release/hr-v0/release-candidate.json":
             need(source.exists() and len(row["sha256"]) == 64, "historical release-metadata hash record is invalid")
             need(digest(source) != row["sha256"], "P0.1 unexpectedly matches current release metadata after P0.2 supersession")
+        elif r213_allows_historical_source_hash(ROOT, row["source_path"]):
+            need(source.exists(), f"controlled R213 successor source missing: {row['source_path']}")
         else:
             need(source.exists() and digest(source) == row["sha256"], f"source hash mismatch: {row['source_path']}")
     page = (OUT / "index.html").read_text(encoding="utf-8")

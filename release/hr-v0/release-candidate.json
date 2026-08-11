@@ -114,13 +114,13 @@
         "HR-V0-BOSTON-FAB-ROUTE-P0.3",
         "HR-V0-FAB-INPUT-P0.1",
         "HR-V0-MECH-DFM-DATA-P0.1",
-        "HR-V0-MECH-BOM-BIND-P0.1",
+        "HR-V0-MECH-BOM-BIND-P0.2",
         "HR-V0-MECH-PARITY-P0.1",
         "HR-V0-MECH-R0.1-PRELIMINARY-SUPERSEDED-ARM",
         "HR-V0-FAB-RFI-P0.2-WITHDRAWN",
         "HR-V0-FRAME-P0.2"
       ],
-      "release_state": "integrated_exact_coordinate_candidate_requirements_input_reconciled_dynamic_trace_analysis_defined_physical_evidence_open_not_released_for_fabrication_or_energization"
+      "release_state": "integrated_p06_system_placement_with_corrected_p08_custom_part_review_candidate_physical_evidence_open_qualified_release_open"
     },
     {
       "domain": "firmware",
@@ -168,7 +168,7 @@
         "HR-V0-EVAL-BATCH-A-ACQ-P0.1",
         "HR-V0-EVAL-BATCH-A-RCV-P0.1",
         "HR-V0-ACT-AC-CORD-P0.1",
-        "HR-V0-MECH-BOM-BIND-P0.1",
+        "HR-V0-MECH-BOM-BIND-P0.2",
         "HR-V0-WD-BOM-BIND-P0.1",
         "DXL-STAR-P0.2-CARRIER-CANDIDATE",
         "HR-V0-DXL-STAR-MFG-P0.2",
@@ -182,7 +182,7 @@
         "HR-V0-LABEL-P0.1",
         "HR-V0-COMPUTE-STORAGE-P0.2"
       ],
-      "release_state": "closure_register_candidate_no_complete_machine_procurement_release"
+      "release_state": "closure_register_candidate_with_corrected_p08_custom_part_identity_no_complete_machine_procurement_release"
     },
     {
       "domain": "commissioning",
@@ -332,5 +332,13 @@
     "all applicable energization gates closed with executed evidence",
     "qualified mechanical, electrical, and functional-safety reviews signed",
     "separate fabrication and energization authorizations issued"
+  ],
+  "historical_metadata_records": [
+    {
+      "identifier": "HR-V0-MECH-BOM-BIND-P0.1",
+      "state": "historical_after_r213",
+      "successor": "HR-V0-MECH-BOM-BIND-P0.2",
+      "scope": "P0.7 BOM-027 STEP/DXF/drawing identity; audit only"
+    }
   ]
 }

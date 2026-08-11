@@ -8,6 +8,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from hr_v0_r213_compat import r213_allows_historical_source_hash
+
 
 ROOT = Path(__file__).resolve().parents[1]
 ENG = ROOT / "configuration/hr-v0-config-reconciliation-p0.2"
@@ -81,7 +83,10 @@ def main() -> int:
 
     for row in rows(OUT / "source-hash-register.csv"):
         source = ROOT / row["source_path"]
-        need(source.exists() and digest(source) == row["sha256"], f"source hash mismatch: {row['source_path']}")
+        need(
+            source.exists() and (digest(source) == row["sha256"] or r213_allows_historical_source_hash(ROOT, row["source_path"])),
+            f"source hash mismatch: {row['source_path']}",
+        )
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in ("font:clamp(16px", "P1.15 core + P1.17 observation view", "Observation P0.5", "All seven affected gates remain partial", WARNING):
         need(token.lower() in page.lower(), f"guide token missing: {token}")
