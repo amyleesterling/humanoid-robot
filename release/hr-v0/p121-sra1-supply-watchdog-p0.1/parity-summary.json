@@ -1,0 +1,30 @@
+{
+  "identifier": "HR-V0-P121-SRA1-SUPPLY-WD-P0.1",
+  "round": "R234",
+  "p120": "V3-P1.20-WATCHDOG-INTERLOCK-CANDIDATE",
+  "p121": "V3-P1.21-SRA1-SUPPLY-WATCHDOG-CANDIDATE",
+  "native_sheets": 13,
+  "components": 84,
+  "modeled_terminals": 340,
+  "named_nets": 106,
+  "changed_terminal_assignments": 7,
+  "unchanged_terminal_assignments": 333,
+  "removed_nets": [
+    "SR1_OUT1_TO_KWD1",
+    "SR1_OUT2_TO_KWD2"
+  ],
+  "added_nets": [
+    "WD_SRA1_SUPPLY_INTERMEDIATE",
+    "SRA1_A1_WD_GATED"
+  ],
+  "erc_errors": 0,
+  "erc_warnings": 0,
+  "fault_cases": 14,
+  "open_holds": 11,
+  "p115_current": true,
+  "p121_accepted": false,
+  "watchdog_safety_credit": "NONE",
+  "qualified_review": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

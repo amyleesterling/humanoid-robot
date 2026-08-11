@@ -132,7 +132,7 @@ def main() -> int:
     need(electrical.get("configuration_reconciliation") == "HR-V0-CONFIG-REC-P0.4", "R223 configuration reconciliation missing")
     need(electrical.get("ecad_web_review_surface") == "HR-V0-ECAD-WEB-REVIEW-P0.1", "R224 ECAD web-review surface missing")
     need(electrical.get("identifier") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "P1.15 current identity changed")
-    need(electrical.get("release_state") == "p115_current_p118_p119_p120_unaccepted_r233_pnoz_kwd_application_screen_complete_common_cause_routing_physical_tests_qualified_disposition_and_authority_open", "electrical release state changed")
+    need(electrical.get("release_state") == "p115_current_p118_p119_p120_p121_unaccepted_r234_sra1_supply_watchdog_candidate_complete_manufacturer_routing_physical_tests_qualified_disposition_and_authority_open", "electrical release state changed")
     need(electrical.get("contactor_application_record") == "HR-V0-K1K2-APP-P0.3", "current contactor application record missing")
     need(electrical.get("e2_grounding_boundary") == "HR-V0-E2-GND-BOUNDARY-P0.1", "R227 E2 grounding boundary missing")
     need(electrical.get("e2_prepower_test_candidate") == "HR-V0-E2-PREPOWER-P0.1", "R228 E2 pre-power candidate missing")
