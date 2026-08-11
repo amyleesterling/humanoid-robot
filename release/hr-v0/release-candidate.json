@@ -68,9 +68,10 @@
         "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
         "HR-V0-K1K2-APP-P0.3",
         "HR-V0-E2-GND-BOUNDARY-P0.1",
-        "HR-V0-E2-PREPOWER-P0.1"
+        "HR-V0-E2-PREPOWER-P0.1",
+        "HR-V0-P118-DISPOSITION-P0.1"
       ],
-      "release_state": "p115_current_p118_unaccepted_e2_grounding_and_prepower_candidates_bound_zero_limits_results_or_authority_k1k2_dc_application_protection_and_qualified_acceptance_open",
+      "release_state": "p115_current_p118_unaccepted_r229_parity_dossier_complete_qualified_disposition_physical_selections_tests_and_authority_open",
       "control_panel_configuration": "HR-V0-CP-CONFIG-P0.1",
       "control_panel_geometry_basis": "HR-V0-CP-P0.6",
       "control_panel_conductor_basis": "HR-V0-PANEL-COND-P0.1",
@@ -84,7 +85,9 @@
       "e2_grounding_boundary": "HR-V0-E2-GND-BOUNDARY-P0.1",
       "e2_grounding_configuration_binding": "26 source/frame/shield endpoint rows identical; SAFETY_0V explicitly differs 41 to 49 through XD0",
       "e2_prepower_test_candidate": "HR-V0-E2-PREPOWER-P0.1",
-      "e2_prepower_configuration_binding": "55 P1.18 conductor rows; 45 fixed-internal method candidates; 10 blocked door rows; zero released limits or results"
+      "e2_prepower_configuration_binding": "55 P1.18 conductor rows; 45 fixed-internal method candidates; 10 blocked door rows; zero released limits or results",
+      "p118_disposition_dossier": "HR-V0-P118-DISPOSITION-P0.1",
+      "p118_disposition_summary": "77 BOM and 308 terminal rows preserved; 106 net names preserved; five nodes and 32 node terminals added; P1.18 remains unaccepted"
     },
     {
       "domain": "mechanical",

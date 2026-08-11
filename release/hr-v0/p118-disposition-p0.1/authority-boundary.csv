@@ -1,0 +1,5 @@
+activity,allowed,boundary,warning
+read-only project configuration analysis,TRUE,repository evidence only,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+P1.18 promotion,FALSE,independent and qualified signed disposition plus named configuration authority required,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+procurement/fabrication/assembly/connection,FALSE,"physical selections, calculations, review and separate release required","PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+powered testing/motion/energization,FALSE,all applicable gates and signed authorization required,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
