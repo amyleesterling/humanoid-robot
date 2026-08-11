@@ -19,6 +19,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R242 P1.21 conductor and duct-occupancy evidence](docs/hr-v0-p121-conductor-fill-p0.1.md)
+- [Interactive conductor and fill guide](release/hr-v0/p121-conductor-fill-p0.1/index.html)
+- [R242 independent review request](docs/reviews/2026-08-11-r242-independent-review-request.md)
+- [R242 validation record](docs/reviews/2026-08-11-r242-validation-record.md)
+- [Sol R12 status after R242](docs/reviews/2026-08-11-sol-r12-post-r242-status.md)
 - [R241 P1.21 segregation-hardware candidate](docs/hr-v0-p121-segregation-hardware-p0.1.md)
 - [Interactive segregation-hardware guide](release/hr-v0/p121-segregation-hardware-p0.1/index.html)
 - [R241 independent review request](docs/reviews/2026-08-11-r241-independent-review-request.md)

@@ -82,16 +82,18 @@
         "HR-V0-P121-VISUAL-REVIEW-P0.1",
         "HR-V0-P121-ROUTING-P0.1",
         "HR-V0-P121-SEGREGATION-HW-P0.1",
-        "HR-V0-CONFIG-REC-P0.5"
+        "HR-V0-CONFIG-REC-P0.5",
+        "HR-V0-P121-CONDUCTOR-FILL-P0.1",
+        "HR-V0-CONFIG-REC-P0.6"
       ],
-      "release_state": "p115_current_p118_p119_p120_p121_unaccepted_r241_exact_duct_candidate_junction_conductor_fill_physical_qualified_and_authority_open",
+      "release_state": "p115_current_p118_p119_p120_p121_unaccepted_r242_exact_conductor_candidate_geometry_fill_only_color_dcr_cut_protection_thermal_physical_qualified_and_authority_open",
       "control_panel_configuration": "HR-V0-CP-CONFIG-P0.1",
       "control_panel_geometry_basis": "HR-V0-CP-P0.6",
       "control_panel_conductor_basis": "HR-V0-PANEL-COND-P0.1",
       "panel_topology_candidate": "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE",
       "panel_point_to_point_candidate": "HR-V0-PANEL-P2P-P0.1",
       "control_panel_node_placement_candidate": "HR-V0-PANEL-NODE-PLACEMENT-P0.1",
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.5",
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.6",
       "ecad_web_review_surface": "HR-V0-ECAD-WEB-REVIEW-P0.1",
       "contactor_application_record": "HR-V0-K1K2-APP-P0.3",
       "contactor_configuration_binding": "P1.15 current and P1.18 unaccepted contain 32 identical contactor-critical terminal/net rows",
@@ -121,7 +123,9 @@
       "p121_protected_routing_dossier": "HR-V0-P121-ROUTING-P0.1",
       "p121_protected_routing_summary": "7 route deltas; 9 coordinate-bound planning routes; 14 hot-versus-credited pairs with zero nominal centerline crossings; 9 physical and qualified holds open; no route released",
       "p121_segregation_hardware_dossier": "HR-V0-P121-SEGREGATION-HW-P0.1",
-      "p121_segregation_hardware_summary": "Phoenix Contact 3240187 exact 25 x 25 x 2000 mm planning candidate; 369.8 mm WD5 envelope; 7 logical conductors; junction, fill, physical and qualified evidence open; no safety credit or route release"
+      "p121_segregation_hardware_summary": "Phoenix Contact 3240187 exact 25 x 25 x 2000 mm planning candidate; 369.8 mm WD5 envelope; 7 logical conductors; junction, fill, physical and qualified evidence open; no safety credit or route release",
+      "p121_conductor_fill_dossier": "HR-V0-P121-CONDUCTOR-FILL-P0.1",
+      "p121_conductor_fill_summary": "Belden 3057 BL005 exact held 16 AWG candidate for 7 routes; WD5 8.89 percent and WD2 enumerated maximum 2.66 percent geometry screens; total fill, color, DCR, cuts, protection, thermal, physical and qualified evidence open"
     },
     {
       "domain": "mechanical",
@@ -269,17 +273,20 @@
         "HR-V0-CONFIG-REC-P0.4",
         "HR-V0-P121-SEGREGATION-HW-P0.1",
         "HR-V0-CONFIG-REC-P0.5",
+        "HR-V0-P121-CONDUCTOR-FILL-P0.1",
+        "HR-V0-CONFIG-REC-P0.6",
         "HR-V0-XT1-P0.1",
         "HR-V0-LABEL-P0.1",
         "HR-V0-COMPUTE-STORAGE-P0.2",
         "HR-V0-LOT-A-SRC-P0.1"
       ],
-      "release_state": "r241_96_group_bom_with_exact_duct_candidate_held_and_lot_a_purchase_blocker_no_complete_machine_procurement_release",
-      "system_group_count": 96,
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.5",
+      "release_state": "r242_97_group_bom_with_exact_duct_and_p121_conductor_candidates_held_and_lot_a_purchase_blocker_no_complete_machine_procurement_release",
+      "system_group_count": 97,
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.6",
       "lot_a_source_reconciliation": "HR-V0-LOT-A-SRC-P0.1",
       "lot_a_summary": "6 physical articles; $1,182.22 official-page visible subtotal; 13 facts; 4 open anomalies; 1 purchase blocker; 8 unsent questions; 10 open decision gates; 12 unexecuted receiving rows; no purchase authority",
-      "p121_segregation_hardware": "HR-V0-P121-SEGREGATION-HW-P0.1"
+      "p121_segregation_hardware": "HR-V0-P121-SEGREGATION-HW-P0.1",
+      "p121_conductor_fill": "HR-V0-P121-CONDUCTOR-FILL-P0.1"
     },
     {
       "domain": "commissioning",
@@ -387,6 +394,7 @@
         "HR-V0-CONFIG-REC-P0.3",
         "HR-V0-CONFIG-REC-P0.4",
         "HR-V0-CONFIG-REC-P0.5",
+        "HR-V0-CONFIG-REC-P0.6",
         "HR-V0-MECH-BOM-BIND-P0.2"
       ],
       "release_state": "integrated_unpowered_sequence_bound_to_held_p08_mechanics_all_steps_not_authorized_not_executed_connection_and_energization_prohibited_not_approved"
