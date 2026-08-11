@@ -19,6 +19,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R244 P1.21 nominal DCR and voltage-drop screen](docs/hr-v0-p121-dcr-drop-p0.1.md)
+- [Interactive DCR and voltage-drop guide](release/hr-v0/p121-dcr-drop-p0.1/index.html)
+- [R244 independent review request](docs/reviews/2026-08-11-r244-independent-review-request.md)
+- [R244 validation record](docs/reviews/2026-08-11-r244-validation-record.md)
+- [Sol R12 status after R244](docs/reviews/2026-08-11-sol-r12-post-r244-status.md)
 - [R243 P1.21 endpoint termination evidence](docs/hr-v0-p121-termination-p0.1.md)
 - [Interactive termination guide](release/hr-v0/p121-termination-p0.1/index.html)
 - [R243 independent review request](docs/reviews/2026-08-11-r243-independent-review-request.md)
@@ -1278,6 +1283,7 @@ Two hundred forty-one review/control rounds are complete: R01-R241. R11 Fable an
 | R241 | P1.21 segregation-hardware and configuration P0.5 candidate | Replaced an undocumented divider concept with exact held Phoenix Contact item 3240187; placed a 369.8 mm WD5 envelope with nominal 10 mm/20 mm gaps; rejected the 20.8 mm existing-stock residual; exposed the WD5/WD2 junction, seven physical conductors, fill, thermal, separation and installation as open; and reconciled 96 BOM groups through `HR-V0-CONFIG-REC-P0.5`. P1.15 remains current, P1.21 unaccepted and no procurement or work authority exists. |
 | R242 | P1.21 conductor and duct-occupancy candidate | Assigned held Belden 3057 BL005 to the seven planning routes and reproduced geometry-only WD5/WD2 fill screens while retaining color, DCR, cut, protection, thermal, termination, physical and qualified-review holds. `BOM-097` and configuration P0.6 reconcile the historical 97-group state; P1.15 remains current and P1.21 remains unaccepted. |
 | R243 | P1.21 endpoint-termination candidate | Mapped fourteen endpoints to held Phoenix Contact ferrule candidates: twelve item 3200043 insulated 8 mm and two item 3200263 uninsulated 7 mm. Bound exact crimper, stripper and torque-driver candidates; limited the 40 N/60 s criterion to sacrificial crimp coupons; retained exact-bit, calibration, received-material, installed-retention, terminal-application and qualified-review holds; and reconciled 98 BOM groups through `HR-V0-CONFIG-REC-P0.7`. P1.15 remains current, P1.21/R243 remain unaccepted and no work authority exists. |
+| R244 | P1.21 nominal DCR/drop and bit-evidence boundary | Converted the current manufacturer-nominal 4.4 ohm/1000 ft at 20 C to 0.014435695538 ohm/m and calculated four one-way centerline conductor-only planning drops while leaving C-05 uncalculated. Confirmed that current Pilz and Phoenix sources do not justify a purchase-ready exact bit; Phoenix 1212568 remains only the strongest held relay-terminal candidate. Twelve holds remain; the 98-group BOM is unchanged; P1.15 remains current and P1.21/R244 remain unaccepted. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

@@ -1,0 +1,2 @@
+record_id,published_value,conversion,nominal_ohm_per_m,classification,received_lot_measurement,accepted_for_release,warning
+DCR-CONV-001,4.4 ohm/1000 ft at 20 C nominal,4.4 / 304.8,0.014435695538,MANUFACTURER-NOMINAL ENGINEERING INPUT ONLY,NOT EXECUTED,NO,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

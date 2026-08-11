@@ -9,6 +9,8 @@ Evidence maturity is recorded separately from design intent. A clean parser, ERC
 
 R214 configuration note: `HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE` advances exact-source CAD integration and nominal analytical evidence only. It does not advance the arm to E3: no received article, DFM acceptance, FAI, material certificate, installed-fastener record, physical clearance/stop/load test, continuous-duty test, fault injection, or qualified approval exists.
 
+R244 electrical note: `HR-V0-P121-DCR-DROP-P0.1` remains E1 analytical evidence. Its four numeric values use manufacturer-nominal 20 C resistance, planning centerlines and incomplete load inputs; they are one-way conductor-only screens, not accepted circuit voltage-drop results. Received DCR, actual cuts, complete circuit/contact/source/load/temperature/protection inputs, physical validation, exact terminal bits and qualified review remain open.
+
 ## Maturity scale
 
 | Level | Meaning | Permitted claim |

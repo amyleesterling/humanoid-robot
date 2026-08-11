@@ -86,16 +86,18 @@
         "HR-V0-P121-CONDUCTOR-FILL-P0.1",
         "HR-V0-CONFIG-REC-P0.6",
         "HR-V0-P121-TERM-P0.1",
-        "HR-V0-CONFIG-REC-P0.7"
+        "HR-V0-CONFIG-REC-P0.7",
+        "HR-V0-P121-DCR-DROP-P0.1",
+        "HR-V0-CONFIG-REC-P0.8"
       ],
-      "release_state": "p115_current_p121_unaccepted_r243_exact_termination_candidates_only_received_application_calibration_physical_qualified_and_authority_open",
+      "release_state": "p115_current_p121_unaccepted_r244_nominal_dcr_drop_and_bit_disposition_only_received_complete_circuit_physical_qualified_and_authority_open",
       "control_panel_configuration": "HR-V0-CP-CONFIG-P0.1",
       "control_panel_geometry_basis": "HR-V0-CP-P0.6",
       "control_panel_conductor_basis": "HR-V0-PANEL-COND-P0.1",
       "panel_topology_candidate": "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE",
       "panel_point_to_point_candidate": "HR-V0-PANEL-P2P-P0.1",
       "control_panel_node_placement_candidate": "HR-V0-PANEL-NODE-PLACEMENT-P0.1",
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.7",
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.8",
       "ecad_web_review_surface": "HR-V0-ECAD-WEB-REVIEW-P0.1",
       "contactor_application_record": "HR-V0-K1K2-APP-P0.3",
       "contactor_configuration_binding": "P1.15 current and P1.18 unaccepted contain 32 identical contactor-critical terminal/net rows",
@@ -129,7 +131,9 @@
       "p121_conductor_fill_dossier": "HR-V0-P121-CONDUCTOR-FILL-P0.1",
       "p121_conductor_fill_summary": "Belden 3057 BL005 exact held 16 AWG candidate for 7 routes; WD5 8.89 percent and WD2 enumerated maximum 2.66 percent geometry screens; total fill, color, DCR, cuts, protection, thermal, physical and qualified evidence open",
       "p121_termination_dossier": "HR-V0-P121-TERM-P0.1",
-      "p121_termination_summary": "14 endpoint candidates: 12 Phoenix 3200043 insulated 8 mm and 2 Phoenix 3200263 uninsulated 7 mm; exact primary tools held; received qualification, exact bits, installed evidence and acceptance open"
+      "p121_termination_summary": "14 endpoint candidates: 12 Phoenix 3200043 insulated 8 mm and 2 Phoenix 3200263 uninsulated 7 mm; exact primary tools held; received qualification, exact bits, installed evidence and acceptance open",
+      "p121_dcr_drop_dossier": "HR-V0-P121-DCR-DROP-P0.1",
+      "p121_dcr_drop_summary": "manufacturer-nominal 4.4 ohm/1000 ft at 20 C; four one-way centerline conductor-only numeric screens; received DCR/cuts/complete circuit and exact bits open"
     },
     {
       "domain": "mechanical",
@@ -281,14 +285,15 @@
         "HR-V0-CONFIG-REC-P0.6",
         "HR-V0-P121-TERM-P0.1",
         "HR-V0-CONFIG-REC-P0.7",
+        "HR-V0-CONFIG-REC-P0.8",
         "HR-V0-XT1-P0.1",
         "HR-V0-LABEL-P0.1",
         "HR-V0-COMPUTE-STORAGE-P0.2",
         "HR-V0-LOT-A-SRC-P0.1"
       ],
-      "release_state": "r243_98_group_bom_with_exact_p121_ferrule_candidates_held_and_lot_a_purchase_blocker_no_complete_machine_procurement_release",
+      "release_state": "r244_98_group_bom_unchanged_with_nominal_dcr_drop_evidence_exact_p121_ferrule_candidates_held_and_lot_a_purchase_blocker_no_complete_machine_procurement_release",
       "system_group_count": 98,
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.7",
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.8",
       "lot_a_source_reconciliation": "HR-V0-LOT-A-SRC-P0.1",
       "lot_a_summary": "6 physical articles; $1,182.22 official-page visible subtotal; 13 facts; 4 open anomalies; 1 purchase blocker; 8 unsent questions; 10 open decision gates; 12 unexecuted receiving rows; no purchase authority",
       "p121_segregation_hardware": "HR-V0-P121-SEGREGATION-HW-P0.1",
@@ -403,6 +408,7 @@
         "HR-V0-CONFIG-REC-P0.5",
         "HR-V0-CONFIG-REC-P0.6",
         "HR-V0-CONFIG-REC-P0.7",
+        "HR-V0-CONFIG-REC-P0.8",
         "HR-V0-MECH-BOM-BIND-P0.2"
       ],
       "release_state": "integrated_unpowered_sequence_bound_to_held_p08_mechanics_all_steps_not_authorized_not_executed_connection_and_energization_prohibited_not_approved"
