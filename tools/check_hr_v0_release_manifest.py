@@ -113,6 +113,7 @@ def main() -> None:
         "HR-V0-PANEL-P2P-P0.1",
         "HR-V0-PANEL-NODE-PLACEMENT-P0.1",
         "HR-V0-CONFIG-REC-P0.4",
+        "HR-V0-ECAD-WEB-REVIEW-P0.1",
         "HR-V0-COMPUTE-INSTALL-P0.1",
         "HR-V0-U2D2-USB-P0.1",
         "HR-V0-PANEL-RD-P0.1",
@@ -137,7 +138,7 @@ def main() -> None:
         "HR-V0-OBSERVATION-FIELD-HARNESS-P0.1",
         "HR-V0-OBSERVATION-COMPUTE-HARNESS-P0.1",
         "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
-    ] or electrical_product.get("release_state") != "p115_current_p118_topology_unaccepted_r223_nodes_placed_catalog_only_lengths_terminations_protection_physical_evidence_and_work_authority_absent" or electrical_product.get("control_panel_configuration") != "HR-V0-CP-CONFIG-P0.1" or electrical_product.get("control_panel_geometry_basis") != "HR-V0-CP-P0.6" or electrical_product.get("control_panel_conductor_basis") != "HR-V0-PANEL-COND-P0.1" or electrical_product.get("panel_topology_candidate") != "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE" or electrical_product.get("panel_point_to_point_candidate") != "HR-V0-PANEL-P2P-P0.1" or electrical_product.get("control_panel_node_placement_candidate") != "HR-V0-PANEL-NODE-PLACEMENT-P0.1" or electrical_product.get("configuration_reconciliation") != "HR-V0-CONFIG-REC-P0.4":
+    ] or electrical_product.get("release_state") != "p115_current_p118_topology_unaccepted_r224_native_sheets_web_bound_full_independent_and_qualified_review_selections_physical_evidence_and_work_authority_absent" or electrical_product.get("control_panel_configuration") != "HR-V0-CP-CONFIG-P0.1" or electrical_product.get("control_panel_geometry_basis") != "HR-V0-CP-P0.6" or electrical_product.get("control_panel_conductor_basis") != "HR-V0-PANEL-COND-P0.1" or electrical_product.get("panel_topology_candidate") != "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE" or electrical_product.get("panel_point_to_point_candidate") != "HR-V0-PANEL-P2P-P0.1" or electrical_product.get("control_panel_node_placement_candidate") != "HR-V0-PANEL-NODE-PLACEMENT-P0.1" or electrical_product.get("configuration_reconciliation") != "HR-V0-CONFIG-REC-P0.4" or electrical_product.get("ecad_web_review_surface") != "HR-V0-ECAD-WEB-REVIEW-P0.1":
         errors.append("Electrical V3-P1.15 supporting identifiers or release state changed")
     safety_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FSA-P0.1"),

@@ -1,0 +1,5 @@
+action,allowed,boundary,warning
+"read, zoom, search, review and redline",TRUE,Internal review only,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+promote P1.18,FALSE,Independent review and formal configuration acceptance required,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+"procure, fabricate, assemble, wire or connect",FALSE,No released physical package exists,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+"powered test, motion or energization",FALSE,Separate qualified stage authorization required,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

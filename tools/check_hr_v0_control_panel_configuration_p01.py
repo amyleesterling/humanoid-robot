@@ -130,8 +130,9 @@ def main() -> int:
     need(electrical.get("panel_point_to_point_candidate") == "HR-V0-PANEL-P2P-P0.1", "R222 point-to-point candidate missing")
     need(electrical.get("control_panel_node_placement_candidate") == "HR-V0-PANEL-NODE-PLACEMENT-P0.1", "R223 node-placement candidate missing")
     need(electrical.get("configuration_reconciliation") == "HR-V0-CONFIG-REC-P0.4", "R223 configuration reconciliation missing")
+    need(electrical.get("ecad_web_review_surface") == "HR-V0-ECAD-WEB-REVIEW-P0.1", "R224 ECAD web-review surface missing")
     need(electrical.get("identifier") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "P1.15 current identity changed")
-    need(electrical.get("release_state") == "p115_current_p118_topology_unaccepted_r223_nodes_placed_catalog_only_lengths_terminations_protection_physical_evidence_and_work_authority_absent", "electrical release state changed")
+    need(electrical.get("release_state") == "p115_current_p118_topology_unaccepted_r224_native_sheets_web_bound_full_independent_and_qualified_review_selections_physical_evidence_and_work_authority_absent", "electrical release state changed")
 
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in (WARNING, "HR-V0-CP-CONFIG-P0.1", "font:clamp(16px", "font-size:14px", "66 / 66", "PCB-P1.0", "DXL-STAR-P0.2", "12</b>physical closure holds"):
