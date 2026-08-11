@@ -11,6 +11,8 @@ from pathlib import Path
 
 import cadquery as cq
 
+from hr_v0_r213_compat import r213_allows_historical_source_hash
+
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "release" / "hr-v0" / "mechanical-bom-binding-p0.2"
@@ -109,7 +111,14 @@ def main() -> int:
         errors.append("source-hash register does not contain eight records")
     for row in sources:
         path = ROOT / row["repository_path"]
-        if not path.is_file() or digest(path) != row["sha256"] or row.get("warning") != WARNING:
+        hash_matches_or_is_controlled_history = (
+            path.is_file()
+            and (
+                digest(path) == row["sha256"]
+                or r213_allows_historical_source_hash(ROOT, row["repository_path"])
+            )
+        )
+        if not hash_matches_or_is_controlled_history or row.get("warning") != WARNING:
             errors.append(f"source identity mismatch: {row.get('repository_path')}")
     if len(supersession) != 1 or "AUDIT ONLY" not in supersession[0].get("historical_use", "") or supersession[0].get("warning") != WARNING:
         errors.append("supersession boundary changed")

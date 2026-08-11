@@ -1,0 +1,19 @@
+{
+  "identifier": "HR-V0-PANEL-NODE-PLACEMENT-P0.1",
+  "round": "R223",
+  "date": "2026-08-11",
+  "layout_records": 33,
+  "explicit_nodes": 5,
+  "route_records": 55,
+  "routes_with_planning_screen": 37,
+  "released_cut_lengths": 0,
+  "open_holds": 12,
+  "procurement_authorized": false,
+  "fabrication_authorized": false,
+  "assembly_authorized": false,
+  "connection_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

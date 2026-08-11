@@ -48,7 +48,9 @@ def main() -> None:
     b=bom.get("BOM-039",{}); c=closure.get("BOM-039",{})
     need(b.get("manufacturer")=="Phoenix Contact" and "3209510 x5" in b.get("manufacturer_part_number","") and "3209523 x1" in b.get("manufacturer_part_number","") and "3030417 x1" in b.get("manufacturer_part_number","") and "NO JUMPERS" in b.get("manufacturer_part_number","") and b.get("baseline_status")=="exact_candidate_hold", "BOM-039 identity/state changed")
     need(c.get("closure_class")=="exact_candidate_hold" and c.get("allowed_action")=="HOLD", "BOM-039 closure weakened")
-    need(bom.get("BOM-085",{}).get("manufacturer_part_number")=="CLIPFIX 35; item 3022218" and bom.get("BOM-085",{}).get("quantity")=="6", "shared CLIPFIX stock changed")
+    clipfix=bom.get("BOM-085",{})
+    need(clipfix.get("manufacturer_part_number")=="CLIPFIX 35; item 3022218" and clipfix.get("quantity")=="8", "shared CLIPFIX stock changed")
+    need("DR5" in clipfix.get("selection_basis","") and "R223" in clipfix.get("selection_basis","") and "DR1 DR2 DR3" in clipfix.get("selection_basis",""), "shared CLIPFIX allocation does not preserve the six historical brackets plus the two R223 DR5 candidates")
     need(bom.get("BOM-062",{}).get("baseline_status") in {"selection_required","design_required","exact_candidate_hold"}, "label group state is not fail-closed")
     for gate in ("EG-003","EG-015"):
         need(gates.get(gate,{}).get("status")=="partial", f"{gate} must remain partial")

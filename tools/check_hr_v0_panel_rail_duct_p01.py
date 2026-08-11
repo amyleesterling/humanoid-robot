@@ -50,13 +50,14 @@ def main() -> None:
     exact = {
         "BOM-083": ("Phoenix Contact", "NS 35/7,5 UNPERF 500MM; item 1207648", "2"),
         "BOM-084": ("Phoenix Contact", "CD 40X40; item 3240189", "1"),
-        "BOM-085": ("Phoenix Contact", "CLIPFIX 35; item 3022218", "6"),
+        "BOM-085": ("Phoenix Contact", "CLIPFIX 35; item 3022218", "8"),
     }
     for item_id, values in exact.items():
         row = bom.get(item_id, {})
         require((row.get("manufacturer"), row.get("manufacturer_part_number"), row.get("quantity")) == values, f"{item_id} identity/quantity changed")
         require(row.get("baseline_status") == "exact_candidate_hold", f"{item_id} is not exact candidate hold")
         require(closure.get(item_id, {}).get("closure_class") == "exact_candidate_hold" and closure.get(item_id, {}).get("allowed_action") == "HOLD", f"{item_id} closure is not fail-closed")
+    require("DR5" in bom.get("BOM-085", {}).get("selection_basis", "") and "R223" in bom.get("BOM-085", {}).get("selection_basis", ""), "BOM-085 does not identify the two added DR5 hold candidates")
     require(bom.get("BOM-059", {}).get("baseline_status") == "selection_required", "BOM-059 residual must remain selection required")
     require(closure.get("BOM-059", {}).get("closure_class") == "selection_required", "BOM-059 closure class changed")
 
@@ -103,7 +104,7 @@ def main() -> None:
 
     if failures:
         raise SystemExit("HR-V0 panel rail/duct P0.1 check failed:\n- " + "\n- ".join(failures))
-    print("HR-V0 panel rail/duct P0.1 check passed: 85 BOM groups, 7 planning cuts, 12 holds, 3 primary sources, 18 blank receiving rows and 16 blank installation rows")
+    print(f"HR-V0 panel rail/duct P0.1 check passed: {len(bom)} current BOM groups, 7 planning cuts, 12 holds, 3 primary sources, 18 blank receiving rows and 16 blank installation rows")
     print("BOM-059 and DR4 end retention remain SELECTION REQUIRED; no cut, drill, assembly, connection or energization authorization exists")
     print(WARNING)
 

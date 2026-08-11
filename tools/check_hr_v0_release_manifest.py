@@ -111,6 +111,8 @@ def main() -> None:
         "HR-V0-PANEL-COND-P0.1",
         "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE",
         "HR-V0-PANEL-P2P-P0.1",
+        "HR-V0-PANEL-NODE-PLACEMENT-P0.1",
+        "HR-V0-CONFIG-REC-P0.4",
         "HR-V0-COMPUTE-INSTALL-P0.1",
         "HR-V0-U2D2-USB-P0.1",
         "HR-V0-PANEL-RD-P0.1",
@@ -135,7 +137,7 @@ def main() -> None:
         "HR-V0-OBSERVATION-FIELD-HARNESS-P0.1",
         "HR-V0-OBSERVATION-COMPUTE-HARNESS-P0.1",
         "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
-    ] or electrical_product.get("release_state") != "p115_current_p118_explicit_panel_topology_unaccepted_lengths_terminations_protection_physical_evidence_and_work_authority_absent" or electrical_product.get("control_panel_configuration") != "HR-V0-CP-CONFIG-P0.1" or electrical_product.get("control_panel_geometry_basis") != "HR-V0-CP-P0.6" or electrical_product.get("control_panel_conductor_basis") != "HR-V0-PANEL-COND-P0.1" or electrical_product.get("panel_topology_candidate") != "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE" or electrical_product.get("panel_point_to_point_candidate") != "HR-V0-PANEL-P2P-P0.1":
+    ] or electrical_product.get("release_state") != "p115_current_p118_topology_unaccepted_r223_nodes_placed_catalog_only_lengths_terminations_protection_physical_evidence_and_work_authority_absent" or electrical_product.get("control_panel_configuration") != "HR-V0-CP-CONFIG-P0.1" or electrical_product.get("control_panel_geometry_basis") != "HR-V0-CP-P0.6" or electrical_product.get("control_panel_conductor_basis") != "HR-V0-PANEL-COND-P0.1" or electrical_product.get("panel_topology_candidate") != "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE" or electrical_product.get("panel_point_to_point_candidate") != "HR-V0-PANEL-P2P-P0.1" or electrical_product.get("control_panel_node_placement_candidate") != "HR-V0-PANEL-NODE-PLACEMENT-P0.1" or electrical_product.get("configuration_reconciliation") != "HR-V0-CONFIG-REC-P0.4":
         errors.append("Electrical V3-P1.15 supporting identifiers or release state changed")
     safety_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FSA-P0.1"),
@@ -241,9 +243,9 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BOM-P0.1"),
         {},
     )
-    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.2", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.3", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2"] or bom_product.get("release_state") != (
-        "closure_register_candidate_with_corrected_p08_custom_part_identity_no_complete_machine_procurement_release"
-    ):
+    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.2", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.3", "HR-V0-PANEL-NODE-PLACEMENT-P0.1", "HR-V0-CONFIG-REC-P0.4", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2"] or bom_product.get("release_state") != (
+        "95_group_covered_bom_with_r223_panel_nodes_and_accessory_hold_no_complete_machine_procurement_release"
+    ) or bom_product.get("system_group_count") != 95 or bom_product.get("configuration_reconciliation") != "HR-V0-CONFIG-REC-P0.4":
         errors.append("HR-V0-BOM-P0.1 supporting identifiers or fail-closed release state changed")
     commissioning_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-E2-SEQ-P0.1"),
@@ -307,7 +309,7 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BUILD-TRAVELER-P0.1"),
         {},
     )
-    if assembly_product.get("supporting_identifiers") != ["HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE", "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "HR-V0-E2-SEQ-P0.1", "HR-V0-GOV-P0.3", "HR-V0-CONFIG-REC-P0.3", "HR-V0-MECH-BOM-BIND-P0.2"] or assembly_product.get("release_state") != (
+    if assembly_product.get("supporting_identifiers") != ["HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE", "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "HR-V0-E2-SEQ-P0.1", "HR-V0-GOV-P0.3", "HR-V0-CONFIG-REC-P0.3", "HR-V0-CONFIG-REC-P0.4", "HR-V0-MECH-BOM-BIND-P0.2"] or assembly_product.get("release_state") != (
         "integrated_unpowered_sequence_bound_to_held_p08_mechanics_all_steps_not_authorized_not_executed_connection_and_energization_prohibited_not_approved"
     ):
         errors.append("HR-V0-BUILD-TRAVELER-P0.1 supporting identifiers or fail-closed state changed")

@@ -58,7 +58,7 @@ def main() -> int:
         need(value in electrical["supporting_identifiers"], f"release support missing: {value}")
 
     bom = {r["item_id"]: r for r in csv_rows(ROOT / "bom/bom.csv")}
-    need(len(bom) == 91 and len(set(bom)) == 91, "system BOM must contain exactly 91 unique groups")
+    need(len(bom) >= 91 and len(set(bom)) == len(bom), "current system BOM must retain at least the 91 unique R163 groups")
     for item in ("BOM-035", "BOM-051", "BOM-087", "BOM-088", "BOM-089", "BOM-090", "BOM-091"):
         need(item in bom, f"integrated BOM item missing: {item}")
     need("P0.2-CARRIER-CANDIDATE" in bom["BOM-051"]["manufacturer_part_number"], "BOM-051 is stale")

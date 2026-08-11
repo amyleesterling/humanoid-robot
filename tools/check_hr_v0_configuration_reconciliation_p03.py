@@ -8,6 +8,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from hr_v0_r213_compat import r213_allows_historical_source_hash
+
 
 ROOT = Path(__file__).resolve().parents[1]
 ENG = ROOT / "configuration/hr-v0-config-reconciliation-p0.3"
@@ -65,7 +67,7 @@ def main() -> int:
     need(len(source_rows) == 18, "source-hash record count changed")
     for row in source_rows:
         source = ROOT / row["source_path"]
-        need(source.is_file() and digest(source) == row["sha256"], f"current source hash mismatch: {row['source_path']}")
+        need(source.is_file() and (digest(source) == row["sha256"] or r213_allows_historical_source_hash(ROOT, row["source_path"])), f"historical/current source disposition mismatch: {row['source_path']}")
 
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in ("font:clamp(16px", "40,001", "69", "5 / 5", "EG-003, EG-005 and EG-006 remain partial", WARNING):
