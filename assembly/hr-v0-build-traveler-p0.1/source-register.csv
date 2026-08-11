@@ -1,8 +1,8 @@
 source_id,path,sha256,state
-release_candidate,release/hr-v0/release-candidate.json,9ed4b138dc702f0e0dd236ec4809edad9d436376279b7c17a5f86d14bf24376b,CONTROLLED INPUT SNAPSHOT
+release_candidate,release/hr-v0/release-candidate.json,ea72e9a1639684db8dc7f1280826f7cf56c4f50c6548c7b09869f5571d2511d9,CONTROLLED INPUT SNAPSHOT
 release_manifest,release/hr-v0/HR-V0-RC-P0.1-file-manifest.csv,SELF-REFERENTIAL-MANIFEST-HASH-OMITTED,CONTROLLED INPUT; HASH OMITTED TO AVOID MANIFEST CYCLE
-energization_gates,requirements/hr-v0-energization-gates.csv,fb9f3d62fa229bc738072c611e4f83c22627b10c909dae49796912774e3474cf,CONTROLLED INPUT SNAPSHOT
-bom_closure,bom/hr-v0-bom-closure.csv,3a59db44e5d1968d610f4a465ebb6f69dd1a1dc3f9c697d54989d07511d98504,CONTROLLED INPUT SNAPSHOT
+energization_gates,requirements/hr-v0-energization-gates.csv,24a5f163ed229df804f6f7fd67fabe0a40b811592ffcaf33f4d85d94f158e210,CONTROLLED INPUT SNAPSHOT
+bom_closure,bom/hr-v0-bom-closure.csv,1f9bc3b315e09d5e74858be332dfd39d59d4348543ae53c5bff3b9b75be7bdcb,CONTROLLED INPUT SNAPSHOT
 mechanical_release,docs/hr-v0-arm-architecture-p0.8-dwg-integrated.md,fbabfa4d559cc867a288d94e5cd7e3c90f148344c82e34b8c84106fbf7d6f132,CONTROLLED INPUT SNAPSHOT
 mechanical_binding,bom/hr-v0-mechanical-custom-part-binding-p0.2.csv,429779d55434849055a219e4a1ea0d02d19346d7b1461ca00f8692e5afe9d13e,CONTROLLED INPUT SNAPSHOT
 mechanical_configuration,configuration/hr-v0-config-reconciliation-p0.3/package-status.json,a2ad9cb2a29ea7d21d78bfc7ea924b79a099aff0bf5b7fa395c05d3c23e78944,CONTROLLED INPUT SNAPSHOT

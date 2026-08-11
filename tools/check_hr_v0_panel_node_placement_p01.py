@@ -83,12 +83,13 @@ def main() -> int:
     need(set(integration) == {"BOM-083", "BOM-084", "BOM-085", "BOM-092", "BOM-093", "BOM-094", "BOM-095"}, "BOM integration membership changed")
     system_bom = {row["item_id"]: row for row in rows(ROOT / "bom/bom.csv")}
     closure = {row["item_id"]: row for row in rows(ROOT / "bom/hr-v0-bom-closure.csv")}
-    need(len(system_bom) == len(closure) == 97, "current system BOM must contain 97 covered groups after R242")
+    need(len(system_bom) == len(closure) == 98, "current system BOM must contain 98 covered groups after R243")
     for item in ("BOM-092", "BOM-093", "BOM-094"):
         need(closure.get(item, {}).get("closure_class") == "exact_candidate_hold" and closure[item]["allowed_action"] == "HOLD", f"{item} is not held")
     need(closure.get("BOM-095", {}).get("closure_class") == "selection_required", "BOM-095 must remain selection required")
     need(closure.get("BOM-096", {}).get("closure_class") == "exact_candidate_hold", "R241 BOM-096 must remain an exact candidate on hold")
     need(closure.get("BOM-097", {}).get("closure_class") == "exact_candidate_hold", "R242 BOM-097 must remain an exact candidate on hold")
+    need(closure.get("BOM-098", {}).get("closure_class") == "exact_candidate_hold", "R243 BOM-098 must remain an exact candidate on hold")
     need(system_bom["BOM-085"]["quantity"] == "8", "DR5 end-bracket quantity not synchronized")
 
     holds = rows(OUT / "open-holds.csv")

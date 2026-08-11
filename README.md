@@ -19,6 +19,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R243 P1.21 endpoint termination evidence](docs/hr-v0-p121-termination-p0.1.md)
+- [Interactive termination guide](release/hr-v0/p121-termination-p0.1/index.html)
+- [R243 independent review request](docs/reviews/2026-08-11-r243-independent-review-request.md)
+- [R243 validation record](docs/reviews/2026-08-11-r243-validation-record.md)
+- [Sol R12 status after R243](docs/reviews/2026-08-11-sol-r12-post-r243-status.md)
 - [R242 P1.21 conductor and duct-occupancy evidence](docs/hr-v0-p121-conductor-fill-p0.1.md)
 - [Interactive conductor and fill guide](release/hr-v0/p121-conductor-fill-p0.1/index.html)
 - [R242 independent review request](docs/reviews/2026-08-11-r242-independent-review-request.md)
@@ -1271,6 +1276,8 @@ Two hundred forty-one review/control rounds are complete: R01-R241. R11 Fable an
 | R239 | P1.21 project visual review | Freshly inspected complete P1.21 pages 2 and 3 after the logic change and inherited the completed P1.19 project visual disposition for the other eleven pages. All thirteen receive a project visual PASS with zero observed clipping/collision findings. Only the project-owned visual hold closes; ten substantive holds and all independent/qualified decisions remain open. |
 | R240 | P1.21 protected-routing candidate | Corrected seven P0.7 route meanings against P1.21, defined nine coordinate-bound planning routes and screened fourteen watchdog/supply-hot versus credited-input pairs with zero nominal centerline crossings. Nine physical/selection/qualified holds remain open; no route, P1.21 promotion or work authority is released. |
 | R241 | P1.21 segregation-hardware and configuration P0.5 candidate | Replaced an undocumented divider concept with exact held Phoenix Contact item 3240187; placed a 369.8 mm WD5 envelope with nominal 10 mm/20 mm gaps; rejected the 20.8 mm existing-stock residual; exposed the WD5/WD2 junction, seven physical conductors, fill, thermal, separation and installation as open; and reconciled 96 BOM groups through `HR-V0-CONFIG-REC-P0.5`. P1.15 remains current, P1.21 unaccepted and no procurement or work authority exists. |
+| R242 | P1.21 conductor and duct-occupancy candidate | Assigned held Belden 3057 BL005 to the seven planning routes and reproduced geometry-only WD5/WD2 fill screens while retaining color, DCR, cut, protection, thermal, termination, physical and qualified-review holds. `BOM-097` and configuration P0.6 reconcile the historical 97-group state; P1.15 remains current and P1.21 remains unaccepted. |
+| R243 | P1.21 endpoint-termination candidate | Mapped fourteen endpoints to held Phoenix Contact ferrule candidates: twelve item 3200043 insulated 8 mm and two item 3200263 uninsulated 7 mm. Bound exact crimper, stripper and torque-driver candidates; limited the 40 N/60 s criterion to sacrificial crimp coupons; retained exact-bit, calibration, received-material, installed-retention, terminal-application and qualified-review holds; and reconciled 98 BOM groups through `HR-V0-CONFIG-REC-P0.7`. P1.15 remains current, P1.21/R243 remain unaccepted and no work authority exists. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

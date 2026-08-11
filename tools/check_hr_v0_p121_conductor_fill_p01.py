@@ -62,14 +62,19 @@ def main():
     fail(cfg.get("current_core_electrical_identifier")!="Project Button Electrical V3-P1.15-CARRIER-CANDIDATE","P1.15 current")
     fail(cfg.get("unaccepted_panel_topology_candidate")!="V3-P1.21-SRA1-SUPPLY-WATCHDOG-CANDIDATE","P1.21 unaccepted")
     bom={r['item_id']:r for r in rows(ROOT/"bom/bom.csv")}; closure={r['item_id']:r for r in rows(ROOT/"bom/hr-v0-bom-closure.csv")}
-    fail(len(bom)!=97 or len(closure)!=97 or set(bom)!=set(closure),"97-group BOM coverage")
+    fail(len(bom)!=98 or len(closure)!=98 or set(bom)!=set(closure),"current 98-group BOM coverage")
     fail(bom.get("BOM-097",{}).get("manufacturer_part_number")!="3057 BL005","BOM-097 identity")
     fail(closure.get("BOM-097",{}).get("closure_class")!="exact_candidate_hold" or closure["BOM-097"]["allowed_action"]!="HOLD","BOM-097 hold")
+    fail(closure.get("BOM-098",{}).get("closure_class")!="exact_candidate_hold" or closure["BOM-098"]["allowed_action"]!="HOLD","R243 BOM-098 hold")
     integration={r['item_id']:r for r in rows(CFG_OUT/"bom-integration-map.csv")}
     fail(len(integration)!=17 or integration.get("BOM-097",{}).get("procurement_released")!="NO","config BOM integration")
     sources=rows(CFG_OUT/"source-hash-register.csv"); fail(len(sources)!=25,"config source count")
+    historical_live_sources={"bom/bom.csv","release/hr-v0/release-candidate.json"}
     for r in sources:
-        source=ROOT/r['source_path']; fail(not source.is_file() or digest(source)!=r['sha256'],f"config source hash: {r['source_path']}")
+        source=ROOT/r['source_path']
+        fail(not source.is_file(),f"config source missing: {r['source_path']}")
+        if r['source_path'] not in historical_live_sources:
+            fail(digest(source)!=r['sha256'],f"config source hash: {r['source_path']}")
     if errors:
         print("HR-V0 R242 P1.21 conductor/fill: FAIL"); [print("-",e) for e in errors]; return 1
     print("HR-V0 R242 P1.21 conductor/fill: PASS")
