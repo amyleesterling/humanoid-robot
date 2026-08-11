@@ -105,7 +105,7 @@ def main() -> None:
         "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1",
         "HR-V0-DXL-CARRIER-INTEGRATION-P0.1",
         "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1",
-        "HR-V0-CONFIG-REC-P0.1",
+        "HR-V0-CONFIG-REC-P0.2",
         "HR-V0-CP-P0.6",
         "HR-V0-COMPUTE-INSTALL-P0.1",
         "HR-V0-U2D2-USB-P0.1",
@@ -125,9 +125,13 @@ def main() -> None:
         "HR-V0-XT1-P0.1",
         "HR-V0-LABEL-P0.1",
         "HR-V0-RUNTIME-OBS-IF-P0.1",
-        "HR-V0-RUNTIME-OBS-CARRIER-P0.2",
+        "V3-P1.17-OBSERVATION-P0.5-CANDIDATE",
+        "HR-V0-RUNTIME-OBS-CARRIER-P0.5",
+        "HR-V0-PI-OBS-CARRIER-P0.1",
+        "HR-V0-OBSERVATION-FIELD-HARNESS-P0.1",
+        "HR-V0-OBSERVATION-COMPUTE-HARNESS-P0.1",
         "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
-    ] or electrical_product.get("release_state") != "carrier_integrated_configuration_candidate_p115_watchdog_pcb_p10_direct_native_binding_cam_review_exists_not_supplier_released_physical_evidence_absent":
+    ] or electrical_product.get("release_state") != "carrier_integrated_p115_direct_core_with_parity_checked_p117_p05_observation_view_not_supplier_released_physical_evidence_absent":
         errors.append("Electrical V3-P1.15 supporting identifiers or release state changed")
     safety_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FSA-P0.1"),
@@ -227,7 +231,7 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BOM-P0.1"),
         {},
     )
-    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.1", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.1", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2"] or bom_product.get("release_state") != (
+    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.1", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.2", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2"] or bom_product.get("release_state") != (
         "closure_register_candidate_no_complete_machine_procurement_release"
     ):
         errors.append("HR-V0-BOM-P0.1 supporting identifiers or fail-closed release state changed")
@@ -292,7 +296,7 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BUILD-TRAVELER-P0.1"),
         {},
     )
-    if assembly_product.get("supporting_identifiers") != ["HR-V0-MECH-P0.6", "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "HR-V0-E2-SEQ-P0.1", "HR-V0-GOV-P0.3", "HR-V0-CONFIG-REC-P0.1"] or assembly_product.get("release_state") != (
+    if assembly_product.get("supporting_identifiers") != ["HR-V0-MECH-P0.6", "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "HR-V0-E2-SEQ-P0.1", "HR-V0-GOV-P0.3", "HR-V0-CONFIG-REC-P0.2"] or assembly_product.get("release_state") != (
         "integrated_unpowered_sequence_candidate_all_steps_not_authorized_not_executed_connection_and_energization_prohibited_not_approved"
     ):
         errors.append("HR-V0-BUILD-TRAVELER-P0.1 supporting identifiers or fail-closed state changed")
