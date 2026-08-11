@@ -54,13 +54,15 @@ Primary records verified 2026-08-07:
 
 ## Required evidence files
 
+R216 issues `HR-V0-E2-EVIDENCE-P0.2` as the current evidence contract. The historical unpowered-configuration and authorization templates remain for audit history but must not be used for a future run. P0.2 also makes the hardware/software evidence pair mandatory for every logic case.
+
 | Gate | Candidate evidence input | Current state |
 |---|---|---|
-| EG-018 | `tests/forms/hr-v0-e2-unpowered-configuration-template.csv` | template only; not executed |
+| EG-018 | `tests/forms/hr-v0-e2-unpowered-configuration-template-p0.2.csv` | corrected current-identity template only; not executed |
 | EG-019 | `tests/forms/hr-v0-e2-mains-pe-insulation-template.csv` | template only; limits/site/measurements open |
 | EG-020 | `tests/forms/hr-v0-e2-elv-point-to-point-template.csv` | template only; harness and readings open |
-| EG-021 | `tests/forms/hr-v0-e2-safety-logic-template.csv` | 20 planned disconnected-load cases; not executed |
-| EG-022 | `tests/forms/hr-v0-e2-authorization-template.csv` | explicitly `NOT AUTHORIZED` |
+| EG-021 | `tests/forms/hr-v0-e2-safety-logic-template.csv` plus `tests/forms/hr-v0-e2-software-authority-template-p0.1.csv` | 20 mandatory synchronized hardware/software pairs; not executed |
+| EG-022 | `tests/forms/hr-v0-e2-authorization-template-p0.2.csv` | explicitly `NOT AUTHORIZED`; both EG-021 record sets required |
 
 Raw files are append-only evidence. A rerun gets a new authorization ID and record IDs; a failed result is never overwritten. Every record must identify commit, article, site, instruments, calibration, operator, witness, raw-data references, nonconformances and signed disposition.
 

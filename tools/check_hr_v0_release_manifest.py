@@ -246,6 +246,7 @@ def main() -> None:
     )
     if commissioning_product.get("supporting_identifiers") != [
         "HR-V0-E2-HW-P0.4",
+        "HR-V0-E2-EVIDENCE-P0.2",
         "HR-V0-STALE-AUTH-P0.1",
         "AUDIT-ELEC-002",
         "INSPECT-ELEC-010",

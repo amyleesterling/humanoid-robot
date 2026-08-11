@@ -1,7 +1,7 @@
 source_id,path,sha256,state
-release_candidate,release/hr-v0/release-candidate.json,c79bba933d0ec278b59af3eb56c768132e96eb2141b932a3a35852b3c5315b90,CONTROLLED INPUT SNAPSHOT
+release_candidate,release/hr-v0/release-candidate.json,31d7f4cff2420b0086d664dfcaac5d97ad326204867ab3eb04571395ca502fe6,CONTROLLED INPUT SNAPSHOT
 release_manifest,release/hr-v0/HR-V0-RC-P0.1-file-manifest.csv,SELF-REFERENTIAL-MANIFEST-HASH-OMITTED,CONTROLLED INPUT; HASH OMITTED TO AVOID MANIFEST CYCLE
-energization_gates,requirements/hr-v0-energization-gates.csv,02c66921e1d9d6c2cf4e882c231e90d1d64282c80c20469ced5ef61004973069,CONTROLLED INPUT SNAPSHOT
+energization_gates,requirements/hr-v0-energization-gates.csv,58985f214665b719aa09d4f7ac6aedd48d50fc8b9a01fb6759eb4daea3b7bf3f,CONTROLLED INPUT SNAPSHOT
 bom_closure,bom/hr-v0-bom-closure.csv,ca069d0265d7a4eb7f283896d1198447b3887a9290d4609e8117ebd5c8638c7c,CONTROLLED INPUT SNAPSHOT
 mechanical_release,docs/hr-v0-arm-architecture-p0.8-dwg-integrated.md,fbabfa4d559cc867a288d94e5cd7e3c90f148344c82e34b8c84106fbf7d6f132,CONTROLLED INPUT SNAPSHOT
 mechanical_binding,bom/hr-v0-mechanical-custom-part-binding-p0.2.csv,429779d55434849055a219e4a1ea0d02d19346d7b1461ca00f8692e5afe9d13e,CONTROLLED INPUT SNAPSHOT
@@ -12,5 +12,5 @@ joint_metrology,docs/hr-v0-joint-stack-metrology-p0.1.md,7b036260874a2f223c0274e
 guard,docs/hr-v0-fixed-guard-receiver-p0.3.md,3bd94322cf0f27e2feb15f91bc73fbca4847f4c9e400cbf1beebb18acdff3de2,CONTROLLED INPUT SNAPSHOT
 receiver,docs/hr-v0-passive-arm-receiver-detail-p0.2.md,cafe52b8c38ca2dda4ecded7e78965a31c912d3014f831749f107e01b85c74bb,CONTROLLED INPUT SNAPSHOT
 electrical,docs/hr-v0-electrical-v3-candidate.md,2eb199a0bbcd4d3bd3cde51801a3abca422ec01f12f6cb5a170a93dc88ab52ef,CONTROLLED INPUT SNAPSHOT
-e2_sequence,docs/hr-v0-e2-control-only-energization-p0.1.md,d96db2b40c1edadac16e6709d89367c58baf2a3994667199b7322a2284ec1f53,CONTROLLED INPUT SNAPSHOT
+e2_sequence,docs/hr-v0-e2-control-only-energization-p0.1.md,355fef99467e968c0af021fb0d249ecb36255668d2b557d4981b96d9c007096c,CONTROLLED INPUT SNAPSHOT
 procedure_registry,tests/procedures/procedure-registry.csv,3e483e1d21e0f743d71ce8447b9d3d511ac8041ceab5b0b55b035844d5300e6a,CONTROLLED INPUT SNAPSHOT

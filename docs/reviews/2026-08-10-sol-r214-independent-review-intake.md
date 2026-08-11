@@ -33,3 +33,9 @@ R214 addresses one concrete repository-owned blocker in that summary: the correc
 - synchronizes EG-003, EG-005 and EG-006 without closing them.
 
 The remaining functional-safety, physical, manufacturing, received-article, continuous-duty, battery, full-body and walking findings remain open. R214 does not approve fabrication or energization.
+
+## R216 targeted disposition
+
+R216 identifies and corrects one additional repository-owned E2 evidence defect exposed while applying the reviewer-reported energization verdict. The P0.1 future-use unpowered form carried obsolete Electrical V3-P1.8 and HR-V0-MECH-P0.6 defaults and shifted the release-candidate ID into the manifest-hash field. EG-021 also failed to require the already defined software-authority record.
+
+`HR-V0-E2-EVIDENCE-P0.2` now controls the current identity chain, a corrected four-role authorization form and one-to-one pairing of twenty hardware traces with twenty software records. This correction closes no reviewer-reported physical or safety finding: all records remain unexecuted, seven evidence holds remain open, EG-018 through EG-022 remain partial and energization remains prohibited.
