@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "PB_RUNTIME_OBS_P05")(type "KiCad")(uri "${KIPRJMOD}/PB_RUNTIME_OBS_P05.pretty")(options "")(descr "R209 buffered observation footprints"))
+)

@@ -1,0 +1,18 @@
+{
+  "footprints": 53,
+  "mounted_components": 49,
+  "mounting_holes": 4,
+  "board_width_mm": 120.0,
+  "board_height_mm": 90.0,
+  "copper_layers": 4,
+  "field_compute_corridor_mm": 5.6,
+  "track_segments": 207,
+  "vias": 84,
+  "zones": 3,
+  "fabrication_authorized": false,
+  "connection_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false
+}

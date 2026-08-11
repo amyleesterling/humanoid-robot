@@ -1,0 +1,37 @@
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\validation\hr-v0-runtime-observation-carrier-p0.5-erc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\hr-v0-runtime-observation-carrier-p0.5.kicad_sch"
+Found 0 violations
+Saved ERC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/hr-v0-runtime-observation-carrier-p0.5/validation/hr-v0-runtime-observation-carrier-p0.5-erc.rpt
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\validation\hr-v0-runtime-observation-carrier-p0.5.net" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\hr-v0-runtime-observation-carrier-p0.5.kicad_sch"
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export svg --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\output" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\hr-v0-runtime-observation-carrier-p0.5.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\output\hr-v0-runtime-observation-carrier-p0.5.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\output\hr-v0-runtime-observation-carrier-p0.5-01 Field and compute boundaries.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\output\hr-v0-runtime-observation-carrier-p0.5-02 SR1 and SRA1 Type-3 inputs.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\output\hr-v0-runtime-observation-carrier-p0.5-03 K1 and K2 diagnostic auxiliary inputs.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\output\hr-v0-runtime-observation-carrier-p0.5-04 Open-drain fail-low compute outputs.svg'.
+Done.
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb drc --exit-code-violations --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\validation\hr-v0-runtime-observation-carrier-p0.5-drc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\hr-v0-runtime-observation-carrier-p0.5.kicad_pcb"
+Found 0 violations
+Found 0 unconnected items
+Saved DRC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/hr-v0-runtime-observation-carrier-p0.5/validation/hr-v0-runtime-observation-carrier-p0.5-drc.rpt
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export stats --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\validation\hr-v0-runtime-observation-carrier-p0.5-stats.txt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\hr-v0-runtime-observation-carrier-p0.5.kicad_pcb"
+Wrote board statistics to 'C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/hr-v0-runtime-observation-carrier-p0.5/validation/hr-v0-runtime-observation-carrier-p0.5-stats.txt'.
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export svg --mode-single --layers F.Cu,F.Silkscreen,Edge.Cuts --fit-page-to-board --exclude-drawing-sheet --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\output\runtime-observation-carrier-top.svg" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\hr-v0-runtime-observation-carrier-p0.5.kicad_pcb"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-runtime-observation-carrier-p0.5\output\runtime-observation-carrier-top.svg'.
+Done.
+
+exit=0
