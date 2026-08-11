@@ -132,7 +132,8 @@ def main() -> int:
     need(electrical.get("configuration_reconciliation") == "HR-V0-CONFIG-REC-P0.4", "R223 configuration reconciliation missing")
     need(electrical.get("ecad_web_review_surface") == "HR-V0-ECAD-WEB-REVIEW-P0.1", "R224 ECAD web-review surface missing")
     need(electrical.get("identifier") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "P1.15 current identity changed")
-    need(electrical.get("release_state") == "p115_current_p118_topology_unaccepted_r224_native_sheets_web_bound_full_independent_and_qualified_review_selections_physical_evidence_and_work_authority_absent", "electrical release state changed")
+    need(electrical.get("release_state") == "p115_current_p118_unaccepted_k1k2_32_row_parity_proved_dc_application_protection_physical_tests_and_qualified_acceptance_open", "electrical release state changed")
+    need(electrical.get("contactor_application_record") == "HR-V0-K1K2-APP-P0.3", "current contactor application record missing")
 
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in (WARNING, "HR-V0-CP-CONFIG-P0.1", "font:clamp(16px", "font-size:14px", "66 / 66", "PCB-P1.0", "DXL-STAR-P0.2", "12</b>physical closure holds"):
