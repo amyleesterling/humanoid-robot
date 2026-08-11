@@ -1,0 +1,11 @@
+control_id,part_id,feature,nominal_mm,tolerance_or_limit,inspection,status
+C04-001,MV0-C04,finished envelope,48.00 x 40.00 x 9.525,width/height +/-0.10; thickness 9.00 to 10.00,CMM/caliper plus five-point micrometer map,CANDIDATE CONTROL; FAI REQUIRED
+C04-002,MV0-C04,four H104 clearance holes,"diameter 2.70 at X/Z (-11,+8),(+11,+8),(-12,-6),(+12,-6)",diameter +0.10/-0.00; coordinates +/-0.05,pin gauges plus CMM; dry fit received H104,EXACT STEP-AXIS CANDIDATE; FAI/FIT REQUIRED
+C04-003,MV0-C04,two M5 clearance/countersink holes,diameter 5.50 and countersink 11.30 at X=0 Z=+/-10,hole +0.10/-0.00; countersink +0.10/-0.00; 90 deg nominal,pin/CMM/optical plus received M5 functional gauge,CANDIDATE CONTROL; FAI REQUIRED
+C04-004,MV0-C04,broad faces and finish,bare as-machined,flatness <=0.15; parallelism <=0.10; edge break 0.20 to 0.50; burr-free,surface plate/CMM and visual,CANDIDATE CONTROL; FAI REQUIRED
+C04-005,MV0-C04,received H104 registration,all four selected axes accept received frame without forced alignment,"no filing, slotting, bending or substitution",documented dry fit with fasteners loose; preserve photos and deviations,PHYSICAL FIT REQUIRED
+C05-001,MV0-C05,finished envelope,48.00 x 80.00 x 9.525,width/height +/-0.10; thickness 9.00 to 10.00,CMM/caliper plus five-point micrometer map,CANDIDATE CONTROL; FAI REQUIRED
+C05-002,MV0-C05,four S102 clearance holes,diameter 2.70 at X=+/-16 Z=+/-8,diameter +0.10/-0.00; coordinates +/-0.05,pin gauges plus CMM; dry fit received S102,EXACT STEP-AXIS CANDIDATE; FAI/FIT REQUIRED
+C05-003,MV0-C05,two column-slot clearance holes,diameter 8.50 at X=0 Z=+/-30,diameter +0.10/-0.00; coordinates +/-0.05,pin gauges plus CMM; dry fit received 17-8520/13035/40-4040,CANDIDATE CONTROL; FAI/FIT REQUIRED
+C05-004,MV0-C05,broad faces and finish,bare as-machined,flatness <=0.15; parallelism <=0.10; edge break 0.20 to 0.50; burr-free,surface plate/CMM and visual,CANDIDATE CONTROL; FAI REQUIRED
+C05-005,MV0-C05,column/S102 dry-fit alignment,plate seats on column face and rolled S102 face without forced alignment,"no filing, slotting, bending or substitution",documented dry fit with fasteners loose; preserve photos and deviations,PHYSICAL FIT REQUIRED

@@ -10,6 +10,8 @@ import math
 import sys
 from pathlib import Path
 
+from hr_v0_r213_compat import r213_allows_historical_source_hash
+
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "cad" / "hr-v0" / "generated" / "coordinate-convention-p0.1"
@@ -121,7 +123,7 @@ def main() -> int:
             fail("source set changed")
         for row in sources:
             path = ROOT / row["path"]
-            if hashlib.sha256(path.read_bytes()).hexdigest() != row["sha256"]:
+            if hashlib.sha256(path.read_bytes()).hexdigest() != row["sha256"] and not r213_allows_historical_source_hash(ROOT, row["path"]):
                 fail(f"source hash mismatch: {row['path']}")
 
         arm_transforms = {row["item"]: row for row in rows(ROOT / "cad/hr-v0/generated/arm-architecture-p0.7/transform-schedule.csv")}
@@ -143,7 +145,8 @@ def main() -> int:
             fail("legacy guard-layout input changed; mapping needs disposition")
 
         actuator = json.loads((ROOT / "firmware/supervisor/actuator-config.json").read_text(encoding="utf-8"))
-        if actuator["mechanical_limit_binding"]["arm_architecture_revision"] != "HR-V0-ARM-ARCH-P0.7":
+        binding = actuator["mechanical_limit_binding"]
+        if binding["arm_architecture_revision"] != "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE" or binding.get("kinematic_basis_revision") != "HR-V0-ARM-ARCH-P0.7":
             fail("firmware no longer binds the controlled arm architecture")
         for axis in ("J1", "J2", "GRIPPER"):
             record = actuator["actuators"][axis]

@@ -15,8 +15,10 @@ from typing import Mapping
 
 EXPECTED_MECHANICAL_BINDING = {
     "limit_set_id": "HR-V0-LIMITS-P0.2",
-    "mechanical_revision": "HR-V0-MECH-P0.6",
-    "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.7",
+    "mechanical_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+    "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+    "kinematic_basis_revision": "HR-V0-ARM-ARCH-P0.7",
+    "custom_part_manufacturing_revision": "HR-V0-MECH-BOM-BIND-P0.2",
     "hard_stop_revision": "HR-V0-HS-P0.3",
 }
 

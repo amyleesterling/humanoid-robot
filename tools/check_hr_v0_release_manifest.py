@@ -105,7 +105,7 @@ def main() -> None:
         "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1",
         "HR-V0-DXL-CARRIER-INTEGRATION-P0.1",
         "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1",
-        "HR-V0-CONFIG-REC-P0.2",
+        "HR-V0-CONFIG-REC-P0.3",
         "HR-V0-CP-P0.6",
         "HR-V0-COMPUTE-INSTALL-P0.1",
         "HR-V0-U2D2-USB-P0.1",
@@ -145,7 +145,6 @@ def main() -> None:
     )
     if mechanical_product.get("supporting_identifiers") != [
         "HR-V0-ROBOTIS-IF-P0.1",
-        "HR-V0-ARM-ARCH-P0.7",
         "HR-V0-ARM-ARCH-P0.8-X430-CANDIDATE",
         "HR-V0-ARM-ARCH-P0.9-X430-INTEGRATED-CANDIDATE",
         "HR-V0-ARM-ARCH-P1.0-X430-CLEARANCE-CANDIDATE",
@@ -196,12 +195,17 @@ def main() -> None:
         "HR-V0-MECH-R0.1-PRELIMINARY-SUPERSEDED-ARM",
         "HR-V0-FAB-RFI-P0.2-WITHDRAWN",
         "HR-V0-FRAME-P0.2",
+        "HR-V0-CONFIG-REC-P0.3",
+        "HR-V0-ARM-ARCH-P0.7",
+        "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
     ]:
-        errors.append("HR-V0-MECH-P0.6 supporting identifiers changed or are incomplete")
+        errors.append("integrated P0.8 mechanical supporting identifiers changed or are incomplete")
     if mechanical_product.get("coordinate_convention") != "HR-V0-FRAME-CONV-P0.1":
-        errors.append("HR-V0-MECH-P0.6 coordinate convention missing or changed")
-    if mechanical_product.get("release_state") != "integrated_p06_system_placement_with_corrected_p08_custom_part_review_candidate_physical_evidence_open_qualified_release_open":
-        errors.append("HR-V0-MECH-P0.6 fail-closed release state changed")
+        errors.append("integrated P0.8 coordinate convention missing or changed")
+    if mechanical_product.get("release_state") != "integrated_p06_hold_with_exact_p08_complete_arm_p07_inherited_basis_physical_evidence_open_qualified_release_open":
+        errors.append("integrated P0.8 fail-closed release state changed")
+    if mechanical_product.get("current_arm_architecture") != "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE" or mechanical_product.get("inherited_analytical_basis") != ["HR-V0-MECH-P0.6", "HR-V0-ARM-ARCH-P0.7"] or mechanical_product.get("manufacturing_identity") != "HR-V0-MECH-BOM-BIND-P0.2":
+        errors.append("integrated P0.8 analytical/manufacturing identity split changed")
     firmware_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FW-P0.4"),
         {},
@@ -213,8 +217,6 @@ def main() -> None:
         "HR-V0-DXL-TRANSPORT-P0.3",
         "HR-V0-DXL-CURRENT-ENV-P0.1",
         "HR-V0-LIMITS-P0.2",
-        "HR-V0-MECH-P0.6",
-        "HR-V0-ARM-ARCH-P0.7",
         "HR-V0-HS-P0.3",
         "HR-V0-HOST-DEPLOY-P0.1",
         "HR-V0-RPI-OS-SBOM-P0.1",
@@ -223,15 +225,17 @@ def main() -> None:
         "HR-V0-RUNTIME-P0.1",
         "HR-V0-RUNTIME-BACKENDS-P0.1",
         "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
+        "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+        "HR-V0-MECH-BOM-BIND-P0.2",
     ] or firmware_product.get("release_state") != (
-        "source_transport_reproducible_watchdog_disabled_fail_closed_21_file_host_overlay_publisher_sbom_lock_stale_replay_rejection_unreleased_kinematic_bound_runtime_execution_backend_and_gpio_line_source_candidates_not_installed_flashed_connected_or_hil_validated"
-    ):
+        "source_transport_reproducible_fail_closed_integrated_p08_mechanical_identity_with_p07_kinematic_basis_acceptance_hashes_target_hil_and_physical_evidence_unresolved"
+    ) or firmware_product.get("inherited_kinematic_basis") != "HR-V0-ARM-ARCH-P0.7":
         errors.append("HR-V0-FW-P0.4 supporting identifiers or fail-closed release state changed")
     bom_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BOM-P0.1"),
         {},
     )
-    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.2", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.2", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2"] or bom_product.get("release_state") != (
+    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.2", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.3", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2"] or bom_product.get("release_state") != (
         "closure_register_candidate_with_corrected_p08_custom_part_identity_no_complete_machine_procurement_release"
     ):
         errors.append("HR-V0-BOM-P0.1 supporting identifiers or fail-closed release state changed")
@@ -296,8 +300,8 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BUILD-TRAVELER-P0.1"),
         {},
     )
-    if assembly_product.get("supporting_identifiers") != ["HR-V0-MECH-P0.6", "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "HR-V0-E2-SEQ-P0.1", "HR-V0-GOV-P0.3", "HR-V0-CONFIG-REC-P0.2"] or assembly_product.get("release_state") != (
-        "integrated_unpowered_sequence_candidate_all_steps_not_authorized_not_executed_connection_and_energization_prohibited_not_approved"
+    if assembly_product.get("supporting_identifiers") != ["HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE", "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "HR-V0-E2-SEQ-P0.1", "HR-V0-GOV-P0.3", "HR-V0-CONFIG-REC-P0.3", "HR-V0-MECH-BOM-BIND-P0.2"] or assembly_product.get("release_state") != (
+        "integrated_unpowered_sequence_bound_to_held_p08_mechanics_all_steps_not_authorized_not_executed_connection_and_energization_prohibited_not_approved"
     ):
         errors.append("HR-V0-BUILD-TRAVELER-P0.1 supporting identifiers or fail-closed state changed")
 

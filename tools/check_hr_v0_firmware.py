@@ -283,14 +283,16 @@ def main() -> int:
         failures.append("supervisor configuration ID is not HR-V0-SUP-P0.3")
     expected_binding = {
         "limit_set_id": "HR-V0-LIMITS-P0.2",
-        "mechanical_revision": "HR-V0-MECH-P0.6",
-        "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.7",
+        "mechanical_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+        "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+        "kinematic_basis_revision": "HR-V0-ARM-ARCH-P0.7",
+        "custom_part_manufacturing_revision": "HR-V0-MECH-BOM-BIND-P0.2",
         "hard_stop_revision": "HR-V0-HS-P0.3",
         "release_state": "CANDIDATE-NOT-RELEASED",
         "acceptance_evidence_hash": "SELECTION REQUIRED",
     }
     if supervisor_config.get("mechanical_limit_binding") != expected_binding:
-        failures.append("supervisor mechanical-limit binding differs from the unreleased P0.7/P0.6/P0.3 candidate")
+        failures.append("supervisor mechanical-limit binding differs from the unreleased integrated P0.8 candidate with inherited P0.7 kinematic basis")
     if supervisor_config.get("joints", {}).get("J2") != {
         "minimum": 15.0,
         "maximum": 115.0,
@@ -326,7 +328,7 @@ def main() -> int:
     if actuator_config.get("configuration_id") != "HR-V0-ACT-P0.3":
         failures.append("actuator configuration ID is not HR-V0-ACT-P0.3")
     if actuator_config.get("mechanical_limit_binding") != expected_binding:
-        failures.append("actuator mechanical-limit binding differs from the unreleased P0.7/P0.6/P0.3 candidate")
+        failures.append("actuator mechanical-limit binding differs from the unreleased integrated P0.8 candidate with inherited P0.7 kinematic basis")
     if actuator_config.get("external_branch_current_limit_a") != "SELECTION REQUIRED":
         failures.append("external branch-current limit was released without physical evidence")
     if actuator_config.get("current_envelope_binding") != {

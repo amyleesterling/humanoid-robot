@@ -1,4 +1,4 @@
-"""Fail-closed compatibility checks for the controlled R213 mechanical successor."""
+"""Fail-closed compatibility checks for the controlled R213/R214 successors."""
 
 from __future__ import annotations
 
@@ -10,9 +10,10 @@ from pathlib import Path
 R213_IDENTIFIER = "HR-V0-MECH-BOM-BIND-P0.2"
 R213_ARCHITECTURE = "HR-V0-ARM-ARCH-P0.8-DWG-CANDIDATE"
 R213_MECHANICAL_RELEASE_STATE = (
-    "integrated_p06_system_placement_with_corrected_p08_custom_part_review_candidate_"
+    "integrated_p06_hold_with_exact_p08_complete_arm_p07_inherited_basis_"
     "physical_evidence_open_qualified_release_open"
 )
+R214_ARM = "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE"
 
 
 def _rows(path: Path) -> list[dict[str, str]]:
@@ -50,7 +51,12 @@ def r213_mechanical_successor_is_controlled(root: Path) -> bool:
         closed.get("allowed_action") == "HOLD",
         closed.get("closure_basis") == item.get("selection_basis"),
         R213_IDENTIFIER in mechanical.get("supporting_identifiers", []),
+        R214_ARM in mechanical.get("supporting_identifiers", []),
         R213_IDENTIFIER in bill.get("supporting_identifiers", []),
+        mechanical.get("identifier") == "HR-V0-MECH-P0.6",
+        mechanical.get("current_arm_architecture") == R214_ARM,
+        mechanical.get("inherited_analytical_basis") == ["HR-V0-MECH-P0.6", "HR-V0-ARM-ARCH-P0.7"],
+        mechanical.get("manufacturing_identity") == R213_IDENTIFIER,
         mechanical.get("release_state") == R213_MECHANICAL_RELEASE_STATE,
     ))
 
@@ -60,4 +66,6 @@ def r213_allows_historical_source_hash(root: Path, relative: str) -> bool:
         "bom/bom.csv",
         "bom/hr-v0-bom-closure.csv",
         "release/hr-v0/release-candidate.json",
+        "firmware/supervisor/actuator-config.json",
+        "firmware/supervisor/supervisor-config.json",
     } and r213_mechanical_successor_is_controlled(root)

@@ -27,7 +27,7 @@ def accepted_model() -> PlanarKinematicModel:
         "elbow_to_h104_m": 0.12905,
         "tool_reach_from_h104_m": 0.100,
         "source_frame_revision": "HR-V0-FRAME-CONV-P0.1",
-        "mechanical_revision": "HR-V0-MECH-P0.6",
+        "mechanical_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
         "release_state": "ACCEPTED-FOR-GUARDED-HIL",
         "acceptance_evidence_hash": "A" * 64,
     }

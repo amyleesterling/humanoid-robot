@@ -54,7 +54,7 @@ def main() -> int:
     release = json.loads((ROOT / "release/hr-v0/release-candidate.json").read_text(encoding="utf-8"))
     electrical = next(r for r in release["current_products"] if r["domain"] == "electrical")
     need(electrical["identifier"] == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "release candidate is stale")
-    for value in ("DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1", "HR-V0-E2-HW-P0.4", "HR-V0-WD-CAM-P0.2", "HR-V0-CONFIG-REC-P0.2"):
+    for value in ("DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1", "HR-V0-E2-HW-P0.4", "HR-V0-WD-CAM-P0.2", "HR-V0-CONFIG-REC-P0.3"):
         need(value in electrical["supporting_identifiers"], f"release support missing: {value}")
 
     bom = {r["item_id"]: r for r in csv_rows(ROOT / "bom/bom.csv")}

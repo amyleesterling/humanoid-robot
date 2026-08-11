@@ -7,6 +7,8 @@ Status: planning baseline; no release approval
 
 Evidence maturity is recorded separately from design intent. A clean parser, ERC result, simulation, or reviewed concept is not physical validation.
 
+R214 configuration note: `HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE` advances exact-source CAD integration and nominal analytical evidence only. It does not advance the arm to E3: no received article, DFM acceptance, FAI, material certificate, installed-fastener record, physical clearance/stop/load test, continuous-duty test, fault injection, or qualified approval exists.
+
 ## Maturity scale
 
 | Level | Meaning | Permitted claim |

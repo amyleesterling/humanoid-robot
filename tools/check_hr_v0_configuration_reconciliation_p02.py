@@ -54,7 +54,7 @@ def main() -> int:
     release = json.loads((ROOT / "release/hr-v0/release-candidate.json").read_text(encoding="utf-8"))
     electrical = next(row for row in release["current_products"] if row["domain"] == "electrical")
     need(electrical["identifier"] == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "release core identity changed")
-    for identifier in ("V3-P1.17-OBSERVATION-P0.5-CANDIDATE","HR-V0-RUNTIME-OBS-CARRIER-P0.5","HR-V0-PI-OBS-CARRIER-P0.1","HR-V0-OBSERVATION-FIELD-HARNESS-P0.1","HR-V0-OBSERVATION-COMPUTE-HARNESS-P0.1","HR-V0-CONFIG-REC-P0.2"):
+    for identifier in ("V3-P1.17-OBSERVATION-P0.5-CANDIDATE","HR-V0-RUNTIME-OBS-CARRIER-P0.5","HR-V0-PI-OBS-CARRIER-P0.1","HR-V0-OBSERVATION-FIELD-HARNESS-P0.1","HR-V0-OBSERVATION-COMPUTE-HARNESS-P0.1","HR-V0-CONFIG-REC-P0.3"):
         need(identifier in electrical["supporting_identifiers"], f"release support missing: {identifier}")
     need("HR-V0-RUNTIME-OBS-CARRIER-P0.2" not in electrical["supporting_identifiers"], "superseded P0.2 remains current")
 

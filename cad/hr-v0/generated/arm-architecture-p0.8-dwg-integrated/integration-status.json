@@ -1,0 +1,27 @@
+{
+  "identifier": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+  "round": "R214",
+  "source_binding": "bom/hr-v0-mechanical-custom-part-binding-p0.2.csv",
+  "source_binding_sha256": "429779d55434849055a219e4a1ea0d02d19346d7b1461ca00f8692e5afe9d13e",
+  "direct_controlled_step_import": true,
+  "controlled_part_count": 5,
+  "historical_transform_basis": "HR-V0-ARM-ARCH-P0.7",
+  "modeled_countersink": {
+    "diameter_mm": 11.3,
+    "axial_depth_mm": 2.9,
+    "included_angle_deg": 90.0
+  },
+  "independent_maximum_screens": {
+    "diameter_mm": 11.4,
+    "axial_depth_mm": 3.1
+  },
+  "assembly_step": "cad/hr-v0/generated/arm-architecture-p0.8-dwg-integrated/HR-V0_arm_architecture_candidate.step",
+  "assembly_step_sha256": "8735d93c3340449e66da1015d78394d996ffcc6c41385a201c8e6e026274a08a",
+  "physical_evidence_complete": false,
+  "qualified_review_complete": false,
+  "fabrication_authorized": false,
+  "assembly_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR QUOTATION, FABRICATION, ASSEMBLY, MOTION, OR ENERGIZATION"
+}

@@ -92,7 +92,8 @@ def main() -> int:
         if expected_support not in product.get("supporting_identifiers", []):
             errors.append(f"release candidate {label} domain omits the binding")
     eg003 = gates.get("EG-003", {})
-    if eg003.get("status") != "partial" or "bom/hr-v0-mechanical-custom-part-binding.csv" not in eg003.get("evidence_location", ""):
+    expected_gate_binding = "bom/hr-v0-mechanical-custom-part-binding-p0.2.csv" if successor_exists else "bom/hr-v0-mechanical-custom-part-binding.csv"
+    if eg003.get("status") != "partial" or expected_gate_binding not in eg003.get("evidence_location", ""):
         errors.append("EG-003 does not retain partial status with binding evidence")
     for token in ("font:clamp(16px", "Five BOM parts", "fifteen inherited DFM holds remain open", "provider contact", "Upload authorized"):
         if token not in guide:

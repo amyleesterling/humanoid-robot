@@ -105,7 +105,7 @@ class PlanarKinematicModel:
             and self.tool_reach_from_h104_m is not None
             and self.tool_reach_from_h104_m >= 0.0
             and self.source_frame_revision == "HR-V0-FRAME-CONV-P0.1"
-            and self.mechanical_revision == "HR-V0-MECH-P0.6"
+            and self.mechanical_revision == "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE"
             and self.release_state == ACCEPTED_RELEASE_STATE
             and _is_sha256(self.acceptance_evidence_hash)
             and _is_sha256(self.configured_model_hash)
