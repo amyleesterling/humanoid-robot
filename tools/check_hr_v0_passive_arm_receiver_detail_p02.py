@@ -154,7 +154,8 @@ def main() -> int:
     assert r213_mechanical_successor_is_controlled(ROOT)
     assert "HR-V0-FAB-INPUT-P0.1" in mechanical["supporting_identifiers"]
     assert "HR-V0-DYN-TRACE-P0.1" in mechanical["supporting_identifiers"]
-    assert safety["release_state"] == "allocation_candidate_no_plr_or_sil_assigned"
+    assert safety["release_state"] == "measurable_srs_candidate_no_plr_or_sil_assigned_no_physical_validation"
+    assert "HR-V0-SRS-P0.2" in safety["supporting_identifiers"]
 
     manifest_text = MANIFEST.read_text(encoding="utf-8")
     assert "passive-arm-receiver-detail-p0.2/receiver-detail-summary.json" in manifest_text

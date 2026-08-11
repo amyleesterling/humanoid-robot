@@ -166,9 +166,10 @@
         "HR-V0-PASSIVE-ARM-RECEIVER-P0.1",
         "HR-V0-PASSIVE-ARM-RECEIVER-VERIFY-P0.1",
         "HR-V0-PASSIVE-ARM-RECEIVER-DETAIL-P0.2",
-        "HR-V0-RECEIVER-GUIDE-IF-P0.1"
+        "HR-V0-RECEIVER-GUIDE-IF-P0.1",
+        "HR-V0-SRS-P0.2"
       ],
-      "release_state": "allocation_candidate_no_plr_or_sil_assigned"
+      "release_state": "measurable_srs_candidate_no_plr_or_sil_assigned_no_physical_validation"
     },
     {
       "domain": "bill_of_materials",

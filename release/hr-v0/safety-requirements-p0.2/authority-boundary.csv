@@ -1,0 +1,6 @@
+activity,permitted_by_this_package,condition,state,warning
+internal SRS review and redline,TRUE,Read-only review; no physical action,AVAILABLE,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+qualified PLr/SIL allocation,FALSE,Named competent independent reviewer with controlled standards and signed analysis,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+component/application acceptance,FALSE,Exact hardware evidence and qualified electrical/safety disposition,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+"fabrication, assembly or connection",FALSE,Separate released work package and accepted upstream gates,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+"powered testing, motion or energization",FALSE,Separate signed phase authorization and executed prerequisites,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
