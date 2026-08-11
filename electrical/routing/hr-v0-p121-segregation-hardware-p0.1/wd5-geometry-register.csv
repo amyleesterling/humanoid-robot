@@ -1,0 +1,2 @@
+reference,role,x_mm,y_mm,width_mm,height_mm,backplate_boundary,top_margin_mm,gap_to_DR1_mm,gap_to_device_envelopes_mm,intersection,release_state,warning
+WD5,separate top horizontal candidate for SF01-SUPPLY and DF01-GATE-HOT planning routes,54.0,10.0,369.8,25.0,533.4 x 685.8 mm usable backplate,10.0,10.0,20.0,WD2 overlap x=383.8..423.8 y=10..35; intentional planning junction only,GEOMETRY SCREEN PASS; INSTALLATION/CUT/JUNCTION NOT RELEASED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

@@ -1,6 +1,8 @@
 # Project Button Current Engineering Handoff
 
 Handoff date: 2026-08-11
+R241 P1.21 segregation-hardware candidate: **`HR-V0-P121-SEGREGATION-HW-P0.1` replaces the undocumented internal-divider idea with a separate Phoenix Contact `CD 25X25` item `3240187` exact planning candidate. The 369.8 mm WD5 envelope stays inside the controlled backplate with nominal 10 mm clearance to DR1 and 20 mm to the device region. Existing item 3240189 stock cannot supply it because only 20.8 mm remains before kerf. `BOM-096` and `HR-V0-CONFIG-REC-P0.5` raise covered BOM groups to 96. The WD5/WD2 junction, conductor selection, fill, thermal loading, separation, cut/fastening details, received fit, installed evidence and qualified review remain open. P1.15 is current; P1.21 is unaccepted; no procurement, cutting, wiring, safety credit or work authority is released.**
+
 R240 P1.21 protected-routing candidate: **`HR-V0-P121-ROUTING-P0.1` corrects seven P0.7 route records against the actual P1.21 wire semantics, including moving the ordinary watchdog gate route from `SR1:A1` to `SRA1:A1`. Nine coordinate-bound planning routes produce fourteen hot-versus-credited pair screens with zero nominal centerline crossings. This is not installed-separation evidence: exact terminals, conductors, duct/divider/barrier/cover parts, separation, fill, bend, cut length, ferrules, inspection, common-cause disposition and qualified review remain open. P1.15 remains current, P1.21 remains unaccepted and no physical route or work authority is released. The supplied Sol summary is the existing R12 review, not a new round.**
 
 R239 P1.21 project visual review: **`HR-V0-P121-VISUAL-REVIEW-P0.1` records a project visual PASS for all thirteen P1.21 exports. Logic-changed pages 2 and 3 were freshly inspected as complete native sheets; the other eleven inherit the completed P1.19 layout pass through R238's source lineage. No clipping or collision finding was observed. This closes only project hold `P121C-H01`; P1.15 remains current, P1.21 remains unaccepted and ten substantive manufacturer/physical/qualified/authorization holds remain open.**
@@ -267,7 +269,7 @@ The authoritative repository controls engineering intent and contains the review
 - 168 named electrical nets
 - 106 unresolved electrical selections/interfaces
 - R222 panel topology candidate: 13 native KiCad pages, 84 component blocks, 340 modeled terminals, 55 two-ended conductors, 66/66 legacy endpoints mapped once, five explicit distribution/junction nodes, ten door conductors without a dynamic-flex candidate, and ten open holds
-- 95 system BOM groups: 17 evaluation candidates, 49 exact candidates on hold, three grouped-component holds, 19 selection-required groups, four historical/DNP exclusions, and three integrated items
+- 96 system BOM groups: 17 evaluation candidates, 50 exact candidates on hold, three grouped-component holds, 19 selection-required groups, four historical/DNP exclusions, and three integrated items
 - KiCad 10.0.5 ERC: 0 errors and 0 warnings
 - HR-V0 gate status: 30 total, 0 closed, 22 partial, 8 open; all physical and authorization records remain unexecuted
 - full energization-gate register: 30 gates, 0 closed, 22 partial, 8 open

@@ -89,7 +89,7 @@ def main() -> int:
                 errors.append(f"{directory}: stale manifest {path.name}")
     candidate = json.loads((ROOT / "release/hr-v0/release-candidate.json").read_text(encoding="utf-8"))
     bom = next((p for p in candidate["current_products"] if p["domain"] == "bill_of_materials"), {})
-    if IDENTIFIER not in bom.get("supporting_identifiers", []) or "r237" not in bom.get("release_state", ""):
+    if IDENTIFIER not in bom.get("supporting_identifiers", []) or "lot_a_purchase_blocker" not in bom.get("release_state", ""):
         errors.append("release candidate does not bind R237")
     if errors:
         print(f"{IDENTIFIER} FAIL:", file=sys.stderr)

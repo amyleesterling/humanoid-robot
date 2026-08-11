@@ -19,6 +19,10 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R241 P1.21 segregation-hardware candidate](docs/hr-v0-p121-segregation-hardware-p0.1.md)
+- [Interactive segregation-hardware guide](release/hr-v0/p121-segregation-hardware-p0.1/index.html)
+- [R241 independent review request](docs/reviews/2026-08-11-r241-independent-review-request.md)
+- [R241 validation record](docs/reviews/2026-08-11-r241-validation-record.md)
 - [R240 P1.21 protected-routing candidate](docs/hr-v0-p121-protected-routing-p0.1.md)
 - [Interactive protected-routing guide](release/hr-v0/p121-protected-routing-p0.1/index.html)
 - [R240 independent review request](docs/reviews/2026-08-11-r240-independent-review-request.md)
@@ -977,7 +981,7 @@ Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable 
 
 ## Current review state
 
-Two hundred forty review/control rounds are complete: R01-R240. R11 Fable and R12 Sol are independent parallel reviews of the original pre-correction baseline. R13-R240 are project-owned correction, evidence-control or validation passes, not additional independent approvals. R240 corrects seven stale or inherited P0.7 route meanings against P1.21, defines nine coordinate-bound planning routes and screens fourteen watchdog/supply-hot versus credited-input pairs with zero nominal centerline crossings. That result is planning geometry only: actual terminals, conductors, ducts, barriers, separation, cut lengths, inspection, common-cause disposition and qualified review remain open. The supplied Sol summary is the same R12 review and is not double-counted. P1.15 remains current; P1.21 remains unaccepted; no physical route or work authority is released.
+Two hundred forty-one review/control rounds are complete: R01-R241. R11 Fable and R12 Sol are independent parallel reviews of the original pre-correction baseline. R13-R241 are project-owned correction, evidence-control or validation passes, not additional independent approvals. R241 replaces an undocumented internal-divider assumption with an exact Phoenix Contact 3240187 25 x 25 x 2000 mm duct candidate and a 369.8 mm WD5 planning envelope. Existing 3240189 stock cannot supply WD5 because only 20.8 mm remains before kerf. The junction, conductor OD/gauge/order codes, fill, thermal loading, numeric separation, installation and qualified review remain open. The supplied Sol summary is the same R12 review and is not double-counted. P1.15 remains current; P1.21 remains unaccepted; no procurement, cut, route, safety credit or work authority is released.
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)
@@ -1261,6 +1265,7 @@ Two hundred forty review/control rounds are complete: R01-R240. R11 Fable and R1
 | R238 | P1.21 consolidated native-KiCad review baseline | Proved P1.21 transitively inherits the P1.19 readable layout and P1.18 panel nodes; exposed all thirteen P1.21 sheets in one interactive guide; and controlled the six keyed P1.19-to-P1.21 terminal changes. P1.15 remains current, P1.21 remains unaccepted, eleven holds remain open and the supplied Sol text remains the existing R12 review rather than a new round. |
 | R239 | P1.21 project visual review | Freshly inspected complete P1.21 pages 2 and 3 after the logic change and inherited the completed P1.19 project visual disposition for the other eleven pages. All thirteen receive a project visual PASS with zero observed clipping/collision findings. Only the project-owned visual hold closes; ten substantive holds and all independent/qualified decisions remain open. |
 | R240 | P1.21 protected-routing candidate | Corrected seven P0.7 route meanings against P1.21, defined nine coordinate-bound planning routes and screened fourteen watchdog/supply-hot versus credited-input pairs with zero nominal centerline crossings. Nine physical/selection/qualified holds remain open; no route, P1.21 promotion or work authority is released. |
+| R241 | P1.21 segregation-hardware and configuration P0.5 candidate | Replaced an undocumented divider concept with exact held Phoenix Contact item 3240187; placed a 369.8 mm WD5 envelope with nominal 10 mm/20 mm gaps; rejected the 20.8 mm existing-stock residual; exposed the WD5/WD2 junction, seven physical conductors, fill, thermal, separation and installation as open; and reconciled 96 BOM groups through `HR-V0-CONFIG-REC-P0.5`. P1.15 remains current, P1.21 unaccepted and no procurement or work authority exists. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
