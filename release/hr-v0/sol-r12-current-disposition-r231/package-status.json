@@ -1,0 +1,18 @@
+{
+  "identifier": "HR-V0-SOL-R12-STATUS-R231",
+  "round": "R231",
+  "source_review": "Sol R12",
+  "source_review_findings": {
+    "blocker": 18,
+    "major": 30,
+    "minor": 8
+  },
+  "blockers_qualified_closed": 0,
+  "partially_addressed_open": 12,
+  "open_hr_v0_blocker": 1,
+  "open_hr30_blocker": 5,
+  "independent_review": false,
+  "qualified_review": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}
