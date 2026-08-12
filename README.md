@@ -19,6 +19,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R267 Lot A alternate acquisition route](docs/hr-v0-lot-a-alternate-route-p0.1.md)
+- [Interactive R267 route guide](release/hr-v0/lot-a-alternate-route-p0.1/index.html)
+- [Interactive configuration reconciliation P0.31](release/hr-v0/configuration-reconciliation-p0.31/index.html)
+- [R267 independent review request](docs/reviews/2026-08-12-r267-independent-review-request.md)
+- [Sol R12 status after R267](docs/reviews/2026-08-12-sol-r12-post-r267-status.md)
 - [R266 Lot A decision capsule](docs/hr-v0-lot-a-decision-capsule-p0.1.md)
 - [Interactive R266 draft decision guide](release/hr-v0/lot-a-decision-capsule-p0.1/index.html)
 - [Interactive configuration reconciliation P0.30](release/hr-v0/configuration-reconciliation-p0.30/index.html)

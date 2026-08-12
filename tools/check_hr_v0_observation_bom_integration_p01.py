@@ -78,9 +78,9 @@ def main() -> int:
     products = release["current_products"]
     bill = next(row for row in products if row.get("domain") == "bill_of_materials")
     electrical = next(row for row in products if row.get("domain") == "electrical")
-    if bill.get("system_group_count", 0) < 108 or bill.get("configuration_reconciliation") not in {gen.CID, "HR-V0-CONFIG-REC-P0.24", "HR-V0-CONFIG-REC-P0.25", "HR-V0-CONFIG-REC-P0.26", "HR-V0-CONFIG-REC-P0.27", "HR-V0-CONFIG-REC-P0.28", "HR-V0-CONFIG-REC-P0.29", "HR-V0-CONFIG-REC-P0.30"} or bill.get("observation_bom_integration") != gen.ID or gen.ID not in bill.get("supporting_identifiers", []):
+    if bill.get("system_group_count", 0) < 108 or bill.get("configuration_reconciliation") not in {gen.CID, "HR-V0-CONFIG-REC-P0.24", "HR-V0-CONFIG-REC-P0.25", "HR-V0-CONFIG-REC-P0.26", "HR-V0-CONFIG-REC-P0.27", "HR-V0-CONFIG-REC-P0.28", "HR-V0-CONFIG-REC-P0.29", "HR-V0-CONFIG-REC-P0.30", "HR-V0-CONFIG-REC-P0.31"} or bill.get("observation_bom_integration") != gen.ID or gen.ID not in bill.get("supporting_identifiers", []):
         errors.append("release BOM metadata is stale")
-    if electrical.get("configuration_reconciliation") not in {gen.CID, "HR-V0-CONFIG-REC-P0.24", "HR-V0-CONFIG-REC-P0.25", "HR-V0-CONFIG-REC-P0.26", "HR-V0-CONFIG-REC-P0.27", "HR-V0-CONFIG-REC-P0.28", "HR-V0-CONFIG-REC-P0.29", "HR-V0-CONFIG-REC-P0.30"} or electrical.get("observation_bom_integration") != gen.ID:
+    if electrical.get("configuration_reconciliation") not in {gen.CID, "HR-V0-CONFIG-REC-P0.24", "HR-V0-CONFIG-REC-P0.25", "HR-V0-CONFIG-REC-P0.26", "HR-V0-CONFIG-REC-P0.27", "HR-V0-CONFIG-REC-P0.28", "HR-V0-CONFIG-REC-P0.29", "HR-V0-CONFIG-REC-P0.30", "HR-V0-CONFIG-REC-P0.31"} or electrical.get("observation_bom_integration") != gen.ID:
         errors.append("release electrical metadata is stale")
     for path in (gen.OUT / "index.html", gen.REL / "index.html", gen.CFG / "index.html", gen.CFGR / "index.html"):
         text = path.read_text(encoding="utf-8")
