@@ -19,6 +19,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R255 Lot A supplier and metrology inquiry P0.2](docs/hr-v0-lot-a-inquiry-p0.2.md)
+- [Interactive R255 inquiry and decision guide](release/hr-v0/lot-a-inquiry-p0.2/index.html)
+- [Interactive configuration reconciliation P0.19](release/hr-v0/configuration-reconciliation-p0.19/index.html)
+- [R255 independent review request](docs/reviews/2026-08-11-r255-independent-review-request.md)
+- [R255 validation record](docs/reviews/2026-08-11-r255-validation-record.md)
+- [Sol R12 status after R255](docs/reviews/2026-08-11-sol-r12-post-r255-status.md)
 - [R254 task-specific joint-stack metrology correction](docs/hr-v0-joint-stack-metrology-p0.2.md)
 - [Interactive R254 metrology guide](release/hr-v0/joint-stack-metrology-p0.2/index.html)
 - [Interactive configuration reconciliation P0.18](release/hr-v0/configuration-reconciliation-p0.18/index.html)
