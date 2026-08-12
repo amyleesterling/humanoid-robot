@@ -19,6 +19,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R253 rank-6 3-2-1 joint-stack fixture correction](docs/hr-v0-joint-stack-fixture-p0.2.md)
+- [Interactive R253 fixture guide](release/hr-v0/joint-stack-fixture-p0.2/index.html)
+- [Interactive configuration reconciliation P0.17](release/hr-v0/configuration-reconciliation-p0.17/index.html)
+- [R253 independent review request](docs/reviews/2026-08-11-r253-independent-review-request.md)
+- [R253 validation record](docs/reviews/2026-08-11-r253-validation-record.md)
+- [Sol R12 status after R253](docs/reviews/2026-08-11-sol-r12-post-r253-status.md)
 - [R252 zero-energy joint-stack fixture candidate](docs/hr-v0-joint-stack-fixture-p0.1.md)
 - [Interactive R252 joint-stack fixture guide](release/hr-v0/joint-stack-fixture-p0.1/index.html)
 - [Interactive configuration reconciliation P0.16](release/hr-v0/configuration-reconciliation-p0.16/index.html)
@@ -1040,7 +1046,7 @@ Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable 
 
 ## Current review state
 
-Two hundred fifty-two rounds are complete: R01-R252. R11/R12 remain the independent reviews; later rounds are project responses. R252 binds exact controlled XM540/H101/S102 geometry to a review-only six-contact fixture envelope and a fail-closed temporary-stack instruction. The fixture is not buildable; its material, load, restraint, fasteners, tolerances, FAI, physical fit, qualified review, and separate unpowered-session authorization remain open. Zero Sol blockers close; no work or energization authority is released.
+Two hundred fifty-three rounds are complete: R01-R253. R11/R12 remain the independent reviews; later rounds are project responses. R253 prohibits R252/P0.1's rank-3 coplanar locating scheme and replaces it with a nominal rank-6 3-2-1 candidate tied to current ROBOTIS evidence. P0.2 remains not buildable; supplier confirmation, contact/load/restraint/tolerance selections, qualified review, FAI, physical fit/stability and separate unpowered-session authorization remain open. Zero Sol blockers close; no work or energization authority is released.
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)
@@ -1336,6 +1342,7 @@ Two hundred fifty-two rounds are complete: R01-R252. R11/R12 remain the independ
 | R250 | Datum/GD&T qualified-review proposal | Proposed five functional datum schemes, twenty FCF candidates and inspection uncertainty controls. Geometry is unchanged; formal GD&T and fabrication authority remain false. |
 | R251 | First physical shop-session contract | Bound ten purchase gates, eight supplier questions, six articles, seven roles, six instruments, eight holds, eighteen operations and all twenty HSI records. Nothing is authorized or executed. |
 | R252 | Zero-energy joint-stack fixture candidate | Bound exact XM540/H101/S102 STEP sources to six nominal S102-face contact candidates, six keepouts, twelve fail-closed steps, twelve open selections and configuration P0.16. The fixture is not buildable; zero operations or acceptances are executed and nothing is authorized. |
+| R253 | Rank-6 3-2-1 joint-stack fixture correction | Found P0.1's six coplanar contacts have rank 3; prohibited that scheme; issued nominal rank-6 P0.2 with three A, two B and one C contacts, current ROBOTIS evidence, fourteen steps and fourteen selections. P0.2 remains not buildable and nothing is authorized. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

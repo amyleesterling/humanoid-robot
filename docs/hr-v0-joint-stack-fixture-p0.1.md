@@ -2,6 +2,8 @@
 
 > **PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION**
 
+> **SUPERSEDED BY R253 / `HR-V0-JOINT-STACK-FIXTURE-P0.2`.** The six coplanar contacts in this record have constraint-matrix rank 3 and are prohibited for fixture fabrication or session use.
+
 ## Decision
 
 R252 advances, but does not close, R251 hold `R251-H07` and joint-stack hold points `JSM-HP-004` and `JSM-HP-005`. It binds exact controlled ROBOTIS source geometry to a review-only six-contact fixture envelope and a fail-closed temporary-stack instruction. The package is not a manufacturing drawing, not a released fixture, and not authority to install hardware or begin a shop session.

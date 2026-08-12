@@ -1,0 +1,2 @@
+prior_identifier,defect,disposition,successor,successor_limit,warning
+HR-V0-JOINT-STACK-FIXTURE-P0.1,six coplanar contacts constrain only three independent infinitesimal degrees of freedom; in-plane translation and rotation remain free,SUPERSEDED FOR LOCATING-SCHEME REVIEW - PROHIBITED FOR FIXTURE FABRICATION OR SESSION USE,HR-V0-JOINT-STACK-FIXTURE-P0.2,P0.2 is rank-6 nominal review geometry only; it remains not buildable and not authorized,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
