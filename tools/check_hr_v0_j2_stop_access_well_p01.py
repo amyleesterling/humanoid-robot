@@ -98,9 +98,9 @@ def main() -> int:
         for record in rows(directory / "file-manifest.csv"):
             path = directory / record["relative_path"]
             need(path.is_file() and sha(path) == record["sha256"] and path.stat().st_size == int(record["bytes"]), f"manifest {path}")
-    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R273 access-well J2 stop candidate:", "R274 A04 exact-candidate joint package:", "R275 J2 soft-contact pad boundary:")), "handoff")
+    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R273 access-well J2 stop candidate:", "R274 A04 exact-candidate joint package:", "R275 J2 soft-contact pad boundary:", "R276 exact-contact J2 pad correction:")), "handoff")
     need("| R273 |" in (ROOT / "docs/review-ledger.md").read_text(encoding="utf-8"), "ledger")
-    need("Two hundred seventy-five rounds are complete: R01-R275." in (ROOT / "README.md").read_text(encoding="utf-8"), "README count")
+    need("Two hundred seventy-six rounds are complete: R01-R276." in (ROOT / "README.md").read_text(encoding="utf-8"), "README count")
     print("R273 P0.12 access-well stop package checks: PASS")
     return 0
 

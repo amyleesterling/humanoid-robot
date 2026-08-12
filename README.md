@@ -19,6 +19,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R276 exact-contact J2 pad boundary](docs/hr-v0-j2-soft-contact-pad-p0.2.md)
+- [R276 independent review request](docs/reviews/2026-08-12-r276-independent-review-request.md)
+- [R276 validation record](docs/reviews/2026-08-12-r276-validation-record.md)
+- [Interactive R276 exact-contact guide](release/hr-v0/j2-soft-contact-pad-p0.2/index.html)
+- [Interactive configuration reconciliation P0.40](release/hr-v0/configuration-reconciliation-p0.40/index.html)
 - [R275 J2 soft-contact pad candidate](docs/hr-v0-j2-soft-contact-pad-p0.1.md)
 - [R275 independent review request](docs/reviews/2026-08-12-r275-independent-review-request.md)
 - [R275 validation record](docs/reviews/2026-08-12-r275-validation-record.md)
@@ -1163,7 +1168,7 @@ Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable 
 
 ## Current review state
 
-Two hundred seventy-five rounds are complete: R01-R275. R270 corrected the J2 contact-force model to use the exact `r × n` moment arm; R271 rejected the first integral-boss topology; R272/R273 iterated to the collision-screened P0.12 access-well candidate. R274 now names an exact A04 supplier/tool candidate stack and its torque-preload/joined-load evidence contract. R275 names Rogers 2300327 only as an unselected sacrificial soft-contact pad and retains the metal rails as the structural backup. R11/R12 remain the independent parallel reviews; later rounds are project responses, not additional independent approvals. Nothing has been sent, ordered, received, selected, fabricated, cut, crimped, assembled, connected, powered or measured; all physical and qualified closures remain open and no energization authority is released. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
+Two hundred seventy-six rounds are complete: R01-R276. R270 corrected the J2 contact-force model to use the exact `r × n` moment arm; R271 rejected the first integral-boss topology; R272/R273 iterated to the collision-screened P0.12 access-well candidate. R274 now names an exact A04 supplier/tool candidate stack and its torque-preload/joined-load evidence contract. R275 names Rogers 2300327 only as an unselected sacrificial soft-contact pad; R276 supersedes its radius-based warning with P0.12's exact contact normal and retains the metal rails as the structural backup. R11/R12 remain the independent parallel reviews; later rounds are project responses, not additional independent approvals. Nothing has been sent, ordered, received, selected, fabricated, cut, crimped, assembled, connected, powered or measured; all physical and qualified closures remain open and no energization authority is released. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)

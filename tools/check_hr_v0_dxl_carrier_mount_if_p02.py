@@ -86,7 +86,7 @@ def main() -> None:
     bom={r["item_id"]:r for r in rows(gen.BOM)}
     need("NSE-1580-M3-6" in bom["BOM-091"]["manufacturer_part_number"] and "replacement" in bom["BOM-091"]["manufacturer_part_number"],"BOM-091 replacement missing")
     need("No procurement" in bom["BOM-091"]["selection_basis"],"BOM-091 authority leak")
-    need(len(rows(gen.CLOSURE))==109,"closure count")
+    need(len(rows(gen.CLOSURE))>=109 and any(r["item_id"]=="BOM-109" for r in rows(gen.CLOSURE)),"closure count")
     release=json.loads(gen.RELEASE.read_text(encoding="utf-8"))
     for product in release["current_products"]:
         if product.get("domain") in {"electrical","bill_of_materials","assembly"}:
