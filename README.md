@@ -19,6 +19,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R251 first physical shop-session contract](docs/hr-v0-first-shop-session-p0.1.md)
+- [Interactive R251 first-shop-session guide](release/hr-v0/first-shop-session-p0.1/index.html)
+- [Interactive configuration reconciliation P0.15](release/hr-v0/configuration-reconciliation-p0.15/index.html)
+- [R251 independent review request](docs/reviews/2026-08-11-r251-independent-review-request.md)
+- [R251 validation record](docs/reviews/2026-08-11-r251-validation-record.md)
 - [R250 datum/GD&T qualified-review proposal](docs/hr-v0-gdt-review-p0.1.md)
 - [Interactive R250 datum/GD&T guide](release/hr-v0/gdt-review-p0.1/index.html)
 - [Interactive configuration reconciliation P0.14](release/hr-v0/configuration-reconciliation-p0.14/index.html)
@@ -1029,7 +1034,7 @@ Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable 
 
 ## Current review state
 
-Two hundred fifty review/control rounds are complete: R01-R250. R11 Fable and R12 Sol are independent parallel reviews of the original pre-correction baseline. R13-R250 are project-owned responses, not approvals. R250 adds five functional datum schemes and twenty review-only feature controls without changing geometry or releasing formal GD&T. Qualified disposition, successor drawings, DFM, FAI and physical fit remain absent. Zero Sol blockers close. P1.15 remains current; P1.21 remains unaccepted; no work or energization authority is released.
+Two hundred fifty-one rounds are complete: R01-R251. R11/R12 remain the independent reviews; later rounds are project responses. R251 binds the exact blocked six-article acquisition and eighteen-operation unpowered metrology session needed before missing hard stops can be designed. Purchase, receipt, assembly and execution remain false. Zero Sol blockers close; no work or energization authority is released.
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)
@@ -1323,6 +1328,7 @@ Two hundred fifty review/control rounds are complete: R01-R250. R11 Fable and R1
 | R248 | Complete moving-system mass, COM and inertia evidence contract | Mapped all 17 moving-mass ledger rows to blank received-evidence records; added 170 repeat slots, four assembly mass closures, eight two-axis COM rows, four calibrated-bifilar records and six inertia rows. No physical result exists; B-010, R247-H11 and all work authority remain open. |
 | R249 | Accepted-property propagation and stale-analysis control | Added a six-row fail-closed accepted-property compiler, twelve downstream consumers, eight prohibited stale planning inputs and a ten-step rebuild sequence. No accepted property or downstream analysis exists; zero blockers or gates close. |
 | R250 | Datum/GD&T qualified-review proposal | Proposed five functional datum schemes, twenty FCF candidates and inspection uncertainty controls. Geometry is unchanged; formal GD&T and fabrication authority remain false. |
+| R251 | First physical shop-session contract | Bound ten purchase gates, eight supplier questions, six articles, seven roles, six instruments, eight holds, eighteen operations and all twenty HSI records. Nothing is authorized or executed. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

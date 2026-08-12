@@ -1,6 +1,8 @@
 # Project Button Current Engineering Handoff
 
 Handoff date: 2026-08-11
+R251 first physical session: **`HR-V0-FIRST-SHOP-SESSION-P0.1` binds the exact six-article Lot A acquisition to the existing eighteen-operation unpowered joint-stack traveler and all HSI-001..020 records. Ten purchase gates, eight supplier questions, seven roles, six instruments, eight hold points, nine evidence locations and ten stop-work conditions are controlled. P0.15 carries 35 current records, 65 holds and 97 unexecuted acceptances. No contact, purchase, receipt, assembly or test is authorized or executed.**
+
 R250 datum/GD&T review: **`HR-V0-GDT-REVIEW-P0.1` proposes five functional datum schemes, twenty FCF candidates and fifteen inspection-uncertainty rows under ASME Y14.5/Y14.43 and NIST TN 1297. Geometry is unchanged. `HR-V0-CONFIG-REC-P0.14` carries 34 current records, 60 holds and 89 unexecuted acceptances. Formal GD&T, successor drawings, DFM, FAI, received fit, qualified signature and all work authority remain open.**
 
 R249 accepted-property propagation: **`HR-V0-PROP-PROPAGATION-P0.1` defines the canonical six-row bridge from future accepted R248 mass/COM/inertia evidence into twelve downstream load, duty, stopping, impact, containment, structure, firmware and verification consumers. Eight incomplete historical/planning artifacts are prohibited from release use until regenerated. The blank compiler exits 78; no accepted property or downstream rebuild exists. `HR-V0-CONFIG-REC-P0.13` carries 33 current records, 55 holds and 81 unexecuted acceptances. Zero Sol blockers or gates close and no authority is released.**
