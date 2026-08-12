@@ -19,6 +19,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R250 datum/GD&T qualified-review proposal](docs/hr-v0-gdt-review-p0.1.md)
+- [Interactive R250 datum/GD&T guide](release/hr-v0/gdt-review-p0.1/index.html)
+- [Interactive configuration reconciliation P0.14](release/hr-v0/configuration-reconciliation-p0.14/index.html)
+- [R250 independent review request](docs/reviews/2026-08-11-r250-independent-review-request.md)
+- [R250 validation record](docs/reviews/2026-08-11-r250-validation-record.md)
 - [R249 accepted-property propagation and stale-analysis control](docs/hr-v0-property-propagation-p0.1.md)
 - [Interactive R249 property-propagation guide](release/hr-v0/property-propagation-p0.1/index.html)
 - [Interactive configuration reconciliation P0.13](release/hr-v0/configuration-reconciliation-p0.13/index.html)
@@ -1024,7 +1029,7 @@ Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable 
 
 ## Current review state
 
-Two hundred forty-nine review/control rounds are complete: R01-R249. R11 Fable and R12 Sol are independent parallel reviews of the original pre-correction baseline. R13-R249 are project-owned correction, evidence-control or validation passes, not additional independent approvals. R248 defines a complete but blank physical-properties evidence contract. R249 adds a fail-closed canonical handoff to twelve downstream analyses and prohibits eight incomplete historical/planning artifacts from release use. The accepted-property input remains blank, the compiler exits 78 and no downstream rebuild exists. Zero Sol blockers close. P1.15 remains current; P1.21 remains unaccepted; no procurement, fabrication, assembly, connection, powered testing, motion, safety credit or energization authority is released.
+Two hundred fifty review/control rounds are complete: R01-R250. R11 Fable and R12 Sol are independent parallel reviews of the original pre-correction baseline. R13-R250 are project-owned responses, not approvals. R250 adds five functional datum schemes and twenty review-only feature controls without changing geometry or releasing formal GD&T. Qualified disposition, successor drawings, DFM, FAI and physical fit remain absent. Zero Sol blockers close. P1.15 remains current; P1.21 remains unaccepted; no work or energization authority is released.
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)
@@ -1317,6 +1322,7 @@ Two hundred forty-nine review/control rounds are complete: R01-R249. R11 Fable a
 | R247 | Mechanical shop, RFQ and unpowered assembly candidate | Corrected the five current custom-part drawing identifiers, warning and title blocks without changing geometry; bound five drawings, five DXFs and five STEP files into an exact unsent RFQ payload; and defined 21 zero-energy assembly steps plus nine interface checks. Formal datum/GD&T, provider DFM, FAI, physical fit/proof, exact joint controls and every work authority remain open. |
 | R248 | Complete moving-system mass, COM and inertia evidence contract | Mapped all 17 moving-mass ledger rows to blank received-evidence records; added 170 repeat slots, four assembly mass closures, eight two-axis COM rows, four calibrated-bifilar records and six inertia rows. No physical result exists; B-010, R247-H11 and all work authority remain open. |
 | R249 | Accepted-property propagation and stale-analysis control | Added a six-row fail-closed accepted-property compiler, twelve downstream consumers, eight prohibited stale planning inputs and a ten-step rebuild sequence. No accepted property or downstream analysis exists; zero blockers or gates close. |
+| R250 | Datum/GD&T qualified-review proposal | Proposed five functional datum schemes, twenty FCF candidates and inspection uncertainty controls. Geometry is unchanged; formal GD&T and fabrication authority remain false. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
