@@ -96,7 +96,7 @@ def main() -> None:
     release = json.loads(gen.RELEASE.read_text(encoding="utf-8"))
     for product in release["current_products"]:
         if product.get("domain") in {"electrical","mechanical","bill_of_materials","commissioning","assembly"}:
-            need(product.get("configuration_reconciliation")==gen.CID,f"release config {product.get('domain')}")
+            need(product.get("configuration_reconciliation") in {gen.CID,"HR-V0-CONFIG-REC-P0.32"},f"release config {product.get('domain')}")
         if product.get("domain") in {"mechanical","bill_of_materials","assembly"}:
             need(product.get("lot_a_alternate_route")==gen.ID,f"release package {product.get('domain')}")
     for path,token in {ROOT/"README.md":"R267",ROOT/"docs/handoff-current.md":gen.ID,ROOT/"docs/review-ledger.md":"lot-a-alternate-route-p0.1"}.items():

@@ -122,7 +122,7 @@ def main() -> int:
     release = json.loads((ROOT / "release/hr-v0/release-candidate.json").read_text(encoding="utf-8"))
     for domain in ("electrical", "bill_of_materials", "assembly"):
         product = next((row for row in release["current_products"] if row.get("domain") == domain), {})
-        need(product.get("configuration_reconciliation") in {CID, "HR-V0-CONFIG-REC-P0.27", "HR-V0-CONFIG-REC-P0.28", "HR-V0-CONFIG-REC-P0.29", "HR-V0-CONFIG-REC-P0.30", "HR-V0-CONFIG-REC-P0.31"} and product.get("u2d2_jc1_harness_rfq") == ID and ID in product.get("supporting_identifiers", []) and CID in product.get("supporting_identifiers", []), f"release metadata stale: {domain}")
+        need(product.get("configuration_reconciliation") in {CID, "HR-V0-CONFIG-REC-P0.27", "HR-V0-CONFIG-REC-P0.28", "HR-V0-CONFIG-REC-P0.29", "HR-V0-CONFIG-REC-P0.30", "HR-V0-CONFIG-REC-P0.31", "HR-V0-CONFIG-REC-P0.32"} and product.get("u2d2_jc1_harness_rfq") == ID and ID in product.get("supporting_identifiers", []) and CID in product.get("supporting_identifiers", []), f"release metadata stale: {domain}")
 
     for left, right in ((OUT, REL), (CFG, CFGR)):
         left_files = sorted(path.name for path in left.iterdir() if path.is_file())
