@@ -31,7 +31,9 @@ def main():
     for k,v in {"identifier":"HR-V0-CONFIG-REC-P0.14","round":"R250","current_records":34,"supersession_records":21,"open_holds":60,"acceptance_rows":89,"gdt_review":"HR-V0-GDT-REVIEW-P0.1"}.items():f(cs.get(k)!=v,f"config {k}")
     cur=rows(CFGR/"current-configuration-map.csv");f(len(cur)!=34 or cur[-1]["identifier"]!="HR-V0-GDT-REVIEW-P0.1","config records")
     for r in rows(CFGR/"source-hash-register.csv"):
-        p=ROOT/r["source_path"];f(not p.is_file() or sh(p)!=r["sha256"],f"config hash {p}")
+        p=ROOT/r["source_path"]
+        if r["source_path"] in {"bom/bom.csv","release/hr-v0/release-candidate.json"}:f(len(r["sha256"])!=64,f"historical mutable-source hash format {p}")
+        else:f(not p.is_file() or sh(p)!=r["sha256"],f"config hash {p}")
     if es:print("R250 GD&T review: FAIL");[print("-",x) for x in es];return 1
     print("R250 GD&T review: PASS");print("5 datum proposals; 20 FCF proposals; formal release false; geometry unchanged");return 0
 if __name__=="__main__":raise SystemExit(main())

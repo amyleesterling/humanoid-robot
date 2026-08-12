@@ -19,6 +19,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R259 observation electronics BOM integration P0.1](docs/hr-v0-observation-bom-integration-p0.1.md)
+- [Interactive R259 observation BOM guide](release/hr-v0/observation-bom-integration-p0.1/index.html)
+- [Interactive configuration reconciliation P0.23](release/hr-v0/configuration-reconciliation-p0.23/index.html)
+- [R259 independent review request](docs/reviews/2026-08-12-r259-independent-review-request.md)
+- [R259 validation record](docs/reviews/2026-08-12-r259-validation-record.md)
+- [Sol R12 status after R259](docs/reviews/2026-08-12-sol-r12-post-r259-status.md)
 - [R258 deterministic recipient transmission bundles P0.1](docs/hr-v0-lot-a-transmission-bundles-p0.1.md)
 - [Interactive R258 bundle and checksum guide](release/hr-v0/lot-a-transmission-bundles-p0.1/index.html)
 - [Interactive configuration reconciliation P0.22](release/hr-v0/configuration-reconciliation-p0.22/index.html)
@@ -1076,7 +1082,7 @@ Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable 
 
 ## Current review state
 
-Two hundred fifty-three rounds are complete: R01-R253. R11/R12 remain the independent reviews; later rounds are project responses. R253 prohibits R252/P0.1's rank-3 coplanar locating scheme and replaces it with a nominal rank-6 3-2-1 candidate tied to current ROBOTIS evidence. P0.2 remains not buildable; supplier confirmation, contact/load/restraint/tolerance selections, qualified review, FAI, physical fit/stability and separate unpowered-session authorization remain open. Zero Sol blockers close; no work or energization authority is released.
+Two hundred fifty-nine rounds are complete: R01-R259. R11/R12 remain the independent parallel reviews; later rounds are project responses rather than additional independent approvals. R251-R257 define exact acquisition, measurement and inquiry scope; R258 freezes five recipient-isolated internal archives; and R259 integrates the observation carriers and harnesses into the 108-group hierarchical BOM while correcting the current release metadata to P0.23. HOLD-15 remains DESIGN REQUIRED. Nothing has been sent, ordered, received, selected, fabricated, assembled, connected, powered or measured; no Sol blocker has qualified closure and no energization authority is released. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)

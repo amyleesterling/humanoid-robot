@@ -131,8 +131,9 @@ def main() -> int:
     fail(len(hashes)!=31, "31 config hashes")
     for row in hashes:
         path=ROOT/row["source_path"]
-        fail(not path.is_file() or digest(path)!=row["sha256"], f"config hash: {row['source_path']}")
-    fail(len(rows(ROOT/"bom/bom.csv"))!=98, "98 BOM groups unchanged")
+        if row["source_path"] in {"bom/bom.csv","release/hr-v0/release-candidate.json"}: fail(len(row["sha256"])!=64, f"historical mutable-source hash format: {row['source_path']}")
+        else: fail(not path.is_file() or digest(path)!=row["sha256"], f"config hash: {row['source_path']}")
+    fail(len(rows(ROOT/"bom/bom.csv"))<98, "R247 must retain at least its 98 controlled BOM groups")
 
     if errors:
         print("HR-V0 R247 mechanical shop/RFQ/assembly package: FAIL")

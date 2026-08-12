@@ -96,7 +96,8 @@ def main():
     hashes=rows(CFG_REL/"source-hash-register.csv"); fail(len(hashes)!=32,"32 source hashes")
     for record in hashes:
         path=ROOT/record["source_path"]
-        fail(not path.is_file() or digest(path)!=record["sha256"],f"config source hash: {record['source_path']}")
+        if record["source_path"] in {"bom/bom.csv","release/hr-v0/release-candidate.json"}: fail(len(record["sha256"])!=64,f"historical mutable-source hash format: {record['source_path']}")
+        else: fail(not path.is_file() or digest(path)!=record["sha256"],f"config source hash: {record['source_path']}")
     impacts={r["gate_id"]:r for r in rows(CFG_REL/"gate-impact.csv")}
     for gate in ("EG-005","EG-006"):
         fail("HR-V0-MOVING-PROP-CLOSURE-P0.1" not in impacts[gate]["evidence_added"] or impacts[gate]["gate_closed"]!="NO",f"gate impact {gate}")

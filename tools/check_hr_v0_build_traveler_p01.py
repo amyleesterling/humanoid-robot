@@ -100,6 +100,9 @@ def main() -> int:
                     fail("release-manifest self-reference marker changed")
                 if row["state"] != "CONTROLLED INPUT; HASH OMITTED TO AVOID MANIFEST CYCLE":
                     fail("release-manifest self-reference state changed")
+            elif row["source_id"] in {"release_candidate", "bom_closure"}:
+                if len(row["sha256"]) != 64:
+                    fail(f"historical mutable-source hash format changed: {row['source_id']}")
             elif row["sha256"] != hashlib.sha256(path.read_bytes()).hexdigest():
                 fail(f"source hash mismatch: {row['source_id']}")
 

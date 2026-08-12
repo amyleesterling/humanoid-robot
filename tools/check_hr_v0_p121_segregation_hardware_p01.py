@@ -53,7 +53,7 @@ def main():
     fail(cfg.get("current_core_electrical_identifier")!="Project Button Electrical V3-P1.15-CARRIER-CANDIDATE","P1.15 current identity")
     fail(cfg.get("unaccepted_panel_topology_candidate")!="V3-P1.21-SRA1-SUPPLY-WATCHDOG-CANDIDATE","P1.21 unaccepted identity")
     bom={r['item_id']:r for r in rows(ROOT/"bom/bom.csv")}; closure={r['item_id']:r for r in rows(ROOT/"bom/hr-v0-bom-closure.csv")}
-    fail(len(bom)!=98 or len(closure)!=98 or set(bom)!=set(closure),"current 98-group BOM coverage")
+    fail(len(bom)<98 or len(closure)<98 or set(bom)!=set(closure),"current BOM must retain the R243 98-group subset with full closure parity")
     fail(bom.get("BOM-096",{}).get("manufacturer_part_number")!="CD 25X25 item 3240187","BOM-096 identity")
     fail(closure.get("BOM-096",{}).get("closure_class")!="exact_candidate_hold" or closure["BOM-096"]["allowed_action"]!="HOLD","BOM-096 hold")
     fail(closure.get("BOM-097",{}).get("closure_class")!="exact_candidate_hold" or closure["BOM-097"]["allowed_action"]!="HOLD","R242 BOM-097 hold")

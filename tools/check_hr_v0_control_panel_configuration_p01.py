@@ -129,7 +129,7 @@ def main() -> int:
     need(electrical.get("panel_topology_candidate") == "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE", "R222 topology candidate missing")
     need(electrical.get("panel_point_to_point_candidate") == "HR-V0-PANEL-P2P-P0.1", "R222 point-to-point candidate missing")
     need(electrical.get("control_panel_node_placement_candidate") == "HR-V0-PANEL-NODE-PLACEMENT-P0.1", "R223 node-placement candidate missing")
-    need(electrical.get("configuration_reconciliation") == "HR-V0-CONFIG-REC-P0.8", "R244 configuration reconciliation missing")
+    need("HR-V0-CONFIG-REC-P0.8" in electrical.get("supporting_identifiers", []), "R244 configuration reconciliation history missing")
     need(electrical.get("ecad_web_review_surface") == "HR-V0-ECAD-WEB-REVIEW-P0.1", "R224 ECAD web-review surface missing")
     need(electrical.get("identifier") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "P1.15 current identity changed")
     need(electrical.get("release_state") == "p115_current_p121_unaccepted_r244_nominal_dcr_drop_and_bit_disposition_only_received_complete_circuit_physical_qualified_and_authority_open", "electrical release state changed")

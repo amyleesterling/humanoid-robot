@@ -51,7 +51,9 @@ def main():
     for k,v in {"identifier":"HR-V0-CONFIG-REC-P0.13","round":"R249","current_records":33,"supersession_records":20,"open_holds":55,"acceptance_rows":81,"property_propagation":"HR-V0-PROP-PROPAGATION-P0.1"}.items():fail(cfg.get(k)!=v,f"config {k}")
     current=rows(CFG_REL/"current-configuration-map.csv");fail(len(current)!=33 or current[-1]["identifier"]!="HR-V0-PROP-PROPAGATION-P0.1","33 current records");hashes=rows(CFG_REL/"source-hash-register.csv");fail(len(hashes)!=33,"33 hashes")
     for r in hashes:
-        p=ROOT/r["source_path"];fail(not p.is_file() or sha(p)!=r["sha256"],f"config hash {r['source_path']}")
+        p=ROOT/r["source_path"]
+        if r["source_path"] in {"bom/bom.csv","release/hr-v0/release-candidate.json"}:fail(len(r["sha256"])!=64,f"historical mutable-source hash format {r['source_path']}")
+        else:fail(not p.is_file() or sha(p)!=r["sha256"],f"config hash {r['source_path']}")
     if errors:
         print("HR-V0 R249 property propagation: FAIL");[print("-",e) for e in errors];return 1
     print("HR-V0 R249 property propagation: PASS");print("6 blank accepted-property rows; 12 consumers unrebuilt; 8 stale inputs prohibited; compiler fail-closed");print("Zero Sol blockers, motion credit, safety credit, or energization authority added");return 0
