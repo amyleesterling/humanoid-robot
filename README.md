@@ -19,6 +19,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R262 U2D2-to-JC1 manufacturer-build request P0.1](docs/hr-v0-u2d2-jc1-harness-rfq-p0.1.md)
+- [Interactive R262 RFQ guide](release/hr-v0/u2d2-jc1-harness-rfq-p0.1/index.html)
+- [Interactive configuration reconciliation P0.26](release/hr-v0/configuration-reconciliation-p0.26/index.html)
+- [R262 independent review request](docs/reviews/2026-08-12-r262-independent-review-request.md)
+- [R262 validation record](docs/reviews/2026-08-12-r262-validation-record.md)
+- [Sol R12 status after R262](docs/reviews/2026-08-12-sol-r12-post-r262-status.md)
 - [R261 U2D2-to-JC1 controller harness P0.1](docs/hr-v0-u2d2-jc1-harness-p0.1.md)
 - [Interactive R261 harness guide](release/hr-v0/u2d2-jc1-harness-p0.1/index.html)
 - [Interactive configuration reconciliation P0.25](release/hr-v0/configuration-reconciliation-p0.25/index.html)
@@ -1094,7 +1100,7 @@ Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable 
 
 ## Current review state
 
-Two hundred sixty-one rounds are complete: R01-R261. R11/R12 remain the independent parallel reviews; later rounds are project responses rather than additional independent approvals. R259 integrates the observation assemblies into the 108-group BOM; R260 defines exact but unreleased observation mounting candidates; and R261 defines the two-conductor U2D2-to-JC1 controller harness candidate while correcting BOM-107/108 canonical closure drift. Raw cuts, received route, crimp/process limits and every physical result remain open. HOLD-15 is only PARTIALLY ADDRESSED - OPEN. Nothing has been sent, ordered, received, selected, fabricated, assembled, connected, powered or measured; no Sol blocker has qualified closure and no energization authority is released. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
+Two hundred sixty-two rounds are complete: R01-R262. R11/R12 remain the independent parallel reviews; later rounds are project responses rather than additional independent approvals. R261 defines the two-conductor U2D2-to-JC1 controller harness candidate and corrects BOM-107/108 canonical closure drift. R262 packages that harness into a deterministic, UNSENT JST/GAM manufacturer-build request and explicitly rejects the catalog 304.8 mm single lead as the complete 500 mm two-conductor harness. Provider response, quote, process evidence, first article and every physical result remain open. HOLD-15 is only PARTIALLY ADDRESSED - OPEN. Nothing has been sent, ordered, received, selected, fabricated, assembled, connected, powered or measured; no Sol blocker has qualified closure and no energization authority is released. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)

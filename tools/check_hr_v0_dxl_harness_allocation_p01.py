@@ -81,8 +81,8 @@ def main() -> int:
 
     bom = {row["item_id"]: row for row in read_csv(ROOT / "bom" / "bom.csv")}
     need(len(bom) >= 86 and "BOM-086" in bom, "system BOM must retain BOM-086 and all prior groups")
-    need(bom["BOM-054"]["quantity"] == "2" and "controller cable" in bom["BOM-054"]["selection_basis"].lower(), "BOM-054 allocation mismatch")
-    need(bom["BOM-055"]["quantity"] == "4" and "controller-cable" in bom["BOM-055"]["selection_basis"].lower(), "BOM-055 allocation mismatch")
+    need(bom["BOM-054"]["quantity"] == "2" and "bom-061" in bom["BOM-054"]["selection_basis"].lower(), "BOM-054 allocation mismatch")
+    need(bom["BOM-055"]["quantity"] == "4" and "bom-061" in bom["BOM-055"]["selection_basis"].lower(), "BOM-055 allocation mismatch")
     controller_identity = bom["BOM-061"]["manufacturer_part_number"].lower()
     need(
         bom["BOM-061"]["quantity"] == "1"

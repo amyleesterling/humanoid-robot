@@ -94,7 +94,9 @@
         "HR-V0-OBS-MOUNT-STACK-P0.1",
         "HR-V0-CONFIG-REC-P0.24",
         "HR-V0-U2D2-JC1-HARNESS-P0.1",
-        "HR-V0-CONFIG-REC-P0.25"
+        "HR-V0-CONFIG-REC-P0.25",
+        "HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1",
+        "HR-V0-CONFIG-REC-P0.26"
       ],
       "release_state": "p115_current_p121_unaccepted_r244_nominal_dcr_drop_and_bit_disposition_only_received_complete_circuit_physical_qualified_and_authority_open",
       "control_panel_configuration": "HR-V0-CP-CONFIG-P0.1",
@@ -103,7 +105,7 @@
       "panel_topology_candidate": "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE",
       "panel_point_to_point_candidate": "HR-V0-PANEL-P2P-P0.1",
       "control_panel_node_placement_candidate": "HR-V0-PANEL-NODE-PLACEMENT-P0.1",
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.25",
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.26",
       "ecad_web_review_surface": "HR-V0-ECAD-WEB-REVIEW-P0.1",
       "contactor_application_record": "HR-V0-K1K2-APP-P0.3",
       "contactor_configuration_binding": "P1.15 current and P1.18 unaccepted contain 32 identical contactor-critical terminal/net rows",
@@ -142,7 +144,8 @@
       "p121_dcr_drop_summary": "manufacturer-nominal 4.4 ohm/1000 ft at 20 C; four one-way centerline conductor-only numeric screens; received DCR/cuts/complete circuit and exact bits open",
       "observation_bom_integration": "HR-V0-OBS-BOM-INTEGRATION-P0.1",
       "observation_mount_stack": "HR-V0-OBS-MOUNT-STACK-P0.1",
-      "u2d2_jc1_harness": "HR-V0-U2D2-JC1-HARNESS-P0.1"
+      "u2d2_jc1_harness": "HR-V0-U2D2-JC1-HARNESS-P0.1",
+      "u2d2_jc1_harness_rfq": "HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1"
     },
     {
       "domain": "mechanical",
@@ -304,11 +307,13 @@
         "HR-V0-OBS-MOUNT-STACK-P0.1",
         "HR-V0-CONFIG-REC-P0.24",
         "HR-V0-U2D2-JC1-HARNESS-P0.1",
-        "HR-V0-CONFIG-REC-P0.25"
+        "HR-V0-CONFIG-REC-P0.25",
+        "HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1",
+        "HR-V0-CONFIG-REC-P0.26"
       ],
-      "release_state": "r261_108_group_bom_u2d2_jc1_exact_harness_candidate_defined_raw_cuts_received_route_crimp_physical_qualified_and_authority_evidence_open_lot_a_purchase_blocker_no_complete_machine_procurement_release",
+      "release_state": "r262_108_group_bom_u2d2_jc1_manufacturer_rfq_ready_unsent_provider_response_quote_process_first_article_physical_qualified_and_authority_evidence_open_lot_a_purchase_blocker_no_complete_machine_procurement_release",
       "system_group_count": 108,
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.25",
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.26",
       "lot_a_source_reconciliation": "HR-V0-LOT-A-SRC-P0.1",
       "lot_a_summary": "6 physical articles; $1,182.22 official-page visible subtotal; 13 facts; 4 open anomalies; 1 purchase blocker; 8 unsent questions; 10 open decision gates; 12 unexecuted receiving rows; no purchase authority",
       "p121_segregation_hardware": "HR-V0-P121-SEGREGATION-HW-P0.1",
@@ -316,7 +321,8 @@
       "p121_termination": "HR-V0-P121-TERM-P0.1",
       "observation_bom_integration": "HR-V0-OBS-BOM-INTEGRATION-P0.1",
       "observation_mount_stack": "HR-V0-OBS-MOUNT-STACK-P0.1",
-      "u2d2_jc1_harness": "HR-V0-U2D2-JC1-HARNESS-P0.1"
+      "u2d2_jc1_harness": "HR-V0-U2D2-JC1-HARNESS-P0.1",
+      "u2d2_jc1_harness_rfq": "HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1"
     },
     {
       "domain": "commissioning",
@@ -432,12 +438,15 @@
         "HR-V0-OBS-MOUNT-STACK-P0.1",
         "HR-V0-CONFIG-REC-P0.24",
         "HR-V0-U2D2-JC1-HARNESS-P0.1",
-        "HR-V0-CONFIG-REC-P0.25"
+        "HR-V0-CONFIG-REC-P0.25",
+        "HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1",
+        "HR-V0-CONFIG-REC-P0.26"
       ],
       "release_state": "integrated_unpowered_sequence_bound_to_held_p08_mechanics_all_steps_not_authorized_not_executed_connection_and_energization_prohibited_not_approved",
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.25",
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.26",
       "observation_mount_stack": "HR-V0-OBS-MOUNT-STACK-P0.1",
-      "u2d2_jc1_harness": "HR-V0-U2D2-JC1-HARNESS-P0.1"
+      "u2d2_jc1_harness": "HR-V0-U2D2-JC1-HARNESS-P0.1",
+      "u2d2_jc1_harness_rfq": "HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1"
     }
   ],
   "historical_or_out_of_scope_products": [
