@@ -1,3 +1,5 @@
+R277 J2 pad-pocket correction: **`HR-V0-J2-PAD-POCKET-P0.1` adds two exact P0.13 pockets and a received-stack-dependent depth rule. The CAD 0.520 mm depth is not a machining instruction. Rogers 2300327, 3M 467MP and P0.13 remain unselected; metal backup is preserved; ten package holds remain open and zero work/safety authority exists.**
+
 R276 exact-contact J2 pad correction: **`HR-V0-J2-SOFT-CONTACT-PAD-P0.2` supersedes P0.1's radius-based force/velocity warning with P0.12's exact 44.072041 mm moment arm. The endpoint-plus-gravity demand is 253.607 N; the full-envelope work warning is 0.190205 J. Rogers 2300327 remains unselected, the metal rails remain structural, twelve holds remain open and zero work/safety authority exists.**
 
 R275 J2 soft-contact pad boundary: **`HR-V0-J2-SOFT-CONTACT-PAD-P0.1` names Rogers 2300327 only as an unselected sacrificial contact/noise/rebound pad ahead of the metal backup. Motor-work uncertainty dominates nominal kinetic energy; twelve physical/qualified holds and zero work authority remain.**

@@ -1,0 +1,70 @@
+{
+  "identifier": "HR-V0-ARM-ARCH-P0.13-PAD-POCKET-STOP-CANDIDATE",
+  "stop_identifier": "HR-V0-J2-STOP-P0.6-PAD-POCKET",
+  "load_model_identifier": "HR-V0-J2-STOP-LOAD-MODEL-P0.2",
+  "round": "R277",
+  "parent": "HR-V0-ARM-ARCH-P0.12-ACCESS-WELL-STOP-CANDIDATE",
+  "stock_material_family": "6061-T651 plate - exact source/lot/MTR SELECTION REQUIRED",
+  "nominal_stock_thickness_mm": 25.4,
+  "minimum_structural_boss_thickness_mm": 23.0,
+  "striker_rail_width_mm": 18.0,
+  "catch_rail_width_mm": 20.0,
+  "contact_face_and_hole_axes_changed": false,
+  "cad_effective_normal_moment_arm_mm": 44.072041,
+  "single_rail_static_endpoint_nominal_stress_mpa": 8.154,
+  "four_x_static_geometry_screen_result": "PASS INTERIM REJECTION SCREEN",
+  "selected": false,
+  "physical_evidence_complete": false,
+  "qualified_review_complete": false,
+  "fabrication_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "minimum_structural_thickness_screen_mm": 23.0,
+  "c06_side_web_inner_x_mm": 20.0,
+  "c07_side_web_inner_x_mm": 12.0,
+  "c06_added_depth_direction": "+Y contact/forearm side",
+  "c07_added_depth_direction": "-Y rear side",
+  "c06_rear_side_web_z_range_mm": [
+    -20.0,
+    20.0
+  ],
+  "c07_rear_side_web_z_range_mm": [
+    -20.0,
+    17.0
+  ],
+  "modeled_front_step_blend_radius_mm": 2.0,
+  "contact_face_area_changed": true,
+  "c07_m2p5_hole_depth_changed": false,
+  "c07_m2p5_fastener_stack": "DIMENSIONAL SCREEN CANDIDATE - EXACT AVAILABLE HARDWARE/INSTALLATION SELECTION REQUIRED",
+  "striker_top_z_mm": 36.026374,
+  "striker_top_z_changed_from_p010": true,
+  "contact_plane_and_hole_axis_coordinates_changed": false,
+  "interface_change_note": "Contact planes and all six C07 hole axes are retained; four rear access wells restore the original 9.525 mm A04 clamped grip while changing the surrounding web envelope.",
+  "c07_rear_access_well_diameter_mm": 5.2,
+  "c07_rear_access_well_depth_mm": 15.874999999999998,
+  "c07_original_a04_clamped_grip_restored_mm": 9.525,
+  "c07_m2p5_access_wells_added": true,
+  "pad_pocket_quantity": 2,
+  "pad_coupon_nominal_mm": [
+    12.0,
+    40.0,
+    0.61
+  ],
+  "pocket_plan_mm": [
+    12.4,
+    40.4,
+    2.0
+  ],
+  "cad_screen_pocket_depth_mm": 0.52,
+  "production_pocket_depth": "DEPENDENT FEATURE - RECEIVED STACK MINUS 0.150 MM",
+  "installed_protrusion_candidate_band_mm": [
+    0.1,
+    0.2
+  ],
+  "pad_retention": "3M 467MP converter-laminated candidate; exact order/configuration and application qualification open",
+  "metal_backup_unchanged": true,
+  "pad_structural_credit": false
+}

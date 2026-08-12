@@ -1,0 +1,22 @@
+{
+  "revision": "HR-V0-J2-STOP-P0.6-PAD-POCKET",
+  "parent_arm_revision": "HR-V0-ARM-ARCH-P0.13-PAD-POCKET-STOP-CANDIDATE",
+  "warning": "PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION",
+  "architecture": "Twin 18 mm C06 moving rails against 20 mm C07 catches; C06 uses a +Y contact-side web, while C07 uses a -Y rear web with four access wells that restore the original A04 screw-head seat plane; the C06 striker top is retuned to 36.026374 mm for nominal 118 degree contact.",
+  "target_metal_contact_deg": 118.0,
+  "nominal_metal_contact_deg": 118.0,
+  "metal_clearance_at_software_limit_mm": 2.335884,
+  "maximum_bumper_envelope_protrusion_mm": 0.75,
+  "maximum_bumper_envelope_clearance_at_software_limit_mm": 1.602861,
+  "maximum_bumper_envelope_first_contact_deg": 117.162375,
+  "nominal_body_clearance_at_metal_contact_mm": 2.114892,
+  "contact_radius_mm": 54.974769,
+  "allocated_elbow_inertia_kg_m2_excludes_reflected_rotor": 0.010144,
+  "kinetic_energy_j": {
+    "at_10_deg_s": 0.000154502,
+    "at_30_deg_s": 0.001390518
+  },
+  "status": "UNACCEPTED WIDENED STOP CAD CANDIDATE; LOAD FACTORS, GUARD/CABLE ENVELOPES, MATERIAL, PHYSICAL TEST AND QUALIFIED RELEASE OPEN",
+  "configuration_state": "UNSELECTED P0.13 CAD CANDIDATE",
+  "selection_note": "No selection, fabrication, safety, motion, or energization credit."
+}

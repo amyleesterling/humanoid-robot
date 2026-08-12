@@ -1,0 +1,34 @@
+{
+  "identifier": "HR-V0-J2-PAD-POCKET-P0.1",
+  "round": "R277",
+  "date": "2026-08-12",
+  "cad_identifier": "HR-V0-ARM-ARCH-P0.13-PAD-POCKET-STOP-CANDIDATE",
+  "pad_candidate": "Rogers 2300327",
+  "retention_candidate": "3M 467MP",
+  "coupon_count": 2,
+  "coupon_nominal_mm": [
+    40.0,
+    12.0,
+    0.61
+  ],
+  "cad_screen_pocket_depth_mm": 0.52,
+  "production_depth": "DEPENDENT - RECEIVED LAMINATED STACK MINUS 0.150 MM",
+  "installed_protrusion_candidate_band_mm": [
+    0.1,
+    0.2
+  ],
+  "metal_backup_preserved": true,
+  "pad_structural_credit": false,
+  "candidate_selected": false,
+  "physical_evidence_complete": false,
+  "qualified_review_complete": false,
+  "procurement_authorized": false,
+  "fabrication_authorized": false,
+  "assembly_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "open_holds": 10,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}
