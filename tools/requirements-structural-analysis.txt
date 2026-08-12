@@ -1,0 +1,6 @@
+# R271 reproducible structural-analysis runtime additions.
+# Install into the project Python runtime; NumPy, SciPy, Matplotlib and
+# CadQuery are supplied by the bundled workspace environment.
+gmsh==4.15.2
+meshio==5.3.5
+scikit-fem==12.0.2

@@ -1,0 +1,60 @@
+{
+  "identifier": "HR-V0-J2-STOP-FEA-P0.1",
+  "round": "R271",
+  "cad_identifier": "HR-V0-ARM-ARCH-P0.10-BOSSED-STOP-CANDIDATE",
+  "exact_step_sha256": "a3e38b4ac541c9f397abfb6c5f96b572594f3b9de8a479c5534366d69af7bd9f",
+  "contact_evidence_sha256": "fe50334ddecddf8408cbfcb37d6fa73efb0bb6c7b5ba71e73a41e3647cb6ea87",
+  "solver": {
+    "gmsh": "4.15.2",
+    "scikit_fem": "12.0.2",
+    "scipy": "1.18.0",
+    "element": "first-order tetrahedron",
+    "analysis": "small-displacement isotropic linear elasticity"
+  },
+  "material_model": {
+    "family": "6061-T651 candidate",
+    "youngs_modulus_mpa": 68300.0,
+    "poisson_ratio_assumption": 0.33,
+    "project_mtr_threshold_mpa": 240.0,
+    "allowable_released": false
+  },
+  "boundary_condition": "all displacement components fixed on four M2.5 and two M5 cylindrical through-hole surfaces; no bolt contact, preload, clearance, slip, prying or frame compliance",
+  "load_condition": "CAD-derived fixed-catch +Y normal transformed into C06 local frame; resultant distributed over one flat positive rail-top face; local edge contact stress receives no credit",
+  "contact_sample": {
+    "fixed_point_mm": [
+      49.0,
+      150.05,
+      19.11531524567306
+    ],
+    "moving_point_mm": [
+      49.0,
+      150.05002851632068,
+      19.11531524567306
+    ],
+    "normal_fixed_to_moving": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "joint_axis_radius_vector_mm": [
+      49.0,
+      -52.49997148367933,
+      19.11531524567306
+    ],
+    "j2_effective_normal_moment_arm_mm": 19.11531524567306
+  },
+  "mesh_levels_mm": [
+    4.0,
+    3.0,
+    2.0
+  ],
+  "final_two_mesh_root_maximum_relative_change": 0.0736075213513797,
+  "convergence_acceptance": "NOT ESTABLISHED; mesh-sensitive maxima and singular boundary/contact idealizations preclude qualified convergence",
+  "disposition": "P0.10 beam screen is non-conservative for the modeled full-part load path; P0.10 remains unselected",
+  "selected": false,
+  "fabrication_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

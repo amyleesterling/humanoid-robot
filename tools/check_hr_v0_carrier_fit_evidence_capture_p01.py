@@ -92,7 +92,7 @@ def main() -> None:
     release=json.loads(gen.RELEASE.read_text(encoding="utf-8"))
     for product in release["current_products"]:
         if product.get("domain") in {"electrical","mechanical","bill_of_materials","commissioning","assembly"}:
-            need(product.get("configuration_reconciliation") in {gen.CID,"HR-V0-CONFIG-REC-P0.30","HR-V0-CONFIG-REC-P0.31","HR-V0-CONFIG-REC-P0.32","HR-V0-CONFIG-REC-P0.33","HR-V0-CONFIG-REC-P0.34"} and product.get("carrier_fit_evidence_capture")==gen.ID,f"release metadata {product.get('domain')}")
+            need(product.get("configuration_reconciliation") in {gen.CID,"HR-V0-CONFIG-REC-P0.30","HR-V0-CONFIG-REC-P0.31","HR-V0-CONFIG-REC-P0.32","HR-V0-CONFIG-REC-P0.33","HR-V0-CONFIG-REC-P0.34","HR-V0-CONFIG-REC-P0.35"} and product.get("carrier_fit_evidence_capture")==gen.ID,f"release metadata {product.get('domain')}")
             need(gen.ID in product.get("supporting_identifiers",[]) and gen.CID in product.get("supporting_identifiers",[]),"support identifiers")
     for path in (ROOT/"README.md",ROOT/"docs/handoff-current.md",ROOT/"docs/review-ledger.md"):
         text=path.read_text(encoding="utf-8"); need("R265" in text and gen.ID in text,f"narrative {path.name}")

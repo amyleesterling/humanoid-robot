@@ -252,6 +252,8 @@ def main() -> None:
         "HR-V0-J2-STOP-LOAD-MODEL-P0.2",
         "HR-V0-J2-STOP-BOSSED-P0.1",
         "HR-V0-CONFIG-REC-P0.34",
+        "HR-V0-J2-STOP-FEA-P0.1",
+        "HR-V0-CONFIG-REC-P0.35",
     ]:
         errors.append("integrated P0.8 mechanical supporting identifiers changed or are incomplete")
     if mechanical_product.get("coordinate_convention") != "HR-V0-FRAME-CONV-P0.1":

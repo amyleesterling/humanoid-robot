@@ -19,6 +19,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R271 C06 full-part FEA screen](docs/hr-v0-j2-stop-fea-p0.1.md)
+- [Interactive R271 FEA review](release/hr-v0/j2-stop-fea-p0.1/index.html)
+- [Interactive configuration reconciliation P0.35](release/hr-v0/configuration-reconciliation-p0.35/index.html)
+- [R271 validation record](docs/reviews/2026-08-12-r271-validation-record.md)
+- [R271 independent structural-analysis review request](docs/reviews/2026-08-12-r271-independent-review-request.md)
 - [R270 corrected J2 stop model and bossed candidate](docs/hr-v0-j2-stop-bossed-p0.1.md)
 - [Interactive R270 J2 stop review](release/hr-v0/j2-stop-bossed-p0.1/index.html)
 - [Interactive configuration reconciliation P0.34](release/hr-v0/configuration-reconciliation-p0.34/index.html)
@@ -1140,7 +1145,7 @@ Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable 
 
 ## Current review state
 
-Two hundred seventy rounds are complete: R01-R270. R269 exposes the P0.8 equal-load-sharing defect and adds an unselected widened-stop correction candidate while retaining every physical and authority hold. R11/R12 remain the independent parallel reviews; later rounds are project responses rather than additional independent approvals. R265 adds a local-only 80-row raw carrier-fit evidence surface and disposable calibrated mockups without authorizing a session. R264 transformed the current rotated carrier candidates into twelve exact hole-center datums and six connector anchors while retaining a strict no-drill boundary. R263 corrected the six carrier power-harness identities and minimum population to nine VHR-2N housings, eighteen SVH-21T-P1.1 contacts and six exact held PN18-8R-E source rings. It also rejects thirteen positive-area collisions between the stale R161 placements and current P0.7 panel objects, then screens three rotated placements with zero nominal planar intersections. Exact circuit positions, depth/sweep, cuts, termination processes, protection and every physical result remain open. Nothing has been sent, ordered, received, selected, fabricated, cut, crimped, assembled, connected, powered or measured; no Sol blocker has qualified closure and no energization authority is released. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
+Two hundred seventy-one rounds are complete: R01-R271. R269 exposes the P0.8 equal-load-sharing defect and adds an unselected widened-stop correction candidate while retaining every physical and authority hold. R11/R12 remain the independent parallel reviews; later rounds are project responses rather than additional independent approvals. R265 adds a local-only 80-row raw carrier-fit evidence surface and disposable calibrated mockups without authorizing a session. R264 transformed the current rotated carrier candidates into twelve exact hole-center datums and six connector anchors while retaining a strict no-drill boundary. R263 corrected the six carrier power-harness identities and minimum population to nine VHR-2N housings, eighteen SVH-21T-P1.1 contacts and six exact held PN18-8R-E source rings. It also rejects thirteen positive-area collisions between the stale R161 placements and current P0.7 panel objects, then screens three rotated placements with zero nominal planar intersections. Exact circuit positions, depth/sweep, cuts, termination processes, protection and every physical result remain open. Nothing has been sent, ordered, received, selected, fabricated, cut, crimped, assembled, connected, powered or measured; no Sol blocker has qualified closure and no energization authority is released. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)

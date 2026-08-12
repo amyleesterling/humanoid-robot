@@ -90,7 +90,7 @@ def main() -> None:
     release=json.loads(gen.RELEASE.read_text(encoding="utf-8"))
     for product in release["current_products"]:
         if product.get("domain") in {"electrical","bill_of_materials","assembly"}:
-            need(product.get("configuration_reconciliation") in {gen.CID,"HR-V0-CONFIG-REC-P0.29","HR-V0-CONFIG-REC-P0.30","HR-V0-CONFIG-REC-P0.31","HR-V0-CONFIG-REC-P0.32","HR-V0-CONFIG-REC-P0.33","HR-V0-CONFIG-REC-P0.34"} and product.get("dxl_carrier_mount")==gen.ID,"release metadata stale")
+            need(product.get("configuration_reconciliation") in {gen.CID,"HR-V0-CONFIG-REC-P0.29","HR-V0-CONFIG-REC-P0.30","HR-V0-CONFIG-REC-P0.31","HR-V0-CONFIG-REC-P0.32","HR-V0-CONFIG-REC-P0.33","HR-V0-CONFIG-REC-P0.34","HR-V0-CONFIG-REC-P0.35"} and product.get("dxl_carrier_mount")==gen.ID,"release metadata stale")
             need(gen.ID in product.get("supporting_identifiers",[]) and gen.CID in product.get("supporting_identifiers",[]),"release identifiers absent")
     for path in (ROOT/"README.md",ROOT/"docs/handoff-current.md",ROOT/"docs/review-ledger.md"):
         text=path.read_text(encoding="utf-8")
