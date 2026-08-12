@@ -1,7 +1,7 @@
 # Project Button Review Ledger
 
 Package baseline: **HR-30-SYS-R0.2**  
-Ledger revision: 0.2  
+Ledger revision: 0.3
 Updated: 2026-08-12
 Status: preliminary; not approved for fabrication, procurement, or energization
 
@@ -306,4 +306,4 @@ Two hundred thirty-nine rounds are complete (R01-R239). R11 and R12 are independ
 
 ## Current review state
 
-Two hundred fifty-nine rounds are complete (R01-R259). R11/R12 remain independent parallel reviews; later rounds are project responses. R251-R257 define exact acquisition, measurement and inquiry scope; R258 freezes five recipient-isolated internal archives and exposes the vendor-CAD redistribution-rights gate; R259 integrates the observation carriers and harnesses into the 108-group hierarchical BOM and corrects current release metadata. Nothing has been sent, ordered, received, selected, fabricated or measured. HOLD-15 remains DESIGN REQUIRED, P1.15 remains current and P1.21 unaccepted. No Sol blocker has qualified closure.
+Two hundred sixty rounds are complete (R01-R260). R11/R12 remain independent parallel reviews; later rounds are project responses. R259 integrates the observation carriers and harnesses into the 108-group hierarchical BOM. R260 advances only BOM-107/BOM-108 to exact-candidate hold, records the Samtec procurement restriction, publishes six nominal stack screens and eight unreleased mounting-geometry rows, and makes the 0.13 mm nominal Pi header/spacer mismatch explicit. Nothing has been sent, ordered, received, selected, fabricated, drilled, assembled or measured. HOLD-15 is PARTIALLY ADDRESSED - OPEN, P1.15 remains current and P1.21 unaccepted. No Sol blocker has qualified closure.

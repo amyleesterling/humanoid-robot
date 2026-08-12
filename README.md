@@ -19,6 +19,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R260 observation-carrier mounting stack P0.1](docs/hr-v0-observation-mount-stack-p0.1.md)
+- [Interactive R260 mounting-stack guide](release/hr-v0/observation-mount-stack-p0.1/index.html)
+- [Interactive configuration reconciliation P0.24](release/hr-v0/configuration-reconciliation-p0.24/index.html)
+- [R260 independent review request](docs/reviews/2026-08-12-r260-independent-review-request.md)
+- [R260 validation record](docs/reviews/2026-08-12-r260-validation-record.md)
+- [Sol R12 status after R260](docs/reviews/2026-08-12-sol-r12-post-r260-status.md)
 - [R259 observation electronics BOM integration P0.1](docs/hr-v0-observation-bom-integration-p0.1.md)
 - [Interactive R259 observation BOM guide](release/hr-v0/observation-bom-integration-p0.1/index.html)
 - [Interactive configuration reconciliation P0.23](release/hr-v0/configuration-reconciliation-p0.23/index.html)
@@ -1082,7 +1088,7 @@ Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable 
 
 ## Current review state
 
-Two hundred fifty-nine rounds are complete: R01-R259. R11/R12 remain the independent parallel reviews; later rounds are project responses rather than additional independent approvals. R251-R257 define exact acquisition, measurement and inquiry scope; R258 freezes five recipient-isolated internal archives; and R259 integrates the observation carriers and harnesses into the 108-group hierarchical BOM while correcting the current release metadata to P0.23. HOLD-15 remains DESIGN REQUIRED. Nothing has been sent, ordered, received, selected, fabricated, assembled, connected, powered or measured; no Sol blocker has qualified closure and no energization authority is released. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
+Two hundred sixty rounds are complete: R01-R260. R11/R12 remain the independent parallel reviews; later rounds are project responses rather than additional independent approvals. R259 integrates the observation assemblies into the 108-group BOM; R260 defines exact but unreleased M3 and M2.5 mounting candidates, records restricted Samtec availability, and exposes the nominal 0.13 mm Pi stack mismatch. HOLD-15 is only PARTIALLY ADDRESSED - OPEN. Nothing has been sent, ordered, received, selected, fabricated, assembled, connected, powered or measured; no Sol blocker has qualified closure and no energization authority is released. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)
