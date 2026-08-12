@@ -1,6 +1,8 @@
 # Project Button Current Engineering Handoff
 
-Handoff date: 2026-08-11
+Handoff date: 2026-08-12
+R257 exact-feature inquiry correction: **`HR-V0-LOT-A-INQUIRY-P0.3` supersedes P0.2 for current inquiry use and binds the exact R256 scope into five recipient-isolated, unsent routes. Fourteen attachments include three controlled STEP files, 79 feature records, 18 characteristics, transforms, annotated views and blank result fields. Each metrology provider receives 33 questions plus 18 characteristic-level bid rows; all 54 bids, 20 evidence returns, 16 gates and 15 workflow steps remain blank/open. `HR-V0-CONFIG-REC-P0.21` carries 125 holds and 158 blank acceptances. Nothing is sent or authorized and zero Sol blockers close.**
+
 R256 measurement-definition correction: **`HR-V0-JOINT-MEAS-DEF-P0.1` turns broad HSI labels into 79 exact, hash-bound source-feature records and 18 received-article measurement characteristics. The interactive guide shows the exact joint geometry, axial references and attachment patterns; every result, uncertainty, acceptance limit and approval remains blank. `HR-V0-CONFIG-REC-P0.20` carries 109 holds and 142 blank acceptances. The resupplied Sol verdict remains R12 and is not double-counted. Zero Sol blockers close and no physical work is authorized.**
 
 R255 inquiry correction: **`HR-V0-LOT-A-INQUIRY-P0.2` consolidates supplier identity and R254 method-specific metrology bid questions into five recipient-isolated, hash-bound, unsent transmittals. Twelve ROBOTIS questions and 32 unique metrology questions are controlled; all 108 attributed question rows, 15 bids, 18 returned-evidence records, 15 gates and 14 workflow steps remain blank/open. `HR-V0-CONFIG-REC-P0.19` carries 97 holds and 130 blank acceptances. No message is sent, no provider is selected, and zero Sol blockers close.**

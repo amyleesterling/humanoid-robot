@@ -19,6 +19,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R257 exact-feature Lot A inquiry P0.3](docs/hr-v0-lot-a-inquiry-p0.3.md)
+- [Interactive R257 inquiry and bid guide](release/hr-v0/lot-a-inquiry-p0.3/index.html)
+- [Interactive configuration reconciliation P0.21](release/hr-v0/configuration-reconciliation-p0.21/index.html)
+- [R257 independent review request](docs/reviews/2026-08-12-r257-independent-review-request.md)
+- [R257 validation record](docs/reviews/2026-08-12-r257-validation-record.md)
+- [Sol R12 status after R257](docs/reviews/2026-08-12-sol-r12-post-r257-status.md)
 - [R256 source-bound joint measurement definition P0.1](docs/hr-v0-joint-measurement-definition-p0.1.md)
 - [Interactive R256 joint feature and measurand guide](release/hr-v0/joint-measurement-definition-p0.1/index.html)
 - [Interactive configuration reconciliation P0.20](release/hr-v0/configuration-reconciliation-p0.20/index.html)
