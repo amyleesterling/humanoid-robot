@@ -19,6 +19,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R258 deterministic recipient transmission bundles P0.1](docs/hr-v0-lot-a-transmission-bundles-p0.1.md)
+- [Interactive R258 bundle and checksum guide](release/hr-v0/lot-a-transmission-bundles-p0.1/index.html)
+- [Interactive configuration reconciliation P0.22](release/hr-v0/configuration-reconciliation-p0.22/index.html)
+- [R258 independent review request](docs/reviews/2026-08-12-r258-independent-review-request.md)
+- [R258 validation record](docs/reviews/2026-08-12-r258-validation-record.md)
+- [Sol R12 status after R258](docs/reviews/2026-08-12-sol-r12-post-r258-status.md)
 - [R257 exact-feature Lot A inquiry P0.3](docs/hr-v0-lot-a-inquiry-p0.3.md)
 - [Interactive R257 inquiry and bid guide](release/hr-v0/lot-a-inquiry-p0.3/index.html)
 - [Interactive configuration reconciliation P0.21](release/hr-v0/configuration-reconciliation-p0.21/index.html)

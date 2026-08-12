@@ -1,0 +1,3 @@
+source_id,source,path,sha256,use,warning
+R258-SRC-01,Lot A exact-feature inquiry P0.3,release/hr-v0/lot-a-inquiry-p0.3/package-status.json,a3313fdda51da71b3e3d2d648416285451e6950c27cfbcfd14104f38d52f14b4,current unsent inquiry scope,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+R258-SRC-02,Joint measurement definition P0.1,release/hr-v0/joint-measurement-definition-p0.1/package-status.json,4ccb7caa4eebc86cf635798c828c77f9378ea133a71042d55c4592c22492a727,79 features and 18 characteristics,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
