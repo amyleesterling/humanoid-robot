@@ -87,11 +87,11 @@ def main() -> None:
         else: need(path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest() == row["sha256"], f"config hash {path}")
     release = json.loads(gen.RELEASE.read_text(encoding="utf-8"))
     for product in release["current_products"]:
-        if product.get("domain") in {"electrical","mechanical","bill_of_materials","commissioning","assembly"}: need(product.get("configuration_reconciliation") == gen.CID, f"release config {product.get('domain')}")
+        if product.get("domain") in {"electrical","mechanical","bill_of_materials","commissioning","assembly"}: need(product.get("configuration_reconciliation") in {gen.CID, "HR-V0-CONFIG-REC-P0.34"}, f"release config {product.get('domain')}")
         if product.get("domain") in {"mechanical","bill_of_materials","assembly"}:
             need(product.get("unaccepted_stop_strength_candidate") == gen.CAD_ID and product.get("j2_stop_strength_review") == gen.ID, f"release stop {product.get('domain')}")
             need(product.get("current_arm_architecture", "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE") != gen.CAD_ID, "P0.9 not current")
-    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith("R269 J2 hard-stop strength correction:"), "handoff")
+    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R269 J2 hard-stop strength correction:", "R270 corrected J2 contact/load model:")), "handoff")
     need("| R269 |" in (ROOT / "docs/review-ledger.md").read_text(encoding="utf-8"), "ledger")
     need("All 18 Sol R12 blockers remain" in (ROOT / "docs/reviews/2026-08-12-sol-r12-post-r269-status.md").read_text(encoding="utf-8"), "Sol boundary")
     print("R269 J2 stop-strength correction checks: PASS")

@@ -86,7 +86,7 @@ def main() -> None:
     need((gen.CFG/"decision.js").read_bytes()==(gen.REL/"decision.js").read_bytes(),"config script mirror")
     release=json.loads(gen.RELEASE.read_text(encoding="utf-8"))
     for product in release["current_products"]:
-        if product.get("domain") in {"electrical","mechanical","bill_of_materials","commissioning","assembly"}: need(product.get("configuration_reconciliation") in {gen.CID,"HR-V0-CONFIG-REC-P0.31","HR-V0-CONFIG-REC-P0.32","HR-V0-CONFIG-REC-P0.33"},f"release config {product.get('domain')}")
+        if product.get("domain") in {"electrical","mechanical","bill_of_materials","commissioning","assembly"}: need(product.get("configuration_reconciliation") in {gen.CID,"HR-V0-CONFIG-REC-P0.31","HR-V0-CONFIG-REC-P0.32","HR-V0-CONFIG-REC-P0.33","HR-V0-CONFIG-REC-P0.34"},f"release config {product.get('domain')}")
         if product.get("domain") in {"mechanical","bill_of_materials","assembly"}: need(product.get("lot_a_decision_capsule")==gen.ID and gen.ID in product.get("supporting_identifiers",[]) and gen.CID in product.get("supporting_identifiers",[]),f"release package {product.get('domain')}")
     narrative_tokens={ROOT/"README.md":"R266",ROOT/"docs/handoff-current.md":gen.ID,ROOT/"docs/review-ledger.md":"lot-a-decision-capsule-p0.1"}
     for path,token in narrative_tokens.items():
