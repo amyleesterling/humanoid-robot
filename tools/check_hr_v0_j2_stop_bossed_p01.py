@@ -94,7 +94,7 @@ def main() -> int:
             path = directory / row["relative_path"]
             need(path.is_file() and sha(path) == row["sha256"] and path.stat().st_size == int(row["bytes"]), f"manifest {path}")
     need("| R270 |" in (ROOT / "docs/review-ledger.md").read_text(encoding="utf-8"), "review ledger")
-    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R270 corrected J2 contact/load model:", "R271 C06 full-part FEA rejection screen:", "R272 mixed-side J2 stop candidate:", "R273 access-well J2 stop candidate:", "R274 A04 exact-candidate joint package:", "R275 J2 soft-contact pad boundary:", "R276 exact-contact J2 pad correction:", "R277 J2 pad-pocket correction:")), "handoff")
+    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R270 corrected J2 contact/load model:", "R271 C06 full-part FEA rejection screen:", "R272 mixed-side J2 stop candidate:", "R273 access-well J2 stop candidate:", "R274 A04 exact-candidate joint package:", "R275 J2 soft-contact pad boundary:", "R276 exact-contact J2 pad correction:", "R277 J2 pad-pocket correction:", "R278 exact-normal J2 stop correction:")), "handoff")
     print("R270 corrected J2 stop package checks: PASS")
     return 0
 

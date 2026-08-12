@@ -1,3 +1,5 @@
+R278 exact-normal J2 stop correction: **`HR-V0-J2-STOP-PAD-POCKET-FEA-P0.1` supersedes the P0.12 result for current calculation, corrects both part-coordinate force vectors, and separately screens P0.13 metal-perimeter and pocket-floor transfer. All nominal linear cases pass the internal geometry screen, but P0.13 remains unselected and every nonlinear, joined-load, dynamic, physical and qualified gate remains open.**
+
 R277 J2 pad-pocket correction: **`HR-V0-J2-PAD-POCKET-P0.1` adds two exact P0.13 pockets and a received-stack-dependent depth rule. The CAD 0.520 mm depth is not a machining instruction. Rogers 2300327, 3M 467MP and P0.13 remain unselected; metal backup is preserved; ten package holds remain open and zero work/safety authority exists.**
 
 R276 exact-contact J2 pad correction: **`HR-V0-J2-SOFT-CONTACT-PAD-P0.2` supersedes P0.1's radius-based force/velocity warning with P0.12's exact 44.072041 mm moment arm. The endpoint-plus-gravity demand is 253.607 N; the full-envelope work warning is 0.190205 J. Rogers 2300327 remains unselected, the metal rails remain structural, twelve holds remain open and zero work/safety authority exists.**

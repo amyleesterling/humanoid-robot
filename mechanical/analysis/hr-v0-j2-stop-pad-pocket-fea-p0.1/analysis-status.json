@@ -1,0 +1,84 @@
+{
+  "identifier": "HR-V0-J2-STOP-PAD-POCKET-FEA-P0.1",
+  "round": "R278",
+  "date": "2026-08-12",
+  "cad_identifier": "HR-V0-ARM-ARCH-P0.13-PAD-POCKET-STOP-CANDIDATE",
+  "supersedes_for_current_linear_calculation": "HR-V0-J2-STOP-ACCESS-WELL-FEA-P0.1",
+  "correction": "C06 force transformed from exact CAD contact normal into moving-part coordinates; C07 uses the equal-and-opposite exact world/fixed-part normal; P0.13 metal-perimeter and pocket-floor paths are separate",
+  "single_rail_force_n": 253.607,
+  "normal_fixed_to_moving_world": [
+    0.0,
+    0.882948412235986,
+    0.4694700217585266
+  ],
+  "force_on_c06_local_n": [
+    0.0,
+    2.186583449470536e-09,
+    -253.607
+  ],
+  "force_on_c07_fixed_n": [
+    -0.0,
+    -223.9218979819317,
+    -119.06088380811465
+  ],
+  "cases": {
+    "C06_EXACT_NORMAL_TOP": {
+      "finest_mesh_mm": 2.0,
+      "finest_loaded_area_mm2": 327.6,
+      "finest_global_maximum_mpa": 8.33644586447293,
+      "finest_global_p99_mpa": 3.4798759192690523,
+      "finest_root_maximum_mpa": 8.33644586447293,
+      "finest_maximum_displacement_mm": 0.005776170633269966,
+      "ratio_to_project_threshold": 28.78924710862666,
+      "interim_rejection_result": "PASS INTERNAL GEOMETRY SCREEN",
+      "final_two_mesh_global_maximum_relative_change": 0.07406260689860907
+    },
+    "C07_METAL_PERIMETER_EXACT_NORMAL": {
+      "finest_mesh_mm": 2.0,
+      "finest_loaded_area_mm2": 340.43555389060856,
+      "finest_global_maximum_mpa": 26.609788752477737,
+      "finest_global_p99_mpa": 6.228725845696577,
+      "finest_root_maximum_mpa": 13.810374236313791,
+      "finest_maximum_displacement_mm": 0.011813956926467922,
+      "ratio_to_project_threshold": 9.01923732775416,
+      "interim_rejection_result": "PASS INTERNAL GEOMETRY SCREEN",
+      "final_two_mesh_global_maximum_relative_change": 0.016494055368356787
+    },
+    "C07_POCKET_FLOOR_EXACT_NORMAL": {
+      "finest_mesh_mm": 2.0,
+      "finest_loaded_area_mm2": 496.27370849898483,
+      "finest_global_maximum_mpa": 26.586571264479083,
+      "finest_global_p99_mpa": 6.22398264615743,
+      "finest_root_maximum_mpa": 13.86656924551837,
+      "finest_maximum_displacement_mm": 0.01182783870381302,
+      "ratio_to_project_threshold": 9.02711363614801,
+      "interim_rejection_result": "PASS INTERNAL GEOMETRY SCREEN",
+      "final_two_mesh_global_maximum_relative_change": 0.0178574569498005
+    }
+  },
+  "solver": {
+    "gmsh": "4.15.2",
+    "scikit_fem": "12.0.2",
+    "scipy": "1.18.0",
+    "element": "first-order tetrahedron",
+    "analysis": "small-displacement isotropic linear elasticity"
+  },
+  "material_model": {
+    "youngs_modulus_mpa": 68300.0,
+    "poisson_ratio_assumption": 0.33,
+    "project_mtr_threshold_mpa": 240.0,
+    "threshold_is_allowable": false,
+    "interim_geometry_reserve_target": 4.0
+  },
+  "convergence_acceptance": "NOT ESTABLISHED; mesh-sensitive extrema and idealized restraints/load distribution preclude qualified convergence",
+  "joined_fastener_model_complete": false,
+  "nonlinear_contact_model_complete": false,
+  "dynamic_model_complete": false,
+  "selected": false,
+  "fabrication_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}
