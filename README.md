@@ -19,6 +19,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R247 mechanical shop, RFQ and unpowered assembly candidate](docs/hr-v0-mechanical-shop-rfq-assembly-p0.1.md)
+- [Interactive R247 mechanical shop/RFQ/assembly guide](release/hr-v0/mechanical-shop-rfq-assembly-p0.1/index.html)
+- [Interactive configuration reconciliation P0.11](release/hr-v0/configuration-reconciliation-p0.11/index.html)
+- [R247 independent review request](docs/reviews/2026-08-11-r247-independent-review-request.md)
+- [R247 validation record](docs/reviews/2026-08-11-r247-validation-record.md)
+- [Sol R12 status after R247](docs/reviews/2026-08-11-sol-r12-post-r247-status.md)
 - [R245 integrated mechanical and firmware source binding](docs/hr-v0-firmware-mechanical-source-binding-p0.1.md)
 - [R246 P1.21 static 24 V voltage budget](docs/hr-v0-p121-static-voltage-budget-p0.1.md)
 - [Interactive corrected five-part binding](release/hr-v0/mechanical-bom-binding-p0.3/index.html)
@@ -1006,7 +1012,7 @@ Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable 
 
 ## Current review state
 
-Two hundred forty-six review/control rounds are complete: R01-R246. R11 Fable and R12 Sol are independent parallel reviews of the original pre-correction baseline. R13-R246 are project-owned correction, evidence-control or validation passes, not additional independent approvals. R242-R244 add held conductors, termination candidates and nominal DCR arithmetic without accepting P1.21. R245 corrects the integrated mechanical/firmware source binding. R246 binds the correct 24 V control source, traces eight P1.21 control loops and records six raw source-headroom screens while leaving every installed margin `NOT CALCULABLE`. The supplied Sol summary is the same R12 review and is not double-counted. P1.15 remains current; P1.21 remains unaccepted; no procurement, fabrication, assembly, connection, powered testing, motion, safety credit or energization authority is released.
+Two hundred forty-seven review/control rounds are complete: R01-R247. R11 Fable and R12 Sol are independent parallel reviews of the original pre-correction baseline. R13-R247 are project-owned correction, evidence-control or validation passes, not additional independent approvals. R242-R244 add held conductors, termination candidates and nominal DCR arithmetic without accepting P1.21. R245 corrects the integrated mechanical/firmware source binding. R246 binds the correct 24 V control source while leaving every installed margin `NOT CALCULABLE`. R247 corrects five current shop-drawing identifiers and control blocks, proves zero nominal geometry change, binds a 15-artifact RFQ payload and defines 21 unpowered assembly steps. Formal datum/GD&T, provider DFM, FAI, physical fit/proof, mass/COM/inertia, qualified review and work authorization remain open. The supplied Sol summary is the same R12 review and is not double-counted. P1.15 remains current; P1.21 remains unaccepted; no procurement, fabrication, assembly, connection, powered testing, motion, safety credit or energization authority is released.
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)
@@ -1296,6 +1302,7 @@ Two hundred forty-six review/control rounds are complete: R01-R246. R11 Fable an
 | R244 | P1.21 nominal DCR/drop and bit-evidence boundary | Converted the current manufacturer-nominal 4.4 ohm/1000 ft at 20 C to 0.014435695538 ohm/m and calculated four one-way centerline conductor-only planning drops while leaving C-05 uncalculated. Confirmed that current Pilz and Phoenix sources do not justify a purchase-ready exact bit; Phoenix 1212568 remains only the strongest held relay-terminal candidate. Twelve holds remain; the 98-group BOM is unchanged; P1.15 remains current and P1.21/R244 remain unaccepted. |
 | R245 | Integrated custom-part and firmware mechanical-source binding correction | Corrected all five custom-part rows to the integrated P0.8 arm without changing any of fifteen artifact hashes; bound both firmware configurations to the same eight-record SHA-256 source manifest; and reconciled P0.9. Physical/HIL acceptance remains absent, motion remains fail-closed, and shop-document/DFM/FAI/qualified-review work remains open. |
 | R246 | P1.21 static 24 V control-rail budget | Bound GlobTek as the 24 V control source, excluded the separate 12 V Mean Well actuator source, traced eight terminal-addressed loops and reproduced six raw-headroom screens. Eighteen missing inputs, ten open holds and seven unexecuted acceptances keep every installed margin `NOT CALCULABLE`; P1.21 remains unaccepted. |
+| R247 | Mechanical shop, RFQ and unpowered assembly candidate | Corrected the five current custom-part drawing identifiers, warning and title blocks without changing geometry; bound five drawings, five DXFs and five STEP files into an exact unsent RFQ payload; and defined 21 zero-energy assembly steps plus nine interface checks. Formal datum/GD&T, provider DFM, FAI, physical fit/proof, exact joint controls and every work authority remain open. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 
