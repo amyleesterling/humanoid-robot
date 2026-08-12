@@ -1,0 +1,17 @@
+{
+  "identifier": "HR-V0-J2-SOFT-CONTACT-PAD-P0.1",
+  "round": "R275",
+  "date": "2026-08-12",
+  "candidate": "Rogers 2300327",
+  "functional_role": "soft-contact/noise/rebound pad ahead of structural metal backup",
+  "candidate_selected": false,
+  "sole_structural_stop": false,
+  "procurement_authorized": false,
+  "assembly_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "open_holds": 12,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

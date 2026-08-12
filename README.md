@@ -19,6 +19,16 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R275 J2 soft-contact pad candidate](docs/hr-v0-j2-soft-contact-pad-p0.1.md)
+- [R275 independent review request](docs/reviews/2026-08-12-r275-independent-review-request.md)
+- [R275 validation record](docs/reviews/2026-08-12-r275-validation-record.md)
+- [Interactive R275 pad guide](release/hr-v0/j2-soft-contact-pad-p0.1/index.html)
+- [Interactive configuration reconciliation P0.39](release/hr-v0/configuration-reconciliation-p0.39/index.html)
+- [R274 A04 exact-candidate joint package](docs/hr-v0-a04-joint-p0.1.md)
+- [R274 independent review request](docs/reviews/2026-08-12-r274-independent-review-request.md)
+- [R274 validation record](docs/reviews/2026-08-12-r274-validation-record.md)
+- [Interactive R274 A04 guide](release/hr-v0/a04-joint-p0.1/index.html)
+- [Interactive configuration reconciliation P0.38](release/hr-v0/configuration-reconciliation-p0.38/index.html)
 - [R273 P0.12 access-well J2 stop candidate](docs/hr-v0-j2-stop-access-well-p0.1.md)
 - [R273 validation record](docs/reviews/2026-08-12-r273-validation-record.md)
 - [R273 independent review request](docs/reviews/2026-08-12-r273-independent-review-request.md)
@@ -1153,7 +1163,7 @@ Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable 
 
 ## Current review state
 
-Two hundred seventy-three rounds are complete: R01-R273. R269 exposes the P0.8 equal-load-sharing defect and adds an unselected widened-stop correction candidate while retaining every physical and authority hold. R11/R12 remain the independent parallel reviews; later rounds are project responses rather than additional independent approvals. R265 adds a local-only 80-row raw carrier-fit evidence surface and disposable calibrated mockups without authorizing a session. R264 transformed the current rotated carrier candidates into twelve exact hole-center datums and six connector anchors while retaining a strict no-drill boundary. R263 corrected the six carrier power-harness identities and minimum population to nine VHR-2N housings, eighteen SVH-21T-P1.1 contacts and six exact held PN18-8R-E source rings. It also rejects thirteen positive-area collisions between the stale R161 placements and current P0.7 panel objects, then screens three rotated placements with zero nominal planar intersections. Exact circuit positions, depth/sweep, cuts, termination processes, protection and every physical result remain open. Nothing has been sent, ordered, received, selected, fabricated, cut, crimped, assembled, connected, powered or measured; no Sol blocker has qualified closure and no energization authority is released. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
+Two hundred seventy-five rounds are complete: R01-R275. R270 corrected the J2 contact-force model to use the exact `r × n` moment arm; R271 rejected the first integral-boss topology; R272/R273 iterated to the collision-screened P0.12 access-well candidate. R274 now names an exact A04 supplier/tool candidate stack and its torque-preload/joined-load evidence contract. R275 names Rogers 2300327 only as an unselected sacrificial soft-contact pad and retains the metal rails as the structural backup. R11/R12 remain the independent parallel reviews; later rounds are project responses, not additional independent approvals. Nothing has been sent, ordered, received, selected, fabricated, cut, crimped, assembled, connected, powered or measured; all physical and qualified closures remain open and no energization authority is released. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)
