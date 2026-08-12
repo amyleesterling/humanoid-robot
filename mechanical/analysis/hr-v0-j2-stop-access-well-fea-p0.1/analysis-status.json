@@ -1,0 +1,45 @@
+{
+  "identifier": "HR-V0-J2-STOP-ACCESS-WELL-FEA-P0.1",
+  "round": "R273",
+  "cad_identifier": "HR-V0-ARM-ARCH-P0.12-ACCESS-WELL-STOP-CANDIDATE",
+  "parts": {
+    "C06": {
+      "finest_root_maximum_mpa": 13.166985268359028,
+      "finest_global_maximum_mpa": 17.914835713103184,
+      "finest_maximum_displacement_mm": 0.01744402615849827,
+      "four_x_global_maximum_mpa": 71.65934285241273,
+      "four_x_result": "PASS INTERIM REJECTION SCREEN",
+      "final_two_mesh_global_maximum_relative_change": 0.03311136286504264
+    },
+    "C07": {
+      "finest_root_maximum_mpa": 12.152859891803816,
+      "finest_global_maximum_mpa": 25.671009726441117,
+      "finest_maximum_displacement_mm": 0.012188629020837513,
+      "four_x_global_maximum_mpa": 102.68403890576447,
+      "four_x_result": "PASS INTERIM REJECTION SCREEN",
+      "final_two_mesh_global_maximum_relative_change": 0.020539724990202953
+    }
+  },
+  "solver": {
+    "gmsh": "4.15.2",
+    "scikit_fem": "12.0.2",
+    "scipy": "1.18.0",
+    "element": "first-order tetrahedron",
+    "analysis": "small-displacement isotropic linear elasticity"
+  },
+  "material_model": {
+    "youngs_modulus_mpa": 68300.0,
+    "poisson_ratio_assumption": 0.33,
+    "project_mtr_threshold_mpa": 240.0,
+    "allowable_released": false
+  },
+  "convergence_acceptance": "NOT ESTABLISHED; mesh-sensitive extrema and idealized restraints/contact preclude qualified convergence",
+  "selected": false,
+  "fabrication_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "c07_restraint_boundary": "idealized fixed cylindrical surfaces only in original 0..9.525 mm A04 land; access-well web and real joined stack not fixed",
+  "joined_fastener_model_complete": false
+}

@@ -96,7 +96,7 @@ def main() -> None:
     for product in release["current_products"]:
         if product.get("domain") in {"electrical","mechanical","bill_of_materials","commissioning","assembly"}: need(product.get("configuration_reconciliation") in {gen.CID,"HR-V0-CONFIG-REC-P0.33","HR-V0-CONFIG-REC-P0.34","HR-V0-CONFIG-REC-P0.35"},f"release config {product.get('domain')}")
         if product.get("domain") in {"mechanical","bill_of_materials","assembly"}: need(product.get("gdt_review")==gen.ID,f"release gdt {product.get('domain')}")
-    need((ROOT/"docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R268 functional datum/GD&T correction:","R269 J2 hard-stop strength correction:","R270 corrected J2 contact/load model:","R271 C06 full-part FEA rejection screen:","R272 mixed-side J2 stop candidate:")),"handoff")
+    need((ROOT/"docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R268 functional datum/GD&T correction:","R269 J2 hard-stop strength correction:","R270 corrected J2 contact/load model:","R271 C06 full-part FEA rejection screen:","R272 mixed-side J2 stop candidate:","R273 access-well J2 stop candidate:")),"handoff")
     need("| R268 |" in (ROOT/"docs/review-ledger.md").read_text(encoding="utf-8"),"ledger")
     need("All 18 Sol R12 blockers remain" in (ROOT/"docs/reviews/2026-08-12-sol-r12-post-r268-status.md").read_text(encoding="utf-8"),"Sol boundary")
     print("R268 functional datum/GD&T correction checks: PASS")

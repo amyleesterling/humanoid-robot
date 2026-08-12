@@ -65,7 +65,7 @@ def main() -> int:
         for record in rows(directory / "file-manifest.csv"):
             path = directory / record["relative_path"]
             need(path.is_file() and sha(path) == record["sha256"] and path.stat().st_size == int(record["bytes"]), f"manifest {path}")
-    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith("R272 mixed-side J2 stop candidate:"), "handoff")
+    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R272 mixed-side J2 stop candidate:", "R273 access-well J2 stop candidate:")), "handoff")
     need("| R272 |" in (ROOT / "docs/review-ledger.md").read_text(encoding="utf-8"), "ledger")
     print("R272 mixed-side stop package checks: PASS")
     return 0

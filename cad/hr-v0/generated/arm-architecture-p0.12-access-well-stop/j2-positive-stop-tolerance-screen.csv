@@ -1,0 +1,6 @@
+case,striker_top_z_mm,catch_face_recess_mm,nominal_first_metal_contact_deg,delta_from_118_deg,release_effect
+STRIKER_TOP_LOW,36.001374,1.000000,118.032494,0.032494,geometric sensitivity only; complete measured tolerance stack remains required
+NOMINAL,36.026374,1.000000,118.000000,0.000000,geometric sensitivity only; complete measured tolerance stack remains required
+STRIKER_TOP_HIGH,36.051374,1.000000,117.967491,-0.032509,geometric sensitivity only; complete measured tolerance stack remains required
+CATCH_FACE_SHALLOW,36.026374,0.950000,117.942552,-0.057448,geometric sensitivity only; complete measured tolerance stack remains required
+CATCH_FACE_DEEP,36.026374,1.050000,118.057340,0.057340,geometric sensitivity only; complete measured tolerance stack remains required
