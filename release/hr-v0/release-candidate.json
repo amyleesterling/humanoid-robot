@@ -98,7 +98,9 @@
         "HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1",
         "HR-V0-CONFIG-REC-P0.26",
         "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.2",
-        "HR-V0-CONFIG-REC-P0.27"
+        "HR-V0-CONFIG-REC-P0.27",
+        "HR-V0-DXL-CARRIER-MOUNT-IF-P0.2",
+        "HR-V0-CONFIG-REC-P0.28"
       ],
       "release_state": "p115_current_p121_unaccepted_r244_nominal_dcr_drop_and_bit_disposition_only_received_complete_circuit_physical_qualified_and_authority_open",
       "control_panel_configuration": "HR-V0-CP-CONFIG-P0.1",
@@ -107,7 +109,7 @@
       "panel_topology_candidate": "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE",
       "panel_point_to_point_candidate": "HR-V0-PANEL-P2P-P0.1",
       "control_panel_node_placement_candidate": "HR-V0-PANEL-NODE-PLACEMENT-P0.1",
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.27",
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.28",
       "ecad_web_review_surface": "HR-V0-ECAD-WEB-REVIEW-P0.1",
       "contactor_application_record": "HR-V0-K1K2-APP-P0.3",
       "contactor_configuration_binding": "P1.15 current and P1.18 unaccepted contain 32 identical contactor-critical terminal/net rows",
@@ -149,7 +151,9 @@
       "u2d2_jc1_harness": "HR-V0-U2D2-JC1-HARNESS-P0.1",
       "u2d2_jc1_harness_rfq": "HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1",
       "dxl_carrier_power_harness": "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.2",
-      "dxl_carrier_power_harness_summary": "six harnesses / 24 endpoint rows / corrected 9 VHR + 18 SVH populated minimum / exact PN18-8R-E source candidate / 13 stale-placement collisions rejected / three zero-planar-collision rotated candidates / cuts and all physical acceptance open"
+      "dxl_carrier_power_harness_summary": "six harnesses / 24 endpoint rows / corrected 9 VHR + 18 SVH populated minimum / exact PN18-8R-E source candidate / 13 stale-placement collisions rejected / three zero-planar-collision rotated candidates / cuts and all physical acceptance open",
+      "dxl_carrier_mount": "HR-V0-DXL-CARRIER-MOUNT-IF-P0.2",
+      "dxl_carrier_mount_summary": "12 transformed hole centers / 6 connector anchors / 90-degree P0.7 placement / current screw replacement relation / depth, sweep, holes, routes and physical evidence open"
     },
     {
       "domain": "mechanical",
@@ -315,11 +319,13 @@
         "HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1",
         "HR-V0-CONFIG-REC-P0.26",
         "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.2",
-        "HR-V0-CONFIG-REC-P0.27"
+        "HR-V0-CONFIG-REC-P0.27",
+        "HR-V0-DXL-CARRIER-MOUNT-IF-P0.2",
+        "HR-V0-CONFIG-REC-P0.28"
       ],
       "release_state": "r263_109_group_bom_lot_a_purchase_blocker_carrier_harness_population_and_source_terminal_corrected_placement_route_process_physical_qualified_and_authority_evidence_open_no_complete_machine_procurement_release",
       "system_group_count": 109,
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.27",
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.28",
       "lot_a_source_reconciliation": "HR-V0-LOT-A-SRC-P0.1",
       "lot_a_summary": "6 physical articles; $1,182.22 official-page visible subtotal; 13 facts; 4 open anomalies; 1 purchase blocker; 8 unsent questions; 10 open decision gates; 12 unexecuted receiving rows; no purchase authority",
       "p121_segregation_hardware": "HR-V0-P121-SEGREGATION-HW-P0.1",
@@ -329,7 +335,8 @@
       "observation_mount_stack": "HR-V0-OBS-MOUNT-STACK-P0.1",
       "u2d2_jc1_harness": "HR-V0-U2D2-JC1-HARNESS-P0.1",
       "u2d2_jc1_harness_rfq": "HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1",
-      "dxl_carrier_power_harness": "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.2"
+      "dxl_carrier_power_harness": "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.2",
+      "dxl_carrier_mount": "HR-V0-DXL-CARRIER-MOUNT-IF-P0.2"
     },
     {
       "domain": "commissioning",
@@ -449,14 +456,17 @@
         "HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1",
         "HR-V0-CONFIG-REC-P0.26",
         "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.2",
-        "HR-V0-CONFIG-REC-P0.27"
+        "HR-V0-CONFIG-REC-P0.27",
+        "HR-V0-DXL-CARRIER-MOUNT-IF-P0.2",
+        "HR-V0-CONFIG-REC-P0.28"
       ],
       "release_state": "integrated_unpowered_sequence_bound_to_held_p08_mechanics_all_steps_not_authorized_not_executed_connection_and_energization_prohibited_not_approved",
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.27",
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.28",
       "observation_mount_stack": "HR-V0-OBS-MOUNT-STACK-P0.1",
       "u2d2_jc1_harness": "HR-V0-U2D2-JC1-HARNESS-P0.1",
       "u2d2_jc1_harness_rfq": "HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1",
-      "dxl_carrier_power_harness": "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.2"
+      "dxl_carrier_power_harness": "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.2",
+      "dxl_carrier_mount": "HR-V0-DXL-CARRIER-MOUNT-IF-P0.2"
     }
   ],
   "historical_or_out_of_scope_products": [

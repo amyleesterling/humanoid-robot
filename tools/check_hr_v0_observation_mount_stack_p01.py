@@ -109,7 +109,7 @@ def main() -> int:
     release = json.loads(gen.RELEASE.read_text(encoding="utf-8"))
     for domain in ("electrical","bill_of_materials","assembly"):
         product = next(row for row in release["current_products"] if row.get("domain") == domain)
-        need(product.get("configuration_reconciliation") in {gen.CID, "HR-V0-CONFIG-REC-P0.25", "HR-V0-CONFIG-REC-P0.26", "HR-V0-CONFIG-REC-P0.27"} and product.get("observation_mount_stack") == gen.ID and gen.ID in product.get("supporting_identifiers", []), f"release metadata stale: {domain}")
+        need(product.get("configuration_reconciliation") in {gen.CID, "HR-V0-CONFIG-REC-P0.25", "HR-V0-CONFIG-REC-P0.26", "HR-V0-CONFIG-REC-P0.27", "HR-V0-CONFIG-REC-P0.28"} and product.get("observation_mount_stack") == gen.ID and gen.ID in product.get("supporting_identifiers", []), f"release metadata stale: {domain}")
     page = (gen.REL / "index.html").read_text(encoding="utf-8")
     for token in (gen.WARNING,"font:clamp(16px","font-size:14px","0.13 mm","0</div><strong>released purchases or holes","DO NOT DRILL","data-view='pi'"):
         need(token in page, f"web guide token missing: {token}")

@@ -1,3 +1,5 @@
+R264 carrier mounting-datum correction: **`HR-V0-DXL-CARRIER-MOUNT-IF-P0.2` maps the P0.3 board through the R263 90-degree P0.7 placements into twelve exact nominal hole centers and six JIN1/JOUT1 connector anchors. It records the current Essentra `NSE-1580-M3-6` replacement relationship as held, screens 14.2 mm to WD2 and only 5.0 mm from LIM3 to WD4, and defines a fourteen-step inert no-drill metrology contract. Hole diameter/process, received depth/sweep, routes/cuts, torque/load/thermal evidence, qualified review and all work authority remain open. `HR-V0-CONFIG-REC-P0.28` carries 45 current records, 42 supersessions, 30 BOM integrations, 200 holds and 252 blank acceptances. No Sol R12 blocker closes and energization remains prohibited.**
+
 # Project Button Current Engineering Handoff
 
 Handoff date: 2026-08-12
