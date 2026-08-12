@@ -1,0 +1,4 @@
+authority_id,scope,requester,approver,authorization_reference,state,warning
+AUTH-01,open empty enclosure and loosely place disposable paper/card envelopes and nonconductive gauges,,,,NOT AUTHORIZED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, MARKING, DRILLING, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+AUTH-02,"measure and photograph unpowered, unmodified candidate articles with controlled instruments",,,,NOT AUTHORIZED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, MARKING, DRILLING, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+AUTH-03,mate loose connector/wire samples solely for non-energized sweep evidence,,,,NOT AUTHORIZED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, MARKING, DRILLING, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

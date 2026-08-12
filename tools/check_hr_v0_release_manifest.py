@@ -236,6 +236,8 @@ def main() -> None:
         "HR-V0-CONFIG-REC-P0.3",
         "HR-V0-ARM-ARCH-P0.7",
         "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+        "HR-V0-CARRIER-FIT-EVID-CAP-P0.1",
+        "HR-V0-CONFIG-REC-P0.29",
     ]:
         errors.append("integrated P0.8 mechanical supporting identifiers changed or are incomplete")
     if mechanical_product.get("coordinate_convention") != "HR-V0-FRAME-CONV-P0.1":
@@ -301,6 +303,8 @@ def main() -> None:
         "TEST-E2-001",
         "TEST-E2-002",
         "AUDIT-E2-001",
+        "HR-V0-CARRIER-FIT-EVID-CAP-P0.1",
+        "HR-V0-CONFIG-REC-P0.29",
     ] or commissioning_product.get("release_state") != "e2_grounding_and_prepower_candidates_controlled_zero_limits_results_or_authority_not_authorized_for_connection_or_energization" or commissioning_product.get("prepower_test_candidate") != "HR-V0-E2-PREPOWER-P0.1":
         errors.append("HR-V0-E2-SEQ-P0.1 supporting identifiers or fail-closed state changed")
     instrumentation_product = next(
