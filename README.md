@@ -19,6 +19,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R256 source-bound joint measurement definition P0.1](docs/hr-v0-joint-measurement-definition-p0.1.md)
+- [Interactive R256 joint feature and measurand guide](release/hr-v0/joint-measurement-definition-p0.1/index.html)
+- [Interactive configuration reconciliation P0.20](release/hr-v0/configuration-reconciliation-p0.20/index.html)
+- [R256 independent review request](docs/reviews/2026-08-11-r256-independent-review-request.md)
+- [R256 validation record](docs/reviews/2026-08-11-r256-validation-record.md)
+- [Sol R12 status after R256](docs/reviews/2026-08-11-sol-r12-post-r256-status.md)
 - [R255 Lot A supplier and metrology inquiry P0.2](docs/hr-v0-lot-a-inquiry-p0.2.md)
 - [Interactive R255 inquiry and decision guide](release/hr-v0/lot-a-inquiry-p0.2/index.html)
 - [Interactive configuration reconciliation P0.19](release/hr-v0/configuration-reconciliation-p0.19/index.html)

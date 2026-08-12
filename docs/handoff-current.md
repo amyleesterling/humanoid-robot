@@ -1,6 +1,8 @@
 # Project Button Current Engineering Handoff
 
 Handoff date: 2026-08-11
+R256 measurement-definition correction: **`HR-V0-JOINT-MEAS-DEF-P0.1` turns broad HSI labels into 79 exact, hash-bound source-feature records and 18 received-article measurement characteristics. The interactive guide shows the exact joint geometry, axial references and attachment patterns; every result, uncertainty, acceptance limit and approval remains blank. `HR-V0-CONFIG-REC-P0.20` carries 109 holds and 142 blank acceptances. The resupplied Sol verdict remains R12 and is not double-counted. Zero Sol blockers close and no physical work is authorized.**
+
 R255 inquiry correction: **`HR-V0-LOT-A-INQUIRY-P0.2` consolidates supplier identity and R254 method-specific metrology bid questions into five recipient-isolated, hash-bound, unsent transmittals. Twelve ROBOTIS questions and 32 unique metrology questions are controlled; all 108 attributed question rows, 15 bids, 18 returned-evidence records, 15 gates and 14 workflow steps remain blank/open. `HR-V0-CONFIG-REC-P0.19` carries 97 holds and 130 blank acceptances. No message is sent, no provider is selected, and zero Sol blockers close.**
 
 R254 metrology correction: **`HR-V0-JOINT-MET-P0.2` accepts Sol's evidence verdict and separates the joint-stack campaign into five task-specific methods. P0.2 is no longer represented as a universal fixture: it is inapplicable to loose-part and mass work, conditional for axial and angle work, and insufficient as the sole scan support. Twenty HSI routes, 40 uncertainty inputs, 12 holds and 22 operations are all open/unexecuted. `HR-V0-CONFIG-REC-P0.18` carries 82 holds and 115 blank acceptances. No Sol blocker, fabrication gate or energization prerequisite closes.**
