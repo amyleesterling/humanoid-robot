@@ -86,9 +86,9 @@ def main() -> int:
     need(not any(cfg[k] for k in ("fabrication_authorized","powered_testing_authorized","motion_authorized","energization_authorized","safety_credit")), "config authority drift")
     for record in rows(CFG / "source-hash-register.csv"):
         need(sha(ROOT / record["source_path"]) == record["sha256"], f"config source hash drift {record['source_path']}")
-    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith("R278 exact-normal J2 stop correction:"), "handoff drift")
+    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R278 exact-normal J2 stop correction:", "R279 J2 convergence protocol:")), "handoff drift")
     need((ROOT / "docs/review-ledger.md").read_text(encoding="utf-8").count("| R278 |") == 1, "ledger drift")
-    need("Two hundred seventy-eight rounds are complete" in (ROOT / "README.md").read_text(encoding="utf-8"), "README count drift")
+    need(any(text in (ROOT / "README.md").read_text(encoding="utf-8") for text in ("Two hundred seventy-eight rounds are complete", "Two hundred seventy-nine rounds are complete")), "README count drift")
     print("PASS: R278 exact-normal P0.13 linear screens are synchronized and fail-closed; no work or safety authority released")
     return 0
 

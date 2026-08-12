@@ -1,3 +1,5 @@
+R279 J2 convergence protocol: **`HR-V0-J2-STOP-REFINEMENT-PROTOCOL-P0.1` audits R278 rather than promoting its coarse result. 13/18 last-pair metrics exceed 5%; exact B-Rep zones, four local mesh levels, P2/GCI/section/singularity evidence are required. R278-H02 stays open and no work authority exists.**
+
 R278 exact-normal J2 stop correction: **`HR-V0-J2-STOP-PAD-POCKET-FEA-P0.1` supersedes the P0.12 result for current calculation, corrects both part-coordinate force vectors, and separately screens P0.13 metal-perimeter and pocket-floor transfer. All nominal linear cases pass the internal geometry screen, but P0.13 remains unselected and every nonlinear, joined-load, dynamic, physical and qualified gate remains open.**
 
 R277 J2 pad-pocket correction: **`HR-V0-J2-PAD-POCKET-P0.1` adds two exact P0.13 pockets and a received-stack-dependent depth rule. The CAD 0.520 mm depth is not a machining instruction. Rogers 2300327, 3M 467MP and P0.13 remain unselected; metal backup is preserved; ten package holds remain open and zero work/safety authority exists.**

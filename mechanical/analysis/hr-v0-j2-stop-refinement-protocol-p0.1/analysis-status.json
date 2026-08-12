@@ -1,0 +1,22 @@
+{
+  "identifier": "HR-V0-J2-STOP-REFINEMENT-PROTOCOL-P0.1",
+  "round": "R279",
+  "date": "2026-08-12",
+  "cad_identifier": "HR-V0-ARM-ARCH-P0.13-PAD-POCKET-STOP-CANDIDATE",
+  "r278_analysis": "HR-V0-J2-STOP-PAD-POCKET-FEA-P0.1",
+  "r278_metrics_audited": 18,
+  "r278_metrics_over_5_percent": 13,
+  "protocol_zones": 7,
+  "mesh_levels": 4,
+  "acceptance_criteria": 10,
+  "mesh_refinement_hold_closed": false,
+  "execution_complete": false,
+  "disposition": "R278-H02 OPEN - current uniform P1 study is not local convergence evidence; exact executable successor protocol issued",
+  "selected": false,
+  "fabrication_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}
