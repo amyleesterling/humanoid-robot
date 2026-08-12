@@ -19,6 +19,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R252 zero-energy joint-stack fixture candidate](docs/hr-v0-joint-stack-fixture-p0.1.md)
+- [Interactive R252 joint-stack fixture guide](release/hr-v0/joint-stack-fixture-p0.1/index.html)
+- [Interactive configuration reconciliation P0.16](release/hr-v0/configuration-reconciliation-p0.16/index.html)
+- [R252 independent review request](docs/reviews/2026-08-11-r252-independent-review-request.md)
+- [R252 validation record](docs/reviews/2026-08-11-r252-validation-record.md)
+- [Sol R12 status after R252](docs/reviews/2026-08-11-sol-r12-post-r252-status.md)
 - [R251 first physical shop-session contract](docs/hr-v0-first-shop-session-p0.1.md)
 - [Interactive R251 first-shop-session guide](release/hr-v0/first-shop-session-p0.1/index.html)
 - [Interactive configuration reconciliation P0.15](release/hr-v0/configuration-reconciliation-p0.15/index.html)
@@ -1034,7 +1040,7 @@ Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable 
 
 ## Current review state
 
-Two hundred fifty-one rounds are complete: R01-R251. R11/R12 remain the independent reviews; later rounds are project responses. R251 binds the exact blocked six-article acquisition and eighteen-operation unpowered metrology session needed before missing hard stops can be designed. Purchase, receipt, assembly and execution remain false. Zero Sol blockers close; no work or energization authority is released.
+Two hundred fifty-two rounds are complete: R01-R252. R11/R12 remain the independent reviews; later rounds are project responses. R252 binds exact controlled XM540/H101/S102 geometry to a review-only six-contact fixture envelope and a fail-closed temporary-stack instruction. The fixture is not buildable; its material, load, restraint, fasteners, tolerances, FAI, physical fit, qualified review, and separate unpowered-session authorization remain open. Zero Sol blockers close; no work or energization authority is released.
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)
@@ -1329,6 +1335,7 @@ Two hundred fifty-one rounds are complete: R01-R251. R11/R12 remain the independ
 | R249 | Accepted-property propagation and stale-analysis control | Added a six-row fail-closed accepted-property compiler, twelve downstream consumers, eight prohibited stale planning inputs and a ten-step rebuild sequence. No accepted property or downstream analysis exists; zero blockers or gates close. |
 | R250 | Datum/GD&T qualified-review proposal | Proposed five functional datum schemes, twenty FCF candidates and inspection uncertainty controls. Geometry is unchanged; formal GD&T and fabrication authority remain false. |
 | R251 | First physical shop-session contract | Bound ten purchase gates, eight supplier questions, six articles, seven roles, six instruments, eight holds, eighteen operations and all twenty HSI records. Nothing is authorized or executed. |
+| R252 | Zero-energy joint-stack fixture candidate | Bound exact XM540/H101/S102 STEP sources to six nominal S102-face contact candidates, six keepouts, twelve fail-closed steps, twelve open selections and configuration P0.16. The fixture is not buildable; zero operations or acceptances are executed and nothing is authorized. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

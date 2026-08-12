@@ -1,6 +1,8 @@
 # Project Button Current Engineering Handoff
 
 Handoff date: 2026-08-11
+R252 zero-energy joint-stack fixture candidate: **`HR-V0-JOINT-STACK-FIXTURE-P0.1` binds exact controlled XM540, FR13-H101K and FR13-S102K STEP sources to six nominal contact candidates on the transformed S102 outer face. Twelve fail-closed temporary-stack steps, six keepouts, twelve selections, twelve holds and ten blank acceptances are controlled. `HR-V0-CONFIG-REC-P0.16` carries 36 current records, 70 holds and 103 unexecuted acceptances. The fixture is not buildable; material, force, restraint, hardware, tolerance, FAI, physical fit, qualified review and separate unpowered-session authorization remain open. Zero Sol blockers close and no physical work is authorized.**
+
 R251 first physical session: **`HR-V0-FIRST-SHOP-SESSION-P0.1` binds the exact six-article Lot A acquisition to the existing eighteen-operation unpowered joint-stack traveler and all HSI-001..020 records. Ten purchase gates, eight supplier questions, seven roles, six instruments, eight hold points, nine evidence locations and ten stop-work conditions are controlled. P0.15 carries 35 current records, 65 holds and 97 unexecuted acceptances. No contact, purchase, receipt, assembly or test is authorized or executed.**
 
 R250 datum/GD&T review: **`HR-V0-GDT-REVIEW-P0.1` proposes five functional datum schemes, twenty FCF candidates and fifteen inspection-uncertainty rows under ASME Y14.5/Y14.43 and NIST TN 1297. Geometry is unchanged. `HR-V0-CONFIG-REC-P0.14` carries 34 current records, 60 holds and 89 unexecuted acceptances. Formal GD&T, successor drawings, DFM, FAI, received fit, qualified signature and all work authority remain open.**
