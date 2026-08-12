@@ -238,6 +238,8 @@ def main() -> None:
         "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
         "HR-V0-CARRIER-FIT-EVID-CAP-P0.1",
         "HR-V0-CONFIG-REC-P0.29",
+        "HR-V0-LOT-A-DECISION-CAP-P0.1",
+        "HR-V0-CONFIG-REC-P0.30",
     ]:
         errors.append("integrated P0.8 mechanical supporting identifiers changed or are incomplete")
     if mechanical_product.get("coordinate_convention") != "HR-V0-FRAME-CONV-P0.1":

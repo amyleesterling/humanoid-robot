@@ -111,7 +111,7 @@
       "panel_topology_candidate": "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE",
       "panel_point_to_point_candidate": "HR-V0-PANEL-P2P-P0.1",
       "control_panel_node_placement_candidate": "HR-V0-PANEL-NODE-PLACEMENT-P0.1",
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.29",
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.30",
       "ecad_web_review_surface": "HR-V0-ECAD-WEB-REVIEW-P0.1",
       "contactor_application_record": "HR-V0-K1K2-APP-P0.3",
       "contactor_configuration_binding": "P1.15 current and P1.18 unaccepted contain 32 identical contactor-critical terminal/net rows",
@@ -220,7 +220,9 @@
         "HR-V0-ARM-ARCH-P0.7",
         "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
         "HR-V0-CARRIER-FIT-EVID-CAP-P0.1",
-        "HR-V0-CONFIG-REC-P0.29"
+        "HR-V0-CONFIG-REC-P0.29",
+        "HR-V0-LOT-A-DECISION-CAP-P0.1",
+        "HR-V0-CONFIG-REC-P0.30"
       ],
       "release_state": "integrated_p06_hold_with_exact_p08_complete_arm_p07_inherited_basis_physical_evidence_open_qualified_release_open",
       "inherited_analytical_basis": [
@@ -229,8 +231,9 @@
       ],
       "manufacturing_identity": "HR-V0-MECH-BOM-BIND-P0.2",
       "current_arm_architecture": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.29",
-      "carrier_fit_evidence_capture": "HR-V0-CARRIER-FIT-EVID-CAP-P0.1"
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.30",
+      "carrier_fit_evidence_capture": "HR-V0-CARRIER-FIT-EVID-CAP-P0.1",
+      "lot_a_decision_capsule": "HR-V0-LOT-A-DECISION-CAP-P0.1"
     },
     {
       "domain": "firmware",
@@ -330,11 +333,13 @@
         "HR-V0-DXL-CARRIER-MOUNT-IF-P0.2",
         "HR-V0-CONFIG-REC-P0.28",
         "HR-V0-CARRIER-FIT-EVID-CAP-P0.1",
-        "HR-V0-CONFIG-REC-P0.29"
+        "HR-V0-CONFIG-REC-P0.29",
+        "HR-V0-LOT-A-DECISION-CAP-P0.1",
+        "HR-V0-CONFIG-REC-P0.30"
       ],
       "release_state": "r263_109_group_bom_lot_a_purchase_blocker_carrier_harness_population_and_source_terminal_corrected_placement_route_process_physical_qualified_and_authority_evidence_open_no_complete_machine_procurement_release",
       "system_group_count": 109,
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.29",
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.30",
       "lot_a_source_reconciliation": "HR-V0-LOT-A-SRC-P0.1",
       "lot_a_summary": "6 physical articles; $1,182.22 official-page visible subtotal; 13 facts; 4 open anomalies; 1 purchase blocker; 8 unsent questions; 10 open decision gates; 12 unexecuted receiving rows; no purchase authority",
       "p121_segregation_hardware": "HR-V0-P121-SEGREGATION-HW-P0.1",
@@ -346,7 +351,8 @@
       "u2d2_jc1_harness_rfq": "HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1",
       "dxl_carrier_power_harness": "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.2",
       "dxl_carrier_mount": "HR-V0-DXL-CARRIER-MOUNT-IF-P0.2",
-      "carrier_fit_evidence_capture": "HR-V0-CARRIER-FIT-EVID-CAP-P0.1"
+      "carrier_fit_evidence_capture": "HR-V0-CARRIER-FIT-EVID-CAP-P0.1",
+      "lot_a_decision_capsule": "HR-V0-LOT-A-DECISION-CAP-P0.1"
     },
     {
       "domain": "commissioning",
@@ -370,7 +376,7 @@
       ],
       "release_state": "e2_grounding_and_prepower_candidates_controlled_zero_limits_results_or_authority_not_authorized_for_connection_or_energization",
       "prepower_test_candidate": "HR-V0-E2-PREPOWER-P0.1",
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.29",
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.30",
       "carrier_fit_evidence_capture": "HR-V0-CARRIER-FIT-EVID-CAP-P0.1",
       "carrier_fit_evidence_capture_summary": "80 blank raw measurements / 12 photo groups / 12 active stop conditions / 10 holds / 12 blank acceptances / zero physical session or authority"
     },
@@ -475,16 +481,19 @@
         "HR-V0-DXL-CARRIER-MOUNT-IF-P0.2",
         "HR-V0-CONFIG-REC-P0.28",
         "HR-V0-CARRIER-FIT-EVID-CAP-P0.1",
-        "HR-V0-CONFIG-REC-P0.29"
+        "HR-V0-CONFIG-REC-P0.29",
+        "HR-V0-LOT-A-DECISION-CAP-P0.1",
+        "HR-V0-CONFIG-REC-P0.30"
       ],
       "release_state": "integrated_unpowered_sequence_bound_to_held_p08_mechanics_all_steps_not_authorized_not_executed_connection_and_energization_prohibited_not_approved",
-      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.29",
+      "configuration_reconciliation": "HR-V0-CONFIG-REC-P0.30",
       "observation_mount_stack": "HR-V0-OBS-MOUNT-STACK-P0.1",
       "u2d2_jc1_harness": "HR-V0-U2D2-JC1-HARNESS-P0.1",
       "u2d2_jc1_harness_rfq": "HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1",
       "dxl_carrier_power_harness": "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.2",
       "dxl_carrier_mount": "HR-V0-DXL-CARRIER-MOUNT-IF-P0.2",
-      "carrier_fit_evidence_capture": "HR-V0-CARRIER-FIT-EVID-CAP-P0.1"
+      "carrier_fit_evidence_capture": "HR-V0-CARRIER-FIT-EVID-CAP-P0.1",
+      "lot_a_decision_capsule": "HR-V0-LOT-A-DECISION-CAP-P0.1"
     }
   ],
   "historical_or_out_of_scope_products": [

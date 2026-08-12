@@ -150,7 +150,7 @@ def main() -> int:
     release = json.loads((ROOT / "release/hr-v0/release-candidate.json").read_text(encoding="utf-8"))
     for domain in ("electrical", "bill_of_materials", "assembly"):
         product = next((p for p in release["current_products"] if p.get("domain") == domain), None)
-        if not product or product.get("configuration_reconciliation") not in {CID, "HR-V0-CONFIG-REC-P0.26", "HR-V0-CONFIG-REC-P0.27", "HR-V0-CONFIG-REC-P0.28", "HR-V0-CONFIG-REC-P0.29"} or product.get("u2d2_jc1_harness") != ID:
+        if not product or product.get("configuration_reconciliation") not in {CID, "HR-V0-CONFIG-REC-P0.26", "HR-V0-CONFIG-REC-P0.27", "HR-V0-CONFIG-REC-P0.28", "HR-V0-CONFIG-REC-P0.29", "HR-V0-CONFIG-REC-P0.30"} or product.get("u2d2_jc1_harness") != ID:
             errors.append(f"release metadata not synchronized for {domain}")
         elif ID not in product.get("supporting_identifiers", []) or CID not in product.get("supporting_identifiers", []):
             errors.append(f"release metadata identifiers missing for {domain}")
