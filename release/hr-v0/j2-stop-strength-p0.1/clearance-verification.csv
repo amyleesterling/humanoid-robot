@@ -1,0 +1,2 @@
+verification_id,method,discrete_pose_rows,discrete_collision_rows,continuous_pair_rows,minimum_guaranteed_clearance_mm,metal_contact_deg,nominal_body_clearance_at_contact_mm,result,warning
+R269-GEO-01,deterministic B-rep collision and adaptive continuous-clearance analysis,40001,0,69,0.765783102,117.999985,2.1149,"NOMINAL GEOMETRY SCREEN PASSED; TOLERANCE, DEFORMATION AND PHYSICAL TEST OPEN","PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

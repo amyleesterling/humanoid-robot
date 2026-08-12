@@ -1,0 +1,20 @@
+{
+  "revision": "HR-V0-J2-STOP-P0.2",
+  "parent_arm_revision": "HR-V0-ARM-ARCH-P0.9-STOP-STRENGTH-CANDIDATE",
+  "warning": "PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION",
+  "architecture": "twin widened outward 12 mm moving striker rails against 14 mm recessed catch rails; actuator-side edges unchanged",
+  "target_metal_contact_deg": 118.0,
+  "nominal_metal_contact_deg": 117.999985,
+  "metal_clearance_at_software_limit_mm": 1.072358,
+  "maximum_bumper_envelope_protrusion_mm": 0.75,
+  "maximum_bumper_envelope_clearance_at_software_limit_mm": 0.322358,
+  "maximum_bumper_envelope_first_contact_deg": 115.861085,
+  "nominal_body_clearance_at_metal_contact_mm": 2.1149,
+  "contact_radius_mm": 55.871659,
+  "allocated_elbow_inertia_kg_m2_excludes_reflected_rotor": 0.010144,
+  "kinetic_energy_j": {
+    "at_10_deg_s": 0.000154502,
+    "at_30_deg_s": 0.001390518
+  },
+  "status": "UNACCEPTED WIDENED STOP CAD CANDIDATE; LOAD FACTORS, GUARD/CABLE ENVELOPES, MATERIAL, PHYSICAL TEST AND QUALIFIED RELEASE OPEN"
+}
