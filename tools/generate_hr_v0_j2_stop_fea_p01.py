@@ -191,6 +191,9 @@ def solve_case(
     share: str,
     lam: float,
     mu: float,
+    root_min_x_mm: float = 32.0,
+    root_z_min_mm: float = -12.0,
+    root_z_max_mm: float = 2.0,
 ) -> tuple[dict[str, object], np.ndarray, np.ndarray]:
     # Fixed catch face normal is +Y in the assembled frame.  Transforming the
     # force direction into C06 local coordinates at the sampled J2 angle gives
@@ -219,7 +222,7 @@ def solve_case(
     displacement = solve(*condense(stiffness, load_vector, D=fixed_dofs))
     von_mises, _ = element_stress(mesh, displacement, lam, mu)
     centroids = mesh.p[:, mesh.t].mean(axis=1).T
-    root = (centroids[:, 0] > 32.0) & (centroids[:, 2] > -12.0) & (centroids[:, 2] < 2.0)
+    root = (centroids[:, 0] > root_min_x_mm) & (centroids[:, 2] > root_z_min_mm) & (centroids[:, 2] < root_z_max_mm)
     if not np.any(root):
         raise RuntimeError("positive rail-root ROI is empty")
     reaction = stiffness @ displacement - load_vector

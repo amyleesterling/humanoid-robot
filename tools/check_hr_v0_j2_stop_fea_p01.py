@@ -73,7 +73,7 @@ def main() -> int:
         for record in rows(directory / "file-manifest.csv"):
             path = directory / record["relative_path"]
             need(path.is_file() and sha(path) == record["sha256"] and path.stat().st_size == int(record["bytes"]), f"manifest {path}")
-    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith("R271 C06 full-part FEA rejection screen:"), "handoff")
+    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R271 C06 full-part FEA rejection screen:", "R272 mixed-side J2 stop candidate:")), "handoff")
     need("| R271 |" in (ROOT / "docs/review-ledger.md").read_text(encoding="utf-8"), "ledger")
     print("R271 C06 FEA package checks: PASS")
     return 0

@@ -1,0 +1,127 @@
+{
+  "sample_angle_deg": 117.9999,
+  "face_gap_mm": 7.716408163553719e-05,
+  "solution_count": 4,
+  "selected_conservative_solution": {
+    "fixed_point_mm": [
+      51.0,
+      150.05,
+      22.0
+    ],
+    "moving_point_mm": [
+      51.0,
+      150.05006813190337,
+      22.000036226223084
+    ],
+    "normal_fixed_to_moving": [
+      0.0,
+      0.882948412235986,
+      0.4694700217585266
+    ],
+    "joint_axis_radius_vector_mm": [
+      51.0,
+      -52.49993186809664,
+      22.000036226223084
+    ],
+    "j2_effective_normal_moment_arm_mm": 44.07204121151434
+  },
+  "all_solutions": [
+    {
+      "fixed_point_mm": [
+        51.0,
+        150.05,
+        22.0
+      ],
+      "moving_point_mm": [
+        51.0,
+        150.05006813190337,
+        22.000036226223084
+      ],
+      "normal_fixed_to_moving": [
+        0.0,
+        0.882948412235986,
+        0.4694700217585266
+      ],
+      "joint_axis_radius_vector_mm": [
+        51.0,
+        -52.49993186809664,
+        22.000036226223084
+      ],
+      "j2_effective_normal_moment_arm_mm": 44.07204121151434
+    },
+    {
+      "fixed_point_mm": [
+        37.0,
+        150.05,
+        22.0
+      ],
+      "moving_point_mm": [
+        37.0,
+        150.05006813190337,
+        22.000036226223084
+      ],
+      "normal_fixed_to_moving": [
+        0.0,
+        0.882948412235986,
+        0.4694700217585266
+      ],
+      "joint_axis_radius_vector_mm": [
+        37.0,
+        -52.49993186809664,
+        22.000036226223084
+      ],
+      "j2_effective_normal_moment_arm_mm": 44.07204121151434
+    },
+    {
+      "fixed_point_mm": [
+        -37.0,
+        150.05,
+        22.0
+      ],
+      "moving_point_mm": [
+        -37.0,
+        150.05006813190337,
+        22.000036226223084
+      ],
+      "normal_fixed_to_moving": [
+        0.0,
+        0.882948412235986,
+        0.4694700217585266
+      ],
+      "joint_axis_radius_vector_mm": [
+        -37.0,
+        -52.49993186809664,
+        22.000036226223084
+      ],
+      "j2_effective_normal_moment_arm_mm": 44.07204121151434
+    },
+    {
+      "fixed_point_mm": [
+        -51.0,
+        150.05,
+        22.0
+      ],
+      "moving_point_mm": [
+        -51.0,
+        150.05006813190337,
+        22.000036226223084
+      ],
+      "normal_fixed_to_moving": [
+        0.0,
+        0.882948412235986,
+        0.4694700217585266
+      ],
+      "joint_axis_radius_vector_mm": [
+        -51.0,
+        -52.49993186809664,
+        22.000036226223084
+      ],
+      "j2_effective_normal_moment_arm_mm": 44.07204121151434
+    }
+  ],
+  "identifier": "HR-V0-J2-STOP-LOAD-MODEL-P0.2",
+  "joint_axis": "+X through (0, J2_Y, 0)",
+  "governing_relation": "T_x = F_n * abs((r cross n)_x)",
+  "disposition": "supersedes R269 F=T/radius model",
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}
