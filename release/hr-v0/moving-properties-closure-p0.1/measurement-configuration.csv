@@ -1,0 +1,5 @@
+configuration_id,name,included_items,axes,configuration_hash,photo_uri,assembly_traveler_uri,state,warning
+CFG-MP-01,J2 moving group,"Exact received J2 moving-frame/idler, forearm, gripper and routed moving harness",J2 axis,,,,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+CFG-MP-02,J1 moving group,Exact received upper-arm and complete downstream J2 moving group,J1 axis,,,,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+CFG-MP-03,"Complete moving arm, zero payload","Configuration-bound full moving assembly, guards and cables",J1 and J2 axes,,,,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+CFG-MP-04,"Complete moving arm, maximum test payload",CFG-MP-03 plus exact retained 100 g ceiling article,J1 and J2 axes,,,,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
