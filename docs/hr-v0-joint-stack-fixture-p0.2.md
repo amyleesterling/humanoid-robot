@@ -42,3 +42,5 @@ Thirteen holds remain open, including written XM540 SKU/protocol confirmation, a
 - [Validation record](reviews/2026-08-11-r253-validation-record.md)
 
 P0.2 remains not buildable. R253 closes no Sol blocker and supplies no procurement, fabrication, assembly, test, motion, functional-safety, or energization authority.
+
+R254 further limits applicability: P0.2 is not a universal metrology fixture. It is inapplicable to loose-part and mass methods, conditionally usable only as one support/datum element for axial and angle methods, and not acceptable as the sole envelope-scan fixture. See [`HR-V0-JOINT-MET-P0.2`](hr-v0-joint-stack-metrology-p0.2.md).

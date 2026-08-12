@@ -19,6 +19,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R254 task-specific joint-stack metrology correction](docs/hr-v0-joint-stack-metrology-p0.2.md)
+- [Interactive R254 metrology guide](release/hr-v0/joint-stack-metrology-p0.2/index.html)
+- [Interactive configuration reconciliation P0.18](release/hr-v0/configuration-reconciliation-p0.18/index.html)
+- [R254 independent review request](docs/reviews/2026-08-11-r254-independent-review-request.md)
+- [R254 validation record](docs/reviews/2026-08-11-r254-validation-record.md)
+- [Sol R12 status after R254](docs/reviews/2026-08-11-sol-r12-post-r254-status.md)
 - [R253 rank-6 3-2-1 joint-stack fixture correction](docs/hr-v0-joint-stack-fixture-p0.2.md)
 - [Interactive R253 fixture guide](release/hr-v0/joint-stack-fixture-p0.2/index.html)
 - [Interactive configuration reconciliation P0.17](release/hr-v0/configuration-reconciliation-p0.17/index.html)
