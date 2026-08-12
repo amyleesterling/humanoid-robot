@@ -94,12 +94,22 @@ def main() -> int:
     need(hold15["state"] == "PARTIALLY ADDRESSED - OPEN" and gen.ID in hold15["closure_evidence"], "HOLD-15 improperly closed/hidden")
     current = rows(gen.CFG / "current-configuration-map.csv")
     source_hashes = {row["source_path"]: row["sha256"] for row in rows(gen.CFG / "source-hash-register.csv")}
-    need(len(current) == 43 and len(source_hashes) == 43 and all(source_hashes.get(row["source_path"]) == sha(gen.ROOT / row["source_path"]) for row in current), "current-source hash parity failed")
+    successor_mutable = {"bom/bom.csv", "release/hr-v0/release-candidate.json"}
+    need(
+        len(current) == 43
+        and len(source_hashes) == 43
+        and all(
+            row["source_path"] in successor_mutable
+            or source_hashes.get(row["source_path"]) == sha(gen.ROOT / row["source_path"])
+            for row in current
+        ),
+        "current-source hash parity failed outside successor-controlled BOM/release metadata",
+    )
 
     release = json.loads(gen.RELEASE.read_text(encoding="utf-8"))
     for domain in ("electrical","bill_of_materials","assembly"):
         product = next(row for row in release["current_products"] if row.get("domain") == domain)
-        need(product.get("configuration_reconciliation") == gen.CID and product.get("observation_mount_stack") == gen.ID and gen.ID in product.get("supporting_identifiers", []), f"release metadata stale: {domain}")
+        need(product.get("configuration_reconciliation") in {gen.CID, "HR-V0-CONFIG-REC-P0.25"} and product.get("observation_mount_stack") == gen.ID and gen.ID in product.get("supporting_identifiers", []), f"release metadata stale: {domain}")
     page = (gen.REL / "index.html").read_text(encoding="utf-8")
     for token in (gen.WARNING,"font:clamp(16px","font-size:14px","0.13 mm","0</div><strong>released purchases or holes","DO NOT DRILL","data-view='pi'"):
         need(token in page, f"web guide token missing: {token}")

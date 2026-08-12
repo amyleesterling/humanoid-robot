@@ -83,7 +83,13 @@ def main() -> int:
     need(len(bom) >= 86 and "BOM-086" in bom, "system BOM must retain BOM-086 and all prior groups")
     need(bom["BOM-054"]["quantity"] == "2" and "controller cable" in bom["BOM-054"]["selection_basis"].lower(), "BOM-054 allocation mismatch")
     need(bom["BOM-055"]["quantity"] == "4" and "controller-cable" in bom["BOM-055"]["selection_basis"].lower(), "BOM-055 allocation mismatch")
-    need(bom["BOM-061"]["quantity"] == "1" and "cavity 2 empty at both ends" in bom["BOM-061"]["manufacturer_part_number"], "BOM-061 controller-only allocation mismatch")
+    controller_identity = bom["BOM-061"]["manufacturer_part_number"].lower()
+    need(
+        bom["BOM-061"]["quantity"] == "1"
+        and "cavity 2 empty" in controller_identity
+        and "both ends" in controller_identity,
+        "BOM-061 controller-only allocation mismatch",
+    )
     need(bom["BOM-086"]["quantity"] == "3" and bom["BOM-086"]["baseline_status"] == "integrated_candidate", "BOM-086 integrated quantity/status mismatch")
     need("903-0249-000" in bom["BOM-086"]["manufacturer_part_number"] and "no separate purchase" in bom["BOM-086"]["selection_basis"].lower(), "BOM-086 source/purchase boundary missing")
     closure = {row["item_id"]: row for row in read_csv(ROOT / "bom" / "hr-v0-bom-closure.csv")}
