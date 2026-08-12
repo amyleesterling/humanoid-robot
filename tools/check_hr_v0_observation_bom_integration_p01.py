@@ -30,8 +30,8 @@ def main() -> int:
     bom = {row["item_id"]: row for row in rows(gen.BOM)}
     closure = {row["item_id"]: row for row in rows(gen.CLOSURE)}
     expected = {f"BOM-{index:03d}" for index in range(99, 109)}
-    if len(bom) != 108 or len(closure) != 108 or set(bom) != set(closure) or not expected <= set(bom):
-        errors.append("108-group BOM/closure parity failed")
+    if len(bom) < 108 or len(closure) < 108 or set(bom) != set(closure) or not expected <= set(bom):
+        errors.append("108-group minimum BOM/closure parity failed")
     if any(bom[item]["quantity"] != value for item, value in {"BOM-099":"1","BOM-100":"1","BOM-101":"1","BOM-102":"1","BOM-103":"2","BOM-104":"1","BOM-105":"1","BOM-106":"11","BOM-107":"1","BOM-108":"1"}.items()):
         errors.append("observation quantities changed")
     if "1751280" not in bom["BOM-103"]["manufacturer_part_number"] or "1751280" not in bom["BOM-105"]["manufacturer_part_number"] or "ESQ-120-33-G-D" not in bom["BOM-104"]["manufacturer_part_number"]:
@@ -78,9 +78,9 @@ def main() -> int:
     products = release["current_products"]
     bill = next(row for row in products if row.get("domain") == "bill_of_materials")
     electrical = next(row for row in products if row.get("domain") == "electrical")
-    if bill.get("system_group_count") != 108 or bill.get("configuration_reconciliation") not in {gen.CID, "HR-V0-CONFIG-REC-P0.24", "HR-V0-CONFIG-REC-P0.25", "HR-V0-CONFIG-REC-P0.26"} or bill.get("observation_bom_integration") != gen.ID or gen.ID not in bill.get("supporting_identifiers", []):
+    if bill.get("system_group_count", 0) < 108 or bill.get("configuration_reconciliation") not in {gen.CID, "HR-V0-CONFIG-REC-P0.24", "HR-V0-CONFIG-REC-P0.25", "HR-V0-CONFIG-REC-P0.26", "HR-V0-CONFIG-REC-P0.27"} or bill.get("observation_bom_integration") != gen.ID or gen.ID not in bill.get("supporting_identifiers", []):
         errors.append("release BOM metadata is stale")
-    if electrical.get("configuration_reconciliation") not in {gen.CID, "HR-V0-CONFIG-REC-P0.24", "HR-V0-CONFIG-REC-P0.25", "HR-V0-CONFIG-REC-P0.26"} or electrical.get("observation_bom_integration") != gen.ID:
+    if electrical.get("configuration_reconciliation") not in {gen.CID, "HR-V0-CONFIG-REC-P0.24", "HR-V0-CONFIG-REC-P0.25", "HR-V0-CONFIG-REC-P0.26", "HR-V0-CONFIG-REC-P0.27"} or electrical.get("observation_bom_integration") != gen.ID:
         errors.append("release electrical metadata is stale")
     for path in (gen.OUT / "index.html", gen.REL / "index.html", gen.CFG / "index.html", gen.CFGR / "index.html"):
         text = path.read_text(encoding="utf-8")

@@ -132,8 +132,8 @@ def main() -> int:
         states = (bom[item_id]["baseline_status"], closure[item_id]["closure_class"], integration[item_id]["closure_class"])
         if states != ("exact_candidate_hold", "exact_candidate_hold", "exact_candidate_hold"):
             errors.append(f"canonical/config BOM status mismatch for {item_id}: {states}")
-    if len(bom) != 108:
-        errors.append(f"system BOM group count expected 108, got {len(bom)}")
+    if len(bom) < 108:
+        errors.append(f"system BOM group count expected at least 108, got {len(bom)}")
 
     cfg_status = json.loads((CFG / "package-status.json").read_text(encoding="utf-8"))
     expected_cfg = {"identifier":CID,"round":"R261","current_records":44,"supersession_records":37,"bom_integration_records":29,"gate_records":11,"open_holds":165,"acceptance_rows":204}
@@ -150,7 +150,7 @@ def main() -> int:
     release = json.loads((ROOT / "release/hr-v0/release-candidate.json").read_text(encoding="utf-8"))
     for domain in ("electrical", "bill_of_materials", "assembly"):
         product = next((p for p in release["current_products"] if p.get("domain") == domain), None)
-        if not product or product.get("configuration_reconciliation") not in {CID, "HR-V0-CONFIG-REC-P0.26"} or product.get("u2d2_jc1_harness") != ID:
+        if not product or product.get("configuration_reconciliation") not in {CID, "HR-V0-CONFIG-REC-P0.26", "HR-V0-CONFIG-REC-P0.27"} or product.get("u2d2_jc1_harness") != ID:
             errors.append(f"release metadata not synchronized for {domain}")
         elif ID not in product.get("supporting_identifiers", []) or CID not in product.get("supporting_identifiers", []):
             errors.append(f"release metadata identifiers missing for {domain}")

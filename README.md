@@ -19,6 +19,11 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R263 carrier power-harness and panel-placement correction P0.2](docs/hr-v0-dxl-protection-carrier-harness-p0.2.md)
+- [Interactive R263 six-harness and collision guide](release/hr-v0/dxl-protection-carrier-harness-p0.2/index.html)
+- [Interactive configuration reconciliation P0.27](release/hr-v0/configuration-reconciliation-p0.27/index.html)
+- [R263 independent review request](docs/reviews/2026-08-12-r263-independent-review-request.md)
+- [Sol R12 status after R263](docs/reviews/2026-08-12-sol-r12-post-r263-status.md)
 - [R262 U2D2-to-JC1 manufacturer-build request P0.1](docs/hr-v0-u2d2-jc1-harness-rfq-p0.1.md)
 - [Interactive R262 RFQ guide](release/hr-v0/u2d2-jc1-harness-rfq-p0.1/index.html)
 - [Interactive configuration reconciliation P0.26](release/hr-v0/configuration-reconciliation-p0.26/index.html)
@@ -1100,7 +1105,7 @@ Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable 
 
 ## Current review state
 
-Two hundred sixty-two rounds are complete: R01-R262. R11/R12 remain the independent parallel reviews; later rounds are project responses rather than additional independent approvals. R261 defines the two-conductor U2D2-to-JC1 controller harness candidate and corrects BOM-107/108 canonical closure drift. R262 packages that harness into a deterministic, UNSENT JST/GAM manufacturer-build request and explicitly rejects the catalog 304.8 mm single lead as the complete 500 mm two-conductor harness. Provider response, quote, process evidence, first article and every physical result remain open. HOLD-15 is only PARTIALLY ADDRESSED - OPEN. Nothing has been sent, ordered, received, selected, fabricated, assembled, connected, powered or measured; no Sol blocker has qualified closure and no energization authority is released. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
+Two hundred sixty-three rounds are complete: R01-R263. R11/R12 remain the independent parallel reviews; later rounds are project responses rather than additional independent approvals. R263 corrects the six carrier power-harness identities and minimum population to nine VHR-2N housings, eighteen SVH-21T-P1.1 contacts and six exact held PN18-8R-E source rings. It also rejects thirteen positive-area collisions between the stale R161 placements and current P0.7 panel objects, then screens three rotated placements with zero nominal planar intersections. Exact circuit positions, depth/sweep, cuts, termination processes, protection and every physical result remain open. Nothing has been sent, ordered, received, selected, fabricated, cut, crimped, assembled, connected, powered or measured; no Sol blocker has qualified closure and no energization authority is released. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)

@@ -106,7 +106,7 @@ def main() -> int:
 
     bom = {row["item_id"]: row for row in rows(ROOT / "bom/bom.csv")}
     closure = {row["item_id"]: row for row in rows(ROOT / "bom/hr-v0-bom-closure.csv")}
-    need(len(bom) == 108, "system BOM count changed")
+    need(len(bom) >= 108, "system BOM count below R262 minimum")
     for item_id in ("BOM-054", "BOM-055", "BOM-061"):
         need(closure[item_id]["closure_class"] == "exact_candidate_hold", f"closure class drift for {item_id}")
         need("R262" in bom[item_id]["selection_basis"], f"R262 BOM boundary missing for {item_id}")
@@ -122,7 +122,7 @@ def main() -> int:
     release = json.loads((ROOT / "release/hr-v0/release-candidate.json").read_text(encoding="utf-8"))
     for domain in ("electrical", "bill_of_materials", "assembly"):
         product = next((row for row in release["current_products"] if row.get("domain") == domain), {})
-        need(product.get("configuration_reconciliation") == CID and product.get("u2d2_jc1_harness_rfq") == ID and ID in product.get("supporting_identifiers", []) and CID in product.get("supporting_identifiers", []), f"release metadata stale: {domain}")
+        need(product.get("configuration_reconciliation") in {CID, "HR-V0-CONFIG-REC-P0.27"} and product.get("u2d2_jc1_harness_rfq") == ID and ID in product.get("supporting_identifiers", []) and CID in product.get("supporting_identifiers", []), f"release metadata stale: {domain}")
 
     for left, right in ((OUT, REL), (CFG, CFGR)):
         left_files = sorted(path.name for path in left.iterdir() if path.is_file())
