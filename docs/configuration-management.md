@@ -186,3 +186,5 @@ R283 adds `HR-V0-J2-EXECUTION-ARCHITECTURE-P0.1` and `HR-V0-CONFIG-REC-P0.47` as
 R284 adds `HR-V0-J2-CURVED-MESH-DEVELOPMENT-P0.1` and `HR-V0-CONFIG-REC-P0.48` as fail-closed curved-mesh development evidence. Bounded candidates exist, but the sequence is non-monotonic and R279-C02, H02 and all work authority remain open.
 
 R285 adds `HR-V0-J2-TARGETED-REMESH-DISPOSITION-P0.1` and `HR-V0-CONFIG-REC-P0.49` as fail-closed targeted-remesh evidence. Repeatable finite samples do not close exact B-Rep/facet/load/full-domain/exact-zone/R279-C02/H02 or any work authority.
+
+R311 supersedes the R308/R309 exact-facet interpretation with `HR-V0-J2-C07-PE-TRIMMED-FACET-AUDIT-P0.1`. Exact trimmed-face containment leaves 247 of 112,646 exterior facets unmapped across 24 exact faces. R312 executes and rejects `HR-V0-J2-C07-PE-CORRECTED-SURFACE-IMPRINT-P0.1`: 21-volume and material equivalence pass, but only 8/24 target faces retain the frozen one-face/one-owner identity. No current physical-part configuration changes and no mesh, R279-C02, H02, capacity, safety or work authority follows.

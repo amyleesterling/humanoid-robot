@@ -19,7 +19,9 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
-- [R310 current surface-imprint disposition](release/hr-v0/j2-c07-pe-surface-imprint-disposition-p0.1/README.md)
+- [R312 current corrected trimmed-face/imprint handoff](docs/hr-v0-j2-c07-pe-mesh-progression-r312.md)
+- [R312 rejected 24-face imprint evidence](release/hr-v0/j2-c07-pe-corrected-surface-imprint-p0.1/README.md)
+- [R311 corrected exact trimmed-face audit](release/hr-v0/j2-c07-pe-trimmed-facet-audit-p0.1/README.md)
 - [R308 exact-facet failure handoff](docs/hr-v0-j2-c07-pe-mesh-progression-r308.md)
 - [R308 independent review request](docs/reviews/2026-08-13-r308-independent-review-request.md)
 - [R308 validation record](docs/reviews/2026-08-13-r308-validation-record.md)
