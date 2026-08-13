@@ -1,0 +1,36 @@
+{
+  "identifier": "HR-V0-J2-C07-CONFORMAL-MESH-FAILURE-LOCALIZATION-P0.1",
+  "round": "R290",
+  "date": "2026-08-13",
+  "r289_raw_sha256": "faf599d052a2550a84b81bfb46be4f28b36b8366a282c8622231f7b3854291b0",
+  "r289_mesh_gzip_sha256": "b5c065b5c53afb8326f5866c6be10a7ba18b2b85e87f38c9e992d8ce1c91de60",
+  "r289_mesh_uncompressed_sha256": "850c0c8d0ff886f0bed3ef2dbf06390839c81891d48ac26f62df117d535bf53c",
+  "sicn_failure_elements": 18,
+  "sicn_failures_by_exact_zone": {
+    "C07-PE-SOUTH-STRAIGHT": 5,
+    "C07-PE-WEST-STRAIGHT": 4,
+    "C07-PE-EAST-STRAIGHT": 4,
+    "C07-PE-NORTH-STRAIGHT": 5
+  },
+  "curved_jacobian_failed_order_qp_pairs": 23,
+  "curved_jacobian_unique_failed_elements": 6,
+  "curved_jacobian_nearest_exact_face_clusters": {
+    "a97edf5a94868d8091b2c9b62604036a8be258e42d13a3b82c0fbcb9a27ea4b0": 7,
+    "251c223a0dbe278abebbeffb1d1a2c4b7e0facaf46cc1c30842899924ba87176": 10,
+    "b526fc31837e1eed87abf547e967381f66294d934649748339e042b4bbf9d6fe": 2,
+    "9f9705cbb2c0c6752624d37d98f10ed2a799c76c148c83a7ce4b089e5a9aae4a": 4
+  },
+  "successor_rule": "start from frozen R289 settings; add local fields only to the four failed exact PE straight volumes and the exact B-Rep faces localized here; execute as a new preregistered variant; retain R289 unchanged",
+  "thresholds_unchanged": true,
+  "remesh_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "fabrication_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - CONFORMAL MESH FAILURE LOCALIZATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}
