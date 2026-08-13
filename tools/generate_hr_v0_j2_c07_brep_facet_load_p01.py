@@ -41,6 +41,9 @@ R285 = ROOT / "mechanical/analysis/hr-v0-j2-c07-targeted-remesh-p0.1"
 RAW = R285 / "run-a/raw-r285-confirmatory-targeted-v06-p01.npz"
 LOAD_SOURCE = ROOT / "mechanical/analysis/hr-v0-j2-stop-pad-pocket-fea-p0.1/analysis-status.json"
 IDENT = "HR-V0-J2-C07-BREP-FACET-LOAD-P0.1"
+ROUND = "R286"
+RAW_LABEL = "retained R285 raw Tet10"
+ADDITIONAL_INPUTS: list[tuple[str, Path]] = []
 WARNING = (
     "PRELIMINARY - EXACT FACET/B-REP AND LOAD-GEOMETRY EVIDENCE ONLY - NOT "
     "APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, "
@@ -457,12 +460,13 @@ def main() -> int:
             "identifier": "HR-V0-J2-C07-FIDELITY-REMESH-PREREG-P0.1",
             "source_component": IDENT,
             "step_sha256": sha(STEP),
-            "source_r285_raw_sha256": sha(RAW),
+            "source_raw_label": RAW_LABEL,
+            "source_raw_sha256": sha(RAW),
             "surface_deviation_limit_mm": SURFACE_DEVIATION_LIMIT_MM,
             "failing_face_count": len(failing_faces),
             "failing_faces": failing_faces,
             "successor_distance_field": {
-                "entities": "all 21 exact failing face signatures plus every exact owner-boundary curve",
+                "entities": f"all {len(failing_faces)} exact failing face signatures plus every exact owner-boundary curve",
                 "size_min_mm": 0.35,
                 "size_max_mm": 3.0,
                 "dist_min_mm": 0.0,
@@ -530,22 +534,25 @@ def main() -> int:
 
         input_rows = [
             {"role": "exact C07 STEP", "path": STEP.relative_to(ROOT).as_posix(), "sha256": sha(STEP), "bytes": STEP.stat().st_size, "warning": WARNING},
-            {"role": "retained R285 raw Tet10", "path": RAW.relative_to(ROOT).as_posix(), "sha256": sha(RAW), "bytes": RAW.stat().st_size, "warning": WARNING},
+            {"role": RAW_LABEL, "path": RAW.relative_to(ROOT).as_posix(), "sha256": sha(RAW), "bytes": RAW.stat().st_size, "warning": WARNING},
             {"role": "R285 configuration", "path": (R285 / "frozen-protocol.json").relative_to(ROOT).as_posix(), "sha256": sha(R285 / "frozen-protocol.json"), "bytes": (R285 / "frozen-protocol.json").stat().st_size, "warning": WARNING},
             {"role": "load vector source", "path": LOAD_SOURCE.relative_to(ROOT).as_posix(), "sha256": sha(LOAD_SOURCE), "bytes": LOAD_SOURCE.stat().st_size, "warning": WARNING},
             {"role": "generator", "path": Path(__file__).resolve().relative_to(ROOT).as_posix(), "sha256": sha(Path(__file__).resolve()), "bytes": Path(__file__).stat().st_size, "warning": WARNING},
+        ] + [
+            {"role": role, "path": path.relative_to(ROOT).as_posix(), "sha256": sha(path), "bytes": path.stat().st_size, "warning": WARNING}
+            for role, path in ADDITIONAL_INPUTS
         ]
         write_csv(OUT / "exact-input-register.csv", input_rows)
 
         validation_rows = [
-            {"check_id": "R286-V01", "check": "retained R285 mesh identity", "result": "PASS", "evidence": f"raw SHA {sha(RAW)}; {len(tet10)} Tet10", "credit": "SOURCE IDENTITY", "warning": WARNING},
-            {"check_id": "R286-V02", "check": "complete exterior facet incidence", "result": "PASS", "evidence": f"{len(facet_nodes)} exterior facets; manifold corner-face incidence", "credit": "MESH TOPOLOGY", "warning": WARNING},
-            {"check_id": "R286-V03", "check": "one exact OCC face per exterior facet", "result": "PASS" if exact_map_complete else "FAIL", "evidence": f"unique six-node map for {len(facet_nodes)} facets", "credit": "EXACT FACET MAP" if exact_map_complete else "NONE", "warning": WARNING},
-            {"check_id": "R286-V04", "check": "quadratic surface deviation screen", "result": "PASS" if surface_deviation_pass else "FAIL", "evidence": f"max Q8 deviation {float(qdeviation.max())} mm against {SURFACE_DEVIATION_LIMIT_MM} mm method limit", "credit": "SINGLE-MESH B-REP FIDELITY" if surface_deviation_pass else "NONE", "warning": WARNING},
-            {"check_id": "R286-V05", "check": "total curved exterior area", "result": "PASS" if total_area_error <= SURFACE_AREA_REL_LIMIT else "FAIL", "evidence": f"exact {total_exact_area} mm2; mesh {total_mesh_area} mm2; relative error {total_area_error}", "credit": "SINGLE-MESH AREA FIDELITY", "warning": WARNING},
-            {"check_id": "R286-V06", "check": "positive catch exact clipped load geometry", "result": "PASS" if load_geometry_pass else "FAIL", "evidence": f"area error {area_relative_error}; normalized centroid {centroid_relative_error}; normalized moment {moment_relative_error}", "credit": "SINGLE-MESH LOAD-BOUNDARY GEOMETRY" if load_geometry_pass else "NONE", "warning": WARNING},
-            {"check_id": "R286-V07", "check": "next-level area drift", "result": "NOT EXECUTED", "evidence": "only R285 mesh assessed", "credit": "NONE", "warning": WARNING},
-            {"check_id": "R286-V08", "check": "structural/exact-zone/convergence/capacity", "result": "NOT EXECUTED", "evidence": "no structural solve or production zone clipping", "credit": "NONE", "warning": WARNING},
+            {"check_id": f"{ROUND}-V01", "check": f"{RAW_LABEL} identity", "result": "PASS", "evidence": f"raw SHA {sha(RAW)}; {len(tet10)} Tet10", "credit": "SOURCE IDENTITY", "warning": WARNING},
+            {"check_id": f"{ROUND}-V02", "check": "complete exterior facet incidence", "result": "PASS", "evidence": f"{len(facet_nodes)} exterior facets; manifold corner-face incidence", "credit": "MESH TOPOLOGY", "warning": WARNING},
+            {"check_id": f"{ROUND}-V03", "check": "one exact OCC face per exterior facet", "result": "PASS" if exact_map_complete else "FAIL", "evidence": f"unique six-node map for {len(facet_nodes)} facets", "credit": "EXACT FACET MAP" if exact_map_complete else "NONE", "warning": WARNING},
+            {"check_id": f"{ROUND}-V04", "check": "quadratic surface deviation screen", "result": "PASS" if surface_deviation_pass else "FAIL", "evidence": f"max Q8 deviation {float(qdeviation.max())} mm against {SURFACE_DEVIATION_LIMIT_MM} mm method limit", "credit": "SINGLE-MESH B-REP FIDELITY" if surface_deviation_pass else "NONE", "warning": WARNING},
+            {"check_id": f"{ROUND}-V05", "check": "total curved exterior area", "result": "PASS" if total_area_error <= SURFACE_AREA_REL_LIMIT else "FAIL", "evidence": f"exact {total_exact_area} mm2; mesh {total_mesh_area} mm2; relative error {total_area_error}", "credit": "SINGLE-MESH AREA FIDELITY", "warning": WARNING},
+            {"check_id": f"{ROUND}-V06", "check": "positive catch exact clipped load geometry", "result": "PASS" if load_geometry_pass else "FAIL", "evidence": f"area error {area_relative_error}; normalized centroid {centroid_relative_error}; normalized moment {moment_relative_error}", "credit": "SINGLE-MESH LOAD-BOUNDARY GEOMETRY" if load_geometry_pass else "NONE", "warning": WARNING},
+            {"check_id": f"{ROUND}-V07", "check": "next-level area drift", "result": "NOT EXECUTED", "evidence": f"only {RAW_LABEL} assessed", "credit": "NONE", "warning": WARNING},
+            {"check_id": f"{ROUND}-V08", "check": "structural/exact-zone/convergence/capacity", "result": "NOT EXECUTED", "evidence": "no structural solve or production zone clipping", "credit": "NONE", "warning": WARNING},
         ]
         write_csv(OUT / "validation-register.csv", validation_rows)
         holds = [
@@ -562,10 +569,11 @@ def main() -> int:
         ])
         status = {
             "identifier": IDENT,
-            "round": "R286",
+            "round": ROUND,
             "date": "2026-08-13",
             "step_sha256": sha(STEP),
-            "r285_raw_sha256": sha(RAW),
+            "source_raw_label": RAW_LABEL,
+            "source_raw_sha256": sha(RAW),
             "tet10_elements": int(len(tet10)),
             "exterior_quadratic_facets": int(len(facet_nodes)),
             "exact_occ_faces": int(len(faces)),
@@ -629,7 +637,7 @@ def main() -> int:
             "acceptance remain open. No physical work or energization is authorized.\n",
             encoding="utf-8",
         )
-        html = f"""<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>{IDENT}</title><style>:root{{--navy:#082b55;--blue:#245aa6;--sky:#8ed8f8;--gold:#f4b942;--paper:#f7fbff;--ink:#102a43;--line:#9ccfe8}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,sans-serif}}header{{background:linear-gradient(135deg,var(--navy),var(--blue));color:white;padding:clamp(28px,6vw,70px) 20px}}header>div,main{{max-width:1240px;margin:auto}}main{{padding:28px 20px 80px}}h1{{font-size:clamp(34px,6vw,66px);line-height:1.05}}h2{{font-size:clamp(25px,3vw,38px);color:var(--navy)}}.warning{{background:var(--gold);color:#17243a;border:3px solid #805800;padding:15px 18px;font-weight:900;font-size:16px}}.cards{{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}}.card{{background:white;border:2px solid var(--sky);border-radius:14px;padding:18px}}.metric{{font-size:clamp(28px,5vw,48px);font-weight:900;color:var(--blue)}}.scroll{{overflow-x:auto;border:2px solid var(--line);border-radius:12px;background:white}}table{{border-collapse:collapse;width:100%;min-width:1050px}}th,td{{padding:13px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:16px}}th{{background:var(--navy);color:white}}@media(max-width:620px){{main{{padding-inline:14px}}}}</style></head><body><header><div><p class='warning'>{WARNING}</p><p>R286 · {IDENT}</p><h1>Every exterior facet now has an exact CAD face.</h1><p>This is geometry evidence, not structural or safety approval.</p></div></header><main><section class='cards'><article class='card'><div class='metric'>{len(facet_nodes):,}</div><p>exterior Tet10 facets mapped</p></article><article class='card'><div class='metric'>{float(qdeviation.max()):.6g} mm</div><p>maximum sampled B-Rep deviation</p></article><article class='card'><div class='metric'>{area_relative_error*100:.4f}%</div><p>loaded-area error</p></article></section><h2>Validation</h2>{html_table(validation_rows)}<h2>Load boundary</h2>{html_table(load_rows)}<h2>Open holds</h2>{html_table([{**row} for row in [{"hold": h, "state": "OPEN", "warning": WARNING} for h in holds]])}</main></body></html>"""
+        html = f"""<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>{IDENT}</title><style>:root{{--navy:#082b55;--blue:#245aa6;--sky:#8ed8f8;--gold:#f4b942;--paper:#f7fbff;--ink:#102a43;--line:#9ccfe8}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,sans-serif}}header{{background:linear-gradient(135deg,var(--navy),var(--blue));color:white;padding:clamp(28px,6vw,70px) 20px}}header>div,main{{max-width:1240px;margin:auto}}main{{padding:28px 20px 80px}}h1{{font-size:clamp(34px,6vw,66px);line-height:1.05}}h2{{font-size:clamp(25px,3vw,38px);color:var(--navy)}}.warning{{background:var(--gold);color:#17243a;border:3px solid #805800;padding:15px 18px;font-weight:900;font-size:16px}}.cards{{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}}.card{{background:white;border:2px solid var(--sky);border-radius:14px;padding:18px}}.metric{{font-size:clamp(28px,5vw,48px);font-weight:900;color:var(--blue)}}.scroll{{overflow-x:auto;border:2px solid var(--line);border-radius:12px;background:white}}table{{border-collapse:collapse;width:100%;min-width:1050px}}th,td{{padding:13px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:16px}}th{{background:var(--navy);color:white}}@media(max-width:620px){{main{{padding-inline:14px}}}}</style></head><body><header><div><p class='warning'>{WARNING}</p><p>{ROUND} · {IDENT}</p><h1>Every exterior facet now has an exact CAD face.</h1><p>This is geometry evidence, not structural or safety approval.</p></div></header><main><section class='cards'><article class='card'><div class='metric'>{len(facet_nodes):,}</div><p>exterior Tet10 facets mapped</p></article><article class='card'><div class='metric'>{float(qdeviation.max()):.6g} mm</div><p>maximum sampled B-Rep deviation</p></article><article class='card'><div class='metric'>{area_relative_error*100:.4f}%</div><p>loaded-area error</p></article></section><h2>Validation</h2>{html_table(validation_rows)}<h2>Load boundary</h2>{html_table(load_rows)}<h2>Open holds</h2>{html_table([{**row} for row in [{"hold": h, "state": "OPEN", "warning": WARNING} for h in holds]])}</main></body></html>"""
         (OUT / "index.html").write_text(html, encoding="utf-8")
         file_manifest(OUT)
         if RELEASE.exists():

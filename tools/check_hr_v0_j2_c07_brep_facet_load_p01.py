@@ -114,7 +114,7 @@ def main() -> int:
         fail("face-summary facet population mismatch")
     failing_face_rows = [row for row in face_rows if float(row["maximum_q8_surface_deviation_mm"]) > gen.SURFACE_DEVIATION_LIMIT_MM]
     prereg = json.loads((OUT / "fidelity-remesh-preregistration.json").read_text(encoding="utf-8"))
-    if prereg["step_sha256"] != sha(gen.STEP) or prereg["source_r285_raw_sha256"] != sha(gen.RAW):
+    if prereg["step_sha256"] != sha(gen.STEP) or prereg["source_raw_sha256"] != sha(gen.RAW):
         fail("fidelity-remesh preregistration source drift")
     if int(prereg["failing_face_count"]) != len(failing_face_rows) or len(failing_face_rows) != 21:
         fail("fidelity-remesh failing-face count drift")
