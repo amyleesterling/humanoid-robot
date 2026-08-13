@@ -65,9 +65,9 @@ def main()->int:
     need(cfg["current_records"]==63 and cfg["open_holds"]==371 and cfg["acceptance_rows"]==425,"config count")
     need(cfg["j2_refinement_execution"]==status["identifier"] and cfg["j2_refinement_meshes"]==3 and cfg["j2_refinement_cases"]==1 and cfg["j2_direct_p2_results"]==0 and cfg["r278_h02_closed"] is False,"config evidence")
     for record in rows(CFG/"source-hash-register.csv"):need(sha(ROOT/record["source_path"])==record["sha256"],f"source hash {record['source_path']}")
-    need((ROOT/"docs/handoff-current.md").read_text(encoding="utf-8").startswith("R280 J2 refinement execution feasibility:"),"handoff")
+    need((ROOT/"docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R280 J2 refinement execution feasibility:","R281 J2 numerical backend:")),"handoff")
     need((ROOT/"docs/review-ledger.md").read_text(encoding="utf-8").count("| R280 |")==1,"ledger")
-    need("Two hundred eighty rounds are complete" in (ROOT/"README.md").read_text(encoding="utf-8"),"README")
+    need(any(text in (ROOT/"README.md").read_text(encoding="utf-8") for text in ("Two hundred eighty rounds are complete","Two hundred eighty-one rounds are complete")),"README")
     print("PASS: R280 exact local-mesh feasibility evidence is synchronized; P2 produced no results, C07 quality fails, H02 and all work authority remain open")
     return 0
 

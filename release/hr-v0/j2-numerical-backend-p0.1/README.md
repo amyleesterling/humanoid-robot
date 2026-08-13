@@ -1,0 +1,5 @@
+# HR-V0-J2-NUMERICAL-BACKEND-P0.1
+
+> **PRELIMINARY - NUMERICAL SOLVER FEASIBILITY ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION**
+
+R281 establishes a bounded iterative P2 and C07 mesh-quality route for later R279 execution. It does not close H02 or supply capacity/work authority.

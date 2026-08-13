@@ -1,3 +1,5 @@
+R281 J2 numerical backend: **`HR-V0-J2-NUMERICAL-BACKEND-P0.1` establishes a bounded residual-controlled iterative P2 route for C06 and both C07 paths and a C07 mesh method passing SICN quality. This enables L0-L3 execution but does not close H02 or grant capacity/work credit.**
+
 R280 J2 refinement execution feasibility: **`HR-V0-J2-STOP-REFINEMENT-EXECUTION-P0.1` proves exact OCC tagging/local fields but rejects the current execution route: C07 L0 fails mesh quality, two direct P2 solves exceed practical memory without results, and the one P1 case has zero convergence/capacity credit. R278-H02 stays open; solver/mesh repair is required.**
 
 R279 J2 convergence protocol: **`HR-V0-J2-STOP-REFINEMENT-PROTOCOL-P0.1` audits R278 rather than promoting its coarse result. 13/18 last-pair metrics exceed 5%; exact B-Rep zones, four local mesh levels, P2/GCI/section/singularity evidence are required. R278-H02 stays open and no work authority exists.**

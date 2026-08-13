@@ -1,0 +1,23 @@
+{
+  "identifier": "HR-V0-J2-C07-ITERATIVE-SOLVER-P0.1",
+  "round": "R281-PROTOTYPE",
+  "cad_identifier": "HR-V0-ARM-ARCH-P0.13-PAD-POCKET-STOP-CANDIDATE",
+  "mesh_method": "Gmsh Delaunay algorithm 1 plus Netgen optimization",
+  "mesh_quality_pass": true,
+  "backend": "SciPy conjugate gradient with Jacobi diagonal preconditioner",
+  "bounded_solver_cases_pass": true,
+  "case_count": 2,
+  "solution_order": 2,
+  "geometry_order": 1,
+  "mesh_convergence_complete": false,
+  "r278_h02_closed": false,
+  "nonlinear_contact_complete": false,
+  "joined_joint_complete": false,
+  "selected": false,
+  "fabrication_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "warning": "PRELIMINARY - NUMERICAL SOLVER FEASIBILITY ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

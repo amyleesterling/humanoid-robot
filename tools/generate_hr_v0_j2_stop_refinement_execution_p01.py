@@ -175,7 +175,7 @@ def curve_samples(tags: list[int], spacing: float = 0.04) -> np.ndarray:
     return np.vstack(samples)
 
 
-def build_mesh(part: str, level: Level) -> tuple[MeshTet, dict[str, object], dict[str, set[int]], np.ndarray, list[dict[str, object]]]:
+def build_mesh(part: str, level: Level, algorithm3d: int = 10, optimize_method: str = "") -> tuple[MeshTet, dict[str, object], dict[str, set[int]], np.ndarray, list[dict[str, object]]]:
     step = CAD / "parts" / f"MV0-{part}_J2_{'positive_moving_striker' if part == 'C06' else 'positive_fixed_catch'}_adapter.step"
     t0 = time.perf_counter()
     gmsh.initialize(["-nopopup"])
@@ -190,7 +190,7 @@ def build_mesh(part: str, level: Level) -> tuple[MeshTet, dict[str, object], dic
         gmsh.option.setNumber("Mesh.MeshSizeFromPoints", 0)
         gmsh.option.setNumber("Mesh.MeshSizeFromCurvature", 0)
         gmsh.option.setNumber("Mesh.MeshSizeExtendFromBoundary", 1)
-        gmsh.option.setNumber("Mesh.Algorithm3D", 10)
+        gmsh.option.setNumber("Mesh.Algorithm3D", algorithm3d)
         gmsh.option.setNumber("Mesh.Optimize", 1)
         gmsh.option.setNumber("Mesh.RandomFactor", 1e-12)
         gmsh.model.add(f"R279_{part}_{level.name}")
@@ -209,6 +209,8 @@ def build_mesh(part: str, level: Level) -> tuple[MeshTet, dict[str, object], dic
         gmsh.model.mesh.field.setNumbers(minimum, "FieldsList", fields)
         gmsh.model.mesh.field.setAsBackgroundMesh(minimum)
         gmsh.model.mesh.generate(3)
+        if optimize_method:
+            gmsh.model.mesh.optimize(optimize_method)
 
         # Bind exact CAD surface entity node sets before extraction.
         surface_nodes: dict[str, set[int]] = {}
@@ -249,6 +251,8 @@ def build_mesh(part: str, level: Level) -> tuple[MeshTet, dict[str, object], dic
             "fraction_sicn_below_0p20": float(np.mean(quality < 0.20)), "mesh_seconds": time.perf_counter()-t0,
             "rss_after_mesh_mb": rss_mb(), "exact_entity_groups": groups,
             "geometry_order": 1,
+            "algorithm3d": algorithm3d,
+            "optimize_method": optimize_method or "default Mesh.Optimize",
             "high_order_geometry_limitation": "scikit-fem P2 displacement on straight-sided tetrahedra; Gmsh curved high-order nodes are not imported",
             "warning": WARNING,
         }
