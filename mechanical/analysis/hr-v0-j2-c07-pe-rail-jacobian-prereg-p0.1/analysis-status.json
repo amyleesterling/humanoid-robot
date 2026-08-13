@@ -1,0 +1,19 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-RAIL-JACOBIAN-PREREG-P0.1",
+  "round": "R302-PREREG",
+  "candidate_id": "R302-C07-PE-RAIL-JACOBIAN-V01",
+  "exact_face_targets": 2,
+  "x_symmetry_closed": true,
+  "z_symmetry_not_present_in_exact_topology": true,
+  "single_candidate_frozen": true,
+  "thresholds_unchanged": true,
+  "mesh_executed": false,
+  "structural_solution_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - RAIL-TRANSITION JACOBIAN SUCCESSOR PREREGISTRATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

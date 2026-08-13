@@ -1,4 +1,10 @@
-R285 targeted C07 remesh: **`HR-V0-J2-TARGETED-REMESH-DISPOSITION-P0.1` is a repeatable bounded sampled-Jacobian candidate only. Exact B-Rep/facet/load/full-domain/exact-zone/R279-C02/H02/capacity and all physical work remain blocked.**
+R285 targeted C07 remesh: **`HR-V0-J2-TARGETED-REMESH-DISPOSITION-P0.1` is a repeatable bounded sampled-Jacobian candidate only. Exact B-Rep/facet/load/full-domain/exact-zone/R279-C02/H02/capacity and all physical work remain blocked. Later R286-R302 controlled numerical development is summarized immediately below.**
+
+R302 current J2 C07 state: **the seam-free exact-zone partition closes the frozen linear mesh-quality screens for the R300 mesh, but three Q8 curved-Jacobian failures remain localized to one rail-transition cylinder. `HR-V0-J2-C07-PE-RAIL-JACOBIAN-PREREG-P0.1` freezes the exact failed face plus its actual X mirror; execution has not occurred. R279-C02, structural convergence, H02, capacity, safety credit and all physical work remain blocked.**
+
+R297-R301 seam-free progression: **R297 removed only artificial analysis-partition tangent seams while preserving physical geometry. R298 passed global and monitored-zone SICN gates but failed six sampled curved-Jacobian points; R300's exact H1-H4 bore-wall refinement passed every linear gate and reduced the curved failure to three Q8 points. These are numerical-method results, not part selection or strength evidence.**
+
+R286-R296 C07 fidelity and diagnosis: **exact exterior-facet/load geometry and exact analysis zones were established, but the R289/R291/R293/R295 meshes repeatedly failed the four straight pocket-edge zones. Two algorithms plus topology-preserving relocation reproduced the defect, supporting the R296 seam-disposition correction without changing the physical part.**
 
 R284 C07 curved-mesh development: **`HR-V0-J2-CURVED-MESH-DEVELOPMENT-P0.1` finds bounded method candidates but no convergence. R279-C02, H02, capacity and all physical work remain blocked.**
 

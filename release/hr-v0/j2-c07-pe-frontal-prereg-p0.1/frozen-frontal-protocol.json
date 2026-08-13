@@ -1,0 +1,57 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-FRONTAL-PREREG-P0.1",
+  "round": "R295-PREREG",
+  "date": "2026-08-13",
+  "candidate_id": "R295-C07-PE-FRONTAL-V01",
+  "r288_brep_sha256": "7646e67482c06e45bb97f4fa2ddf8e3f159dc2e3645841f28237870b862c123c",
+  "r293_protocol_sha256": "6b3c1ba304ee8a47e29447dac745671a6fb824df7c0df569807162e2a772d5f8",
+  "r294_method_boundary_sha256": "09412ea489563c4021316cd60781ddcf0211d300ba3dcca3a2812b31938c3b20",
+  "exact_volume_target_register_sha256": "7b1eb3f4a8371c9dd5727bbf9178172f0962d4d9b92ede04a9379c5872439fc5",
+  "exact_face_target_register_sha256": "3031a03e8d8eda43afb0a32ccfcb260c76add0204131c689a233bdb98f49f120",
+  "exact_volume_target_count": 4,
+  "exact_face_target_count": 6,
+  "mesh_size_fields": {
+    "base": "R289 unchanged: global 3.0 mm; PE/PF/rims 0.25 mm; ligaments 0.40 mm",
+    "failed_exact_volume_field": {
+      "size_min_mm": 0.18,
+      "size_max_mm": 3.0,
+      "dist_min_mm": 0.0,
+      "dist_max_mm": 0.75
+    },
+    "symmetry_closed_exact_face_field": {
+      "size_min_mm": 0.35,
+      "size_max_mm": 3.0,
+      "dist_min_mm": 0.0,
+      "dist_max_mm": 2.0
+    }
+  },
+  "linear_mesh_method": {
+    "algorithm3d": 4,
+    "algorithm_name": "Frontal",
+    "optimizer_sequence": [
+      "Netgen"
+    ],
+    "optimizer_stage": "after linear mesh generation and before Tet10 conversion",
+    "general_num_threads": 1,
+    "relocate3d": false,
+    "high_order_optimizer": "NONE"
+  },
+  "acceptance_thresholds": {
+    "global_min_sicn": 0.1,
+    "global_fraction_below_0p20_max": 0.001,
+    "each_monitored_zone_min_sicn": 0.2,
+    "actual_gauss4_6_8_wrong_or_zero": 0,
+    "actual_gauss4_6_8_normalized_floor_fail": 0
+  },
+  "thresholds_unchanged": true,
+  "stop_rule": "execute this candidate exactly once; retain and disposition without tuning; do not start a structural solve unless every R279-C02 constituent gate passes",
+  "mesh_executed": false,
+  "structural_solution_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - FRONTAL TETRAHEDRALIZATION PREREGISTRATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

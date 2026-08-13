@@ -1,0 +1,38 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-SEAM-FREE-JACOBIAN-PREREG-P0.1",
+  "round": "R300-PREREG",
+  "date": "2026-08-13",
+  "candidate_id": "R300-C07-PE-SEAM-FREE-JACOBIAN-V01",
+  "r297_analysis_brep_sha256": "3ee2fc3affeacde29c75404d5dc7b1512f02ed707b4e65e33b10d58189e86404",
+  "r298_status_sha256": "70f9888bbef8edd2105defdf565b8d2833a42a4b6340caa5320665156e031502",
+  "r298_raw_sha256": "ab45ceaa863e7bd60d2bef0132deec1a7192149ad5bcfd3d9aaf81733d83b17d",
+  "r299_status_sha256": "3d73c717a345ef5139d980fd42afe8383966206115a056a80117101a5d7f36bc",
+  "target_register_sha256": "c77ab25857644f25e40e4b7ffcf90c53ff63a52f4975128c4bb1f9d3b758f1c6",
+  "observed_face_count": 1,
+  "symmetry_closed_face_count": 4,
+  "additional_face_field": {
+    "size_min_mm": 0.25,
+    "size_max_mm": 3.0,
+    "dist_min_mm": 0.0,
+    "dist_max_mm": 1.5
+  },
+  "base_mesh": "R298 exact B-Rep, Frontal+Netgen, fused-PE and six prior face fields unchanged",
+  "acceptance_thresholds": {
+    "global_min_sicn": 0.1,
+    "global_fraction_below_0p20_max": 0.001,
+    "each_monitored_zone_min_sicn": 0.2,
+    "actual_gauss4_6_8_wrong_or_zero": 0,
+    "actual_gauss4_6_8_normalized_floor_fail": 0
+  },
+  "thresholds_unchanged": true,
+  "stop_rule": "one execution only; retain/disposition without tuning; structural work only after every R279-C02 gate passes",
+  "mesh_executed": false,
+  "structural_solution_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - SEAM-FREE JACOBIAN SUCCESSOR PREREGISTRATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

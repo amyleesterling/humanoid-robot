@@ -1,0 +1,59 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-SEAM-FREE-MESH-PREREG-P0.1",
+  "round": "R298-PREREG",
+  "date": "2026-08-13",
+  "candidate_id": "R298-C07-PE-SEAM-FREE-V01",
+  "r297_analysis_brep_sha256": "3ee2fc3affeacde29c75404d5dc7b1512f02ed707b4e65e33b10d58189e86404",
+  "r297_classification_brep_sha256": "c15de48e26e9500a777ed74f5a18fff9df9b3c229e1fae1163def13f99572f95",
+  "r297_status_sha256": "f66cf57426247caa5155fdeff73341cd68b106698f8e728b00665d254afcabcb",
+  "r296_boundary_sha256": "fee491b2a5371343a3001fca31586ab6365b1102cdaa03742afa691df20f9726",
+  "exact_face_target_register_sha256": "3031a03e8d8eda43afb0a32ccfcb260c76add0204131c689a233bdb98f49f120",
+  "exact_face_target_count": 6,
+  "analysis_zone_count": 21,
+  "retained_pe_subzone_count": 8,
+  "mesh_size_fields": {
+    "base": "global 3.0 mm; fused PE/PF/rims 0.25 mm; ligaments 0.40 mm",
+    "fused_pe_additional": {
+      "size_min_mm": 0.18,
+      "size_max_mm": 3.0,
+      "dist_min_mm": 0.0,
+      "dist_max_mm": 0.75
+    },
+    "symmetry_closed_exact_face": {
+      "size_min_mm": 0.35,
+      "size_max_mm": 3.0,
+      "dist_min_mm": 0.0,
+      "dist_max_mm": 2.0
+    }
+  },
+  "linear_mesh_method": {
+    "algorithm3d": 4,
+    "algorithm_name": "Frontal",
+    "optimizer_sequence": [
+      "Netgen"
+    ],
+    "general_num_threads": 1,
+    "relocate3d": false,
+    "high_order_optimizer": "NONE"
+  },
+  "acceptance_thresholds": {
+    "global_min_sicn": 0.1,
+    "global_fraction_below_0p20_max": 0.001,
+    "each_monitored_zone_min_sicn": 0.2,
+    "fused_pe_min_sicn": 0.2,
+    "actual_gauss4_6_8_wrong_or_zero": 0,
+    "actual_gauss4_6_8_normalized_floor_fail": 0
+  },
+  "conservative_subzone_rule": "all cells in exact C07-PE-FUSED volume must meet SICN >=0.20; therefore every cell intersecting any of the eight retained exact PE subset solids meets the same floor",
+  "thresholds_unchanged": true,
+  "stop_rule": "one execution only; retain and disposition without tuning; structural solve permitted only after all R279-C02 constituent gates pass",
+  "mesh_executed": false,
+  "structural_solution_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - SEAM-FREE PE MESH PREREGISTRATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

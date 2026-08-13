@@ -1,0 +1,18 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-SEAM-FREE-JACOBIAN-PREREG-P0.1",
+  "round": "R300-PREREG",
+  "candidate_id": "R300-C07-PE-SEAM-FREE-JACOBIAN-V01",
+  "exact_face_targets": 4,
+  "xz_symmetry_closed": true,
+  "single_candidate_frozen": true,
+  "thresholds_unchanged": true,
+  "mesh_executed": false,
+  "structural_solution_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - SEAM-FREE JACOBIAN SUCCESSOR PREREGISTRATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

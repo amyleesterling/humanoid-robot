@@ -19,6 +19,9 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [Interactive R302 rail-transition Jacobian successor preregistration](release/hr-v0/j2-c07-pe-rail-jacobian-prereg-p0.1/index.html)
+- [Interactive R296 pocket-edge topology disposition](release/hr-v0/j2-c07-pe-frontal-disposition-p0.1/index.html)
+- [R302 numerical progression handoff](docs/hr-v0-j2-c07-pe-mesh-progression-r302.md)
 - [R285 J2 targeted-remesh disposition](docs/hr-v0-j2-targeted-remesh-disposition-p0.1.md)
 - [R285 independent review request](docs/reviews/2026-08-13-r285-independent-review-request.md)
 - [R285 validation draft](docs/reviews/2026-08-13-r285-validation-record.md)
@@ -1214,7 +1217,9 @@ Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable 
 
 ## Current review state
 
-Two hundred eighty-five rounds are complete: R01-R285. R270 corrected the J2 contact-force model to use the exact `r × n` moment arm; R271 rejected the first integral-boss topology; R272/R273 iterated to the collision-screened P0.12 access-well candidate. R274 now names an exact A04 supplier/tool candidate stack and its torque-preload/joined-load evidence contract. R275 names Rogers 2300327 only as an unselected sacrificial soft-contact pad; R276 supersedes its radius-based warning with P0.12's exact contact normal; R277 adds exact P0.13 pockets, a held 3M 467MP retention candidate and a received-stack-dependent depth while retaining the metal rails as structural backup. R11/R12 remain the independent parallel reviews; later rounds are project responses, not additional independent approvals. Nothing has been sent, ordered, received, selected, fabricated, cut, crimped, assembled, connected, powered or measured; all physical and qualified closures remain open and no energization authority is released. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
+Three hundred two rounds are logged: R01-R302. R286-R292 established exact exterior-facet/load geometry, corrected B-Rep fidelity, exact analysis zones, a conformal mesh, failure localization, and a preregistered successor that still failed the pocket-edge quality gate. R293-R296 showed the same four straight pocket-edge failures under topology-preserving relocation and a different tetrahedral algorithm, identifying artificial tangent seams in the analysis partition rather than the physical part as the common defect. R297 removed only those analysis seams while preserving exact physical geometry. R298 then passed every linear quality gate but localized six curved-Jacobian failures; R299-R301 reduced those to three Q8 points on one rail-transition cylinder. R302 freezes a two-face X-mirrored rail-transition successor and has not executed it. R279-C02, structural fields, convergence, H02, capacity, safety credit, qualified review, and every physical-work authority remain open. R11/R12 remain the independent parallel reviews; later rounds are project responses, not additional independent approvals. Nothing has been sent, ordered, received, selected, fabricated, cut, crimped, assembled, connected, powered or measured. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
+
+Historical compatibility checkpoint: Two hundred eighty-five rounds are complete: R01-R285. R286-R302 are later controlled project responses and do not revise the evidence or authority state recorded at that checkpoint.
 
 - [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
 - [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)

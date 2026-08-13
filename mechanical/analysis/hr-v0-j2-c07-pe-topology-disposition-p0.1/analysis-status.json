@@ -1,0 +1,24 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-TOPOLOGY-DISPOSITION-P0.1",
+  "round": "R294",
+  "r293_candidate_rejected": true,
+  "linear_topology_unchanged": true,
+  "r293_low_sicn_cells": 24,
+  "r293_monitored_zone_failures": [
+    "C07-PE-EAST-STRAIGHT",
+    "C07-PE-NORTH-STRAIGHT",
+    "C07-PE-SOUTH-STRAIGHT",
+    "C07-PE-WEST-STRAIGHT"
+  ],
+  "r293_actual_quadrature_jacobian_gate": true,
+  "next_candidate_frozen": "R295-C07-PE-FRONTAL-V01",
+  "next_mesh_executed": false,
+  "structural_solution_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - PE-JUNCTION MESH-METHOD DISPOSITION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

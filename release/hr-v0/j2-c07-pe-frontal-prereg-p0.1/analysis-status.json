@@ -1,0 +1,21 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-FRONTAL-PREREG-P0.1",
+  "round": "R295-PREREG",
+  "candidate_id": "R295-C07-PE-FRONTAL-V01",
+  "algorithm3d": 4,
+  "algorithm_name": "Frontal",
+  "optimizer_sequence": [
+    "Netgen"
+  ],
+  "thresholds_unchanged": true,
+  "single_candidate_frozen": true,
+  "mesh_executed": false,
+  "structural_solution_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - FRONTAL TETRAHEDRALIZATION PREREGISTRATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

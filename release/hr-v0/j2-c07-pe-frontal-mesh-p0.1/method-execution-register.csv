@@ -1,0 +1,2 @@
+candidate_id,algorithm3d,algorithm_name,linear_optimizer,relocate3d,high_order_optimizer,execution_count,thresholds_unchanged,global_sicn_gate,monitored_zone_gate,actual_quadrature_jacobian_gate,r279_c02_complete,warning
+R295-C07-PE-FRONTAL-V01,4,Frontal,Netgen,False,NONE,1,True,False,False,True,False,"PRELIMINARY - PREREGISTERED FRONTAL TETRAHEDRALIZATION EVIDENCE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
