@@ -1,0 +1,5 @@
+# HR-V0-J2-C07-BREP-FACET-LOAD-P0.1
+
+> **PRELIMINARY - EXACT FACET/B-REP AND LOAD-GEOMETRY EVIDENCE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION**
+
+R286 maps all 25,368 exterior R285 Tet10 facets to exact C07 OCC faces, measures quadratic-face deviation, and compares the X>=34 mm positive catch load patch with an exact CAD clip. This replaces the earlier facet-centroid load selection for geometry verification. The exact facet map and load geometry pass, but the 0.005 mm surface-deviation screen fails at 0.0211863 mm across 21 exact faces; 12 individual face-area comparisons also exceed 0.25%, although total exterior area passes. The retained successor preregistration targets those exact face signatures and owner-boundary curves without relaxing the limit. It is a single-mesh geometry screen: next-level drift, exact physical zones, structural fields, convergence, contact, joined hardware, dynamics, physical tests and qualified acceptance remain open. No physical work or energization is authorized.

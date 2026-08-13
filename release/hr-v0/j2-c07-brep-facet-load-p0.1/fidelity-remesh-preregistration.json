@@ -1,0 +1,174 @@
+{
+  "identifier": "HR-V0-J2-C07-FIDELITY-REMESH-PREREG-P0.1",
+  "source_component": "HR-V0-J2-C07-BREP-FACET-LOAD-P0.1",
+  "step_sha256": "fc4178769862d39bf1eee881391de2852e4fc0e4424af4e5c1814981737365de",
+  "source_r285_raw_sha256": "7aaf6cbe3ffd139d7ae9836fd76249f4df892775a03085fb3f0421f355ad3eed",
+  "surface_deviation_limit_mm": 0.005,
+  "failing_face_count": 21,
+  "failing_faces": [
+    {
+      "face_signature_sha256": "9eb5d0afc030554b9f0620684cb01bb79ed7120fc922824aa82d905badc7631a",
+      "geometry_type": "Cylinder",
+      "bbox_mm_json": "[-24.0000001,-1e-07,17.9999999,-21.9999999,9.5250001,20.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.02118625056033226,
+      "observed_relative_area_error": 0.0022597122498131403
+    },
+    {
+      "face_signature_sha256": "cf84f26043ad4bcd8bb77d5f2023da13d87406256f4d24fe34d40366f98b85de",
+      "geometry_type": "Cylinder",
+      "bbox_mm_json": "[21.9999999,-1e-07,17.9999999,24.0000001,9.5250001,20.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.02118625056033226,
+      "observed_relative_area_error": 0.0016402397614052784
+    },
+    {
+      "face_signature_sha256": "6836e5da23a6a5207f5aef46e1c11e7778dcff48826f0fa0b0c827d93c17d48b",
+      "geometry_type": "Torus",
+      "bbox_mm_json": "[-37.866565826,-2.0000001,13.133434174,-31.9999999,1e-07,19.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.018124754762461216,
+      "observed_relative_area_error": 0.0004550380466465831
+    },
+    {
+      "face_signature_sha256": "019b05dfce3c1b76ec54e93266c4de38d6e1f6a87e179412e587c97f4d80fb38",
+      "geometry_type": "Cylinder",
+      "bbox_mm_json": "[-54.0000001,-2.0000001,-18.0000001,-51.9999999,1e-07,20.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.014488923842120726,
+      "observed_relative_area_error": 0.0005897769018439772
+    },
+    {
+      "face_signature_sha256": "60d262a2f5b1f29448375e661596687beaad19d141a721a7e22ad82cb6a6cf12",
+      "geometry_type": "Cylinder",
+      "bbox_mm_json": "[-52.0000001,-2.0000001,-20.0000001,-13.9999999,1e-07,-17.9999999]",
+      "observed_maximum_q8_surface_deviation_mm": 0.014488923842117522,
+      "observed_relative_area_error": 0.00048398851416115276
+    },
+    {
+      "face_signature_sha256": "630e9757a4038c0acc9dd0729332dec6fbfa4422f61a660806165fd5a2e9a98d",
+      "geometry_type": "Cylinder",
+      "bbox_mm_json": "[-14.0000001,-2.0000001,-18.0000001,-11.9999999,1e-07,15.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.014528041805502335,
+      "observed_relative_area_error": 0.00035535672543560707
+    },
+    {
+      "face_signature_sha256": "8cab5c204226990260bee90200689c89de26d24e306ee22b484b9f2f29d5f0f5",
+      "geometry_type": "Cylinder",
+      "bbox_mm_json": "[-32.0000001,-2.0000001,14.9999999,-13.9999999,1e-07,17.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.02118625056033239,
+      "observed_relative_area_error": 0.0032256355357477107
+    },
+    {
+      "face_signature_sha256": "c598c87e1cc84f1c7386ef97b9e31d76fdec882b14b3f754ea70f8a478b44b54",
+      "geometry_type": "Cylinder",
+      "bbox_mm_json": "[13.9999999,-2.0000001,14.9999999,32.0000001,1e-07,17.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.02118625056033239,
+      "observed_relative_area_error": 0.003224783093662153
+    },
+    {
+      "face_signature_sha256": "30d355d838197c0a7ceb39cc7e865d3e0e8eb47f42aed419023ed71cb6b1563b",
+      "geometry_type": "Cylinder",
+      "bbox_mm_json": "[13.9999999,-2.0000001,-20.0000001,52.0000001,1e-07,-17.9999999]",
+      "observed_maximum_q8_surface_deviation_mm": 0.014488923842117522,
+      "observed_relative_area_error": 0.0004841704104498457
+    },
+    {
+      "face_signature_sha256": "b09b3d5d2b4bb19b31f9f1aecadc6f6fde3d1f9629aa5621b57fe46ed5e04df2",
+      "geometry_type": "Cylinder",
+      "bbox_mm_json": "[51.9999999,-2.0000001,-18.0000001,54.0000001,1e-07,20.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.014488923842120726,
+      "observed_relative_area_error": 0.0004841786513531794
+    },
+    {
+      "face_signature_sha256": "bd1dbd8502bac470eddf5b21d6fc6bc0206d4bdde92299afab29d6c55fc03336",
+      "geometry_type": "Torus",
+      "bbox_mm_json": "[31.9999999,-2.0000001,13.133434174,37.866565826,1e-07,19.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.017979460736217617,
+      "observed_relative_area_error": 0.00036629761074837095
+    },
+    {
+      "face_signature_sha256": "fc994402243d44780abaabc77b96a297edee25a0ce28cb7e7466b7537a70f1be",
+      "geometry_type": "Sphere",
+      "bbox_mm_json": "[-36.0000001,-2.0000001,19.9999999,-33.9999999,1e-07,22.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.012211784454218846,
+      "observed_relative_area_error": 0.004343926217127765
+    },
+    {
+      "face_signature_sha256": "03b97919b26eee662bd162b26c19fca5be842e4a400cf7e5a3d17ed7688e8442",
+      "geometry_type": "Sphere",
+      "bbox_mm_json": "[-54.0000001,-2.0000001,19.9999999,-51.9999999,1e-07,22.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.012211784454223277,
+      "observed_relative_area_error": 0.00434392621712522
+    },
+    {
+      "face_signature_sha256": "41fc686a95397a62815f6d43af6022fd5020d43df586b9c8527de4849e392a76",
+      "geometry_type": "Sphere",
+      "bbox_mm_json": "[-54.0000001,-2.0000001,-20.0000001,-51.9999999,1e-07,-17.9999999]",
+      "observed_maximum_q8_surface_deviation_mm": 0.012211784454218968,
+      "observed_relative_area_error": 0.004343926217126493
+    },
+    {
+      "face_signature_sha256": "3b29a61d53af393548af5612d1d4a2edfa54dd982677e8bb0d9ec4eaca2e85e0",
+      "geometry_type": "Sphere",
+      "bbox_mm_json": "[-14.0000001,-2.0000001,-20.0000001,-11.9999999,1e-07,-17.9999999]",
+      "observed_maximum_q8_surface_deviation_mm": 0.012211784454215328,
+      "observed_relative_area_error": 0.0043439262171267755
+    },
+    {
+      "face_signature_sha256": "03e14566612dc333701e6c8ee2af681cbe74c12f3dbf10d0afb51354ec94ef2c",
+      "geometry_type": "Sphere",
+      "bbox_mm_json": "[-14.0000001,-2.0000001,14.9999999,-11.9999999,1e-07,17.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.012211784454215937,
+      "observed_relative_area_error": 0.004343926217127058
+    },
+    {
+      "face_signature_sha256": "135165e71980ebe2ba0d4d7f7946fc31626f91b86b58def98f0cd02851c666e5",
+      "geometry_type": "Sphere",
+      "bbox_mm_json": "[11.9999999,-2.0000001,14.9999999,14.0000001,1e-07,17.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.012211784454215328,
+      "observed_relative_area_error": 0.004343926217127058
+    },
+    {
+      "face_signature_sha256": "38c2f881b61aaa459c67c937540dcf38e49977a7f155bda442d0468969cfc9a0",
+      "geometry_type": "Sphere",
+      "bbox_mm_json": "[11.9999999,-2.0000001,-20.0000001,14.0000001,1e-07,-17.9999999]",
+      "observed_maximum_q8_surface_deviation_mm": 0.012211784454219395,
+      "observed_relative_area_error": 0.004343926217126493
+    },
+    {
+      "face_signature_sha256": "0a6e0998123ea8c12669e829b9aea9ec1e869f10a964f8eb6ba09eaa003b437a",
+      "geometry_type": "Sphere",
+      "bbox_mm_json": "[51.9999999,-2.0000001,-20.0000001,54.0000001,1e-07,-17.9999999]",
+      "observed_maximum_q8_surface_deviation_mm": 0.012211784454223277,
+      "observed_relative_area_error": 0.004343926217125644
+    },
+    {
+      "face_signature_sha256": "ea76d29e0d7f106e65bd8d0c0ad08fa93a8c80d834ed89f42758a825a07bc42e",
+      "geometry_type": "Sphere",
+      "bbox_mm_json": "[51.9999999,-2.0000001,19.9999999,54.0000001,1e-07,22.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.012211784454222363,
+      "observed_relative_area_error": 0.004343926217125786
+    },
+    {
+      "face_signature_sha256": "ebed52abf2cace47e860ef64e4ea860b6621c6721ae37499d5bf5c008ecbd67e",
+      "geometry_type": "Sphere",
+      "bbox_mm_json": "[33.9999999,-2.0000001,19.9999999,36.0000001,1e-07,22.0000001]",
+      "observed_maximum_q8_surface_deviation_mm": 0.012211784454215328,
+      "observed_relative_area_error": 0.004343926217128755
+    }
+  ],
+  "successor_distance_field": {
+    "entities": "all 21 exact failing face signatures plus every exact owner-boundary curve",
+    "size_min_mm": 0.35,
+    "size_max_mm": 3.0,
+    "dist_min_mm": 0.0,
+    "dist_max_mm": 2.5,
+    "classification": "PRE-REGISTERED BOUNDED DIAGNOSTIC RETRY; NOT ACCEPTED PRODUCTION"
+  },
+  "acceptance": "all exterior facets uniquely mapped; max Q8 deviation <=0.005 mm; loaded geometry gates retained; no regression in R285 identity/SICN/Q4/Q6/Q8 gates",
+  "authority": {
+    "r279_c02": false,
+    "r278_h02": false,
+    "capacity": false,
+    "safety": false,
+    "work": false
+  },
+  "warning": "PRELIMINARY - EXACT FACET/B-REP AND LOAD-GEOMETRY EVIDENCE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}
