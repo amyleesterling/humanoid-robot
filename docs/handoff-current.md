@@ -1,4 +1,6 @@
-R281 J2 numerical backend: **`HR-V0-J2-NUMERICAL-BACKEND-P0.1` establishes a bounded residual-controlled iterative P2 route for C06 and both C07 paths and a C07 mesh method passing SICN quality. This enables L0-L3 execution but does not close H02 or grant capacity/work credit.**
+R282 J2 refinement erratum: **`HR-V0-J2-REFINEMENT-ERRATUM-P0.1` corrects the incomplete R279 execution details. C07 curved Tet10 geometry currently fails signed-Jacobian screening; H02, capacity and all physical work remain blocked.**
+
+R281 J2 numerical backend: **`HR-V0-J2-NUMERICAL-BACKEND-P0.1` establishes bounded P2-displacement / linear-geometry P2C feasibility for C06 and both C07 paths; C07 L0 passes only two global SICN screens, not full R279-C02. This does not itself enable defensible L0-L3 execution but does not close H02 or grant capacity/work credit.**
 
 R280 J2 refinement execution feasibility: **`HR-V0-J2-STOP-REFINEMENT-EXECUTION-P0.1` proves exact OCC tagging/local fields but rejects the current execution route: C07 L0 fails mesh quality, two direct P2 solves exceed practical memory without results, and the one P1 case has zero convergence/capacity credit. R278-H02 stays open; solver/mesh repair is required.**
 

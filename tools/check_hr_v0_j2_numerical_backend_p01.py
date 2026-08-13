@@ -39,6 +39,12 @@ def main():
     for token in (WARNING,"The P2 route is now computationally viable","H02 stays open","font:17px","font-size:16px","overflow:auto"):need(token in page,f"web {token}")
     cfg=json.loads((CFG/"package-status.json").read_text(encoding="utf-8"));need(cfg["identifier"]=="HR-V0-CONFIG-REC-P0.45" and cfg["round"]=="R281","config identity");need(cfg["current_records"]==64 and cfg["open_holds"]==376 and cfg["acceptance_rows"]==430,"config count");need(cfg["j2_bounded_p2_cases_passed"]==3 and cfg["j2_c07_mesh_quality_route_feasible"] is True and cfg["r278_h02_closed"] is False,"config evidence")
     for r in rows(CFG/"source-hash-register.csv"):need(sha(ROOT/r["source_path"])==r["sha256"],f"source hash {r['source_path']}")
+    current_handoff=(ROOT/"docs/handoff-current.md").read_text(encoding="utf-8")
+    current_readme=(ROOT/"README.md").read_text(encoding="utf-8")
+    if current_handoff.startswith("R282 J2 refinement erratum:") and "Two hundred eighty-two rounds are complete" in current_readme:
+        need((ROOT/"docs/review-ledger.md").read_text(encoding="utf-8").count("| R281 |")==1,"ledger")
+        print("PASS: R281 residual-controlled P2/C07 mesh route is synchronized; R282 erratum is current and all work authority remains open")
+        return 0
     need((ROOT/"docs/handoff-current.md").read_text(encoding="utf-8").startswith("R281 J2 numerical backend:"),"handoff");need((ROOT/"docs/review-ledger.md").read_text(encoding="utf-8").count("| R281 |")==1,"ledger");need("Two hundred eighty-one rounds are complete" in (ROOT/"README.md").read_text(encoding="utf-8"),"README")
     print("PASS: R281 residual-controlled P2/C07 mesh route is synchronized; multi-level convergence, H02 and all work authority remain open");return 0
 if __name__=="__main__":raise SystemExit(main())

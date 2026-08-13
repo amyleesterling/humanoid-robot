@@ -1,0 +1,2 @@
+attempt_id,parts,failure,evidence,correction,credit,warning
+R282-CURVED-ATTEMPT-01,"C06,C07",Gmsh quadratic edge triple incorrectly parsed as corner/midside/corner; zero global edges mapped,partial prior curved-import-register: C06 0/18351 and C07 0/26209,parse each triple as corner_a/corner_b/midside and validate every global edge,NONE,"PRELIMINARY - NUMERICAL METHOD PROTOTYPE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

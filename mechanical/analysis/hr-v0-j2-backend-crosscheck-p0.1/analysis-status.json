@@ -1,0 +1,19 @@
+{
+  "identifier": "HR-V0-J2-BACKEND-CROSSCHECK-P0.1",
+  "case": "C06 exact CAD deliberately coarse P2-displacement/linear-geometry",
+  "cg_info": 0,
+  "solution_relative_l2_difference": 7.382440192865555e-13,
+  "energy_relative_difference": 1.0865974052765746e-12,
+  "max_displacement_relative_difference": 6.631311239028477e-13,
+  "acceptance_tolerance": 1e-08,
+  "direct_true_residual_gate": 1e-10,
+  "iterative_true_residual_gate": 1e-10,
+  "backend_crosscheck_pass": true,
+  "affine_patch_test_executed": true,
+  "r281_acc_04_closed": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - NUMERICAL BACKEND CROSS-CHECK ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "affine_patch_test_pass": true
+}

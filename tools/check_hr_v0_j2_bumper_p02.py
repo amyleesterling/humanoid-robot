@@ -70,9 +70,9 @@ def main() -> int:
     need(any(r["item_id"] == "BOM-110" and r["bound_identifier"] == status["identifier"] for r in rows(CFG / "bom-integration-map.csv")), "BOM integration missing")
     bom = {r["item_id"]:r for r in rows(ROOT / "bom/bom.csv")}
     need("BOM-110" in bom and "2300327" in bom["BOM-110"]["manufacturer_part_number"], "master BOM missing pad candidate")
-    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R276 exact-contact J2 pad correction:", "R277 J2 pad-pocket correction:", "R278 exact-normal J2 stop correction:", "R279 J2 convergence protocol:", "R280 J2 refinement execution feasibility:", "R281 J2 numerical backend:")), "handoff drift")
+    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R276 exact-contact J2 pad correction:", "R277 J2 pad-pocket correction:", "R278 exact-normal J2 stop correction:", "R279 J2 convergence protocol:", "R280 J2 refinement execution feasibility:", "R281 J2 numerical backend:", "R282 J2 refinement erratum:")), "handoff drift")
     need("| R276 |" in (ROOT / "docs/review-ledger.md").read_text(encoding="utf-8"), "ledger drift")
-    need(any(text in (ROOT / "README.md").read_text(encoding="utf-8") for text in ("Two hundred seventy-six rounds are complete", "Two hundred seventy-seven rounds are complete", "Two hundred seventy-eight rounds are complete", "Two hundred seventy-nine rounds are complete", "Two hundred eighty rounds are complete", "Two hundred eighty-one rounds are complete")), "README count drift")
+    need(any(text in (ROOT / "README.md").read_text(encoding="utf-8") for text in ("Two hundred seventy-six rounds are complete", "Two hundred seventy-seven rounds are complete", "Two hundred seventy-eight rounds are complete", "Two hundred seventy-nine rounds are complete", "Two hundred eighty rounds are complete", "Two hundred eighty-one rounds are complete", "Two hundred eighty-two rounds are complete")), "README count drift")
     print("PASS: R276 exact-contact pad boundary is synchronized and fail-closed; no work or safety authority released")
     return 0
 
