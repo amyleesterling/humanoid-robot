@@ -1,0 +1,74 @@
+{
+  "identifier": "HR-V0-J2-EXACT-ZONE-SUBMODEL-ARCH-P0.1",
+  "step_sha256": {
+    "C06": "ad75415d9921e6e0f435b838af5f48559c9ae518ce03dba52d0a098ba582d275",
+    "C07": "fc4178769862d39bf1eee881391de2852e4fc0e4424af4e5c1814981737365de"
+  },
+  "geometric_edge_signatures": {
+    "C06:C06-RR-PROFILE": [
+      "93a5150039d5c888059a185d3b84512b970fcdfe82b85eb746ccf2b990b1997e"
+    ],
+    "C06:C06-RR-STEP": [
+      "42280d2e922b240b7be014e48be879897f3af6cff9bc5d9137bd3db682ec9c01",
+      "728255167a38afd4cb8cc712f21a04d59c0d827a08f3da18a4f31f1708514526",
+      "0e4452efaf1454b86475f0d27417c7c8d5463188dc3512026b81c2948d4cc239",
+      "dbad31353c3e324a4ff4620d8bb8049668f56d6869c9cc923b319f273b4051a8"
+    ],
+    "C07:C07-PE": [
+      "c3e89b907c3b58591a00f9fe959b9be397d69542c9a598675fdcaf7395a33dea",
+      "e8c527934dcbad1f592f82111e1d8b5fff2737fda5aa88240c65015bd9b138df",
+      "8300dcc81a72a904267c5f3f72f93c2ed1acadb2b108e2bca239d81ec31b412d",
+      "44eb1425f4c71aa4be7146843c9dd7e6d513a4b12beee42621cebe5def6843b6",
+      "1fc3f9c598f8c180f7704df18fd436e85a1220022a10c32c816aa1200695c91f",
+      "3650ffd3e066226fa3bbb1609ef8df0e77841259877e7aa38fb35053ec86866f",
+      "e5646fae53a34033d70efa79b140afc3b8f66f500da1518a911f26b2da08b796",
+      "eab616e2bd03d274447a3a2b81b75bdab81c400db449c506e8d1f93f257d1236"
+    ]
+  },
+  "membership": {
+    "C06-RR-PROFILE": {
+      "operation": "exact OCC point-to-edge distance",
+      "radius_mm": 3.0,
+      "subzones": [
+        "INBOARD_Y_FRONT",
+        "INBOARD_Y_BACK",
+        "OUTBOARD_Y_FRONT",
+        "OUTBOARD_Y_BACK"
+      ],
+      "clipped_volume_required_for_production": true
+    },
+    "C06-RR-STEP": {
+      "operation": "exact OCC point-to-edge distance",
+      "radius_mm": 3.0,
+      "separate_from_profile": true,
+      "clipped_volume_required_for_production": true
+    },
+    "C07-PE": {
+      "operation": "exact OCC point-to-edge distance",
+      "radius_mm": 1.0,
+      "retained_exact_brep_boundary_curves": 8,
+      "straight_edges": 4,
+      "corner_r2_arcs": 4,
+      "closed_loop_order": [
+        "SOUTH_WEST_CORNER_R2",
+        "WEST_STRAIGHT",
+        "NORTH_WEST_CORNER_R2",
+        "NORTH_STRAIGHT",
+        "NORTH_EAST_CORNER_R2",
+        "EAST_STRAIGHT",
+        "SOUTH_EAST_CORNER_R2",
+        "SOUTH_STRAIGHT"
+      ],
+      "identity": "each of eight curves has geometric signature, owner-face/wire/order/orientation adjacency, and exactly one shared endpoint with its successor",
+      "clipped_volume_required_for_production": true
+    }
+  },
+  "prohibited": [
+    "tetrahedron-centroid membership",
+    "sampled-polyline distance",
+    "element-mean stress before RMS or p95",
+    "transient OCC tag as identity"
+  ],
+  "production_boundary": "cell/zone and facet/zone B-Rep clipping plus solver quadrature fields remain required",
+  "warning": "PRELIMINARY - NUMERICAL METHOD PROTOTYPE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

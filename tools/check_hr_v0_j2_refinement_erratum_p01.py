@@ -45,6 +45,6 @@ def main():
     need(not cfg["j2_c07_curved_import_screen_pass"] and not cfg["r281_acc_04_independently_accepted"] and not cfg["r278_h02_closed"],"config gates")
     for r in rows(CFG/"source-hash-register.csv"):need(sha(ROOT/r["source_path"])==r["sha256"],f"source hash {r['source_path']}")
     page=(REL/"index.html").read_text(encoding="utf-8");need(all(t in page for t in ("H02 remains open","18 wrong-orientation","What R281 got wrong","two global SICN screens","font:17px","font-size:16px","overflow:auto")),"web");need(page.count("PRELIMINARY - PROTOCOL CORRECTION") == 1,"single web warning")
-    need((ROOT/"docs/handoff-current.md").read_text(encoding="utf-8").startswith("R282 J2 refinement erratum:"),"handoff");need((ROOT/"docs/review-ledger.md").read_text(encoding="utf-8").count("| R282 |")==1,"ledger");need("Two hundred eighty-two rounds are complete" in (ROOT/"README.md").read_text(encoding="utf-8"),"README")
+    need((ROOT/"docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R282 J2 refinement erratum:","R283 J2 execution architecture:")),"handoff");need((ROOT/"docs/review-ledger.md").read_text(encoding="utf-8").count("| R282 |")==1,"ledger");need(any(t in (ROOT/"README.md").read_text(encoding="utf-8") for t in ("Two hundred eighty-two rounds are complete","Two hundred eighty-three rounds are complete")),"README")
     print("PASS: R282 protocol correction and bounded method evidence are synchronized; C07 curved screen, H02, capacity and all work authority remain open");return 0
 if __name__=="__main__":raise SystemExit(main())

@@ -180,3 +180,5 @@ R95 improves the nonselected branch again without closing a physical gate. The 7
 Neither a clean ERC result nor a website deployment constitutes design approval. The package remains **PRELIMINARY—NOT APPROVED FOR ENERGIZATION** until the applicable selections, calculations, physical tests, and qualified electrical and functional-safety reviews are complete.
 
 R282 adds `HR-V0-J2-REFINEMENT-ERRATUM-P0.1` as the current J2 refinement execution correction and `HR-V0-CONFIG-REC-P0.46` as the configuration index only. It corrects R281's global-quality overstatement, records the C07 curved-Jacobian failure, and leaves H02 and all work authority open.
+
+R283 adds `HR-V0-J2-EXECUTION-ARCHITECTURE-P0.1` and `HR-V0-CONFIG-REC-P0.47` as fail-closed numerical execution architecture. The exact-zone method advances; the V04 curved mesh is rejected; H02 and all work authority remain open.

@@ -1,0 +1,5 @@
+# HR-V0-CONFIG-REC-P0.47
+
+> **PRELIMINARY - NUMERICAL METHOD ARCHITECTURE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION**
+
+R283 indexes the exact-zone execution architecture and rejected C07 curved-mesh repair. H02 and every work authority remain open.

@@ -1,0 +1,27 @@
+{
+  "generator": {
+    "path": "tools/generate_hr_v0_j2_exact_zone_submodel_p01.py",
+    "sha256": "2fc42ca18f6bc6535610af0e161cd1f2d22ed0f630a2c27505dbc9543586eeb7"
+  },
+  "checker": {
+    "path": "tools/check_hr_v0_j2_exact_zone_submodel_p01.py",
+    "sha256": "402abffc426850fd0645bc25e45ef54fcc1a552d3d0a585fb5b33ed285b53248"
+  },
+  "runtime": {
+    "python_executable": "C:\\Users\\amyle\\Documents\\New project\\.venvs\\hr-v0-cad\\Scripts\\python.exe",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cadquery_version": "2.8.0",
+    "numpy_version": "2.4.6"
+  },
+  "shared_inputs": {
+    "protocol-freeze-register.csv": "fe80367d5aea1107e5563040d18a547a0d537ade9280e09c98a04779b2b8dabc",
+    "exact-zone-register.csv": "364efddf074da3704874174d9c893611b3744ec4fa7a0599ace9ef5b4451904f",
+    "execution-architecture.csv": "c9994b1b9fa3f3b36bbf66291384b7026d431fc0fbb5719ef4d7044d5f711c4d"
+  },
+  "step_inputs": {
+    "cad/hr-v0/generated/arm-architecture-p0.13-pad-pocket-stop/parts/MV0-C06_J2_positive_moving_striker_adapter.step": "ad75415d9921e6e0f435b838af5f48559c9ae518ce03dba52d0a098ba582d275",
+    "cad/hr-v0/generated/arm-architecture-p0.13-pad-pocket-stop/parts/MV0-C07_J2_positive_fixed_catch_adapter.step": "fc4178769862d39bf1eee881391de2852e4fc0e4424af4e5c1814981737365de"
+  },
+  "warning": "PRELIMINARY - NUMERICAL METHOD PROTOTYPE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

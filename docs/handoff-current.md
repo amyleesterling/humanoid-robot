@@ -1,3 +1,5 @@
+R283 J2 execution architecture: **`HR-V0-J2-EXECUTION-ARCHITECTURE-P0.1` freezes exact geometry/run definitions but rejects the V04 curved mesh. H02, capacity and all physical work remain blocked.**
+
 R282 J2 refinement erratum: **`HR-V0-J2-REFINEMENT-ERRATUM-P0.1` corrects the incomplete R279 execution details. C07 curved Tet10 geometry currently fails signed-Jacobian screening; H02, capacity and all physical work remain blocked.**
 
 R281 J2 numerical backend: **`HR-V0-J2-NUMERICAL-BACKEND-P0.1` establishes bounded P2-displacement / linear-geometry P2C feasibility for C06 and both C07 paths; C07 L0 passes only two global SICN screens, not full R279-C02. This does not itself enable defensible L0-L3 execution but does not close H02 or grant capacity/work credit.**
