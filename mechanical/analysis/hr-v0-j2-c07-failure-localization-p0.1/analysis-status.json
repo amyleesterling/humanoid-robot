@@ -1,0 +1,19 @@
+{
+  "identifier": "HR-V0-J2-C07-FAILURE-LOCALIZATION-P0.1",
+  "round": "R284-LOCALIZATION",
+  "step_sha256": "fc4178769862d39bf1eee881391de2852e4fc0e4424af4e5c1814981737365de",
+  "source_variants": [
+    "R284-V03-REFINED",
+    "R284-V06-FINE",
+    "R284-V08-ULTRAFINE"
+  ],
+  "failed_elements_localized": 12,
+  "passing_comparator": "R284-V06-FINE",
+  "remeshing_executed": false,
+  "structural_solution_executed": false,
+  "mesh_convergence_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - CURVED-MESH FAILURE LOCALIZATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

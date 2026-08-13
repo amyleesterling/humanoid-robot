@@ -86,9 +86,9 @@ def main() -> int:
     need(not any(cfg[k] for k in ("fabrication_authorized","powered_testing_authorized","motion_authorized","energization_authorized","safety_credit")), "config authority drift")
     for record in rows(CFG / "source-hash-register.csv"):
         need(sha(ROOT / record["source_path"]) == record["sha256"], f"config source hash drift {record['source_path']}")
-    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R278 exact-normal J2 stop correction:", "R279 J2 convergence protocol:", "R280 J2 refinement execution feasibility:", "R281 J2 numerical backend:", "R282 J2 refinement erratum:", "R283 J2 execution architecture:")), "handoff drift")
+    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R278 exact-normal J2 stop correction:", "R279 J2 convergence protocol:", "R280 J2 refinement execution feasibility:", "R281 J2 numerical backend:", "R282 J2 refinement erratum:", "R283 J2 execution architecture:", "R284 C07 curved-mesh development:")), "handoff drift")
     need((ROOT / "docs/review-ledger.md").read_text(encoding="utf-8").count("| R278 |") == 1, "ledger drift")
-    need(any(text in (ROOT / "README.md").read_text(encoding="utf-8") for text in ("Two hundred seventy-eight rounds are complete", "Two hundred seventy-nine rounds are complete", "Two hundred eighty rounds are complete", "Two hundred eighty-one rounds are complete", "Two hundred eighty-two rounds are complete", "Two hundred eighty-three rounds are complete")), "README count drift")
+    need(any(text in (ROOT / "README.md").read_text(encoding="utf-8") for text in ("Two hundred seventy-eight rounds are complete", "Two hundred seventy-nine rounds are complete", "Two hundred eighty rounds are complete", "Two hundred eighty-one rounds are complete", "Two hundred eighty-two rounds are complete", "Two hundred eighty-three rounds are complete", "Two hundred eighty-four rounds are complete")), "README count drift")
     print("PASS: R278 exact-normal P0.13 linear screens are synchronized and fail-closed; no work or safety authority released")
     return 0
 

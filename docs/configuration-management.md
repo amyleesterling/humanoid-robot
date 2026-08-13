@@ -182,3 +182,5 @@ Neither a clean ERC result nor a website deployment constitutes design approval.
 R282 adds `HR-V0-J2-REFINEMENT-ERRATUM-P0.1` as the current J2 refinement execution correction and `HR-V0-CONFIG-REC-P0.46` as the configuration index only. It corrects R281's global-quality overstatement, records the C07 curved-Jacobian failure, and leaves H02 and all work authority open.
 
 R283 adds `HR-V0-J2-EXECUTION-ARCHITECTURE-P0.1` and `HR-V0-CONFIG-REC-P0.47` as fail-closed numerical execution architecture. The exact-zone method advances; the V04 curved mesh is rejected; H02 and all work authority remain open.
+
+R284 adds `HR-V0-J2-CURVED-MESH-DEVELOPMENT-P0.1` and `HR-V0-CONFIG-REC-P0.48` as fail-closed curved-mesh development evidence. Bounded candidates exist, but the sequence is non-monotonic and R279-C02, H02 and all work authority remain open.

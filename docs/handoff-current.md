@@ -1,3 +1,5 @@
+R284 C07 curved-mesh development: **`HR-V0-J2-CURVED-MESH-DEVELOPMENT-P0.1` finds bounded method candidates but no convergence. R279-C02, H02, capacity and all physical work remain blocked.**
+
 R283 J2 execution architecture: **`HR-V0-J2-EXECUTION-ARCHITECTURE-P0.1` freezes exact geometry/run definitions but rejects the V04 curved mesh. H02, capacity and all physical work remain blocked.**
 
 R282 J2 refinement erratum: **`HR-V0-J2-REFINEMENT-ERRATUM-P0.1` corrects the incomplete R279 execution details. C07 curved Tet10 geometry currently fails signed-Jacobian screening; H02, capacity and all physical work remain blocked.**

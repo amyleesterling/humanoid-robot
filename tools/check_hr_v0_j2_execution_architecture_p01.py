@@ -77,9 +77,9 @@ def main() -> int:
         need(sha(ROOT / record["source_path"]) == record["sha256"], f"config source hash {record['source_path']}")
     page = (REL / "index.html").read_text(encoding="utf-8")
     need(all(token in page for token in ("The execution architecture advanced", "curved mesh did not", "H02 remains open", "font-size:16px", "overflow:auto")), "web guide")
-    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith("R283 J2 execution architecture:"), "handoff")
+    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R283 J2 execution architecture:", "R284 C07 curved-mesh development:")), "handoff")
     need((ROOT / "docs/review-ledger.md").read_text(encoding="utf-8").count("| R283 |") == 1, "review ledger")
-    need("Two hundred eighty-three rounds are complete" in (ROOT / "README.md").read_text(encoding="utf-8"), "README count")
+    need(any(text in (ROOT / "README.md").read_text(encoding="utf-8") for text in ("Two hundred eighty-three rounds are complete", "Two hundred eighty-four rounds are complete")), "README count")
     print("PASS: R283 exact-zone execution architecture synchronized; V04 rejected, H02/capacity/all work authority open")
     return 0
 

@@ -1,0 +1,19 @@
+{
+  "identifier": "HR-V0-J2-C07-FIXED-CORNER-SCREEN-P0.1",
+  "round": "R284-DEVELOPMENT",
+  "variants_executed": 3,
+  "passing_variants": [
+    "R284-V06-FINE"
+  ],
+  "r279_c02_complete": false,
+  "mesh_convergence_complete": false,
+  "r278_h02_closed": false,
+  "capacity_established": false,
+  "selected": false,
+  "safety_credit": false,
+  "fabrication_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - FIXED-CORNER CURVED-MESH DEVELOPMENT SCREEN ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

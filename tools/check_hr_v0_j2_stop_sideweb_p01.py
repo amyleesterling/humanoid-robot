@@ -65,7 +65,7 @@ def main() -> int:
         for record in rows(directory / "file-manifest.csv"):
             path = directory / record["relative_path"]
             need(path.is_file() and sha(path) == record["sha256"] and path.stat().st_size == int(record["bytes"]), f"manifest {path}")
-    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R272 mixed-side J2 stop candidate:", "R273 access-well J2 stop candidate:", "R274 A04 exact-candidate joint package:", "R275 J2 soft-contact pad boundary:", "R276 exact-contact J2 pad correction:", "R277 J2 pad-pocket correction:", "R278 exact-normal J2 stop correction:", "R279 J2 convergence protocol:", "R280 J2 refinement execution feasibility:", "R281 J2 numerical backend:", "R282 J2 refinement erratum:", "R283 J2 execution architecture:")), "handoff")
+    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R272 mixed-side J2 stop candidate:", "R273 access-well J2 stop candidate:", "R274 A04 exact-candidate joint package:", "R275 J2 soft-contact pad boundary:", "R276 exact-contact J2 pad correction:", "R277 J2 pad-pocket correction:", "R278 exact-normal J2 stop correction:", "R279 J2 convergence protocol:", "R280 J2 refinement execution feasibility:", "R281 J2 numerical backend:", "R282 J2 refinement erratum:", "R283 J2 execution architecture:", "R284 C07 curved-mesh development:")), "handoff")
     need("| R272 |" in (ROOT / "docs/review-ledger.md").read_text(encoding="utf-8"), "ledger")
     print("R272 mixed-side stop package checks: PASS")
     return 0
