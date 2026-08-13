@@ -1,0 +1,2 @@
+baseline_id,status_sha256,global_sicn_gate,monitored_zone_minimum_gate,actual_quadrature_signed_jacobian_gate,r279_c02_complete,retention,warning
+R289,a06de05df183c45ddfc70778ecdfe794e5a75eaa563348690f64d24aef638bfe,True,False,False,False,IMMUTABLE FAILED BASELINE,"PRELIMINARY - PREREGISTERED CONFORMAL SUCCESSOR MESH EVIDENCE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

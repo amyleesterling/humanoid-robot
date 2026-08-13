@@ -1,0 +1,16 @@
+{
+  "identifier": "HR-V0-J2-C07-CONFORMAL-SUCCESSOR-DISPOSITION-P0.1",
+  "round": "R292",
+  "date": "2026-08-13",
+  "retained_success": "R291 symmetry-closed cylinder-face refinement eliminates all sampled actual-quadrature curved Jacobian failures",
+  "rejected_method": "further pocket-straight-only size reduction; R291 showed nonmonotone SICN regression",
+  "required_next_preregistration": "preserve R291 face refinement and exact zone CAD; change the linear mesh optimization/topology method at the PE tangent junctions under a single frozen candidate; suggested bounded screen Netgen followed by Relocate3D, with no threshold changes",
+  "acceptance_thresholds_unchanged": true,
+  "next_mesh_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - CONFORMAL SUCCESSOR DISPOSITION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

@@ -1,0 +1,15 @@
+{
+  "identifier": "HR-V0-J2-C07-CONFORMAL-SUCCESSOR-PREREG-P0.1",
+  "round": "R291-PREREG",
+  "exact_volume_targets": 4,
+  "exact_face_targets": 6,
+  "x_mirror_closed": true,
+  "thresholds_unchanged": true,
+  "mesh_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - SUCCESSOR MESH PREREGISTRATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

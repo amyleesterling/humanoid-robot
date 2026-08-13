@@ -1,0 +1,46 @@
+{
+  "identifier": "HR-V0-J2-C07-CONFORMAL-SUCCESSOR-PREREG-P0.1",
+  "round": "R291-PREREG",
+  "date": "2026-08-13",
+  "r288_brep_sha256": "7646e67482c06e45bb97f4fa2ddf8e3f159dc2e3645841f28237870b862c123c",
+  "r289_status_sha256": "a06de05df183c45ddfc70778ecdfe794e5a75eaa563348690f64d24aef638bfe",
+  "r290_status_sha256": "86b732a733c5a4caf745e9a053deba9caace9b7b832b091e758bae7342219b9f",
+  "exact_failed_volume_targets": [
+    "C07-PE-EAST-STRAIGHT",
+    "C07-PE-NORTH-STRAIGHT",
+    "C07-PE-SOUTH-STRAIGHT",
+    "C07-PE-WEST-STRAIGHT"
+  ],
+  "exact_failed_volume_target_count": 4,
+  "symmetry_closed_exact_face_target_count": 6,
+  "observed_face_count": 4,
+  "mirror_closure_face_count": 2,
+  "base_prescription": "R289 unchanged: global 3.0; PE/PF/rims 0.25; ligaments 0.40; Algorithm3D=1; Netgen linear optimization; no high-order optimizer",
+  "additional_volume_field": {
+    "size_min_mm": 0.18,
+    "size_max_mm": 3.0,
+    "dist_min_mm": 0.0,
+    "dist_max_mm": 0.75
+  },
+  "additional_face_field": {
+    "size_min_mm": 0.35,
+    "size_max_mm": 3.0,
+    "dist_min_mm": 0.0,
+    "dist_max_mm": 2.0
+  },
+  "acceptance_thresholds": {
+    "global_min_sicn": 0.1,
+    "global_fraction_below_0p20_max": 0.001,
+    "each_monitored_zone_min_sicn": 0.2,
+    "actual_gauss4_6_8_wrong_or_zero": 0,
+    "actual_gauss4_6_8_normalized_floor_fail": 0
+  },
+  "stop_rule": "one execution only; pass only if all unchanged R279-C02 gates pass; otherwise retain failure and localize before another prescription",
+  "mesh_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - SUCCESSOR MESH PREREGISTRATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}
