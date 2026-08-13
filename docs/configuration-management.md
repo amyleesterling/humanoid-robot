@@ -184,3 +184,5 @@ R282 adds `HR-V0-J2-REFINEMENT-ERRATUM-P0.1` as the current J2 refinement execut
 R283 adds `HR-V0-J2-EXECUTION-ARCHITECTURE-P0.1` and `HR-V0-CONFIG-REC-P0.47` as fail-closed numerical execution architecture. The exact-zone method advances; the V04 curved mesh is rejected; H02 and all work authority remain open.
 
 R284 adds `HR-V0-J2-CURVED-MESH-DEVELOPMENT-P0.1` and `HR-V0-CONFIG-REC-P0.48` as fail-closed curved-mesh development evidence. Bounded candidates exist, but the sequence is non-monotonic and R279-C02, H02 and all work authority remain open.
+
+R285 adds `HR-V0-J2-TARGETED-REMESH-DISPOSITION-P0.1` and `HR-V0-CONFIG-REC-P0.49` as fail-closed targeted-remesh evidence. Repeatable finite samples do not close exact B-Rep/facet/load/full-domain/exact-zone/R279-C02/H02 or any work authority.

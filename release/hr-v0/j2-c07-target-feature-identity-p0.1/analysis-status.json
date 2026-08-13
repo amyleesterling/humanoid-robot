@@ -1,0 +1,17 @@
+{
+  "identifier": "HR-V0-J2-C07-TARGET-FEATURE-IDENTITY-P0.1",
+  "round": "R285-FEATURE-FREEZE",
+  "step_sha256": "fc4178769862d39bf1eee881391de2852e4fc0e4424af4e5c1814981737365de",
+  "surface_groups_frozen": 3,
+  "surface_entities": 12,
+  "boundary_curve_entities": 46,
+  "feature_topology_gate": true,
+  "mesh_generated": false,
+  "curved_jacobian_screen_executed": false,
+  "structural_solution_executed": false,
+  "mesh_convergence_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - EXACT FEATURE-IDENTITY AND REMESH-PRESCRIPTION PROTOTYPE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

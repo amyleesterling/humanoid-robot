@@ -1,3 +1,5 @@
+R285 targeted C07 remesh: **`HR-V0-J2-TARGETED-REMESH-DISPOSITION-P0.1` is a repeatable bounded sampled-Jacobian candidate only. Exact B-Rep/facet/load/full-domain/exact-zone/R279-C02/H02/capacity and all physical work remain blocked.**
+
 R284 C07 curved-mesh development: **`HR-V0-J2-CURVED-MESH-DEVELOPMENT-P0.1` finds bounded method candidates but no convergence. R279-C02, H02, capacity and all physical work remain blocked.**
 
 R283 J2 execution architecture: **`HR-V0-J2-EXECUTION-ARCHITECTURE-P0.1` freezes exact geometry/run definitions but rejects the V04 curved mesh. H02, capacity and all physical work remain blocked.**

@@ -1,0 +1,57 @@
+{
+  "identifier": "HR-V0-J2-C07-TARGETED-REMESH-P0.1",
+  "round": "R285",
+  "classification": "CONFIRMATORY METHOD SCREEN",
+  "variant_id": "R285-CONFIRMATORY-TARGETED-V06-P01",
+  "fresh_process_runs": [
+    "run-a",
+    "run-b-repeat",
+    "run-c-repeat"
+  ],
+  "step_sha256": "fc4178769862d39bf1eee881391de2852e4fc0e4424af4e5c1814981737365de",
+  "feature_identity_register_sha256": "d3682b5796a38277250b84c265fdb48a9e2199226b80e29039292321761d9831",
+  "feature_preregistration_sha256": "79f6f897eb48c4e76112276c32c2375dbcd61f2cdb3fcf3f6082fdc7a9569aa3",
+  "feature_identity_generator_sha256": "dcbd76762a9e5a1d16455cdb8581c11a14be791661bc950e7c5d14fb01650125",
+  "feature_identity_checker_sha256": "323efefb86a76c5ce186a8ef814189d56c9a91840dee07806835ba7bb8123429",
+  "general_num_threads": 1,
+  "algorithm3d": 1,
+  "linear_optimizer": "Netgen",
+  "high_order_optimizer": "NONE",
+  "exact_sizes_mm": {
+    "global": 3.0,
+    "pocket": 0.5,
+    "original_hole_faces": 0.75,
+    "backside_boss_faces": 0.75,
+    "backside_boss_rim_curves": 0.75,
+    "rail_transition_faces": 0.5,
+    "rail_transition_curves": 0.5
+  },
+  "exact_transition_distances_mm": {
+    "original_hole_and_boss_faces_and_rims": 3.0,
+    "pocket_and_rail_faces_and_curves": 2.5,
+    "pocket_floor": 1.5
+  },
+  "sampled_quadrature_orders": [
+    4,
+    6,
+    8
+  ],
+  "normalized_determinant_floor": 1e-10,
+  "linear_sicn_minimum": 0.1,
+  "maximum_fraction_linear_sicn_below_0p20": 0.001,
+  "fixed_sicn_histogram_edges": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "acceptance": "all three runs pass identity, global SICN and finite Q4/Q6/Q8 gates; all retained raw arrays and target signatures repeat exactly",
+  "warning": "PRELIMINARY - TARGETED CURVED-MESH METHOD EVIDENCE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

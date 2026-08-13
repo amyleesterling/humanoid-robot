@@ -41,7 +41,7 @@ def main():
     for r in rows(CFG/"source-hash-register.csv"):need(sha(ROOT/r["source_path"])==r["sha256"],f"source hash {r['source_path']}")
     current_handoff=(ROOT/"docs/handoff-current.md").read_text(encoding="utf-8")
     current_readme=(ROOT/"README.md").read_text(encoding="utf-8")
-    if current_handoff.startswith(("R282 J2 refinement erratum:", "R283 J2 execution architecture:", "R284 C07 curved-mesh development:")) and any(text in current_readme for text in ("Two hundred eighty-two rounds are complete", "Two hundred eighty-three rounds are complete", "Two hundred eighty-four rounds are complete")):
+    if current_handoff.startswith(("R282 J2 refinement erratum:", "R283 J2 execution architecture:", "R284 C07 curved-mesh development:", "R285 targeted C07 remesh:")) and any(text in current_readme for text in ("Two hundred eighty-two rounds are complete", "Two hundred eighty-three rounds are complete", "Two hundred eighty-four rounds are complete", "Two hundred eighty-five rounds are complete")):
         need((ROOT/"docs/review-ledger.md").read_text(encoding="utf-8").count("| R281 |")==1,"ledger")
         print("PASS: R281 residual-controlled P2/C07 mesh route is synchronized; R282 erratum is current and all work authority remains open")
         return 0

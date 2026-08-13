@@ -1,0 +1,160 @@
+{
+  "identifier": "HR-V0-J2-C07-TARGET-FEATURE-IDENTITY-P0.1",
+  "step_sha256": "fc4178769862d39bf1eee881391de2852e4fc0e4424af4e5c1814981737365de",
+  "identity_policy": "Match exact entity geometry and owner adjacency to these signatures before using transient OCC tags; exact count mismatch or empty group stops meshing.",
+  "groups": {
+    "BACKSIDE_BOSS_SURFACES": {
+      "dimension": 2,
+      "expected_count": 4,
+      "expected_geometry_type": "Cylinder",
+      "geometric_signatures_sha256": [
+        "0d9ee57832e8f50edd6fdf05c90faf2640656d2f2aaab18e5650c66223ecd994",
+        "4f32d157015f7959d6b460654c5ebb296af3a90ee6cd3576b23cbeb9d725ff61",
+        "5913c07ad065efcee623cc4d0459cafacb31e2eb728297f5564d4eb86c5b4a04",
+        "cdc7e0d8caebea97550e3f5b1a16b56e8ef9896a52cb6b441a09f359ef5d5e68"
+      ]
+    },
+    "BACKSIDE_BOSS_BOUNDARY_CURVES": {
+      "dimension": 1,
+      "expected_count": 20,
+      "owner_face_required": true,
+      "geometric_signatures_sha256": [
+        "1dad4cd9a1f201807f57366760250b22b7b5dff909a46a24ed3088ec7f086702",
+        "47ca1416a1bb0789b9461729b0cc780684a4b8627b1d1fc8951cf33cca8c5542",
+        "54ac9ff8074a0a2fe16d23b5fd4cb607217bbf2534042d4aef537f050dd28e67",
+        "58b343a799a7591bd8db885fa2638c869aba8bf0827dc0712159151d2130e98e",
+        "5a3628d6cff3f1d6659d8bc1df29b1a715e9772e514081b3f78fe24dfc98fbed",
+        "5bf2fc79b61ba0534d905ffb9a4c8f9fa9ebf7e04f319eef9b023d5b551ecf91",
+        "7911490859941b1a8bc5a9928f3c885b3ae58483f772853677eb0ec4e6b99daf",
+        "8357be395071b73031f8259e345b09600b4d4cf3150e778045d0383ac0295157",
+        "86000155bbc3cc483f04905a1471067a21e79bf13aff8d6acaeee470cbca7eeb",
+        "938521ab8447542bbf9639e426a17f1c27101168020f130258ed7be81825f9c9",
+        "950f487c925bdb000fe83c716ab78a912773bef471d95402c2086565acd78185",
+        "9aae673165b14477325363935b94010dfd71e36635d183c245c5405edc472059",
+        "bd939f36d58b2d1d65b35bfe68d5495686baa39eba4b956e1d47e6ce770c0a6b",
+        "ddfc9bae052cd35ed219bb79c0e0e5b12766958a4bce57c845c473abc1215807",
+        "e3544eab41fe25b027ed767c07c827f8f9c5af3d4041df6c8254ad6e8eab78a1",
+        "e6a596d6c6824827f364c031b94f4c12b4321e73047ce281ba12f34a273f6f99",
+        "e932f5cd6581f4802d1ac6c177bd6ac66d4909a024a822af20100185f27210a6",
+        "ece6203cb26053b927542b153d89034d5f97acc0c9743444545a3fbe56a1ecd0",
+        "ef0f789d59b2317facf70ec40ec9e9b998777c90098d9e2e21a66a6c57dc834d",
+        "fb1ce6c51e1f09985405e0aad7dcadaf0da8dea5da4c39ff1fc0025b781c4e04"
+      ]
+    },
+    "ORIGINAL_BORE_SURFACES": {
+      "dimension": 2,
+      "expected_count": 6,
+      "expected_geometry_type": "Cylinder",
+      "geometric_signatures_sha256": [
+        "18dff3957a41056153727cb624b7877093191d191a856f3b0ad9f4135e006e1d",
+        "229a0f69e59f2933691d79cf56e727680f714d55242bfaad3b320cde331c9690",
+        "37148cc113af92dee8ca91e1b0bb013abed4fb6a7a498fcb9698ce5c978fd250",
+        "4cc97cff564f9ba60d1df79a04b8ccb5e6063b54be5c8435ec8c219447702c26",
+        "6c99ca00d2708b6007ec10c40dc1febae253df2024dc9e2ec3f506e46c0dff75",
+        "99aaaaa9cccda81ff434bd7efd8be2268bdce6fa99e16093fba7f797ce618004"
+      ]
+    },
+    "ORIGINAL_BORE_BOUNDARY_CURVES": {
+      "dimension": 1,
+      "expected_count": 18,
+      "owner_face_required": true,
+      "geometric_signatures_sha256": [
+        "1fb6adabe977729f942a6c2687509388f072e7392ed43e141bc5c17c473784c5",
+        "306befaf9f350d4249345da7b4beb45e9bf764be837116a448ecd72b599f13eb",
+        "35bff273b667597e9d18fb72a5df5271470b4f77a5fb66c3cd31f8e7e1375a56",
+        "3e574ab021b704d9872ee47d32f8d24a0da4c0a50b1d82c9bb06459c3bb21477",
+        "4501bf7a790886967016273c56e7c9597287fbf6826c4d6870bb7d080bf57842",
+        "800279a2a580156547b36dcaf106f7563a9a8e3714474043100a6b4e0ed1ff76",
+        "95a8e824083248956289121150d51acfe7e2c789f3b81f6ecf4d992408cdfb2f",
+        "9b8cfa8f3eb9d682ff1c37763eaf6aa354ad7fea059f75fcd5d84ca5662b8fd1",
+        "af576822a92c5826ed9efd2496de574863835acbb7298ff3778a4a2033909621",
+        "b110c292f872972abdca9e3f650f0363d692f150378ee8fb521115db19b3eeb0",
+        "b20f6242d6a0a9d2ad7a9425100f19c9e360dfc7cd7f94ee0f7f86ec2503459e",
+        "b2a8c6389c0c9338f34de62e6fcdd191b2579c757b356acdee7651129165f999",
+        "ce16930e907cbb7a1f8945d5d20c2e0d1303302b2ff90e6998c0b75ccc6b97c3",
+        "d38e9f428173362d8d0e610feef7336b6fa6ad3479f3d8ea7fecc4a04914d637",
+        "db78af6a3a00274c68506ce7dbd6554b554a8dd44a7ceeaaae6cfe71dfc41b3e",
+        "e0dcafcf5d2e27b9c390b86d0f7fb2473055bb1df85f5f2f93ee0e8e04b783fa",
+        "e22eb00cd8850739c1000f9c2e4f807984340b405a95cb7ad902526cc2e71ed6",
+        "e79e9f1fb9e31f6da246a9e08325ed75b573324fb526ea8b747e696db8336bc6"
+      ]
+    },
+    "TOP_RAIL_TRANSITION_SURFACES": {
+      "dimension": 2,
+      "expected_count": 2,
+      "expected_geometry_type": "Cylinder",
+      "geometric_signatures_sha256": [
+        "0b133b656f5e80c32f246112a128db908c59b2cd42de756aba77abaee00fafa0",
+        "f1abfd12cb17bf0e032a83b59a3f284dd5890f01abe0517220a70aa52a7fbe59"
+      ]
+    },
+    "TOP_RAIL_TRANSITION_BOUNDARY_CURVES": {
+      "dimension": 1,
+      "expected_count": 8,
+      "owner_face_required": true,
+      "geometric_signatures_sha256": [
+        "04c373c67514addf73b0caa25c910fd3fb387bbe295458bc04a1d5e0b46364d3",
+        "4642cc2d54ed6d2bcd1a725a656f8d4911dc6ffb023f205432c8689da72fd47c",
+        "6f6b987c01251a12ae867dbb6d6d9ed039205faf97a8059323767643078ff0f9",
+        "76c01da84dcb60f30780186650601ae10c492884f99a30bc6b150461c908c563",
+        "8dcc753945e71aed47b9e465cbbb232b6516fbae44e48ca02a9ded303525d682",
+        "cda6336830f6fab6a320504634f041d3f5e3ff979e300198bb1d8c67ab2b75fd",
+        "e809c3acea3ebee2593518440468ed815745b16dce8b9ac13d4b17b148e624dc",
+        "e9f9f98d842bf698a62f8b29c27c82701592b094da203bd8e876dfa3fb8fdcb5"
+      ]
+    }
+  },
+  "distance_fields": [
+    {
+      "field_id": "R285-F01",
+      "entities": "ORIGINAL_BORE_SURFACES + ORIGINAL_BORE_BOUNDARY_CURVES",
+      "size_min_mm": 0.75,
+      "size_max_mm": 3.0,
+      "dist_min_mm": 0.0,
+      "dist_max_mm": 3.0,
+      "basis": "V06 passing hole_h=0.75 mm; retains source grading",
+      "status": "RECOMMENDED BOUNDED RETRY; NOT ACCEPTED PRODUCTION",
+      "warning": "PRELIMINARY - EXACT FEATURE-IDENTITY AND REMESH-PRESCRIPTION PROTOTYPE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+    },
+    {
+      "field_id": "R285-F02",
+      "entities": "BACKSIDE_BOSS_SURFACES + BACKSIDE_BOSS_BOUNDARY_CURVES",
+      "size_min_mm": 0.75,
+      "size_max_mm": 3.0,
+      "dist_min_mm": 0.0,
+      "dist_max_mm": 3.0,
+      "basis": "8/11 V03 failed elements localized on previously ungrouped boss cylinders; match V06 hole scale",
+      "status": "RECOMMENDED BOUNDED RETRY; NOT ACCEPTED PRODUCTION",
+      "warning": "PRELIMINARY - EXACT FEATURE-IDENTITY AND REMESH-PRESCRIPTION PROTOTYPE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+    },
+    {
+      "field_id": "R285-F03",
+      "entities": "TOP_RAIL_TRANSITION_SURFACES + TOP_RAIL_TRANSITION_BOUNDARY_CURVES",
+      "size_min_mm": 0.5,
+      "size_max_mm": 3.0,
+      "dist_min_mm": 0.0,
+      "dist_max_mm": 2.5,
+      "basis": "V06 passing pocket-scale start; cross-level V03/V08 negative-X cluster",
+      "status": "RECOMMENDED BOUNDED RETRY; NOT ACCEPTED PRODUCTION",
+      "warning": "PRELIMINARY - EXACT FEATURE-IDENTITY AND REMESH-PRESCRIPTION PROTOTYPE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+    },
+    {
+      "field_id": "R285-F04",
+      "entities": "TOP_RAIL_TRANSITION_SURFACES + TOP_RAIL_TRANSITION_BOUNDARY_CURVES",
+      "size_min_mm": 0.35,
+      "size_max_mm": 2.0,
+      "dist_min_mm": 0.0,
+      "dist_max_mm": 2.5,
+      "basis": "only for V08 nominal-level retry; matches V08 pocket scale",
+      "status": "ALTERNATE DIAGNOSTIC RETRY; DO NOT COMBINE WITH R285-F03",
+      "warning": "PRELIMINARY - EXACT FEATURE-IDENTITY AND REMESH-PRESCRIPTION PROTOTYPE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+    }
+  ],
+  "authority": {
+    "mesh_generation": false,
+    "h02": false,
+    "capacity": false,
+    "work": false
+  },
+  "warning": "PRELIMINARY - EXACT FEATURE-IDENTITY AND REMESH-PRESCRIPTION PROTOTYPE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

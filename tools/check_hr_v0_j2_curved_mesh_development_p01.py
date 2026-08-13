@@ -103,9 +103,9 @@ def main() -> int:
         need(sha(ROOT / row["source_path"]) == row["sha256"], f"config source hash {row['source_path']}")
     page = (REL / "index.html").read_text(encoding="utf-8")
     need(all(token in page for token in ("One mesh passes a bounded screen", "not converged", "font-size:16px", "overflow:auto", "R279-C02")), "web guide")
-    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith("R284 C07 curved-mesh development:"), "handoff")
+    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R284 C07 curved-mesh development:", "R285 targeted C07 remesh:")), "handoff")
     need((ROOT / "docs/review-ledger.md").read_text(encoding="utf-8").count("| R284 |") == 1, "ledger")
-    need("Two hundred eighty-four rounds are complete" in (ROOT / "README.md").read_text(encoding="utf-8"), "README count")
+    need(any(text in (ROOT / "README.md").read_text(encoding="utf-8") for text in ("Two hundred eighty-four rounds are complete", "Two hundred eighty-five rounds are complete")), "README count")
     print("PASS: R284 bounded C07 mesh-method candidates synchronized; R279-C02/H02/capacity/all work authority open")
     return 0
 
