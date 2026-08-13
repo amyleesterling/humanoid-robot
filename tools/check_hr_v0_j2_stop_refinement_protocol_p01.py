@@ -65,9 +65,9 @@ def main() -> int:
     need(cfg["current_records"]==62 and cfg["open_holds"]==366 and cfg["acceptance_rows"]==420,"config counts")
     need(cfg["j2_refinement_protocol"]==status["identifier"] and cfg["j2_refinement_protocol_executed"] is False and cfg["r278_h02_closed"] is False,"config boundary")
     for record in rows(CFG/"source-hash-register.csv"): need(sha(ROOT/record["source_path"])==record["sha256"],f"source hash {record['source_path']}")
-    need((ROOT/"docs/handoff-current.md").read_text(encoding="utf-8").startswith("R279 J2 convergence protocol:"),"handoff")
+    need((ROOT/"docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R279 J2 convergence protocol:","R280 J2 refinement execution feasibility:")),"handoff")
     need((ROOT/"docs/review-ledger.md").read_text(encoding="utf-8").count("| R279 |")==1,"ledger")
-    need("Two hundred seventy-nine rounds are complete" in (ROOT/"README.md").read_text(encoding="utf-8"),"README")
+    need(any(text in (ROOT/"README.md").read_text(encoding="utf-8") for text in ("Two hundred seventy-nine rounds are complete","Two hundred eighty rounds are complete")),"README")
     print("PASS: R279 exact local convergence protocol is synchronized and unexecuted; R278-H02 and all work authority remain open")
     return 0
 

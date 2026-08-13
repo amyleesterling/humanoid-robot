@@ -72,9 +72,9 @@ def main() -> int:
     need(bmap["BOM-110"]["bound_identifier"] == status["identifier"] and bmap["BOM-111"]["bound_identifier"] == status["identifier"], "config BOM binding drift")
     bom = {r["item_id"]:r for r in rows(ROOT / "bom/bom.csv")}
     need("40 x 12" in bom["BOM-110"]["quantity"] and "467MP" in bom["BOM-111"]["manufacturer_part_number"], "master BOM drift")
-    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R277 J2 pad-pocket correction:", "R278 exact-normal J2 stop correction:", "R279 J2 convergence protocol:")), "handoff drift")
+    need((ROOT / "docs/handoff-current.md").read_text(encoding="utf-8").startswith(("R277 J2 pad-pocket correction:", "R278 exact-normal J2 stop correction:", "R279 J2 convergence protocol:", "R280 J2 refinement execution feasibility:")), "handoff drift")
     need((ROOT / "docs/review-ledger.md").read_text(encoding="utf-8").count("| R277 |") == 1, "ledger missing or duplicated")
-    need(any(text in (ROOT / "README.md").read_text(encoding="utf-8") for text in ("Two hundred seventy-seven rounds are complete", "Two hundred seventy-eight rounds are complete", "Two hundred seventy-nine rounds are complete")), "README count drift")
+    need(any(text in (ROOT / "README.md").read_text(encoding="utf-8") for text in ("Two hundred seventy-seven rounds are complete", "Two hundred seventy-eight rounds are complete", "Two hundred seventy-nine rounds are complete", "Two hundred eighty rounds are complete")), "README count drift")
     print("PASS: R277 pad-pocket, retention and dependent-depth controls are synchronized and fail-closed; no work or safety authority released")
     return 0
 
