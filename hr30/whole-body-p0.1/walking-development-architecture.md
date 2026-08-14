@@ -18,3 +18,19 @@ Development sequence:
 8. **S7 — untethered walking:** future program gate; prohibited by P0.1.
 
 The fall-restraint architecture is a rated overhead gantry, swivel, energy-limiting element and torso/pelvis harness attached to a dedicated structural interface. It must prevent head/floor contact throughout the development envelope without becoming a lifting command or destabilizing tether. Exact working-load limit, dynamic arrest load, attachment geometry and qualified inspection remain selection required.
+
+<!-- HR30-POSE-P01-START -->
+
+## Articulated P0.1 pose set
+
+The package now carries five generated full-body configurations rather than prose-only stages. Joint targets are in `pose-joint-targets.csv`; transformed COM, support polygons, foot clearance and placement are in `pose-support-metrics.csv`; and each pose has STEP and GLB geometry. The minimum primary-foot COM margin in this set is **22.5 mm**. This is a rigid-link kinematic screen using provisional inertial data—not a zero-moment-point, contact-force, compliance, actuator, trajectory or balance validation.
+
+| Pose | Stage | Support | COM margin | Swing clearance | Forward placement |
+|---|---:|---|---:|---:|---:|
+| Neutral double support | S2 | DOUBLE | 65.2 mm | 0.0 mm | 0.0 mm |
+| Crouched double support | S2 | DOUBLE | 62.6 mm | 0.0 mm | 0.0 mm |
+| Left weight transfer | S3 | DOUBLE | 22.5 mm | 0.0 mm | 0.0 mm |
+| Right foot lift | S4 | L SINGLE | 22.6 mm | 7.2 mm | 1.0 mm |
+| Right capture-step candidate | S5 | L SINGLE | 22.9 mm | 18.2 mm | 43.2 mm |
+
+<!-- HR30-POSE-P01-END -->

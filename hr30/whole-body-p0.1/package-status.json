@@ -81,5 +81,11 @@
   "joint_load_axis_count": 25,
   "elbow_xm430_candidate_retained": true,
   "continuous_actuator_capability_validated": false,
-  "dynamic_joint_loads_validated": false
+  "dynamic_joint_loads_validated": false,
+  "whole_body_pose_architecture_present": true,
+  "whole_body_pose_count": 5,
+  "pose_support_geometry_screen_complete": true,
+  "pose_trajectory_validated": false,
+  "quasistatic_balance_validated": false,
+  "dynamic_walking_validated": false
 }
