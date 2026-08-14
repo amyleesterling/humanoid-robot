@@ -268,7 +268,7 @@ def write_budgets_and_bom() -> None:
         "status": "P0.1 BUDGET - PROTECTION/CONDUCTOR/SOURCE SELECTION REQUIRED",
     } for r in power] + [{
         "load": "WHOLE ROBOT", "domain": "TOTAL", "candidate_voltage_v": "14.8 V primary / regulated auxiliaries", "operating_budget_w": sum(r[3] for r in power), "short_peak_budget_w": sum(r[4] for r in power),
-        "basis_and_hold": "tether-first; onboard concept 14.8 V nominal 12 Ah / 177.6 Wh with <=75% usable planning fraction gives about 42 minutes at budget load; chemistry/BMS/enclosure/disconnect/protection/charger remain SELECTION REQUIRED",
+        "basis_and_hold": "Grepow/Tattu TAA12K4S30EC5 14.8 V 12 Ah / 177.6 Wh evaluation candidate; <=75% usable arithmetic gives 44.6 ideal budget minutes; exact BMS/PCM, containment, retention, connector, disconnect, protection, current/thermal behavior and charger remain SELECTION REQUIRED",
         "status": "P0.1 BUDGET - NO SOURCE OR ENERGIZATION AUTHORITY",
     }])
     thermal = [
@@ -299,7 +299,7 @@ def write_budgets_and_bom() -> None:
         ("transmissions, bearings and output encoders", 1900, "ratios and exact hardware open"),
         ("frames, machined plates, printed covers and fasteners", 2200, "Boston-area prototype allowance"),
         ("compute, sensing, display and audio", 1100, "exact device selection open"),
-        ("power source, conversion, protection and harness", 1500, "tether/battery alternatives unresolved"),
+        ("power source, conversion, protection and harness", 1500, "onboard pack evaluation candidate plus tether-development interface; protection remains open"),
         ("independent safety/control enclosure and restraint", 1800, "not a safety approval"),
         ("prototype spares, tooling and contingency", 2800, "development reserve"),
     ]
@@ -331,7 +331,7 @@ def write_budgets_and_bom() -> None:
         ("HR30-BOM-023", "feet", "custom", "machined/printed foot core + replaceable compliant sole", 2, 180),
         ("HR30-BOM-024", "gripper pads", "custom", "replaceable broad compliant pad set", 2, 45),
         ("HR30-BOM-025", "development power", "SELECTION REQUIRED", "tethered current-limited 14.8 V-class source", 1, 500),
-        ("HR30-BOM-026", "onboard energy", "SELECTION REQUIRED", "14.8 V nominal 12 Ah-class pack/BMS concept", 1, 600),
+        ("HR30-BOM-026", "onboard energy", "Grepow/Tattu", "TAA12K4S30EC5 4S 12 Ah 14.8 V 177.6 Wh 30C pack evaluation candidate; BMS/PCM, containment, retention, connector and charger separate", 1, 600),
         ("HR30-BOM-027", "main disconnect/contactors", "SELECTION REQUIRED", "DC-rated redundant interruption architecture", 1, 450),
         ("HR30-BOM-028", "emergency stop/reset", "Pilz/IDEC/Schneider candidates", "dual-channel E-stop, monitored reset and EDM hardware", 1, 950),
         ("HR30-BOM-029", "fall restraint", "SELECTION REQUIRED", "rated overhead gantry/harness/load-limiter system", 1, 1200),

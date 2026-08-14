@@ -399,7 +399,7 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
         "planning_margin_to_program_maximum_kg": round(10.0 - dynamic_total, 9),
         "program_mass_target_status": "EXCEEDED" if dynamic_total > 10.0 else "NOT YET EXCEEDED BUT UNMODELED MASS REMAINS",
         "unmodeled_or_unselected": [
-            "onboard battery, BMS and charger are not installed in the tether-first configuration",
+            "exact battery BMS/PCM, cell monitor, connector, service disconnect, precharge, containment, retention and offboard charger hardware",
             "exact selected controller, power, protection, sensor, audio, cooling and networking hardware",
             "received harness, connector, strain-relief, fastener, insert, sole, pad and restraint masses",
             "manufacturing features and mass changes after overlap removal, DFM and structural redesign",
@@ -466,7 +466,7 @@ def write_allocation_register(dynamics_rows: list[dict]) -> None:
         {
             "assembly": "integration contingency within link totals", "target_kg": "0.000", "maximum_kg": "0.800",
             "cad_mass_kg": "8% OF EXPLICIT LINK SUBTOTALS",
-            "status": "MODELED CONTINGENCY - RECEIVED MASSES AND ONBOARD-ENERGY CONFIGURATION OPEN",
+            "status": "MODELED CONTINGENCY - RECEIVED MASSES AND EXACT ONBOARD-ENERGY SELECTIONS OPEN",
         },
         row("TOTAL", 8.00, 10.00, total),
     ]
@@ -534,7 +534,7 @@ def write_lightweight_register(summary: dict) -> None:
             "baseline_candidate": f"commit {BASELINE_COMMIT}: {BASELINE_MASS['identified']:.6f} kg gross identified / {BASELINE_MASS['dynamics']:.6f} kg conservative dynamics",
             "lightweight_candidate": f"current: {summary['planning_identified_candidate_mass_kg']:.6f} kg gross identified / {summary['reconciled_dynamics_planning_mass_kg']:.6f} kg conservative dynamics",
             "mass_effect": f"gross identified reduction {BASELINE_MASS['identified'] - summary['planning_identified_candidate_mass_kg']:.6f} kg; dynamics reduction {BASELINE_MASS['dynamics'] - summary['reconciled_dynamics_planning_mass_kg']:.6f} kg",
-            "engineering_hold": "10 kg planning-screen status does not establish received mass closure; equipment closure and every physical validation remain open",
+            "engineering_hold": "onboard-energy candidate exceeds the 10 kg program maximum; redesign or approved requirement change, received mass closure and every physical validation remain open",
         },
     ]
     for row in rows:
@@ -548,11 +548,11 @@ def update_docs(summary: dict) -> None:
 
 **{WARNING}**
 
-The former 9.63 kg value was an allocation, not a physical mass model. This pass inventories {summary['fabrication_part_count']} materialized fabrication-CAD parts, {summary['actuator_count']} actuators, {summary['joint_hardware_part_count']} joint-hardware candidate solids, {summary['transmission_belt_count']} catalogue belt candidates and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The tether-first gross identified planning subtotal is **{summary['planning_identified_candidate_mass_kg']:.3f} kg** before the 8% integration contingency and without an onboard battery/BMS/charger.
+The former 9.63 kg value was an allocation, not a physical mass model. This pass inventories {summary['fabrication_part_count']} materialized fabrication-CAD parts, {summary['actuator_count']} actuators, {summary['joint_hardware_part_count']} joint-hardware candidate solids, {summary['transmission_belt_count']} catalogue belt candidates and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The gross identified planning subtotal is **{summary['planning_identified_candidate_mass_kg']:.3f} kg** before the 8% integration contingency and now includes the exact published 1.057 kg pack envelope plus cassette and protection/telemetry allowances.
 
 Relative to commit `{BASELINE_COMMIT}`, the lightweight topology reduces the gross identified candidate subtotal by **{BASELINE_MASS['identified'] - summary['planning_identified_candidate_mass_kg']:.3f} kg**. The body retains all 25 axes, complete limbs and hands while using hollow torso rails, windowed and slotted load-path plates, thinner service covers, hollow aluminum shaft screens, topology-lightened carrier frames and pulleys, and actuator-plus-one-external-bearing support on direct axes. Those changes are geometry candidates, not strength or bearing-life evidence.
 
-The dynamics model now uses the explicit per-link subtotal plus a visible 8% integration contingency instead of carrying stale historical allocations. This produces a tethered provisional dynamics mass of **{summary['reconciled_dynamics_planning_mass_kg']:.3f} kg** and neutral COM **({summary['reconciled_dynamics_neutral_com_m'][0]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][1]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][2]:.3f}) m**. The resulting margin to the 10 kg program maximum is **{summary['planning_margin_to_program_maximum_kg']:.3f} kg**. Exact selections, received masses and the separate onboard-energy configuration remain open.
+The dynamics model now uses the explicit per-link subtotal plus a visible 8% integration contingency instead of carrying stale historical allocations. This produces an onboard-energy provisional dynamics mass of **{summary['reconciled_dynamics_planning_mass_kg']:.3f} kg** and neutral COM **({summary['reconciled_dynamics_neutral_com_m'][0]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][1]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][2]:.3f}) m**. The resulting margin to the 10 kg program maximum is **{summary['planning_margin_to_program_maximum_kg']:.3f} kg**. The negative value is an explicit design failure: the complete onboard candidate needs further mass reduction or an approved mass-requirement change. Exact selections and received masses remain open.
 
 The actuator planning subtotal uses published masses from current official ROBOTIS e-Manual pages checked {ACCESSED}. Both elbows and both shoulder-roll axes use the 82 g XM430 candidate, both wrists use the 23 g XC330 candidate, and all four ankles use the 82 g XM430 candidate behind explicit reductions. The ten Gates belt candidates add {summary['transmission_belt_published_mass_kg']:.3f} kg at current published catalogue mass. None of this is continuous-duty, dynamic, belt-capacity, thermal or physical validation. CAD actuator placement is the geometric centroid of the SHA-bound manufacturer packaging body, not a published center of gravity.
 
@@ -575,19 +575,21 @@ Fabrication and joint-hardware values are volume-times-density screens; equipmen
 
 ## Whole-body mass reconciliation
 
-The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines {summary['fabrication_part_count']} fabrication-CAD parts, {summary['actuator_count']} published actuator masses, {summary['joint_hardware_part_count']} joint-hardware candidate parts (including catalogue bearing masses), {summary['transmission_belt_count']} catalogue belt candidates and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The tether-first gross identified subtotal is {summary['planning_identified_candidate_mass_kg']:.3f} kg; the explicit per-link model plus 8% integration contingency is {summary['reconciled_dynamics_planning_mass_kg']:.3f} kg with neutral COM Z={summary['reconciled_dynamics_neutral_com_m'][2]:.3f} m. The onboard battery/BMS/charger is not installed, and exact selections/received masses remain open.
+The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines {summary['fabrication_part_count']} fabrication-CAD parts, {summary['actuator_count']} published actuator masses, {summary['joint_hardware_part_count']} joint-hardware candidate parts (including catalogue bearing masses), {summary['transmission_belt_count']} catalogue belt candidates and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The gross identified subtotal is {summary['planning_identified_candidate_mass_kg']:.3f} kg; the explicit per-link model plus 8% integration contingency is {summary['reconciled_dynamics_planning_mass_kg']:.3f} kg with neutral COM Z={summary['reconciled_dynamics_neutral_com_m'][2]:.3f} m. This includes the onboard pack/cassette/protection-reservation geometry and therefore explicitly exceeds the 10 kg program maximum by {-summary['planning_margin_to_program_maximum_kg']:.3f} kg. Exact protection and received masses remain open.
 """
     (OUT / "README.md").write_text(readme.rstrip() + "\n", encoding="utf-8", newline="\n")
 
     walking_path = OUT / "walking-development-architecture.md"
     walking = walking_path.read_text(encoding="utf-8")
     old = "The neutral estimated mass is 9.63 kg with estimated COM Z=0.338 m; these are allocation-model values, not measured properties."
-    new = f"The reconciled planning dynamics mass is {summary['reconciled_dynamics_planning_mass_kg']:.3f} kg with neutral COM Z={summary['reconciled_dynamics_neutral_com_m'][2]:.3f} m; these are candidate-volume and allocation values, not measured properties, and major equipment mass remains open."
+    new = f"The onboard-energy planning dynamics mass is {summary['reconciled_dynamics_planning_mass_kg']:.3f} kg with neutral COM Z={summary['reconciled_dynamics_neutral_com_m'][2]:.3f} m; these are candidate-volume and allocation values, not measured properties, and the 10 kg maximum is exceeded by {-summary['planning_margin_to_program_maximum_kg']:.3f} kg."
     if old in walking:
         walking = walking.replace(old, new)
+    elif new in walking:
+        pass
     else:
         walking, count = re.subn(
-            r"The reconciled planning dynamics mass is [^.]+\.[0-9]{3} kg with neutral COM Z=[0-9.]+ m;[^\n]+",
+            r"The (?:reconciled planning|onboard-energy planning) dynamics mass is [^.]+\.[0-9]{3} kg with neutral COM Z=[0-9.]+ m;[^\n]+",
             new,
             walking,
             count=1,
@@ -607,16 +609,16 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
     if link_count != 1:
         raise RuntimeError("system artifact mass-link block drift")
     web, card_count = re.subn(
-        r'<article class="card hold"><h3>Mass and energy</h3><p>[\s\S]*?</p></article>',
-        f'<article class="card hold"><h3>Mass and energy</h3><p>{summary["reconciled_dynamics_planning_mass_kg"]:.3f} kg tether-first planning dynamics mass, {summary["reconciled_dynamics_neutral_com_m"][2]:.3f} m neutral COM height, 179 W operating power budget and 135 W heat-rejection budget. Located equipment is included; onboard energy, received masses and physical closure remain open.</p></article>',
+        r'<article class="card (?:hold|miss)"><h3>Mass and energy</h3><p>[\s\S]*?</p></article>',
+        f'<article class="card miss"><h3>Mass and energy</h3><p>{summary["reconciled_dynamics_planning_mass_kg"]:.3f} kg onboard-energy planning dynamics mass, {summary["reconciled_dynamics_neutral_com_m"][2]:.3f} m neutral COM height, 179 W operating power budget and 135 W heat-rejection budget. The modeled pack/cassette makes the 10 kg maximum fail by {-summary["planning_margin_to_program_maximum_kg"]:.3f} kg; received masses and physical closure remain open.</p></article>',
         web,
         count=1,
     )
     if card_count != 1:
         raise RuntimeError("system mass card drift")
     web, body_mass_count = re.subn(
-        r'<article class="card (?:hold|miss)"><h3>(?:Mass is still unproven|10 kg target does not close|10 kg planning screen has no usable margin)</h3><p>[\s\S]*?</p></article>',
-        f'<article class="card miss"><h3>10 kg planning screen has no usable margin</h3><p>The tether-first explicit model is {summary["planning_identified_candidate_mass_kg"]:.3f} kg before contingency and {summary["reconciled_dynamics_planning_mass_kg"]:.3f} kg with 8% integration contingency—only {summary["planning_margin_to_program_maximum_kg"]:.3f} kg below the ceiling. An onboard battery and received-part variation are not included.</p></article>',
+        r'<article class="card (?:hold|miss)"><h3>(?:Mass is still unproven|10 kg target does not close|10 kg planning screen has no usable margin|Onboard design exceeds 10 kg maximum)</h3><p>[\s\S]*?</p></article>',
+        f'<article class="card miss"><h3>Onboard design exceeds 10 kg maximum</h3><p>The explicit model is {summary["planning_identified_candidate_mass_kg"]:.3f} kg before contingency and {summary["reconciled_dynamics_planning_mass_kg"]:.3f} kg with 8% integration contingency, including the pack, cassette and protection reservation. That is {-summary["planning_margin_to_program_maximum_kg"]:.3f} kg over the program ceiling before received-part variation.</p></article>',
         web,
         count=1,
     )
@@ -645,7 +647,7 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
         if row["hold_id"] == "HR30-P01-H09":
             row["unresolved_item"] = (
                 f"A gross candidate-volume reconciliation now gives {summary['reconciled_dynamics_planning_mass_kg']:.3f} kg and provisional COM, "
-                "with located tether-first equipment plus integration contingency, but overlap removal, exact selections, onboard energy, received mass/COM and physical inertia identification remain open."
+                "with the published pack envelope, cassette, protection reservation and integration contingency. It exceeds the 10 kg maximum; overlap removal, exact protection selections, received mass/COM and physical inertia identification remain open."
             )
     write_csv(holds_path, holds)
 

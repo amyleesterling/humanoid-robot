@@ -27,6 +27,18 @@ OUT = ROOT / "hr30" / "whole-body-p0.1"
 IDENTIFIER = "HR-30-INSTALLED-EQUIPMENT-P0.1"
 WARNING = body.WARNING
 ACCESSED = "2026-08-14"
+BATTERY = {
+    "manufacturer": "Grepow / Tattu",
+    "model": "TAA12K4S30EC5",
+    "nominal_voltage_v": 14.8,
+    "capacity_ah": 12.0,
+    "energy_wh": 177.6,
+    "discharge_c": 30.0,
+    "mass_kg": 1.057,
+    "size_mm": (72.0, 37.0, 193.0),
+    "url": "https://www.grepow.com/uav-battery/tattu-4s-12000mah-14-8v-30c-lipo-drone-battery.html",
+    "revision": "live manufacturer product page; no document revision/date published; accessed 2026-08-14",
+}
 
 
 @dataclass(frozen=True)
@@ -70,6 +82,7 @@ def build() -> list[Equipment]:
     compute = (0.10, 0.48, 0.82, 1.0)
     control = (0.12, 0.72, 0.70, 1.0)
     power = (0.96, 0.58, 0.08, 1.0)
+    battery = (0.18, 0.70, 0.28, 1.0)
     sensor = (0.48, 0.82, 0.98, 1.0)
     audio = (0.40, 0.30, 0.72, 1.0)
     safety = (0.78, 0.14, 0.14, 1.0)
@@ -164,6 +177,41 @@ def build() -> list[Equipment]:
         "rear pelvis restraint bridge", "+Y external inspection/access",
         "rated connector geometry/load path remains open",
         "SELECTION REQUIRED", "SELECTION REQUIRED", "visible metal candidate; no fall-load credit", "base_link", safety)
+
+    # The untethered walking candidate carries a removable rear-torso battery
+    # cassette.  The exact Grepow/Tattu pack envelope is modeled inside a
+    # separate structural/thermal cassette and protection-monitor reservation.
+    # The product page does not state that the pack contains a BMS/PCM, so no
+    # such protection is inferred or credited here.
+    battery_center = (0.0, 76.0, 530.0)
+    battery_shape = box(*BATTERY["size_mm"], battery_center, 4)
+    cassette_outer = box(84.0, 49.0, 205.0, battery_center, 6)
+    cassette_inner = box(76.0, 41.0, 197.0, battery_center, 4)
+    cassette_shape = cassette_outer.cut(cassette_inner)
+    add("EQ-T01-BATTERY-PACK", "T01", "onboard walking energy",
+        f"Grepow/Tattu {BATTERY['model']} 4S 12 Ah 14.8 V 177.6 Wh 30C pack evaluation candidate",
+        battery_shape, BATTERY["mass_kg"], 0.0, 0.0,
+        "rear-torso removable battery cassette datum X=0, Y=+76, Z=530 mm", "+Y keyed cassette withdrawal",
+        "high-current power and balance/telemetry connectors SELECTION REQUIRED; no BMS/PCM inferred",
+        BATTERY["url"], BATTERY["revision"],
+        "manufacturer publishes 193 x 72 x 37 mm, 1057 g, 14.8 V, 12 Ah and 30C; received identity/current/thermal behavior open",
+        "torso", battery)
+    add("EQ-T01-BATTERY-CASSETTE", "T01", "battery enclosure and retention",
+        "84 x 49 x 205 mm removable ventilated metal cassette candidate",
+        cassette_shape, 0.220, 0.0, 0.0,
+        "four-point rear-torso frame interface around battery datum", "+Y tool-released cassette withdrawal",
+        "mechanical keying, secondary retention, venting, containment and fall-load path SELECTION REQUIRED",
+        "SELECTION REQUIRED", "SELECTION REQUIRED",
+        "dimensioned hollow cassette geometry and mass allowance only; no impact/fire/retention credit",
+        "torso", safety)
+    add("EQ-T01-BATTERY-PROTECTION", "T01", "battery protection and telemetry",
+        "4S high-current protection, cell monitor and temperature interface reservation; exact hardware SELECTION REQUIRED",
+        box(70, 6, 24, (0, 98, 530), 1.5), 0.080, 0.8, 1.5,
+        "inside rear cassette service wall", "+Y cassette service",
+        "cell taps, dual temperature inputs, pack current, precharge and hardwired inhibit; ratings/pinout open",
+        "SELECTION REQUIRED", "SELECTION REQUIRED",
+        "pack product page does not state integrated BMS/PCM; independent protection remains mandatory and unselected",
+        "torso", safety)
 
     # Head HMI/sensing stack. The 4-inch panel replaces the former BOM 5-inch
     # concept because it fits the controlled 116 x 58 mm face window.
@@ -335,6 +383,25 @@ def update_package(items: list[Equipment]) -> None:
             "warning": WARNING,
         })
     write_csv(OUT / "installed-equipment-source-register.csv", source_rows)
+    operating_current = 179.0 / BATTERY["nominal_voltage_v"]
+    peak_current = 727.0 / BATTERY["nominal_voltage_v"]
+    usable_energy = BATTERY["energy_wh"] * 0.75
+    write_csv(OUT / "battery-energy-source-register.csv", [{
+        "manufacturer": BATTERY["manufacturer"], "model": BATTERY["model"],
+        "nominal_voltage_v": f"{BATTERY['nominal_voltage_v']:.1f}",
+        "capacity_ah": f"{BATTERY['capacity_ah']:.1f}", "published_energy_wh": f"{BATTERY['energy_wh']:.1f}",
+        "published_discharge_rate_c": f"{BATTERY['discharge_c']:.1f}",
+        "published_mass_kg": f"{BATTERY['mass_kg']:.3f}",
+        "published_dimensions_mm": "193 x 72 x 37",
+        "arithmetic_30c_current_a": f"{BATTERY['capacity_ah'] * BATTERY['discharge_c']:.1f}",
+        "whole_robot_operating_current_screen_a": f"{operating_current:.3f}",
+        "whole_robot_short_peak_current_screen_a": f"{peak_current:.3f}",
+        "planning_usable_energy_75pct_wh": f"{usable_energy:.1f}",
+        "ideal_budget_runtime_at_179w_min": f"{usable_energy / 179.0 * 60.0:.1f}",
+        "official_url": BATTERY["url"], "document_revision_or_date": BATTERY["revision"],
+        "protection_boundary": "NO INTEGRATED BMS/PCM CLAIM; exact protection, balance, temperature, disconnect, precharge, connector and charger SELECTION REQUIRED",
+        "selection_state": "EVALUATION CANDIDATE ONLY - NO PROCUREMENT OR ENERGIZATION AUTHORITY", "warning": WARNING,
+    }])
 
     status = {
         "identifier": IDENTIFIER, "warning": WARNING, "installed_item_count": len(items),
@@ -344,7 +411,9 @@ def update_package(items: list[Equipment]) -> None:
         "all_geometry_valid": all(item.shape.isValid() for item in items),
         "minimum_z_mm": min(item.shape.BoundingBox().zmin for item in items),
         "maximum_z_mm": max(item.shape.BoundingBox().zmax for item in items),
-        "empty_component_bays_replaced": True, "tether_first_configuration": True,
+        "empty_component_bays_replaced": True, "tether_first_configuration": False,
+        "tether_development_interface_retained": True,
+        "onboard_energy_candidate_geometry_present": True,
         "onboard_energy_installed": False, "exact_selections_closed": False,
         "electrical_schematic_released": False, "thermal_validated": False,
         "fabrication_authority": False, "powered_test_authority": False,
@@ -359,17 +428,17 @@ def update_package(items: list[Equipment]) -> None:
 
 ## Installed equipment layout
 
-The former empty torso, pelvis, head and foot reservations now contain {len(items)} located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is {status['planning_installed_mass_kg']:.3f} kg. The assembly is tether-first: the offboard current-limited source and safety relay are intentionally not counted as onboard mass, while the robot carries a keyed inlet, dual interruption candidate, branch distribution, conversion and telemetry envelopes. Exact selections, ratings, pinouts, cable construction, thermal tests and safety validation remain open.
+The former empty torso, pelvis, head and foot reservations now contain {len(items)} located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is {status['planning_installed_mass_kg']:.3f} kg. The primary whole-body candidate now includes the exact published envelope and mass of a Grepow/Tattu {BATTERY['model']} 4S 12 Ah pack in a removable rear-torso cassette, plus a distinct protection/telemetry reservation because the pack page does not state an integrated BMS/PCM. The tether inlet remains for controlled development. Battery protection, current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
 """
     readme_path.write_text(readme.rstrip() + "\n", encoding="utf-8", newline="\n")
 
     index_path = OUT / "index.html"
     html = index_path.read_text(encoding="utf-8")
     html = re.sub(r'<section id="equipment-layout">[\s\S]*?</section>', "", html)
-    insert = f'''<section id="equipment-layout"><h2>Installed equipment—not empty bays</h2><div class="viewer"><model-viewer src="HR-30_installed_equipment_candidate.glb" alt="Interactive 3D layout of preliminary HR-30 installed electronics, sensing, power, harness, soles and contact hardware" camera-controls camera-orbit="35deg 76deg 95%" field-of-view="26deg" shadow-intensity="0.8" exposure="1.05"></model-viewer><p>{len(items)} located candidate items, {status['planning_installed_mass_kg']:.3f} kg provisional as-installed mass. This is a tether-first packaging candidate; exact selections and all safety/electrical validation remain open.</p></div></section>'''
+    insert = f'''<section id="equipment-layout"><h2>Installed equipment—not empty bays</h2><div class="viewer"><model-viewer src="HR-30_installed_equipment_candidate.glb" alt="Interactive 3D layout of preliminary HR-30 installed electronics, onboard battery cassette, sensing, power, harness, soles and contact hardware" camera-controls camera-orbit="35deg 76deg 95%" field-of-view="26deg" shadow-intensity="0.8" exposure="1.05"></model-viewer><p>{len(items)} located candidate items, {status['planning_installed_mass_kg']:.3f} kg provisional as-installed mass. The rear-torso battery cassette and exact pack envelope are visible; protection, retention, thermal behavior and every electrical selection remain open.</p></div></section>'''
     html = html.replace("</main>", insert + "</main>")
     html = re.sub(r'<a href="installed-equipment-register\.csv">Installed equipment</a>[\s\S]*?(?=<a href="mass-properties-budget\.csv">)', "", html, count=1)
-    html = html.replace('<a href="mass-properties-budget.csv">Mass/COM/inertia</a>', '<a href="installed-equipment-register.csv">Installed equipment</a> · <a href="installed-equipment-source-register.csv">Equipment sources</a> · <a href="HR-30_installed_equipment_candidate.step">Equipment STEP</a> · <a href="HR-30_integrated_whole_robot_candidate.step">Integrated whole-robot STEP</a> · <a href="mass-properties-budget.csv">Mass/COM/inertia</a>')
+    html = html.replace('<a href="mass-properties-budget.csv">Mass/COM/inertia</a>', '<a href="installed-equipment-register.csv">Installed equipment</a> · <a href="installed-equipment-source-register.csv">Equipment sources</a> · <a href="battery-energy-source-register.csv">Battery source and runtime screen</a> · <a href="HR-30_installed_equipment_candidate.step">Equipment STEP</a> · <a href="HR-30_integrated_whole_robot_candidate.step">Integrated whole-robot STEP</a> · <a href="mass-properties-budget.csv">Mass/COM/inertia</a>')
     index_path.write_text(html, encoding="utf-8", newline="\n")
 
     bom_path = OUT / "whole-robot-candidate-bom.csv"
@@ -393,7 +462,9 @@ The former empty torso, pelvis, head and foot reservations now contain {len(item
         "installed_equipment_item_count": len(items),
         "installed_equipment_planning_mass_kg": status["planning_installed_mass_kg"],
         "empty_component_bays_only": False,
-        "tether_first_equipment_configuration": True,
+        "tether_first_equipment_configuration": False,
+        "tether_development_interface_retained": True,
+        "onboard_energy_candidate_geometry_present": True,
         "onboard_energy_installed": False,
     })
     package_status_path.write_text(json.dumps(package_status, indent=2) + "\n", encoding="utf-8")
@@ -402,7 +473,7 @@ The former empty torso, pelvis, head and foot reservations now contain {len(item
     holds = list(csv.DictReader(holds_path.open(encoding="utf-8")))
     for row in holds:
         if row["hold_id"] == "HR30-P01-H04":
-            row["unresolved_item"] = ("A tether-first inlet, dual-interruption, PDU, auxiliary-conversion and telemetry packaging route now exists, but the exact offboard current-limited source, DC interruption hardware, regeneration handling, protection values, grounding, pinout and onboard-energy configuration remain unselected and unvalidated.")
+            row["unresolved_item"] = ("The whole-body CAD now contains a 177.6 Wh pack evaluation envelope, removable rear-torso cassette, tether inlet, dual-interruption, PDU and protection/telemetry reservation. Exact battery configuration, BMS/PCM, connector, current/thermal capability, containment, retention, charger, regeneration handling, protection values, grounding and pinout remain unselected and unvalidated.")
         elif row["hold_id"] == "HR30-P01-H07":
             row["unresolved_item"] = ("Eleven route-derived installed harness bundles now have planning lengths, mass allowances and connector boundaries, but exact conductors, fill, flex life, service loops, connectors, strain relief, shielding, current, EMC and thermal evidence remain open.")
     write_csv(holds_path, holds)

@@ -1,7 +1,7 @@
 {
   "identifier": "HR-30-JOINT-LOAD-ARCH-P0.1",
   "axis_count": 25,
-  "planning_mass_kg": 9.992658,
+  "planning_mass_kg": 11.458218,
   "payload_each_hand_kg": 0.1,
   "development_factor": 1.5,
   "reduced_drive_efficiency_assumption": 0.85,

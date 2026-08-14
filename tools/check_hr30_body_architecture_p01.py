@@ -150,7 +150,7 @@ def main() -> int:
     holds = list(csv.DictReader((SRC / "open-holds.csv").open(encoding="utf-8")))
     require(len(holds) == 10 and all(r["state"] == "OPEN" for r in holds), "open holds not fail-closed")
     mass = list(csv.DictReader((SRC / "mass-allocation-register.csv").open(encoding="utf-8")))
-    require(mass[-1]["assembly"] == "TOTAL" and 0 < float(mass[-1]["cad_mass_kg"].split()[-1]) <= 10.0 and "INCOMPLETE PLANNING MODEL" in mass[-1]["status"], "mass allocation must expose the narrow, incomplete planning-screen result")
+    require(mass[-1]["assembly"] == "TOTAL" and float(mass[-1]["cad_mass_kg"].split()[-1]) > 10.0 and "OVER MAXIMUM" in mass[-1]["status"], "mass allocation must expose the onboard-energy planning overrun")
 
     model = cq.importers.importStep(str(SRC / "HR-30_body_architecture_candidate.step"))
     vertices = [vertex.Center() for vertex in model.val().Vertices()]

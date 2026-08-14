@@ -40,6 +40,7 @@ def main() -> int:
         "mass-reconciliation-summary.json", "mass-item-reconciliation.csv", "link-mass-reconciliation.csv",
         "lightweight-architecture-register.csv",
         "installed-equipment-register.csv", "installed-equipment-source-register.csv",
+        "battery-energy-source-register.csv",
         "installed-equipment-status.json", "installed-equipment-source.py",
         "HR-30_installed_equipment_candidate.step", "HR-30_installed_equipment_candidate.glb",
         "HR-30_integrated_whole_robot_candidate.step",
@@ -108,6 +109,7 @@ def main() -> int:
     require(any(row["item_id"] == "HR30-BOM-018" and int(row["quantity"]) == 10 for row in bom), "reduced-leg output encoder allocation drift")
     require(any(row["item_id"] == "HR30-BOM-020" and int(row["quantity"]) == 39 and "6803" in row["candidate"] and "6901" in row["candidate"] for row in bom), "standard external-bearing BOM population incomplete")
     require(any(row["item_id"] == "HR30-BOM-019" and int(row["quantity"]) == 10 and "225-5MGT3-15" in row["candidate"] and "250-5MGT3-15" in row["candidate"] for row in bom), "leg reduction BOM does not cover all ten reduced axes")
+    require(any(row["item_id"] == "HR30-BOM-026" and row["manufacturer"] == "Grepow/Tattu" and "TAA12K4S30EC5" in row["candidate"] and "BMS/PCM" in row["candidate"] for row in bom), "onboard-energy BOM candidate/boundary missing")
     require(all(row["authority"] == "NO PROCUREMENT OR FABRICATION AUTHORITY" for row in bom), "BOM authority overclaim")
 
     schema = json.loads((SRC / "structured-action-request.schema.json").read_text(encoding="utf-8"))
@@ -127,15 +129,15 @@ def main() -> int:
 
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
     require(all(status[key] for key in ("whole_body_system_package_present", "urdf_present", "mjcf_present", "whole_robot_candidate_bom_present", "walking_architecture_present", "embodied_agent_boundary_present", "modular_build_plan_present", "mass_reconciliation_present", "installed_equipment_layout_present", "whole_body_joint_load_architecture_present")), "system package status incomplete")
-    require(status["installed_equipment_item_count"] == 53 and status["tether_first_equipment_configuration"] and not status["onboard_energy_installed"], "installed-equipment configuration boundary drift")
+    require(status["installed_equipment_item_count"] == 56 and not status["tether_first_equipment_configuration"] and status["tether_development_interface_retained"] and status["onboard_energy_candidate_geometry_present"] and not status["onboard_energy_installed"], "installed-equipment configuration boundary drift")
     require(status["floating_base_dynamics_present"], "floating-base dynamics status missing")
     require(not any(status[key] for key in ("dynamics_validated", "walking_validated", "physical_build_ready", "procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "status validation/authority overclaim")
     require(sha(SRC / "system-package-source.py") == sha(ROOT / "tools" / "generate_hr30_system_package_p01.py"), "system generator snapshot drift")
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require("The P0.1 engineering package is whole-body" in page and "font:17px/1.55" in page and "font-size:16px" in page, "web package summary/legibility missing")
-    require(all(name in page for name in ("hr30.urdf", "hr30.xml", "whole-robot-candidate-bom.csv", "embodied-agent-architecture.md", "mass-reconciliation.md", "installed-equipment-register.csv")), "web system links incomplete")
+    require(all(name in page for name in ("hr30.urdf", "hr30.xml", "whole-robot-candidate-bom.csv", "embodied-agent-architecture.md", "mass-reconciliation.md", "installed-equipment-register.csv", "battery-energy-source-register.csv")), "web system links incomplete")
     require(page.count('id="equipment-layout"') == 1, "web installed-equipment viewer missing or duplicated")
-    print(f"PASS: HR-30 whole-body P0.1 has 25-DOF URDF/MJCF, 53 located equipment/harness items and {reconciled_mass:.3f} kg tether-first planning mass plus budgets, BOM, hands, walking, agent and build artifacts; all validation and work authority remain false")
+    print(f"PASS: HR-30 whole-body P0.1 has 25-DOF URDF/MJCF, 56 located equipment/harness items including a dimensioned onboard-energy candidate, and {reconciled_mass:.3f} kg planning mass plus budgets, BOM, hands, walking, agent and build artifacts; 10 kg compliance, validation and all work authority remain false")
     return 0
 
 
