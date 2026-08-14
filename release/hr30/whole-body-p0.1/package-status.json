@@ -191,5 +191,14 @@
   "native_hr30_kicad_regulated_ttl_branch_count": 3,
   "energy_safety_native_kicad_topology_corrected": true,
   "energy_safety_physical_terminal_release_required": true,
-  "energy_safety_individual_actuator_power_feed_count": 25
+  "energy_safety_individual_actuator_power_feed_count": 25,
+  "whole_robot_assembly_traveler_present": true,
+  "assembly_traveler_module_count": 12,
+  "assembly_traveler_fabrication_part_count": 66,
+  "assembly_traveler_axis_count": 25,
+  "assembly_traveler_joint_fastener_count": 156,
+  "assembly_traveler_equipment_count": 54,
+  "assembly_traveler_harness_assembly_count": 14,
+  "assembly_traveler_physical_execution_complete": false,
+  "assembly_authority": false
 }

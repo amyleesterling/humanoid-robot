@@ -90,3 +90,8 @@ The eight whole-body actuator buses now have **86 sourced circuit parts** across
 
 Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
 <!-- HR30-HARNESS-README-END -->
+<!-- HR30-ASSEMBLY-GUIDE-P01-START -->
+## Whole-robot assembly traveler
+
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 66 fabrication candidates, 25 axes, 156 located joint fasteners, 54 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+<!-- HR30-ASSEMBLY-GUIDE-P01-END -->
