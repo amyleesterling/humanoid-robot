@@ -1,0 +1,12 @@
+function,candidate,quantity,role_boundary,interface,status
+Conversational compute,Raspberry Pi 5 8GB SC1112 candidate,1,"OpenAI client, speech/UI, logging; never writes actuator registers",Ethernet/Wi-Fi to network; authenticated localhost IPC,P0.1 CANDIDATE - EXACT DEVICE/INTERFACE/EMC/THERMAL EVIDENCE REQUIRED
+Deterministic motion controller,STM32H743-class controller board; exact order code SELECTION REQUIRED,1,"state estimation, trajectory interpolation, limits, watchdogs",five isolated/segmented RS-485 channels plus safety I/O,P0.1 CANDIDATE - EXACT DEVICE/INTERFACE/EMC/THERMAL EVIDENCE REQUIRED
+Independent watchdog,Raspberry Pi Pico 1 SC0915 candidate; non-safety-rated,1,heartbeat supervision only; zero functional-safety credit,hardwired permit request to independent safety architecture,P0.1 CANDIDATE - EXACT DEVICE/INTERFACE/EMC/THERMAL EVIDENCE REQUIRED
+Pelvis IMU,industrial-grade 6/9-axis IMU SELECTION REQUIRED,1,body attitude/rate,deterministic SPI/CAN candidate,P0.1 CANDIDATE - EXACT DEVICE/INTERFACE/EMC/THERMAL EVIDENCE REQUIRED
+Foot force sensing,four-corner load cells per foot + ADC SELECTION REQUIRED,8,support polygon and contact state,two local deterministic sensor nodes,P0.1 CANDIDATE - EXACT DEVICE/INTERFACE/EMC/THERMAL EVIDENCE REQUIRED
+Joint output encoders,absolute encoders on all reduced leg axes; exact model SELECTION REQUIRED,8,post-transmission joint angle,deterministic local buses,P0.1 CANDIDATE - EXACT DEVICE/INTERFACE/EMC/THERMAL EVIDENCE REQUIRED
+Vision,Raspberry Pi Camera Module 3 Wide-class candidate,2,stereo/depth-development input; no safety role,CSI to conversational compute,P0.1 CANDIDATE - EXACT DEVICE/INTERFACE/EMC/THERMAL EVIDENCE REQUIRED
+Microphones,four-microphone array candidate,1,far-field speech capture; no safety role,USB/I2S; privacy control required,P0.1 CANDIDATE - EXACT DEVICE/INTERFACE/EMC/THERMAL EVIDENCE REQUIRED
+Speakers,two 3 W full-range speakers + class-D amplifier,2,speech and non-safety status tones,I2S; volume ceiling required,P0.1 CANDIDATE - EXACT DEVICE/INTERFACE/EMC/THERMAL EVIDENCE REQUIRED
+Face screen,5-inch 800x480 HDMI/DSI IPS candidate,1,"expressions, status and privacy indication",DSI/HDMI; exact panel SELECTION REQUIRED,P0.1 CANDIDATE - EXACT DEVICE/INTERFACE/EMC/THERMAL EVIDENCE REQUIRED
+Actuator buses,five independent RS-485 segments,5,"left/right legs, left/right arms, head/waist",termination only at physical ends; shield/return topology open,P0.1 CANDIDATE - EXACT DEVICE/INTERFACE/EMC/THERMAL EVIDENCE REQUIRED

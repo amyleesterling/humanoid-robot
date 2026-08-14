@@ -23,5 +23,19 @@
   "powered_test_authority": false,
   "motion_authority": false,
   "energization_authority": false,
-  "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
+  "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "whole_body_system_package_present": true,
+  "urdf_present": true,
+  "mjcf_present": true,
+  "provisional_mass_com_inertia_budget_present": true,
+  "power_thermal_compute_network_cost_budgets_present": true,
+  "whole_robot_candidate_bom_present": true,
+  "walking_architecture_present": true,
+  "embodied_agent_boundary_present": true,
+  "modular_build_plan_present": true,
+  "estimated_mass_kg": 9.63,
+  "estimated_neutral_com_z_m": 0.338425,
+  "dynamics_validated": false,
+  "walking_validated": false,
+  "physical_build_ready": false
 }

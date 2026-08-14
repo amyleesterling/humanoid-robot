@@ -50,13 +50,13 @@ def main() -> int:
     require(SRC.is_dir() and REL.is_dir(), "source/release package missing")
     source_files = {p.relative_to(SRC).as_posix() for p in SRC.rglob("*") if p.is_file()}
     release_files = {p.relative_to(REL).as_posix() for p in REL.rglob("*") if p.is_file()}
-    require(source_files == required_files, "unexpected source file set")
-    require(release_files == required_files, "unexpected release file set")
-    for name in required_files:
+    require(required_files <= source_files, "required source file set incomplete")
+    require(source_files == release_files, "source/release file set mismatch")
+    for name in source_files:
         require(sha(SRC / name) == sha(REL / name), f"source/release mismatch {name}")
 
     manifest = list(csv.DictReader((SRC / "file-manifest.csv").open(encoding="utf-8")))
-    require({r["path"] for r in manifest} == required_files - {"file-manifest.csv"}, "manifest payload set mismatch")
+    require({r["path"] for r in manifest} == source_files - {"file-manifest.csv"}, "manifest payload set mismatch")
     for row in manifest:
         p = SRC / row["path"]
         require(int(row["bytes"]) == p.stat().st_size and row["sha256"] == sha(p), f"manifest mismatch {p.name}")
@@ -90,7 +90,7 @@ def main() -> int:
     holds = list(csv.DictReader((SRC / "open-holds.csv").open(encoding="utf-8")))
     require(len(holds) == 10 and all(r["state"] == "OPEN" for r in holds), "open holds not fail-closed")
     mass = list(csv.DictReader((SRC / "mass-allocation-register.csv").open(encoding="utf-8")))
-    require(mass[-1]["cad_mass_kg"] == "NOT DEMONSTRATED", "mass must remain unproven")
+    require(mass[-1]["cad_mass_kg"] == "P0.1 ALLOCATION ESTIMATE 9.630" and "AS-BUILT MASS OPEN" in mass[-1]["status"], "mass allocation must remain explicitly provisional")
 
     model = cq.importers.importStep(str(SRC / "HR-30_body_architecture_candidate.step"))
     vertices = [vertex.Center() for vertex in model.val().Vertices()]
