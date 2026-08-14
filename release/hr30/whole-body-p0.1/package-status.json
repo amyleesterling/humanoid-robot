@@ -166,7 +166,10 @@
   "actuator_interface_carrier_component_count": 86,
   "actuator_interface_carrier_placement_complete": true,
   "actuator_interface_carrier_nonconnectivity_drc_violations": 0,
-  "actuator_interface_carrier_unconnected_pad_count": 229,
-  "actuator_interface_carrier_routing_complete": false,
-  "actuator_interface_carrier_fabrication_outputs_released": false
+  "actuator_interface_carrier_unconnected_pad_count": 0,
+  "actuator_interface_carrier_routing_complete": true,
+  "actuator_interface_carrier_fabrication_outputs_released": false,
+  "actuator_interface_carrier_stackup_candidate": "JLC06161H-3313",
+  "actuator_interface_carrier_isolation_moat_count": 5,
+  "actuator_interface_carrier_fabrication_candidate_outputs_generated": true
 }

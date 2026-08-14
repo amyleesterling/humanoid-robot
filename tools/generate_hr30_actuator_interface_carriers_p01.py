@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import heapq
 import html
 import importlib.util
 import json
@@ -42,6 +43,23 @@ TI_TPD = "https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf"
 TDK_FB = "https://product.tdk.com/en/search/emc/emc/beads/info?part_no=MPZ1005S331ETD25"
 LITTELFUSE_SM712 = "https://www.littelfuse.com/assetdocs/littelfuse_tvs_diode_array_sm712_datasheet?assetguid=8313a28c-8802-4d47-a2a7-e30b5b1f67d8"
 JST_GH = "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf"
+JLC_6_LAYER = "https://jlcpcb.com/6-layer-pcb"
+JLC_IMPEDANCE = "https://jlcpcb.com/impedance"
+
+STACKUP_ID = "JLC06161H-3313"
+STACKUP_LAYERS = (
+    ("F.Cu", "copper", 0.035, ""),
+    ("dielectric 1", "prepreg", 0.0994, "3313"),
+    ("In1.Cu", "copper", 0.0152, ""),
+    ("dielectric 2", "core", 0.55, "FR-4"),
+    ("In2.Cu", "copper", 0.0152, ""),
+    ("dielectric 3", "prepreg", 0.1088, "2116"),
+    ("In3.Cu", "copper", 0.0152, ""),
+    ("dielectric 4", "core", 0.55, "FR-4"),
+    ("In4.Cu", "copper", 0.0152, ""),
+    ("dielectric 5", "prepreg", 0.0994, "3313"),
+    ("B.Cu", "copper", 0.035, ""),
+)
 
 RS_BUSES = (("RS-LLEG", "A"), ("RS-RLEG", "A"), ("RS-LARM", "A"), ("RS-RARM", "A"), ("RS-WAIST", "B"))
 TTL_BUSES = (("TTL-LDIST", "B"), ("TTL-RDIST", "B"), ("TTL-HEAD", "B"))
@@ -74,6 +92,41 @@ def write_csv(path: Path, fields: list[str], rows: list[dict[str, object]]) -> N
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def apply_stackup(board_path: Path) -> None:
+    """Bind the native board to the current JLCPCB 1.6 mm six-layer candidate.
+
+    The manufacturer-published buildup totals 1.5384 mm before solder mask and
+    is sold as a nominal 1.6 mm finished board.  No dielectric constant is
+    invented here; impedance and finished-thickness acceptance remain open.
+    """
+    layer_lines = []
+    for name, kind, thickness, material in STACKUP_LAYERS:
+        material_clause = f'\n\t\t\t\t(material "{material}")' if material else ""
+        color_clause = '\n\t\t\t\t(color "FR4 natural")' if kind in {"prepreg", "core"} else ""
+        layer_lines.append(
+            f'\t\t\t(layer "{name}"\n\t\t\t\t(type "{kind}"){color_clause}\n'
+            f'\t\t\t\t(thickness {thickness}){material_clause}\n\t\t\t)'
+        )
+    stackup = (
+        "\t\t(stackup\n"
+        "\t\t\t(layer \"F.SilkS\" (type \"Top Silk Screen\"))\n"
+        "\t\t\t(layer \"F.Paste\" (type \"Top Solder Paste\"))\n"
+        "\t\t\t(layer \"F.Mask\" (type \"Top Solder Mask\") (thickness 0.01))\n"
+        + "\n".join(layer_lines)
+        + "\n\t\t\t(layer \"B.Mask\" (type \"Bottom Solder Mask\") (thickness 0.01))\n"
+        "\t\t\t(layer \"B.Paste\" (type \"Bottom Solder Paste\"))\n"
+        "\t\t\t(layer \"B.SilkS\" (type \"Bottom Silk Screen\"))\n"
+        "\t\t\t(copper_finish \"ENIG\")\n"
+        "\t\t\t(dielectric_constraints no)\n"
+        "\t\t)\n"
+    )
+    text = board_path.read_text(encoding="utf-8")
+    marker = "\t(setup\n"
+    if text.count(marker) != 1 or "\t\t(stackup\n" in text:
+        raise RuntimeError(f"unexpected stackup insertion state: {board_path}")
+    board_path.write_text(text.replace(marker, marker + stackup, 1), encoding="utf-8")
 
 
 def lib_fp(identifier: str):
@@ -167,48 +220,299 @@ def add_track(board, net, start, end, layer, width=0.18) -> None:
 
 
 def add_via(board, net, point) -> None:
-    via = pcbnew.PCB_VIA(board); via.SetPosition(pcbnew.VECTOR2I_MM(*point)); via.SetWidth(pcbnew.FromMM(0.45))
-    via.SetDrill(pcbnew.FromMM(0.20)); via.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu); via.SetNet(net); board.Add(via)
+    via = pcbnew.PCB_VIA(board); via.SetPosition(pcbnew.VECTOR2I_MM(*point)); via.SetWidth(pcbnew.FromMM(0.35))
+    via.SetDrill(pcbnew.FromMM(0.15)); via.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu); via.SetNet(net); board.Add(via)
+
+
+def add_isolation_keepout(board: pcbnew.BOARD, center_x: float) -> None:
+    """Reserve a four-millimetre all-copper moat beneath one ISOW1432."""
+    zone = pcbnew.ZONE(board); zone.SetIsRuleArea(True); zone.SetLayerSet(pcbnew.LSET.AllCuMask())
+    zone.SetDoNotAllowTracks(True); zone.SetDoNotAllowVias(True); zone.SetDoNotAllowZoneFills(True)
+    zone.SetDoNotAllowPads(False); zone.SetDoNotAllowFootprints(False)
+    outline = zone.Outline(); outline.NewOutline()
+    for point in ((center_x - 8.2, 18.0), (center_x + 8.2, 18.0), (center_x + 8.2, 22.0), (center_x - 8.2, 22.0)):
+        outline.Append(pcbnew.VECTOR2I_MM(*point))
+    board.Add(zone)
 
 
 def interval_lane(interval, occupied, candidates):
     x0, x1 = interval
     for lane in candidates:
-        if all(x1 < a - 0.7 or x0 > b + 0.7 for a, b in occupied[lane]):
+        if all(
+            abs(lane - other_lane) >= 0.43 or x1 < a - 0.43 or x0 > b + 0.43
+            for other_lane, intervals in occupied.items()
+            for a, b in intervals
+        ):
             occupied[lane].append((x0, x1)); return lane
     raise RuntimeError(f"no routing lane for interval {interval}")
 
 
 def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> dict[str, object]:
-    pads_by_net: dict[str, list[tuple[float, float]]] = defaultdict(list)
+    pad_records: list[dict[str, object]] = []
+    pads_by_net: dict[str, list[dict[str, object]]] = defaultdict(list)
     for fp in board.GetFootprints():
         for pad in fp.Pads():
             name = pad.GetNetname()
             if name:
-                pos = pad.GetPosition(); pads_by_net[name].append((pcbnew.ToMM(pos.x), pcbnew.ToMM(pos.y)))
-    occupied: dict[float, list[tuple[float, float]]] = defaultdict(list)
-    pad_ys = [p[1] for points in pads_by_net.values() for p in points]
-    top = [6.63 + 0.56 * i for i in range(15)]
-    middle = [17.23 + 0.62 * i for i in range(9)]
-    bottom = [27.17 + 0.54 * i for i in range(21)]
-    candidates_all = [v for v in top + middle + bottom if all(abs(v - y) > 0.30 for y in pad_ys)]
-    lane_rows = []
-    for name, points in sorted(pads_by_net.items(), key=lambda item: (-max(p[0] for p in item[1]) + min(p[0] for p in item[1]), item[0])):
-        if len(points) < 2:
-            continue
-        x0, x1 = min(p[0] for p in points), max(p[0] for p in points)
-        mean_y = sum(p[1] for p in points) / len(points)
-        if max(p[1] for p in points) < 18.0:
-            candidate_pool = [v for v in candidates_all if 6.0 < v < 15.0]
-        elif min(p[1] for p in points) > 22.0:
-            candidate_pool = [v for v in candidates_all if 26.5 < v < 38.5]
-        else:
-            candidate_pool = [v for v in candidates_all if 16.5 < v < 23.5] + candidates_all
-        lane = interval_lane((x0, x1), occupied, candidate_pool)
-        lane_rows.append({"net": name, "lane_y_mm": f"{lane:.3f}", "x_min_mm": f"{x0:.3f}", "x_max_mm": f"{x1:.3f}", "pad_count": len(points)})
-    # The first automated via-in-pad route was rejected by KiCad DRC. Preserve
-    # the real ratsnest and deterministic lane reservations, not unsafe copper.
-    return {"vias": 0, "lanes": lane_rows, "routing_complete": False}
+                pos = pad.GetPosition(); px, py = pcbnew.ToMM(pos.x), pcbnew.ToMM(pos.y)
+                center = fp.GetPosition(); cx, cy = pcbnew.ToMM(center.x), pcbnew.ToMM(center.y)
+                ref = fp.GetReference()
+                bbox = pad.GetBoundingBox()
+                half_x = pcbnew.ToMM(bbox.GetWidth()) / 2.0
+                half_y = pcbnew.ToMM(bbox.GetHeight()) / 2.0
+                if ref.startswith("J"):
+                    ux, uy = (0.0, -1.0) if py > 30.0 else (0.0, 1.0)
+                    if ref.startswith("J1") and pad.GetNumber() == "1":
+                        ux, uy = 0.50, 1.0
+                elif not ref.startswith("U"):
+                    ux = 0.0
+                    if py >= 22.0:
+                        uy = 1.0
+                    elif py >= 16.0:
+                        uy = 1.0
+                    elif py >= 10.0:
+                        uy = -1.0
+                    else:
+                        uy = 1.0
+                elif abs(px - cx) >= abs(py - cy):
+                    ux, uy = (1.0 if px >= cx else -1.0), 0.0
+                else:
+                    ux, uy = 0.0, (1.0 if py >= cy else -1.0)
+                clearance = 0.36
+                if ref.startswith("J1") and pad.GetNumber() == "1":
+                    distance = 3.60
+                else:
+                    distance = 0.80 if ref.startswith("J") else (half_x if ux else half_y) + clearance
+                if not ref.startswith(("J", "U")):
+                    distance += 0.12 * (sum(ord(char) for char in ref) % 2)
+                escape = (px + ux * distance, py + uy * distance)
+                outer = pcbnew.B_Cu if pad.IsOnLayer(pcbnew.B_Cu) and not pad.IsOnLayer(pcbnew.F_Cu) else pcbnew.F_Cu
+                bounds = (pcbnew.ToMM(bbox.GetX()), pcbnew.ToMM(bbox.GetY()), pcbnew.ToMM(bbox.GetRight()), pcbnew.ToMM(bbox.GetBottom()))
+                record = {"net": name, "ref": ref, "pad": pad.GetNumber(), "point": (px, py), "escape": escape, "direction": (ux, uy), "outer": outer, "bounds": bounds}
+                pad_records.append(record); pads_by_net[name].append(record)
+    def point_clear_of_other_pads(x: float, y: float, net_name: str, margin: float = 0.28) -> bool:
+        for other in pad_records:
+            if other["net"] == net_name:
+                continue
+            left, top_y, right, bottom_y = map(float, other["bounds"])
+            if left - margin <= x <= right + margin and top_y - margin <= y <= bottom_y + margin:
+                return False
+        return True
+
+    # Move every escape via far enough beyond its SMD pad to clear unrelated
+    # copper and every other drilled escape.  The fan-out direction remains
+    # normal to the package pad row, preserving a short deterministic stub.
+    placed_escapes: list[tuple[float, float]] = []
+    for record in sorted(pad_records, key=lambda item: (str(item["ref"]), str(item["pad"]))):
+        px, py = map(float, record["point"]); ex0, ey0 = map(float, record["escape"]); ux, uy = map(float, record["direction"])
+        accepted = None
+        for step in range(17):
+            ex, ey = ex0 + ux * 0.22 * step, ey0 + uy * 0.22 * step
+            if not (0.55 < ex < 81.45 and 0.55 < ey < 41.45):
+                continue
+            if not point_clear_of_other_pads(ex, ey, str(record["net"])):
+                continue
+            if any((ex - ox) ** 2 + (ey - oy) ** 2 < 0.46 ** 2 for ox, oy in placed_escapes):
+                continue
+            accepted = (ex, ey); break
+        if accepted is None:
+            raise RuntimeError(f"no DRC-clear escape via for {record['ref']}.{record['pad']} [{record['net']}]")
+        record["escape"] = accepted; placed_escapes.append(accepted)
+
+    def point_segment_distance(point: tuple[float, float], start: tuple[float, float], end: tuple[float, float]) -> float:
+        px, py = point; x1, y1 = start; x2, y2 = end
+        dx, dy = x2 - x1, y2 - y1
+        if dx == 0.0 and dy == 0.0:
+            return ((px - x1) ** 2 + (py - y1) ** 2) ** 0.5
+        fraction = max(0.0, min(1.0, ((px - x1) * dx + (py - y1) * dy) / (dx * dx + dy * dy)))
+        qx, qy = x1 + fraction * dx, y1 + fraction * dy
+        return ((px - qx) ** 2 + (py - qy) ** 2) ** 0.5
+
+    # Keep drilled escapes away from every other net's surface fan-out stub.
+    # Extending only along the already-frozen pad normal avoids arbitrary jogs.
+    for _ in range(6):
+        changed = False
+        for record in pad_records:
+            net_name = str(record["net"]); px, py = map(float, record["point"]); ex, ey = map(float, record["escape"]); ux, uy = map(float, record["direction"])
+            if (ex - px) ** 2 + (ey - py) ** 2 >= 3.0 ** 2 and not str(record["ref"]).startswith("J1"):
+                continue
+            conflicts = [
+                other for other in pad_records
+                if other is not record and str(other["net"]) != net_name
+                and point_segment_distance((ex, ey), tuple(map(float, other["point"])), tuple(map(float, other["escape"]))) < 0.39
+            ]
+            if not conflicts:
+                continue
+            accepted = None
+            for extension in range(1, 13):
+                candidate = (ex + ux * 0.22 * extension, ey + uy * 0.22 * extension)
+                if (candidate[0] - px) ** 2 + (candidate[1] - py) ** 2 > 3.0 ** 2 and not str(record["ref"]).startswith("J1"):
+                    break
+                if not (0.55 < candidate[0] < 81.45 and 0.55 < candidate[1] < 41.45):
+                    break
+                if not point_clear_of_other_pads(candidate[0], candidate[1], net_name):
+                    continue
+                if any(
+                    other is not record and (candidate[0] - float(other["escape"][0])) ** 2 + (candidate[1] - float(other["escape"][1])) ** 2 < 0.46 ** 2
+                    for other in pad_records
+                ):
+                    continue
+                if any(
+                    other is not record and str(other["net"]) != net_name
+                    and point_segment_distance(candidate, tuple(map(float, other["point"])), tuple(map(float, other["escape"]))) < 0.39
+                    for other in pad_records
+                ):
+                    continue
+                accepted = candidate; break
+            if accepted is None:
+                continue
+            record["escape"] = accepted; changed = True
+        if not changed:
+            break
+
+    grid = 0.50; x_origin = 1.0; y_origin = 1.0; nx = 161; ny = 81
+    layers = (pcbnew.In1_Cu, pcbnew.In2_Cu, pcbnew.In3_Cu, pcbnew.In4_Cu)
+    occupied: dict[int, dict[tuple[int, int], str]] = {layer: {} for layer in layers}
+    transition_vias: dict[tuple[int, int], str] = {}
+    mounting_centers = ((3.5, 3.5), (78.5, 3.5), (3.5, 38.5), (78.5, 38.5))
+    isolation_barriers = []
+    for footprint in board.GetFootprints():
+        reference = footprint.GetReference()
+        if reference.startswith("U1") and reference[1:].isdigit():
+            position = footprint.GetPosition(); isolation_barriers.append((pcbnew.ToMM(position.x) - 8.2, pcbnew.ToMM(position.x) + 8.2, 18.0, 22.0))
+
+    def point_for(cell: tuple[int, int]) -> tuple[float, float]:
+        return x_origin + cell[0] * grid, y_origin + cell[1] * grid
+
+    def nearest_cell(point: tuple[float, float]) -> tuple[int, int]:
+        return round((point[0] - x_origin) / grid), round((point[1] - y_origin) / grid)
+
+    def inside(cell: tuple[int, int]) -> bool:
+        ix, iy = cell
+        if not (0 <= ix < nx and 0 <= iy < ny):
+            return False
+        x, y = point_for(cell)
+        if not all((x - hx) ** 2 + (y - hy) ** 2 >= 1.85 ** 2 for hx, hy in mounting_centers):
+            return False
+        return all(not (x0 <= x <= x1 and y0 <= y <= y1) for x0, x1, y0, y1 in isolation_barriers)
+
+    escape_obstacles = [(float(record["escape"][0]), float(record["escape"][1]), str(record["net"])) for record in pad_records]
+    fanout_segments = [(tuple(map(float, record["point"])), tuple(map(float, record["escape"])), str(record["net"])) for record in pad_records]
+
+    def cell_available(layer: int, cell: tuple[int, int], net_name: str, for_via: bool = False) -> bool:
+        if not inside(cell):
+            return False
+        owner = occupied[layer].get(cell)
+        if owner not in (None, net_name):
+            return False
+        if transition_vias.get(cell) not in (None, net_name):
+            return False
+        x, y = point_for(cell)
+        if any(other_net != net_name and (x - ox) ** 2 + (y - oy) ** 2 < 0.39 ** 2 for ox, oy, other_net in escape_obstacles):
+            return False
+        if for_via:
+            if any(occupied[other_layer].get(cell) not in (None, net_name) for other_layer in layers):
+                return False
+            if any(other_net != net_name and (cell[0] - other_cell[0]) ** 2 + (cell[1] - other_cell[1]) ** 2 <= 1 for other_cell, other_net in transition_vias.items()):
+                return False
+            if any((x - ox) ** 2 + (y - oy) ** 2 < 0.46 ** 2 for ox, oy, _ in escape_obstacles):
+                return False
+            if not point_clear_of_other_pads(x, y, net_name, margin=0.28):
+                return False
+            if any(other_net != net_name and point_segment_distance((x, y), start, end) < 0.39 for start, end, other_net in fanout_segments):
+                return False
+        return True
+
+    def edge_available(layer: int, start: tuple[int, int], end: tuple[int, int], net_name: str) -> bool:
+        a, b = point_for(start), point_for(end)
+        if not all(other_net == net_name or point_segment_distance((ox, oy), a, b) >= 0.39 for ox, oy, other_net in escape_obstacles):
+            return False
+        return all(other_net == net_name or point_segment_distance(point_for(cell), a, b) >= 0.39 for cell, other_net in transition_vias.items())
+
+    def target_cell(point: tuple[float, float], net_name: str) -> tuple[int, int]:
+        base = nearest_cell(point)
+        candidates = [(dx * dx + dy * dy, (base[0] + dx, base[1] + dy)) for dx in range(-3, 4) for dy in range(-3, 4)]
+        for _, cell in sorted(candidates):
+            if any(cell_available(layer, cell, net_name) for layer in layers):
+                return cell
+        raise RuntimeError(f"no internal grid access near {point} for {net_name}")
+
+    def find_path(target: tuple[int, int], tree: set[tuple[int, int, int]], net_name: str) -> list[tuple[int, int, int]]:
+        tree_xy = {(ix, iy) for _, ix, iy in tree}
+        min_x = min(ix for ix, _ in tree_xy); max_x = max(ix for ix, _ in tree_xy)
+        min_y = min(iy for _, iy in tree_xy); max_y = max(iy for _, iy in tree_xy)
+
+        def heuristic(ix: int, iy: int) -> int:
+            return max(min_x - ix, 0, ix - max_x) + max(min_y - iy, 0, iy - max_y)
+
+        frontier: list[tuple[int, int, tuple[int, int, int]]] = []
+        parent: dict[tuple[int, int, int], tuple[int, int, int] | None] = {}
+        cost: dict[tuple[int, int, int], int] = {}
+        serial = 0
+        for layer in layers:
+            if cell_available(layer, target, net_name):
+                state = (layer, target[0], target[1]); parent[state] = None; cost[state] = 0
+                heapq.heappush(frontier, (heuristic(target[0], target[1]), serial, state)); serial += 1
+        while frontier:
+            _, _, state = heapq.heappop(frontier)
+            layer, ix, iy = state
+            if state in tree:
+                path = [state]
+                while parent[path[-1]] is not None:
+                    path.append(parent[path[-1]])
+                path.reverse(); return path
+            base_cost = cost[state]
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                cell = (ix + dx, iy + dy)
+                if not cell_available(layer, cell, net_name) or not edge_available(layer, (ix, iy), cell, net_name):
+                    continue
+                candidate = (layer, cell[0], cell[1]); new_cost = base_cost + 1
+                if new_cost < cost.get(candidate, 10**9):
+                    cost[candidate] = new_cost; parent[candidate] = state
+                    heapq.heappush(frontier, (new_cost + heuristic(cell[0], cell[1]), serial, candidate)); serial += 1
+            for other_layer in layers:
+                if other_layer == layer or not cell_available(other_layer, (ix, iy), net_name, for_via=True):
+                    continue
+                candidate = (other_layer, ix, iy); new_cost = base_cost + 7
+                if new_cost < cost.get(candidate, 10**9):
+                    cost[candidate] = new_cost; parent[candidate] = state
+                    heapq.heappush(frontier, (new_cost + heuristic(ix, iy), serial, candidate)); serial += 1
+        raise RuntimeError(f"maze router could not connect {net_name} at {point_for(target)}")
+
+    routed_vias = 0; route_rows: list[dict[str, object]] = []; summary_rows = []
+    net_order = sorted(
+        ((name, records) for name, records in pads_by_net.items() if len(records) >= 2),
+        key=lambda item: (0 if item[0] in {"CTRL_GND", "CTRL_3V3", "CTRL_5V"} else 1, -len(item[1]), item[0]),
+    )
+    for name, records in net_order:
+        width = 0.20 if name in {"CTRL_GND", "CTRL_3V3", "CTRL_5V"} or name.endswith(("_RET", "_VISOOUT", "_VISOIN", "_GND2")) else 0.15
+        for record in records:
+            px, py = map(float, record["point"]); ex, ey = map(float, record["escape"]); outer = int(record["outer"])
+            add_track(board, nets[name], (px, py), (ex, ey), outer, width); add_via(board, nets[name], (ex, ey)); routed_vias += 1
+        root_record = records[0]; root_point = tuple(map(float, root_record["escape"])); root_cell = target_cell(root_point, name)
+        root_layer = next(layer for layer in layers if cell_available(layer, root_cell, name))
+        add_track(board, nets[name], root_point, point_for(root_cell), root_layer, width)
+        occupied[root_layer][root_cell] = name
+        tree: set[tuple[int, int, int]] = {(root_layer, root_cell[0], root_cell[1])}
+        pending = records[1:]; segment_count = 1; net_transition_vias = 0
+        while pending:
+            target_record = min(pending, key=lambda record: min(abs(nearest_cell(tuple(map(float, record["escape"])))[0] - ix) + abs(nearest_cell(tuple(map(float, record["escape"])))[1] - iy) for _, ix, iy in tree))
+            pending.remove(target_record); exact = tuple(map(float, target_record["escape"])); target = target_cell(exact, name)
+            path = find_path(target, tree, name)
+            add_track(board, nets[name], exact, point_for((path[0][1], path[0][2])), path[0][0], width); segment_count += 1
+            for first, second in zip(path, path[1:]):
+                l1, x1, y1 = first; l2, x2, y2 = second
+                if l1 == l2:
+                    add_track(board, nets[name], point_for((x1, y1)), point_for((x2, y2)), l1, width); segment_count += 1
+                else:
+                    cell = (x1, y1)
+                    if transition_vias.get(cell) != name:
+                        add_via(board, nets[name], point_for(cell)); routed_vias += 1; net_transition_vias += 1; transition_vias[cell] = name
+            for layer, ix, iy in path:
+                occupied[layer][(ix, iy)] = name; tree.add((layer, ix, iy))
+            route_rows.append({"net": name, "reference": target_record["ref"], "pad": target_record["pad"], "escape_x_mm": f"{exact[0]:.3f}", "escape_y_mm": f"{exact[1]:.3f}", "grid_x_mm": f"{point_for(target)[0]:.3f}", "grid_y_mm": f"{point_for(target)[1]:.3f}", "track_width_mm": f"{width:.3f}"})
+        summary_rows.append({"net": name, "routing_grid_mm": f"{grid:.2f}", "routed_pad_count": len(records), "path_segments": segment_count, "transition_vias": net_transition_vias, "routing_layers": "In1.Cu/In2.Cu/In3.Cu/In4.Cu"})
+    return {"vias": routed_vias, "lanes": summary_rows, "routes": route_rows, "routing_complete": True, "routing_method": "four-layer deterministic Manhattan maze route", "routing_grid_mm": grid}
 
 
 def write_board(board_id: str, parts: list[Part]) -> dict[str, object]:
@@ -217,6 +521,8 @@ def write_board(board_id: str, parts: list[Part]) -> dict[str, object]:
     settings = board.GetDesignSettings(); settings.SetBoardThickness(pcbnew.FromMM(1.6))
     settings.m_MinClearance = pcbnew.FromMM(0.10); settings.m_TrackMinWidth = pcbnew.FromMM(0.15)
     settings.m_HoleClearance = pcbnew.FromMM(0.10); settings.m_SolderMaskMinWidth = pcbnew.FromMM(0.10)
+    settings.m_HoleToHoleMin = pcbnew.FromMM(0.25); settings.m_ViasMinSize = pcbnew.FromMM(0.35)
+    settings.m_MinThroughDrill = pcbnew.FromMM(0.15); settings.m_ViasMinAnnularWidth = pcbnew.FromMM(0.10)
     settings.m_NetSettings.GetDefaultNetclass().SetClearance(pcbnew.FromMM(0.10))
     net_names = sorted({net for part in board_parts for net in part.pins.values() if net})
     nets = {}
@@ -238,6 +544,10 @@ def write_board(board_id: str, parts: list[Part]) -> dict[str, object]:
         hole.SetReference(f"MH{board_id}{index}"); hole.SetValue("M2.5 BOARD-ONLY; TRAY STACK VALIDATION OPEN")
         hole.SetPosition(pcbnew.VECTOR2I_MM(x, y)); hole.SetBoardOnly(True); hole.SetExcludedFromBOM(True); hole.SetExcludedFromPosFiles(True)
         hole.Reference().SetVisible(False); hole.Value().SetVisible(False); board.Add(hole)
+    for footprint in board.GetFootprints():
+        reference = footprint.GetReference()
+        if reference.startswith("U1") and reference[1:].isdigit():
+            add_isolation_keepout(board, pcbnew.ToMM(footprint.GetPosition().x))
     for start, end in zip(((0, 0), (82, 0), (82, 42), (0, 42)), ((82, 0), (82, 42), (0, 42), (0, 0))):
         edge = pcbnew.PCB_SHAPE(board); edge.SetShape(pcbnew.SHAPE_T_SEGMENT); edge.SetStart(pcbnew.VECTOR2I_MM(*start)); edge.SetEnd(pcbnew.VECTOR2I_MM(*end))
         edge.SetLayer(pcbnew.Edge_Cuts); edge.SetWidth(pcbnew.FromMM(0.20)); board.Add(edge)
@@ -247,6 +557,7 @@ def write_board(board_id: str, parts: list[Part]) -> dict[str, object]:
     add_text(board, "PRELIMINARY / DO NOT FABRICATE OR CONNECT", 18, 35.0, 0.8, pcbnew.B_SilkS)
     board_path = OUT / f"carrier-{board_id.lower()}" / f"hr30-carrier-{board_id.lower()}-p0.1.kicad_pcb"
     board_path.parent.mkdir(parents=True, exist_ok=True); pcbnew.SaveBoard(str(board_path), board)
+    apply_stackup(board_path)
     return {"board": board_id, "path": board_path, "parts": len(board_parts), "nets": len(net_names), "routing": routing}
 
 
@@ -318,15 +629,40 @@ def export_and_validate(boards: list[dict[str, object]]) -> list[dict[str, objec
         board_id = info["board"]; path = Path(info["path"]); stem = path.stem
         drc_path = validation / f"{stem}-drc.rpt"
         drc = run_cli(["pcb", "drc", "--severity-all", "--exit-code-violations", "--output", drc_path, path], allowed=(0, 5))
+        if drc.returncode != 0:
+            raise RuntimeError(f"{stem} must reach KiCad DRC 0/0 before fabrication-candidate exports")
         run_cli(["pcb", "export", "svg", "--mode-single", "--output", output / f"{stem}-front.svg", "--layers", "F.Cu,F.Silkscreen,F.Mask,Edge.Cuts", "--fit-page-to-board", "--exclude-drawing-sheet", path])
         run_cli(["pcb", "export", "svg", "--mode-single", "--output", output / f"{stem}-back.svg", "--layers", "B.Cu,B.Silkscreen,B.Mask,Edge.Cuts", "--mirror", "--fit-page-to-board", "--exclude-drawing-sheet", path])
+        for layer in ("In1.Cu", "In2.Cu", "In3.Cu", "In4.Cu"):
+            slug = layer.lower().replace(".", "-")
+            run_cli(["pcb", "export", "svg", "--mode-single", "--output", output / f"{stem}-{slug}.svg", "--layers", f"{layer},Edge.Cuts", "--fit-page-to-board", "--exclude-drawing-sheet", path])
+
+        fab = OUT / "fabrication-candidate-not-released" / f"carrier-{str(board_id).lower()}"
+        gerber = fab / "gerber"; drill = fab / "drill"
+        gerber.mkdir(parents=True, exist_ok=True); drill.mkdir(parents=True, exist_ok=True)
+        run_cli(["pcb", "export", "gerbers", "--output", gerber, "--layers", "F.Cu,In1.Cu,In2.Cu,In3.Cu,In4.Cu,B.Cu,F.Mask,B.Mask,F.Silkscreen,B.Silkscreen,Edge.Cuts", "--precision", "6", "--check-zones", path])
+        run_cli(["pcb", "export", "drill", "--output", drill, "--format", "excellon", "--drill-origin", "absolute", "--excellon-zeros-format", "decimal", "--excellon-units", "mm", "--excellon-separate-th", "--generate-map", "--map-format", "svg", "--generate-report", "--report-path", drill / f"{stem}-drill-report.rpt", path])
+        run_cli(["pcb", "export", "ipcd356", "--output", fab / f"{stem}.d356", path])
+        run_cli(["pcb", "export", "pos", "--output", fab / f"{stem}-positions.csv", "--side", "both", "--format", "csv", "--units", "mm", "--exclude-dnp", path])
+        run_cli(["pcb", "export", "stats", "--output", fab / f"{stem}-board-stats.json", "--format", "json", "--units", "mm", path])
+        (fab / "README.txt").write_text(
+            f"{WARNING}\n\nMachine-readable output for design inspection and manufacturer DFM quotation only.\n"
+            "It is not an order release and confers no procurement, fabrication, assembly, connection, motion, or energization authority.\n",
+            encoding="utf-8",
+        )
         results.append({"artifact": f"carrier-{board_id}", "return_code": drc.returncode, "report": str(drc_path)})
     # KiCad's SVG writer leaves decorative trailing spaces on many XML lines.
     # Normalize those generated exports so repository whitespace checks remain
     # useful without changing any geometric or presentation content.
-    for svg in output.glob("*.svg"):
+    for svg in OUT.rglob("*.svg"):
         normalized = "\n".join(line.rstrip() for line in svg.read_text(encoding="utf-8").splitlines()) + "\n"
         svg.write_text(normalized, encoding="utf-8")
+    fab_files = [p for p in (OUT / "fabrication-candidate-not-released").rglob("*") if p.is_file()]
+    write_csv(
+        OUT / "fabrication-candidate-register.csv",
+        ["path", "bytes", "sha256", "release_state", "warning"],
+        [{"path": p.relative_to(OUT).as_posix(), "bytes": p.stat().st_size, "sha256": sha256(p), "release_state": "CANDIDATE ONLY - NOT RELEASED FOR ORDER", "warning": WARNING} for p in sorted(fab_files)],
+    )
     return results
 
 
@@ -340,12 +676,23 @@ def publish(parts: list[Part], boards: list[dict[str, object]], validation: list
     lane_rows = []
     for board in boards:
         for row in board["routing"]["lanes"]:
-            lane_rows.append({"board": board["board"], **row, "routing_method": "UNROUTED deterministic lane reservation; rejected auto-route not retained", "warning": WARNING})
+            lane_rows.append({"board": board["board"], **row, "routing_method": board["routing"]["routing_method"], "warning": WARNING})
     write_csv(OUT / "carrier-routing-register.csv", list(lane_rows[0]), lane_rows)
+    stackup_rows = [
+        {"stackup_id": STACKUP_ID, "sequence": index, "layer": name, "type": kind, "nominal_thickness_mm": thickness, "material": material or "COPPER", "source": JLC_IMPEDANCE, "release_state": "CANDIDATE - FAB QUOTE/RECEIPT CONFIRMATION REQUIRED", "warning": WARNING}
+        for index, (name, kind, thickness, material) in enumerate(STACKUP_LAYERS, 1)
+    ]
+    write_csv(OUT / "stackup-register.csv", list(stackup_rows[0]), stackup_rows)
+    moat_rows = [
+        {"board": p.board, "isolator": p.ref, "x_min_mm": f"{p.x - 8.2:.3f}", "x_max_mm": f"{p.x + 8.2:.3f}", "y_min_mm": "18.000", "y_max_mm": "22.000", "layers": "ALL COPPER", "rule": "NO TRACKS / NO VIAS / NO ZONES / NO COPPER POURS", "validation": "NATIVE KICAD RULE AREA; DRC 0/0", "warning": WARNING}
+        for p in parts if p.ref.startswith("U1") and p.ref[1:].isdigit()
+    ]
+    write_csv(OUT / "isolation-moat-register.csv", list(moat_rows[0]), moat_rows)
     config_rows = [
         {"configuration_id": "TERM-RS-001", "applies_to": "SJ1-SJ5", "default": "OPEN / DNP", "change_condition": "Close only when this carrier is verified as a physical bus end and measured cable impedance/waveform supports 120 ohm termination.", "authority": "CONTROLLED CONFIGURATION CHANGE REQUIRED", "warning": WARNING},
         {"configuration_id": "TTL-PULLUP-001", "applies_to": "R201P-R203P", "default": "DNP", "change_condition": "Fit only after measured actuator/bus idle-state and loading validation.", "authority": "CONTROLLED CONFIGURATION CHANGE REQUIRED", "warning": WARNING},
-        {"configuration_id": "ROUTING-001", "applies_to": "both boards", "default": "UNROUTED PLACEMENT CANDIDATE", "change_condition": "Complete interactive constraint-aware routing, resolve DRC, and perform independent layout review before any fabrication package exists.", "authority": "PCB DESIGN REQUIRED", "warning": WARNING},
+        {"configuration_id": "ROUTING-001", "applies_to": "both boards", "default": "ROUTED ON In1.Cu/In2.Cu/In3.Cu/In4.Cu; 0 UNCONNECTED; KICAD DRC 0/0", "change_condition": "Any component, net, geometry, stackup or rule change requires regeneration and complete ERC/DRC rerun.", "authority": "INDEPENDENT LAYOUT/DFM/PHYSICAL REVIEW REQUIRED", "warning": WARNING},
+        {"configuration_id": "STACKUP-001", "applies_to": "both boards", "default": f"{STACKUP_ID}; JLCPCB nominal 1.6 mm six-layer candidate; ENIG candidate", "change_condition": "Manufacturer DFM quotation and controlled impedance/material confirmation before fabrication release.", "authority": "FABRICATION RELEASE REQUIRED", "warning": WARNING},
     ]
     write_csv(OUT / "carrier-configuration-register.csv", list(config_rows[0]), config_rows)
     sources = [
@@ -356,6 +703,8 @@ def publish(parts: list[Part], boards: list[dict[str, object]], validation: list
         ("TDK-MPZ1005", "TDK", "MPZ1005S331ETD25 product page", "live production page; accessed 2026-08-14", TDK_FB, "330 ohm at 100 MHz; 700 mA; 0.28 ohm max; 0402"),
         ("LITTELFUSE-SM712", "Littelfuse", "SM712 datasheet", "revised 2019-08-22; active page accessed 2026-08-14", LITTELFUSE_SM712, "RS-485 -7/+12 V working range; exact SOT23-3 order code"),
         ("JST-GH", "JST", "GH connector catalog", "live catalog accessed 2026-08-14", JST_GH, "BM15/BM03/BM02 header families; data-only connector boundary"),
+        ("JLC-6L-CAPABILITY", "JLCPCB", "6-layer PCB manufacturing capability", "live official page accessed 2026-08-14", JLC_6_LAYER, "six-layer 1.6 mm capability and catalog manufacturing limits"),
+        ("JLC-STACKUP-3313", "JLCPCB", "PCB impedance and stackup calculator", "live official page accessed 2026-08-14", JLC_IMPEDANCE, f"{STACKUP_ID} nominal layer buildup and material identifiers"),
     ]
     write_csv(OUT / "primary-source-register.csv", ["source_id", "manufacturer", "document", "revision_or_date", "url", "verified_use"], [{"source_id": a, "manufacturer": b, "document": c, "revision_or_date": d, "url": e, "verified_use": f} for a, b, c, d, e, f in sources])
     status = {
@@ -363,17 +712,21 @@ def publish(parts: list[Part], boards: list[dict[str, object]], validation: list
         "carrier_a": {"board_mm": [82, 42, 1.6], "copper_layers": 6, "components": next(b["parts"] for b in boards if b["board"] == "A"), "native_pcb": True},
         "carrier_b": {"board_mm": [82, 42, 1.6], "copper_layers": 6, "components": next(b["parts"] for b in boards if b["board"] == "B"), "native_pcb": True},
         "validation": validation,
-        "design_advancement": "complete native carrier schematics, exact footprints, six-layer board outlines and placement candidates; rejected auto-route removed",
+        "design_advancement": "complete native carrier schematics, exact footprints, deterministic routed copper, native isolation moats, candidate stackup and machine-readable fabrication-candidate outputs",
+        "routing_complete": True, "unconnected_pad_count": 0, "kicad_drc_violations": 0, "kicad_erc_errors": 0, "kicad_erc_warnings": 0,
+        "stackup_candidate": STACKUP_ID, "stackup_manufacturer_nominal_finished_thickness_mm": 1.6, "published_buildup_without_soldermask_mm": 1.5384,
+        "fabrication_candidate_outputs_generated": True, "fabrication_outputs_released": False,
         "drc_acceptance": False, "fabrication_authority": False, "assembly_authority": False, "connection_authority": False, "motion_authority": False, "energization_authority": False,
-        "open": ["complete copper routing and resolve every DRC item", "independent schematic/footprint/layout review", "exact stackup and isolation geometry", "termination and bias configuration", "surge/miswire/EMC/timing/thermal tests", "cable and power-injection hardware", "qualified electrical and safety review"],
+        "open": ["independent schematic/footprint/routing/DFM review", "manufacturer confirmation of stackup, finished thickness, finish and controlled impedance", "termination and bias configuration", "surge/miswire/EMC/timing/thermal tests", "cable and power-injection hardware", "physical isolation and fault testing", "qualified electrical and safety review"],
     }
     (OUT / "carrier-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
     cards = []
     for b in boards:
         bid = str(b["board"]); stem = Path(b["path"]).stem
-        cards.append(f'''<article><h2>Carrier {bid}</h2><p><strong>{b['parts']} placed components · {b['nets']} named nets · copper routing explicitly open</strong></p><h3>Front: transceivers and connectors</h3><div class="board"><object data="output/{stem}-front.svg" type="image/svg+xml" aria-label="Carrier {bid} front placement and pad view"></object></div><h3>Back: support passives and configuration parts</h3><div class="board"><object data="output/{stem}-back.svg" type="image/svg+xml" aria-label="Carrier {bid} back placement and pad view"></object></div><p><a href="carrier-{bid.lower()}/{stem}.kicad_pcb">Open native KiCad PCB</a> · <a href="validation/{stem}-drc.rpt">Read the complete unrouted DRC report</a></p></article>''')
-    (OUT / "index.html").write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 actuator interface carriers P0.1</title><style>:root{{--ink:#071b38;--blue:#0b4f91;--sky:#b9e8ff;--gold:#f5bd2b;--paper:#f5fbff}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,sans-serif}}header,main{{max-width:1180px;margin:auto;padding:28px}}header{{max-width:none;background:var(--ink);color:white}}header>div{{max-width:1180px;margin:auto}}h1{{font-size:clamp(2rem,5vw,4rem);line-height:1.05}}.warning{{border:3px solid var(--gold);padding:14px;font-weight:900}}article{{background:white;border:2px solid var(--blue);border-radius:16px;padding:20px;margin:22px 0}}.board{{overflow:auto;border:1px solid #8bc7e8;background:white}}object{{display:block;width:100%;min-width:760px;min-height:420px}}a{{color:#07549a;font-weight:800}}small{{font-size:14px}}@media(max-width:680px){{body{{font-size:16px}}header,main{{padding:20px 14px}}}}</style></head><body><header><div><p class="warning">{html.escape(WARNING)}</p><h1>Two physical carrier placement candidates.</h1><p>The whole-body architecture now has complete application circuits, exact footprints, 82 × 42 mm board outlines and editable KiCad placement candidates.</p></div></header><main><p><strong>What this is:</strong> editable circuit and placement source. <strong>What it is not:</strong> a routed PCB or fabrication package. The rejected automatic route was removed. Copper routing, DRC closure, isolation, signal integrity, EMC, thermal and physical fault evidence remain gates.</p>{''.join(cards)}<article><h2>Configuration and source records</h2><p><a href="carrier-component-register.csv">Component register</a> · <a href="carrier-terminal-register.csv">pad/net register</a> · <a href="carrier-routing-register.csv">routing lane plan</a> · <a href="carrier-configuration-register.csv">assembly configuration</a> · <a href="primary-source-register.csv">primary sources</a> · <a href="{PROJECT}.kicad_pro">native schematic project</a></p></article></main></body></html>''', encoding="utf-8")
-    readme = f"""# HR-30 actuator-interface carriers P0.1\n\n**{WARNING}**\n\nThis package advances the whole humanoid's eight actuator buses from pin-level blocks to two dimensioned native KiCad PCB placement candidates. Carrier A contains four complete ISOW1432 RS-485 application channels. Carrier B contains one complete ISOW1432 channel and three SN74LVC1T45 translator channels. Both boards are 82 x 42 x 1.6 mm, use six copper layers, retain data-only field connectors, and include exact footprints, board outlines, placement, ratsnest and SVG inspection outputs.\n\nThe RS-485 channels include TI-required local bypassing, separate VISOOUT/VISOIN and GND2/GISOIN ferrites, an SM712 bus-protection candidate, and a default-open 120-ohm termination configuration. The TTL channels include dual-rail bypassing, a receive-default direction pulldown, 33-ohm series candidate, TPD1E10B06 ESD candidate and a DNP idle pull-up.\n\nAn automated via-in-pad route was generated during development and rejected after KiCad reported shorts and clearance failures. Those tracks and vias are not retained. The native boards intentionally preserve the unrouted ratsnest and deterministic lane reservations so the remaining work is visible. DRC output is evidence, not approval. Copper routing, isolation geometry, enclosure fit, cable retention, surge/miswire behavior, timing, waveform integrity, EMC, thermal performance and every powered test remain open.\n\nOpen `index.html` for the readable interactive guide.\n"""
+        layer_views = ''.join(f'''<details><summary>{layer} routing</summary><div class="board"><object data="output/{stem}-{layer.lower().replace('.', '-')}.svg" type="image/svg+xml" aria-label="Carrier {bid} {layer} routed copper"></object></div></details>''' for layer in ("In1.Cu", "In2.Cu", "In3.Cu", "In4.Cu"))
+        cards.append(f'''<article><h2>Carrier {bid}</h2><p><strong>{b['parts']} components · {b['nets']} named nets · {b['routing']['vias']} vias · 0 unconnected pads</strong></p><h3>Front copper and components</h3><div class="board"><object data="output/{stem}-front.svg" type="image/svg+xml" aria-label="Carrier {bid} front routed board"></object></div><h3>Internal routing atlas</h3>{layer_views}<h3>Back copper and components</h3><div class="board"><object data="output/{stem}-back.svg" type="image/svg+xml" aria-label="Carrier {bid} back routed board"></object></div><p><a href="carrier-{bid.lower()}/{stem}.kicad_pcb">Open native KiCad PCB</a> · <a href="validation/{stem}-drc.rpt">Read the complete DRC 0/0 report</a> · <a href="fabrication-candidate-not-released/carrier-{bid.lower()}/">Inspect machine fabrication candidates</a></p></article>''')
+    (OUT / "index.html").write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 actuator interface carriers P0.1</title><style>:root{{--ink:#071b38;--blue:#0b4f91;--sky:#b9e8ff;--gold:#f5bd2b;--paper:#f5fbff}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,sans-serif}}header,main{{max-width:1180px;margin:auto;padding:28px}}header{{max-width:none;background:var(--ink);color:white}}header>div{{max-width:1180px;margin:auto}}h1{{font-size:clamp(2rem,5vw,4rem);line-height:1.05}}.warning{{border:3px solid var(--gold);padding:14px;font-weight:900}}article{{background:white;border:2px solid var(--blue);border-radius:16px;padding:20px;margin:22px 0}}.board{{overflow:auto;border:1px solid #8bc7e8;background:white}}object{{display:block;width:100%;min-width:760px;min-height:420px}}details{{margin:14px 0;border:1px solid #8bc7e8;border-radius:10px;padding:12px}}summary{{cursor:pointer;font-size:18px;font-weight:850;color:var(--blue)}}a{{color:#07549a;font-weight:800}}small{{font-size:14px}}@media(max-width:680px){{body{{font-size:16px}}header,main{{padding:20px 14px}}}}</style></head><body><header><div><p class="warning">{html.escape(WARNING)}</p><h1>Two routed physical carrier candidates.</h1><p>The whole-body architecture now has complete application circuits, exact footprints, 82 × 42 mm routed board geometry, editable KiCad sources and layer-by-layer inspection views.</p></div></header><main><p><strong>Verified here:</strong> native KiCad ERC 0/0, DRC 0/0, zero unconnected pads, exact all-copper isolation moats and a bound {STACKUP_ID} candidate stackup. <strong>Not verified:</strong> independent layout acceptance, manufacturer DFM, controlled impedance, signal integrity, EMC, thermal, fault behavior or physical safety. Machine files are inspection/quotation candidates only and are not released for ordering.</p>{''.join(cards)}<article><h2>Configuration and source records</h2><p><a href="carrier-component-register.csv">Component register</a> · <a href="carrier-terminal-register.csv">pad/net register</a> · <a href="carrier-routing-register.csv">routing register</a> · <a href="isolation-moat-register.csv">isolation moats</a> · <a href="stackup-register.csv">stackup</a> · <a href="fabrication-candidate-register.csv">machine-file register</a> · <a href="primary-source-register.csv">primary sources</a> · <a href="{PROJECT}.kicad_pro">native schematic project</a></p></article></main></body></html>''', encoding="utf-8")
+    readme = f"""# HR-30 actuator-interface carriers P0.1\n\n**{WARNING}**\n\nThis package advances the whole humanoid's eight actuator buses to two dimensioned, routed native KiCad PCB candidates. Carrier A contains four complete ISOW1432 RS-485 application channels. Carrier B contains one complete ISOW1432 channel and three SN74LVC1T45 translator channels. Both boards are 82 x 42 mm, use six copper layers, retain data-only field connectors, and regenerate from the source tool.\n\nKiCad 10 verifies schematic ERC at 0 errors / 0 warnings and both boards at 0 DRC violations / 0 unconnected pads. The deterministic route uses four internal signal layers with 0.15 mm general traces, 0.20 mm return/power-related traces, and 0.35/0.15 mm through vias. Five native all-copper rule areas preserve 4.0 mm isolation moats across the ISOW1432 barriers. The native boards bind the manufacturer-published {STACKUP_ID} nominal 1.6 mm six-layer candidate; the published copper/dielectric buildup totals 1.5384 mm before solder mask.\n\nThe machine-readable Gerber, Excellon, IPC-D-356, position and board-statistics outputs are fabrication candidates for inspection and DFM quotation only. They are explicitly not released for ordering. DRC completion does not establish independent design acceptance, controlled impedance, enclosure fit, cable retention, surge/miswire behavior, timing, waveform integrity, EMC, thermal performance, fault safety or permission for any powered test.\n\nOpen `index.html` for the interactive layer-by-layer guide.\n"""
     (OUT / "README.md").write_text(readme, encoding="utf-8")
     files = [p for p in OUT.rglob("*") if p.is_file() and p.name != "file-manifest.csv"]
     write_csv(OUT / "file-manifest.csv", ["path", "bytes", "sha256", "warning"], [{"path": p.relative_to(OUT).as_posix(), "bytes": p.stat().st_size, "sha256": sha256(p), "warning": WARNING} for p in sorted(files)])
@@ -391,8 +744,11 @@ def update_whole_body_package() -> None:
         "actuator_interface_carrier_component_count": 86,
         "actuator_interface_carrier_placement_complete": True,
         "actuator_interface_carrier_nonconnectivity_drc_violations": 0,
-        "actuator_interface_carrier_unconnected_pad_count": 229,
-        "actuator_interface_carrier_routing_complete": False,
+        "actuator_interface_carrier_unconnected_pad_count": 0,
+        "actuator_interface_carrier_routing_complete": True,
+        "actuator_interface_carrier_stackup_candidate": STACKUP_ID,
+        "actuator_interface_carrier_isolation_moat_count": 5,
+        "actuator_interface_carrier_fabrication_candidate_outputs_generated": True,
         "actuator_interface_carrier_fabrication_outputs_released": False,
     })
     status_path.write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
@@ -404,10 +760,11 @@ def update_whole_body_package() -> None:
             row["unresolved_item"] = (
                 "The native 18-sheet HR-30 KiCad project and ten-sheet carrier project bind all 25 axes, eight STM32 UART groups, five complete "
                 "ISOW1432 application circuits, three complete SN74LVC1T45 application circuits, exact data-only JST GH "
-                "connectors, and two 82 x 42 mm six-layer placement candidates. Carrier schematic ERC is 0/0 and both boards "
-                "have zero non-connectivity DRC violations. Copper routing remains deliberately open (140 Carrier A and 89 "
-                "Carrier B unconnected pads). Stackup/isolation geometry, cables, branch power injection, grounding, EMC, timing, "
-                "thermal behavior, sensing calibration, safety allocation and physical fault tests remain open."
+                "connectors, and two 82 x 42 mm six-layer routed candidates. Carrier schematic ERC is 0/0; both boards have "
+                "KiCad DRC 0/0 and zero unconnected pads. Five native all-copper isolation moats and the JLC06161H-3313 stackup "
+                "candidate are bound in source. Independent layout/DFM acceptance, manufacturer stackup confirmation, cables, "
+                "branch power injection, grounding, EMC, timing, thermal behavior, sensing calibration, safety allocation and "
+                "physical fault tests remain open. Machine outputs are not released for ordering."
             )
     with holds_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(holds[0]), lineterminator="\n"); writer.writeheader(); writer.writerows(holds)
@@ -416,7 +773,7 @@ def update_whole_body_package() -> None:
     equipment = list(csv.DictReader(equipment_path.open(encoding="utf-8", newline="")))
     for row in equipment:
         if row["item_id"] in {"EQ-T01-BUS-CARRIER-A", "EQ-T01-BUS-CARRIER-B"}:
-            row["evidence_state"] = "complete sourced application circuit and 82 x 42 mm native PCB placement candidate exist; copper routing, stackup/isolation geometry, EMC, thermal and physical validation remain open; U2D2 stays external commissioning-only"
+            row["evidence_state"] = "complete sourced application circuit and routed 82 x 42 mm native PCB candidate exist; ERC/DRC 0/0, zero unconnected pads, five isolation moats and candidate stackup are recorded; independent DFM, EMC, thermal and physical validation remain open; U2D2 stays external commissioning-only"
     with equipment_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(equipment[0]), lineterminator="\n"); writer.writeheader(); writer.writerows(equipment)
 
@@ -424,7 +781,7 @@ def update_whole_body_package() -> None:
     bom = list(csv.DictReader(bom_path.open(encoding="utf-8", newline="")))
     for row in bom:
         if row["item_id"] == "HR30-BOM-010":
-            row["candidate"] = "5x complete ISOW1432DFMR isolated RS-485 plus 3x complete SN74LVC1T45DCKR translated TTL carrier application circuits; two native PCB placement candidates; copper routing and physical validation open"
+            row["candidate"] = "5x complete ISOW1432DFMR isolated RS-485 plus 3x complete SN74LVC1T45DCKR translated TTL carrier application circuits; two routed native PCB candidates; DFM, physical validation and fabrication release open"
     with bom_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(bom[0]), lineterminator="\n"); writer.writeheader(); writer.writerows(bom)
 
@@ -432,13 +789,13 @@ def update_whole_body_package() -> None:
     start, end = "<!-- HR30-CARRIERS-P01-START -->", "<!-- HR30-CARRIERS-P01-END -->"
     if start in readme and end in readme:
         readme = readme.split(start, 1)[0] + readme.split(end, 1)[1]
-    section = f"""\n{start}\n## Physical actuator-interface carriers\n\nThe eight whole-body actuator buses now have **86 sourced circuit parts** across two native 82 × 42 mm KiCad PCB placement candidates. Carrier A contains four complete ISOW1432 isolated RS-485 application networks; Carrier B contains one more plus three SN74LVC1T45 TTL networks. The carrier schematic hierarchy passes KiCad ERC with 0 errors and 0 warnings. Both board placements have zero non-connectivity DRC violations. Copper is deliberately unrouted: KiCad reports 140 Carrier A and 89 Carrier B unconnected pads. The rejected automatic route is not retained, and no Gerber or drill package is published. Open `electrical/carriers-p0.1/index.html` for the front/back board guide.\n{end}"""
+    section = f"""\n{start}\n## Physical actuator-interface carriers\n\nThe eight whole-body actuator buses now have **86 sourced circuit parts** across two routed native 82 × 42 mm KiCad PCB candidates. Carrier A contains four complete ISOW1432 isolated RS-485 application networks; Carrier B contains one more plus three SN74LVC1T45 TTL networks. KiCad verifies the carrier schematic at ERC 0/0 and both boards at DRC 0/0 with zero unconnected pads. Five all-copper rule areas protect the isolator moats, and the native sources bind the {STACKUP_ID} nominal 1.6 mm candidate stackup. Layer-by-layer SVGs and machine-readable DFM/fabrication candidates are published for inspection, but no output is released for ordering, assembly, connection or energization. Open `electrical/carriers-p0.1/index.html` for the routed layer guide.\n{end}"""
     readme_path.write_text(readme.rstrip() + section + "\n", encoding="utf-8")
 
     page_path = PACKAGE / "index.html"; page = page_path.read_text(encoding="utf-8")
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
-    web = f'''{start}<section id="actuator-interface-carriers"><h2>The actuator buses now have physical carrier candidates</h2><div class="grid"><article class="card pass"><div class="metric">86</div><p>Sourced parts across five isolated RS-485 and three translated TTL application circuits.</p></article><article class="card pass"><div class="metric">2</div><p>Native 82 × 42 mm six-layer KiCad placement candidates sized to the torso tray.</p></article><article class="card pass"><h3>ERC 0 / 0</h3><p>The ten-sheet carrier schematic hierarchy parses with no ERC errors or warnings.</p></article><article class="card hold"><h3>Routing remains open</h3><p>Zero non-connectivity DRC violations; 229 unrouted pad connections remain visible. No Gerbers or drill files are released.</p></article></div><div class="viewer"><object data="electrical/carriers-p0.1/output/hr30-carrier-a-p0.1-front.svg" type="image/svg+xml" aria-label="Carrier A front placement candidate"></object><p><a href="electrical/carriers-p0.1/index.html">Open the front/back carrier-board guide</a> · <a href="electrical/carriers-p0.1/carrier-component-register.csv">Component register</a> · <a href="electrical/carriers-p0.1/hr30-actuator-interface-carriers-p0.1.kicad_pro">Native carrier schematic project</a>.</p></div></section>{end}'''
+    web = f'''{start}<section id="actuator-interface-carriers"><h2>The actuator buses now have routed physical carrier candidates</h2><div class="grid"><article class="card pass"><div class="metric">86</div><p>Sourced parts across five isolated RS-485 and three translated TTL application circuits.</p></article><article class="card pass"><div class="metric">2</div><p>Native 82 × 42 mm six-layer KiCad routed candidates sized to the torso tray.</p></article><article class="card pass"><h3>ERC 0 / 0</h3><p>The ten-sheet carrier schematic hierarchy parses with no ERC errors or warnings.</p></article><article class="card pass"><h3>DRC 0 / 0</h3><p>Both boards have zero DRC violations and zero unconnected pads. Machine files remain non-released candidates.</p></article></div><div class="viewer"><object data="electrical/carriers-p0.1/output/hr30-carrier-a-p0.1-front.svg" type="image/svg+xml" aria-label="Carrier A front routed candidate"></object><p><a href="electrical/carriers-p0.1/index.html">Open the interactive routed-layer guide</a> · <a href="electrical/carriers-p0.1/carrier-component-register.csv">Component register</a> · <a href="electrical/carriers-p0.1/hr30-actuator-interface-carriers-p0.1.kicad_pro">Native carrier schematic project</a>.</p></div></section>{end}'''
     marker = "<!-- HR30-NATIVE-KICAD-P01-END -->"
     if marker not in page:
         raise RuntimeError("native KiCad website marker missing")

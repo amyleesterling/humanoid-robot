@@ -6,3 +6,5 @@ TI-TPD1E10B06,Texas Instruments,TPD1E10B06 datasheet,SLLSEB1G Rev G; August 2024
 TDK-MPZ1005,TDK,MPZ1005S331ETD25 product page,live production page; accessed 2026-08-14,https://product.tdk.com/en/search/emc/emc/beads/info?part_no=MPZ1005S331ETD25,330 ohm at 100 MHz; 700 mA; 0.28 ohm max; 0402
 LITTELFUSE-SM712,Littelfuse,SM712 datasheet,revised 2019-08-22; active page accessed 2026-08-14,https://www.littelfuse.com/assetdocs/littelfuse_tvs_diode_array_sm712_datasheet?assetguid=8313a28c-8802-4d47-a2a7-e30b5b1f67d8,RS-485 -7/+12 V working range; exact SOT23-3 order code
 JST-GH,JST,GH connector catalog,live catalog accessed 2026-08-14,https://www.jst-mfg.com/product/pdf/eng/eGH.pdf,BM15/BM03/BM02 header families; data-only connector boundary
+JLC-6L-CAPABILITY,JLCPCB,6-layer PCB manufacturing capability,live official page accessed 2026-08-14,https://jlcpcb.com/6-layer-pcb,six-layer 1.6 mm capability and catalog manufacturing limits
+JLC-STACKUP-3313,JLCPCB,PCB impedance and stackup calculator,live official page accessed 2026-08-14,https://jlcpcb.com/impedance,JLC06161H-3313 nominal layer buildup and material identifiers
