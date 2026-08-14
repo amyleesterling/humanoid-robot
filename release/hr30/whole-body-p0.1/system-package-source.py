@@ -315,7 +315,7 @@ def write_budgets_and_bom() -> None:
         ("HR30-BOM-007", "compute storage", "Kingston", "SDCIT2/64GBSP candidate", 1, 55),
         ("HR30-BOM-008", "motion controller", "SELECTION REQUIRED", "STM32H743-class controller board", 1, 120),
         ("HR30-BOM-009", "independent watchdog", "Raspberry Pi", "Pico 1 SC0915 candidate; non-safety-rated", 1, 8),
-        ("HR30-BOM-010", "actuator bus interfaces", "ROBOTIS/custom", "five isolated RS-485 plus three protected TTL half-duplex interfaces; exact devices and pins SELECTION REQUIRED", 8, 45),
+        ("HR30-BOM-010", "actuator bus interfaces", "ROBOTIS/custom", "five complete ISOW1432 isolated RS-485 plus three complete SN74LVC1T45 TTL carrier circuits on two native placement candidates; copper routing and physical validation open", 8, 45),
         ("HR30-BOM-011", "face display", "SELECTION REQUIRED", "5-inch 800x480 HDMI/DSI IPS display", 1, 85),
         ("HR30-BOM-012", "camera", "Raspberry Pi", "Camera Module 3 Wide-class candidate", 2, 45),
         ("HR30-BOM-013", "microphone array", "SELECTION REQUIRED", "four-microphone USB/I2S array", 1, 70),

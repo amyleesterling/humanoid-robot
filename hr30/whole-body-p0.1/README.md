@@ -58,3 +58,8 @@ The former empty torso, pelvis, head and foot reservations now contain 54 locate
 
 Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
 <!-- HR30-HARNESS-README-END -->
+<!-- HR30-CARRIERS-P01-START -->
+## Physical actuator-interface carriers
+
+The eight whole-body actuator buses now have **86 sourced circuit parts** across two native 82 × 42 mm KiCad PCB placement candidates. Carrier A contains four complete ISOW1432 isolated RS-485 application networks; Carrier B contains one more plus three SN74LVC1T45 TTL networks. The carrier schematic hierarchy passes KiCad ERC with 0 errors and 0 warnings. Both board placements have zero non-connectivity DRC violations. Copper is deliberately unrouted: KiCad reports 140 Carrier A and 89 Carrier B unconnected pads. The rejected automatic route is not retained, and no Gerber or drill package is published. Open `electrical/carriers-p0.1/index.html` for the front/back board guide.
+<!-- HR30-CARRIERS-P01-END -->

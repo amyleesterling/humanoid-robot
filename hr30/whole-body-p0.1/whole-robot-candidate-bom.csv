@@ -8,7 +8,7 @@ HR30-BOM-006,compute cooling,Raspberry Pi,Active Cooler SC1148 candidate,1,12,CA
 HR30-BOM-007,compute storage,Kingston,SDCIT2/64GBSP candidate,1,55,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-008,motion controller,SELECTION REQUIRED,STM32H743-class controller board,1,120,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-009,independent watchdog,Raspberry Pi,Pico 1 SC0915 candidate; non-safety-rated,1,8,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
-HR30-BOM-010,actuator bus interfaces,ROBOTIS/custom,5x ISOW1432DFMR isolated RS-485 plus 3x SN74LVC1T45DCKR translated TTL half-duplex interface candidates,8,45,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
+HR30-BOM-010,actuator bus interfaces,ROBOTIS/custom,5x complete ISOW1432DFMR isolated RS-485 plus 3x complete SN74LVC1T45DCKR translated TTL carrier application circuits; two native PCB placement candidates; copper routing and physical validation open,8,45,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-011,face display,Waveshare,"4inch HDMI LCD (H), SKU 16340, rotated landscape; installed envelope/mass modeled",1,85,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-012,camera,Raspberry Pi,Camera Module 3 Wide-class candidate,2,45,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-013,microphone array,SELECTION REQUIRED,four-microphone USB/I2S array,1,70,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY

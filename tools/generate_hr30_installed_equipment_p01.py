@@ -142,7 +142,7 @@ def build() -> list[Equipment]:
             "torso rear electronics tray", "+Y rear-cover withdrawal",
             "JST GHR-15V-S logic-only controller cable plus per-segment BM02/BM03B-GHS-TBT field headers; no actuator VDD contacts",
             source, revision,
-            "pin-level candidate exists in native KiCad; PCB layout/passives, isolation spacing, protection, EMC, thermal and physical validation remain open; U2D2 stays external commissioning-only",
+            "complete sourced application circuit and 82 x 42 mm native PCB placement candidate exist; copper routing, stackup/isolation geometry, EMC, thermal and physical validation remain open; U2D2 stays external commissioning-only",
             "torso", control)
 
     # Pelvis tether-first power hardware. The offboard current-limited source and

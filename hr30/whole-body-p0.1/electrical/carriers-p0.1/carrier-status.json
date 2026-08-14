@@ -1,0 +1,58 @@
+{
+  "identifier": "HR30-ACTUATOR-INTERFACE-CARRIERS-P0.1",
+  "date": "2026-08-14",
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION OR ENERGIZATION",
+  "carrier_a": {
+    "board_mm": [
+      82,
+      42,
+      1.6
+    ],
+    "copper_layers": 6,
+    "components": 49,
+    "native_pcb": true
+  },
+  "carrier_b": {
+    "board_mm": [
+      82,
+      42,
+      1.6
+    ],
+    "copper_layers": 6,
+    "components": 37,
+    "native_pcb": true
+  },
+  "validation": [
+    {
+      "artifact": "schematic",
+      "return_code": 0,
+      "report": "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\carriers-p0.1\\validation\\hr30-actuator-interface-carriers-p0.1-erc.rpt"
+    },
+    {
+      "artifact": "carrier-A",
+      "return_code": 5,
+      "report": "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\carriers-p0.1\\validation\\hr30-carrier-a-p0.1-drc.rpt"
+    },
+    {
+      "artifact": "carrier-B",
+      "return_code": 5,
+      "report": "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\carriers-p0.1\\validation\\hr30-carrier-b-p0.1-drc.rpt"
+    }
+  ],
+  "design_advancement": "complete native carrier schematics, exact footprints, six-layer board outlines and placement candidates; rejected auto-route removed",
+  "drc_acceptance": false,
+  "fabrication_authority": false,
+  "assembly_authority": false,
+  "connection_authority": false,
+  "motion_authority": false,
+  "energization_authority": false,
+  "open": [
+    "complete copper routing and resolve every DRC item",
+    "independent schematic/footprint/layout review",
+    "exact stackup and isolation geometry",
+    "termination and bias configuration",
+    "surge/miswire/EMC/timing/thermal tests",
+    "cable and power-injection hardware",
+    "qualified electrical and safety review"
+  ]
+}

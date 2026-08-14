@@ -157,5 +157,16 @@
   "native_hr30_kicad_data_only_connector_candidates_selected": true,
   "actuator_bus_controller_pin_map_selected": true,
   "actuator_bus_interface_device_candidates_selected": true,
-  "actuator_bus_data_only_connector_candidates_selected": true
+  "actuator_bus_data_only_connector_candidates_selected": true,
+  "actuator_interface_carrier_application_circuits_complete": true,
+  "actuator_interface_carrier_native_schematic_sheet_count": 10,
+  "actuator_interface_carrier_schematic_erc_errors": 0,
+  "actuator_interface_carrier_schematic_erc_warnings": 0,
+  "actuator_interface_carrier_board_count": 2,
+  "actuator_interface_carrier_component_count": 86,
+  "actuator_interface_carrier_placement_complete": true,
+  "actuator_interface_carrier_nonconnectivity_drc_violations": 0,
+  "actuator_interface_carrier_unconnected_pad_count": 229,
+  "actuator_interface_carrier_routing_complete": false,
+  "actuator_interface_carrier_fabrication_outputs_released": false
 }

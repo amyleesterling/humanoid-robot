@@ -73,7 +73,7 @@ def update_budget_and_bom() -> None:
         "candidate": "five RS-485 plus three TTL half-duplex segments",
         "quantity": "8",
         "role_boundary": "RS-485: legs, proximal arms, waist; TTL: head and distal hands",
-        "interface": "STM32H743ZIT6 plus 5x ISOW1432DFMR and 3x SN74LVC1T45DCKR pin-level candidates; PCB passives/layout, termination, protection, shield/return and data-only cable assemblies remain open",
+        "interface": "STM32H743ZIT6 plus 5x complete ISOW1432DFMR and 3x complete SN74LVC1T45DCKR carrier application circuits; native PCB placement exists; routing, stackup/isolation, shield/return and data-only cable assemblies remain open",
     })
     write_csv(compute_path, compute)
 
@@ -84,7 +84,7 @@ def update_budget_and_bom() -> None:
         raise SystemExit("controlled HR30-BOM-010 row missing or duplicated")
     matches[0].update({
         "function": "actuator bus interfaces",
-        "candidate": "5x ISOW1432DFMR isolated RS-485 plus 3x SN74LVC1T45DCKR translated TTL half-duplex interface candidates",
+        "candidate": "5x complete ISOW1432DFMR isolated RS-485 plus 3x complete SN74LVC1T45DCKR translated TTL carrier application circuits; two native PCB placement candidates; routing open",
         "quantity": "8",
     })
     write_csv(bom_path, bom)
