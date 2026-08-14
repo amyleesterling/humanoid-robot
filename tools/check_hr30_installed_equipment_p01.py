@@ -50,7 +50,7 @@ def main() -> int:
     assert not any("u2d2" in row["manufacturer_source_url"].lower() for row in sources)
     assert any("waveshare.com" in row["manufacturer_source_url"] for row in sources)
     assert any("grepow.com" in row["manufacturer_source_url"] for row in sources)
-    assert len(battery) == 1 and battery[0]["model"] == "TAA12K4S30EC5"
+    assert len(battery) == 1 and battery[0]["model"] == "TAA12K4S30EC5" and battery[0]["selection_state"].startswith("REJECTED DIRECT SOURCE")
     assert battery[0]["published_dimensions_mm"] == "193 x 72 x 37"
     assert abs(float(battery[0]["published_mass_kg"]) - 1.057) < 1e-9
     assert abs(float(battery[0]["whole_robot_short_peak_current_screen_a"]) - 727 / 14.8) < 0.001

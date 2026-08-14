@@ -1,0 +1,8 @@
+gate,scope,entry_evidence,authority_state,result
+G0,document freeze,"pin-level corrected ECAD, harness, settings and test plan signed",NO CONNECTION,NOT EXECUTED
+G1,unpowered inspection,"PE/bond, isolation, polarity, branch separation, E-stop contacts and restraint inspected",NO CONNECTION TO ACTUATORS,NOT EXECUTED
+G2,current-limited panel test,external panel only into dummy load; E-stop/reset/EDM/fault injection,QUALIFIED TEST AUTHORITY REQUIRED,NOT EXECUTED
+G3,logic-only robot test,compute/control with actuator-power branches physically isolated,NO ACTUATOR POWER,NOT EXECUTED
+G4,one unloaded actuator branch,guarded restrained single branch at approved current limit,SEPARATE SIGNED TEST AUTHORITY,NOT EXECUTED
+G5,restrained whole-body static,"fall restraint, reduced torque/speed, contactors and stop-time instrumentation",SEPARATE SIGNED TEST AUTHORITY,NOT EXECUTED
+G6,supported weight transfer,overhead restraint and controlled floor area,MOTION AUTHORITY NOT PROVIDED BY THIS PACKAGE,NOT EXECUTED

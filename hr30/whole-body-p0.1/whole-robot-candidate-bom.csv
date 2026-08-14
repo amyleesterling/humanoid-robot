@@ -24,7 +24,7 @@ HR30-BOM-022,shells,custom,P0.1 1.5 mm limb/palm/foot panels and 1.6 mm torso/pe
 HR30-BOM-023,feet,custom,machined/printed foot core + replaceable compliant sole,2,180,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-024,gripper pads,custom,replaceable broad compliant pad set,2,45,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-025,development power,SELECTION REQUIRED,tethered current-limited 14.8 V-class source,1,500,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
-HR30-BOM-026,onboard energy,Grepow/Tattu,"TAA12K4S30EC5 4S 12 Ah 14.8 V 177.6 Wh 30C pack evaluation candidate; BMS/PCM, containment, retention, connector and charger separate",1,600,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
+HR30-BOM-026,onboard energy,Bioenno evaluation / legacy Grepow envelope,BLF-1209WS onboard-later evaluation candidate; legacy TAA12K4S30EC5 geometry is rejected for direct actuator use and must be replaced by a redesigned cassette,1,600,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-027,main disconnect/contactors,SELECTION REQUIRED,DC-rated redundant interruption architecture,1,450,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-028,emergency stop/reset,Pilz/IDEC/Schneider candidates,"dual-channel E-stop, monitored reset and EDM hardware",1,950,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-029,fall restraint,SELECTION REQUIRED,rated overhead gantry/harness/load-limiter system,1,1200,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY

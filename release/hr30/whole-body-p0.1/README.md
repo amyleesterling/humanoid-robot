@@ -70,3 +70,10 @@ The eight whole-body actuator buses now have **86 sourced circuit parts** across
 The [interactive physical harness guide](harness/physical-p0.1/index.html) translates the logical ECAD into 62 route segments: 12 reserved body corridors and two moving-loop candidates at every one of the 25 joint axes. It retains all 549 current logical terminals and binds every installed equipment item without inventing unresolved conductor sizes, fuse values, connectors, or cable order codes.
 
 This is routing and interface architecture, not a released cable set. Eight actuator branches are separately protected; the 25 actuator drops are not individually fused. Custom data-only/power-injection breakouts, cable sizing, protection, retention, flex-life, EMC, and physical validation remain selection required.
+
+
+## Whole-body energy and safety spine P0.1
+
+The [interactive energy and safety guide](energy-safety-spine-p0.1/index.html) defines the tether-first whole-robot power path and a separate later onboard LiFePO4 evaluation path. The direct 14.8 V nominal 4S LiPo architecture is rejected because its nominal voltage equals the XH/XM published maximum. Three regulated 9 V TTL branches replace the unregulated 12 V assumption for the XC330 axes.
+
+The 179 W operating and 727 W short-peak budgets are not source or wiring ratings. Protection, conductor sizing, fault current, stopping time, PE/0 V, pin-level energy/safety ECAD and functional-safety validation remain open. Reset can never command motion.

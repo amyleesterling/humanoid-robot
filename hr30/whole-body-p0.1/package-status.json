@@ -82,7 +82,7 @@
   "installed_equipment_item_count": 54,
   "installed_equipment_planning_mass_kg": 3.442330845,
   "empty_component_bays_only": false,
-  "tether_first_equipment_configuration": false,
+  "tether_first_equipment_configuration": true,
   "tether_development_interface_retained": true,
   "onboard_energy_candidate_geometry_present": true,
   "onboard_energy_installed": false,
@@ -178,5 +178,11 @@
   "physical_harness_axes_bound": 25,
   "physical_harness_logical_terminals_retained": 549,
   "physical_harness_selected": false,
-  "physical_harness_validated": false
+  "physical_harness_validated": false,
+  "energy_safety_spine_present": true,
+  "direct_4s_lipo_architecture_rejected": true,
+  "onboard_lifepo4_candidate": "Bioenno BLF-1209WS evaluation candidate",
+  "energy_safety_native_kicad_correction_required": true,
+  "energy_safety_protection_released": false,
+  "energy_safety_functional_safety_approved": false
 }
