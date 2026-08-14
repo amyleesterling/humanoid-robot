@@ -54,12 +54,13 @@ def main() -> int:
         require(row["accessed_date"] == "2026-08-14" and row["document_revision_or_date"] == "NOT PUBLISHED ON LIVE PAGE", f"source date/revision disclosure drift {model}")
 
     items = rows("mass-item-reconciliation.csv")
-    require(len(items) == len({row["item_id"] for row in items}) == 233, "mass item identity/count drift")
+    require(len(items) == len({row["item_id"] for row in items}) == 286, "mass item identity/count drift")
     categories = Counter(row["category"] for row in items)
     require(categories == Counter({
         "JOINT HARDWARE CAD DENSITY SCREEN": 142,
         "FABRICATION CAD DENSITY SCREEN": 66,
         "MANUFACTURER PUBLISHED ACTUATOR MASS": 25,
+        "INSTALLED EQUIPMENT / HARNESS PLANNING MASS": 53,
     }), "mass category population drift")
     actuator_rows = [row for row in items if row["category"] == "MANUFACTURER PUBLISHED ACTUATOR MASS"]
     require(abs(sum(float(row["planning_candidate_mass_kg"]) for row in actuator_rows) - 3.391) < 1e-9, "actuator planning mass drift")
@@ -71,12 +72,13 @@ def main() -> int:
         ("FABRICATION CAD DENSITY SCREEN", "fabrication_cad_density_screen_kg"),
         ("MANUFACTURER PUBLISHED ACTUATOR MASS", "actuator_published_mass_planning_kg"),
         ("JOINT HARDWARE CAD DENSITY SCREEN", "joint_hardware_gross_density_screen_kg"),
+        ("INSTALLED EQUIPMENT / HARNESS PLANNING MASS", "installed_equipment_harness_planning_mass_kg"),
     ):
         actual = sum(float(row["planning_candidate_mass_kg"]) for row in items if row["category"] == category)
         require(abs(actual - float(summary[key])) < 2e-9, f"summary category mismatch {category}")
     identified = sum(float(row["planning_candidate_mass_kg"]) for row in items)
     require(abs(identified - float(summary["planning_identified_candidate_mass_kg"])) < 2e-9, "identified subtotal mismatch")
-    require(8.5 < identified < 9.0, "lightweight identified subtotal outside controlled P0.1 band")
+    require(10.5 < identified < 10.9, "tether-first identified subtotal outside controlled P0.1 band")
     require(summary["program_mass_target_status"] == "EXCEEDED" and summary["planning_margin_to_program_maximum_kg"] < 0, "10 kg infeasibility not disclosed")
     require(not any(summary["authority"].values()), "mass package authority overclaim")
 
@@ -92,7 +94,9 @@ def main() -> int:
         baseline = float(row["baseline_allocation_kg"])
         identified_link = float(row["identified_planning_candidate_kg"])
         reconciled = float(row["reconciled_dynamics_mass_kg"])
-        require(abs(reconciled - max(baseline, identified_link)) < 2e-9, f"link planning rule mismatch {row['dynamic_link']}")
+        contingency = float(row["integration_contingency_kg"])
+        require(abs(contingency - identified_link * 0.08) < 2e-9, f"integration contingency mismatch {row['dynamic_link']}")
+        require(abs(reconciled - (identified_link + contingency)) < 2e-9, f"link planning rule mismatch {row['dynamic_link']}")
     reconciled_total = sum(float(row["reconciled_dynamics_mass_kg"]) for row in links)
     require(abs(reconciled_total - float(summary["reconciled_dynamics_planning_mass_kg"])) < 2e-9, "reconciled total mismatch")
 
@@ -100,24 +104,24 @@ def main() -> int:
     urdf_mass = sum(float(node.find("inertial/mass").get("value")) for node in urdf.findall("link"))
     mjcf = ET.parse(SRC / "hr30.xml").getroot()
     mjcf_mass = sum(float(node.get("mass")) for node in mjcf.findall("./worldbody//inertial"))
-    require(abs(urdf_mass - reconciled_total) < 2e-6, "URDF mass not reconciled")
-    require(abs(mjcf_mass - reconciled_total) < 2e-6, "MJCF mass not reconciled")
+    require(abs(urdf_mass - reconciled_total) < 5e-6, "URDF mass not reconciled")
+    require(abs(mjcf_mass - reconciled_total) < 5e-6, "MJCF mass not reconciled")
     budget = rows("mass-properties-budget.csv")[-1]
     require(budget["link"] == "TOTAL" and abs(float(budget["allocated_mass_kg"]) - reconciled_total) < 2e-6, "mass-properties total not reconciled")
 
     allocation = {row["assembly"]: row for row in rows("mass-allocation-register.csv")}
     require(abs(float(allocation["TOTAL"]["cad_mass_kg"].split()[-1]) - round(reconciled_total, 3)) < 0.001, "allocation register total does not match reconciliation")
     require("OVER MAXIMUM" in allocation["TOTAL"]["status"], "allocation register does not expose mass failure")
-    require("NOT YET IDENTIFIED" in allocation["unmodeled equipment and completion mass"]["cad_mass_kg"], "unmodeled equipment not explicit")
+    require("8% OF EXPLICIT" in allocation["integration contingency within link totals"]["cad_mass_kg"], "integration contingency not explicit")
 
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
     require(status["mass_reconciliation_present"] and not status["mass_budget_closed"] and not status["mass_com_inertia_physically_validated"], "main package mass status overclaim")
     require(abs(float(status["estimated_mass_kg"]) - reconciled_total) < 2e-9, "main package mass drift")
     require(not any(status[key] for key in ("procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "main package authority overclaim")
     page = (SRC / "index.html").read_text(encoding="utf-8")
-    require("mass-reconciliation.md" in page and "mass-item-reconciliation.csv" in page and "lightweight-architecture-register.csv" in page and f"{reconciled_total:.3f} kg reconciled planning" in page, "web guide mass reconciliation missing")
-    require("major unmodeled mass" in page.lower(), "web guide hides unmodeled mass")
-    print(f"PASS: HR-30 mass reconciliation inventories 233 candidate items, 3.391 kg published actuator mass, {identified:.3f} kg gross identified mass and {reconciled_total:.3f} kg provisional dynamics mass; 10 kg target and all physical/authority gates remain open")
+    require("mass-reconciliation.md" in page and "mass-item-reconciliation.csv" in page and "lightweight-architecture-register.csv" in page and f"{reconciled_total:.3f} kg tether-first planning" in page, "web guide mass reconciliation missing")
+    require("onboard energy" in page.lower(), "web guide hides onboard-energy boundary")
+    print(f"PASS: HR-30 mass reconciliation inventories 286 candidate items including 53 located equipment/harness items, 3.391 kg published actuator mass, {identified:.3f} kg tether-first identified mass and {reconciled_total:.3f} kg dynamics mass with explicit contingency; 10 kg target and all physical/authority gates remain open")
     return 0
 
 

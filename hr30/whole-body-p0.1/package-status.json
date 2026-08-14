@@ -42,8 +42,8 @@
   "walking_architecture_present": true,
   "embodied_agent_boundary_present": true,
   "modular_build_plan_present": true,
-  "estimated_mass_kg": 13.226505735,
-  "estimated_neutral_com_z_m": 0.331454531,
+  "estimated_mass_kg": 11.5732338,
+  "estimated_neutral_com_z_m": 0.342458376,
   "dynamics_validated": false,
   "walking_validated": false,
   "physical_build_ready": false,
@@ -57,14 +57,20 @@
   "fabrication_drawings_released": false,
   "harness_selected_or_validated": false,
   "estimated_neutral_com_m": [
-    -0.000585592,
-    -0.000176807,
-    0.331454531
+    -0.000921928,
+    0.002315155,
+    0.342458376
   ],
   "mass_reconciliation_present": true,
-  "identified_candidate_mass_kg": 8.692683652,
-  "mass_margin_to_10kg_kg": -3.226505735,
+  "identified_candidate_mass_kg": 10.715957225,
+  "mass_margin_to_10kg_kg": -1.5732338,
   "mass_budget_closed": false,
   "mass_com_inertia_physically_validated": false,
-  "whole_body_lightweight_architecture_present": true
+  "whole_body_lightweight_architecture_present": true,
+  "installed_equipment_layout_present": true,
+  "installed_equipment_item_count": 53,
+  "installed_equipment_planning_mass_kg": 2.023273573,
+  "empty_component_bays_only": false,
+  "tether_first_equipment_configuration": true,
+  "onboard_energy_installed": false
 }

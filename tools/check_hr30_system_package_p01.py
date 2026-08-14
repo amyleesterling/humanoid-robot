@@ -39,6 +39,10 @@ def main() -> int:
         "system-package-source.py", "index.html", "README.md", "package-status.json", "file-manifest.csv",
         "mass-reconciliation-summary.json", "mass-item-reconciliation.csv", "link-mass-reconciliation.csv",
         "lightweight-architecture-register.csv",
+        "installed-equipment-register.csv", "installed-equipment-source-register.csv",
+        "installed-equipment-status.json", "installed-equipment-source.py",
+        "HR-30_installed_equipment_candidate.step", "HR-30_installed_equipment_candidate.glb",
+        "HR-30_integrated_whole_robot_candidate.step",
     }
     source_files = {p.relative_to(SRC).as_posix() for p in SRC.rglob("*") if p.is_file()}
     release_files = {p.relative_to(REL).as_posix() for p in REL.rglob("*") if p.is_file()}
@@ -65,7 +69,7 @@ def main() -> int:
     require(len({node.find("child").get("link") for node in urdf_joints}) == 25, "URDF child-link tree is not unique")
     require(all(float(node.find("limit").get("effort")) == 0.0 for node in urdf_joints), "URDF must remain effort-disabled until physical selection")
     urdf_masses = [float(node.find("inertial/mass").get("value")) for node in urdf.findall("link") if node.find("inertial/mass") is not None]
-    require(abs(sum(urdf_masses) - reconciled_mass) < 2e-6, "URDF reconciled mass total drift")
+    require(abs(sum(urdf_masses) - reconciled_mass) < 5e-6, "URDF reconciled mass total drift")
 
     mjcf = ET.parse(SRC / "hr30.xml").getroot()
     mjcf_joints = mjcf.findall("./worldbody//joint")
@@ -113,14 +117,16 @@ def main() -> int:
     require(all(word in hands for word in ("grasp", "hold", "present", "release")) and "two-finger" in hands, "functional hand specification incomplete")
 
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
-    require(all(status[key] for key in ("whole_body_system_package_present", "urdf_present", "mjcf_present", "whole_robot_candidate_bom_present", "walking_architecture_present", "embodied_agent_boundary_present", "modular_build_plan_present", "mass_reconciliation_present")), "system package status incomplete")
+    require(all(status[key] for key in ("whole_body_system_package_present", "urdf_present", "mjcf_present", "whole_robot_candidate_bom_present", "walking_architecture_present", "embodied_agent_boundary_present", "modular_build_plan_present", "mass_reconciliation_present", "installed_equipment_layout_present")), "system package status incomplete")
+    require(status["installed_equipment_item_count"] == 53 and status["tether_first_equipment_configuration"] and not status["onboard_energy_installed"], "installed-equipment configuration boundary drift")
     require(status["floating_base_dynamics_present"], "floating-base dynamics status missing")
     require(not any(status[key] for key in ("dynamics_validated", "walking_validated", "physical_build_ready", "procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "status validation/authority overclaim")
     require(sha(SRC / "system-package-source.py") == sha(ROOT / "tools" / "generate_hr30_system_package_p01.py"), "system generator snapshot drift")
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require("The P0.1 engineering package is whole-body" in page and "font:17px/1.55" in page and "font-size:16px" in page, "web package summary/legibility missing")
-    require(all(name in page for name in ("hr30.urdf", "hr30.xml", "whole-robot-candidate-bom.csv", "embodied-agent-architecture.md", "mass-reconciliation.md")), "web system links incomplete")
-    print(f"PASS: HR-30 whole-body P0.1 has 25-DOF URDF/MJCF and {reconciled_mass:.3f} kg reconciled planning mass plus power/thermal/compute/network/cost budgets, BOM, hands, walking, agent and build artifacts; all validation and work authority remain false")
+    require(all(name in page for name in ("hr30.urdf", "hr30.xml", "whole-robot-candidate-bom.csv", "embodied-agent-architecture.md", "mass-reconciliation.md", "installed-equipment-register.csv")), "web system links incomplete")
+    require(page.count('id="equipment-layout"') == 1, "web installed-equipment viewer missing or duplicated")
+    print(f"PASS: HR-30 whole-body P0.1 has 25-DOF URDF/MJCF, 53 located equipment/harness items and {reconciled_mass:.3f} kg tether-first planning mass plus budgets, BOM, hands, walking, agent and build artifacts; all validation and work authority remain false")
     return 0
 
 

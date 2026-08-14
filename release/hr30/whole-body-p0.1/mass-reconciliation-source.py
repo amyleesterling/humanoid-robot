@@ -16,6 +16,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 import generate_hr30_body_architecture_p01 as body
+import generate_hr30_installed_equipment_p01 as equipment
 import generate_hr30_fabrication_architecture_p01 as fabrication
 import generate_hr30_system_package_p01 as system
 
@@ -257,6 +258,22 @@ def build_items() -> tuple[list[dict], list[dict]]:
             basis="candidate envelope volume times generic density; exact component geometry, voids, fits and received mass unverified",
             state="GROSS NO-OVERLAP-DEDUCTION SCREEN; NOT A SELECTED HARDWARE MASS",
         )
+
+    installed_items = equipment.build()
+    for part in installed_items:
+        center = part.shape.Center()
+        verified_mass = "9 g verified" in part.evidence_state or "0.123 kg" in part.evidence_state
+        minimum = part.planning_mass_kg if verified_mass else part.planning_mass_kg * 0.80
+        maximum = part.planning_mass_kg if verified_mass else part.planning_mass_kg * 1.25
+        add_item(
+            items, item_id=part.item_id, category="INSTALLED EQUIPMENT / HARNESS PLANNING MASS",
+            component=part.item_id, link=part.dynamic_link, candidate=part.candidate,
+            density="N/A", volume=float(part.shape.Volume()), minimum=minimum,
+            planning=part.planning_mass_kg, maximum=maximum, center_mm=center,
+            basis=(f"located installed-equipment candidate; {part.evidence_state}; mounting={part.mounting_plane}; "
+                   f"service={part.service_direction}"),
+            state="CANDIDATE / SELECTION REQUIRED; NO PROCUREMENT OR ENERGIZATION AUTHORITY",
+        )
     return items, source_rows
 
 
@@ -274,8 +291,13 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
         planning = sum(float(r["planning_candidate_mass_kg"]) for r in members)
         maximum = sum(float(r["maximum_candidate_mass_kg"]) for r in members)
         allocation = float(base["mass"])
-        dynamic_mass = max(allocation, planning)
-        residual = max(0.0, allocation - planning)
+        # The former allocations no longer mask or inflate the explicit model.
+        # Apply a visible 8% integration contingency instead; this covers small
+        # adhesives, labels, local brackets and selection drift, but is not
+        # physical closure or a substitute for received masses.
+        contingency = planning * 0.08
+        dynamic_mass = planning + contingency
+        residual = contingency
         weighted = [0.0, 0.0, 0.0]
         for row in members:
             mass = float(row["planning_candidate_mass_kg"])
@@ -293,12 +315,13 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
             "identified_planning_candidate_kg": f"{planning:.9f}",
             "identified_maximum_candidate_kg": f"{maximum:.9f}",
             "allocation_minus_planning_kg": f"{delta:.9f}",
+            "integration_contingency_kg": f"{contingency:.9f}",
             "reconciled_dynamics_mass_kg": f"{dynamic_mass:.9f}",
             "reconciled_com_x_m": f"{center[0]:.9f}",
             "reconciled_com_y_m": f"{center[1]:.9f}",
             "reconciled_com_z_m": f"{center[2]:.9f}",
             "identified_item_count": len(members),
-            "status": "ALLOCATION EXCEEDED BY IDENTIFIED CANDIDATE VOLUMES" if delta < 0 else "RESIDUAL ALLOWANCE REMAINS FOR UNMODELED ITEMS",
+            "status": "EXPLICIT ITEMS PLUS 8% INTEGRATION CONTINGENCY; HISTORICAL ALLOCATION RETAINED FOR COMPARISON ONLY",
             "warning": WARNING,
         })
         dynamics_rows.append({**base, "mass": dynamic_mass, "center": center})
@@ -321,12 +344,14 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
         "actuator_count": sum(1 for r in items if r["category"] == "MANUFACTURER PUBLISHED ACTUATOR MASS"),
         "fabrication_part_count": sum(1 for r in items if r["category"] == "FABRICATION CAD DENSITY SCREEN"),
         "joint_hardware_part_count": sum(1 for r in items if r["category"] == "JOINT HARDWARE CAD DENSITY SCREEN"),
+        "installed_equipment_item_count": sum(1 for r in items if r["category"] == "INSTALLED EQUIPMENT / HARNESS PLANNING MASS"),
         "minimum_identified_candidate_mass_kg": round(min_total, 9),
         "planning_identified_candidate_mass_kg": round(planning_total, 9),
         "maximum_identified_candidate_mass_kg": round(max_total, 9),
         "fabrication_cad_density_screen_kg": round(category_totals["FABRICATION CAD DENSITY SCREEN"], 9),
         "actuator_published_mass_planning_kg": round(category_totals["MANUFACTURER PUBLISHED ACTUATOR MASS"], 9),
         "joint_hardware_gross_density_screen_kg": round(category_totals["JOINT HARDWARE CAD DENSITY SCREEN"], 9),
+        "installed_equipment_harness_planning_mass_kg": round(category_totals["INSTALLED EQUIPMENT / HARNESS PLANNING MASS"], 9),
         "prior_allocation_mass_kg": round(sum(r["mass"] for r in system.link_rows()), 9),
         "reconciled_dynamics_planning_mass_kg": round(dynamic_total, 9),
         "reconciled_dynamics_neutral_com_m": [round(v, 9) for v in com],
@@ -334,12 +359,12 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
         "planning_margin_to_program_maximum_kg": round(10.0 - dynamic_total, 9),
         "program_mass_target_status": "EXCEEDED" if dynamic_total > 10.0 else "NOT YET EXCEEDED BUT UNMODELED MASS REMAINS",
         "unmodeled_or_unselected": [
-            "battery/source, BMS, contactors, protection and disconnect hardware",
-            "compute, safety controller, motor controllers, cameras, microphones, speakers, face display and networking",
-            "actual harness, connectors, strain relief, cooling hardware, fasteners, inserts, soles, gripper pads and restraint hardware",
+            "onboard battery, BMS and charger are not installed in the tether-first configuration",
+            "exact selected controller, power, protection, sensor, audio, cooling and networking hardware",
+            "received harness, connector, strain-relief, fastener, insert, sole, pad and restraint masses",
             "manufacturing features and mass changes after overlap removal, DFM and structural redesign",
         ],
-        "model_limit": "Gross candidate-volume screen with no overlap deduction; dynamics use max(previous link allocation, identified planning subtotal). Not an as-built or released mass property.",
+        "model_limit": "Gross candidate-volume and located-equipment planning screen with no overlap deduction; dynamics use explicit per-link items plus 8% integration contingency. Not an as-built or released mass property.",
         "authority": {"procurement": False, "fabrication": False, "powered_test": False, "motion": False, "energization": False},
         "warning": WARNING,
     }
@@ -399,9 +424,9 @@ def write_allocation_register(dynamics_rows: list[dict]) -> None:
         row("pelvis power and restraint structure", 1.40, 1.75, pelvis),
         row("two legs and feet", 3.40, 3.80, legs),
         {
-            "assembly": "unmodeled equipment and completion mass", "target_kg": "0.600", "maximum_kg": "0.800",
-            "cad_mass_kg": "NOT YET IDENTIFIED",
-            "status": "OPEN - BATTERY/ELECTRICAL/COMPUTE/SENSORS/HARNESS/FASTENERS/COOLING/RESTRAINT INCOMPLETE",
+            "assembly": "integration contingency within link totals", "target_kg": "0.000", "maximum_kg": "0.800",
+            "cad_mass_kg": "8% OF EXPLICIT LINK SUBTOTALS",
+            "status": "MODELED CONTINGENCY - RECEIVED MASSES AND ONBOARD-ENERGY CONFIGURATION OPEN",
         },
         row("TOTAL", 8.00, 10.00, total),
     ]
@@ -465,15 +490,15 @@ def update_docs(summary: dict) -> None:
 
 **{WARNING}**
 
-The former 9.63 kg value was an allocation, not a physical mass model. This pass inventories {summary['fabrication_part_count']} materialized fabrication-CAD parts, {summary['actuator_count']} actuators, and {summary['joint_hardware_part_count']} joint-hardware candidate solids. The gross identified planning subtotal is **{summary['planning_identified_candidate_mass_kg']:.3f} kg** before the unmodeled electrical, compute, sensing, audio, harness, fastener, cooling, sole, restraint and energy-storage items.
+The former 9.63 kg value was an allocation, not a physical mass model. This pass inventories {summary['fabrication_part_count']} materialized fabrication-CAD parts, {summary['actuator_count']} actuators, {summary['joint_hardware_part_count']} joint-hardware candidate solids and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The tether-first gross identified planning subtotal is **{summary['planning_identified_candidate_mass_kg']:.3f} kg** before the 8% integration contingency and without an onboard battery/BMS/charger.
 
 Relative to commit `{BASELINE_COMMIT}`, the lightweight topology reduces the gross identified candidate subtotal by **{BASELINE_MASS['identified'] - summary['planning_identified_candidate_mass_kg']:.3f} kg**. The body retains all 25 axes, complete limbs and hands while using hollow torso rails, windowed and slotted load-path plates, thinner service covers, hollow aluminum shaft screens, topology-lightened carrier frames and pulleys, and actuator-plus-one-external-bearing support on direct axes. Those changes are geometry candidates, not strength or bearing-life evidence.
 
-To keep the dynamics model from understating geometry already present, each link now uses the greater of its previous allocation and its identified planning subtotal. This produces a provisional dynamics mass of **{summary['reconciled_dynamics_planning_mass_kg']:.3f} kg** and neutral COM **({summary['reconciled_dynamics_neutral_com_m'][0]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][1]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][2]:.3f}) m**. The resulting margin to the 10 kg program maximum is **{summary['planning_margin_to_program_maximum_kg']:.3f} kg**; because major items remain unmodeled, this is not evidence that the maximum closes.
+The dynamics model now uses the explicit per-link subtotal plus a visible 8% integration contingency instead of carrying stale historical allocations. This produces a tethered provisional dynamics mass of **{summary['reconciled_dynamics_planning_mass_kg']:.3f} kg** and neutral COM **({summary['reconciled_dynamics_neutral_com_m'][0]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][1]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][2]:.3f}) m**. The resulting margin to the 10 kg program maximum is **{summary['planning_margin_to_program_maximum_kg']:.3f} kg**. Exact selections, received masses and the separate onboard-energy configuration remain open.
 
 The actuator planning subtotal uses published masses from current official ROBOTIS e-Manual pages checked {ACCESSED}. The two elbows remain an XM430/XM540 decision, so the planning and maximum columns use the heavier 165 g candidate while the minimum column uses 82 g. CAD actuator placement is the geometric centroid of the SHA-bound manufacturer packaging body, not a published center of gravity.
 
-Fabrication and joint-hardware values are volume-times-density screens. Candidate solids may interpenetrate and manufacturing redesign will change them; no overlap deduction is taken. The URDF and MJCF inertias remain box approximations for development simulation. Physical mass, COM and inertia identification, exact selections, structural closure, gait validation and qualified review remain mandatory.
+Fabrication and joint-hardware values are volume-times-density screens; equipment values are located as-installed allowances, with current primary manufacturer evidence recorded where available. Candidate solids may interpenetrate and manufacturing redesign will change them; no overlap deduction is taken. The URDF and MJCF inertias remain box approximations for development simulation. Physical mass, COM and inertia identification, exact selections, structural closure, gait validation and qualified review remain mandatory.
 """
     (OUT / "mass-reconciliation.md").write_text(report, encoding="utf-8", newline="\n")
 
@@ -490,7 +515,7 @@ Fabrication and joint-hardware values are volume-times-density screens. Candidat
 
 ## Whole-body mass reconciliation
 
-The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines {summary['fabrication_part_count']} fabrication-CAD parts, {summary['actuator_count']} published actuator masses and {summary['joint_hardware_part_count']} joint-hardware density-screen solids. The gross identified subtotal is {summary['planning_identified_candidate_mass_kg']:.3f} kg, and the conservative per-link reconciled dynamics model is {summary['reconciled_dynamics_planning_mass_kg']:.3f} kg with neutral COM Z={summary['reconciled_dynamics_neutral_com_m'][2]:.3f} m. Major electrical, compute, sensor, harness, fastener, cooling, sole, restraint and battery masses remain unmodeled, so the {summary['planning_margin_to_program_maximum_kg']:.3f} kg arithmetic margin to the 10 kg maximum is not closure evidence.
+The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines {summary['fabrication_part_count']} fabrication-CAD parts, {summary['actuator_count']} published actuator masses, {summary['joint_hardware_part_count']} joint-hardware density-screen solids and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The tether-first gross identified subtotal is {summary['planning_identified_candidate_mass_kg']:.3f} kg; the explicit per-link model plus 8% integration contingency is {summary['reconciled_dynamics_planning_mass_kg']:.3f} kg with neutral COM Z={summary['reconciled_dynamics_neutral_com_m'][2]:.3f} m. The onboard battery/BMS/charger is not installed, and exact selections/received masses remain open.
 """
     (OUT / "README.md").write_text(readme.rstrip() + "\n", encoding="utf-8", newline="\n")
 
@@ -521,10 +546,22 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
     )
     if link_count != 1:
         raise RuntimeError("system artifact mass-link block drift")
-    web = web.replace(
-        '<article class="card hold"><h3>Mass and energy</h3><p>9.63 kg allocation estimate, 0.338 m neutral COM height, 197 W operating power budget and 135 W heat-rejection budget. All require physical closure.</p></article>',
-        f'<article class="card hold"><h3>Mass and energy</h3><p>{summary["reconciled_dynamics_planning_mass_kg"]:.3f} kg reconciled planning dynamics mass, {summary["reconciled_dynamics_neutral_com_m"][2]:.3f} m neutral COM height, 197 W operating power budget and 135 W heat-rejection budget. Major unmodeled mass and all physical closure remain open.</p></article>',
+    web, card_count = re.subn(
+        r'<article class="card hold"><h3>Mass and energy</h3><p>[\s\S]*?</p></article>',
+        f'<article class="card hold"><h3>Mass and energy</h3><p>{summary["reconciled_dynamics_planning_mass_kg"]:.3f} kg tether-first planning dynamics mass, {summary["reconciled_dynamics_neutral_com_m"][2]:.3f} m neutral COM height, 197 W operating power budget and 135 W heat-rejection budget. Located equipment is included; onboard energy, received masses and physical closure remain open.</p></article>',
+        web,
+        count=1,
     )
+    if card_count != 1:
+        raise RuntimeError("system mass card drift")
+    web, body_mass_count = re.subn(
+        r'<article class="card hold"><h3>Mass is still unproven</h3><p>[\s\S]*?</p></article>',
+        f'<article class="card miss"><h3>10 kg target does not close</h3><p>The tether-first explicit model is {summary["planning_identified_candidate_mass_kg"]:.3f} kg before contingency and {summary["reconciled_dynamics_planning_mass_kg"]:.3f} kg with 8% integration contingency. An onboard battery is not included.</p></article>',
+        web,
+        count=1,
+    )
+    if body_mass_count != 1:
+        raise RuntimeError("body mass card drift")
     web_path.write_text(web, encoding="utf-8", newline="\n")
 
     status_path = OUT / "package-status.json"
@@ -548,7 +585,7 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
         if row["hold_id"] == "HR30-P01-H09":
             row["unresolved_item"] = (
                 f"A gross candidate-volume reconciliation now gives {summary['reconciled_dynamics_planning_mass_kg']:.3f} kg and provisional COM, "
-                "but overlap removal, exact equipment, battery, harness, fasteners, as-built mass/COM and physical inertia identification remain open."
+                "with located tether-first equipment plus integration contingency, but overlap removal, exact selections, onboard energy, received mass/COM and physical inertia identification remain open."
             )
     write_csv(holds_path, holds)
 
