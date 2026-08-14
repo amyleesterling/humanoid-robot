@@ -138,13 +138,8 @@ def add_urdf_geometry(link: ET.Element, row: dict, frame: tuple[float, float, fl
 def write_urdf(rows: list[dict], joints: list[dict]) -> None:
     frames = frame_positions()
     robot = ET.Element("robot", name="hr30_whole_body_p01")
-    ET.SubElement(robot, "link", name="world")
     for row in rows:
         add_urdf_geometry(ET.SubElement(robot, "link", name=row["link"]), row, frames[row["link"]])
-    fixed = ET.SubElement(robot, "joint", name="world_to_base", type="fixed")
-    ET.SubElement(fixed, "parent", link="world")
-    ET.SubElement(fixed, "child", link="base_link")
-    ET.SubElement(fixed, "origin", xyz="0 0 0.390", rpy="0 0 0")
     for joint in joints:
         parent_frame = frames[joint["parent"]]
         child_frame = frames[joint["child"]]
@@ -180,6 +175,8 @@ def write_mjcf(rows: list[dict], joints: list[dict]) -> None:
         row = by_link[link_name]
         rel = tuple(world_origin[i] - parent_origin[i] for i in range(3))
         body = ET.SubElement(parent_node, "body", name=link_name, pos=" ".join(f"{v:.6f}" for v in rel))
+        if link_name == "base_link":
+            ET.SubElement(body, "freejoint", name="floating_base")
         visual_rel = tuple(row["center"][i] - world_origin[i] for i in range(3))
         ET.SubElement(body, "inertial", pos=" ".join(f"{v:.6f}" for v in visual_rel), mass=f"{row['mass']:.6f}", diaginertia=" ".join(f"{v:.9f}" for v in inertia_box(row["mass"], row["size"])))
         ET.SubElement(body, "geom", pos=" ".join(f"{v:.6f}" for v in visual_rel), size=" ".join(f"{v / 2:.6f}" for v in row["size"]))
@@ -454,7 +451,7 @@ def update_web_and_status(mass_summary: dict) -> None:
     end_marker = "<!-- HR30-SYSTEM-P01-END -->"
     if start_marker in page and end_marker in page:
         page = page.split(start_marker, 1)[0] + page.split(end_marker, 1)[1]
-    added = f'''{start_marker}<section><h2>The P0.1 engineering package is whole-body</h2><div class="grid"><article class="card pass"><h3>Dynamics models</h3><p>URDF and MJCF cover all 25 commanded axes with provisional masses, inertias, geometry and limits.</p></article><article class="card hold"><h3>Mass and energy</h3><p>{mass_summary['mass_kg']:.2f} kg allocation estimate, {mass_summary['com_m'][2]:.3f} m neutral COM height, 197 W operating power budget and 135 W heat-rejection budget. All require physical closure.</p></article><article class="card pass"><h3>Embodied-agent boundary</h3><p>OpenAI produces expiring high-level JSON requests only. Deterministic local software and independent hardware retain every motion and permit decision.</p></article><article class="card hold"><h3>Walking path</h3><p>Suspended characterization, restrained standing, weight transfer, capture steps and tethered walking are separate development gates.</p></article></div></section>
+    added = f'''{start_marker}<section><h2>The P0.1 engineering package is whole-body</h2><div class="grid"><article class="card pass"><h3>Floating-base dynamics</h3><p>URDF and MJCF cover all 25 commanded axes with an unanchored base and provisional masses, inertias, geometry and limits.</p></article><article class="card hold"><h3>Mass and energy</h3><p>{mass_summary['mass_kg']:.2f} kg allocation estimate, {mass_summary['com_m'][2]:.3f} m neutral COM height, 197 W operating power budget and 135 W heat-rejection budget. All require physical closure.</p></article><article class="card pass"><h3>Embodied-agent boundary</h3><p>OpenAI produces expiring high-level JSON requests only. Deterministic local software and independent hardware retain every motion and permit decision.</p></article><article class="card hold"><h3>Walking path</h3><p>Suspended characterization, restrained standing, weight transfer, capture steps and tethered walking are separate development gates.</p></article></div></section>
 <section><h2>System artifacts</h2><div class="panel"><p><a href="hr30.urdf">URDF</a> · <a href="hr30.xml">MJCF</a> · <a href="mass-properties-budget.csv">Mass/COM/inertia</a> · <a href="power-energy-budget.csv">Power/energy</a> · <a href="thermal-budget.csv">Thermal</a> · <a href="compute-sensor-network-budget.csv">Compute/sensors/network</a> · <a href="cost-budget.csv">Cost</a> · <a href="whole-robot-candidate-bom.csv">Whole-robot BOM</a> · <a href="gripper-functional-specification.md">Hands</a> · <a href="walking-development-architecture.md">Walking</a> · <a href="embodied-agent-architecture.md">OpenAI/local-control boundary</a> · <a href="structured-action-request.schema.json">Action schema</a> · <a href="modular-fabrication-assembly-electrification-plan.md">Build/electrification plan</a></p></div></section>
 {end_marker}'''
     if marker not in page:
@@ -467,12 +464,12 @@ def update_web_and_status(mass_summary: dict) -> None:
 
 ## Whole-body systems completion
 
-P0.1 now also includes a 25-DOF URDF and MJCF, a {mass_summary['mass_kg']:.2f} kg allocation model with neutral COM/inertia, power/thermal/compute/network/cost budgets, a whole-robot candidate BOM, two-hand functional requirements, staged standing/walking development, a modular build/electrification plan, and the OpenAI-to-deterministic-controller action boundary. These artifacts make the architecture coherent and simulatable; none converts the open selections or physical validation into work authority.
+P0.1 now also includes floating-base 25-DOF URDF and MJCF models, a {mass_summary['mass_kg']:.2f} kg allocation model with neutral COM/inertia, power/thermal/compute/network/cost budgets, a whole-robot candidate BOM, two-hand functional requirements, staged standing/walking development, a modular build/electrification plan, and the OpenAI-to-deterministic-controller action boundary. These artifacts make the architecture coherent and simulatable; none converts the open selections or physical validation into work authority.
 """
     (OUT / "README.md").write_text(readme, encoding="utf-8", newline="\n")
     status = json.loads((OUT / "package-status.json").read_text(encoding="utf-8"))
     status.update({
-        "whole_body_system_package_present": True, "urdf_present": True, "mjcf_present": True,
+        "whole_body_system_package_present": True, "urdf_present": True, "mjcf_present": True, "floating_base_dynamics_present": True,
         "provisional_mass_com_inertia_budget_present": True, "power_thermal_compute_network_cost_budgets_present": True,
         "whole_robot_candidate_bom_present": True, "walking_architecture_present": True,
         "embodied_agent_boundary_present": True, "modular_build_plan_present": True,

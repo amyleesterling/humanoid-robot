@@ -56,6 +56,8 @@ def main() -> int:
     urdf = ET.parse(SRC / "hr30.urdf").getroot()
     urdf_joints = [node for node in urdf.findall("joint") if node.get("type") != "fixed"]
     require(len(urdf_joints) == 25 and {node.get("name") for node in urdf_joints} == scheduled_axes, "URDF does not implement exact 25-axis schedule")
+    require(len(urdf.findall("link")) == 26 and not urdf.findall("joint[@type='fixed']") and not urdf.findall("link[@name='world']"), "URDF must expose base_link as the unanchored walking root")
+    require("base_link" not in {node.find("child").get("link") for node in urdf_joints}, "URDF base_link is not the root")
     require(len({node.find("child").get("link") for node in urdf_joints}) == 25, "URDF child-link tree is not unique")
     require(all(float(node.find("limit").get("effort")) == 0.0 for node in urdf_joints), "URDF must remain effort-disabled until physical selection")
     urdf_masses = [float(node.find("inertial/mass").get("value")) for node in urdf.findall("link") if node.find("inertial/mass") is not None]
@@ -65,6 +67,8 @@ def main() -> int:
     mjcf_joints = mjcf.findall("./worldbody//joint")
     mjcf_motors = mjcf.findall("./actuator/motor")
     require(len(mjcf_joints) == 25 and {node.get("name") for node in mjcf_joints} == scheduled_axes, "MJCF axis schedule mismatch")
+    freejoints = mjcf.findall("./worldbody//freejoint")
+    require(len(freejoints) == 1 and freejoints[0].get("name") == "floating_base", "MJCF must contain exactly one floating-base joint")
     require(len(mjcf_motors) == 25 and {node.get("joint") for node in mjcf_motors} == scheduled_axes, "MJCF actuator map mismatch")
 
     mass = read_csv("mass-properties-budget.csv")
@@ -105,6 +109,7 @@ def main() -> int:
 
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
     require(all(status[key] for key in ("whole_body_system_package_present", "urdf_present", "mjcf_present", "whole_robot_candidate_bom_present", "walking_architecture_present", "embodied_agent_boundary_present", "modular_build_plan_present")), "system package status incomplete")
+    require(status["floating_base_dynamics_present"], "floating-base dynamics status missing")
     require(not any(status[key] for key in ("dynamics_validated", "walking_validated", "physical_build_ready", "procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "status validation/authority overclaim")
     require(sha(SRC / "system-package-source.py") == sha(ROOT / "tools" / "generate_hr30_system_package_p01.py"), "system generator snapshot drift")
     page = (SRC / "index.html").read_text(encoding="utf-8")

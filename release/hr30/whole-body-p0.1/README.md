@@ -11,4 +11,4 @@ The straight arm-chain arithmetic is 370 mm reach and 950 mm span: both pass har
 
 ## Whole-body systems completion
 
-P0.1 now also includes a 25-DOF URDF and MJCF, a 9.63 kg allocation model with neutral COM/inertia, power/thermal/compute/network/cost budgets, a whole-robot candidate BOM, two-hand functional requirements, staged standing/walking development, a modular build/electrification plan, and the OpenAI-to-deterministic-controller action boundary. These artifacts make the architecture coherent and simulatable; none converts the open selections or physical validation into work authority.
+P0.1 now also includes floating-base 25-DOF URDF and MJCF models, a 9.63 kg allocation model with neutral COM/inertia, power/thermal/compute/network/cost budgets, a whole-robot candidate BOM, two-hand functional requirements, staged standing/walking development, a modular build/electrification plan, and the OpenAI-to-deterministic-controller action boundary. These artifacts make the architecture coherent and simulatable; none converts the open selections or physical validation into work authority.

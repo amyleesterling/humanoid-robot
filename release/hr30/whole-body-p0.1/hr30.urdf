@@ -1,5 +1,4 @@
 <robot name="hr30_whole_body_p01">
-  <link name="world" />
   <link name="base_link">
     <inertial>
       <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
@@ -572,11 +571,6 @@
       </geometry>
     </collision>
   </link>
-  <joint name="world_to_base" type="fixed">
-    <parent link="world" />
-    <child link="base_link" />
-    <origin xyz="0 0 0.390" rpy="0 0 0" />
-  </joint>
   <joint name="WAIST_YAW" type="revolute">
     <parent link="base_link" />
     <child link="torso" />

@@ -8,6 +8,7 @@
   <worldbody>
     <geom name="floor" type="plane" size="2 2 0.02" rgba="0.85 0.90 0.95 1" />
     <body name="base_link" pos="0.000000 0.000000 0.390000">
+      <freejoint name="floating_base" />
       <inertial pos="0.000000 0.000000 0.000000" mass="1.650000" diaginertia="0.002189687 0.003977188 0.004819375" />
       <geom pos="0.000000 0.000000 0.000000" size="0.077500 0.052500 0.035000" />
       <body name="torso" pos="0.000000 0.000000 0.035000">

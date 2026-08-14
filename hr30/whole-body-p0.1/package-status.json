@@ -37,5 +37,6 @@
   "estimated_neutral_com_z_m": 0.338425,
   "dynamics_validated": false,
   "walking_validated": false,
-  "physical_build_ready": false
+  "physical_build_ready": false,
+  "floating_base_dynamics_present": true
 }
