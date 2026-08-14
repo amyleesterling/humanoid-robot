@@ -2,7 +2,7 @@
 
 **PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION**
 
-The whole body has six commanded axes per leg: hip yaw/roll/pitch, knee pitch, and ankle pitch/roll. Pitch joints reserve 1.5:1 belt reductions, dual-supported outputs and output encoders; hip roll reserves a higher-reduction path and remains blocked from direct-drive release. Each foot is 90 x 145 mm with four-corner force sensing and a replaceable compliant sole. The reconciled planning dynamics mass is 11.573 kg with neutral COM Z=0.342 m; these are candidate-volume and allocation values, not measured properties, and major equipment mass remains open.
+The whole body has six commanded axes per leg: hip yaw/roll/pitch, knee pitch, and ankle pitch/roll. Pitch joints reserve 1.5:1 belt reductions, dual-supported outputs and output encoders; hip roll reserves a higher-reduction path and remains blocked from direct-drive release. Each foot is 90 x 145 mm with four-corner force sensing and a replaceable compliant sole. The reconciled planning dynamics mass is 11.104 kg with neutral COM Z=0.342 m; these are candidate-volume and allocation values, not measured properties, and major equipment mass remains open.
 
 Control layers are: embedded actuator current/velocity loops; a deterministic local motion controller for joint interpolation, state estimation, support-polygon checks and limits; a separately powered watchdog/permit path with zero safety credit until validated; and a Raspberry Pi/OpenAI conversational layer that can request only named behaviors. Loss or staleness of the conversational layer never becomes a motion request.
 

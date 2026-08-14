@@ -53,6 +53,42 @@ VENDOR_ACTUATOR_SOURCES = {
     },
 }
 
+# Standard catalogue bearing candidates replace the former anonymous annular
+# steel density solids.  Dimensions and catalogue mass are primary-source
+# facts; application suitability, suffix, fits, preload and life remain open.
+BEARING_CANDIDATES = {
+    "NSK-696": {
+        "manufacturer": "NSK", "designation": "696 OPEN EVALUATION CANDIDATE",
+        "bore_d": 6.0, "outer_d": 15.0, "width": 5.0, "mass_kg": 0.00388,
+        "dynamic_rating_n": 1910.0, "static_rating_n": 670.0,
+        "url": "https://www.oss.nsk.com/jp/products/bearings/ball-bearings/deep-groove-ball-bearings/extra-small-ball-bearings-and-miniature-ball-bearings-metric-series/696-esm-md.html",
+    },
+    "SKF-625-2Z": {
+        "manufacturer": "SKF", "designation": "625-2Z EVALUATION CANDIDATE",
+        "bore_d": 5.0, "outer_d": 16.0, "width": 5.0, "mass_kg": 0.005,
+        "dynamic_rating_n": 1430.0, "static_rating_n": 630.0,
+        "url": "https://www.emarketplace.in.skf.com/deep-groove-ball-bearing/625-2z",
+    },
+    "SKF-61900-2RS1": {
+        "manufacturer": "SKF", "designation": "61900-2RS1 EVALUATION CANDIDATE",
+        "bore_d": 10.0, "outer_d": 22.0, "width": 6.0, "mass_kg": 0.009,
+        "dynamic_rating_n": 2700.0, "static_rating_n": 1270.0,
+        "url": "https://www.emarketplace.in.skf.com/deep-groove-ball-bearing/61900-2rs1",
+    },
+    "SKF-6003-2Z-C3": {
+        "manufacturer": "SKF", "designation": "6003-2Z/C3 EVALUATION CANDIDATE",
+        "bore_d": 17.0, "outer_d": 35.0, "width": 10.0, "mass_kg": 0.040,
+        "dynamic_rating_n": 6370.0, "static_rating_n": 3250.0,
+        "url": "https://www.emarketplace.in.skf.com/deep-groove-ball-bearing/6003-2z-c3",
+    },
+    "SKF-6002-2RS1": {
+        "manufacturer": "SKF", "designation": "6002-2RS1 EVALUATION CANDIDATE",
+        "bore_d": 15.0, "outer_d": 32.0, "width": 9.0, "mass_kg": 0.030,
+        "dynamic_rating_n": 5850.0, "static_rating_n": 2850.0,
+        "url": "https://www.emarketplace.in.skf.com/deep-groove-ball-bearing/6002-2rs1",
+    },
+}
+
 # Authoritative HR-PROD-030 datums, millimetres.
 HEIGHT = 762.0
 ANKLE_Z = 45.0
@@ -240,49 +276,49 @@ JOINT_MODULE_FAMILIES = {
     "JMF-01-COMPACT": {
         "role": "compact supported direct joint",
         "plate_w": 36.0, "plate_h": 38.0, "plate_t": 3.0, "pattern_x": 26.0, "pattern_y": 28.0, "hole_d": 3.4,
-        "shaft_d": 6.0, "bearing_od": 15.0, "bearing_w": 5.0, "span": 32.0, "body_w": 28.0, "body_h": 34.0, "body_d": 34.0,
+        "shaft_d": 6.0, "bearing_od": 15.0, "bearing_w": 5.0, "bearing_id": "NSK-696", "span": 32.0, "body_w": 28.0, "body_h": 34.0, "body_d": 34.0,
         "transmission": "direct supported output", "ratio": "1.0:1 candidate", "motor_offset": 0.0, "cable_d": 6.0,
     },
     "JMF-02-GRIPPER": {
         "role": "parallel hand-shaped gripper drive",
         "plate_w": 42.0, "plate_h": 38.0, "plate_t": 3.0, "pattern_x": 32.0, "pattern_y": 26.0, "hole_d": 3.4,
-        "shaft_d": 5.0, "bearing_od": 12.0, "bearing_w": 4.0, "span": 28.0, "body_w": 32.0, "body_h": 36.0, "body_d": 30.0,
+        "shaft_d": 5.0, "bearing_od": 16.0, "bearing_w": 5.0, "bearing_id": "SKF-625-2Z", "span": 28.0, "body_w": 32.0, "body_h": 36.0, "body_d": 30.0,
         "transmission": "symmetric rack/pinion or tendon coupling", "ratio": "SELECTION REQUIRED", "motor_offset": 0.0, "cable_d": 6.0,
     },
     "JMF-03-SHOULDER-GIMBAL": {
         "role": "shared intersecting-axis shoulder gimbal",
         "plate_w": 58.0, "plate_h": 64.0, "plate_t": 4.0, "pattern_x": 44.0, "pattern_y": 50.0, "hole_d": 4.5,
-        "shaft_d": 10.0, "bearing_od": 22.0, "bearing_w": 6.0, "span": 52.0, "body_w": 42.0, "body_h": 52.0, "body_d": 48.0,
+        "shaft_d": 10.0, "bearing_od": 22.0, "bearing_w": 6.0, "bearing_id": "SKF-61900-2RS1", "span": 52.0, "body_w": 42.0, "body_h": 52.0, "body_d": 48.0,
         "transmission": "two remote or nested supported drives sharing one gimbal housing", "ratio": "1.0:1 initial candidate", "motor_offset": 38.0, "cable_d": 10.0,
     },
     "JMF-04-MEDIUM": {
         "role": "medium supported direct joint",
         "plate_w": 52.0, "plate_h": 56.0, "plate_t": 4.0, "pattern_x": 40.0, "pattern_y": 44.0, "hole_d": 4.5,
-        "shaft_d": 10.0, "bearing_od": 22.0, "bearing_w": 6.0, "span": 46.0, "body_w": 42.0, "body_h": 52.0, "body_d": 48.0,
+        "shaft_d": 10.0, "bearing_od": 22.0, "bearing_w": 6.0, "bearing_id": "SKF-61900-2RS1", "span": 46.0, "body_w": 42.0, "body_h": 52.0, "body_d": 48.0,
         "transmission": "direct supported output", "ratio": "1.0:1 candidate", "motor_offset": 0.0, "cable_d": 9.0,
     },
     "JMF-05-WAIST": {
         "role": "large supported waist turntable",
         "plate_w": 98.0, "plate_h": 72.0, "plate_t": 5.0, "pattern_x": 82.0, "pattern_y": 56.0, "hole_d": 5.5,
-        "shaft_d": 16.0, "bearing_od": 40.0, "bearing_w": 10.0, "span": 28.0, "body_w": 50.0, "body_h": 60.0, "body_d": 48.0,
+        "shaft_d": 17.0, "bearing_od": 35.0, "bearing_w": 10.0, "bearing_id": "SKF-6003-2Z-C3", "span": 28.0, "body_w": 50.0, "body_h": 60.0, "body_d": 48.0,
         "transmission": "supported yaw output with actuator isolated from overturning load", "ratio": "1.0:1 initial candidate", "motor_offset": 0.0, "cable_d": 18.0,
     },
     "JMF-06-LEG-DIRECT": {
         "role": "large supported direct leg joint",
         "plate_w": 66.0, "plate_h": 70.0, "plate_t": 5.0, "pattern_x": 52.0, "pattern_y": 56.0, "hole_d": 5.5,
-        "shaft_d": 14.0, "bearing_od": 32.0, "bearing_w": 8.0, "span": 60.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
+        "shaft_d": 15.0, "bearing_od": 32.0, "bearing_w": 9.0, "bearing_id": "SKF-6002-2RS1", "span": 60.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
         "transmission": "direct supported output", "ratio": "1.0:1 W0 candidate", "motor_offset": 0.0, "cable_d": 12.0,
     },
     "JMF-07-LEG-REDUCED-15": {
         "role": "parallel-axis reduced leg joint",
         "plate_w": 72.0, "plate_h": 78.0, "plate_t": 5.0, "pattern_x": 58.0, "pattern_y": 64.0, "hole_d": 5.5,
-        "shaft_d": 14.0, "bearing_od": 32.0, "bearing_w": 8.0, "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
+        "shaft_d": 15.0, "bearing_od": 32.0, "bearing_w": 9.0, "bearing_id": "SKF-6002-2RS1", "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
         "transmission": "parallel-axis timing transmission with output encoder", "ratio": "1.5:1 geometric candidate", "motor_offset": 44.0, "cable_d": 12.0,
     },
     "JMF-08-LEG-REDUCED-20": {
         "role": "higher-reduction hip/ankle roll joint",
         "plate_w": 74.0, "plate_h": 70.0, "plate_t": 5.0, "pattern_x": 60.0, "pattern_y": 56.0, "hole_d": 5.5,
-        "shaft_d": 14.0, "bearing_od": 32.0, "bearing_w": 8.0, "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
+        "shaft_d": 15.0, "bearing_od": 32.0, "bearing_w": 9.0, "bearing_id": "SKF-6002-2RS1", "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
         "transmission": "parallel-axis timing transmission with output encoder", "ratio": "2.0:1 geometric candidate", "motor_offset": 46.0, "cable_d": 12.0,
     },
 }
@@ -538,7 +574,13 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
             plate_center_v = cq.Vector(*center) + normal.multiply(sign_end * (span / 2.0 + spec["plate_t"] / 2.0))
             bearing_center = (bearing_center_v.x, bearing_center_v.y, bearing_center_v.z)
             plate_center = (plate_center_v.x, plate_center_v.y, plate_center_v.z)
-            add(f"JMOD_{axis_id}_BEARING_{end_name}_RING", "joint module bearing", bearing_ring(bearing_center, direction, spec["bearing_w"], spec["bearing_od"], spec["shaft_d"]), joint, True, f"{family_id} bearing envelope; exact bearing selection required")
+            bearing = BEARING_CANDIDATES[spec["bearing_id"]]
+            add(
+                f"JMOD_{axis_id}_BEARING_{end_name}_RING", "joint module bearing",
+                bearing_ring(bearing_center, direction, spec["bearing_w"], spec["bearing_od"], spec["shaft_d"]),
+                joint, True,
+                f"{family_id} {bearing['designation']} catalogue envelope; load direction, life, suffix, fit, retention and application selection required",
+            )
             add(
                 f"JMOD_{axis_id}_INTERFACE_PLATE_{end_name}",
                 "joint module interface plate",
@@ -777,6 +819,22 @@ def main() -> int:
         "native_output_datum": "+Z through native origin; exact project roll and translation recorded per axis",
         "release_boundary": "MANUFACTURER REFERENCE GEOMETRY ONLY - RECEIVED IDENTITY, FIT, TOLERANCE AND INTERFACE VALIDATION REQUIRED",
     } for source_id, source in VENDOR_ACTUATOR_SOURCES.items()])
+    write_csv(OUT / "bearing-candidate-source-register.csv", [{
+        "bearing_id": bearing_id,
+        "manufacturer": bearing["manufacturer"],
+        "designation": bearing["designation"],
+        "bore_diameter_mm": f"{bearing['bore_d']:.3f}",
+        "outside_diameter_mm": f"{bearing['outer_d']:.3f}",
+        "width_mm": f"{bearing['width']:.3f}",
+        "published_mass_kg": f"{bearing['mass_kg']:.6f}",
+        "published_dynamic_rating_n": f"{bearing['dynamic_rating_n']:.1f}",
+        "published_static_rating_n": f"{bearing['static_rating_n']:.1f}",
+        "official_url": bearing["url"],
+        "document_revision_or_date": "LIVE MANUFACTURER PAGE; REVISION NOT PUBLISHED",
+        "accessed_date": "2026-08-14",
+        "application_state": "EVALUATION CANDIDATE ONLY - LOAD, LIFE, FIT, SUFFIX, LUBRICATION, RETENTION AND RECEIVED IDENTITY OPEN",
+        "authority": "NO PROCUREMENT OR FABRICATION AUTHORITY",
+    } for bearing_id, bearing in BEARING_CANDIDATES.items()])
     write_csv(OUT / "joint-module-family-schedule.csv", [{
         "family_id": family_id,
         "role": spec["role"],
@@ -785,6 +843,8 @@ def main() -> int:
         "mount_pattern": f"4 x DIA {spec['hole_d']:.1f} on {spec['pattern_x']:.1f} x {spec['pattern_y']:.1f} rectangle",
         "shaft_diameter_mm": f"{spec['shaft_d']:.1f}",
         "bearing_envelope_each_mm": f"OD {spec['bearing_od']:.1f} x W {spec['bearing_w']:.1f}",
+        "bearing_evaluation_candidate": BEARING_CANDIDATES[spec["bearing_id"]]["designation"],
+        "bearing_published_mass_each_kg": f"{BEARING_CANDIDATES[spec['bearing_id']]['mass_kg']:.6f}",
         "external_bearing_count_per_axis": spec["external_bearings"],
         "support_span_mm": f"{spec['span']:.1f}",
         "transmission": spec["transmission"],
@@ -820,10 +880,10 @@ def main() -> int:
             )
         elif "ELBOW" in axis_id:
             actuator, transmission, rail, disposition = (
-                "ROBOTIS XM430-W350-R / XM540-W270-R decision candidate",
+                "ROBOTIS XM430-W350-R candidate",
                 "direct drive candidate; dual-supported output",
                 "10.0-14.8 V candidate domain",
-                "PROVISIONAL - DECIDE FROM HR-V0 MEASURED DATA",
+                "PROVISIONAL - RETAINED BY WHOLE-BODY STATIC LOAD SCREEN; CONTINUOUS/DYNAMIC/THERMAL PROOF REQUIRED",
             )
         elif "WRIST" in axis_id:
             actuator, transmission, rail, disposition = (
@@ -937,6 +997,7 @@ def main() -> int:
         "joint_module_binding_count": len(module_bindings),
         "vendor_actuator_source_count": len(VENDOR_ACTUATOR_SOURCES),
         "vendor_actuator_transform_count": len(vendor_transforms),
+        "bearing_candidate_source_count": len(BEARING_CANDIDATES),
         "shoulder_shell_width_mm": 250.0,
         "hip_shell_width_mm": 155.0,
         "foot_center_spacing_mm": 125.0,
@@ -970,7 +1031,7 @@ def main() -> int:
     ]
     write_csv(OUT / "mass-allocation-register.csv", mass_rows)
     holds = [
-        ("HR30-P01-H01", "All 25 axes have dimensioned module-family bindings and visible shaft/bearing/interface candidates, but exact bearings, fits, materials, fasteners, stops, encoders, actuator interfaces and load proof remain absent."),
+        ("HR30-P01-H01", "All 25 axes have dimensioned module-family bindings and visible shaft/bearing/interface candidates. Standard catalogue bearing candidates now align every shaft/envelope, but load direction, life, suffix, fits, materials, fasteners, stops, encoders, actuator interfaces and physical proof remain open."),
         ("HR30-P01-H02", "The arm actuator concept exceeds its mass target before links, hands, cables and covers."),
         ("HR30-P01-H03", "The leg concept fails its current mass screen; reduced hip/ankle roll packaging clears the floor in the neutral pose but continuous torque, thermal, impact and gait loads remain unproved."),
         ("HR30-P01-H04", "No selected power source, regeneration control, contactors, battery or tether exists."),
@@ -989,7 +1050,7 @@ def main() -> int:
 
 This is the first repository-native full-body CAD for Project Button. It freezes the `HR-PROD-030` neutral-pose datums, all 25 candidate axes, the 762 mm overall height, shell envelopes, load-frame envelopes and first component-bay reservations.
 
-It is intentionally an architecture model, not a buildable machine. The STEP contains candidate physical envelopes plus visible module-family geometry for every axis: output shafts, two-sided bearing rings, removable four-hole interface plates, exact SHA-bound manufacturer actuator bodies, cable corridors and reduction reservations. Eight dimensioned module families cover all 25 axes, including a shared intersecting-axis shoulder gimbal rather than overlapping generic servo blocks. Three controlled ROBOTIS source files and 25 explicit orthonormal transforms replace anonymous actuator boxes while leaving every frame, horn, fastener, cable exit, tolerance and received fit unresolved. The web GLB deliberately substitutes dimension-matched low-complexity actuator bodies for the detailed B-Reps; the exact geometry remains in both STEP assemblies and the source/transform registers. The second STEP and GLB add joint-axis and component-reservation references. The package also assigns a provisional actuator/transmission route to every axis and records explicit REUSE / ADAPT / REJECT decisions for the SHA-bound Asimov 1 source rig. Exact bearings, fits, materials, fasteners, stops, encoders, actuator interfaces, wall construction, tolerances, harnesses, power hardware, mass properties, collision proof and physical validation remain open.
+It is intentionally an architecture model, not a buildable machine. The STEP contains candidate physical envelopes plus visible module-family geometry for every axis: output shafts, standard catalogue bearing candidates, removable four-hole interface carriers, exact SHA-bound manufacturer actuator bodies, cable corridors and reduction reservations. Eight dimensioned module families cover all 25 axes, including a shared intersecting-axis shoulder gimbal rather than overlapping generic servo blocks. Three controlled ROBOTIS source files and 25 explicit orthonormal transforms replace anonymous actuator boxes while leaving every frame, horn, fastener, cable exit, tolerance and received fit unresolved. The web GLB deliberately substitutes dimension-matched low-complexity actuator bodies for the detailed B-Reps; the exact geometry remains in both STEP assemblies and the source/transform registers. The second STEP and GLB add joint-axis and component-reservation references. The package also assigns a provisional actuator/transmission route to every axis and records explicit REUSE / ADAPT / REJECT decisions for the SHA-bound Asimov 1 source rig. Bearing dimensions, masses and catalogue ratings are now recorded from current primary manufacturer pages, but bearing application, life, suffix, fits, retention and received identity remain open. Exact fasteners, stops, encoders, actuator interfaces, wall construction, tolerances, harnesses, power hardware, mass properties, collision proof and physical validation remain open.
 
 The straight arm-chain arithmetic is 370 mm reach and 950 mm span: both pass hard limits, but both miss the preferred 360/900 mm targets. This is recorded as an open design correction rather than hidden.
 """
@@ -1021,6 +1082,7 @@ The straight arm-chain arithmetic is 370 mm reach and 950 mm span: both pass har
         "sha_bound_vendor_actuator_geometry_present": True,
         "vendor_actuator_source_count": len(VENDOR_ACTUATOR_SOURCES),
         "vendor_actuator_transform_count": len(vendor_transforms),
+        "bearing_candidate_source_count": len(BEARING_CANDIDATES),
         "web_glb_uses_dimension_matched_simplified_actuator_bodies": True,
         "neutral_pose_joint_packaging_screen_pass": packaging["pass"],
         "asimov_matrix_count": len(asimov_rows),

@@ -36,6 +36,7 @@ def main() -> int:
         "joint-module-family-schedule.csv",
         "joint-module-axis-binding.csv",
         "vendor-actuator-source-register.csv",
+        "bearing-candidate-source-register.csv",
         "vendor-actuator-transform-register.csv",
         "actuator-transmission-allocation.csv",
         "asimov-1-reuse-adapt-reject.csv",
@@ -91,6 +92,8 @@ def main() -> int:
     require(len(allocation) == 25 and {r["axis_id"] for r in allocation} == {r["axis_id"] for r in axes}, "actuator allocation does not cover every axis")
     blocked_roll_axes = {r["axis_id"] for r in allocation if r["candidate_disposition"] == "DIRECT DRIVE REJECTED/BLOCKED BY WHOLE-BODY PACKAGING"}
     require(blocked_roll_axes == {"L_HIP_ROLL", "R_HIP_ROLL", "L_ANKLE_ROLL", "R_ANKLE_ROLL"}, "hip/ankle roll direct-drive packaging dispositions are incomplete")
+    elbow_rows = [r for r in allocation if "ELBOW" in r["axis_id"]]
+    require(len(elbow_rows) == 2 and all(r["candidate_actuator"] == "ROBOTIS XM430-W350-R candidate" for r in elbow_rows), "whole-body elbow candidate allocation drift")
     module_families = list(csv.DictReader((SRC / "joint-module-family-schedule.csv").open(encoding="utf-8")))
     module_bindings = list(csv.DictReader((SRC / "joint-module-axis-binding.csv").open(encoding="utf-8")))
     require(len(module_families) == 8 and len({r["family_id"] for r in module_families}) == 8, "joint-module family identity/count mismatch")
@@ -103,6 +106,11 @@ def main() -> int:
     }, "direct versus remote-output external-bearing architecture drift")
     require(len(module_bindings) == 25 and {r["axis_id"] for r in module_bindings} == {r["axis_id"] for r in axes}, "joint-module binding does not cover every axis")
     require({r["family_id"] for r in module_bindings} == {r["family_id"] for r in module_families}, "joint-module family/binding mismatch")
+    bearings = list(csv.DictReader((SRC / "bearing-candidate-source-register.csv").open(encoding="utf-8")))
+    require(len(bearings) == 5 and len({r["bearing_id"] for r in bearings}) == 5, "standard bearing candidate set incomplete")
+    require({r["bearing_evaluation_candidate"] for r in module_families} <= {r["designation"] for r in bearings}, "module bearing candidate/source mismatch")
+    require(all(float(r["published_mass_kg"]) > 0 and float(r["published_dynamic_rating_n"]) > 0 and float(r["published_static_rating_n"]) > 0 for r in bearings), "bearing source facts incomplete")
+    require(all("EVALUATION CANDIDATE" in r["application_state"] and r["authority"] == "NO PROCUREMENT OR FABRICATION AUTHORITY" for r in bearings), "bearing application/authority boundary missing")
     require(sum(r["shared_assembly_id"] == "L_SHOULDER_GIMBAL" for r in module_bindings) == 2 and sum(r["shared_assembly_id"] == "R_SHOULDER_GIMBAL" for r in module_bindings) == 2, "intersecting shoulder axes are not bound to shared gimbals")
     require(all("SELECTION REQUIRED" in r["selection_state"] and r["authority"].startswith("NO PROCUREMENT") for r in module_bindings), "joint-module selection/authority boundary missing")
     vendor_sources = list(csv.DictReader((SRC / "vendor-actuator-source-register.csv").open(encoding="utf-8")))

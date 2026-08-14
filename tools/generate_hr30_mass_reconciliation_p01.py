@@ -137,13 +137,9 @@ def actuator_choice(axis_id: str) -> tuple[str, float, float, float, str]:
         mass = ACTUATOR_SOURCES[name]["mass_kg"]
         return name, mass, mass, mass, "candidate; exact suffix/interface selection remains open"
     if "ELBOW_PITCH" in axis_id:
-        return (
-            "ROBOTIS XM430-W350-R / XM540-W270-R DECISION",
-            ACTUATOR_SOURCES["ROBOTIS XM430-W350-R"]["mass_kg"],
-            ACTUATOR_SOURCES["ROBOTIS XM540-W270-R"]["mass_kg"],
-            ACTUATOR_SOURCES["ROBOTIS XM540-W270-R"]["mass_kg"],
-            "unresolved choice; planning value uses the heavier published candidate",
-        )
+        name = "ROBOTIS XM430-W350-R"
+        mass = ACTUATOR_SOURCES[name]["mass_kg"]
+        return name, mass, mass, mass, "whole-body P0.1 static-load candidate; continuous, dynamic and thermal proof remains open"
     name = "ROBOTIS XM540-W270-R"
     mass = ACTUATOR_SOURCES[name]["mass_kg"]
     return name, mass, mass, mass, "candidate; exact suffix/interface selection remains open"
@@ -249,14 +245,29 @@ def build_items() -> tuple[list[dict], list[dict]]:
         elif "_SYMMETRIC_DRIVE_COUPLER" in axis_id:
             axis_id = axis_id.split("_SYMMETRIC_DRIVE_COUPLER", 1)[0]
         material, density = hardware_material(part.name)
-        mass = part.shape.Volume() * 1e-9 * density
+        if "_BEARING_" in part.name:
+            family_id = body.joint_module_family(axis_id)
+            bearing = body.BEARING_CANDIDATES[body.JOINT_MODULE_FAMILIES[family_id]["bearing_id"]]
+            material = f"{bearing['manufacturer']} {bearing['designation']} PUBLISHED MASS"
+            density_value: float | str = "N/A"
+            mass = bearing["mass_kg"]
+            basis = (
+                "current official manufacturer catalogue mass; CAD is only the principal-dimension envelope; "
+                "load direction, life, suffix, lubrication, fits, retention and received identity unverified"
+            )
+            state = "CATALOGUE EVALUATION CANDIDATE; APPLICATION SELECTION REQUIRED"
+        else:
+            density_value = density
+            mass = part.shape.Volume() * 1e-9 * density
+            basis = "candidate envelope volume times generic density; exact component geometry, voids, fits and received mass unverified"
+            state = "GROSS NO-OVERLAP-DEDUCTION SCREEN; NOT A SELECTED HARDWARE MASS"
         add_item(
             items, item_id=f"JHW-{part.name}", category="JOINT HARDWARE CAD DENSITY SCREEN",
             component=part.name, link=axis_link(axis_id), candidate=material,
-            density=density, volume=float(part.shape.Volume()), minimum=mass, planning=mass, maximum=mass,
+            density=density_value, volume=float(part.shape.Volume()), minimum=mass, planning=mass, maximum=mass,
             center_mm=part.shape.Center(),
-            basis="candidate envelope volume times generic density; exact component geometry, voids, fits and received mass unverified",
-            state="GROSS NO-OVERLAP-DEDUCTION SCREEN; NOT A SELECTED HARDWARE MASS",
+            basis=basis,
+            state=state,
         )
 
     installed_items = equipment.build()
@@ -472,6 +483,12 @@ def write_lightweight_register(summary: dict) -> None:
             "mass_effect": "included in joint-hardware subtotal", "engineering_hold": "web load path, belt tooth system, flange, balance, guard, DFM and proof testing open",
         },
         {
+            "decision_id": "HR30-LW-007", "affected_system": "all external joint bearings",
+            "baseline_candidate": "principal-dimension annulus treated as solid bearing steel",
+            "lightweight_candidate": "five standard NSK/SKF catalogue candidates with published mass and matching shaft/envelope dimensions",
+            "mass_effect": "published catalogue mass replaces gross annulus density screen", "engineering_hold": "load direction, life, suffix, lubrication, fits, retention and received identity open",
+        },
+        {
             "decision_id": "HR30-LW-TOTAL", "affected_system": "whole robot identified candidate",
             "baseline_candidate": f"commit {BASELINE_COMMIT}: {BASELINE_MASS['identified']:.6f} kg gross identified / {BASELINE_MASS['dynamics']:.6f} kg conservative dynamics",
             "lightweight_candidate": f"current: {summary['planning_identified_candidate_mass_kg']:.6f} kg gross identified / {summary['reconciled_dynamics_planning_mass_kg']:.6f} kg conservative dynamics",
@@ -496,7 +513,9 @@ Relative to commit `{BASELINE_COMMIT}`, the lightweight topology reduces the gro
 
 The dynamics model now uses the explicit per-link subtotal plus a visible 8% integration contingency instead of carrying stale historical allocations. This produces a tethered provisional dynamics mass of **{summary['reconciled_dynamics_planning_mass_kg']:.3f} kg** and neutral COM **({summary['reconciled_dynamics_neutral_com_m'][0]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][1]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][2]:.3f}) m**. The resulting margin to the 10 kg program maximum is **{summary['planning_margin_to_program_maximum_kg']:.3f} kg**. Exact selections, received masses and the separate onboard-energy configuration remain open.
 
-The actuator planning subtotal uses published masses from current official ROBOTIS e-Manual pages checked {ACCESSED}. The two elbows remain an XM430/XM540 decision, so the planning and maximum columns use the heavier 165 g candidate while the minimum column uses 82 g. CAD actuator placement is the geometric centroid of the SHA-bound manufacturer packaging body, not a published center of gravity.
+The actuator planning subtotal uses published masses from current official ROBOTIS e-Manual pages checked {ACCESSED}. Both elbows now use the already-modelled 82 g XM430 candidate because the whole-body static-load screen retains it with margin to the published 12 V stall endpoint. This is not continuous-duty, dynamic, thermal or physical validation. CAD actuator placement is the geometric centroid of the SHA-bound manufacturer packaging body, not a published center of gravity.
+
+Bearing masses now use five standard catalogue candidates from current NSK/SKF primary pages rather than treating each principal-dimension annulus as solid steel. Those catalogue masses improve the planning model but do not select a bearing application or prove load direction, life, suffix, lubrication, fit, retention or received identity.
 
 Fabrication and joint-hardware values are volume-times-density screens; equipment values are located as-installed allowances, with current primary manufacturer evidence recorded where available. Candidate solids may interpenetrate and manufacturing redesign will change them; no overlap deduction is taken. The URDF and MJCF inertias remain box approximations for development simulation. Physical mass, COM and inertia identification, exact selections, structural closure, gait validation and qualified review remain mandatory.
 """
@@ -515,7 +534,7 @@ Fabrication and joint-hardware values are volume-times-density screens; equipmen
 
 ## Whole-body mass reconciliation
 
-The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines {summary['fabrication_part_count']} fabrication-CAD parts, {summary['actuator_count']} published actuator masses, {summary['joint_hardware_part_count']} joint-hardware density-screen solids and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The tether-first gross identified subtotal is {summary['planning_identified_candidate_mass_kg']:.3f} kg; the explicit per-link model plus 8% integration contingency is {summary['reconciled_dynamics_planning_mass_kg']:.3f} kg with neutral COM Z={summary['reconciled_dynamics_neutral_com_m'][2]:.3f} m. The onboard battery/BMS/charger is not installed, and exact selections/received masses remain open.
+The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines {summary['fabrication_part_count']} fabrication-CAD parts, {summary['actuator_count']} published actuator masses, {summary['joint_hardware_part_count']} joint-hardware candidate parts (including catalogue bearing masses) and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The tether-first gross identified subtotal is {summary['planning_identified_candidate_mass_kg']:.3f} kg; the explicit per-link model plus 8% integration contingency is {summary['reconciled_dynamics_planning_mass_kg']:.3f} kg with neutral COM Z={summary['reconciled_dynamics_neutral_com_m'][2]:.3f} m. The onboard battery/BMS/charger is not installed, and exact selections/received masses remain open.
 """
     (OUT / "README.md").write_text(readme.rstrip() + "\n", encoding="utf-8", newline="\n")
 
@@ -555,7 +574,7 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
     if card_count != 1:
         raise RuntimeError("system mass card drift")
     web, body_mass_count = re.subn(
-        r'<article class="card hold"><h3>Mass is still unproven</h3><p>[\s\S]*?</p></article>',
+        r'<article class="card (?:hold|miss)"><h3>(?:Mass is still unproven|10 kg target does not close)</h3><p>[\s\S]*?</p></article>',
         f'<article class="card miss"><h3>10 kg target does not close</h3><p>The tether-first explicit model is {summary["planning_identified_candidate_mass_kg"]:.3f} kg before contingency and {summary["reconciled_dynamics_planning_mass_kg"]:.3f} kg with 8% integration contingency. An onboard battery is not included.</p></article>',
         web,
         count=1,

@@ -306,8 +306,8 @@ def write_budgets_and_bom() -> None:
 
     bom = [
         ("HR30-BOM-001", "leg actuator", "ROBOTIS", "XH540-W270-R evaluation candidate", 12, 525),
-        ("HR30-BOM-002", "waist/shoulder/elbow actuator", "ROBOTIS", "XM540-W270-R candidate", 7, 355),
-        ("HR30-BOM-003", "wrist actuator", "ROBOTIS", "XM430-W350-R candidate", 2, 250),
+        ("HR30-BOM-002", "waist/shoulder actuator", "ROBOTIS", "XM540-W270-R candidate", 5, 355),
+        ("HR30-BOM-003", "elbow/wrist actuator", "ROBOTIS", "XM430-W350-R candidate", 4, 250),
         ("HR30-BOM-004", "head/gripper actuator", "ROBOTIS", "XC330-class compact candidate; exact model SELECTION REQUIRED", 4, 105),
         ("HR30-BOM-005", "main compute", "Raspberry Pi", "Raspberry Pi 5 8GB SC1112 candidate", 1, 125),
         ("HR30-BOM-006", "compute cooling", "Raspberry Pi", "Active Cooler SC1148 candidate", 1, 12),
@@ -324,7 +324,7 @@ def write_budgets_and_bom() -> None:
         ("HR30-BOM-017", "foot force sensing", "SELECTION REQUIRED", "four-corner load-cell and ADC set per foot", 2, 120),
         ("HR30-BOM-018", "output absolute encoder", "SELECTION REQUIRED", "reduced leg joint encoder", 8, 70),
         ("HR30-BOM-019", "leg reductions", "SELECTION REQUIRED", "1.5:1 pitch-axis and 2.0:1 roll-axis geometric candidates; exact belt, pulley, bearing and retention selections open", 10, 90),
-        ("HR30-BOM-020", "joint support", "SELECTION REQUIRED", "dual-bearing shaft stack per load-bearing axis", 25, 35),
+        ("HR30-BOM-020", "external joint bearing", "NSK/SKF", "696, 625-2Z, 61900-2RS1, 6003-2Z/C3 and 6002-2RS1 evaluation candidates; direct axes use one external bearing and remote/reduced axes use two", 39, 35),
         ("HR30-BOM-021", "frame plates", "custom", "6061-T6/T651 machined plate set; drawings/material release open", 1, 900),
         ("HR30-BOM-022", "shells", "custom", "printed removable cover set; material/process open", 1, 450),
         ("HR30-BOM-023", "feet", "custom", "machined/printed foot core + replaceable compliant sole", 2, 180),

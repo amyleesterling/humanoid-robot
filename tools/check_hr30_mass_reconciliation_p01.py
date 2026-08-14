@@ -63,8 +63,12 @@ def main() -> int:
         "INSTALLED EQUIPMENT / HARNESS PLANNING MASS": 53,
     }), "mass category population drift")
     actuator_rows = [row for row in items if row["category"] == "MANUFACTURER PUBLISHED ACTUATOR MASS"]
-    require(abs(sum(float(row["planning_candidate_mass_kg"]) for row in actuator_rows) - 3.391) < 1e-9, "actuator planning mass drift")
-    require(sum("DECISION" in row["candidate_material_or_model"] for row in actuator_rows) == 2, "two elbow actuator decisions not preserved")
+    require(abs(sum(float(row["planning_candidate_mass_kg"]) for row in actuator_rows) - 3.225) < 1e-9, "actuator planning mass drift")
+    elbows = [row for row in actuator_rows if "ELBOW" in row["item_id"]]
+    require(len(elbows) == 2 and all(row["candidate_material_or_model"] == "ROBOTIS XM430-W350-R" for row in elbows), "whole-body elbow XM430 candidate mass not preserved")
+    bearing_rows = [row for row in items if "_BEARING_" in row["source_component"]]
+    require(len(bearing_rows) == 39 and abs(sum(float(row["planning_candidate_mass_kg"]) for row in bearing_rows) - 0.81552) < 1e-9, "catalogue bearing mass population drift")
+    require(all("APPLICATION SELECTION REQUIRED" in row["selection_state"] and row["density_screen_kg_m3"] == "N/A" for row in bearing_rows), "bearing mass/application boundary missing")
     require(all(float(row["minimum_candidate_mass_kg"]) <= float(row["planning_candidate_mass_kg"]) <= float(row["maximum_candidate_mass_kg"]) for row in items), "mass bound ordering invalid")
 
     summary = json.loads((SRC / "mass-reconciliation-summary.json").read_text(encoding="utf-8"))
@@ -78,12 +82,12 @@ def main() -> int:
         require(abs(actual - float(summary[key])) < 2e-9, f"summary category mismatch {category}")
     identified = sum(float(row["planning_candidate_mass_kg"]) for row in items)
     require(abs(identified - float(summary["planning_identified_candidate_mass_kg"])) < 2e-9, "identified subtotal mismatch")
-    require(10.5 < identified < 10.9, "tether-first identified subtotal outside controlled P0.1 band")
+    require(10.2 < identified < 10.4, "tether-first identified subtotal outside controlled P0.1 band")
     require(summary["program_mass_target_status"] == "EXCEEDED" and summary["planning_margin_to_program_maximum_kg"] < 0, "10 kg infeasibility not disclosed")
     require(not any(summary["authority"].values()), "mass package authority overclaim")
 
     decisions = rows("lightweight-architecture-register.csv")
-    require(len(decisions) == 7 and {row["decision_id"] for row in decisions} >= {"HR30-LW-001", "HR30-LW-004", "HR30-LW-005", "HR30-LW-TOTAL"}, "lightweight architecture decision set incomplete")
+    require(len(decisions) == 8 and {row["decision_id"] for row in decisions} >= {"HR30-LW-001", "HR30-LW-004", "HR30-LW-005", "HR30-LW-007", "HR30-LW-TOTAL"}, "lightweight architecture decision set incomplete")
     total_decision = next(row for row in decisions if row["decision_id"] == "HR30-LW-TOTAL")
     require("dfb9a7d" in total_decision["baseline_candidate"] and "gross identified reduction" in total_decision["mass_effect"], "lightweight baseline/delta traceability missing")
     require(all(row["authority"].startswith("NO PROCUREMENT") for row in decisions), "lightweight decision authority overclaim")
@@ -121,7 +125,7 @@ def main() -> int:
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require("mass-reconciliation.md" in page and "mass-item-reconciliation.csv" in page and "lightweight-architecture-register.csv" in page and f"{reconciled_total:.3f} kg tether-first planning" in page, "web guide mass reconciliation missing")
     require("onboard energy" in page.lower(), "web guide hides onboard-energy boundary")
-    print(f"PASS: HR-30 mass reconciliation inventories 286 candidate items including 53 located equipment/harness items, 3.391 kg published actuator mass, {identified:.3f} kg tether-first identified mass and {reconciled_total:.3f} kg dynamics mass with explicit contingency; 10 kg target and all physical/authority gates remain open")
+    print(f"PASS: HR-30 mass reconciliation inventories 286 candidate items including 53 located equipment/harness items, 3.225 kg published actuator mass and 39 catalogue bearing candidates, {identified:.3f} kg tether-first identified mass and {reconciled_total:.3f} kg dynamics mass with explicit contingency; 10 kg target and all physical/authority gates remain open")
     return 0
 
 

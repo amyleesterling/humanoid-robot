@@ -43,6 +43,8 @@ def main() -> int:
         "installed-equipment-status.json", "installed-equipment-source.py",
         "HR-30_installed_equipment_candidate.step", "HR-30_installed_equipment_candidate.glb",
         "HR-30_integrated_whole_robot_candidate.step",
+        "joint-load-screen.csv", "joint-load-architecture.md", "joint-load-architecture-status.json",
+        "actuator-endpoint-source-register.csv", "bearing-candidate-source-register.csv",
     }
     source_files = {p.relative_to(SRC).as_posix() for p in SRC.rglob("*") if p.is_file()}
     release_files = {p.relative_to(REL).as_posix() for p in REL.rglob("*") if p.is_file()}
@@ -98,6 +100,9 @@ def main() -> int:
 
     bom = read_csv("whole-robot-candidate-bom.csv")
     require(len(bom) == 32 and sum(int(row["quantity"]) for row in bom if "actuator" in row["function"]) >= 25, "candidate BOM population incomplete")
+    require(any(row["item_id"] == "HR30-BOM-002" and int(row["quantity"]) == 5 and row["function"] == "waist/shoulder actuator" for row in bom), "XM540 whole-body allocation drift")
+    require(any(row["item_id"] == "HR30-BOM-003" and int(row["quantity"]) == 4 and row["function"] == "elbow/wrist actuator" for row in bom), "XM430 whole-body allocation drift")
+    require(any(row["item_id"] == "HR30-BOM-020" and int(row["quantity"]) == 39 and "6002-2RS1" in row["candidate"] for row in bom), "standard external-bearing BOM population incomplete")
     require(any(row["item_id"] == "HR30-BOM-019" and int(row["quantity"]) == 10 and "2.0:1 roll-axis" in row["candidate"] for row in bom), "leg reduction BOM does not cover six pitch and four roll axes")
     require(all(row["authority"] == "NO PROCUREMENT OR FABRICATION AUTHORITY" for row in bom), "BOM authority overclaim")
 
@@ -117,7 +122,7 @@ def main() -> int:
     require(all(word in hands for word in ("grasp", "hold", "present", "release")) and "two-finger" in hands, "functional hand specification incomplete")
 
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
-    require(all(status[key] for key in ("whole_body_system_package_present", "urdf_present", "mjcf_present", "whole_robot_candidate_bom_present", "walking_architecture_present", "embodied_agent_boundary_present", "modular_build_plan_present", "mass_reconciliation_present", "installed_equipment_layout_present")), "system package status incomplete")
+    require(all(status[key] for key in ("whole_body_system_package_present", "urdf_present", "mjcf_present", "whole_robot_candidate_bom_present", "walking_architecture_present", "embodied_agent_boundary_present", "modular_build_plan_present", "mass_reconciliation_present", "installed_equipment_layout_present", "whole_body_joint_load_architecture_present")), "system package status incomplete")
     require(status["installed_equipment_item_count"] == 53 and status["tether_first_equipment_configuration"] and not status["onboard_energy_installed"], "installed-equipment configuration boundary drift")
     require(status["floating_base_dynamics_present"], "floating-base dynamics status missing")
     require(not any(status[key] for key in ("dynamics_validated", "walking_validated", "physical_build_ready", "procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "status validation/authority overclaim")
