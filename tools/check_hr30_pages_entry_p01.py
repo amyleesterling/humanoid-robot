@@ -28,6 +28,7 @@ def main() -> int:
         "joint-axis-schedule.csv",
         "actuator-transmission-allocation.csv",
         "joint-family-cad/index.html",
+        "manufacturing-files/index.html",
         "hr30.urdf",
         "hr30.xml",
         "mass-properties-budget.csv",

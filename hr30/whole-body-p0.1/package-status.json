@@ -135,5 +135,10 @@
   "joint_family_cad_axis_coverage_count": 25,
   "joint_family_serviceable_stack_geometry_present": true,
   "joint_family_manufacturing_released": false,
-  "joint_family_structural_capacity_validated": false
+  "joint_family_structural_capacity_validated": false,
+  "individual_manufacturing_file_package_present": true,
+  "individual_physical_part_step_count": 66,
+  "individual_part_svg_drawing_view_count": 66,
+  "individual_part_files_fabrication_released": false,
+  "individual_part_drawings_released": false
 }
