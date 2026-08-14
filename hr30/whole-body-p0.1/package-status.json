@@ -87,7 +87,7 @@
   "onboard_energy_candidate_geometry_present": true,
   "onboard_energy_installed": false,
   "native_hr30_kicad_present": true,
-  "native_hr30_kicad_sheet_count": 16,
+  "native_hr30_kicad_sheet_count": 18,
   "native_hr30_kicad_axis_binding_count": 25,
   "native_hr30_kicad_logical_connectivity_reconciled": true,
   "native_hr30_kicad_physical_pins_selected": false,
@@ -149,7 +149,13 @@
   "whole_body_harness_corridor_count": 12,
   "whole_body_harness_assembly_count": 14,
   "whole_body_harness_equipment_binding_count": 54,
-  "whole_body_harness_logical_terminal_binding_count": 390,
+  "whole_body_harness_logical_terminal_binding_count": 549,
   "actuator_side_pinouts_reconciled": true,
-  "whole_body_harness_validated": false
+  "whole_body_harness_validated": false,
+  "native_hr30_kicad_actuator_bus_controller_pins_selected": true,
+  "native_hr30_kicad_interface_device_candidates_selected": true,
+  "native_hr30_kicad_data_only_connector_candidates_selected": true,
+  "actuator_bus_controller_pin_map_selected": true,
+  "actuator_bus_interface_device_candidates_selected": true,
+  "actuator_bus_data_only_connector_candidates_selected": true
 }

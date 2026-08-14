@@ -54,321 +54,462 @@ W3012,03_compute_motion_watchdog.kicad_sch,MCU1,LOG-PSTAT,PRECHARGE STATUS,PRECH
 W3013,03_compute_motion_watchdog.kicad_sch,MCU1,LOG-WD,WATCHDOG HEARTBEAT,MOTION_WD_HEARTBEAT
 W3014,03_compute_motion_watchdog.kicad_sch,MCU1,LOG-PREQ,PRECHARGE REQUEST,PRECHARGE_REQUEST
 W3015,03_compute_motion_watchdog.kicad_sch,WD1,LOG-HB,MOTION HEARTBEAT INPUT,MOTION_WD_HEARTBEAT
-W3016,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LLEG,LOG-RS-LLEG-TX,UART TX,UART_RS-LLEG_TX
-W3017,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LLEG,LOG-RS-LLEG-RX,UART RX,UART_RS-LLEG_RX
-W3018,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LLEG,LOG-RS-LLEG-DIR,DIRECTION,UART_RS-LLEG_DIR
-W3019,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RLEG,LOG-RS-RLEG-TX,UART TX,UART_RS-RLEG_TX
-W3020,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RLEG,LOG-RS-RLEG-RX,UART RX,UART_RS-RLEG_RX
-W3021,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RLEG,LOG-RS-RLEG-DIR,DIRECTION,UART_RS-RLEG_DIR
-W3022,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LARM,LOG-RS-LARM-TX,UART TX,UART_RS-LARM_TX
-W3023,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LARM,LOG-RS-LARM-RX,UART RX,UART_RS-LARM_RX
-W3024,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LARM,LOG-RS-LARM-DIR,DIRECTION,UART_RS-LARM_DIR
-W3025,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RARM,LOG-RS-RARM-TX,UART TX,UART_RS-RARM_TX
-W3026,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RARM,LOG-RS-RARM-RX,UART RX,UART_RS-RARM_RX
-W3027,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RARM,LOG-RS-RARM-DIR,DIRECTION,UART_RS-RARM_DIR
-W3028,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_WAIST,LOG-RS-WAIST-TX,UART TX,UART_RS-WAIST_TX
-W3029,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_WAIST,LOG-RS-WAIST-RX,UART RX,UART_RS-WAIST_RX
-W3030,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_WAIST,LOG-RS-WAIST-DIR,DIRECTION,UART_RS-WAIST_DIR
-W3031,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_LDIST,LOG-TTL-LDIST-TX,UART TX,UART_TTL-LDIST_TX
-W3032,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_LDIST,LOG-TTL-LDIST-RX,UART RX,UART_TTL-LDIST_RX
-W3033,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_LDIST,LOG-TTL-LDIST-DIR,DIRECTION,UART_TTL-LDIST_DIR
-W3034,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_RDIST,LOG-TTL-RDIST-TX,UART TX,UART_TTL-RDIST_TX
-W3035,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_RDIST,LOG-TTL-RDIST-RX,UART RX,UART_TTL-RDIST_RX
-W3036,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_RDIST,LOG-TTL-RDIST-DIR,DIRECTION,UART_TTL-RDIST_DIR
-W3037,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_HEAD,LOG-TTL-HEAD-TX,UART TX,UART_TTL-HEAD_TX
-W3038,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_HEAD,LOG-TTL-HEAD-RX,UART RX,UART_TTL-HEAD_RX
-W3039,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_HEAD,LOG-TTL-HEAD-DIR,DIRECTION,UART_TTL-HEAD_DIR
-W4001,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_LLEG,LOG-TX,UART TX,UART_RS-LLEG_TX
-W4002,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_LLEG,LOG-RX,UART RX,UART_RS-LLEG_RX
-W4003,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_LLEG,LOG-DIR,DIRECTION,UART_RS-LLEG_DIR
-W4004,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_LLEG,LOG-DP,FIELD DATA+,RS-LLEG_DP
-W4005,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_LLEG,LOG-DN,FIELD DATA-,RS-LLEG_DN
-W4006,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_LLEG,LOG-REF,FIELD REFERENCE,RS-LLEG_RET
-W4007,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_RLEG,LOG-TX,UART TX,UART_RS-RLEG_TX
-W4008,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_RLEG,LOG-RX,UART RX,UART_RS-RLEG_RX
-W4009,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_RLEG,LOG-DIR,DIRECTION,UART_RS-RLEG_DIR
-W4010,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_RLEG,LOG-DP,FIELD DATA+,RS-RLEG_DP
-W4011,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_RLEG,LOG-DN,FIELD DATA-,RS-RLEG_DN
-W4012,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_RLEG,LOG-REF,FIELD REFERENCE,RS-RLEG_RET
-W4013,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_LARM,LOG-TX,UART TX,UART_RS-LARM_TX
-W4014,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_LARM,LOG-RX,UART RX,UART_RS-LARM_RX
-W4015,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_LARM,LOG-DIR,DIRECTION,UART_RS-LARM_DIR
-W4016,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_LARM,LOG-DP,FIELD DATA+,RS-LARM_DP
-W4017,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_LARM,LOG-DN,FIELD DATA-,RS-LARM_DN
-W4018,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_LARM,LOG-REF,FIELD REFERENCE,RS-LARM_RET
-W4019,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_RARM,LOG-TX,UART TX,UART_RS-RARM_TX
-W4020,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_RARM,LOG-RX,UART RX,UART_RS-RARM_RX
-W4021,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_RARM,LOG-DIR,DIRECTION,UART_RS-RARM_DIR
-W4022,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_RARM,LOG-DP,FIELD DATA+,RS-RARM_DP
-W4023,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_RARM,LOG-DN,FIELD DATA-,RS-RARM_DN
-W4024,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_RARM,LOG-REF,FIELD REFERENCE,RS-RARM_RET
-W4025,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_WAIST,LOG-TX,UART TX,UART_RS-WAIST_TX
-W4026,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_WAIST,LOG-RX,UART RX,UART_RS-WAIST_RX
-W4027,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_WAIST,LOG-DIR,DIRECTION,UART_RS-WAIST_DIR
-W4028,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_WAIST,LOG-DP,FIELD DATA+,RS-WAIST_DP
-W4029,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_WAIST,LOG-DN,FIELD DATA-,RS-WAIST_DN
-W4030,04_eight_actuator_bus_interfaces.kicad_sch,IF_RS_WAIST,LOG-REF,FIELD REFERENCE,RS-WAIST_RET
-W4031,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_LDIST,LOG-TX,UART TX,UART_TTL-LDIST_TX
-W4032,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_LDIST,LOG-RX,UART RX,UART_TTL-LDIST_RX
-W4033,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_LDIST,LOG-DIR,DIRECTION,UART_TTL-LDIST_DIR
-W4034,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_LDIST,LOG-DATA,FIELD HALF-DUPLEX DATA,TTL-LDIST_DATA
-W4035,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_LDIST,LOG-REF,FIELD REFERENCE,TTL-LDIST_RET
-W4036,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_RDIST,LOG-TX,UART TX,UART_TTL-RDIST_TX
-W4037,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_RDIST,LOG-RX,UART RX,UART_TTL-RDIST_RX
-W4038,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_RDIST,LOG-DIR,DIRECTION,UART_TTL-RDIST_DIR
-W4039,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_RDIST,LOG-DATA,FIELD HALF-DUPLEX DATA,TTL-RDIST_DATA
-W4040,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_RDIST,LOG-REF,FIELD REFERENCE,TTL-RDIST_RET
-W4041,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_HEAD,LOG-TX,UART TX,UART_TTL-HEAD_TX
-W4042,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_HEAD,LOG-RX,UART RX,UART_TTL-HEAD_RX
-W4043,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_HEAD,LOG-DIR,DIRECTION,UART_TTL-HEAD_DIR
-W4044,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_HEAD,LOG-DATA,FIELD HALF-DUPLEX DATA,TTL-HEAD_DATA
-W4045,04_eight_actuator_bus_interfaces.kicad_sch,IF_TTL_HEAD,LOG-REF,FIELD REFERENCE,TTL-HEAD_RET
-W5001,05_left_leg_rs485.kicad_sch,PORT_RS_LLEG,LOG-RET,DATA REFERENCE,RS-LLEG_RET
-W5002,05_left_leg_rs485.kicad_sch,PORT_RS_LLEG,LOG-DP,DATA+,RS-LLEG_DP
-W5003,05_left_leg_rs485.kicad_sch,PORT_RS_LLEG,LOG-DN,DATA-,RS-LLEG_DN
-W5004,05_left_leg_rs485.kicad_sch,PBR_RS_LLEG,LOG-IN,INTERRUPTED SOURCE,ACT_14V8_SAFE
-W5005,05_left_leg_rs485.kicad_sch,PBR_RS_LLEG,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
-W5006,05_left_leg_rs485.kicad_sch,PBR_RS_LLEG,LOG-OUT,PROTECTED VDD,RS-LLEG_VDD
-W5007,05_left_leg_rs485.kicad_sch,PBR_RS_LLEG,LOG-RET-OUT,BRANCH RETURN,RS-LLEG_RET
-W5008,05_left_leg_rs485.kicad_sch,AX_L_HIP_YAW,2,VDD,RS-LLEG_VDD
-W5009,05_left_leg_rs485.kicad_sch,AX_L_HIP_YAW,1,GND,RS-LLEG_RET
-W5010,05_left_leg_rs485.kicad_sch,AX_L_HIP_YAW,3,DATA+,RS-LLEG_DP
-W5011,05_left_leg_rs485.kicad_sch,AX_L_HIP_YAW,4,DATA-,RS-LLEG_DN
-W5012,05_left_leg_rs485.kicad_sch,AX_L_HIP_ROLL,2,VDD,RS-LLEG_VDD
-W5013,05_left_leg_rs485.kicad_sch,AX_L_HIP_ROLL,1,GND,RS-LLEG_RET
-W5014,05_left_leg_rs485.kicad_sch,AX_L_HIP_ROLL,3,DATA+,RS-LLEG_DP
-W5015,05_left_leg_rs485.kicad_sch,AX_L_HIP_ROLL,4,DATA-,RS-LLEG_DN
-W5016,05_left_leg_rs485.kicad_sch,AX_L_HIP_PITCH,2,VDD,RS-LLEG_VDD
-W5017,05_left_leg_rs485.kicad_sch,AX_L_HIP_PITCH,1,GND,RS-LLEG_RET
-W5018,05_left_leg_rs485.kicad_sch,AX_L_HIP_PITCH,3,DATA+,RS-LLEG_DP
-W5019,05_left_leg_rs485.kicad_sch,AX_L_HIP_PITCH,4,DATA-,RS-LLEG_DN
-W5020,05_left_leg_rs485.kicad_sch,AX_L_KNEE_PITCH,2,VDD,RS-LLEG_VDD
-W5021,05_left_leg_rs485.kicad_sch,AX_L_KNEE_PITCH,1,GND,RS-LLEG_RET
-W5022,05_left_leg_rs485.kicad_sch,AX_L_KNEE_PITCH,3,DATA+,RS-LLEG_DP
-W5023,05_left_leg_rs485.kicad_sch,AX_L_KNEE_PITCH,4,DATA-,RS-LLEG_DN
-W5024,05_left_leg_rs485.kicad_sch,AX_L_ANKLE_PITCH,2,VDD,RS-LLEG_VDD
-W5025,05_left_leg_rs485.kicad_sch,AX_L_ANKLE_PITCH,1,GND,RS-LLEG_RET
-W5026,05_left_leg_rs485.kicad_sch,AX_L_ANKLE_PITCH,3,DATA+,RS-LLEG_DP
-W5027,05_left_leg_rs485.kicad_sch,AX_L_ANKLE_PITCH,4,DATA-,RS-LLEG_DN
-W5028,05_left_leg_rs485.kicad_sch,AX_L_ANKLE_ROLL,2,VDD,RS-LLEG_VDD
-W5029,05_left_leg_rs485.kicad_sch,AX_L_ANKLE_ROLL,1,GND,RS-LLEG_RET
-W5030,05_left_leg_rs485.kicad_sch,AX_L_ANKLE_ROLL,3,DATA+,RS-LLEG_DP
-W5031,05_left_leg_rs485.kicad_sch,AX_L_ANKLE_ROLL,4,DATA-,RS-LLEG_DN
-W6001,06_right_leg_rs485.kicad_sch,PORT_RS_RLEG,LOG-RET,DATA REFERENCE,RS-RLEG_RET
-W6002,06_right_leg_rs485.kicad_sch,PORT_RS_RLEG,LOG-DP,DATA+,RS-RLEG_DP
-W6003,06_right_leg_rs485.kicad_sch,PORT_RS_RLEG,LOG-DN,DATA-,RS-RLEG_DN
-W6004,06_right_leg_rs485.kicad_sch,PBR_RS_RLEG,LOG-IN,INTERRUPTED SOURCE,ACT_14V8_SAFE
-W6005,06_right_leg_rs485.kicad_sch,PBR_RS_RLEG,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
-W6006,06_right_leg_rs485.kicad_sch,PBR_RS_RLEG,LOG-OUT,PROTECTED VDD,RS-RLEG_VDD
-W6007,06_right_leg_rs485.kicad_sch,PBR_RS_RLEG,LOG-RET-OUT,BRANCH RETURN,RS-RLEG_RET
-W6008,06_right_leg_rs485.kicad_sch,AX_R_HIP_YAW,2,VDD,RS-RLEG_VDD
-W6009,06_right_leg_rs485.kicad_sch,AX_R_HIP_YAW,1,GND,RS-RLEG_RET
-W6010,06_right_leg_rs485.kicad_sch,AX_R_HIP_YAW,3,DATA+,RS-RLEG_DP
-W6011,06_right_leg_rs485.kicad_sch,AX_R_HIP_YAW,4,DATA-,RS-RLEG_DN
-W6012,06_right_leg_rs485.kicad_sch,AX_R_HIP_ROLL,2,VDD,RS-RLEG_VDD
-W6013,06_right_leg_rs485.kicad_sch,AX_R_HIP_ROLL,1,GND,RS-RLEG_RET
-W6014,06_right_leg_rs485.kicad_sch,AX_R_HIP_ROLL,3,DATA+,RS-RLEG_DP
-W6015,06_right_leg_rs485.kicad_sch,AX_R_HIP_ROLL,4,DATA-,RS-RLEG_DN
-W6016,06_right_leg_rs485.kicad_sch,AX_R_HIP_PITCH,2,VDD,RS-RLEG_VDD
-W6017,06_right_leg_rs485.kicad_sch,AX_R_HIP_PITCH,1,GND,RS-RLEG_RET
-W6018,06_right_leg_rs485.kicad_sch,AX_R_HIP_PITCH,3,DATA+,RS-RLEG_DP
-W6019,06_right_leg_rs485.kicad_sch,AX_R_HIP_PITCH,4,DATA-,RS-RLEG_DN
-W6020,06_right_leg_rs485.kicad_sch,AX_R_KNEE_PITCH,2,VDD,RS-RLEG_VDD
-W6021,06_right_leg_rs485.kicad_sch,AX_R_KNEE_PITCH,1,GND,RS-RLEG_RET
-W6022,06_right_leg_rs485.kicad_sch,AX_R_KNEE_PITCH,3,DATA+,RS-RLEG_DP
-W6023,06_right_leg_rs485.kicad_sch,AX_R_KNEE_PITCH,4,DATA-,RS-RLEG_DN
-W6024,06_right_leg_rs485.kicad_sch,AX_R_ANKLE_PITCH,2,VDD,RS-RLEG_VDD
-W6025,06_right_leg_rs485.kicad_sch,AX_R_ANKLE_PITCH,1,GND,RS-RLEG_RET
-W6026,06_right_leg_rs485.kicad_sch,AX_R_ANKLE_PITCH,3,DATA+,RS-RLEG_DP
-W6027,06_right_leg_rs485.kicad_sch,AX_R_ANKLE_PITCH,4,DATA-,RS-RLEG_DN
-W6028,06_right_leg_rs485.kicad_sch,AX_R_ANKLE_ROLL,2,VDD,RS-RLEG_VDD
-W6029,06_right_leg_rs485.kicad_sch,AX_R_ANKLE_ROLL,1,GND,RS-RLEG_RET
-W6030,06_right_leg_rs485.kicad_sch,AX_R_ANKLE_ROLL,3,DATA+,RS-RLEG_DP
-W6031,06_right_leg_rs485.kicad_sch,AX_R_ANKLE_ROLL,4,DATA-,RS-RLEG_DN
-W7001,07_left_arm_rs485.kicad_sch,PORT_RS_LARM,LOG-RET,DATA REFERENCE,RS-LARM_RET
-W7002,07_left_arm_rs485.kicad_sch,PORT_RS_LARM,LOG-DP,DATA+,RS-LARM_DP
-W7003,07_left_arm_rs485.kicad_sch,PORT_RS_LARM,LOG-DN,DATA-,RS-LARM_DN
-W7004,07_left_arm_rs485.kicad_sch,PBR_RS_LARM,LOG-IN,INTERRUPTED SOURCE,ACT_14V8_SAFE
-W7005,07_left_arm_rs485.kicad_sch,PBR_RS_LARM,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
-W7006,07_left_arm_rs485.kicad_sch,PBR_RS_LARM,LOG-OUT,PROTECTED VDD,RS-LARM_VDD
-W7007,07_left_arm_rs485.kicad_sch,PBR_RS_LARM,LOG-RET-OUT,BRANCH RETURN,RS-LARM_RET
-W7008,07_left_arm_rs485.kicad_sch,AX_L_SHOULDER_PITCH,2,VDD,RS-LARM_VDD
-W7009,07_left_arm_rs485.kicad_sch,AX_L_SHOULDER_PITCH,1,GND,RS-LARM_RET
-W7010,07_left_arm_rs485.kicad_sch,AX_L_SHOULDER_PITCH,3,DATA+,RS-LARM_DP
-W7011,07_left_arm_rs485.kicad_sch,AX_L_SHOULDER_PITCH,4,DATA-,RS-LARM_DN
-W7012,07_left_arm_rs485.kicad_sch,AX_L_SHOULDER_ROLL,2,VDD,RS-LARM_VDD
-W7013,07_left_arm_rs485.kicad_sch,AX_L_SHOULDER_ROLL,1,GND,RS-LARM_RET
-W7014,07_left_arm_rs485.kicad_sch,AX_L_SHOULDER_ROLL,3,DATA+,RS-LARM_DP
-W7015,07_left_arm_rs485.kicad_sch,AX_L_SHOULDER_ROLL,4,DATA-,RS-LARM_DN
-W7016,07_left_arm_rs485.kicad_sch,AX_L_ELBOW_PITCH,2,VDD,RS-LARM_VDD
-W7017,07_left_arm_rs485.kicad_sch,AX_L_ELBOW_PITCH,1,GND,RS-LARM_RET
-W7018,07_left_arm_rs485.kicad_sch,AX_L_ELBOW_PITCH,3,DATA+,RS-LARM_DP
-W7019,07_left_arm_rs485.kicad_sch,AX_L_ELBOW_PITCH,4,DATA-,RS-LARM_DN
-W8001,08_right_arm_rs485.kicad_sch,PORT_RS_RARM,LOG-RET,DATA REFERENCE,RS-RARM_RET
-W8002,08_right_arm_rs485.kicad_sch,PORT_RS_RARM,LOG-DP,DATA+,RS-RARM_DP
-W8003,08_right_arm_rs485.kicad_sch,PORT_RS_RARM,LOG-DN,DATA-,RS-RARM_DN
-W8004,08_right_arm_rs485.kicad_sch,PBR_RS_RARM,LOG-IN,INTERRUPTED SOURCE,ACT_14V8_SAFE
-W8005,08_right_arm_rs485.kicad_sch,PBR_RS_RARM,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
-W8006,08_right_arm_rs485.kicad_sch,PBR_RS_RARM,LOG-OUT,PROTECTED VDD,RS-RARM_VDD
-W8007,08_right_arm_rs485.kicad_sch,PBR_RS_RARM,LOG-RET-OUT,BRANCH RETURN,RS-RARM_RET
-W8008,08_right_arm_rs485.kicad_sch,AX_R_SHOULDER_PITCH,2,VDD,RS-RARM_VDD
-W8009,08_right_arm_rs485.kicad_sch,AX_R_SHOULDER_PITCH,1,GND,RS-RARM_RET
-W8010,08_right_arm_rs485.kicad_sch,AX_R_SHOULDER_PITCH,3,DATA+,RS-RARM_DP
-W8011,08_right_arm_rs485.kicad_sch,AX_R_SHOULDER_PITCH,4,DATA-,RS-RARM_DN
-W8012,08_right_arm_rs485.kicad_sch,AX_R_SHOULDER_ROLL,2,VDD,RS-RARM_VDD
-W8013,08_right_arm_rs485.kicad_sch,AX_R_SHOULDER_ROLL,1,GND,RS-RARM_RET
-W8014,08_right_arm_rs485.kicad_sch,AX_R_SHOULDER_ROLL,3,DATA+,RS-RARM_DP
-W8015,08_right_arm_rs485.kicad_sch,AX_R_SHOULDER_ROLL,4,DATA-,RS-RARM_DN
-W8016,08_right_arm_rs485.kicad_sch,AX_R_ELBOW_PITCH,2,VDD,RS-RARM_VDD
-W8017,08_right_arm_rs485.kicad_sch,AX_R_ELBOW_PITCH,1,GND,RS-RARM_RET
-W8018,08_right_arm_rs485.kicad_sch,AX_R_ELBOW_PITCH,3,DATA+,RS-RARM_DP
-W8019,08_right_arm_rs485.kicad_sch,AX_R_ELBOW_PITCH,4,DATA-,RS-RARM_DN
-W9001,09_waist_rs485.kicad_sch,PORT_RS_WAIST,LOG-RET,DATA REFERENCE,RS-WAIST_RET
-W9002,09_waist_rs485.kicad_sch,PORT_RS_WAIST,LOG-DP,DATA+,RS-WAIST_DP
-W9003,09_waist_rs485.kicad_sch,PORT_RS_WAIST,LOG-DN,DATA-,RS-WAIST_DN
-W9004,09_waist_rs485.kicad_sch,PBR_RS_WAIST,LOG-IN,INTERRUPTED SOURCE,ACT_14V8_SAFE
-W9005,09_waist_rs485.kicad_sch,PBR_RS_WAIST,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
-W9006,09_waist_rs485.kicad_sch,PBR_RS_WAIST,LOG-OUT,PROTECTED VDD,RS-WAIST_VDD
-W9007,09_waist_rs485.kicad_sch,PBR_RS_WAIST,LOG-RET-OUT,BRANCH RETURN,RS-WAIST_RET
-W9008,09_waist_rs485.kicad_sch,AX_WAIST_YAW,2,VDD,RS-WAIST_VDD
-W9009,09_waist_rs485.kicad_sch,AX_WAIST_YAW,1,GND,RS-WAIST_RET
-W9010,09_waist_rs485.kicad_sch,AX_WAIST_YAW,3,DATA+,RS-WAIST_DP
-W9011,09_waist_rs485.kicad_sch,AX_WAIST_YAW,4,DATA-,RS-WAIST_DN
-W10001,10_left_distal_ttl.kicad_sch,PORT_TTL_LDIST,LOG-RET,DATA REFERENCE,TTL-LDIST_RET
-W10002,10_left_distal_ttl.kicad_sch,PORT_TTL_LDIST,LOG-DATA,HALF-DUPLEX DATA,TTL-LDIST_DATA
-W10003,10_left_distal_ttl.kicad_sch,PBR_TTL_LDIST,LOG-IN,INTERRUPTED SOURCE,ACT_12V_SAFE
-W10004,10_left_distal_ttl.kicad_sch,PBR_TTL_LDIST,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
-W10005,10_left_distal_ttl.kicad_sch,PBR_TTL_LDIST,LOG-OUT,PROTECTED VDD,TTL-LDIST_VDD
-W10006,10_left_distal_ttl.kicad_sch,PBR_TTL_LDIST,LOG-RET-OUT,BRANCH RETURN,TTL-LDIST_RET
-W10007,10_left_distal_ttl.kicad_sch,AX_L_WRIST_ROTATION,2,VDD,TTL-LDIST_VDD
-W10008,10_left_distal_ttl.kicad_sch,AX_L_WRIST_ROTATION,1,GND,TTL-LDIST_RET
-W10009,10_left_distal_ttl.kicad_sch,AX_L_WRIST_ROTATION,3,DATA,TTL-LDIST_DATA
-W10010,10_left_distal_ttl.kicad_sch,AX_L_GRIPPER,2,VDD,TTL-LDIST_VDD
-W10011,10_left_distal_ttl.kicad_sch,AX_L_GRIPPER,1,GND,TTL-LDIST_RET
-W10012,10_left_distal_ttl.kicad_sch,AX_L_GRIPPER,3,DATA,TTL-LDIST_DATA
-W11001,11_right_distal_ttl.kicad_sch,PORT_TTL_RDIST,LOG-RET,DATA REFERENCE,TTL-RDIST_RET
-W11002,11_right_distal_ttl.kicad_sch,PORT_TTL_RDIST,LOG-DATA,HALF-DUPLEX DATA,TTL-RDIST_DATA
-W11003,11_right_distal_ttl.kicad_sch,PBR_TTL_RDIST,LOG-IN,INTERRUPTED SOURCE,ACT_12V_SAFE
-W11004,11_right_distal_ttl.kicad_sch,PBR_TTL_RDIST,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
-W11005,11_right_distal_ttl.kicad_sch,PBR_TTL_RDIST,LOG-OUT,PROTECTED VDD,TTL-RDIST_VDD
-W11006,11_right_distal_ttl.kicad_sch,PBR_TTL_RDIST,LOG-RET-OUT,BRANCH RETURN,TTL-RDIST_RET
-W11007,11_right_distal_ttl.kicad_sch,AX_R_WRIST_ROTATION,2,VDD,TTL-RDIST_VDD
-W11008,11_right_distal_ttl.kicad_sch,AX_R_WRIST_ROTATION,1,GND,TTL-RDIST_RET
-W11009,11_right_distal_ttl.kicad_sch,AX_R_WRIST_ROTATION,3,DATA,TTL-RDIST_DATA
-W11010,11_right_distal_ttl.kicad_sch,AX_R_GRIPPER,2,VDD,TTL-RDIST_VDD
-W11011,11_right_distal_ttl.kicad_sch,AX_R_GRIPPER,1,GND,TTL-RDIST_RET
-W11012,11_right_distal_ttl.kicad_sch,AX_R_GRIPPER,3,DATA,TTL-RDIST_DATA
-W12001,12_head_ttl_sensors_hmi.kicad_sch,PORT_TTL_HEAD,LOG-RET,DATA REFERENCE,TTL-HEAD_RET
-W12002,12_head_ttl_sensors_hmi.kicad_sch,PORT_TTL_HEAD,LOG-DATA,HALF-DUPLEX DATA,TTL-HEAD_DATA
-W12003,12_head_ttl_sensors_hmi.kicad_sch,PBR_TTL_HEAD,LOG-IN,INTERRUPTED SOURCE,ACT_12V_SAFE
-W12004,12_head_ttl_sensors_hmi.kicad_sch,PBR_TTL_HEAD,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
-W12005,12_head_ttl_sensors_hmi.kicad_sch,PBR_TTL_HEAD,LOG-OUT,PROTECTED VDD,TTL-HEAD_VDD
-W12006,12_head_ttl_sensors_hmi.kicad_sch,PBR_TTL_HEAD,LOG-RET-OUT,BRANCH RETURN,TTL-HEAD_RET
-W12007,12_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_PAN,2,VDD,TTL-HEAD_VDD
-W12008,12_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_PAN,1,GND,TTL-HEAD_RET
-W12009,12_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_PAN,3,DATA,TTL-HEAD_DATA
-W12010,12_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_TILT,2,VDD,TTL-HEAD_VDD
-W12011,12_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_TILT,1,GND,TTL-HEAD_RET
-W12012,12_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_TILT,3,DATA,TTL-HEAD_DATA
-W12013,12_head_ttl_sensors_hmi.kicad_sch,HPWR1,LOG-IN,AUXILIARY 5 V INPUT,AUX_5V_SAFE
-W12014,12_head_ttl_sensors_hmi.kicad_sch,HPWR1,LOG-RET-IN,AUXILIARY RETURN,AUX_0V
-W12015,12_head_ttl_sensors_hmi.kicad_sch,HPWR1,LOG-OUT,HEAD 5 V,HEAD_5V
-W12016,12_head_ttl_sensors_hmi.kicad_sch,HPWR1,LOG-RET-OUT,HEAD RETURN,HEAD_0V
-W12017,12_head_ttl_sensors_hmi.kicad_sch,CAM1,LOG-5V,5 V POWER,HEAD_5V
-W12018,12_head_ttl_sensors_hmi.kicad_sch,CAM1,LOG-RET,RETURN,HEAD_0V
-W12019,12_head_ttl_sensors_hmi.kicad_sch,CAM1,LOG-IPC,VISION IPC,HEAD_CAM_L_IPC
-W12020,12_head_ttl_sensors_hmi.kicad_sch,CAM2,LOG-5V,5 V POWER,HEAD_5V
-W12021,12_head_ttl_sensors_hmi.kicad_sch,CAM2,LOG-RET,RETURN,HEAD_0V
-W12022,12_head_ttl_sensors_hmi.kicad_sch,CAM2,LOG-IPC,VISION IPC,HEAD_CAM_R_IPC
-W12023,12_head_ttl_sensors_hmi.kicad_sch,DISP1,LOG-5V,5 V POWER,HEAD_5V
-W12024,12_head_ttl_sensors_hmi.kicad_sch,DISP1,LOG-RET,RETURN,HEAD_0V
-W12025,12_head_ttl_sensors_hmi.kicad_sch,DISP1,LOG-IPC,DISPLAY IPC,HEAD_DISPLAY_IPC
-W12026,12_head_ttl_sensors_hmi.kicad_sch,DISP1,LOG-TOUCH,TOUCH IPC,HEAD_TOUCH_IPC
-W12027,12_head_ttl_sensors_hmi.kicad_sch,MIC1,LOG-5V,5 V POWER,HEAD_5V
-W12028,12_head_ttl_sensors_hmi.kicad_sch,MIC1,LOG-RET,RETURN,HEAD_0V
-W12029,12_head_ttl_sensors_hmi.kicad_sch,MIC1,LOG-IPC,AUDIO INPUT IPC,HEAD_MIC_IPC
-W12030,12_head_ttl_sensors_hmi.kicad_sch,AMP1,LOG-5V,5 V POWER,HEAD_5V
-W12031,12_head_ttl_sensors_hmi.kicad_sch,AMP1,LOG-RET,RETURN,HEAD_0V
-W12032,12_head_ttl_sensors_hmi.kicad_sch,AMP1,LOG-IN,AUDIO INPUT IPC,HEAD_AUDIO_IPC
-W12033,12_head_ttl_sensors_hmi.kicad_sch,AMP1,LOG-LP,LEFT SPEAKER +,SPK_L_POS
-W12034,12_head_ttl_sensors_hmi.kicad_sch,AMP1,LOG-LN,LEFT SPEAKER -,SPK_L_NEG
-W12035,12_head_ttl_sensors_hmi.kicad_sch,AMP1,LOG-RP,RIGHT SPEAKER +,SPK_R_POS
-W12036,12_head_ttl_sensors_hmi.kicad_sch,AMP1,LOG-RN,RIGHT SPEAKER -,SPK_R_NEG
-W12037,12_head_ttl_sensors_hmi.kicad_sch,SPK1,LOG-P,SPEAKER +,SPK_L_POS
-W12038,12_head_ttl_sensors_hmi.kicad_sch,SPK1,LOG-N,SPEAKER -,SPK_L_NEG
-W12039,12_head_ttl_sensors_hmi.kicad_sch,SPK2,LOG-P,SPEAKER +,SPK_R_POS
-W12040,12_head_ttl_sensors_hmi.kicad_sch,SPK2,LOG-N,SPEAKER -,SPK_R_NEG
-W12041,12_head_ttl_sensors_hmi.kicad_sch,FAN1,LOG-5V,5 V POWER,HEAD_5V
-W12042,12_head_ttl_sensors_hmi.kicad_sch,FAN1,LOG-RET,RETURN,HEAD_0V
-W12043,12_head_ttl_sensors_hmi.kicad_sch,FAN1,LOG-PWM,PWM,HEAD_FAN_PWM
-W12044,12_head_ttl_sensors_hmi.kicad_sch,FAN1,LOG-TACH,TACHOMETER,HEAD_FAN_TACH
-W13001,13_pelvis_aux_imu.kicad_sch,AUXD1,LOG-IN,INTERRUPTED INPUT,ACT_14V8_SAFE
-W13002,13_pelvis_aux_imu.kicad_sch,AUXD1,LOG-RET-IN,CONTROLLED RETURN,ACT_0V_CONTROLLED
-W13003,13_pelvis_aux_imu.kicad_sch,AUXD1,LOG-OUT,AUXILIARY 5 V,AUX_5V_SAFE
-W13004,13_pelvis_aux_imu.kicad_sch,AUXD1,LOG-RET-OUT,AUXILIARY RETURN,AUX_0V
-W13005,13_pelvis_aux_imu.kicad_sch,IMU1,LOG-5V,5 V POWER,AUX_5V_SAFE
-W13006,13_pelvis_aux_imu.kicad_sch,IMU1,LOG-RET,RETURN,AUX_0V
-W13007,13_pelvis_aux_imu.kicad_sch,IMU1,LOG-DATA,DETERMINISTIC SENSOR DATA,PELVIS_IMU_DATA
-W13008,13_pelvis_aux_imu.kicad_sch,IMU1,LOG-INT,DATA READY / FAULT,PELVIS_IMU_INT
-W13009,13_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-IMU,PELVIS IMU DATA,PELVIS_IMU_DATA
-W13010,13_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-IMU-INT,PELVIS IMU INTERRUPT,PELVIS_IMU_INT
-W13011,13_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-LFOOT,LEFT FOOT SENSOR DATA,L_FOOT_SENSOR_DATA
-W13012,13_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-RFOOT,RIGHT FOOT SENSOR DATA,R_FOOT_SENSOR_DATA
-W14001,14_left_foot_load_sensing.kicad_sch,LOAD_L_FL,LOG-EXC-P,EXCITATION +,L_FOOT_EXC_P
-W14002,14_left_foot_load_sensing.kicad_sch,LOAD_L_FL,LOG-EXC-N,EXCITATION -,L_FOOT_EXC_N
-W14003,14_left_foot_load_sensing.kicad_sch,LOAD_L_FL,LOG-SIG-P,SIGNAL +,L_FOOT_FL_SIG_P
-W14004,14_left_foot_load_sensing.kicad_sch,LOAD_L_FL,LOG-SIG-N,SIGNAL -,L_FOOT_FL_SIG_N
-W14005,14_left_foot_load_sensing.kicad_sch,LOAD_L_FR,LOG-EXC-P,EXCITATION +,L_FOOT_EXC_P
-W14006,14_left_foot_load_sensing.kicad_sch,LOAD_L_FR,LOG-EXC-N,EXCITATION -,L_FOOT_EXC_N
-W14007,14_left_foot_load_sensing.kicad_sch,LOAD_L_FR,LOG-SIG-P,SIGNAL +,L_FOOT_FR_SIG_P
-W14008,14_left_foot_load_sensing.kicad_sch,LOAD_L_FR,LOG-SIG-N,SIGNAL -,L_FOOT_FR_SIG_N
-W14009,14_left_foot_load_sensing.kicad_sch,LOAD_L_RL,LOG-EXC-P,EXCITATION +,L_FOOT_EXC_P
-W14010,14_left_foot_load_sensing.kicad_sch,LOAD_L_RL,LOG-EXC-N,EXCITATION -,L_FOOT_EXC_N
-W14011,14_left_foot_load_sensing.kicad_sch,LOAD_L_RL,LOG-SIG-P,SIGNAL +,L_FOOT_RL_SIG_P
-W14012,14_left_foot_load_sensing.kicad_sch,LOAD_L_RL,LOG-SIG-N,SIGNAL -,L_FOOT_RL_SIG_N
-W14013,14_left_foot_load_sensing.kicad_sch,LOAD_L_RR,LOG-EXC-P,EXCITATION +,L_FOOT_EXC_P
-W14014,14_left_foot_load_sensing.kicad_sch,LOAD_L_RR,LOG-EXC-N,EXCITATION -,L_FOOT_EXC_N
-W14015,14_left_foot_load_sensing.kicad_sch,LOAD_L_RR,LOG-SIG-P,SIGNAL +,L_FOOT_RR_SIG_P
-W14016,14_left_foot_load_sensing.kicad_sch,LOAD_L_RR,LOG-SIG-N,SIGNAL -,L_FOOT_RR_SIG_N
-W14017,14_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-5V,5 V POWER,AUX_5V_SAFE
-W14018,14_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-RET,RETURN,AUX_0V
-W14019,14_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-FL-P,FL SIGNAL +,L_FOOT_FL_SIG_P
-W14020,14_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-FL-N,FL SIGNAL -,L_FOOT_FL_SIG_N
-W14021,14_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-FR-P,FR SIGNAL +,L_FOOT_FR_SIG_P
-W14022,14_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-FR-N,FR SIGNAL -,L_FOOT_FR_SIG_N
-W14023,14_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-RL-P,RL SIGNAL +,L_FOOT_RL_SIG_P
-W14024,14_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-RL-N,RL SIGNAL -,L_FOOT_RL_SIG_N
-W14025,14_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-RR-P,RR SIGNAL +,L_FOOT_RR_SIG_P
-W14026,14_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-RR-N,RR SIGNAL -,L_FOOT_RR_SIG_N
-W14027,14_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-EXC-P,EXCITATION +,L_FOOT_EXC_P
-W14028,14_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-EXC-N,EXCITATION -,L_FOOT_EXC_N
-W14029,14_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-DATA,UPSTREAM SENSOR DATA,L_FOOT_SENSOR_DATA
-W15001,15_right_foot_load_sensing.kicad_sch,LOAD_R_FL,LOG-EXC-P,EXCITATION +,R_FOOT_EXC_P
-W15002,15_right_foot_load_sensing.kicad_sch,LOAD_R_FL,LOG-EXC-N,EXCITATION -,R_FOOT_EXC_N
-W15003,15_right_foot_load_sensing.kicad_sch,LOAD_R_FL,LOG-SIG-P,SIGNAL +,R_FOOT_FL_SIG_P
-W15004,15_right_foot_load_sensing.kicad_sch,LOAD_R_FL,LOG-SIG-N,SIGNAL -,R_FOOT_FL_SIG_N
-W15005,15_right_foot_load_sensing.kicad_sch,LOAD_R_FR,LOG-EXC-P,EXCITATION +,R_FOOT_EXC_P
-W15006,15_right_foot_load_sensing.kicad_sch,LOAD_R_FR,LOG-EXC-N,EXCITATION -,R_FOOT_EXC_N
-W15007,15_right_foot_load_sensing.kicad_sch,LOAD_R_FR,LOG-SIG-P,SIGNAL +,R_FOOT_FR_SIG_P
-W15008,15_right_foot_load_sensing.kicad_sch,LOAD_R_FR,LOG-SIG-N,SIGNAL -,R_FOOT_FR_SIG_N
-W15009,15_right_foot_load_sensing.kicad_sch,LOAD_R_RL,LOG-EXC-P,EXCITATION +,R_FOOT_EXC_P
-W15010,15_right_foot_load_sensing.kicad_sch,LOAD_R_RL,LOG-EXC-N,EXCITATION -,R_FOOT_EXC_N
-W15011,15_right_foot_load_sensing.kicad_sch,LOAD_R_RL,LOG-SIG-P,SIGNAL +,R_FOOT_RL_SIG_P
-W15012,15_right_foot_load_sensing.kicad_sch,LOAD_R_RL,LOG-SIG-N,SIGNAL -,R_FOOT_RL_SIG_N
-W15013,15_right_foot_load_sensing.kicad_sch,LOAD_R_RR,LOG-EXC-P,EXCITATION +,R_FOOT_EXC_P
-W15014,15_right_foot_load_sensing.kicad_sch,LOAD_R_RR,LOG-EXC-N,EXCITATION -,R_FOOT_EXC_N
-W15015,15_right_foot_load_sensing.kicad_sch,LOAD_R_RR,LOG-SIG-P,SIGNAL +,R_FOOT_RR_SIG_P
-W15016,15_right_foot_load_sensing.kicad_sch,LOAD_R_RR,LOG-SIG-N,SIGNAL -,R_FOOT_RR_SIG_N
-W15017,15_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-5V,5 V POWER,AUX_5V_SAFE
-W15018,15_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-RET,RETURN,AUX_0V
-W15019,15_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-FL-P,FL SIGNAL +,R_FOOT_FL_SIG_P
-W15020,15_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-FL-N,FL SIGNAL -,R_FOOT_FL_SIG_N
-W15021,15_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-FR-P,FR SIGNAL +,R_FOOT_FR_SIG_P
-W15022,15_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-FR-N,FR SIGNAL -,R_FOOT_FR_SIG_N
-W15023,15_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-RL-P,RL SIGNAL +,R_FOOT_RL_SIG_P
-W15024,15_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-RL-N,RL SIGNAL -,R_FOOT_RL_SIG_N
-W15025,15_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-RR-P,RR SIGNAL +,R_FOOT_RR_SIG_P
-W15026,15_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-RR-N,RR SIGNAL -,R_FOOT_RR_SIG_N
-W15027,15_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-EXC-P,EXCITATION +,R_FOOT_EXC_P
-W15028,15_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-EXC-N,EXCITATION -,R_FOOT_EXC_N
-W15029,15_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-DATA,UPSTREAM SENSOR DATA,R_FOOT_SENSOR_DATA
+W3016,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LLEG,101,PA9 AF7 TX,UART_RS-LLEG_TX
+W3017,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LLEG,102,PA10 AF7 RX,UART_RS-LLEG_RX
+W3018,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LLEG,104,PA12 AF7 RTS/DE,UART_RS-LLEG_DIR
+W3019,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RLEG,119,PD5 AF7 TX,UART_RS-RLEG_TX
+W3020,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RLEG,122,PD6 AF7 RX,UART_RS-RLEG_RX
+W3021,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RLEG,118,PD4 AF7 RTS/DE,UART_RS-RLEG_DIR
+W3022,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LARM,77,PD8 AF7 TX,UART_RS-LARM_TX
+W3023,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LARM,78,PD9 AF7 RX,UART_RS-LARM_RX
+W3024,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_LARM,81,PD12 AF7 RTS/DE,UART_RS-LARM_DIR
+W3025,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RARM,96,PC6 AF7 TX,UART_RS-RARM_TX
+W3026,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RARM,97,PC7 AF7 RX,UART_RS-RARM_RX
+W3027,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_RARM,93,PG8 AF7 RTS/DE,UART_RS-RARM_DIR
+W3028,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_WAIST,111,PC10 AF8 TX,UART_RS-WAIST_TX
+W3029,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_WAIST,112,PC11 AF8 RX,UART_RS-WAIST_RX
+W3030,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_WAIST,110,PA15 AF8 RTS/DE,UART_RS-WAIST_DIR
+W3031,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_LDIST,113,PC12 AF8 HALF-DUPLEX IO,UART_TTL-LDIST_TX
+W3032,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_LDIST,98,PC8 AF8 RTS/DE,UART_TTL-LDIST_DIR
+W3033,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_RDIST,62,PE8 AF7 HALF-DUPLEX IO,UART_TTL-RDIST_TX
+W3034,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_RDIST,63,PE9 AF7 RTS/DE,UART_TTL-RDIST_DIR
+W3035,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_HEAD,142,PE1 AF8 HALF-DUPLEX IO,UART_TTL-HEAD_TX
+W3036,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_HEAD,86,PD15 AF8 RTS/DE,UART_TTL-HEAD_DIR
+W4001,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-5V-IN,AUXILIARY 5 V INPUT,AUX_5V_SAFE
+W4002,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-RET-IN,AUXILIARY RETURN,AUX_0V
+W4003,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-5V,CONTROL 5 V,CTRL_5V
+W4004,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-3V3,CONTROL 3.3 V,CTRL_3V3
+W4005,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-GND,CONTROL GROUND,CTRL_GND
+W4006,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,1,CONTROL 5 V,CTRL_5V
+W4007,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,2,CONTROL 3.3 V,CTRL_3V3
+W4008,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,3,CONTROL GROUND,CTRL_GND
+W4009,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,4,RS-LLEG TX,UART_RS-LLEG_TX
+W4010,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,5,RS-LLEG RX,UART_RS-LLEG_RX
+W4011,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,6,RS-LLEG DE,UART_RS-LLEG_DIR
+W4012,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,7,RS-RLEG TX,UART_RS-RLEG_TX
+W4013,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,8,RS-RLEG RX,UART_RS-RLEG_RX
+W4014,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,9,RS-RLEG DE,UART_RS-RLEG_DIR
+W4015,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,10,RS-LARM TX,UART_RS-LARM_TX
+W4016,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,11,RS-LARM RX,UART_RS-LARM_RX
+W4017,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,12,RS-LARM DE,UART_RS-LARM_DIR
+W4018,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,13,RS-RARM TX,UART_RS-RARM_TX
+W4019,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,14,RS-RARM RX,UART_RS-RARM_RX
+W4020,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,15,RS-RARM DE,UART_RS-RARM_DIR
+W4021,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,1,CONTROL 5 V,CTRL_5V
+W4022,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,2,CONTROL 3.3 V,CTRL_3V3
+W4023,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,3,CONTROL GROUND,CTRL_GND
+W4024,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,4,RS-WAIST TX,UART_RS-WAIST_TX
+W4025,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,5,RS-WAIST RX,UART_RS-WAIST_RX
+W4026,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,6,RS-WAIST DE,UART_RS-WAIST_DIR
+W4027,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,7,TTL-LDIST HALF-DUPLEX IO,UART_TTL-LDIST_TX
+W4028,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,8,TTL-LDIST DIR,UART_TTL-LDIST_DIR
+W4029,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,9,TTL-RDIST HALF-DUPLEX IO,UART_TTL-RDIST_TX
+W4030,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,10,TTL-RDIST DIR,UART_TTL-RDIST_DIR
+W4031,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,11,TTL-HEAD HALF-DUPLEX IO,UART_TTL-HEAD_TX
+W4032,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,12,TTL-HEAD DIR,UART_TTL-HEAD_DIR
+W4033,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,13,RESERVED - NO CONNECTION,INTENTIONALLY_UNUSED_CARRIER_B_13
+W4034,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,14,RESERVED - NO CONNECTION,INTENTIONALLY_UNUSED_CARRIER_B_14
+W4035,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,15,RESERVED - NO CONNECTION,INTENTIONALLY_UNUSED_CARRIER_B_15
+W5001,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,1,CONTROL 5 V,CTRL_5V
+W5002,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,2,CONTROL 3.3 V,CTRL_3V3
+W5003,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,3,CONTROL GROUND,CTRL_GND
+W5004,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,4,RS-LLEG TX,UART_RS-LLEG_TX
+W5005,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,5,RS-LLEG RX,UART_RS-LLEG_RX
+W5006,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,6,RS-LLEG DE,UART_RS-LLEG_DIR
+W5007,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,7,RS-RLEG TX,UART_RS-RLEG_TX
+W5008,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,8,RS-RLEG RX,UART_RS-RLEG_RX
+W5009,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,9,RS-RLEG DE,UART_RS-RLEG_DIR
+W5010,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,10,RS-LARM TX,UART_RS-LARM_TX
+W5011,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,11,RS-LARM RX,UART_RS-LARM_RX
+W5012,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,12,RS-LARM DE,UART_RS-LARM_DIR
+W5013,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,13,RS-RARM TX,UART_RS-RARM_TX
+W5014,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,14,RS-RARM RX,UART_RS-RARM_RX
+W5015,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,15,RS-RARM DE,UART_RS-RARM_DIR
+W5016,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,1,VIO,CTRL_3V3
+W5017,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,2,D,UART_RS-LLEG_TX
+W5018,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,3,DE,UART_RS-LLEG_DIR
+W5019,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,4,R,UART_RS-LLEG_RX
+W5020,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,5,RE ACTIVE LOW,UART_RS-LLEG_DIR
+W5021,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,6,GNDIO,CTRL_GND
+W5022,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,9,VDD CONVERTER,CTRL_5V
+W5023,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,10,GND1,CTRL_GND
+W5024,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,11,GND2,RS-LLEG_RET
+W5025,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,12,VISOOUT,ISO_PWR_RS-LLEG
+W5026,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,13,MODE = GND2,RS-LLEG_RET
+W5027,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,15,GISOIN,RS-LLEG_RET
+W5028,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,16,VISOIN,ISO_PWR_RS-LLEG
+W5029,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,17,Y DRIVER NONINVERTING,RS-LLEG_DP
+W5030,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,18,Z DRIVER INVERTING,RS-LLEG_DN
+W5031,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,19,B RECEIVER INVERTING,RS-LLEG_DN
+W5032,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LLEG,20,A RECEIVER NONINVERTING,RS-LLEG_DP
+W5033,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_LLEG,1,DATA REFERENCE / GND,RS-LLEG_RET
+W5034,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_LLEG,2,DATA+,RS-LLEG_DP
+W5035,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_LLEG,3,DATA-,RS-LLEG_DN
+W5036,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,1,VIO,CTRL_3V3
+W5037,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,2,D,UART_RS-RLEG_TX
+W5038,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,3,DE,UART_RS-RLEG_DIR
+W5039,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,4,R,UART_RS-RLEG_RX
+W5040,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,5,RE ACTIVE LOW,UART_RS-RLEG_DIR
+W5041,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,6,GNDIO,CTRL_GND
+W5042,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,9,VDD CONVERTER,CTRL_5V
+W5043,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,10,GND1,CTRL_GND
+W5044,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,11,GND2,RS-RLEG_RET
+W5045,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,12,VISOOUT,ISO_PWR_RS-RLEG
+W5046,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,13,MODE = GND2,RS-RLEG_RET
+W5047,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,15,GISOIN,RS-RLEG_RET
+W5048,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,16,VISOIN,ISO_PWR_RS-RLEG
+W5049,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,17,Y DRIVER NONINVERTING,RS-RLEG_DP
+W5050,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,18,Z DRIVER INVERTING,RS-RLEG_DN
+W5051,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,19,B RECEIVER INVERTING,RS-RLEG_DN
+W5052,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RLEG,20,A RECEIVER NONINVERTING,RS-RLEG_DP
+W5053,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_RLEG,1,DATA REFERENCE / GND,RS-RLEG_RET
+W5054,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_RLEG,2,DATA+,RS-RLEG_DP
+W5055,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_RLEG,3,DATA-,RS-RLEG_DN
+W5056,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,1,VIO,CTRL_3V3
+W5057,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,2,D,UART_RS-LARM_TX
+W5058,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,3,DE,UART_RS-LARM_DIR
+W5059,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,4,R,UART_RS-LARM_RX
+W5060,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,5,RE ACTIVE LOW,UART_RS-LARM_DIR
+W5061,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,6,GNDIO,CTRL_GND
+W5062,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,9,VDD CONVERTER,CTRL_5V
+W5063,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,10,GND1,CTRL_GND
+W5064,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,11,GND2,RS-LARM_RET
+W5065,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,12,VISOOUT,ISO_PWR_RS-LARM
+W5066,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,13,MODE = GND2,RS-LARM_RET
+W5067,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,15,GISOIN,RS-LARM_RET
+W5068,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,16,VISOIN,ISO_PWR_RS-LARM
+W5069,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,17,Y DRIVER NONINVERTING,RS-LARM_DP
+W5070,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,18,Z DRIVER INVERTING,RS-LARM_DN
+W5071,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,19,B RECEIVER INVERTING,RS-LARM_DN
+W5072,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_LARM,20,A RECEIVER NONINVERTING,RS-LARM_DP
+W5073,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_LARM,1,DATA REFERENCE / GND,RS-LARM_RET
+W5074,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_LARM,2,DATA+,RS-LARM_DP
+W5075,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_LARM,3,DATA-,RS-LARM_DN
+W5076,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,1,VIO,CTRL_3V3
+W5077,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,2,D,UART_RS-RARM_TX
+W5078,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,3,DE,UART_RS-RARM_DIR
+W5079,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,4,R,UART_RS-RARM_RX
+W5080,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,5,RE ACTIVE LOW,UART_RS-RARM_DIR
+W5081,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,6,GNDIO,CTRL_GND
+W5082,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,9,VDD CONVERTER,CTRL_5V
+W5083,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,10,GND1,CTRL_GND
+W5084,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,11,GND2,RS-RARM_RET
+W5085,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,12,VISOOUT,ISO_PWR_RS-RARM
+W5086,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,13,MODE = GND2,RS-RARM_RET
+W5087,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,15,GISOIN,RS-RARM_RET
+W5088,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,16,VISOIN,ISO_PWR_RS-RARM
+W5089,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,17,Y DRIVER NONINVERTING,RS-RARM_DP
+W5090,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,18,Z DRIVER INVERTING,RS-RARM_DN
+W5091,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,19,B RECEIVER INVERTING,RS-RARM_DN
+W5092,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,20,A RECEIVER NONINVERTING,RS-RARM_DP
+W5093,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_RARM,1,DATA REFERENCE / GND,RS-RARM_RET
+W5094,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_RARM,2,DATA+,RS-RARM_DP
+W5095,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_RARM,3,DATA-,RS-RARM_DN
+W6001,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,1,CONTROL 5 V,CTRL_5V
+W6002,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,2,CONTROL 3.3 V,CTRL_3V3
+W6003,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,3,CONTROL GROUND,CTRL_GND
+W6004,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,4,RS-WAIST TX,UART_RS-WAIST_TX
+W6005,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,5,RS-WAIST RX,UART_RS-WAIST_RX
+W6006,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,6,RS-WAIST DE,UART_RS-WAIST_DIR
+W6007,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,7,TTL-LDIST HALF-DUPLEX IO,UART_TTL-LDIST_TX
+W6008,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,8,TTL-LDIST DIR,UART_TTL-LDIST_DIR
+W6009,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,9,TTL-RDIST HALF-DUPLEX IO,UART_TTL-RDIST_TX
+W6010,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,10,TTL-RDIST DIR,UART_TTL-RDIST_DIR
+W6011,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,11,TTL-HEAD HALF-DUPLEX IO,UART_TTL-HEAD_TX
+W6012,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,12,TTL-HEAD DIR,UART_TTL-HEAD_DIR
+W6013,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,13,RESERVED - NO CONNECTION,INTENTIONALLY_UNUSED_CARRIER_B_13
+W6014,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,14,RESERVED - NO CONNECTION,INTENTIONALLY_UNUSED_CARRIER_B_14
+W6015,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,15,RESERVED - NO CONNECTION,INTENTIONALLY_UNUSED_CARRIER_B_15
+W6016,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,1,VIO,CTRL_3V3
+W6017,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,2,D,UART_RS-WAIST_TX
+W6018,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,3,DE,UART_RS-WAIST_DIR
+W6019,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,4,R,UART_RS-WAIST_RX
+W6020,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,5,RE ACTIVE LOW,UART_RS-WAIST_DIR
+W6021,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,6,GNDIO,CTRL_GND
+W6022,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,9,VDD CONVERTER,CTRL_5V
+W6023,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,10,GND1,CTRL_GND
+W6024,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,11,GND2,RS-WAIST_RET
+W6025,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,12,VISOOUT,ISO_PWR_RS-WAIST
+W6026,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,13,MODE = GND2,RS-WAIST_RET
+W6027,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,15,GISOIN,RS-WAIST_RET
+W6028,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,16,VISOIN,ISO_PWR_RS-WAIST
+W6029,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,17,Y DRIVER NONINVERTING,RS-WAIST_DP
+W6030,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,18,Z DRIVER INVERTING,RS-WAIST_DN
+W6031,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,19,B RECEIVER INVERTING,RS-WAIST_DN
+W6032,06_carrier_b_waist_and_ttl.kicad_sch,ISO_RS_WAIST,20,A RECEIVER NONINVERTING,RS-WAIST_DP
+W6033,06_carrier_b_waist_and_ttl.kicad_sch,J_RS_WAIST,1,DATA REFERENCE / GND,RS-WAIST_RET
+W6034,06_carrier_b_waist_and_ttl.kicad_sch,J_RS_WAIST,2,DATA+,RS-WAIST_DP
+W6035,06_carrier_b_waist_and_ttl.kicad_sch,J_RS_WAIST,3,DATA-,RS-WAIST_DN
+W6036,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_LDIST,1,VCCA 3.3 V,CTRL_3V3
+W6037,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_LDIST,2,GND,CTRL_GND
+W6038,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_LDIST,3,A MCU HALF-DUPLEX IO,UART_TTL-LDIST_TX
+W6039,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_LDIST,5,DIR HIGH = MCU TO BUS,UART_TTL-LDIST_DIR
+W6040,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_LDIST,6,VCCB 5 V,CTRL_5V
+W6041,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_LDIST,4,B 5 V BUS DATA,TTL-LDIST_DATA
+W6042,06_carrier_b_waist_and_ttl.kicad_sch,J_TTL_LDIST,1,DATA REFERENCE / GND,TTL-LDIST_RET
+W6043,06_carrier_b_waist_and_ttl.kicad_sch,J_TTL_LDIST,2,HALF-DUPLEX DATA,TTL-LDIST_DATA
+W6044,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_RDIST,1,VCCA 3.3 V,CTRL_3V3
+W6045,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_RDIST,2,GND,CTRL_GND
+W6046,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_RDIST,3,A MCU HALF-DUPLEX IO,UART_TTL-RDIST_TX
+W6047,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_RDIST,5,DIR HIGH = MCU TO BUS,UART_TTL-RDIST_DIR
+W6048,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_RDIST,6,VCCB 5 V,CTRL_5V
+W6049,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_RDIST,4,B 5 V BUS DATA,TTL-RDIST_DATA
+W6050,06_carrier_b_waist_and_ttl.kicad_sch,J_TTL_RDIST,1,DATA REFERENCE / GND,TTL-RDIST_RET
+W6051,06_carrier_b_waist_and_ttl.kicad_sch,J_TTL_RDIST,2,HALF-DUPLEX DATA,TTL-RDIST_DATA
+W6052,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_HEAD,1,VCCA 3.3 V,CTRL_3V3
+W6053,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_HEAD,2,GND,CTRL_GND
+W6054,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_HEAD,3,A MCU HALF-DUPLEX IO,UART_TTL-HEAD_TX
+W6055,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_HEAD,5,DIR HIGH = MCU TO BUS,UART_TTL-HEAD_DIR
+W6056,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_HEAD,6,VCCB 5 V,CTRL_5V
+W6057,06_carrier_b_waist_and_ttl.kicad_sch,LVL_TTL_HEAD,4,B 5 V BUS DATA,TTL-HEAD_DATA
+W6058,06_carrier_b_waist_and_ttl.kicad_sch,J_TTL_HEAD,1,DATA REFERENCE / GND,TTL-HEAD_RET
+W6059,06_carrier_b_waist_and_ttl.kicad_sch,J_TTL_HEAD,2,HALF-DUPLEX DATA,TTL-HEAD_DATA
+W7001,07_left_leg_rs485.kicad_sch,PORT_RS_LLEG,LOG-RET,DATA REFERENCE,RS-LLEG_RET
+W7002,07_left_leg_rs485.kicad_sch,PORT_RS_LLEG,LOG-DP,DATA+,RS-LLEG_DP
+W7003,07_left_leg_rs485.kicad_sch,PORT_RS_LLEG,LOG-DN,DATA-,RS-LLEG_DN
+W7004,07_left_leg_rs485.kicad_sch,PBR_RS_LLEG,LOG-IN,INTERRUPTED SOURCE,ACT_14V8_SAFE
+W7005,07_left_leg_rs485.kicad_sch,PBR_RS_LLEG,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
+W7006,07_left_leg_rs485.kicad_sch,PBR_RS_LLEG,LOG-OUT,PROTECTED VDD,RS-LLEG_VDD
+W7007,07_left_leg_rs485.kicad_sch,PBR_RS_LLEG,LOG-RET-OUT,BRANCH RETURN,RS-LLEG_RET
+W7008,07_left_leg_rs485.kicad_sch,AX_L_HIP_YAW,2,VDD,RS-LLEG_VDD
+W7009,07_left_leg_rs485.kicad_sch,AX_L_HIP_YAW,1,GND,RS-LLEG_RET
+W7010,07_left_leg_rs485.kicad_sch,AX_L_HIP_YAW,3,DATA+,RS-LLEG_DP
+W7011,07_left_leg_rs485.kicad_sch,AX_L_HIP_YAW,4,DATA-,RS-LLEG_DN
+W7012,07_left_leg_rs485.kicad_sch,AX_L_HIP_ROLL,2,VDD,RS-LLEG_VDD
+W7013,07_left_leg_rs485.kicad_sch,AX_L_HIP_ROLL,1,GND,RS-LLEG_RET
+W7014,07_left_leg_rs485.kicad_sch,AX_L_HIP_ROLL,3,DATA+,RS-LLEG_DP
+W7015,07_left_leg_rs485.kicad_sch,AX_L_HIP_ROLL,4,DATA-,RS-LLEG_DN
+W7016,07_left_leg_rs485.kicad_sch,AX_L_HIP_PITCH,2,VDD,RS-LLEG_VDD
+W7017,07_left_leg_rs485.kicad_sch,AX_L_HIP_PITCH,1,GND,RS-LLEG_RET
+W7018,07_left_leg_rs485.kicad_sch,AX_L_HIP_PITCH,3,DATA+,RS-LLEG_DP
+W7019,07_left_leg_rs485.kicad_sch,AX_L_HIP_PITCH,4,DATA-,RS-LLEG_DN
+W7020,07_left_leg_rs485.kicad_sch,AX_L_KNEE_PITCH,2,VDD,RS-LLEG_VDD
+W7021,07_left_leg_rs485.kicad_sch,AX_L_KNEE_PITCH,1,GND,RS-LLEG_RET
+W7022,07_left_leg_rs485.kicad_sch,AX_L_KNEE_PITCH,3,DATA+,RS-LLEG_DP
+W7023,07_left_leg_rs485.kicad_sch,AX_L_KNEE_PITCH,4,DATA-,RS-LLEG_DN
+W7024,07_left_leg_rs485.kicad_sch,AX_L_ANKLE_PITCH,2,VDD,RS-LLEG_VDD
+W7025,07_left_leg_rs485.kicad_sch,AX_L_ANKLE_PITCH,1,GND,RS-LLEG_RET
+W7026,07_left_leg_rs485.kicad_sch,AX_L_ANKLE_PITCH,3,DATA+,RS-LLEG_DP
+W7027,07_left_leg_rs485.kicad_sch,AX_L_ANKLE_PITCH,4,DATA-,RS-LLEG_DN
+W7028,07_left_leg_rs485.kicad_sch,AX_L_ANKLE_ROLL,2,VDD,RS-LLEG_VDD
+W7029,07_left_leg_rs485.kicad_sch,AX_L_ANKLE_ROLL,1,GND,RS-LLEG_RET
+W7030,07_left_leg_rs485.kicad_sch,AX_L_ANKLE_ROLL,3,DATA+,RS-LLEG_DP
+W7031,07_left_leg_rs485.kicad_sch,AX_L_ANKLE_ROLL,4,DATA-,RS-LLEG_DN
+W8001,08_right_leg_rs485.kicad_sch,PORT_RS_RLEG,LOG-RET,DATA REFERENCE,RS-RLEG_RET
+W8002,08_right_leg_rs485.kicad_sch,PORT_RS_RLEG,LOG-DP,DATA+,RS-RLEG_DP
+W8003,08_right_leg_rs485.kicad_sch,PORT_RS_RLEG,LOG-DN,DATA-,RS-RLEG_DN
+W8004,08_right_leg_rs485.kicad_sch,PBR_RS_RLEG,LOG-IN,INTERRUPTED SOURCE,ACT_14V8_SAFE
+W8005,08_right_leg_rs485.kicad_sch,PBR_RS_RLEG,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
+W8006,08_right_leg_rs485.kicad_sch,PBR_RS_RLEG,LOG-OUT,PROTECTED VDD,RS-RLEG_VDD
+W8007,08_right_leg_rs485.kicad_sch,PBR_RS_RLEG,LOG-RET-OUT,BRANCH RETURN,RS-RLEG_RET
+W8008,08_right_leg_rs485.kicad_sch,AX_R_HIP_YAW,2,VDD,RS-RLEG_VDD
+W8009,08_right_leg_rs485.kicad_sch,AX_R_HIP_YAW,1,GND,RS-RLEG_RET
+W8010,08_right_leg_rs485.kicad_sch,AX_R_HIP_YAW,3,DATA+,RS-RLEG_DP
+W8011,08_right_leg_rs485.kicad_sch,AX_R_HIP_YAW,4,DATA-,RS-RLEG_DN
+W8012,08_right_leg_rs485.kicad_sch,AX_R_HIP_ROLL,2,VDD,RS-RLEG_VDD
+W8013,08_right_leg_rs485.kicad_sch,AX_R_HIP_ROLL,1,GND,RS-RLEG_RET
+W8014,08_right_leg_rs485.kicad_sch,AX_R_HIP_ROLL,3,DATA+,RS-RLEG_DP
+W8015,08_right_leg_rs485.kicad_sch,AX_R_HIP_ROLL,4,DATA-,RS-RLEG_DN
+W8016,08_right_leg_rs485.kicad_sch,AX_R_HIP_PITCH,2,VDD,RS-RLEG_VDD
+W8017,08_right_leg_rs485.kicad_sch,AX_R_HIP_PITCH,1,GND,RS-RLEG_RET
+W8018,08_right_leg_rs485.kicad_sch,AX_R_HIP_PITCH,3,DATA+,RS-RLEG_DP
+W8019,08_right_leg_rs485.kicad_sch,AX_R_HIP_PITCH,4,DATA-,RS-RLEG_DN
+W8020,08_right_leg_rs485.kicad_sch,AX_R_KNEE_PITCH,2,VDD,RS-RLEG_VDD
+W8021,08_right_leg_rs485.kicad_sch,AX_R_KNEE_PITCH,1,GND,RS-RLEG_RET
+W8022,08_right_leg_rs485.kicad_sch,AX_R_KNEE_PITCH,3,DATA+,RS-RLEG_DP
+W8023,08_right_leg_rs485.kicad_sch,AX_R_KNEE_PITCH,4,DATA-,RS-RLEG_DN
+W8024,08_right_leg_rs485.kicad_sch,AX_R_ANKLE_PITCH,2,VDD,RS-RLEG_VDD
+W8025,08_right_leg_rs485.kicad_sch,AX_R_ANKLE_PITCH,1,GND,RS-RLEG_RET
+W8026,08_right_leg_rs485.kicad_sch,AX_R_ANKLE_PITCH,3,DATA+,RS-RLEG_DP
+W8027,08_right_leg_rs485.kicad_sch,AX_R_ANKLE_PITCH,4,DATA-,RS-RLEG_DN
+W8028,08_right_leg_rs485.kicad_sch,AX_R_ANKLE_ROLL,2,VDD,RS-RLEG_VDD
+W8029,08_right_leg_rs485.kicad_sch,AX_R_ANKLE_ROLL,1,GND,RS-RLEG_RET
+W8030,08_right_leg_rs485.kicad_sch,AX_R_ANKLE_ROLL,3,DATA+,RS-RLEG_DP
+W8031,08_right_leg_rs485.kicad_sch,AX_R_ANKLE_ROLL,4,DATA-,RS-RLEG_DN
+W9001,09_left_arm_rs485.kicad_sch,PORT_RS_LARM,LOG-RET,DATA REFERENCE,RS-LARM_RET
+W9002,09_left_arm_rs485.kicad_sch,PORT_RS_LARM,LOG-DP,DATA+,RS-LARM_DP
+W9003,09_left_arm_rs485.kicad_sch,PORT_RS_LARM,LOG-DN,DATA-,RS-LARM_DN
+W9004,09_left_arm_rs485.kicad_sch,PBR_RS_LARM,LOG-IN,INTERRUPTED SOURCE,ACT_14V8_SAFE
+W9005,09_left_arm_rs485.kicad_sch,PBR_RS_LARM,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
+W9006,09_left_arm_rs485.kicad_sch,PBR_RS_LARM,LOG-OUT,PROTECTED VDD,RS-LARM_VDD
+W9007,09_left_arm_rs485.kicad_sch,PBR_RS_LARM,LOG-RET-OUT,BRANCH RETURN,RS-LARM_RET
+W9008,09_left_arm_rs485.kicad_sch,AX_L_SHOULDER_PITCH,2,VDD,RS-LARM_VDD
+W9009,09_left_arm_rs485.kicad_sch,AX_L_SHOULDER_PITCH,1,GND,RS-LARM_RET
+W9010,09_left_arm_rs485.kicad_sch,AX_L_SHOULDER_PITCH,3,DATA+,RS-LARM_DP
+W9011,09_left_arm_rs485.kicad_sch,AX_L_SHOULDER_PITCH,4,DATA-,RS-LARM_DN
+W9012,09_left_arm_rs485.kicad_sch,AX_L_SHOULDER_ROLL,2,VDD,RS-LARM_VDD
+W9013,09_left_arm_rs485.kicad_sch,AX_L_SHOULDER_ROLL,1,GND,RS-LARM_RET
+W9014,09_left_arm_rs485.kicad_sch,AX_L_SHOULDER_ROLL,3,DATA+,RS-LARM_DP
+W9015,09_left_arm_rs485.kicad_sch,AX_L_SHOULDER_ROLL,4,DATA-,RS-LARM_DN
+W9016,09_left_arm_rs485.kicad_sch,AX_L_ELBOW_PITCH,2,VDD,RS-LARM_VDD
+W9017,09_left_arm_rs485.kicad_sch,AX_L_ELBOW_PITCH,1,GND,RS-LARM_RET
+W9018,09_left_arm_rs485.kicad_sch,AX_L_ELBOW_PITCH,3,DATA+,RS-LARM_DP
+W9019,09_left_arm_rs485.kicad_sch,AX_L_ELBOW_PITCH,4,DATA-,RS-LARM_DN
+W10001,10_right_arm_rs485.kicad_sch,PORT_RS_RARM,LOG-RET,DATA REFERENCE,RS-RARM_RET
+W10002,10_right_arm_rs485.kicad_sch,PORT_RS_RARM,LOG-DP,DATA+,RS-RARM_DP
+W10003,10_right_arm_rs485.kicad_sch,PORT_RS_RARM,LOG-DN,DATA-,RS-RARM_DN
+W10004,10_right_arm_rs485.kicad_sch,PBR_RS_RARM,LOG-IN,INTERRUPTED SOURCE,ACT_14V8_SAFE
+W10005,10_right_arm_rs485.kicad_sch,PBR_RS_RARM,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
+W10006,10_right_arm_rs485.kicad_sch,PBR_RS_RARM,LOG-OUT,PROTECTED VDD,RS-RARM_VDD
+W10007,10_right_arm_rs485.kicad_sch,PBR_RS_RARM,LOG-RET-OUT,BRANCH RETURN,RS-RARM_RET
+W10008,10_right_arm_rs485.kicad_sch,AX_R_SHOULDER_PITCH,2,VDD,RS-RARM_VDD
+W10009,10_right_arm_rs485.kicad_sch,AX_R_SHOULDER_PITCH,1,GND,RS-RARM_RET
+W10010,10_right_arm_rs485.kicad_sch,AX_R_SHOULDER_PITCH,3,DATA+,RS-RARM_DP
+W10011,10_right_arm_rs485.kicad_sch,AX_R_SHOULDER_PITCH,4,DATA-,RS-RARM_DN
+W10012,10_right_arm_rs485.kicad_sch,AX_R_SHOULDER_ROLL,2,VDD,RS-RARM_VDD
+W10013,10_right_arm_rs485.kicad_sch,AX_R_SHOULDER_ROLL,1,GND,RS-RARM_RET
+W10014,10_right_arm_rs485.kicad_sch,AX_R_SHOULDER_ROLL,3,DATA+,RS-RARM_DP
+W10015,10_right_arm_rs485.kicad_sch,AX_R_SHOULDER_ROLL,4,DATA-,RS-RARM_DN
+W10016,10_right_arm_rs485.kicad_sch,AX_R_ELBOW_PITCH,2,VDD,RS-RARM_VDD
+W10017,10_right_arm_rs485.kicad_sch,AX_R_ELBOW_PITCH,1,GND,RS-RARM_RET
+W10018,10_right_arm_rs485.kicad_sch,AX_R_ELBOW_PITCH,3,DATA+,RS-RARM_DP
+W10019,10_right_arm_rs485.kicad_sch,AX_R_ELBOW_PITCH,4,DATA-,RS-RARM_DN
+W11001,11_waist_rs485.kicad_sch,PORT_RS_WAIST,LOG-RET,DATA REFERENCE,RS-WAIST_RET
+W11002,11_waist_rs485.kicad_sch,PORT_RS_WAIST,LOG-DP,DATA+,RS-WAIST_DP
+W11003,11_waist_rs485.kicad_sch,PORT_RS_WAIST,LOG-DN,DATA-,RS-WAIST_DN
+W11004,11_waist_rs485.kicad_sch,PBR_RS_WAIST,LOG-IN,INTERRUPTED SOURCE,ACT_14V8_SAFE
+W11005,11_waist_rs485.kicad_sch,PBR_RS_WAIST,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
+W11006,11_waist_rs485.kicad_sch,PBR_RS_WAIST,LOG-OUT,PROTECTED VDD,RS-WAIST_VDD
+W11007,11_waist_rs485.kicad_sch,PBR_RS_WAIST,LOG-RET-OUT,BRANCH RETURN,RS-WAIST_RET
+W11008,11_waist_rs485.kicad_sch,AX_WAIST_YAW,2,VDD,RS-WAIST_VDD
+W11009,11_waist_rs485.kicad_sch,AX_WAIST_YAW,1,GND,RS-WAIST_RET
+W11010,11_waist_rs485.kicad_sch,AX_WAIST_YAW,3,DATA+,RS-WAIST_DP
+W11011,11_waist_rs485.kicad_sch,AX_WAIST_YAW,4,DATA-,RS-WAIST_DN
+W12001,12_left_distal_ttl.kicad_sch,PORT_TTL_LDIST,LOG-RET,DATA REFERENCE,TTL-LDIST_RET
+W12002,12_left_distal_ttl.kicad_sch,PORT_TTL_LDIST,LOG-DATA,HALF-DUPLEX DATA,TTL-LDIST_DATA
+W12003,12_left_distal_ttl.kicad_sch,PBR_TTL_LDIST,LOG-IN,INTERRUPTED SOURCE,ACT_12V_SAFE
+W12004,12_left_distal_ttl.kicad_sch,PBR_TTL_LDIST,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
+W12005,12_left_distal_ttl.kicad_sch,PBR_TTL_LDIST,LOG-OUT,PROTECTED VDD,TTL-LDIST_VDD
+W12006,12_left_distal_ttl.kicad_sch,PBR_TTL_LDIST,LOG-RET-OUT,BRANCH RETURN,TTL-LDIST_RET
+W12007,12_left_distal_ttl.kicad_sch,AX_L_WRIST_ROTATION,2,VDD,TTL-LDIST_VDD
+W12008,12_left_distal_ttl.kicad_sch,AX_L_WRIST_ROTATION,1,GND,TTL-LDIST_RET
+W12009,12_left_distal_ttl.kicad_sch,AX_L_WRIST_ROTATION,3,DATA,TTL-LDIST_DATA
+W12010,12_left_distal_ttl.kicad_sch,AX_L_GRIPPER,2,VDD,TTL-LDIST_VDD
+W12011,12_left_distal_ttl.kicad_sch,AX_L_GRIPPER,1,GND,TTL-LDIST_RET
+W12012,12_left_distal_ttl.kicad_sch,AX_L_GRIPPER,3,DATA,TTL-LDIST_DATA
+W13001,13_right_distal_ttl.kicad_sch,PORT_TTL_RDIST,LOG-RET,DATA REFERENCE,TTL-RDIST_RET
+W13002,13_right_distal_ttl.kicad_sch,PORT_TTL_RDIST,LOG-DATA,HALF-DUPLEX DATA,TTL-RDIST_DATA
+W13003,13_right_distal_ttl.kicad_sch,PBR_TTL_RDIST,LOG-IN,INTERRUPTED SOURCE,ACT_12V_SAFE
+W13004,13_right_distal_ttl.kicad_sch,PBR_TTL_RDIST,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
+W13005,13_right_distal_ttl.kicad_sch,PBR_TTL_RDIST,LOG-OUT,PROTECTED VDD,TTL-RDIST_VDD
+W13006,13_right_distal_ttl.kicad_sch,PBR_TTL_RDIST,LOG-RET-OUT,BRANCH RETURN,TTL-RDIST_RET
+W13007,13_right_distal_ttl.kicad_sch,AX_R_WRIST_ROTATION,2,VDD,TTL-RDIST_VDD
+W13008,13_right_distal_ttl.kicad_sch,AX_R_WRIST_ROTATION,1,GND,TTL-RDIST_RET
+W13009,13_right_distal_ttl.kicad_sch,AX_R_WRIST_ROTATION,3,DATA,TTL-RDIST_DATA
+W13010,13_right_distal_ttl.kicad_sch,AX_R_GRIPPER,2,VDD,TTL-RDIST_VDD
+W13011,13_right_distal_ttl.kicad_sch,AX_R_GRIPPER,1,GND,TTL-RDIST_RET
+W13012,13_right_distal_ttl.kicad_sch,AX_R_GRIPPER,3,DATA,TTL-RDIST_DATA
+W14001,14_head_ttl_sensors_hmi.kicad_sch,PORT_TTL_HEAD,LOG-RET,DATA REFERENCE,TTL-HEAD_RET
+W14002,14_head_ttl_sensors_hmi.kicad_sch,PORT_TTL_HEAD,LOG-DATA,HALF-DUPLEX DATA,TTL-HEAD_DATA
+W14003,14_head_ttl_sensors_hmi.kicad_sch,PBR_TTL_HEAD,LOG-IN,INTERRUPTED SOURCE,ACT_12V_SAFE
+W14004,14_head_ttl_sensors_hmi.kicad_sch,PBR_TTL_HEAD,LOG-RET-IN,SOURCE RETURN,ACT_0V_CONTROLLED
+W14005,14_head_ttl_sensors_hmi.kicad_sch,PBR_TTL_HEAD,LOG-OUT,PROTECTED VDD,TTL-HEAD_VDD
+W14006,14_head_ttl_sensors_hmi.kicad_sch,PBR_TTL_HEAD,LOG-RET-OUT,BRANCH RETURN,TTL-HEAD_RET
+W14007,14_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_PAN,2,VDD,TTL-HEAD_VDD
+W14008,14_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_PAN,1,GND,TTL-HEAD_RET
+W14009,14_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_PAN,3,DATA,TTL-HEAD_DATA
+W14010,14_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_TILT,2,VDD,TTL-HEAD_VDD
+W14011,14_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_TILT,1,GND,TTL-HEAD_RET
+W14012,14_head_ttl_sensors_hmi.kicad_sch,AX_HEAD_TILT,3,DATA,TTL-HEAD_DATA
+W14013,14_head_ttl_sensors_hmi.kicad_sch,HPWR1,LOG-IN,AUXILIARY 5 V INPUT,AUX_5V_SAFE
+W14014,14_head_ttl_sensors_hmi.kicad_sch,HPWR1,LOG-RET-IN,AUXILIARY RETURN,AUX_0V
+W14015,14_head_ttl_sensors_hmi.kicad_sch,HPWR1,LOG-OUT,HEAD 5 V,HEAD_5V
+W14016,14_head_ttl_sensors_hmi.kicad_sch,HPWR1,LOG-RET-OUT,HEAD RETURN,HEAD_0V
+W14017,14_head_ttl_sensors_hmi.kicad_sch,CAM1,LOG-5V,5 V POWER,HEAD_5V
+W14018,14_head_ttl_sensors_hmi.kicad_sch,CAM1,LOG-RET,RETURN,HEAD_0V
+W14019,14_head_ttl_sensors_hmi.kicad_sch,CAM1,LOG-IPC,VISION IPC,HEAD_CAM_L_IPC
+W14020,14_head_ttl_sensors_hmi.kicad_sch,CAM2,LOG-5V,5 V POWER,HEAD_5V
+W14021,14_head_ttl_sensors_hmi.kicad_sch,CAM2,LOG-RET,RETURN,HEAD_0V
+W14022,14_head_ttl_sensors_hmi.kicad_sch,CAM2,LOG-IPC,VISION IPC,HEAD_CAM_R_IPC
+W14023,14_head_ttl_sensors_hmi.kicad_sch,DISP1,LOG-5V,5 V POWER,HEAD_5V
+W14024,14_head_ttl_sensors_hmi.kicad_sch,DISP1,LOG-RET,RETURN,HEAD_0V
+W14025,14_head_ttl_sensors_hmi.kicad_sch,DISP1,LOG-IPC,DISPLAY IPC,HEAD_DISPLAY_IPC
+W14026,14_head_ttl_sensors_hmi.kicad_sch,DISP1,LOG-TOUCH,TOUCH IPC,HEAD_TOUCH_IPC
+W14027,14_head_ttl_sensors_hmi.kicad_sch,MIC1,LOG-5V,5 V POWER,HEAD_5V
+W14028,14_head_ttl_sensors_hmi.kicad_sch,MIC1,LOG-RET,RETURN,HEAD_0V
+W14029,14_head_ttl_sensors_hmi.kicad_sch,MIC1,LOG-IPC,AUDIO INPUT IPC,HEAD_MIC_IPC
+W14030,14_head_ttl_sensors_hmi.kicad_sch,AMP1,LOG-5V,5 V POWER,HEAD_5V
+W14031,14_head_ttl_sensors_hmi.kicad_sch,AMP1,LOG-RET,RETURN,HEAD_0V
+W14032,14_head_ttl_sensors_hmi.kicad_sch,AMP1,LOG-IN,AUDIO INPUT IPC,HEAD_AUDIO_IPC
+W14033,14_head_ttl_sensors_hmi.kicad_sch,AMP1,LOG-LP,LEFT SPEAKER +,SPK_L_POS
+W14034,14_head_ttl_sensors_hmi.kicad_sch,AMP1,LOG-LN,LEFT SPEAKER -,SPK_L_NEG
+W14035,14_head_ttl_sensors_hmi.kicad_sch,AMP1,LOG-RP,RIGHT SPEAKER +,SPK_R_POS
+W14036,14_head_ttl_sensors_hmi.kicad_sch,AMP1,LOG-RN,RIGHT SPEAKER -,SPK_R_NEG
+W14037,14_head_ttl_sensors_hmi.kicad_sch,SPK1,LOG-P,SPEAKER +,SPK_L_POS
+W14038,14_head_ttl_sensors_hmi.kicad_sch,SPK1,LOG-N,SPEAKER -,SPK_L_NEG
+W14039,14_head_ttl_sensors_hmi.kicad_sch,SPK2,LOG-P,SPEAKER +,SPK_R_POS
+W14040,14_head_ttl_sensors_hmi.kicad_sch,SPK2,LOG-N,SPEAKER -,SPK_R_NEG
+W14041,14_head_ttl_sensors_hmi.kicad_sch,FAN1,LOG-5V,5 V POWER,HEAD_5V
+W14042,14_head_ttl_sensors_hmi.kicad_sch,FAN1,LOG-RET,RETURN,HEAD_0V
+W14043,14_head_ttl_sensors_hmi.kicad_sch,FAN1,LOG-PWM,PWM,HEAD_FAN_PWM
+W14044,14_head_ttl_sensors_hmi.kicad_sch,FAN1,LOG-TACH,TACHOMETER,HEAD_FAN_TACH
+W15001,15_pelvis_aux_imu.kicad_sch,AUXD1,LOG-IN,INTERRUPTED INPUT,ACT_14V8_SAFE
+W15002,15_pelvis_aux_imu.kicad_sch,AUXD1,LOG-RET-IN,CONTROLLED RETURN,ACT_0V_CONTROLLED
+W15003,15_pelvis_aux_imu.kicad_sch,AUXD1,LOG-OUT,AUXILIARY 5 V,AUX_5V_SAFE
+W15004,15_pelvis_aux_imu.kicad_sch,AUXD1,LOG-RET-OUT,AUXILIARY RETURN,AUX_0V
+W15005,15_pelvis_aux_imu.kicad_sch,IMU1,LOG-5V,5 V POWER,AUX_5V_SAFE
+W15006,15_pelvis_aux_imu.kicad_sch,IMU1,LOG-RET,RETURN,AUX_0V
+W15007,15_pelvis_aux_imu.kicad_sch,IMU1,LOG-DATA,DETERMINISTIC SENSOR DATA,PELVIS_IMU_DATA
+W15008,15_pelvis_aux_imu.kicad_sch,IMU1,LOG-INT,DATA READY / FAULT,PELVIS_IMU_INT
+W15009,15_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-IMU,PELVIS IMU DATA,PELVIS_IMU_DATA
+W15010,15_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-IMU-INT,PELVIS IMU INTERRUPT,PELVIS_IMU_INT
+W15011,15_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-LFOOT,LEFT FOOT SENSOR DATA,L_FOOT_SENSOR_DATA
+W15012,15_pelvis_aux_imu.kicad_sch,MCU_AUX,LOG-RFOOT,RIGHT FOOT SENSOR DATA,R_FOOT_SENSOR_DATA
+W16001,16_left_foot_load_sensing.kicad_sch,LOAD_L_FL,LOG-EXC-P,EXCITATION +,L_FOOT_EXC_P
+W16002,16_left_foot_load_sensing.kicad_sch,LOAD_L_FL,LOG-EXC-N,EXCITATION -,L_FOOT_EXC_N
+W16003,16_left_foot_load_sensing.kicad_sch,LOAD_L_FL,LOG-SIG-P,SIGNAL +,L_FOOT_FL_SIG_P
+W16004,16_left_foot_load_sensing.kicad_sch,LOAD_L_FL,LOG-SIG-N,SIGNAL -,L_FOOT_FL_SIG_N
+W16005,16_left_foot_load_sensing.kicad_sch,LOAD_L_FR,LOG-EXC-P,EXCITATION +,L_FOOT_EXC_P
+W16006,16_left_foot_load_sensing.kicad_sch,LOAD_L_FR,LOG-EXC-N,EXCITATION -,L_FOOT_EXC_N
+W16007,16_left_foot_load_sensing.kicad_sch,LOAD_L_FR,LOG-SIG-P,SIGNAL +,L_FOOT_FR_SIG_P
+W16008,16_left_foot_load_sensing.kicad_sch,LOAD_L_FR,LOG-SIG-N,SIGNAL -,L_FOOT_FR_SIG_N
+W16009,16_left_foot_load_sensing.kicad_sch,LOAD_L_RL,LOG-EXC-P,EXCITATION +,L_FOOT_EXC_P
+W16010,16_left_foot_load_sensing.kicad_sch,LOAD_L_RL,LOG-EXC-N,EXCITATION -,L_FOOT_EXC_N
+W16011,16_left_foot_load_sensing.kicad_sch,LOAD_L_RL,LOG-SIG-P,SIGNAL +,L_FOOT_RL_SIG_P
+W16012,16_left_foot_load_sensing.kicad_sch,LOAD_L_RL,LOG-SIG-N,SIGNAL -,L_FOOT_RL_SIG_N
+W16013,16_left_foot_load_sensing.kicad_sch,LOAD_L_RR,LOG-EXC-P,EXCITATION +,L_FOOT_EXC_P
+W16014,16_left_foot_load_sensing.kicad_sch,LOAD_L_RR,LOG-EXC-N,EXCITATION -,L_FOOT_EXC_N
+W16015,16_left_foot_load_sensing.kicad_sch,LOAD_L_RR,LOG-SIG-P,SIGNAL +,L_FOOT_RR_SIG_P
+W16016,16_left_foot_load_sensing.kicad_sch,LOAD_L_RR,LOG-SIG-N,SIGNAL -,L_FOOT_RR_SIG_N
+W16017,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-5V,5 V POWER,AUX_5V_SAFE
+W16018,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-RET,RETURN,AUX_0V
+W16019,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-FL-P,FL SIGNAL +,L_FOOT_FL_SIG_P
+W16020,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-FL-N,FL SIGNAL -,L_FOOT_FL_SIG_N
+W16021,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-FR-P,FR SIGNAL +,L_FOOT_FR_SIG_P
+W16022,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-FR-N,FR SIGNAL -,L_FOOT_FR_SIG_N
+W16023,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-RL-P,RL SIGNAL +,L_FOOT_RL_SIG_P
+W16024,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-RL-N,RL SIGNAL -,L_FOOT_RL_SIG_N
+W16025,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-RR-P,RR SIGNAL +,L_FOOT_RR_SIG_P
+W16026,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-RR-N,RR SIGNAL -,L_FOOT_RR_SIG_N
+W16027,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-EXC-P,EXCITATION +,L_FOOT_EXC_P
+W16028,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-EXC-N,EXCITATION -,L_FOOT_EXC_N
+W16029,16_left_foot_load_sensing.kicad_sch,ADC_L_FOOT,LOG-DATA,UPSTREAM SENSOR DATA,L_FOOT_SENSOR_DATA
+W17001,17_right_foot_load_sensing.kicad_sch,LOAD_R_FL,LOG-EXC-P,EXCITATION +,R_FOOT_EXC_P
+W17002,17_right_foot_load_sensing.kicad_sch,LOAD_R_FL,LOG-EXC-N,EXCITATION -,R_FOOT_EXC_N
+W17003,17_right_foot_load_sensing.kicad_sch,LOAD_R_FL,LOG-SIG-P,SIGNAL +,R_FOOT_FL_SIG_P
+W17004,17_right_foot_load_sensing.kicad_sch,LOAD_R_FL,LOG-SIG-N,SIGNAL -,R_FOOT_FL_SIG_N
+W17005,17_right_foot_load_sensing.kicad_sch,LOAD_R_FR,LOG-EXC-P,EXCITATION +,R_FOOT_EXC_P
+W17006,17_right_foot_load_sensing.kicad_sch,LOAD_R_FR,LOG-EXC-N,EXCITATION -,R_FOOT_EXC_N
+W17007,17_right_foot_load_sensing.kicad_sch,LOAD_R_FR,LOG-SIG-P,SIGNAL +,R_FOOT_FR_SIG_P
+W17008,17_right_foot_load_sensing.kicad_sch,LOAD_R_FR,LOG-SIG-N,SIGNAL -,R_FOOT_FR_SIG_N
+W17009,17_right_foot_load_sensing.kicad_sch,LOAD_R_RL,LOG-EXC-P,EXCITATION +,R_FOOT_EXC_P
+W17010,17_right_foot_load_sensing.kicad_sch,LOAD_R_RL,LOG-EXC-N,EXCITATION -,R_FOOT_EXC_N
+W17011,17_right_foot_load_sensing.kicad_sch,LOAD_R_RL,LOG-SIG-P,SIGNAL +,R_FOOT_RL_SIG_P
+W17012,17_right_foot_load_sensing.kicad_sch,LOAD_R_RL,LOG-SIG-N,SIGNAL -,R_FOOT_RL_SIG_N
+W17013,17_right_foot_load_sensing.kicad_sch,LOAD_R_RR,LOG-EXC-P,EXCITATION +,R_FOOT_EXC_P
+W17014,17_right_foot_load_sensing.kicad_sch,LOAD_R_RR,LOG-EXC-N,EXCITATION -,R_FOOT_EXC_N
+W17015,17_right_foot_load_sensing.kicad_sch,LOAD_R_RR,LOG-SIG-P,SIGNAL +,R_FOOT_RR_SIG_P
+W17016,17_right_foot_load_sensing.kicad_sch,LOAD_R_RR,LOG-SIG-N,SIGNAL -,R_FOOT_RR_SIG_N
+W17017,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-5V,5 V POWER,AUX_5V_SAFE
+W17018,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-RET,RETURN,AUX_0V
+W17019,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-FL-P,FL SIGNAL +,R_FOOT_FL_SIG_P
+W17020,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-FL-N,FL SIGNAL -,R_FOOT_FL_SIG_N
+W17021,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-FR-P,FR SIGNAL +,R_FOOT_FR_SIG_P
+W17022,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-FR-N,FR SIGNAL -,R_FOOT_FR_SIG_N
+W17023,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-RL-P,RL SIGNAL +,R_FOOT_RL_SIG_P
+W17024,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-RL-N,RL SIGNAL -,R_FOOT_RL_SIG_N
+W17025,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-RR-P,RR SIGNAL +,R_FOOT_RR_SIG_P
+W17026,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-RR-N,RR SIGNAL -,R_FOOT_RR_SIG_N
+W17027,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-EXC-P,EXCITATION +,R_FOOT_EXC_P
+W17028,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-EXC-N,EXCITATION -,R_FOOT_EXC_N
+W17029,17_right_foot_load_sensing.kicad_sch,ADC_R_FOOT,LOG-DATA,UPSTREAM SENSOR DATA,R_FOOT_SENSOR_DATA

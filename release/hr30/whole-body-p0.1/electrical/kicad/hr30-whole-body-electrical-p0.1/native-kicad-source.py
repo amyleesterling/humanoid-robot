@@ -43,6 +43,22 @@ BUS_AXES = {
     "TTL-HEAD": ["HEAD_PAN", "HEAD_TILT"],
 }
 
+UART_ALLOCATIONS = {
+    "RS-LLEG": {"carrier": "A", "uart": "USART1", "tx": ("PA9", "101", "AF7"), "rx": ("PA10", "102", "AF7"), "de": ("PA12", "104", "AF7")},
+    "RS-RLEG": {"carrier": "A", "uart": "USART2", "tx": ("PD5", "119", "AF7"), "rx": ("PD6", "122", "AF7"), "de": ("PD4", "118", "AF7")},
+    "RS-LARM": {"carrier": "A", "uart": "USART3", "tx": ("PD8", "77", "AF7"), "rx": ("PD9", "78", "AF7"), "de": ("PD12", "81", "AF7")},
+    "RS-RARM": {"carrier": "A", "uart": "USART6", "tx": ("PC6", "96", "AF7"), "rx": ("PC7", "97", "AF7"), "de": ("PG8", "93", "AF7")},
+    "RS-WAIST": {"carrier": "B", "uart": "UART4", "tx": ("PC10", "111", "AF8"), "rx": ("PC11", "112", "AF8"), "de": ("PA15", "110", "AF8")},
+    "TTL-LDIST": {"carrier": "B", "uart": "UART5", "tx": ("PC12", "113", "AF8"), "rx": ("PD2", "116", "AF8"), "de": ("PC8", "98", "AF8")},
+    "TTL-RDIST": {"carrier": "B", "uart": "UART7", "tx": ("PE8", "62", "AF7"), "rx": ("PE7", "61", "AF7"), "de": ("PE9", "63", "AF7")},
+    "TTL-HEAD": {"carrier": "B", "uart": "UART8", "tx": ("PE1", "142", "AF8"), "rx": ("PE0", "141", "AF8"), "de": ("PD15", "86", "AF8")},
+}
+
+ST_H743_SOURCE = "https://www.st.com/resource/en/datasheet/stm32h742bg.pdf"
+TI_ISOW1432_SOURCE = "https://www.ti.com/lit/ds/symlink/isow1432.pdf"
+TI_LVC1T45_SOURCE = "https://www.ti.com/lit/ds/symlink/sn74lvc1t45.pdf"
+JST_GH_SOURCE = "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf"
+
 
 def load_model():
     path = ROOT / "tools" / "generate_hr_v0_electrical_v3.py"
@@ -64,8 +80,8 @@ def load_model():
 
 
 def hr30_root_schematic(model, root_uuid: str, items: list) -> str:
-    """Render the fifteen-child HR-30 hierarchy without changing the frozen HR-V0 generator."""
-    positions = [(12.0 + col * 100.0, 42.0 + row * 56.0) for row in range(4) for col in range(4)]
+    """Render the whole-body hierarchy without changing the frozen HR-V0 generator."""
+    positions = [(12.0 + col * 100.0, 38.0 + row * 50.0) for row in range(5) for col in range(4)]
     if len(items) > len(positions):
         raise SystemExit("HR-30 hierarchy exceeds controlled A3 index capacity")
     blocks = []
@@ -94,7 +110,7 @@ def read_csv(path: Path) -> list[dict]:
         return list(csv.DictReader(handle))
 
 
-def component(model, ref, value, pins, description, position, width=72.0, datasheet="", evidence="", status="SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY"):
+def component(model, ref, value, pins, description, position, width=72.0, datasheet="", evidence="", status="SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY", footprint=""):
     return model.Component(
         ref=ref,
         value=value,
@@ -105,6 +121,7 @@ def component(model, ref, value, pins, description, position, width=72.0, datash
         evidence=evidence,
         position=position,
         width=width,
+        footprint=footprint,
     )
 
 
@@ -272,8 +289,11 @@ def build_sheets(model):
                    ("LOG-FAN-PWM", "HEAD FAN PWM", "HEAD_FAN_PWM", "right"), ("LOG-FAN-TACH", "HEAD FAN TACH", "HEAD_FAN_TACH", "left")],
                   "No actuator-bus credentials or raw joint-register authority. Exact power, storage, cooling, privacy and network controls remain open.", (65, 55), width=80.0,
                   datasheet="https://www.raspberrypi.com/products/raspberry-pi-5/"),
-        component(model, "MCU1", "DETERMINISTIC MOTION CONTROLLER - EXACT BOARD SELECTION REQUIRED", mcu_pins,
-                  "Owns state estimation, bounded trajectories, joint limits, bus timing and fault states. Exact MCU board, I/O pins, isolation, real-time performance and firmware evidence remain open.", (210, 85), width=90.0),
+        component(model, "MCU1", "STM32H743ZIT6 LQFP144 MOTION-CONTROL CARRIER CANDIDATE", mcu_pins,
+                  "Active 2 MB STM32H743 LQFP144 candidate. Owns state estimation, bounded trajectories, joint limits, eight UARTs, bus timing and fault states. Clock, power, reset, debug, Ethernet/CAN, PCB layout, firmware and real-time validation remain open.",
+                  (210, 85), width=90.0, datasheet=ST_H743_SOURCE,
+                  evidence="ST DS12110 Rev 11 and current product page checked 2026-08-14; STM32H743ZIT6 is active/in volume production. Eight UART TX/RX/DE pin candidates are recorded on this sheet and interface-carrier-pinout.csv.",
+                  status="EXACT MCU ORDER-CODE CANDIDATE - BOARD DESIGN AND VALIDATION REQUIRED"),
         component(model, "WD1", "INDEPENDENT ORDINARY WATCHDOG - SELECTION REQUIRED / ZERO SAFETY CREDIT",
                   [("LOG-HB", "MOTION HEARTBEAT INPUT", "MOTION_WD_HEARTBEAT", "left"), ("LOG-REQ", "PERMIT REQUEST DIAGNOSTIC", "WD_PERMIT_REQUEST", "right")],
                   "Heartbeat supervision is diagnostic only and may not bypass S0, monitored reset, EDM or deterministic motion authorization.", (355, 55), width=75.0),
@@ -281,48 +301,144 @@ def build_sheets(model):
     io_positions = [(115, 125), (315, 125), (115, 165), (315, 165), (115, 205), (315, 205), (115, 235), (315, 235)]
     for index, (bus_id, position) in enumerate(zip(BUS_AXES, io_positions)):
         side = "left" if index % 2 == 0 else "right"
+        allocation = UART_ALLOCATIONS[bus_id]
+        tx_name, tx_pin, tx_af = allocation["tx"]
+        rx_name, rx_pin, rx_af = allocation["rx"]
+        de_name, de_pin, de_af = allocation["de"]
+        ttl = bus_id.startswith("TTL-")
         port = component(
-            model, "MCU_IO_" + bus_id.replace("-", "_"), f"MCU1 LOGICAL UART BANK - {bus_id}",
-            [(f"LOG-{bus_id}-TX", "UART TX", f"UART_{bus_id}_TX", side),
-             (f"LOG-{bus_id}-RX", "UART RX", f"UART_{bus_id}_RX", side),
-             (f"LOG-{bus_id}-DIR", "DIRECTION", f"UART_{bus_id}_DIR", side)],
-            "This is an alternate logical-unit view of MCU1, not an additional controller or released package pin assignment.",
-            position, width=100.0,
+            model, "MCU_IO_" + bus_id.replace("-", "_"), f"MCU1 {allocation['uart']} PHYSICAL PIN UNIT - {bus_id}",
+            [(tx_pin, f"{tx_name} {tx_af} {'HALF-DUPLEX IO' if ttl else 'TX'}", f"UART_{bus_id}_TX", side),
+             (rx_pin, f"{rx_name} {rx_af} {'RESERVED / NOT USED IN P0.1 TTL MODE' if ttl else 'RX'}", f"INTENTIONALLY_UNUSED_{bus_id}_RX" if ttl else f"UART_{bus_id}_RX", side),
+             (de_pin, f"{de_name} {de_af} RTS/DE", f"UART_{bus_id}_DIR", side)],
+            "Alternate physical-pin unit of MCU1, not another controller. TTL segments use the documented STM32 single-wire half-duplex mode on TX/IO; their RX package pin is intentionally unused in P0.1.",
+            position, width=112.0, datasheet=ST_H743_SOURCE,
+            evidence="ST DS12110 Rev 11 LQFP144 pinout and alternate-function tables checked 2026-08-14.",
+            status="PHYSICAL MCU PACKAGE PIN AND ALTERNATE FUNCTION VERIFIED - PCB VALIDATION REQUIRED",
         )
         port.quantity = 0
         s3.components.append(port)
     s3.notes = ["Conversational compute emits expiring high-level actions only; it never writes actuator registers.", "Hardwired permit loss forces controller outputs disabled; permit restoration alone must not start motion."]
     sheets.append(s3)
 
-    s4 = model.Sheet(4, "04_eight_actuator_bus_interfaces.kicad_sch", "Five isolated RS-485 and three protected TTL interface channels", "Logical UART-to-field conversion for all eight independently identified actuator buses.")
-    positions = [(115, 65), (315, 65), (115, 115), (315, 115), (115, 165), (315, 165), (115, 215), (315, 215)]
-    for (bus_id, axes), position in zip(BUS_AXES.items(), positions):
-        if bus_id.startswith("RS-"):
-            pins = [("LOG-TX", "UART TX", f"UART_{bus_id}_TX", "left"), ("LOG-RX", "UART RX", f"UART_{bus_id}_RX", "left"),
-                    ("LOG-DIR", "DIRECTION", f"UART_{bus_id}_DIR", "left"), ("LOG-DP", "FIELD DATA+", f"{bus_id}_DP", "right"),
-                    ("LOG-DN", "FIELD DATA-", f"{bus_id}_DN", "right"), ("LOG-REF", "FIELD REFERENCE", f"{bus_id}_RET", "right")]
-            value = f"{bus_id} ISOLATED HALF-DUPLEX RS-485 CHANNEL - SELECTION REQUIRED"
+    def carrier_connector_pins(carrier: str):
+        pins = [("1", "CONTROL 5 V", "CTRL_5V", "left"), ("2", "CONTROL 3.3 V", "CTRL_3V3", "left"), ("3", "CONTROL GROUND", "CTRL_GND", "left")]
+        if carrier == "A":
+            order = ("RS-LLEG", "RS-RLEG", "RS-LARM", "RS-RARM")
+            for base, bus_id in zip((4, 7, 10, 13), order):
+                pins.extend([(str(base), f"{bus_id} TX", f"UART_{bus_id}_TX", "right"),
+                             (str(base + 1), f"{bus_id} RX", f"UART_{bus_id}_RX", "right"),
+                             (str(base + 2), f"{bus_id} DE", f"UART_{bus_id}_DIR", "right")])
         else:
-            pins = [("LOG-TX", "UART TX", f"UART_{bus_id}_TX", "left"), ("LOG-RX", "UART RX", f"UART_{bus_id}_RX", "left"),
-                    ("LOG-DIR", "DIRECTION", f"UART_{bus_id}_DIR", "left"), ("LOG-DATA", "FIELD HALF-DUPLEX DATA", f"{bus_id}_DATA", "right"),
-                    ("LOG-REF", "FIELD REFERENCE", f"{bus_id}_RET", "right")]
-            value = f"{bus_id} PROTECTED 3.3 V / TTL HALF-DUPLEX CHANNEL - SELECTION REQUIRED"
-        s4.components.append(component(model, "IF_" + bus_id.replace("-", "_"), value, pins,
-                                       "Exact transceiver/buffer, isolated supply, package pins, passives, termination/bias or level shifting, protection and layout are not selected.", position, width=100.0))
-    s4.notes = ["The eight boxes are functional channels, not released circuits or PCB footprints.", "Five RS-485 and three TTL channels exactly match actuator-bus-topology.csv."]
+            pins.extend([
+                ("4", "RS-WAIST TX", "UART_RS-WAIST_TX", "right"), ("5", "RS-WAIST RX", "UART_RS-WAIST_RX", "right"),
+                ("6", "RS-WAIST DE", "UART_RS-WAIST_DIR", "right"),
+                ("7", "TTL-LDIST HALF-DUPLEX IO", "UART_TTL-LDIST_TX", "right"), ("8", "TTL-LDIST DIR", "UART_TTL-LDIST_DIR", "right"),
+                ("9", "TTL-RDIST HALF-DUPLEX IO", "UART_TTL-RDIST_TX", "right"), ("10", "TTL-RDIST DIR", "UART_TTL-RDIST_DIR", "right"),
+                ("11", "TTL-HEAD HALF-DUPLEX IO", "UART_TTL-HEAD_TX", "right"), ("12", "TTL-HEAD DIR", "UART_TTL-HEAD_DIR", "right"),
+                ("13", "RESERVED - NO CONNECTION", "INTENTIONALLY_UNUSED_CARRIER_B_13", "right"),
+                ("14", "RESERVED - NO CONNECTION", "INTENTIONALLY_UNUSED_CARRIER_B_14", "right"),
+                ("15", "RESERVED - NO CONNECTION", "INTENTIONALLY_UNUSED_CARRIER_B_15", "right"),
+            ])
+        return pins
+
+    s4 = model.Sheet(4, "04_motion_controller_carrier_connectors.kicad_sch", "STM32H743 motion-controller power and carrier connectors", "Physical two-board interface for the eight UART channels; no field actuator power enters either connector.")
+    s4.components = [
+        component(model, "REG1", "CONTROL 5 V TO 3.3 V REGULATOR - DESIGN REQUIRED",
+                  [("LOG-5V-IN", "AUXILIARY 5 V INPUT", "AUX_5V_SAFE", "left"), ("LOG-RET-IN", "AUXILIARY RETURN", "AUX_0V", "left"),
+                   ("LOG-5V", "CONTROL 5 V", "CTRL_5V", "right"), ("LOG-3V3", "CONTROL 3.3 V", "CTRL_3V3", "right"), ("LOG-GND", "CONTROL GROUND", "CTRL_GND", "right")],
+                  "The exact regulator, filtering, sequencing, brownout, protection, thermal and EMC design remains open. This block does not authorize powering MCU1 or either carrier.", (205, 65), width=108.0),
+        component(model, "JMCU_A", "JST BM15B-GHS-TBT - CARRIER A CONTROLLER HEADER", carrier_connector_pins("A"),
+                  "Exact active 15-circuit JST GH top-entry header candidate. Mates GHR-15V-S with SSHL-002T-P0.2 contacts. Carries only logic rails and four UART triplets; no actuator VDD.",
+                  (120, 165), width=112.0, datasheet=JST_GH_SOURCE,
+                  evidence="JST GH official product page and eGH catalog checked 2026-08-14: 1.25 mm secure-lock, 15-circuit header/housing family, 1 A at AWG26 family rating.",
+                  status="EXACT CONNECTOR FAMILY/ORDER-CODE CANDIDATE - HARNESS AND PCB VALIDATION REQUIRED"),
+        component(model, "JMCU_B", "JST BM15B-GHS-TBT - CARRIER B CONTROLLER HEADER", carrier_connector_pins("B"),
+                  "Exact active 15-circuit JST GH top-entry header candidate. Carries one RS-485 UART triplet, three TTL IO/DIR pairs and three reserved open contacts; no actuator VDD.",
+                  (310, 165), width=112.0, datasheet=JST_GH_SOURCE,
+                  evidence="JST GH official product page and eGH catalog checked 2026-08-14.",
+                  status="EXACT CONNECTOR FAMILY/ORDER-CODE CANDIDATE - HARNESS AND PCB VALIDATION REQUIRED"),
+    ]
+    s4.notes = ["Carrier cable candidate: GHR-15V-S housing with SSHL-002T-P0.2 contacts and AWG26 conductors; exact length, assembly supplier, routing and flex life remain open.",
+                "JMCU_A/B carry logic only. No contact may be repurposed for actuator power. The controller PCB, regulator and power sequencing remain design work."]
     sheets.append(s4)
 
-    sheets.append(bus_sheet(model, 5, "05_left_leg_rs485.kicad_sch", "Left-leg RS-485 and protected branch", "RS-LLEG", BUS_AXES["RS-LLEG"], by_axis))
-    sheets.append(bus_sheet(model, 6, "06_right_leg_rs485.kicad_sch", "Right-leg RS-485 and protected branch", "RS-RLEG", BUS_AXES["RS-RLEG"], by_axis))
-    # Proximal arm plus waist sheets preserve one physical segment per named bus.
-    sheets.append(bus_sheet(model, 7, "07_left_arm_rs485.kicad_sch", "Left proximal-arm RS-485 and protected branch", "RS-LARM", BUS_AXES["RS-LARM"], by_axis))
-    sheets.append(bus_sheet(model, 8, "08_right_arm_rs485.kicad_sch", "Right proximal-arm RS-485 and protected branch", "RS-RARM", BUS_AXES["RS-RARM"], by_axis))
-    sheets.append(bus_sheet(model, 9, "09_waist_rs485.kicad_sch", "Waist RS-485 and protected branch", "RS-WAIST", BUS_AXES["RS-WAIST"], by_axis))
-    sheets.append(bus_sheet(model, 10, "10_left_distal_ttl.kicad_sch", "Left wrist/gripper TTL and protected branch", "TTL-LDIST", BUS_AXES["TTL-LDIST"], by_axis))
-    sheets.append(bus_sheet(model, 11, "11_right_distal_ttl.kicad_sch", "Right wrist/gripper TTL and protected branch", "TTL-RDIST", BUS_AXES["TTL-RDIST"], by_axis))
+    def isow_component(bus_id: str, position):
+        ref = "ISO_" + bus_id.replace("-", "_")
+        return component(model, ref, f"TI ISOW1432DFMR 12 Mbps ISOLATED RS-485 - {bus_id}",
+            [("1", "VIO", "CTRL_3V3", "left"), ("2", "D", f"UART_{bus_id}_TX", "left"),
+             ("3", "DE", f"UART_{bus_id}_DIR", "left"), ("4", "R", f"UART_{bus_id}_RX", "left"),
+             ("5", "RE ACTIVE LOW", f"UART_{bus_id}_DIR", "left"), ("6", "GNDIO", "CTRL_GND", "left"),
+             ("7", "OUT UNUSED", f"INTENTIONALLY_UNUSED_{ref}_7", "left"), ("8", "EN/FLT DEFAULT ENABLE", f"INTENTIONALLY_UNUSED_{ref}_8", "left"),
+             ("9", "VDD CONVERTER", "CTRL_5V", "left"), ("10", "GND1", "CTRL_GND", "left"),
+             ("11", "GND2", f"{bus_id}_RET", "right"), ("12", "VISOOUT", f"ISO_PWR_{bus_id}", "right"),
+             ("13", "MODE = GND2", f"{bus_id}_RET", "right"), ("14", "IN UNUSED", f"INTENTIONALLY_UNUSED_{ref}_14", "right"),
+             ("15", "GISOIN", f"{bus_id}_RET", "right"), ("16", "VISOIN", f"ISO_PWR_{bus_id}", "right"),
+             ("17", "Y DRIVER NONINVERTING", f"{bus_id}_DP", "right"), ("18", "Z DRIVER INVERTING", f"{bus_id}_DN", "right"),
+             ("19", "B RECEIVER INVERTING", f"{bus_id}_DN", "right"), ("20", "A RECEIVER NONINVERTING", f"{bus_id}_DP", "right")],
+            "Integrated isolated-power candidate. DE and active-low RE share the hardware DE net for half duplex. Y/A and Z/B form the two-wire bus. Exact decoupling/ferrites, termination, bias, surge/ESD, emissions layout and fault behavior remain design and test work.",
+            position, width=120.0, datasheet=TI_ISOW1432_SOURCE,
+            evidence="TI ISOW1412/ISOW1432 datasheet SLLSF86C Rev C, March 2022, checked 2026-08-14; ISOW1432DFMR is active, 12 Mbps, 20-pin DFM wide SOIC.",
+            status="EXACT TRANSCEIVER ORDER-CODE CANDIDATE - APPLICATION CIRCUIT/LAYOUT/TEST REQUIRED",
+            footprint="Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm")
 
-    s12 = bus_sheet(model, 12, "12_head_ttl_sensors_hmi.kicad_sch", "Head TTL, cameras, face display, audio and cooling", "TTL-HEAD", BUS_AXES["TTL-HEAD"], by_axis)
-    s12.components.extend([
+    def rs_field_connector(bus_id: str, position):
+        return component(model, "J_" + bus_id.replace("-", "_"), "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER",
+            [("1", "DATA REFERENCE / GND", f"{bus_id}_RET", "left"), ("2", "DATA+", f"{bus_id}_DP", "left"), ("3", "DATA-", f"{bus_id}_DN", "left")],
+            "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.",
+            position, width=72.0, datasheet=JST_GH_SOURCE,
+            evidence="JST GH official eGH catalog checked 2026-08-14.",
+            status="EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
+
+    s5 = model.Sheet(5, "05_carrier_a_four_isolated_rs485.kicad_sch", "Carrier A - four isolated RS-485 channels", "Exact ISOW1432 pin-level candidates for both legs and both proximal arms.")
+    s5.components.append(component(model, "JCA1", "JST GHR-15V-S CARRIER A CABLE RECEPTACLE", carrier_connector_pins("A"),
+                  "Mates JMCU_A through the logic-only carrier cable candidate.", (210, 60), width=112.0, datasheet=JST_GH_SOURCE,
+                  evidence="JST GH official product page/eGH catalog checked 2026-08-14.", status="EXACT CONNECTOR CANDIDATE - CABLE ASSEMBLY VALIDATION REQUIRED"))
+    for bus_id, position, field_position in zip(("RS-LLEG", "RS-RLEG", "RS-LARM", "RS-RARM"),
+                                                ((100, 115), (300, 115), (100, 195), (300, 195)),
+                                                ((55, 242), (155, 242), (255, 242), (355, 242))):
+        s5.components.extend([isow_component(bus_id, position), rs_field_connector(bus_id, field_position)])
+    s5.notes = ["All four channels are galvanically isolated from CTRL_GND by their candidate ISOW1432 device; isolation layout and barrier spacing are not yet a PCB release.",
+                "Field headers carry reference/data only. Protection device, common-mode choke, optional 120 ohm termination fit decision and bus waveform tests remain SELECTION REQUIRED."]
+    sheets.append(s5)
+
+    s6 = model.Sheet(6, "06_carrier_b_waist_and_ttl.kicad_sch", "Carrier B - waist RS-485 and three translated TTL channels", "One isolated waist bus plus three 3.3 V to 5 V single-wire half-duplex translators.")
+    s6.components = [
+        component(model, "JCB1", "JST GHR-15V-S CARRIER B CABLE RECEPTACLE", carrier_connector_pins("B"),
+                  "Mates JMCU_B through the logic-only carrier cable candidate.", (210, 60), width=112.0, datasheet=JST_GH_SOURCE,
+                  evidence="JST GH official product page/eGH catalog checked 2026-08-14.", status="EXACT CONNECTOR CANDIDATE - CABLE ASSEMBLY VALIDATION REQUIRED"),
+        isow_component("RS-WAIST", (120, 130)), rs_field_connector("RS-WAIST", (320, 130)),
+    ]
+    for bus_id, x in (("TTL-LDIST", 80), ("TTL-RDIST", 210), ("TTL-HEAD", 340)):
+        ref = "LVL_" + bus_id.replace("-", "_")
+        s6.components.append(component(model, ref, f"TI SN74LVC1T45DCKR 3.3 V / 5 V TRANSLATOR - {bus_id}",
+            [("1", "VCCA 3.3 V", "CTRL_3V3", "left"), ("2", "GND", "CTRL_GND", "left"),
+             ("3", "A MCU HALF-DUPLEX IO", f"UART_{bus_id}_TX", "left"), ("4", "B 5 V BUS DATA", f"{bus_id}_DATA", "right"),
+             ("5", "DIR HIGH = MCU TO BUS", f"UART_{bus_id}_DIR", "left"), ("6", "VCCB 5 V", "CTRL_5V", "left")],
+            "Direction-controlled dual-supply translator. MCU UART TX pin is configured as STM32 single-wire half-duplex IO; RX package pin is intentionally unused. DIR defaults and rail sequencing, series resistance, ESD, loading and waveform behavior require PCB/HIL validation.",
+            (x, 205), width=92.0, datasheet=TI_LVC1T45_SOURCE,
+            evidence="TI SN74LVC1T45 datasheet SCES515N Rev N, June 2024, checked 2026-08-14; SN74LVC1T45DCKR is active.",
+            status="EXACT LEVEL-TRANSLATOR ORDER-CODE CANDIDATE - APPLICATION VALIDATION REQUIRED",
+            footprint="Package_TO_SOT_SMD:SOT-363_SC-70-6"))
+        s6.components.append(component(model, "J_" + bus_id.replace("-", "_"), "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER",
+            [("1", "DATA REFERENCE / GND", f"{bus_id}_RET", "left"), ("2", "HALF-DUPLEX DATA", f"{bus_id}_DATA", "left")],
+            "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.",
+            (x, 245), width=92.0, datasheet=JST_GH_SOURCE,
+            evidence="JST GH official eGH catalog checked 2026-08-14.", status="EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED"))
+    s6.notes = ["The three TTL buses use STM32 single-wire half-duplex mode on the listed TX/IO pins. Their dedicated RX pins remain intentionally unused in P0.1.",
+                "Carrier B shares CTRL_GND with TTL field reference; only the waist RS-485 channel is galvanically isolated. ESD, return/shield topology and physical fault tests remain open."]
+    sheets.append(s6)
+
+    sheets.append(bus_sheet(model, 7, "07_left_leg_rs485.kicad_sch", "Left-leg RS-485 and protected branch", "RS-LLEG", BUS_AXES["RS-LLEG"], by_axis))
+    sheets.append(bus_sheet(model, 8, "08_right_leg_rs485.kicad_sch", "Right-leg RS-485 and protected branch", "RS-RLEG", BUS_AXES["RS-RLEG"], by_axis))
+    sheets.append(bus_sheet(model, 9, "09_left_arm_rs485.kicad_sch", "Left proximal-arm RS-485 and protected branch", "RS-LARM", BUS_AXES["RS-LARM"], by_axis))
+    sheets.append(bus_sheet(model, 10, "10_right_arm_rs485.kicad_sch", "Right proximal-arm RS-485 and protected branch", "RS-RARM", BUS_AXES["RS-RARM"], by_axis))
+    sheets.append(bus_sheet(model, 11, "11_waist_rs485.kicad_sch", "Waist RS-485 and protected branch", "RS-WAIST", BUS_AXES["RS-WAIST"], by_axis))
+    sheets.append(bus_sheet(model, 12, "12_left_distal_ttl.kicad_sch", "Left wrist/gripper TTL and protected branch", "TTL-LDIST", BUS_AXES["TTL-LDIST"], by_axis))
+    sheets.append(bus_sheet(model, 13, "13_right_distal_ttl.kicad_sch", "Right wrist/gripper TTL and protected branch", "TTL-RDIST", BUS_AXES["TTL-RDIST"], by_axis))
+
+    s14 = bus_sheet(model, 14, "14_head_ttl_sensors_hmi.kicad_sch", "Head TTL, cameras, face display, audio and cooling", "TTL-HEAD", BUS_AXES["TTL-HEAD"], by_axis)
+    s14.components.extend([
         component(model, "HPWR1", "PROTECTED HEAD AUXILIARY DISTRIBUTION - DESIGN REQUIRED", [("LOG-IN", "AUXILIARY 5 V INPUT", "AUX_5V_SAFE", "left"), ("LOG-RET-IN", "AUXILIARY RETURN", "AUX_0V", "left"), ("LOG-OUT", "HEAD 5 V", "HEAD_5V", "right"), ("LOG-RET-OUT", "HEAD RETURN", "HEAD_0V", "right")], "Branch protection, filtering, connector and current allocation remain open.", (70, 235), width=82.0),
         component(model, "CAM1", "LEFT CAMERA MODULE - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-IPC", "VISION IPC", "HEAD_CAM_L_IPC", "right")], "No safety role; exact module, optics, privacy and mounting remain open.", (175, 235), width=64.0),
         component(model, "CAM2", "RIGHT CAMERA MODULE - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-IPC", "VISION IPC", "HEAD_CAM_R_IPC", "right")], "No safety role; exact module, optics, synchronization and mounting remain open.", (260, 235), width=64.0),
@@ -333,15 +449,15 @@ def build_sheets(model):
         component(model, "SPK2", "RIGHT SPEAKER - SELECTION REQUIRED", [("LOG-P", "SPEAKER +", "SPK_R_POS", "left"), ("LOG-N", "SPEAKER -", "SPK_R_NEG", "left")], "Exact driver, enclosure and sound-pressure limit remain open.", (370, 285), width=58.0),
         component(model, "FAN1", "HEAD COOLING FAN - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-PWM", "PWM", "HEAD_FAN_PWM", "right"), ("LOG-TACH", "TACHOMETER", "HEAD_FAN_TACH", "right")], "Airflow, noise, finger guarding and failure detection remain open.", (405, 285), width=58.0),
     ])
-    sheets.append(s12)
+    sheets.append(s14)
 
-    s13 = model.Sheet(13, "13_pelvis_aux_imu.kicad_sch", "Auxiliary conversion and pelvis inertial sensing", "Logical 5 V auxiliary rail and pelvis IMU boundary.")
-    s13.components = [
+    s15 = model.Sheet(15, "15_pelvis_aux_imu.kicad_sch", "Auxiliary conversion and pelvis inertial sensing", "Logical 5 V auxiliary rail and pelvis IMU boundary.")
+    s15.components = [
         component(model, "AUXD1", "14.8 V TO 5.1 V AUXILIARY CONVERTER - SELECTION REQUIRED", [("LOG-IN", "INTERRUPTED INPUT", "ACT_14V8_SAFE", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-OUT", "AUXILIARY 5 V", "AUX_5V_SAFE", "right"), ("LOG-RET-OUT", "AUXILIARY RETURN", "AUX_0V", "right"), ("LOG-TLM", "CONVERTER TELEMETRY", "TLM_AUXD1", "right")], "Exact converter, protection, isolation/bonding, inrush, thermal and EMC evidence remain open.", (125, 115), width=96.0),
         component(model, "IMU1", "PELVIS 6/9-AXIS IMU - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "AUX_5V_SAFE", "left"), ("LOG-RET", "RETURN", "AUX_0V", "left"), ("LOG-DATA", "DETERMINISTIC SENSOR DATA", "PELVIS_IMU_DATA", "right"), ("LOG-INT", "DATA READY / FAULT", "PELVIS_IMU_INT", "right")], "Exact device, range, bandwidth, timestamping, calibration, connector and physical pins remain open.", (315, 115), width=92.0),
         component(model, "MCU_AUX", "MCU1 AUXILIARY SENSOR PORTS - LOGICAL UNIT", [("LOG-IMU", "PELVIS IMU DATA", "PELVIS_IMU_DATA", "left"), ("LOG-IMU-INT", "PELVIS IMU INTERRUPT", "PELVIS_IMU_INT", "left"), ("LOG-LFOOT", "LEFT FOOT SENSOR DATA", "L_FOOT_SENSOR_DATA", "right"), ("LOG-RFOOT", "RIGHT FOOT SENSOR DATA", "R_FOOT_SENSOR_DATA", "right")], "Alternate logical view of MCU1; exact package pins and interfaces remain open.", (220, 215), width=100.0),
     ]
-    sheets.append(s13)
+    sheets.append(s15)
 
     def foot_sheet(number, side):
         prefix = "L" if side == "left" else "R"
@@ -355,10 +471,10 @@ def build_sheets(model):
         sheet.notes = ["The four sensor locations correspond to the physical installed-equipment register; no sensor order code or force accuracy is released.", "Foot data supports state estimation only after calibration and fault validation; it carries no independent safety credit."]
         return sheet
 
-    sheets.append(foot_sheet(14, "left"))
-    sheets.append(foot_sheet(15, "right"))
-    if len(sheets) != 15:
-        raise SystemExit("controlled fifteen-child-sheet architecture drift")
+    sheets.append(foot_sheet(16, "left"))
+    sheets.append(foot_sheet(17, "right"))
+    if len(sheets) != 17:
+        raise SystemExit("controlled seventeen-child-sheet architecture drift")
     return sheets
 
 
@@ -421,19 +537,56 @@ def run_kicad():
 
 
 def write_docs(sheets):
+    contact_map = {
+        "RS-LLEG": "JMCU_A/JCA1 contacts 4 TX, 5 RX, 6 DE", "RS-RLEG": "JMCU_A/JCA1 contacts 7 TX, 8 RX, 9 DE",
+        "RS-LARM": "JMCU_A/JCA1 contacts 10 TX, 11 RX, 12 DE", "RS-RARM": "JMCU_A/JCA1 contacts 13 TX, 14 RX, 15 DE",
+        "RS-WAIST": "JMCU_B/JCB1 contacts 4 TX, 5 RX, 6 DE", "TTL-LDIST": "JMCU_B/JCB1 contacts 7 IO, 8 DIR",
+        "TTL-RDIST": "JMCU_B/JCB1 contacts 9 IO, 10 DIR", "TTL-HEAD": "JMCU_B/JCB1 contacts 11 IO, 12 DIR",
+    }
+    pin_rows = []
+    for bus_id, allocation in UART_ALLOCATIONS.items():
+        ttl = bus_id.startswith("TTL-")
+        tx_name, tx_pin, tx_af = allocation["tx"]
+        rx_name, rx_pin, rx_af = allocation["rx"]
+        de_name, de_pin, de_af = allocation["de"]
+        pin_rows.append({
+            "bus_id": bus_id, "carrier": allocation["carrier"], "protocol": "TTL SINGLE-WIRE HALF-DUPLEX" if ttl else "RS-485 HALF-DUPLEX",
+            "stm32_peripheral": allocation["uart"], "mcu_tx_or_io": f"{tx_name} package pin {tx_pin} {tx_af}",
+            "mcu_rx": f"{rx_name} package pin {rx_pin} {rx_af} - INTENTIONALLY UNUSED IN P0.1" if ttl else f"{rx_name} package pin {rx_pin} {rx_af}",
+            "mcu_de": f"{de_name} package pin {de_pin} {de_af}", "internal_connector_contacts": contact_map[bus_id],
+            "interface_device": "SN74LVC1T45DCKR" if ttl else "ISOW1432DFMR",
+            "field_header": "BM02B-GHS-TBT; 1=reference, 2=data; NO VDD" if ttl else "BM03B-GHS-TBT; 1=reference, 2=data+, 3=data-; NO VDD",
+            "selection_boundary": "PCB layout, passives/protection, exact cable assembly, termination/EMC/timing and physical validation remain open",
+            "warning": WARNING,
+        })
+    with (ECAD / "interface-carrier-pinout.csv").open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(pin_rows[0])); writer.writeheader(); writer.writerows(pin_rows)
+    source_rows = [
+        {"source_id": "STM32H743ZI", "manufacturer": "STMicroelectronics", "document": "STM32H742xI/G and STM32H743xI/G datasheet", "revision_or_date": "DS12110 Rev 11", "accessed": DATE, "url": ST_H743_SOURCE, "verified": "STM32H743ZIT6 active LQFP144; eight UART/USART peripherals; selected TX/RX/RTS-DE package pins and alternate functions"},
+        {"source_id": "ISOW1432", "manufacturer": "Texas Instruments", "document": "ISOW1412/ISOW1432 datasheet", "revision_or_date": "SLLSF86C Rev C; March 2022", "accessed": DATE, "url": TI_ISOW1432_SOURCE, "verified": "ISOW1432DFMR active; 20-pin DFM; exact pins 1-20; 12 Mbps; integrated isolated DC/DC; half-duplex Y/Z and A/B binding"},
+        {"source_id": "SN74LVC1T45", "manufacturer": "Texas Instruments", "document": "SN74LVC1T45 datasheet", "revision_or_date": "SCES515N Rev N; June 2024", "accessed": DATE, "url": TI_LVC1T45_SOURCE, "verified": "SN74LVC1T45DCKR active; exact six-pin DCK mapping; 1.65-5.5 V dual rails; DIR high A-to-B"},
+        {"source_id": "JST-GH", "manufacturer": "JST", "document": "GH connector catalog", "revision_or_date": "live official catalog; revision not stated", "accessed": DATE, "url": JST_GH_SOURCE, "verified": "GHR-02/03/15V-S housings; BM02/03/15B-GHS-TBT headers; SSHL-002T-P0.2 contact; 1.25 mm secure-lock family"},
+        {"source_id": "OPENCR-REF", "manufacturer": "ROBOTIS", "document": "OpenCR Rev H schematic and BOM", "revision_or_date": "Rev H; schematic dated 2020-02-26; official repository checked 2026-08-14", "accessed": DATE, "url": "https://github.com/ROBOTIS-GIT/OpenCR-Hardware", "verified": "manufacturer reference confirms separate UART TX/RX/DIR half-duplex topology and DYNAMIXEL TTL/RS-485 connector conventions; HR-30 uses newer selected devices"},
+    ]
+    with (ECAD / "interface-carrier-source-register.csv").open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(source_rows[0])); writer.writeheader(); writer.writerows(source_rows)
     (ECAD / "README.md").write_text("# HR-30 whole-body electrical P0.1\n\n"
         f"**{WARNING}**\n\n"
-        "This is the native KiCad 10 whole-body architecture for the current 25-axis HR-30 candidate. It contains a root index plus fifteen populated child sheets. Five RS-485 and three TTL actuator segments match the whole-body bus allocation exactly; individual head HMI devices, pelvis IMU and bilateral four-point foot sensing are also represented.\n\n"
-        "AX_* actuator terminals use current official ROBOTIS actuator-side pin numbers. All `LOG-*` terminal identifiers are functional ports, not physical connector or IC pin numbers. Controller/interface pins, exact devices, order codes, fuse/limiter values, conductors, connectors, grounding, shield treatment, safety allocation, stopping time and physical behavior remain unresolved. The historical mixed HR-V0/HR-30 project is not incorporated as verified wiring.\n\n"
+        "This is the native KiCad 10 whole-body architecture for the current 25-axis HR-30 candidate. It contains a root index plus seventeen populated child sheets. Five RS-485 and three TTL actuator segments match the whole-body bus allocation exactly; individual head HMI devices, pelvis IMU and bilateral four-point foot sensing are also represented.\n\n"
+        "The actuator interface is now a pin-level candidate, not eight abstract boxes. STM32H743ZIT6 LQFP144 package pins are allocated to all eight UART channels; Carrier A contains four ISOW1432DFMR isolated RS-485 candidates; Carrier B contains one ISOW1432DFMR plus three SN74LVC1T45DCKR 3.3/5 V single-wire TTL translators. Exact JST GH controller and data-only field connectors are shown. The field connectors intentionally contain no actuator VDD contact.\n\n"
+        "AX_* actuator terminals use current official ROBOTIS actuator-side pin numbers. Remaining `LOG-*` identifiers are unresolved functional ports elsewhere in the architecture. Carrier PCB layout, decoupling/ferrites, termination/bias, surge/ESD, shielding, assembled cables, actuator power injection, fuse/limiter values, conductors, grounding, safety allocation, timing and physical behavior remain unresolved. The historical mixed HR-V0/HR-30 project is not incorporated as verified wiring.\n\n"
         "## Sheets\n\n" + "\n".join(f"{s.number}. `{s.filename}` — {s.title}" for s in sheets) + "\n\n"
         "KiCad ERC checks encoded passive-pin connectivity and annotation only. It grants no functional-safety credit and no authority to order, fabricate, connect, power, move or energize the robot.\n",
         encoding="utf-8", newline="\n")
     status = {
-        "identifier": IDENTIFIER, "kicad_version": "10.0.5", "native_sheet_count": 16,
-        "child_sheet_count": 15, "axis_binding_count": 25, "actuator_bus_segment_count": 8,
+        "identifier": IDENTIFIER, "kicad_version": "10.0.5", "native_sheet_count": 18,
+        "child_sheet_count": 17, "axis_binding_count": 25, "actuator_bus_segment_count": 8,
         "rs485_segment_count": 5, "ttl_segment_count": 3,
         "native_kicad_parsed": True, "erc_errors": 0, "erc_warnings": 0,
         "logical_connectivity_reconciled": True, "actuator_side_physical_pin_mapping_reconciled": True,
+        "actuator_bus_controller_physical_pin_mapping_reconciled": True,
+        "actuator_bus_interface_device_candidates_selected": True,
+        "actuator_bus_data_only_connector_candidates_selected": True,
         "physical_pin_mapping_reconciled": False,
         "interface_devices_selected": False, "protection_values_selected": False,
         "functional_safety_validated": False, "connection_authority": False,
@@ -442,8 +595,8 @@ def write_docs(sheets):
     }
     (ECAD / "electrical-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
     svg_files = sorted((ECAD / "output").glob("*.svg"), key=lambda path: (path.name != f"{PROJECT}.svg", path.name))
-    if len(svg_files) != 16:
-        raise SystemExit("interactive electrical guide requires root plus fifteen SVG exports")
+    if len(svg_files) != 18:
+        raise SystemExit("interactive electrical guide requires root plus seventeen SVG exports")
     panels = []
     nav = []
     for index, svg in enumerate(svg_files):
@@ -451,7 +604,7 @@ def write_docs(sheets):
         anchor = "sheet-" + ("root" if index == 0 else f"{index:02d}")
         nav.append(f'<a href="#{anchor}">{html.escape(title)}</a>')
         panels.append(f'''<details id="{anchor}"{' open' if index == 0 else ''}><summary>{html.escape(title)}</summary><div class="sheet"><object data="output/{html.escape(svg.name, quote=True)}" type="image/svg+xml" aria-label="{html.escape(title, quote=True)} electrical diagram"></object></div><p><a href="output/{html.escape(svg.name, quote=True)}">Open this SVG directly for pan and zoom</a></p></details>''')
-    (ECAD / "index.html").write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 interactive electrical guide P0.1</title><style>:root{{--ink:#061a36;--sky:#8ed8ff;--blue:#0a4b91;--gold:#f5bd2b;--paper:#f6fbff}}*{{box-sizing:border-box}}body{{margin:0;font:17px/1.55 system-ui,sans-serif;color:var(--ink);background:var(--paper)}}header,main{{max-width:1180px;margin:auto;padding:28px}}header{{max-width:none;background:var(--ink);color:white}}header>div{{max-width:1180px;margin:auto}}h1{{font-size:clamp(2rem,5vw,4rem);line-height:1.05}}.warning{{border:3px solid var(--gold);padding:14px;font-weight:900}}nav{{display:flex;flex-wrap:wrap;gap:10px}}nav a,details>p a{{display:inline-block;color:#064f91;font-weight:800}}nav a{{padding:9px 12px;background:white;border:2px solid var(--blue);border-radius:10px;text-decoration:none}}details{{margin:18px 0;background:white;border:2px solid var(--blue);border-radius:14px;overflow:hidden}}summary{{padding:16px 18px;font-size:18px;font-weight:850;cursor:pointer;background:#e4f6ff}}.sheet{{width:100%;height:clamp(520px,72vh,820px);overflow:auto;background:#fff}}object{{display:block;width:100%;height:100%;min-width:900px}}details>p{{margin:0;padding:12px 18px;border-top:1px solid #9ccfe8}}small{{font-size:14px}}@media(max-width:680px){{body{{font-size:16px}}header,main{{padding:20px 14px}}summary{{font-size:17px}}.sheet{{height:560px}}}}</style></head><body><header><div><p class="warning">{WARNING}</p><h1>Explore all 16 native KiCad sheets.</h1><p>The hierarchy and every populated child sheet are embedded below. Pan within a diagram or open its SVG directly for browser zoom.</p></div></header><main><nav>{''.join(nav)}</nav><section><h2>Connected logical architecture</h2><p>KiCad 10 ERC reports 0 errors and 0 warnings. That verifies encoded connectivity and annotation only. Physical controller pins, exact devices, protection, grounding, safety validation, and all connection or energization authority remain open.</p>{''.join(panels)}</section></main></body></html>''', encoding="utf-8", newline="\n")
+    (ECAD / "index.html").write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 interactive electrical guide P0.1</title><style>:root{{--ink:#061a36;--sky:#8ed8ff;--blue:#0a4b91;--gold:#f5bd2b;--paper:#f6fbff}}*{{box-sizing:border-box}}body{{margin:0;font:17px/1.55 system-ui,sans-serif;color:var(--ink);background:var(--paper)}}header,main{{max-width:1180px;margin:auto;padding:28px}}header{{max-width:none;background:var(--ink);color:white}}header>div{{max-width:1180px;margin:auto}}h1{{font-size:clamp(2rem,5vw,4rem);line-height:1.05}}.warning{{border:3px solid var(--gold);padding:14px;font-weight:900}}nav{{display:flex;flex-wrap:wrap;gap:10px}}nav a,details>p a{{display:inline-block;color:#064f91;font-weight:800}}nav a{{padding:9px 12px;background:white;border:2px solid var(--blue);border-radius:10px;text-decoration:none}}details{{margin:18px 0;background:white;border:2px solid var(--blue);border-radius:14px;overflow:hidden}}summary{{padding:16px 18px;font-size:18px;font-weight:850;cursor:pointer;background:#e4f6ff}}.sheet{{width:100%;height:clamp(520px,72vh,820px);overflow:auto;background:#fff}}object{{display:block;width:100%;height:100%;min-width:900px}}details>p{{margin:0;padding:12px 18px;border-top:1px solid #9ccfe8}}small{{font-size:14px}}@media(max-width:680px){{body{{font-size:16px}}header,main{{padding:20px 14px}}summary{{font-size:17px}}.sheet{{height:560px}}}}</style></head><body><header><div><p class="warning">{WARNING}</p><h1>Explore all 18 native KiCad sheets.</h1><p>The hierarchy and every populated child sheet are embedded below. Carrier A and Carrier B now show the sourced pin-level actuator-interface candidates.</p></div></header><main><nav>{''.join(nav)}</nav><section><h2>Connected preliminary architecture</h2><p>KiCad 10 ERC reports 0 errors and 0 warnings. That verifies encoded connectivity and annotation only. Carrier PCB passives/layout, protection, grounding, timing, safety validation, and all connection or energization authority remain open.</p><p><a href="interface-carrier-pinout.csv">Eight-channel physical pin map</a> · <a href="interface-carrier-source-register.csv">Primary-source register</a></p>{''.join(panels)}</section></main></body></html>''', encoding="utf-8", newline="\n")
     shutil.copy2(Path(__file__), ECAD / "native-kicad-source.py")
 
 
@@ -460,11 +613,14 @@ def update_package():
     status = json.loads(status_path.read_text(encoding="utf-8"))
     status.update({
         "native_hr30_kicad_present": True,
-        "native_hr30_kicad_sheet_count": 16,
+        "native_hr30_kicad_sheet_count": 18,
         "native_hr30_kicad_axis_binding_count": 25,
         "native_hr30_kicad_logical_connectivity_reconciled": True,
         "native_hr30_kicad_actuator_side_pins_reconciled": True,
         "native_hr30_kicad_reconciled": False,
+        "native_hr30_kicad_actuator_bus_controller_pins_selected": True,
+        "native_hr30_kicad_interface_device_candidates_selected": True,
+        "native_hr30_kicad_data_only_connector_candidates_selected": True,
         "native_hr30_kicad_physical_pins_selected": False,
         "native_hr30_kicad_erc_errors": 0,
         "native_hr30_kicad_erc_warnings": 0,
@@ -474,7 +630,7 @@ def update_package():
     holds = read_csv(holds_path)
     for row in holds:
         if row["hold_id"] == "HR30-P01-H11":
-            row["unresolved_item"] = "A native 16-sheet HR-30 KiCad project now binds all 25 axes to five RS-485 and three TTL segments, separates the head HMI devices, and includes the pelvis IMU plus bilateral four-point foot sensing with zero ERC violations. Current ROBOTIS documentation closes actuator-side pins only. Controller/interface devices and pins, cable/breakout hardware, protection values, termination/bias/level shifting, data-only harness isolation, grounding, EMC, timing/latency, sensing calibration, safety allocation and physical fault tests remain open."
+            row["unresolved_item"] = "The native 18-sheet HR-30 KiCad project binds all 25 axes, selects an active STM32H743ZIT6 LQFP144 candidate, assigns eight verified UART pin groups, and shows five ISOW1432DFMR plus three SN74LVC1T45DCKR pin-level interface candidates with exact JST GH data-only connectors. Carrier PCB passives/layout, protection values, termination/bias, cable assemblies, branch power injection, grounding, EMC, timing, sensing calibration, safety allocation and physical fault tests remain open."
     with holds_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(holds[0]))
         writer.writeheader(); writer.writerows(holds)
@@ -484,7 +640,7 @@ def update_package():
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
     marker = '<section id="actuator-buses">'
-    section = f'''{start}<section id="native-electrical"><h2>The whole robot now has native KiCad source</h2><div class="grid"><article class="card pass"><h3>16 native sheets</h3><p>One hierarchy page and fifteen populated child sheets cover energy, interruption, compute/control, every actuator bus, individual head HMI devices, pelvis IMU and both instrumented feet.</p></article><article class="card pass"><h3>25 axes connected</h3><p>All nineteen RS-485 and six TTL actuator candidates appear in the native netlist on their assigned whole-body segments.</p></article><article class="card pass"><h3>Whole-body sensing shown</h3><p>The face display, cameras, microphone, amplifier, speakers, fan, pelvis IMU and eight sole sensors have explicit logical terminals.</p></article><article class="card hold"><h3>ERC: 0 / 0</h3><p>KiCad 10 reports zero errors and zero warnings for encoded connectivity. ERC is not a physical, safety, or energization approval.</p></article></div><div class="viewer"><object data="electrical/kicad/{PROJECT}/output/{PROJECT}.svg" type="image/svg+xml" aria-label="Interactive HR-30 native KiCad hierarchy diagram"></object><p><a href="electrical/kicad/{PROJECT}/index.html">Open the interactive 16-sheet electrical guide</a>, or download the <a href="electrical/kicad/{PROJECT}/{PROJECT}.kicad_pro">KiCad project</a>, <a href="electrical/kicad/{PROJECT}/connector-schedule.csv">terminal schedule</a>, <a href="electrical/kicad/{PROJECT}/net-schedule.csv">net schedule</a>, and <a href="electrical/kicad/{PROJECT}/validation/{PROJECT}-erc.rpt">complete ERC report</a>.</p></div></section>{end}'''
+    section = f'''{start}<section id="native-electrical"><h2>The whole robot now has pin-level actuator interfaces</h2><div class="grid"><article class="card pass"><h3>18 native sheets</h3><p>One hierarchy page and seventeen populated child sheets now include the motion-controller connector boundary and both four-channel carrier circuits.</p></article><article class="card pass"><h3>8 MCU channels pinned</h3><p>An active STM32H743ZIT6 LQFP144 candidate has verified TX/IO, RX and hardware-DE package pins for every actuator segment.</p></article><article class="card pass"><h3>8 interface candidates</h3><p>Five ISOW1432DFMR isolated RS-485 devices and three SN74LVC1T45DCKR TTL translators terminate at exact data-only JST GH headers.</p></article><article class="card hold"><h3>ERC: 0 / 0</h3><p>KiCad validates encoded connectivity only. PCB passives/layout, protection, timing, EMC, fault behavior and physical tests remain open.</p></article></div><div class="viewer"><object data="electrical/kicad/{PROJECT}/output/{PROJECT}.svg" type="image/svg+xml" aria-label="Interactive HR-30 native KiCad hierarchy diagram"></object><p><a href="electrical/kicad/{PROJECT}/index.html">Open the interactive 18-sheet electrical guide</a>, inspect the <a href="electrical/kicad/{PROJECT}/interface-carrier-pinout.csv">eight-channel pin map</a>, or download the <a href="electrical/kicad/{PROJECT}/{PROJECT}.kicad_pro">KiCad project</a>, <a href="electrical/kicad/{PROJECT}/connector-schedule.csv">terminal schedule</a>, <a href="electrical/kicad/{PROJECT}/net-schedule.csv">net schedule</a>, and <a href="electrical/kicad/{PROJECT}/validation/{PROJECT}-erc.rpt">complete ERC report</a>.</p></div></section>{end}'''
     if marker not in page:
         raise SystemExit("actuator bus web marker missing")
     page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")
@@ -509,7 +665,7 @@ def main() -> int:
     write_docs(sheets)
     write_manifest()
     update_package()
-    print(json.dumps({"identifier": IDENTIFIER, "native_sheets": 16, "axes": 25, "segments": 8, "erc_errors": 0, "erc_warnings": 0, "physical_pin_mapping_reconciled": False}, indent=2))
+    print(json.dumps({"identifier": IDENTIFIER, "native_sheets": 18, "axes": 25, "segments": 8, "erc_errors": 0, "erc_warnings": 0, "actuator_bus_controller_pins_reconciled": True, "whole_project_physical_pin_mapping_reconciled": False}, indent=2))
     return 0
 
 

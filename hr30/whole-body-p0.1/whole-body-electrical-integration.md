@@ -16,13 +16,13 @@ The 25-axis candidate population is not one electrical protocol. The nineteen se
 
 ## Physical implementation boundary
 
-Current official ROBOTIS manuals now close only the actuator-side pin order and listed connector piece parts: RS-485 pin 1 GND, 2 VDD, 3 DATA+, 4 DATA- using the EHR-04/B4B-EH-A family; XC330 TTL pin 1 GND, 2 VDD, 3 DATA using EHR-03/B3B-EH-A; both list SEH-001T-P0.6 contacts and 21 AWG DYNAMIXEL wire. This allocation does **not** select eight controller interfaces or release wiring. Exact controller boards/transceivers, isolation, voltage-domain compatibility, direction control, controller pins/connectors, assembled cables, termination, bias, protection, shield/return treatment, grounding, application conductor sizing, routing, actuator IDs, bus timing and failure behavior remain **SELECTION REQUIRED**.
+Current primary manufacturer documentation closes the actuator-side pin order and listed connector piece parts: RS-485 pin 1 GND, 2 VDD, 3 DATA+, 4 DATA-; TTL pin 1 GND, 2 VDD, 3 DATA. It also closes the STM32H743ZIT6 LQFP144 UART package pins, five ISOW1432DFMR isolated RS-485 device pinouts, three SN74LVC1T45DCKR 3.3/5 V translator pinouts, and eight exact JST GH data-only field connector candidates. The field connectors intentionally contain reference and data only, with no actuator-VDD contact. PCB layout/passives, assembled cables, actuator power-injection breakout, termination, bias, protection, shield/return treatment, grounding, application conductor sizing, routing, actuator IDs, bus timing, EMC and failure behavior remain **SELECTION REQUIRED**.
 
 The P0.1 candidate uses one separately protected power branch per bus segment, not 25 independently protected actuator feeds. Axes listed on one bus may share that segment VDD; no cable or breakout may connect VDD between different protected segments. Exact branch analysis, connector/breakout design and physical no-backfeed verification remain required before connection.
 
 ## Relationship to KiCad
 
-The historical `project-button-v2` native KiCad package is mixed HR-V0/HR-30 preliminary architecture and is **not synchronized** to this eight-segment whole-body allocation. A new HR-30-only native KiCad reconciliation must bind all 25 axes, selected interface devices, pins, connectors, protection, grounding, cable/shield rules and shutdown behavior. Until that work exists and receives qualified review, this package grants no connection, powered-test, motion, or energization authority.
+The HR-30-only native KiCad project now binds all 25 axes and the eight sourced pin-level interface candidates across eighteen populated sheets with ERC 0/0. That is encoded connectivity and annotation evidence only. Carrier PCB passives/layout, protection, grounding, cable/shield rules, timing, shutdown behavior and physical fault validation remain open, so this package grants no connection, powered-test, motion, or energization authority.
 
 ## Primary manufacturer evidence
 

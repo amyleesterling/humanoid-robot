@@ -1,4 +1,4 @@
-ERC report (2026-08-14T13:05:35, Encoding UTF8)
+ERC report (2026-08-14T13:52:52, Encoding UTF8)
 Report includes: Errors, Warnings
 
 ***** Sheet /
@@ -9,29 +9,33 @@ Report includes: Errors, Warnings
 
 ***** Sheet /03 Conversational compute, deterministic motion controller and watchdog/
 
-***** Sheet /04 Five isolated RS-485 and three protected TTL interface channels/
+***** Sheet /04 STM32H743 motion-controller power and carrier connectors/
 
-***** Sheet /05 Left-leg RS-485 and protected branch/
+***** Sheet /05 Carrier A - four isolated RS-485 channels/
 
-***** Sheet /06 Right-leg RS-485 and protected branch/
+***** Sheet /06 Carrier B - waist RS-485 and three translated TTL channels/
 
-***** Sheet /07 Left proximal-arm RS-485 and protected branch/
+***** Sheet /07 Left-leg RS-485 and protected branch/
 
-***** Sheet /08 Right proximal-arm RS-485 and protected branch/
+***** Sheet /08 Right-leg RS-485 and protected branch/
 
-***** Sheet /09 Waist RS-485 and protected branch/
+***** Sheet /09 Left proximal-arm RS-485 and protected branch/
 
-***** Sheet /10 Left wrist/gripper TTL and protected branch/
+***** Sheet /10 Right proximal-arm RS-485 and protected branch/
 
-***** Sheet /11 Right wrist/gripper TTL and protected branch/
+***** Sheet /11 Waist RS-485 and protected branch/
 
-***** Sheet /12 Head TTL, cameras, face display, audio and cooling/
+***** Sheet /12 Left wrist/gripper TTL and protected branch/
 
-***** Sheet /13 Auxiliary conversion and pelvis inertial sensing/
+***** Sheet /13 Right wrist/gripper TTL and protected branch/
 
-***** Sheet /14 Left foot four-point load sensing/
+***** Sheet /14 Head TTL, cameras, face display, audio and cooling/
 
-***** Sheet /15 Right foot four-point load sensing/
+***** Sheet /15 Auxiliary conversion and pelvis inertial sensing/
+
+***** Sheet /16 Left foot four-point load sensing/
+
+***** Sheet /17 Right foot four-point load sensing/
 
  ** ERC messages: 0  Errors 0  Warnings 0
 

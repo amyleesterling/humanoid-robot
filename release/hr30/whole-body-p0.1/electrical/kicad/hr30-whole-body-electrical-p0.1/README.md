@@ -2,26 +2,30 @@
 
 **PRELIMINARY - NOT APPROVED FOR CONNECTION, FABRICATION, MOTION OR ENERGIZATION**
 
-This is the native KiCad 10 whole-body architecture for the current 25-axis HR-30 candidate. It contains a root index plus fifteen populated child sheets. Five RS-485 and three TTL actuator segments match the whole-body bus allocation exactly; individual head HMI devices, pelvis IMU and bilateral four-point foot sensing are also represented.
+This is the native KiCad 10 whole-body architecture for the current 25-axis HR-30 candidate. It contains a root index plus seventeen populated child sheets. Five RS-485 and three TTL actuator segments match the whole-body bus allocation exactly; individual head HMI devices, pelvis IMU and bilateral four-point foot sensing are also represented.
 
-AX_* actuator terminals use current official ROBOTIS actuator-side pin numbers. All `LOG-*` terminal identifiers are functional ports, not physical connector or IC pin numbers. Controller/interface pins, exact devices, order codes, fuse/limiter values, conductors, connectors, grounding, shield treatment, safety allocation, stopping time and physical behavior remain unresolved. The historical mixed HR-V0/HR-30 project is not incorporated as verified wiring.
+The actuator interface is now a pin-level candidate, not eight abstract boxes. STM32H743ZIT6 LQFP144 package pins are allocated to all eight UART channels; Carrier A contains four ISOW1432DFMR isolated RS-485 candidates; Carrier B contains one ISOW1432DFMR plus three SN74LVC1T45DCKR 3.3/5 V single-wire TTL translators. Exact JST GH controller and data-only field connectors are shown. The field connectors intentionally contain no actuator VDD contact.
+
+AX_* actuator terminals use current official ROBOTIS actuator-side pin numbers. Remaining `LOG-*` identifiers are unresolved functional ports elsewhere in the architecture. Carrier PCB layout, decoupling/ferrites, termination/bias, surge/ESD, shielding, assembled cables, actuator power injection, fuse/limiter values, conductors, grounding, safety allocation, timing and physical behavior remain unresolved. The historical mixed HR-V0/HR-30 project is not incorporated as verified wiring.
 
 ## Sheets
 
 1. `01_energy_precharge_conversion.kicad_sch` — Energy, service disconnect, precharge and conversion
 2. `02_estop_permit_contactors.kicad_sch` — Dual-channel E-stop, monitored reset, permit and redundant interruption
 3. `03_compute_motion_watchdog.kicad_sch` — Conversational compute, deterministic motion controller and watchdog
-4. `04_eight_actuator_bus_interfaces.kicad_sch` — Five isolated RS-485 and three protected TTL interface channels
-5. `05_left_leg_rs485.kicad_sch` — Left-leg RS-485 and protected branch
-6. `06_right_leg_rs485.kicad_sch` — Right-leg RS-485 and protected branch
-7. `07_left_arm_rs485.kicad_sch` — Left proximal-arm RS-485 and protected branch
-8. `08_right_arm_rs485.kicad_sch` — Right proximal-arm RS-485 and protected branch
-9. `09_waist_rs485.kicad_sch` — Waist RS-485 and protected branch
-10. `10_left_distal_ttl.kicad_sch` — Left wrist/gripper TTL and protected branch
-11. `11_right_distal_ttl.kicad_sch` — Right wrist/gripper TTL and protected branch
-12. `12_head_ttl_sensors_hmi.kicad_sch` — Head TTL, cameras, face display, audio and cooling
-13. `13_pelvis_aux_imu.kicad_sch` — Auxiliary conversion and pelvis inertial sensing
-14. `14_left_foot_load_sensing.kicad_sch` — Left foot four-point load sensing
-15. `15_right_foot_load_sensing.kicad_sch` — Right foot four-point load sensing
+4. `04_motion_controller_carrier_connectors.kicad_sch` — STM32H743 motion-controller power and carrier connectors
+5. `05_carrier_a_four_isolated_rs485.kicad_sch` — Carrier A - four isolated RS-485 channels
+6. `06_carrier_b_waist_and_ttl.kicad_sch` — Carrier B - waist RS-485 and three translated TTL channels
+7. `07_left_leg_rs485.kicad_sch` — Left-leg RS-485 and protected branch
+8. `08_right_leg_rs485.kicad_sch` — Right-leg RS-485 and protected branch
+9. `09_left_arm_rs485.kicad_sch` — Left proximal-arm RS-485 and protected branch
+10. `10_right_arm_rs485.kicad_sch` — Right proximal-arm RS-485 and protected branch
+11. `11_waist_rs485.kicad_sch` — Waist RS-485 and protected branch
+12. `12_left_distal_ttl.kicad_sch` — Left wrist/gripper TTL and protected branch
+13. `13_right_distal_ttl.kicad_sch` — Right wrist/gripper TTL and protected branch
+14. `14_head_ttl_sensors_hmi.kicad_sch` — Head TTL, cameras, face display, audio and cooling
+15. `15_pelvis_aux_imu.kicad_sch` — Auxiliary conversion and pelvis inertial sensing
+16. `16_left_foot_load_sensing.kicad_sch` — Left foot four-point load sensing
+17. `17_right_foot_load_sensing.kicad_sch` — Right foot four-point load sensing
 
 KiCad ERC checks encoded passive-pin connectivity and annotation only. It grants no functional-safety credit and no authority to order, fabricate, connect, power, move or energize the robot.

@@ -43,16 +43,18 @@ The web-first interface atlas now consolidates the actual 12 build modules, all 
 
 All 25 axes now have a reproducible static load screen tied to the current URDF mass tree, the 100 g handoff payload and explicit single-support COM-offset cases. The elbows and shoulder-roll axes use 82 g XM430 candidates; the wrists use XC330 candidates; the ankles use reduced XM430 candidates; and the knees reserve 2.0:1 reductions. Published stall values remain momentary endpoints only; continuous torque, belt capacity, thermal behavior, dynamic gait loads and physical correlation are open.
 
-
-
 ## Installed equipment layout
 
 The former empty torso, pelvis, head and foot reservations now contain 54 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.442 kg. The primary whole-body candidate now includes the exact published envelope and mass of a Grepow/Tattu TAA12K4S30EC5 4S 12 Ah pack in a removable rear-torso cassette, plus a distinct protection/telemetry reservation because the pack page does not state an integrated BMS/PCM. The tether inlet remains for controlled development. Battery protection, current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
 
 
 
+
+
+
+
 <!-- HR30-HARNESS-README-START -->
 ## Whole-body harness
 
-Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Current official ROBOTIS documentation closes actuator-side pins only; controller interfaces, cable assemblies, protection, sizing, retention, flex life, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
+Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
 <!-- HR30-HARNESS-README-END -->

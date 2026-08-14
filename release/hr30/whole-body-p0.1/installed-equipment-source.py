@@ -114,12 +114,12 @@ def build() -> list[Equipment]:
         "https://www.raspberrypi.com/products/active-cooler/", "live official product page; accessed 2026-08-14",
         "envelope and installed mass remain incoming-inspection items", "torso", compute)
     add("EQ-T01-MOTION", "C01", "deterministic motion controller",
-        "STM32H743-class custom carrier candidate; exact board SELECTION REQUIRED",
+        "custom STM32H743ZIT6 LQFP144 motion-controller carrier candidate",
         box(74, 10, 44, (0, 24, 482), 2), 0.055, 4.0, 3.0,
         "torso rear electronics tray", "+Y rear-cover withdrawal",
-        "isolated Ethernet/CAN/RS-485, watchdog input, permit output; pinout open",
-        "SELECTION REQUIRED", "SELECTION REQUIRED",
-        "planning envelope/mass only; no released schematic or safety credit", "torso", control)
+        "JMCU_A/JMCU_B each JST BM15B-GHS-TBT; eight sourced UART pin groups; watchdog/permit and remaining board pins open",
+        "https://www.st.com/en/microcontrollers-microprocessors/stm32h743zi.html", "ST DS12110 Rev 11; live product page accessed 2026-08-14",
+        "exact MCU order-code and eight actuator-bus package pins selected; PCB, power/reset/debug, firmware and safety credit remain open", "torso", control)
     add("EQ-T01-WATCHDOG", "S01", "independent watchdog",
         "Raspberry Pi Pico-class non-safety-rated diagnostic watchdog candidate",
         box(22, 8, 52, (-49, 22, 535), 1.5), 0.012, 0.5, 0.5,
@@ -128,17 +128,21 @@ def build() -> list[Equipment]:
         "https://www.raspberrypi.com/products/raspberry-pi-pico/", "live official product page; accessed 2026-08-14",
         "diagnostic only; cannot be credited as a safety function", "torso", safety)
 
-    for suffix, x, buses in (
-        ("A", -48, "RS-LLEG | RS-RLEG | RS-LARM | RS-RARM"),
-        ("B", 48, "RS-WAIST | TTL-LDIST | TTL-RDIST | TTL-HEAD"),
+    for suffix, x, buses, candidate, watts, heat, source, revision in (
+        ("A", -48, "RS-LLEG | RS-RLEG | RS-LARM | RS-RARM",
+         "four-channel carrier with 4x TI ISOW1432DFMR and 4x JST BM03B-GHS-TBT data-only field headers",
+         3.0, 2.2, "https://www.ti.com/product/ISOW1432", "TI SLLSF86C Rev C; March 2022; accessed 2026-08-14"),
+        ("B", 48, "RS-WAIST | TTL-LDIST | TTL-RDIST | TTL-HEAD",
+         "four-channel carrier with 1x TI ISOW1432DFMR, 3x SN74LVC1T45DCKR and exact JST GH data-only field headers",
+         1.5, 1.0, "https://www.ti.com/product/SN74LVC1T45", "TI SCES515N Rev N; June 2024; accessed 2026-08-14"),
     ):
         add(f"EQ-T01-BUS-CARRIER-{suffix}", "C01", "four-channel actuator-bus interface carrier",
-            f"custom isolated/protected four-channel carrier reservation; {buses}; exact schematic/devices/connectors SELECTION REQUIRED",
-            box(82, 14, 42, (x, 11, 526), 2), 0.045, 1.5, 1.2,
+            f"{candidate}; buses {buses}",
+            box(82, 14, 42, (x, 11, 526), 2), 0.045, watts, heat,
             "torso rear electronics tray", "+Y rear-cover withdrawal",
-            "four independent controller-side channels; no inter-segment VDD path permitted; exact pinout open",
-            "SELECTION REQUIRED", "SELECTION REQUIRED",
-            "planning envelope/mass/power only; U2D2 remains an external single-segment commissioning tool, not installed whole-body hardware",
+            "JST GHR-15V-S logic-only controller cable plus per-segment BM02/BM03B-GHS-TBT field headers; no actuator VDD contacts",
+            source, revision,
+            "pin-level candidate exists in native KiCad; PCB layout/passives, isolation spacing, protection, EMC, thermal and physical validation remain open; U2D2 stays external commissioning-only",
             "torso", control)
 
     # Pelvis tether-first power hardware. The offboard current-limited source and

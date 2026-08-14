@@ -45,7 +45,8 @@ def main() -> int:
     require(all(r["official_interface_accessed_date"] == "2026-08-14" and r["actuator_side_crimp_terminal"] == "JST SEH-001T-P0.6" and r["manufacturer_published_dynamixel_wire_gauge"] == "21 AWG" for r in binding), "actuator-side connector evidence incomplete")
     require(all(r["actuator_side_housing"] == "JST EHR-04" and r["actuator_pcb_header"] == "JST B4B-EH-A" and "1=GND; 2=VDD; 3=DATA+; 4=DATA-" in r["connector_pin_mapping"] for r in rs), "RS-485 actuator-side pinout drift")
     require(all(r["actuator_side_housing"] == "JST EHR-03" and r["actuator_pcb_header"] == "JST B3B-EH-A" and "1=GND; 2=VDD; 3=DATA" in r["connector_pin_mapping"] for r in ttl), "TTL actuator-side pinout drift")
-    require(all(r["controller_side_connector_and_pin_mapping"] == "SELECTION REQUIRED" for r in binding), "controller-side pins were inferred")
+    require(all("BM03B-GHS-TBT" in r["controller_side_connector_and_pin_mapping"] and "NO VDD" in r["controller_side_connector_and_pin_mapping"] for r in rs), "RS-485 controller-side data-only connector candidate missing")
+    require(all("BM02B-GHS-TBT" in r["controller_side_connector_and_pin_mapping"] and "NO VDD" in r["controller_side_connector_and_pin_mapping"] for r in ttl), "TTL controller-side data-only connector candidate missing")
     require(all("ONE SEPARATELY PROTECTED SEGMENT BRANCH" in r["branch_power_injection"] and "data daisy" in r["branch_power_injection"] for r in binding), "segment branch-power boundary missing")
 
     sources = rows("actuator-bus-source-register.csv")
@@ -61,11 +62,11 @@ def main() -> int:
     require(len(bus_bom) == 1 and bus_bom[0]["quantity"] == "8" and "TTL" in bus_bom[0]["candidate"], "mixed-protocol bus BOM missing")
 
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
-    require(status["whole_body_actuator_bus_architecture_present"] and status["protocol_compatibility_screen_complete"] and status["actuator_side_connector_pinout_verified"], "bus architecture/pinout status missing")
+    require(status["whole_body_actuator_bus_architecture_present"] and status["protocol_compatibility_screen_complete"] and status["actuator_side_connector_pinout_verified"] and status["actuator_bus_controller_pin_map_selected"] and status["actuator_bus_interface_device_candidates_selected"] and status["actuator_bus_data_only_connector_candidates_selected"], "bus architecture/pinout status missing")
     require((status["actuator_bus_segment_count"], status["actuator_bus_axis_binding_count"], status["rs485_actuator_axis_count"], status["ttl_actuator_axis_count"]) == (8, 25, 19, 6), "status bus counts drift")
     require(not any(status[k] for k in ("native_hr30_kicad_reconciled", "actuator_bus_interface_selected", "actuator_bus_connector_harness_validated", "procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "selection/KiCad/authority overclaim")
     holds = rows("open-holds.csv")
-    require(any(r["hold_id"] == "HR30-P01-H11" and r["state"] == "OPEN" and "KiCad" in r["unresolved_item"] for r in holds), "electrical integration hold missing")
+    require(any(r["hold_id"] == "HR30-P01-H11" and r["state"] == "OPEN" and "18-sheet HR-30 KiCad" in r["unresolved_item"] for r in holds), "electrical integration hold missing")
     doc = (SRC / "whole-body-electrical-integration.md").read_text(encoding="utf-8")
     require("nineteen selected `-R`" in doc and "six XC330" in doc and "pin 1 GND" in doc and "no connection" in doc.lower(), "electrical integration boundary incomplete")
     page = (SRC / "index.html").read_text(encoding="utf-8")
@@ -78,7 +79,7 @@ def main() -> int:
     manifest = rows("file-manifest.csv")
     require({r["path"] for r in manifest} == src_files - {"file-manifest.csv"}, "manifest set mismatch")
     require(all(r["warning"] == WARNING and r["sha256"] == sha(SRC / r["path"]) for r in manifest), "manifest hash/warning mismatch")
-    print("PASS: all 25 HR-30 axes are bound exactly once to five RS-485 and three TTL segments; official actuator-side JST pinouts are recorded while controller interfaces, harness validation and all work authority remain open")
+    print("PASS: all 25 HR-30 axes are bound exactly once to five RS-485 and three TTL segments; sourced actuator/controller pins, interface-device pinouts and data-only connector candidates are recorded while PCB/harness validation and all work authority remain open")
     return 0
 
 
