@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Button — HR-30 whole humanoid P0.1</title>
+  <meta name="description" content="Interactive engineering entry point for the 762 mm Project Button HR-30 whole humanoid P0.1 package.">
+  <script type="module" src="hr30/whole-body-p0.1/vendor/model-viewer.min.js"></script>
+  <style>
+    :root { --deep:#041a35; --navy:#082b55; --sky:#7dd3fc; --pale:#e4f6ff; --gold:#f4b942; --paper:#f7fbff; --ink:#102a43; --line:#9ccfe8; --green:#166534; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:17px/1.55 system-ui,"Segoe UI",sans-serif; }
+    a { color:#075b9b; font-weight:800; }
+    header { background:linear-gradient(135deg,var(--deep),var(--navy)); color:white; padding:clamp(32px,7vw,88px) 20px; }
+    header>div, main, footer>div { max-width:1240px; margin:auto; }
+    .warning { margin:0 0 25px; padding:16px 18px; border:3px solid #8a5b00; background:var(--gold); color:#17243a; font-weight:900; }
+    .eyebrow { color:var(--sky); font-size:14px; font-weight:850; letter-spacing:.04em; }
+    h1 { max-width:1000px; margin:.2em 0; font-size:clamp(40px,7vw,78px); line-height:1.02; }
+    h2 { color:var(--navy); font-size:clamp(28px,4vw,44px); line-height:1.15; }
+    h3 { color:var(--navy); font-size:clamp(21px,2.2vw,28px); }
+    .lead { max-width:880px; font-size:clamp(18px,2vw,22px); }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+    .button { display:inline-block; padding:13px 18px; border:2px solid white; border-radius:11px; background:white; color:var(--navy); text-decoration:none; box-shadow:0 4px 0 #9ccfe8; }
+    .button.secondary { background:transparent; color:white; }
+    main { padding:34px 20px 80px; }
+    section { margin:34px 0 52px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px; }
+    .card,.panel { padding:20px; border:2px solid var(--line); border-radius:16px; background:white; box-shadow:0 3px 0 #c4e2f1; }
+    .card.pass { border-left:9px solid var(--green); }
+    .card.hold { border-left:9px solid var(--gold); }
+    .metric { color:var(--navy); font-size:clamp(36px,5vw,58px); font-weight:900; line-height:1; }
+    .viewer { overflow:hidden; border:3px solid var(--navy); border-radius:18px; background:var(--pale); }
+    model-viewer { display:block; width:100%; height:clamp(520px,72vh,780px); background:radial-gradient(circle,#fff,var(--pale)); }
+    .viewer p { margin:0; padding:15px 18px; background:white; }
+    .artifact-list { columns:2 320px; padding-left:22px; }
+    .artifact-list li { margin:0 0 12px; break-inside:avoid; }
+    code { font-size:16px; }
+    footer { padding:34px 20px; background:var(--deep); color:white; }
+    @media (max-width:680px) { body{font-size:16px} main{padding-inline:14px} model-viewer{height:500px} .artifact-list{columns:1} }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <p class="warning">PRELIMINARY — NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION</p>
+      <p class="eyebrow">PROJECT BUTTON · HR-30 WHOLE HUMANOID · P0.1</p>
+      <h1>A complete 762 mm robot, in one engineering package.</h1>
+      <p class="lead">The whole-body candidate now includes native editable CAD, STEP and GLB assemblies, 25 articulated axes, two functional grippers, URDF and MJCF dynamics models, system budgets, a candidate BOM, and a staged path from suspended testing to tethered walking.</p>
+      <div class="actions">
+        <a class="button" href="hr30/whole-body-p0.1/">Open the complete interactive guide</a>
+        <a class="button secondary" href="hr30/whole-body-p0.1/README.md">Read the package boundary</a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="grid" aria-label="Whole-body package metrics">
+      <article class="card pass"><div class="metric">762 mm</div><p>Exact candidate floor-to-shell-top geometry.</p></article>
+      <article class="card pass"><div class="metric">25 DOF</div><p>Head, waist, arms, hands, hips, knees and ankles.</p></article>
+      <article class="card hold"><div class="metric">9.63 kg</div><p>Allocation estimate—not a measured or manufacturing-CAD mass.</p></article>
+      <article class="card hold"><div class="metric">0</div><p>Fabrication, motion, safety or energization approvals.</p></article>
+    </section>
+
+    <section>
+      <h2>Inspect the whole robot</h2>
+      <div class="viewer">
+        <model-viewer src="hr30/whole-body-p0.1/HR-30_body_architecture_candidate.glb" poster="hr30/whole-body-p0.1/front-elevation.svg" alt="Interactive three-dimensional model of the preliminary Project Button HR-30 whole humanoid" camera-controls camera-orbit="35deg 76deg 95%" min-camera-orbit="auto auto 20%" max-camera-orbit="auto auto 240%" field-of-view="26deg" shadow-intensity="0.85" exposure="1.05"></model-viewer>
+        <p>Drag to orbit; scroll or pinch to zoom. Sky blue shows shells, dark blue shows load-path envelopes, gold shows joint and hand hardware, and red shows reference axes.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>What exists now</h2>
+      <div class="grid">
+        <article class="card pass"><h3>Physical architecture</h3><p>A recognizable head, articulated neck, torso, pelvis, two complete arms, two broad two-finger grippers, two six-axis legs, ankles and feet.</p></article>
+        <article class="card pass"><h3>Simulation architecture</h3><p>URDF and MJCF implement the same 25-axis schedule with provisional geometry, limits, mass and inertia.</p></article>
+        <article class="card pass"><h3>Embodied-agent boundary</h3><p>OpenAI may produce expiring structured behavior requests. Deterministic local software and independent hardware retain motion and permit decisions.</p></article>
+        <article class="card hold"><h3>Walking development</h3><p>Suspended characterization, restrained standing, weight transfer, capture steps and tethered walking remain separate physical gates.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Direct engineering artifacts</h2>
+      <div class="panel">
+        <ul class="artifact-list">
+          <li><a href="hr30/whole-body-p0.1/HR-30_body_architecture_candidate.step">Physical-envelope STEP</a></li>
+          <li><a href="hr30/whole-body-p0.1/HR-30_body_kinematic_reference.step">Kinematic-reference STEP</a></li>
+          <li><a href="hr30/whole-body-p0.1/HR-30_body_architecture_candidate.glb">Interactive GLB</a></li>
+          <li><a href="hr30/whole-body-p0.1/whole-body-source.py">Editable CadQuery source</a></li>
+          <li><a href="hr30/whole-body-p0.1/joint-axis-schedule.csv">Degree-of-freedom schedule</a></li>
+          <li><a href="hr30/whole-body-p0.1/actuator-transmission-allocation.csv">Actuator allocation</a></li>
+          <li><a href="hr30/whole-body-p0.1/hr30.urdf">URDF</a></li>
+          <li><a href="hr30/whole-body-p0.1/hr30.xml">MJCF</a></li>
+          <li><a href="hr30/whole-body-p0.1/mass-properties-budget.csv">Mass, COM and inertia budget</a></li>
+          <li><a href="hr30/whole-body-p0.1/power-energy-budget.csv">Power and energy budget</a></li>
+          <li><a href="hr30/whole-body-p0.1/thermal-budget.csv">Thermal budget</a></li>
+          <li><a href="hr30/whole-body-p0.1/compute-sensor-network-budget.csv">Compute, sensor and network budget</a></li>
+          <li><a href="hr30/whole-body-p0.1/whole-robot-candidate-bom.csv">Whole-robot candidate BOM</a></li>
+          <li><a href="hr30/whole-body-p0.1/walking-development-architecture.md">Standing and walking architecture</a></li>
+          <li><a href="hr30/whole-body-p0.1/embodied-agent-architecture.md">Conversational-agent architecture</a></li>
+          <li><a href="hr30/whole-body-p0.1/modular-fabrication-assembly-electrification-plan.md">Build and electrification plan</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer><div><p>Project Button · adult-operated experimental machinery · not a toy · no procurement, fabrication, powered-test, motion, energization or functional-safety approval</p></div></footer>
+</body>
+</html>
