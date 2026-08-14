@@ -42,7 +42,7 @@ VENDOR_ACTUATOR_SOURCES = {
     "ROBOTIS-X430": {
         "path": ROOT / "cad" / "vendor" / "robotis" / "x430-fr12-r91" / "x-430_idle.stp",
         "expected_sha256": "7FF4E39475245D5C1FC4F703E9241FCA1A09D57AED920274498DBE2CD5E31E22",
-        "record": "ROBOTIS X-430 manufacturer STEP controlled by HR-V0 R91",
+        "record": "ROBOTIS X-430 manufacturer STEP retained as a whole-body packaging source",
         "applies": "XM430 package candidates",
     },
     "ROBOTIS-XC330": {
@@ -86,6 +86,18 @@ BEARING_CANDIDATES = {
         "bore_d": 15.0, "outer_d": 32.0, "width": 9.0, "mass_kg": 0.030,
         "dynamic_rating_n": 5850.0, "static_rating_n": 2850.0,
         "url": "https://www.emarketplace.in.skf.com/deep-groove-ball-bearing/6002-2rs1",
+    },
+    "NSK-6803": {
+        "manufacturer": "NSK", "designation": "6803 OPEN EVALUATION CANDIDATE",
+        "bore_d": 17.0, "outer_d": 26.0, "width": 5.0, "mass_kg": 0.007,
+        "dynamic_rating_n": 2890.0, "static_rating_n": 1570.0,
+        "url": "https://www.oss.nsk.com/in/products/bearings/ball-bearings/deep-groove-ball-bearings/single-row-deep-groove-ball-bearings/6803-apn.html",
+    },
+    "NSK-6901": {
+        "manufacturer": "NSK", "designation": "6901 OPEN EVALUATION CANDIDATE",
+        "bore_d": 12.0, "outer_d": 24.0, "width": 6.0, "mass_kg": 0.010,
+        "dynamic_rating_n": 3200.0, "static_rating_n": 1460.0,
+        "url": "https://www.oss.nsk.com/in/products/bearings/ball-bearings/deep-groove-ball-bearings/single-row-deep-groove-ball-bearings/6901-apn.html",
     },
 }
 
@@ -212,7 +224,7 @@ def vendor_actuator_to_axis(shape: cq.Shape, center: tuple[float, float, float],
 def vendor_source_for_axis(axis_id: str) -> str:
     if axis_id.startswith("HEAD_") or "GRIPPER" in axis_id:
         return "ROBOTIS-XC330"
-    if any(token in axis_id for token in ("WRIST", "ELBOW")):
+    if any(token in axis_id for token in ("WRIST", "ELBOW", "ANKLE_", "SHOULDER_ROLL")):
         return "ROBOTIS-X430"
     return "ROBOTIS-540"
 
@@ -300,26 +312,38 @@ JOINT_MODULE_FAMILIES = {
     "JMF-05-WAIST": {
         "role": "large supported waist turntable",
         "plate_w": 98.0, "plate_h": 72.0, "plate_t": 5.0, "pattern_x": 82.0, "pattern_y": 56.0, "hole_d": 5.5,
-        "shaft_d": 17.0, "bearing_od": 35.0, "bearing_w": 10.0, "bearing_id": "SKF-6003-2Z-C3", "span": 28.0, "body_w": 50.0, "body_h": 60.0, "body_d": 48.0,
+        "shaft_d": 17.0, "bearing_od": 26.0, "bearing_w": 5.0, "bearing_id": "NSK-6803", "span": 28.0, "body_w": 50.0, "body_h": 60.0, "body_d": 48.0,
         "transmission": "supported yaw output with actuator isolated from overturning load", "ratio": "1.0:1 initial candidate", "motor_offset": 0.0, "cable_d": 18.0,
     },
     "JMF-06-LEG-DIRECT": {
         "role": "large supported direct leg joint",
         "plate_w": 66.0, "plate_h": 70.0, "plate_t": 5.0, "pattern_x": 52.0, "pattern_y": 56.0, "hole_d": 5.5,
-        "shaft_d": 15.0, "bearing_od": 32.0, "bearing_w": 9.0, "bearing_id": "SKF-6002-2RS1", "span": 60.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
+        "shaft_d": 12.0, "bearing_od": 24.0, "bearing_w": 6.0, "bearing_id": "NSK-6901", "span": 60.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
         "transmission": "direct supported output", "ratio": "1.0:1 W0 candidate", "motor_offset": 0.0, "cable_d": 12.0,
     },
     "JMF-07-LEG-REDUCED-15": {
         "role": "parallel-axis reduced leg joint",
         "plate_w": 72.0, "plate_h": 78.0, "plate_t": 5.0, "pattern_x": 58.0, "pattern_y": 64.0, "hole_d": 5.5,
-        "shaft_d": 15.0, "bearing_od": 32.0, "bearing_w": 9.0, "bearing_id": "SKF-6002-2RS1", "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
-        "transmission": "parallel-axis timing transmission with output encoder", "ratio": "1.5:1 geometric candidate", "motor_offset": 44.0, "cable_d": 12.0,
+        "shaft_d": 12.0, "bearing_od": 24.0, "bearing_w": 6.0, "bearing_id": "NSK-6901", "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
+        "transmission": "20:30 tooth, 5M-pitch parallel-axis timing transmission with output encoder", "ratio": "1.5:1 geometric candidate", "motor_offset": 50.0, "output_pulley_d": 48.0, "motor_pulley_d": 32.0, "cable_d": 12.0,
     },
     "JMF-08-LEG-REDUCED-20": {
         "role": "higher-reduction hip/ankle roll joint",
         "plate_w": 74.0, "plate_h": 70.0, "plate_t": 5.0, "pattern_x": 60.0, "pattern_y": 56.0, "hole_d": 5.5,
-        "shaft_d": 15.0, "bearing_od": 32.0, "bearing_w": 9.0, "bearing_id": "SKF-6002-2RS1", "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
-        "transmission": "parallel-axis timing transmission with output encoder", "ratio": "2.0:1 geometric candidate", "motor_offset": 46.0, "cable_d": 12.0,
+        "shaft_d": 12.0, "bearing_od": 24.0, "bearing_w": 6.0, "bearing_id": "NSK-6901", "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
+        "transmission": "20:40 tooth, 5M-pitch parallel-axis timing transmission with output encoder", "ratio": "2.0:1 geometric candidate", "motor_offset": 50.0, "output_pulley_d": 64.0, "motor_pulley_d": 32.0, "cable_d": 12.0,
+    },
+    "JMF-09-KNEE-REDUCED-20": {
+        "role": "2.0:1 knee transmission with dual-supported output",
+        "plate_w": 74.0, "plate_h": 78.0, "plate_t": 5.0, "pattern_x": 60.0, "pattern_y": 64.0, "hole_d": 5.5,
+        "shaft_d": 12.0, "bearing_od": 24.0, "bearing_w": 6.0, "bearing_id": "NSK-6901", "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
+        "transmission": "20:40 tooth, 5M-pitch parallel-axis timing transmission with output encoder", "ratio": "2.0:1 whole-body knee candidate", "motor_offset": 50.0, "output_pulley_d": 64.0, "motor_pulley_d": 32.0, "cable_d": 12.0,
+    },
+    "JMF-10-ANKLE-PITCH-REDUCED-25": {
+        "role": "compact 2.5:1 ankle-pitch transmission",
+        "plate_w": 74.0, "plate_h": 72.0, "plate_t": 5.0, "pattern_x": 60.0, "pattern_y": 58.0, "hole_d": 5.5,
+        "shaft_d": 12.0, "bearing_od": 24.0, "bearing_w": 6.0, "bearing_id": "NSK-6901", "span": 64.0, "body_w": 34.0, "body_h": 47.0, "body_d": 29.0,
+        "transmission": "16:40 tooth, 5M-pitch timing transmission with output encoder", "ratio": "2.5:1 whole-body ankle candidate", "motor_offset": 51.0, "output_pulley_d": 64.0, "motor_pulley_d": 26.0, "cable_d": 10.0,
     },
 }
 
@@ -341,9 +365,13 @@ def joint_module_family(axis_id: str) -> str:
         return "JMF-05-WAIST"
     if "ELBOW" in axis_id:
         return "JMF-04-MEDIUM"
+    if "KNEE_PITCH" in axis_id:
+        return "JMF-09-KNEE-REDUCED-20"
+    if "ANKLE_PITCH" in axis_id:
+        return "JMF-10-ANKLE-PITCH-REDUCED-25"
     if "HIP_ROLL" in axis_id or "ANKLE_ROLL" in axis_id:
         return "JMF-08-LEG-REDUCED-20"
-    if any(token in axis_id for token in ("HIP_PITCH", "KNEE_PITCH", "ANKLE_PITCH")):
+    if "HIP_PITCH" in axis_id:
         return "JMF-07-LEG-REDUCED-15"
     return "JMF-06-LEG-DIRECT"
 
@@ -401,12 +429,12 @@ def interactive_html() -> str:
 <script type="module" src="vendor/model-viewer.min.js"></script>
 <style>:root{{--deep:#041a35;--navy:#082b55;--sky:#7dd3fc;--pale:#e4f6ff;--gold:#f4b942;--ink:#102a43;--paper:#f7fbff;--line:#9ccfe8;--red:#9b1c1c;--green:#166534}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,"Segoe UI",sans-serif}}header{{background:linear-gradient(135deg,var(--deep),var(--navy));color:white;padding:clamp(32px,6vw,78px) 20px}}header>div,main,footer>div{{max-width:1240px;margin:auto}}h1{{font-size:clamp(38px,6.2vw,74px);line-height:1.03;margin:.24em 0}}h2{{font-size:clamp(27px,3.4vw,42px);line-height:1.15;color:var(--navy)}}h3{{font-size:clamp(20px,2.1vw,27px);color:var(--navy)}}.warning{{background:var(--gold);color:#17243a;border:3px solid #8a5b00;padding:16px 18px;font-weight:900}}.eyebrow{{font-size:14px;font-weight:850;color:var(--sky);letter-spacing:.04em}}main{{padding:30px 20px 80px}}section{{margin:32px 0}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:17px}}.card,.panel{{background:white;border:2px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 3px 0 #c4e2f1}}.metric{{font-size:clamp(35px,5vw,57px);line-height:1;font-weight:900;color:var(--navy)}}.pass{{border-left:9px solid var(--green)}}.hold{{border-left:9px solid var(--gold)}}.miss{{border-left:9px solid var(--red)}}.viewer{{border:3px solid var(--navy);border-radius:18px;overflow:hidden;background:var(--pale)}}model-viewer{{display:block;width:100%;height:clamp(520px,72vh,780px);background:radial-gradient(circle,#fff,var(--pale))}}.viewer p{{background:white;padding:15px 18px;margin:0}}img{{display:block;width:100%;height:auto;background:white;border:2px solid var(--line);border-radius:16px}}.table{{overflow:auto;border:2px solid var(--line);border-radius:14px;background:white}}table{{border-collapse:collapse;width:100%;min-width:940px}}th,td{{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:16px}}th{{background:var(--navy);color:white}}a{{color:#075b9b;font-weight:800}}code{{font-size:16px}}footer{{background:var(--deep);color:white;padding:32px 20px}}@media(max-width:680px){{body{{font-size:16px}}main{{padding-inline:14px}}model-viewer{{height:500px}}}}</style></head><body>
 <header><div><p class="warning">{WARNING}</p><p class="eyebrow">PROJECT BUTTON · HR-30-BODY-ARCH-P0.1 · FIRST NATIVE FULL-BODY CAD</p><h1>The 30-inch robot now has a body.</h1><p>This is the first dimensioned, repository-native HR-30 assembly: exact height datums, named limbs, 25 candidate axes, structural envelopes, shells, and component reservations. It is architecture CAD—not yet manufacturing CAD.</p></div></header>
-<main><section class="grid"><article class="card pass"><div class="metric">762 mm</div><p>Exact neutral-pose floor-to-shell-top geometry.</p></article><article class="card pass"><div class="metric">25</div><p>Named head, waist, arm, hand, hip, knee, and ankle axes.</p></article><article class="card"><div class="metric">8</div><p>Dimensioned joint-module families spanning all 25 axes.</p></article><article class="card hold"><div class="metric">0</div><p>Fabrication, motion, safety, or energization approvals.</p></article></section>
+<main><section class="grid"><article class="card pass"><div class="metric">762 mm</div><p>Exact neutral-pose floor-to-shell-top geometry.</p></article><article class="card pass"><div class="metric">25</div><p>Named head, waist, arm, hand, hip, knee, and ankle axes.</p></article><article class="card"><div class="metric">{len(JOINT_MODULE_FAMILIES)}</div><p>Dimensioned joint-module families spanning all 25 axes.</p></article><article class="card hold"><div class="metric">0</div><p>Fabrication, motion, safety, or energization approvals.</p></article></section>
 <section><h2>Orbit the native body architecture</h2><div class="viewer"><model-viewer src="HR-30_body_architecture_candidate.glb" poster="front-elevation.svg" alt="Interactive 3D model of the preliminary 762 millimetre Project Button humanoid body architecture" camera-controls camera-orbit="35deg 76deg 95%" min-camera-orbit="auto auto 20%" max-camera-orbit="auto auto 240%" field-of-view="26deg" shadow-intensity="0.85" exposure="1.05" interaction-prompt="auto"></model-viewer><p>Drag to orbit; scroll or pinch to zoom. Sky blue is shell envelope, dark blue is load-path envelope, gold is joint/hand hardware, and red rods are reference axes. Transparent objects reserve electronics, sensors, restraint, and joint datum space. The downloadable STEP embeds the exact SHA-bound actuator B-Reps; the GLB uses dimension-matched simplified actuator bodies so the web model remains practical to load.</p></div></section>
 <section><h2>The dimensions come from the specification</h2><img src="front-elevation.svg" alt="Front elevation of HR-30 with ankle, knee, hip, waist, shoulder, neck and top height datums"></section>
 <section><h2>What this pass proves—and what it does not</h2><div class="grid"><article class="card pass"><h3>Native geometry exists</h3><p>STEP and GLB are generated from a versioned CadQuery source. The STEP reimports with vertices exactly at Z=0 and Z=762 mm.</p></article><article class="card pass"><h3>Kinematic architecture exists</h3><p>All 25 candidate axes have coordinates, directions, regions, and provisional ranges in a machine-readable schedule.</p></article><article class="card miss"><h3>Preferred reach is missed</h3><p>The specified nominal segments total 370 mm per arm and 950 mm span. These pass the 390/980 mm hard limits but miss the 360/900 mm targets.</p></article><article class="card hold"><h3>Mass is still unproven</h3><p>These are packaging envelopes, not materialized parts. The existing arm and leg actuator concepts already fail their preferred mass allocations.</p></article></div></section>
 <section><h2>Controlled body datums</h2><div class="table"><table><thead><tr><th>Datum</th><th>Z above floor</th><th>Role</th></tr></thead><tbody><tr><td>Ankle pitch</td><td>45 mm</td><td>Lower-leg kinematic datum</td></tr><tr><td>Knee pitch</td><td>210 mm</td><td>165 mm above ankle pitch</td></tr><tr><td>Hip pitch</td><td>380 mm</td><td>170 mm above knee pitch</td></tr><tr><td>Waist yaw</td><td>425 mm</td><td>Upper-body rotation datum</td></tr><tr><td>Shoulder pitch</td><td>590 mm</td><td>Upper-arm datum</td></tr><tr><td>Neck pan</td><td>650 mm</td><td>Head pan datum</td></tr><tr><td>Shell top</td><td>762 mm</td><td>Exact nominal standing height</td></tr></tbody></table></div></section>
-<section><h2>Next engineering conversions</h2><div class="grid"><article class="card hold"><h3>Joints</h3><p>Convert the eight visible module-family candidates into released shafts, selected bearings, verified fits, retained fasteners, stops, encoders, and serviceable housings.</p></article><article class="card hold"><h3>Structure and covers</h3><p>Convert solid visual envelopes into materialized frames and tool-removable covers with thickness, splits, edges, vents, access, and retention.</p></article><article class="card hold"><h3>Harness and power</h3><p>Route bend-controlled cables and select the actuator rail, protection, regeneration handling, tether, and eventual onboard energy system.</p></article><article class="card hold"><h3>Evidence</h3><p>Close mass/COM/inertia, collision, gait loads, thermal behavior, stopping, fall restraint, DFM, tolerances, FAI, physical testing, and qualified review.</p></article></div></section>
+<section><h2>Next engineering conversions</h2><div class="grid"><article class="card hold"><h3>Joints</h3><p>Convert the ten visible module-family candidates into released shafts, selected bearings, verified fits, retained fasteners, stops, encoders, and serviceable housings.</p></article><article class="card hold"><h3>Structure and covers</h3><p>Convert solid visual envelopes into materialized frames and tool-removable covers with thickness, splits, edges, vents, access, and retention.</p></article><article class="card hold"><h3>Harness and power</h3><p>Route bend-controlled cables and select the actuator rail, protection, regeneration handling, tether, and eventual onboard energy system.</p></article><article class="card hold"><h3>Evidence</h3><p>Close mass/COM/inertia, collision, gait loads, thermal behavior, stopping, fall restraint, DFM, tolerances, FAI, physical testing, and qualified review.</p></article></div></section>
 <section><h2>Download the engineering artifacts</h2><div class="panel"><p><a href="HR-30_body_architecture_candidate.step">Physical-envelope STEP</a> · <a href="HR-30_body_kinematic_reference.step">Kinematic-reference STEP</a> · <a href="HR-30_body_architecture_candidate.glb">Interactive GLB</a> · <a href="whole-body-source.py">Editable CadQuery source</a> · <a href="joint-axis-schedule.csv">Joint-axis schedule</a> · <a href="joint-module-family-schedule.csv">Joint-module families</a> · <a href="joint-module-axis-binding.csv">All-axis module binding</a> · <a href="vendor-actuator-source-register.csv">Vendor source register</a> · <a href="vendor-actuator-transform-register.csv">Per-axis actuator transforms</a> · <a href="actuator-transmission-allocation.csv">Actuator allocation</a> · <a href="asimov-1-reuse-adapt-reject.csv">Asimov 1 matrix</a> · <a href="component-envelope-schedule.csv">Component schedule</a> · <a href="geometry-checks.json">Geometry checks</a> · <a href="open-holds.csv">Open holds</a></p></div></section></main>
 <footer><div><p>Project Button · HR-30-BODY-ARCH-P0.1 · adult-operated experimental machinery · not a toy · no procurement, fabrication, motion, energization, or functional-safety approval</p></div></footer></body></html>"""
 
@@ -622,8 +650,8 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
         elif motor_offset > 0:
             motor_center_v = cq.Vector(*center) + offset_direction.multiply(motor_offset)
             motor_center = (motor_center_v.x, motor_center_v.y, motor_center_v.z)
-            output_pulley_d = 48.0 if family_id.endswith("15") else 52.0 if family_id.endswith("20") else 32.0
-            motor_pulley_d = 32.0 if family_id.endswith("15") else 26.0 if family_id.endswith("20") else 24.0
+            output_pulley_d = spec.get("output_pulley_d", 32.0)
+            motor_pulley_d = spec.get("motor_pulley_d", 24.0)
             add(f"JMOD_{axis_id}_OUTPUT_PULLEY", "joint transmission", spoked_pulley(center, direction, 12.0, output_pulley_d, spec["shaft_d"]), joint, True, f"{spec['ratio']} lightweight spoked pulley envelope; pitch/width/tooth count selection required")
             add(f"JMOD_{axis_id}_MOTOR_PULLEY", "joint transmission", spoked_pulley(motor_center, direction, 12.0, motor_pulley_d, 6.0), joint, True, f"{spec['ratio']} lightweight spoked motor pulley envelope; bore and retention selection required")
             vendor_source_id = vendor_source_for_axis(axis_id)
@@ -871,7 +899,14 @@ def main() -> int:
                 "10.0-14.8 V candidate domain",
                 "PROVISIONAL",
             )
-        elif "SHOULDER" in axis_id:
+        elif "SHOULDER_ROLL" in axis_id:
+            actuator, transmission, rail, disposition = (
+                "ROBOTIS XM430-W350-R candidate",
+                "remote/nested 1.0:1 supported gimbal output",
+                "10.0-14.8 V candidate domain",
+                "PROVISIONAL - WHOLE-BODY STATIC ENDPOINT SCREEN RETAINED; CONTINUOUS/DYNAMIC/THERMAL PROOF REQUIRED",
+            )
+        elif "SHOULDER_PITCH" in axis_id:
             actuator, transmission, rail, disposition = (
                 "ROBOTIS XM540-W270-R candidate",
                 "direct drive candidate; dual-supported output",
@@ -887,10 +922,10 @@ def main() -> int:
             )
         elif "WRIST" in axis_id:
             actuator, transmission, rail, disposition = (
-                "ROBOTIS XM430-W350-R candidate",
+                "ROBOTIS XC330-T288-T candidate",
                 "direct drive through supported wrist shaft",
-                "10.0-14.8 V candidate domain",
-                "PROVISIONAL",
+                "6.0-12.0 V candidate domain",
+                "PROVISIONAL - WHOLE-BODY STATIC SCREEN RETAINED; DYNAMIC WRIST DUTY OPEN",
             )
         elif "GRIPPER" in axis_id:
             actuator, transmission, rail, disposition = (
@@ -899,14 +934,35 @@ def main() -> int:
                 "6.0-12.0 V candidate domain; common rail architecture SELECTION REQUIRED",
                 "PROVISIONAL - FORCE/LIMIT/COMPLIANCE PROOF REQUIRED",
             )
-        elif "HIP_ROLL" in axis_id or "ANKLE_ROLL" in axis_id:
+        elif "ANKLE_ROLL" in axis_id:
+            actuator, transmission, rail, disposition = (
+                "ROBOTIS XM430-W350-R evaluation candidate",
+                "2.0:1 timing-reduction candidate; dual-supported 12 mm output; exact belt capacity SELECTION REQUIRED",
+                "10.0-14.8 V candidate domain",
+                "PROVISIONAL - WHOLE-BODY STATIC SCREEN RETAINED; CONTINUOUS/DYNAMIC/THERMAL PROOF REQUIRED",
+            )
+        elif "ANKLE_PITCH" in axis_id:
+            actuator, transmission, rail, disposition = (
+                "ROBOTIS XM430-W350-R evaluation candidate",
+                "2.5:1 16:40 timing-reduction candidate; dual-supported 12 mm output; exact belt capacity SELECTION REQUIRED",
+                "10.0-14.8 V candidate domain",
+                "PROVISIONAL - WHOLE-BODY STATIC SCREEN RETAINED; CONTINUOUS/DYNAMIC/THERMAL PROOF REQUIRED",
+            )
+        elif "HIP_ROLL" in axis_id:
             actuator, transmission, rail, disposition = (
                 "ROBOTIS XH540-W270-R evaluation candidate",
                 "2.0:1 geometric timing-reduction candidate; dual-supported output; exact belt/pulleys SELECTION REQUIRED",
                 "10.0-14.8 V candidate domain",
                 "DIRECT DRIVE REJECTED/BLOCKED BY WHOLE-BODY PACKAGING",
             )
-        elif any(term in axis_id for term in ("HIP_PITCH", "KNEE_PITCH", "ANKLE_PITCH")):
+        elif "KNEE_PITCH" in axis_id:
+            actuator, transmission, rail, disposition = (
+                "ROBOTIS XH540-W270-R evaluation candidate",
+                "2.0:1 whole-body knee timing-reduction candidate; dual-supported 12 mm output; output absolute encoder",
+                "10.0-14.8 V candidate domain",
+                "PROVISIONAL - CONTINUOUS TORQUE/THERMAL/GAIT PROOF REQUIRED",
+            )
+        elif "HIP_PITCH" in axis_id:
             actuator, transmission, rail, disposition = (
                 "ROBOTIS XH540-W270-R evaluation candidate",
                 "1.5:1 timing-belt candidate; dual-supported output; output absolute encoder",
@@ -1050,7 +1106,7 @@ def main() -> int:
 
 This is the first repository-native full-body CAD for Project Button. It freezes the `HR-PROD-030` neutral-pose datums, all 25 candidate axes, the 762 mm overall height, shell envelopes, load-frame envelopes and first component-bay reservations.
 
-It is intentionally an architecture model, not a buildable machine. The STEP contains candidate physical envelopes plus visible module-family geometry for every axis: output shafts, standard catalogue bearing candidates, removable four-hole interface carriers, exact SHA-bound manufacturer actuator bodies, cable corridors and reduction reservations. Eight dimensioned module families cover all 25 axes, including a shared intersecting-axis shoulder gimbal rather than overlapping generic servo blocks. Three controlled ROBOTIS source files and 25 explicit orthonormal transforms replace anonymous actuator boxes while leaving every frame, horn, fastener, cable exit, tolerance and received fit unresolved. The web GLB deliberately substitutes dimension-matched low-complexity actuator bodies for the detailed B-Reps; the exact geometry remains in both STEP assemblies and the source/transform registers. The second STEP and GLB add joint-axis and component-reservation references. The package also assigns a provisional actuator/transmission route to every axis and records explicit REUSE / ADAPT / REJECT decisions for the SHA-bound Asimov 1 source rig. Bearing dimensions, masses and catalogue ratings are now recorded from current primary manufacturer pages, but bearing application, life, suffix, fits, retention and received identity remain open. Exact fasteners, stops, encoders, actuator interfaces, wall construction, tolerances, harnesses, power hardware, mass properties, collision proof and physical validation remain open.
+It is intentionally an architecture model, not a buildable machine. The STEP contains candidate physical envelopes plus visible module-family geometry for every axis: output shafts, standard catalogue bearing candidates, removable four-hole interface carriers, exact SHA-bound manufacturer actuator bodies, cable corridors and reduction reservations. Ten dimensioned module families cover all 25 axes, including dedicated 2.0:1 knee and 2.5:1 ankle-pitch candidates and a shared intersecting-axis shoulder gimbal rather than overlapping generic servo blocks. Three controlled ROBOTIS source files and 25 explicit orthonormal transforms replace anonymous actuator boxes while leaving every frame, horn, fastener, cable exit, tolerance and received fit unresolved. The web GLB deliberately substitutes dimension-matched low-complexity actuator bodies for the detailed B-Reps; the exact geometry remains in both STEP assemblies and the source/transform registers. The second STEP and GLB add joint-axis and component-reservation references. The package also assigns a provisional actuator/transmission route to every axis and records explicit REUSE / ADAPT / REJECT decisions for the SHA-bound Asimov 1 source rig. Bearing dimensions, masses and catalogue ratings are now recorded from current primary manufacturer pages, but bearing application, life, suffix, fits, retention and received identity remain open. Exact fasteners, stops, encoders, actuator interfaces, wall construction, tolerances, harnesses, power hardware, mass properties, collision proof and physical validation remain open.
 
 The straight arm-chain arithmetic is 370 mm reach and 950 mm span: both pass hard limits, but both miss the preferred 360/900 mm targets. This is recorded as an open design correction rather than hidden.
 """

@@ -31,6 +31,7 @@ def main() -> int:
     required = {
         "joint-load-screen.csv", "joint-load-architecture.md", "joint-load-architecture-status.json",
         "joint-load-architecture-source.py", "actuator-endpoint-source-register.csv",
+        "transmission-candidate-source-register.csv",
     }
     require(all((SRC / name).is_file() for name in required), "joint-load artifacts missing")
     require(all((REL / name).is_file() and sha(SRC / name) == sha(REL / name) for name in required), "source/release joint-load mismatch")
@@ -42,6 +43,10 @@ def main() -> int:
     require(len(sources) == 4 and all(row["manufacturer"] == "ROBOTIS" for row in sources), "actuator primary-source set mismatch")
     source_by_model = {row["model"]: row for row in sources}
     require(all("STALL TORQUE IS MOMENTARY" in row["manufacturer_caveat"] for row in sources), "stall warning missing")
+    transmissions = rows("transmission-candidate-source-register.csv")
+    require(len(transmissions) == 2 and {row["product_number"] for row in transmissions} == {"9400-55278", "9400-55245"}, "Gates transmission candidate source set mismatch")
+    require({float(row["published_mass_kg"]) for row in transmissions} == {0.014, 0.015}, "Gates transmission published mass drift")
+    require(all(row["official_url"].startswith("https://www.gates.com/") and "SELECTION REQUIRED" in row["selection_state"] for row in transmissions), "transmission source/selection boundary missing")
     for row in load:
         require(row["candidate_actuator"] in source_by_model, f"unknown actuator {row['axis_id']}")
         source = source_by_model[row["candidate_actuator"]]
@@ -57,8 +62,12 @@ def main() -> int:
     require(all("CONTINUOUS/DYNAMIC/THERMAL/PHYSICAL PROOF OPEN" in row["candidate_disposition"] for row in elbows), "elbow limitation missing")
     leg = [row for row in load if row["axis_id"].startswith(("L_HIP", "L_KNEE", "L_ANKLE", "R_HIP", "R_KNEE", "R_ANKLE"))]
     require(len(leg) == 12 and sum(row["support_case_nm"] != "N/A" for row in leg) == 10, "leg support screen population mismatch")
+    require(all(row["candidate_actuator"] == "ROBOTIS XC330-T288-T" for row in load if "WRIST" in row["axis_id"]), "wrist XC330 load architecture drift")
+    require(all(row["candidate_actuator"] == "ROBOTIS XM430-W350-R" for row in load if "SHOULDER_ROLL" in row["axis_id"]), "shoulder-roll XM430 load architecture drift")
+    require(all(row["candidate_actuator"] == "ROBOTIS XM430-W350-R" for row in load if "ANKLE" in row["axis_id"]), "ankle XM430 load architecture drift")
+    require(all(float(row["candidate_ratio"]) == 2.0 for row in load if "KNEE" in row["axis_id"]), "2.0:1 knee load architecture drift")
     status = json.loads((SRC / "joint-load-architecture-status.json").read_text(encoding="utf-8"))
-    require(status["axis_count"] == 25 and status["elbow_xm430_candidate_retained"], "status population mismatch")
+    require(status["axis_count"] == 25 and status["elbow_xm430_candidate_retained"] and status["wrist_xc330_candidate_retained"] and status["ankle_xm430_reduced_candidate_retained"] and status["knee_ratio"] == 2.0, "status population mismatch")
     require(not any(status[key] for key in ("published_stall_endpoint_used_as_continuous_rating", "continuous_torque_validated", "dynamic_gait_loads_validated", "actuator_selection_released", "procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "status overclaim")
     require(sha(SRC / "joint-load-architecture-source.py") == sha(ROOT / "tools" / "generate_hr30_joint_load_architecture_p01.py"), "generator snapshot drift")
     page = (SRC / "index.html").read_text(encoding="utf-8")

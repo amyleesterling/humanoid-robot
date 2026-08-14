@@ -54,7 +54,8 @@ def main() -> int:
     require(len({row["part_id"] for row in parts}) == len(parts), "duplicate fabrication part identity")
     require({row["module"] for row in parts} >= {"H01", "N01", "T01", "P01", "A01", "A02", "G01", "G02", "L01", "L02", "F01", "F02", "HN01"}, "fabrication geometry does not cover every body module")
     require(len(panels) == 26 and len({row["panel_id"] for row in panels}) == 26, "service panel register incomplete")
-    require(all(float(row["nominal_wall_mm"]) >= 1.8 and "SELECTION REQUIRED" in row["release_state"] for row in panels), "panel wall/release boundary missing")
+    require(all(float(row["nominal_wall_mm"]) >= 1.5 and "SELECTION REQUIRED" in row["release_state"] for row in panels), "panel wall/release boundary missing")
+    require(all(float(row["nominal_wall_mm"]) >= 1.6 for row in panels if row["module"] in {"H01", "T01", "P01"}), "central/head shell wall architecture drift")
     require(len(routes) == 11 and {row["service_class"] for row in routes} == {"ACTUATOR POWER", "DATA/LOW VOLTAGE", "DATA/ENCODER"}, "harness route service classes incomplete")
     require(all(float(row["minimum_dynamic_bend_radius_mm"]) >= 40 and row["connector_boundary"] == "SELECTION REQUIRED" for row in routes), "harness bend/connector boundary incomplete")
     require(sum(row["service_class"] == "ACTUATOR POWER" for row in routes) == 5, "actuator-power route count mismatch")
@@ -79,8 +80,8 @@ def main() -> int:
     require(not package["fabrication_drawings_released"] and not package["harness_selected_or_validated"], "main package release boundary overclaim")
 
     bom = {row["item_id"]: row for row in csv.DictReader((SRC / "whole-robot-candidate-bom.csv").open(encoding="utf-8"))}
-    require(bom["HR30-BOM-003"]["quantity"] == "4" and bom["HR30-BOM-003"]["function"] == "elbow/wrist actuator", "XM430 elbow/wrist BOM allocation stale")
-    require(bom["HR30-BOM-004"]["quantity"] == "4" and "head/gripper" in bom["HR30-BOM-004"]["function"], "XC330 head/gripper BOM allocation stale")
+    require(bom["HR30-BOM-003"]["quantity"] == "8" and bom["HR30-BOM-003"]["function"] == "shoulder-roll/elbow/ankle actuator", "XM430 whole-body BOM allocation stale")
+    require(bom["HR30-BOM-004"]["quantity"] == "6" and bom["HR30-BOM-004"]["function"] == "head/gripper/wrist actuator", "XC330 whole-body BOM allocation stale")
     require("11 located route-derived" in bom["HR30-BOM-030"]["candidate"], "harness BOM not synchronized to installed route architecture")
     require("Released interface-control drawings" in (SRC / "modular-fabrication-assembly-electrification-plan.md").read_text(encoding="utf-8"), "build plan does not disclose unreleased interface drawings")
     page = (SRC / "index.html").read_text(encoding="utf-8")

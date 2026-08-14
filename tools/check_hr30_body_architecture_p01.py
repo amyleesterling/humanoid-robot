@@ -91,23 +91,32 @@ def main() -> int:
     allocation = list(csv.DictReader((SRC / "actuator-transmission-allocation.csv").open(encoding="utf-8")))
     require(len(allocation) == 25 and {r["axis_id"] for r in allocation} == {r["axis_id"] for r in axes}, "actuator allocation does not cover every axis")
     blocked_roll_axes = {r["axis_id"] for r in allocation if r["candidate_disposition"] == "DIRECT DRIVE REJECTED/BLOCKED BY WHOLE-BODY PACKAGING"}
-    require(blocked_roll_axes == {"L_HIP_ROLL", "R_HIP_ROLL", "L_ANKLE_ROLL", "R_ANKLE_ROLL"}, "hip/ankle roll direct-drive packaging dispositions are incomplete")
+    require(blocked_roll_axes == {"L_HIP_ROLL", "R_HIP_ROLL"}, "hip-roll direct-drive packaging dispositions are incomplete")
     elbow_rows = [r for r in allocation if "ELBOW" in r["axis_id"]]
     require(len(elbow_rows) == 2 and all(r["candidate_actuator"] == "ROBOTIS XM430-W350-R candidate" for r in elbow_rows), "whole-body elbow candidate allocation drift")
+    shoulder_roll_rows = [r for r in allocation if "SHOULDER_ROLL" in r["axis_id"]]
+    wrist_rows = [r for r in allocation if "WRIST" in r["axis_id"]]
+    ankle_rows = [r for r in allocation if "ANKLE" in r["axis_id"]]
+    knee_rows = [r for r in allocation if "KNEE" in r["axis_id"]]
+    require(len(shoulder_roll_rows) == 2 and all("XM430-W350-R" in r["candidate_actuator"] for r in shoulder_roll_rows), "shoulder-roll XM430 allocation drift")
+    require(len(wrist_rows) == 2 and all("XC330-T288-T" in r["candidate_actuator"] for r in wrist_rows), "wrist XC330 allocation drift")
+    require(len(ankle_rows) == 4 and all("XM430-W350-R" in r["candidate_actuator"] for r in ankle_rows), "reduced ankle XM430 allocation drift")
+    require(len(knee_rows) == 2 and all("2.0:1" in r["candidate_transmission"] for r in knee_rows), "2.0:1 knee allocation drift")
     module_families = list(csv.DictReader((SRC / "joint-module-family-schedule.csv").open(encoding="utf-8")))
     module_bindings = list(csv.DictReader((SRC / "joint-module-axis-binding.csv").open(encoding="utf-8")))
-    require(len(module_families) == 8 and len({r["family_id"] for r in module_families}) == 8, "joint-module family identity/count mismatch")
+    require(len(module_families) == 10 and len({r["family_id"] for r in module_families}) == 10, "joint-module family identity/count mismatch")
     require(sum(int(r["axis_count"]) for r in module_families) == 25, "joint-module family counts do not cover 25 axes")
     support_counts = {r["family_id"]: int(r["external_bearing_count_per_axis"]) for r in module_families}
     require(support_counts == {
         "JMF-01-COMPACT": 1, "JMF-02-GRIPPER": 1, "JMF-03-SHOULDER-GIMBAL": 2,
         "JMF-04-MEDIUM": 1, "JMF-05-WAIST": 1, "JMF-06-LEG-DIRECT": 1,
         "JMF-07-LEG-REDUCED-15": 2, "JMF-08-LEG-REDUCED-20": 2,
+        "JMF-09-KNEE-REDUCED-20": 2, "JMF-10-ANKLE-PITCH-REDUCED-25": 2,
     }, "direct versus remote-output external-bearing architecture drift")
     require(len(module_bindings) == 25 and {r["axis_id"] for r in module_bindings} == {r["axis_id"] for r in axes}, "joint-module binding does not cover every axis")
     require({r["family_id"] for r in module_bindings} == {r["family_id"] for r in module_families}, "joint-module family/binding mismatch")
     bearings = list(csv.DictReader((SRC / "bearing-candidate-source-register.csv").open(encoding="utf-8")))
-    require(len(bearings) == 5 and len({r["bearing_id"] for r in bearings}) == 5, "standard bearing candidate set incomplete")
+    require(len(bearings) == 7 and len({r["bearing_id"] for r in bearings}) == 7, "standard bearing candidate set incomplete")
     require({r["bearing_evaluation_candidate"] for r in module_families} <= {r["designation"] for r in bearings}, "module bearing candidate/source mismatch")
     require(all(float(r["published_mass_kg"]) > 0 and float(r["published_dynamic_rating_n"]) > 0 and float(r["published_static_rating_n"]) > 0 for r in bearings), "bearing source facts incomplete")
     require(all("EVALUATION CANDIDATE" in r["application_state"] and r["authority"] == "NO PROCUREMENT OR FABRICATION AUTHORITY" for r in bearings), "bearing application/authority boundary missing")
@@ -141,7 +150,7 @@ def main() -> int:
     holds = list(csv.DictReader((SRC / "open-holds.csv").open(encoding="utf-8")))
     require(len(holds) == 10 and all(r["state"] == "OPEN" for r in holds), "open holds not fail-closed")
     mass = list(csv.DictReader((SRC / "mass-allocation-register.csv").open(encoding="utf-8")))
-    require(mass[-1]["assembly"] == "TOTAL" and float(mass[-1]["cad_mass_kg"].split()[-1]) > 10.0 and "OVER MAXIMUM" in mass[-1]["status"], "mass allocation must expose the current reconciled planning overrun")
+    require(mass[-1]["assembly"] == "TOTAL" and 0 < float(mass[-1]["cad_mass_kg"].split()[-1]) <= 10.0 and "INCOMPLETE PLANNING MODEL" in mass[-1]["status"], "mass allocation must expose the narrow, incomplete planning-screen result")
 
     model = cq.importers.importStep(str(SRC / "HR-30_body_architecture_candidate.step"))
     vertices = [vertex.Center() for vertex in model.val().Vertices()]
@@ -153,7 +162,7 @@ def main() -> int:
     require(sha(SRC / "whole-body-source.py") == sha(ROOT / "tools" / "generate_hr30_body_architecture_p01.py"), "editable source snapshot drift")
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
     require(status["whole_body_geometry_present"] and status["joint_axis_count"] == 25 and status["actuator_allocation_count"] == 25, "whole-body package status incomplete")
-    require(status["joint_module_geometry_present"] and status["joint_module_family_count"] == 8 and status["joint_module_binding_count"] == 25, "joint-module status incomplete")
+    require(status["joint_module_geometry_present"] and status["joint_module_family_count"] == 10 and status["joint_module_binding_count"] == 25, "joint-module status incomplete")
     require(status["sha_bound_vendor_actuator_geometry_present"] and status["vendor_actuator_source_count"] == 3 and status["vendor_actuator_transform_count"] == 25, "vendor actuator geometry status incomplete")
     require(status["web_glb_uses_dimension_matched_simplified_actuator_bodies"], "web GLB simplification disclosure missing")
     packaging = json.loads((SRC / "joint-packaging-screen.json").read_text(encoding="utf-8"))

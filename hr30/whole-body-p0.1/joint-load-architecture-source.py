@@ -61,13 +61,23 @@ def write_csv(path: Path, rows: list[dict]) -> None:
 def actuator_for(axis_id: str) -> tuple[str, float, float]:
     if axis_id.startswith("HEAD_") or "GRIPPER" in axis_id:
         return "ROBOTIS XC330-T288-T", 1.0, 1.0
-    if "WRIST" in axis_id or "ELBOW" in axis_id:
+    if "WRIST" in axis_id:
+        return "ROBOTIS XC330-T288-T", 1.0, 1.0
+    if "ELBOW" in axis_id:
         return "ROBOTIS XM430-W350-R", 1.0, 1.0
-    if axis_id == "WAIST_YAW" or "SHOULDER" in axis_id:
+    if "SHOULDER_ROLL" in axis_id:
+        return "ROBOTIS XM430-W350-R", 1.0, 1.0
+    if axis_id == "WAIST_YAW" or "SHOULDER_PITCH" in axis_id:
         return "ROBOTIS XM540-W270-R", 1.0, 1.0
-    if "HIP_ROLL" in axis_id or "ANKLE_ROLL" in axis_id:
+    if "ANKLE_PITCH" in axis_id:
+        return "ROBOTIS XM430-W350-R", 2.5, REDUCED_DRIVE_EFFICIENCY
+    if "ANKLE_ROLL" in axis_id:
+        return "ROBOTIS XM430-W350-R", 2.0, REDUCED_DRIVE_EFFICIENCY
+    if "HIP_ROLL" in axis_id:
         return "ROBOTIS XH540-W270-R", 2.0, REDUCED_DRIVE_EFFICIENCY
-    if any(token in axis_id for token in ("HIP_PITCH", "KNEE_PITCH", "ANKLE_PITCH")):
+    if "KNEE_PITCH" in axis_id:
+        return "ROBOTIS XH540-W270-R", 2.0, REDUCED_DRIVE_EFFICIENCY
+    if "HIP_PITCH" in axis_id:
         return "ROBOTIS XH540-W270-R", 1.5, REDUCED_DRIVE_EFFICIENCY
     return "ROBOTIS XH540-W270-R", 1.0, 1.0
 
@@ -152,6 +162,12 @@ def compute_rows() -> tuple[list[dict], dict]:
         endpoint_ratio = effective_endpoint / development_nm if development_nm and development_nm > 0 else None
         if "ELBOW" in axis_id:
             disposition = "XM430 RETAINED AS WHOLE-BODY P0.1 CANDIDATE; CONTINUOUS/DYNAMIC/THERMAL/PHYSICAL PROOF OPEN"
+        elif "WRIST" in axis_id:
+            disposition = "XC330 RETAINED BY WHOLE-BODY STATIC SCREEN; DYNAMIC/CONTACT/THERMAL PROOF OPEN"
+        elif "SHOULDER_ROLL" in axis_id:
+            disposition = "XM430 SHOULDER-ROLL CANDIDATE RETAINED BY STATIC ENDPOINT SCREEN; CONTINUOUS/DYNAMIC/THERMAL PROOF OPEN"
+        elif "ANKLE_" in axis_id:
+            disposition = "XM430 WITH WHOLE-BODY REDUCTION RETAINED BY STATIC SCREEN; BELT/CONTINUOUS/DYNAMIC/THERMAL PROOF OPEN"
         elif endpoint_ratio is not None and endpoint_ratio < NARROW_ENDPOINT_RATIO:
             disposition = "NARROW PUBLISHED-STALL-ENDPOINT SCREEN; NO DOWNSIZE; CONTINUOUS/DYNAMIC/THERMAL PROOF BLOCKING"
         else:
@@ -189,6 +205,9 @@ def compute_rows() -> tuple[list[dict], dict]:
         "reduced_drive_efficiency_assumption": REDUCED_DRIVE_EFFICIENCY,
         "narrow_endpoint_ratio_threshold": NARROW_ENDPOINT_RATIO,
         "elbow_xm430_candidate_retained": True,
+        "wrist_xc330_candidate_retained": True,
+        "ankle_xm430_reduced_candidate_retained": True,
+        "knee_ratio": 2.0,
         "published_stall_endpoint_used_as_continuous_rating": False,
         "continuous_torque_validated": False,
         "dynamic_gait_loads_validated": False,
@@ -215,11 +234,11 @@ For each non-yaw rotary axis, the generator sums the current descendant link mas
 
 The comparison column uses current official ROBOTIS **12 V stall torque**, transmission ratio and an {REDUCED_DRIVE_EFFICIENCY:.2f} efficiency assumption for reduced axes. ROBOTIS explicitly warns that stall torque is momentary and differs from continuous and real-world output. Consequently no row claims continuous capability. Accepted trajectories, current limits, duty cycle, N-T curves, temperature, inertia, contact, stopping and physical correlation remain mandatory.
 
-The two elbows now retain the 82 g XM430 candidate already represented by the exact X-430 body in CAD. This removes the former XM430/XM540 ambiguity without reusing the archived HR-V0 elbow analysis. It remains a P0.1 candidate pending whole-body duty and physical testing.
+The two elbows and two shoulder-roll axes retain the 82 g XM430 candidate. Each wrist uses the 23 g XC330 candidate because its direct-drive published-stall endpoint remains more than four times the current factored static screen. Each ankle uses the 82 g XM430 with a 2.0:1 roll or 2.5:1 pitch reduction. The knee reduction is raised from 1.5:1 to 2.0:1. These are whole-body packaging candidates pending continuous-duty, belt, thermal, dynamic and physical testing.
 
 {len(narrow)} axes have less than {NARROW_ENDPOINT_RATIO:.2f} ratio between the effective published stall endpoint and the factored development screen. They are explicitly marked narrow and may not be downsized. Yaw and gripper axes retain separate unresolved inertia/mechanism requirements rather than receiving invented torque values.
 
-Primary manufacturer pages were accessed 2026-08-14 and expose no page revision/date. Exact values are recorded in `actuator-endpoint-source-register.csv`.
+Primary manufacturer pages were accessed 2026-08-14 and expose no page revision/date. Exact values are recorded in `actuator-endpoint-source-register.csv`. The Gates 2025 Industrial Power Transmission catalogue identifies 225-5MGT3-15 and 250-5MGT3-15 belt candidates; pulley capacity, custom lightweight pulley manufacture, tensioning and guarding remain selection required.
 """
     (OUT / "joint-load-architecture.md").write_text(report, encoding="utf-8", newline="\n")
 
@@ -232,7 +251,7 @@ Primary manufacturer pages were accessed 2026-08-14 and expose no page revision/
 
 ## Whole-body joint-load architecture
 
-All 25 axes now have a reproducible static load screen tied to the current URDF mass tree, the 100 g handoff payload and explicit single-support COM-offset cases. Both elbows use the 82 g XM430 P0.1 candidate. Published stall values remain momentary endpoints only; continuous torque, thermal behavior, dynamic gait loads and physical correlation are open.
+All 25 axes now have a reproducible static load screen tied to the current URDF mass tree, the 100 g handoff payload and explicit single-support COM-offset cases. The elbows and shoulder-roll axes use 82 g XM430 candidates; the wrists use XC330 candidates; the ankles use reduced XM430 candidates; and the knees reserve 2.0:1 reductions. Published stall values remain momentary endpoints only; continuous torque, belt capacity, thermal behavior, dynamic gait loads and physical correlation are open.
 """
     readme_path.write_text(readme.rstrip() + "\n", encoding="utf-8", newline="\n")
 
@@ -242,7 +261,7 @@ All 25 axes now have a reproducible static load screen tied to the current URDF 
         if row["hold_id"] == "HR30-P01-H01":
             row["unresolved_item"] = "All 25 axes now have dimensioned module bindings, standard catalogue bearing candidates and a whole-body static load screen. Continuous/dynamic actuator duty, bearing life/load direction, fits, materials, fasteners, stops, encoders, actuator interfaces and physical proof remain open."
         elif row["hold_id"] == "HR30-P01-H03":
-            row["unresolved_item"] = "All twelve leg axes now have explicit single-support static load screens. The current XH540/reduction candidates remain provisional because accepted trajectories, continuous torque, thermal limits, inertia, contact/impact, regeneration, fall restraint and gait correlation remain unproved."
+            row["unresolved_item"] = "All twelve leg axes now have explicit single-support static load screens. Hip/knee XH540 and reduced-ankle XM430 candidates remain provisional because accepted trajectories, belt capacity, continuous torque, thermal limits, inertia, contact/impact, regeneration, fall restraint and gait correlation remain unproved."
     write_csv(holds_path, holds)
 
     status_path = OUT / "package-status.json"
@@ -258,7 +277,7 @@ All 25 axes now have a reproducible static load screen tied to the current URDF 
 
     page_path = OUT / "index.html"
     page = page_path.read_text(encoding="utf-8")
-    section = f'''<section id="joint-loads"><h2>Every axis now has a load screen</h2><div class="grid"><article class="card pass"><div class="metric">25 / 25</div><p>Axes tied to the current URDF mass tree and actuator/transmission allocation.</p></article><article class="card"><h3>Elbows</h3><p>The 82 g XM430 candidate is now used on both sides; continuous-duty proof remains open.</p></article><article class="card hold"><h3>Legs</h3><p>Single-support COM-offset and knee-moment screens exist, but dynamic gait, contact and thermal validation do not.</p></article><article class="card miss"><h3>Stall is not continuous</h3><p>Published stall torque is shown only as a momentary endpoint. It grants no motion authority.</p></article></div><div class="panel"><p><a href="joint-load-architecture.md">Read the load model</a> · <a href="joint-load-screen.csv">All 25 axis results</a> · <a href="actuator-endpoint-source-register.csv">Primary actuator sources</a></p></div></section>'''
+    section = f'''<section id="joint-loads"><h2>Every axis now has a load screen</h2><div class="grid"><article class="card pass"><div class="metric">25 / 25</div><p>Axes tied to the current URDF mass tree and actuator/transmission allocation.</p></article><article class="card"><h3>Lighter distal joints</h3><p>XC330 wrists and reduced XM430 ankles remove distal mass while retaining the current static endpoint screen.</p></article><article class="card hold"><h3>Knees</h3><p>The whole-body candidate now reserves 2.0:1 knee reductions; continuous gait and belt capacity remain open.</p></article><article class="card miss"><h3>Stall is not continuous</h3><p>Published stall torque is shown only as a momentary endpoint. It grants no motion authority.</p></article></div><div class="panel"><p><a href="joint-load-architecture.md">Read the load model</a> · <a href="joint-load-screen.csv">All 25 axis results</a> · <a href="actuator-endpoint-source-register.csv">Primary actuator sources</a> · <a href="transmission-candidate-source-register.csv">Transmission candidates</a></p></div></section>'''
     page = re.sub(r'<section id="joint-loads">[\s\S]*?</section>', section, page, count=1) if 'id="joint-loads"' in page else page.replace("</main>", section + "</main>")
     page_path.write_text(page, encoding="utf-8", newline="\n")
 
@@ -289,6 +308,30 @@ def main() -> int:
         "project_use": "ENDPOINT COMPARISON ONLY; NO CONTINUOUS-TORQUE OR MOTION CREDIT",
         "warning": WARNING,
     } for model, data in ACTUATORS.items()])
+    write_csv(OUT / "transmission-candidate-source-register.csv", [
+        {
+            "manufacturer": "Gates", "catalogue": "2025 INDUSTRIAL POWER TRANSMISSION CATALOGUE",
+            "candidate": "225-5MGT3-15", "product_number": "9400-55278",
+            "pitch_mm": "5", "pitch_length_mm": "225", "tooth_count": "45", "width_mm": "15",
+            "published_mass_kg": "0.014", "candidate_axes": "L_HIP_PITCH; R_HIP_PITCH",
+            "project_pulley_pair": "20:30 tooth custom lightweight pulley candidate",
+            "official_url": "https://www.gates.com/content/dam/documents-library/catalogs/industrial-power-transmission-catalogue-en.pdf",
+            "document_revision_or_date": "2025 catalogue",
+            "selection_state": "BELT CANDIDATE ONLY; PULLEY CAPACITY/TENSION/GUARD/ALIGNMENT/LIFE SELECTION REQUIRED",
+            "warning": WARNING,
+        },
+        {
+            "manufacturer": "Gates", "catalogue": "2025 INDUSTRIAL POWER TRANSMISSION CATALOGUE",
+            "candidate": "250-5MGT3-15", "product_number": "9400-55245",
+            "pitch_mm": "5", "pitch_length_mm": "250", "tooth_count": "50", "width_mm": "15",
+            "published_mass_kg": "0.015", "candidate_axes": "ALL KNEE; ALL HIP/ANKLE ROLL; ALL ANKLE PITCH",
+            "project_pulley_pair": "20:40 tooth or 16:40 tooth custom lightweight pulley candidate",
+            "official_url": "https://www.gates.com/content/dam/documents-library/catalogs/industrial-power-transmission-catalogue-en.pdf",
+            "document_revision_or_date": "2025 catalogue",
+            "selection_state": "BELT CANDIDATE ONLY; PULLEY CAPACITY/TENSION/GUARD/ALIGNMENT/LIFE SELECTION REQUIRED",
+            "warning": WARNING,
+        },
+    ])
     (OUT / "joint-load-architecture-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
     update_docs(rows, status)
     shutil.copy2(Path(__file__), OUT / "joint-load-architecture-source.py")

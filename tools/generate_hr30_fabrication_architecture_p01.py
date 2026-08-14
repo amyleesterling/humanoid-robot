@@ -118,7 +118,7 @@ def build() -> tuple[list[Part], list[dict], list[dict]]:
             raise RuntimeError(f"invalid fabrication part {name}")
         parts.append(Part(name, module, role, shape, material, density, process, color, service))
 
-    def add_panel(name: str, module: str, shape: cq.Shape, access: str, seam: str, retention: str, color=cover_blue, wall: float = 1.8) -> None:
+    def add_panel(name: str, module: str, shape: cq.Shape, access: str, seam: str, retention: str, color=cover_blue, wall: float = 1.5) -> None:
         add(name, module, "removable cover", shape, "PETG/PA-CF PRINT COUPON SELECTION REQUIRED", 1200.0, "FDM/SLS candidate; orientation and process qualification required", color, "TOOL-REMOVABLE CANDIDATE")
         panels.append({
             "panel_id": name, "module": module, "nominal_wall_mm": f"{wall:.1f}", "access_role": access,
@@ -167,30 +167,30 @@ def build() -> tuple[list[Part], list[dict], list[dict]]:
 
         # Flat tool-removable limb panels around the paired frames.
         leg_module = f"L0{1 if side == 'L' else 2}"
-        add_panel(f"{leg_module}_SHIN_FRONT_COVER", leg_module, body.rounded_box(60, 1.8, 132, (x, -34, 127.5), 0.8), "shin harness and cross-tie access", "Y=-33.1 mm", "M3-class captive insert pattern candidate; exact system selection required")
-        add_panel(f"{leg_module}_SHIN_REAR_COVER", leg_module, body.rounded_box(60, 1.8, 132, (x, 34, 127.5), 0.8), "shin harness and cross-tie access", "Y=+33.1 mm", "M3-class captive insert pattern candidate; exact system selection required", cover_dark)
-        add_panel(f"{leg_module}_THIGH_FRONT_COVER", leg_module, body.rounded_box(66, 1.8, 138, (x, -37, 295), 0.8), "thigh transmission and harness access", "Y=-36.1 mm", "M3-class captive insert pattern candidate; exact system selection required")
-        add_panel(f"{leg_module}_THIGH_REAR_COVER", leg_module, body.rounded_box(66, 1.8, 138, (x, 37, 295), 0.8), "thigh transmission and harness access", "Y=+36.1 mm", "M3-class captive insert pattern candidate; exact system selection required", cover_dark)
-        add_panel(f"{foot_module}_TOP_COVER", foot_module, body.rounded_box(82, 118, 1.8, (x, 25, 34.0), 0.8), "ankle and foot-sensor access", "Z=33.1 mm", "four tool-fastened corners candidate; exact inserts open", cover_blue)
+        add_panel(f"{leg_module}_SHIN_FRONT_COVER", leg_module, body.rounded_box(60, 1.5, 132, (x, -34, 127.5), 0.7), "shin harness and cross-tie access", "Y=-33.25 mm", "M3-class captive insert pattern candidate; exact system selection required")
+        add_panel(f"{leg_module}_SHIN_REAR_COVER", leg_module, body.rounded_box(60, 1.5, 132, (x, 34, 127.5), 0.7), "shin harness and cross-tie access", "Y=+33.25 mm", "M3-class captive insert pattern candidate; exact system selection required", cover_dark)
+        add_panel(f"{leg_module}_THIGH_FRONT_COVER", leg_module, body.rounded_box(66, 1.5, 138, (x, -37, 295), 0.7), "thigh transmission and harness access", "Y=-36.25 mm", "M3-class captive insert pattern candidate; exact system selection required")
+        add_panel(f"{leg_module}_THIGH_REAR_COVER", leg_module, body.rounded_box(66, 1.5, 138, (x, 37, 295), 0.7), "thigh transmission and harness access", "Y=+36.25 mm", "M3-class captive insert pattern candidate; exact system selection required", cover_dark)
+        add_panel(f"{foot_module}_TOP_COVER", foot_module, body.rounded_box(82, 118, 1.5, (x, 25, 34.0), 0.7), "ankle and foot-sensor access", "Z=33.25 mm", "four tool-fastened corners candidate; exact inserts open", cover_blue)
         for segment, p0, p1, width in (("UPPER_ARM", shoulder, elbow, 46), ("FOREARM", elbow, wrist, 44)):
             for y, suffix, color in ((-24.0, "FRONT", cover_blue), (24.0, "REAR", cover_dark)):
-                add_panel(f"{arm_module}_{segment}_{suffix}_COVER", arm_module, beam_between((p0[0], y, p0[2]), (p1[0], y, p1[2]), width, 1.8), f"{segment.lower().replace('_', ' ')} harness/link access", f"local Y={'-' if y < 0 else '+'} cover plane", "M3-class captive insert pattern candidate; exact system selection required", color)
+                add_panel(f"{arm_module}_{segment}_{suffix}_COVER", arm_module, beam_between((p0[0], y, p0[2]), (p1[0], y, p1[2]), width, 1.5), f"{segment.lower().replace('_', ' ')} harness/link access", f"local Y={'-' if y < 0 else '+'} cover plane", "M3-class captive insert pattern candidate; exact system selection required", color)
         hand_module = f"G0{1 if side == 'L' else 2}"
-        add_panel(f"{hand_module}_PALM_REAR_COVER", hand_module, body.rounded_box(46, 1.8, 32, (sign * body.WRIST_X, 28.0, 270), 0.8), "gripper actuator and equalizer access", "Y=+27.1 mm", "four small captive fasteners candidate; exact selection required", cover_dark)
+        add_panel(f"{hand_module}_PALM_REAR_COVER", hand_module, body.rounded_box(46, 1.5, 32, (sign * body.WRIST_X, 28.0, 270), 0.7), "gripper actuator and equalizer access", "Y=+27.25 mm", "four small captive fasteners candidate; exact selection required", cover_dark)
 
     # Hollow central shells split into separately removable front and rear parts.
-    torso_shell = hollow_tapered(430, 585, 152, 94, 190, 110, 2.0)
-    pelvis_shell = hollow_tapered(352, 417, 142, 96, 155, 105, 2.0)
-    add_panel("T01_TORSO_FRONT_COVER", "T01", half(torso_shell, True), "compute, cooling, bus and shoulder-frame access", "Y=0 split plane", "eight M3-class captive points candidate; exact count/load/insert selection required", wall=2.0)
-    add_panel("T01_TORSO_REAR_COVER", "T01", half(torso_shell, False), "compute cooling and harness-spine access", "Y=0 split plane", "eight M3-class captive points candidate; exact count/load/insert selection required", cover_dark, wall=2.0)
-    add_panel("P01_PELVIS_FRONT_COVER", "P01", half(pelvis_shell, True), "power-bay service access", "Y=0 split plane", "six M3-class captive points candidate; exact selection required", wall=2.0)
-    add_panel("P01_PELVIS_REAR_COVER", "P01", half(pelvis_shell, False), "restraint, power-disconnect and harness access", "Y=0 split plane", "six M3-class captive points candidate; exact selection required", cover_dark, wall=2.0)
+    torso_shell = hollow_tapered(430, 585, 152, 94, 190, 110, 1.6)
+    pelvis_shell = hollow_tapered(352, 417, 142, 96, 155, 105, 1.6)
+    add_panel("T01_TORSO_FRONT_COVER", "T01", half(torso_shell, True), "compute, cooling, bus and shoulder-frame access", "Y=0 split plane", "eight M3-class captive points candidate; exact count/load/insert selection required", wall=1.6)
+    add_panel("T01_TORSO_REAR_COVER", "T01", half(torso_shell, False), "compute cooling and harness-spine access", "Y=0 split plane", "eight M3-class captive points candidate; exact count/load/insert selection required", cover_dark, wall=1.6)
+    add_panel("P01_PELVIS_FRONT_COVER", "P01", half(pelvis_shell, True), "power-bay service access", "Y=0 split plane", "six M3-class captive points candidate; exact selection required", wall=1.6)
+    add_panel("P01_PELVIS_REAR_COVER", "P01", half(pelvis_shell, False), "restraint, power-disconnect and harness access", "Y=0 split plane", "six M3-class captive points candidate; exact selection required", cover_dark, wall=1.6)
     head_outer = body.rounded_box(150, 110, 112, (0, 0, 706), 12)
-    head_inner = body.rounded_box(146, 106, 116, (0, 0, 706), 10)
+    head_inner = body.rounded_box(146.8, 106.8, 116, (0, 0, 706), 10.4)
     head_shell = head_outer.cut(head_inner)
     face_opening = body.rounded_box(120, 28, 62, (0, -54, 704), 4)
-    add_panel("H01_HEAD_FRONT_BEZEL", "H01", half(head_shell, True).cut(face_opening), "screen, camera, privacy indicator and microphone access", "Y=0 split plane; controlled screen opening", "six small captive fasteners candidate; exact selection required", wall=2.0)
-    add_panel("H01_HEAD_REAR_COVER", "H01", half(head_shell, False), "speaker, camera and cooling access", "Y=0 split plane", "six small captive fasteners candidate; exact selection required", cover_dark, wall=2.0)
+    add_panel("H01_HEAD_FRONT_BEZEL", "H01", half(head_shell, True).cut(face_opening), "screen, camera, privacy indicator and microphone access", "Y=0 split plane; controlled screen opening", "six small captive fasteners candidate; exact selection required", wall=1.6)
+    add_panel("H01_HEAD_REAR_COVER", "H01", half(head_shell, False), "speaker, camera and cooling access", "Y=0 split plane", "six small captive fasteners candidate; exact selection required", cover_dark, wall=1.6)
 
     # Segregated power/data routing references.  Corridors are not physical
     # cable geometry and receive no fill, bend, EMC, fire, or current credit.
@@ -230,7 +230,7 @@ def update_bom_and_docs(frame_mass: float, cover_mass: float) -> None:
         if row["item_id"] == "HR30-BOM-021":
             row["candidate"] = f"P0.1 windowed 4 mm limb plates, hollow torso rails/cross-tube, windowed pelvis plates and foot carriers; CAD density screen {frame_mass:.3f} kg; drawings/material release open"
         elif row["item_id"] == "HR30-BOM-022":
-            row["candidate"] = f"P0.1 1.8-2.0 mm removable torso/pelvis/head/limb/palm cover set; CAD density screen {cover_mass:.3f} kg; material/process/rib/retention open"
+            row["candidate"] = f"P0.1 1.5 mm limb/palm/foot panels and 1.6 mm torso/pelvis/head shells; CAD density screen {cover_mass:.3f} kg; material/process/rib/retention open"
         elif row["item_id"] == "HR30-BOM-030":
             row["candidate"] = "11 segregated power/data route corridors with controlled diameters and bend-radius requirements; cables/connectors/fill/EMC/current selection open"
     write_csv(bom_path, rows)
@@ -241,7 +241,7 @@ def update_bom_and_docs(frame_mass: float, cover_mass: float) -> None:
 
 ## Modular fabrication architecture
 
-P0.1 now includes a second editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable limb and palm panels, and eleven segregated harness corridors. The CAD density screen is {frame_mass:.3f} kg for frame parts and {cover_mass:.3f} kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; neither they nor the historical 9.63 kg allocation establish whole-robot mass closure. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
+P0.1 now includes a second editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable limb and palm panels, and eleven segregated harness corridors. The current mass candidate uses 1.5 mm limb/palm/foot panels and 1.6 mm torso/pelvis/head shells; ribs, print/process qualification and impact stiffness remain open. The CAD density screen is {frame_mass:.3f} kg for frame parts and {cover_mass:.3f} kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; neither they nor the historical 9.63 kg allocation establish whole-robot mass closure. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
 """
     readme_path.write_text(text.rstrip() + "\n", encoding="utf-8", newline="\n")
 
@@ -257,7 +257,7 @@ P0.1 now includes a second editable CAD assembly that converts the visual body e
     holds = list(csv.DictReader(holds_path.open(encoding="utf-8")))
     for row in holds:
         if row["hold_id"] == "HR30-P01-H06":
-            row["unresolved_item"] = "The fabrication assembly now defines lightweight hollow 1.8-2.0 mm torso/pelvis/head shells and removable limb/palm panels, but material/process, rib/stiffness, retention, vents, access clearance, tolerance and pinch-edge proof remain open."
+            row["unresolved_item"] = "The fabrication assembly now defines lightweight hollow 1.5 mm limb/palm/foot panels and 1.6 mm torso/pelvis/head shells, but material/process, rib/stiffness, retention, vents, access clearance, tolerance and pinch-edge proof remain open."
         elif row["hold_id"] == "HR30-P01-H07":
             row["unresolved_item"] = "Eleven segregated power/data corridors now have diameters and bend-radius requirements, but exact cables, fill, flex life, service loops, connectors, strain relief, shielding, current, EMC and thermal evidence remain open."
     write_csv(holds_path, holds)

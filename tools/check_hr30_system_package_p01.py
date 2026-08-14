@@ -45,6 +45,7 @@ def main() -> int:
         "HR-30_integrated_whole_robot_candidate.step",
         "joint-load-screen.csv", "joint-load-architecture.md", "joint-load-architecture-status.json",
         "actuator-endpoint-source-register.csv", "bearing-candidate-source-register.csv",
+        "transmission-candidate-source-register.csv",
     }
     source_files = {p.relative_to(SRC).as_posix() for p in SRC.rglob("*") if p.is_file()}
     release_files = {p.relative_to(REL).as_posix() for p in REL.rglob("*") if p.is_file()}
@@ -89,21 +90,24 @@ def main() -> int:
     require(all(float(total[key]) > 0 for key in ("local_ixx_kg_m2", "local_iyy_kg_m2", "local_izz_kg_m2")), "whole-body inertia budget nonpositive")
 
     power = read_csv("power-energy-budget.csv")
-    require(power[-1]["load"] == "WHOLE ROBOT" and float(power[-1]["operating_budget_w"]) == 197.0 and float(power[-1]["short_peak_budget_w"]) == 811.0, "power budget total mismatch")
+    require(power[-1]["load"] == "WHOLE ROBOT" and float(power[-1]["operating_budget_w"]) == 179.0 and float(power[-1]["short_peak_budget_w"]) == 727.0, "power budget total mismatch")
     thermal = read_csv("thermal-budget.csv")
     require(thermal[-1]["domain"] == "TOTAL" and float(thermal[-1]["candidate_heat_w"]) == 135.0, "thermal budget total mismatch")
     cost = read_csv("cost-budget.csv")
-    require(cost[-1]["cost_group"] == "TOTAL" and float(cost[-1]["planning_allowance_usd"]) == 21000.0, "cost allowance total mismatch")
+    require(cost[-1]["cost_group"] == "TOTAL" and float(cost[-1]["planning_allowance_usd"]) == 20300.0, "cost allowance total mismatch")
     compute = read_csv("compute-sensor-network-budget.csv")
     require(any(row["function"] == "Conversational compute" and "never writes actuator registers" in row["role_boundary"] for row in compute), "conversation/motion boundary missing")
     require(any(row["function"] == "Actuator buses" and float(row["quantity"]) == 5 for row in compute), "five segmented actuator buses missing")
 
     bom = read_csv("whole-robot-candidate-bom.csv")
     require(len(bom) == 32 and sum(int(row["quantity"]) for row in bom if "actuator" in row["function"]) >= 25, "candidate BOM population incomplete")
-    require(any(row["item_id"] == "HR30-BOM-002" and int(row["quantity"]) == 5 and row["function"] == "waist/shoulder actuator" for row in bom), "XM540 whole-body allocation drift")
-    require(any(row["item_id"] == "HR30-BOM-003" and int(row["quantity"]) == 4 and row["function"] == "elbow/wrist actuator" for row in bom), "XM430 whole-body allocation drift")
-    require(any(row["item_id"] == "HR30-BOM-020" and int(row["quantity"]) == 39 and "6002-2RS1" in row["candidate"] for row in bom), "standard external-bearing BOM population incomplete")
-    require(any(row["item_id"] == "HR30-BOM-019" and int(row["quantity"]) == 10 and "2.0:1 roll-axis" in row["candidate"] for row in bom), "leg reduction BOM does not cover six pitch and four roll axes")
+    require(any(row["item_id"] == "HR30-BOM-001" and int(row["quantity"]) == 8 and row["function"] == "hip/knee actuator" for row in bom), "XH540 whole-body allocation drift")
+    require(any(row["item_id"] == "HR30-BOM-002" and int(row["quantity"]) == 3 and row["function"] == "waist/shoulder-pitch actuator" for row in bom), "XM540 whole-body allocation drift")
+    require(any(row["item_id"] == "HR30-BOM-003" and int(row["quantity"]) == 8 and row["function"] == "shoulder-roll/elbow/ankle actuator" for row in bom), "XM430 whole-body allocation drift")
+    require(any(row["item_id"] == "HR30-BOM-004" and int(row["quantity"]) == 6 and row["function"] == "head/gripper/wrist actuator" for row in bom), "XC330 whole-body allocation drift")
+    require(any(row["item_id"] == "HR30-BOM-018" and int(row["quantity"]) == 10 for row in bom), "reduced-leg output encoder allocation drift")
+    require(any(row["item_id"] == "HR30-BOM-020" and int(row["quantity"]) == 39 and "6803" in row["candidate"] and "6901" in row["candidate"] for row in bom), "standard external-bearing BOM population incomplete")
+    require(any(row["item_id"] == "HR30-BOM-019" and int(row["quantity"]) == 10 and "225-5MGT3-15" in row["candidate"] and "250-5MGT3-15" in row["candidate"] for row in bom), "leg reduction BOM does not cover all ten reduced axes")
     require(all(row["authority"] == "NO PROCUREMENT OR FABRICATION AUTHORITY" for row in bom), "BOM authority overclaim")
 
     schema = json.loads((SRC / "structured-action-request.schema.json").read_text(encoding="utf-8"))

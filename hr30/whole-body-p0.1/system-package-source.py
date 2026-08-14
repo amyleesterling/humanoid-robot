@@ -253,9 +253,10 @@ def write_mass_budget(rows: list[dict]) -> dict:
 
 def write_budgets_and_bom() -> None:
     power = [
-        ("12 leg actuators", "ACTUATOR", 14.8, 96, 480, "simultaneous stall prohibited; measured gait duty required"),
-        ("waist + shoulders + elbows", "ACTUATOR", 14.8, 35, 175, "candidate operating estimate; limits unverified"),
-        ("wrists + grippers", "ACTUATOR", 14.8, 12, 48, "grip-force and duty-cycle proof required"),
+        ("8 hip/knee actuators", "ACTUATOR", 14.8, 64, 320, "simultaneous stall prohibited; measured gait duty required"),
+        ("4 reduced ankle actuators", "ACTUATOR", 14.8, 22, 112, "XM430 candidate; reduction, continuous duty and measured gait proof required"),
+        ("waist + shoulder pitch + elbows/shoulder roll", "ACTUATOR", 14.8, 31, 155, "mixed XM540/XM430 candidate operating estimate; limits unverified"),
+        ("wrists + grippers", "ACTUATOR", 12.0, 8, 32, "XC330 candidates; grip-force and duty-cycle proof required"),
         ("head pan/tilt", "ACTUATOR", 14.8, 2, 8, "candidate operating estimate"),
         ("Raspberry Pi 5 compute", "COMPUTE", 5.1, 18, 27, "official 27 W supply envelope is not installed consumption evidence"),
         ("motion/safety controllers + buses", "CONTROL", 5.0, 8, 15, "exact controller/transceiver selections required"),
@@ -285,7 +286,7 @@ def write_budgets_and_bom() -> None:
         ("Independent watchdog", "Raspberry Pi Pico 1 SC0915 candidate; non-safety-rated", 1, "heartbeat supervision only; zero functional-safety credit", "hardwired permit request to independent safety architecture"),
         ("Pelvis IMU", "industrial-grade 6/9-axis IMU SELECTION REQUIRED", 1, "body attitude/rate", "deterministic SPI/CAN candidate"),
         ("Foot force sensing", "four-corner load cells per foot + ADC SELECTION REQUIRED", 8, "support polygon and contact state", "two local deterministic sensor nodes"),
-        ("Joint output encoders", "absolute encoders on all reduced leg axes; exact model SELECTION REQUIRED", 8, "post-transmission joint angle", "deterministic local buses"),
+        ("Joint output encoders", "absolute encoders on all reduced leg axes; exact model SELECTION REQUIRED", 10, "post-transmission joint angle", "deterministic local buses"),
         ("Vision", "Raspberry Pi Camera Module 3 Wide-class candidate", 2, "stereo/depth-development input; no safety role", "CSI to conversational compute"),
         ("Microphones", "four-microphone array candidate", 1, "far-field speech capture; no safety role", "USB/I2S; privacy control required"),
         ("Speakers", "two 3 W full-range speakers + class-D amplifier", 2, "speech and non-safety status tones", "I2S; volume ceiling required"),
@@ -294,7 +295,7 @@ def write_budgets_and_bom() -> None:
     ]
     write_csv(OUT / "compute-sensor-network-budget.csv", [{"function": r[0], "candidate": r[1], "quantity": r[2], "role_boundary": r[3], "interface": r[4], "status": "P0.1 CANDIDATE - EXACT DEVICE/INTERFACE/EMC/THERMAL EVIDENCE REQUIRED"} for r in compute])
     cost = [
-        ("25 actuator population", 9700, "planning allowance; not vendor quotes"),
+        ("25 actuator population", 9000, "planning allowance after distal-joint candidate changes; not vendor quotes"),
         ("transmissions, bearings and output encoders", 1900, "ratios and exact hardware open"),
         ("frames, machined plates, printed covers and fasteners", 2200, "Boston-area prototype allowance"),
         ("compute, sensing, display and audio", 1100, "exact device selection open"),
@@ -305,10 +306,10 @@ def write_budgets_and_bom() -> None:
     write_csv(OUT / "cost-budget.csv", [{"cost_group": r[0], "planning_allowance_usd": r[1], "basis": r[2], "status": "BUDGETARY ALLOWANCE ONLY - NO PROCUREMENT AUTHORITY"} for r in cost] + [{"cost_group": "TOTAL", "planning_allowance_usd": sum(r[1] for r in cost), "basis": "P0.1 program planning total; excludes labor, qualified review, test facility and redesign", "status": "BUDGETARY ALLOWANCE ONLY"}])
 
     bom = [
-        ("HR30-BOM-001", "leg actuator", "ROBOTIS", "XH540-W270-R evaluation candidate", 12, 525),
-        ("HR30-BOM-002", "waist/shoulder actuator", "ROBOTIS", "XM540-W270-R candidate", 5, 355),
-        ("HR30-BOM-003", "elbow/wrist actuator", "ROBOTIS", "XM430-W350-R candidate", 4, 250),
-        ("HR30-BOM-004", "head/gripper actuator", "ROBOTIS", "XC330-class compact candidate; exact model SELECTION REQUIRED", 4, 105),
+        ("HR30-BOM-001", "hip/knee actuator", "ROBOTIS", "XH540-W270-R evaluation candidate", 8, 525),
+        ("HR30-BOM-002", "waist/shoulder-pitch actuator", "ROBOTIS", "XM540-W270-R candidate", 3, 355),
+        ("HR30-BOM-003", "shoulder-roll/elbow/ankle actuator", "ROBOTIS", "XM430-W350-R candidate", 8, 250),
+        ("HR30-BOM-004", "head/gripper/wrist actuator", "ROBOTIS", "XC330-T288-T candidate", 6, 105),
         ("HR30-BOM-005", "main compute", "Raspberry Pi", "Raspberry Pi 5 8GB SC1112 candidate", 1, 125),
         ("HR30-BOM-006", "compute cooling", "Raspberry Pi", "Active Cooler SC1148 candidate", 1, 12),
         ("HR30-BOM-007", "compute storage", "Kingston", "SDCIT2/64GBSP candidate", 1, 55),
@@ -322,9 +323,9 @@ def write_budgets_and_bom() -> None:
         ("HR30-BOM-015", "audio amplifier", "SELECTION REQUIRED", "stereo class-D I2S candidate", 1, 25),
         ("HR30-BOM-016", "pelvis IMU", "SELECTION REQUIRED", "industrial 6/9-axis IMU", 1, 160),
         ("HR30-BOM-017", "foot force sensing", "SELECTION REQUIRED", "four-corner load-cell and ADC set per foot", 2, 120),
-        ("HR30-BOM-018", "output absolute encoder", "SELECTION REQUIRED", "reduced leg joint encoder", 8, 70),
-        ("HR30-BOM-019", "leg reductions", "SELECTION REQUIRED", "1.5:1 pitch-axis and 2.0:1 roll-axis geometric candidates; exact belt, pulley, bearing and retention selections open", 10, 90),
-        ("HR30-BOM-020", "external joint bearing", "NSK/SKF", "696, 625-2Z, 61900-2RS1, 6003-2Z/C3 and 6002-2RS1 evaluation candidates; direct axes use one external bearing and remote/reduced axes use two", 39, 35),
+        ("HR30-BOM-018", "output absolute encoder", "SELECTION REQUIRED", "reduced leg joint encoder", 10, 70),
+        ("HR30-BOM-019", "leg reductions", "Gates/custom", "225-5MGT3-15 and 250-5MGT3-15 belt candidates with 20:30, 20:40 or 16:40 custom lightweight pulleys; capacity/tension/guard/retention open", 10, 90),
+        ("HR30-BOM-020", "external joint bearing", "NSK/SKF", "696, 625-2Z, 61900-2RS1, 6803 and 6901 primary candidates; 6003-2Z/C3 and 6002-2RS1 retained as evaluated alternatives; direct axes use one external bearing and remote/reduced axes use two", 39, 35),
         ("HR30-BOM-021", "frame plates", "custom", "6061-T6/T651 machined plate set; drawings/material release open", 1, 900),
         ("HR30-BOM-022", "shells", "custom", "printed removable cover set; material/process open", 1, 450),
         ("HR30-BOM-023", "feet", "custom", "machined/printed foot core + replaceable compliant sole", 2, 180),
@@ -388,7 +389,7 @@ Closure requires dimensioned linkage CAD, output-force/current calibration, comp
 
 **{WARNING}**
 
-The whole body has six commanded axes per leg: hip yaw/roll/pitch, knee pitch, and ankle pitch/roll. Pitch joints reserve 1.5:1 belt reductions, dual-supported outputs and output encoders; hip roll reserves a higher-reduction path and remains blocked from direct-drive release. Each foot is 90 x 145 mm with four-corner force sensing and a replaceable compliant sole. The neutral estimated mass is {mass_summary['mass_kg']:.2f} kg with estimated COM Z={mass_summary['com_m'][2]:.3f} m; these are allocation-model values, not measured properties.
+The whole body has six commanded axes per leg: hip yaw/roll/pitch, knee pitch, and ankle pitch/roll. Hip pitch reserves 1.5:1, knee and roll axes reserve 2.0:1, and ankle pitch reserves 2.5:1 timing reductions with dual-supported 12 mm outputs and output encoders. Each foot is 90 x 145 mm with four-corner force sensing and a replaceable compliant sole. The neutral estimated mass is {mass_summary['mass_kg']:.2f} kg with estimated COM Z={mass_summary['com_m'][2]:.3f} m; these are allocation-model values, not measured properties.
 
 Control layers are: embedded actuator current/velocity loops; a deterministic local motion controller for joint interpolation, state estimation, support-polygon checks and limits; a separately powered watchdog/permit path with zero safety credit until validated; and a Raspberry Pi/OpenAI conversational layer that can request only named behaviors. Loss or staleness of the conversational layer never becomes a motion request.
 
@@ -451,7 +452,7 @@ def update_web_and_status(mass_summary: dict) -> None:
     end_marker = "<!-- HR30-SYSTEM-P01-END -->"
     if start_marker in page and end_marker in page:
         page = page.split(start_marker, 1)[0] + page.split(end_marker, 1)[1]
-    added = f'''{start_marker}<section><h2>The P0.1 engineering package is whole-body</h2><div class="grid"><article class="card pass"><h3>Floating-base dynamics</h3><p>URDF and MJCF cover all 25 commanded axes with an unanchored base and provisional masses, inertias, geometry and limits.</p></article><article class="card hold"><h3>Mass and energy</h3><p>{mass_summary['mass_kg']:.2f} kg allocation estimate, {mass_summary['com_m'][2]:.3f} m neutral COM height, 197 W operating power budget and 135 W heat-rejection budget. All require physical closure.</p></article><article class="card pass"><h3>Embodied-agent boundary</h3><p>OpenAI produces expiring high-level JSON requests only. Deterministic local software and independent hardware retain every motion and permit decision.</p></article><article class="card hold"><h3>Walking path</h3><p>Suspended characterization, restrained standing, weight transfer, capture steps and tethered walking are separate development gates.</p></article></div></section>
+    added = f'''{start_marker}<section><h2>The P0.1 engineering package is whole-body</h2><div class="grid"><article class="card pass"><h3>Floating-base dynamics</h3><p>URDF and MJCF cover all 25 commanded axes with an unanchored base and provisional masses, inertias, geometry and limits.</p></article><article class="card hold"><h3>Mass and energy</h3><p>{mass_summary['mass_kg']:.2f} kg allocation estimate, {mass_summary['com_m'][2]:.3f} m neutral COM height, 179 W operating power budget and 135 W heat-rejection budget. All require physical closure.</p></article><article class="card pass"><h3>Embodied-agent boundary</h3><p>OpenAI produces expiring high-level JSON requests only. Deterministic local software and independent hardware retain every motion and permit decision.</p></article><article class="card hold"><h3>Walking path</h3><p>Suspended characterization, restrained standing, weight transfer, capture steps and tethered walking are separate development gates.</p></article></div></section>
 <section><h2>System artifacts</h2><div class="panel"><p><a href="hr30.urdf">URDF</a> · <a href="hr30.xml">MJCF</a> · <a href="mass-properties-budget.csv">Mass/COM/inertia</a> · <a href="power-energy-budget.csv">Power/energy</a> · <a href="thermal-budget.csv">Thermal</a> · <a href="compute-sensor-network-budget.csv">Compute/sensors/network</a> · <a href="cost-budget.csv">Cost</a> · <a href="whole-robot-candidate-bom.csv">Whole-robot BOM</a> · <a href="gripper-functional-specification.md">Hands</a> · <a href="walking-development-architecture.md">Walking</a> · <a href="embodied-agent-architecture.md">OpenAI/local-control boundary</a> · <a href="structured-action-request.schema.json">Action schema</a> · <a href="modular-fabrication-assembly-electrification-plan.md">Build/electrification plan</a> · <a href="HR-30_modular_fabrication_candidate.step">Fabrication-candidate STEP</a> · <a href="fabrication-part-register.csv">Part register</a> · <a href="service-panel-interface-register.csv">Service panels</a> · <a href="harness-route-register.csv">Harness routes</a></p></div></section>
 <section><h2>Inspect the modular frame, covers, and harness routes</h2><div class="viewer"><model-viewer src="HR-30_modular_fabrication_reference.glb" alt="Interactive preliminary HR-30 modular fabrication architecture with frame plates, removable covers, and harness route corridors" camera-controls camera-orbit="35deg 76deg 95%" min-camera-orbit="auto auto 20%" max-camera-orbit="auto auto 240%" field-of-view="26deg" shadow-intensity="0.85" exposure="1.05" interaction-prompt="auto"></model-viewer><p>Dark blue is the candidate metal frame, sky and mid blue are separately removable covers, gold is the uncredited restraint bridge, orange reserves actuator-power routing, and cyan reserves data and low-voltage routing. These are dimensioned architecture parts and corridors, not released manufacturing drawings or selected cables.</p></div></section>
 {end_marker}'''
