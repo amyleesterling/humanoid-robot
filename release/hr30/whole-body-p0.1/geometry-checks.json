@@ -1,0 +1,77 @@
+{
+  "identifier": "HR-30-BODY-ARCH-P0.1",
+  "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "coordinate_system": {
+    "x": "robot left",
+    "y": "rearward; face is -Y",
+    "z": "up from floor",
+    "origin": "floor/sagittal-plane intersection beneath pelvis"
+  },
+  "source_datums_mm": {
+    "ankle_pitch": 45.0,
+    "knee_pitch": 210.0,
+    "hip_pitch": 380.0,
+    "waist_yaw": 425.0,
+    "shoulder_pitch": 590.0,
+    "neck_pan": 650.0,
+    "shell_top": 762.0
+  },
+  "physical_bbox_mm": {
+    "xmin": -152.00605510483388,
+    "xmax": 152.00605510483388,
+    "ymin": -64.5000001,
+    "ymax": 97.50605510483386,
+    "zmin": -0.006055104833866842,
+    "zmax": 762.0121101096678,
+    "xlen": 304.01211020966775,
+    "ylen": 162.00605520483384,
+    "zlen": 762.0181652145017
+  },
+  "physical_vertex_extents_mm": {
+    "xmin": -152.0,
+    "xmax": 152.0,
+    "ymin": -62.5,
+    "ymax": 97.5,
+    "zmin": 0.0,
+    "zmax": 762.0
+  },
+  "reference_bbox_mm": {
+    "xmin": -159.0010879629972,
+    "xmax": 159.0010879629972,
+    "ymin": -64.5000001,
+    "ymax": 97.50605510483386,
+    "zmin": -0.006055104833866842,
+    "zmax": 762.0121101096678,
+    "xlen": 318.0021759259944,
+    "ylen": 162.00605520483384,
+    "zlen": 762.0181652145017
+  },
+  "joint_axis_count": 25,
+  "physical_component_count": 52,
+  "reference_component_count": 31,
+  "shoulder_shell_width_mm": 250.0,
+  "hip_shell_width_mm": 155.0,
+  "foot_center_spacing_mm": 125.0,
+  "straight_arm_reach_screen_mm": 370.0,
+  "straight_arm_span_screen_mm": 950.0,
+  "checks": {
+    "overall_height_exact_762": true,
+    "joint_axis_count_exact_25": true,
+    "shoulder_shell_target_met": true,
+    "hip_shell_target_met": true,
+    "foot_spacing_inside_walking_band": true,
+    "straight_arm_reach_target_met": false,
+    "straight_arm_reach_hard_limit_met": true,
+    "straight_arm_span_target_met": false,
+    "straight_arm_span_hard_limit_met": true
+  },
+  "interpretation": "architecture and packaging geometry only; external envelopes are not manufacturing parts and volume is not mass",
+  "authority": {
+    "procurement": false,
+    "fabrication": false,
+    "assembly": false,
+    "powered_test": false,
+    "motion": false,
+    "energization": false
+  }
+}
