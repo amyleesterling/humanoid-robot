@@ -102,5 +102,12 @@
   "protocol_compatibility_screen_complete": true,
   "native_hr30_kicad_reconciled": false,
   "actuator_bus_interface_selected": false,
-  "actuator_bus_connector_harness_validated": false
+  "actuator_bus_connector_harness_validated": false,
+  "native_hr30_kicad_present": true,
+  "native_hr30_kicad_sheet_count": 13,
+  "native_hr30_kicad_axis_binding_count": 25,
+  "native_hr30_kicad_logical_connectivity_reconciled": true,
+  "native_hr30_kicad_physical_pins_selected": false,
+  "native_hr30_kicad_erc_errors": 0,
+  "native_hr30_kicad_erc_warnings": 0
 }

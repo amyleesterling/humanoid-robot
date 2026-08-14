@@ -1,0 +1,36 @@
+ERC report (2026-08-14T06:42:36, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+
+***** Sheet /01 Energy, service disconnect, precharge and conversion/
+
+***** Sheet /02 Dual-channel E-stop, monitored reset, permit and redundant interruption/
+
+***** Sheet /03 Conversational compute, deterministic motion controller and watchdog/
+
+***** Sheet /04 Five isolated RS-485 and three protected TTL interface channels/
+
+***** Sheet /05 Left-leg RS-485 and protected branch/
+
+***** Sheet /06 Right-leg RS-485 and protected branch/
+
+***** Sheet /07 Left proximal-arm RS-485 and protected branch/
+
+***** Sheet /08 Right proximal-arm RS-485 and protected branch/
+
+***** Sheet /09 Waist RS-485 and protected branch/
+
+***** Sheet /10 Left wrist/gripper TTL and protected branch/
+
+***** Sheet /11 Right wrist/gripper TTL and protected branch/
+
+***** Sheet /12 Head TTL, sensing, display and audio/
+
+ ** ERC messages: 0  Errors 0  Warnings 0
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

@@ -50,6 +50,9 @@ def main() -> int:
         "actuator-bus-topology.csv", "actuator-bus-axis-binding.csv",
         "actuator-bus-source-register.csv", "whole-body-electrical-integration.md",
         "actuator-bus-architecture-source.py",
+        "electrical/kicad/hr30-whole-body-electrical-p0.1/hr30-whole-body-electrical-p0.1.kicad_pro",
+        "electrical/kicad/hr30-whole-body-electrical-p0.1/hr30-whole-body-electrical-p0.1.kicad_sch",
+        "electrical/kicad/hr30-whole-body-electrical-p0.1/validation/hr30-whole-body-electrical-p0.1-erc.rpt",
     }
     source_files = {p.relative_to(SRC).as_posix() for p in SRC.rglob("*") if p.is_file()}
     release_files = {p.relative_to(REL).as_posix() for p in REL.rglob("*") if p.is_file()}
@@ -134,6 +137,7 @@ def main() -> int:
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
     require(all(status[key] for key in ("whole_body_system_package_present", "urdf_present", "mjcf_present", "whole_robot_candidate_bom_present", "walking_architecture_present", "embodied_agent_boundary_present", "modular_build_plan_present", "mass_reconciliation_present", "installed_equipment_layout_present", "whole_body_joint_load_architecture_present", "whole_body_pose_architecture_present", "pose_support_geometry_screen_complete", "whole_body_nominal_self_collision_screen_present", "whole_body_actuator_bus_architecture_present", "protocol_compatibility_screen_complete")), "system package status incomplete")
     require((status["actuator_bus_segment_count"], status["actuator_bus_axis_binding_count"], status["rs485_actuator_axis_count"], status["ttl_actuator_axis_count"]) == (8, 25, 19, 6), "actuator bus status counts drift")
+    require(status["native_hr30_kicad_present"] and status["native_hr30_kicad_logical_connectivity_reconciled"] and status["native_hr30_kicad_sheet_count"] == 13 and status["native_hr30_kicad_axis_binding_count"] == 25 and status["native_hr30_kicad_erc_errors"] == status["native_hr30_kicad_erc_warnings"] == 0, "native whole-body KiCad integration missing")
     require(not any(status[key] for key in ("native_hr30_kicad_reconciled", "actuator_bus_interface_selected", "actuator_bus_connector_harness_validated")), "electrical implementation overclaim")
     require(status["whole_body_pose_count"] == 8, "bilateral articulated pose set incomplete")
     require(status["whole_body_pose_common_volume_interference_count"] == 0 and status["whole_body_pose_minimum_nominal_clearance_mm"] >= 5.0, "whole-body nominal collision status not closed")
@@ -143,7 +147,7 @@ def main() -> int:
     require(sha(SRC / "system-package-source.py") == sha(ROOT / "tools" / "generate_hr30_system_package_p01.py"), "system generator snapshot drift")
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require("The P0.1 engineering package is whole-body" in page and "font:17px/1.55" in page and "font-size:16px" in page, "web package summary/legibility missing")
-    require(all(name in page for name in ("hr30.urdf", "hr30.xml", "whole-robot-candidate-bom.csv", "embodied-agent-architecture.md", "mass-reconciliation.md", "installed-equipment-register.csv", "battery-energy-source-register.csv", "whole-body-pose-register.csv", "pose-support-metrics.csv", "HR-30_whole_body_pose_lineup_candidate.glb", "whole-body-collision-register.csv", "collision-exclusion-register.csv", "actuator-bus-topology.csv", "actuator-bus-axis-binding.csv", "actuator-bus-source-register.csv", "whole-body-electrical-integration.md")), "web system links incomplete")
+    require(all(name in page for name in ("hr30.urdf", "hr30.xml", "whole-robot-candidate-bom.csv", "embodied-agent-architecture.md", "mass-reconciliation.md", "installed-equipment-register.csv", "battery-energy-source-register.csv", "whole-body-pose-register.csv", "pose-support-metrics.csv", "HR-30_whole_body_pose_lineup_candidate.glb", "whole-body-collision-register.csv", "collision-exclusion-register.csv", "actuator-bus-topology.csv", "actuator-bus-axis-binding.csv", "actuator-bus-source-register.csv", "whole-body-electrical-integration.md", "hr30-whole-body-electrical-p0.1.kicad_pro", "hr30-whole-body-electrical-p0.1-erc.rpt")), "web system links incomplete")
     require(page.count('id="equipment-layout"') == 1, "web installed-equipment viewer missing or duplicated")
     print(f"PASS: HR-30 whole-body P0.1 has 25-DOF URDF/MJCF, eight bilateral articulated S2-S5 pose candidates with zero nominal common-volume interference, 56 located equipment/harness items including a dimensioned onboard-energy candidate, and {reconciled_mass:.3f} kg planning mass plus budgets, BOM, hands, walking, agent and build artifacts; tolerance/physical validation and all work authority remain false")
     return 0

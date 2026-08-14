@@ -1,0 +1,83 @@
+"""Fail-closed validation of the native HR-30 whole-body KiCad P0.1 project."""
+
+from __future__ import annotations
+
+import csv
+import hashlib
+import json
+import re
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+PACKAGE = ROOT / "hr30" / "whole-body-p0.1"
+REL_PACKAGE = ROOT / "release" / "hr30" / "whole-body-p0.1"
+PROJECT = "hr30-whole-body-electrical-p0.1"
+ECAD = PACKAGE / "electrical" / "kicad" / PROJECT
+WARNING = "PRELIMINARY - NOT APPROVED FOR CONNECTION, FABRICATION, MOTION OR ENERGIZATION"
+
+
+def require(condition: bool, message: str):
+    if not condition:
+        raise SystemExit("FAIL: " + message)
+
+
+def rows(name: str) -> list[dict]:
+    with (ECAD / name).open(encoding="utf-8", newline="") as handle:
+        return list(csv.DictReader(handle))
+
+
+def sha(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def main() -> int:
+    schematics = sorted(ECAD.glob("*.kicad_sch"))
+    require(len(schematics) == 13, "root plus twelve native sheets required")
+    require((ECAD / f"{PROJECT}.kicad_pro").is_file(), "native KiCad project missing")
+    require(all(WARNING in path.read_text(encoding="utf-8") for path in schematics), "preliminary warning missing from schematic")
+    connector = rows("connector-schedule.csv")
+    axis_refs = {row["reference"] for row in connector if row["reference"].startswith("AX_")}
+    allocation = list(csv.DictReader((PACKAGE / "actuator-transmission-allocation.csv").open(encoding="utf-8")))
+    require(axis_refs == {"AX_" + row["axis_id"] for row in allocation} and len(axis_refs) == 25, "native schematic does not contain exact 25-axis allocation")
+    require(all(row["terminal"].startswith("LOG-") for row in connector), "unselected physical terminal number was inferred")
+    bus_topology = list(csv.DictReader((PACKAGE / "actuator-bus-topology.csv").open(encoding="utf-8")))
+    require(len(bus_topology) == 8, "eight-segment source topology missing")
+    nets = rows("net-schedule.csv")
+    net_names = {row["net"] for row in nets}
+    for row in bus_topology:
+        bus = row["bus_id"]
+        expected = {f"{bus}_VDD", f"{bus}_RET"}
+        expected |= {f"{bus}_DP", f"{bus}_DN"} if row["protocol"].startswith("RS-485") else {f"{bus}_DATA"}
+        require(expected <= net_names, f"native nets missing for {bus}")
+    require({"BATT_POS_RAW", "CONTACTOR_POS_IN", "K1_POS_OUT", "ACT_14V8_SAFE", "ACT_12V_SAFE", "SAFETY_PERMIT_HARDWIRED"} <= net_names, "power/interruption net chain incomplete")
+    erc = (ECAD / "validation" / f"{PROJECT}-erc.rpt").read_text(encoding="utf-8")
+    require(re.search(r"ERC messages:\s+0\s+Errors\s+0\s+Warnings", erc) is not None, "KiCad ERC is not 0 errors / 0 warnings")
+    log = (ECAD / "validation" / "kicad-cli.log").read_text(encoding="utf-8")
+    require(log.count("exit=0") == 3, "parse/netlist/SVG command did not all pass")
+    netlist = (ECAD / "validation" / f"{PROJECT}.net").read_text(encoding="utf-8")
+    require(all(ref in netlist for ref in axis_refs), "netlist omits an actuator reference")
+    svg = ECAD / "output" / f"{PROJECT}.svg"
+    require(svg.is_file() and svg.stat().st_size > 5000, "native hierarchy SVG missing")
+    status = json.loads((ECAD / "electrical-status.json").read_text(encoding="utf-8"))
+    require(status["native_kicad_parsed"] and status["logical_connectivity_reconciled"] and status["erc_errors"] == status["erc_warnings"] == 0, "native electrical status incomplete")
+    require(not any(status[k] for k in ("physical_pin_mapping_reconciled", "interface_devices_selected", "protection_values_selected", "functional_safety_validated", "connection_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "native status overclaims release")
+    package_status = json.loads((PACKAGE / "package-status.json").read_text(encoding="utf-8"))
+    require(package_status["native_hr30_kicad_present"] and package_status["native_hr30_kicad_logical_connectivity_reconciled"], "whole-body package does not expose native KiCad")
+    require(not package_status["native_hr30_kicad_reconciled"] and not package_status["native_hr30_kicad_physical_pins_selected"], "full physical reconciliation overclaimed")
+    require(sha(ECAD / "native-kicad-source.py") == sha(ROOT / "tools" / "generate_hr30_whole_body_electrical_p01.py"), "native generator snapshot drift")
+    manifest = rows("SOURCE-MANIFEST.csv")
+    files = {p.relative_to(ECAD).as_posix() for p in ECAD.rglob("*") if p.is_file()}
+    require({r["path"] for r in manifest} == files - {"SOURCE-MANIFEST.csv"}, "native manifest set mismatch")
+    require(all(int(r["bytes"]) == (ECAD / r["path"]).stat().st_size and r["sha256"] == sha(ECAD / r["path"]) for r in manifest), "native manifest hash/byte mismatch")
+    rel_ecad = REL_PACKAGE / "electrical" / "kicad" / PROJECT
+    require({p.relative_to(ECAD).as_posix() for p in ECAD.rglob("*") if p.is_file()} == {p.relative_to(rel_ecad).as_posix() for p in rel_ecad.rglob("*") if p.is_file()}, "native source/release file-set mismatch")
+    require(all(sha(p) == sha(rel_ecad / p.relative_to(ECAD)) for p in ECAD.rglob("*") if p.is_file()), "native source/release byte mismatch")
+    page = (PACKAGE / "index.html").read_text(encoding="utf-8")
+    require(page.count("HR30-NATIVE-KICAD-P01-START") == 1 and 'id="native-electrical"' in page and "13 native sheets" in page and f"{PROJECT}.kicad_pro" in page, "interactive native electrical guide missing")
+    print("PASS: native HR-30 KiCad parses as 13 populated sheets with 25 actuator axes, eight protocol-compatible buses and ERC 0/0; physical pins, selections, safety validation and all work authority remain open")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

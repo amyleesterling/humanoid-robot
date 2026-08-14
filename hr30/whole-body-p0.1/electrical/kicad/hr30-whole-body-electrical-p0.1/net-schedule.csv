@@ -1,0 +1,93 @@
+net,connection_count,connections
+ACTION_REQUEST_AUTH,2,03_compute_motion_watchdog.kicad_sch:CPU1:LOG-ACTION | 03_compute_motion_watchdog.kicad_sch:MCU1:LOG-ACTION
+ACT_0V_CONTROLLED,11,01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-RET-IN | 01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-RET-OUT | 01_energy_precharge_conversion.kicad_sch:RET1:LOG-ACT | 05_left_leg_rs485.kicad_sch:PBR_RS_LLEG:LOG-RET-IN | 06_right_leg_rs485.kicad_sch:PBR_RS_RLEG:LOG-RET-IN | 07_left_arm_rs485.kicad_sch:PBR_RS_LARM:LOG-RET-IN | 08_right_arm_rs485.kicad_sch:PBR_RS_RARM:LOG-RET-IN | 09_waist_rs485.kicad_sch:PBR_RS_WAIST:LOG-RET-IN | 10_left_distal_ttl.kicad_sch:PBR_TTL_LDIST:LOG-RET-IN | 11_right_distal_ttl.kicad_sch:PBR_TTL_RDIST:LOG-RET-IN | 12_head_ttl_sensors_hmi.kicad_sch:PBR_TTL_HEAD:LOG-RET-IN
+ACT_12V_SAFE,4,01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-OUT | 10_left_distal_ttl.kicad_sch:PBR_TTL_LDIST:LOG-IN | 11_right_distal_ttl.kicad_sch:PBR_TTL_RDIST:LOG-IN | 12_head_ttl_sensors_hmi.kicad_sch:PBR_TTL_HEAD:LOG-IN
+ACT_14V8_SAFE,7,01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-IN | 02_estop_permit_contactors.kicad_sch:K2:LOG-MOUT | 05_left_leg_rs485.kicad_sch:PBR_RS_LLEG:LOG-IN | 06_right_leg_rs485.kicad_sch:PBR_RS_RLEG:LOG-IN | 07_left_arm_rs485.kicad_sch:PBR_RS_LARM:LOG-IN | 08_right_arm_rs485.kicad_sch:PBR_RS_RARM:LOG-IN | 09_waist_rs485.kicad_sch:PBR_RS_WAIST:LOG-IN
+BATT_0V_RAW,2,01_energy_precharge_conversion.kicad_sch:BATT1:LOG-NEG | 01_energy_precharge_conversion.kicad_sch:RET1:LOG-BATT
+BATT_POS_RAW,2,01_energy_precharge_conversion.kicad_sch:BATT1:LOG-POS | 01_energy_precharge_conversion.kicad_sch:SD1:LOG-IN
+CHARGER_INTERLOCK,2,01_energy_precharge_conversion.kicad_sch:CHG1:LOG-INT | 02_estop_permit_contactors.kicad_sch:SR1:LOG-CHG
+CHARGE_POS,1,01_energy_precharge_conversion.kicad_sch:CHG1:LOG-POS
+CHARGE_RET,1,01_energy_precharge_conversion.kicad_sch:CHG1:LOG-NEG
+CONTACTOR_POS_IN,2,01_energy_precharge_conversion.kicad_sch:PRE1:LOG-MAIN | 02_estop_permit_contactors.kicad_sch:K1:LOG-MIN
+EDM_K1,2,02_estop_permit_contactors.kicad_sch:SR1:LOG-EDM1 | 02_estop_permit_contactors.kicad_sch:K1:LOG-MIR
+EDM_K2,2,02_estop_permit_contactors.kicad_sch:SR1:LOG-EDM2 | 02_estop_permit_contactors.kicad_sch:K2:LOG-MIR
+ESTOP_CH1_FEED,2,02_estop_permit_contactors.kicad_sch:S0:LOG-C1F | 02_estop_permit_contactors.kicad_sch:SR1:LOG-C1F
+ESTOP_CH1_RETURN,2,02_estop_permit_contactors.kicad_sch:S0:LOG-C1R | 02_estop_permit_contactors.kicad_sch:SR1:LOG-C1R
+ESTOP_CH2_FEED,2,02_estop_permit_contactors.kicad_sch:S0:LOG-C2F | 02_estop_permit_contactors.kicad_sch:SR1:LOG-C2F
+ESTOP_CH2_RETURN,2,02_estop_permit_contactors.kicad_sch:S0:LOG-C2R | 02_estop_permit_contactors.kicad_sch:SR1:LOG-C2R
+EXTERNAL_NETWORK,1,03_compute_motion_watchdog.kicad_sch:CPU1:LOG-NET
+FRAME_PE_BOUNDARY,1,01_energy_precharge_conversion.kicad_sch:RET1:LOG-PE
+HMI_SENSOR_IPC,4,03_compute_motion_watchdog.kicad_sch:CPU1:LOG-AUDIO | 12_head_ttl_sensors_hmi.kicad_sch:CAM1:LOG-IPC | 12_head_ttl_sensors_hmi.kicad_sch:CAM2:LOG-IPC | 12_head_ttl_sensors_hmi.kicad_sch:HMI1:LOG-IPC
+K1_POS_OUT,2,02_estop_permit_contactors.kicad_sch:K1:LOG-MOUT | 02_estop_permit_contactors.kicad_sch:K2:LOG-MIN
+MOTION_WD_HEARTBEAT,2,03_compute_motion_watchdog.kicad_sch:MCU1:LOG-WD | 03_compute_motion_watchdog.kicad_sch:WD1:LOG-HB
+PRECHARGE_REQUEST,2,01_energy_precharge_conversion.kicad_sch:PRE1:LOG-CMD | 03_compute_motion_watchdog.kicad_sch:MCU1:LOG-PREQ
+PRECHARGE_STATUS,2,01_energy_precharge_conversion.kicad_sch:PRE1:LOG-OK | 03_compute_motion_watchdog.kicad_sch:MCU1:LOG-PSTAT
+RESET_FEED,2,02_estop_permit_contactors.kicad_sch:S1:LOG-FEED | 02_estop_permit_contactors.kicad_sch:SR1:LOG-RF
+RESET_RETURN,2,02_estop_permit_contactors.kicad_sch:S1:LOG-RETURN | 02_estop_permit_contactors.kicad_sch:SR1:LOG-RR
+RS-LARM_DN,5,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_LARM:LOG-DN | 07_left_arm_rs485.kicad_sch:PORT_RS_LARM:LOG-DN | 07_left_arm_rs485.kicad_sch:AX_L_SHOULDER_PITCH:LOG-DN | 07_left_arm_rs485.kicad_sch:AX_L_SHOULDER_ROLL:LOG-DN | 07_left_arm_rs485.kicad_sch:AX_L_ELBOW_PITCH:LOG-DN
+RS-LARM_DP,5,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_LARM:LOG-DP | 07_left_arm_rs485.kicad_sch:PORT_RS_LARM:LOG-DP | 07_left_arm_rs485.kicad_sch:AX_L_SHOULDER_PITCH:LOG-DP | 07_left_arm_rs485.kicad_sch:AX_L_SHOULDER_ROLL:LOG-DP | 07_left_arm_rs485.kicad_sch:AX_L_ELBOW_PITCH:LOG-DP
+RS-LARM_RET,6,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_LARM:LOG-REF | 07_left_arm_rs485.kicad_sch:PORT_RS_LARM:LOG-RET | 07_left_arm_rs485.kicad_sch:PBR_RS_LARM:LOG-RET-OUT | 07_left_arm_rs485.kicad_sch:AX_L_SHOULDER_PITCH:LOG-RET | 07_left_arm_rs485.kicad_sch:AX_L_SHOULDER_ROLL:LOG-RET | 07_left_arm_rs485.kicad_sch:AX_L_ELBOW_PITCH:LOG-RET
+RS-LARM_VDD,4,07_left_arm_rs485.kicad_sch:PBR_RS_LARM:LOG-OUT | 07_left_arm_rs485.kicad_sch:AX_L_SHOULDER_PITCH:LOG-PWR | 07_left_arm_rs485.kicad_sch:AX_L_SHOULDER_ROLL:LOG-PWR | 07_left_arm_rs485.kicad_sch:AX_L_ELBOW_PITCH:LOG-PWR
+RS-LLEG_DN,8,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_LLEG:LOG-DN | 05_left_leg_rs485.kicad_sch:PORT_RS_LLEG:LOG-DN | 05_left_leg_rs485.kicad_sch:AX_L_HIP_YAW:LOG-DN | 05_left_leg_rs485.kicad_sch:AX_L_HIP_ROLL:LOG-DN | 05_left_leg_rs485.kicad_sch:AX_L_HIP_PITCH:LOG-DN | 05_left_leg_rs485.kicad_sch:AX_L_KNEE_PITCH:LOG-DN | 05_left_leg_rs485.kicad_sch:AX_L_ANKLE_PITCH:LOG-DN | 05_left_leg_rs485.kicad_sch:AX_L_ANKLE_ROLL:LOG-DN
+RS-LLEG_DP,8,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_LLEG:LOG-DP | 05_left_leg_rs485.kicad_sch:PORT_RS_LLEG:LOG-DP | 05_left_leg_rs485.kicad_sch:AX_L_HIP_YAW:LOG-DP | 05_left_leg_rs485.kicad_sch:AX_L_HIP_ROLL:LOG-DP | 05_left_leg_rs485.kicad_sch:AX_L_HIP_PITCH:LOG-DP | 05_left_leg_rs485.kicad_sch:AX_L_KNEE_PITCH:LOG-DP | 05_left_leg_rs485.kicad_sch:AX_L_ANKLE_PITCH:LOG-DP | 05_left_leg_rs485.kicad_sch:AX_L_ANKLE_ROLL:LOG-DP
+RS-LLEG_RET,9,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_LLEG:LOG-REF | 05_left_leg_rs485.kicad_sch:PORT_RS_LLEG:LOG-RET | 05_left_leg_rs485.kicad_sch:PBR_RS_LLEG:LOG-RET-OUT | 05_left_leg_rs485.kicad_sch:AX_L_HIP_YAW:LOG-RET | 05_left_leg_rs485.kicad_sch:AX_L_HIP_ROLL:LOG-RET | 05_left_leg_rs485.kicad_sch:AX_L_HIP_PITCH:LOG-RET | 05_left_leg_rs485.kicad_sch:AX_L_KNEE_PITCH:LOG-RET | 05_left_leg_rs485.kicad_sch:AX_L_ANKLE_PITCH:LOG-RET | 05_left_leg_rs485.kicad_sch:AX_L_ANKLE_ROLL:LOG-RET
+RS-LLEG_VDD,7,05_left_leg_rs485.kicad_sch:PBR_RS_LLEG:LOG-OUT | 05_left_leg_rs485.kicad_sch:AX_L_HIP_YAW:LOG-PWR | 05_left_leg_rs485.kicad_sch:AX_L_HIP_ROLL:LOG-PWR | 05_left_leg_rs485.kicad_sch:AX_L_HIP_PITCH:LOG-PWR | 05_left_leg_rs485.kicad_sch:AX_L_KNEE_PITCH:LOG-PWR | 05_left_leg_rs485.kicad_sch:AX_L_ANKLE_PITCH:LOG-PWR | 05_left_leg_rs485.kicad_sch:AX_L_ANKLE_ROLL:LOG-PWR
+RS-RARM_DN,5,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_RARM:LOG-DN | 08_right_arm_rs485.kicad_sch:PORT_RS_RARM:LOG-DN | 08_right_arm_rs485.kicad_sch:AX_R_SHOULDER_PITCH:LOG-DN | 08_right_arm_rs485.kicad_sch:AX_R_SHOULDER_ROLL:LOG-DN | 08_right_arm_rs485.kicad_sch:AX_R_ELBOW_PITCH:LOG-DN
+RS-RARM_DP,5,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_RARM:LOG-DP | 08_right_arm_rs485.kicad_sch:PORT_RS_RARM:LOG-DP | 08_right_arm_rs485.kicad_sch:AX_R_SHOULDER_PITCH:LOG-DP | 08_right_arm_rs485.kicad_sch:AX_R_SHOULDER_ROLL:LOG-DP | 08_right_arm_rs485.kicad_sch:AX_R_ELBOW_PITCH:LOG-DP
+RS-RARM_RET,6,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_RARM:LOG-REF | 08_right_arm_rs485.kicad_sch:PORT_RS_RARM:LOG-RET | 08_right_arm_rs485.kicad_sch:PBR_RS_RARM:LOG-RET-OUT | 08_right_arm_rs485.kicad_sch:AX_R_SHOULDER_PITCH:LOG-RET | 08_right_arm_rs485.kicad_sch:AX_R_SHOULDER_ROLL:LOG-RET | 08_right_arm_rs485.kicad_sch:AX_R_ELBOW_PITCH:LOG-RET
+RS-RARM_VDD,4,08_right_arm_rs485.kicad_sch:PBR_RS_RARM:LOG-OUT | 08_right_arm_rs485.kicad_sch:AX_R_SHOULDER_PITCH:LOG-PWR | 08_right_arm_rs485.kicad_sch:AX_R_SHOULDER_ROLL:LOG-PWR | 08_right_arm_rs485.kicad_sch:AX_R_ELBOW_PITCH:LOG-PWR
+RS-RLEG_DN,8,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_RLEG:LOG-DN | 06_right_leg_rs485.kicad_sch:PORT_RS_RLEG:LOG-DN | 06_right_leg_rs485.kicad_sch:AX_R_HIP_YAW:LOG-DN | 06_right_leg_rs485.kicad_sch:AX_R_HIP_ROLL:LOG-DN | 06_right_leg_rs485.kicad_sch:AX_R_HIP_PITCH:LOG-DN | 06_right_leg_rs485.kicad_sch:AX_R_KNEE_PITCH:LOG-DN | 06_right_leg_rs485.kicad_sch:AX_R_ANKLE_PITCH:LOG-DN | 06_right_leg_rs485.kicad_sch:AX_R_ANKLE_ROLL:LOG-DN
+RS-RLEG_DP,8,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_RLEG:LOG-DP | 06_right_leg_rs485.kicad_sch:PORT_RS_RLEG:LOG-DP | 06_right_leg_rs485.kicad_sch:AX_R_HIP_YAW:LOG-DP | 06_right_leg_rs485.kicad_sch:AX_R_HIP_ROLL:LOG-DP | 06_right_leg_rs485.kicad_sch:AX_R_HIP_PITCH:LOG-DP | 06_right_leg_rs485.kicad_sch:AX_R_KNEE_PITCH:LOG-DP | 06_right_leg_rs485.kicad_sch:AX_R_ANKLE_PITCH:LOG-DP | 06_right_leg_rs485.kicad_sch:AX_R_ANKLE_ROLL:LOG-DP
+RS-RLEG_RET,9,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_RLEG:LOG-REF | 06_right_leg_rs485.kicad_sch:PORT_RS_RLEG:LOG-RET | 06_right_leg_rs485.kicad_sch:PBR_RS_RLEG:LOG-RET-OUT | 06_right_leg_rs485.kicad_sch:AX_R_HIP_YAW:LOG-RET | 06_right_leg_rs485.kicad_sch:AX_R_HIP_ROLL:LOG-RET | 06_right_leg_rs485.kicad_sch:AX_R_HIP_PITCH:LOG-RET | 06_right_leg_rs485.kicad_sch:AX_R_KNEE_PITCH:LOG-RET | 06_right_leg_rs485.kicad_sch:AX_R_ANKLE_PITCH:LOG-RET | 06_right_leg_rs485.kicad_sch:AX_R_ANKLE_ROLL:LOG-RET
+RS-RLEG_VDD,7,06_right_leg_rs485.kicad_sch:PBR_RS_RLEG:LOG-OUT | 06_right_leg_rs485.kicad_sch:AX_R_HIP_YAW:LOG-PWR | 06_right_leg_rs485.kicad_sch:AX_R_HIP_ROLL:LOG-PWR | 06_right_leg_rs485.kicad_sch:AX_R_HIP_PITCH:LOG-PWR | 06_right_leg_rs485.kicad_sch:AX_R_KNEE_PITCH:LOG-PWR | 06_right_leg_rs485.kicad_sch:AX_R_ANKLE_PITCH:LOG-PWR | 06_right_leg_rs485.kicad_sch:AX_R_ANKLE_ROLL:LOG-PWR
+RS-WAIST_DN,3,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_WAIST:LOG-DN | 09_waist_rs485.kicad_sch:PORT_RS_WAIST:LOG-DN | 09_waist_rs485.kicad_sch:AX_WAIST_YAW:LOG-DN
+RS-WAIST_DP,3,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_WAIST:LOG-DP | 09_waist_rs485.kicad_sch:PORT_RS_WAIST:LOG-DP | 09_waist_rs485.kicad_sch:AX_WAIST_YAW:LOG-DP
+RS-WAIST_RET,4,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_WAIST:LOG-REF | 09_waist_rs485.kicad_sch:PORT_RS_WAIST:LOG-RET | 09_waist_rs485.kicad_sch:PBR_RS_WAIST:LOG-RET-OUT | 09_waist_rs485.kicad_sch:AX_WAIST_YAW:LOG-RET
+RS-WAIST_VDD,2,09_waist_rs485.kicad_sch:PBR_RS_WAIST:LOG-OUT | 09_waist_rs485.kicad_sch:AX_WAIST_YAW:LOG-PWR
+SAFETY_PERMIT_HARDWIRED,5,01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-EN | 02_estop_permit_contactors.kicad_sch:SR1:LOG-PERMIT | 02_estop_permit_contactors.kicad_sch:K1:LOG-COIL | 02_estop_permit_contactors.kicad_sch:K2:LOG-COIL | 03_compute_motion_watchdog.kicad_sch:MCU1:LOG-PERMIT
+SD_POS_OUT,2,01_energy_precharge_conversion.kicad_sch:SD1:LOG-OUT | 01_energy_precharge_conversion.kicad_sch:PRE1:LOG-IN
+TLM_BMS_STATUS,1,01_energy_precharge_conversion.kicad_sch:BATT1:LOG-BMS
+TLM_DCDC12,1,01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-TLM
+TLM_PACK_TEMP,1,01_energy_precharge_conversion.kicad_sch:BATT1:LOG-TEMP
+TLM_RS-LARM,1,07_left_arm_rs485.kicad_sch:PBR_RS_LARM:LOG-TLM
+TLM_RS-LLEG,1,05_left_leg_rs485.kicad_sch:PBR_RS_LLEG:LOG-TLM
+TLM_RS-RARM,1,08_right_arm_rs485.kicad_sch:PBR_RS_RARM:LOG-TLM
+TLM_RS-RLEG,1,06_right_leg_rs485.kicad_sch:PBR_RS_RLEG:LOG-TLM
+TLM_RS-WAIST,1,09_waist_rs485.kicad_sch:PBR_RS_WAIST:LOG-TLM
+TLM_TTL-HEAD,1,12_head_ttl_sensors_hmi.kicad_sch:PBR_TTL_HEAD:LOG-TLM
+TLM_TTL-LDIST,1,10_left_distal_ttl.kicad_sch:PBR_TTL_LDIST:LOG-TLM
+TLM_TTL-RDIST,1,11_right_distal_ttl.kicad_sch:PBR_TTL_RDIST:LOG-TLM
+TTL-HEAD_DATA,4,04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_HEAD:LOG-DATA | 12_head_ttl_sensors_hmi.kicad_sch:PORT_TTL_HEAD:LOG-DATA | 12_head_ttl_sensors_hmi.kicad_sch:AX_HEAD_PAN:LOG-DATA | 12_head_ttl_sensors_hmi.kicad_sch:AX_HEAD_TILT:LOG-DATA
+TTL-HEAD_RET,5,04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_HEAD:LOG-REF | 12_head_ttl_sensors_hmi.kicad_sch:PORT_TTL_HEAD:LOG-RET | 12_head_ttl_sensors_hmi.kicad_sch:PBR_TTL_HEAD:LOG-RET-OUT | 12_head_ttl_sensors_hmi.kicad_sch:AX_HEAD_PAN:LOG-RET | 12_head_ttl_sensors_hmi.kicad_sch:AX_HEAD_TILT:LOG-RET
+TTL-HEAD_VDD,3,12_head_ttl_sensors_hmi.kicad_sch:PBR_TTL_HEAD:LOG-OUT | 12_head_ttl_sensors_hmi.kicad_sch:AX_HEAD_PAN:LOG-PWR | 12_head_ttl_sensors_hmi.kicad_sch:AX_HEAD_TILT:LOG-PWR
+TTL-LDIST_DATA,4,04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_LDIST:LOG-DATA | 10_left_distal_ttl.kicad_sch:PORT_TTL_LDIST:LOG-DATA | 10_left_distal_ttl.kicad_sch:AX_L_WRIST_ROTATION:LOG-DATA | 10_left_distal_ttl.kicad_sch:AX_L_GRIPPER:LOG-DATA
+TTL-LDIST_RET,5,04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_LDIST:LOG-REF | 10_left_distal_ttl.kicad_sch:PORT_TTL_LDIST:LOG-RET | 10_left_distal_ttl.kicad_sch:PBR_TTL_LDIST:LOG-RET-OUT | 10_left_distal_ttl.kicad_sch:AX_L_WRIST_ROTATION:LOG-RET | 10_left_distal_ttl.kicad_sch:AX_L_GRIPPER:LOG-RET
+TTL-LDIST_VDD,3,10_left_distal_ttl.kicad_sch:PBR_TTL_LDIST:LOG-OUT | 10_left_distal_ttl.kicad_sch:AX_L_WRIST_ROTATION:LOG-PWR | 10_left_distal_ttl.kicad_sch:AX_L_GRIPPER:LOG-PWR
+TTL-RDIST_DATA,4,04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_RDIST:LOG-DATA | 11_right_distal_ttl.kicad_sch:PORT_TTL_RDIST:LOG-DATA | 11_right_distal_ttl.kicad_sch:AX_R_WRIST_ROTATION:LOG-DATA | 11_right_distal_ttl.kicad_sch:AX_R_GRIPPER:LOG-DATA
+TTL-RDIST_RET,5,04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_RDIST:LOG-REF | 11_right_distal_ttl.kicad_sch:PORT_TTL_RDIST:LOG-RET | 11_right_distal_ttl.kicad_sch:PBR_TTL_RDIST:LOG-RET-OUT | 11_right_distal_ttl.kicad_sch:AX_R_WRIST_ROTATION:LOG-RET | 11_right_distal_ttl.kicad_sch:AX_R_GRIPPER:LOG-RET
+TTL-RDIST_VDD,3,11_right_distal_ttl.kicad_sch:PBR_TTL_RDIST:LOG-OUT | 11_right_distal_ttl.kicad_sch:AX_R_WRIST_ROTATION:LOG-PWR | 11_right_distal_ttl.kicad_sch:AX_R_GRIPPER:LOG-PWR
+UART_RS-LARM_DIR,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_LARM:LOG-RS-LARM-DIR | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_LARM:LOG-DIR
+UART_RS-LARM_RX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_LARM:LOG-RS-LARM-RX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_LARM:LOG-RX
+UART_RS-LARM_TX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_LARM:LOG-RS-LARM-TX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_LARM:LOG-TX
+UART_RS-LLEG_DIR,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_LLEG:LOG-RS-LLEG-DIR | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_LLEG:LOG-DIR
+UART_RS-LLEG_RX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_LLEG:LOG-RS-LLEG-RX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_LLEG:LOG-RX
+UART_RS-LLEG_TX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_LLEG:LOG-RS-LLEG-TX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_LLEG:LOG-TX
+UART_RS-RARM_DIR,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_RARM:LOG-RS-RARM-DIR | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_RARM:LOG-DIR
+UART_RS-RARM_RX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_RARM:LOG-RS-RARM-RX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_RARM:LOG-RX
+UART_RS-RARM_TX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_RARM:LOG-RS-RARM-TX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_RARM:LOG-TX
+UART_RS-RLEG_DIR,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_RLEG:LOG-RS-RLEG-DIR | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_RLEG:LOG-DIR
+UART_RS-RLEG_RX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_RLEG:LOG-RS-RLEG-RX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_RLEG:LOG-RX
+UART_RS-RLEG_TX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_RLEG:LOG-RS-RLEG-TX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_RLEG:LOG-TX
+UART_RS-WAIST_DIR,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_WAIST:LOG-RS-WAIST-DIR | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_WAIST:LOG-DIR
+UART_RS-WAIST_RX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_WAIST:LOG-RS-WAIST-RX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_WAIST:LOG-RX
+UART_RS-WAIST_TX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_RS_WAIST:LOG-RS-WAIST-TX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_WAIST:LOG-TX
+UART_TTL-HEAD_DIR,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_TTL_HEAD:LOG-TTL-HEAD-DIR | 04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_HEAD:LOG-DIR
+UART_TTL-HEAD_RX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_TTL_HEAD:LOG-TTL-HEAD-RX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_HEAD:LOG-RX
+UART_TTL-HEAD_TX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_TTL_HEAD:LOG-TTL-HEAD-TX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_HEAD:LOG-TX
+UART_TTL-LDIST_DIR,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_TTL_LDIST:LOG-TTL-LDIST-DIR | 04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_LDIST:LOG-DIR
+UART_TTL-LDIST_RX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_TTL_LDIST:LOG-TTL-LDIST-RX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_LDIST:LOG-RX
+UART_TTL-LDIST_TX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_TTL_LDIST:LOG-TTL-LDIST-TX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_LDIST:LOG-TX
+UART_TTL-RDIST_DIR,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_TTL_RDIST:LOG-TTL-RDIST-DIR | 04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_RDIST:LOG-DIR
+UART_TTL-RDIST_RX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_TTL_RDIST:LOG-TTL-RDIST-RX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_RDIST:LOG-RX
+UART_TTL-RDIST_TX,2,03_compute_motion_watchdog.kicad_sch:MCU_IO_TTL_RDIST:LOG-TTL-RDIST-TX | 04_eight_actuator_bus_interfaces.kicad_sch:IF_TTL_RDIST:LOG-TX
+WD_PERMIT_REQUEST,1,03_compute_motion_watchdog.kicad_sch:WD1:LOG-REQ
