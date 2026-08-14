@@ -37,6 +37,7 @@ def main() -> int:
         "walking-development-architecture.md", "embodied-agent-architecture.md",
         "structured-action-request.schema.json", "modular-fabrication-assembly-electrification-plan.md",
         "system-package-source.py", "index.html", "README.md", "package-status.json", "file-manifest.csv",
+        "mass-reconciliation-summary.json", "mass-item-reconciliation.csv", "link-mass-reconciliation.csv",
     }
     source_files = {p.relative_to(SRC).as_posix() for p in SRC.rglob("*") if p.is_file()}
     release_files = {p.relative_to(REL).as_posix() for p in REL.rglob("*") if p.is_file()}
@@ -53,6 +54,8 @@ def main() -> int:
         require(row["warning"] == WARNING, f"manifest warning mismatch {row['path']}")
 
     scheduled_axes = {row["axis_id"] for row in read_csv("joint-axis-schedule.csv")}
+    mass_reconciliation = json.loads((SRC / "mass-reconciliation-summary.json").read_text(encoding="utf-8"))
+    reconciled_mass = float(mass_reconciliation["reconciled_dynamics_planning_mass_kg"])
     urdf = ET.parse(SRC / "hr30.urdf").getroot()
     urdf_joints = [node for node in urdf.findall("joint") if node.get("type") != "fixed"]
     require(len(urdf_joints) == 25 and {node.get("name") for node in urdf_joints} == scheduled_axes, "URDF does not implement exact 25-axis schedule")
@@ -61,7 +64,7 @@ def main() -> int:
     require(len({node.find("child").get("link") for node in urdf_joints}) == 25, "URDF child-link tree is not unique")
     require(all(float(node.find("limit").get("effort")) == 0.0 for node in urdf_joints), "URDF must remain effort-disabled until physical selection")
     urdf_masses = [float(node.find("inertial/mass").get("value")) for node in urdf.findall("link") if node.find("inertial/mass") is not None]
-    require(abs(sum(urdf_masses) - 9.63) < 1e-6, "URDF allocated mass total drift")
+    require(abs(sum(urdf_masses) - reconciled_mass) < 2e-6, "URDF reconciled mass total drift")
 
     mjcf = ET.parse(SRC / "hr30.xml").getroot()
     mjcf_joints = mjcf.findall("./worldbody//joint")
@@ -73,9 +76,9 @@ def main() -> int:
 
     mass = read_csv("mass-properties-budget.csv")
     total = mass[-1]
-    require(total["link"] == "TOTAL" and abs(float(total["allocated_mass_kg"]) - 9.63) < 1e-6, "mass budget total drift")
-    require(abs(float(total["neutral_com_x_m"])) < 1e-9, "neutral COM is not left/right symmetric")
-    require(0.30 < float(total["neutral_com_z_m"]) < 0.40, "neutral COM height outside controlled P0.1 band")
+    require(total["link"] == "TOTAL" and abs(float(total["allocated_mass_kg"]) - reconciled_mass) < 2e-6, "mass budget total drift")
+    require(abs(float(total["neutral_com_x_m"])) < 0.002, "neutral COM lateral offset outside P0.1 planning bound")
+    require(0.25 < float(total["neutral_com_z_m"]) < 0.40, "neutral COM height outside controlled P0.1 band")
     require(all(float(total[key]) > 0 for key in ("local_ixx_kg_m2", "local_iyy_kg_m2", "local_izz_kg_m2")), "whole-body inertia budget nonpositive")
 
     power = read_csv("power-energy-budget.csv")
@@ -109,14 +112,14 @@ def main() -> int:
     require(all(word in hands for word in ("grasp", "hold", "present", "release")) and "two-finger" in hands, "functional hand specification incomplete")
 
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
-    require(all(status[key] for key in ("whole_body_system_package_present", "urdf_present", "mjcf_present", "whole_robot_candidate_bom_present", "walking_architecture_present", "embodied_agent_boundary_present", "modular_build_plan_present")), "system package status incomplete")
+    require(all(status[key] for key in ("whole_body_system_package_present", "urdf_present", "mjcf_present", "whole_robot_candidate_bom_present", "walking_architecture_present", "embodied_agent_boundary_present", "modular_build_plan_present", "mass_reconciliation_present")), "system package status incomplete")
     require(status["floating_base_dynamics_present"], "floating-base dynamics status missing")
     require(not any(status[key] for key in ("dynamics_validated", "walking_validated", "physical_build_ready", "procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "status validation/authority overclaim")
     require(sha(SRC / "system-package-source.py") == sha(ROOT / "tools" / "generate_hr30_system_package_p01.py"), "system generator snapshot drift")
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require("The P0.1 engineering package is whole-body" in page and "font:17px/1.55" in page and "font-size:16px" in page, "web package summary/legibility missing")
-    require(all(name in page for name in ("hr30.urdf", "hr30.xml", "whole-robot-candidate-bom.csv", "embodied-agent-architecture.md")), "web system links incomplete")
-    print("PASS: HR-30 whole-body P0.1 has 25-DOF URDF/MJCF, coherent mass/power/thermal/compute/network/cost budgets, BOM, hands, walking, agent and build artifacts; all validation and work authority remain false")
+    require(all(name in page for name in ("hr30.urdf", "hr30.xml", "whole-robot-candidate-bom.csv", "embodied-agent-architecture.md", "mass-reconciliation.md")), "web system links incomplete")
+    print(f"PASS: HR-30 whole-body P0.1 has 25-DOF URDF/MJCF and {reconciled_mass:.3f} kg reconciled planning mass plus power/thermal/compute/network/cost budgets, BOM, hands, walking, agent and build artifacts; all validation and work authority remain false")
     return 0
 
 

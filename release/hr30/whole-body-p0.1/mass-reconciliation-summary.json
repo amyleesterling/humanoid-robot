@@ -1,0 +1,43 @@
+{
+  "identifier": "HR-30-MASS-RECONCILIATION-P0.1",
+  "item_count": 255,
+  "actuator_count": 25,
+  "fabrication_part_count": 66,
+  "joint_hardware_part_count": 164,
+  "minimum_identified_candidate_mass_kg": 13.157983923,
+  "planning_identified_candidate_mass_kg": 13.323983923,
+  "maximum_identified_candidate_mass_kg": 13.323983923,
+  "fabrication_cad_density_screen_kg": 3.605845154,
+  "actuator_published_mass_planning_kg": 3.391,
+  "joint_hardware_gross_density_screen_kg": 6.327138769,
+  "prior_allocation_mass_kg": 9.63,
+  "reconciled_dynamics_planning_mass_kg": 16.675074212,
+  "reconciled_dynamics_neutral_com_m": [
+    -0.000573151,
+    0.000687687,
+    0.323485358
+  ],
+  "program_maximum_mass_kg": 10.0,
+  "planning_margin_to_program_maximum_kg": -6.675074212,
+  "program_mass_target_status": "EXCEEDED",
+  "unmodeled_or_unselected": [
+    "battery/source, BMS, contactors, protection and disconnect hardware",
+    "compute, safety controller, motor controllers, cameras, microphones, speakers, face display and networking",
+    "actual harness, connectors, strain relief, cooling hardware, fasteners, inserts, soles, gripper pads and restraint hardware",
+    "manufacturing features and mass changes after overlap removal, DFM and structural redesign"
+  ],
+  "model_limit": "Gross candidate-volume screen with no overlap deduction; dynamics use max(previous link allocation, identified planning subtotal). Not an as-built or released mass property.",
+  "authority": {
+    "procurement": false,
+    "fabrication": false,
+    "powered_test": false,
+    "motion": false,
+    "energization": false
+  },
+  "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "reconciled_box_model_inertia_kg_m2": [
+    0.599668611,
+    0.68286863,
+    0.104948528
+  ]
+}

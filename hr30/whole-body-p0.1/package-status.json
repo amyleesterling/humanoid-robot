@@ -42,8 +42,8 @@
   "walking_architecture_present": true,
   "embodied_agent_boundary_present": true,
   "modular_build_plan_present": true,
-  "estimated_mass_kg": 9.63,
-  "estimated_neutral_com_z_m": 0.338425,
+  "estimated_mass_kg": 16.675074212,
+  "estimated_neutral_com_z_m": 0.323485358,
   "dynamics_validated": false,
   "walking_validated": false,
   "physical_build_ready": false,
@@ -55,5 +55,15 @@
   "service_panel_count": 26,
   "harness_route_count": 11,
   "fabrication_drawings_released": false,
-  "harness_selected_or_validated": false
+  "harness_selected_or_validated": false,
+  "estimated_neutral_com_m": [
+    -0.000573151,
+    0.000687687,
+    0.323485358
+  ],
+  "mass_reconciliation_present": true,
+  "identified_candidate_mass_kg": 13.323983923,
+  "mass_margin_to_10kg_kg": -6.675074212,
+  "mass_budget_closed": false,
+  "mass_com_inertia_physically_validated": false
 }

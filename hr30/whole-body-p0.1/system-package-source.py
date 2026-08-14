@@ -508,8 +508,17 @@ def main() -> int:
     update_web_and_status(mass_summary)
     import generate_hr30_fabrication_architecture_p01 as fabrication
     fabrication.generate_into_package()
+    import generate_hr30_mass_reconciliation_p01 as mass_reconciliation
+    mass_summary = mass_reconciliation.generate_into_package()
     refresh_manifest_and_release()
-    print(json.dumps({"identifier": IDENTIFIER, "dof": len(joints), "mass_kg": mass_summary["mass_kg"], "com_m": mass_summary["com_m"], "source": str(OUT)}, indent=2))
+    print(json.dumps({
+        "identifier": IDENTIFIER,
+        "dof": len(joints),
+        "mass_kg": mass_summary["reconciled_dynamics_planning_mass_kg"],
+        "com_m": mass_summary["reconciled_dynamics_neutral_com_m"],
+        "mass_status": mass_summary["program_mass_target_status"],
+        "source": str(OUT),
+    }, indent=2))
     return 0
 
 
