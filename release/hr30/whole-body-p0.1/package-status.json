@@ -13,6 +13,9 @@
   "ankles_and_feet_present": true,
   "joint_axis_count": 25,
   "actuator_allocation_count": 25,
+  "joint_module_family_count": 8,
+  "joint_module_binding_count": 25,
+  "joint_module_geometry_present": true,
   "asimov_matrix_count": 14,
   "editable_source_present": true,
   "step_present": true,
@@ -27,6 +30,7 @@
   "whole_body_system_package_present": true,
   "urdf_present": true,
   "mjcf_present": true,
+  "floating_base_dynamics_present": true,
   "provisional_mass_com_inertia_budget_present": true,
   "power_thermal_compute_network_cost_budgets_present": true,
   "whole_robot_candidate_bom_present": true,
@@ -37,6 +41,5 @@
   "estimated_neutral_com_z_m": 0.338425,
   "dynamics_validated": false,
   "walking_validated": false,
-  "physical_build_ready": false,
-  "floating_base_dynamics_present": true
+  "physical_build_ready": false
 }

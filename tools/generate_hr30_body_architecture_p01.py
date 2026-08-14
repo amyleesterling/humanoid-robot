@@ -113,6 +113,114 @@ def link_between(a: tuple[float, float, float], b: tuple[float, float, float], d
     return cq.Solid.makeCylinder(diameter / 2.0, length, av, delta.normalized())
 
 
+def local_plane(center: tuple[float, float, float], direction: tuple[float, float, float]) -> cq.Plane:
+    """Create a stable workplane whose local Z is the controlled joint axis."""
+    normal = cq.Vector(*direction).normalized()
+    reference = cq.Vector(0, 0, 1) if abs(normal.z) < 0.9 else cq.Vector(1, 0, 0)
+    x_dir = reference.cross(normal).normalized()
+    return cq.Plane(origin=cq.Vector(*center), xDir=x_dir, normal=normal)
+
+
+def oriented_box(center: tuple[float, float, float], direction: tuple[float, float, float], width: float, height: float, axial_depth: float) -> cq.Shape:
+    return cq.Workplane(local_plane(center, direction)).box(width, height, axial_depth).val()
+
+
+def interface_plate(
+    center: tuple[float, float, float],
+    direction: tuple[float, float, float],
+    width: float,
+    height: float,
+    thickness: float,
+    pattern_x: float,
+    pattern_y: float,
+    clearance_diameter: float,
+) -> cq.Shape:
+    plate = cq.Workplane(local_plane(center, direction)).box(width, height, thickness)
+    return (
+        plate.faces(">Z")
+        .workplane()
+        .pushPoints([(-pattern_x / 2, -pattern_y / 2), (-pattern_x / 2, pattern_y / 2), (pattern_x / 2, -pattern_y / 2), (pattern_x / 2, pattern_y / 2)])
+        .hole(clearance_diameter)
+        .val()
+    )
+
+
+def bearing_ring(center: tuple[float, float, float], direction: tuple[float, float, float], width: float, outer_diameter: float, shaft_diameter: float) -> cq.Shape:
+    outer = cylinder_between(center, direction, width, outer_diameter)
+    bore = cylinder_between(center, direction, width + 2.0, shaft_diameter + 0.4)
+    return outer.cut(bore)
+
+
+JOINT_MODULE_FAMILIES = {
+    "JMF-01-COMPACT": {
+        "role": "compact supported direct joint",
+        "plate_w": 36.0, "plate_h": 38.0, "plate_t": 3.0, "pattern_x": 26.0, "pattern_y": 28.0, "hole_d": 3.4,
+        "shaft_d": 6.0, "bearing_od": 15.0, "bearing_w": 5.0, "span": 32.0, "body_w": 28.0, "body_h": 34.0, "body_d": 34.0,
+        "transmission": "direct supported output", "ratio": "1.0:1 candidate", "motor_offset": 0.0, "cable_d": 6.0,
+    },
+    "JMF-02-GRIPPER": {
+        "role": "parallel hand-shaped gripper drive",
+        "plate_w": 42.0, "plate_h": 38.0, "plate_t": 3.0, "pattern_x": 32.0, "pattern_y": 26.0, "hole_d": 3.4,
+        "shaft_d": 5.0, "bearing_od": 12.0, "bearing_w": 4.0, "span": 28.0, "body_w": 32.0, "body_h": 36.0, "body_d": 30.0,
+        "transmission": "symmetric rack/pinion or tendon coupling", "ratio": "SELECTION REQUIRED", "motor_offset": 0.0, "cable_d": 6.0,
+    },
+    "JMF-03-SHOULDER-GIMBAL": {
+        "role": "shared intersecting-axis shoulder gimbal",
+        "plate_w": 58.0, "plate_h": 64.0, "plate_t": 4.0, "pattern_x": 44.0, "pattern_y": 50.0, "hole_d": 4.5,
+        "shaft_d": 10.0, "bearing_od": 22.0, "bearing_w": 6.0, "span": 52.0, "body_w": 42.0, "body_h": 52.0, "body_d": 48.0,
+        "transmission": "two remote or nested supported drives sharing one gimbal housing", "ratio": "1.0:1 initial candidate", "motor_offset": 38.0, "cable_d": 10.0,
+    },
+    "JMF-04-MEDIUM": {
+        "role": "medium supported direct joint",
+        "plate_w": 52.0, "plate_h": 56.0, "plate_t": 4.0, "pattern_x": 40.0, "pattern_y": 44.0, "hole_d": 4.5,
+        "shaft_d": 10.0, "bearing_od": 22.0, "bearing_w": 6.0, "span": 46.0, "body_w": 42.0, "body_h": 52.0, "body_d": 48.0,
+        "transmission": "direct supported output", "ratio": "1.0:1 candidate", "motor_offset": 0.0, "cable_d": 9.0,
+    },
+    "JMF-05-WAIST": {
+        "role": "large supported waist turntable",
+        "plate_w": 98.0, "plate_h": 72.0, "plate_t": 5.0, "pattern_x": 82.0, "pattern_y": 56.0, "hole_d": 5.5,
+        "shaft_d": 16.0, "bearing_od": 40.0, "bearing_w": 10.0, "span": 28.0, "body_w": 50.0, "body_h": 60.0, "body_d": 48.0,
+        "transmission": "supported yaw output with actuator isolated from overturning load", "ratio": "1.0:1 initial candidate", "motor_offset": 0.0, "cable_d": 18.0,
+    },
+    "JMF-06-LEG-DIRECT": {
+        "role": "large supported direct leg joint",
+        "plate_w": 66.0, "plate_h": 70.0, "plate_t": 5.0, "pattern_x": 52.0, "pattern_y": 56.0, "hole_d": 5.5,
+        "shaft_d": 14.0, "bearing_od": 32.0, "bearing_w": 8.0, "span": 60.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
+        "transmission": "direct supported output", "ratio": "1.0:1 W0 candidate", "motor_offset": 0.0, "cable_d": 12.0,
+    },
+    "JMF-07-LEG-REDUCED-15": {
+        "role": "parallel-axis reduced leg joint",
+        "plate_w": 72.0, "plate_h": 78.0, "plate_t": 5.0, "pattern_x": 58.0, "pattern_y": 64.0, "hole_d": 5.5,
+        "shaft_d": 14.0, "bearing_od": 32.0, "bearing_w": 8.0, "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
+        "transmission": "parallel-axis timing transmission with output encoder", "ratio": "1.5:1 geometric candidate", "motor_offset": 44.0, "cable_d": 12.0,
+    },
+    "JMF-08-LEG-REDUCED-20": {
+        "role": "higher-reduction hip-roll joint",
+        "plate_w": 74.0, "plate_h": 82.0, "plate_t": 5.0, "pattern_x": 60.0, "pattern_y": 68.0, "hole_d": 5.5,
+        "shaft_d": 14.0, "bearing_od": 32.0, "bearing_w": 8.0, "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
+        "transmission": "parallel-axis timing transmission with output encoder", "ratio": "2.0:1 geometric candidate", "motor_offset": 46.0, "cable_d": 12.0,
+    },
+}
+
+
+def joint_module_family(axis_id: str) -> str:
+    if axis_id.startswith("HEAD_") or "WRIST" in axis_id:
+        return "JMF-01-COMPACT"
+    if "GRIPPER" in axis_id:
+        return "JMF-02-GRIPPER"
+    if "SHOULDER" in axis_id:
+        return "JMF-03-SHOULDER-GIMBAL"
+    if axis_id == "WAIST_YAW":
+        return "JMF-05-WAIST"
+    if "ELBOW" in axis_id:
+        return "JMF-04-MEDIUM"
+    if "HIP_ROLL" in axis_id:
+        return "JMF-08-LEG-REDUCED-20"
+    if any(token in axis_id for token in ("HIP_PITCH", "KNEE_PITCH", "ANKLE_PITCH")):
+        return "JMF-07-LEG-REDUCED-15"
+    return "JMF-06-LEG-DIRECT"
+
+
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -166,13 +274,13 @@ def interactive_html() -> str:
 <script type="module" src="vendor/model-viewer.min.js"></script>
 <style>:root{{--deep:#041a35;--navy:#082b55;--sky:#7dd3fc;--pale:#e4f6ff;--gold:#f4b942;--ink:#102a43;--paper:#f7fbff;--line:#9ccfe8;--red:#9b1c1c;--green:#166534}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,"Segoe UI",sans-serif}}header{{background:linear-gradient(135deg,var(--deep),var(--navy));color:white;padding:clamp(32px,6vw,78px) 20px}}header>div,main,footer>div{{max-width:1240px;margin:auto}}h1{{font-size:clamp(38px,6.2vw,74px);line-height:1.03;margin:.24em 0}}h2{{font-size:clamp(27px,3.4vw,42px);line-height:1.15;color:var(--navy)}}h3{{font-size:clamp(20px,2.1vw,27px);color:var(--navy)}}.warning{{background:var(--gold);color:#17243a;border:3px solid #8a5b00;padding:16px 18px;font-weight:900}}.eyebrow{{font-size:14px;font-weight:850;color:var(--sky);letter-spacing:.04em}}main{{padding:30px 20px 80px}}section{{margin:32px 0}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:17px}}.card,.panel{{background:white;border:2px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 3px 0 #c4e2f1}}.metric{{font-size:clamp(35px,5vw,57px);line-height:1;font-weight:900;color:var(--navy)}}.pass{{border-left:9px solid var(--green)}}.hold{{border-left:9px solid var(--gold)}}.miss{{border-left:9px solid var(--red)}}.viewer{{border:3px solid var(--navy);border-radius:18px;overflow:hidden;background:var(--pale)}}model-viewer{{display:block;width:100%;height:clamp(520px,72vh,780px);background:radial-gradient(circle,#fff,var(--pale))}}.viewer p{{background:white;padding:15px 18px;margin:0}}img{{display:block;width:100%;height:auto;background:white;border:2px solid var(--line);border-radius:16px}}.table{{overflow:auto;border:2px solid var(--line);border-radius:14px;background:white}}table{{border-collapse:collapse;width:100%;min-width:940px}}th,td{{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:16px}}th{{background:var(--navy);color:white}}a{{color:#075b9b;font-weight:800}}code{{font-size:16px}}footer{{background:var(--deep);color:white;padding:32px 20px}}@media(max-width:680px){{body{{font-size:16px}}main{{padding-inline:14px}}model-viewer{{height:500px}}}}</style></head><body>
 <header><div><p class="warning">{WARNING}</p><p class="eyebrow">PROJECT BUTTON · HR-30-BODY-ARCH-P0.1 · FIRST NATIVE FULL-BODY CAD</p><h1>The 30-inch robot now has a body.</h1><p>This is the first dimensioned, repository-native HR-30 assembly: exact height datums, named limbs, 25 candidate axes, structural envelopes, shells, and component reservations. It is architecture CAD—not yet manufacturing CAD.</p></div></header>
-<main><section class="grid"><article class="card pass"><div class="metric">762 mm</div><p>Exact neutral-pose floor-to-shell-top geometry.</p></article><article class="card pass"><div class="metric">25</div><p>Named head, waist, arm, hand, hip, knee, and ankle axes.</p></article><article class="card"><div class="metric">52</div><p>Candidate physical envelopes in the STEP assembly.</p></article><article class="card hold"><div class="metric">0</div><p>Fabrication, motion, safety, or energization approvals.</p></article></section>
+<main><section class="grid"><article class="card pass"><div class="metric">762 mm</div><p>Exact neutral-pose floor-to-shell-top geometry.</p></article><article class="card pass"><div class="metric">25</div><p>Named head, waist, arm, hand, hip, knee, and ankle axes.</p></article><article class="card"><div class="metric">8</div><p>Dimensioned joint-module families spanning all 25 axes.</p></article><article class="card hold"><div class="metric">0</div><p>Fabrication, motion, safety, or energization approvals.</p></article></section>
 <section><h2>Orbit the native body architecture</h2><div class="viewer"><model-viewer src="HR-30_body_architecture_candidate.glb" poster="front-elevation.svg" alt="Interactive 3D model of the preliminary 762 millimetre Project Button humanoid body architecture" camera-controls camera-orbit="35deg 76deg 95%" min-camera-orbit="auto auto 20%" max-camera-orbit="auto auto 240%" field-of-view="26deg" shadow-intensity="0.85" exposure="1.05" interaction-prompt="auto"></model-viewer><p>Drag to orbit; scroll or pinch to zoom. Sky blue is shell envelope, dark blue is load-path envelope, gold is joint/hand hardware, and red rods are reference axes. Transparent objects reserve electronics, sensors, restraint, and joint datum space.</p></div></section>
 <section><h2>The dimensions come from the specification</h2><img src="front-elevation.svg" alt="Front elevation of HR-30 with ankle, knee, hip, waist, shoulder, neck and top height datums"></section>
 <section><h2>What this pass proves—and what it does not</h2><div class="grid"><article class="card pass"><h3>Native geometry exists</h3><p>STEP and GLB are generated from a versioned CadQuery source. The STEP reimports with vertices exactly at Z=0 and Z=762 mm.</p></article><article class="card pass"><h3>Kinematic architecture exists</h3><p>All 25 candidate axes have coordinates, directions, regions, and provisional ranges in a machine-readable schedule.</p></article><article class="card miss"><h3>Preferred reach is missed</h3><p>The specified nominal segments total 370 mm per arm and 950 mm span. These pass the 390/980 mm hard limits but miss the 360/900 mm targets.</p></article><article class="card hold"><h3>Mass is still unproven</h3><p>These are packaging envelopes, not materialized parts. The existing arm and leg actuator concepts already fail their preferred mass allocations.</p></article></div></section>
 <section><h2>Controlled body datums</h2><div class="table"><table><thead><tr><th>Datum</th><th>Z above floor</th><th>Role</th></tr></thead><tbody><tr><td>Ankle pitch</td><td>45 mm</td><td>Lower-leg kinematic datum</td></tr><tr><td>Knee pitch</td><td>210 mm</td><td>165 mm above ankle pitch</td></tr><tr><td>Hip pitch</td><td>380 mm</td><td>170 mm above knee pitch</td></tr><tr><td>Waist yaw</td><td>425 mm</td><td>Upper-body rotation datum</td></tr><tr><td>Shoulder pitch</td><td>590 mm</td><td>Upper-arm datum</td></tr><tr><td>Neck pan</td><td>650 mm</td><td>Head pan datum</td></tr><tr><td>Shell top</td><td>762 mm</td><td>Exact nominal standing height</td></tr></tbody></table></div></section>
-<section><h2>Next engineering conversions</h2><div class="grid"><article class="card hold"><h3>Joints</h3><p>Replace every joint envelope with dual-supported shafts, bearings, reductions, fasteners, stops, encoders, and serviceable housings.</p></article><article class="card hold"><h3>Structure and covers</h3><p>Convert solid visual envelopes into materialized frames and tool-removable covers with thickness, splits, edges, vents, access, and retention.</p></article><article class="card hold"><h3>Harness and power</h3><p>Route bend-controlled cables and select the actuator rail, protection, regeneration handling, tether, and eventual onboard energy system.</p></article><article class="card hold"><h3>Evidence</h3><p>Close mass/COM/inertia, collision, gait loads, thermal behavior, stopping, fall restraint, DFM, tolerances, FAI, physical testing, and qualified review.</p></article></div></section>
-<section><h2>Download the engineering artifacts</h2><div class="panel"><p><a href="HR-30_body_architecture_candidate.step">Physical-envelope STEP</a> · <a href="HR-30_body_kinematic_reference.step">Kinematic-reference STEP</a> · <a href="HR-30_body_architecture_candidate.glb">Interactive GLB</a> · <a href="whole-body-source.py">Editable CadQuery source</a> · <a href="joint-axis-schedule.csv">Joint-axis schedule</a> · <a href="actuator-transmission-allocation.csv">Actuator allocation</a> · <a href="asimov-1-reuse-adapt-reject.csv">Asimov 1 matrix</a> · <a href="component-envelope-schedule.csv">Component schedule</a> · <a href="geometry-checks.json">Geometry checks</a> · <a href="open-holds.csv">Open holds</a></p></div></section></main>
+<section><h2>Next engineering conversions</h2><div class="grid"><article class="card hold"><h3>Joints</h3><p>Convert the eight visible module-family candidates into released shafts, selected bearings, verified fits, retained fasteners, stops, encoders, and serviceable housings.</p></article><article class="card hold"><h3>Structure and covers</h3><p>Convert solid visual envelopes into materialized frames and tool-removable covers with thickness, splits, edges, vents, access, and retention.</p></article><article class="card hold"><h3>Harness and power</h3><p>Route bend-controlled cables and select the actuator rail, protection, regeneration handling, tether, and eventual onboard energy system.</p></article><article class="card hold"><h3>Evidence</h3><p>Close mass/COM/inertia, collision, gait loads, thermal behavior, stopping, fall restraint, DFM, tolerances, FAI, physical testing, and qualified review.</p></article></div></section>
+<section><h2>Download the engineering artifacts</h2><div class="panel"><p><a href="HR-30_body_architecture_candidate.step">Physical-envelope STEP</a> · <a href="HR-30_body_kinematic_reference.step">Kinematic-reference STEP</a> · <a href="HR-30_body_architecture_candidate.glb">Interactive GLB</a> · <a href="whole-body-source.py">Editable CadQuery source</a> · <a href="joint-axis-schedule.csv">Joint-axis schedule</a> · <a href="joint-module-family-schedule.csv">Joint-module families</a> · <a href="joint-module-axis-binding.csv">All-axis module binding</a> · <a href="actuator-transmission-allocation.csv">Actuator allocation</a> · <a href="asimov-1-reuse-adapt-reject.csv">Asimov 1 matrix</a> · <a href="component-envelope-schedule.csv">Component schedule</a> · <a href="geometry-checks.json">Geometry checks</a> · <a href="open-holds.csv">Open holds</a></p></div></section></main>
 <footer><div><p>Project Button · HR-30-BODY-ARCH-P0.1 · adult-operated experimental machinery · not a toy · no procurement, fabrication, motion, energization, or functional-safety approval</p></div></footer></body></html>"""
 
 
@@ -203,7 +311,7 @@ def vertex_extent_dict(shape: cq.Shape) -> dict[str, float]:
     }
 
 
-def build() -> tuple[list[Component], list[dict]]:
+def build() -> tuple[list[Component], list[dict], list[dict]]:
     shell = (0.25, 0.68, 0.92, 0.82)
     structure = (0.08, 0.20, 0.38, 1.0)
     joint = (0.96, 0.70, 0.08, 1.0)
@@ -307,14 +415,96 @@ def build() -> tuple[list[Component], list[dict]]:
         add_axis(f"{side}_KNEE_PITCH", "leg", side, "pitch", (sign * HIP_HALF_WIDTH, 0, KNEE_Z), (1, 0, 0), "0..120 deg", "HR-WALK-001")
         add_axis(f"{side}_ANKLE_PITCH", "leg", side, "pitch", (sign * HIP_HALF_WIDTH, 0, ANKLE_Z), (1, 0, 0), "-35..+30 deg", "HR-WALK-001")
         add_axis(f"{side}_ANKLE_ROLL", "leg", side, "roll", (sign * HIP_HALF_WIDTH, 0, 37), (0, 1, 0), "+/-20 deg", "HR-WALK-001")
-    return components, axes
+
+    # Turn each datum into a visible, dimensioned joint-module candidate.  The
+    # geometry establishes the architecture of shafts, two-sided bearings,
+    # removable interface plates, actuator envelopes, cable corridors and
+    # reduction reservations.  It deliberately does not claim bearing fits,
+    # materials, preload, fastener strength, actuator ratings or DFM release.
+    module_bindings: list[dict] = []
+    for axis in axes:
+        axis_id = axis["axis_id"]
+        family_id = joint_module_family(axis_id)
+        spec = JOINT_MODULE_FAMILIES[family_id]
+        center = (float(axis["x_mm"]), float(axis["y_mm"]), float(axis["z_mm"]))
+        direction = (float(axis["direction_x"]), float(axis["direction_y"]), float(axis["direction_z"]))
+        normal = cq.Vector(*direction).normalized()
+        span = spec["span"]
+        shaft_length = span + 2.0 * spec["plate_t"]
+        add(f"JMOD_{axis_id}_OUTPUT_SHAFT", "joint module shaft", cylinder_between(center, direction, shaft_length, spec["shaft_d"]), joint, True, f"{family_id} shaft candidate; material and fits selection required")
+        for end_name, sign_end in (("A", -1.0), ("B", 1.0)):
+            bearing_center_v = cq.Vector(*center) + normal.multiply(sign_end * (span / 2.0 - spec["bearing_w"] / 2.0))
+            plate_center_v = cq.Vector(*center) + normal.multiply(sign_end * (span / 2.0 + spec["plate_t"] / 2.0))
+            bearing_center = (bearing_center_v.x, bearing_center_v.y, bearing_center_v.z)
+            plate_center = (plate_center_v.x, plate_center_v.y, plate_center_v.z)
+            add(f"JMOD_{axis_id}_BEARING_{end_name}_RING", "joint module bearing", bearing_ring(bearing_center, direction, spec["bearing_w"], spec["bearing_od"], spec["shaft_d"]), joint, True, f"{family_id} bearing envelope; exact bearing selection required")
+            add(
+                f"JMOD_{axis_id}_INTERFACE_PLATE_{end_name}",
+                "joint module interface plate",
+                interface_plate(plate_center, direction, spec["plate_w"], spec["plate_h"], spec["plate_t"], spec["pattern_x"], spec["pattern_y"], spec["hole_d"]),
+                structure,
+                True,
+                f"{family_id} provisional four-hole module interface; thread/fastener stack not released",
+            )
+
+        # Pick a stable direction perpendicular to the joint axis for cable and
+        # parallel-drive reservations.  Pitch reductions sit inside the
+        # adjacent vertical link, not outside the leg silhouette.
+        if abs(normal.z) > 0.9:
+            offset_direction = cq.Vector(0, 1, 0)
+        elif abs(normal.y) > 0.9:
+            offset_direction = cq.Vector(0, 0, -1 if "HIP_ROLL" in axis_id or "SHOULDER_ROLL" in axis_id else 1)
+        elif any(token in axis_id for token in ("HIP_PITCH",)):
+            offset_direction = cq.Vector(0, 0, -1)
+        elif any(token in axis_id for token in ("KNEE_PITCH", "ANKLE_PITCH")):
+            offset_direction = cq.Vector(0, 0, 1)
+        else:
+            offset_direction = cq.Vector(0, 1, 0)
+        corridor_center_v = cq.Vector(*center) + offset_direction.multiply(min(spec["plate_w"], spec["plate_h"]) * 0.28)
+        corridor_center = (corridor_center_v.x, corridor_center_v.y, corridor_center_v.z)
+        add(f"JMOD_{axis_id}_CABLE_CORRIDOR", "joint cable corridor", cylinder_between(corridor_center, direction, shaft_length, spec["cable_d"]), sensor, False, f"{family_id} routing reservation; cable construction and bend control selection required")
+
+        motor_offset = spec["motor_offset"]
+        if motor_offset > 0:
+            motor_center_v = cq.Vector(*center) + offset_direction.multiply(motor_offset)
+            motor_center = (motor_center_v.x, motor_center_v.y, motor_center_v.z)
+            output_pulley_d = 48.0 if family_id.endswith("15") else 52.0 if family_id.endswith("20") else 32.0
+            motor_pulley_d = 32.0 if family_id.endswith("15") else 26.0 if family_id.endswith("20") else 24.0
+            add(f"JMOD_{axis_id}_OUTPUT_PULLEY", "joint transmission", bearing_ring(center, direction, 12.0, output_pulley_d, spec["shaft_d"]), joint, True, f"{spec['ratio']} pulley envelope; pitch/width/tooth count selection required")
+            add(f"JMOD_{axis_id}_MOTOR_PULLEY", "joint transmission", bearing_ring(motor_center, direction, 12.0, motor_pulley_d, 6.0), joint, True, f"{spec['ratio']} motor pulley envelope; bore and retention selection required")
+            add(f"JMOD_{axis_id}_ACTUATOR_ENVELOPE", "joint actuator envelope", oriented_box(motor_center, direction, spec["body_w"], spec["body_h"], spec["body_d"]), structure, True, f"{family_id} actuator packaging envelope; exact model/interface remains candidate")
+            add(f"JMOD_{axis_id}_BELT_PATH_RESERVATION", "joint transmission reservation", link_between(center, motor_center, 8.0), sensor, False, "belt sweep/guard reservation only; no belt selection or load credit")
+        else:
+            axial_sign = 1.0 if abs(normal.x) > 0.9 and center[0] < 0 else -1.0
+            motor_center_v = cq.Vector(*center) + normal.multiply(axial_sign * (span / 2.0 + spec["plate_t"] + spec["body_d"] / 2.0))
+            motor_center = (motor_center_v.x, motor_center_v.y, motor_center_v.z)
+            add(f"JMOD_{axis_id}_ACTUATOR_ENVELOPE", "joint actuator envelope", oriented_box(motor_center, direction, spec["body_w"], spec["body_h"], spec["body_d"]), structure, True, f"{family_id} actuator packaging envelope; exact model/interface remains candidate")
+
+        shared_assembly = f"{axis['side']}_SHOULDER_GIMBAL" if family_id == "JMF-03-SHOULDER-GIMBAL" else f"{axis_id}_MODULE"
+        module_bindings.append({
+            "axis_id": axis_id,
+            "family_id": family_id,
+            "shared_assembly_id": shared_assembly,
+            "axis_center_mm": f"({center[0]:.3f}, {center[1]:.3f}, {center[2]:.3f})",
+            "axis_direction": f"({direction[0]:.0f}, {direction[1]:.0f}, {direction[2]:.0f})",
+            "shaft_candidate_mm": f"OD {spec['shaft_d']:.1f} x {shaft_length:.1f}",
+            "bearing_envelope_each_mm": f"OD {spec['bearing_od']:.1f} x W {spec['bearing_w']:.1f} x 2",
+            "plate_candidate_mm": f"{spec['plate_w']:.1f} x {spec['plate_h']:.1f} x {spec['plate_t']:.1f}",
+            "external_mount_pattern": f"4 x DIA {spec['hole_d']:.1f} on {spec['pattern_x']:.1f} x {spec['pattern_y']:.1f} rectangle",
+            "transmission": spec["transmission"],
+            "ratio": spec["ratio"],
+            "cable_corridor_diameter_mm": f"{spec['cable_d']:.1f}",
+            "selection_state": "GEOMETRIC CANDIDATE - BEARINGS, FITS, MATERIAL, FASTENERS, STOPS, ENCODER AND ACTUATOR INTERFACE SELECTION REQUIRED",
+            "authority": "NO PROCUREMENT, FABRICATION, MOTION OR ENERGIZATION AUTHORITY",
+        })
+    return components, axes, module_bindings
 
 
 def main() -> int:
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
-    components, axes = build()
+    components, axes, module_bindings = build()
     physical = [item.shape for item in components if item.physical]
     all_shapes = [item.shape for item in components]
     physical_compound = cq.Compound.makeCompound(physical)
@@ -333,6 +523,22 @@ def main() -> int:
     assembly.save(str(OUT / "HR-30_body_architecture_candidate.glb"))
 
     write_csv(OUT / "joint-axis-schedule.csv", axes)
+    write_csv(OUT / "joint-module-axis-binding.csv", module_bindings)
+    write_csv(OUT / "joint-module-family-schedule.csv", [{
+        "family_id": family_id,
+        "role": spec["role"],
+        "axis_count": sum(row["family_id"] == family_id for row in module_bindings),
+        "plate_candidate_mm": f"{spec['plate_w']:.1f} x {spec['plate_h']:.1f} x {spec['plate_t']:.1f}",
+        "mount_pattern": f"4 x DIA {spec['hole_d']:.1f} on {spec['pattern_x']:.1f} x {spec['pattern_y']:.1f} rectangle",
+        "shaft_diameter_mm": f"{spec['shaft_d']:.1f}",
+        "bearing_envelope_each_mm": f"OD {spec['bearing_od']:.1f} x W {spec['bearing_w']:.1f}",
+        "support_span_mm": f"{spec['span']:.1f}",
+        "transmission": spec["transmission"],
+        "ratio": spec["ratio"],
+        "motor_axis_offset_mm": f"{spec['motor_offset']:.1f}",
+        "cable_corridor_diameter_mm": f"{spec['cable_d']:.1f}",
+        "status": "DIMENSIONED ARCHITECTURE CANDIDATE - EXACT COMPONENTS, FITS, MATERIALS AND LOAD PROOF OPEN",
+    } for family_id, spec in JOINT_MODULE_FAMILIES.items()])
     actuator_rows = []
     for axis in axes:
         axis_id = axis["axis_id"]
@@ -472,6 +678,8 @@ def main() -> int:
         "joint_axis_count": len(axes),
         "physical_component_count": len(physical),
         "reference_component_count": len(components) - len(physical),
+        "joint_module_family_count": len(JOINT_MODULE_FAMILIES),
+        "joint_module_binding_count": len(module_bindings),
         "shoulder_shell_width_mm": 250.0,
         "hip_shell_width_mm": 155.0,
         "foot_center_spacing_mm": 125.0,
@@ -505,7 +713,7 @@ def main() -> int:
     ]
     write_csv(OUT / "mass-allocation-register.csv", mass_rows)
     holds = [
-        ("HR30-P01-H01", "All 25 load-bearing joint stacks, bearings, shafts, reductions and fasteners are absent."),
+        ("HR30-P01-H01", "All 25 axes have dimensioned module-family bindings and visible shaft/bearing/interface candidates, but exact bearings, fits, materials, fasteners, stops, encoders, actuator interfaces and load proof remain absent."),
         ("HR30-P01-H02", "The arm actuator concept exceeds its mass target before links, hands, cables and covers."),
         ("HR30-P01-H03", "The leg concept fails its current mass screen and direct-drive hip roll is blocked."),
         ("HR30-P01-H04", "No selected power source, regeneration control, contactors, battery or tether exists."),
@@ -524,7 +732,7 @@ def main() -> int:
 
 This is the first repository-native full-body CAD for Project Button. It freezes the `HR-PROD-030` neutral-pose datums, all 25 candidate axes, the 762 mm overall height, shell envelopes, load-frame envelopes and first component-bay reservations.
 
-It is intentionally an architecture model, not a buildable machine. The STEP contains candidate physical envelopes. The second STEP and GLB add joint-axis and component-reservation references. The package also assigns a provisional actuator/transmission route to every axis and records explicit REUSE / ADAPT / REJECT decisions for the SHA-bound Asimov 1 source rig. Exact joints, materials, wall construction, tolerances, fasteners, harnesses, power hardware, mass properties, collision proof and physical validation remain open.
+It is intentionally an architecture model, not a buildable machine. The STEP contains candidate physical envelopes plus visible module-family geometry for every axis: output shafts, two-sided bearing rings, removable four-hole interface plates, actuator envelopes, cable corridors and reduction reservations. Eight dimensioned module families cover all 25 axes, including a shared intersecting-axis shoulder gimbal rather than overlapping generic servo blocks. The second STEP and GLB add joint-axis and component-reservation references. The package also assigns a provisional actuator/transmission route to every axis and records explicit REUSE / ADAPT / REJECT decisions for the SHA-bound Asimov 1 source rig. Exact bearings, fits, materials, fasteners, stops, encoders, actuator interfaces, wall construction, tolerances, harnesses, power hardware, mass properties, collision proof and physical validation remain open.
 
 The straight arm-chain arithmetic is 370 mm reach and 950 mm span: both pass hard limits, but both miss the preferred 360/900 mm targets. This is recorded as an open design correction rather than hidden.
 """
@@ -550,6 +758,9 @@ The straight arm-chain arithmetic is 370 mm reach and 950 mm span: both pass har
         "ankles_and_feet_present": True,
         "joint_axis_count": len(axes),
         "actuator_allocation_count": len(actuator_rows),
+        "joint_module_family_count": len(JOINT_MODULE_FAMILIES),
+        "joint_module_binding_count": len(module_bindings),
+        "joint_module_geometry_present": True,
         "asimov_matrix_count": len(asimov_rows),
         "editable_source_present": True,
         "step_present": True,

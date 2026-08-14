@@ -31,6 +31,8 @@ def main() -> int:
         "HR-30_body_kinematic_reference.step",
         "HR-30_body_architecture_candidate.glb",
         "joint-axis-schedule.csv",
+        "joint-module-family-schedule.csv",
+        "joint-module-axis-binding.csv",
         "actuator-transmission-allocation.csv",
         "asimov-1-reuse-adapt-reject.csv",
         "component-envelope-schedule.csv",
@@ -83,6 +85,14 @@ def main() -> int:
     allocation = list(csv.DictReader((SRC / "actuator-transmission-allocation.csv").open(encoding="utf-8")))
     require(len(allocation) == 25 and {r["axis_id"] for r in allocation} == {r["axis_id"] for r in axes}, "actuator allocation does not cover every axis")
     require(sum(r["candidate_disposition"] == "DIRECT DRIVE REJECTED/BLOCKED" for r in allocation) == 2, "both hip-roll direct-drive allocations must be blocked")
+    module_families = list(csv.DictReader((SRC / "joint-module-family-schedule.csv").open(encoding="utf-8")))
+    module_bindings = list(csv.DictReader((SRC / "joint-module-axis-binding.csv").open(encoding="utf-8")))
+    require(len(module_families) == 8 and len({r["family_id"] for r in module_families}) == 8, "joint-module family identity/count mismatch")
+    require(sum(int(r["axis_count"]) for r in module_families) == 25, "joint-module family counts do not cover 25 axes")
+    require(len(module_bindings) == 25 and {r["axis_id"] for r in module_bindings} == {r["axis_id"] for r in axes}, "joint-module binding does not cover every axis")
+    require({r["family_id"] for r in module_bindings} == {r["family_id"] for r in module_families}, "joint-module family/binding mismatch")
+    require(sum(r["shared_assembly_id"] == "L_SHOULDER_GIMBAL" for r in module_bindings) == 2 and sum(r["shared_assembly_id"] == "R_SHOULDER_GIMBAL" for r in module_bindings) == 2, "intersecting shoulder axes are not bound to shared gimbals")
+    require(all("SELECTION REQUIRED" in r["selection_state"] and r["authority"].startswith("NO PROCUREMENT") for r in module_bindings), "joint-module selection/authority boundary missing")
     asimov = list(csv.DictReader((SRC / "asimov-1-reuse-adapt-reject.csv").open(encoding="utf-8")))
     require(len(asimov) >= 12 and {r["decision"] for r in asimov} == {"REUSE", "ADAPT", "REJECT"}, "Asimov matrix incomplete")
     require(all(r["source_archive_sha256"].lower() == "ae126d212e8c56486ce014bd9b01b3779b0086867f9b47615ddefbbf32fa5167" for r in asimov), "Asimov source identity mismatch")
@@ -101,6 +111,7 @@ def main() -> int:
     require(sha(SRC / "whole-body-source.py") == sha(ROOT / "tools" / "generate_hr30_body_architecture_p01.py"), "editable source snapshot drift")
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
     require(status["whole_body_geometry_present"] and status["joint_axis_count"] == 25 and status["actuator_allocation_count"] == 25, "whole-body package status incomplete")
+    require(status["joint_module_geometry_present"] and status["joint_module_family_count"] == 8 and status["joint_module_binding_count"] == 25, "joint-module status incomplete")
     require(not any(status[key] for key in ("procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "package status authority overclaim")
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require(WARNING in page and "font:17px/1.55" in page and "font-size:16px" in page, "web warning/legibility controls missing")
@@ -109,6 +120,8 @@ def main() -> int:
     components = list(csv.DictReader((SRC / "component-envelope-schedule.csv").open(encoding="utf-8")))
     component_names = {row["component"] for row in components}
     require("FACE_SCREEN_PANEL" in component_names and {"L_INBOARD_GRIPPER_FINGER", "L_OUTBOARD_GRIPPER_FINGER", "R_INBOARD_GRIPPER_FINGER", "R_OUTBOARD_GRIPPER_FINGER"} <= component_names, "screen face or functional two-finger hands missing")
+    for axis_id in {r["axis_id"] for r in axes}:
+        require({f"JMOD_{axis_id}_OUTPUT_SHAFT", f"JMOD_{axis_id}_BEARING_A_RING", f"JMOD_{axis_id}_BEARING_B_RING", f"JMOD_{axis_id}_INTERFACE_PLATE_A", f"JMOD_{axis_id}_INTERFACE_PLATE_B", f"JMOD_{axis_id}_ACTUATOR_ENVELOPE"} <= component_names, f"visible joint-module geometry incomplete for {axis_id}")
     print("PASS: native HR-30 body architecture has exact 762 mm height, 25 named axes, synchronized STEP/GLB/source-release evidence; body remains preliminary and all work authority false")
     return 0
 

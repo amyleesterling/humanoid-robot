@@ -1,5 +1,5 @@
 hold_id,unresolved_item,state,release_effect
-HR30-P01-H01,"All 25 load-bearing joint stacks, bearings, shafts, reductions and fasteners are absent.",OPEN,"BLOCKS FABRICATION, MOTION AND ENERGIZATION"
+HR30-P01-H01,"All 25 axes have dimensioned module-family bindings and visible shaft/bearing/interface candidates, but exact bearings, fits, materials, fasteners, stops, encoders, actuator interfaces and load proof remain absent.",OPEN,"BLOCKS FABRICATION, MOTION AND ENERGIZATION"
 HR30-P01-H02,"The arm actuator concept exceeds its mass target before links, hands, cables and covers.",OPEN,"BLOCKS FABRICATION, MOTION AND ENERGIZATION"
 HR30-P01-H03,The leg concept fails its current mass screen and direct-drive hip roll is blocked.,OPEN,"BLOCKS FABRICATION, MOTION AND ENERGIZATION"
 HR30-P01-H04,"No selected power source, regeneration control, contactors, battery or tether exists.",OPEN,"BLOCKS FABRICATION, MOTION AND ENERGIZATION"
