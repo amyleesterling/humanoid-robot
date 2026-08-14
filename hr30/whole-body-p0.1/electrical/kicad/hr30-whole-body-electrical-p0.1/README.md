@@ -2,7 +2,7 @@
 
 **PRELIMINARY - NOT APPROVED FOR CONNECTION, FABRICATION, MOTION OR ENERGIZATION**
 
-This is the native KiCad 10 whole-body architecture for the current 25-axis HR-30 candidate. It contains a root index plus twelve populated child sheets. Five RS-485 and three TTL actuator segments match the whole-body bus allocation exactly.
+This is the native KiCad 10 whole-body architecture for the current 25-axis HR-30 candidate. It contains a root index plus fifteen populated child sheets. Five RS-485 and three TTL actuator segments match the whole-body bus allocation exactly; individual head HMI devices, pelvis IMU and bilateral four-point foot sensing are also represented.
 
 AX_* actuator terminals use current official ROBOTIS actuator-side pin numbers. All `LOG-*` terminal identifiers are functional ports, not physical connector or IC pin numbers. Controller/interface pins, exact devices, order codes, fuse/limiter values, conductors, connectors, grounding, shield treatment, safety allocation, stopping time and physical behavior remain unresolved. The historical mixed HR-V0/HR-30 project is not incorporated as verified wiring.
 
@@ -19,6 +19,9 @@ AX_* actuator terminals use current official ROBOTIS actuator-side pin numbers. 
 9. `09_waist_rs485.kicad_sch` — Waist RS-485 and protected branch
 10. `10_left_distal_ttl.kicad_sch` — Left wrist/gripper TTL and protected branch
 11. `11_right_distal_ttl.kicad_sch` — Right wrist/gripper TTL and protected branch
-12. `12_head_ttl_sensors_hmi.kicad_sch` — Head TTL, sensing, display and audio
+12. `12_head_ttl_sensors_hmi.kicad_sch` — Head TTL, cameras, face display, audio and cooling
+13. `13_pelvis_aux_imu.kicad_sch` — Auxiliary conversion and pelvis inertial sensing
+14. `14_left_foot_load_sensing.kicad_sch` — Left foot four-point load sensing
+15. `15_right_foot_load_sensing.kicad_sch` — Right foot four-point load sensing
 
 KiCad ERC checks encoded passive-pin connectivity and annotation only. It grants no functional-safety credit and no authority to order, fabricate, connect, power, move or energize the robot.

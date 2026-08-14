@@ -345,7 +345,7 @@ def update_package(rows: list[dict]) -> None:
     holds = read_csv("open-holds.csv")
     for hold in holds:
         if hold["hold_id"] == "HR30-P01-H10":
-            hold["unresolved_item"] = "A whole-body interface atlas consolidates 12 modules, all 25 axes, dimensions, masses, mount-pattern candidates, service panels, harness routes and assembly dependencies; twelve module-specific fabrication/integration STEP pairs plus an exploded STEP/GLB now implement that partition. Released manufacturing drawings, tolerances/GD&T, material/process selections, fasteners, DFM, FAI, proof, physical test and qualified review remain open."
+            hold["unresolved_item"] = "A whole-body interface atlas consolidates 12 modules, all 25 axes, dimensions, masses, mount-pattern candidates, service panels, harness routes and assembly dependencies; twelve module-specific fabrication/integration STEP pairs, an exploded STEP/GLB, and individual candidate files for all 66 physical fabrication parts now implement that partition. Released manufacturing drawings, tolerances/GD&T, material/process selections, fasteners, DFM, FAI, proof, physical test and qualified review remain open."
     write_csv("open-holds.csv", holds)
 
     readme_path = PACKAGE / "README.md"
@@ -370,7 +370,8 @@ def update_package(rows: list[dict]) -> None:
     if marker not in page:
         raise SystemExit("web insertion marker missing")
     page = page.replace(marker, section + marker)
-    page = page.replace("<h3>KiCad remains open</h3><p>The historical mixed project is not an HR-30 whole-body wiring release. A native HR-30-only eight-segment schematic must follow this allocation.</p>", "<h3>Native KiCad follows this allocation</h3><p>The 13-sheet HR-30 project connects the same five RS-485 and three TTL segments. Physical devices, pins and harnesses remain open.</p>")
+    page = page.replace("<h3>KiCad remains open</h3><p>The historical mixed project is not an HR-30 whole-body wiring release. A native HR-30-only eight-segment schematic must follow this allocation.</p>", "<h3>Native KiCad follows this allocation</h3><p>The 16-sheet HR-30 project connects the same five RS-485 and three TTL segments and adds head, pelvis-IMU and bilateral foot-sensing interfaces. Physical controller devices, pins and harnesses remain open.</p>")
+    page = page.replace("The 13-sheet HR-30 project connects", "The 16-sheet HR-30 project connects")
     page_path.write_text(page, encoding="utf-8", newline="\n")
 
     sys.path.insert(0, str(ROOT / "tools"))

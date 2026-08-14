@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import html
 import importlib.util
 import json
 import re
@@ -58,7 +59,34 @@ def load_model():
     module.WARNING = WARNING
     module.PROJECT_TITLE = "PROJECT BUTTON HR-30 WHOLE-BODY ELECTRICAL P0.1"
     module.PROJECT_SUBTITLE = "25 axes; five RS-485 and three TTL buses; logical terminals until physical selections close."
+    module.root_schematic = lambda root_uuid, items: hr30_root_schematic(module, root_uuid, items)
     return module
+
+
+def hr30_root_schematic(model, root_uuid: str, items: list) -> str:
+    """Render the fifteen-child HR-30 hierarchy without changing the frozen HR-V0 generator."""
+    positions = [(12.0 + col * 100.0, 42.0 + row * 56.0) for row in range(4) for col in range(4)]
+    if len(items) > len(positions):
+        raise SystemExit("HR-30 hierarchy exceeds controlled A3 index capacity")
+    blocks = []
+    for sheet, (x, y) in zip(items, positions):
+        blocks.append(f'''(sheet (at {x:.2f} {y:.2f}) (size 92.0 40.64)
+          (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+          (stroke (width 0.5) (type solid)) (fill (color 0 0 0 0.0000)) (uuid "{sheet.sheet_uuid}")
+          (property "Sheetname" "{sheet.number:02d} {model.esc(sheet.title)}" (at {x+2.54:.2f} {y+10.16:.2f} 0) {model.font(1.5, 'left bottom')})
+          (property "Sheetfile" "{sheet.filename}" (at {x+2.54:.2f} {y+25.4:.2f} 0) {model.font(1.3, 'left top')})
+          (instances (project "{PROJECT}" (path "/{root_uuid}" (page "{sheet.number+1}")))))''')
+    return f'''(kicad_sch
+  (version 20250114) (generator "eeschema") (generator_version "10.0") (uuid "{root_uuid}") (paper "A3")
+  (title_block (title "{model.esc(model.PROJECT_TITLE)} index") (date "{DATE}") (rev "{REV}")
+    (company "Project Button") (comment 1 "{WARNING}") (comment 2 "WHOLE-BODY LOGICAL ARCHITECTURE - PHYSICAL SELECTIONS OPEN"))
+  (lib_symbols)
+  {model.text_item(WARNING,12.0,10.16,2.54,'hr30-root-warning')}
+  {model.text_item(model.PROJECT_TITLE,12.0,19.05,2.54,'hr30-root-title')}
+  {model.text_item(model.PROJECT_SUBTITLE,12.0,27.0,1.8,'hr30-root-subtitle')}
+  {' '.join(blocks)}
+  (sheet_instances (path "/" (page "1"))) (embedded_fonts no))
+'''
 
 
 def read_csv(path: Path) -> list[dict]:
@@ -238,7 +266,10 @@ def build_sheets(model):
     s3.components = [
         component(model, "CPU1", "RASPBERRY PI 5 CONVERSATIONAL COMPUTE CANDIDATE",
                   [("LOG-NET", "NETWORK / OPENAI CLIENT", "EXTERNAL_NETWORK", "left"), ("LOG-ACTION", "STRUCTURED ACTION REQUEST", "ACTION_REQUEST_AUTH", "right"),
-                   ("LOG-AUDIO", "AUDIO / VISION IPC", "HMI_SENSOR_IPC", "right")],
+                   ("LOG-CAM-L", "LEFT CAMERA IPC", "HEAD_CAM_L_IPC", "right"), ("LOG-CAM-R", "RIGHT CAMERA IPC", "HEAD_CAM_R_IPC", "right"),
+                   ("LOG-DISPLAY", "FACE DISPLAY IPC", "HEAD_DISPLAY_IPC", "right"), ("LOG-TOUCH", "FACE TOUCH IPC", "HEAD_TOUCH_IPC", "right"),
+                   ("LOG-MIC", "MICROPHONE IPC", "HEAD_MIC_IPC", "right"), ("LOG-AUDIO", "AUDIO OUTPUT IPC", "HEAD_AUDIO_IPC", "right"),
+                   ("LOG-FAN-PWM", "HEAD FAN PWM", "HEAD_FAN_PWM", "right"), ("LOG-FAN-TACH", "HEAD FAN TACH", "HEAD_FAN_TACH", "left")],
                   "No actuator-bus credentials or raw joint-register authority. Exact power, storage, cooling, privacy and network controls remain open.", (65, 55), width=80.0,
                   datasheet="https://www.raspberrypi.com/products/raspberry-pi-5/"),
         component(model, "MCU1", "DETERMINISTIC MOTION CONTROLLER - EXACT BOARD SELECTION REQUIRED", mcu_pins,
@@ -290,15 +321,44 @@ def build_sheets(model):
     sheets.append(bus_sheet(model, 10, "10_left_distal_ttl.kicad_sch", "Left wrist/gripper TTL and protected branch", "TTL-LDIST", BUS_AXES["TTL-LDIST"], by_axis))
     sheets.append(bus_sheet(model, 11, "11_right_distal_ttl.kicad_sch", "Right wrist/gripper TTL and protected branch", "TTL-RDIST", BUS_AXES["TTL-RDIST"], by_axis))
 
-    s12 = bus_sheet(model, 12, "12_head_ttl_sensors_hmi.kicad_sch", "Head TTL, sensing, display and audio", "TTL-HEAD", BUS_AXES["TTL-HEAD"], by_axis)
+    s12 = bus_sheet(model, 12, "12_head_ttl_sensors_hmi.kicad_sch", "Head TTL, cameras, face display, audio and cooling", "TTL-HEAD", BUS_AXES["TTL-HEAD"], by_axis)
     s12.components.extend([
-        component(model, "CAM1", "LEFT CAMERA MODULE - SELECTION REQUIRED", [("LOG-IPC", "VISION IPC", "HMI_SENSOR_IPC", "right")], "No safety role; exact module, optics, privacy and mounting remain open.", (153, 236), width=66.0),
-        component(model, "CAM2", "RIGHT CAMERA MODULE - SELECTION REQUIRED", [("LOG-IPC", "VISION IPC", "HMI_SENSOR_IPC", "right")], "No safety role; exact module, optics, synchronization and mounting remain open.", (238, 236), width=66.0),
-        component(model, "HMI1", "FACE DISPLAY / MICROPHONES / SPEAKERS - SELECTION REQUIRED", [("LOG-IPC", "HMI IPC", "HMI_SENSOR_IPC", "left")], "Exact screen, audio hardware, power, privacy indication and acoustic limits remain open.", (323, 236), width=72.0),
+        component(model, "HPWR1", "PROTECTED HEAD AUXILIARY DISTRIBUTION - DESIGN REQUIRED", [("LOG-IN", "AUXILIARY 5 V INPUT", "AUX_5V_SAFE", "left"), ("LOG-RET-IN", "AUXILIARY RETURN", "AUX_0V", "left"), ("LOG-OUT", "HEAD 5 V", "HEAD_5V", "right"), ("LOG-RET-OUT", "HEAD RETURN", "HEAD_0V", "right")], "Branch protection, filtering, connector and current allocation remain open.", (70, 235), width=82.0),
+        component(model, "CAM1", "LEFT CAMERA MODULE - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-IPC", "VISION IPC", "HEAD_CAM_L_IPC", "right")], "No safety role; exact module, optics, privacy and mounting remain open.", (175, 235), width=64.0),
+        component(model, "CAM2", "RIGHT CAMERA MODULE - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-IPC", "VISION IPC", "HEAD_CAM_R_IPC", "right")], "No safety role; exact module, optics, synchronization and mounting remain open.", (260, 235), width=64.0),
+        component(model, "DISP1", "FACE DISPLAY - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-IPC", "DISPLAY IPC", "HEAD_DISPLAY_IPC", "right"), ("LOG-TOUCH", "TOUCH IPC", "HEAD_TOUCH_IPC", "right")], "Exact screen, controller, luminance and touch interface remain open.", (350, 235), width=68.0),
+        component(model, "MIC1", "MICROPHONE ARRAY - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-IPC", "AUDIO INPUT IPC", "HEAD_MIC_IPC", "right")], "Exact microphones, privacy indication and acoustic behavior remain open.", (90, 285), width=64.0),
+        component(model, "AMP1", "AUDIO AMPLIFIER - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-IN", "AUDIO INPUT IPC", "HEAD_AUDIO_IPC", "left"), ("LOG-LP", "LEFT SPEAKER +", "SPK_L_POS", "right"), ("LOG-LN", "LEFT SPEAKER -", "SPK_L_NEG", "right"), ("LOG-RP", "RIGHT SPEAKER +", "SPK_R_POS", "right"), ("LOG-RN", "RIGHT SPEAKER -", "SPK_R_NEG", "right")], "Output power, protection, acoustic limit and exact pins remain open.", (200, 285), width=76.0),
+        component(model, "SPK1", "LEFT SPEAKER - SELECTION REQUIRED", [("LOG-P", "SPEAKER +", "SPK_L_POS", "left"), ("LOG-N", "SPEAKER -", "SPK_L_NEG", "left")], "Exact driver, enclosure and sound-pressure limit remain open.", (295, 285), width=58.0),
+        component(model, "SPK2", "RIGHT SPEAKER - SELECTION REQUIRED", [("LOG-P", "SPEAKER +", "SPK_R_POS", "left"), ("LOG-N", "SPEAKER -", "SPK_R_NEG", "left")], "Exact driver, enclosure and sound-pressure limit remain open.", (370, 285), width=58.0),
+        component(model, "FAN1", "HEAD COOLING FAN - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-PWM", "PWM", "HEAD_FAN_PWM", "right"), ("LOG-TACH", "TACHOMETER", "HEAD_FAN_TACH", "right")], "Airflow, noise, finger guarding and failure detection remain open.", (405, 285), width=58.0),
     ])
     sheets.append(s12)
-    if len(sheets) != 12:
-        raise SystemExit("controlled twelve-sheet architecture drift")
+
+    s13 = model.Sheet(13, "13_pelvis_aux_imu.kicad_sch", "Auxiliary conversion and pelvis inertial sensing", "Logical 5 V auxiliary rail and pelvis IMU boundary.")
+    s13.components = [
+        component(model, "AUXD1", "14.8 V TO 5.1 V AUXILIARY CONVERTER - SELECTION REQUIRED", [("LOG-IN", "INTERRUPTED INPUT", "ACT_14V8_SAFE", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-OUT", "AUXILIARY 5 V", "AUX_5V_SAFE", "right"), ("LOG-RET-OUT", "AUXILIARY RETURN", "AUX_0V", "right"), ("LOG-TLM", "CONVERTER TELEMETRY", "TLM_AUXD1", "right")], "Exact converter, protection, isolation/bonding, inrush, thermal and EMC evidence remain open.", (125, 115), width=96.0),
+        component(model, "IMU1", "PELVIS 6/9-AXIS IMU - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "AUX_5V_SAFE", "left"), ("LOG-RET", "RETURN", "AUX_0V", "left"), ("LOG-DATA", "DETERMINISTIC SENSOR DATA", "PELVIS_IMU_DATA", "right"), ("LOG-INT", "DATA READY / FAULT", "PELVIS_IMU_INT", "right")], "Exact device, range, bandwidth, timestamping, calibration, connector and physical pins remain open.", (315, 115), width=92.0),
+        component(model, "MCU_AUX", "MCU1 AUXILIARY SENSOR PORTS - LOGICAL UNIT", [("LOG-IMU", "PELVIS IMU DATA", "PELVIS_IMU_DATA", "left"), ("LOG-IMU-INT", "PELVIS IMU INTERRUPT", "PELVIS_IMU_INT", "left"), ("LOG-LFOOT", "LEFT FOOT SENSOR DATA", "L_FOOT_SENSOR_DATA", "right"), ("LOG-RFOOT", "RIGHT FOOT SENSOR DATA", "R_FOOT_SENSOR_DATA", "right")], "Alternate logical view of MCU1; exact package pins and interfaces remain open.", (220, 215), width=100.0),
+    ]
+    sheets.append(s13)
+
+    def foot_sheet(number, side):
+        prefix = "L" if side == "left" else "R"
+        sheet = model.Sheet(number, f"{number:02d}_{side}_foot_load_sensing.kicad_sch", f"{side.title()} foot four-point load sensing", "Four physical sole-sensor locations and one local acquisition boundary.")
+        signal_pins = []
+        positions = [(105, 95), (305, 95), (105, 205), (305, 205)]
+        for corner, position in zip(("FL", "FR", "RL", "RR"), positions):
+            signal_pins.extend([(f"LOG-{corner}-P", f"{corner} SIGNAL +", f"{prefix}_FOOT_{corner}_SIG_P", "left"), (f"LOG-{corner}-N", f"{corner} SIGNAL -", f"{prefix}_FOOT_{corner}_SIG_N", "left")])
+            sheet.components.append(component(model, f"LOAD_{prefix}_{corner}", f"{side.upper()} FOOT {corner} LOAD SENSOR - SELECTION REQUIRED", [("LOG-EXC-P", "EXCITATION +", f"{prefix}_FOOT_EXC_P", "left"), ("LOG-EXC-N", "EXCITATION -", f"{prefix}_FOOT_EXC_N", "left"), ("LOG-SIG-P", "SIGNAL +", f"{prefix}_FOOT_{corner}_SIG_P", "right"), ("LOG-SIG-N", "SIGNAL -", f"{prefix}_FOOT_{corner}_SIG_N", "right")], "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.", position, width=78.0))
+        sheet.components.append(component(model, f"ADC_{prefix}_FOOT", f"{side.upper()} FOOT LOAD ACQUISITION - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "AUX_5V_SAFE", "left"), ("LOG-RET", "RETURN", "AUX_0V", "left"), ("LOG-EXC-P", "EXCITATION +", f"{prefix}_FOOT_EXC_P", "right"), ("LOG-EXC-N", "EXCITATION -", f"{prefix}_FOOT_EXC_N", "right"), ("LOG-DATA", "UPSTREAM SENSOR DATA", f"{prefix}_FOOT_SENSOR_DATA", "right")] + signal_pins, "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.", (205, 280), width=112.0))
+        sheet.notes = ["The four sensor locations correspond to the physical installed-equipment register; no sensor order code or force accuracy is released.", "Foot data supports state estimation only after calibration and fault validation; it carries no independent safety credit."]
+        return sheet
+
+    sheets.append(foot_sheet(14, "left"))
+    sheets.append(foot_sheet(15, "right"))
+    if len(sheets) != 15:
+        raise SystemExit("controlled fifteen-child-sheet architecture drift")
     return sheets
 
 
@@ -363,14 +423,14 @@ def run_kicad():
 def write_docs(sheets):
     (ECAD / "README.md").write_text("# HR-30 whole-body electrical P0.1\n\n"
         f"**{WARNING}**\n\n"
-        "This is the native KiCad 10 whole-body architecture for the current 25-axis HR-30 candidate. It contains a root index plus twelve populated child sheets. Five RS-485 and three TTL actuator segments match the whole-body bus allocation exactly.\n\n"
+        "This is the native KiCad 10 whole-body architecture for the current 25-axis HR-30 candidate. It contains a root index plus fifteen populated child sheets. Five RS-485 and three TTL actuator segments match the whole-body bus allocation exactly; individual head HMI devices, pelvis IMU and bilateral four-point foot sensing are also represented.\n\n"
         "AX_* actuator terminals use current official ROBOTIS actuator-side pin numbers. All `LOG-*` terminal identifiers are functional ports, not physical connector or IC pin numbers. Controller/interface pins, exact devices, order codes, fuse/limiter values, conductors, connectors, grounding, shield treatment, safety allocation, stopping time and physical behavior remain unresolved. The historical mixed HR-V0/HR-30 project is not incorporated as verified wiring.\n\n"
         "## Sheets\n\n" + "\n".join(f"{s.number}. `{s.filename}` — {s.title}" for s in sheets) + "\n\n"
         "KiCad ERC checks encoded passive-pin connectivity and annotation only. It grants no functional-safety credit and no authority to order, fabricate, connect, power, move or energize the robot.\n",
         encoding="utf-8", newline="\n")
     status = {
-        "identifier": IDENTIFIER, "kicad_version": "10.0.5", "native_sheet_count": 13,
-        "child_sheet_count": 12, "axis_binding_count": 25, "actuator_bus_segment_count": 8,
+        "identifier": IDENTIFIER, "kicad_version": "10.0.5", "native_sheet_count": 16,
+        "child_sheet_count": 15, "axis_binding_count": 25, "actuator_bus_segment_count": 8,
         "rs485_segment_count": 5, "ttl_segment_count": 3,
         "native_kicad_parsed": True, "erc_errors": 0, "erc_warnings": 0,
         "logical_connectivity_reconciled": True, "actuator_side_physical_pin_mapping_reconciled": True,
@@ -381,6 +441,17 @@ def write_docs(sheets):
         "motion_authority": False, "energization_authority": False, "warning": WARNING,
     }
     (ECAD / "electrical-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
+    svg_files = sorted((ECAD / "output").glob("*.svg"), key=lambda path: (path.name != f"{PROJECT}.svg", path.name))
+    if len(svg_files) != 16:
+        raise SystemExit("interactive electrical guide requires root plus fifteen SVG exports")
+    panels = []
+    nav = []
+    for index, svg in enumerate(svg_files):
+        title = "Whole-project hierarchy" if svg.name == f"{PROJECT}.svg" else svg.stem.removeprefix(PROJECT + "-")
+        anchor = "sheet-" + ("root" if index == 0 else f"{index:02d}")
+        nav.append(f'<a href="#{anchor}">{html.escape(title)}</a>')
+        panels.append(f'''<details id="{anchor}"{' open' if index == 0 else ''}><summary>{html.escape(title)}</summary><div class="sheet"><object data="output/{html.escape(svg.name, quote=True)}" type="image/svg+xml" aria-label="{html.escape(title, quote=True)} electrical diagram"></object></div><p><a href="output/{html.escape(svg.name, quote=True)}">Open this SVG directly for pan and zoom</a></p></details>''')
+    (ECAD / "index.html").write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 interactive electrical guide P0.1</title><style>:root{{--ink:#061a36;--sky:#8ed8ff;--blue:#0a4b91;--gold:#f5bd2b;--paper:#f6fbff}}*{{box-sizing:border-box}}body{{margin:0;font:17px/1.55 system-ui,sans-serif;color:var(--ink);background:var(--paper)}}header,main{{max-width:1180px;margin:auto;padding:28px}}header{{max-width:none;background:var(--ink);color:white}}header>div{{max-width:1180px;margin:auto}}h1{{font-size:clamp(2rem,5vw,4rem);line-height:1.05}}.warning{{border:3px solid var(--gold);padding:14px;font-weight:900}}nav{{display:flex;flex-wrap:wrap;gap:10px}}nav a,details>p a{{display:inline-block;color:#064f91;font-weight:800}}nav a{{padding:9px 12px;background:white;border:2px solid var(--blue);border-radius:10px;text-decoration:none}}details{{margin:18px 0;background:white;border:2px solid var(--blue);border-radius:14px;overflow:hidden}}summary{{padding:16px 18px;font-size:18px;font-weight:850;cursor:pointer;background:#e4f6ff}}.sheet{{width:100%;height:clamp(520px,72vh,820px);overflow:auto;background:#fff}}object{{display:block;width:100%;height:100%;min-width:900px}}details>p{{margin:0;padding:12px 18px;border-top:1px solid #9ccfe8}}small{{font-size:14px}}@media(max-width:680px){{body{{font-size:16px}}header,main{{padding:20px 14px}}summary{{font-size:17px}}.sheet{{height:560px}}}}</style></head><body><header><div><p class="warning">{WARNING}</p><h1>Explore all 16 native KiCad sheets.</h1><p>The hierarchy and every populated child sheet are embedded below. Pan within a diagram or open its SVG directly for browser zoom.</p></div></header><main><nav>{''.join(nav)}</nav><section><h2>Connected logical architecture</h2><p>KiCad 10 ERC reports 0 errors and 0 warnings. That verifies encoded connectivity and annotation only. Physical controller pins, exact devices, protection, grounding, safety validation, and all connection or energization authority remain open.</p>{''.join(panels)}</section></main></body></html>''', encoding="utf-8", newline="\n")
     shutil.copy2(Path(__file__), ECAD / "native-kicad-source.py")
 
 
@@ -389,7 +460,7 @@ def update_package():
     status = json.loads(status_path.read_text(encoding="utf-8"))
     status.update({
         "native_hr30_kicad_present": True,
-        "native_hr30_kicad_sheet_count": 13,
+        "native_hr30_kicad_sheet_count": 16,
         "native_hr30_kicad_axis_binding_count": 25,
         "native_hr30_kicad_logical_connectivity_reconciled": True,
         "native_hr30_kicad_actuator_side_pins_reconciled": True,
@@ -403,7 +474,7 @@ def update_package():
     holds = read_csv(holds_path)
     for row in holds:
         if row["hold_id"] == "HR30-P01-H11":
-            row["unresolved_item"] = "A native 13-sheet HR-30 KiCad project now binds all 25 axes to five RS-485 and three TTL segments with zero ERC violations, and current ROBOTIS documentation closes actuator-side pins only. Controller/interface devices and pins, cable/breakout hardware, protection values, termination/bias/level shifting, data-only harness isolation, grounding, EMC, timing/latency, safety allocation and physical fault tests remain open."
+            row["unresolved_item"] = "A native 16-sheet HR-30 KiCad project now binds all 25 axes to five RS-485 and three TTL segments, separates the head HMI devices, and includes the pelvis IMU plus bilateral four-point foot sensing with zero ERC violations. Current ROBOTIS documentation closes actuator-side pins only. Controller/interface devices and pins, cable/breakout hardware, protection values, termination/bias/level shifting, data-only harness isolation, grounding, EMC, timing/latency, sensing calibration, safety allocation and physical fault tests remain open."
     with holds_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(holds[0]))
         writer.writeheader(); writer.writerows(holds)
@@ -413,7 +484,7 @@ def update_package():
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
     marker = '<section id="actuator-buses">'
-    section = f'''{start}<section id="native-electrical"><h2>The whole robot now has native KiCad source</h2><div class="grid"><article class="card pass"><h3>13 native sheets</h3><p>One hierarchy page and twelve populated child sheets cover energy, interruption, compute/control, eight bus interfaces, every actuator, and head sensing/HMI.</p></article><article class="card pass"><h3>25 axes connected</h3><p>All nineteen RS-485 and six TTL actuator candidates appear in the native netlist on their assigned whole-body segments.</p></article><article class="card pass"><h3>Actuator pins reconciled</h3><p>AX terminals now use current official ROBOTIS actuator-side pin numbers. Controller-side terminals remain logical and unselected.</p></article><article class="card hold"><h3>ERC: 0 / 0</h3><p>KiCad 10 reports zero errors and zero warnings for encoded connectivity. ERC is not a physical, safety, or energization approval.</p></article></div><div class="viewer"><object data="electrical/kicad/{PROJECT}/output/{PROJECT}.svg" type="image/svg+xml" aria-label="Interactive HR-30 native KiCad hierarchy diagram"></object><p>Open the hierarchy above, or download the <a href="electrical/kicad/{PROJECT}/{PROJECT}.kicad_pro">KiCad project</a>, <a href="electrical/kicad/{PROJECT}/connector-schedule.csv">terminal schedule</a>, <a href="electrical/kicad/{PROJECT}/net-schedule.csv">net schedule</a>, and <a href="electrical/kicad/{PROJECT}/validation/{PROJECT}-erc.rpt">complete ERC report</a>.</p></div></section>{end}'''
+    section = f'''{start}<section id="native-electrical"><h2>The whole robot now has native KiCad source</h2><div class="grid"><article class="card pass"><h3>16 native sheets</h3><p>One hierarchy page and fifteen populated child sheets cover energy, interruption, compute/control, every actuator bus, individual head HMI devices, pelvis IMU and both instrumented feet.</p></article><article class="card pass"><h3>25 axes connected</h3><p>All nineteen RS-485 and six TTL actuator candidates appear in the native netlist on their assigned whole-body segments.</p></article><article class="card pass"><h3>Whole-body sensing shown</h3><p>The face display, cameras, microphone, amplifier, speakers, fan, pelvis IMU and eight sole sensors have explicit logical terminals.</p></article><article class="card hold"><h3>ERC: 0 / 0</h3><p>KiCad 10 reports zero errors and zero warnings for encoded connectivity. ERC is not a physical, safety, or energization approval.</p></article></div><div class="viewer"><object data="electrical/kicad/{PROJECT}/output/{PROJECT}.svg" type="image/svg+xml" aria-label="Interactive HR-30 native KiCad hierarchy diagram"></object><p><a href="electrical/kicad/{PROJECT}/index.html">Open the interactive 16-sheet electrical guide</a>, or download the <a href="electrical/kicad/{PROJECT}/{PROJECT}.kicad_pro">KiCad project</a>, <a href="electrical/kicad/{PROJECT}/connector-schedule.csv">terminal schedule</a>, <a href="electrical/kicad/{PROJECT}/net-schedule.csv">net schedule</a>, and <a href="electrical/kicad/{PROJECT}/validation/{PROJECT}-erc.rpt">complete ERC report</a>.</p></div></section>{end}'''
     if marker not in page:
         raise SystemExit("actuator bus web marker missing")
     page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")
@@ -438,7 +509,7 @@ def main() -> int:
     write_docs(sheets)
     write_manifest()
     update_package()
-    print(json.dumps({"identifier": IDENTIFIER, "native_sheets": 13, "axes": 25, "segments": 8, "erc_errors": 0, "erc_warnings": 0, "physical_pin_mapping_reconciled": False}, indent=2))
+    print(json.dumps({"identifier": IDENTIFIER, "native_sheets": 16, "axes": 25, "segments": 8, "erc_errors": 0, "erc_warnings": 0, "physical_pin_mapping_reconciled": False}, indent=2))
     return 0
 
 

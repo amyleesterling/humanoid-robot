@@ -23,12 +23,12 @@
   </link>
   <link name="torso">
     <inertial>
-      <origin xyz="-0.000226 0.046128 0.101113" rpy="0 0 0" />
-      <mass value="2.303199" />
-      <inertia ixx="0.006933589" ixy="0" ixz="0" iyy="0.011539988" iyz="0" izz="0.009251184" />
+      <origin xyz="-0.000221 0.045385 0.100887" rpy="0 0 0" />
+      <mass value="2.351799" />
+      <inertia ixx="0.007079896" ixy="0" ixz="0" iyy="0.011783494" iyz="0" izz="0.009446394" />
     </inertial>
     <visual>
-      <origin xyz="-0.000226 0.046128 0.101113" rpy="0 0 0" />
+      <origin xyz="-0.000221 0.045385 0.100887" rpy="0 0 0" />
       <geometry>
         <box size="0.190000 0.110000 0.155000" />
       </geometry>
@@ -37,7 +37,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.000226 0.046128 0.101113" rpy="0 0 0" />
+      <origin xyz="-0.000221 0.045385 0.100887" rpy="0 0 0" />
       <geometry>
         <box size="0.190000 0.110000 0.155000" />
       </geometry>

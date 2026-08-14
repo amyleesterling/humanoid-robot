@@ -129,7 +129,7 @@ def main() -> int:
     def equipment_assembly(row: dict) -> str:
         module = row["module"]
         if module == "T01": return "HN-E01" if any(word in row["role"].lower() for word in ("battery", "power", "disconnect", "contactor", "converter")) else "HN-C01"
-        return {"P01":"HN-P01","N01":"HN-NH01","H01":"HN-NH01","A01":"HN-A01","G01":"HN-G01","A02":"HN-A02","G02":"HN-G02","L01":"HN-L01","F01":"HN-F01","L02":"HN-L02","F02":"HN-F02","HN01":"HN-X01"}.get(module, "HN-X01")
+        return {"C01":"HN-C01","S01":"HN-S01","P01":"HN-P01","N01":"HN-NH01","H01":"HN-NH01","A01":"HN-A01","G01":"HN-G01","A02":"HN-A02","G02":"HN-G02","L01":"HN-L01","F01":"HN-F01","L02":"HN-L02","F02":"HN-F02","HN01":"HN-X01"}.get(module, "HN-X01")
     equipment_rows = [{"item_id": row["item_id"], "module": row["module"], "harness_assembly": equipment_assembly(row), "role": row["role"], "candidate": row["candidate"], "declared_connector_boundary": row["connector_boundary"], "operating_power_w": row["operating_power_w"], "dynamic_link": row["dynamic_link"], "physical_connector_and_contacts": "SELECTION REQUIRED", "power_net_and_protection": "SELECTION REQUIRED", "data_net_and_interface": "SELECTION REQUIRED", "route_and_retention": "SELECTION REQUIRED", "completeness_state": "EQUIPMENT ACCOUNTED FOR - PHYSICAL HARNESS DEFINITION OPEN"} for row in equipment]
     write_csv(OUT / "equipment-interface-register.csv", equipment_rows)
 
@@ -168,7 +168,7 @@ def main() -> int:
 
 This package turns the 25-axis electrical allocation into eight explicit protected bus branches, 25 actuator drops, 33 connector boundaries, 14 controlled harness assemblies and 12 located full-body corridors. It also accounts for every installed equipment item and every current KiCad logical terminal so the missing physical definitions are visible rather than silently omitted. Current official ROBOTIS documentation closes the actuator-side pin order and listed JST parts only. Controller connectors, cable assemblies, conductor sizing, protection, termination, shielding, retention, flex life and physical validation remain **SELECTION REQUIRED**.
 
-The 76.08 A figure is only the arithmetic sum of published 12 V momentary stall-current endpoints. It is not expected operating current and must not be used as a fuse, conductor, connector or source rating. A U2D2 Power Hub is limited to 10 A aggregate and is rejected for whole-body or leg power aggregation. U2D2 is retained only as a single-segment commissioning candidate, not the final eight-segment controller.
+The 76.08 A figure is only the arithmetic sum of published 12 V momentary stall-current endpoints. It is not expected operating current and must not be used as a fuse, conductor, connector or source rating. A U2D2 Power Hub is limited to 10 A aggregate and is rejected for whole-body or leg power aggregation. U2D2 is retained only as an external single-segment commissioning candidate. The installed geometry instead reserves two four-channel carriers for eight simultaneous independent interfaces; their circuits and connectors remain **SELECTION REQUIRED**.
 
 The controller boundary must not connect one protected segment's VDD to another. Standard ROBOTIS X3P/X4P cable families include VDD; exact breakout/cable construction and no-backfeed verification remain open.
 """, encoding="utf-8", newline="\n")

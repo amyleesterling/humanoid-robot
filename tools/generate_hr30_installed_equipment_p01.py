@@ -128,15 +128,18 @@ def build() -> list[Equipment]:
         "https://www.raspberrypi.com/products/raspberry-pi-pico/", "live official product page; accessed 2026-08-14",
         "diagnostic only; cannot be credited as a safety function", "torso", safety)
 
-    for index, (x, z, branch) in enumerate(((-49, 494, "left leg"), (-49, 560, "right leg"),
-                                             (49, 494, "left arm/head"), (49, 560, "right arm"),
-                                             (0, 574, "service/commissioning")), start=1):
-        add(f"EQ-T01-U2D2-{index}", "C01", "RS-485 interface", f"ROBOTIS U2D2 902-0132-000; {branch} candidate",
-            box(48, 14.6, 18, (x, 11, z), 1.5), 0.009, 0.35, 0.35,
+    for suffix, x, buses in (
+        ("A", -48, "RS-LLEG | RS-RLEG | RS-LARM | RS-RARM"),
+        ("B", 48, "RS-WAIST | TTL-LDIST | TTL-RDIST | TTL-HEAD"),
+    ):
+        add(f"EQ-T01-BUS-CARRIER-{suffix}", "C01", "four-channel actuator-bus interface carrier",
+            f"custom isolated/protected four-channel carrier reservation; {buses}; exact schematic/devices/connectors SELECTION REQUIRED",
+            box(82, 14, 42, (x, 11, 526), 2), 0.045, 1.5, 1.2,
             "torso rear electronics tray", "+Y rear-cover withdrawal",
-            "USB-C host plus JST 4-pin RS-485; U2D2 does not carry actuator power",
-            "https://www.robotis.us/u2d2/", "live official product page; accessed 2026-08-14",
-            "48 x 18 x 14.6 mm and 9 g verified from current manufacturer page", "torso", control)
+            "four independent controller-side channels; no inter-segment VDD path permitted; exact pinout open",
+            "SELECTION REQUIRED", "SELECTION REQUIRED",
+            "planning envelope/mass/power only; U2D2 remains an external single-segment commissioning tool, not installed whole-body hardware",
+            "torso", control)
 
     # Pelvis tether-first power hardware. The offboard current-limited source and
     # safety relay remain outside the robot; the robot carries the inlet,

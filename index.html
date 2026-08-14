@@ -57,7 +57,7 @@
     <section class="grid" aria-label="Whole-body package metrics">
       <article class="card pass"><div class="metric">762 mm</div><p>Exact candidate floor-to-shell-top geometry.</p></article>
       <article class="card pass"><div class="metric">25 DOF</div><p>Head, waist, arms, hands, hips, knees and ankles.</p></article>
-      <article class="card hold"><div class="metric">11.652 kg</div><p>Reconciled planning-model mass—not a measured as-built mass.</p></article>
+      <article class="card hold"><div class="metric">11.701 kg</div><p>Reconciled planning-model mass—not a measured as-built mass.</p></article>
       <article class="card hold"><div class="metric">0</div><p>Fabrication, motion, safety or energization approvals.</p></article>
     </section>
 
@@ -75,6 +75,8 @@
         <article class="card pass"><h3>Physical architecture</h3><p>A recognizable head, articulated neck, torso, pelvis, two complete arms, two broad two-finger grippers, two six-axis legs, ankles and feet.</p></article>
         <article class="card pass"><h3>Floating-base simulation</h3><p>URDF and MJCF implement the same 25-axis schedule without anchoring the pelvis to the world, using provisional geometry, limits, mass and inertia.</p></article>
         <article class="card pass"><h3>Embodied-agent boundary</h3><p>OpenAI may produce expiring structured behavior requests. Deterministic local software and independent hardware retain motion and permit decisions.</p></article>
+        <article class="card pass"><h3>Native whole-body electrical</h3><p>Sixteen KiCad sheets cover all 25 actuators, the head HMI, pelvis IMU and eight foot sensors. KiCad ERC is 0 errors / 0 warnings for logical connectivity.</p></article>
+        <article class="card pass"><h3>Eight simultaneous interfaces</h3><p>Two visible four-channel carrier reservations replace the five U2D2 placeholders. Exact circuits and connectors remain selection work.</p></article>
         <article class="card hold"><h3>Walking development</h3><p>Suspended characterization, restrained standing, weight transfer, capture steps and tethered walking remain separate physical gates.</p></article>
       </div>
     </section>
@@ -89,6 +91,10 @@
           <li><a href="hr30/whole-body-p0.1/whole-body-source.py">Editable CadQuery source</a></li>
           <li><a href="hr30/whole-body-p0.1/joint-axis-schedule.csv">Degree-of-freedom schedule</a></li>
           <li><a href="hr30/whole-body-p0.1/actuator-transmission-allocation.csv">Actuator allocation</a></li>
+          <li><a href="hr30/whole-body-p0.1/electrical/kicad/hr30-whole-body-electrical-p0.1/index.html">Interactive 16-sheet electrical guide</a></li>
+          <li><a href="hr30/whole-body-p0.1/electrical/kicad/hr30-whole-body-electrical-p0.1/hr30-whole-body-electrical-p0.1.kicad_pro">Native KiCad project</a></li>
+          <li><a href="hr30/whole-body-p0.1/harness/index.html">Interactive whole-body harness guide</a></li>
+          <li><a href="hr30/whole-body-p0.1/installed-equipment-register.csv">Installed-equipment register</a></li>
           <li><a href="hr30/whole-body-p0.1/joint-family-cad/index.html">Serviceable joint-family CAD guide</a></li>
           <li><a href="hr30/whole-body-p0.1/manufacturing-files/index.html">Individual manufacturing-candidate files</a></li>
           <li><a href="hr30/whole-body-p0.1/hr30.urdf">URDF</a></li>

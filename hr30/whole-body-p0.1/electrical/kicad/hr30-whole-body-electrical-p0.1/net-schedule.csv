@@ -1,8 +1,10 @@
 net,connection_count,connections
 ACTION_REQUEST_AUTH,2,03_compute_motion_watchdog.kicad_sch:CPU1:LOG-ACTION | 03_compute_motion_watchdog.kicad_sch:MCU1:LOG-ACTION
-ACT_0V_CONTROLLED,11,01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-RET-IN | 01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-RET-OUT | 01_energy_precharge_conversion.kicad_sch:RET1:LOG-ACT | 05_left_leg_rs485.kicad_sch:PBR_RS_LLEG:LOG-RET-IN | 06_right_leg_rs485.kicad_sch:PBR_RS_RLEG:LOG-RET-IN | 07_left_arm_rs485.kicad_sch:PBR_RS_LARM:LOG-RET-IN | 08_right_arm_rs485.kicad_sch:PBR_RS_RARM:LOG-RET-IN | 09_waist_rs485.kicad_sch:PBR_RS_WAIST:LOG-RET-IN | 10_left_distal_ttl.kicad_sch:PBR_TTL_LDIST:LOG-RET-IN | 11_right_distal_ttl.kicad_sch:PBR_TTL_RDIST:LOG-RET-IN | 12_head_ttl_sensors_hmi.kicad_sch:PBR_TTL_HEAD:LOG-RET-IN
+ACT_0V_CONTROLLED,12,01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-RET-IN | 01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-RET-OUT | 01_energy_precharge_conversion.kicad_sch:RET1:LOG-ACT | 05_left_leg_rs485.kicad_sch:PBR_RS_LLEG:LOG-RET-IN | 06_right_leg_rs485.kicad_sch:PBR_RS_RLEG:LOG-RET-IN | 07_left_arm_rs485.kicad_sch:PBR_RS_LARM:LOG-RET-IN | 08_right_arm_rs485.kicad_sch:PBR_RS_RARM:LOG-RET-IN | 09_waist_rs485.kicad_sch:PBR_RS_WAIST:LOG-RET-IN | 10_left_distal_ttl.kicad_sch:PBR_TTL_LDIST:LOG-RET-IN | 11_right_distal_ttl.kicad_sch:PBR_TTL_RDIST:LOG-RET-IN | 12_head_ttl_sensors_hmi.kicad_sch:PBR_TTL_HEAD:LOG-RET-IN | 13_pelvis_aux_imu.kicad_sch:AUXD1:LOG-RET-IN
 ACT_12V_SAFE,4,01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-OUT | 10_left_distal_ttl.kicad_sch:PBR_TTL_LDIST:LOG-IN | 11_right_distal_ttl.kicad_sch:PBR_TTL_RDIST:LOG-IN | 12_head_ttl_sensors_hmi.kicad_sch:PBR_TTL_HEAD:LOG-IN
-ACT_14V8_SAFE,7,01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-IN | 02_estop_permit_contactors.kicad_sch:K2:LOG-MOUT | 05_left_leg_rs485.kicad_sch:PBR_RS_LLEG:LOG-IN | 06_right_leg_rs485.kicad_sch:PBR_RS_RLEG:LOG-IN | 07_left_arm_rs485.kicad_sch:PBR_RS_LARM:LOG-IN | 08_right_arm_rs485.kicad_sch:PBR_RS_RARM:LOG-IN | 09_waist_rs485.kicad_sch:PBR_RS_WAIST:LOG-IN
+ACT_14V8_SAFE,8,01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-IN | 02_estop_permit_contactors.kicad_sch:K2:LOG-MOUT | 05_left_leg_rs485.kicad_sch:PBR_RS_LLEG:LOG-IN | 06_right_leg_rs485.kicad_sch:PBR_RS_RLEG:LOG-IN | 07_left_arm_rs485.kicad_sch:PBR_RS_LARM:LOG-IN | 08_right_arm_rs485.kicad_sch:PBR_RS_RARM:LOG-IN | 09_waist_rs485.kicad_sch:PBR_RS_WAIST:LOG-IN | 13_pelvis_aux_imu.kicad_sch:AUXD1:LOG-IN
+AUX_0V,5,12_head_ttl_sensors_hmi.kicad_sch:HPWR1:LOG-RET-IN | 13_pelvis_aux_imu.kicad_sch:AUXD1:LOG-RET-OUT | 13_pelvis_aux_imu.kicad_sch:IMU1:LOG-RET | 14_left_foot_load_sensing.kicad_sch:ADC_L_FOOT:LOG-RET | 15_right_foot_load_sensing.kicad_sch:ADC_R_FOOT:LOG-RET
+AUX_5V_SAFE,5,12_head_ttl_sensors_hmi.kicad_sch:HPWR1:LOG-IN | 13_pelvis_aux_imu.kicad_sch:AUXD1:LOG-OUT | 13_pelvis_aux_imu.kicad_sch:IMU1:LOG-5V | 14_left_foot_load_sensing.kicad_sch:ADC_L_FOOT:LOG-5V | 15_right_foot_load_sensing.kicad_sch:ADC_R_FOOT:LOG-5V
 BATT_0V_RAW,2,01_energy_precharge_conversion.kicad_sch:BATT1:LOG-NEG | 01_energy_precharge_conversion.kicad_sch:RET1:LOG-BATT
 BATT_POS_RAW,2,01_energy_precharge_conversion.kicad_sch:BATT1:LOG-POS | 01_energy_precharge_conversion.kicad_sch:SD1:LOG-IN
 CHARGER_INTERLOCK,2,01_energy_precharge_conversion.kicad_sch:CHG1:LOG-INT | 02_estop_permit_contactors.kicad_sch:SR1:LOG-CHG
@@ -17,9 +19,31 @@ ESTOP_CH2_FEED,2,02_estop_permit_contactors.kicad_sch:S0:LOG-C2F | 02_estop_perm
 ESTOP_CH2_RETURN,2,02_estop_permit_contactors.kicad_sch:S0:LOG-C2R | 02_estop_permit_contactors.kicad_sch:SR1:LOG-C2R
 EXTERNAL_NETWORK,1,03_compute_motion_watchdog.kicad_sch:CPU1:LOG-NET
 FRAME_PE_BOUNDARY,1,01_energy_precharge_conversion.kicad_sch:RET1:LOG-PE
-HMI_SENSOR_IPC,4,03_compute_motion_watchdog.kicad_sch:CPU1:LOG-AUDIO | 12_head_ttl_sensors_hmi.kicad_sch:CAM1:LOG-IPC | 12_head_ttl_sensors_hmi.kicad_sch:CAM2:LOG-IPC | 12_head_ttl_sensors_hmi.kicad_sch:HMI1:LOG-IPC
+HEAD_0V,7,12_head_ttl_sensors_hmi.kicad_sch:HPWR1:LOG-RET-OUT | 12_head_ttl_sensors_hmi.kicad_sch:CAM1:LOG-RET | 12_head_ttl_sensors_hmi.kicad_sch:CAM2:LOG-RET | 12_head_ttl_sensors_hmi.kicad_sch:DISP1:LOG-RET | 12_head_ttl_sensors_hmi.kicad_sch:MIC1:LOG-RET | 12_head_ttl_sensors_hmi.kicad_sch:AMP1:LOG-RET | 12_head_ttl_sensors_hmi.kicad_sch:FAN1:LOG-RET
+HEAD_5V,7,12_head_ttl_sensors_hmi.kicad_sch:HPWR1:LOG-OUT | 12_head_ttl_sensors_hmi.kicad_sch:CAM1:LOG-5V | 12_head_ttl_sensors_hmi.kicad_sch:CAM2:LOG-5V | 12_head_ttl_sensors_hmi.kicad_sch:DISP1:LOG-5V | 12_head_ttl_sensors_hmi.kicad_sch:MIC1:LOG-5V | 12_head_ttl_sensors_hmi.kicad_sch:AMP1:LOG-5V | 12_head_ttl_sensors_hmi.kicad_sch:FAN1:LOG-5V
+HEAD_AUDIO_IPC,2,03_compute_motion_watchdog.kicad_sch:CPU1:LOG-AUDIO | 12_head_ttl_sensors_hmi.kicad_sch:AMP1:LOG-IN
+HEAD_CAM_L_IPC,2,03_compute_motion_watchdog.kicad_sch:CPU1:LOG-CAM-L | 12_head_ttl_sensors_hmi.kicad_sch:CAM1:LOG-IPC
+HEAD_CAM_R_IPC,2,03_compute_motion_watchdog.kicad_sch:CPU1:LOG-CAM-R | 12_head_ttl_sensors_hmi.kicad_sch:CAM2:LOG-IPC
+HEAD_DISPLAY_IPC,2,03_compute_motion_watchdog.kicad_sch:CPU1:LOG-DISPLAY | 12_head_ttl_sensors_hmi.kicad_sch:DISP1:LOG-IPC
+HEAD_FAN_PWM,2,03_compute_motion_watchdog.kicad_sch:CPU1:LOG-FAN-PWM | 12_head_ttl_sensors_hmi.kicad_sch:FAN1:LOG-PWM
+HEAD_FAN_TACH,2,03_compute_motion_watchdog.kicad_sch:CPU1:LOG-FAN-TACH | 12_head_ttl_sensors_hmi.kicad_sch:FAN1:LOG-TACH
+HEAD_MIC_IPC,2,03_compute_motion_watchdog.kicad_sch:CPU1:LOG-MIC | 12_head_ttl_sensors_hmi.kicad_sch:MIC1:LOG-IPC
+HEAD_TOUCH_IPC,2,03_compute_motion_watchdog.kicad_sch:CPU1:LOG-TOUCH | 12_head_ttl_sensors_hmi.kicad_sch:DISP1:LOG-TOUCH
 K1_POS_OUT,2,02_estop_permit_contactors.kicad_sch:K1:LOG-MOUT | 02_estop_permit_contactors.kicad_sch:K2:LOG-MIN
+L_FOOT_EXC_N,5,14_left_foot_load_sensing.kicad_sch:LOAD_L_FL:LOG-EXC-N | 14_left_foot_load_sensing.kicad_sch:LOAD_L_FR:LOG-EXC-N | 14_left_foot_load_sensing.kicad_sch:LOAD_L_RL:LOG-EXC-N | 14_left_foot_load_sensing.kicad_sch:LOAD_L_RR:LOG-EXC-N | 14_left_foot_load_sensing.kicad_sch:ADC_L_FOOT:LOG-EXC-N
+L_FOOT_EXC_P,5,14_left_foot_load_sensing.kicad_sch:LOAD_L_FL:LOG-EXC-P | 14_left_foot_load_sensing.kicad_sch:LOAD_L_FR:LOG-EXC-P | 14_left_foot_load_sensing.kicad_sch:LOAD_L_RL:LOG-EXC-P | 14_left_foot_load_sensing.kicad_sch:LOAD_L_RR:LOG-EXC-P | 14_left_foot_load_sensing.kicad_sch:ADC_L_FOOT:LOG-EXC-P
+L_FOOT_FL_SIG_N,2,14_left_foot_load_sensing.kicad_sch:LOAD_L_FL:LOG-SIG-N | 14_left_foot_load_sensing.kicad_sch:ADC_L_FOOT:LOG-FL-N
+L_FOOT_FL_SIG_P,2,14_left_foot_load_sensing.kicad_sch:LOAD_L_FL:LOG-SIG-P | 14_left_foot_load_sensing.kicad_sch:ADC_L_FOOT:LOG-FL-P
+L_FOOT_FR_SIG_N,2,14_left_foot_load_sensing.kicad_sch:LOAD_L_FR:LOG-SIG-N | 14_left_foot_load_sensing.kicad_sch:ADC_L_FOOT:LOG-FR-N
+L_FOOT_FR_SIG_P,2,14_left_foot_load_sensing.kicad_sch:LOAD_L_FR:LOG-SIG-P | 14_left_foot_load_sensing.kicad_sch:ADC_L_FOOT:LOG-FR-P
+L_FOOT_RL_SIG_N,2,14_left_foot_load_sensing.kicad_sch:LOAD_L_RL:LOG-SIG-N | 14_left_foot_load_sensing.kicad_sch:ADC_L_FOOT:LOG-RL-N
+L_FOOT_RL_SIG_P,2,14_left_foot_load_sensing.kicad_sch:LOAD_L_RL:LOG-SIG-P | 14_left_foot_load_sensing.kicad_sch:ADC_L_FOOT:LOG-RL-P
+L_FOOT_RR_SIG_N,2,14_left_foot_load_sensing.kicad_sch:LOAD_L_RR:LOG-SIG-N | 14_left_foot_load_sensing.kicad_sch:ADC_L_FOOT:LOG-RR-N
+L_FOOT_RR_SIG_P,2,14_left_foot_load_sensing.kicad_sch:LOAD_L_RR:LOG-SIG-P | 14_left_foot_load_sensing.kicad_sch:ADC_L_FOOT:LOG-RR-P
+L_FOOT_SENSOR_DATA,2,13_pelvis_aux_imu.kicad_sch:MCU_AUX:LOG-LFOOT | 14_left_foot_load_sensing.kicad_sch:ADC_L_FOOT:LOG-DATA
 MOTION_WD_HEARTBEAT,2,03_compute_motion_watchdog.kicad_sch:MCU1:LOG-WD | 03_compute_motion_watchdog.kicad_sch:WD1:LOG-HB
+PELVIS_IMU_DATA,2,13_pelvis_aux_imu.kicad_sch:IMU1:LOG-DATA | 13_pelvis_aux_imu.kicad_sch:MCU_AUX:LOG-IMU
+PELVIS_IMU_INT,2,13_pelvis_aux_imu.kicad_sch:IMU1:LOG-INT | 13_pelvis_aux_imu.kicad_sch:MCU_AUX:LOG-IMU-INT
 PRECHARGE_REQUEST,2,01_energy_precharge_conversion.kicad_sch:PRE1:LOG-CMD | 03_compute_motion_watchdog.kicad_sch:MCU1:LOG-PREQ
 PRECHARGE_STATUS,2,01_energy_precharge_conversion.kicad_sch:PRE1:LOG-OK | 03_compute_motion_watchdog.kicad_sch:MCU1:LOG-PSTAT
 RESET_FEED,2,02_estop_permit_contactors.kicad_sch:S1:LOG-FEED | 02_estop_permit_contactors.kicad_sch:SR1:LOG-RF
@@ -44,8 +68,24 @@ RS-WAIST_DN,3,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_WAIST:LOG-DN | 09
 RS-WAIST_DP,3,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_WAIST:LOG-DP | 09_waist_rs485.kicad_sch:PORT_RS_WAIST:LOG-DP | 09_waist_rs485.kicad_sch:AX_WAIST_YAW:3
 RS-WAIST_RET,4,04_eight_actuator_bus_interfaces.kicad_sch:IF_RS_WAIST:LOG-REF | 09_waist_rs485.kicad_sch:PORT_RS_WAIST:LOG-RET | 09_waist_rs485.kicad_sch:PBR_RS_WAIST:LOG-RET-OUT | 09_waist_rs485.kicad_sch:AX_WAIST_YAW:1
 RS-WAIST_VDD,2,09_waist_rs485.kicad_sch:PBR_RS_WAIST:LOG-OUT | 09_waist_rs485.kicad_sch:AX_WAIST_YAW:2
+R_FOOT_EXC_N,5,15_right_foot_load_sensing.kicad_sch:LOAD_R_FL:LOG-EXC-N | 15_right_foot_load_sensing.kicad_sch:LOAD_R_FR:LOG-EXC-N | 15_right_foot_load_sensing.kicad_sch:LOAD_R_RL:LOG-EXC-N | 15_right_foot_load_sensing.kicad_sch:LOAD_R_RR:LOG-EXC-N | 15_right_foot_load_sensing.kicad_sch:ADC_R_FOOT:LOG-EXC-N
+R_FOOT_EXC_P,5,15_right_foot_load_sensing.kicad_sch:LOAD_R_FL:LOG-EXC-P | 15_right_foot_load_sensing.kicad_sch:LOAD_R_FR:LOG-EXC-P | 15_right_foot_load_sensing.kicad_sch:LOAD_R_RL:LOG-EXC-P | 15_right_foot_load_sensing.kicad_sch:LOAD_R_RR:LOG-EXC-P | 15_right_foot_load_sensing.kicad_sch:ADC_R_FOOT:LOG-EXC-P
+R_FOOT_FL_SIG_N,2,15_right_foot_load_sensing.kicad_sch:LOAD_R_FL:LOG-SIG-N | 15_right_foot_load_sensing.kicad_sch:ADC_R_FOOT:LOG-FL-N
+R_FOOT_FL_SIG_P,2,15_right_foot_load_sensing.kicad_sch:LOAD_R_FL:LOG-SIG-P | 15_right_foot_load_sensing.kicad_sch:ADC_R_FOOT:LOG-FL-P
+R_FOOT_FR_SIG_N,2,15_right_foot_load_sensing.kicad_sch:LOAD_R_FR:LOG-SIG-N | 15_right_foot_load_sensing.kicad_sch:ADC_R_FOOT:LOG-FR-N
+R_FOOT_FR_SIG_P,2,15_right_foot_load_sensing.kicad_sch:LOAD_R_FR:LOG-SIG-P | 15_right_foot_load_sensing.kicad_sch:ADC_R_FOOT:LOG-FR-P
+R_FOOT_RL_SIG_N,2,15_right_foot_load_sensing.kicad_sch:LOAD_R_RL:LOG-SIG-N | 15_right_foot_load_sensing.kicad_sch:ADC_R_FOOT:LOG-RL-N
+R_FOOT_RL_SIG_P,2,15_right_foot_load_sensing.kicad_sch:LOAD_R_RL:LOG-SIG-P | 15_right_foot_load_sensing.kicad_sch:ADC_R_FOOT:LOG-RL-P
+R_FOOT_RR_SIG_N,2,15_right_foot_load_sensing.kicad_sch:LOAD_R_RR:LOG-SIG-N | 15_right_foot_load_sensing.kicad_sch:ADC_R_FOOT:LOG-RR-N
+R_FOOT_RR_SIG_P,2,15_right_foot_load_sensing.kicad_sch:LOAD_R_RR:LOG-SIG-P | 15_right_foot_load_sensing.kicad_sch:ADC_R_FOOT:LOG-RR-P
+R_FOOT_SENSOR_DATA,2,13_pelvis_aux_imu.kicad_sch:MCU_AUX:LOG-RFOOT | 15_right_foot_load_sensing.kicad_sch:ADC_R_FOOT:LOG-DATA
 SAFETY_PERMIT_HARDWIRED,5,01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-EN | 02_estop_permit_contactors.kicad_sch:SR1:LOG-PERMIT | 02_estop_permit_contactors.kicad_sch:K1:LOG-COIL | 02_estop_permit_contactors.kicad_sch:K2:LOG-COIL | 03_compute_motion_watchdog.kicad_sch:MCU1:LOG-PERMIT
 SD_POS_OUT,2,01_energy_precharge_conversion.kicad_sch:SD1:LOG-OUT | 01_energy_precharge_conversion.kicad_sch:PRE1:LOG-IN
+SPK_L_NEG,2,12_head_ttl_sensors_hmi.kicad_sch:AMP1:LOG-LN | 12_head_ttl_sensors_hmi.kicad_sch:SPK1:LOG-N
+SPK_L_POS,2,12_head_ttl_sensors_hmi.kicad_sch:AMP1:LOG-LP | 12_head_ttl_sensors_hmi.kicad_sch:SPK1:LOG-P
+SPK_R_NEG,2,12_head_ttl_sensors_hmi.kicad_sch:AMP1:LOG-RN | 12_head_ttl_sensors_hmi.kicad_sch:SPK2:LOG-N
+SPK_R_POS,2,12_head_ttl_sensors_hmi.kicad_sch:AMP1:LOG-RP | 12_head_ttl_sensors_hmi.kicad_sch:SPK2:LOG-P
+TLM_AUXD1,1,13_pelvis_aux_imu.kicad_sch:AUXD1:LOG-TLM
 TLM_BMS_STATUS,1,01_energy_precharge_conversion.kicad_sch:BATT1:LOG-BMS
 TLM_DCDC12,1,01_energy_precharge_conversion.kicad_sch:DCDC1:LOG-TLM
 TLM_PACK_TEMP,1,01_energy_precharge_conversion.kicad_sch:BATT1:LOG-TEMP

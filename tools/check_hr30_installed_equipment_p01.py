@@ -24,7 +24,7 @@ def main() -> int:
     rows = list(csv.DictReader((OUT / "installed-equipment-register.csv").open(encoding="utf-8")))
     sources = list(csv.DictReader((OUT / "installed-equipment-source-register.csv").open(encoding="utf-8")))
     battery = list(csv.DictReader((OUT / "battery-energy-source-register.csv").open(encoding="utf-8")))
-    assert status["installed_item_count"] == len(rows) == 57
+    assert status["installed_item_count"] == len(rows) == 54
     assert status["empty_component_bays_replaced"] is True
     assert status["tether_first_configuration"] is False
     assert status["tether_development_interface_retained"] is True
@@ -35,18 +35,19 @@ def main() -> int:
     assert abs(sum(float(row["planning_mass_kg"]) for row in rows) - status["planning_installed_mass_kg"]) < 1e-5
     ids = {row["item_id"] for row in rows}
     required = {
-        "EQ-T01-PI5", "EQ-T01-MOTION", "EQ-T01-WATCHDOG", "EQ-P01-TETHER-INLET",
+        "EQ-T01-PI5", "EQ-T01-MOTION", "EQ-T01-WATCHDOG", "EQ-T01-BUS-CARRIER-A", "EQ-T01-BUS-CARRIER-B", "EQ-P01-TETHER-INLET",
         "EQ-P01-DUAL-INTERRUPT", "EQ-P01-PDU", "EQ-P01-IMU", "EQ-H01-DISPLAY",
         "EQ-H01-CAMERA-L", "EQ-H01-CAMERA-R", "EQ-H01-MIC-ARRAY",
         "EQ-H01-SPEAKER-L", "EQ-H01-SPEAKER-R", "EQ-F01-SOLE", "EQ-F02-SOLE",
         "EQ-T01-BATTERY-PACK", "EQ-T01-BATTERY-CASSETTE", "EQ-T01-BATTERY-PROTECTION",
     }
     assert required <= ids
-    assert sum(item.startswith("EQ-T01-U2D2-") for item in ids) == 5
+    assert not any(item.startswith("EQ-T01-U2D2-") for item in ids)
+    assert sum(item.startswith("EQ-T01-BUS-CARRIER-") for item in ids) == 2
     assert sum("LOAD-" in item for item in ids) == 8
     assert sum(item.startswith("EQ-HN01_") for item in ids) == 12
     assert any("raspberrypi.com" in row["manufacturer_source_url"] for row in sources)
-    assert any("robotis.us" in row["manufacturer_source_url"] for row in sources)
+    assert not any("u2d2" in row["manufacturer_source_url"].lower() for row in sources)
     assert any("waveshare.com" in row["manufacturer_source_url"] for row in sources)
     assert any("grepow.com" in row["manufacturer_source_url"] for row in sources)
     assert len(battery) == 1 and battery[0]["model"] == "TAA12K4S30EC5"

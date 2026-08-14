@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\kicad\\hr30-whole-body-electrical-p0.1\\hr30-whole-body-electrical-p0.1.kicad_sch")
-		(date "2026-08-14T11:53:40")
+		(date "2026-08-14T13:05:37")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR CONNECTION, FABRICATION, MOTION OR ENERGIZATION")
@@ -24,7 +24,7 @@
 				)
 				(comment
 					(number "2")
-					(value "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE")
+					(value "WHOLE-BODY LOGICAL ARCHITECTURE - PHYSICAL SELECTIONS OPEN")
 				)
 				(comment
 					(number "3")
@@ -586,7 +586,7 @@
 		)
 		(sheet
 			(number "13")
-			(name "/12 Head TTL, sensing, display and audio/")
+			(name "/12 Head TTL, cameras, face display, audio and cooling/")
 			(tstamps "/2c0d00f0-93a8-543c-ac01-83696100d78d/")
 			(title_block
 				(title "PB HR-V0 P0.1 - 12")
@@ -594,6 +594,150 @@
 				(rev "P0.1")
 				(date "2026-08-14")
 				(source "12_head_ttl_sensors_hmi.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR CONNECTION, FABRICATION, MOTION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "14")
+			(name "/13 Auxiliary conversion and pelvis inertial sensing/")
+			(tstamps "/1c3e6e34-064e-5219-9bbb-9d8995eff962/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 13")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-14")
+				(source "13_pelvis_aux_imu.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR CONNECTION, FABRICATION, MOTION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "15")
+			(name "/14 Left foot four-point load sensing/")
+			(tstamps "/3e5af505-48ea-5235-a253-93b8b18c5f02/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 14")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-14")
+				(source "14_left_foot_load_sensing.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR CONNECTION, FABRICATION, MOTION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "16")
+			(name "/15 Right foot four-point load sensing/")
+			(tstamps "/d9281565-aaf2-5ee4-aeb6-5e7f49a688a7/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 15")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-14")
+				(source "15_right_foot_load_sensing.kicad_sch")
 				(comment
 					(number "1")
 					(value "PRELIMINARY - NOT APPROVED FOR CONNECTION, FABRICATION, MOTION OR ENERGIZATION")
@@ -1477,10 +1621,31 @@
 					(name "A")
 					(pins
 						(pin
+							(num "LOG-FAN-TACH")
+						)
+						(pin
 							(num "LOG-NET")
 						)
 						(pin
+							(num "LOG-FAN-PWM")
+						)
+						(pin
 							(num "LOG-AUDIO")
+						)
+						(pin
+							(num "LOG-MIC")
+						)
+						(pin
+							(num "LOG-TOUCH")
+						)
+						(pin
+							(num "LOG-DISPLAY")
+						)
+						(pin
+							(num "LOG-CAM-R")
+						)
+						(pin
+							(num "LOG-CAM-L")
 						)
 						(pin
 							(num "LOG-ACTION")
@@ -5366,6 +5531,86 @@
 			)
 		)
 		(comp
+			(ref "AMP1")
+			(value "AUDIO AMPLIFIER - SELECTION REQUIRED")
+			(description "Output power, protection, acoustic limit and exact pins remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "AUDIO AMPLIFIER - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Output power, protection, acoustic limit and exact pins remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "AMP1")
+				(description "Output power, protection, acoustic limit and exact pins remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "AUDIO AMPLIFIER - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Head TTL, cameras, face display, audio and cooling")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_head_ttl_sensors_hmi.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Head TTL, cameras, face display, audio and cooling/")
+				(tstamps "/2c0d00f0-93a8-543c-ac01-83696100d78d/")
+			)
+			(tstamps "704e13e4-a0a9-5008-abe3-30a52466dc63")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-IN")
+						)
+						(pin
+							(num "LOG-RET")
+						)
+						(pin
+							(num "LOG-5V")
+						)
+						(pin
+							(num "LOG-RN")
+						)
+						(pin
+							(num "LOG-RP")
+						)
+						(pin
+							(num "LOG-LN")
+						)
+						(pin
+							(num "LOG-LP")
+						)
+					)
+				)
+			)
+		)
+		(comp
 			(ref "AX_HEAD_PAN")
 			(value "ROBOTIS XC330-class compact X-series candidate")
 			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
@@ -5404,14 +5649,14 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "12 Head TTL, sensing, display and audio")
+				(value "12 Head TTL, cameras, face display, audio and cooling")
 			)
 			(property
 				(name "Sheetfile")
 				(value "12_head_ttl_sensors_hmi.kicad_sch")
 			)
 			(sheetpath
-				(names "/12 Head TTL, sensing, display and audio/")
+				(names "/12 Head TTL, cameras, face display, audio and cooling/")
 				(tstamps "/2c0d00f0-93a8-543c-ac01-83696100d78d/")
 			)
 			(tstamps "94ea41ad-35fe-5970-b1a8-e20a07285c31")
@@ -5471,14 +5716,14 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "12 Head TTL, sensing, display and audio")
+				(value "12 Head TTL, cameras, face display, audio and cooling")
 			)
 			(property
 				(name "Sheetfile")
 				(value "12_head_ttl_sensors_hmi.kicad_sch")
 			)
 			(sheetpath
-				(names "/12 Head TTL, sensing, display and audio/")
+				(names "/12 Head TTL, cameras, face display, audio and cooling/")
 				(tstamps "/2c0d00f0-93a8-543c-ac01-83696100d78d/")
 			)
 			(tstamps "cb4cbe7b-aba6-5bd6-848a-3d2299c6bf05")
@@ -5539,14 +5784,14 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "12 Head TTL, sensing, display and audio")
+				(value "12 Head TTL, cameras, face display, audio and cooling")
 			)
 			(property
 				(name "Sheetfile")
 				(value "12_head_ttl_sensors_hmi.kicad_sch")
 			)
 			(sheetpath
-				(names "/12 Head TTL, sensing, display and audio/")
+				(names "/12 Head TTL, cameras, face display, audio and cooling/")
 				(tstamps "/2c0d00f0-93a8-543c-ac01-83696100d78d/")
 			)
 			(tstamps "de879ec0-793a-573f-a152-4950711519a0")
@@ -5554,6 +5799,12 @@
 				(unit
 					(name "A")
 					(pins
+						(pin
+							(num "LOG-RET")
+						)
+						(pin
+							(num "LOG-5V")
+						)
 						(pin
 							(num "LOG-IPC")
 						)
@@ -5601,14 +5852,14 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "12 Head TTL, sensing, display and audio")
+				(value "12 Head TTL, cameras, face display, audio and cooling")
 			)
 			(property
 				(name "Sheetfile")
 				(value "12_head_ttl_sensors_hmi.kicad_sch")
 			)
 			(sheetpath
-				(names "/12 Head TTL, sensing, display and audio/")
+				(names "/12 Head TTL, cameras, face display, audio and cooling/")
 				(tstamps "/2c0d00f0-93a8-543c-ac01-83696100d78d/")
 			)
 			(tstamps "5e3d7a2b-ac19-515e-b212-79bde8ba35fb")
@@ -5617,6 +5868,12 @@
 					(name "A")
 					(pins
 						(pin
+							(num "LOG-RET")
+						)
+						(pin
+							(num "LOG-5V")
+						)
+						(pin
 							(num "LOG-IPC")
 						)
 					)
@@ -5624,9 +5881,9 @@
 			)
 		)
 		(comp
-			(ref "HMI1")
-			(value "FACE DISPLAY / MICROPHONES / SPEAKERS - SELECTION REQUIRED")
-			(description "Exact screen, audio hardware, power, privacy indication and acoustic limits remain open.")
+			(ref "DISP1")
+			(value "FACE DISPLAY - SELECTION REQUIRED")
+			(description "Exact screen, controller, luminance and touch interface remain open.")
 			(fields
 				(field
 					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
@@ -5634,7 +5891,7 @@
 					(name "Evidence")
 				)
 				(field
-					(name "Display") "FACE DISPLAY / MICROPHONES / SPEAKERS - SELECTION REQUIRED")
+					(name "Display") "FACE DISPLAY - SELECTION REQUIRED")
 				(field
 					(name "Footprint")
 				)
@@ -5642,12 +5899,12 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Exact screen, audio hardware, power, privacy indication and acoustic limits remain open.")
+					(name "Description") "Exact screen, controller, luminance and touch interface remain open.")
 			)
 			(libsource
 				(lib "PBV3")
-				(part "HMI1")
-				(description "Exact screen, audio hardware, power, privacy indication and acoustic limits remain open.")
+				(part "DISP1")
+				(description "Exact screen, controller, luminance and touch interface remain open.")
 			)
 			(property
 				(name "Status")
@@ -5659,25 +5916,244 @@
 			)
 			(property
 				(name "Display")
-				(value "FACE DISPLAY / MICROPHONES / SPEAKERS - SELECTION REQUIRED")
+				(value "FACE DISPLAY - SELECTION REQUIRED")
 			)
 			(property
 				(name "Sheetname")
-				(value "12 Head TTL, sensing, display and audio")
+				(value "12 Head TTL, cameras, face display, audio and cooling")
 			)
 			(property
 				(name "Sheetfile")
 				(value "12_head_ttl_sensors_hmi.kicad_sch")
 			)
 			(sheetpath
-				(names "/12 Head TTL, sensing, display and audio/")
+				(names "/12 Head TTL, cameras, face display, audio and cooling/")
 				(tstamps "/2c0d00f0-93a8-543c-ac01-83696100d78d/")
 			)
-			(tstamps "54e7b7dd-b310-5292-b8ee-0889c7b51ea4")
+			(tstamps "9033447c-1285-5a75-b0ef-18de20ac69e7")
 			(units
 				(unit
 					(name "A")
 					(pins
+						(pin
+							(num "LOG-RET")
+						)
+						(pin
+							(num "LOG-5V")
+						)
+						(pin
+							(num "LOG-TOUCH")
+						)
+						(pin
+							(num "LOG-IPC")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FAN1")
+			(value "HEAD COOLING FAN - SELECTION REQUIRED")
+			(description "Airflow, noise, finger guarding and failure detection remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "HEAD COOLING FAN - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Airflow, noise, finger guarding and failure detection remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "FAN1")
+				(description "Airflow, noise, finger guarding and failure detection remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "HEAD COOLING FAN - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Head TTL, cameras, face display, audio and cooling")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_head_ttl_sensors_hmi.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Head TTL, cameras, face display, audio and cooling/")
+				(tstamps "/2c0d00f0-93a8-543c-ac01-83696100d78d/")
+			)
+			(tstamps "99d12af6-3429-5e93-bbaa-e4b7de72fa4a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-RET")
+						)
+						(pin
+							(num "LOG-5V")
+						)
+						(pin
+							(num "LOG-TACH")
+						)
+						(pin
+							(num "LOG-PWM")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "HPWR1")
+			(value "PROTECTED HEAD AUXILIARY DISTRIBUTION - DESIGN REQUIRED")
+			(description "Branch protection, filtering, connector and current allocation remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "PROTECTED HEAD AUXILIARY DISTRIBUTION - DESIGN REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Branch protection, filtering, connector and current allocation remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "HPWR1")
+				(description "Branch protection, filtering, connector and current allocation remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "PROTECTED HEAD AUXILIARY DISTRIBUTION - DESIGN REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Head TTL, cameras, face display, audio and cooling")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_head_ttl_sensors_hmi.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Head TTL, cameras, face display, audio and cooling/")
+				(tstamps "/2c0d00f0-93a8-543c-ac01-83696100d78d/")
+			)
+			(tstamps "20cbd0bd-7932-55d1-99c1-838efd86b6d5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-RET-IN")
+						)
+						(pin
+							(num "LOG-IN")
+						)
+						(pin
+							(num "LOG-RET-OUT")
+						)
+						(pin
+							(num "LOG-OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "MIC1")
+			(value "MICROPHONE ARRAY - SELECTION REQUIRED")
+			(description "Exact microphones, privacy indication and acoustic behavior remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "MICROPHONE ARRAY - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact microphones, privacy indication and acoustic behavior remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "MIC1")
+				(description "Exact microphones, privacy indication and acoustic behavior remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "MICROPHONE ARRAY - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Head TTL, cameras, face display, audio and cooling")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_head_ttl_sensors_hmi.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Head TTL, cameras, face display, audio and cooling/")
+				(tstamps "/2c0d00f0-93a8-543c-ac01-83696100d78d/")
+			)
+			(tstamps "4ce42bfe-3d59-5edd-9c9f-589ee6b3e9c4")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-RET")
+						)
+						(pin
+							(num "LOG-5V")
+						)
 						(pin
 							(num "LOG-IPC")
 						)
@@ -5725,14 +6201,14 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "12 Head TTL, sensing, display and audio")
+				(value "12 Head TTL, cameras, face display, audio and cooling")
 			)
 			(property
 				(name "Sheetfile")
 				(value "12_head_ttl_sensors_hmi.kicad_sch")
 			)
 			(sheetpath
-				(names "/12 Head TTL, sensing, display and audio/")
+				(names "/12 Head TTL, cameras, face display, audio and cooling/")
 				(tstamps "/2c0d00f0-93a8-543c-ac01-83696100d78d/")
 			)
 			(tstamps "a18a2abb-8b8a-51f7-a52a-bf6347786683")
@@ -5799,14 +6275,14 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "12 Head TTL, sensing, display and audio")
+				(value "12 Head TTL, cameras, face display, audio and cooling")
 			)
 			(property
 				(name "Sheetfile")
 				(value "12_head_ttl_sensors_hmi.kicad_sch")
 			)
 			(sheetpath
-				(names "/12 Head TTL, sensing, display and audio/")
+				(names "/12 Head TTL, cameras, face display, audio and cooling/")
 				(tstamps "/2c0d00f0-93a8-543c-ac01-83696100d78d/")
 			)
 			(tstamps "c5e73324-7b88-5e88-a4a8-3203e81f53ca")
@@ -5824,10 +6300,1422 @@
 				)
 			)
 		)
+		(comp
+			(ref "SPK1")
+			(value "LEFT SPEAKER - SELECTION REQUIRED")
+			(description "Exact driver, enclosure and sound-pressure limit remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "LEFT SPEAKER - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact driver, enclosure and sound-pressure limit remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SPK1")
+				(description "Exact driver, enclosure and sound-pressure limit remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "LEFT SPEAKER - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Head TTL, cameras, face display, audio and cooling")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_head_ttl_sensors_hmi.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Head TTL, cameras, face display, audio and cooling/")
+				(tstamps "/2c0d00f0-93a8-543c-ac01-83696100d78d/")
+			)
+			(tstamps "2c386744-047d-5a9d-9fc8-b0c2e43eec20")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-N")
+						)
+						(pin
+							(num "LOG-P")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SPK2")
+			(value "RIGHT SPEAKER - SELECTION REQUIRED")
+			(description "Exact driver, enclosure and sound-pressure limit remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "RIGHT SPEAKER - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact driver, enclosure and sound-pressure limit remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SPK2")
+				(description "Exact driver, enclosure and sound-pressure limit remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "RIGHT SPEAKER - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "12 Head TTL, cameras, face display, audio and cooling")
+			)
+			(property
+				(name "Sheetfile")
+				(value "12_head_ttl_sensors_hmi.kicad_sch")
+			)
+			(sheetpath
+				(names "/12 Head TTL, cameras, face display, audio and cooling/")
+				(tstamps "/2c0d00f0-93a8-543c-ac01-83696100d78d/")
+			)
+			(tstamps "ca5f5e56-80ef-50c8-ac8f-1baa131ab0a5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-N")
+						)
+						(pin
+							(num "LOG-P")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "AUXD1")
+			(value "14.8 V TO 5.1 V AUXILIARY CONVERTER - SELECTION REQUIRED")
+			(description "Exact converter, protection, isolation/bonding, inrush, thermal and EMC evidence remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "14.8 V TO 5.1 V AUXILIARY CONVERTER - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact converter, protection, isolation/bonding, inrush, thermal and EMC evidence remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "AUXD1")
+				(description "Exact converter, protection, isolation/bonding, inrush, thermal and EMC evidence remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "14.8 V TO 5.1 V AUXILIARY CONVERTER - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "13 Auxiliary conversion and pelvis inertial sensing")
+			)
+			(property
+				(name "Sheetfile")
+				(value "13_pelvis_aux_imu.kicad_sch")
+			)
+			(sheetpath
+				(names "/13 Auxiliary conversion and pelvis inertial sensing/")
+				(tstamps "/1c3e6e34-064e-5219-9bbb-9d8995eff962/")
+			)
+			(tstamps "5310595e-09cf-5d0e-a162-5a4c5a70c98a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-RET-IN")
+						)
+						(pin
+							(num "LOG-IN")
+						)
+						(pin
+							(num "LOG-TLM")
+						)
+						(pin
+							(num "LOG-RET-OUT")
+						)
+						(pin
+							(num "LOG-OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "IMU1")
+			(value "PELVIS 6/9-AXIS IMU - SELECTION REQUIRED")
+			(description "Exact device, range, bandwidth, timestamping, calibration, connector and physical pins remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "PELVIS 6/9-AXIS IMU - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact device, range, bandwidth, timestamping, calibration, connector and physical pins remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "IMU1")
+				(description "Exact device, range, bandwidth, timestamping, calibration, connector and physical pins remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "PELVIS 6/9-AXIS IMU - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "13 Auxiliary conversion and pelvis inertial sensing")
+			)
+			(property
+				(name "Sheetfile")
+				(value "13_pelvis_aux_imu.kicad_sch")
+			)
+			(sheetpath
+				(names "/13 Auxiliary conversion and pelvis inertial sensing/")
+				(tstamps "/1c3e6e34-064e-5219-9bbb-9d8995eff962/")
+			)
+			(tstamps "235aa1ef-78e1-5f0c-bf6f-793c8df63f20")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-RET")
+						)
+						(pin
+							(num "LOG-5V")
+						)
+						(pin
+							(num "LOG-INT")
+						)
+						(pin
+							(num "LOG-DATA")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "MCU_AUX")
+			(value "MCU1 AUXILIARY SENSOR PORTS - LOGICAL UNIT")
+			(description "Alternate logical view of MCU1; exact package pins and interfaces remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "MCU1 AUXILIARY SENSOR PORTS - LOGICAL UNIT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Alternate logical view of MCU1; exact package pins and interfaces remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "MCU_AUX")
+				(description "Alternate logical view of MCU1; exact package pins and interfaces remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "MCU1 AUXILIARY SENSOR PORTS - LOGICAL UNIT")
+			)
+			(property
+				(name "Sheetname")
+				(value "13 Auxiliary conversion and pelvis inertial sensing")
+			)
+			(property
+				(name "Sheetfile")
+				(value "13_pelvis_aux_imu.kicad_sch")
+			)
+			(sheetpath
+				(names "/13 Auxiliary conversion and pelvis inertial sensing/")
+				(tstamps "/1c3e6e34-064e-5219-9bbb-9d8995eff962/")
+			)
+			(tstamps "04840871-bebe-57ed-b237-734e5b3a93c9")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-IMU-INT")
+						)
+						(pin
+							(num "LOG-IMU")
+						)
+						(pin
+							(num "LOG-RFOOT")
+						)
+						(pin
+							(num "LOG-LFOOT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ADC_L_FOOT")
+			(value "LEFT FOOT LOAD ACQUISITION - SELECTION REQUIRED")
+			(description "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "LEFT FOOT LOAD ACQUISITION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ADC_L_FOOT")
+				(description "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "LEFT FOOT LOAD ACQUISITION - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "14 Left foot four-point load sensing")
+			)
+			(property
+				(name "Sheetfile")
+				(value "14_left_foot_load_sensing.kicad_sch")
+			)
+			(sheetpath
+				(names "/14 Left foot four-point load sensing/")
+				(tstamps "/3e5af505-48ea-5235-a253-93b8b18c5f02/")
+			)
+			(tstamps "c71c0db2-62f2-5dd1-9d79-005b2e20d960")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-RR-N")
+						)
+						(pin
+							(num "LOG-RR-P")
+						)
+						(pin
+							(num "LOG-RL-N")
+						)
+						(pin
+							(num "LOG-RL-P")
+						)
+						(pin
+							(num "LOG-FR-N")
+						)
+						(pin
+							(num "LOG-FR-P")
+						)
+						(pin
+							(num "LOG-FL-N")
+						)
+						(pin
+							(num "LOG-FL-P")
+						)
+						(pin
+							(num "LOG-RET")
+						)
+						(pin
+							(num "LOG-5V")
+						)
+						(pin
+							(num "LOG-DATA")
+						)
+						(pin
+							(num "LOG-EXC-N")
+						)
+						(pin
+							(num "LOG-EXC-P")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "LOAD_L_FL")
+			(value "LEFT FOOT FL LOAD SENSOR - SELECTION REQUIRED")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "LEFT FOOT FL LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "LOAD_L_FL")
+				(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "LEFT FOOT FL LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "14 Left foot four-point load sensing")
+			)
+			(property
+				(name "Sheetfile")
+				(value "14_left_foot_load_sensing.kicad_sch")
+			)
+			(sheetpath
+				(names "/14 Left foot four-point load sensing/")
+				(tstamps "/3e5af505-48ea-5235-a253-93b8b18c5f02/")
+			)
+			(tstamps "989b137f-d768-532e-95b8-9f48c7ce16f8")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-EXC-N")
+						)
+						(pin
+							(num "LOG-EXC-P")
+						)
+						(pin
+							(num "LOG-SIG-N")
+						)
+						(pin
+							(num "LOG-SIG-P")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "LOAD_L_FR")
+			(value "LEFT FOOT FR LOAD SENSOR - SELECTION REQUIRED")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "LEFT FOOT FR LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "LOAD_L_FR")
+				(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "LEFT FOOT FR LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "14 Left foot four-point load sensing")
+			)
+			(property
+				(name "Sheetfile")
+				(value "14_left_foot_load_sensing.kicad_sch")
+			)
+			(sheetpath
+				(names "/14 Left foot four-point load sensing/")
+				(tstamps "/3e5af505-48ea-5235-a253-93b8b18c5f02/")
+			)
+			(tstamps "1110fdff-5723-569c-ad9a-204dc476ff37")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-EXC-N")
+						)
+						(pin
+							(num "LOG-EXC-P")
+						)
+						(pin
+							(num "LOG-SIG-N")
+						)
+						(pin
+							(num "LOG-SIG-P")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "LOAD_L_RL")
+			(value "LEFT FOOT RL LOAD SENSOR - SELECTION REQUIRED")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "LEFT FOOT RL LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "LOAD_L_RL")
+				(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "LEFT FOOT RL LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "14 Left foot four-point load sensing")
+			)
+			(property
+				(name "Sheetfile")
+				(value "14_left_foot_load_sensing.kicad_sch")
+			)
+			(sheetpath
+				(names "/14 Left foot four-point load sensing/")
+				(tstamps "/3e5af505-48ea-5235-a253-93b8b18c5f02/")
+			)
+			(tstamps "3b11fd65-9767-5bde-bc5e-f21e2112251b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-EXC-N")
+						)
+						(pin
+							(num "LOG-EXC-P")
+						)
+						(pin
+							(num "LOG-SIG-N")
+						)
+						(pin
+							(num "LOG-SIG-P")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "LOAD_L_RR")
+			(value "LEFT FOOT RR LOAD SENSOR - SELECTION REQUIRED")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "LEFT FOOT RR LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "LOAD_L_RR")
+				(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "LEFT FOOT RR LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "14 Left foot four-point load sensing")
+			)
+			(property
+				(name "Sheetfile")
+				(value "14_left_foot_load_sensing.kicad_sch")
+			)
+			(sheetpath
+				(names "/14 Left foot four-point load sensing/")
+				(tstamps "/3e5af505-48ea-5235-a253-93b8b18c5f02/")
+			)
+			(tstamps "212517ec-26db-5765-bc78-9f30bd51d338")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-EXC-N")
+						)
+						(pin
+							(num "LOG-EXC-P")
+						)
+						(pin
+							(num "LOG-SIG-N")
+						)
+						(pin
+							(num "LOG-SIG-P")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "ADC_R_FOOT")
+			(value "RIGHT FOOT LOAD ACQUISITION - SELECTION REQUIRED")
+			(description "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "RIGHT FOOT LOAD ACQUISITION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ADC_R_FOOT")
+				(description "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "RIGHT FOOT LOAD ACQUISITION - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "15 Right foot four-point load sensing")
+			)
+			(property
+				(name "Sheetfile")
+				(value "15_right_foot_load_sensing.kicad_sch")
+			)
+			(sheetpath
+				(names "/15 Right foot four-point load sensing/")
+				(tstamps "/d9281565-aaf2-5ee4-aeb6-5e7f49a688a7/")
+			)
+			(tstamps "c6400713-0fbb-52f8-a1a8-20a5f6e9b878")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-RR-N")
+						)
+						(pin
+							(num "LOG-RR-P")
+						)
+						(pin
+							(num "LOG-RL-N")
+						)
+						(pin
+							(num "LOG-RL-P")
+						)
+						(pin
+							(num "LOG-FR-N")
+						)
+						(pin
+							(num "LOG-FR-P")
+						)
+						(pin
+							(num "LOG-FL-N")
+						)
+						(pin
+							(num "LOG-FL-P")
+						)
+						(pin
+							(num "LOG-RET")
+						)
+						(pin
+							(num "LOG-5V")
+						)
+						(pin
+							(num "LOG-DATA")
+						)
+						(pin
+							(num "LOG-EXC-N")
+						)
+						(pin
+							(num "LOG-EXC-P")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "LOAD_R_FL")
+			(value "RIGHT FOOT FL LOAD SENSOR - SELECTION REQUIRED")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "RIGHT FOOT FL LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "LOAD_R_FL")
+				(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "RIGHT FOOT FL LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "15 Right foot four-point load sensing")
+			)
+			(property
+				(name "Sheetfile")
+				(value "15_right_foot_load_sensing.kicad_sch")
+			)
+			(sheetpath
+				(names "/15 Right foot four-point load sensing/")
+				(tstamps "/d9281565-aaf2-5ee4-aeb6-5e7f49a688a7/")
+			)
+			(tstamps "01b192c3-b03e-5aec-8860-2b7196505ade")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-EXC-N")
+						)
+						(pin
+							(num "LOG-EXC-P")
+						)
+						(pin
+							(num "LOG-SIG-N")
+						)
+						(pin
+							(num "LOG-SIG-P")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "LOAD_R_FR")
+			(value "RIGHT FOOT FR LOAD SENSOR - SELECTION REQUIRED")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "RIGHT FOOT FR LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "LOAD_R_FR")
+				(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "RIGHT FOOT FR LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "15 Right foot four-point load sensing")
+			)
+			(property
+				(name "Sheetfile")
+				(value "15_right_foot_load_sensing.kicad_sch")
+			)
+			(sheetpath
+				(names "/15 Right foot four-point load sensing/")
+				(tstamps "/d9281565-aaf2-5ee4-aeb6-5e7f49a688a7/")
+			)
+			(tstamps "bf27f1cb-7eaa-5503-a52d-b78fba0523c1")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-EXC-N")
+						)
+						(pin
+							(num "LOG-EXC-P")
+						)
+						(pin
+							(num "LOG-SIG-N")
+						)
+						(pin
+							(num "LOG-SIG-P")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "LOAD_R_RL")
+			(value "RIGHT FOOT RL LOAD SENSOR - SELECTION REQUIRED")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "RIGHT FOOT RL LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "LOAD_R_RL")
+				(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "RIGHT FOOT RL LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "15 Right foot four-point load sensing")
+			)
+			(property
+				(name "Sheetfile")
+				(value "15_right_foot_load_sensing.kicad_sch")
+			)
+			(sheetpath
+				(names "/15 Right foot four-point load sensing/")
+				(tstamps "/d9281565-aaf2-5ee4-aeb6-5e7f49a688a7/")
+			)
+			(tstamps "07795354-d3cc-5190-9d68-765204b2998b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-EXC-N")
+						)
+						(pin
+							(num "LOG-EXC-P")
+						)
+						(pin
+							(num "LOG-SIG-N")
+						)
+						(pin
+							(num "LOG-SIG-P")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "LOAD_R_RR")
+			(value "RIGHT FOOT RR LOAD SENSOR - SELECTION REQUIRED")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "RIGHT FOOT RR LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "LOAD_R_RR")
+				(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "RIGHT FOOT RR LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "15 Right foot four-point load sensing")
+			)
+			(property
+				(name "Sheetfile")
+				(value "15_right_foot_load_sensing.kicad_sch")
+			)
+			(sheetpath
+				(names "/15 Right foot four-point load sensing/")
+				(tstamps "/d9281565-aaf2-5ee4-aeb6-5e7f49a688a7/")
+			)
+			(tstamps "1a7f8748-0f73-5467-b6eb-07c2b2313b36")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG-EXC-N")
+						)
+						(pin
+							(num "LOG-EXC-P")
+						)
+						(pin
+							(num "LOG-SIG-N")
+						)
+						(pin
+							(num "LOG-SIG-P")
+						)
+					)
+				)
+			)
+		)
 	)
 	(groups)
 	(variants)
 	(libparts
+		(libpart
+			(lib "PBV3")
+			(part "ADC_L_FOOT")
+			(description "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.")
+			(fields
+				(field
+					(name "Reference") "ADC_L_FOOT")
+				(field
+					(name "Value") "LEFT FOOT LOAD ACQUISITION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "LEFT FOOT LOAD ACQUISITION - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-5V")
+					(name "5_V_POWER")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-DATA")
+					(name "UPSTREAM_SENSOR_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-EXC-N")
+					(name "EXCITATION_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-EXC-P")
+					(name "EXCITATION_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-FL-N")
+					(name "FL_SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-FL-P")
+					(name "FL_SIGNAL_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-FR-N")
+					(name "FR_SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-FR-P")
+					(name "FR_SIGNAL_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RET")
+					(name "RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RL-N")
+					(name "RL_SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RL-P")
+					(name "RL_SIGNAL_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RR-N")
+					(name "RR_SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RR-P")
+					(name "RR_SIGNAL_+")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "ADC_R_FOOT")
+			(description "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.")
+			(fields
+				(field
+					(name "Reference") "ADC_R_FOOT")
+				(field
+					(name "Value") "RIGHT FOOT LOAD ACQUISITION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "RIGHT FOOT LOAD ACQUISITION - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-5V")
+					(name "5_V_POWER")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-DATA")
+					(name "UPSTREAM_SENSOR_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-EXC-N")
+					(name "EXCITATION_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-EXC-P")
+					(name "EXCITATION_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-FL-N")
+					(name "FL_SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-FL-P")
+					(name "FL_SIGNAL_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-FR-N")
+					(name "FR_SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-FR-P")
+					(name "FR_SIGNAL_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RET")
+					(name "RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RL-N")
+					(name "RL_SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RL-P")
+					(name "RL_SIGNAL_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RR-N")
+					(name "RR_SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RR-P")
+					(name "RR_SIGNAL_+")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "AMP1")
+			(description "Output power, protection, acoustic limit and exact pins remain open.")
+			(fields
+				(field
+					(name "Reference") "AMP1")
+				(field
+					(name "Value") "AUDIO AMPLIFIER - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Output power, protection, acoustic limit and exact pins remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "AUDIO AMPLIFIER - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-5V")
+					(name "5_V_POWER")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-IN")
+					(name "AUDIO_INPUT_IPC")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-LN")
+					(name "LEFT_SPEAKER_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-LP")
+					(name "LEFT_SPEAKER_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RET")
+					(name "RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RN")
+					(name "RIGHT_SPEAKER_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RP")
+					(name "RIGHT_SPEAKER_+")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "AUXD1")
+			(description "Exact converter, protection, isolation/bonding, inrush, thermal and EMC evidence remain open.")
+			(fields
+				(field
+					(name "Reference") "AUXD1")
+				(field
+					(name "Value") "14.8 V TO 5.1 V AUXILIARY CONVERTER - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact converter, protection, isolation/bonding, inrush, thermal and EMC evidence remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "14.8 V TO 5.1 V AUXILIARY CONVERTER - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-IN")
+					(name "INTERRUPTED_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-OUT")
+					(name "AUXILIARY_5_V")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RET-IN")
+					(name "CONTROLLED_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RET-OUT")
+					(name "AUXILIARY_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-TLM")
+					(name "CONVERTER_TELEMETRY")
+					(type "passive")
+				)
+			)
+		)
 		(libpart
 			(lib "PBV3")
 			(part "AX_HEAD_PAN")
@@ -7048,8 +8936,18 @@
 			)
 			(pins
 				(pin
+					(num "LOG-5V")
+					(name "5_V_POWER")
+					(type "passive")
+				)
+				(pin
 					(num "LOG-IPC")
 					(name "VISION_IPC")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RET")
+					(name "RETURN")
 					(type "passive")
 				)
 			)
@@ -7081,8 +8979,18 @@
 			)
 			(pins
 				(pin
+					(num "LOG-5V")
+					(name "5_V_POWER")
+					(type "passive")
+				)
+				(pin
 					(num "LOG-IPC")
 					(name "VISION_IPC")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RET")
+					(name "RETURN")
 					(type "passive")
 				)
 			)
@@ -7163,12 +9071,47 @@
 				)
 				(pin
 					(num "LOG-AUDIO")
-					(name "AUDIO_/_VISION_IPC")
+					(name "AUDIO_OUTPUT_IPC")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-CAM-L")
+					(name "LEFT_CAMERA_IPC")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-CAM-R")
+					(name "RIGHT_CAMERA_IPC")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-DISPLAY")
+					(name "FACE_DISPLAY_IPC")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-FAN-PWM")
+					(name "HEAD_FAN_PWM")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-FAN-TACH")
+					(name "HEAD_FAN_TACH")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-MIC")
+					(name "MICROPHONE_IPC")
 					(type "passive")
 				)
 				(pin
 					(num "LOG-NET")
 					(name "NETWORK_/_OPENAI_CLIENT")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-TOUCH")
+					(name "FACE_TOUCH_IPC")
 					(type "passive")
 				)
 			)
@@ -7233,13 +9176,13 @@
 		)
 		(libpart
 			(lib "PBV3")
-			(part "HMI1")
-			(description "Exact screen, audio hardware, power, privacy indication and acoustic limits remain open.")
+			(part "DISP1")
+			(description "Exact screen, controller, luminance and touch interface remain open.")
 			(fields
 				(field
-					(name "Reference") "HMI1")
+					(name "Reference") "DISP1")
 				(field
-					(name "Value") "FACE DISPLAY / MICROPHONES / SPEAKERS - SELECTION REQUIRED")
+					(name "Value") "FACE DISPLAY - SELECTION REQUIRED")
 				(field
 					(name "Footprint")
 				)
@@ -7247,19 +9190,130 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Exact screen, audio hardware, power, privacy indication and acoustic limits remain open.")
+					(name "Description") "Exact screen, controller, luminance and touch interface remain open.")
 				(field
 					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
 				(field
 					(name "Evidence")
 				)
 				(field
-					(name "Display") "FACE DISPLAY / MICROPHONES / SPEAKERS - SELECTION REQUIRED")
+					(name "Display") "FACE DISPLAY - SELECTION REQUIRED")
 			)
 			(pins
 				(pin
+					(num "LOG-5V")
+					(name "5_V_POWER")
+					(type "passive")
+				)
+				(pin
 					(num "LOG-IPC")
-					(name "HMI_IPC")
+					(name "DISPLAY_IPC")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RET")
+					(name "RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-TOUCH")
+					(name "TOUCH_IPC")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "FAN1")
+			(description "Airflow, noise, finger guarding and failure detection remain open.")
+			(fields
+				(field
+					(name "Reference") "FAN1")
+				(field
+					(name "Value") "HEAD COOLING FAN - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Airflow, noise, finger guarding and failure detection remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "HEAD COOLING FAN - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-5V")
+					(name "5_V_POWER")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-PWM")
+					(name "PWM")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RET")
+					(name "RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-TACH")
+					(name "TACHOMETER")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "HPWR1")
+			(description "Branch protection, filtering, connector and current allocation remain open.")
+			(fields
+				(field
+					(name "Reference") "HPWR1")
+				(field
+					(name "Value") "PROTECTED HEAD AUXILIARY DISTRIBUTION - DESIGN REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Branch protection, filtering, connector and current allocation remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "PROTECTED HEAD AUXILIARY DISTRIBUTION - DESIGN REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-IN")
+					(name "AUXILIARY_5_V_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-OUT")
+					(name "HEAD_5_V")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RET-IN")
+					(name "AUXILIARY_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RET-OUT")
+					(name "HEAD_RETURN")
 					(type "passive")
 				)
 			)
@@ -7715,6 +9769,54 @@
 		)
 		(libpart
 			(lib "PBV3")
+			(part "IMU1")
+			(description "Exact device, range, bandwidth, timestamping, calibration, connector and physical pins remain open.")
+			(fields
+				(field
+					(name "Reference") "IMU1")
+				(field
+					(name "Value") "PELVIS 6/9-AXIS IMU - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact device, range, bandwidth, timestamping, calibration, connector and physical pins remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "PELVIS 6/9-AXIS IMU - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-5V")
+					(name "5_V_POWER")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-DATA")
+					(name "DETERMINISTIC_SENSOR_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-INT")
+					(name "DATA_READY_/_FAULT")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RET")
+					(name "RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
 			(part "K1")
 			(description "DC interruption duty, coil suppression, mirror-contact semantics, fault current and life require manufacturer application confirmation.")
 			(fields
@@ -7811,6 +9913,390 @@
 		)
 		(libpart
 			(lib "PBV3")
+			(part "LOAD_L_FL")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Reference") "LOAD_L_FL")
+				(field
+					(name "Value") "LEFT FOOT FL LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "LEFT FOOT FL LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-EXC-N")
+					(name "EXCITATION_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-EXC-P")
+					(name "EXCITATION_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-N")
+					(name "SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-P")
+					(name "SIGNAL_+")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "LOAD_L_FR")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Reference") "LOAD_L_FR")
+				(field
+					(name "Value") "LEFT FOOT FR LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "LEFT FOOT FR LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-EXC-N")
+					(name "EXCITATION_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-EXC-P")
+					(name "EXCITATION_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-N")
+					(name "SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-P")
+					(name "SIGNAL_+")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "LOAD_L_RL")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Reference") "LOAD_L_RL")
+				(field
+					(name "Value") "LEFT FOOT RL LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "LEFT FOOT RL LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-EXC-N")
+					(name "EXCITATION_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-EXC-P")
+					(name "EXCITATION_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-N")
+					(name "SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-P")
+					(name "SIGNAL_+")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "LOAD_L_RR")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Reference") "LOAD_L_RR")
+				(field
+					(name "Value") "LEFT FOOT RR LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "LEFT FOOT RR LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-EXC-N")
+					(name "EXCITATION_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-EXC-P")
+					(name "EXCITATION_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-N")
+					(name "SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-P")
+					(name "SIGNAL_+")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "LOAD_R_FL")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Reference") "LOAD_R_FL")
+				(field
+					(name "Value") "RIGHT FOOT FL LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "RIGHT FOOT FL LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-EXC-N")
+					(name "EXCITATION_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-EXC-P")
+					(name "EXCITATION_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-N")
+					(name "SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-P")
+					(name "SIGNAL_+")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "LOAD_R_FR")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Reference") "LOAD_R_FR")
+				(field
+					(name "Value") "RIGHT FOOT FR LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "RIGHT FOOT FR LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-EXC-N")
+					(name "EXCITATION_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-EXC-P")
+					(name "EXCITATION_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-N")
+					(name "SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-P")
+					(name "SIGNAL_+")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "LOAD_R_RL")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Reference") "LOAD_R_RL")
+				(field
+					(name "Value") "RIGHT FOOT RL LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "RIGHT FOOT RL LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-EXC-N")
+					(name "EXCITATION_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-EXC-P")
+					(name "EXCITATION_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-N")
+					(name "SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-P")
+					(name "SIGNAL_+")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "LOAD_R_RR")
+			(description "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+			(fields
+				(field
+					(name "Reference") "LOAD_R_RR")
+				(field
+					(name "Value") "RIGHT FOOT RR LOAD SENSOR - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "RIGHT FOOT RR LOAD SENSOR - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-EXC-N")
+					(name "EXCITATION_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-EXC-P")
+					(name "EXCITATION_+")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-N")
+					(name "SIGNAL_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-SIG-P")
+					(name "SIGNAL_+")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
 			(part "MCU1")
 			(description "Owns state estimation, bounded trajectories, joint limits, bus timing and fault states. Exact MCU board, I/O pins, isolation, real-time performance and firmware evidence remain open.")
 			(fields
@@ -7858,6 +10344,54 @@
 				(pin
 					(num "LOG-WD")
 					(name "WATCHDOG_HEARTBEAT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "MCU_AUX")
+			(description "Alternate logical view of MCU1; exact package pins and interfaces remain open.")
+			(fields
+				(field
+					(name "Reference") "MCU_AUX")
+				(field
+					(name "Value") "MCU1 AUXILIARY SENSOR PORTS - LOGICAL UNIT")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Alternate logical view of MCU1; exact package pins and interfaces remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "MCU1 AUXILIARY SENSOR PORTS - LOGICAL UNIT")
+			)
+			(pins
+				(pin
+					(num "LOG-IMU")
+					(name "PELVIS_IMU_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-IMU-INT")
+					(name "PELVIS_IMU_INTERRUPT")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-LFOOT")
+					(name "LEFT_FOOT_SENSOR_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RFOOT")
+					(name "RIGHT_FOOT_SENSOR_DATA")
 					(type "passive")
 				)
 			)
@@ -8202,6 +10736,49 @@
 				(pin
 					(num "LOG-TTL-RDIST-TX")
 					(name "UART_TX")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "MIC1")
+			(description "Exact microphones, privacy indication and acoustic behavior remain open.")
+			(fields
+				(field
+					(name "Reference") "MIC1")
+				(field
+					(name "Value") "MICROPHONE ARRAY - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact microphones, privacy indication and acoustic behavior remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "MICROPHONE ARRAY - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-5V")
+					(name "5_V_POWER")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-IPC")
+					(name "AUDIO_INPUT_IPC")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-RET")
+					(name "RETURN")
 					(type "passive")
 				)
 			)
@@ -9176,6 +11753,82 @@
 		)
 		(libpart
 			(lib "PBV3")
+			(part "SPK1")
+			(description "Exact driver, enclosure and sound-pressure limit remain open.")
+			(fields
+				(field
+					(name "Reference") "SPK1")
+				(field
+					(name "Value") "LEFT SPEAKER - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact driver, enclosure and sound-pressure limit remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "LEFT SPEAKER - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-N")
+					(name "SPEAKER_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-P")
+					(name "SPEAKER_+")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SPK2")
+			(description "Exact driver, enclosure and sound-pressure limit remain open.")
+			(fields
+				(field
+					(name "Reference") "SPK2")
+				(field
+					(name "Value") "RIGHT SPEAKER - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Exact driver, enclosure and sound-pressure limit remain open.")
+				(field
+					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "RIGHT SPEAKER - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "LOG-N")
+					(name "SPEAKER_-")
+					(type "passive")
+				)
+				(pin
+					(num "LOG-P")
+					(name "SPEAKER_+")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
 			(part "SR1")
 			(description "Required PLr/SIL, exact architecture/category, common-cause, diagnostic coverage, reset mode, reaction time and validation are not established.")
 			(fields
@@ -9320,6 +11973,12 @@
 			(name "ACT_0V_CONTROLLED")
 			(class "Default")
 			(node
+				(ref "AUXD1")
+				(pin "LOG-RET-IN")
+				(pinfunction "CONTROLLED_RETURN_LOG-RET-IN")
+				(pintype "passive")
+			)
+			(node
 				(ref "DCDC1")
 				(pin "LOG-RET-IN")
 				(pinfunction "CONTROLLED_RETURN_LOG-RET-IN")
@@ -9420,6 +12079,12 @@
 			(name "ACT_14V8_SAFE")
 			(class "Default")
 			(node
+				(ref "AUXD1")
+				(pin "LOG-IN")
+				(pinfunction "INTERRUPTED_INPUT_LOG-IN")
+				(pintype "passive")
+			)
+			(node
 				(ref "DCDC1")
 				(pin "LOG-IN")
 				(pinfunction "INTERRUPTED_14.8_V_LOG-IN")
@@ -9464,6 +12129,76 @@
 		)
 		(net
 			(code "5")
+			(name "AUX_0V")
+			(class "Default")
+			(node
+				(ref "ADC_L_FOOT")
+				(pin "LOG-RET")
+				(pinfunction "RETURN_LOG-RET")
+				(pintype "passive")
+			)
+			(node
+				(ref "ADC_R_FOOT")
+				(pin "LOG-RET")
+				(pinfunction "RETURN_LOG-RET")
+				(pintype "passive")
+			)
+			(node
+				(ref "AUXD1")
+				(pin "LOG-RET-OUT")
+				(pinfunction "AUXILIARY_RETURN_LOG-RET-OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "HPWR1")
+				(pin "LOG-RET-IN")
+				(pinfunction "AUXILIARY_RETURN_LOG-RET-IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "IMU1")
+				(pin "LOG-RET")
+				(pinfunction "RETURN_LOG-RET")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "AUX_5V_SAFE")
+			(class "Default")
+			(node
+				(ref "ADC_L_FOOT")
+				(pin "LOG-5V")
+				(pinfunction "5_V_POWER_LOG-5V")
+				(pintype "passive")
+			)
+			(node
+				(ref "ADC_R_FOOT")
+				(pin "LOG-5V")
+				(pinfunction "5_V_POWER_LOG-5V")
+				(pintype "passive")
+			)
+			(node
+				(ref "AUXD1")
+				(pin "LOG-OUT")
+				(pinfunction "AUXILIARY_5_V_LOG-OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "HPWR1")
+				(pin "LOG-IN")
+				(pinfunction "AUXILIARY_5_V_INPUT_LOG-IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "IMU1")
+				(pin "LOG-5V")
+				(pinfunction "5_V_POWER_LOG-5V")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "7")
 			(name "BATT_0V_RAW")
 			(class "Default")
 			(node
@@ -9480,7 +12215,7 @@
 			)
 		)
 		(net
-			(code "6")
+			(code "8")
 			(name "BATT_POS_RAW")
 			(class "Default")
 			(node
@@ -9497,7 +12232,7 @@
 			)
 		)
 		(net
-			(code "7")
+			(code "9")
 			(name "CHARGER_INTERLOCK")
 			(class "Default")
 			(node
@@ -9514,7 +12249,7 @@
 			)
 		)
 		(net
-			(code "8")
+			(code "10")
 			(name "CONTACTOR_POS_IN")
 			(class "Default")
 			(node
@@ -9531,7 +12266,7 @@
 			)
 		)
 		(net
-			(code "9")
+			(code "11")
 			(name "EDM_K1")
 			(class "Default")
 			(node
@@ -9548,7 +12283,7 @@
 			)
 		)
 		(net
-			(code "10")
+			(code "12")
 			(name "EDM_K2")
 			(class "Default")
 			(node
@@ -9565,7 +12300,7 @@
 			)
 		)
 		(net
-			(code "11")
+			(code "13")
 			(name "ESTOP_CH1_FEED")
 			(class "Default")
 			(node
@@ -9582,7 +12317,7 @@
 			)
 		)
 		(net
-			(code "12")
+			(code "14")
 			(name "ESTOP_CH1_RETURN")
 			(class "Default")
 			(node
@@ -9599,7 +12334,7 @@
 			)
 		)
 		(net
-			(code "13")
+			(code "15")
 			(name "ESTOP_CH2_FEED")
 			(class "Default")
 			(node
@@ -9616,7 +12351,7 @@
 			)
 		)
 		(net
-			(code "14")
+			(code "16")
 			(name "ESTOP_CH2_RETURN")
 			(class "Default")
 			(node
@@ -9633,8 +12368,119 @@
 			)
 		)
 		(net
-			(code "15")
-			(name "HMI_SENSOR_IPC")
+			(code "17")
+			(name "HEAD_0V")
+			(class "Default")
+			(node
+				(ref "AMP1")
+				(pin "LOG-RET")
+				(pinfunction "RETURN_LOG-RET")
+				(pintype "passive")
+			)
+			(node
+				(ref "CAM1")
+				(pin "LOG-RET")
+				(pinfunction "RETURN_LOG-RET")
+				(pintype "passive")
+			)
+			(node
+				(ref "CAM2")
+				(pin "LOG-RET")
+				(pinfunction "RETURN_LOG-RET")
+				(pintype "passive")
+			)
+			(node
+				(ref "DISP1")
+				(pin "LOG-RET")
+				(pinfunction "RETURN_LOG-RET")
+				(pintype "passive")
+			)
+			(node
+				(ref "FAN1")
+				(pin "LOG-RET")
+				(pinfunction "RETURN_LOG-RET")
+				(pintype "passive")
+			)
+			(node
+				(ref "HPWR1")
+				(pin "LOG-RET-OUT")
+				(pinfunction "HEAD_RETURN_LOG-RET-OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "MIC1")
+				(pin "LOG-RET")
+				(pinfunction "RETURN_LOG-RET")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "18")
+			(name "HEAD_5V")
+			(class "Default")
+			(node
+				(ref "AMP1")
+				(pin "LOG-5V")
+				(pinfunction "5_V_POWER_LOG-5V")
+				(pintype "passive")
+			)
+			(node
+				(ref "CAM1")
+				(pin "LOG-5V")
+				(pinfunction "5_V_POWER_LOG-5V")
+				(pintype "passive")
+			)
+			(node
+				(ref "CAM2")
+				(pin "LOG-5V")
+				(pinfunction "5_V_POWER_LOG-5V")
+				(pintype "passive")
+			)
+			(node
+				(ref "DISP1")
+				(pin "LOG-5V")
+				(pinfunction "5_V_POWER_LOG-5V")
+				(pintype "passive")
+			)
+			(node
+				(ref "FAN1")
+				(pin "LOG-5V")
+				(pinfunction "5_V_POWER_LOG-5V")
+				(pintype "passive")
+			)
+			(node
+				(ref "HPWR1")
+				(pin "LOG-OUT")
+				(pinfunction "HEAD_5_V_LOG-OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "MIC1")
+				(pin "LOG-5V")
+				(pinfunction "5_V_POWER_LOG-5V")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "19")
+			(name "HEAD_AUDIO_IPC")
+			(class "Default")
+			(node
+				(ref "AMP1")
+				(pin "LOG-IN")
+				(pinfunction "AUDIO_INPUT_IPC_LOG-IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "CPU1")
+				(pin "LOG-AUDIO")
+				(pinfunction "AUDIO_OUTPUT_IPC_LOG-AUDIO")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "20")
+			(name "HEAD_CAM_L_IPC")
 			(class "Default")
 			(node
 				(ref "CAM1")
@@ -9643,6 +12489,17 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "CPU1")
+				(pin "LOG-CAM-L")
+				(pinfunction "LEFT_CAMERA_IPC_LOG-CAM-L")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "21")
+			(name "HEAD_CAM_R_IPC")
+			(class "Default")
+			(node
 				(ref "CAM2")
 				(pin "LOG-IPC")
 				(pinfunction "VISION_IPC_LOG-IPC")
@@ -9650,19 +12507,98 @@
 			)
 			(node
 				(ref "CPU1")
-				(pin "LOG-AUDIO")
-				(pinfunction "AUDIO_/_VISION_IPC_LOG-AUDIO")
-				(pintype "passive")
-			)
-			(node
-				(ref "HMI1")
-				(pin "LOG-IPC")
-				(pinfunction "HMI_IPC_LOG-IPC")
+				(pin "LOG-CAM-R")
+				(pinfunction "RIGHT_CAMERA_IPC_LOG-CAM-R")
 				(pintype "passive")
 			)
 		)
 		(net
-			(code "16")
+			(code "22")
+			(name "HEAD_DISPLAY_IPC")
+			(class "Default")
+			(node
+				(ref "CPU1")
+				(pin "LOG-DISPLAY")
+				(pinfunction "FACE_DISPLAY_IPC_LOG-DISPLAY")
+				(pintype "passive")
+			)
+			(node
+				(ref "DISP1")
+				(pin "LOG-IPC")
+				(pinfunction "DISPLAY_IPC_LOG-IPC")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "23")
+			(name "HEAD_FAN_PWM")
+			(class "Default")
+			(node
+				(ref "CPU1")
+				(pin "LOG-FAN-PWM")
+				(pinfunction "HEAD_FAN_PWM_LOG-FAN-PWM")
+				(pintype "passive")
+			)
+			(node
+				(ref "FAN1")
+				(pin "LOG-PWM")
+				(pinfunction "PWM_LOG-PWM")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "24")
+			(name "HEAD_FAN_TACH")
+			(class "Default")
+			(node
+				(ref "CPU1")
+				(pin "LOG-FAN-TACH")
+				(pinfunction "HEAD_FAN_TACH_LOG-FAN-TACH")
+				(pintype "passive")
+			)
+			(node
+				(ref "FAN1")
+				(pin "LOG-TACH")
+				(pinfunction "TACHOMETER_LOG-TACH")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "25")
+			(name "HEAD_MIC_IPC")
+			(class "Default")
+			(node
+				(ref "CPU1")
+				(pin "LOG-MIC")
+				(pinfunction "MICROPHONE_IPC_LOG-MIC")
+				(pintype "passive")
+			)
+			(node
+				(ref "MIC1")
+				(pin "LOG-IPC")
+				(pinfunction "AUDIO_INPUT_IPC_LOG-IPC")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "26")
+			(name "HEAD_TOUCH_IPC")
+			(class "Default")
+			(node
+				(ref "CPU1")
+				(pin "LOG-TOUCH")
+				(pinfunction "FACE_TOUCH_IPC_LOG-TOUCH")
+				(pintype "passive")
+			)
+			(node
+				(ref "DISP1")
+				(pin "LOG-TOUCH")
+				(pinfunction "TOUCH_IPC_LOG-TOUCH")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "27")
 			(name "K1_POS_OUT")
 			(class "Default")
 			(node
@@ -9679,7 +12615,230 @@
 			)
 		)
 		(net
-			(code "17")
+			(code "28")
+			(name "L_FOOT_EXC_N")
+			(class "Default")
+			(node
+				(ref "ADC_L_FOOT")
+				(pin "LOG-EXC-N")
+				(pinfunction "EXCITATION_-_LOG-EXC-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_FL")
+				(pin "LOG-EXC-N")
+				(pinfunction "EXCITATION_-_LOG-EXC-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_FR")
+				(pin "LOG-EXC-N")
+				(pinfunction "EXCITATION_-_LOG-EXC-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_RL")
+				(pin "LOG-EXC-N")
+				(pinfunction "EXCITATION_-_LOG-EXC-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_RR")
+				(pin "LOG-EXC-N")
+				(pinfunction "EXCITATION_-_LOG-EXC-N")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "29")
+			(name "L_FOOT_EXC_P")
+			(class "Default")
+			(node
+				(ref "ADC_L_FOOT")
+				(pin "LOG-EXC-P")
+				(pinfunction "EXCITATION_+_LOG-EXC-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_FL")
+				(pin "LOG-EXC-P")
+				(pinfunction "EXCITATION_+_LOG-EXC-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_FR")
+				(pin "LOG-EXC-P")
+				(pinfunction "EXCITATION_+_LOG-EXC-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_RL")
+				(pin "LOG-EXC-P")
+				(pinfunction "EXCITATION_+_LOG-EXC-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_RR")
+				(pin "LOG-EXC-P")
+				(pinfunction "EXCITATION_+_LOG-EXC-P")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "30")
+			(name "L_FOOT_FL_SIG_N")
+			(class "Default")
+			(node
+				(ref "ADC_L_FOOT")
+				(pin "LOG-FL-N")
+				(pinfunction "FL_SIGNAL_-_LOG-FL-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_FL")
+				(pin "LOG-SIG-N")
+				(pinfunction "SIGNAL_-_LOG-SIG-N")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "31")
+			(name "L_FOOT_FL_SIG_P")
+			(class "Default")
+			(node
+				(ref "ADC_L_FOOT")
+				(pin "LOG-FL-P")
+				(pinfunction "FL_SIGNAL_+_LOG-FL-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_FL")
+				(pin "LOG-SIG-P")
+				(pinfunction "SIGNAL_+_LOG-SIG-P")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "32")
+			(name "L_FOOT_FR_SIG_N")
+			(class "Default")
+			(node
+				(ref "ADC_L_FOOT")
+				(pin "LOG-FR-N")
+				(pinfunction "FR_SIGNAL_-_LOG-FR-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_FR")
+				(pin "LOG-SIG-N")
+				(pinfunction "SIGNAL_-_LOG-SIG-N")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "33")
+			(name "L_FOOT_FR_SIG_P")
+			(class "Default")
+			(node
+				(ref "ADC_L_FOOT")
+				(pin "LOG-FR-P")
+				(pinfunction "FR_SIGNAL_+_LOG-FR-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_FR")
+				(pin "LOG-SIG-P")
+				(pinfunction "SIGNAL_+_LOG-SIG-P")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "34")
+			(name "L_FOOT_RL_SIG_N")
+			(class "Default")
+			(node
+				(ref "ADC_L_FOOT")
+				(pin "LOG-RL-N")
+				(pinfunction "RL_SIGNAL_-_LOG-RL-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_RL")
+				(pin "LOG-SIG-N")
+				(pinfunction "SIGNAL_-_LOG-SIG-N")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "35")
+			(name "L_FOOT_RL_SIG_P")
+			(class "Default")
+			(node
+				(ref "ADC_L_FOOT")
+				(pin "LOG-RL-P")
+				(pinfunction "RL_SIGNAL_+_LOG-RL-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_RL")
+				(pin "LOG-SIG-P")
+				(pinfunction "SIGNAL_+_LOG-SIG-P")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "36")
+			(name "L_FOOT_RR_SIG_N")
+			(class "Default")
+			(node
+				(ref "ADC_L_FOOT")
+				(pin "LOG-RR-N")
+				(pinfunction "RR_SIGNAL_-_LOG-RR-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_RR")
+				(pin "LOG-SIG-N")
+				(pinfunction "SIGNAL_-_LOG-SIG-N")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "37")
+			(name "L_FOOT_RR_SIG_P")
+			(class "Default")
+			(node
+				(ref "ADC_L_FOOT")
+				(pin "LOG-RR-P")
+				(pinfunction "RR_SIGNAL_+_LOG-RR-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_L_RR")
+				(pin "LOG-SIG-P")
+				(pinfunction "SIGNAL_+_LOG-SIG-P")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "38")
+			(name "L_FOOT_SENSOR_DATA")
+			(class "Default")
+			(node
+				(ref "ADC_L_FOOT")
+				(pin "LOG-DATA")
+				(pinfunction "UPSTREAM_SENSOR_DATA_LOG-DATA")
+				(pintype "passive")
+			)
+			(node
+				(ref "MCU_AUX")
+				(pin "LOG-LFOOT")
+				(pinfunction "LEFT_FOOT_SENSOR_DATA_LOG-LFOOT")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "39")
 			(name "MOTION_WD_HEARTBEAT")
 			(class "Default")
 			(node
@@ -9696,7 +12855,41 @@
 			)
 		)
 		(net
-			(code "18")
+			(code "40")
+			(name "PELVIS_IMU_DATA")
+			(class "Default")
+			(node
+				(ref "IMU1")
+				(pin "LOG-DATA")
+				(pinfunction "DETERMINISTIC_SENSOR_DATA_LOG-DATA")
+				(pintype "passive")
+			)
+			(node
+				(ref "MCU_AUX")
+				(pin "LOG-IMU")
+				(pinfunction "PELVIS_IMU_DATA_LOG-IMU")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "41")
+			(name "PELVIS_IMU_INT")
+			(class "Default")
+			(node
+				(ref "IMU1")
+				(pin "LOG-INT")
+				(pinfunction "DATA_READY_/_FAULT_LOG-INT")
+				(pintype "passive")
+			)
+			(node
+				(ref "MCU_AUX")
+				(pin "LOG-IMU-INT")
+				(pinfunction "PELVIS_IMU_INTERRUPT_LOG-IMU-INT")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "42")
 			(name "PRECHARGE_REQUEST")
 			(class "Default")
 			(node
@@ -9713,7 +12906,7 @@
 			)
 		)
 		(net
-			(code "19")
+			(code "43")
 			(name "PRECHARGE_STATUS")
 			(class "Default")
 			(node
@@ -9730,7 +12923,7 @@
 			)
 		)
 		(net
-			(code "20")
+			(code "44")
 			(name "RESET_FEED")
 			(class "Default")
 			(node
@@ -9747,7 +12940,7 @@
 			)
 		)
 		(net
-			(code "21")
+			(code "45")
 			(name "RESET_RETURN")
 			(class "Default")
 			(node
@@ -9764,7 +12957,7 @@
 			)
 		)
 		(net
-			(code "22")
+			(code "46")
 			(name "RS-LARM_DN")
 			(class "Default")
 			(node
@@ -9799,7 +12992,7 @@
 			)
 		)
 		(net
-			(code "23")
+			(code "47")
 			(name "RS-LARM_DP")
 			(class "Default")
 			(node
@@ -9834,7 +13027,7 @@
 			)
 		)
 		(net
-			(code "24")
+			(code "48")
 			(name "RS-LARM_RET")
 			(class "Default")
 			(node
@@ -9875,7 +13068,7 @@
 			)
 		)
 		(net
-			(code "25")
+			(code "49")
 			(name "RS-LARM_VDD")
 			(class "Default")
 			(node
@@ -9904,7 +13097,7 @@
 			)
 		)
 		(net
-			(code "26")
+			(code "50")
 			(name "RS-LLEG_DN")
 			(class "Default")
 			(node
@@ -9957,7 +13150,7 @@
 			)
 		)
 		(net
-			(code "27")
+			(code "51")
 			(name "RS-LLEG_DP")
 			(class "Default")
 			(node
@@ -10010,7 +13203,7 @@
 			)
 		)
 		(net
-			(code "28")
+			(code "52")
 			(name "RS-LLEG_RET")
 			(class "Default")
 			(node
@@ -10069,7 +13262,7 @@
 			)
 		)
 		(net
-			(code "29")
+			(code "53")
 			(name "RS-LLEG_VDD")
 			(class "Default")
 			(node
@@ -10116,7 +13309,7 @@
 			)
 		)
 		(net
-			(code "30")
+			(code "54")
 			(name "RS-RARM_DN")
 			(class "Default")
 			(node
@@ -10151,7 +13344,7 @@
 			)
 		)
 		(net
-			(code "31")
+			(code "55")
 			(name "RS-RARM_DP")
 			(class "Default")
 			(node
@@ -10186,7 +13379,7 @@
 			)
 		)
 		(net
-			(code "32")
+			(code "56")
 			(name "RS-RARM_RET")
 			(class "Default")
 			(node
@@ -10227,7 +13420,7 @@
 			)
 		)
 		(net
-			(code "33")
+			(code "57")
 			(name "RS-RARM_VDD")
 			(class "Default")
 			(node
@@ -10256,7 +13449,7 @@
 			)
 		)
 		(net
-			(code "34")
+			(code "58")
 			(name "RS-RLEG_DN")
 			(class "Default")
 			(node
@@ -10309,7 +13502,7 @@
 			)
 		)
 		(net
-			(code "35")
+			(code "59")
 			(name "RS-RLEG_DP")
 			(class "Default")
 			(node
@@ -10362,7 +13555,7 @@
 			)
 		)
 		(net
-			(code "36")
+			(code "60")
 			(name "RS-RLEG_RET")
 			(class "Default")
 			(node
@@ -10421,7 +13614,7 @@
 			)
 		)
 		(net
-			(code "37")
+			(code "61")
 			(name "RS-RLEG_VDD")
 			(class "Default")
 			(node
@@ -10468,7 +13661,7 @@
 			)
 		)
 		(net
-			(code "38")
+			(code "62")
 			(name "RS-WAIST_DN")
 			(class "Default")
 			(node
@@ -10491,7 +13684,7 @@
 			)
 		)
 		(net
-			(code "39")
+			(code "63")
 			(name "RS-WAIST_DP")
 			(class "Default")
 			(node
@@ -10514,7 +13707,7 @@
 			)
 		)
 		(net
-			(code "40")
+			(code "64")
 			(name "RS-WAIST_RET")
 			(class "Default")
 			(node
@@ -10543,7 +13736,7 @@
 			)
 		)
 		(net
-			(code "41")
+			(code "65")
 			(name "RS-WAIST_VDD")
 			(class "Default")
 			(node
@@ -10560,7 +13753,230 @@
 			)
 		)
 		(net
-			(code "42")
+			(code "66")
+			(name "R_FOOT_EXC_N")
+			(class "Default")
+			(node
+				(ref "ADC_R_FOOT")
+				(pin "LOG-EXC-N")
+				(pinfunction "EXCITATION_-_LOG-EXC-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_FL")
+				(pin "LOG-EXC-N")
+				(pinfunction "EXCITATION_-_LOG-EXC-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_FR")
+				(pin "LOG-EXC-N")
+				(pinfunction "EXCITATION_-_LOG-EXC-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_RL")
+				(pin "LOG-EXC-N")
+				(pinfunction "EXCITATION_-_LOG-EXC-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_RR")
+				(pin "LOG-EXC-N")
+				(pinfunction "EXCITATION_-_LOG-EXC-N")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "67")
+			(name "R_FOOT_EXC_P")
+			(class "Default")
+			(node
+				(ref "ADC_R_FOOT")
+				(pin "LOG-EXC-P")
+				(pinfunction "EXCITATION_+_LOG-EXC-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_FL")
+				(pin "LOG-EXC-P")
+				(pinfunction "EXCITATION_+_LOG-EXC-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_FR")
+				(pin "LOG-EXC-P")
+				(pinfunction "EXCITATION_+_LOG-EXC-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_RL")
+				(pin "LOG-EXC-P")
+				(pinfunction "EXCITATION_+_LOG-EXC-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_RR")
+				(pin "LOG-EXC-P")
+				(pinfunction "EXCITATION_+_LOG-EXC-P")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "68")
+			(name "R_FOOT_FL_SIG_N")
+			(class "Default")
+			(node
+				(ref "ADC_R_FOOT")
+				(pin "LOG-FL-N")
+				(pinfunction "FL_SIGNAL_-_LOG-FL-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_FL")
+				(pin "LOG-SIG-N")
+				(pinfunction "SIGNAL_-_LOG-SIG-N")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "69")
+			(name "R_FOOT_FL_SIG_P")
+			(class "Default")
+			(node
+				(ref "ADC_R_FOOT")
+				(pin "LOG-FL-P")
+				(pinfunction "FL_SIGNAL_+_LOG-FL-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_FL")
+				(pin "LOG-SIG-P")
+				(pinfunction "SIGNAL_+_LOG-SIG-P")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "70")
+			(name "R_FOOT_FR_SIG_N")
+			(class "Default")
+			(node
+				(ref "ADC_R_FOOT")
+				(pin "LOG-FR-N")
+				(pinfunction "FR_SIGNAL_-_LOG-FR-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_FR")
+				(pin "LOG-SIG-N")
+				(pinfunction "SIGNAL_-_LOG-SIG-N")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "71")
+			(name "R_FOOT_FR_SIG_P")
+			(class "Default")
+			(node
+				(ref "ADC_R_FOOT")
+				(pin "LOG-FR-P")
+				(pinfunction "FR_SIGNAL_+_LOG-FR-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_FR")
+				(pin "LOG-SIG-P")
+				(pinfunction "SIGNAL_+_LOG-SIG-P")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "72")
+			(name "R_FOOT_RL_SIG_N")
+			(class "Default")
+			(node
+				(ref "ADC_R_FOOT")
+				(pin "LOG-RL-N")
+				(pinfunction "RL_SIGNAL_-_LOG-RL-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_RL")
+				(pin "LOG-SIG-N")
+				(pinfunction "SIGNAL_-_LOG-SIG-N")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "73")
+			(name "R_FOOT_RL_SIG_P")
+			(class "Default")
+			(node
+				(ref "ADC_R_FOOT")
+				(pin "LOG-RL-P")
+				(pinfunction "RL_SIGNAL_+_LOG-RL-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_RL")
+				(pin "LOG-SIG-P")
+				(pinfunction "SIGNAL_+_LOG-SIG-P")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "74")
+			(name "R_FOOT_RR_SIG_N")
+			(class "Default")
+			(node
+				(ref "ADC_R_FOOT")
+				(pin "LOG-RR-N")
+				(pinfunction "RR_SIGNAL_-_LOG-RR-N")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_RR")
+				(pin "LOG-SIG-N")
+				(pinfunction "SIGNAL_-_LOG-SIG-N")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "75")
+			(name "R_FOOT_RR_SIG_P")
+			(class "Default")
+			(node
+				(ref "ADC_R_FOOT")
+				(pin "LOG-RR-P")
+				(pinfunction "RR_SIGNAL_+_LOG-RR-P")
+				(pintype "passive")
+			)
+			(node
+				(ref "LOAD_R_RR")
+				(pin "LOG-SIG-P")
+				(pinfunction "SIGNAL_+_LOG-SIG-P")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "76")
+			(name "R_FOOT_SENSOR_DATA")
+			(class "Default")
+			(node
+				(ref "ADC_R_FOOT")
+				(pin "LOG-DATA")
+				(pinfunction "UPSTREAM_SENSOR_DATA_LOG-DATA")
+				(pintype "passive")
+			)
+			(node
+				(ref "MCU_AUX")
+				(pin "LOG-RFOOT")
+				(pinfunction "RIGHT_FOOT_SENSOR_DATA_LOG-RFOOT")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "77")
 			(name "SAFETY_PERMIT_HARDWIRED")
 			(class "Default")
 			(node
@@ -10595,7 +14011,7 @@
 			)
 		)
 		(net
-			(code "43")
+			(code "78")
 			(name "SD_POS_OUT")
 			(class "Default")
 			(node
@@ -10612,7 +14028,75 @@
 			)
 		)
 		(net
-			(code "44")
+			(code "79")
+			(name "SPK_L_NEG")
+			(class "Default")
+			(node
+				(ref "AMP1")
+				(pin "LOG-LN")
+				(pinfunction "LEFT_SPEAKER_-_LOG-LN")
+				(pintype "passive")
+			)
+			(node
+				(ref "SPK1")
+				(pin "LOG-N")
+				(pinfunction "SPEAKER_-_LOG-N")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "80")
+			(name "SPK_L_POS")
+			(class "Default")
+			(node
+				(ref "AMP1")
+				(pin "LOG-LP")
+				(pinfunction "LEFT_SPEAKER_+_LOG-LP")
+				(pintype "passive")
+			)
+			(node
+				(ref "SPK1")
+				(pin "LOG-P")
+				(pinfunction "SPEAKER_+_LOG-P")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "81")
+			(name "SPK_R_NEG")
+			(class "Default")
+			(node
+				(ref "AMP1")
+				(pin "LOG-RN")
+				(pinfunction "RIGHT_SPEAKER_-_LOG-RN")
+				(pintype "passive")
+			)
+			(node
+				(ref "SPK2")
+				(pin "LOG-N")
+				(pinfunction "SPEAKER_-_LOG-N")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "82")
+			(name "SPK_R_POS")
+			(class "Default")
+			(node
+				(ref "AMP1")
+				(pin "LOG-RP")
+				(pinfunction "RIGHT_SPEAKER_+_LOG-RP")
+				(pintype "passive")
+			)
+			(node
+				(ref "SPK2")
+				(pin "LOG-P")
+				(pinfunction "SPEAKER_+_LOG-P")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "83")
 			(name "TTL-HEAD_DATA")
 			(class "Default")
 			(node
@@ -10641,7 +14125,7 @@
 			)
 		)
 		(net
-			(code "45")
+			(code "84")
 			(name "TTL-HEAD_RET")
 			(class "Default")
 			(node
@@ -10676,7 +14160,7 @@
 			)
 		)
 		(net
-			(code "46")
+			(code "85")
 			(name "TTL-HEAD_VDD")
 			(class "Default")
 			(node
@@ -10699,7 +14183,7 @@
 			)
 		)
 		(net
-			(code "47")
+			(code "86")
 			(name "TTL-LDIST_DATA")
 			(class "Default")
 			(node
@@ -10728,7 +14212,7 @@
 			)
 		)
 		(net
-			(code "48")
+			(code "87")
 			(name "TTL-LDIST_RET")
 			(class "Default")
 			(node
@@ -10763,7 +14247,7 @@
 			)
 		)
 		(net
-			(code "49")
+			(code "88")
 			(name "TTL-LDIST_VDD")
 			(class "Default")
 			(node
@@ -10786,7 +14270,7 @@
 			)
 		)
 		(net
-			(code "50")
+			(code "89")
 			(name "TTL-RDIST_DATA")
 			(class "Default")
 			(node
@@ -10815,7 +14299,7 @@
 			)
 		)
 		(net
-			(code "51")
+			(code "90")
 			(name "TTL-RDIST_RET")
 			(class "Default")
 			(node
@@ -10850,7 +14334,7 @@
 			)
 		)
 		(net
-			(code "52")
+			(code "91")
 			(name "TTL-RDIST_VDD")
 			(class "Default")
 			(node
@@ -10873,7 +14357,7 @@
 			)
 		)
 		(net
-			(code "53")
+			(code "92")
 			(name "UART_RS-LARM_DIR")
 			(class "Default")
 			(node
@@ -10890,7 +14374,7 @@
 			)
 		)
 		(net
-			(code "54")
+			(code "93")
 			(name "UART_RS-LARM_RX")
 			(class "Default")
 			(node
@@ -10907,7 +14391,7 @@
 			)
 		)
 		(net
-			(code "55")
+			(code "94")
 			(name "UART_RS-LARM_TX")
 			(class "Default")
 			(node
@@ -10924,7 +14408,7 @@
 			)
 		)
 		(net
-			(code "56")
+			(code "95")
 			(name "UART_RS-LLEG_DIR")
 			(class "Default")
 			(node
@@ -10941,7 +14425,7 @@
 			)
 		)
 		(net
-			(code "57")
+			(code "96")
 			(name "UART_RS-LLEG_RX")
 			(class "Default")
 			(node
@@ -10958,7 +14442,7 @@
 			)
 		)
 		(net
-			(code "58")
+			(code "97")
 			(name "UART_RS-LLEG_TX")
 			(class "Default")
 			(node
@@ -10975,7 +14459,7 @@
 			)
 		)
 		(net
-			(code "59")
+			(code "98")
 			(name "UART_RS-RARM_DIR")
 			(class "Default")
 			(node
@@ -10992,7 +14476,7 @@
 			)
 		)
 		(net
-			(code "60")
+			(code "99")
 			(name "UART_RS-RARM_RX")
 			(class "Default")
 			(node
@@ -11009,7 +14493,7 @@
 			)
 		)
 		(net
-			(code "61")
+			(code "100")
 			(name "UART_RS-RARM_TX")
 			(class "Default")
 			(node
@@ -11026,7 +14510,7 @@
 			)
 		)
 		(net
-			(code "62")
+			(code "101")
 			(name "UART_RS-RLEG_DIR")
 			(class "Default")
 			(node
@@ -11043,7 +14527,7 @@
 			)
 		)
 		(net
-			(code "63")
+			(code "102")
 			(name "UART_RS-RLEG_RX")
 			(class "Default")
 			(node
@@ -11060,7 +14544,7 @@
 			)
 		)
 		(net
-			(code "64")
+			(code "103")
 			(name "UART_RS-RLEG_TX")
 			(class "Default")
 			(node
@@ -11077,7 +14561,7 @@
 			)
 		)
 		(net
-			(code "65")
+			(code "104")
 			(name "UART_RS-WAIST_DIR")
 			(class "Default")
 			(node
@@ -11094,7 +14578,7 @@
 			)
 		)
 		(net
-			(code "66")
+			(code "105")
 			(name "UART_RS-WAIST_RX")
 			(class "Default")
 			(node
@@ -11111,7 +14595,7 @@
 			)
 		)
 		(net
-			(code "67")
+			(code "106")
 			(name "UART_RS-WAIST_TX")
 			(class "Default")
 			(node
@@ -11128,7 +14612,7 @@
 			)
 		)
 		(net
-			(code "68")
+			(code "107")
 			(name "UART_TTL-HEAD_DIR")
 			(class "Default")
 			(node
@@ -11145,7 +14629,7 @@
 			)
 		)
 		(net
-			(code "69")
+			(code "108")
 			(name "UART_TTL-HEAD_RX")
 			(class "Default")
 			(node
@@ -11162,7 +14646,7 @@
 			)
 		)
 		(net
-			(code "70")
+			(code "109")
 			(name "UART_TTL-HEAD_TX")
 			(class "Default")
 			(node
@@ -11179,7 +14663,7 @@
 			)
 		)
 		(net
-			(code "71")
+			(code "110")
 			(name "UART_TTL-LDIST_DIR")
 			(class "Default")
 			(node
@@ -11196,7 +14680,7 @@
 			)
 		)
 		(net
-			(code "72")
+			(code "111")
 			(name "UART_TTL-LDIST_RX")
 			(class "Default")
 			(node
@@ -11213,7 +14697,7 @@
 			)
 		)
 		(net
-			(code "73")
+			(code "112")
 			(name "UART_TTL-LDIST_TX")
 			(class "Default")
 			(node
@@ -11230,7 +14714,7 @@
 			)
 		)
 		(net
-			(code "74")
+			(code "113")
 			(name "UART_TTL-RDIST_DIR")
 			(class "Default")
 			(node
@@ -11247,7 +14731,7 @@
 			)
 		)
 		(net
-			(code "75")
+			(code "114")
 			(name "UART_TTL-RDIST_RX")
 			(class "Default")
 			(node
@@ -11264,7 +14748,7 @@
 			)
 		)
 		(net
-			(code "76")
+			(code "115")
 			(name "UART_TTL-RDIST_TX")
 			(class "Default")
 			(node
@@ -11281,7 +14765,18 @@
 			)
 		)
 		(net
-			(code "77")
+			(code "116")
+			(name "unconnected-(AUXD1-CONVERTER_TELEMETRY-PadLOG-TLM)")
+			(class "Default")
+			(node
+				(ref "AUXD1")
+				(pin "LOG-TLM")
+				(pinfunction "CONVERTER_TELEMETRY_LOG-TLM")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "117")
 			(name "unconnected-(BATT1-BMS_STATUS-PadLOG-BMS)")
 			(class "Default")
 			(node
@@ -11292,7 +14787,7 @@
 			)
 		)
 		(net
-			(code "78")
+			(code "118")
 			(name "unconnected-(BATT1-PACK_TEMPERATURE-PadLOG-TEMP)")
 			(class "Default")
 			(node
@@ -11303,7 +14798,7 @@
 			)
 		)
 		(net
-			(code "79")
+			(code "119")
 			(name "unconnected-(CHG1-CHARGE_POSITIVE-PadLOG-POS)")
 			(class "Default")
 			(node
@@ -11314,7 +14809,7 @@
 			)
 		)
 		(net
-			(code "80")
+			(code "120")
 			(name "unconnected-(CHG1-CHARGE_RETURN-PadLOG-NEG)")
 			(class "Default")
 			(node
@@ -11325,7 +14820,7 @@
 			)
 		)
 		(net
-			(code "81")
+			(code "121")
 			(name "unconnected-(CPU1-NETWORK_{slash}_OPENAI_CLIENT-PadLOG-NET)")
 			(class "Default")
 			(node
@@ -11336,7 +14831,7 @@
 			)
 		)
 		(net
-			(code "82")
+			(code "122")
 			(name "unconnected-(DCDC1-CONVERTER_TELEMETRY-PadLOG-TLM)")
 			(class "Default")
 			(node
@@ -11347,7 +14842,7 @@
 			)
 		)
 		(net
-			(code "83")
+			(code "123")
 			(name "unconnected-(PBR_RS_LARM-BRANCH_TELEMETRY-PadLOG-TLM)")
 			(class "Default")
 			(node
@@ -11358,7 +14853,7 @@
 			)
 		)
 		(net
-			(code "84")
+			(code "124")
 			(name "unconnected-(PBR_RS_LLEG-BRANCH_TELEMETRY-PadLOG-TLM)")
 			(class "Default")
 			(node
@@ -11369,7 +14864,7 @@
 			)
 		)
 		(net
-			(code "85")
+			(code "125")
 			(name "unconnected-(PBR_RS_RARM-BRANCH_TELEMETRY-PadLOG-TLM)")
 			(class "Default")
 			(node
@@ -11380,7 +14875,7 @@
 			)
 		)
 		(net
-			(code "86")
+			(code "126")
 			(name "unconnected-(PBR_RS_RLEG-BRANCH_TELEMETRY-PadLOG-TLM)")
 			(class "Default")
 			(node
@@ -11391,7 +14886,7 @@
 			)
 		)
 		(net
-			(code "87")
+			(code "127")
 			(name "unconnected-(PBR_RS_WAIST-BRANCH_TELEMETRY-PadLOG-TLM)")
 			(class "Default")
 			(node
@@ -11402,7 +14897,7 @@
 			)
 		)
 		(net
-			(code "88")
+			(code "128")
 			(name "unconnected-(PBR_TTL_HEAD-BRANCH_TELEMETRY-PadLOG-TLM)")
 			(class "Default")
 			(node
@@ -11413,7 +14908,7 @@
 			)
 		)
 		(net
-			(code "89")
+			(code "129")
 			(name "unconnected-(PBR_TTL_LDIST-BRANCH_TELEMETRY-PadLOG-TLM)")
 			(class "Default")
 			(node
@@ -11424,7 +14919,7 @@
 			)
 		)
 		(net
-			(code "90")
+			(code "130")
 			(name "unconnected-(PBR_TTL_RDIST-BRANCH_TELEMETRY-PadLOG-TLM)")
 			(class "Default")
 			(node
@@ -11435,7 +14930,7 @@
 			)
 		)
 		(net
-			(code "91")
+			(code "131")
 			(name "unconnected-(RET1-PROTECTIVE_EARTH_{slash}_FRAME-PadLOG-PE)")
 			(class "Default")
 			(node
@@ -11446,7 +14941,7 @@
 			)
 		)
 		(net
-			(code "92")
+			(code "132")
 			(name "unconnected-(WD1-PERMIT_REQUEST_DIAGNOSTIC-PadLOG-REQ)")
 			(class "Default")
 			(node

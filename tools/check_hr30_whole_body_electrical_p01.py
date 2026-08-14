@@ -33,7 +33,7 @@ def sha(path: Path) -> str:
 
 def main() -> int:
     schematics = sorted(ECAD.glob("*.kicad_sch"))
-    require(len(schematics) == 13, "root plus twelve native sheets required")
+    require(len(schematics) == 16, "root plus fifteen native sheets required")
     require((ECAD / f"{PROJECT}.kicad_pro").is_file(), "native KiCad project missing")
     require(all(WARNING in path.read_text(encoding="utf-8") for path in schematics), "preliminary warning missing from schematic")
     connector = rows("connector-schedule.csv")
@@ -59,6 +59,10 @@ def main() -> int:
         expected |= {f"{bus}_DP", f"{bus}_DN"} if row["protocol"].startswith("RS-485") else {f"{bus}_DATA"}
         require(expected <= net_names, f"native nets missing for {bus}")
     require({"BATT_POS_RAW", "CONTACTOR_POS_IN", "K1_POS_OUT", "ACT_14V8_SAFE", "ACT_12V_SAFE", "SAFETY_PERMIT_HARDWIRED"} <= net_names, "power/interruption net chain incomplete")
+    require({"AUX_5V_SAFE", "PELVIS_IMU_DATA", "L_FOOT_SENSOR_DATA", "R_FOOT_SENSOR_DATA", "HEAD_DISPLAY_IPC", "HEAD_CAM_L_IPC", "HEAD_CAM_R_IPC"} <= net_names, "whole-body auxiliary sensing/HMI nets incomplete")
+    refs = {row["reference"] for row in connector}
+    require({"AUXD1", "IMU1", "DISP1", "MIC1", "AMP1", "SPK1", "SPK2", "FAN1", "ADC_L_FOOT", "ADC_R_FOOT"} <= refs, "whole-body sensing/HMI components incomplete")
+    require(len({ref for ref in refs if ref.startswith("LOAD_")}) == 8, "bilateral four-point foot sensing incomplete")
     erc = (ECAD / "validation" / f"{PROJECT}-erc.rpt").read_text(encoding="utf-8")
     require(re.search(r"ERC messages:\s+0\s+Errors\s+0\s+Warnings", erc) is not None, "KiCad ERC is not 0 errors / 0 warnings")
     log = (ECAD / "validation" / "kicad-cli.log").read_text(encoding="utf-8")
@@ -67,6 +71,8 @@ def main() -> int:
     require(all(ref in netlist for ref in axis_refs), "netlist omits an actuator reference")
     svg = ECAD / "output" / f"{PROJECT}.svg"
     require(svg.is_file() and svg.stat().st_size > 5000, "native hierarchy SVG missing")
+    guide = (ECAD / "index.html").read_text(encoding="utf-8")
+    require(guide.count("<object ") == 16 and "Explore all 16 native KiCad sheets" in guide and "font:17px/1.55" in guide and "font-size:14px" in guide, "interactive 16-sheet electrical guide missing or illegible")
     status = json.loads((ECAD / "electrical-status.json").read_text(encoding="utf-8"))
     require(status["native_kicad_parsed"] and status["logical_connectivity_reconciled"] and status["actuator_side_physical_pin_mapping_reconciled"] and status["erc_errors"] == status["erc_warnings"] == 0, "native electrical status incomplete")
     require(not any(status[k] for k in ("physical_pin_mapping_reconciled", "interface_devices_selected", "protection_values_selected", "functional_safety_validated", "connection_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "native status overclaims release")
@@ -82,8 +88,8 @@ def main() -> int:
     require({p.relative_to(ECAD).as_posix() for p in ECAD.rglob("*") if p.is_file()} == {p.relative_to(rel_ecad).as_posix() for p in rel_ecad.rglob("*") if p.is_file()}, "native source/release file-set mismatch")
     require(all(sha(p) == sha(rel_ecad / p.relative_to(ECAD)) for p in ECAD.rglob("*") if p.is_file()), "native source/release byte mismatch")
     page = (PACKAGE / "index.html").read_text(encoding="utf-8")
-    require(page.count("HR30-NATIVE-KICAD-P01-START") == 1 and 'id="native-electrical"' in page and "13 native sheets" in page and f"{PROJECT}.kicad_pro" in page, "interactive native electrical guide missing")
-    print("PASS: native HR-30 KiCad parses as 13 populated sheets with 25 actuator axes, official actuator-side pins, eight protocol-compatible buses and ERC 0/0; controller pins, selections, safety validation and all work authority remain open")
+    require(page.count("HR30-NATIVE-KICAD-P01-START") == 1 and 'id="native-electrical"' in page and "16 native sheets" in page and f"{PROJECT}.kicad_pro" in page and f"{PROJECT}/index.html" in page, "interactive native electrical guide missing")
+    print("PASS: native HR-30 KiCad parses as 16 populated sheets with 25 actuator axes, explicit head/pelvis/foot interfaces, official actuator-side pins, eight protocol-compatible buses and ERC 0/0; controller pins, selections, safety validation and all work authority remain open")
     return 0
 
 

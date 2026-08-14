@@ -1,8 +1,8 @@
 {
   "identifier": "HR30-WHOLE-BODY-ELECTRICAL-P0.1",
   "kicad_version": "10.0.5",
-  "native_sheet_count": 13,
-  "child_sheet_count": 12,
+  "native_sheet_count": 16,
+  "child_sheet_count": 15,
   "axis_binding_count": 25,
   "actuator_bus_segment_count": 8,
   "rs485_segment_count": 5,
