@@ -97,6 +97,23 @@ The planning preference is **{PLANNING_CLEARANCE_MM:.1f} mm** between nonadjacen
 
 This is a nominal rigid-envelope result. It does not cover manufacturing tolerance, cover deflection, belt/cable sweep, connector backshells, fastener protrusion, encoder wiring, tracking error, joint compliance, impacts, floor variation, fall restraint, or physical correlation. It grants no motion or safety credit.
 """
+    readme = f"""# HR-30 whole-body self-collision architecture P0.1
+
+**{WARNING}**
+
+This package evaluates every nonexcluded pair of posed URDF link envelopes in all {len(summary_rows)} S2–S5 configurations. Direct joint interfaces and explicitly named nested shoulder, hip and ankle structural interfaces are excluded in `collision-exclusion-register.csv`; no broad same-limb exemption is used. All other pairs are evaluated with OpenCascade B-Rep distance. Pairs at zero distance are evaluated for common volume.
+
+The planning preference is **{PLANNING_CLEARANCE_MM:.1f} mm** between nonadjacent rigid envelopes. A value below that threshold is not automatically a collision, but it remains a packaging hold for covers, cable sweep, tolerance and tracking error. Zero common volume is required for every checked pair.
+
+| Pose | Checked pairs | Interferences | Minimum clearance | Closest checked pair |
+|---|---:|---:|---:|---|
+""" + "\n".join(
+        f"| {row['title']} | {row['checked_pair_count']} | {row['interference_count']} | {float(row['minimum_clearance_mm']):.2f} mm | `{row['closest_pair']}` |"
+        for row in summary_rows
+    ) + """
+
+This is a nominal rigid-envelope result. It does not cover manufacturing tolerance, cover deflection, belt/cable sweep, connector backshells, fastener protrusion, encoder wiring, tracking error, joint compliance, impacts, floor variation, fall restraint, or physical correlation. It grants no motion or safety credit.
+"""
     (OUT / "whole-body-collision-architecture.md").write_text(readme, encoding="utf-8", newline="\n")
 
     walking_path = OUT / "walking-development-architecture.md"
@@ -106,7 +123,7 @@ This is a nominal rigid-envelope result. It does not cover manufacturing toleran
 
 ## Nominal self-collision result
 
-All five articulated poses have zero common volume across every checked nonadjacent link pair. The smallest nominal clearance is **{min(float(row['minimum_clearance_mm']) for row in summary_rows):.2f} mm**. Pairs below {PLANNING_CLEARANCE_MM:.1f} mm remain packaging holds; the complete pair register is `whole-body-collision-register.csv`. Tolerance, covers, cables, tracking error and physical motion are not validated.
+All {len(summary_rows)} articulated poses have zero common volume across every checked nonadjacent link pair. The smallest nominal clearance is **{min(float(row['minimum_clearance_mm']) for row in summary_rows):.2f} mm**. Pairs below {PLANNING_CLEARANCE_MM:.1f} mm remain packaging holds; the complete pair register is `whole-body-collision-register.csv`. Tolerance, covers, cables, tracking error and physical motion are not validated.
 
 {end}"""
     if start in walking and end in walking:
@@ -117,6 +134,10 @@ All five articulated poses have zero common volume across every checked nonadjac
 
     page_path = OUT / "index.html"
     page = page_path.read_text(encoding="utf-8")
+    web = f'''{start}<section id="collision-clearance"><h2>Whole-body pose clearances</h2><div class="grid">''' + "".join(
+        f'<article class="card {"pass" if int(row["interference_count"]) == 0 and float(row["minimum_clearance_mm"]) >= PLANNING_CLEARANCE_MM else "hold"}"><h3>{row["title"]}</h3><div class="metric">{float(row["minimum_clearance_mm"]):.1f} mm</div><p>Minimum nominal nonadjacent-link clearance; {row["interference_count"]} common-volume interferences.</p></article>'
+        for row in summary_rows
+    ) + f'''</div><div class="panel"><p>All checked poses have zero common-volume interference. Clearances below {PLANNING_CLEARANCE_MM:.1f} mm remain packaging holds because covers, wiring, tolerance and tracking error are not included. <a href="whole-body-collision-architecture.md">Read the collision model</a> · <a href="whole-body-collision-register.csv">Pair register</a> · <a href="collision-exclusion-register.csv">Named exclusions</a></p></div></section>{end}'''
     web = f'''{start}<section id="collision-clearance"><h2>Whole-body pose clearances</h2><div class="grid">''' + "".join(
         f'<article class="card {"pass" if int(row["interference_count"]) == 0 and float(row["minimum_clearance_mm"]) >= PLANNING_CLEARANCE_MM else "hold"}"><h3>{row["title"]}</h3><div class="metric">{float(row["minimum_clearance_mm"]):.1f} mm</div><p>Minimum nominal nonadjacent-link clearance; {row["interference_count"]} common-volume interferences.</p></article>'
         for row in summary_rows
@@ -197,7 +218,7 @@ def main() -> int:
     for row in holds:
         if row["hold_id"] == "HR30-P01-H08":
             row["unresolved_item"] = (
-                "The five S2-S5 articulated candidates now have zero common-volume interference across 1,450 checked nonadjacent nominal link pairs and a 7.21 mm minimum rigid-envelope clearance. "
+                f"The {len(summary_rows)} S2-S5 articulated candidates now have zero common-volume interference across {len(collision_rows):,} checked nonadjacent nominal link pairs and a {min(float(item['minimum_clearance_mm']) for item in summary_rows):.2f} mm minimum rigid-envelope clearance. "
                 "Manufacturing tolerance, covers, cable/connector sweep, tracking error, joint compliance, stopping, fall/restraint, power-loss behavior and physical correlation remain unverified."
             )
     write_csv(holds_path, holds)

@@ -69,6 +69,24 @@ POSES = (
         {"L_HIP_ROLL": 8.5, "L_ANKLE_ROLL": -8.5, "R_HIP_ROLL": 8.5, "R_ANKLE_ROLL": -8.5, "R_HIP_PITCH": -25.0, "R_KNEE_PITCH": 35.0, "R_ANKLE_PITCH": -10.0, "L_SHOULDER_PITCH": -12.0, "R_SHOULDER_PITCH": 12.0, "L_ELBOW_PITCH": 15.0, "R_ELBOW_PITCH": 15.0},
         ("L",), "L", "R",
     ),
+    Pose(
+        "P05_RIGHT_WEIGHT_TRANSFER", "S3", "Right weight transfer", "Mirror the lateral whole-body transfer over the right foot while both soles remain nominally flat; no foot lift.",
+        -0.050, 0.0,
+        {"L_HIP_ROLL": -8.5, "L_ANKLE_ROLL": 8.5, "R_HIP_ROLL": -8.5, "R_ANKLE_ROLL": 8.5, "L_SHOULDER_ROLL": -12.0, "R_SHOULDER_ROLL": 12.0},
+        ("L", "R"), "R", None,
+    ),
+    Pose(
+        "P06_LEFT_FOOT_LIFT", "S4", "Left foot lift", "Mirror the restrained lift candidate over the right foot with a nominal sub-10 mm left-foot clearance and no forward placement.",
+        -0.050, 0.0,
+        {"L_HIP_ROLL": -8.5, "L_ANKLE_ROLL": 8.5, "R_HIP_ROLL": -8.5, "R_ANKLE_ROLL": 8.5, "L_SHOULDER_ROLL": -12.0, "R_SHOULDER_ROLL": 12.0, "L_HIP_PITCH": -12.0, "L_KNEE_PITCH": 24.0, "L_ANKLE_PITCH": -12.0},
+        ("R",), "R", "L",
+    ),
+    Pose(
+        "P07_LEFT_CAPTURE_STEP", "S5", "Left capture-step candidate", "Mirror the guarded forward placement target so both leg chains have complete lift and capture references.",
+        -0.050, 0.0,
+        {"L_HIP_ROLL": -8.5, "L_ANKLE_ROLL": 8.5, "R_HIP_ROLL": -8.5, "R_ANKLE_ROLL": 8.5, "L_HIP_PITCH": -25.0, "L_KNEE_PITCH": 35.0, "L_ANKLE_PITCH": -10.0, "L_SHOULDER_PITCH": 12.0, "R_SHOULDER_PITCH": -12.0, "L_ELBOW_PITCH": 15.0, "R_ELBOW_PITCH": 15.0},
+        ("R",), "R", "L",
+    ),
 )
 
 
@@ -319,6 +337,18 @@ The package now carries five generated full-body configurations rather than pros
         f"| {row['title']} | {row['stage']} | {row['support_mode']} | {float(row['primary_support_margin_mm']):.1f} mm | {float(row['swing_foot_clearance_mm']):.1f} mm | {float(row['swing_foot_forward_displacement_mm']):.1f} mm |"
         for row in metric_rows
     ) + f"\n\n{end}"
+    block = f"""{start}
+
+## Articulated P0.1 pose set
+
+The package now carries {len(pose_rows)} generated full-body configurations rather than prose-only stages, including mirrored lift and capture-step candidates for both legs. Joint targets are in `pose-joint-targets.csv`; transformed COM, support polygons, foot clearance and placement are in `pose-support-metrics.csv`; and each pose has STEP and GLB geometry. The minimum primary-foot COM margin in this set is **{min(float(row['primary_support_margin_mm']) for row in metric_rows):.1f} mm**. This is a rigid-link kinematic screen using provisional inertial data—not a zero-moment-point, contact-force, compliance, actuator, trajectory or balance validation.
+
+| Pose | Stage | Support | COM margin | Swing clearance | Forward placement |
+|---|---:|---|---:|---:|---:|
+""" + "\n".join(
+        f"| {row['title']} | {row['stage']} | {row['support_mode']} | {float(row['primary_support_margin_mm']):.1f} mm | {float(row['swing_foot_clearance_mm']):.1f} mm | {float(row['swing_foot_forward_displacement_mm']):.1f} mm |"
+        for row in metric_rows
+    ) + f"\n\n{end}"
     if start in walking and end in walking:
         walking = walking[:walking.index(start)] + block + walking[walking.index(end) + len(end):]
     else:
@@ -327,6 +357,10 @@ The package now carries five generated full-body configurations rather than pros
 
     page = (OUT / "index.html").read_text(encoding="utf-8")
     web_block = f'''{start}<section id="walking-poses"><h2>Stand, transfer, lift, and step in the actual kinematic model</h2><div class="viewer"><model-viewer src="HR-30_whole_body_pose_lineup_candidate.glb" alt="Interactive lineup of five preliminary articulated HR-30 whole-body standing and stepping poses" camera-controls camera-orbit="32deg 74deg 110%" min-camera-orbit="auto auto 20%" max-camera-orbit="auto auto 260%" field-of-view="28deg" shadow-intensity="0.8" exposure="1.05"></model-viewer><p>Five complete articulated robots are shown from neutral stand through the first guarded capture-step candidate. Green slabs identify the modeled support region. These are pose references—not approved commands or evidence that the robot can balance.</p></div><div class="table"><table><thead><tr><th>Pose</th><th>Stage</th><th>Support</th><th>Primary COM margin</th><th>Swing clearance</th><th>Forward placement</th></tr></thead><tbody>''' + "".join(
+        f"<tr><td>{row['title']}</td><td>{row['stage']}</td><td>{row['support_mode']}</td><td>{float(row['primary_support_margin_mm']):.1f} mm</td><td>{float(row['swing_foot_clearance_mm']):.1f} mm</td><td>{float(row['swing_foot_forward_displacement_mm']):.1f} mm</td></tr>"
+        for row in metric_rows
+    ) + '''</tbody></table></div><div class="panel"><p><a href="walking-pose-architecture.md">Pose architecture</a> · <a href="whole-body-pose-register.csv">Pose register</a> · <a href="pose-joint-targets.csv">Joint targets</a> · <a href="pose-support-metrics.csv">Support metrics</a> · <a href="HR-30_whole_body_pose_lineup_candidate.glb">Pose GLB</a></p></div></section>''' + end
+    web_block = f'''{start}<section id="walking-poses"><h2>Stand, transfer, lift, and step in the actual kinematic model</h2><div class="viewer"><model-viewer src="HR-30_whole_body_pose_lineup_candidate.glb" alt="Interactive lineup of {len(pose_rows)} preliminary articulated HR-30 whole-body standing and bilateral stepping poses" camera-controls camera-orbit="32deg 74deg 110%" min-camera-orbit="auto auto 20%" max-camera-orbit="auto auto 260%" field-of-view="28deg" shadow-intensity="0.8" exposure="1.05"></model-viewer><p>{len(pose_rows)} complete articulated robots are shown from neutral stand through mirrored right- and left-leg lift and capture-step candidates. Green slabs identify the modeled support region. These are pose references—not approved commands or evidence that the robot can balance.</p></div><div class="table"><table><thead><tr><th>Pose</th><th>Stage</th><th>Support</th><th>Primary COM margin</th><th>Swing clearance</th><th>Forward placement</th></tr></thead><tbody>''' + "".join(
         f"<tr><td>{row['title']}</td><td>{row['stage']}</td><td>{row['support_mode']}</td><td>{float(row['primary_support_margin_mm']):.1f} mm</td><td>{float(row['swing_foot_clearance_mm']):.1f} mm</td><td>{float(row['swing_foot_forward_displacement_mm']):.1f} mm</td></tr>"
         for row in metric_rows
     ) + '''</tbody></table></div><div class="panel"><p><a href="walking-pose-architecture.md">Pose architecture</a> · <a href="whole-body-pose-register.csv">Pose register</a> · <a href="pose-joint-targets.csv">Joint targets</a> · <a href="pose-support-metrics.csv">Support metrics</a> · <a href="HR-30_whole_body_pose_lineup_candidate.glb">Pose GLB</a></p></div></section>''' + end
@@ -345,6 +379,16 @@ This package converts the S2–S5 standing and walking-development prose into fi
 The register is deliberately fail-closed: values are pose candidates, not executable commands. A positive projected-COM margin is only a quasistatic geometry screen. It does not include contact-force distribution, compliance, backlash, actuator limits, rate limits, zero-moment point, capture point, state-estimation error, floor variation, cable forces, fall-restraint forces or physical correlation.
 
 The S4 lift target is capped below 10 mm in the generated geometry. The S5 forward placement remains within the 50 mm development class. Exact metrics are machine-readable in `pose-support-metrics.csv`.
+"""
+    readme = f"""# HR-30 articulated whole-body pose architecture P0.1
+
+**{WARNING}**
+
+This package converts the S2–S5 standing and walking-development prose into {len(POSES)} complete rigid-link whole-body configurations. The generator reads the authoritative 25-axis URDF, applies explicit joint targets, shifts the floating base to keep the declared support foot or feet on Z=0, transforms every link inertial COM, constructs the convex support polygon and exports recognizable full-body CAD with head, screen face, arms, two-finger hands, legs, ankles and feet. Both legs have mirrored weight-transfer, lift and capture-step candidates.
+
+The register is deliberately fail-closed: values are pose candidates, not executable commands. A positive projected-COM margin is only a quasistatic geometry screen. It does not include contact-force distribution, compliance, backlash, actuator limits, rate limits, zero-moment point, capture point, state-estimation error, floor variation, cable forces, fall-restraint forces or physical correlation.
+
+The S4 lift targets are capped below 10 mm in the generated geometry. The S5 forward placements remain within the 50 mm development class. Exact metrics are machine-readable in `pose-support-metrics.csv`.
 """
     (OUT / "walking-pose-architecture.md").write_text(readme, encoding="utf-8", newline="\n")
 
@@ -389,7 +433,7 @@ def main() -> int:
 
         shapes = pose_shapes(pose, links, link_tf, support_polygon)
         step_name, glb_name = export_pose(pose, shapes)
-        lineup_offset = transform(((pose_index - 2) * 0.300, 0.0, 0.0))
+        lineup_offset = transform(((pose_index - (len(POSES) - 1) / 2.0) * 0.300, 0.0, 0.0))
         for name, shape, color in shapes:
             lineup.add(transformed(shape, lineup_offset), name=f"{pose.pose_id}_{name}", color=color)
 

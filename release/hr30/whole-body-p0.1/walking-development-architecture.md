@@ -23,7 +23,7 @@ The fall-restraint architecture is a rated overhead gantry, swivel, energy-limit
 
 ## Articulated P0.1 pose set
 
-The package now carries five generated full-body configurations rather than prose-only stages. Joint targets are in `pose-joint-targets.csv`; transformed COM, support polygons, foot clearance and placement are in `pose-support-metrics.csv`; and each pose has STEP and GLB geometry. The minimum primary-foot COM margin in this set is **22.5 mm**. This is a rigid-link kinematic screen using provisional inertial data—not a zero-moment-point, contact-force, compliance, actuator, trajectory or balance validation.
+The package now carries 8 generated full-body configurations rather than prose-only stages, including mirrored lift and capture-step candidates for both legs. Joint targets are in `pose-joint-targets.csv`; transformed COM, support polygons, foot clearance and placement are in `pose-support-metrics.csv`; and each pose has STEP and GLB geometry. The minimum primary-foot COM margin in this set is **22.5 mm**. This is a rigid-link kinematic screen using provisional inertial data—not a zero-moment-point, contact-force, compliance, actuator, trajectory or balance validation.
 
 | Pose | Stage | Support | COM margin | Swing clearance | Forward placement |
 |---|---:|---|---:|---:|---:|
@@ -32,6 +32,9 @@ The package now carries five generated full-body configurations rather than pros
 | Left weight transfer | S3 | DOUBLE | 22.5 mm | 0.0 mm | 0.0 mm |
 | Right foot lift | S4 | L SINGLE | 22.6 mm | 7.2 mm | 1.0 mm |
 | Right capture-step candidate | S5 | L SINGLE | 22.8 mm | 18.2 mm | 43.2 mm |
+| Right weight transfer | S3 | DOUBLE | 24.2 mm | 0.0 mm | 0.0 mm |
+| Left foot lift | S4 | R SINGLE | 24.3 mm | 7.2 mm | 1.0 mm |
+| Left capture-step candidate | S5 | R SINGLE | 24.6 mm | 18.2 mm | 43.2 mm |
 
 <!-- HR30-POSE-P01-END -->
 
@@ -39,6 +42,6 @@ The package now carries five generated full-body configurations rather than pros
 
 ## Nominal self-collision result
 
-All five articulated poses have zero common volume across every checked nonadjacent link pair. The smallest nominal clearance is **7.21 mm**. Pairs below 5.0 mm remain packaging holds; the complete pair register is `whole-body-collision-register.csv`. Tolerance, covers, cables, tracking error and physical motion are not validated.
+All 8 articulated poses have zero common volume across every checked nonadjacent link pair. The smallest nominal clearance is **7.19 mm**. Pairs below 5.0 mm remain packaging holds; the complete pair register is `whole-body-collision-register.csv`. Tolerance, covers, cables, tracking error and physical motion are not validated.
 
 <!-- HR30-COLLISION-P01-END -->

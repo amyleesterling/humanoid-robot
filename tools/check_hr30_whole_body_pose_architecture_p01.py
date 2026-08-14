@@ -31,13 +31,22 @@ def main() -> int:
     poses = rows("whole-body-pose-register.csv")
     targets = rows("pose-joint-targets.csv")
     metrics = rows("pose-support-metrics.csv")
-    require(len(poses) == 5 and {row["stage"] for row in poses} == {"S2", "S3", "S4", "S5"}, "pose/stage set incomplete")
-    require(len(targets) == 125 and all(row["within_urdf_limit"] == "YES" for row in targets), "25-axis pose targets incomplete or outside limits")
-    require(len(metrics) == 5 and all(float(row["primary_support_margin_mm"]) > 0 for row in metrics), "projected COM leaves a declared primary support polygon")
-    lift = next(row for row in metrics if row["pose_id"] == "P03_RIGHT_FOOT_LIFT")
-    step = next(row for row in metrics if row["pose_id"] == "P04_RIGHT_CAPTURE_STEP")
-    require(0 < float(lift["swing_foot_clearance_mm"]) <= 10.0 and abs(float(lift["swing_foot_forward_displacement_mm"])) <= 5.0, "S4 lift geometry violates the no-placement/sub-10 mm boundary")
-    require(10.0 < float(step["swing_foot_clearance_mm"]) < 30.0 and 35.0 <= float(step["swing_foot_forward_displacement_mm"]) <= 50.0, "S5 step geometry outside declared development class")
+    expected_pose_ids = {
+        "P00_NEUTRAL_STAND", "P01_CROUCHED_STAND",
+        "P02_LEFT_WEIGHT_TRANSFER", "P03_RIGHT_FOOT_LIFT", "P04_RIGHT_CAPTURE_STEP",
+        "P05_RIGHT_WEIGHT_TRANSFER", "P06_LEFT_FOOT_LIFT", "P07_LEFT_CAPTURE_STEP",
+    }
+    require(len(poses) == 8 and {row["pose_id"] for row in poses} == expected_pose_ids and {row["stage"] for row in poses} == {"S2", "S3", "S4", "S5"}, "bilateral pose/stage set incomplete")
+    require(len(targets) == 200 and all(row["within_urdf_limit"] == "YES" for row in targets), "25-axis bilateral pose targets incomplete or outside limits")
+    require(len(metrics) == 8 and all(float(row["primary_support_margin_mm"]) > 0 for row in metrics), "projected COM leaves a declared primary support polygon")
+    right_lift = next(row for row in metrics if row["pose_id"] == "P03_RIGHT_FOOT_LIFT")
+    right_step = next(row for row in metrics if row["pose_id"] == "P04_RIGHT_CAPTURE_STEP")
+    left_lift = next(row for row in metrics if row["pose_id"] == "P06_LEFT_FOOT_LIFT")
+    left_step = next(row for row in metrics if row["pose_id"] == "P07_LEFT_CAPTURE_STEP")
+    for lift in (right_lift, left_lift):
+        require(0 < float(lift["swing_foot_clearance_mm"]) <= 10.0 and abs(float(lift["swing_foot_forward_displacement_mm"])) <= 5.0, "S4 lift geometry violates the no-placement/sub-10 mm boundary")
+    for step in (right_step, left_step):
+        require(10.0 < float(step["swing_foot_clearance_mm"]) < 30.0 and 35.0 <= float(step["swing_foot_forward_displacement_mm"]) <= 50.0, "S5 step geometry outside declared development class")
     for pose in poses:
         require((SRC / pose["step_file"]).stat().st_size > 20_000 and (SRC / pose["glb_file"]).stat().st_size > 10_000, f"empty pose export: {pose['pose_id']}")
         require("NO POWERED TEST" in pose["authority"], f"pose authority overclaim: {pose['pose_id']}")
@@ -46,13 +55,13 @@ def main() -> int:
     page = (SRC / "index.html").read_text(encoding="utf-8")
     walking = (SRC / "walking-development-architecture.md").read_text(encoding="utf-8")
     require(page.count('id="walking-poses"') == 1 and "HR-30_whole_body_pose_lineup_candidate.glb" in page, "interactive pose guide missing")
-    require("## Articulated P0.1 pose set" in walking and "â€”" not in walking, "walking pose section missing or mojibake retained")
+    require("## Articulated P0.1 pose set" in walking and not any(token in walking for token in ("â", "Ã", "Â")), "walking pose section missing or mojibake retained")
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
-    require(status["whole_body_pose_architecture_present"] and status["whole_body_pose_count"] == 5 and status["pose_support_geometry_screen_complete"], "pose package status incomplete")
+    require(status["whole_body_pose_architecture_present"] and status["whole_body_pose_count"] == 8 and status["pose_support_geometry_screen_complete"], "pose package status incomplete")
     require(not any(status[key] for key in ("pose_trajectory_validated", "quasistatic_balance_validated", "dynamic_walking_validated", "motion_authority", "energization_authority")), "pose validation/authority overclaim")
     for name in ("whole-body-pose-register.csv", "pose-joint-targets.csv", "pose-support-metrics.csv", "walking-pose-architecture.md", "HR-30_whole_body_pose_lineup_candidate.glb"):
         require((REL / name).exists() and sha(SRC / name) == sha(REL / name), f"release pose artifact drift: {name}")
-    print(f"PASS: HR-30 has five complete articulated whole-body S2-S5 pose candidates and 125 in-limit joint targets; projected support margins remain positive, S4 lift is {float(lift['swing_foot_clearance_mm']):.1f} mm, S5 placement is {float(step['swing_foot_forward_displacement_mm']):.1f} mm; no balance, motion, or safety credit")
+    print(f"PASS: HR-30 has eight complete articulated whole-body S2-S5 pose candidates and 200 in-limit joint targets; projected support margins remain positive, bilateral S4 lifts are {float(right_lift['swing_foot_clearance_mm']):.1f}/{float(left_lift['swing_foot_clearance_mm']):.1f} mm and bilateral S5 placements are {float(right_step['swing_foot_forward_displacement_mm']):.1f}/{float(left_step['swing_foot_forward_displacement_mm']):.1f} mm; no balance, motion, or safety credit")
     return 0
 
 
