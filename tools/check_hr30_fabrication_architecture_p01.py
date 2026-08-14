@@ -54,7 +54,7 @@ def main() -> int:
     require(len({row["part_id"] for row in parts}) == len(parts), "duplicate fabrication part identity")
     require({row["module"] for row in parts} >= {"H01", "N01", "T01", "P01", "A01", "A02", "G01", "G02", "L01", "L02", "F01", "F02", "HN01"}, "fabrication geometry does not cover every body module")
     require(len(panels) == 26 and len({row["panel_id"] for row in panels}) == 26, "service panel register incomplete")
-    require(all(float(row["nominal_wall_mm"]) >= 2.4 and "SELECTION REQUIRED" in row["release_state"] for row in panels), "panel wall/release boundary missing")
+    require(all(float(row["nominal_wall_mm"]) >= 1.8 and "SELECTION REQUIRED" in row["release_state"] for row in panels), "panel wall/release boundary missing")
     require(len(routes) == 11 and {row["service_class"] for row in routes} == {"ACTUATOR POWER", "DATA/LOW VOLTAGE", "DATA/ENCODER"}, "harness route service classes incomplete")
     require(all(float(row["minimum_dynamic_bend_radius_mm"]) >= 40 and row["connector_boundary"] == "SELECTION REQUIRED" for row in routes), "harness bend/connector boundary incomplete")
     require(sum(row["service_class"] == "ACTUATOR POWER" for row in routes) == 5, "actuator-power route count mismatch")

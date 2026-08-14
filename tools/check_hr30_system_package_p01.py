@@ -38,6 +38,7 @@ def main() -> int:
         "structured-action-request.schema.json", "modular-fabrication-assembly-electrification-plan.md",
         "system-package-source.py", "index.html", "README.md", "package-status.json", "file-manifest.csv",
         "mass-reconciliation-summary.json", "mass-item-reconciliation.csv", "link-mass-reconciliation.csv",
+        "lightweight-architecture-register.csv",
     }
     source_files = {p.relative_to(SRC).as_posix() for p in SRC.rglob("*") if p.is_file()}
     release_files = {p.relative_to(REL).as_posix() for p in REL.rglob("*") if p.is_file()}

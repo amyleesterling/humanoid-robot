@@ -19,8 +19,8 @@ HR30-BOM-017,foot force sensing,SELECTION REQUIRED,four-corner load-cell and ADC
 HR30-BOM-018,output absolute encoder,SELECTION REQUIRED,reduced leg joint encoder,8,70,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-019,leg reductions,SELECTION REQUIRED,"1.5:1 pitch-axis and 2.0:1 roll-axis geometric candidates; exact belt, pulley, bearing and retention selections open",10,90,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-020,joint support,SELECTION REQUIRED,dual-bearing shaft stack per load-bearing axis,25,35,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
-HR30-BOM-021,frame plates,custom,"P0.1 paired 4 mm limb plates, torso rails/cross-tube, pelvis plates and foot carriers; CAD density screen 2.627 kg; drawings/material release open",1,900,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
-HR30-BOM-022,shells,custom,P0.1 2.4-3.0 mm removable torso/pelvis/head/limb/palm cover set; CAD density screen 0.979 kg; material/process/retention open,1,450,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
+HR30-BOM-021,frame plates,custom,"P0.1 windowed 4 mm limb plates, hollow torso rails/cross-tube, windowed pelvis plates and foot carriers; CAD density screen 1.526 kg; drawings/material release open",1,900,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
+HR30-BOM-022,shells,custom,P0.1 1.8-2.0 mm removable torso/pelvis/head/limb/palm cover set; CAD density screen 0.684 kg; material/process/rib/retention open,1,450,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-023,feet,custom,machined/printed foot core + replaceable compliant sole,2,180,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-024,gripper pads,custom,replaceable broad compliant pad set,2,45,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-025,development power,SELECTION REQUIRED,tethered current-limited 14.8 V-class source,1,500,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY

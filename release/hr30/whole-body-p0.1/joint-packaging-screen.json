@@ -1,7 +1,7 @@
 {
   "screen": "NEUTRAL-POSE CONNECTIVITY / CROSS-ASSEMBLY EXACT-ACTUATOR COLLISION / FLOOR",
   "scope": "Nominal packaging only; excludes swept motion, tolerance, cable, structural and safety proof",
-  "module_part_count": 189,
+  "module_part_count": 167,
   "exact_actuator_count": 25,
   "detached": [],
   "cross_assembly_actuator_collisions": [],

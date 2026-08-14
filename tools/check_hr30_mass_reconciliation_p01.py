@@ -32,7 +32,7 @@ def main() -> int:
     required = {
         "actuator-mass-source-register.csv", "mass-item-reconciliation.csv",
         "link-mass-reconciliation.csv", "mass-reconciliation-summary.json",
-        "mass-reconciliation.md", "mass-reconciliation-source.py",
+        "mass-reconciliation.md", "mass-reconciliation-source.py", "lightweight-architecture-register.csv",
     }
     for name in required:
         require((SRC / name).is_file(), f"missing {name}")
@@ -54,10 +54,10 @@ def main() -> int:
         require(row["accessed_date"] == "2026-08-14" and row["document_revision_or_date"] == "NOT PUBLISHED ON LIVE PAGE", f"source date/revision disclosure drift {model}")
 
     items = rows("mass-item-reconciliation.csv")
-    require(len(items) == len({row["item_id"] for row in items}) == 255, "mass item identity/count drift")
+    require(len(items) == len({row["item_id"] for row in items}) == 233, "mass item identity/count drift")
     categories = Counter(row["category"] for row in items)
     require(categories == Counter({
-        "JOINT HARDWARE CAD DENSITY SCREEN": 164,
+        "JOINT HARDWARE CAD DENSITY SCREEN": 142,
         "FABRICATION CAD DENSITY SCREEN": 66,
         "MANUFACTURER PUBLISHED ACTUATOR MASS": 25,
     }), "mass category population drift")
@@ -76,9 +76,15 @@ def main() -> int:
         require(abs(actual - float(summary[key])) < 2e-9, f"summary category mismatch {category}")
     identified = sum(float(row["planning_candidate_mass_kg"]) for row in items)
     require(abs(identified - float(summary["planning_identified_candidate_mass_kg"])) < 2e-9, "identified subtotal mismatch")
-    require(identified > 13.0, "mass reconciliation unexpectedly low")
+    require(8.5 < identified < 9.0, "lightweight identified subtotal outside controlled P0.1 band")
     require(summary["program_mass_target_status"] == "EXCEEDED" and summary["planning_margin_to_program_maximum_kg"] < 0, "10 kg infeasibility not disclosed")
     require(not any(summary["authority"].values()), "mass package authority overclaim")
+
+    decisions = rows("lightweight-architecture-register.csv")
+    require(len(decisions) == 7 and {row["decision_id"] for row in decisions} >= {"HR30-LW-001", "HR30-LW-004", "HR30-LW-005", "HR30-LW-TOTAL"}, "lightweight architecture decision set incomplete")
+    total_decision = next(row for row in decisions if row["decision_id"] == "HR30-LW-TOTAL")
+    require("dfb9a7d" in total_decision["baseline_candidate"] and "gross identified reduction" in total_decision["mass_effect"], "lightweight baseline/delta traceability missing")
+    require(all(row["authority"].startswith("NO PROCUREMENT") for row in decisions), "lightweight decision authority overclaim")
 
     links = rows("link-mass-reconciliation.csv")
     require(len(links) == 26 and len({row["dynamic_link"] for row in links}) == 26, "link reconciliation population drift")
@@ -100,7 +106,7 @@ def main() -> int:
     require(budget["link"] == "TOTAL" and abs(float(budget["allocated_mass_kg"]) - reconciled_total) < 2e-6, "mass-properties total not reconciled")
 
     allocation = {row["assembly"]: row for row in rows("mass-allocation-register.csv")}
-    require(float(allocation["TOTAL"]["cad_mass_kg"].split()[-1]) > 16.0, "allocation register retains old 9.63 kg claim")
+    require(abs(float(allocation["TOTAL"]["cad_mass_kg"].split()[-1]) - round(reconciled_total, 3)) < 0.001, "allocation register total does not match reconciliation")
     require("OVER MAXIMUM" in allocation["TOTAL"]["status"], "allocation register does not expose mass failure")
     require("NOT YET IDENTIFIED" in allocation["unmodeled equipment and completion mass"]["cad_mass_kg"], "unmodeled equipment not explicit")
 
@@ -109,9 +115,9 @@ def main() -> int:
     require(abs(float(status["estimated_mass_kg"]) - reconciled_total) < 2e-9, "main package mass drift")
     require(not any(status[key] for key in ("procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "main package authority overclaim")
     page = (SRC / "index.html").read_text(encoding="utf-8")
-    require("mass-reconciliation.md" in page and "mass-item-reconciliation.csv" in page and "16.675 kg reconciled planning" in page, "web guide mass reconciliation missing")
+    require("mass-reconciliation.md" in page and "mass-item-reconciliation.csv" in page and "lightweight-architecture-register.csv" in page and f"{reconciled_total:.3f} kg reconciled planning" in page, "web guide mass reconciliation missing")
     require("major unmodeled mass" in page.lower(), "web guide hides unmodeled mass")
-    print(f"PASS: HR-30 mass reconciliation inventories 255 candidate items, 3.391 kg published actuator mass, {identified:.3f} kg gross identified mass and {reconciled_total:.3f} kg provisional dynamics mass; 10 kg target and all physical/authority gates remain open")
+    print(f"PASS: HR-30 mass reconciliation inventories 233 candidate items, 3.391 kg published actuator mass, {identified:.3f} kg gross identified mass and {reconciled_total:.3f} kg provisional dynamics mass; 10 kg target and all physical/authority gates remain open")
     return 0
 
 

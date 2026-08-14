@@ -128,6 +128,13 @@ def cylinder_between(origin: tuple[float, float, float], direction: tuple[float,
     return cq.Solid.makeCylinder(diameter / 2.0, length, start, d)
 
 
+def hollow_cylinder_between(origin: tuple[float, float, float], direction: tuple[float, float, float], length: float, outer_diameter: float, bore_diameter: float) -> cq.Shape:
+    """Candidate hollow shaft/tube with a through bore and unchanged outer interface."""
+    outer = cylinder_between(origin, direction, length, outer_diameter)
+    inner = cylinder_between(origin, direction, length + 2.0, bore_diameter)
+    return outer.cut(inner)
+
+
 def link_between(a: tuple[float, float, float], b: tuple[float, float, float], diameter: float) -> cq.Shape:
     av = cq.Vector(*a)
     bv = cq.Vector(*b)
@@ -187,21 +194,46 @@ def interface_plate(
     pattern_x: float,
     pattern_y: float,
     clearance_diameter: float,
+    shaft_diameter: float,
 ) -> cq.Shape:
-    plate = cq.Workplane(local_plane(center, direction)).box(width, height, thickness)
-    return (
+    plane = local_plane(center, direction)
+    plate = cq.Workplane(plane).box(width, height, thickness)
+    drilled = (
         plate.faces(">Z")
         .workplane()
         .pushPoints([(-pattern_x / 2, -pattern_y / 2), (-pattern_x / 2, pattern_y / 2), (pattern_x / 2, -pattern_y / 2), (pattern_x / 2, pattern_y / 2)])
         .hole(clearance_diameter)
-        .val()
     )
+    # Preserve the complete outer datum and four bolt pads while replacing the
+    # old solid slab with a closed rectangular carrier frame.
+    window_x = max(8.0, pattern_x - 10.0)
+    window_y = max(8.0, pattern_y - 10.0)
+    frame = drilled.faces(">Z").workplane().rect(window_x, window_y).cutThruAll().val()
+    spoke_w = max(5.0, clearance_diameter + 2.0)
+    cross_x = cq.Workplane(plane).box(window_x + 2.0, spoke_w, thickness).val()
+    cross_y = cq.Workplane(plane).box(spoke_w, window_y + 2.0, thickness).val()
+    center_bore = cylinder_between(center, direction, thickness + 2.0, shaft_diameter + 0.6)
+    return frame.fuse(cross_x).fuse(cross_y).cut(center_bore)
 
 
 def bearing_ring(center: tuple[float, float, float], direction: tuple[float, float, float], width: float, outer_diameter: float, shaft_diameter: float) -> cq.Shape:
     outer = cylinder_between(center, direction, width, outer_diameter)
     bore = cylinder_between(center, direction, width + 2.0, shaft_diameter + 0.4)
     return outer.cut(bore)
+
+
+def spoked_pulley(center: tuple[float, float, float], direction: tuple[float, float, float], width: float, outer_diameter: float, shaft_diameter: float) -> cq.Shape:
+    """Packaging pulley with outer rim, hub and four load-path spokes."""
+    plane = local_plane(center, direction)
+    rim_t = max(2.5, outer_diameter * 0.07)
+    hub_od = max(shaft_diameter + 8.0, outer_diameter * 0.30)
+    rim = cq.Workplane(plane).circle(outer_diameter / 2.0).circle(outer_diameter / 2.0 - rim_t).extrude(width / 2.0, both=True)
+    hub = cq.Workplane(plane).circle(hub_od / 2.0).circle(shaft_diameter / 2.0 + 0.2).extrude(width / 2.0, both=True)
+    spoke_span = outer_diameter - 2.0 * rim_t + 1.0
+    spoke_w = max(3.0, rim_t)
+    cross_x = cq.Workplane(plane).box(spoke_span, spoke_w, width)
+    cross_y = cq.Workplane(plane).box(spoke_w, spoke_span, width)
+    return rim.union(hub).union(cross_x).union(cross_y).val()
 
 
 JOINT_MODULE_FAMILIES = {
@@ -254,6 +286,12 @@ JOINT_MODULE_FAMILIES = {
         "transmission": "parallel-axis timing transmission with output encoder", "ratio": "2.0:1 geometric candidate", "motor_offset": 46.0, "cable_d": 12.0,
     },
 }
+
+# Remote/reduced output shafts retain two external supports. Direct-drive
+# families use the actuator's internal output support plus one external bearing
+# carrier, avoiding the former redundant two-external-bearing mass model.
+for _family in JOINT_MODULE_FAMILIES.values():
+    _family["external_bearings"] = 2 if _family["motor_offset"] > 0 else 1
 
 
 def joint_module_family(axis_id: str) -> str:
@@ -476,7 +514,8 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
         add_axis(f"{side}_ANKLE_ROLL", "leg", side, "roll", (sign * HIP_HALF_WIDTH, 0, 37), (0, 1, 0), "+/-20 deg", "HR-WALK-001")
 
     # Turn each datum into a visible, dimensioned joint-module candidate.  The
-    # geometry establishes the architecture of shafts, two-sided bearings,
+    # geometry establishes the architecture of hollow shafts, actuator-plus-
+    # external direct support or two-sided remote-output support,
     # removable interface plates, actuator envelopes, cable corridors and
     # reduction reservations.  It deliberately does not claim bearing fits,
     # materials, preload, fastener strength, actuator ratings or DFM release.
@@ -491,8 +530,10 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
         normal = cq.Vector(*direction).normalized()
         span = spec["span"]
         shaft_length = span + 2.0 * spec["plate_t"]
-        add(f"JMOD_{axis_id}_OUTPUT_SHAFT", "joint module shaft", cylinder_between(center, direction, shaft_length, spec["shaft_d"]), joint, True, f"{family_id} shaft candidate; material and fits selection required")
-        for end_name, sign_end in (("A", -1.0), ("B", 1.0)):
+        shaft_bore = max(2.0, spec["shaft_d"] * 0.62)
+        add(f"JMOD_{axis_id}_OUTPUT_SHAFT", "joint module shaft", hollow_cylinder_between(center, direction, shaft_length, spec["shaft_d"], shaft_bore), joint, True, f"{family_id} hollow shaft candidate with {shaft_bore:.1f} mm through bore; material, wall, fits and retention selection required")
+        end_specs = (("A", -1.0), ("B", 1.0)) if spec["external_bearings"] == 2 else (("B", 1.0),)
+        for end_name, sign_end in end_specs:
             bearing_center_v = cq.Vector(*center) + normal.multiply(sign_end * (span / 2.0 - spec["bearing_w"] / 2.0))
             plate_center_v = cq.Vector(*center) + normal.multiply(sign_end * (span / 2.0 + spec["plate_t"] / 2.0))
             bearing_center = (bearing_center_v.x, bearing_center_v.y, bearing_center_v.z)
@@ -501,7 +542,7 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
             add(
                 f"JMOD_{axis_id}_INTERFACE_PLATE_{end_name}",
                 "joint module interface plate",
-                interface_plate(plate_center, direction, spec["plate_w"], spec["plate_h"], spec["plate_t"], spec["pattern_x"], spec["pattern_y"], spec["hole_d"]),
+                interface_plate(plate_center, direction, spec["plate_w"], spec["plate_h"], spec["plate_t"], spec["pattern_x"], spec["pattern_y"], spec["hole_d"], spec["shaft_d"]),
                 structure,
                 True,
                 f"{family_id} provisional four-hole module interface; thread/fastener stack not released",
@@ -541,8 +582,8 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
             motor_center = (motor_center_v.x, motor_center_v.y, motor_center_v.z)
             output_pulley_d = 48.0 if family_id.endswith("15") else 52.0 if family_id.endswith("20") else 32.0
             motor_pulley_d = 32.0 if family_id.endswith("15") else 26.0 if family_id.endswith("20") else 24.0
-            add(f"JMOD_{axis_id}_OUTPUT_PULLEY", "joint transmission", bearing_ring(center, direction, 12.0, output_pulley_d, spec["shaft_d"]), joint, True, f"{spec['ratio']} pulley envelope; pitch/width/tooth count selection required")
-            add(f"JMOD_{axis_id}_MOTOR_PULLEY", "joint transmission", bearing_ring(motor_center, direction, 12.0, motor_pulley_d, 6.0), joint, True, f"{spec['ratio']} motor pulley envelope; bore and retention selection required")
+            add(f"JMOD_{axis_id}_OUTPUT_PULLEY", "joint transmission", spoked_pulley(center, direction, 12.0, output_pulley_d, spec["shaft_d"]), joint, True, f"{spec['ratio']} lightweight spoked pulley envelope; pitch/width/tooth count selection required")
+            add(f"JMOD_{axis_id}_MOTOR_PULLEY", "joint transmission", spoked_pulley(motor_center, direction, 12.0, motor_pulley_d, 6.0), joint, True, f"{spec['ratio']} lightweight spoked motor pulley envelope; bore and retention selection required")
             vendor_source_id = vendor_source_for_axis(axis_id)
             actuator_shape, actuator_basis = vendor_actuator_to_axis(vendor_shapes[vendor_source_id], motor_center, direction)
             add(f"JMOD_{axis_id}_ACTUATOR_VENDOR_CANDIDATE", "joint actuator vendor geometry", actuator_shape, structure, True, f"{vendor_source_id} SHA-bound manufacturer geometry in STEP; dimension-matched simplified body in GLB; project mounting interface remains candidate", oriented_box(motor_center, direction, spec["body_w"], spec["body_h"], spec["body_d"]))
@@ -582,7 +623,7 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
             "axis_center_mm": f"({center[0]:.3f}, {center[1]:.3f}, {center[2]:.3f})",
             "axis_direction": f"({direction[0]:.0f}, {direction[1]:.0f}, {direction[2]:.0f})",
             "shaft_candidate_mm": f"OD {spec['shaft_d']:.1f} x {shaft_length:.1f}",
-            "bearing_envelope_each_mm": f"OD {spec['bearing_od']:.1f} x W {spec['bearing_w']:.1f} x 2",
+            "bearing_envelope_each_mm": f"OD {spec['bearing_od']:.1f} x W {spec['bearing_w']:.1f} x {spec['external_bearings']}",
             "plate_candidate_mm": f"{spec['plate_w']:.1f} x {spec['plate_h']:.1f} x {spec['plate_t']:.1f}",
             "external_mount_pattern": f"4 x DIA {spec['hole_d']:.1f} on {spec['pattern_x']:.1f} x {spec['pattern_y']:.1f} rectangle",
             "transmission": spec["transmission"],
@@ -620,7 +661,9 @@ def joint_packaging_screen(components: list[Component], axes: list[dict]) -> dic
             return [f"{side}_ANKLE_HOUSING_ENVELOPE", f"{side}_SHIN_SHELL_ENVELOPE", f"{side}_FOOT_SHELL_ENVELOPE"]
         raise RuntimeError(f"no packaging-volume mapping for {axis_id}")
 
-    def touches(a: cq.Shape, b: cq.Shape, tolerance: float = 0.05) -> bool:
+    def touches(a: cq.Shape, b: cq.Shape, tolerance: float = 0.25) -> bool:
+        # Packaging connectivity includes the explicit 0.20 mm nominal
+        # diametral clearance between a candidate shaft and bearing envelope.
         abox, bbox = a.BoundingBox(), b.BoundingBox()
         if (
             max(abox.xmin, bbox.xmin) - min(abox.xmax, bbox.xmax) > tolerance
@@ -742,6 +785,7 @@ def main() -> int:
         "mount_pattern": f"4 x DIA {spec['hole_d']:.1f} on {spec['pattern_x']:.1f} x {spec['pattern_y']:.1f} rectangle",
         "shaft_diameter_mm": f"{spec['shaft_d']:.1f}",
         "bearing_envelope_each_mm": f"OD {spec['bearing_od']:.1f} x W {spec['bearing_w']:.1f}",
+        "external_bearing_count_per_axis": spec["external_bearings"],
         "support_span_mm": f"{spec['span']:.1f}",
         "transmission": spec["transmission"],
         "ratio": spec["ratio"],

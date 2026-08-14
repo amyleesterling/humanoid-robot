@@ -95,6 +95,12 @@ def main() -> int:
     module_bindings = list(csv.DictReader((SRC / "joint-module-axis-binding.csv").open(encoding="utf-8")))
     require(len(module_families) == 8 and len({r["family_id"] for r in module_families}) == 8, "joint-module family identity/count mismatch")
     require(sum(int(r["axis_count"]) for r in module_families) == 25, "joint-module family counts do not cover 25 axes")
+    support_counts = {r["family_id"]: int(r["external_bearing_count_per_axis"]) for r in module_families}
+    require(support_counts == {
+        "JMF-01-COMPACT": 1, "JMF-02-GRIPPER": 1, "JMF-03-SHOULDER-GIMBAL": 2,
+        "JMF-04-MEDIUM": 1, "JMF-05-WAIST": 1, "JMF-06-LEG-DIRECT": 1,
+        "JMF-07-LEG-REDUCED-15": 2, "JMF-08-LEG-REDUCED-20": 2,
+    }, "direct versus remote-output external-bearing architecture drift")
     require(len(module_bindings) == 25 and {r["axis_id"] for r in module_bindings} == {r["axis_id"] for r in axes}, "joint-module binding does not cover every axis")
     require({r["family_id"] for r in module_bindings} == {r["family_id"] for r in module_families}, "joint-module family/binding mismatch")
     require(sum(r["shared_assembly_id"] == "L_SHOULDER_GIMBAL" for r in module_bindings) == 2 and sum(r["shared_assembly_id"] == "R_SHOULDER_GIMBAL" for r in module_bindings) == 2, "intersecting shoulder axes are not bound to shared gimbals")
@@ -153,8 +159,12 @@ def main() -> int:
     components = list(csv.DictReader((SRC / "component-envelope-schedule.csv").open(encoding="utf-8")))
     component_names = {row["component"] for row in components}
     require("FACE_SCREEN_PANEL" in component_names and {"L_INBOARD_GRIPPER_FINGER", "L_OUTBOARD_GRIPPER_FINGER", "R_INBOARD_GRIPPER_FINGER", "R_OUTBOARD_GRIPPER_FINGER"} <= component_names, "screen face or functional two-finger hands missing")
+    family_by_axis = {row["axis_id"]: row["family_id"] for row in module_bindings}
     for axis_id in {r["axis_id"] for r in axes}:
-        require({f"JMOD_{axis_id}_OUTPUT_SHAFT", f"JMOD_{axis_id}_BEARING_A_RING", f"JMOD_{axis_id}_BEARING_B_RING", f"JMOD_{axis_id}_INTERFACE_PLATE_A", f"JMOD_{axis_id}_INTERFACE_PLATE_B", f"JMOD_{axis_id}_ACTUATOR_VENDOR_CANDIDATE"} <= component_names, f"visible joint-module geometry incomplete for {axis_id}")
+        required = {f"JMOD_{axis_id}_OUTPUT_SHAFT", f"JMOD_{axis_id}_BEARING_B_RING", f"JMOD_{axis_id}_INTERFACE_PLATE_B", f"JMOD_{axis_id}_ACTUATOR_VENDOR_CANDIDATE"}
+        if support_counts[family_by_axis[axis_id]] == 2:
+            required |= {f"JMOD_{axis_id}_BEARING_A_RING", f"JMOD_{axis_id}_INTERFACE_PLATE_A"}
+        require(required <= component_names, f"visible joint-module geometry incomplete for {axis_id}")
     print("PASS: native HR-30 body architecture has exact 762 mm height, 25 named axes, synchronized STEP/GLB/source-release evidence; body remains preliminary and all work authority false")
     return 0
 

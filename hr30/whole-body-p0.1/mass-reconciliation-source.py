@@ -25,6 +25,14 @@ OUT = ROOT / "hr30" / "whole-body-p0.1"
 IDENTIFIER = "HR-30-MASS-RECONCILIATION-P0.1"
 WARNING = body.WARNING
 ACCESSED = "2026-08-14"
+BASELINE_COMMIT = "dfb9a7d"
+BASELINE_MASS = {
+    "fabrication": 3.605845154,
+    "actuators": 3.391,
+    "joint_hardware": 6.327138769,
+    "identified": 13.323983923,
+    "dynamics": 16.675074212,
+}
 
 ACTUATOR_SOURCES = {
     "ROBOTIS XH540-W270-R": {
@@ -141,7 +149,9 @@ def actuator_choice(axis_id: str) -> tuple[str, float, float, float, str]:
 
 
 def hardware_material(name: str) -> tuple[str, float]:
-    if any(token in name for token in ("OUTPUT_SHAFT", "BEARING_", "ACTUATOR_OUTPUT_COUPLER")):
+    if "OUTPUT_SHAFT" in name:
+        return "7075-T6/T651 ALUMINUM HOLLOW SHAFT DENSITY SCREEN", 2810.0
+    if any(token in name for token in ("BEARING_", "ACTUATOR_OUTPUT_COUPLER")):
         return "STEEL GEOMETRIC DENSITY SCREEN", 7850.0
     if any(token in name for token in ("INTERFACE_PLATE", "OUTPUT_PULLEY", "MOTOR_PULLEY", "SYMMETRIC_DRIVE_COUPLER")):
         return "ALUMINUM GEOMETRIC DENSITY SCREEN", 2700.0
@@ -398,12 +408,66 @@ def write_allocation_register(dynamics_rows: list[dict]) -> None:
     write_csv(OUT / "mass-allocation-register.csv", rows)
 
 
+def write_lightweight_register(summary: dict) -> None:
+    rows = [
+        {
+            "decision_id": "HR30-LW-001", "affected_system": "torso frame",
+            "baseline_candidate": "solid 18 x 18 mm rail envelopes",
+            "lightweight_candidate": "18 x 18 x 2 mm hollow rail envelopes; outer interfaces retained",
+            "mass_effect": "included in fabrication subtotal", "engineering_hold": "exact extrusion, local inserts, buckling, joint loads and received section open",
+        },
+        {
+            "decision_id": "HR30-LW-002", "affected_system": "limbs, pelvis and feet",
+            "baseline_candidate": "solid plate and link envelopes",
+            "lightweight_candidate": "closed-perimeter windowed plates and longitudinally slotted paired arm links",
+            "mass_effect": "included in fabrication subtotal", "engineering_hold": "stress concentration, fatigue, fasteners, edge finish, DFM and proof loads open",
+        },
+        {
+            "decision_id": "HR30-LW-003", "affected_system": "covers",
+            "baseline_candidate": "2.4-3.0 mm shells and panels",
+            "lightweight_candidate": "1.8 mm limb/palm/foot panels and 2.0 mm central/head shells",
+            "mass_effect": "included in fabrication subtotal", "engineering_hold": "material/process, ribs, vents, retention, impact, pinch edges and print qualification open",
+        },
+        {
+            "decision_id": "HR30-LW-004", "affected_system": "joint shafts",
+            "baseline_candidate": "solid steel density-screen shafts",
+            "lightweight_candidate": "62%-diameter through-bored 7075-T6/T651 aluminum density-screen shafts",
+            "mass_effect": "included in joint-hardware subtotal", "engineering_hold": "bearing seats, hardcoat/sleeves, wall stress, fatigue, fretting, retention and material selection open",
+        },
+        {
+            "decision_id": "HR30-LW-005", "affected_system": "joint support",
+            "baseline_candidate": "two external bearing carriers on every axis",
+            "lightweight_candidate": "actuator internal support plus one external carrier on direct axes; two external carriers retained on remote/reduced outputs",
+            "mass_effect": "22 redundant direct-axis carrier solids removed", "engineering_hold": "actuator internal-load allowance, moment path, bearing life, stiffness and received fit open",
+        },
+        {
+            "decision_id": "HR30-LW-006", "affected_system": "carrier plates and pulleys",
+            "baseline_candidate": "solid four-hole slabs and annular pulley discs",
+            "lightweight_candidate": "closed carrier frames with cross webs and spoked rim/hub pulleys",
+            "mass_effect": "included in joint-hardware subtotal", "engineering_hold": "web load path, belt tooth system, flange, balance, guard, DFM and proof testing open",
+        },
+        {
+            "decision_id": "HR30-LW-TOTAL", "affected_system": "whole robot identified candidate",
+            "baseline_candidate": f"commit {BASELINE_COMMIT}: {BASELINE_MASS['identified']:.6f} kg gross identified / {BASELINE_MASS['dynamics']:.6f} kg conservative dynamics",
+            "lightweight_candidate": f"current: {summary['planning_identified_candidate_mass_kg']:.6f} kg gross identified / {summary['reconciled_dynamics_planning_mass_kg']:.6f} kg conservative dynamics",
+            "mass_effect": f"gross identified reduction {BASELINE_MASS['identified'] - summary['planning_identified_candidate_mass_kg']:.6f} kg; dynamics reduction {BASELINE_MASS['dynamics'] - summary['reconciled_dynamics_planning_mass_kg']:.6f} kg",
+            "engineering_hold": "10 kg tethered ceiling remains failed by conservative dynamics; equipment closure and every physical validation remain open",
+        },
+    ]
+    for row in rows:
+        row["decision_state"] = "PRELIMINARY WHOLE-BODY LIGHTWEIGHT ARCHITECTURE CANDIDATE"
+        row["authority"] = "NO PROCUREMENT, FABRICATION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+    write_csv(OUT / "lightweight-architecture-register.csv", rows)
+
+
 def update_docs(summary: dict) -> None:
     report = f"""# HR-30 whole-body mass reconciliation P0.1
 
 **{WARNING}**
 
 The former 9.63 kg value was an allocation, not a physical mass model. This pass inventories {summary['fabrication_part_count']} materialized fabrication-CAD parts, {summary['actuator_count']} actuators, and {summary['joint_hardware_part_count']} joint-hardware candidate solids. The gross identified planning subtotal is **{summary['planning_identified_candidate_mass_kg']:.3f} kg** before the unmodeled electrical, compute, sensing, audio, harness, fastener, cooling, sole, restraint and energy-storage items.
+
+Relative to commit `{BASELINE_COMMIT}`, the lightweight topology reduces the gross identified candidate subtotal by **{BASELINE_MASS['identified'] - summary['planning_identified_candidate_mass_kg']:.3f} kg**. The body retains all 25 axes, complete limbs and hands while using hollow torso rails, windowed and slotted load-path plates, thinner service covers, hollow aluminum shaft screens, topology-lightened carrier frames and pulleys, and actuator-plus-one-external-bearing support on direct axes. Those changes are geometry candidates, not strength or bearing-life evidence.
 
 To keep the dynamics model from understating geometry already present, each link now uses the greater of its previous allocation and its identified planning subtotal. This produces a provisional dynamics mass of **{summary['reconciled_dynamics_planning_mass_kg']:.3f} kg** and neutral COM **({summary['reconciled_dynamics_neutral_com_m'][0]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][1]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][2]:.3f}) m**. The resulting margin to the 10 kg program maximum is **{summary['planning_margin_to_program_maximum_kg']:.3f} kg**; because major items remain unmodeled, this is not evidence that the maximum closes.
 
@@ -449,10 +513,14 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
 
     web_path = OUT / "index.html"
     web = web_path.read_text(encoding="utf-8")
-    web = web.replace(
-        '<a href="mass-properties-budget.csv">Mass/COM/inertia</a>',
-        '<a href="mass-properties-budget.csv">Mass/COM/inertia</a> · <a href="mass-reconciliation.md">Mass reconciliation</a> · <a href="mass-item-reconciliation.csv">Mass item register</a>',
+    web, link_count = re.subn(
+        r'<a href="mass-properties-budget\.csv">Mass/COM/inertia</a>.*?(?=<a href="power-energy-budget\.csv">)',
+        '<a href="mass-properties-budget.csv">Mass/COM/inertia</a> · <a href="mass-reconciliation.md">Mass reconciliation</a> · <a href="mass-item-reconciliation.csv">Mass item register</a> · <a href="lightweight-architecture-register.csv">Lightweight decisions</a> · ',
+        web,
+        count=1,
     )
+    if link_count != 1:
+        raise RuntimeError("system artifact mass-link block drift")
     web = web.replace(
         '<article class="card hold"><h3>Mass and energy</h3><p>9.63 kg allocation estimate, 0.338 m neutral COM height, 197 W operating power budget and 135 W heat-rejection budget. All require physical closure.</p></article>',
         f'<article class="card hold"><h3>Mass and energy</h3><p>{summary["reconciled_dynamics_planning_mass_kg"]:.3f} kg reconciled planning dynamics mass, {summary["reconciled_dynamics_neutral_com_m"][2]:.3f} m neutral COM height, 197 W operating power budget and 135 W heat-rejection budget. Major unmodeled mass and all physical closure remain open.</p></article>',
@@ -466,6 +534,7 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
         "estimated_neutral_com_m": summary["reconciled_dynamics_neutral_com_m"],
         "estimated_neutral_com_z_m": summary["reconciled_dynamics_neutral_com_m"][2],
         "mass_reconciliation_present": True,
+        "whole_body_lightweight_architecture_present": True,
         "identified_candidate_mass_kg": summary["planning_identified_candidate_mass_kg"],
         "mass_margin_to_10kg_kg": summary["planning_margin_to_program_maximum_kg"],
         "mass_budget_closed": False,
@@ -490,6 +559,7 @@ def generate_into_package() -> dict:
     write_csv(OUT / "actuator-mass-source-register.csv", sources)
     write_csv(OUT / "mass-item-reconciliation.csv", items)
     write_csv(OUT / "link-mass-reconciliation.csv", link_rows)
+    write_lightweight_register(summary)
     write_mass_properties(dynamics_rows, summary)
     write_allocation_register(dynamics_rows)
     system.write_urdf(dynamics_rows, system.joint_rows())
