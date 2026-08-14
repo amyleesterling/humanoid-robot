@@ -129,5 +129,11 @@
   "joint_fastener_candidate_mass_kg": 0.554224112,
   "joint_fastener_hole_alignment_screen_complete": true,
   "joint_fastener_selected": false,
-  "joint_fastener_preload_validated": false
+  "joint_fastener_preload_validated": false,
+  "joint_family_cad_package_present": true,
+  "joint_family_cad_export_count": 10,
+  "joint_family_cad_axis_coverage_count": 25,
+  "joint_family_serviceable_stack_geometry_present": true,
+  "joint_family_manufacturing_released": false,
+  "joint_family_structural_capacity_validated": false
 }

@@ -27,6 +27,7 @@ def main() -> int:
         "whole-body-source.py",
         "joint-axis-schedule.csv",
         "actuator-transmission-allocation.csv",
+        "joint-family-cad/index.html",
         "hr30.urdf",
         "hr30.xml",
         "mass-properties-budget.csv",
