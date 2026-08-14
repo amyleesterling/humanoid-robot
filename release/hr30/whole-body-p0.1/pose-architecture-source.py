@@ -44,7 +44,7 @@ class Pose:
 
 
 POSES = (
-    Pose("P00_NEUTRAL_STAND", "S2", "Neutral double support", "Reference posture with both feet flat and every commanded axis at zero.", 0.0, 0.0, {}, ("L", "R"), "BOTH", None),
+    Pose("P00_NEUTRAL_STAND", "S2", "Neutral double support", "Reference posture with both feet flat, every rotary axis at zero and both grippers at the 10 mm open reference.", 0.0, 0.0, {}, ("L", "R"), "BOTH", None),
     Pose(
         "P01_CROUCHED_STAND", "S2", "Crouched double support", "Symmetric 8/16/8 degree sagittal flexion for stand preparation and vertical compliance development.",
         0.0, 0.0,
@@ -54,13 +54,13 @@ POSES = (
     Pose(
         "P02_LEFT_WEIGHT_TRANSFER", "S3", "Left weight transfer", "Translate the pelvis toward the left foot while both soles remain nominally flat; no foot lift.",
         0.050, 0.0,
-        {"L_HIP_ROLL": 8.5, "L_ANKLE_ROLL": -8.5, "R_HIP_ROLL": 8.5, "R_ANKLE_ROLL": -8.5},
+        {"L_HIP_ROLL": 8.5, "L_ANKLE_ROLL": -8.5, "R_HIP_ROLL": 8.5, "R_ANKLE_ROLL": -8.5, "L_SHOULDER_ROLL": -12.0, "R_SHOULDER_ROLL": 12.0},
         ("L", "R"), "L", None,
     ),
     Pose(
         "P03_RIGHT_FOOT_LIFT", "S4", "Right foot lift", "Transfer over the left foot, then command a nominal sub-10 mm right-foot lift without forward placement.",
         0.050, 0.0,
-        {"L_HIP_ROLL": 8.5, "L_ANKLE_ROLL": -8.5, "R_HIP_ROLL": 8.5, "R_ANKLE_ROLL": -8.5, "R_HIP_PITCH": -12.0, "R_KNEE_PITCH": 24.0, "R_ANKLE_PITCH": -12.0},
+        {"L_HIP_ROLL": 8.5, "L_ANKLE_ROLL": -8.5, "R_HIP_ROLL": 8.5, "R_ANKLE_ROLL": -8.5, "L_SHOULDER_ROLL": -12.0, "R_SHOULDER_ROLL": 12.0, "R_HIP_PITCH": -12.0, "R_KNEE_PITCH": 24.0, "R_ANKLE_PITCH": -12.0},
         ("L",), "L", "R",
     ),
     Pose(

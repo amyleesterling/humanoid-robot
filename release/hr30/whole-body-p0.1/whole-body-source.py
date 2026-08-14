@@ -569,7 +569,7 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
         add_axis(f"{side}_SHOULDER_ROLL", "arm", side, "roll", (sign * SHOULDER_AXIS_X, 0, SHOULDER_Z), (0, 1, 0), "SELECTION REQUIRED", "HR-PROD-030")
         add_axis(f"{side}_ELBOW_PITCH", "arm", side, "pitch", (sign * ELBOW_X, 0, ELBOW_Z), (1, 0, 0), "SELECTION REQUIRED", "HR-PROD-030")
         add_axis(f"{side}_WRIST_ROTATION", "arm", side, "rotation", (sign * WRIST_X, 0, WRIST_Z), (0, 0, 1), "SELECTION REQUIRED", "HR-PROD-030")
-        add_axis(f"{side}_GRIPPER", "hand", side, "parallel open/close", (sign * WRIST_X, 0, 252), (1, 0, 0), "SELECTION REQUIRED", "HR-PROD-030")
+        add_axis(f"{side}_GRIPPER", "hand", side, "parallel open/close", (sign * WRIST_X, 0, 252), (sign, 0, 0), "SELECTION REQUIRED", "HR-PROD-030")
         add_axis(f"{side}_HIP_YAW", "leg", side, "yaw", (sign * HIP_HALF_WIDTH, 0, 397), (0, 0, 1), "+/-30 deg", "HR-WALK-001")
         add_axis(f"{side}_HIP_ROLL", "leg", side, "roll", (sign * HIP_HALF_WIDTH, 0, 388), (0, 1, 0), "+/-25 deg", "HR-WALK-001")
         add_axis(f"{side}_HIP_PITCH", "leg", side, "pitch", (sign * HIP_HALF_WIDTH, 0, HIP_Z), (1, 0, 0), "-35..+45 deg", "HR-WALK-001")

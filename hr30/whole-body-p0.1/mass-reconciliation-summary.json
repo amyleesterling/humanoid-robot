@@ -17,9 +17,9 @@
   "prior_allocation_mass_kg": 9.63,
   "reconciled_dynamics_planning_mass_kg": 11.458220104,
   "reconciled_dynamics_neutral_com_m": [
-    -0.000846328,
+    -0.000880861,
     0.01143169,
-    0.370530591
+    0.370529764
   ],
   "program_maximum_mass_kg": 12.0,
   "program_lightweight_stretch_kg": 10.0,
@@ -42,8 +42,8 @@
   },
   "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION",
   "reconciled_box_model_inertia_kg_m2": [
-    0.375769348,
-    0.421544009,
-    0.069507569
+    0.375769692,
+    0.421829863,
+    0.069793079
   ]
 }

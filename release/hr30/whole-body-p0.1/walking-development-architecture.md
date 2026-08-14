@@ -31,6 +31,14 @@ The package now carries five generated full-body configurations rather than pros
 | Crouched double support | S2 | DOUBLE | 62.6 mm | 0.0 mm | 0.0 mm |
 | Left weight transfer | S3 | DOUBLE | 22.5 mm | 0.0 mm | 0.0 mm |
 | Right foot lift | S4 | L SINGLE | 22.6 mm | 7.2 mm | 1.0 mm |
-| Right capture-step candidate | S5 | L SINGLE | 22.9 mm | 18.2 mm | 43.2 mm |
+| Right capture-step candidate | S5 | L SINGLE | 22.8 mm | 18.2 mm | 43.2 mm |
 
 <!-- HR30-POSE-P01-END -->
+
+<!-- HR30-COLLISION-P01-START -->
+
+## Nominal self-collision result
+
+All five articulated poses have zero common volume across every checked nonadjacent link pair. The smallest nominal clearance is **7.21 mm**. Pairs below 5.0 mm remain packaging holds; the complete pair register is `whole-body-collision-register.csv`. Tolerance, covers, cables, tracking error and physical motion are not validated.
+
+<!-- HR30-COLLISION-P01-END -->

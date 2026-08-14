@@ -111,12 +111,12 @@
   </link>
   <link name="L_upper_arm">
     <inertial>
-      <origin xyz="0.005054 0.000069 -0.088069" rpy="0 0 0" />
+      <origin xyz="0.005425 0.000069 -0.088069" rpy="0 0 0" />
       <mass value="0.462631" />
       <inertia ixx="0.000971679" ixy="0" ixz="0" iyy="0.000971679" iyz="0" izz="0.000208492" />
     </inertial>
     <visual>
-      <origin xyz="0.005054 0.000069 -0.088069" rpy="0 0 0" />
+      <origin xyz="0.005425 0.000069 -0.088069" rpy="0 0 0" />
       <geometry>
         <box size="0.052000 0.052000 0.150000" />
       </geometry>
@@ -125,7 +125,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.005054 0.000069 -0.088069" rpy="0 0 0" />
+      <origin xyz="0.005425 0.000069 -0.088069" rpy="0 0 0" />
       <geometry>
         <box size="0.052000 0.052000 0.150000" />
       </geometry>
@@ -133,12 +133,12 @@
   </link>
   <link name="L_forearm">
     <inertial>
-      <origin xyz="0.010312 0.000000 -0.087610" rpy="0 0 0" />
+      <origin xyz="0.001238 0.000000 -0.087647" rpy="0 0 0" />
       <mass value="0.127975" />
       <inertia ixx="0.000250884" ixy="0" ixz="0" iyy="0.000250884" iyz="0" izz="0.000053323" />
     </inertial>
     <visual>
-      <origin xyz="0.010312 0.000000 -0.087610" rpy="0 0 0" />
+      <origin xyz="0.001238 0.000000 -0.087647" rpy="0 0 0" />
       <geometry>
         <box size="0.050000 0.050000 0.145000" />
       </geometry>
@@ -147,7 +147,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.010312 0.000000 -0.087610" rpy="0 0 0" />
+      <origin xyz="0.001238 0.000000 -0.087647" rpy="0 0 0" />
       <geometry>
         <box size="0.050000 0.050000 0.145000" />
       </geometry>
@@ -155,12 +155,12 @@
   </link>
   <link name="L_hand">
     <inertial>
-      <origin xyz="0.017357 -0.006069 -0.038309" rpy="0 0 0" />
+      <origin xyz="0.003468 -0.006069 -0.038309" rpy="0 0 0" />
       <mass value="0.057028" />
       <inertia ixx="0.000027868" ixy="0" ixz="0" iyy="0.000023762" iyz="0" izz="0.000027868" />
     </inertial>
     <visual>
-      <origin xyz="0.017357 -0.006069 -0.038309" rpy="0 0 0" />
+      <origin xyz="0.003468 -0.006069 -0.038309" rpy="0 0 0" />
       <geometry>
         <box size="0.050000 0.058000 0.050000" />
       </geometry>
@@ -169,7 +169,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.017357 -0.006069 -0.038309" rpy="0 0 0" />
+      <origin xyz="0.003468 -0.006069 -0.038309" rpy="0 0 0" />
       <geometry>
         <box size="0.050000 0.058000 0.050000" />
       </geometry>
@@ -353,12 +353,12 @@
   </link>
   <link name="R_upper_arm">
     <inertial>
-      <origin xyz="-0.002595 0.000069 -0.088069" rpy="0 0 0" />
+      <origin xyz="-0.002965 0.000069 -0.088069" rpy="0 0 0" />
       <mass value="0.462631" />
       <inertia ixx="0.000971679" ixy="0" ixz="0" iyy="0.000971679" iyz="0" izz="0.000208492" />
     </inertial>
     <visual>
-      <origin xyz="-0.002595 0.000069 -0.088069" rpy="0 0 0" />
+      <origin xyz="-0.002965 0.000069 -0.088069" rpy="0 0 0" />
       <geometry>
         <box size="0.052000 0.052000 0.150000" />
       </geometry>
@@ -367,7 +367,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.002595 0.000069 -0.088069" rpy="0 0 0" />
+      <origin xyz="-0.002965 0.000069 -0.088069" rpy="0 0 0" />
       <geometry>
         <box size="0.052000 0.052000 0.150000" />
       </geometry>
@@ -375,12 +375,12 @@
   </link>
   <link name="R_forearm">
     <inertial>
-      <origin xyz="-0.014489 0.000000 -0.087610" rpy="0 0 0" />
+      <origin xyz="-0.005415 0.000000 -0.087647" rpy="0 0 0" />
       <mass value="0.127975" />
       <inertia ixx="0.000250884" ixy="0" ixz="0" iyy="0.000250884" iyz="0" izz="0.000053323" />
     </inertial>
     <visual>
-      <origin xyz="-0.014489 0.000000 -0.087610" rpy="0 0 0" />
+      <origin xyz="-0.005415 0.000000 -0.087647" rpy="0 0 0" />
       <geometry>
         <box size="0.050000 0.050000 0.145000" />
       </geometry>
@@ -389,7 +389,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.014489 0.000000 -0.087610" rpy="0 0 0" />
+      <origin xyz="-0.005415 0.000000 -0.087647" rpy="0 0 0" />
       <geometry>
         <box size="0.050000 0.050000 0.145000" />
       </geometry>
@@ -397,12 +397,12 @@
   </link>
   <link name="R_hand">
     <inertial>
-      <origin xyz="-0.010421 -0.006069 -0.038309" rpy="0 0 0" />
+      <origin xyz="-0.003470 -0.006069 -0.038309" rpy="0 0 0" />
       <mass value="0.057028" />
       <inertia ixx="0.000027868" ixy="0" ixz="0" iyy="0.000023762" iyz="0" izz="0.000027868" />
     </inertial>
     <visual>
-      <origin xyz="-0.010421 -0.006069 -0.038309" rpy="0 0 0" />
+      <origin xyz="-0.003470 -0.006069 -0.038309" rpy="0 0 0" />
       <geometry>
         <box size="0.050000 0.058000 0.050000" />
       </geometry>
@@ -411,7 +411,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.010421 -0.006069 -0.038309" rpy="0 0 0" />
+      <origin xyz="-0.003470 -0.006069 -0.038309" rpy="0 0 0" />
       <geometry>
         <box size="0.050000 0.058000 0.050000" />
       </geometry>
@@ -614,7 +614,7 @@
   <joint name="L_ELBOW_PITCH" type="revolute">
     <parent link="L_upper_arm" />
     <child link="L_forearm" />
-    <origin xyz="0.020000 0.000000 -0.150000" rpy="0 0 0" />
+    <origin xyz="0.030000 0.000000 -0.150000" rpy="0 0 0" />
     <axis xyz="1 0 0" />
     <limit lower="0.000000" upper="2.200000" effort="0.0" velocity="0.800000" />
     <dynamics damping="0.1" friction="0.0" />
@@ -622,7 +622,7 @@
   <joint name="L_WRIST_ROTATION" type="revolute">
     <parent link="L_forearm" />
     <child link="L_hand" />
-    <origin xyz="0.000000 0.000000 -0.145000" rpy="0 0 0" />
+    <origin xyz="0.005000 0.000000 -0.145000" rpy="0 0 0" />
     <axis xyz="0 0 1" />
     <limit lower="-1.570000" upper="1.570000" effort="0.0" velocity="1.000000" />
     <dynamics damping="0.1" friction="0.0" />
@@ -631,7 +631,7 @@
     <parent link="L_hand" />
     <child link="L_gripper" />
     <origin xyz="0.000000 0.000000 -0.043000" rpy="0 0 0" />
-    <axis xyz="1 0 0" />
+    <axis xyz="1.0 0 0" />
     <limit lower="0.000000" upper="0.026000" effort="0.0" velocity="0.030000" />
     <dynamics damping="0.1" friction="0.0" />
   </joint>
@@ -702,7 +702,7 @@
   <joint name="R_ELBOW_PITCH" type="revolute">
     <parent link="R_upper_arm" />
     <child link="R_forearm" />
-    <origin xyz="-0.020000 0.000000 -0.150000" rpy="0 0 0" />
+    <origin xyz="-0.030000 0.000000 -0.150000" rpy="0 0 0" />
     <axis xyz="1 0 0" />
     <limit lower="0.000000" upper="2.200000" effort="0.0" velocity="0.800000" />
     <dynamics damping="0.1" friction="0.0" />
@@ -710,7 +710,7 @@
   <joint name="R_WRIST_ROTATION" type="revolute">
     <parent link="R_forearm" />
     <child link="R_hand" />
-    <origin xyz="0.000000 0.000000 -0.145000" rpy="0 0 0" />
+    <origin xyz="-0.005000 0.000000 -0.145000" rpy="0 0 0" />
     <axis xyz="0 0 1" />
     <limit lower="-1.570000" upper="1.570000" effort="0.0" velocity="1.000000" />
     <dynamics damping="0.1" friction="0.0" />
@@ -719,7 +719,7 @@
     <parent link="R_hand" />
     <child link="R_gripper" />
     <origin xyz="0.000000 0.000000 -0.043000" rpy="0 0 0" />
-    <axis xyz="1 0 0" />
+    <axis xyz="-1.0 0 0" />
     <limit lower="0.000000" upper="0.026000" effort="0.0" velocity="0.030000" />
     <dynamics damping="0.1" friction="0.0" />
   </joint>
