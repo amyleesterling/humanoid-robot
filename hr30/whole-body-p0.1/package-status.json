@@ -66,6 +66,7 @@
   "whole_body_lightweight_architecture_present": true,
   "identified_candidate_mass_kg": 10.609463061,
   "mass_margin_to_10kg_kg": -1.458220104,
+  "mass_margin_to_p01_maximum_kg": 0.541779896,
   "mass_budget_closed": false,
   "mass_com_inertia_physically_validated": false,
   "installed_equipment_layout_present": true,

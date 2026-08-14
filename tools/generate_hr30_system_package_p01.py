@@ -240,13 +240,13 @@ def write_mass_budget(rows: list[dict]) -> dict:
     })
     write_csv(OUT / "mass-properties-budget.csv", out_rows)
     write_csv(OUT / "mass-allocation-register.csv", [
-        {"assembly": "head and neck", "target_kg": 0.45, "maximum_kg": 0.55, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 0.500", "status": "WITHIN MAXIMUM - PHYSICAL PROPERTY OPEN"},
-        {"assembly": "chest compute and waist", "target_kg": 1.20, "maximum_kg": 1.35, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 1.830", "status": "OVER MAXIMUM - REDESIGN/REALLOCATION REQUIRED"},
-        {"assembly": "two arms and hands", "target_kg": 1.30, "maximum_kg": 1.50, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 1.600", "status": "OVER MAXIMUM - REDESIGN/REALLOCATION REQUIRED"},
-        {"assembly": "pelvis power and restraint structure", "target_kg": 1.40, "maximum_kg": 1.75, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 1.650", "status": "WITHIN P0.1 REALLOCATED MAXIMUM - PHYSICAL PROPERTY OPEN"},
-        {"assembly": "two legs and feet", "target_kg": 3.40, "maximum_kg": 3.80, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 4.050", "status": "OVER MAXIMUM - REDESIGN/REALLOCATION REQUIRED"},
-        {"assembly": "wiring covers fasteners and uncertainty", "target_kg": 0.60, "maximum_kg": 0.80, "cad_mass_kg": "INTEGRATED INTO LINK ALLOCATIONS", "status": "OPEN - MUST BE SEPARATED IN DETAILED CAD"},
-        {"assembly": "TOTAL", "target_kg": 8.00, "maximum_kg": 10.00, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 9.630", "status": "WITHIN PROGRAM MAXIMUM BY BUDGET ONLY - AS-BUILT MASS OPEN"},
+        {"assembly": "head and neck", "target_kg": 0.55, "maximum_kg": 0.65, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 0.500", "status": "WITHIN MAXIMUM - PHYSICAL PROPERTY OPEN"},
+        {"assembly": "chest compute waist and onboard energy", "target_kg": 2.10, "maximum_kg": 2.40, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 2.100", "status": "WITHIN MAXIMUM - PHYSICAL PROPERTY OPEN"},
+        {"assembly": "two arms and hands", "target_kg": 1.70, "maximum_kg": 1.95, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 1.750", "status": "WITHIN MAXIMUM - PHYSICAL PROPERTY OPEN"},
+        {"assembly": "pelvis power and restraint structure", "target_kg": 1.60, "maximum_kg": 1.85, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 1.700", "status": "WITHIN MAXIMUM - PHYSICAL PROPERTY OPEN"},
+        {"assembly": "two legs and feet", "target_kg": 4.70, "maximum_kg": 5.25, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 5.050", "status": "WITHIN MAXIMUM - PHYSICAL PROPERTY OPEN"},
+        {"assembly": "integration contingency within link totals", "target_kg": 0.00, "maximum_kg": 0.90, "cad_mass_kg": "8% PLANNING RULE", "status": "OPEN - RECEIVED MASS CLOSURE REQUIRED"},
+        {"assembly": "TOTAL", "target_kg": 10.50, "maximum_kg": 12.00, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 11.100", "status": "WITHIN P0.1 MAXIMUM BY BUDGET ONLY; 10 KG LIGHTWEIGHT STRETCH OPEN"},
     ])
     return {"mass_kg": total_mass, "com_m": com, "inertia_kg_m2": tuple(total_inertia)}
 

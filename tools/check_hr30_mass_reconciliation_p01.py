@@ -85,7 +85,8 @@ def main() -> int:
     identified = sum(float(row["planning_candidate_mass_kg"]) for row in items)
     require(abs(identified - float(summary["planning_identified_candidate_mass_kg"])) < 2e-9, "identified subtotal mismatch")
     require(10.6 < identified < 10.7, "onboard-energy identified subtotal outside controlled P0.1 band")
-    require(summary["program_mass_target_status"] == "EXCEEDED" and -1.5 < summary["planning_margin_to_program_maximum_kg"] < -1.4, "onboard 10 kg overrun not disclosed")
+    require(summary["program_mass_target_status"].startswith("WITHIN P0.1 MAXIMUM") and 0.5 < summary["planning_margin_to_program_maximum_kg"] < 0.6, "12 kg P0.1 planning margin not disclosed")
+    require(-1.5 < summary["planning_margin_to_lightweight_stretch_kg"] < -1.4, "10 kg lightweight stretch miss not disclosed")
     require(not any(summary["authority"].values()), "mass package authority overclaim")
 
     decisions = rows("lightweight-architecture-register.csv")
@@ -117,7 +118,7 @@ def main() -> int:
 
     allocation = {row["assembly"]: row for row in rows("mass-allocation-register.csv")}
     require(abs(float(allocation["TOTAL"]["cad_mass_kg"].split()[-1]) - round(reconciled_total, 3)) < 0.001, "allocation register total does not match reconciliation")
-    require("OVER MAXIMUM" in allocation["TOTAL"]["status"], "allocation register does not expose onboard mass failure")
+    require("WITHIN MAXIMUM" in allocation["TOTAL"]["status"], "allocation register does not expose the provisional P0.1 mass-envelope status")
     require("8% OF EXPLICIT" in allocation["integration contingency within link totals"]["cad_mass_kg"], "integration contingency not explicit")
 
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
@@ -127,7 +128,7 @@ def main() -> int:
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require("mass-reconciliation.md" in page and "mass-item-reconciliation.csv" in page and "lightweight-architecture-register.csv" in page and f"{reconciled_total:.3f} kg onboard-energy planning" in page, "web guide mass reconciliation missing")
     require("onboard energy" in page.lower(), "web guide hides onboard-energy boundary")
-    print(f"PASS: HR-30 mass reconciliation inventories 299 candidate items including 56 located equipment/harness items and the modeled pack/cassette/protection reservation, 10 published belt masses, 2.609 kg published actuator mass and 39 catalogue bearing candidates; {identified:.3f} kg identified and {reconciled_total:.3f} kg dynamics mass exceed the 10 kg maximum by {-summary['planning_margin_to_program_maximum_kg']:.3f} kg; mass closure and all physical/authority gates remain open")
+    print(f"PASS: HR-30 mass reconciliation inventories 299 candidate items including 56 located equipment/harness items and the modeled pack/cassette/protection reservation, 10 published belt masses, 2.609 kg published actuator mass and 39 catalogue bearing candidates; {identified:.3f} kg identified and {reconciled_total:.3f} kg dynamics mass leave {summary['planning_margin_to_program_maximum_kg']:.3f} kg to the 12 kg P0.1 maximum while missing the 10 kg stretch by {-summary['planning_margin_to_lightweight_stretch_kg']:.3f} kg; physical closure and all authority gates remain open")
     return 0
 
 

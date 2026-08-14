@@ -137,7 +137,7 @@ def main() -> int:
     require("The P0.1 engineering package is whole-body" in page and "font:17px/1.55" in page and "font-size:16px" in page, "web package summary/legibility missing")
     require(all(name in page for name in ("hr30.urdf", "hr30.xml", "whole-robot-candidate-bom.csv", "embodied-agent-architecture.md", "mass-reconciliation.md", "installed-equipment-register.csv", "battery-energy-source-register.csv")), "web system links incomplete")
     require(page.count('id="equipment-layout"') == 1, "web installed-equipment viewer missing or duplicated")
-    print(f"PASS: HR-30 whole-body P0.1 has 25-DOF URDF/MJCF, 56 located equipment/harness items including a dimensioned onboard-energy candidate, and {reconciled_mass:.3f} kg planning mass plus budgets, BOM, hands, walking, agent and build artifacts; 10 kg compliance, validation and all work authority remain false")
+    print(f"PASS: HR-30 whole-body P0.1 has 25-DOF URDF/MJCF, 56 located equipment/harness items including a dimensioned onboard-energy candidate, and {reconciled_mass:.3f} kg planning mass plus budgets, BOM, hands, walking, agent and build artifacts; the 12 kg P0.1 envelope is provisional, the 10 kg stretch objective is missed, and validation/all work authority remain false")
     return 0
 
 

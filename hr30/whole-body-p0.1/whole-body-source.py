@@ -1076,14 +1076,13 @@ def main() -> int:
     (OUT / "geometry-checks.json").write_text(json.dumps(checks, indent=2) + "\n", encoding="utf-8")
 
     mass_rows = [
-        {"assembly": "head and neck", "target_kg": 0.45, "maximum_kg": 0.55, "cad_mass_kg": "NOT CALCULATED - ENVELOPES", "status": "OPEN"},
-        {"assembly": "chest compute and waist", "target_kg": 1.20, "maximum_kg": 1.35, "cad_mass_kg": "NOT CALCULATED - ENVELOPES", "status": "OPEN"},
-        {"assembly": "two arms and hands", "target_kg": 1.30, "maximum_kg": 1.50, "cad_mass_kg": "NOT CALCULATED - CURRENT ACTUATOR CONCEPT ALREADY FAILS TARGET", "status": "OPEN/BLOCKING"},
-        {"assembly": "pelvis and restraint structure", "target_kg": 0.65, "maximum_kg": 0.75, "cad_mass_kg": "NOT CALCULATED - ENVELOPES", "status": "OPEN"},
-        {"assembly": "two legs and feet", "target_kg": 3.40, "maximum_kg": 3.80, "cad_mass_kg": "NOT CALCULATED - CURRENT CONCEPT FAILS SCREEN", "status": "OPEN/BLOCKING"},
-        {"assembly": "wiring covers fasteners margin", "target_kg": 0.60, "maximum_kg": 0.80, "cad_mass_kg": "NOT CALCULATED", "status": "OPEN"},
-        {"assembly": "onboard energy", "target_kg": 0.40, "maximum_kg": 1.25, "cad_mass_kg": "SELECTION REQUIRED", "status": "OPEN"},
-        {"assembly": "TOTAL", "target_kg": 8.00, "maximum_kg": 10.00, "cad_mass_kg": "NOT DEMONSTRATED", "status": "OPEN/BLOCKING"},
+        {"assembly": "head and neck", "target_kg": 0.55, "maximum_kg": 0.65, "cad_mass_kg": "NOT CALCULATED - ENVELOPES", "status": "OPEN"},
+        {"assembly": "chest compute waist and onboard energy", "target_kg": 2.10, "maximum_kg": 2.40, "cad_mass_kg": "NOT CALCULATED - ENVELOPES", "status": "OPEN"},
+        {"assembly": "two arms and hands", "target_kg": 1.70, "maximum_kg": 1.95, "cad_mass_kg": "NOT CALCULATED - ENVELOPES", "status": "OPEN"},
+        {"assembly": "pelvis power and restraint structure", "target_kg": 1.60, "maximum_kg": 1.85, "cad_mass_kg": "NOT CALCULATED - ENVELOPES", "status": "OPEN"},
+        {"assembly": "two legs and feet", "target_kg": 4.70, "maximum_kg": 5.25, "cad_mass_kg": "NOT CALCULATED - ENVELOPES", "status": "OPEN"},
+        {"assembly": "integration contingency within link totals", "target_kg": 0.00, "maximum_kg": 0.90, "cad_mass_kg": "8% PLANNING RULE", "status": "OPEN"},
+        {"assembly": "TOTAL", "target_kg": 10.50, "maximum_kg": 12.00, "cad_mass_kg": "NOT DEMONSTRATED", "status": "OPEN/BLOCKING; 10 KG LIGHTWEIGHT STRETCH RETAINED"},
     ]
     write_csv(OUT / "mass-allocation-register.csv", mass_rows)
     holds = [

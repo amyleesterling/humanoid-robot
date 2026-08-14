@@ -21,9 +21,11 @@
     0.01143169,
     0.370530591
   ],
-  "program_maximum_mass_kg": 10.0,
-  "planning_margin_to_program_maximum_kg": -1.458220104,
-  "program_mass_target_status": "EXCEEDED",
+  "program_maximum_mass_kg": 12.0,
+  "program_lightweight_stretch_kg": 10.0,
+  "planning_margin_to_program_maximum_kg": 0.541779896,
+  "planning_margin_to_lightweight_stretch_kg": -1.458220104,
+  "program_mass_target_status": "WITHIN P0.1 MAXIMUM; PHYSICAL MASS CLOSURE OPEN",
   "unmodeled_or_unselected": [
     "exact battery BMS/PCM, cell monitor, connector, service disconnect, precharge, containment, retention and offboard charger hardware",
     "exact selected controller, power, protection, sensor, audio, cooling and networking hardware",

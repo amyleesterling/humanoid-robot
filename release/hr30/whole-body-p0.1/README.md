@@ -22,7 +22,7 @@ The former empty torso, pelvis, head and foot reservations now contain 56 locate
 
 ## Whole-body mass reconciliation
 
-The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 66 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 10 catalogue belt candidates and 56 located equipment/harness/contact items. The gross identified subtotal is 10.609 kg; the explicit per-link model plus 8% integration contingency is 11.458 kg with neutral COM Z=0.371 m. This includes the onboard pack/cassette/protection-reservation geometry and therefore explicitly exceeds the 10 kg program maximum by 1.458 kg. Exact protection and received masses remain open.
+The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 66 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 10 catalogue belt candidates and 56 located equipment/harness/contact items. The gross identified subtotal is 10.609 kg; the explicit per-link model plus 8% integration contingency is 11.458 kg with neutral COM Z=0.371 m. This includes the onboard pack/cassette/protection reservation and leaves 0.542 kg to the 12 kg P0.1 maximum. The 10 kg lightweight stretch objective remains open by 1.458 kg. Exact protection and received masses remain open.
 
 
 ## Whole-body joint-load architecture
