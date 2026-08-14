@@ -5,6 +5,8 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import ast
+import math
 from pathlib import Path
 
 import cadquery as cq
@@ -33,6 +35,8 @@ def main() -> int:
         "joint-axis-schedule.csv",
         "joint-module-family-schedule.csv",
         "joint-module-axis-binding.csv",
+        "vendor-actuator-source-register.csv",
+        "vendor-actuator-transform-register.csv",
         "actuator-transmission-allocation.csv",
         "asimov-1-reuse-adapt-reject.csv",
         "component-envelope-schedule.csv",
@@ -84,7 +88,8 @@ def main() -> int:
     require(sum(r["region"] in {"arm", "hand"} for r in axes) == 10, "arm/hand axis count mismatch")
     allocation = list(csv.DictReader((SRC / "actuator-transmission-allocation.csv").open(encoding="utf-8")))
     require(len(allocation) == 25 and {r["axis_id"] for r in allocation} == {r["axis_id"] for r in axes}, "actuator allocation does not cover every axis")
-    require(sum(r["candidate_disposition"] == "DIRECT DRIVE REJECTED/BLOCKED" for r in allocation) == 2, "both hip-roll direct-drive allocations must be blocked")
+    blocked_roll_axes = {r["axis_id"] for r in allocation if r["candidate_disposition"] == "DIRECT DRIVE REJECTED/BLOCKED BY WHOLE-BODY PACKAGING"}
+    require(blocked_roll_axes == {"L_HIP_ROLL", "R_HIP_ROLL", "L_ANKLE_ROLL", "R_ANKLE_ROLL"}, "hip/ankle roll direct-drive packaging dispositions are incomplete")
     module_families = list(csv.DictReader((SRC / "joint-module-family-schedule.csv").open(encoding="utf-8")))
     module_bindings = list(csv.DictReader((SRC / "joint-module-axis-binding.csv").open(encoding="utf-8")))
     require(len(module_families) == 8 and len({r["family_id"] for r in module_families}) == 8, "joint-module family identity/count mismatch")
@@ -93,6 +98,25 @@ def main() -> int:
     require({r["family_id"] for r in module_bindings} == {r["family_id"] for r in module_families}, "joint-module family/binding mismatch")
     require(sum(r["shared_assembly_id"] == "L_SHOULDER_GIMBAL" for r in module_bindings) == 2 and sum(r["shared_assembly_id"] == "R_SHOULDER_GIMBAL" for r in module_bindings) == 2, "intersecting shoulder axes are not bound to shared gimbals")
     require(all("SELECTION REQUIRED" in r["selection_state"] and r["authority"].startswith("NO PROCUREMENT") for r in module_bindings), "joint-module selection/authority boundary missing")
+    vendor_sources = list(csv.DictReader((SRC / "vendor-actuator-source-register.csv").open(encoding="utf-8")))
+    vendor_transforms = list(csv.DictReader((SRC / "vendor-actuator-transform-register.csv").open(encoding="utf-8")))
+    expected_vendor_hashes = {
+        "ROBOTIS-540": "6E0DF65638B3A23B12C7EE1114D4D06F5EC2DE9E84E3FFDDD7E115E8F8FAF39F",
+        "ROBOTIS-X430": "7FF4E39475245D5C1FC4F703E9241FCA1A09D57AED920274498DBE2CD5E31E22",
+        "ROBOTIS-XC330": "E2F7B060801A1D6A21F23BCA2554F29A402F7D73B8498CB201C9E6ADF3139EB6",
+    }
+    require({r["source_id"]: r["sha256"] for r in vendor_sources} == expected_vendor_hashes, "vendor actuator source identity/hash mismatch")
+    for row in vendor_sources:
+        require(sha(ROOT / row["repository_path"]).upper() == row["sha256"], f"vendor actuator source bytes drifted: {row['source_id']}")
+    require(len(vendor_transforms) == 25 and {r["axis_id"] for r in vendor_transforms} == {r["axis_id"] for r in axes}, "vendor actuator transform register does not cover every axis")
+    axis_by_id = {row["axis_id"]: row for row in axes}
+    for row in vendor_transforms:
+        basis = [tuple(float(v) for v in ast.literal_eval(row[key])) for key in ("project_basis_local_x", "project_basis_local_y", "project_basis_local_z_output")]
+        require(all(abs(math.sqrt(sum(v * v for v in vector)) - 1.0) < 1e-9 for vector in basis), f"non-unit actuator transform basis {row['axis_id']}")
+        require(all(abs(sum(basis[i][k] * basis[j][k] for k in range(3))) < 1e-9 for i, j in ((0, 1), (0, 2), (1, 2))), f"non-orthogonal actuator transform basis {row['axis_id']}")
+        expected_z = tuple(float(axis_by_id[row["axis_id"]][key]) for key in ("direction_x", "direction_y", "direction_z"))
+        require(basis[2] == expected_z, f"vendor output axis does not match controlled axis {row['axis_id']}")
+        require(row["source_sha256"] == expected_vendor_hashes[row["vendor_source_id"]] and "SELECTION REQUIRED" in row["interface_status"], f"vendor transform source/interface boundary mismatch {row['axis_id']}")
     asimov = list(csv.DictReader((SRC / "asimov-1-reuse-adapt-reject.csv").open(encoding="utf-8")))
     require(len(asimov) >= 12 and {r["decision"] for r in asimov} == {"REUSE", "ADAPT", "REJECT"}, "Asimov matrix incomplete")
     require(all(r["source_archive_sha256"].lower() == "ae126d212e8c56486ce014bd9b01b3779b0086867f9b47615ddefbbf32fa5167" for r in asimov), "Asimov source identity mismatch")
@@ -105,13 +129,16 @@ def main() -> int:
     model = cq.importers.importStep(str(SRC / "HR-30_body_architecture_candidate.step"))
     vertices = [vertex.Center() for vertex in model.val().Vertices()]
     require(abs(min(vertex.z for vertex in vertices)) < 1e-6 and abs(max(vertex.z for vertex in vertices) - 762.0) < 1e-6, "independent STEP vertex height/bottom mismatch")
-    require((SRC / "HR-30_body_architecture_candidate.glb").stat().st_size > 10000, "GLB too small")
+    glb_size = (SRC / "HR-30_body_architecture_candidate.glb").stat().st_size
+    require(10000 < glb_size < 25_000_000, "GLB must remain a practical web asset while preserving the whole-body model")
     require((SRC / "vendor" / "model-viewer.min.js").stat().st_size > 100000, "vendored interactive viewer missing or too small")
     require(WARNING in (SRC / "README.md").read_text(encoding="utf-8"), "README warning missing")
     require(sha(SRC / "whole-body-source.py") == sha(ROOT / "tools" / "generate_hr30_body_architecture_p01.py"), "editable source snapshot drift")
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
     require(status["whole_body_geometry_present"] and status["joint_axis_count"] == 25 and status["actuator_allocation_count"] == 25, "whole-body package status incomplete")
     require(status["joint_module_geometry_present"] and status["joint_module_family_count"] == 8 and status["joint_module_binding_count"] == 25, "joint-module status incomplete")
+    require(status["sha_bound_vendor_actuator_geometry_present"] and status["vendor_actuator_source_count"] == 3 and status["vendor_actuator_transform_count"] == 25, "vendor actuator geometry status incomplete")
+    require(status["web_glb_uses_dimension_matched_simplified_actuator_bodies"], "web GLB simplification disclosure missing")
     require(not any(status[key] for key in ("procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "package status authority overclaim")
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require(WARNING in page and "font:17px/1.55" in page and "font-size:16px" in page, "web warning/legibility controls missing")
@@ -121,7 +148,7 @@ def main() -> int:
     component_names = {row["component"] for row in components}
     require("FACE_SCREEN_PANEL" in component_names and {"L_INBOARD_GRIPPER_FINGER", "L_OUTBOARD_GRIPPER_FINGER", "R_INBOARD_GRIPPER_FINGER", "R_OUTBOARD_GRIPPER_FINGER"} <= component_names, "screen face or functional two-finger hands missing")
     for axis_id in {r["axis_id"] for r in axes}:
-        require({f"JMOD_{axis_id}_OUTPUT_SHAFT", f"JMOD_{axis_id}_BEARING_A_RING", f"JMOD_{axis_id}_BEARING_B_RING", f"JMOD_{axis_id}_INTERFACE_PLATE_A", f"JMOD_{axis_id}_INTERFACE_PLATE_B", f"JMOD_{axis_id}_ACTUATOR_ENVELOPE"} <= component_names, f"visible joint-module geometry incomplete for {axis_id}")
+        require({f"JMOD_{axis_id}_OUTPUT_SHAFT", f"JMOD_{axis_id}_BEARING_A_RING", f"JMOD_{axis_id}_BEARING_B_RING", f"JMOD_{axis_id}_INTERFACE_PLATE_A", f"JMOD_{axis_id}_INTERFACE_PLATE_B", f"JMOD_{axis_id}_ACTUATOR_VENDOR_CANDIDATE"} <= component_names, f"visible joint-module geometry incomplete for {axis_id}")
     print("PASS: native HR-30 body architecture has exact 762 mm height, 25 named axes, synchronized STEP/GLB/source-release evidence; body remains preliminary and all work authority false")
     return 0
 

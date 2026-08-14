@@ -323,7 +323,7 @@ def write_budgets_and_bom() -> None:
         ("HR30-BOM-016", "pelvis IMU", "SELECTION REQUIRED", "industrial 6/9-axis IMU", 1, 160),
         ("HR30-BOM-017", "foot force sensing", "SELECTION REQUIRED", "four-corner load-cell and ADC set per foot", 2, 120),
         ("HR30-BOM-018", "output absolute encoder", "SELECTION REQUIRED", "reduced leg joint encoder", 8, 70),
-        ("HR30-BOM-019", "leg reductions", "SELECTION REQUIRED", "1.5:1 belt candidate for pitch axes; hip roll ratio open", 8, 90),
+        ("HR30-BOM-019", "leg reductions", "SELECTION REQUIRED", "1.5:1 pitch-axis and 2.0:1 roll-axis geometric candidates; exact belt, pulley, bearing and retention selections open", 10, 90),
         ("HR30-BOM-020", "joint support", "SELECTION REQUIRED", "dual-bearing shaft stack per load-bearing axis", 25, 35),
         ("HR30-BOM-021", "frame plates", "custom", "6061-T6/T651 machined plate set; drawings/material release open", 1, 900),
         ("HR30-BOM-022", "shells", "custom", "printed removable cover set; material/process open", 1, 450),

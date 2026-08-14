@@ -90,6 +90,7 @@ def main() -> int:
 
     bom = read_csv("whole-robot-candidate-bom.csv")
     require(len(bom) == 32 and sum(int(row["quantity"]) for row in bom if "actuator" in row["function"]) >= 25, "candidate BOM population incomplete")
+    require(any(row["item_id"] == "HR30-BOM-019" and int(row["quantity"]) == 10 and "2.0:1 roll-axis" in row["candidate"] for row in bom), "leg reduction BOM does not cover six pitch and four roll axes")
     require(all(row["authority"] == "NO PROCUREMENT OR FABRICATION AUTHORITY" for row in bom), "BOM authority overclaim")
 
     schema = json.loads((SRC / "structured-action-request.schema.json").read_text(encoding="utf-8"))

@@ -1,7 +1,7 @@
 hold_id,unresolved_item,state,release_effect
 HR30-P01-H01,"All 25 axes have dimensioned module-family bindings and visible shaft/bearing/interface candidates, but exact bearings, fits, materials, fasteners, stops, encoders, actuator interfaces and load proof remain absent.",OPEN,"BLOCKS FABRICATION, MOTION AND ENERGIZATION"
 HR30-P01-H02,"The arm actuator concept exceeds its mass target before links, hands, cables and covers.",OPEN,"BLOCKS FABRICATION, MOTION AND ENERGIZATION"
-HR30-P01-H03,The leg concept fails its current mass screen and direct-drive hip roll is blocked.,OPEN,"BLOCKS FABRICATION, MOTION AND ENERGIZATION"
+HR30-P01-H03,The leg concept fails its current mass screen; direct-drive hip roll is blocked by load architecture and direct-drive ankle roll is blocked because exact actuator geometry crosses the floor plane.,OPEN,"BLOCKS FABRICATION, MOTION AND ENERGIZATION"
 HR30-P01-H04,"No selected power source, regeneration control, contactors, battery or tether exists.",OPEN,"BLOCKS FABRICATION, MOTION AND ENERGIZATION"
 HR30-P01-H05,The 370 mm straight-arm reach and 950 mm span pass hard limits but miss targets.,OPEN,"BLOCKS FABRICATION, MOTION AND ENERGIZATION"
 HR30-P01-H06,"Shells are solid visual envelopes without wall thickness, splits, fasteners, vents or service access.",OPEN,"BLOCKS FABRICATION, MOTION AND ENERGIZATION"
