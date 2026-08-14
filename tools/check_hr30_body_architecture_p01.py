@@ -40,6 +40,7 @@ def main() -> int:
         "actuator-transmission-allocation.csv",
         "asimov-1-reuse-adapt-reject.csv",
         "component-envelope-schedule.csv",
+        "joint-packaging-screen.json",
         "mass-allocation-register.csv",
         "geometry-checks.json",
         "open-holds.csv",
@@ -114,8 +115,10 @@ def main() -> int:
         basis = [tuple(float(v) for v in ast.literal_eval(row[key])) for key in ("project_basis_local_x", "project_basis_local_y", "project_basis_local_z_output")]
         require(all(abs(math.sqrt(sum(v * v for v in vector)) - 1.0) < 1e-9 for vector in basis), f"non-unit actuator transform basis {row['axis_id']}")
         require(all(abs(sum(basis[i][k] * basis[j][k] for k in range(3))) < 1e-9 for i, j in ((0, 1), (0, 2), (1, 2))), f"non-orthogonal actuator transform basis {row['axis_id']}")
-        expected_z = tuple(float(axis_by_id[row["axis_id"]][key]) for key in ("direction_x", "direction_y", "direction_z"))
+        expected_z = (0.0, 1.0, 0.0) if "GRIPPER" in row["axis_id"] else tuple(float(axis_by_id[row["axis_id"]][key]) for key in ("direction_x", "direction_y", "direction_z"))
         require(basis[2] == expected_z, f"vendor output axis does not match controlled axis {row['axis_id']}")
+        expected_relation = "TRANSVERSE PALM DRIVE THROUGH SYMMETRIC COUPLER" if "GRIPPER" in row["axis_id"] else "COAXIAL WITH CONTROLLED ROTARY AXIS"
+        require(row["controlled_axis_relation"] == expected_relation, f"actuator/controlled-axis relationship mismatch {row['axis_id']}")
         require(row["source_sha256"] == expected_vendor_hashes[row["vendor_source_id"]] and "SELECTION REQUIRED" in row["interface_status"], f"vendor transform source/interface boundary mismatch {row['axis_id']}")
     asimov = list(csv.DictReader((SRC / "asimov-1-reuse-adapt-reject.csv").open(encoding="utf-8")))
     require(len(asimov) >= 12 and {r["decision"] for r in asimov} == {"REUSE", "ADAPT", "REJECT"}, "Asimov matrix incomplete")
@@ -139,6 +142,9 @@ def main() -> int:
     require(status["joint_module_geometry_present"] and status["joint_module_family_count"] == 8 and status["joint_module_binding_count"] == 25, "joint-module status incomplete")
     require(status["sha_bound_vendor_actuator_geometry_present"] and status["vendor_actuator_source_count"] == 3 and status["vendor_actuator_transform_count"] == 25, "vendor actuator geometry status incomplete")
     require(status["web_glb_uses_dimension_matched_simplified_actuator_bodies"], "web GLB simplification disclosure missing")
+    packaging = json.loads((SRC / "joint-packaging-screen.json").read_text(encoding="utf-8"))
+    require(status["neutral_pose_joint_packaging_screen_pass"] and packaging["pass"], "neutral-pose joint packaging screen not passed")
+    require(not packaging["detached"] and not packaging["cross_assembly_actuator_collisions"] and not packaging["floor_crossings"], "neutral-pose joint packaging findings remain")
     require(not any(status[key] for key in ("procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "package status authority overclaim")
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require(WARNING in page and "font:17px/1.55" in page and "font-size:16px" in page, "web warning/legibility controls missing")

@@ -20,6 +20,7 @@
   "vendor_actuator_source_count": 3,
   "vendor_actuator_transform_count": 25,
   "web_glb_uses_dimension_matched_simplified_actuator_bodies": true,
+  "neutral_pose_joint_packaging_screen_pass": true,
   "asimov_matrix_count": 14,
   "editable_source_present": true,
   "step_present": true,

@@ -63,8 +63,8 @@ SHOULDER_Z = 590.0
 NECK_Z = 650.0
 HIP_HALF_WIDTH = 62.5
 SHOULDER_AXIS_X = 105.0
-ELBOW_X = 125.0
-WRIST_X = 125.0
+ELBOW_X = 135.0
+WRIST_X = 140.0
 ELBOW_Z = 440.0
 WRIST_Z = 295.0
 FINGERTIP_Z = 220.0
@@ -167,9 +167,9 @@ def vendor_actuator_to_axis(shape: cq.Shape, center: tuple[float, float, float],
 
 
 def vendor_source_for_axis(axis_id: str) -> str:
-    if axis_id.startswith("HEAD_"):
+    if axis_id.startswith("HEAD_") or "GRIPPER" in axis_id:
         return "ROBOTIS-XC330"
-    if any(token in axis_id for token in ("WRIST", "GRIPPER", "ELBOW")):
+    if any(token in axis_id for token in ("WRIST", "ELBOW")):
         return "ROBOTIS-X430"
     return "ROBOTIS-540"
 
@@ -525,7 +525,18 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
         add(f"JMOD_{axis_id}_CABLE_CORRIDOR", "joint cable corridor", cylinder_between(corridor_center, direction, shaft_length, spec["cable_d"]), sensor, False, f"{family_id} routing reservation; cable construction and bend control selection required")
 
         motor_offset = spec["motor_offset"]
-        if motor_offset > 0:
+        if "GRIPPER" in axis_id:
+            # The gripper axis above describes symmetric jaw travel, not the
+            # rotary motor shaft.  Package the compact motor transversely inside
+            # the palm and show a real coupling member to the jaw-drive datum.
+            side_sign = 1.0 if axis_id.startswith("L_") else -1.0
+            motor_center = (side_sign * WRIST_X, 0.0, 278.0)
+            actuator_direction = (0.0, 1.0, 0.0)
+            vendor_source_id = vendor_source_for_axis(axis_id)
+            actuator_shape, actuator_basis = vendor_actuator_to_axis(vendor_shapes[vendor_source_id], motor_center, actuator_direction)
+            add(f"JMOD_{axis_id}_ACTUATOR_VENDOR_CANDIDATE", "joint actuator vendor geometry", actuator_shape, structure, True, f"{vendor_source_id} SHA-bound manufacturer geometry mounted transversely in the palm; dimension-matched simplified body in GLB; project mounting interface remains candidate", oriented_box(motor_center, actuator_direction, spec["body_w"], spec["body_h"], spec["body_d"]))
+            add(f"JMOD_{axis_id}_SYMMETRIC_DRIVE_COUPLER", "gripper transmission", link_between(center, motor_center, 6.0), joint, True, "candidate rack/pinion or tendon equalizer connection; geometry is packaging-only")
+        elif motor_offset > 0:
             motor_center_v = cq.Vector(*center) + offset_direction.multiply(motor_offset)
             motor_center = (motor_center_v.x, motor_center_v.y, motor_center_v.z)
             output_pulley_d = 48.0 if family_id.endswith("15") else 52.0 if family_id.endswith("20") else 32.0
@@ -537,12 +548,13 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
             add(f"JMOD_{axis_id}_ACTUATOR_VENDOR_CANDIDATE", "joint actuator vendor geometry", actuator_shape, structure, True, f"{vendor_source_id} SHA-bound manufacturer geometry in STEP; dimension-matched simplified body in GLB; project mounting interface remains candidate", oriented_box(motor_center, direction, spec["body_w"], spec["body_h"], spec["body_d"]))
             add(f"JMOD_{axis_id}_BELT_PATH_RESERVATION", "joint transmission reservation", link_between(center, motor_center, 8.0), sensor, False, "belt sweep/guard reservation only; no belt selection or load credit")
         else:
-            axial_sign = 1.0 if abs(normal.x) > 0.9 and center[0] < 0 else -1.0
+            axial_sign = 1.0 if "WRIST" in axis_id else 1.0 if abs(normal.x) > 0.9 and center[0] < 0 else -1.0
             motor_center_v = cq.Vector(*center) + normal.multiply(axial_sign * (span / 2.0 + spec["plate_t"] + spec["body_d"] / 2.0))
             motor_center = (motor_center_v.x, motor_center_v.y, motor_center_v.z)
             vendor_source_id = vendor_source_for_axis(axis_id)
             actuator_shape, actuator_basis = vendor_actuator_to_axis(vendor_shapes[vendor_source_id], motor_center, direction)
             add(f"JMOD_{axis_id}_ACTUATOR_VENDOR_CANDIDATE", "joint actuator vendor geometry", actuator_shape, structure, True, f"{vendor_source_id} SHA-bound manufacturer geometry in STEP; dimension-matched simplified body in GLB; project mounting interface remains candidate", oriented_box(motor_center, direction, spec["body_w"], spec["body_h"], spec["body_d"]))
+            add(f"JMOD_{axis_id}_ACTUATOR_OUTPUT_COUPLER", "joint transmission", cylinder_between(((motor_center_v + cq.Vector(*center)).multiply(0.5).x, (motor_center_v + cq.Vector(*center)).multiply(0.5).y, (motor_center_v + cq.Vector(*center)).multiply(0.5).z), direction, (motor_center_v - cq.Vector(*center)).Length, max(4.0, spec["shaft_d"] * 0.72)), joint, True, "coaxial output coupling candidate; spline, clamp, material and retention selection required")
 
         x_basis, y_basis, z_basis = actuator_basis
         vendor_transforms.append({
@@ -551,6 +563,7 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
             "vendor_source_id": vendor_source_id,
             "source_sha256": VENDOR_ACTUATOR_SOURCES[vendor_source_id]["expected_sha256"],
             "native_output_axis": "+Z through native origin",
+            "controlled_axis_relation": "TRANSVERSE PALM DRIVE THROUGH SYMMETRIC COUPLER" if "GRIPPER" in axis_id else "COAXIAL WITH CONTROLLED ROTARY AXIS",
             "project_output_origin_mm": f"({motor_center[0]:.6f}, {motor_center[1]:.6f}, {motor_center[2]:.6f})",
             "project_basis_local_x": f"({x_basis.x:.6f}, {x_basis.y:.6f}, {x_basis.z:.6f})",
             "project_basis_local_y": f"({y_basis.x:.6f}, {y_basis.y:.6f}, {y_basis.z:.6f})",
@@ -581,11 +594,117 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
     return components, axes, module_bindings, vendor_transforms
 
 
+def joint_packaging_screen(components: list[Component], axes: list[dict]) -> dict:
+    """Screen neutral-pose module connectivity, actuator clashes and floor crossing."""
+    by_name = {item.name: item for item in components}
+
+    def allowed_names(axis_id: str) -> list[str]:
+        side = axis_id[0] if axis_id.startswith(("L_", "R_")) else "C"
+        if axis_id == "HEAD_PAN":
+            return ["NECK_COLUMN_ENVELOPE", "HEAD_SHELL_ENVELOPE"]
+        if axis_id == "HEAD_TILT":
+            return ["HEAD_SHELL_ENVELOPE"]
+        if axis_id == "WAIST_YAW":
+            return ["WAIST_BEARING_STACK_RESERVATION", "PELVIS_SHELL_ENVELOPE", "TORSO_SHELL_ENVELOPE"]
+        if "SHOULDER" in axis_id:
+            return [f"{side}_SHOULDER_HOUSING_ENVELOPE", "TORSO_SHELL_ENVELOPE", f"{side}_UPPER_ARM_SHELL_ENVELOPE"]
+        if "ELBOW" in axis_id:
+            return [f"{side}_ELBOW_HOUSING_ENVELOPE", f"{side}_UPPER_ARM_SHELL_ENVELOPE", f"{side}_FOREARM_SHELL_ENVELOPE"]
+        if "WRIST" in axis_id or "GRIPPER" in axis_id:
+            return [f"{side}_WRIST_HOUSING_ENVELOPE", f"{side}_FOREARM_SHELL_ENVELOPE", f"{side}_HAND_PALM_ENVELOPE"]
+        if "HIP" in axis_id:
+            return [f"{side}_HIP_HOUSING_ENVELOPE", "PELVIS_SHELL_ENVELOPE", f"{side}_THIGH_SHELL_ENVELOPE"]
+        if "KNEE" in axis_id:
+            return [f"{side}_KNEE_HOUSING_ENVELOPE", f"{side}_THIGH_SHELL_ENVELOPE", f"{side}_SHIN_SHELL_ENVELOPE"]
+        if "ANKLE" in axis_id:
+            return [f"{side}_ANKLE_HOUSING_ENVELOPE", f"{side}_SHIN_SHELL_ENVELOPE", f"{side}_FOOT_SHELL_ENVELOPE"]
+        raise RuntimeError(f"no packaging-volume mapping for {axis_id}")
+
+    def touches(a: cq.Shape, b: cq.Shape, tolerance: float = 0.05) -> bool:
+        abox, bbox = a.BoundingBox(), b.BoundingBox()
+        if (
+            max(abox.xmin, bbox.xmin) - min(abox.xmax, bbox.xmax) > tolerance
+            or max(abox.ymin, bbox.ymin) - min(abox.ymax, bbox.ymax) > tolerance
+            or max(abox.zmin, bbox.zmin) - min(abox.zmax, bbox.zmax) > tolerance
+        ):
+            return False
+        return a.intersect(b).Volume() > 1e-6 or a.distance(b) <= tolerance
+
+    def actuator_axis(name: str) -> str:
+        return name[len("JMOD_") : -len("_ACTUATOR_VENDOR_CANDIDATE")]
+
+    def assembly(axis_id: str) -> str:
+        for token in ("SHOULDER", "HIP", "ANKLE"):
+            if axis_id.startswith((f"L_{token}_", f"R_{token}_")):
+                return f"{axis_id[0]}_{token}_CLUSTER"
+        if axis_id.startswith("HEAD_"):
+            return "HEAD_NECK_CLUSTER"
+        return axis_id
+
+    detached: list[dict] = []
+    part_count = 0
+    for axis in axes:
+        axis_id = axis["axis_id"]
+        allowed = [by_name[name].shape for name in allowed_names(axis_id)]
+        parts = [item for item in components if item.physical and item.name.startswith(f"JMOD_{axis_id}_")]
+        part_count += len(parts)
+        connected = {index for index, item in enumerate(parts) if any(touches(item.shape, volume) for volume in allowed)}
+        changed = True
+        while changed:
+            changed = False
+            for index, item in enumerate(parts):
+                if index in connected:
+                    continue
+                if any(touches(item.shape, parts[other].shape) for other in connected):
+                    connected.add(index)
+                    changed = True
+        detached.extend({"axis_id": axis_id, "component": item.name} for index, item in enumerate(parts) if index not in connected)
+
+    actuators = [item for item in components if item.physical and item.name.endswith("_ACTUATOR_VENDOR_CANDIDATE")]
+    collisions: list[dict] = []
+    for index, first in enumerate(actuators):
+        first_axis = actuator_axis(first.name)
+        first_box = first.shape.BoundingBox()
+        for second in actuators[index + 1 :]:
+            second_axis = actuator_axis(second.name)
+            if assembly(first_axis) == assembly(second_axis):
+                continue
+            second_box = second.shape.BoundingBox()
+            if (
+                min(first_box.xmax, second_box.xmax) <= max(first_box.xmin, second_box.xmin)
+                or min(first_box.ymax, second_box.ymax) <= max(first_box.ymin, second_box.ymin)
+                or min(first_box.zmax, second_box.zmax) <= max(first_box.zmin, second_box.zmin)
+            ):
+                continue
+            overlap = first.shape.intersect(second.shape).Volume()
+            if overlap > 1e-5:
+                collisions.append({"first_axis": first_axis, "second_axis": second_axis, "overlap_mm3": overlap})
+    floor = [
+        {"component": item.name, "zmin_mm": item.shape.BoundingBox().zmin}
+        for item in components
+        if item.physical and item.shape.BoundingBox().zmin < -1e-7
+    ]
+    return {
+        "screen": "NEUTRAL-POSE CONNECTIVITY / CROSS-ASSEMBLY EXACT-ACTUATOR COLLISION / FLOOR",
+        "scope": "Nominal packaging only; excludes swept motion, tolerance, cable, structural and safety proof",
+        "module_part_count": part_count,
+        "exact_actuator_count": len(actuators),
+        "detached": detached,
+        "cross_assembly_actuator_collisions": collisions,
+        "floor_crossings": floor,
+        "pass": not detached and not collisions and not floor,
+        "authority": "NO PROCUREMENT, FABRICATION, MOTION OR ENERGIZATION AUTHORITY",
+    }
+
+
 def main() -> int:
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
     components, axes, module_bindings, vendor_transforms = build()
+    packaging = joint_packaging_screen(components, axes)
+    if not packaging["pass"]:
+        raise RuntimeError(f"neutral-pose joint packaging screen failed: {packaging}")
     physical = [item.shape for item in components if item.physical]
     all_shapes = [item.shape for item in components]
     physical_compound = cq.Compound.makeCompound(physical)
@@ -671,9 +790,9 @@ def main() -> int:
             )
         elif "GRIPPER" in axis_id:
             actuator, transmission, rail, disposition = (
-                "ROBOTIS XM430-class candidate",
-                "compliant parallel-link or tendon transmission",
-                "10.0-14.8 V candidate domain",
+                "ROBOTIS XC330-class compact candidate",
+                "transverse palm-mounted motor with compliant symmetric rack/pinion or tendon equalizer",
+                "6.0-12.0 V candidate domain; common rail architecture SELECTION REQUIRED",
                 "PROVISIONAL - FORCE/LIMIT/COMPLIANCE PROOF REQUIRED",
             )
         elif "HIP_ROLL" in axis_id or "ANKLE_ROLL" in axis_id:
@@ -752,6 +871,7 @@ def main() -> int:
             "status": "CANDIDATE ENVELOPE - NOT A FABRICATION PART",
         })
     write_csv(OUT / "component-envelope-schedule.csv", component_rows)
+    (OUT / "joint-packaging-screen.json").write_text(json.dumps(packaging, indent=2) + "\n", encoding="utf-8")
 
     physical_box = bbox_dict(physical_compound)
     reference_box = bbox_dict(reference_compound)
@@ -808,7 +928,7 @@ def main() -> int:
     holds = [
         ("HR30-P01-H01", "All 25 axes have dimensioned module-family bindings and visible shaft/bearing/interface candidates, but exact bearings, fits, materials, fasteners, stops, encoders, actuator interfaces and load proof remain absent."),
         ("HR30-P01-H02", "The arm actuator concept exceeds its mass target before links, hands, cables and covers."),
-        ("HR30-P01-H03", "The leg concept fails its current mass screen; direct-drive hip roll is blocked by load architecture and direct-drive ankle roll is blocked because exact actuator geometry crosses the floor plane."),
+        ("HR30-P01-H03", "The leg concept fails its current mass screen; reduced hip/ankle roll packaging clears the floor in the neutral pose but continuous torque, thermal, impact and gait loads remain unproved."),
         ("HR30-P01-H04", "No selected power source, regeneration control, contactors, battery or tether exists."),
         ("HR30-P01-H05", "The 370 mm straight-arm reach and 950 mm span pass hard limits but miss targets."),
         ("HR30-P01-H06", "Shells are solid visual envelopes without wall thickness, splits, fasteners, vents or service access."),
@@ -858,6 +978,7 @@ The straight arm-chain arithmetic is 370 mm reach and 950 mm span: both pass har
         "vendor_actuator_source_count": len(VENDOR_ACTUATOR_SOURCES),
         "vendor_actuator_transform_count": len(vendor_transforms),
         "web_glb_uses_dimension_matched_simplified_actuator_bodies": True,
+        "neutral_pose_joint_packaging_screen_pass": packaging["pass"],
         "asimov_matrix_count": len(asimov_rows),
         "editable_source_present": True,
         "step_present": True,
