@@ -1,10 +1,13 @@
 """Check the root GitHub Pages entry for HR-30 whole-body P0.1."""
 
+import json
+
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGE = ROOT / "index.html"
+MASS_SUMMARY = ROOT / "hr30" / "whole-body-p0.1" / "mass-reconciliation-summary.json"
 
 
 def require(condition: bool, message: str) -> None:
@@ -14,6 +17,9 @@ def require(condition: bool, message: str) -> None:
 
 def main() -> int:
     text = PAGE.read_text(encoding="utf-8")
+    mass_summary = json.loads(MASS_SUMMARY.read_text(encoding="utf-8"))
+    reconciled_mass = float(mass_summary["reconciled_dynamics_planning_mass_kg"])
+    displayed_mass = f"{reconciled_mass:.3f} kg"
     required_links = (
         "hr30/whole-body-p0.1/",
         "HR-30_body_architecture_candidate.glb",
@@ -34,6 +40,8 @@ def main() -> int:
     )
     require(all(link in text for link in required_links), "root page does not expose the complete package")
     require("PRELIMINARY" in text and "NOT APPROVED" in text and "energization" in text.lower(), "preliminary authority warning missing")
+    require(displayed_mass in text, f"root page mass is not synchronized to the authoritative reconciliation: {displayed_mass}")
+    require("9.63 kg" not in text, "historical allocation mass remains on the current root page")
     require('src="hr30/whole-body-p0.1/vendor/model-viewer.min.js"' in text, "viewer is not repository-local")
     require("font:17px/1.55" in text and "font-size:16px" in text and "font-size:14px" in text, "legibility minima missing")
     require("minmax(230px,1fr)" in text and "@media (max-width:680px)" in text, "responsive layout controls missing")
