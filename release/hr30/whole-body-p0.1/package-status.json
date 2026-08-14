@@ -200,5 +200,14 @@
   "assembly_traveler_equipment_count": 54,
   "assembly_traveler_harness_assembly_count": 14,
   "assembly_traveler_physical_execution_complete": false,
-  "assembly_authority": false
+  "assembly_authority": false,
+  "detailed_bilateral_gripper_package_present": true,
+  "detailed_gripper_visible_part_count_per_hand": 18,
+  "detailed_gripper_unique_part_count": 18,
+  "detailed_gripper_total_coupled_stroke_mm": 26.0,
+  "detailed_gripper_closed_pad_gap_mm": 8.0,
+  "detailed_gripper_open_pad_gap_mm": 34.0,
+  "detailed_gripper_mechanism_selected": false,
+  "detailed_gripper_force_calibrated": false,
+  "detailed_gripper_physical_validation_complete": false
 }

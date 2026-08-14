@@ -90,6 +90,16 @@ The eight whole-body actuator buses now have **86 sourced circuit parts** across
 
 Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
 <!-- HR30-HARNESS-README-END -->
+
+
+
+
+<!-- HR30-GRIPPERS-P01-README-START -->
+## Detailed bilateral hand mechanisms
+
+The [detailed gripper package](grippers-p0.1/index.html) replaces the prior hand-envelope-only refinement path with two editable 18-part symmetric rack-and-pinion assemblies. Each contains a wrist interface, serviceable palm frame, twin linear guides, paired racks, common pinion, broad sliding fingers, replaceable compliant pads, hard stops, manual-release access, and the SHA-bound XC330 packaging body. CAD-derived CLOSED and OPEN states provide an 8–34 mm pad gap over 26 mm total coupled stroke. Exact tooth form, fits, materials, actuator mount, calibration, sensing, pinch proof, endurance, DFM/FAI and physical validation remain open.
+<!-- HR30-GRIPPERS-P01-README-END -->
+
 <!-- HR30-ASSEMBLY-GUIDE-P01-START -->
 ## Whole-robot assembly traveler
 
