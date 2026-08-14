@@ -1,6 +1,6 @@
 """Generate the HR-30 whole-body physical-harness P0.1 candidate.
 
-This package translates the existing logical ECAD, eight actuator buses, 25
+This package translates the existing logical ECAD, eight actuator data buses, 25
 joint axes, installed equipment and reserved body corridors into one explicit
 physical-harness architecture.  It deliberately does not select conductor
 sizes, protection ratings, assembled cables or unverified connector contacts.
@@ -212,8 +212,8 @@ def build() -> dict[str, int | float]:
         amps = stall[family]
         power_rows.append({
             "drop_id": f"PWR-{axis}", "axis_id": axis, "bus_branch": bus,
-            "branch_net": f"{bus}_VDD", "return_net": f"{bus}_0V",
-            "protection_topology": "SHARED PROTECTED BUS BRANCH; NOT INDIVIDUALLY FUSED AT EACH AXIS",
+            "branch_net": f"{axis}_VDD", "return_net": f"{bus}_RET",
+            "protection_topology": "ONE DISTINCT PROTECTION / TELEMETRY BOUNDARY PER ACTUATOR; VALUE AND DEVICE SELECTION OPEN",
             "candidate_12v_stall_endpoint_a": f"{amps:.2f}",
             "endpoint_boundary": "DATASHEET MOMENTARY STALL ENDPOINT; NOT DEMAND/RATING",
             "conductor_size": OPEN, "connector_limit": OPEN, "branch_protection": OPEN,
@@ -242,16 +242,18 @@ def build() -> dict[str, int | float]:
         else:
             pins += [("3", "DATA", "DATA")]
         for pin, net, service in pins:
+            physical_net = f"{axis}_VDD" if net == "VDD" else (f"{bus}_RET" if net == "GND" else f"{bus}_{net}")
+            source_contact = f"PBR-{axis}/{net}" if net == "VDD" else f"BRK-{bus}/{net}"
             contact_rows.append({
                 "connector_id": conn_id, "contact": pin, "axis_id": axis, "signal": net,
-                "bus_net": f"{bus}_{net}", "service": service,
+                "bus_net": physical_net, "service": service,
                 "wire_core": f"CORE-{axis}-{net.replace('+','P').replace('-','N')}",
                 "physical_pin_state": "VERIFIED AT ACTUATOR INTERFACE", "end_to_end_test": "NOT EXECUTED",
             })
             core_rows.append({
                 "core_id": f"CORE-{axis}-{net.replace('+','P').replace('-','N')}", "axis_id": axis,
-                "from_connector_contact": f"BRK-{bus}/{net}", "to_connector_contact": f"{conn_id}/{pin}",
-                "net": f"{bus}_{net}", "service": service, "route": pseg if service.startswith("POWER") or service == "ACTUATOR POWER" else dseg,
+                "from_connector_contact": source_contact, "to_connector_contact": f"{conn_id}/{pin}",
+                "net": physical_net, "service": service, "route": pseg if service.startswith("POWER") or service == "ACTUATOR POWER" else dseg,
                 "conductor_cross_section": OPEN, "insulation_temperature_flex": OPEN,
                 "shield_or_twist": OPEN, "cut_length_and_slack": OPEN, "authority": AUTHORITY,
             })
@@ -321,7 +323,7 @@ def build() -> dict[str, int | float]:
     inspections = [
         ("INSP-01", "document/configuration", "all connector IDs, contacts, wire numbers and revision match as-built", "100%", "before fabrication release"),
         ("INSP-02", "continuity", "point-to-point continuity against connector-contact map", "100%", "before any connection"),
-        ("INSP-03", "isolation", "no unintended VDD continuity between separately protected bus branches", "100%", "before actuator connection"),
+        ("INSP-03", "isolation", "no unintended VDD continuity between any of the 25 separately protected actuator feeds", "100%", "before actuator connection"),
         ("INSP-04", "polarity", "VDD/return polarity and data pair identity", "100%", "before actuator connection"),
         ("INSP-05", "shield/bond", "bond endpoints and insulation from unintended frame points", "100%", "before EMC testing"),
         ("INSP-06", "retention", "connector retention and strain-relief pull", OPEN, "before motion"),
@@ -337,7 +339,7 @@ def build() -> dict[str, int | float]:
 
     unresolved = [
         ("HSEL-01", "all power conductors", "cross-section/insulation/flex construction", "fault current, RMS/peak duty, length, ambient, bundling, voltage-drop, jurisdiction"),
-        ("HSEL-02", "eight bus branches", "branch fuse/current limiter and disconnect", "prospective fault current, inrush, coordination, DC interrupt rating, connector/conductor limits"),
+        ("HSEL-02", "25 actuator power feeds", "individual fuse/current limiter, distribution and disconnect implementation", "prospective fault current, inrush, coordination, DC interrupt rating, connector/conductor limits"),
         ("HSEL-03", "25 actuator drops", "custom data-only/power-injection breakout construction", "controlled drawing, crimp process, no-backfeed continuity and fault-injection evidence"),
         ("HSEL-04", "all moving joints", "dynamic cable family, slack and minimum bend radius", "joint sweep, cycle target, torsion, temperature, abrasion and supplier flex data"),
         ("HSEL-05", "eight data buses", "termination/bias/baud/shielding", "measured topology, cable impedance/length, transceiver limits, waveform and EMC tests"),
@@ -363,7 +365,7 @@ def build() -> dict[str, int | float]:
     write_visuals(route_rows, point_rows, axis_rows, buses, stats)
     status = {
         "identifier": IDENTIFIER, "warning": WARNING, "scope": "complete HR-30 P0.1 physical harness architecture",
-        **stats, "topology": "8 separately protected segment branches / 25 actuator drops / data-only controller boundaries",
+        **stats, "topology": "25 separately protected actuator feeds / 8 data-only multidrop buses / data-only controller boundaries",
         "route_geometry_candidate_present": True, "every_axis_has_power_and_data_loop": True,
         "every_equipment_item_bound": True, "every_logical_terminal_retained": True,
         "standard_dynamixel_cable_direct_use_approved": False, "assembled_cables_selected": False,
@@ -381,7 +383,7 @@ This is the first complete physical translation of the HR-30 logical wiring arch
 
 It contains {stats['fixed_route_segments']} body corridors plus 50 explicit moving-joint power/data loops ({stats['total_route_segments']} route segments and {stats['route_points']} route points). Each actuator has a known device-side contact map, a branch-power relationship, a data-link boundary, a moving-loop obligation, retention obligation, derating inputs, and an inspection path.
 
-The architecture uses eight separately protected bus branches. The 25 drops are **not** represented as individually fused. A standard ROBOTIS X3P/X4P daisy cable carries VDD, so it must not be used to parallel separately protected branches. The custom data-only/power-injection breakout remains **SELECTION REQUIRED**.
+The architecture now allocates one separately protected power feed to every actuator. A standard ROBOTIS X3P/X4P daisy cable carries VDD, so it cannot be used unchanged because it would parallel those 25 feeds. A custom/de-pinned data-only harness or power-injection breakout remains **SELECTION REQUIRED**.
 
 The 76.08 A figure is only the sum of manufacturer 12 V momentary stall-current endpoints. It is not expected demand, a conductor rating, a fuse value, or permission to power the robot.
 
@@ -412,7 +414,7 @@ def write_visuals(routes: list[dict], points: list[dict], axes: list[dict], buse
 
     bus_cards = "".join(f'<button class="bus" data-bus="{html.escape(b["bus_id"])}"><strong>{html.escape(b["bus_id"])}</strong><span>{html.escape(b["protocol"])} · {html.escape(b["axis_count"])} axes</span><span>{html.escape(b["candidate_12v_stall_endpoint_sum_a"])} A endpoint sum</span></button>' for b in buses)
     axis_cards = "".join(f'<tr data-bus="{html.escape(a["bus_id"])}"><td>{html.escape(a["axis_id"])}</td><td>{html.escape(a["bus_id"])}</td><td>{html.escape(a["actuator_family"])}</td><td>{html.escape(a["axis_xyz_mm"])}</td><td>{html.escape(a["power_loop"])}<br>{html.escape(a["data_loop"])}</td></tr>' for a in axes)
-    page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 physical harness P0.1</title><style>:root{{--navy:#0d2d57;--blue:#179de3;--sky:#d8f1ff;--gold:#f4b400;--paper:#f8fcff}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--navy);font:16px/1.5 system-ui,sans-serif}}header{{background:linear-gradient(135deg,var(--navy),#185d9d);color:white;padding:32px max(24px,calc((100% - 1180px)/2))}}h1{{font-size:clamp(32px,5vw,60px);line-height:1.05;margin:.2em 0}}.warning{{background:var(--gold);color:#1b2840;padding:14px 18px;font-weight:800;border-radius:12px}}main{{max-width:1180px;margin:auto;padding:28px 20px 70px}}h2{{font-size:clamp(25px,3vw,38px);margin-top:46px}}.stats,.buses{{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}}.stat,.bus,.panel{{background:white;border:2px solid #9bd5f5;border-radius:16px;padding:18px;box-shadow:0 6px 18px #0d2d5712}}.stat strong{{display:block;font-size:28px}}.bus{{font:inherit;color:inherit;text-align:left;cursor:pointer}}.bus strong,.bus span{{display:block}}.bus.active{{border-color:var(--gold);box-shadow:0 0 0 3px #f4b40055}}.map{{width:100%;max-height:760px}}.tablewrap{{overflow:auto;border:2px solid #9bd5f5;border-radius:16px;background:white}}table{{border-collapse:collapse;width:100%;min-width:900px}}th,td{{padding:13px 14px;border-bottom:1px solid #cfeafa;text-align:left;vertical-align:top}}th{{position:sticky;top:0;background:var(--navy);color:white;font-size:14px}}td{{font-size:14px}}a{{color:#075f9f;font-weight:700}}.open{{border-left:8px solid var(--gold)}}@media(max-width:600px){{header{{padding:24px 18px}}main{{padding:20px 14px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>HR-30 · Whole-body P0.1</p><h1>Physical harness guide</h1><p>Every body corridor, actuator branch, joint loop and current ECAD terminal is accounted for—without pretending unresolved cable and protection choices are finished.</p></header><main><section class="stats"><div class="stat"><strong>{stats['axes']}</strong>joint axes</div><div class="stat"><strong>{stats['total_route_segments']}</strong>route segments</div><div class="stat"><strong>{stats['logical_terminals']}</strong>logical terminals</div><div class="stat"><strong>{stats['candidate_12v_stall_endpoint_sum_a']}</strong>A endpoint sum, not demand</div></section><h2>Whole-body route map</h2><div class="panel"><img class="map" src="whole-body-physical-harness.svg" alt="Front map of the HR-30 physical harness routes and joint loops"></div><h2>Eight protected branch candidates</h2><p>Select a branch to filter the joint table; select it again to show all.</p><div class="buses">{bus_cards}</div><h2>All 25 joint drops</h2><div class="tablewrap"><table><thead><tr><th>Axis</th><th>Bus</th><th>Actuator</th><th>Joint datum (mm)</th><th>Moving loops</th></tr></thead><tbody>{axis_cards}</tbody></table></div><h2>Critical power boundary</h2><div class="panel open"><p>The eight bus branches are separately protected. The 25 actuator drops are not individually fused. Standard ROBOTIS X3P/X4P cables include VDD, so a custom data-only/power-injection breakout or controlled depinning method is required to prevent cross-branch backfeed.</p><p>The 76.08 A figure is the arithmetic sum of momentary 12 V stall-current endpoints—not a normal-load forecast, fuse rating, cable rating, or permission to energize.</p></div><h2>Build registers</h2><div class="panel"><p><a href="route-segment-register.csv">route segments</a> · <a href="route-point-register.csv">route points</a> · <a href="axis-harness-binding.csv">axis bindings</a> · <a href="connector-contact-map.csv">actuator contacts</a> · <a href="cable-core-register.csv">cable cores</a> · <a href="equipment-interface-register.csv">equipment interfaces</a> · <a href="logical-terminal-binding.csv">logical terminals</a> · <a href="current-derating-register.csv">derating inputs</a> · <a href="inspection-test-register.csv">inspection/tests</a> · <a href="unresolved-harness-selections.csv">open selections</a></p></div></main><script>const buttons=[...document.querySelectorAll('.bus')],rows=[...document.querySelectorAll('tbody tr')];buttons.forEach(b=>b.addEventListener('click',()=>{{const on=!b.classList.contains('active');buttons.forEach(x=>x.classList.remove('active'));b.classList.toggle('active',on);rows.forEach(r=>r.hidden=on&&r.dataset.bus!==b.dataset.bus)}}));</script></body></html>'''
+    page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 physical harness P0.1</title><style>:root{{--navy:#0d2d57;--blue:#179de3;--sky:#d8f1ff;--gold:#f4b400;--paper:#f8fcff}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--navy);font:16px/1.5 system-ui,sans-serif}}header{{background:linear-gradient(135deg,var(--navy),#185d9d);color:white;padding:32px max(24px,calc((100% - 1180px)/2))}}h1{{font-size:clamp(32px,5vw,60px);line-height:1.05;margin:.2em 0}}.warning{{background:var(--gold);color:#1b2840;padding:14px 18px;font-weight:800;border-radius:12px}}main{{max-width:1180px;margin:auto;padding:28px 20px 70px}}h2{{font-size:clamp(25px,3vw,38px);margin-top:46px}}.stats,.buses{{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}}.stat,.bus,.panel{{background:white;border:2px solid #9bd5f5;border-radius:16px;padding:18px;box-shadow:0 6px 18px #0d2d5712}}.stat strong{{display:block;font-size:28px}}.bus{{font:inherit;color:inherit;text-align:left;cursor:pointer}}.bus strong,.bus span{{display:block}}.bus.active{{border-color:var(--gold);box-shadow:0 0 0 3px #f4b40055}}.map{{width:100%;max-height:760px}}.tablewrap{{overflow:auto;border:2px solid #9bd5f5;border-radius:16px;background:white}}table{{border-collapse:collapse;width:100%;min-width:900px}}th,td{{padding:13px 14px;border-bottom:1px solid #cfeafa;text-align:left;vertical-align:top}}th{{position:sticky;top:0;background:var(--navy);color:white;font-size:14px}}td{{font-size:14px}}a{{color:#075f9f;font-weight:700}}.open{{border-left:8px solid var(--gold)}}@media(max-width:600px){{header{{padding:24px 18px}}main{{padding:20px 14px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>HR-30 · Whole-body P0.1</p><h1>Physical harness guide</h1><p>Every body corridor, actuator feed, data bus, joint loop and current ECAD terminal is accounted for—without pretending unresolved cable and protection choices are finished.</p></header><main><section class="stats"><div class="stat"><strong>{stats['axes']}</strong>separate actuator feeds</div><div class="stat"><strong>{stats['total_route_segments']}</strong>route segments</div><div class="stat"><strong>{stats['logical_terminals']}</strong>logical terminals</div><div class="stat"><strong>{stats['candidate_12v_stall_endpoint_sum_a']}</strong>A endpoint sum, not demand</div></section><h2>Whole-body route map</h2><div class="panel"><img class="map" src="whole-body-physical-harness.svg" alt="Front map of the HR-30 physical harness routes and joint loops"></div><h2>Eight data buses</h2><p>Select a data bus to filter the joint table; select it again to show all.</p><div class="buses">{bus_cards}</div><h2>All 25 protected-feed candidates</h2><div class="tablewrap"><table><thead><tr><th>Axis</th><th>Data bus</th><th>Actuator</th><th>Joint datum (mm)</th><th>Moving loops</th></tr></thead><tbody>{axis_cards}</tbody></table></div><h2>Critical power boundary</h2><div class="panel open"><p>Each actuator now has its own protection/telemetry boundary and VDD net. Standard ROBOTIS X3P/X4P cables include VDD, so a custom data-only/power-injection breakout or controlled depinning method is required to keep the 25 feeds isolated.</p><p>The 76.08 A figure is the arithmetic sum of momentary 12 V stall-current endpoints—not a normal-load forecast, fuse rating, cable rating, or permission to energize.</p></div><h2>Build registers</h2><div class="panel"><p><a href="route-segment-register.csv">route segments</a> · <a href="route-point-register.csv">route points</a> · <a href="axis-harness-binding.csv">axis bindings</a> · <a href="connector-contact-map.csv">actuator contacts</a> · <a href="cable-core-register.csv">cable cores</a> · <a href="equipment-interface-register.csv">equipment interfaces</a> · <a href="logical-terminal-binding.csv">logical terminals</a> · <a href="current-derating-register.csv">derating inputs</a> · <a href="inspection-test-register.csv">inspection/tests</a> · <a href="unresolved-harness-selections.csv">open selections</a></p></div></main><script>const buttons=[...document.querySelectorAll('.bus')],rows=[...document.querySelectorAll('tbody tr')];buttons.forEach(b=>b.addEventListener('click',()=>{{const on=!b.classList.contains('active');buttons.forEach(x=>x.classList.remove('active'));b.classList.toggle('active',on);rows.forEach(r=>r.hidden=on&&r.dataset.bus!==b.dataset.bus)}}));</script></body></html>'''
     (OUT / "index.html").write_text(page, encoding="utf-8")
 
 
@@ -429,16 +431,21 @@ def integrate_whole_body_package(stats: dict) -> None:
     readme_path = WB / "README.md"
     readme = readme_path.read_text(encoding="utf-8")
     marker = "## Physical whole-body harness P0.1"
-    if marker not in readme:
-        readme += f"""
+    block = f"""
 
 {marker}
 
 The [interactive physical harness guide](harness/physical-p0.1/index.html) translates the logical ECAD into {stats['total_route_segments']} route segments: 12 reserved body corridors and two moving-loop candidates at every one of the 25 joint axes. It retains all {stats['logical_terminals']} current logical terminals and binds every installed equipment item without inventing unresolved conductor sizes, fuse values, connectors, or cable order codes.
 
-This is routing and interface architecture, not a released cable set. Eight actuator branches are separately protected; the 25 actuator drops are not individually fused. Custom data-only/power-injection breakouts, cable sizing, protection, retention, flex-life, EMC, and physical validation remain selection required.
+This is routing and interface architecture, not a released cable set. All 25 actuator feeds have distinct protection boundaries, but no protection value or implementation is released. Custom data-only/power-injection breakouts, cable sizing, retention, flex-life, EMC, and physical validation remain selection required.
 """
-        readme_path.write_text(readme, encoding="utf-8")
+    if marker in readme:
+        start = readme.index(marker)
+        end = readme.find("\n## ", start + len(marker))
+        readme = readme[:start].rstrip() + "\n\n" + block.strip() + ("\n\n" + readme[end + 1:] if end >= 0 else "\n")
+    else:
+        readme = readme.rstrip() + "\n\n" + block.strip() + "\n"
+    readme_path.write_text(readme, encoding="utf-8")
 
     index_path = WB / "index.html"
     page = index_path.read_text(encoding="utf-8")

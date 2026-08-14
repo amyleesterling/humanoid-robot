@@ -143,14 +143,14 @@ def axis_component(model, by_axis, axis, bus_id, position):
     ref = "AX_" + axis
     if bus_id.startswith("RS-"):
         pins = [
-            ("2", "VDD", f"{bus_id}_VDD", "left"),
+            ("2", "VDD", f"{axis}_VDD", "left"),
             ("1", "GND", f"{bus_id}_RET", "left"),
             ("3", "DATA+", f"{bus_id}_DP", "right"),
             ("4", "DATA-", f"{bus_id}_DN", "right"),
         ]
     else:
         pins = [
-            ("2", "VDD", f"{bus_id}_VDD", "left"),
+            ("2", "VDD", f"{axis}_VDD", "left"),
             ("1", "GND", f"{bus_id}_RET", "left"),
             ("3", "DATA", f"{bus_id}_DATA", "right"),
         ]
@@ -164,7 +164,7 @@ def axis_component(model, by_axis, axis, bus_id, position):
 
 
 def bus_sheet(model, number, filename, title, bus_id, axes, by_axis):
-    sheet = model.Sheet(number, filename, title, f"Connected {bus_id} data segment and separately protected actuator-power branch.")
+    sheet = model.Sheet(number, filename, title, f"Connected {bus_id} data-only segment and one separately protected power feed per actuator.")
     protocol = "RS-485" if bus_id.startswith("RS-") else "TTL"
     data_pins = [
         ("LOG-RET", "DATA REFERENCE", f"{bus_id}_RET", "left"),
@@ -174,36 +174,51 @@ def bus_sheet(model, number, filename, title, bus_id, axes, by_axis):
         ("LOG-RET", "DATA REFERENCE", f"{bus_id}_RET", "left"),
         ("LOG-DATA", "HALF-DUPLEX DATA", f"{bus_id}_DATA", "right"),
     ]
-    sheet.components.append(component(
+    data_port = component(
         model, "PORT_" + bus_id.replace("-", "_"), f"{bus_id} DATA-ONLY HARNESS PORT - CONNECTOR SELECTION REQUIRED", data_pins,
         "Logical data-only boundary from the matching controller interface. Exact connector, pins, reference conductor, shield and strain relief remain open.",
-        (105, 55), width=115.0,
-    ))
-    source_net = "ACT_14V8_SAFE" if protocol == "RS-485" else "ACT_12V_SAFE"
-    sheet.components.append(component(
-        model, "PBR_" + bus_id.replace("-", "_"), f"{bus_id} BRANCH PROTECTION / TELEMETRY - SELECTION REQUIRED",
-        [("LOG-IN", "INTERRUPTED SOURCE", source_net, "left"), ("LOG-OUT", "PROTECTED VDD", f"{bus_id}_VDD", "right"),
-         ("LOG-RET-IN", "SOURCE RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-RET-OUT", "BRANCH RETURN", f"{bus_id}_RET", "right"),
-         ("LOG-TLM", "BRANCH TELEMETRY", f"TLM_{bus_id}", "right")],
-        "No fuse, limiter, conductor or connector rating is released. Fault current, inrush, cable length, ambient, bundling, duty cycle and jurisdiction remain required inputs.",
-        (285, 90), width=140.0,
-    ))
+        (210, 44), width=115.0,
+    )
     if len(axes) == 6:
-        locations = [(145, 130), (330, 130), (145, 185), (330, 185), (145, 235), (330, 235)]
+        data_port.status = ""
+    sheet.components.append(data_port)
+    source_net = "ACT_MAIN_SAFE_12V" if protocol == "RS-485" else {
+        "TTL-LDIST": "TTL_LDIST_SAFE_9V",
+        "TTL-RDIST": "TTL_RDIST_SAFE_9V",
+        "TTL-HEAD": "TTL_HEAD_SAFE_9V",
+    }[bus_id]
+    if len(axes) == 6:
+        rows = [76, 108, 140, 172, 204, 236]
     elif len(axes) == 3:
-        locations = [(145, 145), (330, 145), (240, 210)]
+        rows = [100, 165, 230]
     elif len(axes) == 2:
-        locations = [(145, 175), (330, 175)]
+        rows = [120, 205]
     elif len(axes) == 1:
-        locations = [(240, 165)]
+        rows = [165]
     else:
         raise SystemExit(f"unsupported segment population for {bus_id}: {len(axes)}")
-    for axis, position in zip(axes, locations):
-        sheet.components.append(axis_component(model, by_axis, axis, bus_id, position))
-    sheet.notes = [
-        "The segment shares data and branch power only among the listed axes; it does not join any other protected branch VDD.",
+    for axis, y in zip(axes, rows):
+        feed_boundary = component(
+            model, "PBR_" + axis, f"{axis} INDIVIDUAL PROTECTION / TELEMETRY - SELECTION REQUIRED",
+            [("LOG-IN", "INTERRUPTED SOURCE", source_net, "left"), ("LOG-OUT", "PROTECTED ACTUATOR VDD", f"{axis}_VDD", "right"),
+             ("LOG-RET-IN", "SOURCE RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-RET-OUT", "ACTUATOR / DATA REFERENCE", f"{bus_id}_RET", "right"),
+             ("LOG-TLM", "INDIVIDUAL FEED TELEMETRY", f"TLM_PWR_{axis}", "right")],
+            "One independently protected feed is allocated to this actuator. No fuse, limiter, conductor or connector rating is released; fault current, inrush, cable length, ambient, bundling, duty cycle and jurisdiction remain required inputs.",
+            (105, y), width=128.0,
+        )
+        actuator = axis_component(model, by_axis, axis, bus_id, (315, y))
+        if len(axes) == 6:
+            feed_boundary.status = ""
+            actuator.status = ""
+        sheet.components.append(feed_boundary)
+        sheet.components.append(actuator)
+    # Six-axis leg sheets use the full A3 height for connected circuit blocks.
+    # Their title/purpose and component labels carry the architecture statement;
+    # repeating prose notes would collide with the native KiCad title block.
+    sheet.notes = [] if len(axes) == 6 else [
+        "The listed axes share only data and reference. Each pin-2 VDD has a distinct protected feed; no standard VDD-carrying daisy cable may parallel those feeds.",
         "AX_* terminals use current official ROBOTIS actuator-side pin numbers; all LOG-* identifiers remain functional ports, not physical connector or IC pins.",
-        "Termination, bias, actuator IDs, baud rate, cable length, waveform, latency, EMC, thermal and fault behavior remain unvalidated.",
+        "A custom/de-pinned data-only harness or breakout is SELECTION REQUIRED. Termination, IDs, baud rate, cable, EMC, thermal and fault behavior remain unvalidated.",
     ]
     return sheet
 
@@ -216,60 +231,67 @@ def build_sheets(model):
         raise SystemExit("whole-body actuator allocation drift")
 
     sheets = []
-    s1 = model.Sheet(1, "01_energy_precharge_conversion.kicad_sch", "Energy, service disconnect, precharge and conversion", "Whole-body DC source and interrupted 14.8/12 V boundaries; every physical selection remains open.")
+    s1 = model.Sheet(1, "01_energy_precharge_conversion.kicad_sch", "Tether-first energy, regulated rails and onboard-later boundary", "External 12 V tether-first source, three regulated 9 V TTL rails and a disconnected onboard-later evaluation boundary.")
     s1.components = [
-        component(model, "BATT1", "4S 14.8 V 12 Ah PACK EVALUATION CANDIDATE - COMPLETE SOURCE SELECTION OPEN",
-                  [("LOG-POS", "PACK POSITIVE", "BATT_POS_RAW", "right"), ("LOG-NEG", "PACK NEGATIVE", "BATT_0V_RAW", "right"),
-                   ("LOG-TEMP", "PACK TEMPERATURE", "TLM_PACK_TEMP", "right"), ("LOG-BMS", "BMS STATUS", "TLM_BMS_STATUS", "right")],
-                  "Pack envelope exists in CAD. BMS/PCM, containment, retention, connector, protection, charger and fault behavior remain unselected.", (66, 88), width=88.0),
-        component(model, "SD1", "DC SERVICE DISCONNECT - SELECTION REQUIRED",
-                  [("LOG-IN", "RAW POSITIVE IN", "BATT_POS_RAW", "left"), ("LOG-OUT", "ISOLATED POSITIVE OUT", "SD_POS_OUT", "right")],
-                  "DC voltage/current/fault rating, touch safety, interlock and mounting remain open.", (178, 88), width=80.0),
-        component(model, "PRE1", "PRECHARGE / DISCHARGE NETWORK - DESIGN REQUIRED",
-                  [("LOG-IN", "DISCONNECT OUTPUT", "SD_POS_OUT", "left"), ("LOG-MAIN", "CONTACTOR INPUT", "CONTACTOR_POS_IN", "right"),
-                   ("LOG-CMD", "PRECHARGE REQUEST", "PRECHARGE_REQUEST", "left"), ("LOG-OK", "PRECHARGE STATUS", "PRECHARGE_STATUS", "right")],
-                  "Resistance, energy, timing, welded/bypass faults, discharge time and control device remain selection/calculation/test work.", (291, 88), width=88.0),
-        component(model, "DCDC1", "INTERRUPTED 14.8 V TO 12 V CONVERTER - SELECTION REQUIRED",
-                  [("LOG-IN", "INTERRUPTED 14.8 V", "ACT_14V8_SAFE", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"),
-                   ("LOG-OUT", "12 V ACTUATOR SOURCE", "ACT_12V_SAFE", "right"), ("LOG-RET-OUT", "12 V RETURN", "ACT_0V_CONTROLLED", "right"),
-                   ("LOG-EN", "CONVERTER ENABLE", "SAFETY_PERMIT_HARDWIRED", "left"), ("LOG-TLM", "CONVERTER TELEMETRY", "TLM_DCDC12", "right")],
-                  "Exact converter, input/output protection, isolation/bonding, regeneration behavior, inrush, thermal and EMC evidence remain open.", (178, 176), width=92.0),
-        component(model, "CHG1", "CHARGER PORT / INTERLOCK - SELECTION REQUIRED",
-                  [("LOG-POS", "CHARGE POSITIVE", "CHARGE_POS", "right"), ("LOG-NEG", "CHARGE RETURN", "CHARGE_RET", "right"),
-                   ("LOG-INT", "CHARGER PRESENT INTERLOCK", "CHARGER_INTERLOCK", "right")],
-                  "No charger, connector, charge path or interlock circuit is selected; powered charging is prohibited.", (291, 176), width=86.0),
-        component(model, "RET1", "DC RETURN / FRAME / PE BOUNDARY - DESIGN REQUIRED",
-                  [("LOG-BATT", "PACK RETURN", "BATT_0V_RAW", "left"), ("LOG-ACT", "CONTROLLED ACTUATOR RETURN", "ACT_0V_CONTROLLED", "right"),
-                   ("LOG-PE", "PROTECTIVE EARTH / FRAME", "FRAME_PE_BOUNDARY", "right")],
-                  "Single-point bond, floating/onboard mode, charger/tether PE, shield treatment and fault-current path require jurisdiction-specific qualified design.", (66, 176), width=88.0),
+        component(model, "ACB1", "FACILITY AC / PE PANEL BOUNDARY - SELECTION REQUIRED",
+                  [("LOG-L", "FACILITY LINE", "FACILITY_AC_L", "right"), ("LOG-N", "FACILITY NEUTRAL", "FACILITY_AC_N", "right"), ("LOG-PE", "FACILITY PROTECTIVE EARTH", "PANEL_PE", "right")],
+                  "Mains inlet, disconnect, branch protection, enclosure, terminals, conductor sizes and Boston installation jurisdiction require qualified selection.", (70, 72), width=82.0),
+        component(model, "PS1", "MEAN WELL RSP-500-12 TETHER SUPPLY CANDIDATE",
+                  [("LOG-L", "AC LINE FUNCTION", "FACILITY_AC_L", "left"), ("LOG-N", "AC NEUTRAL FUNCTION", "FACILITY_AC_N", "left"), ("LOG-PE", "PROTECTIVE EARTH FUNCTION", "PANEL_PE", "left"),
+                   ("LOG-VPOS", "12 V PANEL OUTPUT", "PANEL_DC_POS_RAW", "right"), ("LOG-VNEG", "PANEL DC RETURN", "PANEL_DC_RET", "right")],
+                  "Official RSP-500 specification gives 12 V / 41.7 A. Exact physical terminals, adjustment lock, protection, enclosure cooling, regeneration behavior and application rating remain open.", (200, 72), width=100.0,
+                  datasheet="https://www.meanwell.com/Upload/PDF/RSP-500/RSP-500-SPEC.PDF", evidence="Official Mean Well RSP-500 specification accessed 2026-08-14.", status="TETHER-FIRST SUPPLY CANDIDATE - PANEL DESIGN AND VALIDATION REQUIRED"),
+        component(model, "CTRLPS1", "MEAN WELL SD-15A-24 SAFETY-CONTROL SUPPLY CANDIDATE",
+                  [("LOG-IN", "PANEL DC POSITIVE", "PANEL_DC_POS_RAW", "left"), ("LOG-RET-IN", "PANEL DC RETURN", "PANEL_DC_RET", "left"),
+                   ("LOG-OUT", "24 V SAFETY CONTROL", "SAFETY_24V", "right"), ("LOG-RET-OUT", "SAFETY CONTROL RETURN", "SAFETY_0V", "right")],
+                  "Official SD-15 specification gives 9.2-18 V input and 24 V / 0.625 A output. Protection, loading, grounding, thermal and EMC integration remain open.", (340, 72), width=100.0,
+                  datasheet="https://www.meanwell.com/Upload/PDF/SD-15/SD-15-SPEC.PDF", evidence="Official Mean Well SD-15 specification accessed 2026-08-14.", status="24 V SAFETY-CONTROL SUPPLY CANDIDATE - APPLICATION VALIDATION REQUIRED"),
+        component(model, "TETH1", "TOUCH-SAFE ROBOT DC / PE TETHER BOUNDARY - SELECTION REQUIRED",
+                  [("LOG-PANEL-P", "CONTACTOR-SWITCHED PANEL POSITIVE", "TETHER_MAIN_POS", "left"), ("LOG-PANEL-N", "PANEL DC RETURN", "PANEL_DC_RET", "left"), ("LOG-PANEL-PE", "PANEL PE", "PANEL_PE", "left"),
+                   ("LOG-ROBOT-P", "ROBOT CONTROLLED MAIN", "ACT_MAIN_SAFE_12V", "right"), ("LOG-ROBOT-N", "ROBOT CONTROLLED RETURN", "ACT_0V_CONTROLLED", "right"), ("LOG-ROBOT-PE", "ROBOT FRAME / PE BOUNDARY", "FRAME_PE_BOUNDARY", "right")],
+                  "Connector, current/fault rating, contact sequence, breakaway/retention, flex cable, strain relief and PE treatment remain SELECTION REQUIRED.", (120, 190), width=112.0),
+        component(model, "REG_TTL_L", "LEFT DISTAL 9 V BUCK-BOOST CANDIDATE - POLOLU S18V20F9",
+                  [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-OUT", "LEFT DISTAL 9 V", "TTL_LDIST_SAFE_9V", "right"), ("LOG-RET-OUT", "RETURN", "ACT_0V_CONTROLLED", "right"), ("LOG-TLM", "REGULATOR TELEMETRY", "TLM_TTL_LDIST_REG", "right")],
+                  "Item 2576 is a 9 V candidate. Current margin, input/output transients, protection, thermal behavior, mounting and exact contacts remain open.", (280, 120), width=96.0, datasheet="https://www.pololu.com/product/2576"),
+        component(model, "REG_TTL_R", "RIGHT DISTAL 9 V BUCK-BOOST CANDIDATE - POLOLU S18V20F9",
+                  [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-OUT", "RIGHT DISTAL 9 V", "TTL_RDIST_SAFE_9V", "right"), ("LOG-RET-OUT", "RETURN", "ACT_0V_CONTROLLED", "right"), ("LOG-TLM", "REGULATOR TELEMETRY", "TLM_TTL_RDIST_REG", "right")],
+                  "Item 2576 is a 9 V candidate. Current margin, input/output transients, protection, thermal behavior, mounting and exact contacts remain open.", (280, 175), width=96.0, datasheet="https://www.pololu.com/product/2576"),
+        component(model, "REG_TTL_H", "HEAD 9 V BUCK-BOOST CANDIDATE - POLOLU S18V20F9",
+                  [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-OUT", "HEAD ACTUATOR 9 V", "TTL_HEAD_SAFE_9V", "right"), ("LOG-RET-OUT", "RETURN", "ACT_0V_CONTROLLED", "right"), ("LOG-TLM", "REGULATOR TELEMETRY", "TLM_TTL_HEAD_REG", "right")],
+                  "Item 2576 is a 9 V candidate. Current margin, input/output transients, protection, thermal behavior, mounting and exact contacts remain open.", (280, 230), width=96.0, datasheet="https://www.pololu.com/product/2576"),
     ]
-    s1.notes = ["No fuse value, conductor size, connector rating or physical pin is released.", "Charger presence must inhibit actuator permit, but the exact fail-safe implementation is not selected."]
+    s1.notes = ["The 14.8 V direct-actuator architecture is absent. No fuse value, conductor size, connector rating or unresolved physical pin is released.", "The onboard-later battery/precharge/charger path is deliberately disconnected from ACT_MAIN_SAFE_12V until a separate reviewed change closes its holds."]
     sheets.append(s1)
 
     s2 = model.Sheet(2, "02_estop_permit_contactors.kicad_sch", "Dual-channel E-stop, monitored reset, permit and redundant interruption", "Logical whole-body safety interruption architecture; no functional-safety approval or application release.")
     s2.components = [
-        component(model, "S0", "DUAL-CHANNEL E-STOP DEVICE - SELECTION REQUIRED",
+        component(model, "S0", "IDEC XW DUAL-NC E-STOP FAMILY CANDIDATE - EXACT ORDER CODE REQUIRED",
                   [("LOG-C1F", "CHANNEL 1 FEED", "ESTOP_CH1_FEED", "left"), ("LOG-C1R", "CHANNEL 1 RETURN", "ESTOP_CH1_RETURN", "right"),
                    ("LOG-C2F", "CHANNEL 2 FEED", "ESTOP_CH2_FEED", "left"), ("LOG-C2R", "CHANNEL 2 RETURN", "ESTOP_CH2_RETURN", "right")],
-                  "Exact device, contacts, terminals, enclosure, spacing and direct-opening application remain selection and qualified review work.", (65, 87), width=86.0),
-        component(model, "S1", "MONITORED MANUAL RESET DEVICE - SELECTION REQUIRED",
+                  "Exact device, contacts, terminals, enclosure, spacing and direct-opening application remain selection and qualified review work.", (105, 82), width=86.0),
+        component(model, "S1", "IDEC HW1B-M1F11-G MANUAL RESET CANDIDATE",
                   [("LOG-FEED", "RESET FEED", "RESET_FEED", "left"), ("LOG-RETURN", "RESET RETURN", "RESET_RETURN", "right")],
-                  "Reset is eligibility only and must not command motion. Exact anti-tie-down/contact/terminal behavior requires selection and physical test.", (175, 87), width=82.0),
-        component(model, "SR1", "SAFETY CONTROL / EDM FUNCTION - APPLICATION SELECTION REQUIRED",
+                  "Reset is eligibility only and must not command motion. Exact anti-tie-down/contact/terminal behavior requires selection and physical test.", (200, 82), width=82.0),
+        component(model, "SR1", "PILZ PNOZ s4 750104 SAFETY-RELAY CANDIDATE - APPLICATION OPEN",
                   [("LOG-C1F", "E-STOP CH1 FEED", "ESTOP_CH1_FEED", "right"), ("LOG-C1R", "E-STOP CH1 RETURN", "ESTOP_CH1_RETURN", "left"),
                    ("LOG-C2F", "E-STOP CH2 FEED", "ESTOP_CH2_FEED", "right"), ("LOG-C2R", "E-STOP CH2 RETURN", "ESTOP_CH2_RETURN", "left"),
-                   ("LOG-RF", "RESET FEED", "RESET_FEED", "right"), ("LOG-RR", "RESET / EDM RETURN", "RESET_RETURN", "left"),
-                   ("LOG-PERMIT", "HARDWIRED PERMIT", "SAFETY_PERMIT_HARDWIRED", "right"), ("LOG-EDM1", "K1 MIRROR RETURN", "EDM_K1", "left"),
-                   ("LOG-EDM2", "K2 MIRROR RETURN", "EDM_K2", "left"), ("LOG-CHG", "CHARGER INHIBIT", "CHARGER_INTERLOCK", "left")],
-                  "Required PLr/SIL, exact architecture/category, common-cause, diagnostic coverage, reset mode, reaction time and validation are not established.", (292, 105), width=96.0),
-        component(model, "K1", "DC CONTACTOR 1 WITH MIRROR CONTACT - SELECTION REQUIRED",
-                  [("LOG-MIN", "MAIN INPUT", "CONTACTOR_POS_IN", "left"), ("LOG-MOUT", "MAIN OUTPUT", "K1_POS_OUT", "right"),
-                   ("LOG-COIL", "COIL PERMIT", "SAFETY_PERMIT_HARDWIRED", "left"), ("LOG-MIR", "MIRROR / EDM", "EDM_K1", "right")],
-                  "DC interruption duty, coil suppression, mirror-contact semantics, fault current and life require manufacturer application confirmation.", (122, 187), width=88.0),
-        component(model, "K2", "DC CONTACTOR 2 WITH MIRROR CONTACT - SELECTION REQUIRED",
-                  [("LOG-MIN", "MAIN INPUT", "K1_POS_OUT", "left"), ("LOG-MOUT", "MAIN OUTPUT", "ACT_14V8_SAFE", "right"),
-                   ("LOG-COIL", "COIL PERMIT", "SAFETY_PERMIT_HARDWIRED", "left"), ("LOG-MIR", "MIRROR / EDM", "EDM_K2", "right")],
-                  "Second series interruption channel; common-cause, welded-contact and energy-removal behavior remain unvalidated.", (250, 187), width=88.0),
+                   ("LOG-RF", "RESET FEED", "RESET_FEED", "right"), ("LOG-RR", "RESET / EDM RETURN", "RESET_RETURN", "left"), ("LOG-24V", "24 V CONTROL", "SAFETY_24V", "left"), ("LOG-0V", "CONTROL RETURN", "SAFETY_0V", "left"),
+                   ("LOG-OUT1", "SAFETY OUTPUT TO K1", "SAFETY_OUT_K1", "right"), ("LOG-OUT2", "SAFETY OUTPUT TO K2", "SAFETY_OUT_K2", "right"), ("LOG-PERMIT", "PERMIT STATUS TO MOTION CONTROL", "SAFETY_PERMIT_HARDWIRED", "right"),
+                   ("LOG-EDM1", "K1 LINKED AUXILIARY RETURN", "EDM_K1_AUX", "left"), ("LOG-EDM2", "K2 LINKED AUXILIARY RETURN", "EDM_K2_AUX", "left"),
+                   ("LOG-CHG", "CHARGER INHIBIT", "CHARGER_INTERLOCK", "left"), ("LOG-WD", "ORDINARY WATCHDOG INHIBIT", "WATCHDOG_INHIBIT_OK", "left")],
+                  "Manual 21396-EN-23 supports monitored manual start and EDM application concepts. Required PLr/SIL, exact terminal wiring, category, common-cause, diagnostic coverage, reset mode, reaction time and validation are not established.", (305, 155), width=112.0,
+                  datasheet="https://www.pilz.com/en-US/eshop/product/750104", evidence="Pilz manual 21396-EN-23 dated 2026-06-22; accessed 2026-08-14.", status="SAFETY-RELAY CANDIDATE - NO FUNCTIONAL-SAFETY APPROVAL"),
+        component(model, "WD_INH1", "ORDINARY WATCHDOG INHIBIT INTERFACE - DESIGN REQUIRED / ZERO SAFETY CREDIT",
+                  [("LOG-IN", "WATCHDOG REQUEST", "WD_PERMIT_REQUEST", "left"), ("LOG-OUT", "FAIL-LOW INHIBIT ELIGIBILITY", "WATCHDOG_INHIBIT_OK", "right")],
+                  "The ordinary watchdog may only remove eligibility; it can never bypass S0, reset, EDM or issue motion. Exact fail-low interface and fault validation remain open.", (105, 155), width=104.0),
+        component(model, "K1", "SENSATA GIGAVAC GV12-FAMILY DC CONTACTOR 1 CANDIDATE",
+                  [("LOG-MIN", "MAIN INPUT", "PANEL_DC_POS_RAW", "left"), ("LOG-MOUT", "MAIN OUTPUT", "K1_POS_OUT", "right"),
+                   ("LOG-COIL-P", "COIL POSITIVE", "SAFETY_OUT_K1", "left"), ("LOG-COIL-N", "COIL RETURN", "SAFETY_0V", "left"), ("LOG-AUX", "MECHANICALLY LINKED AUXILIARY CANDIDATE", "EDM_K1_AUX", "right")],
+                  "Family datasheet lists an optional mechanically linked auxiliary; it is not claimed as an IEC mirror contact. Exact order code, DC duty, coil suppression, EDM suitability, fault current and life require confirmation.", (150, 225), width=102.0, datasheet="https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf"),
+        component(model, "K2", "SENSATA GIGAVAC GV12-FAMILY DC CONTACTOR 2 CANDIDATE",
+                  [("LOG-MIN", "MAIN INPUT", "K1_POS_OUT", "left"), ("LOG-MOUT", "MAIN OUTPUT TO TETHER", "TETHER_MAIN_POS", "right"),
+                   ("LOG-COIL-P", "COIL POSITIVE", "SAFETY_OUT_K2", "left"), ("LOG-COIL-N", "COIL RETURN", "SAFETY_0V", "left"), ("LOG-AUX", "MECHANICALLY LINKED AUXILIARY CANDIDATE", "EDM_K2_AUX", "right")],
+                  "Second series interruption candidate. Exact order code, common-cause, welded-contact detection, DC interruption and energy-removal behavior remain unvalidated.", (310, 225), width=102.0, datasheet="https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf"),
     ]
     s2.notes = ["E-stop release or reset can only restore eligibility; MCU1 must still require a fresh bounded motion request.", "No safety performance level, SIL, stopping-time or energization approval is claimed."]
     sheets.append(s2)
@@ -429,13 +451,13 @@ def build_sheets(model):
                 "Carrier B shares CTRL_GND with TTL field reference; only the waist RS-485 channel is galvanically isolated. ESD, return/shield topology and physical fault tests remain open."]
     sheets.append(s6)
 
-    sheets.append(bus_sheet(model, 7, "07_left_leg_rs485.kicad_sch", "Left-leg RS-485 and protected branch", "RS-LLEG", BUS_AXES["RS-LLEG"], by_axis))
-    sheets.append(bus_sheet(model, 8, "08_right_leg_rs485.kicad_sch", "Right-leg RS-485 and protected branch", "RS-RLEG", BUS_AXES["RS-RLEG"], by_axis))
-    sheets.append(bus_sheet(model, 9, "09_left_arm_rs485.kicad_sch", "Left proximal-arm RS-485 and protected branch", "RS-LARM", BUS_AXES["RS-LARM"], by_axis))
-    sheets.append(bus_sheet(model, 10, "10_right_arm_rs485.kicad_sch", "Right proximal-arm RS-485 and protected branch", "RS-RARM", BUS_AXES["RS-RARM"], by_axis))
-    sheets.append(bus_sheet(model, 11, "11_waist_rs485.kicad_sch", "Waist RS-485 and protected branch", "RS-WAIST", BUS_AXES["RS-WAIST"], by_axis))
-    sheets.append(bus_sheet(model, 12, "12_left_distal_ttl.kicad_sch", "Left wrist/gripper TTL and protected branch", "TTL-LDIST", BUS_AXES["TTL-LDIST"], by_axis))
-    sheets.append(bus_sheet(model, 13, "13_right_distal_ttl.kicad_sch", "Right wrist/gripper TTL and protected branch", "TTL-RDIST", BUS_AXES["TTL-RDIST"], by_axis))
+    sheets.append(bus_sheet(model, 7, "07_left_leg_rs485.kicad_sch", "Left-leg RS-485 data bus and individual feeds", "RS-LLEG", BUS_AXES["RS-LLEG"], by_axis))
+    sheets.append(bus_sheet(model, 8, "08_right_leg_rs485.kicad_sch", "Right-leg RS-485 data bus and individual feeds", "RS-RLEG", BUS_AXES["RS-RLEG"], by_axis))
+    sheets.append(bus_sheet(model, 9, "09_left_arm_rs485.kicad_sch", "Left proximal-arm RS-485 data bus and individual feeds", "RS-LARM", BUS_AXES["RS-LARM"], by_axis))
+    sheets.append(bus_sheet(model, 10, "10_right_arm_rs485.kicad_sch", "Right proximal-arm RS-485 data bus and individual feeds", "RS-RARM", BUS_AXES["RS-RARM"], by_axis))
+    sheets.append(bus_sheet(model, 11, "11_waist_rs485.kicad_sch", "Waist RS-485 data bus and individual feed", "RS-WAIST", BUS_AXES["RS-WAIST"], by_axis))
+    sheets.append(bus_sheet(model, 12, "12_left_distal_ttl.kicad_sch", "Left wrist/gripper TTL data bus and individual feeds", "TTL-LDIST", BUS_AXES["TTL-LDIST"], by_axis))
+    sheets.append(bus_sheet(model, 13, "13_right_distal_ttl.kicad_sch", "Right wrist/gripper TTL data bus and individual feeds", "TTL-RDIST", BUS_AXES["TTL-RDIST"], by_axis))
 
     s14 = bus_sheet(model, 14, "14_head_ttl_sensors_hmi.kicad_sch", "Head TTL, cameras, face display, audio and cooling", "TTL-HEAD", BUS_AXES["TTL-HEAD"], by_axis)
     s14.components.extend([
@@ -453,7 +475,7 @@ def build_sheets(model):
 
     s15 = model.Sheet(15, "15_pelvis_aux_imu.kicad_sch", "Auxiliary conversion and pelvis inertial sensing", "Logical 5 V auxiliary rail and pelvis IMU boundary.")
     s15.components = [
-        component(model, "AUXD1", "14.8 V TO 5.1 V AUXILIARY CONVERTER - SELECTION REQUIRED", [("LOG-IN", "INTERRUPTED INPUT", "ACT_14V8_SAFE", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-OUT", "AUXILIARY 5 V", "AUX_5V_SAFE", "right"), ("LOG-RET-OUT", "AUXILIARY RETURN", "AUX_0V", "right"), ("LOG-TLM", "CONVERTER TELEMETRY", "TLM_AUXD1", "right")], "Exact converter, protection, isolation/bonding, inrush, thermal and EMC evidence remain open.", (125, 115), width=96.0),
+        component(model, "AUXD1", "CONTROLLED 12 V TO 5.1 V AUXILIARY CONVERTER - SELECTION REQUIRED", [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-OUT", "AUXILIARY 5 V", "AUX_5V_SAFE", "right"), ("LOG-RET-OUT", "AUXILIARY RETURN", "AUX_0V", "right"), ("LOG-TLM", "CONVERTER TELEMETRY", "TLM_AUXD1", "right")], "Exact converter, protection, isolation/bonding, inrush, thermal and EMC evidence remain open.", (125, 115), width=96.0),
         component(model, "IMU1", "PELVIS 6/9-AXIS IMU - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "AUX_5V_SAFE", "left"), ("LOG-RET", "RETURN", "AUX_0V", "left"), ("LOG-DATA", "DETERMINISTIC SENSOR DATA", "PELVIS_IMU_DATA", "right"), ("LOG-INT", "DATA READY / FAULT", "PELVIS_IMU_INT", "right")], "Exact device, range, bandwidth, timestamping, calibration, connector and physical pins remain open.", (315, 115), width=92.0),
         component(model, "MCU_AUX", "MCU1 AUXILIARY SENSOR PORTS - LOGICAL UNIT", [("LOG-IMU", "PELVIS IMU DATA", "PELVIS_IMU_DATA", "left"), ("LOG-IMU-INT", "PELVIS IMU INTERRUPT", "PELVIS_IMU_INT", "left"), ("LOG-LFOOT", "LEFT FOOT SENSOR DATA", "L_FOOT_SENSOR_DATA", "right"), ("LOG-RFOOT", "RIGHT FOOT SENSOR DATA", "R_FOOT_SENSOR_DATA", "right")], "Alternate logical view of MCU1; exact package pins and interfaces remain open.", (220, 215), width=100.0),
     ]
@@ -473,8 +495,26 @@ def build_sheets(model):
 
     sheets.append(foot_sheet(16, "left"))
     sheets.append(foot_sheet(17, "right"))
-    if len(sheets) != 17:
-        raise SystemExit("controlled seventeen-child-sheet architecture drift")
+    s18 = model.Sheet(18, "18_onboard_later_energy_evaluation.kicad_sch", "Onboard-later isolated energy evaluation", "Disconnected LiFePO4, service-disconnect, precharge and charger-interlock candidate path; not tied to the tether-first main.")
+    s18.components = [
+        component(model, "BATT_LATER", "BIOENNO BLF-1209WS ONBOARD-LATER EVALUATION CANDIDATE",
+                  [("LOG-POS", "LATER PACK POSITIVE", "ONBOARD_LATER_POS", "right"), ("LOG-NEG", "LATER PACK RETURN", "ONBOARD_LATER_RET", "right"), ("LOG-TEMP", "PACK TEMPERATURE / STATUS BOUNDARY", "TLM_ONBOARD_LATER_PACK", "right")],
+                  "This candidate is not connected to the tether-first main. Its 18 A continuous / 40 A for 2 s limits do not close the provisional whole-body peak; cassette, PCM behavior and fault evidence remain open.", (75, 105), width=104.0, datasheet="https://www.bioennopower.com/products/12v-9ah-lfp-battery-abs-sealed-green-case-1", status="ONBOARD-LATER EVALUATION ONLY - NOT A SELECTED SOURCE"),
+        component(model, "SD_LATER", "ONBOARD-LATER SERVICE DISCONNECT - SELECTION REQUIRED",
+                  [("LOG-IN", "LATER PACK POSITIVE", "ONBOARD_LATER_POS", "left"), ("LOG-OUT", "LATER DISCONNECTED OUTPUT", "ONBOARD_LATER_SD_POS", "right")],
+                  "DC voltage/current/fault rating, touch safety, interlock and mounting remain open.", (205, 105), width=88.0),
+        component(model, "PRE_LATER", "ONBOARD-LATER PRECHARGE / DISCHARGE - DESIGN REQUIRED",
+                  [("LOG-IN", "LATER DISCONNECT OUTPUT", "ONBOARD_LATER_SD_POS", "left"), ("LOG-OUT", "LATER SOURCE BOUNDARY", "ONBOARD_LATER_SOURCE_OUT", "right"), ("LOG-RET", "LATER PACK RETURN", "ONBOARD_LATER_RET", "left"),
+                   ("LOG-CMD", "PRECHARGE REQUEST", "PRECHARGE_REQUEST", "left"), ("LOG-OK", "PRECHARGE STATUS", "PRECHARGE_STATUS", "right")],
+                  "This disconnected evaluation path has no tie to ACT_MAIN_SAFE_12V. Resistance, energy, timing, regeneration, bypass faults and discharge time remain open.", (315, 160), width=100.0),
+        component(model, "CHG_LATER", "BPC-1502C ONBOARD-LATER CHARGER / INTERLOCK CANDIDATE",
+                  [("LOG-POS", "LATER CHARGE POSITIVE", "ONBOARD_LATER_CHARGE_POS", "right"), ("LOG-NEG", "LATER CHARGE RETURN", "ONBOARD_LATER_CHARGE_RET", "right"), ("LOG-INT", "CHARGER PRESENT INHIBIT", "CHARGER_INTERLOCK", "right")],
+                  "No charger wiring, connector, charge path or fail-safe interlock circuit is released; powered charging is prohibited.", (110, 215), width=102.0, datasheet="https://www.bioennopower.com/products/14-6v-2a-ac-to-dc-charger-for-12v-lifepo4-batteries-black-anderson"),
+    ]
+    s18.notes = ["This entire sheet is an isolated future configuration. ONBOARD_LATER_SOURCE_OUT has no connection to ACT_MAIN_SAFE_12V.", "No battery, disconnect, precharge, charger, protection value, connector or conductor is selected or released."]
+    sheets.append(s18)
+    if len(sheets) != 18:
+        raise SystemExit("controlled eighteen-child-sheet architecture drift")
     return sheets
 
 
@@ -567,26 +607,37 @@ def write_docs(sheets):
         {"source_id": "SN74LVC1T45", "manufacturer": "Texas Instruments", "document": "SN74LVC1T45 datasheet", "revision_or_date": "SCES515N Rev N; June 2024", "accessed": DATE, "url": TI_LVC1T45_SOURCE, "verified": "SN74LVC1T45DCKR active; exact six-pin DCK mapping; 1.65-5.5 V dual rails; DIR high A-to-B"},
         {"source_id": "JST-GH", "manufacturer": "JST", "document": "GH connector catalog", "revision_or_date": "live official catalog; revision not stated", "accessed": DATE, "url": JST_GH_SOURCE, "verified": "GHR-02/03/15V-S housings; BM02/03/15B-GHS-TBT headers; SSHL-002T-P0.2 contact; 1.25 mm secure-lock family"},
         {"source_id": "OPENCR-REF", "manufacturer": "ROBOTIS", "document": "OpenCR Rev H schematic and BOM", "revision_or_date": "Rev H; schematic dated 2020-02-26; official repository checked 2026-08-14", "accessed": DATE, "url": "https://github.com/ROBOTIS-GIT/OpenCR-Hardware", "verified": "manufacturer reference confirms separate UART TX/RX/DIR half-duplex topology and DYNAMIXEL TTL/RS-485 connector conventions; HR-30 uses newer selected devices"},
+        {"source_id": "RSP-500-12", "manufacturer": "Mean Well", "document": "RSP-500 series specification", "revision_or_date": "official datasheet; revision not stated", "accessed": DATE, "url": "https://www.meanwell.com/Upload/PDF/RSP-500/RSP-500-SPEC.PDF", "verified": "12 V / 41.7 A / 500.4 W tether-supply candidate; exact panel terminals and application remain open"},
+        {"source_id": "SD-15A-24", "manufacturer": "Mean Well", "document": "SD-15 series specification", "revision_or_date": "official datasheet; revision not stated", "accessed": DATE, "url": "https://www.meanwell.com/Upload/PDF/SD-15/SD-15-SPEC.PDF", "verified": "9.2-18 V input to 24 V / 0.625 A safety-control supply candidate"},
+        {"source_id": "PNOZ-S4-750104", "manufacturer": "Pilz", "document": "PNOZ s4 operating manual", "revision_or_date": "21396-EN-23; 2026-06-22", "accessed": DATE, "url": "https://www.pilz.com/en-US/eshop/product/750104", "verified": "24 VDC safety-relay candidate; monitored manual start and EDM application concepts; exact circuit and validation open"},
+        {"source_id": "GV12", "manufacturer": "Sensata GIGAVAC", "document": "GV12 series datasheet", "revision_or_date": "2022-04-28", "accessed": DATE, "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf", "verified": "100 V / 200 A family candidate with optional mechanically linked auxiliary; no IEC mirror-contact claim"},
+        {"source_id": "S18V20F9", "manufacturer": "Pololu", "document": "9 V step-up/step-down regulator item 2576", "revision_or_date": "live official product page; revision not stated", "accessed": DATE, "url": "https://www.pololu.com/product/2576", "verified": "9 V regulator candidate for each two-axis XC330 branch; current/thermal/transient proof open"},
     ]
     with (ECAD / "interface-carrier-source-register.csv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(source_rows[0])); writer.writeheader(); writer.writerows(source_rows)
     (ECAD / "README.md").write_text("# HR-30 whole-body electrical P0.1\n\n"
         f"**{WARNING}**\n\n"
-        "This is the native KiCad 10 whole-body architecture for the current 25-axis HR-30 candidate. It contains a root index plus seventeen populated child sheets. Five RS-485 and three TTL actuator segments match the whole-body bus allocation exactly; individual head HMI devices, pelvis IMU and bilateral four-point foot sensing are also represented.\n\n"
+        "This is the native KiCad 10 whole-body architecture for the current 25-axis HR-30 candidate. It contains a root index plus eighteen populated child sheets. Five RS-485 and three TTL data-only segments match the whole-body bus allocation exactly; all 25 actuators have distinct protected-feed boundaries. Individual head HMI devices, pelvis IMU, bilateral four-point foot sensing and a separate isolated onboard-later energy sheet are also represented.\n\n"
         "The actuator interface is now a pin-level candidate, not eight abstract boxes. STM32H743ZIT6 LQFP144 package pins are allocated to all eight UART channels; Carrier A contains four ISOW1432DFMR isolated RS-485 candidates; Carrier B contains one ISOW1432DFMR plus three SN74LVC1T45DCKR 3.3/5 V single-wire TTL translators. Exact JST GH controller and data-only field connectors are shown. The field connectors intentionally contain no actuator VDD contact.\n\n"
-        "AX_* actuator terminals use current official ROBOTIS actuator-side pin numbers. Remaining `LOG-*` identifiers are unresolved functional ports elsewhere in the architecture. Carrier PCB layout, decoupling/ferrites, termination/bias, surge/ESD, shielding, assembled cables, actuator power injection, fuse/limiter values, conductors, grounding, safety allocation, timing and physical behavior remain unresolved. The historical mixed HR-V0/HR-30 project is not incorporated as verified wiring.\n\n"
+        "Sheet 01 now encodes the tether-first controlled 12 V source, three regulated 9 V TTL rails and a deliberately disconnected onboard-later battery/charger path. Sheet 02 encodes two independently commanded series contactor coils, linked-auxiliary EDM candidates, dual-channel E-stop, monitored reset, charger inhibit and an ordinary-watchdog inhibit that has zero safety credit. Reset restores eligibility only and cannot command motion.\n\n"
+        "AX_* actuator terminals use current official ROBOTIS actuator-side pin numbers. Remaining `LOG-*` identifiers are unresolved functional ports elsewhere in the architecture. Standard ROBOTIS cables carry VDD, so the 25 distinct feeds require a custom/de-pinned data-only harness or breakout. Fuse/limiter values, conductors, connector selections, grounding, safety allocation, timing and physical behavior remain unresolved. The historical mixed HR-V0/HR-30 project is not incorporated as verified wiring.\n\n"
         "## Sheets\n\n" + "\n".join(f"{s.number}. `{s.filename}` — {s.title}" for s in sheets) + "\n\n"
         "KiCad ERC checks encoded passive-pin connectivity and annotation only. It grants no functional-safety credit and no authority to order, fabricate, connect, power, move or energize the robot.\n",
         encoding="utf-8", newline="\n")
     status = {
-        "identifier": IDENTIFIER, "kicad_version": "10.0.5", "native_sheet_count": 18,
-        "child_sheet_count": 17, "axis_binding_count": 25, "actuator_bus_segment_count": 8,
+        "identifier": IDENTIFIER, "kicad_version": "10.0.5", "native_sheet_count": 19,
+        "child_sheet_count": 18, "axis_binding_count": 25, "actuator_bus_segment_count": 8,
         "rs485_segment_count": 5, "ttl_segment_count": 3,
         "native_kicad_parsed": True, "erc_errors": 0, "erc_warnings": 0,
         "logical_connectivity_reconciled": True, "actuator_side_physical_pin_mapping_reconciled": True,
         "actuator_bus_controller_physical_pin_mapping_reconciled": True,
         "actuator_bus_interface_device_candidates_selected": True,
         "actuator_bus_data_only_connector_candidates_selected": True,
+        "tether_first_energy_topology_encoded": True,
+        "direct_14v8_actuator_source_absent": True,
+        "individual_actuator_power_feed_count": 25,
+        "regulated_ttl_branch_count": 3,
+        "reset_can_command_motion": False,
         "physical_pin_mapping_reconciled": False,
         "interface_devices_selected": False, "protection_values_selected": False,
         "functional_safety_validated": False, "connection_authority": False,
@@ -595,8 +646,8 @@ def write_docs(sheets):
     }
     (ECAD / "electrical-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
     svg_files = sorted((ECAD / "output").glob("*.svg"), key=lambda path: (path.name != f"{PROJECT}.svg", path.name))
-    if len(svg_files) != 18:
-        raise SystemExit("interactive electrical guide requires root plus seventeen SVG exports")
+    if len(svg_files) != 19:
+        raise SystemExit("interactive electrical guide requires root plus eighteen SVG exports")
     panels = []
     nav = []
     for index, svg in enumerate(svg_files):
@@ -604,7 +655,7 @@ def write_docs(sheets):
         anchor = "sheet-" + ("root" if index == 0 else f"{index:02d}")
         nav.append(f'<a href="#{anchor}">{html.escape(title)}</a>')
         panels.append(f'''<details id="{anchor}"{' open' if index == 0 else ''}><summary>{html.escape(title)}</summary><div class="sheet"><object data="output/{html.escape(svg.name, quote=True)}" type="image/svg+xml" aria-label="{html.escape(title, quote=True)} electrical diagram"></object></div><p><a href="output/{html.escape(svg.name, quote=True)}">Open this SVG directly for pan and zoom</a></p></details>''')
-    (ECAD / "index.html").write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 interactive electrical guide P0.1</title><style>:root{{--ink:#061a36;--sky:#8ed8ff;--blue:#0a4b91;--gold:#f5bd2b;--paper:#f6fbff}}*{{box-sizing:border-box}}body{{margin:0;font:17px/1.55 system-ui,sans-serif;color:var(--ink);background:var(--paper)}}header,main{{max-width:1180px;margin:auto;padding:28px}}header{{max-width:none;background:var(--ink);color:white}}header>div{{max-width:1180px;margin:auto}}h1{{font-size:clamp(2rem,5vw,4rem);line-height:1.05}}.warning{{border:3px solid var(--gold);padding:14px;font-weight:900}}nav{{display:flex;flex-wrap:wrap;gap:10px}}nav a,details>p a{{display:inline-block;color:#064f91;font-weight:800}}nav a{{padding:9px 12px;background:white;border:2px solid var(--blue);border-radius:10px;text-decoration:none}}details{{margin:18px 0;background:white;border:2px solid var(--blue);border-radius:14px;overflow:hidden}}summary{{padding:16px 18px;font-size:18px;font-weight:850;cursor:pointer;background:#e4f6ff}}.sheet{{width:100%;height:clamp(520px,72vh,820px);overflow:auto;background:#fff}}object{{display:block;width:100%;height:100%;min-width:900px}}details>p{{margin:0;padding:12px 18px;border-top:1px solid #9ccfe8}}small{{font-size:14px}}@media(max-width:680px){{body{{font-size:16px}}header,main{{padding:20px 14px}}summary{{font-size:17px}}.sheet{{height:560px}}}}</style></head><body><header><div><p class="warning">{WARNING}</p><h1>Explore all 18 native KiCad sheets.</h1><p>The hierarchy and every populated child sheet are embedded below. Carrier A and Carrier B now show the sourced pin-level actuator-interface candidates.</p></div></header><main><nav>{''.join(nav)}</nav><section><h2>Connected preliminary architecture</h2><p>KiCad 10 ERC reports 0 errors and 0 warnings. That verifies encoded connectivity and annotation only. Carrier PCB passives/layout, protection, grounding, timing, safety validation, and all connection or energization authority remain open.</p><p><a href="interface-carrier-pinout.csv">Eight-channel physical pin map</a> · <a href="interface-carrier-source-register.csv">Primary-source register</a></p>{''.join(panels)}</section></main></body></html>''', encoding="utf-8", newline="\n")
+    (ECAD / "index.html").write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 interactive electrical guide P0.1</title><style>:root{{--ink:#061a36;--sky:#8ed8ff;--blue:#0a4b91;--gold:#f5bd2b;--paper:#f6fbff}}*{{box-sizing:border-box}}body{{margin:0;font:17px/1.55 system-ui,sans-serif;color:var(--ink);background:var(--paper)}}header,main{{max-width:1180px;margin:auto;padding:28px}}header{{max-width:none;background:var(--ink);color:white}}header>div{{max-width:1180px;margin:auto}}h1{{font-size:clamp(2rem,5vw,4rem);line-height:1.05}}.warning{{border:3px solid var(--gold);padding:14px;font-weight:900}}nav{{display:flex;flex-wrap:wrap;gap:10px}}nav a,details>p a{{display:inline-block;color:#064f91;font-weight:800}}nav a{{padding:9px 12px;background:white;border:2px solid var(--blue);border-radius:10px;text-decoration:none}}details{{margin:18px 0;background:white;border:2px solid var(--blue);border-radius:14px;overflow:hidden}}summary{{padding:16px 18px;font-size:18px;font-weight:850;cursor:pointer;background:#e4f6ff}}.sheet{{width:100%;height:clamp(520px,72vh,820px);overflow:auto;background:#fff}}object{{display:block;width:100%;height:100%;min-width:900px}}details>p{{margin:0;padding:12px 18px;border-top:1px solid #9ccfe8}}small{{font-size:14px}}@media(max-width:680px){{body{{font-size:16px}}header,main{{padding:20px 14px}}summary{{font-size:17px}}.sheet{{height:560px}}}}</style></head><body><header><div><p class="warning">{WARNING}</p><h1>Explore all 19 native KiCad sheets.</h1><p>The project now encodes the tether-first 12 V architecture, three regulated 9 V TTL rails, 25 individual actuator feeds and sourced controller-interface candidates.</p></div></header><main><nav>{''.join(nav)}</nav><section><h2>Connected preliminary architecture</h2><p>KiCad 10 ERC reports 0 errors and 0 warnings. That verifies encoded connectivity and annotation only. All protection values, physical energy/safety terminals, conductor sizes, grounding, stopping behavior, safety validation, and connection or energization authority remain open.</p><p><a href="interface-carrier-pinout.csv">Eight-channel physical pin map</a> · <a href="interface-carrier-source-register.csv">Primary-source register</a></p>{''.join(panels)}</section></main></body></html>''', encoding="utf-8", newline="\n")
     shutil.copy2(Path(__file__), ECAD / "native-kicad-source.py")
 
 
@@ -613,7 +664,7 @@ def update_package():
     status = json.loads(status_path.read_text(encoding="utf-8"))
     status.update({
         "native_hr30_kicad_present": True,
-        "native_hr30_kicad_sheet_count": 18,
+        "native_hr30_kicad_sheet_count": 19,
         "native_hr30_kicad_axis_binding_count": 25,
         "native_hr30_kicad_logical_connectivity_reconciled": True,
         "native_hr30_kicad_actuator_side_pins_reconciled": True,
@@ -621,6 +672,10 @@ def update_package():
         "native_hr30_kicad_actuator_bus_controller_pins_selected": True,
         "native_hr30_kicad_interface_device_candidates_selected": True,
         "native_hr30_kicad_data_only_connector_candidates_selected": True,
+        "native_hr30_kicad_tether_first_energy_topology_encoded": True,
+        "native_hr30_kicad_direct_14v8_actuator_source_absent": True,
+        "native_hr30_kicad_individual_actuator_power_feed_count": 25,
+        "native_hr30_kicad_regulated_ttl_branch_count": 3,
         "native_hr30_kicad_physical_pins_selected": False,
         "native_hr30_kicad_erc_errors": 0,
         "native_hr30_kicad_erc_warnings": 0,
@@ -630,7 +685,7 @@ def update_package():
     holds = read_csv(holds_path)
     for row in holds:
         if row["hold_id"] == "HR30-P01-H11":
-            row["unresolved_item"] = "The native 18-sheet HR-30 KiCad project binds all 25 axes, selects an active STM32H743ZIT6 LQFP144 candidate, assigns eight verified UART pin groups, and shows five ISOW1432DFMR plus three SN74LVC1T45DCKR pin-level interface candidates with exact JST GH data-only connectors. Carrier PCB passives/layout, protection values, termination/bias, cable assemblies, branch power injection, grounding, EMC, timing, sensing calibration, safety allocation and physical fault tests remain open."
+            row["unresolved_item"] = "The native 19-sheet HR-30 KiCad project binds all 25 axes, encodes the tether-first 12 V energy path, three regulated 9 V TTL rails, 25 separate actuator power-feed boundaries, eight verified UART pin groups, and five ISOW1432DFMR plus three SN74LVC1T45DCKR data-interface candidates. The onboard-later source remains isolated on its own sheet. Exact energy/safety terminals, protection values, termination/bias, custom data-only cable assemblies, grounding, EMC, timing, sensing calibration, safety allocation and physical fault tests remain open."
     with holds_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(holds[0]))
         writer.writeheader(); writer.writerows(holds)
@@ -640,7 +695,7 @@ def update_package():
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
     marker = '<section id="actuator-buses">'
-    section = f'''{start}<section id="native-electrical"><h2>The whole robot now has pin-level actuator interfaces</h2><div class="grid"><article class="card pass"><h3>18 native sheets</h3><p>One hierarchy page and seventeen populated child sheets now include the motion-controller connector boundary and both four-channel carrier circuits.</p></article><article class="card pass"><h3>8 MCU channels pinned</h3><p>An active STM32H743ZIT6 LQFP144 candidate has verified TX/IO, RX and hardware-DE package pins for every actuator segment.</p></article><article class="card pass"><h3>8 interface candidates</h3><p>Five ISOW1432DFMR isolated RS-485 devices and three SN74LVC1T45DCKR TTL translators terminate at exact data-only JST GH headers.</p></article><article class="card hold"><h3>ERC: 0 / 0</h3><p>KiCad validates encoded connectivity only. PCB passives/layout, protection, timing, EMC, fault behavior and physical tests remain open.</p></article></div><div class="viewer"><object data="electrical/kicad/{PROJECT}/output/{PROJECT}.svg" type="image/svg+xml" aria-label="Interactive HR-30 native KiCad hierarchy diagram"></object><p><a href="electrical/kicad/{PROJECT}/index.html">Open the interactive 18-sheet electrical guide</a>, inspect the <a href="electrical/kicad/{PROJECT}/interface-carrier-pinout.csv">eight-channel pin map</a>, or download the <a href="electrical/kicad/{PROJECT}/{PROJECT}.kicad_pro">KiCad project</a>, <a href="electrical/kicad/{PROJECT}/connector-schedule.csv">terminal schedule</a>, <a href="electrical/kicad/{PROJECT}/net-schedule.csv">net schedule</a>, and <a href="electrical/kicad/{PROJECT}/validation/{PROJECT}-erc.rpt">complete ERC report</a>.</p></div></section>{end}'''
+    section = f'''{start}<section id="native-electrical"><h2>The whole robot now has a tether-first native electrical architecture</h2><div class="grid"><article class="card pass"><h3>19 native sheets</h3><p>One hierarchy page and eighteen populated child sheets cover energy, safety, compute, every actuator segment, head HMI, pelvis IMU, both feet and the isolated onboard-later path.</p></article><article class="card pass"><h3>25 separate feeds</h3><p>Every actuator pin-2 VDD now has its own unresolved protection/telemetry boundary; the multidrop harness carries data and reference only.</p></article><article class="card pass"><h3>12 V + three 9 V rails</h3><p>The rejected direct 14.8 V path is gone. XH/XM use the controlled tether rail while each XC330 segment has a regulated 9 V candidate.</p></article><article class="card hold"><h3>ERC: 0 / 0</h3><p>KiCad validates encoded connectivity only. Protection values, physical energy/safety terminals, stopping behavior and validation remain open.</p></article></div><div class="viewer"><object data="electrical/kicad/{PROJECT}/output/{PROJECT}.svg" type="image/svg+xml" aria-label="Interactive HR-30 native KiCad hierarchy diagram"></object><p><a href="electrical/kicad/{PROJECT}/index.html">Open the interactive 19-sheet electrical guide</a>, inspect the <a href="electrical/kicad/{PROJECT}/interface-carrier-pinout.csv">eight-channel pin map</a>, or download the <a href="electrical/kicad/{PROJECT}/{PROJECT}.kicad_pro">KiCad project</a>, <a href="electrical/kicad/{PROJECT}/connector-schedule.csv">terminal schedule</a>, <a href="electrical/kicad/{PROJECT}/net-schedule.csv">net schedule</a>, and <a href="electrical/kicad/{PROJECT}/validation/{PROJECT}-erc.rpt">complete ERC report</a>.</p></div></section>{end}'''
     if marker not in page:
         raise SystemExit("actuator bus web marker missing")
     page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")
@@ -665,7 +720,7 @@ def main() -> int:
     write_docs(sheets)
     write_manifest()
     update_package()
-    print(json.dumps({"identifier": IDENTIFIER, "native_sheets": 18, "axes": 25, "segments": 8, "erc_errors": 0, "erc_warnings": 0, "actuator_bus_controller_pins_reconciled": True, "whole_project_physical_pin_mapping_reconciled": False}, indent=2))
+    print(json.dumps({"identifier": IDENTIFIER, "native_sheets": 19, "axes": 25, "segments": 8, "erc_errors": 0, "erc_warnings": 0, "actuator_bus_controller_pins_reconciled": True, "whole_project_physical_pin_mapping_reconciled": False}, indent=2))
     return 0
 
 

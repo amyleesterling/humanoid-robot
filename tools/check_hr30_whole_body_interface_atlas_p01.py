@@ -94,7 +94,7 @@ def main() -> int:
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require(page.count('id="whole-body-interface-atlas"') == 1, "main web atlas section missing or duplicated")
     require(all(name in page for name in ("whole-body-interface-atlas.html", "whole-body-interface-atlas.svg", "module-interface-control-register.csv", "module-assembly-sequence.csv")), "main web atlas links incomplete")
-    require("KiCad remains open" not in page and "Both ends pinned" in page and "18 native sheets" in page and "Harness remains preliminary" in page, "stale KiCad web statement remains")
+    require("KiCad remains open" not in page and "Both ends pinned" in page and "19 native sheets" in page and "Harness remains preliminary" in page, "stale KiCad web statement remains")
 
     print(f"PASS: HR-30 whole-body interface atlas covers 12 physical modules, owns all 25 axes exactly once, and reconciles {module_mass:.6f} kg; manufacturing detail and all work authority remain false")
     return 0

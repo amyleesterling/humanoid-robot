@@ -1,9 +1,9 @@
-ERC report (2026-08-14T13:52:52, Encoding UTF8)
+ERC report (2026-08-14T18:57:20, Encoding UTF8)
 Report includes: Errors, Warnings
 
 ***** Sheet /
 
-***** Sheet /01 Energy, service disconnect, precharge and conversion/
+***** Sheet /01 Tether-first energy, regulated rails and onboard-later boundary/
 
 ***** Sheet /02 Dual-channel E-stop, monitored reset, permit and redundant interruption/
 
@@ -15,19 +15,19 @@ Report includes: Errors, Warnings
 
 ***** Sheet /06 Carrier B - waist RS-485 and three translated TTL channels/
 
-***** Sheet /07 Left-leg RS-485 and protected branch/
+***** Sheet /07 Left-leg RS-485 data bus and individual feeds/
 
-***** Sheet /08 Right-leg RS-485 and protected branch/
+***** Sheet /08 Right-leg RS-485 data bus and individual feeds/
 
-***** Sheet /09 Left proximal-arm RS-485 and protected branch/
+***** Sheet /09 Left proximal-arm RS-485 data bus and individual feeds/
 
-***** Sheet /10 Right proximal-arm RS-485 and protected branch/
+***** Sheet /10 Right proximal-arm RS-485 data bus and individual feeds/
 
-***** Sheet /11 Waist RS-485 and protected branch/
+***** Sheet /11 Waist RS-485 data bus and individual feed/
 
-***** Sheet /12 Left wrist/gripper TTL and protected branch/
+***** Sheet /12 Left wrist/gripper TTL data bus and individual feeds/
 
-***** Sheet /13 Right wrist/gripper TTL and protected branch/
+***** Sheet /13 Right wrist/gripper TTL data bus and individual feeds/
 
 ***** Sheet /14 Head TTL, cameras, face display, audio and cooling/
 
@@ -36,6 +36,8 @@ Report includes: Errors, Warnings
 ***** Sheet /16 Left foot four-point load sensing/
 
 ***** Sheet /17 Right foot four-point load sensing/
+
+***** Sheet /18 Onboard-later isolated energy evaluation/
 
  ** ERC messages: 0  Errors 0  Warnings 0
 

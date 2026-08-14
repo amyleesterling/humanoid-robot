@@ -57,7 +57,9 @@ def main() -> int:
     require(len(routes) == 62 and len(points) == 124, "route geometry count drift")
     require(Counter(r["segment_kind"] for r in routes) == {"MOVING JOINT LOOP": 50, "FIXED BODY CORRIDOR": 12}, "fixed/moving route split drift")
     require(len(assemblies) == 14 and len(terminations) == len(shields) == 8, "assembly/bus completeness drift")
-    require(len(equipment) == 54 and len(logical) == 549, "equipment or logical-terminal binding incomplete")
+    with (WB / "electrical/kicad/hr30-whole-body-electrical-p0.1/connector-schedule.csv").open(encoding="utf-8-sig", newline="") as handle:
+        ecad_terminals = list(csv.DictReader(handle))
+    require(len(equipment) == 54 and len(logical) == len(ecad_terminals), "equipment or logical-terminal binding incomplete")
     require(len(contacts) == len(cores) == 94, "actuator contact/core mapping drift")
     require(len(inspections) >= 10 and len(unresolved) >= 10, "inspection/open-selection registers incomplete")
 
@@ -77,7 +79,8 @@ def main() -> int:
     for a in axes: bus_axis[a["bus_id"]].append(a["axis_id"])
     require(sorted(len(v) for v in bus_axis.values()) == [1, 2, 2, 2, 3, 3, 6, 6], "eight-bus axis allocation drift")
     require(abs(sum(float(r["candidate_12v_stall_endpoint_a"]) for r in power) - 76.08) < 1e-8, "stall endpoint arithmetic drift")
-    require(all("SHARED PROTECTED BUS BRANCH" in r["protection_topology"] for r in power), "power topology must not imply 25 individual fuses")
+    require(all("ONE DISTINCT PROTECTION / TELEMETRY BOUNDARY PER ACTUATOR" in r["protection_topology"] for r in power), "25 individual protection boundaries missing")
+    require({r["branch_net"] for r in power} == {axis + "_VDD" for axis in axis_ids}, "individual actuator VDD net binding drift")
     require(all("STANDARD DYNAMIXEL CABLE VDD" in r["vdd_isolation_rule"] for r in links), "VDD backfeed boundary missing")
 
     by_connector = Counter(r["connector_id"] for r in contacts)
@@ -89,7 +92,7 @@ def main() -> int:
 
     false_gates = ["standard_dynamixel_cable_direct_use_approved", "assembled_cables_selected", "conductor_sizing_released", "protection_released", "connector_set_released", "harness_validated", "procurement_authority", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]
     require(all(status[k] is False for k in false_gates), "authority/selection gate overclaimed")
-    require(status["total_route_segments"] == 62 and status["logical_terminals"] == 549, "status count drift")
+    require(status["total_route_segments"] == 62 and status["logical_terminals"] == len(ecad_terminals), "status count drift")
 
     for s in source:
         p = ROOT / s["source"]
@@ -123,7 +126,7 @@ def main() -> int:
     require(whole_status.get("physical_harness_package_present") is True, "whole-body status integration missing")
     require(whole_status.get("physical_harness_selected") is False and whole_status.get("physical_harness_validated") is False, "whole-body harness status overclaimed")
 
-    print("PASS: HR-30 physical harness: 25 axes, 62 routes, 94 contacts/cores, 54 equipment, 549 logical terminals; all release/authority gates false")
+    print(f"PASS: HR-30 physical harness: 25 separate actuator feeds, 8 data buses, 62 routes, 94 contacts/cores, 54 equipment, {len(logical)} logical terminals; all release/authority gates false")
     return 0
 
 

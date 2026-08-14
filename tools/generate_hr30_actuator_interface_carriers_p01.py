@@ -758,7 +758,7 @@ def update_whole_body_package() -> None:
     for row in holds:
         if row["hold_id"] == "HR30-P01-H11":
             row["unresolved_item"] = (
-                "The native 18-sheet HR-30 KiCad project and ten-sheet carrier project bind all 25 axes, eight STM32 UART groups, five complete "
+                "The native 19-sheet HR-30 KiCad project and ten-sheet carrier project bind all 25 axes, 25 distinct actuator power-feed boundaries, eight STM32 UART groups, five complete "
                 "ISOW1432 application circuits, three complete SN74LVC1T45 application circuits, exact data-only JST GH "
                 "connectors, and two 82 x 42 mm six-layer routed candidates. Carrier schematic ERC is 0/0; both boards have "
                 "KiCad DRC 0/0 and zero unconnected pads. Five native all-copper isolation moats and the JLC06161H-3313 stackup "

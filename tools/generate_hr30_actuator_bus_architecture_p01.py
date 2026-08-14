@@ -112,7 +112,7 @@ def generate_into_package(refresh: bool = True) -> None:
             "actuator_connector_contacts": 4 if protocol.startswith("RS-485") else 3,
             "controller_interface": f"Carrier {pinout['carrier']}; {pinout['stm32_peripheral']}; {pinout['mcu_tx_or_io']}; {pinout['mcu_rx']}; {pinout['mcu_de']}; {pinout['field_header']}",
             "termination_bias_level_shift": "INTERFACE DEVICE PINOUT SELECTED; PCB PASSIVES/LAYOUT, TERMINATION/BIAS, PROTECTION AND VALIDATION REQUIRED",
-            "power_data_boundary": "ONE PROTECTED POWER BRANCH PER SEGMENT; data-only field connector has no VDD contact; exact power-injection breakout/cable and no-backfeed validation remain open",
+            "power_data_boundary": "ONE DISTINCT PROTECTED POWER FEED PER ACTUATOR; data-only field connector has no VDD contact; exact power-injection breakout/cable and no-backfeed validation remain open",
             "status": "P0.1 PIN-LEVEL CANDIDATE; PHYSICAL IMPLEMENTATION UNVALIDATED",
             "authority": "NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY",
         })
@@ -149,7 +149,7 @@ def generate_into_package(refresh: bool = True) -> None:
                 "actuator_side_crimp_terminal": "JST SEH-001T-P0.6",
                 "manufacturer_published_dynamixel_wire_gauge": "21 AWG",
                 "controller_side_connector_and_pin_mapping": pinout["field_header"],
-                "branch_power_injection": "ONE SEPARATELY PROTECTED SEGMENT BRANCH; listed axes share this bus VDD; data daisy must not join VDD to another segment",
+                "branch_power_injection": "ONE SEPARATELY PROTECTED ACTUATOR FEED; this axis does not share VDD; data daisy carries only reference and data",
                 "authority": "NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY",
             })
     write_csv(OUT / "actuator-bus-axis-binding.csv", binding)
@@ -193,11 +193,11 @@ The 25-axis candidate population is not one electrical protocol. The nineteen se
 
 Current primary manufacturer documentation closes the actuator-side pin order and listed connector piece parts: RS-485 pin 1 GND, 2 VDD, 3 DATA+, 4 DATA-; TTL pin 1 GND, 2 VDD, 3 DATA. It also closes the STM32H743ZIT6 LQFP144 UART package pins, five ISOW1432DFMR isolated RS-485 device pinouts, three SN74LVC1T45DCKR 3.3/5 V translator pinouts, and eight exact JST GH data-only field connector candidates. The field connectors intentionally contain reference and data only, with no actuator-VDD contact. PCB layout/passives, assembled cables, actuator power-injection breakout, termination, bias, protection, shield/return treatment, grounding, application conductor sizing, routing, actuator IDs, bus timing, EMC and failure behavior remain **SELECTION REQUIRED**.
 
-The P0.1 candidate uses one separately protected power branch per bus segment, not 25 independently protected actuator feeds. Axes listed on one bus may share that segment VDD; no cable or breakout may connect VDD between different protected segments. Exact branch analysis, connector/breakout design and physical no-backfeed verification remain required before connection.
+The P0.1 candidate now allocates one separately protected power feed per actuator. Axes listed on one bus share only reference and data; they do not share VDD. Standard ROBOTIS X3P/X4P cables include VDD and therefore require a custom/de-pinned data-only construction or breakout. Exact protection values, connector/breakout design and physical no-backfeed verification remain required before connection.
 
 ## Relationship to KiCad
 
-The HR-30-only native KiCad project now binds all 25 axes and the eight sourced pin-level interface candidates across eighteen populated sheets with ERC 0/0. That is encoded connectivity and annotation evidence only. Carrier PCB passives/layout, protection, grounding, cable/shield rules, timing, shutdown behavior and physical fault validation remain open, so this package grants no connection, powered-test, motion, or energization authority.
+The HR-30-only native KiCad project now binds all 25 axes and the eight sourced pin-level interface candidates across nineteen populated sheets with ERC 0/0. That is encoded connectivity and annotation evidence only. Carrier PCB passives/layout, protection, grounding, cable/shield rules, timing, shutdown behavior and physical fault validation remain open, so this package grants no connection, powered-test, motion, or energization authority.
 
 ## Primary manufacturer evidence
 
@@ -229,7 +229,7 @@ The protocol classification is taken from current official ROBOTIS e-Manual page
     holds = [row for row in holds if row["hold_id"] != "HR30-P01-H11"]
     holds.append({
         "hold_id": "HR30-P01-H11",
-        "unresolved_item": "The native 18-sheet HR-30 KiCad project now binds all 25 axes, eight STM32 UART pin groups, five ISOW1432DFMR plus three SN74LVC1T45DCKR interfaces, and exact JST GH data-only connector candidates. Carrier PCB passives/layout, assembled cable and power-injection breakout hardware, protection, conductor sizing, termination/bias, EMC, timing/latency, grounding and physical fault tests remain open.",
+        "unresolved_item": "The native 19-sheet HR-30 KiCad project now binds all 25 axes, eight STM32 UART pin groups, five ISOW1432DFMR plus three SN74LVC1T45DCKR interfaces, and exact JST GH data-only connector candidates. Carrier PCB passives/layout, assembled cable and power-injection breakout hardware, protection, conductor sizing, termination/bias, EMC, timing/latency, grounding and physical fault tests remain open.",
         "state": "OPEN",
         "release_effect": "BLOCKS CONNECTION, POWERED TEST, MOTION AND ENERGIZATION",
     })

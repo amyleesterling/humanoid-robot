@@ -33,7 +33,7 @@ def sha(path: Path) -> str:
 
 def main() -> int:
     schematics = sorted(ECAD.glob("*.kicad_sch"))
-    require(len(schematics) == 18, "root plus seventeen native sheets required")
+    require(len(schematics) == 19, "root plus eighteen native sheets required")
     require((ECAD / f"{PROJECT}.kicad_pro").is_file(), "native KiCad project missing")
     require(all(WARNING in path.read_text(encoding="utf-8") for path in schematics), "preliminary warning missing from schematic")
     connector = rows("connector-schedule.csv")
@@ -56,14 +56,24 @@ def main() -> int:
     net_names = {row["net"] for row in nets}
     for row in bus_topology:
         bus = row["bus_id"]
-        expected = {f"{bus}_VDD", f"{bus}_RET"}
+        expected = {f"{bus}_RET"}
         expected |= {f"{bus}_DP", f"{bus}_DN"} if row["protocol"].startswith("RS-485") else {f"{bus}_DATA"}
         require(expected <= net_names, f"native nets missing for {bus}")
-    require({"BATT_POS_RAW", "CONTACTOR_POS_IN", "K1_POS_OUT", "ACT_14V8_SAFE", "ACT_12V_SAFE", "SAFETY_PERMIT_HARDWIRED"} <= net_names, "power/interruption net chain incomplete")
+    axis_power_nets = {row["axis_id"] + "_VDD" for row in allocation}
+    require(axis_power_nets <= net_names and len(axis_power_nets) == 25, "25 separate actuator VDD feeds are not encoded")
+    require({"PANEL_DC_POS_RAW", "K1_POS_OUT", "TETHER_MAIN_POS", "ACT_MAIN_SAFE_12V", "ACT_0V_CONTROLLED", "SAFETY_24V", "SAFETY_0V", "SAFETY_OUT_K1", "SAFETY_OUT_K2", "SAFETY_PERMIT_HARDWIRED"} <= net_names, "tether-first power/interruption net chain incomplete")
+    require({"TTL_LDIST_SAFE_9V", "TTL_RDIST_SAFE_9V", "TTL_HEAD_SAFE_9V"} <= net_names, "three regulated TTL branch rails are incomplete")
+    require(not ({"ACT_14V8_SAFE", "ACT_12V_SAFE", "BATT_POS_RAW", "CONTACTOR_POS_IN"} & net_names), "rejected direct 14.8 V architecture remains in native nets")
+    require({"ONBOARD_LATER_POS", "ONBOARD_LATER_SD_POS", "ONBOARD_LATER_SOURCE_OUT", "ONBOARD_LATER_RET"} <= net_names, "disconnected onboard-later evaluation path missing")
+    require("ONBOARD_LATER_SOURCE_OUT" in net_names and all(row["net"] != "ACT_MAIN_SAFE_12V" or row["reference"] != "PRE_LATER" for row in connector), "onboard-later path is incorrectly tied to controlled main")
     require({"AUX_5V_SAFE", "PELVIS_IMU_DATA", "L_FOOT_SENSOR_DATA", "R_FOOT_SENSOR_DATA", "HEAD_DISPLAY_IPC", "HEAD_CAM_L_IPC", "HEAD_CAM_R_IPC"} <= net_names, "whole-body auxiliary sensing/HMI nets incomplete")
     refs = {row["reference"] for row in connector}
-    require({"AUXD1", "IMU1", "DISP1", "MIC1", "AMP1", "SPK1", "SPK2", "FAN1", "ADC_L_FOOT", "ADC_R_FOOT"} <= refs, "whole-body sensing/HMI components incomplete")
+    require({"ACB1", "PS1", "CTRLPS1", "TETH1", "REG_TTL_L", "REG_TTL_R", "REG_TTL_H", "BATT_LATER", "SD_LATER", "PRE_LATER", "CHG_LATER", "S0", "S1", "SR1", "WD_INH1", "K1", "K2", "AUXD1", "IMU1", "DISP1", "MIC1", "AMP1", "SPK1", "SPK2", "FAN1", "ADC_L_FOOT", "ADC_R_FOOT"} <= refs, "whole-body energy/safety/sensing/HMI components incomplete")
+    require(len({ref for ref in refs if ref.startswith("PBR_")}) == 25, "one protection/telemetry boundary per actuator is required")
     require(len({ref for ref in refs if ref.startswith("LOAD_")}) == 8, "bilateral four-point foot sensing incomplete")
+    schedule_text = (ECAD / "connector-schedule.csv").read_text(encoding="utf-8")
+    require("WITH MIRROR CONTACT" not in schedule_text and "MIRROR / EDM" not in schedule_text, "unsupported mirror-contact claim remains")
+    require("MECHANICALLY LINKED AUXILIARY" in schedule_text, "contactor linked-auxiliary EDM boundary missing")
     pinout = rows("interface-carrier-pinout.csv")
     require(len(pinout) == 8 and {row["bus_id"] for row in pinout} == {row["bus_id"] for row in bus_topology}, "eight-channel carrier pinout missing")
     require(sum(row["interface_device"] == "ISOW1432DFMR" for row in pinout) == 5 and sum(row["interface_device"] == "SN74LVC1T45DCKR" for row in pinout) == 3, "interface-device allocation drift")
@@ -77,9 +87,9 @@ def main() -> int:
     svg = ECAD / "output" / f"{PROJECT}.svg"
     require(svg.is_file() and svg.stat().st_size > 5000, "native hierarchy SVG missing")
     guide = (ECAD / "index.html").read_text(encoding="utf-8")
-    require(guide.count("<object ") == 18 and "Explore all 18 native KiCad sheets" in guide and "font:17px/1.55" in guide and "font-size:14px" in guide, "interactive 18-sheet electrical guide missing or illegible")
+    require(guide.count("<object ") == 19 and "Explore all 19 native KiCad sheets" in guide and "font:17px/1.55" in guide and "font-size:14px" in guide, "interactive 19-sheet electrical guide missing or illegible")
     status = json.loads((ECAD / "electrical-status.json").read_text(encoding="utf-8"))
-    require(status["native_kicad_parsed"] and status["logical_connectivity_reconciled"] and status["actuator_side_physical_pin_mapping_reconciled"] and status["actuator_bus_controller_physical_pin_mapping_reconciled"] and status["actuator_bus_interface_device_candidates_selected"] and status["actuator_bus_data_only_connector_candidates_selected"] and status["erc_errors"] == status["erc_warnings"] == 0, "native electrical status incomplete")
+    require(status["native_kicad_parsed"] and status["logical_connectivity_reconciled"] and status["actuator_side_physical_pin_mapping_reconciled"] and status["actuator_bus_controller_physical_pin_mapping_reconciled"] and status["actuator_bus_interface_device_candidates_selected"] and status["actuator_bus_data_only_connector_candidates_selected"] and status["tether_first_energy_topology_encoded"] and status["direct_14v8_actuator_source_absent"] and status["individual_actuator_power_feed_count"] == 25 and status["regulated_ttl_branch_count"] == 3 and status["reset_can_command_motion"] is False and status["erc_errors"] == status["erc_warnings"] == 0, "native electrical status incomplete")
     require(not any(status[k] for k in ("physical_pin_mapping_reconciled", "interface_devices_selected", "protection_values_selected", "functional_safety_validated", "connection_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "native status overclaims release")
     package_status = json.loads((PACKAGE / "package-status.json").read_text(encoding="utf-8"))
     require(package_status["native_hr30_kicad_present"] and package_status["native_hr30_kicad_logical_connectivity_reconciled"] and package_status["native_hr30_kicad_actuator_side_pins_reconciled"], "whole-body package does not expose reconciled actuator-side KiCad pins")
@@ -93,8 +103,8 @@ def main() -> int:
     require({p.relative_to(ECAD).as_posix() for p in ECAD.rglob("*") if p.is_file()} == {p.relative_to(rel_ecad).as_posix() for p in rel_ecad.rglob("*") if p.is_file()}, "native source/release file-set mismatch")
     require(all(sha(p) == sha(rel_ecad / p.relative_to(ECAD)) for p in ECAD.rglob("*") if p.is_file()), "native source/release byte mismatch")
     page = (PACKAGE / "index.html").read_text(encoding="utf-8")
-    require(page.count("HR30-NATIVE-KICAD-P01-START") == 1 and 'id="native-electrical"' in page and "18 native sheets" in page and f"{PROJECT}.kicad_pro" in page and f"{PROJECT}/index.html" in page, "interactive native electrical guide missing")
-    print("PASS: native HR-30 KiCad parses as 18 populated sheets with 25 actuator axes, explicit head/pelvis/foot interfaces, sourced actuator and controller pins, five isolated RS-485 plus three translated TTL channels, exact data-only connector candidates and ERC 0/0; PCB validation, protection, safety validation and all work authority remain open")
+    require(page.count("HR30-NATIVE-KICAD-P01-START") == 1 and 'id="native-electrical"' in page and "19 native sheets" in page and f"{PROJECT}.kicad_pro" in page and f"{PROJECT}/index.html" in page, "interactive native electrical guide missing")
+    print("PASS: native HR-30 KiCad parses as 18 populated sheets with a tether-first 12 V source, three regulated 9 V TTL rails, two series interruption candidates, 25 distinct protected actuator feeds, data-only multidrop buses, complete whole-body interfaces and ERC 0/0; physical energy/safety terminals, protection, functional-safety validation and all work authority remain open")
     return 0
 
 

@@ -2,11 +2,11 @@
 
 **PRELIMINARY - PHYSICAL HARNESS ARCHITECTURE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION**
 
-This is the first complete physical translation of the HR-30 logical wiring architecture. It binds all **25 joints**, **8 actuator buses**, **54 installed equipment items**, and **549 current ECAD logical terminals** to a controlled harness architecture.
+This is the first complete physical translation of the HR-30 logical wiring architecture. It binds all **25 joints**, **8 actuator buses**, **54 installed equipment items**, and **667 current ECAD logical terminals** to a controlled harness architecture.
 
 It contains 12 body corridors plus 50 explicit moving-joint power/data loops (62 route segments and 124 route points). Each actuator has a known device-side contact map, a branch-power relationship, a data-link boundary, a moving-loop obligation, retention obligation, derating inputs, and an inspection path.
 
-The architecture uses eight separately protected bus branches. The 25 drops are **not** represented as individually fused. A standard ROBOTIS X3P/X4P daisy cable carries VDD, so it must not be used to parallel separately protected branches. The custom data-only/power-injection breakout remains **SELECTION REQUIRED**.
+The architecture now allocates one separately protected power feed to every actuator. A standard ROBOTIS X3P/X4P daisy cable carries VDD, so it cannot be used unchanged because it would parallel those 25 feeds. A custom/de-pinned data-only harness or power-injection breakout remains **SELECTION REQUIRED**.
 
 The 76.08 A figure is only the sum of manufacturer 12 V momentary stall-current endpoints. It is not expected demand, a conductor rating, a fuse value, or permission to power the robot.
 
