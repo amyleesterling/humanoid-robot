@@ -66,12 +66,12 @@ def read_csv(path: Path) -> list[dict]:
         return list(csv.DictReader(handle))
 
 
-def component(model, ref, value, pins, description, position, width=72.0, datasheet="", evidence=""):
+def component(model, ref, value, pins, description, position, width=72.0, datasheet="", evidence="", status="SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY"):
     return model.Component(
         ref=ref,
         value=value,
         pins=[model.pn(ref, number, name, net, side) for number, name, net, side in pins],
-        status="SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY",
+        status=status,
         description=description,
         datasheet=datasheet,
         evidence=evidence,
@@ -83,13 +83,13 @@ def component(model, ref, value, pins, description, position, width=72.0, datash
 def actuator_candidate(by_axis: dict[str, dict], axis: str) -> tuple[str, str]:
     candidate = by_axis[axis]["candidate_actuator"]
     if "XH540" in candidate:
-        return candidate, "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/"
+        return candidate, "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/"
     if "XM540" in candidate:
-        return candidate, "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/"
+        return candidate, "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/"
     if "XM430" in candidate:
-        return candidate, "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/"
+        return candidate, "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/"
     if "XC330" in candidate:
-        return candidate, "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/"
+        return candidate, "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/"
     raise SystemExit(f"unsupported actuator family for {axis}: {candidate}")
 
 
@@ -98,22 +98,23 @@ def axis_component(model, by_axis, axis, bus_id, position):
     ref = "AX_" + axis
     if bus_id.startswith("RS-"):
         pins = [
-            ("LOG-PWR", "BRANCH VDD", f"{bus_id}_VDD", "left"),
-            ("LOG-RET", "BRANCH RETURN", f"{bus_id}_RET", "left"),
-            ("LOG-DP", "RS-485 DATA+", f"{bus_id}_DP", "right"),
-            ("LOG-DN", "RS-485 DATA-", f"{bus_id}_DN", "right"),
+            ("2", "VDD", f"{bus_id}_VDD", "left"),
+            ("1", "GND", f"{bus_id}_RET", "left"),
+            ("3", "DATA+", f"{bus_id}_DP", "right"),
+            ("4", "DATA-", f"{bus_id}_DN", "right"),
         ]
     else:
         pins = [
-            ("LOG-PWR", "BRANCH VDD", f"{bus_id}_VDD", "left"),
-            ("LOG-RET", "BRANCH RETURN", f"{bus_id}_RET", "left"),
-            ("LOG-DATA", "TTL HALF-DUPLEX DATA", f"{bus_id}_DATA", "right"),
+            ("2", "VDD", f"{bus_id}_VDD", "left"),
+            ("1", "GND", f"{bus_id}_RET", "left"),
+            ("3", "DATA", f"{bus_id}_DATA", "right"),
         ]
     return component(
         model, ref, candidate, pins,
-        "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.",
+        "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.",
         position, width=74.0, datasheet=source,
-        evidence="Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.",
+        evidence="Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).",
+        status="ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED",
     )
 
 
@@ -156,7 +157,7 @@ def bus_sheet(model, number, filename, title, bus_id, axes, by_axis):
         sheet.components.append(axis_component(model, by_axis, axis, bus_id, position))
     sheet.notes = [
         "The segment shares data and branch power only among the listed axes; it does not join any other protected branch VDD.",
-        "All terminal identifiers beginning LOG- are functional ports, not manufacturer connector or package pin numbers.",
+        "AX_* terminals use current official ROBOTIS actuator-side pin numbers; all LOG-* identifiers remain functional ports, not physical connector or IC pins.",
         "Termination, bias, actuator IDs, baud rate, cable length, waveform, latency, EMC, thermal and fault behavior remain unvalidated.",
     ]
     return sheet
@@ -363,7 +364,7 @@ def write_docs(sheets):
     (ECAD / "README.md").write_text("# HR-30 whole-body electrical P0.1\n\n"
         f"**{WARNING}**\n\n"
         "This is the native KiCad 10 whole-body architecture for the current 25-axis HR-30 candidate. It contains a root index plus twelve populated child sheets. Five RS-485 and three TTL actuator segments match the whole-body bus allocation exactly.\n\n"
-        "All `LOG-*` terminal identifiers are functional ports, not physical connector or IC pin numbers. Exact devices, pins, order codes, fuse/limiter values, conductors, connectors, grounding, shield treatment, safety allocation, stopping time and physical behavior remain unresolved. The historical mixed HR-V0/HR-30 project is not incorporated as verified wiring.\n\n"
+        "AX_* actuator terminals use current official ROBOTIS actuator-side pin numbers. All `LOG-*` terminal identifiers are functional ports, not physical connector or IC pin numbers. Controller/interface pins, exact devices, order codes, fuse/limiter values, conductors, connectors, grounding, shield treatment, safety allocation, stopping time and physical behavior remain unresolved. The historical mixed HR-V0/HR-30 project is not incorporated as verified wiring.\n\n"
         "## Sheets\n\n" + "\n".join(f"{s.number}. `{s.filename}` — {s.title}" for s in sheets) + "\n\n"
         "KiCad ERC checks encoded passive-pin connectivity and annotation only. It grants no functional-safety credit and no authority to order, fabricate, connect, power, move or energize the robot.\n",
         encoding="utf-8", newline="\n")
@@ -372,7 +373,8 @@ def write_docs(sheets):
         "child_sheet_count": 12, "axis_binding_count": 25, "actuator_bus_segment_count": 8,
         "rs485_segment_count": 5, "ttl_segment_count": 3,
         "native_kicad_parsed": True, "erc_errors": 0, "erc_warnings": 0,
-        "logical_connectivity_reconciled": True, "physical_pin_mapping_reconciled": False,
+        "logical_connectivity_reconciled": True, "actuator_side_physical_pin_mapping_reconciled": True,
+        "physical_pin_mapping_reconciled": False,
         "interface_devices_selected": False, "protection_values_selected": False,
         "functional_safety_validated": False, "connection_authority": False,
         "fabrication_authority": False, "powered_test_authority": False,
@@ -390,6 +392,7 @@ def update_package():
         "native_hr30_kicad_sheet_count": 13,
         "native_hr30_kicad_axis_binding_count": 25,
         "native_hr30_kicad_logical_connectivity_reconciled": True,
+        "native_hr30_kicad_actuator_side_pins_reconciled": True,
         "native_hr30_kicad_reconciled": False,
         "native_hr30_kicad_physical_pins_selected": False,
         "native_hr30_kicad_erc_errors": 0,
@@ -400,7 +403,7 @@ def update_package():
     holds = read_csv(holds_path)
     for row in holds:
         if row["hold_id"] == "HR30-P01-H11":
-            row["unresolved_item"] = "A native 13-sheet HR-30 KiCad project now binds all 25 axes to five RS-485 and three TTL segments with zero ERC violations. Physical controller/interface devices and pins, connector/breakout hardware, protection values, termination/bias/level shifting, data-only harness isolation, grounding, EMC, timing/latency, safety allocation and physical fault tests remain open."
+            row["unresolved_item"] = "A native 13-sheet HR-30 KiCad project now binds all 25 axes to five RS-485 and three TTL segments with zero ERC violations, and current ROBOTIS documentation closes actuator-side pins only. Controller/interface devices and pins, cable/breakout hardware, protection values, termination/bias/level shifting, data-only harness isolation, grounding, EMC, timing/latency, safety allocation and physical fault tests remain open."
     with holds_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(holds[0]))
         writer.writeheader(); writer.writerows(holds)
@@ -410,7 +413,7 @@ def update_package():
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
     marker = '<section id="actuator-buses">'
-    section = f'''{start}<section id="native-electrical"><h2>The whole robot now has native KiCad source</h2><div class="grid"><article class="card pass"><h3>13 native sheets</h3><p>One hierarchy page and twelve populated child sheets cover energy, interruption, compute/control, eight bus interfaces, every actuator, and head sensing/HMI.</p></article><article class="card pass"><h3>25 axes connected</h3><p>All nineteen RS-485 and six TTL actuator candidates appear in the native netlist on their assigned whole-body segments.</p></article><article class="card hold"><h3>ERC: 0 / 0</h3><p>KiCad 10 reports zero errors and zero warnings for encoded connectivity. ERC is not a physical, safety, or energization approval.</p></article><article class="card hold"><h3>Physical design remains open</h3><p>Exact interface devices, pins, connectors, protection, grounding, cable construction, EMC, and safety validation remain selection work.</p></article></div><div class="viewer"><object data="electrical/kicad/{PROJECT}/output/{PROJECT}.svg" type="image/svg+xml" aria-label="Interactive HR-30 native KiCad hierarchy diagram"></object><p>Open the hierarchy above, or download the <a href="electrical/kicad/{PROJECT}/{PROJECT}.kicad_pro">KiCad project</a>, <a href="electrical/kicad/{PROJECT}/connector-schedule.csv">terminal schedule</a>, <a href="electrical/kicad/{PROJECT}/net-schedule.csv">net schedule</a>, and <a href="electrical/kicad/{PROJECT}/validation/{PROJECT}-erc.rpt">complete ERC report</a>.</p></div></section>{end}'''
+    section = f'''{start}<section id="native-electrical"><h2>The whole robot now has native KiCad source</h2><div class="grid"><article class="card pass"><h3>13 native sheets</h3><p>One hierarchy page and twelve populated child sheets cover energy, interruption, compute/control, eight bus interfaces, every actuator, and head sensing/HMI.</p></article><article class="card pass"><h3>25 axes connected</h3><p>All nineteen RS-485 and six TTL actuator candidates appear in the native netlist on their assigned whole-body segments.</p></article><article class="card pass"><h3>Actuator pins reconciled</h3><p>AX terminals now use current official ROBOTIS actuator-side pin numbers. Controller-side terminals remain logical and unselected.</p></article><article class="card hold"><h3>ERC: 0 / 0</h3><p>KiCad 10 reports zero errors and zero warnings for encoded connectivity. ERC is not a physical, safety, or energization approval.</p></article></div><div class="viewer"><object data="electrical/kicad/{PROJECT}/output/{PROJECT}.svg" type="image/svg+xml" aria-label="Interactive HR-30 native KiCad hierarchy diagram"></object><p>Open the hierarchy above, or download the <a href="electrical/kicad/{PROJECT}/{PROJECT}.kicad_pro">KiCad project</a>, <a href="electrical/kicad/{PROJECT}/connector-schedule.csv">terminal schedule</a>, <a href="electrical/kicad/{PROJECT}/net-schedule.csv">net schedule</a>, and <a href="electrical/kicad/{PROJECT}/validation/{PROJECT}-erc.rpt">complete ERC report</a>.</p></div></section>{end}'''
     if marker not in page:
         raise SystemExit("actuator bus web marker missing")
     page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")

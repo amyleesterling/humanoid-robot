@@ -40,7 +40,15 @@ def main() -> int:
     axis_refs = {row["reference"] for row in connector if row["reference"].startswith("AX_")}
     allocation = list(csv.DictReader((PACKAGE / "actuator-transmission-allocation.csv").open(encoding="utf-8")))
     require(axis_refs == {"AX_" + row["axis_id"] for row in allocation} and len(axis_refs) == 25, "native schematic does not contain exact 25-axis allocation")
-    require(all(row["terminal"].startswith("LOG-") for row in connector), "unselected physical terminal number was inferred")
+    axis_rows = [row for row in connector if row["reference"].startswith("AX_")]
+    other_rows = [row for row in connector if not row["reference"].startswith("AX_")]
+    require(all(row["terminal"].startswith("LOG-") for row in other_rows), "unselected non-actuator physical terminal number was inferred")
+    for ref in axis_refs:
+        pins = {row["terminal"]: row["pin_name"] for row in axis_rows if row["reference"] == ref}
+        if ref in {"AX_" + row["axis_id"] for row in allocation if "XC330" in row["candidate_actuator"]}:
+            require(pins == {"1": "GND", "2": "VDD", "3": "DATA"}, f"TTL actuator-side pinout drift at {ref}")
+        else:
+            require(pins == {"1": "GND", "2": "VDD", "3": "DATA+", "4": "DATA-"}, f"RS-485 actuator-side pinout drift at {ref}")
     bus_topology = list(csv.DictReader((PACKAGE / "actuator-bus-topology.csv").open(encoding="utf-8")))
     require(len(bus_topology) == 8, "eight-segment source topology missing")
     nets = rows("net-schedule.csv")
@@ -60,10 +68,10 @@ def main() -> int:
     svg = ECAD / "output" / f"{PROJECT}.svg"
     require(svg.is_file() and svg.stat().st_size > 5000, "native hierarchy SVG missing")
     status = json.loads((ECAD / "electrical-status.json").read_text(encoding="utf-8"))
-    require(status["native_kicad_parsed"] and status["logical_connectivity_reconciled"] and status["erc_errors"] == status["erc_warnings"] == 0, "native electrical status incomplete")
+    require(status["native_kicad_parsed"] and status["logical_connectivity_reconciled"] and status["actuator_side_physical_pin_mapping_reconciled"] and status["erc_errors"] == status["erc_warnings"] == 0, "native electrical status incomplete")
     require(not any(status[k] for k in ("physical_pin_mapping_reconciled", "interface_devices_selected", "protection_values_selected", "functional_safety_validated", "connection_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "native status overclaims release")
     package_status = json.loads((PACKAGE / "package-status.json").read_text(encoding="utf-8"))
-    require(package_status["native_hr30_kicad_present"] and package_status["native_hr30_kicad_logical_connectivity_reconciled"], "whole-body package does not expose native KiCad")
+    require(package_status["native_hr30_kicad_present"] and package_status["native_hr30_kicad_logical_connectivity_reconciled"] and package_status["native_hr30_kicad_actuator_side_pins_reconciled"], "whole-body package does not expose reconciled actuator-side KiCad pins")
     require(not package_status["native_hr30_kicad_reconciled"] and not package_status["native_hr30_kicad_physical_pins_selected"], "full physical reconciliation overclaimed")
     require(sha(ECAD / "native-kicad-source.py") == sha(ROOT / "tools" / "generate_hr30_whole_body_electrical_p01.py"), "native generator snapshot drift")
     manifest = rows("SOURCE-MANIFEST.csv")
@@ -75,7 +83,7 @@ def main() -> int:
     require(all(sha(p) == sha(rel_ecad / p.relative_to(ECAD)) for p in ECAD.rglob("*") if p.is_file()), "native source/release byte mismatch")
     page = (PACKAGE / "index.html").read_text(encoding="utf-8")
     require(page.count("HR30-NATIVE-KICAD-P01-START") == 1 and 'id="native-electrical"' in page and "13 native sheets" in page and f"{PROJECT}.kicad_pro" in page, "interactive native electrical guide missing")
-    print("PASS: native HR-30 KiCad parses as 13 populated sheets with 25 actuator axes, eight protocol-compatible buses and ERC 0/0; physical pins, selections, safety validation and all work authority remain open")
+    print("PASS: native HR-30 KiCad parses as 13 populated sheets with 25 actuator axes, official actuator-side pins, eight protocol-compatible buses and ERC 0/0; controller pins, selections, safety validation and all work authority remain open")
     return 0
 
 

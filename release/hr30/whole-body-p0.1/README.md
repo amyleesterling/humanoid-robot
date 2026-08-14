@@ -14,20 +14,16 @@ P0.1 now also includes floating-base 25-DOF URDF and MJCF models, a historical 9
 
 ## Modular fabrication architecture
 
-P0.1 now includes a second editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable limb and palm panels, and eleven segregated harness corridors. The current mass candidate uses 1.5 mm limb/palm/foot panels and 1.6 mm torso/pelvis/head shells; ribs, print/process qualification and impact stiffness remain open. The CAD density screen is 1.526 kg for frame parts and 0.558 kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; neither they nor the historical 9.63 kg allocation establish whole-robot mass closure. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
+P0.1 now includes a second editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable limb and palm panels, and twelve segregated harness corridors. Separate neck data and actuator-power branches prevent the head actuators from borrowing the data-only corridor. The current mass candidate uses 1.5 mm limb/palm/foot panels and 1.6 mm torso/pelvis/head shells; ribs, print/process qualification and impact stiffness remain open. The CAD density screen is 1.526 kg for frame parts and 0.558 kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; neither they nor the historical 9.63 kg allocation establish whole-robot mass closure. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
 
 ## Installed equipment layout
 
-The former empty torso, pelvis, head and foot reservations now contain 56 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.380 kg. The primary whole-body candidate now includes the exact published envelope and mass of a Grepow/Tattu TAA12K4S30EC5 4S 12 Ah pack in a removable rear-torso cassette, plus a distinct protection/telemetry reservation because the pack page does not state an integrated BMS/PCM. The tether inlet remains for controlled development. Battery protection, current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+The former empty torso, pelvis, head and foot reservations now contain 57 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.397 kg. The primary whole-body candidate now includes the exact published envelope and mass of a Grepow/Tattu TAA12K4S30EC5 4S 12 Ah pack in a removable rear-torso cassette, plus a distinct protection/telemetry reservation because the pack page does not state an integrated BMS/PCM. The tether inlet remains for controlled development. Battery protection, current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
 
 ## Whole-body mass reconciliation
 
-The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 66 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 156 located screw candidates, 10 catalogue belt candidates and 56 located equipment/harness/contact items. The gross identified subtotal is 11.266 kg; the explicit per-link model plus 0.368 kg residual integration contingency is 11.634 kg with neutral COM Z=0.368 m. This includes the onboard pack/cassette/protection reservation and leaves 0.366 kg to the 12 kg P0.1 maximum. The 10 kg lightweight stretch objective remains open by 1.634 kg. Exact protection and received masses remain open.
+The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 66 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 156 located screw candidates, 10 catalogue belt candidates and 57 located equipment/harness/contact items. The gross identified subtotal is 11.283 kg; the explicit per-link model plus 0.369 kg residual integration contingency is 11.652 kg with neutral COM Z=0.369 m. This includes the onboard pack/cassette/protection reservation and leaves 0.348 kg to the 12 kg P0.1 maximum. The 10 kg lightweight stretch objective remains open by 1.652 kg. Exact protection and received masses remain open.
 
-
-## Located joint fastener candidates
-
-The whole-body joint carriers now contain 156 explicit M3/M4/M5 socket-head geometry candidates across 39 plates. Every screw axis is generated from the same joint datum and carrier pattern as the body CAD. The 0.554 kg generic-steel screen is included in mass reconciliation, but exact products, threads, tapped members, torque, preload, locking, access and physical proof remain open.
 
 ## Individual manufacturing-candidate files
 
@@ -36,6 +32,10 @@ Every one of the 66 physical frame and removable-cover candidates now has its ow
 ## Serviceable joint-family CAD
 
 Ten native reusable joint-family assemblies cover every one of the 25 axes. Each family exposes a hollow output shaft, aligned catalogue-bearing candidates, removable truss carriers, axial retainers, carrier screws, an output-encoder carrier, exact SHA-bound actuator packaging geometry, and the appropriate direct coupler, belt reduction, shoulder gimbal, or symmetric hand rack/pinion candidate. Native STEP and interactive GLB exports plus stack, part, fit/retention, and assembly registers live in `joint-family-cad/`. They are whole-body refinement artifacts, not manufacturing or work releases; exact fits, materials, products, capacity and physical proof remain open.
+
+## Located joint fastener candidates
+
+The whole-body joint carriers now contain 156 explicit M3/M4/M5 socket-head geometry candidates across 39 plates. Every screw axis is generated from the same joint datum and carrier pattern as the body CAD. The 0.554 kg generic-steel screen is included in mass reconciliation, but exact products, threads, tapped members, torque, preload, locking, access and physical proof remain open.
 
 ## Separable module CAD
 
@@ -48,3 +48,9 @@ The web-first interface atlas now consolidates the actual 12 build modules, all 
 ## Whole-body joint-load architecture
 
 All 25 axes now have a reproducible static load screen tied to the current URDF mass tree, the 100 g handoff payload and explicit single-support COM-offset cases. The elbows and shoulder-roll axes use 82 g XM430 candidates; the wrists use XC330 candidates; the ankles use reduced XM430 candidates; and the knees reserve 2.0:1 reductions. Published stall values remain momentary endpoints only; continuous torque, belt capacity, thermal behavior, dynamic gait loads and physical correlation are open.
+
+<!-- HR30-HARNESS-README-START -->
+## Whole-body harness
+
+Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Current official ROBOTIS documentation closes actuator-side pins only; controller interfaces, cable assemblies, protection, sizing, retention, flex life, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
+<!-- HR30-HARNESS-README-END -->

@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\kicad\\hr30-whole-body-electrical-p0.1\\hr30-whole-body-electrical-p0.1.kicad_sch")
-		(date "2026-08-14T09:57:17")
+		(date "2026-08-14T11:53:40")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR CONNECTION, FABRICATION, MOTION OR ENERGIZATION")
@@ -2782,35 +2782,35 @@
 		(comp
 			(ref "AX_L_ANKLE_PITCH")
 			(value "ROBOTIS XM430-W350-R evaluation candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R evaluation candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_L_ANKLE_PITCH")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -2834,16 +2834,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -2852,35 +2852,35 @@
 		(comp
 			(ref "AX_L_ANKLE_ROLL")
 			(value "ROBOTIS XM430-W350-R evaluation candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R evaluation candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_L_ANKLE_ROLL")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -2904,16 +2904,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -2922,35 +2922,35 @@
 		(comp
 			(ref "AX_L_HIP_PITCH")
 			(value "ROBOTIS XH540-W270-R evaluation candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_L_HIP_PITCH")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -2974,16 +2974,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -2992,35 +2992,35 @@
 		(comp
 			(ref "AX_L_HIP_ROLL")
 			(value "ROBOTIS XH540-W270-R evaluation candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_L_HIP_ROLL")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -3044,16 +3044,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -3062,35 +3062,35 @@
 		(comp
 			(ref "AX_L_HIP_YAW")
 			(value "ROBOTIS XH540-W270-R evaluation candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_L_HIP_YAW")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -3114,16 +3114,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -3132,35 +3132,35 @@
 		(comp
 			(ref "AX_L_KNEE_PITCH")
 			(value "ROBOTIS XH540-W270-R evaluation candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_L_KNEE_PITCH")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -3184,16 +3184,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -3344,35 +3344,35 @@
 		(comp
 			(ref "AX_R_ANKLE_PITCH")
 			(value "ROBOTIS XM430-W350-R evaluation candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R evaluation candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_R_ANKLE_PITCH")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -3396,16 +3396,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -3414,35 +3414,35 @@
 		(comp
 			(ref "AX_R_ANKLE_ROLL")
 			(value "ROBOTIS XM430-W350-R evaluation candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R evaluation candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_R_ANKLE_ROLL")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -3466,16 +3466,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -3484,35 +3484,35 @@
 		(comp
 			(ref "AX_R_HIP_PITCH")
 			(value "ROBOTIS XH540-W270-R evaluation candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_R_HIP_PITCH")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -3536,16 +3536,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -3554,35 +3554,35 @@
 		(comp
 			(ref "AX_R_HIP_ROLL")
 			(value "ROBOTIS XH540-W270-R evaluation candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_R_HIP_ROLL")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -3606,16 +3606,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -3624,35 +3624,35 @@
 		(comp
 			(ref "AX_R_HIP_YAW")
 			(value "ROBOTIS XH540-W270-R evaluation candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_R_HIP_YAW")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -3676,16 +3676,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -3694,35 +3694,35 @@
 		(comp
 			(ref "AX_R_KNEE_PITCH")
 			(value "ROBOTIS XH540-W270-R evaluation candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_R_KNEE_PITCH")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -3746,16 +3746,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -3906,35 +3906,35 @@
 		(comp
 			(ref "AX_L_ELBOW_PITCH")
 			(value "ROBOTIS XM430-W350-R candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_L_ELBOW_PITCH")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -3958,16 +3958,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -3976,35 +3976,35 @@
 		(comp
 			(ref "AX_L_SHOULDER_PITCH")
 			(value "ROBOTIS XM540-W270-R candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM540-W270-R candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_L_SHOULDER_PITCH")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -4028,16 +4028,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -4046,35 +4046,35 @@
 		(comp
 			(ref "AX_L_SHOULDER_ROLL")
 			(value "ROBOTIS XM430-W350-R candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_L_SHOULDER_ROLL")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -4098,16 +4098,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -4258,35 +4258,35 @@
 		(comp
 			(ref "AX_R_ELBOW_PITCH")
 			(value "ROBOTIS XM430-W350-R candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_R_ELBOW_PITCH")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -4310,16 +4310,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -4328,35 +4328,35 @@
 		(comp
 			(ref "AX_R_SHOULDER_PITCH")
 			(value "ROBOTIS XM540-W270-R candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM540-W270-R candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_R_SHOULDER_PITCH")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -4380,16 +4380,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -4398,35 +4398,35 @@
 		(comp
 			(ref "AX_R_SHOULDER_ROLL")
 			(value "ROBOTIS XM430-W350-R candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_R_SHOULDER_ROLL")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -4450,16 +4450,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -4610,35 +4610,35 @@
 		(comp
 			(ref "AX_WAIST_YAW")
 			(value "ROBOTIS XM540-W270-R candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM540-W270-R candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_WAIST_YAW")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -4662,16 +4662,16 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DN")
+							(num "4")
 						)
 						(pin
-							(num "LOG-DP")
+							(num "3")
 						)
 					)
 				)
@@ -4822,35 +4822,35 @@
 		(comp
 			(ref "AX_L_GRIPPER")
 			(value "ROBOTIS XC330-class compact candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XC330-class compact candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_L_GRIPPER")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -4874,13 +4874,13 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DATA")
+							(num "3")
 						)
 					)
 				)
@@ -4889,35 +4889,35 @@
 		(comp
 			(ref "AX_L_WRIST_ROTATION")
 			(value "ROBOTIS XC330-T288-T candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XC330-T288-T candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_L_WRIST_ROTATION")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -4941,13 +4941,13 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DATA")
+							(num "3")
 						)
 					)
 				)
@@ -5095,35 +5095,35 @@
 		(comp
 			(ref "AX_R_GRIPPER")
 			(value "ROBOTIS XC330-class compact candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XC330-class compact candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_R_GRIPPER")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -5147,13 +5147,13 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DATA")
+							(num "3")
 						)
 					)
 				)
@@ -5162,35 +5162,35 @@
 		(comp
 			(ref "AX_R_WRIST_ROTATION")
 			(value "ROBOTIS XC330-T288-T candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XC330-T288-T candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_R_WRIST_ROTATION")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -5214,13 +5214,13 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DATA")
+							(num "3")
 						)
 					)
 				)
@@ -5368,35 +5368,35 @@
 		(comp
 			(ref "AX_HEAD_PAN")
 			(value "ROBOTIS XC330-class compact X-series candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XC330-class compact X-series candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_HEAD_PAN")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -5420,13 +5420,13 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DATA")
+							(num "3")
 						)
 					)
 				)
@@ -5435,35 +5435,35 @@
 		(comp
 			(ref "AX_HEAD_TILT")
 			(value "ROBOTIS XC330-class compact X-series candidate")
-			(datasheet "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(datasheet "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			(fields
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XC330-class compact X-series candidate")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AX_HEAD_TILT")
-				(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+				(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 			)
 			(property
 				(name "Status")
-				(value "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+				(value "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 			)
 			(property
 				(name "Evidence")
-				(value "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+				(value "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 			)
 			(property
 				(name "Display")
@@ -5487,13 +5487,13 @@
 					(name "A")
 					(pins
 						(pin
-							(num "LOG-RET")
+							(num "1")
 						)
 						(pin
-							(num "LOG-PWR")
+							(num "2")
 						)
 						(pin
-							(num "LOG-DATA")
+							(num "3")
 						)
 					)
 				)
@@ -5831,8 +5831,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_HEAD_PAN")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 			(fields
 				(field
 					(name "Reference") "AX_HEAD_PAN")
@@ -5842,30 +5842,30 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XC330-class compact X-series candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DATA")
-					(name "TTL_HALF-DUPLEX_DATA")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "3")
+					(name "DATA")
 					(type "passive")
 				)
 			)
@@ -5873,8 +5873,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_HEAD_TILT")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 			(fields
 				(field
 					(name "Reference") "AX_HEAD_TILT")
@@ -5884,30 +5884,30 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XC330-class compact X-series candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DATA")
-					(name "TTL_HALF-DUPLEX_DATA")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "3")
+					(name "DATA")
 					(type "passive")
 				)
 			)
@@ -5915,8 +5915,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_L_ANKLE_PITCH")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 			(fields
 				(field
 					(name "Reference") "AX_L_ANKLE_PITCH")
@@ -5926,35 +5926,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R evaluation candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -5962,8 +5962,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_L_ANKLE_ROLL")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 			(fields
 				(field
 					(name "Reference") "AX_L_ANKLE_ROLL")
@@ -5973,35 +5973,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R evaluation candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6009,8 +6009,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_L_ELBOW_PITCH")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 			(fields
 				(field
 					(name "Reference") "AX_L_ELBOW_PITCH")
@@ -6020,35 +6020,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6056,8 +6056,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_L_GRIPPER")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 			(fields
 				(field
 					(name "Reference") "AX_L_GRIPPER")
@@ -6067,30 +6067,30 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XC330-class compact candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DATA")
-					(name "TTL_HALF-DUPLEX_DATA")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "3")
+					(name "DATA")
 					(type "passive")
 				)
 			)
@@ -6098,8 +6098,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_L_HIP_PITCH")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 			(fields
 				(field
 					(name "Reference") "AX_L_HIP_PITCH")
@@ -6109,35 +6109,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6145,8 +6145,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_L_HIP_ROLL")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 			(fields
 				(field
 					(name "Reference") "AX_L_HIP_ROLL")
@@ -6156,35 +6156,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6192,8 +6192,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_L_HIP_YAW")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 			(fields
 				(field
 					(name "Reference") "AX_L_HIP_YAW")
@@ -6203,35 +6203,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6239,8 +6239,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_L_KNEE_PITCH")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 			(fields
 				(field
 					(name "Reference") "AX_L_KNEE_PITCH")
@@ -6250,35 +6250,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6286,8 +6286,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_L_SHOULDER_PITCH")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/")
 			(fields
 				(field
 					(name "Reference") "AX_L_SHOULDER_PITCH")
@@ -6297,35 +6297,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM540-W270-R candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6333,8 +6333,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_L_SHOULDER_ROLL")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 			(fields
 				(field
 					(name "Reference") "AX_L_SHOULDER_ROLL")
@@ -6344,35 +6344,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6380,8 +6380,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_L_WRIST_ROTATION")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 			(fields
 				(field
 					(name "Reference") "AX_L_WRIST_ROTATION")
@@ -6391,30 +6391,30 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XC330-T288-T candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DATA")
-					(name "TTL_HALF-DUPLEX_DATA")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "3")
+					(name "DATA")
 					(type "passive")
 				)
 			)
@@ -6422,8 +6422,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_R_ANKLE_PITCH")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 			(fields
 				(field
 					(name "Reference") "AX_R_ANKLE_PITCH")
@@ -6433,35 +6433,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R evaluation candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6469,8 +6469,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_R_ANKLE_ROLL")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 			(fields
 				(field
 					(name "Reference") "AX_R_ANKLE_ROLL")
@@ -6480,35 +6480,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R evaluation candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6516,8 +6516,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_R_ELBOW_PITCH")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 			(fields
 				(field
 					(name "Reference") "AX_R_ELBOW_PITCH")
@@ -6527,35 +6527,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6563,8 +6563,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_R_GRIPPER")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 			(fields
 				(field
 					(name "Reference") "AX_R_GRIPPER")
@@ -6574,30 +6574,30 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XC330-class compact candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DATA")
-					(name "TTL_HALF-DUPLEX_DATA")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "3")
+					(name "DATA")
 					(type "passive")
 				)
 			)
@@ -6605,8 +6605,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_R_HIP_PITCH")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 			(fields
 				(field
 					(name "Reference") "AX_R_HIP_PITCH")
@@ -6616,35 +6616,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6652,8 +6652,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_R_HIP_ROLL")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 			(fields
 				(field
 					(name "Reference") "AX_R_HIP_ROLL")
@@ -6663,35 +6663,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6699,8 +6699,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_R_HIP_YAW")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 			(fields
 				(field
 					(name "Reference") "AX_R_HIP_YAW")
@@ -6710,35 +6710,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6746,8 +6746,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_R_KNEE_PITCH")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 			(fields
 				(field
 					(name "Reference") "AX_R_KNEE_PITCH")
@@ -6757,35 +6757,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XH540-W270-R evaluation candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6793,8 +6793,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_R_SHOULDER_PITCH")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/")
 			(fields
 				(field
 					(name "Reference") "AX_R_SHOULDER_PITCH")
@@ -6804,35 +6804,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM540-W270-R candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6840,8 +6840,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_R_SHOULDER_ROLL")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 			(fields
 				(field
 					(name "Reference") "AX_R_SHOULDER_ROLL")
@@ -6851,35 +6851,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM430-W350-R candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -6887,8 +6887,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_R_WRIST_ROTATION")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 			(fields
 				(field
 					(name "Reference") "AX_R_WRIST_ROTATION")
@@ -6898,30 +6898,30 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XC330-T288-T candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DATA")
-					(name "TTL_HALF-DUPLEX_DATA")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "3")
+					(name "DATA")
 					(type "passive")
 				)
 			)
@@ -6929,8 +6929,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "AX_WAIST_YAW")
-			(description "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
-			(docs "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+			(description "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+			(docs "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/")
 			(fields
 				(field
 					(name "Reference") "AX_WAIST_YAW")
@@ -6940,35 +6940,35 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/")
+					(name "Datasheet") "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/")
 				(field
-					(name "Description") "Axis identity and protocol are allocated. Exact order code, actuator ID, physical connector pins, cable, branch current/protection and installed thermal/communication behavior remain selection and test work.")
+					(name "Description") "Axis identity, protocol and manufacturer actuator-side pins are allocated. Exact order code, actuator ID, cable assembly, controller-side connector, branch current/protection and installed thermal/communication behavior remain selection and test work.")
 				(field
-					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
+					(name "Status") "ACTUATOR-SIDE PINOUT VERIFIED - HARNESS AND CONTROLLER SIDE SELECTION REQUIRED")
 				(field
-					(name "Evidence") "Official ROBOTIS e-Manual interface family checked 2026-08-14; no physical robot pin map released.")
+					(name "Evidence") "Current official ROBOTIS Docs checked 2026-08-14: actuator-side 1=GND, 2=VDD and 3=DATA (TTL) or 3=DATA+/4=DATA- (RS-485).")
 				(field
 					(name "Display") "ROBOTIS XM540-W270-R candidate")
 			)
 			(pins
 				(pin
-					(num "LOG-DN")
-					(name "RS-485_DATA-")
+					(num "1")
+					(name "GND")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-DP")
-					(name "RS-485_DATA+")
+					(num "2")
+					(name "VDD")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-PWR")
-					(name "BRANCH_VDD")
+					(num "3")
+					(name "DATA+")
 					(type "passive")
 				)
 				(pin
-					(num "LOG-RET")
-					(name "BRANCH_RETURN")
+					(num "4")
+					(name "DATA-")
 					(type "passive")
 				)
 			)
@@ -9769,20 +9769,20 @@
 			(class "Default")
 			(node
 				(ref "AX_L_ELBOW_PITCH")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_SHOULDER_PITCH")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_SHOULDER_ROLL")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
@@ -9804,20 +9804,20 @@
 			(class "Default")
 			(node
 				(ref "AX_L_ELBOW_PITCH")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_SHOULDER_PITCH")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_SHOULDER_ROLL")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
@@ -9839,20 +9839,20 @@
 			(class "Default")
 			(node
 				(ref "AX_L_ELBOW_PITCH")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_SHOULDER_PITCH")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_SHOULDER_ROLL")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
@@ -9880,20 +9880,20 @@
 			(class "Default")
 			(node
 				(ref "AX_L_ELBOW_PITCH")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_SHOULDER_PITCH")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_SHOULDER_ROLL")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
@@ -9909,38 +9909,38 @@
 			(class "Default")
 			(node
 				(ref "AX_L_ANKLE_PITCH")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_ANKLE_ROLL")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_HIP_PITCH")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_HIP_ROLL")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_HIP_YAW")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_KNEE_PITCH")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
@@ -9962,38 +9962,38 @@
 			(class "Default")
 			(node
 				(ref "AX_L_ANKLE_PITCH")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_ANKLE_ROLL")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_HIP_PITCH")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_HIP_ROLL")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_HIP_YAW")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_KNEE_PITCH")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
@@ -10015,38 +10015,38 @@
 			(class "Default")
 			(node
 				(ref "AX_L_ANKLE_PITCH")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_ANKLE_ROLL")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_HIP_PITCH")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_HIP_ROLL")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_HIP_YAW")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_KNEE_PITCH")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
@@ -10074,38 +10074,38 @@
 			(class "Default")
 			(node
 				(ref "AX_L_ANKLE_PITCH")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_ANKLE_ROLL")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_HIP_PITCH")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_HIP_ROLL")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_HIP_YAW")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_KNEE_PITCH")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
@@ -10121,20 +10121,20 @@
 			(class "Default")
 			(node
 				(ref "AX_R_ELBOW_PITCH")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_SHOULDER_PITCH")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_SHOULDER_ROLL")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
@@ -10156,20 +10156,20 @@
 			(class "Default")
 			(node
 				(ref "AX_R_ELBOW_PITCH")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_SHOULDER_PITCH")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_SHOULDER_ROLL")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
@@ -10191,20 +10191,20 @@
 			(class "Default")
 			(node
 				(ref "AX_R_ELBOW_PITCH")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_SHOULDER_PITCH")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_SHOULDER_ROLL")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
@@ -10232,20 +10232,20 @@
 			(class "Default")
 			(node
 				(ref "AX_R_ELBOW_PITCH")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_SHOULDER_PITCH")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_SHOULDER_ROLL")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
@@ -10261,38 +10261,38 @@
 			(class "Default")
 			(node
 				(ref "AX_R_ANKLE_PITCH")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_ANKLE_ROLL")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_HIP_PITCH")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_HIP_ROLL")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_HIP_YAW")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_KNEE_PITCH")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
@@ -10314,38 +10314,38 @@
 			(class "Default")
 			(node
 				(ref "AX_R_ANKLE_PITCH")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_ANKLE_ROLL")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_HIP_PITCH")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_HIP_ROLL")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_HIP_YAW")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_KNEE_PITCH")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
@@ -10367,38 +10367,38 @@
 			(class "Default")
 			(node
 				(ref "AX_R_ANKLE_PITCH")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_ANKLE_ROLL")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_HIP_PITCH")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_HIP_ROLL")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_HIP_YAW")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_KNEE_PITCH")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
@@ -10426,38 +10426,38 @@
 			(class "Default")
 			(node
 				(ref "AX_R_ANKLE_PITCH")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_ANKLE_ROLL")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_HIP_PITCH")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_HIP_ROLL")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_HIP_YAW")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_KNEE_PITCH")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
@@ -10473,8 +10473,8 @@
 			(class "Default")
 			(node
 				(ref "AX_WAIST_YAW")
-				(pin "LOG-DN")
-				(pinfunction "RS-485_DATA-_LOG-DN")
+				(pin "4")
+				(pinfunction "DATA-_4")
 				(pintype "passive")
 			)
 			(node
@@ -10496,8 +10496,8 @@
 			(class "Default")
 			(node
 				(ref "AX_WAIST_YAW")
-				(pin "LOG-DP")
-				(pinfunction "RS-485_DATA+_LOG-DP")
+				(pin "3")
+				(pinfunction "DATA+_3")
 				(pintype "passive")
 			)
 			(node
@@ -10519,8 +10519,8 @@
 			(class "Default")
 			(node
 				(ref "AX_WAIST_YAW")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
@@ -10548,8 +10548,8 @@
 			(class "Default")
 			(node
 				(ref "AX_WAIST_YAW")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
@@ -10617,14 +10617,14 @@
 			(class "Default")
 			(node
 				(ref "AX_HEAD_PAN")
-				(pin "LOG-DATA")
-				(pinfunction "TTL_HALF-DUPLEX_DATA_LOG-DATA")
+				(pin "3")
+				(pinfunction "DATA_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_HEAD_TILT")
-				(pin "LOG-DATA")
-				(pinfunction "TTL_HALF-DUPLEX_DATA_LOG-DATA")
+				(pin "3")
+				(pinfunction "DATA_3")
 				(pintype "passive")
 			)
 			(node
@@ -10646,14 +10646,14 @@
 			(class "Default")
 			(node
 				(ref "AX_HEAD_PAN")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_HEAD_TILT")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
@@ -10681,14 +10681,14 @@
 			(class "Default")
 			(node
 				(ref "AX_HEAD_PAN")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_HEAD_TILT")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
@@ -10704,14 +10704,14 @@
 			(class "Default")
 			(node
 				(ref "AX_L_GRIPPER")
-				(pin "LOG-DATA")
-				(pinfunction "TTL_HALF-DUPLEX_DATA_LOG-DATA")
+				(pin "3")
+				(pinfunction "DATA_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_WRIST_ROTATION")
-				(pin "LOG-DATA")
-				(pinfunction "TTL_HALF-DUPLEX_DATA_LOG-DATA")
+				(pin "3")
+				(pinfunction "DATA_3")
 				(pintype "passive")
 			)
 			(node
@@ -10733,14 +10733,14 @@
 			(class "Default")
 			(node
 				(ref "AX_L_GRIPPER")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_WRIST_ROTATION")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
@@ -10768,14 +10768,14 @@
 			(class "Default")
 			(node
 				(ref "AX_L_GRIPPER")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_L_WRIST_ROTATION")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
@@ -10791,14 +10791,14 @@
 			(class "Default")
 			(node
 				(ref "AX_R_GRIPPER")
-				(pin "LOG-DATA")
-				(pinfunction "TTL_HALF-DUPLEX_DATA_LOG-DATA")
+				(pin "3")
+				(pinfunction "DATA_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_WRIST_ROTATION")
-				(pin "LOG-DATA")
-				(pinfunction "TTL_HALF-DUPLEX_DATA_LOG-DATA")
+				(pin "3")
+				(pinfunction "DATA_3")
 				(pintype "passive")
 			)
 			(node
@@ -10820,14 +10820,14 @@
 			(class "Default")
 			(node
 				(ref "AX_R_GRIPPER")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_WRIST_ROTATION")
-				(pin "LOG-RET")
-				(pinfunction "BRANCH_RETURN_LOG-RET")
+				(pin "1")
+				(pinfunction "GND_1")
 				(pintype "passive")
 			)
 			(node
@@ -10855,14 +10855,14 @@
 			(class "Default")
 			(node
 				(ref "AX_R_GRIPPER")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "AX_R_WRIST_ROTATION")
-				(pin "LOG-PWR")
-				(pinfunction "BRANCH_VDD_LOG-PWR")
+				(pin "2")
+				(pinfunction "VDD_2")
 				(pintype "passive")
 			)
 			(node

@@ -90,7 +90,7 @@ def main() -> int:
     require(all("SELECTION REQUIRED" in row["acceptance_requirement"] and row["result"] == "NOT EXECUTED" for row in inspections), "inspection register overclaims release/evidence")
 
     binding = json.loads((PKG / "source-binding.json").read_text(encoding="utf-8"))
-    require(binding["physical_source_part_count"] == 66 and binding["excluded_reference_volume_count"] == 11, "source binding counts drift")
+    require(binding["physical_source_part_count"] == 66 and binding["excluded_reference_volume_count"] == 12, "source binding counts drift")
     require(binding["source_generator_sha256"] == sha(ROOT / binding["source_generator"]), "fabrication source hash drift")
     require(binding["manufacturing_file_generator_sha256"] == sha(ROOT / binding["manufacturing_file_generator"]), "manufacturing generator hash drift")
 
@@ -99,7 +99,7 @@ def main() -> int:
         "physical_part_count": 66, "individual_step_count": 66,
         "individual_svg_drawing_view_count": 66, "planar_profile_dxf_count": 35,
         "printed_cover_stl_count": 26, "inspection_characteristic_count": 330,
-        "module_count": 12, "reference_route_volumes_excluded": 11,
+        "module_count": 12, "reference_route_volumes_excluded": 12,
     }
     require(all(status[key] == value for key, value in expected_counts.items()), "manufacturing status counts drift")
     false_keys = (

@@ -312,7 +312,7 @@ def main() -> int:
         "manufacturing_file_generator": "tools/generate_hr30_manufacturing_files_p01.py",
         "manufacturing_file_generator_sha256": sha256(Path(__file__)),
         "physical_source_part_count": 66,
-        "excluded_reference_volume_count": 11,
+        "excluded_reference_volume_count": 12,
         "warning": WARNING,
     }
     (OUT / "source-binding.json").write_text(json.dumps(source_binding, indent=2) + "\n", encoding="utf-8")
@@ -325,7 +325,7 @@ def main() -> int:
         "printed_cover_stl_count": stl_count,
         "inspection_characteristic_count": len(inspection_rows),
         "module_count": len(module_counts),
-        "reference_route_volumes_excluded": 11,
+        "reference_route_volumes_excluded": 12,
         "editable_source_present": True,
         "drawings_released": False,
         "materials_selected": False,

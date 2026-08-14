@@ -1,8 +1,9 @@
 """Generate the protocol-compatible HR-30 P0.1 actuator-bus architecture.
 
 This is a whole-body allocation artifact.  It binds all 25 candidate axes to
-five RS-485 and three TTL half-duplex segments without selecting controller
-hardware, connector mating parts, pin assignments, protection or harnesses.
+five RS-485 and three TTL half-duplex segments.  Current official ROBOTIS
+manuals establish the actuator-side connector pin order and listed JST parts;
+controller hardware, branch protection and installed harness construction stay open.
 """
 
 from __future__ import annotations
@@ -36,10 +37,10 @@ BUS_AXES = {
 
 
 SOURCES = {
-    "XH540": "https://emanual.robotis.com/docs/en/dxl/x/xh540-w270/",
-    "XM540": "https://emanual.robotis.com/docs/en/dxl/x/xm540-w270/",
-    "XM430": "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/",
-    "XC330": "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/",
+    "XH540": "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/",
+    "XM540": "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/",
+    "XM430": "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/",
+    "XC330": "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/",
 }
 
 
@@ -104,11 +105,11 @@ def generate_into_package(refresh: bool = True) -> None:
             "protocol": protocol,
             "axis_count": len(axes),
             "axis_ids": " | ".join(axes),
-            "physical_layer_candidate": "isolated RS-485 transceiver" if protocol.startswith("RS-485") else "protected 3.3 V TTL interface compatible with ROBOTIS TTL input",
+            "physical_layer_candidate": "isolated RS-485 transceiver" if protocol.startswith("RS-485") else "protected TTL half-duplex interface matched to selected controller",
             "actuator_connector_contacts": 4 if protocol.startswith("RS-485") else 3,
             "controller_interface": "SELECTION REQUIRED",
             "termination_bias_level_shift": "SELECTION REQUIRED; verify against selected controller, topology and current manufacturer documentation",
-            "power_data_boundary": "DATA-ONLY SEGMENT INTENT; do not backfeed independently protected actuator branches through daisy-chain VDD; exact breakout/harness SELECTION REQUIRED",
+            "power_data_boundary": "ONE PROTECTED POWER BRANCH PER SEGMENT; listed axes share only that segment VDD; no cross-segment VDD connection; exact breakout/harness SELECTION REQUIRED",
             "status": "P0.1 PROTOCOL-COMPATIBLE ALLOCATION; PHYSICAL IMPLEMENTATION UNVALIDATED",
             "authority": "NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY",
         })
@@ -132,19 +133,29 @@ def generate_into_package(refresh: bool = True) -> None:
                 "protocol_compatibility": "MATCH" if protocol == expected_protocol else "MISMATCH",
                 "actuator_connector_contacts": 3 if actuator_family == "XC330" else 4,
                 "official_interface_source": SOURCES[actuator_family],
+                "official_interface_accessed_date": ACCESSED,
                 "actuator_id": "SELECTION REQUIRED",
-                "connector_pin_mapping": "SELECTION REQUIRED; do not infer from family name or presentation diagrams",
-                "branch_power_injection": "SELECTION REQUIRED; individually protected branch must not be paralleled through data daisy harness",
+                "connector_pin_mapping": (
+                    "ACTUATOR SIDE VERIFIED: 1=GND; 2=VDD; 3=DATA"
+                    if actuator_family == "XC330"
+                    else "ACTUATOR SIDE VERIFIED: 1=GND; 2=VDD; 3=DATA+; 4=DATA-"
+                ),
+                "actuator_side_housing": "JST EHR-03" if actuator_family == "XC330" else "JST EHR-04",
+                "actuator_pcb_header": "JST B3B-EH-A" if actuator_family == "XC330" else "JST B4B-EH-A",
+                "actuator_side_crimp_terminal": "JST SEH-001T-P0.6",
+                "manufacturer_published_dynamixel_wire_gauge": "21 AWG",
+                "controller_side_connector_and_pin_mapping": "SELECTION REQUIRED",
+                "branch_power_injection": "ONE SEPARATELY PROTECTED SEGMENT BRANCH; listed axes share this bus VDD; data daisy must not join VDD to another segment",
                 "authority": "NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY",
             })
     write_csv(OUT / "actuator-bus-axis-binding.csv", binding)
 
     sources = []
     for name, title, scope in (
-        ("XH540", "DYNAMIXEL XH540-W270/W150 e-Manual", "-R/-T physical variants and 4-contact RS-485 versus 3-contact TTL connector distinction"),
-        ("XM540", "DYNAMIXEL XM540-W270 e-Manual", "-R/-T physical variants and connector/interface distinction"),
-        ("XM430", "DYNAMIXEL XM430-W350 e-Manual", "-R/-T physical variants and connector/interface distinction"),
-        ("XC330", "DYNAMIXEL XC330-M288/M181 e-Manual", "TTL half-duplex physical connection and three-contact connector pin categories"),
+        ("XH540", "DYNAMIXEL XH540-W270/W150 e-Manual", "-R RS-485 actuator side: pin 1 GND, 2 VDD, 3 DATA+, 4 DATA-; JST EHR-04/B4B-EH-A/SEH-001T-P0.6; published DYNAMIXEL wire gauge 21 AWG"),
+        ("XM540", "DYNAMIXEL XM540-W270 e-Manual", "-R RS-485 actuator side: pin 1 GND, 2 VDD, 3 DATA+, 4 DATA-; JST EHR-04/B4B-EH-A/SEH-001T-P0.6; published DYNAMIXEL wire gauge 21 AWG"),
+        ("XM430", "DYNAMIXEL XM430-W350 e-Manual", "-R RS-485 actuator side: pin 1 GND, 2 VDD, 3 DATA+, 4 DATA-; JST EHR-04/B4B-EH-A/SEH-001T-P0.6; published DYNAMIXEL wire gauge 21 AWG"),
+        ("XC330", "DYNAMIXEL XC330-T288 Docs", "TTL actuator side: pin 1 GND, 2 VDD, 3 DATA; JST EHR-03/B3B-EH-A/SEH-001T-P0.6; published DYNAMIXEL wire gauge 21 AWG"),
     ):
         sources.append({
             "manufacturer": "ROBOTIS",
@@ -154,7 +165,7 @@ def generate_into_package(refresh: bool = True) -> None:
             "accessed_date": ACCESSED,
             "published_revision_or_date": "NOT STATED ON CURRENT WEB MANUAL - UNRESOLVED",
             "verified_scope": scope,
-            "not_verified": "exact order code, mating connector, controller interface, pin-level robot wiring, termination/bias, protection and installed EMC",
+            "not_verified": "exact actuator procurement order code, assembled cable product, controller-side connector/interface, termination/bias, protection, conductor application sizing and installed EMC",
         })
     write_csv(OUT / "actuator-bus-source-register.csv", sources)
 
@@ -176,9 +187,9 @@ The 25-axis candidate population is not one electrical protocol. The nineteen se
 
 ## Physical implementation boundary
 
-This allocation does **not** select eight controller interfaces or release wiring. Exact controller boards/transceivers, isolation, voltage-domain compatibility, direction control, pins, mating connectors, termination, bias, protection, shield/return treatment, grounding, cable type, routing, actuator IDs, bus timing and failure behavior remain **SELECTION REQUIRED**.
+Current official ROBOTIS manuals now close only the actuator-side pin order and listed connector piece parts: RS-485 pin 1 GND, 2 VDD, 3 DATA+, 4 DATA- using the EHR-04/B4B-EH-A family; XC330 TTL pin 1 GND, 2 VDD, 3 DATA using EHR-03/B3B-EH-A; both list SEH-001T-P0.6 contacts and 21 AWG DYNAMIXEL wire. This allocation does **not** select eight controller interfaces or release wiring. Exact controller boards/transceivers, isolation, voltage-domain compatibility, direction control, controller pins/connectors, assembled cables, termination, bias, protection, shield/return treatment, grounding, application conductor sizing, routing, actuator IDs, bus timing and failure behavior remain **SELECTION REQUIRED**.
 
-The intended harness separates communication from branch-power distribution. A data daisy chain must not connect actuator VDD between independently protected power branches. An exact connector/breakout design and manufacturer-supported implementation must prove that boundary before connection.
+The P0.1 candidate uses one separately protected power branch per bus segment, not 25 independently protected actuator feeds. Axes listed on one bus may share that segment VDD; no cable or breakout may connect VDD between different protected segments. Exact branch analysis, connector/breakout design and physical no-backfeed verification remain required before connection.
 
 ## Relationship to KiCad
 
@@ -199,6 +210,7 @@ The protocol classification is taken from current official ROBOTIS e-Manual page
         "rs485_actuator_axis_count": 19,
         "ttl_actuator_axis_count": 6,
         "protocol_compatibility_screen_complete": True,
+        "actuator_side_connector_pinout_verified": True,
         "native_hr30_kicad_reconciled": False,
         "actuator_bus_interface_selected": False,
         "actuator_bus_connector_harness_validated": False,
@@ -210,7 +222,7 @@ The protocol classification is taken from current official ROBOTIS e-Manual page
     holds = [row for row in holds if row["hold_id"] != "HR30-P01-H11"]
     holds.append({
         "hold_id": "HR30-P01-H11",
-        "unresolved_item": "The 25 axes are protocol-matched to five RS-485 and three TTL segments, but the HR-30-only native KiCad design, exact controller interfaces and pins, connector/breakout hardware, protection, termination/bias/level shifting, data-only harness isolation, EMC, timing/latency and physical fault tests remain open.",
+        "unresolved_item": "The 25 axes are protocol-matched to five RS-485 and three TTL segments, and current ROBOTIS manuals now bind the actuator-side JST pin order. Exact controller interfaces and pins, assembled cable/breakout hardware, protection, application conductor sizing, termination/bias/level shifting, data-only harness isolation, EMC, timing/latency and physical fault tests remain open.",
         "state": "OPEN",
         "release_effect": "BLOCKS CONNECTION, POWERED TEST, MOTION AND ENERGIZATION",
     })
@@ -223,7 +235,7 @@ The protocol classification is taken from current official ROBOTIS e-Manual page
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
     marker = "<section><h2>System artifacts</h2>"
-    section = f'''{start}<section id="actuator-buses"><h2>Every actuator now has a protocol-compatible bus</h2><div class="grid"><article class="card pass"><h3>19 RS-485 axes</h3><p>Left leg, right leg, left proximal arm, right proximal arm, and waist are five independently identified RS-485 segments.</p></article><article class="card pass"><h3>6 TTL axes</h3><p>Left wrist/gripper, right wrist/gripper, and head pan/tilt are three protected TTL half-duplex segments.</p></article><article class="card hold"><h3>25 of 25 axes bound</h3><p>The allocation is complete and protocol-compatible. Actuator IDs, interface devices, pins, protection, termination, and harnesses remain selection work.</p></article><article class="card hold"><h3>KiCad remains open</h3><p>The historical mixed project is not an HR-30 whole-body wiring release. A native HR-30-only eight-segment schematic must follow this allocation.</p></article></div><div class="panel"><p><a href="actuator-bus-topology.csv">Eight-segment topology</a> · <a href="actuator-bus-axis-binding.csv">25-axis binding</a> · <a href="actuator-bus-source-register.csv">Official source register</a> · <a href="whole-body-electrical-integration.md">Electrical integration boundary</a></p></div></section>{end}'''
+    section = f'''{start}<section id="actuator-buses"><h2>Every actuator now has a protocol-compatible bus</h2><div class="grid"><article class="card pass"><h3>19 RS-485 axes</h3><p>Left leg, right leg, left proximal arm, right proximal arm, and waist are five independently identified RS-485 segments.</p></article><article class="card pass"><h3>6 TTL axes</h3><p>Left wrist/gripper, right wrist/gripper, and head pan/tilt are three protected TTL half-duplex segments.</p></article><article class="card pass"><h3>Actuator-side pins verified</h3><p>Current ROBOTIS manuals bind the JST pin order, housings, headers, crimp contact and published 21 AWG DYNAMIXEL wire.</p></article><article class="card hold"><h3>Harness remains preliminary</h3><p>Controller pins, assembled cables, branch protection, sizing, termination and physical tests remain selection work.</p></article></div><div class="panel"><p><a href="actuator-bus-topology.csv">Eight-segment topology</a> · <a href="actuator-bus-axis-binding.csv">25-axis binding</a> · <a href="actuator-bus-source-register.csv">Official source register</a> · <a href="whole-body-electrical-integration.md">Electrical integration boundary</a></p></div></section>{end}'''
     if marker not in page:
         raise SystemExit("system artifact marker missing from web guide")
     page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")

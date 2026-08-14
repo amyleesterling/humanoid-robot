@@ -448,7 +448,7 @@ The former empty torso, pelvis, head and foot reservations now contain {len(item
             row["manufacturer"] = "Waveshare"
             row["candidate"] = "4inch HDMI LCD (H), SKU 16340, rotated landscape; installed envelope/mass modeled"
         elif row["item_id"] == "HR30-BOM-030":
-            row["candidate"] = "11 located route-derived cable bundles with connector mass allowances; exact conductors/connectors/fill/EMC/current remain open"
+            row["candidate"] = "12 located route-derived cable bundles with connector mass allowances; exact conductors/connectors/fill/EMC/current remain open"
         elif row["item_id"] == "HR30-BOM-031":
             row["candidate"] = "Pi Active Cooler plus head tach fan; installed envelopes/masses modeled; torso duct/fan selection open"
         elif row["item_id"] == "HR30-BOM-032":
@@ -475,7 +475,7 @@ The former empty torso, pelvis, head and foot reservations now contain {len(item
         if row["hold_id"] == "HR30-P01-H04":
             row["unresolved_item"] = ("The whole-body CAD now contains a 177.6 Wh pack evaluation envelope, removable rear-torso cassette, tether inlet, dual-interruption, PDU and protection/telemetry reservation. Exact battery configuration, BMS/PCM, connector, current/thermal capability, containment, retention, charger, regeneration handling, protection values, grounding and pinout remain unselected and unvalidated.")
         elif row["hold_id"] == "HR30-P01-H07":
-            row["unresolved_item"] = ("Eleven route-derived installed harness bundles now have planning lengths, mass allowances and connector boundaries, but exact conductors, fill, flex life, service loops, connectors, strain relief, shielding, current, EMC and thermal evidence remain open.")
+            row["unresolved_item"] = ("Twelve route-derived installed harness bundles now have planning lengths, mass allowances and connector boundaries, including separate neck power and data paths. Exact conductors, fill, flex life, service loops, connectors, strain relief, shielding, current, EMC and thermal evidence remain open.")
     write_csv(holds_path, holds)
 
 

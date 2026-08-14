@@ -211,6 +211,7 @@ def build() -> tuple[list[Part], list[dict], list[dict]]:
     add_route("HN01_TORSO_POWER_SPINE", "HN01", "ACTUATOR POWER", (18, 18, 405), (18, 18, 575), 14, 70, "opposite torso rail from data; crossing only at 90 degrees", route_power)
     add_route("HN01_TORSO_DATA_SPINE", "HN01", "DATA/LOW VOLTAGE", (-18, -18, 405), (-18, -18, 575), 10, 50, "opposite torso rail from actuator power", route_data)
     add_route("HN01_HEAD_BRANCH", "HN01", "DATA/LOW VOLTAGE", (-18, -18, 575), (0, -12, 700), 10, 50, "no shared conduit with actuator power", route_data)
+    add_route("HN01_HEAD_POWER_BRANCH", "HN01", "ACTUATOR POWER", (18, 18, 575), (0, 12, 700), 8, 40, "opposite side of neck from head data branch; moving pan/tilt service loops required", route_power)
     for side, sign in (("L", 1.0), ("R", -1.0)):
         leg = f"L0{1 if side == 'L' else 2}"
         arm = f"A0{1 if side == 'L' else 2}"
@@ -232,7 +233,7 @@ def update_bom_and_docs(frame_mass: float, cover_mass: float) -> None:
         elif row["item_id"] == "HR30-BOM-022":
             row["candidate"] = f"P0.1 1.5 mm limb/palm/foot panels and 1.6 mm torso/pelvis/head shells; CAD density screen {cover_mass:.3f} kg; material/process/rib/retention open"
         elif row["item_id"] == "HR30-BOM-030":
-            row["candidate"] = "11 segregated power/data route corridors with controlled diameters and bend-radius requirements; cables/connectors/fill/EMC/current selection open"
+            row["candidate"] = "12 segregated power/data route corridors with controlled diameters and bend-radius requirements; cables/connectors/fill/EMC/current selection open"
     write_csv(bom_path, rows)
 
     readme_path = OUT / "README.md"
@@ -241,7 +242,7 @@ def update_bom_and_docs(frame_mass: float, cover_mass: float) -> None:
 
 ## Modular fabrication architecture
 
-P0.1 now includes a second editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable limb and palm panels, and eleven segregated harness corridors. The current mass candidate uses 1.5 mm limb/palm/foot panels and 1.6 mm torso/pelvis/head shells; ribs, print/process qualification and impact stiffness remain open. The CAD density screen is {frame_mass:.3f} kg for frame parts and {cover_mass:.3f} kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; neither they nor the historical 9.63 kg allocation establish whole-robot mass closure. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
+P0.1 now includes a second editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable limb and palm panels, and twelve segregated harness corridors. Separate neck data and actuator-power branches prevent the head actuators from borrowing the data-only corridor. The current mass candidate uses 1.5 mm limb/palm/foot panels and 1.6 mm torso/pelvis/head shells; ribs, print/process qualification and impact stiffness remain open. The CAD density screen is {frame_mass:.3f} kg for frame parts and {cover_mass:.3f} kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; neither they nor the historical 9.63 kg allocation establish whole-robot mass closure. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
 """
     readme_path.write_text(text.rstrip() + "\n", encoding="utf-8", newline="\n")
 

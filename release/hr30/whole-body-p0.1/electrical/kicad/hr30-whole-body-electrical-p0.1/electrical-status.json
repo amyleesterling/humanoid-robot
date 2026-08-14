@@ -11,6 +11,7 @@
   "erc_errors": 0,
   "erc_warnings": 0,
   "logical_connectivity_reconciled": true,
+  "actuator_side_physical_pin_mapping_reconciled": true,
   "physical_pin_mapping_reconciled": false,
   "interface_devices_selected": false,
   "protection_values_selected": false,

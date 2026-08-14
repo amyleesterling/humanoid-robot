@@ -4,7 +4,7 @@
 
 This is the native KiCad 10 whole-body architecture for the current 25-axis HR-30 candidate. It contains a root index plus twelve populated child sheets. Five RS-485 and three TTL actuator segments match the whole-body bus allocation exactly.
 
-All `LOG-*` terminal identifiers are functional ports, not physical connector or IC pin numbers. Exact devices, pins, order codes, fuse/limiter values, conductors, connectors, grounding, shield treatment, safety allocation, stopping time and physical behavior remain unresolved. The historical mixed HR-V0/HR-30 project is not incorporated as verified wiring.
+AX_* actuator terminals use current official ROBOTIS actuator-side pin numbers. All `LOG-*` terminal identifiers are functional ports, not physical connector or IC pin numbers. Controller/interface pins, exact devices, order codes, fuse/limiter values, conductors, connectors, grounding, shield treatment, safety allocation, stopping time and physical behavior remain unresolved. The historical mixed HR-V0/HR-30 project is not incorporated as verified wiring.
 
 ## Sheets
 

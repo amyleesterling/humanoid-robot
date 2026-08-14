@@ -16,9 +16,9 @@ The 25-axis candidate population is not one electrical protocol. The nineteen se
 
 ## Physical implementation boundary
 
-This allocation does **not** select eight controller interfaces or release wiring. Exact controller boards/transceivers, isolation, voltage-domain compatibility, direction control, pins, mating connectors, termination, bias, protection, shield/return treatment, grounding, cable type, routing, actuator IDs, bus timing and failure behavior remain **SELECTION REQUIRED**.
+Current official ROBOTIS manuals now close only the actuator-side pin order and listed connector piece parts: RS-485 pin 1 GND, 2 VDD, 3 DATA+, 4 DATA- using the EHR-04/B4B-EH-A family; XC330 TTL pin 1 GND, 2 VDD, 3 DATA using EHR-03/B3B-EH-A; both list SEH-001T-P0.6 contacts and 21 AWG DYNAMIXEL wire. This allocation does **not** select eight controller interfaces or release wiring. Exact controller boards/transceivers, isolation, voltage-domain compatibility, direction control, controller pins/connectors, assembled cables, termination, bias, protection, shield/return treatment, grounding, application conductor sizing, routing, actuator IDs, bus timing and failure behavior remain **SELECTION REQUIRED**.
 
-The intended harness separates communication from branch-power distribution. A data daisy chain must not connect actuator VDD between independently protected power branches. An exact connector/breakout design and manufacturer-supported implementation must prove that boundary before connection.
+The P0.1 candidate uses one separately protected power branch per bus segment, not 25 independently protected actuator feeds. Axes listed on one bus may share that segment VDD; no cable or breakout may connect VDD between different protected segments. Exact branch analysis, connector/breakout design and physical no-backfeed verification remain required before connection.
 
 ## Relationship to KiCad
 
