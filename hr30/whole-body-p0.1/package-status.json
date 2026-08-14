@@ -115,5 +115,12 @@
   "module_interface_axis_ownership_count": 25,
   "module_interface_mass_reconciliation_kg": 11.458218,
   "dimensioned_whole_body_front_side_reference_present": true,
-  "module_interface_mass_rounding_delta_kg": 2e-06
+  "module_interface_mass_rounding_delta_kg": 2e-06,
+  "module_cad_exports_present": true,
+  "module_cad_export_count": 12,
+  "module_fabrication_step_count": 12,
+  "module_integration_reference_step_count": 12,
+  "exploded_module_step_present": true,
+  "exploded_module_glb_present": true,
+  "module_cad_manufacturing_released": false
 }

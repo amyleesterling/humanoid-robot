@@ -25,6 +25,10 @@ The former empty torso, pelvis, head and foot reservations now contain 56 locate
 The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 66 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 10 catalogue belt candidates and 56 located equipment/harness/contact items. The gross identified subtotal is 10.609 kg; the explicit per-link model plus 8% integration contingency is 11.458 kg with neutral COM Z=0.371 m. This includes the onboard pack/cassette/protection reservation and leaves 0.542 kg to the 12 kg P0.1 maximum. The 10 kg lightweight stretch objective remains open by 1.458 kg. Exact protection and received masses remain open.
 
 
+## Separable module CAD
+
+The fabrication and integration-reference geometry is now exported as 12 real body modules plus an exploded whole-body STEP and interactive GLB. Each module export is derived from the same fabrication, body/joint/hand and installed-equipment sources as the integrated robot rather than from placeholder blocks. Explosion offsets are presentation transforms only. These are P0.1 separation and refinement artifacts, not released manufacturing drawings or assembly authority.
+
 ## Whole-body interface atlas
 
 The web-first interface atlas now consolidates the actual 12 build modules, all 25 owned axes, union-envelope dimensions, current mass allocation, candidate joint mount patterns, service panels, harness corridors, adjacent-module interfaces and staged assembly dependencies. It is generated from the authoritative CAD registers and links directly to the integrated STEP/GLB. It is a P0.1 interface-control candidate; released part drawings, GD&T, material/process selections, fasteners, DFM, FAI and physical validation remain open.
