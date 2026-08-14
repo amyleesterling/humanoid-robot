@@ -8,7 +8,10 @@ It is intentionally an architecture model, not a buildable machine. The STEP con
 
 The straight arm-chain arithmetic is 370 mm reach and 950 mm span: both pass hard limits, but both miss the preferred 360/900 mm targets. This is recorded as an open design correction rather than hidden.
 
-
 ## Whole-body systems completion
 
 P0.1 now also includes floating-base 25-DOF URDF and MJCF models, a 9.63 kg allocation model with neutral COM/inertia, power/thermal/compute/network/cost budgets, a whole-robot candidate BOM, two-hand functional requirements, staged standing/walking development, a modular build/electrification plan, and the OpenAI-to-deterministic-controller action boundary. These artifacts make the architecture coherent and simulatable; none converts the open selections or physical validation into work authority.
+
+## Modular fabrication architecture
+
+P0.1 now includes a second editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired limb plates, foot carriers, hollow split torso/pelvis/head shells, removable limb and palm panels, and eleven segregated harness corridors. The CAD density screen is 2.627 kg for frame parts and 0.979 kg for removable covers. These numbers are geometry/material-assumption screens only; the main 9.63 kg whole-robot allocation remains authoritative until exact parts and received masses close. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.

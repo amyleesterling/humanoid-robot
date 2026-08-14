@@ -307,8 +307,8 @@ def write_budgets_and_bom() -> None:
     bom = [
         ("HR30-BOM-001", "leg actuator", "ROBOTIS", "XH540-W270-R evaluation candidate", 12, 525),
         ("HR30-BOM-002", "waist/shoulder/elbow actuator", "ROBOTIS", "XM540-W270-R candidate", 7, 355),
-        ("HR30-BOM-003", "wrist/gripper actuator", "ROBOTIS", "XM430-W350-R candidate", 4, 250),
-        ("HR30-BOM-004", "head actuator", "ROBOTIS", "XC330-class candidate; exact model SELECTION REQUIRED", 2, 105),
+        ("HR30-BOM-003", "wrist actuator", "ROBOTIS", "XM430-W350-R candidate", 2, 250),
+        ("HR30-BOM-004", "head/gripper actuator", "ROBOTIS", "XC330-class compact candidate; exact model SELECTION REQUIRED", 4, 105),
         ("HR30-BOM-005", "main compute", "Raspberry Pi", "Raspberry Pi 5 8GB SC1112 candidate", 1, 125),
         ("HR30-BOM-006", "compute cooling", "Raspberry Pi", "Active Cooler SC1148 candidate", 1, 12),
         ("HR30-BOM-007", "compute storage", "Kingston", "SDCIT2/64GBSP candidate", 1, 55),
@@ -377,7 +377,7 @@ def write_docs(mass_summary: dict) -> None:
 
 **{WARNING}**
 
-Each wrist terminates in a visible, one-DOF, symmetric two-finger gripper: a 50 x 58 x 36 mm palm, two 18 x 44 x 46 mm broad fingers, and two replaceable 16 x 48 x 8 mm compliant-pad lands. The commanded closure axis is robot X. The palm reserves one XM430-class actuator and a symmetric coupling; the final linkage and compliance element remain selection required.
+Each wrist terminates in a visible, one-DOF, symmetric two-finger gripper: a 50 x 58 x 36 mm palm, two 18 x 44 x 46 mm broad fingers, and two replaceable 16 x 48 x 8 mm compliant-pad lands. The commanded closure axis is robot X. The palm packages one transversely mounted XC330-class compact actuator and a visible symmetric-coupler candidate; the final linkage and compliance element remain selection required.
 
 The required behaviors are **grasp**, **hold**, **present**, and **release** a lightweight foam block. P0.1 provisional limits are a 26 mm coupled stroke, 0.25 speed scale, 20 N total normal-force ceiling, 0.5 kg object-mass ceiling, and mandatory current/force/position disagreement shutdown. These are development limits, not validated capability. Narrow scissor points, trapping gaps below the guarded minimum, self-locking closure without a manual release, and any cloud-originated raw position/current command are rejected.
 
@@ -452,14 +452,15 @@ def update_web_and_status(mass_summary: dict) -> None:
     if start_marker in page and end_marker in page:
         page = page.split(start_marker, 1)[0] + page.split(end_marker, 1)[1]
     added = f'''{start_marker}<section><h2>The P0.1 engineering package is whole-body</h2><div class="grid"><article class="card pass"><h3>Floating-base dynamics</h3><p>URDF and MJCF cover all 25 commanded axes with an unanchored base and provisional masses, inertias, geometry and limits.</p></article><article class="card hold"><h3>Mass and energy</h3><p>{mass_summary['mass_kg']:.2f} kg allocation estimate, {mass_summary['com_m'][2]:.3f} m neutral COM height, 197 W operating power budget and 135 W heat-rejection budget. All require physical closure.</p></article><article class="card pass"><h3>Embodied-agent boundary</h3><p>OpenAI produces expiring high-level JSON requests only. Deterministic local software and independent hardware retain every motion and permit decision.</p></article><article class="card hold"><h3>Walking path</h3><p>Suspended characterization, restrained standing, weight transfer, capture steps and tethered walking are separate development gates.</p></article></div></section>
-<section><h2>System artifacts</h2><div class="panel"><p><a href="hr30.urdf">URDF</a> · <a href="hr30.xml">MJCF</a> · <a href="mass-properties-budget.csv">Mass/COM/inertia</a> · <a href="power-energy-budget.csv">Power/energy</a> · <a href="thermal-budget.csv">Thermal</a> · <a href="compute-sensor-network-budget.csv">Compute/sensors/network</a> · <a href="cost-budget.csv">Cost</a> · <a href="whole-robot-candidate-bom.csv">Whole-robot BOM</a> · <a href="gripper-functional-specification.md">Hands</a> · <a href="walking-development-architecture.md">Walking</a> · <a href="embodied-agent-architecture.md">OpenAI/local-control boundary</a> · <a href="structured-action-request.schema.json">Action schema</a> · <a href="modular-fabrication-assembly-electrification-plan.md">Build/electrification plan</a></p></div></section>
+<section><h2>System artifacts</h2><div class="panel"><p><a href="hr30.urdf">URDF</a> · <a href="hr30.xml">MJCF</a> · <a href="mass-properties-budget.csv">Mass/COM/inertia</a> · <a href="power-energy-budget.csv">Power/energy</a> · <a href="thermal-budget.csv">Thermal</a> · <a href="compute-sensor-network-budget.csv">Compute/sensors/network</a> · <a href="cost-budget.csv">Cost</a> · <a href="whole-robot-candidate-bom.csv">Whole-robot BOM</a> · <a href="gripper-functional-specification.md">Hands</a> · <a href="walking-development-architecture.md">Walking</a> · <a href="embodied-agent-architecture.md">OpenAI/local-control boundary</a> · <a href="structured-action-request.schema.json">Action schema</a> · <a href="modular-fabrication-assembly-electrification-plan.md">Build/electrification plan</a> · <a href="HR-30_modular_fabrication_candidate.step">Fabrication-candidate STEP</a> · <a href="fabrication-part-register.csv">Part register</a> · <a href="service-panel-interface-register.csv">Service panels</a> · <a href="harness-route-register.csv">Harness routes</a></p></div></section>
+<section><h2>Inspect the modular frame, covers, and harness routes</h2><div class="viewer"><model-viewer src="HR-30_modular_fabrication_reference.glb" alt="Interactive preliminary HR-30 modular fabrication architecture with frame plates, removable covers, and harness route corridors" camera-controls camera-orbit="35deg 76deg 95%" min-camera-orbit="auto auto 20%" max-camera-orbit="auto auto 240%" field-of-view="26deg" shadow-intensity="0.85" exposure="1.05" interaction-prompt="auto"></model-viewer><p>Dark blue is the candidate metal frame, sky and mid blue are separately removable covers, gold is the uncredited restraint bridge, orange reserves actuator-power routing, and cyan reserves data and low-voltage routing. These are dimensioned architecture parts and corridors, not released manufacturing drawings or selected cables.</p></div></section>
 {end_marker}'''
     if marker not in page:
         raise SystemExit("download marker missing from web guide")
     page = page.replace(marker, added + marker)
     (OUT / "index.html").write_text(page, encoding="utf-8", newline="\n")
 
-    readme = (OUT / "README.md").read_text(encoding="utf-8").split("\n\n## Whole-body systems completion", 1)[0].rstrip() + "\n"
+    readme = (OUT / "README.md").read_text(encoding="utf-8").split("\n\n## Whole-body systems completion", 1)[0].rstrip()
     readme += f"""
 
 ## Whole-body systems completion
@@ -505,6 +506,8 @@ def main() -> int:
     write_docs(mass_summary)
     shutil.copy2(Path(__file__), OUT / "system-package-source.py")
     update_web_and_status(mass_summary)
+    import generate_hr30_fabrication_architecture_p01 as fabrication
+    fabrication.generate_into_package()
     refresh_manifest_and_release()
     print(json.dumps({"identifier": IDENTIFIER, "dof": len(joints), "mass_kg": mass_summary["mass_kg"], "com_m": mass_summary["com_m"], "source": str(OUT)}, indent=2))
     return 0

@@ -2,7 +2,7 @@
 
 **PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION**
 
-The authoritative modules are: H01 head/screen/audio/vision; N01 two-axis neck; T01 torso/frame/compute; P01 pelvis/power/restraint; A01/A02 left/right arms; G01/G02 left/right grippers; L01/L02 left/right legs; F01/F02 left/right feet; C01 local controller; S01 independent safety enclosure; and HN01 segmented harness. Each has a released interface-control drawing, mass ceiling, connector boundary, datum set and revision before fabrication.
+The authoritative modules are: H01 head/screen/audio/vision; N01 two-axis neck; T01 torso/frame/compute; P01 pelvis/power/restraint; A01/A02 left/right arms; G01/G02 left/right grippers; L01/L02 left/right legs; F01/F02 left/right feet; C01 local controller; S01 independent safety enclosure; and HN01 segmented harness. P0.1 now gives each a geometric module boundary and datum path. Released interface-control drawings, mass ceilings, connector boundaries, tolerances and revisions remain required before fabrication.
 
 Fabrication route: machine the load-bearing joint side plates, shafts and bearing lands from released metal stock; print only removable shells, ducts, fixtures and non-credited covers from a selected process/material; buy exact bearings, reductions, actuators, fasteners and connectors; inspect received identities and material certificates; then perform first-article dimensional inspection. Library/makerspace CNC capability may support prototype plates only after DFM, fixturing, tool-access, tolerance and supervision review. Safety-credited or fall-load parts require a qualified supplier/reviewer disposition.
 

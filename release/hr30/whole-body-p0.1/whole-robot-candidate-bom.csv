@@ -1,8 +1,8 @@
 item_id,function,manufacturer,candidate,quantity,planning_allowance_usd_each,selection_state,authority
 HR30-BOM-001,leg actuator,ROBOTIS,XH540-W270-R evaluation candidate,12,525,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-002,waist/shoulder/elbow actuator,ROBOTIS,XM540-W270-R candidate,7,355,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
-HR30-BOM-003,wrist/gripper actuator,ROBOTIS,XM430-W350-R candidate,4,250,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
-HR30-BOM-004,head actuator,ROBOTIS,XC330-class candidate; exact model SELECTION REQUIRED,2,105,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
+HR30-BOM-003,wrist actuator,ROBOTIS,XM430-W350-R candidate,2,250,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
+HR30-BOM-004,head/gripper actuator,ROBOTIS,XC330-class compact candidate; exact model SELECTION REQUIRED,4,105,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-005,main compute,Raspberry Pi,Raspberry Pi 5 8GB SC1112 candidate,1,125,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-006,compute cooling,Raspberry Pi,Active Cooler SC1148 candidate,1,12,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-007,compute storage,Kingston,SDCIT2/64GBSP candidate,1,55,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
@@ -19,8 +19,8 @@ HR30-BOM-017,foot force sensing,SELECTION REQUIRED,four-corner load-cell and ADC
 HR30-BOM-018,output absolute encoder,SELECTION REQUIRED,reduced leg joint encoder,8,70,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-019,leg reductions,SELECTION REQUIRED,"1.5:1 pitch-axis and 2.0:1 roll-axis geometric candidates; exact belt, pulley, bearing and retention selections open",10,90,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-020,joint support,SELECTION REQUIRED,dual-bearing shaft stack per load-bearing axis,25,35,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
-HR30-BOM-021,frame plates,custom,6061-T6/T651 machined plate set; drawings/material release open,1,900,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
-HR30-BOM-022,shells,custom,printed removable cover set; material/process open,1,450,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
+HR30-BOM-021,frame plates,custom,"P0.1 paired 4 mm limb plates, torso rails/cross-tube, pelvis plates and foot carriers; CAD density screen 2.627 kg; drawings/material release open",1,900,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
+HR30-BOM-022,shells,custom,P0.1 2.4-3.0 mm removable torso/pelvis/head/limb/palm cover set; CAD density screen 0.979 kg; material/process/retention open,1,450,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-023,feet,custom,machined/printed foot core + replaceable compliant sole,2,180,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-024,gripper pads,custom,replaceable broad compliant pad set,2,45,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-025,development power,SELECTION REQUIRED,tethered current-limited 14.8 V-class source,1,500,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
@@ -28,6 +28,6 @@ HR30-BOM-026,onboard energy,SELECTION REQUIRED,14.8 V nominal 12 Ah-class pack/B
 HR30-BOM-027,main disconnect/contactors,SELECTION REQUIRED,DC-rated redundant interruption architecture,1,450,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-028,emergency stop/reset,Pilz/IDEC/Schneider candidates,"dual-channel E-stop, monitored reset and EDM hardware",1,950,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-029,fall restraint,SELECTION REQUIRED,rated overhead gantry/harness/load-limiter system,1,1200,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
-HR30-BOM-030,harness/connectors,SELECTION REQUIRED,segmented power/data harness with service loops,1,750,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
+HR30-BOM-030,harness/connectors,SELECTION REQUIRED,11 segregated power/data route corridors with controlled diameters and bend-radius requirements; cables/connectors/fill/EMC/current selection open,1,750,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-031,cooling,SELECTION REQUIRED,torso/head filtered fan and duct set,1,150,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY
 HR30-BOM-032,fasteners/inserts,SELECTION REQUIRED,metric serviceable fastener system,1,350,CANDIDATE / SELECTION REQUIRED,NO PROCUREMENT OR FABRICATION AUTHORITY

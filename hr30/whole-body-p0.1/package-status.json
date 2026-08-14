@@ -46,5 +46,14 @@
   "estimated_neutral_com_z_m": 0.338425,
   "dynamics_validated": false,
   "walking_validated": false,
-  "physical_build_ready": false
+  "physical_build_ready": false,
+  "modular_fabrication_architecture_present": true,
+  "frame_part_geometry_present": true,
+  "hollow_split_service_cover_geometry_present": true,
+  "segregated_harness_route_geometry_present": true,
+  "fabrication_part_count": 66,
+  "service_panel_count": 26,
+  "harness_route_count": 11,
+  "fabrication_drawings_released": false,
+  "harness_selected_or_validated": false
 }
