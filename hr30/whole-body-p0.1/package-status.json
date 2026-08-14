@@ -93,5 +93,14 @@
   "whole_body_pose_minimum_nominal_clearance_mm": 7.193175,
   "tolerance_aware_collision_validated": false,
   "cable_cover_sweep_validated": false,
-  "physical_collision_validated": false
+  "physical_collision_validated": false,
+  "whole_body_actuator_bus_architecture_present": true,
+  "actuator_bus_segment_count": 8,
+  "actuator_bus_axis_binding_count": 25,
+  "rs485_actuator_axis_count": 19,
+  "ttl_actuator_axis_count": 6,
+  "protocol_compatibility_screen_complete": true,
+  "native_hr30_kicad_reconciled": false,
+  "actuator_bus_interface_selected": false,
+  "actuator_bus_connector_harness_validated": false
 }

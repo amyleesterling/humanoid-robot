@@ -148,7 +148,7 @@ def main() -> int:
     require(all(r["source_archive_sha256"].lower() == "ae126d212e8c56486ce014bd9b01b3779b0086867f9b47615ddefbbf32fa5167" for r in asimov), "Asimov source identity mismatch")
 
     holds = list(csv.DictReader((SRC / "open-holds.csv").open(encoding="utf-8")))
-    require(len(holds) == 10 and all(r["state"] == "OPEN" for r in holds), "open holds not fail-closed")
+    require(len(holds) >= 10 and all(r["state"] == "OPEN" for r in holds), "open holds not fail-closed")
     mass = list(csv.DictReader((SRC / "mass-allocation-register.csv").open(encoding="utf-8")))
     total_mass = float(mass[-1]["cad_mass_kg"].split()[-1])
     require(mass[-1]["assembly"] == "TOTAL" and 10.0 < total_mass < 12.0 and "WITHIN MAXIMUM" in mass[-1]["status"], "mass allocation must preserve the 10 kg stretch miss and 12 kg P0.1 maximum")

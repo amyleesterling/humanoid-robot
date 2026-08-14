@@ -47,6 +47,9 @@ def main() -> int:
         "joint-load-screen.csv", "joint-load-architecture.md", "joint-load-architecture-status.json",
         "actuator-endpoint-source-register.csv", "bearing-candidate-source-register.csv",
         "transmission-candidate-source-register.csv",
+        "actuator-bus-topology.csv", "actuator-bus-axis-binding.csv",
+        "actuator-bus-source-register.csv", "whole-body-electrical-integration.md",
+        "actuator-bus-architecture-source.py",
     }
     source_files = {p.relative_to(SRC).as_posix() for p in SRC.rglob("*") if p.is_file()}
     release_files = {p.relative_to(REL).as_posix() for p in REL.rglob("*") if p.is_file()}
@@ -98,7 +101,7 @@ def main() -> int:
     require(cost[-1]["cost_group"] == "TOTAL" and float(cost[-1]["planning_allowance_usd"]) == 20300.0, "cost allowance total mismatch")
     compute = read_csv("compute-sensor-network-budget.csv")
     require(any(row["function"] == "Conversational compute" and "never writes actuator registers" in row["role_boundary"] for row in compute), "conversation/motion boundary missing")
-    require(any(row["function"] == "Actuator buses" and float(row["quantity"]) == 5 for row in compute), "five segmented actuator buses missing")
+    require(any(row["function"] == "Actuator buses" and float(row["quantity"]) == 8 and "RS-485" in row["candidate"] and "TTL" in row["candidate"] for row in compute), "eight mixed-protocol actuator buses missing")
 
     bom = read_csv("whole-robot-candidate-bom.csv")
     require(len(bom) == 32 and sum(int(row["quantity"]) for row in bom if "actuator" in row["function"]) >= 25, "candidate BOM population incomplete")
@@ -110,6 +113,7 @@ def main() -> int:
     require(any(row["item_id"] == "HR30-BOM-020" and int(row["quantity"]) == 39 and "6803" in row["candidate"] and "6901" in row["candidate"] for row in bom), "standard external-bearing BOM population incomplete")
     require(any(row["item_id"] == "HR30-BOM-019" and int(row["quantity"]) == 10 and "225-5MGT3-15" in row["candidate"] and "250-5MGT3-15" in row["candidate"] for row in bom), "leg reduction BOM does not cover all ten reduced axes")
     require(any(row["item_id"] == "HR30-BOM-026" and row["manufacturer"] == "Grepow/Tattu" and "TAA12K4S30EC5" in row["candidate"] and "BMS/PCM" in row["candidate"] for row in bom), "onboard-energy BOM candidate/boundary missing")
+    require(any(row["item_id"] == "HR30-BOM-010" and int(row["quantity"]) == 8 and "RS-485" in row["candidate"] and "TTL" in row["candidate"] for row in bom), "mixed-protocol actuator interface BOM missing")
     require(all(row["authority"] == "NO PROCUREMENT OR FABRICATION AUTHORITY" for row in bom), "BOM authority overclaim")
 
     schema = json.loads((SRC / "structured-action-request.schema.json").read_text(encoding="utf-8"))
@@ -128,7 +132,9 @@ def main() -> int:
     require(all(word in hands for word in ("grasp", "hold", "present", "release")) and "two-finger" in hands, "functional hand specification incomplete")
 
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
-    require(all(status[key] for key in ("whole_body_system_package_present", "urdf_present", "mjcf_present", "whole_robot_candidate_bom_present", "walking_architecture_present", "embodied_agent_boundary_present", "modular_build_plan_present", "mass_reconciliation_present", "installed_equipment_layout_present", "whole_body_joint_load_architecture_present", "whole_body_pose_architecture_present", "pose_support_geometry_screen_complete", "whole_body_nominal_self_collision_screen_present")), "system package status incomplete")
+    require(all(status[key] for key in ("whole_body_system_package_present", "urdf_present", "mjcf_present", "whole_robot_candidate_bom_present", "walking_architecture_present", "embodied_agent_boundary_present", "modular_build_plan_present", "mass_reconciliation_present", "installed_equipment_layout_present", "whole_body_joint_load_architecture_present", "whole_body_pose_architecture_present", "pose_support_geometry_screen_complete", "whole_body_nominal_self_collision_screen_present", "whole_body_actuator_bus_architecture_present", "protocol_compatibility_screen_complete")), "system package status incomplete")
+    require((status["actuator_bus_segment_count"], status["actuator_bus_axis_binding_count"], status["rs485_actuator_axis_count"], status["ttl_actuator_axis_count"]) == (8, 25, 19, 6), "actuator bus status counts drift")
+    require(not any(status[key] for key in ("native_hr30_kicad_reconciled", "actuator_bus_interface_selected", "actuator_bus_connector_harness_validated")), "electrical implementation overclaim")
     require(status["whole_body_pose_count"] == 8, "bilateral articulated pose set incomplete")
     require(status["whole_body_pose_common_volume_interference_count"] == 0 and status["whole_body_pose_minimum_nominal_clearance_mm"] >= 5.0, "whole-body nominal collision status not closed")
     require(status["installed_equipment_item_count"] == 56 and not status["tether_first_equipment_configuration"] and status["tether_development_interface_retained"] and status["onboard_energy_candidate_geometry_present"] and not status["onboard_energy_installed"], "installed-equipment configuration boundary drift")
@@ -137,7 +143,7 @@ def main() -> int:
     require(sha(SRC / "system-package-source.py") == sha(ROOT / "tools" / "generate_hr30_system_package_p01.py"), "system generator snapshot drift")
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require("The P0.1 engineering package is whole-body" in page and "font:17px/1.55" in page and "font-size:16px" in page, "web package summary/legibility missing")
-    require(all(name in page for name in ("hr30.urdf", "hr30.xml", "whole-robot-candidate-bom.csv", "embodied-agent-architecture.md", "mass-reconciliation.md", "installed-equipment-register.csv", "battery-energy-source-register.csv", "whole-body-pose-register.csv", "pose-support-metrics.csv", "HR-30_whole_body_pose_lineup_candidate.glb", "whole-body-collision-register.csv", "collision-exclusion-register.csv")), "web system links incomplete")
+    require(all(name in page for name in ("hr30.urdf", "hr30.xml", "whole-robot-candidate-bom.csv", "embodied-agent-architecture.md", "mass-reconciliation.md", "installed-equipment-register.csv", "battery-energy-source-register.csv", "whole-body-pose-register.csv", "pose-support-metrics.csv", "HR-30_whole_body_pose_lineup_candidate.glb", "whole-body-collision-register.csv", "collision-exclusion-register.csv", "actuator-bus-topology.csv", "actuator-bus-axis-binding.csv", "actuator-bus-source-register.csv", "whole-body-electrical-integration.md")), "web system links incomplete")
     require(page.count('id="equipment-layout"') == 1, "web installed-equipment viewer missing or duplicated")
     print(f"PASS: HR-30 whole-body P0.1 has 25-DOF URDF/MJCF, eight bilateral articulated S2-S5 pose candidates with zero nominal common-volume interference, 56 located equipment/harness items including a dimensioned onboard-energy candidate, and {reconciled_mass:.3f} kg planning mass plus budgets, BOM, hands, walking, agent and build artifacts; tolerance/physical validation and all work authority remain false")
     return 0
