@@ -8,13 +8,13 @@ The planning preference is **5.0 mm** between nonadjacent rigid envelopes. A val
 
 | Pose | Checked pairs | Interferences | Minimum clearance | Closest checked pair |
 |---|---:|---:|---:|---|
-| Neutral double support | 290 | 0 | 7.82 mm | `R_upper_arm::base_link` |
-| Crouched double support | 290 | 0 | 7.82 mm | `R_upper_arm::base_link` |
-| Left weight transfer | 290 | 0 | 24.85 mm | `L_forearm::L_gripper` |
-| Right foot lift | 290 | 0 | 24.85 mm | `L_forearm::L_gripper` |
-| Right capture-step candidate | 290 | 0 | 7.21 mm | `R_upper_arm::base_link` |
-| Right weight transfer | 290 | 0 | 24.85 mm | `L_forearm::L_gripper` |
-| Left foot lift | 290 | 0 | 24.85 mm | `L_forearm::L_gripper` |
-| Left capture-step candidate | 290 | 0 | 7.19 mm | `R_upper_arm::base_link` |
+| Neutral double support | 290 | 0 | 9.37 mm | `R_upper_arm::base_link` |
+| Crouched double support | 290 | 0 | 9.37 mm | `R_upper_arm::base_link` |
+| Left weight transfer | 290 | 0 | 22.93 mm | `L_forearm::L_gripper` |
+| Right foot lift | 290 | 0 | 22.93 mm | `L_forearm::L_gripper` |
+| Right capture-step candidate | 290 | 0 | 8.63 mm | `R_upper_arm::base_link` |
+| Right weight transfer | 290 | 0 | 22.93 mm | `L_forearm::L_gripper` |
+| Left foot lift | 290 | 0 | 22.93 mm | `L_forearm::L_gripper` |
+| Left capture-step candidate | 290 | 0 | 8.61 mm | `R_upper_arm::base_link` |
 
 This is a nominal rigid-envelope result. It does not cover manufacturing tolerance, cover deflection, belt/cable sweep, connector backshells, fastener protrusion, encoder wiring, tracking error, joint compliance, impacts, floor variation, fall restraint, or physical correlation. It grants no motion or safety credit.

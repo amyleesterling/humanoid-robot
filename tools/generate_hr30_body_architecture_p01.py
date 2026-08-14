@@ -245,23 +245,36 @@ def interface_plate(
     shaft_diameter: float,
 ) -> cq.Shape:
     plane = local_plane(center, direction)
-    plate = cq.Workplane(plane).box(width, height, thickness)
-    drilled = (
-        plate.faces(">Z")
-        .workplane()
-        .pushPoints([(-pattern_x / 2, -pattern_y / 2), (-pattern_x / 2, pattern_y / 2), (pattern_x / 2, -pattern_y / 2), (pattern_x / 2, pattern_y / 2)])
-        .hole(clearance_diameter)
-    )
     # Preserve the complete outer datum and four bolt pads while replacing the
-    # old solid slab with a closed rectangular carrier frame.
+    # old solid slab with a closed rectangular carrier frame.  Construct every
+    # cut from the frozen joint-local plane: selecting a face and opening a new
+    # workplane can rotate its in-plane axes on non-global joint orientations.
+    plate = cq.Workplane(plane).box(width, height, thickness).val()
     window_x = max(8.0, pattern_x - 10.0)
     window_y = max(8.0, pattern_y - 10.0)
-    frame = drilled.faces(">Z").workplane().rect(window_x, window_y).cutThruAll().val()
+    window = cq.Workplane(plane).box(window_x, window_y, thickness + 2.0).val()
+    frame = plate.cut(window)
     spoke_w = max(5.0, clearance_diameter + 2.0)
     cross_x = cq.Workplane(plane).box(window_x + 2.0, spoke_w, thickness).val()
     cross_y = cq.Workplane(plane).box(spoke_w, window_y + 2.0, thickness).val()
     center_bore = cylinder_between(center, direction, thickness + 2.0, shaft_diameter + 0.6)
-    return frame.fuse(cross_x).fuse(cross_y).cut(center_bore)
+    carrier = frame.fuse(cross_x).fuse(cross_y).cut(center_bore)
+
+    # Cut the four clearance holes last so neither the frame nor its reinforcing
+    # cross can refill them.  This is also the geometry contract consumed by the
+    # located-fastener package and its zero-carrier-intersection check.
+    local_origin = cq.Vector(*center)
+    for local_x in (-pattern_x / 2.0, pattern_x / 2.0):
+        for local_y in (-pattern_y / 2.0, pattern_y / 2.0):
+            hole_center = local_origin + plane.xDir.multiply(local_x) + plane.yDir.multiply(local_y)
+            clearance = cylinder_between(
+                (hole_center.x, hole_center.y, hole_center.z),
+                direction,
+                thickness + 2.0,
+                clearance_diameter,
+            )
+            carrier = carrier.cut(clearance)
+    return carrier
 
 
 def bearing_ring(center: tuple[float, float, float], direction: tuple[float, float, float], width: float, outer_diameter: float, shaft_diameter: float) -> cq.Shape:

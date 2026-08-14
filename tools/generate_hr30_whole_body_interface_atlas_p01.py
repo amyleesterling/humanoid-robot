@@ -345,7 +345,7 @@ def update_package(rows: list[dict]) -> None:
     holds = read_csv("open-holds.csv")
     for hold in holds:
         if hold["hold_id"] == "HR30-P01-H10":
-            hold["unresolved_item"] = "A whole-body interface atlas now consolidates 12 modules, all 25 axes, dimensions, masses, mount-pattern candidates, service panels, harness routes and assembly dependencies. Released manufacturing drawings, tolerances/GD&T, material/process selections, fasteners, DFM, FAI, proof, physical test and qualified review remain open."
+            hold["unresolved_item"] = "A whole-body interface atlas consolidates 12 modules, all 25 axes, dimensions, masses, mount-pattern candidates, service panels, harness routes and assembly dependencies; twelve module-specific fabrication/integration STEP pairs plus an exploded STEP/GLB now implement that partition. Released manufacturing drawings, tolerances/GD&T, material/process selections, fasteners, DFM, FAI, proof, physical test and qualified review remain open."
     write_csv("open-holds.csv", holds)
 
     readme_path = PACKAGE / "README.md"
@@ -364,7 +364,9 @@ def update_package(rows: list[dict]) -> None:
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
     marker = "<section><h2>System artifacts</h2>"
+    planning_mass = sum(float(row["planning_mass_kg"]) for row in rows)
     section = f'''{start}<section id="whole-body-interface-atlas"><h2>The complete robot now has one interface atlas</h2><div class="grid"><article class="card pass"><div class="metric">12</div><p>Head, neck, torso, pelvis, bilateral arms, functional hands, legs and feet have controlled module records.</p></article><article class="card pass"><div class="metric">25 / 25</div><p>Every axis has exactly one owning module and a dimensioned candidate mount family.</p></article><article class="card pass"><div class="metric">11.458 kg</div><p>Module masses reconcile to the current whole-body planning model.</p></article><article class="card hold"><div class="metric">0</div><p>Released manufacturing drawings or fabrication approvals; P0.1 remains preliminary.</p></article></div><div class="viewer"><object style="display:block;width:100%;height:auto;aspect-ratio:1600/1040" data="whole-body-interface-atlas.svg" type="image/svg+xml" aria-label="Dimensioned HR-30 whole-body interface drawing"></object><p><a href="whole-body-interface-atlas.html">Open the interactive interface atlas</a> · <a href="module-interface-control-register.csv">12-module register</a> · <a href="module-assembly-sequence.csv">assembly dependencies</a>.</p></div></section>{end}'''
+    section = section.replace("11.458 kg", f"{planning_mass:.3f} kg")
     if marker not in page:
         raise SystemExit("web insertion marker missing")
     page = page.replace(marker, section + marker)

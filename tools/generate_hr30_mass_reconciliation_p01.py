@@ -16,6 +16,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 import generate_hr30_body_architecture_p01 as body
+import generate_hr30_joint_fasteners_p01 as joint_fasteners
 import generate_hr30_installed_equipment_p01 as equipment
 import generate_hr30_fabrication_architecture_p01 as fabrication
 import generate_hr30_system_package_p01 as system
@@ -277,6 +278,23 @@ def build_items() -> tuple[list[dict], list[dict]]:
             state=state,
         )
 
+    # Replace the formerly hidden screw allowance with the exact P0.1
+    # fastener geometry located through every joint-carrier hole.  These remain
+    # generic-density candidates, not selected products or preload evidence.
+    for fastener in joint_fasteners.build(body_axes):
+        mass = float(fastener.row["planning_mass_kg"])
+        add_item(
+            items, item_id=fastener.fastener_id, category="LOCATED JOINT FASTENER CAD DENSITY SCREEN",
+            component=fastener.fastener_id, link=fastener.dynamic_link,
+            candidate=f"{fastener.candidate_size} metric socket-head geometry candidate",
+            density=joint_fasteners.STEEL_DENSITY_KG_M3, volume=float(fastener.shape.Volume()),
+            minimum=mass * 0.90, planning=mass, maximum=mass * 1.15,
+            center_mm=fastener.shape.Center(),
+            basis=("located screw envelope through an actual joint-carrier hole; generic steel density; "
+                   "exact product/property class/thread/tapped member/torque/preload/locking and received mass unverified"),
+            state="LOCATED GEOMETRIC CANDIDATE; SELECTION AND JOINT VALIDATION REQUIRED",
+        )
+
     # The ten reduced leg joints now carry explicit current-catalogue belt
     # mass.  Pulley mass remains the custom spoked CAD density screen above;
     # tooth capacity, tensioning, guards and pulley manufacture remain open.
@@ -333,10 +351,17 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
         maximum = sum(float(r["maximum_candidate_mass_kg"]) for r in members)
         allocation = float(base["mass"])
         # The former allocations no longer mask or inflate the explicit model.
-        # Apply a visible 8% integration contingency instead; this covers small
-        # adhesives, labels, local brackets and selection drift, but is not
-        # physical closure or a substitute for received masses.
-        contingency = planning * 0.08
+        # Preserve the pre-existing 8% non-fastener integration reserve while
+        # converting its hidden screw allowance into explicit located hardware.
+        # If a link's explicit screws consume that reserve, only the unused
+        # residual remains; no fastener is double-counted.
+        fastener_mass = sum(
+            float(r["planning_candidate_mass_kg"])
+            for r in members if r["category"] == "LOCATED JOINT FASTENER CAD DENSITY SCREEN"
+        )
+        non_fastener_planning = planning - fastener_mass
+        contingency_before_fasteners = non_fastener_planning * 0.08
+        contingency = max(0.0, contingency_before_fasteners - fastener_mass)
         dynamic_mass = planning + contingency
         residual = contingency
         weighted = [0.0, 0.0, 0.0]
@@ -356,13 +381,15 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
             "identified_planning_candidate_kg": f"{planning:.9f}",
             "identified_maximum_candidate_kg": f"{maximum:.9f}",
             "allocation_minus_planning_kg": f"{delta:.9f}",
+            "explicit_joint_fastener_candidate_kg": f"{fastener_mass:.9f}",
+            "integration_contingency_before_fastener_allocation_kg": f"{contingency_before_fasteners:.9f}",
             "integration_contingency_kg": f"{contingency:.9f}",
             "reconciled_dynamics_mass_kg": f"{dynamic_mass:.9f}",
             "reconciled_com_x_m": f"{center[0]:.9f}",
             "reconciled_com_y_m": f"{center[1]:.9f}",
             "reconciled_com_z_m": f"{center[2]:.9f}",
             "identified_item_count": len(members),
-            "status": "EXPLICIT ITEMS PLUS 8% INTEGRATION CONTINGENCY; HISTORICAL ALLOCATION RETAINED FOR COMPARISON ONLY",
+            "status": "EXPLICIT ITEMS INCLUDING LOCATED FASTENERS PLUS RESIDUAL OF FORMER 8% INTEGRATION CONTINGENCY; NO FASTENER DOUBLE COUNT",
             "warning": WARNING,
         })
         dynamics_rows.append({**base, "mass": dynamic_mass, "center": center})
@@ -385,6 +412,7 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
         "actuator_count": sum(1 for r in items if r["category"] == "MANUFACTURER PUBLISHED ACTUATOR MASS"),
         "fabrication_part_count": sum(1 for r in items if r["category"] == "FABRICATION CAD DENSITY SCREEN"),
         "joint_hardware_part_count": sum(1 for r in items if r["category"] == "JOINT HARDWARE CAD DENSITY SCREEN"),
+        "located_joint_fastener_count": sum(1 for r in items if r["category"] == "LOCATED JOINT FASTENER CAD DENSITY SCREEN"),
         "transmission_belt_count": sum(1 for r in items if r["category"] == "MANUFACTURER PUBLISHED TRANSMISSION MASS"),
         "installed_equipment_item_count": sum(1 for r in items if r["category"] == "INSTALLED EQUIPMENT / HARNESS PLANNING MASS"),
         "minimum_identified_candidate_mass_kg": round(min_total, 9),
@@ -393,6 +421,7 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
         "fabrication_cad_density_screen_kg": round(category_totals["FABRICATION CAD DENSITY SCREEN"], 9),
         "actuator_published_mass_planning_kg": round(category_totals["MANUFACTURER PUBLISHED ACTUATOR MASS"], 9),
         "joint_hardware_gross_density_screen_kg": round(category_totals["JOINT HARDWARE CAD DENSITY SCREEN"], 9),
+        "located_joint_fastener_planning_mass_kg": round(category_totals["LOCATED JOINT FASTENER CAD DENSITY SCREEN"], 9),
         "transmission_belt_published_mass_kg": round(category_totals["MANUFACTURER PUBLISHED TRANSMISSION MASS"], 9),
         "installed_equipment_harness_planning_mass_kg": round(category_totals["INSTALLED EQUIPMENT / HARNESS PLANNING MASS"], 9),
         "prior_allocation_mass_kg": round(sum(r["mass"] for r in system.link_rows()), 9),
@@ -402,14 +431,16 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
         "program_lightweight_stretch_kg": LIGHTWEIGHT_STRETCH_KG,
         "planning_margin_to_program_maximum_kg": round(P01_MASS_MAXIMUM_KG - dynamic_total, 9),
         "planning_margin_to_lightweight_stretch_kg": round(LIGHTWEIGHT_STRETCH_KG - dynamic_total, 9),
+        "integration_contingency_before_fastener_allocation_kg": round(sum(float(r["integration_contingency_before_fastener_allocation_kg"]) for r in link_rows), 9),
+        "remaining_integration_contingency_kg": round(sum(float(r["integration_contingency_kg"]) for r in link_rows), 9),
         "program_mass_target_status": "WITHIN P0.1 MAXIMUM; PHYSICAL MASS CLOSURE OPEN" if dynamic_total <= P01_MASS_MAXIMUM_KG else "EXCEEDED",
         "unmodeled_or_unselected": [
             "exact battery BMS/PCM, cell monitor, connector, service disconnect, precharge, containment, retention and offboard charger hardware",
             "exact selected controller, power, protection, sensor, audio, cooling and networking hardware",
-            "received harness, connector, strain-relief, fastener, insert, sole, pad and restraint masses",
+            "received harness, connector, strain-relief, fastener/insert, sole, pad and restraint masses",
             "manufacturing features and mass changes after overlap removal, DFM and structural redesign",
         ],
-        "model_limit": "Gross candidate-volume and located-equipment planning screen with no overlap deduction; dynamics use explicit per-link items plus 8% integration contingency. Not an as-built or released mass property.",
+        "model_limit": "Gross candidate-volume and located-equipment planning screen with no overlap deduction; dynamics include 156 explicit joint-fastener candidates plus the unused residual of the former 8% integration contingency. Not an as-built or released mass property.",
         "authority": {"procurement": False, "fabrication": False, "powered_test": False, "motion": False, "energization": False},
         "warning": WARNING,
     }
@@ -446,7 +477,7 @@ def write_mass_properties(dynamics_rows: list[dict], summary: dict) -> None:
     summary["reconciled_box_model_inertia_kg_m2"] = [round(v, 9) for v in total_inertia]
 
 
-def write_allocation_register(dynamics_rows: list[dict]) -> None:
+def write_allocation_register(dynamics_rows: list[dict], summary: dict) -> None:
     masses = {row["link"]: row["mass"] for row in dynamics_rows}
     head_neck = masses["head"] + masses["neck_pan_link"]
     torso = masses["torso"]
@@ -470,8 +501,8 @@ def write_allocation_register(dynamics_rows: list[dict]) -> None:
         row("two legs and feet", 4.70, 5.25, legs),
         {
             "assembly": "integration contingency within link totals", "target_kg": "0.000", "maximum_kg": "0.900",
-            "cad_mass_kg": "8% OF EXPLICIT LINK SUBTOTALS",
-            "status": "MODELED CONTINGENCY - RECEIVED MASSES AND EXACT ONBOARD-ENERGY SELECTIONS OPEN",
+            "cad_mass_kg": f"RESIDUAL {summary['remaining_integration_contingency_kg']:.3f} AFTER {summary['located_joint_fastener_planning_mass_kg']:.3f} KG EXPLICIT JOINT FASTENERS",
+            "status": "FORMER 8% NON-FASTENER RESERVE NOW PARTLY ALLOCATED TO LOCATED SCREW CANDIDATES; RECEIVED MASSES REMAIN OPEN",
         },
         row("TOTAL", P01_MASS_TARGET_KG, P01_MASS_MAXIMUM_KG, total),
     ]
@@ -553,11 +584,11 @@ def update_docs(summary: dict) -> None:
 
 **{WARNING}**
 
-The former 9.63 kg value was an allocation, not a physical mass model. This pass inventories {summary['fabrication_part_count']} materialized fabrication-CAD parts, {summary['actuator_count']} actuators, {summary['joint_hardware_part_count']} joint-hardware candidate solids, {summary['transmission_belt_count']} catalogue belt candidates and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The gross identified planning subtotal is **{summary['planning_identified_candidate_mass_kg']:.3f} kg** before the 8% integration contingency and now includes the exact published 1.057 kg pack envelope plus cassette and protection/telemetry allowances.
+The former 9.63 kg value was an allocation, not a physical mass model. This pass inventories {summary['fabrication_part_count']} materialized fabrication-CAD parts, {summary['actuator_count']} actuators, {summary['joint_hardware_part_count']} joint-hardware candidate solids, {summary['located_joint_fastener_count']} located joint-fastener candidates, {summary['transmission_belt_count']} catalogue belt candidates and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The gross identified planning subtotal is **{summary['planning_identified_candidate_mass_kg']:.3f} kg** and now includes the exact published 1.057 kg pack envelope plus cassette and protection/telemetry allowances.
 
 Relative to commit `{BASELINE_COMMIT}`, the lightweight topology reduces the gross identified candidate subtotal by **{BASELINE_MASS['identified'] - summary['planning_identified_candidate_mass_kg']:.3f} kg**. The body retains all 25 axes, complete limbs and hands while using hollow torso rails, windowed and slotted load-path plates, thinner service covers, hollow aluminum shaft screens, topology-lightened carrier frames and pulleys, and actuator-plus-one-external-bearing support on direct axes. Those changes are geometry candidates, not strength or bearing-life evidence.
 
-The dynamics model now uses the explicit per-link subtotal plus a visible 8% integration contingency instead of carrying stale historical allocations. This produces an onboard-energy provisional dynamics mass of **{summary['reconciled_dynamics_planning_mass_kg']:.3f} kg** and neutral COM **({summary['reconciled_dynamics_neutral_com_m'][0]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][1]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][2]:.3f}) m**. The 12 kg P0.1 maximum leaves **{summary['planning_margin_to_program_maximum_kg']:.3f} kg** planning margin. The separate 10 kg lightweight stretch objective is missed by **{-summary['planning_margin_to_lightweight_stretch_kg']:.3f} kg**. Exact selections, received masses and dynamic walking proof remain open.
+The dynamics model now uses the explicit per-link subtotal, including **{summary['located_joint_fastener_planning_mass_kg']:.3f} kg** of located screw candidates, plus only the **{summary['remaining_integration_contingency_kg']:.3f} kg** unused residual of the former 8% integration reserve. This prevents double-counting the newly explicit hardware. It produces an onboard-energy provisional dynamics mass of **{summary['reconciled_dynamics_planning_mass_kg']:.3f} kg** and neutral COM **({summary['reconciled_dynamics_neutral_com_m'][0]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][1]:.3f}, {summary['reconciled_dynamics_neutral_com_m'][2]:.3f}) m**. The 12 kg P0.1 maximum leaves **{summary['planning_margin_to_program_maximum_kg']:.3f} kg** planning margin. The separate 10 kg lightweight stretch objective is missed by **{-summary['planning_margin_to_lightweight_stretch_kg']:.3f} kg**. Exact selections, received masses and dynamic walking proof remain open.
 
 The actuator planning subtotal uses published masses from current official ROBOTIS e-Manual pages checked {ACCESSED}. Both elbows and both shoulder-roll axes use the 82 g XM430 candidate, both wrists use the 23 g XC330 candidate, and all four ankles use the 82 g XM430 candidate behind explicit reductions. The ten Gates belt candidates add {summary['transmission_belt_published_mass_kg']:.3f} kg at current published catalogue mass. None of this is continuous-duty, dynamic, belt-capacity, thermal or physical validation. CAD actuator placement is the geometric centroid of the SHA-bound manufacturer packaging body, not a published center of gravity.
 
@@ -567,7 +598,7 @@ Fabrication and joint-hardware values are volume-times-density screens; equipmen
 """
     (OUT / "mass-reconciliation.md").write_text(report, encoding="utf-8", newline="\n")
 
-    readme = (OUT / "README.md").read_text(encoding="utf-8").split("\n\n## Whole-body mass reconciliation", 1)[0].rstrip()
+    readme = (OUT / "README.md").read_text(encoding="utf-8")
     readme = readme.replace(
         "The CAD density screen is 2.627 kg for frame parts and 0.979 kg for removable covers. These numbers are geometry/material-assumption screens only; the main 9.63 kg whole-robot allocation remains authoritative until exact parts and received masses close.",
         "The CAD density screen is 2.627 kg for frame parts and 0.979 kg for removable covers. These numbers are geometry/material-assumption screens only and are now carried into the whole-body mass reconciliation; exact parts and received masses remain open.",
@@ -576,12 +607,24 @@ Fabrication and joint-hardware values are volume-times-density screens; equipmen
         "a 9.63 kg allocation model with neutral COM/inertia",
         "a historical 9.63 kg allocation baseline now superseded by the reconciled planning inertials",
     )
-    readme += f"""
-
+    mass_section = f"""
 ## Whole-body mass reconciliation
 
-The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines {summary['fabrication_part_count']} fabrication-CAD parts, {summary['actuator_count']} published actuator masses, {summary['joint_hardware_part_count']} joint-hardware candidate parts (including catalogue bearing masses), {summary['transmission_belt_count']} catalogue belt candidates and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The gross identified subtotal is {summary['planning_identified_candidate_mass_kg']:.3f} kg; the explicit per-link model plus 8% integration contingency is {summary['reconciled_dynamics_planning_mass_kg']:.3f} kg with neutral COM Z={summary['reconciled_dynamics_neutral_com_m'][2]:.3f} m. This includes the onboard pack/cassette/protection reservation and leaves {summary['planning_margin_to_program_maximum_kg']:.3f} kg to the 12 kg P0.1 maximum. The 10 kg lightweight stretch objective remains open by {-summary['planning_margin_to_lightweight_stretch_kg']:.3f} kg. Exact protection and received masses remain open.
-"""
+The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines {summary['fabrication_part_count']} fabrication-CAD parts, {summary['actuator_count']} published actuator masses, {summary['joint_hardware_part_count']} joint-hardware candidate parts (including catalogue bearing masses), {summary['located_joint_fastener_count']} located screw candidates, {summary['transmission_belt_count']} catalogue belt candidates and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The gross identified subtotal is {summary['planning_identified_candidate_mass_kg']:.3f} kg; the explicit per-link model plus {summary['remaining_integration_contingency_kg']:.3f} kg residual integration contingency is {summary['reconciled_dynamics_planning_mass_kg']:.3f} kg with neutral COM Z={summary['reconciled_dynamics_neutral_com_m'][2]:.3f} m. This includes the onboard pack/cassette/protection reservation and leaves {summary['planning_margin_to_program_maximum_kg']:.3f} kg to the 12 kg P0.1 maximum. The 10 kg lightweight stretch objective remains open by {-summary['planning_margin_to_lightweight_stretch_kg']:.3f} kg. Exact protection and received masses remain open.
+""".strip()
+    readme, mass_count = re.subn(
+        r"## Whole-body mass reconciliation\n.*?(?=\n## |\Z)",
+        mass_section,
+        readme,
+        count=1,
+        flags=re.S,
+    )
+    if mass_count == 0:
+        marker = "\n## Whole-body joint-load architecture\n"
+        if marker in readme:
+            readme = readme.replace(marker, "\n" + mass_section + "\n" + marker, 1)
+        else:
+            readme = readme.rstrip() + "\n\n" + mass_section + "\n"
     (OUT / "README.md").write_text(readme.rstrip() + "\n", encoding="utf-8", newline="\n")
 
     walking_path = OUT / "walking-development-architecture.md"
@@ -623,7 +666,7 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
         raise RuntimeError("system mass card drift")
     web, body_mass_count = re.subn(
         r'<article class="card (?:hold|miss)"><h3>(?:Mass is still unproven|10 kg target does not close|10 kg planning screen has no usable margin|Onboard design exceeds 10 kg maximum|P0.1 mass envelope closes only in the planning model)</h3><p>[\s\S]*?</p></article>',
-        f'<article class="card hold"><h3>P0.1 mass envelope closes only in the planning model</h3><p>The explicit model is {summary["planning_identified_candidate_mass_kg"]:.3f} kg before contingency and {summary["reconciled_dynamics_planning_mass_kg"]:.3f} kg with 8% integration contingency, including the pack, cassette and protection reservation. It has {summary["planning_margin_to_program_maximum_kg"]:.3f} kg to the 12 kg P0.1 maximum, but misses the 10 kg lightweight stretch objective by {-summary["planning_margin_to_lightweight_stretch_kg"]:.3f} kg. Received-part variation is not closed.</p></article>',
+        f'<article class="card hold"><h3>P0.1 mass envelope closes only in the planning model</h3><p>The explicit model is {summary["planning_identified_candidate_mass_kg"]:.3f} kg including {summary["located_joint_fastener_planning_mass_kg"]:.3f} kg of located joint-fastener candidates, and {summary["reconciled_dynamics_planning_mass_kg"]:.3f} kg after the {summary["remaining_integration_contingency_kg"]:.3f} kg unused integration reserve. It has {summary["planning_margin_to_program_maximum_kg"]:.3f} kg to the 12 kg P0.1 maximum, but misses the 10 kg lightweight stretch objective by {-summary["planning_margin_to_lightweight_stretch_kg"]:.3f} kg. Received-part variation is not closed.</p></article>',
         web,
         count=1,
     )
@@ -666,7 +709,7 @@ def generate_into_package() -> dict:
     write_csv(OUT / "link-mass-reconciliation.csv", link_rows)
     write_lightweight_register(summary)
     write_mass_properties(dynamics_rows, summary)
-    write_allocation_register(dynamics_rows)
+    write_allocation_register(dynamics_rows, summary)
     system.write_urdf(dynamics_rows, system.joint_rows())
     system.write_mjcf(dynamics_rows, system.joint_rows())
     update_docs(summary)
