@@ -19,23 +19,23 @@ hr30-whole-body-electrical-p0.1.kicad_sch,9230,b05c050c8f702802fa450a4c5abbbef50
 hr30-whole-body-electrical-p0.1.kicad_sym,157058,bab2fe1f4b708cd73d9c5d7a02cb5d8e1750a7920dac79c2c578482fab90f9c8
 native-kicad-source.py,31855,263a330be86bccbfed2bb437fe72f79c3b539403092fa556b21b829185021e62
 net-schedule.csv,17516,ac631ab9d62c7ace62f66ef031f97d707bff061f9302a33e7ef87c0d7b909a4c
-"output/hr30-whole-body-electrical-p0.1-01 Energy, service disconnect, precharge and conversion.svg",947432,a65f95fe29bb5b90d305158ed8712e962e50a50ef2260dc441939d726e91205f
-"output/hr30-whole-body-electrical-p0.1-02 Dual-channel E-stop, monitored reset, permit and redundant interruption.svg",972564,219ba52d27e1ef0dfc40c0ab6aabec43db47a5f20893d32fe5604fbce764026a
-"output/hr30-whole-body-electrical-p0.1-03 Conversational compute, deterministic motion controller and watchdog.svg",1626265,a4e0579457bf6abd238f1e10dcf824f61d340235944739e98691ea8eed349460
-output/hr30-whole-body-electrical-p0.1-04 Five isolated RS-485 and three protected TTL interface channels.svg,1339830,c2865ec6729659317a95b9009ce19dcb5d91946bbeffae8774b9468bd67677e3
-output/hr30-whole-body-electrical-p0.1-05 Left-leg RS-485 and protected branch.svg,1276641,16c637dd22e04433a2f006edfe8080edb81cf7c65099a6920981cb0a3f1fe089
-output/hr30-whole-body-electrical-p0.1-06 Right-leg RS-485 and protected branch.svg,1309562,d31f8d67a0118b294ce5d8f073f7f0232d23d451d051c5abf4ea7cf270591cbd
-output/hr30-whole-body-electrical-p0.1-07 Left proximal-arm RS-485 and protected branch.svg,927208,4d188e47a9d4811cfc61348529a5c7060048a6f970dd7fce0987ebfe830d2090
-output/hr30-whole-body-electrical-p0.1-08 Right proximal-arm RS-485 and protected branch.svg,977926,efe769a1d4c4c8bb2db0753344b20aa3a1f1f94903cecf6b1f7c02aa76ea51cb
-output/hr30-whole-body-electrical-p0.1-09 Waist RS-485 and protected branch.svg,725895,f75366695fb4f705cfd752f578ef12c2eb208f5144f9589f524b6ff8f407e272
-output/hr30-whole-body-electrical-p0.1-10 Left wrist_gripper TTL and protected branch.svg,779640,521bb9a73725fe1c5fc47bb5791ad83b44a9db66376117a54aa7fd0c0b9defa4
-output/hr30-whole-body-electrical-p0.1-11 Right wrist_gripper TTL and protected branch.svg,778342,09f66c485cb6763536d5936c75d5f775fd3f07f1e6854e658dfcae70bb84945d
-"output/hr30-whole-body-electrical-p0.1-12 Head TTL, sensing, display and audio.svg",924260,3f02672195515a623519ff55d9368ca94be74604b9fba9d8bb0dcaf5f78553c4
-output/hr30-whole-body-electrical-p0.1.svg,727797,cd76b0b06aa6eab4e55bfad72c44169a706b6f390aa6e85a7223905b945fa4cd
+"output/hr30-whole-body-electrical-p0.1-01 Energy, service disconnect, precharge and conversion.svg",947432,7d4bd2cfc59adbb418fe3fb8a9dfad647734dcaf3d7539273becd4abc86fe2a6
+"output/hr30-whole-body-electrical-p0.1-02 Dual-channel E-stop, monitored reset, permit and redundant interruption.svg",972564,4b5198cb3e745e3ae0c931ce136c2e4da77ac1c2fd278e1c74505bb98841a7c0
+"output/hr30-whole-body-electrical-p0.1-03 Conversational compute, deterministic motion controller and watchdog.svg",1626265,60980a4b012fa0d03b681f59da644c0ab987224b0d80743bafb2956cfa7bb845
+output/hr30-whole-body-electrical-p0.1-04 Five isolated RS-485 and three protected TTL interface channels.svg,1339830,3a91437edb9de41a4412b1d6e9cd046b660f478e376d8f6a76117aab8f6d4bb2
+output/hr30-whole-body-electrical-p0.1-05 Left-leg RS-485 and protected branch.svg,1276641,cfc64b08ba4e4e0c8c9fc77692a80af1b56d1fda5072e7fec71186d51277d8c4
+output/hr30-whole-body-electrical-p0.1-06 Right-leg RS-485 and protected branch.svg,1309562,518bd1d99b090d173d9497834b0d9fc8c789f931bb87827deb1c77b02348b202
+output/hr30-whole-body-electrical-p0.1-07 Left proximal-arm RS-485 and protected branch.svg,927208,ac03934af4b0b7720579a6aee379106d95f2b4a9d7cee85d7d6d774543a3e1cd
+output/hr30-whole-body-electrical-p0.1-08 Right proximal-arm RS-485 and protected branch.svg,977926,fecc89578ead4ff1378186a64343a056b624cfacc6c430cf3da1baf4e9c1c9de
+output/hr30-whole-body-electrical-p0.1-09 Waist RS-485 and protected branch.svg,725895,011dbf1a21bc566f37bcec1479abe4f45c98950da7c20fc2b2f9f2d9aa35b50d
+output/hr30-whole-body-electrical-p0.1-10 Left wrist_gripper TTL and protected branch.svg,779640,662926f1586afbd6360632318dc71b93b1e6130f89c1fb621357c4331b109960
+output/hr30-whole-body-electrical-p0.1-11 Right wrist_gripper TTL and protected branch.svg,778342,d622be7799222dc42bdb6e9f1d86b17fa9decd01400f7a384584171e9de11007
+"output/hr30-whole-body-electrical-p0.1-12 Head TTL, sensing, display and audio.svg",924260,0b50500454d063cc9fbabc3ac33a5898581fe5d1d8bebffb26ee70e0b1712e0d
+output/hr30-whole-body-electrical-p0.1.svg,727797,558bc677b74b10274476988901bc2398904a1fc5f39484e83801cda774da1ecf
 README.md,2015,1898be69bb9b09e8b6b19c1a7b05bf48cb7b1b672e8737eed72580b352b49bfa
 sym-lib-table,190,fcdc903ab65ae05d44df8e51fe1041d07a718b2fe8b8872d0fe669c54750ac26
 unresolved-selections.csv,18969,f0b19daf8b3053e5cb0a986740497a0526a4081f001e9c49b27bb1d3dc126f5a
-validation/hr30-whole-body-electrical-p0.1-erc.rpt,1183,d2e498dc826974fce02120495acf64a91d7912bc72d12a4785771a0047b7bb2a
-validation/hr30-whole-body-electrical-p0.1.net,311406,ca87d5fe519f052fca0b7ad962879f43b0deeb9eede345d6a7ccdd8c70cb3b7a
-validation/kicad-cli.log,5347,5d0005eab3a3ce384c97144f4084b0d488ae039b282446d96ca00ed522978098
+validation/hr30-whole-body-electrical-p0.1-erc.rpt,1183,55bda9ca5f77c0510833e495570121a6ce7aa58b848135e543c9e8dd263817a1
+validation/hr30-whole-body-electrical-p0.1.net,311406,e264175303bbb29ecc3a529769ae8b5f37802c2f9c2967f62561db5e41c9a020
+validation/kicad-cli.log,5347,414f3802f886cca188d12f920ec8cf5e1444c6f33c6ccca6db9ebfc810df1123
 wire-number-table.csv,23881,2f3ed19e773e6af415ef1654d981700405ed28717c8fe5bea75139655127f0b5

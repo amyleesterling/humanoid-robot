@@ -13,6 +13,7 @@ import csv
 import hashlib
 import html
 import json
+import math
 import shutil
 import sys
 from collections import Counter, defaultdict
@@ -169,15 +170,17 @@ def build(axes: list[dict] | None = None) -> list[Fastener]:
             # carrier B-Rep.  This avoids assuming CadQuery's face-workplane
             # in-plane orientation and binds the screws to the manufactured
             # hole geometry rather than merely repeating nominal coordinates.
-            cylindrical_centers = [face.Center() for face in carrier.Faces() if face.geomType() == "CYLINDER"]
+            expected_clearance_wall_area = math.pi * float(family["hole_d"]) * float(family["plate_t"])
+            cylindrical_centers = [
+                face.Center()
+                for face in carrier.Faces()
+                if face.geomType() == "CYLINDER"
+                and abs(float(face.Area()) - expected_clearance_wall_area) <= 1e-4
+            ]
             unique_centers: dict[tuple[float, float, float], cq.Vector] = {}
             for candidate in cylindrical_centers:
                 unique_centers[(round(candidate.x, 6), round(candidate.y, 6), round(candidate.z, 6))] = candidate
-            hole_centers = sorted(
-                unique_centers.values(),
-                key=lambda candidate: (candidate - plate_center).Length,
-                reverse=True,
-            )[:4]
+            hole_centers = list(unique_centers.values())
             if len(hole_centers) != 4 or min((candidate - plate_center).Length for candidate in hole_centers) < 5.0:
                 raise RuntimeError(f"could not recover four physical carrier holes for {axis_id} {end_name}")
             hole_centers.sort(key=lambda candidate: (

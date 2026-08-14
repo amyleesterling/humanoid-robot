@@ -245,36 +245,78 @@ def interface_plate(
     shaft_diameter: float,
 ) -> cq.Shape:
     plane = local_plane(center, direction)
-    # Preserve the complete outer datum and four bolt pads while replacing the
-    # old solid slab with a closed rectangular carrier frame.  Construct every
-    # cut from the frozen joint-local plane: selecting a face and opening a new
-    # workplane can rotate its in-plane axes on non-global joint orientations.
-    plate = cq.Workplane(plane).box(width, height, thickness).val()
-    window_x = max(8.0, pattern_x - 10.0)
-    window_y = max(8.0, pattern_y - 10.0)
-    window = cq.Workplane(plane).box(window_x, window_y, thickness + 2.0).val()
-    frame = plate.cut(window)
-    spoke_w = max(5.0, clearance_diameter + 2.0)
-    cross_x = cq.Workplane(plane).box(window_x + 2.0, spoke_w, thickness).val()
-    cross_y = cq.Workplane(plane).box(spoke_w, window_y + 2.0, thickness).val()
+    # Preserve the controlled outer envelope and all four bolt centers while
+    # replacing the heavy rectangular perimeter frame with a four-pad truss.
+    # Every pad is joined both radially to the shaft hub and around the outer
+    # perimeter, so the candidate remains one connected carrier rather than a
+    # collection of decorative/disconnected solids.  Construct all geometry in
+    # the frozen joint-local plane; face-derived workplanes can rotate their
+    # in-plane axes on non-global joint orientations.
+    margin_x = (width - pattern_x) / 2.0
+    margin_y = (height - pattern_y) / 2.0
+    pad_radius = min(margin_x, margin_y)
+    required_pad_radius = clearance_diameter / 2.0 + 2.0
+    if pad_radius < required_pad_radius:
+        raise RuntimeError("joint carrier envelope does not leave a 2 mm bolt-hole ligament")
+
+    spoke_w = max(clearance_diameter + 1.5, thickness + 1.0)
+    local_holes = [
+        (-pattern_x / 2.0, -pattern_y / 2.0),
+        (-pattern_x / 2.0, pattern_y / 2.0),
+        (pattern_x / 2.0, pattern_y / 2.0),
+        (pattern_x / 2.0, -pattern_y / 2.0),
+    ]
+
+    def local_strut(a: tuple[float, float], b: tuple[float, float], strut_width: float) -> cq.Shape:
+        dx, dy = b[0] - a[0], b[1] - a[1]
+        length = (dx * dx + dy * dy) ** 0.5
+        if length <= 0.0:
+            raise RuntimeError("zero-length joint-carrier strut")
+        px, py = -dy / length * strut_width / 2.0, dx / length * strut_width / 2.0
+        polygon = [
+            (a[0] + px, a[1] + py),
+            (b[0] + px, b[1] + py),
+            (b[0] - px, b[1] - py),
+            (a[0] - px, a[1] - py),
+        ]
+        return cq.Workplane(plane).polyline(polygon).close().extrude(thickness / 2.0, both=True).val()
+
+    local_origin = cq.Vector(*center)
+    carrier: cq.Shape | None = None
+    hole_centers: list[cq.Vector] = []
+    for local_x, local_y in local_holes:
+        hole_center = local_origin + plane.xDir.multiply(local_x) + plane.yDir.multiply(local_y)
+        hole_centers.append(hole_center)
+        pad = cylinder_between(
+            (hole_center.x, hole_center.y, hole_center.z), direction, thickness, pad_radius * 2.0
+        )
+        carrier = pad if carrier is None else carrier.fuse(pad)
+        carrier = carrier.fuse(local_strut((0.0, 0.0), (local_x, local_y), spoke_w))
+
+    # Close the truss around the four pads to retain an explicit torsional path.
+    for index, start in enumerate(local_holes):
+        carrier = carrier.fuse(local_strut(start, local_holes[(index + 1) % len(local_holes)], spoke_w))
+
+    hub_outer_diameter = shaft_diameter + 2.0 * max(2.5, thickness * 0.6)
+    hub = cylinder_between(center, direction, thickness, hub_outer_diameter)
     center_bore = cylinder_between(center, direction, thickness + 2.0, shaft_diameter + 0.6)
-    carrier = frame.fuse(cross_x).fuse(cross_y).cut(center_bore)
+    carrier = carrier.fuse(hub).cut(center_bore)
 
     # Cut the four clearance holes last so neither the frame nor its reinforcing
     # cross can refill them.  This is also the geometry contract consumed by the
     # located-fastener package and its zero-carrier-intersection check.
-    local_origin = cq.Vector(*center)
-    for local_x in (-pattern_x / 2.0, pattern_x / 2.0):
-        for local_y in (-pattern_y / 2.0, pattern_y / 2.0):
-            hole_center = local_origin + plane.xDir.multiply(local_x) + plane.yDir.multiply(local_y)
-            clearance = cylinder_between(
-                (hole_center.x, hole_center.y, hole_center.z),
-                direction,
-                thickness + 2.0,
-                clearance_diameter,
-            )
-            carrier = carrier.cut(clearance)
-    return carrier
+    for hole_center in hole_centers:
+        clearance = cylinder_between(
+            (hole_center.x, hole_center.y, hole_center.z),
+            direction,
+            thickness + 2.0,
+            clearance_diameter,
+        )
+        carrier = carrier.cut(clearance)
+    # Collapse the redundant splitter faces created by repeated truss unions.
+    # This preserves the exact solid/volume while keeping whole-body native STEP
+    # assemblies below GitHub's 100 MB per-file transport limit.
+    return carrier.clean()
 
 
 def bearing_ring(center: tuple[float, float, float], direction: tuple[float, float, float], width: float, outer_diameter: float, shaft_diameter: float) -> cq.Shape:
