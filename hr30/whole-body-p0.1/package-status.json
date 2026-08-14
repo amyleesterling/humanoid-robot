@@ -109,5 +109,11 @@
   "native_hr30_kicad_logical_connectivity_reconciled": true,
   "native_hr30_kicad_physical_pins_selected": false,
   "native_hr30_kicad_erc_errors": 0,
-  "native_hr30_kicad_erc_warnings": 0
+  "native_hr30_kicad_erc_warnings": 0,
+  "whole_body_interface_atlas_present": true,
+  "module_interface_control_count": 12,
+  "module_interface_axis_ownership_count": 25,
+  "module_interface_mass_reconciliation_kg": 11.458218,
+  "dimensioned_whole_body_front_side_reference_present": true,
+  "module_interface_mass_rounding_delta_kg": 2e-06
 }
