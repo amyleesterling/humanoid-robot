@@ -171,5 +171,12 @@
   "actuator_interface_carrier_fabrication_outputs_released": false,
   "actuator_interface_carrier_stackup_candidate": "JLC06161H-3313",
   "actuator_interface_carrier_isolation_moat_count": 5,
-  "actuator_interface_carrier_fabrication_candidate_outputs_generated": true
+  "actuator_interface_carrier_fabrication_candidate_outputs_generated": true,
+  "physical_harness_package_present": true,
+  "physical_harness_route_segments": 62,
+  "physical_harness_route_points": 124,
+  "physical_harness_axes_bound": 25,
+  "physical_harness_logical_terminals_retained": 549,
+  "physical_harness_selected": false,
+  "physical_harness_validated": false
 }

@@ -63,3 +63,10 @@ Eight protected bus-branch candidates now map all 25 actuator drops through 12 l
 
 The eight whole-body actuator buses now have **86 sourced circuit parts** across two routed native 82 × 42 mm KiCad PCB candidates. Carrier A contains four complete ISOW1432 isolated RS-485 application networks; Carrier B contains one more plus three SN74LVC1T45 TTL networks. KiCad verifies the carrier schematic at ERC 0/0 and both boards at DRC 0/0 with zero unconnected pads. Five all-copper rule areas protect the isolator moats, and the native sources bind the JLC06161H-3313 nominal 1.6 mm candidate stackup. Layer-by-layer SVGs and machine-readable DFM/fabrication candidates are published for inspection, but no output is released for ordering, assembly, connection or energization. Open `electrical/carriers-p0.1/index.html` for the routed layer guide.
 <!-- HR30-CARRIERS-P01-END -->
+
+
+## Physical whole-body harness P0.1
+
+The [interactive physical harness guide](harness/physical-p0.1/index.html) translates the logical ECAD into 62 route segments: 12 reserved body corridors and two moving-loop candidates at every one of the 25 joint axes. It retains all 549 current logical terminals and binds every installed equipment item without inventing unresolved conductor sizes, fuse values, connectors, or cable order codes.
+
+This is routing and interface architecture, not a released cable set. Eight actuator branches are separately protected; the 25 actuator drops are not individually fused. Custom data-only/power-injection breakouts, cable sizing, protection, retention, flex-life, EMC, and physical validation remain selection required.
