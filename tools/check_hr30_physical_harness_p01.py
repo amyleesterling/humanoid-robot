@@ -42,6 +42,9 @@ def main() -> int:
     connectors = rows("connector-instance-register.csv")
     contacts = rows("connector-contact-map.csv")
     cores = rows("cable-core-register.csv")
+    chains = rows("actuator-chain-contact-map.csv")
+    power_pairs = rows("individual-power-pair-register.csv")
+    data_links = rows("serial-data-link-register.csv")
     equipment = rows("equipment-interface-register.csv")
     logical = rows("logical-terminal-binding.csv")
     assemblies = rows("harness-assembly-register.csv")
@@ -53,14 +56,15 @@ def main() -> int:
     unresolved = rows("unresolved-harness-selections.csv")
     source = rows("source-register.csv")
 
-    require(len(axes) == len(loops) == len(power) == len(links) == len(connectors) == len(retain) == len(derating) == 25, "25-axis register spine incomplete")
+    require(len(axes) == len(loops) == len(power) == len(links) == len(chains) == len(power_pairs) == len(data_links) == len(retain) == len(derating) == 25, "25-axis register spine incomplete")
+    require(len(connectors) == 42, "25 input plus 17 outgoing data-only connector instances required")
     require(len(routes) == 62 and len(points) == 124, "route geometry count drift")
     require(Counter(r["segment_kind"] for r in routes) == {"MOVING JOINT LOOP": 50, "FIXED BODY CORRIDOR": 12}, "fixed/moving route split drift")
     require(len(assemblies) == 14 and len(terminations) == len(shields) == 8, "assembly/bus completeness drift")
     with (WB / "electrical/kicad/hr30-whole-body-electrical-p0.1/connector-schedule.csv").open(encoding="utf-8-sig", newline="") as handle:
         ecad_terminals = list(csv.DictReader(handle))
     require(len(equipment) == 54 and len(logical) == len(ecad_terminals), "equipment or logical-terminal binding incomplete")
-    require(len(contacts) == len(cores) == 94, "actuator contact/core mapping drift")
+    require(len(contacts) == 159 and len(cores) == 94, "actuator contact/core mapping drift")
     require(len(inspections) >= 10 and len(unresolved) >= 10, "inspection/open-selection registers incomplete")
 
     axis_ids = {r["axis_id"] for r in axes}
@@ -82,17 +86,45 @@ def main() -> int:
     require(all("ONE DISTINCT PROTECTION / TELEMETRY BOUNDARY PER ACTUATOR" in r["protection_topology"] for r in power), "25 individual protection boundaries missing")
     require({r["branch_net"] for r in power} == {axis + "_VDD" for axis in axis_ids}, "individual actuator VDD net binding drift")
     require(all("STANDARD DYNAMIXEL CABLE VDD" in r["vdd_isolation_rule"] for r in links), "VDD backfeed boundary missing")
+    require(all("SERIAL DATA TRUNK" in r["topology_state"] for r in chains), "serial chain topology missing")
+    require(sum(r["successor_axis"] != "FAR END" for r in chains) == 17, "expected 17 inter-actuator outgoing data connectors")
+    require(sum(r["successor_axis"] == "FAR END" for r in chains) == 8, "expected one far end per data bus")
+    by_bus_chain: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in chains:
+        by_bus_chain[row["bus_id"]].append(row)
+    for bus, values in by_bus_chain.items():
+        values.sort(key=lambda row: int(row["ordinal"]))
+        for index, row in enumerate(values):
+            expected_upstream = f"CB-{bus}" if index == 0 else f"J-OUT-{values[index - 1]['axis_id']}"
+            expected_successor = values[index + 1]["axis_id"] if index + 1 < len(values) else "FAR END"
+            require(row["upstream_data_endpoint"] == expected_upstream, f"chain predecessor mismatch {row['axis_id']}")
+            require(row["successor_axis"] == expected_successor, f"chain successor mismatch {row['axis_id']}")
+            require("1=INDIVIDUAL RETURN; 2=INDIVIDUAL VDD" in row["input_pin_map"], f"input power pair mapping missing {row['axis_id']}")
+            if expected_successor != "FAR END":
+                require("1=EMPTY; 2=EMPTY" in row["outgoing_pin_map"], f"outgoing GND/VDD cavities not empty {row['axis_id']}")
+    require(all(float(row["one_way_planning_length_mm"]) > 0 and abs(float(row["round_trip_planning_length_mm"]) - 2 * float(row["one_way_planning_length_mm"])) < 0.0011 for row in power_pairs), "power-pair planning lengths missing")
+    require(all(float(row["planning_length_mm"]) > 0 for row in data_links), "serial data-link planning lengths missing")
 
     by_connector = Counter(r["connector_id"] for r in contacts)
     for c in connectors:
         require(by_connector[c["connector_id"]] == int(c["contact_count"]), f"contact count mismatch {c['connector_id']}")
-    require({r["core_id"] for r in cores} == {r["wire_core"] for r in contacts}, "contact/core references mismatch")
+    used_contact_cores = {r["wire_core"] for r in contacts if not r["wire_core"].startswith("NONE")}
+    require({r["core_id"] for r in cores} == used_contact_cores, "contact/core references mismatch")
+    outgoing_contacts = [r for r in contacts if r["connector_id"].startswith("J-OUT-")]
+    require(sum(r["signal"].startswith("EMPTY") for r in outgoing_contacts) == 34, "outgoing GND/VDD empty-cavity count drift")
+    require(all(r["wire_core"] == "NONE - CAVITY EMPTY" for r in outgoing_contacts if r["signal"].startswith("EMPTY")), "empty outgoing cavity has a conductor")
+    for core in cores:
+        if core["service"] in {"ACTUATOR POWER", "POWER RETURN"}:
+            require(core["from_connector_contact"].startswith(f"PBR-{core['axis_id']}/"), f"individual power-pair source missing {core['core_id']}")
+    require(all(float(r["length_mm"]) > 0 and r["calculation_state"].startswith("PARTIAL - LENGTH PRESENT") for r in derating), "geometry-derived derating lengths missing or overclaimed")
     require(all(r["physical_connector"] == "SELECTION REQUIRED" for r in equipment), "equipment connector closure overclaimed")
     require(all(r["physical_binding_state"].startswith("LOGICAL TERMINAL RETAINED") for r in logical), "logical terminal lost or overclaimed")
 
     false_gates = ["standard_dynamixel_cable_direct_use_approved", "assembled_cables_selected", "conductor_sizing_released", "protection_released", "connector_set_released", "harness_validated", "procurement_authority", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]
     require(all(status[k] is False for k in false_gates), "authority/selection gate overclaimed")
     require(status["total_route_segments"] == 62 and status["logical_terminals"] == len(ecad_terminals), "status count drift")
+    require(status["split_harness_candidate_defined"] is True and status["data_star_topology_rejected"] is True and status["serial_data_predecessor_successor_chain_complete"] is True, "split-harness status missing")
+    require(status["actuator_connector_instances"] == 42 and status["actuator_connector_contacts"] == 159 and status["serial_data_links"] == status["individual_power_pairs"] == 25, "split-harness status counts drift")
 
     for s in source:
         p = ROOT / s["source"]
@@ -116,6 +148,9 @@ def main() -> int:
     require("font-size:14px" in page and "font:16px/1.5" in page, "web guide legibility floor missing")
     require(not re.search(r"font-size\s*:\s*(?:[0-9]|1[01])px", page), "web guide contains text below 12 px")
     require(svg.count('class="joint"') == 25 and svg.count('class="route ') == 62, "SVG route/joint completeness drift")
+    diagrams = sorted((OUT / "bus-diagrams").glob("*.svg"))
+    require(len(diagrams) == 8 and all("Outgoing pins 1/2 EMPTY" in path.read_text(encoding="utf-8") for path in diagrams), "eight serial bus assembly drawings missing")
+    require("Eight serial data-chain assembly drawings" in page and "actuator-chain-contact-map.csv" in page, "interactive split-harness guide missing")
     require(not list(OUT.rglob("*.pdf")), "physical harness package must remain web/register native")
 
     whole_readme = (WB / "README.md").read_text(encoding="utf-8")
@@ -126,7 +161,7 @@ def main() -> int:
     require(whole_status.get("physical_harness_package_present") is True, "whole-body status integration missing")
     require(whole_status.get("physical_harness_selected") is False and whole_status.get("physical_harness_validated") is False, "whole-body harness status overclaimed")
 
-    print(f"PASS: HR-30 physical harness: 25 separate actuator feeds, 8 data buses, 62 routes, 94 contacts/cores, 54 equipment, {len(logical)} logical terminals; all release/authority gates false")
+    print(f"PASS: HR-30 physical harness: 25 individual power pairs, 25 serial data links, 42 connectors / 159 cavities / 94 conductors, 8 bus drawings, 62 routes, 54 equipment, {len(logical)} logical terminals; all release/authority gates false")
     return 0
 
 

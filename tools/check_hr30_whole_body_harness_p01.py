@@ -35,6 +35,8 @@ def main() -> int:
     need(sum(r["service_class"] == "ACTUATOR POWER" for r in corridors) == 6, "six power routes required")
     need(len(boundaries) == 33 and sum(r["boundary_type"] == "CONTROLLER / SEGMENT DATA-ONLY" for r in boundaries) == 8, "connector boundaries incomplete")
     need(all("GHR-0" in r["mating_part"] and "SELECTION REQUIRED" not in r["known_pin_mapping"] for r in boundaries if r["boundary_type"] == "CONTROLLER / SEGMENT DATA-ONLY"), "controller-side data-only connector candidate missing")
+    controller_boundaries = [r for r in boundaries if r["boundary_type"] == "CONTROLLER / SEGMENT DATA-ONLY"]
+    need(all(("BM03B" in r["known_pin_mapping"] and "GHR-03V-S" in r["mating_part"]) or ("BM02B" in r["known_pin_mapping"] and "GHR-02V-S" in r["mating_part"]) for r in controller_boundaries), "controller-side JST GH housing circuit count mismatch")
     need(len(assemblies) == 14 and len({r["assembly_id"] for r in assemblies}) == 14, "fourteen whole-body harness assemblies missing")
     installed = list(csv.DictReader((PKG / "installed-equipment-register.csv").open(encoding="utf-8")))
     need(len(equipment) == len(installed) == 54 and {r["item_id"] for r in equipment} == {r["item_id"] for r in installed}, "installed equipment harness completeness missing")

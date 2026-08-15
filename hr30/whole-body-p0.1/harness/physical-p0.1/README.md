@@ -6,7 +6,7 @@ This is the first complete physical translation of the HR-30 logical wiring arch
 
 It contains 12 body corridors plus 50 explicit moving-joint power/data loops (62 route segments and 124 route points). Each actuator has a known device-side contact map, a branch-power relationship, a data-link boundary, a moving-loop obligation, retention obligation, derating inputs, and an inspection path.
 
-The architecture now allocates one separately protected power feed to every actuator. A standard ROBOTIS X3P/X4P daisy cable carries VDD, so it cannot be used unchanged because it would parallel those 25 feeds. A custom/de-pinned data-only harness or power-injection breakout remains **SELECTION REQUIRED**.
+The architecture now defines one two-conductor power pair per actuator and a serial data chain for each bus. Every actuator input housing receives its own return, VDD, and data contacts. Every inter-actuator outgoing housing populates only the data contacts: GND and VDD cavities remain empty, so no power current is daisy-chained through a preceding actuator connector. This controlled split-harness is the P0.1 construction candidate; crimp tooling, conductor selection, cavity inspection, no-backfeed tests, and fault injection remain required before release.
 
 The 76.08 A figure is only the sum of manufacturer 12 V momentary stall-current endpoints. It is not expected demand, a conductor rating, a fuse value, or permission to power the robot.
 

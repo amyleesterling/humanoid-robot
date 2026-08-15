@@ -50,9 +50,9 @@ Every one of the 98 physical frame, removable-cover, and gripper-mechanism candi
 
 ## Physical whole-body harness P0.1
 
-The [interactive physical harness guide](harness/physical-p0.1/index.html) translates the logical ECAD into 62 route segments: 12 reserved body corridors and two moving-loop candidates at every one of the 25 joint axes. It retains all 667 current logical terminals and binds every installed equipment item without inventing unresolved conductor sizes, fuse values, connectors, or cable order codes.
+The [interactive physical harness guide](harness/physical-p0.1/index.html) translates the logical ECAD into 62 route segments: 12 reserved body corridors and two moving-loop candidates at every one of the 25 joint axes. It retains all 667 current logical terminals and binds every installed equipment item without inventing unresolved conductor sizes or protection values.
 
-This is routing and interface architecture, not a released cable set. All 25 actuator feeds have distinct protection boundaries, but no protection value or implementation is released. Custom data-only/power-injection breakouts, cable sizing, retention, flex-life, EMC, and physical validation remain selection required.
+The P0.1 split-harness candidate uses 25 individual positive/return power pairs and eight serial data chains. Incoming actuator housings combine the individual pair with data; outgoing inter-actuator housings populate data contacts only and leave GND/VDD cavities empty. The eight bus assembly drawings and 25 contact maps are construction candidates, not a released cable set. Protection, conductor sizing, crimp process qualification, retention, flex-life, EMC, and physical validation remain open.
 
 ## Whole-body energy and safety spine P0.1
 
@@ -72,6 +72,10 @@ The [detailed gripper package](grippers-p0.1/index.html) replaces the prior hand
 
 The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 54 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
 <!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+
+
+
+
 
 <!-- HR30-HARNESS-README-START -->
 ## Whole-body harness

@@ -14,6 +14,7 @@ import html
 import json
 import math
 import shutil
+from collections import defaultdict
 from pathlib import Path
 
 
@@ -115,6 +116,18 @@ def build() -> dict[str, int | float]:
 
     by_axis = {r["axis_id"]: r for r in axes}
     binding_by_axis = {r["axis_id"]: r for r in bindings}
+    bus_bindings: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for binding in bindings:
+        bus_bindings[binding["bus_id"]].append(binding)
+    for values in bus_bindings.values():
+        values.sort(key=lambda row: int(row["segment_position_provisional"]))
+    predecessor: dict[str, str | None] = {}
+    successor: dict[str, str | None] = {}
+    for values in bus_bindings.values():
+        for index, binding in enumerate(values):
+            predecessor[binding["axis_id"]] = values[index - 1]["axis_id"] if index else None
+            successor[binding["axis_id"]] = values[index + 1]["axis_id"] if index + 1 < len(values) else None
+    trunk_by_id = {row["route_id"]: row for row in trunks}
 
     source_paths = [
         WB / "joint-axis-schedule.csv", WB / "actuator-bus-axis-binding.csv",
@@ -167,6 +180,9 @@ def build() -> dict[str, int | float]:
     connector_rows: list[dict] = []
     contact_rows: list[dict] = []
     core_rows: list[dict] = []
+    chain_rows: list[dict] = []
+    power_pair_rows: list[dict] = []
+    data_link_rows: list[dict] = []
     retention_rows: list[dict] = []
     derating_rows: list[dict] = []
     stall = {"XH540": 4.9, "XM540": 4.4, "XM430": 2.3, "XC330": 0.88}
@@ -220,13 +236,62 @@ def build() -> dict[str, int | float]:
             "fault_current_length_ambient_bundling_inrush_duty_jurisdiction": "ALL REQUIRED",
             "authority": AUTHORITY,
         })
+        previous_axis = predecessor[axis]
+        next_axis = successor[axis]
+        protocol_is_rs = binding["protocol"].startswith("RS-485")
+        data_signals = ["DATA+", "DATA-"] if protocol_is_rs else ["DATA"]
+        upstream_endpoint = f"CB-{bus}" if previous_axis is None else f"J-OUT-{previous_axis}"
+        outgoing_endpoint = f"J-OUT-{axis}" if next_axis is not None else "NO OUTGOING CABLE - FAR END"
+        incoming_pin_map = "1=INDIVIDUAL RETURN; 2=INDIVIDUAL VDD; 3=DATA+; 4=DATA-" if protocol_is_rs else "1=INDIVIDUAL RETURN; 2=INDIVIDUAL VDD; 3=DATA"
+        outgoing_pin_map = "1=EMPTY; 2=EMPTY; 3=DATA+; 4=DATA-" if protocol_is_rs else "1=EMPTY; 2=EMPTY; 3=DATA"
+        power_route = trunk_by_id[trunk_for(axis, "POWER")]
+        power_start = xyz(power_route["start_xyz_mm"])
+        power_one_way_mm = dist(power_start, center) + 28.0
+        if previous_axis is None:
+            data_route = trunk_by_id[trunk_for(axis, "DATA")]
+            data_start = xyz(data_route["start_xyz_mm"])
+        else:
+            previous = by_axis[previous_axis]
+            data_start = (float(previous["x_mm"]), float(previous["y_mm"]), float(previous["z_mm"]))
+        data_link_mm = dist(data_start, center) + 20.0
         link_rows.append({
             "link_id": f"LINK-{axis}", "bus_id": bus, "axis_id": axis,
             "ordinal": binding["segment_position_provisional"], "protocol": binding["protocol"],
+            "from_endpoint": upstream_endpoint, "to_endpoint": f"J-ACT-{axis}",
+            "next_endpoint": outgoing_endpoint,
+            "data_conductors": " | ".join(data_signals),
+            "reference_path": "INDIVIDUAL PBR RETURN PAIR TO ACTUATOR PIN 1; NO GND CONDUCTOR IN INTER-ACTUATOR DATA LINK",
             "controller_boundary": binding["controller_side_connector_and_pin_mapping"],
             "actuator_boundary": binding["connector_pin_mapping"],
             "vdd_isolation_rule": "STANDARD DYNAMIXEL CABLE VDD CONTACT MUST NOT PARALLEL A DIFFERENT PROTECTED BRANCH",
-            "custom_breakout_or_depinning": OPEN, "continuity_no_backfeed_test": "NOT EXECUTED", "authority": AUTHORITY,
+            "custom_breakout_or_depinning": "CONTROLLED SPLIT-HARNESS CANDIDATE: INPUT HOUSING COMBINES INDIVIDUAL POWER PAIR WITH DATA; OUTGOING HOUSING HAS GND/VDD CAVITIES EMPTY",
+            "continuity_no_backfeed_test": "NOT EXECUTED", "authority": AUTHORITY,
+        })
+        chain_rows.append({
+            "bus_id": bus, "ordinal": binding["segment_position_provisional"], "axis_id": axis,
+            "upstream_data_endpoint": upstream_endpoint, "input_connector": f"J-ACT-{axis}",
+            "input_pin_map": incoming_pin_map, "individual_power_pair": f"PAIR-{axis}",
+            "outgoing_connector": outgoing_endpoint, "outgoing_pin_map": outgoing_pin_map if next_axis is not None else "NO OUTGOING HARNESS CONNECTOR",
+            "successor_axis": next_axis or "FAR END", "termination_state": "SELECTION REQUIRED AT FAR END" if next_axis is None else "NOT AT THIS NODE",
+            "topology_state": "SERIAL DATA TRUNK / INDIVIDUAL TWO-WIRE POWER PAIR; NO STAR DATA STUBS", "authority": AUTHORITY,
+        })
+        power_pair_rows.append({
+            "pair_id": f"PAIR-{axis}", "axis_id": axis, "bus_id": bus,
+            "positive_net": f"{axis}_VDD", "return_net": f"{bus}_RET",
+            "source_boundary": f"PBR-{axis}", "destination_connector": f"J-ACT-{axis}",
+            "destination_contacts": "1=RETURN; 2=VDD", "one_way_planning_length_mm": f"{power_one_way_mm:.3f}",
+            "round_trip_planning_length_mm": f"{2 * power_one_way_mm:.3f}",
+            "length_basis": "POWER-CORRIDOR START TO AXIS DATUM PLUS 28 mm LOCAL LOOP; CUT LENGTH/SLACK NOT RELEASED",
+            "conductor_selection": OPEN, "authority": AUTHORITY,
+        })
+        data_link_rows.append({
+            "link_id": f"DATA-{axis}", "bus_id": bus, "ordinal": binding["segment_position_provisional"],
+            "from_endpoint": upstream_endpoint, "to_endpoint": f"J-ACT-{axis}",
+            "conductors": " | ".join(data_signals), "conductor_count": len(data_signals),
+            "reference_rule": "ACTUATOR REFERENCE PROVIDED BY INDIVIDUAL POWER-PAIR RETURN; CONTROLLER REFERENCE STAR-TIE/FAULT REVIEW OPEN",
+            "planning_length_mm": f"{data_link_mm:.3f}",
+            "length_basis": "CONTROLLER-CORRIDOR START OR PREDECESSOR AXIS DATUM TO CURRENT AXIS PLUS 20 mm LOCAL LOOP",
+            "twist_impedance_shield": OPEN, "authority": AUTHORITY,
         })
         conn_id = f"J-ACT-{axis}"
         connector_rows.append({
@@ -234,7 +299,7 @@ def build() -> dict[str, int | float]:
             "candidate_housing": binding["actuator_side_housing"], "mating_part": OPEN,
             "contact_order_code": binding["actuator_side_crimp_terminal"], "contact_count": binding["actuator_connector_contacts"],
             "keying_retention_strain_relief": OPEN, "source": binding["official_interface_source"],
-            "source_date": binding["official_interface_accessed_date"], "selection_state": "DEVICE INTERFACE VERIFIED; HARNESS ASSEMBLY OPEN",
+            "source_date": binding["official_interface_accessed_date"], "selection_state": "DEVICE INTERFACE VERIFIED; SPLIT-HARNESS CANDIDATE DEFINED; ASSEMBLY VALIDATION OPEN",
         })
         pins = [("1", "GND", "POWER RETURN"), ("2", "VDD", "ACTUATOR POWER")]
         if binding["protocol"].startswith("RS-485"):
@@ -243,7 +308,10 @@ def build() -> dict[str, int | float]:
             pins += [("3", "DATA", "DATA")]
         for pin, net, service in pins:
             physical_net = f"{axis}_VDD" if net == "VDD" else (f"{bus}_RET" if net == "GND" else f"{bus}_{net}")
-            source_contact = f"PBR-{axis}/{net}" if net == "VDD" else f"BRK-{bus}/{net}"
+            if net in {"VDD", "GND"}:
+                source_contact = f"PBR-{axis}/{'VDD' if net == 'VDD' else 'RET'}"
+            else:
+                source_contact = f"{upstream_endpoint}/{net}"
             contact_rows.append({
                 "connector_id": conn_id, "contact": pin, "axis_id": axis, "signal": net,
                 "bus_net": physical_net, "service": service,
@@ -253,10 +321,34 @@ def build() -> dict[str, int | float]:
             core_rows.append({
                 "core_id": f"CORE-{axis}-{net.replace('+','P').replace('-','N')}", "axis_id": axis,
                 "from_connector_contact": source_contact, "to_connector_contact": f"{conn_id}/{pin}",
-                "net": physical_net, "service": service, "route": pseg if service.startswith("POWER") or service == "ACTUATOR POWER" else dseg,
+                "net": physical_net, "service": service, "route": pseg if service in {"POWER RETURN", "ACTUATOR POWER"} else dseg,
                 "conductor_cross_section": OPEN, "insulation_temperature_flex": OPEN,
-                "shield_or_twist": OPEN, "cut_length_and_slack": OPEN, "authority": AUTHORITY,
+                "shield_or_twist": OPEN,
+                "cut_length_and_slack": f"PLANNING {power_one_way_mm:.3f} mm ONE-WAY; CUT LENGTH/SLACK OPEN" if service in {"POWER RETURN", "ACTUATOR POWER"} else f"PLANNING {data_link_mm:.3f} mm; CUT LENGTH/SLACK OPEN",
+                "authority": AUTHORITY,
             })
+        if next_axis is not None:
+            out_id = f"J-OUT-{axis}"
+            connector_rows.append({
+                "connector_id": out_id, "location": axis, "function": "DATA-ONLY OUTGOING LINK TO " + next_axis,
+                "candidate_housing": binding["actuator_side_housing"], "mating_part": "SECOND ACTUATOR PORT",
+                "contact_order_code": binding["actuator_side_crimp_terminal"], "contact_count": binding["actuator_connector_contacts"],
+                "keying_retention_strain_relief": OPEN, "source": binding["official_interface_source"],
+                "source_date": binding["official_interface_accessed_date"], "selection_state": "PIN 1 AND PIN 2 INTENTIONALLY UNPOPULATED; DATA CONTACTS ONLY; VALIDATION OPEN",
+            })
+            output_pins = [("1", "EMPTY-GND"), ("2", "EMPTY-VDD")]
+            output_pins += [("3", "DATA+"), ("4", "DATA-")] if protocol_is_rs else [("3", "DATA")]
+            for pin, signal in output_pins:
+                is_empty = signal.startswith("EMPTY")
+                core_signal = signal.replace("+", "P").replace("-", "N")
+                contact_rows.append({
+                    "connector_id": out_id, "contact": pin, "axis_id": axis, "signal": signal,
+                    "bus_net": "NO NET - CAVITY EMPTY" if is_empty else f"{bus}_{signal}",
+                    "service": "INTENTIONALLY UNPOPULATED" if is_empty else "DATA",
+                    "wire_core": "NONE - CAVITY EMPTY" if is_empty else f"CORE-{next_axis}-{core_signal}",
+                    "physical_pin_state": "MUST REMAIN EMPTY; NO CONTACT" if is_empty else "DEVICE INTERFACE PIN VERIFIED; DATA-ONLY CONTACT CANDIDATE",
+                    "end_to_end_test": "NOT EXECUTED",
+                })
         retention_rows.append({
             "retention_id": f"RET-{axis}", "axis_id": axis, "power_loop": pseg, "data_loop": dseg,
             "fixed_side_clamp": OPEN, "moving_side_clamp": OPEN, "connector_load_isolation": "REQUIRED",
@@ -264,9 +356,12 @@ def build() -> dict[str, int | float]:
         })
         derating_rows.append({
             "circuit": f"PWR-{axis}", "bus_branch": bus, "endpoint_current_a": f"{amps:.2f}",
-            "normal_rms_current_a": OPEN, "fault_current_a": OPEN, "length_mm": OPEN,
+            "normal_rms_current_a": OPEN, "fault_current_a": OPEN, "length_mm": f"{power_one_way_mm:.3f}",
+            "round_trip_planning_length_mm": f"{2 * power_one_way_mm:.3f}",
+            "length_basis": "GEOMETRY-DERIVED PLANNING LENGTH ONLY; CUT LENGTH AND SLACK OPEN",
             "ambient_c": OPEN, "bundle_count": OPEN, "duty_cycle": OPEN, "inrush": OPEN,
-            "connector_limit_a": OPEN, "conductor_selection": OPEN, "calculation_state": "BLOCKED BY REQUIRED INPUTS",
+            "connector_limit_a": "JST EH CATALOG 3 A BOUNDARY; ACTUATOR ENDPOINT CONFLICT OPEN",
+            "conductor_selection": OPEN, "calculation_state": "PARTIAL - LENGTH PRESENT; RMS/FAULT/AMBIENT/BUNDLING/DUTY/INRUSH STILL REQUIRED",
         })
 
     write_csv(OUT / "route-segment-register.csv", route_rows)
@@ -278,6 +373,9 @@ def build() -> dict[str, int | float]:
     write_csv(OUT / "connector-instance-register.csv", connector_rows)
     write_csv(OUT / "connector-contact-map.csv", contact_rows)
     write_csv(OUT / "cable-core-register.csv", core_rows)
+    write_csv(OUT / "actuator-chain-contact-map.csv", chain_rows)
+    write_csv(OUT / "individual-power-pair-register.csv", power_pair_rows)
+    write_csv(OUT / "serial-data-link-register.csv", data_link_rows)
     write_csv(OUT / "retention-strain-relief-register.csv", retention_rows)
     write_csv(OUT / "current-derating-register.csv", derating_rows)
 
@@ -340,7 +438,7 @@ def build() -> dict[str, int | float]:
     unresolved = [
         ("HSEL-01", "all power conductors", "cross-section/insulation/flex construction", "fault current, RMS/peak duty, length, ambient, bundling, voltage-drop, jurisdiction"),
         ("HSEL-02", "25 actuator power feeds", "individual fuse/current limiter, distribution and disconnect implementation", "prospective fault current, inrush, coordination, DC interrupt rating, connector/conductor limits"),
-        ("HSEL-03", "25 actuator drops", "custom data-only/power-injection breakout construction", "controlled drawing, crimp process, no-backfeed continuity and fault-injection evidence"),
+        ("HSEL-03", "25 actuator drops", "controlled split-harness candidate: individual VDD/return pair into each input housing; serial data-only outgoing housing with GND/VDD cavities empty", "candidate contact drawings now present; crimp process, cavity inspection, no-backfeed continuity and fault-injection evidence still required"),
         ("HSEL-04", "all moving joints", "dynamic cable family, slack and minimum bend radius", "joint sweep, cycle target, torsion, temperature, abrasion and supplier flex data"),
         ("HSEL-05", "eight data buses", "termination/bias/baud/shielding", "measured topology, cable impedance/length, transceiver limits, waveform and EMC tests"),
         ("HSEL-06", "equipment interfaces", "mating connectors/contacts/keying", "manufacturer pinout/revision, voltage/current, retention, service access and procurement availability"),
@@ -351,7 +449,7 @@ def build() -> dict[str, int | float]:
     ]
     write_csv(OUT / "unresolved-harness-selections.csv", [{
         "selection_id": i, "scope": s, "selection": sel, "evidence_needed": e,
-        "state": OPEN, "authority": AUTHORITY,
+        "state": "CANDIDATE DEFINED / VALIDATION REQUIRED" if i == "HSEL-03" else OPEN, "authority": AUTHORITY,
     } for i, s, sel, e in unresolved])
 
     stats = {
@@ -359,13 +457,19 @@ def build() -> dict[str, int | float]:
         "total_route_segments": len(route_rows), "route_points": len(point_rows),
         "axes": len(axis_rows), "buses": len(buses), "harness_assemblies": len(assembly_rows),
         "equipment_items": len(equipment_rows), "logical_terminals": len(logical_rows),
-        "actuator_connector_contacts": len(contact_rows), "cable_cores": len(core_rows),
+        "actuator_connector_instances": len(connector_rows), "actuator_connector_contacts": len(contact_rows),
+        "cable_cores": len(core_rows), "serial_data_links": len(data_link_rows),
+        "individual_power_pairs": len(power_pair_rows), "data_only_outgoing_connectors": sum(1 for r in chain_rows if r["successor_axis"] != "FAR END"),
         "candidate_12v_stall_endpoint_sum_a": round(sum(float(r["candidate_12v_stall_endpoint_a"]) for r in power_rows), 2),
     }
-    write_visuals(route_rows, point_rows, axis_rows, buses, stats)
+    write_visuals(route_rows, point_rows, axis_rows, buses, stats, chain_rows)
     status = {
         "identifier": IDENTIFIER, "warning": WARNING, "scope": "complete HR-30 P0.1 physical harness architecture",
-        **stats, "topology": "25 separately protected actuator feeds / 8 data-only multidrop buses / data-only controller boundaries",
+        **stats, "topology": "25 individual positive/return power pairs / 8 serial data-only trunks / GND and VDD cavities empty in every inter-actuator outgoing connector",
+        "split_harness_candidate_defined": True,
+        "data_star_topology_rejected": True,
+        "serial_data_predecessor_successor_chain_complete": True,
+        "inter_actuator_ground_or_vdd_pass_through_present": False,
         "route_geometry_candidate_present": True, "every_axis_has_power_and_data_loop": True,
         "every_equipment_item_bound": True, "every_logical_terminal_retained": True,
         "standard_dynamixel_cable_direct_use_approved": False, "assembled_cables_selected": False,
@@ -383,7 +487,7 @@ This is the first complete physical translation of the HR-30 logical wiring arch
 
 It contains {stats['fixed_route_segments']} body corridors plus 50 explicit moving-joint power/data loops ({stats['total_route_segments']} route segments and {stats['route_points']} route points). Each actuator has a known device-side contact map, a branch-power relationship, a data-link boundary, a moving-loop obligation, retention obligation, derating inputs, and an inspection path.
 
-The architecture now allocates one separately protected power feed to every actuator. A standard ROBOTIS X3P/X4P daisy cable carries VDD, so it cannot be used unchanged because it would parallel those 25 feeds. A custom/de-pinned data-only harness or power-injection breakout remains **SELECTION REQUIRED**.
+The architecture now defines one two-conductor power pair per actuator and a serial data chain for each bus. Every actuator input housing receives its own return, VDD, and data contacts. Every inter-actuator outgoing housing populates only the data contacts: GND and VDD cavities remain empty, so no power current is daisy-chained through a preceding actuator connector. This controlled split-harness is the P0.1 construction candidate; crimp tooling, conductor selection, cavity inspection, no-backfeed tests, and fault injection remain required before release.
 
 The 76.08 A figure is only the sum of manufacturer 12 V momentary stall-current endpoints. It is not expected demand, a conductor rating, a fuse value, or permission to power the robot.
 
@@ -395,7 +499,7 @@ No cable cut length, conductor size, protection value, complete connector set, r
     return stats
 
 
-def write_visuals(routes: list[dict], points: list[dict], axes: list[dict], buses: list[dict], stats: dict) -> None:
+def write_visuals(routes: list[dict], points: list[dict], axes: list[dict], buses: list[dict], stats: dict, chains: list[dict]) -> None:
     pmap = {p["point_id"]: p for p in points}
     def project(p: dict) -> tuple[float, float]:
         return 390 + float(p["x_mm"]) * 1.72, 720 - float(p["z_mm"]) * 0.86
@@ -412,10 +516,63 @@ def write_visuals(routes: list[dict], points: list[dict], axes: list[dict], buse
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 760" role="img" aria-labelledby="title desc"><title id="title">HR-30 physical harness front map</title><desc id="desc">Complete preliminary routing map with fixed body corridors, joint loops and all 25 actuator axes.</desc><style>text{{font-family:Arial,sans-serif;fill:#0d2d57}}.body{{fill:#d8f1ff;stroke:#123f73;stroke-width:3}}.route{{stroke-width:5;fill:none;stroke-linecap:round;opacity:.86}}.power{{stroke:#f4b400}}.data{{stroke:#179de3}}.joint{{fill:#fff;stroke:#123f73;stroke-width:2}}.label{{font-size:16px;font-weight:700}}</style><rect width="780" height="760" rx="24" fill="#f8fcff"/><g class="body"><rect x="310" y="210" width="160" height="190" rx="24"/><rect x="332" y="68" width="116" height="112" rx="40"/><rect x="350" y="180" width="80" height="35" rx="12"/><rect x="260" y="240" width="48" height="260" rx="22"/><rect x="472" y="240" width="48" height="260" rx="22"/><rect x="320" y="400" width="140" height="75" rx="24"/><rect x="320" y="472" width="58" height="240" rx="22"/><rect x="402" y="472" width="58" height="240" rx="22"/></g><g>{''.join(lines)}</g><g>{''.join(dots)}</g><text class="label" x="24" y="34">Gold: actuator power · Sky blue: data/low voltage · White dots: 25 joints</text><text x="24" y="58" font-size="14">Geometry candidate only; bend radius, slack, clamps, cable OD and joint sweeps remain open.</text></svg>'''
     (OUT / "whole-body-physical-harness.svg").write_text(svg, encoding="utf-8")
 
+    diagram_dir = OUT / "bus-diagrams"
+    if diagram_dir.exists():
+        shutil.rmtree(diagram_dir)
+    diagram_dir.mkdir()
+    diagram_cards = []
+    for bus in buses:
+        bus_id = bus["bus_id"]
+        rows = sorted((row for row in chains if row["bus_id"] == bus_id), key=lambda row: int(row["ordinal"]))
+        width = 280 + 220 * len(rows)
+        nodes = []
+        arrows = []
+        controller = '<rect x="24" y="92" width="180" height="128" rx="16" class="controller"/><text x="40" y="122" class="title">CONTROLLER</text><text x="40" y="150">Data-only JST GH</text><text x="40" y="176">No actuator VDD</text><text x="40" y="202">Reference star tie open</text>'
+        previous_x = 204
+        for index, row in enumerate(rows):
+            x = 250 + index * 220
+            nodes.append(
+                f'<rect x="{x}" y="70" width="184" height="172" rx="16" class="node"/>'
+                f'<text x="{x+16}" y="101" class="title">{html.escape(row["axis_id"])}</text>'
+                f'<text x="{x+16}" y="129">Input: power pair + data</text>'
+                f'<text x="{x+16}" y="157">Pin 1 return / Pin 2 VDD</text>'
+                f'<text x="{x+16}" y="185">Outgoing: data only</text>'
+                f'<text x="{x+16}" y="213">Outgoing pins 1/2 EMPTY</text>'
+            )
+            arrows.append(f'<line x1="{previous_x}" y1="150" x2="{x}" y2="150" class="data" marker-end="url(#arrow)"/>')
+            arrows.append(f'<line x1="{x+92}" y1="278" x2="{x+92}" y2="242" class="power" marker-end="url(#arrowGold)"/><text x="{x+16}" y="302">Individual VDD + return pair</text>')
+            previous_x = x + 184
+        far_x = 250 + len(rows) * 220
+        arrows.append(f'<line x1="{previous_x}" y1="150" x2="{far_x}" y2="150" class="data"/><text x="{far_x-2}" y="142" text-anchor="end">FAR END / termination open</text>')
+        drawing = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} 330" role="img" aria-labelledby="title desc"><title id="title">{html.escape(bus_id)} serial data and individual power harness</title><desc id="desc">Serial data chain through each actuator with separate VDD and return pair at each actuator. Outgoing ground and VDD cavities remain empty.</desc><defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#179de3"/></marker><marker id="arrowGold" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#d99a00"/></marker></defs><style>text{{font:16px Arial,sans-serif;fill:#0d2d57}}.title{{font-weight:700;font-size:17px}}.controller{{fill:#d8f1ff;stroke:#123f73;stroke-width:3}}.node{{fill:white;stroke:#123f73;stroke-width:3}}.data{{stroke:#179de3;stroke-width:5}}.power{{stroke:#d99a00;stroke-width:5}}</style><rect width="100%" height="100%" fill="#f8fcff"/><text x="24" y="36" class="title">{html.escape(bus_id)} / {html.escape(bus["protocol"])} / {len(rows)} axes</text>{controller}{''.join(arrows)}{''.join(nodes)}</svg>'''
+        slug = bus_id.lower()
+        (diagram_dir / f"{slug}.svg").write_text(drawing, encoding="utf-8")
+        diagram_cards.append(f'<article class="diagram"><h3>{html.escape(bus_id)}</h3><div class="diagram-scroll"><img src="bus-diagrams/{slug}.svg" alt="{html.escape(bus_id)} serial data chain and individual power-pair drawing"></div></article>')
+
     bus_cards = "".join(f'<button class="bus" data-bus="{html.escape(b["bus_id"])}"><strong>{html.escape(b["bus_id"])}</strong><span>{html.escape(b["protocol"])} · {html.escape(b["axis_count"])} axes</span><span>{html.escape(b["candidate_12v_stall_endpoint_sum_a"])} A endpoint sum</span></button>' for b in buses)
     axis_cards = "".join(f'<tr data-bus="{html.escape(a["bus_id"])}"><td>{html.escape(a["axis_id"])}</td><td>{html.escape(a["bus_id"])}</td><td>{html.escape(a["actuator_family"])}</td><td>{html.escape(a["axis_xyz_mm"])}</td><td>{html.escape(a["power_loop"])}<br>{html.escape(a["data_loop"])}</td></tr>' for a in axes)
     page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 physical harness P0.1</title><style>:root{{--navy:#0d2d57;--blue:#179de3;--sky:#d8f1ff;--gold:#f4b400;--paper:#f8fcff}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--navy);font:16px/1.5 system-ui,sans-serif}}header{{background:linear-gradient(135deg,var(--navy),#185d9d);color:white;padding:32px max(24px,calc((100% - 1180px)/2))}}h1{{font-size:clamp(32px,5vw,60px);line-height:1.05;margin:.2em 0}}.warning{{background:var(--gold);color:#1b2840;padding:14px 18px;font-weight:800;border-radius:12px}}main{{max-width:1180px;margin:auto;padding:28px 20px 70px}}h2{{font-size:clamp(25px,3vw,38px);margin-top:46px}}.stats,.buses{{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}}.stat,.bus,.panel{{background:white;border:2px solid #9bd5f5;border-radius:16px;padding:18px;box-shadow:0 6px 18px #0d2d5712}}.stat strong{{display:block;font-size:28px}}.bus{{font:inherit;color:inherit;text-align:left;cursor:pointer}}.bus strong,.bus span{{display:block}}.bus.active{{border-color:var(--gold);box-shadow:0 0 0 3px #f4b40055}}.map{{width:100%;max-height:760px}}.tablewrap{{overflow:auto;border:2px solid #9bd5f5;border-radius:16px;background:white}}table{{border-collapse:collapse;width:100%;min-width:900px}}th,td{{padding:13px 14px;border-bottom:1px solid #cfeafa;text-align:left;vertical-align:top}}th{{position:sticky;top:0;background:var(--navy);color:white;font-size:14px}}td{{font-size:14px}}a{{color:#075f9f;font-weight:700}}.open{{border-left:8px solid var(--gold)}}@media(max-width:600px){{header{{padding:24px 18px}}main{{padding:20px 14px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>HR-30 · Whole-body P0.1</p><h1>Physical harness guide</h1><p>Every body corridor, actuator feed, data bus, joint loop and current ECAD terminal is accounted for—without pretending unresolved cable and protection choices are finished.</p></header><main><section class="stats"><div class="stat"><strong>{stats['axes']}</strong>separate actuator feeds</div><div class="stat"><strong>{stats['total_route_segments']}</strong>route segments</div><div class="stat"><strong>{stats['logical_terminals']}</strong>logical terminals</div><div class="stat"><strong>{stats['candidate_12v_stall_endpoint_sum_a']}</strong>A endpoint sum, not demand</div></section><h2>Whole-body route map</h2><div class="panel"><img class="map" src="whole-body-physical-harness.svg" alt="Front map of the HR-30 physical harness routes and joint loops"></div><h2>Eight data buses</h2><p>Select a data bus to filter the joint table; select it again to show all.</p><div class="buses">{bus_cards}</div><h2>All 25 protected-feed candidates</h2><div class="tablewrap"><table><thead><tr><th>Axis</th><th>Data bus</th><th>Actuator</th><th>Joint datum (mm)</th><th>Moving loops</th></tr></thead><tbody>{axis_cards}</tbody></table></div><h2>Critical power boundary</h2><div class="panel open"><p>Each actuator now has its own protection/telemetry boundary and VDD net. Standard ROBOTIS X3P/X4P cables include VDD, so a custom data-only/power-injection breakout or controlled depinning method is required to keep the 25 feeds isolated.</p><p>The 76.08 A figure is the arithmetic sum of momentary 12 V stall-current endpoints—not a normal-load forecast, fuse rating, cable rating, or permission to energize.</p></div><h2>Build registers</h2><div class="panel"><p><a href="route-segment-register.csv">route segments</a> · <a href="route-point-register.csv">route points</a> · <a href="axis-harness-binding.csv">axis bindings</a> · <a href="connector-contact-map.csv">actuator contacts</a> · <a href="cable-core-register.csv">cable cores</a> · <a href="equipment-interface-register.csv">equipment interfaces</a> · <a href="logical-terminal-binding.csv">logical terminals</a> · <a href="current-derating-register.csv">derating inputs</a> · <a href="inspection-test-register.csv">inspection/tests</a> · <a href="unresolved-harness-selections.csv">open selections</a></p></div></main><script>const buttons=[...document.querySelectorAll('.bus')],rows=[...document.querySelectorAll('tbody tr')];buttons.forEach(b=>b.addEventListener('click',()=>{{const on=!b.classList.contains('active');buttons.forEach(x=>x.classList.remove('active'));b.classList.toggle('active',on);rows.forEach(r=>r.hidden=on&&r.dataset.bus!==b.dataset.bus)}}));</script></body></html>'''
     (OUT / "index.html").write_text(page, encoding="utf-8")
+    page_path = OUT / "index.html"
+    page = page_path.read_text(encoding="utf-8")
+    page = page.replace(
+        ".open{border-left:8px solid var(--gold)}",
+        ".open{border-left:8px solid var(--gold)}.diagram{background:white;border:2px solid #9bd5f5;border-radius:16px;padding:18px;margin:18px 0}.diagram-scroll{overflow:auto}.diagram img{display:block;max-width:none;height:330px}",
+    )
+    page = page.replace(
+        '</div><h2>All 25 protected-feed candidates</h2>',
+        '</div><h2>Eight serial data-chain assembly drawings</h2><p>Each actuator receives an individual VDD/return pair. Inter-actuator outgoing connectors carry data only; GND and VDD cavities stay empty.</p>' + "".join(diagram_cards) + '<h2>All 25 protected-feed candidates</h2>',
+        1,
+    )
+    page = page.replace(
+        "Each actuator now has its own protection/telemetry boundary and VDD net. Standard ROBOTIS X3P/X4P cables include VDD, so a custom data-only/power-injection breakout or controlled depinning method is required to keep the 25 feeds isolated.",
+        "Each actuator now has its own positive/return power pair. The P0.1 split-harness candidate combines that pair with incoming data at the actuator input housing, while the outgoing housing populates data contacts only. GND and VDD cavities remain empty so power is not daisy-chained through preceding actuator connectors.",
+    )
+    page = page.replace(
+        '<a href="connector-contact-map.csv">actuator contacts</a> · <a href="cable-core-register.csv">cable cores</a>',
+        '<a href="actuator-chain-contact-map.csv">actuator chain map</a> · <a href="individual-power-pair-register.csv">individual power pairs</a> · <a href="serial-data-link-register.csv">serial data links</a> · <a href="connector-contact-map.csv">all connector cavities</a> · <a href="cable-core-register.csv">cable cores</a>',
+    )
+    page_path.write_text(page, encoding="utf-8")
 
 
 def manifest_and_release() -> None:
@@ -435,9 +592,9 @@ def integrate_whole_body_package(stats: dict) -> None:
 
 {marker}
 
-The [interactive physical harness guide](harness/physical-p0.1/index.html) translates the logical ECAD into {stats['total_route_segments']} route segments: 12 reserved body corridors and two moving-loop candidates at every one of the 25 joint axes. It retains all {stats['logical_terminals']} current logical terminals and binds every installed equipment item without inventing unresolved conductor sizes, fuse values, connectors, or cable order codes.
+The [interactive physical harness guide](harness/physical-p0.1/index.html) translates the logical ECAD into {stats['total_route_segments']} route segments: 12 reserved body corridors and two moving-loop candidates at every one of the 25 joint axes. It retains all {stats['logical_terminals']} current logical terminals and binds every installed equipment item without inventing unresolved conductor sizes or protection values.
 
-This is routing and interface architecture, not a released cable set. All 25 actuator feeds have distinct protection boundaries, but no protection value or implementation is released. Custom data-only/power-injection breakouts, cable sizing, retention, flex-life, EMC, and physical validation remain selection required.
+The P0.1 split-harness candidate uses 25 individual positive/return power pairs and eight serial data chains. Incoming actuator housings combine the individual pair with data; outgoing inter-actuator housings populate data contacts only and leave GND/VDD cavities empty. The eight bus assembly drawings and 25 contact maps are construction candidates, not a released cable set. Protection, conductor sizing, crimp process qualification, retention, flex-life, EMC, and physical validation remain open.
 """
     if marker in readme:
         start = readme.index(marker)
@@ -465,6 +622,9 @@ This is routing and interface architecture, not a released cable set. All 25 act
         "physical_harness_route_points": stats["route_points"],
         "physical_harness_axes_bound": stats["axes"],
         "physical_harness_logical_terminals_retained": stats["logical_terminals"],
+        "physical_harness_split_harness_candidate_defined": True,
+        "physical_harness_serial_data_link_count": stats["serial_data_links"],
+        "physical_harness_individual_power_pair_count": stats["individual_power_pairs"],
         "physical_harness_selected": False,
         "physical_harness_validated": False,
     })

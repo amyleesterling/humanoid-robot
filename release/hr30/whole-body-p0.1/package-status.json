@@ -209,5 +209,8 @@
   "detailed_gripper_open_pad_gap_mm": 34.0,
   "detailed_gripper_mechanism_selected": false,
   "detailed_gripper_force_calibrated": false,
-  "detailed_gripper_physical_validation_complete": false
+  "detailed_gripper_physical_validation_complete": false,
+  "physical_harness_split_harness_candidate_defined": true,
+  "physical_harness_serial_data_link_count": 25,
+  "physical_harness_individual_power_pair_count": 25
 }
