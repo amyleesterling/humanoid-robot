@@ -322,5 +322,16 @@
   "axis_commissioning_bench_harness_manufacturer_assembled_source_end_selected": true,
   "axis_commissioning_bench_harness_received_lead_compatibility_validated": false,
   "axis_commissioning_bench_harness_exact_inspection_tools_selected": true,
-  "axis_commissioning_bench_harness_exact_preparation_tools_selected": true
+  "axis_commissioning_bench_harness_exact_preparation_tools_selected": true,
+  "active_development_mass_configuration": "HR30-TETHER-FIRST-P0.1",
+  "active_tether_development_mass_kg": 10.470480351,
+  "active_tether_neutral_com_m": [
+    -0.000860941,
+    0.003368549,
+    0.346194495
+  ],
+  "active_tether_mass_margin_to_p01_maximum_kg": 1.529519649,
+  "onboard_energy_envelope_mass_kg": 11.936040351,
+  "onboard_energy_envelope_active": false,
+  "mass_configuration_separation_present": true
 }
