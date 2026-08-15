@@ -1,0 +1,33 @@
+{
+  "identifier": "HR30-JOINT-HARDWARE-MANUFACTURING-P0.1",
+  "axis_count": 25,
+  "family_count": 10,
+  "axis_hardware_count": 142,
+  "local_refinement_step_count": 64,
+  "local_refinement_svg_count": 64,
+  "interface_plate_dxf_count": 39,
+  "catalogue_bearing_reference_count": 39,
+  "redesign_required_count": 39,
+  "part_type_counts": {
+    "ACTUATOR_OUTPUT_COUPLER_PLACEHOLDER": 9,
+    "CATALOGUE_BEARING_ENVELOPE": 39,
+    "INTERFACE_PLATE": 39,
+    "MOTOR_PULLEY_ENVELOPE": 14,
+    "OUTPUT_PULLEY_ENVELOPE": 14,
+    "OUTPUT_SHAFT": 25,
+    "SYMMETRIC_DRIVE_COUPLER_PLACEHOLDER": 2
+  },
+  "complete_joint_hardware_manufacturing_definition": false,
+  "materials_selected": false,
+  "fits_tolerances_released": false,
+  "dfm_complete": false,
+  "fai_complete": false,
+  "structural_capacity_validated": false,
+  "procurement_authority": false,
+  "fabrication_authority": false,
+  "assembly_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false,
+  "warning": "PRELIMINARY - JOINT-HARDWARE REFINEMENT FILES ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

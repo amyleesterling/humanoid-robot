@@ -106,7 +106,13 @@ def main() -> int:
     require(package_status["fabrication_sourcing_part_count"] == 98 and package_status["fabrication_materials_selected"] is False, "whole-body status integration mismatch")
     holds = read_csv(WB / "open-holds.csv")
     hold = next(row for row in holds if row["hold_id"] == "HR30-P01-H06")
-    require("seven-route Boston/online pre-RFQ allocation" in hold["unresolved_item"] and hold["state"] == "OPEN", "fabrication hold not accurately advanced")
+    require(
+        "98 body/frame/hand candidates" in hold["unresolved_item"]
+        and "five nonempty pre-RFQ batches" in hold["unresolved_item"]
+        and "142 actual-axis joint-hardware items" in hold["unresolved_item"]
+        and hold["state"] == "OPEN",
+        "fabrication hold not accurately advanced",
+    )
 
     print(
         "PASS: all 98 HR-30 parts have controlled pre-RFQ routes, hashes, five nonempty quote batches, "
