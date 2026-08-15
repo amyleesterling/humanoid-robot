@@ -1,9 +1,9 @@
 <robot name="hr30_whole_body_p01">
   <link name="base_link">
     <inertial>
-      <origin xyz="-0.002798 0.004819 -0.000343" rpy="0 0 0" />
-      <mass value="1.690125" />
-      <inertia ixx="0.002242937" ixy="0" ixz="0" iyy="0.004073906" iyz="0" izz="0.004936574" />
+      <origin xyz="-0.003073 0.006930 0.000352" rpy="0 0 0" />
+      <mass value="1.538925" />
+      <inertia ixx="0.002042282" ixy="0" ixz="0" iyy="0.003709451" iyz="0" izz="0.004494944" />
     </inertial>
     <visual>
       <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
@@ -23,9 +23,9 @@
   </link>
   <link name="torso">
     <inertial>
-      <origin xyz="-0.000223 0.045602 0.101268" rpy="0 0 0" />
-      <mass value="2.340610" />
-      <inertia ixx="0.006461058" ixy="0" ixz="0" iyy="0.011142278" iyz="0" izz="0.009401449" />
+      <origin xyz="-0.000214 0.044928 0.102078" rpy="0 0 0" />
+      <mass value="2.437810" />
+      <inertia ixx="0.006729371" ixy="0" ixz="0" iyy="0.011604990" iyz="0" izz="0.009791869" />
     </inertial>
     <visual>
       <origin xyz="0.000000 0.000000 0.087500" rpy="0 0 0" />
@@ -243,9 +243,9 @@
   </link>
   <link name="L_thigh">
     <inertial>
-      <origin xyz="-0.001379 0.000069 -0.055847" rpy="0 0 0" />
-      <mass value="1.635577" />
-      <inertia ixx="0.004276488" ixy="0" ixz="0" iyy="0.004235599" iyz="0" izz="0.001533626" />
+      <origin xyz="-0.001342 0.000576 -0.056386" rpy="0 0 0" />
+      <mass value="1.680577" />
+      <inertia ixx="0.004394148" ixy="0" ixz="0" iyy="0.004352134" iyz="0" izz="0.001575821" />
     </inertial>
     <visual>
       <origin xyz="0.000000 0.000000 -0.080000" rpy="0 0 0" />
@@ -485,9 +485,9 @@
   </link>
   <link name="R_thigh">
     <inertial>
-      <origin xyz="-0.001379 0.000069 -0.055847" rpy="0 0 0" />
-      <mass value="1.635577" />
-      <inertia ixx="0.004276488" ixy="0" ixz="0" iyy="0.004235599" iyz="0" izz="0.001533626" />
+      <origin xyz="-0.001342 0.000576 -0.056386" rpy="0 0 0" />
+      <mass value="1.680577" />
+      <inertia ixx="0.004394148" ixy="0" ixz="0" iyy="0.004352134" iyz="0" izz="0.001575821" />
     </inertial>
     <visual>
       <origin xyz="0.000000 0.000000 -0.080000" rpy="0 0 0" />

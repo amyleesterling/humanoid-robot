@@ -712,6 +712,7 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
         "identified_candidate_mass_kg": summary["planning_identified_candidate_mass_kg"],
         "mass_margin_to_10kg_kg": summary["planning_margin_to_lightweight_stretch_kg"],
         "mass_margin_to_p01_maximum_kg": summary["planning_margin_to_program_maximum_kg"],
+        "module_interface_mass_reconciliation_kg": summary["reconciled_dynamics_planning_mass_kg"],
         "mass_budget_closed": False,
         "mass_com_inertia_physically_validated": False,
     })

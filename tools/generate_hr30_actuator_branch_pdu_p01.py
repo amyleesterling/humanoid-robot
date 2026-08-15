@@ -33,6 +33,8 @@ OUT = PACKAGE / "electrical" / "actuator-branch-pdu-p0.1"
 PROJECT = "hr30-actuator-branch-pdu-p0.1"
 IDENTIFIER = "HR30-ACTUATOR-BRANCH-PDU-P0.1"
 DATE = "2026-08-15"
+BOARD_W = 124.0
+BOARD_H = 45.0
 WARNING = "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION"
 WHOLE_WARNING = "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
 KICAD = Path(r"C:\Program Files\KiCad\10.0\bin\kicad-cli.exe")
@@ -72,38 +74,38 @@ def channel_parts(channel: int, x: float) -> list[Part]:
     common = {"board": "PDU"}
     parts: list[Part] = []
     add(parts, "PDU", f"U20{c}", "TPS259474LRPWR circuit-breaker latch-off eFuse", "TPS259474LRPWR", "Texas Instruments", f"ProjectButton_RPW:{RPW_NAME}",
-        {"1": en, "2": ov, "3": pg, "4": pgth, "5": vin, "6": vout, "7": dvdt, "8": gnd, "9": ilm, "10": ""}, x, 37.0,
+        {"1": en, "2": ov, "3": pg, "4": pgth, "5": vin, "6": vout, "7": dvdt, "8": gnd, "9": ilm, "10": ""}, x, 23.0,
         source=TI_DS, evidence="SLVSFC9C Rev C May 2026; adjustable OVLO; circuit breaker; latch-off; PG/PGTH; reverse blocking")
     add(parts, "PDU", f"J10{c}", f"CHANNEL {c} OUTPUT", "B2P-VH", "JST", "Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical",
-        {"1": gnd, "2": vout}, x, 6.0, source=JST_VH, evidence="JST VH catalog; B2P-VH header; VHR-2N housing; contact and conductor selection remains controlled")
+        {"1": gnd, "2": vout}, x, 4.5, source=JST_VH, evidence="JST VH catalog; B2P-VH header; VHR-2N housing; contact and conductor selection remains controlled")
     add(parts, "PDU", f"J20{c}", f"CHANNEL {c} CONTROL", "BM03B-GHS-TBT", "JST", "Connector_JST:JST_GH_BM03B-GHS-TBT_1x03-1MP_P1.25mm_Vertical",
-        {"1": gnd, "2": en, "3": pg}, x, 70.0, source=JST_GH, evidence="per-channel GND / open-drain DISABLE / PG service boundary; zero safety credit")
+        {"1": gnd, "2": en, "3": pg}, x, 40.5, source=JST_GH, evidence="per-channel GND / open-drain DISABLE / PG service boundary; zero safety credit")
     specs = (
-        (f"R{c}01", "470k 1% UVLO top", "RC0603FR-07470KL", vin, en, x-5.0, 49.0),
-        (f"R{c}02", "27.4k 1% UVLO/OVLO middle", "RC0603FR-0727K4L", en, ov, x, 49.0),
-        (f"R{c}03", "40.2k 1% OVLO bottom", "RC0603FR-0740K2L", ov, gnd, x+5.0, 49.0),
-        (f"R{c}04", "47k 1% PGTH top", "RC0603FR-0747KL", vout, pgth, x-3.5, 43.5),
-        (f"R{c}05", "5.76k 1% PGTH bottom", "RC0603FR-075K76L", pgth, gnd, x+3.5, 43.5),
-        (f"R{c}06", "ASSEMBLY VARIANT RILM", "1.24k / 1.47k / 3.83k", ilm, gnd, x-3.5, 30.5),
+        (f"R{c}01", "470k 1% UVLO top", "RC0603FR-07470KL", vin, en, x-4.2, 35.0),
+        (f"R{c}02", "27.4k 1% UVLO/OVLO middle", "RC0603FR-0727K4L", en, ov, x, 35.0),
+        (f"R{c}03", "40.2k 1% OVLO bottom", "RC0603FR-0740K2L", ov, gnd, x+4.2, 35.0),
+        (f"R{c}04", "47k 1% PGTH top", "RC0603FR-0747KL", vout, pgth, x-3.2, 31.0),
+        (f"R{c}05", "5.76k 1% PGTH bottom", "RC0603FR-075K76L", pgth, gnd, x+3.2, 31.0),
+        (f"R{c}06", "ASSEMBLY VARIANT RILM", "1.24k / 1.47k / 3.83k", ilm, gnd, x-3.2, 27.5),
     )
     for ref, value, mpn, n1, n2, px, py in specs:
         add(parts, "PDU", ref, value, mpn, "Yageo candidate", "Resistor_SMD:R_0603_1608Metric", {"1": n1, "2": n2}, px, py, source=TI_DS, evidence="candidate calculation; tolerance and physical threshold test required")
     for ref, value, mpn, n1, n2, px, py in (
-        (f"C{c}01", "1uF 25V X7R input", "SELECTION REQUIRED", vin, gnd, x-5.0, 24.0),
-        (f"C{c}02", "2x1uF 25V X7R output equivalent", "SELECTION REQUIRED", vout, gnd, x+5.0, 24.0),
-        (f"C{c}03", "3.3nF dVdt", "SELECTION REQUIRED", dvdt, gnd, x+3.5, 30.5),
+        (f"C{c}01", "1uF 25V X7R input", "SELECTION REQUIRED", vin, gnd, x-4.2, 17.0),
+        (f"C{c}02", "2x1uF 25V X7R output equivalent", "SELECTION REQUIRED", vout, gnd, x+4.2, 17.0),
+        (f"C{c}03", "3.3nF dVdt", "SELECTION REQUIRED", dvdt, gnd, x+3.2, 27.5),
     ):
         add(parts, "PDU", ref, value, mpn, "SELECTION REQUIRED", "Capacitor_SMD:C_0603_1608Metric", {"1": n1, "2": n2}, px, py, source=TI_DS, evidence="TI application equation; voltage bias, tolerance and transient validation open")
     add(parts, "PDU", f"D{c}01", "LOCAL BRANCH CLAMP - DNP", "SELECTION REQUIRED", "SELECTION REQUIRED", "Diode_SMD:D_SMA",
-        {"1": gnd, "2": vout}, x, 14.0, fitted=False, source=TI_DS, evidence="placeholder only; pulse energy, clamp voltage and regeneration architecture unresolved")
+        {"1": gnd, "2": vout}, x, 13.0, fitted=False, source=TI_DS, evidence="placeholder only; pulse energy, clamp voltage and regeneration architecture unresolved")
     return parts
 
 
 def circuit_parts() -> list[Part]:
     parts: list[Part] = []
     add(parts, "PDU", "J1", "12 V CONTROLLED INPUT", "MKDS 5/2-9.5 1714971", "Phoenix Contact", "TerminalBlock_MetzConnect:TerminalBlock_MetzConnect_Type703_RT10N02HGLU_1x02_P9.52mm_Horizontal",
-        {"1": "PDU_0V", "2": "PDU_12V_IN"}, 140.0, 58.0, 90.0, source=PHOENIX, evidence="Phoenix 1714971 electrical candidate; temporary library outline has exact 9.52 mm pitch but body/holes require vendor-footprint verification")
-    for channel, x in enumerate((16.0, 36.0, 56.0, 76.0, 96.0, 116.0), 1):
+        {"1": "PDU_0V", "2": "PDU_12V_IN"}, 108.0, 22.5, 0.0, source=PHOENIX, evidence="Phoenix 1714971 electrical candidate; temporary library outline has exact 9.52 mm pitch but body/holes require vendor-footprint verification")
+    for channel, x in enumerate((12.0, 28.0, 44.0, 60.0, 76.0, 92.0), 1):
         parts.extend(channel_parts(channel, x))
     return parts
 
@@ -197,7 +199,7 @@ def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> di
         for step in range(18):
             distance=base+.20*step
             candidate=(round((px+ux*distance)*4)/4,round((py+uy*distance)*4)/4)
-            if not (1.0<candidate[0]<149.0 and 1.0<candidate[1]<77.0): continue
+            if not (1.0<candidate[0]<BOARD_W-1.0 and 1.0<candidate[1]<BOARD_H-1.0): continue
             if not clear_of_pads(candidate,name): continue
             if any((candidate[0]-x)**2+(candidate[1]-y)**2 < .55**2 for x,y,_ in via_points): continue
             accepted=candidate; break
@@ -211,8 +213,8 @@ def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> di
     # via into filled front/back planes, and all through-hole returns touch the
     # planes directly.
     route_names=[name for name,points in access.items() if name!="PDU_0V" and len(points)>1]
-    grid=.25; x0=y0=1.0; nx=int((149.0-x0)/grid)+1; ny=int((77.0-y0)/grid)+1
-    mounting=((4.0,4.0),(146.0,4.0),(4.0,74.0),(146.0,74.0))
+    grid=.25; x0=y0=1.0; nx=int((BOARD_W-1.0-x0)/grid)+1; ny=int((BOARD_H-1.0-y0)/grid)+1
+    mounting=((3.5,3.5),(BOARD_W-3.5,3.5),(3.5,BOARD_H-3.5),(BOARD_W-3.5,BOARD_H-3.5))
     foreign_vias=[(x,y,name) for x,y,name in via_points]
 
     def point(cell): return (x0+cell[0]*grid,y0+cell[1]*grid)
@@ -228,7 +230,7 @@ def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> di
         ix,iy=cell
         if not (0<=ix<nx and 0<=iy<ny): return False
         x,y=point(cell); radius=.225+width/2+.10
-        if not (1.0+width/2<=x<=149.0-width/2 and 1.0+width/2<=y<=77.0-width/2): return False
+        if not (1.0+width/2<=x<=BOARD_W-1.0-width/2 and 1.0+width/2<=y<=BOARD_H-1.0-width/2): return False
         if any((x-hx)**2+(y-hy)**2 < (1.55+width/2)**2 for hx,hy in mounting): return False
         if any(other!=name and (x-vx)**2+(y-vy)**2 < radius**2 for vx,vy,other in foreign_vias): return False
         for record in pad_records:
@@ -268,7 +270,9 @@ def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> di
         for exact,target in zip(access[name][1:],endpoints[1:]):
             if not available(target,name,width):
                 candidates=[(dx*dx+dy*dy,(target[0]+dx,target[1]+dy)) for dx in range(-8,9) for dy in range(-8,9)]
-                target=next(cell for _,cell in sorted(candidates) if available(cell,name,width))
+                target=next((cell for _,cell in sorted(candidates) if available(cell,name,width)), None)
+                if target is None:
+                    raise RuntimeError(f"no clear route target for {name} at {exact}")
             path=path_to_tree(target,tree,name,width)
             carrier.add_track(board,nets[name],exact,point(path[0]),layer,width); segments+=1
             # Collapse collinear grid edges into physical segments.
@@ -287,7 +291,7 @@ def add_ground_zones(board: pcbnew.BOARD, net: pcbnew.NETINFO_ITEM) -> None:
     for layer in (pcbnew.F_Cu,pcbnew.B_Cu):
         zone=pcbnew.ZONE(board); zone.SetLayer(layer); zone.SetNet(net); zone.SetLocalClearance(pcbnew.FromMM(.20)); zone.SetMinThickness(pcbnew.FromMM(.254)); zone.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL)
         polygon=zone.Outline(); polygon.NewOutline()
-        for point in ((.8,.8),(149.2,.8),(149.2,77.2),(.8,77.2)): polygon.Append(pcbnew.VECTOR2I_MM(*point))
+        for point in ((.8,.8),(BOARD_W-.8,.8),(BOARD_W-.8,BOARD_H-.8),(.8,BOARD_H-.8)): polygon.Append(pcbnew.VECTOR2I_MM(*point))
         board.Add(zone)
 
 
@@ -315,15 +319,15 @@ def write_board(parts: list[Part]) -> dict[str, object]:
         for pad in fp.Pads():
             if p.pins.get(pad.GetNumber()): pad.SetNet(nets[p.pins[pad.GetNumber()]])
         board.Add(fp)
-    for index, (x, y) in enumerate(((4.0,4.0),(146.0,4.0),(4.0,74.0),(146.0,74.0)), 1):
+    for index, (x, y) in enumerate(((3.5,3.5),(BOARD_W-3.5,3.5),(3.5,BOARD_H-3.5),(BOARD_W-3.5,BOARD_H-3.5)), 1):
         hole = carrier.lib_fp("MountingHole:MountingHole_2.7mm_M2.5"); hole.SetReference(f"MH{index}"); hole.SetValue("M2.5 BOARD-ONLY")
         hole.SetPosition(pcbnew.VECTOR2I_MM(x,y)); hole.SetBoardOnly(True); hole.SetExcludedFromBOM(True); hole.SetExcludedFromPosFiles(True); hole.Reference().SetVisible(False); hole.Value().SetVisible(False); board.Add(hole)
-    for a,b in zip(((0,0),(150,0),(150,78),(0,78)),((150,0),(150,78),(0,78),(0,0))):
+    for a,b in zip(((0,0),(BOARD_W,0),(BOARD_W,BOARD_H),(0,BOARD_H)),((BOARD_W,0),(BOARD_W,BOARD_H),(0,BOARD_H),(0,0))):
         edge=pcbnew.PCB_SHAPE(board); edge.SetShape(pcbnew.SHAPE_T_SEGMENT); edge.SetStart(pcbnew.VECTOR2I_MM(*a)); edge.SetEnd(pcbnew.VECTOR2I_MM(*b)); edge.SetLayer(pcbnew.Edge_Cuts); edge.SetWidth(pcbnew.FromMM(.2)); board.Add(edge)
     routing = route_board(board,nets)
     add_ground_zones(board,nets["PDU_0V"]); pcbnew.ZONE_FILLER(board).Fill(board.Zones())
-    carrier.add_text(board, "HR-30 6CH BRANCH PDU P0.1", 42, 2.0, .90, pcbnew.B_SilkS)
-    carrier.add_text(board, "COMMISSIONING ONLY - REGEN / THERMAL OPEN", 39, 76.0, .82, pcbnew.B_SilkS)
+    carrier.add_text(board, "HR-30 6CH BRANCH PDU P0.1", 25, 1.5, .82, pcbnew.B_SilkS)
+    carrier.add_text(board, "COMMISSIONING ONLY", 30, BOARD_H-1.4, .82, pcbnew.B_SilkS)
     board_path = OUT / f"{PROJECT}.kicad_pcb"; pcbnew.SaveBoard(str(board_path), board)
     # A production ten-layer buildup is intentionally not inferred from the
     # earlier six-layer carrier candidate.  Exact foil weights, dielectric
@@ -428,20 +432,20 @@ def publish(parts: list[Part], board: dict[str, object], validation: dict[str, o
     holds=[
         ("PDU-H01","Exact current threshold at received hardware, resistor tolerance and temperature","measure every populated channel; XC330 is below TI's stated +/-10% range"),("PDU-H02","JST EH 3 A actuator boundary","derive RMS/fault/ambient/bundling/duty/inrush and connector temperature; never use 4.4/4.9 A stall as continuous"),("PDU-H03","Regeneration and reverse energy","TPS259474L blocks reverse current; select and validate a bidirectional walking architecture or measured local clamp/dump path"),("PDU-H04","PCB high-current and thermal layout","independent copper/via/stackup/temperature analysis and physical thermal test"),("PDU-H05","Input and output connector footprint/contact/wire set","vendor drawing, mating hardware, crimp tooling, retention and received inspection"),("PDU-H06","Safety boundary","eFuses and J2 controls have zero functional-safety credit; redundant upstream interruption remains separate"),("PDU-H07","Dynamic torque closure","accepted trajectories, current/torque curves, thermal duty, inertia, disturbance, contact and fall-restraint evidence"),("PDU-H08","Fabrication and commissioning release","independent electrical/layout review, DFM, FAI, unpowered inspection and separately signed test procedure")]
     write_csv(OUT/"open-holds.csv",["hold_id","unresolved_item","closure_evidence","state","warning"],[{"hold_id":a,"unresolved_item":b,"closure_evidence":c,"state":"OPEN - BLOCKS PROCUREMENT/FABRICATION/CONNECTION/POWERED TEST/MOTION/ENERGIZATION","warning":WARNING} for a,b,c in holds])
-    status={"identifier":IDENTIFIER,"date":DATE,"warning":WARNING,"native_schematic_sheet_count":8,"board_pattern_count":1,"board_instance_count":5,"channels_per_board":6,"allocated_axis_channels":25,"dnp_spare_channels":5,"component_records":len(parts),"terminal_records":len(terms),"board_width_mm":150.0,"board_height_mm":78.0,"copper_layer_count":10,"placement_complete":True,"routing_complete":True,"drc_accepted":True,"routing":board["routing"],"production_stackup_selected":False,"validation":validation,"commissioning_current_limit_architecture_present":True,"walking_power_architecture_complete":False,"reverse_energy_architecture_complete":False,"connector_current_compatibility_validated":False,"thermal_validated":False,"functional_safety_credit":False,"procurement_authority":False,"fabrication_authority":False,"connection_authority":False,"powered_test_authority":False,"motion_authority":False,"energization_authority":False}
+    status={"identifier":IDENTIFIER,"date":DATE,"warning":WARNING,"native_schematic_sheet_count":8,"board_pattern_count":1,"board_instance_count":5,"channels_per_board":6,"allocated_axis_channels":25,"dnp_spare_channels":5,"component_records":len(parts),"terminal_records":len(terms),"board_width_mm":BOARD_W,"board_height_mm":BOARD_H,"copper_layer_count":10,"placement_complete":True,"routing_complete":True,"drc_accepted":True,"routing":board["routing"],"production_stackup_selected":False,"validation":validation,"commissioning_current_limit_architecture_present":True,"walking_power_architecture_complete":False,"reverse_energy_architecture_complete":False,"connector_current_compatibility_validated":False,"thermal_validated":False,"functional_safety_credit":False,"procurement_authority":False,"fabrication_authority":False,"connection_authority":False,"powered_test_authority":False,"motion_authority":False,"energization_authority":False}
     (OUT/"pdu-status.json").write_text(json.dumps(status,indent=2)+"\n",encoding="utf-8")
     rows="".join(f"<tr><td>{r['board_instance']}</td><td>{r['channel']}</td><td>{r['axis_id']}</td><td>{r['actuator_family']}</td><td>{r['r_ilm_variant']}</td><td>{r['population_state']}</td></tr>" for r in alloc)
     layers="".join(f'<article><h3>Internal copper {i}</h3><div class="board"><object data="output/{PROJECT}-in{i}-cu.svg" type="image/svg+xml" aria-label="HR-30 PDU internal copper layer {i}"></object></div></article>' for i in range(1,9))
     (OUT/"index.html").write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 branch PDU</title><style>:root{{--navy:#082f58;--blue:#12669f;--sky:#c8ecff;--gold:#f2b928;--paper:#f7fcff}}*{{box-sizing:border-box}}body{{margin:0;color:var(--navy);font:clamp(16px,1.15vw,19px)/1.55 system-ui,sans-serif;background:var(--paper)}}header{{padding:clamp(1.5rem,5vw,4rem);background:linear-gradient(135deg,var(--sky),white);border-bottom:7px solid var(--gold)}}header>div,main{{max-width:1240px;margin:auto}}h1{{font-size:clamp(2.3rem,6vw,5rem);line-height:1.02;max-width:16ch}}h2{{font-size:clamp(1.6rem,3vw,2.8rem)}}main{{padding:2rem clamp(1rem,4vw,3rem) 5rem}}.warning,.hold{{border:3px solid #ad7500;background:#fff0b8;border-radius:14px;padding:1rem;font-weight:800}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1rem;margin:2rem 0}}article,.panel{{background:white;border:2px solid var(--blue);border-radius:16px;padding:1.1rem}}article b{{display:block;font-size:clamp(2rem,4vw,3.5rem)}}.board,.table-wrap{{overflow:auto;border:2px solid #83bddb;background:white}}object{{display:block;width:100%;min-width:760px;min-height:430px}}table{{border-collapse:collapse;width:100%;min-width:920px}}th,td{{padding:.8rem;text-align:left;vertical-align:top;border-bottom:1px solid #bdd0dc}}th{{background:var(--navy);color:white}}a{{color:#075d98;font-weight:800}}@media(max-width:650px){{main{{padding:1.2rem .8rem 4rem}}}}</style></head><body><header><div><p class="warning">{html.escape(WARNING)}</p><h1>Every actuator now has a physical branch slot.</h1><p>One editable six-channel KiCad board, five assembly instances, 25 allocated axes and five visibly unpopulated spares.</p></div></header><main><section class="grid"><article><b>25</b>allocated actuator branches</article><article><b>5</b>identical PDU boards</article><article><b>ERC 0/0</b>eight native schematic sheets</article><article><b>Placed PCB</b>high-current routing and DRC acceptance remain open</article></section><div class="hold"><h2>This is not the walking power stage</h2><p>TPS259474L blocks reverse current. It is retained only for restrained, low-energy commissioning. Standing and walking remain disabled until regenerative energy, connector temperature, dynamic torque and upstream interruption are physically validated.</p></div><h2>Native placement candidate</h2><div class="board"><object data="output/{PROJECT}-front.svg" type="image/svg+xml" aria-label="HR-30 six-channel branch PDU placement candidate"></object></div><p>The visible ratsnest is intentional: no high-current copper is released before the stackup/current/thermal inputs close. <a href="{PROJECT}.kicad_pro">Open the KiCad project</a> · <a href="{PROJECT}.kicad_pcb">Open the native PCB</a> · <a href="validation/{PROJECT}-erc.rpt">ERC report</a> · <a href="validation/{PROJECT}-drc.rpt">complete fail-closed DRC report</a></p><h2>Five-board population map</h2><div class="table-wrap"><table><thead><tr><th>Board</th><th>Channel</th><th>Axis</th><th>Family</th><th>RILM</th><th>Population</th></tr></thead><tbody>{rows}</tbody></table></div><h2>Controlled engineering records</h2><div class="panel"><p><a href="board-instance-channel-allocation.csv">channel allocation</a> · <a href="current-limit-torque-consequence-register.csv">torque consequences</a> · <a href="component-register.csv">component register</a> · <a href="terminal-register.csv">terminal register</a> · <a href="primary-source-register.csv">primary sources</a> · <a href="open-holds.csv">open holds</a></p></div></main></body></html>''',encoding="utf-8")
     guide_path=OUT/"index.html"; guide=guide_path.read_text(encoding="utf-8")
     guide=guide.replace("Every actuator now has a physical branch slot.","Every actuator now has a routed branch slot.")
-    guide=guide.replace("<b>Placed PCB</b>high-current routing and DRC acceptance remain open","<b>DRC 0/0</b>routed 150 × 78 mm candidate; zero unconnected pads")
+    guide=guide.replace("<b>Placed PCB</b>high-current routing and DRC acceptance remain open",f"<b>DRC 0/0</b>routed {BOARD_W:.0f} × {BOARD_H:.0f} mm candidate; zero unconnected pads")
     guide=guide.replace("Native placement candidate","Native routed candidate").replace("placement candidate","routed candidate")
     guide=guide.replace("The visible ratsnest is intentional: no high-current copper is released before the stackup/current/thermal inputs close.","The ten-layer route is complete and KiCad reports DRC 0/0 with zero unconnected pads. This verifies connectivity and geometric rule compliance only; production stackup, copper weight, thermal rise and DFM remain open.")
     guide=guide.replace("complete fail-closed DRC report","DRC 0/0 report")
     guide=guide.replace("<h2>Five-board population map</h2>",f"<h2>Inspect all eight internal copper layers</h2>{layers}<h2>Five-board population map</h2>")
     guide_path.write_text(guide,encoding="utf-8")
-    (OUT/"README.md").write_text(f"# HR-30 actuator branch PDU P0.1\n\n**{WARNING}**\n\nThis package provides one editable six-channel native KiCad schematic and routed 150 x 78 mm ten-layer PCB candidate. Five assembly instances allocate 25 whole-body actuator branches and retain five DNP spares. KiCad verifies schematic ERC 0/0, PCB DRC 0/0 and zero unconnected pads. The route separates shared input, individual outputs and six control-net families; exact production stackup, copper weight, DFM, thermal rise and physical tests remain open. It is a restrained commissioning architecture only; reverse energy, connector closure, dynamic torque and all work authority remain open.\n",encoding="utf-8")
+    (OUT/"README.md").write_text(f"# HR-30 actuator branch PDU P0.1\n\n**{WARNING}**\n\nThis package provides one editable six-channel native KiCad schematic and routed {BOARD_W:.0f} x {BOARD_H:.0f} mm ten-layer PCB candidate. Five distributed assembly instances allocate 25 whole-body actuator branches and retain five DNP spares. KiCad verifies schematic ERC 0/0, PCB DRC 0/0 and zero unconnected pads. The route separates shared input, individual outputs and six control-net families; exact production stackup, copper weight, DFM, thermal rise and physical tests remain open. It is a restrained commissioning architecture only; reverse energy, connector closure, dynamic torque and all work authority remain open.\n",encoding="utf-8")
     files=[p for p in OUT.rglob("*") if p.is_file() and p.name!="file-manifest.csv"]
     write_csv(OUT/"file-manifest.csv",["path","bytes","sha256","warning"],[{"path":p.relative_to(OUT).as_posix(),"bytes":p.stat().st_size,"sha256":sha(p),"warning":WARNING} for p in sorted(files)])
 
@@ -450,11 +454,11 @@ def update_package() -> None:
     status_path=PACKAGE/"package-status.json"; status=json.loads(status_path.read_text(encoding="utf-8")); status.update({"actuator_branch_pdu_native_schematic_present":True,"actuator_branch_pdu_schematic_sheet_count":8,"actuator_branch_pdu_board_pattern_count":1,"actuator_branch_pdu_board_instance_count":5,"actuator_branch_pdu_allocated_channel_count":25,"actuator_branch_pdu_dnp_spare_count":5,"actuator_branch_pdu_erc_errors":0,"actuator_branch_pdu_erc_warnings":0,"actuator_branch_pdu_placement_complete":True,"actuator_branch_pdu_routing_complete":True,"actuator_branch_pdu_drc_accepted":True,"actuator_branch_pdu_drc_violations":0,"actuator_branch_pdu_unconnected_pads":0,"actuator_branch_pdu_production_stackup_selected":False,"actuator_branch_pdu_walking_power_architecture_complete":False,"actuator_branch_pdu_energization_authority":False}); status_path.write_text(json.dumps(status,indent=2)+"\n",encoding="utf-8")
     readme=PACKAGE/"README.md"; text=readme.read_text(encoding="utf-8"); start,end="<!-- HR30-PDU-P01-START -->","<!-- HR30-PDU-P01-END -->"
     if start in text and end in text: text=text.split(start,1)[0]+text.split(end,1)[1]
-    section=f"\n{start}\n## Twenty-five routed actuator branch slots\n\nFive instances of one editable six-channel native KiCad PDU candidate allocate all 25 axes and retain five assembly-DNP spares. The eight-sheet schematic validates at ERC 0/0; the 150 x 78 mm ten-layer PCB validates at DRC 0/0 with zero unconnected pads. Each populated channel uses a TPS259474L circuit-breaker/latch-off eFuse with an axis-bound RILM variant, individual output pair, open-drain disable input and power-good output. This is a restrained commissioning architecture only: the device blocks reverse current, so production stackup, regeneration/clamp, connector temperature, dynamic torque, copper/thermal validation and every powered-work authority remain open. Open `electrical/actuator-branch-pdu-p0.1/index.html`.\n{end}\n"
+    section=f"\n{start}\n## Twenty-five routed actuator branch slots\n\nFive distributed instances of one editable six-channel native KiCad PDU candidate allocate all 25 axes and retain five assembly-DNP spares. The eight-sheet schematic validates at ERC 0/0; the {BOARD_W:.0f} x {BOARD_H:.0f} mm ten-layer PCB validates at DRC 0/0 with zero unconnected pads. Each populated channel uses a TPS259474L circuit-breaker/latch-off eFuse with an axis-bound RILM variant, individual output pair, open-drain disable input and power-good output. This is a restrained commissioning architecture only: the device blocks reverse current, so production stackup, regeneration/clamp, connector temperature, dynamic torque, copper/thermal validation and every powered-work authority remain open. Open `electrical/actuator-branch-pdu-p0.1/index.html`.\n{end}\n"
     readme.write_text(text.rstrip()+section,encoding="utf-8")
     page=PACKAGE/"index.html"; text=page.read_text(encoding="utf-8")
     if start in text and end in text: text=text.split(start,1)[0]+text.split(end,1)[1]
-    web=f'''{start}<section id="actuator-branch-pdu"><h2>Every actuator now has a routed protected branch slot</h2><div class="grid"><article class="card pass"><div class="metric">25</div><p>axis-bound commissioning branches across five board instances.</p></article><article class="card pass"><div class="metric">5</div><p>assembly-DNP spare channels remain visibly unpopulated.</p></article><article class="card pass"><h3>ERC 0 / 0</h3><p>Eight editable, connected native schematic sheets.</p></article><article class="card pass"><h3>DRC 0 / 0</h3><p>Routed 150 × 78 mm candidate with zero unconnected pads. Stackup and thermal proof remain open.</p></article></div><div class="viewer"><object data="electrical/actuator-branch-pdu-p0.1/output/{PROJECT}-front.svg" type="image/svg+xml" aria-label="Six-channel HR-30 actuator branch PDU routed candidate"></object><p><a href="electrical/actuator-branch-pdu-p0.1/index.html">Open the interactive PDU guide</a> · <a href="electrical/actuator-branch-pdu-p0.1/board-instance-channel-allocation.csv">25-axis allocation</a> · <a href="electrical/actuator-branch-pdu-p0.1/{PROJECT}.kicad_pro">native KiCad project</a>.</p></div></section>{end}'''
+    web=f'''{start}<section id="actuator-branch-pdu"><h2>Every actuator now has a routed protected branch slot</h2><div class="grid"><article class="card pass"><div class="metric">25</div><p>axis-bound commissioning branches across five distributed board instances.</p></article><article class="card pass"><div class="metric">5</div><p>assembly-DNP spare channels remain visibly unpopulated.</p></article><article class="card pass"><h3>ERC 0 / 0</h3><p>Eight editable, connected native schematic sheets.</p></article><article class="card pass"><h3>DRC 0 / 0</h3><p>Routed {BOARD_W:.0f} × {BOARD_H:.0f} mm candidate with zero unconnected pads. Stackup and thermal proof remain open.</p></article></div><div class="viewer"><object data="electrical/actuator-branch-pdu-p0.1/output/{PROJECT}-front.svg" type="image/svg+xml" aria-label="Six-channel HR-30 actuator branch PDU routed candidate"></object><p><a href="electrical/actuator-branch-pdu-p0.1/index.html">Open the interactive PDU guide</a> · <a href="electrical/actuator-branch-pdu-p0.1/board-instance-channel-allocation.csv">25-axis allocation</a> · <a href="electrical/actuator-branch-pdu-p0.1/{PROJECT}.kicad_pro">native KiCad project</a>.</p></div></section>{end}'''
     marker="<!-- HR30-CARRIERS-P01-END -->"
     if marker not in text: raise RuntimeError("carrier marker missing")
     page.write_text(text.replace(marker,marker+web),encoding="utf-8")
