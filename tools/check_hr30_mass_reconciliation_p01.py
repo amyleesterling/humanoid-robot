@@ -90,10 +90,10 @@ def main() -> int:
         require(abs(actual - float(summary[key])) < 2e-9, f"summary category mismatch {category}")
     identified = sum(float(row["planning_candidate_mass_kg"]) for row in items)
     require(abs(identified - float(summary["planning_identified_candidate_mass_kg"])) < 2e-9, "identified subtotal mismatch")
-    require(11.55 < identified < 11.57, "hand-integrated onboard-energy identified subtotal outside controlled P0.1 band")
+    require(11.53 < identified < 11.54, "installed-equipment/onboard-energy identified subtotal outside controlled P0.1 band")
     require(summary["located_joint_fastener_count"] == 156, "fastener count missing from mass summary")
-    require(summary["program_mass_target_status"].startswith("WITHIN P0.1 MAXIMUM") and 0.04 < summary["planning_margin_to_program_maximum_kg"] < 0.06, "narrow 12 kg P0.1 planning margin not disclosed")
-    require(-1.96 < summary["planning_margin_to_lightweight_stretch_kg"] < -1.94, "10 kg lightweight stretch miss not disclosed")
+    require(summary["program_mass_target_status"].startswith("WITHIN P0.1 MAXIMUM") and 0.07 < summary["planning_margin_to_program_maximum_kg"] < 0.075, "narrow 12 kg P0.1 planning margin not disclosed")
+    require(-1.93 < summary["planning_margin_to_lightweight_stretch_kg"] < -1.92, "10 kg lightweight stretch miss not disclosed")
     require(not any(summary["authority"].values()), "mass package authority overclaim")
 
     decisions = rows("lightweight-architecture-register.csv")

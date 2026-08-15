@@ -694,10 +694,13 @@ def update_package():
     start = "<!-- HR30-NATIVE-KICAD-P01-START -->"; end = "<!-- HR30-NATIVE-KICAD-P01-END -->"
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
-    marker = '<section id="actuator-buses">'
+    # A clean build creates the native electrical source before the derived
+    # actuator-bus section.  Anchor both at the stable system-artifacts section
+    # instead of requiring either generated section to pre-exist.
+    marker = '<section><h2>System artifacts</h2>'
     section = f'''{start}<section id="native-electrical"><h2>The whole robot now has a tether-first native electrical architecture</h2><div class="grid"><article class="card pass"><h3>19 native sheets</h3><p>One hierarchy page and eighteen populated child sheets cover energy, safety, compute, every actuator segment, head HMI, pelvis IMU, both feet and the isolated onboard-later path.</p></article><article class="card pass"><h3>25 separate feeds</h3><p>Every actuator pin-2 VDD now has its own unresolved protection/telemetry boundary; the multidrop harness carries data and reference only.</p></article><article class="card pass"><h3>12 V + three 9 V rails</h3><p>The rejected direct 14.8 V path is gone. XH/XM use the controlled tether rail while each XC330 segment has a regulated 9 V candidate.</p></article><article class="card hold"><h3>ERC: 0 / 0</h3><p>KiCad validates encoded connectivity only. Protection values, physical energy/safety terminals, stopping behavior and validation remain open.</p></article></div><div class="viewer"><object data="electrical/kicad/{PROJECT}/output/{PROJECT}.svg" type="image/svg+xml" aria-label="Interactive HR-30 native KiCad hierarchy diagram"></object><p><a href="electrical/kicad/{PROJECT}/index.html">Open the interactive 19-sheet electrical guide</a>, inspect the <a href="electrical/kicad/{PROJECT}/interface-carrier-pinout.csv">eight-channel pin map</a>, or download the <a href="electrical/kicad/{PROJECT}/{PROJECT}.kicad_pro">KiCad project</a>, <a href="electrical/kicad/{PROJECT}/connector-schedule.csv">terminal schedule</a>, <a href="electrical/kicad/{PROJECT}/net-schedule.csv">net schedule</a>, and <a href="electrical/kicad/{PROJECT}/validation/{PROJECT}-erc.rpt">complete ERC report</a>.</p></div></section>{end}'''
     if marker not in page:
-        raise SystemExit("actuator bus web marker missing")
+        raise SystemExit("system artifact web marker missing")
     page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")
     import generate_hr30_system_package_p01 as system
     system.refresh_manifest_and_release()

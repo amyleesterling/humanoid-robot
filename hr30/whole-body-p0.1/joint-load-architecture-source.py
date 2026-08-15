@@ -238,7 +238,7 @@ The two elbows and two shoulder-roll axes retain the 82 g XM430 candidate. Each 
 
 {len(narrow)} axes have less than {NARROW_ENDPOINT_RATIO:.2f} ratio between the effective published stall endpoint and the factored development screen. They are explicitly marked narrow and may not be downsized. Yaw and gripper axes retain separate unresolved inertia/mechanism requirements rather than receiving invented torque values.
 
-Primary manufacturer pages were accessed 2026-08-14 and expose no page revision/date. Exact values are recorded in `actuator-endpoint-source-register.csv`. The Gates 2025 Industrial Power Transmission catalogue identifies 225-5MGT3-15 and 250-5MGT3-15 belt candidates; pulley capacity, custom lightweight pulley manufacture, tensioning and guarding remain selection required.
+Primary manufacturer pages were accessed 2026-08-14 and expose no page revision/date. Exact values are recorded in `actuator-endpoint-source-register.csv`. The MISUMI 5GT/EV5GT catalogues identify the configured 16/20/30/40-tooth pulley candidates and 225/250/255 mm by 9 mm belt candidates used by the installed-drive package; capacity, hub/adapter design, tensioning and guarding remain selection required.
 """
     (OUT / "joint-load-architecture.md").write_text(report, encoding="utf-8", newline="\n")
 
@@ -310,25 +310,36 @@ def main() -> int:
     } for model, data in ACTUATORS.items()])
     write_csv(OUT / "transmission-candidate-source-register.csv", [
         {
-            "manufacturer": "Gates", "catalogue": "2025 INDUSTRIAL POWER TRANSMISSION CATALOGUE",
-            "candidate": "225-5MGT3-15", "product_number": "9400-55278",
-            "pitch_mm": "5", "pitch_length_mm": "225", "tooth_count": "45", "width_mm": "15",
-            "published_mass_kg": "0.014", "candidate_axes": "L_HIP_PITCH; R_HIP_PITCH",
-            "project_pulley_pair": "20:30 tooth custom lightweight pulley candidate",
-            "official_url": "https://www.gates.com/content/dam/documents-library/catalogs/industrial-power-transmission-catalogue-en.pdf",
-            "document_revision_or_date": "2025 catalogue",
-            "selection_state": "BELT CANDIDATE ONLY; PULLEY CAPACITY/TENSION/GUARD/ALIGNMENT/LIFE SELECTION REQUIRED",
+            "drive_id": "LD-15", "manufacturer": "MISUMI", "catalogue": "High Torque Timing Pulleys 5GT / Super High Torque Timing Belts EV5GT",
+            "motor_pulley": "GPA20GT5090-A-H10", "output_pulley": "GPA30GT5090-A-H12", "belt": "GBN225EV5GT-090",
+            "pitch_mm": "5", "pitch_length_mm": "225", "tooth_count": "45", "width_mm": "9",
+            "published_mass_kg": "SELECTION REQUIRED", "candidate_axes": "L_HIP_PITCH; R_HIP_PITCH",
+            "ratio_and_center": "20:30 / 1.5:1 / 49.358512477 mm nominal pitch center",
+            "official_url": "https://uk.misumi-ec.com/pdf/fa/p1_1117.pdf ; https://us.misumi-ec.com/pdf/fa/2019/2019_US_1432.pdf",
+            "document_revision_or_date": "current official catalogues available 2026-08-14; revision/date not stated",
+            "selection_state": "EXACT CONFIGURABLE CANDIDATES; WRITTEN QUOTE, HUB/ADAPTER, CAPACITY, TENSION, GUARD, ALIGNMENT AND LIFE SELECTION REQUIRED",
             "warning": WARNING,
         },
         {
-            "manufacturer": "Gates", "catalogue": "2025 INDUSTRIAL POWER TRANSMISSION CATALOGUE",
-            "candidate": "250-5MGT3-15", "product_number": "9400-55245",
-            "pitch_mm": "5", "pitch_length_mm": "250", "tooth_count": "50", "width_mm": "15",
-            "published_mass_kg": "0.015", "candidate_axes": "ALL KNEE; ALL HIP/ANKLE ROLL; ALL ANKLE PITCH",
-            "project_pulley_pair": "20:40 tooth or 16:40 tooth custom lightweight pulley candidate",
-            "official_url": "https://www.gates.com/content/dam/documents-library/catalogs/industrial-power-transmission-catalogue-en.pdf",
-            "document_revision_or_date": "2025 catalogue",
-            "selection_state": "BELT CANDIDATE ONLY; PULLEY CAPACITY/TENSION/GUARD/ALIGNMENT/LIFE SELECTION REQUIRED",
+            "drive_id": "LD-20", "manufacturer": "MISUMI", "catalogue": "High Torque Timing Pulleys 5GT / Super High Torque Timing Belts EV5GT",
+            "motor_pulley": "GPA20GT5090-A-H10", "output_pulley": "GPA40GT5090-A-H12", "belt": "GBN255EV5GT-090",
+            "pitch_mm": "5", "pitch_length_mm": "255", "tooth_count": "51", "width_mm": "9",
+            "published_mass_kg": "SELECTION REQUIRED", "candidate_axes": "ALL HIP/ANKLE ROLL; ALL KNEE PITCH",
+            "ratio_and_center": "20:40 / 2.0:1 / 49.965206523 mm nominal pitch center",
+            "official_url": "https://uk.misumi-ec.com/pdf/fa/p1_1117.pdf ; https://us.misumi-ec.com/pdf/fa/2019/2019_US_1432.pdf",
+            "document_revision_or_date": "current official catalogues available 2026-08-14; revision/date not stated",
+            "selection_state": "EXACT CONFIGURABLE CANDIDATES; WRITTEN QUOTE, HUB/ADAPTER, CAPACITY, TENSION, GUARD, ALIGNMENT AND LIFE SELECTION REQUIRED",
+            "warning": WARNING,
+        },
+        {
+            "drive_id": "LD-25", "manufacturer": "MISUMI", "catalogue": "High Torque Timing Pulleys 5GT / Super High Torque Timing Belts EV5GT",
+            "motor_pulley": "GPA16GT5090-A-H8", "output_pulley": "GPA40GT5090-A-H12", "belt": "GBN250EV5GT-090",
+            "pitch_mm": "5", "pitch_length_mm": "250", "tooth_count": "50", "width_mm": "9",
+            "published_mass_kg": "SELECTION REQUIRED", "candidate_axes": "L_ANKLE_PITCH; R_ANKLE_PITCH",
+            "ratio_and_center": "16:40 / 2.5:1 / 51.455622919 mm nominal pitch center",
+            "official_url": "https://uk.misumi-ec.com/pdf/fa/p1_1117.pdf ; https://us.misumi-ec.com/pdf/fa/2019/2019_US_1432.pdf",
+            "document_revision_or_date": "current official catalogues available 2026-08-14; revision/date not stated",
+            "selection_state": "EXACT CONFIGURABLE CANDIDATES; WRITTEN QUOTE, HUB/ADAPTER, CAPACITY, TENSION, GUARD, ALIGNMENT AND LIFE SELECTION REQUIRED",
             "warning": WARNING,
         },
     ])

@@ -103,9 +103,12 @@ BEARING_CANDIDATES = {
 
 # Authoritative HR-PROD-030 datums, millimetres.
 HEIGHT = 762.0
-ANKLE_Z = 45.0
+ANKLE_ROLL_Z = 35.0
+ANKLE_Z = 55.0
 KNEE_Z = 210.0
-HIP_Z = 380.0
+HIP_Z = 370.0
+HIP_ROLL_Z = 390.0
+HIP_YAW_Z = 410.0
 WAIST_Z = 425.0
 SHOULDER_Z = 590.0
 NECK_Z = 650.0
@@ -380,25 +383,25 @@ JOINT_MODULE_FAMILIES = {
         "role": "parallel-axis reduced leg joint",
         "plate_w": 72.0, "plate_h": 78.0, "plate_t": 5.0, "pattern_x": 58.0, "pattern_y": 64.0, "hole_d": 5.5,
         "shaft_d": 12.0, "bearing_od": 24.0, "bearing_w": 6.0, "bearing_id": "NSK-6901", "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
-        "transmission": "20:30 tooth, 5M-pitch parallel-axis timing transmission with output encoder", "ratio": "1.5:1 geometric candidate", "motor_offset": 50.0, "output_pulley_d": 48.0, "motor_pulley_d": 32.0, "cable_d": 12.0,
+        "transmission": "MISUMI GPA20/GPA30GT5090 plus GBN225EV5GT-090 candidate with output encoder", "ratio": "1.5:1 exact product/geometry candidate", "motor_offset": 49.358512477, "output_pulley_d": 46.61, "motor_pulley_d": 30.69, "cable_d": 12.0,
     },
     "JMF-08-LEG-REDUCED-20": {
         "role": "higher-reduction hip/ankle roll joint",
         "plate_w": 74.0, "plate_h": 70.0, "plate_t": 5.0, "pattern_x": 60.0, "pattern_y": 56.0, "hole_d": 5.5,
         "shaft_d": 12.0, "bearing_od": 24.0, "bearing_w": 6.0, "bearing_id": "NSK-6901", "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
-        "transmission": "20:40 tooth, 5M-pitch parallel-axis timing transmission with output encoder", "ratio": "2.0:1 geometric candidate", "motor_offset": 50.0, "output_pulley_d": 64.0, "motor_pulley_d": 32.0, "cable_d": 12.0,
+        "transmission": "MISUMI GPA20/GPA40GT5090 plus GBN255EV5GT-090 candidate with output encoder", "ratio": "2.0:1 exact product/geometry candidate", "motor_offset": 49.965206523, "output_pulley_d": 62.52, "motor_pulley_d": 30.69, "cable_d": 12.0,
     },
     "JMF-09-KNEE-REDUCED-20": {
         "role": "2.0:1 knee transmission with dual-supported output",
         "plate_w": 74.0, "plate_h": 78.0, "plate_t": 5.0, "pattern_x": 60.0, "pattern_y": 64.0, "hole_d": 5.5,
         "shaft_d": 12.0, "bearing_od": 24.0, "bearing_w": 6.0, "bearing_id": "NSK-6901", "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
-        "transmission": "20:40 tooth, 5M-pitch parallel-axis timing transmission with output encoder", "ratio": "2.0:1 whole-body knee candidate", "motor_offset": 50.0, "output_pulley_d": 64.0, "motor_pulley_d": 32.0, "cable_d": 12.0,
+        "transmission": "MISUMI GPA20/GPA40GT5090 plus GBN255EV5GT-090 knee candidate with output encoder", "ratio": "2.0:1 exact product/geometry candidate", "motor_offset": 49.965206523, "output_pulley_d": 62.52, "motor_pulley_d": 30.69, "cable_d": 12.0,
     },
     "JMF-10-ANKLE-PITCH-REDUCED-25": {
         "role": "compact 2.5:1 ankle-pitch transmission",
         "plate_w": 74.0, "plate_h": 72.0, "plate_t": 5.0, "pattern_x": 60.0, "pattern_y": 58.0, "hole_d": 5.5,
         "shaft_d": 12.0, "bearing_od": 24.0, "bearing_w": 6.0, "bearing_id": "NSK-6901", "span": 64.0, "body_w": 34.0, "body_h": 47.0, "body_d": 29.0,
-        "transmission": "16:40 tooth, 5M-pitch timing transmission with output encoder", "ratio": "2.5:1 whole-body ankle candidate", "motor_offset": 51.0, "output_pulley_d": 64.0, "motor_pulley_d": 26.0, "cable_d": 10.0,
+        "transmission": "MISUMI GPA16/GPA40GT5090 plus GBN250EV5GT-090 ankle candidate with output encoder", "ratio": "2.5:1 exact product/geometry candidate", "motor_offset": 51.455622919, "output_pulley_d": 62.52, "motor_pulley_d": 24.32, "cable_d": 10.0,
     },
 }
 
@@ -488,7 +491,7 @@ def interactive_html() -> str:
 <section><h2>Orbit the native body architecture</h2><div class="viewer"><model-viewer src="HR-30_body_architecture_candidate.glb" poster="front-elevation.svg" alt="Interactive 3D model of the preliminary 762 millimetre Project Button humanoid body architecture" camera-controls camera-orbit="35deg 76deg 95%" min-camera-orbit="auto auto 20%" max-camera-orbit="auto auto 240%" field-of-view="26deg" shadow-intensity="0.85" exposure="1.05" interaction-prompt="auto"></model-viewer><p>Drag to orbit; scroll or pinch to zoom. Sky blue is shell envelope, dark blue is load-path envelope, gold is joint/hand hardware, and red rods are reference axes. Transparent objects reserve electronics, sensors, restraint, and joint datum space. The downloadable STEP embeds the exact SHA-bound actuator B-Reps; the GLB uses dimension-matched simplified actuator bodies so the web model remains practical to load.</p></div></section>
 <section><h2>The dimensions come from the specification</h2><img src="front-elevation.svg" alt="Front elevation of HR-30 with ankle, knee, hip, waist, shoulder, neck and top height datums"></section>
 <section><h2>What this pass proves—and what it does not</h2><div class="grid"><article class="card pass"><h3>Native geometry exists</h3><p>STEP and GLB are generated from a versioned CadQuery source. The STEP reimports with vertices exactly at Z=0 and Z=762 mm.</p></article><article class="card pass"><h3>Kinematic architecture exists</h3><p>All 25 candidate axes have coordinates, directions, regions, and provisional ranges in a machine-readable schedule.</p></article><article class="card miss"><h3>Preferred reach is missed</h3><p>The specified nominal segments total 370 mm per arm and 950 mm span. These pass the 390/980 mm hard limits but miss the 360/900 mm targets.</p></article><article class="card hold"><h3>Mass is still unproven</h3><p>These are packaging envelopes, not materialized parts. The existing arm and leg actuator concepts already fail their preferred mass allocations.</p></article></div></section>
-<section><h2>Controlled body datums</h2><div class="table"><table><thead><tr><th>Datum</th><th>Z above floor</th><th>Role</th></tr></thead><tbody><tr><td>Ankle pitch</td><td>45 mm</td><td>Lower-leg kinematic datum</td></tr><tr><td>Knee pitch</td><td>210 mm</td><td>165 mm above ankle pitch</td></tr><tr><td>Hip pitch</td><td>380 mm</td><td>170 mm above knee pitch</td></tr><tr><td>Waist yaw</td><td>425 mm</td><td>Upper-body rotation datum</td></tr><tr><td>Shoulder pitch</td><td>590 mm</td><td>Upper-arm datum</td></tr><tr><td>Neck pan</td><td>650 mm</td><td>Head pan datum</td></tr><tr><td>Shell top</td><td>762 mm</td><td>Exact nominal standing height</td></tr></tbody></table></div></section>
+<section><h2>Controlled body datums</h2><div class="table"><table><thead><tr><th>Datum</th><th>Z above floor</th><th>Role</th></tr></thead><tbody><tr><td>Ankle roll / pitch</td><td>35 / 55 mm</td><td>20 mm serial-axis separation inside the ankle housing</td></tr><tr><td>Knee pitch</td><td>210 mm</td><td>155 mm above ankle pitch</td></tr><tr><td>Hip pitch / roll / yaw</td><td>370 / 390 / 410 mm</td><td>20 mm serial-axis separation inside the hip housing</td></tr><tr><td>Waist yaw</td><td>425 mm</td><td>Upper-body rotation datum</td></tr><tr><td>Shoulder pitch</td><td>590 mm</td><td>Upper-arm datum</td></tr><tr><td>Neck pan</td><td>650 mm</td><td>Head pan datum</td></tr><tr><td>Shell top</td><td>762 mm</td><td>Exact nominal standing height</td></tr></tbody></table></div></section>
 <section><h2>Next engineering conversions</h2><div class="grid"><article class="card hold"><h3>Joints</h3><p>Convert the ten visible module-family candidates into released shafts, selected bearings, verified fits, retained fasteners, stops, encoders, and serviceable housings.</p></article><article class="card hold"><h3>Structure and covers</h3><p>Convert solid visual envelopes into materialized frames and tool-removable covers with thickness, splits, edges, vents, access, and retention.</p></article><article class="card hold"><h3>Harness and power</h3><p>Route bend-controlled cables and select the actuator rail, protection, regeneration handling, tether, and eventual onboard energy system.</p></article><article class="card hold"><h3>Evidence</h3><p>Close mass/COM/inertia, collision, gait loads, thermal behavior, stopping, fall restraint, DFM, tolerances, FAI, physical testing, and qualified review.</p></article></div></section>
 <section><h2>Download the engineering artifacts</h2><div class="panel"><p><a href="HR-30_body_architecture_candidate.step">Physical-envelope STEP</a> · <a href="HR-30_body_kinematic_reference.step">Kinematic-reference STEP</a> · <a href="HR-30_body_architecture_candidate.glb">Interactive GLB</a> · <a href="whole-body-source.py">Editable CadQuery source</a> · <a href="joint-axis-schedule.csv">Joint-axis schedule</a> · <a href="joint-module-family-schedule.csv">Joint-module families</a> · <a href="joint-module-axis-binding.csv">All-axis module binding</a> · <a href="vendor-actuator-source-register.csv">Vendor source register</a> · <a href="vendor-actuator-transform-register.csv">Per-axis actuator transforms</a> · <a href="actuator-transmission-allocation.csv">Actuator allocation</a> · <a href="asimov-1-reuse-adapt-reject.csv">Asimov 1 matrix</a> · <a href="component-envelope-schedule.csv">Component schedule</a> · <a href="geometry-checks.json">Geometry checks</a> · <a href="open-holds.csv">Open holds</a></p></div></section></main>
 <footer><div><p>Project Button · HR-30-BODY-ARCH-P0.1 · adult-operated experimental machinery · not a toy · no procurement, fabrication, motion, energization, or functional-safety approval</p></div></footer></body></html>"""
@@ -625,12 +628,12 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
         add_axis(f"{side}_ELBOW_PITCH", "arm", side, "pitch", (sign * ELBOW_X, 0, ELBOW_Z), (1, 0, 0), "SELECTION REQUIRED", "HR-PROD-030")
         add_axis(f"{side}_WRIST_ROTATION", "arm", side, "rotation", (sign * WRIST_X, 0, WRIST_Z), (0, 0, 1), "SELECTION REQUIRED", "HR-PROD-030")
         add_axis(f"{side}_GRIPPER", "hand", side, "parallel open/close", (sign * WRIST_X, 0, 252), (sign, 0, 0), "SELECTION REQUIRED", "HR-PROD-030")
-        add_axis(f"{side}_HIP_YAW", "leg", side, "yaw", (sign * HIP_HALF_WIDTH, 0, 397), (0, 0, 1), "+/-30 deg", "HR-WALK-001")
-        add_axis(f"{side}_HIP_ROLL", "leg", side, "roll", (sign * HIP_HALF_WIDTH, 0, 388), (0, 1, 0), "+/-25 deg", "HR-WALK-001")
+        add_axis(f"{side}_HIP_YAW", "leg", side, "yaw", (sign * HIP_HALF_WIDTH, 0, HIP_YAW_Z), (0, 0, 1), "+/-30 deg", "HR-WALK-001")
+        add_axis(f"{side}_HIP_ROLL", "leg", side, "roll", (sign * HIP_HALF_WIDTH, 0, HIP_ROLL_Z), (0, 1, 0), "+/-25 deg", "HR-WALK-001")
         add_axis(f"{side}_HIP_PITCH", "leg", side, "pitch", (sign * HIP_HALF_WIDTH, 0, HIP_Z), (1, 0, 0), "-35..+45 deg", "HR-WALK-001")
         add_axis(f"{side}_KNEE_PITCH", "leg", side, "pitch", (sign * HIP_HALF_WIDTH, 0, KNEE_Z), (1, 0, 0), "0..120 deg", "HR-WALK-001")
         add_axis(f"{side}_ANKLE_PITCH", "leg", side, "pitch", (sign * HIP_HALF_WIDTH, 0, ANKLE_Z), (1, 0, 0), "-35..+30 deg", "HR-WALK-001")
-        add_axis(f"{side}_ANKLE_ROLL", "leg", side, "roll", (sign * HIP_HALF_WIDTH, 0, 37), (0, 1, 0), "+/-20 deg", "HR-WALK-001")
+        add_axis(f"{side}_ANKLE_ROLL", "leg", side, "roll", (sign * HIP_HALF_WIDTH, 0, ANKLE_ROLL_Z), (0, 1, 0), "+/-20 deg", "HR-WALK-001")
 
     # Turn each datum into a visible, dimensioned joint-module candidate.  The
     # geometry establishes the architecture of hollow shafts, actuator-plus-
@@ -681,6 +684,10 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
         elif abs(normal.y) > 0.9:
             offset_direction = cq.Vector(0, 0, -1 if "HIP_ROLL" in axis_id or "SHOULDER_ROLL" in axis_id else 1)
         elif any(token in axis_id for token in ("HIP_PITCH",)):
+            # Keep the central architecture placeholder below the hip-pitch
+            # axis, inside the thigh-side service envelope.  The derived
+            # installed-drive assembly replaces this placeholder and uses its
+            # separately screened external outboard service plane.
             offset_direction = cq.Vector(0, 0, -1)
         elif any(token in axis_id for token in ("KNEE_PITCH", "ANKLE_PITCH")):
             offset_direction = cq.Vector(0, 0, 1)
@@ -1097,7 +1104,7 @@ def main() -> int:
         "identifier": IDENTIFIER,
         "warning": WARNING,
         "coordinate_system": {"x": "robot left", "y": "rearward; face is -Y", "z": "up from floor", "origin": "floor/sagittal-plane intersection beneath pelvis"},
-        "source_datums_mm": {"ankle_pitch": ANKLE_Z, "knee_pitch": KNEE_Z, "hip_pitch": HIP_Z, "waist_yaw": WAIST_Z, "shoulder_pitch": SHOULDER_Z, "neck_pan": NECK_Z, "shell_top": HEIGHT},
+        "source_datums_mm": {"ankle_roll": ANKLE_ROLL_Z, "ankle_pitch": ANKLE_Z, "knee_pitch": KNEE_Z, "hip_pitch": HIP_Z, "hip_roll": HIP_ROLL_Z, "hip_yaw": HIP_YAW_Z, "waist_yaw": WAIST_Z, "shoulder_pitch": SHOULDER_Z, "neck_pan": NECK_Z, "shell_top": HEIGHT},
         "physical_bbox_mm": physical_box,
         "physical_vertex_extents_mm": physical_vertices,
         "reference_bbox_mm": reference_box,

@@ -2,7 +2,7 @@
   "identifier": "HR-30-INSTALLED-EQUIPMENT-P0.1",
   "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION",
   "installed_item_count": 54,
-  "planning_installed_mass_kg": 3.442330845,
+  "planning_installed_mass_kg": 3.445274845,
   "modeled_operating_power_w": 48.5,
   "modeled_candidate_heat_w": 53.3,
   "all_geometry_valid": true,

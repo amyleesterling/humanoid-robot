@@ -242,8 +242,8 @@ def build() -> tuple[list[Part], list[dict], list[dict]]:
         leg = f"L0{1 if side == 'L' else 2}"
         arm = f"A0{1 if side == 'L' else 2}"
         x = sign * body.HIP_HALF_WIDTH
-        add_route(f"HN01_{side}_LEG_POWER", leg, "ACTUATOR POWER", (x + sign * 12, 15, 397), (x + sign * 12, 15, 45), 12, 60, "front/rear offset from data corridor; joint service loops required", route_power)
-        add_route(f"HN01_{side}_LEG_DATA", leg, "DATA/ENCODER", (x - sign * 12, -15, 397), (x - sign * 12, -15, 45), 9, 45, "front/rear offset from power corridor; shield/return topology open", route_data)
+        add_route(f"HN01_{side}_LEG_POWER", leg, "ACTUATOR POWER", (x + sign * 12, 15, body.HIP_YAW_Z), (x + sign * 12, 15, body.ANKLE_ROLL_Z), 12, 60, "front/rear offset from data corridor; joint service loops required", route_power)
+        add_route(f"HN01_{side}_LEG_DATA", leg, "DATA/ENCODER", (x - sign * 12, -15, body.HIP_YAW_Z), (x - sign * 12, -15, body.ANKLE_ROLL_Z), 9, 45, "front/rear offset from power corridor; shield/return topology open", route_data)
         add_route(f"HN01_{side}_ARM_POWER", arm, "ACTUATOR POWER", (sign * 92, 15, 575), (sign * body.WRIST_X, 15, body.WRIST_Z), 10, 50, "rearward offset from data; shoulder/elbow loops required", route_power)
         add_route(f"HN01_{side}_ARM_DATA", arm, "DATA/ENCODER", (sign * 100, -15, 575), (sign * body.WRIST_X, -15, body.WRIST_Z), 8, 40, "forward offset from power; shield/return topology open", route_data)
 
@@ -292,7 +292,7 @@ P0.1 now includes an editable CAD assembly that converts the visual body envelop
         if row["hold_id"] == "HR30-P01-H06":
             row["unresolved_item"] = "The fabrication assembly now defines lightweight hollow 1.5 mm limb/palm/foot panels and 1.6 mm torso/pelvis/head shells, but material/process, rib/stiffness, retention, vents, access clearance, tolerance and pinch-edge proof remain open."
         elif row["hold_id"] == "HR30-P01-H07":
-            row["unresolved_item"] = "Eleven segregated power/data corridors now have diameters and bend-radius requirements, but exact cables, fill, flex life, service loops, connectors, strain relief, shielding, current, EMC and thermal evidence remain open."
+            row["unresolved_item"] = "Twelve segregated power/data corridors now have diameters and bend-radius requirements, but exact cables, fill, flex life, service loops, connectors, strain relief, shielding, current, EMC and thermal evidence remain open."
     write_csv(holds_path, holds)
 
     status_path = OUT / "package-status.json"

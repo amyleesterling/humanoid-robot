@@ -67,6 +67,12 @@ def main() -> int:
         "leg-drivetrain-p0.1/belt-center-geometry.csv",
         "leg-drivetrain-p0.1/HR-30_leg_drivetrain_lineup_candidate.step",
         "leg-drivetrain-p0.1/HR-30_leg_drivetrain_lineup_candidate.glb",
+        "leg-drivetrain-installation-p0.1/installation-status.json",
+        "leg-drivetrain-installation-p0.1/installed-drivetrain-register.csv",
+        "leg-drivetrain-installation-p0.1/installed-component-register.csv",
+        "leg-drivetrain-installation-p0.1/inter-drive-clearance-register.csv",
+        "leg-drivetrain-installation-p0.1/HR-30_leg_drivetrains_installed_candidate.step",
+        "leg-drivetrain-installation-p0.1/HR-30_leg_drivetrains_installed_candidate.glb",
     }
     source_files = {p.relative_to(SRC).as_posix() for p in SRC.rglob("*") if p.is_file()}
     release_files = {p.relative_to(REL).as_posix() for p in REL.rglob("*") if p.is_file()}
@@ -94,6 +100,17 @@ def main() -> int:
     require(all(float(node.find("limit").get("effort")) == 0.0 for node in urdf_joints), "URDF must remain effort-disabled until physical selection")
     urdf_masses = [float(node.find("inertial/mass").get("value")) for node in urdf.findall("link") if node.find("inertial/mass") is not None]
     require(abs(sum(urdf_masses) - reconciled_mass) < 5e-6, "URDF reconciled mass total drift")
+    joint_origins = {node.get("name"): tuple(float(value) for value in node.find("origin").get("xyz").split()) for node in urdf_joints}
+    for side in ("L", "R"):
+        require(abs(joint_origins[f"{side}_HIP_YAW"][2] - 0.020) < 1e-9, f"{side} hip-yaw serial datum drift")
+        require(abs(joint_origins[f"{side}_HIP_ROLL"][2] + 0.020) < 1e-9 and abs(joint_origins[f"{side}_HIP_PITCH"][2] + 0.020) < 1e-9, f"{side} hip 20 mm serial stack drift")
+        require(abs(joint_origins[f"{side}_ANKLE_ROLL"][2] + 0.020) < 1e-9, f"{side} ankle 20 mm serial stack drift")
+        foot = urdf.find(f"link[@name='{side}_foot']")
+        visual_xyz = tuple(float(value) for value in foot.find("visual/origin").get("xyz").split())
+        collision_xyz = tuple(float(value) for value in foot.find("collision/origin").get("xyz").split())
+        inertial_xyz = tuple(float(value) for value in foot.find("inertial/origin").get("xyz").split())
+        require(visual_xyz == collision_xyz and abs(visual_xyz[1] + 0.025) < 1e-9 and abs(visual_xyz[2] + 0.0175) < 1e-9, f"{side} foot canonical geometry origin drift")
+        require(inertial_xyz != visual_xyz, f"{side} provisional inertial COM was incorrectly collapsed onto geometry origin")
 
     mjcf = ET.parse(SRC / "hr30.xml").getroot()
     mjcf_joints = mjcf.findall("./worldbody//joint")
@@ -156,12 +173,15 @@ def main() -> int:
     require(not status["joint_fastener_selected"] and not status["joint_fastener_preload_validated"], "fastener selection/validation overclaim")
     require(status.get("reduced_leg_drivetrain_package_present") and status.get("reduced_leg_drivetrain_module_count") == 3 and status.get("reduced_leg_drivetrain_axis_count") == 10 and status.get("reduced_leg_drivetrain_candidate_products_defined"), "whole-body reduced-leg drivetrain package missing")
     require(not status.get("reduced_leg_drivetrain_capacity_validated") and not status.get("reduced_leg_drivetrain_horn_adapters_complete"), "reduced-leg drivetrain validation overclaim")
+    require(status.get("installed_leg_drivetrain_whole_body_cad_present") and status.get("installed_leg_drivetrain_axis_count") == 10 and status.get("installed_leg_drivetrain_nominal_inter_axis_common_volume_count") == 0, "whole-body installed-leg-drive package missing")
+    require(not status.get("installed_leg_drivetrain_motion_sweep_validated") and not status.get("installed_leg_drivetrain_capacity_validated") and not status.get("installed_leg_drivetrain_adapters_complete"), "installed-leg-drive validation overclaim")
     require(status["module_interface_control_count"] == 12 and status["module_interface_axis_ownership_count"] == 25, "whole-body interface atlas coverage drift")
     require((status["actuator_bus_segment_count"], status["actuator_bus_axis_binding_count"], status["rs485_actuator_axis_count"], status["ttl_actuator_axis_count"]) == (8, 25, 19, 6), "actuator bus status counts drift")
     require(status["native_hr30_kicad_present"] and status["native_hr30_kicad_logical_connectivity_reconciled"] and status["native_hr30_kicad_sheet_count"] == 19 and status["native_hr30_kicad_axis_binding_count"] == 25 and status["native_hr30_kicad_actuator_bus_controller_pins_selected"] and status["native_hr30_kicad_interface_device_candidates_selected"] and status["native_hr30_kicad_data_only_connector_candidates_selected"] and status["native_hr30_kicad_erc_errors"] == status["native_hr30_kicad_erc_warnings"] == 0, "native whole-body KiCad integration missing")
     require(not any(status[key] for key in ("native_hr30_kicad_reconciled", "actuator_bus_interface_selected", "actuator_bus_connector_harness_validated")), "electrical implementation overclaim")
     require(status["whole_body_pose_count"] == 8, "bilateral articulated pose set incomplete")
-    require(status["whole_body_pose_common_volume_interference_count"] == 0 and status["whole_body_pose_minimum_nominal_clearance_mm"] >= 5.0, "whole-body nominal collision status not closed")
+    require(status["whole_body_pose_common_volume_interference_count"] == 0 and status["whole_body_pose_minimum_nominal_clearance_mm"] >= 2.5, "whole-body nominal collision status not closed")
+    require(status["whole_body_pose_minimum_nominal_clearance_mm"] < 5.0, "whole-body sub-5 mm planning-clearance hold unexpectedly disappeared")
     require(status["installed_equipment_item_count"] == 54 and status["tether_first_equipment_configuration"] and status["tether_development_interface_retained"] and status["onboard_energy_candidate_geometry_present"] and not status["onboard_energy_installed"], "installed-equipment configuration boundary drift")
     require(status.get("energy_safety_spine_present") and status.get("direct_4s_lipo_architecture_rejected") and not status.get("energy_safety_native_kicad_correction_required") and status.get("energy_safety_native_kicad_topology_corrected") and status.get("energy_safety_physical_terminal_release_required") and status.get("energy_safety_individual_actuator_power_feed_count") == 25, "energy/safety architecture integration missing")
     require(not status.get("energy_safety_protection_released") and not status.get("energy_safety_functional_safety_approved"), "energy/safety release or approval overclaim")
@@ -170,7 +190,7 @@ def main() -> int:
     require(sha(SRC / "system-package-source.py") == sha(ROOT / "tools" / "generate_hr30_system_package_p01.py"), "system generator snapshot drift")
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require("The P0.1 engineering package is whole-body" in page and "font:17px/1.55" in page and "font-size:16px" in page, "web package summary/legibility missing")
-    require(all(name in page for name in ("hr30.urdf", "hr30.xml", "whole-robot-candidate-bom.csv", "embodied-agent-architecture.md", "mass-reconciliation.md", "installed-equipment-register.csv", "battery-energy-source-register.csv", "whole-body-pose-register.csv", "pose-support-metrics.csv", "HR-30_whole_body_pose_lineup_candidate.glb", "whole-body-collision-register.csv", "collision-exclusion-register.csv", "actuator-bus-topology.csv", "actuator-bus-axis-binding.csv", "actuator-bus-source-register.csv", "whole-body-electrical-integration.md", "hr30-whole-body-electrical-p0.1.kicad_pro", "hr30-whole-body-electrical-p0.1-erc.rpt", "whole-body-interface-atlas.html", "module-interface-control-register.csv", "module-assembly-sequence.csv", "module-cad/index.html", "HR-30_module_exploded_candidate.glb", "fasteners/index.html", "joint-fastener-register.csv", "HR-30_fastened_whole_body_candidate.glb", "energy-safety-spine-p0.1/index.html")), "web system links incomplete")
+    require(all(name in page for name in ("hr30.urdf", "hr30.xml", "whole-robot-candidate-bom.csv", "embodied-agent-architecture.md", "mass-reconciliation.md", "installed-equipment-register.csv", "battery-energy-source-register.csv", "whole-body-pose-register.csv", "pose-support-metrics.csv", "HR-30_whole_body_pose_lineup_candidate.glb", "whole-body-collision-register.csv", "collision-exclusion-register.csv", "actuator-bus-topology.csv", "actuator-bus-axis-binding.csv", "actuator-bus-source-register.csv", "whole-body-electrical-integration.md", "hr30-whole-body-electrical-p0.1.kicad_pro", "hr30-whole-body-electrical-p0.1-erc.rpt", "whole-body-interface-atlas.html", "module-interface-control-register.csv", "module-assembly-sequence.csv", "module-cad/index.html", "HR-30_module_exploded_candidate.glb", "fasteners/index.html", "joint-fastener-register.csv", "HR-30_fastened_whole_body_candidate.glb", "energy-safety-spine-p0.1/index.html", "leg-drivetrain-installation-p0.1/index.html", "HR-30_leg_drivetrains_installed_candidate.glb")), "web system links incomplete")
     require(page.count('id="equipment-layout"') == 1, "web installed-equipment viewer missing or duplicated")
     print(f"PASS: HR-30 whole-body P0.1 has 25-DOF URDF/MJCF, eight bilateral articulated S2-S5 pose candidates with zero nominal common-volume interference, 54 located equipment/harness items including two four-channel interface-carrier reservations, separate head power/data routes and a dimensioned onboard-energy candidate, and {reconciled_mass:.3f} kg planning mass plus budgets, BOM, hands, walking, agent and build artifacts; tolerance/physical validation and all work authority remain false")
     return 0

@@ -16,6 +16,8 @@ import shutil
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+import generate_hr30_body_architecture_p01 as body
+
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "hr30" / "whole-body-p0.1"
@@ -61,11 +63,11 @@ def link_rows() -> list[dict]:
             {"link": f"{side}_forearm", "group": f"{side} arm", "mass": 0.22, "center": (sign * 0.1375, 0, 0.3675), "size": (0.050, 0.050, 0.145)},
             {"link": f"{side}_hand", "group": f"{side} hand", "mass": 0.18, "center": (sign * 0.140, 0, 0.270), "size": (0.050, 0.058, 0.050)},
             {"link": f"{side}_gripper", "group": f"{side} hand", "mass": 0.03, "center": (sign * 0.140, 0, 0.232), "size": (0.044, 0.048, 0.046)},
-            {"link": f"{side}_hip_yaw_link", "group": f"{side} leg", "mass": 0.08, "center": (sign * 0.0625, 0, 0.397), "size": (0.060, 0.070, 0.040)},
-            {"link": f"{side}_hip_roll_link", "group": f"{side} leg", "mass": 0.08, "center": (sign * 0.0625, 0, 0.388), "size": (0.060, 0.070, 0.040)},
-            {"link": f"{side}_thigh", "group": f"{side} leg", "mass": 0.66, "center": (sign * 0.0625, 0, 0.295), "size": (0.074, 0.076, 0.140)},
+            {"link": f"{side}_hip_yaw_link", "group": f"{side} leg", "mass": 0.08, "center": (sign * 0.0625, 0, body.HIP_YAW_Z / 1000.0), "size": (0.060, 0.070, 0.040)},
+            {"link": f"{side}_hip_roll_link", "group": f"{side} leg", "mass": 0.08, "center": (sign * 0.0625, 0, body.HIP_ROLL_Z / 1000.0), "size": (0.060, 0.070, 0.040)},
+            {"link": f"{side}_thigh", "group": f"{side} leg", "mass": 0.66, "center": (sign * 0.0625, 0, 0.290), "size": (0.074, 0.076, 0.160)},
             {"link": f"{side}_shin", "group": f"{side} leg", "mass": 0.47, "center": (sign * 0.0625, 0, 0.128), "size": (0.068, 0.072, 0.145)},
-            {"link": f"{side}_ankle_pitch_link", "group": f"{side} leg", "mass": 0.13, "center": (sign * 0.0625, 0, 0.045), "size": (0.066, 0.064, 0.052)},
+            {"link": f"{side}_ankle_pitch_link", "group": f"{side} leg", "mass": 0.13, "center": (sign * 0.0625, 0, body.ANKLE_Z / 1000.0), "size": (0.066, 0.064, 0.052)},
             {"link": f"{side}_foot", "group": f"{side} foot", "mass": 0.605, "center": (sign * 0.0625, -0.025, 0.0175), "size": (0.090, 0.145, 0.035)},
         ])
     return rows
@@ -83,12 +85,12 @@ def frame_positions() -> dict[str, tuple[float, float, float]]:
             f"{side}_forearm": (sign * 0.135, 0, 0.440),
             f"{side}_hand": (sign * 0.140, 0, 0.295),
             f"{side}_gripper": (sign * 0.140, 0, 0.252),
-            f"{side}_hip_yaw_link": (sign * 0.0625, 0, 0.397),
-            f"{side}_hip_roll_link": (sign * 0.0625, 0, 0.388),
-            f"{side}_thigh": (sign * 0.0625, 0, 0.380),
+            f"{side}_hip_yaw_link": (sign * 0.0625, 0, body.HIP_YAW_Z / 1000.0),
+            f"{side}_hip_roll_link": (sign * 0.0625, 0, body.HIP_ROLL_Z / 1000.0),
+            f"{side}_thigh": (sign * 0.0625, 0, body.HIP_Z / 1000.0),
             f"{side}_shin": (sign * 0.0625, 0, 0.210),
-            f"{side}_ankle_pitch_link": (sign * 0.0625, 0, 0.045),
-            f"{side}_foot": (sign * 0.0625, 0, 0.037),
+            f"{side}_ankle_pitch_link": (sign * 0.0625, 0, body.ANKLE_Z / 1000.0),
+            f"{side}_foot": (sign * 0.0625, 0, body.ANKLE_ROLL_Z / 1000.0),
         })
     return frames
 
@@ -118,16 +120,18 @@ def joint_rows() -> list[dict]:
 
 def add_urdf_geometry(link: ET.Element, row: dict, frame: tuple[float, float, float]) -> None:
     center = row["center"]
-    relative = tuple(center[i] - frame[i] for i in range(3))
+    inertial_relative = tuple(center[i] - frame[i] for i in range(3))
+    geometry_center = row.get("geometry_center", center)
+    geometry_relative = tuple(geometry_center[i] - frame[i] for i in range(3))
     size = row["size"]
     ixx, iyy, izz = inertia_box(row["mass"], size)
     inertial = ET.SubElement(link, "inertial")
-    ET.SubElement(inertial, "origin", xyz=" ".join(f"{v:.6f}" for v in relative), rpy="0 0 0")
+    ET.SubElement(inertial, "origin", xyz=" ".join(f"{v:.6f}" for v in inertial_relative), rpy="0 0 0")
     ET.SubElement(inertial, "mass", value=f"{row['mass']:.6f}")
     ET.SubElement(inertial, "inertia", ixx=f"{ixx:.9f}", ixy="0", ixz="0", iyy=f"{iyy:.9f}", iyz="0", izz=f"{izz:.9f}")
     for kind in ("visual", "collision"):
         node = ET.SubElement(link, kind)
-        ET.SubElement(node, "origin", xyz=" ".join(f"{v:.6f}" for v in relative), rpy="0 0 0")
+        ET.SubElement(node, "origin", xyz=" ".join(f"{v:.6f}" for v in geometry_relative), rpy="0 0 0")
         geometry = ET.SubElement(node, "geometry")
         ET.SubElement(geometry, "box", size=" ".join(f"{v:.6f}" for v in size))
         if kind == "visual":
@@ -177,9 +181,11 @@ def write_mjcf(rows: list[dict], joints: list[dict]) -> None:
         body = ET.SubElement(parent_node, "body", name=link_name, pos=" ".join(f"{v:.6f}" for v in rel))
         if link_name == "base_link":
             ET.SubElement(body, "freejoint", name="floating_base")
-        visual_rel = tuple(row["center"][i] - world_origin[i] for i in range(3))
-        ET.SubElement(body, "inertial", pos=" ".join(f"{v:.6f}" for v in visual_rel), mass=f"{row['mass']:.6f}", diaginertia=" ".join(f"{v:.9f}" for v in inertia_box(row["mass"], row["size"])))
-        ET.SubElement(body, "geom", pos=" ".join(f"{v:.6f}" for v in visual_rel), size=" ".join(f"{v / 2:.6f}" for v in row["size"]))
+        inertial_rel = tuple(row["center"][i] - world_origin[i] for i in range(3))
+        geometry_center = row.get("geometry_center", row["center"])
+        geometry_rel = tuple(geometry_center[i] - world_origin[i] for i in range(3))
+        ET.SubElement(body, "inertial", pos=" ".join(f"{v:.6f}" for v in inertial_rel), mass=f"{row['mass']:.6f}", diaginertia=" ".join(f"{v:.9f}" for v in inertia_box(row["mass"], row["size"])))
+        ET.SubElement(body, "geom", pos=" ".join(f"{v:.6f}" for v in geometry_rel), size=" ".join(f"{v / 2:.6f}" for v in row["size"]))
         for joint in children.get(link_name, []):
             child_origin = frames[joint["child"]]
             child = by_link[joint["child"]]
@@ -187,9 +193,11 @@ def write_mjcf(rows: list[dict], joints: list[dict]) -> None:
             child_body = ET.SubElement(body, "body", name=joint["child"], pos=" ".join(f"{v:.6f}" for v in child_rel))
             low, high, _ = joint["limit"]
             ET.SubElement(child_body, "joint", name=joint["name"], type="slide" if joint["type"] == "prismatic" else "hinge", axis=" ".join(str(v) for v in joint["axis"]), range=f"{low:.6f} {high:.6f}")
-            child_visual_rel = tuple(child["center"][i] - child_origin[i] for i in range(3))
-            ET.SubElement(child_body, "inertial", pos=" ".join(f"{v:.6f}" for v in child_visual_rel), mass=f"{child['mass']:.6f}", diaginertia=" ".join(f"{v:.9f}" for v in inertia_box(child["mass"], child["size"])))
-            ET.SubElement(child_body, "geom", pos=" ".join(f"{v:.6f}" for v in child_visual_rel), size=" ".join(f"{v / 2:.6f}" for v in child["size"]))
+            child_inertial_rel = tuple(child["center"][i] - child_origin[i] for i in range(3))
+            child_geometry_center = child.get("geometry_center", child["center"])
+            child_geometry_rel = tuple(child_geometry_center[i] - child_origin[i] for i in range(3))
+            ET.SubElement(child_body, "inertial", pos=" ".join(f"{v:.6f}" for v in child_inertial_rel), mass=f"{child['mass']:.6f}", diaginertia=" ".join(f"{v:.9f}" for v in inertia_box(child["mass"], child["size"])))
+            ET.SubElement(child_body, "geom", pos=" ".join(f"{v:.6f}" for v in child_geometry_rel), size=" ".join(f"{v / 2:.6f}" for v in child["size"]))
 
             def recurse(existing: ET.Element, current: str, current_origin: tuple[float, float, float]) -> None:
                 for grand in children.get(current, []):
@@ -198,9 +206,11 @@ def write_mjcf(rows: list[dict], joints: list[dict]) -> None:
                     gb = ET.SubElement(existing, "body", name=grand["child"], pos=" ".join(f"{go[i]-current_origin[i]:.6f}" for i in range(3)))
                     gl, gh, _ = grand["limit"]
                     ET.SubElement(gb, "joint", name=grand["name"], type="slide" if grand["type"] == "prismatic" else "hinge", axis=" ".join(str(v) for v in grand["axis"]), range=f"{gl:.6f} {gh:.6f}")
-                    vr = tuple(gr["center"][i] - go[i] for i in range(3))
-                    ET.SubElement(gb, "inertial", pos=" ".join(f"{v:.6f}" for v in vr), mass=f"{gr['mass']:.6f}", diaginertia=" ".join(f"{v:.9f}" for v in inertia_box(gr["mass"], gr["size"])))
-                    ET.SubElement(gb, "geom", pos=" ".join(f"{v:.6f}" for v in vr), size=" ".join(f"{v / 2:.6f}" for v in gr["size"]))
+                    inertial_rel = tuple(gr["center"][i] - go[i] for i in range(3))
+                    geometry_center = gr.get("geometry_center", gr["center"])
+                    geometry_rel = tuple(geometry_center[i] - go[i] for i in range(3))
+                    ET.SubElement(gb, "inertial", pos=" ".join(f"{v:.6f}" for v in inertial_rel), mass=f"{gr['mass']:.6f}", diaginertia=" ".join(f"{v:.9f}" for v in inertia_box(gr["mass"], gr["size"])))
+                    ET.SubElement(gb, "geom", pos=" ".join(f"{v:.6f}" for v in geometry_rel), size=" ".join(f"{v / 2:.6f}" for v in gr["size"]))
                     recurse(gb, grand["child"], go)
             recurse(child_body, joint["child"], child_origin)
 
@@ -511,8 +521,16 @@ def main() -> int:
     fabrication.generate_into_package()
     import generate_hr30_mass_reconciliation_p01 as mass_reconciliation
     mass_summary = mass_reconciliation.generate_into_package()
-    import generate_hr30_actuator_bus_architecture_p01 as actuator_buses
-    actuator_buses.generate_into_package(refresh=False)
+    carrier_pinout = OUT / "electrical" / "kicad" / "hr30-whole-body-electrical-p0.1" / "interface-carrier-pinout.csv"
+    if carrier_pinout.exists():
+        import generate_hr30_actuator_bus_architecture_p01 as actuator_buses
+        actuator_buses.generate_into_package(refresh=False)
+    else:
+        # A clean build has not generated the electrical carrier pinout yet.
+        # The whole-release orchestrator runs electrical and then the bus
+        # integration after this core systems stage, breaking the former
+        # circular dependency without inventing a pinout.
+        print("DEFERRED: actuator-bus integration awaits generated electrical carrier pinout")
     refresh_manifest_and_release()
     print(json.dumps({
         "identifier": IDENTIFIER,

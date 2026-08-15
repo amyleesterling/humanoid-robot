@@ -44,9 +44,10 @@ def main() -> int:
     source_by_model = {row["model"]: row for row in sources}
     require(all("STALL TORQUE IS MOMENTARY" in row["manufacturer_caveat"] for row in sources), "stall warning missing")
     transmissions = rows("transmission-candidate-source-register.csv")
-    require(len(transmissions) == 2 and {row["product_number"] for row in transmissions} == {"9400-55278", "9400-55245"}, "Gates transmission candidate source set mismatch")
-    require({float(row["published_mass_kg"]) for row in transmissions} == {0.014, 0.015}, "Gates transmission published mass drift")
-    require(all(row["official_url"].startswith("https://www.gates.com/") and "SELECTION REQUIRED" in row["selection_state"] for row in transmissions), "transmission source/selection boundary missing")
+    require(len(transmissions) == 3 and {row["drive_id"] for row in transmissions} == {"LD-15", "LD-20", "LD-25"}, "MISUMI transmission candidate source set mismatch")
+    require({row["belt"] for row in transmissions} == {"GBN225EV5GT-090", "GBN255EV5GT-090", "GBN250EV5GT-090"}, "exact EV5GT belt candidate set drift")
+    require({row["motor_pulley"] for row in transmissions} == {"GPA16GT5090-A-H8", "GPA20GT5090-A-H10"} and {row["output_pulley"] for row in transmissions} == {"GPA30GT5090-A-H12", "GPA40GT5090-A-H12"}, "exact 5GT pulley candidate set drift")
+    require(all(row["published_mass_kg"] == "SELECTION REQUIRED" and "misumi" in row["official_url"].lower() and "WRITTEN QUOTE" in row["selection_state"] for row in transmissions), "transmission source/selection boundary missing")
     for row in load:
         require(row["candidate_actuator"] in source_by_model, f"unknown actuator {row['axis_id']}")
         source = source_by_model[row["candidate_actuator"]]

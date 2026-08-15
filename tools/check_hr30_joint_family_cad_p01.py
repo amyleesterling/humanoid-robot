@@ -167,7 +167,8 @@ def main() -> int:
     readme = (SRC / "README.md").read_text(encoding="utf-8")
     require("## Serviceable joint-family CAD" in readme and "all 25 axes" in readme, "whole-body README joint-family section missing")
     holds = {row["hold_id"]: row for row in read_csv(SRC / "open-holds.csv")}
-    require("All 25 axes now have dimensioned module bindings" in holds["HR30-P01-H01"]["unresolved_item"] and "156 located M3/M4/M5 screw candidates" in holds["HR30-P01-H01"]["unresolved_item"], "H01 current whole-body joint/fastener disposition missing")
+    h01 = holds["HR30-P01-H01"]["unresolved_item"].lower()
+    require("all 25 axes" in h01 and "156 located whole-body carrier screws" in h01 and "physical proof" in h01, "H01 current whole-body joint/fastener disposition missing")
 
     print(f"PASS: reimported {imported} native STEP assemblies; ten serviceable HR-30 joint families expose 175 physical candidate parts and cover all 25 axes; fits/capacity/physical validation and all work authority remain false")
     return 0

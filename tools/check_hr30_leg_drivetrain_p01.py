@@ -170,7 +170,14 @@ def main() -> int:
     require(whole_status["reduced_leg_drivetrain_package_present"] and whole_status["reduced_leg_drivetrain_module_count"] == 3 and whole_status["reduced_leg_drivetrain_axis_count"] == 10, "whole-body status lacks drivetrain package")
     require(not whole_status["reduced_leg_drivetrain_capacity_validated"] and not whole_status["reduced_leg_drivetrain_horn_adapters_complete"], "whole-body drivetrain overclaim")
     hold = next((row for row in rows(WHOLE / "open-holds.csv") if row["hold_id"] == "HR30-P01-H03"), None)
-    require(hold is not None and hold["state"] == "OPEN" and "three exact MISUMI" in hold["unresolved_item"] and "physical proof remain open" in hold["unresolved_item"], "leg hold not honestly advanced")
+    require(
+        hold is not None
+        and hold["state"] == "OPEN"
+        and "exact MISUMI" in hold["unresolved_item"]
+        and "all 45 nominal inter-drive pairs have zero common volume" in hold["unresolved_item"].lower()
+        and "physical proof remain open" in hold["unresolved_item"],
+        "leg hold not honestly advanced",
+    )
 
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require("font:17px/1.55" in page and "font-size:16px" in page and "overflow-x:clip" in page, "drivetrain guide legibility/responsiveness drift")

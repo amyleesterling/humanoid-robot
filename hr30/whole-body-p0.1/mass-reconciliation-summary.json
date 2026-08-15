@@ -7,28 +7,28 @@
   "located_joint_fastener_count": 156,
   "transmission_belt_count": 10,
   "installed_equipment_item_count": 54,
-  "minimum_identified_candidate_mass_kg": 10.840563137,
-  "planning_identified_candidate_mass_kg": 11.559851709,
-  "maximum_identified_candidate_mass_kg": 12.472818064,
-  "fabrication_cad_density_screen_kg": 2.315085862,
+  "minimum_identified_candidate_mass_kg": 10.817507497,
+  "planning_identified_candidate_mass_kg": 11.537384869,
+  "maximum_identified_candidate_mass_kg": 12.451087224,
+  "fabrication_cad_density_screen_kg": 2.313622376,
   "actuator_published_mass_planning_kg": 2.609,
-  "joint_hardware_gross_density_screen_kg": 2.49121089,
+  "joint_hardware_gross_density_screen_kg": 2.467263536,
   "located_joint_fastener_planning_mass_kg": 0.554224112,
   "transmission_belt_published_mass_kg": 0.148,
-  "installed_equipment_harness_planning_mass_kg": 3.442330845,
+  "installed_equipment_harness_planning_mass_kg": 3.445274845,
   "prior_allocation_mass_kg": 9.63,
-  "reconciled_dynamics_planning_mass_kg": 11.950130773,
+  "reconciled_dynamics_planning_mass_kg": 11.927782373,
   "reconciled_dynamics_neutral_com_m": [
-    -0.000772416,
-    0.011011524,
-    0.367071752
+    -0.000773863,
+    0.011033081,
+    0.367907374
   ],
   "program_maximum_mass_kg": 12.0,
   "program_lightweight_stretch_kg": 10.0,
-  "planning_margin_to_program_maximum_kg": 0.049869227,
-  "planning_margin_to_lightweight_stretch_kg": -1.950130773,
-  "integration_contingency_before_fastener_allocation_kg": 0.880450208,
-  "remaining_integration_contingency_kg": 0.390279064,
+  "planning_margin_to_program_maximum_kg": 0.072217627,
+  "planning_margin_to_lightweight_stretch_kg": -1.927782373,
+  "integration_contingency_before_fastener_allocation_kg": 0.878652858,
+  "remaining_integration_contingency_kg": 0.390397504,
   "program_mass_target_status": "WITHIN P0.1 MAXIMUM; PHYSICAL MASS CLOSURE OPEN",
   "unmodeled_or_unselected": [
     "exact battery BMS/PCM, cell monitor, connector, service disconnect, precharge, containment, retention and offboard charger hardware",
@@ -46,8 +46,8 @@
   },
   "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION",
   "reconciled_box_model_inertia_kg_m2": [
-    0.39543948,
-    0.447314233,
-    0.07596045
+    0.392945184,
+    0.4447027,
+    0.075820291
   ]
 }

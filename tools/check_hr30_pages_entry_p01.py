@@ -44,7 +44,8 @@ def main() -> int:
     require(all(link in text for link in required_links), "root page does not expose the complete package")
     require("PRELIMINARY" in text and "NOT APPROVED" in text and "energization" in text.lower(), "preliminary authority warning missing")
     require(displayed_mass in text, f"root page mass is not synchronized to the authoritative reconciliation: {displayed_mass}")
-    require("only 0.050 kg remains" in text, "narrow P0.1 mass margin is not visible on the root page")
+    displayed_margin = f"only {float(mass_summary['planning_margin_to_program_maximum_kg']):.3f} kg remains"
+    require(displayed_margin in text, "narrow P0.1 mass margin is not visible on the root page")
     require("9.63 kg" not in text, "historical allocation mass remains on the current root page")
     require('src="hr30/whole-body-p0.1/vendor/model-viewer.min.js"' in text, "viewer is not repository-local")
     require('src="hr30/whole-body-p0.1/grippers-p0.1/HR-30_detailed_hands_installed_open_candidate.glb"' in text, "root viewer does not show the hand-integrated whole robot")

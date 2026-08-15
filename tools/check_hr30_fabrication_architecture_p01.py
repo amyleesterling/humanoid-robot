@@ -86,7 +86,11 @@ def main() -> int:
     bom = {row["item_id"]: row for row in csv.DictReader((SRC / "whole-robot-candidate-bom.csv").open(encoding="utf-8"))}
     require(bom["HR30-BOM-003"]["quantity"] == "8" and bom["HR30-BOM-003"]["function"] == "shoulder-roll/elbow/ankle actuator", "XM430 whole-body BOM allocation stale")
     require(bom["HR30-BOM-004"]["quantity"] == "6" and bom["HR30-BOM-004"]["function"] == "head/gripper/wrist actuator", "XC330 whole-body BOM allocation stale")
-    require("12 segregated power/data route corridors" in bom["HR30-BOM-030"]["candidate"], "harness BOM not synchronized to installed route architecture")
+    require(
+        "12 located route-derived cable bundles" in bom["HR30-BOM-030"]["candidate"]
+        and "exact conductors/connectors" in bom["HR30-BOM-030"]["candidate"],
+        "harness BOM not synchronized to installed route architecture",
+    )
     require("Released interface-control drawings" in (SRC / "modular-fabrication-assembly-electrification-plan.md").read_text(encoding="utf-8"), "build plan does not disclose unreleased interface drawings")
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require("HR-30_modular_fabrication_candidate.step" in page and "harness-route-register.csv" in page, "web guide does not expose fabrication artifacts")

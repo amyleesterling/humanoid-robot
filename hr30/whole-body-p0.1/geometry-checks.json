@@ -8,9 +8,12 @@
     "origin": "floor/sagittal-plane intersection beneath pelvis"
   },
   "source_datums_mm": {
-    "ankle_pitch": 45.0,
+    "ankle_roll": 35.0,
+    "ankle_pitch": 55.0,
     "knee_pitch": 210.0,
-    "hip_pitch": 380.0,
+    "hip_pitch": 370.0,
+    "hip_roll": 390.0,
+    "hip_yaw": 410.0,
     "waist_yaw": 425.0,
     "shoulder_pitch": 590.0,
     "neck_pan": 650.0,

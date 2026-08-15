@@ -392,7 +392,15 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
             "status": "EXPLICIT ITEMS INCLUDING LOCATED FASTENERS PLUS RESIDUAL OF FORMER 8% INTEGRATION CONTINGENCY; NO FASTENER DOUBLE COUNT",
             "warning": WARNING,
         })
-        dynamics_rows.append({**base, "mass": dynamic_mass, "center": center})
+        dynamics_rows.append({
+            **base,
+            "mass": dynamic_mass,
+            "center": center,
+            # Mass reconciliation may move the planning inertial/COM within a
+            # link, but it must never move that link's collision or visual
+            # envelope.  Preserve the canonical body geometry independently.
+            "geometry_center": base["center"],
+        })
 
     category_totals = Counter()
     min_total = planning_total = max_total = 0.0

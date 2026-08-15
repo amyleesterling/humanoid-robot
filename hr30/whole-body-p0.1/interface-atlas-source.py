@@ -108,7 +108,7 @@ MODULES = [
     {
         "id": "F01", "segment": "Left ankle output, foot and sole interface", "side": "L", "region": "foot",
         "envelopes": ["L_FOOT_SHELL_ENVELOPE"], "mass_groups": ["L foot"], "axes": [],
-        "actuated_by": ["L_ANKLE_ROLL"], "datum": "Floor Z=0; L_ANKLE_ROLL @ (62.5, 0, 37) mm",
+        "actuated_by": ["L_ANKLE_ROLL"], "datum": "Floor Z=0; L_ANKLE_ROLL @ (62.5, 0, 35) mm",
         "upstream": "L01 ankle-roll output", "downstream": "Replaceable sole/contact and force-sensing layers",
         "route_tokens": ["L_LEG"],
         "refinement": "Select sole material, contact sensing, fasteners, toe/heel edge treatment, friction target and structural proof under single support.",
@@ -126,7 +126,7 @@ MODULES = [
     {
         "id": "F02", "segment": "Right ankle output, foot and sole interface", "side": "R", "region": "foot",
         "envelopes": ["R_FOOT_SHELL_ENVELOPE"], "mass_groups": ["R foot"], "axes": [],
-        "actuated_by": ["R_ANKLE_ROLL"], "datum": "Floor Z=0; R_ANKLE_ROLL @ (-62.5, 0, 37) mm",
+        "actuated_by": ["R_ANKLE_ROLL"], "datum": "Floor Z=0; R_ANKLE_ROLL @ (-62.5, 0, 35) mm",
         "upstream": "L02 ankle-roll output", "downstream": "Replaceable sole/contact and force-sensing layers",
         "route_tokens": ["R_LEG"],
         "refinement": "Select sole material, contact sensing, fasteners, toe/heel edge treatment, friction target and structural proof under single support.",
@@ -280,7 +280,7 @@ def render_svg(envelopes: dict[str, dict], axes: list[dict]) -> str:
         x, y, z = float(axis["x_mm"]), float(axis["y_mm"]), float(axis["z_mm"])
         axis_parts.append(f'<circle cx="{front_origin+x*x_scale:.2f}" cy="{base_y-z*z_scale:.2f}" r="5.5" fill="#d63b31" stroke="white" stroke-width="2"><title>{html.escape(axis["axis_id"])} @ ({x:g}, {y:g}, {z:g}) mm; direction ({axis["direction_x"]}, {axis["direction_y"]}, {axis["direction_z"]})</title></circle>')
         axis_parts.append(f'<circle cx="{side_origin+y*y_scale:.2f}" cy="{base_y-z*z_scale:.2f}" r="4.8" fill="#d63b31" stroke="white" stroke-width="2"><title>{html.escape(axis["axis_id"])}</title></circle>')
-    dimension_z = [(0, "floor"), (37, "ankle roll"), (45, "ankle pitch"), (210, "knee"), (380, "hip pitch"), (425, "waist"), (590, "shoulder"), (650, "neck pan"), (690, "head tilt"), (762, "shell top")]
+    dimension_z = [(0, "floor"), (35, "ankle roll"), (55, "ankle pitch"), (210, "knee"), (370, "hip pitch"), (390, "hip roll"), (410, "hip yaw"), (425, "waist"), (590, "shoulder"), (650, "neck pan"), (690, "head tilt"), (762, "shell top")]
     dims = []
     for z, label in dimension_z:
         y = base_y - z*z_scale

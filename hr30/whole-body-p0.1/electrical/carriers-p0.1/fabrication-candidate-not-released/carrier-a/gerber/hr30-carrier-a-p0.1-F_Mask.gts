@@ -1,12 +1,12 @@
 %TF.GenerationSoftware,KiCad,Pcbnew,10.0.5*%
-%TF.CreationDate,2026-08-14T18:39:01-04:00*%
+%TF.CreationDate,2026-08-14T22:58:31-04:00*%
 %TF.ProjectId,hr30-carrier-a-p0.1,68723330-2d63-4617-9272-6965722d612d,rev?*%
 %TF.SameCoordinates,Original*%
 %TF.FileFunction,Soldermask,Top*%
 %TF.FilePolarity,Negative*%
 %FSLAX46Y46*%
 G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
-G04 Created by KiCad (PCBNEW 10.0.5) date 2026-08-14 18:39:01*
+G04 Created by KiCad (PCBNEW 10.0.5) date 2026-08-14 22:58:31*
 %MOMM*%
 %LPD*%
 G01*
