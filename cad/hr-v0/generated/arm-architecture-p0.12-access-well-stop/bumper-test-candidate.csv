@@ -1,0 +1,2 @@
+candidate,manufacturer_product_number,nominal_thickness_mm,tolerance_mm,maximum_thickness_mm,role,structural_stop_credit,source_revision,selection_state,warning
+Rogers PORON 4790-92-25024-04P,2300327,0.61,+/-0.08,0.69,sacrificial soft-contact/noise/rebound test coupon ahead of metal backup only,NONE,Rogers 17-085 rev 1224-PDF (2024); availability brochure effective 2026-02-27,SELECTION REQUIRED - TEST COUPON ONLY,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

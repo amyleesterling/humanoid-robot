@@ -1,0 +1,30 @@
+ERC report (2026-08-15T02:07:29, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+
+***** Sheet /01 Carrier controller connector boundaries/
+
+***** Sheet /02 Carrier A - RS-LLEG/
+
+***** Sheet /03 Carrier A - RS-RLEG/
+
+***** Sheet /04 Carrier A - RS-LARM/
+
+***** Sheet /05 Carrier A - RS-RARM/
+
+***** Sheet /06 Carrier B - RS-WAIST/
+
+***** Sheet /07 Carrier B - TTL-LDIST/
+
+***** Sheet /08 Carrier B - TTL-RDIST/
+
+***** Sheet /09 Carrier B - TTL-HEAD/
+
+ ** ERC messages: 0  Errors 0  Warnings 0
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

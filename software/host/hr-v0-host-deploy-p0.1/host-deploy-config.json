@@ -13,10 +13,71 @@
   "python_interpreter": "SELECTION REQUIRED",
   "python_interpreter_sha256": "SELECTION REQUIRED",
   "package_lock_sha256": "SELECTION REQUIRED",
-  "runtime_entrypoint": "SELECTION REQUIRED",
-  "runtime_backend": "SELECTION REQUIRED",
+  "runtime_entrypoint": "/opt/project-button/lib/project_button_host/runtime_entrypoint.py",
+  "runtime_entrypoint_sha256": "df065f7a759b672dc839f604cf06f4eb5c4e63ac5fd84154b9ffd627638f2663",
+  "runtime_cycle_period_ms": "SELECTION REQUIRED",
+  "runtime_backend": "project_button_host.unix_command_source:factory",
+  "runtime_backend_path": "/opt/project-button/lib/project_button_host/unix_command_source.py",
+  "runtime_backend_sha256": "4589b0a72a14bf3cff90efa17925fd5affc8dada517e0c012c376353b72832d9",
   "serial_device": "SELECTION REQUIRED",
-  "gpio_backend": "SELECTION REQUIRED",
+  "gpio_backend": "project_button_host.gpiod_hardware:factory",
+  "gpio_backend_path": "/opt/project-button/lib/project_button_host/gpiod_hardware.py",
+  "gpio_backend_sha256": "0f1bfe45694e8dd7e57075b2627cd3f2bbc3b64b50636e6293fbe7853753250c",
+  "command_source": {
+    "socket_path": "/run/project-button/trajectory.sock",
+    "socket_mode": "0o660",
+    "allowed_uid": "SELECTION REQUIRED",
+    "allowed_gid": "SELECTION REQUIRED",
+    "maximum_datagram_bytes": 65536
+  },
+  "gpio": {
+    "distribution": "SELECTION REQUIRED",
+    "version": "SELECTION REQUIRED",
+    "chip_path": "SELECTION REQUIRED",
+    "heartbeat_line": 17,
+    "heartbeat_half_period_ms": "SELECTION REQUIRED",
+    "maximum_edge_lateness_ms": "SELECTION REQUIRED",
+    "inputs": {
+      "sr1_status": {"line": 22, "active_high": true},
+      "sra1_status": {"line": 23, "active_high": true},
+      "k1_status": {"line": 24, "active_high": true},
+      "k2_status": {"line": 25, "active_high": true}
+    }
+  },
+  "required_observation_providers": {
+    "control_power": "SELECTION REQUIRED",
+    "estop_healthy": "SELECTION REQUIRED",
+    "watchdog_healthy": "SELECTION REQUIRED",
+    "edm_healthy": "SELECTION REQUIRED",
+    "compute_undervoltage": "SELECTION REQUIRED"
+  },
+  "evidence_log": {
+    "schema_id": "HR-V0-EVID-LOG-P0.1",
+    "directory": "/var/lib/project-button/logs",
+    "clock_source": "CLOCK_MONOTONIC_PLUS_CLOCK_REALTIME_UTC_UNQUALIFIED",
+    "maximum_file_bytes": "SELECTION REQUIRED",
+    "minimum_free_bytes": "SELECTION REQUIRED",
+    "retention_days": "SELECTION REQUIRED",
+    "identities": {
+      "release_candidate_id": "HR-V0-RC-P0.1",
+      "electrical_revision": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE",
+      "mechanical_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+      "bom_revision": "HR-V0-BOM-P0.1",
+      "calibration_set_id": "SELECTION REQUIRED",
+      "test_procedure_id": "SELECTION REQUIRED"
+    },
+    "hashes": {
+      "system_configuration_sha256": "SELECTION REQUIRED",
+      "supervisor_file_sha256": "SELECTION REQUIRED",
+      "actuator_file_sha256": "SELECTION REQUIRED",
+      "compute_interface_file_sha256": "SELECTION REQUIRED",
+      "firmware_source_manifest_sha256": "SELECTION REQUIRED",
+      "release_manifest_sha256": "SELECTION REQUIRED",
+      "calibration_set_sha256": "SELECTION REQUIRED",
+      "test_procedure_sha256": "SELECTION REQUIRED"
+    }
+  },
+  "boot_id_path": "/proc/sys/kernel/random/boot_id",
   "supervisor_config_path": "/etc/project-button/supervisor-config.json",
   "actuator_config_path": "/etc/project-button/actuator-config.json",
   "compute_interface_config_path": "/etc/project-button/compute-interface-config.json",

@@ -1,0 +1,21 @@
+{
+  "identifier": "HR-V0-J2-SOFT-CONTACT-PAD-P0.2",
+  "round": "R276",
+  "date": "2026-08-12",
+  "supersedes": "HR-V0-J2-SOFT-CONTACT-PAD-P0.1 for current calculation use",
+  "candidate": "Rogers 2300327",
+  "cad_configuration": "HR-V0-ARM-ARCH-P0.12-ACCESS-WELL-STOP-CANDIDATE",
+  "exact_nominal_moment_arm_mm": 44.072041212,
+  "endpoint_plus_gravity_force_n": 253.607,
+  "upper_bound_work_j": 0.19020525,
+  "candidate_selected": false,
+  "sole_structural_stop": false,
+  "procurement_authorized": false,
+  "assembly_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "open_holds": 12,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

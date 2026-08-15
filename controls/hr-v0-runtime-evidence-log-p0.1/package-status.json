@@ -1,0 +1,18 @@
+{
+  "identifier": "HR-V0-EVID-LOG-P0.1",
+  "round": "R236",
+  "schema_id": "HR-V0-EVID-LOG-P0.1",
+  "source_implemented": true,
+  "runtime_sink_required": true,
+  "supervisor_unit_tests": 75,
+  "event_classes": 14,
+  "clock_budget_rows": 10,
+  "calibration_rows": 12,
+  "physical_tests": 15,
+  "physical_tests_executed": 0,
+  "open_holds": 15,
+  "sol_m022_disposition": "PARTIALLY_ADDRESSED_OPEN",
+  "functional_safety_credit": "NONE",
+  "work_authority": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

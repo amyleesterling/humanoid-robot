@@ -1,0 +1,34 @@
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\validation\hr-v0-pi-observation-carrier-p0.1-erc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\hr-v0-pi-observation-carrier-p0.1.kicad_sch"
+Found 0 violations
+Saved ERC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/hr-v0-pi-observation-carrier-p0.1/validation/hr-v0-pi-observation-carrier-p0.1-erc.rpt
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\validation\hr-v0-pi-observation-carrier-p0.1.net" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\hr-v0-pi-observation-carrier-p0.1.kicad_sch"
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export svg --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\output" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\hr-v0-pi-observation-carrier-p0.1.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\output\hr-v0-pi-observation-carrier-p0.1.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\output\hr-v0-pi-observation-carrier-p0.1-01 Pi observation interface carrier.svg'.
+Done.
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb drc --exit-code-violations --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\validation\hr-v0-pi-observation-carrier-p0.1-drc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\hr-v0-pi-observation-carrier-p0.1.kicad_pcb"
+Found 0 violations
+Found 0 unconnected items
+Saved DRC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/hr-v0-pi-observation-carrier-p0.1/validation/hr-v0-pi-observation-carrier-p0.1-drc.rpt
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export stats --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\validation\hr-v0-pi-observation-carrier-p0.1-stats.txt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\hr-v0-pi-observation-carrier-p0.1.kicad_pcb"
+Wrote board statistics to 'C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/hr-v0-pi-observation-carrier-p0.1/validation/hr-v0-pi-observation-carrier-p0.1-stats.txt'.
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export svg --mode-single --layers F.Cu,B.Cu,F.Silkscreen,Edge.Cuts --fit-page-to-board --exclude-drawing-sheet --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\output\pi-observation-carrier.svg" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\hr-v0-pi-observation-carrier-p0.1.kicad_pcb"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\hr-v0-pi-observation-carrier-p0.1\output\pi-observation-carrier.svg'.
+Done.
+
+exit=0

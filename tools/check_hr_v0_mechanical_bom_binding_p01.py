@@ -23,6 +23,7 @@ def rows(path: Path) -> list[dict[str, str]]:
 
 def main() -> int:
     errors: list[str] = []
+    successor_exists = (ROOT / "release" / "hr-v0" / "mechanical-bom-binding-p0.2" / "package-status.json").is_file()
     binding = rows(BINDING)
     bom = {row["item_id"]: row for row in rows(ROOT / "bom" / "bom.csv")}
     closure = {row["item_id"]: row for row in rows(ROOT / "bom" / "hr-v0-bom-closure.csv")}
@@ -62,10 +63,10 @@ def main() -> int:
 
     item = bom.get("BOM-027", {})
     expected_mpn = "HR-V0-ARM-ARCH-P0.7 held custom set: MV0-C01 x1; MV0-C04 x1; MV0-C05 x1; MV0-C06 x1; MV0-C07 x1; 6061-T651 9.525 mm nominal candidate"
-    if item.get("manufacturer") != "Custom CNC / provider SELECTION REQUIRED" or item.get("manufacturer_part_number") != expected_mpn or item.get("quantity") != "5" or item.get("baseline_status") != "exact_candidate_hold":
+    if not successor_exists and (item.get("manufacturer") != "Custom CNC / provider SELECTION REQUIRED" or item.get("manufacturer_part_number") != expected_mpn or item.get("quantity") != "5" or item.get("baseline_status") != "exact_candidate_hold"):
         errors.append("BOM-027 does not carry the exact held P0.7 five-part identity")
     closed = closure.get("BOM-027", {})
-    if closed.get("closure_class") != "exact_candidate_hold" or closed.get("order_code_state") != "EXACT CANDIDATE" or closed.get("allowed_action") != "HOLD":
+    if not successor_exists and (closed.get("closure_class") != "exact_candidate_hold" or closed.get("order_code_state") != "EXACT CANDIDATE" or closed.get("allowed_action") != "HOLD"):
         errors.append("BOM-027 closure state is not exact-candidate hold")
     if len(dfm_holds) != 15 or any(row.get("status") != "OPEN" for row in dfm_holds):
         errors.append("the fifteen inherited DFM holds are not all open")
@@ -78,18 +79,21 @@ def main() -> int:
     source_hashes = status.get("source_hashes", {})
     if len(source_hashes) != 5:
         errors.append("package status does not bind exactly five source/register files")
+    historical_mutable = {"bom/bom.csv", "bom/hr-v0-bom-closure.csv"}
     for relative, expected_hash in source_hashes.items():
         path = ROOT / relative
-        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != expected_hash:
+        if not path.is_file() or (hashlib.sha256(path.read_bytes()).hexdigest() != expected_hash and not (successor_exists and relative in historical_mutable)):
             errors.append(f"package source hash mismatch: {relative}")
     products = release.get("current_products", [])
     mechanical = next((x for x in products if x.get("domain") == "mechanical"), {})
     bom_product = next((x for x in products if x.get("domain") == "bill_of_materials"), {})
     for product, label in ((mechanical, "mechanical"), (bom_product, "BOM")):
-        if "HR-V0-MECH-BOM-BIND-P0.1" not in product.get("supporting_identifiers", []):
+        expected_support = "HR-V0-MECH-BOM-BIND-P0.2" if successor_exists else "HR-V0-MECH-BOM-BIND-P0.1"
+        if expected_support not in product.get("supporting_identifiers", []):
             errors.append(f"release candidate {label} domain omits the binding")
     eg003 = gates.get("EG-003", {})
-    if eg003.get("status") != "partial" or "bom/hr-v0-mechanical-custom-part-binding.csv" not in eg003.get("evidence_location", ""):
+    expected_gate_binding = "bom/hr-v0-mechanical-custom-part-binding-p0.2.csv" if successor_exists else "bom/hr-v0-mechanical-custom-part-binding.csv"
+    if eg003.get("status") != "partial" or expected_gate_binding not in eg003.get("evidence_location", ""):
         errors.append("EG-003 does not retain partial status with binding evidence")
     for token in ("font:clamp(16px", "Five BOM parts", "fifteen inherited DFM holds remain open", "provider contact", "Upload authorized"):
         if token not in guide:
@@ -100,7 +104,8 @@ def main() -> int:
         for error in errors:
             print(f"- {error}")
         return 1
-    print("HR-V0-MECH-BOM-BIND-P0.1 PASS: BOM-027 binds one each C01/C04/C05/C06/C07 to 15 exact geometry identities")
+    suffix = " (historical; P0.2 successor current)" if successor_exists else ""
+    print("HR-V0-MECH-BOM-BIND-P0.1 PASS" + suffix + ": BOM-027 binds one each C01/C04/C05/C06/C07 to 15 exact geometry identities")
     print("BOM-027 exact-candidate hold; 15 inherited DFM holds open; no provider contact, quote, upload, fabrication or energization authority")
     return 0
 

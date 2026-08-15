@@ -1,0 +1,20 @@
+{
+  "identifier": "HR-V0-J2-C07-MESH-QUALITY-P0.1",
+  "round": "R281-PROTOTYPE",
+  "variants_executed": [
+    "DELAUNAY_NETGEN"
+  ],
+  "passing_variants": [
+    "DELAUNAY_NETGEN"
+  ],
+  "mesh_quality_selection_complete": false,
+  "structural_solve_complete": false,
+  "r278_h02_closed": false,
+  "selected": false,
+  "fabrication_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "warning": "PRELIMINARY - MESH QUALITY FEASIBILITY ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

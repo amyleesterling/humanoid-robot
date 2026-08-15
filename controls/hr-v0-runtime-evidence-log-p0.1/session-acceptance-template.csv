@@ -1,0 +1,2 @@
+session_id,log_sha256,record_count,first_monotonic_ms,last_monotonic_ms,closed_cleanly,context_sha256,schema_pass,chain_pass,rate_pass,content_pass,calibration_pass,configuration_pass,reviewer,review_date,disposition,warning
+,,,,,,,,,,,,,,,NOT_REVIEWED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

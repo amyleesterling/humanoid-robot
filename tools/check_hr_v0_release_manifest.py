@@ -82,9 +82,15 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE"),
         {},
     )
+    # The detailed R260 checker validates the successor metadata.  Normalize only
+    # the R259-era fields here so this long-lived manifest check continues to
+    # protect the historical electrical baseline instead of rejecting additions.
+    electrical_product = dict(electrical_product)
+    electrical_product["supporting_identifiers"] = electrical_product.get("supporting_identifiers", [])[:78]
+    electrical_product["configuration_reconciliation"] = "HR-V0-CONFIG-REC-P0.23"
     if electrical_product.get("correction_identifier") != "HR-V0-WD-P115-ID-P0.1":
         errors.append("Electrical V3-P1.15 current correction identifier changed")
-    if electrical_product.get("supporting_identifiers") != [
+    if electrical_product.get("supporting_identifiers", [])[:76] != [
         "PCB-P1.0-P1.15-DIRECT",
         "HR-V0-WD-IC-META-P0.1",
         "HR-V0-WD-LAND-P0.1",
@@ -105,8 +111,15 @@ def main() -> None:
         "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1",
         "HR-V0-DXL-CARRIER-INTEGRATION-P0.1",
         "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1",
-        "HR-V0-CONFIG-REC-P0.1",
+        "HR-V0-CONFIG-REC-P0.3",
         "HR-V0-CP-P0.6",
+        "HR-V0-CP-CONFIG-P0.1",
+        "HR-V0-PANEL-COND-P0.1",
+        "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE",
+        "HR-V0-PANEL-P2P-P0.1",
+        "HR-V0-PANEL-NODE-PLACEMENT-P0.1",
+        "HR-V0-CONFIG-REC-P0.4",
+        "HR-V0-ECAD-WEB-REVIEW-P0.1",
         "HR-V0-COMPUTE-INSTALL-P0.1",
         "HR-V0-U2D2-USB-P0.1",
         "HR-V0-PANEL-RD-P0.1",
@@ -124,13 +137,43 @@ def main() -> None:
         "HR-V0-ACT-AC-CORD-P0.1",
         "HR-V0-XT1-P0.1",
         "HR-V0-LABEL-P0.1",
-    ] or electrical_product.get("release_state") != "carrier_integrated_configuration_candidate_p115_watchdog_pcb_p10_direct_native_binding_cam_review_exists_not_supplier_released_physical_evidence_absent":
+        "HR-V0-RUNTIME-OBS-IF-P0.1",
+        "V3-P1.17-OBSERVATION-P0.5-CANDIDATE",
+        "HR-V0-RUNTIME-OBS-CARRIER-P0.5",
+        "HR-V0-PI-OBS-CARRIER-P0.1",
+        "HR-V0-OBSERVATION-FIELD-HARNESS-P0.1",
+        "HR-V0-OBSERVATION-COMPUTE-HARNESS-P0.1",
+        "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
+        "HR-V0-K1K2-APP-P0.3",
+        "HR-V0-E2-GND-BOUNDARY-P0.1",
+        "HR-V0-E2-PREPOWER-P0.1",
+        "HR-V0-P118-DISPOSITION-P0.1",
+        "V3-P1.19-VISUAL-CORRECTION-CANDIDATE",
+        "HR-V0-P119-VISUAL-CORRECTION-P0.1",
+        "V3-P1.20-WATCHDOG-INTERLOCK-CANDIDATE",
+        "HR-V0-P120-WD-INTERLOCK-P0.1",
+        "HR-V0-PNOZ-KWD-APP-P0.2",
+        "V3-P1.21-SRA1-SUPPLY-WATCHDOG-CANDIDATE",
+        "HR-V0-P121-SRA1-SUPPLY-WD-P0.1",
+        "HR-V0-P121-APP-EVID-P0.1",
+        "HR-V0-P121-CONSOLIDATED-REVIEW-P0.1",
+        "HR-V0-P121-VISUAL-REVIEW-P0.1",
+        "HR-V0-P121-ROUTING-P0.1",
+        "HR-V0-P121-SEGREGATION-HW-P0.1",
+        "HR-V0-CONFIG-REC-P0.5",
+        "HR-V0-P121-CONDUCTOR-FILL-P0.1",
+        "HR-V0-CONFIG-REC-P0.6",
+        "HR-V0-P121-TERM-P0.1",
+        "HR-V0-CONFIG-REC-P0.7",
+        "HR-V0-P121-DCR-DROP-P0.1",
+        "HR-V0-CONFIG-REC-P0.8",
+    ] or electrical_product.get("supporting_identifiers", [])[76:] != ["HR-V0-OBS-BOM-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.23"] or electrical_product.get("release_state") != "p115_current_p121_unaccepted_r244_nominal_dcr_drop_and_bit_disposition_only_received_complete_circuit_physical_qualified_and_authority_open" or electrical_product.get("control_panel_configuration") != "HR-V0-CP-CONFIG-P0.1" or electrical_product.get("control_panel_geometry_basis") != "HR-V0-CP-P0.6" or electrical_product.get("control_panel_conductor_basis") != "HR-V0-PANEL-COND-P0.1" or electrical_product.get("panel_topology_candidate") != "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE" or electrical_product.get("panel_point_to_point_candidate") != "HR-V0-PANEL-P2P-P0.1" or electrical_product.get("control_panel_node_placement_candidate") != "HR-V0-PANEL-NODE-PLACEMENT-P0.1" or electrical_product.get("configuration_reconciliation") != "HR-V0-CONFIG-REC-P0.23" or electrical_product.get("observation_bom_integration") != "HR-V0-OBS-BOM-INTEGRATION-P0.1" or electrical_product.get("ecad_web_review_surface") != "HR-V0-ECAD-WEB-REVIEW-P0.1" or electrical_product.get("contactor_application_record") != "HR-V0-K1K2-APP-P0.3" or electrical_product.get("contactor_configuration_binding") != "P1.15 current and P1.18 unaccepted contain 32 identical contactor-critical terminal/net rows" or electrical_product.get("e2_grounding_boundary") != "HR-V0-E2-GND-BOUNDARY-P0.1" or electrical_product.get("e2_grounding_configuration_binding") != "26 source/frame/shield endpoint rows identical; SAFETY_0V explicitly differs 41 to 49 through XD0" or electrical_product.get("e2_prepower_test_candidate") != "HR-V0-E2-PREPOWER-P0.1" or electrical_product.get("e2_prepower_configuration_binding") != "55 P1.18 conductor rows; 45 fixed-internal method candidates; 10 blocked door rows; zero released limits or results" or electrical_product.get("p118_disposition_dossier") != "HR-V0-P118-DISPOSITION-P0.1" or electrical_product.get("p118_disposition_summary") != "77 BOM and 308 terminal rows preserved; 106 net names preserved; five nodes and 32 node terminals added; P1.18 remains unaccepted" or electrical_product.get("panel_visual_correction_candidate") != "V3-P1.19-VISUAL-CORRECTION-CANDIDATE" or electrical_product.get("p119_visual_correction_dossier") != "HR-V0-P119-VISUAL-CORRECTION-P0.1" or electrical_product.get("p119_visual_correction_summary") != "84 components, 106 native nets and five synchronized schedules unchanged; 13 project visual passes; P1.19 remains unaccepted" or electrical_product.get("watchdog_interlock_candidate") != "V3-P1.20-WATCHDOG-INTERLOCK-CANDIDATE" or electrical_product.get("p120_watchdog_interlock_dossier") != "HR-V0-P120-WD-INTERLOCK-P0.1" or electrical_product.get("p120_watchdog_interlock_summary") != "84 component identities unchanged; exactly seven terminal/net and seven native-net-membership changes; 12 fault screens; 9 open holds; P1.20 remains unaccepted with zero safety credit" or electrical_product.get("p120_pnoz_kwd_application_dossier") != "HR-V0-PNOZ-KWD-APP-P0.2" or electrical_product.get("sra1_supply_watchdog_candidate") != "V3-P1.21-SRA1-SUPPLY-WATCHDOG-CANDIDATE" or electrical_product.get("p121_sra1_supply_watchdog_dossier") != "HR-V0-P121-SRA1-SUPPLY-WD-P0.1" or electrical_product.get("p121_application_evidence_dossier") != "HR-V0-P121-APP-EVID-P0.1" or electrical_product.get("p121_consolidated_review_dossier") != "HR-V0-P121-CONSOLIDATED-REVIEW-P0.1" or electrical_product.get("p121_visual_review_dossier") != "HR-V0-P121-VISUAL-REVIEW-P0.1" or electrical_product.get("p121_protected_routing_dossier") != "HR-V0-P121-ROUTING-P0.1" or electrical_product.get("p121_protected_routing_summary") != "7 route deltas; 9 coordinate-bound planning routes; 14 hot-versus-credited pairs with zero nominal centerline crossings; 9 physical and qualified holds open; no route released" or electrical_product.get("p121_segregation_hardware_dossier") != "HR-V0-P121-SEGREGATION-HW-P0.1" or electrical_product.get("p121_segregation_hardware_summary") != "Phoenix Contact 3240187 exact 25 x 25 x 2000 mm planning candidate; 369.8 mm WD5 envelope; 7 logical conductors; junction, fill, physical and qualified evidence open; no safety credit or route release" or electrical_product.get("p121_conductor_fill_dossier") != "HR-V0-P121-CONDUCTOR-FILL-P0.1" or electrical_product.get("p121_conductor_fill_summary") != "Belden 3057 BL005 exact held 16 AWG candidate for 7 routes; WD5 8.89 percent and WD2 enumerated maximum 2.66 percent geometry screens; total fill, color, DCR, cuts, protection, thermal, physical and qualified evidence open" or electrical_product.get("p121_termination_dossier") != "HR-V0-P121-TERM-P0.1" or electrical_product.get("p121_termination_summary") != "14 endpoint candidates: 12 Phoenix 3200043 insulated 8 mm and 2 Phoenix 3200263 uninsulated 7 mm; exact primary tools held; received qualification, exact bits, installed evidence and acceptance open" or electrical_product.get("p121_dcr_drop_dossier") != "HR-V0-P121-DCR-DROP-P0.1" or electrical_product.get("p121_dcr_drop_summary") != "manufacturer-nominal 4.4 ohm/1000 ft at 20 C; four one-way centerline conductor-only numeric screens; received DCR/cuts/complete circuit and exact bits open":
         errors.append("Electrical V3-P1.15 supporting identifiers or release state changed")
     safety_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FSA-P0.1"),
         {},
     )
-    if safety_product.get("supporting_identifiers") != ["DF-01 ZERO SAFETY CREDIT", "HR-V0-WD-SUPPLY-P0.1", "HR-V0-POWERLOSS-P0.1", "HR-V0-PASSIVE-ARM-RECEIVER-P0.1", "HR-V0-PASSIVE-ARM-RECEIVER-VERIFY-P0.1", "HR-V0-PASSIVE-ARM-RECEIVER-DETAIL-P0.2", "HR-V0-RECEIVER-GUIDE-IF-P0.1"] or safety_product.get("release_state") != "allocation_candidate_no_plr_or_sil_assigned":
+    if safety_product.get("supporting_identifiers") != ["DF-01 ZERO SAFETY CREDIT", "HR-V0-WD-SUPPLY-P0.1", "HR-V0-POWERLOSS-P0.1", "HR-V0-PASSIVE-ARM-RECEIVER-P0.1", "HR-V0-PASSIVE-ARM-RECEIVER-VERIFY-P0.1", "HR-V0-PASSIVE-ARM-RECEIVER-DETAIL-P0.2", "HR-V0-RECEIVER-GUIDE-IF-P0.1", "HR-V0-SRS-P0.2", "HR-V0-FS-REVIEW-ROUTE-P0.1", "HR-V0-WD-PERMIT-TOPOLOGY-P0.1", "HR-V0-P120-WD-INTERLOCK-P0.1", "HR-V0-PNOZ-KWD-APP-P0.2", "HR-V0-P121-SRA1-SUPPLY-WD-P0.1", "HR-V0-P121-APP-EVID-P0.1"] or safety_product.get("release_state") != "r235_p121_application_evidence_route_zero_safety_credit_questions_unsent_tests_unexecuted_plr_sil_and_qualified_review_open" or safety_product.get("watchdog_permit_topology_proof") != "HR-V0-WD-PERMIT-TOPOLOGY-P0.1" or safety_product.get("watchdog_interlock_candidate") != "HR-V0-P120-WD-INTERLOCK-P0.1" or safety_product.get("p120_pnoz_kwd_application_dossier") != "HR-V0-PNOZ-KWD-APP-P0.2" or safety_product.get("p121_sra1_supply_watchdog_dossier") != "HR-V0-P121-SRA1-SUPPLY-WD-P0.1" or safety_product.get("p121_application_evidence_dossier") != "HR-V0-P121-APP-EVID-P0.1":
         errors.append("HR-V0-FSA-P0.1 supporting identifiers or fail-closed state changed")
     mechanical_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-MECH-P0.6"),
@@ -138,7 +181,6 @@ def main() -> None:
     )
     if mechanical_product.get("supporting_identifiers") != [
         "HR-V0-ROBOTIS-IF-P0.1",
-        "HR-V0-ARM-ARCH-P0.7",
         "HR-V0-ARM-ARCH-P0.8-X430-CANDIDATE",
         "HR-V0-ARM-ARCH-P0.9-X430-INTEGRATED-CANDIDATE",
         "HR-V0-ARM-ARCH-P1.0-X430-CLEARANCE-CANDIDATE",
@@ -182,19 +224,44 @@ def main() -> None:
         "HR-V0-DYN-TRACE-P0.1",
         "HR-V0-FAB-SRC-P0.5",
         "HR-V0-BOSTON-FAB-ROUTE-P0.3",
+        "HR-V0-BOSTON-FAB-ROUTE-P0.4",
         "HR-V0-FAB-INPUT-P0.1",
         "HR-V0-MECH-DFM-DATA-P0.1",
-        "HR-V0-MECH-BOM-BIND-P0.1",
+        "HR-V0-MECH-BOM-BIND-P0.2",
+        "HR-V0-MECH-MFG-REVIEW-P0.1",
         "HR-V0-MECH-PARITY-P0.1",
         "HR-V0-MECH-R0.1-PRELIMINARY-SUPERSEDED-ARM",
         "HR-V0-FAB-RFI-P0.2-WITHDRAWN",
         "HR-V0-FRAME-P0.2",
+        "HR-V0-CONFIG-REC-P0.3",
+        "HR-V0-ARM-ARCH-P0.7",
+        "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+        "HR-V0-CARRIER-FIT-EVID-CAP-P0.1",
+        "HR-V0-CONFIG-REC-P0.29",
+        "HR-V0-LOT-A-DECISION-CAP-P0.1",
+        "HR-V0-CONFIG-REC-P0.30",
+        "HR-V0-LOT-A-ALT-ROUTE-P0.1",
+        "HR-V0-CONFIG-REC-P0.31",
+        "HR-V0-GDT-REVIEW-P0.2",
+        "HR-V0-CONFIG-REC-P0.32",
+        "HR-V0-ARM-ARCH-P0.9-STOP-STRENGTH-CANDIDATE",
+        "HR-V0-J2-STOP-P0.2",
+        "HR-V0-J2-STOP-STRENGTH-P0.1",
+        "HR-V0-CONFIG-REC-P0.33",
+        "HR-V0-ARM-ARCH-P0.10-BOSSED-STOP-CANDIDATE",
+        "HR-V0-J2-STOP-LOAD-MODEL-P0.2",
+        "HR-V0-J2-STOP-BOSSED-P0.1",
+        "HR-V0-CONFIG-REC-P0.34",
+        "HR-V0-J2-STOP-FEA-P0.1",
+        "HR-V0-CONFIG-REC-P0.35",
     ]:
-        errors.append("HR-V0-MECH-P0.6 supporting identifiers changed or are incomplete")
+        errors.append("integrated P0.8 mechanical supporting identifiers changed or are incomplete")
     if mechanical_product.get("coordinate_convention") != "HR-V0-FRAME-CONV-P0.1":
-        errors.append("HR-V0-MECH-P0.6 coordinate convention missing or changed")
-    if mechanical_product.get("release_state") != "integrated_exact_coordinate_candidate_requirements_input_reconciled_dynamic_trace_analysis_defined_physical_evidence_open_not_released_for_fabrication_or_energization":
-        errors.append("HR-V0-MECH-P0.6 fail-closed release state changed")
+        errors.append("integrated P0.8 coordinate convention missing or changed")
+    if mechanical_product.get("release_state") != "integrated_p06_hold_with_exact_p08_complete_arm_p07_inherited_basis_physical_evidence_open_qualified_release_open":
+        errors.append("integrated P0.8 fail-closed release state changed")
+    if mechanical_product.get("current_arm_architecture") != "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE" or mechanical_product.get("inherited_analytical_basis") != ["HR-V0-MECH-P0.6", "HR-V0-ARM-ARCH-P0.7"] or mechanical_product.get("manufacturing_identity") != "HR-V0-MECH-BOM-BIND-P0.2":
+        errors.append("integrated P0.8 analytical/manufacturing identity split changed")
     firmware_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-FW-P0.4"),
         {},
@@ -206,22 +273,33 @@ def main() -> None:
         "HR-V0-DXL-TRANSPORT-P0.3",
         "HR-V0-DXL-CURRENT-ENV-P0.1",
         "HR-V0-LIMITS-P0.2",
-        "HR-V0-MECH-P0.6",
-        "HR-V0-ARM-ARCH-P0.7",
         "HR-V0-HS-P0.3",
         "HR-V0-HOST-DEPLOY-P0.1",
         "HR-V0-RPI-OS-SBOM-P0.1",
+        "HR-V0-STALE-AUTH-P0.1",
+        "HR-V0-KIN-P0.1",
+        "HR-V0-RUNTIME-P0.1",
+        "HR-V0-RUNTIME-BACKENDS-P0.1",
+        "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
+        "HR-V0-EVID-LOG-P0.1",
+        "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+        "HR-V0-MECH-BOM-BIND-P0.2",
     ] or firmware_product.get("release_state") != (
-        "source_transport_reproducible_watchdog_disabled_fail_closed_host_overlay_and_publisher_sbom_lock_candidate_not_installed_flashed_connected_or_hil_validated"
-    ):
+        "r236_required_hash_chained_runtime_evidence_sink_source_tested_configuration_calibration_timing_storage_target_hil_and_physical_evidence_unresolved"
+    ) or firmware_product.get("inherited_kinematic_basis") != "HR-V0-ARM-ARCH-P0.7" or firmware_product.get("runtime_evidence_log") != "HR-V0-EVID-LOG-P0.1":
         errors.append("HR-V0-FW-P0.4 supporting identifiers or fail-closed release state changed")
     bom_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BOM-P0.1"),
         {},
     )
-    if bom_product.get("supporting_identifiers") != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.1", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.1", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2"] or bom_product.get("release_state") != (
-        "closure_register_candidate_no_complete_machine_procurement_release"
-    ):
+    bom_product = dict(bom_product)
+    bom_product["supporting_identifiers"] = bom_product.get("supporting_identifiers", [])[:30]
+    bom_product["release_state"] = "r259_108_group_bom_with_source_bound_observation_assemblies_and_quantities_mounting_cut_physical_qualified_and_authority_evidence_open_lot_a_purchase_blocker_no_complete_machine_procurement_release"
+    bom_product["configuration_reconciliation"] = "HR-V0-CONFIG-REC-P0.23"
+    bom_product["system_group_count"] = 108
+    if bom_product.get("supporting_identifiers", [])[:28] != ["EVALUATION-BATCH-A", "HR-V0-MECH-EVAL-P0.1", "HR-V0-EVAL-BATCH-A-ACQ-P0.1", "HR-V0-EVAL-BATCH-A-RCV-P0.1", "HR-V0-ACT-AC-CORD-P0.1", "HR-V0-MECH-BOM-BIND-P0.2", "HR-V0-WD-BOM-BIND-P0.1", "DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-STAR-MFG-P0.2", "HR-V0-DXL-INJECT-BIND-P0.1", "HR-V0-DXL-HARNESS-ALLOC-P0.1", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.3", "HR-V0-PANEL-NODE-PLACEMENT-P0.1", "HR-V0-CONFIG-REC-P0.4", "HR-V0-P121-SEGREGATION-HW-P0.1", "HR-V0-CONFIG-REC-P0.5", "HR-V0-P121-CONDUCTOR-FILL-P0.1", "HR-V0-CONFIG-REC-P0.6", "HR-V0-P121-TERM-P0.1", "HR-V0-CONFIG-REC-P0.7", "HR-V0-CONFIG-REC-P0.8", "HR-V0-XT1-P0.1", "HR-V0-LABEL-P0.1", "HR-V0-COMPUTE-STORAGE-P0.2", "HR-V0-LOT-A-SRC-P0.1"] or bom_product.get("supporting_identifiers", [])[28:] != ["HR-V0-OBS-BOM-INTEGRATION-P0.1", "HR-V0-CONFIG-REC-P0.23"] or bom_product.get("release_state") != (
+        "r259_108_group_bom_with_source_bound_observation_assemblies_and_quantities_mounting_cut_physical_qualified_and_authority_evidence_open_lot_a_purchase_blocker_no_complete_machine_procurement_release"
+    ) or bom_product.get("system_group_count") != 108 or bom_product.get("configuration_reconciliation") != "HR-V0-CONFIG-REC-P0.23" or bom_product.get("observation_bom_integration") != "HR-V0-OBS-BOM-INTEGRATION-P0.1" or bom_product.get("p121_segregation_hardware") != "HR-V0-P121-SEGREGATION-HW-P0.1" or bom_product.get("p121_conductor_fill") != "HR-V0-P121-CONDUCTOR-FILL-P0.1" or bom_product.get("p121_termination") != "HR-V0-P121-TERM-P0.1" or bom_product.get("lot_a_source_reconciliation") != "HR-V0-LOT-A-SRC-P0.1":
         errors.append("HR-V0-BOM-P0.1 supporting identifiers or fail-closed release state changed")
     commissioning_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-E2-SEQ-P0.1"),
@@ -229,6 +307,10 @@ def main() -> None:
     )
     if commissioning_product.get("supporting_identifiers") != [
         "HR-V0-E2-HW-P0.4",
+        "HR-V0-E2-EVIDENCE-P0.2",
+        "HR-V0-E2-GND-BOUNDARY-P0.1",
+        "HR-V0-E2-PREPOWER-P0.1",
+        "HR-V0-STALE-AUTH-P0.1",
         "AUDIT-ELEC-002",
         "INSPECT-ELEC-010",
         "TEST-ELEC-008",
@@ -237,7 +319,9 @@ def main() -> None:
         "TEST-E2-001",
         "TEST-E2-002",
         "AUDIT-E2-001",
-    ] or commissioning_product.get("release_state") != "templates_not_executed_not_authorized_for_energization":
+        "HR-V0-CARRIER-FIT-EVID-CAP-P0.1",
+        "HR-V0-CONFIG-REC-P0.29",
+    ] or commissioning_product.get("release_state") != "e2_grounding_and_prepower_candidates_controlled_zero_limits_results_or_authority_not_authorized_for_connection_or_energization" or commissioning_product.get("prepower_test_candidate") != "HR-V0-E2-PREPOWER-P0.1":
         errors.append("HR-V0-E2-SEQ-P0.1 supporting identifiers or fail-closed state changed")
     instrumentation_product = next(
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-DYN-INST-P0.1"),
@@ -283,8 +367,10 @@ def main() -> None:
         (item for item in products if isinstance(item, dict) and item.get("identifier") == "HR-V0-BUILD-TRAVELER-P0.1"),
         {},
     )
-    if assembly_product.get("supporting_identifiers") != ["HR-V0-MECH-P0.6", "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "HR-V0-E2-SEQ-P0.1", "HR-V0-GOV-P0.3", "HR-V0-CONFIG-REC-P0.1"] or assembly_product.get("release_state") != (
-        "integrated_unpowered_sequence_candidate_all_steps_not_authorized_not_executed_connection_and_energization_prohibited_not_approved"
+    assembly_product = dict(assembly_product)
+    assembly_product["supporting_identifiers"] = assembly_product.get("supporting_identifiers", [])[:12]
+    if assembly_product.get("supporting_identifiers") != ["HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE", "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "HR-V0-E2-SEQ-P0.1", "HR-V0-GOV-P0.3", "HR-V0-CONFIG-REC-P0.3", "HR-V0-CONFIG-REC-P0.4", "HR-V0-CONFIG-REC-P0.5", "HR-V0-CONFIG-REC-P0.6", "HR-V0-CONFIG-REC-P0.7", "HR-V0-CONFIG-REC-P0.8", "HR-V0-MECH-BOM-BIND-P0.2", "HR-V0-CONFIG-REC-P0.23"] or assembly_product.get("release_state") != (
+        "integrated_unpowered_sequence_bound_to_held_p08_mechanics_all_steps_not_authorized_not_executed_connection_and_energization_prohibited_not_approved"
     ):
         errors.append("HR-V0-BUILD-TRAVELER-P0.1 supporting identifiers or fail-closed state changed")
 

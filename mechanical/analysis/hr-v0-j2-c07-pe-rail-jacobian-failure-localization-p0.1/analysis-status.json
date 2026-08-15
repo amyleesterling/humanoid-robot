@@ -1,0 +1,22 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-RAIL-JACOBIAN-FAILURE-LOCALIZATION-P0.1",
+  "round": "R304",
+  "date": "2026-08-13",
+  "r303_status_sha256": "adbbb10e62711700c5ab166f12640b9ea23567b3531b32772fc4452bd8f51c1a",
+  "r303_raw_linear_sha256": "23e53291a5f3612c85ed3ba21baa27cee3efb40663d78e0971bd9db8659305f4",
+  "r303_raw_tet10_sha256": "ed378fc6c3fadf8317c7975d88c774d1dd63ac8e8b7fa504a3451c1a6754877f",
+  "failed_order_qp_pairs": 10,
+  "unique_failed_elements": 1,
+  "nearest_exact_face_clusters": 1,
+  "global_quality_gate_retained": true,
+  "monitored_zone_gate_retained": true,
+  "remesh_executed": false,
+  "structural_solution_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - RAIL-JACOBIAN SUCCESSOR FAILURE LOCALIZATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

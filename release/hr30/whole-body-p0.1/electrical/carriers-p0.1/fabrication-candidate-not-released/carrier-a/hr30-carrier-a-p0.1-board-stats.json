@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "date": "2026-08-15T02:07:41",
+    "generator": "KiCad 10.0.5",
+    "project": "hr30-carrier-a-p0.1",
+    "board_name": "hr30-carrier-a-p0.1"
+  },
+  "board": {
+    "has_outline": true,
+    "width": "82.0000 mm",
+    "height": "42.0000 mm",
+    "area": "3444.00 mm²",
+    "front_component_density": "30.83",
+    "back_component_density": "6.09",
+    "front_copper_area": "217.192 mm²",
+    "back_copper_area": "122.432 mm²",
+    "min_track_clearance": "0.1150 mm",
+    "min_track_width": "0.1500 mm",
+    "min_drill_diameter": "0.1500 mm",
+    "board_thickness": "1.5584 mm",
+    "front_footprint_area": "1061.761 mm²",
+    "back_footprint_area": "209.677 mm²",
+    "front_footprint_density": "30.83",
+    "back_footprint_density": "6.09"
+  },
+  "pads": {
+    "through_hole": 0,
+    "smd": 201,
+    "connector": 0,
+    "npth": 4,
+    "castellated": 0,
+    "press_fit": 0
+  },
+  "vias": {
+    "through": 207,
+    "blind": 0,
+    "buried": 0,
+    "micro": 0
+  },
+  "components": {
+    "tht": {
+      "front": 0,
+      "back": 0,
+      "total": 0
+    },
+    "smd": {
+      "front": 9,
+      "back": 36,
+      "total": 45
+    },
+    "unspecified": {
+      "front": 4,
+      "back": 4,
+      "total": 8
+    },
+    "total": {
+      "front": 13,
+      "back": 40,
+      "total": 53
+    }
+  },
+  "drill_holes": [
+    {
+      "count": 207,
+      "shape": "Round",
+      "x_size": "0.1500 mm",
+      "y_size": "0.1500 mm",
+      "plated": true,
+      "source": "Via",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 4,
+      "shape": "Round",
+      "x_size": "2.7000 mm",
+      "y_size": "2.7000 mm",
+      "plated": false,
+      "source": "Pad",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    }
+  ]
+}

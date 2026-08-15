@@ -283,19 +283,24 @@ def main() -> int:
         failures.append("supervisor configuration ID is not HR-V0-SUP-P0.3")
     expected_binding = {
         "limit_set_id": "HR-V0-LIMITS-P0.2",
-        "mechanical_revision": "HR-V0-MECH-P0.6",
-        "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.7",
+        "mechanical_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+        "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+        "kinematic_basis_revision": "HR-V0-ARM-ARCH-P0.7",
+        "custom_part_manufacturing_revision": "HR-V0-MECH-BOM-BIND-P0.3",
         "hard_stop_revision": "HR-V0-HS-P0.3",
+        "source_binding_identifier": "HR-V0-FW-MECH-SRC-BIND-P0.1",
+        "source_binding_manifest_sha256": "5adc34ff41f2f84b1d8cf60e2a95b6f93ebc8eba1f2ac6b93642dd429b237c8a",
         "release_state": "CANDIDATE-NOT-RELEASED",
         "acceptance_evidence_hash": "SELECTION REQUIRED",
     }
     if supervisor_config.get("mechanical_limit_binding") != expected_binding:
-        failures.append("supervisor mechanical-limit binding differs from the unreleased P0.7/P0.6/P0.3 candidate")
+        failures.append("supervisor mechanical-limit binding differs from the unreleased integrated P0.8 candidate with inherited P0.7 kinematic basis")
     if supervisor_config.get("joints", {}).get("J2") != {
         "minimum": 15.0,
         "maximum": 115.0,
         "unit": "deg",
         "start_tolerance": None,
+        "terminal_tolerance": None,
     }:
         failures.append("supervisor J2 candidate is not the fail-closed 15..115 degree envelope")
     for field in ("configuration_hash", "kinematic_model_hash"):
@@ -312,6 +317,9 @@ def main() -> int:
         "command.session_id != self.session_id",
         "waiting for three valid watchdog heartbeat edges",
         "computed TCP speed outside configured limit",
+        "trajectory sample count exceeds the released bound",
+        "trajectory duration exceeds the released bound",
+        "execution deadline slack exceeds the released bound",
         "limits_current",
         "evidence_is_accepted(self.mechanical_limit_binding)",
     ):
@@ -322,7 +330,7 @@ def main() -> int:
     if actuator_config.get("configuration_id") != "HR-V0-ACT-P0.3":
         failures.append("actuator configuration ID is not HR-V0-ACT-P0.3")
     if actuator_config.get("mechanical_limit_binding") != expected_binding:
-        failures.append("actuator mechanical-limit binding differs from the unreleased P0.7/P0.6/P0.3 candidate")
+        failures.append("actuator mechanical-limit binding differs from the unreleased integrated P0.8 candidate with inherited P0.7 kinematic basis")
     if actuator_config.get("external_branch_current_limit_a") != "SELECTION REQUIRED":
         failures.append("external branch-current limit was released without physical evidence")
     if actuator_config.get("current_envelope_binding") != {
@@ -361,6 +369,7 @@ def main() -> int:
         "HARDWARE_ERROR_PRESENT",
         "DRIVE_MODE_MISMATCH",
         "def engineering_to_raw",
+        "def raw_to_engineering",
         "actuator transport/calibration selections remain open",
         "engineering target outside controlled motion envelope",
         "evidence_is_accepted(self.mechanical_limit_binding)",
@@ -375,7 +384,9 @@ def main() -> int:
         "configured_current_limit_raw=self._read(actuator_id, CURRENT_LIMIT)",
         "active_goal_current_raw=self._read(actuator_id, GOAL_CURRENT)",
         "configured-current-limit readback changed during execution",
-        "goal-current readback changed during execution",
+        "goal-current readback disagrees with torque state",
+        "torque is enabled outside motion authority",
+        "self._best_effort_goal_current_zero",
         "Read all execution invariants and force torque-off on any failure.",
     ):
         if required not in dynamixel_bus:
@@ -445,6 +456,21 @@ def main() -> int:
             failures.append(f"DYNAMIXEL bus fail-closed invariant missing: {required}")
     if bus_source.find("self._sync_write(GOAL_POSITION, raw_targets)") > bus_source.find("self._sync_write(TORQUE_ENABLE"):
         failures.append("DYNAMIXEL torque enable appears before the zero-jump start target")
+
+    runtime_source = (FIRMWARE / "supervisor" / "project_button_supervisor" / "runtime.py").read_text(encoding="utf-8")
+    for required in (
+        "maximum sample lateness remains SELECTION REQUIRED",
+        "self.hardware.disable_heartbeat()",
+        "self.hardware.service_heartbeat(now_ms, outputs.heartbeat_allowed)",
+        "self.bus.connect_and_configure()",
+        "self.supervisor.observe_hardware(snapshot, now_ms)",
+        "self.bus.start_trajectory",
+        "missed its released lateness bound",
+        "self.supervisor.complete_trajectory",
+        "self.bus.stop()",
+    ):
+        if required not in runtime_source:
+            failures.append(f"runtime execution invariant missing: {required}")
 
     sdk_source = (FIRMWARE / "supervisor" / "project_button_supervisor" / "sdk_transport.py").read_text(encoding="utf-8")
     for required in (

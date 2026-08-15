@@ -1,0 +1,5 @@
+# HR-V0-J2-STOP-REFINEMENT-PROTOCOL-P0.1
+
+> **PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION**
+
+R279 audits the R278 uniform P1 mesh and issues the exact local-convergence protocol. It does not execute or close R278-H02.

@@ -1,0 +1,109 @@
+(footprint "Vishay_MMA0204_IPC_Reflow"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" ""
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "32877f05-32d7-489c-8af9-0f6bef36ef26")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Vishay_MMA0204_IPC_Reflow"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5461a925-c235-465f-80c0-469ef271ff7a")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0dd41824-b87a-4880-a1f5-4f221fa740f8")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "20bf77c5-c1ea-4f24-bbd1-234da406313b")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -1.95 -0.85)
+		(end 1.95 -0.85)
+		(stroke
+			(width 0.18)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "5e7357d7-3cca-4b37-bdf4-45c074477b47")
+	)
+	(fp_line
+		(start -1.95 0.85)
+		(end -1.95 -0.85)
+		(stroke
+			(width 0.18)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "10b55d2f-c88a-4a90-9554-61f2ece549fd")
+	)
+	(fp_line
+		(start 1.95 -0.85)
+		(end 1.95 0.85)
+		(stroke
+			(width 0.18)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "9b07fad5-396f-4dc6-a041-ebc292df6c8f")
+	)
+	(fp_line
+		(start 1.95 0.85)
+		(end -1.95 0.85)
+		(stroke
+			(width 0.18)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "90ea90c3-1433-4615-ae06-de730ba628d6")
+	)
+	(pad "1" smd roundrect
+		(at -1.5 0)
+		(size 1.4 1.55)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(thermal_bridge_angle 45)
+		(uuid "8e5cc65e-28ca-4923-886b-78a0eaa8cf60")
+	)
+	(pad "2" smd roundrect
+		(at 1.5 0)
+		(size 1.4 1.55)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(thermal_bridge_angle 45)
+		(uuid "d9d51791-624c-46c6-abcf-a6925db71b8a")
+	)
+	(embedded_fonts no)
+)

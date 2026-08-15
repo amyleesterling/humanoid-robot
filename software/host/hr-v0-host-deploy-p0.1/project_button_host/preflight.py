@@ -70,6 +70,9 @@ def evaluate(config_path: Path, root: Path = Path("/")) -> PreflightResult:
     hash_values = (
         "python_interpreter_sha256",
         "package_lock_sha256",
+        "runtime_entrypoint_sha256",
+        "runtime_backend_sha256",
+        "gpio_backend_sha256",
         "supervisor_config_sha256",
         "actuator_config_sha256",
         "compute_interface_config_sha256",
@@ -97,6 +100,13 @@ def evaluate(config_path: Path, root: Path = Path("/")) -> PreflightResult:
         if not _is_sha256(config.get(key)):
             holds.append(f"host config: {key} is not an exact SHA-256")
 
+    period = config.get("runtime_cycle_period_ms")
+    if isinstance(period, bool) or not isinstance(period, int) or not 1 <= period <= 10:
+        holds.append("host config: runtime_cycle_period_ms is not a released integer from 1 through 10")
+    boot_id_path = config.get("boot_id_path")
+    if not isinstance(boot_id_path, str) or not boot_id_path.startswith("/"):
+        holds.append("host config: boot_id_path is not an absolute target path")
+
     startup = config.get("startup_policy", {})
     required_policy = {
         "service_default": "DISABLED",
@@ -113,6 +123,9 @@ def evaluate(config_path: Path, root: Path = Path("/")) -> PreflightResult:
         ("supervisor_config_path", "supervisor_config_sha256"),
         ("actuator_config_path", "actuator_config_sha256"),
         ("compute_interface_config_path", "compute_interface_config_sha256"),
+        ("runtime_entrypoint", "runtime_entrypoint_sha256"),
+        ("runtime_backend_path", "runtime_backend_sha256"),
+        ("gpio_backend_path", "gpio_backend_sha256"),
     )
     for path_key, hash_key in file_bindings:
         target = config.get(path_key)
@@ -125,6 +138,120 @@ def evaluate(config_path: Path, root: Path = Path("/")) -> PreflightResult:
             holds.append(f"host config: {path_key} target absent")
         elif _is_sha256(expected) and _sha256(candidate) != expected.lower():
             holds.append(f"host config: {path_key} hash mismatch")
+
+    if config.get("runtime_backend") != "project_button_host.unix_command_source:factory":
+        holds.append("host config: controlled command backend changed")
+    if config.get("gpio_backend") != "project_button_host.gpiod_hardware:factory":
+        holds.append("host config: controlled GPIO backend changed")
+
+    command = config.get("command_source")
+    if not isinstance(command, dict):
+        holds.append("host config: command-source configuration absent")
+    else:
+        if command.get("socket_path") != "/run/project-button/trajectory.sock":
+            holds.append("host config: command socket path changed")
+        if command.get("socket_mode") != "0o660":
+            holds.append("host config: command socket mode changed")
+        for key in ("allowed_uid", "allowed_gid"):
+            value = command.get(key)
+            if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+                holds.append(f"host config: command-source {key} unresolved")
+        size = command.get("maximum_datagram_bytes")
+        if isinstance(size, bool) or not isinstance(size, int) or not 256 <= size <= 1_048_576:
+            holds.append("host config: command datagram bound unresolved")
+
+    gpio = config.get("gpio")
+    input_names = {
+        "sr1_status", "sra1_status", "k1_status", "k2_status",
+    }
+    if not isinstance(gpio, dict):
+        holds.append("host config: GPIO allocation absent")
+    else:
+        for key in ("distribution", "version", "chip_path"):
+            value = gpio.get(key)
+            if not isinstance(value, str) or not value.strip() or value.strip().upper() in UNRESOLVED_MARKERS:
+                holds.append(f"host config: GPIO {key} unresolved")
+        for key in ("heartbeat_line", "heartbeat_half_period_ms", "maximum_edge_lateness_ms"):
+            value = gpio.get(key)
+            if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+                holds.append(f"host config: GPIO {key} unresolved")
+        inputs = gpio.get("inputs")
+        if not isinstance(inputs, dict) or set(inputs) != input_names:
+            holds.append("host config: GPIO observation set unresolved")
+        else:
+            for name in sorted(input_names):
+                item = inputs[name]
+                if not isinstance(item, dict):
+                    holds.append(f"host config: GPIO input {name} unresolved")
+                    continue
+                line = item.get("line")
+                if isinstance(line, bool) or not isinstance(line, int) or line < 0:
+                    holds.append(f"host config: GPIO input {name} line unresolved")
+                if not isinstance(item.get("active_high"), bool):
+                    holds.append(f"host config: GPIO input {name} polarity unresolved")
+
+    providers = config.get("required_observation_providers")
+    provider_names = {
+        "control_power", "estop_healthy", "watchdog_healthy", "edm_healthy",
+        "compute_undervoltage",
+    }
+    if not isinstance(providers, dict) or set(providers) != provider_names:
+        holds.append("host config: required health-observation provider set unresolved")
+    else:
+        for name in sorted(provider_names):
+            value = providers[name]
+            if not isinstance(value, str) or not value.strip() or value.strip().upper() in UNRESOLVED_MARKERS:
+                holds.append(f"host config: observation provider {name} unresolved")
+
+    evidence = config.get("evidence_log")
+    required_identities = {
+        "release_candidate_id", "electrical_revision", "mechanical_revision",
+        "bom_revision", "calibration_set_id", "test_procedure_id",
+    }
+    required_hashes = {
+        "system_configuration_sha256", "supervisor_file_sha256",
+        "actuator_file_sha256", "compute_interface_file_sha256",
+        "firmware_source_manifest_sha256", "release_manifest_sha256",
+        "calibration_set_sha256", "test_procedure_sha256",
+    }
+    if not isinstance(evidence, dict):
+        holds.append("host config: evidence-log configuration absent")
+    else:
+        if evidence.get("schema_id") != "HR-V0-EVID-LOG-P0.1":
+            holds.append("host config: evidence-log schema changed")
+        directory = evidence.get("directory")
+        if not isinstance(directory, str) or not directory.startswith("/"):
+            holds.append("host config: evidence-log directory is not absolute")
+        identities = evidence.get("identities")
+        if not isinstance(identities, dict) or set(identities) != required_identities:
+            holds.append("host config: evidence-log identity set unresolved")
+        else:
+            for key in sorted(required_identities):
+                value = identities[key]
+                if not isinstance(value, str) or value.strip().upper() in UNRESOLVED_MARKERS:
+                    holds.append(f"host config: evidence-log identity {key} unresolved")
+        hashes = evidence.get("hashes")
+        if not isinstance(hashes, dict) or set(hashes) != required_hashes:
+            holds.append("host config: evidence-log hash set unresolved")
+        else:
+            for key in sorted(required_hashes):
+                if not _is_sha256(hashes[key]):
+                    holds.append(f"host config: evidence-log hash {key} unresolved")
+            for evidence_key, host_key in (
+                ("supervisor_file_sha256", "supervisor_config_sha256"),
+                ("actuator_file_sha256", "actuator_config_sha256"),
+                ("compute_interface_file_sha256", "compute_interface_config_sha256"),
+            ):
+                if _is_sha256(hashes.get(evidence_key)) and hashes[evidence_key].lower() != str(config.get(host_key, "")).lower():
+                    holds.append(f"host config: evidence-log {evidence_key} disagrees with bound host file")
+        for key, minimum, maximum in (
+            ("maximum_file_bytes", 1_048_576, 1_073_741_824),
+            ("minimum_free_bytes", 16_777_216, 1_099_511_627_776),
+            ("retention_days", 1, 3650),
+        ):
+            value = evidence.get(key)
+            if isinstance(value, bool) or not isinstance(value, int) or not minimum <= value <= maximum:
+                holds.append(f"host config: evidence-log {key} unresolved")
 
     return PreflightResult(not holds, tuple(holds))
 

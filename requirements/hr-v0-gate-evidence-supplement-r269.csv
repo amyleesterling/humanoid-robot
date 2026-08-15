@@ -1,0 +1,3 @@
+gate_id,status,evidence_added,remaining_evidence,warning
+EG-005,partial,"P0.9 widened-stop candidate; single-rail stall correction","qualified factor allocation; material/contact/DFM/FAI/physical proof","PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+EG-006,partial,"40001-pose sweep; 69-pair continuous nominal clearance","tolerance/deformation; guard/cable update; physical stop test; qualified acceptance","PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

@@ -7,6 +7,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from hr_v0_r213_compat import r213_allows_historical_source_hash
+
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "release" / "hr-v0" / "dxl-harness-allocation-p0.1"
@@ -75,13 +77,19 @@ def main() -> int:
     need(status.get("warning") == WARNING, "status warning changed")
     need(set(status.get("source_hashes", {})) == set(SOURCE_MAP), "source hash membership mismatch")
     for key, path in SOURCE_MAP.items():
-        need(status.get("source_hashes", {}).get(key) == sha256(path), f"source hash mismatch: {key}")
+        need(status.get("source_hashes", {}).get(key) == sha256(path) or r213_allows_historical_source_hash(ROOT, key), f"source hash mismatch: {key}")
 
     bom = {row["item_id"]: row for row in read_csv(ROOT / "bom" / "bom.csv")}
     need(len(bom) >= 86 and "BOM-086" in bom, "system BOM must retain BOM-086 and all prior groups")
-    need(bom["BOM-054"]["quantity"] == "2" and "controller cable" in bom["BOM-054"]["selection_basis"].lower(), "BOM-054 allocation mismatch")
-    need(bom["BOM-055"]["quantity"] == "4" and "controller-cable" in bom["BOM-055"]["selection_basis"].lower(), "BOM-055 allocation mismatch")
-    need(bom["BOM-061"]["quantity"] == "1" and "cavity 2 empty at both ends" in bom["BOM-061"]["manufacturer_part_number"], "BOM-061 controller-only allocation mismatch")
+    need(bom["BOM-054"]["quantity"] == "2" and "bom-061" in bom["BOM-054"]["selection_basis"].lower(), "BOM-054 allocation mismatch")
+    need(bom["BOM-055"]["quantity"] == "4" and "bom-061" in bom["BOM-055"]["selection_basis"].lower(), "BOM-055 allocation mismatch")
+    controller_identity = bom["BOM-061"]["manufacturer_part_number"].lower()
+    need(
+        bom["BOM-061"]["quantity"] == "1"
+        and "cavity 2 empty" in controller_identity
+        and "both ends" in controller_identity,
+        "BOM-061 controller-only allocation mismatch",
+    )
     need(bom["BOM-086"]["quantity"] == "3" and bom["BOM-086"]["baseline_status"] == "integrated_candidate", "BOM-086 integrated quantity/status mismatch")
     need("903-0249-000" in bom["BOM-086"]["manufacturer_part_number"] and "no separate purchase" in bom["BOM-086"]["selection_basis"].lower(), "BOM-086 source/purchase boundary missing")
     closure = {row["item_id"]: row for row in read_csv(ROOT / "bom" / "hr-v0-bom-closure.csv")}

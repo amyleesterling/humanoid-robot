@@ -7,6 +7,8 @@ import re
 import sys
 from pathlib import Path
 
+from hr_v0_r213_compat import r213_allows_historical_source_hash
+
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "release" / "hr-v0" / "dxl-current-envelope-p0.1"
@@ -55,7 +57,7 @@ def main() -> int:
         path = ROOT / relative
         need(path.is_file(), f"source missing: {relative}")
         if path.is_file():
-            need(digest(path) == expected_hash, f"source hash changed: {relative}")
+            need(digest(path) == expected_hash or r213_allows_historical_source_hash(ROOT, relative), f"source hash changed: {relative}")
     need(len(status.get("source_hashes", {})) == 7, "source-hash count changed")
 
     envelope = rows(OUT / "derived-current-envelope.csv")
@@ -102,7 +104,7 @@ def main() -> int:
     need(config.get("current_envelope_binding") == {"identifier": "HR-V0-DXL-CURRENT-ENV-P0.1", "release_state": "CANDIDATE-NOT-RELEASED", "acceptance_evidence_hash": "SELECTION REQUIRED"}, "firmware current-envelope binding changed")
     bus = (ROOT / "firmware" / "supervisor" / "project_button_supervisor" / "dynamixel_bus.py").read_text(encoding="utf-8")
     tests = (ROOT / "firmware" / "supervisor" / "tests" / "test_dynamixel_bus.py").read_text(encoding="utf-8")
-    for token in ("configured-current-limit readback changed during execution", "goal-current readback changed during execution"):
+    for token in ("configured-current-limit readback changed during execution", "goal-current readback disagrees with torque state", "torque is enabled outside motion authority", "_best_effort_goal_current_zero"):
         need(token in bus, f"runtime current invariant missing: {token}")
     for token in ("CURRENT_LIMIT.address, 801", "GOAL_CURRENT.address, 799"):
         need(token in tests, f"current fault-injection source test missing: {token}")

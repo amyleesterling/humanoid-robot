@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>text{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}.title{font-size:34px;font-weight:700}.head{font-size:24px;font-weight:700}.warn{font-size:20px;font-weight:700;fill:#8a3b00}.box{fill:#f7fbff;stroke:#0b4f8a;stroke-width:3}.note{fill:#fff9e8;stroke:#d59600;stroke-width:3}</style>
+<rect width="1600" height="1000" fill="#ffffff"/>
+<text x="45" y="60" class="title">MV0-C06 J2 positive-stop moving striker adapter</text>
+<text x="45" y="100" class="warn">HR-V0-ARM-ARCH-P0.13-PAD-POCKET-STOP-CANDIDATE / HR-V0-J2-STOP-P0.1 - PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
+<rect x="55" y="150" width="1490" height="330" rx="14" class="box"/>
+<text x="90" y="205" class="head">Controlled candidate geometry</text>
+<text x="90" y="250">2.5D 6061-T651 candidate from 9.525 mm nominal plate; finished thickness 9.00–10.00 mm.</text>
+<text x="90" y="292">Twin rails X=+/-44.0; top Z=36.026374; height tolerance +/-0.025.</text>
+<text x="90" y="334">All twelve X-Z profile vertices receive R2.0 tangent fillets; shared adapter holes retain P0.6 controls.</text>
+<text x="90" y="376">Nominal metal-to-metal first contact: J2=118.000000 degrees; target datum 118.000000 degrees.</text>
+<text x="90" y="418">The STEP controls the rounded profile and 3D face step. The DXF lines are pre-fillet construction geometry only.</text>
+<rect x="55" y="520" width="1490" height="330" rx="14" class="note"/>
+<text x="90" y="575" class="head">Release boundary</text>
+<text x="90" y="620">Two symmetric rails keep the load path outside the XM540 case; nominal body clearance is separately checked.</text>
+<text x="90" y="662">The catch reserves a maximum 0.75 mm undeformed bumper envelope. Bumper material, order code, force/stroke, retention and life are SELECTION REQUIRED.</text>
+<text x="90" y="704">MTR, FAI, received fit, contact marking, tolerance stack, load analysis, stopping tests, guard/cable sweep and qualified review remain required.</text>
+<text x="90" y="746">No source property is a released allowable. No stop angle is released from nominal CAD alone.</text>
+<text x="90" y="798" class="warn">DO NOT QUOTE, FABRICATE, ASSEMBLE, MOVE, OR ENERGIZE FROM THIS DRAWING.</text>
+<text x="55" y="930">Units: mm | Projection: plate face X-Z | Date: 2026-08-07</text>
+</svg>

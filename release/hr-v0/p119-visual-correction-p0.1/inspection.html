@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>P1.19 full-sheet visual inspection</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f7fbff; color: #082f58; font: 16px/1.4 system-ui, sans-serif; }
+    .warning { height: 52px; display: grid; place-items: center; padding: 8px 16px; background: #fff2bd; border-bottom: 4px solid #f3b61f; font-weight: 850; text-align: center; }
+    img { display: block; width: 100vw; height: calc(100vh - 52px); object-fit: contain; background: white; }
+  </style>
+</head>
+<body>
+  <div class="warning">PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION</div>
+  <img id="sheet" alt="Native P1.19 KiCad SVG under visual inspection">
+  <script>
+    const prefix = "project-button-v3-p1.19-visual-correction-candidate";
+    const suffixes = [
+      "",
+      "-01 External listed sources and DC boundaries",
+      "-02 Dual-channel E-stop and RESET eligibility",
+      "-03 Distinct ARM and watchdog-gated SR1 supply",
+      "-04 Contactor coils, mirror contacts and EDM",
+      "-05 Redundant actuator-power interruption",
+      "-06 Protected actuator branches and current-limiter carriers",
+      "-07 Independent watchdog power, controller and drivers",
+      "-08 Calculated dual-channel 24 V watchdog feedback",
+      "-09 Compute and control terminals",
+      "-10 U2D2, DXL star, actuator ports and bonding boundary",
+      "-11 Watchdog PCB external connectors",
+      "-12 Watchdog PCB test access"
+    ];
+    const index = Math.max(0, Math.min(suffixes.length - 1, Number(new URLSearchParams(location.search).get("n") || 0)));
+    const file = `${prefix}${suffixes[index]}.svg`;
+    document.querySelector("#sheet").src = `../../../electrical/kicad/project-button-v3-p1.19-visual-correction-candidate/output/${encodeURIComponent(file)}`;
+  </script>
+</body>
+</html>

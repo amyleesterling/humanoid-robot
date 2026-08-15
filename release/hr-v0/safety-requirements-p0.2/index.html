@@ -1,0 +1,94 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HR-V0 safety requirements P0.2</title><style>
+:root{--sky:#d9f2ff;--blue:#0b2f5b;--deep:#071d38;--gold:#f5bd24;--paper:#f7fbff;--line:#8fb8d6;--danger:#7b1f1f}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--deep);font:clamp(16px,1.05vw,18px)/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:linear-gradient(135deg,var(--sky),#fff 58%);border-bottom:5px solid var(--gold);padding:clamp(24px,5vw,68px)}
+.wrap{max-width:1220px;margin:auto}h1{font-size:clamp(34px,6vw,72px);line-height:1.03;margin:.2em 0;color:var(--blue)}h2{font-size:clamp(25px,3vw,38px);color:var(--blue)}h3{font-size:clamp(19px,2vw,24px);margin:.35rem 0}
+.warning{background:#fff1f1;border:3px solid var(--danger);color:var(--danger);font-weight:800;padding:16px;border-radius:12px}
+main{padding:clamp(22px,4vw,52px)}.metrics,.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
+.metric,.card{background:#fff;border:2px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 5px 0 #d5e7f2}.metric strong{display:block;font-size:clamp(25px,4vw,42px);color:var(--blue)}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}button{font:inherit;font-size:16px;font-weight:750;border:2px solid var(--blue);background:#fff;color:var(--blue);padding:10px 14px;border-radius:999px;cursor:pointer}button.active{background:var(--blue);color:#fff}
+.tag{font-size:14px;font-weight:800;color:var(--blue);letter-spacing:.02em}dl{margin:.75rem 0 0}dt{font-size:14px;font-weight:800;color:var(--blue)}dd{margin:0 0 .7rem}.small{font-size:14px}a{color:var(--blue);font-weight:700}footer{padding:24px;border-top:2px solid var(--line)}
+@media(max-width:540px){header,main{padding:20px}.card{padding:16px}button{width:100%}}
+</style></head><body><header><div class="wrap"><div class="tag">HR-V0-SRS-P0.2 - R218</div><h1>Measurable limits, no invented approval.</h1><p>Candidate requirements for adult-only, fixed-guarded HR-V0 commissioning. The qualified allocation and every physical result remain open.</p><div class="warning">PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION</div></div></header>
+<main class="wrap"><section><h2>Controlled candidate boundary</h2><div class="metrics"><div class="metric"><strong>200 ms</strong>E4 J2-positive setup total-response candidate</div><div class="metric"><strong>2.000 deg</strong>candidate residual-travel ceiling</div><div class="metric"><strong>0</strong>PLr/SIL assignments or approvals</div><div class="metric"><strong>16</strong>unexecuted validation scenarios</div></div>
+<p class="small">The 200 ms / 2.000 degree pair is a project design candidate for J2-positive setup motion at no more than 10 degrees per second. It is not achieved performance. Automatic motion remains prohibited on this evidence.</p></section>
+<section><h2>Requirements</h2><div class="filters"><button class="active" data-filter="all">All</button><button data-filter="SF-01">SF-01 stop</button><button data-filter="SF-03">SF-03 restart</button><button data-filter="DF-01">DF-01 diagnostic</button><button data-filter="PG-01">PG-01 guard</button><button data-filter="open">Open/selection</button></div><div class="grid"><article class="card" data-function="scope" data-state="NOT EXECUTED">
+          <div class="tag">SRS-001 - scope</div>
+          <h3>HR-V0</h3>
+          <p>All powered HR-V0 work shall remain adult-only, fixed-guarded and bench-restrained; children and bystanders shall have no access to the hazard zone.</p>
+          <dl><dt>State</dt><dd>NOT EXECUTED</dd><dt>Closure</dt><dd>QUALIFIED REVIEW REQUIRED</dd></dl>
+        </article><article class="card" data-function="SF-01" data-state="NOT EXECUTED">
+          <div class="tag">SRS-002 - SF-01</div>
+          <h3>E2/E3/E4</h3>
+          <p>A dual-channel E-stop demand shall remove actuator-rail energy through two series interruption paths without relying on Linux, Raspberry Pi, watchdog firmware or motion software.</p>
+          <dl><dt>State</dt><dd>NOT EXECUTED</dd><dt>Closure</dt><dd>QUALIFIED ALLOCATION AND PHYSICAL TEST REQUIRED</dd></dl>
+        </article><article class="card" data-function="SF-01" data-state="CANDIDATE LIMIT">
+          <div class="tag">SRS-003 - SF-01</div>
+          <h3>E4 J2 positive setup only</h3>
+          <p>From first E-stop input contact separation to the accepted stopped-motion threshold, total response shall be no more than 200 ms and residual J2 travel shall be no more than 2.000 degrees at a verified command rate no greater than 10.000 degrees per second.</p>
+          <dl><dt>State</dt><dd>CANDIDATE LIMIT</dd><dt>Closure</dt><dd>QUALIFIED ACCEPTANCE AND PHYSICAL STATISTICAL BOUND REQUIRED</dd></dl>
+        </article><article class="card" data-function="SF-01" data-state="CANDIDATE LIMIT">
+          <div class="tag">SRS-004 - SF-01</div>
+          <h3>E4 J2 positive setup only</h3>
+          <p>The 2.000-degree residual-travel limit shall retain a nominal 1.000-degree geometric reserve between the 115.000-degree software boundary and the 118.000-degree nominal positive metal stop before tolerance, backlash, compliance and uncertainty deductions.</p>
+          <dl><dt>State</dt><dd>CANDIDATE LIMIT</dd><dt>Closure</dt><dd>TOLERANCE AND PHYSICAL STOP ACCEPTANCE REQUIRED</dd></dl>
+        </article><article class="card" data-function="SF-01" data-state="PROHIBITED">
+          <div class="tag">SRS-005 - SF-01</div>
+          <h3>future automatic motion</h3>
+          <p>Automatic motion at 30.000 degrees per second is prohibited until the same 2.000-degree residual-travel envelope is supported by an accepted total-response bound no greater than 66.667 ms and by the released guard, stop and uncertainty evidence.</p>
+          <dl><dt>State</dt><dd>PROHIBITED</dd><dt>Closure</dt><dd>SEPARATE QUALIFIED RELEASE REQUIRED</dd></dl>
+        </article><article class="card" data-function="SF-01" data-state="NOT EXECUTED">
+          <div class="tag">SRS-006 - SF-01</div>
+          <h3>all powered phases</h3>
+          <p>With either K1 or K2 deliberately prevented from opening by an accepted fault-injection fixture, the remaining interruption path shall reach the same phase-specific rail and motion safe-state limits.</p>
+          <dl><dt>State</dt><dd>NOT EXECUTED</dd><dt>Closure</dt><dd>EXACT DC CONTACT APPLICATION AND PHYSICAL TEST REQUIRED</dd></dl>
+        </article><article class="card" data-function="SF-01" data-state="SELECTION REQUIRED">
+          <div class="tag">SRS-007 - SF-01</div>
+          <h3>all powered phases</h3>
+          <p>The accepted safe state shall include actuator-rail voltage below the received actuator&#x27;s verified torque-capable threshold; that voltage threshold and dwell remain SELECTION REQUIRED.</p>
+          <dl><dt>State</dt><dd>SELECTION REQUIRED</dd><dt>Closure</dt><dd>RECEIVED ACTUATOR AND RAIL-DECAY EVIDENCE REQUIRED</dd></dl>
+        </article><article class="card" data-function="SF-03" data-state="NOT EXECUTED">
+          <div class="tag">SRS-008 - SF-03</div>
+          <h3>all phases</h3>
+          <p>E-stop release, safety-device recovery, controller reboot, heartbeat restoration and clearing a diagnostic fault shall not energize either contactor coil, enable actuator torque or command motion.</p>
+          <dl><dt>State</dt><dd>NOT EXECUTED</dd><dt>Closure</dt><dd>PHYSICAL/HIL TRACE SET REQUIRED</dd></dl>
+        </article><article class="card" data-function="SF-03" data-state="NOT EXECUTED">
+          <div class="tag">SRS-009 - SF-03</div>
+          <h3>all phases</h3>
+          <p>A restart sequence shall require cause removal, accepted K1/K2 feedback, one valid monitored falling-edge physical RESET, a later distinct physical ARM action and a fresh validated trajectory in that order.</p>
+          <dl><dt>State</dt><dd>NOT EXECUTED</dd><dt>Closure</dt><dd>QUALIFIED SEQUENCE VALIDATION REQUIRED</dd></dl>
+        </article><article class="card" data-function="SF-03" data-state="NOT EXECUTED">
+          <div class="tag">SRS-010 - SF-03</div>
+          <h3>all phases</h3>
+          <p>RESET and ARM shall be non-motion-producing actions; each shall leave torque authority false until all later sequence conditions are satisfied.</p>
+          <dl><dt>State</dt><dd>NOT EXECUTED</dd><dt>Closure</dt><dd>HARDWARE AND SOFTWARE AUTHORITY TRACES REQUIRED</dd></dl>
+        </article><article class="card" data-function="SF-03" data-state="NOT EXECUTED">
+          <div class="tag">SRS-011 - SF-03</div>
+          <h3>all phases</h3>
+          <p>A K1 or K2 mirror-contact discrepancy, invalid RESET waveform, early or held ARM input, stale trajectory or sequence-order error shall latch restart inhibition until the released recovery procedure is completed.</p>
+          <dl><dt>State</dt><dd>NOT EXECUTED</dd><dt>Closure</dt><dd>FAULT MATRIX AND SIGNED DISPOSITION REQUIRED</dd></dl>
+        </article><article class="card" data-function="DF-01" data-state="CONTROLLED">
+          <div class="tag">SRS-012 - DF-01</div>
+          <h3>HR-V0</h3>
+          <p>The ordinary heartbeat watchdog shall receive zero safety credit, and PG-01 containment shall be assessed with DF-01 stuck valid and otherwise failed to demand a stop.</p>
+          <dl><dt>State</dt><dd>CONTROLLED</dd><dt>Closure</dt><dd>GUARD CONTAINMENT AND NONINTERFERENCE EVIDENCE REQUIRED</dd></dl>
+        </article><article class="card" data-function="PG-01" data-state="NOT EXECUTED">
+          <div class="tag">SRS-013 - PG-01</div>
+          <h3>before actuator connection</h3>
+          <p>The fixed guard, passive receiver and bench restraint shall contain every permitted arm, object, stop, rebound and power-loss outcome with the phase-specific residual-travel envelope plus build, calibration and measurement uncertainty.</p>
+          <dl><dt>State</dt><dd>NOT EXECUTED</dd><dt>Closure</dt><dd>RELEASED GUARD CAD, FAI, IMPACT/DROP AND QUALIFIED REVIEW REQUIRED</dd></dl>
+        </article><article class="card" data-function="SF-01/SF-03" data-state="SELECTION REQUIRED">
+          <div class="tag">SRS-014 - SF-01/SF-03</div>
+          <h3>qualified allocation</h3>
+          <p>Required PLr or SIL, architecture/category, MTTFd or B10d use, diagnostic coverage, common-cause measures, systematic measures, fault exclusions, demand assumptions and validation method shall be selected and signed by a qualified functional-safety reviewer.</p>
+          <dl><dt>State</dt><dd>SELECTION REQUIRED</dd><dt>Closure</dt><dd>ANALYSIS-SAFE-001 REQUIRED</dd></dl>
+        </article><article class="card" data-function="program boundary" data-state="CONTROLLED">
+          <div class="tag">SRS-015 - program boundary</div>
+          <h3>all phases</h3>
+          <p>No candidate numeric limit, manufacturer component time, ERC/DRC result, unit test or source review shall be treated as achieved stopping performance, functional-safety validation or permission to energize.</p>
+          <dl><dt>State</dt><dd>CONTROLLED</dd><dt>Closure</dt><dd>NO AUTHORITY GRANTED</dd></dl>
+        </article></div></section>
+<section><h2>What the package contains</h2><p>Machine-readable timing arithmetic, restart/fault scenarios, common-cause inputs, qualified-allocation blanks, primary-source provenance and a fail-closed authority boundary. See <a href="timing-budget.csv">timing budget</a>, <a href="validation-matrix.csv">validation matrix</a>, <a href="common-cause-review-register.csv">common-cause register</a>, <a href="qualified-allocation-inputs.csv">allocation inputs</a> and <a href="source-register.csv">sources</a>.</p></section></main>
+<footer><div class="wrap small">Candidate engineering input only. A qualified functional-safety reviewer must determine PLr/SIL and validate the complete safety-related control system.</div></footer>
+<script>const buttons=[...document.querySelectorAll('button[data-filter]')],cards=[...document.querySelectorAll('.card')];buttons.forEach(b=>b.addEventListener('click',()=>{buttons.forEach(x=>x.classList.toggle('active',x===b));const f=b.dataset.filter;cards.forEach(c=>{const open=/NOT EXECUTED|SELECTION REQUIRED|CANDIDATE LIMIT|PROHIBITED/.test(c.dataset.state);c.hidden=!(f==='all'||c.dataset.function.includes(f)||(f==='open'&&open));});}));</script></body></html>

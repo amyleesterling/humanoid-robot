@@ -1,0 +1,19 @@
+{
+  "identifier": "HR-V0-JOINT-STACK-FIXTURE-P0.2",
+  "method": "infinitesimal frictionless point-contact constraint matrix [n, (r cross n)/L]",
+  "characteristic_length_mm": 48.0,
+  "rows": 6,
+  "rank": 6,
+  "singular_values": [
+    1.9523836017441174,
+    1.7400269418713183,
+    1.463308724282248,
+    0.3201215168175303,
+    0.2357022603955159,
+    0.2082832429149913
+  ],
+  "condition_number": 9.373695043441218,
+  "r252_coplanar_scheme_rank": 3,
+  "claim_boundary": "rank 6 proves only nominal infinitesimal kinematic independence; unilateral seating, preload, stability, force, tolerance and physical suitability remain unproved",
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

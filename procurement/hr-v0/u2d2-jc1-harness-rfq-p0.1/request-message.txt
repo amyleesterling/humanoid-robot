@@ -1,0 +1,11 @@
+Subject: UNSENT DRAFT - custom JST EH two-conductor harness technical/RFQ request
+
+This message is a controlled draft and has not been sent.
+
+Please review the attached HR-V0-U2D2-JC1-HARNESS-RFQ-P0.1 package for a custom EHR-3 to EHR-3 evaluation harness. The requested assembly uses SEH-001T-P0.6 contacts in cavities 1 and 3 only, leaves cavity 2 physically empty at both ends, provides straight-through 1-to-1 and 3-to-3 connectivity, and contains no splice. The project finished-length candidate is 500 +/- 5 mm with a 25 +/- 5 mm pair lay.
+
+Please quote one first article and five evaluation articles separately and return an attributable drawing, exact material identities, process-conformity evidence, inspection/test capabilities, MOQ, charges, unit prices and lead time. Belden 3051 BK005/WH005 is requested; identify any proposed substitute before acceptance. Please answer every row in provider-question-register.csv.
+
+This request is for technical and commercial information only. It is not a purchase order, fabrication authorization, connection instruction or permission to energize hardware.
+
+PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION

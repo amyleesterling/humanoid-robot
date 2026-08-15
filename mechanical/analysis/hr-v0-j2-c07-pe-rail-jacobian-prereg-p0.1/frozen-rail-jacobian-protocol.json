@@ -1,0 +1,39 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-RAIL-JACOBIAN-PREREG-P0.1",
+  "round": "R302-PREREG",
+  "date": "2026-08-13",
+  "candidate_id": "R302-C07-PE-RAIL-JACOBIAN-V01",
+  "r297_analysis_brep_sha256": "3ee2fc3affeacde29c75404d5dc7b1512f02ed707b4e65e33b10d58189e86404",
+  "r300_pre_shard_status_sha256": "4f01991f69b95783767079dba2cd9309bf8514d10e2225ea43d5261ad1930812",
+  "r300_current_status_sha256": "e7fa1dea7a92f1bd0940b9076f89e8b1c681835e84967469626c05547b513d50",
+  "r301_status_sha256": "93b22f09c45dbdad983fe8e4facd00bbf703f1df2a50b852af2ce4ecda36ae26",
+  "target_register_sha256": "6dbf0740a16622eee33ccde21c0c3070728f9f23a579c99a3526b777cf4f4793",
+  "observed_face_count": 1,
+  "symmetry_closed_face_count": 2,
+  "symmetry_rule": "X mirror only; candidate Z mirrors were enumerated and do not exist in the exact R297 topology",
+  "additional_face_field": {
+    "size_min_mm": 0.25,
+    "size_max_mm": 3.0,
+    "dist_min_mm": 0.0,
+    "dist_max_mm": 1.5
+  },
+  "base_mesh": "R300 seam-free partition, Frontal+Netgen, all prior fields unchanged",
+  "acceptance_thresholds": {
+    "global_min_sicn": 0.1,
+    "global_fraction_below_0p20_max": 0.001,
+    "each_monitored_zone_min_sicn": 0.2,
+    "actual_gauss4_6_8_wrong_or_zero": 0,
+    "actual_gauss4_6_8_normalized_floor_fail": 0
+  },
+  "thresholds_unchanged": true,
+  "stop_rule": "one execution only; retain/disposition without tuning; structural work only after every R279-C02 gate passes",
+  "mesh_executed": false,
+  "structural_solution_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - RAIL-TRANSITION JACOBIAN SUCCESSOR PREREGISTRATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

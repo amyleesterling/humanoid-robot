@@ -1,0 +1,37 @@
+{
+  "identifier": "HR-V0-J2-STOP-REFINEMENT-EXECUTION-P0.1",
+  "round": "R279-PROTOTYPE",
+  "cad_identifier": "HR-V0-ARM-ARCH-P0.13-PAD-POCKET-STOP-CANDIDATE",
+  "mesh_executions": [
+    "C06:L0",
+    "C06:P2C",
+    "C07:L0"
+  ],
+  "case_executions": [
+    "C06:L0:P1:C06_EXACT_NORMAL_TOP"
+  ],
+  "solver": "scikit-fem displacement / straight-sided tetrahedra; actual order is per case row",
+  "mesh_quality_rejections": [
+    "C07:L0:minSICN=0.05270838116054409"
+  ],
+  "mesh_convergence_complete": false,
+  "r278_h02_closed": false,
+  "nonlinear_contact_complete": false,
+  "joined_joint_complete": false,
+  "selected": false,
+  "fabrication_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "mesh_only_on_latest_invocation": true,
+  "latest_requested_solution_order": 2,
+  "direct_p2_attempts_interrupted_for_resources": 2,
+  "known_limitations": [
+    "single execution is not convergence",
+    "straight-sided corner geometry in scikit-fem",
+    "ideal fixed-hole restraints",
+    "no nonlinear contact, joined hardware, dynamics, fatigue, tolerance or physical correlation"
+  ],
+  "warning": "PRELIMINARY - SCRATCH NUMERICAL EVIDENCE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

@@ -1,0 +1,9 @@
+{
+  "schema": "project-button-carrier-fit-raw-v1",
+  "package": "HR-V0-CARRIER-FIT-EVID-CAP-P0.1",
+  "measurement_rows": 80,
+  "acceptance_limits": "SELECTION REQUIRED",
+  "network_submission": false,
+  "authority_released": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, MARKING, DRILLING, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

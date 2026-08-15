@@ -1,0 +1,2 @@
+transform_id,source_frame,target_frame,rotation_deg,equations,board_envelope_mm,panel_envelope_mm,status,warning
+XF-01,"P0.3 PCB local: x right, y down","P0.7 panel: x right, y down",90,x_panel = x0 + (60 - y_board); y_panel = y0 + x_board,100 x 60,60 x 100,DERIVED COORDINATE TRANSFORM - DO NOT DRILL,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, DRILLING, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

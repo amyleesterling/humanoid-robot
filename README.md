@@ -19,6 +19,305 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 
 ## Start here
 
+- [R312 current corrected trimmed-face/imprint handoff](docs/hr-v0-j2-c07-pe-mesh-progression-r312.md)
+- [R312 rejected 24-face imprint evidence](release/hr-v0/j2-c07-pe-corrected-surface-imprint-p0.1/README.md)
+- [R311 corrected exact trimmed-face audit](release/hr-v0/j2-c07-pe-trimmed-facet-audit-p0.1/README.md)
+- [R308 exact-facet failure handoff](docs/hr-v0-j2-c07-pe-mesh-progression-r308.md)
+- [R308 independent review request](docs/reviews/2026-08-13-r308-independent-review-request.md)
+- [R308 validation record](docs/reviews/2026-08-13-r308-validation-record.md)
+- [Interactive R307 CAD-resident curving preregistration](release/hr-v0/j2-c07-pe-cad-curving-prereg-p0.1/index.html)
+- [R307 numerical progression handoff](docs/hr-v0-j2-c07-pe-mesh-progression-r307.md)
+- [Interactive R302 rail-transition Jacobian successor preregistration](release/hr-v0/j2-c07-pe-rail-jacobian-prereg-p0.1/index.html)
+- [Interactive R296 pocket-edge topology disposition](release/hr-v0/j2-c07-pe-frontal-disposition-p0.1/index.html)
+- [R302 numerical progression handoff](docs/hr-v0-j2-c07-pe-mesh-progression-r302.md)
+- [R285 J2 targeted-remesh disposition](docs/hr-v0-j2-targeted-remesh-disposition-p0.1.md)
+- [R285 independent review request](docs/reviews/2026-08-13-r285-independent-review-request.md)
+- [R285 validation draft](docs/reviews/2026-08-13-r285-validation-record.md)
+- [Interactive R285 targeted-remesh guide](release/hr-v0/j2-targeted-remesh-disposition-p0.1/index.html)
+- [Interactive configuration reconciliation P0.49](release/hr-v0/configuration-reconciliation-p0.49/index.html)
+- [R284 J2 curved-mesh development](docs/hr-v0-j2-curved-mesh-development-p0.1.md)
+- [R284 independent review request](docs/reviews/2026-08-12-r284-independent-review-request.md)
+- [R284 validation record](docs/reviews/2026-08-12-r284-validation-record.md)
+- [Interactive R284 curved-mesh guide](release/hr-v0/j2-curved-mesh-development-p0.1/index.html)
+- [Interactive configuration reconciliation P0.48](release/hr-v0/configuration-reconciliation-p0.48/index.html)
+- [R283 J2 execution architecture](docs/hr-v0-j2-execution-architecture-p0.1.md)
+- [R283 independent review request](docs/reviews/2026-08-12-r283-independent-review-request.md)
+- [R283 validation record](docs/reviews/2026-08-12-r283-validation-record.md)
+- [Interactive R283 execution guide](release/hr-v0/j2-execution-architecture-p0.1/index.html)
+- [Interactive configuration reconciliation P0.47](release/hr-v0/configuration-reconciliation-p0.47/index.html)
+- [R282 J2 refinement erratum](docs/hr-v0-j2-refinement-erratum-p0.1.md)
+- [R282 independent review request](docs/reviews/2026-08-12-r282-independent-review-request.md)
+- [R282 validation draft](docs/reviews/2026-08-12-r282-validation-record.md)
+- [Interactive R282 fail-closed guide](release/hr-v0/j2-refinement-erratum-p0.1/index.html)
+- [Interactive configuration reconciliation P0.46](release/hr-v0/configuration-reconciliation-p0.46/index.html)
+- [R281 bounded J2 numerical backend](docs/hr-v0-j2-numerical-backend-p0.1.md)
+- [R281 independent review request](docs/reviews/2026-08-12-r281-independent-review-request.md)
+- [R281 validation record](docs/reviews/2026-08-12-r281-validation-record.md)
+- [Interactive R281 numerical guide](release/hr-v0/j2-numerical-backend-p0.1/index.html)
+- [Interactive configuration reconciliation P0.45](release/hr-v0/configuration-reconciliation-p0.45/index.html)
+- [R280 bounded J2 refinement execution](docs/hr-v0-j2-stop-refinement-execution-p0.1.md)
+- [R280 independent review request](docs/reviews/2026-08-12-r280-independent-review-request.md)
+- [R280 validation record](docs/reviews/2026-08-12-r280-validation-record.md)
+- [Interactive R280 execution guide](release/hr-v0/j2-stop-refinement-execution-p0.1/index.html)
+- [Interactive configuration reconciliation P0.44](release/hr-v0/configuration-reconciliation-p0.44/index.html)
+- [R279 exact local J2 convergence protocol](docs/hr-v0-j2-stop-refinement-protocol-p0.1.md)
+- [R279 independent review request](docs/reviews/2026-08-12-r279-independent-review-request.md)
+- [R279 validation record](docs/reviews/2026-08-12-r279-validation-record.md)
+- [Interactive R279 convergence guide](release/hr-v0/j2-stop-refinement-protocol-p0.1/index.html)
+- [Interactive configuration reconciliation P0.43](release/hr-v0/configuration-reconciliation-p0.43/index.html)
+- [R278 exact-normal P0.13 stop analysis](docs/hr-v0-j2-stop-pad-pocket-fea-p0.1.md)
+- [R278 calculation correction](docs/reviews/2026-08-12-r278-calculation-correction.md)
+- [R278 independent review request](docs/reviews/2026-08-12-r278-independent-review-request.md)
+- [R278 validation record](docs/reviews/2026-08-12-r278-validation-record.md)
+- [Interactive R278 structural guide](release/hr-v0/j2-stop-pad-pocket-fea-p0.1/index.html)
+- [Interactive configuration reconciliation P0.42](release/hr-v0/configuration-reconciliation-p0.42/index.html)
+- [R277 dimensioned J2 pad-pocket candidate](docs/hr-v0-j2-pad-pocket-p0.1.md)
+- [R277 independent review request](docs/reviews/2026-08-12-r277-independent-review-request.md)
+- [R277 validation record](docs/reviews/2026-08-12-r277-validation-record.md)
+- [Interactive R277 pad-pocket guide](release/hr-v0/j2-pad-pocket-p0.1/index.html)
+- [Interactive configuration reconciliation P0.41](release/hr-v0/configuration-reconciliation-p0.41/index.html)
+- [R276 exact-contact J2 pad boundary](docs/hr-v0-j2-soft-contact-pad-p0.2.md)
+- [R276 independent review request](docs/reviews/2026-08-12-r276-independent-review-request.md)
+- [R276 validation record](docs/reviews/2026-08-12-r276-validation-record.md)
+- [Interactive R276 exact-contact guide](release/hr-v0/j2-soft-contact-pad-p0.2/index.html)
+- [Interactive configuration reconciliation P0.40](release/hr-v0/configuration-reconciliation-p0.40/index.html)
+- [R275 J2 soft-contact pad candidate](docs/hr-v0-j2-soft-contact-pad-p0.1.md)
+- [R275 independent review request](docs/reviews/2026-08-12-r275-independent-review-request.md)
+- [R275 validation record](docs/reviews/2026-08-12-r275-validation-record.md)
+- [Interactive R275 pad guide](release/hr-v0/j2-soft-contact-pad-p0.1/index.html)
+- [Interactive configuration reconciliation P0.39](release/hr-v0/configuration-reconciliation-p0.39/index.html)
+- [R274 A04 exact-candidate joint package](docs/hr-v0-a04-joint-p0.1.md)
+- [R274 independent review request](docs/reviews/2026-08-12-r274-independent-review-request.md)
+- [R274 validation record](docs/reviews/2026-08-12-r274-validation-record.md)
+- [Interactive R274 A04 guide](release/hr-v0/a04-joint-p0.1/index.html)
+- [Interactive configuration reconciliation P0.38](release/hr-v0/configuration-reconciliation-p0.38/index.html)
+- [R273 P0.12 access-well J2 stop candidate](docs/hr-v0-j2-stop-access-well-p0.1.md)
+- [R273 validation record](docs/reviews/2026-08-12-r273-validation-record.md)
+- [R273 independent review request](docs/reviews/2026-08-12-r273-independent-review-request.md)
+- [Interactive R273 structural review](release/hr-v0/j2-stop-access-well-fea-p0.1/index.html)
+- [Interactive configuration reconciliation P0.37](release/hr-v0/configuration-reconciliation-p0.37/index.html)
+- [R272 P0.11 mixed-side J2 stop candidate](docs/hr-v0-j2-stop-sideweb-p0.1.md)
+- [Interactive R272 structural review](release/hr-v0/j2-stop-sideweb-fea-p0.1/index.html)
+- [Interactive configuration reconciliation P0.36](release/hr-v0/configuration-reconciliation-p0.36/index.html)
+- [R271 C06 full-part FEA screen](docs/hr-v0-j2-stop-fea-p0.1.md)
+- [Interactive R271 FEA review](release/hr-v0/j2-stop-fea-p0.1/index.html)
+- [Interactive configuration reconciliation P0.35](release/hr-v0/configuration-reconciliation-p0.35/index.html)
+- [R271 validation record](docs/reviews/2026-08-12-r271-validation-record.md)
+- [R271 independent structural-analysis review request](docs/reviews/2026-08-12-r271-independent-review-request.md)
+- [R270 corrected J2 stop model and bossed candidate](docs/hr-v0-j2-stop-bossed-p0.1.md)
+- [Interactive R270 J2 stop review](release/hr-v0/j2-stop-bossed-p0.1/index.html)
+- [Interactive configuration reconciliation P0.34](release/hr-v0/configuration-reconciliation-p0.34/index.html)
+- [R270 validation record](docs/reviews/2026-08-12-r270-validation-record.md)
+- [R270 independent review request](docs/reviews/2026-08-12-r270-independent-review-request.md)
+- [R269 J2 hard-stop strength correction](docs/hr-v0-j2-stop-strength-p0.1.md)
+- [Interactive R269 stop-strength review guide](release/hr-v0/j2-stop-strength-p0.1/index.html)
+- [Interactive configuration reconciliation P0.33](release/hr-v0/configuration-reconciliation-p0.33/index.html)
+- [R269 independent review request](docs/reviews/2026-08-12-r269-independent-review-request.md)
+- [Sol R12 status after R269](docs/reviews/2026-08-12-sol-r12-post-r269-status.md)
+- [R268 functional datum/GD&T correction](docs/hr-v0-gdt-review-p0.2.md)
+- [Interactive R268 GD&T review guide](release/hr-v0/gdt-review-p0.2/index.html)
+- [Interactive configuration reconciliation P0.32](release/hr-v0/configuration-reconciliation-p0.32/index.html)
+- [R268 independent review request](docs/reviews/2026-08-12-r268-independent-review-request.md)
+- [Sol R12 status after R268](docs/reviews/2026-08-12-sol-r12-post-r268-status.md)
+- [R267 Lot A alternate acquisition route](docs/hr-v0-lot-a-alternate-route-p0.1.md)
+- [Interactive R267 route guide](release/hr-v0/lot-a-alternate-route-p0.1/index.html)
+- [Interactive configuration reconciliation P0.31](release/hr-v0/configuration-reconciliation-p0.31/index.html)
+- [R267 independent review request](docs/reviews/2026-08-12-r267-independent-review-request.md)
+- [Sol R12 status after R267](docs/reviews/2026-08-12-sol-r12-post-r267-status.md)
+- [R266 Lot A decision capsule](docs/hr-v0-lot-a-decision-capsule-p0.1.md)
+- [Interactive R266 draft decision guide](release/hr-v0/lot-a-decision-capsule-p0.1/index.html)
+- [Interactive configuration reconciliation P0.30](release/hr-v0/configuration-reconciliation-p0.30/index.html)
+- [R266 independent review request](docs/reviews/2026-08-12-r266-independent-review-request.md)
+- [Sol R12 status after R266](docs/reviews/2026-08-12-sol-r12-post-r266-status.md)
+- [R265 `HR-V0-CARRIER-FIT-EVID-CAP-P0.1` unpowered evidence capture](docs/hr-v0-carrier-fit-evidence-capture-p0.1.md)
+- [Interactive R265 carrier-fit measurement guide](release/hr-v0/carrier-fit-evidence-capture-p0.1/index.html)
+- [Interactive configuration reconciliation P0.29](release/hr-v0/configuration-reconciliation-p0.29/index.html)
+- [R265 independent review request](docs/reviews/2026-08-12-r265-independent-review-request.md)
+- [Sol R12 status after R265](docs/reviews/2026-08-12-sol-r12-post-r265-status.md)
+- [R264 `HR-V0-DXL-CARRIER-MOUNT-IF-P0.2` connector- and datum-aware carrier mounting](docs/hr-v0-dxl-carrier-mount-p0.2.md)
+- [Interactive R264 no-drill mounting guide](release/hr-v0/dxl-carrier-mount-p0.2/index.html)
+- [Interactive configuration reconciliation P0.28](release/hr-v0/configuration-reconciliation-p0.28/index.html)
+- [R264 independent review request](docs/reviews/2026-08-12-r264-independent-review-request.md)
+- [Sol R12 status after R264](docs/reviews/2026-08-12-sol-r12-post-r264-status.md)
+- [R263 carrier power-harness and panel-placement correction P0.2](docs/hr-v0-dxl-protection-carrier-harness-p0.2.md)
+- [Interactive R263 six-harness and collision guide](release/hr-v0/dxl-protection-carrier-harness-p0.2/index.html)
+- [Interactive configuration reconciliation P0.27](release/hr-v0/configuration-reconciliation-p0.27/index.html)
+- [R263 independent review request](docs/reviews/2026-08-12-r263-independent-review-request.md)
+- [Sol R12 status after R263](docs/reviews/2026-08-12-sol-r12-post-r263-status.md)
+- [R262 U2D2-to-JC1 manufacturer-build request P0.1](docs/hr-v0-u2d2-jc1-harness-rfq-p0.1.md)
+- [Interactive R262 RFQ guide](release/hr-v0/u2d2-jc1-harness-rfq-p0.1/index.html)
+- [Interactive configuration reconciliation P0.26](release/hr-v0/configuration-reconciliation-p0.26/index.html)
+- [R262 independent review request](docs/reviews/2026-08-12-r262-independent-review-request.md)
+- [R262 validation record](docs/reviews/2026-08-12-r262-validation-record.md)
+- [Sol R12 status after R262](docs/reviews/2026-08-12-sol-r12-post-r262-status.md)
+- [R261 U2D2-to-JC1 controller harness P0.1](docs/hr-v0-u2d2-jc1-harness-p0.1.md)
+- [Interactive R261 harness guide](release/hr-v0/u2d2-jc1-harness-p0.1/index.html)
+- [Interactive configuration reconciliation P0.25](release/hr-v0/configuration-reconciliation-p0.25/index.html)
+- [R261 independent review request](docs/reviews/2026-08-12-r261-independent-review-request.md)
+- [R261 validation record](docs/reviews/2026-08-12-r261-validation-record.md)
+- [Sol R12 status after R261](docs/reviews/2026-08-12-sol-r12-post-r261-status.md)
+- [R260 observation-carrier mounting stack P0.1](docs/hr-v0-observation-mount-stack-p0.1.md)
+- [Interactive R260 mounting-stack guide](release/hr-v0/observation-mount-stack-p0.1/index.html)
+- [Interactive configuration reconciliation P0.24](release/hr-v0/configuration-reconciliation-p0.24/index.html)
+- [R260 independent review request](docs/reviews/2026-08-12-r260-independent-review-request.md)
+- [R260 validation record](docs/reviews/2026-08-12-r260-validation-record.md)
+- [Sol R12 status after R260](docs/reviews/2026-08-12-sol-r12-post-r260-status.md)
+- [R259 observation electronics BOM integration P0.1](docs/hr-v0-observation-bom-integration-p0.1.md)
+- [Interactive R259 observation BOM guide](release/hr-v0/observation-bom-integration-p0.1/index.html)
+- [Interactive configuration reconciliation P0.23](release/hr-v0/configuration-reconciliation-p0.23/index.html)
+- [R259 independent review request](docs/reviews/2026-08-12-r259-independent-review-request.md)
+- [R259 validation record](docs/reviews/2026-08-12-r259-validation-record.md)
+- [Sol R12 status after R259](docs/reviews/2026-08-12-sol-r12-post-r259-status.md)
+- [R258 deterministic recipient transmission bundles P0.1](docs/hr-v0-lot-a-transmission-bundles-p0.1.md)
+- [Interactive R258 bundle and checksum guide](release/hr-v0/lot-a-transmission-bundles-p0.1/index.html)
+- [Interactive configuration reconciliation P0.22](release/hr-v0/configuration-reconciliation-p0.22/index.html)
+- [R258 independent review request](docs/reviews/2026-08-12-r258-independent-review-request.md)
+- [R258 validation record](docs/reviews/2026-08-12-r258-validation-record.md)
+- [Sol R12 status after R258](docs/reviews/2026-08-12-sol-r12-post-r258-status.md)
+- [R257 exact-feature Lot A inquiry P0.3](docs/hr-v0-lot-a-inquiry-p0.3.md)
+- [Interactive R257 inquiry and bid guide](release/hr-v0/lot-a-inquiry-p0.3/index.html)
+- [Interactive configuration reconciliation P0.21](release/hr-v0/configuration-reconciliation-p0.21/index.html)
+- [R257 independent review request](docs/reviews/2026-08-12-r257-independent-review-request.md)
+- [R257 validation record](docs/reviews/2026-08-12-r257-validation-record.md)
+- [Sol R12 status after R257](docs/reviews/2026-08-12-sol-r12-post-r257-status.md)
+- [R256 source-bound joint measurement definition P0.1](docs/hr-v0-joint-measurement-definition-p0.1.md)
+- [Interactive R256 joint feature and measurand guide](release/hr-v0/joint-measurement-definition-p0.1/index.html)
+- [Interactive configuration reconciliation P0.20](release/hr-v0/configuration-reconciliation-p0.20/index.html)
+- [R256 independent review request](docs/reviews/2026-08-11-r256-independent-review-request.md)
+- [R256 validation record](docs/reviews/2026-08-11-r256-validation-record.md)
+- [Sol R12 status after R256](docs/reviews/2026-08-11-sol-r12-post-r256-status.md)
+- [R255 Lot A supplier and metrology inquiry P0.2](docs/hr-v0-lot-a-inquiry-p0.2.md)
+- [Interactive R255 inquiry and decision guide](release/hr-v0/lot-a-inquiry-p0.2/index.html)
+- [Interactive configuration reconciliation P0.19](release/hr-v0/configuration-reconciliation-p0.19/index.html)
+- [R255 independent review request](docs/reviews/2026-08-11-r255-independent-review-request.md)
+- [R255 validation record](docs/reviews/2026-08-11-r255-validation-record.md)
+- [Sol R12 status after R255](docs/reviews/2026-08-11-sol-r12-post-r255-status.md)
+- [R254 task-specific joint-stack metrology correction](docs/hr-v0-joint-stack-metrology-p0.2.md)
+- [Interactive R254 metrology guide](release/hr-v0/joint-stack-metrology-p0.2/index.html)
+- [Interactive configuration reconciliation P0.18](release/hr-v0/configuration-reconciliation-p0.18/index.html)
+- [R254 independent review request](docs/reviews/2026-08-11-r254-independent-review-request.md)
+- [R254 validation record](docs/reviews/2026-08-11-r254-validation-record.md)
+- [Sol R12 status after R254](docs/reviews/2026-08-11-sol-r12-post-r254-status.md)
+- [R253 rank-6 3-2-1 joint-stack fixture correction](docs/hr-v0-joint-stack-fixture-p0.2.md)
+- [Interactive R253 fixture guide](release/hr-v0/joint-stack-fixture-p0.2/index.html)
+- [Interactive configuration reconciliation P0.17](release/hr-v0/configuration-reconciliation-p0.17/index.html)
+- [R253 independent review request](docs/reviews/2026-08-11-r253-independent-review-request.md)
+- [R253 validation record](docs/reviews/2026-08-11-r253-validation-record.md)
+- [Sol R12 status after R253](docs/reviews/2026-08-11-sol-r12-post-r253-status.md)
+- [R252 zero-energy joint-stack fixture candidate](docs/hr-v0-joint-stack-fixture-p0.1.md)
+- [Interactive R252 joint-stack fixture guide](release/hr-v0/joint-stack-fixture-p0.1/index.html)
+- [Interactive configuration reconciliation P0.16](release/hr-v0/configuration-reconciliation-p0.16/index.html)
+- [R252 independent review request](docs/reviews/2026-08-11-r252-independent-review-request.md)
+- [R252 validation record](docs/reviews/2026-08-11-r252-validation-record.md)
+- [Sol R12 status after R252](docs/reviews/2026-08-11-sol-r12-post-r252-status.md)
+- [R251 first physical shop-session contract](docs/hr-v0-first-shop-session-p0.1.md)
+- [Interactive R251 first-shop-session guide](release/hr-v0/first-shop-session-p0.1/index.html)
+- [Interactive configuration reconciliation P0.15](release/hr-v0/configuration-reconciliation-p0.15/index.html)
+- [R251 independent review request](docs/reviews/2026-08-11-r251-independent-review-request.md)
+- [R251 validation record](docs/reviews/2026-08-11-r251-validation-record.md)
+- [R250 datum/GD&T qualified-review proposal](docs/hr-v0-gdt-review-p0.1.md)
+- [Interactive R250 datum/GD&T guide](release/hr-v0/gdt-review-p0.1/index.html)
+- [Interactive configuration reconciliation P0.14](release/hr-v0/configuration-reconciliation-p0.14/index.html)
+- [R250 independent review request](docs/reviews/2026-08-11-r250-independent-review-request.md)
+- [R250 validation record](docs/reviews/2026-08-11-r250-validation-record.md)
+- [R249 accepted-property propagation and stale-analysis control](docs/hr-v0-property-propagation-p0.1.md)
+- [Interactive R249 property-propagation guide](release/hr-v0/property-propagation-p0.1/index.html)
+- [Interactive configuration reconciliation P0.13](release/hr-v0/configuration-reconciliation-p0.13/index.html)
+- [R249 independent review request](docs/reviews/2026-08-11-r249-independent-review-request.md)
+- [R249 validation record](docs/reviews/2026-08-11-r249-validation-record.md)
+- [Sol R12 status after R249](docs/reviews/2026-08-11-sol-r12-post-r249-status.md)
+- [R248 complete moving mass, COM and inertia evidence contract](docs/hr-v0-moving-properties-closure-p0.1.md)
+- [Interactive R248 moving-properties guide](release/hr-v0/moving-properties-closure-p0.1/index.html)
+- [Interactive configuration reconciliation P0.12](release/hr-v0/configuration-reconciliation-p0.12/index.html)
+- [R248 independent review request](docs/reviews/2026-08-11-r248-independent-review-request.md)
+- [R248 validation record](docs/reviews/2026-08-11-r248-validation-record.md)
+- [Sol R12 status after R248](docs/reviews/2026-08-11-sol-r12-post-r248-status.md)
+- [R247 mechanical shop, RFQ and unpowered assembly candidate](docs/hr-v0-mechanical-shop-rfq-assembly-p0.1.md)
+- [Interactive R247 mechanical shop/RFQ/assembly guide](release/hr-v0/mechanical-shop-rfq-assembly-p0.1/index.html)
+- [Interactive configuration reconciliation P0.11](release/hr-v0/configuration-reconciliation-p0.11/index.html)
+- [R247 independent review request](docs/reviews/2026-08-11-r247-independent-review-request.md)
+- [R247 validation record](docs/reviews/2026-08-11-r247-validation-record.md)
+- [Sol R12 status after R247](docs/reviews/2026-08-11-sol-r12-post-r247-status.md)
+- [R245 integrated mechanical and firmware source binding](docs/hr-v0-firmware-mechanical-source-binding-p0.1.md)
+- [R246 P1.21 static 24 V voltage budget](docs/hr-v0-p121-static-voltage-budget-p0.1.md)
+- [Interactive corrected five-part binding](release/hr-v0/mechanical-bom-binding-p0.3/index.html)
+- [Interactive firmware source-binding guide](release/hr-v0/firmware-mechanical-source-binding-p0.1/index.html)
+- [R245 independent review request](docs/reviews/2026-08-11-r245-independent-review-request.md)
+- [R245 validation record](docs/reviews/2026-08-11-r245-validation-record.md)
+- [Sol R12 status after R245](docs/reviews/2026-08-11-sol-r12-post-r245-status.md)
+- [R246 independent review request](docs/reviews/2026-08-11-r246-independent-review-request.md)
+- [R246 validation record](docs/reviews/2026-08-11-r246-validation-record.md)
+- [Sol R12 status after R246](docs/reviews/2026-08-11-sol-r12-post-r246-status.md)
+- [R244 P1.21 nominal DCR and voltage-drop screen](docs/hr-v0-p121-dcr-drop-p0.1.md)
+- [Interactive DCR and voltage-drop guide](release/hr-v0/p121-dcr-drop-p0.1/index.html)
+- [R244 independent review request](docs/reviews/2026-08-11-r244-independent-review-request.md)
+- [R244 validation record](docs/reviews/2026-08-11-r244-validation-record.md)
+- [Sol R12 status after R244](docs/reviews/2026-08-11-sol-r12-post-r244-status.md)
+- [R243 P1.21 endpoint termination evidence](docs/hr-v0-p121-termination-p0.1.md)
+- [Interactive termination guide](release/hr-v0/p121-termination-p0.1/index.html)
+- [R243 independent review request](docs/reviews/2026-08-11-r243-independent-review-request.md)
+- [R243 validation record](docs/reviews/2026-08-11-r243-validation-record.md)
+- [Sol R12 status after R243](docs/reviews/2026-08-11-sol-r12-post-r243-status.md)
+- [R242 P1.21 conductor and duct-occupancy evidence](docs/hr-v0-p121-conductor-fill-p0.1.md)
+- [Interactive conductor and fill guide](release/hr-v0/p121-conductor-fill-p0.1/index.html)
+- [R242 independent review request](docs/reviews/2026-08-11-r242-independent-review-request.md)
+- [R242 validation record](docs/reviews/2026-08-11-r242-validation-record.md)
+- [Sol R12 status after R242](docs/reviews/2026-08-11-sol-r12-post-r242-status.md)
+- [R241 P1.21 segregation-hardware candidate](docs/hr-v0-p121-segregation-hardware-p0.1.md)
+- [Interactive segregation-hardware guide](release/hr-v0/p121-segregation-hardware-p0.1/index.html)
+- [R241 independent review request](docs/reviews/2026-08-11-r241-independent-review-request.md)
+- [R241 validation record](docs/reviews/2026-08-11-r241-validation-record.md)
+- [R240 P1.21 protected-routing candidate](docs/hr-v0-p121-protected-routing-p0.1.md)
+- [Interactive protected-routing guide](release/hr-v0/p121-protected-routing-p0.1/index.html)
+- [R240 independent review request](docs/reviews/2026-08-11-r240-independent-review-request.md)
+- [R240 validation record](docs/reviews/2026-08-11-r240-validation-record.md)
+- [R239 P1.21 project visual review](docs/hr-v0-p121-visual-review-p0.1.md)
+- [Interactive changed-sheet review](release/hr-v0/p121-visual-review-p0.1/index.html)
+- [R239 independent review request](docs/reviews/2026-08-11-r239-independent-review-request.md)
+- [R239 validation record](docs/reviews/2026-08-11-r239-validation-record.md)
+- [R238 P1.21 consolidated native-KiCad review candidate](docs/hr-v0-p121-consolidated-review-p0.1.md)
+- [Interactive thirteen-sheet P1.21 review guide](release/hr-v0/p121-consolidated-review-p0.1/index.html)
+- [R238 independent review request](docs/reviews/2026-08-11-r238-independent-review-request.md)
+- [R238 validation record](docs/reviews/2026-08-11-r238-validation-record.md)
+- [R237 Lot A source reconciliation P0.1](docs/hr-v0-lot-a-source-reconciliation-p0.1.md)
+- [Interactive Lot A purchase-gate guide](release/hr-v0/lot-a-source-reconciliation-p0.1/index.html)
+- [R237 independent review request](docs/reviews/2026-08-11-r237-independent-review-request.md)
+- [R237 validation record](docs/reviews/2026-08-11-r237-validation-record.md)
+- [R236 runtime evidence-log contract P0.1](docs/hr-v0-runtime-evidence-log-p0.1.md)
+- [Interactive runtime evidence guide](release/hr-v0/runtime-evidence-log-p0.1/index.html)
+- [R236 independent review request](docs/reviews/2026-08-11-r236-independent-review-request.md)
+- [R236 validation record](docs/reviews/2026-08-11-r236-validation-record.md)
+- [P1.21 manufacturer and no-load evidence route P0.1](docs/hr-v0-p121-application-evidence-p0.1.md)
+- [Interactive P1.21 application-evidence guide](release/hr-v0/p121-application-evidence-p0.1/index.html)
+- [R235 independent review request](docs/reviews/2026-08-11-r235-independent-review-request.md)
+- [R235 validation record](docs/reviews/2026-08-11-r235-validation-record.md)
+- [P1.21 SRA1-supply watchdog candidate and R234 disposition](docs/hr-v0-p121-sra1-supply-watchdog-p0.1.md)
+- [Interactive P1.21 topology and fault guide](release/hr-v0/p121-sra1-supply-watchdog-p0.1/index.html)
+- [R234 independent review request](docs/reviews/2026-08-11-r234-independent-review-request.md)
+- [R234 validation record](docs/reviews/2026-08-11-r234-validation-record.md)
+- [P1.20 PNOZ/KWD application dossier and R233 disposition](docs/hr-v0-pnoz-kwd-application-p0.2.md)
+- [Interactive P1.20 contact-load and fault guide](release/hr-v0/pnoz-kwd-application-p0.2/index.html)
+- [R233 independent review request](docs/reviews/2026-08-11-r233-independent-review-request.md)
+- [R233 validation record](docs/reviews/2026-08-11-r233-validation-record.md)
+- [P1.20 watchdog-interlock candidate and R232 disposition](docs/hr-v0-p120-watchdog-interlock-p0.1.md)
+- [Interactive P1.20 topology and fault guide](release/hr-v0/p120-watchdog-interlock-p0.1/index.html)
+- [Sol R12 current blocker disposition after R230](docs/sol-r12-current-disposition-r231.md)
+- [Interactive Sol R12 blocker register](release/hr-v0/sol-r12-current-disposition-r231/index.html)
+- [HR-V0 explicit panel point-to-point candidate P0.1](docs/hr-v0-panel-point-to-point-p0.1.md)
+- [Interactive panel point-to-point guide](release/hr-v0/panel-point-to-point-p0.1/index.html)
+- [HR-V0 panel node placement and stock allocation P0.1](docs/hr-v0-panel-node-placement-p0.1.md)
+- [Interactive panel node-placement guide](release/hr-v0/panel-node-placement-p0.1/index.html)
+- [HR-V0 connected-ECAD web review P0.1](docs/hr-v0-ecad-web-review-p0.1.md)
+- [Interactive 13-sheet native KiCad viewer](release/hr-v0/ecad-web-review-p1.18-p0.1/index.html)
+- [HR-V0 watchdog permit topology proof P0.1](docs/hr-v0-watchdog-permit-topology-p0.1.md)
+- [Interactive watchdog permit and welded-contact guide](release/hr-v0/watchdog-permit-topology-p0.1/index.html)
+- [HR-V0 K1/K2 contactor application P0.3](docs/hr-v0-contactor-application-p0.3.md)
+- [Interactive current-baseline contactor guide](release/hr-v0/contactor-application-p0.3/index.html)
+- [Interactive current configuration reconciliation P0.4](release/hr-v0/configuration-reconciliation-p0.4/index.html)
+- [Current HR-V0 mechanical manufacturing-review package P0.1](docs/hr-v0-mechanical-manufacturing-review-p0.1.md)
+- [Interactive mechanical manufacturing-review guide](release/hr-v0/mechanical-manufacturing-review-p0.1/index.html)
+- [Current Boston fabrication route P0.4](docs/hr-v0-boston-fabrication-decision-p0.4.md)
+- [Interactive Boston fabrication route guide](release/hr-v0/boston-fabrication-route-p0.4/index.html)
 - [HR-V0 carrier-integrated configuration reconciliation P0.1](docs/hr-v0-configuration-reconciliation-p0.1.md)
 - [Interactive carrier-integrated configuration guide](release/hr-v0/configuration-reconciliation-p0.1/index.html)
 - [Current P0.2 DXL-star manufacturing review](docs/hr-v0-dxl-star-manufacturing-p0.2.md)
@@ -50,12 +349,22 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [HR-V0 watchdog-gated SR1 supply correction P0.1](docs/hr-v0-watchdog-supply-gate-p0.1.md)
 - [Interactive watchdog supply-gate correction guide](safety/hr-v0-watchdog-supply-gate-p0.1/index.html)
 - [HR-V0 firmware implementation candidate P0.4](docs/hr-v0-firmware-p0.4.md)
+- [HR-V0 conservative kinematic speed bound P0.1](docs/hr-v0-kinematic-speed-bound-p0.1.md)
+- [Interactive kinematic speed-bound calculator](release/hr-v0/kinematic-speed-bound-p0.1/index.html)
+- [HR-V0 runtime execution boundary P0.1](docs/hr-v0-runtime-execution-boundary-p0.1.md)
+- [HR-V0 runtime backend source candidates P0.1](docs/hr-v0-runtime-backends-p0.1.md)
+- [HR-V0 Raspberry Pi observation pin map P0.1](docs/hr-v0-runtime-observation-pi-pinmap-p0.1.md)
+- [Interactive Raspberry Pi observation pin-map guide](release/hr-v0/runtime-observation-pi-pinmap-p0.1/index.html)
+- [HR-V0 Raspberry Pi observation interface carrier P0.1](docs/hr-v0-pi-observation-carrier-p0.1.md)
+- [Interactive Raspberry Pi observation carrier and harness guide](release/hr-v0/pi-observation-carrier-p0.1/index.html)
 - [HR-V0 fail-closed host deployment candidate P0.1](docs/hr-v0-host-deployment-p0.1.md)
 - [Interactive host deployment guide](release/hr-v0/host-deployment-p0.1/index.html)
 - [HR-V0 Raspberry Pi OS publisher-SBOM lock P0.1](docs/hr-v0-rpi-os-sbom-p0.1.md)
 - [Interactive Raspberry Pi OS SBOM guide](release/hr-v0/rpi-os-sbom-p0.1/index.html)
 - [HR-V0 DYNAMIXEL transport candidate P0.3](docs/hr-v0-dynamixel-transport-p0.3.md)
 - [HR-V0 E2 control-only commissioning package P0.1](docs/hr-v0-e2-control-only-energization-p0.1.md)
+- [HR-V0 E2 evidence parity contract P0.2](docs/hr-v0-e2-evidence-parity-p0.2.md)
+- [Interactive E2 evidence guide](release/hr-v0/e2-evidence-parity-p0.2/index.html)
 - [HR-V0 BOM closure and evaluation boundary P0.1](docs/hr-v0-bom-closure-p0.1.md)
 - [HR-V0 Evaluation Batch A candidates](bom/hr-v0-evaluation-batch-a.csv)
 - [HR-V0 unpowered mechanical evaluation subset P0.1](docs/hr-v0-unpowered-mechanical-evaluation-p0.1.md)
@@ -102,6 +411,12 @@ No child may enter the test area during V0. Any later child-adjacent demonstrati
 - [Electrical and safety architecture](docs/electrical.md)
 - [Safety-function requirements](docs/safety-functions.md)
 - [HR-V0 functional-safety allocation and diagnostic-credit boundary P0.1](docs/hr-v0-functional-safety-allocation-p0.1.md)
+- [HR-V0 measurable safety-requirements candidate P0.2](docs/hr-v0-safety-requirements-p0.2.md)
+- [Interactive HR-V0 safety-requirements guide](release/hr-v0/safety-requirements-p0.2/index.html)
+- [HR-V0 functional-safety reviewer route P0.1](docs/hr-v0-functional-safety-review-route-p0.1.md)
+- [Interactive functional-safety reviewer-route guide](release/hr-v0/functional-safety-review-route-p0.1/index.html)
+- [HR-V0 current control-panel configuration P0.1](docs/hr-v0-control-panel-configuration-p0.1.md)
+- [Interactive current panel-configuration guide](release/hr-v0/control-panel-configuration-p0.1/index.html)
 - [Actuator and harness interface constraints](docs/actuator-interface.md)
 - [Native KiCad Electrical V2.1 source](electrical/kicad/project-button-v2/README.md)
 - [Native KiCad Electrical V3-P1.15 carrier-aware candidate](electrical/kicad/project-button-v3-p1.15-carrier-candidate/README.md)
@@ -884,6 +1199,7 @@ Run `python tools/check_hr_v0_gripper_source_route_p04.py` for the R110 source-r
 Run `C:\Users\amyle\Documents\New project\.venvs\hr-v0-cad\Scripts\python.exe tools/check_hr_v0_gripper_h104_source_p01.py` for the R115 H104 source-provenance correction. It must hash/type-check official endpoints 646/647/648, prove the PDF/STEP byte identity, parse the one-solid STEP, and keep GDC-001..007, GRH-001/002 and every physical/release hold open.
 Run `C:\Users\amyle\Documents\New project\.venvs\hr-v0-cad\Scripts\python.exe tools/check_hr_v0_pnoz_path_conformance_p01.py` for the R116 Pilz source and exact-terminal conformance record. It must hash-check manual `21396-EN-23`, verify fourteen PARTIAL/OPEN rows and exact V3-P1.13 RESET/ARM/EDM nets, prove KWD contacts are absent from both S0 returns, and retain zero safety credit plus every physical/application/authorization hold.
 Run `C:\Users\amyle\Documents\New project\.venvs\hr-v0-cad\Scripts\python.exe tools/check_hr_v0_contactor_application_p02.py` for the R117 K1/K2 application packet. It must verify five current source records, 33 application inputs, all 18 required-before-query rows still open, twelve NOT EXECUTED/NOT_AUTHORIZED test stages, the UNSENT Schneider request and partial `EG-013` disposition.
+Run `python tools/generate_hr_v0_contactor_application_p03.py`, `python tools/generate_hr_v0_r226_contactor_sync.py`, and `python tools/check_hr_v0_contactor_application_p03.py` for R226. Passing proves exactly 16 coil/EDM plus 16 main-power terminal/net rows are identical between current P1.15 and unaccepted P1.18; binds ten local and three current Schneider sources; retains eleven open holds and partial `EG-002/004/013`; and authorizes no supplier contact, DC application, physical work, motion or energization.
 Run `C:\Users\amyle\Documents\New project\.venvs\hr-v0-cad\Scripts\python.exe tools/check_hr_v0_grounding_bonding_p01.py` for the R118 grounding/bonding packet. It must verify eight current source identities, exact V3 return/frame/shield node counts, fifteen controlled nodes, twelve open/partial holds, eighteen NOT EXECUTED/NOT_AUTHORIZED surveys and partial `EG-016` disposition.
 Run `C:\Users\amyle\Documents\New project\.venvs\hr-v0-cad\Scripts\python.exe tools/check_hr_v0_gripper_alternative_p01.py` for the R111 alternate-gripper trade study. It must hash/type-check seven manufacturer payloads, parse the Pololu and ServoCity STEP files, retain Pololu 3551 as preferred evaluation only, keep all twelve GAH holds open and release no purchase, fabrication, motion or energization authority.
 Generate and check the R112 adapter with the controlled CadQuery interpreter using `tools/generate_hr_v0_pololu_gripper_adapter.py` and `tools/check_hr_v0_pololu_gripper_adapter.py`. It must reproduce the exact manufacturer transform, one-solid adapter, four-solid assembly, 25.289709 g calculated adapter mass, 117.619291 g incomplete headroom and twelve open PAH holds while keeping every release flag false.
@@ -903,9 +1219,55 @@ Run `python tools/check_hr_v0_frame_joints.py` after any frame profile, bracket,
 
 One hundred ninety-four review/control rounds are complete: R01-R194. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R194 are project-owned correction, evidence-control, or validation passes, not additional independent reviews. R181 supersedes the inaccurate combined P0.1 trace contract; R182 closes only documented probe-power arithmetic and names the exact E2 displacement-witness candidate; R183 adds an unreleased cordset/bracket/supply route and calibration scaffold; R184 adds connected native KiCad with exact but unreleased protection/termination/enclosure families; R185 corrects the panel geometry and defines the centered rail/device layout; R186 binds LAPP's installation torque while preserving the blank locknut-certificate and through-bore fields; R187 creates a two-lot unsigned unpowered acquisition decision; R188 replaces two commercial ambiguities with direct seller evidence while exposing a zero-stock PTCB hold; R189 corrects machine-dependent checkout bytes plus absolute synthetic-result paths and records a 145/145 clean-clone pass; R190 adds a source-controlled nonselected XC330 gripper feasibility branch; R191 replaces its provisional frame and trapezoidal teeth with official FPX330-S101 source, exact nominal registration and a project-owned involute candidate; R192 composes that branch into the exact H104/world chain with two native bridge candidates and a 399-pose sampled screen; R193 corrects the stale broken-source record by binding the current ROBOTIS public Onshape assembly and five native part elements while retaining mutable-workspace, no-export, no-selection and XC330/current-rail holds; and R194 freezes the Boston jurisdiction basis, separates fabrication-provider capability from energization-site authority and replaces the vague site hold with twenty blank premises inputs and eight open holds. Every cart, quote, site, branch/receptacle, source-setting, procurement-form, drilling, termination, isolation, thermal, support, target, threshold, noninterference, uncertainty, gripper/wrist hardware/tolerance/strength/force/duty/guard, physical, powered-stopping, qualified-review and work-authority hold remains.
 
+## Review state through R239
+
+Two hundred thirty-nine review/control rounds are complete: R01-R239. R11 Fable and R12 Sol are independent parallel reviews of the original pre-correction baseline. R13-R239 are project-owned correction, evidence-control or validation passes, not additional independent approvals. R219 adds a provider-neutral route to a named competent independent functional-safety reviewer. R220-R222 reconcile current panel identities, conductor basis and explicit two-ended topology. R223 places the five unaccepted P1.18 nodes on a catalog-envelope DR5/WD4 candidate, reconciles 95 covered BOM groups and supplies 37 planning-route screens that are prohibited as cut lengths. R224 SHA-binds all thirteen actual P1.18 native KiCad sheets to their SVG exports and adds a searchable, zoomable, full-width web-review surface; it does not promote P1.18. R225-R228 bind watchdog, contactor, grounding and pre-power evidence to the current configurations. R229 proves the exact P1.15-to-P1.18 semantic boundary. R230 adds unaccepted P1.19 with identical electrical semantics and corrected visual layout. R231 reconciles all 18 Sol blockers against R230: 12 were partially addressed/open, B-005 remained an HR-V0 blocker, five remained HR-30 blockers and zero had qualified closure. R232 issues unaccepted P1.20. R233 binds its path to current Pilz/Phoenix data. R234 rejects an automatic-restart-prone low-side alternative and issues unaccepted P1.21 with direct SR1-to-SRA1 inputs and an ordinary two-contact SRA1 A1 diagnostic gate. R235 converts the remaining application gap into 13 unsent manufacturer questions, 12 response controls, ten authorization prerequisites, 15 required signals and 18 unexecuted no-load tests. R236 makes configuration-bound hash-chained logging a runtime dependency, tightens the source period bound to 10 ms and supplies blank clock, calibration and target-test acceptance routes. R237 source-reconciles the six-article Lot A metrology purchase and blocks ordering because the official XM540 page requests `-T`/TTL while its package table names `-R`; all eight supplier questions remain unsent. R238 proves P1.21 is already the single consolidated native-KiCad review candidate, with the P1.19 readable layout, P1.18 panel nodes and six exact P1.19-to-P1.21 keyed terminal changes; it does not promote P1.21. R239 freshly inspects the two logic-changed P1.21 sheets and records thirteen project visual passes with zero observed clipping/collision findings; only the project visual hold closes. Nothing was ordered, installed or physically tested and no timing/calibration result was invented. B-005 remains `PARTIALLY_ADDRESSED_OPEN`; Sol M-022 remains `PARTIALLY_ADDRESSED_OPEN`; DF-01 and the logger have zero safety credit, and manufacturer responses, protected routing, target timing, physical proof, functional-safety allocation and qualified closure remain open. P1.15 remains current; P1.18-P1.21 remain unaccepted pending independent and qualified disposition. All physical selection, calculation, received/installed and work-authorization evidence remains open. No provider is selected, contacted, quoted or supplied files. Native/repository checks do not supply DFM acceptance, FAI, received fit, structural allowables, achieved stopping performance, continuous-duty, functional-safety, qualified-review or work-authorization evidence.
+
 ## Current review state
 
-One hundred ninety-five review/control rounds are complete: R01-R195. R11 Fable and R12 Sol are independent parallel reviews of the same pre-correction baseline. The resupplied Sol verdict is the same R12 analysis and is not double-counted. R13-R195 are project-owned correction, evidence-control or validation passes, not additional independent approvals. R195 directly binds watchdog PCB-P1.0 to Electrical V3-P1.15, preserves exact structural and assembly parity, and moves the R165 parity package to historical evidence. All manufacturing, physical-test, functional-safety, qualified-review and work-authorization holds remain open.
+Three hundred ten rounds are logged: R01-R310. R286-R292 established exact exterior-facet/load geometry, corrected B-Rep fidelity, exact analysis zones, a conformal mesh, failure localization, and a preregistered successor that still failed the pocket-edge quality gate. R293-R296 identified artificial tangent seams in the analysis partition rather than the physical part. R297 removed those analysis seams while preserving exact physical geometry. R298 passed every linear quality gate; R300 retained every linear gate and reduced the curved failure to three Q8 points. R303's rail refinement was rejected and R306's discrete-mesh `HighOrder` attempt produced no result. R307's CAD-resident operation reproduced R300 exactly, restored all corners and passed finite Q4/Q6/Q8 samples, but R308 found 77 of 112,646 exterior facets did not map to one exact OCC face. R309 localized them to seven zero-distance planar trimmed-face clusters. R310 proves all 255 affected nodes are unchanged from R300 and preregisters an unexecuted exterior surface-imprint correction. R279-C02, structural fields, convergence, H02, capacity, safety credit, qualified review, and every physical-work authority remain open. R11/R12 remain the independent parallel reviews; later rounds are project responses, not additional independent approvals. Nothing has been sent, ordered, received, selected, fabricated, cut, crimped, assembled, connected, powered or measured. The complete round-by-round record is in the [review ledger](docs/review-ledger.md).
+
+Historical compatibility checkpoint: Two hundred eighty-five rounds are complete: R01-R285. R286-R302 are later controlled project responses and do not revise the evidence or authority state recorded at that checkpoint.
+
+- [R201 interactive runtime-observation interface guide](release/hr-v0/runtime-observation-interface-p0.1/index.html)
+- [R201 connected native KiCad source](electrical/kicad/hr-v0-runtime-observation-interface-p0.1/)
+- [R202 interactive routed-carrier guide](release/hr-v0/runtime-observation-carrier-p0.2/index.html)
+- [R202 native schematic and routed PCB source](electrical/kicad/hr-v0-runtime-observation-carrier-p0.2/)
+- [R203 interactive Raspberry Pi observation pin-map guide](release/hr-v0/runtime-observation-pi-pinmap-p0.1/index.html)
+- [R203 machine-readable pin allocation and holds](electrical/interfaces/hr-v0-runtime-observation-pi-pinmap-p0.1/)
+- [R204 interactive Raspberry Pi observation carrier and harness guide](release/hr-v0/pi-observation-carrier-p0.1/index.html)
+- [R204 native schematic, routed PCB and controlled schedules](electrical/kicad/hr-v0-pi-observation-carrier-p0.1/)
+- [R205 interactive Pi/observation panel integration guide](release/hr-v0/pi-observation-integration-p0.1/index.html)
+- [R205 placement, clearance, route and interface schedules](electrical/integration/hr-v0-pi-observation-integration-p0.1/)
+- [R206 interactive observation field-harness guide](release/hr-v0/observation-field-harness-p0.1/index.html)
+- [R206 native fourteen-page observation-integrated KiCad candidate](electrical/kicad/project-button-v3-p1.16-observation-candidate/README.md)
+- [R206 field-harness engineering schedules](electrical/harness/hr-v0-observation-field-harness-p0.1/)
+- [R207 interactive observation compute-harness guide](release/hr-v0/observation-compute-harness-p0.1/index.html)
+- [R207 compute-harness engineering schedules](electrical/harness/hr-v0-observation-compute-harness-p0.1/)
+- [R208 interactive observation compute-power guide](release/hr-v0/observation-compute-power-boundary-p0.1/index.html)
+- [R208 compute-power, signal and fault schedules](electrical/interfaces/hr-v0-observation-compute-power-boundary-p0.1/)
+- [R209 historical buffered observation-carrier guide — superseded](release/hr-v0/runtime-observation-carrier-p0.3/index.html)
+- [R210 historical push-pull observation-carrier guide - superseded](release/hr-v0/runtime-observation-carrier-p0.4/index.html)
+- [R211 current open-drain observation-carrier guide](release/hr-v0/runtime-observation-carrier-p0.5/index.html)
+- [R211 native schematic, routed PCB and controlled schedules](electrical/kicad/hr-v0-runtime-observation-carrier-p0.5/)
+- [R211 primary-source audit](docs/reviews/2026-08-10-r211-primary-source-audit.md)
+- [R211 validation record](docs/reviews/2026-08-10-r211-validation-record.md)
+- [R211 independent review request](docs/reviews/2026-08-10-r211-independent-review-request.md)
+- [R212 native P1.17 observation-integrated system view](electrical/kicad/project-button-v3-p1.17-observation-p05-candidate/README.md)
+- [R212 interactive configuration reconciliation P0.2](release/hr-v0/configuration-reconciliation-p0.2/index.html)
+- [R212 engineering disposition](docs/hr-v0-observation-system-integration-p0.2.md)
+- [R212 validation record](docs/reviews/2026-08-10-r212-validation-record.md)
+- [R212 independent review request](docs/reviews/2026-08-10-r212-independent-review-request.md)
+- [R213 corrected custom-part/BOM binding](docs/hr-v0-mechanical-bom-binding-p0.2.md)
+- [R213 interactive corrected custom-part guide](release/hr-v0/mechanical-bom-binding-p0.2/index.html)
+- [R213 validation record](docs/reviews/2026-08-10-r213-validation-record.md)
+- [R213 independent review request](docs/reviews/2026-08-10-r213-independent-review-request.md)
+- [R214 Sol review intake](docs/reviews/2026-08-10-sol-r214-independent-review-intake.md)
+- [R214 integrated complete-arm engineering note](docs/hr-v0-arm-architecture-p0.8-dwg-integrated.md)
+- [R214 interactive complete-arm evidence guide](release/hr-v0/arm-architecture-p0.8-dwg-integrated/index.html)
+- [R214 interactive configuration reconciliation](release/hr-v0/configuration-reconciliation-p0.3/index.html)
+- [R214 validation record](docs/reviews/2026-08-10-r214-validation-record.md)
+- [R214 independent review request](docs/reviews/2026-08-10-r214-independent-review-request.md)
 
 | Round | Review or control pass | Result |
 |---|---|---|
@@ -1104,6 +1466,64 @@ One hundred ninety-five review/control rounds are complete: R01-R195. R11 Fable 
 | R193 | Gripper native-source correction | Issued `HR-V0-GRIP-CAD-ACQ-P0.2`; corrected the historical broken-link claim, bound the current public ROBOTIS Onshape gripper assembly plus five native part elements, and documented the mutable Main/no-export boundary. The XM430/OpenMANIPULATOR route remains proposed but unselected; XC330 remains an alternate and may not connect to the current rail because its 12.0 V maximum is below the GST280A12 catalog 12.6 V tolerance endpoint. Twelve holds remain and zero requirement, gate, Sol R12 blocker or work authority closes. |
 | R194 | Boston site and jurisdiction basis | Issued `HR-V0-BOSTON-SITE-P0.2`; froze Boston, Massachusetts, USA and current official code/permit routes while leaving the exact premises, branch, bench, environment, emergency plan and E2 authority blank. BPL and Hatch receive only their published prototype capability; the R167 commercial CNC screen remains separate. Twenty premises inputs and eight holds remain open; EG-001 and EG-022 stay partial. |
 | R195 | Watchdog PCB P1.15 native-identity correction | Issued `HR-V0-WD-P115-ID-P0.1` and PCB-P1.0; directly bound the unchanged watchdog geometry/topology/placement/native assembly fields to Electrical V3-P1.15 and regenerated current assembly/CAM/BOM/E2 evidence. R165 parity remains historical. All 18 CAM/manufacturing and 12 E2 holds remain open; EG-002/004 stay partial. |
+| R196 | Stale-command and restart-authority correction | Issued `HR-V0-STALE-AUTH-P0.1`; bound all twenty E2 logic cases to supervisor state, active-target, torque-request and replay observations. Added a source regression proving dropout clears the target, valid RESET/ARM does not request torque, the old sequence is rejected and only a later fresh sequence may request torque. The entire E2 evidence form remains unexecuted; zero safety credit and no gate/work authority close. |
+| R197 | Conservative kinematic speed-bound correction | Issued `HR-V0-KIN-P0.1`; bound the current J1/J2/H104 candidate geometry to a triangle-inequality TCP-rate model, exact configuration hashing and a same-file supervisor constructor. Tool reach and acceptance hashes remain `SELECTION REQUIRED`, so the repository validator refuses construction. No physical evidence, safety credit, gate or work authority closes. |
+| R198 | Runtime execution-boundary correction | Issued `HR-V0-RUNTIME-P0.1`; added the exact entrypoint, nineteen-source overlay, received-position conversion, torque/goal-current parity and deterministic heartbeat/authority/sample/terminal/shutdown sequencing. The committed preflight still exits 78 with 24 holds; target backends, image, HIL and approvals remain absent. No gate or work authority closes. |
+| R199 | Runtime backend and heartbeat correction | Issued `HR-V0-RUNTIME-BACKENDS-P0.1`; added hash-bound libgpiod and AF_UNIX source candidates, monotonic heartbeat edge generation, strict credential/schema parsing and unreleased trajectory resource bounds. The overlay has 21 rows and preflight exits 78 with 50 holds. No physical observation circuit, target/HIL evidence, safety credit, gate or work authority closes. |
+| R200 | Runtime observation-semantics correction | Issued `HR-V0-RUNTIME-OBS-P0.1`; traced four positive panel statuses, separated five unselected health providers plus software-derived bus health, rejected NC-contact inversion and made unknown values fail closed. Preflight exits 78 with 45 holds; twelve interface holds remain open. No connected receiver, target/HIL evidence, safety credit, gate or work authority closes. |
+| R201 | Four-channel runtime-observation receiver correction | Issued `HR-V0-RUNTIME-OBS-IF-P0.1`; added root plus four connected native KiCad sheets for two `ISO1212DBQ` devices, four Type-3 input networks, three 2.70 kohm wetting/bleed shunts, isolated field/compute returns and fail-low outputs. ERC is 0/0; 33 component blocks and 33 nets reconcile. SR1 H1 current/brightness, Pi GPIOs, PCB/layout, harness, EMC, fault injection and all ten evidence holds remain open. Zero safety credit and no work authority close. |
+| R202 | Routed runtime-observation carrier correction | Issued `HR-V0-RUNTIME-OBS-CARRIER-P0.2`; replaced the compound 4+2 connector candidate with exact six-position Phoenix Contact item 1751280 and added a 120 x 90 mm four-layer PCB candidate. Root plus four sheets, 29 mounted parts, four holes, 143 tracks, 56 vias and three internal zones check at ERC/DRC 0 with pad/net parity. Fourteen physical-evidence holds remain; no CAM, fabrication, connection, safety or energization authority exists. |
+| R203 | Raspberry Pi diagnostic-input allocation correction | Issued `HR-V0-RUNTIME-OBS-PINMAP-P0.1`; bound JLOGIC1 to Pi physical pins 17/20/15/16/18/22, allocated active-high GPIO22-25 to SR1/SRA1/K1/K2, preserved heartbeat GPIO17/pin 11 plus pin 6 return, and recorded JTAG/DPI conflicts. Host preflight remains fail-closed at exit 78 with 36 holds. Eight local physical/target/review holds remain; no mate, harness, installed gpiochip/readback, HIL, safety credit or work authority exists. |
+| R204 | Raspberry Pi observation carrier and harness correction | Issued `HR-V0-PI-OBS-CARRIER-P0.1`; added exact held Samtec `ESQ-120-33-G-D` and Phoenix Contact `1751280` identities, a native 65 x 56.5 mm two-layer passive carrier with six routed nets and 34 deliberate no-copper header positions, plus six exact Belden 3051 color/order-code stock candidates. ERC/DRC are 0; ten received-fit/DFM/stack/case/harness/target/physical/review holds remain open. No CAM, procurement, fabrication, assembly, connection, powered-test, safety or energization authority exists. |
+| R205 | Pi observation panel and harness integration correction | Issued `HR-V0-PI-OBS-INTEGRATION-P0.1`; detected that the R161 DXL candidates already consume the lower reserve, rotated R202 into a nominal 90 x 120 mm compute-column placement, transformed its two connectors and four holes, checked ten planar clearances and source-matched eleven field/compute conductors. The 335.4 mm compute and 276.0 mm field values are geometric screens only; every cut length remains `SELECTION REQUIRED`. Thirteen holds and sixteen unexecuted acceptance rows remain open. No procurement, fabrication, assembly, connection, powered-test, safety or energization authority exists. |
+| R206 | Connected observation-system and exact field-harness candidate correction | Issued nonselected Electrical `V3-P1.16-OBSERVATION-CANDIDATE` and `HR-V0-OBSERVATION-FIELD-HARNESS-P0.1`. Corrected a generated root-hierarchy defect that initially omitted page 13 despite green ERC; final native ERC parses all fourteen pages at 0/0. Exact XT1/R202/R204/Pi mappings, five Belden 3051 wire/color candidates and Phoenix direct-strip envelopes are controlled. All cut lengths remain `SELECTION REQUIRED`; twelve holds and twelve acceptance rows remain open. No physical, safety or work authority closes. |
+| R207 | Exact observation compute-harness candidate correction | Issued `HR-V0-OBSERVATION-COMPUTE-HARNESS-P0.1`; promoted six existing R204 candidates into W14001-W14006 and source-matched R202 JLOGIC1, R204 JOBS1 and P1.16. Both-end Phoenix 1751280 direct-strip envelopes, a 322.5 mm rounded geometry screen and 12.06 mm2 bare-area input are controlled. All cut lengths, installed duct-fill results, Pi loading/back-power decisions and physical results remain open; thirteen holds and thirteen acceptance rows are unexecuted. No physical, safety or work authority closes. |
+| R208 | Observation compute-power and partial-power correction | Issued `HR-V0-OBSERVATION-COMPUTE-POWER-BOUNDARY-P0.1`; proved the one-source 3V3 topology, seven partial-power states and eight faults. The 5.00 mA steady-load and 2.364 V source-high figures remain screens, not Pi 5 approval. A new BLOCKER records that the current 1.00 kohm RSO candidate screens at 3.300-3.333 mA under a hard short against TI's 3 mA recommended output-current envelope. Pi 5 load/DC limits, RSO correction, margins, back-power and all fourteen acceptance results remain open. No physical, safety or work authority closes. |
+| R209 | Buffered observation-carrier correction — superseded | Introduced the four single-gate topology, but R210 found its 1.20 x 0.70 mm / 2.20 mm-row-spacing DBV lands did not match TI 4214839/K and its 99.63 uA GPIO short screen left negligible margin below TI's 100 uA characterization point. P0.3 is historical and not current for fabrication review. |
+| R210 | Source-audited push-pull observation-carrier correction - superseded | Issued `HR-V0-RUNTIME-OBS-CARRIER-P0.4` and corrected the R209 land-pattern and narrow-margin defects, but R211 found the hard-grounded OE and positive push-pull power-state path. P0.4 is historical and prohibited for current fabrication review. |
+| R211 | Open-drain observation-carrier power-state correction | Issued `HR-V0-RUNTIME-OBS-CARRIER-P0.5`; replaced all four G125 stages with exact `SN74LVC1G07DBVR`, added exact Panasonic `ERJ6ENF1002V` 10.0 kohm pull-ups ahead of the retained 39.0 kohm limiters and retained 330 kohm fail-low biases. The 2.598 V HIGH, 0.356 V LOW, 0.367 mA pull-up hard-short and 7.612 mA steady 3V3 values are analytical screens. Native ERC/DRC and the dedicated checker pass; Pi acceptance, power-state testing, physical evidence, qualified review and all work authority remain open. |
+| R212 | P0.5 system-integration and configuration reconciliation | Issued `V3-P1.17-OBSERVATION-P0.5-CANDIDATE` and `HR-V0-CONFIG-REC-P0.2`. Machine checks prove all 79 P1.15 core component definitions are unchanged, only OBS1/PIOBS1 are added, the P0.5 and Pi-carrier terminal maps match exactly, and the bound source/connector hashes are current. P1.16, observation P0.2-P0.4 and configuration P0.1 are historical. Seven affected gates remain partial; 15 configuration holds and 12 acceptance rows remain open. No work authority exists. |
+| R213 | Corrected custom-metal/BOM manufacturing baseline | Issued `HR-V0-MECH-BOM-BIND-P0.2`; replaced BOM-027's P0.7 manufacturing identities with the corrected P0.8 five-part STEP/DXF/drawing chain while retaining P0.7 only as the unchanged placement/collision basis. The binding controls 15 geometry identities, 26 drawing-explicit controls and 30 blank FAI operations. Twelve holds remain open; provider contact, quotation, purchase, fabrication, assembly, motion and energization remain prohibited. |
+| R214 | Sol-review intake and exact-part complete-arm integration | Logged the supplied review summary, imported all five exact P0.8 custom-part STEP identities into `HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE`, regenerated the complete STEP/GLB and nominal collision/clearance/stop evidence, and synchronized firmware, gates, build traveler and `HR-V0-CONFIG-REC-P0.3`. P0.7 is inherited analytical/kinematic basis only. Every physical, DFM, FAI, stopping, structural, continuous-duty, functional-safety, qualified-review and work-authorization hold remains open. |
+| R215 | Mechanical manufacturing qualified-review front door | Issued `HR-V0-MECH-MFG-REVIEW-P0.1`; collected the five current drawing/DXF/STEP sets, 26 controls, 30 blank FAI operations, nine interfaces, six fastener candidates, twelve DFM questions and twelve holds behind explicit precedence and authority rules. Current 80/20 source identities were refreshed; MISUMI/Accu live availability remains unresolved. No provider contact, quote, purchase, fabrication, assembly, connection, motion or energization authority exists. |
+| R216 | E2 configuration and software-authority evidence parity | Issued `HR-V0-E2-EVIDENCE-P0.2`; corrected obsolete P1.8/P0.6 future-use form defaults and the shifted release-candidate field, hash-bound seven inputs, controlled eight current identities and made all twenty hardware cases inseparable from software evidence requiring trajectory `NONE`, torque request `FALSE` and stale replay `REJECTED`. Seven holds remain open; EG-018 through EG-022 remain partial; zero cases are executed and no run is authorized. |
+| R217 | Current Boston fabrication-route reconciliation | Issued `HR-V0-BOSTON-FAB-ROUTE-P0.4`; bound five exact P0.8/R215/R173 inputs, screened six local/online/training/excluded routes against ten current official records, corrected the stale payload/motion statement and added nine unsent capability questions plus a no-file `NOT AUTHORIZED` template. No provider is selected, contacted, quoted or supplied geometry; EG-003/006/007 remain partial. |
+| R218 | Measurable HR-V0 safety-requirements candidate | Issued `HR-V0-SRS-P0.2` with fifteen candidate requirements, seven timing records, sixteen unexecuted validation scenarios, twelve open common-cause records and two blank qualified-allocation rows. The J2-positive E4 setup candidate is 200 ms / 2.000 degrees at no more than 10 degrees/s; automatic motion remains prohibited pending a separately accepted bound. No PLr/SIL, achieved performance, safety approval or work authority is claimed; EG-012/021/022/026 remain partial. |
+| R219 | Functional-safety reviewer route | Issued `HR-V0-FS-REVIEW-ROUTE-P0.1`; screened four official capability leads, required twelve competence/independence checks, ten phased scope records, ten unsent inquiry questions and sixteen unreceived deliverables. No provider is selected/contacted, no files or quote are authorized, and no PLr/SIL, physical validation, approval or work authority is claimed; EG-012/021/022/026 remain partial. |
+| R220 | Current control-panel configuration overlay | Issued `HR-V0-CP-CONFIG-P0.1`; retained P0.6 only as planning geometry, bound it to current P1.15 / PCB-P1.0 / DXL-STAR-P0.2 identities, proved 66/66 panel endpoint parity, and generated current 34-row BOM and 26-row layout views. Twelve installation holds remain open; no supplier, procurement, fabrication, wiring, connection or energization authority is claimed; EG-002/003/004/018/020 remain partial. |
+| R221 | Panel conductor and termination engineering basis | Issued `HR-V0-PANEL-COND-P0.1`; rejected 22 AWG at LC1D25BD control terminals, assigned a Belden 3057 16 AWG family/gauge candidate to 56 fixed internal endpoints, retained ten door-loom endpoints as `SELECTION REQUIRED`, and preserved all color/order-code, length, route, termination, DCR/voltage-drop, ampacity/bundling and protection holds. Twelve holds remain open; no procurement, fabrication, wiring, connection or energization authority is claimed; EG-003/004/010/015/018/020 remain partial. |
+| R222 | Explicit panel point-to-point topology candidate | Issued `HR-V0-PANEL-P2P-P0.1` and unaccepted `V3-P1.18-PANEL-TOPOLOGY-CANDIDATE`; converted 66 one-ended labels into 55 explicit two-ended conductors and five physical distribution/junction nodes with no hidden-splice assumption. P1.15 remains current; ten door conductors plus every exact color/order code, length, route, termination, sizing/protection calculation and physical result remain open. EG-002/003/004/010/014/015/018/020 remain partial; no wiring or energization authority exists. |
+| R223 | Panel node placement, stock and configuration reconciliation | Issued `HR-V0-PANEL-NODE-PLACEMENT-P0.1` and `HR-V0-CONFIG-REC-P0.4`; placed five node envelopes on candidate DR5/WD4, retained positive pre-kerf rail/duct stock arithmetic, and expanded the covered BOM to 95 groups. Thirty-seven route screens are explicitly not cut lengths. P1.15 remains current and P1.18 unaccepted; twelve placement and 26 configuration holds remain open; no procurement, cutting, drilling, wiring, connection or energization authority exists. |
+| R224 | Native connected-ECAD web review surface | Issued `HR-V0-ECAD-WEB-REVIEW-P0.1`; SHA-bound thirteen actual P1.18 `.kicad_sch` files to thirteen KiCad SVG exports and added search, sheet-addressable navigation, zoom, direct SVG access and focus mode. ERC remains 0/0 but proves connectivity/annotation only. P1.15 remains current, P1.18 unaccepted, eight review/selection/physical/configuration holds remain open, and no physical or energization authority exists. |
+| R225 | Source-bound watchdog permit topology proof | Issued `HR-V0-WD-PERMIT-TOPOLOGY-P0.1`; proves from P1.18 native source/netlist/wire parity that KWD1 and KWD2 ordinary NO contacts are in series before `SR1:A1`, with no KWD endpoint in either direct E-stop input loop. Nine Boolean screens retain the dual-weld/common-cause hazard. Both stages have zero safety credit, P1.18 remains unaccepted, eight holds and EG-004/012 remain partial, and no physical or energization authority exists. |
+| R226 | Current-baseline K1/K2 application binding | Issued `HR-V0-K1K2-APP-P0.3`; proves 16 coil/EDM and 16 six-pole power-path terminal/net rows are identical between current P1.15 and unaccepted P1.18, and rechecks the current Schneider catalog/product/FAQ identities. It closes the stale P1.13 dossier binding only. Eleven holds and EG-002/004/013 remain partial; measured DC break/regeneration duty, protection, Schneider disposition, received/loaded/stopping/endurance evidence and qualified review remain open. |
+| R227 | E2 control-only grounding/bonding boundary | Issued `HR-V0-E2-GND-BOUNDARY-P0.1`; binds 26 exact source/frame/shield endpoint rows across P1.15/P1.18, records the intentional `SAFETY_0V` 41-to-49 `XD0` delta, and freezes an external-factory-adapter/ELV-only enclosure boundary. `PSA1`, actuator power, `SP1` and `JFRAME1` remain absent/DNP. Fifteen evidence rows are unexecuted, twelve holds remain open, and EG-001/004/016/022 remain partial. |
+| R228 | E2 configuration-bound pre-power verification candidate | Issued `HR-V0-E2-PREPOWER-P0.1`; maps all 55 unaccepted P1.18 conductors into exact continuity rows, with 45 fixed-internal method candidates and ten blocked moving-door rows, plus 16 isolation pairs, eight prohibited-pending-qualification backfeed cases and twelve live-dead-live absence-of-voltage points. Every numeric limit and result remains blank/unreleased, ten holds remain open, P1.18 remains unaccepted and EG-004/019/020/022 remain partial. |
+| R229 | P1.18 configuration-disposition dossier | Issued `HR-V0-P118-DISPOSITION-P0.1`; proves all 77 original BOM rows, 308 original terminal/net rows, 106 named nets, 269 semantic wire-table rows and 63 unresolved records are preserved. P1.18 adds only five terminal devices and 32 controlled node-terminal rows on five existing nets. Nine child sheets are canonically identical after narrow administrative normalization. P1.15 remains current, P1.18 remains unaccepted, seven holds remain open and EG-002/004/020 remain partial. |
+| R230 | P1.19 visual-correction and semantic-parity pass | Issued unaccepted `V3-P1.19-VISUAL-CORRECTION-CANDIDATE` and `HR-V0-P119-VISUAL-CORRECTION-P0.1`; reflows sheets 01/02/03/07/10 to A2, bounds every title block and records thirteen project visual passes. Machine checks prove 84 components, 106 native nets, five synchronized schedules and native netlist membership are unchanged; KiCad 10.0.5 ERC remains 0/0. P1.15 remains current; P1.18/P1.19 remain unaccepted; seven holds and EG-002/004/020 remain partial. |
+| R231 | Sol R12 blocker reconciliation against R230 | Issued `HR-V0-SOL-R12-STATUS-R231`; maps every B-001 through B-018 finding to current evidence and remaining closure needs. Twelve were partially addressed/open, B-005 remained the HR-V0 source-level safety-architecture blocker, five remained HR-30 walking blockers and zero had qualified closure. This is project-owned reconciliation, not a new independent review. |
+| R232 | P1.20 dual-SRA1-input watchdog-interlock correction | Issued unaccepted `V3-P1.20-WATCHDOG-INTERLOCK-CANDIDATE` and `HR-V0-P120-WD-INTERLOCK-P0.1`. Exactly seven terminal/net and seven native-net-membership changes place KWD1 and KWD2 on separate SRA1 input returns; all 84 component identities remain unchanged and ERC is 0/0. Twelve fault screens show either single weld is defeated while three dual/common-cause cases remain hazardous. Nine holds and EG-002/004/012/020/021/022 remain partial. P1.15 stays current; P1.20 has zero safety credit and no work authority. |
+| R233 | P1.20 PNOZ/KWD application screen | Issued `HR-V0-PNOZ-KWD-APP-P0.2`; source-bound 31 P1.20 path terminals, 12 electrical screens, 10 fault cases and nine open holds. The proposed Pilz 24 V/50 mA input clears Phoenix item 2967060's published minimum-load and inrush envelopes on paper. B-005 becomes partially addressed/open, not closed. P1.15 stays current; P1.20 remains unaccepted with zero safety credit and no work authority. |
+| R234 | P1.21 SRA1-supply watchdog correction | Issued unaccepted `V3-P1.21-SRA1-SUPPLY-WATCHDOG-CANDIDATE` and `HR-V0-P121-SRA1-SUPPLY-WD-P0.1`. Exactly seven terminal changes remove KWD1/KWD2 from PNOZ input loops, restore direct SR1-to-SRA1 inputs and series-gate only SRA1 A1. Fourteen fault cases, nine supply/contact screens and eleven holds retain manufacturer, routing, physical, PLr/SIL and qualified-review closure. KiCad ERC is 0/0. P1.15 remains current; P1.21 has zero safety credit and no work authority. |
+| R235 | P1.21 manufacturer and no-load evidence route | Issued `HR-V0-P121-APP-EVID-P0.1` with 13 exact unsent Pilz/Phoenix questions, six official US routes, 12 response controls, ten authorization prerequisites, 15 required signals, 18 unexecuted tests and 14 open holds. No message was sent, no response or test exists, no dynamic limit was inferred, P1.15 remains current and P1.21 remains unaccepted with zero watchdog safety credit and no work authority. |
+| R236 | Runtime evidence-log and calibration-route correction | Issued `HR-V0-EVID-LOG-P0.1`; requires an exclusive configuration-bound JSONL sink, fourteen event classes and per-record SHA-256 chaining; tightens the host source period to no more than 10 ms; and adds ten clock rows, twelve blank calibrations, fifteen unexecuted tests and fifteen open holds. Seventy-five supervisor/logging tests pass, but target timing, UTC, storage, calibration, HIL, qualified acceptance and all work authority remain open. Sol M-022 is partially addressed/open with zero safety credit. |
+| R237 | Lot A source reconciliation and purchase-blocking variant correction | Issued `HR-V0-LOT-A-SRC-P0.1`; source-reconciles two XM540, two H101 and two S102 articles at a $1,182.22 visible subtotal. The official XM540 sales page title/TTL field requests `-T` while its package table names `-R`, so ordering is blocked pending written SKU binding. Four anomalies, eight unsent questions, ten open decision gates and twelve unexecuted receiving rows preserve zero procurement or work authority. |
+| R238 | P1.21 consolidated native-KiCad review baseline | Proved P1.21 transitively inherits the P1.19 readable layout and P1.18 panel nodes; exposed all thirteen P1.21 sheets in one interactive guide; and controlled the six keyed P1.19-to-P1.21 terminal changes. P1.15 remains current, P1.21 remains unaccepted, eleven holds remain open and the supplied Sol text remains the existing R12 review rather than a new round. |
+| R239 | P1.21 project visual review | Freshly inspected complete P1.21 pages 2 and 3 after the logic change and inherited the completed P1.19 project visual disposition for the other eleven pages. All thirteen receive a project visual PASS with zero observed clipping/collision findings. Only the project-owned visual hold closes; ten substantive holds and all independent/qualified decisions remain open. |
+| R240 | P1.21 protected-routing candidate | Corrected seven P0.7 route meanings against P1.21, defined nine coordinate-bound planning routes and screened fourteen watchdog/supply-hot versus credited-input pairs with zero nominal centerline crossings. Nine physical/selection/qualified holds remain open; no route, P1.21 promotion or work authority is released. |
+| R241 | P1.21 segregation-hardware and configuration P0.5 candidate | Replaced an undocumented divider concept with exact held Phoenix Contact item 3240187; placed a 369.8 mm WD5 envelope with nominal 10 mm/20 mm gaps; rejected the 20.8 mm existing-stock residual; exposed the WD5/WD2 junction, seven physical conductors, fill, thermal, separation and installation as open; and reconciled 96 BOM groups through `HR-V0-CONFIG-REC-P0.5`. P1.15 remains current, P1.21 unaccepted and no procurement or work authority exists. |
+| R242 | P1.21 conductor and duct-occupancy candidate | Assigned held Belden 3057 BL005 to the seven planning routes and reproduced geometry-only WD5/WD2 fill screens while retaining color, DCR, cut, protection, thermal, termination, physical and qualified-review holds. `BOM-097` and configuration P0.6 reconcile the historical 97-group state; P1.15 remains current and P1.21 remains unaccepted. |
+| R243 | P1.21 endpoint-termination candidate | Mapped fourteen endpoints to held Phoenix Contact ferrule candidates: twelve item 3200043 insulated 8 mm and two item 3200263 uninsulated 7 mm. Bound exact crimper, stripper and torque-driver candidates; limited the 40 N/60 s criterion to sacrificial crimp coupons; retained exact-bit, calibration, received-material, installed-retention, terminal-application and qualified-review holds; and reconciled 98 BOM groups through `HR-V0-CONFIG-REC-P0.7`. P1.15 remains current, P1.21/R243 remain unaccepted and no work authority exists. |
+| R244 | P1.21 nominal DCR/drop and bit-evidence boundary | Converted the current manufacturer-nominal 4.4 ohm/1000 ft at 20 C to 0.014435695538 ohm/m and calculated four one-way centerline conductor-only planning drops while leaving C-05 uncalculated. Confirmed that current Pilz and Phoenix sources do not justify a purchase-ready exact bit; Phoenix 1212568 remains only the strongest held relay-terminal candidate. Twelve holds remain; the 98-group BOM is unchanged; P1.15 remains current and P1.21/R244 remain unaccepted. |
+| R245 | Integrated custom-part and firmware mechanical-source binding correction | Corrected all five custom-part rows to the integrated P0.8 arm without changing any of fifteen artifact hashes; bound both firmware configurations to the same eight-record SHA-256 source manifest; and reconciled P0.9. Physical/HIL acceptance remains absent, motion remains fail-closed, and shop-document/DFM/FAI/qualified-review work remains open. |
+| R246 | P1.21 static 24 V control-rail budget | Bound GlobTek as the 24 V control source, excluded the separate 12 V Mean Well actuator source, traced eight terminal-addressed loops and reproduced six raw-headroom screens. Eighteen missing inputs, ten open holds and seven unexecuted acceptances keep every installed margin `NOT CALCULABLE`; P1.21 remains unaccepted. |
+| R247 | Mechanical shop, RFQ and unpowered assembly candidate | Corrected the five current custom-part drawing identifiers, warning and title blocks without changing geometry; bound five drawings, five DXFs and five STEP files into an exact unsent RFQ payload; and defined 21 zero-energy assembly steps plus nine interface checks. Formal datum/GD&T, provider DFM, FAI, physical fit/proof, exact joint controls and every work authority remain open. |
+| R248 | Complete moving-system mass, COM and inertia evidence contract | Mapped all 17 moving-mass ledger rows to blank received-evidence records; added 170 repeat slots, four assembly mass closures, eight two-axis COM rows, four calibrated-bifilar records and six inertia rows. No physical result exists; B-010, R247-H11 and all work authority remain open. |
+| R249 | Accepted-property propagation and stale-analysis control | Added a six-row fail-closed accepted-property compiler, twelve downstream consumers, eight prohibited stale planning inputs and a ten-step rebuild sequence. No accepted property or downstream analysis exists; zero blockers or gates close. |
+| R250 | Datum/GD&T qualified-review proposal | Proposed five functional datum schemes, twenty FCF candidates and inspection uncertainty controls. Geometry is unchanged; formal GD&T and fabrication authority remain false. |
+| R251 | First physical shop-session contract | Bound ten purchase gates, eight supplier questions, six articles, seven roles, six instruments, eight holds, eighteen operations and all twenty HSI records. Nothing is authorized or executed. |
+| R252 | Zero-energy joint-stack fixture candidate | Bound exact XM540/H101/S102 STEP sources to six nominal S102-face contact candidates, six keepouts, twelve fail-closed steps, twelve open selections and configuration P0.16. The fixture is not buildable; zero operations or acceptances are executed and nothing is authorized. |
+| R253 | Rank-6 3-2-1 joint-stack fixture correction | Found P0.1's six coplanar contacts have rank 3; prohibited that scheme; issued nominal rank-6 P0.2 with three A, two B and one C contacts, current ROBOTIS evidence, fourteen steps and fourteen selections. P0.2 remains not buildable and nothing is authorized. |
 
 See [the review ledger](docs/review-ledger.md) for dates, configurations, evidence, reviewer independence, and counting rules. No review has approved fabrication or energization.
 

@@ -1,0 +1,11 @@
+load,domain,candidate_voltage_v,operating_budget_w,short_peak_budget_w,basis_and_hold,status
+8 hip/knee actuators,ACTUATOR,14.8,64,320,simultaneous stall prohibited; measured gait duty required,P0.1 BUDGET - PROTECTION/CONDUCTOR/SOURCE SELECTION REQUIRED
+4 reduced ankle actuators,ACTUATOR,14.8,22,112,"XM430 candidate; reduction, continuous duty and measured gait proof required",P0.1 BUDGET - PROTECTION/CONDUCTOR/SOURCE SELECTION REQUIRED
+waist + shoulder pitch + elbows/shoulder roll,ACTUATOR,14.8,31,155,mixed XM540/XM430 candidate operating estimate; limits unverified,P0.1 BUDGET - PROTECTION/CONDUCTOR/SOURCE SELECTION REQUIRED
+wrists + grippers,ACTUATOR,12.0,8,32,XC330 candidates; grip-force and duty-cycle proof required,P0.1 BUDGET - PROTECTION/CONDUCTOR/SOURCE SELECTION REQUIRED
+head pan/tilt,ACTUATOR,14.8,2,8,candidate operating estimate,P0.1 BUDGET - PROTECTION/CONDUCTOR/SOURCE SELECTION REQUIRED
+Raspberry Pi 5 compute,COMPUTE,5.1,18,27,official 27 W supply envelope is not installed consumption evidence,P0.1 BUDGET - PROTECTION/CONDUCTOR/SOURCE SELECTION REQUIRED
+motion/safety controllers + buses,CONTROL,5.0,8,15,exact controller/transceiver selections required,P0.1 BUDGET - PROTECTION/CONDUCTOR/SOURCE SELECTION REQUIRED
+display/cameras/audio/network,HMI,5.0,14,30,exact devices and audio duty required,P0.1 BUDGET - PROTECTION/CONDUCTOR/SOURCE SELECTION REQUIRED
+conversion/cooling allowance,LOSS/MARGIN,MULTIRAIL,12,28,converter curves and installed thermal test required,P0.1 BUDGET - PROTECTION/CONDUCTOR/SOURCE SELECTION REQUIRED
+WHOLE ROBOT,TOTAL,12 V controlled tether main / regulated auxiliaries,179,727,"Tether-first RSP-500-12 evaluation candidate; 179 W operating = 14.92 A and 727 W short peak = 60.58 A at 12 V; 41.7 A supply limit requires deterministic caps. BLF-1209WS onboard-later candidate is 18 A continuous / 40 A for 2 s. Exact source, protection, wiring and validation remain open.",P0.1 BUDGET - NO SOURCE OR ENERGIZATION AUTHORITY

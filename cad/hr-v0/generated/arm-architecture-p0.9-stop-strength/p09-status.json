@@ -1,0 +1,34 @@
+{
+  "identifier": "HR-V0-ARM-ARCH-P0.9-STOP-STRENGTH-CANDIDATE",
+  "stop_identifier": "HR-V0-J2-STOP-P0.2",
+  "round": "R269",
+  "date": "2026-08-12",
+  "parent": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+  "unchanged_parts": [
+    "MV0-C01",
+    "MV0-C04",
+    "MV0-C05"
+  ],
+  "changed_parts": [
+    "MV0-C06",
+    "MV0-C07"
+  ],
+  "striker_width_mm": 12.0,
+  "catch_width_mm": 14.0,
+  "single_rail_stall_nominal_stress_mpa": 61.344,
+  "static_yield_ratio": 3.912,
+  "collision_sweep_executed": true,
+  "continuous_clearance_executed": true,
+  "selected": false,
+  "physical_evidence_complete": false,
+  "qualified_review_complete": false,
+  "procurement_authorized": false,
+  "fabrication_authorized": false,
+  "assembly_authorized": false,
+  "connection_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

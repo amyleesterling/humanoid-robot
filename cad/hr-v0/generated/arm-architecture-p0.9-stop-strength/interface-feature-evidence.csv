@@ -1,0 +1,3 @@
+feature_id,source,source_sha256,official_drawing_date,axis_direction,diameter_mm,selected_axes,verification,release_boundary
+FEAT-H104-001,cad/vendor/robotis/FR12-H104K.stp,75BA58D2668D7D25802D1277A5393445C4FB7A8C565566E56CE76FEFC0E59F7D,2017-08-31,local Y,2.5,"X=-11,Z=-8;X=11,Z=-8;X=-12,Z=6;X=12,Z=6",exact cylinder-axis subset present in controlled STEP,received frame fit and FAI required
+FEAT-S102-001,cad/vendor/robotis/FR13-S102K.stp,8203F33EF40C82BC503DB008C6A8D52DDEED25053960F2064DA2250332974C03,2026-01-07,local Z before project Rx90,2.5,"X=-16,Y=-8;X=-16,Y=8;X=16,Y=-8;X=16,Y=8",exact cylinder-axis subset present in controlled STEP,received frame fit and FAI required

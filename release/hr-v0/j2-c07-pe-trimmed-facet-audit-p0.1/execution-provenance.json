@@ -1,0 +1,11 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-TRIMMED-FACET-AUDIT-P0.1",
+  "generator_sha256": "abf00690b948b1903e6574af6af262e1114047e2b6ab59dc3f48d63c707ea869",
+  "preregistration_sha256": "d79ae4e992a5c1b6f8049117c3ecb4b63583b064ebfc7fb60a7fb9dc3aa983a8",
+  "r307_raw_linear_sha256": "bac4f5c3a35e6d4fd03a04cda093f966955726d571730a1cfcf552f86de46902",
+  "r307_raw_tet10_sha256": "fdfc2941fbc7d1e0dc6c303b2aa2dd4ab135b5bfd87ab3099d24701c1ede2b11",
+  "step_sha256": "fc4178769862d39bf1eee881391de2852e4fc0e4424af4e5c1814981737365de",
+  "underlying_surface_tolerance_mm": 1e-07,
+  "trim_containment": "gmsh.model.isInside on closest physical point for every candidate node",
+  "warning": "PRELIMINARY - CORRECTED EXACT TRIMMED-FACE OWNERSHIP AUDIT ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

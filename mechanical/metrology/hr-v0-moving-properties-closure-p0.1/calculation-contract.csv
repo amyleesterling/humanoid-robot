@@ -1,0 +1,7 @@
+calculation_id,measurand,formula,mandatory_preconditions,accepted_result_state,warning
+CALC-01,two-support COM,x = xA + (xB-xA) RB/(RA+RB),RA>0; RB>0; xA!=xB; reaction sum reconciles to independent mass,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+CALC-02,calibrated bifilar constant,"K=(I1-I2)/(A1-A2), A=(Mp+Mb)T^2",two accepted similar-mass calibration bodies; nonzero denominator; K>0,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+CALC-03,fixture inertia,Ip=K A1-I1,Ip>=0 and independently plausible,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+CALC-04,article inertia,Ia=K(Mp+Ma)Ta^2-Ip,accepted configuration; pure rotation; Ia>0,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+CALC-05,mass closure,delta=assembled mass-sum(received loose masses),qualified limit and combined uncertainty selected before result acceptance,NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+CALC-06,expanded uncertainty,U=k uc,"RSS standard uncertainty, units consistent, k and coverage statement documented",NOT EXECUTED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

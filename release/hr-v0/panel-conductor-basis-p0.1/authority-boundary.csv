@@ -1,0 +1,6 @@
+activity,permitted_by_this_package,boundary,warning
+internal source and gauge-fit review,TRUE,Digital engineering review only,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+"order wire, terminals, ferrules or fuses",FALSE,Exact selections and authorization absent,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+"cut, strip, crimp, terminate or label",FALSE,"From/to, length and process release absent","PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+install or connect,FALSE,Received and inspection evidence absent,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+"powered test, motion or energization",FALSE,Applicable gates and qualified validation remain open,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

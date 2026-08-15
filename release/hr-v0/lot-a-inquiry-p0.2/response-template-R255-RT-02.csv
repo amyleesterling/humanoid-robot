@@ -1,0 +1,5 @@
+question_id,route_id,category,question,required_evidence,state,provider_response,response_evidence_uri,reviewer_disposition
+R255-RQ-09,R255-RT-02,ASSEMBLY,Identify the current official X540/H101/S102 assembly documents and their revision/date.,Official document links and revision/date,UNSENT / NOT RECEIVED,,,NOT EXECUTED
+R255-RQ-10,R255-RT-02,HARDWARE,"State published screw designations, maximum mounting depths, spacer/thrust-washer placement, strength class and coating for this exact stack, or explicitly identify each item not specified.",Official document references or explicit not-specified response,UNSENT / NOT RECEIVED,,,NOT EXECUTED
+R255-RQ-11,R255-RT-02,TORQUE,"Is there a manufacturer-published temporary-assembly torque, locking-compound and screw-reuse instruction for this exact stack? Do not estimate.",Official document reference or explicit statement no value is supplied,UNSENT / NOT RECEIVED,,,NOT EXECUTED
+R255-RQ-12,R255-RT-02,BOUNDARY,"Confirm the responder name/role, response date and whether the answer is manufacturer-authorized technical guidance.",Dated attributable written response,UNSENT / NOT RECEIVED,,,NOT EXECUTED

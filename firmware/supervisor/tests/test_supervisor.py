@@ -15,23 +15,40 @@ from project_button_supervisor import (  # noqa: E402
     JointRule,
     MotionMode,
     OperatingState,
+    PlanarKinematicModel,
     Supervisor,
     SupervisorConfig,
     TrajectoryCommand,
     TrajectorySample,
+    canonical_model_hash,
 )
 
 
 JOINTS = {
-    "J1": JointRule(-20.0, 70.0, "deg", 1.0),
-    "J2": JointRule(15.0, 115.0, "deg", 1.0),
-    "GRIPPER": JointRule(20.0, 75.0, "mm", 1.0),
+    "J1": JointRule(-20.0, 70.0, "deg", 1.0, 1.0),
+    "J2": JointRule(15.0, 115.0, "deg", 1.0, 1.0),
+    "GRIPPER": JointRule(20.0, 75.0, "mm", 1.0, 1.0),
 }
 START = {"J1": 0.0, "J2": 30.0, "GRIPPER": 40.0}
 END = {"J1": 5.0, "J2": 35.0, "GRIPPER": 42.0}
+KINEMATIC_BLOCK = {
+    "identifier": "HR-V0-KIN-P0.1",
+    "model_type": "PLANAR_PARALLEL_X_AXES_CONSERVATIVE_RATE_BOUND",
+    "shoulder_to_elbow_m": 0.20255,
+    "elbow_to_h104_m": 0.12905,
+    "tool_reach_from_h104_m": 0.100,
+    "source_frame_revision": "HR-V0-FRAME-CONV-P0.1",
+    "mechanical_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+    "release_state": "ACCEPTED-FOR-GUARDED-HIL",
+    "acceptance_evidence_hash": "D" * 64,
+}
+KINEMATIC_HASH = canonical_model_hash(KINEMATIC_BLOCK)
 
 
 def config() -> SupervisorConfig:
+    kinematic_model = PlanarKinematicModel.from_mapping(
+        {"kinematic_model_hash": KINEMATIC_HASH, "kinematic_model": KINEMATIC_BLOCK}
+    )
     return SupervisorConfig(
         configuration_id="HR-V0-SUP-P0.3",
         configuration_hash="A" * 64,
@@ -41,13 +58,22 @@ def config() -> SupervisorConfig:
         setup_joint_speed_deg_s=10.0,
         automatic_gripper_speed_mm_s=20.0,
         setup_gripper_speed_mm_s=10.0,
+        maximum_sample_lateness_ms=10,
+        maximum_trajectory_samples=100,
+        maximum_trajectory_duration_ms=5000,
+        maximum_execution_slack_ms=100,
         joints=JOINTS,
-        kinematic_model_hash="B" * 64,
+        kinematic_model_hash=KINEMATIC_HASH,
+        kinematic_model=kinematic_model,
         mechanical_limit_binding={
             "limit_set_id": "HR-V0-LIMITS-P0.2",
-            "mechanical_revision": "HR-V0-MECH-P0.6",
-            "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.7",
+            "mechanical_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+            "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.8-DWG-INTEGRATED-CANDIDATE",
+            "kinematic_basis_revision": "HR-V0-ARM-ARCH-P0.7",
+            "custom_part_manufacturing_revision": "HR-V0-MECH-BOM-BIND-P0.3",
             "hard_stop_revision": "HR-V0-HS-P0.3",
+            "source_binding_identifier": "HR-V0-FW-MECH-SRC-BIND-P0.1",
+            "source_binding_manifest_sha256": "5adc34ff41f2f84b1d8cf60e2a95b6f93ebc8eba1f2ac6b93642dd429b237c8a",
             "release_state": "ACCEPTED-FOR-GUARDED-HIL",
             "acceptance_evidence_hash": "C" * 64,
         },
@@ -85,7 +111,7 @@ def command(sequence: int = 1, now_ms: int = 1000, mode: MotionMode = MotionMode
         validity_deadline_ms=now_ms + 100,
         execution_deadline_ms=now_ms + 250,
         configuration_hash="A" * 64,
-        kinematic_model_hash="B" * 64,
+        kinematic_model_hash=KINEMATIC_HASH,
         sender_state=OperatingState.ARMED.value,
         mode=mode,
         starting_positions=START,
@@ -96,6 +122,16 @@ def command(sequence: int = 1, now_ms: int = 1000, mode: MotionMode = MotionMode
 
 def armed_supervisor() -> Supervisor:
     supervisor = Supervisor(config(), lambda samples: [0.0, 0.10], session_id="SESSION-TEST")
+    supervisor.observe_hardware(snapshot(sr1_ready=False), 900)
+    supervisor.observe_hardware(snapshot(sr1_ready=True), 910)
+    supervisor.observe_hardware(
+        snapshot(sr1_ready=True, sra1_armed=True, k1_feedback=True, k2_feedback=True), 920
+    )
+    return supervisor
+
+
+def armed_supervisor_with(candidate: SupervisorConfig) -> Supervisor:
+    supervisor = Supervisor(candidate, lambda samples: [0.0, 0.10], session_id="SESSION-TEST")
     supervisor.observe_hardware(snapshot(sr1_ready=False), 900)
     supervisor.observe_hardware(snapshot(sr1_ready=True), 910)
     supervisor.observe_hardware(
@@ -130,6 +166,44 @@ class SupervisorTests(unittest.TestCase):
         self.assertEqual(supervisor.state, OperatingState.ARMED)
         self.assertFalse(supervisor.outputs.torque_enable_request)
 
+    def test_trajectory_sample_count_is_bounded(self) -> None:
+        supervisor = armed_supervisor_with(replace(config(), maximum_trajectory_samples=1))
+        self.assertFalse(supervisor.accept_trajectory(command(), 1000))
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+
+    def test_trajectory_duration_is_bounded(self) -> None:
+        supervisor = armed_supervisor_with(replace(config(), maximum_trajectory_duration_ms=199))
+        self.assertFalse(supervisor.accept_trajectory(command(), 1000))
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+
+    def test_execution_deadline_slack_is_bounded(self) -> None:
+        supervisor = armed_supervisor_with(replace(config(), maximum_execution_slack_ms=49))
+        self.assertFalse(supervisor.accept_trajectory(command(), 1000))
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+
+    def test_terminal_tolerance_is_independent_from_start_tolerance(self) -> None:
+        joints = {**JOINTS, "J1": JointRule(-20.0, 70.0, "deg", 1.0, 0.1)}
+        supervisor = Supervisor(
+            replace(config(), joints=joints),
+            lambda samples: [0.0 for _ in samples],
+            session_id="SESSION-TEST",
+        )
+        supervisor.observe_hardware(snapshot(sr1_ready=False), 900)
+        supervisor.observe_hardware(snapshot(sr1_ready=True), 910)
+        supervisor.observe_hardware(
+            snapshot(
+                sr1_ready=True,
+                sra1_armed=True,
+                k1_feedback=True,
+                k2_feedback=True,
+                positions={**START, "J1": 0.5},
+            ),
+            920,
+        )
+        self.assertTrue(supervisor.accept_trajectory(command(), 1000))
+        self.assertFalse(supervisor.complete_trajectory(1200, True, {**END, "J1": 5.5}))
+        self.assertEqual(supervisor.fault, FaultCode.EXECUTION_FAILED)
+
     def test_fault_invalidates_target_and_hardware_restore_cannot_resume(self) -> None:
         supervisor = armed_supervisor()
         self.assertTrue(supervisor.accept_trajectory(command(), 1000))
@@ -151,6 +225,40 @@ class SupervisorTests(unittest.TestCase):
         self.assertTrue(supervisor.acknowledge_fault(1050, operator_acknowledged=True))
         self.assertEqual(supervisor.state, OperatingState.RESET_REQUIRED)
         self.assertFalse(supervisor.outputs.torque_enable_request)
+
+    def test_dropout_rearm_rejects_stale_replay_and_requires_new_sequence(self) -> None:
+        supervisor = armed_supervisor()
+        stale = command(sequence=1, now_ms=1000)
+        self.assertTrue(supervisor.accept_trajectory(stale, 1000))
+
+        supervisor.observe_hardware(snapshot(estop_healthy=False), 1010)
+        self.assertIsNone(supervisor.active_command)
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+
+        supervisor.observe_hardware(snapshot(sr1_ready=False), 1020)
+        self.assertTrue(supervisor.acknowledge_fault(1030, operator_acknowledged=True))
+        supervisor.observe_hardware(snapshot(sr1_ready=False), 1040)
+        supervisor.observe_hardware(snapshot(sr1_ready=True), 1050)
+        supervisor.observe_hardware(
+            snapshot(sr1_ready=True, sra1_armed=True, k1_feedback=True, k2_feedback=True), 1060
+        )
+
+        self.assertEqual(supervisor.state, OperatingState.ARMED)
+        self.assertIsNone(supervisor.active_command)
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+        replay = replace(
+            stale,
+            source_time_ms=1070,
+            validity_deadline_ms=1170,
+            execution_deadline_ms=1320,
+        )
+        self.assertFalse(supervisor.accept_trajectory(replay, 1070))
+        self.assertIn("duplicate or out-of-order sequence", supervisor.events[-1].detail)
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+
+        fresh = command(sequence=2, now_ms=1080)
+        self.assertTrue(supervisor.accept_trajectory(fresh, 1080))
+        self.assertTrue(supervisor.outputs.torque_enable_request)
 
     def test_arm_without_observed_safe_ready_latches_fault(self) -> None:
         supervisor = Supervisor(config(), lambda samples: [0.0 for _ in samples], session_id="SESSION-TEST")
@@ -247,13 +355,18 @@ class SupervisorTests(unittest.TestCase):
         self.assertFalse(supervisor.outputs.torque_enable_request)
 
     def test_stale_120_degree_limit_or_revision_mismatch_fails_closed(self) -> None:
-        stale_joints = {**JOINTS, "J2": JointRule(15.0, 120.0, "deg", 1.0)}
+        stale_joints = {**JOINTS, "J2": JointRule(15.0, 120.0, "deg", 1.0, 1.0)}
         self.assertFalse(replace(config(), joints=stale_joints).selections_closed)
         stale_binding = {
             **config().mechanical_limit_binding,
             "arm_architecture_revision": "HR-V0-ARM-ARCH-P0.5",
         }
         self.assertFalse(replace(config(), mechanical_limit_binding=stale_binding).selections_closed)
+        stale_source_binding = {
+            **config().mechanical_limit_binding,
+            "source_binding_manifest_sha256": "0" * 64,
+        }
+        self.assertFalse(replace(config(), mechanical_limit_binding=stale_source_binding).selections_closed)
 
     def test_unaccepted_mechanical_limit_evidence_fails_closed(self) -> None:
         unreleased = {
@@ -290,6 +403,30 @@ class SupervisorTests(unittest.TestCase):
         supervisor.observe_hardware(snapshot(sr1_ready=False), 1000)
         self.assertEqual(supervisor.fault, FaultCode.HARDWARE_PERMIT_DROPPED)
         self.assertFalse(supervisor.outputs.torque_enable_request)
+
+    def test_unknown_control_power_remains_power_off_and_removes_heartbeat(self) -> None:
+        supervisor = Supervisor(config(), lambda samples: [0.0 for _ in samples], session_id="SESSION-TEST")
+        supervisor.observe_hardware(snapshot(control_power=None), 0)
+        self.assertEqual(supervisor.state, OperatingState.POWER_OFF)
+        self.assertFalse(supervisor.outputs.heartbeat_allowed)
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+        self.assertIn("unavailable", supervisor.events[-1].detail)
+
+    def test_unknown_health_observation_inhibits_heartbeat_and_motion(self) -> None:
+        supervisor = Supervisor(config(), lambda samples: [0.0 for _ in samples], session_id="SESSION-TEST")
+        supervisor.observe_hardware(snapshot(edm_healthy=None), 0)
+        self.assertEqual(supervisor.state, OperatingState.SAFE_DISABLED)
+        self.assertFalse(supervisor.outputs.heartbeat_allowed)
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+        self.assertIn("edm_healthy", supervisor.events[-1].detail)
+
+    def test_unknown_watchdog_observation_is_not_coerced_healthy(self) -> None:
+        supervisor = Supervisor(config(), lambda samples: [0.0 for _ in samples], session_id="SESSION-TEST")
+        supervisor.observe_hardware(snapshot(watchdog_healthy=None), 0)
+        self.assertEqual(supervisor.state, OperatingState.SAFE_DISABLED)
+        self.assertIsNone(supervisor.fault)
+        self.assertFalse(supervisor.outputs.torque_enable_request)
+        self.assertIn("unavailable", supervisor.events[-1].detail)
 
 
 if __name__ == "__main__":

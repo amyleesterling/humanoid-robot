@@ -1,0 +1,280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:project-button:hr-v0:j2:raw-run-manifest:p0.1",
+  "title": "HR-V0 J2 raw global/submodel/HPC run manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "stage",
+    "case_id",
+    "part",
+    "level",
+    "environment",
+    "generator",
+    "hardware",
+    "coordinate_transform",
+    "geometry",
+    "mesh",
+    "solver",
+    "loads",
+    "restraints",
+    "zones",
+    "probes",
+    "sections",
+    "transfers",
+    "raw_artifacts",
+    "authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "HR-V0-J2-RAW-RUN-MANIFEST-P0.1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stage": {
+      "enum": [
+        "A_GLOBAL_SCOUT",
+        "B_CURVED_GLOBAL",
+        "C_LOCAL_SUBMODEL",
+        "D_HPC_CONFIRMATION"
+      ]
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "part": {
+      "enum": [
+        "C06",
+        "C07"
+      ]
+    },
+    "level": {
+      "enum": [
+        "P2C",
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ]
+    },
+    "environment": {
+      "type": "object",
+      "required": [
+        "os",
+        "python",
+        "packages_lock_path",
+        "packages_lock_sha256"
+      ],
+      "additionalProperties": true
+    },
+    "generator": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "git_commit",
+        "parameters_path",
+        "parameters_sha256"
+      ],
+      "additionalProperties": true
+    },
+    "hardware": {
+      "type": "object",
+      "required": [
+        "hostname_or_scheduler_id",
+        "cpu",
+        "logical_cores",
+        "ram_bytes",
+        "accelerator",
+        "wall_seconds",
+        "peak_rss_bytes"
+      ],
+      "additionalProperties": true
+    },
+    "coordinate_transform": {
+      "type": "object",
+      "required": [
+        "source_frame",
+        "target_frame",
+        "matrix_4x4",
+        "matrix_sha256",
+        "moment_datum_mm"
+      ],
+      "additionalProperties": true
+    },
+    "geometry": {
+      "type": "object",
+      "required": [
+        "step_path",
+        "step_sha256",
+        "geometry_order",
+        "entity_signature_register_sha256"
+      ],
+      "additionalProperties": true
+    },
+    "mesh": {
+      "type": "object",
+      "required": [
+        "nodes_path",
+        "connectivity_path",
+        "quality_path",
+        "signed_jacobian_path",
+        "metric_specific_h_path"
+      ],
+      "additionalProperties": true
+    },
+    "solver": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "element",
+        "preconditioner",
+        "residual_history_path",
+        "correction_history_path"
+      ],
+      "additionalProperties": true
+    },
+    "loads": {
+      "type": "object",
+      "required": [
+        "source_sha256",
+        "loaded_entity_signatures",
+        "resultant_n",
+        "moment_n_mm",
+        "quadrature_path"
+      ],
+      "additionalProperties": true
+    },
+    "restraints": {
+      "type": "object",
+      "required": [
+        "entity_signatures",
+        "reaction_path",
+        "free_residual_path"
+      ],
+      "additionalProperties": true
+    },
+    "zones": {
+      "type": "object",
+      "required": [
+        "definition_sha256",
+        "membership_path",
+        "clipped_measure_path",
+        "statistics_path",
+        "singularity_path"
+      ],
+      "additionalProperties": true
+    },
+    "probes": {
+      "type": "object",
+      "required": [
+        "definition_sha256",
+        "field_results_path"
+      ],
+      "additionalProperties": true
+    },
+    "sections": {
+      "type": "object",
+      "required": [
+        "definition_sha256",
+        "geometry_path",
+        "resultants_path"
+      ],
+      "additionalProperties": true
+    },
+    "transfers": {
+      "type": "object",
+      "required": [
+        "mode",
+        "donor_run_manifest_sha256",
+        "donor_mesh_sha256",
+        "cut_boundary_signature",
+        "interpolation_method",
+        "interpolation_tolerance_mm",
+        "field_path",
+        "force_conservation_relative_error",
+        "moment_conservation_relative_error",
+        "energy_conservation_relative_error",
+        "saint_venant_boundary_distances_mm",
+        "saint_venant_metric_path",
+        "saint_venant_acceptance_tolerances"
+      ],
+      "additionalProperties": true
+    },
+    "raw_artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "role",
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "numerical_convergence",
+        "capacity",
+        "fabrication",
+        "powered_testing",
+        "motion",
+        "energization",
+        "safety_credit"
+      ],
+      "properties": {
+        "numerical_convergence": {
+          "const": false
+        },
+        "capacity": {
+          "const": false
+        },
+        "fabrication": {
+          "const": false
+        },
+        "powered_testing": {
+          "const": false
+        },
+        "motion": {
+          "const": false
+        },
+        "energization": {
+          "const": false
+        },
+        "safety_credit": {
+          "const": false
+        }
+      }
+    }
+  }
+}

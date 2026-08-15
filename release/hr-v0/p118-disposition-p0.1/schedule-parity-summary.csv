@@ -1,0 +1,7 @@
+artifact,p115_rows,p118_rows,preserved_rows,added_rows,removed_or_modified_rows,disposition,warning
+BOM,77,82,77,5,0,five explicit topology nodes only,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+connector schedule,308,340,308,32,0,five-node terminal additions only,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+named-net schedule,106,106,106,0,0,5 nets gain node terminals; 101 identical,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+wire-number table,269,301,269,32,0,node terminal rows only; generated wire labels may differ,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+unresolved selections,63,63,63,0,0,63 rows identical and still unresolved,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+native ERC,0 errors / 0 warnings,0 errors / 0 warnings,parser/annotation/connectivity only,0,0,no electrical or safety approval,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

@@ -1,0 +1,27 @@
+{
+  "identifier": "HR-V0-J2-C07-FIDELITY-REMESH-PREREG-P0.1",
+  "source_component": "HR-V0-J2-C07-FIDELITY-REMESH-EVALUATION-P0.1",
+  "step_sha256": "fc4178769862d39bf1eee881391de2852e4fc0e4424af4e5c1814981737365de",
+  "source_raw_label": "R287 fidelity-remesh raw Tet10",
+  "source_raw_sha256": "79b60e88f825bfc78634800e69bcfa4f995900fe759a5fa05ee6c7a412a3ced1",
+  "surface_deviation_limit_mm": 0.005,
+  "failing_face_count": 0,
+  "failing_faces": [],
+  "successor_distance_field": {
+    "entities": "all 0 exact failing face signatures plus every exact owner-boundary curve",
+    "size_min_mm": 0.35,
+    "size_max_mm": 3.0,
+    "dist_min_mm": 0.0,
+    "dist_max_mm": 2.5,
+    "classification": "PRE-REGISTERED BOUNDED DIAGNOSTIC RETRY; NOT ACCEPTED PRODUCTION"
+  },
+  "acceptance": "all exterior facets uniquely mapped; max Q8 deviation <=0.005 mm; loaded geometry gates retained; no regression in R285 identity/SICN/Q4/Q6/Q8 gates",
+  "authority": {
+    "r279_c02": false,
+    "r278_h02": false,
+    "capacity": false,
+    "safety": false,
+    "work": false
+  },
+  "warning": "PRELIMINARY - TARGETED B-REP FIDELITY REMESH EVIDENCE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

@@ -1,0 +1,38 @@
+{
+  "identifier": "HR-V0-P121-TERM-P0.1",
+  "round": "R243",
+  "date": "2026-08-11",
+  "conductor_candidates": 7,
+  "endpoint_candidates": 14,
+  "eight_mm_insulated_endpoints": 12,
+  "seven_mm_uninsulated_endpoints": 2,
+  "exact_ferrule_order_codes": [
+    "3200043",
+    "3200263"
+  ],
+  "exact_primary_tool_candidates": [
+    "1212034",
+    "1212150",
+    "1212224"
+  ],
+  "crimp_coupon_force_N": 40,
+  "crimp_coupon_duration_s": 60,
+  "open_holds": 12,
+  "blank_inspections": 20,
+  "r242_h02_closed": false,
+  "received_crimp_evidence_exists": false,
+  "terminal_application_accepted": false,
+  "driver_bits_selected": false,
+  "tool_calibration_accepted": false,
+  "installed_termination_evidence_exists": false,
+  "qualified_review_complete": false,
+  "procurement_authorized": false,
+  "fabrication_authorized": false,
+  "assembly_authorized": false,
+  "connection_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

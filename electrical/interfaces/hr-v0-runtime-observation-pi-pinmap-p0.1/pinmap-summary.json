@@ -1,0 +1,25 @@
+{
+  "schema": "project-button-runtime-observation-pi-pinmap-v1",
+  "identifier": "HR-V0-RUNTIME-OBS-PINMAP-P0.1",
+  "date": "2026-08-10",
+  "compute": "Raspberry Pi 5 8GB candidate",
+  "observation_carrier": "HR-V0-RUNTIME-OBS-CARRIER-P0.2",
+  "gpio_numbering": "BCM/RP1 line offset within the selected RP1 gpiochip",
+  "heartbeat": {"gpio": 17, "physical_header_pin": 11, "return_physical_header_pin": 6},
+  "observation_inputs": {
+    "sr1_status": {"gpio": 22, "physical_header_pin": 15, "active_high": true},
+    "sra1_status": {"gpio": 23, "physical_header_pin": 16, "active_high": true},
+    "k1_status": {"gpio": 24, "physical_header_pin": 18, "active_high": true},
+    "k2_status": {"gpio": 25, "physical_header_pin": 22, "active_high": true}
+  },
+  "carrier_supply_physical_header_pin": 17,
+  "carrier_return_physical_header_pin": 20,
+  "gpiochip_path": "SELECTION REQUIRED FROM TARGET READBACK",
+  "mating_connector": "SELECTION REQUIRED",
+  "harness": "SELECTION REQUIRED",
+  "physical_hil": "NOT EXECUTED",
+  "functional_safety_credit": "NONE",
+  "connection_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

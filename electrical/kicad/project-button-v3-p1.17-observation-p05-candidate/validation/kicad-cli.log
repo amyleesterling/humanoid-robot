@@ -1,0 +1,34 @@
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\validation\project-button-v3-p1.17-observation-p05-candidate-erc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\project-button-v3-p1.17-observation-p05-candidate.kicad_sch"
+Found 0 violations
+Saved ERC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/electrical/kicad/project-button-v3-p1.17-observation-p05-candidate/validation/project-button-v3-p1.17-observation-p05-candidate-erc.rpt
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\validation\project-button-v3-p1.17-observation-p05-candidate.net" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\project-button-v3-p1.17-observation-p05-candidate.kicad_sch"
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export pdf --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-preliminary.pdf" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\project-button-v3-p1.17-observation-p05-candidate.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-preliminary.pdf'.
+Done.
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export svg --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\project-button-v3-p1.17-observation-p05-candidate.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-01 External listed sources and DC boundaries.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-02 Dual-channel E-stop and RESET eligibility.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-03 Distinct ARM and watchdog-gated SR1 supply.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-04 Contactor coils, mirror contacts and EDM.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-05 Redundant actuator-power interruption.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-06 Protected actuator branches and current-limiter carriers.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-07 Independent watchdog power, controller and drivers.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-08 Calculated dual-channel 24 V watchdog feedback.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-09 Compute and control terminals.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-10 U2D2, DXL star, actuator ports and bonding boundary.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-11 Watchdog PCB external connectors.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-12 Watchdog PCB test access.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\electrical\kicad\project-button-v3-p1.17-observation-p05-candidate\output\project-button-v3-p1.17-observation-p05-candidate-13 Runtime diagnostic observation interfaces.svg'.
+Done.
+
+exit=0

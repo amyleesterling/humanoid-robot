@@ -1,0 +1,109 @@
+(footprint "Panasonic_ERJ6_Reflow_Nominal"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" ""
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "47221209-7164-423c-abc0-58e5f10ddf2c")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Panasonic_ERJ6_Reflow_Nominal"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5aa74aa8-fec6-4327-80e2-b99f91d7906c")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4ef33df8-fdaf-4db3-8fa8-778053a466be")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5dd7d6e2-602f-4569-bd0c-9eae9c5f83d7")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -1.8 -0.72)
+		(end 1.8 -0.72)
+		(stroke
+			(width 0.18)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "9b57b4b4-2952-41d1-ab13-30e2d6625508")
+	)
+	(fp_line
+		(start -1.8 0.72)
+		(end -1.8 -0.72)
+		(stroke
+			(width 0.18)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "7e4079e6-9eaf-4261-8e31-026f815676ce")
+	)
+	(fp_line
+		(start 1.8 -0.72)
+		(end 1.8 0.72)
+		(stroke
+			(width 0.18)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "85f68ce1-5da7-44e4-be4a-e2c943c63963")
+	)
+	(fp_line
+		(start 1.8 0.72)
+		(end -1.8 0.72)
+		(stroke
+			(width 0.18)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "3408a7a4-7626-4cf4-9d34-1a017f93eb44")
+	)
+	(pad "1" smd roundrect
+		(at -1.175 0)
+		(size 1.15 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(thermal_bridge_angle 45)
+		(uuid "4ed65cc6-0500-4567-bd0f-cb847963ea65")
+	)
+	(pad "2" smd roundrect
+		(at 1.175 0)
+		(size 1.15 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(thermal_bridge_angle 45)
+		(uuid "a6b19818-7251-4f30-8332-682ca7e52659")
+	)
+	(embedded_fonts no)
+)

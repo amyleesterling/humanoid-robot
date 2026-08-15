@@ -1,0 +1,2 @@
+linear_element_tags_exact,linear_connectivity_exact,linear_sicn_exact,linear_node_tags_exact,linear_coordinate_max_delta_mm,element_zone_code_exact,tet10_element_tags_and_connectivity_exact,gate,warning
+True,True,True,True,0.0,True,True,PASS,"PRELIMINARY - CAD-RESIDENT CONSTRAINED CURVING EVIDENCE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

@@ -1,0 +1,27 @@
+{
+  "identifier": "HR-V0-J2-C07-CONFORMAL-ZONE-MESH-P0.1",
+  "generator_path": "tools/generate_hr_v0_j2_c07_conformal_zone_mesh_p01.py",
+  "generator_sha256": "ba749be73e4bce73c1e74a46698db777fcf09407dd98ce5844c1e5f8dc2a658a",
+  "r288_brep_path": "mechanical/analysis/hr-v0-j2-c07-exact-zone-partition-p0.1/c07-exact-zone-fragmented.brep",
+  "r288_brep_sha256": "7646e67482c06e45bb97f4fa2ddf8e3f159dc2e3645841f28237870b862c123c",
+  "r288_fragment_register_sha256": "ee50a7510c3f21d73bfd9b4398b8d317cd1da18d7737e3b3b5382277ffadada4",
+  "r288_zone_register_sha256": "8fc3b91e2fd61a49c3cafeff34ee85eaf70d0a3f3039e5a748f278ce99fa552b",
+  "python": "3.12.13 (main, Aug  7 2026, 02:26:41) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "gmsh_version": "4.15.2",
+  "numpy_version": "2.4.6",
+  "scipy_version": "1.18.0",
+  "gmsh_build": "Version: 4.15.2; License: GNU General Public License; Build OS: Windows64-sdk; Build date: 20260324; Build host: gmsh.info; Build options: 64Bit ALGLIB[contrib] ANN[contrib] Bamg Blas[petsc] Blossom Cgns DIntegration DomHex Eigen[contrib] Fltk Gmm[contrib] Hxt Jpeg Kbipack Lapack[petsc] MathEx[contrib] Med Mesh Metis[contrib] Mmg Mpeg Netgen Nii2mesh NoSocklenT ONELAB ONELABMetamodel OpenCASCADE OpenCASCADE-CAF OpenGL OpenMP OptHom PETSc Parser Plugins Png Post QuadMeshingTools QuadTri Solver TetGen/BR TinyXML2[contrib] Untangle Voro++[contrib] WinslowUntangler Zlib tinyobjloader; FLTK version: 1.3.11; PETSc version: 3.15.0 (real arithmtic); OCC version: 7.8.1; MED version: 4.1.0; Packaged by: nt authority system; Web site: https://gmsh.info; Issue tracker: https://gitlab.onelab.info/gmsh/gmsh/issues",
+  "general_num_threads": 1,
+  "algorithm3d": 1,
+  "linear_optimizer": "Netgen",
+  "high_order_optimizer": "NONE",
+  "size_fields_mm": {
+    "C07-PE": 0.25,
+    "C07-PF": 0.25,
+    "HOLE-SINGULAR-RIM": 0.25,
+    "HOLE-LIGAMENT": 0.4,
+    "C07-MATRIX": 3.0
+  },
+  "warning": "PRELIMINARY - EXACT-ZONE CONFORMAL MESH EVIDENCE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

@@ -1,0 +1,21 @@
+{
+  "identifier": "HR30-JOINT-FASTENER-CANDIDATES-P0.1",
+  "axis_count": 25,
+  "carrier_plate_count": 39,
+  "fastener_count": 156,
+  "m3_count": 24,
+  "m4_count": 40,
+  "m5_count": 92,
+  "planning_mass_kg": 0.554224112,
+  "steel_density_screen_kg_m3": 7850.0,
+  "all_carrier_holes_occupied": true,
+  "fasteners_selected": false,
+  "torque_preload_locking_validated": false,
+  "procurement_authority": false,
+  "fabrication_authority": false,
+  "assembly_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false,
+  "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

@@ -80,8 +80,15 @@ def main() -> None:
     require(startup.get("serial_open_before_preflight") is False and startup.get("gpio_access_before_preflight") is False, "preflight hardware-access prohibition changed")
     require(startup.get("stale_motion_resume") is False, "stale motion resume is no longer prohibited")
 
-    require(len(overlay) == 6, "overlay manifest must contain six proposed files")
-    require(len(holds) == 18 and all(row["current_state"] == "OPEN" for row in holds), "host hold register must contain eighteen open holds")
+    require(len(overlay) == 22, "overlay manifest must contain twenty-two proposed files")
+    require(
+        len(holds) == 18
+        and sum(row["current_state"] == "OPEN" for row in holds) == 16
+        and sum(row["current_state"] == "PARTIAL" for row in holds) == 2
+        and next(row for row in holds if row["hold_id"] == "HOST-004")["current_state"] == "PARTIAL"
+        and next(row for row in holds if row["hold_id"] == "HOST-006")["current_state"] == "PARTIAL",
+        "host hold register must contain sixteen open and two partial holds",
+    )
     require(len(execution) == 21, "host deployment execution template must contain twenty-one rows")
     require(all(row["authorization"] == "NOT_AUTHORIZED" and row["state"] == "NOT_EXECUTED" and not row["actual_result"] and not row["evidence_hash"] for row in execution), "execution template contains authority or result evidence")
     require(len(supplement) == 3 and {row["gate_id"] for row in supplement} == {"EG-003", "EG-017", "EG-021"}, "R171 gate supplement changed")
@@ -90,23 +97,56 @@ def main() -> None:
 
     proposed_sources = {row["source"] for row in overlay}
     require(proposed_sources == {
-        "host-deploy-config.json",
-        "project_button_host/__init__.py",
-        "project_button_host/preflight.py",
-        "project_button_host/launcher.py",
-        "systemd/project-button-supervisor.service",
-        "systemd/00-project-button.preset",
+        "software/host/hr-v0-host-deploy-p0.1/host-deploy-config.json",
+        "software/host/hr-v0-host-deploy-p0.1/project_button_host/__init__.py",
+        "software/host/hr-v0-host-deploy-p0.1/project_button_host/preflight.py",
+        "software/host/hr-v0-host-deploy-p0.1/project_button_host/launcher.py",
+        "software/host/hr-v0-host-deploy-p0.1/project_button_host/runtime_entrypoint.py",
+        "software/host/hr-v0-host-deploy-p0.1/project_button_host/gpiod_hardware.py",
+        "software/host/hr-v0-host-deploy-p0.1/project_button_host/unix_command_source.py",
+        "software/host/hr-v0-host-deploy-p0.1/systemd/project-button-supervisor.service",
+        "software/host/hr-v0-host-deploy-p0.1/systemd/00-project-button.preset",
+        "firmware/supervisor/project_button_supervisor/__init__.py",
+        "firmware/supervisor/project_button_supervisor/actuator_config.py",
+        "firmware/supervisor/project_button_supervisor/dynamixel_bus.py",
+        "firmware/supervisor/project_button_supervisor/evidence_log.py",
+        "firmware/supervisor/project_button_supervisor/kinematics.py",
+        "firmware/supervisor/project_button_supervisor/mechanical_binding.py",
+        "firmware/supervisor/project_button_supervisor/model.py",
+        "firmware/supervisor/project_button_supervisor/runtime.py",
+        "firmware/supervisor/project_button_supervisor/sdk_transport.py",
+        "firmware/supervisor/supervisor-config.json",
+        "firmware/supervisor/actuator-config.json",
+        "firmware/supervisor/compute-interface-config.json",
+        "firmware/supervisor/dynamixel-sdk-lock.json",
     }, "overlay source set changed")
     require(all(row["install_state"] == "NOT_AUTHORIZED" and row["warning"] == WARNING for row in overlay), "overlay contains an authorized row or changed warning")
+    require(len({row["target"] for row in overlay}) == 22, "overlay target path is duplicated")
+    require(all((ROOT / row["source"]).is_file() for row in overlay), "overlay contains an absent repository source")
     require(all(row["warning"] == WARNING for row in holds), "hold warning changed")
+
+    entrypoint = PACKAGE / "project_button_host/runtime_entrypoint.py"
+    require(config.get("runtime_entrypoint") == "/opt/project-button/lib/project_button_host/runtime_entrypoint.py", "runtime entrypoint target changed")
+    require(config.get("runtime_entrypoint_sha256") == hashlib.sha256(entrypoint.read_bytes()).hexdigest(), "runtime entrypoint hash binding changed")
+    gpio_backend = PACKAGE / "project_button_host/gpiod_hardware.py"
+    command_backend = PACKAGE / "project_button_host/unix_command_source.py"
+    require(config.get("gpio_backend") == "project_button_host.gpiod_hardware:factory", "controlled GPIO backend changed")
+    require(config.get("runtime_backend") == "project_button_host.unix_command_source:factory", "controlled command backend changed")
+    require(config.get("gpio_backend_sha256") == hashlib.sha256(gpio_backend.read_bytes()).hexdigest(), "GPIO backend hash binding changed")
+    require(config.get("runtime_backend_sha256") == hashlib.sha256(command_backend.read_bytes()).hexdigest(), "command backend hash binding changed")
+    require(config.get("runtime_cycle_period_ms") == "SELECTION REQUIRED", "unreleased runtime cycle period was populated")
+    require(config.get("gpio", {}).get("heartbeat_line") == 17, "source-bound heartbeat line changed")
+    require({name: item.get("line") for name, item in config.get("gpio", {}).get("inputs", {}).items()} == {"sr1_status": 22, "sra1_status": 23, "k1_status": 24, "k2_status": 25}, "source-bound observation lines changed")
+    require(all(item.get("active_high") is True for item in config.get("gpio", {}).get("inputs", {}).values()), "source-bound observation polarity changed")
+    require(config.get("gpio", {}).get("chip_path") == "SELECTION REQUIRED", "target gpiochip path was inferred")
 
     unit = (PACKAGE / "systemd/project-button-supervisor.service").read_text(encoding="utf-8")
     preset = (PACKAGE / "systemd/00-project-button.preset").read_text(encoding="utf-8")
     require(preset.strip() == "disable project-button-supervisor.service", "systemd service is not disabled by preset")
-    for invariant in ("Restart=no", "NoNewPrivileges=true", "ProtectSystem=strict", "ExecStart=/usr/bin/python3 /opt/project-button/lib/project_button_host/launcher.py"):
+    for invariant in ("Restart=no", "NoNewPrivileges=true", "ProtectSystem=strict", "RuntimeDirectory=project-button", "RestrictAddressFamilies=AF_UNIX", "IPAddressDeny=any", "ExecStart=/usr/bin/python3 /opt/project-button/lib/project_button_host/launcher.py"):
         require(invariant in unit, f"systemd invariant missing: {invariant}")
 
-    host_source = "\n".join((PACKAGE / "project_button_host" / name).read_text(encoding="utf-8") for name in ("preflight.py", "launcher.py"))
+    host_source = "\n".join((PACKAGE / "project_button_host" / name).read_text(encoding="utf-8") for name in ("preflight.py", "launcher.py", "runtime_entrypoint.py"))
     for forbidden in ("import gpiod", "import gpiozero", "import serial", "import dynamixel_sdk"):
         require(forbidden not in host_source, f"hardware backend import present: {forbidden}")
     require("subprocess.run" in host_source and host_source.find("evaluate(config_path") < host_source.find("subprocess.run"), "launcher does not visibly gate subprocess behind preflight")
@@ -125,16 +165,26 @@ def main() -> None:
     firmware_product = next((item for item in metadata.get("current_products", []) if item.get("domain") == "firmware"), {})
     require(IDENTIFIER in firmware_product.get("supporting_identifiers", []), "release metadata lacks host deployment identifier")
     require(IDENTIFIER in doc and IDENTIFIER in guide, "document or guide lacks identifier")
-    require("23" in doc and "eighteen" in doc.lower() and "21" in doc, "documented hold/evidence counts changed")
+    require("49" in doc and "sixteen" in doc.lower() and "two partial" in doc.lower() and "22" in doc and "21" in doc, "documented hold/evidence counts changed")
     require("font:16px" in guide and "font-size:16px" in guide and "font-size:14px" in guide, "guide text floors are not explicit")
     require(guide.count("data-filter=") == 4 and guide.count("data-kind=") == 4, "guide filter/card structure changed")
-    for token in ("disabled", "exit 78", "no GPIO", "no serial", "zero functional-safety credit", "not approved"):
+    for token in ("disabled", "exit 78", "GPIO allocation", "no serial", "zero functional-safety credit", "not approved"):
         require(token.lower() in (doc + guide).lower(), f"required boundary missing: {token}")
 
     if failures:
         raise SystemExit("HR-V0 host deployment P0.1 check failed:\n- " + "\n- ".join(failures))
-    print("HR-V0 host deployment P0.1 check passed: 6-file disabled overlay, 23 current preflight holds, 18 open closure holds, 21 unexecuted evidence rows, 6 source tests")
-    print("EG-017 remains PARTIAL; no target image, installation, GPIO/serial backend, HIL, motion or energization authority exists")
+    preflight = subprocess.run(
+        [sys.executable, str(PACKAGE / "project_button_host/preflight.py"), "--config", str(PACKAGE / "host-deploy-config.json")],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+    )
+    preflight_count = len(json.loads(preflight.stdout)["holds"]) if preflight.returncode == 78 else -1
+    require(preflight_count == 49, "committed preflight must expose exactly 49 holds")
+    if failures:
+        raise SystemExit("HR-V0 host deployment P0.1 check failed:\n- " + "\n- ".join(failures))
+    print("HR-V0 host deployment P0.1 check passed: 22-file disabled overlay, 49 current preflight holds, 16 open plus 2 partial closure holds, 21 unexecuted evidence rows, 16 host tests")
+    print("EG-017 remains PARTIAL; GPIO lines are source-bound but target gpiochip, physical interface, target image, installation, HIL, motion and energization authority do not exist")
     print(WARNING)
 
 

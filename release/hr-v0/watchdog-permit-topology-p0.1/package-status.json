@@ -1,0 +1,21 @@
+{
+  "identifier": "HR-V0-WD-PERMIT-TOPOLOGY-P0.1",
+  "round": "R225",
+  "date": "2026-08-11",
+  "bound_candidate": "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE",
+  "current_accepted_electrical": "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE",
+  "series_permit_contacts": 2,
+  "estop_input_loops_with_kwd_endpoint": 0,
+  "truth_table_cases": 9,
+  "open_holds": 8,
+  "reviewer_closure_claimed": false,
+  "functional_safety_credit": false,
+  "procurement_authorized": false,
+  "fabrication_authorized": false,
+  "assembly_authorized": false,
+  "connection_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

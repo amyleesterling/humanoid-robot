@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-button.local/schemas/hr30-action-request-p0.1.json",
+  "title": "HR-30 high-level action request P0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "request_id",
+    "issued_at_utc",
+    "expires_after_ms",
+    "action",
+    "parameters",
+    "constraints"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{8,64}$"
+    },
+    "issued_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_after_ms": {
+      "type": "integer",
+      "minimum": 50,
+      "maximum": 2000
+    },
+    "action": {
+      "enum": [
+        "SPEAK",
+        "LOOK_AT",
+        "OPEN_HAND",
+        "CLOSE_HAND",
+        "PRESENT_OBJECT",
+        "RELEASE_OBJECT",
+        "STAND_PREPARE",
+        "WEIGHT_SHIFT_REQUEST",
+        "STEP_REQUEST",
+        "STOP_REQUEST"
+      ]
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "side": {
+          "enum": [
+            "LEFT",
+            "RIGHT",
+            "BOTH",
+            "NONE"
+          ]
+        },
+        "target_frame": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "text": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "distance_m": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.1
+        },
+        "duration_s": {
+          "type": "number",
+          "minimum": 0.05,
+          "maximum": 10.0
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "supervised",
+        "require_confirmed_object",
+        "max_speed_scale"
+      ],
+      "properties": {
+        "supervised": {
+          "const": true
+        },
+        "require_confirmed_object": {
+          "type": "boolean"
+        },
+        "max_speed_scale": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 0.25
+        }
+      }
+    }
+  }
+}

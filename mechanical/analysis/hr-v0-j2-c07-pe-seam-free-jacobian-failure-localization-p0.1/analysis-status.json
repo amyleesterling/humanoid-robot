@@ -1,0 +1,22 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-SEAM-FREE-JACOBIAN-FAILURE-LOCALIZATION-P0.1",
+  "round": "R301",
+  "date": "2026-08-13",
+  "r300_status_sha256": "4f01991f69b95783767079dba2cd9309bf8514d10e2225ea43d5261ad1930812",
+  "r300_raw_sha256": "d92824fffc278c3af04daa115dce1fd071fe8ac69825e829a605b4a348023aab",
+  "failed_order_qp_pairs": 3,
+  "unique_failed_elements": 2,
+  "nearest_exact_face_clusters": 1,
+  "global_quality_gate_retained": true,
+  "monitored_zone_gate_retained": true,
+  "global_cells_below_0p20": 0,
+  "remesh_executed": false,
+  "structural_solution_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - SEAM-FREE JACOBIAN FAILURE LOCALIZATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

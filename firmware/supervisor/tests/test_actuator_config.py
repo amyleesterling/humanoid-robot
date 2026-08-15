@@ -13,7 +13,48 @@ from project_button_supervisor.actuator_config import ActuatorConfiguration, Act
 CONFIG_PATH = ROOT / "firmware" / "supervisor" / "actuator-config.json"
 
 
+def frozen_config() -> ActuatorConfiguration:
+    raw = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+    raw["external_branch_current_limit_a"] = 2.4
+    raw["transport"]["device"] = "TEST-ONLY"
+    raw["mechanical_limit_binding"]["release_state"] = "ACCEPTED-FOR-GUARDED-HIL"
+    raw["mechanical_limit_binding"]["acceptance_evidence_hash"] = "C" * 64
+    raw["current_envelope_binding"]["release_state"] = "ACCEPTED-FOR-GUARDED-HIL"
+    raw["current_envelope_binding"]["acceptance_evidence_hash"] = "D" * 64
+    for joint, item in raw["actuators"].items():
+        item["model_number"] = 1130 if item["model"].startswith("XM540") else 1020
+        item["firmware_version"] = 46
+        item["profile_velocity_raw_candidate"] = 20
+        item["profile_acceleration_raw_candidate"] = 5
+        item.update(
+            position_zero_raw=1000 if joint == "GRIPPER" else 2048,
+            position_zero_engineering=20.0 if joint == "GRIPPER" else 0.0,
+            raw_per_unit=10.0 if joint == "GRIPPER" else 4096.0 / 360.0,
+            direction=1,
+            minimum_raw=1000 if joint == "GRIPPER" else 0,
+            maximum_raw=1550 if joint == "GRIPPER" else 4095,
+            start_tolerance_raw=10,
+            minimum_input_voltage_raw=100,
+            maximum_input_voltage_raw=140,
+            maximum_temperature_c=60,
+        )
+    return ActuatorConfiguration(raw)
+
+
 class ActuatorConfigurationTests(unittest.TestCase):
+    def test_raw_conversion_round_trip_uses_released_calibration(self) -> None:
+        config = frozen_config()
+        for joint, engineering in {"J1": 10.0, "J2": 45.0, "GRIPPER": 50.0}.items():
+            raw = config.engineering_to_raw(joint, engineering)
+            recovered = config.raw_to_engineering(joint, raw)
+            tolerance = 1.0 / float(config.rules[joint].raw_per_unit)
+            self.assertLessEqual(abs(recovered - engineering), tolerance)
+
+    def test_repository_calibration_refuses_raw_readback_conversion(self) -> None:
+        config = ActuatorConfiguration.from_json(CONFIG_PATH)
+        with self.assertRaisesRegex(ValueError, "SELECTION REQUIRED"):
+            config.raw_to_engineering("J1", 2048)
+
     def setUp(self):
         self.config = ActuatorConfiguration.from_json(CONFIG_PATH)
 

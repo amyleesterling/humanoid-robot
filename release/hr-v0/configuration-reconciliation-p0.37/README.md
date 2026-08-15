@@ -1,0 +1,5 @@
+# HR-V0-CONFIG-REC-P0.37
+
+> **PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION**
+
+R273 indexes P0.12 CAD and linear FEA. P0.8 remains the current unaccepted mechanical identity; P0.12 is not selected.

@@ -1,0 +1,7 @@
+activity,permitted_by_this_package,condition,state,warning
+internal route research and qualified review,TRUE,Read-only review and controlled redlines,AVAILABLE,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+provider contact,FALSE,Separate named and signed capability-inquiry authority,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+file upload,FALSE,Separate scope-limited authority after qualified configuration review,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+quote request or commercial commitment,FALSE,Separate commercial authority,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+first-article or production fabrication,FALSE,"Accepted qualified review, provider response and separate written fabrication authority",PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+"assembly, connection, powered testing, motion or energization",FALSE,Outside this package and blocked by applicable gates,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

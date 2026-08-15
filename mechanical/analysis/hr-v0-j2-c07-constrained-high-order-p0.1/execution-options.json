@@ -1,0 +1,21 @@
+{
+  "General.NumThreads": 1,
+  "Mesh.Algorithm3D": 1,
+  "Mesh.MeshSizeMin": 0.7,
+  "Mesh.MeshSizeMax": 4.0,
+  "Mesh.MeshSizeFromPoints": 0,
+  "Mesh.MeshSizeFromCurvature": 0,
+  "Mesh.MeshSizeExtendFromBoundary": 1,
+  "linear_optimizer": "Netgen",
+  "element_order": 2,
+  "high_order_optimizer": "HighOrder",
+  "pre_restore_bijection_tolerance_mm": 0.1,
+  "post_restore_tolerance_mm": 1e-12,
+  "normalized_determinant_floor": 1e-10,
+  "linear_abs_determinant_floor": 1e-14,
+  "sampled_quadrature_orders": [
+    4,
+    6,
+    8
+  ]
+}

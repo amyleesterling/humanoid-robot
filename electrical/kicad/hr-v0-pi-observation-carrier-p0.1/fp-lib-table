@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "PB_PI_OBS")(type "KiCad")(uri "${KIPRJMOD}/PB_PI_OBS.pretty")(options "")(descr "R204 Pi observation carrier candidate footprints"))
+)

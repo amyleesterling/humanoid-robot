@@ -1,0 +1,21 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-RAIL-JACOBIAN-DISPOSITION-P0.1",
+  "round": "R305",
+  "date": "2026-08-13",
+  "r300_status_sha256": "e7fa1dea7a92f1bd0940b9076f89e8b1c681835e84967469626c05547b513d50",
+  "r301_status_sha256": "93b22f09c45dbdad983fe8e4facd00bbf703f1df2a50b852af2ce4ecda36ae26",
+  "r303_status_sha256": "adbbb10e62711700c5ab166f12640b9ea23567b3531b32772fc4452bd8f51c1a",
+  "r304_status_sha256": "e62eb6aae02f183498b3d5be4a2e7561690251e9ecf1c124958d436651087870",
+  "r303_face_refinement_rejected": true,
+  "r300_restored_as_next_method_baseline": true,
+  "next_method": "single constrained HighOrder optimization of R300 C07-MATRIX with exact corner restoration and mandatory B-Rep/facet/load revalidation",
+  "next_mesh_executed": false,
+  "structural_solution_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - RAIL-JACOBIAN SUCCESSOR DISPOSITION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

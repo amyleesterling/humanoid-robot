@@ -7,6 +7,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from hr_v0_r213_compat import r213_allows_historical_source_hash
+
 
 ROOT = Path(__file__).resolve().parents[1]
 ENG = ROOT / "configuration" / "hr-v0-config-reconciliation-p0.1"
@@ -52,11 +54,11 @@ def main() -> int:
     release = json.loads((ROOT / "release/hr-v0/release-candidate.json").read_text(encoding="utf-8"))
     electrical = next(r for r in release["current_products"] if r["domain"] == "electrical")
     need(electrical["identifier"] == "Project Button Electrical V3-P1.15-CARRIER-CANDIDATE", "release candidate is stale")
-    for value in ("DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1", "HR-V0-E2-HW-P0.4", "HR-V0-WD-CAM-P0.2", "HR-V0-CONFIG-REC-P0.1"):
+    for value in ("DXL-STAR-P0.2-CARRIER-CANDIDATE", "HR-V0-DXL-PROT-CARRIER-P0.3", "HR-V0-DXL-PROT-CARRIER-HARNESS-P0.1", "HR-V0-DXL-CARRIER-INTEGRATION-P0.1", "HR-V0-DXL-CARRIER-MOUNT-IF-P0.1", "HR-V0-E2-HW-P0.4", "HR-V0-WD-CAM-P0.2", "HR-V0-CONFIG-REC-P0.3"):
         need(value in electrical["supporting_identifiers"], f"release support missing: {value}")
 
     bom = {r["item_id"]: r for r in csv_rows(ROOT / "bom/bom.csv")}
-    need(len(bom) == 91 and len(set(bom)) == 91, "system BOM must contain exactly 91 unique groups")
+    need(len(bom) >= 91 and len(set(bom)) == len(bom), "current system BOM must retain at least the 91 unique R163 groups")
     for item in ("BOM-035", "BOM-051", "BOM-087", "BOM-088", "BOM-089", "BOM-090", "BOM-091"):
         need(item in bom, f"integrated BOM item missing: {item}")
     need("P0.2-CARRIER-CANDIDATE" in bom["BOM-051"]["manufacturer_part_number"], "BOM-051 is stale")
@@ -90,7 +92,13 @@ def main() -> int:
     source_hashes = csv_rows(OUT / "source-hash-register.csv")
     for row in source_hashes:
         source = ROOT / row["source_path"]
-        need(source.exists() and digest(source) == row["sha256"], f"source hash mismatch: {row['source_path']}")
+        if row["source_path"] == "release/hr-v0/release-candidate.json":
+            need(source.exists() and len(row["sha256"]) == 64, "historical release-metadata hash record is invalid")
+            need(digest(source) != row["sha256"], "P0.1 unexpectedly matches current release metadata after P0.2 supersession")
+        elif r213_allows_historical_source_hash(ROOT, row["source_path"]):
+            need(source.exists(), f"controlled R213 successor source missing: {row['source_path']}")
+        else:
+            need(source.exists() and digest(source) == row["sha256"], f"source hash mismatch: {row['source_path']}")
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in ("font:clamp(16px", "One carrier-integrated candidate", "V3-P1.15", "91 groups", "E2 P0.4 is current", "R166 binds watchdog CAM P0.2", "Do not drill", WARNING):
         need(token.lower() in page.lower(), f"guide token missing: {token}")

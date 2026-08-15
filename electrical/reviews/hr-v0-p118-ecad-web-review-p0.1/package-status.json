@@ -1,0 +1,19 @@
+{
+  "identifier": "HR-V0-ECAD-WEB-REVIEW-P0.1",
+  "date": "2026-08-11",
+  "round": "R224",
+  "ecad_candidate": "V3-P1.18-PANEL-TOPOLOGY-CANDIDATE",
+  "current_system_ecad": "V3-P1.15-CARRIER-CANDIDATE",
+  "sheet_count": 13,
+  "native_sheet_count": 13,
+  "svg_export_count": 13,
+  "erc_errors": 0,
+  "erc_warnings": 0,
+  "structural_export_checks_passed": 13,
+  "internal_full_sheet_visual_review_complete": false,
+  "independent_review_complete": false,
+  "p118_accepted": false,
+  "work_authority": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

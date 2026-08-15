@@ -1,0 +1,7 @@
+{
+  "supersedes_r308_mapping_result_as_complete_exact_trimmed_face_evidence": true,
+  "supersedes_r309_zero_distance_as_trimmed_containment_evidence": true,
+  "rejects_r310_seven_face_imprint_as_underconstrained": true,
+  "reason": "underlying-surface distance is insufficient; every candidate node must also lie inside the exact trimmed OCC face",
+  "warning": "PRELIMINARY - CORRECTED EXACT TRIMMED-FACE OWNERSHIP AUDIT ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

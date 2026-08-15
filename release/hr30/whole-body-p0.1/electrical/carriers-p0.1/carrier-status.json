@@ -1,0 +1,68 @@
+{
+  "identifier": "HR30-ACTUATOR-INTERFACE-CARRIERS-P0.1",
+  "date": "2026-08-14",
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, MOTION OR ENERGIZATION",
+  "carrier_a": {
+    "board_mm": [
+      82,
+      42,
+      1.6
+    ],
+    "copper_layers": 6,
+    "components": 49,
+    "native_pcb": true
+  },
+  "carrier_b": {
+    "board_mm": [
+      82,
+      42,
+      1.6
+    ],
+    "copper_layers": 6,
+    "components": 37,
+    "native_pcb": true
+  },
+  "validation": [
+    {
+      "artifact": "schematic",
+      "return_code": 0,
+      "report": "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\carriers-p0.1\\validation\\hr30-actuator-interface-carriers-p0.1-erc.rpt"
+    },
+    {
+      "artifact": "carrier-A",
+      "return_code": 0,
+      "report": "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\carriers-p0.1\\validation\\hr30-carrier-a-p0.1-drc.rpt"
+    },
+    {
+      "artifact": "carrier-B",
+      "return_code": 0,
+      "report": "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\carriers-p0.1\\validation\\hr30-carrier-b-p0.1-drc.rpt"
+    }
+  ],
+  "design_advancement": "complete native carrier schematics, exact footprints, deterministic routed copper, native isolation moats, candidate stackup and machine-readable fabrication-candidate outputs",
+  "routing_complete": true,
+  "unconnected_pad_count": 0,
+  "kicad_drc_violations": 0,
+  "kicad_erc_errors": 0,
+  "kicad_erc_warnings": 0,
+  "stackup_candidate": "JLC06161H-3313",
+  "stackup_manufacturer_nominal_finished_thickness_mm": 1.6,
+  "published_buildup_without_soldermask_mm": 1.5384,
+  "fabrication_candidate_outputs_generated": true,
+  "fabrication_outputs_released": false,
+  "drc_acceptance": false,
+  "fabrication_authority": false,
+  "assembly_authority": false,
+  "connection_authority": false,
+  "motion_authority": false,
+  "energization_authority": false,
+  "open": [
+    "independent schematic/footprint/routing/DFM review",
+    "manufacturer confirmation of stackup, finished thickness, finish and controlled impedance",
+    "termination and bias configuration",
+    "surge/miswire/EMC/timing/thermal tests",
+    "cable and power-injection hardware",
+    "physical isolation and fault testing",
+    "qualified electrical and safety review"
+  ]
+}

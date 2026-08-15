@@ -94,8 +94,20 @@ def main() -> int:
         "HR-V0-PASSIVE-ARM-RECEIVER-VERIFY-P0.1",
         "HR-V0-PASSIVE-ARM-RECEIVER-DETAIL-P0.2",
         "HR-V0-RECEIVER-GUIDE-IF-P0.1",
+        "HR-V0-SRS-P0.2",
+        "HR-V0-FS-REVIEW-ROUTE-P0.1",
+        "HR-V0-WD-PERMIT-TOPOLOGY-P0.1",
+        "HR-V0-P120-WD-INTERLOCK-P0.1",
+        "HR-V0-PNOZ-KWD-APP-P0.2",
+        "HR-V0-P121-SRA1-SUPPLY-WD-P0.1",
+        "HR-V0-P121-APP-EVID-P0.1",
     ]
-    assert safety["release_state"] == "allocation_candidate_no_plr_or_sil_assigned"
+    assert safety["release_state"] == "r235_p121_application_evidence_route_zero_safety_credit_questions_unsent_tests_unexecuted_plr_sil_and_qualified_review_open"
+    assert safety["watchdog_permit_topology_proof"] == "HR-V0-WD-PERMIT-TOPOLOGY-P0.1"
+    assert safety["watchdog_interlock_candidate"] == "HR-V0-P120-WD-INTERLOCK-P0.1"
+    assert safety["p120_pnoz_kwd_application_dossier"] == "HR-V0-PNOZ-KWD-APP-P0.2"
+    assert safety["p121_sra1_supply_watchdog_dossier"] == "HR-V0-P121-SRA1-SUPPLY-WD-P0.1"
+    assert safety["p121_application_evidence_dossier"] == "HR-V0-P121-APP-EVID-P0.1"
 
     html = GUIDE.read_text(encoding="utf-8")
     for required in (

@@ -1,0 +1,52 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-CAD-CURVING-PREREG-P0.1",
+  "round": "R307-PREREG",
+  "date": "2026-08-13",
+  "candidate_id": "R307-C07-CAD-RESIDENT-CONSTRAINED-HIGHORDER-V01",
+  "physical_geometry_change": false,
+  "source_analysis_brep_sha256": "3ee2fc3affeacde29c75404d5dc7b1512f02ed707b4e65e33b10d58189e86404",
+  "source_r300_status_sha256": "e7fa1dea7a92f1bd0940b9076f89e8b1c681835e84967469626c05547b513d50",
+  "source_r306_status_sha256": "6b4e26e85c2ed333820d969416e4c4535f917c7a31c205fcfdd98d0233e3026c",
+  "transitive_generators": {
+    "r300": "7aecd304d4540e10236d4b821e57e1acb0627785592bfdd32256a217ca7221b4",
+    "r298": "12f523ddefff83f3fd1483a1d0147c6eee15b4742930f60c570dc1c4396a3bc8",
+    "base": "ba749be73e4bce73c1e74a46698db777fcf09407dd98ce5844c1e5f8dc2a658a"
+  },
+  "execution_sequence": [
+    "regenerate the frozen R300 Frontal+Netgen linear mesh in the live R297 OCC model",
+    "require exact equality of linear element tags/connectivity/SICN/zone codes and coordinate equality within 1e-12 mm against retained R300",
+    "call setOrder(2)",
+    "map every linear corner bijectively within 0.1 mm",
+    "run HighOrder once with force=false, niter=1, C07-MATRIX only while OCC geometry remains live",
+    "restore every mapped linear corner within 1e-12 mm",
+    "retain optimized midsides only if every gate passes"
+  ],
+  "acceptance": {
+    "r300_linear_topology_and_quality_exact": true,
+    "r300_linear_coordinate_max_delta_mm": 1e-12,
+    "corner_bijection_max_mm": 0.1,
+    "corner_restore_max_mm": 1e-12,
+    "element_connectivity_and_orientation_preserved": true,
+    "q4_q6_q8_wrong_or_zero": 0,
+    "q4_q6_q8_normalized_floor_fail": 0,
+    "exact_exterior_facet_map_complete": true,
+    "maximum_q8_surface_deviation_mm": 0.005,
+    "per_face_area_relative_error_max": 0.0025,
+    "loaded_area_relative_error_max": 0.0025,
+    "load_location_and_moment_relative_drift_max": 0.001
+  },
+  "stop_rule": "one CAD-resident execution only; no optimizer, iteration, field or mesh tuning; retain pass, rejection or controlled stop",
+  "execution_started": false,
+  "execution_completed": false,
+  "exact_facet_revalidation_executed": false,
+  "full_reference_domain_curved_jacobian_positive": false,
+  "r279_c02_complete": false,
+  "structural_solution_executed": false,
+  "mesh_convergence_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - CAD-RESIDENT CONSTRAINED CURVING PREREGISTRATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

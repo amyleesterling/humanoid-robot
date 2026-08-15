@@ -1,0 +1,4 @@
+case,torque_input_nm,contact_radius_mm,total_tangential_force_n,ideal_force_per_rail_n,nominal_striker_rail_bending_mpa,basis,status
+R69_PROOF_SCREEN,3.475348,55.871659,62.202,31.101,20.112,"two-rail equal sharing; 6 mm rail; 9 mm finished minimum; no notch, prying, impact, fatigue or dynamic amplification",INDICATIVE SCREEN ONLY - NOT AN ALLOWABLE OR RELEASE
+RAW800_IDEAL_STALL_LINE,5.180000,55.871659,92.712,46.356,29.977,"two-rail equal sharing; 6 mm rail; 9 mm finished minimum; no notch, prying, impact, fatigue or dynamic amplification",INDICATIVE SCREEN ONLY - NOT AN ALLOWABLE OR RELEASE
+PUBLISHED_12V_MOMENTARY_STALL_ENDPOINT,10.600000,55.871659,189.721,94.860,61.344,"two-rail equal sharing; 6 mm rail; 9 mm finished minimum; no notch, prying, impact, fatigue or dynamic amplification",INDICATIVE SCREEN ONLY - NOT AN ALLOWABLE OR RELEASE

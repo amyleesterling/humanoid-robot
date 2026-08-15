@@ -1,0 +1,19 @@
+{
+  "identifier": "HR-V0-J2-C07-CONFORMAL-SUCCESSOR-DISPOSITION-P0.1",
+  "round": "R292",
+  "r289_status_sha256": "a06de05df183c45ddfc70778ecdfe794e5a75eaa563348690f64d24aef638bfe",
+  "r291_status_sha256": "52b0d085e79b2078ce4acf4eb732242452664c91c99e9160d073dfe97bcc22e9",
+  "r291_low_sicn_elements": 19,
+  "r291_curved_jacobian_gate": true,
+  "pocket_refinement_method_rejected": true,
+  "next_mesh_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "safety_credit": false,
+  "fabrication_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - CONFORMAL SUCCESSOR DISPOSITION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

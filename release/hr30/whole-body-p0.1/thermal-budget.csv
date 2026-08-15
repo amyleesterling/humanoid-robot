@@ -1,0 +1,8 @@
+domain,candidate_heat_w,heat_rejection_path,required_telemetry,status
+leg actuators,58,distributed aluminum housings; no enclosed hot pockets,thermistor/current logging per joint,P0.1 ESTIMATE - INSTALLED STEADY/TRANSIENT THERMAL TEST REQUIRED
+upper-body actuators,23,conduct to frames plus natural/forced convection,thermistor/current logging per joint,P0.1 ESTIMATE - INSTALLED STEADY/TRANSIENT THERMAL TEST REQUIRED
+compute,18,Pi Active Cooler candidate plus controlled torso airflow,"CPU throttling, fan tach and inlet/outlet temperatures",P0.1 ESTIMATE - INSTALLED STEADY/TRANSIENT THERMAL TEST REQUIRED
+display/audio/sensors,9,head vent path separated from microphones,head inlet/outlet and panel temperature,P0.1 ESTIMATE - INSTALLED STEADY/TRANSIENT THERMAL TEST REQUIRED
+conversion/distribution,12,pelvis/torso conductive mounting and airflow,"converter, contactor and conductor temperatures",P0.1 ESTIMATE - INSTALLED STEADY/TRANSIENT THERMAL TEST REQUIRED
+uncertainty margin,15,reserved; must not be spent before measured closure,whole-body thermal balance,P0.1 ESTIMATE - INSTALLED STEADY/TRANSIENT THERMAL TEST REQUIRED
+TOTAL,135,forced-air architecture required by budget,all domains plus ambient and shutdown reason,P0.1 135 W REJECTION BUDGET - UNVALIDATED

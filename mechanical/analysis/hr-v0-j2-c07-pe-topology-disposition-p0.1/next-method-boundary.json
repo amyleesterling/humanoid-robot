@@ -1,0 +1,19 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-TOPOLOGY-DISPOSITION-P0.1",
+  "round": "R294",
+  "date": "2026-08-13",
+  "retained_success": "R291/R293 exact CAD, fields, target identity, and sampled actual-quadrature curved-Jacobian pass",
+  "rejected_method": "Netgen followed by Relocate3D on an unchanged Delaunay tetrahedralization; it leaves all four PE straight-zone failures and adds low-quality C07-MATRIX cells",
+  "required_next_preregistration": "preserve exact CAD, R291 fields and thresholds; generate a genuinely different linear tetrahedral topology using Gmsh Algorithm3D=4 (Frontal) followed by Netgen only; one candidate, one execution, no relocation and no high-order optimizer",
+  "next_candidate_id": "R295-C07-PE-FRONTAL-V01",
+  "acceptance_thresholds_unchanged": true,
+  "next_mesh_executed": false,
+  "structural_solution_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - PE-JUNCTION MESH-METHOD DISPOSITION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

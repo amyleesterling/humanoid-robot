@@ -1,0 +1,10 @@
+source_id,manufacturer,document,revision_or_date,url,verified_use
+TI-ISOW1432,Texas Instruments,ISOW1412/ISOW1432 datasheet,SLLSF86C Rev C; March 2022,https://www.ti.com/lit/ds/symlink/isow1432.pdf,pinout; floating enable behavior; decoupling; two-bead isolated supply connection; layout and isolation guidance
+TI-ISOW-EVM,Texas Instruments,ISOW1432DFMEVM guide,SLLU337; June 2021,https://www.ti.com/lit/ug/sllu337/sllu337.pdf,application schematic; ferrite and termination population references
+TI-LVC1T45,Texas Instruments,SN74LVC1T45 datasheet,SCES515N Rev N; June 2024,https://www.ti.com/lit/ds/symlink/sn74lvc1t45.pdf,pinout; dual-rail bypass; direction and power sequencing
+TI-TPD1E10B06,Texas Instruments,TPD1E10B06 datasheet,SLLSEB1G Rev G; August 2024,https://www.ti.com/lit/ds/symlink/tpd1e10b06.pdf,active 5.5 V bidirectional single-line ESD candidate
+TDK-MPZ1005,TDK,MPZ1005S331ETD25 product page,live production page; accessed 2026-08-14,https://product.tdk.com/en/search/emc/emc/beads/info?part_no=MPZ1005S331ETD25,330 ohm at 100 MHz; 700 mA; 0.28 ohm max; 0402
+LITTELFUSE-SM712,Littelfuse,SM712 datasheet,revised 2019-08-22; active page accessed 2026-08-14,https://www.littelfuse.com/assetdocs/littelfuse_tvs_diode_array_sm712_datasheet?assetguid=8313a28c-8802-4d47-a2a7-e30b5b1f67d8,RS-485 -7/+12 V working range; exact SOT23-3 order code
+JST-GH,JST,GH connector catalog,live catalog accessed 2026-08-14,https://www.jst-mfg.com/product/pdf/eng/eGH.pdf,BM15/BM03/BM02 header families; data-only connector boundary
+JLC-6L-CAPABILITY,JLCPCB,6-layer PCB manufacturing capability,live official page accessed 2026-08-14,https://jlcpcb.com/6-layer-pcb,six-layer 1.6 mm capability and catalog manufacturing limits
+JLC-STACKUP-3313,JLCPCB,PCB impedance and stackup calculator,live official page accessed 2026-08-14,https://jlcpcb.com/impedance,JLC06161H-3313 nominal layer buildup and material identifiers

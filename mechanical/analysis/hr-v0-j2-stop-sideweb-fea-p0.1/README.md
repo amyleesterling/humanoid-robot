@@ -1,0 +1,5 @@
+# HR-V0-J2-STOP-SIDEWEB-FEA-P0.1
+
+> **PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION**
+
+R272 screens exact P0.11 C06/C07. Both pass the internal 4x geometry-rejection screen; neither is selected or released.

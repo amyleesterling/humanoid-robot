@@ -1,0 +1,11 @@
+# HR-30 conversational and embodied-agent architecture P0.1
+
+**PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION**
+
+OpenAI is used only for conversation, perception-assisted intent formation and a **high-level structured action request**. The official OpenAI function-calling guide describes function tools as JSON-schema-defined interfaces and model outputs as tool-call requests that application code may handle; it does not grant the model authority over hardware. Source: [OpenAI Function calling guide](https://developers.openai.com/api/docs/guides/function-calling), accessed 2026-08-13.
+
+The cloud-facing process runs on the Raspberry Pi and exposes one tool shaped by `structured-action-request.schema.json`. Exact model/API/voice-pipeline selection remains open. It has no actuator-bus credentials, no safety-I/O handle and no raw joint/current/torque tool. Requests are authenticated over local IPC and include a unique ID, timestamp, <=2 s expiry, named action, bounded parameters and supervised constraint.
+
+The deterministic local gateway rejects a request unless schema, signature/session, freshness, replay protection, current operating mode, supervisor-enable state, scene/object preconditions, joint/velocity/force limits, support state and behavior availability all pass. It translates an accepted request only into a versioned local behavior primitive. `STEP_REQUEST`, `WEIGHT_SHIFT_REQUEST` and powered arm actions remain disabled until their physical development gates are separately released. Any invalid/stale request, communications loss, watchdog loss, sensor disagreement or E-stop yields reject/hold/controlled stop according to the validated local state machine—never a guessed fallback motion.
+
+Data flow is: microphones/cameras -> local privacy/status gate -> conversational process -> structured request -> deterministic validator -> approved behavior library -> trajectory generator -> local motion controller -> segmented RS-485 buses. Feedback and denial reasons may return upward; the cloud process never closes the permit chain. Audio/video retention, consent, child/privacy policy, network security and offline behavior remain open.

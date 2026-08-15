@@ -25,6 +25,7 @@ from .mechanical_binding import (
     evidence_is_accepted,
     is_sha256,
 )
+from .kinematics import PlanarKinematicModel
 
 
 WARNING = "PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION"
@@ -67,6 +68,7 @@ class JointRule:
     maximum: float
     unit: str
     start_tolerance: float | None
+    terminal_tolerance: float | None
 
 
 @dataclass(frozen=True)
@@ -79,13 +81,19 @@ class SupervisorConfig:
     setup_joint_speed_deg_s: float
     automatic_gripper_speed_mm_s: float
     setup_gripper_speed_mm_s: float
+    maximum_sample_lateness_ms: int | None
+    maximum_trajectory_samples: int | None
+    maximum_trajectory_duration_ms: int | None
+    maximum_execution_slack_ms: int | None
     joints: Mapping[str, JointRule]
     kinematic_model_hash: str
+    kinematic_model: PlanarKinematicModel
     mechanical_limit_binding: Mapping[str, object]
 
     @classmethod
     def from_json(cls, path: Path) -> "SupervisorConfig":
         raw = json.loads(path.read_text(encoding="utf-8"))
+        kinematic_model = PlanarKinematicModel.from_mapping(raw)
         return cls(
             configuration_id=raw["configuration_id"],
             configuration_hash=raw["configuration_hash"],
@@ -95,8 +103,33 @@ class SupervisorConfig:
             setup_joint_speed_deg_s=float(raw["setup_joint_speed_deg_s"]),
             automatic_gripper_speed_mm_s=float(raw["automatic_gripper_speed_mm_s"]),
             setup_gripper_speed_mm_s=float(raw["setup_gripper_speed_mm_s"]),
+            maximum_sample_lateness_ms=(
+                int(raw["maximum_sample_lateness_ms"])
+                if isinstance(raw.get("maximum_sample_lateness_ms"), int)
+                and not isinstance(raw.get("maximum_sample_lateness_ms"), bool)
+                else None
+            ),
+            maximum_trajectory_samples=(
+                int(raw["maximum_trajectory_samples"])
+                if isinstance(raw.get("maximum_trajectory_samples"), int)
+                and not isinstance(raw.get("maximum_trajectory_samples"), bool)
+                else None
+            ),
+            maximum_trajectory_duration_ms=(
+                int(raw["maximum_trajectory_duration_ms"])
+                if isinstance(raw.get("maximum_trajectory_duration_ms"), int)
+                and not isinstance(raw.get("maximum_trajectory_duration_ms"), bool)
+                else None
+            ),
+            maximum_execution_slack_ms=(
+                int(raw["maximum_execution_slack_ms"])
+                if isinstance(raw.get("maximum_execution_slack_ms"), int)
+                and not isinstance(raw.get("maximum_execution_slack_ms"), bool)
+                else None
+            ),
             joints={name: JointRule(**rule) for name, rule in raw["joints"].items()},
             kinematic_model_hash=raw["kinematic_model_hash"],
+            kinematic_model=kinematic_model,
             mechanical_limit_binding=dict(raw["mechanical_limit_binding"]),
         )
 
@@ -104,7 +137,10 @@ class SupervisorConfig:
     def selections_closed(self) -> bool:
         values = (self.configuration_hash, self.kinematic_model_hash)
         hashes_closed = all(is_sha256(value) for value in values)
-        tolerances_closed = all(rule.start_tolerance is not None for rule in self.joints.values())
+        tolerances_closed = all(
+            rule.start_tolerance is not None and rule.terminal_tolerance is not None
+            for rule in self.joints.values()
+        )
         exact_axes = set(self.joints) == set(EXPECTED_ENGINEERING_LIMITS)
         limits_current = exact_axes and all(
             (
@@ -119,7 +155,17 @@ class SupervisorConfig:
             self.configuration_id == EXPECTED_SUPERVISOR_CONFIGURATION_ID
             and hashes_closed
             and tolerances_closed
+            and self.maximum_sample_lateness_ms is not None
+            and self.maximum_sample_lateness_ms >= 0
+            and self.maximum_trajectory_samples is not None
+            and self.maximum_trajectory_samples > 0
+            and self.maximum_trajectory_duration_ms is not None
+            and self.maximum_trajectory_duration_ms > 0
+            and self.maximum_execution_slack_ms is not None
+            and self.maximum_execution_slack_ms >= 0
             and limits_current
+            and self.kinematic_model.selections_closed
+            and self.kinematic_model.configured_model_hash == self.kinematic_model_hash
             and binding_is_current(self.mechanical_limit_binding)
             and evidence_is_accepted(self.mechanical_limit_binding)
         )
@@ -127,12 +173,15 @@ class SupervisorConfig:
 
 @dataclass(frozen=True)
 class HardwareSnapshot:
-    control_power: bool
-    estop_healthy: bool
-    watchdog_healthy: bool
-    edm_healthy: bool
-    bus_healthy: bool
-    compute_undervoltage: bool
+    # None means the observation is unavailable or has no selected physical
+    # provider.  Unknown is never coerced to healthy: it inhibits heartbeat
+    # and motion authority until an exact provider supplies a boolean result.
+    control_power: bool | None
+    estop_healthy: bool | None
+    watchdog_healthy: bool | None
+    edm_healthy: bool | None
+    bus_healthy: bool | None
+    compute_undervoltage: bool | None
     sr1_ready: bool
     sra1_armed: bool
     k1_feedback: bool
@@ -202,11 +251,29 @@ class Supervisor:
         self._watchdog_ever_healthy = False
         self.events: list[EventRecord] = []
 
+    @classmethod
+    def from_json(cls, path: Path, session_id: str) -> "Supervisor":
+        """Build only with the validator bound to the same configuration file."""
+
+        config = SupervisorConfig.from_json(path)
+        return cls(config, config.kinematic_model.validator(), session_id)
+
     @property
     def outputs(self) -> SupervisorOutputs:
-        control_power = bool(self._last_snapshot and self._last_snapshot.control_power)
+        snapshot = self._last_snapshot
+        heartbeat_preconditions_known_good = bool(
+            snapshot
+            and snapshot.control_power is True
+            and snapshot.estop_healthy is True
+            and snapshot.edm_healthy is True
+            and snapshot.bus_healthy is True
+            and snapshot.compute_undervoltage is False
+        )
         return SupervisorOutputs(
-            heartbeat_allowed=control_power and self.state is not OperatingState.FAULT_LATCHED,
+            heartbeat_allowed=(
+                heartbeat_preconditions_known_good
+                and self.state is not OperatingState.FAULT_LATCHED
+            ),
             torque_enable_request=self.state is OperatingState.DRIVE_ENABLED and self.active_command is not None,
             state=self.state,
             active_trajectory_id=self.active_command.trajectory_id if self.active_command else None,
@@ -214,13 +281,20 @@ class Supervisor:
 
     def observe_hardware(self, snapshot: HardwareSnapshot, now_ms: int) -> None:
         self._last_snapshot = snapshot
-        if not snapshot.control_power:
+        if snapshot.control_power is not True:
             self._invalidate_target()
             self._safe_ready_seen = False
             self._reset_required_seen = False
             self._watchdog_ever_healthy = False
             self.fault = None
-            self._transition(OperatingState.POWER_OFF, now_ms, "control power absent")
+            detail = (
+                "control-power observation unavailable"
+                if snapshot.control_power is None
+                else "control power absent"
+            )
+            self._transition(OperatingState.POWER_OFF, now_ms, detail)
+            if snapshot.control_power is None:
+                self._record(now_ms, "OBSERVATION_HOLD", detail)
             return
 
         if self.state is OperatingState.POWER_OFF:
@@ -230,23 +304,54 @@ class Supervisor:
             return
 
         for condition, code, detail in (
-            (not snapshot.estop_healthy, FaultCode.ESTOP_OPEN, "E-stop channel not healthy"),
-            (not snapshot.edm_healthy, FaultCode.EDM_UNHEALTHY, "EDM not healthy"),
-            (not snapshot.bus_healthy, FaultCode.BUS_UNHEALTHY, "actuator bus not healthy"),
-            (snapshot.compute_undervoltage, FaultCode.COMPUTE_UNDERVOLTAGE, "compute undervoltage"),
+            (snapshot.estop_healthy is False, FaultCode.ESTOP_OPEN, "E-stop channel not healthy"),
+            (snapshot.edm_healthy is False, FaultCode.EDM_UNHEALTHY, "EDM not healthy"),
+            (snapshot.bus_healthy is False, FaultCode.BUS_UNHEALTHY, "actuator bus not healthy"),
+            (snapshot.compute_undervoltage is True, FaultCode.COMPUTE_UNDERVOLTAGE, "compute undervoltage"),
         ):
             if condition:
                 self._latch_fault(code, now_ms, detail)
                 return
 
-        if snapshot.watchdog_healthy:
+        unavailable = tuple(
+            name
+            for name, value in (
+                ("estop_healthy", snapshot.estop_healthy),
+                ("edm_healthy", snapshot.edm_healthy),
+                ("bus_healthy", snapshot.bus_healthy),
+                ("compute_undervoltage", snapshot.compute_undervoltage),
+            )
+            if value is None
+        )
+        if unavailable:
+            self._invalidate_target()
+            self._transition(
+                OperatingState.SAFE_DISABLED,
+                now_ms,
+                "required observation unavailable: " + ", ".join(unavailable),
+            )
+            self._record(
+                now_ms,
+                "OBSERVATION_HOLD",
+                "required observation unavailable: " + ", ".join(unavailable),
+            )
+            return
+
+        if snapshot.watchdog_healthy is True:
             self._watchdog_ever_healthy = True
-        elif self._watchdog_ever_healthy:
+        elif snapshot.watchdog_healthy is False and self._watchdog_ever_healthy:
             self._latch_fault(FaultCode.WATCHDOG_UNHEALTHY, now_ms, "watchdog permit dropped after becoming healthy")
             return
         else:
             self._invalidate_target()
-            self._transition(OperatingState.SAFE_DISABLED, now_ms, "waiting for three valid watchdog heartbeat edges")
+            detail = (
+                "watchdog-health observation unavailable"
+                if snapshot.watchdog_healthy is None
+                else "waiting for three valid watchdog heartbeat edges"
+            )
+            self._transition(OperatingState.SAFE_DISABLED, now_ms, detail)
+            if snapshot.watchdog_healthy is None:
+                self._record(now_ms, "OBSERVATION_HOLD", detail)
             return
 
         if snapshot.k1_feedback != snapshot.k2_feedback or snapshot.sra1_armed != (snapshot.k1_feedback and snapshot.k2_feedback):
@@ -293,11 +398,11 @@ class Supervisor:
         if self.state is not OperatingState.FAULT_LATCHED or not operator_acknowledged or snapshot is None:
             return False
         cause_absent = (
-            snapshot.control_power
-            and snapshot.estop_healthy
-            and snapshot.edm_healthy
-            and snapshot.bus_healthy
-            and not snapshot.compute_undervoltage
+            snapshot.control_power is True
+            and snapshot.estop_healthy is True
+            and snapshot.edm_healthy is True
+            and snapshot.bus_healthy is True
+            and snapshot.compute_undervoltage is False
             and not snapshot.sra1_armed
             and not snapshot.k1_feedback
             and not snapshot.k2_feedback
@@ -334,7 +439,9 @@ class Supervisor:
         command = self.active_command
         if self.state is not OperatingState.DRIVE_ENABLED or command is None:
             return False
-        if not success or not self._positions_match(terminal_positions, command.expected_terminal_positions):
+        if not success or not self._positions_match(
+            terminal_positions, command.expected_terminal_positions, terminal=True
+        ):
             self._latch_fault(FaultCode.EXECUTION_FAILED, now_ms, "trajectory failed or terminal state mismatched")
             return False
         self._invalidate_target()
@@ -371,6 +478,8 @@ class Supervisor:
             return "measured starting pose outside tolerance"
         if not command.samples:
             return "trajectory has no samples"
+        if self.config.maximum_trajectory_samples is None or len(command.samples) > self.config.maximum_trajectory_samples:
+            return "trajectory sample count exceeds the released bound"
 
         last_offset = -1
         expected_axes = set(self.config.joints)
@@ -392,6 +501,12 @@ class Supervisor:
                 if velocity > limit:
                     return f"{axis} velocity outside configured {command.mode.value} limit"
 
+        if (
+            self.config.maximum_trajectory_duration_ms is None
+            or command.samples[-1].offset_ms > self.config.maximum_trajectory_duration_ms
+        ):
+            return "trajectory duration exceeds the released bound"
+
         tcp_speeds = list(self._kinematic_validator(command.samples))
         if len(tcp_speeds) != len(command.samples):
             return "kinematic validator returned wrong sample count"
@@ -399,18 +514,35 @@ class Supervisor:
             return "computed TCP speed outside configured limit"
         if command.execution_deadline_ms < command.source_time_ms + command.samples[-1].offset_ms:
             return "execution deadline precedes the final trajectory sample"
+        if (
+            self.config.maximum_execution_slack_ms is None
+            or command.execution_deadline_ms
+            > command.source_time_ms
+            + command.samples[-1].offset_ms
+            + self.config.maximum_execution_slack_ms
+        ):
+            return "execution deadline slack exceeds the released bound"
         if set(command.expected_terminal_positions) != expected_axes:
             return "terminal-position axis set mismatch"
         if not self._positions_match(command.samples[-1].positions, command.expected_terminal_positions):
             return "last sample does not match expected terminal state"
         return None
 
-    def _positions_match(self, measured: Mapping[str, float], expected: Mapping[str, float]) -> bool:
+    def _positions_match(
+        self,
+        measured: Mapping[str, float],
+        expected: Mapping[str, float],
+        *,
+        terminal: bool = False,
+    ) -> bool:
         if set(measured) != set(self.config.joints) or set(expected) != set(self.config.joints):
             return False
-        return all(rule.start_tolerance is not None and
-                   abs(float(measured[axis]) - float(expected[axis])) <= rule.start_tolerance
-                   for axis, rule in self.config.joints.items())
+        return all(
+            (rule.terminal_tolerance if terminal else rule.start_tolerance) is not None
+            and abs(float(measured[axis]) - float(expected[axis]))
+            <= float(rule.terminal_tolerance if terminal else rule.start_tolerance)
+            for axis, rule in self.config.joints.items()
+        )
 
     def _latch_fault(self, code: FaultCode, now_ms: int, detail: str) -> None:
         self.fault = code

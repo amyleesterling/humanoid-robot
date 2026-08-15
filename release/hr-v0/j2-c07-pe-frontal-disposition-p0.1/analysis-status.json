@@ -1,0 +1,19 @@
+{
+  "identifier": "HR-V0-J2-C07-PE-FRONTAL-DISPOSITION-P0.1",
+  "round": "R296",
+  "r295_rejected": true,
+  "r295_low_sicn_cells": 19,
+  "algorithm_invariant_straight_zone_failure": true,
+  "r2_subzones_all_pass_r295": true,
+  "non_pe_zones_all_pass_r295": true,
+  "next_partition_executed": false,
+  "next_mesh_executed": false,
+  "structural_solution_executed": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "capacity_credit": false,
+  "selected": false,
+  "safety_credit": false,
+  "work_authority": false,
+  "warning": "PRELIMINARY - FRONTAL TETRAHEDRALIZATION DISPOSITION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

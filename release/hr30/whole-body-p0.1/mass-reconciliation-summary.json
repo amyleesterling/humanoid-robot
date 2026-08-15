@@ -1,0 +1,53 @@
+{
+  "identifier": "HR-30-MASS-RECONCILIATION-P0.1",
+  "item_count": 485,
+  "actuator_count": 25,
+  "fabrication_part_count": 98,
+  "joint_hardware_part_count": 142,
+  "located_joint_fastener_count": 156,
+  "transmission_belt_count": 10,
+  "installed_equipment_item_count": 54,
+  "minimum_identified_candidate_mass_kg": 10.807146865,
+  "planning_identified_candidate_mass_kg": 11.527024237,
+  "maximum_identified_candidate_mass_kg": 12.440726592,
+  "fabrication_cad_density_screen_kg": 2.303261744,
+  "actuator_published_mass_planning_kg": 2.609,
+  "joint_hardware_gross_density_screen_kg": 2.467263536,
+  "located_joint_fastener_planning_mass_kg": 0.554224112,
+  "transmission_belt_published_mass_kg": 0.148,
+  "installed_equipment_harness_planning_mass_kg": 3.445274845,
+  "prior_allocation_mass_kg": 9.63,
+  "reconciled_dynamics_planning_mass_kg": 11.916592891,
+  "reconciled_dynamics_neutral_com_m": [
+    -0.00077459,
+    0.011043441,
+    0.367833826
+  ],
+  "program_maximum_mass_kg": 12.0,
+  "program_lightweight_stretch_kg": 10.0,
+  "planning_margin_to_program_maximum_kg": 0.083407109,
+  "planning_margin_to_lightweight_stretch_kg": -1.916592891,
+  "integration_contingency_before_fastener_allocation_kg": 0.877824008,
+  "remaining_integration_contingency_kg": 0.389568654,
+  "program_mass_target_status": "WITHIN P0.1 MAXIMUM; PHYSICAL MASS CLOSURE OPEN",
+  "unmodeled_or_unselected": [
+    "exact battery BMS/PCM, cell monitor, connector, service disconnect, precharge, containment, retention and offboard charger hardware",
+    "exact selected controller, power, protection, sensor, audio, cooling and networking hardware",
+    "received harness, connector, strain-relief, fastener/insert, sole, pad and restraint masses",
+    "manufacturing features and mass changes after overlap removal, DFM and structural redesign"
+  ],
+  "model_limit": "Gross candidate-volume and located-equipment planning screen with no overlap deduction; dynamics include 156 explicit joint-fastener candidates plus the unused residual of the former 8% integration contingency. Not an as-built or released mass property.",
+  "authority": {
+    "procurement": false,
+    "fabrication": false,
+    "powered_test": false,
+    "motion": false,
+    "energization": false
+  },
+  "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "reconciled_box_model_inertia_kg_m2": [
+    0.392350759,
+    0.444064095,
+    0.075797136
+  ]
+}

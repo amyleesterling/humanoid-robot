@@ -1,0 +1,5 @@
+# HR-V0-CONFIG-REC-P0.8
+
+> **PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION**
+
+R244 adds HR-V0-P121-DCR-DROP-P0.1 without changing the 98-group BOM. P1.15 remains current; P1.21 is unaccepted; no work gate closes.

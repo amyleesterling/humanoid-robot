@@ -14,6 +14,19 @@ from .model import (
     TrajectorySample,
 )
 from .dynamixel_bus import ActuatorTelemetry, BusError, DynamixelBusController
+from .kinematics import (
+    KinematicConfigurationError,
+    PlanarKinematicModel,
+    canonical_model_hash,
+)
+from .runtime import RuntimeExecutionError, RuntimeExecutive, RuntimeStatus
+from .evidence_log import (
+    EvidenceContext,
+    EvidenceLogError,
+    HashChainedJsonlSink,
+    LogVerification,
+    verify_log,
+)
 
 __all__ = [
     "ActuatorConfiguration",
@@ -32,4 +45,15 @@ __all__ = [
     "ActuatorTelemetry",
     "BusError",
     "DynamixelBusController",
+    "KinematicConfigurationError",
+    "PlanarKinematicModel",
+    "canonical_model_hash",
+    "RuntimeExecutionError",
+    "RuntimeExecutive",
+    "RuntimeStatus",
+    "EvidenceContext",
+    "EvidenceLogError",
+    "HashChainedJsonlSink",
+    "LogVerification",
+    "verify_log",
 ]

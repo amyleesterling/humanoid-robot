@@ -1,0 +1,18 @@
+{
+  "identifier": "HR-V0-J2-C07-TARGETED-REMESH-P0.1",
+  "round": "R285",
+  "variant_id": "R285-CONFIRMATORY-TARGETED-V06-P01",
+  "run_id": "run-b-repeat",
+  "mesh_repair_pass": true,
+  "selected": false,
+  "r279_c02_complete": false,
+  "r278_h02_closed": false,
+  "safety_credit": false,
+  "capacity_credit": false,
+  "work_authority": false,
+  "fabrication_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - TARGETED CURVED-MESH METHOD EVIDENCE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

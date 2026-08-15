@@ -1,0 +1,484 @@
+(export
+	(version "E")
+	(design
+		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\electrical\\kicad\\hr-v0-pi-observation-carrier-p0.1\\hr-v0-pi-observation-carrier-p0.1.kicad_sch")
+		(date "2026-08-10T18:00:19")
+		(tool "Eeschema 10.0.5")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title "PROJECT BUTTON HR-V0 RASPBERRY PI OBSERVATION INTERFACE CARRIER index")
+				(company "Project Button")
+				(rev "R204 / P0.1 / PCB-P0.1")
+				(date "2026-08-10")
+				(source "hr-v0-pi-observation-carrier-p0.1.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "2")
+			(name "/01 Pi observation interface carrier/")
+			(tstamps "/3431c24a-0fd1-5c50-a448-7e93259485da/")
+			(title_block
+				(title "PB HR-V0 R204 / P0.1 / PCB-P0.1 - 01")
+				(company "Project Button")
+				(rev "R204 / P0.1 / PCB-P0.1")
+				(date "2026-08-10")
+				(source "01_pi_observation_carrier.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR FABRICATION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "JOBS1")
+			(value "Phoenix Contact MKDS 1/6-3,5 item 1751280")
+			(footprint "PB_PI_OBS:Phoenix_MKDS_1_6_3P5_1751280")
+			(datasheet "https://www.phoenixcontact.com/en-us/products/printed-circuit-board-terminal-mkds-1-6-35-1751280")
+			(description "Direct-stripped Belden 3051 color candidates terminate here. Cut length, routing, termination qualification and physical evidence remain open.")
+			(fields
+				(field
+					(name "Status") "EXACT TERMINAL CANDIDATE - HARNESS/PROCESS HOLD")
+				(field
+					(name "Evidence") "Current official US product record rechecked 2026-08-10.")
+				(field
+					(name "Display") "Phoenix Contact MKDS 1/6-3,5 item 1751280")
+				(field
+					(name "Footprint") "PB_PI_OBS:Phoenix_MKDS_1_6_3P5_1751280")
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/printed-circuit-board-terminal-mkds-1-6-35-1751280")
+				(field
+					(name "Description") "Direct-stripped Belden 3051 color candidates terminate here. Cut length, routing, termination qualification and physical evidence remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JOBS1")
+				(description "Direct-stripped Belden 3051 color candidates terminate here. Cut length, routing, termination qualification and physical evidence remain open.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT TERMINAL CANDIDATE - HARNESS/PROCESS HOLD")
+			)
+			(property
+				(name "Evidence")
+				(value "Current official US product record rechecked 2026-08-10.")
+			)
+			(property
+				(name "Display")
+				(value "Phoenix Contact MKDS 1/6-3,5 item 1751280")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Pi observation interface carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_pi_observation_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Pi observation interface carrier/")
+				(tstamps "/3431c24a-0fd1-5c50-a448-7e93259485da/")
+			)
+			(tstamps "b236b59b-91cd-50f3-bc64-b6f676e12d4d")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JPI1")
+			(value "Samtec ESQ-120-33-G-D; only six of 40 positions implemented")
+			(footprint "PB_PI_OBS:Samtec_ESQ_120_33_G_D")
+			(datasheet "https://www.samtec.com/products/esq-120-33-g-d")
+			(description "The native PCB carries all forty physical pads, but only pins 15, 16, 17, 18, 20 and 22 have nets or copper. No ID, 5 V or other GPIO copper exists.")
+			(fields
+				(field
+					(name "Status") "EXACT CONNECTOR CANDIDATE - RECEIVING/DFM/STACK HOLD")
+				(field
+					(name "Evidence") "Product and official ESQ drawings rechecked 2026-08-10.")
+				(field
+					(name "Display") "Samtec ESQ-120-33-G-D; only six of 40 positions implemented")
+				(field
+					(name "Footprint") "PB_PI_OBS:Samtec_ESQ_120_33_G_D")
+				(field
+					(name "Datasheet") "https://www.samtec.com/products/esq-120-33-g-d")
+				(field
+					(name "Description") "The native PCB carries all forty physical pads, but only pins 15, 16, 17, 18, 20 and 22 have nets or copper. No ID, 5 V or other GPIO copper exists.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JPI1")
+				(description "The native PCB carries all forty physical pads, but only pins 15, 16, 17, 18, 20 and 22 have nets or copper. No ID, 5 V or other GPIO copper exists.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT CONNECTOR CANDIDATE - RECEIVING/DFM/STACK HOLD")
+			)
+			(property
+				(name "Evidence")
+				(value "Product and official ESQ drawings rechecked 2026-08-10.")
+			)
+			(property
+				(name "Display")
+				(value "Samtec ESQ-120-33-G-D; only six of 40 positions implemented")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Pi observation interface carrier")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_pi_observation_carrier.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Pi observation interface carrier/")
+				(tstamps "/3431c24a-0fd1-5c50-a448-7e93259485da/")
+			)
+			(tstamps "a1b82c47-0674-517f-ad7d-8c4466ceeb0a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "22")
+						)
+						(pin
+							(num "18")
+						)
+						(pin
+							(num "16")
+						)
+						(pin
+							(num "15")
+						)
+						(pin
+							(num "20")
+						)
+						(pin
+							(num "17")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "PBV3")
+			(part "JOBS1")
+			(description "Direct-stripped Belden 3051 color candidates terminate here. Cut length, routing, termination qualification and physical evidence remain open.")
+			(docs "https://www.phoenixcontact.com/en-us/products/printed-circuit-board-terminal-mkds-1-6-35-1751280")
+			(fields
+				(field
+					(name "Reference") "JOBS1")
+				(field
+					(name "Value") "Phoenix Contact MKDS 1/6-3,5 item 1751280")
+				(field
+					(name "Footprint") "PB_PI_OBS:Phoenix_MKDS_1_6_3P5_1751280")
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/printed-circuit-board-terminal-mkds-1-6-35-1751280")
+				(field
+					(name "Description") "Direct-stripped Belden 3051 color candidates terminate here. Cut length, routing, termination qualification and physical evidence remain open.")
+				(field
+					(name "Status") "EXACT TERMINAL CANDIDATE - HARNESS/PROCESS HOLD")
+				(field
+					(name "Evidence") "Current official US product record rechecked 2026-08-10.")
+				(field
+					(name "Display") "Phoenix Contact MKDS 1/6-3,5 item 1751280")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "3V3_SOURCE_CANDIDATE")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "COMPUTE_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "GPIO22_/_SR1_DIAGNOSTIC")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "GPIO23_/_SRA1_DIAGNOSTIC")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "GPIO24_/_K1_DIAGNOSTIC")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "GPIO25_/_K2_DIAGNOSTIC")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JPI1")
+			(description "The native PCB carries all forty physical pads, but only pins 15, 16, 17, 18, 20 and 22 have nets or copper. No ID, 5 V or other GPIO copper exists.")
+			(docs "https://www.samtec.com/products/esq-120-33-g-d")
+			(fields
+				(field
+					(name "Reference") "JPI1")
+				(field
+					(name "Value") "Samtec ESQ-120-33-G-D; only six of 40 positions implemented")
+				(field
+					(name "Footprint") "PB_PI_OBS:Samtec_ESQ_120_33_G_D")
+				(field
+					(name "Datasheet") "https://www.samtec.com/products/esq-120-33-g-d")
+				(field
+					(name "Description") "The native PCB carries all forty physical pads, but only pins 15, 16, 17, 18, 20 and 22 have nets or copper. No ID, 5 V or other GPIO copper exists.")
+				(field
+					(name "Status") "EXACT CONNECTOR CANDIDATE - RECEIVING/DFM/STACK HOLD")
+				(field
+					(name "Evidence") "Product and official ESQ drawings rechecked 2026-08-10.")
+				(field
+					(name "Display") "Samtec ESQ-120-33-G-D; only six of 40 positions implemented")
+			)
+			(pins
+				(pin
+					(num "15")
+					(name "GPIO22_/_SR1_DIAGNOSTIC")
+					(type "passive")
+				)
+				(pin
+					(num "16")
+					(name "GPIO23_/_SRA1_DIAGNOSTIC")
+					(type "passive")
+				)
+				(pin
+					(num "17")
+					(name "3V3_SOURCE_CANDIDATE")
+					(type "passive")
+				)
+				(pin
+					(num "18")
+					(name "GPIO24_/_K1_DIAGNOSTIC")
+					(type "passive")
+				)
+				(pin
+					(num "20")
+					(name "COMPUTE_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "22")
+					(name "GPIO25_/_K2_DIAGNOSTIC")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "PBV3")
+			(uri "${KIPRJMOD}/hr-v0-pi-observation-carrier-p0.1.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "COMPUTE_0V")
+			(class "Default")
+			(node
+				(ref "JOBS1")
+				(pin "2")
+				(pinfunction "COMPUTE_RETURN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "JPI1")
+				(pin "20")
+				(pinfunction "COMPUTE_RETURN_20")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "2")
+			(name "OBS_K1_PI")
+			(class "Default")
+			(node
+				(ref "JOBS1")
+				(pin "5")
+				(pinfunction "GPIO24_/_K1_DIAGNOSTIC_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "JPI1")
+				(pin "18")
+				(pinfunction "GPIO24_/_K1_DIAGNOSTIC_18")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "3")
+			(name "OBS_K2_PI")
+			(class "Default")
+			(node
+				(ref "JOBS1")
+				(pin "6")
+				(pinfunction "GPIO25_/_K2_DIAGNOSTIC_6")
+				(pintype "passive")
+			)
+			(node
+				(ref "JPI1")
+				(pin "22")
+				(pinfunction "GPIO25_/_K2_DIAGNOSTIC_22")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "4")
+			(name "OBS_SR1_PI")
+			(class "Default")
+			(node
+				(ref "JOBS1")
+				(pin "3")
+				(pinfunction "GPIO22_/_SR1_DIAGNOSTIC_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "JPI1")
+				(pin "15")
+				(pinfunction "GPIO22_/_SR1_DIAGNOSTIC_15")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "5")
+			(name "OBS_SRA1_PI")
+			(class "Default")
+			(node
+				(ref "JOBS1")
+				(pin "4")
+				(pinfunction "GPIO23_/_SRA1_DIAGNOSTIC_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "JPI1")
+				(pin "16")
+				(pinfunction "GPIO23_/_SRA1_DIAGNOSTIC_16")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "PI_3V3_CANDIDATE")
+			(class "Default")
+			(node
+				(ref "JOBS1")
+				(pin "1")
+				(pinfunction "3V3_SOURCE_CANDIDATE_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JPI1")
+				(pin "17")
+				(pinfunction "3V3_SOURCE_CANDIDATE_17")
+				(pintype "passive")
+			)
+		)
+	)
+)

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+<style>text{font-family:Arial,sans-serif;fill:#082b4c;font-size:18px}.title{font-size:34px;font-weight:700}.head{font-size:23px;font-weight:700}.warn{font-size:20px;font-weight:700;fill:#8a3b00}.part{fill:#d9f1ff;stroke:#0b4f8a;stroke-width:4}.hole{fill:#fff;stroke:#0b4f8a;stroke-width:3}.csk{fill:none;stroke:#d59600;stroke-width:3}.center{stroke:#657b8a;stroke-width:1.5;stroke-dasharray:8 5}.dim{stroke:#082b4c;stroke-width:2}.box{fill:#fff9e8;stroke:#d59600;stroke-width:3}</style>
+<rect width="1600" height="1100" fill="#f7fbff"/>
+<text x="40" y="55" class="title">MV0-C01 arm adapter — controlled candidate drawing</text>
+<text x="40" y="90" class="warn">HR-V0-ARM-ARCH-P0.9-STOP-STRENGTH-CANDIDATE — PRELIMINARY - CANDIDATE GEOMETRY ONLY - NOT RELEASED FOR FABRICATION OR ENERGIZATION</text>
+<rect x="150" y="300" width="480" height="400" class="part"/>
+<circle cx="230.0" cy="580.0" r="13.5" class="hole"/><line x1="212.0" y1="580.0" x2="248.0" y2="580.0" class="center"/><line x1="230.0" y1="562.0" x2="230.0" y2="598.0" class="center"/><circle cx="230.0" cy="420.0" r="13.5" class="hole"/><line x1="212.0" y1="420.0" x2="248.0" y2="420.0" class="center"/><line x1="230.0" y1="402.0" x2="230.0" y2="438.0" class="center"/><circle cx="550.0" cy="580.0" r="13.5" class="hole"/><line x1="532.0" y1="580.0" x2="568.0" y2="580.0" class="center"/><line x1="550.0" y1="562.0" x2="550.0" y2="598.0" class="center"/><circle cx="550.0" cy="420.0" r="13.5" class="hole"/><line x1="532.0" y1="420.0" x2="568.0" y2="420.0" class="center"/><line x1="550.0" y1="402.0" x2="550.0" y2="438.0" class="center"/><circle cx="390" cy="600.0" r="27.5" class="hole"/><circle cx="390" cy="600.0" r="56.5" class="csk"/><line x1="325" y1="600.0" x2="455" y2="600.0" class="center"/><circle cx="390" cy="400.0" r="27.5" class="hole"/><circle cx="390" cy="400.0" r="56.5" class="csk"/><line x1="325" y1="400.0" x2="455" y2="400.0" class="center"/>
+<line x1="150" y1="245" x2="630" y2="245" class="dim"/><line x1="150" y1="230" x2="150" y2="270" class="dim"/><line x1="630" y1="230" x2="630" y2="270" class="dim"/><text x="345" y="225" class="head">48.00 ±0.10</text>
+<line x1="95" y1="300" x2="95" y2="700" class="dim"/><line x1="80" y1="300" x2="120" y2="300" class="dim"/><line x1="80" y1="700" x2="120" y2="700" class="dim"/><text x="35" y="520" class="head" transform="rotate(-90 35 520)">40.00 ±0.10</text>
+<text x="175" y="755">4× Ø2.70 +0.10/−0.00 at X=±16.00, Z=±8.00; center coordinates ±0.05</text>
+<text x="175" y="790">2× Ø5.50 +0.10/−0.00 at X=0, Z=±10.00; center coordinates ±0.05</text>
+<text x="175" y="825">2× countersink Ø11.30 +0.10/−0.00, 90° included nominal; received screw functional gauge controls</text>
+<rect x="760" y="150" width="790" height="780" rx="12" class="box"/>
+<text x="800" y="205" class="head">Material and process</text>
+<text x="800" y="245">6061‑T651 plate, ASTM B209 / AMS 4027, OnlineMetals part 1249 candidate.</text>
+<text x="800" y="280">One 8×8×3/8 in sheet, one heat lot, MTR required. CNC mill/drill only.</text>
+<text x="800" y="315">Finished thickness 9.00–10.00 mm; opposite broad faces parallel within 0.10 mm.</text>
+<text x="800" y="350">Flatness ≤0.15 mm over the finished part. Bare as-machined; remove all burrs.</text>
+<text x="800" y="385">Break sharp edges 0.20–0.50 mm. No anodize, plating, or unapproved substitution.</text>
+<text x="800" y="440" class="head">Functional acceptance</text>
+<text x="800" y="480">Use received Accu SHKL-M5-20-A2-R360 as the countersink functional gauge.</text>
+<text x="800" y="515">Head proud ≤0.05 mm; recess ≤0.25 mm. Residual thickness below cone ≥5.80 mm.</text>
+<text x="800" y="550">Inspect all dimensions; record actual hole coordinates, thickness, flatness, and mass.</text>
+<text x="800" y="585">Dry-fit only with received ROBOTIS frames and 20-2040 article before load proof.</text>
+<text x="800" y="640" class="head">Release boundary</text>
+<text x="800" y="680">Drawing is suitable for supplier DFM/quotation only after program authorization.</text>
+<text x="800" y="715">No production quantity. One separately authorized first article maximum.</text>
+<text x="800" y="750">Torque, final locking validation, cable clearance, proof load, FAI, and qualified</text>
+<text x="800" y="785">mechanical disposition remain required before assembly or actuator connection.</text>
+<text x="800" y="850" class="warn">DO NOT FABRICATE OR ENERGIZE FROM THIS DRAWING ALONE.</text>
+<text x="800" y="890">Units: mm • Projection: adapter face X–Z • Revision: HR-V0-ARM-ARCH-P0.9-STOP-STRENGTH-CANDIDATE</text>
+</svg>

@@ -1,0 +1,4 @@
+zone,required_report,interpretation,capacity_use,warning
+each H1-H4/E1-E2 end rim,raw maximum and maximum-versus-local-h at each end separately,EXPECTED/UNRESOLVED IDEALIZATION if peak grows,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+any load-edge/contact-line singularity,raw maximum and maximum-versus-local-h; identify exact B-Rep edge,UNRESOLVED CONTACT IDEALIZATION,PROHIBITED,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+0.25/0.50/1.00/2.00 mm fixed rim offsets,fixed-volume weighted metrics and BC sensitivity,diagnostic only even if converged,PROHIBITED until H04/physical correlation,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

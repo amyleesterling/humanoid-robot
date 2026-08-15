@@ -1,0 +1,9 @@
+cost_group,planning_allowance_usd,basis,status
+25 actuator population,9000,planning allowance after distal-joint candidate changes; not vendor quotes,BUDGETARY ALLOWANCE ONLY - NO PROCUREMENT AUTHORITY
+"transmissions, bearings and output encoders",1900,ratios and exact hardware open,BUDGETARY ALLOWANCE ONLY - NO PROCUREMENT AUTHORITY
+"frames, machined plates, printed covers and fasteners",2200,Boston-area prototype allowance,BUDGETARY ALLOWANCE ONLY - NO PROCUREMENT AUTHORITY
+"compute, sensing, display and audio",1100,exact device selection open,BUDGETARY ALLOWANCE ONLY - NO PROCUREMENT AUTHORITY
+"power source, conversion, protection and harness",1500,onboard pack evaluation candidate plus tether-development interface; protection remains open,BUDGETARY ALLOWANCE ONLY - NO PROCUREMENT AUTHORITY
+independent safety/control enclosure and restraint,1800,not a safety approval,BUDGETARY ALLOWANCE ONLY - NO PROCUREMENT AUTHORITY
+"prototype spares, tooling and contingency",2800,development reserve,BUDGETARY ALLOWANCE ONLY - NO PROCUREMENT AUTHORITY
+TOTAL,20300,"P0.1 program planning total; excludes labor, qualified review, test facility and redesign",BUDGETARY ALLOWANCE ONLY

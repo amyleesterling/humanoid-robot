@@ -1,0 +1,11 @@
+control_id,feature,nominal_mm,tolerance_or_limit,inspection,status
+ADP-001,finished outside width X,48.00,+/-0.10,calibrated caliper or CMM; record actual,CANDIDATE CONTROL; FAI REQUIRED
+ADP-002,finished outside height Z,40.00,+/-0.10,calibrated caliper or CMM; record actual,CANDIDATE CONTROL; FAI REQUIRED
+ADP-003,finished thickness Y,9.525,9.00 minimum / 10.00 maximum,micrometer at four corners and center,CANDIDATE CONTROL; FAI REQUIRED
+ADP-004,four M2.5 clearance holes,diameter 2.70 at X +/-16.00 Z +/-8.00,diameter +0.10/-0.00; each center coordinate +/-0.05,pin gauges plus CMM or optical comparator,CANDIDATE CONTROL; FAI REQUIRED; RECEIVED FRAME FIT REQUIRED
+ADP-005,two M5 clearance holes,diameter 5.50 at X 0 Z +/-10.00,diameter +0.10/-0.00; each center coordinate +/-0.05,pin gauges plus CMM or optical comparator,CANDIDATE CONTROL; FAI REQUIRED; RECEIVED END-TAP FIT REQUIRED
+ADP-006,two M5 countersinks,diameter 11.30; 90 degree included nominal,diameter +0.10/-0.00; received head proud <=0.05 and recess <=0.25,CMM/optical plus received SHKL-M5-20-A2-R360 functional gauge,CANDIDATE CONTROL; FAI REQUIRED
+ADP-007,residual below countersink,not applicable,>=5.80,derive from measured thickness and countersink depth; retain raw data,CANDIDATE CONTROL; FAI REQUIRED
+ADP-008,broad-face flatness,not applicable,<=0.15 over finished part,surface plate and indicator or CMM,CANDIDATE CONTROL; FAI REQUIRED
+ADP-009,opposite broad-face parallelism,not applicable,<=0.10,micrometer map or CMM,CANDIDATE CONTROL; FAI REQUIRED
+ADP-010,edges and finish,bare as-machined,break 0.20 to 0.50; no burrs; no coating,visual and edge-break gauge,CANDIDATE CONTROL; FAI REQUIRED

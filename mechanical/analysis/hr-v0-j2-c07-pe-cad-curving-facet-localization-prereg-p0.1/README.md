@@ -1,0 +1,5 @@
+# HR-V0-J2-C07-PE-CAD-CURVING-FACET-LOCALIZATION-PREREG-P0.1
+
+**PRELIMINARY - R308 UNMAPPED-FACET LOCALIZATION PREREGISTRATION ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION**
+
+R309 freezes one diagnostic reproduction and nearest-exact-face localization of the 77 R308 failures. It cannot relax the membership tolerance or alter the mesh.

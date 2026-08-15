@@ -1,0 +1,2 @@
+test_id,field,weights,quadrature_points,integrated_weight,weighted_mean,weighted_rms,weighted_p95,raw_maximum,element_mean_preaverage_used,structural_or_capacity_credit,warning
+R283-DQ-01,"synthetic scalar; values [1,2,4,8,16]","[0.5,1,1.5,2,3]",5,8.0,9.0625,10.75,16.0,16.0,False,NONE,"PRELIMINARY - NUMERICAL METHOD PROTOTYPE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

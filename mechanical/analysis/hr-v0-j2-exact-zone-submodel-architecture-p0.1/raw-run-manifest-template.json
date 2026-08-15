@@ -1,0 +1,155 @@
+{
+  "schema_version": "HR-V0-J2-RAW-RUN-MANIFEST-P0.1",
+  "run_id": "SELECTION REQUIRED",
+  "stage": "C_LOCAL_SUBMODEL",
+  "case_id": "SELECTION REQUIRED",
+  "part": "C06",
+  "level": "L0",
+  "environment": {
+    "os": "SELECTION REQUIRED",
+    "python": "SELECTION REQUIRED",
+    "packages_lock_path": "SELECTION REQUIRED",
+    "packages_lock_sha256": "SELECTION REQUIRED"
+  },
+  "generator": {
+    "path": "SELECTION REQUIRED",
+    "sha256": "SELECTION REQUIRED",
+    "git_commit": "SELECTION REQUIRED",
+    "parameters_path": "SELECTION REQUIRED",
+    "parameters_sha256": "SELECTION REQUIRED"
+  },
+  "hardware": {
+    "hostname_or_scheduler_id": "SELECTION REQUIRED",
+    "cpu": "SELECTION REQUIRED",
+    "logical_cores": 0,
+    "ram_bytes": 0,
+    "accelerator": "NONE OR SELECTION REQUIRED",
+    "wall_seconds": 0,
+    "peak_rss_bytes": 0
+  },
+  "coordinate_transform": {
+    "source_frame": "SELECTION REQUIRED",
+    "target_frame": "SELECTION REQUIRED",
+    "matrix_4x4": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "matrix_sha256": "SELECTION REQUIRED",
+    "moment_datum_mm": [
+      0,
+      0,
+      0
+    ]
+  },
+  "geometry": {
+    "step_path": "SELECTION REQUIRED",
+    "step_sha256": "SELECTION REQUIRED",
+    "geometry_order": "SELECTION REQUIRED",
+    "entity_signature_register_sha256": "SELECTION REQUIRED"
+  },
+  "mesh": {
+    "nodes_path": "SELECTION REQUIRED",
+    "connectivity_path": "SELECTION REQUIRED",
+    "quality_path": "SELECTION REQUIRED",
+    "signed_jacobian_path": "SELECTION REQUIRED",
+    "metric_specific_h_path": "SELECTION REQUIRED"
+  },
+  "solver": {
+    "name": "SELECTION REQUIRED",
+    "version": "SELECTION REQUIRED",
+    "element": "SELECTION REQUIRED",
+    "preconditioner": "SELECTION REQUIRED",
+    "residual_history_path": "SELECTION REQUIRED",
+    "correction_history_path": "SELECTION REQUIRED"
+  },
+  "loads": {
+    "source_sha256": "SELECTION REQUIRED",
+    "loaded_entity_signatures": [],
+    "resultant_n": [
+      0,
+      0,
+      0
+    ],
+    "moment_n_mm": [
+      0,
+      0,
+      0
+    ],
+    "quadrature_path": "SELECTION REQUIRED"
+  },
+  "restraints": {
+    "entity_signatures": [],
+    "reaction_path": "SELECTION REQUIRED",
+    "free_residual_path": "SELECTION REQUIRED"
+  },
+  "zones": {
+    "definition_sha256": "SELECTION REQUIRED",
+    "membership_path": "SELECTION REQUIRED",
+    "clipped_measure_path": "SELECTION REQUIRED",
+    "statistics_path": "SELECTION REQUIRED",
+    "singularity_path": "SELECTION REQUIRED"
+  },
+  "probes": {
+    "definition_sha256": "SELECTION REQUIRED",
+    "field_results_path": "SELECTION REQUIRED"
+  },
+  "sections": {
+    "definition_sha256": "SELECTION REQUIRED",
+    "geometry_path": "SELECTION REQUIRED",
+    "resultants_path": "SELECTION REQUIRED"
+  },
+  "transfers": {
+    "mode": "DISPLACEMENT_OR_TRACTION_SELECTION_REQUIRED",
+    "donor_run_manifest_sha256": "SELECTION REQUIRED",
+    "donor_mesh_sha256": "SELECTION REQUIRED",
+    "cut_boundary_signature": "SELECTION REQUIRED",
+    "interpolation_method": "SELECTION REQUIRED",
+    "interpolation_tolerance_mm": "SELECTION REQUIRED",
+    "field_path": "SELECTION REQUIRED",
+    "force_conservation_relative_error": "NOT EXECUTED",
+    "moment_conservation_relative_error": "NOT EXECUTED",
+    "energy_conservation_relative_error": "NOT EXECUTED",
+    "saint_venant_boundary_distances_mm": [],
+    "saint_venant_metric_path": "SELECTION REQUIRED",
+    "saint_venant_acceptance_tolerances": "SELECTION REQUIRED"
+  },
+  "raw_artifacts": [
+    {
+      "role": "TEMPLATE PLACEHOLDER - REPLACE",
+      "path": "SELECTION REQUIRED",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "bytes": 0
+    }
+  ],
+  "authority": {
+    "numerical_convergence": false,
+    "capacity": false,
+    "fabrication": false,
+    "powered_testing": false,
+    "motion": false,
+    "energization": false,
+    "safety_credit": false
+  }
+}

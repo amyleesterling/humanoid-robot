@@ -1,0 +1,22 @@
+{
+  "identifier": "HR-V0-P121-APP-EVID-P0.1",
+  "round": "R235",
+  "configuration": "V3-P1.21-SRA1-SUPPLY-WATCHDOG-CANDIDATE",
+  "current_electrical": "V3-P1.15-CARRIER-CANDIDATE",
+  "manufacturer_questions": 13,
+  "submission_routes": 6,
+  "response_acceptance_controls": 12,
+  "authorization_prerequisites": 10,
+  "signals": 15,
+  "test_cases": 18,
+  "open_holds": 14,
+  "messages_sent": 0,
+  "manufacturer_responses": 0,
+  "tests_executed": 0,
+  "tests_passed": 0,
+  "p121_accepted": false,
+  "watchdog_safety_credit": "NONE",
+  "powered_test_authority": false,
+  "energization_authority": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

@@ -1,0 +1,48 @@
+ERC report (2026-08-15T01:57:01, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+
+***** Sheet /01 Tether-first energy, regulated rails and onboard-later boundary/
+
+***** Sheet /02 Dual-channel E-stop, monitored reset, permit and redundant interruption/
+
+***** Sheet /03 Conversational compute, deterministic motion controller and watchdog/
+
+***** Sheet /04 STM32H743 motion-controller power and carrier connectors/
+
+***** Sheet /05 Carrier A - four isolated RS-485 channels/
+
+***** Sheet /06 Carrier B - waist RS-485 and three translated TTL channels/
+
+***** Sheet /07 Left-leg RS-485 data bus and individual feeds/
+
+***** Sheet /08 Right-leg RS-485 data bus and individual feeds/
+
+***** Sheet /09 Left proximal-arm RS-485 data bus and individual feeds/
+
+***** Sheet /10 Right proximal-arm RS-485 data bus and individual feeds/
+
+***** Sheet /11 Waist RS-485 data bus and individual feed/
+
+***** Sheet /12 Left wrist/gripper TTL data bus and individual feeds/
+
+***** Sheet /13 Right wrist/gripper TTL data bus and individual feeds/
+
+***** Sheet /14 Head TTL, cameras, face display, audio and cooling/
+
+***** Sheet /15 Auxiliary conversion and pelvis inertial sensing/
+
+***** Sheet /16 Left foot four-point load sensing/
+
+***** Sheet /17 Right foot four-point load sensing/
+
+***** Sheet /18 Onboard-later isolated energy evaluation/
+
+ ** ERC messages: 0  Errors 0  Warnings 0
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

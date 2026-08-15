@@ -1,0 +1,5 @@
+activity,permitted,boundary,warning
+read-only engineering/configuration review,TRUE,repository evidence only,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+supplier contact,FALSE,R117 query remains UNSENT until prerequisites and owner authorization,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+procurement/fabrication/assembly/connection/testing,FALSE,"application, physical and qualified evidence remains open","PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+motion/energization,FALSE,EG-013 and every applicable stage gate remain unresolved,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

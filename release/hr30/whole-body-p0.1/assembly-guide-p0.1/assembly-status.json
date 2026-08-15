@@ -1,0 +1,18 @@
+{
+  "identifier": "HR30-WHOLE-ROBOT-ASSEMBLY-GUIDE-P0.1",
+  "module_count": 12,
+  "fabrication_part_count": 98,
+  "axis_count": 25,
+  "joint_fastener_count": 156,
+  "installed_equipment_count": 54,
+  "harness_assembly_count": 14,
+  "operation_count": 72,
+  "checkpoint_count": 72,
+  "physical_execution_complete": false,
+  "fabrication_released": false,
+  "assembly_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false,
+  "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

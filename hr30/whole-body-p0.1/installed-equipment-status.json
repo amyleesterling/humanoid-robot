@@ -1,0 +1,23 @@
+{
+  "identifier": "HR-30-INSTALLED-EQUIPMENT-P0.1",
+  "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "installed_item_count": 54,
+  "planning_installed_mass_kg": 3.445274845,
+  "modeled_operating_power_w": 48.5,
+  "modeled_candidate_heat_w": 53.3,
+  "all_geometry_valid": true,
+  "minimum_z_mm": -0.0013456566297602108,
+  "maximum_z_mm": 756.0020184349446,
+  "empty_component_bays_replaced": true,
+  "tether_first_configuration": false,
+  "tether_development_interface_retained": true,
+  "onboard_energy_candidate_geometry_present": true,
+  "onboard_energy_installed": false,
+  "exact_selections_closed": false,
+  "electrical_schematic_released": false,
+  "thermal_validated": false,
+  "fabrication_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false
+}

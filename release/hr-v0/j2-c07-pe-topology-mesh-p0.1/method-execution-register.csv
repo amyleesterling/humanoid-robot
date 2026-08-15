@@ -1,0 +1,2 @@
+candidate_id,stage_1,stage_2,stage,execution_count,thresholds_unchanged,result_global_sicn_gate,result_monitored_zone_gate,result_actual_quadrature_jacobian_gate,result_r279_c02,warning
+R293-C07-PE-TOPOLOGY-V01,Netgen,Relocate3D,LINEAR MESH BEFORE TET10 CONVERSION,1,True,False,False,True,False,"PRELIMINARY - PREREGISTERED PE-JUNCTION MESH-METHOD EVIDENCE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

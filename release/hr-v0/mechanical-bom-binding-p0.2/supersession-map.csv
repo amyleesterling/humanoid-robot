@@ -1,0 +1,2 @@
+historical_identifier,current_identifier,scope,historical_use,warning
+HR-V0-MECH-BOM-BIND-P0.1 / HR-V0-ARM-ARCH-P0.7 custom-part manufacturing files,HR-V0-MECH-BOM-BIND-P0.2 / HR-V0-ARM-ARCH-P0.8-DWG-CANDIDATE,BOM-027 custom-part STEP/DXF/drawing identity only; P0.7 system transforms and collision evidence remain the placement basis because external envelopes and hole centers are unchanged,AUDIT ONLY - NOT CURRENT FOR CUSTOM-PART FABRICATION REVIEW,"PRELIMINARY - NOT APPROVED FOR QUOTATION, FABRICATION, ASSEMBLY, MOTION, OR ENERGIZATION"

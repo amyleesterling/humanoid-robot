@@ -1,0 +1,26 @@
+{
+  "identifier": "HR-V0-J2-C07-TARGETED-REMESH-P0.1",
+  "variant_id": "R285-CONFIRMATORY-TARGETED-V06-P01",
+  "run_id": "run-a",
+  "started_utc": "2026-08-13T04:28:25.268313+00:00",
+  "completed_utc": "2026-08-13T04:31:13.832512+00:00",
+  "command": [
+    "C:\\Users\\amyle\\Documents\\New project\\.venvs\\hr-v0-cad\\Scripts\\python.exe",
+    "tools/generate_hr_v0_j2_c07_targeted_remesh_p01.py",
+    "--single-run",
+    "run-a"
+  ],
+  "fresh_python_process": true,
+  "python_executable": "C:\\Users\\amyle\\Documents\\New project\\.venvs\\hr-v0-cad\\Scripts\\python.exe",
+  "python_version": "3.12.13",
+  "gmsh_version": "4.15.2",
+  "numpy_version": "2.4.6",
+  "scipy_version": "1.18.0",
+  "scikit_fem_version": "12.0.2",
+  "frozen_protocol_sha256": "18ce43a3f68bd31caf38eeaf5365957ae74fa35ea7f47a2742b9636f63a545c5",
+  "generator_sha256": "8a2e451a1f44cabb5b9f6bb7637b3554cc8f438ab48cbd4d7471c735aaef8d55",
+  "step_sha256": "fc4178769862d39bf1eee881391de2852e4fc0e4424af4e5c1814981737365de",
+  "feature_identity_generator_sha256": "dcbd76762a9e5a1d16455cdb8581c11a14be791661bc950e7c5d14fb01650125",
+  "feature_identity_checker_sha256": "323efefb86a76c5ce186a8ef814189d56c9a91840dee07806835ba7bb8123429",
+  "warning": "PRELIMINARY - TARGETED CURVED-MESH METHOD EVIDENCE ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

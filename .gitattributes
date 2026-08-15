@@ -40,6 +40,10 @@ electrical/vendor/**/*.step binary
 release/**/*.zip binary
 release/**/*.csv text eol=lf
 release/**/*.md text eol=lf
+mechanical/analysis/hr-v0-j2-numerical-backend-p0.1/analysis-status.json text eol=crlf
+mechanical/analysis/hr-v0-j2-numerical-backend-p0.1/README.md text eol=crlf
+release/hr-v0/j2-numerical-backend-p0.1/analysis-status.json text eol=crlf
+release/hr-v0/j2-numerical-backend-p0.1/README.md text eol=crlf
 release/hr-v0/watchdog-pcb-fabrication-candidate-p0.1/cam/drill/*-drl_map.svg binary
 release/hr-v0/watchdog-pcb-cam-p0.1/cam/** binary
 release/hr-v0/watchdog-pcb-cam-p0.1/*.json text eol=lf

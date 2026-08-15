@@ -1,0 +1,7 @@
+screen_id,item,demand,capacity_or_limit,ratio,result
+SUP-LC-01,proof-screen moment,15.0525 N m,same 3.0 x R57 2.25-gravity shoulder screen,1.0000 applied,PROJECT PROOF LOAD CANDIDATE; QUALIFIED ACCEPTANCE OPEN
+SUP-LC-02,M8 vertical couple,250.88 N at 60.0 mm spacing,T-slot pullout/slip capacity not published for this application,SELECTION REQUIRED,PHYSICAL PROOF AND QUALIFIED ANALYSIS REQUIRED
+SUP-LC-03,MV0-C05 M8-hole average bearing,3.2794 MPa,240.0 MPa required MTR yield,73.18,ANALYTICAL SCREEN PASS; PRYING/PRELOAD/PROOF OPEN
+SUP-LC-04,MV0-C05 net-section average stress,0.7057 MPa,240.0 MPa required MTR yield,340.09,ANALYTICAL SCREEN PASS; LOCAL BENDING/FATIGUE/PROOF OPEN
+SUP-LC-05,40-4040 column global bending,2.1836 MPa,172.37 MPa live-page published yield,78.94,GLOBAL SCREEN PASS; T-SLOT/JOINT/DEFLECTION/PROOF OPEN
+SUP-LC-06,S102/MV0-C05 M2.5 row,470.39 N per screw at 16 mm row spacing,shares existing adapter M2.5 analytical screen,1.40,ANALYTICAL SCREEN PASS; RECEIVED STACK/PROOF OPEN

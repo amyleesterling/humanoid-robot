@@ -1,0 +1,5 @@
+activity,permitted,boundary,warning
+read-only engineering/configuration review,TRUE,repository and current primary-source evidence only,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+procurement/fabrication/assembly/connection/testing,FALSE,"received, physical and qualified evidence remains open","PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+plugging in either E2 adapter,FALSE,requires complete EG-021 evidence and signed EG-022 authorization,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+actuator power/motion/energization,FALSE,PSA1 and actuator network are prohibited and physically absent at E2,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

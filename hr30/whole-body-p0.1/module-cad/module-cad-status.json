@@ -1,0 +1,20 @@
+{
+  "identifier": "HR30-MODULE-CAD-EXPORTS-P0.1",
+  "module_count": 12,
+  "fabrication_step_count": 12,
+  "integration_reference_step_count": 12,
+  "fabrication_part_ownership_count": 98,
+  "exploded_step_present": true,
+  "exploded_glb_present": true,
+  "exploded_glb_display_linear_tolerance_mm": 0.5,
+  "exploded_glb_display_angular_tolerance_rad": 0.25,
+  "drawings_released": false,
+  "materials_selected": false,
+  "fasteners_selected": false,
+  "structural_capacity_validated": false,
+  "fabrication_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false,
+  "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

@@ -1,0 +1,22 @@
+{
+  "identifier": "HR-V0-FW-MECH-SRC-BIND-P0.1",
+  "round": "R245",
+  "date": "2026-08-11",
+  "source_binding_manifest_sha256": "5adc34ff41f2f84b1d8cf60e2a95b6f93ebc8eba1f2ac6b93642dd429b237c8a",
+  "source_records": 8,
+  "source_hashes_verified": true,
+  "firmware_configurations_bound": 2,
+  "source_identity_complete": true,
+  "physical_acceptance_hash_present": false,
+  "release_state": "CANDIDATE-NOT-RELEASED",
+  "open_holds": 5,
+  "procurement_authorized": false,
+  "fabrication_authorized": false,
+  "assembly_authorized": false,
+  "connection_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HR-V0 Raspberry Pi observation pin map P0.1</title>
+  <style>
+    :root{--sky:#9bdcff;--blue:#0b4f8a;--deep:#082b55;--gold:#f5bd32;--paper:#f7fbff;--ink:#10243a;--muted:#415b73;--line:#a9c5dc;--hold:#fff4cf}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}header{background:linear-gradient(135deg,var(--deep),var(--blue));color:white;padding:clamp(24px,5vw,64px)}header>div,main{max-width:1180px;margin:auto}.warning{background:var(--gold);color:#10243a;font-weight:800;padding:14px 18px;border:3px solid var(--deep)}h1{font-size:clamp(32px,5vw,58px);line-height:1.05;margin:24px 0 12px}h2{font-size:clamp(24px,3vw,34px);line-height:1.2;color:var(--deep);margin:40px 0 14px}h3{font-size:21px;color:var(--deep)}p{max-width:78ch}.lede{font-size:20px;max-width:72ch}.meta{font-size:14px;color:#d7edff}main{padding:24px clamp(16px,4vw,52px) 72px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}.card{background:white;border:2px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 5px 0 #d7e8f4}.card strong{display:block;color:var(--deep);font-size:20px}.hold{background:var(--hold);border-color:#d69b00}.pinboard{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:780px;background:#dfeef8;border:3px solid var(--deep);border-radius:16px;padding:14px}.pin{min-height:72px;background:white;border:2px solid var(--line);border-radius:10px;padding:10px;display:flex;align-items:center;gap:10px}.pin .number{display:grid;place-items:center;min-width:38px;height:38px;border-radius:50%;background:#e7f2f9;border:2px solid var(--deep);font-weight:800}.pin.selected{border-color:var(--blue);background:var(--sky)}.pin.power{border-color:#b47b00;background:#fff0bc}.pin.heartbeat{border-color:#865e00;background:#ffe083}.pin small{display:block;font-size:14px;color:var(--muted)}.legend{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}.legend button{font:inherit;font-weight:700;border:2px solid var(--deep);border-radius:999px;background:white;padding:9px 14px;cursor:pointer}.legend button[aria-pressed="true"]{background:var(--deep);color:white}.table-wrap{overflow:auto;border:2px solid var(--line);border-radius:12px;background:white}table{border-collapse:collapse;width:100%;min-width:760px}th,td{text-align:left;vertical-align:top;padding:13px;border-bottom:1px solid var(--line)}th{background:var(--deep);color:white}code{font-size:14px;background:#e8f2f8;padding:2px 5px;border-radius:4px}.foot{font-size:14px;color:var(--muted);margin-top:36px}@media(max-width:650px){.pinboard{gap:5px;padding:8px}.pin{min-height:84px;padding:7px;align-items:flex-start}.pin .number{min-width:32px;height:32px}.pin small{font-size:14px}}
+  </style>
+</head>
+<body>
+<header><div>
+  <div class="warning">PRELIMINARY — NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION</div>
+  <h1>Raspberry Pi observation pin map</h1>
+  <p class="lede">R203 freezes six observation-carrier terminals onto the Pi 5 header while keeping the cable, installed GPIO device, boot configuration and every physical test on hold.</p>
+  <p class="meta">HR-V0-RUNTIME-OBS-PINMAP-P0.1 · 2026-08-10 · zero motion authority · zero functional-safety credit</p>
+</div></header>
+<main>
+  <section class="cards" aria-label="Status summary">
+    <article class="card"><strong>Four inputs allocated</strong>GPIO22–GPIO25 map to physical pins 15, 16, 18 and 22.</article>
+    <article class="card"><strong>Heartbeat preserved</strong>GPIO17 remains physical pin 11. It does not collide with the diagnostic inputs.</article>
+    <article class="card hold"><strong>Eight holds open</strong>No mating connector, harness, target gpiochip, overlay readback, HIL or work authority exists.</article>
+  </section>
+
+  <h2>Interactive 40-pin header</h2>
+  <p>Select a view. Physical pin numbers are authoritative for connector orientation; GPIO numbers are BCM/RP1 line allocations inside the still-unselected RP1 gpiochip.</p>
+  <div class="legend" aria-label="Pin filters">
+    <button data-filter="all" aria-pressed="true">All selected pins</button>
+    <button data-filter="observation" aria-pressed="false">Observation inputs</button>
+    <button data-filter="heartbeat" aria-pressed="false">Heartbeat</button>
+    <button data-filter="power" aria-pressed="false">Power and returns</button>
+  </div>
+  <div class="pinboard" id="pinboard" aria-label="Raspberry Pi 40-pin header mapping"></div>
+
+  <h2>Carrier-to-Pi mapping</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Carrier</th><th>Purpose</th><th>Pi physical pin</th><th>BCM/RP1</th><th>State</th></tr></thead>
+    <tbody>
+      <tr><td>JLOGIC1.1</td><td>Carrier 3.3 V candidate</td><td>17</td><td>Power rail</td><td>Source-frozen; power evidence open</td></tr>
+      <tr><td>JLOGIC1.2</td><td>Compute return</td><td>20</td><td>Ground</td><td>Grounding evidence open</td></tr>
+      <tr><td>JLOGIC1.3</td><td>SR1 status</td><td>15</td><td>GPIO22</td><td>Active-high input candidate</td></tr>
+      <tr><td>JLOGIC1.4</td><td>SRA1 status</td><td>16</td><td>GPIO23</td><td>Active-high input candidate</td></tr>
+      <tr><td>JLOGIC1.5</td><td>K1 status</td><td>18</td><td>GPIO24</td><td>Active-high input candidate</td></tr>
+      <tr><td>JLOGIC1.6</td><td>K2 status</td><td>22</td><td>GPIO25</td><td>Active-high input candidate</td></tr>
+      <tr><td>JWH1.1 / JWH1.2</td><td>Ordinary heartbeat / return</td><td>11 / 6</td><td>GPIO17 / ground</td><td>Existing allocation; waveform/HIL open</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Conflict that prevents release</h2>
+  <div class="cards">
+    <article class="card hold"><strong>JTAG</strong>Raspberry Pi documents <code>enable_jtag_gpio=1</code> as claiming GPIO22–GPIO27. The installed image must prove this is disabled.</article>
+    <article class="card hold"><strong>DPI and other overlays</strong>GPIO17 and GPIO22–25 have alternate functions. Repository search is not installed-target evidence.</article>
+    <article class="card hold"><strong>gpiochip enumeration</strong><code>/dev/gpiochip*</code>, chip label, line ownership and pulls must come from the exact installed kernel and device tree.</article>
+  </div>
+
+  <h2>What remains before connection</h2>
+  <p>An exact retained Pi-side connector or adapter, wire and terminal construction, mechanical routing, target-image readback, startup/brownout/no-back-power traces, isolated HIL, and qualified review are all still required. Loose individual jumper wires are not a released harness.</p>
+  <p class="foot">Passing the source checker proves configuration consistency only. It does not authorize a purchase, cable build, connection, powered test, motion or energization.</p>
+</main>
+<script>
+const selected={6:{label:'GND · heartbeat return',kind:'power'},11:{label:'GPIO17 · heartbeat',kind:'heartbeat'},15:{label:'GPIO22 · SR1',kind:'observation'},16:{label:'GPIO23 · SRA1',kind:'observation'},17:{label:'3V3 · carrier supply',kind:'power'},18:{label:'GPIO24 · K1',kind:'observation'},20:{label:'GND · carrier return',kind:'power'},22:{label:'GPIO25 · K2',kind:'observation'}};
+const board=document.getElementById('pinboard');
+for(let row=1;row<=20;row++){for(const n of [row*2-1,row*2]){const d=document.createElement('div');const item=selected[n];d.className='pin'+(item?' selected '+item.kind:'');d.dataset.kind=item?.kind||'unused';d.innerHTML=`<span class="number">${n}</span><span>${item?item.label:'Not allocated by R203'}<small>${item?'Controlled candidate':'Shown only for orientation'}</small></span>`;board.appendChild(d)}}
+document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{const filter=button.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===button)));document.querySelectorAll('.pin').forEach(pin=>{const show=filter==='all'?pin.dataset.kind!=='unused':pin.dataset.kind===filter;pin.style.opacity=show?'1':'.2'})}));
+</script>
+</body></html>

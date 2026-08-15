@@ -1,0 +1,18 @@
+{
+  "board_width_mm": 65.0,
+  "board_height_mm": 56.5,
+  "copper_layers": 2,
+  "mounted_components": 2,
+  "mounting_holes": 4,
+  "routed_nets": 6,
+  "unused_header_positions": 34,
+  "fabrication_authorized": false,
+  "connection_authorized": false,
+  "energization_authorized": false,
+  "track_segments": 28,
+  "vias": 12,
+  "erc_errors": 0,
+  "erc_warnings": 0,
+  "drc_violations": 0,
+  "holds_open": 10
+}

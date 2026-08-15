@@ -1,0 +1,23 @@
+{
+  "identifier": "HR-V0-J2-C07-FIXED-CORNER-SCREEN-P0.1",
+  "round": "R284-DEVELOPMENT",
+  "screen_id": "R284-V08-ULTRAFINE",
+  "step_sha256": "fc4178769862d39bf1eee881391de2852e4fc0e4424af4e5c1814981737365de",
+  "linear_corner_positions_preserved_within_tolerance": true,
+  "corner_bijection_tolerance_mm": 1e-09,
+  "corner_bijection_max_distance_mm": 0.0,
+  "linear_sicn_screen_pass": true,
+  "curved_jacobian_screen_pass": false,
+  "bounded_fixed_corner_sampled_jacobian_candidate_pass": false,
+  "r279_c02_complete": false,
+  "mesh_convergence_complete": false,
+  "r278_h02_closed": false,
+  "capacity_established": false,
+  "selected": false,
+  "safety_credit": false,
+  "fabrication_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "warning": "PRELIMINARY - FIXED-CORNER CURVED-MESH DEVELOPMENT SCREEN ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

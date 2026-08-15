@@ -1,0 +1,20 @@
+{
+  "identifier": "HR-V0-A04-JOINT-P0.1",
+  "round": "R274",
+  "date": "2026-08-12",
+  "parent_cad": "HR-V0-ARM-ARCH-P0.12-ACCESS-WELL-STOP-CANDIDATE",
+  "candidate_lines": 5,
+  "source_records": 8,
+  "analytical_screens": 6,
+  "torque_trials": 12,
+  "open_holds": 12,
+  "acceptance_rows": 12,
+  "hardware_selected": false,
+  "procurement_authorized": false,
+  "assembly_authorized": false,
+  "powered_testing_authorized": false,
+  "motion_authorized": false,
+  "energization_authorized": false,
+  "safety_credit": false,
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

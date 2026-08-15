@@ -1,0 +1,52 @@
+{
+  "identifier": "HR-V0-J2-C07-FIXED-CORNER-SCREEN-P0.1",
+  "screen_id": "R284-V08-ULTRAFINE",
+  "run_started_timestamp_utc": "2026-08-13T03:32:38.910274+00:00",
+  "run_completed_timestamp_utc": "2026-08-13T03:35:18.979043+00:00",
+  "command_argv": [
+    "C:\\Users\\amyle\\Documents\\New project\\.venvs\\hr-v0-cad\\Scripts\\python.exe",
+    "tools/generate_hr_v0_j2_c07_fixed_corner_screen_p01.py",
+    "R284-V08-ULTRAFINE"
+  ],
+  "working_directory": "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish",
+  "baseline_commit": "83b2cb206af11087a26001aff5240a888ec86864",
+  "git_worktree_dirty": true,
+  "git_status_porcelain": [
+    "?? mechanical/analysis/hr-v0-j2-c07-constrained-high-order-p0.1/",
+    "?? mechanical/analysis/hr-v0-j2-c07-failure-localization-p0.1/",
+    "?? mechanical/analysis/hr-v0-j2-c07-fixed-corner-screen-p0.1/",
+    "?? release/hr-v0/j2-c07-constrained-high-order-p0.1/",
+    "?? release/hr-v0/j2-c07-failure-localization-p0.1/",
+    "?? tools/check_hr_v0_j2_c07_constrained_high_order_p01.py",
+    "?? tools/check_hr_v0_j2_c07_failure_localization_p01.py",
+    "?? tools/check_hr_v0_j2_c07_fixed_corner_screen_p01.py",
+    "?? tools/check_hr_v0_j2_curved_mesh_development_p01.py",
+    "?? tools/generate_hr_v0_j2_c07_constrained_high_order_p01.py",
+    "?? tools/generate_hr_v0_j2_c07_failure_localization_p01.py",
+    "?? tools/generate_hr_v0_j2_c07_fixed_corner_screen_p01.py",
+    "?? tools/publish_hr_v0_j2_c07_constrained_high_order_p01.py",
+    "?? tools/publish_hr_v0_j2_curved_mesh_development_p01.py"
+  ],
+  "git_status_porcelain_sha256": "d9576e7d16037483816b75bf8904f3cbb2f86533adb37f3b21b663142631c705",
+  "git_status_untracked_scope": "normal",
+  "python_executable": "C:\\Users\\amyle\\Documents\\New project\\.venvs\\hr-v0-cad\\Scripts\\python.exe",
+  "python_version": "3.12.13",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 85 Stepping 7, GenuineIntel",
+  "gmsh_version": "4.15.2",
+  "numpy_version": "2.4.6",
+  "scipy_version": "1.18.0",
+  "scikit_fem_version": "12.0.2",
+  "return_code_recorded_after_execution": 2,
+  "general_num_threads": 1,
+  "mesh_random_factor": "GMSH DEFAULT; SEED CONTROL NOT EXPOSED IN THIS TOOL - REPEATABILITY HOLD OPEN",
+  "algorithm3d": 1,
+  "linear_optimizer": "Netgen",
+  "high_order_optimizer": "NONE",
+  "effective_size_fields": {
+    "global_h_mm": 2.0,
+    "pocket_h_mm": 0.35,
+    "hole_h_mm": 0.5
+  },
+  "warning": "PRELIMINARY - FIXED-CORNER CURVED-MESH DEVELOPMENT SCREEN ONLY - NOT APPROVED FOR PROCUREMENT, QUOTATION, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

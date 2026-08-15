@@ -1,0 +1,2 @@
+route,r205_manhattan_screen_mm,bend_count,candidate_min_stationary_bend_radius_mm,rounded_centerline_screen_mm,equation,cut_length_mm,unknown_addends,state,warning
+XT1 to OBS1 JFIELD1,276.0,2,15.0,263.1,276 + 2*(pi/2 - 2)*15,SELECTION REQUIRED,exact XT1 coordinates; received connector exits; service loop; termination allowance; strain relief; tolerance,GEOMETRIC SCREEN ONLY - DO NOT CUT,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"

@@ -1,0 +1,2 @@
+net,r202_load_screen,basis,cable_drop,pi_external_load_approval,back_power_behavior,state,warning
+PI_3V3_CANDIDATE,<=5.0 mA calculation screen,2 x 1.9 mA max ISO1212 logic ICC1 plus <=4 x 3.3 V / 11 kohm,SELECTION REQUIRED - manufacturer DCR and measured cut length not frozen,NOT ESTABLISHED,NOT ESTABLISHED,SOURCE LOAD SCREEN ONLY,"PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
