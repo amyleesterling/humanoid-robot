@@ -307,5 +307,11 @@
   "axis_commissioning_physically_validated": false,
   "axis_commissioning_connection_authority": false,
   "axis_commissioning_energization_authority": false,
-  "axis_commissioning_proposed_global_id_count": 25
+  "axis_commissioning_proposed_global_id_count": 25,
+  "axis_commissioning_no_motion_fixture_present": true,
+  "axis_commissioning_guarded_model_count": 4,
+  "axis_commissioning_read_only_inspector_present": true,
+  "axis_commissioning_device_write_api_present": false,
+  "axis_commissioning_fixture_physically_validated": false,
+  "axis_commissioning_host_software_approved": false
 }

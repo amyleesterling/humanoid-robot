@@ -18,5 +18,13 @@
   "connection_authority": false,
   "powered_test_authority": false,
   "motion_authority": false,
-  "energization_authority": false
+  "energization_authority": false,
+  "no_motion_fixture_design_present": true,
+  "guarded_actuator_model_count": 4,
+  "guarded_fixture_form_factor_count": 3,
+  "read_only_inspector_present": true,
+  "read_only_inspector_device_write_api_present": false,
+  "read_only_inspector_offline_test_passed": true,
+  "mechanical_restraint_physically_validated": false,
+  "host_software_environment_approved": false
 }

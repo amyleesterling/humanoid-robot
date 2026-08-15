@@ -1,0 +1,20 @@
+{
+  "identifier": "HR30-NO-MOTION-INSPECTION-P0.1",
+  "warning": "PRELIMINARY - NO-MOTION INSPECTION CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "model_count": 4,
+  "physical_form_factor_count": 3,
+  "sha_bound_vendor_geometry": true,
+  "guarded_fixture_cad_present": true,
+  "read_only_inspector_present": true,
+  "device_write_api_present": false,
+  "broadcast_or_scan_path_present": false,
+  "offline_simulation_passed": true,
+  "received_fit_validated": false,
+  "fixture_retention_validated": false,
+  "software_environment_approved": false,
+  "hardware_inspection_executed": false,
+  "connection_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false
+}

@@ -1,0 +1,8 @@
+source_id,official_url,record,revision_or_date
+XH540-W270-R,https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/,current ROBOTIS model page and SHA-bound manufacturer STEP,live official Docs; accessed 2026-08-15; visible page revision not stated
+XM540-W270-R,https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/,current ROBOTIS model page and SHA-bound manufacturer STEP,live official Docs; accessed 2026-08-15; visible page revision not stated
+XM430-W350-R,https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/,current ROBOTIS model page and SHA-bound manufacturer STEP,live official Docs; accessed 2026-08-15; visible page revision not stated
+XC330-T288-T,https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/,current ROBOTIS model page and SHA-bound manufacturer STEP,live official Docs; accessed 2026-08-15; visible page revision not stated
+DXL-PROTOCOL-2,https://docs.robotis.com/docs/dxl/protocol/protocol2/,Protocol 2.0 read instruction and explicit device addressing,live official Docs; accessed 2026-08-15
+DXL-SDK,https://docs.robotis.com/docs/software/dynamixel_sdk/overview/,official Python-capable DYNAMIXEL SDK overview,live official Docs; accessed 2026-08-15
+DXL-SDK-SOURCE,https://github.com/ROBOTIS-GIT/DynamixelSDK,official source repository; release 4.0.5 shown 2026-05-06,accessed 2026-08-15; exact installed version remains approval input

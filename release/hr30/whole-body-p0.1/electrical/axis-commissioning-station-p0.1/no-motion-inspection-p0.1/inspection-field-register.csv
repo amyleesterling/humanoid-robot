@@ -1,0 +1,10 @@
+field,address,size_bytes,scale,access_used,model_scope
+model_number,0,2,1,READ ONLY,all four candidates; received firmware/control-table match required
+firmware_version,6,1,1,READ ONLY,all four candidates; received firmware/control-table match required
+configured_id,7,1,1,READ ONLY,all four candidates; received firmware/control-table match required
+baud_rate_code,8,1,1,READ ONLY,all four candidates; received firmware/control-table match required
+protocol_type,13,1,1,READ ONLY,all four candidates; received firmware/control-table match required
+torque_enable,64,1,1,READ ONLY,all four candidates; received firmware/control-table match required
+hardware_error_status,70,1,1,READ ONLY,all four candidates; received firmware/control-table match required
+present_input_voltage,144,2,0.1,READ ONLY,all four candidates; received firmware/control-table match required
+present_temperature,146,1,1,READ ONLY,all four candidates; received firmware/control-table match required
