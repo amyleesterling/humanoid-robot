@@ -28,7 +28,8 @@ def sha(path: Path) -> str:
 def main() -> int:
     status = json.loads((OUT / "harness-status.json").read_text(encoding="utf-8"))
     assert status["assembly_count"] == 1 and status["conductor_count"] == 2 and status["physical_connector_contact_count"] == 4
-    assert status["exact_mini_fit_tool_candidate_selected"] and status["exact_cut_and_strip_definition_present"]
+    assert status["exact_mini_fit_tool_candidate_selected"] and status["exact_inspection_tool_candidates_selected"]
+    assert status["exact_cut_and_strip_tool_candidates_selected"] and status["exact_cut_and_strip_definition_present"]
     assert status["assembly_traveler_step_count"] == 10 and status["as_built_record_count"] == 13
     assert status["manufacturer_assembled_source_end_selected"] and status["source_end_termination_process_selected"]
     for key in ("received_lead_compatibility_validated", "physical_assembly_executed", "inspection_executed", "qualified_review_complete", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"):
@@ -47,18 +48,29 @@ def main() -> int:
     assert j1["1"]["function"] == "GND" and j1["1"]["wire_id"] == "BH-W02"
     assert j1["2"]["function"] == "VDD" and j1["2"]["wire_id"] == "BH-W01"
     tools = rows("tooling-register.csv")
-    assert len(tools) == 5 and any(r["order_code"] == "63819-0901" and "39-00-0038" in r["application"] for r in tools)
+    assert len(tools) == 6 and any(r["order_code"] == "63819-0901" and "39-00-0038" in r["application"] for r in tools)
     assert any(r["order_code"] == "11-03-0044" and "must not be reused" in r["application"] for r in tools)
+    exact_tools = {r["tool_id"]: r for r in tools}
+    assert exact_tools["BH-T03"]["order_code"] == "342-271-30" and "0.001 mm" in exact_tools["BH-T03"]["description"]
+    assert exact_tools["BH-T04"]["order_code"] == "WT-205M + CERT" and "25 +/-6 mm/min" in exact_tools["BH-T04"]["application"]
+    assert exact_tools["BH-T05"]["order_code"] == "95 11 165"
+    assert exact_tools["BH-T06"]["order_code"] == "12 12 14" and "silicone" in exact_tools["BH-T06"]["description"]
+    assert all("SELECTION REQUIRED" not in r["order_code"] for r in tools)
     traveler = rows("assembly-traveler.csv")
     assert len(traveler) == 10 and [r["step"] for r in traveler] == [f"A{i:02d}" for i in range(1, 11)]
     assert all(r["state"] == "NOT EXECUTED" and r["stop_rule"] for r in traveler)
+    assert "25 +/-6 mm/min" in next(r for r in traveler if r["step"] == "A04")["acceptance"]
     records = rows("as-built-record.csv")
     assert len(records) == 13 and all(r["observed_value"] == "NOT RECORDED" and r["result"] == "OPEN" for r in records)
     assert {r["record_id"] for r in records} == {f"BH-R{i:02d}" for i in range(1, 14)}
     sources = rows("primary-source-register.csv")
-    assert len(sources) == 7 and all(r["official_url"].startswith("https://") and r["document"] and r["document_date"] for r in sources)
+    assert len(sources) == 11 and all(r["official_url"].startswith("https://") and r["document"] and r["document_date"] for r in sources)
     assert any(r["source_id"] == "MOLEX-TOOL" and r["document"] == "638190901 Rev D" and r["document_date"] == "2025-03-31" for r in sources)
     assert {r["source_id"] for r in sources} >= {"MUELLER-LEAD", "MUELLER-LIST"}
+    assert {r["source_id"] for r in sources} >= {"MITUTOYO-CRIMP", "MARK10-PULL", "KNIPEX-CUT", "KNIPEX-STRIP"}
+    bom = rows("candidate-bom.csv")
+    assert len(bom) == 12
+    assert {r["order_code"] for r in bom} >= {"342-271-30", "WT-205M", "CERT", "95 11 165", "12 12 14"}
     holds = rows("open-holds.csv")
     assert len(holds) == 6 and all(r["state"] == "OPEN" and "NO CONNECTION" in r["authority"] for r in holds)
     svg = (OUT / "bench-harness.svg").read_text(encoding="utf-8")
@@ -66,6 +78,7 @@ def main() -> int:
     web = (OUT / "index.html").read_text(encoding="utf-8")
     assert "font:clamp(16px" in web and "font-size:14px" in web and "overflow:auto" in web
     assert "Two wires. One keyed input. Zero guessed contacts." in web and "Still not permission to build or connect" in web
+    assert all(token in web for token in ("342-271-30", "WT-205M + CERT", "25 +/-6 mm/min", "95 11 165", "12 12 14"))
     manifest = rows("file-manifest.csv")
     source_files = sorted(p.relative_to(OUT).as_posix() for p in OUT.rglob("*") if p.is_file())
     release_files = sorted(p.relative_to(REL).as_posix() for p in REL.rglob("*") if p.is_file())
@@ -76,10 +89,13 @@ def main() -> int:
     assert source_files == release_files and all(sha(OUT / p) == sha(REL / p) for p in source_files)
     station_status = json.loads((STATION / "commissioning-status.json").read_text(encoding="utf-8"))
     assert station_status["bench_harness_design_present"] and station_status["bench_harness_exact_mini_fit_tool_selected"]
+    assert station_status["bench_harness_exact_inspection_tools_selected"] and station_status["bench_harness_exact_preparation_tools_selected"]
     assert station_status["bench_harness_manufacturer_assembled_source_end_selected"] and station_status["bench_harness_source_end_process_selected"]
     assert not station_status["bench_harness_received_lead_compatibility_validated"] and not station_status["bench_harness_physically_assembled"]
     root_status = json.loads((WB / "package-status.json").read_text(encoding="utf-8"))
     assert root_status["axis_commissioning_bench_harness_present"] and root_status["axis_commissioning_bench_harness_contact_map_complete"]
+    assert root_status["axis_commissioning_bench_harness_exact_inspection_tools_selected"]
+    assert root_status["axis_commissioning_bench_harness_exact_preparation_tools_selected"]
     assert root_status["axis_commissioning_bench_harness_manufacturer_assembled_source_end_selected"]
     assert root_status["axis_commissioning_bench_harness_source_end_process_selected"]
     assert not root_status["axis_commissioning_bench_harness_received_lead_compatibility_validated"]

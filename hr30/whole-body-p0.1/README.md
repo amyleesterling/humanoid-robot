@@ -22,7 +22,6 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
 
 The former empty torso, pelvis, head and foot reservations now contain 58 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.460 kg. Five routed 124 x 45 mm branch-PDU instances are now visibly installed in the pelvis, torso and both thighs. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
 
-
 ## Located joint fastener candidates
 
 The whole-body joint carriers now contain 156 explicit M3/M4/M5 socket-head geometry candidates across 39 plates. Every screw axis is generated from the same joint datum and carrier pattern as the body CAD. The 0.554 kg generic-steel screen is included in mass reconciliation, but exact products, threads, tapped members, torque, preload, locking, access and physical proof remain open.
@@ -127,19 +126,11 @@ The [joint-hardware manufacturing guide](joint-hardware-manufacturing-p0.1/index
 
 This corrects the manufacturing-universe boundary: the 98 body/frame/hand parts were never the complete robot. Joint fits, shoulders, retention, toothed pulley products, actuator adapters, materials, tolerances, DFM, FAI and structural proof remain open.
 
-
-
-
-
-
-
 <!-- HR30-AXIS-COMMISSION-START -->
 ## One-axis first-power station
 
 The whole-body package now includes a removable, source-limited commissioning station rather than relying on the unreleased walking-power tree for first inspection. It uses a safety-listed Keysight E36313A candidate, ROBOTIS U2D2/Power Hub, exact X3P/X4P cable families, a native four-child-sheet KiCad design, printable tray/cover files and a 25-axis work order. Candidate first power is one mechanically restrained, whole-body-disconnected actuator at 11.0 V / 0.25 A with read-only telemetry and Torque Enable required to read zero. Qualified review, received-hardware inspection, calibration, restraint and separately signed connection/energization authority remain open. See `electrical/axis-commissioning-station-p0.1/index.html`.
 <!-- HR30-AXIS-COMMISSION-END -->
-
-
 
 <!-- NO-MOTION-P01 START -->
 ## Guarded actuator inspection
@@ -150,5 +141,5 @@ The whole-body commissioning path now includes exact-envelope, horn-free output 
 <!-- BENCH-HARNESS-P01 START -->
 ## Commissioning bench harness
 
-The one-axis station now includes an assembly-controlled two-wire source harness with exact manufacturer-assembled Mueller source leads, Mini-Fit polarity, sacrificial tin-dipped-tip removal, 18 AWG wire preparation, candidate tooling, inspection traveler and as-built record. Received lead compatibility, physical fabrication, qualified review and every connection/powered-test/motion/energization authority remain open.
+The one-axis station now includes an assembly-controlled two-wire source harness with exact manufacturer-assembled Mueller source leads, Mini-Fit polarity, sacrificial tin-dipped-tip removal, exact candidate crimp/measurement/pull/cut/strip tools, a controlled 25 +/-6 mm/min destructive-pull method, inspection traveler and as-built record. Receipt, calibration, lead/tool compatibility, physical fabrication, qualified review and every connection/powered-test/motion/energization authority remain open.
 <!-- BENCH-HARNESS-P01 END -->

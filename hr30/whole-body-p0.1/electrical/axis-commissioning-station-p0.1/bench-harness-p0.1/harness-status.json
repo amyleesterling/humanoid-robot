@@ -5,6 +5,8 @@
   "conductor_count": 2,
   "physical_connector_contact_count": 4,
   "exact_mini_fit_tool_candidate_selected": true,
+  "exact_inspection_tool_candidates_selected": true,
+  "exact_cut_and_strip_tool_candidates_selected": true,
   "exact_cut_and_strip_definition_present": true,
   "assembly_traveler_step_count": 10,
   "as_built_record_count": 13,
