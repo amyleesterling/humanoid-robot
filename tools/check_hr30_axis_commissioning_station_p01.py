@@ -5,7 +5,9 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import html
 import json
+import re
 from pathlib import Path
 
 import cadquery as cq
@@ -72,6 +74,9 @@ def main() -> int:
     web = (OUT / "index.html").read_text(encoding="utf-8")
     assert "font:clamp(16px" in web and "font-size:14px" in web
     assert "First power, one actuator at a time" in web and "does not authorize energization" in web
+    drawing_refs = [html.unescape(path) for path in re.findall(r'data="output/([^"]+\.svg)"', web)]
+    assert len(drawing_refs) == 4 and len(set(drawing_refs)) == 4
+    assert all((OUT / "output" / path).is_file() for path in drawing_refs)
     root_status = json.loads((WB / "package-status.json").read_text(encoding="utf-8"))
     assert root_status["axis_commissioning_station_present"] is True
     assert root_status["axis_commissioning_axis_count"] == 25
