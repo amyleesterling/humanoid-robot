@@ -1,0 +1,11 @@
+hold_id,unresolved_selection_or_evidence,state,authority
+H01,"facility mains disconnect, branch protection, cable and Boston jurisdictional installation",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+H02,"RSP-500-12 adjustment lock, inrush, thermal rise, source current limiting and regeneration response",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+H03,"complete E-stop order code, reset terminals, PNOZ mode setting, contact protection and whole-machine safety validation",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+H04,"GV121CAC received-terminal identification, DC interruption duty, auxiliary suitability, fault current, life and common-cause analysis",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+H05,"all six MIDI fuse order codes and values, interrupt ratings and coordination",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+H06,"all tether/branch conductors, lugs, ferrules, torque, temperature, bundling, flex and strain relief",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+H07,"single proposed 0 V/frame star point, PE/frame bonding, shield terminations and enclosure bond",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+H08,"power-loss, regeneration, stopping time, contactor opening time and branch-disable sequencing",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+H09,"external-panel thermal analysis, spacing, wireways, touch protection, labels and qualified drawing review",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+H10,"robot distributor fit, access, cover retention, crash/fall loads, ingress and thermal proof",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"

@@ -17,7 +17,7 @@ P0.1 now also includes floating-base 25-DOF URDF and MJCF models, a historical 9
 P0.1 now includes an editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable body panels, both seventeen-part custom gripper mechanisms, and twelve segregated harness corridors. Separate neck data and actuator-power branches prevent the head actuators from borrowing the data-only corridor. The current mass candidate uses 1.5 mm limb/foot panels and 1.6 mm torso/pelvis/head shells; ribs, print/process qualification and impact stiffness remain open. The CAD density screen is 1.761 kg for fixed/mechanism parts and 0.542 kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; neither they nor the historical 9.63 kg allocation establish whole-robot mass closure. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
 ## Whole-body mass reconciliation
 
-The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 98 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 156 located screw candidates, 10 catalogue belt candidates and 58 located equipment/harness/contact items. The gross identified subtotal is 11.567 kg; the explicit per-link model plus 0.386 kg residual integration contingency is 11.953 kg with neutral COM Z=0.369 m. This includes the onboard pack/cassette/protection reservation and leaves 0.047 kg to the 12 kg P0.1 maximum. The 10 kg lightweight stretch objective remains open by 1.953 kg. Exact protection and received masses remain open.
+The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 98 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 156 located screw candidates, 10 catalogue belt candidates and 58 located equipment/harness/contact items. The gross identified subtotal is 11.542 kg; the explicit per-link model plus 0.384 kg residual integration contingency is 11.926 kg with neutral COM Z=0.369 m. This includes the onboard pack/cassette/protection reservation and leaves 0.074 kg to the 12 kg P0.1 maximum. The 10 kg lightweight stretch objective remains open by 1.926 kg. Exact protection and received masses remain open.
 ## Located joint fastener candidates
 
 The whole-body joint carriers now contain 156 explicit M3/M4/M5 socket-head geometry candidates across 39 plates. Every screw axis is generated from the same joint datum and carrier pattern as the body CAD. The 0.554 kg generic-steel screen is included in mass reconciliation, but exact products, threads, tapped members, torque, preload, locking, access and physical proof remain open.
@@ -54,8 +54,6 @@ The [interactive energy and safety guide](energy-safety-spine-p0.1/index.html) d
 
 The native KiCad topology correction is synchronized, but exact physical energy/safety terminals remain unselected. The 179 W operating and 727 W short-peak budgets are not source or wiring ratings. Protection, conductor sizing, fault current, stopping time, PE/0 V and functional-safety validation remain open. Reset can never command motion.
 
-
-
 ## Physical whole-body harness P0.1
 
 The [interactive physical harness guide](harness/physical-p0.1/index.html) translates the logical ECAD into 62 route segments: 12 reserved body corridors and two moving-loop candidates at every one of the 25 joint axes. It retains all 667 current logical terminals and binds every installed equipment item without inventing unresolved conductor sizes or protection values.
@@ -67,21 +65,9 @@ The P0.1 split-harness candidate uses 25 individual positive/return power pairs 
 The [detailed gripper package](grippers-p0.1/index.html) contains two editable 18-part symmetric rack-and-pinion assemblies. Each now uses a project-owned 20-degree, module-0.5 involute pinion and matching racks with a 0.08 mm nominal total tangential-backlash candidate. The OPEN assembly rotates its pinion 148.969 degrees for the 13 mm rack displacement. CAD-derived states provide an 8–34 mm pad gap over 26 mm total coupled stroke. Manufactured profile tolerance, fits, materials, exact actuator-horn adapter, calibration, sensing, pinch proof, endurance, DFM/FAI and physical validation remain open.
 <!-- HR30-GRIPPERS-P01-README-END -->
 
-<!-- HR30-LEG-DRIVETRAIN-P01-README-START -->
-## Reduced-leg drivetrain product geometry
 
-The [leg-drivetrain package](leg-drivetrain-p0.1/index.html) assigns every one of the ten belt-reduced leg axes to one of three editable 5GT/EV5GT modules. MISUMI 16/20/30/40-tooth P-bore-plus-tap pulley candidates, 225/250/255 mm by 9 mm belt candidates, solved 49.359/49.965/51.456 mm pitch centers and ROBOTIS horn-family boundaries replace the former ratio-only placeholders. The adapter package supplies nominal horn, stub, shaft, shoulder and capture geometry. Capacity, material, fits, tolerances, fasteners, tensioning, guarding and physical proof remain open.
-<!-- HR30-LEG-DRIVETRAIN-P01-README-END -->
-<!-- HR30-LEG-ADAPTERS-P01-README-START -->
-## Dimensioned leg-drive adapters
 
-The [leg-drive adapter guide](leg-drivetrain-adapters-p0.1/index.html) adds three editable horn-to-pulley adapters and two shouldered output-shaft/capture families. Exact HN12/HN13 STEP geometry and reference-drawing patterns control the motor interface; all ten reduced axes have an adapter allocation. Nominal geometry is complete, while material, tolerances, fits, fastener details, capacity and physical proof remain open.
-<!-- HR30-LEG-ADAPTERS-P01-README-END -->
-<!-- HR30-INSTALLED-LEG-DRIVES-P01-README-START -->
-## Product-specific leg drives installed in the whole body
 
-The [installed drivetrain guide](leg-drivetrain-installation-p0.1/index.html) replaces ten generic pulley/belt/motor placeholders in a derived complete humanoid assembly. Exact candidate P-bore pulleys, belts, HN12/HN13 horns, shifted manufacturer actuators, project motor adapters, shouldered output shafts, capture washers and guard envelopes occupy controlled external drive planes. All 45 inter-drive pairs have zero nominal common volume. Motion sweep, material, fits, tolerances, fasteners, cable/cover clearance, capacity and physical proof remain open.
-<!-- HR30-INSTALLED-LEG-DRIVES-P01-README-END -->
 
 
 
@@ -100,9 +86,161 @@ Five distributed instances of one editable six-channel native KiCad PDU candidat
 The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
 <!-- HR30-ASSEMBLY-GUIDE-P01-END -->
 
+## Whole-robot assembly traveler
+
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+<!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+
+
+
+
+
 ## Installed equipment layout
 
-The former empty torso, pelvis, head and foot reservations now contain 58 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.485 kg. Five routed 124 x 45 mm branch-PDU instances are now visibly installed in the pelvis, torso and both thighs. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+The former empty torso, pelvis, head and foot reservations now contain 58 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.460 kg. Five routed 124 x 45 mm branch-PDU instances are now visibly installed in the pelvis, torso and both thighs. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+
+
+
+## Whole-robot assembly traveler
+
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+<!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+
+## Whole-robot assembly traveler
+
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+<!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+
+
+
+
+
+## Installed equipment layout
+
+The former empty torso, pelvis, head and foot reservations now contain 58 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.460 kg. Five routed 124 x 45 mm branch-PDU instances are now visibly installed in the pelvis, torso and both thighs. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+
+
+
+
+
+
+
+
+## Whole-robot assembly traveler
+
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+<!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+
+
+## Whole-robot assembly traveler
+
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+<!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+
+## Whole-robot assembly traveler
+
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+<!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+
+
+
+
+
+## Installed equipment layout
+
+The former empty torso, pelvis, head and foot reservations now contain 58 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.460 kg. Five routed 124 x 45 mm branch-PDU instances are now visibly installed in the pelvis, torso and both thighs. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+
+
+
+## Whole-robot assembly traveler
+
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+<!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+
+## Whole-robot assembly traveler
+
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+<!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+
+
+
+
+
+## Installed equipment layout
+
+The former empty torso, pelvis, head and foot reservations now contain 58 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.460 kg. Five routed 124 x 45 mm branch-PDU instances are now visibly installed in the pelvis, torso and both thighs. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+<!-- HR30-GRIPPERS-P01-README-START -->
+## Detailed bilateral hand mechanisms
+
+The [detailed gripper package](grippers-p0.1/index.html) contains two editable 18-part symmetric rack-and-pinion assemblies. Each now uses a project-owned 20-degree, module-0.5 involute pinion and matching racks with a 0.08 mm nominal total tangential-backlash candidate. The OPEN assembly rotates its pinion 148.969 degrees for the 13 mm rack displacement. CAD-derived states provide an 8–34 mm pad gap over 26 mm total coupled stroke. Manufactured profile tolerance, fits, materials, exact actuator-horn adapter, calibration, sensing, pinch proof, endurance, DFM/FAI and physical validation remain open.
+<!-- HR30-GRIPPERS-P01-README-END -->
+
+
+
+
+
+
+
+## Whole-robot assembly traveler
+
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+<!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+
+## Whole-robot assembly traveler
+
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+<!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+
+
+
+
+
+## Installed equipment layout
+
+The former empty torso, pelvis, head and foot reservations now contain 58 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.460 kg. Five routed 124 x 45 mm branch-PDU instances are now visibly installed in the pelvis, torso and both thighs. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+
+
+
+## Whole-robot assembly traveler
+
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+<!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+
+## Whole-robot assembly traveler
+
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+<!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+
+
+
+
+
+## Installed equipment layout
+
+The former empty torso, pelvis, head and foot reservations now contain 58 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.460 kg. Five routed 124 x 45 mm branch-PDU instances are now visibly installed in the pelvis, torso and both thighs. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+
+
+<!-- HR30-LEG-DRIVETRAIN-P01-README-START -->
+## Reduced-leg drivetrain product geometry
+
+The [leg-drivetrain package](leg-drivetrain-p0.1/index.html) assigns every one of the ten belt-reduced leg axes to one of three editable 5GT/EV5GT modules. MISUMI 16/20/30/40-tooth P-bore-plus-tap pulley candidates, 225/250/255 mm by 9 mm belt candidates, solved 49.359/49.965/51.456 mm pitch centers and ROBOTIS horn-family boundaries replace the former ratio-only placeholders. The adapter package supplies nominal horn, stub, shaft, shoulder and capture geometry. Capacity, material, fits, tolerances, fasteners, tensioning, guarding and physical proof remain open.
+<!-- HR30-LEG-DRIVETRAIN-P01-README-END -->
+<!-- HR30-LEG-ADAPTERS-P01-README-START -->
+## Dimensioned leg-drive adapters
+
+The [leg-drive adapter guide](leg-drivetrain-adapters-p0.1/index.html) adds three editable horn-to-pulley adapters and two shouldered output-shaft/capture families. Exact HN12/HN13 STEP geometry and reference-drawing patterns control the motor interface; all ten reduced axes have an adapter allocation. Nominal geometry is complete, while material, tolerances, fits, fastener details, capacity and physical proof remain open.
+<!-- HR30-LEG-ADAPTERS-P01-README-END -->
+
+
+
+
+
+<!-- HR30-INSTALLED-LEG-DRIVES-P01-README-START -->
+## Product-specific leg drives installed in the whole body
+
+The [installed drivetrain guide](leg-drivetrain-installation-p0.1/index.html) replaces ten generic pulley/belt/motor placeholders in a derived complete humanoid assembly. Exact candidate P-bore pulleys, belts, HN12/HN13 horns, shifted manufacturer actuators, project motor adapters, shouldered output shafts, capture washers and guard envelopes occupy controlled external drive planes. All 45 inter-drive pairs have zero nominal common volume. Motion sweep, material, fits, tolerances, fasteners, cable/cover clearance, capacity and physical proof remain open.
+<!-- HR30-INSTALLED-LEG-DRIVES-P01-README-END -->
+
 <!-- HR30-ASSEMBLY-GUIDE-P01-START -->
 ## Whole-robot assembly traveler
 
@@ -111,8 +249,25 @@ The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 ph
 
 
 
+
+
+
+
+<!-- HR30-TETHER-POWER-START -->
+## Physical tether power core
+
+The P0.1 robot no longer contains an abstract high-current interruption module. RSP-500-12, PNOZ s4 750104 and both GV121CAC series contactors are located in an external 1418N4C6 panel candidate. The robot carries an SBS75G inlet and one main plus five covered MIDI-holder positions mapped exactly to PDU-LLEG, PDU-RLEG, PDU-ARMS, PDU-DISTAL and PDU-CORE. The seven-sheet native KiCad package validates at ERC 0/0 for connectivity and annotation only. All six fuse values, final conductors, grounding, thermal behavior, stopping behavior and every work authority remain open. See `electrical/tether-power-core-p0.1/index.html`.
+<!-- HR30-TETHER-POWER-END -->
+
 <!-- HR30-HARNESS-README-START -->
 ## Whole-body harness
 
 Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
 <!-- HR30-HARNESS-README-END -->
+
+
+
+
+
+
+

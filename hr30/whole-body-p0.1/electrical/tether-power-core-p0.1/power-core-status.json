@@ -1,0 +1,20 @@
+{
+  "identifier": "HR30-TETHER-POWER-CORE-P0.1",
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION",
+  "native_sheet_count": 7,
+  "child_sheet_count": 6,
+  "erc_errors": 0,
+  "erc_warnings": 0,
+  "external_contactor_count": 2,
+  "on_robot_contactor_count": 0,
+  "robot_pdu_feed_count": 5,
+  "fuse_holder_count": 6,
+  "fuse_values_selected": false,
+  "final_conductors_selected": false,
+  "functional_safety_approved": false,
+  "fabrication_authority": false,
+  "connection_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false
+}

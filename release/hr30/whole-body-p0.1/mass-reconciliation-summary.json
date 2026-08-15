@@ -7,28 +7,28 @@
   "located_joint_fastener_count": 156,
   "transmission_belt_count": 10,
   "installed_equipment_item_count": 58,
-  "minimum_identified_candidate_mass_kg": 10.839146865,
-  "planning_identified_candidate_mass_kg": 11.567024237,
-  "maximum_identified_candidate_mass_kg": 12.490726592,
+  "minimum_identified_candidate_mass_kg": 10.819146865,
+  "planning_identified_candidate_mass_kg": 11.542024237,
+  "maximum_identified_candidate_mass_kg": 12.459476592,
   "fabrication_cad_density_screen_kg": 2.303261744,
   "actuator_published_mass_planning_kg": 2.609,
   "joint_hardware_gross_density_screen_kg": 2.467263536,
   "located_joint_fastener_planning_mass_kg": 0.554224112,
   "transmission_belt_published_mass_kg": 0.148,
-  "installed_equipment_harness_planning_mass_kg": 3.485274845,
+  "installed_equipment_harness_planning_mass_kg": 3.460274845,
   "prior_allocation_mass_kg": 9.63,
-  "reconciled_dynamics_planning_mass_kg": 11.952592891,
+  "reconciled_dynamics_planning_mass_kg": 11.925592891,
   "reconciled_dynamics_neutral_com_m": [
-    -0.000772257,
-    0.0115975,
-    0.368544716
+    -0.000774006,
+    0.011598601,
+    0.368512911
   ],
   "program_maximum_mass_kg": 12.0,
   "program_lightweight_stretch_kg": 10.0,
-  "planning_margin_to_program_maximum_kg": 0.047407109,
-  "planning_margin_to_lightweight_stretch_kg": -1.952592891,
-  "integration_contingency_before_fastener_allocation_kg": 0.881024008,
-  "remaining_integration_contingency_kg": 0.385568654,
+  "planning_margin_to_program_maximum_kg": 0.074407109,
+  "planning_margin_to_lightweight_stretch_kg": -1.925592891,
+  "integration_contingency_before_fastener_allocation_kg": 0.879024008,
+  "remaining_integration_contingency_kg": 0.383568654,
   "program_mass_target_status": "WITHIN P0.1 MAXIMUM; PHYSICAL MASS CLOSURE OPEN",
   "unmodeled_or_unselected": [
     "exact battery BMS/PCM, cell monitor, connector, service disconnect, precharge, containment, retention and offboard charger hardware",
@@ -46,8 +46,8 @@
   },
   "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION",
   "reconciled_box_model_inertia_kg_m2": [
-    0.396079839,
-    0.448239374,
-    0.076117893
+    0.396040796,
+    0.44817085,
+    0.076039748
   ]
 }
