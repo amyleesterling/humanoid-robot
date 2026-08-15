@@ -22,18 +22,18 @@ PITCH_MM = 5.0
 EXPECTED = {
     "LD-15": {
         "motor": 20, "output": 30, "belt": 45, "center": 49.358512477,
-        "motor_code": "GPA20GT5090-A-H10", "output_code": "GPA30GT5090-A-H12",
+        "motor_code": "GPA20GT5090-A-P10", "output_code": "GPA30GT5090-A-P12",
         "belt_code": "GBN225EV5GT-090", "axes": {"L_HIP_PITCH", "R_HIP_PITCH"},
     },
     "LD-20": {
         "motor": 20, "output": 40, "belt": 51, "center": 49.965206523,
-        "motor_code": "GPA20GT5090-A-H10", "output_code": "GPA40GT5090-A-H12",
+        "motor_code": "GPA20GT5090-A-P10", "output_code": "GPA40GT5090-A-P12",
         "belt_code": "GBN255EV5GT-090",
         "axes": {"L_HIP_ROLL", "R_HIP_ROLL", "L_KNEE_PITCH", "R_KNEE_PITCH", "L_ANKLE_ROLL", "R_ANKLE_ROLL"},
     },
     "LD-25": {
         "motor": 16, "output": 40, "belt": 50, "center": 51.455622919,
-        "motor_code": "GPA16GT5090-A-H8", "output_code": "GPA40GT5090-A-H12",
+        "motor_code": "GPA16GT5090-A-P8", "output_code": "GPA40GT5090-A-P12",
         "belt_code": "GBN250EV5GT-090", "axes": {"L_ANKLE_PITCH", "R_ANKLE_PITCH"},
     },
 }
@@ -133,12 +133,12 @@ def main() -> int:
         expected = EXPECTED[row["drive_id"]]
         require(row["axis_id"] in expected["axes"], f"axis assigned to wrong drive {row['axis_id']}")
         require((row["motor_pulley"], row["output_pulley"], row["belt"]) == (expected["motor_code"], expected["output_code"], expected["belt_code"]), f"candidate code drift {row['axis_id']}")
-        require("CUSTOM ADAPTER" in row["horn_to_pulley_adapter"] and "VALIDATION OPEN" in row["release_state"], f"unresolved axis boundary lost {row['axis_id']}")
+        require(row["horn_to_pulley_adapter"].startswith("MA-") and "MATERIAL/FIT/FASTENERS/PROOF OPEN" in row["horn_to_pulley_adapter"] and "VALIDATION OPEN" in row["release_state"], f"adapter allocation/release boundary lost {row['axis_id']}")
 
     products = rows(SRC / "candidate-product-register.csv")
     expected_products = {
-        "GPA16GT5090-A-H8": 2, "GPA20GT5090-A-H10": 8, "GPA30GT5090-A-H12": 2,
-        "GPA40GT5090-A-H12": 8, "GBN225EV5GT-090": 2, "GBN250EV5GT-090": 2,
+        "GPA16GT5090-A-P8": 2, "GPA20GT5090-A-P10": 8, "GPA30GT5090-A-P12": 2,
+        "GPA40GT5090-A-P12": 8, "GBN225EV5GT-090": 2, "GBN250EV5GT-090": 2,
         "GBN255EV5GT-090": 6,
     }
     require(len(products) == 7 and {row["candidate_order_code"]: int(row["whole_robot_quantity"]) for row in products} == expected_products, "product register/quantity mismatch")
@@ -160,7 +160,7 @@ def main() -> int:
     require((status["module_count"], status["axis_count"], status["candidate_product_count"]) == (3, 10, 7), "drivetrain status count drift")
     require(status["exact_candidate_product_allocation_present"] and not status["vendor_tooth_brep_present"], "drivetrain CAD truth boundary drift")
     false_keys = (
-        "horn_adapter_complete", "capacity_validated", "tension_validated", "physical_validation_complete",
+        "horn_adapter_material_fit_fasteners_released", "capacity_validated", "tension_validated", "physical_validation_complete",
         "procurement_authority", "fabrication_authority", "assembly_authority", "powered_test_authority",
         "motion_authority", "energization_authority",
     )
@@ -168,7 +168,8 @@ def main() -> int:
 
     whole_status = json.loads((WHOLE / "package-status.json").read_text(encoding="utf-8"))
     require(whole_status["reduced_leg_drivetrain_package_present"] and whole_status["reduced_leg_drivetrain_module_count"] == 3 and whole_status["reduced_leg_drivetrain_axis_count"] == 10, "whole-body status lacks drivetrain package")
-    require(not whole_status["reduced_leg_drivetrain_capacity_validated"] and not whole_status["reduced_leg_drivetrain_horn_adapters_complete"], "whole-body drivetrain overclaim")
+    require(whole_status["reduced_leg_drivetrain_horn_adapters_complete"] and not whole_status["leg_drivetrain_adapter_fit_and_tolerance_released"] and not whole_status["leg_drivetrain_adapter_capacity_validated"], "whole-body drivetrain adapter boundary drift")
+    require(not whole_status["reduced_leg_drivetrain_capacity_validated"], "whole-body drivetrain capacity overclaim")
     hold = next((row for row in rows(WHOLE / "open-holds.csv") if row["hold_id"] == "HR30-P01-H03"), None)
     require(
         hold is not None

@@ -32,9 +32,9 @@ AXES = {
 }
 
 PRODUCTS = {
-    "LD-15": ("GPA20GT5090-A-H10", "GPA30GT5090-A-H12", "GBN225EV5GT-090"),
-    "LD-20": ("GPA20GT5090-A-H10", "GPA40GT5090-A-H12", "GBN255EV5GT-090"),
-    "LD-25": ("GPA16GT5090-A-H8", "GPA40GT5090-A-H12", "GBN250EV5GT-090"),
+    "LD-15": ("GPA20GT5090-A-P10", "GPA30GT5090-A-P12", "GBN225EV5GT-090"),
+    "LD-20": ("GPA20GT5090-A-P10", "GPA40GT5090-A-P12", "GBN255EV5GT-090"),
+    "LD-25": ("GPA16GT5090-A-P8", "GPA40GT5090-A-P12", "GBN250EV5GT-090"),
 }
 
 
@@ -84,6 +84,7 @@ def main() -> int:
     expected_bindings = {
         "tools/generate_hr30_body_architecture_p01.py",
         "tools/generate_hr30_leg_drivetrain_p01.py",
+        "tools/generate_hr30_leg_drivetrain_adapters_p01.py",
         "tools/generate_hr30_installed_leg_drivetrains_p01.py",
     }
     require({row["source"] for row in bindings} == expected_bindings, "installed-drive source binding set mismatch")
@@ -100,11 +101,11 @@ def main() -> int:
         require(abs(float(row["external_drive_plane_offset_mm"]) - plane_offset) < 1e-9, f"installed service-plane drift {row['axis_id']}")
         require(abs(float(row["solved_pitch_center_distance_mm"]) - center) < 2e-9, f"installed center-distance drift {row['axis_id']}")
         require((row["motor_pulley_code"], row["output_pulley_code"], row["belt_code"]) == PRODUCTS[drive_id], f"installed product-code drift {row['axis_id']}")
-        require("SELECTION REQUIRED" in row["adapter_boundary"] and row["warning"] == WARNING, f"installed unresolved boundary lost {row['axis_id']}")
+        require("NOMINAL SOLIDS INSTALLED" in row["adapter_boundary"] and "PHYSICAL PROOF OPEN" in row["adapter_boundary"] and row["warning"] == WARNING, f"installed unresolved boundary lost {row['axis_id']}")
 
     components = rows(SRC / "installed-component-register.csv")
-    require(len(components) == 60 and Counter(row["axis_id"] for row in components) == Counter({axis: 6 for axis in AXES}), "installed component population mismatch")
-    expected_kinds = {"catalog pulley envelope": 2, "catalog belt routing envelope": 1, "removable guard envelope": 1, "shifted manufacturer actuator": 1, "external-plane hollow shaft extension": 1}
+    require(len(components) == 90 and Counter(row["axis_id"] for row in components) == Counter({axis: 9 for axis in AXES}), "installed component population mismatch")
+    expected_kinds = {"catalog P-bore-plus-tap pulley envelope": 2, "catalog belt routing envelope": 1, "removable guard envelope": 1, "shifted manufacturer actuator": 1, "exact manufacturer horn": 1, "project horn-to-pulley adapter": 1, "shouldered hollow output shaft": 1, "removable output capture washer": 1}
     for axis in AXES:
         require(Counter(row["kind"] for row in components if row["axis_id"] == axis) == Counter(expected_kinds), f"installed component kinds mismatch {axis}")
     require(all(float(row["volume_mm3"]) > 0 and row["warning"] == WARNING for row in components), "installed component geometry/warning invalid")
@@ -116,11 +117,11 @@ def main() -> int:
     require(all(float(row["common_volume_mm3"]) <= 1e-6 and row["state"] == "NO COMMON VOLUME" and row["warning"] == WARNING for row in clearances), "installed drivetrain nominal interference found")
 
     status = json.loads((SRC / "installation-status.json").read_text(encoding="utf-8"))
-    require((status["installed_axis_count"], status["installed_component_count"], status["inter_axis_pair_count"], status["inter_axis_common_volume_count"]) == (10, 60, 45, 0), "installed-drive status count drift")
+    require((status["installed_axis_count"], status["installed_component_count"], status["inter_axis_pair_count"], status["inter_axis_common_volume_count"]) == (10, 90, 45, 0), "installed-drive status count drift")
     require(status["nominal_rigid_envelope_inter_axis_screen_pass"] and status["complete_humanoid_present"] and status["whole_body_step_present"] and status["whole_body_glb_present"] and status["generic_reduced_drive_placeholders_removed"] and status["exact_candidate_product_envelopes_installed"], "installed-drive package completion flags missing")
     false_keys = (
         "motion_sweep_validated", "tolerance_validated", "cable_and_cover_clearance_validated",
-        "horn_and_hub_adapters_complete", "capacity_validated", "mass_com_reconciled",
+        "horn_and_hub_adapter_material_fit_fasteners_released", "capacity_validated", "mass_com_reconciled",
         "physical_validation_complete", "procurement_authority", "fabrication_authority",
         "assembly_authority", "powered_test_authority", "motion_authority", "energization_authority",
     )
@@ -136,7 +137,8 @@ def main() -> int:
 
     whole_status = json.loads((WHOLE / "package-status.json").read_text(encoding="utf-8"))
     require(whole_status["installed_leg_drivetrain_whole_body_cad_present"] and whole_status["installed_leg_drivetrain_axis_count"] == 10 and whole_status["installed_leg_drivetrain_nominal_inter_axis_common_volume_count"] == 0, "whole-body installed-drive integration missing")
-    require(not whole_status["installed_leg_drivetrain_motion_sweep_validated"] and not whole_status["installed_leg_drivetrain_capacity_validated"] and not whole_status["installed_leg_drivetrain_adapters_complete"], "whole-body installed-drive overclaim")
+    require(whole_status["installed_leg_drivetrain_adapters_complete"] and not whole_status["installed_leg_drivetrain_adapter_material_fit_fasteners_released"] and not whole_status["installed_leg_drivetrain_adapter_physical_fit_validated"], "whole-body adapter geometry/release boundary drift")
+    require(not whole_status["installed_leg_drivetrain_motion_sweep_validated"] and not whole_status["installed_leg_drivetrain_capacity_validated"], "whole-body installed-drive overclaim")
     hold = next((row for row in rows(WHOLE / "open-holds.csv") if row["hold_id"] == "HR30-P01-H03"), None)
     require(hold and hold["state"] == "OPEN" and "all 45 nominal inter-drive pairs have zero common volume" in hold["unresolved_item"].lower(), "installed-drive open hold missing")
 
@@ -149,7 +151,7 @@ def main() -> int:
     require(root_page.count("<!-- HR30-INSTALLED-LEG-DRIVES-P01-START -->") == 1 and "leg-drivetrain-installation-p0.1/index.html" in root_page, "whole-body page installed-drive integration missing")
     require(root_readme.count("<!-- HR30-INSTALLED-LEG-DRIVES-P01-README-START -->") == 1 and "leg-drivetrain-installation-p0.1/index.html" in root_readme, "whole-body README installed-drive integration missing")
 
-    print("PASS: ten product-specific reduced leg drives are installed in the complete 762 mm humanoid; 60 components and all 45 inter-drive pairs verified; motion/capacity and all work authority remain open")
+    print("PASS: ten product-specific reduced leg drives are installed in the complete 762 mm humanoid; 90 components, nominal adapters and all 45 inter-drive pairs verified; fits/capacity and all work authority remain open")
     return 0
 
 

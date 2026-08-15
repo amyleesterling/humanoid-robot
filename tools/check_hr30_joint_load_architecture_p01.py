@@ -46,7 +46,7 @@ def main() -> int:
     transmissions = rows("transmission-candidate-source-register.csv")
     require(len(transmissions) == 3 and {row["drive_id"] for row in transmissions} == {"LD-15", "LD-20", "LD-25"}, "MISUMI transmission candidate source set mismatch")
     require({row["belt"] for row in transmissions} == {"GBN225EV5GT-090", "GBN255EV5GT-090", "GBN250EV5GT-090"}, "exact EV5GT belt candidate set drift")
-    require({row["motor_pulley"] for row in transmissions} == {"GPA16GT5090-A-H8", "GPA20GT5090-A-H10"} and {row["output_pulley"] for row in transmissions} == {"GPA30GT5090-A-H12", "GPA40GT5090-A-H12"}, "exact 5GT pulley candidate set drift")
+    require({row["motor_pulley"] for row in transmissions} == {"GPA16GT5090-A-P8", "GPA20GT5090-A-P10"} and {row["output_pulley"] for row in transmissions} == {"GPA30GT5090-A-P12", "GPA40GT5090-A-P12"}, "exact 5GT pulley candidate set drift")
     require(all(row["published_mass_kg"] == "SELECTION REQUIRED" and "misumi" in row["official_url"].lower() and "WRITTEN QUOTE" in row["selection_state"] for row in transmissions), "transmission source/selection boundary missing")
     for row in load:
         require(row["candidate_actuator"] in source_by_model, f"unknown actuator {row['axis_id']}")

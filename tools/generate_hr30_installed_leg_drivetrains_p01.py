@@ -3,9 +3,9 @@
 The base whole-body source already contains all 25 supported axes and joint
 carriers.  This derived assembly removes the ten generic leg pulley/belt/motor
 placeholders and installs the product-specific P0.1 pulleys, belts, shifted
-manufacturer actuator geometry, external belt planes, shaft extensions and
-guard envelopes.  It is packaging CAD only: adapters, capacity, fits,
-retention, guarding details and physical proof remain open.
+manufacturer actuator geometry, exact horns, project motor adapters, shouldered
+output shafts/capture washers and guard envelopes.  It is packaging CAD only:
+material, fits, fasteners, capacity and physical proof remain open.
 """
 
 from __future__ import annotations
@@ -34,6 +34,7 @@ WARNING = "PRELIMINARY - WHOLE-BODY PRODUCT PACKAGING CANDIDATE ONLY - NOT APPRO
 sys.path.insert(0, str(ROOT / "tools"))
 import generate_hr30_body_architecture_p01 as body  # noqa: E402
 import generate_hr30_leg_drivetrain_p01 as drives  # noqa: E402
+import generate_hr30_leg_drivetrain_adapters_p01 as adapters  # noqa: E402
 import generate_hr30_system_package_p01 as system  # noqa: E402
 
 
@@ -152,6 +153,8 @@ def build_installed() -> tuple[list[body.Component], list[InstalledPart], list[d
         plane_center = center + axis_dir.multiply(plane_offset)
         solved_center = drives.solve_center(candidate)
         motor_center = plane_center + drive_dir.multiply(solved_center)
+        outward_sign = 1.0 if plane_offset > 0 else -1.0
+        outward_axis = axis_dir.multiply(outward_sign)
 
         local_output = drives.pulley_envelope(candidate.output_teeth, 12.0, 0.0)
         local_motor = drives.pulley_envelope(candidate.motor_teeth, candidate.motor_bore_mm, solved_center)
@@ -162,26 +165,32 @@ def build_installed() -> tuple[list[body.Component], list[InstalledPart], list[d
         belt = map_local(local_belt, plane_center, axis_dir, drive_dir)
         guard = map_local(local_guard, plane_center, axis_dir, drive_dir)
 
+        adapter_spec = adapters.motor_adapter_for_axis(axis_id, candidate)
+        horn_spec = adapters.HORN_INTERFACES[adapter_spec.horn_key]
+        stack_to_pulley_center = adapters.FLANGE_THICKNESS_MM + adapters.PULLEY_ENGAGEMENT_MM / 2.0
+        horn_contact = motor_center - outward_axis.multiply(stack_to_pulley_center)
+        motor_adapter = map_local(adapters.motor_adapter_shape(adapter_spec), horn_contact, outward_axis, drive_dir)
+        horn = map_local(adapters.horn_shape_local(adapter_spec.horn_key), horn_contact, outward_axis, drive_dir)
+
         source_id = body.vendor_source_for_axis(axis_id)
-        actuator, _basis = body.vendor_actuator_to_axis(vendor_shapes[source_id], (motor_center.x, motor_center.y, motor_center.z), (axis_dir.x, axis_dir.y, axis_dir.z))
+        actuator_output = horn_contact - outward_axis.multiply(horn_spec.contact_y_mm + 0.4)
+        actuator, _basis = body.vendor_actuator_to_axis(vendor_shapes[source_id], (actuator_output.x, actuator_output.y, actuator_output.z), (axis_dir.x, axis_dir.y, axis_dir.z))
         spec = body.JOINT_MODULE_FAMILIES[body.joint_module_family(axis_id)]
-        actuator_visual = body.oriented_box((motor_center.x, motor_center.y, motor_center.z), (axis_dir.x, axis_dir.y, axis_dir.z), spec["body_w"], spec["body_h"], spec["body_d"])
-        extension_mid = center + axis_dir.multiply(plane_offset / 2.0)
-        extension = body.hollow_cylinder_between(
-            (extension_mid.x, extension_mid.y, extension_mid.z),
-            (axis_dir.x, axis_dir.y, axis_dir.z),
-            abs(plane_offset) + 14.0,
-            12.0,
-            7.4,
-        )
+        actuator_visual = body.oriented_box((actuator_output.x, actuator_output.y, actuator_output.z), (axis_dir.x, axis_dir.y, axis_dir.z), spec["body_w"], spec["body_h"], spec["body_d"])
+        local_output_shaft, local_output_cap = adapters.output_shaft_local(abs(plane_offset))
+        output_shaft = map_local(local_output_shaft, plane_center, outward_axis, drive_dir)
+        output_cap = map_local(local_output_cap, plane_center, outward_axis, drive_dir)
 
         axis_parts = [
-            InstalledPart(axis_id, f"{axis_id}_OUTPUT_PULLEY", "catalog pulley envelope", output, output, (0.96, 0.55, 0.08, 1.0), f"{candidate.output_pulley_code}; bore/hub/retention receipt validation open"),
-            InstalledPart(axis_id, f"{axis_id}_MOTOR_PULLEY", "catalog pulley envelope", motor, motor, (0.98, 0.72, 0.12, 1.0), f"{candidate.motor_pulley_code}; horn adapter and retention open"),
+            InstalledPart(axis_id, f"{axis_id}_OUTPUT_PULLEY", "catalog P-bore-plus-tap pulley envelope", output, output, (0.96, 0.55, 0.08, 1.0), f"{candidate.output_pulley_code}; received fit/set-screw/capacity validation open"),
+            InstalledPart(axis_id, f"{axis_id}_MOTOR_PULLEY", "catalog P-bore-plus-tap pulley envelope", motor, motor, (0.98, 0.72, 0.12, 1.0), f"{candidate.motor_pulley_code}; received fit/set-screw/capacity validation open"),
             InstalledPart(axis_id, f"{axis_id}_BELT", "catalog belt routing envelope", belt, belt, (0.10, 0.13, 0.17, 1.0), f"{candidate.belt_code}; tension/capacity/life open"),
             InstalledPart(axis_id, f"{axis_id}_GUARD", "removable guard envelope", guard, guard, (0.40, 0.75, 0.94, 0.30), "transparent packaging envelope; split, vents, retention and access proof open"),
             InstalledPart(axis_id, f"{axis_id}_ACTUATOR", "shifted manufacturer actuator", actuator, actuator_visual, (0.10, 0.25, 0.44, 1.0), f"{source_id} exact STEP with simplified GLB body; project mount open"),
-            InstalledPart(axis_id, f"{axis_id}_SHAFT_EXTENSION", "external-plane hollow shaft extension", extension, extension, (0.76, 0.79, 0.83, 1.0), "12 mm OD / 7.4 mm bore packaging candidate; shoulders, material, fit, retention and capacity open"),
+            InstalledPart(axis_id, f"{axis_id}_HORN", "exact manufacturer horn", horn, horn, (0.45, 0.50, 0.57, 1.0), f"{horn_spec.horn_id} exact STEP; thread/load/physical validation open"),
+            InstalledPart(axis_id, f"{axis_id}_MOTOR_ADAPTER", "project horn-to-pulley adapter", motor_adapter, motor_adapter, (0.95, 0.62, 0.08, 1.0), f"{adapter_spec.adapter_id}; nominal CAD complete; material/fit/fasteners/capacity open"),
+            InstalledPart(axis_id, f"{axis_id}_OUTPUT_SHAFT", "shouldered hollow output shaft", output_shaft, output_shaft, (0.76, 0.79, 0.83, 1.0), f"OS-P12-{abs(plane_offset):.0f}; nominal CAD complete; material/fit/capacity open"),
+            InstalledPart(axis_id, f"{axis_id}_OUTPUT_CAP", "removable output capture washer", output_cap, output_cap, (0.95, 0.62, 0.08, 1.0), "20 mm OD capture washer; through-bolt/fastener selection and proof open"),
         ]
         parts.extend(axis_parts)
         per_axis_shapes[axis_id] = [part.shape for part in axis_parts]
@@ -200,8 +209,12 @@ def build_installed() -> tuple[list[body.Component], list[InstalledPart], list[d
             "output_pulley_code": candidate.output_pulley_code,
             "belt_code": candidate.belt_code,
             "actuator_source": source_id,
-            "shaft_extension": "12.0 mm OD / 7.4 mm bore external-plane packaging candidate",
-            "adapter_boundary": "MOTOR HORN-TO-PULLEY AND OUTPUT SHAFT/HUB FIT, SHOULDER, RETENTION AND CAPACITY SELECTION REQUIRED",
+            "horn": horn_spec.horn_id,
+            "motor_adapter": adapter_spec.adapter_id,
+            "output_adapter": f"OS-P12-{abs(plane_offset):.0f}",
+            "horn_contact_center_mm": f"({horn_contact.x:.3f}, {horn_contact.y:.3f}, {horn_contact.z:.3f})",
+            "actuator_output_center_mm": f"({actuator_output.x:.3f}, {actuator_output.y:.3f}, {actuator_output.z:.3f})",
+            "adapter_boundary": "NOMINAL SOLIDS INSTALLED; MATERIAL, FIT, TOLERANCE, FASTENER, RUNOUT, CAPACITY AND PHYSICAL PROOF OPEN",
             "warning": WARNING,
         })
 
@@ -235,7 +248,7 @@ def build_installed() -> tuple[list[body.Component], list[InstalledPart], list[d
 
 
 def render_index() -> str:
-    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 installed leg drivetrains P0.1</title><script type="module" src="../vendor/model-viewer.min.js"></script><style>:root{{--deep:#081e38;--navy:#123b68;--pale:#eff9fe;--gold:#f2b91d;--line:#acd8ed;--ink:#152b43}}*{{box-sizing:border-box}}html,body{{max-width:100%;overflow-x:clip}}body{{margin:0;background:var(--pale);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,footer{{padding:32px max(20px,calc((100vw - 1200px)/2));background:var(--deep);color:white}}h1{{font-size:clamp(36px,6vw,66px);line-height:1.04}}h2{{font-size:clamp(28px,4vw,42px);color:var(--navy)}}.warning{{padding:16px;background:var(--gold);color:#17243a;border:3px solid #8a5b00;font-weight:900}}main{{max-width:1200px;margin:auto;padding:28px 20px 80px}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}}.card,.viewer,.panel{{background:white;border:2px solid var(--line);border-radius:18px;padding:18px;overflow:hidden}}.metric{{font-size:34px;font-weight:900;color:var(--navy)}}model-viewer{{display:block;width:100%;height:clamp(560px,72vh,780px);background:radial-gradient(circle,#fff,var(--pale))}}a{{color:#075b9b;font-weight:800}}@media(max-width:560px){{body{{font-size:16px}}.grid{{grid-template-columns:1fr}}model-viewer{{height:520px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><h1>The exact candidate leg drives are installed on the complete robot.</h1><p>Ten generic ratio-only transmission placeholders are replaced in this derived whole-body assembly by product-specific pulley, belt, actuator, shaft-extension and guard envelopes.</p></header><main><section><h2>Orbit the complete installation</h2><div class="viewer"><model-viewer src="HR-30_leg_drivetrains_installed_candidate.glb" alt="Complete preliminary HR-30 humanoid with ten product-specific leg drivetrain candidates installed" camera-controls camera-orbit="28deg 76deg 100%" field-of-view="27deg" shadow-intensity="0.85" exposure="1.05"></model-viewer><p><a href="HR-30_leg_drivetrains_installed_candidate.step">Whole-body STEP</a> &middot; <a href="HR-30_installed_leg_drivetrains_only_candidate.step">drivetrains-only STEP</a> &middot; <a href="installed-drivetrain-register.csv">installation register</a>.</p></div></section><section><h2>Controlled installation boundary</h2><div class="grid"><article class="card"><div class="metric">10</div><p>reduced axes carry exact product candidates.</p></article><article class="card"><div class="metric">3</div><p>reusable drive ratios: 1.5:1, 2.0:1 and 2.5:1.</p></article><article class="card"><div class="metric">45 / 55 mm</div><p>pitch drives sit outboard; roll drives sit behind their bearing stacks.</p></article><article class="card"><div class="metric">0</div><p>nominal inter-drive common-volume pairs required for this package to pass.</p></article></div></section><section><h2>Still unresolved</h2><div class="panel"><p>The external belt planes are packaging candidates, not released structures. Horn adapters, shaft shoulders and hubs, bearing-side load effects, guarding details, cable and cover sweep, tolerance, tension, torque capacity, fatigue, mass/COM reconciliation, gait dynamics and physical validation remain open. The neutral rigid-envelope screen grants no fabrication, motion or energization authority.</p></div></section></main><footer>Project Button &middot; HR-30 installed leg drivetrains P0.1 &middot; preliminary only</footer></body></html>'''
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 installed leg drivetrains P0.1</title><script type="module" src="../vendor/model-viewer.min.js"></script><style>:root{{--deep:#081e38;--navy:#123b68;--pale:#eff9fe;--gold:#f2b91d;--line:#acd8ed;--ink:#152b43}}*{{box-sizing:border-box}}html,body{{max-width:100%;overflow-x:clip}}body{{margin:0;background:var(--pale);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,footer{{padding:32px max(20px,calc((100vw - 1200px)/2));background:var(--deep);color:white}}h1{{font-size:clamp(36px,6vw,66px);line-height:1.04}}h2{{font-size:clamp(28px,4vw,42px);color:var(--navy)}}.warning{{padding:16px;background:var(--gold);color:#17243a;border:3px solid #8a5b00;font-weight:900}}main{{max-width:1200px;margin:auto;padding:28px 20px 80px}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}}.card,.viewer,.panel{{background:white;border:2px solid var(--line);border-radius:18px;padding:18px;overflow:hidden}}.metric{{font-size:34px;font-weight:900;color:var(--navy)}}model-viewer{{display:block;width:100%;height:clamp(560px,72vh,780px);background:radial-gradient(circle,#fff,var(--pale))}}a{{color:#075b9b;font-weight:800}}@media(max-width:560px){{body{{font-size:16px}}.grid{{grid-template-columns:1fr}}model-viewer{{height:520px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><h1>The exact candidate leg drives and adapters are installed on the complete robot.</h1><p>Ten generic ratio-only transmission placeholders are replaced by product-specific P-bore pulleys, belts, exact horns, shifted actuators, motor adapters, shouldered output shafts, capture washers and guard envelopes.</p></header><main><section><h2>Orbit the complete installation</h2><div class="viewer"><model-viewer src="HR-30_leg_drivetrains_installed_candidate.glb" alt="Complete preliminary HR-30 humanoid with ten product-specific leg drivetrains and physical adapters installed" camera-controls camera-orbit="28deg 76deg 100%" field-of-view="27deg" shadow-intensity="0.85" exposure="1.05"></model-viewer><p><a href="HR-30_leg_drivetrains_installed_candidate.step">Whole-body STEP</a> &middot; <a href="HR-30_installed_leg_drivetrains_only_candidate.step">drivetrains-only STEP</a> &middot; <a href="installed-drivetrain-register.csv">installation register</a>.</p></div></section><section><h2>Controlled installation boundary</h2><div class="grid"><article class="card"><div class="metric">10</div><p>reduced axes carry exact product candidates and nominal adapter solids.</p></article><article class="card"><div class="metric">3 + 2</div><p>motor-adapter and output-shaft families are reused bilaterally.</p></article><article class="card"><div class="metric">45 / 55 mm</div><p>pitch drives sit outboard; roll drives sit behind their bearing stacks.</p></article><article class="card"><div class="metric">0</div><p>nominal inter-drive common-volume pairs required for this package to pass.</p></article></div></section><section><h2>Still unresolved</h2><div class="panel"><p>The adapter solids close the nominal geometric gap, not the engineering release. Material, fits, tolerances, runout, fastener length/grade/locking/torque, pulley set-screw capacity, through-bolt retention, bearing-side load effects, guarding details, cable and cover sweep, tension, fatigue, mass/COM reconciliation, gait dynamics and physical validation remain open. The rigid-envelope screen grants no fabrication, motion or energization authority.</p></div></section></main><footer>Project Button &middot; HR-30 installed leg drivetrains P0.1 &middot; preliminary only</footer></body></html>'''
 
 
 def integrate_root() -> None:
@@ -249,7 +262,9 @@ def integrate_root() -> None:
         "installed_leg_drivetrain_nominal_inter_axis_common_volume_count": 0,
         "installed_leg_drivetrain_motion_sweep_validated": False,
         "installed_leg_drivetrain_capacity_validated": False,
-        "installed_leg_drivetrain_adapters_complete": False,
+        "installed_leg_drivetrain_adapters_complete": True,
+        "installed_leg_drivetrain_adapter_material_fit_fasteners_released": False,
+        "installed_leg_drivetrain_adapter_physical_fit_validated": False,
         "fabrication_authority": False, "powered_test_authority": False,
         "motion_authority": False, "energization_authority": False,
     })
@@ -260,7 +275,7 @@ def integrate_root() -> None:
     start, end = "<!-- HR30-INSTALLED-LEG-DRIVES-P01-README-START -->", "<!-- HR30-INSTALLED-LEG-DRIVES-P01-README-END -->"
     if start in readme and end in readme:
         readme = readme.split(start, 1)[0] + readme.split(end, 1)[1]
-    block = f'''{start}\n## Product-specific leg drives installed in the whole body\n\nThe [installed drivetrain guide](leg-drivetrain-installation-p0.1/index.html) replaces ten generic pulley/belt/motor placeholders in a derived complete humanoid assembly. Exact candidate pulleys and belts, shifted manufacturer actuator geometry, 12 mm hollow shaft extensions and guard envelopes occupy controlled external drive planes. All 45 inter-drive pairs have zero nominal common volume. Motion sweep, tolerance, cable/cover clearance, adapters, capacity and physical proof remain open.\n{end}\n'''
+    block = f'''{start}\n## Product-specific leg drives installed in the whole body\n\nThe [installed drivetrain guide](leg-drivetrain-installation-p0.1/index.html) replaces ten generic pulley/belt/motor placeholders in a derived complete humanoid assembly. Exact candidate P-bore pulleys, belts, HN12/HN13 horns, shifted manufacturer actuators, project motor adapters, shouldered output shafts, capture washers and guard envelopes occupy controlled external drive planes. All 45 inter-drive pairs have zero nominal common volume. Motion sweep, material, fits, tolerances, fasteners, cable/cover clearance, capacity and physical proof remain open.\n{end}\n'''
     marker = "<!-- HR30-ASSEMBLY-GUIDE-P01-START -->"
     if marker not in readme:
         raise RuntimeError("whole-body README integration marker missing")
@@ -271,7 +286,7 @@ def integrate_root() -> None:
     start, end = "<!-- HR30-INSTALLED-LEG-DRIVES-P01-START -->", "<!-- HR30-INSTALLED-LEG-DRIVES-P01-END -->"
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
-    section = f'''{start}<section id="installed-leg-drives"><h2>The product-specific leg drives now occupy the complete humanoid</h2><div class="grid"><article class="card pass"><div class="metric">10 / 10</div><p>Reduced axes have exact candidate pulleys, belts and shifted actuator envelopes.</p></article><article class="card pass"><div class="metric">45 pairs</div><p>Zero nominal inter-drive common-volume interference.</p></article><article class="card pass"><h3>External service planes</h3><p>Pitch drives sit outboard; roll drives sit behind their bearing stacks.</p></article><article class="card hold"><h3>Still preliminary</h3><p>Adapters, capacity, motion sweep, covers, cables, tolerances and physical proof remain open.</p></article></div><div class="viewer"><model-viewer src="leg-drivetrain-installation-p0.1/HR-30_leg_drivetrains_installed_candidate.glb" poster="front-elevation.svg" alt="Interactive complete HR-30 with ten product-specific leg drives installed" camera-controls camera-orbit="28deg 76deg 100%" field-of-view="27deg" shadow-intensity="0.85"></model-viewer><p><a href="leg-drivetrain-installation-p0.1/index.html">Open the installed-drive guide</a> · <a href="leg-drivetrain-installation-p0.1/installed-drivetrain-register.csv">installation register</a> · <a href="leg-drivetrain-installation-p0.1/inter-drive-clearance-register.csv">clearance screen</a>.</p></div></section>{end}'''
+    section = f'''{start}<section id="installed-leg-drives"><h2>The product-specific leg drives and adapters now occupy the complete humanoid</h2><div class="grid"><article class="card pass"><div class="metric">10 / 10</div><p>Reduced axes have exact candidate pulleys, belts, horns and nominal adapter solids.</p></article><article class="card pass"><div class="metric">45 pairs</div><p>Zero nominal inter-drive common-volume interference.</p></article><article class="card pass"><h3>External service planes</h3><p>Pitch drives sit outboard; roll drives sit behind their bearing stacks.</p></article><article class="card hold"><h3>Still preliminary</h3><p>Material, fits, fasteners, capacity, motion sweep, covers, cables, tolerances and physical proof remain open.</p></article></div><div class="viewer"><model-viewer src="leg-drivetrain-installation-p0.1/HR-30_leg_drivetrains_installed_candidate.glb" poster="front-elevation.svg" alt="Interactive complete HR-30 with ten product-specific leg drives and physical adapter solids installed" camera-controls camera-orbit="28deg 76deg 100%" field-of-view="27deg" shadow-intensity="0.85"></model-viewer><p><a href="leg-drivetrain-installation-p0.1/index.html">Open the installed-drive guide</a> · <a href="leg-drivetrain-installation-p0.1/installed-drivetrain-register.csv">installation register</a> · <a href="leg-drivetrain-installation-p0.1/inter-drive-clearance-register.csv">clearance screen</a>.</p></div></section>{end}'''
     if marker not in page:
         raise RuntimeError("whole-body page integration marker missing")
     page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")
@@ -284,11 +299,11 @@ def integrate_root() -> None:
         raise RuntimeError("controlled leg hold missing")
     target["unresolved_item"] = (
         "All twelve leg axes have static load screens. Ten belt-reduced axes now have exact MISUMI 5GT/EV5GT "
-        "candidate geometry installed on controlled external service planes in a complete-body CAD assembly; all "
-        "45 nominal inter-drive pairs have zero common volume. Horn/pulley adapters, shaft shoulders/hubs, bearing "
-        "side loads, belt tension/capacity, motion and cable/cover sweeps, tolerance, accepted trajectories, "
-        "continuous torque, thermal limits, contact/impact, regeneration, fall restraint, gait correlation and "
-        "physical proof remain open."
+        "candidate geometry, exact HN12/HN13 horns, three motor-adapter variants and two shouldered output-shaft/capture "
+        "variants installed on controlled external service planes in a complete-body CAD assembly; all 45 nominal "
+        "inter-drive pairs have zero common volume. Material, fits, tolerances, runout, fastener details, bearing side "
+        "loads, belt tension/capacity, motion and cable/cover sweeps, accepted trajectories, continuous torque, thermal "
+        "limits, contact/impact, regeneration, fall restraint, gait correlation and physical proof remain open."
     )
     write_csv(holds_path, holds)
 
@@ -311,7 +326,8 @@ def status_payload(installation: list[dict], installed: list[InstalledPart], col
         "motion_sweep_validated": False,
         "tolerance_validated": False,
         "cable_and_cover_clearance_validated": False,
-        "horn_and_hub_adapters_complete": False,
+        "horn_and_hub_adapter_nominal_geometry_complete": True,
+        "horn_and_hub_adapter_material_fit_fasteners_released": False,
         "capacity_validated": False,
         "mass_com_reconciled": False,
         "physical_validation_complete": False,
@@ -371,11 +387,12 @@ def main() -> int:
 
     (OUT / "installation-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
     (OUT / "index.html").write_text(render_index(), encoding="utf-8", newline="\n")
-    (OUT / "README.md").write_text(f"# HR-30 installed leg drivetrains P0.1\n\n**{WARNING}**\n\nA complete-body derived assembly replaces the ten generic reduced-leg pulley, belt and actuator placeholders with exact candidate product envelopes on external service planes. This is packaging CAD, not a released structure or capacity result.\n", encoding="utf-8", newline="\n")
+    (OUT / "README.md").write_text(f"# HR-30 installed leg drivetrains P0.1\n\n**{WARNING}**\n\nA complete-body derived assembly replaces the ten generic reduced-leg pulley, belt and actuator placeholders with exact candidate product envelopes, exact horns, nominal motor adapters, shouldered output shafts and capture washers on external service planes. This is packaging CAD, not a released structure or capacity result.\n", encoding="utf-8", newline="\n")
     shutil.copy2(Path(__file__), OUT / "installed-leg-drivetrains-source.py")
     write_csv(OUT / "source-binding.csv", [
         {"source": "tools/generate_hr30_body_architecture_p01.py", "sha256": sha(ROOT / "tools" / "generate_hr30_body_architecture_p01.py"), "role": "complete 25-axis body and supported joint carriers", "warning": WARNING},
         {"source": "tools/generate_hr30_leg_drivetrain_p01.py", "sha256": sha(ROOT / "tools" / "generate_hr30_leg_drivetrain_p01.py"), "role": "exact candidate pulley/belt geometry and solved centers", "warning": WARNING},
+        {"source": "tools/generate_hr30_leg_drivetrain_adapters_p01.py", "sha256": sha(ROOT / "tools" / "generate_hr30_leg_drivetrain_adapters_p01.py"), "role": "exact horn bindings plus editable motor adapter and output shaft/capture geometry", "warning": WARNING},
         {"source": "tools/generate_hr30_installed_leg_drivetrains_p01.py", "sha256": sha(Path(__file__)), "role": "installation transforms, external planes and derived assemblies", "warning": WARNING},
     ])
     files = sorted(path for path in OUT.rglob("*") if path.is_file() and path.name != "file-manifest.csv")

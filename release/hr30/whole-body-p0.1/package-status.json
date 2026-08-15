@@ -220,7 +220,7 @@
   "reduced_leg_drivetrain_axis_count": 10,
   "reduced_leg_drivetrain_candidate_products_defined": true,
   "reduced_leg_drivetrain_capacity_validated": false,
-  "reduced_leg_drivetrain_horn_adapters_complete": false,
+  "reduced_leg_drivetrain_horn_adapters_complete": true,
   "installed_leg_drivetrain_whole_body_cad_present": true,
   "installed_leg_drivetrain_axis_count": 10,
   "installed_leg_drivetrain_pitch_plane_offset_mm": 45.0,
@@ -228,5 +228,16 @@
   "installed_leg_drivetrain_nominal_inter_axis_common_volume_count": 0,
   "installed_leg_drivetrain_motion_sweep_validated": false,
   "installed_leg_drivetrain_capacity_validated": false,
-  "installed_leg_drivetrain_adapters_complete": false
+  "installed_leg_drivetrain_adapters_complete": true,
+  "leg_drivetrain_adapter_package_present": true,
+  "leg_drivetrain_motor_adapter_family_count": 3,
+  "leg_drivetrain_output_adapter_family_count": 2,
+  "leg_drivetrain_adapter_axis_allocation_complete": true,
+  "leg_drivetrain_adapter_editable_cad_present": true,
+  "leg_drivetrain_adapter_nominal_geometry_complete": true,
+  "leg_drivetrain_adapter_fit_and_tolerance_released": false,
+  "leg_drivetrain_adapter_capacity_validated": false,
+  "leg_drivetrain_adapter_physical_fit_validated": false,
+  "installed_leg_drivetrain_adapter_material_fit_fasteners_released": false,
+  "installed_leg_drivetrain_adapter_physical_fit_validated": false
 }

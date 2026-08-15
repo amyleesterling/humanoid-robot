@@ -2,4 +2,4 @@
 
 **PRELIMINARY - WHOLE-BODY PRODUCT PACKAGING CANDIDATE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION**
 
-A complete-body derived assembly replaces the ten generic reduced-leg pulley, belt and actuator placeholders with exact candidate product envelopes on external service planes. This is packaging CAD, not a released structure or capacity result.
+A complete-body derived assembly replaces the ten generic reduced-leg pulley, belt and actuator placeholders with exact candidate product envelopes, exact horns, nominal motor adapters, shouldered output shafts and capture washers on external service planes. This is packaging CAD, not a released structure or capacity result.

@@ -311,7 +311,7 @@ def main() -> int:
     write_csv(OUT / "transmission-candidate-source-register.csv", [
         {
             "drive_id": "LD-15", "manufacturer": "MISUMI", "catalogue": "High Torque Timing Pulleys 5GT / Super High Torque Timing Belts EV5GT",
-            "motor_pulley": "GPA20GT5090-A-H10", "output_pulley": "GPA30GT5090-A-H12", "belt": "GBN225EV5GT-090",
+            "motor_pulley": "GPA20GT5090-A-P10", "output_pulley": "GPA30GT5090-A-P12", "belt": "GBN225EV5GT-090",
             "pitch_mm": "5", "pitch_length_mm": "225", "tooth_count": "45", "width_mm": "9",
             "published_mass_kg": "SELECTION REQUIRED", "candidate_axes": "L_HIP_PITCH; R_HIP_PITCH",
             "ratio_and_center": "20:30 / 1.5:1 / 49.358512477 mm nominal pitch center",
@@ -322,7 +322,7 @@ def main() -> int:
         },
         {
             "drive_id": "LD-20", "manufacturer": "MISUMI", "catalogue": "High Torque Timing Pulleys 5GT / Super High Torque Timing Belts EV5GT",
-            "motor_pulley": "GPA20GT5090-A-H10", "output_pulley": "GPA40GT5090-A-H12", "belt": "GBN255EV5GT-090",
+            "motor_pulley": "GPA20GT5090-A-P10", "output_pulley": "GPA40GT5090-A-P12", "belt": "GBN255EV5GT-090",
             "pitch_mm": "5", "pitch_length_mm": "255", "tooth_count": "51", "width_mm": "9",
             "published_mass_kg": "SELECTION REQUIRED", "candidate_axes": "ALL HIP/ANKLE ROLL; ALL KNEE PITCH",
             "ratio_and_center": "20:40 / 2.0:1 / 49.965206523 mm nominal pitch center",
@@ -333,7 +333,7 @@ def main() -> int:
         },
         {
             "drive_id": "LD-25", "manufacturer": "MISUMI", "catalogue": "High Torque Timing Pulleys 5GT / Super High Torque Timing Belts EV5GT",
-            "motor_pulley": "GPA16GT5090-A-H8", "output_pulley": "GPA40GT5090-A-H12", "belt": "GBN250EV5GT-090",
+            "motor_pulley": "GPA16GT5090-A-P8", "output_pulley": "GPA40GT5090-A-P12", "belt": "GBN250EV5GT-090",
             "pitch_mm": "5", "pitch_length_mm": "250", "tooth_count": "50", "width_mm": "9",
             "published_mass_kg": "SELECTION REQUIRED", "candidate_axes": "L_ANKLE_PITCH; R_ANKLE_PITCH",
             "ratio_and_center": "16:40 / 2.5:1 / 51.455622919 mm nominal pitch center",
