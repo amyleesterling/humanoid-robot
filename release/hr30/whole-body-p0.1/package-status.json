@@ -249,8 +249,11 @@
   "actuator_branch_pdu_erc_errors": 0,
   "actuator_branch_pdu_erc_warnings": 0,
   "actuator_branch_pdu_placement_complete": true,
-  "actuator_branch_pdu_routing_complete": false,
-  "actuator_branch_pdu_drc_accepted": false,
+  "actuator_branch_pdu_routing_complete": true,
+  "actuator_branch_pdu_drc_accepted": true,
   "actuator_branch_pdu_walking_power_architecture_complete": false,
-  "actuator_branch_pdu_energization_authority": false
+  "actuator_branch_pdu_energization_authority": false,
+  "actuator_branch_pdu_drc_violations": 0,
+  "actuator_branch_pdu_unconnected_pads": 0,
+  "actuator_branch_pdu_production_stackup_selected": false
 }
