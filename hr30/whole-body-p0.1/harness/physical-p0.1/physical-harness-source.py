@@ -17,6 +17,8 @@ import shutil
 from collections import defaultdict
 from pathlib import Path
 
+import cadquery as cq
+
 
 ROOT = Path(__file__).resolve().parents[1]
 WB = ROOT / "hr30" / "whole-body-p0.1"
@@ -49,6 +51,12 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def normalize_step_text(path: Path) -> None:
+    """Remove exporter-only trailing spaces while preserving STEP content."""
+    lines = path.read_text(encoding="utf-8").splitlines()
+    path.write_text("\n".join(line.rstrip() for line in lines) + "\n", encoding="utf-8", newline="\n")
+
+
 def xyz(text: str) -> tuple[float, float, float]:
     return tuple(float(v.strip()) for v in text.strip("() ").split(","))  # type: ignore[return-value]
 
@@ -59,6 +67,98 @@ def fxyz(p: tuple[float, float, float]) -> str:
 
 def dist(a: tuple[float, float, float], b: tuple[float, float, float]) -> float:
     return math.sqrt(sum((a[i] - b[i]) ** 2 for i in range(3)))
+
+
+def body_box(
+    width: float,
+    depth: float,
+    height: float,
+    x: float,
+    y: float,
+    z0: float,
+) -> cq.Shape:
+    """Create a lightweight whole-body context envelope from a bottom datum."""
+    return cq.Workplane("XY").box(width, depth, height).translate((x, y, z0 + height / 2)).val()
+
+
+def rod_between(
+    start: tuple[float, float, float],
+    end: tuple[float, float, float],
+    radius: float,
+) -> cq.Shape:
+    vector = tuple(end[i] - start[i] for i in range(3))
+    length = math.sqrt(sum(value * value for value in vector))
+    if length <= 0:
+        raise ValueError(f"zero-length route from {start} to {end}")
+    direction = cq.Vector(*(value / length for value in vector))
+    return cq.Solid.makeCylinder(radius, length, cq.Vector(*start), direction)
+
+
+def write_route_cad(routes: list[dict], points: list[dict]) -> int:
+    """Export all 62 registered centerlines in a recognizable 762 mm body.
+
+    The route rods are visualization/reference geometry.  Their display
+    diameter is deliberately not a cable OD, bundle diameter, clearance, or
+    bend-radius release.
+    """
+    pmap = {
+        row["point_id"]: (float(row["x_mm"]), float(row["y_mm"]), float(row["z_mm"]))
+        for row in points
+    }
+    assembly = cq.Assembly(name="HR30_WHOLE_BODY_HARNESS_CENTERLINES_P0_1")
+    body_color = cq.Color(0.33, 0.68, 0.88, 0.22)
+    dark_color = cq.Color(0.04, 0.19, 0.36, 0.30)
+    gold = cq.Color(0.95, 0.64, 0.02, 1.0)
+    sky = cq.Color(0.05, 0.61, 0.90, 1.0)
+
+    # Lightweight context only: exact physical body geometry remains in the
+    # authoritative whole-body STEP/GLB.  These envelopes make the route
+    # assembly immediately recognizable without duplicating the 90 MB model.
+    context = (
+        ("BODY-LEFT-FOOT", body_box(105, 170, 35, 62.5, 18, 0), body_color),
+        ("BODY-RIGHT-FOOT", body_box(105, 170, 35, -62.5, 18, 0), body_color),
+        ("BODY-LEFT-LEG", body_box(55, 72, 375, 62.5, 0, 35), body_color),
+        ("BODY-RIGHT-LEG", body_box(55, 72, 375, -62.5, 0, 35), body_color),
+        ("BODY-PELVIS", body_box(180, 100, 80, 0, 0, 410), dark_color),
+        ("BODY-TORSO", body_box(210, 108, 170, 0, 0, 490), dark_color),
+        ("BODY-HEAD", body_box(142, 112, 102, 0, 0, 660), body_color),
+        ("BODY-LEFT-ARM", body_box(62, 70, 295, 135, 0, 295), body_color),
+        ("BODY-RIGHT-ARM", body_box(62, 70, 295, -135, 0, 295), body_color),
+        ("BODY-LEFT-HAND", body_box(54, 58, 70, 140, 0, 225), body_color),
+        ("BODY-RIGHT-HAND", body_box(54, 58, 70, -140, 0, 225), body_color),
+    )
+    for name, shape, color in context:
+        assembly.add(shape, name=name, color=color)
+
+    cad_rows = []
+    for route in routes:
+        start = pmap[route["from_point"]]
+        end = pmap[route["to_point"]]
+        power = "POWER" in route["service"]
+        radius = 1.5 if power else 1.0
+        shape = rod_between(start, end, radius)
+        solid_name = "ROUTE-" + route["segment_id"]
+        assembly.add(shape, name=solid_name, color=gold if power else sky)
+        cad_rows.append({
+            "segment_id": route["segment_id"],
+            "solid_name": solid_name,
+            "segment_kind": route["segment_kind"],
+            "service": route["service"],
+            "from_xyz_mm": fxyz(start),
+            "to_xyz_mm": fxyz(end),
+            "registered_planning_length_mm": route["planning_length_mm"],
+            "cad_centerline_length_mm": f"{dist(start, end):.3f}",
+            "display_rod_diameter_mm": f"{2 * radius:.1f}",
+            "display_color": "GOLD" if power else "SKY BLUE",
+            "geometry_interpretation": "REFERENCE CENTERLINE ROD ONLY - NOT CABLE OD, BUNDLE SIZE, CLEARANCE OR BEND-RADIUS RELEASE",
+            "authority": AUTHORITY,
+        })
+    write_csv(OUT / "route-cad-register.csv", cad_rows)
+    step_path = OUT / "HR30_whole_body_harness_centerlines_candidate.step"
+    assembly.save(str(step_path))
+    normalize_step_text(step_path)
+    assembly.save(str(OUT / "HR30_whole_body_harness_centerlines_candidate.glb"))
+    return len(cad_rows)
 
 
 def axis_module(axis: str) -> str:
@@ -518,9 +618,11 @@ def build() -> dict[str, int | float]:
         "state": "CANDIDATE DEFINED / VALIDATION REQUIRED" if i == "HSEL-03" else OPEN, "authority": AUTHORITY,
     } for i, s, sel, e in unresolved])
 
+    route_cad_solid_count = write_route_cad(route_rows, point_rows)
     stats = {
         "fixed_route_segments": len(trunks), "moving_joint_route_segments": 50,
         "total_route_segments": len(route_rows), "route_points": len(point_rows),
+        "route_cad_solid_count": route_cad_solid_count,
         "axes": len(axis_rows), "buses": len(buses), "harness_assemblies": len(assembly_rows),
         "equipment_items": len(equipment_rows), "logical_terminals": len(logical_rows),
         "actuator_connector_instances": len(connector_rows), "actuator_connector_contacts": len(contact_rows),
@@ -536,7 +638,9 @@ def build() -> dict[str, int | float]:
         "data_star_topology_rejected": True,
         "serial_data_predecessor_successor_chain_complete": True,
         "inter_actuator_ground_or_vdd_pass_through_present": False,
-        "route_geometry_candidate_present": True, "every_axis_has_power_and_data_loop": True,
+        "route_geometry_candidate_present": True, "whole_body_route_step_present": True,
+        "whole_body_route_glb_present": True, "route_cad_is_cable_size_release": False,
+        "every_axis_has_power_and_data_loop": True,
         "every_equipment_item_bound": True, "every_logical_terminal_retained": True,
         "standard_dynamixel_cable_direct_use_approved": False, "assembled_cables_selected": False,
         "conductor_sizing_released": False, "protection_released": False, "connector_set_released": False,
@@ -551,13 +655,13 @@ def build() -> dict[str, int | float]:
 
 This is the first complete physical translation of the HR-30 logical wiring architecture. It binds all **{stats['axes']} joints**, **{stats['buses']} actuator buses**, **{stats['equipment_items']} installed equipment items**, and **{stats['logical_terminals']} current ECAD logical terminals** to a controlled harness architecture.
 
-It contains {stats['fixed_route_segments']} body corridors plus 50 explicit moving-joint power/data loops ({stats['total_route_segments']} route segments and {stats['route_points']} route points). Each actuator has a known device-side contact map, a branch-power relationship, a data-link boundary, a moving-loop obligation, retention obligation, derating inputs, and an inspection path.
+It contains {stats['fixed_route_segments']} body corridors plus 50 explicit moving-joint power/data loops ({stats['total_route_segments']} route segments and {stats['route_points']} route points). All {stats['route_cad_solid_count']} registered routes are also exported as named editable STEP solids and as one interactive GLB in a recognizable 762 mm body context. Those rods are route centerlines—not selected cable diameters, bundle clearances, or bend-radius releases. Each actuator has a known device-side contact map, a branch-power relationship, a data-link boundary, a moving-loop obligation, retention obligation, derating inputs, and an inspection path.
 
 The architecture now defines one two-conductor power pair per actuator and a serial data chain for each bus. Every actuator input housing receives its own return, VDD, and data contacts. Every inter-actuator outgoing housing populates only the data contacts: GND and VDD cavities remain empty, so no power current is daisy-chained through a preceding actuator connector. This controlled split-harness is the P0.1 construction candidate; crimp tooling, conductor selection, cavity inspection, no-backfeed tests, and fault injection remain required before release.
 
 The 76.08 A figure is only the sum of manufacturer 12 V momentary stall-current endpoints. It is not expected demand, a conductor rating, a fuse value, or permission to power the robot.
 
-Open the [interactive physical harness guide](index.html). Start with `axis-harness-binding.csv`, `route-segment-register.csv`, `connector-contact-map.csv`, and `unresolved-harness-selections.csv`.
+Open the [interactive physical harness guide](index.html). Start with the whole-body route model, `route-cad-register.csv`, `axis-harness-binding.csv`, `route-segment-register.csv`, `connector-contact-map.csv`, and `unresolved-harness-selections.csv`.
 
 No cable cut length, conductor size, protection value, complete connector set, retention hardware, shielding decision, or powered validation is released by this package.
 """
@@ -618,6 +722,23 @@ def write_visuals(routes: list[dict], points: list[dict], axes: list[dict], buse
     bus_cards = "".join(f'<button class="bus" data-bus="{html.escape(b["bus_id"])}"><strong>{html.escape(b["bus_id"])}</strong><span>{html.escape(b["protocol"])} · {html.escape(b["axis_count"])} axes</span><span>{html.escape(b["candidate_12v_stall_endpoint_sum_a"])} A endpoint sum</span></button>' for b in buses)
     axis_cards = "".join(f'<tr data-bus="{html.escape(a["bus_id"])}"><td>{html.escape(a["axis_id"])}</td><td>{html.escape(a["bus_id"])}</td><td>{html.escape(a["actuator_family"])}</td><td>{html.escape(a["axis_xyz_mm"])}</td><td>{html.escape(a["power_loop"])}<br>{html.escape(a["data_loop"])}</td></tr>' for a in axes)
     page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 physical harness P0.1</title><style>:root{{--navy:#0d2d57;--blue:#179de3;--sky:#d8f1ff;--gold:#f4b400;--paper:#f8fcff}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--navy);font:16px/1.5 system-ui,sans-serif}}header{{background:linear-gradient(135deg,var(--navy),#185d9d);color:white;padding:32px max(24px,calc((100% - 1180px)/2))}}h1{{font-size:clamp(32px,5vw,60px);line-height:1.05;margin:.2em 0}}.warning{{background:var(--gold);color:#1b2840;padding:14px 18px;font-weight:800;border-radius:12px}}main{{max-width:1180px;margin:auto;padding:28px 20px 70px}}h2{{font-size:clamp(25px,3vw,38px);margin-top:46px}}.stats,.buses{{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}}.stat,.bus,.panel{{background:white;border:2px solid #9bd5f5;border-radius:16px;padding:18px;box-shadow:0 6px 18px #0d2d5712}}.stat strong{{display:block;font-size:28px}}.bus{{font:inherit;color:inherit;text-align:left;cursor:pointer}}.bus strong,.bus span{{display:block}}.bus.active{{border-color:var(--gold);box-shadow:0 0 0 3px #f4b40055}}.map{{width:100%;max-height:760px}}.tablewrap{{overflow:auto;border:2px solid #9bd5f5;border-radius:16px;background:white}}table{{border-collapse:collapse;width:100%;min-width:900px}}th,td{{padding:13px 14px;border-bottom:1px solid #cfeafa;text-align:left;vertical-align:top}}th{{position:sticky;top:0;background:var(--navy);color:white;font-size:14px}}td{{font-size:14px}}a{{color:#075f9f;font-weight:700}}.open{{border-left:8px solid var(--gold)}}@media(max-width:600px){{header{{padding:24px 18px}}main{{padding:20px 14px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>HR-30 · Whole-body P0.1</p><h1>Physical harness guide</h1><p>Every body corridor, actuator feed, data bus, joint loop and current ECAD terminal is accounted for—without pretending unresolved cable and protection choices are finished.</p></header><main><section class="stats"><div class="stat"><strong>{stats['axes']}</strong>separate actuator feeds</div><div class="stat"><strong>{stats['total_route_segments']}</strong>route segments</div><div class="stat"><strong>{stats['logical_terminals']}</strong>logical terminals</div><div class="stat"><strong>{stats['candidate_12v_stall_endpoint_sum_a']}</strong>A endpoint sum, not demand</div></section><h2>Whole-body route map</h2><div class="panel"><img class="map" src="whole-body-physical-harness.svg" alt="Front map of the HR-30 physical harness routes and joint loops"></div><h2>Eight data buses</h2><p>Select a data bus to filter the joint table; select it again to show all.</p><div class="buses">{bus_cards}</div><h2>All 25 protected-feed candidates</h2><div class="tablewrap"><table><thead><tr><th>Axis</th><th>Data bus</th><th>Actuator</th><th>Joint datum (mm)</th><th>Moving loops</th></tr></thead><tbody>{axis_cards}</tbody></table></div><h2>Critical power boundary</h2><div class="panel open"><p>Each actuator now has its own protection/telemetry boundary and VDD net. Standard ROBOTIS X3P/X4P cables include VDD, so a custom data-only/power-injection breakout or controlled depinning method is required to keep the 25 feeds isolated.</p><p>The 76.08 A figure is the arithmetic sum of momentary 12 V stall-current endpoints—not a normal-load forecast, fuse rating, cable rating, or permission to energize.</p></div><h2>Build registers</h2><div class="panel"><p><a href="route-segment-register.csv">route segments</a> · <a href="route-point-register.csv">route points</a> · <a href="axis-harness-binding.csv">axis bindings</a> · <a href="connector-contact-map.csv">actuator contacts</a> · <a href="cable-core-register.csv">cable cores</a> · <a href="equipment-interface-register.csv">equipment interfaces</a> · <a href="logical-terminal-binding.csv">logical terminals</a> · <a href="current-derating-register.csv">derating inputs</a> · <a href="inspection-test-register.csv">inspection/tests</a> · <a href="unresolved-harness-selections.csv">open selections</a></p></div></main><script>const buttons=[...document.querySelectorAll('.bus')],rows=[...document.querySelectorAll('tbody tr')];buttons.forEach(b=>b.addEventListener('click',()=>{{const on=!b.classList.contains('active');buttons.forEach(x=>x.classList.remove('active'));b.classList.toggle('active',on);rows.forEach(r=>r.hidden=on&&r.dataset.bus!==b.dataset.bus)}}));</script></body></html>'''
+    page = page.replace(
+        "<title>HR-30 physical harness P0.1</title><style>",
+        '<title>HR-30 physical harness P0.1</title><script type="module" src="../../vendor/model-viewer.min.js"></script><style>',
+        1,
+    )
+    page = page.replace(
+        ".map{width:100%;max-height:760px}",
+        "model-viewer{display:block;width:100%;height:clamp(500px,70vh,760px);background:radial-gradient(circle,#fff,#d8f1ff)}.map{width:100%;max-height:760px}",
+        1,
+    )
+    route_viewer = '''<h2>Orbit all 62 routes in the complete body</h2><div class="panel"><model-viewer src="HR30_whole_body_harness_centerlines_candidate.glb" camera-controls camera-orbit="32deg 76deg 105%" field-of-view="27deg" shadow-intensity="0.8" exposure="1.05" alt="Interactive recognizable 762 millimetre HR-30 whole body with all 62 registered harness centerlines"></model-viewer><p>Gold rods are actuator-power centerlines; sky-blue rods are data/low-voltage centerlines. The translucent body is lightweight positional context. Rod diameter is illustrative and does not release cable OD, bundle clearance, or bend radius.</p><p><a href="HR30_whole_body_harness_centerlines_candidate.step">Download editable route STEP</a> · <a href="route-cad-register.csv">Inspect the 62-solid CAD register</a></p></div>'''
+    page = page.replace("<h2>Whole-body route map</h2>", route_viewer + "<h2>Whole-body route map</h2>", 1)
+    page = page.replace(
+        '<a href="route-point-register.csv">route points</a> ·',
+        '<a href="route-point-register.csv">route points</a> · <a href="route-cad-register.csv">route CAD</a> ·',
+        1,
+    )
     (OUT / "index.html").write_text(page, encoding="utf-8")
     page_path = OUT / "index.html"
     page = page_path.read_text(encoding="utf-8")
@@ -660,6 +781,8 @@ def integrate_whole_body_package(stats: dict) -> None:
 
 The [interactive physical harness guide](harness/physical-p0.1/index.html) translates the logical ECAD into {stats['total_route_segments']} route segments: 12 reserved body corridors and two moving-loop candidates at every one of the 25 joint axes. It retains all {stats['logical_terminals']} current logical terminals and binds every installed equipment item without inventing unresolved conductor sizes or protection values.
 
+All {stats['route_cad_solid_count']} route centerlines now exist as named editable STEP solids and one interactive GLB in a recognizable 762 mm body context. The display rods are centerline references only; they do not release cable OD, bundle clearance, bend radius, cut length, or retention.
+
 The P0.1 split-harness candidate uses 25 individual positive/return power pairs and eight serial data chains. Incoming actuator housings combine the individual pair with data; outgoing inter-actuator housings populate data contacts only and leave GND/VDD cavities empty. The eight bus assembly drawings and 25 contact maps are construction candidates, not a released cable set. Protection, conductor sizing, crimp process qualification, retention, flex-life, EMC, and physical validation remain open.
 """
     if marker in readme:
@@ -686,6 +809,9 @@ The P0.1 split-harness candidate uses 25 individual positive/return power pairs 
         "physical_harness_package_present": True,
         "physical_harness_route_segments": stats["total_route_segments"],
         "physical_harness_route_points": stats["route_points"],
+        "physical_harness_route_cad_solids": stats["route_cad_solid_count"],
+        "physical_harness_route_step_present": True,
+        "physical_harness_route_glb_present": True,
         "physical_harness_axes_bound": stats["axes"],
         "physical_harness_logical_terminals_retained": stats["logical_terminals"],
         "whole_body_harness_equipment_binding_count": stats["equipment_items"],
