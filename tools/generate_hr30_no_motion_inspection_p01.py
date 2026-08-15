@@ -56,6 +56,14 @@ def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def vendor_identity_sha256(path: Path) -> str:
+    """Preserve the received manufacturer STEP identity across Git EOL checkout."""
+    data = path.read_bytes()
+    if path.suffix.lower() in {".stp", ".step"} and b"\r\n" not in data:
+        data = data.replace(b"\n", b"\r\n")
+    return hashlib.sha256(data).hexdigest()
+
+
 def write_csv(path: Path, rows: list[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     if not rows:
@@ -238,7 +246,7 @@ def build() -> None:
     lineup = cq.Assembly(name="HR30_NO_MOTION_INSPECTION_P01_NOT_RELEASED")
     offsets = [-150, -50, 50, 150]
     for index, model in enumerate(MODELS):
-        if sha(model["step"]) != model["sha"]: raise RuntimeError(f"vendor STEP hash drift: {model['model']}")
+        if vendor_identity_sha256(model["step"]) != model["sha"]: raise RuntimeError(f"vendor STEP hash drift: {model['model']}")
         native = cq.importers.importStep(str(model["step"])).val()
         base, cover, assembly, dims = fixture(native, model["form"])
         stem = model["model"].lower().replace("-", "_")

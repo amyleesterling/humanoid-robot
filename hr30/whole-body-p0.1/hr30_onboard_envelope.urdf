@@ -243,9 +243,9 @@
   </link>
   <link name="L_thigh">
     <inertial>
-      <origin xyz="-0.001342 0.000576 -0.056386" rpy="0 0 0" />
-      <mass value="1.680577" />
-      <inertia ixx="0.004394148" ixy="0" ixz="0" iyy="0.004352134" iyz="0" izz="0.001575821" />
+      <origin xyz="-0.001344 0.000577 -0.056138" rpy="0 0 0" />
+      <mass value="1.677714" />
+      <inertia ixx="0.004386662" ixy="0" ixz="0" iyy="0.004344720" iyz="0" izz="0.001573136" />
     </inertial>
     <visual>
       <origin xyz="0.000000 0.000000 -0.080000" rpy="0 0 0" />
@@ -485,9 +485,9 @@
   </link>
   <link name="R_thigh">
     <inertial>
-      <origin xyz="-0.001342 0.000576 -0.056386" rpy="0 0 0" />
-      <mass value="1.680577" />
-      <inertia ixx="0.004394148" ixy="0" ixz="0" iyy="0.004352134" iyz="0" izz="0.001575821" />
+      <origin xyz="-0.001344 0.000577 -0.056138" rpy="0 0 0" />
+      <mass value="1.677714" />
+      <inertia ixx="0.004386662" ixy="0" ixz="0" iyy="0.004344720" iyz="0" izz="0.001573136" />
     </inertial>
     <visual>
       <origin xyz="0.000000 0.000000 -0.080000" rpy="0 0 0" />

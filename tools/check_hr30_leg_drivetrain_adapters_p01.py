@@ -69,7 +69,7 @@ def main() -> int:
     allocations = rows(SRC / "axis-adapter-allocation.csv")
     require(len(allocations) == 10 and {row["axis_id"] for row in allocations} == AXES, "adapter ten-axis coverage mismatch")
     require(all(row["motor_adapter"] in PARTS and row["output_adapter"] in PARTS and row["nominal_allocation_complete"] == "True" and row["fit_capacity_physical_validation"] == "OPEN" for row in allocations), "adapter allocation boundary drift")
-    require({row["motor_pulley"] for row in allocations} == {"GPA16GT5090-A-P8", "GPA20GT5090-A-P10"}, "motor P-bore candidate drift")
+    require({row["motor_pulley"] for row in allocations} == {"GPA16GT5090-A-P8", "GPA16/20GT5090-A-P10", "GPA20GT5090-A-P10"}, "motor P-bore candidate drift")
     require({row["output_pulley"] for row in allocations} == {"GPA30GT5090-A-P12", "GPA40GT5090-A-P12"}, "output P-bore candidate drift")
 
     bindings = rows(SRC / "source-binding.csv")

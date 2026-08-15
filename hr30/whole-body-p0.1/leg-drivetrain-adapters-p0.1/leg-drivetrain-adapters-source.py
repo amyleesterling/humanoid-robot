@@ -93,7 +93,7 @@ class MotorAdapter:
 
 
 MOTOR_ADAPTERS = (
-    MotorAdapter("MA-HN13-P10", "HN13", 10.0, "GPA20GT5090-A-P10", 6),
+    MotorAdapter("MA-HN13-P10", "HN13", 10.0, "GPA16/20GT5090-A-P10", 6),
     MotorAdapter("MA-HN12-P10", "HN12", 10.0, "GPA20GT5090-A-P10", 2),
     MotorAdapter("MA-HN12-P8", "HN12", 8.0, "GPA16GT5090-A-P8", 2),
 )
@@ -129,7 +129,8 @@ def write_csv(path: Path, records: list[dict]) -> None:
 def validate_vendor_sources() -> None:
     for horn in HORN_INTERFACES.values():
         for path, expected in ((horn.source_step, horn.expected_step_sha256), (horn.source_pdf, horn.expected_pdf_sha256)):
-            if not path.is_file() or sha(path).upper() != expected:
+            identity_sha = body.vendor_identity_sha256(path) if path.suffix.lower() in {".stp", ".step"} else sha(path)
+            if not path.is_file() or identity_sha.upper() != expected:
                 raise RuntimeError(f"vendor source identity mismatch: {path}")
 
 
@@ -397,8 +398,8 @@ def main() -> int:
         {"fastener_id": "AF-OUTPUT-CAP", "location": "output pulley axial capture", "candidate": "through-bolt and washer system through 7.4 mm bore", "quantity_whole_robot": 10, "length_grade_locking_torque": "SELECTION REQUIRED", "source_boundary": "joint carrier and bearing stack release required", "authority": "NO PROCUREMENT/FABRICATION AUTHORITY", "warning": WARNING},
     ])
     write_csv(OUT / "source-binding.csv", [
-        {"source_id": "ADS-01", "source": "ROBOTIS HN12-N101 official STEP", "path_or_url": HORN_INTERFACES["HN12"].source_step.relative_to(ROOT).as_posix(), "sha256": sha(HORN_INTERFACES["HN12"].source_step), "revision_date": HORN_INTERFACES["HN12"].drawing_record, "use": "exact HN12 solid and reference pattern", "warning": WARNING},
-        {"source_id": "ADS-02", "source": "ROBOTIS HN13-N101 official STEP", "path_or_url": HORN_INTERFACES["HN13"].source_step.relative_to(ROOT).as_posix(), "sha256": sha(HORN_INTERFACES["HN13"].source_step), "revision_date": HORN_INTERFACES["HN13"].drawing_record, "use": "exact HN13 solid and reference pattern", "warning": WARNING},
+        {"source_id": "ADS-01", "source": "ROBOTIS HN12-N101 official STEP", "path_or_url": HORN_INTERFACES["HN12"].source_step.relative_to(ROOT).as_posix(), "sha256": body.vendor_identity_sha256(HORN_INTERFACES["HN12"].source_step), "revision_date": HORN_INTERFACES["HN12"].drawing_record, "use": "exact HN12 solid and reference pattern", "warning": WARNING},
+        {"source_id": "ADS-02", "source": "ROBOTIS HN13-N101 official STEP", "path_or_url": HORN_INTERFACES["HN13"].source_step.relative_to(ROOT).as_posix(), "sha256": body.vendor_identity_sha256(HORN_INTERFACES["HN13"].source_step), "revision_date": HORN_INTERFACES["HN13"].drawing_record, "use": "exact HN13 solid and reference pattern", "warning": WARNING},
         {"source_id": "ADS-03", "source": "MISUMI High Torque Timing Pulleys 5GT", "path_or_url": "https://uk.misumi-ec.com/pdf/fa/p1_1117.pdf", "sha256": "0799620CEB55DB471F4C4A16CB70751119B0478F970D0F47C301215E4C25CCBF", "revision_date": "official catalog PDF metadata 2012-09-04; accessed 2026-08-15", "use": "P round-bore-plus-tap option, 9 mm belt-width family and nominal bore availability", "warning": WARNING},
         {"source_id": "ADS-04", "source": "adapter generator", "path_or_url": Path(__file__).relative_to(ROOT).as_posix(), "sha256": sha(Path(__file__)), "revision_date": "generated 2026-08-15", "use": "editable flange/stub/shaft/cap source CAD", "warning": WARNING},
     ])

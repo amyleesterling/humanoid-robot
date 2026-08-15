@@ -391,11 +391,11 @@ JOINT_MODULE_FAMILIES = {
         "shaft_d": 12.0, "bearing_od": 24.0, "bearing_w": 6.0, "bearing_id": "NSK-6901", "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
         "transmission": "MISUMI GPA20/GPA40GT5090 plus GBN255EV5GT-090 candidate with output encoder", "ratio": "2.0:1 exact product/geometry candidate", "motor_offset": 49.965206523, "output_pulley_d": 62.52, "motor_pulley_d": 30.69, "cable_d": 12.0,
     },
-    "JMF-09-KNEE-REDUCED-20": {
-        "role": "2.0:1 knee transmission with dual-supported output",
+    "JMF-09-KNEE-REDUCED-25": {
+        "role": "2.5:1 knee transmission with dual-supported output",
         "plate_w": 74.0, "plate_h": 78.0, "plate_t": 5.0, "pattern_x": 60.0, "pattern_y": 64.0, "hole_d": 5.5,
         "shaft_d": 12.0, "bearing_od": 24.0, "bearing_w": 6.0, "bearing_id": "NSK-6901", "span": 64.0, "body_w": 46.0, "body_h": 58.0, "body_d": 52.0,
-        "transmission": "MISUMI GPA20/GPA40GT5090 plus GBN255EV5GT-090 knee candidate with output encoder", "ratio": "2.0:1 exact product/geometry candidate", "motor_offset": 49.965206523, "output_pulley_d": 62.52, "motor_pulley_d": 30.69, "cable_d": 12.0,
+        "transmission": "MISUMI GPA16GT5090-A-P10/GPA40GT5090-A-P12 plus GBN250EV5GT-090 knee candidate with output encoder", "ratio": "2.5:1 exact product/geometry candidate", "motor_offset": 51.455622919, "output_pulley_d": 62.52, "motor_pulley_d": 24.32, "cable_d": 12.0,
     },
     "JMF-10-ANKLE-PITCH-REDUCED-25": {
         "role": "compact 2.5:1 ankle-pitch transmission",
@@ -424,7 +424,7 @@ def joint_module_family(axis_id: str) -> str:
     if "ELBOW" in axis_id:
         return "JMF-04-MEDIUM"
     if "KNEE_PITCH" in axis_id:
-        return "JMF-09-KNEE-REDUCED-20"
+        return "JMF-09-KNEE-REDUCED-25"
     if "ANKLE_PITCH" in axis_id:
         return "JMF-10-ANKLE-PITCH-REDUCED-25"
     if "HIP_ROLL" in axis_id or "ANKLE_ROLL" in axis_id:
@@ -436,6 +436,21 @@ def joint_module_family(axis_id: str) -> str:
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def vendor_identity_sha256(path: Path) -> str:
+    """Hash manufacturer STEP identity independent of Git checkout EOLs.
+
+    The official XC330 source was received with CRLF and its manufacturer
+    manifest binds those bytes.  Git stores the semantically identical STEP
+    text with LF in this checkout.  Normalize STEP physical records to the
+    received CRLF form before applying the frozen manufacturer-source hash;
+    retain the raw checkout hash separately in the generated source register.
+    """
+    data = path.read_bytes()
+    if path.suffix.lower() in {".stp", ".step"} and b"\r\n" not in data:
+        data = data.replace(b"\n", b"\r\n")
+    return hashlib.sha256(data).hexdigest()
 
 
 def write_csv(path: Path, rows: list[dict]) -> None:
@@ -535,7 +550,7 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
     components: list[Component] = []
     vendor_shapes: dict[str, cq.Shape] = {}
     for source_id, source in VENDOR_ACTUATOR_SOURCES.items():
-        actual_sha = sha256(source["path"]).upper()
+        actual_sha = vendor_identity_sha256(source["path"]).upper()
         if actual_sha != source["expected_sha256"]:
             raise RuntimeError(f"{source_id} source hash mismatch: {actual_sha}")
         vendor_shapes[source_id] = cq.importers.importStep(str(source["path"])).val()
@@ -909,6 +924,8 @@ def main() -> int:
         "record": source["record"],
         "repository_path": source["path"].relative_to(ROOT).as_posix(),
         "sha256": source["expected_sha256"],
+        "checkout_sha256": sha256(source["path"]).upper(),
+        "identity_hash_policy": "RECEIVED STEP CRLF BYTES; LF GIT CHECKOUT NORMALIZED TO CRLF BEFORE IDENTITY CHECK",
         "applies": source["applies"],
         "native_output_datum": "+Z through native origin; exact project roll and translation recorded per axis",
         "release_boundary": "MANUFACTURER REFERENCE GEOMETRY ONLY - RECEIVED IDENTITY, FIT, TOLERANCE AND INTERFACE VALIDATION REQUIRED",
@@ -1024,7 +1041,7 @@ def main() -> int:
         elif "KNEE_PITCH" in axis_id:
             actuator, transmission, rail, disposition = (
                 "ROBOTIS XH540-W270-R evaluation candidate",
-                "2.0:1 whole-body knee timing-reduction candidate; dual-supported 12 mm output; output absolute encoder",
+                "2.5:1 16:40 whole-body knee timing-reduction candidate; dual-supported 12 mm output; output absolute encoder",
                 "10.0-14.8 V candidate domain",
                 "PROVISIONAL - CONTINUOUS TORQUE/THERMAL/GAIT PROOF REQUIRED",
             )
@@ -1171,7 +1188,7 @@ def main() -> int:
 
 This is the first repository-native full-body CAD for Project Button. It freezes the `HR-PROD-030` neutral-pose datums, all 25 candidate axes, the 762 mm overall height, shell envelopes, load-frame envelopes and first component-bay reservations.
 
-It is intentionally an architecture model, not a buildable machine. The STEP contains candidate physical envelopes plus visible module-family geometry for every axis: output shafts, standard catalogue bearing candidates, removable four-hole interface carriers, exact SHA-bound manufacturer actuator bodies, cable corridors and reduction reservations. Ten dimensioned module families cover all 25 axes, including dedicated 2.0:1 knee and 2.5:1 ankle-pitch candidates and a shared intersecting-axis shoulder gimbal rather than overlapping generic servo blocks. Three controlled ROBOTIS source files and 25 explicit orthonormal transforms replace anonymous actuator boxes while leaving every frame, horn, fastener, cable exit, tolerance and received fit unresolved. The web GLB deliberately substitutes dimension-matched low-complexity actuator bodies for the detailed B-Reps; the exact geometry remains in both STEP assemblies and the source/transform registers. The second STEP and GLB add joint-axis and component-reservation references. The package also assigns a provisional actuator/transmission route to every axis and records explicit REUSE / ADAPT / REJECT decisions for the SHA-bound Asimov 1 source rig. Bearing dimensions, masses and catalogue ratings are now recorded from current primary manufacturer pages, but bearing application, life, suffix, fits, retention and received identity remain open. Exact fasteners, stops, encoders, actuator interfaces, wall construction, tolerances, harnesses, power hardware, mass properties, collision proof and physical validation remain open.
+It is intentionally an architecture model, not a buildable machine. The STEP contains candidate physical envelopes plus visible module-family geometry for every axis: output shafts, standard catalogue bearing candidates, removable four-hole interface carriers, exact SHA-bound manufacturer actuator bodies, cable corridors and reduction reservations. Ten dimensioned module families cover all 25 axes, including dedicated 2.5:1 knee and ankle-pitch candidates and a shared intersecting-axis shoulder gimbal rather than overlapping generic servo blocks. Three controlled ROBOTIS source files and 25 explicit orthonormal transforms replace anonymous actuator boxes while leaving every frame, horn, fastener, cable exit, tolerance and received fit unresolved. The web GLB deliberately substitutes dimension-matched low-complexity actuator bodies for the detailed B-Reps; the exact geometry remains in both STEP assemblies and the source/transform registers. The second STEP and GLB add joint-axis and component-reservation references. The package also assigns a provisional actuator/transmission route to every axis and records explicit REUSE / ADAPT / REJECT decisions for the SHA-bound Asimov 1 source rig. Bearing dimensions, masses and catalogue ratings are now recorded from current primary manufacturer pages, but bearing application, life, suffix, fits, retention and received identity remain open. Exact fasteners, stops, encoders, actuator interfaces, wall construction, tolerances, harnesses, power hardware, mass properties, collision proof and physical validation remain open.
 
 The straight arm-chain arithmetic is 370 mm reach and 950 mm span: both pass hard limits, but both miss the preferred 360/900 mm targets. This is recorded as an open design correction rather than hidden.
 """

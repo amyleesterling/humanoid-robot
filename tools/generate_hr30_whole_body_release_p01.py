@@ -47,6 +47,10 @@ PIPELINE = (
     "generate_hr30_fabrication_sourcing_p01.py",
     "generate_hr30_joint_hardware_manufacturing_p01.py",
     "generate_hr30_transmission_closure_p01.py",
+    "generate_hr30_current_constrained_actuation_p01.py",
+    "generate_hr30_axis_commissioning_station_p01.py",
+    "generate_hr30_bench_harness_p01.py",
+    "generate_hr30_no_motion_inspection_p01.py",
 )
 
 

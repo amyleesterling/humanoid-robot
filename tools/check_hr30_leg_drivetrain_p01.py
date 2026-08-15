@@ -29,7 +29,12 @@ EXPECTED = {
         "motor": 20, "output": 40, "belt": 51, "center": 49.965206523,
         "motor_code": "GPA20GT5090-A-P10", "output_code": "GPA40GT5090-A-P12",
         "belt_code": "GBN255EV5GT-090",
-        "axes": {"L_HIP_ROLL", "R_HIP_ROLL", "L_KNEE_PITCH", "R_KNEE_PITCH", "L_ANKLE_ROLL", "R_ANKLE_ROLL"},
+        "axes": {"L_HIP_ROLL", "R_HIP_ROLL", "L_ANKLE_ROLL", "R_ANKLE_ROLL"},
+    },
+    "LD-25K": {
+        "motor": 16, "output": 40, "belt": 50, "center": 51.455622919,
+        "motor_code": "GPA16GT5090-A-P10", "output_code": "GPA40GT5090-A-P12",
+        "belt_code": "GBN250EV5GT-090", "axes": {"L_KNEE_PITCH", "R_KNEE_PITCH"},
     },
     "LD-25": {
         "motor": 16, "output": 40, "belt": 50, "center": 51.455622919,
@@ -137,11 +142,12 @@ def main() -> int:
 
     products = rows(SRC / "candidate-product-register.csv")
     expected_products = {
-        "GPA16GT5090-A-P8": 2, "GPA20GT5090-A-P10": 8, "GPA30GT5090-A-P12": 2,
+        "GPA16GT5090-A-P8": 2, "GPA16GT5090-A-P10": 2, "GPA20GT5090-A-P10": 6, "GPA30GT5090-A-P12": 2,
         "GPA40GT5090-A-P12": 8, "GBN225EV5GT-090": 2, "GBN250EV5GT-090": 2,
-        "GBN255EV5GT-090": 6,
+        "GBN255EV5GT-090": 4,
     }
-    require(len(products) == 7 and {row["candidate_order_code"]: int(row["whole_robot_quantity"]) for row in products} == expected_products, "product register/quantity mismatch")
+    expected_products["GBN250EV5GT-090"] = 4
+    require(len(products) == 8 and {row["candidate_order_code"]: int(row["whole_robot_quantity"]) for row in products} == expected_products, "product register/quantity mismatch")
     require(all(row["authority"] == "NO PROCUREMENT AUTHORITY" and "WRITTEN QUOTE" in row["selection_state"] for row in products), "product authority overclaim")
 
     sources = rows(SRC / "transmission-source-register.csv")
@@ -157,7 +163,8 @@ def main() -> int:
     require((SRC / "HR-30_leg_drivetrain_lineup_candidate.glb").stat().st_size > 3000, "empty lineup GLB")
 
     status = json.loads((SRC / "leg-drivetrain-status.json").read_text(encoding="utf-8"))
-    require((status["module_count"], status["axis_count"], status["candidate_product_count"]) == (3, 10, 7), "drivetrain status count drift")
+    require((status["module_count"], status["axis_count"], status["candidate_product_count"]) == (4, 10, 8), "drivetrain status count drift")
+    require(status["knee_ratio"] == 2.5 and status["knee_current_boundary_correction_present"], "knee architecture correction missing")
     require(status["exact_candidate_product_allocation_present"] and not status["vendor_tooth_brep_present"], "drivetrain CAD truth boundary drift")
     false_keys = (
         "horn_adapter_material_fit_fasteners_released", "capacity_validated", "tension_validated", "physical_validation_complete",
@@ -167,7 +174,7 @@ def main() -> int:
     require(not any(status[key] for key in false_keys), "drivetrain status grants unsupported authority")
 
     whole_status = json.loads((WHOLE / "package-status.json").read_text(encoding="utf-8"))
-    require(whole_status["reduced_leg_drivetrain_package_present"] and whole_status["reduced_leg_drivetrain_module_count"] == 3 and whole_status["reduced_leg_drivetrain_axis_count"] == 10, "whole-body status lacks drivetrain package")
+    require(whole_status["reduced_leg_drivetrain_package_present"] and whole_status["reduced_leg_drivetrain_module_count"] == 4 and whole_status["reduced_leg_drivetrain_axis_count"] == 10, "whole-body status lacks drivetrain package")
     require(whole_status["reduced_leg_drivetrain_horn_adapters_complete"] and not whole_status["leg_drivetrain_adapter_fit_and_tolerance_released"] and not whole_status["leg_drivetrain_adapter_capacity_validated"], "whole-body drivetrain adapter boundary drift")
     require(not whole_status["reduced_leg_drivetrain_capacity_validated"], "whole-body drivetrain capacity overclaim")
     hold = next((row for row in rows(WHOLE / "open-holds.csv") if row["hold_id"] == "HR30-P01-H03"), None)
@@ -189,7 +196,7 @@ def main() -> int:
     require(root_page.count("<!-- HR30-LEG-DRIVETRAIN-P01-START -->") == 1 and "leg-drivetrain-p0.1/index.html" in root_page, "whole-body page drivetrain integration missing")
     require(root_readme.count("<!-- HR30-LEG-DRIVETRAIN-P01-README-START -->") == 1 and "49.359/49.965/51.456" in root_readme, "whole-body README drivetrain integration missing")
 
-    print("PASS: 3 physical candidate drivetrains cover all 10 reduced leg axes; exact product codes and solved centers verified; capacity and all work authority remain open")
+    print("PASS: 4 physical candidate drivetrains cover all 10 reduced leg axes; exact product codes and solved centers verified; capacity and all work authority remain open")
     return 0
 
 

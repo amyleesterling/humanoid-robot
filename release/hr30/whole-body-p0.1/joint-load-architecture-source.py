@@ -76,7 +76,7 @@ def actuator_for(axis_id: str) -> tuple[str, float, float]:
     if "HIP_ROLL" in axis_id:
         return "ROBOTIS XH540-W270-R", 2.0, REDUCED_DRIVE_EFFICIENCY
     if "KNEE_PITCH" in axis_id:
-        return "ROBOTIS XH540-W270-R", 2.0, REDUCED_DRIVE_EFFICIENCY
+        return "ROBOTIS XH540-W270-R", 2.5, REDUCED_DRIVE_EFFICIENCY
     if "HIP_PITCH" in axis_id:
         return "ROBOTIS XH540-W270-R", 1.5, REDUCED_DRIVE_EFFICIENCY
     return "ROBOTIS XH540-W270-R", 1.0, 1.0
@@ -207,7 +207,7 @@ def compute_rows() -> tuple[list[dict], dict]:
         "elbow_xm430_candidate_retained": True,
         "wrist_xc330_candidate_retained": True,
         "ankle_xm430_reduced_candidate_retained": True,
-        "knee_ratio": 2.0,
+        "knee_ratio": 2.5,
         "published_stall_endpoint_used_as_continuous_rating": False,
         "continuous_torque_validated": False,
         "dynamic_gait_loads_validated": False,
@@ -277,7 +277,7 @@ All 25 axes now have a reproducible static load screen tied to the current URDF 
 
     page_path = OUT / "index.html"
     page = page_path.read_text(encoding="utf-8")
-    section = f'''<section id="joint-loads"><h2>Every axis now has a load screen</h2><div class="grid"><article class="card pass"><div class="metric">25 / 25</div><p>Axes tied to the current URDF mass tree and actuator/transmission allocation.</p></article><article class="card"><h3>Lighter distal joints</h3><p>XC330 wrists and reduced XM430 ankles remove distal mass while retaining the current static endpoint screen.</p></article><article class="card hold"><h3>Knees</h3><p>The whole-body candidate now reserves 2.0:1 knee reductions; continuous gait and belt capacity remain open.</p></article><article class="card miss"><h3>Stall is not continuous</h3><p>Published stall torque is shown only as a momentary endpoint. It grants no motion authority.</p></article></div><div class="panel"><p><a href="joint-load-architecture.md">Read the load model</a> · <a href="joint-load-screen.csv">All 25 axis results</a> · <a href="actuator-endpoint-source-register.csv">Primary actuator sources</a> · <a href="transmission-candidate-source-register.csv">Transmission candidates</a></p></div></section>'''
+    section = f'''<section id="joint-loads"><h2>Every axis now has a load screen</h2><div class="grid"><article class="card pass"><div class="metric">25 / 25</div><p>Axes tied to the current URDF mass tree and actuator/transmission allocation.</p></article><article class="card"><h3>Lighter distal joints</h3><p>XC330 wrists and reduced XM430 ankles remove distal mass while retaining the current static endpoint screen.</p></article><article class="card hold"><h3>Knees corrected</h3><p>The whole-body candidate now uses dedicated 2.5:1 knee reductions so a sub-3 A current policy can meet the static development screen. Continuous gait and belt capacity remain open.</p></article><article class="card miss"><h3>Stall is not continuous</h3><p>Published stall torque is shown only as a momentary endpoint. It grants no motion authority.</p></article></div><div class="panel"><p><a href="joint-load-architecture.md">Read the load model</a> · <a href="joint-load-screen.csv">All 25 axis results</a> · <a href="actuator-endpoint-source-register.csv">Primary actuator sources</a> · <a href="transmission-candidate-source-register.csv">Transmission candidates</a></p></div></section>'''
     page = re.sub(r'<section id="joint-loads">[\s\S]*?</section>', section, page, count=1) if 'id="joint-loads"' in page else page.replace("</main>", section + "</main>")
     page_path.write_text(page, encoding="utf-8", newline="\n")
 
@@ -324,10 +324,21 @@ def main() -> int:
             "drive_id": "LD-20", "manufacturer": "MISUMI", "catalogue": "High Torque Timing Pulleys 5GT / Super High Torque Timing Belts EV5GT",
             "motor_pulley": "GPA20GT5090-A-P10", "output_pulley": "GPA40GT5090-A-P12", "belt": "GBN255EV5GT-090",
             "pitch_mm": "5", "pitch_length_mm": "255", "tooth_count": "51", "width_mm": "9",
-            "published_mass_kg": "SELECTION REQUIRED", "candidate_axes": "ALL HIP/ANKLE ROLL; ALL KNEE PITCH",
+            "published_mass_kg": "SELECTION REQUIRED", "candidate_axes": "ALL HIP/ANKLE ROLL",
             "ratio_and_center": "20:40 / 2.0:1 / 49.965206523 mm nominal pitch center",
             "official_url": "https://uk.misumi-ec.com/pdf/fa/p1_1117.pdf ; https://us.misumi-ec.com/pdf/fa/2019/2019_US_1432.pdf",
             "document_revision_or_date": "current official catalogues available 2026-08-14; revision/date not stated",
+            "selection_state": "EXACT CONFIGURABLE CANDIDATES; WRITTEN QUOTE, HUB/ADAPTER, CAPACITY, TENSION, GUARD, ALIGNMENT AND LIFE SELECTION REQUIRED",
+            "warning": WARNING,
+        },
+        {
+            "drive_id": "LD-25K", "manufacturer": "MISUMI", "catalogue": "High Torque Timing Pulleys 5GT / Super High Torque Timing Belts EV5GT",
+            "motor_pulley": "GPA16GT5090-A-P10", "output_pulley": "GPA40GT5090-A-P12", "belt": "GBN250EV5GT-090",
+            "pitch_mm": "5", "pitch_length_mm": "250", "tooth_count": "50", "width_mm": "9",
+            "published_mass_kg": "SELECTION REQUIRED", "candidate_axes": "L_KNEE_PITCH; R_KNEE_PITCH",
+            "ratio_and_center": "16:40 / 2.5:1 / 51.455622919 mm nominal pitch center",
+            "official_url": "https://uk.misumi-ec.com/pdf/fa/p1_1117.pdf ; https://us.misumi-ec.com/pdf/fa/2019/2019_US_1432.pdf",
+            "document_revision_or_date": "current official catalogues available 2026-08-15; revision/date not stated",
             "selection_state": "EXACT CONFIGURABLE CANDIDATES; WRITTEN QUOTE, HUB/ADAPTER, CAPACITY, TENSION, GUARD, ALIGNMENT AND LIFE SELECTION REQUIRED",
             "warning": WARNING,
         },
