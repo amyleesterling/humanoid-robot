@@ -1,0 +1,1 @@
+PASS: offline fake transport exercised ping + nine single-ID reads; no hardware accessed

@@ -1,0 +1,17 @@
+model,part,candidate_material,quantity,function,validation
+XH540-W270-R,xh540_w270_r_restraint_base,PETG or polycarbonate - SELECTION REQUIRED,1,"bench bolting, XY pocket and dual strap slots",PRINT / FIT / RETENTION TEST REQUIRED
+XH540-W270-R,xh540_w270_r_output_guard,transparent polycarbonate preferred - SELECTION REQUIRED,1,fully cover +Z output region while preserving side ventilation and cable exit,PRINT / FIT / ACCESS PROBE TEST REQUIRED
+XH540-W270-R,12 mm nonconductive hook-and-loop strap,SELECTION REQUIRED,2,retain actuator body to base without a horn or robot link,RECEIVED STRAP / SLIP / HEAT TEST REQUIRED
+XH540-W270-R,M4 cover fastener + captive insert,SELECTION REQUIRED,4,retain output guard to base,TORQUE / PULL / RETENTION TEST REQUIRED
+XM540-W270-R,xm540_w270_r_restraint_base,PETG or polycarbonate - SELECTION REQUIRED,1,"bench bolting, XY pocket and dual strap slots",PRINT / FIT / RETENTION TEST REQUIRED
+XM540-W270-R,xm540_w270_r_output_guard,transparent polycarbonate preferred - SELECTION REQUIRED,1,fully cover +Z output region while preserving side ventilation and cable exit,PRINT / FIT / ACCESS PROBE TEST REQUIRED
+XM540-W270-R,12 mm nonconductive hook-and-loop strap,SELECTION REQUIRED,2,retain actuator body to base without a horn or robot link,RECEIVED STRAP / SLIP / HEAT TEST REQUIRED
+XM540-W270-R,M4 cover fastener + captive insert,SELECTION REQUIRED,4,retain output guard to base,TORQUE / PULL / RETENTION TEST REQUIRED
+XM430-W350-R,xm430_w350_r_restraint_base,PETG or polycarbonate - SELECTION REQUIRED,1,"bench bolting, XY pocket and dual strap slots",PRINT / FIT / RETENTION TEST REQUIRED
+XM430-W350-R,xm430_w350_r_output_guard,transparent polycarbonate preferred - SELECTION REQUIRED,1,fully cover +Z output region while preserving side ventilation and cable exit,PRINT / FIT / ACCESS PROBE TEST REQUIRED
+XM430-W350-R,12 mm nonconductive hook-and-loop strap,SELECTION REQUIRED,2,retain actuator body to base without a horn or robot link,RECEIVED STRAP / SLIP / HEAT TEST REQUIRED
+XM430-W350-R,M4 cover fastener + captive insert,SELECTION REQUIRED,4,retain output guard to base,TORQUE / PULL / RETENTION TEST REQUIRED
+XC330-T288-T,xc330_t288_t_restraint_base,PETG or polycarbonate - SELECTION REQUIRED,1,"bench bolting, XY pocket and dual strap slots",PRINT / FIT / RETENTION TEST REQUIRED
+XC330-T288-T,xc330_t288_t_output_guard,transparent polycarbonate preferred - SELECTION REQUIRED,1,fully cover +Z output region while preserving side ventilation and cable exit,PRINT / FIT / ACCESS PROBE TEST REQUIRED
+XC330-T288-T,12 mm nonconductive hook-and-loop strap,SELECTION REQUIRED,2,retain actuator body to base without a horn or robot link,RECEIVED STRAP / SLIP / HEAT TEST REQUIRED
+XC330-T288-T,M4 cover fastener + captive insert,SELECTION REQUIRED,4,retain output guard to base,TORQUE / PULL / RETENTION TEST REQUIRED
