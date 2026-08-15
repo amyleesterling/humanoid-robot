@@ -1,0 +1,16 @@
+net,connection_count,connections
+CL_POS,2,01_current_limited_source.kicad_sch:PS1:+ | 01_current_limited_source.kicad_sch:P1:RED
+CL_RET,2,01_current_limited_source.kicad_sch:PS1:- | 01_current_limited_source.kicad_sch:P1:BLACK
+DUT_GND,4,02_power_hub_and_usb.kicad_sch:PHB1:G3 | 02_power_hub_and_usb.kicad_sch:PHB1:G4 | 03_one_actuator_selection.kicad_sch:X4:1 | 03_one_actuator_selection.kicad_sch:X3:1
+DUT_RS485,2,03_one_actuator_selection.kicad_sch:X4:DUT | 04_no_motion_boundary.kicad_sch:DUT1:RS
+DUT_TTL,2,03_one_actuator_selection.kicad_sch:X3:DUT | 04_no_motion_boundary.kicad_sch:DUT1:TTL
+DUT_VDD,4,02_power_hub_and_usb.kicad_sch:PHB1:V3 | 02_power_hub_and_usb.kicad_sch:PHB1:V4 | 03_one_actuator_selection.kicad_sch:X4:2 | 03_one_actuator_selection.kicad_sch:X3:2
+FACILITY_PE,1,01_current_limited_source.kicad_sch:PS1:PE
+HOST_USB,2,02_power_hub_and_usb.kicad_sch:U1:USB | 04_no_motion_boundary.kicad_sch:HOST1:USB
+LEAD_POS,3,01_current_limited_source.kicad_sch:P1:RED-OUT | 02_power_hub_and_usb.kicad_sch:J1:2 | 02_power_hub_and_usb.kicad_sch:PHB1:P2
+LEAD_RET,3,01_current_limited_source.kicad_sch:P1:BLACK-OUT | 02_power_hub_and_usb.kicad_sch:J1:1 | 02_power_hub_and_usb.kicad_sch:PHB1:P1
+READ_ONLY_REQUEST,2,04_no_motion_boundary.kicad_sch:HOST1:READ | 04_no_motion_boundary.kicad_sch:DUT1:READ
+RS485_DN,3,02_power_hub_and_usb.kicad_sch:PHB1:D- | 02_power_hub_and_usb.kicad_sch:U1:D- | 03_one_actuator_selection.kicad_sch:X4:4
+RS485_DP,3,02_power_hub_and_usb.kicad_sch:PHB1:D+ | 02_power_hub_and_usb.kicad_sch:U1:D+ | 03_one_actuator_selection.kicad_sch:X4:3
+TORQUE_ZERO,2,04_no_motion_boundary.kicad_sch:HOST1:TORQUE | 04_no_motion_boundary.kicad_sch:DUT1:T0
+TTL_DATA,3,02_power_hub_and_usb.kicad_sch:PHB1:D3 | 02_power_hub_and_usb.kicad_sch:U1:TTL | 03_one_actuator_selection.kicad_sch:X3:3

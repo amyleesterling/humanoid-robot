@@ -1,0 +1,22 @@
+{
+  "identifier": "HR30-AXIS-COMMISSIONING-STATION-P0.1",
+  "warning": "PRELIMINARY - SUPPORT EQUIPMENT CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "native_sheet_count": 5,
+  "child_sheet_count": 4,
+  "erc_errors": 0,
+  "erc_warnings": 0,
+  "axis_count": 25,
+  "simultaneous_actuator_limit": 1,
+  "candidate_first_power_voltage_v": 11.0,
+  "candidate_first_power_current_limit_a": 0.25,
+  "absolute_station_configuration_current_a": 2.0,
+  "torque_or_motion_command_permitted": false,
+  "whole_body_power_role": "REJECT",
+  "walking_power_role": "REJECT",
+  "physical_validation_complete": false,
+  "qualified_procedure_approved": false,
+  "connection_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false
+}

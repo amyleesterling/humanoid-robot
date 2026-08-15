@@ -1,0 +1,8 @@
+{
+  "identifier": "HR30-WHOLE-BODY-P0.1-CHECKS",
+  "cad_runtime_validator_count": 31,
+  "separate_kicad_python_validator": "check_hr30_actuator_interface_carriers_p01.py",
+  "failure_count": 0,
+  "failures": [],
+  "pass": true
+}

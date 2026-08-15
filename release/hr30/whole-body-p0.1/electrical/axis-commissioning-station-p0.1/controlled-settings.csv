@@ -1,0 +1,9 @@
+stage,setting,value,reason,release_state
+S0,supply output,OFF,all connections and inspection occur de-energized,CANDIDATE PROCEDURE / NOT EXECUTED
+S1,voltage,11.0 V,inside all four candidate actuator input ranges; below 12 V nominal,QUALIFIED APPROVAL AND CALIBRATED MEASUREMENT REQUIRED
+S1,current limit,0.25 A,low-energy identity/telemetry discovery only; no motion,QUALIFIED APPROVAL AND PHYSICAL TEST REQUIRED
+S1,over-voltage protection,12.0 V candidate,detects gross setup error; exact trip behavior/calibration open,QUALIFIED APPROVAL REQUIRED
+S1,PHB power inputs,Mini-Fit only,ROBOTIS prohibits simultaneous power inputs,MANDATORY
+S1,actuator population,exactly one,prevents ID collisions and bounds source energy,MANDATORY
+S1,Torque Enable,0 readback,first power permits no motion,MANDATORY
+S2,proposed ID write,matrix value 1-25,global uniqueness; separately authorized after read-only S1 passes,NOT PART OF FIRST ENERGIZATION

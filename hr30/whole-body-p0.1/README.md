@@ -126,3 +126,9 @@ This is a route to quotation, not authority to buy or make parts. Materials, tol
 The [joint-hardware manufacturing guide](joint-hardware-manufacturing-p0.1/index.html) classifies all 142 non-actuator hardware items on the 25 actual axes. It adds 64 local-coordinate shaft/carrier STEP and SVG files plus 39 carrier DXFs, while correctly withholding supplier files for 39 catalogue bearing envelopes and 39 toothless pulley/coupler placeholders.
 
 This corrects the manufacturing-universe boundary: the 98 body/frame/hand parts were never the complete robot. Joint fits, shoulders, retention, toothed pulley products, actuator adapters, materials, tolerances, DFM, FAI and structural proof remain open.
+
+<!-- HR30-AXIS-COMMISSION-START -->
+## One-axis first-power station
+
+The whole-body package now includes a removable, source-limited commissioning station rather than relying on the unreleased walking-power tree for first inspection. It uses a safety-listed Keysight E36313A candidate, ROBOTIS U2D2/Power Hub, exact X3P/X4P cable families, a native four-child-sheet KiCad design, printable tray/cover files and a 25-axis work order. Candidate first power is one mechanically restrained, whole-body-disconnected actuator at 11.0 V / 0.25 A with read-only telemetry and Torque Enable required to read zero. Qualified review, received-hardware inspection, calibration, restraint and separately signed connection/energization authority remain open. See `electrical/axis-commissioning-station-p0.1/index.html`.
+<!-- HR30-AXIS-COMMISSION-END -->

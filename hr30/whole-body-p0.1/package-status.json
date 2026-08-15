@@ -297,5 +297,15 @@
   "wrist_vendor_geometry_reconciled_to_xc330": true,
   "transmission_successor_whole_body_step_present": true,
   "transmission_successor_whole_body_glb_present": true,
-  "transmission_material_fit_capacity_validated": false
+  "transmission_material_fit_capacity_validated": false,
+  "axis_commissioning_station_present": true,
+  "axis_commissioning_native_sheet_count": 5,
+  "axis_commissioning_axis_count": 25,
+  "axis_commissioning_one_actuator_limit": true,
+  "axis_commissioning_first_power_current_limit_candidate_a": 0.25,
+  "axis_commissioning_no_motion_boundary_present": true,
+  "axis_commissioning_physically_validated": false,
+  "axis_commissioning_connection_authority": false,
+  "axis_commissioning_energization_authority": false,
+  "axis_commissioning_proposed_global_id_count": 25
 }
