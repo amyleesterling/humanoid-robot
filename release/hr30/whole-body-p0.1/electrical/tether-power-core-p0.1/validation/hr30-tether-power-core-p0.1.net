@@ -1,0 +1,3906 @@
+(export
+	(version "E")
+	(design
+		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\tether-power-core-p0.1\\hr30-tether-power-core-p0.1.kicad_sch")
+		(date "2026-08-15T05:54:23")
+		(tool "Eeschema 10.0.5")
+		(textvar
+			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title "PROJECT BUTTON HR-30 TETHER POWER CORE P0.1 index")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-15")
+				(source "hr30-tether-power-core-p0.1.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "2")
+			(name "/01 External mains boundary and DC sources/")
+			(tstamps "/801c7285-d1d6-598d-b3dc-1ada028eff5c/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 01")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-15")
+				(source "01_external_source_panel.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "3")
+			(name "/02 Dual-channel E-stop, monitored manual reset and PNOZ s4/")
+			(tstamps "/46999b90-8d3c-58dc-a792-c788fbbd3dc2/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 02")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-15")
+				(source "02_estop_reset_safety_relay.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "4")
+			(name "/03 Two series GV121CAC contactors and feedback loop/")
+			(tstamps "/a0f35e84-33c1-5f1f-952e-9c03d5c9f1cd/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 03")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-15")
+				(source "03_redundant_dc_interruption.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "5")
+			(name "/04 SBS75G touch-safe three-contact tether/")
+			(tstamps "/adf6f9e8-f884-542b-960a-ada9134e22dc/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 04")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-15")
+				(source "04_touch_safe_tether.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "6")
+			(name "/05 Robot inlet, main boundary and five protected PDU feeds/")
+			(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 05")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-15")
+				(source "05_robot_five_branch_distribution.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "7")
+			(name "/06 Status, telemetry and fail-closed commissioning boundary/")
+			(tstamps "/35bb7f93-7cd3-53f5-8df6-431fbb368a56/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 06")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-15")
+				(source "06_telemetry_interlocks_commissioning.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "PS1")
+			(value "MEAN WELL RSP-500-12")
+			(datasheet "https://www.meanwell.com/Upload/PDF/RSP-500/RSP-500-SPEC.PDF")
+			(description "230 x 127 x 40.5 mm, 1.3 kg, 12 V/41.7 A evaluation candidate. Final terminal-number mapping, source adjustment lock, inrush, protection, thermal rise and regeneration response remain open.")
+			(fields
+				(field
+					(name "Status") "EXACT PRODUCT CANDIDATE - APPLICATION OPEN")
+				(field
+					(name "Evidence") "RSP-500-SPEC 2025-09-26")
+				(field
+					(name "Display") "MEAN WELL RSP-500-12")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.meanwell.com/Upload/PDF/RSP-500/RSP-500-SPEC.PDF")
+				(field
+					(name "Description") "230 x 127 x 40.5 mm, 1.3 kg, 12 V/41.7 A evaluation candidate. Final terminal-number mapping, source adjustment lock, inrush, protection, thermal rise and regeneration response remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "PS1")
+				(description "230 x 127 x 40.5 mm, 1.3 kg, 12 V/41.7 A evaluation candidate. Final terminal-number mapping, source adjustment lock, inrush, protection, thermal rise and regeneration response remain open.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT PRODUCT CANDIDATE - APPLICATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "RSP-500-SPEC 2025-09-26")
+			)
+			(property
+				(name "Display")
+				(value "MEAN WELL RSP-500-12")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 External mains boundary and DC sources")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_external_source_panel.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 External mains boundary and DC sources/")
+				(tstamps "/801c7285-d1d6-598d-b3dc-1ada028eff5c/")
+			)
+			(tstamps "aaff60ea-99ea-54a3-9c41-efbed17a9f8d")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FG")
+						)
+						(pin
+							(num "AC/N")
+						)
+						(pin
+							(num "AC/L")
+						)
+						(pin
+							(num "-V")
+						)
+						(pin
+							(num "+V")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "PS2")
+			(value "MEAN WELL SD-15A-24")
+			(datasheet "https://www.meanwell.com/Upload/PDF/SD-15/SD-15-SPEC.PDF")
+			(description "78 x 51 x 28 mm, 0.18 kg, 24 V/0.625 A candidate. Pin assignment is from SD-15-SPEC 2024-11-22; loading, protection, grounding and application validation remain open.")
+			(fields
+				(field
+					(name "Status") "PHYSICAL TERMINALS VERIFIED - APPLICATION OPEN")
+				(field
+					(name "Evidence") "SD-15-SPEC 2024-11-22")
+				(field
+					(name "Display") "MEAN WELL SD-15A-24")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.meanwell.com/Upload/PDF/SD-15/SD-15-SPEC.PDF")
+				(field
+					(name "Description") "78 x 51 x 28 mm, 0.18 kg, 24 V/0.625 A candidate. Pin assignment is from SD-15-SPEC 2024-11-22; loading, protection, grounding and application validation remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "PS2")
+				(description "78 x 51 x 28 mm, 0.18 kg, 24 V/0.625 A candidate. Pin assignment is from SD-15-SPEC 2024-11-22; loading, protection, grounding and application validation remain open.")
+			)
+			(property
+				(name "Status")
+				(value "PHYSICAL TERMINALS VERIFIED - APPLICATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "SD-15-SPEC 2024-11-22")
+			)
+			(property
+				(name "Display")
+				(value "MEAN WELL SD-15A-24")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 External mains boundary and DC sources")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_external_source_panel.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 External mains boundary and DC sources/")
+				(tstamps "/801c7285-d1d6-598d-b3dc-1ada028eff5c/")
+			)
+			(tstamps "aa7a0636-beda-5ec2-8e24-6ff6ef7bc13c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "4")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "XAC1")
+			(value "FACILITY AC / PE / DISCONNECT / BRANCH PROTECTION")
+			(description "Mains inlet, disconnect, branch protection, conductors, terminals and Boston jurisdictional installation remain qualified selections.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "FACILITY AC / PE / DISCONNECT / BRANCH PROTECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Mains inlet, disconnect, branch protection, conductors, terminals and Boston jurisdictional installation remain qualified selections.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "XAC1")
+				(description "Mains inlet, disconnect, branch protection, conductors, terminals and Boston jurisdictional installation remain qualified selections.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "FACILITY AC / PE / DISCONNECT / BRANCH PROTECTION")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 External mains boundary and DC sources")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_external_source_panel.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 External mains boundary and DC sources/")
+				(tstamps "/801c7285-d1d6-598d-b3dc-1ada028eff5c/")
+			)
+			(tstamps "1d3d6688-731d-50ff-88c9-e214d7614b21")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "PE")
+						)
+						(pin
+							(num "N")
+						)
+						(pin
+							(num "L")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "S0")
+			(value "IDEC XW DUAL-NC E-STOP FAMILY - ORDER CODE REQUIRED")
+			(description "Dual direct-opening contact family candidate. Exact complete order code, terminal numbering, enclosure and application remain selection work.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "IDEC XW DUAL-NC E-STOP FAMILY - ORDER CODE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Dual direct-opening contact family candidate. Exact complete order code, terminal numbering, enclosure and application remain selection work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "S0")
+				(description "Dual direct-opening contact family candidate. Exact complete order code, terminal numbering, enclosure and application remain selection work.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "IDEC XW DUAL-NC E-STOP FAMILY - ORDER CODE REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Dual-channel E-stop, monitored manual reset and PNOZ s4")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_estop_reset_safety_relay.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Dual-channel E-stop, monitored manual reset and PNOZ s4/")
+				(tstamps "/46999b90-8d3c-58dc-a792-c788fbbd3dc2/")
+			)
+			(tstamps "72fba2b6-4e1b-510a-a7df-4488f846b004")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "NC2-A")
+						)
+						(pin
+							(num "NC1-A")
+						)
+						(pin
+							(num "NC2-B")
+						)
+						(pin
+							(num "NC1-B")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "S1")
+			(value "IDEC HW1B-M1F11-G RESET CANDIDATE")
+			(description "Momentary reset is eligibility only. It cannot command motion. Exact terminal IDs and monitored falling-edge behavior require physical verification.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "IDEC HW1B-M1F11-G RESET CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Momentary reset is eligibility only. It cannot command motion. Exact terminal IDs and monitored falling-edge behavior require physical verification.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "S1")
+				(description "Momentary reset is eligibility only. It cannot command motion. Exact terminal IDs and monitored falling-edge behavior require physical verification.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "IDEC HW1B-M1F11-G RESET CANDIDATE")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Dual-channel E-stop, monitored manual reset and PNOZ s4")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_estop_reset_safety_relay.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Dual-channel E-stop, monitored manual reset and PNOZ s4/")
+				(tstamps "/46999b90-8d3c-58dc-a792-c788fbbd3dc2/")
+			)
+			(tstamps "7be97181-bde6-5a78-84b0-e8bc4f27737b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "NO-A")
+						)
+						(pin
+							(num "NO-B")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SR1")
+			(value "PILZ PNOZ s4 750104")
+			(datasheet "https://www.pilz.com/download/open/OM_PNOZ_s4_21396-EN-23.pdf")
+			(description "Manual 21396-EN-23 identifies these terminals and supports dual-channel E-stop, monitored start and feedback-loop application examples. Exact circuit mode, PLr/SIL allocation, contact protection, reset proof and validation remain open.")
+			(fields
+				(field
+					(name "Status") "TERMINALS VERIFIED - NO WHOLE-MACHINE SAFETY APPROVAL")
+				(field
+					(name "Evidence") "21396-EN-23, 2026-06-22")
+				(field
+					(name "Display") "PILZ PNOZ s4 750104")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pilz.com/download/open/OM_PNOZ_s4_21396-EN-23.pdf")
+				(field
+					(name "Description") "Manual 21396-EN-23 identifies these terminals and supports dual-channel E-stop, monitored start and feedback-loop application examples. Exact circuit mode, PLr/SIL allocation, contact protection, reset proof and validation remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SR1")
+				(description "Manual 21396-EN-23 identifies these terminals and supports dual-channel E-stop, monitored start and feedback-loop application examples. Exact circuit mode, PLr/SIL allocation, contact protection, reset proof and validation remain open.")
+			)
+			(property
+				(name "Status")
+				(value "TERMINALS VERIFIED - NO WHOLE-MACHINE SAFETY APPROVAL")
+			)
+			(property
+				(name "Evidence")
+				(value "21396-EN-23, 2026-06-22")
+			)
+			(property
+				(name "Display")
+				(value "PILZ PNOZ s4 750104")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Dual-channel E-stop, monitored manual reset and PNOZ s4")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_estop_reset_safety_relay.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Dual-channel E-stop, monitored manual reset and PNOZ s4/")
+				(tstamps "/46999b90-8d3c-58dc-a792-c788fbbd3dc2/")
+			)
+			(tstamps "03f97f16-c4bc-523f-8065-d6dc97351667")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "41")
+						)
+						(pin
+							(num "33")
+						)
+						(pin
+							(num "23")
+						)
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "S34")
+						)
+						(pin
+							(num "S22")
+						)
+						(pin
+							(num "S21")
+						)
+						(pin
+							(num "S12")
+						)
+						(pin
+							(num "S11")
+						)
+						(pin
+							(num "A2")
+						)
+						(pin
+							(num "A1")
+						)
+						(pin
+							(num "Y32")
+						)
+						(pin
+							(num "42")
+						)
+						(pin
+							(num "34")
+						)
+						(pin
+							(num "24")
+						)
+						(pin
+							(num "14")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "K1")
+			(value "SENSATA GIGAVAC GV121CAC")
+			(datasheet "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
+			(description "Ordering code decodes to upright mounting, 24 V internally suppressed coil, flying leads and SPST-NC mechanically linked auxiliary. Main M8 stud torque, wire colors/identification, DC interruption duty and safety suitability require received-device and qualified verification.")
+			(fields
+				(field
+					(name "Status") "EXACT ORDER-CODE CANDIDATE - NOT AN IEC MIRROR-CONTACT CLAIM")
+				(field
+					(name "Evidence") "GV12 series Rev 28-Apr-2022")
+				(field
+					(name "Display") "SENSATA GIGAVAC GV121CAC")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
+				(field
+					(name "Description") "Ordering code decodes to upright mounting, 24 V internally suppressed coil, flying leads and SPST-NC mechanically linked auxiliary. Main M8 stud torque, wire colors/identification, DC interruption duty and safety suitability require received-device and qualified verification.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "K1")
+				(description "Ordering code decodes to upright mounting, 24 V internally suppressed coil, flying leads and SPST-NC mechanically linked auxiliary. Main M8 stud torque, wire colors/identification, DC interruption duty and safety suitability require received-device and qualified verification.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT ORDER-CODE CANDIDATE - NOT AN IEC MIRROR-CONTACT CLAIM")
+			)
+			(property
+				(name "Evidence")
+				(value "GV12 series Rev 28-Apr-2022")
+			)
+			(property
+				(name "Display")
+				(value "SENSATA GIGAVAC GV121CAC")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Two series GV121CAC contactors and feedback loop")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_redundant_dc_interruption.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Two series GV121CAC contactors and feedback loop/")
+				(tstamps "/a0f35e84-33c1-5f1f-952e-9c03d5c9f1cd/")
+			)
+			(tstamps "db18a2eb-7b18-50a8-ab82-54c60963fdbd")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "AUX-C")
+						)
+						(pin
+							(num "COIL-")
+						)
+						(pin
+							(num "COIL+")
+						)
+						(pin
+							(num "M1")
+						)
+						(pin
+							(num "AUX-NC")
+						)
+						(pin
+							(num "M2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "K2")
+			(value "SENSATA GIGAVAC GV121CAC")
+			(datasheet "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
+			(description "Second independent series switching element. Common-cause, welded-contact detection, coil suppression behavior, contact protection, fault current, life and stopping time remain unvalidated.")
+			(fields
+				(field
+					(name "Status") "EXACT ORDER-CODE CANDIDATE - APPLICATION OPEN")
+				(field
+					(name "Evidence") "GV12 series Rev 28-Apr-2022")
+				(field
+					(name "Display") "SENSATA GIGAVAC GV121CAC")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
+				(field
+					(name "Description") "Second independent series switching element. Common-cause, welded-contact detection, coil suppression behavior, contact protection, fault current, life and stopping time remain unvalidated.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "K2")
+				(description "Second independent series switching element. Common-cause, welded-contact detection, coil suppression behavior, contact protection, fault current, life and stopping time remain unvalidated.")
+			)
+			(property
+				(name "Status")
+				(value "EXACT ORDER-CODE CANDIDATE - APPLICATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "GV12 series Rev 28-Apr-2022")
+			)
+			(property
+				(name "Display")
+				(value "SENSATA GIGAVAC GV121CAC")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Two series GV121CAC contactors and feedback loop")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_redundant_dc_interruption.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Two series GV121CAC contactors and feedback loop/")
+				(tstamps "/a0f35e84-33c1-5f1f-952e-9c03d5c9f1cd/")
+			)
+			(tstamps "a945a7f3-b432-54c0-9c78-d3d0ec55afbb")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "AUX-C")
+						)
+						(pin
+							(num "COIL-")
+						)
+						(pin
+							(num "COIL+")
+						)
+						(pin
+							(num "M1")
+						)
+						(pin
+							(num "AUX-NC")
+						)
+						(pin
+							(num "M2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "XPERMIT")
+			(value "HARDWIRED PERMIT STATUS TO MOTION CONTROLLER")
+			(description "Permit restoration never issues motion. Interface voltage, isolation, test pulses and fault response remain selection and validation work.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "HARDWIRED PERMIT STATUS TO MOTION CONTROLLER")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Permit restoration never issues motion. Interface voltage, isolation, test pulses and fault response remain selection and validation work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "XPERMIT")
+				(description "Permit restoration never issues motion. Interface voltage, isolation, test pulses and fault response remain selection and validation work.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "HARDWIRED PERMIT STATUS TO MOTION CONTROLLER")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Two series GV121CAC contactors and feedback loop")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_redundant_dc_interruption.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Two series GV121CAC contactors and feedback loop/")
+				(tstamps "/a0f35e84-33c1-5f1f-952e-9c03d5c9f1cd/")
+			)
+			(tstamps "84151d5a-7a69-5a38-a658-dff3bf2998ed")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "XT1A")
+			(value "PANEL SBS75G - SBS75GBLK")
+			(datasheet "https://www.andersonpower.com/content/dam/app/ecommerce/product-pdfs/SBS75G/1s6417-SBS-Assembly-Instructions.pdf")
+			(description "Black genderless three-position housing. P1/P2 project polarity assignment must be permanently keyed, labeled and continuity-tested; ground contact uses 1340G1. Cable, breakaway/retention and shielding remain open.")
+			(fields
+				(field
+					(name "Status") "HOUSING/6 AWG CONTACT FAMILY VERIFIED - HARNESS OPEN")
+				(field
+					(name "Evidence") "1S6417, accessed 2026-08-15")
+				(field
+					(name "Display") "PANEL SBS75G - SBS75GBLK")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.andersonpower.com/content/dam/app/ecommerce/product-pdfs/SBS75G/1s6417-SBS-Assembly-Instructions.pdf")
+				(field
+					(name "Description") "Black genderless three-position housing. P1/P2 project polarity assignment must be permanently keyed, labeled and continuity-tested; ground contact uses 1340G1. Cable, breakaway/retention and shielding remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "XT1A")
+				(description "Black genderless three-position housing. P1/P2 project polarity assignment must be permanently keyed, labeled and continuity-tested; ground contact uses 1340G1. Cable, breakaway/retention and shielding remain open.")
+			)
+			(property
+				(name "Status")
+				(value "HOUSING/6 AWG CONTACT FAMILY VERIFIED - HARNESS OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "1S6417, accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "PANEL SBS75G - SBS75GBLK")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 SBS75G touch-safe three-contact tether")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_touch_safe_tether.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 SBS75G touch-safe three-contact tether/")
+				(tstamps "/adf6f9e8-f884-542b-960a-ada9134e22dc/")
+			)
+			(tstamps "1895e7a4-2f44-5c90-bc3c-0eac83728beb")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "P2")
+						)
+						(pin
+							(num "G")
+						)
+						(pin
+							(num "P1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "XT1B")
+			(value "ROBOT SBS75G - SBS75GBLK")
+			(datasheet "https://www.andersonpower.com/content/dam/app/ecommerce/product-pdfs/SBS75G/1s6417-SBS-Assembly-Instructions.pdf")
+			(description "Mating robot-side housing with the same controlled project polarity. Finger-safe state, strain relief, frame bond, flex life and tether trip/breakaway behavior require physical validation.")
+			(fields
+				(field
+					(name "Status") "PROJECT CONTACT ASSIGNMENT - PHYSICAL VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "1S6417, accessed 2026-08-15")
+				(field
+					(name "Display") "ROBOT SBS75G - SBS75GBLK")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.andersonpower.com/content/dam/app/ecommerce/product-pdfs/SBS75G/1s6417-SBS-Assembly-Instructions.pdf")
+				(field
+					(name "Description") "Mating robot-side housing with the same controlled project polarity. Finger-safe state, strain relief, frame bond, flex life and tether trip/breakaway behavior require physical validation.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "XT1B")
+				(description "Mating robot-side housing with the same controlled project polarity. Finger-safe state, strain relief, frame bond, flex life and tether trip/breakaway behavior require physical validation.")
+			)
+			(property
+				(name "Status")
+				(value "PROJECT CONTACT ASSIGNMENT - PHYSICAL VERIFICATION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "1S6417, accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "ROBOT SBS75G - SBS75GBLK")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 SBS75G touch-safe three-contact tether")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_touch_safe_tether.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 SBS75G touch-safe three-contact tether/")
+				(tstamps "/adf6f9e8-f884-542b-960a-ada9134e22dc/")
+			)
+			(tstamps "9913ac80-f39b-52d5-9dad-917b59bf3e53")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "P2")
+						)
+						(pin
+							(num "G")
+						)
+						(pin
+							(num "P1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FB1")
+			(value "04980923ZXT LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			(datasheet "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(fields
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "FB1")
+				(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(property
+				(name "Status")
+				(value "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "MIDI 498 datasheet 012826-A")
+			)
+			(property
+				(name "Display")
+				(value "04980923ZXT LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_five_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
+				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+			)
+			(tstamps "7357e432-6535-5b8b-8fc8-a796335e32dd")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FB2")
+			(value "04980923ZXT RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			(datasheet "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(fields
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "FB2")
+				(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(property
+				(name "Status")
+				(value "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "MIDI 498 datasheet 012826-A")
+			)
+			(property
+				(name "Display")
+				(value "04980923ZXT RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_five_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
+				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+			)
+			(tstamps "d989f176-e2bd-57e3-8068-c7c7a2812952")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FB3")
+			(value "04980923ZXT ARMS BRANCH HOLDER - FUSE VALUE REQUIRED")
+			(datasheet "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(fields
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT ARMS BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "FB3")
+				(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(property
+				(name "Status")
+				(value "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "MIDI 498 datasheet 012826-A")
+			)
+			(property
+				(name "Display")
+				(value "04980923ZXT ARMS BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_five_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
+				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+			)
+			(tstamps "d28c6b3d-ce58-5ccd-9b97-6f5615e29689")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FB4")
+			(value "04980923ZXT DISTAL BRANCH HOLDER - FUSE VALUE REQUIRED")
+			(datasheet "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(fields
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT DISTAL BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "FB4")
+				(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(property
+				(name "Status")
+				(value "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "MIDI 498 datasheet 012826-A")
+			)
+			(property
+				(name "Display")
+				(value "04980923ZXT DISTAL BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_five_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
+				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+			)
+			(tstamps "02078c94-e2da-5437-a9d3-b4591f4b73cf")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FB5")
+			(value "04980923ZXT CORE BRANCH HOLDER - FUSE VALUE REQUIRED")
+			(datasheet "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(fields
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT CORE BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "FB5")
+				(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(property
+				(name "Status")
+				(value "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "MIDI 498 datasheet 012826-A")
+			)
+			(property
+				(name "Display")
+				(value "04980923ZXT CORE BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_five_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
+				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+			)
+			(tstamps "5f29d2fb-8dc1-5faa-8acb-c68e012658cf")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FM0")
+			(value "LITTELFUSE 04980923ZXT MAIN HOLDER - FUSE VALUE REQUIRED")
+			(datasheet "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(description "58 V MIDI holder with cover and M6 mounting tabs. Fuse value, fuse order code, interrupt rating, coordination, terminal hardware, conductor and torque are not released.")
+			(fields
+				(field
+					(name "Status") "HOLDER SELECTED - FUSE VALUE SELECTION REQUIRED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "LITTELFUSE 04980923ZXT MAIN HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "58 V MIDI holder with cover and M6 mounting tabs. Fuse value, fuse order code, interrupt rating, coordination, terminal hardware, conductor and torque are not released.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "FM0")
+				(description "58 V MIDI holder with cover and M6 mounting tabs. Fuse value, fuse order code, interrupt rating, coordination, terminal hardware, conductor and torque are not released.")
+			)
+			(property
+				(name "Status")
+				(value "HOLDER SELECTED - FUSE VALUE SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "MIDI 498 datasheet 012826-A")
+			)
+			(property
+				(name "Display")
+				(value "LITTELFUSE 04980923ZXT MAIN HOLDER - FUSE VALUE REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_five_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
+				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+			)
+			(tstamps "9d311574-2913-58c3-a2c3-954c1adce7a5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JARMS")
+			(value "PDU-ARMS INPUT - PHOENIX 1714971")
+			(datasheet "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(fields
+				(field
+					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "PDU-ARMS INPUT - PHOENIX 1714971")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JARMS")
+				(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			)
+			(property
+				(name "Status")
+				(value "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "live official page, accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "PDU-ARMS INPUT - PHOENIX 1714971")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_five_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
+				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+			)
+			(tstamps "ea7879a0-be68-5ad3-b472-a3389d8d751c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JCORE")
+			(value "PDU-CORE INPUT - PHOENIX 1714971")
+			(datasheet "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(fields
+				(field
+					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "PDU-CORE INPUT - PHOENIX 1714971")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JCORE")
+				(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			)
+			(property
+				(name "Status")
+				(value "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "live official page, accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "PDU-CORE INPUT - PHOENIX 1714971")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_five_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
+				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+			)
+			(tstamps "87c493a8-4c53-54b4-8bd8-b40bfc5b6a76")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JDISTAL")
+			(value "PDU-DISTAL INPUT - PHOENIX 1714971")
+			(datasheet "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(fields
+				(field
+					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "PDU-DISTAL INPUT - PHOENIX 1714971")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JDISTAL")
+				(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			)
+			(property
+				(name "Status")
+				(value "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "live official page, accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "PDU-DISTAL INPUT - PHOENIX 1714971")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_five_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
+				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+			)
+			(tstamps "ce60f5a9-96ce-56ed-9492-b5da88473ff7")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JLLEG")
+			(value "PDU-LLEG INPUT - PHOENIX 1714971")
+			(datasheet "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(fields
+				(field
+					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "PDU-LLEG INPUT - PHOENIX 1714971")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JLLEG")
+				(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			)
+			(property
+				(name "Status")
+				(value "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "live official page, accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "PDU-LLEG INPUT - PHOENIX 1714971")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_five_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
+				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+			)
+			(tstamps "7e0f0ed1-2329-5f30-9ffb-84a9954e3357")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JRLEG")
+			(value "PDU-RLEG INPUT - PHOENIX 1714971")
+			(datasheet "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(fields
+				(field
+					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "PDU-RLEG INPUT - PHOENIX 1714971")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JRLEG")
+				(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			)
+			(property
+				(name "Status")
+				(value "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "live official page, accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "PDU-RLEG INPUT - PHOENIX 1714971")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_five_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
+				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+			)
+			(tstamps "0bc0aed5-aa86-5c3e-8bba-915e0149c738")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "RB0")
+			(value "ROBOT RETURN / FRAME BOUNDARY")
+			(description "Return bus, frame bond and proposed single star point are not finalized. Bond conductor, terminal, location, fault current and jurisdictional treatment require qualified selection.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "ROBOT RETURN / FRAME BOUNDARY")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Return bus, frame bond and proposed single star point are not finalized. Bond conductor, terminal, location, fault current and jurisdictional treatment require qualified selection.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "RB0")
+				(description "Return bus, frame bond and proposed single star point are not finalized. Bond conductor, terminal, location, fault current and jurisdictional treatment require qualified selection.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "ROBOT RETURN / FRAME BOUNDARY")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_five_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
+				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+			)
+			(tstamps "a63ac4f7-490d-5691-8d11-78589b669880")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "FRAME-IN")
+						)
+						(pin
+							(num "RET-IN")
+						)
+						(pin
+							(num "FRAME-STAR")
+						)
+						(pin
+							(num "RET-BUS")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "MCU1")
+			(value "DETERMINISTIC MOTION CONTROLLER BOUNDARY")
+			(description "Motion requires both hardwired permit and a fresh bounded local command. A permit/reset transition alone must leave all branch enables disabled.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "DETERMINISTIC MOTION CONTROLLER BOUNDARY")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Motion requires both hardwired permit and a fresh bounded local command. A permit/reset transition alone must leave all branch enables disabled.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "MCU1")
+				(description "Motion requires both hardwired permit and a fresh bounded local command. A permit/reset transition alone must leave all branch enables disabled.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "DETERMINISTIC MOTION CONTROLLER BOUNDARY")
+			)
+			(property
+				(name "Sheetname")
+				(value "06 Status, telemetry and fail-closed commissioning boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "06_telemetry_interlocks_commissioning.kicad_sch")
+			)
+			(sheetpath
+				(names "/06 Status, telemetry and fail-closed commissioning boundary/")
+				(tstamps "/35bb7f93-7cd3-53f5-8df6-431fbb368a56/")
+			)
+			(tstamps "0698b1d9-db75-5377-91dc-b1ceb25633e0")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "CMD")
+						)
+						(pin
+							(num "PERMIT")
+						)
+						(pin
+							(num "ENABLE")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "MON1")
+			(value "NON-SAFETY DIAGNOSTIC MONITOR")
+			(description "Auxiliary diagnostics are not part of the safety function and cannot enable motion or bypass E-stop, feedback loop or fresh-command logic.")
+			(fields
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "NON-SAFETY DIAGNOSTIC MONITOR")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Auxiliary diagnostics are not part of the safety function and cannot enable motion or bypass E-stop, feedback loop or fresh-command logic.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "MON1")
+				(description "Auxiliary diagnostics are not part of the safety function and cannot enable motion or bypass E-stop, feedback loop or fresh-command logic.")
+			)
+			(property
+				(name "Status")
+				(value "SELECTION REQUIRED")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "NON-SAFETY DIAGNOSTIC MONITOR")
+			)
+			(property
+				(name "Sheetname")
+				(value "06 Status, telemetry and fail-closed commissioning boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "06_telemetry_interlocks_commissioning.kicad_sch")
+			)
+			(sheetpath
+				(names "/06 Status, telemetry and fail-closed commissioning boundary/")
+				(tstamps "/35bb7f93-7cd3-53f5-8df6-431fbb368a56/")
+			)
+			(tstamps "901410d1-e43e-519e-a670-db49801f9989")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "BR")
+						)
+						(pin
+							(num "Y32")
+						)
+						(pin
+							(num "SR")
+						)
+						(pin
+							(num "LOG")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "PBV3")
+			(part "FB1")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(docs "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(fields
+				(field
+					(name "Reference") "FB1")
+				(field
+					(name "Value") "04980923ZXT LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "COMMON_DISTRIBUTION_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "LLEG_PROTECTED_FEED")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "FB2")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(docs "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(fields
+				(field
+					(name "Reference") "FB2")
+				(field
+					(name "Value") "04980923ZXT RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "COMMON_DISTRIBUTION_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "RLEG_PROTECTED_FEED")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "FB3")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(docs "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(fields
+				(field
+					(name "Reference") "FB3")
+				(field
+					(name "Value") "04980923ZXT ARMS BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT ARMS BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "COMMON_DISTRIBUTION_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "ARMS_PROTECTED_FEED")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "FB4")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(docs "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(fields
+				(field
+					(name "Reference") "FB4")
+				(field
+					(name "Value") "04980923ZXT DISTAL BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT DISTAL BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "COMMON_DISTRIBUTION_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "DISTAL_PROTECTED_FEED")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "FB5")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(docs "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(fields
+				(field
+					(name "Reference") "FB5")
+				(field
+					(name "Value") "04980923ZXT CORE BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT CORE BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "COMMON_DISTRIBUTION_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "CORE_PROTECTED_FEED")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "FM0")
+			(description "58 V MIDI holder with cover and M6 mounting tabs. Fuse value, fuse order code, interrupt rating, coordination, terminal hardware, conductor and torque are not released.")
+			(docs "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(fields
+				(field
+					(name "Reference") "FM0")
+				(field
+					(name "Value") "LITTELFUSE 04980923ZXT MAIN HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "58 V MIDI holder with cover and M6 mounting tabs. Fuse value, fuse order code, interrupt rating, coordination, terminal hardware, conductor and torque are not released.")
+				(field
+					(name "Status") "HOLDER SELECTED - FUSE VALUE SELECTION REQUIRED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "LITTELFUSE 04980923ZXT MAIN HOLDER - FUSE VALUE REQUIRED")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "ROBOT_INLET_POSITIVE")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "MAIN_DISTRIBUTION_BUS")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JARMS")
+			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(docs "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(fields
+				(field
+					(name "Reference") "JARMS")
+				(field
+					(name "Value") "PDU-ARMS INPUT - PHOENIX 1714971")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+				(field
+					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "PDU-ARMS INPUT - PHOENIX 1714971")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "PDU_0_V")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "PDU_+12_V_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JCORE")
+			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(docs "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(fields
+				(field
+					(name "Reference") "JCORE")
+				(field
+					(name "Value") "PDU-CORE INPUT - PHOENIX 1714971")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+				(field
+					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "PDU-CORE INPUT - PHOENIX 1714971")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "PDU_0_V")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "PDU_+12_V_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JDISTAL")
+			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(docs "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(fields
+				(field
+					(name "Reference") "JDISTAL")
+				(field
+					(name "Value") "PDU-DISTAL INPUT - PHOENIX 1714971")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+				(field
+					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "PDU-DISTAL INPUT - PHOENIX 1714971")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "PDU_0_V")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "PDU_+12_V_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JLLEG")
+			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(docs "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(fields
+				(field
+					(name "Reference") "JLLEG")
+				(field
+					(name "Value") "PDU-LLEG INPUT - PHOENIX 1714971")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+				(field
+					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "PDU-LLEG INPUT - PHOENIX 1714971")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "PDU_0_V")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "PDU_+12_V_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JRLEG")
+			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(docs "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(fields
+				(field
+					(name "Reference") "JRLEG")
+				(field
+					(name "Value") "PDU-RLEG INPUT - PHOENIX 1714971")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+				(field
+					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "PDU-RLEG INPUT - PHOENIX 1714971")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "PDU_0_V")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "PDU_+12_V_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "K1")
+			(description "Ordering code decodes to upright mounting, 24 V internally suppressed coil, flying leads and SPST-NC mechanically linked auxiliary. Main M8 stud torque, wire colors/identification, DC interruption duty and safety suitability require received-device and qualified verification.")
+			(docs "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
+			(fields
+				(field
+					(name "Reference") "K1")
+				(field
+					(name "Value") "SENSATA GIGAVAC GV121CAC")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
+				(field
+					(name "Description") "Ordering code decodes to upright mounting, 24 V internally suppressed coil, flying leads and SPST-NC mechanically linked auxiliary. Main M8 stud torque, wire colors/identification, DC interruption duty and safety suitability require received-device and qualified verification.")
+				(field
+					(name "Status") "EXACT ORDER-CODE CANDIDATE - NOT AN IEC MIRROR-CONTACT CLAIM")
+				(field
+					(name "Evidence") "GV12 series Rev 28-Apr-2022")
+				(field
+					(name "Display") "SENSATA GIGAVAC GV121CAC")
+			)
+			(pins
+				(pin
+					(num "AUX-C")
+					(name "NC_AUX_COMMON")
+					(type "passive")
+				)
+				(pin
+					(num "AUX-NC")
+					(name "NC_AUX_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "COIL+")
+					(name "24_V_COIL_POSITIVE")
+					(type "passive")
+				)
+				(pin
+					(num "COIL-")
+					(name "COIL_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "M1")
+					(name "MAIN_INPUT_STUD")
+					(type "passive")
+				)
+				(pin
+					(num "M2")
+					(name "MAIN_OUTPUT_STUD")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "K2")
+			(description "Second independent series switching element. Common-cause, welded-contact detection, coil suppression behavior, contact protection, fault current, life and stopping time remain unvalidated.")
+			(docs "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
+			(fields
+				(field
+					(name "Reference") "K2")
+				(field
+					(name "Value") "SENSATA GIGAVAC GV121CAC")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
+				(field
+					(name "Description") "Second independent series switching element. Common-cause, welded-contact detection, coil suppression behavior, contact protection, fault current, life and stopping time remain unvalidated.")
+				(field
+					(name "Status") "EXACT ORDER-CODE CANDIDATE - APPLICATION OPEN")
+				(field
+					(name "Evidence") "GV12 series Rev 28-Apr-2022")
+				(field
+					(name "Display") "SENSATA GIGAVAC GV121CAC")
+			)
+			(pins
+				(pin
+					(num "AUX-C")
+					(name "NC_AUX_COMMON")
+					(type "passive")
+				)
+				(pin
+					(num "AUX-NC")
+					(name "NC_AUX_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "COIL+")
+					(name "24_V_COIL_POSITIVE")
+					(type "passive")
+				)
+				(pin
+					(num "COIL-")
+					(name "COIL_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "M1")
+					(name "MAIN_INPUT_STUD")
+					(type "passive")
+				)
+				(pin
+					(num "M2")
+					(name "MAIN_OUTPUT_STUD")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "MCU1")
+			(description "Motion requires both hardwired permit and a fresh bounded local command. A permit/reset transition alone must leave all branch enables disabled.")
+			(fields
+				(field
+					(name "Reference") "MCU1")
+				(field
+					(name "Value") "DETERMINISTIC MOTION CONTROLLER BOUNDARY")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Motion requires both hardwired permit and a fresh bounded local command. A permit/reset transition alone must leave all branch enables disabled.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "DETERMINISTIC MOTION CONTROLLER BOUNDARY")
+			)
+			(pins
+				(pin
+					(num "CMD")
+					(name "FRESH_BOUNDED_MOTION_REQUEST")
+					(type "passive")
+				)
+				(pin
+					(num "ENABLE")
+					(name "PDU_DISABLE_COMMANDS")
+					(type "passive")
+				)
+				(pin
+					(num "PERMIT")
+					(name "HARDWIRED_PERMIT_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "MON1")
+			(description "Auxiliary diagnostics are not part of the safety function and cannot enable motion or bypass E-stop, feedback loop or fresh-command logic.")
+			(fields
+				(field
+					(name "Reference") "MON1")
+				(field
+					(name "Value") "NON-SAFETY DIAGNOSTIC MONITOR")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Auxiliary diagnostics are not part of the safety function and cannot enable motion or bypass E-stop, feedback loop or fresh-command logic.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "NON-SAFETY DIAGNOSTIC MONITOR")
+			)
+			(pins
+				(pin
+					(num "BR")
+					(name "PDU_POWER-GOOD_AGGREGATE")
+					(type "passive")
+				)
+				(pin
+					(num "LOG")
+					(name "FAULT_LOG_/_TELEMETRY")
+					(type "passive")
+				)
+				(pin
+					(num "SR")
+					(name "PNOZ_AUX_STATUS")
+					(type "passive")
+				)
+				(pin
+					(num "Y32")
+					(name "PNOZ_SEMICONDUCTOR_STATUS")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "PS1")
+			(description "230 x 127 x 40.5 mm, 1.3 kg, 12 V/41.7 A evaluation candidate. Final terminal-number mapping, source adjustment lock, inrush, protection, thermal rise and regeneration response remain open.")
+			(docs "https://www.meanwell.com/Upload/PDF/RSP-500/RSP-500-SPEC.PDF")
+			(fields
+				(field
+					(name "Reference") "PS1")
+				(field
+					(name "Value") "MEAN WELL RSP-500-12")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.meanwell.com/Upload/PDF/RSP-500/RSP-500-SPEC.PDF")
+				(field
+					(name "Description") "230 x 127 x 40.5 mm, 1.3 kg, 12 V/41.7 A evaluation candidate. Final terminal-number mapping, source adjustment lock, inrush, protection, thermal rise and regeneration response remain open.")
+				(field
+					(name "Status") "EXACT PRODUCT CANDIDATE - APPLICATION OPEN")
+				(field
+					(name "Evidence") "RSP-500-SPEC 2025-09-26")
+				(field
+					(name "Display") "MEAN WELL RSP-500-12")
+			)
+			(pins
+				(pin
+					(num "+V")
+					(name "12_V_RAW_OUTPUT")
+					(type "passive")
+				)
+				(pin
+					(num "-V")
+					(name "DC_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "AC/L")
+					(name "AC_LINE_FUNCTION")
+					(type "passive")
+				)
+				(pin
+					(num "AC/N")
+					(name "AC_NEUTRAL_FUNCTION")
+					(type "passive")
+				)
+				(pin
+					(num "FG")
+					(name "FRAME_GROUND_FUNCTION")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "PS2")
+			(description "78 x 51 x 28 mm, 0.18 kg, 24 V/0.625 A candidate. Pin assignment is from SD-15-SPEC 2024-11-22; loading, protection, grounding and application validation remain open.")
+			(docs "https://www.meanwell.com/Upload/PDF/SD-15/SD-15-SPEC.PDF")
+			(fields
+				(field
+					(name "Reference") "PS2")
+				(field
+					(name "Value") "MEAN WELL SD-15A-24")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.meanwell.com/Upload/PDF/SD-15/SD-15-SPEC.PDF")
+				(field
+					(name "Description") "78 x 51 x 28 mm, 0.18 kg, 24 V/0.625 A candidate. Pin assignment is from SD-15-SPEC 2024-11-22; loading, protection, grounding and application validation remain open.")
+				(field
+					(name "Status") "PHYSICAL TERMINALS VERIFIED - APPLICATION OPEN")
+				(field
+					(name "Evidence") "SD-15-SPEC 2024-11-22")
+				(field
+					(name "Display") "MEAN WELL SD-15A-24")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "DC_INPUT_+")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "DC_INPUT_-")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "FG")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "DC_OUTPUT_-")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "DC_OUTPUT_+24_V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "RB0")
+			(description "Return bus, frame bond and proposed single star point are not finalized. Bond conductor, terminal, location, fault current and jurisdictional treatment require qualified selection.")
+			(fields
+				(field
+					(name "Reference") "RB0")
+				(field
+					(name "Value") "ROBOT RETURN / FRAME BOUNDARY")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Return bus, frame bond and proposed single star point are not finalized. Bond conductor, terminal, location, fault current and jurisdictional treatment require qualified selection.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "ROBOT RETURN / FRAME BOUNDARY")
+			)
+			(pins
+				(pin
+					(num "FRAME-IN")
+					(name "TETHER_PRE-MATE_FRAME")
+					(type "passive")
+				)
+				(pin
+					(num "FRAME-STAR")
+					(name "PROPOSED_SINGLE_0_V_/_FRAME_STAR_POINT")
+					(type "passive")
+				)
+				(pin
+					(num "RET-BUS")
+					(name "CONTROLLED_RETURN_BUS")
+					(type "passive")
+				)
+				(pin
+					(num "RET-IN")
+					(name "TETHER_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "S0")
+			(description "Dual direct-opening contact family candidate. Exact complete order code, terminal numbering, enclosure and application remain selection work.")
+			(fields
+				(field
+					(name "Reference") "S0")
+				(field
+					(name "Value") "IDEC XW DUAL-NC E-STOP FAMILY - ORDER CODE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Dual direct-opening contact family candidate. Exact complete order code, terminal numbering, enclosure and application remain selection work.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "IDEC XW DUAL-NC E-STOP FAMILY - ORDER CODE REQUIRED")
+			)
+			(pins
+				(pin
+					(num "NC1-A")
+					(name "CHANNEL_1_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "NC1-B")
+					(name "CHANNEL_1_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "NC2-A")
+					(name "CHANNEL_2_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "NC2-B")
+					(name "CHANNEL_2_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "S1")
+			(description "Momentary reset is eligibility only. It cannot command motion. Exact terminal IDs and monitored falling-edge behavior require physical verification.")
+			(fields
+				(field
+					(name "Reference") "S1")
+				(field
+					(name "Value") "IDEC HW1B-M1F11-G RESET CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Momentary reset is eligibility only. It cannot command motion. Exact terminal IDs and monitored falling-edge behavior require physical verification.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "IDEC HW1B-M1F11-G RESET CANDIDATE")
+			)
+			(pins
+				(pin
+					(num "NO-A")
+					(name "RESET_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "NO-B")
+					(name "RESET_/_EDM_LOOP")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SR1")
+			(description "Manual 21396-EN-23 identifies these terminals and supports dual-channel E-stop, monitored start and feedback-loop application examples. Exact circuit mode, PLr/SIL allocation, contact protection, reset proof and validation remain open.")
+			(docs "https://www.pilz.com/download/open/OM_PNOZ_s4_21396-EN-23.pdf")
+			(fields
+				(field
+					(name "Reference") "SR1")
+				(field
+					(name "Value") "PILZ PNOZ s4 750104")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pilz.com/download/open/OM_PNOZ_s4_21396-EN-23.pdf")
+				(field
+					(name "Description") "Manual 21396-EN-23 identifies these terminals and supports dual-channel E-stop, monitored start and feedback-loop application examples. Exact circuit mode, PLr/SIL allocation, contact protection, reset proof and validation remain open.")
+				(field
+					(name "Status") "TERMINALS VERIFIED - NO WHOLE-MACHINE SAFETY APPROVAL")
+				(field
+					(name "Evidence") "21396-EN-23, 2026-06-22")
+				(field
+					(name "Display") "PILZ PNOZ s4 750104")
+			)
+			(pins
+				(pin
+					(num "13")
+					(name "SAFETY_CONTACT_1_IN")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "SAFETY_CONTACT_1_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "23")
+					(name "SAFETY_CONTACT_2_IN")
+					(type "passive")
+				)
+				(pin
+					(num "24")
+					(name "SAFETY_CONTACT_2_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "33")
+					(name "SAFETY_CONTACT_3_IN")
+					(type "passive")
+				)
+				(pin
+					(num "34")
+					(name "SAFETY_PERMIT_STATUS")
+					(type "passive")
+				)
+				(pin
+					(num "41")
+					(name "AUXILIARY_NC_IN")
+					(type "passive")
+				)
+				(pin
+					(num "42")
+					(name "AUXILIARY_NC_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "A1")
+					(name "+24_V_SUPPLY")
+					(type "passive")
+				)
+				(pin
+					(num "A2")
+					(name "0_V_SUPPLY")
+					(type "passive")
+				)
+				(pin
+					(num "S11")
+					(name "TEST_PULSE_CH1")
+					(type "passive")
+				)
+				(pin
+					(num "S12")
+					(name "INPUT_CH1")
+					(type "passive")
+				)
+				(pin
+					(num "S21")
+					(name "TEST_PULSE_CH2")
+					(type "passive")
+				)
+				(pin
+					(num "S22")
+					(name "INPUT_CH2")
+					(type "passive")
+				)
+				(pin
+					(num "S34")
+					(name "MONITORED_START_/_FEEDBACK")
+					(type "passive")
+				)
+				(pin
+					(num "Y32")
+					(name "SEMICONDUCTOR_STATUS")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "XAC1")
+			(description "Mains inlet, disconnect, branch protection, conductors, terminals and Boston jurisdictional installation remain qualified selections.")
+			(fields
+				(field
+					(name "Reference") "XAC1")
+				(field
+					(name "Value") "FACILITY AC / PE / DISCONNECT / BRANCH PROTECTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Mains inlet, disconnect, branch protection, conductors, terminals and Boston jurisdictional installation remain qualified selections.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "FACILITY AC / PE / DISCONNECT / BRANCH PROTECTION")
+			)
+			(pins
+				(pin
+					(num "L")
+					(name "LINE")
+					(type "passive")
+				)
+				(pin
+					(num "N")
+					(name "NEUTRAL")
+					(type "passive")
+				)
+				(pin
+					(num "PE")
+					(name "PROTECTIVE_EARTH")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "XPERMIT")
+			(description "Permit restoration never issues motion. Interface voltage, isolation, test pulses and fault response remain selection and validation work.")
+			(fields
+				(field
+					(name "Reference") "XPERMIT")
+				(field
+					(name "Value") "HARDWIRED PERMIT STATUS TO MOTION CONTROLLER")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Permit restoration never issues motion. Interface voltage, isolation, test pulses and fault response remain selection and validation work.")
+				(field
+					(name "Status") "SELECTION REQUIRED")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "HARDWIRED PERMIT STATUS TO MOTION CONTROLLER")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "PNOZ_SAFETY_CONTACT")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "PERMIT_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "XT1A")
+			(description "Black genderless three-position housing. P1/P2 project polarity assignment must be permanently keyed, labeled and continuity-tested; ground contact uses 1340G1. Cable, breakaway/retention and shielding remain open.")
+			(docs "https://www.andersonpower.com/content/dam/app/ecommerce/product-pdfs/SBS75G/1s6417-SBS-Assembly-Instructions.pdf")
+			(fields
+				(field
+					(name "Reference") "XT1A")
+				(field
+					(name "Value") "PANEL SBS75G - SBS75GBLK")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.andersonpower.com/content/dam/app/ecommerce/product-pdfs/SBS75G/1s6417-SBS-Assembly-Instructions.pdf")
+				(field
+					(name "Description") "Black genderless three-position housing. P1/P2 project polarity assignment must be permanently keyed, labeled and continuity-tested; ground contact uses 1340G1. Cable, breakaway/retention and shielding remain open.")
+				(field
+					(name "Status") "HOUSING/6 AWG CONTACT FAMILY VERIFIED - HARNESS OPEN")
+				(field
+					(name "Evidence") "1S6417, accessed 2026-08-15")
+				(field
+					(name "Display") "PANEL SBS75G - SBS75GBLK")
+			)
+			(pins
+				(pin
+					(num "G")
+					(name "PRE-MATE_FRAME_/_SHIELD_REFERENCE")
+					(type "passive")
+				)
+				(pin
+					(num "P1")
+					(name "PROJECT-ASSIGNED_SWITCHED_+12_V")
+					(type "passive")
+				)
+				(pin
+					(num "P2")
+					(name "PROJECT-ASSIGNED_DC_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "XT1B")
+			(description "Mating robot-side housing with the same controlled project polarity. Finger-safe state, strain relief, frame bond, flex life and tether trip/breakaway behavior require physical validation.")
+			(docs "https://www.andersonpower.com/content/dam/app/ecommerce/product-pdfs/SBS75G/1s6417-SBS-Assembly-Instructions.pdf")
+			(fields
+				(field
+					(name "Reference") "XT1B")
+				(field
+					(name "Value") "ROBOT SBS75G - SBS75GBLK")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.andersonpower.com/content/dam/app/ecommerce/product-pdfs/SBS75G/1s6417-SBS-Assembly-Instructions.pdf")
+				(field
+					(name "Description") "Mating robot-side housing with the same controlled project polarity. Finger-safe state, strain relief, frame bond, flex life and tether trip/breakaway behavior require physical validation.")
+				(field
+					(name "Status") "PROJECT CONTACT ASSIGNMENT - PHYSICAL VERIFICATION REQUIRED")
+				(field
+					(name "Evidence") "1S6417, accessed 2026-08-15")
+				(field
+					(name "Display") "ROBOT SBS75G - SBS75GBLK")
+			)
+			(pins
+				(pin
+					(num "G")
+					(name "PRE-MATE_ROBOT_FRAME_REFERENCE")
+					(type "passive")
+				)
+				(pin
+					(num "P1")
+					(name "PROJECT-ASSIGNED_CONTROLLED_+12_V")
+					(type "passive")
+				)
+				(pin
+					(num "P2")
+					(name "PROJECT-ASSIGNED_CONTROLLED_RETURN")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "PBV3")
+			(uri "${KIPRJMOD}/hr30-tether-power-core-p0.1.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "EDM_K1_OUT")
+			(class "Default")
+			(node
+				(ref "K1")
+				(pin "AUX-NC")
+				(pinfunction "NC_AUX_RETURN_AUX-NC")
+				(pintype "passive")
+			)
+			(node
+				(ref "K2")
+				(pin "AUX-C")
+				(pinfunction "NC_AUX_COMMON_AUX-C")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "2")
+			(name "FACILITY_L")
+			(class "Default")
+			(node
+				(ref "PS1")
+				(pin "AC/L")
+				(pinfunction "AC_LINE_FUNCTION_AC/L")
+				(pintype "passive")
+			)
+			(node
+				(ref "XAC1")
+				(pin "L")
+				(pinfunction "LINE_L")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "3")
+			(name "FACILITY_N")
+			(class "Default")
+			(node
+				(ref "PS1")
+				(pin "AC/N")
+				(pinfunction "AC_NEUTRAL_FUNCTION_AC/N")
+				(pintype "passive")
+			)
+			(node
+				(ref "XAC1")
+				(pin "N")
+				(pinfunction "NEUTRAL_N")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "4")
+			(name "HARDWIRED_PERMIT")
+			(class "Default")
+			(node
+				(ref "SR1")
+				(pin "34")
+				(pinfunction "SAFETY_PERMIT_STATUS_34")
+				(pintype "passive")
+			)
+			(node
+				(ref "XPERMIT")
+				(pin "IN")
+				(pinfunction "PNOZ_SAFETY_CONTACT_IN")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "5")
+			(name "K1_COIL_POS")
+			(class "Default")
+			(node
+				(ref "K1")
+				(pin "COIL+")
+				(pinfunction "24_V_COIL_POSITIVE_COIL+")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "14")
+				(pinfunction "SAFETY_CONTACT_1_OUT_14")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "K1_OUT")
+			(class "Default")
+			(node
+				(ref "K1")
+				(pin "M2")
+				(pinfunction "MAIN_OUTPUT_STUD_M2")
+				(pintype "passive")
+			)
+			(node
+				(ref "K2")
+				(pin "M1")
+				(pinfunction "MAIN_INPUT_STUD_M1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "7")
+			(name "K2_COIL_POS")
+			(class "Default")
+			(node
+				(ref "K2")
+				(pin "COIL+")
+				(pinfunction "24_V_COIL_POSITIVE_COIL+")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "24")
+				(pinfunction "SAFETY_CONTACT_2_OUT_24")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "8")
+			(name "MOTION_PERMIT_INPUT")
+			(class "Default")
+			(node
+				(ref "MCU1")
+				(pin "PERMIT")
+				(pinfunction "HARDWIRED_PERMIT_INPUT_PERMIT")
+				(pintype "passive")
+			)
+			(node
+				(ref "XPERMIT")
+				(pin "OUT")
+				(pinfunction "PERMIT_INPUT_OUT")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "9")
+			(name "PANEL_PE")
+			(class "Default")
+			(node
+				(ref "PS1")
+				(pin "FG")
+				(pinfunction "FRAME_GROUND_FUNCTION_FG")
+				(pintype "passive")
+			)
+			(node
+				(ref "PS2")
+				(pin "3")
+				(pinfunction "FG_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "XAC1")
+				(pin "PE")
+				(pinfunction "PROTECTIVE_EARTH_PE")
+				(pintype "passive")
+			)
+			(node
+				(ref "XT1A")
+				(pin "G")
+				(pinfunction "PRE-MATE_FRAME_/_SHIELD_REFERENCE_G")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "10")
+			(name "PDU_ARMS_POS")
+			(class "Default")
+			(node
+				(ref "FB3")
+				(pin "OUT")
+				(pinfunction "ARMS_PROTECTED_FEED_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "JARMS")
+				(pin "2")
+				(pinfunction "PDU_+12_V_INPUT_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "11")
+			(name "PDU_COMMON_RET")
+			(class "Default")
+			(node
+				(ref "JARMS")
+				(pin "1")
+				(pinfunction "PDU_0_V_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JCORE")
+				(pin "1")
+				(pinfunction "PDU_0_V_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JDISTAL")
+				(pin "1")
+				(pinfunction "PDU_0_V_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JLLEG")
+				(pin "1")
+				(pinfunction "PDU_0_V_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JRLEG")
+				(pin "1")
+				(pinfunction "PDU_0_V_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "RB0")
+				(pin "RET-BUS")
+				(pinfunction "CONTROLLED_RETURN_BUS_RET-BUS")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "12")
+			(name "PDU_CORE_POS")
+			(class "Default")
+			(node
+				(ref "FB5")
+				(pin "OUT")
+				(pinfunction "CORE_PROTECTED_FEED_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "JCORE")
+				(pin "2")
+				(pinfunction "PDU_+12_V_INPUT_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "13")
+			(name "PDU_DISTAL_POS")
+			(class "Default")
+			(node
+				(ref "FB4")
+				(pin "OUT")
+				(pinfunction "DISTAL_PROTECTED_FEED_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "JDISTAL")
+				(pin "2")
+				(pinfunction "PDU_+12_V_INPUT_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "14")
+			(name "PDU_LLEG_POS")
+			(class "Default")
+			(node
+				(ref "FB1")
+				(pin "OUT")
+				(pinfunction "LLEG_PROTECTED_FEED_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "JLLEG")
+				(pin "2")
+				(pinfunction "PDU_+12_V_INPUT_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "15")
+			(name "PDU_RLEG_POS")
+			(class "Default")
+			(node
+				(ref "FB2")
+				(pin "OUT")
+				(pinfunction "RLEG_PROTECTED_FEED_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "JRLEG")
+				(pin "2")
+				(pinfunction "PDU_+12_V_INPUT_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "16")
+			(name "PNOZ_AUX_STATUS")
+			(class "Default")
+			(node
+				(ref "MON1")
+				(pin "SR")
+				(pinfunction "PNOZ_AUX_STATUS_SR")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "42")
+				(pinfunction "AUXILIARY_NC_OUT_42")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "17")
+			(name "PNOZ_Y32_STATUS")
+			(class "Default")
+			(node
+				(ref "MON1")
+				(pin "Y32")
+				(pinfunction "PNOZ_SEMICONDUCTOR_STATUS_Y32")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "Y32")
+				(pinfunction "SEMICONDUCTOR_STATUS_Y32")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "18")
+			(name "RAW_0V")
+			(class "Default")
+			(node
+				(ref "PS1")
+				(pin "-V")
+				(pinfunction "DC_RETURN_-V")
+				(pintype "passive")
+			)
+			(node
+				(ref "PS2")
+				(pin "2")
+				(pinfunction "DC_INPUT_-_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "XT1A")
+				(pin "P2")
+				(pinfunction "PROJECT-ASSIGNED_DC_RETURN_P2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "19")
+			(name "RAW_12V_POS")
+			(class "Default")
+			(node
+				(ref "K1")
+				(pin "M1")
+				(pinfunction "MAIN_INPUT_STUD_M1")
+				(pintype "passive")
+			)
+			(node
+				(ref "PS1")
+				(pin "+V")
+				(pinfunction "12_V_RAW_OUTPUT_+V")
+				(pintype "passive")
+			)
+			(node
+				(ref "PS2")
+				(pin "1")
+				(pinfunction "DC_INPUT_+_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "20")
+			(name "RESET_EDM")
+			(class "Default")
+			(node
+				(ref "K1")
+				(pin "AUX-C")
+				(pinfunction "NC_AUX_COMMON_AUX-C")
+				(pintype "passive")
+			)
+			(node
+				(ref "K2")
+				(pin "AUX-NC")
+				(pinfunction "NC_AUX_RETURN_AUX-NC")
+				(pintype "passive")
+			)
+			(node
+				(ref "S1")
+				(pin "NO-B")
+				(pinfunction "RESET_/_EDM_LOOP_NO-B")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S34")
+				(pinfunction "MONITORED_START_/_FEEDBACK_S34")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "21")
+			(name "ROBOT_FRAME_BOUNDARY")
+			(class "Default")
+			(node
+				(ref "RB0")
+				(pin "FRAME-IN")
+				(pinfunction "TETHER_PRE-MATE_FRAME_FRAME-IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "XT1B")
+				(pin "G")
+				(pinfunction "PRE-MATE_ROBOT_FRAME_REFERENCE_G")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "22")
+			(name "ROBOT_FUSED_POS")
+			(class "Default")
+			(node
+				(ref "FB1")
+				(pin "IN")
+				(pinfunction "COMMON_DISTRIBUTION_INPUT_IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB2")
+				(pin "IN")
+				(pinfunction "COMMON_DISTRIBUTION_INPUT_IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB3")
+				(pin "IN")
+				(pinfunction "COMMON_DISTRIBUTION_INPUT_IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB4")
+				(pin "IN")
+				(pinfunction "COMMON_DISTRIBUTION_INPUT_IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB5")
+				(pin "IN")
+				(pinfunction "COMMON_DISTRIBUTION_INPUT_IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "FM0")
+				(pin "OUT")
+				(pinfunction "MAIN_DISTRIBUTION_BUS_OUT")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "23")
+			(name "ROBOT_MAIN_POS")
+			(class "Default")
+			(node
+				(ref "FM0")
+				(pin "IN")
+				(pinfunction "ROBOT_INLET_POSITIVE_IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "XT1B")
+				(pin "P1")
+				(pinfunction "PROJECT-ASSIGNED_CONTROLLED_+12_V_P1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "24")
+			(name "ROBOT_MAIN_RET")
+			(class "Default")
+			(node
+				(ref "RB0")
+				(pin "RET-IN")
+				(pinfunction "TETHER_RETURN_RET-IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "XT1B")
+				(pin "P2")
+				(pinfunction "PROJECT-ASSIGNED_CONTROLLED_RETURN_P2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "25")
+			(name "S12_CH1")
+			(class "Default")
+			(node
+				(ref "S0")
+				(pin "NC1-B")
+				(pinfunction "CHANNEL_1_RETURN_NC1-B")
+				(pintype "passive")
+			)
+			(node
+				(ref "S1")
+				(pin "NO-A")
+				(pinfunction "RESET_FEED_NO-A")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S12")
+				(pinfunction "INPUT_CH1_S12")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "26")
+			(name "S21_TEST")
+			(class "Default")
+			(node
+				(ref "S0")
+				(pin "NC2-A")
+				(pinfunction "CHANNEL_2_FEED_NC2-A")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S21")
+				(pinfunction "TEST_PULSE_CH2_S21")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "27")
+			(name "S22_CH2")
+			(class "Default")
+			(node
+				(ref "S0")
+				(pin "NC2-B")
+				(pinfunction "CHANNEL_2_RETURN_NC2-B")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S22")
+				(pinfunction "INPUT_CH2_S22")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "28")
+			(name "SAFE_0V")
+			(class "Default")
+			(node
+				(ref "K1")
+				(pin "COIL-")
+				(pinfunction "COIL_RETURN_COIL-")
+				(pintype "passive")
+			)
+			(node
+				(ref "K2")
+				(pin "COIL-")
+				(pinfunction "COIL_RETURN_COIL-")
+				(pintype "passive")
+			)
+			(node
+				(ref "PS2")
+				(pin "4")
+				(pinfunction "DC_OUTPUT_-_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "A2")
+				(pinfunction "0_V_SUPPLY_A2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "29")
+			(name "SAFE_24V")
+			(class "Default")
+			(node
+				(ref "PS2")
+				(pin "5")
+				(pinfunction "DC_OUTPUT_+24_V_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "S0")
+				(pin "NC1-A")
+				(pinfunction "CHANNEL_1_FEED_NC1-A")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "13")
+				(pinfunction "SAFETY_CONTACT_1_IN_13")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "23")
+				(pinfunction "SAFETY_CONTACT_2_IN_23")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "33")
+				(pinfunction "SAFETY_CONTACT_3_IN_33")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "41")
+				(pinfunction "AUXILIARY_NC_IN_41")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "A1")
+				(pinfunction "+24_V_SUPPLY_A1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S11")
+				(pinfunction "TEST_PULSE_CH1_S11")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "30")
+			(name "TETHER_POS_SWITCHED")
+			(class "Default")
+			(node
+				(ref "K2")
+				(pin "M2")
+				(pinfunction "MAIN_OUTPUT_STUD_M2")
+				(pintype "passive")
+			)
+			(node
+				(ref "XT1A")
+				(pin "P1")
+				(pinfunction "PROJECT-ASSIGNED_SWITCHED_+12_V_P1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "31")
+			(name "unconnected-(MCU1-FRESH_BOUNDED_MOTION_REQUEST-PadCMD)")
+			(class "Default")
+			(node
+				(ref "MCU1")
+				(pin "CMD")
+				(pinfunction "FRESH_BOUNDED_MOTION_REQUEST_CMD")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "32")
+			(name "unconnected-(MCU1-PDU_DISABLE_COMMANDS-PadENABLE)")
+			(class "Default")
+			(node
+				(ref "MCU1")
+				(pin "ENABLE")
+				(pinfunction "PDU_DISABLE_COMMANDS_ENABLE")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "33")
+			(name "unconnected-(MON1-FAULT_LOG_{slash}_TELEMETRY-PadLOG)")
+			(class "Default")
+			(node
+				(ref "MON1")
+				(pin "LOG")
+				(pinfunction "FAULT_LOG_/_TELEMETRY_LOG")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "34")
+			(name "unconnected-(MON1-PDU_POWER-GOOD_AGGREGATE-PadBR)")
+			(class "Default")
+			(node
+				(ref "MON1")
+				(pin "BR")
+				(pinfunction "PDU_POWER-GOOD_AGGREGATE_BR")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "35")
+			(name "unconnected-(RB0-PROPOSED_SINGLE_0_V_{slash}_FRAME_STAR_POINT-PadFRAME-STAR)")
+			(class "Default")
+			(node
+				(ref "RB0")
+				(pin "FRAME-STAR")
+				(pinfunction "PROPOSED_SINGLE_0_V_/_FRAME_STAR_POINT_FRAME-STAR")
+				(pintype "passive+no_connect")
+			)
+		)
+	)
+)

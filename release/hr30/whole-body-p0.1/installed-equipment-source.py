@@ -145,21 +145,24 @@ def build() -> list[Equipment]:
             "complete sourced application circuit and 82 x 42 mm native PCB placement candidate exist; copper routing, stackup/isolation geometry, EMC, thermal and physical validation remain open; U2D2 stays external commissioning-only",
             "torso", control)
 
-    # Pelvis tether-first power hardware. The offboard current-limited source and
-    # safety relay remain outside the robot; the robot carries the inlet,
-    # interruption/distribution hardware and regeneration-handling reservation.
+    # Pelvis tether-first power hardware.  The source, safety relay and both
+    # GV121CAC series contactors remain in the external panel.  The robot
+    # carries only the touch-safe inlet and passive main/five-branch protected
+    # distribution candidate; it carries no high-current contactor.
     add("EQ-P01-TETHER-INLET", "P01", "tether inlet and service disconnect",
-        "keyed touch-safe 14.8 V-class inlet/disconnect assembly; SELECTION REQUIRED",
+        "Anderson SBS75GBLK three-position inlet candidate; project contacts P1=controlled +12 V, G=pre-mate frame reference, P2=return",
         box(42, 24, 34, (0, 35, 378), 3), 0.110, 0, 0,
         "rear pelvis bulkhead", "+Y external tool access",
-        "two-pole power plus PE/shield reference; current/rating/keying open",
-        "SELECTION REQUIRED", "SELECTION REQUIRED", "planning envelope/mass only", "base_link", safety)
-    add("EQ-P01-DUAL-INTERRUPT", "S01", "redundant actuator-power interruption",
-        "two-channel DC-rated interruption module; contactor/solid-state selection required",
-        box(92, 24, 34, (0, 12, 382), 3), 0.260, 0.5, 3.0,
+        "1339G2 primary contacts and 1340G1 pre-mate contact are 6 AWG family candidates; exact cable, polarity marking, frame bond, retention and flex validation open",
+        "https://www.andersonpower.com/content/dam/app/ecommerce/product-pdfs/SBS75G/1s6417-SBS-Assembly-Instructions.pdf",
+        "Anderson 1S6417; accessed 2026-08-15", "housing/contact family identified; installed harness and application remain open", "base_link", safety)
+    add("EQ-P01-FIVE-BRANCH-DISTRIBUTOR", "P01", "main plus five protected actuator-PDU feeds",
+        "146 x 28 x 38 mm insulated distributor candidate with six Littelfuse 04980923ZXT covered MIDI holders; all fuse values SELECTION REQUIRED",
+        box(146, 28, 38, (0, 12, 382), 3), 0.235, 0.0, 1.5,
         "rear pelvis power tray", "+Y rear-cover withdrawal",
-        "dual coil/gate channels, monitored mirror/diagnostic outputs; ratings open",
-        "SELECTION REQUIRED", "SELECTION REQUIRED", "no safety function or DC duty is validated", "base_link", safety)
+        "one inlet, one main holder and exact feeds to PDU-LLEG/PDU-RLEG/PDU-ARMS/PDU-DISTAL/PDU-CORE; fuse values, conductors, lugs and torque open",
+        "https://www.littelfuse.com/products/fuse-blocks-fuseholders-and-fuse-accessories/automotive-and-commercial-vehicle-fuse-holders/midi-498/04980923zxt.aspx",
+        "MIDI 498 datasheet 012826-A; accessed 2026-08-15", "physical holder/enclosure allocation only; no fuse, conductor, thermal, fault or safety credit", "base_link", power)
     # Five real 124 x 45 mm branch-PDU board envelopes replace the former
     # single abstract pelvis reservation.  The leg boards are oriented along
     # Z inside the removable rear thigh covers; the remaining three are

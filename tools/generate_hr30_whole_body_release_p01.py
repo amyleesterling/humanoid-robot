@@ -35,6 +35,7 @@ PIPELINE = (
     "generate_hr30_actuator_interface_carriers_p01.py",
     "generate_hr30_actuator_branch_pdu_p01.py",
     "generate_hr30_energy_safety_spine_p01.py",
+    "generate_hr30_tether_power_core_p01.py",
     "generate_hr30_whole_body_harness_p01.py",
     "generate_hr30_physical_harness_p01.py",
     "generate_hr30_assembly_guide_p01.py",

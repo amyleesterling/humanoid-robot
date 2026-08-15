@@ -14,6 +14,7 @@ import csv
 import hashlib
 import html
 import json
+import re
 import shutil
 import sys
 from dataclasses import dataclass
@@ -33,6 +34,24 @@ WARNING = "PRELIMINARY - WHOLE-BODY PRODUCT PACKAGING CANDIDATE ONLY - NOT APPRO
 
 sys.path.insert(0, str(ROOT / "tools"))
 import generate_hr30_body_architecture_p01 as body  # noqa: E402
+
+
+def collapse_duplicate_hr30_blocks(text: str) -> str:
+    """Canonicalize generated integration blocks at the final release stage."""
+    starts = list(dict.fromkeys(re.findall(r"<!-- (HR30-[A-Z0-9-]+-START) -->", text)))
+    for token in starts:
+        start = f"<!-- {token} -->"
+        end = f"<!-- {token[:-5]}END -->"
+        pattern = re.compile(re.escape(start) + r"[\s\S]*?" + re.escape(end))
+        seen = False
+        def keep_first(match):
+            nonlocal seen
+            if seen:
+                return ""
+            seen = True
+            return match.group(0)
+        text = pattern.sub(keep_first, text)
+    return text
 import generate_hr30_leg_drivetrain_p01 as drives  # noqa: E402
 import generate_hr30_leg_drivetrain_adapters_p01 as adapters  # noqa: E402
 import generate_hr30_system_package_p01 as system  # noqa: E402
@@ -279,7 +298,7 @@ def integrate_root() -> None:
     marker = "<!-- HR30-ASSEMBLY-GUIDE-P01-START -->"
     if marker not in readme:
         raise RuntimeError("whole-body README integration marker missing")
-    readme_path.write_text(readme.replace(marker, block + marker), encoding="utf-8", newline="\n")
+    readme_path.write_text(collapse_duplicate_hr30_blocks(readme.replace(marker, block + marker)), encoding="utf-8", newline="\n")
 
     page_path = WHOLE / "index.html"
     page = page_path.read_text(encoding="utf-8")
@@ -289,7 +308,7 @@ def integrate_root() -> None:
     section = f'''{start}<section id="installed-leg-drives"><h2>The product-specific leg drives and adapters now occupy the complete humanoid</h2><div class="grid"><article class="card pass"><div class="metric">10 / 10</div><p>Reduced axes have exact candidate pulleys, belts, horns and nominal adapter solids.</p></article><article class="card pass"><div class="metric">45 pairs</div><p>Zero nominal inter-drive common-volume interference.</p></article><article class="card pass"><h3>External service planes</h3><p>Pitch drives sit outboard; roll drives sit behind their bearing stacks.</p></article><article class="card hold"><h3>Still preliminary</h3><p>Material, fits, fasteners, capacity, motion sweep, covers, cables, tolerances and physical proof remain open.</p></article></div><div class="viewer"><model-viewer src="leg-drivetrain-installation-p0.1/HR-30_leg_drivetrains_installed_candidate.glb" poster="front-elevation.svg" alt="Interactive complete HR-30 with ten product-specific leg drives and physical adapter solids installed" camera-controls camera-orbit="28deg 76deg 100%" field-of-view="27deg" shadow-intensity="0.85"></model-viewer><p><a href="leg-drivetrain-installation-p0.1/index.html">Open the installed-drive guide</a> · <a href="leg-drivetrain-installation-p0.1/installed-drivetrain-register.csv">installation register</a> · <a href="leg-drivetrain-installation-p0.1/inter-drive-clearance-register.csv">clearance screen</a>.</p></div></section>{end}'''
     if marker not in page:
         raise RuntimeError("whole-body page integration marker missing")
-    page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")
+    page_path.write_text(collapse_duplicate_hr30_blocks(page.replace(marker, section + marker)), encoding="utf-8", newline="\n")
 
     holds_path = WHOLE / "open-holds.csv"
     with holds_path.open(encoding="utf-8", newline="") as handle:

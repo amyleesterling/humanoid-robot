@@ -36,12 +36,15 @@ def main() -> int:
     ids = {row["item_id"] for row in rows}
     required = {
         "EQ-T01-PI5", "EQ-T01-MOTION", "EQ-T01-WATCHDOG", "EQ-T01-BUS-CARRIER-A", "EQ-T01-BUS-CARRIER-B", "EQ-P01-TETHER-INLET",
-        "EQ-P01-DUAL-INTERRUPT", "EQ-PDU-LLEG", "EQ-PDU-RLEG", "EQ-PDU-ARMS", "EQ-PDU-DISTAL", "EQ-PDU-CORE", "EQ-P01-IMU", "EQ-H01-DISPLAY",
+        "EQ-P01-FIVE-BRANCH-DISTRIBUTOR", "EQ-PDU-LLEG", "EQ-PDU-RLEG", "EQ-PDU-ARMS", "EQ-PDU-DISTAL", "EQ-PDU-CORE", "EQ-P01-IMU", "EQ-H01-DISPLAY",
         "EQ-H01-CAMERA-L", "EQ-H01-CAMERA-R", "EQ-H01-MIC-ARRAY",
         "EQ-H01-SPEAKER-L", "EQ-H01-SPEAKER-R", "EQ-F01-SOLE", "EQ-F02-SOLE",
         "EQ-T01-BATTERY-PACK", "EQ-T01-BATTERY-CASSETTE", "EQ-T01-BATTERY-PROTECTION",
     }
     assert required <= ids
+    assert "EQ-P01-DUAL-INTERRUPT" not in ids
+    assert any(row["item_id"] == "EQ-P01-FIVE-BRANCH-DISTRIBUTOR" and "04980923ZXT" in row["candidate"] for row in rows)
+    assert any(row["item_id"] == "EQ-P01-TETHER-INLET" and "SBS75GBLK" in row["candidate"] for row in rows)
     assert "EQ-P01-PDU" not in ids
     pdu_rows = [row for row in rows if row["item_id"].startswith("EQ-PDU-")]
     assert len(pdu_rows) == 5 and abs(sum(float(row["planning_mass_kg"]) for row in pdu_rows) - 0.225) < 1e-9

@@ -1,0 +1,84 @@
+wire_number,sheet,reference,terminal,pin_name,net
+W1001,01_external_source_panel.kicad_sch,XAC1,L,LINE,FACILITY_L
+W1002,01_external_source_panel.kicad_sch,XAC1,N,NEUTRAL,FACILITY_N
+W1003,01_external_source_panel.kicad_sch,XAC1,PE,PROTECTIVE EARTH,PANEL_PE
+W1004,01_external_source_panel.kicad_sch,PS1,AC/L,AC LINE FUNCTION,FACILITY_L
+W1005,01_external_source_panel.kicad_sch,PS1,AC/N,AC NEUTRAL FUNCTION,FACILITY_N
+W1006,01_external_source_panel.kicad_sch,PS1,FG,FRAME GROUND FUNCTION,PANEL_PE
+W1007,01_external_source_panel.kicad_sch,PS1,+V,12 V RAW OUTPUT,RAW_12V_POS
+W1008,01_external_source_panel.kicad_sch,PS1,-V,DC RETURN,RAW_0V
+W1009,01_external_source_panel.kicad_sch,PS2,1,DC INPUT +,RAW_12V_POS
+W1010,01_external_source_panel.kicad_sch,PS2,2,DC INPUT -,RAW_0V
+W1011,01_external_source_panel.kicad_sch,PS2,3,FG,PANEL_PE
+W1012,01_external_source_panel.kicad_sch,PS2,4,DC OUTPUT -,SAFE_0V
+W1013,01_external_source_panel.kicad_sch,PS2,5,DC OUTPUT +24 V,SAFE_24V
+W2001,02_estop_reset_safety_relay.kicad_sch,S0,NC1-A,CHANNEL 1 FEED,SAFE_24V
+W2002,02_estop_reset_safety_relay.kicad_sch,S0,NC2-A,CHANNEL 2 FEED,S21_TEST
+W2003,02_estop_reset_safety_relay.kicad_sch,S0,NC1-B,CHANNEL 1 RETURN,S12_CH1
+W2004,02_estop_reset_safety_relay.kicad_sch,S0,NC2-B,CHANNEL 2 RETURN,S22_CH2
+W2005,02_estop_reset_safety_relay.kicad_sch,S1,NO-A,RESET FEED,S12_CH1
+W2006,02_estop_reset_safety_relay.kicad_sch,S1,NO-B,RESET / EDM LOOP,RESET_EDM
+W2007,02_estop_reset_safety_relay.kicad_sch,SR1,A1,+24 V SUPPLY,SAFE_24V
+W2008,02_estop_reset_safety_relay.kicad_sch,SR1,A2,0 V SUPPLY,SAFE_0V
+W2009,02_estop_reset_safety_relay.kicad_sch,SR1,S11,TEST PULSE CH1,SAFE_24V
+W2010,02_estop_reset_safety_relay.kicad_sch,SR1,S12,INPUT CH1,S12_CH1
+W2011,02_estop_reset_safety_relay.kicad_sch,SR1,S21,TEST PULSE CH2,S21_TEST
+W2012,02_estop_reset_safety_relay.kicad_sch,SR1,S22,INPUT CH2,S22_CH2
+W2013,02_estop_reset_safety_relay.kicad_sch,SR1,S34,MONITORED START / FEEDBACK,RESET_EDM
+W2014,02_estop_reset_safety_relay.kicad_sch,SR1,13,SAFETY CONTACT 1 IN,SAFE_24V
+W2015,02_estop_reset_safety_relay.kicad_sch,SR1,23,SAFETY CONTACT 2 IN,SAFE_24V
+W2016,02_estop_reset_safety_relay.kicad_sch,SR1,33,SAFETY CONTACT 3 IN,SAFE_24V
+W2017,02_estop_reset_safety_relay.kicad_sch,SR1,41,AUXILIARY NC IN,SAFE_24V
+W2018,02_estop_reset_safety_relay.kicad_sch,SR1,14,SAFETY CONTACT 1 OUT,K1_COIL_POS
+W2019,02_estop_reset_safety_relay.kicad_sch,SR1,24,SAFETY CONTACT 2 OUT,K2_COIL_POS
+W2020,02_estop_reset_safety_relay.kicad_sch,SR1,34,SAFETY PERMIT STATUS,HARDWIRED_PERMIT
+W2021,02_estop_reset_safety_relay.kicad_sch,SR1,42,AUXILIARY NC OUT,PNOZ_AUX_STATUS
+W2022,02_estop_reset_safety_relay.kicad_sch,SR1,Y32,SEMICONDUCTOR STATUS,PNOZ_Y32_STATUS
+W3001,03_redundant_dc_interruption.kicad_sch,K1,M1,MAIN INPUT STUD,RAW_12V_POS
+W3002,03_redundant_dc_interruption.kicad_sch,K1,COIL+,24 V COIL POSITIVE,K1_COIL_POS
+W3003,03_redundant_dc_interruption.kicad_sch,K1,COIL-,COIL RETURN,SAFE_0V
+W3004,03_redundant_dc_interruption.kicad_sch,K1,AUX-C,NC AUX COMMON,RESET_EDM
+W3005,03_redundant_dc_interruption.kicad_sch,K1,M2,MAIN OUTPUT STUD,K1_OUT
+W3006,03_redundant_dc_interruption.kicad_sch,K1,AUX-NC,NC AUX RETURN,EDM_K1_OUT
+W3007,03_redundant_dc_interruption.kicad_sch,K2,M1,MAIN INPUT STUD,K1_OUT
+W3008,03_redundant_dc_interruption.kicad_sch,K2,COIL+,24 V COIL POSITIVE,K2_COIL_POS
+W3009,03_redundant_dc_interruption.kicad_sch,K2,COIL-,COIL RETURN,SAFE_0V
+W3010,03_redundant_dc_interruption.kicad_sch,K2,AUX-C,NC AUX COMMON,EDM_K1_OUT
+W3011,03_redundant_dc_interruption.kicad_sch,K2,M2,MAIN OUTPUT STUD,TETHER_POS_SWITCHED
+W3012,03_redundant_dc_interruption.kicad_sch,K2,AUX-NC,NC AUX RETURN,RESET_EDM
+W3013,03_redundant_dc_interruption.kicad_sch,XPERMIT,IN,PNOZ SAFETY CONTACT,HARDWIRED_PERMIT
+W3014,03_redundant_dc_interruption.kicad_sch,XPERMIT,OUT,PERMIT INPUT,MOTION_PERMIT_INPUT
+W4001,04_touch_safe_tether.kicad_sch,XT1A,P1,PROJECT-ASSIGNED SWITCHED +12 V,TETHER_POS_SWITCHED
+W4002,04_touch_safe_tether.kicad_sch,XT1A,G,PRE-MATE FRAME / SHIELD REFERENCE,PANEL_PE
+W4003,04_touch_safe_tether.kicad_sch,XT1A,P2,PROJECT-ASSIGNED DC RETURN,RAW_0V
+W4004,04_touch_safe_tether.kicad_sch,XT1B,P1,PROJECT-ASSIGNED CONTROLLED +12 V,ROBOT_MAIN_POS
+W4005,04_touch_safe_tether.kicad_sch,XT1B,G,PRE-MATE ROBOT FRAME REFERENCE,ROBOT_FRAME_BOUNDARY
+W4006,04_touch_safe_tether.kicad_sch,XT1B,P2,PROJECT-ASSIGNED CONTROLLED RETURN,ROBOT_MAIN_RET
+W5001,05_robot_five_branch_distribution.kicad_sch,FM0,IN,ROBOT INLET POSITIVE,ROBOT_MAIN_POS
+W5002,05_robot_five_branch_distribution.kicad_sch,FM0,OUT,MAIN DISTRIBUTION BUS,ROBOT_FUSED_POS
+W5003,05_robot_five_branch_distribution.kicad_sch,RB0,RET-IN,TETHER RETURN,ROBOT_MAIN_RET
+W5004,05_robot_five_branch_distribution.kicad_sch,RB0,FRAME-IN,TETHER PRE-MATE FRAME,ROBOT_FRAME_BOUNDARY
+W5005,05_robot_five_branch_distribution.kicad_sch,RB0,RET-BUS,CONTROLLED RETURN BUS,PDU_COMMON_RET
+W5006,05_robot_five_branch_distribution.kicad_sch,FB1,IN,COMMON DISTRIBUTION INPUT,ROBOT_FUSED_POS
+W5007,05_robot_five_branch_distribution.kicad_sch,FB1,OUT,LLEG PROTECTED FEED,PDU_LLEG_POS
+W5008,05_robot_five_branch_distribution.kicad_sch,JLLEG,1,PDU 0 V,PDU_COMMON_RET
+W5009,05_robot_five_branch_distribution.kicad_sch,JLLEG,2,PDU +12 V INPUT,PDU_LLEG_POS
+W5010,05_robot_five_branch_distribution.kicad_sch,FB2,IN,COMMON DISTRIBUTION INPUT,ROBOT_FUSED_POS
+W5011,05_robot_five_branch_distribution.kicad_sch,FB2,OUT,RLEG PROTECTED FEED,PDU_RLEG_POS
+W5012,05_robot_five_branch_distribution.kicad_sch,JRLEG,1,PDU 0 V,PDU_COMMON_RET
+W5013,05_robot_five_branch_distribution.kicad_sch,JRLEG,2,PDU +12 V INPUT,PDU_RLEG_POS
+W5014,05_robot_five_branch_distribution.kicad_sch,FB3,IN,COMMON DISTRIBUTION INPUT,ROBOT_FUSED_POS
+W5015,05_robot_five_branch_distribution.kicad_sch,FB3,OUT,ARMS PROTECTED FEED,PDU_ARMS_POS
+W5016,05_robot_five_branch_distribution.kicad_sch,JARMS,1,PDU 0 V,PDU_COMMON_RET
+W5017,05_robot_five_branch_distribution.kicad_sch,JARMS,2,PDU +12 V INPUT,PDU_ARMS_POS
+W5018,05_robot_five_branch_distribution.kicad_sch,FB4,IN,COMMON DISTRIBUTION INPUT,ROBOT_FUSED_POS
+W5019,05_robot_five_branch_distribution.kicad_sch,FB4,OUT,DISTAL PROTECTED FEED,PDU_DISTAL_POS
+W5020,05_robot_five_branch_distribution.kicad_sch,JDISTAL,1,PDU 0 V,PDU_COMMON_RET
+W5021,05_robot_five_branch_distribution.kicad_sch,JDISTAL,2,PDU +12 V INPUT,PDU_DISTAL_POS
+W5022,05_robot_five_branch_distribution.kicad_sch,FB5,IN,COMMON DISTRIBUTION INPUT,ROBOT_FUSED_POS
+W5023,05_robot_five_branch_distribution.kicad_sch,FB5,OUT,CORE PROTECTED FEED,PDU_CORE_POS
+W5024,05_robot_five_branch_distribution.kicad_sch,JCORE,1,PDU 0 V,PDU_COMMON_RET
+W5025,05_robot_five_branch_distribution.kicad_sch,JCORE,2,PDU +12 V INPUT,PDU_CORE_POS
+W6001,06_telemetry_interlocks_commissioning.kicad_sch,MCU1,PERMIT,HARDWIRED PERMIT INPUT,MOTION_PERMIT_INPUT
+W6002,06_telemetry_interlocks_commissioning.kicad_sch,MON1,SR,PNOZ AUX STATUS,PNOZ_AUX_STATUS
+W6003,06_telemetry_interlocks_commissioning.kicad_sch,MON1,Y32,PNOZ SEMICONDUCTOR STATUS,PNOZ_Y32_STATUS

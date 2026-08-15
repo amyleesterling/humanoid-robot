@@ -1,0 +1,4 @@
+connector,housing,project_cavity,function,contact_candidate,manufacturer_assignment,project_polarity_marking,physical_validation
+XT1A/XT1B,SBS75GBLK,P1,controlled +12 V,1339G2 for 6 AWG,power position,REQUIRED,NOT EXECUTED
+XT1A/XT1B,SBS75GBLK,G center,pre-mate frame/shield reference,1340G1 for 6 AWG,pre-mate ground position,REQUIRED,NOT EXECUTED
+XT1A/XT1B,SBS75GBLK,P2,controlled DC return,1339G2 for 6 AWG,power position,REQUIRED,NOT EXECUTED
