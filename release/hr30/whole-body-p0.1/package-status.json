@@ -267,5 +267,8 @@
   "robot_pdu_feed_count": 5,
   "robot_main_fuse_value_selected": false,
   "robot_branch_fuse_values_selected": false,
-  "tether_power_core_energization_authority": false
+  "tether_power_core_energization_authority": false,
+  "physical_harness_route_cad_solids": 62,
+  "physical_harness_route_step_present": true,
+  "physical_harness_route_glb_present": true
 }

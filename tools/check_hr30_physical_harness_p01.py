@@ -9,6 +9,8 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
+import cadquery as cq
+
 
 ROOT = Path(__file__).resolve().parents[1]
 WB = ROOT / "hr30" / "whole-body-p0.1"
@@ -36,6 +38,7 @@ def main() -> int:
     axes = rows("axis-harness-binding.csv")
     routes = rows("route-segment-register.csv")
     points = rows("route-point-register.csv")
+    route_cad = rows("route-cad-register.csv")
     loops = rows("service-loop-register.csv")
     power = rows("actuator-power-drop-register.csv")
     links = rows("bus-physical-link-register.csv")
@@ -59,6 +62,9 @@ def main() -> int:
     require(len(axes) == len(loops) == len(power) == len(links) == len(chains) == len(power_pairs) == len(data_links) == len(retain) == len(derating) == 25, "25-axis register spine incomplete")
     require(len(connectors) == 107, "42 actuator/data plus 65 physical PDU connector instances required")
     require(len(routes) == 62 and len(points) == 124, "route geometry count drift")
+    require(len(route_cad) == 62 and {r["segment_id"] for r in route_cad} == {r["segment_id"] for r in routes}, "whole-body route CAD register does not cover all 62 segments")
+    require(len({r["solid_name"] for r in route_cad}) == 62, "route CAD solid names are not unique")
+    require(all(r["geometry_interpretation"].startswith("REFERENCE CENTERLINE ROD ONLY") and r["authority"].startswith("NO PROCUREMENT") for r in route_cad), "route CAD overclaims cable sizing or authority")
     require(Counter(r["segment_kind"] for r in routes) == {"MOVING JOINT LOOP": 50, "FIXED BODY CORRIDOR": 12}, "fixed/moving route split drift")
     require(len(assemblies) == 14 and len(terminations) == len(shields) == 8, "assembly/bus completeness drift")
     with (WB / "electrical/kicad/hr30-whole-body-electrical-p0.1/connector-schedule.csv").open(encoding="utf-8-sig", newline="") as handle:
@@ -125,6 +131,8 @@ def main() -> int:
     false_gates = ["standard_dynamixel_cable_direct_use_approved", "assembled_cables_selected", "conductor_sizing_released", "protection_released", "connector_set_released", "harness_validated", "procurement_authority", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]
     require(all(status[k] is False for k in false_gates), "authority/selection gate overclaimed")
     require(status["total_route_segments"] == 62 and status["logical_terminals"] == len(ecad_terminals), "status count drift")
+    require(status["route_cad_solid_count"] == 62 and status["whole_body_route_step_present"] is True and status["whole_body_route_glb_present"] is True, "whole-body route CAD status missing")
+    require(status["route_cad_is_cable_size_release"] is False, "route centerline CAD incorrectly releases cable sizing")
     require(status["split_harness_candidate_defined"] is True and status["data_star_topology_rejected"] is True and status["serial_data_predecessor_successor_chain_complete"] is True, "split-harness status missing")
     require(status["actuator_connector_instances"] == 107 and status["actuator_connector_contacts"] == 319 and status["serial_data_links"] == status["individual_power_pairs"] == 25, "split-harness/PDU status counts drift")
 
@@ -153,6 +161,14 @@ def main() -> int:
     diagrams = sorted((OUT / "bus-diagrams").glob("*.svg"))
     require(len(diagrams) == 8 and all("Outgoing pins 1/2 EMPTY" in path.read_text(encoding="utf-8") for path in diagrams), "eight serial bus assembly drawings missing")
     require("Eight serial data-chain assembly drawings" in page and "actuator-chain-contact-map.csv" in page, "interactive split-harness guide missing")
+    require("HR30_whole_body_harness_centerlines_candidate.glb" in page and "route-cad-register.csv" in page and "model-viewer.min.js" in page, "interactive 3D route model missing from web guide")
+    step_path = OUT / "HR30_whole_body_harness_centerlines_candidate.step"
+    glb_path = OUT / "HR30_whole_body_harness_centerlines_candidate.glb"
+    require(step_path.stat().st_size > 100_000 and glb_path.stat().st_size > 25_000, "whole-body route STEP/GLB exports are missing or empty")
+    step_shape = cq.importers.importStep(str(step_path))
+    box = step_shape.val().BoundingBox()
+    require(len(step_shape.solids().vals()) >= 73, "route STEP does not contain 62 routes plus recognizable body context")
+    require(abs(box.zmin) < 1e-6 and abs(box.zmax - 762.0) < 1e-6, "route STEP does not preserve the complete 762 mm body datum")
     require(not list(OUT.rglob("*.pdf")), "physical harness package must remain web/register native")
 
     whole_readme = (WB / "README.md").read_text(encoding="utf-8")
