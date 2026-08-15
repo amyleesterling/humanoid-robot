@@ -1,0 +1,26 @@
+ERC report (2026-08-15T03:07:59, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+
+***** Sheet /01 PDU input, logic and six branch outputs/
+
+***** Sheet /02 Branch channel 1/
+
+***** Sheet /03 Branch channel 2/
+
+***** Sheet /04 Branch channel 3/
+
+***** Sheet /05 Branch channel 4/
+
+***** Sheet /06 Branch channel 5/
+
+***** Sheet /07 Branch channel 6/
+
+ ** ERC messages: 0  Errors 0  Warnings 0
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

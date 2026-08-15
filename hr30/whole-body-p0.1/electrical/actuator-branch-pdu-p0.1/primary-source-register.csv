@@ -1,0 +1,7 @@
+source_id,manufacturer,document,revision_or_date,url,verified_use
+TI-TPS25947,Texas Instruments,TPS25947 datasheet,SLVSFC9C Rev C; revised May 2026,https://www.ti.com/lit/ds/symlink/tps25947.pdf,"pinout, order code, circuit-breaker/latch-off behavior, equations and layout"
+TI-PRODUCT,Texas Instruments,TPS25947 product page,active; accessed 2026-08-15,https://www.ti.com/product/TPS25947,"2.7-23 V, 0.5-6 A, +/-10% ILIM above 1 A, reverse blocking"
+JST-VH,JST,VH connector catalog,live catalog accessed 2026-08-15,https://www.jst-mfg.com/product/pdf/eng/eVH.pdf,"B2P-VH header, VHR-2N housing, SVH contact families"
+JST-GH,JST,GH connector catalog,live catalog accessed 2026-08-15,https://www.jst-mfg.com/product/pdf/eng/eGH.pdf,BM14B-GHS-TBT logic header candidate
+PHOENIX-MKDS5,Phoenix Contact,MKDS 5/2-9.5 product page,order 1714971; accessed 2026-08-15,https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971,32 A input terminal candidate; exact vendor footprint still open
+ROBOTIS-DXL,ROBOTIS,DYNAMIXEL model reference,live official docs accessed 2026-08-15,https://docs.robotis.com/docs/dxl/model_reference/,"actuator families, voltage and published momentary stall endpoints"

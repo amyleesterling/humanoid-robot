@@ -96,3 +96,8 @@ The [installed drivetrain guide](leg-drivetrain-installation-p0.1/index.html) re
 
 The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 54 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
 <!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+<!-- HR30-PDU-P01-START -->
+## Twenty-five physical actuator branch slots
+
+Five instances of one editable six-channel native KiCad PDU candidate allocate all 25 axes and retain five assembly-DNP spares. The eight-sheet schematic validates at ERC 0/0; the native PCB freezes placement while high-current routing and DRC acceptance remain openly held. Each populated channel uses a TPS259474L circuit-breaker/latch-off eFuse with an axis-bound RILM variant, individual output pair, open-drain disable input and power-good output. This is a restrained commissioning architecture only: the device blocks reverse current, so regeneration/clamp, connector temperature, dynamic torque, copper/thermal validation and every powered-work authority remain open. Open `electrical/actuator-branch-pdu-p0.1/index.html`.
+<!-- HR30-PDU-P01-END -->

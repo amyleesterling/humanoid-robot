@@ -239,5 +239,18 @@
   "leg_drivetrain_adapter_capacity_validated": false,
   "leg_drivetrain_adapter_physical_fit_validated": false,
   "installed_leg_drivetrain_adapter_material_fit_fasteners_released": false,
-  "installed_leg_drivetrain_adapter_physical_fit_validated": false
+  "installed_leg_drivetrain_adapter_physical_fit_validated": false,
+  "actuator_branch_pdu_native_schematic_present": true,
+  "actuator_branch_pdu_schematic_sheet_count": 8,
+  "actuator_branch_pdu_board_pattern_count": 1,
+  "actuator_branch_pdu_board_instance_count": 5,
+  "actuator_branch_pdu_allocated_channel_count": 25,
+  "actuator_branch_pdu_dnp_spare_count": 5,
+  "actuator_branch_pdu_erc_errors": 0,
+  "actuator_branch_pdu_erc_warnings": 0,
+  "actuator_branch_pdu_placement_complete": true,
+  "actuator_branch_pdu_routing_complete": false,
+  "actuator_branch_pdu_drc_accepted": false,
+  "actuator_branch_pdu_walking_power_architecture_complete": false,
+  "actuator_branch_pdu_energization_authority": false
 }

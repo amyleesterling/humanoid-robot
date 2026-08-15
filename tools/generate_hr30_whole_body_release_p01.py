@@ -33,6 +33,7 @@ PIPELINE = (
     "generate_hr30_joint_family_cad_p01.py",
     "generate_hr30_manufacturing_files_p01.py",
     "generate_hr30_actuator_interface_carriers_p01.py",
+    "generate_hr30_actuator_branch_pdu_p01.py",
     "generate_hr30_energy_safety_spine_p01.py",
     "generate_hr30_whole_body_harness_p01.py",
     "generate_hr30_physical_harness_p01.py",
@@ -58,7 +59,10 @@ def main() -> int:
         script = TOOLS / script_name
         if not script.is_file():
             raise FileNotFoundError(script)
-        interpreter = KICAD_PYTHON if script_name == "generate_hr30_actuator_interface_carriers_p01.py" else Path(sys.executable)
+        interpreter = KICAD_PYTHON if script_name in {
+            "generate_hr30_actuator_interface_carriers_p01.py",
+            "generate_hr30_actuator_branch_pdu_p01.py",
+        } else Path(sys.executable)
         if not interpreter.is_file():
             raise FileNotFoundError(interpreter)
         print(f"[{number:02d}/{len(PIPELINE):02d}] {script_name}", flush=True)
