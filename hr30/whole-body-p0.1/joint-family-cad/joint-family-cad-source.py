@@ -37,7 +37,7 @@ FAMILY_AXIS = {
     "JMF-06-LEG-DIRECT": "L_HIP_YAW",
     "JMF-07-LEG-REDUCED-15": "L_HIP_PITCH",
     "JMF-08-LEG-REDUCED-20": "L_HIP_ROLL",
-    "JMF-09-KNEE-REDUCED-20": "L_KNEE_PITCH",
+    "JMF-09-KNEE-REDUCED-25": "L_KNEE_PITCH",
     "JMF-10-ANKLE-PITCH-REDUCED-25": "L_ANKLE_PITCH",
 }
 FAMILY_AXIS_COUNT = {
@@ -49,7 +49,7 @@ FAMILY_AXIS_COUNT = {
     "JMF-06-LEG-DIRECT": 2,
     "JMF-07-LEG-REDUCED-15": 2,
     "JMF-08-LEG-REDUCED-20": 4,
-    "JMF-09-KNEE-REDUCED-20": 2,
+    "JMF-09-KNEE-REDUCED-25": 2,
     "JMF-10-ANKLE-PITCH-REDUCED-25": 2,
 }
 COLORS = {
@@ -301,7 +301,7 @@ def main() -> int:
     vendor_shapes: dict[str, cq.Shape] = {}
     for source_id, source in body.VENDOR_ACTUATOR_SOURCES.items():
         path = Path(source["path"])
-        if sha256(path).upper() != source["expected_sha256"].upper():
+        if body.vendor_identity_sha256(path).upper() != source["expected_sha256"].upper():
             raise RuntimeError(f"vendor source hash drift: {source_id}")
         vendor_shapes[source_id] = cq.importers.importStep(str(path)).val()
 

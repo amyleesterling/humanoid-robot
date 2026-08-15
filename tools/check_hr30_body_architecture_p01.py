@@ -22,6 +22,13 @@ def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def vendor_identity_sha(path: Path) -> str:
+    data = path.read_bytes()
+    if path.suffix.lower() in {".stp", ".step"} and b"\r\n" not in data:
+        data = data.replace(b"\n", b"\r\n")
+    return hashlib.sha256(data).hexdigest()
+
+
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise SystemExit(f"FAIL: {message}")
@@ -101,7 +108,7 @@ def main() -> int:
     require(len(shoulder_roll_rows) == 2 and all("XM430-W350-R" in r["candidate_actuator"] for r in shoulder_roll_rows), "shoulder-roll XM430 allocation drift")
     require(len(wrist_rows) == 2 and all("XC330-T288-T" in r["candidate_actuator"] for r in wrist_rows), "wrist XC330 allocation drift")
     require(len(ankle_rows) == 4 and all("XM430-W350-R" in r["candidate_actuator"] for r in ankle_rows), "reduced ankle XM430 allocation drift")
-    require(len(knee_rows) == 2 and all("2.0:1" in r["candidate_transmission"] for r in knee_rows), "2.0:1 knee allocation drift")
+    require(len(knee_rows) == 2 and all("2.5:1" in r["candidate_transmission"] for r in knee_rows), "2.5:1 knee allocation drift")
     module_families = list(csv.DictReader((SRC / "joint-module-family-schedule.csv").open(encoding="utf-8")))
     module_bindings = list(csv.DictReader((SRC / "joint-module-axis-binding.csv").open(encoding="utf-8")))
     require(len(module_families) == 10 and len({r["family_id"] for r in module_families}) == 10, "joint-module family identity/count mismatch")
@@ -111,7 +118,7 @@ def main() -> int:
         "JMF-01-COMPACT": 1, "JMF-02-GRIPPER": 1, "JMF-03-SHOULDER-GIMBAL": 2,
         "JMF-04-MEDIUM": 1, "JMF-05-WAIST": 1, "JMF-06-LEG-DIRECT": 1,
         "JMF-07-LEG-REDUCED-15": 2, "JMF-08-LEG-REDUCED-20": 2,
-        "JMF-09-KNEE-REDUCED-20": 2, "JMF-10-ANKLE-PITCH-REDUCED-25": 2,
+        "JMF-09-KNEE-REDUCED-25": 2, "JMF-10-ANKLE-PITCH-REDUCED-25": 2,
     }, "direct versus remote-output external-bearing architecture drift")
     require(len(module_bindings) == 25 and {r["axis_id"] for r in module_bindings} == {r["axis_id"] for r in axes}, "joint-module binding does not cover every axis")
     require({r["family_id"] for r in module_bindings} == {r["family_id"] for r in module_families}, "joint-module family/binding mismatch")
@@ -131,7 +138,9 @@ def main() -> int:
     }
     require({r["source_id"]: r["sha256"] for r in vendor_sources} == expected_vendor_hashes, "vendor actuator source identity/hash mismatch")
     for row in vendor_sources:
-        require(sha(ROOT / row["repository_path"]).upper() == row["sha256"], f"vendor actuator source bytes drifted: {row['source_id']}")
+        path = ROOT / row["repository_path"]
+        require(vendor_identity_sha(path).upper() == row["sha256"], f"vendor actuator source identity drifted: {row['source_id']}")
+        require(sha(path).upper() == row["checkout_sha256"] and "NORMALIZED TO CRLF" in row["identity_hash_policy"], f"vendor checkout provenance missing: {row['source_id']}")
     require(len(vendor_transforms) == 25 and {r["axis_id"] for r in vendor_transforms} == {r["axis_id"] for r in axes}, "vendor actuator transform register does not cover every axis")
     axis_by_id = {row["axis_id"]: row for row in axes}
     for row in vendor_transforms:

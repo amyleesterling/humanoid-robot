@@ -1,0 +1,23 @@
+{
+  "identifier": "HR30-CURRENT-CONSTRAINED-ACTUATION-P0.1",
+  "axis_count": 25,
+  "bus_count": 8,
+  "model_family_count": 4,
+  "nonzero_static_screen_pass_count": 19,
+  "static_screen_not_applicable_count": 6,
+  "simultaneous_candidate_cap_sum_a": 47.67847,
+  "knee_ratio": 2.5,
+  "knee_ratio_changed_from": 2.0,
+  "old_knee_required_endpoint_current_a": 3.066,
+  "published_stall_used_as_continuous_rating": false,
+  "external_current_validated": false,
+  "connector_thermal_validated": false,
+  "branch_protection_released": false,
+  "continuous_torque_validated": false,
+  "current_policy_released": false,
+  "connection_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false,
+  "warning": "PRELIMINARY - CURRENT/TORQUE ARCHITECTURE CANDIDATE ONLY - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

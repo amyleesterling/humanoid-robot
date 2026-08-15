@@ -7,27 +7,27 @@
   "located_joint_fastener_count": 156,
   "transmission_belt_count": 10,
   "installed_equipment_item_count": 58,
-  "minimum_identified_candidate_mass_kg": 10.828820437,
-  "planning_identified_candidate_mass_kg": 11.551697809,
-  "maximum_identified_candidate_mass_kg": 12.469150164,
+  "minimum_identified_candidate_mass_kg": 10.823094297,
+  "planning_identified_candidate_mass_kg": 11.545971669,
+  "maximum_identified_candidate_mass_kg": 12.463424024,
   "fabrication_cad_density_screen_kg": 2.303261744,
   "actuator_published_mass_planning_kg": 2.609,
-  "joint_hardware_gross_density_screen_kg": 2.476937108,
+  "joint_hardware_gross_density_screen_kg": 2.471210968,
   "located_joint_fastener_planning_mass_kg": 0.554224112,
   "transmission_belt_published_mass_kg": 0.148,
   "installed_equipment_harness_planning_mass_kg": 3.460274845,
   "prior_allocation_mass_kg": 9.63,
-  "reconciled_dynamics_planning_mass_kg": 11.936040351,
+  "reconciled_dynamics_planning_mass_kg": 11.930314211,
   "reconciled_dynamics_neutral_com_m": [
-    -0.000755231,
-    0.011742783,
-    0.368581047
+    -0.000755593,
+    0.011748419,
+    0.368677264
   ],
   "program_maximum_mass_kg": 12.0,
   "program_lightweight_stretch_kg": 10.0,
-  "planning_margin_to_program_maximum_kg": 0.063959649,
-  "planning_margin_to_lightweight_stretch_kg": -1.936040351,
-  "integration_contingency_before_fastener_allocation_kg": 0.879797896,
+  "planning_margin_to_program_maximum_kg": 0.069685789,
+  "planning_margin_to_lightweight_stretch_kg": -1.930314211,
+  "integration_contingency_before_fastener_allocation_kg": 0.879339806,
   "remaining_integration_contingency_kg": 0.384342542,
   "program_mass_target_status": "WITHIN P0.1 MAXIMUM; PHYSICAL MASS CLOSURE OPEN",
   "unmodeled_or_unselected": [
@@ -46,26 +46,26 @@
   },
   "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION",
   "reconciled_box_model_inertia_kg_m2": [
-    0.396288163,
-    0.448484029,
-    0.076209574
+    0.396163607,
+    0.448338043,
+    0.076181056
   ],
   "active_development_configuration": "HR30-TETHER-FIRST-P0.1",
-  "active_tether_dynamics_planning_mass_kg": 10.470480351,
+  "active_tether_dynamics_planning_mass_kg": 10.464754211,
   "active_tether_neutral_com_m": [
-    -0.000860941,
-    0.003368549,
-    0.346194495
+    -0.000861412,
+    0.003370392,
+    0.346291937
   ],
-  "active_tether_margin_to_program_maximum_kg": 1.529519649,
+  "active_tether_margin_to_program_maximum_kg": 1.535245789,
   "excluded_onboard_envelope_identified_mass_kg": 1.357,
   "onboard_envelope_configuration": "HR30-ONBOARD-ENVELOPE-P0.1",
-  "onboard_envelope_dynamics_planning_mass_kg": 11.936040351,
+  "onboard_envelope_dynamics_planning_mass_kg": 11.930314211,
   "onboard_envelope_neutral_com_m": [
-    -0.000755231,
-    0.011742783,
-    0.368581047
+    -0.000755593,
+    0.011748419,
+    0.368677264
   ],
-  "onboard_envelope_margin_to_program_maximum_kg": 0.063959649,
+  "onboard_envelope_margin_to_program_maximum_kg": 0.069685789,
   "configuration_mass_separation_present": true
 }

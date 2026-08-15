@@ -235,7 +235,7 @@ def build_hand_parts(travel_each_mm: float) -> list[Part]:
     negative_rack_center = negative_center + 16.0
 
     actuator_path = Path(body.VENDOR_ACTUATOR_SOURCES["ROBOTIS-XC330"]["path"])
-    if sha256(actuator_path).upper() != body.VENDOR_ACTUATOR_SOURCES["ROBOTIS-XC330"]["expected_sha256"].upper():
+    if body.vendor_identity_sha256(actuator_path).upper() != body.VENDOR_ACTUATOR_SOURCES["ROBOTIS-XC330"]["expected_sha256"].upper():
         raise RuntimeError("XC330 source geometry hash drift")
     actuator_native = cq.importers.importStep(str(actuator_path)).val()
     actuator, _basis = body.vendor_actuator_to_axis(actuator_native, (0.0, 10.0, 0.0), (0, 1, 0))
