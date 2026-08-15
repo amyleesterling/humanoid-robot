@@ -1,0 +1,22 @@
+{
+  "identifier": "HR30-JOINT-HARDWARE-SUCCESSOR-RECONCILIATION-P0.1",
+  "predecessor_count": 39,
+  "predecessor_authoritative_count": 0,
+  "predecessor_superseded_count": 39,
+  "unmapped_predecessor_count": 0,
+  "successor_candidate_binding_count": 39,
+  "catalogue_product_candidate_positions": 28,
+  "editable_custom_direct_adapter_axes": 9,
+  "editable_detailed_hand_mechanisms": 2,
+  "successor_validation_open_count": 39,
+  "procurement_selection_count": 0,
+  "fabrication_release_count": 0,
+  "complete_joint_hardware_manufacturing_definition": false,
+  "procurement_authority": false,
+  "fabrication_authority": false,
+  "assembly_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false,
+  "warning": "PRELIMINARY - JOINT-HARDWARE SUCCESSOR CANDIDATES ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

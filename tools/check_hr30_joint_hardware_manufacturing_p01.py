@@ -102,7 +102,13 @@ def main() -> int:
         "local_refinement_svg_count": 64,
         "interface_plate_dxf_count": 39,
         "catalogue_bearing_reference_count": 39,
-        "redesign_required_count": 39,
+        "redesign_required_count": 0,
+        "predecessor_superseded_count": 39,
+        "unmapped_predecessor_count": 0,
+        "successor_candidate_binding_count": 39,
+        "successor_validation_open_count": 39,
+        "successor_procurement_selection_count": 0,
+        "successor_fabrication_release_count": 0,
     }
     for key, expected in expected_counts.items():
         if status.get(key) != expected:
@@ -208,7 +214,7 @@ def main() -> int:
     page = (OUT / "index.html").read_text(encoding="utf-8")
     for token in (
         "142 / 142", "shaft and carrier refinement STEP/SVG files",
-        "catalogue bearing references", "pulley and coupler definitions blocked for redesign",
+        "catalogue bearing references", "successor reconciliation",
     ):
         if token not in page:
             fail(f"interactive page missing {token!r}")
@@ -231,7 +237,10 @@ def main() -> int:
         if parent_status.get(key) is not False:
             fail(f"unsafe parent status: {key}")
 
-    print("PASS: 142 actual-axis items classified; 64 STEP/SVG and 39 DXF files reimported/hash-bound; 39 catalogue and 39 redesign items withheld; no authority")
+    legacy = [row for row in register if row["part_type"] in {"MOTOR_PULLEY_ENVELOPE", "OUTPUT_PULLEY_ENVELOPE", "ACTUATOR_OUTPUT_COUPLER_PLACEHOLDER", "SYMMETRIC_DRIVE_COUPLER_PLACEHOLDER"}]
+    if len(legacy) != 39 or any("SUPERSEDED PREDECESSOR" not in row["disposition"] for row in legacy):
+        fail("39 predecessor rows are not reconciled to successors")
+    print("PASS: 142 actual-axis items classified; 64 STEP/SVG and 39 DXF files reimported/hash-bound; 39 catalogue bearings withheld and 39 legacy transmission envelopes superseded; no authority")
     return 0
 
 
