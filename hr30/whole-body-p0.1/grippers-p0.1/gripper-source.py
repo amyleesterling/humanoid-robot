@@ -42,6 +42,12 @@ PAD_THICKNESS_MM = 3.0
 PINION_PITCH_RADIUS_MM = 5.0
 PINION_MODULE_MM = 0.5
 PINION_TEETH = 20
+GEAR_PRESSURE_ANGLE_DEG = 20.0
+GEAR_FACE_WIDTH_MM = 6.0
+GEAR_ADDENDUM_MM = PINION_MODULE_MM
+GEAR_DEDENDUM_MM = 1.25 * PINION_MODULE_MM
+GEAR_TOTAL_TANGENTIAL_BACKLASH_MM = 0.08
+GEAR_PROFILE_SAMPLES_PER_FLANK = 12
 GUIDE_ROD_DIAMETER_MM = 4.0
 GUIDE_ROD_LENGTH_MM = 64.0
 
@@ -118,35 +124,84 @@ def guide_rod(y: float) -> cq.Shape:
     return body.cylinder_between((0.0, y, -8.0), (1, 0, 0), GUIDE_ROD_LENGTH_MM, GUIDE_ROD_DIAMETER_MM)
 
 
-def spur_pinion() -> cq.Shape:
-    root_radius = PINION_PITCH_RADIUS_MM - 0.55
-    tip_radius = PINION_PITCH_RADIUS_MM + PINION_MODULE_MM
-    gear = body.cylinder_between((0.0, 0.0, 0.0), (0, 1, 0), 6.0, root_radius * 2.0)
-    tooth_tangent = math.pi * PINION_MODULE_MM * 0.52
-    tooth_radial = tip_radius - root_radius
+def involute_function(angle_rad: float) -> float:
+    return math.tan(angle_rad) - angle_rad
+
+
+def involute_tooth() -> cq.Shape:
+    """One project-owned 20-degree involute tooth, centred on local +Z."""
+    pressure_angle = math.radians(GEAR_PRESSURE_ANGLE_DEG)
+    pitch_radius = PINION_PITCH_RADIUS_MM
+    base_radius = pitch_radius * math.cos(pressure_angle)
+    root_radius = pitch_radius - GEAR_DEDENDUM_MM
+    tip_radius = pitch_radius + GEAR_ADDENDUM_MM
+    pinion_pitch_thickness = math.pi * PINION_MODULE_MM / 2.0 - GEAR_TOTAL_TANGENTIAL_BACKLASH_MM / 2.0
+    half_pitch_angle = pinion_pitch_thickness / (2.0 * pitch_radius)
+    pitch_involute = involute_function(pressure_angle)
+
+    flank: list[tuple[float, float]] = []
+    for index in range(GEAR_PROFILE_SAMPLES_PER_FLANK):
+        ratio = index / (GEAR_PROFILE_SAMPLES_PER_FLANK - 1)
+        radius = base_radius + ratio * (tip_radius - base_radius)
+        alpha = math.acos(base_radius / radius)
+        theta = half_pitch_angle + pitch_involute - involute_function(alpha)
+        flank.append((radius * math.sin(theta), radius * math.cos(theta)))
+
+    root_theta = math.atan2(flank[0][0], flank[0][1])
+    left = [(-x, z) for x, z in flank]
+    right = list(reversed(flank))
+    polygon = [
+        (-root_radius * math.sin(root_theta), root_radius * math.cos(root_theta)),
+        *left,
+        *right,
+        (root_radius * math.sin(root_theta), root_radius * math.cos(root_theta)),
+    ]
+    return cq.Workplane("XZ").polyline(polygon).close().extrude(GEAR_FACE_WIDTH_MM / 2.0, both=True).val()
+
+
+def spur_pinion(travel_each_mm: float = 0.0) -> cq.Shape:
+    root_radius = PINION_PITCH_RADIUS_MM - GEAR_DEDENDUM_MM
+    gear = body.cylinder_between((0.0, 0.0, 0.0), (0, 1, 0), GEAR_FACE_WIDTH_MM, root_radius * 2.0)
+    tooth = involute_tooth()
     for index in range(PINION_TEETH):
-        tooth = rounded_box(
-            tooth_tangent,
-            6.0,
-            tooth_radial,
-            (0.0, 0.0, root_radius + tooth_radial / 2.0),
-            0.12,
-        ).rotate((0, 0, 0), (0, 1, 0), index * 360.0 / PINION_TEETH)
-        gear = gear.fuse(tooth)
-    bore = body.cylinder_between((0.0, 0.0, 0.0), (0, 1, 0), 8.0, 3.2)
-    return gear.cut(bore).clean()
+        gear = gear.fuse(tooth.rotate((0, 0, 0), (0, 1, 0), index * 360.0 / PINION_TEETH))
+    bore = body.cylinder_between((0.0, 0.0, 0.0), (0, 1, 0), GEAR_FACE_WIDTH_MM + 2.0, 3.2)
+    rotation_deg = math.degrees(travel_each_mm / PINION_PITCH_RADIUS_MM)
+    return gear.cut(bore).clean().rotate((0, 0, 0), (0, 1, 0), rotation_deg)
 
 
 def rack_shape(rack_center_x: float, upper: bool) -> cq.Shape:
     direction = 1.0 if upper else -1.0
-    base_z = direction * 6.0
-    rack = rounded_box(32.0, 6.0, 3.5, (rack_center_x, 0.0, base_z), 0.45)
     pitch = math.pi * PINION_MODULE_MM
-    tooth_count = 19
-    first = rack_center_x - pitch * (tooth_count - 1) / 2.0
-    tooth_z = direction * 3.75
-    for index in range(tooth_count):
-        tooth = rounded_box(0.78, 6.0, 1.3, (first + index * pitch, 0.0, tooth_z), 0.10)
+    pitch_line_z = direction * PINION_PITCH_RADIUS_MM
+    root_z = pitch_line_z + direction * GEAR_DEDENDUM_MM
+    body_center_z = direction * 6.6875
+    rack = rounded_box(32.0, GEAR_FACE_WIDTH_MM, 2.125, (rack_center_x, 0.0, body_center_z), 0.35)
+
+    rack_pitch_thickness = math.pi * PINION_MODULE_MM / 2.0 - GEAR_TOTAL_TANGENTIAL_BACKLASH_MM / 2.0
+    slope = math.tan(math.radians(GEAR_PRESSURE_ANGLE_DEG))
+    tip_width = rack_pitch_thickness - 2.0 * GEAR_ADDENDUM_MM * slope
+    root_width = rack_pitch_thickness + 2.0 * GEAR_DEDENDUM_MM * slope
+    if tip_width <= 0.0:
+        raise RuntimeError("rack tip width collapsed")
+    tip_z = pitch_line_z - direction * GEAR_ADDENDUM_MM
+    closed_center = -3.0 if upper else 3.0
+    travel_offset = rack_center_x - closed_center
+    phase = pitch / 2.0 + travel_offset
+    lower_x, upper_x = rack_center_x - 16.0, rack_center_x + 16.0
+    first_index = math.floor((lower_x - phase) / pitch) - 1
+    last_index = math.ceil((upper_x - phase) / pitch) + 1
+    for index in range(first_index, last_index + 1):
+        center_x = phase + index * pitch
+        if center_x + root_width / 2.0 < lower_x or center_x - root_width / 2.0 > upper_x:
+            continue
+        points = [
+            (center_x - root_width / 2.0, root_z),
+            (center_x - tip_width / 2.0, tip_z),
+            (center_x + tip_width / 2.0, tip_z),
+            (center_x + root_width / 2.0, root_z),
+        ]
+        tooth = cq.Workplane("XZ").polyline(points).close().extrude(GEAR_FACE_WIDTH_MM / 2.0, both=True).val()
         rack = rack.fuse(tooth)
     return rack.clean()
 
@@ -193,9 +248,9 @@ def build_hand_parts(travel_each_mm: float) -> list[Part]:
         ("WRIST_MOUNT_PLATE", "wrist interface plate", wrist_mount_plate(), "frame", "6061-T6 candidate", 2700.0, True, "four-hole JMF-01 wrist candidate; fit and fasteners open"),
         ("GUIDE_ROD_FRONT", "linear guide rod", guide_rod(-9.0), "guide", "hardened stainless 4 mm rod candidate", 7850.0, True, "straightness, finish, end retention and wear open"),
         ("GUIDE_ROD_REAR", "linear guide rod", guide_rod(9.0), "guide", "hardened stainless 4 mm rod candidate", 7850.0, True, "straightness, finish, end retention and wear open"),
-        ("PINION", "twenty-tooth symmetric-drive pinion", spur_pinion(), "rack", "POM or aluminum module-0.5 candidate", 1400.0, True, "candidate tooth geometry; backlash, strength and retention open"),
-        ("RACK_POSITIVE", "positive-jaw rack", rack_shape(positive_rack_center, True), "rack", "POM module-0.5 candidate", 1400.0, True, "paired rack; tooth form and wear proof open"),
-        ("RACK_NEGATIVE", "negative-jaw rack", rack_shape(negative_rack_center, False), "rack", "POM module-0.5 candidate", 1400.0, True, "paired rack; tooth form and wear proof open"),
+        ("PINION", "twenty-tooth symmetric-drive pinion", spur_pinion(travel_each_mm), "rack", "POM or aluminum module-0.5 candidate", 1400.0, True, "20-degree involute candidate; manufactured profile, strength and retention open"),
+        ("RACK_POSITIVE", "positive-jaw rack", rack_shape(positive_rack_center, True), "rack", "POM module-0.5 candidate", 1400.0, True, "matching 20-degree rack candidate; manufactured profile and wear proof open"),
+        ("RACK_NEGATIVE", "negative-jaw rack", rack_shape(negative_rack_center, False), "rack", "POM module-0.5 candidate", 1400.0, True, "matching 20-degree rack candidate; manufactured profile and wear proof open"),
         ("FINGER_POSITIVE", "broad sliding finger and carrier", finger_carrier(positive_center), "finger", "PA-CF or acetal candidate", 1200.0, True, "broad jaw; guide clearance and proof open"),
         ("FINGER_NEGATIVE", "broad sliding finger and carrier", finger_carrier(negative_center), "finger", "PA-CF or acetal candidate", 1200.0, True, "broad jaw; guide clearance and proof open"),
         ("PAD_POSITIVE", "replaceable compliant contact pad", pad_shape(positive_center), "pad", "silicone or PORON coupon selection required", 500.0, True, "force-stroke, wear, contamination and retention open"),
@@ -316,7 +371,7 @@ def export_unique_parts(parts: list[Part]) -> list[dict]:
 def render_index() -> str:
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 detailed hands P0.1</title><script type="module" src="../vendor/model-viewer.min.js"></script><style>
 :root{{--deep:#0b203a;--navy:#12345d;--sky:#77c9f2;--pale:#eff9fe;--gold:#f2b91d;--line:#b8d7e8;--ink:#15243b}}*{{box-sizing:border-box}}html,body{{max-width:100%;overflow-x:clip}}body{{margin:0;background:var(--pale);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header{{background:var(--deep);color:white;padding:34px max(20px,calc((100vw - 1220px)/2))}}h1{{font-size:clamp(36px,6vw,66px);line-height:1.04;margin:.25em 0}}h2{{font-size:clamp(28px,4vw,42px);color:var(--navy)}}h3{{font-size:22px;color:var(--navy)}}.warning{{background:var(--gold);color:#17243a;border:3px solid #8a5b00;padding:16px 18px;font-weight:900}}main{{max-width:1220px;margin:auto;padding:28px 20px 80px}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}}.card,.viewer,.panel{{background:white;border:2px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 3px 0 #c8e5f3}}.card,.panel{{padding:18px}}.metric{{font-size:34px;font-weight:900;color:var(--navy)}}model-viewer{{display:block;width:100%;height:clamp(540px,74vh,820px);background:radial-gradient(circle,#fff,var(--pale))}}.viewer p{{padding:0 20px 18px}}button{{font:800 16px/1 system-ui;padding:13px 18px;border:2px solid #075b9b;border-radius:999px;background:white;color:#075b9b;cursor:pointer}}button[aria-pressed="true"]{{background:var(--gold);color:#17243a;border-color:#8a5b00}}.controls{{display:flex;gap:10px;flex-wrap:wrap;padding:16px 20px}}a{{color:#075b9b;font-weight:800}}code{{font-size:15px}}footer{{background:var(--deep);color:white;padding:28px max(20px,calc((100vw - 1220px)/2))}}@media(max-width:560px){{body{{font-size:16px}}.grid{{grid-template-columns:1fr}}model-viewer{{height:560px}}}}
-</style></head><body><header><div class="warning">{WARNING}</div><h1>The robot now has mechanisms at the ends of both wrists.</h1><p>Each hand is an actual symmetric rack-and-pinion parallel gripper candidate with a supported palm frame, twin guide rods, broad sliding fingers, replaceable pads, hard stops, manual release access, and the exact XC330 packaging body.</p></header><main><section><h2>Open and close the complete-robot candidate</h2><div class="viewer"><div class="controls"><button id="closed" aria-pressed="true">Closed: 8 mm pad gap</button><button id="open" aria-pressed="false">Open: 34 mm pad gap</button></div><model-viewer id="hand-viewer" src="HR-30_detailed_hands_installed_closed_candidate.glb" poster="../front-elevation.svg" alt="Interactive complete HR-30 candidate with two detailed parallel grippers" camera-controls camera-orbit="30deg 76deg 100%" field-of-view="27deg" shadow-intensity="0.85" exposure="1.05"></model-viewer><p>The state buttons swap between two CAD-derived assemblies. They are geometry states, not commands or proof of movement.</p></div></section><section><h2>Mechanical definition</h2><div class="grid"><article class="card"><div class="metric">18 × 2</div><p>Visible candidate parts per hand, including the SHA-bound actuator body.</p></article><article class="card"><div class="metric">26 mm</div><p>Total coupled jaw stroke: 13 mm per finger.</p></article><article class="card"><div class="metric">8–34 mm</div><p>Candidate pad-to-pad opening range.</p></article><article class="card"><div class="metric">0.10 N·m</div><p>Geometric pinion-torque ceiling corresponding to 20 N total normal force; calibration remains mandatory.</p></article></div></section><section><h2>Files and remaining work</h2><div class="panel"><p><a href="G01/G01_detailed_gripper_closed_candidate.step">Left closed STEP</a> · <a href="G02/G02_detailed_gripper_closed_candidate.step">Right closed STEP</a> · <a href="gripper-part-register.csv">part register</a> · <a href="gripper-kinematic-state-register.csv">kinematic states</a> · <a href="gripper-force-screen.csv">force screen</a> · <a href="gripper-interface-register.csv">interfaces</a> · <a href="gripper-candidate-bom.csv">candidate BOM</a> · <a href="gripper-source.py">editable source</a>.</p><p>Exact material/process, rack tooth form, clearances, actuator mount/horn, force calibration, compliant-pad behavior, object detection, endurance, breakaway release, pinch probing, DFM, FAI and physical proof remain open.</p></div></section></main><footer>Project Button · HR-30 detailed bilateral grippers P0.1 · no procurement, fabrication, assembly, powered-test, motion or energization authority</footer><script>
+</style></head><body><header><div class="warning">{WARNING}</div><h1>The robot now has mechanisms at the ends of both wrists.</h1><p>Each hand is an actual symmetric rack-and-pinion parallel gripper candidate with a supported palm frame, twin guide rods, broad sliding fingers, replaceable pads, hard stops, manual release access, and the exact XC330 packaging body.</p></header><main><section><h2>Open and close the complete-robot candidate</h2><div class="viewer"><div class="controls"><button id="closed" aria-pressed="true">Closed: 8 mm pad gap</button><button id="open" aria-pressed="false">Open: 34 mm pad gap</button></div><model-viewer id="hand-viewer" src="HR-30_detailed_hands_installed_closed_candidate.glb" poster="../front-elevation.svg" alt="Interactive complete HR-30 candidate with two detailed parallel grippers" camera-controls camera-orbit="30deg 76deg 100%" field-of-view="27deg" shadow-intensity="0.85" exposure="1.05"></model-viewer><p>The OPEN state moves both racks and rotates the pinion by the matching pitch displacement. These are geometry states, not commands or proof of movement.</p></div></section><section><h2>Mechanical definition</h2><div class="grid"><article class="card"><div class="metric">20°</div><p>Project-owned involute pinion and matching rack pressure-angle candidate.</p></article><article class="card"><div class="metric">26 mm</div><p>Total coupled jaw stroke: 13 mm per finger.</p></article><article class="card"><div class="metric">8–34 mm</div><p>Candidate pad-to-pad opening range.</p></article><article class="card"><div class="metric">0.08 mm</div><p>Nominal total tangential backlash candidate; physical correlation remains open.</p></article></div></section><section><h2>Files and remaining work</h2><div class="panel"><p><a href="G01/G01_detailed_gripper_closed_candidate.step">Left closed STEP</a> · <a href="G02/G02_detailed_gripper_closed_candidate.step">Right closed STEP</a> · <a href="gripper-part-register.csv">part register</a> · <a href="gripper-kinematic-state-register.csv">kinematic states</a> · <a href="gripper-gear-geometry-register.csv">gear geometry</a> · <a href="gripper-mesh-state-register.csv">mesh states</a> · <a href="gripper-force-screen.csv">force screen</a> · <a href="gripper-interface-register.csv">interfaces</a> · <a href="gripper-candidate-bom.csv">candidate BOM</a> · <a href="gripper-source.py">editable source</a>.</p><p>Manufactured profile/tolerance, materials/processes, guide fit, exact horn adapter, calibration, compliant-pad behavior, object detection, endurance, breakaway release, pinch probing, DFM, FAI and physical proof remain open.</p></div></section></main><footer>Project Button · HR-30 detailed bilateral grippers P0.1 · no procurement, fabrication, assembly, powered-test, motion or energization authority</footer><script>
 const viewer=document.getElementById('hand-viewer');const closed=document.getElementById('closed');const open=document.getElementById('open');function setState(state){{const isOpen=state==='open';viewer.setAttribute('src',`HR-30_detailed_hands_installed_${{state}}_candidate.glb`);closed.setAttribute('aria-pressed',String(!isOpen));open.setAttribute('aria-pressed',String(isOpen));}}closed.addEventListener('click',()=>setState('closed'));open.addEventListener('click',()=>setState('open'));
 </script></body></html>'''
 
@@ -331,6 +386,8 @@ def update_root(part_rows: list[dict], closed_parts: list[Part]) -> None:
         "detailed_gripper_total_coupled_stroke_mm": 26.0,
         "detailed_gripper_closed_pad_gap_mm": 8.0,
         "detailed_gripper_open_pad_gap_mm": 34.0,
+        "detailed_gripper_involute_transmission_candidate_defined": True,
+        "detailed_gripper_nominal_tangential_backlash_mm": GEAR_TOTAL_TANGENTIAL_BACKLASH_MM,
         "detailed_gripper_mechanism_selected": False,
         "detailed_gripper_force_calibrated": False,
         "detailed_gripper_physical_validation_complete": False,
@@ -350,7 +407,7 @@ def update_root(part_rows: list[dict], closed_parts: list[Part]) -> None:
     addition = f'''{start}
 ## Detailed bilateral hand mechanisms
 
-The [detailed gripper package](grippers-p0.1/index.html) replaces the prior hand-envelope-only refinement path with two editable 18-part symmetric rack-and-pinion assemblies. Each contains a wrist interface, serviceable palm frame, twin linear guides, paired racks, common pinion, broad sliding fingers, replaceable compliant pads, hard stops, manual-release access, and the SHA-bound XC330 packaging body. CAD-derived CLOSED and OPEN states provide an 8–34 mm pad gap over 26 mm total coupled stroke. Exact tooth form, fits, materials, actuator mount, calibration, sensing, pinch proof, endurance, DFM/FAI and physical validation remain open.
+The [detailed gripper package](grippers-p0.1/index.html) contains two editable 18-part symmetric rack-and-pinion assemblies. Each now uses a project-owned 20-degree, module-0.5 involute pinion and matching racks with a 0.08 mm nominal total tangential-backlash candidate. The OPEN assembly rotates its pinion 148.969 degrees for the 13 mm rack displacement. CAD-derived states provide an 8–34 mm pad gap over 26 mm total coupled stroke. Manufactured profile tolerance, fits, materials, exact actuator-horn adapter, calibration, sensing, pinch proof, endurance, DFM/FAI and physical validation remain open.
 {end}
 '''
     marker = "<!-- HR30-ASSEMBLY-GUIDE-P01-START -->"
@@ -366,7 +423,7 @@ The [detailed gripper package](grippers-p0.1/index.html) replaces the prior hand
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
     marker = "<!-- HR30-ASSEMBLY-GUIDE-P01-START -->"
-    section = f'''{start}<section id="detailed-grippers"><h2>Both wrists now terminate in actual gripper mechanisms</h2><div class="grid"><article class="card pass"><div class="metric">18 × 2</div><p>Visible parts include palm frames, guides, racks, pinions, fingers, pads, stops and XC330 bodies.</p></article><article class="card pass"><div class="metric">8–34 mm</div><p>CAD-derived pad opening over 26 mm coupled travel.</p></article><article class="card pass"><h3>Two complete installed states</h3><p>Editable bilateral STEP and interactive GLB assemblies show CLOSED and OPEN geometry on the recognizable whole robot.</p></article><article class="card hold"><h3>Physical proof remains open</h3><p>Tooth form, fits, materials, force calibration, sensing, pinch tests, endurance, DFM and FAI are unresolved.</p></article></div><div class="viewer"><model-viewer src="grippers-p0.1/HR-30_detailed_hands_installed_open_candidate.glb" poster="front-elevation.svg" alt="Interactive complete HR-30 candidate with both detailed grippers open" camera-controls camera-orbit="30deg 76deg 100%" field-of-view="27deg" shadow-intensity="0.85" exposure="1.05"></model-viewer><p><a href="grippers-p0.1/index.html">Open the detailed hand guide</a> · <a href="grippers-p0.1/gripper-part-register.csv">part register</a> · <a href="grippers-p0.1/gripper-kinematic-state-register.csv">kinematic states</a>.</p></div></section>{end}'''
+    section = f'''{start}<section id="detailed-grippers"><h2>Both wrists now terminate in actual gripper mechanisms</h2><div class="grid"><article class="card pass"><div class="metric">20° involute</div><p>Module-0.5 pinion and matching rack geometry replace rectangular placeholder teeth.</p></article><article class="card pass"><div class="metric">8–34 mm</div><p>CAD-derived pad opening over 26 mm coupled travel.</p></article><article class="card pass"><h3>Coupled installed states</h3><p>The OPEN assembly moves both racks and rotates the pinion 148.969 degrees on the recognizable whole robot.</p></article><article class="card hold"><h3>Physical proof remains open</h3><p>Manufactured profile, fits, materials, horn adapter, calibration, pinch tests, endurance, DFM and FAI are unresolved.</p></article></div><div class="viewer"><model-viewer src="grippers-p0.1/HR-30_detailed_hands_installed_open_candidate.glb" poster="front-elevation.svg" alt="Interactive complete HR-30 candidate with both detailed grippers open" camera-controls camera-orbit="30deg 76deg 100%" field-of-view="27deg" shadow-intensity="0.85" exposure="1.05"></model-viewer><p><a href="grippers-p0.1/index.html">Open the detailed hand guide</a> · <a href="grippers-p0.1/gripper-gear-geometry-register.csv">gear geometry</a> · <a href="grippers-p0.1/gripper-mesh-state-register.csv">mesh states</a>.</p></div></section>{end}'''
     if marker not in page:
         raise RuntimeError("main page assembly-guide marker missing")
     page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")
@@ -375,13 +432,13 @@ The [detailed gripper package](grippers-p0.1/index.html) replaces the prior hand
 
 **{WARNING}**
 
-Each wrist now terminates in a visible and mechanically defined one-DOF symmetric two-finger gripper. The editable candidate uses a 50 x 58 x 40 mm serviceable palm frame, two 4 mm guide rods, two broad sliding finger/carriers, paired module-0.5 rack candidates, a 20-tooth 10 mm pitch-diameter pinion candidate, two replaceable 3 x 30 x 30 mm compliant pads, hard open stops, manual-release access, and one transversely mounted SHA-bound XC330 packaging body.
+Each wrist now terminates in a visible and mechanically defined one-DOF symmetric two-finger gripper. The editable candidate uses a 50 x 58 x 40 mm serviceable palm frame, two 4 mm guide rods, two broad sliding finger/carriers, paired module-0.5 20-degree racks, a 20-tooth 10 mm pitch-diameter involute pinion, 0.08 mm nominal total tangential backlash, two replaceable 3 x 30 x 30 mm compliant pads, hard open stops, manual-release access, and one transversely mounted SHA-bound XC330 packaging body.
 
 The CAD-derived coupled stroke is 26 mm: each jaw moves 13 mm from CLOSED to OPEN. The resulting pad gap is 8 mm closed and 34 mm open. The required behaviors remain **grasp**, **hold**, **present**, and **release** a lightweight foam block. P0.1 retains a 20 N total normal-force ceiling, 0.5 kg object-mass ceiling, 0.25 speed scale, guarded closing, and mandatory current/force/position disagreement shutdown.
 
 For the 5 mm pinion pitch radius, equal opposing rack forces give `total normal force = pinion torque / pitch radius`. A 20 N development ceiling therefore corresponds to 0.10 N·m at the pinion. The published 1.0 N·m XC330 12 V stall endpoint would imply 200 N in this ideal geometry and is not a permissible command, continuous rating, or capacity claim. A local deterministic controller must enforce a separately calibrated current/torque limit; the cloud conversational agent never commands raw position, current, or force.
 
-Closure still requires final tooth geometry, rack/guide clearances, actuator horn and mount, material/process selection, compliant-pad force-stroke and wear evidence, force/current calibration, object-presence sensing, breakaway/manual-release test, pinch probes, holding-power-loss behavior, endurance, DFM, FAI, and supervised grasp/present/release trials.
+The tooth surfaces are explicit project-owned involute/trapezoidal-rack candidate geometry based on published ISO terminology and basic-rack concepts; this is not a conformity claim. The OPEN CAD state rotates the pinion by `13 / 5 = 2.6 rad = 148.969 degrees`, matching the 13 mm pitch-line rack travel. Closure still requires manufactured profile inspection, rack/guide clearances, an exact actuator-horn adapter, material/process selection, compliant-pad force-stroke and wear evidence, force/current calibration, object-presence sensing, breakaway/manual-release test, pinch probes, holding-power-loss behavior, endurance, DFM, FAI, and supervised grasp/present/release trials.
 '''
     (PACKAGE / "gripper-functional-specification.md").write_text(spec, encoding="utf-8", newline="\n")
 
@@ -417,6 +474,53 @@ def main() -> int:
             })
     write_csv(OUT / "gripper-kinematic-state-register.csv", state_rows)
 
+    pressure_angle = math.radians(GEAR_PRESSURE_ANGLE_DEG)
+    pitch_diameter = 2.0 * PINION_PITCH_RADIUS_MM
+    base_diameter = pitch_diameter * math.cos(pressure_angle)
+    outside_diameter = pitch_diameter + 2.0 * GEAR_ADDENDUM_MM
+    root_diameter = pitch_diameter - 2.0 * GEAR_DEDENDUM_MM
+    circular_pitch = math.pi * PINION_MODULE_MM
+    standard_pitch_thickness = circular_pitch / 2.0
+    member_pitch_thickness = standard_pitch_thickness - GEAR_TOTAL_TANGENTIAL_BACKLASH_MM / 2.0
+    gear_rows = [{
+        "geometry_id": "GG-01", "geometry_system": "PROJECT-OWNED EXTERNAL SPUR PINION AND TWO STRAIGHT RACKS",
+        "module_mm": f"{PINION_MODULE_MM:.6f}", "pressure_angle_deg": f"{GEAR_PRESSURE_ANGLE_DEG:.6f}",
+        "pinion_teeth": PINION_TEETH, "pitch_diameter_mm": f"{pitch_diameter:.6f}",
+        "base_diameter_mm": f"{base_diameter:.6f}", "outside_diameter_mm": f"{outside_diameter:.6f}",
+        "root_diameter_mm": f"{root_diameter:.6f}", "circular_pitch_mm": f"{circular_pitch:.6f}",
+        "standard_pitch_tooth_thickness_mm": f"{standard_pitch_thickness:.6f}",
+        "pinion_pitch_tooth_thickness_mm": f"{member_pitch_thickness:.6f}",
+        "rack_pitch_tooth_thickness_mm": f"{member_pitch_thickness:.6f}",
+        "nominal_total_tangential_backlash_mm": f"{GEAR_TOTAL_TANGENTIAL_BACKLASH_MM:.6f}",
+        "addendum_mm": f"{GEAR_ADDENDUM_MM:.6f}", "dedendum_mm": f"{GEAR_DEDENDUM_MM:.6f}",
+        "face_width_mm": f"{GEAR_FACE_WIDTH_MM:.6f}", "involute_samples_per_flank": GEAR_PROFILE_SAMPLES_PER_FLANK,
+        "geometry_basis": "explicit involute equations and trapezoidal basic-rack candidate; ISO terminology reference only; no conformity claim",
+        "validation_state": "CAD GEOMETRY DEFINED - MANUFACTURED PROFILE/TOLERANCE/MESH/LIFE PHYSICAL VALIDATION OPEN",
+        "warning": WARNING,
+    }]
+    write_csv(OUT / "gripper-gear-geometry-register.csv", gear_rows)
+
+    mesh_rows = []
+    for state, travel, parts in (("CLOSED", 0.0, closed), ("OPEN", FINGER_TRAVEL_EACH_MM, opened)):
+        pinion = next(part.shape for part in parts if part.name == "PINION")
+        upper_rack = next(part.shape for part in parts if part.name == "RACK_POSITIVE")
+        lower_rack = next(part.shape for part in parts if part.name == "RACK_NEGATIVE")
+        rotation_rad = travel / PINION_PITCH_RADIUS_MM
+        mesh_rows.append({
+            "state": state, "rack_travel_each_mm": f"{travel:.6f}",
+            "pinion_rotation_rad": f"{rotation_rad:.9f}", "pinion_rotation_deg": f"{math.degrees(rotation_rad):.9f}",
+            "pitch_radius_mm": f"{PINION_PITCH_RADIUS_MM:.6f}",
+            "expected_pitch_displacement_mm": f"{rotation_rad * PINION_PITCH_RADIUS_MM:.9f}",
+            "kinematic_error_mm": f"{abs(rotation_rad * PINION_PITCH_RADIUS_MM - travel):.12f}",
+            "upper_solid_interference_volume_mm3": f"{pinion.intersect(upper_rack).Volume():.12f}",
+            "lower_solid_interference_volume_mm3": f"{pinion.intersect(lower_rack).Volume():.12f}",
+            "upper_minimum_solid_distance_mm": f"{pinion.distance(upper_rack):.9f}",
+            "lower_minimum_solid_distance_mm": f"{pinion.distance(lower_rack):.9f}",
+            "credit": "NOMINAL CAD MESH STATE ONLY - NO TOLERANCE/LOAD/WEAR/ENDURANCE OR CAPACITY CREDIT",
+            "warning": WARNING,
+        })
+    write_csv(OUT / "gripper-mesh-state-register.csv", mesh_rows)
+
     force_rows = []
     for case_id, torque, purpose in (("GF-01", 0.05, "10 N low-force development screen"), ("GF-02", 0.10, "20 N project ceiling geometry"), ("GF-03", 1.00, "published stall endpoint comparison only")):
         total_force = torque / (PINION_PITCH_RADIUS_MM / 1000.0)
@@ -430,7 +534,7 @@ def main() -> int:
     interface_rows = [
         ("GI-01", "wrist-to-palm", "4 x DIA 3.4 on 26 x 28 mm rectangle; DIA 6.5 center clearance", "JMF-01 wrist output", "shaft/hub, screw product, tapped side, fit, preload and locking"),
         ("GI-02", "finger linear guidance", "2 x DIA 4 mm rods; 64 mm span; 4.35 mm candidate slider bores", "two broad finger carriers", "rod product, straightness, clearance, wear, lubrication and retention"),
-        ("GI-03", "symmetric transmission", "module 0.5; 20-tooth pinion; paired 32 mm rack candidates", "13 mm travel each jaw", "final involute/rack tooth geometry, backlash, horn/hub, strength and life"),
+        ("GI-03", "symmetric transmission", "module 0.5; 20-degree involute 20-tooth pinion; paired 32 mm matching racks; 0.08 mm nominal total tangential backlash", "13 mm travel each jaw", "manufactured profile/tolerance, physical backlash correlation, exact horn adapter, strength, wear and life"),
         ("GI-04", "object contact", "2 x 3 x 30 x 30 mm replaceable pad lands", "8-34 mm pad gap", "pad material, adhesive/mechanical retention, force-stroke, wear and contamination"),
         ("GI-05", "travel stops", "fixed blocks at local X +/-31 mm", "open hard-stop contact", "impact energy, rebound, noise, tolerance and endurance"),
         ("GI-06", "manual release", "DIA 8 hub with DIA 3.2 tool access", "pinion backdrive path", "tool, access, backdrive torque, breakaway and trapped-object procedure"),
@@ -448,7 +552,8 @@ def main() -> int:
         ("GB-07", "replaceable compliant pads", 4, "3 x 30 x 30 mm pad candidates"),
         ("GB-08", "hard stop blocks", 4, "two per hand"),
         ("GB-09", "manual release hubs", 2, "tool and procedure selection required"),
-        ("GB-10", "frame/motor fasteners and inserts", 2, "complete set per hand; exact products/quantities/torque selection required"),
+        ("GB-10", "HNX330-N101 metal horn set", 2, "ROBOTIS 903-0314-000 candidate; exact pinion adapter geometry and received fit required"),
+        ("GB-11", "frame/motor fasteners and inserts", 2, "complete set per hand; exact products/quantities/torque selection required"),
     ]
     write_csv(OUT / "gripper-candidate-bom.csv", [{"item_id": i, "item": n, "whole_robot_quantity": q, "candidate_or_boundary": c, "selection_state": "SELECTION REQUIRED", "authority": "NO PROCUREMENT OR FABRICATION AUTHORITY", "warning": WARNING} for i, n, q, c in bom_rows])
 
@@ -456,6 +561,11 @@ def main() -> int:
         {"source_id": "GS-01", "source": "ROBOTIS XC330-T288-T official documentation", "url_or_path": "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/", "revision_or_date": "ROBOTIS-GIT source commit 91f72d1ddd3f86d94d74b35ab037f7ec8c8c4dbe / 2026-01-27", "accessed_date": "2026-08-14", "use": "12 V stall endpoint, mass, protocol and candidate identity; no continuous-duty credit", "warning": WARNING},
         {"source_id": "GS-02", "source": "ROBOTIS XC330 official STEP", "url_or_path": body.VENDOR_ACTUATOR_SOURCES["ROBOTIS-XC330"]["path"].relative_to(ROOT).as_posix(), "revision_or_date": body.VENDOR_ACTUATOR_SOURCES["ROBOTIS-XC330"]["expected_sha256"], "accessed_date": "2026-08-10", "use": "SHA-bound packaging geometry", "warning": WARNING},
         {"source_id": "GS-03", "source": "Project HR-30 P0.1 axis and module datums", "url_or_path": "../joint-axis-schedule.csv; ../module-interface-control-register.csv", "revision_or_date": "repository-bound at generation", "accessed_date": "2026-08-14", "use": "wrist centers, gripper axis ownership and module placement", "warning": WARNING},
+        {"source_id": "GS-04", "source": "ISO 53:1998 Cylindrical gears for general and heavy engineering - Standard basic rack tooth profile", "url_or_path": "https://www.iso.org/standard/22643.html", "revision_or_date": "Edition 2 / 1998-08 / confirmed current 2021", "accessed_date": "2026-08-14", "use": "basic-rack terminology and geometry basis only; no conformity claim", "warning": WARNING},
+        {"source_id": "GS-05", "source": "ISO 54:1996 Cylindrical gears for general engineering and for heavy engineering - Modules", "url_or_path": "https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/02/26/22644.html?browse=tc", "revision_or_date": "Edition 2 / 1996-08 / confirmed current 2022", "accessed_date": "2026-08-14", "use": "module terminology; project selects provisional module 0.5", "warning": WARNING},
+        {"source_id": "GS-06", "source": "ISO 21771-1:2024 Cylindrical involute gears and gear pairs - Concepts and geometry", "url_or_path": "https://www.iso.org/standard/84949.html", "revision_or_date": "Edition 1 / 2024-10", "accessed_date": "2026-08-14", "use": "involute-geometry terminology and equation cross-reference only; no conformity claim", "warning": WARNING},
+        {"source_id": "GS-07", "source": "ISO 21771-2:2025 Cylindrical involute gears and gear pairs - Calculation of tooth thickness and backlash", "url_or_path": "https://www.iso.org/standard/78378.html", "revision_or_date": "Edition 1 / 2025-12", "accessed_date": "2026-08-14", "use": "tooth-thickness/backlash terminology only; P0.1 backlash remains a project candidate", "warning": WARNING},
+        {"source_id": "GS-08", "source": "ROBOTIS HNX330-N101 metal horn set", "url_or_path": "https://robotis.us/hnx330-n101-set/", "revision_or_date": "live official product page; revision/date not stated", "accessed_date": "2026-08-14", "use": "candidate actuator output horn; SKU 903-0314-000; exact adapter dimensions remain selection required", "warning": WARNING},
     ]
     write_csv(OUT / "source-register.csv", source_rows)
 
@@ -466,6 +576,13 @@ def main() -> int:
         "closed_and_open_step_present": True, "closed_and_open_glb_present": True, "installed_whole_robot_states_present": True,
         "web_and_installed_views_use_dimension_matched_simplified_actuator_body": True,
         "editable_source_present": True, "sha_bound_actuator_geometry_present": True,
+        "standard_involute_gear_geometry_present": True, "matching_standard_rack_geometry_present": True,
+        "transmission_geometry_candidate_defined": True, "gear_mesh_state_count": len(mesh_rows),
+        "nominal_total_tangential_backlash_mm": GEAR_TOTAL_TANGENTIAL_BACKLASH_MM,
+        "nominal_mesh_interference_volume_mm3_max": max(
+            max(float(row["upper_solid_interference_volume_mm3"]), float(row["lower_solid_interference_volume_mm3"]))
+            for row in mesh_rows
+        ),
         "mechanism_selected": False, "materials_selected": False, "force_calibrated": False,
         "physical_validation_complete": False, "procurement_authority": False, "fabrication_authority": False,
         "assembly_authority": False, "powered_test_authority": False, "motion_authority": False, "energization_authority": False,
@@ -474,7 +591,7 @@ def main() -> int:
     (OUT / "gripper-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
     (OUT / "index.html").write_text(render_index(), encoding="utf-8", newline="\n")
     (OUT / "README.md").write_text(
-        f"# HR-30 detailed bilateral grippers P0.1\n\n**{WARNING}**\n\nTwo editable rack-and-pinion parallel-gripper assemblies replace the prior envelope-only hand refinement path. CLOSED and OPEN native STEP/GLB states, installed whole-robot views, individual candidate-part STEP files, kinematic/force/interface registers and a candidate BOM are included. Exact SHA-bound actuator geometry is retained in the native hand STEP assemblies and source register; the GLB and installed whole-robot views use a dimension-matched lightweight actuator body for practical web delivery. Exact tooth geometry, fits, materials, actuator interfaces, calibration, sensing, pinch safety, endurance, DFM, FAI and physical proof remain open.\n",
+        f"# HR-30 detailed bilateral grippers P0.1\n\n**{WARNING}**\n\nTwo editable rack-and-pinion parallel-gripper assemblies replace the prior envelope-only hand refinement path. Their project-owned module-0.5, 20-degree involute pinions and matching racks include an explicit 0.08 mm nominal total tangential-backlash candidate; CLOSED and OPEN native STEP/GLB states now couple rack displacement to pinion rotation. Exact SHA-bound actuator geometry is retained in the native hand STEP assemblies and source register; the GLB and installed whole-robot views use a dimension-matched lightweight actuator body for practical web delivery. Manufactured profile/tolerance, fits, materials, exact horn adapter, calibration, sensing, pinch safety, endurance, DFM, FAI and physical proof remain open.\n",
         encoding="utf-8", newline="\n",
     )
     shutil.copy2(Path(__file__), OUT / "gripper-source.py")

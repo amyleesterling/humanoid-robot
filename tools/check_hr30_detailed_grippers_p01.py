@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import math
 from pathlib import Path
 
 import cadquery as cq
@@ -37,6 +38,11 @@ def main() -> int:
     require(status["visible_part_count_per_hand"] == 18, "part count per hand drift")
     require(status["unique_part_record_count"] == 18 and status["custom_fabrication_candidate_count"] == 17, "part register population drift")
     require(status["total_coupled_stroke_mm"] == 26.0 and status["closed_pad_gap_mm"] == 8.0 and status["open_pad_gap_mm"] == 34.0, "gripper travel/gap definition drift")
+    require(status["standard_involute_gear_geometry_present"] is True, "involute gear geometry missing")
+    require(status["matching_standard_rack_geometry_present"] is True, "matching rack geometry missing")
+    require(status["transmission_geometry_candidate_defined"] is True and status["gear_mesh_state_count"] == 2, "transmission candidate state drift")
+    require(abs(float(status["nominal_total_tangential_backlash_mm"]) - 0.08) < 1e-12, "nominal backlash drift")
+    require(float(status["nominal_mesh_interference_volume_mm3_max"]) <= 1e-6, "nominal gear/rack solid interference")
     for key in ("mechanism_selected", "materials_selected", "force_calibrated", "physical_validation_complete", "procurement_authority", "fabrication_authority", "assembly_authority", "powered_test_authority", "motion_authority", "energization_authority"):
         require(status[key] is False, f"authority or validation overclaim: {key}")
 
@@ -62,9 +68,35 @@ def main() -> int:
     require(len(force) == 3, "force screen count drift")
     require(any(row["case_id"] == "GF-02" and abs(float(row["pinion_torque_nm"]) - 0.10) < 1e-9 and abs(float(row["ideal_total_normal_force_n"]) - 20.0) < 1e-9 for row in force), "20 N force geometry missing")
     require(any(row["case_id"] == "GF-03" and abs(float(row["ideal_total_normal_force_n"]) - 200.0) < 1e-9 and "NO" in row["credit"] for row in force), "stall endpoint boundary missing")
+    gear = rows("gripper-gear-geometry-register.csv")
+    require(len(gear) == 1, "gear geometry register population drift")
+    geometry = gear[0]
+    module = float(geometry["module_mm"])
+    teeth = int(geometry["pinion_teeth"])
+    angle = math.radians(float(geometry["pressure_angle_deg"]))
+    pitch_diameter = module * teeth
+    require(abs(float(geometry["pitch_diameter_mm"]) - pitch_diameter) < 1e-6, "pitch diameter equation drift")
+    require(abs(float(geometry["base_diameter_mm"]) - pitch_diameter * math.cos(angle)) < 1e-6, "base diameter equation drift")
+    require(abs(float(geometry["outside_diameter_mm"]) - (pitch_diameter + 2.0 * module)) < 1e-6, "outside diameter equation drift")
+    require(abs(float(geometry["root_diameter_mm"]) - (pitch_diameter - 2.5 * module)) < 1e-6, "root diameter equation drift")
+    require(abs(float(geometry["circular_pitch_mm"]) - math.pi * module) < 1e-6, "circular pitch equation drift")
+    require(abs(float(geometry["nominal_total_tangential_backlash_mm"]) - 0.08) < 1e-9, "gear-register backlash drift")
+    require("no conformity claim" in geometry["geometry_basis"], "ISO/conformity boundary missing")
+
+    mesh = rows("gripper-mesh-state-register.csv")
+    require(len(mesh) == 2 and {row["state"] for row in mesh} == {"CLOSED", "OPEN"}, "mesh-state population drift")
+    for row in mesh:
+        travel = float(row["rack_travel_each_mm"])
+        expected_angle = travel / 5.0
+        require(abs(float(row["pinion_rotation_rad"]) - expected_angle) < 1e-8, f"pinion/rack kinematics drift: {row['state']}")
+        require(abs(float(row["expected_pitch_displacement_mm"]) - travel) < 1e-8 and float(row["kinematic_error_mm"]) < 1e-9, f"pitch displacement drift: {row['state']}")
+        require(float(row["upper_solid_interference_volume_mm3"]) <= 1e-6 and float(row["lower_solid_interference_volume_mm3"]) <= 1e-6, f"solid interference: {row['state']}")
+        require(float(row["upper_minimum_solid_distance_mm"]) > 0.0 and float(row["lower_minimum_solid_distance_mm"]) > 0.0, f"nominal clearance absent: {row['state']}")
+    opened = next(row for row in mesh if row["state"] == "OPEN")
+    require(abs(float(opened["pinion_rotation_deg"]) - math.degrees(13.0 / 5.0)) < 1e-7, "open-state pinion rotation drift")
     require(len(rows("gripper-interface-register.csv")) == 7, "interface population drift")
-    require(len(rows("gripper-candidate-bom.csv")) == 10, "candidate BOM population drift")
-    require(len(rows("source-register.csv")) == 3, "source register population drift")
+    require(len(rows("gripper-candidate-bom.csv")) == 11, "candidate BOM population drift")
+    require(len(rows("source-register.csv")) == 8, "source register population drift")
 
     expected_steps = []
     for module in ("G01", "G02"):
@@ -97,18 +129,20 @@ def main() -> int:
 
     root_status = json.loads((PACKAGE / "package-status.json").read_text(encoding="utf-8"))
     require(root_status["detailed_bilateral_gripper_package_present"] is True and root_status["detailed_gripper_visible_part_count_per_hand"] == 18, "root status not integrated")
+    require(root_status["detailed_gripper_involute_transmission_candidate_defined"] is True and abs(float(root_status["detailed_gripper_nominal_tangential_backlash_mm"]) - 0.08) < 1e-12, "root transmission integration missing")
     require(root_status["detailed_gripper_mechanism_selected"] is False and root_status["detailed_gripper_physical_validation_complete"] is False, "root validation overclaim")
     page = (PACKAGE / "index.html").read_text(encoding="utf-8")
     readme = (PACKAGE / "README.md").read_text(encoding="utf-8")
     spec = (PACKAGE / "gripper-functional-specification.md").read_text(encoding="utf-8")
-    require("HR30-GRIPPERS-P01-START" in page and "grippers-p0.1/index.html" in page and "8–34 mm" in page, "root page integration missing")
+    require("HR30-GRIPPERS-P01-START" in page and "grippers-p0.1/index.html" in page and "8–34 mm" in page and "20° involute" in page, "root page integration missing")
     require("Detailed bilateral hand mechanisms" in readme and "18-part" in readme, "root README integration missing")
-    require("20 N" in spec and "0.10 N·m" in spec and "200 N" in spec and "never commands raw position" in spec, "functional/control boundary incomplete")
+    require("20 N" in spec and "0.10 N·m" in spec and "200 N" in spec and "148.969 degrees" in spec and "never commands raw position" in spec, "functional/control boundary incomplete")
     guide = (OUT / "index.html").read_text(encoding="utf-8")
     require(WARNING in guide and WARNING in (OUT / "README.md").read_text(encoding="utf-8"), "package warning missing")
+    require("gripper-gear-geometry-register.csv" in guide and "gripper-mesh-state-register.csv" in guide and "0.08 mm" in guide, "gear evidence links missing")
     require("font:17px/1.55" in guide and "body{font-size:16px}" in guide and "button{font:800 16px" in guide and "overflow-x:clip" in guide, "legible responsive CSS boundary missing")
 
-    print("PASS: two 18-part HR-30 grippers reimport in CLOSED/OPEN and installed whole-robot states; 26 mm coupled stroke, 8-34 mm pad gap, geometric force boundary and all no-authority gates hold")
+    print("PASS: two 18-part HR-30 grippers reimport with explicit module-0.5 20-degree involute/rack geometry, coupled 148.969-degree open-state pinion rotation, zero nominal solid interference, 26 mm stroke and all no-authority gates hold")
     return 0
 
 

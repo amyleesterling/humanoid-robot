@@ -212,5 +212,7 @@
   "detailed_gripper_physical_validation_complete": false,
   "physical_harness_split_harness_candidate_defined": true,
   "physical_harness_serial_data_link_count": 25,
-  "physical_harness_individual_power_pair_count": 25
+  "physical_harness_individual_power_pair_count": 25,
+  "detailed_gripper_involute_transmission_candidate_defined": true,
+  "detailed_gripper_nominal_tangential_backlash_mm": 0.08
 }
