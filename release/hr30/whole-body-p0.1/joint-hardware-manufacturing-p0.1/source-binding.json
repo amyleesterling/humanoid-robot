@@ -1,0 +1,11 @@
+{
+  "identifier": "HR30-JOINT-HARDWARE-MANUFACTURING-P0.1",
+  "body_architecture_generator": "tools/generate_hr30_body_architecture_p01.py",
+  "body_architecture_generator_sha256": "f72c19c2548c714bd316f4793e1daabebdc9547781a2b9e9ffdf078da0adf90a",
+  "mass_reconciliation_generator": "tools/generate_hr30_mass_reconciliation_p01.py",
+  "mass_reconciliation_generator_sha256": "70872d0a0cbeda8d6931334fbe947a99d928c4c785a341078dc8eeda08f54ce1",
+  "joint_family_generator": "tools/generate_hr30_joint_family_cad_p01.py",
+  "joint_family_generator_sha256": "c5c61ba23b41f114b8eede7cbed21da7451a2547ef1d07ee9cd5ce7b1b054a76",
+  "axis_count": 25,
+  "warning": "PRELIMINARY - JOINT-HARDWARE REFINEMENT FILES ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

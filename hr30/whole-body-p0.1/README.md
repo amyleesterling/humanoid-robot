@@ -1136,3 +1136,9 @@ Eight protected bus-branch candidates now map all 25 actuator drops through 12 l
 The [interactive fabrication sourcing guide](fabrication-sourcing-p0.1/index.html) binds all 98 physical candidates to controlled upload files, exact SHA-256 values, five nonempty quote batches, seven Boston/online routes and ten mandatory written DFM questions. The public-stock screen prevents silent thickness substitution: only 1 of 45 planar candidates match the reviewed nominal stock values within 0.02 mm.
 
 This is a route to quotation, not authority to buy or make parts. Materials, tolerances/GD&T, inspection, DFM disposition, structural capacity, FAI and physical proof remain open.
+
+## Actual-axis joint-hardware manufacturing P0.1
+
+The [joint-hardware manufacturing guide](joint-hardware-manufacturing-p0.1/index.html) classifies all 142 non-actuator hardware items on the 25 actual axes. It adds 64 local-coordinate shaft/carrier STEP and SVG files plus 39 carrier DXFs, while correctly withholding supplier files for 39 catalogue bearing envelopes and 39 toothless pulley/coupler placeholders.
+
+This corrects the manufacturing-universe boundary: the 98 body/frame/hand parts were never the complete robot. Joint fits, shoulders, retention, toothed pulley products, actuator adapters, materials, tolerances, DFM, FAI and structural proof remain open.

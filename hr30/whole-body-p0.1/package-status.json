@@ -279,5 +279,13 @@
   "fabrication_sourcing_stock_mismatch_count": 44,
   "fabrication_supplier_contact_executed": false,
   "fabrication_quotes_received": false,
-  "fabrication_materials_selected": false
+  "fabrication_materials_selected": false,
+  "actual_axis_joint_hardware_package_present": true,
+  "actual_axis_joint_hardware_count": 142,
+  "joint_hardware_local_refinement_step_count": 64,
+  "joint_hardware_catalogue_reference_count": 39,
+  "joint_hardware_redesign_required_count": 39,
+  "joint_hardware_complete_manufacturing_definition": false,
+  "joint_hardware_procurement_authority": false,
+  "joint_hardware_fabrication_authority": false
 }
