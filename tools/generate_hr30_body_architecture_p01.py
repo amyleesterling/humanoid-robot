@@ -560,7 +560,11 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
     add("PELVIS_SHELL_ENVELOPE", "pelvis", tapered_body(352, 417, 142, 96, 155, 105), shell)
     add("PELVIS_LOAD_FRAME_ENVELOPE", "pelvis structure", rounded_box(132, 72, 42, (0, 0, 390), 5), structure)
     add("WAIST_BEARING_STACK_RESERVATION", "joint housing", rounded_box(112, 84, 34, (0, 0, WAIST_Z), 6), structure)
-    add("TORSO_SHELL_ENVELOPE", "torso", tapered_body(430, 585, 152, 94, 190, 110), shell)
+    # Preserve every joint datum while leaving a real service gap above the
+    # bilateral hip-yaw envelopes.  The former Z=430 mm lower edge left only
+    # 2.5 mm in the dynamics collision model; Z=440 mm gives 10 mm nominal
+    # rigid-envelope clearance for covers, harness routing and tolerance work.
+    add("TORSO_SHELL_ENVELOPE", "torso", tapered_body(440, 585, 152, 94, 190, 110), shell)
     add("TORSO_LEFT_FRAME_RAIL", "torso structure", rounded_box(20, 25, 142, (70, 0, 510), 3), structure)
     add("TORSO_RIGHT_FRAME_RAIL", "torso structure", rounded_box(20, 25, 142, (-70, 0, 510), 3), structure)
     add("TORSO_SHOULDER_CROSSMEMBER", "torso structure", rounded_box(170, 28, 24, (0, 0, 575), 3), structure)
@@ -1059,7 +1063,7 @@ def main() -> int:
         ("A1-05", "source mesh topology", "REJECT", "manufacturing/structural geometry", "not dimensioned, toleranced, materialized, or load-path controlled"),
         ("A1-06", "source joint centers and bone axes", "REJECT", "robot kinematics", "use HR-PROD-030 datums and the controlled joint-axis schedule"),
         ("A1-07", "head proportions", "ADAPT", "150 x 110 x 112 mm controlled head envelope", "preserve character while fitting screen, cameras, microphones, speakers and cooling"),
-        ("A1-08", "torso silhouette", "ADAPT", "190 x 110 x 155 mm torso shell envelope", "fit compute, cooling, load frame, harness and service access"),
+        ("A1-08", "torso silhouette", "ADAPT", "190 x 110 x 145 mm torso shell envelope with 10 mm nominal hip-yaw service gap", "fit compute, cooling, load frame, harness and service access"),
         ("A1-09", "arm silhouette", "ADAPT", "two articulated engineering arms", "meet controlled axes, hard reach limits, mass, payload and pinch constraints"),
         ("A1-10", "hand appearance", "ADAPT", "two broad parallel hand-shaped grippers", "must grasp, hold, present and release without narrow scissor points"),
         ("A1-11", "leg and foot silhouette", "ADAPT", "six-axis legs and 90 x 145 mm feet", "fit supported shafts, reductions, sensing and replaceable compliant soles"),

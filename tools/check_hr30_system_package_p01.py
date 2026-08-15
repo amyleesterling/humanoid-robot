@@ -112,6 +112,13 @@ def main() -> int:
         require(visual_xyz == collision_xyz and abs(visual_xyz[1] + 0.025) < 1e-9 and abs(visual_xyz[2] + 0.0175) < 1e-9, f"{side} foot canonical geometry origin drift")
         require(inertial_xyz != visual_xyz, f"{side} provisional inertial COM was incorrectly collapsed onto geometry origin")
 
+    torso = urdf.find("link[@name='torso']")
+    torso_visual_xyz = tuple(float(value) for value in torso.find("visual/origin").get("xyz").split())
+    torso_collision_xyz = tuple(float(value) for value in torso.find("collision/origin").get("xyz").split())
+    torso_size = tuple(float(value) for value in torso.find("collision/geometry/box").get("size").split())
+    require(torso_visual_xyz == torso_collision_xyz and abs(torso_visual_xyz[2] - 0.0875) < 1e-9, "torso physical geometry center drift")
+    require(torso_size == (0.190, 0.110, 0.145), "torso/hip service-gap geometry drift")
+
     mjcf = ET.parse(SRC / "hr30.xml").getroot()
     mjcf_joints = mjcf.findall("./worldbody//joint")
     mjcf_motors = mjcf.findall("./actuator/motor")
@@ -180,8 +187,7 @@ def main() -> int:
     require(status["native_hr30_kicad_present"] and status["native_hr30_kicad_logical_connectivity_reconciled"] and status["native_hr30_kicad_sheet_count"] == 19 and status["native_hr30_kicad_axis_binding_count"] == 25 and status["native_hr30_kicad_actuator_bus_controller_pins_selected"] and status["native_hr30_kicad_interface_device_candidates_selected"] and status["native_hr30_kicad_data_only_connector_candidates_selected"] and status["native_hr30_kicad_erc_errors"] == status["native_hr30_kicad_erc_warnings"] == 0, "native whole-body KiCad integration missing")
     require(not any(status[key] for key in ("native_hr30_kicad_reconciled", "actuator_bus_interface_selected", "actuator_bus_connector_harness_validated")), "electrical implementation overclaim")
     require(status["whole_body_pose_count"] == 8, "bilateral articulated pose set incomplete")
-    require(status["whole_body_pose_common_volume_interference_count"] == 0 and status["whole_body_pose_minimum_nominal_clearance_mm"] >= 2.5, "whole-body nominal collision status not closed")
-    require(status["whole_body_pose_minimum_nominal_clearance_mm"] < 5.0, "whole-body sub-5 mm planning-clearance hold unexpectedly disappeared")
+    require(status["whole_body_pose_common_volume_interference_count"] == 0 and status["whole_body_pose_minimum_nominal_clearance_mm"] >= 8.0, "whole-body nominal collision status not closed")
     require(status["installed_equipment_item_count"] == 54 and status["tether_first_equipment_configuration"] and status["tether_development_interface_retained"] and status["onboard_energy_candidate_geometry_present"] and not status["onboard_energy_installed"], "installed-equipment configuration boundary drift")
     require(status.get("energy_safety_spine_present") and status.get("direct_4s_lipo_architecture_rejected") and not status.get("energy_safety_native_kicad_correction_required") and status.get("energy_safety_native_kicad_topology_corrected") and status.get("energy_safety_physical_terminal_release_required") and status.get("energy_safety_individual_actuator_power_feed_count") == 25, "energy/safety architecture integration missing")
     require(not status.get("energy_safety_protection_released") and not status.get("energy_safety_functional_safety_approved"), "energy/safety release or approval overclaim")

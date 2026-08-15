@@ -8,13 +8,13 @@ The planning preference is **5.0 mm** between nonadjacent rigid envelopes. A val
 
 | Pose | Checked pairs | Interferences | Minimum clearance | Closest checked pair |
 |---|---:|---:|---:|---|
-| Neutral double support | 290 | 0 | 2.50 mm | `L_hip_yaw_link::torso` |
-| Crouched double support | 290 | 0 | 2.50 mm | `L_hip_yaw_link::torso` |
-| Left weight transfer | 290 | 0 | 2.50 mm | `L_hip_yaw_link::torso` |
-| Right foot lift | 290 | 0 | 2.50 mm | `L_hip_yaw_link::torso` |
-| Right capture-step candidate | 290 | 0 | 2.50 mm | `L_hip_yaw_link::torso` |
-| Right weight transfer | 290 | 0 | 2.50 mm | `L_hip_yaw_link::torso` |
-| Left foot lift | 290 | 0 | 2.50 mm | `L_hip_yaw_link::torso` |
-| Left capture-step candidate | 290 | 0 | 2.50 mm | `L_hip_yaw_link::torso` |
+| Neutral double support | 290 | 0 | 10.00 mm | `L_hip_yaw_link::torso` |
+| Crouched double support | 290 | 0 | 10.00 mm | `L_hip_yaw_link::torso` |
+| Left weight transfer | 290 | 0 | 10.00 mm | `L_hip_yaw_link::torso` |
+| Right foot lift | 290 | 0 | 10.00 mm | `L_hip_yaw_link::torso` |
+| Right capture-step candidate | 290 | 0 | 10.00 mm | `L_hip_yaw_link::torso` |
+| Right weight transfer | 290 | 0 | 10.00 mm | `L_hip_yaw_link::torso` |
+| Left foot lift | 290 | 0 | 10.00 mm | `L_hip_yaw_link::torso` |
+| Left capture-step candidate | 290 | 0 | 10.00 mm | `L_hip_yaw_link::torso` |
 
 This is a nominal rigid-envelope result. It does not cover manufacturing tolerance, cover deflection, belt/cable sweep, connector backshells, fastener protrusion, encoder wiring, tracking error, joint compliance, impacts, floor variation, fall restraint, or physical correlation. It grants no motion or safety credit.

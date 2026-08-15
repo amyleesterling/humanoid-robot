@@ -399,7 +399,11 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
             # Mass reconciliation may move the planning inertial/COM within a
             # link, but it must never move that link's collision or visual
             # envelope.  Preserve the canonical body geometry independently.
-            "geometry_center": base["center"],
+            # Preserve the authoritative physical geometry datum independently
+            # of the reconciled inertial COM.  Most links use the historical
+            # center, while the shortened torso shell is intentionally offset
+            # upward to maintain its hip-yaw service gap.
+            "geometry_center": base.get("geometry_center", base["center"]),
         })
 
     category_totals = Counter()
@@ -681,6 +685,21 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
     if body_mass_count != 1:
         raise RuntimeError("body mass card drift")
     web_path.write_text(web, encoding="utf-8", newline="\n")
+
+    # Keep the repository Pages entry synchronized with the authoritative
+    # reconciliation instead of requiring a manual mass-card edit after every
+    # whole-body geometry change.
+    root_page_path = ROOT / "index.html"
+    root_page = root_page_path.read_text(encoding="utf-8")
+    root_page, root_mass_count = re.subn(
+        r'<article class="card hold"><div class="metric">[0-9.]+ kg</div><p>Whole-body planning-model mass[^<]*</p></article>',
+        f'<article class="card hold"><div class="metric">{summary["reconciled_dynamics_planning_mass_kg"]:.3f} kg</div><p>Whole-body planning-model mass—not a measured as-built mass; only {summary["planning_margin_to_program_maximum_kg"]:.3f} kg remains to the P0.1 ceiling.</p></article>',
+        root_page,
+        count=1,
+    )
+    if root_mass_count != 1:
+        raise RuntimeError("repository Pages mass card drift")
+    root_page_path.write_text(root_page, encoding="utf-8", newline="\n")
 
     status_path = OUT / "package-status.json"
     status = json.loads(status_path.read_text(encoding="utf-8"))

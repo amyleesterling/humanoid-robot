@@ -205,7 +205,7 @@ def build() -> tuple[list[Part], list[dict], list[dict]]:
             )
 
     # Hollow central shells split into separately removable front and rear parts.
-    torso_shell = hollow_tapered(430, 585, 152, 94, 190, 110, 1.6)
+    torso_shell = hollow_tapered(440, 585, 152, 94, 190, 110, 1.6)
     pelvis_shell = hollow_tapered(352, 417, 142, 96, 155, 105, 1.6)
     add_panel("T01_TORSO_FRONT_COVER", "T01", half(torso_shell, True), "compute, cooling, bus and shoulder-frame access", "Y=0 split plane", "eight M3-class captive points candidate; exact count/load/insert selection required", wall=1.6)
     add_panel("T01_TORSO_REAR_COVER", "T01", half(torso_shell, False), "compute cooling and harness-spine access", "Y=0 split plane", "eight M3-class captive points candidate; exact count/load/insert selection required", cover_dark, wall=1.6)

@@ -52,7 +52,7 @@ def inertia_box(mass: float, size: tuple[float, float, float]) -> tuple[float, f
 def link_rows() -> list[dict]:
     rows: list[dict] = [
         {"link": "base_link", "group": "pelvis/power", "mass": 1.65, "center": (0, 0, 0.390), "size": (0.155, 0.105, 0.070)},
-        {"link": "torso", "group": "torso/compute/waist", "mass": 1.83, "center": (0, 0, 0.510), "size": (0.190, 0.110, 0.155)},
+        {"link": "torso", "group": "torso/compute/waist", "mass": 1.83, "center": (0, 0, 0.510), "geometry_center": (0, 0, 0.5125), "size": (0.190, 0.110, 0.145)},
         {"link": "neck_pan_link", "group": "neck", "mass": 0.10, "center": (0, 0, 0.625), "size": (0.054, 0.054, 0.058)},
         {"link": "head", "group": "head/display/sensing", "mass": 0.40, "center": (0, 0, 0.706), "size": (0.150, 0.110, 0.112)},
     ]

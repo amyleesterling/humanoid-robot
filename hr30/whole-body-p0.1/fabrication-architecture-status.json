@@ -6,7 +6,7 @@
   "service_panel_count": 24,
   "harness_route_count": 12,
   "frame_mass_screen_kg": 1.761017,
-  "cover_mass_screen_kg": 0.552606,
+  "cover_mass_screen_kg": 0.542245,
   "all_geometry_valid": true,
   "frame_geometry_present": true,
   "hollow_split_shell_geometry_present": true,

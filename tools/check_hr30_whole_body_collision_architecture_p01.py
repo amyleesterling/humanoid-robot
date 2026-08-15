@@ -36,10 +36,8 @@ def main() -> int:
     require(all(int(row["checked_pair_count"]) == 290 for row in summaries), "checked pair count drift")
     require(all(int(row["interference_count"]) == 0 and row["result"] == "ZERO COMMON-VOLUME INTERFERENCE" for row in summaries), "nominal pose interference remains")
     require(all(float(row["common_volume_mm3"]) <= 0.5 and row["interference"] == "NO" for row in pairs), "pair register contains common-volume interference")
-    below_nominal = [row for row in pairs if float(row["clearance_mm"]) < 5.0]
-    require(len(below_nominal) == 16 and all(abs(float(row["clearance_mm"]) - 2.5) < 1e-9 and row["planning_clearance_state"] == "HOLD - BELOW 5 MM NOMINAL" for row in below_nominal), "sub-5 mm nominal clearance hold population drift")
-    require(all(row["planning_clearance_state"] == "PASS" for row in pairs if float(row["clearance_mm"]) >= 5.0), "clearance pass/hold classification drift")
-    require(all(int(row["below_5mm_pair_count"]) == 2 and abs(float(row["minimum_clearance_mm"]) - 2.5) < 1e-9 for row in summaries), "pose-level 2.5 mm minimum clearance disclosure drift")
+    require(all(float(row["clearance_mm"]) >= 8.0 and row["planning_clearance_state"] == "PASS" for row in pairs), "8 mm whole-body nominal clearance screen not closed")
+    require(all(int(row["below_5mm_pair_count"]) == 0 and float(row["minimum_clearance_mm"]) >= 8.0 for row in summaries), "pose-level clearance summary drift")
     require(sha(SRC / "collision-architecture-source.py") == sha(ROOT / "tools" / "generate_hr30_whole_body_collision_architecture_p01.py"), "collision generator snapshot drift")
     page = (SRC / "index.html").read_text(encoding="utf-8")
     walking = (SRC / "walking-development-architecture.md").read_text(encoding="utf-8")
