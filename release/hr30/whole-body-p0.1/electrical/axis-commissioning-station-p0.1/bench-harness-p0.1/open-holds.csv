@@ -1,7 +1,7 @@
 hold_id,unresolved_evidence,state,authority
 BH-H01,"qualified approval of complete harness drawing, assembly traveler and inspection method",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
-BH-H02,"received exact wire/connectors/tooling, lot records and calibration certificates",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
-BH-H03,qualified Pomona 4933 source-end solder-or-crimp process and retention evidence,OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+BH-H02,"received exact Mueller leads, Molex connectors/tooling, lot records and calibration certificates",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+BH-H03,"received Mueller jacket OD and conductor construction compatibility; complete tin-dipped-segment removal; manufacturer source-end identity, fit and integrity inspection",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 BH-H04,"executed destructive crimp coupon, production crimp-height and terminal-retention records",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 BH-H05,"executed independent continuity, short and polarity inspection plus signed as-built disposition",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 BH-H06,separate qualified station connection and first-power authorization,OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"

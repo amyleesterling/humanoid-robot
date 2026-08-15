@@ -53,10 +53,12 @@ def main() -> int:
     assert sum("X4P" in row["station_cable"] for row in matrix) == 19
     assert sum("X3P" in row["station_cable"] for row in matrix) == 6
     sources = rows("primary-source-register.csv")
-    assert {r["source_id"] for r in sources} == {"KEYSIGHT", "U2D2", "PHB", "X4P", "X3P", "MOLEX", "WIRE", "BANANA", "XH540", "XM540", "XM430", "XC330"}
+    assert {r["source_id"] for r in sources} == {"KEYSIGHT", "U2D2", "PHB", "X4P", "X3P", "MOLEX", "LEAD", "LEAD-LIST", "XH540", "XM540", "XM430", "XC330"}
     assert all(r["official_url"].startswith("https://") and r["document_revision_or_date"] for r in sources)
+    assert any(r["source_id"] == "MOLEX" and "638190901 Rev D" in r["document_revision_or_date"] for r in sources)
+    assert any(r["source_id"] == "LEAD" and "18 AWG" in r["verified_scope"] and "tin-dipped" in r["verified_scope"] for r in sources)
     bom = rows("candidate-bom.csv")
-    assert len(bom) == 12 and {r["order_code"] for r in bom} >= {"E36313A", "902-0132-000", "902-0145-001", "903-0244-000", "903-0249-000", "39-01-2020", "39-00-0038"}
+    assert len(bom) == 10 and {r["order_code"] for r in bom} >= {"E36313A", "902-0132-000", "902-0145-001", "903-0244-000", "903-0249-000", "39-01-2020", "39-00-0038", "BU-0061-M-39-2", "BU-0061-M-39-0"}
     contacts = rows("connector-contact-map.csv")
     assert len(contacts) == 6 and contacts[2]["contact"] == "1" and contacts[2]["function"] == "GND" and contacts[3]["contact"] == "2" and contacts[3]["function"] == "VDD"
     settings = rows("controlled-settings.csv")

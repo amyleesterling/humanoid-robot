@@ -30,21 +30,24 @@ def main() -> int:
     assert status["assembly_count"] == 1 and status["conductor_count"] == 2 and status["physical_connector_contact_count"] == 4
     assert status["exact_mini_fit_tool_candidate_selected"] and status["exact_cut_and_strip_definition_present"]
     assert status["assembly_traveler_step_count"] == 10 and status["as_built_record_count"] == 13
-    for key in ("source_end_termination_process_selected", "physical_assembly_executed", "inspection_executed", "qualified_review_complete", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"):
+    assert status["manufacturer_assembled_source_end_selected"] and status["source_end_termination_process_selected"]
+    for key in ("received_lead_compatibility_validated", "physical_assembly_executed", "inspection_executed", "qualified_review_complete", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"):
         assert status[key] is False
     assembly = rows("harness-assembly-register.csv")
     assert len(assembly) == 1 and assembly[0]["assembly_id"] == "BH-A01" and assembly[0]["conductor_count"] == "2"
     prep = rows("conductor-preparation-register.csv")
     assert {r["wire_id"] for r in prep} == {"BH-W01", "BH-W02"}
     assert {r["color"] for r in prep} == {"RED", "BLACK"}
-    assert all(r["first_cut_length_mm"] == "1000 +/- 5" and r["j1_strip_length_mm"] == "3.00-3.30" and r["j1_conductor_crimp_height_mm"] == "0.83-0.93" and r["minimum_pull_force_n"] == "58.7" for r in prep)
+    assert {r["manufacturer_part"] for r in prep} == {"Mueller BU-0061-M-39-2", "Mueller BU-0061-M-39-0"}
+    assert all(r["catalog_nominal_length"] == "39 in / 990.6 mm; tolerance not published" and r["j1_strip_length_mm"] == "3.00-3.30" and r["j1_conductor_crimp_height_mm"] == "1.00-1.10" and r["minimum_pull_force_n"] == "88.0" for r in prep)
+    assert all("tin-dipped segment" in r["open_end_preparation"] and "no field termination" in r["source_end_preparation"] for r in prep)
     contacts = rows("connector-contact-map.csv")
     assert len(contacts) == 4
     j1 = {r["contact"]: r for r in contacts if r["connector"] == "J1"}
     assert j1["1"]["function"] == "GND" and j1["1"]["wire_id"] == "BH-W02"
     assert j1["2"]["function"] == "VDD" and j1["2"]["wire_id"] == "BH-W01"
     tools = rows("tooling-register.csv")
-    assert len(tools) == 6 and any(r["order_code"] == "63819-0901" and "39-00-0038" in r["application"] for r in tools)
+    assert len(tools) == 5 and any(r["order_code"] == "63819-0901" and "39-00-0038" in r["application"] for r in tools)
     assert any(r["order_code"] == "11-03-0044" and "must not be reused" in r["application"] for r in tools)
     traveler = rows("assembly-traveler.csv")
     assert len(traveler) == 10 and [r["step"] for r in traveler] == [f"A{i:02d}" for i in range(1, 11)]
@@ -55,6 +58,7 @@ def main() -> int:
     sources = rows("primary-source-register.csv")
     assert len(sources) == 7 and all(r["official_url"].startswith("https://") and r["document"] and r["document_date"] for r in sources)
     assert any(r["source_id"] == "MOLEX-TOOL" and r["document"] == "638190901 Rev D" and r["document_date"] == "2025-03-31" for r in sources)
+    assert {r["source_id"] for r in sources} >= {"MUELLER-LEAD", "MUELLER-LIST"}
     holds = rows("open-holds.csv")
     assert len(holds) == 6 and all(r["state"] == "OPEN" and "NO CONNECTION" in r["authority"] for r in holds)
     svg = (OUT / "bench-harness.svg").read_text(encoding="utf-8")
@@ -72,9 +76,13 @@ def main() -> int:
     assert source_files == release_files and all(sha(OUT / p) == sha(REL / p) for p in source_files)
     station_status = json.loads((STATION / "commissioning-status.json").read_text(encoding="utf-8"))
     assert station_status["bench_harness_design_present"] and station_status["bench_harness_exact_mini_fit_tool_selected"]
-    assert not station_status["bench_harness_source_end_process_selected"] and not station_status["bench_harness_physically_assembled"]
+    assert station_status["bench_harness_manufacturer_assembled_source_end_selected"] and station_status["bench_harness_source_end_process_selected"]
+    assert not station_status["bench_harness_received_lead_compatibility_validated"] and not station_status["bench_harness_physically_assembled"]
     root_status = json.loads((WB / "package-status.json").read_text(encoding="utf-8"))
     assert root_status["axis_commissioning_bench_harness_present"] and root_status["axis_commissioning_bench_harness_contact_map_complete"]
+    assert root_status["axis_commissioning_bench_harness_manufacturer_assembled_source_end_selected"]
+    assert root_status["axis_commissioning_bench_harness_source_end_process_selected"]
+    assert not root_status["axis_commissioning_bench_harness_received_lead_compatibility_validated"]
     assert not root_status["axis_commissioning_bench_harness_physically_validated"]
     assert (STATION / "index.html").read_text(encoding="utf-8").count("<!-- BENCH-HARNESS-P01 START -->") == 1
     assert (WB / "index.html").read_text(encoding="utf-8").count('id="bench-harness"') == 1

@@ -2,7 +2,7 @@ hold_id,unresolved_evidence,state,authority
 CS-H01,qualified electrical approval of the complete station and first-power procedure,OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 CS-H02,availability/calibration record for exact E36313A or a formally re-reviewed equivalent,OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 CS-H03,"received U2D2 USB revision, PHB dimensions, supplied standoffs and connector inspection",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
-CS-H04,"received 63819-0901/11-03-0044 tooling and calibration, approved Pomona source-end process, executed Mini-Fit crimp-height/pull/polarity records and signed BH-A01 as-built disposition",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+CS-H04,"received Mueller lead identity/length/jacket OD/conductor construction, complete tin-dipped-segment removal, received 63819-0901/11-03-0044 tooling and calibration, executed 18 AWG Mini-Fit crimp-height/pull/polarity records and signed BH-A01 as-built disposition",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 CS-H05,"tray/cover material, print settings, cover retention, labeling and received fit check",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 CS-H06,"print, received-fit, strap-slip, cover-retention and access-probe validation of the four-model no-motion fixture design",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 CS-H07,"approved host OS, exact DYNAMIXEL SDK version, code hash, operator review and log disposition for the write-free inspector",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"

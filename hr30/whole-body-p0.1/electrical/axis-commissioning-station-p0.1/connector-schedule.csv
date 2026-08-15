@@ -4,8 +4,8 @@ sheet,reference,terminal,pin_name,net,status
 01_current_limited_source.kicad_sch,PS1,PE,CLASS I PROTECTIVE EARTH,FACILITY_PE,CANDIDATE / VALIDATION OPEN
 01_current_limited_source.kicad_sch,P1,RED,SOURCE POSITIVE,CL_POS,CANDIDATE / VALIDATION OPEN
 01_current_limited_source.kicad_sch,P1,BLACK,SOURCE RETURN,CL_RET,CANDIDATE / VALIDATION OPEN
-01_current_limited_source.kicad_sch,P1,RED-OUT,20 AWG RED,LEAD_POS,CANDIDATE / VALIDATION OPEN
-01_current_limited_source.kicad_sch,P1,BLACK-OUT,20 AWG BLACK,LEAD_RET,CANDIDATE / VALIDATION OPEN
+01_current_limited_source.kicad_sch,P1,RED-OUT,18 AWG RED,LEAD_POS,CANDIDATE / VALIDATION OPEN
+01_current_limited_source.kicad_sch,P1,BLACK-OUT,18 AWG BLACK,LEAD_RET,CANDIDATE / VALIDATION OPEN
 02_power_hub_and_usb.kicad_sch,J1,1,POWER RETURN,LEAD_RET,CANDIDATE / VALIDATION OPEN
 02_power_hub_and_usb.kicad_sch,J1,2,POWER POSITIVE,LEAD_POS,CANDIDATE / VALIDATION OPEN
 02_power_hub_and_usb.kicad_sch,PHB1,P1,MINI-FIT RETURN,LEAD_RET,CANDIDATE / VALIDATION OPEN

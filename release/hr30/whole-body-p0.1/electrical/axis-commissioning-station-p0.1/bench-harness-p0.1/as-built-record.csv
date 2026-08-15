@@ -1,14 +1,14 @@
 record_id,field,required_value,observed_value,operator,reviewer,date_utc,result
 BH-R01,received part/lot/photo record,all exact candidates or documented approved deviation,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
-BH-R02,BH-W01 red first-cut length,1000 +/- 5 mm,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
-BH-R03,BH-W02 black first-cut length,1000 +/- 5 mm,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
-BH-R04,BH-W01 strip/strand inspection,3.00-3.30 mm; zero damaged strands,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
-BH-R05,BH-W02 strip/strand inspection,3.00-3.30 mm; zero damaged strands,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
-BH-R06,destructive crimp process coupon,0.83-0.93 mm and >58.7 N,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
-BH-R07,BH-W01 production crimp height/visual,0.83-0.93 mm and acceptable visual,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
-BH-R08,BH-W02 production crimp height/visual,0.83-0.93 mm and acceptable visual,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
+BH-R02,BH-W01 red tin-dipped-tip removal and finished length,complete dipped segment removed; discarded and finished lengths recorded,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
+BH-R03,BH-W02 black tin-dipped-tip removal and finished length,complete dipped segment removed; discarded and finished lengths recorded,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
+BH-R04,BH-W01 OD/material/strip/strand inspection,OD <=3.1 mm; accepted conductor construction; 3.00-3.30 mm; zero damaged strands; no fused/dipped segment in crimp zone,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
+BH-R05,BH-W02 OD/material/strip/strand inspection,OD <=3.1 mm; accepted conductor construction; 3.00-3.30 mm; zero damaged strands; no fused/dipped segment in crimp zone,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
+BH-R06,destructive crimp process coupon,1.00-1.10 mm and >88.0 N,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
+BH-R07,BH-W01 production crimp height/visual,1.00-1.10 mm and acceptable visual,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
+BH-R08,BH-W02 production crimp height/visual,1.00-1.10 mm and acceptable visual,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
 BH-R09,terminal insertion/retention and cavity identity,black J1-1; red J1-2; both locked,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
-BH-R10,source-end termination,approved Pomona process; no exposed conductor,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
+BH-R10,manufacturer-assembled source-end inspection,"correct Mueller parts/colors; shrouds, plugs, strain reliefs and cable exits undamaged",NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
 BH-R11,labels/free length/bend inspection,labels correct; >=12.7 mm relaxed free lead at J1,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
 BH-R12,independent polarity/continuity/short test,red-J1/2 only; black-J1/1 only; no cross-short,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
 BH-R13,final as-built disposition,qualified signed acceptance plus separate connection procedure,NOT RECORDED,UNASSIGNED,UNASSIGNED,NOT EXECUTED,OPEN
