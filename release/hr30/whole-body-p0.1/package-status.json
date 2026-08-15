@@ -270,5 +270,14 @@
   "tether_power_core_energization_authority": false,
   "physical_harness_route_cad_solids": 62,
   "physical_harness_route_step_present": true,
-  "physical_harness_route_glb_present": true
+  "physical_harness_route_glb_present": true,
+  "fabrication_sourcing_package_present": true,
+  "fabrication_sourcing_part_count": 98,
+  "fabrication_sourcing_provider_route_count": 7,
+  "fabrication_sourcing_quote_batch_count": 5,
+  "fabrication_sourcing_exact_stock_match_count": 1,
+  "fabrication_sourcing_stock_mismatch_count": 44,
+  "fabrication_supplier_contact_executed": false,
+  "fabrication_quotes_received": false,
+  "fabrication_materials_selected": false
 }

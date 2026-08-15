@@ -29,6 +29,7 @@ def main() -> int:
         "actuator-transmission-allocation.csv",
         "joint-family-cad/index.html",
         "manufacturing-files/index.html",
+        "fabrication-sourcing-p0.1/index.html",
         "grippers-p0.1/index.html",
         "hr30.urdf",
         "hr30.xml",
