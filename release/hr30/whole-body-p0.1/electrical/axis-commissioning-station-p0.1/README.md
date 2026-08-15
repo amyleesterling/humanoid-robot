@@ -9,3 +9,9 @@ This support-equipment package gives the complete 25-axis HR-30 a controlled pat
 
 Exact vendor-envelope guards and a write-free single-ID inspector are in `no-motion-inspection-p0.1/`. Physical fit, retention, approved software environment and all connection/power/motion authority remain open.
 <!-- NO-MOTION-P01 END -->
+
+<!-- BENCH-HARNESS-P01 START -->
+## Bench harness
+
+The current-limited source lead is defined in `bench-harness-p0.1/` with explicit contacts, wire preparation, tooling, inspection traveler and as-built record. The Pomona source-end process, fabrication, inspection, qualified review and all connection/power authority remain open.
+<!-- BENCH-HARNESS-P01 END -->

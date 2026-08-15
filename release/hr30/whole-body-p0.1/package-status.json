@@ -313,5 +313,10 @@
   "axis_commissioning_read_only_inspector_present": true,
   "axis_commissioning_device_write_api_present": false,
   "axis_commissioning_fixture_physically_validated": false,
-  "axis_commissioning_host_software_approved": false
+  "axis_commissioning_host_software_approved": false,
+  "axis_commissioning_bench_harness_present": true,
+  "axis_commissioning_bench_harness_assembly_count": 1,
+  "axis_commissioning_bench_harness_contact_map_complete": true,
+  "axis_commissioning_bench_harness_source_end_process_selected": false,
+  "axis_commissioning_bench_harness_physically_validated": false
 }

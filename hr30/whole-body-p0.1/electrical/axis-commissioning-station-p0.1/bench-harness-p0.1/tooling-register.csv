@@ -1,0 +1,7 @@
+tool_id,manufacturer,order_code,description,document,application,disposition
+BH-T01,Molex,63819-0901,"Type 4D hand crimp tool for Mini-Fit Jr male/female terminals, 18-24 AWG","638190901 Rev D, 2025-03-31",39-00-0038 on Alpha 3073 20 AWG,CANDIDATE; RECEIPT/CALIBRATION/CRIMP VALIDATION REQUIRED
+BH-T02,Molex,11-03-0044,HT60630B extraction tool,"ATS-011030044 Rev N, 2023-05-05",remove a misinserted 39-00-0038; extracted terminal must not be reused,CANDIDATE; RECEIPT INSPECTION REQUIRED
+BH-T03,SELECTION REQUIRED,SELECTION REQUIRED,calibrated crimp-height micrometer with blade/anvil suitable for open-barrel crimps,calibration certificate required,measure 0.83-0.93 mm conductor crimp height without damaging terminal,SELECTION REQUIRED
+BH-T04,SELECTION REQUIRED,SELECTION REQUIRED,calibrated tensile tester with suitable terminal/wire grips,calibration certificate required,destructive process coupon must exceed 58.7 N with insulation support removed from influence,SELECTION REQUIRED
+BH-T05,SELECTION REQUIRED,SELECTION REQUIRED,wire stripper for 20 AWG stranded copper,tool setup/coupon inspection required,3.00-3.30 mm strip; no nicked or cut strands,SELECTION REQUIRED
+BH-T06,SELECTION REQUIRED,SELECTION REQUIRED,Pomona 4933 termination tooling/process,must implement Pomona D1094280 Rev 100 without exposed conductor,qualified crimp or solder process at both source ends,SELECTION REQUIRED
