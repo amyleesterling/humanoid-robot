@@ -27,15 +27,15 @@
         </body>
         <body name="L_shoulder_pitch_link" pos="0.105000 0.000000 0.165000">
           <joint name="L_SHOULDER_PITCH" type="hinge" axis="1 0 0" range="-1.570000 1.570000" />
-          <inertial pos="0.000401 0.023861 -0.008832" mass="0.280768" diaginertia="0.000200000 0.000116144 0.000158728" />
+          <inertial pos="0.000397 0.026892 -0.008751" mass="0.283380" diaginertia="0.000201861 0.000117225 0.000160204" />
           <geom pos="0.000000 0.000000 0.000000" size="0.020000 0.036000 0.029000" />
           <body name="L_upper_arm" pos="0.000000 0.000000 0.000000">
             <joint name="L_SHOULDER_ROLL" type="hinge" axis="0 1 0" range="-1.220000 1.220000" />
-            <inertial pos="0.005954 0.000069 -0.086921" mass="0.465854" diaginertia="0.000978449 0.000978449 0.000209945" />
+            <inertial pos="0.005927 0.000068 -0.087636" mass="0.468466" diaginertia="0.000983935 0.000983935 0.000211122" />
             <geom pos="0.015000 0.000000 -0.075000" size="0.026000 0.026000 0.075000" />
             <body name="L_forearm" pos="0.030000 0.000000 -0.150000">
               <joint name="L_ELBOW_PITCH" type="hinge" axis="1 0 0" range="0.000000 2.200000" />
-              <inertial pos="0.001248 0.000000 -0.088827" mass="0.125225" diaginertia="0.000245493 0.000245493 0.000052177" />
+              <inertial pos="0.002111 -0.000001 -0.090330" mass="0.125225" diaginertia="0.000245493 0.000245493 0.000052177" />
               <geom pos="0.002500 0.000000 -0.072500" size="0.025000 0.025000 0.072500" />
               <body name="L_hand" pos="0.005000 0.000000 -0.145000">
                 <joint name="L_WRIST_ROTATION" type="hinge" axis="0 0 1" range="-1.570000 1.570000" />
@@ -52,15 +52,15 @@
         </body>
         <body name="R_shoulder_pitch_link" pos="-0.105000 0.000000 0.165000">
           <joint name="R_SHOULDER_PITCH" type="hinge" axis="1 0 0" range="-1.570000 1.570000" />
-          <inertial pos="0.000401 0.023861 -0.008832" mass="0.280768" diaginertia="0.000200000 0.000116144 0.000158728" />
+          <inertial pos="0.000397 0.026892 -0.008751" mass="0.283380" diaginertia="0.000201861 0.000117225 0.000160204" />
           <geom pos="0.000000 0.000000 0.000000" size="0.020000 0.036000 0.029000" />
           <body name="R_upper_arm" pos="0.000000 0.000000 0.000000">
             <joint name="R_SHOULDER_ROLL" type="hinge" axis="0 1 0" range="-1.220000 1.220000" />
-            <inertial pos="-0.002162 0.000069 -0.086921" mass="0.465854" diaginertia="0.000978449 0.000978449 0.000209945" />
+            <inertial pos="-0.002156 0.000068 -0.087636" mass="0.468466" diaginertia="0.000983935 0.000983935 0.000211122" />
             <geom pos="-0.015000 0.000000 -0.075000" size="0.026000 0.026000 0.075000" />
             <body name="R_forearm" pos="-0.030000 0.000000 -0.150000">
               <joint name="R_ELBOW_PITCH" type="hinge" axis="1 0 0" range="0.000000 2.200000" />
-              <inertial pos="-0.005517 0.000000 -0.088827" mass="0.125225" diaginertia="0.000245493 0.000245493 0.000052177" />
+              <inertial pos="-0.004655 -0.000001 -0.090330" mass="0.125225" diaginertia="0.000245493 0.000245493 0.000052177" />
               <geom pos="-0.002500 0.000000 -0.072500" size="0.025000 0.025000 0.072500" />
               <body name="R_hand" pos="-0.005000 0.000000 -0.145000">
                 <joint name="R_WRIST_ROTATION" type="hinge" axis="0 0 1" range="-1.570000 1.570000" />

@@ -1,15 +1,15 @@
 $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\validation\hr30-whole-body-electrical-p0.1-erc.rpt" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\hr30-whole-body-electrical-p0.1.kicad_sch"
 Found 0 violations
 Saved ERC Report to C:/Users/amyle/Documents/New project/humanoid-robot-publish/hr30/whole-body-p0.1/electrical/kicad/hr30-whole-body-electrical-p0.1/validation/hr30-whole-body-electrical-p0.1-erc.rpt
-01:56:57: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-01:56:57: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+09:37:11: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+09:37:11: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0
 
 $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\humanoid-robot-publish\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\validation\hr30-whole-body-electrical-p0.1.net" "C:\Users\amyle\Documents\New project\humanoid-robot-publish\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\hr30-whole-body-electrical-p0.1.kicad_sch"
 Warning: schematic has annotation errors, please use the schematic editor to fix them
-01:57:01: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-01:57:01: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+09:37:14: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+09:37:14: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0
 
@@ -34,7 +34,7 @@ Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\hr30\who
 Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\output\hr30-whole-body-electrical-p0.1-17 Right foot four-point load sensing.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\humanoid-robot-publish\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\output\hr30-whole-body-electrical-p0.1-18 Onboard-later isolated energy evaluation.svg'.
 Done.
-01:57:03: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-01:57:03: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+09:37:16: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+09:37:16: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0

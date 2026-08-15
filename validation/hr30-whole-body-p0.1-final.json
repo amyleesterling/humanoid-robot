@@ -1,0 +1,39 @@
+{
+  "identifier": "HR30-WHOLE-BODY-P0.1-FINAL-VALIDATION",
+  "date": "2026-08-15",
+  "unique_validator_count": 31,
+  "unique_validator_failures_after_correction": 0,
+  "initial_cad_runtime_run": {
+    "validator_count": 30,
+    "engineering_artifact_failures": 0,
+    "stale_checker_expectation_failures": 1,
+    "record": "validation/hr30-whole-body-p0.1-checks.json"
+  },
+  "targeted_retry": {
+    "checker": "check_hr30_joint_family_cad_p01.py",
+    "pass": true,
+    "record": "validation/hr30-whole-body-p0.1-joint-family-retry.json"
+  },
+  "separate_kicad_python_check": {
+    "checker": "check_hr30_actuator_interface_carriers_p01.py",
+    "pass": true,
+    "result": "86 sourced parts; ERC 0/0; both routed six-layer carriers DRC 0/0 with zero unconnected pads"
+  },
+  "browser_inspection": {
+    "page": "hr30/whole-body-p0.1/transmission-closure-p0.1/index.html",
+    "desktop_pass": true,
+    "mobile_viewport_css_px": [390, 844],
+    "body_font_css_px": 16,
+    "table_font_css_px": 14,
+    "horizontal_overflow": false,
+    "model_viewer_count": 1,
+    "console_warning_or_error_count": 0
+  },
+  "package_pass": true,
+  "fabrication_authority": false,
+  "assembly_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false,
+  "warning": "PRELIMINARY WHOLE-BODY ENGINEERING CANDIDATE - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
+}
