@@ -251,8 +251,16 @@ def export_state(parts: list[Part], state: str) -> None:
 
 
 def export_installed_state(parts: list[Part], state: str) -> None:
-    body_path = PACKAGE / "HR-30_modular_fabrication_candidate.step"
-    robot = cq.importers.importStep(str(body_path)).val()
+    # Rebuild the installed view from every non-hand fabrication part.  The
+    # authoritative fabrication spine now contains the CLOSED hand parts, so
+    # importing that STEP and adding this state would duplicate the mechanism.
+    # Keeping the base handless here lets CLOSED and OPEN remain honest,
+    # mutually exclusive whole-robot configurations.
+    import generate_hr30_fabrication_architecture_p01 as fabrication
+    robot = cq.Compound.makeCompound([
+        candidate.shape for candidate in fabrication.build()[0]
+        if candidate.density_kg_m3 > 1.0 and candidate.module not in {"G01", "G02"}
+    ])
     solids = [robot, compound_for(parts, "L", True), compound_for(parts, "R", True)]
     step = OUT / f"HR-30_detailed_hands_installed_{state.lower()}_candidate.step"
     export_step(cq.Compound.makeCompound(solids), step)

@@ -29,6 +29,7 @@ def main() -> int:
         "actuator-transmission-allocation.csv",
         "joint-family-cad/index.html",
         "manufacturing-files/index.html",
+        "grippers-p0.1/index.html",
         "hr30.urdf",
         "hr30.xml",
         "mass-properties-budget.csv",
@@ -43,8 +44,10 @@ def main() -> int:
     require(all(link in text for link in required_links), "root page does not expose the complete package")
     require("PRELIMINARY" in text and "NOT APPROVED" in text and "energization" in text.lower(), "preliminary authority warning missing")
     require(displayed_mass in text, f"root page mass is not synchronized to the authoritative reconciliation: {displayed_mass}")
+    require("only 0.050 kg remains" in text, "narrow P0.1 mass margin is not visible on the root page")
     require("9.63 kg" not in text, "historical allocation mass remains on the current root page")
     require('src="hr30/whole-body-p0.1/vendor/model-viewer.min.js"' in text, "viewer is not repository-local")
+    require('src="hr30/whole-body-p0.1/grippers-p0.1/HR-30_detailed_hands_installed_open_candidate.glb"' in text, "root viewer does not show the hand-integrated whole robot")
     require("font:17px/1.55" in text and "font-size:16px" in text and "font-size:14px" in text, "legibility minima missing")
     require("minmax(230px,1fr)" in text and "@media (max-width:680px)" in text, "responsive layout controls missing")
     require((ROOT / ".nojekyll").exists(), "GitHub Pages no-Jekyll marker missing")

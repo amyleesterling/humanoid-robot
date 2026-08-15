@@ -49,7 +49,7 @@ def main() -> int:
     require(sha(PKG / "manufacturing-files-source.py") == sha(ROOT / "tools" / "generate_hr30_manufacturing_files_p01.py"), "generator snapshot drift")
 
     rows = read_csv(PKG / "part-file-register.csv")
-    require(len(rows) == 66 and len({row["part_id"] for row in rows}) == 66, "66 unique physical parts not present")
+    require(len(rows) == 98 and len({row["part_id"] for row in rows}) == 98, "98 unique physical parts not present")
     require({row["module"] for row in rows} == MODULES, "twelve-module part coverage drift")
     require(all(not row["part_id"].startswith("HN01_") for row in rows), "nonmaterial harness route leaked into physical parts")
     require(all(float(row["volume_mm3"]) > 0 and float(row["candidate_mass_kg"]) > 0 for row in rows), "empty part geometry or mass")
@@ -57,8 +57,8 @@ def main() -> int:
 
     dxf_rows = [row for row in rows if row["dxf_path"]]
     stl_rows = [row for row in rows if row["stl_path"]]
-    require(len(dxf_rows) == 35, "planar profile DXF count drift")
-    require(len(stl_rows) == 26 and all(row["role"] == "removable cover" for row in stl_rows), "printed-cover STL count/scope drift")
+    require(len(dxf_rows) == 45, "planar profile DXF count drift")
+    require(len(stl_rows) == 24 and all(row["role"] == "removable cover" for row in stl_rows), "printed-cover STL count/scope drift")
     require(all(("2.5D" in row["process_candidate"] or "waterjet" in row["process_candidate"]) for row in dxf_rows), "DXF assigned outside planar candidate process")
 
     imported = 0
@@ -84,21 +84,21 @@ def main() -> int:
     materials = read_csv(PKG / "material-cut-list.csv")
     processes = read_csv(PKG / "process-route-register.csv")
     inspections = read_csv(PKG / "inspection-characteristic-register.csv")
-    require(len(materials) == len(processes) == 66, "material/process register count drift")
+    require(len(materials) == len(processes) == 98, "material/process register count drift")
     require({row["part_id"] for row in materials} == {row["part_id"] for row in rows} == {row["part_id"] for row in processes}, "part registers do not reconcile")
-    require(len(inspections) == 330 and Counter(row["part_id"] for row in inspections) == Counter({row["part_id"]: 5 for row in rows}), "five inspection characteristics per part not present")
+    require(len(inspections) == 490 and Counter(row["part_id"] for row in inspections) == Counter({row["part_id"]: 5 for row in rows}), "five inspection characteristics per part not present")
     require(all("SELECTION REQUIRED" in row["acceptance_requirement"] and row["result"] == "NOT EXECUTED" for row in inspections), "inspection register overclaims release/evidence")
 
     binding = json.loads((PKG / "source-binding.json").read_text(encoding="utf-8"))
-    require(binding["physical_source_part_count"] == 66 and binding["excluded_reference_volume_count"] == 12, "source binding counts drift")
+    require(binding["physical_source_part_count"] == 98 and binding["excluded_reference_volume_count"] == 12, "source binding counts drift")
     require(binding["source_generator_sha256"] == sha(ROOT / binding["source_generator"]), "fabrication source hash drift")
     require(binding["manufacturing_file_generator_sha256"] == sha(ROOT / binding["manufacturing_file_generator"]), "manufacturing generator hash drift")
 
     status = json.loads((PKG / "manufacturing-files-status.json").read_text(encoding="utf-8"))
     expected_counts = {
-        "physical_part_count": 66, "individual_step_count": 66,
-        "individual_svg_drawing_view_count": 66, "planar_profile_dxf_count": 35,
-        "printed_cover_stl_count": 26, "inspection_characteristic_count": 330,
+        "physical_part_count": 98, "individual_step_count": 98,
+        "individual_svg_drawing_view_count": 98, "planar_profile_dxf_count": 45,
+        "printed_cover_stl_count": 24, "inspection_characteristic_count": 490,
         "module_count": 12, "reference_route_volumes_excluded": 12,
     }
     require(all(status[key] == value for key, value in expected_counts.items()), "manufacturing status counts drift")
@@ -120,22 +120,22 @@ def main() -> int:
         require(key in manifest and int(manifest[key]["bytes"]) == path.stat().st_size and manifest[key]["sha256"] == sha(path), f"parent manifest drift: {key}")
 
     page = (PKG / "index.html").read_text(encoding="utf-8")
-    require(page.count('class="part"') == 66 and page.count("<details open>") == 12, "manufacturing guide body/module counts drift")
+    require(page.count('class="part"') == 98 and page.count("<details open>") == 12, "manufacturing guide body/module counts drift")
     require("font:17px/1.55" in page and not re.search(r"font-size:\s*(?:[0-9]|1[01])px", page), "manufacturing guide legibility drift")
     require(all(row["step_path"] in page and row["svg_path"] in page for row in rows), "manufacturing guide links incomplete")
     require(WARNING in page and "not released drawings" in page.lower(), "manufacturing guide authority boundary missing")
     parent_page = (SRC / "index.html").read_text(encoding="utf-8")
     require(parent_page.count('id="manufacturing-files"') == 1 and "manufacturing-files/index.html" in parent_page, "whole-body guide manufacturing section missing")
     parent_status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
-    require(parent_status["individual_manufacturing_file_package_present"] and parent_status["individual_physical_part_step_count"] == 66, "whole-body package manufacturing binding missing")
+    require(parent_status["individual_manufacturing_file_package_present"] and parent_status["individual_physical_part_step_count"] == 98, "whole-body package manufacturing binding missing")
     require(not parent_status["individual_part_files_fabrication_released"] and not parent_status["individual_part_drawings_released"], "whole-body package overclaims part release")
     readme = (SRC / "README.md").read_text(encoding="utf-8")
-    require("## Individual manufacturing-candidate files" in readme and "66 physical frame" in readme, "whole-body README manufacturing section missing")
+    require("## Individual manufacturing-candidate files" in readme and "98 physical frame" in readme, "whole-body README manufacturing section missing")
     holds = {row["hold_id"]: row for row in read_csv(SRC / "open-holds.csv")}
-    require("All 66 physical frame/cover candidates" in holds["HR30-P01-H06"]["unresolved_item"], "H06 manufacturing disposition missing")
-    require("individual candidate files for all 66" in holds["HR30-P01-H10"]["unresolved_item"], "H10 manufacturing disposition missing")
+    require("All 98 physical frame/cover/gripper-mechanism candidates" in holds["HR30-P01-H06"]["unresolved_item"], "H06 manufacturing disposition missing")
+    require("individual candidate files for all 98" in holds["HR30-P01-H10"]["unresolved_item"], "H10 manufacturing disposition missing")
 
-    print(f"PASS: reimported {imported} individual STEP files; 66 physical HR-30 candidates have STEP/SVG, 35 planar candidates have DXF and 26 covers have STL; drawing release, DFM/FAI, proof and all work authority remain false")
+    print(f"PASS: reimported {imported} individual STEP files; 98 physical HR-30 candidates including both detailed hands have STEP/SVG, 45 planar candidates have DXF and 24 covers have STL; drawing release, DFM/FAI, proof and all work authority remain false")
     return 0
 
 

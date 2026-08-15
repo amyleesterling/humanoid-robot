@@ -30,6 +30,7 @@ OUT = PACKAGE / "module-cad"
 IDENTIFIER = "HR30-MODULE-CAD-EXPORTS-P0.1"
 WARNING = body.WARNING
 MODULE_IDS = ["H01", "N01", "T01", "P01", "A01", "G01", "A02", "G02", "L01", "F01", "L02", "F02"]
+FABRICATION_PART_COUNT = 98
 AXIS_MODULE = {
     "HEAD_PAN": "N01", "HEAD_TILT": "N01", "WAIST_YAW": "P01",
     "L_SHOULDER_PITCH": "A01", "L_SHOULDER_ROLL": "A01", "L_ELBOW_PITCH": "A01", "L_WRIST_ROTATION": "A01", "L_GRIPPER": "G01",
@@ -169,7 +170,7 @@ def update_package(rows: list[dict]) -> None:
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
     marker = "<section><h2>System artifacts</h2>"
-    section = f'''{start}<section id="module-cad"><h2>Explode the robot into 12 real modules</h2><div class="grid"><article class="card pass"><div class="metric">12 + 12</div><p>Fabrication STEP and integration-reference STEP exports cover every body module.</p></article><article class="card pass"><div class="metric">66</div><p>Existing fabrication parts are deterministically owned by the module exports.</p></article><article class="card pass"><h3>Actual whole-body sources</h3><p>Joint, hand, shell and equipment geometry comes from the same generators as the integrated robot.</p></article><article class="card hold"><h3>Still preliminary</h3><p>Explosion is a service/refinement view; drawings, fasteners, fits, tolerances and physical proof remain open.</p></article></div><div class="viewer"><model-viewer src="module-cad/HR-30_module_exploded_candidate.glb" poster="front-elevation.svg" alt="Interactive exploded view of all 12 HR-30 whole-body modules" camera-controls camera-orbit="35deg 76deg 115%" field-of-view="28deg" shadow-intensity="0.85" exposure="1.05"></model-viewer><p><a href="module-cad/index.html">Open the exploded module guide</a> · <a href="module-cad/HR-30_module_exploded_candidate.step">Exploded STEP</a> · <a href="module-cad/module-export-register.csv">Module export register</a>.</p></div></section>{end}'''
+    section = f'''{start}<section id="module-cad"><h2>Explode the robot into 12 real modules</h2><div class="grid"><article class="card pass"><div class="metric">12 + 12</div><p>Fabrication STEP and integration-reference STEP exports cover every body module.</p></article><article class="card pass"><div class="metric">{FABRICATION_PART_COUNT}</div><p>Fabrication parts, including both complete gripper mechanisms, are deterministically owned by the module exports.</p></article><article class="card pass"><h3>Actual whole-body sources</h3><p>Joint, hand, shell and equipment geometry comes from the same generators as the integrated robot.</p></article><article class="card hold"><h3>Still preliminary</h3><p>Explosion is a service/refinement view; drawings, fasteners, fits, tolerances and physical proof remain open.</p></article></div><div class="viewer"><model-viewer src="module-cad/HR-30_module_exploded_candidate.glb" poster="front-elevation.svg" alt="Interactive exploded view of all 12 HR-30 whole-body modules" camera-controls camera-orbit="35deg 76deg 115%" field-of-view="28deg" shadow-intensity="0.85" exposure="1.05"></model-viewer><p><a href="module-cad/index.html">Open the exploded module guide</a> · <a href="module-cad/HR-30_module_exploded_candidate.step">Exploded STEP</a> · <a href="module-cad/module-export-register.csv">Module export register</a>.</p></div></section>{end}'''
     if marker not in page:
         raise RuntimeError("main page module-CAD marker missing")
     page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")
@@ -260,8 +261,8 @@ def main() -> int:
             "release_state": "SEPARABLE P0.1 MODULE CAD - DRAWING/GD&T/MATERIAL/FASTENER/DFM/FAI/PHYSICAL VALIDATION OPEN", "warning": WARNING,
         })
 
-    if sum(len(v) for v in fab_by_module.values()) != 66:
-        raise RuntimeError("66 fabrication parts are not owned exactly once")
+    if sum(len(v) for v in fab_by_module.values()) != FABRICATION_PART_COUNT:
+        raise RuntimeError(f"{FABRICATION_PART_COUNT} fabrication parts are not owned exactly once")
     exploded_step = OUT / "HR-30_module_exploded_candidate.step"
     export_step(compound(exploded_shapes, "exploded whole body"), exploded_step)
     exploded_glb = OUT / "HR-30_module_exploded_candidate.glb"
@@ -279,7 +280,7 @@ def main() -> int:
     shutil.copy2(Path(__file__), OUT / "module-cad-source.py")
     status = {
         "identifier": IDENTIFIER, "module_count": 12, "fabrication_step_count": 12,
-        "integration_reference_step_count": 12, "fabrication_part_ownership_count": 66,
+        "integration_reference_step_count": 12, "fabrication_part_ownership_count": FABRICATION_PART_COUNT,
         "exploded_step_present": True, "exploded_glb_present": True,
         "exploded_glb_display_linear_tolerance_mm": 0.50,
         "exploded_glb_display_angular_tolerance_rad": 0.25,

@@ -41,8 +41,8 @@ def main() -> int:
 
     status = json.loads((SRC / "fabrication-architecture-status.json").read_text(encoding="utf-8"))
     require(status["identifier"] == "HR-30-FABRICATION-ARCH-P0.1", "fabrication identifier mismatch")
-    require(status["physical_fabrication_part_count"] >= 60, "fabrication assembly lacks complete physical part population")
-    require(status["service_panel_count"] == 26, "service panel count mismatch")
+    require(status["physical_fabrication_part_count"] == 98, "fabrication assembly lacks the complete 98-part population")
+    require(status["service_panel_count"] == 24, "service panel count mismatch")
     require(status["harness_route_count"] == 12, "harness route count mismatch")
     require(status["all_geometry_valid"] and status["frame_geometry_present"] and status["hollow_split_shell_geometry_present"], "frame/shell geometry status incomplete")
     require(status["service_access_geometry_present"] and status["segregated_harness_corridors_present"], "service/harness geometry status incomplete")
@@ -53,7 +53,10 @@ def main() -> int:
     routes = list(csv.DictReader((SRC / "harness-route-register.csv").open(encoding="utf-8")))
     require(len({row["part_id"] for row in parts}) == len(parts), "duplicate fabrication part identity")
     require({row["module"] for row in parts} >= {"H01", "N01", "T01", "P01", "A01", "A02", "G01", "G02", "L01", "L02", "F01", "F02", "HN01"}, "fabrication geometry does not cover every body module")
-    require(len(panels) == 26 and len({row["panel_id"] for row in panels}) == 26, "service panel register incomplete")
+    require(len(panels) == 24 and len({row["panel_id"] for row in panels}) == 24, "service panel register incomplete")
+    require(sum(row["module"] == "G01" for row in parts if row["role"] != "harness corridor reference") == 17, "left detailed gripper is not authoritative in fabrication CAD")
+    require(sum(row["module"] == "G02" for row in parts if row["role"] != "harness corridor reference") == 17, "right detailed gripper is not authoritative in fabrication CAD")
+    require(not any(row["part_id"].endswith("PALM_REAR_COVER") for row in parts), "obsolete envelope-only palm cover remains in fabrication CAD")
     require(all(float(row["nominal_wall_mm"]) >= 1.5 and "SELECTION REQUIRED" in row["release_state"] for row in panels), "panel wall/release boundary missing")
     require(all(float(row["nominal_wall_mm"]) >= 1.6 for row in panels if row["module"] in {"H01", "T01", "P01"}), "central/head shell wall architecture drift")
     require(len(routes) == 12 and {row["service_class"] for row in routes} == {"ACTUATOR POWER", "DATA/LOW VOLTAGE", "DATA/ENCODER"}, "harness route service classes incomplete")
@@ -77,18 +80,18 @@ def main() -> int:
 
     package = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
     require(package["modular_fabrication_architecture_present"] and package["fabrication_part_count"] == status["physical_fabrication_part_count"], "main package fabrication status mismatch")
-    require(package["service_panel_count"] == 26 and package["harness_route_count"] == 12, "main package service/harness counts mismatch")
+    require(package["service_panel_count"] == 24 and package["harness_route_count"] == 12, "main package service/harness counts mismatch")
     require(not package["fabrication_drawings_released"] and not package["harness_selected_or_validated"], "main package release boundary overclaim")
 
     bom = {row["item_id"]: row for row in csv.DictReader((SRC / "whole-robot-candidate-bom.csv").open(encoding="utf-8"))}
     require(bom["HR30-BOM-003"]["quantity"] == "8" and bom["HR30-BOM-003"]["function"] == "shoulder-roll/elbow/ankle actuator", "XM430 whole-body BOM allocation stale")
     require(bom["HR30-BOM-004"]["quantity"] == "6" and bom["HR30-BOM-004"]["function"] == "head/gripper/wrist actuator", "XC330 whole-body BOM allocation stale")
-    require("12 located route-derived" in bom["HR30-BOM-030"]["candidate"], "harness BOM not synchronized to installed route architecture")
+    require("12 segregated power/data route corridors" in bom["HR30-BOM-030"]["candidate"], "harness BOM not synchronized to installed route architecture")
     require("Released interface-control drawings" in (SRC / "modular-fabrication-assembly-electrification-plan.md").read_text(encoding="utf-8"), "build plan does not disclose unreleased interface drawings")
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require("HR-30_modular_fabrication_candidate.step" in page and "harness-route-register.csv" in page, "web guide does not expose fabrication artifacts")
     require('src="HR-30_modular_fabrication_reference.glb"' in page and "Inspect the modular frame" in page, "web guide does not expose the interactive fabrication assembly")
-    print(f"PASS: HR-30 modular fabrication architecture has {status['physical_fabrication_part_count']} physical parts, 26 service panels, 12 harness corridors including separate head power/data paths, synchronized STEP/GLB/source-release evidence; no fabrication or powered authority")
+    print(f"PASS: HR-30 modular fabrication architecture has {status['physical_fabrication_part_count']} physical parts including two 17-part custom grippers, 24 service panels, 12 harness corridors including separate head power/data paths, synchronized STEP/GLB/source-release evidence; no fabrication or powered authority")
     return 0
 
 

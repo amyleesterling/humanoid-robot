@@ -55,7 +55,7 @@ def main() -> int:
 
     rows = read_csv(MOD / "module-export-register.csv")
     require(len(rows) == 12 and {r["module_id"] for r in rows} == MODULE_IDS, "12-module export register drift")
-    require(sum(int(r["fabrication_part_count"]) for r in rows) == 66, "66 fabrication parts are not owned exactly once")
+    require(sum(int(r["fabrication_part_count"]) for r in rows) == 98, "98 fabrication parts are not owned exactly once")
     require(all(int(r["fabrication_part_count"]) > 0 for r in rows), "a module has no fabrication geometry")
     require(all(int(r["body_component_count"]) > 0 for r in rows), "a module has no body/joint/hand geometry")
     require(all(int(r["integration_physical_solid_count"]) >= int(r["fabrication_part_count"]) for r in rows), "integration solid count below fabrication count")
@@ -102,7 +102,7 @@ def main() -> int:
 
     status = json.loads((MOD / "module-cad-status.json").read_text(encoding="utf-8"))
     require(status["module_count"] == status["fabrication_step_count"] == status["integration_reference_step_count"] == 12, "module CAD status count drift")
-    require(status["fabrication_part_ownership_count"] == 66 and status["exploded_step_present"] and status["exploded_glb_present"], "module CAD status incomplete")
+    require(status["fabrication_part_ownership_count"] == 98 and status["exploded_step_present"] and status["exploded_glb_present"], "module CAD status incomplete")
     require(status["exploded_glb_display_linear_tolerance_mm"] == 0.50 and status["exploded_glb_display_angular_tolerance_rad"] == 0.25, "GLB display-tessellation provenance drift")
     require(not any(status[key] for key in ("drawings_released", "materials_selected", "fasteners_selected", "structural_capacity_validated", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "module CAD status overclaims release or authority")
     package_status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
@@ -125,7 +125,7 @@ def main() -> int:
     atlas = (SRC / "whole-body-interface-atlas.html").read_text(encoding="utf-8")
     require("Separate the robot into build modules" in atlas and "module-cad/HR-30_module_exploded_candidate.glb" in atlas, "interface atlas exploded-module view missing")
 
-    print(f"PASS: reimported {imported} native STEP assemblies; 12 HR-30 modules own all 66 fabrication parts and include body/joint/hand/equipment reference geometry; drawings and all work authority remain false")
+    print(f"PASS: reimported {imported} native STEP assemblies; 12 HR-30 modules own all 98 fabrication parts including both detailed hand mechanisms and include body/joint/hand/equipment reference geometry; drawings and all work authority remain false")
     return 0
 
 

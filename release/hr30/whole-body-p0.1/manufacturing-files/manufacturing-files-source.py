@@ -1,6 +1,6 @@
 """Generate individual HR-30 P0.1 fabrication-candidate part files.
 
-All 66 physical frame and cover parts receive native STEP and SVG drawing-view
+All 98 physical frame, cover, and gripper-mechanism parts receive native STEP and SVG drawing-view
 exports.  Planar 2.5D candidates also receive face-profile DXF; printable cover
 candidates receive STL.  These are refinement/RFQ candidates, not released
 drawings or authority to make parts.
@@ -29,6 +29,7 @@ OUT = PACKAGE / "manufacturing-files"
 IDENTIFIER = "HR30-MANUFACTURING-FILES-P0.1"
 WARNING = body.WARNING
 MODULE_ORDER = ["H01", "N01", "T01", "P01", "A01", "G01", "A02", "G02", "L01", "F01", "L02", "F02"]
+PHYSICAL_PART_COUNT = 98
 
 
 def sha256(path: Path) -> str:
@@ -123,7 +124,7 @@ def render_index(rows: list[dict], module_counts: Counter) -> str:
         groups.append(f'''<details open><summary>{module} · {module_counts[module]} parts</summary><div class="parts">{''.join(cards)}</div></details>''')
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 individual manufacturing files P0.1</title><script type="module" src="../vendor/model-viewer.min.js"></script><style>
 :root{{--deep:#071d36;--navy:#0b3765;--sky:#7dd3fc;--pale:#eef8fe;--gold:#f2b91d;--line:#acd4e8;--ink:#142a40}}*{{box-sizing:border-box}}html,body{{max-width:100%;overflow-x:clip}}body{{margin:0;background:var(--pale);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header{{background:var(--deep);color:white;padding:36px max(20px,calc((100vw - 1280px)/2))}}h1{{font-size:clamp(36px,6vw,68px);line-height:1.04;margin:.2em 0}}h2{{font-size:clamp(27px,4vw,42px);color:var(--navy)}}h3{{font-size:19px;color:var(--navy);margin:.1em 0}}.warning{{background:var(--gold);color:#17243a;border:3px solid #8a5b00;padding:16px 18px;font-weight:900}}main{{width:100%;max-width:1280px;margin:auto;padding:28px 20px 80px}}.viewer,.part,.panel,details{{background:white;border:2px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 3px 0 #c4e2f1}}model-viewer{{display:block;width:100%;height:clamp(520px,72vh,780px);background:radial-gradient(circle,#fff,var(--pale))}}.viewer p,.panel{{padding:16px 20px}}details{{margin:16px 0}}summary{{cursor:pointer;padding:16px 20px;background:var(--navy);color:white;font-size:20px;font-weight:900}}.parts{{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;padding:14px}}.part{{padding:16px;box-shadow:none}}.part p{{margin:.35em 0}}a{{color:#075b9b;font-weight:800}}footer{{background:var(--deep);color:white;padding:30px max(20px,calc((100vw - 1280px)/2))}}@media(max-width:560px){{.parts{{grid-template-columns:1fr;padding:10px}}main{{padding-inline:12px}}}}
-</style></head><body><header><div class="warning">{WARNING}</div><h1>Individual fabrication candidates for the whole robot.</h1><p>Every physical frame and cover part has a native STEP and human-readable SVG drawing view. Planar 2.5D candidates also expose DXF profiles; removable printed covers expose STL meshes.</p></header><main><section><h2>Keep the whole robot in view</h2><div class="viewer"><model-viewer src="../module-cad/HR-30_module_exploded_candidate.glb" poster="../front-elevation.svg" alt="Interactive exploded view of the twelve HR-30 modules whose individual fabrication candidates are listed below" camera-controls camera-orbit="35deg 76deg 115%" field-of-view="28deg" shadow-intensity="0.85" exposure="1.05"></model-viewer><p>Use the <a href="part-file-register.csv">part-file register</a>, <a href="material-cut-list.csv">material/cut list</a>, <a href="process-route-register.csv">process routes</a>, and <a href="inspection-characteristic-register.csv">inspection characteristics</a> with the native files below.</p></div></section><section><h2>66 physical part candidates</h2>{''.join(groups)}</section><section><h2>Manufacturing boundary</h2><div class="panel"><p>These files expose the current geometry for refinement and supplier discussion. They are not released drawings: exact material/product, allowables, stock condition, tolerances, GD&amp;T, threads/inserts, fasteners, surface finish, print orientation/settings, support removal, post-processing, DFM, FAI, structural proof and physical validation remain unresolved. Routing-reference volumes are intentionally excluded.</p></div></section></main><footer>Project Button · HR-30 individual manufacturing files P0.1 · no procurement, fabrication, assembly, powered-test, motion or energization authority</footer></body></html>'''
+</style></head><body><header><div class="warning">{WARNING}</div><h1>Individual fabrication candidates for the whole robot.</h1><p>Every physical frame, cover, and gripper-mechanism part has a native STEP and human-readable SVG drawing view. Planar 2.5D candidates also expose DXF profiles; removable printed covers expose STL meshes.</p></header><main><section><h2>Keep the whole robot in view</h2><div class="viewer"><model-viewer src="../module-cad/HR-30_module_exploded_candidate.glb" poster="../front-elevation.svg" alt="Interactive exploded view of the twelve HR-30 modules whose individual fabrication candidates are listed below" camera-controls camera-orbit="35deg 76deg 115%" field-of-view="28deg" shadow-intensity="0.85" exposure="1.05"></model-viewer><p>Use the <a href="part-file-register.csv">part-file register</a>, <a href="material-cut-list.csv">material/cut list</a>, <a href="process-route-register.csv">process routes</a>, and <a href="inspection-characteristic-register.csv">inspection characteristics</a> with the native files below.</p></div></section><section><h2>{PHYSICAL_PART_COUNT} physical part candidates</h2>{''.join(groups)}</section><section><h2>Manufacturing boundary</h2><div class="panel"><p>These files expose the current geometry for refinement and supplier discussion. They are not released drawings: exact material/product, allowables, stock condition, tolerances, GD&amp;T, threads/inserts, fasteners, surface finish, print orientation/settings, support removal, post-processing, DFM, FAI, structural proof and physical validation remain unresolved. Routing-reference volumes are intentionally excluded.</p></div></section></main><footer>Project Button · HR-30 individual manufacturing files P0.1 · no procurement, fabrication, assembly, powered-test, motion or energization authority</footer></body></html>'''
 
 
 def update_package() -> None:
@@ -131,8 +132,8 @@ def update_package() -> None:
     status = json.loads(status_path.read_text(encoding="utf-8"))
     status.update({
         "individual_manufacturing_file_package_present": True,
-        "individual_physical_part_step_count": 66,
-        "individual_part_svg_drawing_view_count": 66,
+        "individual_physical_part_step_count": PHYSICAL_PART_COUNT,
+        "individual_part_svg_drawing_view_count": PHYSICAL_PART_COUNT,
         "individual_part_files_fabrication_released": False,
         "individual_part_drawings_released": False,
     })
@@ -143,19 +144,26 @@ def update_package() -> None:
         holds = list(csv.DictReader(handle))
     for row in holds:
         if row["hold_id"] == "HR30-P01-H06":
-            row["unresolved_item"] = "All 66 physical frame/cover candidates now have individual native STEP and SVG drawing-view files; planar 2.5D candidates also have DXF profiles and removable printed covers have STL meshes. Material candidates, stock condition, allowables, print material/process, ribs/stiffness, retention, vents, access, tolerance/GD&T, threads/inserts, edge treatment, DFM, FAI, structural/impact proof and qualified review remain open."
+            row["unresolved_item"] = f"All {PHYSICAL_PART_COUNT} physical frame/cover/gripper-mechanism candidates now have individual native STEP and SVG drawing-view files; planar 2.5D candidates also have DXF profiles and removable printed covers have STL meshes. Material candidates, stock condition, allowables, print material/process, ribs/stiffness, retention, vents, access, tolerance/GD&T, threads/inserts, edge treatment, DFM, FAI, structural/impact proof and qualified review remain open."
         if row["hold_id"] == "HR30-P01-H10":
-            row["unresolved_item"] = "Twelve module STEP pairs, an exploded whole-body assembly, a web interface atlas, and individual candidate files for all 66 physical fabrication parts now exist. The per-part package adds material/cut, process-route and inspection-characteristic registers. Released drawings, tolerances/GD&T, exact material/process selections, threads/inserts/fasteners, DFM, FAI, proof, physical test and qualified review remain open."
+            row["unresolved_item"] = f"Twelve module STEP pairs, an exploded whole-body assembly, a web interface atlas, and individual candidate files for all {PHYSICAL_PART_COUNT} physical fabrication parts now exist. The per-part package adds material/cut, process-route and inspection-characteristic registers. Released drawings, tolerances/GD&T, exact material/process selections, threads/inserts/fasteners, DFM, FAI, proof, physical test and qualified review remain open."
     write_csv(holds_path, holds)
 
     readme_path = PACKAGE / "README.md"
     readme = readme_path.read_text(encoding="utf-8")
     marker = "\n## Serviceable joint-family CAD\n"
-    addition = "\n## Individual manufacturing-candidate files\n\nEvery one of the 66 physical frame and removable-cover candidates now has its own native STEP and SVG drawing-view export in `manufacturing-files/`. Planar 2.5D candidates also expose largest-face DXF profiles; removable printed covers expose STL meshes. Material/cut, process-route, inspection-characteristic and file-provenance registers keep the parts connected to the authoritative fabrication source. These are design-refinement and supplier-discussion files, not released drawings or fabrication authority; exact materials, tolerances/GD&T, threads/inserts, print settings, DFM, FAI, structural proof and physical validation remain open.\n"
+    addition = f"\n## Individual manufacturing-candidate files\n\nEvery one of the {PHYSICAL_PART_COUNT} physical frame, removable-cover, and gripper-mechanism candidates now has its own native STEP and SVG drawing-view export in `manufacturing-files/`. Planar 2.5D candidates also expose largest-face DXF profiles; removable printed covers expose STL meshes. Material/cut, process-route, inspection-characteristic and file-provenance registers keep the parts connected to the authoritative fabrication source. These are design-refinement and supplier-discussion files, not released drawings or fabrication authority; exact materials, tolerances/GD&T, threads/inserts, print settings, DFM, FAI, structural proof and physical validation remain open.\n"
     if addition.strip() not in readme:
-        if marker not in readme:
-            raise RuntimeError("README manufacturing-file marker missing")
-        readme_path.write_text(readme.replace(marker, addition + marker), encoding="utf-8", newline="\n")
+        if marker in readme:
+            readme = readme.replace(marker, addition + marker)
+        else:
+            # Earlier whole-body generators intentionally rebuild their own
+            # sections from source.  A missing optional downstream marker is
+            # therefore not a reason to discard the generated manufacturing
+            # package; append the controlled section and let later generators
+            # restore their own blocks.
+            readme = readme.rstrip() + "\n" + addition
+        readme_path.write_text(readme, encoding="utf-8", newline="\n")
 
     page_path = PACKAGE / "index.html"
     page = page_path.read_text(encoding="utf-8")
@@ -163,7 +171,7 @@ def update_package() -> None:
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
     marker = "<!-- HR30-JOINT-FAMILY-CAD-P01-START -->"
-    section = f'''{start}<section id="manufacturing-files"><h2>Every physical frame and cover part now has its own file</h2><div class="grid"><article class="card pass"><div class="metric">66</div><p>Individual native STEP and SVG drawing-view exports.</p></article><article class="card pass"><h3>Process-specific derivatives</h3><p>Planar 2.5D candidates have DXF profiles; removable printed covers have STL meshes.</p></article><article class="card pass"><h3>Controlled routes</h3><p>Material/cut, process and inspection registers bind every part to its source geometry.</p></article><article class="card hold"><h3>Still preliminary</h3><p>Released drawings, tolerances, exact materials, DFM, FAI and physical proof remain open.</p></article></div><p><a href="manufacturing-files/index.html">Open the individual manufacturing-file guide</a> · <a href="manufacturing-files/part-file-register.csv">Part-file register</a> · <a href="manufacturing-files/material-cut-list.csv">Material/cut list</a>.</p></section>{end}'''
+    section = f'''{start}<section id="manufacturing-files"><h2>Every physical frame, cover, and gripper-mechanism part now has its own file</h2><div class="grid"><article class="card pass"><div class="metric">{PHYSICAL_PART_COUNT}</div><p>Individual native STEP and SVG drawing-view exports.</p></article><article class="card pass"><h3>Process-specific derivatives</h3><p>Planar 2.5D candidates have DXF profiles; removable printed covers have STL meshes.</p></article><article class="card pass"><h3>Controlled routes</h3><p>Material/cut, process and inspection registers bind every part to its source geometry.</p></article><article class="card hold"><h3>Still preliminary</h3><p>Released drawings, tolerances, exact materials, DFM, FAI and physical proof remain open.</p></article></div><p><a href="manufacturing-files/index.html">Open the individual manufacturing-file guide</a> · <a href="manufacturing-files/part-file-register.csv">Part-file register</a> · <a href="manufacturing-files/material-cut-list.csv">Material/cut list</a>.</p></section>{end}'''
     if marker not in page:
         raise RuntimeError("main page manufacturing-file marker missing")
     page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")
@@ -179,8 +187,8 @@ def main() -> int:
     OUT.mkdir(parents=True)
     part_root = OUT / "parts"
     physical = [part for part in fabrication.build()[0] if part.density_kg_m3 > 1.0]
-    if len(physical) != 66:
-        raise RuntimeError(f"expected 66 physical fabrication parts, found {len(physical)}")
+    if len(physical) != PHYSICAL_PART_COUNT:
+        raise RuntimeError(f"expected {PHYSICAL_PART_COUNT} physical fabrication parts, found {len(physical)}")
 
     file_rows: list[dict] = []
     material_rows: list[dict] = []
@@ -301,7 +309,7 @@ def main() -> int:
     module_counts = Counter(row["module"] for row in file_rows)
     (OUT / "index.html").write_text(render_index(file_rows, module_counts), encoding="utf-8", newline="\n")
     (OUT / "README.md").write_text(
-        f"# HR-30 individual manufacturing files P0.1\n\n**{WARNING}**\n\nAll 66 physical fabrication candidates have individual native STEP and SVG drawing-view exports. The {dxf_count} planar 2.5D candidates also have largest-face DXF profiles; the {stl_count} removable covers have 0.15 mm / 0.15 rad STL meshes. Eleven nonmaterial harness corridors are intentionally excluded.\n\nThese files support design refinement and supplier discussion only. They are not released drawings or fabrication authority. Exact materials, stock, tolerances/GD&T, threads/inserts, print settings, DFM, FAI, capacity and physical validation remain open.\n",
+        f"# HR-30 individual manufacturing files P0.1\n\n**{WARNING}**\n\nAll {PHYSICAL_PART_COUNT} physical fabrication candidates have individual native STEP and SVG drawing-view exports. The {dxf_count} planar 2.5D candidates also have largest-face DXF profiles; the {stl_count} removable covers have 0.15 mm / 0.15 rad STL meshes. Twelve nonmaterial harness corridors are intentionally excluded.\n\nThese files support design refinement and supplier discussion only. They are not released drawings or fabrication authority. Exact materials, stock, tolerances/GD&T, threads/inserts, print settings, DFM, FAI, capacity and physical validation remain open.\n",
         encoding="utf-8", newline="\n",
     )
     shutil.copy2(Path(__file__), OUT / "manufacturing-files-source.py")
@@ -311,16 +319,16 @@ def main() -> int:
         "source_generator_sha256": sha256(ROOT / "tools" / "generate_hr30_fabrication_architecture_p01.py"),
         "manufacturing_file_generator": "tools/generate_hr30_manufacturing_files_p01.py",
         "manufacturing_file_generator_sha256": sha256(Path(__file__)),
-        "physical_source_part_count": 66,
+        "physical_source_part_count": PHYSICAL_PART_COUNT,
         "excluded_reference_volume_count": 12,
         "warning": WARNING,
     }
     (OUT / "source-binding.json").write_text(json.dumps(source_binding, indent=2) + "\n", encoding="utf-8")
     status = {
         "identifier": IDENTIFIER,
-        "physical_part_count": 66,
-        "individual_step_count": 66,
-        "individual_svg_drawing_view_count": 66,
+        "physical_part_count": PHYSICAL_PART_COUNT,
+        "individual_step_count": PHYSICAL_PART_COUNT,
+        "individual_svg_drawing_view_count": PHYSICAL_PART_COUNT,
         "planar_profile_dxf_count": dxf_count,
         "printed_cover_stl_count": stl_count,
         "inspection_characteristic_count": len(inspection_rows),

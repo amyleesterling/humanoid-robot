@@ -14,14 +14,15 @@ P0.1 now also includes floating-base 25-DOF URDF and MJCF models, a historical 9
 
 ## Modular fabrication architecture
 
-P0.1 now includes a second editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable limb and palm panels, and twelve segregated harness corridors. Separate neck data and actuator-power branches prevent the head actuators from borrowing the data-only corridor. The current mass candidate uses 1.5 mm limb/palm/foot panels and 1.6 mm torso/pelvis/head shells; ribs, print/process qualification and impact stiffness remain open. The CAD density screen is 1.526 kg for frame parts and 0.558 kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; neither they nor the historical 9.63 kg allocation establish whole-robot mass closure. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
+P0.1 now includes an editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable body panels, both seventeen-part custom gripper mechanisms, and twelve segregated harness corridors. Separate neck data and actuator-power branches prevent the head actuators from borrowing the data-only corridor. The current mass candidate uses 1.5 mm limb/foot panels and 1.6 mm torso/pelvis/head shells; ribs, print/process qualification and impact stiffness remain open. The CAD density screen is 1.762 kg for fixed/mechanism parts and 0.553 kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; neither they nor the historical 9.63 kg allocation establish whole-robot mass closure. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
+## Installed equipment layout
+
+The former empty torso, pelvis, head and foot reservations now contain 54 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.442 kg. The rear-torso model still shows the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is now rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS is an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
 
 ## Whole-body mass reconciliation
 
-The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 66 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 156 located screw candidates, 10 catalogue belt candidates and 54 located equipment/harness/contact items. The gross identified subtotal is 11.328 kg; the explicit per-link model plus 0.372 kg residual integration contingency is 11.701 kg with neutral COM Z=0.369 m. This includes the onboard pack/cassette/protection reservation and leaves 0.299 kg to the 12 kg P0.1 maximum. The 10 kg lightweight stretch objective remains open by 1.701 kg. Exact protection and received masses remain open.
-## Individual manufacturing-candidate files
+The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 98 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 156 located screw candidates, 10 catalogue belt candidates and 54 located equipment/harness/contact items. The gross identified subtotal is 11.560 kg; the explicit per-link model plus 0.390 kg residual integration contingency is 11.950 kg with neutral COM Z=0.367 m. This includes the onboard pack/cassette/protection reservation and leaves 0.050 kg to the 12 kg P0.1 maximum. The 10 kg lightweight stretch objective remains open by 1.950 kg. Exact protection and received masses remain open.
 
-Every one of the 66 physical frame and removable-cover candidates now has its own native STEP and SVG drawing-view export in `manufacturing-files/`. Planar 2.5D candidates also expose largest-face DXF profiles; removable printed covers expose STL meshes. Material/cut, process-route, inspection-characteristic and file-provenance registers keep the parts connected to the authoritative fabrication source. These are design-refinement and supplier-discussion files, not released drawings or fabrication authority; exact materials, tolerances/GD&T, threads/inserts, print settings, DFM, FAI, structural proof and physical validation remain open.
 
 ## Serviceable joint-family CAD
 
@@ -43,17 +44,9 @@ The web-first interface atlas now consolidates the actual 12 build modules, all 
 
 All 25 axes now have a reproducible static load screen tied to the current URDF mass tree, the 100 g handoff payload and explicit single-support COM-offset cases. The elbows and shoulder-roll axes use 82 g XM430 candidates; the wrists use XC330 candidates; the ankles use reduced XM430 candidates; and the knees reserve 2.0:1 reductions. Published stall values remain momentary endpoints only; continuous torque, belt capacity, thermal behavior, dynamic gait loads and physical correlation are open.
 
-## Installed equipment layout
+## Individual manufacturing-candidate files
 
-The former empty torso, pelvis, head and foot reservations now contain 54 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.442 kg. The rear-torso model still shows the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is now rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS is an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
-
-
-
-
-
-
-
-
+Every one of the 98 physical frame, removable-cover, and gripper-mechanism candidates now has its own native STEP and SVG drawing-view export in `manufacturing-files/`. Planar 2.5D candidates also expose largest-face DXF profiles; removable printed covers expose STL meshes. Material/cut, process-route, inspection-characteristic and file-provenance registers keep the parts connected to the authoritative fabrication source. These are design-refinement and supplier-discussion files, not released drawings or fabrication authority; exact materials, tolerances/GD&T, threads/inserts, print settings, DFM, FAI, structural proof and physical validation remain open.
 
 ## Physical whole-body harness P0.1
 
@@ -67,31 +60,6 @@ The [interactive energy and safety guide](energy-safety-spine-p0.1/index.html) d
 
 The native KiCad topology correction is synchronized, but exact physical energy/safety terminals remain unselected. The 179 W operating and 727 W short-peak budgets are not source or wiring ratings. Protection, conductor sizing, fault current, stopping time, PE/0 V and functional-safety validation remain open. Reset can never command motion.
 
-## Physical actuator-interface carriers
-
-The eight whole-body actuator buses now have **86 sourced circuit parts** across two routed native 82 × 42 mm KiCad PCB candidates. Carrier A contains four complete ISOW1432 isolated RS-485 application networks; Carrier B contains one more plus three SN74LVC1T45 TTL networks. KiCad verifies the carrier schematic at ERC 0/0 and both boards at DRC 0/0 with zero unconnected pads. Five all-copper rule areas protect the isolator moats, and the native sources bind the JLC06161H-3313 nominal 1.6 mm candidate stackup. Layer-by-layer SVGs and machine-readable DFM/fabrication candidates are published for inspection, but no output is released for ordering, assembly, connection or energization. Open `electrical/carriers-p0.1/index.html` for the routed layer guide.
-<!-- HR30-CARRIERS-P01-END -->
-
-<!-- HR30-CARRIERS-P01-START -->
-## Physical actuator-interface carriers
-
-The eight whole-body actuator buses now have **86 sourced circuit parts** across two routed native 82 × 42 mm KiCad PCB candidates. Carrier A contains four complete ISOW1432 isolated RS-485 application networks; Carrier B contains one more plus three SN74LVC1T45 TTL networks. KiCad verifies the carrier schematic at ERC 0/0 and both boards at DRC 0/0 with zero unconnected pads. Five all-copper rule areas protect the isolator moats, and the native sources bind the JLC06161H-3313 nominal 1.6 mm candidate stackup. Layer-by-layer SVGs and machine-readable DFM/fabrication candidates are published for inspection, but no output is released for ordering, assembly, connection or energization. Open `electrical/carriers-p0.1/index.html` for the routed layer guide.
-<!-- HR30-CARRIERS-P01-END -->
-
-
-<!-- HR30-CARRIERS-P01-START -->
-## Physical actuator-interface carriers
-
-The eight whole-body actuator buses now have **86 sourced circuit parts** across two routed native 82 × 42 mm KiCad PCB candidates. Carrier A contains four complete ISOW1432 isolated RS-485 application networks; Carrier B contains one more plus three SN74LVC1T45 TTL networks. KiCad verifies the carrier schematic at ERC 0/0 and both boards at DRC 0/0 with zero unconnected pads. Five all-copper rule areas protect the isolator moats, and the native sources bind the JLC06161H-3313 nominal 1.6 mm candidate stackup. Layer-by-layer SVGs and machine-readable DFM/fabrication candidates are published for inspection, but no output is released for ordering, assembly, connection or energization. Open `electrical/carriers-p0.1/index.html` for the routed layer guide.
-<!-- HR30-CARRIERS-P01-END -->
-
-<!-- HR30-HARNESS-README-START -->
-## Whole-body harness
-
-Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
-<!-- HR30-HARNESS-README-END -->
-
-
 
 
 <!-- HR30-GRIPPERS-P01-README-START -->
@@ -99,9 +67,14 @@ Eight protected bus-branch candidates now map all 25 actuator drops through 12 l
 
 The [detailed gripper package](grippers-p0.1/index.html) replaces the prior hand-envelope-only refinement path with two editable 18-part symmetric rack-and-pinion assemblies. Each contains a wrist interface, serviceable palm frame, twin linear guides, paired racks, common pinion, broad sliding fingers, replaceable compliant pads, hard stops, manual-release access, and the SHA-bound XC330 packaging body. CAD-derived CLOSED and OPEN states provide an 8–34 mm pad gap over 26 mm total coupled stroke. Exact tooth form, fits, materials, actuator mount, calibration, sensing, pinch proof, endurance, DFM/FAI and physical validation remain open.
 <!-- HR30-GRIPPERS-P01-README-END -->
-
 <!-- HR30-ASSEMBLY-GUIDE-P01-START -->
 ## Whole-robot assembly traveler
 
-The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 66 fabrication candidates, 25 axes, 156 located joint fasteners, 54 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 54 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
 <!-- HR30-ASSEMBLY-GUIDE-P01-END -->
+
+<!-- HR30-HARNESS-README-START -->
+## Whole-body harness
+
+Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
+<!-- HR30-HARNESS-README-END -->

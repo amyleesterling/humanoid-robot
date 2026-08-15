@@ -54,12 +54,12 @@ def main() -> int:
         require(row["accessed_date"] == "2026-08-14" and row["document_revision_or_date"] == "NOT PUBLISHED ON LIVE PAGE", f"source date/revision disclosure drift {model}")
 
     items = rows("mass-item-reconciliation.csv")
-    require(len(items) == len({row["item_id"] for row in items}) == 453, "mass item identity/count drift")
+    require(len(items) == len({row["item_id"] for row in items}) == 485, "mass item identity/count drift")
     categories = Counter(row["category"] for row in items)
     require(categories == Counter({
         "JOINT HARDWARE CAD DENSITY SCREEN": 142,
         "LOCATED JOINT FASTENER CAD DENSITY SCREEN": 156,
-        "FABRICATION CAD DENSITY SCREEN": 66,
+        "FABRICATION CAD DENSITY SCREEN": 98,
         "MANUFACTURER PUBLISHED ACTUATOR MASS": 25,
         "MANUFACTURER PUBLISHED TRANSMISSION MASS": 10,
         "INSTALLED EQUIPMENT / HARNESS PLANNING MASS": 54,
@@ -74,6 +74,8 @@ def main() -> int:
     require(all(float(row["minimum_candidate_mass_kg"]) <= float(row["planning_candidate_mass_kg"]) <= float(row["maximum_candidate_mass_kg"]) for row in items), "mass bound ordering invalid")
     fastener_rows = [row for row in items if row["category"] == "LOCATED JOINT FASTENER CAD DENSITY SCREEN"]
     require(len(fastener_rows) == 156 and abs(sum(float(row["planning_candidate_mass_kg"]) for row in fastener_rows) - 0.554224112) < 2e-9, "located fastener mass population drift")
+    hand_fabrication_rows = [row for row in items if row["category"] == "FABRICATION CAD DENSITY SCREEN" and row["source_component"].startswith(("G01_", "G02_"))]
+    require(len(hand_fabrication_rows) == 34, "both seventeen-part custom grippers are not represented in the mass model")
 
     summary = json.loads((SRC / "mass-reconciliation-summary.json").read_text(encoding="utf-8"))
     for category, key in (
@@ -88,10 +90,10 @@ def main() -> int:
         require(abs(actual - float(summary[key])) < 2e-9, f"summary category mismatch {category}")
     identified = sum(float(row["planning_candidate_mass_kg"]) for row in items)
     require(abs(identified - float(summary["planning_identified_candidate_mass_kg"])) < 2e-9, "identified subtotal mismatch")
-    require(11.2 < identified < 11.4, "onboard-energy identified subtotal outside controlled P0.1 band")
+    require(11.55 < identified < 11.57, "hand-integrated onboard-energy identified subtotal outside controlled P0.1 band")
     require(summary["located_joint_fastener_count"] == 156, "fastener count missing from mass summary")
-    require(summary["program_mass_target_status"].startswith("WITHIN P0.1 MAXIMUM") and 0.29 < summary["planning_margin_to_program_maximum_kg"] < 0.31, "12 kg P0.1 planning margin not disclosed")
-    require(-1.71 < summary["planning_margin_to_lightweight_stretch_kg"] < -1.69, "10 kg lightweight stretch miss not disclosed")
+    require(summary["program_mass_target_status"].startswith("WITHIN P0.1 MAXIMUM") and 0.04 < summary["planning_margin_to_program_maximum_kg"] < 0.06, "narrow 12 kg P0.1 planning margin not disclosed")
+    require(-1.96 < summary["planning_margin_to_lightweight_stretch_kg"] < -1.94, "10 kg lightweight stretch miss not disclosed")
     require(not any(summary["authority"].values()), "mass package authority overclaim")
 
     decisions = rows("lightweight-architecture-register.csv")
@@ -136,7 +138,7 @@ def main() -> int:
     page = (SRC / "index.html").read_text(encoding="utf-8")
     require("mass-reconciliation.md" in page and "mass-item-reconciliation.csv" in page and "lightweight-architecture-register.csv" in page and f"{reconciled_total:.3f} kg onboard-energy planning" in page, "web guide mass reconciliation missing")
     require("onboard energy" in page.lower(), "web guide hides onboard-energy boundary")
-    print(f"PASS: HR-30 mass reconciliation inventories 453 candidate items including 156 located joint fasteners, 54 equipment/harness items, 10 published belts, 2.609 kg published actuator mass and 39 catalogue bearing candidates; {identified:.3f} kg identified plus {summary['remaining_integration_contingency_kg']:.3f} kg residual contingency produce {reconciled_total:.3f} kg dynamics mass and leave {summary['planning_margin_to_program_maximum_kg']:.3f} kg to the 12 kg P0.1 maximum; physical closure and all authority gates remain open")
+    print(f"PASS: HR-30 mass reconciliation inventories 485 candidate items including both seventeen-part custom grippers, 156 located joint fasteners, 54 equipment/harness items, 10 published belts, 2.609 kg published actuator mass and 39 catalogue bearing candidates; {identified:.3f} kg identified plus {summary['remaining_integration_contingency_kg']:.3f} kg residual contingency produce {reconciled_total:.3f} kg dynamics mass and leave only {summary['planning_margin_to_program_maximum_kg']:.3f} kg to the 12 kg P0.1 maximum; physical closure and all authority gates remain open")
     return 0
 
 

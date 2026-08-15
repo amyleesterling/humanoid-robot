@@ -57,26 +57,26 @@
     <section class="grid" aria-label="Whole-body package metrics">
       <article class="card pass"><div class="metric">762 mm</div><p>Exact candidate floor-to-shell-top geometry.</p></article>
       <article class="card pass"><div class="metric">25 DOF</div><p>Head, waist, arms, hands, hips, knees and ankles.</p></article>
-      <article class="card hold"><div class="metric">11.701 kg</div><p>Reconciled planning-model mass—not a measured as-built mass.</p></article>
+      <article class="card hold"><div class="metric">11.950 kg</div><p>Hand-integrated planning-model mass—not a measured as-built mass; only 0.050 kg remains to the P0.1 ceiling.</p></article>
       <article class="card hold"><div class="metric">0</div><p>Fabrication, motion, safety or energization approvals.</p></article>
     </section>
 
     <section>
       <h2>Inspect the whole robot</h2>
       <div class="viewer">
-        <model-viewer src="hr30/whole-body-p0.1/HR-30_body_architecture_candidate.glb" poster="hr30/whole-body-p0.1/front-elevation.svg" alt="Interactive three-dimensional model of the preliminary Project Button HR-30 whole humanoid" camera-controls camera-orbit="35deg 76deg 95%" min-camera-orbit="auto auto 20%" max-camera-orbit="auto auto 240%" field-of-view="26deg" shadow-intensity="0.85" exposure="1.05"></model-viewer>
-        <p>Drag to orbit; scroll or pinch to zoom. Sky blue shows shells, dark blue shows load-path envelopes, gold shows joint and hand hardware, and red shows reference axes.</p>
+        <model-viewer src="hr30/whole-body-p0.1/grippers-p0.1/HR-30_detailed_hands_installed_open_candidate.glb" poster="hr30/whole-body-p0.1/front-elevation.svg" alt="Interactive three-dimensional model of the complete preliminary Project Button HR-30 humanoid with both detailed grippers open" camera-controls camera-orbit="35deg 76deg 95%" min-camera-orbit="auto auto 20%" max-camera-orbit="auto auto 240%" field-of-view="26deg" shadow-intensity="0.85" exposure="1.05"></model-viewer>
+        <p>Drag to orbit; scroll or pinch to zoom. This installed whole-robot state includes both serviceable seventeen-part custom hand mechanisms. Open the <a href="hr30/whole-body-p0.1/grippers-p0.1/index.html">interactive open/closed gripper guide</a> for both CAD states.</p>
       </div>
     </section>
 
     <section>
       <h2>What exists now</h2>
       <div class="grid">
-        <article class="card pass"><h3>Physical architecture</h3><p>A recognizable head, articulated neck, torso, pelvis, two complete arms, two broad two-finger grippers, two six-axis legs, ankles and feet.</p></article>
+        <article class="card pass"><h3>Physical architecture</h3><p>A recognizable head, articulated neck, torso, pelvis, two complete arms, two detailed rack-and-pinion grippers, two six-axis legs, ankles and feet, partitioned into 98 fabrication candidates.</p></article>
         <article class="card pass"><h3>Floating-base simulation</h3><p>URDF and MJCF implement the same 25-axis schedule without anchoring the pelvis to the world, using provisional geometry, limits, mass and inertia.</p></article>
         <article class="card pass"><h3>Embodied-agent boundary</h3><p>OpenAI may produce expiring structured behavior requests. Deterministic local software and independent hardware retain motion and permit decisions.</p></article>
-        <article class="card pass"><h3>Native whole-body electrical</h3><p>Sixteen KiCad sheets cover all 25 actuators, the head HMI, pelvis IMU and eight foot sensors. KiCad ERC is 0 errors / 0 warnings for logical connectivity.</p></article>
-        <article class="card pass"><h3>Eight simultaneous interfaces</h3><p>Two visible four-channel carrier reservations replace the five U2D2 placeholders. Exact circuits and connectors remain selection work.</p></article>
+        <article class="card pass"><h3>Native whole-body electrical</h3><p>Nineteen KiCad sheets cover all 25 separately fed actuators, head HMI, pelvis IMU, eight foot sensors, tether-first energy and the isolated onboard-later path. ERC is 0 errors / 0 warnings for encoded connectivity only.</p></article>
+        <article class="card pass"><h3>Eight simultaneous interfaces</h3><p>Two routed six-layer four-channel carrier candidates implement five isolated RS-485 and three translated TTL channels. Independent layout, EMC, thermal and physical validation remain open.</p></article>
         <article class="card hold"><h3>Walking development</h3><p>Suspended characterization, restrained standing, weight transfer, capture steps and tethered walking remain separate physical gates.</p></article>
       </div>
     </section>
@@ -97,6 +97,7 @@
           <li><a href="hr30/whole-body-p0.1/installed-equipment-register.csv">Installed-equipment register</a></li>
           <li><a href="hr30/whole-body-p0.1/joint-family-cad/index.html">Serviceable joint-family CAD guide</a></li>
           <li><a href="hr30/whole-body-p0.1/manufacturing-files/index.html">Individual manufacturing-candidate files</a></li>
+          <li><a href="hr30/whole-body-p0.1/grippers-p0.1/index.html">Detailed bilateral gripper CAD and interactive states</a></li>
           <li><a href="hr30/whole-body-p0.1/hr30.urdf">URDF</a></li>
           <li><a href="hr30/whole-body-p0.1/hr30.xml">MJCF</a></li>
           <li><a href="hr30/whole-body-p0.1/mass-properties-budget.csv">Mass, COM and inertia budget</a></li>

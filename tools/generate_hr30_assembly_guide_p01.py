@@ -24,6 +24,7 @@ RELEASE = ROOT / "release" / "hr30" / "whole-body-p0.1" / "assembly-guide-p0.1"
 IDENTIFIER = "HR30-WHOLE-ROBOT-ASSEMBLY-GUIDE-P0.1"
 WARNING = "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
 MODULES = ["F01", "F02", "L01", "L02", "P01", "T01", "N01", "H01", "A01", "A02", "G01", "G02"]
+FABRICATION_PART_COUNT = 98
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -170,7 +171,7 @@ def build_registers() -> tuple[list[dict[str, object]], list[dict[str, object]],
                 "blocks_next_step_if_open": "YES", "warning": WARNING,
             })
 
-    if len(kits) != 12 or sum(int(row["fabrication_part_count"]) for row in kits) != 66:
+    if len(kits) != 12 or sum(int(row["fabrication_part_count"]) for row in kits) != FABRICATION_PART_COUNT:
         raise RuntimeError("whole-body fabrication kit coverage drift")
     if sum(int(row["axis_count"]) for row in kits) != 25 or sum(int(row["joint_fastener_count"]) for row in kits) != 156:
         raise RuntimeError("axis or joint-fastener coverage drift")
@@ -215,7 +216,7 @@ def integrate_root() -> None:
     start, end = "<!-- HR30-ASSEMBLY-GUIDE-P01-START -->", "<!-- HR30-ASSEMBLY-GUIDE-P01-END -->"
     if start in text and end in text:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
-    block = f'''\n{start}\n## Whole-robot assembly traveler\n\nThe [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 66 fabrication candidates, 25 axes, 156 located joint fasteners, 54 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.\n{end}\n'''
+    block = f'''\n{start}\n## Whole-robot assembly traveler\n\nThe [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, {FABRICATION_PART_COUNT} fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 54 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.\n{end}\n'''
     readme.write_text(text.rstrip() + block, encoding="utf-8", newline="\n")
 
     index = PACKAGE / "index.html"
@@ -225,7 +226,7 @@ def integrate_root() -> None:
     marker = "<!-- HR30-MODULE-CAD-P01-END -->"
     if marker not in page:
         raise RuntimeError("module CAD web marker missing")
-    section = f'''{start}<section id="assembly-guide"><h2>Build the whole robot in twelve controlled module kits</h2><div class="grid"><article class="card pass"><div class="metric">12</div><p>Dependency-ordered body modules.</p></article><article class="card pass"><div class="metric">66 + 25</div><p>Fabricated parts and actuated axes bound to the traveler.</p></article><article class="card pass"><div class="metric">156 + 54</div><p>Located joint screws and installed equipment records.</p></article><article class="card hold"><h3>Unpowered traveler only</h3><p>Materials, tolerances, exact hardware, torque and physical inspection remain open.</p></article></div><div class="viewer"><object data="assembly-guide-p0.1/assembly-flow.svg" type="image/svg+xml" aria-label="Whole-robot module assembly sequence"></object><p><a href="assembly-guide-p0.1/index.html">Open the interactive assembly traveler</a> · <a href="assembly-guide-p0.1/module-kit-register.csv">12 module kits</a> · <a href="assembly-guide-p0.1/assembly-operation-register.csv">operations</a>.</p></div></section>{end}'''
+    section = f'''{start}<section id="assembly-guide"><h2>Build the whole robot in twelve controlled module kits</h2><div class="grid"><article class="card pass"><div class="metric">12</div><p>Dependency-ordered body modules.</p></article><article class="card pass"><div class="metric">{FABRICATION_PART_COUNT} + 25</div><p>Fabricated parts and actuated axes bound to the traveler.</p></article><article class="card pass"><div class="metric">156 + 54</div><p>Located joint screws and installed equipment records.</p></article><article class="card hold"><h3>Unpowered traveler only</h3><p>Materials, tolerances, exact hardware, torque and physical inspection remain open.</p></article></div><div class="viewer"><object data="assembly-guide-p0.1/assembly-flow.svg" type="image/svg+xml" aria-label="Whole-robot module assembly sequence"></object><p><a href="assembly-guide-p0.1/index.html">Open the interactive assembly traveler</a> · <a href="assembly-guide-p0.1/module-kit-register.csv">12 module kits</a> · <a href="assembly-guide-p0.1/assembly-operation-register.csv">operations</a>.</p></div></section>{end}'''
     index.write_text(page.replace(marker, marker + section), encoding="utf-8", newline="\n")
 
     status_path = PACKAGE / "package-status.json"
@@ -233,7 +234,7 @@ def integrate_root() -> None:
     status.update({
         "whole_robot_assembly_traveler_present": True,
         "assembly_traveler_module_count": 12,
-        "assembly_traveler_fabrication_part_count": 66,
+        "assembly_traveler_fabrication_part_count": FABRICATION_PART_COUNT,
         "assembly_traveler_axis_count": 25,
         "assembly_traveler_joint_fastener_count": 156,
         "assembly_traveler_equipment_count": 54,
@@ -255,7 +256,7 @@ def main() -> int:
     (OUT / "assembly-flow.svg").write_text(flow_svg(kits), encoding="utf-8", newline="\n")
     write_web(kits, operations, checkpoints)
     status = {
-        "identifier": IDENTIFIER, "module_count": 12, "fabrication_part_count": 66, "axis_count": 25,
+        "identifier": IDENTIFIER, "module_count": 12, "fabrication_part_count": FABRICATION_PART_COUNT, "axis_count": 25,
         "joint_fastener_count": 156, "installed_equipment_count": 54, "harness_assembly_count": 14,
         "operation_count": len(operations), "checkpoint_count": len(checkpoints),
         "physical_execution_complete": False, "fabrication_released": False, "assembly_authority": False,

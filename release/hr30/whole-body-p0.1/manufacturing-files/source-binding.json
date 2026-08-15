@@ -1,10 +1,10 @@
 {
   "identifier": "HR30-MANUFACTURING-FILES-P0.1",
   "source_generator": "tools/generate_hr30_fabrication_architecture_p01.py",
-  "source_generator_sha256": "2e551447a2bd6f22222fe8d73b6736e4528cc73d6cc83c82cf517954fe000a9a",
+  "source_generator_sha256": "859c7f914869548fa94c868b080a9897742a3d4df318b6c5244f6f95f84a4db6",
   "manufacturing_file_generator": "tools/generate_hr30_manufacturing_files_p01.py",
-  "manufacturing_file_generator_sha256": "25d887c555525ca1057ccf4a930b714222f4be87a87c246ce51e72cbbec2d391",
-  "physical_source_part_count": 66,
+  "manufacturing_file_generator_sha256": "f4a3dc7e1a663b978ab448ac02bb47618acce274cd2d4bd6e351ccc8f5e66ece",
+  "physical_source_part_count": 98,
   "excluded_reference_volume_count": 12,
   "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
 }

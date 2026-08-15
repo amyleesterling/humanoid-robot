@@ -17,6 +17,7 @@ from pathlib import Path
 import cadquery as cq
 
 import generate_hr30_body_architecture_p01 as body
+import generate_hr30_detailed_grippers_p01 as grippers
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -112,6 +113,7 @@ def build() -> tuple[list[Part], list[dict], list[dict]]:
     parts: list[Part] = []
     routes: list[dict] = []
     panels: list[dict] = []
+    closed_gripper_parts = grippers.build_hand_parts(0.0)
 
     def add(name: str, module: str, role: str, shape: cq.Shape, material: str, density: float, process: str, color, service: str) -> None:
         if shape.isNull() or not shape.isValid() or shape.Volume() <= 1e-6:
@@ -175,8 +177,32 @@ def build() -> tuple[list[Part], list[dict], list[dict]]:
         for segment, p0, p1, width in (("UPPER_ARM", shoulder, elbow, 46), ("FOREARM", elbow, wrist, 44)):
             for y, suffix, color in ((-24.0, "FRONT", cover_blue), (24.0, "REAR", cover_dark)):
                 add_panel(f"{arm_module}_{segment}_{suffix}_COVER", arm_module, beam_between((p0[0], y, p0[2]), (p1[0], y, p1[2]), width, 1.5), f"{segment.lower().replace('_', ' ')} harness/link access", f"local Y={'-' if y < 0 else '+'} cover plane", "M3-class captive insert pattern candidate; exact system selection required", color)
+        # Make the detailed gripper part of the authoritative fabrication
+        # spine.  It replaces the former one-piece palm rear-cover envelope.
+        # The product actuator is carried separately by the official-product
+        # mass/equipment records, so only the seventeen custom parts are added.
         hand_module = f"G0{1 if side == 'L' else 2}"
-        add_panel(f"{hand_module}_PALM_REAR_COVER", hand_module, body.rounded_box(46, 1.5, 32, (sign * body.WRIST_X, 28.0, 270), 0.7), "gripper actuator and equalizer access", "Y=+27.25 mm", "four small captive fasteners candidate; exact selection required", cover_dark)
+        for hand_part in closed_gripper_parts:
+            if not hand_part.fabrication_candidate:
+                continue
+            if hand_part.name.startswith("PALM_") or hand_part.name == "WRIST_MOUNT_PLATE":
+                process = "2.5D CNC or qualified polymer process candidate; exact route and inserts open"
+            elif hand_part.name.startswith("GUIDE_ROD"):
+                process = "precision cut/finish from 4 mm rod; straightness and end retention open"
+            elif hand_part.name.startswith("RACK_") or hand_part.name == "PINION":
+                process = "precision gear machining or qualified molded candidate; tooth inspection and wear proof open"
+            elif hand_part.name.startswith("FINGER_") or hand_part.name.startswith("STOP_"):
+                process = "SLS/FDM or 3-axis machining candidate; orientation, clearance and proof open"
+            elif hand_part.name.startswith("PAD_"):
+                process = "die-cut or molded compliant insert candidate; force-stroke and retention open"
+            else:
+                process = "3-axis machining candidate; fit, access and retention open"
+            add(
+                f"{hand_module}_{hand_part.name}", hand_module, hand_part.kind,
+                grippers.translate(hand_part.shape, side), hand_part.material,
+                hand_part.density_kg_m3, process, hand_part.color,
+                "SERVICEABLE GRIPPER MECHANISM CANDIDATE",
+            )
 
     # Hollow central shells split into separately removable front and rear parts.
     torso_shell = hollow_tapered(430, 585, 152, 94, 190, 110, 1.6)
@@ -237,13 +263,19 @@ def update_bom_and_docs(frame_mass: float, cover_mass: float) -> None:
     write_csv(bom_path, rows)
 
     readme_path = OUT / "README.md"
-    text = readme_path.read_text(encoding="utf-8").split("\n\n## Modular fabrication architecture", 1)[0].rstrip()
-    text += f"""
+    text = readme_path.read_text(encoding="utf-8")
+    heading = "## Modular fabrication architecture"
+    section = f"""{heading}
 
-## Modular fabrication architecture
-
-P0.1 now includes a second editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable limb and palm panels, and twelve segregated harness corridors. Separate neck data and actuator-power branches prevent the head actuators from borrowing the data-only corridor. The current mass candidate uses 1.5 mm limb/palm/foot panels and 1.6 mm torso/pelvis/head shells; ribs, print/process qualification and impact stiffness remain open. The CAD density screen is {frame_mass:.3f} kg for frame parts and {cover_mass:.3f} kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; neither they nor the historical 9.63 kg allocation establish whole-robot mass closure. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
+P0.1 now includes an editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable body panels, both seventeen-part custom gripper mechanisms, and twelve segregated harness corridors. Separate neck data and actuator-power branches prevent the head actuators from borrowing the data-only corridor. The current mass candidate uses 1.5 mm limb/foot panels and 1.6 mm torso/pelvis/head shells; ribs, print/process qualification and impact stiffness remain open. The CAD density screen is {frame_mass:.3f} kg for fixed/mechanism parts and {cover_mass:.3f} kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; neither they nor the historical 9.63 kg allocation establish whole-robot mass closure. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
 """
+    if heading in text:
+        prefix, remainder = text.split(heading, 1)
+        next_heading = remainder.find("\n## ")
+        suffix = remainder[next_heading:] if next_heading >= 0 else ""
+        text = prefix.rstrip() + "\n\n" + section.rstrip() + suffix
+    else:
+        text = text.rstrip() + "\n\n" + section.rstrip() + "\n"
     readme_path.write_text(text.rstrip() + "\n", encoding="utf-8", newline="\n")
 
     plan_path = OUT / "modular-fabrication-assembly-electrification-plan.md"
