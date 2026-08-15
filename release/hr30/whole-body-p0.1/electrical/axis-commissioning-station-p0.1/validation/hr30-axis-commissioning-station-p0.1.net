@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\axis-commissioning-station-p0.1\\hr30-axis-commissioning-station-p0.1.kicad_sch")
-		(date "2026-08-15T11:49:55")
+		(date "2026-08-15T13:39:04")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - SUPPORT EQUIPMENT CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
@@ -250,28 +250,28 @@
 	(components
 		(comp
 			(ref "P1")
-			(value "POMONA 4933-2 / 4933-0 SHEATHED PLUG PAIR")
-			(datasheet "https://www.pomonaelectronics.com/products/banana-plugs-jacks-and-hardware/banana-plugs-and-jacks")
-			(description "One metre bench lead candidate. No stacking, adapters or exposed clip ends. Polarity and insulation require 100% inspection.")
+			(value "MUELLER BU-0061-M-39-2 / -39-0 LEAD PAIR")
+			(datasheet "https://www.muellerelectric.com/product_files/21/DS-BU-0061-M-%40.pdf")
+			(description "Manufacturer-assembled 39 inch shrouded-banana leads with 18 AWG silicone cable and tin-dipped free ends. The dipped portions are sacrificial and must not enter the Mini-Fit crimp. Received wire OD/material, fresh-cut preparation, polarity and insulation require 100% inspection.")
 			(fields
 				(field
 					(name "Status") "CANDIDATE / VALIDATION OPEN")
 				(field
-					(name "Evidence") "live official product family; accessed 2026-08-15")
+					(name "Evidence") "DS-BU-0061-M-@; live official data sheet accessed 2026-08-15")
 				(field
-					(name "Display") "POMONA 4933-2 / 4933-0 SHEATHED PLUG PAIR")
+					(name "Display") "MUELLER BU-0061-M-39-2 / -39-0 LEAD PAIR")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.pomonaelectronics.com/products/banana-plugs-jacks-and-hardware/banana-plugs-and-jacks")
+					(name "Datasheet") "https://www.muellerelectric.com/product_files/21/DS-BU-0061-M-%40.pdf")
 				(field
-					(name "Description") "One metre bench lead candidate. No stacking, adapters or exposed clip ends. Polarity and insulation require 100% inspection.")
+					(name "Description") "Manufacturer-assembled 39 inch shrouded-banana leads with 18 AWG silicone cable and tin-dipped free ends. The dipped portions are sacrificial and must not enter the Mini-Fit crimp. Received wire OD/material, fresh-cut preparation, polarity and insulation require 100% inspection.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "P1")
-				(description "One metre bench lead candidate. No stacking, adapters or exposed clip ends. Polarity and insulation require 100% inspection.")
+				(description "Manufacturer-assembled 39 inch shrouded-banana leads with 18 AWG silicone cable and tin-dipped free ends. The dipped portions are sacrificial and must not enter the Mini-Fit crimp. Received wire OD/material, fresh-cut preparation, polarity and insulation require 100% inspection.")
 			)
 			(property
 				(name "Status")
@@ -279,11 +279,11 @@
 			)
 			(property
 				(name "Evidence")
-				(value "live official product family; accessed 2026-08-15")
+				(value "DS-BU-0061-M-@; live official data sheet accessed 2026-08-15")
 			)
 			(property
 				(name "Display")
-				(value "POMONA 4933-2 / 4933-0 SHEATHED PLUG PAIR")
+				(value "MUELLER BU-0061-M-39-2 / -39-0 LEAD PAIR")
 			)
 			(property
 				(name "Sheetname")
@@ -388,27 +388,27 @@
 		(comp
 			(ref "J1")
 			(value "MOLEX 39-01-2020 / 39-00-0038")
-			(datasheet "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63860/ATS-638601000-001.pdf")
-			(description "20 AWG Alpha 3073 red/black lead into the PHB Mini-Fit Jr input. Contact crimp height, pull test and received polarity remain validation work.")
+			(datasheet "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63819/638190901-000.pdf")
+			(description "18 AWG Mueller BU-0061-M red/black leads into the PHB Mini-Fit Jr input after complete removal of the tin-dipped free-end segment. Received cable OD/material, contact crimp height, pull test and polarity remain validation work.")
 			(fields
 				(field
 					(name "Status") "CANDIDATE / VALIDATION OPEN")
 				(field
-					(name "Evidence") "Mini-Fit Jr application-tooling specification accessed 2026-08-15")
+					(name "Evidence") "638190901 Rev D; 2025-03-31; accessed 2026-08-15")
 				(field
 					(name "Display") "MOLEX 39-01-2020 / 39-00-0038")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63860/ATS-638601000-001.pdf")
+					(name "Datasheet") "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63819/638190901-000.pdf")
 				(field
-					(name "Description") "20 AWG Alpha 3073 red/black lead into the PHB Mini-Fit Jr input. Contact crimp height, pull test and received polarity remain validation work.")
+					(name "Description") "18 AWG Mueller BU-0061-M red/black leads into the PHB Mini-Fit Jr input after complete removal of the tin-dipped free-end segment. Received cable OD/material, contact crimp height, pull test and polarity remain validation work.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "J1")
-				(description "20 AWG Alpha 3073 red/black lead into the PHB Mini-Fit Jr input. Contact crimp height, pull test and received polarity remain validation work.")
+				(description "18 AWG Mueller BU-0061-M red/black leads into the PHB Mini-Fit Jr input after complete removal of the tin-dipped free-end segment. Received cable OD/material, contact crimp height, pull test and polarity remain validation work.")
 			)
 			(property
 				(name "Status")
@@ -416,7 +416,7 @@
 			)
 			(property
 				(name "Evidence")
-				(value "Mini-Fit Jr application-tooling specification accessed 2026-08-15")
+				(value "638190901 Rev D; 2025-03-31; accessed 2026-08-15")
 			)
 			(property
 				(name "Display")
@@ -984,8 +984,8 @@
 		(libpart
 			(lib "PBV3")
 			(part "J1")
-			(description "20 AWG Alpha 3073 red/black lead into the PHB Mini-Fit Jr input. Contact crimp height, pull test and received polarity remain validation work.")
-			(docs "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63860/ATS-638601000-001.pdf")
+			(description "18 AWG Mueller BU-0061-M red/black leads into the PHB Mini-Fit Jr input after complete removal of the tin-dipped free-end segment. Received cable OD/material, contact crimp height, pull test and polarity remain validation work.")
+			(docs "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63819/638190901-000.pdf")
 			(fields
 				(field
 					(name "Reference") "J1")
@@ -995,13 +995,13 @@
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63860/ATS-638601000-001.pdf")
+					(name "Datasheet") "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63819/638190901-000.pdf")
 				(field
-					(name "Description") "20 AWG Alpha 3073 red/black lead into the PHB Mini-Fit Jr input. Contact crimp height, pull test and received polarity remain validation work.")
+					(name "Description") "18 AWG Mueller BU-0061-M red/black leads into the PHB Mini-Fit Jr input after complete removal of the tin-dipped free-end segment. Received cable OD/material, contact crimp height, pull test and polarity remain validation work.")
 				(field
 					(name "Status") "CANDIDATE / VALIDATION OPEN")
 				(field
-					(name "Evidence") "Mini-Fit Jr application-tooling specification accessed 2026-08-15")
+					(name "Evidence") "638190901 Rev D; 2025-03-31; accessed 2026-08-15")
 				(field
 					(name "Display") "MOLEX 39-01-2020 / 39-00-0038")
 			)
@@ -1021,26 +1021,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "P1")
-			(description "One metre bench lead candidate. No stacking, adapters or exposed clip ends. Polarity and insulation require 100% inspection.")
-			(docs "https://www.pomonaelectronics.com/products/banana-plugs-jacks-and-hardware/banana-plugs-and-jacks")
+			(description "Manufacturer-assembled 39 inch shrouded-banana leads with 18 AWG silicone cable and tin-dipped free ends. The dipped portions are sacrificial and must not enter the Mini-Fit crimp. Received wire OD/material, fresh-cut preparation, polarity and insulation require 100% inspection.")
+			(docs "https://www.muellerelectric.com/product_files/21/DS-BU-0061-M-%40.pdf")
 			(fields
 				(field
 					(name "Reference") "P1")
 				(field
-					(name "Value") "POMONA 4933-2 / 4933-0 SHEATHED PLUG PAIR")
+					(name "Value") "MUELLER BU-0061-M-39-2 / -39-0 LEAD PAIR")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.pomonaelectronics.com/products/banana-plugs-jacks-and-hardware/banana-plugs-and-jacks")
+					(name "Datasheet") "https://www.muellerelectric.com/product_files/21/DS-BU-0061-M-%40.pdf")
 				(field
-					(name "Description") "One metre bench lead candidate. No stacking, adapters or exposed clip ends. Polarity and insulation require 100% inspection.")
+					(name "Description") "Manufacturer-assembled 39 inch shrouded-banana leads with 18 AWG silicone cable and tin-dipped free ends. The dipped portions are sacrificial and must not enter the Mini-Fit crimp. Received wire OD/material, fresh-cut preparation, polarity and insulation require 100% inspection.")
 				(field
 					(name "Status") "CANDIDATE / VALIDATION OPEN")
 				(field
-					(name "Evidence") "live official product family; accessed 2026-08-15")
+					(name "Evidence") "DS-BU-0061-M-@; live official data sheet accessed 2026-08-15")
 				(field
-					(name "Display") "POMONA 4933-2 / 4933-0 SHEATHED PLUG PAIR")
+					(name "Display") "MUELLER BU-0061-M-39-2 / -39-0 LEAD PAIR")
 			)
 			(pins
 				(pin
@@ -1050,7 +1050,7 @@
 				)
 				(pin
 					(num "BLACK-OUT")
-					(name "20_AWG_BLACK")
+					(name "18_AWG_BLACK")
 					(type "passive")
 				)
 				(pin
@@ -1060,7 +1060,7 @@
 				)
 				(pin
 					(num "RED-OUT")
-					(name "20_AWG_RED")
+					(name "18_AWG_RED")
 					(type "passive")
 				)
 			)
@@ -1489,7 +1489,7 @@
 			(node
 				(ref "P1")
 				(pin "RED-OUT")
-				(pinfunction "20_AWG_RED_RED-OUT")
+				(pinfunction "18_AWG_RED_RED-OUT")
 				(pintype "passive")
 			)
 			(node
@@ -1512,7 +1512,7 @@
 			(node
 				(ref "P1")
 				(pin "BLACK-OUT")
-				(pinfunction "20_AWG_BLACK_BLACK-OUT")
+				(pinfunction "18_AWG_BLACK_BLACK-OUT")
 				(pintype "passive")
 			)
 			(node

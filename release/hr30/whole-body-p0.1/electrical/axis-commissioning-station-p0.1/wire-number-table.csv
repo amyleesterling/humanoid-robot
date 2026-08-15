@@ -3,8 +3,8 @@ W1001,01_current_limited_source.kicad_sch,PS1,+,PROGRAMMABLE POSITIVE,CL_POS
 W1002,01_current_limited_source.kicad_sch,PS1,-,PROGRAMMABLE RETURN,CL_RET
 W1003,01_current_limited_source.kicad_sch,P1,RED,SOURCE POSITIVE,CL_POS
 W1004,01_current_limited_source.kicad_sch,P1,BLACK,SOURCE RETURN,CL_RET
-W1005,01_current_limited_source.kicad_sch,P1,RED-OUT,20 AWG RED,LEAD_POS
-W1006,01_current_limited_source.kicad_sch,P1,BLACK-OUT,20 AWG BLACK,LEAD_RET
+W1005,01_current_limited_source.kicad_sch,P1,RED-OUT,18 AWG RED,LEAD_POS
+W1006,01_current_limited_source.kicad_sch,P1,BLACK-OUT,18 AWG BLACK,LEAD_RET
 W2001,02_power_hub_and_usb.kicad_sch,J1,1,POWER RETURN,LEAD_RET
 W2002,02_power_hub_and_usb.kicad_sch,J1,2,POWER POSITIVE,LEAD_POS
 W2003,02_power_hub_and_usb.kicad_sch,PHB1,P1,MINI-FIT RETURN,LEAD_RET

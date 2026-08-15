@@ -1,5 +1,5 @@
 connector,manufacturer_part,contact,function,wire_id,mate,polarity_check,state
-PS1-RED,Pomona 4933-2,single,VDD positive,BH-W01,approved E36313A positive output jack,J1-2 continuity only; open to J1-1,NOT EXECUTED
-PS1-BLACK,Pomona 4933-0,single,DC return / GND,BH-W02,same E36313A channel return jack,J1-1 continuity only; open to J1-2,NOT EXECUTED
+PS1-RED,Mueller BU-0061-M-39-2 manufacturer-assembled plug,single,VDD positive,BH-W01,approved E36313A positive output jack,J1-2 continuity only; open to J1-1,NOT EXECUTED
+PS1-BLACK,Mueller BU-0061-M-39-0 manufacturer-assembled plug,single,DC return / GND,BH-W02,same E36313A channel return jack,J1-1 continuity only; open to J1-2,NOT EXECUTED
 J1,Molex 39-01-2020 / 39-00-0038,1,GND,BH-W02,PHB power pin 1,BLACK only,NOT EXECUTED
 J1,Molex 39-01-2020 / 39-00-0038,2,VDD,BH-W01,PHB power pin 2,RED only,NOT EXECUTED

@@ -1,7 +1,7 @@
 connector,contact,function,wire,destination,inspection,state
-PS1-BANANA,RED,+11.0 V candidate,Alpha 3073 red 20 AWG,J1/2,polarity and shrouding 100%,NOT EXECUTED
-PS1-BANANA,BLACK,DC return,Alpha 3073 black 20 AWG,J1/1,polarity and shrouding 100%,NOT EXECUTED
-J1 MINI-FIT,1,GND,Alpha 3073 black 20 AWG,PHB power pin 1,continuity and pull test,NOT EXECUTED
-J1 MINI-FIT,2,VDD,Alpha 3073 red 20 AWG,PHB power pin 2,continuity and pull test,NOT EXECUTED
+PS1-BANANA,RED,+11.0 V candidate,Mueller BU-0061-M-39-2 red 18 AWG,J1/2,"exact received part, polarity and shrouding 100%",NOT EXECUTED
+PS1-BANANA,BLACK,DC return,Mueller BU-0061-M-39-0 black 18 AWG,J1/1,"exact received part, polarity and shrouding 100%",NOT EXECUTED
+J1 MINI-FIT,1,GND,Mueller BU-0061-M-39-0 black 18 AWG,PHB power pin 1,tin-dipped segment absent from crimp; continuity and pull test,NOT EXECUTED
+J1 MINI-FIT,2,VDD,Mueller BU-0061-M-39-2 red 18 AWG,PHB power pin 2,tin-dipped segment absent from crimp; continuity and pull test,NOT EXECUTED
 X4P,1/2/3/4,GND/VDD/DATA+/DATA-,ROBOTIS 903-0244-000,one RS-485 actuator,manufacturer cable; polarity/continuity before use,NOT EXECUTED
 X3P,1/2/3,GND/VDD/DATA,ROBOTIS 903-0249-000,one TTL actuator,manufacturer cable; polarity/continuity before use,NOT EXECUTED

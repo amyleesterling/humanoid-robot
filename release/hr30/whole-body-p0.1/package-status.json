@@ -317,6 +317,8 @@
   "axis_commissioning_bench_harness_present": true,
   "axis_commissioning_bench_harness_assembly_count": 1,
   "axis_commissioning_bench_harness_contact_map_complete": true,
-  "axis_commissioning_bench_harness_source_end_process_selected": false,
-  "axis_commissioning_bench_harness_physically_validated": false
+  "axis_commissioning_bench_harness_source_end_process_selected": true,
+  "axis_commissioning_bench_harness_physically_validated": false,
+  "axis_commissioning_bench_harness_manufacturer_assembled_source_end_selected": true,
+  "axis_commissioning_bench_harness_received_lead_compatibility_validated": false
 }

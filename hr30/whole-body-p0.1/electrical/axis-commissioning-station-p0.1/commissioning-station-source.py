@@ -41,9 +41,9 @@ SOURCES = {
     "PHB": ("ROBOTIS", "U2D2 Power Hub Board Set / SKU 902-0145-001", "ROBOTIS Docs current page; accessed 2026-08-15", "https://docs.robotis.com/docs/parts/interface/u2d2_power_hub/"),
     "X4P": ("ROBOTIS", "Robot Cable-X4P 180 mm / SKU 903-0244-000", "live official product page; accessed 2026-08-15", "https://www.robotis.us/robot-cable-x4p-180mm-10pcs/"),
     "X3P": ("ROBOTIS", "Robot Cable-X3P 180 mm / SKU 903-0249-000", "live official product page; accessed 2026-08-15", "https://www.robotis.us/robot-cable-x3p-180mm-10pcs/"),
-    "MOLEX": ("Molex", "39-01-2020 housing / 39-00-0038 contacts", "Mini-Fit Jr application-tooling specification accessed 2026-08-15", "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63860/ATS-638601000-001.pdf"),
-    "WIRE": ("Alpha Wire", "3073, 20 AWG stranded hook-up wire", "live official product page; accessed 2026-08-15", "https://www.alphawire.com/products/wire/hook-up-wire/premium/3073"),
-    "BANANA": ("Pomona Electronics", "4933-2 red / 4933-0 black sheathed 4 mm plugs", "live official product family; accessed 2026-08-15", "https://www.pomonaelectronics.com/products/banana-plugs-jacks-and-hardware/banana-plugs-and-jacks"),
+    "MOLEX": ("Molex", "39-01-2020 housing / 39-00-0038 contacts / 63819-0901 tool", "638190901 Rev D; 2025-03-31; accessed 2026-08-15", "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63819/638190901-000.pdf"),
+    "LEAD": ("Mueller Electric", "BU-0061-M-39-2 red / BU-0061-M-39-0 black", "DS-BU-0061-M-@; live official data sheet accessed 2026-08-15", "https://www.muellerelectric.com/product_files/21/DS-BU-0061-M-%40.pdf"),
+    "LEAD-LIST": ("Mueller Electric", "BU-0061-M-39-2 red / BU-0061-M-39-0 black", "Mueller UKCA and CE parts 101525; 2025-10-15; accessed 2026-08-15", "https://ww2.muellerelectric.com/wp-content/uploads/2025/10/Mueller-UKCA-and-CE-parts-101525.pdf"),
     "XH540": ("ROBOTIS", "XH540-W270-R", "ROBOTIS-GIT/emanual b0c64501f080d20088d044c65569f45279351ade; 2025-06-19; accessed 2026-08-15", "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/"),
     "XM540": ("ROBOTIS", "XM540-W270-R", "ROBOTIS-GIT/emanual b0c64501f080d20088d044c65569f45279351ade; 2025-06-19; accessed 2026-08-15", "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm540-w270/"),
     "XM430": ("ROBOTIS", "XM430-W350-R", "ROBOTIS-GIT/emanual b0c64501f080d20088d044c65569f45279351ade; 2025-06-19; accessed 2026-08-15", "https://docs.robotis.com/docs/dxl/model_reference/x_series/xm_series/xm430-w350/"),
@@ -107,14 +107,14 @@ def build_sheets(model):
     s1 = model.Sheet(1, "01_current_limited_source.kicad_sch", "Safety-listed current-limited DC source", "E36313A output 2 or 3 used alone; output off while making connections.")
     s1.components = [
         component(model, "PS1", "KEYSIGHT E36313A OUTPUT 2 OR 3", [("+", "PROGRAMMABLE POSITIVE", "CL_POS", "right"), ("-", "PROGRAMMABLE RETURN", "CL_RET", "right"), ("PE", "CLASS I PROTECTIVE EARTH", "FACILITY_PE", "left")], "UL/CSA/IEC 61010-1 listed bench instrument. Candidate setting is 11.0 V with 0.25 A current limit for read-only first power; 25 V/2 A channel maximum is below the JST EH 3 A catalog boundary. Exact instrument calibration and qualified procedure approval remain open.", (115, 100), 115, SOURCES["KEYSIGHT"][3], SOURCES["KEYSIGHT"][2]),
-        component(model, "P1", "POMONA 4933-2 / 4933-0 SHEATHED PLUG PAIR", [("RED", "SOURCE POSITIVE", "CL_POS", "left"), ("BLACK", "SOURCE RETURN", "CL_RET", "left"), ("RED-OUT", "20 AWG RED", "LEAD_POS", "right"), ("BLACK-OUT", "20 AWG BLACK", "LEAD_RET", "right")], "One metre bench lead candidate. No stacking, adapters or exposed clip ends. Polarity and insulation require 100% inspection.", (305, 100), 110, SOURCES["BANANA"][3], SOURCES["BANANA"][2]),
+        component(model, "P1", "MUELLER BU-0061-M-39-2 / -39-0 LEAD PAIR", [("RED", "SOURCE POSITIVE", "CL_POS", "left"), ("BLACK", "SOURCE RETURN", "CL_RET", "left"), ("RED-OUT", "18 AWG RED", "LEAD_POS", "right"), ("BLACK-OUT", "18 AWG BLACK", "LEAD_RET", "right")], "Manufacturer-assembled 39 inch shrouded-banana leads with 18 AWG silicone cable and tin-dipped free ends. The dipped portions are sacrificial and must not enter the Mini-Fit crimp. Received wire OD/material, fresh-cut preparation, polarity and insulation require 100% inspection.", (305, 100), 110, SOURCES["LEAD"][3], SOURCES["LEAD"][2]),
     ]
     s1.notes = ["Use one E36313A channel only. Output remains OFF until the complete point-to-point inspection is complete.", "This station is intentionally limited to one disconnected actuator. It must never feed a robot PDU, a bus chain, or multiple actuators."]
     sheets.append(s1)
 
     s2 = model.Sheet(2, "02_power_hub_and_usb.kicad_sch", "U2D2 and Power Hub boundary", "Only the Mini-Fit Jr power input is populated; every other PHB power inlet remains empty.")
     s2.components = [
-        component(model, "J1", "MOLEX 39-01-2020 / 39-00-0038", [("1", "POWER RETURN", "LEAD_RET", "left"), ("2", "POWER POSITIVE", "LEAD_POS", "left")], "20 AWG Alpha 3073 red/black lead into the PHB Mini-Fit Jr input. Contact crimp height, pull test and received polarity remain validation work.", (90, 100), 100, SOURCES["MOLEX"][3], SOURCES["MOLEX"][2]),
+        component(model, "J1", "MOLEX 39-01-2020 / 39-00-0038", [("1", "POWER RETURN", "LEAD_RET", "left"), ("2", "POWER POSITIVE", "LEAD_POS", "left")], "18 AWG Mueller BU-0061-M red/black leads into the PHB Mini-Fit Jr input after complete removal of the tin-dipped free-end segment. Received cable OD/material, contact crimp height, pull test and polarity remain validation work.", (90, 100), 100, SOURCES["MOLEX"][3], SOURCES["MOLEX"][2]),
         component(model, "PHB1", "ROBOTIS U2D2 POWER HUB 902-0145-001", [("P1", "MINI-FIT RETURN", "LEAD_RET", "left"), ("P2", "MINI-FIT POSITIVE", "LEAD_POS", "left"), ("G3", "TTL GND", "DUT_GND", "right"), ("V3", "TTL VDD", "DUT_VDD", "right"), ("D3", "TTL DATA", "TTL_DATA", "right"), ("G4", "RS485 GND", "DUT_GND", "right"), ("V4", "RS485 VDD", "DUT_VDD", "right"), ("D+", "RS485 DATA+", "RS485_DP", "right"), ("D-", "RS485 DATA-", "RS485_DN", "right")], "Manufacturer maximum is 10 A, but this station is source-limited to 0.25 A for first power and 2.0 A absolute equipment configuration maximum. The barrel and screw-terminal inputs must remain physically empty.", (235, 125), 116, SOURCES["PHB"][3], SOURCES["PHB"][2]),
         component(model, "U1", "ROBOTIS U2D2 902-0132-000", [("USB", "USB-C OR RECEIVED REVISION", "HOST_USB", "left"), ("TTL", "TTL DATA", "TTL_DATA", "right"), ("D+", "RS485 DATA+", "RS485_DP", "right"), ("D-", "RS485 DATA-", "RS485_DN", "right")], "U2D2 supplies communication only. Confirm received USB revision; units changed from Micro-B to USB-C in August 2025. Keep the internal 120 ohm switch OFF for the one-actuator first-power setup unless a qualified waveform test directs otherwise.", (395, 125), 110, SOURCES["U2D2"][3], SOURCES["U2D2"][2]),
     ]
@@ -240,9 +240,9 @@ def write_registers():
             "PHB": "3.5-24 V; 10 A maximum; only one power input at a time; Mini-Fit power pin 1 GND / pin 2 VDD",
             "X4P": "RS-485 X-series JST-JST 180 mm stocked cable family",
             "X3P": "TTL X-series JST-JST 180 mm stocked cable family",
-            "MOLEX": "39-01-2020 housing and 39-00-0038 contact; 20 AWG PHB manufacturer interface",
-            "WIRE": "3073 stranded 20 AWG tinned copper; UL AWM 1015/1230; 105 C; 600 V; VW-1",
-            "BANANA": "4933 sheathed 4 mm plug family for 18/20/22 AWG wire",
+            "MOLEX": "39-01-2020 housing and 39-00-0038 contact; 18 AWG is within the exact hand-tool/contact range; physical crimp validation remains open",
+            "LEAD": "BU-0061-M family; manufacturer-assembled 4 mm shrouded banana; tin-dipped open end; 18 AWG 413/44 UL 3577 silicone cable; 39 inch standard length; 1000 V CAT III / 20 A catalog rating",
+            "LEAD-LIST": "current official part list identifies BU-0061-M-39-0 black and BU-0061-M-39-2 red",
             "XH540": "10.0-14.8 V operating range; 12 V recommended; RS-485 interface",
             "XM540": "10.0-14.8 V operating range; 12 V recommended; RS-485 interface",
             "XM430": "10.0-14.8 V operating range; 12 V recommended; RS-485 interface",
@@ -257,18 +257,16 @@ def write_registers():
         {"item": "CS-04", "quantity": 1, "manufacturer": "ROBOTIS", "order_code": "903-0244-000", "description": "X4P 180 mm cable; package contains 10", "disposition": "CANDIDATE", "authority": AUTHORITY},
         {"item": "CS-05", "quantity": 1, "manufacturer": "ROBOTIS", "order_code": "903-0249-000", "description": "X3P 180 mm cable; package contains 10", "disposition": "CANDIDATE", "authority": AUTHORITY},
         {"item": "CS-06", "quantity": 1, "manufacturer": "Molex", "order_code": "39-01-2020", "description": "two-circuit Mini-Fit Jr receptacle housing", "disposition": "CANDIDATE", "authority": AUTHORITY},
-        {"item": "CS-07", "quantity": 2, "manufacturer": "Molex", "order_code": "39-00-0038", "description": "female Mini-Fit Jr crimp contact for 20 AWG lead", "disposition": "CANDIDATE; CRIMP VALIDATION OPEN", "authority": AUTHORITY},
-        {"item": "CS-08", "quantity": 1, "manufacturer": "Alpha Wire", "order_code": "3073 RED", "description": "20 AWG red lead, 1.0 m first-cut candidate", "disposition": "CANDIDATE", "authority": AUTHORITY},
-        {"item": "CS-09", "quantity": 1, "manufacturer": "Alpha Wire", "order_code": "3073 BLACK", "description": "20 AWG black lead, 1.0 m first-cut candidate", "disposition": "CANDIDATE", "authority": AUTHORITY},
-        {"item": "CS-10", "quantity": 1, "manufacturer": "Pomona", "order_code": "4933-2", "description": "red sheathed 4 mm banana plug", "disposition": "CANDIDATE", "authority": AUTHORITY},
-        {"item": "CS-11", "quantity": 1, "manufacturer": "Pomona", "order_code": "4933-0", "description": "black sheathed 4 mm banana plug", "disposition": "CANDIDATE", "authority": AUTHORITY},
-        {"item": "CS-12", "quantity": 1, "manufacturer": "PROJECT BUTTON", "order_code": "PRINT FROM INCLUDED STL", "description": "universal insulated tray and transparent cover", "disposition": "FABRICATION CANDIDATE; RECEIPT FIT CHECK OPEN", "authority": AUTHORITY},
+        {"item": "CS-07", "quantity": 2, "manufacturer": "Molex", "order_code": "39-00-0038", "description": "female Mini-Fit Jr crimp contact for 18 AWG lead", "disposition": "CANDIDATE; CRIMP VALIDATION OPEN", "authority": AUTHORITY},
+        {"item": "CS-08", "quantity": 1, "manufacturer": "Mueller Electric", "order_code": "BU-0061-M-39-2", "description": "red 39 inch manufacturer-assembled shrouded-banana to tin-dipped 18 AWG silicone lead", "disposition": "CANDIDATE; RECEIPT/OPEN-END PREPARATION/CRIMP VALIDATION OPEN", "authority": AUTHORITY},
+        {"item": "CS-09", "quantity": 1, "manufacturer": "Mueller Electric", "order_code": "BU-0061-M-39-0", "description": "black 39 inch manufacturer-assembled shrouded-banana to tin-dipped 18 AWG silicone lead", "disposition": "CANDIDATE; RECEIPT/OPEN-END PREPARATION/CRIMP VALIDATION OPEN", "authority": AUTHORITY},
+        {"item": "CS-10", "quantity": 1, "manufacturer": "PROJECT BUTTON", "order_code": "PRINT FROM INCLUDED STL", "description": "universal insulated tray and transparent cover", "disposition": "FABRICATION CANDIDATE; RECEIPT FIT CHECK OPEN", "authority": AUTHORITY},
     ])
     write_csv(OUT / "connector-contact-map.csv", [
-        {"connector": "PS1-BANANA", "contact": "RED", "function": "+11.0 V candidate", "wire": "Alpha 3073 red 20 AWG", "destination": "J1/2", "inspection": "polarity and shrouding 100%", "state": "NOT EXECUTED"},
-        {"connector": "PS1-BANANA", "contact": "BLACK", "function": "DC return", "wire": "Alpha 3073 black 20 AWG", "destination": "J1/1", "inspection": "polarity and shrouding 100%", "state": "NOT EXECUTED"},
-        {"connector": "J1 MINI-FIT", "contact": "1", "function": "GND", "wire": "Alpha 3073 black 20 AWG", "destination": "PHB power pin 1", "inspection": "continuity and pull test", "state": "NOT EXECUTED"},
-        {"connector": "J1 MINI-FIT", "contact": "2", "function": "VDD", "wire": "Alpha 3073 red 20 AWG", "destination": "PHB power pin 2", "inspection": "continuity and pull test", "state": "NOT EXECUTED"},
+        {"connector": "PS1-BANANA", "contact": "RED", "function": "+11.0 V candidate", "wire": "Mueller BU-0061-M-39-2 red 18 AWG", "destination": "J1/2", "inspection": "exact received part, polarity and shrouding 100%", "state": "NOT EXECUTED"},
+        {"connector": "PS1-BANANA", "contact": "BLACK", "function": "DC return", "wire": "Mueller BU-0061-M-39-0 black 18 AWG", "destination": "J1/1", "inspection": "exact received part, polarity and shrouding 100%", "state": "NOT EXECUTED"},
+        {"connector": "J1 MINI-FIT", "contact": "1", "function": "GND", "wire": "Mueller BU-0061-M-39-0 black 18 AWG", "destination": "PHB power pin 1", "inspection": "tin-dipped segment absent from crimp; continuity and pull test", "state": "NOT EXECUTED"},
+        {"connector": "J1 MINI-FIT", "contact": "2", "function": "VDD", "wire": "Mueller BU-0061-M-39-2 red 18 AWG", "destination": "PHB power pin 2", "inspection": "tin-dipped segment absent from crimp; continuity and pull test", "state": "NOT EXECUTED"},
         {"connector": "X4P", "contact": "1/2/3/4", "function": "GND/VDD/DATA+/DATA-", "wire": "ROBOTIS 903-0244-000", "destination": "one RS-485 actuator", "inspection": "manufacturer cable; polarity/continuity before use", "state": "NOT EXECUTED"},
         {"connector": "X3P", "contact": "1/2/3", "function": "GND/VDD/DATA", "wire": "ROBOTIS 903-0249-000", "destination": "one TTL actuator", "inspection": "manufacturer cable; polarity/continuity before use", "state": "NOT EXECUTED"},
     ])
@@ -305,7 +303,7 @@ def write_registers():
         ("CS-H01", "qualified electrical approval of the complete station and first-power procedure"),
         ("CS-H02", "availability/calibration record for exact E36313A or a formally re-reviewed equivalent"),
         ("CS-H03", "received U2D2 USB revision, PHB dimensions, supplied standoffs and connector inspection"),
-        ("CS-H04", "Mini-Fit crimp tooling, crimp-height specification, pull test and polarity inspection"),
+        ("CS-H04", "received Mueller lead identity/length/jacket OD/conductor construction; removal of the tin-dipped segment; Mini-Fit tooling/calibration; 18 AWG crimp-height, pull and polarity records; signed BH-A01 as-built disposition"),
         ("CS-H05", "tray/cover material, print settings, cover retention, labeling and received fit check"),
         ("CS-H06", "mechanical restraint that prevents each installed actuator output from driving a body link"),
         ("CS-H07", "approved host software/version and logging method that prevents broadcast or motion writes"),
