@@ -19,7 +19,8 @@ def main() -> int:
     text = PAGE.read_text(encoding="utf-8")
     mass_summary = json.loads(MASS_SUMMARY.read_text(encoding="utf-8"))
     reconciled_mass = float(mass_summary["reconciled_dynamics_planning_mass_kg"])
-    displayed_mass = f"{reconciled_mass:.3f} kg"
+    tether_mass = float(mass_summary["active_tether_dynamics_planning_mass_kg"])
+    displayed_mass = f"{tether_mass:.3f} kg"
     required_links = (
         "hr30/whole-body-p0.1/",
         "HR-30_body_architecture_candidate.glb",
@@ -46,8 +47,7 @@ def main() -> int:
     require(all(link in text for link in required_links), "root page does not expose the complete package")
     require("PRELIMINARY" in text and "NOT APPROVED" in text and "energization" in text.lower(), "preliminary authority warning missing")
     require(displayed_mass in text, f"root page mass is not synchronized to the authoritative reconciliation: {displayed_mass}")
-    displayed_margin = f"only {float(mass_summary['planning_margin_to_program_maximum_kg']):.3f} kg remains"
-    require(displayed_margin in text, "narrow P0.1 mass margin is not visible on the root page")
+    require(f"onboard-envelope case is {reconciled_mass:.3f} kg" in text, "onboard-envelope mass boundary is not visible on the root page")
     require("9.63 kg" not in text, "historical allocation mass remains on the current root page")
     require('src="hr30/whole-body-p0.1/vendor/model-viewer.min.js"' in text, "viewer is not repository-local")
     require('src="hr30/whole-body-p0.1/grippers-p0.1/HR-30_detailed_hands_installed_open_candidate.glb"' in text, "root viewer does not show the hand-integrated whole robot")

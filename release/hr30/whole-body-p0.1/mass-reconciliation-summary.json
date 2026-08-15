@@ -49,5 +49,23 @@
     0.396288163,
     0.448484029,
     0.076209574
-  ]
+  ],
+  "active_development_configuration": "HR30-TETHER-FIRST-P0.1",
+  "active_tether_dynamics_planning_mass_kg": 10.470480351,
+  "active_tether_neutral_com_m": [
+    -0.000860941,
+    0.003368549,
+    0.346194495
+  ],
+  "active_tether_margin_to_program_maximum_kg": 1.529519649,
+  "excluded_onboard_envelope_identified_mass_kg": 1.357,
+  "onboard_envelope_configuration": "HR30-ONBOARD-ENVELOPE-P0.1",
+  "onboard_envelope_dynamics_planning_mass_kg": 11.936040351,
+  "onboard_envelope_neutral_com_m": [
+    -0.000755231,
+    0.011742783,
+    0.368581047
+  ],
+  "onboard_envelope_margin_to_program_maximum_kg": 0.063959649,
+  "configuration_mass_separation_present": true
 }

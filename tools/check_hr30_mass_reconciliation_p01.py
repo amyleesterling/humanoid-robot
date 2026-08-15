@@ -32,6 +32,9 @@ def main() -> int:
     required = {
         "actuator-mass-source-register.csv", "mass-item-reconciliation.csv",
         "link-mass-reconciliation.csv", "mass-reconciliation-summary.json",
+        "link-mass-reconciliation-tether.csv", "mass-properties-budget-tether.csv",
+        "mass-configuration-register.csv", "hr30_tether.urdf", "hr30_tether.xml",
+        "hr30_onboard_envelope.urdf", "hr30_onboard_envelope.xml",
         "mass-reconciliation.md", "mass-reconciliation-source.py", "lightweight-architecture-register.csv",
     }
     for name in required:
@@ -72,6 +75,14 @@ def main() -> int:
     require(len(bearing_rows) == 39 and abs(sum(float(row["planning_candidate_mass_kg"]) for row in bearing_rows) - 0.34252) < 1e-9, "catalogue bearing mass population drift")
     require(all("APPLICATION SELECTION REQUIRED" in row["selection_state"] and row["density_screen_kg_m3"] == "N/A" for row in bearing_rows), "bearing mass/application boundary missing")
     require(all(float(row["minimum_candidate_mass_kg"]) <= float(row["planning_candidate_mass_kg"]) <= float(row["maximum_candidate_mass_kg"]) for row in items), "mass bound ordering invalid")
+    onboard_envelope_ids = {
+        "EQ-T01-BATTERY-PACK", "EQ-T01-BATTERY-CASSETTE", "EQ-T01-BATTERY-PROTECTION",
+    }
+    envelope_items = [row for row in items if row["item_id"] in onboard_envelope_ids]
+    require({row["item_id"] for row in envelope_items} == onboard_envelope_ids, "onboard envelope item set drift")
+    excluded_envelope_mass = sum(float(row["planning_candidate_mass_kg"]) for row in envelope_items)
+    require(abs(excluded_envelope_mass - 1.357) < 2e-9, "onboard envelope exclusion mass drift")
+    require("REJECTED direct source" in next(row for row in envelope_items if row["item_id"] == "EQ-T01-BATTERY-PACK")["candidate_material_or_model"], "rejected direct-source pack boundary missing")
     fastener_rows = [row for row in items if row["category"] == "LOCATED JOINT FASTENER CAD DENSITY SCREEN"]
     require(len(fastener_rows) == 156 and abs(sum(float(row["planning_candidate_mass_kg"]) for row in fastener_rows) - 0.554224112) < 2e-9, "located fastener mass population drift")
     hand_fabrication_rows = [row for row in items if row["category"] == "FABRICATION CAD DENSITY SCREEN" and row["source_component"].startswith(("G01_", "G02_"))]
@@ -95,6 +106,12 @@ def main() -> int:
     require(summary["program_mass_target_status"].startswith("WITHIN P0.1 MAXIMUM") and 0.0 < summary["planning_margin_to_program_maximum_kg"] < 0.15, "narrow 12 kg P0.1 planning margin not disclosed")
     require(-2.0 < summary["planning_margin_to_lightweight_stretch_kg"] < -1.8, "10 kg lightweight stretch miss not disclosed")
     require(not any(summary["authority"].values()), "mass package authority overclaim")
+    require(summary["configuration_mass_separation_present"], "mass configuration separation missing")
+    require(summary["active_development_configuration"] == "HR30-TETHER-FIRST-P0.1", "active mass configuration drift")
+    require(abs(float(summary["excluded_onboard_envelope_identified_mass_kg"]) - excluded_envelope_mass) < 2e-9, "excluded envelope mass summary drift")
+    require(abs(float(summary["onboard_envelope_dynamics_planning_mass_kg"]) - float(summary["reconciled_dynamics_planning_mass_kg"])) < 2e-9, "onboard envelope dynamics alias drift")
+    require(10.3 < float(summary["active_tether_dynamics_planning_mass_kg"]) < 10.7, "active tether mass outside controlled P0.1 band")
+    require(1.3 < float(summary["active_tether_margin_to_program_maximum_kg"]) < 1.7, "active tether margin outside controlled P0.1 band")
 
     decisions = rows("lightweight-architecture-register.csv")
     require(len(decisions) == 10 and {row["decision_id"] for row in decisions} >= {"HR30-LW-001", "HR30-LW-004", "HR30-LW-005", "HR30-LW-007", "HR30-LW-008", "HR30-LW-009", "HR30-LW-TOTAL"}, "lightweight architecture decision set incomplete")
@@ -116,6 +133,11 @@ def main() -> int:
         require(abs(reconciled - (identified_link + contingency)) < 2e-9, f"link planning rule mismatch {row['dynamic_link']}")
     reconciled_total = sum(float(row["reconciled_dynamics_mass_kg"]) for row in links)
     require(abs(reconciled_total - float(summary["reconciled_dynamics_planning_mass_kg"])) < 2e-9, "reconciled total mismatch")
+    tether_links = rows("link-mass-reconciliation-tether.csv")
+    require(len(tether_links) == 26 and len({row["dynamic_link"] for row in tether_links}) == 26, "tether link reconciliation population drift")
+    tether_total = sum(float(row["reconciled_dynamics_mass_kg"]) for row in tether_links)
+    require(abs(tether_total - float(summary["active_tether_dynamics_planning_mass_kg"])) < 2e-9, "tether dynamics total mismatch")
+    require(float(next(row for row in tether_links if row["dynamic_link"] == "torso")["identified_planning_candidate_kg"]) < float(next(row for row in links if row["dynamic_link"] == "torso")["identified_planning_candidate_kg"]), "tether torso does not exclude onboard envelope")
 
     urdf = ET.parse(SRC / "hr30.urdf").getroot()
     urdf_mass = sum(float(node.find("inertial/mass").get("value")) for node in urdf.findall("link"))
@@ -123,6 +145,17 @@ def main() -> int:
     mjcf_mass = sum(float(node.get("mass")) for node in mjcf.findall("./worldbody//inertial"))
     require(abs(urdf_mass - reconciled_total) < 5e-6, "URDF mass not reconciled")
     require(abs(mjcf_mass - reconciled_total) < 5e-6, "MJCF mass not reconciled")
+    tether_urdf = ET.parse(SRC / "hr30_tether.urdf").getroot()
+    tether_urdf_mass = sum(float(node.find("inertial/mass").get("value")) for node in tether_urdf.findall("link"))
+    tether_mjcf = ET.parse(SRC / "hr30_tether.xml").getroot()
+    tether_mjcf_mass = sum(float(node.get("mass")) for node in tether_mjcf.findall("./worldbody//inertial"))
+    require(abs(tether_urdf_mass - tether_total) < 5e-6 and abs(tether_mjcf_mass - tether_total) < 5e-6, "tether dynamics artifacts not reconciled")
+    require(sha(SRC / "hr30.urdf") == sha(SRC / "hr30_onboard_envelope.urdf") and sha(SRC / "hr30.xml") == sha(SRC / "hr30_onboard_envelope.xml"), "default/onboard-envelope artifact identity drift")
+    configurations = {row["configuration_id"]: row for row in rows("mass-configuration-register.csv")}
+    require(set(configurations) == {"HR30-TETHER-FIRST-P0.1", "HR30-ONBOARD-ENVELOPE-P0.1"}, "mass configuration register drift")
+    require(configurations["HR30-TETHER-FIRST-P0.1"]["program_role"] == "ACTIVE CONTROLLED DEVELOPMENT BASELINE", "tether configuration role drift")
+    require("REJECTED" in configurations["HR30-ONBOARD-ENVELOPE-P0.1"]["selection_state"], "onboard-envelope rejection boundary missing")
+    require(all(row["authority"].startswith("NO PROCUREMENT") for row in configurations.values()), "mass configuration authority overclaim")
     budget = rows("mass-properties-budget.csv")[-1]
     require(budget["link"] == "TOTAL" and abs(float(budget["allocated_mass_kg"]) - reconciled_total) < 2e-6, "mass-properties total not reconciled")
 
@@ -134,11 +167,13 @@ def main() -> int:
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
     require(status["mass_reconciliation_present"] and not status["mass_budget_closed"] and not status["mass_com_inertia_physically_validated"], "main package mass status overclaim")
     require(abs(float(status["estimated_mass_kg"]) - reconciled_total) < 2e-9, "main package mass drift")
+    require(status["mass_configuration_separation_present"] and status["active_development_mass_configuration"] == "HR30-TETHER-FIRST-P0.1", "main package active mass configuration missing")
+    require(abs(float(status["active_tether_development_mass_kg"]) - tether_total) < 2e-9 and not status["onboard_energy_envelope_active"], "main package tether/onboard mass state drift")
     require(not any(status[key] for key in ("procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "main package authority overclaim")
     page = (SRC / "index.html").read_text(encoding="utf-8")
-    require("mass-reconciliation.md" in page and "mass-item-reconciliation.csv" in page and "lightweight-architecture-register.csv" in page and f"{reconciled_total:.3f} kg onboard-energy planning" in page, "web guide mass reconciliation missing")
-    require("onboard energy" in page.lower(), "web guide hides onboard-energy boundary")
-    print(f"PASS: HR-30 mass reconciliation inventories 489 candidate items including both seventeen-part custom grippers, 156 located joint fasteners, 58 equipment/harness items, five installed branch-PDU boards, 10 published belts, 2.609 kg published actuator mass and 39 catalogue bearing candidates; {identified:.3f} kg identified plus {summary['remaining_integration_contingency_kg']:.3f} kg residual contingency produce {reconciled_total:.3f} kg dynamics mass and leave only {summary['planning_margin_to_program_maximum_kg']:.3f} kg to the 12 kg P0.1 maximum; physical closure and all authority gates remain open")
+    require("mass-reconciliation.md" in page and "mass-item-reconciliation.csv" in page and "mass-configuration-register.csv" in page and "mass-properties-budget-tether.csv" in page and "lightweight-architecture-register.csv" in page, "web guide mass reconciliation links missing")
+    require(f"{tether_total:.3f} kg active tether-first" in page and f"{reconciled_total:.3f} kg onboard-envelope" in page, "web guide configuration masses missing")
+    print(f"PASS: HR-30 mass reconciliation inventories 489 candidate items and separates the {tether_total:.3f} kg active tether-first dynamics model from the {reconciled_total:.3f} kg onboard-envelope planning case; exactly {excluded_envelope_mass:.3f} kg of rejected-pack/cassette/protection packaging evidence is excluded only from the active configuration; physical closure and all authority gates remain open")
     return 0
 
 
