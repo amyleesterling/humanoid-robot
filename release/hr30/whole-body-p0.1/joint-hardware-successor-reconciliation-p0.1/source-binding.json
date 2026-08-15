@@ -1,0 +1,32 @@
+{
+  "identifier": "HR30-JOINT-HARDWARE-SUCCESSOR-RECONCILIATION-P0.1",
+  "generator": "tools/generate_hr30_joint_hardware_successor_reconciliation_p01.py",
+  "generator_sha256": "ec644df85e33885e1e88cd87d35f51e52870be834566389b7d8eaef071c2e26d",
+  "sources": [
+    {
+      "path": "hr30/whole-body-p0.1/transmission-closure-p0.1/transmission-disposition-register.csv",
+      "sha256": "6da8cf48280fbb82cc4e3d7550d71561fecda31f2809c84c0666a016ebc79a80"
+    },
+    {
+      "path": "hr30/whole-body-p0.1/transmission-closure-p0.1/direct-adapter-part-register.csv",
+      "sha256": "dd51c5ef2cf26fb4224d0c5463ae967a44351e5e64029a2a1296730a9ad85507"
+    },
+    {
+      "path": "hr30/whole-body-p0.1/transmission-closure-p0.1/shoulder-drive-register.csv",
+      "sha256": "68a33c3a1828a84e6137100d4cb42f4dd42e18af75f6856d027807b9099e630c"
+    },
+    {
+      "path": "hr30/whole-body-p0.1/leg-drivetrain-p0.1/candidate-product-register.csv",
+      "sha256": "5fd93bb4fc31610e26532c21a9fe234e15ac5389f94acf2bdf9c167d2f012d69"
+    },
+    {
+      "path": "hr30/whole-body-p0.1/grippers-p0.1/gripper-part-register.csv",
+      "sha256": "bf48d1f4e32db6db58865a7aeebffea866160f402bf0d83126d72f4c6fd7042c"
+    },
+    {
+      "path": "hr30/whole-body-p0.1/joint-hardware-manufacturing-p0.1/joint-hardware-part-register.csv",
+      "sha256": "cd237a412872854e47b2967dd7fd3be0f89fd6b33bd4b8ae9e968cb9754e01e4"
+    }
+  ],
+  "warning": "PRELIMINARY - JOINT-HARDWARE SUCCESSOR CANDIDATES ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

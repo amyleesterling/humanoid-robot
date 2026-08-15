@@ -295,7 +295,7 @@
   "actual_axis_joint_hardware_count": 142,
   "joint_hardware_local_refinement_step_count": 64,
   "joint_hardware_catalogue_reference_count": 39,
-  "joint_hardware_redesign_required_count": 39,
+  "joint_hardware_redesign_required_count": 0,
   "joint_hardware_complete_manufacturing_definition": false,
   "joint_hardware_procurement_authority": false,
   "joint_hardware_fabrication_authority": false,
@@ -342,5 +342,12 @@
   "axis_commissioning_read_only_inspector_present": true,
   "axis_commissioning_device_write_api_present": false,
   "axis_commissioning_fixture_physically_validated": false,
-  "axis_commissioning_host_software_approved": false
+  "axis_commissioning_host_software_approved": false,
+  "joint_hardware_predecessor_superseded_count": 39,
+  "joint_hardware_unmapped_predecessor_count": 0,
+  "joint_hardware_successor_candidate_binding_count": 39,
+  "joint_hardware_successor_validation_open_count": 39,
+  "joint_hardware_successor_procurement_selection_count": 0,
+  "joint_hardware_successor_fabrication_release_count": 0,
+  "joint_hardware_successor_reconciliation_present": true
 }
