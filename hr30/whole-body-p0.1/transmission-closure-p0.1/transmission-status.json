@@ -1,0 +1,23 @@
+{
+  "identifier": "HR30-TRANSMISSION-CLOSURE-P0.1",
+  "predecessor_placeholder_count": 39,
+  "predecessor_successor_mapping_count": 39,
+  "predecessor_successor_mapping_complete": true,
+  "shoulder_drive_axis_count": 4,
+  "direct_adapter_axis_count": 9,
+  "direct_adapter_family_count": 4,
+  "whole_body_step_present": true,
+  "whole_body_glb_present": true,
+  "editable_source_present": true,
+  "wrist_vendor_geometry_reconciled_to_xc330": true,
+  "catalogue_tooth_brep_claimed": false,
+  "material_fit_fasteners_capacity_validated": false,
+  "physical_validation_complete": false,
+  "procurement_authority": false,
+  "fabrication_authority": false,
+  "assembly_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false,
+  "warning": "PRELIMINARY - WHOLE-BODY TRANSMISSION GEOMETRY CANDIDATE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

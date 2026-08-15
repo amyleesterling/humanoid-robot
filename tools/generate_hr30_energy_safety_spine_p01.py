@@ -245,6 +245,10 @@ def manifest_release_integrate(stats: dict) -> None:
     page=page.replace("The rear-torso model deliberately retains the rejected legacy pack envelope so the cassette redesign is visible as open work; tether-first is primary and every physical energy selection remains open.","The rear-torso battery cassette model deliberately retains the rejected legacy pack envelope so the redesign is visible as open work; tether-first is primary and every physical energy selection remains open.")
     if link not in page:
         needle='<a href="harness/physical-p0.1/index.html">Interactive physical harness</a>'
+        if needle not in page:
+            # Clean regeneration reaches energy before the physical-harness
+            # stage.  The stage-2 system artifact is the stable fallback.
+            needle='<a href="whole-body-electrical-integration.md">Electrical integration</a>'
         if needle not in page: raise SystemExit("whole-body integration anchor missing")
         page=page.replace(needle,needle+' · '+link,1)
     ip.write_text(page,encoding="utf-8")

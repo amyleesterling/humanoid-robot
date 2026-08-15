@@ -1,23 +1,33 @@
 # Humanoid Robot Program
 
-Package baseline: **HR-30-SYS-R0.2**  
-Status: **concept systems baseline, not approved for fabrication, procurement, or energization**  
-Baseline date: 2026-08-06
+Package baseline: **HR-30 whole-body P0.1 engineering candidate**
 
-This repository is the engineering source of truth for a staged **30-inch (762 mm) humanoid-robot program**. The first build is **not a walking humanoid**. It is HR-V0, a bench-mounted, guarded handoff demonstrator with one shoulder axis, one elbow axis, and one parallel gripper. Its validated architecture then becomes HR-30, a child-sized but not child-safe robot.
+Status: **complete preliminary whole-body design; not approved for fabrication, procurement, assembly, powered testing, motion, or energization**
+
+Baseline date: 2026-08-15
+
+This repository is the engineering source of truth for a **30-inch (762 mm) whole humanoid robot**. The current program deliverable is HR-30 whole-body P0.1: a recognizable complete robot with 25 articulated axes, two functional grippers, full-body editable CAD and dynamics models, candidate actuation and transmission hardware, electrical and harness architecture, budgets, and a staged path toward tethered walking. HR-V0 and its unresolved J2/R312 arm analysis are preserved as archived subsystem evidence; they no longer control or replace the whole-body program deliverable.
 
 ## Program sequence
 
-1. HR-V0 proves the power, communications, watchdog, emergency-stop, joint-control, thermal, and handoff-test architecture on a bench.
-2. HR-30A adds a 13-DOF head, torso, two arms, and two grippers on a bolted child-height pedestal.
-3. HR-30B adds the full 30-inch silhouette and supported legs, with fall restraint attached at all times.
-4. HR-30C proves powered stance and weight transfer after structural, thermal, fall, and safety gates pass.
-5. HR-30D demonstrates dynamic walking under a slack overhead fall-arrest tether.
-6. HR-30W is the required end-state: untethered level-floor walking in a controlled test area. Human-facing walking requires a later safety release.
+1. HR-30 whole-body P0.1 defines the complete unpowered machine and every body, joint, transmission, electrical, harness, compute, sensing, mass, power and fabrication interface.
+2. Suspended joint commissioning validates one whole-body revision without supporting robot weight.
+3. Restrained standing and weight transfer proceed only after separate mechanical, electrical, fall-restraint and motion-control releases.
+4. Capture steps and tethered walking remain distinct physical-development gates.
+5. Untethered level-floor walking is a later end state, not a claim made by P0.1.
 
-No child may enter the test area during V0. Any later child-adjacent demonstration requires an independent risk assessment, qualified mechanical/electrical review, validated force and stopping limits, and a new released revision.
+No child may enter the powered test area during any preliminary stage. Any later child-adjacent demonstration requires an independent risk assessment, qualified mechanical/electrical review, validated force and stopping limits, and a new released revision.
 
 ## Start here
+
+- [Complete interactive HR-30 whole-body guide](hr30/whole-body-p0.1/index.html)
+- [Whole-body P0.1 package boundary](hr30/whole-body-p0.1/README.md)
+- [Transmission closure: all 39 predecessor placeholders dispositioned](hr30/whole-body-p0.1/transmission-closure-p0.1/index.html)
+- [Complete successor whole-body STEP](hr30/whole-body-p0.1/transmission-closure-p0.1/HR-30_transmissions_installed_candidate.step)
+- [URDF](hr30/whole-body-p0.1/hr30.urdf) and [MJCF](hr30/whole-body-p0.1/hr30.xml)
+- [Whole-robot candidate BOM](hr30/whole-body-p0.1/whole-robot-candidate-bom.csv)
+
+### Archived HR-V0 subsystem evidence
 
 - [R312 current corrected trimmed-face/imprint handoff](docs/hr-v0-j2-c07-pe-mesh-progression-r312.md)
 - [R312 rejected 24-face imprint evidence](release/hr-v0/j2-c07-pe-corrected-surface-imprint-p0.1/README.md)

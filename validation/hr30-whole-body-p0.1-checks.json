@@ -1,0 +1,10 @@
+{
+  "identifier": "HR30-WHOLE-BODY-P0.1-CHECKS",
+  "cad_runtime_validator_count": 30,
+  "separate_kicad_python_validator": "check_hr30_actuator_interface_carriers_p01.py",
+  "failure_count": 1,
+  "failures": [
+    "check_hr30_joint_family_cad_p01.py: FAIL: H01 current whole-body joint/fastener disposition missing"
+  ],
+  "pass": false
+}

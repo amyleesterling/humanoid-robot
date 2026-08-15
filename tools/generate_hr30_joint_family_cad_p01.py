@@ -203,7 +203,7 @@ def build_family(family_id: str, vendor_shapes: dict[str, cq.Shape]) -> tuple[li
         add("OUTPUT_COUPLER", "coaxial clamping coupler", body.hollow_cylinder_between(coupler_mid, normal, abs(motor_center[1]), max(shaft_d + 5.0, 12.0), max(2.0, shaft_d * 0.55)), "transmission", "split-clamp aluminum/steel coupler candidate", 2700.0, "spline/horn interface, clamp preload, fretting and retention open")
 
     if family_id == "JMF-03-SHOULDER-GIMBAL":
-        secondary_center = (38.0, 0.0, 0.0)
+        secondary_center = (42.5, 0.0, 0.0)
         secondary, _basis = body.vendor_actuator_to_axis(vendor_shapes["ROBOTIS-X430"], secondary_center, (1.0, 0.0, 0.0))
         add("ROLL_ACTUATOR", "second SHA-bound gimbal actuator", secondary, "actuator", "ROBOTIS-X430", 0.0, "intersecting-axis shoulder roll candidate; mount and load path open")
         add("ROLL_SHAFT", "intersecting gimbal shaft", body.hollow_cylinder_between(center, (1.0, 0.0, 0.0), span, shaft_d, shaft_bore), "shaft", "17-4PH or alloy-steel candidate", 7800.0, "gimbal cross-shaft shoulders, fits and strength open")

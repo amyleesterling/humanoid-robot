@@ -46,6 +46,7 @@ PIPELINE = (
     "generate_hr30_installed_leg_drivetrains_p01.py",
     "generate_hr30_fabrication_sourcing_p01.py",
     "generate_hr30_joint_hardware_manufacturing_p01.py",
+    "generate_hr30_transmission_closure_p01.py",
 )
 
 
