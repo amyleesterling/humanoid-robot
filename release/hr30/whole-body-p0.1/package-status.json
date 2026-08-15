@@ -214,5 +214,11 @@
   "physical_harness_serial_data_link_count": 25,
   "physical_harness_individual_power_pair_count": 25,
   "detailed_gripper_involute_transmission_candidate_defined": true,
-  "detailed_gripper_nominal_tangential_backlash_mm": 0.08
+  "detailed_gripper_nominal_tangential_backlash_mm": 0.08,
+  "reduced_leg_drivetrain_package_present": true,
+  "reduced_leg_drivetrain_module_count": 3,
+  "reduced_leg_drivetrain_axis_count": 10,
+  "reduced_leg_drivetrain_candidate_products_defined": true,
+  "reduced_leg_drivetrain_capacity_validated": false,
+  "reduced_leg_drivetrain_horn_adapters_complete": false
 }

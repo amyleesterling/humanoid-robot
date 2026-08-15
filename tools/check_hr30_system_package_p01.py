@@ -61,6 +61,12 @@ def main() -> int:
         "electrical/kicad/hr30-whole-body-electrical-p0.1/hr30-whole-body-electrical-p0.1.kicad_pro",
         "electrical/kicad/hr30-whole-body-electrical-p0.1/hr30-whole-body-electrical-p0.1.kicad_sch",
         "electrical/kicad/hr30-whole-body-electrical-p0.1/validation/hr30-whole-body-electrical-p0.1-erc.rpt",
+        "leg-drivetrain-p0.1/leg-drivetrain-status.json",
+        "leg-drivetrain-p0.1/axis-drivetrain-allocation.csv",
+        "leg-drivetrain-p0.1/candidate-product-register.csv",
+        "leg-drivetrain-p0.1/belt-center-geometry.csv",
+        "leg-drivetrain-p0.1/HR-30_leg_drivetrain_lineup_candidate.step",
+        "leg-drivetrain-p0.1/HR-30_leg_drivetrain_lineup_candidate.glb",
     }
     source_files = {p.relative_to(SRC).as_posix() for p in SRC.rglob("*") if p.is_file()}
     release_files = {p.relative_to(REL).as_posix() for p in REL.rglob("*") if p.is_file()}
@@ -122,7 +128,7 @@ def main() -> int:
     require(any(row["item_id"] == "HR30-BOM-004" and int(row["quantity"]) == 6 and row["function"] == "head/gripper/wrist actuator" for row in bom), "XC330 whole-body allocation drift")
     require(any(row["item_id"] == "HR30-BOM-018" and int(row["quantity"]) == 10 for row in bom), "reduced-leg output encoder allocation drift")
     require(any(row["item_id"] == "HR30-BOM-020" and int(row["quantity"]) == 39 and "6803" in row["candidate"] and "6901" in row["candidate"] for row in bom), "standard external-bearing BOM population incomplete")
-    require(any(row["item_id"] == "HR30-BOM-019" and int(row["quantity"]) == 10 and "225-5MGT3-15" in row["candidate"] and "250-5MGT3-15" in row["candidate"] for row in bom), "leg reduction BOM does not cover all ten reduced axes")
+    require(any(row["item_id"] == "HR30-BOM-019" and int(row["quantity"]) == 10 and "GPA16/20/30/40GT5090" in row["candidate"] and "GBN225/250/255EV5GT-090" in row["candidate"] and "capacity" in row["candidate"] for row in bom), "leg reduction BOM does not bind the exact candidate package for all ten reduced axes")
     require(any(row["item_id"] == "HR30-BOM-026" and "Bioenno" in row["manufacturer"] and "BLF-1209WS" in row["candidate"] and "rejected" in row["candidate"] for row in bom), "onboard-energy BOM candidate/boundary missing")
     require(any(row["item_id"] == "HR30-BOM-010" and int(row["quantity"]) == 8 and "RS-485" in row["candidate"] and "TTL" in row["candidate"] for row in bom), "mixed-protocol actuator interface BOM missing")
     require(all(row["authority"] == "NO PROCUREMENT OR FABRICATION AUTHORITY" for row in bom), "BOM authority overclaim")
@@ -148,6 +154,8 @@ def main() -> int:
     require(not status["module_cad_manufacturing_released"] and not status["fabrication_drawings_released"], "module CAD manufacturing-release overclaim")
     require(status["joint_fastener_candidate_count"] == 156 and status["joint_fastener_carrier_plate_count"] == 39, "whole-body fastener population drift")
     require(not status["joint_fastener_selected"] and not status["joint_fastener_preload_validated"], "fastener selection/validation overclaim")
+    require(status.get("reduced_leg_drivetrain_package_present") and status.get("reduced_leg_drivetrain_module_count") == 3 and status.get("reduced_leg_drivetrain_axis_count") == 10 and status.get("reduced_leg_drivetrain_candidate_products_defined"), "whole-body reduced-leg drivetrain package missing")
+    require(not status.get("reduced_leg_drivetrain_capacity_validated") and not status.get("reduced_leg_drivetrain_horn_adapters_complete"), "reduced-leg drivetrain validation overclaim")
     require(status["module_interface_control_count"] == 12 and status["module_interface_axis_ownership_count"] == 25, "whole-body interface atlas coverage drift")
     require((status["actuator_bus_segment_count"], status["actuator_bus_axis_binding_count"], status["rs485_actuator_axis_count"], status["ttl_actuator_axis_count"]) == (8, 25, 19, 6), "actuator bus status counts drift")
     require(status["native_hr30_kicad_present"] and status["native_hr30_kicad_logical_connectivity_reconciled"] and status["native_hr30_kicad_sheet_count"] == 19 and status["native_hr30_kicad_axis_binding_count"] == 25 and status["native_hr30_kicad_actuator_bus_controller_pins_selected"] and status["native_hr30_kicad_interface_device_candidates_selected"] and status["native_hr30_kicad_data_only_connector_candidates_selected"] and status["native_hr30_kicad_erc_errors"] == status["native_hr30_kicad_erc_warnings"] == 0, "native whole-body KiCad integration missing")

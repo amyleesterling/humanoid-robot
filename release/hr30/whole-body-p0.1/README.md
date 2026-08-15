@@ -80,6 +80,12 @@ The [detailed gripper package](grippers-p0.1/index.html) contains two editable 1
 
 Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
 <!-- HR30-HARNESS-README-END -->
+
+<!-- HR30-LEG-DRIVETRAIN-P01-README-START -->
+## Reduced-leg drivetrain product geometry
+
+The [leg-drivetrain package](leg-drivetrain-p0.1/index.html) assigns every one of the ten belt-reduced leg axes to one of three editable 5GT/EV5GT modules. MISUMI 16/20/30/40-tooth pulley candidates, 225/250/255 mm by 9 mm belt candidates, solved 49.359/49.965/51.456 mm pitch centers, native STEP/GLB envelopes and ROBOTIS horn-family boundaries replace the former ratio-only placeholders. Capacity, exact horn adapters, fits, tensioning, guarding and physical proof remain open.
+<!-- HR30-LEG-DRIVETRAIN-P01-README-END -->
 <!-- HR30-ASSEMBLY-GUIDE-P01-START -->
 ## Whole-robot assembly traveler
 
