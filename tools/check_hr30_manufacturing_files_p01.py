@@ -132,7 +132,11 @@ def main() -> int:
     readme = (SRC / "README.md").read_text(encoding="utf-8")
     require("## Individual manufacturing-candidate files" in readme and "98 physical frame" in readme, "whole-body README manufacturing section missing")
     holds = {row["hold_id"]: row for row in read_csv(SRC / "open-holds.csv")}
-    require("All 98 physical frame/cover/gripper-mechanism candidates" in holds["HR30-P01-H06"]["unresolved_item"], "H06 manufacturing disposition missing")
+    require(
+        "All 98 physical candidates" in holds["HR30-P01-H06"]["unresolved_item"]
+        and "seven-route Boston/online pre-RFQ allocation" in holds["HR30-P01-H06"]["unresolved_item"],
+        "H06 manufacturing disposition missing",
+    )
     require("individual candidate files for all 98" in holds["HR30-P01-H10"]["unresolved_item"], "H10 manufacturing disposition missing")
 
     print(f"PASS: reimported {imported} individual STEP files; 98 physical HR-30 candidates including both detailed hands have STEP/SVG, 45 planar candidates have DXF and 24 covers have STL; drawing release, DFM/FAI, proof and all work authority remain false")
