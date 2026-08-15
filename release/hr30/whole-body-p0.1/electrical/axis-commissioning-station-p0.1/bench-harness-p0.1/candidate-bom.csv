@@ -1,0 +1,10 @@
+item,quantity,manufacturer,order_code,description,disposition
+BH-01,1,Molex,39-01-2020,2-circuit Mini-Fit Jr receptacle housing,CANDIDATE
+BH-02,2,Molex,39-00-0038,5556 female crimp contact for 20 AWG,CANDIDATE
+BH-03,1.0 m first cut,Alpha Wire,3073 RED,20 AWG red VDD lead,CANDIDATE
+BH-04,1.0 m first cut,Alpha Wire,3073 BLACK,20 AWG black return lead,CANDIDATE
+BH-05,1,Pomona,4933-2,red sheathed 4 mm banana plug,CANDIDATE; TERMINATION PROCESS OPEN
+BH-06,1,Pomona,4933-0,black sheathed 4 mm banana plug,CANDIDATE; TERMINATION PROCESS OPEN
+BH-07,1,Molex,63819-0901,Mini-Fit Jr hand crimp tool,CANDIDATE; RECEIPT/CALIBRATION OPEN
+BH-08,1,Molex,11-03-0044,Mini-Fit extraction tool,CANDIDATE
+BH-09,as required,SELECTION REQUIRED,SELECTION REQUIRED,durable wire and assembly warning labels,SELECTION REQUIRED

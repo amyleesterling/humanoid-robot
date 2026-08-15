@@ -138,3 +138,9 @@ The whole-body package now includes a removable, source-limited commissioning st
 
 The whole-body commissioning path now includes exact-envelope, horn-free output guards for all four candidate actuator models and a single-ID Protocol 2.0 inspector with no device-write API. Physical fit, fixture retention, software approval and all connection/powered-test/motion/energization authority remain open.
 <!-- NO-MOTION-P01 END -->
+
+<!-- BENCH-HARNESS-P01 START -->
+## Commissioning bench harness
+
+The one-axis station now includes an assembly-controlled two-wire source harness with exact Mini-Fit polarity, wire preparation, candidate tooling, inspection traveler and as-built record. Physical fabrication, source-end process approval, qualified review and every connection/powered-test/motion/energization authority remain open.
+<!-- BENCH-HARNESS-P01 END -->
