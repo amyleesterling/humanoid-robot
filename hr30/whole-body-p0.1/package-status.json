@@ -320,5 +320,7 @@
   "axis_commissioning_bench_harness_source_end_process_selected": true,
   "axis_commissioning_bench_harness_physically_validated": false,
   "axis_commissioning_bench_harness_manufacturer_assembled_source_end_selected": true,
-  "axis_commissioning_bench_harness_received_lead_compatibility_validated": false
+  "axis_commissioning_bench_harness_received_lead_compatibility_validated": false,
+  "axis_commissioning_bench_harness_exact_inspection_tools_selected": true,
+  "axis_commissioning_bench_harness_exact_preparation_tools_selected": true
 }
