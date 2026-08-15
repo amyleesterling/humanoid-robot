@@ -10,8 +10,8 @@
   "dnp_spare_channels": 5,
   "component_records": 79,
   "terminal_records": 206,
-  "board_width_mm": 150.0,
-  "board_height_mm": 78.0,
+  "board_width_mm": 124.0,
+  "board_height_mm": 45.0,
   "copper_layer_count": 10,
   "placement_complete": true,
   "routing_complete": true,
@@ -19,7 +19,7 @@
   "routing": {
     "vias": 192,
     "fanouts": 192,
-    "segments": 446,
+    "segments": 486,
     "routing_complete": true,
     "routing_method": "ten-layer deterministic family-separated obstacle-aware route",
     "routing_grid_mm": 0.25

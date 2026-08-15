@@ -5,7 +5,7 @@
   "corridor_count": 12,
   "connector_boundary_count": 33,
   "harness_assembly_count": 14,
-  "installed_equipment_binding_count": 54,
+  "installed_equipment_binding_count": 58,
   "service_loop_obligation_count": 25,
   "logical_terminal_binding_count": 667,
   "actuator_side_pinout_families_verified": 4,

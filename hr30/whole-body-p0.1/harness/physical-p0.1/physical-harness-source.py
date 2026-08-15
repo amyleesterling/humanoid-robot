@@ -111,6 +111,7 @@ def build() -> dict[str, int | float]:
     buses = read_csv(WB / "harness/bus-harness-assembly-register.csv")
     assemblies = read_csv(WB / "harness/harness-assembly-register.csv")
     terminations = read_csv(WB / "harness/bus-termination-register.csv")
+    pdu_allocations = read_csv(WB / "electrical/actuator-branch-pdu-p0.1/board-instance-channel-allocation.csv")
     if (len(axes), len(bindings), len(buses), len(assemblies)) != (25, 25, 8, 14):
         raise SystemExit("controlled whole-body harness source count drift")
 
@@ -128,10 +129,15 @@ def build() -> dict[str, int | float]:
             predecessor[binding["axis_id"]] = values[index - 1]["axis_id"] if index else None
             successor[binding["axis_id"]] = values[index + 1]["axis_id"] if index + 1 < len(values) else None
     trunk_by_id = {row["route_id"]: row for row in trunks}
+    pdu_by_axis = {row["axis_id"]: row for row in pdu_allocations if row["axis_id"] != "DNP SPARE"}
+    equipment_by_id = {row["item_id"]: row for row in equipment}
+    if len(pdu_by_axis) != 25 or any(f"EQ-{row['board_instance']}" not in equipment_by_id for row in pdu_allocations):
+        raise SystemExit("five-board PDU allocation is not installed in the whole-body equipment model")
 
     source_paths = [
         WB / "joint-axis-schedule.csv", WB / "actuator-bus-axis-binding.csv",
         WB / "harness-route-register.csv", WB / "installed-equipment-register.csv",
+        WB / "electrical/actuator-branch-pdu-p0.1/board-instance-channel-allocation.csv",
         WB / "electrical/kicad/hr30-whole-body-electrical-p0.1/connector-schedule.csv",
         WB / "harness/bus-harness-assembly-register.csv", WB / "harness/harness-assembly-register.csv",
         WB / "harness/bus-termination-register.csv", Path(__file__),
@@ -185,12 +191,71 @@ def build() -> dict[str, int | float]:
     data_link_rows: list[dict] = []
     retention_rows: list[dict] = []
     derating_rows: list[dict] = []
+    # Every connector physically present on the five routed PDU assemblies is
+    # instantiated here.  Board-side parts are selected by the native KiCad
+    # source; cable-side mating contacts, crimp process and retention remain
+    # explicit selections.
+    for board_id in sorted({row["board_instance"] for row in pdu_allocations}):
+        input_id = f"J-{board_id}-IN"
+        connector_rows.append({
+            "connector_id": input_id, "location": board_id, "function": "CONTROLLED 12 V BOARD INPUT",
+            "candidate_housing": "Phoenix Contact MKDS 5/2-9.5 board header 1714971", "mating_part": OPEN,
+            "contact_order_code": OPEN, "contact_count": 2, "keying_retention_strain_relief": OPEN,
+            "source": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971",
+            "source_date": "accessed 2026-08-15", "selection_state": "BOARD HEADER PRESENT; FIELD MATING HARDWARE/CONDUCTOR/RETENTION OPEN",
+        })
+        for pin, signal in (("1", "PDU_0V"), ("2", "PDU_12V_IN")):
+            contact_rows.append({
+                "connector_id": input_id, "contact": pin, "axis_id": "BOARD INPUT", "signal": signal,
+                "bus_net": signal, "service": "ACTUATOR POWER TRUNK", "wire_core": OPEN,
+                "physical_pin_state": "BOARD CONTACT DEFINED; FIELD TERMINATION OPEN", "end_to_end_test": "NOT EXECUTED",
+            })
+    for allocation in pdu_allocations:
+        board_id, channel, axis = allocation["board_instance"], allocation["channel"], allocation["axis_id"]
+        output_id, control_id = f"J-{board_id}-OUT-{channel}", f"J-{board_id}-CTL-{channel}"
+        connector_rows.extend(({
+            "connector_id": output_id, "location": board_id, "function": f"CHANNEL {channel} ACTUATOR OUTPUT",
+            "candidate_housing": "JST B2P-VH board header", "mating_part": "JST VHR-2N; contact/conductor selection open",
+            "contact_order_code": OPEN, "contact_count": 2, "keying_retention_strain_relief": OPEN,
+            "source": "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf", "source_date": "accessed 2026-08-15",
+            "selection_state": "BOARD HEADER PRESENT; DNP CHANNEL HAS NO FIELD HARNESS" if axis == "DNP SPARE" else "BOARD HEADER PRESENT; FIELD ASSEMBLY VALIDATION OPEN",
+        }, {
+            "connector_id": control_id, "location": board_id, "function": f"CHANNEL {channel} DISABLE/POWER-GOOD CONTROL",
+            "candidate_housing": "JST BM03B-GHS-TBT board header", "mating_part": "JST GHR-03V-S; contact/conductor selection open",
+            "contact_order_code": OPEN, "contact_count": 3, "keying_retention_strain_relief": OPEN,
+            "source": "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf", "source_date": "accessed 2026-08-15",
+            "selection_state": "BOARD HEADER PRESENT; DNP CHANNEL CONTROL UNPOPULATED" if axis == "DNP SPARE" else "BOARD HEADER PRESENT; CONTROL HARNESS VALIDATION OPEN",
+        }))
+        output_signals = (("1", "PDU_0V"), ("2", f"BRANCH_{channel}_12V"))
+        for pin, signal in output_signals:
+            contact_rows.append({
+                "connector_id": output_id, "contact": pin, "axis_id": axis, "signal": signal,
+                "bus_net": "NO NET - DNP SPARE" if axis == "DNP SPARE" else (f"{pdu_by_axis[axis]['bus_id']}_RET" if pin == "1" else f"{axis}_VDD"),
+                "service": "DNP" if axis == "DNP SPARE" else ("POWER RETURN" if pin == "1" else "ACTUATOR POWER"),
+                "wire_core": "NONE - DNP" if axis == "DNP SPARE" else f"CORE-{axis}-{'GND' if pin == '1' else 'VDD'}",
+                "physical_pin_state": "DNP - NO FIELD HARNESS" if axis == "DNP SPARE" else "BOARD CONTACT DEFINED; FIELD ASSEMBLY OPEN",
+                "end_to_end_test": "NOT EXECUTED",
+            })
+        for pin, signal in (("1", "PDU_0V"), ("2", f"CH{channel}_EN"), ("3", f"CH{channel}_PG")):
+            contact_rows.append({
+                "connector_id": control_id, "contact": pin, "axis_id": axis, "signal": signal,
+                "bus_net": "NO NET - DNP SPARE" if axis == "DNP SPARE" else f"{board_id}_{signal}",
+                "service": "DNP" if axis == "DNP SPARE" else "CONTROL/DIAGNOSTIC - ZERO SAFETY CREDIT",
+                "wire_core": "NONE - DNP" if axis == "DNP SPARE" else OPEN,
+                "physical_pin_state": "DNP - NO FIELD HARNESS" if axis == "DNP SPARE" else "BOARD CONTACT DEFINED; FIELD ASSEMBLY OPEN",
+                "end_to_end_test": "NOT EXECUTED",
+            })
     stall = {"XH540": 4.9, "XM540": 4.4, "XM430": 2.3, "XC330": 0.88}
     for binding in bindings:
         axis = binding["axis_id"]
         a = by_axis[axis]
         center = (float(a["x_mm"]), float(a["y_mm"]), float(a["z_mm"]))
         family, bus = binding["actuator_family"], binding["bus_id"]
+        allocation = pdu_by_axis[axis]
+        board_id, channel = allocation["board_instance"], allocation["channel"]
+        board_eq = equipment_by_id[f"EQ-{board_id}"]
+        board_center = (float(board_eq["center_x_mm"]), float(board_eq["center_y_mm"]), float(board_eq["center_z_mm"]))
+        pdu_output = f"J-{board_id}-OUT-{channel}"
         pseg, dseg = f"LOOP-{axis}-PWR", f"LOOP-{axis}-DATA"
         module = axis_module(axis)
         for service, seg, xoff, y0, y1 in (("ACTUATOR POWER", pseg, 5.0, -14.0, 14.0), ("DATA", dseg, -5.0, -10.0, 10.0)):
@@ -229,7 +294,7 @@ def build() -> dict[str, int | float]:
         power_rows.append({
             "drop_id": f"PWR-{axis}", "axis_id": axis, "bus_branch": bus,
             "branch_net": f"{axis}_VDD", "return_net": f"{bus}_RET",
-            "protection_topology": "ONE DISTINCT PROTECTION / TELEMETRY BOUNDARY PER ACTUATOR; VALUE AND DEVICE SELECTION OPEN",
+            "protection_topology": f"{board_id} CHANNEL {channel}; TPS259474L COMMISSIONING CANDIDATE; RILM VARIANT {allocation['r_ilm_variant']}; PHYSICAL VALIDATION OPEN",
             "candidate_12v_stall_endpoint_a": f"{amps:.2f}",
             "endpoint_boundary": "DATASHEET MOMENTARY STALL ENDPOINT; NOT DEMAND/RATING",
             "conductor_size": OPEN, "connector_limit": OPEN, "branch_protection": OPEN,
@@ -244,9 +309,7 @@ def build() -> dict[str, int | float]:
         outgoing_endpoint = f"J-OUT-{axis}" if next_axis is not None else "NO OUTGOING CABLE - FAR END"
         incoming_pin_map = "1=INDIVIDUAL RETURN; 2=INDIVIDUAL VDD; 3=DATA+; 4=DATA-" if protocol_is_rs else "1=INDIVIDUAL RETURN; 2=INDIVIDUAL VDD; 3=DATA"
         outgoing_pin_map = "1=EMPTY; 2=EMPTY; 3=DATA+; 4=DATA-" if protocol_is_rs else "1=EMPTY; 2=EMPTY; 3=DATA"
-        power_route = trunk_by_id[trunk_for(axis, "POWER")]
-        power_start = xyz(power_route["start_xyz_mm"])
-        power_one_way_mm = dist(power_start, center) + 28.0
+        power_one_way_mm = dist(board_center, center) + 28.0
         if previous_axis is None:
             data_route = trunk_by_id[trunk_for(axis, "DATA")]
             data_start = xyz(data_route["start_xyz_mm"])
@@ -278,7 +341,7 @@ def build() -> dict[str, int | float]:
         power_pair_rows.append({
             "pair_id": f"PAIR-{axis}", "axis_id": axis, "bus_id": bus,
             "positive_net": f"{axis}_VDD", "return_net": f"{bus}_RET",
-            "source_boundary": f"PBR-{axis}", "destination_connector": f"J-ACT-{axis}",
+            "source_boundary": pdu_output, "destination_connector": f"J-ACT-{axis}",
             "destination_contacts": "1=RETURN; 2=VDD", "one_way_planning_length_mm": f"{power_one_way_mm:.3f}",
             "round_trip_planning_length_mm": f"{2 * power_one_way_mm:.3f}",
             "length_basis": "POWER-CORRIDOR START TO AXIS DATUM PLUS 28 mm LOCAL LOOP; CUT LENGTH/SLACK NOT RELEASED",
@@ -309,7 +372,7 @@ def build() -> dict[str, int | float]:
         for pin, net, service in pins:
             physical_net = f"{axis}_VDD" if net == "VDD" else (f"{bus}_RET" if net == "GND" else f"{bus}_{net}")
             if net in {"VDD", "GND"}:
-                source_contact = f"PBR-{axis}/{'VDD' if net == 'VDD' else 'RET'}"
+                source_contact = f"{pdu_output}/{'2' if net == 'VDD' else '1'}"
             else:
                 source_contact = f"{upstream_endpoint}/{net}"
             contact_rows.append({
@@ -391,11 +454,14 @@ def build() -> dict[str, int | float]:
     equipment_rows = []
     for eq in equipment:
         pwr, data = equipment_route(eq["module"], eq["role"])
+        is_pdu = eq["item_id"].startswith("EQ-PDU-")
         equipment_rows.append({
             "item_id": eq["item_id"], "module": eq["module"], "role": eq["role"], "candidate": eq["candidate"],
             "center_xyz_mm": f"({eq['center_x_mm']},{eq['center_y_mm']},{eq['center_z_mm']})",
             "power_route": pwr, "data_route": data, "connector_boundary": eq["connector_boundary"],
-            "physical_connector": OPEN, "contact_map": OPEN, "retention": OPEN,
+            "physical_connector": "NATIVE J1/J10x/J20x BOARD HEADERS PRESENT; FIELD MATING ASSEMBLIES OPEN" if is_pdu else OPEN,
+            "contact_map": "BOUND TO CONNECTOR-INSTANCE-REGISTER AND CONNECTOR-CONTACT-MAP" if is_pdu else OPEN,
+            "retention": OPEN,
             "continuity_function_test": "NOT EXECUTED", "authority": AUTHORITY,
         })
     write_csv(OUT / "equipment-interface-register.csv", equipment_rows)
@@ -622,6 +688,9 @@ The P0.1 split-harness candidate uses 25 individual positive/return power pairs 
         "physical_harness_route_points": stats["route_points"],
         "physical_harness_axes_bound": stats["axes"],
         "physical_harness_logical_terminals_retained": stats["logical_terminals"],
+        "whole_body_harness_equipment_binding_count": stats["equipment_items"],
+        "physical_harness_connector_instance_count": stats["actuator_connector_instances"],
+        "physical_harness_connector_contact_count": stats["actuator_connector_contacts"],
         "physical_harness_split_harness_candidate_defined": True,
         "physical_harness_serial_data_link_count": stats["serial_data_links"],
         "physical_harness_individual_power_pair_count": stats["individual_power_pairs"],

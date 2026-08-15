@@ -160,12 +160,29 @@ def build() -> list[Equipment]:
         "rear pelvis power tray", "+Y rear-cover withdrawal",
         "dual coil/gate channels, monitored mirror/diagnostic outputs; ratings open",
         "SELECTION REQUIRED", "SELECTION REQUIRED", "no safety function or DC duty is validated", "base_link", safety)
-    add("EQ-P01-PDU", "P01", "power distribution and branch protection",
-        "custom fused PDU/precharge/regeneration clamp carrier; schematic and values open",
-        box(104, 18, 38, (0, -18, 382), 3), 0.185, 0.5, 4.0,
-        "front pelvis power tray", "-Y front-cover withdrawal",
-        "tether input, actuator branches, telemetry, precharge and dump/clamp interface",
-        "SELECTION REQUIRED", "SELECTION REQUIRED", "architecture envelope only; no fuse or rating released", "base_link", power)
+    # Five real 124 x 45 mm branch-PDU board envelopes replace the former
+    # single abstract pelvis reservation.  The leg boards are oriented along
+    # Z inside the removable rear thigh covers; the remaining three are
+    # oriented in the XZ plane on pelvis/torso trays.  Each envelope includes
+    # the 1.6 mm PCB, connector height and a small non-credited mounting gap.
+    # Board mass is a controlled planning allowance until a received assembly
+    # is weighed; the five allowances total 0.225 kg versus the superseded
+    # 0.185 kg abstract reservation.
+    for board_id, module, center, dims, link, allocation, plane in (
+        ("PDU-LLEG", "L01", (62.5, 19.0, 294.0), (45, 8, 124), "L_thigh", "six left-leg axes", "inside left rear thigh cover"),
+        ("PDU-RLEG", "L02", (-62.5, 19.0, 294.0), (45, 8, 124), "R_thigh", "six right-leg axes", "inside right rear thigh cover"),
+        ("PDU-ARMS", "T01", (0.0, 31.0, 482.0), (124, 8, 45), "torso", "three left-arm plus three right-arm axes", "lower torso rear electronics tray"),
+        ("PDU-DISTAL", "T01", (0.0, 31.0, 617.0), (124, 8, 45), "torso", "wrists, grippers and two neck axes", "upper torso rear electronics tray"),
+        ("PDU-CORE", "P01", (0.0, -18.0, 382.0), (124, 8, 45), "base_link", "waist axis plus five DNP spare channels", "front pelvis power tray"),
+    ):
+        add(f"EQ-{board_id}", module, "six-channel actuator branch protection board",
+            f"routed 124 x 45 mm ten-layer {board_id} instance; {allocation}",
+            box(*dims, center, 2), 0.045, 0.1, 0.8,
+            plane, "removable-cover withdrawal before connector service",
+            "controlled 12 V trunk input, six individual actuator output pairs, six disable/PG control boundaries",
+            "electrical/actuator-branch-pdu-p0.1", "native KiCad candidate generated 2026-08-15",
+            "native schematic ERC 0/0 and routed PCB DRC 0/0; stackup, connector temperature, regeneration, physical fit and thermal proof remain open",
+            link, power)
     add("EQ-P01-AUX-CONVERTER", "P01", "auxiliary power conversion",
         "isolated 14.8 V to 5.1 V compute/HMI converter candidate; exact model required",
         box(62, 18, 24, (-35, -4, 408), 2), 0.095, 0.0, 6.0,
@@ -195,13 +212,13 @@ def build() -> list[Equipment]:
     cassette_outer = box(84.0, 49.0, 205.0, battery_center, 6)
     cassette_inner = box(76.0, 41.0, 197.0, battery_center, 4)
     cassette_shape = cassette_outer.cut(cassette_inner)
-    add("EQ-T01-BATTERY-PACK", "T01", "onboard walking energy",
-        f"Grepow/Tattu {BATTERY['model']} 4S 12 Ah 14.8 V 177.6 Wh 30C pack evaluation candidate",
+    add("EQ-T01-BATTERY-PACK", "T01", "legacy onboard-energy packaging envelope",
+        f"REJECTED direct source: Grepow/Tattu {BATTERY['model']} 4S pack; envelope retained for redesign visibility only",
         battery_shape, BATTERY["mass_kg"], 0.0, 0.0,
         "rear-torso removable battery cassette datum X=0, Y=+76, Z=530 mm", "+Y keyed cassette withdrawal",
         "high-current power and balance/telemetry connectors SELECTION REQUIRED; no BMS/PCM inferred",
         BATTERY["url"], BATTERY["revision"],
-        "manufacturer publishes 193 x 72 x 37 mm, 1057 g, 14.8 V, 12 Ah and 30C; received identity/current/thermal behavior open",
+        "manufacturer publishes 193 x 72 x 37 mm, 1057 g, 14.8 V, 12 Ah and 30C; direct actuator-bus use rejected because 14.8 V nominal equals the XH/XM published maximum and charged maximum is not closed",
         "torso", battery)
     add("EQ-T01-BATTERY-CASSETTE", "T01", "battery enclosure and retention",
         "84 x 49 x 205 mm removable ventilated metal cassette candidate",
@@ -406,8 +423,8 @@ def update_package(items: list[Equipment]) -> None:
         "planning_usable_energy_75pct_wh": f"{usable_energy:.1f}",
         "ideal_budget_runtime_at_179w_min": f"{usable_energy / 179.0 * 60.0:.1f}",
         "official_url": BATTERY["url"], "document_revision_or_date": BATTERY["revision"],
-        "protection_boundary": "NO INTEGRATED BMS/PCM CLAIM; exact protection, balance, temperature, disconnect, precharge, connector and charger SELECTION REQUIRED",
-        "selection_state": "EVALUATION CANDIDATE ONLY - NO PROCUREMENT OR ENERGIZATION AUTHORITY", "warning": WARNING,
+        "protection_boundary": "NO INTEGRATED BMS/PCM CLAIM; REJECTED FOR DIRECT ACTUATOR BUS: 14.8 V nominal equals the XH/XM published maximum and the page does not close charged maximum; envelope retained as legacy geometry only",
+        "selection_state": "REJECTED DIRECT SOURCE - LEGACY GEOMETRY ONLY - SUPERSEDED BY ENERGY-SAFETY-SPINE-P0.1", "warning": WARNING,
     }])
 
     status = {
@@ -418,7 +435,7 @@ def update_package(items: list[Equipment]) -> None:
         "all_geometry_valid": all(item.shape.isValid() for item in items),
         "minimum_z_mm": min(item.shape.BoundingBox().zmin for item in items),
         "maximum_z_mm": max(item.shape.BoundingBox().zmax for item in items),
-        "empty_component_bays_replaced": True, "tether_first_configuration": False,
+        "empty_component_bays_replaced": True, "tether_first_configuration": True,
         "tether_development_interface_retained": True,
         "onboard_energy_candidate_geometry_present": True,
         "onboard_energy_installed": False, "exact_selections_closed": False,
@@ -430,19 +447,19 @@ def update_package(items: list[Equipment]) -> None:
     shutil.copy2(Path(__file__), OUT / "installed-equipment-source.py")
 
     readme_path = OUT / "README.md"
-    readme = re.sub(r"\n\n## Installed equipment layout[\s\S]*?(?=\n\n## |\Z)", "", readme_path.read_text(encoding="utf-8")).rstrip()
+    readme = re.sub(r"(?:^|\n)## Installed equipment layout[\s\S]*?(?=\n## |\Z)", "", readme_path.read_text(encoding="utf-8")).rstrip()
     readme += f"""
 
 ## Installed equipment layout
 
-The former empty torso, pelvis, head and foot reservations now contain {len(items)} located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is {status['planning_installed_mass_kg']:.3f} kg. The primary whole-body candidate now includes the exact published envelope and mass of a Grepow/Tattu {BATTERY['model']} 4S 12 Ah pack in a removable rear-torso cassette, plus a distinct protection/telemetry reservation because the pack page does not state an integrated BMS/PCM. The tether inlet remains for controlled development. Battery protection, current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+The former empty torso, pelvis, head and foot reservations now contain {len(items)} located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is {status['planning_installed_mass_kg']:.3f} kg. Five routed 124 x 45 mm branch-PDU instances are now visibly installed in the pelvis, torso and both thighs. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
 """
     readme_path.write_text(readme.rstrip() + "\n", encoding="utf-8", newline="\n")
 
     index_path = OUT / "index.html"
     html = index_path.read_text(encoding="utf-8")
     html = re.sub(r'<section id="equipment-layout">[\s\S]*?</section>', "", html)
-    insert = f'''<section id="equipment-layout"><h2>Installed equipment—not empty bays</h2><div class="viewer"><model-viewer src="HR-30_installed_equipment_candidate.glb" alt="Interactive 3D layout of preliminary HR-30 installed electronics, onboard battery cassette, sensing, power, harness, soles and contact hardware" camera-controls camera-orbit="35deg 76deg 95%" field-of-view="26deg" shadow-intensity="0.8" exposure="1.05"></model-viewer><p>{len(items)} located candidate items, {status['planning_installed_mass_kg']:.3f} kg provisional as-installed mass. The rear-torso battery cassette and exact pack envelope are visible; protection, retention, thermal behavior and every electrical selection remain open.</p></div></section>'''
+    insert = f'''<section id="equipment-layout"><h2>Installed equipment—not empty bays</h2><div class="viewer"><model-viewer src="HR-30_installed_equipment_candidate.glb" alt="Interactive 3D layout of preliminary HR-30 installed electronics, five distributed actuator branch-PDU boards, legacy battery envelope, sensing, harness, soles and contact hardware" camera-controls camera-orbit="35deg 76deg 95%" field-of-view="26deg" shadow-intensity="0.8" exposure="1.05"></model-viewer><p>{len(items)} located candidate items, {status['planning_installed_mass_kg']:.3f} kg provisional as-installed mass. Five routed PDU boards are visible in the pelvis, torso and thighs. The rear-torso battery envelope is retained as rejected legacy geometry; tether-first is primary and every physical energy selection remains open.</p></div></section>'''
     html = html.replace("</main>", insert + "</main>")
     html = re.sub(r'<a href="installed-equipment-register\.csv">Installed equipment</a>[\s\S]*?(?=<a href="mass-properties-budget\.csv">)', "", html, count=1)
     html = html.replace('<a href="mass-properties-budget.csv">Mass/COM/inertia</a>', '<a href="installed-equipment-register.csv">Installed equipment</a> · <a href="installed-equipment-source-register.csv">Equipment sources</a> · <a href="battery-energy-source-register.csv">Battery source and runtime screen</a> · <a href="HR-30_installed_equipment_candidate.step">Equipment STEP</a> · <a href="HR-30_integrated_whole_robot_candidate.step">Integrated whole-robot STEP</a> · <a href="mass-properties-budget.csv">Mass/COM/inertia</a>')
@@ -469,7 +486,7 @@ The former empty torso, pelvis, head and foot reservations now contain {len(item
         "installed_equipment_item_count": len(items),
         "installed_equipment_planning_mass_kg": status["planning_installed_mass_kg"],
         "empty_component_bays_only": False,
-        "tether_first_equipment_configuration": False,
+        "tether_first_equipment_configuration": True,
         "tether_development_interface_retained": True,
         "onboard_energy_candidate_geometry_present": True,
         "onboard_energy_installed": False,
@@ -480,9 +497,9 @@ The former empty torso, pelvis, head and foot reservations now contain {len(item
     holds = list(csv.DictReader(holds_path.open(encoding="utf-8")))
     for row in holds:
         if row["hold_id"] == "HR30-P01-H04":
-            row["unresolved_item"] = ("The whole-body CAD now contains a 177.6 Wh pack evaluation envelope, removable rear-torso cassette, tether inlet, dual-interruption, PDU and protection/telemetry reservation. Exact battery configuration, BMS/PCM, connector, current/thermal capability, containment, retention, charger, regeneration handling, protection values, grounding and pinout remain unselected and unvalidated.")
+            row["unresolved_item"] = ("The whole-body CAD retains the superseded 177.6 Wh Grepow/Tattu pack envelope only as legacy packaging evidence; that direct 4S actuator-bus source is rejected. Tether-first is the active development configuration, while the Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Exact battery configuration, protection, connector, current/thermal capability, containment, retention, charger, regeneration handling, grounding and pinout remain unselected and unvalidated.")
         elif row["hold_id"] == "HR30-P01-H07":
-            row["unresolved_item"] = ("Twelve route-derived installed harness bundles now have planning lengths, mass allowances and connector boundaries, including separate neck power and data paths. Exact conductors, fill, flex life, service loops, connectors, strain relief, shielding, current, EMC and thermal evidence remain open.")
+            row["unresolved_item"] = ("Fourteen module harness assemblies and 62 route segments now have planning geometry, mass allowances and connector boundaries, including separate neck power/data paths and 25 individually routed actuator-power pairs from five installed PDU boards. Exact conductor selections, fill, flex life, service-loop validation, production connectors, strain relief, shielding, current derating, EMC and thermal evidence remain open.")
     write_csv(holds_path, holds)
 
 
