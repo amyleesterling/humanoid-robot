@@ -1,0 +1,10 @@
+sheet,reference,value,quantity,status,datasheet,evidence
+01_current_limited_source.kicad_sch,PS1,KEYSIGHT E36313A OUTPUT 2 OR 3,1,CANDIDATE / VALIDATION OPEN,https://www.keysight.com/us/en/assets/7018-05629/data-sheets/5992-2124.pdf,5992-2124EN; live official data sheet accessed 2026-08-15
+01_current_limited_source.kicad_sch,P1,POMONA 4933-2 / 4933-0 SHEATHED PLUG PAIR,1,CANDIDATE / VALIDATION OPEN,https://www.pomonaelectronics.com/products/banana-plugs-jacks-and-hardware/banana-plugs-and-jacks,live official product family; accessed 2026-08-15
+02_power_hub_and_usb.kicad_sch,J1,MOLEX 39-01-2020 / 39-00-0038,1,CANDIDATE / VALIDATION OPEN,https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63860/ATS-638601000-001.pdf,Mini-Fit Jr application-tooling specification accessed 2026-08-15
+02_power_hub_and_usb.kicad_sch,PHB1,ROBOTIS U2D2 POWER HUB 902-0145-001,1,CANDIDATE / VALIDATION OPEN,https://docs.robotis.com/docs/parts/interface/u2d2_power_hub/,ROBOTIS Docs current page; accessed 2026-08-15
+02_power_hub_and_usb.kicad_sch,U1,ROBOTIS U2D2 902-0132-000,1,CANDIDATE / VALIDATION OPEN,https://docs.robotis.com/docs/parts/interface/u2d2/,ROBOTIS Docs current page; accessed 2026-08-15
+03_one_actuator_selection.kicad_sch,X4,ROBOTIS X4P 180 MM 903-0244-000,1,CANDIDATE / VALIDATION OPEN,https://www.robotis.us/robot-cable-x4p-180mm-10pcs/,live official product page; accessed 2026-08-15
+03_one_actuator_selection.kicad_sch,X3,ROBOTIS X3P 180 MM 903-0249-000,1,CANDIDATE / VALIDATION OPEN,https://www.robotis.us/robot-cable-x3p-180mm-10pcs/,live official product page; accessed 2026-08-15
+04_no_motion_boundary.kicad_sch,HOST1,QUALIFIED HOST / DYNAMIXEL WIZARD 2.0,1,CANDIDATE / VALIDATION OPEN,,
+04_no_motion_boundary.kicad_sch,DUT1,ONE DISCONNECTED HR-30 ACTUATOR,1,CANDIDATE / VALIDATION OPEN,,

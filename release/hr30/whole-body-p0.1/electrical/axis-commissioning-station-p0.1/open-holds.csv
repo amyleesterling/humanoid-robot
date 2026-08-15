@@ -1,0 +1,9 @@
+hold_id,unresolved_evidence,state,authority
+CS-H01,qualified electrical approval of the complete station and first-power procedure,OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+CS-H02,availability/calibration record for exact E36313A or a formally re-reviewed equivalent,OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+CS-H03,"received U2D2 USB revision, PHB dimensions, supplied standoffs and connector inspection",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+CS-H04,"Mini-Fit crimp tooling, crimp-height specification, pull test and polarity inspection",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+CS-H05,"tray/cover material, print settings, cover retention, labeling and received fit check",OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+CS-H06,mechanical restraint that prevents each installed actuator output from driving a body link,OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+CS-H07,approved host software/version and logging method that prevents broadcast or motion writes,OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+CS-H08,executed records for all 25 axes; proposed IDs remain unwritten until separately authorized,OPEN,"NO CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"

@@ -1,0 +1,38 @@
+wire_number,sheet,reference,terminal,pin_name,net
+W1001,01_current_limited_source.kicad_sch,PS1,+,PROGRAMMABLE POSITIVE,CL_POS
+W1002,01_current_limited_source.kicad_sch,PS1,-,PROGRAMMABLE RETURN,CL_RET
+W1003,01_current_limited_source.kicad_sch,P1,RED,SOURCE POSITIVE,CL_POS
+W1004,01_current_limited_source.kicad_sch,P1,BLACK,SOURCE RETURN,CL_RET
+W1005,01_current_limited_source.kicad_sch,P1,RED-OUT,20 AWG RED,LEAD_POS
+W1006,01_current_limited_source.kicad_sch,P1,BLACK-OUT,20 AWG BLACK,LEAD_RET
+W2001,02_power_hub_and_usb.kicad_sch,J1,1,POWER RETURN,LEAD_RET
+W2002,02_power_hub_and_usb.kicad_sch,J1,2,POWER POSITIVE,LEAD_POS
+W2003,02_power_hub_and_usb.kicad_sch,PHB1,P1,MINI-FIT RETURN,LEAD_RET
+W2004,02_power_hub_and_usb.kicad_sch,PHB1,P2,MINI-FIT POSITIVE,LEAD_POS
+W2005,02_power_hub_and_usb.kicad_sch,PHB1,G3,TTL GND,DUT_GND
+W2006,02_power_hub_and_usb.kicad_sch,PHB1,V3,TTL VDD,DUT_VDD
+W2007,02_power_hub_and_usb.kicad_sch,PHB1,D3,TTL DATA,TTL_DATA
+W2008,02_power_hub_and_usb.kicad_sch,PHB1,G4,RS485 GND,DUT_GND
+W2009,02_power_hub_and_usb.kicad_sch,PHB1,V4,RS485 VDD,DUT_VDD
+W2010,02_power_hub_and_usb.kicad_sch,PHB1,D+,RS485 DATA+,RS485_DP
+W2011,02_power_hub_and_usb.kicad_sch,PHB1,D-,RS485 DATA-,RS485_DN
+W2012,02_power_hub_and_usb.kicad_sch,U1,USB,USB-C OR RECEIVED REVISION,HOST_USB
+W2013,02_power_hub_and_usb.kicad_sch,U1,TTL,TTL DATA,TTL_DATA
+W2014,02_power_hub_and_usb.kicad_sch,U1,D+,RS485 DATA+,RS485_DP
+W2015,02_power_hub_and_usb.kicad_sch,U1,D-,RS485 DATA-,RS485_DN
+W3001,03_one_actuator_selection.kicad_sch,X4,1,GND,DUT_GND
+W3002,03_one_actuator_selection.kicad_sch,X4,2,VDD,DUT_VDD
+W3003,03_one_actuator_selection.kicad_sch,X4,3,DATA+,RS485_DP
+W3004,03_one_actuator_selection.kicad_sch,X4,4,DATA-,RS485_DN
+W3005,03_one_actuator_selection.kicad_sch,X4,DUT,ONE RS485 ACTUATOR,DUT_RS485
+W3006,03_one_actuator_selection.kicad_sch,X3,1,GND,DUT_GND
+W3007,03_one_actuator_selection.kicad_sch,X3,2,VDD,DUT_VDD
+W3008,03_one_actuator_selection.kicad_sch,X3,3,DATA,TTL_DATA
+W3009,03_one_actuator_selection.kicad_sch,X3,DUT,ONE TTL ACTUATOR,DUT_TTL
+W4001,04_no_motion_boundary.kicad_sch,HOST1,USB,USB TO U2D2,HOST_USB
+W4002,04_no_motion_boundary.kicad_sch,HOST1,TORQUE,TORQUE ENABLE MUST READ 0,TORQUE_ZERO
+W4003,04_no_motion_boundary.kicad_sch,HOST1,READ,PING / MODEL / VOLTAGE / TEMPERATURE / ERROR,READ_ONLY_REQUEST
+W4004,04_no_motion_boundary.kicad_sch,DUT1,RS,RS485 FAMILY INPUT,DUT_RS485
+W4005,04_no_motion_boundary.kicad_sch,DUT1,TTL,TTL FAMILY INPUT,DUT_TTL
+W4006,04_no_motion_boundary.kicad_sch,DUT1,T0,TORQUE ENABLE = 0,TORQUE_ZERO
+W4007,04_no_motion_boundary.kicad_sch,DUT1,READ,READ-ONLY TELEMETRY,READ_ONLY_REQUEST

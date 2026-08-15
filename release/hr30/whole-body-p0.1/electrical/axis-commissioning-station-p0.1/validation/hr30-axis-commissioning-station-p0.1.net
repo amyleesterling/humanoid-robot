@@ -1,0 +1,1640 @@
+(export
+	(version "E")
+	(design
+		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\axis-commissioning-station-p0.1\\hr30-axis-commissioning-station-p0.1.kicad_sch")
+		(date "2026-08-15T11:21:49")
+		(tool "Eeschema 10.0.5")
+		(textvar
+			(name "PROJECT_STATUS") "PRELIMINARY - SUPPORT EQUIPMENT CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title "PROJECT BUTTON HR-30 AXIS COMMISSIONING STATION P0.1 index")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-15")
+				(source "hr30-axis-commissioning-station-p0.1.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - SUPPORT EQUIPMENT CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "2")
+			(name "/01 Safety-listed current-limited DC source/")
+			(tstamps "/53487e08-db9c-5f09-9720-a23fef9a9554/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 01")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-15")
+				(source "01_current_limited_source.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - SUPPORT EQUIPMENT CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "3")
+			(name "/02 U2D2 and Power Hub boundary/")
+			(tstamps "/d767a249-8e48-547d-b33e-8f0a97a46908/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 02")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-15")
+				(source "02_power_hub_and_usb.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - SUPPORT EQUIPMENT CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "4")
+			(name "/03 One-actuator cable selection/")
+			(tstamps "/5e52b10d-7a59-55e5-9f5f-5676a24f6cfc/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 03")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-15")
+				(source "03_one_actuator_selection.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - SUPPORT EQUIPMENT CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "5")
+			(name "/04 Read-only no-motion boundary/")
+			(tstamps "/ff5d6d21-b041-508d-8409-0b3601951388/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 04")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-15")
+				(source "04_no_motion_boundary.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - SUPPORT EQUIPMENT CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "P1")
+			(value "POMONA 4933-2 / 4933-0 SHEATHED PLUG PAIR")
+			(datasheet "https://www.pomonaelectronics.com/products/banana-plugs-jacks-and-hardware/banana-plugs-and-jacks")
+			(description "One metre bench lead candidate. No stacking, adapters or exposed clip ends. Polarity and insulation require 100% inspection.")
+			(fields
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "live official product family; accessed 2026-08-15")
+				(field
+					(name "Display") "POMONA 4933-2 / 4933-0 SHEATHED PLUG PAIR")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pomonaelectronics.com/products/banana-plugs-jacks-and-hardware/banana-plugs-and-jacks")
+				(field
+					(name "Description") "One metre bench lead candidate. No stacking, adapters or exposed clip ends. Polarity and insulation require 100% inspection.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "P1")
+				(description "One metre bench lead candidate. No stacking, adapters or exposed clip ends. Polarity and insulation require 100% inspection.")
+			)
+			(property
+				(name "Status")
+				(value "CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "live official product family; accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "POMONA 4933-2 / 4933-0 SHEATHED PLUG PAIR")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Safety-listed current-limited DC source")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_current_limited_source.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Safety-listed current-limited DC source/")
+				(tstamps "/53487e08-db9c-5f09-9720-a23fef9a9554/")
+			)
+			(tstamps "1c1edac7-a38a-5d8e-8ca3-2dd915b1a183")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "BLACK")
+						)
+						(pin
+							(num "RED")
+						)
+						(pin
+							(num "BLACK-OUT")
+						)
+						(pin
+							(num "RED-OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "PS1")
+			(value "KEYSIGHT E36313A OUTPUT 2 OR 3")
+			(datasheet "https://www.keysight.com/us/en/assets/7018-05629/data-sheets/5992-2124.pdf")
+			(description "UL/CSA/IEC 61010-1 listed bench instrument. Candidate setting is 11.0 V with 0.25 A current limit for read-only first power; 25 V/2 A channel maximum is below the JST EH 3 A catalog boundary. Exact instrument calibration and qualified procedure approval remain open.")
+			(fields
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "5992-2124EN; live official data sheet accessed 2026-08-15")
+				(field
+					(name "Display") "KEYSIGHT E36313A OUTPUT 2 OR 3")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.keysight.com/us/en/assets/7018-05629/data-sheets/5992-2124.pdf")
+				(field
+					(name "Description") "UL/CSA/IEC 61010-1 listed bench instrument. Candidate setting is 11.0 V with 0.25 A current limit for read-only first power; 25 V/2 A channel maximum is below the JST EH 3 A catalog boundary. Exact instrument calibration and qualified procedure approval remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "PS1")
+				(description "UL/CSA/IEC 61010-1 listed bench instrument. Candidate setting is 11.0 V with 0.25 A current limit for read-only first power; 25 V/2 A channel maximum is below the JST EH 3 A catalog boundary. Exact instrument calibration and qualified procedure approval remain open.")
+			)
+			(property
+				(name "Status")
+				(value "CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "5992-2124EN; live official data sheet accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "KEYSIGHT E36313A OUTPUT 2 OR 3")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Safety-listed current-limited DC source")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_current_limited_source.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Safety-listed current-limited DC source/")
+				(tstamps "/53487e08-db9c-5f09-9720-a23fef9a9554/")
+			)
+			(tstamps "386965a7-ba34-5dff-a763-43e83d203677")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "PE")
+						)
+						(pin
+							(num "-")
+						)
+						(pin
+							(num "+")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J1")
+			(value "MOLEX 39-01-2020 / 39-00-0038")
+			(datasheet "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63860/ATS-638601000-001.pdf")
+			(description "20 AWG Alpha 3073 red/black lead into the PHB Mini-Fit Jr input. Contact crimp height, pull test and received polarity remain validation work.")
+			(fields
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "Mini-Fit Jr application-tooling specification accessed 2026-08-15")
+				(field
+					(name "Display") "MOLEX 39-01-2020 / 39-00-0038")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63860/ATS-638601000-001.pdf")
+				(field
+					(name "Description") "20 AWG Alpha 3073 red/black lead into the PHB Mini-Fit Jr input. Contact crimp height, pull test and received polarity remain validation work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "J1")
+				(description "20 AWG Alpha 3073 red/black lead into the PHB Mini-Fit Jr input. Contact crimp height, pull test and received polarity remain validation work.")
+			)
+			(property
+				(name "Status")
+				(value "CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "Mini-Fit Jr application-tooling specification accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "MOLEX 39-01-2020 / 39-00-0038")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 U2D2 and Power Hub boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_power_hub_and_usb.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 U2D2 and Power Hub boundary/")
+				(tstamps "/d767a249-8e48-547d-b33e-8f0a97a46908/")
+			)
+			(tstamps "b35f8502-3d65-5dc8-a357-7f5e603925e3")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "PHB1")
+			(value "ROBOTIS U2D2 POWER HUB 902-0145-001")
+			(datasheet "https://docs.robotis.com/docs/parts/interface/u2d2_power_hub/")
+			(description "Manufacturer maximum is 10 A, but this station is source-limited to 0.25 A for first power and 2.0 A absolute equipment configuration maximum. The barrel and screw-terminal inputs must remain physically empty.")
+			(fields
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "ROBOTIS Docs current page; accessed 2026-08-15")
+				(field
+					(name "Display") "ROBOTIS U2D2 POWER HUB 902-0145-001")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://docs.robotis.com/docs/parts/interface/u2d2_power_hub/")
+				(field
+					(name "Description") "Manufacturer maximum is 10 A, but this station is source-limited to 0.25 A for first power and 2.0 A absolute equipment configuration maximum. The barrel and screw-terminal inputs must remain physically empty.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "PHB1")
+				(description "Manufacturer maximum is 10 A, but this station is source-limited to 0.25 A for first power and 2.0 A absolute equipment configuration maximum. The barrel and screw-terminal inputs must remain physically empty.")
+			)
+			(property
+				(name "Status")
+				(value "CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "ROBOTIS Docs current page; accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "ROBOTIS U2D2 POWER HUB 902-0145-001")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 U2D2 and Power Hub boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_power_hub_and_usb.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 U2D2 and Power Hub boundary/")
+				(tstamps "/d767a249-8e48-547d-b33e-8f0a97a46908/")
+			)
+			(tstamps "17796c87-2fe0-5832-9592-06857246c81d")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "P2")
+						)
+						(pin
+							(num "P1")
+						)
+						(pin
+							(num "D-")
+						)
+						(pin
+							(num "D+")
+						)
+						(pin
+							(num "V4")
+						)
+						(pin
+							(num "G4")
+						)
+						(pin
+							(num "D3")
+						)
+						(pin
+							(num "V3")
+						)
+						(pin
+							(num "G3")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U1")
+			(value "ROBOTIS U2D2 902-0132-000")
+			(datasheet "https://docs.robotis.com/docs/parts/interface/u2d2/")
+			(description "U2D2 supplies communication only. Confirm received USB revision; units changed from Micro-B to USB-C in August 2025. Keep the internal 120 ohm switch OFF for the one-actuator first-power setup unless a qualified waveform test directs otherwise.")
+			(fields
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "ROBOTIS Docs current page; accessed 2026-08-15")
+				(field
+					(name "Display") "ROBOTIS U2D2 902-0132-000")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://docs.robotis.com/docs/parts/interface/u2d2/")
+				(field
+					(name "Description") "U2D2 supplies communication only. Confirm received USB revision; units changed from Micro-B to USB-C in August 2025. Keep the internal 120 ohm switch OFF for the one-actuator first-power setup unless a qualified waveform test directs otherwise.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "U1")
+				(description "U2D2 supplies communication only. Confirm received USB revision; units changed from Micro-B to USB-C in August 2025. Keep the internal 120 ohm switch OFF for the one-actuator first-power setup unless a qualified waveform test directs otherwise.")
+			)
+			(property
+				(name "Status")
+				(value "CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "ROBOTIS Docs current page; accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "ROBOTIS U2D2 902-0132-000")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 U2D2 and Power Hub boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_power_hub_and_usb.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 U2D2 and Power Hub boundary/")
+				(tstamps "/d767a249-8e48-547d-b33e-8f0a97a46908/")
+			)
+			(tstamps "8f8055c5-2f5e-5f7a-9424-19bfa94cd5ce")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "USB")
+						)
+						(pin
+							(num "D-")
+						)
+						(pin
+							(num "D+")
+						)
+						(pin
+							(num "TTL")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "X3")
+			(value "ROBOTIS X3P 180 MM 903-0249-000")
+			(datasheet "https://www.robotis.us/robot-cable-x3p-180mm-10pcs/")
+			(description "For XC330-T only. One actuator is physically disconnected from the whole-body harness before connection.")
+			(fields
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "live official product page; accessed 2026-08-15")
+				(field
+					(name "Display") "ROBOTIS X3P 180 MM 903-0249-000")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.robotis.us/robot-cable-x3p-180mm-10pcs/")
+				(field
+					(name "Description") "For XC330-T only. One actuator is physically disconnected from the whole-body harness before connection.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "X3")
+				(description "For XC330-T only. One actuator is physically disconnected from the whole-body harness before connection.")
+			)
+			(property
+				(name "Status")
+				(value "CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "live official product page; accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "ROBOTIS X3P 180 MM 903-0249-000")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 One-actuator cable selection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_one_actuator_selection.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 One-actuator cable selection/")
+				(tstamps "/5e52b10d-7a59-55e5-9f5f-5676a24f6cfc/")
+			)
+			(tstamps "1fef55d1-9a1d-5edf-a71c-91e59df3c90d")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "DUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "X4")
+			(value "ROBOTIS X4P 180 MM 903-0244-000")
+			(datasheet "https://www.robotis.us/robot-cable-x4p-180mm-10pcs/")
+			(description "For XH540-R, XM540-R or XM430-R only. One actuator is physically disconnected from the whole-body harness before connection.")
+			(fields
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "live official product page; accessed 2026-08-15")
+				(field
+					(name "Display") "ROBOTIS X4P 180 MM 903-0244-000")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.robotis.us/robot-cable-x4p-180mm-10pcs/")
+				(field
+					(name "Description") "For XH540-R, XM540-R or XM430-R only. One actuator is physically disconnected from the whole-body harness before connection.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "X4")
+				(description "For XH540-R, XM540-R or XM430-R only. One actuator is physically disconnected from the whole-body harness before connection.")
+			)
+			(property
+				(name "Status")
+				(value "CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "live official product page; accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "ROBOTIS X4P 180 MM 903-0244-000")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 One-actuator cable selection")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_one_actuator_selection.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 One-actuator cable selection/")
+				(tstamps "/5e52b10d-7a59-55e5-9f5f-5676a24f6cfc/")
+			)
+			(tstamps "d8ded3e8-db61-519d-ae4d-3d641e042060")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "DUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "DUT1")
+			(value "ONE DISCONNECTED HR-30 ACTUATOR")
+			(description "Actuator output hardware is mechanically supported and cannot drive a body link during first power. Proposed ID assignment is a later separately authorized configuration step.")
+			(fields
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "ONE DISCONNECTED HR-30 ACTUATOR")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Actuator output hardware is mechanically supported and cannot drive a body link during first power. Proposed ID assignment is a later separately authorized configuration step.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "DUT1")
+				(description "Actuator output hardware is mechanically supported and cannot drive a body link during first power. Proposed ID assignment is a later separately authorized configuration step.")
+			)
+			(property
+				(name "Status")
+				(value "CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "ONE DISCONNECTED HR-30 ACTUATOR")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Read-only no-motion boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_no_motion_boundary.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Read-only no-motion boundary/")
+				(tstamps "/ff5d6d21-b041-508d-8409-0b3601951388/")
+			)
+			(tstamps "6c9c0855-34d3-5435-ba3f-538b946dd714")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "READ")
+						)
+						(pin
+							(num "T0")
+						)
+						(pin
+							(num "TTL")
+						)
+						(pin
+							(num "RS")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "HOST1")
+			(value "QUALIFIED HOST / DYNAMIXEL WIZARD 2.0")
+			(description "No goal position, velocity, current, PWM, reboot, factory reset or firmware update command is allowed in the first-power stage.")
+			(fields
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "QUALIFIED HOST / DYNAMIXEL WIZARD 2.0")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "No goal position, velocity, current, PWM, reboot, factory reset or firmware update command is allowed in the first-power stage.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "HOST1")
+				(description "No goal position, velocity, current, PWM, reboot, factory reset or firmware update command is allowed in the first-power stage.")
+			)
+			(property
+				(name "Status")
+				(value "CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "")
+			)
+			(property
+				(name "Display")
+				(value "QUALIFIED HOST / DYNAMIXEL WIZARD 2.0")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Read-only no-motion boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_no_motion_boundary.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Read-only no-motion boundary/")
+				(tstamps "/ff5d6d21-b041-508d-8409-0b3601951388/")
+			)
+			(tstamps "9736b99c-dddd-5862-9dae-78d18e4e5a1f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "READ")
+						)
+						(pin
+							(num "TORQUE")
+						)
+						(pin
+							(num "USB")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "PBV3")
+			(part "DUT1")
+			(description "Actuator output hardware is mechanically supported and cannot drive a body link during first power. Proposed ID assignment is a later separately authorized configuration step.")
+			(fields
+				(field
+					(name "Reference") "DUT1")
+				(field
+					(name "Value") "ONE DISCONNECTED HR-30 ACTUATOR")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Actuator output hardware is mechanically supported and cannot drive a body link during first power. Proposed ID assignment is a later separately authorized configuration step.")
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "ONE DISCONNECTED HR-30 ACTUATOR")
+			)
+			(pins
+				(pin
+					(num "READ")
+					(name "READ-ONLY_TELEMETRY")
+					(type "passive")
+				)
+				(pin
+					(num "RS")
+					(name "RS485_FAMILY_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "T0")
+					(name "TORQUE_ENABLE_=_0")
+					(type "passive")
+				)
+				(pin
+					(num "TTL")
+					(name "TTL_FAMILY_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "HOST1")
+			(description "No goal position, velocity, current, PWM, reboot, factory reset or firmware update command is allowed in the first-power stage.")
+			(fields
+				(field
+					(name "Reference") "HOST1")
+				(field
+					(name "Value") "QUALIFIED HOST / DYNAMIXEL WIZARD 2.0")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "No goal position, velocity, current, PWM, reboot, factory reset or firmware update command is allowed in the first-power stage.")
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence")
+				)
+				(field
+					(name "Display") "QUALIFIED HOST / DYNAMIXEL WIZARD 2.0")
+			)
+			(pins
+				(pin
+					(num "READ")
+					(name "PING_/_MODEL_/_VOLTAGE_/_TEMPERATURE_/_ERROR")
+					(type "passive")
+				)
+				(pin
+					(num "TORQUE")
+					(name "TORQUE_ENABLE_MUST_READ_0")
+					(type "passive")
+				)
+				(pin
+					(num "USB")
+					(name "USB_TO_U2D2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "J1")
+			(description "20 AWG Alpha 3073 red/black lead into the PHB Mini-Fit Jr input. Contact crimp height, pull test and received polarity remain validation work.")
+			(docs "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63860/ATS-638601000-001.pdf")
+			(fields
+				(field
+					(name "Reference") "J1")
+				(field
+					(name "Value") "MOLEX 39-01-2020 / 39-00-0038")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63860/ATS-638601000-001.pdf")
+				(field
+					(name "Description") "20 AWG Alpha 3073 red/black lead into the PHB Mini-Fit Jr input. Contact crimp height, pull test and received polarity remain validation work.")
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "Mini-Fit Jr application-tooling specification accessed 2026-08-15")
+				(field
+					(name "Display") "MOLEX 39-01-2020 / 39-00-0038")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "POWER_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "POWER_POSITIVE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "P1")
+			(description "One metre bench lead candidate. No stacking, adapters or exposed clip ends. Polarity and insulation require 100% inspection.")
+			(docs "https://www.pomonaelectronics.com/products/banana-plugs-jacks-and-hardware/banana-plugs-and-jacks")
+			(fields
+				(field
+					(name "Reference") "P1")
+				(field
+					(name "Value") "POMONA 4933-2 / 4933-0 SHEATHED PLUG PAIR")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.pomonaelectronics.com/products/banana-plugs-jacks-and-hardware/banana-plugs-and-jacks")
+				(field
+					(name "Description") "One metre bench lead candidate. No stacking, adapters or exposed clip ends. Polarity and insulation require 100% inspection.")
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "live official product family; accessed 2026-08-15")
+				(field
+					(name "Display") "POMONA 4933-2 / 4933-0 SHEATHED PLUG PAIR")
+			)
+			(pins
+				(pin
+					(num "BLACK")
+					(name "SOURCE_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "BLACK-OUT")
+					(name "20_AWG_BLACK")
+					(type "passive")
+				)
+				(pin
+					(num "RED")
+					(name "SOURCE_POSITIVE")
+					(type "passive")
+				)
+				(pin
+					(num "RED-OUT")
+					(name "20_AWG_RED")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "PHB1")
+			(description "Manufacturer maximum is 10 A, but this station is source-limited to 0.25 A for first power and 2.0 A absolute equipment configuration maximum. The barrel and screw-terminal inputs must remain physically empty.")
+			(docs "https://docs.robotis.com/docs/parts/interface/u2d2_power_hub/")
+			(fields
+				(field
+					(name "Reference") "PHB1")
+				(field
+					(name "Value") "ROBOTIS U2D2 POWER HUB 902-0145-001")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://docs.robotis.com/docs/parts/interface/u2d2_power_hub/")
+				(field
+					(name "Description") "Manufacturer maximum is 10 A, but this station is source-limited to 0.25 A for first power and 2.0 A absolute equipment configuration maximum. The barrel and screw-terminal inputs must remain physically empty.")
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "ROBOTIS Docs current page; accessed 2026-08-15")
+				(field
+					(name "Display") "ROBOTIS U2D2 POWER HUB 902-0145-001")
+			)
+			(pins
+				(pin
+					(num "D+")
+					(name "RS485_DATA+")
+					(type "passive")
+				)
+				(pin
+					(num "D-")
+					(name "RS485_DATA-")
+					(type "passive")
+				)
+				(pin
+					(num "D3")
+					(name "TTL_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "G3")
+					(name "TTL_GND")
+					(type "passive")
+				)
+				(pin
+					(num "G4")
+					(name "RS485_GND")
+					(type "passive")
+				)
+				(pin
+					(num "P1")
+					(name "MINI-FIT_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "P2")
+					(name "MINI-FIT_POSITIVE")
+					(type "passive")
+				)
+				(pin
+					(num "V3")
+					(name "TTL_VDD")
+					(type "passive")
+				)
+				(pin
+					(num "V4")
+					(name "RS485_VDD")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "PS1")
+			(description "UL/CSA/IEC 61010-1 listed bench instrument. Candidate setting is 11.0 V with 0.25 A current limit for read-only first power; 25 V/2 A channel maximum is below the JST EH 3 A catalog boundary. Exact instrument calibration and qualified procedure approval remain open.")
+			(docs "https://www.keysight.com/us/en/assets/7018-05629/data-sheets/5992-2124.pdf")
+			(fields
+				(field
+					(name "Reference") "PS1")
+				(field
+					(name "Value") "KEYSIGHT E36313A OUTPUT 2 OR 3")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.keysight.com/us/en/assets/7018-05629/data-sheets/5992-2124.pdf")
+				(field
+					(name "Description") "UL/CSA/IEC 61010-1 listed bench instrument. Candidate setting is 11.0 V with 0.25 A current limit for read-only first power; 25 V/2 A channel maximum is below the JST EH 3 A catalog boundary. Exact instrument calibration and qualified procedure approval remain open.")
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "5992-2124EN; live official data sheet accessed 2026-08-15")
+				(field
+					(name "Display") "KEYSIGHT E36313A OUTPUT 2 OR 3")
+			)
+			(pins
+				(pin
+					(num "+")
+					(name "PROGRAMMABLE_POSITIVE")
+					(type "passive")
+				)
+				(pin
+					(num "-")
+					(name "PROGRAMMABLE_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "PE")
+					(name "CLASS_I_PROTECTIVE_EARTH")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "U1")
+			(description "U2D2 supplies communication only. Confirm received USB revision; units changed from Micro-B to USB-C in August 2025. Keep the internal 120 ohm switch OFF for the one-actuator first-power setup unless a qualified waveform test directs otherwise.")
+			(docs "https://docs.robotis.com/docs/parts/interface/u2d2/")
+			(fields
+				(field
+					(name "Reference") "U1")
+				(field
+					(name "Value") "ROBOTIS U2D2 902-0132-000")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://docs.robotis.com/docs/parts/interface/u2d2/")
+				(field
+					(name "Description") "U2D2 supplies communication only. Confirm received USB revision; units changed from Micro-B to USB-C in August 2025. Keep the internal 120 ohm switch OFF for the one-actuator first-power setup unless a qualified waveform test directs otherwise.")
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "ROBOTIS Docs current page; accessed 2026-08-15")
+				(field
+					(name "Display") "ROBOTIS U2D2 902-0132-000")
+			)
+			(pins
+				(pin
+					(num "D+")
+					(name "RS485_DATA+")
+					(type "passive")
+				)
+				(pin
+					(num "D-")
+					(name "RS485_DATA-")
+					(type "passive")
+				)
+				(pin
+					(num "TTL")
+					(name "TTL_DATA")
+					(type "passive")
+				)
+				(pin
+					(num "USB")
+					(name "USB-C_OR_RECEIVED_REVISION")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "X3")
+			(description "For XC330-T only. One actuator is physically disconnected from the whole-body harness before connection.")
+			(docs "https://www.robotis.us/robot-cable-x3p-180mm-10pcs/")
+			(fields
+				(field
+					(name "Reference") "X3")
+				(field
+					(name "Value") "ROBOTIS X3P 180 MM 903-0249-000")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.robotis.us/robot-cable-x3p-180mm-10pcs/")
+				(field
+					(name "Description") "For XC330-T only. One actuator is physically disconnected from the whole-body harness before connection.")
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "live official product page; accessed 2026-08-15")
+				(field
+					(name "Display") "ROBOTIS X3P 180 MM 903-0249-000")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "DATA")
+					(type "passive")
+				)
+				(pin
+					(num "DUT")
+					(name "ONE_TTL_ACTUATOR")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "X4")
+			(description "For XH540-R, XM540-R or XM430-R only. One actuator is physically disconnected from the whole-body harness before connection.")
+			(docs "https://www.robotis.us/robot-cable-x4p-180mm-10pcs/")
+			(fields
+				(field
+					(name "Reference") "X4")
+				(field
+					(name "Value") "ROBOTIS X4P 180 MM 903-0244-000")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.robotis.us/robot-cable-x4p-180mm-10pcs/")
+				(field
+					(name "Description") "For XH540-R, XM540-R or XM430-R only. One actuator is physically disconnected from the whole-body harness before connection.")
+				(field
+					(name "Status") "CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "live official product page; accessed 2026-08-15")
+				(field
+					(name "Display") "ROBOTIS X4P 180 MM 903-0244-000")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "VDD")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "DATA+")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "DATA-")
+					(type "passive")
+				)
+				(pin
+					(num "DUT")
+					(name "ONE_RS485_ACTUATOR")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "PBV3")
+			(uri "${KIPRJMOD}/hr30-axis-commissioning-station-p0.1.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "CL_POS")
+			(class "Default")
+			(node
+				(ref "P1")
+				(pin "RED")
+				(pinfunction "SOURCE_POSITIVE_RED")
+				(pintype "passive")
+			)
+			(node
+				(ref "PS1")
+				(pin "+")
+				(pinfunction "PROGRAMMABLE_POSITIVE_+")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "2")
+			(name "CL_RET")
+			(class "Default")
+			(node
+				(ref "P1")
+				(pin "BLACK")
+				(pinfunction "SOURCE_RETURN_BLACK")
+				(pintype "passive")
+			)
+			(node
+				(ref "PS1")
+				(pin "-")
+				(pinfunction "PROGRAMMABLE_RETURN_-")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "3")
+			(name "DUT_GND")
+			(class "Default")
+			(node
+				(ref "PHB1")
+				(pin "G3")
+				(pinfunction "TTL_GND_G3")
+				(pintype "passive")
+			)
+			(node
+				(ref "PHB1")
+				(pin "G4")
+				(pinfunction "RS485_GND_G4")
+				(pintype "passive")
+			)
+			(node
+				(ref "X3")
+				(pin "1")
+				(pinfunction "GND_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "X4")
+				(pin "1")
+				(pinfunction "GND_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "4")
+			(name "DUT_RS485")
+			(class "Default")
+			(node
+				(ref "DUT1")
+				(pin "RS")
+				(pinfunction "RS485_FAMILY_INPUT_RS")
+				(pintype "passive")
+			)
+			(node
+				(ref "X4")
+				(pin "DUT")
+				(pinfunction "ONE_RS485_ACTUATOR_DUT")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "5")
+			(name "DUT_TTL")
+			(class "Default")
+			(node
+				(ref "DUT1")
+				(pin "TTL")
+				(pinfunction "TTL_FAMILY_INPUT_TTL")
+				(pintype "passive")
+			)
+			(node
+				(ref "X3")
+				(pin "DUT")
+				(pinfunction "ONE_TTL_ACTUATOR_DUT")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "DUT_VDD")
+			(class "Default")
+			(node
+				(ref "PHB1")
+				(pin "V3")
+				(pinfunction "TTL_VDD_V3")
+				(pintype "passive")
+			)
+			(node
+				(ref "PHB1")
+				(pin "V4")
+				(pinfunction "RS485_VDD_V4")
+				(pintype "passive")
+			)
+			(node
+				(ref "X3")
+				(pin "2")
+				(pinfunction "VDD_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "X4")
+				(pin "2")
+				(pinfunction "VDD_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "7")
+			(name "HOST_USB")
+			(class "Default")
+			(node
+				(ref "HOST1")
+				(pin "USB")
+				(pinfunction "USB_TO_U2D2_USB")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "USB")
+				(pinfunction "USB-C_OR_RECEIVED_REVISION_USB")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "8")
+			(name "LEAD_POS")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "2")
+				(pinfunction "POWER_POSITIVE_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "P1")
+				(pin "RED-OUT")
+				(pinfunction "20_AWG_RED_RED-OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "PHB1")
+				(pin "P2")
+				(pinfunction "MINI-FIT_POSITIVE_P2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "9")
+			(name "LEAD_RET")
+			(class "Default")
+			(node
+				(ref "J1")
+				(pin "1")
+				(pinfunction "POWER_RETURN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "P1")
+				(pin "BLACK-OUT")
+				(pinfunction "20_AWG_BLACK_BLACK-OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "PHB1")
+				(pin "P1")
+				(pinfunction "MINI-FIT_RETURN_P1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "10")
+			(name "READ_ONLY_REQUEST")
+			(class "Default")
+			(node
+				(ref "DUT1")
+				(pin "READ")
+				(pinfunction "READ-ONLY_TELEMETRY_READ")
+				(pintype "passive")
+			)
+			(node
+				(ref "HOST1")
+				(pin "READ")
+				(pinfunction "PING_/_MODEL_/_VOLTAGE_/_TEMPERATURE_/_ERROR_READ")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "11")
+			(name "RS485_DN")
+			(class "Default")
+			(node
+				(ref "PHB1")
+				(pin "D-")
+				(pinfunction "RS485_DATA-_D-")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "D-")
+				(pinfunction "RS485_DATA-_D-")
+				(pintype "passive")
+			)
+			(node
+				(ref "X4")
+				(pin "4")
+				(pinfunction "DATA-_4")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "12")
+			(name "RS485_DP")
+			(class "Default")
+			(node
+				(ref "PHB1")
+				(pin "D+")
+				(pinfunction "RS485_DATA+_D+")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "D+")
+				(pinfunction "RS485_DATA+_D+")
+				(pintype "passive")
+			)
+			(node
+				(ref "X4")
+				(pin "3")
+				(pinfunction "DATA+_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "13")
+			(name "TORQUE_ZERO")
+			(class "Default")
+			(node
+				(ref "DUT1")
+				(pin "T0")
+				(pinfunction "TORQUE_ENABLE_=_0_T0")
+				(pintype "passive")
+			)
+			(node
+				(ref "HOST1")
+				(pin "TORQUE")
+				(pinfunction "TORQUE_ENABLE_MUST_READ_0_TORQUE")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "14")
+			(name "TTL_DATA")
+			(class "Default")
+			(node
+				(ref "PHB1")
+				(pin "D3")
+				(pinfunction "TTL_DATA_D3")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "TTL")
+				(pinfunction "TTL_DATA_TTL")
+				(pintype "passive")
+			)
+			(node
+				(ref "X3")
+				(pin "3")
+				(pinfunction "DATA_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "15")
+			(name "unconnected-(PS1-CLASS_I_PROTECTIVE_EARTH-PadPE)")
+			(class "Default")
+			(node
+				(ref "PS1")
+				(pin "PE")
+				(pinfunction "CLASS_I_PROTECTIVE_EARTH_PE")
+				(pintype "passive+no_connect")
+			)
+		)
+	)
+)
