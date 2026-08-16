@@ -93,37 +93,34 @@ The [successor reconciliation guide](joint-hardware-successor-reconciliation-p0.
 The whole-body package now includes a removable, source-limited commissioning station rather than relying on the unreleased walking-power tree for first inspection. It uses a safety-listed Keysight E36313A candidate, ROBOTIS U2D2/Power Hub, exact X3P/X4P cable families, a native four-child-sheet KiCad design, printable tray/cover files and a 25-axis work order. Candidate first power is one mechanically restrained, whole-body-disconnected actuator at 11.0 V / 0.25 A with read-only telemetry and Torque Enable required to read zero. Qualified review, received-hardware inspection, calibration, restraint and separately signed connection/energization authority remain open. See `electrical/axis-commissioning-station-p0.1/index.html`.
 <!-- HR30-AXIS-COMMISSION-END -->
 
+## Whole-body fabrication sourcing P0.1
 
+The [interactive fabrication sourcing guide](fabrication-sourcing-p0.1/index.html) binds all 98 physical candidates to controlled upload files, exact SHA-256 values, five nonempty quote batches, seven Boston/online routes and ten mandatory written DFM questions. The public-stock screen prevents silent thickness substitution: only 1 of 45 planar candidates match the reviewed nominal stock values within 0.02 mm.
 
-<!-- HR30-MOTION-CONTROLLER-P01-START -->
-## Deterministic motion-controller board
+This is a route to quotation, not authority to buy or make parts. Materials, tolerances/GD&T, inspection, DFM disposition, structural capacity, FAI and physical proof remain open.
 
-A routed **82 × 42 mm six-layer STM32H743ZIT6 controller candidate** now binds all eight UART groups, both carrier headers, controller power conversion, MCU supply/reset/boot/VCAP, SWD, deterministic status I/O and a structured-action SPI boundary. The corrected internal connector order is 1=GND, 2=5 V, 3=3.3 V, matching both routed carriers; PE7/PE8/PE9 are corrected to LQFP144 pins 58/59/60. The schematic is ERC 0/0, but the PCB remains blocked with **112 DRC violations** and 2 unconnected items. This is not a fabrication release or a safety controller.
-<!-- HR30-MOTION-CONTROLLER-P01-END -->
+## Actual-axis joint-hardware manufacturing P0.1
 
+The [joint-hardware manufacturing guide](joint-hardware-manufacturing-p0.1/index.html) classifies all 142 non-actuator hardware items on the 25 actual axes. It adds 64 local-coordinate shaft/carrier STEP and SVG files plus 39 carrier DXFs, while correctly withholding supplier files for 39 catalogue bearing envelopes and 39 toothless pulley/coupler placeholders.
 
-<!-- HR30-PDU-P01-START -->
-## Twenty-five routed actuator branch slots
+This corrects the manufacturing-universe boundary: the 98 body/frame/hand parts were never the complete robot. Joint fits, shoulders, retention, toothed pulley products, actuator adapters, materials, tolerances, DFM, FAI and structural proof remain open.
 
-Five distributed instances of one editable six-channel native KiCad PDU candidate allocate all 25 axes and retain five assembly-DNP spares. The eight-sheet schematic validates at ERC 0/0; the 124 x 45 mm ten-layer PCB validates at DRC 0/0 with zero unconnected pads. Each populated channel uses a TPS259474L circuit-breaker/latch-off eFuse with an axis-bound RILM variant, individual output pair, open-drain disable input and power-good output. This is a restrained commissioning architecture only: the device blocks reverse current, so production stackup, regeneration/clamp, connector temperature, dynamic torque, copper/thermal validation and every powered-work authority remain open. Open `electrical/actuator-branch-pdu-p0.1/index.html`.
-<!-- HR30-PDU-P01-END -->
+## Joint-hardware successor reconciliation
 
-<!-- HR30-TETHER-POWER-START -->
-## Physical tether power core
+The [successor reconciliation guide](joint-hardware-successor-reconciliation-p0.1/index.html) establishes one manufacturing truth for the 39 legacy pulley/coupler envelopes. All are superseded and mapped to 28 catalogue pulley positions, nine direct-adapter axes or two detailed hand mechanisms. Zero legacy envelopes remain authoritative or unmapped, but all successor selection, release and physical validation gates remain open.
 
-The P0.1 robot no longer contains an abstract high-current interruption module. RSP-500-12, PNOZ s4 750104 and both GV121CAC series contactors are located in an external 1418N4C6 panel candidate. The robot carries an SBS75G inlet and one main plus five covered MIDI-holder positions mapped exactly to PDU-LLEG, PDU-RLEG, PDU-ARMS, PDU-DISTAL and PDU-CORE. The seven-sheet native KiCad package validates at ERC 0/0 for connectivity and annotation only. All six fuse values, final conductors, grounding, thermal behavior, stopping behavior and every work authority remain open. See `electrical/tether-power-core-p0.1/index.html`.
-<!-- HR30-TETHER-POWER-END -->
+## One-axis first-power station
 
-<!-- HR30-HARNESS-README-START -->
-## Whole-body harness
+The whole-body package now includes a removable, source-limited commissioning station rather than relying on the unreleased walking-power tree for first inspection. It uses a safety-listed Keysight E36313A candidate, ROBOTIS U2D2/Power Hub, exact X3P/X4P cable families, a native four-child-sheet KiCad design, printable tray/cover files and a 25-axis work order. Candidate first power is one mechanically restrained, whole-body-disconnected actuator at 11.0 V / 0.25 A with read-only telemetry and Torque Enable required to read zero. Qualified review, received-hardware inspection, calibration, restraint and separately signed connection/energization authority remain open. See `electrical/axis-commissioning-station-p0.1/index.html`.
+<!-- HR30-AXIS-COMMISSION-END -->
 
-Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
-<!-- HR30-HARNESS-README-END -->
 <!-- HR30-GRIPPERS-P01-README-START -->
 ## Detailed bilateral hand mechanisms
 
 The [detailed gripper package](grippers-p0.1/index.html) contains two editable 18-part symmetric rack-and-pinion assemblies. Each now uses a project-owned 20-degree, module-0.5 involute pinion and matching racks with a 0.08 mm nominal total tangential-backlash candidate. The OPEN assembly rotates its pinion 148.969 degrees for the 13 mm rack displacement. CAD-derived states provide an 8–34 mm pad gap over 26 mm total coupled stroke. Manufactured profile tolerance, fits, materials, exact actuator-horn adapter, calibration, sensing, pinch proof, endurance, DFM/FAI and physical validation remain open.
 <!-- HR30-GRIPPERS-P01-README-END -->
+
+
 
 <!-- HR30-LEG-DRIVETRAIN-P01-README-START -->
 ## Reduced-leg drivetrain product geometry
@@ -145,8 +142,6 @@ The [installed drivetrain guide](leg-drivetrain-installation-p0.1/index.html) re
 
 The [transmission closure guide](transmission-closure-p0.1/index.html) maps all 39 smooth-pulley or generic-coupler predecessor placeholders to concrete successors. Twenty leg pulleys were already superseded by installed MISUMI candidates, two gripper couplers by the detailed rack-and-pinion hands, eight shoulder pulley positions now use a 16:24 5GT / 185 mm belt candidate, and nine direct axes now use four editable flanged blind-bore split-clamp adapter families. The successor whole-body STEP/GLB also corrects the wrist vendor geometry to XC330. Material, fits, retention, capacity, DFM, FAI and physical proof remain open.
 <!-- HR30-TRANSMISSION-CLOSURE-P01-README-END -->
-
-
 <!-- HR30-HARNESS-CURRENT-BINDING-P01-README-START -->
 ## Harness/current-policy reconciliation
 
@@ -158,6 +153,39 @@ The [harness/current-policy guide](harness/current-policy-binding-p0.1/index.htm
 The [current-constrained actuation guide](current-constrained-actuation-p0.1/index.html) binds all 25 axes to candidate Current Limit register values and an eight-bus simultaneous-cap budget. XH/XM540 axes use raw 929 (2.499 A), XM430 axes raw 743 (1.999 A), and XC330 axes raw 700 (0.700 A). A dedicated 2.5:1 knee drive replaces the former 2:1 architecture because the old knee required about 3.07 A to reach its static development screen. All numeric torque comparisons remain linear published-stall endpoint screens, not continuous capability. External current, branch protection, temperature, dynamics and physical validation remain open.
 <!-- HR30-CURRENT-CONSTRAINED-P01-README-END -->
 
+<!-- HR30-CARRIERS-P01-START -->
+## Physical actuator-interface carriers
+
+The eight whole-body actuator buses now have **86 sourced circuit parts** across two routed native 82 × 42 mm KiCad PCB candidates. Carrier A contains four complete ISOW1432 isolated RS-485 application networks; Carrier B contains one more plus three SN74LVC1T45 TTL networks. KiCad verifies the carrier schematic at ERC 0/0 and both boards at DRC 0/0 with zero unconnected pads. Five all-copper rule areas protect the isolator moats, and the native sources bind the JLC06161H-3313 nominal 1.6 mm candidate stackup. Layer-by-layer SVGs and machine-readable DFM/fabrication candidates are published for inspection, but no output is released for ordering, assembly, connection or energization. Open `electrical/carriers-p0.1/index.html` for the routed layer guide.
+<!-- HR30-CARRIERS-P01-END -->
+
+<!-- HR30-MOTION-CONTROLLER-P01-START -->
+## Deterministic motion-controller board
+
+A routed **82 × 42 mm six-layer STM32H743ZIT6 controller candidate** now binds all eight UART groups, both carrier headers, controller power conversion, MCU supply/reset/boot/VCAP, SWD, deterministic status I/O and a structured-action SPI boundary. The corrected internal connector order is 1=GND, 2=5 V, 3=3.3 V, matching both routed carriers; PE7/PE8/PE9 are corrected to LQFP144 pins 58/59/60. Native checks are **ERC 0/0, DRC 0 and zero unconnected items**. Application review, HIL, physical verification and qualified review remain open. This is not a fabrication release or a safety controller.
+<!-- HR30-MOTION-CONTROLLER-P01-END -->
+<!-- HR30-PDU-P01-START -->
+## Twenty-five routed actuator branch slots
+
+Five distributed instances of one editable six-channel native KiCad PDU candidate allocate all 25 axes and retain five assembly-DNP spares. The eight-sheet schematic validates at ERC 0/0; the 124 x 45 mm ten-layer PCB validates at DRC 0/0 with zero unconnected pads. Each populated channel uses a TPS259474L circuit-breaker/latch-off eFuse with an axis-bound RILM variant, individual output pair, open-drain disable input and power-good output. This is a restrained commissioning architecture only: the device blocks reverse current, so production stackup, regeneration/clamp, connector temperature, dynamic torque, copper/thermal validation and every powered-work authority remain open. Open `electrical/actuator-branch-pdu-p0.1/index.html`.
+<!-- HR30-PDU-P01-END -->
+
+<!-- HR30-TETHER-POWER-START -->
+## Physical tether power core
+
+The P0.1 robot no longer contains an abstract high-current interruption module. RSP-500-12, PNOZ s4 750104 and both GV121CAC series contactors are located in an external 1418N4C6 panel candidate. The robot carries an SBS75G inlet and one main plus five covered MIDI-holder positions mapped exactly to PDU-LLEG, PDU-RLEG, PDU-ARMS, PDU-DISTAL and PDU-CORE. The seven-sheet native KiCad package validates at ERC 0/0 for connectivity and annotation only. All six fuse values, final conductors, grounding, thermal behavior, stopping behavior and every work authority remain open. See `electrical/tether-power-core-p0.1/index.html`.
+<!-- HR30-TETHER-POWER-END -->
+
+<!-- HR30-HARNESS-README-START -->
+## Whole-body harness
+
+Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
+<!-- HR30-HARNESS-README-END -->
+<!-- HR30-ASSEMBLY-GUIDE-P01-START -->
+## Whole-robot assembly traveler
+
+The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
+<!-- HR30-ASSEMBLY-GUIDE-P01-END -->
 
 <!-- HR30-AXIS-COMMISSION-START -->
 ## One-axis first-power station
@@ -176,14 +204,3 @@ The one-axis station now includes an assembly-controlled two-wire source harness
 
 The whole-body commissioning path now includes exact-envelope, horn-free output guards for all four candidate actuator models and a single-ID Protocol 2.0 inspector with no device-write API. Physical fit, fixture retention, software approval and all connection/powered-test/motion/energization authority remain open.
 <!-- NO-MOTION-P01 END -->
-
-<!-- HR30-CARRIERS-P01-START -->
-## Physical actuator-interface carriers
-
-The eight whole-body actuator buses now have **86 sourced circuit parts** across two routed native 82 × 42 mm KiCad PCB candidates. Carrier A contains four complete ISOW1432 isolated RS-485 application networks; Carrier B contains one more plus three SN74LVC1T45 TTL networks. KiCad verifies the carrier schematic at ERC 0/0 and both boards at DRC 0/0 with zero unconnected pads. Five all-copper rule areas protect the isolator moats, and the native sources bind the JLC06161H-3313 nominal 1.6 mm candidate stackup. Layer-by-layer SVGs and machine-readable DFM/fabrication candidates are published for inspection, but no output is released for ordering, assembly, connection or energization. Open `electrical/carriers-p0.1/index.html` for the routed layer guide.
-<!-- HR30-CARRIERS-P01-END -->
-<!-- HR30-ASSEMBLY-GUIDE-P01-START -->
-## Whole-robot assembly traveler
-
-The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 58 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
-<!-- HR30-ASSEMBLY-GUIDE-P01-END -->

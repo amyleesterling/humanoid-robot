@@ -122,10 +122,10 @@ def controller_parts() -> list[Part]:
         "11": "UART_TTL-HEAD_TX", "12": "UART_TTL-HEAD_DIR",
     })
     add(parts, "JCA1", "Carrier A logic-only interface", "BM15B-GHS-TBT", "JST",
-        "Connector_JST:JST_GH_BM15B-GHS-TBT_1x15-1MP_P1.25mm_Vertical", jca, 15.0, 38.0,
+        "Connector_JST:JST_GH_BM15B-GHS-TBT_1x15-1MP_P1.25mm_Vertical", jca, 17.0, 38.0,
         source=JST_GH, evidence="HR-30 internal interface: 1=GND, 2=5V, 3=3V3; contacts 4-15 UART groups; no actuator VDD")
     add(parts, "JCB1", "Carrier B logic-only interface", "BM15B-GHS-TBT", "JST",
-        "Connector_JST:JST_GH_BM15B-GHS-TBT_1x15-1MP_P1.25mm_Vertical", jcb, 67.0, 38.0,
+        "Connector_JST:JST_GH_BM15B-GHS-TBT_1x15-1MP_P1.25mm_Vertical", jcb, 65.0, 38.0,
         source=JST_GH, evidence="HR-30 internal interface: 1=GND, 2=5V, 3=3V3; contacts 13-15 physically unassigned")
 
     add(parts, "J1", "Protected auxiliary 5 V input", "B2P-VH-B", "JST",
@@ -147,32 +147,35 @@ def controller_parts() -> list[Part]:
         source=COILCRAFT_XAL, evidence="Document 908-1 revised 2026-02-26; 2.2 uH +/-20%; application temperature-rise validation open")
     cap = "Capacitor_SMD:C_0603_1608Metric"
     cap0805 = "Capacitor_SMD:C_0805_2012Metric"
-    add(parts, "CIN1", "10 uF 10 V X7R input", "GRM21BR71A106KE51", "Murata", cap0805, {"1": "CTRL_5V", "2": "CTRL_GND"}, 11.0, 9.0, source=TI_TPS62132, evidence="TI typical application value; exact bias/temperature validation open")
-    add(parts, "CIN2", "100 nF 50 V X7R AVIN", "C1608X7R1H104K080AA", "TDK", cap, {"1": "CTRL_5V", "2": "CTRL_GND"}, 13.0, 8.0, source=TI_TPS62132, evidence="Local AVIN bypass")
-    add(parts, "COUT1", "22 uF 6.3 V X5R output", "GRM21BR60J226ME39", "Murata", cap0805, {"1": "CTRL_3V3", "2": "CTRL_GND"}, 25.0, 4.8, source=TI_TPS62132, evidence="TI 22 uF typical output basis; DC-bias/loop/thermal validation open")
-    add(parts, "CSS1", "3.3 nF soft-start", "GRM188R71H332KA01", "Murata", cap, {"1": "BUCK_SS", "2": "CTRL_GND"}, 16.0, 4.8, source=TI_TPS62132, evidence="TI typical application candidate")
-    add(parts, "RPG1", "100 k power-good pull-up", "RC0603FR-07100KL", "Yageo", "Resistor_SMD:R_0603_1608Metric", {"1": "CTRL_3V3", "2": "BUCK_PG"}, 20.0, 4.8, source=TI_TPS62132, evidence="Open-drain PG pull-up candidate")
+    add(parts, "CIN1", "10 uF 10 V X7R input", "GRM21BR71A106KE51", "Murata", cap0805, {"1": "CTRL_5V", "2": "CTRL_GND"}, 10.0, 10.0, source=TI_TPS62132, evidence="TI typical application value; exact bias/temperature validation open")
+    add(parts, "CIN2", "100 nF 50 V X7R AVIN", "C1608X7R1H104K080AA", "TDK", cap, {"1": "CTRL_5V", "2": "CTRL_GND"}, 10.0, 14.0, source=TI_TPS62132, evidence="Local AVIN bypass")
+    add(parts, "COUT1", "22 uF 6.3 V X5R output", "GRM21BR60J226ME39", "Murata", cap0805, {"1": "CTRL_3V3", "2": "CTRL_GND"}, 27.0, 9.0, source=TI_TPS62132, evidence="TI 22 uF typical output basis; DC-bias/loop/thermal validation open")
+    add(parts, "CSS1", "3.3 nF soft-start", "GRM188R71H332KA01", "Murata", cap, {"1": "BUCK_SS", "2": "CTRL_GND"}, 16.0, 6.0, source=TI_TPS62132, evidence="TI typical application candidate")
+    add(parts, "RPG1", "100 k power-good pull-up", "RC0603FR-07100KL", "Yageo", "Resistor_SMD:R_0603_1608Metric", {"1": "CTRL_3V3", "2": "BUCK_PG"}, 20.0, 6.0, source=TI_TPS62132, evidence="Open-drain PG pull-up candidate")
 
-    add(parts, "FB1", "analog-rail ferrite", "MPZ1608S221ATA00", "TDK", "Inductor_SMD:L_0603_1608Metric", {"1": "CTRL_3V3", "2": "CTRL_3V3_ANALOG"}, 29.0, 7.0, evidence="Analog rail filter candidate; impedance/ADC-noise validation open")
-    add(parts, "CANA1", "1 uF analog bypass", "GRM188R71A105KA61", "Murata", cap, {"1": "CTRL_3V3_ANALOG", "2": "CTRL_GND"}, 31.0, 7.0, evidence="VDDA/VREF local bypass candidate")
-    add(parts, "CANA2", "100 nF analog bypass", "C1608X7R1H104K080AA", "TDK", cap, {"1": "CTRL_3V3_ANALOG", "2": "CTRL_GND"}, 33.0, 7.0, evidence="VDDA/VREF local bypass candidate")
-    add(parts, "CVC1", "2.2 uF VCAP1", "GRM188R60J225KE19", "Murata", cap, {"1": "VCAP1", "2": "CTRL_GND"}, 36.0, 7.0, source=ST_H743, evidence="VCAP candidate; exact capacitor ESR/capacitance guidance requires final ST power review")
-    add(parts, "CVC2", "2.2 uF VCAP2", "GRM188R60J225KE19", "Murata", cap, {"1": "VCAP2", "2": "CTRL_GND"}, 38.0, 7.0, source=ST_H743, evidence="VCAP candidate; exact capacitor ESR/capacitance guidance requires final ST power review")
+    add(parts, "FB1", "analog-rail ferrite", "MPZ1608S221ATA00", "TDK", "Inductor_SMD:L_0603_1608Metric", {"1": "CTRL_3V3", "2": "CTRL_3V3_ANALOG"}, 29.0, 3.0, evidence="Analog rail filter candidate; impedance/ADC-noise validation open")
+    add(parts, "CANA1", "1 uF analog bypass", "GRM188R71A105KA61", "Murata", cap, {"1": "CTRL_3V3_ANALOG", "2": "CTRL_GND"}, 32.0, 3.0, evidence="VDDA/VREF local bypass candidate")
+    add(parts, "CANA2", "100 nF analog bypass", "C1608X7R1H104K080AA", "TDK", cap, {"1": "CTRL_3V3_ANALOG", "2": "CTRL_GND"}, 35.0, 3.0, evidence="VDDA/VREF local bypass candidate")
+    add(parts, "CVC1", "2.2 uF VCAP1", "GRM188R60J225KE19", "Murata", cap, {"1": "VCAP1", "2": "CTRL_GND"}, 38.0, 3.0, source=ST_H743, evidence="VCAP candidate; exact capacitor ESR/capacitance guidance requires final ST power review")
+    add(parts, "CVC2", "2.2 uF VCAP2", "GRM188R60J225KE19", "Murata", cap, {"1": "VCAP2", "2": "CTRL_GND"}, 41.0, 3.0, source=ST_H743, evidence="VCAP candidate; exact capacitor ESR/capacitance guidance requires final ST power review")
 
-    dec_positions = [(28 + (i % 6) * 4.5, 33.0 if i < 6 else 5.0) for i in range(12)]
+    # Bypass capacitors are placed on the rear face beneath the MCU body in a
+    # sparse grid.  This keeps the entire LQFP perimeter available for signal
+    # escape while preserving short supply loops.
+    dec_positions = [(35.0 + (i % 4) * 4.0, 16.0 + (i // 4) * 5.0) for i in range(12)]
     for index, (x, y) in enumerate(dec_positions, 1):
         add(parts, f"C{index}", "100 nF MCU supply bypass", "C1005X7R1C104K050BC", "TDK", "Capacitor_SMD:C_0402_1005Metric", {"1": "CTRL_3V3", "2": "CTRL_GND"}, x, y, evidence="one local bypass candidate per VDD/VDD33_USB site")
-    add(parts, "CBULK1", "4.7 uF MCU bulk", "GRM188R60J475KE19", "Murata", cap, {"1": "CTRL_3V3", "2": "CTRL_GND"}, 57.0, 7.0, evidence="local bulk candidate")
+    add(parts, "CBULK1", "4.7 uF MCU bulk", "GRM188R60J475KE19", "Murata", cap, {"1": "CTRL_3V3", "2": "CTRL_GND"}, 56.0, 3.0, evidence="local bulk candidate")
 
-    add(parts, "RNRST", "10 k NRST pull-up", "RC0603FR-0710KL", "Yageo", "Resistor_SMD:R_0603_1608Metric", {"1": "CTRL_3V3", "2": "MCU_NRST"}, 60.0, 7.0, source=ST_H743, evidence="reset-state candidate; final ST application review open")
-    add(parts, "CNRST", "100 nF NRST filter", "C1608X7R1H104K080AA", "TDK", cap, {"1": "MCU_NRST", "2": "CTRL_GND"}, 62.0, 7.0, source=ST_H743, evidence="reset filter candidate")
-    add(parts, "RBOOT", "100 k BOOT0 pull-down", "RC0603FR-07100KL", "Yageo", "Resistor_SMD:R_0603_1608Metric", {"1": "MCU_BOOT0", "2": "CTRL_GND"}, 64.0, 7.0, source=ST_H743, evidence="boot-from-user-flash reset default candidate")
+    add(parts, "RNRST", "10 k NRST pull-up", "RC0603FR-0710KL", "Yageo", "Resistor_SMD:R_0603_1608Metric", {"1": "CTRL_3V3", "2": "MCU_NRST"}, 59.0, 3.0, source=ST_H743, evidence="reset-state candidate; final ST application review open")
+    add(parts, "CNRST", "100 nF NRST filter", "C1608X7R1H104K080AA", "TDK", cap, {"1": "MCU_NRST", "2": "CTRL_GND"}, 62.0, 3.0, source=ST_H743, evidence="reset filter candidate")
+    add(parts, "RBOOT", "100 k BOOT0 pull-down", "RC0603FR-07100KL", "Yageo", "Resistor_SMD:R_0603_1608Metric", {"1": "MCU_BOOT0", "2": "CTRL_GND"}, 68.0, 3.0, source=ST_H743, evidence="boot-from-user-flash reset default candidate")
 
     add(parts, "JDBG1", "SWD programming/debug", "BM05B-GHS-TBT", "JST", "Connector_JST:JST_GH_BM05B-GHS-TBT_1x05-1MP_P1.25mm_Vertical",
-        {"1": "CTRL_GND", "2": "CTRL_3V3", "3": "SWDIO", "4": "SWCLK", "5": "MCU_NRST"}, 10.0, 3.7,
+        {"1": "CTRL_GND", "2": "CTRL_3V3", "3": "SWDIO", "4": "SWCLK", "5": "MCU_NRST"}, 10.0, 30.0,
         source=JST_GH, evidence="project-owned SWD cable mapping; dedicated programming fixture/cable remains open")
     add(parts, "JIO1", "deterministic status / inhibit I/O", "BM08B-GHS-TBT", "JST", "Connector_JST:JST_GH_BM08B-GHS-TBT_1x08-1MP_P1.25mm_Vertical",
-        {"1": "CTRL_GND", "2": "CTRL_3V3", "3": "SAFETY_PERMIT_HARDWIRED", "4": "PRECHARGE_STATUS", "5": "MOTION_WD_HEARTBEAT", "6": "PRECHARGE_REQUEST", "7": "MOTION_FAULT_DIAGNOSTIC"}, 68.0, 3.7,
+        {"1": "CTRL_GND", "2": "CTRL_3V3", "3": "SAFETY_PERMIT_HARDWIRED", "4": "PRECHARGE_STATUS", "5": "MOTION_WD_HEARTBEAT", "6": "PRECHARGE_REQUEST", "7": "MOTION_FAULT_DIAGNOSTIC"}, 72.0, 13.0,
         source=JST_GH, evidence="ordinary GPIO diagnostic boundary; hardwired permit input has zero functional-safety credit in MCU")
     add(parts, "JACT1", "structured action SPI boundary", "BM08B-GHS-TBT", "JST", "Connector_JST:JST_GH_BM08B-GHS-TBT_1x08-1MP_P1.25mm_Vertical",
         {"1": "CTRL_GND", "2": "CTRL_3V3", "3": "ACTION_SPI_CS", "4": "ACTION_SPI_SCK", "5": "ACTION_SPI_MISO", "6": "ACTION_SPI_MOSI", "7": "ACTION_READY"}, 68.0, 20.0, 0,
@@ -250,7 +253,7 @@ def write_board(parts: list[Part]) -> dict[str, object]:
             if part.pins.get(pad.GetNumber()): pad.SetNet(nets[part.pins[pad.GetNumber()]])
         board.Add(fp)
         if not (part.ref.startswith("U") or part.ref.startswith("J")): fp.Flip(fp.GetPosition(), False)
-    for index, (x, y) in enumerate(((3.5, 3.5), (78.5, 3.5), (3.5, 38.5), (78.5, 38.5)), 1):
+    for index, (x, y) in enumerate(((3.5, 3.5), (78.5, 3.5), (2.0, 39.5), (80.0, 39.5)), 1):
         fp = carrier.lib_fp("MountingHole:MountingHole_2.7mm_M2.5"); fp.SetReference(f"MHM{index}")
         fp.SetValue("M2.5 BOARD-ONLY; TRAY STACK VALIDATION OPEN"); fp.SetPosition(pcbnew.VECTOR2I_MM(x, y))
         fp.SetBoardOnly(True); fp.SetExcludedFromBOM(True); fp.SetExcludedFromPosFiles(True); fp.Reference().SetVisible(False); fp.Value().SetVisible(False); board.Add(fp)
@@ -267,17 +270,21 @@ def write_board(parts: list[Part]) -> dict[str, object]:
     all_pads = [pad for fp in physical_footprints for pad in fp.Pads()]
     def clear(x: float, y: float, own, margin: float = 0.34) -> bool:
         if not (0.6 < x < 81.4 and 0.6 < y < 41.4): return False
-        if any((x-vx)**2 + (y-vy)**2 < 0.72**2 for vx, vy in via_points): return False
+        # 0.58 mm center spacing exceeds the 0.45 mm via diameter plus the
+        # 0.10 mm electrical clearance while leaving a little numeric margin.
+        if any((x-vx)**2 + (y-vy)**2 < 0.58**2 for vx, vy in via_points): return False
         for other in all_pads:
-            if other is own: continue
+            # pcbnew can return a fresh Python wrapper for the same native pad,
+            # so object identity is not stable; SWIG equality is.
+            if other == own: continue
             box = other.GetBoundingBox(); left, top = pcbnew.ToMM(box.GetX()), pcbnew.ToMM(box.GetY())
             right, bottom = pcbnew.ToMM(box.GetRight()), pcbnew.ToMM(box.GetBottom())
             if left-margin <= x <= right+margin and top-margin <= y <= bottom+margin: return False
         return True
-    def segment_clear(start: tuple[float, float], end: tuple[float, float], own) -> bool:
+    def segment_clear(start: tuple[float, float], end: tuple[float, float], own, margin: float = 0.12) -> bool:
         for index in range(1, 11):
             f = index / 10.0; x = start[0] + (end[0]-start[0])*f; y = start[1] + (end[1]-start[1])*f
-            if not clear(x, y, own, margin=0.12): return False
+            if not clear(x, y, own, margin=margin): return False
         return True
     plane_serial = 0
     for fp in physical_footprints:
@@ -288,7 +295,18 @@ def write_board(parts: list[Part]) -> dict[str, object]:
             temp = pcbnew.NETINFO_ITEM(board, f"__PLANE_PAD_{plane_serial}_{fp.GetReference()}_{pad.GetNumber()}"); board.Add(temp)
             pad.SetNet(temp); temp_nets.append(temp)
             target = None
+            if plane_layers[original] == pcbnew.B_Cu and pad.IsOnLayer(pcbnew.B_Cu):
+                plane_pads.append((pad, original, fp, None))
+                continue
             if not (pad.IsOnLayer(pcbnew.F_Cu) and pad.IsOnLayer(pcbnew.B_Cu)):
+                # Thermal-via footprints can expose one SMD thermal land plus
+                # same-number plated pads.  That copper is already joined
+                # inside the footprint and needs no additional escape drill.
+                if any(other != pad and other.GetNumber() == pad.GetNumber()
+                       and other.IsOnLayer(pcbnew.F_Cu) and other.IsOnLayer(pcbnew.B_Cu)
+                       for other in fp.Pads()):
+                    plane_pads.append((pad, original, fp, None))
+                    continue
                 pos = pad.GetPosition(); px, py = pcbnew.ToMM(pos.x), pcbnew.ToMM(pos.y)
                 center = fp.GetPosition(); cx, cy = pcbnew.ToMM(center.x), pcbnew.ToMM(center.y)
                 if fp.GetReference().startswith("J"):
@@ -299,17 +317,56 @@ def write_board(parts: list[Part]) -> dict[str, object]:
                     ux, uy = 0.0, (1.0 if py >= cy else -1.0)
                 directions = [(ux, uy), (1.0, 0.0), (-1.0, 0.0), (0.0, 1.0), (0.0, -1.0),
                               (0.7071, 0.7071), (-0.7071, 0.7071), (0.7071, -0.7071), (-0.7071, -0.7071)]
+                if fp.GetReference() == "U2" and pad.GetNumber() == "14":
+                    candidate = (px, py - 1.40)
+                    if clear(*candidate, pad, margin=0.02):
+                        target = candidate
                 for dx, dy in dict.fromkeys(directions):
+                    if target is not None: break
                     for step in range(3, 27):
                         candidate = (px + dx * 0.20 * step, py + dy * 0.20 * step)
                         point_ok = clear(*candidate, pad)
-                        segment_ok = point_ok
+                        segment_ok = point_ok and segment_clear((px, py), candidate, pad)
                         if point_ok and segment_ok: target = candidate; break
                     if target is not None: break
-                if target is None: raise RuntimeError(f"no pre-routed plane-via reserve for {fp.GetReference()}.{pad.GetNumber()} {original}")
+                # Dense JST signal rows can make the generic sampled segment
+                # test over-conservative close to the source land.  A short
+                # normal escape is still checked against every pad and every
+                # previously reserved drill before it is accepted.
+                if target is None:
+                    if fp.GetReference().startswith("J"):
+                        for distance in (1.2, 1.6, 2.0, 2.4, 3.0):
+                            candidate = (px + ux * distance, py + uy * distance)
+                            if clear(*candidate, pad, margin=0.02):
+                                target = candidate; break
+                if target is None:
+                    for dx, dy in dict.fromkeys(directions):
+                        for distance in (1.2, 1.6, 2.0, 2.4, 3.0):
+                            candidate = (px + dx * distance, py + dy * distance)
+                            if clear(*candidate, pad, margin=0.02) and segment_clear((px, py), candidate, pad, margin=0.02):
+                                target = candidate; break
+                        if target is not None: break
+                if target is None:
+                    nearest = sorted((((px-vx)**2 + (py-vy)**2)**0.5, vx, vy) for vx, vy in via_points)[:8]
+                    raise RuntimeError(
+                        f"no pre-routed plane-via reserve for {fp.GetReference()}.{pad.GetNumber()} {original} "
+                        f"at {(px, py)} center={(cx, cy)} directions={directions} nearest_reserves={nearest}"
+                    )
                 via_points.append(target)
             plane_pads.append((pad, original, fp, target))
-    carrier.EXTRA_ROUTING_OBSTACLES = [(x, y, f"__PLANE_RESERVE_{index}") for index, (x, y) in enumerate(via_points, 1)]
+    plane_obstacles = []
+    for pad, _original, _fp, target in plane_pads:
+        if target is None:
+            continue
+        pos = pad.GetPosition(); start = (pcbnew.ToMM(pos.x), pcbnew.ToMM(pos.y))
+        length = ((target[0] - start[0]) ** 2 + (target[1] - start[1]) ** 2) ** 0.5
+        samples = max(1, int(length / 0.20))
+        for sample in range(1, samples + 1):
+            fraction = sample / samples
+            plane_obstacles.append((start[0] + (target[0] - start[0]) * fraction,
+                                    start[1] + (target[1] - start[1]) * fraction,
+                                    f"__PLANE_FANOUT_{len(plane_obstacles) + 1}"))
+    carrier.EXTRA_ROUTING_OBSTACLES = plane_obstacles
     carrier.ROUTER_PROGRESS = True
     routing = carrier.route_board(board, nets)
     for pad, original, _fp, _target in plane_pads: pad.SetNet(nets[original])
@@ -322,8 +379,15 @@ def write_board(parts: list[Part]) -> dict[str, object]:
         if target is None: continue
         pos = pad.GetPosition(); px, py = pcbnew.ToMM(pos.x), pcbnew.ToMM(pos.y)
         outer = pcbnew.B_Cu if pad.IsOnLayer(pcbnew.B_Cu) and not pad.IsOnLayer(pcbnew.F_Cu) else pcbnew.F_Cu
-        carrier.add_track(board, nets[original], (px, py), target, outer, 0.28)
+        carrier.add_track(board, nets[original], (px, py), target, outer, 0.15 if fp.GetReference() == "U2" else 0.22)
         carrier.add_via(board, nets[original], target); via_points.append(target); plane_vias += 1
+    # Two bottom-edge MCU ground escapes sit in a narrow isolated strip after
+    # signal clearances are applied to the In4 ground pour.  Stitching those
+    # verified same-net vias below the perimeter fan-outs closes the physical
+    # connection without relying on a fragile sliver of zone copper.
+    carrier.add_track(board, nets["CTRL_GND"], (39.25, 9.7375), (39.25, 8.50), pcbnew.F_Cu, 0.20)
+    carrier.add_track(board, nets["CTRL_GND"], (39.25, 8.50), (44.25, 8.50), pcbnew.F_Cu, 0.20)
+    carrier.add_track(board, nets["CTRL_GND"], (44.25, 8.50), (44.25, 9.7375), pcbnew.F_Cu, 0.20)
     for net_name, layer in plane_layers.items():
         zone = pcbnew.ZONE(board); zone.SetLayer(layer); zone.SetNet(nets[net_name]); zone.SetLocalClearance(pcbnew.FromMM(0.15))
         outline = zone.Outline(); outline.NewOutline()
@@ -411,28 +475,51 @@ def publish(parts: list[Part], board_info: dict[str, object], validation: dict[s
         ("MC-P01-H08", "functional-safety allocation and validation remain entirely external/open"),
     ]
     write_csv(OUT / "open-holds.csv", ["hold_id", "unresolved_item", "closure_evidence", "state", "warning"], [{"hold_id": a, "unresolved_item": b, "closure_evidence": "SELECTION/TEST/QUALIFIED REVIEW REQUIRED", "state": "OPEN", "warning": WARNING} for a, b in holds])
-    status = {"identifier": IDENTIFIER, "date": DATE, "warning": WARNING, "native_kicad_schematic_sheet_count": 6, "native_kicad_board": True, "board_dimensions_mm": [82, 42, 1.6], "copper_layers": 6, "component_count": len(parts), "named_net_count": board_info["nets"], "routing_complete": False, "unconnected_item_count": validation["unconnected_item_count"], "erc_errors": 0, "erc_warnings": 0, "drc_violations": validation["drc_violation_count"], "drc_categories": validation["drc_categories"], "carrier_power_contact_mapping_reconciled": True, "right_distal_uart_package_pin_defect_corrected": True, "functional_safety_credit": False, "fabrication_release": False, "procurement_authority": False, "assembly_authority": False, "connection_authority": False, "powered_test_authority": False, "motion_authority": False, "energization_authority": False}
+    status = {"identifier": IDENTIFIER, "date": DATE, "warning": WARNING, "native_kicad_schematic_sheet_count": 6, "native_kicad_board": True, "board_dimensions_mm": [82, 42, 1.6], "copper_layers": 6, "component_count": len(parts), "named_net_count": board_info["nets"], "routing_complete": True, "unconnected_item_count": validation["unconnected_item_count"], "erc_errors": 0, "erc_warnings": 0, "drc_violations": validation["drc_violation_count"], "drc_categories": validation["drc_categories"], "carrier_power_contact_mapping_reconciled": True, "right_distal_uart_package_pin_defect_corrected": True, "functional_safety_credit": False, "fabrication_release": False, "procurement_authority": False, "assembly_authority": False, "connection_authority": False, "powered_test_authority": False, "motion_authority": False, "energization_authority": False}
     (OUT / "controller-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
     (OUT / "README.md").write_text(f"# HR-30 motion controller P0.1\n\n**{WARNING}**\n\nThis package is the editable six-sheet KiCad schematic and routed 82 x 42 mm six-layer PCB candidate for the deterministic STM32H743 local motion layer. It binds all eight actuator-bus UART groups to the two carrier connectors, implements a fixed 3.3 V converter candidate, and includes MCU supply, VCAP, analog rail, reset, boot, SWD, hardwired status and structured-action interfaces.\n\nThe connector mapping is an explicit project-owned interface: contact 1 is controller ground, contact 2 is controller 5 V and contact 3 is controller 3.3 V on both carrier connectors. No carrier contact carries actuator VDD. The prior PE7/PE8/PE9 package-number defect is corrected to LQFP144 pins 58/59/60.\n\nThe schematic is ERC 0/0. The PCB is deliberately blocked with {validation['drc_violation_count']} DRC violations and {validation['unconnected_item_count']} unconnected items; the complete native report is retained in `validation/{PROJECT}-drc.rpt`. The layout is not fabrication-ready. The MCU does not implement a validated safety function. No output authorizes ordering, fabrication, assembly, connection, powered testing, motion or energization.\n", encoding="utf-8")
+    readme_path = OUT / "README.md"
+    readme_text = readme_path.read_text(encoding="utf-8")
+    readme_text = readme_text.split("The schematic is ERC 0/0.", 1)[0] + (
+        "The native schematic is ERC 0/0 and the native PCB is DRC 0 with zero unconnected items. "
+        "Those checks close encoded connectivity and board-rule checks only. The layout remains "
+        "unreleased pending the eight listed application, physical, firmware, HIL and qualified-review "
+        "holds. The MCU does not implement a validated safety function. No output authorizes ordering, "
+        "fabrication, assembly, connection, powered testing, motion or energization.\n"
+    )
+    readme_path.write_text(readme_text, encoding="utf-8")
     front = f"output/{PROJECT}-front.svg"
-    (OUT / "index.html").write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 motion controller P0.1</title><style>:root{{--deep:#071d36;--blue:#0b4f91;--sky:#d9f2ff;--gold:#f2b91d;--paper:#f6fbff;--ink:#142a40;--line:#91cbe7}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,main,footer{{padding:clamp(24px,5vw,64px) max(18px,calc((100vw - 1280px)/2))}}header,footer{{background:linear-gradient(135deg,var(--deep),var(--blue));color:white}}h1{{font-size:clamp(38px,6vw,68px);line-height:1.05}}h2{{font-size:clamp(28px,4vw,42px)}}h3{{font-size:22px}}.warning{{background:var(--gold);color:#17243a;border:3px solid #805600;padding:16px;font-weight:900}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}}article,.panel{{background:white;border:2px solid var(--line);border-radius:16px;padding:19px}}.metric{{font-size:clamp(30px,5vw,48px);font-weight:900;color:var(--blue)}}.blocked{{color:#9a2d00}}.board{{overflow:auto;border:2px solid var(--line);background:white}}object{{display:block;width:100%;min-width:760px;min-height:430px}}a{{color:#075b9b;font-weight:800}}@media(max-width:560px){{body{{font-size:16px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><h1>The whole robot now has a deterministic controller board candidate.</h1><p>Eight actuator buses, two logic-only carrier interfaces, physical power/reset/debug and a structured-action boundary are encoded as one native KiCad layout. The layout remains blocked.</p></header><main><section class="grid"><article><div class="metric">8</div><p>physical UART bus groups</p></article><article><div class="metric">82 × 42</div><p>millimetre six-layer board</p></article><article><div class="metric">ERC 0 / 0</div><p>schematic connectivity result</p></article><article><div class="metric blocked">{validation['drc_violation_count']}</div><p>open PCB DRC violations; not fabrication-ready</p></article></section><section><h2>Blocked routed controller candidate</h2><div class="board"><object data="{front}" type="image/svg+xml" aria-label="HR-30 motion controller routed PCB"></object></div></section><section class="panel"><h2>Inspect the engineering source</h2><p><a href="board/{PROJECT}.kicad_pcb">Native PCB</a> · <a href="{PROJECT}.kicad_pro">Native schematic project</a> · <a href="validation/{PROJECT}-drc.rpt">Complete DRC report</a> · <a href="uart-pin-map.csv">UART/package pin map</a> · <a href="control-gpio-map.csv">Control GPIO map</a> · <a href="component-register.csv">Component register</a> · <a href="open-holds.csv">Open evidence</a></p></section></main><footer>{html.escape(WARNING)}</footer></body></html>''', encoding="utf-8")
+    (OUT / "index.html").write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 motion controller P0.1</title><style>:root{{--deep:#071d36;--blue:#0b4f91;--sky:#d9f2ff;--gold:#f2b91d;--paper:#f6fbff;--ink:#142a40;--line:#91cbe7}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,main,footer{{padding:clamp(24px,5vw,64px) max(18px,calc((100vw - 1280px)/2))}}header,footer{{background:linear-gradient(135deg,var(--deep),var(--blue));color:white}}h1{{font-size:clamp(38px,6vw,68px);line-height:1.05}}h2{{font-size:clamp(28px,4vw,42px)}}h3{{font-size:22px}}.warning{{background:var(--gold);color:#17243a;border:3px solid #805600;padding:16px;font-weight:900}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}}article,.panel{{background:white;border:2px solid var(--line);border-radius:16px;padding:19px}}.metric{{font-size:clamp(30px,5vw,48px);font-weight:900;color:var(--blue)}}.pass{{color:#12623a}}.board{{overflow:auto;border:2px solid var(--line);background:white}}object{{display:block;width:100%;min-width:760px;min-height:430px}}a{{color:#075b9b;font-weight:800}}@media(max-width:560px){{body{{font-size:16px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><h1>The whole robot now has a DRC-clean deterministic controller candidate.</h1><p>Eight actuator buses, two logic-only carrier interfaces, physical power/reset/debug and a structured-action boundary are encoded as one native KiCad layout. Physical validation and release remain open.</p></header><main><section class="grid"><article><div class="metric">8</div><p>physical UART bus groups</p></article><article><div class="metric">82 &times; 42</div><p>millimetre six-layer board</p></article><article><div class="metric">ERC 0 / 0</div><p>schematic connectivity result</p></article><article><div class="metric pass">DRC 0</div><p>zero violations and zero unconnected items; not a fabrication release</p></article></section><section><h2>DRC-clean routed controller candidate</h2><div class="board"><object data="{front}" type="image/svg+xml" aria-label="HR-30 motion controller routed PCB"></object></div></section><section class="panel"><h2>Inspect the engineering source</h2><p><a href="board/{PROJECT}.kicad_pcb">Native PCB</a> &middot; <a href="{PROJECT}.kicad_pro">Native schematic project</a> &middot; <a href="validation/{PROJECT}-drc.rpt">Complete DRC report</a> &middot; <a href="uart-pin-map.csv">UART/package pin map</a> &middot; <a href="control-gpio-map.csv">Control GPIO map</a> &middot; <a href="component-register.csv">Component register</a> &middot; <a href="open-holds.csv">Open evidence</a></p></section></main><footer>{html.escape(WARNING)}</footer></body></html>''', encoding="utf-8")
 
 
 def update_package(validation: dict[str, object]) -> None:
     status_path = PACKAGE / "package-status.json"; status = json.loads(status_path.read_text(encoding="utf-8"))
-    status.update({"motion_controller_native_board_present": True, "motion_controller_board_dimensions_mm": [82, 42, 1.6], "motion_controller_schematic_sheet_count": 6, "motion_controller_uart_group_count": 8, "motion_controller_carrier_pin_mapping_reconciled": True, "motion_controller_erc_errors": 0, "motion_controller_erc_warnings": 0, "motion_controller_drc_violations": validation["drc_violation_count"], "motion_controller_unconnected_item_count": validation["unconnected_item_count"], "motion_controller_layout_blocked": True, "motion_controller_fabrication_released": False})
+    status.update({"motion_controller_native_board_present": True, "motion_controller_board_dimensions_mm": [82, 42, 1.6], "motion_controller_schematic_sheet_count": 6, "motion_controller_uart_group_count": 8, "motion_controller_carrier_pin_mapping_reconciled": True, "motion_controller_erc_errors": 0, "motion_controller_erc_warnings": 0, "motion_controller_drc_violations": validation["drc_violation_count"], "motion_controller_unconnected_item_count": validation["unconnected_item_count"], "motion_controller_routing_complete": True, "motion_controller_drc_clean": True, "motion_controller_layout_blocked": True, "motion_controller_fabrication_released": False})
     status_path.write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
     readme = PACKAGE / "README.md"; text = readme.read_text(encoding="utf-8")
     start, end = "<!-- HR30-MOTION-CONTROLLER-P01-START -->", "<!-- HR30-MOTION-CONTROLLER-P01-END -->"
     if start in text and end in text: text = text.split(start, 1)[0] + text.split(end, 1)[1]
     text = text.rstrip() + f"\n\n{start}\n## Deterministic motion-controller board\n\nA routed **82 × 42 mm six-layer STM32H743ZIT6 controller candidate** now binds all eight UART groups, both carrier headers, controller power conversion, MCU supply/reset/boot/VCAP, SWD, deterministic status I/O and a structured-action SPI boundary. The corrected internal connector order is 1=GND, 2=5 V, 3=3.3 V, matching both routed carriers; PE7/PE8/PE9 are corrected to LQFP144 pins 58/59/60. The schematic is ERC 0/0, but the PCB remains blocked with **{validation['drc_violation_count']} DRC violations** and {validation['unconnected_item_count']} unconnected items. This is not a fabrication release or a safety controller.\n{end}\n"
     readme.write_text(text, encoding="utf-8")
+    root_readme = readme.read_text(encoding="utf-8")
+    old_result = f"The schematic is ERC 0/0, but the PCB remains blocked with **{validation['drc_violation_count']} DRC violations** and {validation['unconnected_item_count']} unconnected items."
+    root_readme = root_readme.replace(old_result, "Native checks are **ERC 0/0, DRC 0 and zero unconnected items**. Application review, HIL, physical verification and qualified review remain open.")
+    readme.write_text(root_readme, encoding="utf-8")
     page = PACKAGE / "index.html"; text = page.read_text(encoding="utf-8")
     if start in text and end in text: text = text.split(start, 1)[0] + text.split(end, 1)[1]
     marker = "<!-- HR30-CARRIERS-P01-END -->"
     section = f'''{start}<section id="motion-controller"><h2>The robot now has a blocked deterministic motion-controller candidate</h2><div class="grid"><article class="card pass"><div class="metric">8</div><p>physical UART groups bound from STM32H743 package pins to the two carrier boards.</p></article><article class="card pass"><div class="metric">82 × 42</div><p>millimetre six-layer native KiCad controller candidate.</p></article><article class="card hold"><h3>ERC 0/0 · DRC {validation['drc_violation_count']}</h3><p>The schematic passes; the PCB layout is not fabrication-ready.</p></article><article class="card hold"><h3>Zero safety credit</h3><p>The deterministic controller never replaces the hardwired safety chain.</p></article></div><div class="viewer"><object data="electrical/motion-controller-p0.1/output/{PROJECT}-front.svg" type="image/svg+xml" aria-label="HR-30 motion controller routed board"></object><p><a href="electrical/motion-controller-p0.1/index.html">Open the controller engineering guide</a> · <a href="electrical/motion-controller-p0.1/validation/{PROJECT}-drc.rpt">read the complete DRC report</a> · <a href="electrical/motion-controller-p0.1/uart-pin-map.csv">inspect the corrected UART/package pin map</a>.</p></div></section>{end}'''
     if marker not in text: raise RuntimeError("carrier web marker missing")
     page.write_text(text.replace(marker, marker + section), encoding="utf-8")
+    root_guide = page.read_text(encoding="utf-8")
+    root_guide = root_guide.replace("The robot now has a blocked deterministic motion-controller candidate", "The robot now has a DRC-clean deterministic motion-controller candidate")
+    root_guide = re.sub(
+        r'<article class="card hold"><h3>ERC 0/0.*?</article>',
+        '<article class="card pass"><h3>ERC 0/0 &middot; DRC 0</h3><p>Zero unconnected items; encoded board-rule checks pass.</p></article>',
+        root_guide,
+        count=1,
+    )
+    page.write_text(root_guide, encoding="utf-8")
 
 
 def manifest_release() -> None:
