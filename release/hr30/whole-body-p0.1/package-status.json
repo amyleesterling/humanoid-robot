@@ -349,5 +349,14 @@
   "joint_hardware_successor_validation_open_count": 39,
   "joint_hardware_successor_procurement_selection_count": 0,
   "joint_hardware_successor_fabrication_release_count": 0,
-  "joint_hardware_successor_reconciliation_present": true
+  "joint_hardware_successor_reconciliation_present": true,
+  "harness_current_policy_binding_present": true,
+  "harness_current_policy_bound_axis_count": 25,
+  "harness_published_stall_endpoint_sum_a": 76.08,
+  "harness_candidate_internal_cap_sum_a": 47.67847,
+  "harness_stall_endpoint_used_as_normal_demand": false,
+  "harness_normal_rms_demand_selected": false,
+  "harness_conductor_sizing_released": false,
+  "harness_branch_protection_released": false,
+  "connection_authority": false
 }
