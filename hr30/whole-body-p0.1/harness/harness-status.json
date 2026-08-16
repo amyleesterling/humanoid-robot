@@ -9,7 +9,7 @@
   "service_loop_obligation_count": 25,
   "logical_terminal_binding_count": 667,
   "actuator_side_pinout_families_verified": 4,
-  "candidate_12v_stall_endpoint_sum_a": 76.08,
+  "candidate_12v_stall_endpoint_sum_a": 71.88,
   "u2d2_final_controller_role": "REJECT",
   "u2d2_power_hub_whole_body_role": "REJECT",
   "actuator_bus_controller_pin_map_selected": true,

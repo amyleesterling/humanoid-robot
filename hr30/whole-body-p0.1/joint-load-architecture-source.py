@@ -65,9 +65,9 @@ def actuator_for(axis_id: str) -> tuple[str, float, float]:
         return "ROBOTIS XC330-T288-T", 1.0, 1.0
     if "ELBOW" in axis_id:
         return "ROBOTIS XM430-W350-R", 1.0, 1.0
-    if "SHOULDER_ROLL" in axis_id:
-        return "ROBOTIS XM430-W350-R", 1.0, 1.0
-    if axis_id == "WAIST_YAW" or "SHOULDER_PITCH" in axis_id:
+    if "SHOULDER_" in axis_id:
+        return "ROBOTIS XM430-W350-R", 1.5, REDUCED_DRIVE_EFFICIENCY
+    if axis_id == "WAIST_YAW":
         return "ROBOTIS XM540-W270-R", 1.0, 1.0
     if "ANKLE_PITCH" in axis_id:
         return "ROBOTIS XM430-W350-R", 2.5, REDUCED_DRIVE_EFFICIENCY
@@ -205,6 +205,7 @@ def compute_rows() -> tuple[list[dict], dict]:
         "reduced_drive_efficiency_assumption": REDUCED_DRIVE_EFFICIENCY,
         "narrow_endpoint_ratio_threshold": NARROW_ENDPOINT_RATIO,
         "elbow_xm430_candidate_retained": True,
+        "all_shoulder_axes_xm430_reduced_candidate_retained": True,
         "wrist_xc330_candidate_retained": True,
         "ankle_xm430_reduced_candidate_retained": True,
         "knee_ratio": 2.5,
@@ -234,11 +235,11 @@ For each non-yaw rotary axis, the generator sums the current descendant link mas
 
 The comparison column uses current official ROBOTIS **12 V stall torque**, transmission ratio and an {REDUCED_DRIVE_EFFICIENCY:.2f} efficiency assumption for reduced axes. ROBOTIS explicitly warns that stall torque is momentary and differs from continuous and real-world output. Consequently no row claims continuous capability. Accepted trajectories, current limits, duty cycle, N-T curves, temperature, inertia, contact, stopping and physical correlation remain mandatory.
 
-The two elbows and two shoulder-roll axes retain the 82 g XM430 candidate. Each wrist uses the 23 g XC330 candidate because its direct-drive published-stall endpoint remains more than four times the current factored static screen. Each ankle uses the 82 g XM430 with a 2.0:1 roll or 2.5:1 pitch reduction. The knee reduction is raised from 1.5:1 to 2.0:1. These are whole-body packaging candidates pending continuous-duty, belt, thermal, dynamic and physical testing.
+All four shoulder axes and both elbows use the 82 g XM430 candidate. The shoulders use the 16:24 / 1.5:1 reduced drive so the smaller actuator retains the static endpoint screen while closing the bilateral arm mass allocation. Each wrist uses the 23 g XC330 candidate. Each ankle uses the 82 g XM430 with a 2.0:1 roll or 2.5:1 pitch reduction, and each knee uses a 2.5:1 reduction. These are whole-body packaging candidates pending continuous-duty, belt, thermal, dynamic and physical testing.
 
 {len(narrow)} axes have less than {NARROW_ENDPOINT_RATIO:.2f} ratio between the effective published stall endpoint and the factored development screen. They are explicitly marked narrow and may not be downsized. Yaw and gripper axes retain separate unresolved inertia/mechanism requirements rather than receiving invented torque values.
 
-Primary manufacturer pages were accessed 2026-08-14 and expose no page revision/date. Exact values are recorded in `actuator-endpoint-source-register.csv`. The MISUMI 5GT/EV5GT catalogues identify the configured 16/20/30/40-tooth pulley candidates and 225/250/255 mm by 9 mm belt candidates used by the installed-drive package; capacity, hub/adapter design, tensioning and guarding remain selection required.
+Primary manufacturer pages were accessed 2026-08-14 and expose no page revision/date. Exact values are recorded in `actuator-endpoint-source-register.csv`. The MISUMI 5GT/EV5GT catalogues identify the configured 16/20/24/30/40-tooth pulley candidates and 185/225/250/255 mm by 9 mm belt candidates used by the installed-drive package; capacity, hub/adapter design, tensioning and guarding remain selection required.
 """
     (OUT / "joint-load-architecture.md").write_text(report, encoding="utf-8", newline="\n")
 
@@ -251,7 +252,7 @@ Primary manufacturer pages were accessed 2026-08-14 and expose no page revision/
 
 ## Whole-body joint-load architecture
 
-All 25 axes now have a reproducible static load screen tied to the current URDF mass tree, the 100 g handoff payload and explicit single-support COM-offset cases. The elbows and shoulder-roll axes use 82 g XM430 candidates; the wrists use XC330 candidates; the ankles use reduced XM430 candidates; and the knees reserve 2.0:1 reductions. Published stall values remain momentary endpoints only; continuous torque, belt capacity, thermal behavior, dynamic gait loads and physical correlation are open.
+All 25 axes now have a reproducible static load screen tied to the current URDF mass tree, the 100 g handoff payload and explicit single-support COM-offset cases. All shoulder axes and both elbows use 82 g XM430 candidates; the shoulders use 1.5:1 reductions, the wrists use XC330 candidates, the ankles use reduced XM430 candidates, and the knees use 2.5:1 reductions. Published stall values remain momentary endpoints only; continuous torque, belt capacity, thermal behavior, dynamic gait loads and physical correlation are open.
 """
     readme_path.write_text(readme.rstrip() + "\n", encoding="utf-8", newline="\n")
 
@@ -270,6 +271,7 @@ All 25 axes now have a reproducible static load screen tied to the current URDF 
         "whole_body_joint_load_architecture_present": True,
         "joint_load_axis_count": len(rows),
         "elbow_xm430_candidate_retained": True,
+        "all_shoulder_axes_xm430_reduced_candidate_retained": True,
         "continuous_actuator_capability_validated": False,
         "dynamic_joint_loads_validated": False,
     })
@@ -309,6 +311,17 @@ def main() -> int:
         "warning": WARNING,
     } for model, data in ACTUATORS.items()])
     write_csv(OUT / "transmission-candidate-source-register.csv", [
+        {
+            "drive_id": "SD-15S", "manufacturer": "MISUMI", "catalogue": "High Torque Timing Pulleys 5GT / Super High Torque Timing Belts EV5GT",
+            "motor_pulley": "GPA16GT5090-A-P10", "output_pulley": "GPA24GT5090-A-P10", "belt": "GBN185EV5GT-090",
+            "pitch_mm": "5", "pitch_length_mm": "185", "tooth_count": "37", "width_mm": "9",
+            "published_mass_kg": "SELECTION REQUIRED", "candidate_axes": "ALL FOUR SHOULDER AXES",
+            "ratio_and_center": "16:24 / 1.5:1 / 42.017721668 mm nominal pitch center",
+            "official_url": "https://us.c.misumi-ec.com/book/usa_2019_msm_fa/pdf/1410.pdf ; https://us.misumi-ec.com/pdf/fa/2019/2019_US_1432.pdf",
+            "document_revision_or_date": "current official catalogues accessed 2026-08-16; revision/date not stated",
+            "selection_state": "EXACT CONFIGURABLE CANDIDATES; WRITTEN QUOTE, HUB/ADAPTER, CAPACITY, TENSION, GUARD, ALIGNMENT AND LIFE SELECTION REQUIRED",
+            "warning": WARNING,
+        },
         {
             "drive_id": "LD-15", "manufacturer": "MISUMI", "catalogue": "High Torque Timing Pulleys 5GT / Super High Torque Timing Belts EV5GT",
             "motor_pulley": "GPA20GT5090-A-P10", "output_pulley": "GPA30GT5090-A-P12", "belt": "GBN225EV5GT-090",

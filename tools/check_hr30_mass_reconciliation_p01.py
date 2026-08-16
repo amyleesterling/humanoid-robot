@@ -68,7 +68,9 @@ def main() -> int:
         "INSTALLED EQUIPMENT / HARNESS PLANNING MASS": 58,
     }), "mass category population drift")
     actuator_rows = [row for row in items if row["category"] == "MANUFACTURER PUBLISHED ACTUATOR MASS"]
-    require(abs(sum(float(row["planning_candidate_mass_kg"]) for row in actuator_rows) - 2.609) < 1e-9, "actuator planning mass drift")
+    require(abs(sum(float(row["planning_candidate_mass_kg"]) for row in actuator_rows) - 2.443) < 1e-9, "actuator planning mass drift")
+    shoulder_rows = [row for row in actuator_rows if "SHOULDER" in row["item_id"]]
+    require(len(shoulder_rows) == 4 and all(row["candidate_material_or_model"] == "ROBOTIS XM430-W350-R" for row in shoulder_rows), "all-XM430 shoulder candidate mass not preserved")
     elbows = [row for row in actuator_rows if "ELBOW" in row["item_id"]]
     require(len(elbows) == 2 and all(row["candidate_material_or_model"] == "ROBOTIS XM430-W350-R" for row in elbows), "whole-body elbow XM430 candidate mass not preserved")
     bearing_rows = [row for row in items if "_BEARING_" in row["source_component"]]
@@ -101,17 +103,19 @@ def main() -> int:
         require(abs(actual - float(summary[key])) < 2e-9, f"summary category mismatch {category}")
     identified = sum(float(row["planning_candidate_mass_kg"]) for row in items)
     require(abs(identified - float(summary["planning_identified_candidate_mass_kg"])) < 2e-9, "identified subtotal mismatch")
-    require(11.45 < identified < 11.60, "installed-equipment/onboard-energy identified subtotal outside controlled P0.1 band")
+    require(11.30 < identified < 11.40, "installed-equipment/onboard-energy identified subtotal outside controlled P0.1 band")
     require(summary["located_joint_fastener_count"] == 156, "fastener count missing from mass summary")
-    require(summary["program_mass_target_status"].startswith("WITHIN P0.1 MAXIMUM") and 0.0 < summary["planning_margin_to_program_maximum_kg"] < 0.15, "narrow 12 kg P0.1 planning margin not disclosed")
-    require(-2.0 < summary["planning_margin_to_lightweight_stretch_kg"] < -1.8, "10 kg lightweight stretch miss not disclosed")
+    require(summary["program_mass_target_status"].startswith("WITHIN P0.1 MAXIMUM") and 0.20 < summary["planning_margin_to_program_maximum_kg"] < 0.35, "12 kg P0.1 planning margin not disclosed")
+    require(-1.80 < summary["planning_margin_to_lightweight_stretch_kg"] < -1.65, "10 kg lightweight stretch miss not disclosed")
     require(not any(summary["authority"].values()), "mass package authority overclaim")
     require(summary["configuration_mass_separation_present"], "mass configuration separation missing")
     require(summary["active_development_configuration"] == "HR30-TETHER-FIRST-P0.1", "active mass configuration drift")
     require(abs(float(summary["excluded_onboard_envelope_identified_mass_kg"]) - excluded_envelope_mass) < 2e-9, "excluded envelope mass summary drift")
     require(abs(float(summary["onboard_envelope_dynamics_planning_mass_kg"]) - float(summary["reconciled_dynamics_planning_mass_kg"])) < 2e-9, "onboard envelope dynamics alias drift")
-    require(10.3 < float(summary["active_tether_dynamics_planning_mass_kg"]) < 10.7, "active tether mass outside controlled P0.1 band")
-    require(1.3 < float(summary["active_tether_margin_to_program_maximum_kg"]) < 1.7, "active tether margin outside controlled P0.1 band")
+    require(10.2 < float(summary["active_tether_dynamics_planning_mass_kg"]) < 10.4, "active tether mass outside controlled P0.1 band")
+    require(1.65 < float(summary["active_tether_margin_to_program_maximum_kg"]) < 1.80, "active tether margin outside controlled P0.1 band")
+    arm_allocation = next(row for row in rows("mass-allocation-register.csv") if row["assembly"] == "two arms and hands")
+    require("1.914" in arm_allocation["cad_mass_kg"] and "WITHIN MAXIMUM" in arm_allocation["status"], "bilateral arm/hand mass closure missing")
 
     decisions = rows("lightweight-architecture-register.csv")
     require(len(decisions) == 10 and {row["decision_id"] for row in decisions} >= {"HR30-LW-001", "HR30-LW-004", "HR30-LW-005", "HR30-LW-007", "HR30-LW-008", "HR30-LW-009", "HR30-LW-TOTAL"}, "lightweight architecture decision set incomplete")

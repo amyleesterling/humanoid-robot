@@ -265,7 +265,7 @@ def write_budgets_and_bom() -> None:
     power = [
         ("8 hip/knee actuators", "ACTUATOR", 14.8, 64, 320, "simultaneous stall prohibited; measured gait duty required"),
         ("4 reduced ankle actuators", "ACTUATOR", 14.8, 22, 112, "XM430 candidate; reduction, continuous duty and measured gait proof required"),
-        ("waist + shoulder pitch + elbows/shoulder roll", "ACTUATOR", 14.8, 31, 155, "mixed XM540/XM430 candidate operating estimate; limits unverified"),
+        ("waist + shoulders + elbows", "ACTUATOR", 14.8, 31, 155, "XM540 waist plus reduced XM430 shoulder/elbow candidate operating estimate; limits unverified"),
         ("wrists + grippers", "ACTUATOR", 12.0, 8, 32, "XC330 candidates; grip-force and duty-cycle proof required"),
         ("head pan/tilt", "ACTUATOR", 14.8, 2, 8, "candidate operating estimate"),
         ("Raspberry Pi 5 compute", "COMPUTE", 5.1, 18, 27, "official 27 W supply envelope is not installed consumption evidence"),
@@ -317,8 +317,8 @@ def write_budgets_and_bom() -> None:
 
     bom = [
         ("HR30-BOM-001", "hip/knee actuator", "ROBOTIS", "XH540-W270-R evaluation candidate", 8, 525),
-        ("HR30-BOM-002", "waist/shoulder-pitch actuator", "ROBOTIS", "XM540-W270-R candidate", 3, 355),
-        ("HR30-BOM-003", "shoulder-roll/elbow/ankle actuator", "ROBOTIS", "XM430-W350-R candidate", 8, 250),
+        ("HR30-BOM-002", "waist-yaw actuator", "ROBOTIS", "XM540-W270-R candidate", 1, 355),
+        ("HR30-BOM-003", "shoulder/elbow/ankle actuator", "ROBOTIS", "XM430-W350-R candidate", 10, 250),
         ("HR30-BOM-004", "head/gripper/wrist actuator", "ROBOTIS", "XC330-T288-T candidate", 6, 105),
         ("HR30-BOM-005", "main compute", "Raspberry Pi", "Raspberry Pi 5 8GB SC1112 candidate", 1, 125),
         ("HR30-BOM-006", "compute cooling", "Raspberry Pi", "Active Cooler SC1148 candidate", 1, 12),

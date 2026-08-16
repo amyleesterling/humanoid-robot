@@ -17,7 +17,11 @@ P0.1 now also includes floating-base 25-DOF URDF and MJCF models, a historical 9
 P0.1 now includes an editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable body panels, both seventeen-part custom gripper mechanisms, and twelve segregated harness corridors. Separate neck data and actuator-power branches prevent the head actuators from borrowing the data-only corridor. The current mass candidate uses 1.5 mm limb/foot panels and 1.6 mm torso/pelvis/head shells; ribs, print/process qualification and impact stiffness remain open. The CAD density screen is 1.761 kg for fixed/mechanism parts and 0.542 kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; neither they nor the historical 9.63 kg allocation establish whole-robot mass closure. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
 ## Whole-body mass reconciliation
 
-The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 98 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 156 located screw candidates, 10 catalogue belt candidates and 58 located equipment/harness/contact items. The active tether-first dynamics model is 10.465 kg with neutral COM Z=0.346 m and 1.535 kg margin to 12 kg. The separate onboard-envelope model is 11.930 kg and includes 1.357 kg for the rejected direct-source pack envelope, cassette and unselected protection allowance. It is packaging evidence, not an installed energy configuration. Exact protection, received masses and physical properties remain open.
+The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 98 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 156 located screw candidates, 10 catalogue belt candidates and 58 located equipment/harness/contact items. The active tether-first dynamics model is 10.266 kg with neutral COM Z=0.342 m and 1.734 kg margin to 12 kg. The separate onboard-envelope model is 11.731 kg and includes 1.357 kg for the rejected direct-source pack envelope, cassette and unselected protection allowance. It is packaging evidence, not an installed energy configuration. Exact protection, received masses and physical properties remain open.
+## Installed equipment layout
+
+The former empty torso, pelvis, head and foot reservations now contain 58 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.460 kg. Five routed 124 x 45 mm branch-PDU instances are now visibly installed in the pelvis, torso and both thighs. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+
 ## Located joint fastener candidates
 
 The whole-body joint carriers now contain 156 explicit M3/M4/M5 socket-head geometry candidates across 39 plates. Every screw axis is generated from the same joint datum and carrier pattern as the body CAD. The 0.554 kg generic-steel screen is included in mass reconciliation, but exact products, threads, tapped members, torque, preload, locking, access and physical proof remain open.
@@ -40,7 +44,7 @@ The web-first interface atlas now consolidates the actual 12 build modules, all 
 
 ## Whole-body joint-load architecture
 
-All 25 axes now have a reproducible static load screen tied to the current URDF mass tree, the 100 g handoff payload and explicit single-support COM-offset cases. The elbows and shoulder-roll axes use 82 g XM430 candidates; the wrists use XC330 candidates; the ankles use reduced XM430 candidates; and the knees reserve 2.0:1 reductions. Published stall values remain momentary endpoints only; continuous torque, belt capacity, thermal behavior, dynamic gait loads and physical correlation are open.
+All 25 axes now have a reproducible static load screen tied to the current URDF mass tree, the 100 g handoff payload and explicit single-support COM-offset cases. All shoulder axes and both elbows use 82 g XM430 candidates; the shoulders use 1.5:1 reductions, the wrists use XC330 candidates, the ankles use reduced XM430 candidates, and the knees use 2.5:1 reductions. Published stall values remain momentary endpoints only; continuous torque, belt capacity, thermal behavior, dynamic gait loads and physical correlation are open.
 <!-- HR30-CARRIERS-P01-START -->
 ## Physical actuator-interface carriers
 
@@ -77,7 +81,7 @@ The [interactive physical harness guide](harness/physical-p0.1/index.html) trans
 All 62 route centerlines now exist as named editable STEP solids and one interactive GLB in a recognizable 762 mm body context. The display rods are centerline references only; they do not release cable OD, bundle clearance, bend radius, cut length, or retention.
 
 The P0.1 split-harness candidate uses 25 individual positive/return power pairs and eight serial data chains. Incoming actuator housings combine the individual pair with data; outgoing inter-actuator housings populate data contacts only and leave GND/VDD cavities empty. The eight bus assembly drawings and 25 contact maps are construction candidates, not a released cable set. Protection, conductor sizing, crimp process qualification, retention, flex-life, EMC, and physical validation remain open.
-
+<!-- HR30-GRIPPERS-P01-README-START -->
 ## Detailed bilateral hand mechanisms
 
 The [detailed gripper package](grippers-p0.1/index.html) contains two editable 18-part symmetric rack-and-pinion assemblies. Each now uses a project-owned 20-degree, module-0.5 involute pinion and matching racks with a 0.08 mm nominal total tangential-backlash candidate. The OPEN assembly rotates its pinion 148.969 degrees for the 13 mm rack displacement. CAD-derived states provide an 8–34 mm pad gap over 26 mm total coupled stroke. Manufactured profile tolerance, fits, materials, exact actuator-horn adapter, calibration, sensing, pinch proof, endurance, DFM/FAI and physical validation remain open.
@@ -88,15 +92,6 @@ The [detailed gripper package](grippers-p0.1/index.html) contains two editable 1
 
 The [leg-drivetrain package](leg-drivetrain-p0.1/index.html) assigns every one of the ten belt-reduced leg axes to four editable 5GT/EV5GT modules. The knees now use a distinct 16:40, 2.5:1 XH540 module with a 10 mm horn-adapter stub; the ankles retain the separate 8 mm version. MISUMI 16/20/30/40-tooth P-bore-plus-tap pulley candidates, 225/250/255 mm by 9 mm belt candidates, solved 49.359/49.965/51.456 mm pitch centers and ROBOTIS horn-family boundaries replace the former ratio-only placeholders. Capacity, material, fits, tolerances, fasteners, tensioning, guarding and physical proof remain open.
 <!-- HR30-LEG-DRIVETRAIN-P01-README-END -->
-
-
-<!-- HR30-TRANSMISSION-CLOSURE-P01-README-START -->
-## Whole-body transmission closure
-
-The [transmission closure guide](transmission-closure-p0.1/index.html) maps all 39 smooth-pulley or generic-coupler predecessor placeholders to concrete successors. Twenty leg pulleys were already superseded by installed MISUMI candidates, two gripper couplers by the detailed rack-and-pinion hands, eight shoulder pulley positions now use a 20:20 5GT / 185 mm belt candidate, and nine direct axes now use four editable flanged blind-bore split-clamp adapter families. The successor whole-body STEP/GLB also corrects the wrist vendor geometry to XC330. Material, fits, retention, capacity, DFM, FAI and physical proof remain open.
-<!-- HR30-TRANSMISSION-CLOSURE-P01-README-END -->
-
-
 <!-- HR30-LEG-ADAPTERS-P01-README-START -->
 ## Dimensioned leg-drive adapters
 
@@ -107,11 +102,15 @@ The [leg-drive adapter guide](leg-drivetrain-adapters-p0.1/index.html) adds thre
 
 The [installed drivetrain guide](leg-drivetrain-installation-p0.1/index.html) replaces ten generic pulley/belt/motor placeholders in a derived complete humanoid assembly. Exact candidate P-bore pulleys, belts, HN12/HN13 horns, shifted manufacturer actuators, project motor adapters, shouldered output shafts, capture washers and guard envelopes occupy controlled external drive planes. All 45 inter-drive pairs have zero nominal common volume. Motion sweep, material, fits, tolerances, fasteners, cable/cover clearance, capacity and physical proof remain open.
 <!-- HR30-INSTALLED-LEG-DRIVES-P01-README-END -->
+<!-- HR30-TRANSMISSION-CLOSURE-P01-README-START -->
+## Whole-body transmission closure
 
+The [transmission closure guide](transmission-closure-p0.1/index.html) maps all 39 smooth-pulley or generic-coupler predecessor placeholders to concrete successors. Twenty leg pulleys were already superseded by installed MISUMI candidates, two gripper couplers by the detailed rack-and-pinion hands, eight shoulder pulley positions now use a 16:24 5GT / 185 mm belt candidate, and nine direct axes now use four editable flanged blind-bore split-clamp adapter families. The successor whole-body STEP/GLB also corrects the wrist vendor geometry to XC330. Material, fits, retention, capacity, DFM, FAI and physical proof remain open.
+<!-- HR30-TRANSMISSION-CLOSURE-P01-README-END -->
 <!-- HR30-HARNESS-CURRENT-BINDING-P01-README-START -->
 ## Harness/current-policy reconciliation
 
-The [harness/current-policy guide](harness/current-policy-binding-p0.1/index.html) binds all 25 individual actuator power pairs to the candidate Current Limit register values and their geometry-derived planning lengths. It separates the **76.08 A** arithmetic sum of published momentary stall endpoints from the **47.678 A** arithmetic sum of candidate internal limits. Neither number is normal RMS demand, a conductor rating, a fuse value, or permission to connect power. Conductors, protection, voltage drop, temperature rise, duty, regeneration, received connectors and physical test evidence remain open.
+The [harness/current-policy guide](harness/current-policy-binding-p0.1/index.html) binds all 25 individual actuator power pairs to the candidate Current Limit register values and their geometry-derived planning lengths. It separates the **71.88 A** arithmetic sum of published momentary stall endpoints from the **46.678 A** arithmetic sum of candidate internal limits. Neither number is normal RMS demand, a conductor rating, a fuse value, or permission to connect power. Conductors, protection, voltage drop, temperature rise, duty, regeneration, received connectors and physical test evidence remain open.
 <!-- HR30-HARNESS-CURRENT-BINDING-P01-README-END -->
 <!-- HR30-CURRENT-CONSTRAINED-P01-README-START -->
 ## Current-constrained whole-body actuation
@@ -136,9 +135,9 @@ The [joint-hardware manufacturing guide](joint-hardware-manufacturing-p0.1/index
 
 This corrects the manufacturing-universe boundary: the 98 body/frame/hand parts were never the complete robot. Joint fits, shoulders, retention, toothed pulley products, actuator adapters, materials, tolerances, DFM, FAI and structural proof remain open.
 
-## Installed equipment layout
+## Joint-hardware successor reconciliation
 
-The former empty torso, pelvis, head and foot reservations now contain 58 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.460 kg. Five routed 124 x 45 mm branch-PDU instances are now visibly installed in the pelvis, torso and both thighs. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+The [successor reconciliation guide](joint-hardware-successor-reconciliation-p0.1/index.html) establishes one manufacturing truth for the 39 legacy pulley/coupler envelopes. All are superseded and mapped to 28 catalogue pulley positions, nine direct-adapter axes or two detailed hand mechanisms. Zero legacy envelopes remain authoritative or unmapped, but all successor selection, release and physical validation gates remain open.
 
 <!-- HR30-AXIS-COMMISSION-START -->
 ## One-axis first-power station
@@ -157,7 +156,3 @@ The one-axis station now includes an assembly-controlled two-wire source harness
 
 The whole-body commissioning path now includes exact-envelope, horn-free output guards for all four candidate actuator models and a single-ID Protocol 2.0 inspector with no device-write API. Physical fit, fixture retention, software approval and all connection/powered-test/motion/energization authority remain open.
 <!-- NO-MOTION-P01 END -->
-
-## Joint-hardware successor reconciliation
-
-The [successor reconciliation guide](joint-hardware-successor-reconciliation-p0.1/index.html) establishes one manufacturing truth for the 39 legacy pulley/coupler envelopes. All are superseded and mapped to 28 catalogue pulley positions, nine direct-adapter axes or two detailed hand mechanisms. Zero legacy envelopes remain authoritative or unmapped, but all successor selection, release and physical validation gates remain open.

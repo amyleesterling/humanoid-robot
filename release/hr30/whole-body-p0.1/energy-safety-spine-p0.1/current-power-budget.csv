@@ -1,7 +1,7 @@
 load,domain,source_budget_voltage,operating_w,short_peak_w,equivalent_at_12v_operating_a,equivalent_at_12v_peak_a,boundary,authority
 8 hip/knee actuators,ACTUATOR,14.8,64.0,320.0,5.333,26.667,simultaneous stall prohibited; measured gait duty required,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 4 reduced ankle actuators,ACTUATOR,14.8,22.0,112.0,1.833,9.333,"XM430 candidate; reduction, continuous duty and measured gait proof required","NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
-waist + shoulder pitch + elbows/shoulder roll,ACTUATOR,14.8,31.0,155.0,2.583,12.917,mixed XM540/XM430 candidate operating estimate; limits unverified,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+waist + shoulders + elbows,ACTUATOR,14.8,31.0,155.0,2.583,12.917,XM540 waist plus reduced XM430 shoulder/elbow candidate operating estimate; limits unverified,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 wrists + grippers,ACTUATOR,12.0,8.0,32.0,0.667,2.667,XC330 candidates; grip-force and duty-cycle proof required,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 head pan/tilt,ACTUATOR,14.8,2.0,8.0,0.167,0.667,candidate operating estimate,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 Raspberry Pi 5 compute,COMPUTE,5.1,18.0,27.0,1.500,2.250,official 27 W supply envelope is not installed consumption evidence,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"

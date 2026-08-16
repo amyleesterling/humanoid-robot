@@ -44,9 +44,9 @@ def main() -> int:
     source_by_model = {row["model"]: row for row in sources}
     require(all("STALL TORQUE IS MOMENTARY" in row["manufacturer_caveat"] for row in sources), "stall warning missing")
     transmissions = rows("transmission-candidate-source-register.csv")
-    require(len(transmissions) == 4 and {row["drive_id"] for row in transmissions} == {"LD-15", "LD-20", "LD-25K", "LD-25"}, "MISUMI transmission candidate source set mismatch")
-    require({row["belt"] for row in transmissions} == {"GBN225EV5GT-090", "GBN255EV5GT-090", "GBN250EV5GT-090"}, "exact EV5GT belt candidate set drift")
-    require({row["motor_pulley"] for row in transmissions} == {"GPA16GT5090-A-P8", "GPA16GT5090-A-P10", "GPA20GT5090-A-P10"} and {row["output_pulley"] for row in transmissions} == {"GPA30GT5090-A-P12", "GPA40GT5090-A-P12"}, "exact 5GT pulley candidate set drift")
+    require(len(transmissions) == 5 and {row["drive_id"] for row in transmissions} == {"SD-15S", "LD-15", "LD-20", "LD-25K", "LD-25"}, "MISUMI transmission candidate source set mismatch")
+    require({row["belt"] for row in transmissions} == {"GBN185EV5GT-090", "GBN225EV5GT-090", "GBN255EV5GT-090", "GBN250EV5GT-090"}, "exact EV5GT belt candidate set drift")
+    require({row["motor_pulley"] for row in transmissions} == {"GPA16GT5090-A-P8", "GPA16GT5090-A-P10", "GPA20GT5090-A-P10"} and {row["output_pulley"] for row in transmissions} == {"GPA24GT5090-A-P10", "GPA30GT5090-A-P12", "GPA40GT5090-A-P12"}, "exact 5GT pulley candidate set drift")
     require(all(row["published_mass_kg"] == "SELECTION REQUIRED" and "misumi" in row["official_url"].lower() and "WRITTEN QUOTE" in row["selection_state"] for row in transmissions), "transmission source/selection boundary missing")
     for row in load:
         require(row["candidate_actuator"] in source_by_model, f"unknown actuator {row['axis_id']}")
@@ -64,11 +64,12 @@ def main() -> int:
     leg = [row for row in load if row["axis_id"].startswith(("L_HIP", "L_KNEE", "L_ANKLE", "R_HIP", "R_KNEE", "R_ANKLE"))]
     require(len(leg) == 12 and sum(row["support_case_nm"] != "N/A" for row in leg) == 10, "leg support screen population mismatch")
     require(all(row["candidate_actuator"] == "ROBOTIS XC330-T288-T" for row in load if "WRIST" in row["axis_id"]), "wrist XC330 load architecture drift")
-    require(all(row["candidate_actuator"] == "ROBOTIS XM430-W350-R" for row in load if "SHOULDER_ROLL" in row["axis_id"]), "shoulder-roll XM430 load architecture drift")
+    shoulders = [row for row in load if "SHOULDER_" in row["axis_id"]]
+    require(len(shoulders) == 4 and all(row["candidate_actuator"] == "ROBOTIS XM430-W350-R" and float(row["candidate_ratio"]) == 1.5 for row in shoulders), "reduced all-XM430 shoulder load architecture drift")
     require(all(row["candidate_actuator"] == "ROBOTIS XM430-W350-R" for row in load if "ANKLE" in row["axis_id"]), "ankle XM430 load architecture drift")
     require(all(float(row["candidate_ratio"]) == 2.5 for row in load if "KNEE" in row["axis_id"]), "2.5:1 knee load architecture drift")
     status = json.loads((SRC / "joint-load-architecture-status.json").read_text(encoding="utf-8"))
-    require(status["axis_count"] == 25 and status["elbow_xm430_candidate_retained"] and status["wrist_xc330_candidate_retained"] and status["ankle_xm430_reduced_candidate_retained"] and status["knee_ratio"] == 2.5, "status population mismatch")
+    require(status["axis_count"] == 25 and status["elbow_xm430_candidate_retained"] and status["all_shoulder_axes_xm430_reduced_candidate_retained"] and status["wrist_xc330_candidate_retained"] and status["ankle_xm430_reduced_candidate_retained"] and status["knee_ratio"] == 2.5, "status population mismatch")
     require(not any(status[key] for key in ("published_stall_endpoint_used_as_continuous_rating", "continuous_torque_validated", "dynamic_gait_loads_validated", "actuator_selection_released", "procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "status overclaim")
     require(sha(SRC / "joint-load-architecture-source.py") == sha(ROOT / "tools" / "generate_hr30_joint_load_architecture_p01.py"), "generator snapshot drift")
     page = (SRC / "index.html").read_text(encoding="utf-8")

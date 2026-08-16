@@ -18,7 +18,7 @@
   "serial_data_links": 25,
   "individual_power_pairs": 25,
   "data_only_outgoing_connectors": 17,
-  "candidate_12v_stall_endpoint_sum_a": 76.08,
+  "candidate_12v_stall_endpoint_sum_a": 71.88,
   "topology": "25 individual positive/return power pairs / 8 serial data-only trunks / GND and VDD cavities empty in every inter-actuator outgoing connector",
   "split_harness_candidate_defined": true,
   "data_star_topology_rejected": true,

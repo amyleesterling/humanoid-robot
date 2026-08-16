@@ -52,8 +52,8 @@ def main() -> int:
     need(len(direct) == 9 and len({row["axis_id"] for row in direct}) == 9, "direct allocation incomplete")
     need({row["adapter_id"] for row in direct} == {"DA-XC330-S6-L36","DA-HN12-S10-L51","DA-HN13-S17-L43","DA-HN13-S12-L61"}, "direct family set drift")
     shoulder = rows(OUT / "shoulder-drive-register.csv")
-    need(len(shoulder) == 4 and all(row["motor_pulley"] == row["output_pulley"] == "GPA20GT5090-A-P10" for row in shoulder), "shoulder pulley candidate drift")
-    need(all(row["belt"] == "GBN185EV5GT-090" and row["belt_teeth"] == "37" and abs(float(row["solved_pitch_center_distance_mm"]) - 42.5) < 1e-9 and abs(float(row["pitch_length_check_mm"]) - 185.0) < 1e-9 for row in shoulder), "shoulder belt geometry drift")
+    need(len(shoulder) == 4 and all(row["motor_pulley"] == "GPA16GT5090-A-P10" and row["output_pulley"] == "GPA24GT5090-A-P10" and row["actuator"] == "XM430-W350-R" for row in shoulder), "shoulder pulley/actuator candidate drift")
+    need(all(row["belt"] == "GBN185EV5GT-090" and row["belt_teeth"] == "37" and row["teeth_ratio"] == "16:24 / 1.5:1" and abs(float(row["solved_pitch_center_distance_mm"]) - 42.017722) < 1e-6 and abs(float(row["pitch_length_check_mm"]) - 185.0) < 1e-9 for row in shoulder), "shoulder belt geometry drift")
 
     transforms = rows(WHOLE / "vendor-actuator-transform-register.csv")
     wrist = [row for row in transforms if "WRIST" in row["axis_id"]]

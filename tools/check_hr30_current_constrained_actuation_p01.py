@@ -89,7 +89,9 @@ def main() -> int:
     for row in buses:
         need(int(row["axis_count"]) == counts[row["bus_id"]] and abs(float(row["simultaneous_candidate_cap_a"]) - sums[row["bus_id"]]) < 1e-6, f"bus current sum drift {row['bus_id']}")
         need(row["normal_rms_demand_a"] == row["regenerative_return_a"] == "SELECTION REQUIRED" and "NOT PDU" in row["boundary"], f"bus boundary overclaim {row['bus_id']}")
-    need(abs(sum(sums.values()) - 47.67847) < 1e-6, "whole-body simultaneous cap sum drift")
+    need(abs(sum(sums.values()) - 46.67779) < 1e-6, "whole-body simultaneous cap sum drift")
+    shoulders = [row for row in axis if "SHOULDER_" in row["axis_id"]]
+    need(len(shoulders) == 4 and all(row["actuator_model"] == "ROBOTIS XM430-W350-R" and float(row["transmission_ratio"]) == 1.5 and row["screen_result"] == "PASS" for row in shoulders), "reduced all-XM430 shoulder current policy missing")
 
     status = json.loads((SRC / "status.json").read_text(encoding="utf-8"))
     need((status["axis_count"], status["bus_count"], status["model_family_count"], status["nonzero_static_screen_pass_count"], status["static_screen_not_applicable_count"]) == (25, 8, 4, 19, 6), "status count drift")

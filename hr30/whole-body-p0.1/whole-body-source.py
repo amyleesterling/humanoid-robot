@@ -227,7 +227,7 @@ def vendor_actuator_to_axis(shape: cq.Shape, center: tuple[float, float, float],
 def vendor_source_for_axis(axis_id: str) -> str:
     if axis_id.startswith("HEAD_") or "GRIPPER" in axis_id or "WRIST" in axis_id:
         return "ROBOTIS-XC330"
-    if any(token in axis_id for token in ("ELBOW", "ANKLE_", "SHOULDER_ROLL")):
+    if any(token in axis_id for token in ("ELBOW", "ANKLE_", "SHOULDER_")):
         return "ROBOTIS-X430"
     return "ROBOTIS-540"
 
@@ -356,10 +356,10 @@ JOINT_MODULE_FAMILIES = {
         "transmission": "symmetric rack/pinion or tendon coupling", "ratio": "SELECTION REQUIRED", "motor_offset": 0.0, "cable_d": 6.0,
     },
     "JMF-03-SHOULDER-GIMBAL": {
-        "role": "shared intersecting-axis shoulder gimbal",
-        "plate_w": 58.0, "plate_h": 64.0, "plate_t": 4.0, "pattern_x": 44.0, "pattern_y": 50.0, "hole_d": 4.5,
-        "shaft_d": 10.0, "bearing_od": 22.0, "bearing_w": 6.0, "bearing_id": "SKF-61900-2RS1", "span": 52.0, "body_w": 42.0, "body_h": 52.0, "body_d": 48.0,
-        "transmission": "two remote supported 20:20 5GT drives with GBN185EV5GT-090 belts sharing one gimbal housing", "ratio": "1.0:1 exact catalogue candidate", "motor_offset": 42.5, "output_pulley_d": 30.69, "motor_pulley_d": 30.69, "cable_d": 10.0,
+        "role": "shared intersecting-axis reduced shoulder gimbal",
+        "plate_w": 52.0, "plate_h": 56.0, "plate_t": 4.0, "pattern_x": 40.0, "pattern_y": 44.0, "hole_d": 4.5,
+        "shaft_d": 10.0, "bearing_od": 22.0, "bearing_w": 6.0, "bearing_id": "SKF-61900-2RS1", "span": 46.0, "body_w": 42.0, "body_h": 52.0, "body_d": 48.0,
+        "transmission": "two remote supported 16:24 5GT drives with GBN185EV5GT-090 belts sharing one compact XM430 gimbal housing", "ratio": "1.5:1 exact catalogue candidate", "motor_offset": 42.017721668, "output_pulley_d": 37.06, "motor_pulley_d": 24.32, "cable_d": 10.0,
     },
     "JMF-04-MEDIUM": {
         "role": "medium supported direct joint",
@@ -982,19 +982,12 @@ def main() -> int:
                 "10.0-14.8 V candidate domain",
                 "PROVISIONAL",
             )
-        elif "SHOULDER_ROLL" in axis_id:
+        elif "SHOULDER_" in axis_id:
             actuator, transmission, rail, disposition = (
                 "ROBOTIS XM430-W350-R candidate",
-                "remote/nested 1.0:1 supported gimbal output",
+                "remote 16:24 5GT / 1.5:1 supported gimbal output",
                 "10.0-14.8 V candidate domain",
-                "PROVISIONAL - WHOLE-BODY STATIC ENDPOINT SCREEN RETAINED; CONTINUOUS/DYNAMIC/THERMAL PROOF REQUIRED",
-            )
-        elif "SHOULDER_PITCH" in axis_id:
-            actuator, transmission, rail, disposition = (
-                "ROBOTIS XM540-W270-R candidate",
-                "remote 20:20 5GT drive candidate; dual-supported output",
-                "10.0-14.8 V candidate domain",
-                "PROVISIONAL - ARM MASS TARGET CURRENTLY FAILS",
+                "PROVISIONAL - BILATERAL ARM MASS SCREEN CLOSED BY SMALLER GIMBAL; CONTINUOUS/DYNAMIC/THERMAL PROOF REQUIRED",
             )
         elif "ELBOW" in axis_id:
             actuator, transmission, rail, disposition = (
