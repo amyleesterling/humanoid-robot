@@ -170,7 +170,8 @@ def integrate_root() -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     block = f'''{start}\n## Logic-only controller power kit\n\nThe [interactive logic-power guide](electrical/logic-power-kit-p0.1/index.html) selects a SIGLENT SPD3303X, the exact two-contact JST boundary, red/black Alpha Wire conductors and Pomona banana plugs. The cable is unbuilt; voltage/current/OCP limits, DC-reference approval and every physical test remain open. It grants no connection or powered-work authority.\n{end}\n'''
     marker = "<!-- HR30-STM32-BRINGUP-P01-README-START -->"
-    readme.write_text(text.replace(marker, block + marker), encoding="utf-8", newline="\n")
+    text = text.replace(marker, block + marker) if marker in text else text.rstrip() + "\n\n" + block
+    readme.write_text(text, encoding="utf-8", newline="\n")
     page_path = WHOLE / "index.html"
     text = page_path.read_text(encoding="utf-8")
     start, end = "<!-- HR30-LOGIC-POWER-KIT-P01-START -->", "<!-- HR30-LOGIC-POWER-KIT-P01-END -->"
@@ -178,7 +179,8 @@ def integrate_root() -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     section = f'''{start}<section id="logic-power-kit"><h2>The controller now has a buildable logic-power fixture</h2><div class="grid"><article class="card"><div class="metric">8</div><p>exact or controlled candidate line items</p></article><article class="card"><div class="metric">2</div><p>mapped power contacts</p></article><article class="card hold"><div class="metric">0</div><p>built cables or powered tests</p></article></div><p><a href="electrical/logic-power-kit-p0.1/index.html">Open the interactive logic-power kit guide</a>. Setpoints, grounding and connection remain unreleased.</p></section>{end}'''
     marker = "<!-- HR30-STM32-BRINGUP-P01-START -->"
-    page_path.write_text(text.replace(marker, section + marker), encoding="utf-8", newline="\n")
+    text = text.replace(marker, section + marker) if marker in text else text.replace("</main>", section + "</main>", 1)
+    page_path.write_text(text, encoding="utf-8", newline="\n")
 
 
 def main() -> int:

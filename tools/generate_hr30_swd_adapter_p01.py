@@ -467,9 +467,16 @@ def integrate_whole_body() -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     section = f'''{start}<section id="swd-adapter"><h2>The programming path now has a native adapter board</h2><div class="grid"><article class="card pass"><div class="metric">32 x 20</div><p>millimetre native two-layer KiCad adapter.</p></article><article class="card pass"><h3>ERC 0/0 &middot; DRC 0</h3><p>Exact STDC14-to-JDBG1 connectivity and routed board rules pass.</p></article><article class="card hold"><h3>Physical closure open</h3><p>The board and cable are unbuilt; wire selection, crimping, inspection and target supply remain open.</p></article></div><p><a href="electrical/swd-adapter-p0.1/index.html">Open the interactive SWD adapter guide</a>.</p></section>{end}'''
     marker = "<!-- HR30-STM32-BRINGUP-P01-END -->"
-    if marker not in text:
-        raise RuntimeError("STM32 bring-up web marker missing")
-    page.write_text(text.replace(marker, marker + section), encoding="utf-8")
+    if marker in text:
+        text = text.replace(marker, marker + section)
+    elif "</main>" in text:
+        # A clean dependency-order build creates the adapter before the
+        # bring-up package that consumes it.  Preserve that order without
+        # requiring a stale downstream marker from an earlier build.
+        text = text.replace("</main>", section + "</main>", 1)
+    else:
+        raise RuntimeError("whole-body web insertion boundary missing")
+    page.write_text(text, encoding="utf-8")
 
 
 def manifest_release() -> None:

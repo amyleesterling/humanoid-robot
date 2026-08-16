@@ -151,11 +151,10 @@ The [installed drivetrain guide](leg-drivetrain-installation-p0.1/index.html) re
 
 
 
-<!-- HR30-NO-MOTION-FW-P01-README-START -->
-## Deterministic no-motion firmware
 
-The [HR-30 no-motion firmware guide](firmware/hr30-motion-controller-p0.1/index.html) binds all 25 axes and eight buses to a compiled `FIRST_POWER_NO_MOTION` state machine. Every torque-enable, bus-transmit, precharge and action-ready output remains zero; all motion requests are rejected and STOP is a no-op. Two clean host builds and two clean freestanding STM32H743 builds are byte-identical, and the compiled core/MMIO vector suites pass. The target is unflashed; HIL, physical timing, reset-state proof and qualified approval remain open, so this creates no powered-work or motion authority.
-<!-- HR30-NO-MOTION-FW-P01-README-END -->
+
+
+
 
 
 
@@ -171,8 +170,18 @@ The [HR-30 no-motion firmware guide](firmware/hr30-motion-controller-p0.1/index.
 
 The [interactive logic-power guide](electrical/logic-power-kit-p0.1/index.html) selects a SIGLENT SPD3303X, the exact two-contact JST boundary, red/black Alpha Wire conductors and Pomona banana plugs. The cable is unbuilt; voltage/current/OCP limits, DC-reference approval and every physical test remain open. It grants no connection or powered-work authority.
 <!-- HR30-LOGIC-POWER-KIT-P01-README-END -->
+<!-- HR30-GROUNDING-REFERENCE-P01-README-START -->
+## Whole-robot grounding and DC-reference architecture
+
+The [interactive grounding guide](electrical/grounding-reference-architecture-p0.1/index.html) consolidates facility PE, the external panel, the SBS75G first-mate tether contact, every conductive robot module, DC return, control ground, shields and grounded test equipment into one candidate topology. It proposes one removable BR1 DC-return/PE bond at RB0 and **10 controlled bond records**. Conductor hardware, limits, measurements, jurisdiction and qualified approval remain open; it grants no work authority.
+<!-- HR30-GROUNDING-REFERENCE-P01-README-END -->
 
 
+<!-- HR30-NO-MOTION-FW-P01-README-START -->
+## Deterministic no-motion firmware
+
+The [HR-30 no-motion firmware guide](firmware/hr30-motion-controller-p0.1/index.html) binds all 25 axes and eight buses to a compiled `FIRST_POWER_NO_MOTION` state machine. Every torque-enable, bus-transmit, precharge and action-ready output remains zero; all motion requests are rejected and STOP is a no-op. Two clean host builds and two clean freestanding STM32H743 builds are byte-identical, and the compiled core/MMIO vector suites pass. The target is unflashed; HIL, physical timing, reset-state proof and qualified approval remain open, so this creates no powered-work or motion authority.
+<!-- HR30-NO-MOTION-FW-P01-README-END -->
 <!-- HR30-STM32-BRINGUP-P01-README-START -->
 ## STM32 no-actuator bring-up
 
