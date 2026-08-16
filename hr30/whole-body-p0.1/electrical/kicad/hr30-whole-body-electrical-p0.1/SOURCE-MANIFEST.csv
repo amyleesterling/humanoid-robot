@@ -1,10 +1,10 @@
 path,bytes,sha256
 01_energy_precharge_conversion.kicad_sch,52152,180c35b632832188a5d34c22772af7ab848eea05dfca8efa3d973ad7e850c337
 02_estop_permit_contactors.kicad_sch,51504,14581bac54c77f29e9fd08161240faf781d954f73842ea49221ef8b9ac0c0309
-03_compute_motion_watchdog.kicad_sch,74514,2cdd9877e19d08ca60e887c2eb304735809ba94955398dfbd5f2e42ec672af1f
-04_motion_controller_carrier_connectors.kicad_sch,44361,3bc36982ffc90907cbf2ad38d570d8391b21ab9a2c63b82ad40bb399b64a1dc5
-05_carrier_a_four_isolated_rs485.kicad_sch,123905,4dc2cb5d861bdb48dac97bf84062f6339ac6be393b640fffc52731e8a5bf685f
-06_carrier_b_waist_and_ttl.kicad_sch,87873,a34e96e738485a074d4b435d2c7573ba22ce410f37cf4f6b4042029457a5058f
+03_compute_motion_watchdog.kicad_sch,74514,e6f3dc1f11344f25daa524e97be31c7acf0fa6790641e4a2447c13ec220978c2
+04_motion_controller_carrier_connectors.kicad_sch,44361,8d8695828b1ec9290c617a923803a4b178454dd205257f1b426cde6dcf360756
+05_carrier_a_four_isolated_rs485.kicad_sch,123905,6ed26dba9ffb6de9d02e1b4c785b77c2b33272eee1a8dd3d79ac2931135abc94
+06_carrier_b_waist_and_ttl.kicad_sch,87873,9f6429be765d04b464222560cf2c3014795410278c52993fac7ac57aec124b3b
 07_left_leg_rs485.kicad_sch,92866,63b686c4920d3de9c3394e573088c16ec5e1dc5eabb67df6253a8c192a391064
 08_right_leg_rs485.kicad_sch,92867,466ce99e41ccdb553804831592c374f2de17229fa66edf4dabf747ddab485e3f
 09_left_arm_rs485.kicad_sch,52332,624429419398fb3ac4222465ec35e9eef218fa0ce6ad1a17a8c7dde2974d4073
@@ -18,39 +18,39 @@ path,bytes,sha256
 17_right_foot_load_sensing.kicad_sch,43452,8b1bbab371e6042c0e211dbf6fef41c8efd4ee388e8d2c9d26e1cff54f6e1a7c
 18_onboard_later_energy_evaluation.kicad_sch,24170,47cf5f8241fb0fd4b71a5e4fa0fcac199855d08e180f056dded6f35b59924889
 bom.csv,26844,7d7acb9aa578f709a80add654ca2eebd6f60bbd6896162d4e9ebceb4ed2b0452
-connector-schedule.csv,90880,cd8ef3f38e8011ded5a6cfdc92bcdcf2618a031ced3af5c771812bd195037c00
+connector-schedule.csv,90880,af27dc7553ff79f4e176084384e313a1b0c2a00bbec44ac39f016a1d9ea6db62
 electrical-status.json,1286,a7264ce1b4595db5119b873c0153a18854b2b0574cc62bb30d703ab76e5b3079
 hr30-whole-body-electrical-p0.1.kicad_pro,471,301e5f79803304b4f9479c1188531fbf3c542af0ae44b0e17532cf27aa7c04ff
 hr30-whole-body-electrical-p0.1.kicad_sch,13299,cefb15d2f34b97f40d96b8bcca2eb1fa2fa89a7f57d93d0c8a37ed7fb6f11f87
-hr30-whole-body-electrical-p0.1.kicad_sym,307929,05872786c0fadb078f4f39bf3bd569ec1606fdeb44dda8cee5b562070194bcd8
+hr30-whole-body-electrical-p0.1.kicad_sym,307929,3776fd2a44457198d13fe5299f37317a27a1adf5efdb6d4f3d3c6a6db63e913d
 index.html,13415,bbce214cf6f06b432d61c7c97237bdfcb225c36a4552f6857024ef78c3929d3f
-interface-carrier-pinout.csv,3558,c6b74fe47bebcc4026ed3a6e4eb44484d6a8fff57b3c55ad4be6b8a8320f4529
+interface-carrier-pinout.csv,3558,ba7961c7961415b3239ce47f6f354d9f5c193dde00a4425b5766703ca430347f
 interface-carrier-source-register.csv,2671,2495d535a105cde2e76a461f6f72ae3f9fe206e55989c3310327e48c896d1030
-native-kicad-source.py,71917,c657e1a8f599099fddd0edb27d9731017acb275090cdc79f11c8465475c82d1d
-net-schedule.csv,40814,b80e6a4176f5424418f0cde56ab262650c71cde52333f7fc8db72208ed877a5c
-"output/hr30-whole-body-electrical-p0.1-01 Tether-first energy, regulated rails and onboard-later boundary.svg",1261640,a66e689a14ee276ac690569410ec85ae72dbcb45227ea62c621a3ba73169f6a5
-"output/hr30-whole-body-electrical-p0.1-02 Dual-channel E-stop, monitored reset, permit and redundant interruption.svg",1204298,cc20a8d447ddfbb86f316fdf9636bd2db9db338fa11a4ce1e196fd9a54d626f7
-"output/hr30-whole-body-electrical-p0.1-03 Conversational compute, deterministic motion controller and watchdog.svg",1893641,d33bac28b8a965c421ae4afae0de0a6a23aad7f1e07f4333829697a3b6604dc3
-output/hr30-whole-body-electrical-p0.1-04 STM32H743 motion-controller power and carrier connectors.svg,1100528,0f219a952e7132bbeb88d6cd765c4c00b69cb31debe2a50f78dec028b8d9ddcb
-output/hr30-whole-body-electrical-p0.1-05 Carrier A - four isolated RS-485 channels.svg,3208509,7a6d4316467f81af2d2012019cc1590c4d41f031cd036af5e5bc5fbccea20148
-output/hr30-whole-body-electrical-p0.1-06 Carrier B - waist RS-485 and three translated TTL channels.svg,2000839,39127df567428013a41b1c5ae1067f5a7cc72a21378d9933b4bd8d48ec43385c
-output/hr30-whole-body-electrical-p0.1-07 Left-leg RS-485 data bus and individual feeds.svg,2122751,0d9cb704c2280a4a6dc0631b8bf82f1c1e1b518430d8cc20ee91aca93aa91ed7
-output/hr30-whole-body-electrical-p0.1-08 Right-leg RS-485 data bus and individual feeds.svg,2250388,de6a7f96c4ebd32798b35222e525744346de755777ec32e4e7e5bdc3d7f9f4f5
-output/hr30-whole-body-electrical-p0.1-09 Left proximal-arm RS-485 data bus and individual feeds.svg,1274690,299d9e56ace32c22b828cfb1931a9c548f1ce878e306bf97cf6461ea2c7d602e
-output/hr30-whole-body-electrical-p0.1-10 Right proximal-arm RS-485 data bus and individual feeds.svg,1295500,fad52017ee964d81de73b57c9e9556b146ced9218c549606bd7084990f4e5b7c
-output/hr30-whole-body-electrical-p0.1-11 Waist RS-485 data bus and individual feed.svg,758104,6a07d21fd7c3d9f97a14f4b80bd3a2bd23a486b0f593b6bab7bf0d061c4571fd
-output/hr30-whole-body-electrical-p0.1-12 Left wrist_gripper TTL data bus and individual feeds.svg,977804,78254c9a51f9eaabad9c69418a8ecc8c926aae304fff52f02fcbf6009b543e64
-output/hr30-whole-body-electrical-p0.1-13 Right wrist_gripper TTL data bus and individual feeds.svg,994860,29f844742ab8399c92d3847c206db1151866a6ca54c8cd2e69f483dcb559634c
-"output/hr30-whole-body-electrical-p0.1-14 Head TTL, cameras, face display, audio and cooling.svg",2204053,d99b1b84cd10ecfa2ea005e5ac73f0fb91dace3960737cdb3c32c3717f9fd92b
-output/hr30-whole-body-electrical-p0.1-15 Auxiliary conversion and pelvis inertial sensing.svg,566304,f87cac750872a23fed9ab4f59bde9e4d880903445d1432186ab1c18df2ab9c10
-output/hr30-whole-body-electrical-p0.1-16 Left foot four-point load sensing.svg,1032971,afa2fc375b0a59b40f03ceb707cb40ced286cadf71950dcf7f6d7ad2cf14e8a8
-output/hr30-whole-body-electrical-p0.1-17 Right foot four-point load sensing.svg,1025215,9edce7b2a85f938e06d08b28d85f1a84f14157f4ed9b883e086a5fa698dc5307
-output/hr30-whole-body-electrical-p0.1-18 Onboard-later isolated energy evaluation.svg,812261,7a3f75a3a63a9f58fdccb30e04d9b507c94e75dd40bbdcbb39439ab12de063ef
-output/hr30-whole-body-electrical-p0.1.svg,1000995,854fbacae6816a58814ad61e54658e97baf0c2000e2668356bc4219649c8666f
+native-kicad-source.py,72160,b647b2e8b85e546168f4b24fd97f534027650305e2ab84ebf83e6e3b47a6ff29
+net-schedule.csv,40814,60017f38971c19455f26e321f580e3379577193a09f012150671e717b48840f4
+"output/hr30-whole-body-electrical-p0.1-01 Tether-first energy, regulated rails and onboard-later boundary.svg",1261640,815e277cfbd1b458bf6555998b99f580870dcb1309525ab129332ca2a77b5a5c
+"output/hr30-whole-body-electrical-p0.1-02 Dual-channel E-stop, monitored reset, permit and redundant interruption.svg",1204298,fafbcdbdf2f9ef2b845b2521062d22427d40f26d78d76d075bcce07f9d003ea1
+"output/hr30-whole-body-electrical-p0.1-03 Conversational compute, deterministic motion controller and watchdog.svg",1897033,65d278c777aa53d55275985697ab15ffacc1685f7cca0d63c7ff98d203363ca4
+output/hr30-whole-body-electrical-p0.1-04 STM32H743 motion-controller power and carrier connectors.svg,1100528,928f5774bf4023c6fdc5e113c48bf30d367d8160f3c0335868afb1264fa67e6b
+output/hr30-whole-body-electrical-p0.1-05 Carrier A - four isolated RS-485 channels.svg,3208509,ecb8e90a96eb4cc3b10cef3540f80b1fbf9f11ef203ed162510de39f855de07e
+output/hr30-whole-body-electrical-p0.1-06 Carrier B - waist RS-485 and three translated TTL channels.svg,2000839,d94c47449ef6c64021c375e657e860953ce420f5714ac267df40b6ec4a917a58
+output/hr30-whole-body-electrical-p0.1-07 Left-leg RS-485 data bus and individual feeds.svg,2122751,ef12d2900f1d5c76eb0a13d0a90291f1f650e134048d98d3b828089e91e4b573
+output/hr30-whole-body-electrical-p0.1-08 Right-leg RS-485 data bus and individual feeds.svg,2250388,a752c44495ddaf2559979f77e9b2c1c0c5c91e90dcb93887de5c8c536544475c
+output/hr30-whole-body-electrical-p0.1-09 Left proximal-arm RS-485 data bus and individual feeds.svg,1274690,a36412786336732d116151a36469bf18644ffc450641d01dd847dd8cf597b1b3
+output/hr30-whole-body-electrical-p0.1-10 Right proximal-arm RS-485 data bus and individual feeds.svg,1295500,ecd1a28dcb296be629fca6d83dd2cc17a79bd5c398693ba04e92c0bcf07cec47
+output/hr30-whole-body-electrical-p0.1-11 Waist RS-485 data bus and individual feed.svg,758104,c5a30c09027fc0d2113c7f58086beac28f99ee3967b4eccfd26bf6a58668feef
+output/hr30-whole-body-electrical-p0.1-12 Left wrist_gripper TTL data bus and individual feeds.svg,977804,26b0452b73af9da97090c18de2fef768a61221020138be06a6c68f117bb309e3
+output/hr30-whole-body-electrical-p0.1-13 Right wrist_gripper TTL data bus and individual feeds.svg,994860,6f0b29c841312c802d9874153ae5fbcea9384730e310599cd7cb28f8abc76715
+"output/hr30-whole-body-electrical-p0.1-14 Head TTL, cameras, face display, audio and cooling.svg",2204053,744b279f17f39ca692b0725dd00702e0c69c7ee8093e3d66ddc9dbdfee351f03
+output/hr30-whole-body-electrical-p0.1-15 Auxiliary conversion and pelvis inertial sensing.svg,566304,4bcca5b66fe4412f39b85b8ff62529b0e132a4f4a3675862ee897ee458eec36b
+output/hr30-whole-body-electrical-p0.1-16 Left foot four-point load sensing.svg,1032971,a0de848ebe9dcb360295f7863f94f53e8ad276b7bac3ffd251d957b0e92e235f
+output/hr30-whole-body-electrical-p0.1-17 Right foot four-point load sensing.svg,1025215,08a2630971080fec50f1d989723e7f09b267a8be823c532f2f63165e647369bd
+output/hr30-whole-body-electrical-p0.1-18 Onboard-later isolated energy evaluation.svg,812261,260649b69d380a80ccf0229bb5a18c18c1f57362d79446baa53c5fbcf0c9584f
+output/hr30-whole-body-electrical-p0.1.svg,1000995,5dcc4946cad958be3e636831fc2fa8dbbb640a5ad7a967c595c26f4a5e53328b
 README.md,3896,9ad0f755d1dae4930faa47e37a8dbe93a89260d2505833e554df6f5b3cc5fc82
 sym-lib-table,190,fcdc903ab65ae05d44df8e51fe1041d07a718b2fe8b8872d0fe669c54750ac26
 unresolved-selections.csv,18505,320750e213821d7d5584047d13c41c277924ee1f7f06872e0cc1eae305ed87b1
-validation/hr30-whole-body-electrical-p0.1-erc.rpt,1643,00a83bedca31886d93bd8651e4abc713eeb9b460273b523af4f59a8c7bfef34d
-validation/hr30-whole-body-electrical-p0.1.net,614953,733a72419f049d7a1d03aa82ee3700b7f92254d2e8f20a2061e404f65642b2ae
-validation/kicad-cli.log,6833,8d08594356e0a4ddc746c12a92ddf406243f9e70b459974c522b00f0e9009231
-wire-number-table.csv,54210,d2436aa949de47943622bfb153a5cf1c5be11adb9f539bb82294bcf51a4f6c51
+validation/hr30-whole-body-electrical-p0.1-erc.rpt,1643,24057136611cc7d342a4da6fb5e967f475f8f9ffc25cdbecbe9c2c3b730cf83c
+validation/hr30-whole-body-electrical-p0.1.net,614953,a6eaa49b9f9903b08c7ea19ee8e8ffb924eece3b316259db6bb38ab814dde588
+validation/kicad-cli.log,6833,e933fa78705fd5bb4350332e23473c0b231ee767aa32e5c5a533f27c56b1c8e4
+wire-number-table.csv,54210,7128fcd03013f5d66d8944e1b9579ce4994b30cdbcea9678f422ec1f2ab8f900

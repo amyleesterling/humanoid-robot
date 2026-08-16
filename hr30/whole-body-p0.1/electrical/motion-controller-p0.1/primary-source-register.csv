@@ -1,0 +1,6 @@
+source_id,manufacturer,document,revision_or_date,accessed,url,verified_use
+ST-DS12110,STMicroelectronics,STM32H742xI/G and STM32H743xI/G datasheet,DS12110 Rev 11,2026-08-16,https://www.st.com/resource/en/datasheet/stm32h742bg.pdf,"STM32H743ZIT6 LQFP144 package pins used by power, SWD and eight UART groups; application review remains open"
+TI-SLVSAG7F,Texas Instruments,TPS6213x datasheet,SLVSAG7F Rev F; November 2021; package addendum 2026-01-08,2026-08-16,https://www.ti.com/lit/ds/symlink/tps62132.pdf,TPS62132 fixed 3.3 V; RGT16 pin functions and typical external values
+COILCRAFT-908-1,Coilcraft,XAL50xx shielded power inductors,Document 908-1; revised 2026-02-26,2026-08-16,https://www.coilcraft.com/getmedia/49bc46c8-4b2c-45b9-9b6c-2eaa235ea698/xal50xx.pdf,XAL5030-222MEC 2.2 uH candidate and footprint family
+JST-GH,JST,GH connector catalog,live official catalog; revision not stated,2026-08-16,https://www.jst-mfg.com/product/pdf/eng/eGH.pdf,BM15/BM08/BM05 board headers; HR-30 project-owned contact assignments
+JST-VH,JST,VH connector catalog,live official catalog; revision not stated,2026-08-16,https://www.jst-mfg.com/product/pdf/eng/eVH.pdf,B2P-VH-B two-circuit protected 5 V input header candidate

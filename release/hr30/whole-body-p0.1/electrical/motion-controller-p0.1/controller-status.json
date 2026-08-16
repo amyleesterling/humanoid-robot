@@ -1,0 +1,43 @@
+{
+  "identifier": "HR30-MOTION-CONTROLLER-P0.1",
+  "date": "2026-08-16",
+  "warning": "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION",
+  "native_kicad_schematic_sheet_count": 6,
+  "native_kicad_board": true,
+  "board_dimensions_mm": [
+    82,
+    42,
+    1.6
+  ],
+  "copper_layers": 6,
+  "component_count": 36,
+  "named_net_count": 45,
+  "routing_complete": false,
+  "unconnected_item_count": 2,
+  "erc_errors": 0,
+  "erc_warnings": 0,
+  "drc_violations": 112,
+  "drc_categories": {
+    "shorting_items": 38,
+    "tracks_crossing": 4,
+    "clearance": 7,
+    "hole_clearance": 3,
+    "courtyards_overlap": 9,
+    "npth_inside_courtyard": 3,
+    "solder_mask_bridge": 38,
+    "via_dangling": 4,
+    "hole_to_hole": 4,
+    "silk_over_copper": 2,
+    "unconnected_items": 2
+  },
+  "carrier_power_contact_mapping_reconciled": true,
+  "right_distal_uart_package_pin_defect_corrected": true,
+  "functional_safety_credit": false,
+  "fabrication_release": false,
+  "procurement_authority": false,
+  "assembly_authority": false,
+  "connection_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false
+}

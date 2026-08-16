@@ -63,6 +63,11 @@ STACKUP_LAYERS = (
 
 RS_BUSES = (("RS-LLEG", "A"), ("RS-RLEG", "A"), ("RS-LARM", "A"), ("RS-RARM", "A"), ("RS-WAIST", "B"))
 TTL_BUSES = (("TTL-LDIST", "B"), ("TTL-RDIST", "B"), ("TTL-HEAD", "B"))
+# Optional caller-owned reserved points.  The carrier generator leaves this
+# empty; other board generators may reserve future via locations without
+# inventing temporary components or copper.
+EXTRA_ROUTING_OBSTACLES: list[tuple[float, float, str]] = []
+ROUTER_PROGRESS = False
 
 
 @dataclass
@@ -396,7 +401,7 @@ def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> di
             return False
         return all(not (x0 <= x <= x1 and y0 <= y <= y1) for x0, x1, y0, y1 in isolation_barriers)
 
-    escape_obstacles = [(float(record["escape"][0]), float(record["escape"][1]), str(record["net"])) for record in pad_records]
+    escape_obstacles = [(float(record["escape"][0]), float(record["escape"][1]), str(record["net"])) for record in pad_records] + list(EXTRA_ROUTING_OBSTACLES)
     fanout_segments = [(tuple(map(float, record["point"])), tuple(map(float, record["escape"])), str(record["net"])) for record in pad_records]
 
     def cell_available(layer: int, cell: tuple[int, int], net_name: str, for_via: bool = False) -> bool:
@@ -485,6 +490,8 @@ def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> di
         key=lambda item: (0 if item[0] in {"CTRL_GND", "CTRL_3V3", "CTRL_5V"} else 1, -len(item[1]), item[0]),
     )
     for name, records in net_order:
+        if ROUTER_PROGRESS:
+            print(f"router net {name} pads={len(records)}", flush=True)
         width = 0.20 if name in {"CTRL_GND", "CTRL_3V3", "CTRL_5V"} or name.endswith(("_RET", "_VISOOUT", "_VISOIN", "_GND2")) else 0.15
         for record in records:
             px, py = map(float, record["point"]); ex, ey = map(float, record["escape"]); outer = int(record["outer"])

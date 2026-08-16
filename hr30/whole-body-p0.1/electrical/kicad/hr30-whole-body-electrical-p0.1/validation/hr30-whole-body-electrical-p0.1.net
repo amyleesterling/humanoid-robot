@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\kicad\\hr30-whole-body-electrical-p0.1\\hr30-whole-body-electrical-p0.1.kicad_sch")
-		(date "2026-08-16T01:16:52")
+		(date "2026-08-16T03:20:48")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR CONNECTION, FABRICATION, MOTION OR ENERGIZATION")
@@ -2570,13 +2570,13 @@
 					(name "A")
 					(pins
 						(pin
-							(num "63")
+							(num "60")
 						)
 						(pin
-							(num "61")
+							(num "58")
 						)
 						(pin
-							(num "62")
+							(num "59")
 						)
 					)
 				)
@@ -13155,17 +13155,17 @@
 			(pins
 				(pin
 					(num "1")
-					(name "CONTROL_5_V")
+					(name "CONTROL_GROUND")
 					(type "passive")
 				)
 				(pin
 					(num "2")
-					(name "CONTROL_3.3_V")
+					(name "CONTROL_5_V")
 					(type "passive")
 				)
 				(pin
 					(num "3")
-					(name "CONTROL_GROUND")
+					(name "CONTROL_3.3_V")
 					(type "passive")
 				)
 				(pin
@@ -13257,17 +13257,17 @@
 			(pins
 				(pin
 					(num "1")
-					(name "CONTROL_5_V")
+					(name "CONTROL_GROUND")
 					(type "passive")
 				)
 				(pin
 					(num "2")
-					(name "CONTROL_3.3_V")
+					(name "CONTROL_5_V")
 					(type "passive")
 				)
 				(pin
 					(num "3")
-					(name "CONTROL_GROUND")
+					(name "CONTROL_3.3_V")
 					(type "passive")
 				)
 				(pin
@@ -13359,17 +13359,17 @@
 			(pins
 				(pin
 					(num "1")
-					(name "CONTROL_5_V")
+					(name "CONTROL_GROUND")
 					(type "passive")
 				)
 				(pin
 					(num "2")
-					(name "CONTROL_3.3_V")
+					(name "CONTROL_5_V")
 					(type "passive")
 				)
 				(pin
 					(num "3")
-					(name "CONTROL_GROUND")
+					(name "CONTROL_3.3_V")
 					(type "passive")
 				)
 				(pin
@@ -13461,17 +13461,17 @@
 			(pins
 				(pin
 					(num "1")
-					(name "CONTROL_5_V")
+					(name "CONTROL_GROUND")
 					(type "passive")
 				)
 				(pin
 					(num "2")
-					(name "CONTROL_3.3_V")
+					(name "CONTROL_5_V")
 					(type "passive")
 				)
 				(pin
 					(num "3")
-					(name "CONTROL_GROUND")
+					(name "CONTROL_3.3_V")
 					(type "passive")
 				)
 				(pin
@@ -14935,17 +14935,17 @@
 			)
 			(pins
 				(pin
-					(num "61")
+					(num "58")
 					(name "PE7_AF7_RESERVED_/_NOT_USED_IN_P0.1_TTL_MODE")
 					(type "passive")
 				)
 				(pin
-					(num "62")
+					(num "59")
 					(name "PE8_AF7_HALF-DUPLEX_IO")
 					(type "passive")
 				)
 				(pin
-					(num "63")
+					(num "60")
 					(name "PE9_AF7_RTS/DE")
 					(type "passive")
 				)
@@ -17927,26 +17927,26 @@
 			)
 			(node
 				(ref "JCA1")
-				(pin "2")
-				(pinfunction "CONTROL_3.3_V_2")
+				(pin "3")
+				(pinfunction "CONTROL_3.3_V_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "JCB1")
-				(pin "2")
-				(pinfunction "CONTROL_3.3_V_2")
+				(pin "3")
+				(pinfunction "CONTROL_3.3_V_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "JMCU_A")
-				(pin "2")
-				(pinfunction "CONTROL_3.3_V_2")
+				(pin "3")
+				(pinfunction "CONTROL_3.3_V_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "JMCU_B")
-				(pin "2")
-				(pinfunction "CONTROL_3.3_V_2")
+				(pin "3")
+				(pinfunction "CONTROL_3.3_V_3")
 				(pintype "passive")
 			)
 			(node
@@ -18010,26 +18010,26 @@
 			)
 			(node
 				(ref "JCA1")
-				(pin "1")
-				(pinfunction "CONTROL_5_V_1")
+				(pin "2")
+				(pinfunction "CONTROL_5_V_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "JCB1")
-				(pin "1")
-				(pinfunction "CONTROL_5_V_1")
+				(pin "2")
+				(pinfunction "CONTROL_5_V_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "JMCU_A")
-				(pin "1")
-				(pinfunction "CONTROL_5_V_1")
+				(pin "2")
+				(pinfunction "CONTROL_5_V_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "JMCU_B")
-				(pin "1")
-				(pinfunction "CONTROL_5_V_1")
+				(pin "2")
+				(pinfunction "CONTROL_5_V_2")
 				(pintype "passive")
 			)
 			(node
@@ -18123,26 +18123,26 @@
 			)
 			(node
 				(ref "JCA1")
-				(pin "3")
-				(pinfunction "CONTROL_GROUND_3")
+				(pin "1")
+				(pinfunction "CONTROL_GROUND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "JCB1")
-				(pin "3")
-				(pinfunction "CONTROL_GROUND_3")
+				(pin "1")
+				(pinfunction "CONTROL_GROUND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "JMCU_A")
-				(pin "3")
-				(pinfunction "CONTROL_GROUND_3")
+				(pin "1")
+				(pinfunction "CONTROL_GROUND_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "JMCU_B")
-				(pin "3")
-				(pinfunction "CONTROL_GROUND_3")
+				(pin "1")
+				(pinfunction "CONTROL_GROUND_1")
 				(pintype "passive")
 			)
 			(node
@@ -21787,8 +21787,8 @@
 			)
 			(node
 				(ref "MCU_IO_TTL_RDIST")
-				(pin "63")
-				(pinfunction "PE9_AF7_RTS/DE_63")
+				(pin "60")
+				(pinfunction "PE9_AF7_RTS/DE_60")
 				(pintype "passive")
 			)
 		)
@@ -21816,8 +21816,8 @@
 			)
 			(node
 				(ref "MCU_IO_TTL_RDIST")
-				(pin "62")
-				(pinfunction "PE8_AF7_HALF-DUPLEX_IO_62")
+				(pin "59")
+				(pinfunction "PE8_AF7_HALF-DUPLEX_IO_59")
 				(pintype "passive")
 			)
 		)
@@ -22116,12 +22116,12 @@
 		)
 		(net
 			(code "176")
-			(name "unconnected-(MCU_IO_TTL_RDIST-PE7_AF7_RESERVED_{slash}_NOT_USED_IN_P0.1_TTL_MODE-Pad61)")
+			(name "unconnected-(MCU_IO_TTL_RDIST-PE7_AF7_RESERVED_{slash}_NOT_USED_IN_P0.1_TTL_MODE-Pad58)")
 			(class "Default")
 			(node
 				(ref "MCU_IO_TTL_RDIST")
-				(pin "61")
-				(pinfunction "PE7_AF7_RESERVED_/_NOT_USED_IN_P0.1_TTL_MODE_61")
+				(pin "58")
+				(pinfunction "PE7_AF7_RESERVED_/_NOT_USED_IN_P0.1_TTL_MODE_58")
 				(pintype "passive+no_connect")
 			)
 		)

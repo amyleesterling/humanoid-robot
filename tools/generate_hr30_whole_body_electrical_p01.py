@@ -50,7 +50,7 @@ UART_ALLOCATIONS = {
     "RS-RARM": {"carrier": "A", "uart": "USART6", "tx": ("PC6", "96", "AF7"), "rx": ("PC7", "97", "AF7"), "de": ("PG8", "93", "AF7")},
     "RS-WAIST": {"carrier": "B", "uart": "UART4", "tx": ("PC10", "111", "AF8"), "rx": ("PC11", "112", "AF8"), "de": ("PA15", "110", "AF8")},
     "TTL-LDIST": {"carrier": "B", "uart": "UART5", "tx": ("PC12", "113", "AF8"), "rx": ("PD2", "116", "AF8"), "de": ("PC8", "98", "AF8")},
-    "TTL-RDIST": {"carrier": "B", "uart": "UART7", "tx": ("PE8", "62", "AF7"), "rx": ("PE7", "61", "AF7"), "de": ("PE9", "63", "AF7")},
+    "TTL-RDIST": {"carrier": "B", "uart": "UART7", "tx": ("PE8", "59", "AF7"), "rx": ("PE7", "58", "AF7"), "de": ("PE9", "60", "AF7")},
     "TTL-HEAD": {"carrier": "B", "uart": "UART8", "tx": ("PE1", "142", "AF8"), "rx": ("PE0", "141", "AF8"), "de": ("PD15", "86", "AF8")},
 }
 
@@ -344,7 +344,10 @@ def build_sheets(model):
     sheets.append(s3)
 
     def carrier_connector_pins(carrier: str):
-        pins = [("1", "CONTROL 5 V", "CTRL_5V", "left"), ("2", "CONTROL 3.3 V", "CTRL_3V3", "left"), ("3", "CONTROL GROUND", "CTRL_GND", "left")]
+        # Project-owned internal interface, frozen to the already-routed Carrier A/B
+        # copper mapping.  This ordering is not inferred from JST: it is an HR-30
+        # P0.1 interface definition that both mating boards must implement.
+        pins = [("1", "CONTROL GROUND", "CTRL_GND", "left"), ("2", "CONTROL 5 V", "CTRL_5V", "left"), ("3", "CONTROL 3.3 V", "CTRL_3V3", "left")]
         if carrier == "A":
             order = ("RS-LLEG", "RS-RLEG", "RS-LARM", "RS-RARM")
             for base, bus_id in zip((4, 7, 10, 13), order):

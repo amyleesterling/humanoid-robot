@@ -33,12 +33,11 @@ PIPELINE = (
     "generate_hr30_joint_family_cad_p01.py",
     "generate_hr30_manufacturing_files_p01.py",
     "generate_hr30_actuator_interface_carriers_p01.py",
+    "generate_hr30_motion_controller_p01.py",
     "generate_hr30_actuator_branch_pdu_p01.py",
     "generate_hr30_energy_safety_spine_p01.py",
     "generate_hr30_tether_power_core_p01.py",
     "generate_hr30_whole_body_harness_p01.py",
-    "generate_hr30_physical_harness_p01.py",
-    "generate_hr30_assembly_guide_p01.py",
     "generate_hr30_detailed_grippers_p01.py",
     "generate_hr30_mass_reconciliation_p01.py",
     "generate_hr30_leg_drivetrain_p01.py",
@@ -48,6 +47,8 @@ PIPELINE = (
     "generate_hr30_joint_hardware_manufacturing_p01.py",
     "generate_hr30_transmission_closure_p01.py",
     "generate_hr30_current_constrained_actuation_p01.py",
+    "generate_hr30_physical_harness_p01.py",
+    "generate_hr30_assembly_guide_p01.py",
     "generate_hr30_harness_current_policy_binding_p01.py",
     "generate_hr30_joint_hardware_successor_reconciliation_p01.py",
     "generate_hr30_axis_commissioning_station_p01.py",
@@ -71,6 +72,7 @@ def main() -> int:
             raise FileNotFoundError(script)
         interpreter = KICAD_PYTHON if script_name in {
             "generate_hr30_actuator_interface_carriers_p01.py",
+            "generate_hr30_motion_controller_p01.py",
             "generate_hr30_actuator_branch_pdu_p01.py",
         } else Path(sys.executable)
         if not interpreter.is_file():

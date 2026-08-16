@@ -94,8 +94,8 @@ W3030,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_WAIST,112,PC11 AF8 RX,UART_
 W3031,03_compute_motion_watchdog.kicad_sch,MCU_IO_RS_WAIST,110,PA15 AF8 RTS/DE,UART_RS-WAIST_DIR
 W3032,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_LDIST,113,PC12 AF8 HALF-DUPLEX IO,UART_TTL-LDIST_TX
 W3033,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_LDIST,98,PC8 AF8 RTS/DE,UART_TTL-LDIST_DIR
-W3034,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_RDIST,62,PE8 AF7 HALF-DUPLEX IO,UART_TTL-RDIST_TX
-W3035,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_RDIST,63,PE9 AF7 RTS/DE,UART_TTL-RDIST_DIR
+W3034,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_RDIST,59,PE8 AF7 HALF-DUPLEX IO,UART_TTL-RDIST_TX
+W3035,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_RDIST,60,PE9 AF7 RTS/DE,UART_TTL-RDIST_DIR
 W3036,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_HEAD,142,PE1 AF8 HALF-DUPLEX IO,UART_TTL-HEAD_TX
 W3037,03_compute_motion_watchdog.kicad_sch,MCU_IO_TTL_HEAD,86,PD15 AF8 RTS/DE,UART_TTL-HEAD_DIR
 W4001,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-5V-IN,AUXILIARY 5 V INPUT,AUX_5V_SAFE
@@ -103,9 +103,9 @@ W4002,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-RET-IN,AUXILIAR
 W4003,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-5V,CONTROL 5 V,CTRL_5V
 W4004,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-3V3,CONTROL 3.3 V,CTRL_3V3
 W4005,04_motion_controller_carrier_connectors.kicad_sch,REG1,LOG-GND,CONTROL GROUND,CTRL_GND
-W4006,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,1,CONTROL 5 V,CTRL_5V
-W4007,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,2,CONTROL 3.3 V,CTRL_3V3
-W4008,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,3,CONTROL GROUND,CTRL_GND
+W4006,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,1,CONTROL GROUND,CTRL_GND
+W4007,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,2,CONTROL 5 V,CTRL_5V
+W4008,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,3,CONTROL 3.3 V,CTRL_3V3
 W4009,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,4,RS-LLEG TX,UART_RS-LLEG_TX
 W4010,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,5,RS-LLEG RX,UART_RS-LLEG_RX
 W4011,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,6,RS-LLEG DE,UART_RS-LLEG_DIR
@@ -118,9 +118,9 @@ W4017,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,12,RS-LARM DE,UAR
 W4018,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,13,RS-RARM TX,UART_RS-RARM_TX
 W4019,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,14,RS-RARM RX,UART_RS-RARM_RX
 W4020,04_motion_controller_carrier_connectors.kicad_sch,JMCU_A,15,RS-RARM DE,UART_RS-RARM_DIR
-W4021,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,1,CONTROL 5 V,CTRL_5V
-W4022,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,2,CONTROL 3.3 V,CTRL_3V3
-W4023,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,3,CONTROL GROUND,CTRL_GND
+W4021,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,1,CONTROL GROUND,CTRL_GND
+W4022,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,2,CONTROL 5 V,CTRL_5V
+W4023,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,3,CONTROL 3.3 V,CTRL_3V3
 W4024,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,4,RS-WAIST TX,UART_RS-WAIST_TX
 W4025,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,5,RS-WAIST RX,UART_RS-WAIST_RX
 W4026,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,6,RS-WAIST DE,UART_RS-WAIST_DIR
@@ -133,9 +133,9 @@ W4032,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,12,TTL-HEAD DIR,U
 W4033,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,13,RESERVED - NO CONNECTION,INTENTIONALLY_UNUSED_CARRIER_B_13
 W4034,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,14,RESERVED - NO CONNECTION,INTENTIONALLY_UNUSED_CARRIER_B_14
 W4035,04_motion_controller_carrier_connectors.kicad_sch,JMCU_B,15,RESERVED - NO CONNECTION,INTENTIONALLY_UNUSED_CARRIER_B_15
-W5001,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,1,CONTROL 5 V,CTRL_5V
-W5002,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,2,CONTROL 3.3 V,CTRL_3V3
-W5003,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,3,CONTROL GROUND,CTRL_GND
+W5001,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,1,CONTROL GROUND,CTRL_GND
+W5002,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,2,CONTROL 5 V,CTRL_5V
+W5003,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,3,CONTROL 3.3 V,CTRL_3V3
 W5004,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,4,RS-LLEG TX,UART_RS-LLEG_TX
 W5005,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,5,RS-LLEG RX,UART_RS-LLEG_RX
 W5006,05_carrier_a_four_isolated_rs485.kicad_sch,JCA1,6,RS-LLEG DE,UART_RS-LLEG_DIR
@@ -228,9 +228,9 @@ W5092,05_carrier_a_four_isolated_rs485.kicad_sch,ISO_RS_RARM,20,A RECEIVER NONIN
 W5093,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_RARM,1,DATA REFERENCE / GND,RS-RARM_RET
 W5094,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_RARM,2,DATA+,RS-RARM_DP
 W5095,05_carrier_a_four_isolated_rs485.kicad_sch,J_RS_RARM,3,DATA-,RS-RARM_DN
-W6001,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,1,CONTROL 5 V,CTRL_5V
-W6002,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,2,CONTROL 3.3 V,CTRL_3V3
-W6003,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,3,CONTROL GROUND,CTRL_GND
+W6001,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,1,CONTROL GROUND,CTRL_GND
+W6002,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,2,CONTROL 5 V,CTRL_5V
+W6003,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,3,CONTROL 3.3 V,CTRL_3V3
 W6004,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,4,RS-WAIST TX,UART_RS-WAIST_TX
 W6005,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,5,RS-WAIST RX,UART_RS-WAIST_RX
 W6006,06_carrier_b_waist_and_ttl.kicad_sch,JCB1,6,RS-WAIST DE,UART_RS-WAIST_DIR
