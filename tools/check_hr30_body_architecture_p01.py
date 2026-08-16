@@ -85,9 +85,9 @@ def main() -> int:
     require(checks["checks"]["shoulder_shell_target_met"], "shoulder shell target failed")
     require(checks["checks"]["hip_shell_target_met"], "hip shell target failed")
     require(checks["checks"]["foot_spacing_inside_walking_band"], "foot spacing gate failed")
-    require(not checks["checks"]["straight_arm_reach_target_met"], "reach target must remain disclosed false")
+    require(checks["checks"]["straight_arm_reach_target_met"], "reach target failed")
     require(checks["checks"]["straight_arm_reach_hard_limit_met"], "reach hard limit failed")
-    require(not checks["checks"]["straight_arm_span_target_met"], "span target must remain disclosed false")
+    require(checks["checks"]["straight_arm_span_target_met"], "span target failed")
     require(checks["checks"]["straight_arm_span_hard_limit_met"], "span hard limit failed")
     require(not any(checks["authority"].values()), "authority overclaim")
 

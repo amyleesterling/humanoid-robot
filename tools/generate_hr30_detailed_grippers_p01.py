@@ -33,8 +33,6 @@ WARNING = (
     "PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
 )
 
-PALM_CENTER_Z = 270.0
-HAND_CENTER_X = 140.0
 FINGER_CENTER_CLOSED_MM = 13.0
 FINGER_TRAVEL_EACH_MM = 13.0
 FINGER_WIDTH_MM = 12.0
@@ -54,6 +52,9 @@ GUIDE_ROD_LENGTH_MM = 64.0
 sys.path.insert(0, str(ROOT / "tools"))
 import generate_hr30_body_architecture_p01 as body  # noqa: E402
 import generate_hr30_system_package_p01 as system  # noqa: E402
+
+HAND_CENTER_X = body.WRIST_X
+PALM_CENTER_Z = body.PALM_CENTER_Z
 
 
 @dataclass(frozen=True)
@@ -210,8 +211,8 @@ def finger_carrier(center_x: float) -> cq.Shape:
     slider = rounded_box(14.0, 34.0, 20.0, (center_x, 0.0, -8.0), 2.2)
     for y in (-9.0, 9.0):
         slider = slider.cut(body.cylinder_between((center_x, y, -8.0), (1, 0, 0), 18.0, 4.35))
-    finger = rounded_box(12.0, 36.0, 48.0, (center_x, 0.0, -36.0), 3.0)
-    relief = rounded_box(6.0, 24.0, 19.0, (center_x, 0.0, -43.0), 2.0)
+    finger = rounded_box(12.0, 36.0, 48.0, (center_x, 0.0, -26.0), 3.0)
+    relief = rounded_box(6.0, 24.0, 19.0, (center_x, 0.0, -33.0), 2.0)
     return slider.fuse(finger.cut(relief)).clean()
 
 
@@ -219,7 +220,7 @@ def pad_shape(center_x: float) -> cq.Shape:
     sign = 1.0 if center_x > 0 else -1.0
     finger_inner_face = center_x - sign * FINGER_WIDTH_MM / 2.0
     pad_center = finger_inner_face - sign * PAD_THICKNESS_MM / 2.0
-    return rounded_box(PAD_THICKNESS_MM, 30.0, 30.0, (pad_center, 0.0, -36.0), 1.2)
+    return rounded_box(PAD_THICKNESS_MM, 30.0, 30.0, (pad_center, 0.0, -26.0), 1.2)
 
 
 def stop_block(x: float) -> cq.Shape:

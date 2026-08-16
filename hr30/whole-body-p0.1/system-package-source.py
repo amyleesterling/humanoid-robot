@@ -58,11 +58,11 @@ def link_rows() -> list[dict]:
     ]
     for side, sign in (("L", 1.0), ("R", -1.0)):
         rows.extend([
-            {"link": f"{side}_shoulder_pitch_link", "group": f"{side} arm", "mass": 0.10, "center": (sign * 0.105, 0, 0.590), "size": (0.040, 0.072, 0.058)},
-            {"link": f"{side}_upper_arm", "group": f"{side} arm", "mass": 0.27, "center": (sign * 0.120, 0, 0.515), "size": (0.052, 0.052, 0.150)},
-            {"link": f"{side}_forearm", "group": f"{side} arm", "mass": 0.22, "center": (sign * 0.1375, 0, 0.3675), "size": (0.050, 0.050, 0.145)},
-            {"link": f"{side}_hand", "group": f"{side} hand", "mass": 0.18, "center": (sign * 0.140, 0, 0.270), "size": (0.050, 0.058, 0.050)},
-            {"link": f"{side}_gripper", "group": f"{side} hand", "mass": 0.03, "center": (sign * 0.140, 0, 0.232), "size": (0.044, 0.048, 0.046)},
+            {"link": f"{side}_shoulder_pitch_link", "group": f"{side} arm", "mass": 0.10, "center": (sign * body.SHOULDER_AXIS_X / 1000.0, 0, body.SHOULDER_Z / 1000.0), "size": (0.040, 0.072, 0.058)},
+            {"link": f"{side}_upper_arm", "group": f"{side} arm", "mass": 0.27, "center": (sign * body.SHOULDER_AXIS_X / 1000.0, 0, (body.SHOULDER_Z + body.ELBOW_Z) / 2000.0), "size": (0.052, 0.052, 0.150)},
+            {"link": f"{side}_forearm", "group": f"{side} arm", "mass": 0.22, "center": (sign * body.WRIST_X / 1000.0, 0, (body.ELBOW_Z + body.WRIST_Z) / 2000.0), "size": (0.050, 0.050, 0.145)},
+            {"link": f"{side}_hand", "group": f"{side} hand", "mass": 0.18, "center": (sign * body.WRIST_X / 1000.0, 0, body.PALM_CENTER_Z / 1000.0), "size": (0.050, 0.058, 0.050)},
+            {"link": f"{side}_gripper", "group": f"{side} hand", "mass": 0.03, "center": (sign * body.WRIST_X / 1000.0, 0, body.FINGER_CENTER_Z / 1000.0), "size": (0.044, 0.048, 0.046)},
             {"link": f"{side}_hip_yaw_link", "group": f"{side} leg", "mass": 0.08, "center": (sign * 0.0625, 0, body.HIP_YAW_Z / 1000.0), "size": (0.060, 0.070, 0.040)},
             {"link": f"{side}_hip_roll_link", "group": f"{side} leg", "mass": 0.08, "center": (sign * 0.0625, 0, body.HIP_ROLL_Z / 1000.0), "size": (0.060, 0.070, 0.040)},
             {"link": f"{side}_thigh", "group": f"{side} leg", "mass": 0.66, "center": (sign * 0.0625, 0, 0.290), "size": (0.074, 0.076, 0.160)},
@@ -80,11 +80,11 @@ def frame_positions() -> dict[str, tuple[float, float, float]]:
     }
     for side, sign in (("L", 1.0), ("R", -1.0)):
         frames.update({
-            f"{side}_shoulder_pitch_link": (sign * 0.105, 0, 0.590),
-            f"{side}_upper_arm": (sign * 0.105, 0, 0.590),
-            f"{side}_forearm": (sign * 0.135, 0, 0.440),
-            f"{side}_hand": (sign * 0.140, 0, 0.295),
-            f"{side}_gripper": (sign * 0.140, 0, 0.252),
+            f"{side}_shoulder_pitch_link": (sign * body.SHOULDER_AXIS_X / 1000.0, 0, body.SHOULDER_Z / 1000.0),
+            f"{side}_upper_arm": (sign * body.SHOULDER_AXIS_X / 1000.0, 0, body.SHOULDER_Z / 1000.0),
+            f"{side}_forearm": (sign * body.ELBOW_X / 1000.0, 0, body.ELBOW_Z / 1000.0),
+            f"{side}_hand": (sign * body.WRIST_X / 1000.0, 0, body.WRIST_Z / 1000.0),
+            f"{side}_gripper": (sign * body.WRIST_X / 1000.0, 0, body.GRIPPER_AXIS_Z / 1000.0),
             f"{side}_hip_yaw_link": (sign * 0.0625, 0, body.HIP_YAW_Z / 1000.0),
             f"{side}_hip_roll_link": (sign * 0.0625, 0, body.HIP_ROLL_Z / 1000.0),
             f"{side}_thigh": (sign * 0.0625, 0, body.HIP_Z / 1000.0),

@@ -245,8 +245,8 @@ def build() -> tuple[list[Part], list[dict], list[dict]]:
         x = sign * body.HIP_HALF_WIDTH
         add_route(f"HN01_{side}_LEG_POWER", leg, "ACTUATOR POWER", (x + sign * 12, 15, body.HIP_YAW_Z), (x + sign * 12, 15, body.ANKLE_ROLL_Z), 12, 60, "front/rear offset from data corridor; joint service loops required", route_power)
         add_route(f"HN01_{side}_LEG_DATA", leg, "DATA/ENCODER", (x - sign * 12, -15, body.HIP_YAW_Z), (x - sign * 12, -15, body.ANKLE_ROLL_Z), 9, 45, "front/rear offset from power corridor; shield/return topology open", route_data)
-        add_route(f"HN01_{side}_ARM_POWER", arm, "ACTUATOR POWER", (sign * 92, 15, 575), (sign * body.WRIST_X, 15, body.WRIST_Z), 10, 50, "rearward offset from data; shoulder/elbow loops required", route_power)
-        add_route(f"HN01_{side}_ARM_DATA", arm, "DATA/ENCODER", (sign * 100, -15, 575), (sign * body.WRIST_X, -15, body.WRIST_Z), 8, 40, "forward offset from power; shield/return topology open", route_data)
+        add_route(f"HN01_{side}_ARM_POWER", arm, "ACTUATOR POWER", (sign * (body.SHOULDER_AXIS_X - 13), 15, 575), (sign * body.WRIST_X, 15, body.WRIST_Z), 10, 50, "rearward offset from data; shoulder/elbow loops required", route_power)
+        add_route(f"HN01_{side}_ARM_DATA", arm, "DATA/ENCODER", (sign * (body.SHOULDER_AXIS_X - 5), -15, 575), (sign * body.WRIST_X, -15, body.WRIST_Z), 8, 40, "forward offset from power; shield/return topology open", route_data)
 
     return parts, panels, routes
 
