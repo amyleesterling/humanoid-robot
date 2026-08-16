@@ -350,6 +350,9 @@ def integrate():
     page.write_text(text.replace("</main>", block + "</main>"), encoding="utf-8")
     readme = WB / "README.md"
     text = re.sub(re.escape(marker_a) + r"[\s\S]*?" + re.escape(marker_b), "", readme.read_text(encoding="utf-8")).rstrip()
+    # Repair legacy output that lost only the opening marker, otherwise each
+    # regeneration would preserve a second unbounded copy of this section.
+    text = re.sub(r"\n## One-axis first-power station[\s\S]*?" + re.escape(marker_b), "", text).rstrip()
     text += f"\n\n{marker_a}\n## One-axis first-power station\n\nThe whole-body package now includes a removable, source-limited commissioning station rather than relying on the unreleased walking-power tree for first inspection. It uses a safety-listed Keysight E36313A candidate, ROBOTIS U2D2/Power Hub, exact X3P/X4P cable families, a native four-child-sheet KiCad design, printable tray/cover files and a 25-axis work order. Candidate first power is one mechanically restrained, whole-body-disconnected actuator at 11.0 V / 0.25 A with read-only telemetry and Torque Enable required to read zero. Qualified review, received-hardware inspection, calibration, restraint and separately signed connection/energization authority remain open. See `electrical/axis-commissioning-station-p0.1/index.html`.\n{marker_b}\n"
     readme.write_text(text, encoding="utf-8")
 
