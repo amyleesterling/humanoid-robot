@@ -1,4 +1,10 @@
-# HR-V0 firmware release area
+# Project Button firmware source area
+
+The current whole-body program source is in `hr30-motion-controller/`. It contains the portable C `FIRST_POWER_NO_MOTION` controller core, compiled host-vector evidence, and the exact STM32H743 I/O binding contract. Its synchronized engineering package is published under `hr30/whole-body-p0.1/firmware/hr30-motion-controller-p0.1/`.
+
+The existing HR-V0 firmware below is retained as historical subsystem evidence. It is not the HR-30 controller implementation and is not being extended by the whole-body program.
+
+## Archived HR-V0 source
 
 > **PRELIMINARY—NOT APPROVED FOR FABRICATION OR ENERGIZATION**
 

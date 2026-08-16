@@ -134,6 +134,19 @@ The [leg-drivetrain package](leg-drivetrain-p0.1/index.html) assigns every one o
 
 The [installed drivetrain guide](leg-drivetrain-installation-p0.1/index.html) replaces ten generic pulley/belt/motor placeholders in a derived complete humanoid assembly. Exact candidate P-bore pulleys, belts, HN12/HN13 horns, shifted manufacturer actuators, project motor adapters, shouldered output shafts, capture washers and guard envelopes occupy controlled external drive planes. All 45 inter-drive pairs have zero nominal common volume. Motion sweep, material, fits, tolerances, fasteners, cable/cover clearance, capacity and physical proof remain open.
 <!-- HR30-INSTALLED-LEG-DRIVES-P01-README-END -->
+
+
+
+
+
+
+
+<!-- HR30-NO-MOTION-FW-P01-README-START -->
+## Deterministic no-motion firmware
+
+The [HR-30 no-motion firmware guide](firmware/hr30-motion-controller-p0.1/index.html) binds all 25 axes and eight buses to a compiled `FIRST_POWER_NO_MOTION` state machine. Every torque-enable, bus-transmit, precharge and action-ready output remains zero; all motion requests are rejected and STOP is a no-op. Two clean host builds are byte-identical and the compiled vector suite passes. STM32 target integration, HIL and qualified approval remain open, so this creates no powered-work or motion authority.
+<!-- HR30-NO-MOTION-FW-P01-README-END -->
+
 <!-- HR30-FIRST-ENERGIZATION-P01-README-START -->
 ## First-energization readiness
 

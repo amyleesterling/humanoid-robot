@@ -1,0 +1,34 @@
+﻿{
+    "identifier":  "HR30-MOTION-FIRST-POWER-NO-MOTION-P0.1",
+    "warning":  "PRELIMINARY - HOST-COMPILED LOGIC EVIDENCE ONLY - NOT TARGET HIL OR AUTHORITY TO CONNECT, POWER, MOVE, OR ENERGIZE",
+    "profile":  "FIRST_POWER_NO_MOTION",
+    "compiler":  "clang version 22.1.8 (https://github.com/llvm/llvm-project.git ca7933e47d3a3451d81e72ac174dcb5aa28b59d1)",
+    "target":  "x86_64-w64-windows-gnu host evidence",
+    "source_date_epoch":  1786838400,
+    "two_clean_builds_byte_identical":  true,
+    "two_executions_byte_identical":  true,
+    "vector_result":  "PASS",
+    "axis_count":  25,
+    "bus_count":  8,
+    "target_binary_built":  false,
+    "target_hil_executed":  false,
+    "functional_safety_credit":  false,
+    "energization_authority":  false,
+    "source_sha256":  {
+                          "firmware/hr30-motion-controller/include/hr30_motion.h":  "77e6e9fabb4805386533ee50f8cad48efd0124cde0b5de88c8de0e6163a5dc71",
+                          "firmware/hr30-motion-controller/src/hr30_motion.c":  "3e882240a42898135f293c2fac7bd2acd05ec26e735e641db2f966b2aaf0fafd",
+                          "firmware/hr30-motion-controller/tests/hr30_motion_vector_runner.c":  "935b2f3984cf79ab80bc1ffbc077fb490f15b5d63c0d71e2b3bdeba50c2b30ee",
+                          "firmware/hr30-motion-controller/platform/stm32h743/hr30_stm32h743_io.h":  "462cdfa156aa876f2e2cd0a7c884ce84afa7cce8b2bc6f61a87b3d43b915b5ec",
+                          "tools/build_hr30_motion_host_runner.ps1":  "8ab64b54125b17690d40e19108b5f2998056c9010196dc49c4d0b64df79f468e"
+                      },
+    "binary":  {
+                   "path":  "hr30_motion_vector_runner.exe",
+                   "bytes":  89600,
+                   "sha256":  "efe1819b7373b9be050ab7f14b72bc2aaa8247a73999e50625646635de8db6d7"
+               },
+    "execution_log":  {
+                          "path":  "vector-output.txt",
+                          "bytes":  187,
+                          "sha256":  "2b6dca77e262d89bb039f4a6bba7e7ccf8e9b7a6876995df15ac201df1f98999"
+                      }
+}
