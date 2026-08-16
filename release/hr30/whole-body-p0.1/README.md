@@ -182,6 +182,18 @@ The [interactive grounding guide](electrical/grounding-reference-architecture-p0
 
 The [HR-30 no-motion firmware guide](firmware/hr30-motion-controller-p0.1/index.html) binds all 25 axes and eight buses to a compiled `FIRST_POWER_NO_MOTION` state machine. Every torque-enable, bus-transmit, precharge and action-ready output remains zero; all motion requests are rejected and STOP is a no-op. Two clean host builds and two clean freestanding STM32H743 builds are byte-identical, and the compiled core/MMIO vector suites pass. The target is unflashed; HIL, physical timing, reset-state proof and qualified approval remain open, so this creates no powered-work or motion authority.
 <!-- HR30-NO-MOTION-FW-P01-README-END -->
+
+
+<!-- HR30-PROTECTIVE-BONDING-P01-README-START -->
+## Physical protective-bonding implementation
+
+The [interactive protective-bonding guide](electrical/protective-bonding-implementation-p0.1/index.html) binds the PE/reference architecture to **9 hardware records**, **13 whole-robot bond zones**, **14 articulated-joint bypass obligations**, a 16-step installation traveler and a blank 12-test inspection plan. Hammond enclosure studs, Phoenix Contact UT 10-PE, Anderson 1340G1 and an Alpha Wire 6 AWG fixed-panel family are candidate interfaces only. Fault sizing, moving-joint cable, installation, measurements, AHJ disposition and qualified release remain open.
+<!-- HR30-PROTECTIVE-BONDING-P01-README-END -->
+
+
+
+
+
 <!-- HR30-STM32-BRINGUP-P01-README-START -->
 ## STM32 no-actuator bring-up
 

@@ -64,6 +64,7 @@ def source_rows() -> list[dict]:
         ("no-actuator STM32 target bring-up status", "firmware/stm32-target-bringup-p0.1/bringup-status.json"),
         ("logic-only controller power-kit status", "electrical/logic-power-kit-p0.1/logic-power-status.json"),
         ("whole-robot grounding and DC-reference candidate status", "electrical/grounding-reference-architecture-p0.1/grounding-reference-status.json"),
+        ("physical protective-bonding implementation candidate status", "electrical/protective-bonding-implementation-p0.1/physical-bond-status.json"),
     ]
     rows = []
     for number, (role, relative) in enumerate(items, 1):
@@ -180,7 +181,7 @@ def signoff_rows() -> list[dict]:
 def hold_rows() -> list[dict]:
     data = [
         ("FER-H01", "received as-built robot does not yet exist", "fabricated assembly, inspection records and frozen serial/lot configuration"),
-        ("FER-H02", "protective-earth/DC-reference candidate is defined but not approved", "grounding package closes the topology drawing only; jurisdiction, received enclosure/source, exact bond hardware, measurements and qualified electrical disposition remain required"),
+        ("FER-H02", "protective-earth/DC-reference and physical bonding candidates are defined but not approved", "topology plus enclosure, panel-terminal, tether-contact and fixed-wire families are bound; fault sizing, AHJ disposition, moving-joint jumpers, received hardware, installation, measurements and qualified electrical disposition remain required"),
         ("FER-H03", "fuse/eFuse/conductor/contact ratings unresolved", "fault current, lengths, ambient, bundling, connector limits, inrush, regeneration and duty"),
         ("FER-H04", "physical harness not built or tested", "crimp, continuity, insulation, flex, retention, shield and no-backfeed evidence"),
         ("FER-H05", "safety requirements and PLr/SIL allocation open", "SRS, risk assessment, common-cause analysis and qualified validation plan"),

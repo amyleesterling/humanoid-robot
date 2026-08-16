@@ -431,5 +431,12 @@
   "grounding_instrument_case_count": 6,
   "single_dc_return_pe_bond_candidate_defined": true,
   "pe_dc_reference_architecture_approved": false,
-  "grounding_physical_measurements_executed": 0
+  "grounding_physical_measurements_executed": 0,
+  "protective_bonding_implementation_present": true,
+  "protective_bonding_hardware_record_count": 9,
+  "protective_bonding_zone_count": 13,
+  "protective_bonding_joint_bypass_count": 14,
+  "protective_bonding_installed_count": 0,
+  "protective_bonding_measurement_count": 0,
+  "protective_bonding_approved": false
 }
