@@ -57,6 +57,9 @@ def main() -> int:
     derating = rows("current-derating-register.csv")
     inspections = rows("inspection-test-register.csv")
     unresolved = rows("unresolved-harness-selections.csv")
+    interfaces = rows("actuator-interface-verification-register.csv")
+    commercial_cables = rows("robotis-cable-family-register.csv")
+    discrepancies = rows("manufacturer-interface-discrepancy-register.csv")
     source = rows("source-register.csv")
 
     require(len(axes) == len(loops) == len(power) == len(links) == len(chains) == len(power_pairs) == len(data_links) == len(retain) == len(derating) == 25, "25-axis register spine incomplete")
@@ -72,6 +75,12 @@ def main() -> int:
     require(len(equipment) == 58 and len(logical) == len(ecad_terminals), "equipment or logical-terminal binding incomplete")
     require(len(contacts) == 319 and len(cores) == 94, "actuator/PDU contact and core mapping drift")
     require(len(inspections) >= 10 and len(unresolved) >= 10, "inspection/open-selection registers incomplete")
+    require(len(interfaces) == 4 and {r["actuator_family"] for r in interfaces} == {"XH540", "XM540", "XM430", "XC330"}, "four actuator interface verification records required")
+    require(sum(int(r["axis_count"]) for r in interfaces) == 25 and all(r["verified_boundary"].startswith("DEVICE PINOUT") for r in interfaces), "actuator interface coverage/claim drift")
+    require(len(commercial_cables) == 5 and len({r["official_order_code"] for r in commercial_cables}) == 5, "five exact ROBOTIS commercial cable families required")
+    require(all("VDD" in r["published_populated_contacts"] and r["hr30_whole_body_role"].startswith("REJECT") for r in commercial_cables), "commercial cable VDD/rejection boundary missing")
+    require({r["finding_id"] for r in discrepancies} == {f"DXL-IF-00{i}" for i in range(1, 6)}, "manufacturer discrepancy set incomplete")
+    require(all("OPEN" in r["disposition"] or "REJECT" in r["disposition"] or "CANDIDATE ONLY" in r["disposition"] for r in discrepancies), "manufacturer discrepancy incorrectly closed")
 
     axis_ids = {r["axis_id"] for r in axes}
     require(len(axis_ids) == 25, "axis IDs not unique")
@@ -128,13 +137,14 @@ def main() -> int:
     require(all(r["physical_connector"] == "SELECTION REQUIRED" for r in equipment if not r["item_id"].startswith("EQ-PDU-")), "non-PDU equipment connector closure overclaimed")
     require(all(r["physical_binding_state"].startswith("LOGICAL TERMINAL RETAINED") for r in logical), "logical terminal lost or overclaimed")
 
-    false_gates = ["standard_dynamixel_cable_direct_use_approved", "assembled_cables_selected", "conductor_sizing_released", "protection_released", "connector_set_released", "harness_validated", "procurement_authority", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]
+    false_gates = ["standard_dynamixel_cable_direct_use_approved", "assembled_cables_selected", "u2d2_final_whole_body_controller_approved", "u2d2_power_hub_whole_body_or_leg_power_approved", "robotis_jst_wire_gauge_conflict_closed", "robotis_jst_housing_order_code_conflict_closed", "conductor_sizing_released", "protection_released", "connector_set_released", "harness_validated", "procurement_authority", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]
     require(all(status[k] is False for k in false_gates), "authority/selection gate overclaimed")
     require(status["total_route_segments"] == 62 and status["logical_terminals"] == len(ecad_terminals), "status count drift")
     require(status["route_cad_solid_count"] == 62 and status["whole_body_route_step_present"] is True and status["whole_body_route_glb_present"] is True, "whole-body route CAD status missing")
     require(status["route_cad_is_cable_size_release"] is False, "route centerline CAD incorrectly releases cable sizing")
     require(status["split_harness_candidate_defined"] is True and status["data_star_topology_rejected"] is True and status["serial_data_predecessor_successor_chain_complete"] is True, "split-harness status missing")
     require(status["actuator_connector_instances"] == 107 and status["actuator_connector_contacts"] == 319 and status["serial_data_links"] == status["individual_power_pairs"] == 25, "split-harness/PDU status counts drift")
+    require(status["actuator_interface_verification_records"] == 4 and status["robotis_commercial_cable_families_reviewed"] == 5 and status["manufacturer_interface_discrepancies_open"] == 5, "manufacturer interface status counts drift")
 
     for s in source:
         p = ROOT / s["source"]
@@ -161,6 +171,8 @@ def main() -> int:
     diagrams = sorted((OUT / "bus-diagrams").glob("*.svg"))
     require(len(diagrams) == 8 and all("Outgoing pins 1/2 EMPTY" in path.read_text(encoding="utf-8") for path in diagrams), "eight serial bus assembly drawings missing")
     require("Eight serial data-chain assembly drawings" in page and "actuator-chain-contact-map.csv" in page, "interactive split-harness guide missing")
+    require("Manufacturer interface reality check" in page and "robotis-cable-family-register.csv" in page and "manufacturer-interface-discrepancy-register.csv" in page, "manufacturer interface web guidance missing")
+    require("71.88 A figure" in page and "76.08 A figure" not in page, "whole-body endpoint current text is stale")
     require("HR30_whole_body_harness_centerlines_candidate.glb" in page and "route-cad-register.csv" in page and "model-viewer.min.js" in page, "interactive 3D route model missing from web guide")
     step_path = OUT / "HR30_whole_body_harness_centerlines_candidate.step"
     glb_path = OUT / "HR30_whole_body_harness_centerlines_candidate.glb"
@@ -179,7 +191,11 @@ def main() -> int:
     require(whole_status.get("physical_harness_package_present") is True, "whole-body status integration missing")
     require(whole_status.get("physical_harness_selected") is False and whole_status.get("physical_harness_validated") is False, "whole-body harness status overclaimed")
 
-    print(f"PASS: HR-30 physical harness: 25 PDU-bound individual power pairs, 25 serial data links, 107 connectors / 319 cavities / 94 conductors, 8 bus drawings, 62 routes, 58 equipment, {len(logical)} logical terminals; all release/authority gates false")
+    readme = (OUT / "README.md").read_text(encoding="utf-8")
+    require("71.88 A figure" in readme and "76.08 A figure" not in readme, "README endpoint current text is stale")
+    require("21 AWG cable statement conflicts" in readme and "U2D2 is retained only" in readme, "README manufacturer-interface boundary missing")
+
+    print(f"PASS: HR-30 physical harness: 25 PDU-bound individual power pairs, 25 serial data links, 107 connectors / 319 cavities / 94 conductors, 8 bus drawings, 62 routes, 58 equipment, {len(logical)} logical terminals, 4 verified actuator interfaces / 5 rejected commercial cable families / 5 open manufacturer discrepancies; all release/authority gates false")
     return 0
 
 

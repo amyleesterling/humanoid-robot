@@ -360,5 +360,10 @@
   "axis_commissioning_read_only_inspector_present": true,
   "axis_commissioning_device_write_api_present": false,
   "axis_commissioning_fixture_physically_validated": false,
-  "axis_commissioning_host_software_approved": false
+  "axis_commissioning_host_software_approved": false,
+  "physical_harness_actuator_interface_verification_count": 4,
+  "physical_harness_commercial_cable_family_review_count": 5,
+  "physical_harness_manufacturer_discrepancy_count": 5,
+  "physical_harness_u2d2_final_controller_approved": false,
+  "physical_harness_u2d2_power_hub_aggregate_power_approved": false
 }

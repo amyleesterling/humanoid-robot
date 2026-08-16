@@ -211,8 +211,12 @@ def build() -> dict[str, int | float]:
     buses = read_csv(WB / "harness/bus-harness-assembly-register.csv")
     assemblies = read_csv(WB / "harness/harness-assembly-register.csv")
     terminations = read_csv(WB / "harness/bus-termination-register.csv")
+    actuator_pinouts = read_csv(WB / "harness/actuator-side-pinout-register.csv")
+    harness_sources = read_csv(WB / "harness/harness-source-register.csv")
+    current_limits = read_csv(WB / "current-constrained-actuation-p0.1/axis-current-torque-register.csv")
+    bus_current_budgets = read_csv(WB / "current-constrained-actuation-p0.1/bus-current-budget.csv")
     pdu_allocations = read_csv(WB / "electrical/actuator-branch-pdu-p0.1/board-instance-channel-allocation.csv")
-    if (len(axes), len(bindings), len(buses), len(assemblies)) != (25, 25, 8, 14):
+    if (len(axes), len(bindings), len(buses), len(assemblies), len(actuator_pinouts), len(current_limits), len(bus_current_budgets)) != (25, 25, 8, 14, 4, 25, 8):
         raise SystemExit("controlled whole-body harness source count drift")
 
     by_axis = {r["axis_id"]: r for r in axes}
@@ -240,7 +244,10 @@ def build() -> dict[str, int | float]:
         WB / "electrical/actuator-branch-pdu-p0.1/board-instance-channel-allocation.csv",
         WB / "electrical/kicad/hr30-whole-body-electrical-p0.1/connector-schedule.csv",
         WB / "harness/bus-harness-assembly-register.csv", WB / "harness/harness-assembly-register.csv",
-        WB / "harness/bus-termination-register.csv", Path(__file__),
+        WB / "harness/bus-termination-register.csv", WB / "harness/actuator-side-pinout-register.csv",
+        WB / "harness/harness-source-register.csv",
+        WB / "current-constrained-actuation-p0.1/axis-current-torque-register.csv",
+        WB / "current-constrained-actuation-p0.1/bus-current-budget.csv", Path(__file__),
     ]
     write_csv(OUT / "source-register.csv", [{
         "source": p.relative_to(ROOT).as_posix(), "sha256": sha256(p),
@@ -618,6 +625,94 @@ def build() -> dict[str, int | float]:
         "state": "CANDIDATE DEFINED / VALIDATION REQUIRED" if i == "HSEL-03" else OPEN, "authority": AUTHORITY,
     } for i, s, sel, e in unresolved])
 
+    source_by_id = {row["source_id"]: row for row in harness_sources}
+    current_by_axis = {row["axis_id"]: row for row in current_limits}
+    interface_rows = []
+    for row in actuator_pinouts:
+        family = row["family"]
+        used_axes = sorted(binding["axis_id"] for binding in bindings if binding["actuator_family"] == family)
+        interface_rows.append({
+            "actuator_family": family,
+            "axis_count": len(used_axes),
+            "axes": "; ".join(used_axes),
+            "protocol": row["protocol"],
+            "device_pin_mapping": row["actuator_side_pin_mapping"],
+            "robotis_housing_name": row["cable_housing"],
+            "robotis_pcb_header": row["actuator_pcb_header"],
+            "robotis_crimp_terminal": row["crimp_terminal"],
+            "robotis_published_wire_gauge": row["manufacturer_published_dynamixel_wire_gauge"],
+            "official_source": row["official_source"],
+            "source_revision_or_date": row["source_revision_or_date"],
+            "accessed_date": row["accessed_date"],
+            "verified_boundary": "DEVICE PINOUT / ROBOTIS-LISTED CONNECTOR FAMILY ONLY",
+            "unverified_boundary": row["remaining_selection"],
+            "authority": AUTHORITY,
+        })
+    write_csv(OUT / "actuator-interface-verification-register.csv", interface_rows)
+
+    cable_rows = [
+        ("ROBOT CABLE-X4P 180 MM", "903-0244-000", "180", "JST", "JST", "1 GND; 2 VDD; 3 DATA+; 4 DATA-", "https://www.robotis.us/robot-cable-x4p-180mm-10pcs/"),
+        ("ROBOT CABLE-X4P 240 MM", "903-0245-000", "240", "JST", "JST", "1 GND; 2 VDD; 3 DATA+; 4 DATA-", "https://www.robotis.us/robot-cable-x4p-240mm-10pcs/"),
+        ("ROBOT CABLE-X4P CONVERTIBLE 180 MM", "903-0246-000", "180", "MOLEX", "JST", "1 GND; 2 VDD; 3 DATA+; 4 DATA-", "https://www.robotis.us/robot-cable-x4p-180mm-convertible-10pcs/"),
+        ("ROBOT CABLE-X3P 180 MM", "903-0249-000", "180", "JST", "JST", "1 GND; 2 VDD; 3 DATA", "https://www.robotis.us/robot-cable-x3p-180mm-10pcs/"),
+        ("ROBOT CABLE-X3P CONVERTIBLE 180 MM", "903-0251-000", "180", "MOLEX", "JST", "1 GND; 2 VDD; 3 DATA", "https://www.robotis.us/robot-cable-x3p-180mm-convertible-10pcs/"),
+    ]
+    write_csv(OUT / "robotis-cable-family-register.csv", [{
+        "cable_family": name, "official_order_code": code, "nominal_length_mm": length,
+        "end_a": end_a, "end_b": end_b, "published_populated_contacts": contacts,
+        "hr30_whole_body_role": "REJECT FOR INTER-ACTUATOR DATA-ONLY LINKS",
+        "reason": "PUBLISHED ASSEMBLY POPULATES GND/VDD; IT WOULD PARALLEL SEPARATELY PROTECTED ACTUATOR POWER PATHS",
+        "permitted_candidate_use": "ONE-ACTUATOR CURRENT-LIMITED COMMISSIONING ONLY AFTER RECEIVED-CABLE CONTINUITY CHECK",
+        "official_source": source, "source_revision_or_date": "LIVE OFFICIAL PRODUCT PAGE; REVISION DATE NOT STATED",
+        "accessed_date": "2026-08-16", "selection_state": "CATALOG FAMILY VERIFIED; FINAL HR-30 CABLE REJECTED",
+        "authority": AUTHORITY,
+    } for name, code, length, end_a, end_b, contacts, source in cable_rows])
+
+    leg_cap = {row["bus_id"]: float(row["simultaneous_candidate_cap_a"]) for row in bus_current_budgets}
+    discrepancy_rows = [
+        {
+            "finding_id": "DXL-IF-001", "interface": "JST EH CONDUCTOR RANGE",
+            "manufacturer_a_evidence": "ROBOTIS LISTS 21 AWG FOR DYNAMIXEL X-SERIES CABLES",
+            "manufacturer_b_evidence": "JST EH CATALOG RATES 3 A AT AWG 22 AND LISTS AWG 32 TO 22; SEH-001T-P0.6 LISTS AWG 30 TO 22 (0.05 TO 0.33 MM2)",
+            "disposition": "CONFLICT OPEN - DO NOT RELEASE 21 AWG OR SUBSTITUTE A CONTACT",
+            "closure_evidence": "WRITTEN JST/ROBOTIS APPLICATION APPROVAL OR EXACT RECEIVED ASSEMBLY IDENTIFICATION; CRIMP CROSS-SECTION/PULL/THERMAL/FLEX TEST",
+            "source_a": source_by_id["JST-EH"]["official_url"], "source_b": source_by_id["XH540"]["official_url"], "authority": AUTHORITY,
+        },
+        {
+            "finding_id": "DXL-IF-002", "interface": "JST EH HOUSING ORDER-CODE TEXT",
+            "manufacturer_a_evidence": "ROBOTIS DOCUMENTATION LISTS EHR-03 / EHR-04",
+            "manufacturer_b_evidence": "JST EH CATALOG TABLE LISTS EHR-3 / EHR-4",
+            "disposition": "NOMENCLATURE CONFLICT OPEN - DO NOT INFER THE PROCUREMENT ORDER CODE",
+            "closure_evidence": "WRITTEN SUPPLIER QUOTE/CONFIRMATION AND RECEIVED-HOUSING MARKING/DIMENSION INSPECTION",
+            "source_a": source_by_id["JST-EH"]["official_url"], "source_b": source_by_id["XH540"]["official_url"], "authority": AUTHORITY,
+        },
+        {
+            "finding_id": "DXL-IF-003", "interface": "ACTUATOR ENDPOINT CURRENT / JST EH CONTACT",
+            "manufacturer_a_evidence": "XH540 12 V MOMENTARY STALL ENDPOINT 4.9 A",
+            "manufacturer_b_evidence": "JST EH CATALOG CURRENT RATING 3 A AT AWG 22",
+            "disposition": "CURRENT-LIMITED DEVELOPMENT CANDIDATE ONLY; NO STALL-CURRENT HARNESS CLAIM",
+            "closure_evidence": "EXTERNAL BRANCH CURRENT LIMIT/FAULT CLEARING PLUS RECEIVED-CONTACT VOLTAGE-DROP AND TEMPERATURE TEST AT ACCEPTED DUTY",
+            "source_a": source_by_id["XH540"]["official_url"], "source_b": source_by_id["JST-EH"]["official_url"], "authority": AUTHORITY,
+        },
+        {
+            "finding_id": "DXL-IF-004", "interface": "U2D2 POWER HUB AGGREGATE POWER",
+            "manufacturer_a_evidence": "U2D2 POWER HUB MAXIMUM CURRENT 10.0 A",
+            "manufacturer_b_evidence": f"EACH LEG INTERNAL CURRENT-LIMIT CANDIDATE SUM IS {leg_cap['RS-LLEG']:.6f} A; EACH LEG STALL-ENDPOINT SUM IS 24.20 A",
+            "disposition": "REJECT FOR WHOLE-BODY OR LEG POWER AGGREGATION",
+            "closure_evidence": "NONE FOR THIS ROLE; USE THE 25-BRANCH PDU ARCHITECTURE AFTER ITS OWN VALIDATION",
+            "source_a": source_by_id["U2D2-PHB"]["official_url"], "source_b": "current-constrained-actuation-p0.1/bus-current-budget.csv", "authority": AUTHORITY,
+        },
+        {
+            "finding_id": "DXL-IF-005", "interface": "U2D2 WHOLE-BODY DATA CONTROL",
+            "manufacturer_a_evidence": "ONE USB CONVERTER WITH TTL AND RS-485 PORTS; NO EIGHT-ISOLATED-SEGMENT CLAIM",
+            "manufacturer_b_evidence": "HR-30 REQUIRES FIVE RS-485 AND THREE TTL SEGMENTS",
+            "disposition": "REJECT FOR FINAL WHOLE-BODY CONTROLLER; RETAIN AS ONE-SEGMENT COMMISSIONING TOOL CANDIDATE",
+            "closure_evidence": "RECEIVED USB REVISION INSPECTION; SINGLE-SEGMENT DATA/TERMINATION/REFERENCE TEST ONLY",
+            "source_a": source_by_id["U2D2"]["official_url"], "source_b": "actuator-bus-axis-binding.csv", "authority": AUTHORITY,
+        },
+    ]
+    write_csv(OUT / "manufacturer-interface-discrepancy-register.csv", discrepancy_rows)
+
     route_cad_solid_count = write_route_cad(route_rows, point_rows)
     stats = {
         "fixed_route_segments": len(trunks), "moving_joint_route_segments": 50,
@@ -628,6 +723,9 @@ def build() -> dict[str, int | float]:
         "actuator_connector_instances": len(connector_rows), "actuator_connector_contacts": len(contact_rows),
         "cable_cores": len(core_rows), "serial_data_links": len(data_link_rows),
         "individual_power_pairs": len(power_pair_rows), "data_only_outgoing_connectors": sum(1 for r in chain_rows if r["successor_axis"] != "FAR END"),
+        "actuator_interface_verification_records": len(interface_rows),
+        "robotis_commercial_cable_families_reviewed": len(cable_rows),
+        "manufacturer_interface_discrepancies_open": len(discrepancy_rows),
         "candidate_12v_stall_endpoint_sum_a": round(sum(float(r["candidate_12v_stall_endpoint_a"]) for r in power_rows), 2),
     }
     write_visuals(route_rows, point_rows, axis_rows, buses, stats, chain_rows)
@@ -643,6 +741,10 @@ def build() -> dict[str, int | float]:
         "every_axis_has_power_and_data_loop": True,
         "every_equipment_item_bound": True, "every_logical_terminal_retained": True,
         "standard_dynamixel_cable_direct_use_approved": False, "assembled_cables_selected": False,
+        "u2d2_final_whole_body_controller_approved": False,
+        "u2d2_power_hub_whole_body_or_leg_power_approved": False,
+        "robotis_jst_wire_gauge_conflict_closed": False,
+        "robotis_jst_housing_order_code_conflict_closed": False,
         "conductor_sizing_released": False, "protection_released": False, "connector_set_released": False,
         "harness_validated": False, "procurement_authority": False, "fabrication_authority": False,
         "connection_authority": False, "powered_test_authority": False, "motion_authority": False,
@@ -659,7 +761,9 @@ It contains {stats['fixed_route_segments']} body corridors plus 50 explicit movi
 
 The architecture now defines one two-conductor power pair per actuator and a serial data chain for each bus. Every actuator input housing receives its own return, VDD, and data contacts. Every inter-actuator outgoing housing populates only the data contacts: GND and VDD cavities remain empty, so no power current is daisy-chained through a preceding actuator connector. This controlled split-harness is the P0.1 construction candidate; crimp tooling, conductor selection, cavity inspection, no-backfeed tests, and fault injection remain required before release.
 
-The 76.08 A figure is only the sum of manufacturer 12 V momentary stall-current endpoints. It is not expected demand, a conductor rating, a fuse value, or permission to power the robot.
+The {stats['candidate_12v_stall_endpoint_sum_a']:.2f} A figure is only the sum of manufacturer 12 V momentary stall-current endpoints for the current 25-axis allocation. It is not expected demand, a conductor rating, a fuse value, or permission to power the robot.
+
+Manufacturer-interface review is now configuration-bound. ROBOTIS publishes the actuator pinouts, but its 21 AWG cable statement conflicts with JST's EH catalog limit of AWG 22 for `SEH-001T-P0.6`, and ROBOTIS's `EHR-03` / `EHR-04` names differ from JST's `EHR-3` / `EHR-4` catalog table. These are not silently normalized: both remain open procurement blockers in `manufacturer-interface-discrepancy-register.csv`. U2D2 is retained only as a single-segment commissioning candidate, and the 10 A U2D2 Power Hub is rejected for whole-body or leg power aggregation.
 
 Open the [interactive physical harness guide](index.html). Start with the whole-body route model, `route-cad-register.csv`, `axis-harness-binding.csv`, `route-segment-register.csv`, `connector-contact-map.csv`, and `unresolved-harness-selections.csv`.
 
@@ -721,7 +825,7 @@ def write_visuals(routes: list[dict], points: list[dict], axes: list[dict], buse
 
     bus_cards = "".join(f'<button class="bus" data-bus="{html.escape(b["bus_id"])}"><strong>{html.escape(b["bus_id"])}</strong><span>{html.escape(b["protocol"])} · {html.escape(b["axis_count"])} axes</span><span>{html.escape(b["candidate_12v_stall_endpoint_sum_a"])} A endpoint sum</span></button>' for b in buses)
     axis_cards = "".join(f'<tr data-bus="{html.escape(a["bus_id"])}"><td>{html.escape(a["axis_id"])}</td><td>{html.escape(a["bus_id"])}</td><td>{html.escape(a["actuator_family"])}</td><td>{html.escape(a["axis_xyz_mm"])}</td><td>{html.escape(a["power_loop"])}<br>{html.escape(a["data_loop"])}</td></tr>' for a in axes)
-    page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 physical harness P0.1</title><style>:root{{--navy:#0d2d57;--blue:#179de3;--sky:#d8f1ff;--gold:#f4b400;--paper:#f8fcff}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--navy);font:16px/1.5 system-ui,sans-serif}}header{{background:linear-gradient(135deg,var(--navy),#185d9d);color:white;padding:32px max(24px,calc((100% - 1180px)/2))}}h1{{font-size:clamp(32px,5vw,60px);line-height:1.05;margin:.2em 0}}.warning{{background:var(--gold);color:#1b2840;padding:14px 18px;font-weight:800;border-radius:12px}}main{{max-width:1180px;margin:auto;padding:28px 20px 70px}}h2{{font-size:clamp(25px,3vw,38px);margin-top:46px}}.stats,.buses{{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}}.stat,.bus,.panel{{background:white;border:2px solid #9bd5f5;border-radius:16px;padding:18px;box-shadow:0 6px 18px #0d2d5712}}.stat strong{{display:block;font-size:28px}}.bus{{font:inherit;color:inherit;text-align:left;cursor:pointer}}.bus strong,.bus span{{display:block}}.bus.active{{border-color:var(--gold);box-shadow:0 0 0 3px #f4b40055}}.map{{width:100%;max-height:760px}}.tablewrap{{overflow:auto;border:2px solid #9bd5f5;border-radius:16px;background:white}}table{{border-collapse:collapse;width:100%;min-width:900px}}th,td{{padding:13px 14px;border-bottom:1px solid #cfeafa;text-align:left;vertical-align:top}}th{{position:sticky;top:0;background:var(--navy);color:white;font-size:14px}}td{{font-size:14px}}a{{color:#075f9f;font-weight:700}}.open{{border-left:8px solid var(--gold)}}@media(max-width:600px){{header{{padding:24px 18px}}main{{padding:20px 14px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>HR-30 · Whole-body P0.1</p><h1>Physical harness guide</h1><p>Every body corridor, actuator feed, data bus, joint loop and current ECAD terminal is accounted for—without pretending unresolved cable and protection choices are finished.</p></header><main><section class="stats"><div class="stat"><strong>{stats['axes']}</strong>separate actuator feeds</div><div class="stat"><strong>{stats['total_route_segments']}</strong>route segments</div><div class="stat"><strong>{stats['logical_terminals']}</strong>logical terminals</div><div class="stat"><strong>{stats['candidate_12v_stall_endpoint_sum_a']}</strong>A endpoint sum, not demand</div></section><h2>Whole-body route map</h2><div class="panel"><img class="map" src="whole-body-physical-harness.svg" alt="Front map of the HR-30 physical harness routes and joint loops"></div><h2>Eight data buses</h2><p>Select a data bus to filter the joint table; select it again to show all.</p><div class="buses">{bus_cards}</div><h2>All 25 protected-feed candidates</h2><div class="tablewrap"><table><thead><tr><th>Axis</th><th>Data bus</th><th>Actuator</th><th>Joint datum (mm)</th><th>Moving loops</th></tr></thead><tbody>{axis_cards}</tbody></table></div><h2>Critical power boundary</h2><div class="panel open"><p>Each actuator now has its own protection/telemetry boundary and VDD net. Standard ROBOTIS X3P/X4P cables include VDD, so a custom data-only/power-injection breakout or controlled depinning method is required to keep the 25 feeds isolated.</p><p>The 76.08 A figure is the arithmetic sum of momentary 12 V stall-current endpoints—not a normal-load forecast, fuse rating, cable rating, or permission to energize.</p></div><h2>Build registers</h2><div class="panel"><p><a href="route-segment-register.csv">route segments</a> · <a href="route-point-register.csv">route points</a> · <a href="axis-harness-binding.csv">axis bindings</a> · <a href="connector-contact-map.csv">actuator contacts</a> · <a href="cable-core-register.csv">cable cores</a> · <a href="equipment-interface-register.csv">equipment interfaces</a> · <a href="logical-terminal-binding.csv">logical terminals</a> · <a href="current-derating-register.csv">derating inputs</a> · <a href="inspection-test-register.csv">inspection/tests</a> · <a href="unresolved-harness-selections.csv">open selections</a></p></div></main><script>const buttons=[...document.querySelectorAll('.bus')],rows=[...document.querySelectorAll('tbody tr')];buttons.forEach(b=>b.addEventListener('click',()=>{{const on=!b.classList.contains('active');buttons.forEach(x=>x.classList.remove('active'));b.classList.toggle('active',on);rows.forEach(r=>r.hidden=on&&r.dataset.bus!==b.dataset.bus)}}));</script></body></html>'''
+    page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 physical harness P0.1</title><style>:root{{--navy:#0d2d57;--blue:#179de3;--sky:#d8f1ff;--gold:#f4b400;--paper:#f8fcff}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--navy);font:16px/1.5 system-ui,sans-serif}}header{{background:linear-gradient(135deg,var(--navy),#185d9d);color:white;padding:32px max(24px,calc((100% - 1180px)/2))}}h1{{font-size:clamp(32px,5vw,60px);line-height:1.05;margin:.2em 0}}.warning{{background:var(--gold);color:#1b2840;padding:14px 18px;font-weight:800;border-radius:12px}}main{{max-width:1180px;margin:auto;padding:28px 20px 70px}}h2{{font-size:clamp(25px,3vw,38px);margin-top:46px}}.stats,.buses{{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}}.stat,.bus,.panel{{background:white;border:2px solid #9bd5f5;border-radius:16px;padding:18px;box-shadow:0 6px 18px #0d2d5712}}.stat strong{{display:block;font-size:28px}}.bus{{font:inherit;color:inherit;text-align:left;cursor:pointer}}.bus strong,.bus span{{display:block}}.bus.active{{border-color:var(--gold);box-shadow:0 0 0 3px #f4b40055}}.map{{width:100%;max-height:760px}}.tablewrap{{overflow:auto;border:2px solid #9bd5f5;border-radius:16px;background:white}}table{{border-collapse:collapse;width:100%;min-width:900px}}th,td{{padding:13px 14px;border-bottom:1px solid #cfeafa;text-align:left;vertical-align:top}}th{{position:sticky;top:0;background:var(--navy);color:white;font-size:14px}}td{{font-size:14px}}a{{color:#075f9f;font-weight:700}}.open{{border-left:8px solid var(--gold)}}@media(max-width:600px){{header{{padding:24px 18px}}main{{padding:20px 14px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>HR-30 · Whole-body P0.1</p><h1>Physical harness guide</h1><p>Every body corridor, actuator feed, data bus, joint loop and current ECAD terminal is accounted for—without pretending unresolved cable and protection choices are finished.</p></header><main><section class="stats"><div class="stat"><strong>{stats['axes']}</strong>separate actuator feeds</div><div class="stat"><strong>{stats['total_route_segments']}</strong>route segments</div><div class="stat"><strong>{stats['logical_terminals']}</strong>logical terminals</div><div class="stat"><strong>{stats['candidate_12v_stall_endpoint_sum_a']}</strong>A endpoint sum, not demand</div></section><h2>Whole-body route map</h2><div class="panel"><img class="map" src="whole-body-physical-harness.svg" alt="Front map of the HR-30 physical harness routes and joint loops"></div><h2>Eight data buses</h2><p>Select a data bus to filter the joint table; select it again to show all.</p><div class="buses">{bus_cards}</div><h2>All 25 protected-feed candidates</h2><div class="tablewrap"><table><thead><tr><th>Axis</th><th>Data bus</th><th>Actuator</th><th>Joint datum (mm)</th><th>Moving loops</th></tr></thead><tbody>{axis_cards}</tbody></table></div><h2>Critical power boundary</h2><div class="panel open"><p>Each actuator now has its own protection/telemetry boundary and VDD net. Standard ROBOTIS X3P/X4P cables include VDD, so a custom data-only/power-injection breakout or controlled depinning method is required to keep the 25 feeds isolated.</p><p>The {stats['candidate_12v_stall_endpoint_sum_a']:.2f} A figure is the arithmetic sum of momentary 12 V stall-current endpoints—not a normal-load forecast, fuse rating, cable rating, or permission to energize.</p></div><h2>Manufacturer interface reality check</h2><div class="panel open"><p><strong>Pinouts are verified; the cable assembly is not.</strong> ROBOTIS lists 21 AWG DYNAMIXEL wire, while JST's EH catalog limits the listed SEH-001T-P0.6 contact to AWG 22. ROBOTIS also writes EHR-03/EHR-04 while JST's own catalog table writes EHR-3/EHR-4. Neither discrepancy is silently normalized.</p><p>U2D2 remains a one-segment commissioning candidate only. It is not the final eight-segment controller. The 10 A U2D2 Power Hub is rejected for whole-body and leg power aggregation.</p><p><a href="actuator-interface-verification-register.csv">verified device interfaces</a> · <a href="robotis-cable-family-register.csv">commercial cable review</a> · <a href="manufacturer-interface-discrepancy-register.csv">open manufacturer discrepancies</a></p></div><h2>Build registers</h2><div class="panel"><p><a href="route-segment-register.csv">route segments</a> · <a href="route-point-register.csv">route points</a> · <a href="axis-harness-binding.csv">axis bindings</a> · <a href="connector-contact-map.csv">actuator contacts</a> · <a href="cable-core-register.csv">cable cores</a> · <a href="equipment-interface-register.csv">equipment interfaces</a> · <a href="logical-terminal-binding.csv">logical terminals</a> · <a href="current-derating-register.csv">derating inputs</a> · <a href="inspection-test-register.csv">inspection/tests</a> · <a href="unresolved-harness-selections.csv">open selections</a></p></div></main><script>const buttons=[...document.querySelectorAll('.bus')],rows=[...document.querySelectorAll('tbody tr')];buttons.forEach(b=>b.addEventListener('click',()=>{{const on=!b.classList.contains('active');buttons.forEach(x=>x.classList.remove('active'));b.classList.toggle('active',on);rows.forEach(r=>r.hidden=on&&r.dataset.bus!==b.dataset.bus)}}));</script></body></html>'''
     page = page.replace(
         "<title>HR-30 physical harness P0.1</title><style>",
         '<title>HR-30 physical harness P0.1</title><script type="module" src="../../vendor/model-viewer.min.js"></script><style>',
@@ -784,6 +888,8 @@ The [interactive physical harness guide](harness/physical-p0.1/index.html) trans
 All {stats['route_cad_solid_count']} route centerlines now exist as named editable STEP solids and one interactive GLB in a recognizable 762 mm body context. The display rods are centerline references only; they do not release cable OD, bundle clearance, bend radius, cut length, or retention.
 
 The P0.1 split-harness candidate uses 25 individual positive/return power pairs and eight serial data chains. Incoming actuator housings combine the individual pair with data; outgoing inter-actuator housings populate data contacts only and leave GND/VDD cavities empty. The eight bus assembly drawings and 25 contact maps are construction candidates, not a released cable set. Protection, conductor sizing, crimp process qualification, retention, flex-life, EMC, and physical validation remain open.
+
+Four actuator-family interfaces are now source-verified, five commercial ROBOTIS cable families are dispositioned, and five manufacturer-interface discrepancies remain explicitly open. In particular, the ROBOTIS 21 AWG statement conflicts with JST's AWG 22 contact limit, the documented housing order-code text differs, U2D2 is not the eight-segment controller, and the 10 A Power Hub is rejected for whole-body or leg power.
 """
     if marker in readme:
         start = readme.index(marker)
@@ -820,6 +926,11 @@ The P0.1 split-harness candidate uses 25 individual positive/return power pairs 
         "physical_harness_split_harness_candidate_defined": True,
         "physical_harness_serial_data_link_count": stats["serial_data_links"],
         "physical_harness_individual_power_pair_count": stats["individual_power_pairs"],
+        "physical_harness_actuator_interface_verification_count": stats["actuator_interface_verification_records"],
+        "physical_harness_commercial_cable_family_review_count": stats["robotis_commercial_cable_families_reviewed"],
+        "physical_harness_manufacturer_discrepancy_count": stats["manufacturer_interface_discrepancies_open"],
+        "physical_harness_u2d2_final_controller_approved": False,
+        "physical_harness_u2d2_power_hub_aggregate_power_approved": False,
         "physical_harness_selected": False,
         "physical_harness_validated": False,
     })

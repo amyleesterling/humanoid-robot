@@ -81,7 +81,9 @@ The [interactive physical harness guide](harness/physical-p0.1/index.html) trans
 All 62 route centerlines now exist as named editable STEP solids and one interactive GLB in a recognizable 762 mm body context. The display rods are centerline references only; they do not release cable OD, bundle clearance, bend radius, cut length, or retention.
 
 The P0.1 split-harness candidate uses 25 individual positive/return power pairs and eight serial data chains. Incoming actuator housings combine the individual pair with data; outgoing inter-actuator housings populate data contacts only and leave GND/VDD cavities empty. The eight bus assembly drawings and 25 contact maps are construction candidates, not a released cable set. Protection, conductor sizing, crimp process qualification, retention, flex-life, EMC, and physical validation remain open.
-<!-- HR30-GRIPPERS-P01-README-START -->
+
+Four actuator-family interfaces are now source-verified, five commercial ROBOTIS cable families are dispositioned, and five manufacturer-interface discrepancies remain explicitly open. In particular, the ROBOTIS 21 AWG statement conflicts with JST's AWG 22 contact limit, the documented housing order-code text differs, U2D2 is not the eight-segment controller, and the 10 A Power Hub is rejected for whole-body or leg power.
+
 ## Detailed bilateral hand mechanisms
 
 The [detailed gripper package](grippers-p0.1/index.html) contains two editable 18-part symmetric rack-and-pinion assemblies. Each now uses a project-owned 20-degree, module-0.5 involute pinion and matching racks with a 0.08 mm nominal total tangential-backlash candidate. The OPEN assembly rotates its pinion 148.969 degrees for the 13 mm rack displacement. CAD-derived states provide an 8–34 mm pad gap over 26 mm total coupled stroke. Manufactured profile tolerance, fits, materials, exact actuator-horn adapter, calibration, sensing, pinch proof, endurance, DFM/FAI and physical validation remain open.
