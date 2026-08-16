@@ -61,6 +61,7 @@ def source_rows() -> list[dict]:
         ("whole-body assembly traveler status", "assembly-guide-p0.1/assembly-status.json"),
         ("manufacturing artifact status", "manufacturing-files/manufacturing-files-status.json"),
         ("compiled whole-body no-motion firmware status", "firmware/hr30-motion-controller-p0.1/firmware-status.json"),
+        ("no-actuator STM32 target bring-up status", "firmware/stm32-target-bringup-p0.1/bringup-status.json"),
     ]
     rows = []
     for number, (role, relative) in enumerate(items, 1):
@@ -259,6 +260,7 @@ def main() -> int:
         "qualified_signoff_role_count": len(signoffs), "open_hold_count": len(holds),
         "physical_gate_executed_count": 0, "fault_injection_executed_count": 0, "qualified_signoff_count": 0,
         "host_no_motion_firmware_evidence_present": True, "stm32_target_binary_built": True,
+        "stm32_target_bringup_plan_present": True, "stm32_target_bringup_flash_executed": False,
         "stm32_target_binary_flashed": False, "target_no_motion_firmware_approved": False,
         "first_energization_ready": False, "motion_in_scope": False, "configuration_frozen": False,
         "connection_authority": False, "powered_test_authority": False, "motion_authority": False, "energization_authority": False,

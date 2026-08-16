@@ -398,5 +398,11 @@
   "hr30_no_motion_target_hil_executed": false,
   "hr30_no_motion_firmware_approved": false,
   "hr30_no_motion_stm32_target_built": true,
-  "hr30_no_motion_stm32_target_flashed": false
+  "hr30_no_motion_stm32_target_flashed": false,
+  "stm32_target_bringup_package_present": true,
+  "stm32_target_bringup_gate_count": 10,
+  "stm32_target_bringup_measurement_count": 12,
+  "stm32_target_bringup_flash_executed": false,
+  "stm32_target_bringup_hil_executed": false,
+  "stm32_target_bringup_approved": false
 }

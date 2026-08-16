@@ -146,11 +146,24 @@ The [installed drivetrain guide](leg-drivetrain-installation-p0.1/index.html) re
 
 
 
+
+
+
+
+
 <!-- HR30-NO-MOTION-FW-P01-README-START -->
 ## Deterministic no-motion firmware
 
 The [HR-30 no-motion firmware guide](firmware/hr30-motion-controller-p0.1/index.html) binds all 25 axes and eight buses to a compiled `FIRST_POWER_NO_MOTION` state machine. Every torque-enable, bus-transmit, precharge and action-ready output remains zero; all motion requests are rejected and STOP is a no-op. Two clean host builds and two clean freestanding STM32H743 builds are byte-identical, and the compiled core/MMIO vector suites pass. The target is unflashed; HIL, physical timing, reset-state proof and qualified approval remain open, so this creates no powered-work or motion authority.
 <!-- HR30-NO-MOTION-FW-P01-README-END -->
+
+
+<!-- HR30-STM32-BRINGUP-P01-README-START -->
+## STM32 no-actuator bring-up
+
+The [interactive target bring-up guide](firmware/stm32-target-bringup-p0.1/index.html) binds the reproducible STM32H743 image to the controller's exact five-contact SWD boundary, a proposed STLINK-V3MINIE adapter/cable BOM, ten release gates, twelve measurements and six fault injections. The target remains unflashed; the adapter PCB remains unbuilt; all physical results and work authority remain open.
+<!-- HR30-STM32-BRINGUP-P01-README-END -->
+
 
 <!-- HR30-FIRST-ENERGIZATION-P01-README-START -->
 ## First-energization readiness
