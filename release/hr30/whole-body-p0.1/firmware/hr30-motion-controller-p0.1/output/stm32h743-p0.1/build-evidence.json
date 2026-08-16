@@ -1,0 +1,144 @@
+{
+    "identifier":  "HR30-MOTION-STM32H743-FIRST-POWER-P0.1",
+    "warning":  "PRELIMINARY - UNFLASHED TARGET BUILD AND HOST MMIO EVIDENCE ONLY - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+    "profile":  "FIRST_POWER_NO_MOTION",
+    "compiler":  "clang version 22.1.8 (https://github.com/llvm/llvm-project.git ca7933e47d3a3451d81e72ac174dcb5aa28b59d1)",
+    "compiler_revision":  "ca7933e47d3a3451d81e72ac174dcb5aa28b59d1",
+    "target":  "arm-none-eabi / Cortex-M7 / Thumb-2 / soft-float / freestanding",
+    "source_date_epoch":  1786924800,
+    "configuration_binding_sha256":  "6764f0163c02e7b52f6f76cfcbd5b90ea4c37cd292e459d9e99bc6981baed471",
+    "configuration_word":  "0x6764f016",
+    "vector_count":  166,
+    "reset_clock_policy":  "retain reset HSI 64 MHz; no PLL or clock-tree reconfiguration",
+    "systick_policy":  "64,000-cycle polling tick; TICKINT disabled; interrupts globally disabled",
+    "uart_policy":  "all eight UART clock gates cleared; 13 TX/RX signals analog/no-pull; eight direction pins output-low",
+    "two_clean_target_builds_byte_identical":  true,
+    "core_compiled_vectors":  "PASS",
+    "mmio_compiled_vectors":  "PASS",
+    "stm32_target_binary_built":  true,
+    "target_binary_flashed":  false,
+    "target_hil_executed":  false,
+    "oscilloscope_boot_state_verified":  false,
+    "physical_uart_write_path_audited":  false,
+    "functional_safety_credit":  false,
+    "connection_authority":  false,
+    "powered_test_authority":  false,
+    "motion_authority":  false,
+    "energization_authority":  false,
+    "source_sha256":  {
+                          "firmware/hr30-motion-controller/include/hr30_motion.h":  "77e6e9fabb4805386533ee50f8cad48efd0124cde0b5de88c8de0e6163a5dc71",
+                          "firmware/hr30-motion-controller/src/hr30_motion.c":  "f74c30ab9040c10a03e02b128c79a4d39dbc6e32c6b986a1e8b94bee3126064a",
+                          "firmware/hr30-motion-controller/tests/hr30_motion_vector_runner.c":  "f15b262577129b0f1ee1b955c984d3c54631ff4776fce36dd9432a21165c3739",
+                          "firmware/hr30-motion-controller/tests/hr30_stm32h743_mmio_runner.c":  "bd608f3f691b6bdb480bb51d8ff9d68c3e6ac279afd72fe54bd12de70a28f7ab",
+                          "firmware/hr30-motion-controller/platform/stm32h743/hr30_stm32h743_io.h":  "2d0d176dc416ada14703679e7682c65fbff730761008dafdf9d41e20fc20525c",
+                          "firmware/hr30-motion-controller/platform/stm32h743/hr30_stm32h743_registers.h":  "d613853675bfdb9b881149e746b53523cd6218b3292a2948d7bdcd2c43cc539b",
+                          "firmware/hr30-motion-controller/platform/stm32h743/hr30_stm32h743_target.h":  "a22ef94bf96944da3abfabd6a860bf2dd007729bd279f8e700d98b72778935e7",
+                          "firmware/hr30-motion-controller/platform/stm32h743/hr30_stm32h743_target.c":  "b9d4da29846905647b17103dc39a6cd437ecefdd3ae25f7575d74c8f924b8fe7",
+                          "firmware/hr30-motion-controller/platform/stm32h743/startup_hr30_stm32h743.S":  "c2ccf15dafa1699d8161202e3d63dd31356c188475ca0be3a9546130c3ae033e",
+                          "firmware/hr30-motion-controller/platform/stm32h743/stm32h743zit6_hr30.ld":  "345e3909e16132a237b8d4c2379cb74e87029688507aa69b63d3a39a6f4bc036",
+                          "firmware/hr30-motion-controller/target-toolchain-lock.json":  "6f71c797a05bbdfa42936a9b761acbb5d7731a26733cad41f27fb8262572602b",
+                          "tools/build_hr30_motion_stm32_target.ps1":  "b2e57b9f773c258485148769cfe905c7d71d03bfdada156a138df367f0c74ed5"
+                      },
+    "binding_inputs":  [
+                           "hr30/whole-body-p0.1/actuator-bus-axis-binding.csv",
+                           "hr30/whole-body-p0.1/actuator-bus-topology.csv",
+                           "hr30/whole-body-p0.1/electrical/axis-commissioning-station-p0.1/axis-commissioning-matrix.csv",
+                           "hr30/whole-body-p0.1/electrical/motion-controller-p0.1/control-gpio-map.csv",
+                           "hr30/whole-body-p0.1/electrical/motion-controller-p0.1/uart-pin-map.csv"
+                       ],
+    "artifacts":  [
+                      {
+                          "path":  "hr30-motion-controller-stm32h743.elf",
+                          "bytes":  132688,
+                          "sha256":  "87059adf326702969b142a041172b966e514f0623f648188f85023814b59262a",
+                          "builds_match":  true
+                      },
+                      {
+                          "path":  "hr30-motion-controller-stm32h743.bin",
+                          "bytes":  2164,
+                          "sha256":  "69e51e53b7f935a75e5c41b1f9c194982ea9f7295dc237247e6df4009b170365",
+                          "builds_match":  true
+                      },
+                      {
+                          "path":  "hr30-motion-controller-stm32h743.hex",
+                          "bytes":  6147,
+                          "sha256":  "bf474929fb4b22a73a5f37ceee83898015f62a749f46d113d5ec81c5124ff7b3",
+                          "builds_match":  true
+                      },
+                      {
+                          "path":  "hr30-motion-controller-stm32h743.map",
+                          "bytes":  5090,
+                          "sha256":  "0f59c5c3f67e930ffda9e8c48fcb46804298887d9a1528f70fc4437bdeb16bf0",
+                          "builds_match":  true
+                      },
+                      {
+                          "path":  "disassembly.txt",
+                          "bytes":  40162,
+                          "sha256":  "dd9afbcc5d6d367c75ea6ed3c80d7115e66d700d969a0884dd9e67a7534dec6a",
+                          "builds_match":  true
+                      },
+                      {
+                          "path":  "elf-inspection.txt",
+                          "bytes":  4701,
+                          "sha256":  "14d6c3a2e86e5e3b1801d9450f06366dd6e2142827e9670a550ff5cfd79eca0b",
+                          "builds_match":  true
+                      },
+                      {
+                          "path":  "size.txt",
+                          "bytes":  343,
+                          "sha256":  "b6ab0dac53cd84141a7d52d52db0a1bf34123df0e17efe0e887dd3e4dfc86ea8",
+                          "builds_match":  true
+                      },
+                      {
+                          "path":  "core-vector-output.txt",
+                          "bytes":  187,
+                          "sha256":  "2b6dca77e262d89bb039f4a6bba7e7ccf8e9b7a6876995df15ac201df1f98999",
+                          "builds_match":  true
+                      },
+                      {
+                          "path":  "mmio-vector-output.txt",
+                          "bytes":  149,
+                          "sha256":  "b3058fd7c534f53e0e3f480a8dcaa34a3eb3734cc9a10b1e6b0292aaec67b3e4",
+                          "builds_match":  true
+                      },
+                      {
+                          "path":  "hr30_motion.su",
+                          "bytes":  404,
+                          "sha256":  "867029327cf33c6b847cd92447e028f0769ce9d5174456907ffe511b14331d82",
+                          "builds_match":  true
+                      },
+                      {
+                          "path":  "hr30_stm32h743_target.su",
+                          "bytes":  662,
+                          "sha256":  "3921690971136547a1ccc525c82ce645de9536f62ed10f8ea34c90f635300cf0",
+                          "builds_match":  true
+                      }
+                  ],
+    "primary_sources":  [
+                            {
+                                "document":  "ST DS12110",
+                                "revision":  "Rev 11 / January 2026",
+                                "url":  "https://www.st.com/resource/en/datasheet/stm32h743vi.pdf"
+                            },
+                            {
+                                "document":  "ST RM0433",
+                                "revision":  "Rev 8 / January 2023",
+                                "url":  "https://www.st.com/resource/en/reference_manual/rm0433-stm32h742-stm32h743753-and-stm32h750-value-line-advanced-armbased-32bit-mcus-stmicroelectronics.pdf"
+                            },
+                            {
+                                "document":  "ST PM0253",
+                                "revision":  "Rev 6 / May 2026",
+                                "url":  "https://www.st.com/resource/en/programming_manual/DM00237416.pdf"
+                            },
+                            {
+                                "document":  "ST ES0392",
+                                "revision":  "Rev 15 / September 2025",
+                                "url":  "https://www.st.com/resource/en/errata_sheet/es0392-stm32h742xig-stm32h743xig-stm32h750xb-stm32h753xi-device-errata-stmicroelectronics.pdf"
+                            },
+                            {
+                                "document":  "ST cmsis-device-h7",
+                                "revision":  "v1.10.7 / commit de8243d2c15f87936f28a49fcd9e6f5ba10fc233 / 2026-02-04",
+                                "url":  "https://github.com/STMicroelectronics/cmsis-device-h7"
+                            }
+                        ]
+}

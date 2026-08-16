@@ -183,7 +183,7 @@ def hold_rows() -> list[dict]:
         ("FER-H05", "safety requirements and PLr/SIL allocation open", "SRS, risk assessment, common-cause analysis and qualified validation plan"),
         ("FER-H06", "total stopping time/distance unallocated", "measured sensor/logic/contactor/drive decay plus mechanical overtravel"),
         ("FER-H07", "boards unbuilt and uninspected", "received PCB/assembly inspection, coupons, isolation, thermal and fault testing"),
-        ("FER-H08", "torque-disabled STM32 target firmware configuration unapproved", "portable C host build now passes; target build, hashes, startup/GPIO review, HIL boot/fault behavior and write-path audit remain required"),
+        ("FER-H08", "unflashed torque-disabled STM32 target configuration remains unapproved", "reproducible target ELF/BIN and static startup/GPIO evidence exist; independent review, approved hash, flashing, reset-state traces, HIL boot/fault behavior and physical write-path audit remain required"),
         ("FER-H09", "test site/restraint/fire response not commissioned", "physical readiness inspection and named trained operators"),
         ("FER-H10", "qualified multi-discipline signoff absent", "all five signoffs on the identical frozen configuration"),
     ]
@@ -242,7 +242,7 @@ def main() -> int:
     gates, states = gate_rows(), state_rows()
     traveler, faults = traveler_rows(), fault_rows()
     measurements, signoffs, holds = measurement_rows(), signoff_rows(), hold_rows()
-    baseline = [{"baseline_id": "HR30-FER-B01", "configuration": "HR-30 whole-body P0.1 tether-first candidate", "branch": "RECORDED AT EXECUTION", "commit": "RECORDED AT EXECUTION - NOT FROZEN BY GENERATION", "as_built_serial": "NONE - ROBOT NOT BUILT", "firmware_hash": "HOST NO-MOTION EVIDENCE PRESENT; APPROVED TARGET HASH SELECTION REQUIRED", "software_hash": "NONE - SELECTION REQUIRED", "physical_configuration_frozen": "NO", "authority": AUTHORITY, "warning": WARNING}]
+    baseline = [{"baseline_id": "HR30-FER-B01", "configuration": "HR-30 whole-body P0.1 tether-first candidate", "branch": "RECORDED AT EXECUTION", "commit": "RECORDED AT EXECUTION - NOT FROZEN BY GENERATION", "as_built_serial": "NONE - ROBOT NOT BUILT", "firmware_hash": "REPRODUCIBLE UNFLASHED TARGET EVIDENCE PRESENT; APPROVED EXECUTION HASH SELECTION REQUIRED", "software_hash": "NONE - SELECTION REQUIRED", "physical_configuration_frozen": "NO", "authority": AUTHORITY, "warning": WARNING}]
     write_csv(OUT / "source-binding.csv", sources)
     write_csv(OUT / "configuration-baseline.csv", baseline)
     write_csv(OUT / "energization-gate-register.csv", gates)
@@ -258,7 +258,8 @@ def main() -> int:
         "inspection_check_count": len(traveler), "fault_injection_case_count": len(faults), "measurement_record_count": len(measurements),
         "qualified_signoff_role_count": len(signoffs), "open_hold_count": len(holds),
         "physical_gate_executed_count": 0, "fault_injection_executed_count": 0, "qualified_signoff_count": 0,
-        "host_no_motion_firmware_evidence_present": True, "target_no_motion_firmware_approved": False,
+        "host_no_motion_firmware_evidence_present": True, "stm32_target_binary_built": True,
+        "stm32_target_binary_flashed": False, "target_no_motion_firmware_approved": False,
         "first_energization_ready": False, "motion_in_scope": False, "configuration_frozen": False,
         "connection_authority": False, "powered_test_authority": False, "motion_authority": False, "energization_authority": False,
     }

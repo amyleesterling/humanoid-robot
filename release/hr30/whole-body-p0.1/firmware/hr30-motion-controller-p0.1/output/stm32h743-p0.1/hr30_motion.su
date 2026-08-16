@@ -1,0 +1,5 @@
+firmware/hr30-motion-controller/src/hr30_motion.c:64:hr30_controller_init	0	static
+firmware/hr30-motion-controller/src/hr30_motion.c:74:hr30_controller_step	16	static
+firmware/hr30-motion-controller/src/hr30_motion.c:31:validate_request	0	static
+firmware/hr30-motion-controller/src/hr30_motion.c:162:hr30_state_name	0	static
+firmware/hr30-motion-controller/src/hr30_motion.c:172:hr30_fault_name	0	static

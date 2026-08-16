@@ -16,15 +16,15 @@
     "energization_authority":  false,
     "source_sha256":  {
                           "firmware/hr30-motion-controller/include/hr30_motion.h":  "77e6e9fabb4805386533ee50f8cad48efd0124cde0b5de88c8de0e6163a5dc71",
-                          "firmware/hr30-motion-controller/src/hr30_motion.c":  "3e882240a42898135f293c2fac7bd2acd05ec26e735e641db2f966b2aaf0fafd",
-                          "firmware/hr30-motion-controller/tests/hr30_motion_vector_runner.c":  "935b2f3984cf79ab80bc1ffbc077fb490f15b5d63c0d71e2b3bdeba50c2b30ee",
-                          "firmware/hr30-motion-controller/platform/stm32h743/hr30_stm32h743_io.h":  "462cdfa156aa876f2e2cd0a7c884ce84afa7cce8b2bc6f61a87b3d43b915b5ec",
+                          "firmware/hr30-motion-controller/src/hr30_motion.c":  "f74c30ab9040c10a03e02b128c79a4d39dbc6e32c6b986a1e8b94bee3126064a",
+                          "firmware/hr30-motion-controller/tests/hr30_motion_vector_runner.c":  "f15b262577129b0f1ee1b955c984d3c54631ff4776fce36dd9432a21165c3739",
+                          "firmware/hr30-motion-controller/platform/stm32h743/hr30_stm32h743_io.h":  "2d0d176dc416ada14703679e7682c65fbff730761008dafdf9d41e20fc20525c",
                           "tools/build_hr30_motion_host_runner.ps1":  "8ab64b54125b17690d40e19108b5f2998056c9010196dc49c4d0b64df79f468e"
                       },
     "binary":  {
                    "path":  "hr30_motion_vector_runner.exe",
                    "bytes":  89600,
-                   "sha256":  "efe1819b7373b9be050ab7f14b72bc2aaa8247a73999e50625646635de8db6d7"
+                   "sha256":  "ee14eff9ef9ab7fddf84cbb4f0f113012d439e3c53e6407f4ba8b2cfd042a5b6"
                },
     "execution_log":  {
                           "path":  "vector-output.txt",

@@ -396,5 +396,7 @@
   "hr30_no_motion_firmware_bus_count": 8,
   "hr30_no_motion_host_vectors_pass": true,
   "hr30_no_motion_target_hil_executed": false,
-  "hr30_no_motion_firmware_approved": false
+  "hr30_no_motion_firmware_approved": false,
+  "hr30_no_motion_stm32_target_built": true,
+  "hr30_no_motion_stm32_target_flashed": false
 }

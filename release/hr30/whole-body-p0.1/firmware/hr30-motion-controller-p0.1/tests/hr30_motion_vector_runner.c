@@ -88,22 +88,28 @@ int main(void) {
     REQUIRE(controller.output.state == HR30_STATE_LATCHED_FAULT);
     REQUIRE(controller.output.fault == HR30_FAULT_UNEXPECTED_TORQUE);
     REQUIRE(controller.output.torque_enable_mask == 0u);
+    REQUIRE(!controller.output.heartbeat_level);
+
+    hr30_controller_step(&controller, &input, NULL, 11u);
+    REQUIRE(controller.output.state == HR30_STATE_LATCHED_FAULT);
+    REQUIRE(!controller.output.heartbeat_level);
 
     input = safe_inputs();
     input.reset_request = true;
-    hr30_controller_step(&controller, &input, NULL, 11u);
+    hr30_controller_step(&controller, &input, NULL, 12u);
     REQUIRE(controller.output.state == HR30_STATE_SAFE_HOLD);
     REQUIRE(controller.output.fault == HR30_FAULT_NONE);
 
-    finish_boot(&controller, &input, 12u);
+    finish_boot(&controller, &input, 13u);
     input.safety_permit_hardwired = true;
     input.reset_request = false;
-    hr30_controller_step(&controller, &input, NULL, 16u);
+    hr30_controller_step(&controller, &input, NULL, 17u);
     REQUIRE(controller.output.state == HR30_STATE_PERMIT_OBSERVED);
     input.safety_permit_hardwired = false;
-    hr30_controller_step(&controller, &input, NULL, 17u);
+    hr30_controller_step(&controller, &input, NULL, 18u);
     REQUIRE(controller.output.state == HR30_STATE_LATCHED_FAULT);
     REQUIRE(controller.output.fault == HR30_FAULT_PERMIT_DROPOUT);
+    REQUIRE(!controller.output.heartbeat_level);
 
     hr30_controller_init(&controller);
     input = safe_inputs();

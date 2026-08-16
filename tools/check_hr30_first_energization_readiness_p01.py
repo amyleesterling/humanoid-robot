@@ -49,7 +49,7 @@ def main() -> int:
     for key in ["first_energization_ready", "motion_in_scope", "configuration_frozen", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]:
         need(status[key] is False, f"fail-closed status violated: {key}")
     need(status["physical_gate_executed_count"] == status["fault_injection_executed_count"] == status["qualified_signoff_count"] == 0, "execution count overclaim")
-    need(status["host_no_motion_firmware_evidence_present"] is True and status["target_no_motion_firmware_approved"] is False, "firmware evidence/approval boundary drift")
+    need(status["host_no_motion_firmware_evidence_present"] is True and status["stm32_target_binary_built"] is True and status["stm32_target_binary_flashed"] is False and status["target_no_motion_firmware_approved"] is False, "firmware evidence/approval boundary drift")
     need((OUT / "first-energization-readiness-source.py").read_bytes() == GEN.read_bytes(), "generator snapshot drift")
     manifest = rows(OUT / "file-manifest.csv")
     expected = sorted(p.relative_to(OUT).as_posix() for p in OUT.rglob("*") if p.is_file() and p.name != "file-manifest.csv")

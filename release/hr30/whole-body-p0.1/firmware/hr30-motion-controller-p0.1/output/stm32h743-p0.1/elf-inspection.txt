@@ -1,0 +1,79 @@
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           ARM
+  Version:                           0x1
+  Entry point address:               0x8000299
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          132288 (bytes into file)
+  Flags:                             0x5000200
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         6
+  Size of section headers:           40 (bytes)
+  Number of section headers:         10
+  Section header string table index: 8
+There are 10 section headers, starting at offset 0x204c0:
+
+Section Headers:
+  [Nr] Name              Type            Address  Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .isr_vector       PROGBITS        08000000 010000 000298 00   A  0   0 1024
+  [ 2] .text             PROGBITS        08000298 010298 0005cc 00  AX  0   0  8
+  [ 3] .ARM.exidx        ARM_EXIDX       08000864 010864 000010 00  AL  2   0  4
+  [ 4] .data             PROGBITS        20000000 010874 000000 00   A  0   0  4
+  [ 5] .bss              NOBITS          20000000 020000 000004 00  WA  0   0  4
+  [ 6] .ARM.attributes   ARM_ATTRIBUTES  00000000 020000 000025 00      0   0  1
+  [ 7] .symtab           SYMTAB          00000000 020028 000250 10      9  21  4
+  [ 8] .shstrtab         STRTAB          00000000 020278 000053 00      0   0  1
+  [ 9] .strtab           STRTAB          00000000 0202cb 0001f2 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  R (retain), y (purecode), p (processor specific)
+
+Symbol table '.symtab' contains 37 entries:
+   Num:    Value  Size Type    Bind   Vis       Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT   UND
+     1: 08000298     0 NOTYPE  LOCAL  DEFAULT     2 $t
+     2: 080002f4     0 NOTYPE  LOCAL  DEFAULT     2 $t
+     3: 080002d8     0 NOTYPE  LOCAL  DEFAULT     2 $d
+     4: 00000000     0 FILE    LOCAL  DEFAULT   ABS hr30_stm32h743_target.c
+     5: 08000300     0 NOTYPE  LOCAL  DEFAULT     2 $t
+     6: 08000804    15 OBJECT  LOCAL  DEFAULT     2 hr30_target_early_safe.safe_outputs
+     7: 08000415    92 FUNC    LOCAL  DEFAULT     2 configure_output_low
+     8: 08000822    24 OBJECT  LOCAL  DEFAULT     2 direction_pins
+     9: 08000813    15 OBJECT  LOCAL  DEFAULT     2 hr30_target_early_safe.fail_low_inputs
+    10: 0800083a    39 OBJECT  LOCAL  DEFAULT     2 uart_signal_pins
+    11: 08000414     0 NOTYPE  LOCAL  DEFAULT     2 $t
+    12: 20000000     2 OBJECT  LOCAL  DEFAULT     5 g_hr30_bus_write_attempt_mask
+    13: 08000470     0 NOTYPE  LOCAL  DEFAULT     2 $t
+    14: 08000560     0 NOTYPE  LOCAL  DEFAULT     2 $t
+    15: 08000618     0 NOTYPE  LOCAL  DEFAULT     2 $t
+    16: 00000000     0 FILE    LOCAL  DEFAULT   ABS hr30_motion.c
+    17: 08000638     0 NOTYPE  LOCAL  DEFAULT     2 $t
+    18: 0800065a     0 NOTYPE  LOCAL  DEFAULT     2 $t
+    19: 080007a1    94 FUNC    LOCAL  DEFAULT     2 validate_request
+    20: 080007a0     0 NOTYPE  LOCAL  DEFAULT     2 $t
+    21: 08000000   664 OBJECT  GLOBAL DEFAULT     1 g_hr30_vectors
+    22: 08000299    62 FUNC    GLOBAL DEFAULT     2 Reset_Handler
+    23: 080002f5     8 FUNC    GLOBAL DEFAULT     2 Default_Handler
+    24: 20020000     0 NOTYPE  GLOBAL DEFAULT   ABS _estack
+    25: 08000301   276 FUNC    GLOBAL DEFAULT     2 hr30_target_early_safe
+    26: 08000561   182 FUNC    GLOBAL DEFAULT     2 hr30_target_main
+    27: 08000619    28 FUNC    GLOBAL DEFAULT     2 hr30_target_fault_hold
+    28: 08000874     0 NOTYPE  GLOBAL DEFAULT   ABS _sidata
+    29: 20000000     0 NOTYPE  GLOBAL DEFAULT     4 _sdata
+    30: 20000000     0 NOTYPE  GLOBAL DEFAULT     4 _edata
+    31: 20000000     0 NOTYPE  GLOBAL DEFAULT     5 _sbss
+    32: 20000004     0 NOTYPE  GLOBAL DEFAULT     5 _ebss
+    33: 08000800     4 OBJECT  GLOBAL DEFAULT     2 g_hr30_target_configuration_word
+    34: 08000471   234 FUNC    GLOBAL DEFAULT     2 hr30_target_apply_outputs
+    35: 08000639    34 FUNC    GLOBAL DEFAULT     2 hr30_controller_init
+    36: 0800065b   326 FUNC    GLOBAL DEFAULT     2 hr30_controller_step
