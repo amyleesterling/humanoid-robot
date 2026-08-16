@@ -5,7 +5,7 @@
   "model_family_count": 4,
   "nonzero_static_screen_pass_count": 19,
   "static_screen_not_applicable_count": 6,
-  "simultaneous_candidate_cap_sum_a": 47.67847,
+  "simultaneous_candidate_cap_sum_a": 46.67779,
   "knee_ratio": 2.5,
   "knee_ratio_changed_from": 2.0,
   "old_knee_required_endpoint_current_a": 3.066,

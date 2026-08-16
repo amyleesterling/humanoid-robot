@@ -145,10 +145,10 @@ def actuator_choice(axis_id: str) -> tuple[str, float, float, float, str]:
         name = "ROBOTIS XH540-W270-R"
         mass = ACTUATOR_SOURCES[name]["mass_kg"]
         return name, mass, mass, mass, "evaluation candidate; continuous-duty and walking suitability unproved"
-    if "SHOULDER_ROLL" in axis_id:
+    if "SHOULDER_" in axis_id:
         name = "ROBOTIS XM430-W350-R"
         mass = ACTUATOR_SOURCES[name]["mass_kg"]
-        return name, mass, mass, mass, "whole-body static endpoint candidate; continuous, dynamic and thermal proof remains open"
+        return name, mass, mass, mass, "1.5:1 reduced whole-body shoulder candidate; continuous, dynamic and thermal proof remains open"
     if "ELBOW_PITCH" in axis_id:
         name = "ROBOTIS XM430-W350-R"
         mass = ACTUATOR_SOURCES[name]["mass_kg"]
@@ -625,7 +625,7 @@ def write_lightweight_register(summary: dict) -> None:
         },
         {
             "decision_id": "HR30-LW-008", "affected_system": "shoulder roll, wrists and ankles",
-            "baseline_candidate": "165 g XM540 shoulder-roll, 82 g XM430 wrists and 165 g XH540 ankles",
+            "baseline_candidate": "165 g XM540 shoulder-pitch, 82 g XM430 shoulder-roll/elbows, 23 g XC330 wrists and 82 g XM430 ankles",
             "lightweight_candidate": "82 g XM430 shoulder-roll, 23 g XC330 wrists and 82 g XM430 ankles with 2.0:1/2.5:1 reductions",
             "mass_effect": "published actuator masses included in whole-body subtotal", "engineering_hold": "continuous duty, belt capacity, contact loads, thermal behavior and physical correlation open",
         },

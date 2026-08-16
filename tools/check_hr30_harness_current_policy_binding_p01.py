@@ -45,7 +45,7 @@ def main() -> int:
     need(len(sources) == 6 and all(r["sha256"] == sha(ROOT / r["path"]) for r in sources[:4]), "source hash drift")
     stall = sum(float(r["published_stall_endpoint_a"]) for r in axis)
     cap = sum(float(r["candidate_internal_limit_a"]) for r in axis)
-    need(abs(stall - 76.08) < 1e-9 and abs(cap - 47.67847) < 1e-6, "whole-body current boundaries drift")
+    need(abs(stall - 71.88) < 1e-9 and abs(cap - 46.67779) < 1e-6, "whole-body current boundaries drift")
     need(all(r["internal_limit_below_catalog_boundary"] == "YES" for r in axis), "per-axis connector numeric screen failed")
     need(all(r["wire_construction"] == "SELECTION REQUIRED" and r["branch_protection"] == "SELECTION REQUIRED" for r in axis), "physical selection invented")
     by_bus: dict[str, list[dict]] = defaultdict(list)
@@ -73,10 +73,10 @@ def main() -> int:
     need(root_status["harness_current_policy_bound_axis_count"] == 25, "root status binding missing")
     need(root_status["harness_stall_endpoint_used_as_normal_demand"] is False, "root status overclaim")
     page = (OUT / "index.html").read_text(encoding="utf-8")
-    need("font:17px" in page and "font-size:16px" in page and "76.08 A" in page and "47.678 A" in page, "interactive guide content/legibility drift")
+    need("font:17px" in page and "font-size:16px" in page and "71.88 A" in page and "46.678 A" in page, "interactive guide content/legibility drift")
     root_page = (WHOLE / "index.html").read_text(encoding="utf-8")
     need("HR30-HARNESS-CURRENT-BINDING-P01-START" in root_page and "25 / 25" in root_page, "root guide integration missing")
-    print("PASS: 25/25 HR-30 power pairs bound to current policy; 76.08 A stall and 47.67847 A internal-cap boundaries separated; conductors/protection/authority open")
+    print("PASS: 25/25 HR-30 power pairs bound to current policy; 71.88 A stall and 46.67779 A internal-cap boundaries separated; conductors/protection/authority open")
     return 0
 
 

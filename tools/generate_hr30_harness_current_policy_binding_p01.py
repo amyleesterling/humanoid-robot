@@ -211,12 +211,12 @@ def main() -> int:
 
     stall_sum = sum(float(r["published_stall_endpoint_a"]) for r in axis_rows)
     cap_sum = sum(float(r["candidate_internal_limit_a"]) for r in axis_rows)
-    if abs(stall_sum - 76.08) > 1e-9 or abs(cap_sum - 47.67847) > 1e-6:
+    if abs(stall_sum - 71.88) > 1e-9 or abs(cap_sum - 46.67779) > 1e-6:
         raise RuntimeError(f"whole-body boundary drift: stall={stall_sum}, cap={cap_sum}")
 
     decisions = [
-        {"decision_id": "HCP-D01", "subject": "76.08 A published-stall sum", "disposition": "RETAIN ONLY AS SEPARATE MOMENTARY ENDPOINT/FAULT BOUNDARY", "reason": "not normal demand and not a conductor, protection or source rating", "authority": AUTHORITY, "warning": WARNING},
-        {"decision_id": "HCP-D02", "subject": "47.67847 A candidate internal-cap sum", "disposition": "BIND TO 25 AXES; DO NOT PROMOTE TO HARNESS RATING", "reason": "internal register arithmetic lacks external-current, duty, diversity, regeneration and thermal correlation", "authority": AUTHORITY, "warning": WARNING},
+        {"decision_id": "HCP-D01", "subject": "71.88 A published-stall sum", "disposition": "RETAIN ONLY AS SEPARATE MOMENTARY ENDPOINT/FAULT BOUNDARY", "reason": "not normal demand and not a conductor, protection or source rating", "authority": AUTHORITY, "warning": WARNING},
+        {"decision_id": "HCP-D02", "subject": "46.67779 A candidate internal-cap sum", "disposition": "BIND TO 25 AXES; DO NOT PROMOTE TO HARNESS RATING", "reason": "internal register arithmetic lacks external-current, duty, diversity, regeneration and thermal correlation", "authority": AUTHORITY, "warning": WARNING},
         {"decision_id": "HCP-D03", "subject": "JST EH 3 A catalogue boundary", "disposition": "NUMERIC PER-AXIS SCREEN PASSES; APPLICATION VALIDATION OPEN", "reason": "catalogue boundary does not close contact temperature, flex cable, crimp, bundling or fault clearing", "authority": AUTHORITY, "warning": WARNING},
         {"decision_id": "HCP-D04", "subject": "standard ROBOTIS daisy cables", "disposition": "REJECT FOR DATA-ONLY INTER-ACTUATOR LINKS", "reason": "standard X3P/X4P includes VDD and would parallel individually protected feeds", "authority": AUTHORITY, "warning": WARNING},
         {"decision_id": "HCP-D05", "subject": "U2D2 Power Hub", "disposition": "REJECT FOR SUMMED WHOLE-BODY OR LEG POWER", "reason": "documented 10 A aggregate maximum is below either leg boundary and is not a 25-branch PDU", "authority": AUTHORITY, "warning": WARNING},

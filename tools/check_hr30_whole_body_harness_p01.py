@@ -29,7 +29,7 @@ def main() -> int:
     need(len(pins) == 4 and {r["family"] for r in pins} == {"XH540","XM540","XM430","XC330"}, "four actuator families missing")
     need(all(r["accessed_date"] == "2026-08-14" and r["closure_state"] == "VERIFIED AT ACTUATOR INTERFACE ONLY" and r["manufacturer_published_dynamixel_wire_gauge"] == "21 AWG" for r in pins), "actuator-side evidence state drift")
     need(len(buses) == 8 and len(drops) == 25 and len({r["axis_id"] for r in drops}) == 25, "whole-body bus/drop coverage incomplete")
-    need(abs(sum(float(r["candidate_12v_stall_endpoint_sum_a"]) for r in buses) - 76.08) < 1e-9, "published stall endpoint arithmetic drift")
+    need(abs(sum(float(r["candidate_12v_stall_endpoint_sum_a"]) for r in buses) - 71.88) < 1e-9, "published stall endpoint arithmetic drift")
     need(all("NOT NORMAL DEMAND" in r["endpoint_use_boundary"] and "Carrier" in r["controller_interface"] and "NO ACTUATOR VDD" in r["data_power_boundary"] for r in buses), "endpoint/controller release boundary missing")
     need(len(corridors) == 12 and {"HN01_HEAD_BRANCH","HN01_HEAD_POWER_BRANCH"} <= {r["route_id"] for r in corridors}, "twelve routes or separate head routes missing")
     need(sum(r["service_class"] == "ACTUATOR POWER" for r in corridors) == 6, "six power routes required")

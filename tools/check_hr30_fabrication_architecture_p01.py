@@ -84,7 +84,7 @@ def main() -> int:
     require(not package["fabrication_drawings_released"] and not package["harness_selected_or_validated"], "main package release boundary overclaim")
 
     bom = {row["item_id"]: row for row in csv.DictReader((SRC / "whole-robot-candidate-bom.csv").open(encoding="utf-8"))}
-    require(bom["HR30-BOM-003"]["quantity"] == "8" and bom["HR30-BOM-003"]["function"] == "shoulder-roll/elbow/ankle actuator", "XM430 whole-body BOM allocation stale")
+    require(bom["HR30-BOM-003"]["quantity"] == "10" and bom["HR30-BOM-003"]["function"] == "shoulder/elbow/ankle actuator", "XM430 whole-body BOM allocation stale")
     require(bom["HR30-BOM-004"]["quantity"] == "6" and bom["HR30-BOM-004"]["function"] == "head/gripper/wrist actuator", "XC330 whole-body BOM allocation stale")
     require(
         "12 located route-derived cable bundles" in bom["HR30-BOM-030"]["candidate"]

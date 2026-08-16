@@ -2,7 +2,7 @@
 
 This successor package maps every one of the 39 pulley/coupler placeholders in
 the base body architecture to an existing detailed successor or to new
-editable geometry.  It installs four catalogue-defined 20:20 shoulder drives
+editable geometry.  It installs four catalogue-defined 16:24 shoulder drives
 and nine project-owned direct-output clamp adapters into the complete robot.
 It is a coherent design candidate, not a procurement, fabrication, capacity,
 motion, safety, or energization release.
@@ -65,11 +65,11 @@ SHOULDER_AXES = (
 )
 DIRECT_AXES = tuple(axis for spec in DIRECT_ADAPTERS for axis in spec.axes)
 SHOULDER_DRIVE = drives.Drive(
-    "SD-10", "JMF-03-SHOULDER-GIMBAL", 20, 20, 37, 10.0,
-    "GPA20GT5090-A-P10", "GPA20GT5090-A-P10", "GBN185EV5GT-090",
-    "XM540 pitch / XM430 roll", "HN13-N101 pitch / HN12-N101 roll", SHOULDER_AXES,
+    "SD-15S", "JMF-03-SHOULDER-GIMBAL", 16, 24, 37, 10.0,
+    "GPA16GT5090-A-P10", "GPA24GT5090-A-P10", "GBN185EV5GT-090",
+    "XM430 all shoulder axes", "HN12-N101 all shoulder axes", SHOULDER_AXES,
 )
-SHOULDER_CENTER_MM = 42.5
+SHOULDER_CENTER_MM = drives.solve_center(SHOULDER_DRIVE)
 
 
 @dataclass(frozen=True)
@@ -158,11 +158,11 @@ def shoulder_offset(axis_id: str) -> cq.Vector:
 
 
 def shoulder_horn_key(axis_id: str) -> str:
-    return "HN13" if "PITCH" in axis_id else "HN12"
+    return "HN12"
 
 
 def shoulder_adapter_spec(axis_id: str):
-    target = "MA-HN13-P10" if "PITCH" in axis_id else "MA-HN12-P10"
+    target = "MA-HN12-P10"
     return next(item for item in leg_adapters.MOTOR_ADAPTERS if item.adapter_id == target)
 
 
@@ -225,8 +225,8 @@ def build_successor() -> tuple[list[body.Component], list[InstalledPart], list[d
         outward_sign = 1.0 if axis_id.startswith("L_") else -1.0
         outward_axis = axis_dir.multiply(outward_sign)
 
-        local_output = drives.pulley_envelope(20, 10.0, 0.0)
-        local_motor = drives.pulley_envelope(20, 10.0, SHOULDER_CENTER_MM)
+        local_output = drives.pulley_envelope(24, 10.0, 0.0)
+        local_motor = drives.pulley_envelope(16, 10.0, SHOULDER_CENTER_MM)
         local_belt = drives.belt_envelope(SHOULDER_DRIVE, SHOULDER_CENTER_MM)
         output = installed_legs.map_local(local_output, center, axis_dir, drive_dir)
         motor_pulley = installed_legs.map_local(local_motor, center, axis_dir, drive_dir)
@@ -245,8 +245,8 @@ def build_successor() -> tuple[list[body.Component], list[InstalledPart], list[d
         actuator_visual = body.oriented_box((actuator_output.x, actuator_output.y, actuator_output.z), (axis_dir.x, axis_dir.y, axis_dir.z), family["body_w"], family["body_h"], family["body_d"])
 
         axis_parts = (
-            InstalledPart(axis_id, f"{axis_id}_OUTPUT_PULLEY", "catalogue 20-tooth 5GT P-bore pulley envelope", output, output, (0.96, 0.55, 0.08, 1.0), "GPA20GT5090-A-P10; vendor tooth B-Rep not claimed"),
-            InstalledPart(axis_id, f"{axis_id}_MOTOR_PULLEY", "catalogue 20-tooth 5GT P-bore pulley envelope", motor_pulley, motor_pulley, (0.98, 0.72, 0.12, 1.0), "GPA20GT5090-A-P10; vendor tooth B-Rep not claimed"),
+            InstalledPart(axis_id, f"{axis_id}_OUTPUT_PULLEY", "catalogue 24-tooth 5GT P-bore pulley envelope", output, output, (0.96, 0.55, 0.08, 1.0), "GPA24GT5090-A-P10; vendor tooth B-Rep not claimed"),
+            InstalledPart(axis_id, f"{axis_id}_MOTOR_PULLEY", "catalogue 16-tooth 5GT P-bore pulley envelope", motor_pulley, motor_pulley, (0.98, 0.72, 0.12, 1.0), "GPA16GT5090-A-P10; vendor tooth B-Rep not claimed"),
             InstalledPart(axis_id, f"{axis_id}_BELT", "catalogue 37-tooth EV5GT belt routing envelope", belt, belt, (0.10, 0.13, 0.17, 1.0), "GBN185EV5GT-090; 185 mm pitch length"),
             InstalledPart(axis_id, f"{axis_id}_HORN", "exact manufacturer horn", horn, horn, (0.45, 0.50, 0.57, 1.0), f"{horn_spec.horn_id} exact STEP"),
             InstalledPart(axis_id, f"{axis_id}_MOTOR_ADAPTER", "project horn-to-pulley adapter", motor_adapter, motor_adapter, (0.95, 0.62, 0.08, 1.0), adapter_spec.adapter_id),
@@ -254,11 +254,11 @@ def build_successor() -> tuple[list[body.Component], list[InstalledPart], list[d
         )
         parts.extend(axis_parts)
         shoulder_rows.append({
-            "axis_id": axis_id, "drive_id": "SD-10", "actuator": "XM540-W270-R" if "PITCH" in axis_id else "XM430-W350-R",
+            "axis_id": axis_id, "drive_id": "SD-15S", "actuator": "XM430-W350-R",
             "actuator_source": source_id, "horn": horn_spec.horn_id, "motor_adapter": adapter_spec.adapter_id,
-            "motor_pulley": "GPA20GT5090-A-P10", "output_pulley": "GPA20GT5090-A-P10", "belt": "GBN185EV5GT-090",
-            "teeth_ratio": "20:20 / 1.0:1", "pitch_mm": "5.0", "belt_width_mm": "9.0", "belt_teeth": "37",
-            "solved_pitch_center_distance_mm": f"{SHOULDER_CENTER_MM:.6f}", "pitch_length_check_mm": f"{drives.belt_length(SHOULDER_CENTER_MM, 20, 20):.6f}",
+            "motor_pulley": "GPA16GT5090-A-P10", "output_pulley": "GPA24GT5090-A-P10", "belt": "GBN185EV5GT-090",
+            "teeth_ratio": "16:24 / 1.5:1", "pitch_mm": "5.0", "belt_width_mm": "9.0", "belt_teeth": "37",
+            "solved_pitch_center_distance_mm": f"{SHOULDER_CENTER_MM:.6f}", "pitch_length_check_mm": f"{drives.belt_length(SHOULDER_CENTER_MM, 16, 24):.6f}",
             "geometry_state": "CATALOGUE PRODUCT ENVELOPES + EXACT HORN + EDITABLE ADAPTER INSTALLED",
             "release_boundary": "WRITTEN QUOTE, RECEIPT, FIT, RETENTION, TENSION, LOAD/LIFE, GUARD, CABLE SWEEP AND PHYSICAL PROOF OPEN",
             "warning": WARNING,
@@ -283,7 +283,7 @@ def disposition_rows() -> list[dict]:
             successor = leg_alloc[axis_id]["motor_pulley" if "MOTOR" in part_type else "output_pulley"]
             state = "SUPERSEDED BY INSTALLED MISUMI CATALOGUE PRODUCT CANDIDATE"
         elif axis_id in SHOULDER_AXES and "PULLEY" in part_type:
-            successor = "GPA20GT5090-A-P10 / SD-10 installed shoulder drive"
+            successor = "GPA16/GPA24GT5090-A-P10 / SD-15S installed shoulder drive"
             state = "SUPERSEDED BY INSTALLED MISUMI CATALOGUE PRODUCT CANDIDATE"
         elif axis_id in DIRECT_AXES and "COUPLER" in part_type:
             successor = direct_spec_for_axis(axis_id).adapter_id
@@ -305,7 +305,7 @@ def drawing_svg(spec: DirectAdapter) -> str:
 
 
 def render_index() -> str:
-    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 transmission closure P0.1</title><script type="module" src="../vendor/model-viewer.min.js"></script><style>:root{{--deep:#081e38;--navy:#123b68;--pale:#eff9fe;--gold:#f2b91d;--line:#acd8ed;--ink:#152b43}}*{{box-sizing:border-box}}html,body{{max-width:100%;overflow-x:clip}}body{{margin:0;background:var(--pale);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,footer{{padding:32px max(20px,calc((100vw - 1200px)/2));background:var(--deep);color:white}}h1{{font-size:clamp(36px,6vw,66px);line-height:1.04}}h2{{font-size:clamp(28px,4vw,42px);color:var(--navy)}}h3{{font-size:22px;color:var(--navy)}}.warning{{padding:16px;background:var(--gold);color:#17243a;border:3px solid #8a5b00;font-weight:900}}main{{max-width:1200px;margin:auto;padding:28px 20px 80px}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}}.card,.viewer,.panel{{background:white;border:2px solid var(--line);border-radius:18px;padding:18px;overflow:hidden}}.metric{{font-size:36px;font-weight:900;color:var(--navy)}}model-viewer{{display:block;width:100%;height:clamp(560px,72vh,780px);background:radial-gradient(circle,#fff,var(--pale))}}.table-wrap{{overflow:auto;border:2px solid var(--line);border-radius:14px}}table{{border-collapse:collapse;min-width:900px;width:100%}}th,td{{padding:14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:14px}}th{{background:var(--navy);color:white}}a{{color:#075b9b;font-weight:800}}@media(max-width:560px){{body{{font-size:16px}}.grid{{grid-template-columns:1fr}}model-viewer{{height:520px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><h1>Every transmission placeholder now has a named successor.</h1><p>The complete robot carries product-specific leg and shoulder drives, detailed rack-and-pinion hands, and nine editable direct-output clamp adapters. The geometry is tangible; engineering release evidence remains deliberately open.</p></header><main><section><h2>Orbit the successor assembly</h2><div class="viewer"><model-viewer src="HR-30_transmissions_installed_candidate.glb" alt="Complete 762 millimetre HR-30 humanoid with installed leg and shoulder belt drives and direct-output adapters" camera-controls camera-orbit="28deg 76deg 100%" field-of-view="27deg" shadow-intensity="0.85" exposure="1.05"></model-viewer><p><a href="HR-30_transmissions_installed_candidate.step">Whole-body STEP</a> · <a href="HR-30_transmission_hardware_only_candidate.step">transmission-only STEP</a> · <a href="transmission-disposition-register.csv">all 39 dispositions</a>.</p></div></section><section><h2>What changed</h2><div class="grid"><article class="card"><div class="metric">39 / 39</div><p>predecessor pulley/coupler placeholders mapped to concrete successors.</p></article><article class="card"><div class="metric">4</div><p>shoulder axes use 20:20 5GT catalogue candidates with 185 mm belts.</p></article><article class="card"><div class="metric">9</div><p>direct joints have four editable blind-bore split-clamp adapter families.</p></article><article class="card"><div class="metric">0</div><p>procurement, fabrication, powered-test, motion, or energization approvals.</p></article></div></section><section><h2>The shoulders are no longer ratio-only sketches</h2><div class="panel"><p>Each shoulder uses two <strong>GPA20GT5090-A-P10</strong> 20-tooth, 5 mm-pitch, 9 mm-width pulley candidates and one <strong>GBN185EV5GT-090</strong> 37-tooth belt candidate. Equal 20-tooth pitch circumferences make the solved centre distance exactly 42.5 mm. Project motor adapters bolt to exact HN13 or HN12 horn patterns.</p></div></section><section><h2>Direct adapters</h2><div class="table-wrap"><table><thead><tr><th>Family</th><th>Axes</th><th>Motor interface</th><th>Supported output</th></tr></thead><tbody>{''.join(f'<tr><td>{s.adapter_id}</td><td>{", ".join(s.axes)}</td><td>{s.actuator_interface}</td><td>{s.shaft_diameter_mm:.0f} mm blind socket; split/pinch access</td></tr>' for s in DIRECT_ADAPTERS)}</tbody></table></div></section><section><h2>Still required before making parts</h2><div class="panel"><p>Written product quotes and received-part registration; shaft and bearing fits; material and heat treatment; tolerance, runout, clamp and fastener calculations; belt tension and life; motor/horn retention; interference and motion sweeps; guards; DFM; first-article inspection; load, thermal, endurance and fault testing; and qualified mechanical review. This package removes placeholder geometry, not those obligations.</p></div></section></main><footer>Project Button · HR-30 transmission closure P0.1 · preliminary only</footer></body></html>'''
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 transmission closure P0.1</title><script type="module" src="../vendor/model-viewer.min.js"></script><style>:root{{--deep:#081e38;--navy:#123b68;--pale:#eff9fe;--gold:#f2b91d;--line:#acd8ed;--ink:#152b43}}*{{box-sizing:border-box}}html,body{{max-width:100%;overflow-x:clip}}body{{margin:0;background:var(--pale);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,footer{{padding:32px max(20px,calc((100vw - 1200px)/2));background:var(--deep);color:white}}h1{{font-size:clamp(36px,6vw,66px);line-height:1.04}}h2{{font-size:clamp(28px,4vw,42px);color:var(--navy)}}h3{{font-size:22px;color:var(--navy)}}.warning{{padding:16px;background:var(--gold);color:#17243a;border:3px solid #8a5b00;font-weight:900}}main{{max-width:1200px;margin:auto;padding:28px 20px 80px}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}}.card,.viewer,.panel{{background:white;border:2px solid var(--line);border-radius:18px;padding:18px;overflow:hidden}}.metric{{font-size:36px;font-weight:900;color:var(--navy)}}model-viewer{{display:block;width:100%;height:clamp(560px,72vh,780px);background:radial-gradient(circle,#fff,var(--pale))}}.table-wrap{{overflow:auto;border:2px solid var(--line);border-radius:14px}}table{{border-collapse:collapse;min-width:900px;width:100%}}th,td{{padding:14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:14px}}th{{background:var(--navy);color:white}}a{{color:#075b9b;font-weight:800}}@media(max-width:560px){{body{{font-size:16px}}.grid{{grid-template-columns:1fr}}model-viewer{{height:520px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><h1>Every transmission placeholder now has a named successor.</h1><p>The complete robot carries product-specific leg and shoulder drives, detailed rack-and-pinion hands, and nine editable direct-output clamp adapters. The geometry is tangible; engineering release evidence remains deliberately open.</p></header><main><section><h2>Orbit the successor assembly</h2><div class="viewer"><model-viewer src="HR-30_transmissions_installed_candidate.glb" alt="Complete 762 millimetre HR-30 humanoid with installed leg and shoulder belt drives and direct-output adapters" camera-controls camera-orbit="28deg 76deg 100%" field-of-view="27deg" shadow-intensity="0.85" exposure="1.05"></model-viewer><p><a href="HR-30_transmissions_installed_candidate.step">Whole-body STEP</a> · <a href="HR-30_transmission_hardware_only_candidate.step">transmission-only STEP</a> · <a href="transmission-disposition-register.csv">all 39 dispositions</a>.</p></div></section><section><h2>What changed</h2><div class="grid"><article class="card"><div class="metric">39 / 39</div><p>predecessor pulley/coupler placeholders mapped to concrete successors.</p></article><article class="card"><div class="metric">4</div><p>shoulder axes use 16:24 5GT catalogue candidates with 185 mm belts.</p></article><article class="card"><div class="metric">9</div><p>direct joints have four editable blind-bore split-clamp adapter families.</p></article><article class="card"><div class="metric">0</div><p>procurement, fabrication, powered-test, motion, or energization approvals.</p></article></div></section><section><h2>The shoulders are no longer ratio-only sketches</h2><div class="panel"><p>Each shoulder axis uses a <strong>GPA16GT5090-A-P10</strong> motor pulley, a <strong>GPA24GT5090-A-P10</strong> supported-output pulley, and one <strong>GBN185EV5GT-090</strong> 37-tooth belt candidate. The 16:24 pair gives 1.5:1 reduction and a solved 42.0177 mm nominal pitch center. All four motors use the exact XM430/HN12 packaging source.</p></div></section><section><h2>Direct adapters</h2><div class="table-wrap"><table><thead><tr><th>Family</th><th>Axes</th><th>Motor interface</th><th>Supported output</th></tr></thead><tbody>{''.join(f'<tr><td>{s.adapter_id}</td><td>{", ".join(s.axes)}</td><td>{s.actuator_interface}</td><td>{s.shaft_diameter_mm:.0f} mm blind socket; split/pinch access</td></tr>' for s in DIRECT_ADAPTERS)}</tbody></table></div></section><section><h2>Still required before making parts</h2><div class="panel"><p>Written product quotes and received-part registration; shaft and bearing fits; material and heat treatment; tolerance, runout, clamp and fastener calculations; belt tension and life; motor/horn retention; interference and motion sweeps; guards; DFM; first-article inspection; load, thermal, endurance and fault testing; and qualified mechanical review. This package removes placeholder geometry, not those obligations.</p></div></section></main><footer>Project Button · HR-30 transmission closure P0.1 · preliminary only</footer></body></html>'''
 
 
 def integrate_root() -> None:
@@ -333,7 +333,7 @@ def integrate_root() -> None:
     if start in text and end in text:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     marker = "<!-- HR30-ASSEMBLY-GUIDE-P01-START -->"
-    block = f'''{start}\n## Whole-body transmission closure\n\nThe [transmission closure guide](transmission-closure-p0.1/index.html) maps all 39 smooth-pulley or generic-coupler predecessor placeholders to concrete successors. Twenty leg pulleys were already superseded by installed MISUMI candidates, two gripper couplers by the detailed rack-and-pinion hands, eight shoulder pulley positions now use a 20:20 5GT / 185 mm belt candidate, and nine direct axes now use four editable flanged blind-bore split-clamp adapter families. The successor whole-body STEP/GLB also corrects the wrist vendor geometry to XC330. Material, fits, retention, capacity, DFM, FAI and physical proof remain open.\n{end}\n'''
+    block = f'''{start}\n## Whole-body transmission closure\n\nThe [transmission closure guide](transmission-closure-p0.1/index.html) maps all 39 smooth-pulley or generic-coupler predecessor placeholders to concrete successors. Twenty leg pulleys were already superseded by installed MISUMI candidates, two gripper couplers by the detailed rack-and-pinion hands, eight shoulder pulley positions now use a 16:24 5GT / 185 mm belt candidate, and nine direct axes now use four editable flanged blind-bore split-clamp adapter families. The successor whole-body STEP/GLB also corrects the wrist vendor geometry to XC330. Material, fits, retention, capacity, DFM, FAI and physical proof remain open.\n{end}\n'''
     if marker not in text:
         raise RuntimeError("whole-body README marker missing")
     readme_path.write_text(text.replace(marker, block + marker), encoding="utf-8", newline="\n")
@@ -387,7 +387,7 @@ def main() -> int:
         {"source_id": "TC-S01", "record": "ROBOTIS HN12-N101 official STEP/PDF", "revision_date": "drawing 2019-05-22; local SHA-bound sources", "locator": "cad/vendor/robotis/hn12-n101-r103/", "use": "eight-hole PCD16 horn interface", "warning": WARNING},
         {"source_id": "TC-S02", "record": "ROBOTIS HN13-N101 official STEP/PDF", "revision_date": "drawing 2019-05-22; local SHA-bound sources", "locator": "cad/vendor/robotis/hn13-n101-r143/", "use": "eight-hole PCD22 horn interface", "warning": WARNING},
         {"source_id": "TC-S03", "record": "ROBOTIS XL/XC-330 official reference drawing", "revision_date": "drawing 2020-05-28; retrieved 2026-08-10", "locator": "cad/vendor/robotis/xc330/XL-XC-330-official-drawing.pdf", "use": "four output holes on PCD12; drawing marked FOR REFERENCE ONLY", "warning": WARNING},
-        {"source_id": "TC-S04", "record": "MISUMI High Torque Timing Pulleys 5GT Type", "revision_date": "official catalogue PDF accessed 2026-08-15; page carries no controlled revision field", "locator": "https://us.misumi-ec.com/pdf/fa/2019/2019_US_1348_001.pdf", "use": "GPA20GT5090-A-P10; 20 teeth; 5 mm pitch; 9 mm belt; OD 30.69; flange OD 35; P bore + tap", "warning": WARNING},
+        {"source_id": "TC-S04", "record": "MISUMI High Torque Timing Pulleys 5GT Type", "revision_date": "official catalogue PDF accessed 2026-08-16; page carries no controlled revision field", "locator": "https://us.c.misumi-ec.com/book/usa_2019_msm_fa/pdf/1410.pdf", "use": "GPA16GT5090-A-P10 and GPA24GT5090-A-P10; 16/24 teeth; 5 mm pitch; 9 mm belt; OD 24.32/37.06; P10 bore + tap permitted", "warning": WARNING},
         {"source_id": "TC-S05", "record": "MISUMI EV5GT belt catalogue", "revision_date": "official catalogue PDF accessed 2026-08-15; page carries no controlled revision field", "locator": "https://us.misumi-ec.com/pdf/fa/2019/2019_US_1432.pdf", "use": "GBN185EV5GT-090; 37 teeth; 185 mm pitch length; 9 mm width", "warning": WARNING},
         {"source_id": "TC-S06", "record": "transmission closure generator", "revision_date": "generated 2026-08-15", "locator": "tools/generate_hr30_transmission_closure_p01.py", "use": "editable direct adapters, installed shoulder drives and 39-item disposition", "warning": WARNING},
     ])
@@ -428,7 +428,7 @@ def main() -> int:
         "powered_test_authority": False, "motion_authority": False, "energization_authority": False, "warning": WARNING,
     }
     (OUT / "transmission-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
-    (OUT / "README.md").write_text(f"# HR-30 transmission closure P0.1\n\n**{WARNING}**\n\nAll 39 smooth-pulley or generic-coupler predecessor placeholders have concrete successor mappings. The package installs four catalogue-defined shoulder drives and nine editable direct-output clamp adapters into the complete 762 mm humanoid while preserving the installed reduced-leg drivetrains. It grants no work authority.\n", encoding="utf-8", newline="\n")
+    (OUT / "README.md").write_text(f"# HR-30 transmission closure P0.1\n\n**{WARNING}**\n\nAll 39 smooth-pulley or generic-coupler predecessor placeholders have concrete successor mappings. The package installs four catalogue-defined 16:24 shoulder drives and nine editable direct-output clamp adapters into the complete 762 mm humanoid while preserving the installed reduced-leg drivetrains. It grants no work authority.\n", encoding="utf-8", newline="\n")
     (OUT / "index.html").write_text(render_index(), encoding="utf-8", newline="\n")
     shutil.copy2(Path(__file__), OUT / "transmission-closure-source.py")
     files = sorted(path for path in OUT.rglob("*") if path.is_file() and path.name != "file-manifest.csv")

@@ -101,11 +101,11 @@ def main() -> int:
     require(blocked_roll_axes == {"L_HIP_ROLL", "R_HIP_ROLL"}, "hip-roll direct-drive packaging dispositions are incomplete")
     elbow_rows = [r for r in allocation if "ELBOW" in r["axis_id"]]
     require(len(elbow_rows) == 2 and all(r["candidate_actuator"] == "ROBOTIS XM430-W350-R candidate" for r in elbow_rows), "whole-body elbow candidate allocation drift")
-    shoulder_roll_rows = [r for r in allocation if "SHOULDER_ROLL" in r["axis_id"]]
+    shoulder_rows = [r for r in allocation if "SHOULDER_" in r["axis_id"]]
     wrist_rows = [r for r in allocation if "WRIST" in r["axis_id"]]
     ankle_rows = [r for r in allocation if "ANKLE" in r["axis_id"]]
     knee_rows = [r for r in allocation if "KNEE" in r["axis_id"]]
-    require(len(shoulder_roll_rows) == 2 and all("XM430-W350-R" in r["candidate_actuator"] for r in shoulder_roll_rows), "shoulder-roll XM430 allocation drift")
+    require(len(shoulder_rows) == 4 and all("XM430-W350-R" in r["candidate_actuator"] and "1.5:1" in r["candidate_transmission"] for r in shoulder_rows), "reduced all-XM430 shoulder allocation drift")
     require(len(wrist_rows) == 2 and all("XC330-T288-T" in r["candidate_actuator"] for r in wrist_rows), "wrist XC330 allocation drift")
     require(len(ankle_rows) == 4 and all("XM430-W350-R" in r["candidate_actuator"] for r in ankle_rows), "reduced ankle XM430 allocation drift")
     require(len(knee_rows) == 2 and all("2.5:1" in r["candidate_transmission"] for r in knee_rows), "2.5:1 knee allocation drift")
@@ -142,6 +142,7 @@ def main() -> int:
         require(vendor_identity_sha(path).upper() == row["sha256"], f"vendor actuator source identity drifted: {row['source_id']}")
         require(sha(path).upper() == row["checkout_sha256"] and "NORMALIZED TO CRLF" in row["identity_hash_policy"], f"vendor checkout provenance missing: {row['source_id']}")
     require(len(vendor_transforms) == 25 and {r["axis_id"] for r in vendor_transforms} == {r["axis_id"] for r in axes}, "vendor actuator transform register does not cover every axis")
+    require(all(r["vendor_source_id"] == "ROBOTIS-X430" for r in vendor_transforms if "SHOULDER_" in r["axis_id"]), "shoulder vendor STEP source is not XM430/X430")
     axis_by_id = {row["axis_id"]: row for row in axes}
     for row in vendor_transforms:
         basis = [tuple(float(v) for v in ast.literal_eval(row[key])) for key in ("project_basis_local_x", "project_basis_local_y", "project_basis_local_z_output")]

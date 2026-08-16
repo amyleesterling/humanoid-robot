@@ -88,7 +88,7 @@ def main() -> int:
     bus_axis: dict[str, list[str]] = defaultdict(list)
     for a in axes: bus_axis[a["bus_id"]].append(a["axis_id"])
     require(sorted(len(v) for v in bus_axis.values()) == [1, 2, 2, 2, 3, 3, 6, 6], "eight-bus axis allocation drift")
-    require(abs(sum(float(r["candidate_12v_stall_endpoint_a"]) for r in power) - 76.08) < 1e-8, "stall endpoint arithmetic drift")
+    require(abs(sum(float(r["candidate_12v_stall_endpoint_a"]) for r in power) - 71.88) < 1e-8, "stall endpoint arithmetic drift")
     require(all("TPS259474L COMMISSIONING CANDIDATE" in r["protection_topology"] and "CHANNEL" in r["protection_topology"] for r in power), "25 board/channel protection bindings missing")
     require({r["branch_net"] for r in power} == {axis + "_VDD" for axis in axis_ids}, "individual actuator VDD net binding drift")
     require(all("STANDARD DYNAMIXEL CABLE VDD" in r["vdd_isolation_rule"] for r in links), "VDD backfeed boundary missing")
