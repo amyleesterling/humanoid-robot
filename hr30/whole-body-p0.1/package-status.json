@@ -390,5 +390,11 @@
   "first_energization_fault_injection_case_count": 12,
   "first_energization_physical_gate_executed_count": 0,
   "first_energization_qualified_signoff_count": 0,
-  "first_energization_ready": false
+  "first_energization_ready": false,
+  "hr30_no_motion_firmware_present": true,
+  "hr30_no_motion_firmware_axis_count": 25,
+  "hr30_no_motion_firmware_bus_count": 8,
+  "hr30_no_motion_host_vectors_pass": true,
+  "hr30_no_motion_target_hil_executed": false,
+  "hr30_no_motion_firmware_approved": false
 }

@@ -1,0 +1,3 @@
+PASS: HR-30 FIRST_POWER_NO_MOTION compiled-C vectors
+25 axes / 8 buses / all motion requests rejected / STOP is a no-op
+NO TARGET HIL, FUNCTIONAL-SAFETY CREDIT, OR ENERGIZATION AUTHORITY

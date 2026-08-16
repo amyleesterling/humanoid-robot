@@ -60,6 +60,7 @@ def source_rows() -> list[dict]:
         ("whole-body logical ECAD status", "electrical/kicad/hr30-whole-body-electrical-p0.1/electrical-status.json"),
         ("whole-body assembly traveler status", "assembly-guide-p0.1/assembly-status.json"),
         ("manufacturing artifact status", "manufacturing-files/manufacturing-files-status.json"),
+        ("compiled whole-body no-motion firmware status", "firmware/hr30-motion-controller-p0.1/firmware-status.json"),
     ]
     rows = []
     for number, (role, relative) in enumerate(items, 1):
@@ -80,7 +81,7 @@ def gate_rows() -> list[dict]:
         ("FER-G06", "Harness acceptance", "25 power pairs and all signal links pass conductor, crimp, polarity, insulation, continuity, retention, flex and no-backfeed inspections", "harness inspector"),
         ("FER-G07", "Received-board inspection", "controller, carriers and PDU match released candidates and pass assembly, isolation, polarity and unpowered checks", "electronics reviewer"),
         ("FER-G08", "Safety fault injection", "E-stop, reset, EDM, watchdog, dual-contactors and welded/stuck/open fault cases pass the frozen procedure", "functional-safety reviewer"),
-        ("FER-G09", "No-motion software boundary", "approved hashes boot torque disabled; write paths, automatic retries and motion commands are absent or inhibited", "controls reviewer"),
+        ("FER-G09", "No-motion software boundary", "approved target hash boots with all 25 torque bits, eight bus transmit paths, precharge request and action-ready output inactive; host logic is only precursor evidence", "controls reviewer"),
         ("FER-G10", "Test environment", "guarded area, fall restraint, fire response, thermal monitoring, observers and stop roles are physically ready", "test lead"),
         ("FER-G11", "Instrumentation and limits", "calibration records, probes, shunts, current/voltage/temperature limits and abort criteria are frozen", "test lead"),
         ("FER-G12", "Qualified release-to-test signoff", "electrical, functional-safety, mechanical, controls and test owners sign the same frozen configuration", "configuration controller"),
@@ -145,7 +146,7 @@ def fault_rows() -> list[dict]:
         ("F07", "welded/stuck secondary contactor simulation", "mirror/EDM prevents restart and first contactor interrupts"),
         ("F08", "watchdog heartbeat removed", "permit drops within selected measured limit"),
         ("F09", "watchdog output stuck/bypassed", "independent safety chain still interrupts energy; fault detected before restart"),
-        ("F10", "motion controller reset/brownout", "torque disabled and contactor permit absent after reboot"),
+        ("F10", "motion controller reset/brownout", "all 25 torque bits and eight bus transmit paths remain inactive; contactor permit remains external/absent after reboot"),
         ("F11", "loss of communications or agent process", "deterministic local layer requests safe stop; no autonomous retry to motion"),
         ("F12", "unexpected adjacent-branch voltage/backfeed", "source removed and configuration quarantined"),
     ]
@@ -182,7 +183,7 @@ def hold_rows() -> list[dict]:
         ("FER-H05", "safety requirements and PLr/SIL allocation open", "SRS, risk assessment, common-cause analysis and qualified validation plan"),
         ("FER-H06", "total stopping time/distance unallocated", "measured sensor/logic/contactor/drive decay plus mechanical overtravel"),
         ("FER-H07", "boards unbuilt and uninspected", "received PCB/assembly inspection, coupons, isolation, thermal and fault testing"),
-        ("FER-H08", "torque-disabled firmware configuration unapproved", "reproducible build, hashes, review, boot/fault behavior and write-path audit"),
+        ("FER-H08", "torque-disabled STM32 target firmware configuration unapproved", "portable C host build now passes; target build, hashes, startup/GPIO review, HIL boot/fault behavior and write-path audit remain required"),
         ("FER-H09", "test site/restraint/fire response not commissioned", "physical readiness inspection and named trained operators"),
         ("FER-H10", "qualified multi-discipline signoff absent", "all five signoffs on the identical frozen configuration"),
     ]
@@ -241,7 +242,7 @@ def main() -> int:
     gates, states = gate_rows(), state_rows()
     traveler, faults = traveler_rows(), fault_rows()
     measurements, signoffs, holds = measurement_rows(), signoff_rows(), hold_rows()
-    baseline = [{"baseline_id": "HR30-FER-B01", "configuration": "HR-30 whole-body P0.1 tether-first candidate", "branch": "codex/hr30-first-energization-p01", "commit": "RECORDED AT EXECUTION - NOT FROZEN BY GENERATION", "as_built_serial": "NONE - ROBOT NOT BUILT", "firmware_hash": "NONE - SELECTION REQUIRED", "software_hash": "NONE - SELECTION REQUIRED", "physical_configuration_frozen": "NO", "authority": AUTHORITY, "warning": WARNING}]
+    baseline = [{"baseline_id": "HR30-FER-B01", "configuration": "HR-30 whole-body P0.1 tether-first candidate", "branch": "RECORDED AT EXECUTION", "commit": "RECORDED AT EXECUTION - NOT FROZEN BY GENERATION", "as_built_serial": "NONE - ROBOT NOT BUILT", "firmware_hash": "HOST NO-MOTION EVIDENCE PRESENT; APPROVED TARGET HASH SELECTION REQUIRED", "software_hash": "NONE - SELECTION REQUIRED", "physical_configuration_frozen": "NO", "authority": AUTHORITY, "warning": WARNING}]
     write_csv(OUT / "source-binding.csv", sources)
     write_csv(OUT / "configuration-baseline.csv", baseline)
     write_csv(OUT / "energization-gate-register.csv", gates)
@@ -257,6 +258,7 @@ def main() -> int:
         "inspection_check_count": len(traveler), "fault_injection_case_count": len(faults), "measurement_record_count": len(measurements),
         "qualified_signoff_role_count": len(signoffs), "open_hold_count": len(holds),
         "physical_gate_executed_count": 0, "fault_injection_executed_count": 0, "qualified_signoff_count": 0,
+        "host_no_motion_firmware_evidence_present": True, "target_no_motion_firmware_approved": False,
         "first_energization_ready": False, "motion_in_scope": False, "configuration_frozen": False,
         "connection_authority": False, "powered_test_authority": False, "motion_authority": False, "energization_authority": False,
     }

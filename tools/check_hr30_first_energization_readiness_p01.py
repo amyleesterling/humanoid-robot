@@ -39,7 +39,7 @@ def main() -> int:
     need(len(gates) == 12 and len({r["gate_id"] for r in gates}) == 12, "12 unique gates required")
     need(len(states) == 8 and len({r["state_id"] for r in states}) == 8, "8 unique power states required")
     need(len(traveler) == 26 and len(faults) == 12 and len(measurements) == 10, "traveler/fault/measurement coverage drift")
-    need(len(signoffs) == 5 and len(holds) == 10 and len(sources) == 13, "signoff/hold/source coverage drift")
+    need(len(signoffs) == 5 and len(holds) == 10 and len(sources) == 14, "signoff/hold/source coverage drift")
     need(all(r["state"] == "OPEN - NOT EXECUTED" for r in gates + states + traveler + faults + measurements + signoffs + holds), "physical work falsely marked executed")
     need(all(r["motion_permitted"] == "NO" for r in states), "motion permitted in energization ladder")
     need(all(r["pass_fail"] == "NOT EXECUTED" and r["measured_response"] == "NONE" for r in faults), "fault test overclaim")
@@ -49,6 +49,7 @@ def main() -> int:
     for key in ["first_energization_ready", "motion_in_scope", "configuration_frozen", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]:
         need(status[key] is False, f"fail-closed status violated: {key}")
     need(status["physical_gate_executed_count"] == status["fault_injection_executed_count"] == status["qualified_signoff_count"] == 0, "execution count overclaim")
+    need(status["host_no_motion_firmware_evidence_present"] is True and status["target_no_motion_firmware_approved"] is False, "firmware evidence/approval boundary drift")
     need((OUT / "first-energization-readiness-source.py").read_bytes() == GEN.read_bytes(), "generator snapshot drift")
     manifest = rows(OUT / "file-manifest.csv")
     expected = sorted(p.relative_to(OUT).as_posix() for p in OUT.rglob("*") if p.is_file() and p.name != "file-manifest.csv")
