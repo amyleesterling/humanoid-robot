@@ -163,6 +163,16 @@ The [HR-30 no-motion firmware guide](firmware/hr30-motion-controller-p0.1/index.
 
 
 
+
+
+
+<!-- HR30-LOGIC-POWER-KIT-P01-README-START -->
+## Logic-only controller power kit
+
+The [interactive logic-power guide](electrical/logic-power-kit-p0.1/index.html) selects a SIGLENT SPD3303X, the exact two-contact JST boundary, red/black Alpha Wire conductors and Pomona banana plugs. The cable is unbuilt; voltage/current/OCP limits, DC-reference approval and every physical test remain open. It grants no connection or powered-work authority.
+<!-- HR30-LOGIC-POWER-KIT-P01-README-END -->
+
+
 <!-- HR30-STM32-BRINGUP-P01-README-START -->
 ## STM32 no-actuator bring-up
 

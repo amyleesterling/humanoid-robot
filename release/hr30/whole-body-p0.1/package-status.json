@@ -417,5 +417,12 @@
   "swd_adapter_exact_stdc14_contact_map": true,
   "swd_adapter_fabricated": false,
   "swd_adapter_cable_built": false,
-  "swd_adapter_physical_validation_complete": false
+  "swd_adapter_physical_validation_complete": false,
+  "logic_power_kit_package_present": true,
+  "logic_power_exact_supply_candidate_selected": true,
+  "logic_power_exact_cable_components_selected": true,
+  "logic_power_cable_built": false,
+  "logic_power_limits_released": false,
+  "logic_power_reference_approved": false,
+  "logic_power_connection_authority": false
 }
