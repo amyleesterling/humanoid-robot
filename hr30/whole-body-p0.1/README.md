@@ -158,12 +158,16 @@ The [HR-30 no-motion firmware guide](firmware/hr30-motion-controller-p0.1/index.
 <!-- HR30-NO-MOTION-FW-P01-README-END -->
 
 
+
+
+
+
+
 <!-- HR30-STM32-BRINGUP-P01-README-START -->
 ## STM32 no-actuator bring-up
 
-The [interactive target bring-up guide](firmware/stm32-target-bringup-p0.1/index.html) binds the reproducible STM32H743 image to the controller's exact five-contact SWD boundary, a proposed STLINK-V3MINIE adapter/cable BOM, ten release gates, twelve measurements and six fault injections. The target remains unflashed; the adapter PCB remains unbuilt; all physical results and work authority remain open.
+The [interactive target bring-up guide](firmware/stm32-target-bringup-p0.1/index.html) binds the reproducible STM32H743 image to the controller's exact five-contact SWD boundary and the [native routed SWD adapter candidate](electrical/swd-adapter-p0.1/index.html), plus ten release gates, twelve measurements and six fault injections. The target remains unflashed; the adapter board and cable remain unbuilt; all physical results and work authority remain open.
 <!-- HR30-STM32-BRINGUP-P01-README-END -->
-
 
 <!-- HR30-FIRST-ENERGIZATION-P01-README-START -->
 ## First-energization readiness
@@ -207,3 +211,9 @@ The one-axis station now includes an assembly-controlled two-wire source harness
 
 The whole-body commissioning path now includes exact-envelope, horn-free output guards for all four candidate actuator models and a single-ID Protocol 2.0 inspector with no device-write API. Physical fit, fixture retention, software approval and all connection/powered-test/motion/energization authority remain open.
 <!-- NO-MOTION-P01 END -->
+
+<!-- HR30-SWD-ADAPTER-P01-START -->
+## Native SWD programming adapter
+
+The [interactive SWD adapter guide](electrical/swd-adapter-p0.1/index.html) contains a routed **32 x 20 mm two-layer native KiCad adapter** from STLINK-V3MINIE STDC14 to controller JDBG1, plus the exact Samtec alignment-pin footprint, candidate manufacturing files, complete 14-contact disposition, five-contact service-cable drawing and inspection traveller. Native checks are ERC 0/0 and DRC 0. The board and cable remain unbuilt and all physical validation and work authority remain open.
+<!-- HR30-SWD-ADAPTER-P01-END -->
