@@ -1,0 +1,22 @@
+{
+  "identifier": "HR30-FIRST-ENERGIZATION-READINESS-P0.1",
+  "warning": "PRELIMINARY - READINESS PLAN ONLY - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+  "source_binding_count": 13,
+  "release_gate_count": 12,
+  "power_state_count": 8,
+  "inspection_check_count": 26,
+  "fault_injection_case_count": 12,
+  "measurement_record_count": 10,
+  "qualified_signoff_role_count": 5,
+  "open_hold_count": 10,
+  "physical_gate_executed_count": 0,
+  "fault_injection_executed_count": 0,
+  "qualified_signoff_count": 0,
+  "first_energization_ready": false,
+  "motion_in_scope": false,
+  "configuration_frozen": false,
+  "connection_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false
+}

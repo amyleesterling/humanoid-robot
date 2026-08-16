@@ -99,7 +99,11 @@ def integrate_root(axis_rows: list[dict], bus_rows: list[dict]) -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     block = f'''{start}\n## Current-constrained whole-body actuation\n\nThe [current-constrained actuation guide](current-constrained-actuation-p0.1/index.html) binds all 25 axes to candidate Current Limit register values and an eight-bus simultaneous-cap budget. XH/XM540 axes use raw 929 (2.499 A), XM430 axes raw 743 (1.999 A), and XC330 axes raw 700 (0.700 A). A dedicated 2.5:1 knee drive replaces the former 2:1 architecture because the old knee required about 3.07 A to reach its static development screen. All numeric torque comparisons remain linear published-stall endpoint screens, not continuous capability. External current, branch protection, temperature, dynamics and physical validation remain open.\n{end}\n'''
     marker = "<!-- HR30-ASSEMBLY-GUIDE-P01-START -->"
-    readme_path.write_text(text.replace(marker, block + marker), encoding="utf-8", newline="\n")
+    if marker in text:
+        text = text.replace(marker, block + marker)
+    else:
+        text = text.rstrip() + "\n\n" + block
+    readme_path.write_text(text, encoding="utf-8", newline="\n")
 
     page_path = WHOLE / "index.html"
     text = page_path.read_text(encoding="utf-8")
@@ -108,7 +112,13 @@ def integrate_root(axis_rows: list[dict], bus_rows: list[dict]) -> None:
     if start in text and end in text:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     section = f'''{start}<section id="current-policy"><h2>Every joint now has a current ceiling</h2><div class="grid"><article class="card pass"><div class="metric">25 / 25</div><p>Axes have explicit candidate Current Limit values.</p></article><article class="card pass"><div class="metric">2.5:1</div><p>The knee ratio is corrected so its static endpoint screen fits below 3 A.</p></article><article class="card"><div class="metric">{sum(float(row['simultaneous_candidate_cap_a']) for row in bus_rows):.1f} A</div><p>Arithmetic sum of all eight bus caps; not a normal-demand or supply rating.</p></article><article class="card hold"><h3>Physical proof remains open</h3><p>External branch current, connector temperature, protection coordination, continuous torque and gait duty are unvalidated.</p></article></div><p><a href="current-constrained-actuation-p0.1/index.html">Open the current/torque guide</a> · <a href="current-constrained-actuation-p0.1/axis-current-torque-register.csv">25-axis register</a> · <a href="current-constrained-actuation-p0.1/bus-current-budget.csv">bus budget</a>.</p></section>{end}'''
-    page_path.write_text(text.replace(marker, section + marker), encoding="utf-8", newline="\n")
+    if marker in text:
+        text = text.replace(marker, section + marker)
+    elif "</main>" in text:
+        text = text.replace("</main>", section + "</main>")
+    else:
+        raise RuntimeError("whole-body page insertion boundary missing")
+    page_path.write_text(text, encoding="utf-8", newline="\n")
 
     holds_path = WHOLE / "open-holds.csv"
     holds = read_csv(holds_path)

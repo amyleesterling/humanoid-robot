@@ -228,7 +228,11 @@ def integrate_root() -> None:
         readme = readme.split(start, 1)[0] + readme.split(end, 1)[1]
     block = f'''{start}\n## Reduced-leg drivetrain product geometry\n\nThe [leg-drivetrain package](leg-drivetrain-p0.1/index.html) assigns every one of the ten belt-reduced leg axes to four editable 5GT/EV5GT modules. The knees now use a distinct 16:40, 2.5:1 XH540 module with a 10 mm horn-adapter stub; the ankles retain the separate 8 mm version. MISUMI 16/20/30/40-tooth P-bore-plus-tap pulley candidates, 225/250/255 mm by 9 mm belt candidates, solved 49.359/49.965/51.456 mm pitch centers and ROBOTIS horn-family boundaries replace the former ratio-only placeholders. Capacity, material, fits, tolerances, fasteners, tensioning, guarding and physical proof remain open.\n{end}\n'''
     marker = "<!-- HR30-ASSEMBLY-GUIDE-P01-START -->"
-    readme_path.write_text(readme.replace(marker, block + marker), encoding="utf-8", newline="\n")
+    if marker in readme:
+        readme = readme.replace(marker, block + marker)
+    else:
+        readme = readme.rstrip() + "\n\n" + block
+    readme_path.write_text(readme, encoding="utf-8", newline="\n")
 
     page_path = PACKAGE / "index.html"
     page = page_path.read_text(encoding="utf-8")
@@ -236,7 +240,13 @@ def integrate_root() -> None:
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
     section = f'''{start}<section id="leg-drivetrains"><h2>The ten reduced leg axes now use four concrete belt-module candidates</h2><div class="grid"><article class="card pass"><div class="metric">10 axes</div><p>Hip pitch/roll, knee pitch and ankle pitch/roll are allocated bilaterally.</p></article><article class="card pass"><div class="metric">4 modules</div><p>A dedicated 2.5:1 knee module replaces the previous 2:1 knee drive; exact tooth counts, belt lengths and solved centers are encoded.</p></article><article class="card pass"><h3>Purchasable families</h3><p>MISUMI P-bore-plus-tap pulleys and EV5GT belts plus ROBOTIS X540/X430 horn families are named.</p></article><article class="card hold"><h3>Capacity remains open</h3><p>Material, fits, fasteners, tension, tooth loads, guards, fatigue and physical proof are unresolved.</p></article></div><p><a href="leg-drivetrain-p0.1/index.html">Open the leg-drivetrain guide</a> · <a href="leg-drivetrain-p0.1/axis-drivetrain-allocation.csv">axis allocation</a> · <a href="leg-drivetrain-p0.1/belt-center-geometry.csv">center geometry</a>.</p></section>{end}'''
-    page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")
+    if marker in page:
+        page = page.replace(marker, section + marker)
+    elif "</main>" in page:
+        page = page.replace("</main>", section + "</main>")
+    else:
+        raise RuntimeError("whole-body page insertion boundary missing")
+    page_path.write_text(page, encoding="utf-8", newline="\n")
 
     holds_path = PACKAGE / "open-holds.csv"
     with holds_path.open(encoding="utf-8", newline="") as handle:

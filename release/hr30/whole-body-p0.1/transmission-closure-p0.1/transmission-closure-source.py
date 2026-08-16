@@ -334,9 +334,11 @@ def integrate_root() -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     marker = "<!-- HR30-ASSEMBLY-GUIDE-P01-START -->"
     block = f'''{start}\n## Whole-body transmission closure\n\nThe [transmission closure guide](transmission-closure-p0.1/index.html) maps all 39 smooth-pulley or generic-coupler predecessor placeholders to concrete successors. Twenty leg pulleys were already superseded by installed MISUMI candidates, two gripper couplers by the detailed rack-and-pinion hands, eight shoulder pulley positions now use a 16:24 5GT / 185 mm belt candidate, and nine direct axes now use four editable flanged blind-bore split-clamp adapter families. The successor whole-body STEP/GLB also corrects the wrist vendor geometry to XC330. Material, fits, retention, capacity, DFM, FAI and physical proof remain open.\n{end}\n'''
-    if marker not in text:
-        raise RuntimeError("whole-body README marker missing")
-    readme_path.write_text(text.replace(marker, block + marker), encoding="utf-8", newline="\n")
+    if marker in text:
+        text = text.replace(marker, block + marker)
+    else:
+        text = text.rstrip() + "\n\n" + block
+    readme_path.write_text(text, encoding="utf-8", newline="\n")
 
     page_path = WHOLE / "index.html"
     page = page_path.read_text(encoding="utf-8")
@@ -345,9 +347,13 @@ def integrate_root() -> None:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
     section = f'''{start}<section id="transmission-closure"><h2>The transmission placeholders now have physical successors</h2><div class="grid"><article class="card pass"><div class="metric">39 / 39</div><p>predecessor pulley and coupler placeholders are dispositioned.</p></article><article class="card pass"><div class="metric">4 + 9</div><p>shoulder belt drives and direct-output adapter axes are installed.</p></article><article class="card pass"><h3>Whole robot</h3><p>A successor STEP and interactive GLB carry the transmission hardware on the complete humanoid.</p></article><article class="card hold"><h3>Not released</h3><p>Products, fits, retention, capacity, DFM, FAI and physical tests remain open.</p></article></div><p><a href="transmission-closure-p0.1/index.html">Open the transmission guide</a> · <a href="transmission-closure-p0.1/transmission-disposition-register.csv">39-item disposition register</a>.</p></section>{end}'''
     marker = "<!-- HR30-ASSEMBLY-GUIDE-P01-START -->"
-    if marker not in page:
-        raise RuntimeError("whole-body page marker missing")
-    page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")
+    if marker in page:
+        page = page.replace(marker, section + marker)
+    elif "</main>" in page:
+        page = page.replace("</main>", section + "</main>")
+    else:
+        raise RuntimeError("whole-body page insertion boundary missing")
+    page_path.write_text(page, encoding="utf-8", newline="\n")
 
     holds_path = WHOLE / "open-holds.csv"
     with holds_path.open(encoding="utf-8", newline="") as handle:

@@ -296,9 +296,11 @@ def integrate_root() -> None:
         readme = readme.split(start, 1)[0] + readme.split(end, 1)[1]
     block = f'''{start}\n## Product-specific leg drives installed in the whole body\n\nThe [installed drivetrain guide](leg-drivetrain-installation-p0.1/index.html) replaces ten generic pulley/belt/motor placeholders in a derived complete humanoid assembly. Exact candidate P-bore pulleys, belts, HN12/HN13 horns, shifted manufacturer actuators, project motor adapters, shouldered output shafts, capture washers and guard envelopes occupy controlled external drive planes. All 45 inter-drive pairs have zero nominal common volume. Motion sweep, material, fits, tolerances, fasteners, cable/cover clearance, capacity and physical proof remain open.\n{end}\n'''
     marker = "<!-- HR30-ASSEMBLY-GUIDE-P01-START -->"
-    if marker not in readme:
-        raise RuntimeError("whole-body README integration marker missing")
-    readme_path.write_text(collapse_duplicate_hr30_blocks(readme.replace(marker, block + marker)), encoding="utf-8", newline="\n")
+    if marker in readme:
+        readme = readme.replace(marker, block + marker)
+    else:
+        readme = readme.rstrip() + "\n\n" + block
+    readme_path.write_text(collapse_duplicate_hr30_blocks(readme), encoding="utf-8", newline="\n")
 
     page_path = WHOLE / "index.html"
     page = page_path.read_text(encoding="utf-8")
@@ -306,9 +308,13 @@ def integrate_root() -> None:
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
     section = f'''{start}<section id="installed-leg-drives"><h2>The product-specific leg drives and adapters now occupy the complete humanoid</h2><div class="grid"><article class="card pass"><div class="metric">10 / 10</div><p>Reduced axes have exact candidate pulleys, belts, horns and nominal adapter solids.</p></article><article class="card pass"><div class="metric">45 pairs</div><p>Zero nominal inter-drive common-volume interference.</p></article><article class="card pass"><h3>External service planes</h3><p>Pitch drives sit outboard; roll drives sit behind their bearing stacks.</p></article><article class="card hold"><h3>Still preliminary</h3><p>Material, fits, fasteners, capacity, motion sweep, covers, cables, tolerances and physical proof remain open.</p></article></div><div class="viewer"><model-viewer src="leg-drivetrain-installation-p0.1/HR-30_leg_drivetrains_installed_candidate.glb" poster="front-elevation.svg" alt="Interactive complete HR-30 with ten product-specific leg drives and physical adapter solids installed" camera-controls camera-orbit="28deg 76deg 100%" field-of-view="27deg" shadow-intensity="0.85"></model-viewer><p><a href="leg-drivetrain-installation-p0.1/index.html">Open the installed-drive guide</a> · <a href="leg-drivetrain-installation-p0.1/installed-drivetrain-register.csv">installation register</a> · <a href="leg-drivetrain-installation-p0.1/inter-drive-clearance-register.csv">clearance screen</a>.</p></div></section>{end}'''
-    if marker not in page:
-        raise RuntimeError("whole-body page integration marker missing")
-    page_path.write_text(collapse_duplicate_hr30_blocks(page.replace(marker, section + marker)), encoding="utf-8", newline="\n")
+    if marker in page:
+        page = page.replace(marker, section + marker)
+    elif "</main>" in page:
+        page = page.replace("</main>", section + "</main>")
+    else:
+        raise RuntimeError("whole-body page insertion boundary missing")
+    page_path.write_text(collapse_duplicate_hr30_blocks(page), encoding="utf-8", newline="\n")
 
     holds_path = WHOLE / "open-holds.csv"
     with holds_path.open(encoding="utf-8", newline="") as handle:
