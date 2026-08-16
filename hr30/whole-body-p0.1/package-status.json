@@ -67,7 +67,7 @@
   "identified_candidate_mass_kg": 11.03061701,
   "mass_margin_to_10kg_kg": 0.069388848,
   "mass_margin_to_p01_maximum_kg": 0.069388848,
-  "module_interface_mass_reconciliation_kg": 9.930611152,
+  "module_interface_mass_reconciliation_kg": 9.930615,
   "active_development_mass_configuration": "HR30-TETHER-FIRST-P0.1",
   "active_tether_development_mass_kg": 9.930611152,
   "active_tether_neutral_com_m": [
@@ -446,5 +446,15 @@
   "head_hmi_camera_interface_corrected": true,
   "head_hmi_physical_validation_complete": false,
   "head_hmi_privacy_controls_validated": false,
-  "head_hmi_procurement_released": false
+  "head_hmi_procurement_released": false,
+  "actuator_cable_kit_present": true,
+  "actuator_cable_kit_axis_count": 25,
+  "actuator_cable_kit_cavity_record_count": 159,
+  "actuator_cable_kit_required_empty_cavity_count": 34,
+  "actuator_cable_kit_current_caps_propagated": true,
+  "actuator_connector_candidate_order_codes_bound": true,
+  "actuator_power_cable_selected": false,
+  "actuator_data_cable_selected": false,
+  "actuator_crimp_process_selected": false,
+  "actuator_cable_kit_built": false
 }

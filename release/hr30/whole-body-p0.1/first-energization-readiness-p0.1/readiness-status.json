@@ -1,7 +1,7 @@
 {
   "identifier": "HR30-FIRST-ENERGIZATION-READINESS-P0.1",
   "warning": "PRELIMINARY - READINESS PLAN ONLY - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
-  "source_binding_count": 19,
+  "source_binding_count": 20,
   "release_gate_count": 12,
   "power_state_count": 8,
   "inspection_check_count": 26,
