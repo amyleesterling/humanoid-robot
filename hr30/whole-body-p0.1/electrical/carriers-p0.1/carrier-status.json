@@ -26,17 +26,17 @@
     {
       "artifact": "schematic",
       "return_code": 0,
-      "report": "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\carriers-p0.1\\validation\\hr30-actuator-interface-carriers-p0.1-erc.rpt"
+      "report": "C:\\Users\\amyle\\Documents\\New project\\h30e\\hr30\\whole-body-p0.1\\electrical\\carriers-p0.1\\validation\\hr30-actuator-interface-carriers-p0.1-erc.rpt"
     },
     {
       "artifact": "carrier-A",
       "return_code": 0,
-      "report": "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\carriers-p0.1\\validation\\hr30-carrier-a-p0.1-drc.rpt"
+      "report": "C:\\Users\\amyle\\Documents\\New project\\h30e\\hr30\\whole-body-p0.1\\electrical\\carriers-p0.1\\validation\\hr30-carrier-a-p0.1-drc.rpt"
     },
     {
       "artifact": "carrier-B",
       "return_code": 0,
-      "report": "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\carriers-p0.1\\validation\\hr30-carrier-b-p0.1-drc.rpt"
+      "report": "C:\\Users\\amyle\\Documents\\New project\\h30e\\hr30\\whole-body-p0.1\\electrical\\carriers-p0.1\\validation\\hr30-carrier-b-p0.1-drc.rpt"
     }
   ],
   "design_advancement": "complete native carrier schematics, exact footprints, deterministic routed copper, native isolation moats, candidate stackup and machine-readable fabrication-candidate outputs",

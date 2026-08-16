@@ -54,6 +54,7 @@ PIPELINE = (
     "generate_hr30_axis_commissioning_station_p01.py",
     "generate_hr30_bench_harness_p01.py",
     "generate_hr30_no_motion_inspection_p01.py",
+    "generate_hr30_first_energization_readiness_p01.py",
 )
 
 

@@ -257,9 +257,11 @@ def integrate_root() -> None:
         readme = readme.split(start, 1)[0] + readme.split(end, 1)[1]
     marker = "<!-- HR30-ASSEMBLY-GUIDE-P01-START -->"
     block = f'''{start}\n## Dimensioned leg-drive adapters\n\nThe [leg-drive adapter guide](leg-drivetrain-adapters-p0.1/index.html) adds three editable horn-to-pulley adapters and two shouldered output-shaft/capture families. Exact HN12/HN13 STEP geometry and reference-drawing patterns control the motor interface; all ten reduced axes have an adapter allocation. Nominal geometry is complete, while material, tolerances, fits, fastener details, capacity and physical proof remain open.\n{end}\n'''
-    if marker not in readme:
-        raise RuntimeError("whole-body README integration marker missing")
-    readme_path.write_text(readme.replace(marker, block + marker), encoding="utf-8", newline="\n")
+    if marker in readme:
+        readme = readme.replace(marker, block + marker)
+    else:
+        readme = readme.rstrip() + "\n\n" + block
+    readme_path.write_text(readme, encoding="utf-8", newline="\n")
 
     page_path = WHOLE / "index.html"
     page = page_path.read_text(encoding="utf-8")
@@ -267,9 +269,13 @@ def integrate_root() -> None:
     if start in page and end in page:
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
     section = f'''{start}<section id="leg-drive-adapters"><h2>The reduced leg drives now have real adapter parts</h2><div class="grid"><article class="card pass"><div class="metric">3 + 2</div><p>Motor-flange and output-shaft adapter families.</p></article><article class="card pass"><div class="metric">10 / 10</div><p>Reduced leg axes have a complete nominal allocation.</p></article><article class="card pass"><h3>Manufacturer-bound</h3><p>Exact HN12/HN13 CAD and published bolt circles control the motor interface.</p></article><article class="card hold"><h3>Not released</h3><p>Fits, material, tolerances, fasteners, capacity and physical inspection remain open.</p></article></div><p><a href="leg-drivetrain-adapters-p0.1/index.html">Open the adapter guide</a> &middot; <a href="leg-drivetrain-adapters-p0.1/adapter-part-register.csv">part register</a> &middot; <a href="leg-drivetrain-adapters-p0.1/axis-adapter-allocation.csv">axis allocation</a>.</p></section>{end}'''
-    if marker not in page:
-        raise RuntimeError("whole-body page integration marker missing")
-    page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")
+    if marker in page:
+        page = page.replace(marker, section + marker)
+    elif "</main>" in page:
+        page = page.replace("</main>", section + "</main>")
+    else:
+        raise RuntimeError("whole-body page insertion boundary missing")
+    page_path.write_text(page, encoding="utf-8", newline="\n")
 
     holds_path = WHOLE / "open-holds.csv"
     with holds_path.open(encoding="utf-8", newline="") as handle:

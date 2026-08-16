@@ -425,9 +425,15 @@ The [detailed gripper package](grippers-p0.1/index.html) contains two editable 1
         page = page.split(start, 1)[0] + page.split(end, 1)[1]
     marker = "<!-- HR30-ASSEMBLY-GUIDE-P01-START -->"
     section = f'''{start}<section id="detailed-grippers"><h2>Both wrists now terminate in actual gripper mechanisms</h2><div class="grid"><article class="card pass"><div class="metric">20° involute</div><p>Module-0.5 pinion and matching rack geometry replace rectangular placeholder teeth.</p></article><article class="card pass"><div class="metric">8–34 mm</div><p>CAD-derived pad opening over 26 mm coupled travel.</p></article><article class="card pass"><h3>Coupled installed states</h3><p>The OPEN assembly moves both racks and rotates the pinion 148.969 degrees on the recognizable whole robot.</p></article><article class="card hold"><h3>Physical proof remains open</h3><p>Manufactured profile, fits, materials, horn adapter, calibration, pinch tests, endurance, DFM and FAI are unresolved.</p></article></div><div class="viewer"><model-viewer src="grippers-p0.1/HR-30_detailed_hands_installed_open_candidate.glb" poster="front-elevation.svg" alt="Interactive complete HR-30 candidate with both detailed grippers open" camera-controls camera-orbit="30deg 76deg 100%" field-of-view="27deg" shadow-intensity="0.85" exposure="1.05"></model-viewer><p><a href="grippers-p0.1/index.html">Open the detailed hand guide</a> · <a href="grippers-p0.1/gripper-gear-geometry-register.csv">gear geometry</a> · <a href="grippers-p0.1/gripper-mesh-state-register.csv">mesh states</a>.</p></div></section>{end}'''
-    if marker not in page:
-        raise RuntimeError("main page assembly-guide marker missing")
-    page_path.write_text(page.replace(marker, section + marker), encoding="utf-8", newline="\n")
+    if marker in page:
+        page = page.replace(marker, section + marker)
+    elif "</main>" in page:
+        # A clean dependency-ordered rebuild generates the assembly guide later.
+        # Use the stable document boundary instead of depending on a stale marker.
+        page = page.replace("</main>", section + "</main>")
+    else:
+        raise RuntimeError("main page insertion boundary missing")
+    page_path.write_text(page, encoding="utf-8", newline="\n")
 
     spec = f'''# HR-30 two-hand gripper functional specification P0.1
 

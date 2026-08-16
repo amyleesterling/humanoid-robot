@@ -1,8 +1,8 @@
 (export
 	(version "E")
 	(design
-		(source "C:\\Users\\amyle\\Documents\\New project\\humanoid-robot-publish\\hr30\\whole-body-p0.1\\electrical\\tether-power-core-p0.1\\hr30-tether-power-core-p0.1.kicad_sch")
-		(date "2026-08-16T07:31:43")
+		(source "C:\\Users\\amyle\\Documents\\New project\\h30e\\hr30\\whole-body-p0.1\\electrical\\tether-power-core-p0.1\\hr30-tether-power-core-p0.1.kicad_sch")
+		(date "2026-08-16T09:05:20")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION")
