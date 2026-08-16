@@ -1,6 +1,12 @@
 #include "hr30_motion.h"
 
-#include <string.h>
+static void clear_bytes(void *destination, size_t count) {
+    unsigned char *cursor = (unsigned char *)destination;
+    size_t index;
+    for (index = 0u; index < count; ++index) {
+        cursor[index] = 0u;
+    }
+}
 
 static void force_no_motion(hr30_controller_t *controller) {
     controller->output.torque_enable_mask = UINT32_C(0);
@@ -11,6 +17,7 @@ static void force_no_motion(hr30_controller_t *controller) {
 
 static void latch_fault(hr30_controller_t *controller, hr30_fault_t fault) {
     force_no_motion(controller);
+    controller->output.heartbeat_level = false;
     controller->output.state = HR30_STATE_LATCHED_FAULT;
     controller->output.fault = fault;
     controller->output.fault_diagnostic = true;
@@ -58,7 +65,7 @@ void hr30_controller_init(hr30_controller_t *controller) {
     if (controller == NULL) {
         return;
     }
-    (void)memset(controller, 0, sizeof(*controller));
+    clear_bytes(controller, sizeof(*controller));
     controller->output.state = HR30_STATE_BOOT_HOLD;
     controller->output.last_reject = HR30_REJECT_NO_REQUEST;
     force_no_motion(controller);
@@ -80,6 +87,27 @@ void hr30_controller_step(
     }
 
     force_no_motion(controller);
+
+    /* A latched controller fault must withdraw the ordinary watchdog
+     * heartbeat.  Keeping it alive here would allow a failed controller to
+     * continue satisfying the external watchdog-inhibit prerequisite. */
+    if (controller->output.state == HR30_STATE_LATCHED_FAULT) {
+        controller->output.heartbeat_level = false;
+        if (inputs->reset_request && !inputs->safety_permit_hardwired &&
+            inputs->all_actuator_torque_disabled &&
+            (inputs->observed_torque_enabled_mask == UINT32_C(0)) &&
+            (inputs->observed_bus_tx_mask == UINT16_C(0)) &&
+            inputs->configuration_digest_matches) {
+            controller->output.state = HR30_STATE_SAFE_HOLD;
+            controller->output.fault = HR30_FAULT_NONE;
+            controller->output.fault_diagnostic = false;
+            controller->output.last_reject = HR30_REJECT_NO_REQUEST;
+            controller->permit_was_observed = false;
+            controller->valid_boot_samples = 0u;
+        }
+        return;
+    }
+
     controller->output.heartbeat_level = !controller->output.heartbeat_level;
 
     if (controller->clock_initialized && (now_ms < controller->last_now_ms)) {
@@ -102,21 +130,6 @@ void hr30_controller_step(
         latch_fault(controller, HR30_FAULT_UNEXPECTED_BUS_TX);
         return;
     }
-    if (controller->output.state == HR30_STATE_LATCHED_FAULT) {
-        if (inputs->reset_request && !inputs->safety_permit_hardwired &&
-            inputs->all_actuator_torque_disabled &&
-            (inputs->observed_torque_enabled_mask == UINT32_C(0)) &&
-            (inputs->observed_bus_tx_mask == UINT16_C(0))) {
-            controller->output.state = HR30_STATE_SAFE_HOLD;
-            controller->output.fault = HR30_FAULT_NONE;
-            controller->output.fault_diagnostic = false;
-            controller->output.last_reject = HR30_REJECT_NO_REQUEST;
-            controller->permit_was_observed = false;
-            controller->valid_boot_samples = 0u;
-        }
-        return;
-    }
-
     if (controller->permit_was_observed && !inputs->safety_permit_hardwired) {
         latch_fault(controller, HR30_FAULT_PERMIT_DROPOUT);
         return;

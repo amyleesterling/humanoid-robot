@@ -1,0 +1,73 @@
+     VMA      LMA     Size Align Out     In      Symbol
+       0        0        0     1 _estack = ORIGIN(DTCMRAM) + LENGTH(DTCMRAM)
+ 8000000  8000000      298  1024 .isr_vector
+ 8000000  8000000      298  1024         <BUILD_ROOT>\build\startup.o:(.isr_vector)
+ 8000000  8000000      298     1                 g_hr30_vectors
+ 8000298  8000298      5cc     8 .text
+ 8000298  8000298       5c     4         <BUILD_ROOT>\build\startup.o:(.text.Reset_Handler)
+ 8000298  8000298        0     1                 $t
+ 8000299  8000299       3e     1                 Reset_Handler
+ 80002d8  80002d8        0     1                 $d
+ 80002f4  80002f4        8     1         <BUILD_ROOT>\build\startup.o:(.text.Default_Handler)
+ 80002f4  80002f4        0     1                 $t
+ 80002f5  80002f5        8     1                 Default_Handler
+ 8000300  8000300      114     8         <BUILD_ROOT>\build\hr30_stm32h743_target.o:(.text.hr30_target_early_safe)
+ 8000300  8000300        0     1                 $t
+ 8000301  8000301      114     1                 hr30_target_early_safe
+ 8000414  8000414       5c     2         <BUILD_ROOT>\build\hr30_stm32h743_target.o:(.text.configure_output_low)
+ 8000414  8000414        0     1                 $t
+ 8000415  8000415       5c     1                 configure_output_low
+ 8000470  8000470       ea     8         <BUILD_ROOT>\build\hr30_stm32h743_target.o:(.text.hr30_target_apply_outputs)
+ 8000470  8000470        0     1                 $t
+ 8000471  8000471       ea     1                 hr30_target_apply_outputs
+ 8000560  8000560       b6     8         <BUILD_ROOT>\build\hr30_stm32h743_target.o:(.text.hr30_target_main)
+ 8000560  8000560        0     1                 $t
+ 8000561  8000561       b6     1                 hr30_target_main
+ 8000618  8000618       1c     8         <BUILD_ROOT>\build\hr30_stm32h743_target.o:(.text.hr30_target_fault_hold)
+ 8000618  8000618        0     1                 $t
+ 8000619  8000619       1c     1                 hr30_target_fault_hold
+ 8000638  8000638       22     8         <BUILD_ROOT>\build\hr30_motion.o:(.text.hr30_controller_init)
+ 8000638  8000638        0     1                 $t
+ 8000639  8000639       22     1                 hr30_controller_init
+ 800065a  800065a      146     2         <BUILD_ROOT>\build\hr30_motion.o:(.text.hr30_controller_step)
+ 800065a  800065a        0     1                 $t
+ 800065b  800065b      146     1                 hr30_controller_step
+ 80007a0  80007a0       5e     2         <BUILD_ROOT>\build\hr30_motion.o:(.text.validate_request)
+ 80007a0  80007a0        0     1                 $t
+ 80007a1  80007a1       5e     1                 validate_request
+ 8000800  8000800        4     4         <BUILD_ROOT>\build\hr30_stm32h743_target.o:(.rodata.g_hr30_target_configuration_word)
+ 8000800  8000800        4     1                 g_hr30_target_configuration_word
+ 8000804  8000804        f     1         <BUILD_ROOT>\build\hr30_stm32h743_target.o:(.rodata.hr30_target_early_safe.safe_outputs)
+ 8000804  8000804        f     1                 hr30_target_early_safe.safe_outputs
+ 8000813  8000813        f     1         <BUILD_ROOT>\build\hr30_stm32h743_target.o:(.rodata.hr30_target_early_safe.fail_low_inputs)
+ 8000813  8000813        f     1                 hr30_target_early_safe.fail_low_inputs
+ 8000822  8000822       18     1         <BUILD_ROOT>\build\hr30_stm32h743_target.o:(.rodata.direction_pins)
+ 8000822  8000822       18     1                 direction_pins
+ 800083a  800083a       27     1         <BUILD_ROOT>\build\hr30_stm32h743_target.o:(.rodata.uart_signal_pins)
+ 800083a  800083a       27     1                 uart_signal_pins
+ 8000861  8000861        3     1         . = ALIGN(4)
+ 8000864  8000864       10     4 .ARM.exidx
+ 8000864  8000864       10     4         <internal>:(.ARM.exidx)
+ 8000874  8000874        0     1 . = ALIGN(4)
+ 8000874  8000874        0     1 _sidata = LOADADDR(.data)
+20000000 20000000        0     4 .data
+20000000 20000000        0     1         _sdata = .
+20000000 20000000        0     1         . = ALIGN(4)
+20000000 20000000        0     1         _edata = .
+20000000 20000000        4     4 .bss
+20000000 20000000        0     1         _sbss = .
+20000000 20000000        2     2         <BUILD_ROOT>\build\hr30_stm32h743_target.o:(.bss.g_hr30_bus_write_attempt_mask)
+20000000 20000000        2     1                 g_hr30_bus_write_attempt_mask
+20000002 20000002        2     1         . = ALIGN(4)
+20000004 20000004        0     1         _ebss = .
+20000004 20000004        0     1
+20000004 20000004        0     1
+20000004 20000004        0     1
+       0        0       25     1 .ARM.attributes
+       0        0       25     1         <BUILD_ROOT>\build\startup.o:(.ARM.attributes)
+       0        0      250     4 .symtab
+       0        0      250     4         <internal>:(.symtab)
+       0        0       53     1 .shstrtab
+       0        0       53     1         <internal>:(.shstrtab)
+       0        0      1f2     1 .strtab
+       0        0      1f2     1         <internal>:(.strtab)

@@ -1,0 +1,9 @@
+<BUILD_ROOT>\build\hr30-motion-controller-stm32h743.elf  :
+section             size        addr
+.isr_vector          664   134217728
+.text               1484   134218392
+.ARM.exidx            16   134219876
+.data                  0   536870912
+.bss                   4   536870912
+.ARM.attributes       37           0
+Total               2205

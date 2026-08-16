@@ -1,0 +1,2 @@
+PASS: STM32H743 MMIO simulation keeps eight buses and all motion outputs inactive
+NO TARGET HIL, FUNCTIONAL-SAFETY CREDIT, OR ENERGIZATION AUTHORITY

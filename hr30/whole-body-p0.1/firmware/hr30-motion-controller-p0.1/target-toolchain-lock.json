@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "identifier": "HR30-MOTION-STM32H743-TOOLCHAIN-P0.1",
+  "status": "PRELIMINARY - TARGET BUILD EVIDENCE ONLY - NOT APPROVED FOR FLASHING OR ENERGIZATION",
+  "verified_date": "2026-08-16",
+  "target": {
+    "device": "STM32H743ZIT6",
+    "architecture": "arm-none-eabi Cortex-M7 Thumb-2 soft-float",
+    "flash_origin": "0x08000000",
+    "flash_bytes": 2097152,
+    "dtcm_origin": "0x20000000",
+    "dtcm_bytes": 131072
+  },
+  "toolchain": {
+    "name": "LLVM-MinGW clang/LLD/LLVM binutils",
+    "release": "20260616-ucrt-x86_64",
+    "clang_version": "22.1.8",
+    "llvm_revision": "ca7933e47d3a3451d81e72ac174dcb5aa28b59d1",
+    "source_url": "https://github.com/mstorsjo/llvm-mingw/releases/tag/20260616"
+  },
+  "manufacturer_inputs": [
+    {
+      "name": "STM32H743 datasheet",
+      "document": "DS12110 Rev 11",
+      "date": "2026-01",
+      "url": "https://www.st.com/resource/en/datasheet/stm32h743vi.pdf"
+    },
+    {
+      "name": "STM32H743 reference manual",
+      "document": "RM0433 Rev 8",
+      "date": "2023-01",
+      "url": "https://www.st.com/resource/en/reference_manual/rm0433-stm32h742-stm32h743753-and-stm32h750-value-line-advanced-armbased-32bit-mcus-stmicroelectronics.pdf"
+    },
+    {
+      "name": "Cortex-M7 programming manual",
+      "document": "PM0253 Rev 6",
+      "date": "2026-05",
+      "url": "https://www.st.com/resource/en/programming_manual/DM00237416.pdf"
+    },
+    {
+      "name": "STM32H743 device errata",
+      "document": "ES0392 Rev 15",
+      "date": "2025-09",
+      "url": "https://www.st.com/resource/en/errata_sheet/es0392-stm32h742xig-stm32h743xig-stm32h750xb-stm32h753xi-device-errata-stmicroelectronics.pdf"
+    },
+    {
+      "name": "ST CMSIS device definitions used for independent register verification",
+      "version": "v1.10.7",
+      "git_revision": "de8243d2c15f87936f28a49fcd9e6f5ba10fc233",
+      "release_date": "2026-02-04",
+      "url": "https://github.com/STMicroelectronics/cmsis-device-h7"
+    }
+  ],
+  "build_controls": {
+    "freestanding": true,
+    "standard_library_linked": false,
+    "interrupts_enabled": false,
+    "uart_peripherals_enabled": false,
+    "linker_build_id": "disabled",
+    "source_date_epoch": 1786924800,
+    "two_clean_builds_required": true,
+    "host_mmio_vectors_required": true
+  },
+  "known_limits": [
+    "The binary has not been flashed or executed on an STM32H743.",
+    "Reset-clock timing, GPIO voltage/polarity, UART inactivity and watchdog heartbeat require oscilloscope and HIL verification on received hardware.",
+    "The project-owned startup and register layer are not a certified functional-safety component.",
+    "A reproducible target build is not approval to connect, power, move or energize the robot."
+  ]
+}

@@ -1,0 +1,6 @@
+firmware/hr30-motion-controller/platform/stm32h743/hr30_stm32h743_target.c:87:hr30_target_early_safe	24	static
+firmware/hr30-motion-controller/platform/stm32h743/hr30_stm32h743_target.c:56:configure_output_low	8	static
+firmware/hr30-motion-controller/platform/stm32h743/hr30_stm32h743_target.c:119:hr30_target_read_inputs	0	static
+firmware/hr30-motion-controller/platform/stm32h743/hr30_stm32h743_target.c:133:hr30_target_apply_outputs	8	static
+firmware/hr30-motion-controller/platform/stm32h743/hr30_stm32h743_target.c:169:hr30_target_main	56	static
+firmware/hr30-motion-controller/platform/stm32h743/hr30_stm32h743_target.c:190:hr30_target_fault_hold	0	static
