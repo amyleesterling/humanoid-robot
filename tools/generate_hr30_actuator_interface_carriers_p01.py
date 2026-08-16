@@ -269,6 +269,8 @@ def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> di
                     ux, uy = (0.0, -1.0) if py > 30.0 else (0.0, 1.0)
                     if ref.startswith("J1") and pad.GetNumber() == "1":
                         ux, uy = 0.50, 1.0
+                elif ref == "L1":
+                    ux, uy = (1.0 if px >= cx else -1.0), 0.0
                 elif not ref.startswith("U"):
                     ux = 0.0
                     if py >= 22.0:
@@ -293,36 +295,24 @@ def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> di
                 escape = (px + ux * distance, py + uy * distance)
                 outer = pcbnew.B_Cu if pad.IsOnLayer(pcbnew.B_Cu) and not pad.IsOnLayer(pcbnew.F_Cu) else pcbnew.F_Cu
                 bounds = (pcbnew.ToMM(bbox.GetX()), pcbnew.ToMM(bbox.GetY()), pcbnew.ToMM(bbox.GetRight()), pcbnew.ToMM(bbox.GetBottom()))
-                record = {"net": name, "ref": ref, "pad": pad.GetNumber(), "point": (px, py), "escape": escape, "direction": (ux, uy), "outer": outer, "bounds": bounds}
+                record = {"net": name, "ref": ref, "pad": pad.GetNumber(), "point": (px, py), "escape": escape, "direction": (ux, uy), "outer": outer, "bounds": bounds,
+                          "through": pad.IsOnLayer(pcbnew.F_Cu) and pad.IsOnLayer(pcbnew.B_Cu)}
                 pad_records.append(record); pads_by_net[name].append(record)
-    def point_clear_of_other_pads(x: float, y: float, net_name: str, margin: float = 0.28) -> bool:
-        for other in pad_records:
-            if other["net"] == net_name:
+    # Single-ended logical pads have no routed tree in this deterministic
+    # router.  Excluding them from escape-via planning is especially important
+    # when a caller temporarily renames plane pads before adding their direct
+    # plane fan-outs.
+    pad_records = [record for record in pad_records if len(pads_by_net[str(record["net"])]) >= 2]
+    no_net_pad_bounds = []
+    for fp in board.GetFootprints():
+        for pad in fp.Pads():
+            if pad.GetNetname():
                 continue
-            left, top_y, right, bottom_y = map(float, other["bounds"])
-            if left - margin <= x <= right + margin and top_y - margin <= y <= bottom_y + margin:
-                return False
-        return True
-
-    # Move every escape via far enough beyond its SMD pad to clear unrelated
-    # copper and every other drilled escape.  The fan-out direction remains
-    # normal to the package pad row, preserving a short deterministic stub.
-    placed_escapes: list[tuple[float, float]] = []
-    for record in sorted(pad_records, key=lambda item: (str(item["ref"]), str(item["pad"]))):
-        px, py = map(float, record["point"]); ex0, ey0 = map(float, record["escape"]); ux, uy = map(float, record["direction"])
-        accepted = None
-        for step in range(17):
-            ex, ey = ex0 + ux * 0.22 * step, ey0 + uy * 0.22 * step
-            if not (0.55 < ex < 81.45 and 0.55 < ey < 41.45):
-                continue
-            if not point_clear_of_other_pads(ex, ey, str(record["net"])):
-                continue
-            if any((ex - ox) ** 2 + (ey - oy) ** 2 < 0.46 ** 2 for ox, oy in placed_escapes):
-                continue
-            accepted = (ex, ey); break
-        if accepted is None:
-            raise RuntimeError(f"no DRC-clear escape via for {record['ref']}.{record['pad']} [{record['net']}]")
-        record["escape"] = accepted; placed_escapes.append(accepted)
+            bbox = pad.GetBoundingBox()
+            no_net_pad_bounds.append((
+                pcbnew.ToMM(bbox.GetX()), pcbnew.ToMM(bbox.GetY()),
+                pcbnew.ToMM(bbox.GetRight()), pcbnew.ToMM(bbox.GetBottom()),
+            ))
 
     def point_segment_distance(point: tuple[float, float], start: tuple[float, float], end: tuple[float, float]) -> float:
         px, py = point; x1, y1 = start; x2, y2 = end
@@ -332,6 +322,54 @@ def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> di
         fraction = max(0.0, min(1.0, ((px - x1) * dx + (py - y1) * dy) / (dx * dx + dy * dy)))
         qx, qy = x1 + fraction * dx, y1 + fraction * dy
         return ((px - qx) ** 2 + (py - qy) ** 2) ** 0.5
+
+    def point_clear_of_other_pads(x: float, y: float, net_name: str, margin: float = 0.28) -> bool:
+        for other in pad_records:
+            if other["net"] == net_name:
+                continue
+            left, top_y, right, bottom_y = map(float, other["bounds"])
+            if left - margin <= x <= right + margin and top_y - margin <= y <= bottom_y + margin:
+                return False
+        if any(left - margin <= x <= right + margin and top - margin <= y <= bottom + margin
+               for left, top, right, bottom in no_net_pad_bounds):
+            return False
+        return True
+
+    # Move every escape via far enough beyond its SMD pad to clear unrelated
+    # copper and every other drilled escape.  The fan-out direction remains
+    # normal to the package pad row, preserving a short deterministic stub.
+    placed_escapes: list[tuple[float, float]] = []
+    for record in sorted(pad_records, key=lambda item: (str(item["ref"]), str(item["pad"]))):
+        px, py = map(float, record["point"]); ex0, ey0 = map(float, record["escape"]); ux, uy = map(float, record["direction"])
+        if bool(record["through"]):
+            record["escape"] = (px, py)
+            continue
+        accepted = None
+        for step in range(17):
+            ex, ey = ex0 + ux * 0.22 * step, ey0 + uy * 0.22 * step
+            if not (0.55 < ex < 81.45 and 0.55 < ey < 41.45):
+                continue
+            if not point_clear_of_other_pads(ex, ey, str(record["net"])):
+                continue
+            if any((ex - ox) ** 2 + (ey - oy) ** 2 < 0.46 ** 2 for ox, oy in placed_escapes):
+                continue
+            if any((ex - ox) ** 2 + (ey - oy) ** 2 < 0.46 ** 2 for ox, oy, _ in EXTRA_ROUTING_OBSTACLES):
+                continue
+            if any(point_segment_distance((ox, oy), (px, py), (ex, ey)) < 0.39
+                   for ox, oy, _ in EXTRA_ROUTING_OBSTACLES):
+                continue
+            accepted = (ex, ey); break
+        if accepted is None:
+            px, py = map(float, record["point"])
+            nearest = sorted(
+                (((px - ox) ** 2 + (py - oy) ** 2) ** 0.5, ox, oy, label)
+                for ox, oy, label in EXTRA_ROUTING_OBSTACLES
+            )[:4]
+            raise RuntimeError(
+                f"no DRC-clear escape via for {record['ref']}.{record['pad']} [{record['net']}] "
+                f"at {(px, py)} direction={record['direction']} nearest_extra={nearest}"
+            )
+        record["escape"] = accepted; placed_escapes.append(accepted)
 
     # Keep drilled escapes away from every other net's surface fan-out stub.
     # Extending only along the already-frozen pad normal avoids arbitrary jogs.
@@ -495,7 +533,8 @@ def route_board(board: pcbnew.BOARD, nets: dict[str, pcbnew.NETINFO_ITEM]) -> di
         width = 0.20 if name in {"CTRL_GND", "CTRL_3V3", "CTRL_5V"} or name.endswith(("_RET", "_VISOOUT", "_VISOIN", "_GND2")) else 0.15
         for record in records:
             px, py = map(float, record["point"]); ex, ey = map(float, record["escape"]); outer = int(record["outer"])
-            add_track(board, nets[name], (px, py), (ex, ey), outer, width); add_via(board, nets[name], (ex, ey)); routed_vias += 1
+            if not bool(record["through"]):
+                add_track(board, nets[name], (px, py), (ex, ey), outer, width); add_via(board, nets[name], (ex, ey)); routed_vias += 1
         root_record = records[0]; root_point = tuple(map(float, root_record["escape"])); root_cell = target_cell(root_point, name)
         root_layer = next(layer for layer in layers if cell_available(layer, root_cell, name))
         add_track(board, nets[name], root_point, point_for(root_cell), root_layer, width)

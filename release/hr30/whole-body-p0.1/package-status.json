@@ -377,8 +377,10 @@
   "motion_controller_carrier_pin_mapping_reconciled": true,
   "motion_controller_erc_errors": 0,
   "motion_controller_erc_warnings": 0,
-  "motion_controller_drc_violations": 112,
-  "motion_controller_unconnected_item_count": 2,
+  "motion_controller_drc_violations": 0,
+  "motion_controller_unconnected_item_count": 0,
   "motion_controller_layout_blocked": true,
-  "motion_controller_fabrication_released": false
+  "motion_controller_fabrication_released": false,
+  "motion_controller_routing_complete": true,
+  "motion_controller_drc_clean": true
 }
