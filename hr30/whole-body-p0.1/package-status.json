@@ -424,5 +424,12 @@
   "logic_power_cable_built": false,
   "logic_power_limits_released": false,
   "logic_power_reference_approved": false,
-  "logic_power_connection_authority": false
+  "logic_power_connection_authority": false,
+  "grounding_reference_architecture_present": true,
+  "grounding_reference_domain_count": 7,
+  "grounding_candidate_bond_count": 10,
+  "grounding_instrument_case_count": 6,
+  "single_dc_return_pe_bond_candidate_defined": true,
+  "pe_dc_reference_architecture_approved": false,
+  "grounding_physical_measurements_executed": 0
 }

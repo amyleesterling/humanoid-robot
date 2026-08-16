@@ -39,7 +39,7 @@ def main() -> int:
     need(len(gates) == 12 and len({r["gate_id"] for r in gates}) == 12, "12 unique gates required")
     need(len(states) == 8 and len({r["state_id"] for r in states}) == 8, "8 unique power states required")
     need(len(traveler) == 26 and len(faults) == 12 and len(measurements) == 10, "traveler/fault/measurement coverage drift")
-    need(len(signoffs) == 5 and len(holds) == 10 and len(sources) == 16, "signoff/hold/source coverage drift")
+    need(len(signoffs) == 5 and len(holds) == 10 and len(sources) == 17, "signoff/hold/source coverage drift")
     need(all(r["state"] == "OPEN - NOT EXECUTED" for r in gates + states + traveler + faults + measurements + signoffs + holds), "physical work falsely marked executed")
     need(all(r["motion_permitted"] == "NO" for r in states), "motion permitted in energization ladder")
     need(all(r["pass_fail"] == "NOT EXECUTED" and r["measured_response"] == "NONE" for r in faults), "fault test overclaim")

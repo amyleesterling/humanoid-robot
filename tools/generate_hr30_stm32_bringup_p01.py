@@ -224,7 +224,8 @@ def integrate_root(status: dict[str, object]) -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     block = f'''{start}\n## STM32 no-actuator bring-up\n\nThe [interactive target bring-up guide](firmware/stm32-target-bringup-p0.1/index.html) binds the reproducible STM32H743 image to the controller's exact five-contact SWD boundary and the [native routed SWD adapter candidate](electrical/swd-adapter-p0.1/index.html), plus ten release gates, twelve measurements and six fault injections. The target remains unflashed; the adapter board and cable remain unbuilt; all physical results and work authority remain open.\n{end}\n'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-README-START -->"
-    readme.write_text(text.replace(marker, block + marker), encoding="utf-8", newline="\n")
+    text = text.replace(marker, block + marker) if marker in text else text.rstrip() + "\n\n" + block
+    readme.write_text(text, encoding="utf-8", newline="\n")
 
     page = WHOLE / "index.html"
     text = page.read_text(encoding="utf-8")
@@ -233,7 +234,8 @@ def integrate_root(status: dict[str, object]) -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     section = f'''{start}<section id="stm32-bringup"><h2>The target now has a no-actuator bring-up path</h2><div class="grid"><article class="card"><div class="metric">5</div><p>exact JDBG1 debug contacts</p></article><article class="card"><div class="metric">10</div><p>controlled release gates</p></article><article class="card"><div class="metric">12</div><p>planned physical measurements</p></article><article class="card hold"><div class="metric">0</div><p>flashes or HIL executions</p></article></div><p><a href="firmware/stm32-target-bringup-p0.1/index.html">Open the interactive STM32 target bring-up guide</a>. Actuator carriers remain physically disconnected and all authority remains withheld.</p></section>{end}'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-START -->"
-    page.write_text(text.replace(marker, section + marker), encoding="utf-8", newline="\n")
+    text = text.replace(marker, section + marker) if marker in text else text.replace("</main>", section + "</main>", 1)
+    page.write_text(text, encoding="utf-8", newline="\n")
 
 
 def main() -> int:

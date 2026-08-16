@@ -174,7 +174,8 @@ def integrate_root(status: dict[str, object]) -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     block = f'''{start}\n## Deterministic no-motion firmware\n\nThe [HR-30 no-motion firmware guide](firmware/hr30-motion-controller-p0.1/index.html) binds all 25 axes and eight buses to a compiled `FIRST_POWER_NO_MOTION` state machine. Every torque-enable, bus-transmit, precharge and action-ready output remains zero; all motion requests are rejected and STOP is a no-op. Two clean host builds and two clean freestanding STM32H743 builds are byte-identical, and the compiled core/MMIO vector suites pass. The target is unflashed; HIL, physical timing, reset-state proof and qualified approval remain open, so this creates no powered-work or motion authority.\n{end}\n'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-README-START -->"
-    readme.write_text(text.replace(marker, block + marker), encoding="utf-8", newline="\n")
+    text = text.replace(marker, block + marker) if marker in text else text.rstrip() + "\n\n" + block
+    readme.write_text(text, encoding="utf-8", newline="\n")
     page = WHOLE / "index.html"
     text = page.read_text(encoding="utf-8")
     start, end = "<!-- HR30-NO-MOTION-FW-P01-START -->", "<!-- HR30-NO-MOTION-FW-P01-END -->"
@@ -182,7 +183,8 @@ def integrate_root(status: dict[str, object]) -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     section = f'''{start}<section id="no-motion-firmware"><h2>The whole-body controller now has a real unflashed STM32 target</h2><div class="grid"><article class="card pass"><div class="metric">25</div><p>axis torque bits forced inactive</p></article><article class="card pass"><div class="metric">8</div><p>UART clocks disabled and direction pins low</p></article><article class="card pass"><h3>Reproducible host and target builds</h3><p>The freestanding Cortex-M7 ELF/BIN and compiled vector evidence reproduce byte-for-byte.</p></article><article class="card hold"><h3>Flash and HIL remain open</h3><p>The binary has never run on hardware; no connection or powered-work authority follows.</p></article></div><p><a href="firmware/hr30-motion-controller-p0.1/index.html">Open the deterministic no-motion firmware guide</a>.</p></section>{end}'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-START -->"
-    page.write_text(text.replace(marker, section + marker), encoding="utf-8", newline="\n")
+    text = text.replace(marker, section + marker) if marker in text else text.replace("</main>", section + "</main>", 1)
+    page.write_text(text, encoding="utf-8", newline="\n")
 
 
 def main() -> int:
