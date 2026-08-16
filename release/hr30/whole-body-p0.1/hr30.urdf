@@ -67,9 +67,9 @@
   </link>
   <link name="head">
     <inertial>
-      <origin xyz="-0.002032 -0.013096 0.011517" rpy="0 0 0" />
-      <mass value="0.409453" />
-      <inertia ixx="0.000840880" ixy="0" ixz="0" iyy="0.001195739" iyz="0" izz="0.001180589" />
+      <origin xyz="-0.001893 -0.011117 0.008327" rpy="0 0 0" />
+      <mass value="0.439477" />
+      <inertia ixx="0.000902539" ixy="0" ixz="0" iyy="0.001283419" iyz="0" izz="0.001267159" />
     </inertial>
     <visual>
       <origin xyz="0.000000 0.000000 0.016000" rpy="0 0 0" />

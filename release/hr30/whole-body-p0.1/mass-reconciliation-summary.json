@@ -7,28 +7,28 @@
   "located_joint_fastener_count": 156,
   "transmission_belt_count": 10,
   "installed_equipment_item_count": 58,
-  "minimum_identified_candidate_mass_kg": 10.280029548,
-  "planning_identified_candidate_mass_kg": 11.00281701,
-  "maximum_identified_candidate_mass_kg": 11.920156983,
+  "minimum_identified_candidate_mass_kg": 10.302269548,
+  "planning_identified_candidate_mass_kg": 11.03061701,
+  "maximum_identified_candidate_mass_kg": 11.954906983,
   "fabrication_cad_density_screen_kg": 1.954897129,
   "actuator_published_mass_planning_kg": 2.443,
   "joint_hardware_gross_density_screen_kg": 2.442870464,
   "located_joint_fastener_planning_mass_kg": 0.554224112,
   "transmission_belt_published_mass_kg": 0.148,
-  "installed_equipment_harness_planning_mass_kg": 3.459825305,
+  "installed_equipment_harness_planning_mass_kg": 3.487625305,
   "prior_allocation_mass_kg": 9.63,
-  "reconciled_dynamics_planning_mass_kg": 11.366147152,
+  "reconciled_dynamics_planning_mass_kg": 11.396171152,
   "reconciled_dynamics_neutral_com_m": [
-    -0.000807244,
-    0.011586493,
-    0.367396967
+    -0.000805117,
+    0.011597771,
+    0.368154205
   ],
   "program_mass_target_kg": 8.0,
   "program_maximum_mass_kg": 10.0,
-  "planning_margin_to_product_target_kg": -3.366147152,
-  "planning_margin_to_program_maximum_kg": -1.366147152,
-  "integration_contingency_before_fastener_allocation_kg": 0.835887434,
-  "remaining_integration_contingency_kg": 0.363330142,
+  "planning_margin_to_product_target_kg": -3.396171152,
+  "planning_margin_to_program_maximum_kg": -1.396171152,
+  "integration_contingency_before_fastener_allocation_kg": 0.838111434,
+  "remaining_integration_contingency_kg": 0.365554142,
   "program_mass_target_status": "EXCEEDS 10 KG HARD LIMIT",
   "unmodeled_or_unselected": [
     "exact battery BMS/PCM, cell monitor, connector, service disconnect, precharge, containment, retention and offboard charger hardware",
@@ -46,26 +46,26 @@
   },
   "warning": "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION",
   "reconciled_box_model_inertia_kg_m2": [
-    0.370456419,
-    0.414530172,
-    0.067400752
+    0.37290799,
+    0.417030584,
+    0.067464309
   ],
   "active_development_configuration": "HR30-TETHER-FIRST-P0.1",
-  "active_tether_dynamics_planning_mass_kg": 9.900587152,
+  "active_tether_dynamics_planning_mass_kg": 9.930611152,
   "active_tether_neutral_com_m": [
-    -0.000926738,
-    0.002707091,
-    0.343546533
+    -0.000923936,
+    0.002746879,
+    0.344487633
   ],
-  "active_tether_margin_to_program_maximum_kg": 0.099412848,
+  "active_tether_margin_to_program_maximum_kg": 0.069388848,
   "excluded_onboard_envelope_identified_mass_kg": 1.357,
   "onboard_envelope_configuration": "HR30-ONBOARD-ENVELOPE-P0.1",
-  "onboard_envelope_dynamics_planning_mass_kg": 11.366147152,
+  "onboard_envelope_dynamics_planning_mass_kg": 11.396171152,
   "onboard_envelope_neutral_com_m": [
-    -0.000807244,
-    0.011586493,
-    0.367396967
+    -0.000805117,
+    0.011597771,
+    0.368154205
   ],
-  "onboard_envelope_margin_to_program_maximum_kg": -1.366147152,
+  "onboard_envelope_margin_to_program_maximum_kg": -1.396171152,
   "configuration_mass_separation_present": true
 }

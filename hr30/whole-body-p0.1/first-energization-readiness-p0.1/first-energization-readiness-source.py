@@ -53,6 +53,7 @@ def source_rows() -> list[dict]:
         ("energy and safety architecture status", "energy-safety-spine-p0.1/energy-safety-status.json"),
         ("external tether power core status", "electrical/tether-power-core-p0.1/power-core-status.json"),
         ("whole-robot physical harness status", "harness/physical-p0.1/physical-harness-status.json"),
+        ("physical head HMI harness candidate status", "harness/head-hmi-harness-p0.1/head-hmi-status.json"),
         ("25-axis harness/current policy status", "harness/current-policy-binding-p0.1/status.json"),
         ("one-axis commissioning station status", "electrical/axis-commissioning-station-p0.1/commissioning-status.json"),
         ("bench harness status", "electrical/axis-commissioning-station-p0.1/bench-harness-p0.1/harness-status.json"),

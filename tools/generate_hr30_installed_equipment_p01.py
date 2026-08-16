@@ -246,7 +246,7 @@ def build() -> list[Equipment]:
         "Waveshare 4inch HDMI LCD (H), SKU 16340, rotated landscape candidate",
         box(98, 14.6, 58, (0, -48, 704), 3), 0.123, 5.0, 4.0,
         "rear of face bezel", "-Y bezel withdrawal",
-        "HDMI, 5 V and optional touch SPI; locking adapters/service loop required",
+        "remote micro-HDMI-to-full-HDMI link from torso Pi 5, separately protected 5 V, and optional touch SPI; direct GPIO stacking rejected by packaging",
         "https://www.waveshare.com/4inch-HDMI-LCD-H.htm", "live manufacturer product page; accessed 2026-08-14",
         "manufacturer lists 4-inch 480x800 display and 0.123 kg; final 3D drawing/incoming fit required",
         "head", sensor)
@@ -255,35 +255,43 @@ def build() -> list[Equipment]:
             "Raspberry Pi Camera Module 3 Wide candidate",
             box(25, 12.4, 24, (x, -51, 744), 2), 0.012, 1.5, 1.2,
             "upper face bezel camera datum", "-Y bezel withdrawal",
-            "22-pin CSI FFC via 200 mm service loop; privacy indicator interlock open",
+            "official Standard-Mini camera cable family: Pi 5 22-way FPC to Camera Module 3 15-pin FPC; 300 mm route candidate; privacy indicator interlock open",
             "https://www.raspberrypi.com/products/camera-module-3/", "live official product page; accessed 2026-08-14",
             "25 x 24 x 12.4 mm Wide envelope verified; 12 g installed allowance is not published mass",
             "head", sensor)
     add("EQ-H01-MIC-ARRAY", "H01", "far-field microphone array",
-        "four-microphone linear USB/I2S array; exact board SELECTION REQUIRED",
-        box(82, 10, 12, (0, -48, 664), 2), 0.035, 1.0, 1.0,
+        "Seeed Studio reSpeaker Flex XVF3800 Linear-4, SKU 100099135, microphone daughterboard candidate",
+        box(110, 10, 18, (0, -48, 664), 2), 0.040, 0.1, 0.1,
         "lower face bezel isolated mount", "-Y bezel withdrawal",
-        "USB/I2S, clock, acoustic seals and privacy mute circuit open",
-        "SELECTION REQUIRED", "SELECTION REQUIRED", "planning envelope/mass only", "head", audio)
+        "included 24-pin 0.5 mm-pitch 200 mm FPC to rear-head XVF3800 core; acoustic seals, vibration isolation and privacy mute circuit open",
+        "https://www.seeedstudio.com/reSpeaker-Flex-XVF3800-Linear-4-p-6738.html",
+        "live official product page and wiki updated 2026-03-26; accessed 2026-08-16",
+        "110 x 10 x 18 mm planning envelope derived from the published 4 x 33 mm microphone spacing; official 2D DXF and received-board fit remain required", "head", audio)
     for side, x in (("L", 58), ("R", -58)):
         add(f"EQ-H01-SPEAKER-{side}", "H01", "speech output",
-            "40 mm 3 W full-range speaker candidate",
-            box(12, 40, 40, (x, 22, 704), 3), 0.030, 0.0, 2.0,
+            "Seeed Studio Mono Enclosed Speaker 4R 5W, SKU 114993346 candidate",
+            box(12, 40, 40, (x, 22, 704), 3), 0.030, 0.0, 5.0,
             "head side acoustic baffle", f"{'+' if x > 0 else '-'}X side-cover service",
-            "two-wire audio plus keyed plug; grille/seal/acoustic test open",
-            "SELECTION REQUIRED", "SELECTION REQUIRED", "planning envelope/mass only", "head", audio)
+            "two-wire 4 ohm speaker link from reSpeaker Flex core; exact mating connector, grille, seal and acoustic test open",
+            "https://www.seeedstudio.com/Mono-Enclosed-Speaker-4R-5W-p-5931.html",
+            "live official product page; accessed 2026-08-16",
+            "40 mm planning envelope/mass allowance remains subject to received-part measurement", "head", audio)
     add("EQ-H01-AUDIO-AMP", "H01", "audio amplifier",
-        "stereo class-D I2S amplifier carrier candidate",
-        box(42, 8, 26, (0, 35, 676), 2), 0.022, 6.0, 2.0,
+        "Seeed Studio reSpeaker Flex XVF3800 core board included with SKU 100099135 candidate",
+        box(65, 12, 45, (0, 35, 676), 2), 0.055, 12.0, 3.0,
         "rear head electronics tray", "+Y rear-cover withdrawal",
-        "5 V, I2S and two speaker outputs; gain/EMC selection open",
-        "SELECTION REQUIRED", "SELECTION REQUIRED", "planning envelope/mass only", "head", audio)
+        "locking PH2.0 USB UAC/DFU host link, 12 V auxiliary power, included 24-pin microphone FPC and two 4 ohm speaker outputs; exact connector contacts and gain/EMC validation open",
+        "https://wiki.seeedstudio.com/respeaker_flex_introduction/",
+        "official wiki updated 2026-03-26; accessed 2026-08-16",
+        "65 x 12 x 45 mm planning envelope; official 2D/3D files and received-board fit remain required", "head", audio)
     add("EQ-H01-FAN", "H01", "head ventilation",
-        "30 mm tachometer fan candidate",
-        box(30, 10, 30, (0, 43, 739), 2), 0.018, 1.0, 1.0,
+        "Sunon MF30100V3-10000-A99 30 x 30 x 10 mm 5 V fan candidate",
+        box(30, 10, 30, (0, 43, 739), 2), 0.0078, 0.23, 0.23,
         "rear head vent frame", "+Y rear-cover withdrawal",
-        "5 V PWM/tach; filter, duct, noise and finger guard open",
-        "SELECTION REQUIRED", "SELECTION REQUIRED", "planning envelope/mass only", "head", compute)
+        "5 V two-wire fan; protected feed, current-based failure detection, filter, duct, noise and finger guard open; no tach signal inferred",
+        "https://www.sunon.com/eu/MANAGE/Docs/PRODUCT/299/502/DC%20Fan_20241225%28255-E%29.pdf",
+        "Sunon DC fan catalog dated 2024-12-25; accessed 2026-08-16",
+        "manufacturer lists 5 V, 45 mA, 0.23 W, 6000 rpm, 2.5 CFM, 10.2 dBA and 7.8 g; exact received lead/connector suffix remains open", "head", compute)
 
     # Foot sensing, soles and gripper contact pads are visible functional items.
     for side, sign, link in (("L", 1, "L_foot"), ("R", -1, "R_foot")):
