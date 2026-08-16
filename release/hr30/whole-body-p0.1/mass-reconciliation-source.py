@@ -28,9 +28,8 @@ IDENTIFIER = "HR-30-MASS-RECONCILIATION-P0.1"
 WARNING = body.WARNING
 ACCESSED = "2026-08-14"
 BASELINE_COMMIT = "dfb9a7d"
-P01_MASS_TARGET_KG = 10.5
-P01_MASS_MAXIMUM_KG = 12.0
-LIGHTWEIGHT_STRETCH_KG = 10.0
+PRODUCT_MASS_TARGET_KG = 8.0
+PRODUCT_MASS_HARD_LIMIT_KG = 10.0
 ONBOARD_ENERGY_ENVELOPE_IDS = {
     "EQ-T01-BATTERY-PACK",
     "EQ-T01-BATTERY-CASSETTE",
@@ -444,13 +443,13 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
         "prior_allocation_mass_kg": round(sum(r["mass"] for r in system.link_rows()), 9),
         "reconciled_dynamics_planning_mass_kg": round(dynamic_total, 9),
         "reconciled_dynamics_neutral_com_m": [round(v, 9) for v in com],
-        "program_maximum_mass_kg": P01_MASS_MAXIMUM_KG,
-        "program_lightweight_stretch_kg": LIGHTWEIGHT_STRETCH_KG,
-        "planning_margin_to_program_maximum_kg": round(P01_MASS_MAXIMUM_KG - dynamic_total, 9),
-        "planning_margin_to_lightweight_stretch_kg": round(LIGHTWEIGHT_STRETCH_KG - dynamic_total, 9),
+        "program_mass_target_kg": PRODUCT_MASS_TARGET_KG,
+        "program_maximum_mass_kg": PRODUCT_MASS_HARD_LIMIT_KG,
+        "planning_margin_to_product_target_kg": round(PRODUCT_MASS_TARGET_KG - dynamic_total, 9),
+        "planning_margin_to_program_maximum_kg": round(PRODUCT_MASS_HARD_LIMIT_KG - dynamic_total, 9),
         "integration_contingency_before_fastener_allocation_kg": round(sum(float(r["integration_contingency_before_fastener_allocation_kg"]) for r in link_rows), 9),
         "remaining_integration_contingency_kg": round(sum(float(r["integration_contingency_kg"]) for r in link_rows), 9),
-        "program_mass_target_status": "WITHIN P0.1 MAXIMUM; PHYSICAL MASS CLOSURE OPEN" if dynamic_total <= P01_MASS_MAXIMUM_KG else "EXCEEDED",
+        "program_mass_target_status": "WITHIN 10 KG HARD LIMIT IN PLANNING MODEL; 8 KG TARGET AND PHYSICAL MASS CLOSURE OPEN" if dynamic_total <= PRODUCT_MASS_HARD_LIMIT_KG else "EXCEEDS 10 KG HARD LIMIT",
         "unmodeled_or_unselected": [
             "exact battery BMS/PCM, cell monitor, connector, service disconnect, precharge, containment, retention and offboard charger hardware",
             "exact selected controller, power, protection, sensor, audio, cooling and networking hardware",
@@ -511,7 +510,7 @@ def write_configuration_register(summary: dict, tether_summary: dict) -> None:
             "neutral_com_x_m": f"{tether_summary['reconciled_dynamics_neutral_com_m'][0]:.9f}",
             "neutral_com_y_m": f"{tether_summary['reconciled_dynamics_neutral_com_m'][1]:.9f}",
             "neutral_com_z_m": f"{tether_summary['reconciled_dynamics_neutral_com_m'][2]:.9f}",
-            "margin_to_12kg_kg": f"{tether_summary['planning_margin_to_program_maximum_kg']:.9f}",
+            "margin_to_10kg_hard_limit_kg": f"{tether_summary['planning_margin_to_program_maximum_kg']:.9f}",
             "dynamics_artifacts": "hr30_tether.urdf | hr30_tether.xml | mass-properties-budget-tether.csv | link-mass-reconciliation-tether.csv",
             "selection_state": "ACTIVE P0.1 DEVELOPMENT CONFIGURATION; PHYSICAL MASS/COM/INERTIA AND TETHER DYNAMICS UNVALIDATED",
             "authority": "NO PROCUREMENT, FABRICATION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY",
@@ -526,7 +525,7 @@ def write_configuration_register(summary: dict, tether_summary: dict) -> None:
             "neutral_com_x_m": f"{summary['reconciled_dynamics_neutral_com_m'][0]:.9f}",
             "neutral_com_y_m": f"{summary['reconciled_dynamics_neutral_com_m'][1]:.9f}",
             "neutral_com_z_m": f"{summary['reconciled_dynamics_neutral_com_m'][2]:.9f}",
-            "margin_to_12kg_kg": f"{summary['planning_margin_to_program_maximum_kg']:.9f}",
+            "margin_to_10kg_hard_limit_kg": f"{summary['planning_margin_to_program_maximum_kg']:.9f}",
             "dynamics_artifacts": "hr30.urdf | hr30.xml | hr30_onboard_envelope.urdf | hr30_onboard_envelope.xml | mass-properties-budget.csv | link-mass-reconciliation.csv",
             "selection_state": "NOT AN ACTIVE POWER CONFIGURATION; DIRECT 4S SOURCE REJECTED; NEW ONBOARD ENERGY ARCHITECTURE REQUIRED",
             "authority": "NO PROCUREMENT, FABRICATION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY",
@@ -574,7 +573,7 @@ def write_allocation_register(dynamics_rows: list[dict], summary: dict) -> None:
             "cad_mass_kg": f"RESIDUAL {summary['remaining_integration_contingency_kg']:.3f} AFTER {summary['located_joint_fastener_planning_mass_kg']:.3f} KG EXPLICIT JOINT FASTENERS",
             "status": "FORMER 8% NON-FASTENER RESERVE NOW PARTLY ALLOCATED TO LOCATED SCREW CANDIDATES; RECEIVED MASSES REMAIN OPEN",
         },
-        row("TOTAL", P01_MASS_TARGET_KG, P01_MASS_MAXIMUM_KG, total),
+        row("TOTAL", PRODUCT_MASS_TARGET_KG, PRODUCT_MASS_HARD_LIMIT_KG, total),
     ]
     write_csv(OUT / "mass-allocation-register.csv", rows)
 
@@ -596,7 +595,7 @@ def write_lightweight_register(summary: dict) -> None:
         {
             "decision_id": "HR30-LW-003", "affected_system": "covers",
             "baseline_candidate": "2.4-3.0 mm shells and panels",
-            "lightweight_candidate": "1.5 mm limb/palm/foot panels and 1.6 mm central/head shells",
+            "lightweight_candidate": "1.2 mm body/limb panels with unchanged interfaces; detailed hand parts retained",
             "mass_effect": "included in fabrication subtotal", "engineering_hold": "material/process, ribs, vents, retention, impact, pinch edges and print qualification open",
         },
         {
@@ -640,7 +639,7 @@ def write_lightweight_register(summary: dict) -> None:
             "baseline_candidate": f"commit {BASELINE_COMMIT}: {BASELINE_MASS['identified']:.6f} kg gross identified / {BASELINE_MASS['dynamics']:.6f} kg conservative dynamics",
             "lightweight_candidate": f"current: {summary['planning_identified_candidate_mass_kg']:.6f} kg gross identified / {summary['reconciled_dynamics_planning_mass_kg']:.6f} kg conservative dynamics",
             "mass_effect": f"gross identified reduction {BASELINE_MASS['identified'] - summary['planning_identified_candidate_mass_kg']:.6f} kg; dynamics reduction {BASELINE_MASS['dynamics'] - summary['reconciled_dynamics_planning_mass_kg']:.6f} kg",
-            "engineering_hold": "candidate is inside the 12 kg P0.1 maximum but misses the 10 kg lightweight stretch objective; received mass closure and every physical validation remain open",
+            "engineering_hold": "active tether-first candidate must remain at or below the authoritative 10 kg hard limit; the 8 kg target, received mass closure and every physical validation remain open",
         },
     ]
     for row in rows:
@@ -658,7 +657,7 @@ The former 9.63 kg value was an allocation, not a physical mass model. This pass
 
 Relative to commit `{BASELINE_COMMIT}`, the lightweight topology reduces the gross identified candidate subtotal by **{BASELINE_MASS['identified'] - summary['planning_identified_candidate_mass_kg']:.3f} kg**. The body retains all 25 axes, complete limbs and hands while using hollow torso rails, windowed and slotted load-path plates, thinner service covers, hollow aluminum shaft screens, topology-lightened carrier frames and pulleys, and actuator-plus-one-external-bearing support on direct axes. Those changes are geometry candidates, not strength or bearing-life evidence.
 
-The package now exposes two non-interchangeable dynamics configurations. `HR30-TETHER-FIRST-P0.1` is the active controlled-development baseline at **{summary['active_tether_dynamics_planning_mass_kg']:.3f} kg**, neutral COM **({summary['active_tether_neutral_com_m'][0]:.3f}, {summary['active_tether_neutral_com_m'][1]:.3f}, {summary['active_tether_neutral_com_m'][2]:.3f}) m**, and **{summary['active_tether_margin_to_program_maximum_kg']:.3f} kg** margin to the 12 kg ceiling. `HR30-ONBOARD-ENVELOPE-P0.1` remains a packaging-only case at **{summary['onboard_envelope_dynamics_planning_mass_kg']:.3f} kg** with only **{summary['onboard_envelope_margin_to_program_maximum_kg']:.3f} kg** margin. Its direct 4S source is rejected and it is not an active power configuration. Both models retain the explicit per-link subtotal and residual integration contingency without double-counting the {summary['located_joint_fastener_planning_mass_kg']:.3f} kg of located screw candidates. Exact selections, received masses and dynamic walking proof remain open.
+The package now exposes two non-interchangeable dynamics configurations. `HR30-TETHER-FIRST-P0.1` is the active controlled-development baseline at **{summary['active_tether_dynamics_planning_mass_kg']:.3f} kg**, neutral COM **({summary['active_tether_neutral_com_m'][0]:.3f}, {summary['active_tether_neutral_com_m'][1]:.3f}, {summary['active_tether_neutral_com_m'][2]:.3f}) m**, and **{summary['active_tether_margin_to_program_maximum_kg']:.3f} kg** planning margin to the authoritative 10 kg hard limit. The 8 kg product target remains missed. `HR30-ONBOARD-ENVELOPE-P0.1` remains a packaging-only case at **{summary['onboard_envelope_dynamics_planning_mass_kg']:.3f} kg**, which exceeds the 10 kg hard limit by **{-summary['onboard_envelope_margin_to_program_maximum_kg']:.3f} kg**. Its direct 4S source is rejected and it is not an active power configuration. Both models retain the explicit per-link subtotal and residual integration contingency without double-counting the {summary['located_joint_fastener_planning_mass_kg']:.3f} kg of located screw candidates. Exact selections, received masses and dynamic walking proof remain open.
 
 The actuator planning subtotal uses published masses from current official ROBOTIS e-Manual pages checked {ACCESSED}. Both elbows and both shoulder-roll axes use the 82 g XM430 candidate, both wrists use the 23 g XC330 candidate, and all four ankles use the 82 g XM430 candidate behind explicit reductions. The ten Gates belt candidates add {summary['transmission_belt_published_mass_kg']:.3f} kg at current published catalogue mass. None of this is continuous-duty, dynamic, belt-capacity, thermal or physical validation. CAD actuator placement is the geometric centroid of the SHA-bound manufacturer packaging body, not a published center of gravity.
 
@@ -680,7 +679,7 @@ Fabrication and joint-hardware values are volume-times-density screens; equipmen
     mass_section = f"""
 ## Whole-body mass reconciliation
 
-The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines {summary['fabrication_part_count']} fabrication-CAD parts, {summary['actuator_count']} published actuator masses, {summary['joint_hardware_part_count']} joint-hardware candidate parts (including catalogue bearing masses), {summary['located_joint_fastener_count']} located screw candidates, {summary['transmission_belt_count']} catalogue belt candidates and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The active tether-first dynamics model is {summary['active_tether_dynamics_planning_mass_kg']:.3f} kg with neutral COM Z={summary['active_tether_neutral_com_m'][2]:.3f} m and {summary['active_tether_margin_to_program_maximum_kg']:.3f} kg margin to 12 kg. The separate onboard-envelope model is {summary['onboard_envelope_dynamics_planning_mass_kg']:.3f} kg and includes {summary['excluded_onboard_envelope_identified_mass_kg']:.3f} kg for the rejected direct-source pack envelope, cassette and unselected protection allowance. It is packaging evidence, not an installed energy configuration. Exact protection, received masses and physical properties remain open.
+The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines {summary['fabrication_part_count']} fabrication-CAD parts, {summary['actuator_count']} published actuator masses, {summary['joint_hardware_part_count']} joint-hardware candidate parts (including catalogue bearing masses), {summary['located_joint_fastener_count']} located screw candidates, {summary['transmission_belt_count']} catalogue belt candidates and {summary['installed_equipment_item_count']} located equipment/harness/contact items. The active tether-first dynamics model is {summary['active_tether_dynamics_planning_mass_kg']:.3f} kg with neutral COM Z={summary['active_tether_neutral_com_m'][2]:.3f} m and {summary['active_tether_margin_to_program_maximum_kg']:.3f} kg planning margin to the 10 kg hard limit. The separate onboard-envelope model is {summary['onboard_envelope_dynamics_planning_mass_kg']:.3f} kg and includes {summary['excluded_onboard_envelope_identified_mass_kg']:.3f} kg for the rejected direct-source pack envelope, cassette and unselected protection allowance. It exceeds the product hard limit and is packaging evidence, not an installed energy configuration. Exact protection, received masses and physical properties remain open.
 """.strip()
     readme, mass_count = re.subn(
         r"## Whole-body mass reconciliation\n.*?(?=\n## |\Z)",
@@ -728,7 +727,7 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
         raise RuntimeError("system artifact mass-link block drift")
     web, card_count = re.subn(
         r'<article class="card (?:hold|miss)"><h3>Mass and energy</h3><p>[\s\S]*?</p></article>',
-        f'<article class="card hold"><h3>Mass and energy</h3><p>{summary["active_tether_dynamics_planning_mass_kg"]:.3f} kg active tether-first planning mass with {summary["active_tether_margin_to_program_maximum_kg"]:.3f} kg margin to 12 kg. The separate {summary["onboard_envelope_dynamics_planning_mass_kg"]:.3f} kg onboard-envelope model retains a rejected pack envelope and is not an active power configuration. Physical mass, COM, inertia and energy selection remain open.</p></article>',
+        f'<article class="card hold"><h3>Mass and energy</h3><p>{summary["active_tether_dynamics_planning_mass_kg"]:.3f} kg active tether-first planning mass with {summary["active_tether_margin_to_program_maximum_kg"]:.3f} kg planning margin to the authoritative 10 kg hard limit; the 8 kg target remains missed. The separate {summary["onboard_envelope_dynamics_planning_mass_kg"]:.3f} kg onboard-envelope model exceeds the hard limit, retains a rejected pack envelope and is not an active power configuration. Physical mass, COM, inertia and energy selection remain open.</p></article>',
         web,
         count=1,
     )
@@ -762,15 +761,15 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
     status_path = OUT / "package-status.json"
     status = json.loads(status_path.read_text(encoding="utf-8"))
     status.update({
-        "estimated_mass_kg": summary["reconciled_dynamics_planning_mass_kg"],
-        "estimated_neutral_com_m": summary["reconciled_dynamics_neutral_com_m"],
-        "estimated_neutral_com_z_m": summary["reconciled_dynamics_neutral_com_m"][2],
+        "estimated_mass_kg": summary["active_tether_dynamics_planning_mass_kg"],
+        "estimated_neutral_com_m": summary["active_tether_neutral_com_m"],
+        "estimated_neutral_com_z_m": summary["active_tether_neutral_com_m"][2],
         "mass_reconciliation_present": True,
         "whole_body_lightweight_architecture_present": True,
         "identified_candidate_mass_kg": summary["planning_identified_candidate_mass_kg"],
-        "mass_margin_to_10kg_kg": summary["planning_margin_to_lightweight_stretch_kg"],
-        "mass_margin_to_p01_maximum_kg": summary["planning_margin_to_program_maximum_kg"],
-        "module_interface_mass_reconciliation_kg": summary["reconciled_dynamics_planning_mass_kg"],
+        "mass_margin_to_10kg_kg": summary["active_tether_margin_to_program_maximum_kg"],
+        "mass_margin_to_p01_maximum_kg": summary["active_tether_margin_to_program_maximum_kg"],
+        "module_interface_mass_reconciliation_kg": summary["active_tether_dynamics_planning_mass_kg"],
         "active_development_mass_configuration": summary["active_development_configuration"],
         "active_tether_development_mass_kg": summary["active_tether_dynamics_planning_mass_kg"],
         "active_tether_neutral_com_m": summary["active_tether_neutral_com_m"],
@@ -778,14 +777,27 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
         "onboard_energy_envelope_mass_kg": summary["onboard_envelope_dynamics_planning_mass_kg"],
         "onboard_energy_envelope_active": False,
         "mass_configuration_separation_present": True,
-        "mass_budget_closed": False,
+        "mass_budget_closed": summary["active_tether_dynamics_planning_mass_kg"] <= PRODUCT_MASS_HARD_LIMIT_KG,
+        "mass_budget_basis": "ACTIVE TETHER-FIRST CONSERVATIVE PLANNING MODEL ONLY; 8 KG TARGET AND PHYSICAL MASS/COM/INERTIA VALIDATION OPEN",
         "mass_com_inertia_physically_validated": False,
     })
     status_path.write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
 
     holds_path = OUT / "open-holds.csv"
     holds = list(csv.DictReader(holds_path.open(encoding="utf-8")))
+    arm_mass = next(
+        float(row["cad_mass_kg"].split()[-1])
+        for row in csv.DictReader((OUT / "mass-allocation-register.csv").open(encoding="utf-8"))
+        if row["assembly"] == "two arms and hands"
+    )
     for row in holds:
+        if row["hold_id"] == "HR30-P01-H02":
+            row["unresolved_item"] = (
+                f"The current bilateral arms-and-hands planning mass is {arm_mass:.3f} kg against the 1.950 kg assembly maximum. "
+                "The former arm-mass blocker is closed at candidate-planning level only; received mass and arm structural/dynamic proof remain open under H09/H10."
+            )
+            row["state"] = "RESOLVED AT CANDIDATE-PLANNING LEVEL - PHYSICAL VALIDATION OPEN"
+            row["release_effect"] = "NO LONGER A DESIGN-MASS BLOCKER; H09/H10 STILL BLOCK FABRICATION, MOTION AND ENERGIZATION"
         if row["hold_id"] == "HR30-P01-H09":
             row["unresolved_item"] = (
                 f"The active tether-first planning model is {summary['active_tether_dynamics_planning_mass_kg']:.3f} kg, while the separate onboard-envelope case is {summary['onboard_envelope_dynamics_planning_mass_kg']:.3f} kg. "
@@ -807,7 +819,7 @@ def generate_into_package() -> dict:
     write_mass_properties(dynamics_rows, summary)
     write_mass_properties(tether_dynamics_rows, tether_summary, "mass-properties-budget-tether.csv")
     write_configuration_register(summary, tether_summary)
-    write_allocation_register(dynamics_rows, summary)
+    write_allocation_register(tether_dynamics_rows, tether_summary)
 
     # Preserve the historical default dynamics artifacts as the complete
     # onboard-envelope planning case, while adding an explicit active

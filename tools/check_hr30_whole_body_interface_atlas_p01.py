@@ -59,7 +59,7 @@ def main() -> int:
     scheduled_axes = {r["axis_id"] for r in rows("joint-axis-schedule.csv")}
     require(len(owned) == 25 and len(set(owned)) == 25 and set(owned) == scheduled_axes, "25-axis module ownership incomplete or duplicated")
 
-    mass_total = next(float(r["allocated_mass_kg"]) for r in rows("mass-properties-budget.csv") if r["link"] == "TOTAL")
+    mass_total = next(float(r["allocated_mass_kg"]) for r in rows("mass-properties-budget-tether.csv") if r["link"] == "TOTAL")
     module_mass = sum(float(r["planning_mass_kg"]) for r in modules)
     require(abs(module_mass - mass_total) <= 5e-6, "module mass does not reconcile to whole-body planning mass within published-row rounding")
 
