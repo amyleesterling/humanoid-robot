@@ -1,0 +1,22 @@
+{
+  "identifier": "HR30-HARNESS-CURRENT-POLICY-BINDING-P0.1",
+  "axis_binding_count": 25,
+  "bus_binding_count": 8,
+  "published_stall_endpoint_sum_a": 76.08,
+  "candidate_internal_cap_sum_a": 47.67847,
+  "candidate_internal_cap_reduction_from_stall_percent": 37.331138,
+  "stall_endpoint_used_as_normal_demand": false,
+  "internal_cap_used_as_harness_rating": false,
+  "per_axis_catalog_connector_numeric_screen_pass_count": 25,
+  "normal_rms_demand_selected": false,
+  "wire_construction_selected": false,
+  "branch_protection_selected": false,
+  "voltage_drop_calculated": false,
+  "thermal_validated": false,
+  "procurement_authority": false,
+  "connection_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false,
+  "warning": "PRELIMINARY - HARNESS/CURRENT-POLICY RECONCILIATION ONLY - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION"
+}

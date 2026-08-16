@@ -107,6 +107,12 @@ The [leg-drive adapter guide](leg-drivetrain-adapters-p0.1/index.html) adds thre
 
 The [installed drivetrain guide](leg-drivetrain-installation-p0.1/index.html) replaces ten generic pulley/belt/motor placeholders in a derived complete humanoid assembly. Exact candidate P-bore pulleys, belts, HN12/HN13 horns, shifted manufacturer actuators, project motor adapters, shouldered output shafts, capture washers and guard envelopes occupy controlled external drive planes. All 45 inter-drive pairs have zero nominal common volume. Motion sweep, material, fits, tolerances, fasteners, cable/cover clearance, capacity and physical proof remain open.
 <!-- HR30-INSTALLED-LEG-DRIVES-P01-README-END -->
+
+<!-- HR30-HARNESS-CURRENT-BINDING-P01-README-START -->
+## Harness/current-policy reconciliation
+
+The [harness/current-policy guide](harness/current-policy-binding-p0.1/index.html) binds all 25 individual actuator power pairs to the candidate Current Limit register values and their geometry-derived planning lengths. It separates the **76.08 A** arithmetic sum of published momentary stall endpoints from the **47.678 A** arithmetic sum of candidate internal limits. Neither number is normal RMS demand, a conductor rating, a fuse value, or permission to connect power. Conductors, protection, voltage drop, temperature rise, duty, regeneration, received connectors and physical test evidence remain open.
+<!-- HR30-HARNESS-CURRENT-BINDING-P01-README-END -->
 <!-- HR30-CURRENT-CONSTRAINED-P01-README-START -->
 ## Current-constrained whole-body actuation
 
