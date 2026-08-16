@@ -256,7 +256,7 @@ def write_mass_budget(rows: list[dict]) -> dict:
         {"assembly": "pelvis power and restraint structure", "target_kg": 1.60, "maximum_kg": 1.85, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 1.700", "status": "WITHIN MAXIMUM - PHYSICAL PROPERTY OPEN"},
         {"assembly": "two legs and feet", "target_kg": 4.70, "maximum_kg": 5.25, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 5.050", "status": "WITHIN MAXIMUM - PHYSICAL PROPERTY OPEN"},
         {"assembly": "integration contingency within link totals", "target_kg": 0.00, "maximum_kg": 0.90, "cad_mass_kg": "8% PLANNING RULE", "status": "OPEN - RECEIVED MASS CLOSURE REQUIRED"},
-        {"assembly": "TOTAL", "target_kg": 10.50, "maximum_kg": 12.00, "cad_mass_kg": "P0.1 ALLOCATION ESTIMATE 11.100", "status": "WITHIN P0.1 MAXIMUM BY BUDGET ONLY; 10 KG LIGHTWEIGHT STRETCH OPEN"},
+        {"assembly": "TOTAL", "target_kg": 8.00, "maximum_kg": 10.00, "cad_mass_kg": "HISTORICAL ALLOCATION ESTIMATE 11.100", "status": "SUPERSEDED AND OVER AUTHORITATIVE 10 KG HARD LIMIT; MASS RECONCILIATION REQUIRED"},
     ])
     return {"mass_kg": total_mass, "com_m": com, "inertia_kg_m2": tuple(total_inertia)}
 
