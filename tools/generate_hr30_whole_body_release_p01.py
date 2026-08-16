@@ -58,6 +58,7 @@ PIPELINE = (
     "generate_hr30_swd_adapter_p01.py",
     "generate_hr30_logic_power_kit_p01.py",
     "generate_hr30_grounding_reference_architecture_p01.py",
+    "generate_hr30_protective_bonding_implementation_p01.py",
     "generate_hr30_stm32_bringup_p01.py",
     "generate_hr30_first_energization_readiness_p01.py",
 )
