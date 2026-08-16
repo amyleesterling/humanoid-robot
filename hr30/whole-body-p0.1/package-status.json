@@ -404,5 +404,18 @@
   "stm32_target_bringup_measurement_count": 12,
   "stm32_target_bringup_flash_executed": false,
   "stm32_target_bringup_hil_executed": false,
-  "stm32_target_bringup_approved": false
+  "stm32_target_bringup_approved": false,
+  "swd_adapter_native_board_present": true,
+  "swd_adapter_board_dimensions_mm": [
+    32,
+    20,
+    1.6
+  ],
+  "swd_adapter_erc_errors": 0,
+  "swd_adapter_erc_warnings": 0,
+  "swd_adapter_drc_violations": 0,
+  "swd_adapter_exact_stdc14_contact_map": true,
+  "swd_adapter_fabricated": false,
+  "swd_adapter_cable_built": false,
+  "swd_adapter_physical_validation_complete": false
 }

@@ -1,7 +1,7 @@
 """Run every non-pcbnew HR-30 checker in one process with visible results.
 
-The routed carrier checker imports KiCad's ``pcbnew`` module and is therefore
-run separately with KiCad's Python.  Every other checker shares the CadQuery
+The routed PCB checkers import KiCad's ``pcbnew`` module and are therefore run
+separately with KiCad's Python.  Every other checker shares the CadQuery
 runtime and can be executed here without the Windows venv launcher's detached
 child-process behavior obscuring its exit status.
 """
@@ -17,7 +17,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TOOLS = ROOT / "tools"
 SELF = Path(__file__).name
-PCBNEW_CHECKER = "check_hr30_actuator_interface_carriers_p01.py"
+PCBNEW_CHECKERS = {
+    "check_hr30_actuator_interface_carriers_p01.py",
+    "check_hr30_swd_adapter_p01.py",
+}
 RESULT = ROOT / "validation" / "hr30-whole-body-p0.1-checks.json"
 
 
@@ -42,7 +45,7 @@ def main() -> int:
     checks = [
         path
         for path in sorted(TOOLS.glob("check_hr30*.py"))
-        if path.name not in {SELF, PCBNEW_CHECKER}
+        if path.name != SELF and path.name not in PCBNEW_CHECKERS
     ]
     if args.only:
         checks = [path for path in checks if path.name == args.only]
@@ -61,7 +64,7 @@ def main() -> int:
     summary = {
         "identifier": "HR30-WHOLE-BODY-P0.1-CHECKS",
         "cad_runtime_validator_count": len(checks),
-        "separate_kicad_python_validator": PCBNEW_CHECKER,
+        "separate_kicad_python_validators": sorted(PCBNEW_CHECKERS),
         "failure_count": len(failures),
         "failures": failures,
         "pass": not failures,

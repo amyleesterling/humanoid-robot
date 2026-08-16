@@ -55,6 +55,7 @@ PIPELINE = (
     "generate_hr30_bench_harness_p01.py",
     "generate_hr30_no_motion_inspection_p01.py",
     "generate_hr30_motion_firmware_p01.py",
+    "generate_hr30_swd_adapter_p01.py",
     "generate_hr30_stm32_bringup_p01.py",
     "generate_hr30_first_energization_readiness_p01.py",
 )
@@ -77,6 +78,7 @@ def main() -> int:
             "generate_hr30_actuator_interface_carriers_p01.py",
             "generate_hr30_motion_controller_p01.py",
             "generate_hr30_actuator_branch_pdu_p01.py",
+            "generate_hr30_swd_adapter_p01.py",
         } else Path(sys.executable)
         if not interpreter.is_file():
             raise FileNotFoundError(interpreter)

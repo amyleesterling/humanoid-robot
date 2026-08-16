@@ -43,24 +43,24 @@ def main() -> int:
     holds = rows(OUT / "open-holds.csv")
     status = json.loads((OUT / "bringup-status.json").read_text(encoding="utf-8"))
 
-    need(len(sources) == 4 and len({r["source_id"] for r in sources}) == 4, "four primary sources required")
+    need(len(sources) == 5 and len({r["source_id"] for r in sources}) == 5, "five primary sources required")
     need(all(r["url"].startswith("https://") and r["accessed"] == "2026-08-16" for r in sources), "source URL/access date drift")
-    need(len(bindings) == 7 and all(r["sha256"] == sha(ROOT / r["path"]) and int(r["bytes"]) == (ROOT / r["path"]).stat().st_size for r in bindings), "seven source bindings required and must hash-match")
+    need(len(bindings) == 10 and all(r["sha256"] == sha(ROOT / r["path"]) and int(r["bytes"]) == (ROOT / r["path"]).stat().st_size for r in bindings), "ten source bindings required and must hash-match")
     need(len(contacts) == 7 and len({r["map_id"] for r in contacts}) == 7, "seven contact dispositions required")
     mapped = [r for r in contacts if r["target_connector"] == "JDBG1"]
-    need(len(mapped) == 6 and {r["target_contact"] for r in mapped} == {"1", "2", "3", "4", "5"}, "JDBG1 mapping incomplete")
-    need(sum(r["target_contact"] == "1" for r in mapped) == 2, "both STDC14 grounds must map to JDBG1 ground")
+    need(len(mapped) == 7 and {r["target_contact"] for r in mapped} == {"1", "2", "3", "4", "5"}, "JDBG1 mapping incomplete")
+    need(sum(r["target_contact"] == "1" for r in mapped) == 3, "all three STDC14 grounds must map to JDBG1 ground")
     tvcc = next(r for r in contacts if r["signal"] == "TVCC")
     need(tvcc["probe_contact"] == "3" and tvcc["target_contact"] == "2" and "SENSE ONLY" in tvcc["wiring_rule"], "TVCC sense-only mapping drift")
     ground_detect = next(r for r in contacts if r["signal"] == "GNDDETECT")
-    need(ground_detect["target_connector"] == "NONE" and "SELECTION REQUIRED" in ground_detect["wiring_rule"], "GNDDETECT inferred")
+    need(ground_detect["target_connector"] == "JDBG1" and ground_detect["target_contact"] == "1" and ground_detect["target_net"] == "CTRL_GND" and "TARGET SIGNAL GROUND" in ground_detect["wiring_rule"], "GNDDETECT mapping drift")
 
-    need(len(bom) == 9 and sum(r["selection_state"] == "SELECTION REQUIRED" for r in bom) == 3, "adapter BOM coverage drift")
+    need(len(bom) == 9 and sum(r["selection_state"] == "SELECTION REQUIRED" for r in bom) == 2, "adapter BOM coverage drift")
     need(all(r["procurement_released"] == "NO" for r in bom), "procurement falsely released")
     need(any(r["candidate_order_code"] == "STLINK-V3MINIE" for r in bom), "probe missing")
     need(any(r["candidate_order_code"] == "FTSH-107-01-L-DV-K-A" for r in bom), "STDC14 header missing")
     need(any(r["candidate_order_code"] == "BM05B-GHS-TBT" for r in bom), "JST header missing")
-    need(any(r["item_id"] == "BR-P08" and r["selection_state"] == "SELECTION REQUIRED" for r in bom), "adapter PCB gap hidden")
+    need(any(r["item_id"] == "BR-P08" and r["selection_state"] == "PROJECT NATIVE CANDIDATE - PHYSICAL VALIDATION OPEN" and "hr30-swd-adapter-p0.1.kicad_pcb" in r["candidate_order_code"] for r in bom), "native adapter PCB candidate missing")
 
     firmware = json.loads((WHOLE / "firmware/hr30-motion-controller-p0.1/firmware-status.json").read_text(encoding="utf-8"))
     frozen = {r["parameter"]: r["value"] for r in freeze}
@@ -82,11 +82,13 @@ def main() -> int:
     need(all("option" not in r["command_template"].lower() and "erase" not in r["command_template"].lower() for r in commands), "destructive programmer option introduced")
 
     false_keys = [
-        "stm32_target_binary_flashed", "adapter_pcb_designed", "adapter_cable_built", "logic_supply_selected",
+        "stm32_target_binary_flashed", "adapter_cable_built", "logic_supply_selected",
         "target_hil_executed", "physical_torque_disabled_verified", "functional_safety_credit",
         "connection_authority", "powered_test_authority", "motion_authority", "energization_authority",
     ]
     need(status["stm32_target_binary_built"] is True, "built target evidence lost")
+    need(status["adapter_pcb_designed"] is True and status["adapter_cable_design_present"] is True, "adapter design evidence lost")
+    need(status["adapter_pcb_erc_errors"] == status["adapter_pcb_erc_warnings"] == status["adapter_pcb_drc_violations"] == 0, "adapter KiCad validation drift")
     need(all(status[key] is False for key in false_keys), "fail-closed status violated")
     need(status["physical_gate_executed_count"] == status["measurement_executed_count"] == status["fault_injection_executed_count"] == 0, "execution count overclaim")
     need((OUT / "stm32-target-bringup-source.py").read_bytes() == GEN.read_bytes(), "generator snapshot drift")
@@ -108,9 +110,10 @@ def main() -> int:
     need(root_status["stm32_target_bringup_flash_executed"] is False and root_status["energization_authority"] is False, "root authority overclaim")
     page = (OUT / "index.html").read_text(encoding="utf-8")
     need("font:17px" in page and "font-size:16px" in page and "Flash the brain without connecting the muscles" in page, "web guide/legibility drift")
+    need("native adapter guide" in page and "designed but not fabricated" in page and "cable is not built" in page, "designed-but-unbuilt boundary missing")
     need("HR30-STM32-BRINGUP-P01-START" in (WHOLE / "index.html").read_text(encoding="utf-8"), "root web integration missing")
     need("HR30-STM32-BRINGUP-P01-README-START" in (WHOLE / "README.md").read_text(encoding="utf-8"), "root README integration missing")
-    print("PASS: HR-30 STM32 bring-up binds six SWD conductors, ten open gates, twelve unexecuted measurements, zero flashes/HIL, and no work authority")
+    print("PASS: HR-30 STM32 bring-up binds seven STDC14 contacts through the native unbuilt adapter, ten open gates, twelve unexecuted measurements, zero flashes/HIL, and no work authority")
     return 0
 
 
