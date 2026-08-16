@@ -8,8 +8,8 @@ The planning preference is **5.0 mm** between nonadjacent rigid envelopes. A val
 
 | Pose | Checked pairs | Interferences | Minimum clearance | Closest checked pair |
 |---|---:|---:|---:|---|
-| Neutral double support | 290 | 0 | 10.00 mm | `L_hip_yaw_link::torso` |
-| Crouched double support | 290 | 0 | 10.00 mm | `L_hip_yaw_link::torso` |
+| Neutral double support | 290 | 0 | 8.50 mm | `L_forearm::L_thigh` |
+| Crouched double support | 290 | 0 | 8.50 mm | `L_forearm::L_thigh` |
 | Left weight transfer | 290 | 0 | 10.00 mm | `L_hip_yaw_link::torso` |
 | Right foot lift | 290 | 0 | 10.00 mm | `L_hip_yaw_link::torso` |
 | Right capture-step candidate | 290 | 0 | 10.00 mm | `L_hip_yaw_link::torso` |

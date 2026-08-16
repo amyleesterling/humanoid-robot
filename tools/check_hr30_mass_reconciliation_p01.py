@@ -116,7 +116,8 @@ def main() -> int:
     require(9.85 < float(summary["active_tether_dynamics_planning_mass_kg"]) <= 10.0, "active tether mass does not close below authoritative 10 kg hard limit")
     require(0.02 < float(summary["active_tether_margin_to_program_maximum_kg"]) < 0.15, "active tether hard-limit margin outside controlled P0.1 band")
     arm_allocation = next(row for row in rows("mass-allocation-register.csv") if row["assembly"] == "two arms and hands")
-    require("1.893" in arm_allocation["cad_mass_kg"] and "WITHIN MAXIMUM" in arm_allocation["status"], "bilateral arm/hand mass closure missing")
+    arm_mass = float(arm_allocation["cad_mass_kg"].rsplit(" ", 1)[-1])
+    require(0.0 < arm_mass <= float(arm_allocation["maximum_kg"]) and "WITHIN MAXIMUM" in arm_allocation["status"], "bilateral arm/hand mass closure missing")
 
     decisions = rows("lightweight-architecture-register.csv")
     require(len(decisions) == 10 and {row["decision_id"] for row in decisions} >= {"HR30-LW-001", "HR30-LW-004", "HR30-LW-005", "HR30-LW-007", "HR30-LW-008", "HR30-LW-009", "HR30-LW-TOTAL"}, "lightweight architecture decision set incomplete")

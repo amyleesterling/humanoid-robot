@@ -113,12 +113,20 @@ WAIST_Z = 425.0
 SHOULDER_Z = 590.0
 NECK_Z = 650.0
 HIP_HALF_WIDTH = 62.5
-SHOULDER_AXIS_X = 105.0
-ELBOW_X = 135.0
-WRIST_X = 140.0
-ELBOW_Z = 440.0
-WRIST_Z = 295.0
-FINGERTIP_Z = 220.0
+SHOULDER_AXIS_X = 90.0
+UPPER_ARM_LENGTH = 150.0
+FOREARM_LENGTH = 145.0
+HAND_CONTACT_LENGTH = 65.0
+# The neutral arms fold slightly outward to clear the hip packages while the
+# Euclidean link lengths remain exactly equal to the controlled chain lengths.
+ELBOW_X = 128.0
+ELBOW_Z = SHOULDER_Z - (UPPER_ARM_LENGTH**2 - (ELBOW_X - SHOULDER_AXIS_X)**2) ** 0.5
+WRIST_X = 133.0
+WRIST_Z = ELBOW_Z - (FOREARM_LENGTH**2 - (WRIST_X - ELBOW_X)**2) ** 0.5
+FINGERTIP_Z = WRIST_Z - HAND_CONTACT_LENGTH
+PALM_CENTER_Z = WRIST_Z - 25.0
+FINGER_CENTER_Z = FINGERTIP_Z + 12.0
+GRIPPER_AXIS_Z = WRIST_Z - 43.0
 
 
 @dataclass(frozen=True)
@@ -505,7 +513,7 @@ def interactive_html() -> str:
 <main><section class="grid"><article class="card pass"><div class="metric">762 mm</div><p>Exact neutral-pose floor-to-shell-top geometry.</p></article><article class="card pass"><div class="metric">25</div><p>Named head, waist, arm, hand, hip, knee, and ankle axes.</p></article><article class="card"><div class="metric">{len(JOINT_MODULE_FAMILIES)}</div><p>Dimensioned joint-module families spanning all 25 axes.</p></article><article class="card hold"><div class="metric">0</div><p>Fabrication, motion, safety, or energization approvals.</p></article></section>
 <section><h2>Orbit the native body architecture</h2><div class="viewer"><model-viewer src="HR-30_body_architecture_candidate.glb" poster="front-elevation.svg" alt="Interactive 3D model of the preliminary 762 millimetre Project Button humanoid body architecture" camera-controls camera-orbit="35deg 76deg 95%" min-camera-orbit="auto auto 20%" max-camera-orbit="auto auto 240%" field-of-view="26deg" shadow-intensity="0.85" exposure="1.05" interaction-prompt="auto"></model-viewer><p>Drag to orbit; scroll or pinch to zoom. Sky blue is shell envelope, dark blue is load-path envelope, gold is joint/hand hardware, and red rods are reference axes. Transparent objects reserve electronics, sensors, restraint, and joint datum space. The downloadable STEP embeds the exact SHA-bound actuator B-Reps; the GLB uses dimension-matched simplified actuator bodies so the web model remains practical to load.</p></div></section>
 <section><h2>The dimensions come from the specification</h2><img src="front-elevation.svg" alt="Front elevation of HR-30 with ankle, knee, hip, waist, shoulder, neck and top height datums"></section>
-<section><h2>What this pass proves—and what it does not</h2><div class="grid"><article class="card pass"><h3>Native geometry exists</h3><p>STEP and GLB are generated from a versioned CadQuery source. The STEP reimports with vertices exactly at Z=0 and Z=762 mm.</p></article><article class="card pass"><h3>Kinematic architecture exists</h3><p>All 25 candidate axes have coordinates, directions, regions, and provisional ranges in a machine-readable schedule.</p></article><article class="card miss"><h3>Preferred reach is missed</h3><p>The specified nominal segments total 370 mm per arm and 950 mm span. These pass the 390/980 mm hard limits but miss the 360/900 mm targets.</p></article><article class="card hold"><h3>Mass is still unproven</h3><p>These are packaging envelopes, not materialized parts. The existing arm and leg actuator concepts already fail their preferred mass allocations.</p></article></div></section>
+<section><h2>What this pass proves—and what it does not</h2><div class="grid"><article class="card pass"><h3>Native geometry exists</h3><p>STEP and GLB are generated from a versioned CadQuery source. The STEP reimports with vertices exactly at Z=0 and Z=762 mm.</p></article><article class="card pass"><h3>Kinematic architecture exists</h3><p>All 25 candidate axes have coordinates, directions, regions, and provisional ranges in a machine-readable schedule.</p></article><article class="card pass"><h3>Preferred arm envelope met</h3><p>The revised bilateral shoulder and hand geometry gives a 360 mm nominal reach and 900 mm fingertip span, meeting both preferred targets. Tolerance and physical-sweep validation remain open.</p></article><article class="card hold"><h3>Mass remains preliminary</h3><p>The active tether-first candidate is within the 10 kg hard limit but still misses the 8 kg product target; received mass, COM and inertia remain unvalidated.</p></article></div></section>
 <section><h2>Controlled body datums</h2><div class="table"><table><thead><tr><th>Datum</th><th>Z above floor</th><th>Role</th></tr></thead><tbody><tr><td>Ankle roll / pitch</td><td>35 / 55 mm</td><td>20 mm serial-axis separation inside the ankle housing</td></tr><tr><td>Knee pitch</td><td>210 mm</td><td>155 mm above ankle pitch</td></tr><tr><td>Hip pitch / roll / yaw</td><td>370 / 390 / 410 mm</td><td>20 mm serial-axis separation inside the hip housing</td></tr><tr><td>Waist yaw</td><td>425 mm</td><td>Upper-body rotation datum</td></tr><tr><td>Shoulder pitch</td><td>590 mm</td><td>Upper-arm datum</td></tr><tr><td>Neck pan</td><td>650 mm</td><td>Head pan datum</td></tr><tr><td>Shell top</td><td>762 mm</td><td>Exact nominal standing height</td></tr></tbody></table></div></section>
 <section><h2>Next engineering conversions</h2><div class="grid"><article class="card hold"><h3>Joints</h3><p>Convert the ten visible module-family candidates into released shafts, selected bearings, verified fits, retained fasteners, stops, encoders, and serviceable housings.</p></article><article class="card hold"><h3>Structure and covers</h3><p>Convert solid visual envelopes into materialized frames and tool-removable covers with thickness, splits, edges, vents, access, and retention.</p></article><article class="card hold"><h3>Harness and power</h3><p>Route bend-controlled cables and select the actuator rail, protection, regeneration handling, tether, and eventual onboard energy system.</p></article><article class="card hold"><h3>Evidence</h3><p>Close mass/COM/inertia, collision, gait loads, thermal behavior, stopping, fall restraint, DFM, tolerances, FAI, physical testing, and qualified review.</p></article></div></section>
 <section><h2>Download the engineering artifacts</h2><div class="panel"><p><a href="HR-30_body_architecture_candidate.step">Physical-envelope STEP</a> · <a href="HR-30_body_kinematic_reference.step">Kinematic-reference STEP</a> · <a href="HR-30_body_architecture_candidate.glb">Interactive GLB</a> · <a href="whole-body-source.py">Editable CadQuery source</a> · <a href="joint-axis-schedule.csv">Joint-axis schedule</a> · <a href="joint-module-family-schedule.csv">Joint-module families</a> · <a href="joint-module-axis-binding.csv">All-axis module binding</a> · <a href="vendor-actuator-source-register.csv">Vendor source register</a> · <a href="vendor-actuator-transform-register.csv">Per-axis actuator transforms</a> · <a href="actuator-transmission-allocation.csv">Actuator allocation</a> · <a href="asimov-1-reuse-adapt-reject.csv">Asimov 1 matrix</a> · <a href="component-envelope-schedule.csv">Component schedule</a> · <a href="geometry-checks.json">Geometry checks</a> · <a href="open-holds.csv">Open holds</a></p></div></section></main>
@@ -605,10 +613,10 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
         # One-DOF, two-finger parallel gripper.  The palm, fingers and soft-pad
         # lands are separate visible solids so the wrist does not terminate in
         # an undefined block.  Linkage, compliance and force proof remain open.
-        add(f"{side}_HAND_PALM_ENVELOPE", "hand-shaped gripper palm", rounded_box(50, 58, 36, (sign * WRIST_X, 0, 270), 6), hand, True, "houses one actuator and symmetric coupling")
+        add(f"{side}_HAND_PALM_ENVELOPE", "hand-shaped gripper palm", rounded_box(50, 58, 36, (sign * WRIST_X, 0, PALM_CENTER_Z), 6), hand, True, "houses one actuator and symmetric coupling")
         for digit, offset in (("INBOARD", -13.0), ("OUTBOARD", 13.0)):
             digit_x = sign * WRIST_X + offset
-            add(f"{side}_{digit}_GRIPPER_FINGER", "hand-shaped gripper finger", rounded_box(18, 44, 46, (digit_x, 0, 232), 5), hand, True, "broad parallel jaw; no narrow scissor point")
+            add(f"{side}_{digit}_GRIPPER_FINGER", "hand-shaped gripper finger", rounded_box(18, 44, 46, (digit_x, 0, FINGER_CENTER_Z), 5), hand, True, "broad parallel jaw; no narrow scissor point")
             add(f"{side}_{digit}_SOFT_PAD_LAND", "gripper contact pad land", rounded_box(16, 48, 8, (digit_x, 0, FINGERTIP_Z), 3), hand, True, "replaceable compliant pad; material and force-stroke selection required")
 
     # Component reservations intentionally remain separate reference solids.
@@ -646,7 +654,7 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
         add_axis(f"{side}_SHOULDER_ROLL", "arm", side, "roll", (sign * SHOULDER_AXIS_X, 0, SHOULDER_Z), (0, 1, 0), "SELECTION REQUIRED", "HR-PROD-030")
         add_axis(f"{side}_ELBOW_PITCH", "arm", side, "pitch", (sign * ELBOW_X, 0, ELBOW_Z), (1, 0, 0), "SELECTION REQUIRED", "HR-PROD-030")
         add_axis(f"{side}_WRIST_ROTATION", "arm", side, "rotation", (sign * WRIST_X, 0, WRIST_Z), (0, 0, 1), "SELECTION REQUIRED", "HR-PROD-030")
-        add_axis(f"{side}_GRIPPER", "hand", side, "parallel open/close", (sign * WRIST_X, 0, 252), (sign, 0, 0), "SELECTION REQUIRED", "HR-PROD-030")
+        add_axis(f"{side}_GRIPPER", "hand", side, "parallel open/close", (sign * WRIST_X, 0, GRIPPER_AXIS_Z), (sign, 0, 0), "SELECTION REQUIRED", "HR-PROD-030")
         add_axis(f"{side}_HIP_YAW", "leg", side, "yaw", (sign * HIP_HALF_WIDTH, 0, HIP_YAW_Z), (0, 0, 1), "+/-30 deg", "HR-WALK-001")
         add_axis(f"{side}_HIP_ROLL", "leg", side, "roll", (sign * HIP_HALF_WIDTH, 0, HIP_ROLL_Z), (0, 1, 0), "+/-25 deg", "HR-WALK-001")
         add_axis(f"{side}_HIP_PITCH", "leg", side, "pitch", (sign * HIP_HALF_WIDTH, 0, HIP_Z), (1, 0, 0), "-35..+45 deg", "HR-WALK-001")
@@ -722,7 +730,7 @@ def build() -> tuple[list[Component], list[dict], list[dict], list[dict]]:
             # rotary motor shaft.  Package the compact motor transversely inside
             # the palm and show a real coupling member to the jaw-drive datum.
             side_sign = 1.0 if axis_id.startswith("L_") else -1.0
-            motor_center = (side_sign * WRIST_X, 0.0, 278.0)
+            motor_center = (side_sign * WRIST_X, 0.0, PALM_CENTER_Z + 8.0)
             actuator_direction = (0.0, 1.0, 0.0)
             vendor_source_id = vendor_source_for_axis(axis_id)
             actuator_shape, actuator_basis = vendor_actuator_to_axis(vendor_shapes[vendor_source_id], motor_center, actuator_direction)
@@ -1112,7 +1120,7 @@ def main() -> int:
     physical_box = bbox_dict(physical_compound)
     reference_box = bbox_dict(reference_compound)
     physical_vertices = vertex_extent_dict(physical_compound)
-    straight_reach = 150.0 + 145.0 + 75.0
+    straight_reach = UPPER_ARM_LENGTH + FOREARM_LENGTH + HAND_CONTACT_LENGTH
     arm_span = 2.0 * (SHOULDER_AXIS_X + straight_reach)
     checks = {
         "identifier": IDENTIFIER,
@@ -1166,7 +1174,7 @@ def main() -> int:
         ("HR30-P01-H02", "The arm actuator concept exceeds its mass target before links, hands, cables and covers."),
         ("HR30-P01-H03", "The leg concept fails its current mass screen; reduced hip/ankle roll packaging clears the floor in the neutral pose but continuous torque, thermal, impact and gait loads remain unproved."),
         ("HR30-P01-H04", "No selected power source, regeneration control, contactors, battery or tether exists."),
-        ("HR30-P01-H05", "The 370 mm straight-arm reach and 950 mm span pass hard limits but miss targets."),
+        ("HR30-P01-H05", "The revised 360 mm straight-arm reach and 900 mm span meet the preferred nominal targets. Tolerance-based swept-envelope, received-geometry and physical reach validation remain open."),
         ("HR30-P01-H06", "Shells are solid visual envelopes without wall thickness, splits, fasteners, vents or service access."),
         ("HR30-P01-H07", "Harness corridors, bend radii, strain relief and moving-joint routing are absent."),
         ("HR30-P01-H08", "Collision, self-collision, stopping, fall, restraint and power-loss behavior are unverified."),
@@ -1183,7 +1191,7 @@ This is the first repository-native full-body CAD for Project Button. It freezes
 
 It is intentionally an architecture model, not a buildable machine. The STEP contains candidate physical envelopes plus visible module-family geometry for every axis: output shafts, standard catalogue bearing candidates, removable four-hole interface carriers, exact SHA-bound manufacturer actuator bodies, cable corridors and reduction reservations. Ten dimensioned module families cover all 25 axes, including dedicated 2.5:1 knee and ankle-pitch candidates and a shared intersecting-axis shoulder gimbal rather than overlapping generic servo blocks. Three controlled ROBOTIS source files and 25 explicit orthonormal transforms replace anonymous actuator boxes while leaving every frame, horn, fastener, cable exit, tolerance and received fit unresolved. The web GLB deliberately substitutes dimension-matched low-complexity actuator bodies for the detailed B-Reps; the exact geometry remains in both STEP assemblies and the source/transform registers. The second STEP and GLB add joint-axis and component-reservation references. The package also assigns a provisional actuator/transmission route to every axis and records explicit REUSE / ADAPT / REJECT decisions for the SHA-bound Asimov 1 source rig. Bearing dimensions, masses and catalogue ratings are now recorded from current primary manufacturer pages, but bearing application, life, suffix, fits, retention and received identity remain open. Exact fasteners, stops, encoders, actuator interfaces, wall construction, tolerances, harnesses, power hardware, mass properties, collision proof and physical validation remain open.
 
-The straight arm-chain arithmetic is 370 mm reach and 950 mm span: both pass hard limits, but both miss the preferred 360/900 mm targets. This is recorded as an open design correction rather than hidden.
+The revised straight arm chain is 360 mm from shoulder axis to nominal contact datum, and the bilateral fingertip span is 900 mm. Both preferred targets are met in nominal CAD. Tolerance-based swept-envelope, received-geometry and physical reach validation remain open.
 """
     (OUT / "README.md").write_text(readme, encoding="utf-8", newline="\n")
     (OUT / "front-elevation.svg").write_text(front_elevation_svg(), encoding="utf-8", newline="\n")

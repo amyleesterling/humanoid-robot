@@ -306,7 +306,7 @@ def build() -> list[Equipment]:
         for finger, x in (("INBOARD", sign * (body.WRIST_X - 13)), ("OUTBOARD", sign * (body.WRIST_X + 13))):
             add(f"EQ-G0{1 if side == 'L' else 2}-{finger}-PAD", f"G0{1 if side == 'L' else 2}",
                 "gripper contact pad", "replaceable compliant urethane/silicone pad candidate",
-                box(16, 4, 8, (x, -24, 220), 1.5), 0.005, 0, 0,
+                box(16, 4, 8, (x, -24, body.FINGERTIP_Z), 1.5), 0.005, 0, 0,
                 "finger contact land", "-Y replacement",
                 "mechanical captive pocket/adhesive selection open",
                 "SELECTION REQUIRED", "SELECTION REQUIRED", "planning geometry/mass only", link, compliant)

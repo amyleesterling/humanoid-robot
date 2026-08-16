@@ -706,7 +706,7 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
         pass
     else:
         walking, count = re.subn(
-            r"The (?:reconciled planning|onboard-energy planning|active tether-first planning) dynamics mass is [^.]+\.[0-9]{3} kg with neutral COM Z=[0-9.]+ m;[^\n]+",
+            r"The (?:(?:reconciled planning|onboard-energy planning|active tether-first planning) dynamics mass is [^.]+\.[0-9]{3} kg with neutral COM Z=[0-9.]+ m|neutral estimated mass is 9\.63 kg with estimated COM Z=[0-9.]+ m);[^\n]+",
             new,
             walking,
             count=1,
@@ -734,7 +734,7 @@ The 9.63 kg allocation is no longer presented as the current dynamics mass. A re
     if card_count != 1:
         raise RuntimeError("system mass card drift")
     web, body_mass_count = re.subn(
-        r'<article class="card (?:hold|miss)"><h3>(?:Mass is still unproven|10 kg target does not close|10 kg planning screen has no usable margin|Onboard design exceeds 10 kg maximum|P0.1 mass envelope closes only in the planning model|Mass configurations are now explicit)</h3><p>[\s\S]*?</p></article>',
+        r'<article class="card (?:hold|miss)"><h3>(?:Mass is still unproven|Mass remains preliminary|10 kg target does not close|10 kg planning screen has no usable margin|Onboard design exceeds 10 kg maximum|P0.1 mass envelope closes only in the planning model|Mass configurations are now explicit)</h3><p>[\s\S]*?</p></article>',
         f'<article class="card hold"><h3>Mass configurations are now explicit</h3><p>The active tether-first model is {summary["active_tether_dynamics_planning_mass_kg"]:.3f} kg. The {summary["onboard_envelope_dynamics_planning_mass_kg"]:.3f} kg packaging case includes {summary["excluded_onboard_envelope_identified_mass_kg"]:.3f} kg for a rejected direct-source pack envelope, cassette and unselected protection allowance. Neither configuration is an as-built mass property.</p></article>',
         web,
         count=1,

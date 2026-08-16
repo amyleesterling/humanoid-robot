@@ -21,11 +21,11 @@
     },
     {
       "path": "hr30/whole-body-p0.1/grippers-p0.1/gripper-part-register.csv",
-      "sha256": "bf48d1f4e32db6db58865a7aeebffea866160f402bf0d83126d72f4c6fd7042c"
+      "sha256": "8af3a1ca751f2cc37755b986e83ed84ba4e56f141cbbf49ca8bed004f425cae0"
     },
     {
       "path": "hr30/whole-body-p0.1/joint-hardware-manufacturing-p0.1/joint-hardware-part-register.csv",
-      "sha256": "0d1e8871915bc6fdf8050b28d1e54cd2c8bad15aba3b0cb9ea0b34147ee9ef94"
+      "sha256": "15b92db6a2e856242ad7fefd52d73ab7ee87b068b45d75689396e832440c5a0a"
     }
   ],
   "warning": "PRELIMINARY - JOINT-HARDWARE SUCCESSOR CANDIDATES ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"
