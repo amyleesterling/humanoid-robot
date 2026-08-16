@@ -45,7 +45,7 @@ def main() -> int:
 
     need(len(sources) == 5 and len({r["source_id"] for r in sources}) == 5, "five primary sources required")
     need(all(r["url"].startswith("https://") and r["accessed"] == "2026-08-16" for r in sources), "source URL/access date drift")
-    need(len(bindings) == 10 and all(r["sha256"] == sha(ROOT / r["path"]) and int(r["bytes"]) == (ROOT / r["path"]).stat().st_size for r in bindings), "ten source bindings required and must hash-match")
+    need(len(bindings) == 12 and all(r["sha256"] == sha(ROOT / r["path"]) and int(r["bytes"]) == (ROOT / r["path"]).stat().st_size for r in bindings), "twelve source bindings required and must hash-match")
     need(len(contacts) == 7 and len({r["map_id"] for r in contacts}) == 7, "seven contact dispositions required")
     mapped = [r for r in contacts if r["target_connector"] == "JDBG1"]
     need(len(mapped) == 7 and {r["target_contact"] for r in mapped} == {"1", "2", "3", "4", "5"}, "JDBG1 mapping incomplete")
@@ -55,12 +55,13 @@ def main() -> int:
     ground_detect = next(r for r in contacts if r["signal"] == "GNDDETECT")
     need(ground_detect["target_connector"] == "JDBG1" and ground_detect["target_contact"] == "1" and ground_detect["target_net"] == "CTRL_GND" and "TARGET SIGNAL GROUND" in ground_detect["wiring_rule"], "GNDDETECT mapping drift")
 
-    need(len(bom) == 9 and sum(r["selection_state"] == "SELECTION REQUIRED" for r in bom) == 2, "adapter BOM coverage drift")
+    need(len(bom) == 9 and sum(r["selection_state"] == "SELECTION REQUIRED" for r in bom) == 1, "adapter BOM coverage drift")
     need(all(r["procurement_released"] == "NO" for r in bom), "procurement falsely released")
     need(any(r["candidate_order_code"] == "STLINK-V3MINIE" for r in bom), "probe missing")
     need(any(r["candidate_order_code"] == "FTSH-107-01-L-DV-K-A" for r in bom), "STDC14 header missing")
     need(any(r["candidate_order_code"] == "BM05B-GHS-TBT" for r in bom), "JST header missing")
     need(any(r["item_id"] == "BR-P08" and r["selection_state"] == "PROJECT NATIVE CANDIDATE - PHYSICAL VALIDATION OPEN" and "hr30-swd-adapter-p0.1.kicad_pcb" in r["candidate_order_code"] for r in bom), "native adapter PCB candidate missing")
+    need(any(r["item_id"] == "BR-P09" and r["manufacturer"] == "SIGLENT" and r["candidate_order_code"] == "SPD3303X" and "PHYSICAL/SETTING REVIEW OPEN" in r["selection_state"] for r in bom), "exact logic-supply candidate missing")
 
     firmware = json.loads((WHOLE / "firmware/hr30-motion-controller-p0.1/firmware-status.json").read_text(encoding="utf-8"))
     frozen = {r["parameter"]: r["value"] for r in freeze}
@@ -88,6 +89,7 @@ def main() -> int:
     ]
     need(status["stm32_target_binary_built"] is True, "built target evidence lost")
     need(status["adapter_pcb_designed"] is True and status["adapter_cable_design_present"] is True, "adapter design evidence lost")
+    need(status["logic_supply_exact_candidate_selected"] is True and status["logic_supply_cable_candidate_selected"] is True, "logic-power candidate evidence lost")
     need(status["adapter_pcb_erc_errors"] == status["adapter_pcb_erc_warnings"] == status["adapter_pcb_drc_violations"] == 0, "adapter KiCad validation drift")
     need(all(status[key] is False for key in false_keys), "fail-closed status violated")
     need(status["physical_gate_executed_count"] == status["measurement_executed_count"] == status["fault_injection_executed_count"] == 0, "execution count overclaim")
@@ -110,7 +112,7 @@ def main() -> int:
     need(root_status["stm32_target_bringup_flash_executed"] is False and root_status["energization_authority"] is False, "root authority overclaim")
     page = (OUT / "index.html").read_text(encoding="utf-8")
     need("font:17px" in page and "font-size:16px" in page and "Flash the brain without connecting the muscles" in page, "web guide/legibility drift")
-    need("native adapter guide" in page and "designed but not fabricated" in page and "cable is not built" in page, "designed-but-unbuilt boundary missing")
+    need("native SWD adapter guide" in page and "logic-power kit guide" in page and "logic-power cable are designed but not fabricated" in page, "designed-but-unbuilt fixture boundary missing")
     need("HR30-STM32-BRINGUP-P01-START" in (WHOLE / "index.html").read_text(encoding="utf-8"), "root web integration missing")
     need("HR30-STM32-BRINGUP-P01-README-START" in (WHOLE / "README.md").read_text(encoding="utf-8"), "root README integration missing")
     print("PASS: HR-30 STM32 bring-up binds seven STDC14 contacts through the native unbuilt adapter, ten open gates, twelve unexecuted measurements, zero flashes/HIL, and no work authority")

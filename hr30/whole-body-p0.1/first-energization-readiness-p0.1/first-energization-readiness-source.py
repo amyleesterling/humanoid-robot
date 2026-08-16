@@ -62,6 +62,7 @@ def source_rows() -> list[dict]:
         ("manufacturing artifact status", "manufacturing-files/manufacturing-files-status.json"),
         ("compiled whole-body no-motion firmware status", "firmware/hr30-motion-controller-p0.1/firmware-status.json"),
         ("no-actuator STM32 target bring-up status", "firmware/stm32-target-bringup-p0.1/bringup-status.json"),
+        ("logic-only controller power-kit status", "electrical/logic-power-kit-p0.1/logic-power-status.json"),
     ]
     rows = []
     for number, (role, relative) in enumerate(items, 1):
