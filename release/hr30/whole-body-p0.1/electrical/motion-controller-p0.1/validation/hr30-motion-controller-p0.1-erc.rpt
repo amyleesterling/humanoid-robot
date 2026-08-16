@@ -1,0 +1,22 @@
+ERC report (2026-08-16T04:20:46, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+
+***** Sheet /01 5 V input and 3.3 V conversion/
+
+***** Sheet /02 STM32H743 power, VCAP, reset and boot/
+
+***** Sheet /03 Carrier A four RS-485 UART groups/
+
+***** Sheet /04 Carrier B waist and distal UART groups/
+
+***** Sheet /05 Hardwired status, SWD and structured-action boundaries/
+
+ ** ERC messages: 0  Errors 0  Warnings 0
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

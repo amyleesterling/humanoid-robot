@@ -1,0 +1,470 @@
+** Drc report for hr30-motion-controller-p0.1.kicad_pcb **
+** Created on 2026-08-16T04:20:51 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 112 DRC violations **
+[shorting_items]: Items shorting two nets (nets CTRL_GND and CTRL_3V3)
+    Local override; error
+    @(44.7200 mm, 33.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+    @(44.7500 mm, 31.6625 mm): Track [CTRL_3V3] on F.Cu, length 2.6000 mm
+[tracks_crossing]: Tracks crossing
+    Local override; error
+    @(56.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 1.6000 mm
+    @(57.7750 mm, 7.0000 mm): Track [CTRL_3V3] on B.Cu, length 2.4000 mm
+[shorting_items]: Items shorting two nets (nets  and UART_RS-WAIST_TX)
+    Local override; error
+    @(61.7750 mm, 18.6000 mm): Pad MP [<no net>] of JACT1 on F.Cu
+    @(62.0000 mm, 19.5000 mm): Via [UART_RS-WAIST_TX] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_GND and VCAP1)
+    Local override; error
+    @(37.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CVC2 on B.Cu
+    @(36.7750 mm, 7.0000 mm): Track [VCAP1] on B.Cu, length 0.9550 mm
+[shorting_items]: Items shorting two nets (nets CTRL_GND and MCU_NRST)
+    Local override; error
+    @(63.1750 mm, 7.0000 mm): Pad 2 [CTRL_GND] of RBOOT on B.Cu
+    @(62.7750 mm, 7.0000 mm): Track [MCU_NRST] on B.Cu, length 0.8350 mm
+[shorting_items]: Items shorting two nets (nets CTRL_3V3 and MCU_BOOT0)
+    Local override; error
+    @(64.8750 mm, 7.8500 mm): Via [CTRL_3V3] on F.Cu - B.Cu
+    @(64.8250 mm, 7.0000 mm): Track [MCU_BOOT0] on B.Cu, length 1.2750 mm
+[shorting_items]: Items shorting two nets (nets VCAP2 and CTRL_GND)
+    Local override; error
+    @(38.7750 mm, 7.0000 mm): Pad 1 [VCAP2] of CVC2 on B.Cu
+    @(37.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 2.4000 mm
+[shorting_items]: Items shorting two nets (nets CTRL_3V3 and CTRL_GND)
+    Local override; error
+    @(25.9500 mm, 4.8000 mm): Pad 1 [CTRL_3V3] of COUT1 on B.Cu
+    @(27.5200 mm, 5.0000 mm): Track [CTRL_GND] on B.Cu, length 2.6000 mm
+[shorting_items]: Items shorting two nets (nets CTRL_GND and CTRL_3V3_ANALOG)
+    Local override; error
+    @(30.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 4.4000 mm
+    @(26.5750 mm, 7.0000 mm): Via [CTRL_3V3_ANALOG] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_3V3_ANALOG and CTRL_GND)
+    Local override; error
+    @(31.7750 mm, 7.0000 mm): Pad 1 [CTRL_3V3_ANALOG] of CANA1 on B.Cu
+    @(32.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 4.8000 mm
+[tracks_crossing]: Tracks crossing
+    Local override; error
+    @(61.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 2.8000 mm
+    @(62.7750 mm, 7.0000 mm): Track [MCU_NRST] on B.Cu, length 0.8350 mm
+[shorting_items]: Items shorting two nets (nets CTRL_3V3 and CTRL_GND)
+    Local override; error
+    @(55.3750 mm, 7.0000 mm): Via [CTRL_3V3] on F.Cu - B.Cu
+    @(56.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 1.6000 mm
+[tracks_crossing]: Tracks crossing
+    Local override; error
+    @(63.1750 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 3.2000 mm
+    @(62.7750 mm, 7.0000 mm): Track [MCU_NRST] on B.Cu, length 0.8350 mm
+[shorting_items]: Items shorting two nets (nets CTRL_GND and VCAP1)
+    Local override; error
+    @(50.0200 mm, 33.0000 mm): Track [CTRL_GND] on B.Cu, length 0.8000 mm
+    @(49.2500 mm, 32.7600 mm): Via [VCAP1] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_GND and VCAP2)
+    Local override; error
+    @(35.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 5.2000 mm
+    @(38.7750 mm, 7.0000 mm): Pad 1 [VCAP2] of CVC2 on B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_GND and VCAP1)
+    Local override; error
+    @(49.2200 mm, 33.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+    @(49.2500 mm, 31.6625 mm): Track [VCAP1] on F.Cu, length 1.0975 mm
+[shorting_items]: Items shorting two nets (nets CTRL_GND and VCAP1)
+    Local override; error
+    @(49.2200 mm, 33.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+    @(49.2500 mm, 32.7600 mm): Via [VCAP1] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets BUCK_SW and CTRL_GND)
+    Local override; error
+    @(13.5625 mm, 12.2500 mm): Pad 3 [BUCK_SW] of U2 on F.Cu
+    @(15.0000 mm, 12.0000 mm): Track [CTRL_GND] on F.Cu, length 2.4000 mm
+[shorting_items]: Items shorting two nets (nets CTRL_GND and VCAP1)
+    Local override; error
+    @(49.2200 mm, 33.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+    @(49.2500 mm, 32.7600 mm): Via [VCAP1] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_GND and VCAP1)
+    Local override; error
+    @(49.2200 mm, 33.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+    @(49.2500 mm, 32.7600 mm): Via [VCAP1] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_GND and VCAP1)
+    Local override; error
+    @(49.2200 mm, 33.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+    @(49.2500 mm, 32.7600 mm): Via [VCAP1] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_3V3 and CTRL_5V)
+    Local override; error
+    @(18.3450 mm, 12.0000 mm): Via [CTRL_3V3] on F.Cu - B.Cu
+    @(16.4375 mm, 11.7500 mm): Track [CTRL_5V] on F.Cu, length 4.0000 mm
+[shorting_items]: Items shorting two nets (nets CTRL_3V3_ANALOG and CTRL_GND)
+    Local override; error
+    @(31.7750 mm, 7.0000 mm): Track [CTRL_3V3_ANALOG] on B.Cu, length 5.2000 mm
+    @(27.4250 mm, 7.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_GND and VCAP1)
+    Local override; error
+    @(49.2200 mm, 33.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+    @(49.2500 mm, 32.7600 mm): Via [VCAP1] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_3V3_ANALOG and CTRL_GND)
+    Local override; error
+    @(28.2125 mm, 7.0000 mm): Track [CTRL_3V3_ANALOG] on B.Cu, length 4.0000 mm
+    @(27.4250 mm, 7.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+[tracks_crossing]: Tracks crossing
+    Local override; error
+    @(62.7750 mm, 7.0000 mm): Track [MCU_NRST] on B.Cu, length 0.8350 mm
+    @(60.8250 mm, 7.0000 mm): Track [CTRL_3V3] on B.Cu, length 4.8000 mm
+[shorting_items]: Items shorting two nets (nets CTRL_GND and CTRL_3V3)
+    Local override; error
+    @(27.5200 mm, 5.0000 mm): Pad 2 [CTRL_GND] of C7 on B.Cu
+    @(25.9500 mm, 4.8000 mm): Track [CTRL_3V3] on B.Cu, length 4.2000 mm
+[shorting_items]: Items shorting two nets (nets CTRL_3V3_ANALOG and CTRL_3V3)
+    Local override; error
+    @(26.5750 mm, 7.0000 mm): Via [CTRL_3V3_ANALOG] on F.Cu - B.Cu
+    @(29.7875 mm, 7.0000 mm): Track [CTRL_3V3] on B.Cu, length 4.8000 mm
+[clearance]: Clearance violation ( clearance 0.1000 mm; actual 0.0779 mm)
+    Local override; error
+    @(64.8750 mm, 7.8500 mm): Via [CTRL_3V3] on F.Cu - B.Cu
+    @(64.8250 mm, 8.2750 mm): Via [MCU_BOOT0] on F.Cu - B.Cu
+[clearance]: Clearance violation ( clearance 0.1000 mm; actual 0.0779 mm)
+    Local override; error
+    @(64.8750 mm, 7.8500 mm): Via [CTRL_3V3] on F.Cu - B.Cu
+    @(64.8250 mm, 8.2750 mm): Via [MCU_BOOT0] on F.Cu - B.Cu
+[clearance]: Clearance violation ( clearance 0.1000 mm; actual 0.0779 mm)
+    Local override; error
+    @(64.8750 mm, 7.8500 mm): Via [CTRL_3V3] on F.Cu - B.Cu
+    @(64.8250 mm, 8.2750 mm): Via [MCU_BOOT0] on F.Cu - B.Cu
+[clearance]: Clearance violation ( clearance 0.1000 mm; actual 0.0779 mm)
+    Local override; error
+    @(64.8750 mm, 7.8500 mm): Via [CTRL_3V3] on F.Cu - B.Cu
+    @(64.8250 mm, 8.2750 mm): Via [MCU_BOOT0] on F.Cu - B.Cu
+[clearance]: Clearance violation ( clearance 0.1000 mm; actual 0.0141 mm)
+    Local override; error
+    @(11.8850 mm, 11.7500 mm): Track [BUCK_SW] on In1.Cu, length 0.4590 mm
+    @(11.8000 mm, 12.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets BUCK_SW and CTRL_GND)
+    Local override; error
+    @(11.8850 mm, 11.7500 mm): Via [BUCK_SW] on F.Cu - B.Cu
+    @(11.8000 mm, 12.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets BUCK_SW and CTRL_GND)
+    Local override; error
+    @(13.5625 mm, 12.2500 mm): Track [BUCK_SW] on F.Cu, length 2.3375 mm
+    @(12.6000 mm, 12.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+[clearance]: Clearance violation ( clearance 0.1000 mm; actual 0.0779 mm)
+    Local override; error
+    @(64.8750 mm, 7.8500 mm): Via [CTRL_3V3] on F.Cu - B.Cu
+    @(64.8250 mm, 8.2750 mm): Via [MCU_BOOT0] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets BUCK_SW and CTRL_GND)
+    Local override; error
+    @(11.8850 mm, 11.7500 mm): Via [BUCK_SW] on F.Cu - B.Cu
+    @(11.8000 mm, 12.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+[clearance]: Clearance violation ( clearance 0.1000 mm; actual 0.0779 mm)
+    Local override; error
+    @(64.8750 mm, 7.8500 mm): Via [CTRL_3V3] on F.Cu - B.Cu
+    @(64.8250 mm, 8.2750 mm): Via [MCU_BOOT0] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets BUCK_SW and CTRL_GND)
+    Local override; error
+    @(11.8850 mm, 11.7500 mm): Via [BUCK_SW] on F.Cu - B.Cu
+    @(11.8000 mm, 12.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_GND and BUCK_SW)
+    Local override; error
+    @(12.6000 mm, 12.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+    @(13.5625 mm, 11.7500 mm): Track [BUCK_SW] on F.Cu, length 1.6775 mm
+[shorting_items]: Items shorting two nets (nets BUCK_SW and CTRL_GND)
+    Local override; error
+    @(11.8850 mm, 11.7500 mm): Via [BUCK_SW] on F.Cu - B.Cu
+    @(11.8000 mm, 12.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets BUCK_SW and CTRL_GND)
+    Local override; error
+    @(11.8850 mm, 11.7500 mm): Via [BUCK_SW] on F.Cu - B.Cu
+    @(11.8000 mm, 12.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets BUCK_SW and CTRL_GND)
+    Local override; error
+    @(11.8850 mm, 11.7500 mm): Via [BUCK_SW] on F.Cu - B.Cu
+    @(11.8000 mm, 12.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.1000 mm; actual 0.0000 mm)
+    Rule: board setup constraints hole; error
+    @(77.6000 mm, 36.6000 mm): Pad MP [<no net>] of JCB1 on F.Cu
+    @(78.5000 mm, 38.5000 mm): NPTH pad of MHM4
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.1000 mm; actual 0.0000 mm)
+    Rule: board setup constraints hole; error
+    @(61.7750 mm, 18.6000 mm): Pad MP [<no net>] of JACT1 on F.Cu
+    @(62.0000 mm, 19.5000 mm): Via [UART_RS-WAIST_TX] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_GND and CTRL_3V3)
+    Local override; error
+    @(61.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CNRST on B.Cu
+    @(60.8250 mm, 7.0000 mm): Pad 1 [CTRL_3V3] of RNRST on B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_3V3_ANALOG and CTRL_GND)
+    Local override; error
+    @(31.7750 mm, 7.0000 mm): Pad 1 [CTRL_3V3_ANALOG] of CANA1 on B.Cu
+    @(32.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CANA2 on B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_5V and CTRL_GND)
+    Local override; error
+    @(11.9500 mm, 9.0000 mm): Pad 1 [CTRL_5V] of CIN1 on B.Cu
+    @(12.2250 mm, 8.0000 mm): Pad 2 [CTRL_GND] of CIN2 on B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_GND and CTRL_3V3)
+    Local override; error
+    @(30.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CANA1 on B.Cu
+    @(29.7875 mm, 7.0000 mm): Pad 1 [CTRL_3V3] of FB1 on B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_GND and MCU_NRST)
+    Local override; error
+    @(63.1750 mm, 7.0000 mm): Pad 2 [CTRL_GND] of RBOOT on B.Cu
+    @(62.7750 mm, 7.0000 mm): Pad 1 [MCU_NRST] of CNRST on B.Cu
+[shorting_items]: Items shorting two nets (nets CTRL_GND and VCAP1)
+    Local override; error
+    @(37.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CVC2 on B.Cu
+    @(36.7750 mm, 7.0000 mm): Pad 1 [VCAP1] of CVC1 on B.Cu
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.1000 mm; actual 0.0000 mm)
+    Rule: board setup constraints hole; error
+    @(4.4000 mm, 36.6000 mm): Pad MP [<no net>] of JCA1 on F.Cu
+    @(3.5000 mm, 38.5000 mm): NPTH pad of MHM3
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(64.0000 mm, 7.0000 mm): Footprint RBOOT
+    @(62.0000 mm, 7.0000 mm): Footprint CNRST
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(78.5000 mm, 38.5000 mm): Footprint MHM4
+    @(67.0000 mm, 38.0000 mm): Footprint JCB1
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(78.5000 mm, 38.5000 mm): NPTH pad of MHM4
+    @(67.0000 mm, 38.0000 mm): Footprint JCB1
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(38.0000 mm, 7.0000 mm): Footprint CVC2
+    @(36.0000 mm, 7.0000 mm): Footprint CVC1
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(11.0000 mm, 9.0000 mm): Footprint CIN1
+    @(13.0000 mm, 8.0000 mm): Footprint CIN2
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(10.0000 mm, 3.7000 mm): Footprint JDBG1
+    @(3.5000 mm, 3.5000 mm): Footprint MHM1
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(3.5000 mm, 3.5000 mm): NPTH pad of MHM1
+    @(10.0000 mm, 3.7000 mm): Footprint JDBG1
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(15.0000 mm, 38.0000 mm): Footprint JCA1
+    @(3.5000 mm, 38.5000 mm): Footprint MHM3
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(3.5000 mm, 38.5000 mm): NPTH pad of MHM3
+    @(15.0000 mm, 38.0000 mm): Footprint JCA1
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(33.0000 mm, 7.0000 mm): Footprint CANA2
+    @(31.0000 mm, 7.0000 mm): Footprint CANA1
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(31.0000 mm, 7.0000 mm): Footprint CANA1
+    @(29.0000 mm, 7.0000 mm): Footprint FB1
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(62.0000 mm, 7.0000 mm): Footprint CNRST
+    @(60.0000 mm, 7.0000 mm): Footprint RNRST
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(37.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 2.4000 mm
+    @(38.7750 mm, 7.0000 mm): Pad 1 [VCAP2] of CVC2 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(37.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 2.4000 mm
+    @(36.7750 mm, 7.0000 mm): Pad 1 [VCAP1] of CVC1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(31.7750 mm, 7.0000 mm): Track [CTRL_3V3_ANALOG] on B.Cu, length 5.2000 mm
+    @(30.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CANA1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(27.5200 mm, 5.0000 mm): Track [CTRL_GND] on B.Cu, length 2.6000 mm
+    @(25.9500 mm, 4.8000 mm): Pad 1 [CTRL_3V3] of COUT1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(35.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 5.2000 mm
+    @(36.7750 mm, 7.0000 mm): Pad 1 [VCAP1] of CVC1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(36.7750 mm, 7.0000 mm): Track [VCAP1] on B.Cu, length 0.9550 mm
+    @(37.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CVC2 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(57.7750 mm, 7.0000 mm): Track [CTRL_3V3] on B.Cu, length 2.4000 mm
+    @(56.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CBULK1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(31.7750 mm, 7.0000 mm): Track [CTRL_3V3_ANALOG] on B.Cu, length 5.2000 mm
+    @(29.7875 mm, 7.0000 mm): Pad 1 [CTRL_3V3] of FB1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(35.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 5.2000 mm
+    @(38.7750 mm, 7.0000 mm): Pad 1 [VCAP2] of CVC2 on B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(15.0000 mm, 12.0000 mm): Track [CTRL_GND] on F.Cu, length 2.4000 mm
+    @(13.5625 mm, 11.7500 mm): Pad 2 [BUCK_SW] of U2 on F.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(31.7750 mm, 7.0000 mm): Track [CTRL_3V3_ANALOG] on B.Cu, length 5.2000 mm
+    @(32.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CANA2 on B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(3.5000 mm, 38.5000 mm): NPTH pad of MHM3
+    @(4.4000 mm, 36.6000 mm): Pad MP [<no net>] of JCA1 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(78.5000 mm, 38.5000 mm): NPTH pad of MHM4
+    @(77.6000 mm, 36.6000 mm): Pad MP [<no net>] of JCB1 on F.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(62.7750 mm, 7.0000 mm): Track [MCU_NRST] on B.Cu, length 0.8350 mm
+    @(63.1750 mm, 7.0000 mm): Pad 2 [CTRL_GND] of RBOOT on B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(15.0000 mm, 12.0000 mm): Track [CTRL_GND] on F.Cu, length 2.4000 mm
+    @(13.5625 mm, 12.2500 mm): Pad 3 [BUCK_SW] of U2 on F.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(32.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CANA2 on B.Cu
+    @(31.7750 mm, 7.0000 mm): Pad 1 [CTRL_3V3_ANALOG] of CANA1 on B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(62.0000 mm, 19.5000 mm): Via [UART_RS-WAIST_TX] on F.Cu - B.Cu
+    @(61.7750 mm, 18.6000 mm): Pad MP [<no net>] of JACT1 on F.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(29.7875 mm, 7.0000 mm): Track [CTRL_3V3] on B.Cu, length 4.8000 mm
+    @(30.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CANA1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(61.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 2.8000 mm
+    @(62.7750 mm, 7.0000 mm): Pad 1 [MCU_NRST] of CNRST on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(29.7875 mm, 7.0000 mm): Track [CTRL_3V3] on B.Cu, length 4.8000 mm
+    @(28.2125 mm, 7.0000 mm): Pad 2 [CTRL_3V3_ANALOG] of FB1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(61.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 2.8000 mm
+    @(60.8250 mm, 7.0000 mm): Pad 1 [CTRL_3V3] of RNRST on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(25.9500 mm, 4.8000 mm): Track [CTRL_3V3] on B.Cu, length 4.2000 mm
+    @(27.5200 mm, 5.0000 mm): Pad 2 [CTRL_GND] of C7 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(63.1750 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 3.2000 mm
+    @(62.7750 mm, 7.0000 mm): Pad 1 [MCU_NRST] of CNRST on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(63.1750 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 3.2000 mm
+    @(60.8250 mm, 7.0000 mm): Pad 1 [CTRL_3V3] of RNRST on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.8250 mm, 7.0000 mm): Track [CTRL_3V3] on B.Cu, length 4.8000 mm
+    @(64.8250 mm, 7.0000 mm): Pad 1 [MCU_BOOT0] of RBOOT on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.8250 mm, 7.0000 mm): Track [CTRL_3V3] on B.Cu, length 4.8000 mm
+    @(63.1750 mm, 7.0000 mm): Pad 2 [CTRL_GND] of RBOOT on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(30.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CANA1 on B.Cu
+    @(29.7875 mm, 7.0000 mm): Pad 1 [CTRL_3V3] of FB1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(30.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 4.4000 mm
+    @(29.7875 mm, 7.0000 mm): Pad 1 [CTRL_3V3] of FB1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.8250 mm, 7.0000 mm): Track [CTRL_3V3] on B.Cu, length 4.8000 mm
+    @(62.7750 mm, 7.0000 mm): Pad 1 [MCU_NRST] of CNRST on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.8250 mm, 7.0000 mm): Track [CTRL_3V3] on B.Cu, length 4.8000 mm
+    @(61.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CNRST on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(63.1750 mm, 7.0000 mm): Pad 2 [CTRL_GND] of RBOOT on B.Cu
+    @(62.7750 mm, 7.0000 mm): Pad 1 [MCU_NRST] of CNRST on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(30.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 4.4000 mm
+    @(28.2125 mm, 7.0000 mm): Pad 2 [CTRL_3V3_ANALOG] of FB1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(32.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 4.8000 mm
+    @(29.7875 mm, 7.0000 mm): Pad 1 [CTRL_3V3] of FB1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(32.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 4.8000 mm
+    @(28.2125 mm, 7.0000 mm): Pad 2 [CTRL_3V3_ANALOG] of FB1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(32.2250 mm, 7.0000 mm): Track [CTRL_GND] on B.Cu, length 4.8000 mm
+    @(31.7750 mm, 7.0000 mm): Pad 1 [CTRL_3V3_ANALOG] of CANA1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(37.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CVC2 on B.Cu
+    @(36.7750 mm, 7.0000 mm): Pad 1 [VCAP1] of CVC1 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(11.9500 mm, 9.0000 mm): Pad 1 [CTRL_5V] of CIN1 on B.Cu
+    @(12.2250 mm, 8.0000 mm): Pad 2 [CTRL_GND] of CIN2 on B.Cu
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(61.2250 mm, 7.0000 mm): Pad 2 [CTRL_GND] of CNRST on B.Cu
+    @(60.8250 mm, 7.0000 mm): Pad 1 [CTRL_3V3] of RNRST on B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(42.7800 mm, 33.0000 mm): Via [CTRL_3V3] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(33.7750 mm, 8.0000 mm): Via [CTRL_3V3_ANALOG] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(24.2125 mm, 7.0000 mm): Via [CTRL_3V3_ANALOG] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(26.5750 mm, 7.0000 mm): Via [CTRL_3V3_ANALOG] on F.Cu - B.Cu
+[hole_to_hole]: Drilled hole too close to other hole (board setup constraints min 0.2495 mm; actual 0.0000 mm)
+    Rule: board setup constraints; warning
+    @(4.8000 mm, 17.8400 mm): Via [AUX_5V_SAFE] on F.Cu - B.Cu
+    @(4.8000 mm, 17.0400 mm): PTH pad 2 [AUX_5V_SAFE] of J1
+[hole_to_hole]: Drilled hole too close to other hole (board setup constraints min 0.2495 mm; actual 0.1141 mm)
+    Rule: board setup constraints; warning
+    @(11.8850 mm, 11.7500 mm): Via [BUCK_SW] on F.Cu - B.Cu
+    @(11.8000 mm, 12.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+[hole_to_hole]: Drilled hole too close to other hole (board setup constraints min 0.2495 mm; actual 0.0919 mm)
+    Rule: board setup constraints; warning
+    @(49.2200 mm, 33.0000 mm): Via [CTRL_GND] on F.Cu - B.Cu
+    @(49.2500 mm, 32.7600 mm): Via [VCAP1] on F.Cu - B.Cu
+[hole_to_hole]: Drilled hole too close to other hole (board setup constraints min 0.2495 mm; actual 0.0000 mm)
+    Rule: board setup constraints; warning
+    @(4.8000 mm, 17.8400 mm): Via [AUX_5V_SAFE] on F.Cu - B.Cu
+    @(4.8000 mm, 17.0400 mm): PTH pad 2 [AUX_5V_SAFE] of J1
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(78.1100 mm, 38.2600 mm): Segment of JCB1 on F.Silkscreen
+    @(78.5000 mm, 38.5000 mm): NPTH pad of MHM4
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(3.8900 mm, 38.2600 mm): Segment of JCA1 on F.Silkscreen
+    @(3.5000 mm, 38.5000 mm): NPTH pad of MHM3
+
+** Found 2 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(41.9800 mm, 33.0000 mm): Pad 1 [CTRL_3V3] of C4 on B.Cu
+    @(39.7500 mm, 33.6625 mm): Via [CTRL_3V3] on F.Cu - B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(51.6625 mm, 24.7500 mm): Pad 83 [CTRL_GND] of U1 on F.Cu
+    @(51.6625 mm, 19.2500 mm): Track [CTRL_GND] on F.Cu, length 1.2000 mm
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **

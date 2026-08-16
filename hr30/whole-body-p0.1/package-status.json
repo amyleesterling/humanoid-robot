@@ -365,5 +365,20 @@
   "physical_harness_commercial_cable_family_review_count": 5,
   "physical_harness_manufacturer_discrepancy_count": 5,
   "physical_harness_u2d2_final_controller_approved": false,
-  "physical_harness_u2d2_power_hub_aggregate_power_approved": false
+  "physical_harness_u2d2_power_hub_aggregate_power_approved": false,
+  "motion_controller_native_board_present": true,
+  "motion_controller_board_dimensions_mm": [
+    82,
+    42,
+    1.6
+  ],
+  "motion_controller_schematic_sheet_count": 6,
+  "motion_controller_uart_group_count": 8,
+  "motion_controller_carrier_pin_mapping_reconciled": true,
+  "motion_controller_erc_errors": 0,
+  "motion_controller_erc_warnings": 0,
+  "motion_controller_drc_violations": 112,
+  "motion_controller_unconnected_item_count": 2,
+  "motion_controller_layout_blocked": true,
+  "motion_controller_fabrication_released": false
 }
