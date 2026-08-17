@@ -82,16 +82,24 @@ The [full-scale fit-check guide](full-scale-fit-check-p0.1/index.html) provides 
 
 The [HR-30 no-motion firmware guide](firmware/hr30-motion-controller-p0.1/index.html) binds all 25 axes and eight buses to a compiled `FIRST_POWER_NO_MOTION` state machine. Every torque-enable, bus-transmit, precharge and action-ready output remains zero; all motion requests are rejected and STOP is a no-op. Two clean host builds and two clean freestanding STM32H743 builds are byte-identical, and the compiled core/MMIO vector suites pass. The target is unflashed; HIL, physical timing, reset-state proof and qualified approval remain open, so this creates no powered-work or motion authority.
 <!-- HR30-NO-MOTION-FW-P01-README-END -->
+
 <!-- HR30-PROTECTION-CONDUCTOR-P01-README-START -->
 ## Staged protection and conductor architecture
 
 The [interactive protection/conductor guide](electrical/protection-conductor-architecture-p0.1/index.html) binds the isolated 5 V logic-only path and the 12 V whole-body path into one staged hierarchy. The eight candidate axis-cap sums total 46.67779 A, above the 41.7 A source endpoint; the separate published stall endpoints total 71.88 A. These are constraints, not demand predictions or protection ratings. All fuse values, hot ampacity, regeneration handling and physical evidence remain open.
 <!-- HR30-PROTECTION-CONDUCTOR-P01-README-END -->
+
+
 <!-- HR30-GROUNDING-REFERENCE-P01-README-START -->
 ## Whole-robot grounding and DC-reference architecture
 
 The [interactive grounding guide](electrical/grounding-reference-architecture-p0.1/index.html) consolidates facility PE, the external panel, the SBS75G first-mate tether contact, every conductive robot module, DC return, control ground, shields and grounded test equipment into one candidate topology. It proposes one removable BR1 DC-return/PE bond at RB0 and **10 controlled bond records**. Conductor hardware, limits, measurements, jurisdiction and qualified approval remain open; it grants no work authority.
 <!-- HR30-GROUNDING-REFERENCE-P01-README-END -->
+<!-- HR30-HEAD-HMI-HARNESS-P01-README-START -->
+## Physical head HMI harness
+
+The [interactive head HMI harness guide](harness/head-hmi-harness-p0.1/index.html) replaces generic connector notes with **8 located equipment records** and **11 routed physical links**. Both cameras now correctly use Pi 5 22-way to Camera Module 3 15-pin Standard-Mini cable candidates; the former 200 mm assumption is replaced by a 300 mm route candidate. The face display is remote rather than GPIO-stacked, and a current ReSpeaker Flex linear array/core plus two speaker candidates and a specific 5 V fan define the audio/cooling path. Exact cables, privacy controls, protection, physical fit and tests remain open.
+<!-- HR30-HEAD-HMI-HARNESS-P01-README-END -->
 <!-- HR30-PROTECTIVE-BONDING-P01-README-START -->
 ## Physical protective-bonding implementation
 
@@ -102,8 +110,6 @@ The [interactive protective-bonding guide](electrical/protective-bonding-impleme
 
 The [interactive target bring-up guide](firmware/stm32-target-bringup-p0.1/index.html) binds the reproducible STM32H743 image to the controller's exact five-contact SWD boundary and the [native routed SWD adapter candidate](electrical/swd-adapter-p0.1/index.html), plus ten release gates, twelve measurements and six fault injections. The target remains unflashed; the adapter board and cable remain unbuilt; all physical results and work authority remain open.
 <!-- HR30-STM32-BRINGUP-P01-README-END -->
-
-
 
 ## Physical whole-body harness P0.1
 
@@ -170,11 +176,47 @@ The [interactive walking-power guide](electrical/walking-power-successor-p0.1/in
 
 
 
-<!-- HR30-HEAD-HMI-HARNESS-P01-README-START -->
-## Physical head HMI harness
 
-The [interactive head HMI harness guide](harness/head-hmi-harness-p0.1/index.html) replaces generic connector notes with **8 located equipment records** and **11 routed physical links**. Both cameras now correctly use Pi 5 22-way to Camera Module 3 15-pin Standard-Mini cable candidates; the former 200 mm assumption is replaced by a 300 mm route candidate. The face display is remote rather than GPIO-stacked, and a current ReSpeaker Flex linear array/core plus two speaker candidates and a specific 5 V fan define the audio/cooling path. Exact cables, privacy controls, protection, physical fit and tests remain open.
-<!-- HR30-HEAD-HMI-HARNESS-P01-README-END -->
+
+## Joint-hardware successor reconciliation
+
+The [successor reconciliation guide](joint-hardware-successor-reconciliation-p0.1/index.html) establishes one manufacturing truth for the 39 legacy pulley/coupler envelopes. All are superseded and mapped to 28 catalogue pulley positions, nine direct-adapter axes or two detailed hand mechanisms. Zero legacy envelopes remain authoritative or unmapped, but all successor selection, release and physical validation gates remain open.
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Joint-hardware successor reconciliation
+
+The [successor reconciliation guide](joint-hardware-successor-reconciliation-p0.1/index.html) establishes one manufacturing truth for the 39 legacy pulley/coupler envelopes. All are superseded and mapped to 28 catalogue pulley positions, nine direct-adapter axes or two detailed hand mechanisms. Zero legacy envelopes remain authoritative or unmapped, but all successor selection, release and physical validation gates remain open.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -216,11 +258,11 @@ The [installed drivetrain guide](leg-drivetrain-installation-p0.1/index.html) re
 
 The [transmission closure guide](transmission-closure-p0.1/index.html) maps all 39 smooth-pulley or generic-coupler predecessor placeholders to concrete successors. Twenty leg pulleys were already superseded by installed MISUMI candidates, two gripper couplers by the detailed rack-and-pinion hands, eight shoulder pulley positions now use a 16:24 5GT / 185 mm belt candidate, and nine direct axes now use four editable flanged blind-bore split-clamp adapter families. The successor whole-body STEP/GLB also corrects the wrist vendor geometry to XC330. Material, fits, retention, capacity, DFM, FAI and physical proof remain open.
 <!-- HR30-TRANSMISSION-CLOSURE-P01-README-END -->
-<!-- HR30-SRS-P01-README-START -->
-## Whole-body safety requirements P0.1
 
-The [interactive safety-requirements guide](safety-requirements-p0.1/index.html) converts the existing whole-robot stop topology, first-power firmware and restraint boundary into 24 open hazards, 12 safety/control functions, a candidate PLr allocation, 8 explicit stopping-time intervals and 20 validation cases. Achieved PL/PFHd, common-cause evidence, numerical stopping limits, physical results and qualified approval remain open. It is a reviewable SRS candidate, not permission to connect, power or move the robot.
-<!-- HR30-SRS-P01-README-END -->
+
+
+
+
 
 
 
@@ -228,13 +270,18 @@ The [interactive safety-requirements guide](safety-requirements-p0.1/index.html)
 <!-- HR30-ACTUATOR-CABLE-KIT-P01-README-START -->
 ## Actuator cable kit
 
-The [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **159 connector-cavity records**. The power-wire path is split: **Alpha Wire 3051 22 AWG** for static suspended-commissioning coupons and **igus CF130.03.02.UL 2 x 22 AWG** for dynamic coupons. The retained rejected-CF9 predecessor comparison has a largest 20 C planning drop of **0.091 V**. That comparison is not a cable selection, ampacity or thermal release. Outgoing inter-actuator housings leave GND/VDD cavities empty so the 25 separately protected power branches cannot be paralleled; signal-reference behavior remains a validation hold.
+The [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **159 connector-cavity records**. Each actuator-power path now uses **igus CF130.03.02.UL** only on the moving side, a fixed panel-mounted **Molex 430250200 / 430200200** transition, and a restrained **Alpha Wire 3051** pigtail to JST EH. Direct CF130-to-JST crimping is rejected. The retained rejected-CF9 predecessor comparison has a largest 20 C planning drop of **0.091 V**. That comparison is not a cable selection, ampacity or thermal release. Outgoing inter-actuator housings leave GND/VDD cavities empty so the 25 separately protected power branches cannot be paralleled; signal-reference behavior remains a validation hold.
 <!-- HR30-ACTUATOR-CABLE-KIT-P01-README-END -->
 <!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-START -->
 ## Actuator cable coupon and route measurement
 
-The [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) now separates the **Alpha Wire 3051 22 AWG static suspended-commissioning candidate** from the **igus CF130.03.02.UL 2 x 22 AWG dynamic candidate**, binds the JST loose-piece **BEH-001T-P0.6 + YC-260R** prototype path and the strip-terminal **SEH-001T-P0.6 + YRS-260** alternative, and provides nine destructive/measurement specimen families plus a **25-axis** as-built route register. The former 24 AWG CF9 candidate receives no actuator-power credit. No production cut length or crimp setting is released.
+The [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) defines the complete moving **CF130 -> Molex 430250200/430300001 -> panel 430200200/430310001 -> restrained Alpha 3051 -> JST EH** transition coupon. Eleven specimen families now cover both crimp systems, the panel mount, strain isolation, electrical/thermal behavior and flex. Direct CF130-to-JST crimping is rejected. No production cut length, bracket, crimp setting or physical-work authority is released.
 <!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-END -->
+<!-- HR30-SRS-P01-README-START -->
+## Whole-body safety requirements P0.1
+
+The [interactive safety-requirements guide](safety-requirements-p0.1/index.html) converts the existing whole-robot stop topology, first-power firmware and restraint boundary into 24 open hazards, 12 safety/control functions, a candidate PLr allocation, 8 explicit stopping-time intervals and 20 validation cases. Achieved PL/PFHd, common-cause evidence, numerical stopping limits, physical results and qualified approval remain open. It is a reviewable SRS candidate, not permission to connect, power or move the robot.
+<!-- HR30-SRS-P01-README-END -->
 
 
 <!-- HR30-FIRST-ENERGIZATION-P01-README-START -->
