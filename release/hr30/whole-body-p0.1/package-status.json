@@ -556,5 +556,15 @@
   "boston_bpl_service_currently_available": false,
   "boston_fabrication_supplier_contact_executed": false,
   "boston_fit_check_parts_built": 0,
-  "boston_fabrication_authority": false
+  "boston_fabrication_authority": false,
+  "first_build_cart_present": true,
+  "first_build_cart_priced_candidate_count": 2,
+  "first_build_cart_priced_subtotal_usd": 58.77,
+  "first_build_cart_sample_quote_count": 8,
+  "first_build_cart_borrow_contract_tool_count": 6,
+  "first_build_cart_do_not_buy_count": 8,
+  "first_build_cart_orders_placed": 0,
+  "first_build_cart_supplier_contacts_executed": 0,
+  "first_build_cart_physical_actions_completed": 0,
+  "first_build_cart_procurement_authority": false
 }
