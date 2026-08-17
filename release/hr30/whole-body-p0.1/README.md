@@ -217,6 +217,13 @@ The [interactive SWD adapter guide](electrical/swd-adapter-p0.1/index.html) cont
 The [interactive logic-power guide](electrical/logic-power-kit-p0.1/index.html) selects a SIGLENT SPD3303X, the exact two-contact JST boundary, red/black Alpha Wire conductors and Pomona banana plugs. The cable is unbuilt; voltage/current/OCP limits, DC-reference approval and every physical test remain open. It grants no connection or powered-work authority.
 <!-- HR30-LOGIC-POWER-KIT-P01-README-END -->
 
+
+
+<!-- HR30-PROTECTION-CONDUCTOR-P01-README-START -->
+## Staged protection and conductor architecture
+
+The [interactive protection/conductor guide](electrical/protection-conductor-architecture-p0.1/index.html) binds the isolated 5 V logic-only path and the 12 V whole-body path into one staged hierarchy. The eight candidate axis-cap sums total 46.67779 A, above the 41.7 A source endpoint; the separate published stall endpoints total 71.88 A. These are constraints, not demand predictions or protection ratings. All fuse values, hot ampacity, regeneration handling and physical evidence remain open.
+<!-- HR30-PROTECTION-CONDUCTOR-P01-README-END -->
 <!-- HR30-GROUNDING-REFERENCE-P01-README-START -->
 ## Whole-robot grounding and DC-reference architecture
 
