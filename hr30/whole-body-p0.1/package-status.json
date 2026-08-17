@@ -389,7 +389,7 @@
   "walking_power_bidirectional_overcurrent_architecture_defined": true,
   "walking_power_reverse_energy_path_to_downstream_feed_defined": true,
   "walking_power_feed_brake_dump_selected": false,
-  "walking_power_pcb_routed": false,
+  "walking_power_pcb_routed": true,
   "walking_power_thermal_validated": false,
   "walking_power_architecture_complete": false,
   "walking_power_connection_authority": false,
@@ -544,5 +544,9 @@
   "safety_function_implementation_map_present": true,
   "safety_function_implementation_count": 12,
   "safety_functions_connected_unvalidated_count": 3,
-  "safety_function_implementation_validated": false
+  "safety_function_implementation_validated": false,
+  "walking_power_exact_ywp_land_pattern_present": true,
+  "walking_power_pcb_drc_accepted": true,
+  "walking_power_pcb_unconnected_pads": 0,
+  "walking_power_production_stackup_selected": false
 }

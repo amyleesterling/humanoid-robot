@@ -1,3 +1,4 @@
 (fp_lib_table
   (version 7)
+  (lib (name "ProjectButton_WPS")(type "KiCad")(uri "${KIPRJMOD}/ProjectButton_WPS.pretty")(options "")(descr "Exact TI YWP0012A land pattern"))
 )
