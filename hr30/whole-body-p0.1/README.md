@@ -219,6 +219,13 @@ The [interactive logic-power guide](electrical/logic-power-kit-p0.1/index.html) 
 
 
 
+
+
+<!-- HR30-WALKING-POWER-P01-README-START -->
+## Bidirectional walking-power successor
+
+The [interactive walking-power guide](electrical/walking-power-successor-p0.1/index.html) replaces the single reverse-blocking branch for walking development with a native eight-sheet KiCad candidate containing two oppositely oriented TPS259482L devices per branch. One device protects motoring current and the other protects regenerative current. All 25 axes are allocated across five six-channel board instances; five positions remain DNP. The architecture returns energy to the downstream feed, but five contactor-open brake/dump circuits, exact current thresholds, PCB layout, thermal proof and every powered-work authority remain open.
+<!-- HR30-WALKING-POWER-P01-README-END -->
 <!-- HR30-PROTECTION-CONDUCTOR-P01-README-START -->
 ## Staged protection and conductor architecture
 
