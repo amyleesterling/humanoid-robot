@@ -1,7 +1,7 @@
 {
   "identifier": "HR30-JOINT-HARDWARE-SUCCESSOR-RECONCILIATION-P0.1",
   "generator": "tools/generate_hr30_joint_hardware_successor_reconciliation_p01.py",
-  "generator_sha256": "ec644df85e33885e1e88cd87d35f51e52870be834566389b7d8eaef071c2e26d",
+  "generator_sha256": "22439dee9f7dd06a3efd7c6102248457c7d479ac85129e03afd5e71eedb5dbbd",
   "sources": [
     {
       "path": "hr30/whole-body-p0.1/transmission-closure-p0.1/transmission-disposition-register.csv",
@@ -25,7 +25,7 @@
     },
     {
       "path": "hr30/whole-body-p0.1/joint-hardware-manufacturing-p0.1/joint-hardware-part-register.csv",
-      "sha256": "bcaef1f52078fce589ae40790576647bc7c38d496207bdf118459da611b9379f"
+      "sha256": "9a5e4e0d45dd97385d956e775b95495152cc927b5a4b9b0d23d17ceb7c38fb17"
     }
   ],
   "warning": "PRELIMINARY - JOINT-HARDWARE SUCCESSOR CANDIDATES ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION"

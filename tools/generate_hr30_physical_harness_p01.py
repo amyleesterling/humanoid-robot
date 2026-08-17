@@ -201,6 +201,49 @@ def equipment_route(module: str, role: str) -> tuple[str, str]:
     return "HN01_TORSO_POWER_SPINE", "HN01_TORSO_DATA_SPINE"
 
 
+def preallocate_walking_power_channels(bindings: list[dict[str, str]], current_limits: list[dict[str, str]]) -> list[dict[str, str]]:
+    """Derive the fixed eight-bus/six-channel connector boundary.
+
+    This removes the former circular release dependency between the physical
+    harness, the current-policy binding, and the walking-power successor.  The
+    downstream walking-power generator independently applies this same bus and
+    channel allocation after the harness/current policy exists.
+    """
+    cap_by_axis = {row["axis_id"]: row["candidate_current_a"] for row in current_limits}
+    feed_map = {
+        "RS-LLEG": ("WPS-RS-LLEG", "ACT_MAIN_SAFE_12V", "ACT_0V_CONTROLLED", "12 V nominal candidate"),
+        "RS-RLEG": ("WPS-RS-RLEG", "ACT_MAIN_SAFE_12V", "ACT_0V_CONTROLLED", "12 V nominal candidate"),
+        "RS-LARM": ("WPS-RS-LARM", "ACT_MAIN_SAFE_12V", "ACT_0V_CONTROLLED", "12 V nominal candidate"),
+        "RS-RARM": ("WPS-RS-RARM", "ACT_MAIN_SAFE_12V", "ACT_0V_CONTROLLED", "12 V nominal candidate"),
+        "RS-WAIST": ("WPS-RS-WAIST", "ACT_MAIN_SAFE_12V", "ACT_0V_CONTROLLED", "12 V nominal candidate"),
+        "TTL-LDIST": ("WPS-TTL-LDIST", "TTL_LDIST_SAFE_9V", "ACT_0V_CONTROLLED", "9 V regulated candidate"),
+        "TTL-RDIST": ("WPS-TTL-RDIST", "TTL_RDIST_SAFE_9V", "ACT_0V_CONTROLLED", "9 V regulated candidate"),
+        "TTL-HEAD": ("WPS-TTL-HEAD", "TTL_HEAD_SAFE_9V", "ACT_0V_CONTROLLED", "9 V regulated candidate"),
+    }
+    rows: list[dict[str, str]] = []
+    for bus_id, (board, positive_net, return_net, nominal_voltage) in feed_map.items():
+        members = sorted(
+            (row for row in bindings if row["bus_id"] == bus_id),
+            key=lambda row: int(row["segment_position_provisional"]),
+        )
+        for channel in range(1, 7):
+            axis = members[channel - 1] if channel <= len(members) else None
+            rows.append({
+                "board_instance": board,
+                "channel": str(channel),
+                "axis_id": axis["axis_id"] if axis else "DNP SPARE",
+                "bus_id": bus_id,
+                "feed_positive_net": positive_net,
+                "feed_return_net": return_net,
+                "nominal_feed_voltage": nominal_voltage,
+                "actuator_family": axis["actuator_family"] if axis else "DNP",
+                "candidate_internal_cap_a": cap_by_axis[axis["axis_id"]] if axis else "DNP",
+            })
+    if len(rows) != 48 or sum(row["axis_id"] != "DNP SPARE" for row in rows) != 25:
+        raise SystemExit("eight-board/six-channel preallocation drift")
+    return rows
+
+
 def build() -> dict[str, int | float]:
     OUT.mkdir(parents=True, exist_ok=True)
     axes = read_csv(WB / "joint-axis-schedule.csv")
@@ -215,7 +258,7 @@ def build() -> dict[str, int | float]:
     harness_sources = read_csv(WB / "harness/harness-source-register.csv")
     current_limits = read_csv(WB / "current-constrained-actuation-p0.1/axis-current-torque-register.csv")
     bus_current_budgets = read_csv(WB / "current-constrained-actuation-p0.1/bus-current-budget.csv")
-    pdu_allocations = read_csv(WB / "electrical/walking-power-successor-p0.1/axis-branch-allocation.csv")
+    pdu_allocations = preallocate_walking_power_channels(bindings, current_limits)
     if (len(axes), len(bindings), len(buses), len(assemblies), len(actuator_pinouts), len(current_limits), len(bus_current_budgets)) != (25, 25, 8, 14, 4, 25, 8):
         raise SystemExit("controlled whole-body harness source count drift")
 
@@ -241,7 +284,7 @@ def build() -> dict[str, int | float]:
     source_paths = [
         WB / "joint-axis-schedule.csv", WB / "actuator-bus-axis-binding.csv",
         WB / "harness-route-register.csv", WB / "installed-equipment-register.csv",
-        WB / "electrical/walking-power-successor-p0.1/axis-branch-allocation.csv",
+        WB / "actuator-bus-topology.csv",
         WB / "electrical/kicad/hr30-whole-body-electrical-p0.1/connector-schedule.csv",
         WB / "harness/bus-harness-assembly-register.csv", WB / "harness/harness-assembly-register.csv",
         WB / "harness/bus-termination-register.csv", WB / "harness/actuator-side-pinout-register.csv",
@@ -300,8 +343,9 @@ def build() -> dict[str, int | float]:
     derating_rows: list[dict] = []
     transition_rows: list[dict] = []
     # Every connector boundary required by the eight one-bus walking-power
-    # assemblies is instantiated here.  The successor is not yet a routed PCB,
-    # so board-side and cable-side connector selections both remain open.
+    # assemblies is instantiated from the authoritative bus ownership.  The
+    # downstream walking-power package must independently reconcile to this
+    # preallocation; board-side and cable-side selections remain open.
     feed_by_board = {}
     for row in pdu_allocations:
         feed_by_board.setdefault(board_id := row["board_instance"], (row["feed_positive_net"], row["feed_return_net"], row["nominal_feed_voltage"]))
@@ -314,7 +358,7 @@ def build() -> dict[str, int | float]:
             "connector_id": input_id, "location": board_id, "function": f"{nominal_feed.upper()} BOARD INPUT",
             "candidate_housing": OPEN, "mating_part": OPEN,
             "contact_order_code": OPEN, "contact_count": 2, "keying_retention_strain_relief": OPEN,
-            "source": "electrical/walking-power-successor-p0.1", "source_date": "generated 2026-08-17", "selection_state": "INPUT CONNECTOR / PCB / FIELD ASSEMBLY SELECTION REQUIRED",
+            "source": "actuator-bus-topology.csv + deterministic six-channel preallocation", "source_date": "generated from source-bound whole-body bus ownership", "selection_state": "INPUT CONNECTOR / PCB / FIELD ASSEMBLY SELECTION REQUIRED",
         })
         for pin, signal in (("1", feed_return), ("2", feed_positive)):
             contact_rows.append({
@@ -329,13 +373,13 @@ def build() -> dict[str, int | float]:
             "connector_id": output_id, "location": board_id, "function": f"CHANNEL {channel} ACTUATOR OUTPUT",
             "candidate_housing": OPEN, "mating_part": OPEN,
             "contact_order_code": OPEN, "contact_count": 2, "keying_retention_strain_relief": OPEN,
-            "source": "electrical/walking-power-successor-p0.1", "source_date": "generated 2026-08-17",
+            "source": "actuator-bus-topology.csv + deterministic six-channel preallocation", "source_date": "generated from source-bound whole-body bus ownership",
             "selection_state": "DNP CHANNEL HAS NO FIELD HARNESS" if axis == "DNP SPARE" else "OUTPUT CONNECTOR / PCB / FIELD ASSEMBLY SELECTION REQUIRED",
         }, {
             "connector_id": control_id, "location": board_id, "function": f"CHANNEL {channel} DISABLE/POWER-GOOD CONTROL",
             "candidate_housing": OPEN, "mating_part": OPEN,
             "contact_order_code": OPEN, "contact_count": 3, "keying_retention_strain_relief": OPEN,
-            "source": "electrical/walking-power-successor-p0.1", "source_date": "generated 2026-08-17",
+            "source": "actuator-bus-topology.csv + deterministic six-channel preallocation", "source_date": "generated from source-bound whole-body bus ownership",
             "selection_state": "DNP CHANNEL CONTROL UNPOPULATED" if axis == "DNP SPARE" else "CONTROL CONNECTOR / PCB / FIELD ASSEMBLY SELECTION REQUIRED",
         }))
         output_signals = (("1", allocation["feed_return_net"]), ("2", f"BRANCH_{channel}_VPOS"))

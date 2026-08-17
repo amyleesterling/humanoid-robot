@@ -36,7 +36,6 @@ PIPELINE = (
     "generate_hr30_actuator_interface_carriers_p01.py",
     "generate_hr30_motion_controller_p01.py",
     "generate_hr30_actuator_branch_pdu_p01.py",
-    "generate_hr30_walking_power_successor_p01.py",
     "generate_hr30_tether_power_core_p01.py",
     "generate_hr30_energy_safety_spine_p01.py",
     "generate_hr30_whole_body_harness_p01.py",
@@ -53,8 +52,10 @@ PIPELINE = (
     "generate_hr30_head_hmi_harness_p01.py",
     "generate_hr30_assembly_guide_p01.py",
     "generate_hr30_harness_current_policy_binding_p01.py",
+    "generate_hr30_walking_power_successor_p01.py",
     "generate_hr30_actuator_cable_kit_p01.py",
     "generate_hr30_actuator_cable_coupon_p01.py",
+    "generate_hr30_actuator_transition_brackets_p01.py",
     "generate_hr30_joint_hardware_successor_reconciliation_p01.py",
     "generate_hr30_axis_commissioning_station_p01.py",
     "generate_hr30_bench_harness_p01.py",
@@ -67,6 +68,7 @@ PIPELINE = (
     "generate_hr30_stm32_bringup_p01.py",
     "generate_hr30_safety_requirements_p01.py",
     "generate_hr30_first_energization_readiness_p01.py",
+    "generate_hr30_protection_conductor_architecture_p01.py",
     "generate_hr30_safety_function_implementation_p01.py",
 )
 
