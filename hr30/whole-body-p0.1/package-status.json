@@ -495,5 +495,19 @@
   "safety_function_implementation_map_present": true,
   "safety_function_implementation_count": 12,
   "safety_functions_connected_unvalidated_count": 3,
-  "safety_function_implementation_validated": false
+  "safety_function_implementation_validated": false,
+  "protection_conductor_architecture_present": true,
+  "protection_conductor_power_state_count": 8,
+  "protection_conductor_feed_count": 5,
+  "protection_conductor_axis_count": 25,
+  "candidate_source_continuous_a": 41.7,
+  "candidate_cap_sum_exceeds_source": true,
+  "candidate_cap_sum_source_shortfall_a": 4.97779,
+  "logic_only_actuator_power_physically_absent_by_plan": true,
+  "main_fuse_selected": false,
+  "five_feed_fuses_selected": false,
+  "hot_conductor_ampacity_released": false,
+  "regenerative_energy_architecture_released": false,
+  "protection_conductor_connection_authority": false,
+  "protection_conductor_energization_authority": false
 }
