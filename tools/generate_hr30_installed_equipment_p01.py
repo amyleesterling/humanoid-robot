@@ -313,8 +313,8 @@ def build() -> list[Equipment]:
     for side, sign, link in (("L", 1, "L_foot"), ("R", -1, "R_foot")):
         x0 = sign * body.HIP_HALF_WIDTH
         add(f"EQ-F0{1 if side == 'L' else 2}-SOLE", f"F0{1 if side == 'L' else 2}", "compliant sole",
-            "replaceable 4 mm TPU/rubber sole candidate", box(86, 138, 4, (x0, 25, 2), 3),
-            0.060, 0, 0, "underside of sole carrier", "-Z replacement",
+            "replaceable 2.5 mm patterned TPU/rubber tread candidate", box(86, 138, 2.5, (x0, 25, 1.25), 2),
+            0.0375, 0, 0, "underside of sole carrier", "-Z replacement",
             "mechanical adhesive/fastener pattern; friction/wear selection open",
             "SELECTION REQUIRED", "SELECTION REQUIRED", "planning geometry/mass only", link, compliant)
         for iy, y in enumerate((-18, 68), start=1):

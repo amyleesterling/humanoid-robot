@@ -165,7 +165,7 @@ def main() -> int:
     mass = list(csv.DictReader((SRC / "mass-allocation-register.csv").open(encoding="utf-8")))
     total_mass = float(mass[-1]["cad_mass_kg"].split()[-1])
     require(mass[-1]["assembly"] == "TOTAL" and float(mass[-1]["target_kg"]) == 8.0 and float(mass[-1]["maximum_kg"]) == 10.0, "authoritative 8 kg target / 10 kg hard limit drift")
-    require(10.20 < total_mass < 10.27 and "OVER MAXIMUM" in mass[-1]["status"] and "REDESIGN" in mass[-1]["status"], "active tether-first mass deficit must remain explicit until lightweighting closes the 10 kg hard limit")
+    require(9.95 < total_mass < 10.0 and "WITHIN MAXIMUM" in mass[-1]["status"], "active tether-first planning mass must remain below the 10 kg hard limit after the whole-body lightweight revision")
 
     model = cq.importers.importStep(str(SRC / "HR-30_body_architecture_candidate.step"))
     vertices = [vertex.Center() for vertex in model.val().Vertices()]

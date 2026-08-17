@@ -14,13 +14,13 @@ P0.1 now also includes floating-base 25-DOF URDF and MJCF models, a historical 9
 
 ## Modular fabrication architecture
 
-P0.1 now includes an editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable body panels, both seventeen-part custom gripper mechanisms, and twelve segregated harness corridors. Separate neck data and actuator-power branches prevent the head actuators from borrowing the data-only corridor. The current product-envelope correction uses a 3 mm nominal shoulder-bridge wall, 3 mm leg side plates and ties, 3-4 mm foot carriers, and 1.2 mm body/limb panels while retaining every joint datum and module interface. Ribs, buckling, gait loads, print/process qualification and impact stiffness remain open. The CAD density screen is 1.536 kg for fixed/mechanism parts and 0.419 kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; they do not establish as-built whole-robot mass or strength. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
+P0.1 now includes an editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable body panels, both seventeen-part custom gripper mechanisms, and twelve segregated harness corridors. Separate neck data and actuator-power branches prevent the head actuators from borrowing the data-only corridor. The current product-envelope correction uses a 2.5 mm nominal shoulder-bridge wall, a 6 mm windowed waist bridge, 3 mm leg side plates/ties and foot carriers, and 0.8 mm thermoformed-polycarbonate or PA12 body/limb panels while retaining every joint datum and outer module interface. Local bosses, ribs, buckling, gait loads, forming/SLS qualification and impact stiffness remain open. The CAD density screen is 1.465 kg for fixed/mechanism parts and 0.279 kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; they do not establish as-built whole-robot mass or strength. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
 ## Whole-body mass reconciliation
 
-The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 98 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 156 located screw candidates, 10 catalogue belt candidates and 64 located equipment/harness/contact items. The active tether-first dynamics model is 10.232 kg with neutral COM Z=0.348 m and -0.232 kg planning margin to the 10 kg hard limit. The separate onboard-envelope model is 11.697 kg and includes 1.357 kg for the rejected direct-source pack envelope, cassette and unselected protection allowance. It exceeds the product hard limit and is packaging evidence, not an installed energy configuration. Exact protection, received masses and physical properties remain open.
+The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 98 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 156 located screw candidates, 10 catalogue belt candidates and 64 located equipment/harness/contact items. The active tether-first dynamics model is 9.958 kg with neutral COM Z=0.349 m and 0.042 kg planning margin to the 10 kg hard limit. The separate onboard-envelope model is 11.424 kg and includes 1.357 kg for the rejected direct-source pack envelope, cassette and unselected protection allowance. It exceeds the product hard limit and is packaging evidence, not an installed energy configuration. Exact protection, received masses and physical properties remain open.
 ## Installed equipment layout
 
-The former empty torso, pelvis, head and foot reservations now contain 64 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.767 kg. Eight bus-specific 124 x 45 mm walking-power board instances are now visibly installed in the pelvis, torso and both thighs; no board input serves more than one actuator bus or regulator output. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+The former empty torso, pelvis, head and foot reservations now contain 64 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.722 kg. Eight bus-specific 124 x 45 mm walking-power board instances are now visibly installed in the pelvis, torso and both thighs; no board input serves more than one actuator bus or regulator output. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
 
 ## Located joint fastener candidates
 
@@ -112,7 +112,7 @@ The [installed drivetrain guide](leg-drivetrain-installation-p0.1/index.html) re
 
 ## Whole-body fabrication sourcing P0.1
 
-The [interactive fabrication sourcing guide](fabrication-sourcing-p0.1/index.html) binds all 98 physical candidates to controlled upload files, exact SHA-256 values, five nonempty quote batches, seven Boston/online routes and ten mandatory written DFM questions. The public-stock screen prevents silent thickness substitution: only 1 of 45 planar candidates match the reviewed nominal stock values within 0.02 mm.
+The [interactive fabrication sourcing guide](fabrication-sourcing-p0.1/index.html) binds all 98 physical candidates to controlled upload files, exact SHA-256 values, five nonempty quote batches, seven Boston/online routes and ten mandatory written DFM questions. The public-stock screen prevents silent thickness substitution: only 0 of 45 planar candidates match the reviewed nominal stock values within 0.02 mm.
 
 This is a route to quotation, not authority to buy or make parts. Materials, tolerances/GD&T, inspection, DFM disposition, structural capacity, FAI and physical proof remain open.
 
@@ -127,22 +127,6 @@ This corrects the manufacturing-universe boundary: the 98 body/frame/hand parts 
 
 The [transmission closure guide](transmission-closure-p0.1/index.html) maps all 39 smooth-pulley or generic-coupler predecessor placeholders to concrete successors. Twenty leg pulleys were already superseded by installed MISUMI candidates, two gripper couplers by the detailed rack-and-pinion hands, eight shoulder pulley positions now use a 16:24 5GT / 185 mm belt candidate, and nine direct axes now use four editable flanged blind-bore split-clamp adapter families. The successor whole-body STEP/GLB also corrects the wrist vendor geometry to XC330. Material, fits, retention, capacity, DFM, FAI and physical proof remain open.
 <!-- HR30-TRANSMISSION-CLOSURE-P01-README-END -->
-
-<!-- HR30-NO-MOTION-FW-P01-README-START -->
-## Deterministic no-motion firmware
-
-The [HR-30 no-motion firmware guide](firmware/hr30-motion-controller-p0.1/index.html) binds all 25 axes and eight buses to a compiled `FIRST_POWER_NO_MOTION` state machine. Every torque-enable, bus-transmit, precharge and action-ready output remains zero; all motion requests are rejected and STOP is a no-op. Two clean host builds and two clean freestanding STM32H743 builds are byte-identical, and the compiled core/MMIO vector suites pass. The target is unflashed; HIL, physical timing, reset-state proof and qualified approval remain open, so this creates no powered-work or motion authority.
-<!-- HR30-NO-MOTION-FW-P01-README-END -->
-<!-- HR30-STM32-BRINGUP-P01-README-START -->
-## STM32 no-actuator bring-up
-
-The [interactive target bring-up guide](firmware/stm32-target-bringup-p0.1/index.html) binds the reproducible STM32H743 image to the controller's exact five-contact SWD boundary and the [native routed SWD adapter candidate](electrical/swd-adapter-p0.1/index.html), plus ten release gates, twelve measurements and six fault injections. The target remains unflashed; the adapter board and cable remain unbuilt; all physical results and work authority remain open.
-<!-- HR30-STM32-BRINGUP-P01-README-END -->
-<!-- HR30-SRS-P01-README-START -->
-## Whole-body safety requirements P0.1
-
-The [interactive safety-requirements guide](safety-requirements-p0.1/index.html) converts the existing whole-robot stop topology, first-power firmware and restraint boundary into 24 open hazards, 12 safety/control functions, a candidate PLr allocation, 8 explicit stopping-time intervals and 20 validation cases. Achieved PL/PFHd, common-cause evidence, numerical stopping limits, physical results and qualified approval remain open. It is a reviewable SRS candidate, not permission to connect, power or move the robot.
-<!-- HR30-SRS-P01-README-END -->
 
 <!-- HR30-FIRST-ENERGIZATION-P01-README-START -->
 ## First-energization readiness
@@ -211,45 +195,6 @@ The central connector opening is a **project-owned clearance proxy**, not a rele
 
 The [successor reconciliation guide](joint-hardware-successor-reconciliation-p0.1/index.html) establishes one manufacturing truth for the 39 legacy pulley/coupler envelopes. All are superseded and mapped to 28 catalogue pulley positions, nine direct-adapter axes or two detailed hand mechanisms. Zero legacy envelopes remain authoritative or unmapped, but all successor selection, release and physical validation gates remain open.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- HR30-LOGIC-POWER-KIT-P01-README-START -->
-## Logic-only controller power kit
-
-The [interactive logic-power guide](electrical/logic-power-kit-p0.1/index.html) selects a SIGLENT SPD3303X, the exact two-contact JST boundary, red/black Alpha Wire conductors and Pomona banana plugs. The cable is unbuilt; voltage/current/OCP limits, DC-reference approval and every physical test remain open. It grants no connection or powered-work authority.
-<!-- HR30-LOGIC-POWER-KIT-P01-README-END -->
-<!-- HR30-PROTECTION-CONDUCTOR-P01-README-START -->
-## Staged protection and conductor architecture
-
-The [interactive protection/conductor guide](electrical/protection-conductor-architecture-p0.1/index.html) binds the isolated 5 V logic-only path and the 12 V whole-body path into one staged hierarchy. The eight candidate axis-cap sums total 46.67779 A, above the 41.7 A source endpoint; the separate published stall endpoints total 71.88 A. These are constraints, not demand predictions or protection ratings. All fuse values, hot ampacity, regeneration handling and physical evidence remain open.
-<!-- HR30-PROTECTION-CONDUCTOR-P01-README-END -->
-<!-- HR30-GROUNDING-REFERENCE-P01-README-START -->
-## Whole-robot grounding and DC-reference architecture
-
-The [interactive grounding guide](electrical/grounding-reference-architecture-p0.1/index.html) consolidates facility PE, the external panel, the SBS75G first-mate tether contact, every conductive robot module, DC return, control ground, shields and grounded test equipment into one candidate topology. It proposes one removable BR1 DC-return/PE bond at RB0 and **10 controlled bond records**. Conductor hardware, limits, measurements, jurisdiction and qualified approval remain open; it grants no work authority.
-<!-- HR30-GROUNDING-REFERENCE-P01-README-END -->
-<!-- HR30-PROTECTIVE-BONDING-P01-README-START -->
-## Physical protective-bonding implementation
-
-The [interactive protective-bonding guide](electrical/protective-bonding-implementation-p0.1/index.html) binds the PE/reference architecture to **9 hardware records**, **13 whole-robot bond zones**, **14 articulated-joint bypass obligations**, a 16-step installation traveler and a blank 12-test inspection plan. Hammond enclosure studs, Phoenix Contact UT 10-PE, Anderson 1340G1 and an Alpha Wire 6 AWG fixed-panel family are candidate interfaces only. Fault sizing, moving-joint cable, installation, measurements, AHJ disposition and qualified release remain open.
-<!-- HR30-PROTECTIVE-BONDING-P01-README-END -->
-
-
-
-
-
-
 <!-- HR30-AXIS-COMMISSION-START -->
 ## One-axis first-power station
 
@@ -268,11 +213,52 @@ The one-axis station now includes an assembly-controlled two-wire source harness
 The whole-body commissioning path now includes exact-envelope, horn-free output guards for all four candidate actuator models and a single-ID Protocol 2.0 inspector with no device-write API. Physical fit, fixture retention, software approval and all connection/powered-test/motion/energization authority remain open.
 <!-- NO-MOTION-P01 END -->
 
+<!-- HR30-NO-MOTION-FW-P01-README-START -->
+## Deterministic no-motion firmware
+
+The [HR-30 no-motion firmware guide](firmware/hr30-motion-controller-p0.1/index.html) binds all 25 axes and eight buses to a compiled `FIRST_POWER_NO_MOTION` state machine. Every torque-enable, bus-transmit, precharge and action-ready output remains zero; all motion requests are rejected and STOP is a no-op. Two clean host builds and two clean freestanding STM32H743 builds are byte-identical, and the compiled core/MMIO vector suites pass. The target is unflashed; HIL, physical timing, reset-state proof and qualified approval remain open, so this creates no powered-work or motion authority.
+<!-- HR30-NO-MOTION-FW-P01-README-END -->
+
 <!-- HR30-SWD-ADAPTER-P01-START -->
 ## Native SWD programming adapter
 
 The [interactive SWD adapter guide](electrical/swd-adapter-p0.1/index.html) contains a routed **32 x 20 mm two-layer native KiCad adapter** from STLINK-V3MINIE STDC14 to controller JDBG1, plus the exact Samtec alignment-pin footprint, candidate manufacturing files, complete 14-contact disposition, five-contact service-cable drawing and inspection traveller. Native checks are ERC 0/0 and DRC 0. The board and cable remain unbuilt and all physical validation and work authority remain open.
 <!-- HR30-SWD-ADAPTER-P01-END -->
+
+<!-- HR30-LOGIC-POWER-KIT-P01-README-START -->
+## Logic-only controller power kit
+
+The [interactive logic-power guide](electrical/logic-power-kit-p0.1/index.html) selects a SIGLENT SPD3303X, the exact two-contact JST boundary, red/black Alpha Wire conductors and Pomona banana plugs. The cable is unbuilt; voltage/current/OCP limits, DC-reference approval and every physical test remain open. It grants no connection or powered-work authority.
+<!-- HR30-LOGIC-POWER-KIT-P01-README-END -->
+
+<!-- HR30-PROTECTION-CONDUCTOR-P01-README-START -->
+## Staged protection and conductor architecture
+
+The [interactive protection/conductor guide](electrical/protection-conductor-architecture-p0.1/index.html) binds the isolated 5 V logic-only path and the 12 V whole-body path into one staged hierarchy. The eight candidate axis-cap sums total 46.67779 A, above the 41.7 A source endpoint; the separate published stall endpoints total 71.88 A. These are constraints, not demand predictions or protection ratings. All fuse values, hot ampacity, regeneration handling and physical evidence remain open.
+<!-- HR30-PROTECTION-CONDUCTOR-P01-README-END -->
+<!-- HR30-GROUNDING-REFERENCE-P01-README-START -->
+## Whole-robot grounding and DC-reference architecture
+
+The [interactive grounding guide](electrical/grounding-reference-architecture-p0.1/index.html) consolidates facility PE, the external panel, the SBS75G first-mate tether contact, every conductive robot module, DC return, control ground, shields and grounded test equipment into one candidate topology. It proposes one removable BR1 DC-return/PE bond at RB0 and **10 controlled bond records**. Conductor hardware, limits, measurements, jurisdiction and qualified approval remain open; it grants no work authority.
+<!-- HR30-GROUNDING-REFERENCE-P01-README-END -->
+
+<!-- HR30-PROTECTIVE-BONDING-P01-README-START -->
+## Physical protective-bonding implementation
+
+The [interactive protective-bonding guide](electrical/protective-bonding-implementation-p0.1/index.html) binds the PE/reference architecture to **9 hardware records**, **13 whole-robot bond zones**, **14 articulated-joint bypass obligations**, a 16-step installation traveler and a blank 12-test inspection plan. Hammond enclosure studs, Phoenix Contact UT 10-PE, Anderson 1340G1 and an Alpha Wire 6 AWG fixed-panel family are candidate interfaces only. Fault sizing, moving-joint cable, installation, measurements, AHJ disposition and qualified release remain open.
+<!-- HR30-PROTECTIVE-BONDING-P01-README-END -->
+
+<!-- HR30-STM32-BRINGUP-P01-README-START -->
+## STM32 no-actuator bring-up
+
+The [interactive target bring-up guide](firmware/stm32-target-bringup-p0.1/index.html) binds the reproducible STM32H743 image to the controller's exact five-contact SWD boundary and the [native routed SWD adapter candidate](electrical/swd-adapter-p0.1/index.html), plus ten release gates, twelve measurements and six fault injections. The target remains unflashed; the adapter board and cable remain unbuilt; all physical results and work authority remain open.
+<!-- HR30-STM32-BRINGUP-P01-README-END -->
+
+<!-- HR30-SRS-P01-README-START -->
+## Whole-body safety requirements P0.1
+
+The [interactive safety-requirements guide](safety-requirements-p0.1/index.html) converts the existing whole-robot stop topology, first-power firmware and restraint boundary into 24 open hazards, 12 safety/control functions, a candidate PLr allocation, 8 explicit stopping-time intervals and 20 validation cases. Achieved PL/PFHd, common-cause evidence, numerical stopping limits, physical results and qualified approval remain open. It is a reviewable SRS candidate, not permission to connect, power or move the robot.
+<!-- HR30-SRS-P01-README-END -->
 
 <!-- HR30-SFI-P01-START -->
 ## Safety-function implementation map
