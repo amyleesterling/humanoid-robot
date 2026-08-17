@@ -509,5 +509,19 @@
   "hot_conductor_ampacity_released": false,
   "regenerative_energy_architecture_released": false,
   "protection_conductor_connection_authority": false,
-  "protection_conductor_energization_authority": false
+  "protection_conductor_energization_authority": false,
+  "walking_power_successor_package_present": true,
+  "walking_power_successor_native_sheet_count": 8,
+  "walking_power_successor_axis_count": 25,
+  "walking_power_successor_paired_device_count": 50,
+  "walking_power_bidirectional_branch_architecture_defined": true,
+  "walking_power_bidirectional_overcurrent_architecture_defined": true,
+  "walking_power_reverse_energy_path_to_downstream_feed_defined": true,
+  "walking_power_feed_brake_dump_selected": false,
+  "walking_power_pcb_routed": false,
+  "walking_power_thermal_validated": false,
+  "walking_power_architecture_complete": false,
+  "walking_power_connection_authority": false,
+  "walking_power_motion_authority": false,
+  "walking_power_energization_authority": false
 }
