@@ -22,7 +22,7 @@
           (instances (project "hr30-tether-power-core-p0.1" (path "/ea4c0501-f5a0-52a4-9cf3-7c311b7f38a5" (page "3"))))) (sheet (at 281.94 42.00) (size 116.84 40.64)
           (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
           (stroke (width 0.5) (type solid)) (fill (color 0 0 0 0.0000)) (uuid "a0f35e84-33c1-5f1f-952e-9c03d5c9f1cd")
-          (property "Sheetname" "03 Two series GV121CAC contactors and feedback loop" (at 284.48 52.16 0) (effects (font (size 1.80 1.80)) (justify left bottom)))
+          (property "Sheetname" "03 Two series LC1D40ABD contactors and mirror-feedback loop" (at 284.48 52.16 0) (effects (font (size 1.80 1.80)) (justify left bottom)))
           (property "Sheetfile" "03_redundant_dc_interruption.kicad_sch" (at 284.48 67.40 0) (effects (font (size 1.50 1.50)) (justify left top)))
           (instances (project "hr30-tether-power-core-p0.1" (path "/ea4c0501-f5a0-52a4-9cf3-7c311b7f38a5" (page "4"))))) (sheet (at 17.78 98.00) (size 116.84 40.64)
           (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)

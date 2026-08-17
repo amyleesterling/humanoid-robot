@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\h30e\\hr30\\whole-body-p0.1\\electrical\\tether-power-core-p0.1\\hr30-tether-power-core-p0.1.kicad_sch")
-		(date "2026-08-16T17:31:57")
+		(date "2026-08-17T00:37:46")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION")
@@ -152,7 +152,7 @@
 		)
 		(sheet
 			(number "4")
-			(name "/03 Two series GV121CAC contactors and feedback loop/")
+			(name "/03 Two series LC1D40ABD contactors and mirror-feedback loop/")
 			(tstamps "/a0f35e84-33c1-5f1f-952e-9c03d5c9f1cd/")
 			(title_block
 				(title "PB HR-V0 P0.1 - 03")
@@ -802,51 +802,51 @@
 		)
 		(comp
 			(ref "K1")
-			(value "SENSATA GIGAVAC GV121CAC")
-			(datasheet "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
-			(description "Ordering code decodes to upright mounting, 24 V internally suppressed coil, flying leads and SPST-NC mechanically linked auxiliary. Main M8 stud torque, wire colors/identification, DC interruption duty and safety suitability require received-device and qualified verification.")
+			(value "SCHNEIDER TESYS DECA LC1D40ABD")
+			(datasheet "https://shop.se.com/pro/us/en/product/iec-contactor-tesys-deca-nonreversing-40a-30hp-at-480vac-up-to-100ka-sccr-3-phase-3-no-24vdc-coil-open-style/")
+			(description "Three main poles are connected in series. Schneider catalog MKTED210011EN v17.1 A5/120-A5/123 lists LC1D40A at 50 A for 24 VDC with one, two or three series poles under its DC-1 and DC-2...DC-5 table conditions. The built-in 21-22 NC auxiliary is mirror certified. HR-30 fault current, actual L/R, durability, regeneration, protection, conductor termination, received-device identity and opening-time validation remain open.")
 			(fields
 				(field
-					(name "Status") "EXACT ORDER-CODE CANDIDATE - NOT AN IEC MIRROR-CONTACT CLAIM")
+					(name "Status") "EXACT ORDER-CODE / MIRROR CONTACT VERIFIED - APPLICATION VALIDATION OPEN")
 				(field
-					(name "Evidence") "GV12 series Rev 28-Apr-2022")
+					(name "Evidence") "MKTED210011EN v17.1, 2026-07-10, A5/120-A5/123; product page accessed 2026-08-16")
 				(field
-					(name "Display") "SENSATA GIGAVAC GV121CAC")
+					(name "Display") "SCHNEIDER TESYS DECA LC1D40ABD")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
+					(name "Datasheet") "https://shop.se.com/pro/us/en/product/iec-contactor-tesys-deca-nonreversing-40a-30hp-at-480vac-up-to-100ka-sccr-3-phase-3-no-24vdc-coil-open-style/")
 				(field
-					(name "Description") "Ordering code decodes to upright mounting, 24 V internally suppressed coil, flying leads and SPST-NC mechanically linked auxiliary. Main M8 stud torque, wire colors/identification, DC interruption duty and safety suitability require received-device and qualified verification.")
+					(name "Description") "Three main poles are connected in series. Schneider catalog MKTED210011EN v17.1 A5/120-A5/123 lists LC1D40A at 50 A for 24 VDC with one, two or three series poles under its DC-1 and DC-2...DC-5 table conditions. The built-in 21-22 NC auxiliary is mirror certified. HR-30 fault current, actual L/R, durability, regeneration, protection, conductor termination, received-device identity and opening-time validation remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "K1")
-				(description "Ordering code decodes to upright mounting, 24 V internally suppressed coil, flying leads and SPST-NC mechanically linked auxiliary. Main M8 stud torque, wire colors/identification, DC interruption duty and safety suitability require received-device and qualified verification.")
+				(description "Three main poles are connected in series. Schneider catalog MKTED210011EN v17.1 A5/120-A5/123 lists LC1D40A at 50 A for 24 VDC with one, two or three series poles under its DC-1 and DC-2...DC-5 table conditions. The built-in 21-22 NC auxiliary is mirror certified. HR-30 fault current, actual L/R, durability, regeneration, protection, conductor termination, received-device identity and opening-time validation remain open.")
 			)
 			(property
 				(name "Status")
-				(value "EXACT ORDER-CODE CANDIDATE - NOT AN IEC MIRROR-CONTACT CLAIM")
+				(value "EXACT ORDER-CODE / MIRROR CONTACT VERIFIED - APPLICATION VALIDATION OPEN")
 			)
 			(property
 				(name "Evidence")
-				(value "GV12 series Rev 28-Apr-2022")
+				(value "MKTED210011EN v17.1, 2026-07-10, A5/120-A5/123; product page accessed 2026-08-16")
 			)
 			(property
 				(name "Display")
-				(value "SENSATA GIGAVAC GV121CAC")
+				(value "SCHNEIDER TESYS DECA LC1D40ABD")
 			)
 			(property
 				(name "Sheetname")
-				(value "03 Two series GV121CAC contactors and feedback loop")
+				(value "03 Two series LC1D40ABD contactors and mirror-feedback loop")
 			)
 			(property
 				(name "Sheetfile")
 				(value "03_redundant_dc_interruption.kicad_sch")
 			)
 			(sheetpath
-				(names "/03 Two series GV121CAC contactors and feedback loop/")
+				(names "/03 Two series LC1D40ABD contactors and mirror-feedback loop/")
 				(tstamps "/a0f35e84-33c1-5f1f-952e-9c03d5c9f1cd/")
 			)
 			(tstamps "db18a2eb-7b18-50a8-ab82-54c60963fdbd")
@@ -855,22 +855,40 @@
 					(name "A")
 					(pins
 						(pin
-							(num "AUX-C")
+							(num "13")
 						)
 						(pin
-							(num "COIL-")
+							(num "21")
 						)
 						(pin
-							(num "COIL+")
+							(num "A2")
 						)
 						(pin
-							(num "M1")
+							(num "A1")
 						)
 						(pin
-							(num "AUX-NC")
+							(num "5/L3")
 						)
 						(pin
-							(num "M2")
+							(num "3/L2")
+						)
+						(pin
+							(num "1/L1")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "22")
+						)
+						(pin
+							(num "6/T3")
+						)
+						(pin
+							(num "4/T2")
+						)
+						(pin
+							(num "2/T1")
 						)
 					)
 				)
@@ -878,51 +896,51 @@
 		)
 		(comp
 			(ref "K2")
-			(value "SENSATA GIGAVAC GV121CAC")
-			(datasheet "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
-			(description "Second independent series switching element. Common-cause, welded-contact detection, coil suppression behavior, contact protection, fault current, life and stopping time remain unvalidated.")
+			(value "SCHNEIDER TESYS DECA LC1D40ABD")
+			(datasheet "https://shop.se.com/pro/us/en/product/iec-contactor-tesys-deca-nonreversing-40a-30hp-at-480vac-up-to-100ka-sccr-3-phase-3-no-24vdc-coil-open-style/")
+			(description "Second independent contactor in series, also using all three main poles in series. K1/K2 21-22 mirror contacts form the monitored reset feedback chain. Common-cause analysis, fault-current coordination, coil suppression effects, durability, stopping time and qualified whole-machine validation remain open.")
 			(fields
 				(field
-					(name "Status") "EXACT ORDER-CODE CANDIDATE - APPLICATION OPEN")
+					(name "Status") "EXACT ORDER-CODE / MIRROR CONTACT VERIFIED - APPLICATION VALIDATION OPEN")
 				(field
-					(name "Evidence") "GV12 series Rev 28-Apr-2022")
+					(name "Evidence") "MKTED210011EN v17.1, 2026-07-10, A5/120-A5/123; product page accessed 2026-08-16")
 				(field
-					(name "Display") "SENSATA GIGAVAC GV121CAC")
+					(name "Display") "SCHNEIDER TESYS DECA LC1D40ABD")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
+					(name "Datasheet") "https://shop.se.com/pro/us/en/product/iec-contactor-tesys-deca-nonreversing-40a-30hp-at-480vac-up-to-100ka-sccr-3-phase-3-no-24vdc-coil-open-style/")
 				(field
-					(name "Description") "Second independent series switching element. Common-cause, welded-contact detection, coil suppression behavior, contact protection, fault current, life and stopping time remain unvalidated.")
+					(name "Description") "Second independent contactor in series, also using all three main poles in series. K1/K2 21-22 mirror contacts form the monitored reset feedback chain. Common-cause analysis, fault-current coordination, coil suppression effects, durability, stopping time and qualified whole-machine validation remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "K2")
-				(description "Second independent series switching element. Common-cause, welded-contact detection, coil suppression behavior, contact protection, fault current, life and stopping time remain unvalidated.")
+				(description "Second independent contactor in series, also using all three main poles in series. K1/K2 21-22 mirror contacts form the monitored reset feedback chain. Common-cause analysis, fault-current coordination, coil suppression effects, durability, stopping time and qualified whole-machine validation remain open.")
 			)
 			(property
 				(name "Status")
-				(value "EXACT ORDER-CODE CANDIDATE - APPLICATION OPEN")
+				(value "EXACT ORDER-CODE / MIRROR CONTACT VERIFIED - APPLICATION VALIDATION OPEN")
 			)
 			(property
 				(name "Evidence")
-				(value "GV12 series Rev 28-Apr-2022")
+				(value "MKTED210011EN v17.1, 2026-07-10, A5/120-A5/123; product page accessed 2026-08-16")
 			)
 			(property
 				(name "Display")
-				(value "SENSATA GIGAVAC GV121CAC")
+				(value "SCHNEIDER TESYS DECA LC1D40ABD")
 			)
 			(property
 				(name "Sheetname")
-				(value "03 Two series GV121CAC contactors and feedback loop")
+				(value "03 Two series LC1D40ABD contactors and mirror-feedback loop")
 			)
 			(property
 				(name "Sheetfile")
 				(value "03_redundant_dc_interruption.kicad_sch")
 			)
 			(sheetpath
-				(names "/03 Two series GV121CAC contactors and feedback loop/")
+				(names "/03 Two series LC1D40ABD contactors and mirror-feedback loop/")
 				(tstamps "/a0f35e84-33c1-5f1f-952e-9c03d5c9f1cd/")
 			)
 			(tstamps "a945a7f3-b432-54c0-9c78-d3d0ec55afbb")
@@ -931,22 +949,40 @@
 					(name "A")
 					(pins
 						(pin
-							(num "AUX-C")
+							(num "13")
 						)
 						(pin
-							(num "COIL-")
+							(num "21")
 						)
 						(pin
-							(num "COIL+")
+							(num "A2")
 						)
 						(pin
-							(num "M1")
+							(num "A1")
 						)
 						(pin
-							(num "AUX-NC")
+							(num "5/L3")
 						)
 						(pin
-							(num "M2")
+							(num "3/L2")
+						)
+						(pin
+							(num "1/L1")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "22")
+						)
+						(pin
+							(num "6/T3")
+						)
+						(pin
+							(num "4/T2")
+						)
+						(pin
+							(num "2/T1")
 						)
 					)
 				)
@@ -992,14 +1028,14 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "03 Two series GV121CAC contactors and feedback loop")
+				(value "03 Two series LC1D40ABD contactors and mirror-feedback loop")
 			)
 			(property
 				(name "Sheetfile")
 				(value "03_redundant_dc_interruption.kicad_sch")
 			)
 			(sheetpath
-				(names "/03 Two series GV121CAC contactors and feedback loop/")
+				(names "/03 Two series LC1D40ABD contactors and mirror-feedback loop/")
 				(tstamps "/a0f35e84-33c1-5f1f-952e-9c03d5c9f1cd/")
 			)
 			(tstamps "84151d5a-7a69-5a38-a658-dff3bf2998ed")
@@ -2479,56 +2515,86 @@
 		(libpart
 			(lib "PBV3")
 			(part "K1")
-			(description "Ordering code decodes to upright mounting, 24 V internally suppressed coil, flying leads and SPST-NC mechanically linked auxiliary. Main M8 stud torque, wire colors/identification, DC interruption duty and safety suitability require received-device and qualified verification.")
-			(docs "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
+			(description "Three main poles are connected in series. Schneider catalog MKTED210011EN v17.1 A5/120-A5/123 lists LC1D40A at 50 A for 24 VDC with one, two or three series poles under its DC-1 and DC-2...DC-5 table conditions. The built-in 21-22 NC auxiliary is mirror certified. HR-30 fault current, actual L/R, durability, regeneration, protection, conductor termination, received-device identity and opening-time validation remain open.")
+			(docs "https://shop.se.com/pro/us/en/product/iec-contactor-tesys-deca-nonreversing-40a-30hp-at-480vac-up-to-100ka-sccr-3-phase-3-no-24vdc-coil-open-style/")
 			(fields
 				(field
 					(name "Reference") "K1")
 				(field
-					(name "Value") "SENSATA GIGAVAC GV121CAC")
+					(name "Value") "SCHNEIDER TESYS DECA LC1D40ABD")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
+					(name "Datasheet") "https://shop.se.com/pro/us/en/product/iec-contactor-tesys-deca-nonreversing-40a-30hp-at-480vac-up-to-100ka-sccr-3-phase-3-no-24vdc-coil-open-style/")
 				(field
-					(name "Description") "Ordering code decodes to upright mounting, 24 V internally suppressed coil, flying leads and SPST-NC mechanically linked auxiliary. Main M8 stud torque, wire colors/identification, DC interruption duty and safety suitability require received-device and qualified verification.")
+					(name "Description") "Three main poles are connected in series. Schneider catalog MKTED210011EN v17.1 A5/120-A5/123 lists LC1D40A at 50 A for 24 VDC with one, two or three series poles under its DC-1 and DC-2...DC-5 table conditions. The built-in 21-22 NC auxiliary is mirror certified. HR-30 fault current, actual L/R, durability, regeneration, protection, conductor termination, received-device identity and opening-time validation remain open.")
 				(field
-					(name "Status") "EXACT ORDER-CODE CANDIDATE - NOT AN IEC MIRROR-CONTACT CLAIM")
+					(name "Status") "EXACT ORDER-CODE / MIRROR CONTACT VERIFIED - APPLICATION VALIDATION OPEN")
 				(field
-					(name "Evidence") "GV12 series Rev 28-Apr-2022")
+					(name "Evidence") "MKTED210011EN v17.1, 2026-07-10, A5/120-A5/123; product page accessed 2026-08-16")
 				(field
-					(name "Display") "SENSATA GIGAVAC GV121CAC")
+					(name "Display") "SCHNEIDER TESYS DECA LC1D40ABD")
 			)
 			(pins
 				(pin
-					(num "AUX-C")
-					(name "NC_AUX_COMMON")
+					(num "1/L1")
+					(name "MAIN_POLE_1_INPUT")
 					(type "passive")
 				)
 				(pin
-					(num "AUX-NC")
-					(name "NC_AUX_RETURN")
+					(num "2/T1")
+					(name "MAIN_POLE_1_OUTPUT")
 					(type "passive")
 				)
 				(pin
-					(num "COIL+")
-					(name "24_V_COIL_POSITIVE")
+					(num "3/L2")
+					(name "MAIN_POLE_2_INPUT")
 					(type "passive")
 				)
 				(pin
-					(num "COIL-")
+					(num "4/T2")
+					(name "MAIN_POLE_2_OUTPUT")
+					(type "passive")
+				)
+				(pin
+					(num "5/L3")
+					(name "MAIN_POLE_3_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "6/T3")
+					(name "MAIN_POLE_3_OUTPUT")
+					(type "passive")
+				)
+				(pin
+					(num "13")
+					(name "BUILT-IN_NO_AUX_SPARE")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "BUILT-IN_NO_AUX_SPARE")
+					(type "passive")
+				)
+				(pin
+					(num "21")
+					(name "MIRROR_NC_COMMON")
+					(type "passive")
+				)
+				(pin
+					(num "22")
+					(name "MIRROR_NC_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "A1")
+					(name "24_VDC_COIL_POSITIVE")
+					(type "passive")
+				)
+				(pin
+					(num "A2")
 					(name "COIL_RETURN")
-					(type "passive")
-				)
-				(pin
-					(num "M1")
-					(name "MAIN_INPUT_STUD")
-					(type "passive")
-				)
-				(pin
-					(num "M2")
-					(name "MAIN_OUTPUT_STUD")
 					(type "passive")
 				)
 			)
@@ -2536,56 +2602,86 @@
 		(libpart
 			(lib "PBV3")
 			(part "K2")
-			(description "Second independent series switching element. Common-cause, welded-contact detection, coil suppression behavior, contact protection, fault current, life and stopping time remain unvalidated.")
-			(docs "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
+			(description "Second independent contactor in series, also using all three main poles in series. K1/K2 21-22 mirror contacts form the monitored reset feedback chain. Common-cause analysis, fault-current coordination, coil suppression effects, durability, stopping time and qualified whole-machine validation remain open.")
+			(docs "https://shop.se.com/pro/us/en/product/iec-contactor-tesys-deca-nonreversing-40a-30hp-at-480vac-up-to-100ka-sccr-3-phase-3-no-24vdc-coil-open-style/")
 			(fields
 				(field
 					(name "Reference") "K2")
 				(field
-					(name "Value") "SENSATA GIGAVAC GV121CAC")
+					(name "Value") "SCHNEIDER TESYS DECA LC1D40ABD")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv12-series-100v-contactors-datasheet.pdf")
+					(name "Datasheet") "https://shop.se.com/pro/us/en/product/iec-contactor-tesys-deca-nonreversing-40a-30hp-at-480vac-up-to-100ka-sccr-3-phase-3-no-24vdc-coil-open-style/")
 				(field
-					(name "Description") "Second independent series switching element. Common-cause, welded-contact detection, coil suppression behavior, contact protection, fault current, life and stopping time remain unvalidated.")
+					(name "Description") "Second independent contactor in series, also using all three main poles in series. K1/K2 21-22 mirror contacts form the monitored reset feedback chain. Common-cause analysis, fault-current coordination, coil suppression effects, durability, stopping time and qualified whole-machine validation remain open.")
 				(field
-					(name "Status") "EXACT ORDER-CODE CANDIDATE - APPLICATION OPEN")
+					(name "Status") "EXACT ORDER-CODE / MIRROR CONTACT VERIFIED - APPLICATION VALIDATION OPEN")
 				(field
-					(name "Evidence") "GV12 series Rev 28-Apr-2022")
+					(name "Evidence") "MKTED210011EN v17.1, 2026-07-10, A5/120-A5/123; product page accessed 2026-08-16")
 				(field
-					(name "Display") "SENSATA GIGAVAC GV121CAC")
+					(name "Display") "SCHNEIDER TESYS DECA LC1D40ABD")
 			)
 			(pins
 				(pin
-					(num "AUX-C")
-					(name "NC_AUX_COMMON")
+					(num "1/L1")
+					(name "MAIN_POLE_1_INPUT")
 					(type "passive")
 				)
 				(pin
-					(num "AUX-NC")
-					(name "NC_AUX_RETURN")
+					(num "2/T1")
+					(name "MAIN_POLE_1_OUTPUT")
 					(type "passive")
 				)
 				(pin
-					(num "COIL+")
-					(name "24_V_COIL_POSITIVE")
+					(num "3/L2")
+					(name "MAIN_POLE_2_INPUT")
 					(type "passive")
 				)
 				(pin
-					(num "COIL-")
+					(num "4/T2")
+					(name "MAIN_POLE_2_OUTPUT")
+					(type "passive")
+				)
+				(pin
+					(num "5/L3")
+					(name "MAIN_POLE_3_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "6/T3")
+					(name "MAIN_POLE_3_OUTPUT")
+					(type "passive")
+				)
+				(pin
+					(num "13")
+					(name "BUILT-IN_NO_AUX_SPARE")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "BUILT-IN_NO_AUX_SPARE")
+					(type "passive")
+				)
+				(pin
+					(num "21")
+					(name "MIRROR_NC_COMMON")
+					(type "passive")
+				)
+				(pin
+					(num "22")
+					(name "MIRROR_NC_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "A1")
+					(name "24_VDC_COIL_POSITIVE")
+					(type "passive")
+				)
+				(pin
+					(num "A2")
 					(name "COIL_RETURN")
-					(type "passive")
-				)
-				(pin
-					(num "M1")
-					(name "MAIN_INPUT_STUD")
-					(type "passive")
-				)
-				(pin
-					(num "M2")
-					(name "MAIN_OUTPUT_STUD")
 					(type "passive")
 				)
 			)
@@ -3205,14 +3301,14 @@
 			(class "Default")
 			(node
 				(ref "K1")
-				(pin "AUX-NC")
-				(pinfunction "NC_AUX_RETURN_AUX-NC")
+				(pin "22")
+				(pinfunction "MIRROR_NC_RETURN_22")
 				(pintype "passive")
 			)
 			(node
 				(ref "K2")
-				(pin "AUX-C")
-				(pinfunction "NC_AUX_COMMON_AUX-C")
+				(pin "21")
+				(pinfunction "MIRROR_NC_COMMON_21")
 				(pintype "passive")
 			)
 		)
@@ -3273,8 +3369,8 @@
 			(class "Default")
 			(node
 				(ref "K1")
-				(pin "COIL+")
-				(pinfunction "24_V_COIL_POSITIVE_COIL+")
+				(pin "A1")
+				(pinfunction "24_VDC_COIL_POSITIVE_A1")
 				(pintype "passive")
 			)
 			(node
@@ -3290,25 +3386,59 @@
 			(class "Default")
 			(node
 				(ref "K1")
-				(pin "M2")
-				(pinfunction "MAIN_OUTPUT_STUD_M2")
+				(pin "6/T3")
+				(pinfunction "MAIN_POLE_3_OUTPUT_6/T3")
 				(pintype "passive")
 			)
 			(node
 				(ref "K2")
-				(pin "M1")
-				(pinfunction "MAIN_INPUT_STUD_M1")
+				(pin "1/L1")
+				(pinfunction "MAIN_POLE_1_INPUT_1/L1")
 				(pintype "passive")
 			)
 		)
 		(net
 			(code "7")
+			(name "K1_POLE2_IN")
+			(class "Default")
+			(node
+				(ref "K1")
+				(pin "2/T1")
+				(pinfunction "MAIN_POLE_1_OUTPUT_2/T1")
+				(pintype "passive")
+			)
+			(node
+				(ref "K1")
+				(pin "3/L2")
+				(pinfunction "MAIN_POLE_2_INPUT_3/L2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "8")
+			(name "K1_POLE3_IN")
+			(class "Default")
+			(node
+				(ref "K1")
+				(pin "4/T2")
+				(pinfunction "MAIN_POLE_2_OUTPUT_4/T2")
+				(pintype "passive")
+			)
+			(node
+				(ref "K1")
+				(pin "5/L3")
+				(pinfunction "MAIN_POLE_3_INPUT_5/L3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "9")
 			(name "K2_COIL_POS")
 			(class "Default")
 			(node
 				(ref "K2")
-				(pin "COIL+")
-				(pinfunction "24_V_COIL_POSITIVE_COIL+")
+				(pin "A1")
+				(pinfunction "24_VDC_COIL_POSITIVE_A1")
 				(pintype "passive")
 			)
 			(node
@@ -3319,7 +3449,41 @@
 			)
 		)
 		(net
-			(code "8")
+			(code "10")
+			(name "K2_POLE2_IN")
+			(class "Default")
+			(node
+				(ref "K2")
+				(pin "2/T1")
+				(pinfunction "MAIN_POLE_1_OUTPUT_2/T1")
+				(pintype "passive")
+			)
+			(node
+				(ref "K2")
+				(pin "3/L2")
+				(pinfunction "MAIN_POLE_2_INPUT_3/L2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "11")
+			(name "K2_POLE3_IN")
+			(class "Default")
+			(node
+				(ref "K2")
+				(pin "4/T2")
+				(pinfunction "MAIN_POLE_2_OUTPUT_4/T2")
+				(pintype "passive")
+			)
+			(node
+				(ref "K2")
+				(pin "5/L3")
+				(pinfunction "MAIN_POLE_3_INPUT_5/L3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "12")
 			(name "MOTION_PERMIT_INPUT")
 			(class "Default")
 			(node
@@ -3336,7 +3500,7 @@
 			)
 		)
 		(net
-			(code "9")
+			(code "13")
 			(name "PANEL_PE")
 			(class "Default")
 			(node
@@ -3365,7 +3529,7 @@
 			)
 		)
 		(net
-			(code "10")
+			(code "14")
 			(name "PDU_ARMS_POS")
 			(class "Default")
 			(node
@@ -3382,7 +3546,7 @@
 			)
 		)
 		(net
-			(code "11")
+			(code "15")
 			(name "PDU_COMMON_RET")
 			(class "Default")
 			(node
@@ -3423,7 +3587,7 @@
 			)
 		)
 		(net
-			(code "12")
+			(code "16")
 			(name "PDU_CORE_POS")
 			(class "Default")
 			(node
@@ -3440,7 +3604,7 @@
 			)
 		)
 		(net
-			(code "13")
+			(code "17")
 			(name "PDU_DISTAL_POS")
 			(class "Default")
 			(node
@@ -3457,7 +3621,7 @@
 			)
 		)
 		(net
-			(code "14")
+			(code "18")
 			(name "PDU_LLEG_POS")
 			(class "Default")
 			(node
@@ -3474,7 +3638,7 @@
 			)
 		)
 		(net
-			(code "15")
+			(code "19")
 			(name "PDU_RLEG_POS")
 			(class "Default")
 			(node
@@ -3491,7 +3655,7 @@
 			)
 		)
 		(net
-			(code "16")
+			(code "20")
 			(name "PNOZ_AUX_STATUS")
 			(class "Default")
 			(node
@@ -3508,7 +3672,7 @@
 			)
 		)
 		(net
-			(code "17")
+			(code "21")
 			(name "PNOZ_Y32_STATUS")
 			(class "Default")
 			(node
@@ -3525,7 +3689,7 @@
 			)
 		)
 		(net
-			(code "18")
+			(code "22")
 			(name "RAW_0V")
 			(class "Default")
 			(node
@@ -3548,13 +3712,13 @@
 			)
 		)
 		(net
-			(code "19")
+			(code "23")
 			(name "RAW_12V_POS")
 			(class "Default")
 			(node
 				(ref "K1")
-				(pin "M1")
-				(pinfunction "MAIN_INPUT_STUD_M1")
+				(pin "1/L1")
+				(pinfunction "MAIN_POLE_1_INPUT_1/L1")
 				(pintype "passive")
 			)
 			(node
@@ -3571,19 +3735,19 @@
 			)
 		)
 		(net
-			(code "20")
+			(code "24")
 			(name "RESET_EDM")
 			(class "Default")
 			(node
 				(ref "K1")
-				(pin "AUX-C")
-				(pinfunction "NC_AUX_COMMON_AUX-C")
+				(pin "21")
+				(pinfunction "MIRROR_NC_COMMON_21")
 				(pintype "passive")
 			)
 			(node
 				(ref "K2")
-				(pin "AUX-NC")
-				(pinfunction "NC_AUX_RETURN_AUX-NC")
+				(pin "22")
+				(pinfunction "MIRROR_NC_RETURN_22")
 				(pintype "passive")
 			)
 			(node
@@ -3600,7 +3764,7 @@
 			)
 		)
 		(net
-			(code "21")
+			(code "25")
 			(name "ROBOT_FRAME_BOUNDARY")
 			(class "Default")
 			(node
@@ -3617,7 +3781,7 @@
 			)
 		)
 		(net
-			(code "22")
+			(code "26")
 			(name "ROBOT_FUSED_POS")
 			(class "Default")
 			(node
@@ -3658,7 +3822,7 @@
 			)
 		)
 		(net
-			(code "23")
+			(code "27")
 			(name "ROBOT_MAIN_POS")
 			(class "Default")
 			(node
@@ -3675,7 +3839,7 @@
 			)
 		)
 		(net
-			(code "24")
+			(code "28")
 			(name "ROBOT_MAIN_RET")
 			(class "Default")
 			(node
@@ -3692,7 +3856,7 @@
 			)
 		)
 		(net
-			(code "25")
+			(code "29")
 			(name "S12_CH1")
 			(class "Default")
 			(node
@@ -3715,7 +3879,7 @@
 			)
 		)
 		(net
-			(code "26")
+			(code "30")
 			(name "S21_TEST")
 			(class "Default")
 			(node
@@ -3732,7 +3896,7 @@
 			)
 		)
 		(net
-			(code "27")
+			(code "31")
 			(name "S22_CH2")
 			(class "Default")
 			(node
@@ -3749,19 +3913,19 @@
 			)
 		)
 		(net
-			(code "28")
+			(code "32")
 			(name "SAFE_0V")
 			(class "Default")
 			(node
 				(ref "K1")
-				(pin "COIL-")
-				(pinfunction "COIL_RETURN_COIL-")
+				(pin "A2")
+				(pinfunction "COIL_RETURN_A2")
 				(pintype "passive")
 			)
 			(node
 				(ref "K2")
-				(pin "COIL-")
-				(pinfunction "COIL_RETURN_COIL-")
+				(pin "A2")
+				(pinfunction "COIL_RETURN_A2")
 				(pintype "passive")
 			)
 			(node
@@ -3778,7 +3942,7 @@
 			)
 		)
 		(net
-			(code "29")
+			(code "33")
 			(name "SAFE_24V")
 			(class "Default")
 			(node
@@ -3831,13 +3995,13 @@
 			)
 		)
 		(net
-			(code "30")
+			(code "34")
 			(name "TETHER_POS_SWITCHED")
 			(class "Default")
 			(node
 				(ref "K2")
-				(pin "M2")
-				(pinfunction "MAIN_OUTPUT_STUD_M2")
+				(pin "6/T3")
+				(pinfunction "MAIN_POLE_3_OUTPUT_6/T3")
 				(pintype "passive")
 			)
 			(node
@@ -3848,7 +4012,51 @@
 			)
 		)
 		(net
-			(code "31")
+			(code "35")
+			(name "unconnected-(K1-BUILT-IN_NO_AUX_SPARE-Pad13)")
+			(class "Default")
+			(node
+				(ref "K1")
+				(pin "13")
+				(pinfunction "BUILT-IN_NO_AUX_SPARE_13")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "36")
+			(name "unconnected-(K1-BUILT-IN_NO_AUX_SPARE-Pad14)")
+			(class "Default")
+			(node
+				(ref "K1")
+				(pin "14")
+				(pinfunction "BUILT-IN_NO_AUX_SPARE_14")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "37")
+			(name "unconnected-(K2-BUILT-IN_NO_AUX_SPARE-Pad13)")
+			(class "Default")
+			(node
+				(ref "K2")
+				(pin "13")
+				(pinfunction "BUILT-IN_NO_AUX_SPARE_13")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "38")
+			(name "unconnected-(K2-BUILT-IN_NO_AUX_SPARE-Pad14)")
+			(class "Default")
+			(node
+				(ref "K2")
+				(pin "14")
+				(pinfunction "BUILT-IN_NO_AUX_SPARE_14")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "39")
 			(name "unconnected-(MCU1-FRESH_BOUNDED_MOTION_REQUEST-PadCMD)")
 			(class "Default")
 			(node
@@ -3859,7 +4067,7 @@
 			)
 		)
 		(net
-			(code "32")
+			(code "40")
 			(name "unconnected-(MCU1-PDU_DISABLE_COMMANDS-PadENABLE)")
 			(class "Default")
 			(node
@@ -3870,7 +4078,7 @@
 			)
 		)
 		(net
-			(code "33")
+			(code "41")
 			(name "unconnected-(MON1-FAULT_LOG_{slash}_TELEMETRY-PadLOG)")
 			(class "Default")
 			(node
@@ -3881,7 +4089,7 @@
 			)
 		)
 		(net
-			(code "34")
+			(code "42")
 			(name "unconnected-(MON1-PDU_POWER-GOOD_AGGREGATE-PadBR)")
 			(class "Default")
 			(node
@@ -3892,7 +4100,7 @@
 			)
 		)
 		(net
-			(code "35")
+			(code "43")
 			(name "unconnected-(RB0-PROPOSED_SINGLE_0_V_{slash}_FRAME_STAR_POINT-PadFRAME-STAR)")
 			(class "Default")
 			(node

@@ -2,7 +2,7 @@ hold_id,unresolved_selection_or_evidence,state,authority
 H01,"facility mains disconnect, branch protection, cable and Boston jurisdictional installation",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 H02,"RSP-500-12 adjustment lock, inrush, thermal rise, source current limiting and regeneration response",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 H03,"complete E-stop order code, reset terminals, PNOZ mode setting, contact protection and whole-machine safety validation",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
-H04,"GV121CAC received-terminal identification, DC interruption duty, auxiliary suitability, fault current, life and common-cause analysis",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+H04,"LC1D40ABD received-device/terminal inspection, HR-30 fault current and L/R, DC electrical durability, series-pole jumpers, protection, opening time, regeneration, life and common-cause analysis",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 H05,"all six MIDI fuse order codes and values, interrupt ratings and coordination",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 H06,"all tether/branch conductors, lugs, ferrules, torque, temperature, bundling, flex and strain relief",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 H07,"single proposed 0 V/frame star point, PE/frame bonding, shield terminations and enclosure bond",OPEN,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"

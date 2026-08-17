@@ -55,6 +55,7 @@ def source_rows() -> list[dict]:
         ("SRC-ISO-13855", "ISO", "ISO 13855:2024", "Edition 3; published 2024-11", "safeguard-position reference; applies to persons age 14+ and excludes gravity falls", "https://www.iso.org/standard/80590.html"),
         ("SRC-ISO-13854", "ISO", "ISO 13854:2017", "Edition 2; published 2017-11; confirmed", "minimum-gap reference for crushing only", "https://www.iso.org/standard/66459.html"),
         ("SRC-PILZ-PNOZ-S4", "Pilz", "PNOZ s4 operating manual 21396-EN-23", "official product page lists manual dated 2026-06-22", "candidate safety relay manual; component capability is not system PL", "https://www.pilz.com/en-US/eshop/product/750104"),
+        ("SRC-SCHNEIDER-LC1D40ABD", "Schneider Electric", "TeSys Deca LC1D40ABD and catalog MKTED210011EN", "catalog v17.1 dated 2026-07-10; product page accessed 2026-08-16", "three main poles, 24 VDC coil, mirror-certified 21-22 NC auxiliary and DC table boundary; component capability is not whole-machine PL", "https://shop.se.com/pro/us/en/product/iec-contactor-tesys-deca-nonreversing-40a-30hp-at-480vac-up-to-100ka-sccr-3-phase-3-no-24vdc-coil-open-style/"),
     ]
     rows = [
         {
@@ -171,9 +172,9 @@ def hazard_rows() -> list[dict]:
 
 def function_rows() -> list[dict]:
     data = [
-        ("SFR-01", "Emergency-stop demand removes actuator energy", "E3-E7", "both K1/K2 main paths open", "dual NC E-stop", "PNOZ s4 candidate", "two series DC contactors", "manual reset plus fresh motion command", "d", "Category 3 candidate", "IMPLEMENTED AS UNVALIDATED TOPOLOGY", "NO"),
+        ("SFR-01", "Emergency-stop demand removes actuator energy", "E3-E7", "both K1/K2 main paths open", "dual NC E-stop", "PNOZ s4 candidate", "two independent LC1D40ABD contactors with three main poles in series per device", "manual reset plus fresh motion command", "d", "Category 3 candidate", "IMPLEMENTED AS UNVALIDATED TOPOLOGY", "NO"),
         ("SFR-02", "Prevention of unexpected restart", "E3-E7", "actuator permit absent and motion state inactive", "E-stop/reset/EDM/configuration state", "PNOZ monitored start plus deterministic controller", "contactor coils and motion-enable boundary", "reset cannot command motion", "d", "Category 3 candidate", "IMPLEMENTED AS UNVALIDATED TOPOLOGY", "NO"),
-        ("SFR-03", "External-device monitoring", "E3-E7", "restart inhibited after failed opening", "K1/K2 mirror contacts", "PNOZ feedback loop candidate", "safety-output eligibility", "fault cleared and manual reset", "d", "Category 3 candidate", "IMPLEMENTED AS UNVALIDATED TOPOLOGY", "NO"),
+        ("SFR-03", "External-device monitoring", "E3-E7", "restart inhibited after failed opening", "K1/K2 built-in 21-22 mirror-certified NC contacts", "PNOZ S34 monitored feedback loop candidate", "safety-output eligibility", "fault cleared and manual reset", "d", "Category 3 candidate", "IMPLEMENTED AS UNVALIDATED TOPOLOGY", "NO"),
         ("SFR-04", "Control-power loss enters safe state", "E2-E7", "all torque/TX/precharge/action-ready outputs inactive", "supply/reset supervision", "fail-low STM32 initialization plus external chain", "logic outputs and contactor permit", "fresh configuration check and manual reset", "d", "Category 3 target; architecture incomplete", "PARTIAL - HARDWARE/HIL NOT EXECUTED", "NO"),
         ("SFR-05", "Actuator VDD backfeed prevention", "E1-E7", "every non-target branch remains de-energized", "physical split-harness cavities", "physical wiring segregation", "25 individual power pairs", "inspection before remating", "d", "Category 3 target; physical architecture", "DEFINED - UNBUILT", "NO"),
         ("SFR-06", "Branch overcurrent interruption", "E5-E7", "faulted branch isolated without unsafe heating", "branch current/fault", "protection device selection required", "individual branch feed", "inspection and replacement", "N/A", "electrical protection study", "NOT IMPLEMENTED", "NO"),
@@ -328,7 +329,7 @@ def hold_rows() -> list[dict]:
         ("SRS-H04", "common-cause measures unverified", "as-built separation, environment, supply, wiring, maintenance and fault-injection evidence"),
         ("SRS-H05", "stopping-time intervals and total are unmeasured", "synchronized ST-01 through ST-08 traces with uncertainty"),
         ("SRS-H06", "joint and endpoint stopping distances are unallocated", "stage-specific speed, inertia, torque decay, compliance, gravity, restraint and overtravel measurements"),
-        ("SRS-H07", "PNOZ/contactors and DC opening duty are unvalidated as a system", "received order codes, exact circuit, DC-load life/duty, suppression and welded-contact tests"),
+        ("SRS-H07", "PNOZ/contactors and DC opening duty are unvalidated as a system", "received LC1D40ABD identity/terminal inspection, frozen as-built circuit, HR-30 fault current and L/R, DC-load life/duty, suppression, timing and welded-contact tests"),
         ("SRS-H08", "whole-body fall restraint has no rated design or proof", "WLL, dynamic arrest, attachment load path, inspection and qualified mechanical acceptance"),
         ("SRS-H09", "safety-related speed/travel monitoring is absent", "independent architecture and validation before S1-S7 motion"),
         ("SRS-H10", "public and child interaction safety is outside P0.1", "new intended-use risk assessment under the then-current service-robot standard and physical validation"),
@@ -427,9 +428,14 @@ def integrate_root(hazards: list[dict], functions: list[dict], timings: list[dic
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     block = f'''{start}\n## Whole-body safety requirements P0.1\n\nThe [interactive safety-requirements guide](safety-requirements-p0.1/index.html) converts the existing whole-robot stop topology, first-power firmware and restraint boundary into {len(hazards)} open hazards, {len(functions)} safety/control functions, a candidate PLr allocation, {len(timings)} explicit stopping-time intervals and {len(validations)} validation cases. Achieved PL/PFHd, common-cause evidence, numerical stopping limits, physical results and qualified approval remain open. It is a reviewable SRS candidate, not permission to connect, power or move the robot.\n{end}\n'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-README-START -->"
-    if marker not in text:
-        raise RuntimeError("root README insertion marker missing")
-    readme.write_text(text.replace(marker, block + marker), encoding="utf-8", newline="\n")
+    if marker in text:
+        text = text.replace(marker, block + marker)
+    else:
+        # A clean dependency-ordered build creates the SRS before the
+        # first-energization package.  Append now; the later generator will
+        # add its own controlled block without requiring stale prior output.
+        text = text.rstrip() + "\n\n" + block
+    readme.write_text(text, encoding="utf-8", newline="\n")
 
     page = WHOLE / "index.html"
     text = page.read_text(encoding="utf-8")
@@ -438,9 +444,13 @@ def integrate_root(hazards: list[dict], functions: list[dict], timings: list[dic
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     section = f'''{start}<section id="safety-requirements"><h2>The whole robot now has a candidate SRS</h2><div class="grid"><article class="card"><div class="metric">{len(hazards)}</div><p>open whole-robot hazards</p></article><article class="card"><div class="metric">{len(functions)}</div><p>safety/control function records</p></article><article class="card"><div class="metric">{len(timings)}</div><p>stopping-time intervals to measure</p></article><article class="card hold"><div class="metric">0</div><p>validated PL claims or physical safety tests</p></article></div><p><a href="safety-requirements-p0.1/index.html">Open the interactive whole-body SRS</a>. Candidate PLr d / Category 3 allocations remain unapproved; motion and energization remain prohibited.</p></section>{end}'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-START -->"
-    if marker not in text:
-        raise RuntimeError("root page insertion marker missing")
-    page.write_text(text.replace(marker, section + marker), encoding="utf-8", newline="\n")
+    if marker in text:
+        text = text.replace(marker, section + marker)
+    elif "</main>" in text:
+        text = text.replace("</main>", section + "</main>", 1)
+    else:
+        raise RuntimeError("root page main boundary missing")
+    page.write_text(text, encoding="utf-8", newline="\n")
 
 
 def main() -> int:

@@ -1,7 +1,7 @@
 {
   "identifier": "HR30-WHOLE-BODY-SRS-P0.1",
   "warning": "PRELIMINARY - SAFETY REQUIREMENTS CANDIDATE ONLY - NOT FUNCTIONALLY SAFETY VALIDATED - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
-  "official_source_count": 11,
+  "official_source_count": 12,
   "local_source_count": 12,
   "lifecycle_mode_count": 14,
   "hazard_count": 24,

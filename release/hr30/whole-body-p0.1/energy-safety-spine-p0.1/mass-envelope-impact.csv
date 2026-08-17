@@ -1,6 +1,6 @@
 item,change,delta_on_robot_mass_kg,boundary,authority
 M-01,remove current Grepow LiPo allowance from tether configuration,-1.057,tether source is external,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 M-02,remove current battery cassette from tether configuration,-0.220,retain interface reservation; exact blanking/ballast decision open,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
-M-03,keep two GV12 contactors external,0.000,avoids 0.88 kg onboard penalty,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
+M-03,keep two LC1D40ABD contactors external,0.000,avoids about 1.70 kg onboard penalty from two 0.848 kg product candidates,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 M-04,later BLF-1209WS vs current LiPo allowance,0.123,cassette depth grows from 49 mm external envelope toward 95 mm pack depth plus clearance,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"
 M-05,three TTL branch regulator planning allowance,0.030,exact installed mass and heat open,"NO PROCUREMENT, FABRICATION, CONNECTION, POWERED TEST, MOTION OR ENERGIZATION AUTHORITY"

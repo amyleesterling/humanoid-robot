@@ -1,0 +1,15 @@
+{
+  "identifier": "HR30-SAFETY-FUNCTION-IMPLEMENTATION-P0.1",
+  "warning": "PRELIMINARY - IMPLEMENTATION MAP ONLY - NOT FUNCTIONALLY SAFETY VALIDATED - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION",
+  "safety_function_count": 12,
+  "exact_circuit_interface_count": 12,
+  "connected_unvalidated_function_count": 3,
+  "partial_function_count": 1,
+  "functional_safety_validated": false,
+  "achieved_pl_calculated": false,
+  "qualified_review_complete": false,
+  "connection_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false
+}

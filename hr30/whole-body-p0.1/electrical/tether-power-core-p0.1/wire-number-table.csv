@@ -34,20 +34,28 @@ W2019,02_estop_reset_safety_relay.kicad_sch,SR1,24,SAFETY CONTACT 2 OUT,K2_COIL_
 W2020,02_estop_reset_safety_relay.kicad_sch,SR1,34,SAFETY PERMIT STATUS,HARDWIRED_PERMIT
 W2021,02_estop_reset_safety_relay.kicad_sch,SR1,42,AUXILIARY NC OUT,PNOZ_AUX_STATUS
 W2022,02_estop_reset_safety_relay.kicad_sch,SR1,Y32,SEMICONDUCTOR STATUS,PNOZ_Y32_STATUS
-W3001,03_redundant_dc_interruption.kicad_sch,K1,M1,MAIN INPUT STUD,RAW_12V_POS
-W3002,03_redundant_dc_interruption.kicad_sch,K1,COIL+,24 V COIL POSITIVE,K1_COIL_POS
-W3003,03_redundant_dc_interruption.kicad_sch,K1,COIL-,COIL RETURN,SAFE_0V
-W3004,03_redundant_dc_interruption.kicad_sch,K1,AUX-C,NC AUX COMMON,RESET_EDM
-W3005,03_redundant_dc_interruption.kicad_sch,K1,M2,MAIN OUTPUT STUD,K1_OUT
-W3006,03_redundant_dc_interruption.kicad_sch,K1,AUX-NC,NC AUX RETURN,EDM_K1_OUT
-W3007,03_redundant_dc_interruption.kicad_sch,K2,M1,MAIN INPUT STUD,K1_OUT
-W3008,03_redundant_dc_interruption.kicad_sch,K2,COIL+,24 V COIL POSITIVE,K2_COIL_POS
-W3009,03_redundant_dc_interruption.kicad_sch,K2,COIL-,COIL RETURN,SAFE_0V
-W3010,03_redundant_dc_interruption.kicad_sch,K2,AUX-C,NC AUX COMMON,EDM_K1_OUT
-W3011,03_redundant_dc_interruption.kicad_sch,K2,M2,MAIN OUTPUT STUD,TETHER_POS_SWITCHED
-W3012,03_redundant_dc_interruption.kicad_sch,K2,AUX-NC,NC AUX RETURN,RESET_EDM
-W3013,03_redundant_dc_interruption.kicad_sch,XPERMIT,IN,PNOZ SAFETY CONTACT,HARDWIRED_PERMIT
-W3014,03_redundant_dc_interruption.kicad_sch,XPERMIT,OUT,PERMIT INPUT,MOTION_PERMIT_INPUT
+W3001,03_redundant_dc_interruption.kicad_sch,K1,1/L1,MAIN POLE 1 INPUT,RAW_12V_POS
+W3002,03_redundant_dc_interruption.kicad_sch,K1,3/L2,MAIN POLE 2 INPUT,K1_POLE2_IN
+W3003,03_redundant_dc_interruption.kicad_sch,K1,5/L3,MAIN POLE 3 INPUT,K1_POLE3_IN
+W3004,03_redundant_dc_interruption.kicad_sch,K1,A1,24 VDC COIL POSITIVE,K1_COIL_POS
+W3005,03_redundant_dc_interruption.kicad_sch,K1,A2,COIL RETURN,SAFE_0V
+W3006,03_redundant_dc_interruption.kicad_sch,K1,21,MIRROR NC COMMON,RESET_EDM
+W3007,03_redundant_dc_interruption.kicad_sch,K1,2/T1,MAIN POLE 1 OUTPUT,K1_POLE2_IN
+W3008,03_redundant_dc_interruption.kicad_sch,K1,4/T2,MAIN POLE 2 OUTPUT,K1_POLE3_IN
+W3009,03_redundant_dc_interruption.kicad_sch,K1,6/T3,MAIN POLE 3 OUTPUT,K1_OUT
+W3010,03_redundant_dc_interruption.kicad_sch,K1,22,MIRROR NC RETURN,EDM_K1_OUT
+W3011,03_redundant_dc_interruption.kicad_sch,K2,1/L1,MAIN POLE 1 INPUT,K1_OUT
+W3012,03_redundant_dc_interruption.kicad_sch,K2,3/L2,MAIN POLE 2 INPUT,K2_POLE2_IN
+W3013,03_redundant_dc_interruption.kicad_sch,K2,5/L3,MAIN POLE 3 INPUT,K2_POLE3_IN
+W3014,03_redundant_dc_interruption.kicad_sch,K2,A1,24 VDC COIL POSITIVE,K2_COIL_POS
+W3015,03_redundant_dc_interruption.kicad_sch,K2,A2,COIL RETURN,SAFE_0V
+W3016,03_redundant_dc_interruption.kicad_sch,K2,21,MIRROR NC COMMON,EDM_K1_OUT
+W3017,03_redundant_dc_interruption.kicad_sch,K2,2/T1,MAIN POLE 1 OUTPUT,K2_POLE2_IN
+W3018,03_redundant_dc_interruption.kicad_sch,K2,4/T2,MAIN POLE 2 OUTPUT,K2_POLE3_IN
+W3019,03_redundant_dc_interruption.kicad_sch,K2,6/T3,MAIN POLE 3 OUTPUT,TETHER_POS_SWITCHED
+W3020,03_redundant_dc_interruption.kicad_sch,K2,22,MIRROR NC RETURN,RESET_EDM
+W3021,03_redundant_dc_interruption.kicad_sch,XPERMIT,IN,PNOZ SAFETY CONTACT,HARDWIRED_PERMIT
+W3022,03_redundant_dc_interruption.kicad_sch,XPERMIT,OUT,PERMIT INPUT,MOTION_PERMIT_INPUT
 W4001,04_touch_safe_tether.kicad_sch,XT1A,P1,PROJECT-ASSIGNED SWITCHED +12 V,TETHER_POS_SWITCHED
 W4002,04_touch_safe_tether.kicad_sch,XT1A,G,PRE-MATE FRAME / SHIELD REFERENCE,PANEL_PE
 W4003,04_touch_safe_tether.kicad_sch,XT1A,P2,PROJECT-ASSIGNED DC RETURN,RAW_0V

@@ -32,6 +32,10 @@ def main() -> int:
     assert status["native_sheet_count"] == 7 and status["child_sheet_count"] == 6
     assert status["erc_errors"] == status["erc_warnings"] == 0
     assert status["external_contactor_count"] == 2 and status["on_robot_contactor_count"] == 0
+    assert status["external_contactor_candidate"] == "Schneider LC1D40ABD"
+    assert status["contactor_mirror_nc_terminals"] == "21-22"
+    assert status["contactor_main_poles_in_series_per_device"] == 3
+    assert status["contactor_application_validated"] is False
     assert status["robot_pdu_feed_count"] == 5 and status["fuse_holder_count"] == 6
     assert status["fuse_values_selected"] is False and status["final_conductors_selected"] is False
     assert all(status[key] is False for key in ("functional_safety_approved", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"))
@@ -45,8 +49,27 @@ def main() -> int:
         assert f'(ref "{ref}")' in netlist or f"(ref {ref})" in netlist
 
     sources = rows("primary-source-register.csv")
-    assert {r["source_id"] for r in sources} == {"RSP", "SD", "PNOZ", "GV12", "SBS", "MIDI", "HAMMOND", "PHOENIX"}
+    assert {r["source_id"] for r in sources} == {"RSP", "SD", "PNOZ", "TESYS", "SBS", "MIDI", "HAMMOND", "PHOENIX"}
     assert all(r["official_url"].startswith("https://") and r["document_revision_or_date"] for r in sources)
+    tesys = next(r for r in sources if r["source_id"] == "TESYS")
+    assert tesys["candidate"] == "TeSys Deca LC1D40ABD" and "v17.1" in tesys["document_revision_or_date"]
+
+    terminals = rows("connector-schedule.csv")
+    for ref in ("K1", "K2"):
+        bound = {r["terminal"]: r for r in terminals if r["reference"] == ref}
+        assert set(bound) == {"1/L1", "2/T1", "3/L2", "4/T2", "5/L3", "6/T3", "A1", "A2", "13", "14", "21", "22"}
+        assert bound["21"]["pin_name"] == "MIRROR NC COMMON"
+        assert bound["22"]["pin_name"] == "MIRROR NC RETURN"
+        assert bound["A1"]["net"] == f"{ref}_COIL_POS" and bound["A2"]["net"] == "SAFE_0V"
+        assert "MIRROR CONTACT VERIFIED" in bound["21"]["status"]
+    assert next(r for r in terminals if r["reference"] == "K1" and r["terminal"] == "1/L1")["net"] == "RAW_12V_POS"
+    assert next(r for r in terminals if r["reference"] == "K1" and r["terminal"] == "6/T3")["net"] == "K1_OUT"
+    assert next(r for r in terminals if r["reference"] == "K2" and r["terminal"] == "1/L1")["net"] == "K1_OUT"
+    assert next(r for r in terminals if r["reference"] == "K2" and r["terminal"] == "6/T3")["net"] == "TETHER_POS_SWITCHED"
+    assert next(r for r in terminals if r["reference"] == "K1" and r["terminal"] == "21")["net"] == "RESET_EDM"
+    assert next(r for r in terminals if r["reference"] == "K1" and r["terminal"] == "22")["net"] == "EDM_K1_OUT"
+    assert next(r for r in terminals if r["reference"] == "K2" and r["terminal"] == "21")["net"] == "EDM_K1_OUT"
+    assert next(r for r in terminals if r["reference"] == "K2" and r["terminal"] == "22")["net"] == "RESET_EDM"
     branches = rows("five-pdu-feed-register.csv")
     assert [r["board_instance"] for r in branches] == ["PDU-LLEG", "PDU-RLEG", "PDU-ARMS", "PDU-DISTAL", "PDU-CORE"]
     assert abs(sum(float(r["published_actuator_stall_endpoint_sum_a"]) for r in branches) - 76.08) < 1e-9
@@ -72,11 +95,16 @@ def main() -> int:
     assert sum(i.startswith("EQ-PDU-") for i in ids) == 5
     package = json.loads((WB / "package-status.json").read_text(encoding="utf-8"))
     assert package["external_contactor_count"] == 2 and package["on_robot_contactor_count"] == 0
+    assert package["external_contactor_candidate"] == "Schneider LC1D40ABD"
+    assert package["contactor_mirror_nc_terminals"] == "21-22"
+    assert package["contactor_main_poles_in_series_per_device"] == 3
+    assert package["contactor_application_validated"] is False
     assert package["robot_pdu_feed_count"] == 5 and package["tether_power_core_energization_authority"] is False
 
     web = (OUT / "index.html").read_text(encoding="utf-8")
     assert "font:clamp(16px" in web and "small{font-size:14px}" in web
     assert "Fuse values are intentionally absent" in web and "The contactors are outside the robot" in web
+    assert "The EDM hardware mismatch is corrected" in web and "LC1D40ABD" in web
     assert "HR30_external_tether_panel_candidate.glb" in web and web.count("<details>") == 6
     main_web = (WB / "index.html").read_text(encoding="utf-8")
     assert main_web.count('id="tether-power-core"') == 1 and "No fuse values released" in main_web
@@ -90,7 +118,9 @@ def main() -> int:
     release_files = sorted(p.relative_to(REL).as_posix() for p in REL.rglob("*") if p.is_file())
     assert source_files == release_files
     assert all(sha(OUT / name) == sha(REL / name) for name in source_files)
-    print("PASS: HR-30 tether power core has 7 native KiCad sheets at ERC 0/0, external dual interruption, one touch-safe tether and five protected PDU feeds; all fuse values, conductors, safety approval and work authority remain open")
+    current_text = "\n".join(p.read_text(encoding="utf-8", errors="ignore") for p in OUT.rglob("*") if p.is_file() and p.suffix.lower() in {".csv", ".json", ".md", ".html", ".kicad_sch", ".net", ".rpt"})
+    assert "GV121CAC" not in current_text and "SENSATA GIGAVAC" not in current_text
+    print("PASS: HR-30 tether power core has 7 native KiCad sheets at ERC 0/0, two independent LC1D40ABD three-pole-series interruption elements, mirror-contact EDM, one touch-safe tether and five protected PDU feeds; application validation, all fuse values, conductors, safety approval and work authority remain open")
     return 0
 
 

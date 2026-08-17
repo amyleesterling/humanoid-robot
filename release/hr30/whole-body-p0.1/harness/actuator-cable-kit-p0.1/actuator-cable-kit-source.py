@@ -257,7 +257,11 @@ def integrate_root(axis: list[dict[str, object]], cavities: list[dict[str, objec
     block = f'''{start}\n## Actuator cable kit\n\nThe [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their accepted candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **{len(cavities)} connector-cavity records**. Outgoing inter-actuator housings intentionally leave every GND/VDD cavity empty so the 25 separately protected power branches cannot be paralleled. No wire is released: the current CF130 0.34 mm² test-coupon candidate exceeds JST's published 0.33 mm² maximum and stays blocked pending supplier disposition or reselection.\n{end}\n'''
     block = f'''{start}\n## Actuator cable kit\n\nThe [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **{len(cavities)} connector-cavity records**. The igus **CF9.UL.02.02** 0.25 mm2 continuous-flex test-coupon candidate is inside JST's published conductor-size range; the largest manufacturer-DCR-based 20 C planning drop is **{max_drop:.3f} V**. This is not an ampacity or thermal release. Outgoing inter-actuator housings leave GND/VDD cavities empty so the 25 separately protected power branches cannot be paralleled; signal-reference behavior remains a validation hold.\n{end}\n'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-README-START -->"
-    readme.write_text(text.replace(marker, block + marker), encoding="utf-8", newline="\n")
+    if marker in text:
+        text = text.replace(marker, block + marker)
+    else:
+        text = text.rstrip() + "\n\n" + block
+    readme.write_text(text, encoding="utf-8", newline="\n")
 
     page = WHOLE / "index.html"
     text = page.read_text(encoding="utf-8")
@@ -267,7 +271,13 @@ def integrate_root(axis: list[dict[str, object]], cavities: list[dict[str, objec
     section = f'''{start}<section id="actuator-cable-kit"><h2>The actuator pin population is explicit</h2><div class="grid"><article class="card pass"><div class="metric">25 / 25</div><p>axis feeds carry their deterministic candidate current caps and routed planning lengths.</p></article><article class="card"><div class="metric">{len(cavities)}</div><p>controlled actuator connector-cavity records.</p></article><article class="card"><div class="metric">34</div><p>outgoing GND/VDD cavities required to remain empty across 17 data-only links.</p></article><article class="card hold"><h3>Wire remains unselected</h3><p>CF130's 0.34 mm² nominal conductor exceeds JST's 0.33 mm² maximum; supplier disposition or reselection is required.</p></article></div><p><a href="harness/actuator-cable-kit-p0.1/index.html">Open the interactive actuator cable-kit guide</a>. It defines the candidate architecture but grants no procurement, crimping, connection or powered-work authority.</p></section>{end}'''
     section = f'''{start}<section id="actuator-cable-kit"><h2>The actuator wire candidate now fits the contact range</h2><div class="grid"><article class="card pass"><div class="metric">25 / 25</div><p>axis feeds carry calculated 20 C resistance, drop and loss values.</p></article><article class="card"><div class="metric">{max_drop:.3f} V</div><p>largest planning drop at a candidate current cap.</p></article><article class="card"><div class="metric">34</div><p>outgoing GND/VDD cavities required to remain empty across 17 data-only links.</p></article><article class="card hold"><h3>Thermal release remains open</h3><p>CF9.UL.02.02 fits the JST conductor range, but AWG24 current capacity, hot bundling, crimp temperature rise and route life are not validated.</p></article></div><p><a href="harness/actuator-cable-kit-p0.1/index.html">Open the interactive actuator cable-kit guide</a>. It defines a test-coupon candidate but grants no procurement, crimping, connection or powered-work authority.</p></section>{end}'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-START -->"
-    page.write_text(text.replace(marker, section + marker), encoding="utf-8", newline="\n")
+    if marker in text:
+        text = text.replace(marker, section + marker)
+    elif "</main>" in text:
+        text = text.replace("</main>", section + "</main>", 1)
+    else:
+        raise RuntimeError("root page main boundary missing")
+    page.write_text(text, encoding="utf-8", newline="\n")
 
 
 def main() -> int:
