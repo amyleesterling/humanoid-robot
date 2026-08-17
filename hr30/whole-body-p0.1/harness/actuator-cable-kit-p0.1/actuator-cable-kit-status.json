@@ -1,7 +1,7 @@
 {
   "identifier": "HR30-ACTUATOR-CABLE-KIT-P0.1",
   "warning": "PRELIMINARY - UNBUILT ACTUATOR CABLE-KIT CANDIDATE - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION",
-  "source_count": 15,
+  "source_count": 17,
   "connector_decision_count": 4,
   "axis_count": 25,
   "data_candidate_count": 7,
@@ -12,6 +12,9 @@
   "current_caps_propagated": true,
   "canonical_jst_order_code_family_bound": true,
   "cf9_jst_cross_section_geometry_compatible": true,
+  "cf9_power_candidate_rejected": true,
+  "static_alpha_3051_coupon_candidate_defined": true,
+  "dynamic_cf130_coupon_candidate_defined": true,
   "cf9_current_capacity_released": false,
   "cf9_route_life_verified": false,
   "planning_resistance_basis_ohm_per_km_at_20c": 79.0,

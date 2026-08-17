@@ -75,21 +75,18 @@ The [transmission closure guide](transmission-closure-p0.1/index.html) maps all 
 
 The [full-scale fit-check guide](full-scale-fit-check-p0.1/index.html) provides one source-bound, bed-normalized STL for every one of the **98 physical CAD parts** across all twelve body modules, plus twelve module ZIP bundles and candidate generic 220 x 220 x 250 mm plate layouts. Every file is 1:1, placed at Z=0 with a 5 mm X/Y margin, and retains a recorded rigid transform back to its native STEP source. Zero parts have been printed or accepted; no G-code or slicer profile is released. Printed articles may not carry robot, standing, walking, fall, powered-test or impact loads.
 <!-- HR30-FULL-SCALE-FIT-CHECK-P01-README-END -->
-<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-START -->
-## Actuator cable kit
 
-The [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **159 connector-cavity records**. The igus **CF9.UL.02.02** 0.25 mm2 continuous-flex test-coupon candidate is inside JST's published conductor-size range; the largest manufacturer-DCR-based 20 C planning drop is **0.091 V**. This is not an ampacity or thermal release. Outgoing inter-actuator housings leave GND/VDD cavities empty so the 25 separately protected power branches cannot be paralleled; signal-reference behavior remains a validation hold.
-<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-END -->
-<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-START -->
-## Actuator cable coupon and route measurement
 
-The [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) binds the JST loose-piece **BEH-001T-P0.6 + YC-260R** prototype path, the strip-terminal **SEH-001T-P0.6 + YRS-260** alternative, seven destructive/measurement specimen families, and a **25-axis** as-built route register. No production cut length or crimp setting is released: every robot cable must be measured after assembly and swept through its complete joint range.
-<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-END -->
 <!-- HR30-NO-MOTION-FW-P01-README-START -->
 ## Deterministic no-motion firmware
 
 The [HR-30 no-motion firmware guide](firmware/hr30-motion-controller-p0.1/index.html) binds all 25 axes and eight buses to a compiled `FIRST_POWER_NO_MOTION` state machine. Every torque-enable, bus-transmit, precharge and action-ready output remains zero; all motion requests are rejected and STOP is a no-op. Two clean host builds and two clean freestanding STM32H743 builds are byte-identical, and the compiled core/MMIO vector suites pass. The target is unflashed; HIL, physical timing, reset-state proof and qualified approval remain open, so this creates no powered-work or motion authority.
 <!-- HR30-NO-MOTION-FW-P01-README-END -->
+<!-- HR30-PROTECTION-CONDUCTOR-P01-README-START -->
+## Staged protection and conductor architecture
+
+The [interactive protection/conductor guide](electrical/protection-conductor-architecture-p0.1/index.html) binds the isolated 5 V logic-only path and the 12 V whole-body path into one staged hierarchy. The eight candidate axis-cap sums total 46.67779 A, above the 41.7 A source endpoint; the separate published stall endpoints total 71.88 A. These are constraints, not demand predictions or protection ratings. All fuse values, hot ampacity, regeneration handling and physical evidence remain open.
+<!-- HR30-PROTECTION-CONDUCTOR-P01-README-END -->
 <!-- HR30-GROUNDING-REFERENCE-P01-README-START -->
 ## Whole-robot grounding and DC-reference architecture
 
@@ -170,11 +167,7 @@ The [interactive logic-power guide](electrical/logic-power-kit-p0.1/index.html) 
 
 The [interactive walking-power guide](electrical/walking-power-successor-p0.1/index.html) replaces the single reverse-blocking branch for walking development with a native eight-sheet KiCad candidate containing two oppositely oriented TPS259482L devices per branch. One device protects motoring current and the other protects regenerative current. All 25 axes are allocated across eight electrically separate six-channel board instances, one per authoritative actuator bus; 23 positions remain DNP. This corrects and rejects the earlier five-board grouping that would have tied independent left/right arm and regulated 9 V TTL feeds together. Eight contactor-open brake/dump circuits, exact current thresholds, PCB layout, thermal proof and every powered-work authority remain open.
 <!-- HR30-WALKING-POWER-P01-README-END -->
-<!-- HR30-PROTECTION-CONDUCTOR-P01-README-START -->
-## Staged protection and conductor architecture
 
-The [interactive protection/conductor guide](electrical/protection-conductor-architecture-p0.1/index.html) binds the isolated 5 V logic-only path and the 12 V whole-body path into one staged hierarchy. The eight candidate axis-cap sums total 46.67779 A, above the 41.7 A source endpoint; the separate published stall endpoints total 71.88 A. These are constraints, not demand predictions or protection ratings. All fuse values, hot ampacity, regeneration handling and physical evidence remain open.
-<!-- HR30-PROTECTION-CONDUCTOR-P01-README-END -->
 
 
 <!-- HR30-HEAD-HMI-HARNESS-P01-README-START -->
@@ -229,12 +222,26 @@ The [transmission closure guide](transmission-closure-p0.1/index.html) maps all 
 The [interactive safety-requirements guide](safety-requirements-p0.1/index.html) converts the existing whole-robot stop topology, first-power firmware and restraint boundary into 24 open hazards, 12 safety/control functions, a candidate PLr allocation, 8 explicit stopping-time intervals and 20 validation cases. Achieved PL/PFHd, common-cause evidence, numerical stopping limits, physical results and qualified approval remain open. It is a reviewable SRS candidate, not permission to connect, power or move the robot.
 <!-- HR30-SRS-P01-README-END -->
 
+
+
+
+<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-START -->
+## Actuator cable kit
+
+The [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **159 connector-cavity records**. The power-wire path is split: **Alpha Wire 3051 22 AWG** for static suspended-commissioning coupons and **igus CF130.03.02.UL 2 x 22 AWG** for dynamic coupons. The retained rejected-CF9 predecessor comparison has a largest 20 C planning drop of **0.091 V**. That comparison is not a cable selection, ampacity or thermal release. Outgoing inter-actuator housings leave GND/VDD cavities empty so the 25 separately protected power branches cannot be paralleled; signal-reference behavior remains a validation hold.
+<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-END -->
+<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-START -->
+## Actuator cable coupon and route measurement
+
+The [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) now separates the **Alpha Wire 3051 22 AWG static suspended-commissioning candidate** from the **igus CF130.03.02.UL 2 x 22 AWG dynamic candidate**, binds the JST loose-piece **BEH-001T-P0.6 + YC-260R** prototype path and the strip-terminal **SEH-001T-P0.6 + YRS-260** alternative, and provides nine destructive/measurement specimen families plus a **25-axis** as-built route register. The former 24 AWG CF9 candidate receives no actuator-power credit. No production cut length or crimp setting is released.
+<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-END -->
+
+
 <!-- HR30-FIRST-ENERGIZATION-P01-README-START -->
 ## First-energization readiness
 
 The [interactive first-energization guide](first-energization-readiness-p0.1/index.html) joins the existing whole-body CAD, native ECAD, harness, safety architecture and one-axis bench station into **12 objective release gates**, **8 staged power states**, a 26-item inspection traveler and 12 fault-injection cases. All physical execution and signoff fields remain open. This makes the path auditable; it does **not** authorize connection, powered testing, motion or energization.
 <!-- HR30-FIRST-ENERGIZATION-P01-README-END -->
-
 <!-- HR30-HARNESS-CURRENT-BINDING-P01-README-START -->
 ## Harness/current-policy reconciliation
 

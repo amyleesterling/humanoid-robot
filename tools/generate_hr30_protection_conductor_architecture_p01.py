@@ -77,9 +77,10 @@ def primary_sources() -> list[dict[str, object]]:
         ("PCA-S02", "Texas Instruments", "TPS25948xx datasheet", "SLVSGT9D Rev D; April 2026", "https://www.ti.com/lit/ds/symlink/tps25948.pdf", "3.5-23 V eFuse family; paired opposite orientation is the P0.1 branch candidate; exact application remains unaccepted"),
         ("PCA-S03", "Littelfuse", "MIDI 498 fuse-holder datasheet", "current official datasheet; accessed 2026-08-17", "https://www.littelfuse.com/assetdocs/littelfuse-fuse-holder-midi-498-datasheet-rd1?assetguid=b38a61f3-7d0b-4081-bfb5-86c4b4ea4f26", "04980923ZXT holder family boundary; fuse is separate and no fuse value is released"),
         ("PCA-S04", "Phoenix Contact", "MKDS 5/2-9.5 product page", "order 1714971; accessed 2026-08-17", "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971", "32 A nominal terminal candidate; application derating, conductor and thermal proof remain open"),
-        ("PCA-S05", "JST", "EH connector-series datasheet", "revision/date not stated; accessed 2026-08-17", "https://www.jst-mfg.com/product/pdf/eng/eEH.pdf", "3 A headline is associated with AWG22; selected AWG24 candidate requires separate current/temperature validation"),
-        ("PCA-S06", "igus", "chainflex CF9.UL product data", "live official page; accessed 2026-08-17", "https://www.igus.com/product/CF9_UL", "CF9.UL.02.02 2 x 0.25 mm2 / 24 AWG continuous-flex candidate; hot bundled ampacity is not released"),
+        ("PCA-S05", "JST", "EH connector-series datasheet", "revision/date not stated; accessed 2026-08-17", "https://www.jst-mfg.com/product/pdf/eng/eEH.pdf", "3 A headline is associated with AWG22; the standard contact table lists 0.33 mm2 maximum, so application/crimp/temperature validation remains required"),
+        ("PCA-S06", "igus", "chainflex CF130.UL product data", "live official page; accessed 2026-08-17", "https://www.igus.com/product/CF130_UL", "CF130.03.02.UL 2 x 22 AWG / 0.34 mm2 dynamic coupon candidate; its nominal cross-section exceeds JST's tabulated 0.33 mm2 maximum pending written disposition"),
         ("PCA-S07", "SIGLENT", "SPD3303X/X-E series product page and datasheet", "datasheet EN03A; 2024-09-02", "https://www.siglent.com/na/products-overview/spd3303x-x-e/", "separate current-limited logic-only bench-source candidate; receipt, calibration and settings remain open"),
+        ("PCA-S08", "Alpha Wire", "3051 product specification", "live official specification; accessed 2026-08-17", "https://www.alphawire.com/products/wire/hook-up-wire/premium/3051", "22 AWG static suspended-commissioning coupon candidate only; moving-route use is not credited"),
     ]
     return [common({"source_id": i, "manufacturer": m, "document": d, "revision_or_date": rev, "accessed": DATE, "url": url, "verified_use": use}) for i, m, d, rev, url, use in rows]
 
@@ -162,7 +163,7 @@ def axis_screens() -> list[dict[str, object]]:
             "drop_at_candidate_cap_20c_v": item["voltage_drop_20c_at_candidate_cap_v"],
             "loss_at_candidate_cap_20c_w": item["conductor_loss_20c_at_candidate_cap_w"],
             "jst_3a_headline_minus_cap_a": f"{3.0-cap:.6f}",
-            "headline_margin_is_ampacity_credit": "NO - JST 3 A HEADLINE IS AWG22; THIS CANDIDATE IS AWG24",
+            "headline_margin_is_ampacity_credit": "NO - AWG22 SIZE MATCH DOES NOT RELEASE APPLICATION AMPACITY, CRIMP OR TEMPERATURE RISE",
             "normal_rms_a": "SELECTION REQUIRED", "fault_current_a": "SELECTION REQUIRED",
             "hot_bundled_ampacity": "SELECTION REQUIRED", "branch_protection": "SELECTION REQUIRED",
         }))
@@ -175,7 +176,7 @@ def connector_boundaries() -> list[dict[str, object]]:
         ("PCA-C02", "tether quick disconnect", "Anderson SBS75G family", "catalogue family only", "exact shell/contact/wire/assembly/derating and disconnect duty required", "OPEN"),
         ("PCA-C03", "eight walking-power board inputs", "SELECTION REQUIRED", "no connector rating released", "feed RMS/fault/inrush/thermal, conductor fit and exact PCB connector selection required", "OPEN"),
         ("PCA-C04", "25 actuator outputs", "SELECTION REQUIRED at walking-power board boundary", "no connector family released", "exact contact/wire/crimp/current-rise/retention evidence required", "OPEN"),
-        ("PCA-C05", "25 actuator device inputs", "JST EH", "3 A headline at AWG22", "AWG24 CF9 coupon hot-current and crimp-rise validation required", "OPEN"),
+        ("PCA-C05", "25 actuator device inputs", "JST EH", "3 A headline at AWG22; 0.33 mm2 standard-contact maximum", "static Alpha 3051 and dynamic CF130 require separate crimp/current-rise proof; CF130 also requires cross-section disposition", "OPEN"),
         ("PCA-C06", "logic-only J1", "JST VHR-2N / SVH-21T-P1.1", "22 AWG candidate cable", "received board, cable build, polarity, pull, current-limit and temperature evidence required", "OPEN"),
     ]
     return [common({"boundary_id": i, "interface": interface, "candidate": candidate, "published_or_project_boundary": limit, "evidence_required": evidence, "state": state}) for i, interface, candidate, limit, evidence, state in rows]
@@ -207,7 +208,7 @@ def holds() -> list[dict[str, object]]:
         ("PCA-H02", "RSP source and main F0 protection are uncoordinated", "prospective-fault/current-limit behavior, exact conductor/contact limits, fuse curve and interrupt-rating study"),
         ("PCA-H03", "FB1-FB8 fuse values and order codes remain unselected", "eight-feed RMS/peak/inrush/regeneration/fault measurements and coordination study"),
         ("PCA-H04", "eight bus-source conductor assemblies remain unselected", "as-built lengths, ambient, bundling, flex, termination, voltage-drop and fault-loop evidence"),
-        ("PCA-H05", "25 AWG24 actuator pairs have geometry/drop screens but no hot ampacity release", "received-lot crimp, current-rise, bundle, duty, flex/torsion and connector-temperature tests"),
+        ("PCA-H05", "25 actuator pairs have static/dynamic AWG22 coupon candidates but no hot ampacity release", "received-lot crimp, current-rise, bundle, duty, flex/torsion and connector-temperature tests plus CF130 written contact-boundary disposition"),
         ("PCA-H06", "whole-body cap sum 46.67779 A exceeds 41.7 A source endpoint", "measured state-dependent demand plus enforced aggregate policy or a different qualified source architecture"),
         ("PCA-H07", "paired TPS25948 branches can return energy only to their downstream bus domain; eight contactor-open sinks remain unselected", "select and validate one absorption/clamp/dump architecture per isolated bus feed, including worst-case simultaneous regeneration"),
         ("PCA-H08", "protection hardware is unbuilt and fault tests are unexecuted", "received assemblies, inspections, calibrated measurements and guarded fault-injection evidence"),
@@ -242,6 +243,7 @@ def diagram() -> str:
         .replace("FB1–FB5", "FB1–FB8")
         .replace("Five PDU boards", "Eight one-bus boards")
         .replace("25 TPS25947 eFuse branches", "25 paired TPS25948 eFuse branches")
+        .replace("AWG24 candidate", "static/dynamic 22 AWG coupons")
     )
 
 
