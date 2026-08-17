@@ -154,6 +154,13 @@ The [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) bi
 The [full-scale fit-check guide](full-scale-fit-check-p0.1/index.html) provides one source-bound, bed-normalized STL for every one of the **98 physical CAD parts** across all twelve body modules, plus twelve module ZIP bundles and candidate generic 220 x 220 x 250 mm plate layouts. Every file is 1:1, placed at Z=0 with a 5 mm X/Y margin, and retains a recorded rigid transform back to its native STEP source. Zero parts have been printed or accepted; no G-code or slicer profile is released. Printed articles may not carry robot, standing, walking, fall, powered-test or impact loads.
 <!-- HR30-FULL-SCALE-FIT-CHECK-P01-README-END -->
 
+
+<!-- HR30-SRS-P01-README-START -->
+## Whole-body safety requirements P0.1
+
+The [interactive safety-requirements guide](safety-requirements-p0.1/index.html) converts the existing whole-robot stop topology, first-power firmware and restraint boundary into 24 open hazards, 12 safety/control functions, a candidate PLr allocation, 8 explicit stopping-time intervals and 20 validation cases. Achieved PL/PFHd, common-cause evidence, numerical stopping limits, physical results and qualified approval remain open. It is a reviewable SRS candidate, not permission to connect, power or move the robot.
+<!-- HR30-SRS-P01-README-END -->
+
 <!-- HR30-FIRST-ENERGIZATION-P01-README-START -->
 ## First-energization readiness
 

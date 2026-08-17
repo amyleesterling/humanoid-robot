@@ -69,6 +69,7 @@ def source_rows() -> list[dict]:
         ("logic-only controller power-kit status", "electrical/logic-power-kit-p0.1/logic-power-status.json"),
         ("whole-robot grounding and DC-reference candidate status", "electrical/grounding-reference-architecture-p0.1/grounding-reference-status.json"),
         ("physical protective-bonding implementation candidate status", "electrical/protective-bonding-implementation-p0.1/physical-bond-status.json"),
+        ("whole-body safety requirements candidate status", "safety-requirements-p0.1/srs-status.json"),
     ]
     rows = []
     for number, (role, relative) in enumerate(items, 1):
@@ -188,8 +189,8 @@ def hold_rows() -> list[dict]:
         ("FER-H02", "protective-earth/DC-reference and physical bonding candidates are defined but not approved", "topology plus enclosure, panel-terminal, tether-contact and fixed-wire families are bound; fault sizing, AHJ disposition, moving-joint jumpers, received hardware, installation, measurements and qualified electrical disposition remain required"),
         ("FER-H03", "fuse/eFuse/conductor/contact ratings unresolved", "fault current, lengths, ambient, bundling, connector limits, inrush, regeneration and duty"),
         ("FER-H04", "physical harness and actuator cable kit are not built or tested; tooling and coupon travelers now exist but record zero execution and zero production cut lengths", "received-lot CF9/JST coupon results, accepted AWG24 current/thermal derating, qualified crimp process, continuity, insulation, flex/torsion, retention, signal-reference, shield/no-backfeed evidence, and measured 25-axis as-built routes"),
-        ("FER-H05", "safety requirements and PLr/SIL allocation open", "SRS, risk assessment, common-cause analysis and qualified validation plan"),
-        ("FER-H06", "total stopping time/distance unallocated", "measured sensor/logic/contactor/drive decay plus mechanical overtravel"),
+        ("FER-H05", "a whole-body SRS and project-owned candidate PLr allocations now exist, but achieved PL/PFHd, common-cause evidence and qualified validation remain open", "qualified ISO 12100/13849 disposition on the hash-bound as-built system, received component reliability inputs, DCavg, CCF, software measures and witnessed ISO 13849-2 validation"),
+        ("FER-H06", "the complete stopping-time equation and 25-axis distance register now exist, but every numerical allocation and physical result remains open", "synchronized measurement of input, logic, output, contactor, rail, torque and mechanical intervals plus stage-specific speed, gravity, compliance, restraint and endpoint overtravel"),
         ("FER-H07", "boards unbuilt and uninspected", "received PCB/assembly inspection, coupons, isolation, thermal and fault testing"),
         ("FER-H08", "unflashed torque-disabled STM32 target configuration remains unapproved", "reproducible target ELF/BIN and static startup/GPIO evidence exist; independent review, approved hash, flashing, reset-state traces, HIL boot/fault behavior and physical write-path audit remain required"),
         ("FER-H09", "test site/restraint/fire response not commissioned", "physical readiness inspection and named trained operators"),
@@ -271,6 +272,10 @@ def main() -> int:
         "actuator_cable_final_cut_length_count": 0,
         "stm32_target_bringup_plan_present": True, "stm32_target_bringup_flash_executed": False,
         "stm32_target_binary_flashed": False, "target_no_motion_firmware_approved": False,
+        "whole_body_srs_candidate_present": True, "candidate_plr_allocation_present": True,
+        "candidate_plr_approved": False, "achieved_performance_level_calculated": False,
+        "stopping_time_model_present": True, "stopping_time_measured": False,
+        "stopping_distance_allocated": False, "functional_safety_validated": False,
         "first_energization_ready": False, "motion_in_scope": False, "configuration_frozen": False,
         "connection_authority": False, "powered_test_authority": False, "motion_authority": False, "energization_authority": False,
     }
