@@ -1,13 +1,21 @@
 net,connection_count,connections
 DIAGNOSTIC_LOG,1,06_telemetry_interlocks_commissioning.kicad_sch:MON1:LOG
-EDM_K1_OUT,2,03_redundant_dc_interruption.kicad_sch:K1:AUX-NC | 03_redundant_dc_interruption.kicad_sch:K2:AUX-C
+EDM_K1_OUT,2,03_redundant_dc_interruption.kicad_sch:K1:22 | 03_redundant_dc_interruption.kicad_sch:K2:21
 FACILITY_L,2,01_external_source_panel.kicad_sch:XAC1:L | 01_external_source_panel.kicad_sch:PS1:AC/L
 FACILITY_N,2,01_external_source_panel.kicad_sch:XAC1:N | 01_external_source_panel.kicad_sch:PS1:AC/N
 FRESH_MOTION_REQUEST,1,06_telemetry_interlocks_commissioning.kicad_sch:MCU1:CMD
 HARDWIRED_PERMIT,2,02_estop_reset_safety_relay.kicad_sch:SR1:34 | 03_redundant_dc_interruption.kicad_sch:XPERMIT:IN
-K1_COIL_POS,2,02_estop_reset_safety_relay.kicad_sch:SR1:14 | 03_redundant_dc_interruption.kicad_sch:K1:COIL+
-K1_OUT,2,03_redundant_dc_interruption.kicad_sch:K1:M2 | 03_redundant_dc_interruption.kicad_sch:K2:M1
-K2_COIL_POS,2,02_estop_reset_safety_relay.kicad_sch:SR1:24 | 03_redundant_dc_interruption.kicad_sch:K2:COIL+
+K1_COIL_POS,2,02_estop_reset_safety_relay.kicad_sch:SR1:14 | 03_redundant_dc_interruption.kicad_sch:K1:A1
+K1_NO_AUX_13_UNCONNECTED,1,03_redundant_dc_interruption.kicad_sch:K1:13
+K1_NO_AUX_14_UNCONNECTED,1,03_redundant_dc_interruption.kicad_sch:K1:14
+K1_OUT,2,03_redundant_dc_interruption.kicad_sch:K1:6/T3 | 03_redundant_dc_interruption.kicad_sch:K2:1/L1
+K1_POLE2_IN,2,03_redundant_dc_interruption.kicad_sch:K1:2/T1 | 03_redundant_dc_interruption.kicad_sch:K1:3/L2
+K1_POLE3_IN,2,03_redundant_dc_interruption.kicad_sch:K1:4/T2 | 03_redundant_dc_interruption.kicad_sch:K1:5/L3
+K2_COIL_POS,2,02_estop_reset_safety_relay.kicad_sch:SR1:24 | 03_redundant_dc_interruption.kicad_sch:K2:A1
+K2_NO_AUX_13_UNCONNECTED,1,03_redundant_dc_interruption.kicad_sch:K2:13
+K2_NO_AUX_14_UNCONNECTED,1,03_redundant_dc_interruption.kicad_sch:K2:14
+K2_POLE2_IN,2,03_redundant_dc_interruption.kicad_sch:K2:2/T1 | 03_redundant_dc_interruption.kicad_sch:K2:3/L2
+K2_POLE3_IN,2,03_redundant_dc_interruption.kicad_sch:K2:4/T2 | 03_redundant_dc_interruption.kicad_sch:K2:5/L3
 MOTION_PERMIT_INPUT,2,03_redundant_dc_interruption.kicad_sch:XPERMIT:OUT | 06_telemetry_interlocks_commissioning.kicad_sch:MCU1:PERMIT
 PANEL_PE,4,01_external_source_panel.kicad_sch:XAC1:PE | 01_external_source_panel.kicad_sch:PS1:FG | 01_external_source_panel.kicad_sch:PS2:3 | 04_touch_safe_tether.kicad_sch:XT1A:G
 PDU_ARMS_POS,2,05_robot_five_branch_distribution.kicad_sch:FB3:OUT | 05_robot_five_branch_distribution.kicad_sch:JARMS:2
@@ -21,8 +29,8 @@ PDU_STATUS_BOUNDARY,1,06_telemetry_interlocks_commissioning.kicad_sch:MON1:BR
 PNOZ_AUX_STATUS,2,02_estop_reset_safety_relay.kicad_sch:SR1:42 | 06_telemetry_interlocks_commissioning.kicad_sch:MON1:SR
 PNOZ_Y32_STATUS,2,02_estop_reset_safety_relay.kicad_sch:SR1:Y32 | 06_telemetry_interlocks_commissioning.kicad_sch:MON1:Y32
 RAW_0V,3,01_external_source_panel.kicad_sch:PS1:-V | 01_external_source_panel.kicad_sch:PS2:2 | 04_touch_safe_tether.kicad_sch:XT1A:P2
-RAW_12V_POS,3,01_external_source_panel.kicad_sch:PS1:+V | 01_external_source_panel.kicad_sch:PS2:1 | 03_redundant_dc_interruption.kicad_sch:K1:M1
-RESET_EDM,4,02_estop_reset_safety_relay.kicad_sch:S1:NO-B | 02_estop_reset_safety_relay.kicad_sch:SR1:S34 | 03_redundant_dc_interruption.kicad_sch:K1:AUX-C | 03_redundant_dc_interruption.kicad_sch:K2:AUX-NC
+RAW_12V_POS,3,01_external_source_panel.kicad_sch:PS1:+V | 01_external_source_panel.kicad_sch:PS2:1 | 03_redundant_dc_interruption.kicad_sch:K1:1/L1
+RESET_EDM,4,02_estop_reset_safety_relay.kicad_sch:S1:NO-B | 02_estop_reset_safety_relay.kicad_sch:SR1:S34 | 03_redundant_dc_interruption.kicad_sch:K1:21 | 03_redundant_dc_interruption.kicad_sch:K2:22
 ROBOT_FRAME_BOUNDARY,2,04_touch_safe_tether.kicad_sch:XT1B:G | 05_robot_five_branch_distribution.kicad_sch:RB0:FRAME-IN
 ROBOT_FUSED_POS,6,05_robot_five_branch_distribution.kicad_sch:FM0:OUT | 05_robot_five_branch_distribution.kicad_sch:FB1:IN | 05_robot_five_branch_distribution.kicad_sch:FB2:IN | 05_robot_five_branch_distribution.kicad_sch:FB3:IN | 05_robot_five_branch_distribution.kicad_sch:FB4:IN | 05_robot_five_branch_distribution.kicad_sch:FB5:IN
 ROBOT_MAIN_POS,2,04_touch_safe_tether.kicad_sch:XT1B:P1 | 05_robot_five_branch_distribution.kicad_sch:FM0:IN
@@ -30,7 +38,7 @@ ROBOT_MAIN_RET,2,04_touch_safe_tether.kicad_sch:XT1B:P2 | 05_robot_five_branch_d
 S12_CH1,3,02_estop_reset_safety_relay.kicad_sch:S0:NC1-B | 02_estop_reset_safety_relay.kicad_sch:S1:NO-A | 02_estop_reset_safety_relay.kicad_sch:SR1:S12
 S21_TEST,2,02_estop_reset_safety_relay.kicad_sch:S0:NC2-A | 02_estop_reset_safety_relay.kicad_sch:SR1:S21
 S22_CH2,2,02_estop_reset_safety_relay.kicad_sch:S0:NC2-B | 02_estop_reset_safety_relay.kicad_sch:SR1:S22
-SAFE_0V,4,01_external_source_panel.kicad_sch:PS2:4 | 02_estop_reset_safety_relay.kicad_sch:SR1:A2 | 03_redundant_dc_interruption.kicad_sch:K1:COIL- | 03_redundant_dc_interruption.kicad_sch:K2:COIL-
+SAFE_0V,4,01_external_source_panel.kicad_sch:PS2:4 | 02_estop_reset_safety_relay.kicad_sch:SR1:A2 | 03_redundant_dc_interruption.kicad_sch:K1:A2 | 03_redundant_dc_interruption.kicad_sch:K2:A2
 SAFE_24V,8,01_external_source_panel.kicad_sch:PS2:5 | 02_estop_reset_safety_relay.kicad_sch:S0:NC1-A | 02_estop_reset_safety_relay.kicad_sch:SR1:A1 | 02_estop_reset_safety_relay.kicad_sch:SR1:S11 | 02_estop_reset_safety_relay.kicad_sch:SR1:13 | 02_estop_reset_safety_relay.kicad_sch:SR1:23 | 02_estop_reset_safety_relay.kicad_sch:SR1:33 | 02_estop_reset_safety_relay.kicad_sch:SR1:41
 STAR_POINT_0V_FRAME,1,05_robot_five_branch_distribution.kicad_sch:RB0:FRAME-STAR
-TETHER_POS_SWITCHED,2,03_redundant_dc_interruption.kicad_sch:K2:M2 | 04_touch_safe_tether.kicad_sch:XT1A:P1
+TETHER_POS_SWITCHED,2,03_redundant_dc_interruption.kicad_sch:K2:6/T3 | 04_touch_safe_tether.kicad_sch:XT1A:P1

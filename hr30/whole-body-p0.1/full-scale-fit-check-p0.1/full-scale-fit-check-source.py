@@ -341,9 +341,11 @@ def integrate_root() -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     block = f'''{start}\n## Full-scale unpowered fit-check kit\n\nThe [full-scale fit-check guide](full-scale-fit-check-p0.1/index.html) provides one source-bound, bed-normalized STL for every one of the **{PART_COUNT} physical CAD parts** across all twelve body modules, plus twelve module ZIP bundles and candidate generic 220 x 220 x 250 mm plate layouts. Every file is 1:1, placed at Z=0 with a 5 mm X/Y margin, and retains a recorded rigid transform back to its native STEP source. Zero parts have been printed or accepted; no G-code or slicer profile is released. Printed articles may not carry robot, standing, walking, fall, powered-test or impact loads.\n{end}\n'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-README-START -->"
-    if marker not in text:
-        raise RuntimeError("root README integration marker missing")
-    readme_path.write_text(text.replace(marker, block + marker), encoding="utf-8", newline="\n")
+    if marker in text:
+        text = text.replace(marker, block + marker)
+    else:
+        text = text.rstrip() + "\n\n" + block
+    readme_path.write_text(text, encoding="utf-8", newline="\n")
 
     page_path = WHOLE / "index.html"
     text = page_path.read_text(encoding="utf-8")
@@ -352,9 +354,13 @@ def integrate_root() -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     section = f'''{start}<section id="full-scale-fit-check"><h2>The entire robot now has a bed-normalized unpowered fit-check kit</h2><div class="grid"><article class="card pass"><div class="metric">{PART_COUNT}</div><p>Source-bound 1:1 STLs at Z=0.</p></article><article class="card pass"><div class="metric">12</div><p>Head-to-feet module ZIP bundles.</p></article><article class="card hold"><div class="metric">0</div><p>Parts printed or physically accepted.</p></article><article class="card hold"><h3>No released G-code</h3><p>Printer, material, supports and slicer profile still require physical selection.</p></article></div><p><a href="full-scale-fit-check-p0.1/index.html">Open the full-scale fit-check guide</a> · <a href="full-scale-fit-check-p0.1/fit-check-part-register.csv">Part and transform register</a> · <a href="full-scale-fit-check-p0.1/print-build-plate-register.csv">Candidate plate register</a>.</p></section>{end}'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-START -->"
-    if marker not in text:
-        raise RuntimeError("root web integration marker missing")
-    page_path.write_text(text.replace(marker, section + marker), encoding="utf-8", newline="\n")
+    if marker in text:
+        text = text.replace(marker, section + marker)
+    elif "</main>" in text:
+        text = text.replace("</main>", section + "</main>", 1)
+    else:
+        raise RuntimeError("root page main boundary missing")
+    page_path.write_text(text, encoding="utf-8", newline="\n")
 
 
 def main() -> int:

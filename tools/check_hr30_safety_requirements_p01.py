@@ -44,7 +44,7 @@ def main() -> int:
     holds = rows(OUT / "open-holds.csv")
     status = json.loads((OUT / "srs-status.json").read_text(encoding="utf-8"))
 
-    need(len(sources) == 23 and sum(r["source_type"] == "OFFICIAL EXTERNAL" for r in sources) == 11, "source coverage drift")
+    need(len(sources) == 24 and sum(r["source_type"] == "OFFICIAL EXTERNAL" for r in sources) == 12, "source coverage drift")
     need(len(lifecycle) == 14 and len({r["mode_id"] for r in lifecycle}) == 14, "lifecycle coverage drift")
     need(len(hazards) == 24 and len({r["hazard_id"] for r in hazards}) == 24, "24 unique hazards required")
     need(all(r["residual_risk_disposition"].startswith("OPEN") for r in hazards), "hazard risk falsely accepted")
@@ -57,6 +57,7 @@ def main() -> int:
     need(sum(r["candidate_plr"] == "d" for r in functions) == 7, "candidate PLr d allocation drift")
     need(all(r["achieved_pl_claimed"] == "NO" for r in functions), "achieved PL overclaim")
     need(any(r["function_id"] == "SFR-02" and "reset cannot command motion" in r["restart_inhibition"] for r in functions), "reset/restart invariant missing")
+    need(any(r["function_id"] == "SFR-03" and "21-22 mirror-certified NC" in r["input_subsystem"] and "S34" in r["logic_subsystem"] for r in functions), "exact EDM hardware binding missing")
     need(any(r["function_id"] == "SFR-07" and r["candidate_plr"] == "NOT ALLOCATED" and "NO SAFETY CREDIT" in r["implementation_state"] for r in functions), "watchdog safety-credit boundary drift")
     need(any(r["function_id"] == "SFR-11" and "MOTION PROHIBITED" in r["implementation_state"] for r in functions), "future speed/travel hold missing")
 
@@ -87,6 +88,7 @@ def main() -> int:
     need(all(r["sha256"] == sha(ROOT / r["path_or_url"]) for r in local), "local source hash drift")
     need(any(r["document"] == "ISO 13849-1:2023" and "does not prescribe" in r["use"] for r in official), "ISO 13849 PLr boundary missing")
     need(any(r["document"] == "ISO 13855:2024" and "age 14+" in r["use"] and "gravity falls" in r["use"] for r in official), "ISO 13855 scope boundary missing")
+    need(any(r["document"] == "TeSys Deca LC1D40ABD and catalog MKTED210011EN" and "mirror-certified 21-22" in r["use"] for r in official), "current contactor primary-source binding missing")
 
     for key in [
         "candidate_plr_approved", "achieved_performance_level_calculated", "stopping_time_measured",

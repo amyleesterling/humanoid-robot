@@ -201,9 +201,11 @@ def integrate_root(routes: list[dict[str, object]]) -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     block = f'''{start}\n## Actuator cable coupon and route measurement\n\nThe [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) binds the JST loose-piece **BEH-001T-P0.6 + YC-260R** prototype path, the strip-terminal **SEH-001T-P0.6 + YRS-260** alternative, seven destructive/measurement specimen families, and a **25-axis** as-built route register. No production cut length or crimp setting is released: every robot cable must be measured after assembly and swept through its complete joint range.\n{end}\n'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-README-START -->"
-    if marker not in text:
-        raise RuntimeError("README integration marker missing")
-    readme.write_text(text.replace(marker, block + marker), encoding="utf-8", newline="\n")
+    if marker in text:
+        text = text.replace(marker, block + marker)
+    else:
+        text = text.rstrip() + "\n\n" + block
+    readme.write_text(text, encoding="utf-8", newline="\n")
 
     page = WHOLE / "index.html"
     text = page.read_text(encoding="utf-8")
@@ -212,9 +214,13 @@ def integrate_root(routes: list[dict[str, object]]) -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     section = f'''{start}<section id="actuator-cable-coupon"><h2>The cable process now has a physical coupon path</h2><div class="grid"><article class="card pass"><div class="metric">4</div><p>manufacturer-linked candidate tooling operations.</p></article><article class="card pass"><div class="metric">7</div><p>coupon specimen families from crimp sections through torsion.</p></article><article class="card"><div class="metric">25</div><p>axis routes awaiting measured pull-string cut lengths.</p></article><article class="card hold"><div class="metric">0</div><p>built coupons, executed tests or production cut lengths.</p></article></div><p><a href="harness/actuator-cable-coupon-p0.1/index.html">Open the interactive coupon and route-measurement guide</a>. Do not cut production cable from the geometric planning values.</p></section>{end}'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-START -->"
-    if marker not in text:
-        raise RuntimeError("web integration marker missing")
-    page.write_text(text.replace(marker, section + marker), encoding="utf-8", newline="\n")
+    if marker in text:
+        text = text.replace(marker, section + marker)
+    elif "</main>" in text:
+        text = text.replace("</main>", section + "</main>", 1)
+    else:
+        raise RuntimeError("root page main boundary missing")
+    page.write_text(text, encoding="utf-8", newline="\n")
 
 
 def main() -> int:
