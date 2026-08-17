@@ -23,18 +23,20 @@ The fall-restraint architecture is a rated overhead gantry, swivel, energy-limit
 
 ## Articulated P0.1 pose set
 
-The package now carries 8 generated full-body configurations rather than prose-only stages, including mirrored lift and capture-step candidates for both legs. Joint targets are in `pose-joint-targets.csv`; transformed COM, support polygons, foot clearance and placement are in `pose-support-metrics.csv`; and each pose has STEP and GLB geometry. The minimum primary-foot COM margin in this set is **23.6 mm**. This is a rigid-link kinematic screen using provisional inertial data—not a zero-moment-point, contact-force, compliance, actuator, trajectory or balance validation.
+The package now carries 10 generated full-body configurations rather than prose-only stages, including mirrored lift and capture-step candidates for both legs. Joint targets are in `pose-joint-targets.csv`; transformed COM, support polygons, foot clearance and placement are in `pose-support-metrics.csv`; and each pose has STEP and GLB geometry. The minimum primary-foot COM margin in this set is **22.0 mm**. This is a rigid-link kinematic screen using provisional inertial data—not a zero-moment-point, contact-force, compliance, actuator, trajectory or balance validation.
 
 | Pose | Stage | Support | COM margin | Swing clearance | Forward placement |
 |---|---:|---|---:|---:|---:|
-| Neutral double support | S2 | DOUBLE | 35.8 mm | 0.0 mm | 0.0 mm |
-| Crouched double support | S2 | DOUBLE | 37.7 mm | 0.0 mm | 0.0 mm |
-| Left weight transfer | S3 | DOUBLE | 23.6 mm | 0.0 mm | 0.0 mm |
-| Right foot lift | S4 | L SINGLE | 23.7 mm | 6.8 mm | 1.0 mm |
-| Right capture-step candidate | S5 | L SINGLE | 23.9 mm | 17.2 mm | 40.7 mm |
-| Right weight transfer | S3 | DOUBLE | 25.2 mm | 0.0 mm | 0.0 mm |
-| Left foot lift | S4 | R SINGLE | 25.3 mm | 6.8 mm | 1.0 mm |
-| Left capture-step candidate | S5 | R SINGLE | 25.5 mm | 17.2 mm | 40.7 mm |
+| Neutral double support | S2 | DOUBLE | 44.6 mm | 0.0 mm | 0.0 mm |
+| Crouched double support | S2 | DOUBLE | 46.8 mm | 0.0 mm | 0.0 mm |
+| Left weight transfer | S3 | DOUBLE | 22.0 mm | 0.0 mm | 0.0 mm |
+| Right foot lift | S4 | L SINGLE | 22.1 mm | 6.8 mm | 1.0 mm |
+| Right capture-step candidate | S5 | L SINGLE | 22.3 mm | 17.2 mm | 40.7 mm |
+| Right 40 mm touchdown | S5 | DOUBLE | 64.6 mm | 0.0 mm | 40.0 mm |
+| Right weight transfer | S3 | DOUBLE | 23.8 mm | 0.0 mm | 0.0 mm |
+| Left foot lift | S4 | R SINGLE | 23.9 mm | 6.8 mm | 1.0 mm |
+| Left capture-step candidate | S5 | R SINGLE | 24.1 mm | 17.2 mm | 40.7 mm |
+| Left 40 mm touchdown | S5 | DOUBLE | 64.6 mm | 0.0 mm | 40.0 mm |
 
 <!-- HR30-POSE-P01-END -->
 
@@ -42,6 +44,6 @@ The package now carries 8 generated full-body configurations rather than prose-o
 
 ## Nominal self-collision result
 
-All 8 articulated poses have zero common volume across every checked nonadjacent link pair. The smallest nominal clearance is **8.50 mm**. Pairs below 5.0 mm remain packaging holds; the complete pair register is `whole-body-collision-register.csv`. Tolerance, covers, cables, tracking error and physical motion are not validated.
+All 10 articulated poses have zero common volume across every checked nonadjacent link pair. The smallest nominal clearance is **8.50 mm**. Pairs below 5.0 mm remain packaging holds; the complete pair register is `whole-body-collision-register.csv`. Tolerance, covers, cables, tracking error and physical motion are not validated.
 
 <!-- HR30-COLLISION-P01-END -->

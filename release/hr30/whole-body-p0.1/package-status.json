@@ -97,7 +97,7 @@
   "continuous_actuator_capability_validated": false,
   "dynamic_joint_loads_validated": false,
   "whole_body_pose_architecture_present": true,
-  "whole_body_pose_count": 8,
+  "whole_body_pose_count": 10,
   "pose_support_geometry_screen_complete": true,
   "pose_trajectory_validated": false,
   "quasistatic_balance_validated": false,
@@ -575,5 +575,13 @@
   "first_fit_article_production_interchangeable": false,
   "first_fit_article_powered_test_authority": false,
   "first_fit_article_motion_authority": false,
-  "first_fit_article_energization_authority": false
+  "first_fit_article_energization_authority": false,
+  "pose_dynamics_source": "hr30_tether.urdf",
+  "pose_dynamics_mass_kg": 9.958224,
+  "whole_body_walking_sequence_present": true,
+  "walking_sequence_count": 2,
+  "walking_sequence_sample_count": 1074,
+  "walking_sequence_dynamics_source": "hr30_tether.urdf",
+  "bilateral_grounded_touchdown_present": true,
+  "walking_sequence_physically_validated": false
 }
