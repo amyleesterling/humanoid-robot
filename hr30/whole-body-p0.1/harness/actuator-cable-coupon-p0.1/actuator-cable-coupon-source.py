@@ -63,6 +63,8 @@ def sources() -> list[dict[str, object]]:
         ("ACC-S07", "JST", "Crimping machines and tools", "current official PDF; accessed 2026-08-16", "https://www.jst-mfg.com/product/pdf/eng/eCRIMPING_MACHINES_AND_TOOLS.pdf", "YRS-260 strip-terminal tool; YC-260R loose-piece tool; BEH-001T-P0.6 loose terminal; EJ-PH extraction tool"),
         ("ACC-S08", "igus", "chainflex CF9.UL product page", "live page; accessed 2026-08-16", "https://www.igus.com/product/CF9_UL", "CF9.UL.02.02 is 2 x 0.25 mm2 / 24 AWG TPE continuous-flex/torsion candidate"),
         ("ACC-S09", "igus", "chainflex CF9.UL data sheet", "current official PDF; accessed 2026-08-16; visible footer 2014", "https://www.igus.com/contentData/Product_Files/Download/pdf/CF9-UL_en.pdf", "construction and published 5xd normal-temperature minimum bend radius; route-specific validation still required"),
+        ("ACC-S10", "Alpha Wire", "3051 customer specification", "current official specification; accessed 2026-08-17", "https://www.alphawire.com/disteAPI/SpecPDF/DownloadProductSpecPdf?productPartNumber=3051", "22 AWG 7/30 tinned-copper static commissioning-lead candidate; 1.575 +/- 0.051 mm insulation OD; UL AWM 1007 80 C / 300 V and 1569 105 C / 300 V"),
+        ("ACC-S11", "igus", "chainflex CF130-UL product page", "live official product page; accessed 2026-08-17", "https://www.igus.com/product/CF130_UL", "CF130.03.02.UL is a 2 x 22 AWG / 0.34 mm2 medium-duty moving-cable candidate; published 7.5xd minimum radius at +15 to +60 C for the five-million-double-stroke condition"),
     ]
     for item in official:
         sid, publisher, document, revision, url, scope = item
@@ -72,8 +74,8 @@ def sources() -> list[dict[str, object]]:
 
 def tooling() -> list[dict[str, object]]:
     data = [
-        ("ACC-T01", "prototype loose-piece crimp", "JST YC-260R", "JST BEH-001T-P0.6", "preferred coupon path", "candidate only; CF9 TPE insulation and exact crimp settings are not qualified by the cited JST table"),
-        ("ACC-T02", "strip-terminal hand crimp", "JST YRS-260", "JST SEH-001T-P0.6", "production-development alternative", "candidate only; strip supply and CF9-specific crimp validation required"),
+        ("ACC-T01", "prototype loose-piece crimp", "JST YC-260R", "JST BEH-001T-P0.6", "preferred coupon path", "candidate only; each Alpha/igus conductor construction and exact crimp settings require destructive coupon qualification"),
+        ("ACC-T02", "strip-terminal hand crimp", "JST YRS-260", "JST SEH-001T-P0.6", "production-development alternative", "candidate only; strip supply and construction-specific crimp validation required"),
         ("ACC-T03", "production applicator", "JST AP-K2N + MKS-L + APLMK SEH001-06", "JST SEH-001T-P0.6", "contract harness-maker alternative", "candidate only; machine setup, applicator condition and sample approval required"),
         ("ACC-T04", "contact extraction", "JST EJ-PH", "EHR housing / EH contact", "inspection and rework candidate", "extraction damage limits and reuse rule require an approved process"),
     ]
@@ -82,13 +84,15 @@ def tooling() -> list[dict[str, object]]:
 
 def bom() -> list[dict[str, object]]:
     data = [
-        ("ACC-B01", "igus", "CF9.UL.02.02", "2 x 0.25 mm2 / 24 AWG cable", "10 m evaluation quantity or supplier-cut sample", "quote, current availability, lot/CoC and received construction required"),
+        ("ACC-B01", "igus", "CF9.UL.02.02", "2 x 0.25 mm2 / 24 AWG flex cable; data-only evaluation candidate, not an actuator-power candidate at the JST 3 A / AWG22 headline condition", "5 m supplier-cut evaluation sample", "retain only for data/flex investigation; do not use for actuator power without a separately accepted current/contact result"),
         ("ACC-B02", "JST", "BEH-001T-P0.6", "loose-piece EH contact", "50 evaluation pieces", "supplier quote and confirmation of genuine current material required"),
         ("ACC-B03", "JST", "YC-260R", "loose-piece hand crimp tool", "1", "availability, serial/condition and calibration/inspection basis required"),
         ("ACC-B04", "JST", "EHR-3", "3-position EH housing", "10 evaluation pieces", "received lot and dimensional/fit inspection required"),
         ("ACC-B05", "JST", "EHR-4", "4-position EH housing", "10 evaluation pieces", "received lot and dimensional/fit inspection required"),
         ("ACC-B06", "JST", "EJ-PH", "EH extraction tool", "1", "availability and damage-free extraction trial required"),
         ("ACC-B07", "JST", "YRS-260 + SEH-001T-P0.6", "strip-terminal alternative", "quote only", "do not buy both crimp paths before process-owner disposition"),
+        ("ACC-B08", "Alpha Wire", "3051", "22 AWG 7/30 PVC hook-up wire; static suspended-commissioning coupon candidate only", "5 m black plus 5 m red evaluation quantity", "not a dynamic walking-harness candidate; quote, lot/CoC, received OD and crimp qualification required"),
+        ("ACC-B09", "igus", "CF130.03.02.UL", "2 x 22 AWG / 0.34 mm2 medium-duty chainflex cable; dynamic power-pair coupon candidate", "10 m supplier-cut evaluation sample", "individual-core insulation OD and nominal 0.34 mm2 versus JST 0.33 mm2 table boundary require written supplier/process disposition and destructive coupons"),
     ]
     return [controlled({"item_id": i, "manufacturer": maker, "order_code": code, "description": desc, "planning_quantity": qty, "procurement_hold": hold, "selection_state": "QUOTE / SAMPLE CANDIDATE ONLY"}) for i, maker, code, desc, qty, hold in data]
 
@@ -102,6 +106,8 @@ def specimens() -> list[dict[str, object]]:
         ("ACC-C05", "repeated-bend coupon", 500, 3, "cable-only then terminated assembly", "mandrel, travel, cycles and termination restraint require route measurement"),
         ("ACC-C06", "torsion coupon", 1000, 3, "cable-only active gauge length", "published +/-90 deg/m is a manufacturer boundary, not the robot acceptance limit"),
         ("ACC-C07", "housing insertion/extraction", 300, 6, "terminated lead in EHR-3/EHR-4", "contact retention, extraction damage and reuse acceptance require process definition"),
+        ("ACC-C08", "static suspended-commissioning power-lead qualification", 500, 6, "Alpha Wire 3051 red/black 22 AWG leads terminated with the selected JST EH contact path", "static-only candidate; crimp section, pull, retention, resistance and temperature-rise evidence required before any robot connection"),
+        ("ACC-C09", "dynamic actuator-power-pair qualification", 1000, 6, "igus CF130.03.02.UL 2 x 22 AWG cable terminated with the selected JST EH contact path", "individual-core OD/cross-section disposition, crimp section, pull, bend, torsion, resistance and temperature-rise evidence required"),
     ]
     return [controlled({"specimen_id": i, "purpose": purpose, "specimen_length_mm": length, "planned_quantity": qty, "construction": construction, "acceptance_boundary": boundary, "is_production_cut_length": "NO", "built_quantity": 0, "tested_quantity": 0}) for i, purpose, length, qty, construction, boundary in data]
 
@@ -158,27 +164,55 @@ def precut_routes() -> list[dict[str, object]]:
 
 def holds() -> list[dict[str, object]]:
     data = [
-        ("ACC-H01", "received CF9 individual-conductor insulation OD not verified against the SEH-001T-P0.6 1.0-1.9 mm range", "supplier drawing or received measurement"),
-        ("ACC-H02", "JST hand-tool examples do not qualify the exact CF9 TPE insulation/conductor construction", "JST/process-owner disposition plus destructive coupons"),
+        ("ACC-H01", "received Alpha Wire 3051 construction and OD are not verified against the exact JST contact/crimp process", "received-lot measurement plus JST/process-owner disposition and destructive coupons"),
+        ("ACC-H02", "CF130.03.02.UL individual-core insulation OD is unpublished on the cited page and its nominal 0.34 mm2 exceeds the JST table's 0.33 mm2 metric value despite both being labeled AWG22", "igus/JST written application disposition, supplier drawing and received measurement before crimp trials"),
         ("ACC-H03", "strip length, crimp heights and pull-force acceptance are unresolved", "qualified crimp specification and calibrated measurement plan"),
         ("ACC-H04", "genuine current parts/tools and lot traceability are unconfirmed", "supplier quote, order acknowledgement, CoC and incoming inspection"),
-        ("ACC-H05", "AWG24 current capacity, contact temperature rise and bundle derating are unverified", "duty-derived thermal test with representative bundling/ambient"),
+        ("ACC-H05", "AWG22 current capacity, JST contact temperature rise and bundle derating remain unverified for either power-wire candidate", "duty-derived thermal test with representative bundling/ambient"),
         ("ACC-H06", "bend/torsion/cycle life and termination restraint are unverified", "route-specific cycling with post-test electrical/mechanical inspection"),
         ("ACC-H07", "all 25 production cut lengths, slack and clamp locations are unmeasured", "assembled robot pull-string measurements through full joint sweeps"),
         ("ACC-H08", "branch protection and regeneration/fault behavior remain unselected", "measured duty/fault/inrush/regeneration plus coordinated protection design"),
         ("ACC-H09", "no physical coupon has been built or tested", "completed traveler and traceable raw measurements"),
         ("ACC-H10", "qualified harness disposition absent", "signed review of exact received materials, tooling, process and results"),
+        ("ACC-H11", "CF9.UL.02.02 is 24 AWG and does not earn the JST EH 3 A / AWG22 headline condition", "keep out of actuator-power service; any data-only use requires separate signal-integrity/flex qualification"),
     ]
     return [controlled({"hold_id": i, "unresolved_item": item, "evidence_required": evidence, "state": "OPEN"}) for i, item, evidence in data]
 
 
-def drawing() -> str:
+def _legacy_drawing() -> str:
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="720" viewBox="0 0 1440 720" role="img" aria-labelledby="t d"><title id="t">HR-30 actuator cable coupon workflow</title><desc id="d">Official candidate materials and tooling feed coupon construction and tests before any whole-robot cut length is allowed.</desc><rect width="1440" height="720" fill="#f7fbff"/><rect x="30" y="24" width="1380" height="94" rx="14" fill="#f2b91d" stroke="#805600" stroke-width="3"/><g font-family="system-ui" font-size="21" font-weight="800" fill="#17243a"><text x="60" y="64">PRELIMINARY - UNBUILT CABLE COUPON PLAN - NO PROCUREMENT, PRODUCTION CUTTING OR FABRICATION</text><text x="60" y="96">NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY</text></g><g font-family="system-ui" fill="#142a40"><text x="60" y="170" font-size="34" font-weight="900">Candidate materials</text><rect x="60" y="200" width="350" height="180" rx="18" fill="#d9f2ff" stroke="#0b4f91" stroke-width="3"/><text x="85" y="245" font-size="22" font-weight="800">CF9.UL.02.02</text><text x="85" y="282" font-size="18">2 x 0.25 mm2 / 24 AWG</text><text x="85" y="315" font-size="18">BEH-001T-P0.6 + EHR-3/4</text><text x="85" y="348" font-size="18">YC-260R + EJ-PH</text><text x="545" y="170" font-size="34" font-weight="900">Coupon evidence</text><rect x="500" y="200" width="420" height="180" rx="18" fill="#fff" stroke="#0b4f91" stroke-width="3"/><text x="530" y="245" font-size="18">strip + crimp section</text><text x="530" y="278" font-size="18">pull + retention</text><text x="530" y="311" font-size="18">resistance + temperature</text><text x="530" y="344" font-size="18">bend + torsion cycling</text><text x="1050" y="170" font-size="34" font-weight="900">Robot routing</text><rect x="1010" y="200" width="370" height="180" rx="18" fill="#fff" stroke="#982520" stroke-width="3"/><text x="1040" y="245" font-size="18">25 pull-string measurements</text><text x="1040" y="278" font-size="18">full joint sweeps</text><text x="1040" y="311" font-size="18">slack + clamps + bend radius</text><text x="1040" y="350" font-size="20" font-weight="900" fill="#982520">DO NOT CUT PRODUCTION CABLE</text><path d="M410 290 H500" stroke="#0b4f91" stroke-width="7" marker-end="url(#a)"/><path d="M920 290 H1010" stroke="#0b4f91" stroke-width="7" marker-end="url(#a)"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#0b4f91"/></marker></defs><rect x="170" y="470" width="1100" height="150" rx="18" fill="#071d36"/><text x="720" y="514" text-anchor="middle" font-size="23" fill="#fff" font-weight="800">Promotion requires received-lot coupons + qualified disposition</text><text x="720" y="548" text-anchor="middle" font-size="23" fill="#fff" font-weight="800">plus measured robot routes</text><text x="720" y="582" text-anchor="middle" font-size="21" fill="#fff">0 coupons built  |  0 tests executed  |  0 final cut lengths released</text><text x="720" y="610" text-anchor="middle" font-size="18" fill="#f2b91d">No connection, powered test, motion, or energization authority</text></g></svg>'''
 
 
-def render(routes: list[dict[str, object]]) -> str:
+def _legacy_render(routes: list[dict[str, object]]) -> str:
     route_rows = "".join(f"<tr><td>{html.escape(str(r['axis_id']))}</td><td>{r['geometric_one_way_planning_length_mm']} mm</td><td>{html.escape(str(r['commanded_range']))}</td><td>{r['final_cut_length_mm']}</td><td>{r['precut_action']}</td></tr>" for r in routes)
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 actuator cable coupon</title><style>:root{{--deep:#071d36;--blue:#0b4f91;--sky:#d9f2ff;--gold:#f2b91d;--paper:#f7fbff;--ink:#142a40;--line:#82c4e6;--red:#982520}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,main,footer{{padding:clamp(24px,5vw,64px) max(18px,calc((100vw - 1280px)/2))}}header,footer{{background:linear-gradient(135deg,var(--deep),var(--blue));color:white}}h1{{font-size:clamp(38px,6vw,70px);line-height:1.04;max-width:17ch}}h2{{font-size:clamp(28px,4vw,44px)}}h3{{font-size:22px}}.warning{{background:var(--gold);color:#17243a;border:3px solid #805600;padding:16px;font-weight:900}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}}article,.panel{{background:white;border:2px solid var(--line);border-radius:16px;padding:19px}}.metric{{font-size:clamp(34px,5vw,54px);font-weight:900;color:var(--blue)}}.hold{{border-color:var(--red)}}img{{max-width:100%;height:auto;border:2px solid var(--line);border-radius:16px}}.scroll{{overflow:auto;border:2px solid var(--line);border-radius:14px;background:white}}table{{border-collapse:collapse;width:100%;min-width:1100px}}th,td{{padding:14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:16px}}th{{background:var(--deep);color:white;position:sticky;top:0}}a{{color:#075b9b;font-weight:800}}small{{font-size:14px}}@media(max-width:560px){{body{{font-size:16px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>HR-30 whole-body P0.1</p><h1>Build and break coupons before cutting robot cables.</h1><p>The candidate parts and tools are now explicit. Their exact combination is not qualified, so the package defines the evidence needed to earn a production process.</p></header><main><section class="grid"><article><div class="metric">4</div><p>candidate tooling paths and operations</p></article><article><div class="metric">7</div><p>controlled coupon specimen families</p></article><article><div class="metric">25</div><p>axis routes requiring as-built measurement</p></article><article class="hold"><div class="metric">0</div><p>built coupons, executed tests, or released cut lengths</p></article></section><section><h2>Evidence flow</h2><img src="coupon-architecture.svg" alt="Cable coupon validation and robot route measurement workflow"></section><section><h2>Prototype tooling path</h2><div class="panel"><p><strong>Loose-piece trial:</strong> JST <strong>BEH-001T-P0.6</strong> contact, <strong>YC-260R</strong> hand tool, EHR-3/EHR-4 housings and <strong>EJ-PH</strong> extraction tool. The alternative strip path is SEH-001T-P0.6 + YRS-260. These are manufacturer-linked candidates—not a released process for CF9's TPE construction.</p></div></section><section><h2>Production lengths remain deliberately blank</h2><div class="panel hold"><p>The existing geometry values are planning lengths, not cable cut lengths. Each axis must be measured on the assembled robot with pull string through its complete joint range. Connector termination allowance, service slack, clamps, bend radius and collision clearance must then be frozen.</p></div><div class="scroll"><table><thead><tr><th>Axis</th><th>Geometry planning length</th><th>Commanded range</th><th>Final cut length</th><th>Action</th></tr></thead><tbody>{route_rows}</tbody></table></div></section><section><h2>Controlled records</h2><div class="panel"><p><a href="tooling-candidate-register.csv">Tooling</a> | <a href="coupon-bom.csv">Coupon BOM</a> | <a href="coupon-specimen-register.csv">Specimens</a> | <a href="coupon-build-traveler.csv">Build traveler</a> | <a href="coupon-measurement-record.csv">Measurements</a> | <a href="precut-route-register.csv">25 route measurements</a> | <a href="open-holds.csv">Open holds</a> | <a href="primary-source-register.csv">Primary sources</a></p><small>No acceptance limit has been invented. Unresolved values are explicitly SELECTION REQUIRED.</small></div></section></main><footer>{html.escape(WARNING)}</footer></body></html>'''
+
+
+def drawing() -> str:
+    """Return the candidate-flow drawing with the corrected power-wire split."""
+    return (
+        _legacy_drawing()
+        .replace("Candidate materials", "Power-wire candidates")
+        .replace("CF9.UL.02.02", "Static: Alpha 3051")
+        .replace("2 x 0.25 mm2 / 24 AWG", "22 AWG, 1.575 mm OD")
+        .replace("BEH-001T-P0.6 + EHR-3/4", "Dynamic: CF130.03.02.UL")
+        .replace("YC-260R + EJ-PH", "2 x 22 AWG; sample required")
+    )
+
+
+def render(routes: list[dict[str, object]]) -> str:
+    """Render the guide without carrying the rejected 24 AWG power implication."""
+    page = _legacy_render(routes)
+    page = page.replace(
+        "The candidate parts and tools are now explicit. Their exact combination is not qualified, so the package defines the evidence needed to earn a production process.",
+        "The 24 AWG predecessor is no longer treated as an actuator-power candidate. The package now separates a 22 AWG static suspended-commissioning lead from a 22 AWG dynamic cable candidate, and requires construction-specific destructive evidence for both.",
+    )
+    page = page.replace("<div class=\"metric\">7</div><p>controlled coupon specimen families", "<div class=\"metric\">9</div><p>controlled coupon specimen families", 1)
+    candidate_section = '''<section><h2>Two power-wire candidates, two different jobs</h2><div class="grid"><article><h3>Static suspended commissioning</h3><p><strong>Alpha Wire 3051</strong>: 22 AWG 7/30 PVC hook-up wire, 1.575 +/- 0.051 mm published OD. It is a coupon candidate for externally restrained, non-walking work only.</p></article><article><h3>Dynamic whole-body routing</h3><p><strong>igus CF130.03.02.UL</strong>: 2 x 22 AWG medium-duty moving cable. Individual-core OD and the 0.34 versus 0.33 mm2 catalog boundary require written disposition and received-lot measurement.</p></article></div><div class="panel hold"><p><strong>CF9.UL.02.02 is 24 AWG.</strong> It remains a data/flex investigation candidate only and receives no actuator-power credit from the JST 3 A / AWG22 headline condition.</p></div></section>'''
+    page = page.replace("<section><h2>Prototype tooling path</h2>", candidate_section + "<section><h2>Prototype tooling path</h2>", 1)
+    page = page.replace("These are manufacturer-linked candidates—not a released process for CF9's TPE construction.", "These are manufacturer-linked candidates—not a released process for either wire construction.")
+    page = page.replace("These are manufacturer-linked candidatesâ€”not a released process for CF9's TPE construction.", "These are manufacturer-linked candidates—not a released process for either wire construction.")
+    return page
 
 
 def integrate_root(routes: list[dict[str, object]]) -> None:
@@ -186,7 +220,7 @@ def integrate_root(routes: list[dict[str, object]]) -> None:
     status = json.loads(status_path.read_text(encoding="utf-8"))
     status.update({
         "actuator_cable_coupon_package_present": True, "actuator_cable_coupon_tooling_candidate_count": 4,
-        "actuator_cable_coupon_specimen_family_count": 7, "actuator_cable_coupon_route_measurement_count": len(routes),
+        "actuator_cable_coupon_specimen_family_count": 9, "actuator_cable_coupon_route_measurement_count": len(routes),
         "actuator_cable_coupon_built_count": 0, "actuator_cable_coupon_executed_test_count": 0,
         "actuator_cable_coupon_process_selected": False, "actuator_cable_final_cut_lengths_selected": False,
         "procurement_authority": False, "fabrication_authority": False, "connection_authority": False,
@@ -199,7 +233,7 @@ def integrate_root(routes: list[dict[str, object]]) -> None:
     start, end = "<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-START -->", "<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-END -->"
     if start in text and end in text:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
-    block = f'''{start}\n## Actuator cable coupon and route measurement\n\nThe [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) binds the JST loose-piece **BEH-001T-P0.6 + YC-260R** prototype path, the strip-terminal **SEH-001T-P0.6 + YRS-260** alternative, seven destructive/measurement specimen families, and a **25-axis** as-built route register. No production cut length or crimp setting is released: every robot cable must be measured after assembly and swept through its complete joint range.\n{end}\n'''
+    block = f'''{start}\n## Actuator cable coupon and route measurement\n\nThe [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) now separates the **Alpha Wire 3051 22 AWG static suspended-commissioning candidate** from the **igus CF130.03.02.UL 2 x 22 AWG dynamic candidate**, binds the JST loose-piece **BEH-001T-P0.6 + YC-260R** prototype path and the strip-terminal **SEH-001T-P0.6 + YRS-260** alternative, and provides nine destructive/measurement specimen families plus a **25-axis** as-built route register. The former 24 AWG CF9 candidate receives no actuator-power credit. No production cut length or crimp setting is released.\n{end}\n'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-README-START -->"
     if marker in text:
         text = text.replace(marker, block + marker)
@@ -212,7 +246,7 @@ def integrate_root(routes: list[dict[str, object]]) -> None:
     start, end = "<!-- HR30-ACTUATOR-CABLE-COUPON-P01-START -->", "<!-- HR30-ACTUATOR-CABLE-COUPON-P01-END -->"
     if start in text and end in text:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
-    section = f'''{start}<section id="actuator-cable-coupon"><h2>The cable process now has a physical coupon path</h2><div class="grid"><article class="card pass"><div class="metric">4</div><p>manufacturer-linked candidate tooling operations.</p></article><article class="card pass"><div class="metric">7</div><p>coupon specimen families from crimp sections through torsion.</p></article><article class="card"><div class="metric">25</div><p>axis routes awaiting measured pull-string cut lengths.</p></article><article class="card hold"><div class="metric">0</div><p>built coupons, executed tests or production cut lengths.</p></article></div><p><a href="harness/actuator-cable-coupon-p0.1/index.html">Open the interactive coupon and route-measurement guide</a>. Do not cut production cable from the geometric planning values.</p></section>{end}'''
+    section = f'''{start}<section id="actuator-cable-coupon"><h2>The cable process now has a physical coupon path</h2><div class="grid"><article class="card pass"><div class="metric">2</div><p>separate 22 AWG static and dynamic power-wire candidates.</p></article><article class="card pass"><div class="metric">9</div><p>coupon specimen families from crimp sections through torsion.</p></article><article class="card"><div class="metric">25</div><p>axis routes awaiting measured pull-string cut lengths.</p></article><article class="card hold"><div class="metric">0</div><p>built coupons, executed tests or production cut lengths.</p></article></div><p><a href="harness/actuator-cable-coupon-p0.1/index.html">Open the interactive coupon and route-measurement guide</a>. The former 24 AWG candidate is not credited for actuator power; do not cut production cable from geometric planning values.</p></section>{end}'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-START -->"
     if marker in text:
         text = text.replace(marker, section + marker)
@@ -243,6 +277,8 @@ def main() -> int:
         "bom_item_count": len(bom_rows), "specimen_family_count": len(specimen_rows), "traveler_step_count": len(traveler_rows),
         "measurement_record_count": len(measurement_rows), "route_measurement_count": len(route_rows), "open_hold_count": len(hold_rows),
         "loose_piece_tooling_path_bound": True, "strip_terminal_tooling_path_bound": True,
+        "cf9_power_candidate_rejected": True, "static_22awg_candidate_defined": True, "dynamic_22awg_candidate_defined": True,
+        "alpha_3051_crimp_process_selected": False, "cf130_crimp_process_selected": False,
         "cf9_specific_crimp_process_selected": False, "built_coupon_count": 0, "executed_test_count": 0,
         "measured_robot_route_count": 0, "released_final_cut_length_count": 0,
         "procurement_authority": False, "production_cutting_authority": False, "fabrication_authority": False,

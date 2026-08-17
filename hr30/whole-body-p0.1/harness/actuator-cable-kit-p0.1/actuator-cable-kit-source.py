@@ -76,6 +76,8 @@ def source_rows() -> list[dict[str, object]]:
         ("ACK-S13", "Alpha Wire", "86202 Xtra-Guard Flex product page", "live official page; accessed 2026-08-16", "https://www.alphawire.com/en/products/cable/xtra-guard-performance-cable/xtra-guard-flex/86202", "2 x 24 AWG twisted continuous-flex cable; nominal characteristic impedance 87 ohm and 29 ohm/1000 ft conductor DCR at 20 C"),
         ("ACK-S14", "Alpha Wire", "AZ221934 hook-up wire product page", "live official page; accessed 2026-08-16", "https://www.alphawire.com/products/wire/hook-up-wire/premium/az221934", "22 AWG ETFE hook-up wire, -55 to 150 C, 600 V and nominal 15.1 ohm/1000 ft DCR at 20 C; no continuous-flex robot qualification claimed"),
         ("ACK-S15", "igus", "chainflex CF240 product page", "live official page; accessed 2026-08-16", "https://www.igus.com/product/CF240", "CF240.01.03 is shielded 3 x 26 AWG / 0.14 mm2; twist/controlled impedance not established on page"),
+        ("ACK-S16", "Alpha Wire", "3051 product page and customer specification", "live official page/specification; accessed 2026-08-17", "https://www.alphawire.com/products/wire/hook-up-wire/premium/3051", "22 AWG 7/30 tinned copper; 1.575 +/- 0.051 mm OD; nominal DCR 16.2 ohm/1000 ft at 20 C; 10xd bend radius; static suspended-commissioning coupon candidate only"),
+        ("ACK-S17", "igus", "chainflex CF130-UL product page", "live official page; accessed 2026-08-17", "https://www.igus.com/product/CF130_UL", "CF130.03.02.UL is 2 x 22 AWG / 0.34 mm2 medium-duty moving cable; published 7.5xd minimum radius at +15 to +60 C for five million double strokes"),
     ]
     rows.extend(common({"source_id": i, "publisher": p, "document": d, "revision_or_date": rev, "official_url_or_path": url, "sha256": "N/A - LIVE PRIMARY SOURCE", "verified_scope": scope}) for i, p, d, rev, url, scope in official)
     return rows
@@ -111,20 +113,21 @@ def axis_rows() -> list[dict[str, object]]:
             "candidate_internal_limit_a": f"{cap:.6f}", "published_stall_endpoint_a": f"{stall:.3f}",
             "stall_is_normal_demand": "NO", "one_way_planning_length_mm": source["one_way_planning_length_mm"],
             "round_trip_planning_length_mm": source["round_trip_planning_length_mm"],
-            "power_pair_test_coupon_candidate": "igus CF9.UL.02.02; 2 x 0.25 mm2 / 24 AWG",
-            "candidate_conductor_mm2": "0.250",
+            "power_pair_test_coupon_candidate": "STATIC: Alpha Wire 3051 22 AWG; DYNAMIC: igus CF130.03.02.UL 2 x 22 AWG; CF9.UL.02.02 REJECTED FOR ACTUATOR POWER",
+            "candidate_conductor_mm2": "STATIC AWG22 / published 7x30 construction; DYNAMIC 0.34 mm2 nominal with written-disposition hold",
             "manufacturer_max_conductor_resistance_20c_ohm_per_km": "79.000",
+            "calculation_material": "REJECTED CF9.UL.02.02 PREDECESSOR COMPARISON ONLY - NOT A POWER-CABLE SELECTION",
             "jst_eh_published_conductor_range": "AWG30-22; maximum 0.33 mm2 for SEH-001T-P0.6",
-            "wire_contact_geometric_compatibility": "CANDIDATE PASS - 0.25 mm2 IS WITHIN JST 0.032-0.33 mm2 PUBLISHED RANGE",
-            "connector_current_evidence": "JST SERIES HEADLINE 3 A IS AT AWG22 ONLY - NOT APPLIED TO THIS AWG24 CANDIDATE",
+            "wire_contact_geometric_compatibility": "STATIC CANDIDATE PASS AT PUBLISHED AWG22 / 1.575 MM OD; DYNAMIC 0.34 VS 0.33 MM2 WRITTEN-DISPOSITION HOLD",
+            "connector_current_evidence": "JST SERIES HEADLINE 3 A IS AT AWG22; STATIC CANDIDATE MATCHES SIZE CONDITION BUT APPLICATION/CRIMP/TEMPERATURE VALIDATION REMAINS OPEN",
             "loop_resistance_20c_planning_ohm": f"{loop_resistance_20c:.6f}",
             "voltage_drop_20c_at_candidate_cap_v": f"{drop_20c:.6f}",
             "conductor_loss_20c_at_candidate_cap_w": f"{loss_20c:.6f}",
-            "calculation_boundary": "MANUFACTURER MAX DCR AT 20 C AND CANDIDATE CURRENT CAP; NOT HOT/BUNDLED/RMS/REGENERATION RATING",
-            "current_capacity_disposition": "OPEN - AMPACITY, DERATING, CONNECTOR TEMPERATURE-RISE AND DUTY-CYCLE TEST REQUIRED",
-            "dynamic_route_disposition": "TEST-COUPON CANDIDATE - BEND/TORSION DISTRIBUTION AND CYCLE LIFE REQUIRE ROUTE TEST",
+            "calculation_boundary": "REJECTED CF9 PREDECESSOR MAX-DCR COMPARISON AT 20 C; NOT A CANDIDATE-WIRE DROP, AMPACITY, THERMAL OR REGENERATION RATING",
+            "current_capacity_disposition": "OPEN - STATIC ALPHA 3051 AND DYNAMIC CF130 REQUIRE SEPARATE AMPACITY, DERATING, CRIMP AND CONNECTOR TEMPERATURE-RISE TESTS",
+            "dynamic_route_disposition": "CF130 TEST-COUPON CANDIDATE - CORE OD/CROSS-SECTION DISPOSITION, BEND/TORSION DISTRIBUTION AND CYCLE LIFE REQUIRE TEST",
             "branch_protection": "SELECTION REQUIRED", "cut_length_and_service_slack": "SELECTION REQUIRED",
-            "selection_state": "GEOMETRICALLY COMPATIBLE TEST-COUPON CANDIDATE; NOT RELEASED",
+            "selection_state": "STATIC/DYNAMIC 22 AWG TEST-COUPON CANDIDATES DEFINED; CF9 POWER PREDECESSOR REJECTED; NOT RELEASED",
         }))
     return rows
 
@@ -183,10 +186,10 @@ def inspection_rows() -> list[dict[str, object]]:
 
 def hold_rows() -> list[dict[str, object]]:
     data = [
-        ("ACK-H01", "CF9.UL.02.02 fits the published JST contact cross-section range but its allowable current in the final moving, bundled harness is unproven", "accepted RMS/peak duty, ambient, bundling and hot-route model plus received crimp/temperature-rise tests"),
+        ("ACK-H01", "Alpha Wire 3051 is a static suspended-commissioning candidate only; received construction, crimp quality, current/temperature behavior and external restraint remain unverified", "received-lot measurement plus crimp/pull/resistance/temperature coupons and a dimensioned non-moving restraint plan"),
         ("ACK-H02", "normal RMS, peak duration, diversity and regeneration waveforms are unmeasured", "accepted whole-body trajectories with synchronized current/voltage/temperature records"),
         ("ACK-H03", "branch fuse/eFuse/current-limiter coordination is unselected", "fault current, impedance, inrush, regeneration, interruption and connector-protection tests"),
-        ("ACK-H04", "CF9.UL has published bend/torsion capability but no HR-30 route is classified or cycle-tested", "route-specific bend/twist distribution, temperature range and representative life test"),
+        ("ACK-H04", "CF130.03.02.UL is the dynamic candidate, but individual-core OD and 0.34 versus 0.33 mm2 contact boundary plus every HR-30 route remain unresolved", "written igus/JST application disposition, received measurements and route-specific bend/twist/temperature/life testing"),
         ("ACK-H05", "no RS-485 or TTL data cable is validated in the final eight-bus topology", "manufacturer suitability evidence plus waveform, termination, common-mode, error-rate and EMC tests at final lengths"),
         ("ACK-H06", "cut lengths, service slack, clamp positions and retention hardware are unselected", "as-built route measurement and dimensioned assembly drawings"),
         ("ACK-H07", "contact crimp tooling, setup, pull limit and cross-section acceptance are unselected", "controlled process specification, coupons and qualified inspection"),
@@ -198,12 +201,12 @@ def hold_rows() -> list[dict[str, object]]:
     return [common({"hold_id": i, "unresolved_item": item, "closure_evidence": evidence, "state": "OPEN"}) for i, item, evidence in data]
 
 
-def drawing() -> str:
+def _legacy_drawing() -> str:
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc"><title id="title">HR-30 actuator cable-kit architecture</title><desc id="desc">Each actuator receives an individual protected power pair and serial data. Outgoing inter-actuator connectors omit ground and voltage contacts.</desc><style>text{{font:600 18px system-ui;fill:#102b46}}.h{{font-size:34px;font-weight:900}}.s{{font-size:16px}}.box{{fill:#fff;stroke:#0b4f91;stroke-width:4}}.data{{stroke:#28a9df;stroke-width:8;fill:none}}.power{{stroke:#f2b91d;stroke-width:9;fill:none}}.empty{{fill:#fff;stroke:#982520;stroke-width:5}}.pin{{fill:#d9f2ff;stroke:#0b4f91;stroke-width:3}}.warn{{fill:#fff0b5;stroke:#982520;stroke-width:4}}</style><rect width="1600" height="980" fill="#eef8ff"/><text class="h" x="50" y="60">HR-30 split actuator harness candidate</text><rect class="box" x="55" y="180" width="330" height="270" rx="20"/><text x="90" y="225">25-channel protected PDU</text><text class="s" x="90" y="270">one positive + return pair per axis</text><text class="s" x="90" y="310">candidate internal cap ≤ 2.499 A</text><text class="s" x="90" y="350">branch protection: selection required</text><rect class="box" x="620" y="130" width="390" height="380" rx="20"/><text x="655" y="175">Actuator input EHR-4 / EHR-3</text><circle class="pin" cx="690" cy="235" r="24"/><text x="680" y="242">1</text><text class="s" x="735" y="242">GND — individual return</text><circle class="pin" cx="690" cy="300" r="24"/><text x="680" y="307">2</text><text class="s" x="735" y="307">VDD — individual protected feed</text><circle class="pin" cx="690" cy="365" r="24"/><text x="680" y="372">3</text><text class="s" x="735" y="372">DATA / DATA+</text><circle class="pin" cx="690" cy="430" r="24"/><text x="680" y="437">4</text><text class="s" x="735" y="437">DATA− on RS-485 only</text><path class="power" d="M385 270 C500 270 520 235 620 235"/><path class="power" d="M385 340 C500 340 520 300 620 300"/><rect class="box" x="1160" y="130" width="370" height="380" rx="20"/><text x="1195" y="175">Outgoing data-only housing</text><circle class="empty" cx="1230" cy="235" r="24"/><text x="1220" y="242">1</text><text class="s" x="1275" y="242">EMPTY — no GND pass-through</text><circle class="empty" cx="1230" cy="300" r="24"/><text x="1220" y="307">2</text><text class="s" x="1275" y="307">EMPTY — no VDD pass-through</text><circle class="pin" cx="1230" cy="365" r="24"/><text x="1220" y="372">3</text><text class="s" x="1275" y="372">DATA / DATA+</text><circle class="pin" cx="1230" cy="430" r="24"/><text x="1220" y="437">4</text><text class="s" x="1275" y="437">DATA− on RS-485 only</text><path class="data" d="M1010 365 L1160 365"/><path class="data" d="M1010 430 L1160 430"/><rect class="warn" x="110" y="610" width="1380" height="230" rx="20"/><text class="h" x="155" y="665">Unresolved physical interface</text><text x="155" y="720">CF130.03.02.UL is a test-coupon candidate only: 0.34 mm² nominal exceeds JST's 0.33 mm² maximum.</text><text x="155" y="765">CF240.01.03 is shielded and flexible, but RS-485 twist/impedance suitability is not established.</text><text x="155" y="810">No cable is approved to crimp, connect or energize.</text><text class="s" x="50" y="940">{html.escape(WARNING)}</text></svg>'''
 
 
-def render(axis: list[dict[str, object]], cavities: list[dict[str, object]]) -> str:
-    axis_table = "".join(f"<tr><td>{html.escape(str(r['axis_id']))}</td><td>{html.escape(str(r['bus_id']))}</td><td>{r['candidate_internal_limit_a']} A</td><td>{r['published_stall_endpoint_a']} A</td><td>{r['round_trip_planning_length_mm']} mm</td><td>{html.escape(str(r['wire_contact_compatibility']))}</td></tr>" for r in axis)
+def _legacy_render(axis: list[dict[str, object]], cavities: list[dict[str, object]]) -> str:
+    axis_table = "".join(f"<tr><td>{html.escape(str(r['axis_id']))}</td><td>{html.escape(str(r['bus_id']))}</td><td>{r['candidate_internal_limit_a']} A</td><td>{r['published_stall_endpoint_a']} A</td><td>{r['round_trip_planning_length_mm']} mm</td><td>{html.escape(str(r['wire_contact_geometric_compatibility']))}</td></tr>" for r in axis)
     empty_count = sum(r["required_population"] == "EMPTY" for r in cavities)
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 actuator cable kit</title><style>:root{{--deep:#071d36;--blue:#0b4f91;--sky:#d9f2ff;--gold:#f2b91d;--paper:#f7fbff;--ink:#142a40;--line:#82c4e6;--red:#982520}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,main,footer{{padding:clamp(24px,5vw,64px) max(18px,calc((100vw - 1280px)/2))}}header,footer{{background:linear-gradient(135deg,var(--deep),var(--blue));color:white}}h1{{font-size:clamp(38px,6vw,70px);line-height:1.04;max-width:18ch}}h2{{font-size:clamp(28px,4vw,44px)}}h3{{font-size:22px}}.warning{{background:var(--gold);color:#17243a;border:3px solid #805600;padding:16px;font-weight:900}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}}article,.panel{{background:white;border:2px solid var(--line);border-radius:16px;padding:19px}}.metric{{font-size:clamp(34px,5vw,54px);font-weight:900;color:var(--blue)}}.hold{{border-color:var(--red)}}.scroll{{overflow:auto;border:2px solid var(--line);border-radius:14px;background:white}}table{{border-collapse:collapse;width:100%;min-width:1180px}}th,td{{padding:14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:16px}}th{{background:var(--deep);color:white;position:sticky;top:0}}img{{max-width:100%;height:auto;border:2px solid var(--line);border-radius:16px}}a{{color:#075b9b;font-weight:800}}small{{font-size:14px}}@media(max-width:560px){{body{{font-size:16px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>HR-30 whole-body P0.1</p><h1>The 25 actuator cables now have explicit pin populations.</h1><p>Every actuator gets an individual protected power pair. Every inter-actuator outgoing housing is data-only, with power cavities intentionally empty.</p></header><main><section class="grid"><article><div class="metric">25 / 25</div><p>axis power pairs bound to current caps and planning lengths</p></article><article><div class="metric">159</div><p>controlled actuator connector-cavity records</p></article><article><div class="metric">{empty_count}</div><p>outgoing GND/VDD cavities required empty</p></article><article class="hold"><div class="metric">0</div><p>released cables, crimp processes, protection devices or powered permissions</p></article></section><section><h2>Physical topology</h2><img src="actuator-cable-kit.svg" alt="Individual actuator power pair and data-only outgoing connector architecture"></section><section><h2>Connector disposition</h2><div class="panel"><p>ROBOTIS uses EHR-03/EHR-04 notation. JST's current canonical housing models are <strong>EHR-3</strong> and <strong>EHR-4</strong>, with standard contact <strong>SEH-001T-P0.6</strong>. Low-insertion-force contacts are rejected for this walking-vibration candidate because JST identifies reduced vibration resistance.</p><p>The order-code family is now explicit, but received mating fit, tooling, crimp quality and retention are still unverified.</p></div></section><section><h2>Power-cable blocker</h2><div class="panel hold"><p><strong>Do not crimp CF130.03.02.UL into this contact yet.</strong> igus publishes 0.34 mm² nominal conductors; JST publishes a 0.33 mm² maximum for the standard EH contact. The 0.01 mm² mismatch requires written supplier approval or a different cable/contact choice plus coupon tests.</p></div></section><section><h2>All 25 axis feeds</h2><div class="scroll"><table><thead><tr><th>Axis</th><th>Bus</th><th>Candidate cap</th><th>Published stall endpoint</th><th>Round-trip planning length</th><th>Wire/contact disposition</th></tr></thead><tbody>{axis_table}</tbody></table></div></section><section><h2>Controlled records</h2><div class="panel"><p><a href="connector-family-disposition.csv">Connector family</a> · <a href="axis-power-cable-candidate.csv">25 axis candidates</a> · <a href="connector-cavity-population.csv">159 cavity records</a> · <a href="data-cable-candidate.csv">Data candidates</a> · <a href="inspection-test-plan.csv">Inspection/test plan</a> · <a href="open-holds.csv">Open holds</a> · <a href="primary-source-register.csv">Primary sources</a></p><small>All measured values remain NONE and every execution state remains NOT EXECUTED.</small></div></section></main><footer>{html.escape(WARNING)}</footer></body></html>'''
 
@@ -224,6 +227,20 @@ def render(axis: list[dict[str, object]], cavities: list[dict[str, object]]) -> 
     max_loss = max(float(r["conductor_loss_20c_at_candidate_cap_w"]) for r in axis)
     empty_count = sum(r["required_population"] == "EMPTY" for r in cavities)
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 actuator cable kit</title><style>:root{{--deep:#071d36;--blue:#0b4f91;--sky:#d9f2ff;--gold:#f2b91d;--paper:#f7fbff;--ink:#142a40;--line:#82c4e6;--red:#982520}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,main,footer{{padding:clamp(24px,5vw,64px) max(18px,calc((100vw - 1280px)/2))}}header,footer{{background:linear-gradient(135deg,var(--deep),var(--blue));color:white}}h1{{font-size:clamp(38px,6vw,70px);line-height:1.04;max-width:18ch}}h2{{font-size:clamp(28px,4vw,44px)}}h3{{font-size:22px}}.warning{{background:var(--gold);color:#17243a;border:3px solid #805600;padding:16px;font-weight:900}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}}article,.panel{{background:white;border:2px solid var(--line);border-radius:16px;padding:19px}}.metric{{font-size:clamp(34px,5vw,54px);font-weight:900;color:var(--blue)}}.hold{{border-color:var(--red)}}.scroll{{overflow:auto;border:2px solid var(--line);border-radius:14px;background:white}}table{{border-collapse:collapse;width:100%;min-width:1480px}}th,td{{padding:14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:16px}}th{{background:var(--deep);color:white;position:sticky;top:0}}img{{max-width:100%;height:auto;border:2px solid var(--line);border-radius:16px}}a{{color:#075b9b;font-weight:800}}small{{font-size:14px}}@media(max-width:560px){{body{{font-size:16px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>HR-30 whole-body P0.1</p><h1>The 25 actuator feeds now have a compatible-size flex-cable candidate.</h1><p>CF9.UL.02.02 fits the contact's published conductor range. Per-axis 20 C resistance, voltage-drop and conductor-loss planning values are calculated from the manufacturer's maximum DCR.</p></header><main><section class="grid"><article><div class="metric">25 / 25</div><p>axis power pairs have a geometric wire/contact candidate</p></article><article><div class="metric">{max_drop:.3f} V</div><p>largest calculated 20 C drop at a candidate current cap</p></article><article><div class="metric">{max_loss:.3f} W</div><p>largest calculated 20 C pair loss at that cap</p></article><article class="hold"><div class="metric">0</div><p>released cables, crimp processes, protection devices or powered permissions</p></article></section><section><h2>Physical topology</h2><img src="actuator-cable-kit.svg" alt="Individual actuator power pair and data-only outgoing connector architecture"></section><section><h2>What advanced</h2><div class="panel"><p><strong>igus CF9.UL.02.02</strong> is a 2 x 0.25 mm2 / 24 AWG continuous-flex candidate. Its conductor size is inside JST's published 0.032-0.33 mm2 range for SEH-001T-P0.6. igus publishes a maximum 20 C conductor resistance of 79 ohm/km, which now drives every planning value below.</p></div></section><section><h2>What remains blocked</h2><div class="panel hold"><p><strong>Do not crimp or connect this candidate yet.</strong> JST's 3 A series headline is specified at AWG22, not this AWG24 candidate. Actual RMS duty, ambient, bundling, connector temperature rise, branch protection, crimp quality and route-specific flex life remain unverified. The calculations are 20 C planning values, not ampacity or thermal release.</p></div></section><section><h2>All 25 axis feeds</h2><div class="scroll"><table><thead><tr><th>Axis</th><th>Bus</th><th>Candidate cap</th><th>Round-trip length</th><th>20 C loop R</th><th>20 C drop</th><th>20 C pair loss</th><th>Release boundary</th></tr></thead><tbody>{axis_table}</tbody></table></div></section><section><h2>Data-cable disposition</h2><div class="panel"><p>CFBUS.PVC.001 is now an RS-485 test-coupon candidate, not a selection: its published approximately 150 ohm characteristic impedance must be reconciled with the final topology and termination. CFROBOT3 remains a torsional-route hold because pair impedance is unpublished. Alpha Wire 86202 is rejected as the RS-485 candidate at its published 87 ohm nominal impedance. Standard powered ROBOTIS daisy cables remain rejected because they would parallel the separately protected branches.</p></div></section><section><h2>Controlled records</h2><div class="panel"><p><a href="connector-family-disposition.csv">Connector family</a> | <a href="axis-power-cable-candidate.csv">25 calculated axis candidates</a> | <a href="connector-cavity-population.csv">159 cavity records</a> | <a href="data-cable-candidate.csv">Data candidates</a> | <a href="inspection-test-plan.csv">Inspection/test plan</a> | <a href="open-holds.csv">Open holds</a> | <a href="primary-source-register.csv">Primary sources</a></p><small>{empty_count} outgoing power/reference cavities remain controlled EMPTY. All physical measured values remain NONE and every execution state remains NOT EXECUTED.</small></div></section></main><footer>{html.escape(WARNING)}</footer></body></html>'''
+
+
+def drawing() -> str:
+    return _legacy_drawing().replace("25-channel protected PDU", "eight isolated bus boards")
+
+
+def render(axis: list[dict[str, object]], cavities: list[dict[str, object]]) -> str:
+    page = _legacy_render(axis, cavities)
+    page = page.replace("min-width:1180px", "min-width:1480px")
+    page = page.replace("The 25 actuator cables now have explicit pin populations.", "The 25 actuator feeds now separate static and dynamic 22 AWG candidates.")
+    page = page.replace("Every actuator gets an individual protected power pair. Every inter-actuator outgoing housing is data-only, with power cavities intentionally empty.", "Alpha Wire 3051 is the static suspended-commissioning coupon candidate. CF130.03.02.UL is the dynamic coupon candidate. CF9 is rejected for actuator power, and outgoing bus links remain data-only.")
+    page = page.replace("axis power pairs bound to current caps and planning lengths", "axis power pairs have static/dynamic 22 AWG coupon candidates")
+    page = page.replace("<strong>Do not crimp CF130.03.02.UL into this contact yet.</strong>", "<strong>Do not crimp or connect either candidate yet.</strong>")
+    return page
 
 
 def integrate_root(axis: list[dict[str, object]], cavities: list[dict[str, object]]) -> None:
@@ -280,6 +297,26 @@ def integrate_root(axis: list[dict[str, object]], cavities: list[dict[str, objec
     page.write_text(text, encoding="utf-8", newline="\n")
 
 
+def correct_root_copy() -> None:
+    """Remove the superseded CF9 power-selection wording from root artifacts."""
+    readme = WHOLE / "README.md"
+    text = readme.read_text(encoding="utf-8")
+    text = text.replace(
+        "The igus **CF9.UL.02.02** 0.25 mm2 continuous-flex test-coupon candidate is inside JST's published conductor-size range; the largest manufacturer-DCR-based 20 C planning drop is **",
+        "The power-wire path is split: **Alpha Wire 3051 22 AWG** for static suspended-commissioning coupons and **igus CF130.03.02.UL 2 x 22 AWG** for dynamic coupons. The retained rejected-CF9 predecessor comparison has a largest 20 C planning drop of **",
+    )
+    text = text.replace("This is not an ampacity or thermal release.", "That comparison is not a cable selection, ampacity or thermal release.")
+    readme.write_text(text, encoding="utf-8", newline="\n")
+
+    page = WHOLE / "index.html"
+    text = page.read_text(encoding="utf-8")
+    text = text.replace("The actuator wire candidate now fits the contact range", "Static and dynamic actuator power-wire candidates are now separated")
+    text = text.replace("axis feeds carry calculated 20 C resistance, drop and loss values", "axis feeds carry static/dynamic 22 AWG coupon-candidate bindings")
+    text = text.replace("CF9.UL.02.02 fits the JST conductor range, but AWG24 current capacity, hot bundling, crimp temperature rise and route life are not validated.", "Alpha 3051 is static-only; CF130 requires written contact-boundary disposition and dynamic qualification. CF9 receives no actuator-power credit.")
+    text = text.replace("It defines a test-coupon candidate but grants no procurement", "It defines separate static/dynamic coupon candidates but grants no procurement")
+    page.write_text(text, encoding="utf-8", newline="\n")
+
+
 def main() -> int:
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -301,6 +338,9 @@ def main() -> int:
         "inspection_test_count": len(tests), "open_hold_count": len(holds), "current_caps_propagated": True,
         "canonical_jst_order_code_family_bound": True,
         "cf9_jst_cross_section_geometry_compatible": True,
+        "cf9_power_candidate_rejected": True,
+        "static_alpha_3051_coupon_candidate_defined": True,
+        "dynamic_cf130_coupon_candidate_defined": True,
         "cf9_current_capacity_released": False,
         "cf9_route_life_verified": False,
         "planning_resistance_basis_ohm_per_km_at_20c": 79.0,
@@ -311,7 +351,7 @@ def main() -> int:
         "connection_authority": False, "powered_test_authority": False, "motion_authority": False, "energization_authority": False,
     }
     (OUT / "actuator-cable-kit-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
-    (OUT / "README.md").write_text(f"# HR-30 actuator cable kit P0.1\n\n**{WARNING}**\n\nThis package defines the 25-axis split power/data cable-kit candidate down to every actuator connector cavity. CF9.UL.02.02 resolves the prior conductor-size mismatch at candidate level and every axis has a manufacturer-DCR-based 20 C planning calculation. Ampacity, hot bundling, connector temperature rise, protection, route life and crimp process remain open.\n", encoding="utf-8", newline="\n")
+    (OUT / "README.md").write_text(f"# HR-30 actuator cable kit P0.1\n\n**{WARNING}**\n\nThis package defines the 25-axis split power/data cable-kit candidate down to every actuator connector cavity. Alpha Wire 3051 is the static suspended-commissioning coupon candidate; igus CF130.03.02.UL is the dynamic coupon candidate. CF9.UL.02.02 is rejected for actuator power and its retained numeric rows are predecessor comparisons only. Ampacity, hot bundling, connector temperature rise, protection, route life and crimp process remain open.\n", encoding="utf-8", newline="\n")
     (OUT / "actuator-cable-kit.svg").write_text(drawing(), encoding="utf-8", newline="\n")
     (OUT / "index.html").write_text(render(axes, cavities), encoding="utf-8", newline="\n")
     shutil.copy2(Path(__file__), OUT / "actuator-cable-kit-source.py")
@@ -321,6 +361,7 @@ def main() -> int:
         shutil.rmtree(RELEASE)
     shutil.copytree(OUT, RELEASE)
     integrate_root(axes, cavities)
+    correct_root_copy()
     import generate_hr30_system_package_p01 as system
     system.refresh_manifest_and_release()
     print(json.dumps(status, indent=2))
