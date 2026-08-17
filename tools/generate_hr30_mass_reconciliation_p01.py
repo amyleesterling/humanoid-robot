@@ -595,7 +595,7 @@ def write_lightweight_register(summary: dict) -> None:
         {
             "decision_id": "HR30-LW-003", "affected_system": "covers",
             "baseline_candidate": "2.4-3.0 mm shells and panels",
-            "lightweight_candidate": "1.2 mm body/limb panels with unchanged interfaces; detailed hand parts retained",
+            "lightweight_candidate": "0.8 mm thermoformed-polycarbonate or PA12 body/limb panels with unchanged outer interfaces; detailed hand parts retained",
             "mass_effect": "included in fabrication subtotal", "engineering_hold": "material/process, ribs, vents, retention, impact, pinch edges and print qualification open",
         },
         {
@@ -633,6 +633,18 @@ def write_lightweight_register(summary: dict) -> None:
             "baseline_candidate": "belt-path reference volumes with no carried belt mass",
             "lightweight_candidate": "ten Gates 5MGT3 15 mm belt candidates carried at published catalogue mass",
             "mass_effect": f"adds {summary['transmission_belt_published_mass_kg']:.3f} kg of previously omitted transmission mass", "engineering_hold": "pulley capacity, custom manufacture, tension, alignment, guard, life and received mass open",
+        },
+        {
+            "decision_id": "HR30-LW-010", "affected_system": "central and foot structure",
+            "baseline_candidate": "3 mm-wall shoulder bridge, 8 mm waist bridge and 4 mm foot carriers",
+            "lightweight_candidate": "2.5 mm-wall shoulder bridge, 6 mm windowed waist bridge and 3 mm foot carriers; joint datums and outer interfaces retained",
+            "mass_effect": "included in fabrication subtotal", "engineering_hold": "local bosses, shoulder/waist/ankle load paths, buckling, fatigue, inserts, DFM and proof loads open",
+        },
+        {
+            "decision_id": "HR30-LW-011", "affected_system": "ground-contact tread",
+            "baseline_candidate": "two solid-envelope 4 mm TPU/rubber sole candidates at 0.060 kg each",
+            "lightweight_candidate": "two 2.5 mm replaceable patterned TPU/rubber tread candidates at 0.0375 kg each",
+            "mass_effect": "reduces installed-equipment planning mass by 0.045 kg", "engineering_hold": "compound, tread pattern, friction, wear, bonding/retention, sensor isolation and received mass open",
         },
         {
             "decision_id": "HR30-LW-TOTAL", "affected_system": "whole robot identified candidate",
