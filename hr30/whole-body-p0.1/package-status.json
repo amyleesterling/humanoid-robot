@@ -459,5 +459,13 @@
   "actuator_cable_kit_built": false,
   "actuator_power_cable_geometric_candidate_bound": true,
   "actuator_power_cable_20c_planning_calculated": true,
-  "actuator_power_cable_hot_ampacity_verified": false
+  "actuator_power_cable_hot_ampacity_verified": false,
+  "actuator_cable_coupon_package_present": true,
+  "actuator_cable_coupon_tooling_candidate_count": 4,
+  "actuator_cable_coupon_specimen_family_count": 7,
+  "actuator_cable_coupon_route_measurement_count": 25,
+  "actuator_cable_coupon_built_count": 0,
+  "actuator_cable_coupon_executed_test_count": 0,
+  "actuator_cable_coupon_process_selected": false,
+  "actuator_cable_final_cut_lengths_selected": false
 }
