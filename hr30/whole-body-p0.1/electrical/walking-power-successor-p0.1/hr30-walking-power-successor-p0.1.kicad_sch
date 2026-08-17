@@ -12,7 +12,7 @@
   (sheet (at 17.78 42.00) (size 116.84 40.64)
           (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
           (stroke (width 0.5) (type solid)) (fill (color 0 0 0 0.0000)) (uuid "c9b018f3-3296-504a-a394-b1b57f25657c")
-          (property "Sheetname" "01 Five-feed and six-channel board boundaries" (at 20.32 52.16 0) (effects (font (size 1.80 1.80)) (justify left bottom)))
+          (property "Sheetname" "01 Eight isolated bus feeds and six-channel board pattern" (at 20.32 52.16 0) (effects (font (size 1.80 1.80)) (justify left bottom)))
           (property "Sheetfile" "01_system_boundaries.kicad_sch" (at 20.32 67.40 0) (effects (font (size 1.50 1.50)) (justify left top)))
           (instances (project "hr30-walking-power-successor-p0.1" (path "/9112b953-13d0-5ad5-8ca1-8abbb932dff3" (page "2"))))) (sheet (at 149.86 42.00) (size 116.84 40.64)
           (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)

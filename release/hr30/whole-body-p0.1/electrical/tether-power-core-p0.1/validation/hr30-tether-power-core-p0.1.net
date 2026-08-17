@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\h30e\\hr30\\whole-body-p0.1\\electrical\\tether-power-core-p0.1\\hr30-tether-power-core-p0.1.kicad_sch")
-		(date "2026-08-17T02:19:21")
+		(date "2026-08-17T05:32:05")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION")
@@ -248,14 +248,14 @@
 		)
 		(sheet
 			(number "6")
-			(name "/05 Robot inlet, main boundary and five protected PDU feeds/")
-			(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+			(name "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+			(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
 			(title_block
 				(title "PB HR-V0 P0.1 - 05")
 				(company "Project Button")
 				(rev "P0.1")
 				(date "2026-08-15")
-				(source "05_robot_five_branch_distribution.kicad_sch")
+				(source "05_robot_eight_branch_distribution.kicad_sch")
 				(comment
 					(number "1")
 					(value "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION")
@@ -1189,7 +1189,7 @@
 		)
 		(comp
 			(ref "FB1")
-			(value "04980923ZXT LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			(value "04980923ZXT RS_LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
 			(datasheet "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
 			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
 			(fields
@@ -1198,7 +1198,7 @@
 				(field
 					(name "Evidence") "MIDI 498 datasheet 012826-A")
 				(field
-					(name "Display") "04980923ZXT LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Display") "04980923ZXT RS_LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
 				(field
 					(name "Footprint")
 				)
@@ -1222,21 +1222,21 @@
 			)
 			(property
 				(name "Display")
-				(value "04980923ZXT LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(value "04980923ZXT RS_LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
 			)
 			(property
 				(name "Sheetname")
-				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
 			)
 			(property
 				(name "Sheetfile")
-				(value "05_robot_five_branch_distribution.kicad_sch")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
 			)
 			(sheetpath
-				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
-				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
 			)
-			(tstamps "7357e432-6535-5b8b-8fc8-a796335e32dd")
+			(tstamps "0f6a69ce-e2c4-57b7-b43a-53ef72f0d539")
 			(units
 				(unit
 					(name "A")
@@ -1253,7 +1253,7 @@
 		)
 		(comp
 			(ref "FB2")
-			(value "04980923ZXT RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			(value "04980923ZXT RS_RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
 			(datasheet "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
 			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
 			(fields
@@ -1262,7 +1262,7 @@
 				(field
 					(name "Evidence") "MIDI 498 datasheet 012826-A")
 				(field
-					(name "Display") "04980923ZXT RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Display") "04980923ZXT RS_RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
 				(field
 					(name "Footprint")
 				)
@@ -1286,21 +1286,21 @@
 			)
 			(property
 				(name "Display")
-				(value "04980923ZXT RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(value "04980923ZXT RS_RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
 			)
 			(property
 				(name "Sheetname")
-				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
 			)
 			(property
 				(name "Sheetfile")
-				(value "05_robot_five_branch_distribution.kicad_sch")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
 			)
 			(sheetpath
-				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
-				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
 			)
-			(tstamps "d989f176-e2bd-57e3-8068-c7c7a2812952")
+			(tstamps "b723a389-8273-5644-8845-c8533132c09c")
 			(units
 				(unit
 					(name "A")
@@ -1317,7 +1317,7 @@
 		)
 		(comp
 			(ref "FB3")
-			(value "04980923ZXT ARMS BRANCH HOLDER - FUSE VALUE REQUIRED")
+			(value "04980923ZXT RS_LARM BRANCH HOLDER - FUSE VALUE REQUIRED")
 			(datasheet "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
 			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
 			(fields
@@ -1326,7 +1326,7 @@
 				(field
 					(name "Evidence") "MIDI 498 datasheet 012826-A")
 				(field
-					(name "Display") "04980923ZXT ARMS BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Display") "04980923ZXT RS_LARM BRANCH HOLDER - FUSE VALUE REQUIRED")
 				(field
 					(name "Footprint")
 				)
@@ -1350,21 +1350,21 @@
 			)
 			(property
 				(name "Display")
-				(value "04980923ZXT ARMS BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(value "04980923ZXT RS_LARM BRANCH HOLDER - FUSE VALUE REQUIRED")
 			)
 			(property
 				(name "Sheetname")
-				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
 			)
 			(property
 				(name "Sheetfile")
-				(value "05_robot_five_branch_distribution.kicad_sch")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
 			)
 			(sheetpath
-				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
-				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
 			)
-			(tstamps "d28c6b3d-ce58-5ccd-9b97-6f5615e29689")
+			(tstamps "7722a5c6-dfe8-5107-b9a8-c66131a13991")
 			(units
 				(unit
 					(name "A")
@@ -1381,7 +1381,7 @@
 		)
 		(comp
 			(ref "FB4")
-			(value "04980923ZXT DISTAL BRANCH HOLDER - FUSE VALUE REQUIRED")
+			(value "04980923ZXT RS_RARM BRANCH HOLDER - FUSE VALUE REQUIRED")
 			(datasheet "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
 			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
 			(fields
@@ -1390,7 +1390,7 @@
 				(field
 					(name "Evidence") "MIDI 498 datasheet 012826-A")
 				(field
-					(name "Display") "04980923ZXT DISTAL BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Display") "04980923ZXT RS_RARM BRANCH HOLDER - FUSE VALUE REQUIRED")
 				(field
 					(name "Footprint")
 				)
@@ -1414,21 +1414,21 @@
 			)
 			(property
 				(name "Display")
-				(value "04980923ZXT DISTAL BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(value "04980923ZXT RS_RARM BRANCH HOLDER - FUSE VALUE REQUIRED")
 			)
 			(property
 				(name "Sheetname")
-				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
 			)
 			(property
 				(name "Sheetfile")
-				(value "05_robot_five_branch_distribution.kicad_sch")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
 			)
 			(sheetpath
-				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
-				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
 			)
-			(tstamps "02078c94-e2da-5437-a9d3-b4591f4b73cf")
+			(tstamps "e35cd9ab-ad73-5d8f-9285-6b1989c9d785")
 			(units
 				(unit
 					(name "A")
@@ -1445,7 +1445,7 @@
 		)
 		(comp
 			(ref "FB5")
-			(value "04980923ZXT CORE BRANCH HOLDER - FUSE VALUE REQUIRED")
+			(value "04980923ZXT RS_WAIST BRANCH HOLDER - FUSE VALUE REQUIRED")
 			(datasheet "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
 			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
 			(fields
@@ -1454,7 +1454,7 @@
 				(field
 					(name "Evidence") "MIDI 498 datasheet 012826-A")
 				(field
-					(name "Display") "04980923ZXT CORE BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Display") "04980923ZXT RS_WAIST BRANCH HOLDER - FUSE VALUE REQUIRED")
 				(field
 					(name "Footprint")
 				)
@@ -1478,21 +1478,213 @@
 			)
 			(property
 				(name "Display")
-				(value "04980923ZXT CORE BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(value "04980923ZXT RS_WAIST BRANCH HOLDER - FUSE VALUE REQUIRED")
 			)
 			(property
 				(name "Sheetname")
-				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
 			)
 			(property
 				(name "Sheetfile")
-				(value "05_robot_five_branch_distribution.kicad_sch")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
 			)
 			(sheetpath
-				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
-				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
 			)
-			(tstamps "5f29d2fb-8dc1-5faa-8acb-c68e012658cf")
+			(tstamps "7b76e1d8-b641-5648-b1b2-a6fa38dadbb6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FB6")
+			(value "04980923ZXT TTL_LDIST_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			(datasheet "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(fields
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT TTL_LDIST_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "FB6")
+				(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(property
+				(name "Status")
+				(value "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "MIDI 498 datasheet 012826-A")
+			)
+			(property
+				(name "Display")
+				(value "04980923ZXT TTL_LDIST_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
+			)
+			(tstamps "4d85f9a7-811a-5ced-8a74-edfcd1c25c69")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FB7")
+			(value "04980923ZXT TTL_RDIST_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			(datasheet "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(fields
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT TTL_RDIST_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "FB7")
+				(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(property
+				(name "Status")
+				(value "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "MIDI 498 datasheet 012826-A")
+			)
+			(property
+				(name "Display")
+				(value "04980923ZXT TTL_RDIST_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
+			)
+			(tstamps "8c7b779b-ae83-5cdc-b38d-c867b349f83a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "FB8")
+			(value "04980923ZXT TTL_HEAD_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			(datasheet "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(fields
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT TTL_HEAD_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "FB8")
+				(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			)
+			(property
+				(name "Status")
+				(value "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+			)
+			(property
+				(name "Evidence")
+				(value "MIDI 498 datasheet 012826-A")
+			)
+			(property
+				(name "Display")
+				(value "04980923ZXT TTL_HEAD_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
+			)
+			(tstamps "176298e4-2139-5bd1-ac98-5b4b1160d5d3")
 			(units
 				(unit
 					(name "A")
@@ -1546,17 +1738,17 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
 			)
 			(property
 				(name "Sheetfile")
-				(value "05_robot_five_branch_distribution.kicad_sch")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
 			)
 			(sheetpath
-				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
-				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
 			)
-			(tstamps "9d311574-2913-58c3-a2c3-954c1adce7a5")
+			(tstamps "fdc1a378-30e8-5165-900a-ba8584f4b808")
 			(units
 				(unit
 					(name "A")
@@ -1572,33 +1764,33 @@
 			)
 		)
 		(comp
-			(ref "JARMS")
-			(value "PDU-ARMS INPUT - PHOENIX 1714971")
+			(ref "JRS_LARM")
+			(value "WPS-RS-LARM INPUT BOUNDARY")
 			(datasheet "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
-			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			(fields
 				(field
-					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 				(field
 					(name "Evidence") "live official page, accessed 2026-08-15")
 				(field
-					(name "Display") "PDU-ARMS INPUT - PHOENIX 1714971")
+					(name "Display") "WPS-RS-LARM INPUT BOUNDARY")
 				(field
 					(name "Footprint")
 				)
 				(field
 					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 				(field
-					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			)
 			(libsource
 				(lib "PBV3")
-				(part "JARMS")
-				(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+				(part "JRS_LARM")
+				(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			)
 			(property
 				(name "Status")
-				(value "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(value "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 			)
 			(property
 				(name "Evidence")
@@ -1606,21 +1798,21 @@
 			)
 			(property
 				(name "Display")
-				(value "PDU-ARMS INPUT - PHOENIX 1714971")
+				(value "WPS-RS-LARM INPUT BOUNDARY")
 			)
 			(property
 				(name "Sheetname")
-				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
 			)
 			(property
 				(name "Sheetfile")
-				(value "05_robot_five_branch_distribution.kicad_sch")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
 			)
 			(sheetpath
-				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
-				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
 			)
-			(tstamps "ea7879a0-be68-5ad3-b472-a3389d8d751c")
+			(tstamps "17c546ba-a65a-5493-b366-9c46f72dd609")
 			(units
 				(unit
 					(name "A")
@@ -1636,33 +1828,33 @@
 			)
 		)
 		(comp
-			(ref "JCORE")
-			(value "PDU-CORE INPUT - PHOENIX 1714971")
+			(ref "JRS_LLEG")
+			(value "WPS-RS-LLEG INPUT BOUNDARY")
 			(datasheet "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
-			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			(fields
 				(field
-					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 				(field
 					(name "Evidence") "live official page, accessed 2026-08-15")
 				(field
-					(name "Display") "PDU-CORE INPUT - PHOENIX 1714971")
+					(name "Display") "WPS-RS-LLEG INPUT BOUNDARY")
 				(field
 					(name "Footprint")
 				)
 				(field
 					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 				(field
-					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			)
 			(libsource
 				(lib "PBV3")
-				(part "JCORE")
-				(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+				(part "JRS_LLEG")
+				(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			)
 			(property
 				(name "Status")
-				(value "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(value "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 			)
 			(property
 				(name "Evidence")
@@ -1670,21 +1862,21 @@
 			)
 			(property
 				(name "Display")
-				(value "PDU-CORE INPUT - PHOENIX 1714971")
+				(value "WPS-RS-LLEG INPUT BOUNDARY")
 			)
 			(property
 				(name "Sheetname")
-				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
 			)
 			(property
 				(name "Sheetfile")
-				(value "05_robot_five_branch_distribution.kicad_sch")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
 			)
 			(sheetpath
-				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
-				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
 			)
-			(tstamps "87c493a8-4c53-54b4-8bd8-b40bfc5b6a76")
+			(tstamps "55d72e7d-77f4-5a6b-ab61-76e2f42724ca")
 			(units
 				(unit
 					(name "A")
@@ -1700,33 +1892,33 @@
 			)
 		)
 		(comp
-			(ref "JDISTAL")
-			(value "PDU-DISTAL INPUT - PHOENIX 1714971")
+			(ref "JRS_RARM")
+			(value "WPS-RS-RARM INPUT BOUNDARY")
 			(datasheet "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
-			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			(fields
 				(field
-					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 				(field
 					(name "Evidence") "live official page, accessed 2026-08-15")
 				(field
-					(name "Display") "PDU-DISTAL INPUT - PHOENIX 1714971")
+					(name "Display") "WPS-RS-RARM INPUT BOUNDARY")
 				(field
 					(name "Footprint")
 				)
 				(field
 					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 				(field
-					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			)
 			(libsource
 				(lib "PBV3")
-				(part "JDISTAL")
-				(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+				(part "JRS_RARM")
+				(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			)
 			(property
 				(name "Status")
-				(value "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(value "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 			)
 			(property
 				(name "Evidence")
@@ -1734,21 +1926,21 @@
 			)
 			(property
 				(name "Display")
-				(value "PDU-DISTAL INPUT - PHOENIX 1714971")
+				(value "WPS-RS-RARM INPUT BOUNDARY")
 			)
 			(property
 				(name "Sheetname")
-				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
 			)
 			(property
 				(name "Sheetfile")
-				(value "05_robot_five_branch_distribution.kicad_sch")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
 			)
 			(sheetpath
-				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
-				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
 			)
-			(tstamps "ce60f5a9-96ce-56ed-9492-b5da88473ff7")
+			(tstamps "d4de8a59-8929-5d61-ad48-af110ec0d5bf")
 			(units
 				(unit
 					(name "A")
@@ -1764,33 +1956,33 @@
 			)
 		)
 		(comp
-			(ref "JLLEG")
-			(value "PDU-LLEG INPUT - PHOENIX 1714971")
+			(ref "JRS_RLEG")
+			(value "WPS-RS-RLEG INPUT BOUNDARY")
 			(datasheet "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
-			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			(fields
 				(field
-					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 				(field
 					(name "Evidence") "live official page, accessed 2026-08-15")
 				(field
-					(name "Display") "PDU-LLEG INPUT - PHOENIX 1714971")
+					(name "Display") "WPS-RS-RLEG INPUT BOUNDARY")
 				(field
 					(name "Footprint")
 				)
 				(field
 					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 				(field
-					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			)
 			(libsource
 				(lib "PBV3")
-				(part "JLLEG")
-				(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+				(part "JRS_RLEG")
+				(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			)
 			(property
 				(name "Status")
-				(value "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(value "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 			)
 			(property
 				(name "Evidence")
@@ -1798,21 +1990,21 @@
 			)
 			(property
 				(name "Display")
-				(value "PDU-LLEG INPUT - PHOENIX 1714971")
+				(value "WPS-RS-RLEG INPUT BOUNDARY")
 			)
 			(property
 				(name "Sheetname")
-				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
 			)
 			(property
 				(name "Sheetfile")
-				(value "05_robot_five_branch_distribution.kicad_sch")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
 			)
 			(sheetpath
-				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
-				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
 			)
-			(tstamps "7e0f0ed1-2329-5f30-9ffb-84a9954e3357")
+			(tstamps "6867a692-c672-50d2-8dcc-037105d8b568")
 			(units
 				(unit
 					(name "A")
@@ -1828,33 +2020,33 @@
 			)
 		)
 		(comp
-			(ref "JRLEG")
-			(value "PDU-RLEG INPUT - PHOENIX 1714971")
+			(ref "JRS_WAIST")
+			(value "WPS-RS-WAIST INPUT BOUNDARY")
 			(datasheet "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
-			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			(fields
 				(field
-					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 				(field
 					(name "Evidence") "live official page, accessed 2026-08-15")
 				(field
-					(name "Display") "PDU-RLEG INPUT - PHOENIX 1714971")
+					(name "Display") "WPS-RS-WAIST INPUT BOUNDARY")
 				(field
 					(name "Footprint")
 				)
 				(field
 					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 				(field
-					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			)
 			(libsource
 				(lib "PBV3")
-				(part "JRLEG")
-				(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+				(part "JRS_WAIST")
+				(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			)
 			(property
 				(name "Status")
-				(value "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+				(value "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 			)
 			(property
 				(name "Evidence")
@@ -1862,21 +2054,213 @@
 			)
 			(property
 				(name "Display")
-				(value "PDU-RLEG INPUT - PHOENIX 1714971")
+				(value "WPS-RS-WAIST INPUT BOUNDARY")
 			)
 			(property
 				(name "Sheetname")
-				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
 			)
 			(property
 				(name "Sheetfile")
-				(value "05_robot_five_branch_distribution.kicad_sch")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
 			)
 			(sheetpath
-				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
-				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
 			)
-			(tstamps "0bc0aed5-aa86-5c3e-8bba-915e0149c738")
+			(tstamps "07ad0e06-2743-5b21-b421-af53d3053329")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JTTL_HEAD_REG")
+			(value "REG-TTL-HEAD INPUT BOUNDARY")
+			(datasheet "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+			(fields
+				(field
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "REG-TTL-HEAD INPUT BOUNDARY")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JTTL_HEAD_REG")
+				(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+			)
+			(property
+				(name "Status")
+				(value "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "live official page, accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "REG-TTL-HEAD INPUT BOUNDARY")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
+			)
+			(tstamps "9afbfc97-4878-514b-953e-35b7cdac1bd5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JTTL_LDIST_REG")
+			(value "REG-TTL-LDIST INPUT BOUNDARY")
+			(datasheet "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+			(fields
+				(field
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "REG-TTL-LDIST INPUT BOUNDARY")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JTTL_LDIST_REG")
+				(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+			)
+			(property
+				(name "Status")
+				(value "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "live official page, accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "REG-TTL-LDIST INPUT BOUNDARY")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
+			)
+			(tstamps "c5214213-ea08-502f-8a48-f587f4642280")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JTTL_RDIST_REG")
+			(value "REG-TTL-RDIST INPUT BOUNDARY")
+			(datasheet "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+			(fields
+				(field
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "REG-TTL-RDIST INPUT BOUNDARY")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JTTL_RDIST_REG")
+				(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+			)
+			(property
+				(name "Status")
+				(value "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "live official page, accessed 2026-08-15")
+			)
+			(property
+				(name "Display")
+				(value "REG-TTL-RDIST INPUT BOUNDARY")
+			)
+			(property
+				(name "Sheetname")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
+			)
+			(property
+				(name "Sheetfile")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
+			)
+			(sheetpath
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
+			)
+			(tstamps "2bb77af7-b21a-51ce-8912-6f8cad60c406")
 			(units
 				(unit
 					(name "A")
@@ -1931,17 +2315,17 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "05 Robot inlet, main boundary and five protected PDU feeds")
+				(value "05 Robot inlet, main boundary and eight protected bus-source feeds")
 			)
 			(property
 				(name "Sheetfile")
-				(value "05_robot_five_branch_distribution.kicad_sch")
+				(value "05_robot_eight_branch_distribution.kicad_sch")
 			)
 			(sheetpath
-				(names "/05 Robot inlet, main boundary and five protected PDU feeds/")
-				(tstamps "/7d2fa21a-7cbe-57f8-a7ba-7759b9157b94/")
+				(names "/05 Robot inlet, main boundary and eight protected bus-source feeds/")
+				(tstamps "/7dea174c-5a08-5fb5-ad5b-d695bf380862/")
 			)
-			(tstamps "a63ac4f7-490d-5691-8d11-78589b669880")
+			(tstamps "bcbafe1b-3fcc-5daf-aada-06b5d3b68623")
 			(units
 				(unit
 					(name "A")
@@ -2114,7 +2498,7 @@
 				(field
 					(name "Reference") "FB1")
 				(field
-					(name "Value") "04980923ZXT LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Value") "04980923ZXT RS_LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
 				(field
 					(name "Footprint")
 				)
@@ -2127,7 +2511,7 @@
 				(field
 					(name "Evidence") "MIDI 498 datasheet 012826-A")
 				(field
-					(name "Display") "04980923ZXT LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Display") "04980923ZXT RS_LLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
 			)
 			(pins
 				(pin
@@ -2137,7 +2521,7 @@
 				)
 				(pin
 					(num "OUT")
-					(name "LLEG_PROTECTED_FEED")
+					(name "RS_LLEG_PROTECTED_FEED")
 					(type "passive")
 				)
 			)
@@ -2151,7 +2535,7 @@
 				(field
 					(name "Reference") "FB2")
 				(field
-					(name "Value") "04980923ZXT RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Value") "04980923ZXT RS_RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
 				(field
 					(name "Footprint")
 				)
@@ -2164,7 +2548,7 @@
 				(field
 					(name "Evidence") "MIDI 498 datasheet 012826-A")
 				(field
-					(name "Display") "04980923ZXT RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Display") "04980923ZXT RS_RLEG BRANCH HOLDER - FUSE VALUE REQUIRED")
 			)
 			(pins
 				(pin
@@ -2174,7 +2558,7 @@
 				)
 				(pin
 					(num "OUT")
-					(name "RLEG_PROTECTED_FEED")
+					(name "RS_RLEG_PROTECTED_FEED")
 					(type "passive")
 				)
 			)
@@ -2188,7 +2572,7 @@
 				(field
 					(name "Reference") "FB3")
 				(field
-					(name "Value") "04980923ZXT ARMS BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Value") "04980923ZXT RS_LARM BRANCH HOLDER - FUSE VALUE REQUIRED")
 				(field
 					(name "Footprint")
 				)
@@ -2201,7 +2585,7 @@
 				(field
 					(name "Evidence") "MIDI 498 datasheet 012826-A")
 				(field
-					(name "Display") "04980923ZXT ARMS BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Display") "04980923ZXT RS_LARM BRANCH HOLDER - FUSE VALUE REQUIRED")
 			)
 			(pins
 				(pin
@@ -2211,7 +2595,7 @@
 				)
 				(pin
 					(num "OUT")
-					(name "ARMS_PROTECTED_FEED")
+					(name "RS_LARM_PROTECTED_FEED")
 					(type "passive")
 				)
 			)
@@ -2225,7 +2609,7 @@
 				(field
 					(name "Reference") "FB4")
 				(field
-					(name "Value") "04980923ZXT DISTAL BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Value") "04980923ZXT RS_RARM BRANCH HOLDER - FUSE VALUE REQUIRED")
 				(field
 					(name "Footprint")
 				)
@@ -2238,7 +2622,7 @@
 				(field
 					(name "Evidence") "MIDI 498 datasheet 012826-A")
 				(field
-					(name "Display") "04980923ZXT DISTAL BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Display") "04980923ZXT RS_RARM BRANCH HOLDER - FUSE VALUE REQUIRED")
 			)
 			(pins
 				(pin
@@ -2248,7 +2632,7 @@
 				)
 				(pin
 					(num "OUT")
-					(name "DISTAL_PROTECTED_FEED")
+					(name "RS_RARM_PROTECTED_FEED")
 					(type "passive")
 				)
 			)
@@ -2262,7 +2646,7 @@
 				(field
 					(name "Reference") "FB5")
 				(field
-					(name "Value") "04980923ZXT CORE BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Value") "04980923ZXT RS_WAIST BRANCH HOLDER - FUSE VALUE REQUIRED")
 				(field
 					(name "Footprint")
 				)
@@ -2275,7 +2659,7 @@
 				(field
 					(name "Evidence") "MIDI 498 datasheet 012826-A")
 				(field
-					(name "Display") "04980923ZXT CORE BRANCH HOLDER - FUSE VALUE REQUIRED")
+					(name "Display") "04980923ZXT RS_WAIST BRANCH HOLDER - FUSE VALUE REQUIRED")
 			)
 			(pins
 				(pin
@@ -2285,7 +2669,118 @@
 				)
 				(pin
 					(num "OUT")
-					(name "CORE_PROTECTED_FEED")
+					(name "RS_WAIST_PROTECTED_FEED")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "FB6")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(docs "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(fields
+				(field
+					(name "Reference") "FB6")
+				(field
+					(name "Value") "04980923ZXT TTL_LDIST_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT TTL_LDIST_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "COMMON_DISTRIBUTION_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "TTL_LDIST_REG_PROTECTED_FEED")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "FB7")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(docs "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(fields
+				(field
+					(name "Reference") "FB7")
+				(field
+					(name "Value") "04980923ZXT TTL_RDIST_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT TTL_RDIST_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "COMMON_DISTRIBUTION_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "TTL_RDIST_REG_PROTECTED_FEED")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "FB8")
+			(description "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+			(docs "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+			(fields
+				(field
+					(name "Reference") "FB8")
+				(field
+					(name "Value") "04980923ZXT TTL_HEAD_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/assetdocs/midi-498-datasheet?assetguid=5a3ddf39-419e-44c6-91bf-270e6a6d560b")
+				(field
+					(name "Description") "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.")
+				(field
+					(name "Status") "HOLDER SELECTED - NO FUSE VALUE RELEASED")
+				(field
+					(name "Evidence") "MIDI 498 datasheet 012826-A")
+				(field
+					(name "Display") "04980923ZXT TTL_HEAD_REG BRANCH HOLDER - FUSE VALUE REQUIRED")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "COMMON_DISTRIBUTION_INPUT")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "TTL_HEAD_REG_PROTECTED_FEED")
 					(type "passive")
 				)
 			)
@@ -2329,185 +2824,296 @@
 		)
 		(libpart
 			(lib "PBV3")
-			(part "JARMS")
-			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(part "JRS_LARM")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			(docs "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 			(fields
 				(field
-					(name "Reference") "JARMS")
+					(name "Reference") "JRS_LARM")
 				(field
-					(name "Value") "PDU-ARMS INPUT - PHOENIX 1714971")
+					(name "Value") "WPS-RS-LARM INPUT BOUNDARY")
 				(field
 					(name "Footprint")
 				)
 				(field
 					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 				(field
-					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 				(field
-					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 				(field
 					(name "Evidence") "live official page, accessed 2026-08-15")
 				(field
-					(name "Display") "PDU-ARMS INPUT - PHOENIX 1714971")
+					(name "Display") "WPS-RS-LARM INPUT BOUNDARY")
 			)
 			(pins
 				(pin
 					(num "1")
-					(name "PDU_0_V")
+					(name "CONTROLLED_RETURN")
 					(type "passive")
 				)
 				(pin
 					(num "2")
-					(name "PDU_+12_V_INPUT")
+					(name "PROTECTED_12_V_INPUT")
 					(type "passive")
 				)
 			)
 		)
 		(libpart
 			(lib "PBV3")
-			(part "JCORE")
-			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(part "JRS_LLEG")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			(docs "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 			(fields
 				(field
-					(name "Reference") "JCORE")
+					(name "Reference") "JRS_LLEG")
 				(field
-					(name "Value") "PDU-CORE INPUT - PHOENIX 1714971")
+					(name "Value") "WPS-RS-LLEG INPUT BOUNDARY")
 				(field
 					(name "Footprint")
 				)
 				(field
 					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 				(field
-					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 				(field
-					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 				(field
 					(name "Evidence") "live official page, accessed 2026-08-15")
 				(field
-					(name "Display") "PDU-CORE INPUT - PHOENIX 1714971")
+					(name "Display") "WPS-RS-LLEG INPUT BOUNDARY")
 			)
 			(pins
 				(pin
 					(num "1")
-					(name "PDU_0_V")
+					(name "CONTROLLED_RETURN")
 					(type "passive")
 				)
 				(pin
 					(num "2")
-					(name "PDU_+12_V_INPUT")
+					(name "PROTECTED_12_V_INPUT")
 					(type "passive")
 				)
 			)
 		)
 		(libpart
 			(lib "PBV3")
-			(part "JDISTAL")
-			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(part "JRS_RARM")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			(docs "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 			(fields
 				(field
-					(name "Reference") "JDISTAL")
+					(name "Reference") "JRS_RARM")
 				(field
-					(name "Value") "PDU-DISTAL INPUT - PHOENIX 1714971")
+					(name "Value") "WPS-RS-RARM INPUT BOUNDARY")
 				(field
 					(name "Footprint")
 				)
 				(field
 					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 				(field
-					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 				(field
-					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 				(field
 					(name "Evidence") "live official page, accessed 2026-08-15")
 				(field
-					(name "Display") "PDU-DISTAL INPUT - PHOENIX 1714971")
+					(name "Display") "WPS-RS-RARM INPUT BOUNDARY")
 			)
 			(pins
 				(pin
 					(num "1")
-					(name "PDU_0_V")
+					(name "CONTROLLED_RETURN")
 					(type "passive")
 				)
 				(pin
 					(num "2")
-					(name "PDU_+12_V_INPUT")
+					(name "PROTECTED_12_V_INPUT")
 					(type "passive")
 				)
 			)
 		)
 		(libpart
 			(lib "PBV3")
-			(part "JLLEG")
-			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(part "JRS_RLEG")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			(docs "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 			(fields
 				(field
-					(name "Reference") "JLLEG")
+					(name "Reference") "JRS_RLEG")
 				(field
-					(name "Value") "PDU-LLEG INPUT - PHOENIX 1714971")
+					(name "Value") "WPS-RS-RLEG INPUT BOUNDARY")
 				(field
 					(name "Footprint")
 				)
 				(field
 					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 				(field
-					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 				(field
-					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 				(field
 					(name "Evidence") "live official page, accessed 2026-08-15")
 				(field
-					(name "Display") "PDU-LLEG INPUT - PHOENIX 1714971")
+					(name "Display") "WPS-RS-RLEG INPUT BOUNDARY")
 			)
 			(pins
 				(pin
 					(num "1")
-					(name "PDU_0_V")
+					(name "CONTROLLED_RETURN")
 					(type "passive")
 				)
 				(pin
 					(num "2")
-					(name "PDU_+12_V_INPUT")
+					(name "PROTECTED_12_V_INPUT")
 					(type "passive")
 				)
 			)
 		)
 		(libpart
 			(lib "PBV3")
-			(part "JRLEG")
-			(description "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+			(part "JRS_WAIST")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 			(docs "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 			(fields
 				(field
-					(name "Reference") "JRLEG")
+					(name "Reference") "JRS_WAIST")
 				(field
-					(name "Value") "PDU-RLEG INPUT - PHOENIX 1714971")
+					(name "Value") "WPS-RS-WAIST INPUT BOUNDARY")
 				(field
 					(name "Footprint")
 				)
 				(field
 					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
 				(field
-					(name "Description") "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.")
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
 				(field
-					(name "Status") "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN")
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
 				(field
 					(name "Evidence") "live official page, accessed 2026-08-15")
 				(field
-					(name "Display") "PDU-RLEG INPUT - PHOENIX 1714971")
+					(name "Display") "WPS-RS-WAIST INPUT BOUNDARY")
 			)
 			(pins
 				(pin
 					(num "1")
-					(name "PDU_0_V")
+					(name "CONTROLLED_RETURN")
 					(type "passive")
 				)
 				(pin
 					(num "2")
-					(name "PDU_+12_V_INPUT")
+					(name "PROTECTED_12_V_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JTTL_HEAD_REG")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+			(docs "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(fields
+				(field
+					(name "Reference") "JTTL_HEAD_REG")
+				(field
+					(name "Value") "REG-TTL-HEAD INPUT BOUNDARY")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+				(field
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "REG-TTL-HEAD INPUT BOUNDARY")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "CONTROLLED_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "PROTECTED_12_V_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JTTL_LDIST_REG")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+			(docs "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(fields
+				(field
+					(name "Reference") "JTTL_LDIST_REG")
+				(field
+					(name "Value") "REG-TTL-LDIST INPUT BOUNDARY")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+				(field
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "REG-TTL-LDIST INPUT BOUNDARY")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "CONTROLLED_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "PROTECTED_12_V_INPUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JTTL_RDIST_REG")
+			(description "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+			(docs "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+			(fields
+				(field
+					(name "Reference") "JTTL_RDIST_REG")
+				(field
+					(name "Value") "REG-TTL-RDIST INPUT BOUNDARY")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971")
+				(field
+					(name "Description") "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.")
+				(field
+					(name "Status") "FIELD CONNECTOR / DERATING / VALIDATION OPEN")
+				(field
+					(name "Evidence") "live official page, accessed 2026-08-15")
+				(field
+					(name "Display") "REG-TTL-RDIST INPUT BOUNDARY")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "CONTROLLED_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "PROTECTED_12_V_INPUT")
 					(type "passive")
 				)
 			)
@@ -3530,53 +4136,54 @@
 		)
 		(net
 			(code "14")
-			(name "PDU_ARMS_POS")
-			(class "Default")
-			(node
-				(ref "FB3")
-				(pin "OUT")
-				(pinfunction "ARMS_PROTECTED_FEED_OUT")
-				(pintype "passive")
-			)
-			(node
-				(ref "JARMS")
-				(pin "2")
-				(pinfunction "PDU_+12_V_INPUT_2")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "15")
 			(name "PDU_COMMON_RET")
 			(class "Default")
 			(node
-				(ref "JARMS")
+				(ref "JRS_LARM")
 				(pin "1")
-				(pinfunction "PDU_0_V_1")
+				(pinfunction "CONTROLLED_RETURN_1")
 				(pintype "passive")
 			)
 			(node
-				(ref "JCORE")
+				(ref "JRS_LLEG")
 				(pin "1")
-				(pinfunction "PDU_0_V_1")
+				(pinfunction "CONTROLLED_RETURN_1")
 				(pintype "passive")
 			)
 			(node
-				(ref "JDISTAL")
+				(ref "JRS_RARM")
 				(pin "1")
-				(pinfunction "PDU_0_V_1")
+				(pinfunction "CONTROLLED_RETURN_1")
 				(pintype "passive")
 			)
 			(node
-				(ref "JLLEG")
+				(ref "JRS_RLEG")
 				(pin "1")
-				(pinfunction "PDU_0_V_1")
+				(pinfunction "CONTROLLED_RETURN_1")
 				(pintype "passive")
 			)
 			(node
-				(ref "JRLEG")
+				(ref "JRS_WAIST")
 				(pin "1")
-				(pinfunction "PDU_0_V_1")
+				(pinfunction "CONTROLLED_RETURN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JTTL_HEAD_REG")
+				(pin "1")
+				(pinfunction "CONTROLLED_RETURN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JTTL_LDIST_REG")
+				(pin "1")
+				(pinfunction "CONTROLLED_RETURN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "JTTL_RDIST_REG")
+				(pin "1")
+				(pinfunction "CONTROLLED_RETURN_1")
 				(pintype "passive")
 			)
 			(node
@@ -3587,75 +4194,7 @@
 			)
 		)
 		(net
-			(code "16")
-			(name "PDU_CORE_POS")
-			(class "Default")
-			(node
-				(ref "FB5")
-				(pin "OUT")
-				(pinfunction "CORE_PROTECTED_FEED_OUT")
-				(pintype "passive")
-			)
-			(node
-				(ref "JCORE")
-				(pin "2")
-				(pinfunction "PDU_+12_V_INPUT_2")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "17")
-			(name "PDU_DISTAL_POS")
-			(class "Default")
-			(node
-				(ref "FB4")
-				(pin "OUT")
-				(pinfunction "DISTAL_PROTECTED_FEED_OUT")
-				(pintype "passive")
-			)
-			(node
-				(ref "JDISTAL")
-				(pin "2")
-				(pinfunction "PDU_+12_V_INPUT_2")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "18")
-			(name "PDU_LLEG_POS")
-			(class "Default")
-			(node
-				(ref "FB1")
-				(pin "OUT")
-				(pinfunction "LLEG_PROTECTED_FEED_OUT")
-				(pintype "passive")
-			)
-			(node
-				(ref "JLLEG")
-				(pin "2")
-				(pinfunction "PDU_+12_V_INPUT_2")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "19")
-			(name "PDU_RLEG_POS")
-			(class "Default")
-			(node
-				(ref "FB2")
-				(pin "OUT")
-				(pinfunction "RLEG_PROTECTED_FEED_OUT")
-				(pintype "passive")
-			)
-			(node
-				(ref "JRLEG")
-				(pin "2")
-				(pinfunction "PDU_+12_V_INPUT_2")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "20")
+			(code "15")
 			(name "PNOZ_AUX_STATUS")
 			(class "Default")
 			(node
@@ -3672,7 +4211,7 @@
 			)
 		)
 		(net
-			(code "21")
+			(code "16")
 			(name "PNOZ_Y32_STATUS")
 			(class "Default")
 			(node
@@ -3689,7 +4228,7 @@
 			)
 		)
 		(net
-			(code "22")
+			(code "17")
 			(name "RAW_0V")
 			(class "Default")
 			(node
@@ -3712,7 +4251,7 @@
 			)
 		)
 		(net
-			(code "23")
+			(code "18")
 			(name "RAW_12V_POS")
 			(class "Default")
 			(node
@@ -3735,7 +4274,58 @@
 			)
 		)
 		(net
-			(code "24")
+			(code "19")
+			(name "REG_TTL_HEAD_IN_12V")
+			(class "Default")
+			(node
+				(ref "FB8")
+				(pin "OUT")
+				(pinfunction "TTL_HEAD_REG_PROTECTED_FEED_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "JTTL_HEAD_REG")
+				(pin "2")
+				(pinfunction "PROTECTED_12_V_INPUT_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "20")
+			(name "REG_TTL_LDIST_IN_12V")
+			(class "Default")
+			(node
+				(ref "FB6")
+				(pin "OUT")
+				(pinfunction "TTL_LDIST_REG_PROTECTED_FEED_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "JTTL_LDIST_REG")
+				(pin "2")
+				(pinfunction "PROTECTED_12_V_INPUT_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "21")
+			(name "REG_TTL_RDIST_IN_12V")
+			(class "Default")
+			(node
+				(ref "FB7")
+				(pin "OUT")
+				(pinfunction "TTL_RDIST_REG_PROTECTED_FEED_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "JTTL_RDIST_REG")
+				(pin "2")
+				(pinfunction "PROTECTED_12_V_INPUT_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "22")
 			(name "RESET_EDM")
 			(class "Default")
 			(node
@@ -3764,7 +4354,7 @@
 			)
 		)
 		(net
-			(code "25")
+			(code "23")
 			(name "ROBOT_FRAME_BOUNDARY")
 			(class "Default")
 			(node
@@ -3781,7 +4371,7 @@
 			)
 		)
 		(net
-			(code "26")
+			(code "24")
 			(name "ROBOT_FUSED_POS")
 			(class "Default")
 			(node
@@ -3815,6 +4405,24 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "FB6")
+				(pin "IN")
+				(pinfunction "COMMON_DISTRIBUTION_INPUT_IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB7")
+				(pin "IN")
+				(pinfunction "COMMON_DISTRIBUTION_INPUT_IN")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB8")
+				(pin "IN")
+				(pinfunction "COMMON_DISTRIBUTION_INPUT_IN")
+				(pintype "passive")
+			)
+			(node
 				(ref "FM0")
 				(pin "OUT")
 				(pinfunction "MAIN_DISTRIBUTION_BUS_OUT")
@@ -3822,7 +4430,7 @@
 			)
 		)
 		(net
-			(code "27")
+			(code "25")
 			(name "ROBOT_MAIN_POS")
 			(class "Default")
 			(node
@@ -3839,7 +4447,7 @@
 			)
 		)
 		(net
-			(code "28")
+			(code "26")
 			(name "ROBOT_MAIN_RET")
 			(class "Default")
 			(node
@@ -3856,7 +4464,7 @@
 			)
 		)
 		(net
-			(code "29")
+			(code "27")
 			(name "S12_CH1")
 			(class "Default")
 			(node
@@ -3879,7 +4487,7 @@
 			)
 		)
 		(net
-			(code "30")
+			(code "28")
 			(name "S21_TEST")
 			(class "Default")
 			(node
@@ -3896,7 +4504,7 @@
 			)
 		)
 		(net
-			(code "31")
+			(code "29")
 			(name "S22_CH2")
 			(class "Default")
 			(node
@@ -3913,7 +4521,7 @@
 			)
 		)
 		(net
-			(code "32")
+			(code "30")
 			(name "SAFE_0V")
 			(class "Default")
 			(node
@@ -3942,7 +4550,7 @@
 			)
 		)
 		(net
-			(code "33")
+			(code "31")
 			(name "SAFE_24V")
 			(class "Default")
 			(node
@@ -3995,7 +4603,7 @@
 			)
 		)
 		(net
-			(code "34")
+			(code "32")
 			(name "TETHER_POS_SWITCHED")
 			(class "Default")
 			(node
@@ -4012,7 +4620,92 @@
 			)
 		)
 		(net
+			(code "33")
+			(name "WPS_RS_LARM_IN_12V")
+			(class "Default")
+			(node
+				(ref "FB3")
+				(pin "OUT")
+				(pinfunction "RS_LARM_PROTECTED_FEED_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "JRS_LARM")
+				(pin "2")
+				(pinfunction "PROTECTED_12_V_INPUT_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "34")
+			(name "WPS_RS_LLEG_IN_12V")
+			(class "Default")
+			(node
+				(ref "FB1")
+				(pin "OUT")
+				(pinfunction "RS_LLEG_PROTECTED_FEED_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "JRS_LLEG")
+				(pin "2")
+				(pinfunction "PROTECTED_12_V_INPUT_2")
+				(pintype "passive")
+			)
+		)
+		(net
 			(code "35")
+			(name "WPS_RS_RARM_IN_12V")
+			(class "Default")
+			(node
+				(ref "FB4")
+				(pin "OUT")
+				(pinfunction "RS_RARM_PROTECTED_FEED_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "JRS_RARM")
+				(pin "2")
+				(pinfunction "PROTECTED_12_V_INPUT_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "36")
+			(name "WPS_RS_RLEG_IN_12V")
+			(class "Default")
+			(node
+				(ref "FB2")
+				(pin "OUT")
+				(pinfunction "RS_RLEG_PROTECTED_FEED_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "JRS_RLEG")
+				(pin "2")
+				(pinfunction "PROTECTED_12_V_INPUT_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "37")
+			(name "WPS_RS_WAIST_IN_12V")
+			(class "Default")
+			(node
+				(ref "FB5")
+				(pin "OUT")
+				(pinfunction "RS_WAIST_PROTECTED_FEED_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "JRS_WAIST")
+				(pin "2")
+				(pinfunction "PROTECTED_12_V_INPUT_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "38")
 			(name "unconnected-(K1-BUILT-IN_NO_AUX_SPARE-Pad13)")
 			(class "Default")
 			(node
@@ -4023,7 +4716,7 @@
 			)
 		)
 		(net
-			(code "36")
+			(code "39")
 			(name "unconnected-(K1-BUILT-IN_NO_AUX_SPARE-Pad14)")
 			(class "Default")
 			(node
@@ -4034,7 +4727,7 @@
 			)
 		)
 		(net
-			(code "37")
+			(code "40")
 			(name "unconnected-(K2-BUILT-IN_NO_AUX_SPARE-Pad13)")
 			(class "Default")
 			(node
@@ -4045,7 +4738,7 @@
 			)
 		)
 		(net
-			(code "38")
+			(code "41")
 			(name "unconnected-(K2-BUILT-IN_NO_AUX_SPARE-Pad14)")
 			(class "Default")
 			(node
@@ -4056,7 +4749,7 @@
 			)
 		)
 		(net
-			(code "39")
+			(code "42")
 			(name "unconnected-(MCU1-FRESH_BOUNDED_MOTION_REQUEST-PadCMD)")
 			(class "Default")
 			(node
@@ -4067,7 +4760,7 @@
 			)
 		)
 		(net
-			(code "40")
+			(code "43")
 			(name "unconnected-(MCU1-PDU_DISABLE_COMMANDS-PadENABLE)")
 			(class "Default")
 			(node
@@ -4078,7 +4771,7 @@
 			)
 		)
 		(net
-			(code "41")
+			(code "44")
 			(name "unconnected-(MON1-FAULT_LOG_{slash}_TELEMETRY-PadLOG)")
 			(class "Default")
 			(node
@@ -4089,7 +4782,7 @@
 			)
 		)
 		(net
-			(code "42")
+			(code "45")
 			(name "unconnected-(MON1-PDU_POWER-GOOD_AGGREGATE-PadBR)")
 			(class "Default")
 			(node
@@ -4100,7 +4793,7 @@
 			)
 		)
 		(net
-			(code "43")
+			(code "46")
 			(name "unconnected-(RB0-PROPOSED_SINGLE_0_V_{slash}_FRAME_STAR_POINT-PadFRAME-STAR)")
 			(class "Default")
 			(node

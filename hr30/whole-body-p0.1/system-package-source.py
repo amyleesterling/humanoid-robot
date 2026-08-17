@@ -12,6 +12,7 @@ import csv
 import hashlib
 import json
 import math
+import re
 import shutil
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -491,7 +492,42 @@ P0.1 now also includes floating-base 25-DOF URDF and MJCF models, a {mass_summar
     (OUT / "package-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
 
 
+def _dedupe_controlled_blocks(path: Path) -> None:
+    """Keep one copy of every generated HR30 marker block.
+
+    Several independent generators insert their section before another generated
+    marker.  If that downstream marker is duplicated, a plain ``replace`` can
+    multiply the inserted section.  Normalize the assembled root documents at
+    the shared publication boundary so reruns remain idempotent.
+    """
+    text = path.read_text(encoding="utf-8")
+    tokens = list(dict.fromkeys(re.findall(r"<!--\s+(HR30-[A-Z0-9-]+-START)\s+-->", text)))
+    for start_token in tokens:
+        end_token = start_token.removesuffix("-START") + "-END"
+        start = f"<!-- {start_token} -->"
+        end = f"<!-- {end_token} -->"
+        first = text.find(start)
+        if first < 0:
+            continue
+        first_end = text.find(end, first + len(start))
+        if first_end < 0:
+            raise RuntimeError(f"unpaired controlled block in {path}: {start_token}")
+        cursor = first_end + len(end)
+        while True:
+            duplicate = text.find(start, cursor)
+            if duplicate < 0:
+                break
+            duplicate_end = text.find(end, duplicate + len(start))
+            if duplicate_end < 0:
+                raise RuntimeError(f"unpaired duplicate block in {path}: {start_token}")
+            text = text[:duplicate] + text[duplicate_end + len(end):]
+    path.write_text(text.rstrip() + "\n", encoding="utf-8", newline="\n")
+
+
 def refresh_manifest_and_release() -> None:
+    _dedupe_controlled_blocks(OUT / "README.md")
+    _dedupe_controlled_blocks(OUT / "index.html")
+    shutil.copy2(Path(__file__), OUT / "system-package-source.py")
     manifest_path = OUT / "file-manifest.csv"
     if manifest_path.exists():
         manifest_path.unlink()

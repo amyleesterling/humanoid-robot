@@ -4,8 +4,9 @@
 This package resolves the physical-location contradiction in the earlier
 architecture: the two series contactors and mains equipment are located in an
 external enclosure.  The robot carries only a touch-safe inlet, main
-protection boundary, and five protected feeds to the five installed actuator
-PDU boards.  Protection values and final conductors remain selections.
+protection boundary, and eight protected feeds: five RS walking-power boards
+plus three dedicated 9 V regulator inputs.  Protection values and final
+conductors remain selections.
 """
 
 from __future__ import annotations
@@ -101,7 +102,7 @@ def load_model():
     model.DATE = DATE
     model.WARNING = WARNING
     model.PROJECT_TITLE = "PROJECT BUTTON HR-30 TETHER POWER CORE P0.1"
-    model.PROJECT_SUBTITLE = "External redundant interruption; touch-safe tether; five protected robot PDU feeds."
+    model.PROJECT_SUBTITLE = "External redundant interruption; touch-safe tether; eight protected bus-source feeds."
     return model
 
 
@@ -151,18 +152,27 @@ def build_sheets(model):
     s4.notes = ["Anderson rates the family with specified contacts and conductor sizes; this does not establish HR-30 ampacity under walking flex, bundling or ambient conditions.", "No connector is treated as a routine load-break E-stop. The contactors must open before planned disconnection."]
     sheets.append(s4)
 
-    s5 = model.Sheet(5, "05_robot_five_branch_distribution.kicad_sch", "Robot inlet, main boundary and five protected PDU feeds", "One physical branch holder per installed PDU board; all fuse values open.")
+    s5 = model.Sheet(5, "05_robot_eight_branch_distribution.kicad_sch", "Robot inlet, main boundary and eight protected bus-source feeds", "Five RS board feeds plus three dedicated 9 V regulator inputs; all fuse values open.")
     s5.components = [
         comp(model, "FM0", "LITTELFUSE 04980923ZXT MAIN HOLDER - FUSE VALUE REQUIRED", [("IN", "ROBOT INLET POSITIVE", "ROBOT_MAIN_POS", "left"), ("OUT", "MAIN DISTRIBUTION BUS", "ROBOT_FUSED_POS", "right")], "58 V MIDI holder with cover and M6 mounting tabs. Fuse value, fuse order code, interrupt rating, coordination, terminal hardware, conductor and torque are not released.", (85, 70), 115, SOURCES["MIDI"][3], SOURCES["MIDI"][2], "HOLDER SELECTED - FUSE VALUE SELECTION REQUIRED"),
         comp(model, "RB0", "ROBOT RETURN / FRAME BOUNDARY", [("RET-IN", "TETHER RETURN", "ROBOT_MAIN_RET", "left"), ("RET-BUS", "CONTROLLED RETURN BUS", "PDU_COMMON_RET", "right"), ("FRAME-IN", "TETHER PRE-MATE FRAME", "ROBOT_FRAME_BOUNDARY", "left"), ("FRAME-STAR", "PROPOSED SINGLE 0 V / FRAME STAR POINT", "STAR_POINT_0V_FRAME", "right")], "Return bus, frame bond and proposed single star point are not finalized. Bond conductor, terminal, location, fault current and jurisdictional treatment require qualified selection.", (85, 190), 115),
     ]
-    boards = [("LLEG", 60), ("RLEG", 100), ("ARMS", 140), ("DISTAL", 180), ("CORE", 220)]
-    for index, (name, y) in enumerate(boards, 1):
+    branches = [
+        ("RS_LLEG", 45, "WPS-RS-LLEG", "WPS_RS_LLEG_IN_12V"),
+        ("RS_RLEG", 75, "WPS-RS-RLEG", "WPS_RS_RLEG_IN_12V"),
+        ("RS_LARM", 105, "WPS-RS-LARM", "WPS_RS_LARM_IN_12V"),
+        ("RS_RARM", 135, "WPS-RS-RARM", "WPS_RS_RARM_IN_12V"),
+        ("RS_WAIST", 165, "WPS-RS-WAIST", "WPS_RS_WAIST_IN_12V"),
+        ("TTL_LDIST_REG", 195, "REG-TTL-LDIST", "REG_TTL_LDIST_IN_12V"),
+        ("TTL_RDIST_REG", 225, "REG-TTL-RDIST", "REG_TTL_RDIST_IN_12V"),
+        ("TTL_HEAD_REG", 255, "REG-TTL-HEAD", "REG_TTL_HEAD_IN_12V"),
+    ]
+    for index, (name, y, target, positive_net) in enumerate(branches, 1):
         s5.components.extend([
-            comp(model, f"FB{index}", f"04980923ZXT {name} BRANCH HOLDER - FUSE VALUE REQUIRED", [("IN", "COMMON DISTRIBUTION INPUT", "ROBOT_FUSED_POS", "left"), ("OUT", f"{name} PROTECTED FEED", f"PDU_{name}_POS", "right")], "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.", (230, y), 108, SOURCES["MIDI"][3], SOURCES["MIDI"][2], "HOLDER SELECTED - NO FUSE VALUE RELEASED"),
-            comp(model, f"J{name}", f"PDU-{name} INPUT - PHOENIX 1714971", [("1", "PDU 0 V", "PDU_COMMON_RET", "left"), ("2", "PDU +12 V INPUT", f"PDU_{name}_POS", "left")], "Board terminal is nominally 32 A / 4 mm2 per the manufacturer page. Field mating wire, ferrule, retention, derating and measured temperature remain open.", (370, y), 98, SOURCES["PHOENIX"][3], SOURCES["PHOENIX"][2], "BOARD TERMINAL IDENTIFIED - FIELD ASSEMBLY OPEN"),
+            comp(model, f"FB{index}", f"04980923ZXT {name} BRANCH HOLDER - FUSE VALUE REQUIRED", [("IN", "COMMON DISTRIBUTION INPUT", "ROBOT_FUSED_POS", "left"), ("OUT", f"{name} PROTECTED FEED", positive_net, "right")], "Fuse holder is physically selected; exact MIDI fuse, value, interrupt rating, discrimination, conductor, lug, terminal hardware and torque remain selection work.", (230, y), 108, SOURCES["MIDI"][3], SOURCES["MIDI"][2], "HOLDER SELECTED - NO FUSE VALUE RELEASED"),
+            comp(model, f"J{name}", f"{target} INPUT BOUNDARY", [("1", "CONTROLLED RETURN", "PDU_COMMON_RET", "left"), ("2", "PROTECTED 12 V INPUT", positive_net, "left")], "Field connector remains selection work. The five RS branches land at one-bus WPS boards; the three TTL branches land at separate S18V20F9 regulator inputs and their 9 V outputs must remain isolated.", (370, y), 98, SOURCES["PHOENIX"][3], SOURCES["PHOENIX"][2], "FIELD CONNECTOR / DERATING / VALIDATION OPEN"),
         ])
-    s5.notes = ["Five holders correspond exactly to PDU-LLEG, PDU-RLEG, PDU-ARMS, PDU-DISTAL and PDU-CORE.", "No fuse value is shown because available fault current, cable lengths, temperatures, bundling, inrush, regeneration and coordination are not closed."]
+    s5.notes = ["Eight holders preserve five RS board inputs and three independent regulator inputs. The three 9 V regulator outputs are never joined.", "No fuse value is shown because available fault current, cable lengths, temperatures, bundling, inrush, regeneration and coordination are not closed."]
     sheets.append(s5)
 
     s6 = model.Sheet(6, "06_telemetry_interlocks_commissioning.kicad_sch", "Status, telemetry and fail-closed commissioning boundary", "No reset-to-motion path and no diagnostic safety credit.")
@@ -237,20 +247,22 @@ def write_cad():
     cq.exporters.export(cq.Compound.makeCompound([p[0] for p in panel_parts]), str(OUT / "HR30_external_tether_panel_candidate.step"))
     assy.save(str(OUT / "HR30_external_tether_panel_candidate.glb"))
 
-    # Robot passive distribution assembly: inlet at rear, six covered holders in two rows.
-    base = rounded_box(146, 28, 38, (0, 0, 0), 3)
+    # Robot passive distribution assembly: inlet plus nine covered holders
+    # (one main and eight branches) in a compact three-by-three bank.
+    base = rounded_box(146, 34, 66, (0, 0, 0), 3)
     inlet = rounded_box(52, 38, 30, (-46, 2, 0), 4)
     holders = []
-    for index in range(6):
+    for index in range(9):
         x = -40 + (index % 3) * 40
-        z = -11 + (index // 3) * 22
+        z = -22 + (index // 3) * 22
         holders.append(rounded_box(34, 30, 15, (x, 0, z), 3))
-    splitter_parts = [(base, "INSULATED_DISTRIBUTION_ENCLOSURE", (0.10, 0.22, 0.34, 1)), (inlet, "XT1B_SBS75G", (0.08, 0.10, 0.14, 1))] + [(shape, "FM0_MAIN" if i == 0 else f"FB{i}_{['LLEG','RLEG','ARMS','DISTAL','CORE'][i-1]}", (0.88, 0.56, 0.08, 1)) for i, shape in enumerate(holders)]
-    assy2 = cq.Assembly(name="HR30_ROBOT_FIVE_BRANCH_DISTRIBUTOR_P01_NOT_RELEASED")
+    branch_names = ["RS_LLEG", "RS_RLEG", "RS_LARM", "RS_RARM", "RS_WAIST", "TTL_LDIST_REG", "TTL_RDIST_REG", "TTL_HEAD_REG"]
+    splitter_parts = [(base, "INSULATED_DISTRIBUTION_ENCLOSURE", (0.10, 0.22, 0.34, 1)), (inlet, "XT1B_SBS75G", (0.08, 0.10, 0.14, 1))] + [(shape, "FM0_MAIN" if i == 0 else f"FB{i}_{branch_names[i-1]}", (0.88, 0.56, 0.08, 1)) for i, shape in enumerate(holders)]
+    assy2 = cq.Assembly(name="HR30_ROBOT_EIGHT_BRANCH_DISTRIBUTOR_P01_NOT_RELEASED")
     for shape, name, color in splitter_parts:
         assy2.add(shape, name=name, color=cq.Color(*color))
-    cq.exporters.export(cq.Compound.makeCompound([p[0] for p in splitter_parts]), str(OUT / "HR30_robot_five_branch_distributor_candidate.step"))
-    assy2.save(str(OUT / "HR30_robot_five_branch_distributor_candidate.glb"))
+    cq.exporters.export(cq.Compound.makeCompound([p[0] for p in splitter_parts]), str(OUT / "HR30_robot_eight_branch_distributor_candidate.step"))
+    assy2.save(str(OUT / "HR30_robot_eight_branch_distributor_candidate.glb"))
 
 
 def write_docs(sheets):
@@ -267,8 +279,17 @@ def write_docs(sheets):
             "PHOENIX": "1714971 two-position 9.52 mm PCB terminal; nominal 32 A, 4 mm2",
         }[key], "selection_boundary": "APPLICATION / INSTALLATION / VALIDATION OPEN", "warning": WARNING})
     write_csv(OUT / "primary-source-register.csv", source_rows)
-    branch_currents = {"PDU-LLEG": 24.20, "PDU-RLEG": 24.20, "PDU-ARMS": 18.00, "PDU-DISTAL": 5.28, "PDU-CORE": 4.40}
-    write_csv(OUT / "five-pdu-feed-register.csv", [{"branch_id": f"FB{i}", "board_instance": board, "positive_net": f"PDU_{board[4:]}_POS", "return_net": "PDU_COMMON_RET", "holder_order_code": "04980923ZXT", "fuse_order_code": OPEN, "fuse_value_a": OPEN, "published_actuator_stall_endpoint_sum_a": f"{amps:.2f}", "board_input_terminal": "Phoenix Contact 1714971 pin 2 positive / pin 1 return", "terminal_nominal_current_a": "32", "final_conductor": OPEN, "required_closure": "fault current; cable length; ambient; bundling; inrush; duty; regeneration; connector/lug limits; coordination; jurisdiction", "authority": AUTHORITY} for i, (board, amps) in enumerate(branch_currents.items(), 1)])
+    branch_currents = {
+        "WPS-RS-LLEG": (24.20, "WPS_RS_LLEG_IN_12V", "ACT_MAIN_SAFE_12V"),
+        "WPS-RS-RLEG": (24.20, "WPS_RS_RLEG_IN_12V", "ACT_MAIN_SAFE_12V"),
+        "WPS-RS-LARM": (9.00, "WPS_RS_LARM_IN_12V", "ACT_MAIN_SAFE_12V"),
+        "WPS-RS-RARM": (9.00, "WPS_RS_RARM_IN_12V", "ACT_MAIN_SAFE_12V"),
+        "WPS-RS-WAIST": (4.40, "WPS_RS_WAIST_IN_12V", "ACT_MAIN_SAFE_12V"),
+        "REG-TTL-LDIST": (1.76, "REG_TTL_LDIST_IN_12V", "TTL_LDIST_SAFE_9V -> WPS-TTL-LDIST"),
+        "REG-TTL-RDIST": (1.76, "REG_TTL_RDIST_IN_12V", "TTL_RDIST_SAFE_9V -> WPS-TTL-RDIST"),
+        "REG-TTL-HEAD": (1.76, "REG_TTL_HEAD_IN_12V", "TTL_HEAD_SAFE_9V -> WPS-TTL-HEAD"),
+    }
+    write_csv(OUT / "eight-bus-feed-register.csv", [{"branch_id": f"FB{i}", "feed_target": target, "protected_positive_net": net, "downstream_domain": domain, "return_net": "ACT_0V_CONTROLLED", "holder_order_code": "04980923ZXT", "fuse_order_code": OPEN, "fuse_value_a": OPEN, "published_actuator_stall_endpoint_sum_a": f"{amps:.2f}", "field_connector": OPEN, "final_conductor": OPEN, "required_closure": "fault current; cable length; ambient; bundling; inrush; duty; regeneration; connector/lug limits; coordination; jurisdiction", "authority": AUTHORITY} for i, (target, (amps, net, domain)) in enumerate(branch_currents.items(), 1)])
     write_csv(OUT / "connector-contact-map.csv", [
         {"connector": "XT1A/XT1B", "housing": "SBS75GBLK", "project_cavity": "P1", "function": "controlled +12 V", "contact_candidate": "1339G2 for 6 AWG", "manufacturer_assignment": "power position", "project_polarity_marking": "REQUIRED", "physical_validation": "NOT EXECUTED"},
         {"connector": "XT1A/XT1B", "housing": "SBS75GBLK", "project_cavity": "G center", "function": "pre-mate frame/shield reference", "contact_candidate": "1340G1 for 6 AWG", "manufacturer_assignment": "pre-mate ground position", "project_polarity_marking": "REQUIRED", "physical_validation": "NOT EXECUTED"},
@@ -279,7 +300,7 @@ def write_docs(sheets):
         ("H02", "RSP-500-12 adjustment lock, inrush, thermal rise, source current limiting and regeneration response"),
         ("H03", "complete E-stop order code, reset terminals, PNOZ mode setting, contact protection and whole-machine safety validation"),
         ("H04", "LC1D40ABD received-device/terminal inspection, HR-30 fault current and L/R, DC electrical durability, series-pole jumpers, protection, opening time, regeneration, life and common-cause analysis"),
-        ("H05", "all six MIDI fuse order codes and values, interrupt ratings and coordination"),
+        ("H05", "all nine MIDI fuse order codes and values, interrupt ratings and coordination"),
         ("H06", "all tether/branch conductors, lugs, ferrules, torque, temperature, bundling, flex and strain relief"),
         ("H07", "single proposed 0 V/frame star point, PE/frame bonding, shield terminations and enclosure bond"),
         ("H08", "power-loss, regeneration, stopping time, contactor opening time and branch-disable sequencing"),
@@ -292,7 +313,15 @@ def write_docs(sheets):
     svg = (svg
         .replace("K1 GV121CAC", "K1 LC1D40ABD")
         .replace("K2 GV121CAC", "K2 LC1D40ABD")
-        .replace("+12 V · return · pre-mate frame", "+12 V / return / pre-mate frame"))
+        .replace("+12 V · return · pre-mate frame", "+12 V / return / pre-mate frame")
+        .replace("six fuse holders on the robot: one main and five PDU branches", "nine fuse holders on the robot: one main and eight bus-source branches")
+        .replace("Five branch holders", "Eight branch holders")
+        .replace("PDU-LLEG", "WPS-RS-LLEG")
+        .replace("PDU-RLEG", "WPS-RS-RLEG")
+        .replace("PDU-ARMS", "WPS-RS-LARM")
+        .replace("PDU-DISTAL", "WPS-RS-RARM")
+        .replace("PDU-CORE", "WPS-RS-WAIST")
+        .replace("No fuse value or conductor is released.", '</text><text x="1140" y="500" class="b">FB6 - REG-TTL-LDIST</text><text x="1140" y="535" class="b">FB7 - REG-TTL-RDIST</text><text x="1140" y="570" class="b">FB8 - REG-TTL-HEAD</text><text x="835" y="650" class="b">No fuse value or conductor is released.'))
     (OUT / "system-architecture.svg").write_text(svg, encoding="utf-8")
     panels = []
     for sheet in sheets:
@@ -301,7 +330,16 @@ def write_docs(sheets):
             raise RuntimeError(f"expected one exported SVG for sheet {sheet.number:02d}, found {len(exported)}")
         panels.append(f'<details><summary>{sheet.number:02d} · {html.escape(sheet.title)}</summary><div class="drawing"><object data="output/{html.escape(exported[0].name)}" type="image/svg+xml" aria-label="{html.escape(sheet.title)}"></object></div></details>')
     (OUT / "index.html").write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 tether power core P0.1</title><script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script><style>:root{{--navy:#082f58;--blue:#0b5790;--sky:#cfeeff;--gold:#f2b928;--paper:#f7fcff}}*{{box-sizing:border-box}}body{{margin:0;color:var(--navy);font:clamp(16px,1.15vw,19px)/1.55 system-ui,sans-serif;background:var(--paper)}}header{{padding:clamp(1.5rem,5vw,4rem);background:linear-gradient(135deg,var(--sky),white);border-bottom:7px solid var(--gold)}}header>div,main{{max-width:1240px;margin:auto}}h1{{font-size:clamp(2.4rem,6vw,5rem);line-height:1.02;max-width:17ch}}main{{padding:2rem clamp(1rem,4vw,3rem) 5rem}}.warning,.hold{{border:3px solid #a66f00;background:#fff2bd;border-radius:14px;padding:1rem;font-weight:850}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1rem;margin:2rem 0}}article,details{{background:white;border:2px solid var(--blue);border-radius:16px;overflow:hidden}}article{{padding:1rem}}article b{{display:block;font-size:clamp(2rem,4vw,3.6rem)}}model-viewer{{width:100%;height:520px;background:white;border:2px solid #83bddb}}summary{{padding:1rem;font-size:18px;font-weight:850;cursor:pointer;background:#e2f5ff}}.system-map{{display:block;width:100%;max-width:100%;height:570px}}.drawing{{width:100%;max-width:100%;height:650px;overflow:auto;contain:inline-size}}.drawing object{{display:block;width:900px;max-width:none;height:100%}}a{{color:#075d98;font-weight:800}}small{{font-size:14px}}@media(max-width:650px){{main{{padding:1.2rem .8rem 4rem}}model-viewer{{height:420px}}}}</style></head><body><header><div><p class="warning">{WARNING}</p><h1>The contactors are outside the robot.</h1><p>A physical external panel candidate now feeds one touch-safe tether and exactly five protected onboard PDU inputs.</p></div></header><main><section class="grid"><article><b>7</b>native KiCad files: root plus six sheets</article><article><b>ERC 0 / 0</b>connectivity and annotation only</article><article><b>2</b>LC1D40ABD candidates</article><article><b>5</b>axis-bound PDU feeds</article></section><div class="hold"><h2>The EDM hardware mismatch is corrected</h2><p>K1 and K2 each use explicit 21-22 mirror-certified NC auxiliary contacts. Their three main poles are wired in series. This is still an unvalidated candidate circuit: no achieved Category, PL, SIL or permission to energize is claimed.</p></div><div class="hold"><h2>Fuse values are intentionally absent</h2><p>Fault current, cable length, ambient temperature, bundling, inrush, duty cycle, regeneration, connector limits, coordination and jurisdiction are not yet closed. No fuse value or conductor is released.</p></div><h2>Physical system map</h2><object class="system-map" data="system-architecture.svg" type="image/svg+xml" aria-label="Physical tether power architecture"></object><h2>External enclosure candidate</h2><model-viewer src="HR30_external_tether_panel_candidate.glb" camera-controls shadow-intensity="0.9" alt="Interactive external HR-30 tether power panel candidate"></model-viewer><p><a href="HR30_external_tether_panel_candidate.step">External panel STEP</a> · <a href="HR30_robot_five_branch_distributor_candidate.step">Robot distributor STEP</a> · <a href="{PROJECT}.kicad_pro">KiCad project</a> · <a href="five-pdu-feed-register.csv">five-feed register</a> · <a href="open-holds.csv">open holds</a></p><h2>Native schematic sheets</h2>{''.join(panels)}</main></body></html>''', encoding="utf-8")
-    (OUT / "README.md").write_text(f"# HR-30 tether power core P0.1\n\n**{WARNING}**\n\nThis package implements the tether-first arrangement with RSP-500-12, PNOZ s4 750104 and two independent series Schneider LC1D40ABD contactors in the external Hammond 1418N4C6 panel candidate. Each contactor uses all three main poles in series, and its built-in mirror-certified 21-22 NC auxiliary is wired into the monitored reset/EDM chain. The robot receives controlled DC through an SBS75G boundary and carries one main plus five branch fuse holders feeding the five installed actuator PDU boards. The contactor candidate and terminal functions are now explicit; fuse values, final conductors, fault current, L/R, durability, grounding, thermal behavior, regeneration, stopping behavior, physical validation and every work authority remain open.\n", encoding="utf-8")
+    page_path = OUT / "index.html"
+    page_text = page_path.read_text(encoding="utf-8")
+    page_text = (page_text
+        .replace("exactly five protected onboard PDU inputs", "exactly eight protected onboard bus-source inputs")
+        .replace("<b>5</b>axis-bound PDU feeds", "<b>8</b>protected bus-source feeds")
+        .replace("HR30_robot_five_branch_distributor_candidate.step", "HR30_robot_eight_branch_distributor_candidate.step")
+        .replace("five-pdu-feed-register.csv", "eight-bus-feed-register.csv")
+        .replace("five-feed register", "eight-feed register"))
+    page_path.write_text(page_text, encoding="utf-8")
+    (OUT / "README.md").write_text(f"# HR-30 tether power core P0.1\n\n**{WARNING}**\n\nThis package implements the tether-first arrangement with RSP-500-12, PNOZ s4 750104 and two independent series Schneider LC1D40ABD contactors in the external Hammond 1418N4C6 panel candidate. Each contactor uses all three main poles in series, and its built-in mirror-certified 21-22 NC auxiliary is wired into the monitored reset/EDM chain. The robot receives controlled DC through an SBS75G boundary and carries one main plus eight branch fuse holders: five independently protected 12 V RS-board inputs and three separately protected S18V20F9 regulator inputs. Each regulator output feeds only its own 9 V TTL walking-power board; regulator outputs are never paralleled. The contactor candidate and terminal functions are explicit; fuse values, final conductors, fault current, L/R, durability, grounding, thermal behavior, regeneration, stopping behavior, physical validation and every work authority remain open.\n", encoding="utf-8")
 
 
 def integrate_status():
@@ -318,7 +356,7 @@ def integrate_status():
         "contactor_main_poles_in_series_per_device": 3,
         "contactor_application_validated": False,
         "on_robot_contactor_count": 0,
-        "robot_pdu_feed_count": 5,
+        "robot_pdu_feed_count": 8,
         "robot_main_fuse_value_selected": False,
         "robot_branch_fuse_values_selected": False,
         "tether_power_core_energization_authority": False,
@@ -330,13 +368,14 @@ def integrate_status():
     text = re.sub(re.escape(start) + r"[\s\S]*?" + re.escape(end), "", text)
     section = f'''{start}<section id="tether-power-core"><h2>The tether power path now has physical hardware and locations</h2><div class="grid"><article class="card pass"><h3>External interruption</h3><p>RSP-500-12, PNOZ s4 and two GV121CAC contactors are located in a 1418N4C6 external-panel candidate—not inside the robot.</p></article><article class="card pass"><h3>Five PDU feeds</h3><p>One covered branch holder is allocated to each installed PDU board through a touch-safe SBS75G tether boundary.</p></article><article class="card hold"><h3>No fuse values released</h3><p>Fault current, wire, connector temperature, coordination and regeneration evidence remain open.</p></article></div><div class="viewer"><object data="electrical/tether-power-core-p0.1/system-architecture.svg" type="image/svg+xml" aria-label="HR-30 tether power core architecture"></object><p><a href="electrical/tether-power-core-p0.1/index.html">Open the interactive power-core guide</a> · <a href="electrical/tether-power-core-p0.1/{PROJECT}.kicad_pro">native KiCad</a> · <a href="electrical/tether-power-core-p0.1/HR30_external_tether_panel_candidate.step">panel STEP</a>.</p></div></section>{end}'''
     section = section.replace("two GV121CAC contactors", "two LC1D40ABD contactors")
-    section = section.replace('<article class="card pass"><h3>Five PDU feeds</h3>', '<article class="card pass"><h3>Mirror-contact EDM</h3><p>Each contactor\'s 21-22 mirror-certified NC auxiliary is in the monitored reset chain. This corrects the former candidate mismatch but does not establish an achieved safety level.</p></article><article class="card pass"><h3>Five PDU feeds</h3>')
+    section = section.replace('<article class="card pass"><h3>Five PDU feeds</h3>', '<article class="card pass"><h3>Mirror-contact EDM</h3><p>Each contactor\'s 21-22 mirror-certified NC auxiliary is in the monitored reset chain. This corrects the former candidate mismatch but does not establish an achieved safety level.</p></article><article class="card pass"><h3>Eight bus-source feeds</h3>')
+    section = section.replace("One covered branch holder is allocated to each installed PDU board", "Five holders feed individual RS boards and three feed separate 9 V regulators")
     page.write_text(text.replace("</main>", section + "</main>"), encoding="utf-8")
     readme = WB / "README.md"
     readme_text = collapse_duplicate_hr30_blocks(readme.read_text(encoding="utf-8"))
     md_start, md_end = "<!-- HR30-TETHER-POWER-START -->", "<!-- HR30-TETHER-POWER-END -->"
     readme_text = re.sub(re.escape(md_start) + r"[\s\S]*?" + re.escape(md_end), "", readme_text).rstrip()
-    readme_text += f"\n\n{md_start}\n## Physical tether power core\n\nThe P0.1 robot no longer contains an abstract high-current interruption module. RSP-500-12, PNOZ s4 750104 and both GV121CAC series contactors are located in an external 1418N4C6 panel candidate. The robot carries an SBS75G inlet and one main plus five covered MIDI-holder positions mapped exactly to PDU-LLEG, PDU-RLEG, PDU-ARMS, PDU-DISTAL and PDU-CORE. The seven-sheet native KiCad package validates at ERC 0/0 for connectivity and annotation only. All six fuse values, final conductors, grounding, thermal behavior, stopping behavior and every work authority remain open. See `electrical/tether-power-core-p0.1/index.html`.\n{md_end}\n"
+    readme_text += f"\n\n{md_start}\n## Physical tether power core\n\nThe P0.1 robot no longer contains an abstract high-current interruption module. RSP-500-12, PNOZ s4 750104 and both GV121CAC series contactors are located in an external 1418N4C6 panel candidate. The robot carries an SBS75G inlet and one main plus eight covered MIDI-holder positions: five individual RS walking-power-board inputs and three dedicated S18V20F9 regulator inputs. Each regulator output remains exclusive to its own TTL walking-power board. The seven-sheet native KiCad package validates at ERC 0/0 for connectivity and annotation only. All nine fuse values, final conductors, grounding, thermal behavior, stopping behavior and every work authority remain open. See `electrical/tether-power-core-p0.1/index.html`.\n{md_end}\n"
     readme_text = readme_text.replace("both GV121CAC series contactors", "two independent LC1D40ABD series contactors")
     readme_text = readme_text.replace("The robot carries an SBS75G inlet", "Each contactor's three main poles are wired in series and the built-in 21-22 mirror-certified NC auxiliary participates in EDM. This corrects a candidate/interface mismatch but does not establish a Category, PL or SIL. The robot carries an SBS75G inlet")
     readme.write_text(readme_text, encoding="utf-8")
@@ -358,7 +397,7 @@ def main() -> int:
         "contactor_mirror_nc_terminals": "21-22",
         "contactor_main_poles_in_series_per_device": 3,
         "contactor_application_validated": False,
-        "robot_pdu_feed_count": 5, "fuse_holder_count": 6,
+        "robot_pdu_feed_count": 8, "fuse_holder_count": 9,
         "fuse_values_selected": False, "final_conductors_selected": False,
         "functional_safety_approved": False, "fabrication_authority": False,
         "connection_authority": False, "powered_test_authority": False,

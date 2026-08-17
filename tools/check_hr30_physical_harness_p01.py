@@ -63,7 +63,7 @@ def main() -> int:
     source = rows("source-register.csv")
 
     require(len(axes) == len(loops) == len(power) == len(links) == len(chains) == len(power_pairs) == len(data_links) == len(retain) == len(derating) == 25, "25-axis register spine incomplete")
-    require(len(connectors) == 107, "42 actuator/data plus 65 physical PDU connector instances required")
+    require(len(connectors) == 146, "42 actuator/data plus 104 walking-power connector boundaries required")
     require(len(routes) == 62 and len(points) == 124, "route geometry count drift")
     require(len(route_cad) == 62 and {r["segment_id"] for r in route_cad} == {r["segment_id"] for r in routes}, "whole-body route CAD register does not cover all 62 segments")
     require(len({r["solid_name"] for r in route_cad}) == 62, "route CAD solid names are not unique")
@@ -72,8 +72,8 @@ def main() -> int:
     require(len(assemblies) == 14 and len(terminations) == len(shields) == 8, "assembly/bus completeness drift")
     with (WB / "electrical/kicad/hr30-whole-body-electrical-p0.1/connector-schedule.csv").open(encoding="utf-8-sig", newline="") as handle:
         ecad_terminals = list(csv.DictReader(handle))
-    require(len(equipment) == 58 and len(logical) == len(ecad_terminals), "equipment or logical-terminal binding incomplete")
-    require(len(contacts) == 319 and len(cores) == 94, "actuator/PDU contact and core mapping drift")
+    require(len(equipment) == 64 and len(logical) == len(ecad_terminals), "equipment or logical-terminal binding incomplete")
+    require(len(contacts) == 415 and len(cores) == 94, "actuator/WPS contact and core mapping drift")
     require(len(inspections) >= 10 and len(unresolved) >= 10, "inspection/open-selection registers incomplete")
     require(len(interfaces) == 4 and {r["actuator_family"] for r in interfaces} == {"XH540", "XM540", "XM430", "XC330"}, "four actuator interface verification records required")
     require(sum(int(r["axis_count"]) for r in interfaces) == 25 and all(r["verified_boundary"].startswith("DEVICE PINOUT") for r in interfaces), "actuator interface coverage/claim drift")
@@ -98,7 +98,7 @@ def main() -> int:
     for a in axes: bus_axis[a["bus_id"]].append(a["axis_id"])
     require(sorted(len(v) for v in bus_axis.values()) == [1, 2, 2, 2, 3, 3, 6, 6], "eight-bus axis allocation drift")
     require(abs(sum(float(r["candidate_12v_stall_endpoint_a"]) for r in power) - 71.88) < 1e-8, "stall endpoint arithmetic drift")
-    require(all("TPS259474L COMMISSIONING CANDIDATE" in r["protection_topology"] and "CHANNEL" in r["protection_topology"] for r in power), "25 board/channel protection bindings missing")
+    require(all("PAIRED OPPOSING TPS259482LYWPR" in r["protection_topology"] and "CHANNEL" in r["protection_topology"] for r in power), "25 paired board/channel protection bindings missing")
     require({r["branch_net"] for r in power} == {axis + "_VDD" for axis in axis_ids}, "individual actuator VDD net binding drift")
     require(all("STANDARD DYNAMIXEL CABLE VDD" in r["vdd_isolation_rule"] for r in links), "VDD backfeed boundary missing")
     require(all("SERIAL DATA TRUNK" in r["topology_state"] for r in chains), "serial chain topology missing")
@@ -130,11 +130,11 @@ def main() -> int:
     require(all(r["wire_core"] == "NONE - CAVITY EMPTY" for r in outgoing_contacts if r["signal"].startswith("EMPTY")), "empty outgoing cavity has a conductor")
     for core in cores:
         if core["service"] in {"ACTUATOR POWER", "POWER RETURN"}:
-            require(core["from_connector_contact"].startswith("J-PDU-") and core["from_connector_contact"].endswith(("/1", "/2")), f"physical PDU power-pair source missing {core['core_id']}")
+            require(core["from_connector_contact"].startswith("J-WPS-") and core["from_connector_contact"].endswith(("/1", "/2")), f"physical WPS power-pair source missing {core['core_id']}")
     require(all(float(r["length_mm"]) > 0 and r["calculation_state"].startswith("PARTIAL - LENGTH PRESENT") for r in derating), "geometry-derived derating lengths missing or overclaimed")
-    pdu_equipment = [r for r in equipment if r["item_id"].startswith("EQ-PDU-")]
-    require(len(pdu_equipment) == 5 and all(r["physical_connector"].startswith("NATIVE J1/J10x/J20x") for r in pdu_equipment), "five PDU equipment connector boundaries missing")
-    require(all(r["physical_connector"] == "SELECTION REQUIRED" for r in equipment if not r["item_id"].startswith("EQ-PDU-")), "non-PDU equipment connector closure overclaimed")
+    pdu_equipment = [r for r in equipment if r["item_id"].startswith("EQ-WPS-")]
+    require(len(pdu_equipment) == 8 and all(r["physical_connector"].startswith("WPS LOGICAL CONNECTOR FUNCTIONS") for r in pdu_equipment), "eight WPS equipment connector boundaries missing")
+    require(all(r["physical_connector"] == "SELECTION REQUIRED" for r in equipment if not r["item_id"].startswith("EQ-WPS-")), "non-WPS equipment connector closure overclaimed")
     require(all(r["physical_binding_state"].startswith("LOGICAL TERMINAL RETAINED") for r in logical), "logical terminal lost or overclaimed")
 
     false_gates = ["standard_dynamixel_cable_direct_use_approved", "assembled_cables_selected", "u2d2_final_whole_body_controller_approved", "u2d2_power_hub_whole_body_or_leg_power_approved", "robotis_jst_wire_gauge_conflict_closed", "robotis_jst_housing_order_code_conflict_closed", "conductor_sizing_released", "protection_released", "connector_set_released", "harness_validated", "procurement_authority", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]
@@ -143,7 +143,7 @@ def main() -> int:
     require(status["route_cad_solid_count"] == 62 and status["whole_body_route_step_present"] is True and status["whole_body_route_glb_present"] is True, "whole-body route CAD status missing")
     require(status["route_cad_is_cable_size_release"] is False, "route centerline CAD incorrectly releases cable sizing")
     require(status["split_harness_candidate_defined"] is True and status["data_star_topology_rejected"] is True and status["serial_data_predecessor_successor_chain_complete"] is True, "split-harness status missing")
-    require(status["actuator_connector_instances"] == 107 and status["actuator_connector_contacts"] == 319 and status["serial_data_links"] == status["individual_power_pairs"] == 25, "split-harness/PDU status counts drift")
+    require(status["actuator_connector_instances"] == 146 and status["actuator_connector_contacts"] == 415 and status["serial_data_links"] == status["individual_power_pairs"] == 25, "split-harness/WPS status counts drift")
     require(status["actuator_interface_verification_records"] == 4 and status["robotis_commercial_cable_families_reviewed"] == 5 and status["manufacturer_interface_discrepancies_open"] == 5, "manufacturer interface status counts drift")
 
     for s in source:
@@ -195,7 +195,7 @@ def main() -> int:
     require("71.88 A figure" in readme and "76.08 A figure" not in readme, "README endpoint current text is stale")
     require("21 AWG cable statement conflicts" in readme and "U2D2 is retained only" in readme, "README manufacturer-interface boundary missing")
 
-    print(f"PASS: HR-30 physical harness: 25 PDU-bound individual power pairs, 25 serial data links, 107 connectors / 319 cavities / 94 conductors, 8 bus drawings, 62 routes, 58 equipment, {len(logical)} logical terminals, 4 verified actuator interfaces / 5 rejected commercial cable families / 5 open manufacturer discrepancies; all release/authority gates false")
+    print(f"PASS: HR-30 physical harness: 25 WPS-bound individual power pairs, 25 serial data links, 146 connectors / 415 cavities / 94 conductors, 8 bus drawings, 62 routes, 64 equipment, {len(logical)} logical terminals, 4 verified actuator interfaces / 5 rejected commercial cable families / 5 open manufacturer discrepancies; all release/authority gates false")
     return 0
 
 

@@ -9,11 +9,11 @@
     <geom name="floor" type="plane" size="2 2 0.02" rgba="0.85 0.90 0.95 1" />
     <body name="base_link" pos="0.000000 0.000000 0.390000">
       <freejoint name="floating_base" />
-      <inertial pos="-0.003163 0.006931 0.000547" mass="1.495522" diaginertia="0.001984682 0.003604831 0.004368171" />
+      <inertial pos="-0.002970 0.007186 0.000061" mass="1.592722" diaginertia="0.002113675 0.003839124 0.004652076" />
       <geom pos="0.000000 0.000000 0.000000" size="0.077500 0.052500 0.035000" />
       <body name="torso" pos="0.000000 0.000000 0.035000">
         <joint name="WAIST_YAW" type="hinge" axis="0 0 1" range="-0.520000 0.520000" />
-        <inertial pos="-0.000585 0.005201 0.098448" mass="0.890681" diaginertia="0.002458649 0.004240010 0.003577567" />
+        <inertial pos="-0.000476 0.006459 0.095612" mass="1.094801" diaginertia="0.003022106 0.005211707 0.004397449" />
         <geom pos="0.000000 0.000000 0.087500" size="0.095000 0.055000 0.072500" />
         <body name="neck_pan_link" pos="0.000000 0.000000 0.225000">
           <joint name="HEAD_PAN" type="hinge" axis="0 0 1" range="-1.400000 1.400000" />

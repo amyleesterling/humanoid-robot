@@ -2,7 +2,7 @@
 
 **PRELIMINARY - PHYSICAL HARNESS ARCHITECTURE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION**
 
-This is the first complete physical translation of the HR-30 logical wiring architecture. It binds all **25 joints**, **8 actuator buses**, **58 installed equipment items**, and **667 current ECAD logical terminals** to a controlled harness architecture.
+This is the first complete physical translation of the HR-30 logical wiring architecture. It binds all **25 joints**, **8 actuator buses**, **64 installed equipment items**, and **667 current ECAD logical terminals** to a controlled harness architecture.
 
 It contains 12 body corridors plus 50 explicit moving-joint power/data loops (62 route segments and 124 route points). All 62 registered routes are also exported as named editable STEP solids and as one interactive GLB in a recognizable 762 mm body context. Those rods are route centerlines—not selected cable diameters, bundle clearances, or bend-radius releases. Each actuator has a known device-side contact map, a branch-power relationship, a data-link boundary, a moving-loop obligation, retention obligation, derating inputs, and an inspection path.
 

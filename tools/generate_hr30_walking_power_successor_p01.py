@@ -83,20 +83,27 @@ def controlled(row: dict[str, object]) -> dict[str, object]:
 def axis_allocations() -> list[dict[str, object]]:
     source = read_csv(WHOLE / "actuator-bus-axis-binding.csv")
     caps = {r["axis_id"]: r for r in read_csv(WHOLE / "harness/current-policy-binding-p0.1/axis-power-policy-binding.csv")}
-    groups = [
-        ("WPS-LLEG", [r for r in source if r["bus_id"] == "RS-LLEG"]),
-        ("WPS-RLEG", [r for r in source if r["bus_id"] == "RS-RLEG"]),
-        ("WPS-ARMS", [r for r in source if r["bus_id"] in {"RS-LARM", "RS-RARM"}]),
-        ("WPS-DISTAL", [r for r in source if r["bus_id"] in {"TTL-LDIST", "TTL-RDIST", "TTL-HEAD"}]),
-        ("WPS-CORE", [r for r in source if r["bus_id"] == "RS-WAIST"]),
-    ]
+    feed_map = {
+        "RS-LLEG": ("WPS-RS-LLEG", "ACT_MAIN_SAFE_12V", "ACT_0V_CONTROLLED", "12 V nominal candidate"),
+        "RS-RLEG": ("WPS-RS-RLEG", "ACT_MAIN_SAFE_12V", "ACT_0V_CONTROLLED", "12 V nominal candidate"),
+        "RS-LARM": ("WPS-RS-LARM", "ACT_MAIN_SAFE_12V", "ACT_0V_CONTROLLED", "12 V nominal candidate"),
+        "RS-RARM": ("WPS-RS-RARM", "ACT_MAIN_SAFE_12V", "ACT_0V_CONTROLLED", "12 V nominal candidate"),
+        "RS-WAIST": ("WPS-RS-WAIST", "ACT_MAIN_SAFE_12V", "ACT_0V_CONTROLLED", "12 V nominal candidate"),
+        "TTL-LDIST": ("WPS-TTL-LDIST", "TTL_LDIST_SAFE_9V", "ACT_0V_CONTROLLED", "9 V regulated candidate"),
+        "TTL-RDIST": ("WPS-TTL-RDIST", "TTL_RDIST_SAFE_9V", "ACT_0V_CONTROLLED", "9 V regulated candidate"),
+        "TTL-HEAD": ("WPS-TTL-HEAD", "TTL_HEAD_SAFE_9V", "ACT_0V_CONTROLLED", "9 V regulated candidate"),
+    }
     rows: list[dict[str, object]] = []
-    for board, members in groups:
+    for bus_id in ("RS-LLEG", "RS-RLEG", "RS-LARM", "RS-RARM", "RS-WAIST", "TTL-LDIST", "TTL-RDIST", "TTL-HEAD"):
+        board, positive_net, return_net, nominal_voltage = feed_map[bus_id]
+        members = [r for r in source if r["bus_id"] == bus_id]
         for channel in range(1, 7):
             axis = members[channel - 1] if channel <= len(members) else None
             if not axis:
                 rows.append(controlled({
-                    "board_instance": board, "channel": channel, "axis_id": "DNP SPARE", "bus_id": "DNP",
+                    "board_instance": board, "channel": channel, "axis_id": "DNP SPARE", "bus_id": bus_id,
+                    "feed_positive_net": positive_net, "feed_return_net": return_net,
+                    "nominal_feed_voltage": nominal_voltage,
                     "actuator_family": "DNP", "candidate_internal_cap_a": "DNP",
                     "forward_device": "DNP", "reverse_device": "DNP", "population_state": "DNP",
                 }))
@@ -106,6 +113,8 @@ def axis_allocations() -> list[dict[str, object]]:
             rows.append(controlled({
                 "board_instance": board, "channel": channel, "axis_id": axis["axis_id"],
                 "bus_id": axis["bus_id"], "actuator_family": axis["actuator_family"],
+                "feed_positive_net": positive_net, "feed_return_net": return_net,
+                "nominal_feed_voltage": nominal_voltage,
                 "candidate_internal_cap_a": f"{cap:.6f}",
                 "forward_device": "TPS259482LYWPR IN=BUS OUT=MID",
                 "reverse_device": "TPS259482LYWPR IN=AXIS OUT=MID",
@@ -119,9 +128,9 @@ def source_bindings() -> list[dict[str, object]]:
         ("WPS-B01", "25-axis ownership", WHOLE / "actuator-bus-axis-binding.csv"),
         ("WPS-B02", "axis current-policy candidates", WHOLE / "harness/current-policy-binding-p0.1/axis-power-policy-binding.csv"),
         ("WPS-B03", "eight-bus current boundary", WHOLE / "harness/current-policy-binding-p0.1/bus-power-boundary.csv"),
-        ("WPS-B04", "five-feed power boundary", WHOLE / "electrical/tether-power-core-p0.1/five-pdu-feed-register.csv"),
-        ("WPS-B05", "commissioning PDU allocation", WHOLE / "electrical/actuator-branch-pdu-p0.1/board-instance-channel-allocation.csv"),
-        ("WPS-B06", "protection/conductor holds", WHOLE / "electrical/protection-conductor-architecture-p0.1/open-holds.csv"),
+        ("WPS-B04", "eight-bus physical topology", WHOLE / "actuator-bus-topology.csv"),
+        ("WPS-B05", "whole-body physical feed-net schedule", WHOLE / "electrical/kicad/hr30-whole-body-electrical-p0.1/connector-schedule.csv"),
+        ("WPS-B06", "eight protected source-feed boundary", WHOLE / "electrical/tether-power-core-p0.1/eight-bus-feed-register.csv"),
     ]
     return [controlled({
         "binding_id": item_id, "role": role, "path": path.relative_to(ROOT).as_posix(),
@@ -154,7 +163,8 @@ def architecture_options() -> list[dict[str, object]]:
         ("WPS-O03", "two oppositely oriented TPS259482L devices", "SELECTED P0.1 WALKING-BRANCH CANDIDATE", "one device protects motoring current and the other protects regenerative current; both block while off or faulted"),
         ("WPS-O04", "bidirectional fuse plus monitor and power switch", "ADAPTATION FALLBACK", "physically credible but exact fuse curve, switch fault behavior and monitoring architecture remain unselected"),
         ("WPS-O05", "one local clamp per actuator", "REJECT AS PRIMARY", "twenty-five sinks add heat and do not close contactor-open shared-bus energy without measured branch data"),
-        ("WPS-O06", "five-feed active brake/dump", "REQUIRED COMPANION ARCHITECTURE", "absorbs downstream energy after upstream contactors open; exact chopper, resistor, thresholds and energy ratings remain selection required"),
+        ("WPS-O06", "five shared-input board instances", "REJECTED AFTER WHOLE-BODY RECONCILIATION", "would short RS-LARM to RS-RARM and would short the three independently regulated 9 V TTL outputs"),
+        ("WPS-O07", "eight one-bus board instances with eight feed sinks", "SELECTED P0.1 WHOLE-BODY TOPOLOGY", "preserves all five RS-485 power domains and three regulated TTL power domains without cross-connecting feeds"),
     ]
     return [controlled({"option_id": i, "architecture": a, "disposition": d, "basis": b}) for i, a, d, b in data]
 
@@ -167,7 +177,7 @@ def energy_states() -> list[dict[str, object]]:
         ("WPS-E3", "REGENERATION", "both enabled; both RCBCTRL low", "AXIS -> reverse eFuse -> MID -> forward-oriented eFuse -> BUS", "reverse-oriented device provides IN-to-OUT OCP"),
         ("WPS-E4", "FORWARD OVERCURRENT", "forward device limits then can thermally latch off", "branch isolated after fault", "threshold, timer and SOA test required"),
         ("WPS-E5", "REVERSE OVERCURRENT", "reverse-oriented device limits then can thermally latch off", "branch isolated after fault", "regenerative fault test required"),
-        ("WPS-E6", "CONTACTORS OPEN / COAST", "upstream source removed; paired branch remains conductive for bounded discharge window", "AXIS -> downstream PDU bus -> five-feed brake/dump", "brake/dump and branch-control timing are not selected"),
+        ("WPS-E6", "CONTACTORS OPEN / COAST", "upstream source removed; paired branch remains conductive for bounded discharge window", "AXIS -> its one authoritative bus feed -> one of eight brake/dump boundaries", "brake/dump and branch-control timing are not selected"),
         ("WPS-E7", "BRANCH DISABLED", "either device disabled/faulted; RCB always active in disabled/fault state", "both directions blocked by paired path", "verify no downstream backfeed and discharge"),
     ]
     return [controlled({"state_id": i, "state": state, "command_or_condition": command, "energy_path": path, "protection_or_hold": hold}) for i, state, command, path, hold in data]
@@ -205,11 +215,14 @@ def loss_rows(allocations: list[dict[str, object]]) -> tuple[list[dict[str, obje
 
 def brake_boundaries() -> list[dict[str, object]]:
     data = [
-        ("WPS-D01", "FB1 / WPS-LLEG", "one downstream active chopper + resistor bank", "SELECTION REQUIRED", "measured left-leg regenerative energy/current and contactor-open trace"),
-        ("WPS-D02", "FB2 / WPS-RLEG", "one downstream active chopper + resistor bank", "SELECTION REQUIRED", "measured right-leg regenerative energy/current and contactor-open trace"),
-        ("WPS-D03", "FB3 / WPS-ARMS", "one downstream active chopper + resistor bank", "SELECTION REQUIRED", "measured bilateral-arm regenerative energy/current"),
-        ("WPS-D04", "FB4 / WPS-DISTAL", "one downstream active chopper + resistor bank", "SELECTION REQUIRED", "measured head/wrist/gripper regenerative energy/current"),
-        ("WPS-D05", "FB5 / WPS-CORE", "one downstream active chopper + resistor bank", "SELECTION REQUIRED", "measured waist regenerative energy/current"),
+        ("WPS-D01", "RS-LLEG / ACT_MAIN_SAFE_12V", "one downstream active chopper + resistor bank", "SELECTION REQUIRED", "measured left-leg regenerative energy/current and contactor-open trace"),
+        ("WPS-D02", "RS-RLEG / ACT_MAIN_SAFE_12V", "one downstream active chopper + resistor bank", "SELECTION REQUIRED", "measured right-leg regenerative energy/current and contactor-open trace"),
+        ("WPS-D03", "RS-LARM / ACT_MAIN_SAFE_12V", "one downstream active chopper + resistor bank", "SELECTION REQUIRED", "measured left-arm regenerative energy/current"),
+        ("WPS-D04", "RS-RARM / ACT_MAIN_SAFE_12V", "one downstream active chopper + resistor bank", "SELECTION REQUIRED", "measured right-arm regenerative energy/current"),
+        ("WPS-D05", "RS-WAIST / ACT_MAIN_SAFE_12V", "one downstream active chopper + resistor bank", "SELECTION REQUIRED", "measured waist regenerative energy/current"),
+        ("WPS-D06", "TTL-LDIST / TTL_LDIST_SAFE_9V", "one downstream active chopper + resistor bank", "SELECTION REQUIRED", "measured left wrist/gripper return energy and 9 V regulator reverse-energy behavior"),
+        ("WPS-D07", "TTL-RDIST / TTL_RDIST_SAFE_9V", "one downstream active chopper + resistor bank", "SELECTION REQUIRED", "measured right wrist/gripper return energy and 9 V regulator reverse-energy behavior"),
+        ("WPS-D08", "TTL-HEAD / TTL_HEAD_SAFE_9V", "one downstream active chopper + resistor bank", "SELECTION REQUIRED", "measured head return energy and 9 V regulator reverse-energy behavior"),
     ]
     return [controlled({"dump_id": i, "feed": feed, "candidate_role": role, "exact_components_and_threshold": state, "closure_input": evidence}) for i, feed, role, state, evidence in data]
 
@@ -220,11 +233,11 @@ def open_holds() -> list[dict[str, object]]:
         ("WPS-H02", "current-limit setpoints, resistors and ITIMER values are not selected", "measured inrush/RMS/peak/fault/regeneration plus received-device threshold and SOA tests"),
         ("WPS-H03", "six XC330 caps are 0.700 A, below the TPS25948 1 A minimum limit", "select a branch threshold of at least 1 A and prove conductor/connector/fault protection; internal actuator cap remains separate"),
         ("WPS-H04", "datasheet maximum current-limit accuracy is stated only above 3 A while every HR-30 candidate cap is below 3 A", "received-lot calibration over temperature; do not treat calculated ILIM as released"),
-        ("WPS-H05", "five contactor-open brake/dump circuits have no selected devices, thresholds or energy ratings", "measure return energy/current/voltage and size the identical-as-built choppers and resistor banks"),
+        ("WPS-H05", "eight bus-domain brake/dump circuits have no selected devices, thresholds or energy ratings", "measure return energy/current/voltage per bus and size the identical-as-built choppers and resistor banks"),
         ("WPS-H06", "source absorption and reverse-energy behavior are not characterized", "manufacturer-approved application basis and bench characterization of RSP path, contactors and downstream bus"),
         ("WPS-H07", "paired startup, disable and fault timing are unvalidated", "instrument EN, RCBCTRL, IN/MID/OUT, SPLYGD and ILM in both directions under fault"),
         ("WPS-H08", "native schematic is not a routed PCB", "complete exact YWP footprint, placement, copper/thermal design, DFM, ERC/DRC and physical board tests"),
-        ("WPS-H09", "connector, conductor, fuse and five-feed coordination remain open", "close protection/conductor architecture inputs with exact parts and hot/fault evidence"),
+        ("WPS-H09", "connector, conductor, fuse and eight-feed coordination remain open", "close protection/conductor architecture inputs with exact parts and hot/fault evidence"),
         ("WPS-H10", "dynamic walking demand and regenerative events are unmeasured", "restrained instrumented trajectories, loss/temperature/overvoltage traces and repeatable fault tests"),
         ("WPS-H11", "functional safety allocation and stopping performance are not validated", "qualified review of identical hardware/software plus measured stopping and fault response"),
         ("WPS-H12", "no procurement, fabrication, connection, powered-test, motion or energization authority exists", "separate signed release after every applicable hold closes"),
@@ -234,10 +247,10 @@ def open_holds() -> list[dict[str, object]]:
 
 def parts() -> list[Part]:
     result = [
-        Part("J1", "12 V CONTROLLED INPUT", {"1": "PDU_0V", "2": "PDU_12V_IN"},
+        Part("J1", "CONTROLLED BUS-FEED INPUT", {"1": "FEED_0V", "2": "FEED_VPOS"},
              "TerminalBlock_MetzConnect:TerminalBlock_MetzConnect_Type703_RT10N02HGLU_1x02_P9.52mm_Horizontal",
-             "existing five-feed input boundary; exact terminal and production footprint remain under predecessor holds", JST_VH),
-        Part("JBRK", "EXTERNAL FEED BRAKE/DUMP INTERFACE", {"1": "PDU_0V", "2": "PDU_12V_IN", "3": "DUMP_DIAG"},
+             "one isolated board input per authoritative bus; exact terminal and production footprint remain under predecessor holds", JST_VH),
+        Part("JBRK", "EXTERNAL FEED BRAKE/DUMP INTERFACE", {"1": "FEED_0V", "2": "FEED_VPOS", "3": "DUMP_DIAG"},
              "Connector_JST:JST_VH_B3P-VH_1x03_P3.96mm_Vertical",
              "physical three-contact architecture interface only; current rating and exact chopper remain selection required", JST_VH),
     ]
@@ -246,7 +259,7 @@ def parts() -> list[Part]:
     fp = ""
     for channel in range(1, 7):
         c = str(channel)
-        bus, axis, mid, gnd = "PDU_12V_IN", f"BRANCH_{c}_12V", f"CH{c}_MID", "PDU_0V"
+        bus, axis, mid, gnd = "FEED_VPOS", f"BRANCH_{c}_VPOS", f"CH{c}_MID", "FEED_0V"
         en, rcb = f"CH{c}_EN", f"CH{c}_RCBCTRL"
         f_ilm, r_ilm = f"CH{c}_ILM_F", f"CH{c}_ILM_R"
         f_pg, r_pg = f"CH{c}_PG_F", f"CH{c}_PG_R"
@@ -293,11 +306,11 @@ def write_schematic(items: list[Part]) -> None:
         components.append(model.Component(item.ref, item.value, pins, "PRELIMINARY CANDIDATE / SELECTIONS OPEN", item.evidence, item.source, item.evidence, position=(50, 50), width=88, footprint=item.footprint))
     by_ref = {component.ref: component for component in components}
     sheets = []
-    overview = model.Sheet(1, "01_system_boundaries.kicad_sch", "Five-feed and six-channel board boundaries", "One board pattern is instantiated five times; 25 channels populated and five DNP.")
+    overview = model.Sheet(1, "01_system_boundaries.kicad_sch", "Eight isolated bus feeds and six-channel board pattern", "One board pattern is instantiated once per authoritative actuator bus; 25 channels populated and 23 DNP.")
     overview.components = [by_ref["J1"], by_ref["JBRK"]] + [by_ref[f"J{i}O"] for i in range(1, 7)] + [by_ref[f"J{i}C"] for i in range(1, 7)]
     for index, component in enumerate(overview.components):
         component.position = (52 + (index % 3) * 145, 46 + (index // 3) * 57); component.width = 84
-    overview.notes = ["JBRK is a real downstream interface obligation, not a released resistor/chopper selection.", "Each axis output is an individual power pair; data harnesses remain data-only.", WARNING]
+    overview.notes = ["Each of eight board instances receives exactly one authoritative bus feed; no left/right or 9 V domains are tied together.", "JBRK is a real downstream interface obligation, not a released resistor/chopper selection.", "Each axis output is an individual power pair; data harnesses remain data-only.", WARNING]
     sheets.append(overview)
     for channel in range(1, 7):
         c = str(channel)
@@ -306,7 +319,7 @@ def write_schematic(items: list[Part]) -> None:
         sheet.components = [by_ref[ref] for ref in refs]
         for index, component in enumerate(sheet.components):
             component.position = (54 + (index % 3) * 145, 45 + (index // 3) * 67); component.width = 88
-        sheet.notes = ["Motoring: UxF provides IN-to-OUT overcurrent protection.", "Regeneration: UxR provides IN-to-OUT overcurrent protection.", "A single TPS25948 is insufficient because reverse-direction OCP is not provided.", "Five downstream brake/dump circuits are still required for contactor-open energy.", WARNING]
+        sheet.notes = ["Motoring: UxF provides IN-to-OUT overcurrent protection.", "Regeneration: UxR provides IN-to-OUT overcurrent protection.", "A single TPS25948 is insufficient because reverse-direction OCP is not provided.", "Eight isolated bus-domain brake/dump circuits are still required for contactor-open energy.", WARNING]
         sheets.append(sheet)
     net_counts = Counter(pin.net for component in components for pin in component.pins)
     wires = model.build_wire_numbers(sheets, net_counts)
@@ -337,15 +350,32 @@ def validate_kicad() -> dict[str, object]:
     return {"kicad_version": "10.0.5", "native_sheet_count_including_root": 8, "erc_errors": 0, "erc_warnings": 0, "exported_svg_count": len(list(output.glob("*.svg")))}
 
 
-def branch_svg() -> str:
+def _legacy_branch_svg() -> str:
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="820" viewBox="0 0 1500 820" role="img" aria-labelledby="title desc"><title id="title">Paired HR-30 bidirectional actuator branch</title><desc id="desc">Two oppositely oriented TPS259482L eFuses connect the PDU bus to one actuator. The forward device protects motoring current; the reverse-oriented device protects regenerative current. A five-feed brake dump remains required.</desc><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#0b5b9b"/></marker><marker id="r" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a03921"/></marker></defs><style>text{{font:600 19px system-ui;fill:#102a43}}.h{{font-size:34px;font-weight:900}}.s{{font-size:16px}}.box{{fill:#fff;stroke:#0b5b9b;stroke-width:4}}.gold{{fill:#fff0ad;stroke:#8a6200;stroke-width:4}}.hold{{fill:#ffe4df;stroke:#a03921;stroke-width:4}}.f{{stroke:#0b5b9b;stroke-width:8;fill:none;marker-end:url(#a)}}.r{{stroke:#a03921;stroke-width:8;fill:none;marker-end:url(#r)}}.wire{{stroke:#183c5d;stroke-width:7}}</style><rect width="1500" height="820" fill="#eef8ff"/><text class="h" x="55" y="60">HR-30 walking branch: protected in both directions</text><text x="55" y="102">A single bidirectional TPS25948 path is not enough: its OCP acts only from IN to OUT.</text><rect class="gold" x="55" y="180" width="230" height="120" rx="18"/><text x="92" y="232">PDU 12 V bus</text><text class="s" x="92" y="266">five feed instances</text><path class="wire" d="M285 240H390"/><rect class="box" x="390" y="160" width="300" height="160" rx="20"/><text class="h" x="432" y="218">UxF</text><text x="432" y="256">TPS259482L</text><text class="s" x="432" y="288">IN=BUS · OUT=MID</text><path class="wire" d="M690 240H810"/><text x="732" y="222">MID</text><rect class="box" x="810" y="160" width="300" height="160" rx="20"/><text class="h" x="852" y="218">UxR</text><text x="852" y="256">TPS259482L</text><text class="s" x="852" y="288">IN=AXIS · OUT=MID</text><path class="wire" d="M1110 240H1215"/><rect class="gold" x="1215" y="180" width="230" height="120" rx="18"/><text x="1252" y="232">DYNAMIXEL</text><text class="s" x="1252" y="266">one local power pair</text><path class="f" d="M230 390H1260"/><text x="575" y="370">MOTORING: BUS → AXIS · UxF provides forward OCP</text><path class="r" d="M1260 500H230"/><text x="555" y="545">REGENERATION: AXIS → BUS · UxR provides forward OCP</text><rect class="hold" x="55" y="620" width="1390" height="130" rx="20"/><text class="h" x="92" y="671">Still required before walking</text><text x="92" y="715">Five downstream brake/dump circuits, measured energy, exact thresholds, routed PCB, thermal proof and contactor-open timing.</text><text class="s" x="55" y="795">{WARNING}</text></svg>'''
 
 
-def page(status: dict[str, object], allocations: list[dict[str, object]], board_losses: list[dict[str, object]], holds: list[dict[str, object]]) -> str:
+def branch_svg() -> str:
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="820" viewBox="0 0 1500 820" role="img" aria-labelledby="title desc"><title id="title">Paired HR-30 bidirectional actuator branch</title><desc id="desc">Two oppositely oriented TPS259482L eFuses connect one electrically isolated actuator-bus feed to one actuator. The forward device protects motoring current; the reverse-oriented device protects regenerative current. Eight bus-domain brake dumps remain required.</desc><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#0b5b9b"/></marker><marker id="r" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a03921"/></marker></defs><style>text{{font:600 19px system-ui;fill:#102a43}}.h{{font-size:34px;font-weight:900}}.s{{font-size:16px}}.box{{fill:#fff;stroke:#0b5b9b;stroke-width:4}}.gold{{fill:#fff0ad;stroke:#8a6200;stroke-width:4}}.hold{{fill:#ffe4df;stroke:#a03921;stroke-width:4}}.f{{stroke:#0b5b9b;stroke-width:8;fill:none;marker-end:url(#a)}}.r{{stroke:#a03921;stroke-width:8;fill:none;marker-end:url(#r)}}.wire{{stroke:#183c5d;stroke-width:7}}</style><rect width="1500" height="820" fill="#eef8ff"/><text class="h" x="55" y="60">HR-30 walking branch: protected in both directions</text><text x="55" y="102">A single bidirectional TPS25948 path is not enough: its OCP acts only from IN to OUT.</text><rect class="gold" x="55" y="180" width="230" height="120" rx="18"/><text x="92" y="232">One bus feed</text><text class="s" x="92" y="266">one of 8 isolated domains</text><path class="wire" d="M285 240H390"/><rect class="box" x="390" y="160" width="300" height="160" rx="20"/><text class="h" x="432" y="218">UxF</text><text x="432" y="256">TPS259482L</text><text class="s" x="432" y="288">IN=BUS / OUT=MID</text><path class="wire" d="M690 240H810"/><text x="732" y="222">MID</text><rect class="box" x="810" y="160" width="300" height="160" rx="20"/><text class="h" x="852" y="218">UxR</text><text x="852" y="256">TPS259482L</text><text class="s" x="852" y="288">IN=AXIS / OUT=MID</text><path class="wire" d="M1110 240H1215"/><rect class="gold" x="1215" y="180" width="230" height="120" rx="18"/><text x="1252" y="232">DYNAMIXEL</text><text class="s" x="1252" y="266">one local power pair</text><path class="f" d="M230 390H1260"/><text x="575" y="370">MOTORING: BUS to AXIS / UxF provides forward OCP</text><path class="r" d="M1260 500H230"/><text x="555" y="545">REGENERATION: AXIS to BUS / UxR provides forward OCP</text><rect class="hold" x="55" y="620" width="1390" height="130" rx="20"/><text class="h" x="92" y="671">Still required before walking</text><text x="92" y="715">Eight bus-domain brake/dump circuits, measured energy, exact thresholds, routed PCB, thermal proof and contactor-open timing.</text><text class="s" x="55" y="795">{WARNING}</text></svg>'''
+
+
+def _legacy_page(status: dict[str, object], allocations: list[dict[str, object]], board_losses: list[dict[str, object]], holds: list[dict[str, object]]) -> str:
     alloc_html = "".join(f'<tr><td>{r["board_instance"]}</td><td>{r["channel"]}</td><td>{r["axis_id"]}</td><td>{r["actuator_family"]}</td><td>{r["candidate_internal_cap_a"]}</td></tr>' for r in allocations)
     loss_html = "".join(f'<tr><td>{r["board_instance"]}</td><td>{r["populated_axis_count"]}</td><td>{r["arithmetic_cap_sum_a"]}</td><td>{r["simultaneous_pair_loss_typ_w"]}</td><td>{r["simultaneous_pair_loss_hot_max_w"]}</td></tr>' for r in board_losses)
     hold_html = "".join(f'<li><b>{r["hold_id"]}</b> {html.escape(str(r["unresolved_item"]))}</li>' for r in holds)
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 walking-power successor</title><style>:root{{--deep:#071f3b;--blue:#0b5b9b;--sky:#d6f1ff;--gold:#f4bd21;--paper:#f6fbff;--ink:#122c45;--red:#9d3520;--line:#82c5e6}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,main,footer{{padding:clamp(24px,5vw,64px) max(18px,calc((100vw - 1280px)/2))}}header,footer{{background:linear-gradient(135deg,var(--deep),var(--blue));color:white}}h1{{font-size:clamp(38px,6vw,72px);line-height:1.03;max-width:18ch}}h2{{font-size:clamp(28px,4vw,44px)}}h3{{font-size:22px}}.warning{{background:var(--gold);color:#17243a;border:3px solid #7b5600;padding:16px;font-weight:900}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}}article,.panel,li{{background:white;border:2px solid var(--line);border-radius:16px;padding:19px}}.metric{{font-size:clamp(34px,5vw,55px);font-weight:900;color:var(--blue)}}.hold{{border-color:#bf6a56;background:#fff2ef}}.hold .metric,.bad{{color:var(--red)}}.scroll{{overflow:auto;border:2px solid var(--line);border-radius:16px;background:white}}object{{display:block;width:100%;min-width:900px}}table{{border-collapse:collapse;width:100%;min-width:900px}}th,td{{padding:14px;text-align:left;border-bottom:1px solid var(--line);font-size:16px}}th{{background:var(--sky)}}a{{color:#075b9b;font-weight:800}}li{{margin:12px 0}}code{{font-size:16px}}@media(max-width:560px){{body{{font-size:16px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>HR-30 whole-body P0.1</p><h1>The walking branch now has a real return path.</h1><p>Every populated actuator branch uses a candidate pair of oppositely oriented eFuses: one protects motoring current and one protects regenerative current.</p></header><main><section class="grid"><article><div class="metric">25</div><p>whole-body axes bound to paired branch slots</p></article><article><div class="metric">50</div><p>candidate populated TPS259482L devices</p></article><article><div class="metric">ERC 0/0</div><p>eight native KiCad sheets including root</p></article><article class="hold"><div class="metric">5 open</div><p>feed-level brake/dump circuits still require measured sizing</p></article></section><section><h2>Why two devices are required</h2><div class="scroll"><object data="bidirectional-branch-schematic.svg" type="image/svg+xml" aria-label="Paired bidirectional eFuse architecture"></object></div><p>TI documents that TPS25948 can pass bidirectional steady-state current when RCBCTRL is low, but its overcurrent protection acts only from IN to OUT. The selected P0.1 candidate therefore places one device in each direction. This is an engineering inference from TI's bidirectional two-eFuse application architecture and still requires TI application review and physical validation.</p></section><section><h2>Native KiCad is included</h2><div class="panel"><p><a href="{PROJECT}.kicad_pro">Open the native KiCad project</a> · <a href="output/{PROJECT}.svg">root schematic export</a> · <a href="validation/{PROJECT}-erc.rpt">complete ERC report</a>.</p><p>The project contains one boundary sheet and six fully populated paired-channel sheets. It is a connected schematic candidate, not a routed or fabrication-released PCB.</p></div></section><section><h2>Five board instances and 25 axes</h2><div class="scroll"><table><thead><tr><th>Board</th><th>Channel</th><th>Axis</th><th>Actuator</th><th>Internal cap A</th></tr></thead><tbody>{alloc_html}</tbody></table></div></section><section><h2>Pair conduction-loss screen</h2><p>These values use the axis cap as if simultaneous and therefore bound silicon conduction loss only. They are not measured walking duty or a thermal release.</p><div class="scroll"><table><thead><tr><th>Board</th><th>Axes</th><th>Cap sum A</th><th>Pair loss typ W</th><th>Pair loss hot-max W</th></tr></thead><tbody>{loss_html}</tbody></table></div><p><a href="axis-pair-loss-screen.csv">Open all 25 axis calculations</a> · <a href="board-pair-loss-screen.csv">five-board summary</a>.</p></section><section class="panel"><h2>The honest remaining blocker</h2><p>When K1/K2 open, the source is gone but the robot can still return mechanical energy. The paired branches allow that energy onto each downstream feed, but each of the five feeds still needs a measured, independently powered brake/dump circuit. No resistor, chopper, voltage threshold or energy rating is released.</p><p><a href="feed-brake-dump-boundary.csv">Open the five-feed brake/dump obligations</a> · <a href="energy-flow-state-register.csv">eight power states</a> · <a href="architecture-option-register.csv">architecture decisions</a>.</p><h2>Open holds</h2><ul>{hold_html}</ul></section></main><footer>{html.escape(WARNING)}</footer></body></html>'''
+
+
+def page(status: dict[str, object], allocations: list[dict[str, object]], board_losses: list[dict[str, object]], holds: list[dict[str, object]]) -> str:
+    alloc_html = "".join(
+        f'<tr><td>{r["board_instance"]}</td><td>{r["bus_id"]}</td><td>{r["channel"]}</td><td>{r["axis_id"]}</td><td>{r["feed_positive_net"]}</td><td>{r["nominal_feed_voltage"]}</td><td>{r["candidate_internal_cap_a"]}</td></tr>'
+        for r in allocations
+    )
+    loss_html = "".join(
+        f'<tr><td>{r["board_instance"]}</td><td>{r["populated_axis_count"]}</td><td>{r["arithmetic_cap_sum_a"]}</td><td>{r["simultaneous_pair_loss_typ_w"]}</td><td>{r["simultaneous_pair_loss_hot_max_w"]}</td></tr>'
+        for r in board_losses
+    )
+    hold_html = "".join(f'<li><b>{r["hold_id"]}</b> {html.escape(str(r["unresolved_item"]))}</li>' for r in holds)
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 walking-power successor</title><style>:root{{--deep:#071f3b;--blue:#0b5b9b;--sky:#d6f1ff;--gold:#f4bd21;--paper:#f6fbff;--ink:#122c45;--red:#9d3520;--line:#82c5e6}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,main,footer{{padding:clamp(24px,5vw,64px) max(18px,calc((100vw - 1280px)/2))}}header,footer{{background:linear-gradient(135deg,var(--deep),var(--blue));color:white}}h1{{font-size:clamp(38px,6vw,72px);line-height:1.03;max-width:18ch}}h2{{font-size:clamp(28px,4vw,44px)}}h3{{font-size:22px}}.warning{{background:var(--gold);color:#17243a;border:3px solid #7b5600;padding:16px;font-weight:900}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}}article,.panel,li{{background:white;border:2px solid var(--line);border-radius:16px;padding:19px}}.metric{{font-size:clamp(34px,5vw,55px);font-weight:900;color:var(--blue)}}.hold{{border-color:#bf6a56;background:#fff2ef}}.hold .metric,.bad{{color:var(--red)}}.scroll{{overflow:auto;border:2px solid var(--line);border-radius:16px;background:white}}object{{display:block;width:100%;min-width:900px}}table{{border-collapse:collapse;width:100%;min-width:1100px}}th,td{{padding:14px;text-align:left;border-bottom:1px solid var(--line);font-size:16px}}th{{background:var(--sky)}}a{{color:#075b9b;font-weight:800}}li{{margin:12px 0}}code{{font-size:16px}}@media(max-width:560px){{body{{font-size:16px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>HR-30 whole-body P0.1</p><h1>Eight feeds. No hidden cross-connections.</h1><p>Every actuator bus now owns one electrically separate board input and one regenerative sink boundary. Five 12 V RS domains and three regulated 9 V TTL domains remain isolated.</p></header><main><section class="grid"><article><div class="metric">25</div><p>whole-body axes bound to paired branch slots</p></article><article><div class="metric">50</div><p>candidate populated TPS259482L devices</p></article><article><div class="metric">8</div><p>one-bus board instances and independent feed domains</p></article><article class="hold"><div class="metric">8 open</div><p>feed-level brake/dump circuits still require measured sizing</p></article></section><section><h2>Why two devices are required</h2><div class="scroll"><object data="bidirectional-branch-schematic.svg" type="image/svg+xml" aria-label="Paired bidirectional eFuse architecture"></object></div><p>TI documents that TPS25948 can pass bidirectional steady-state current when RCBCTRL is low, but its overcurrent protection acts only from IN to OUT. The selected P0.1 candidate therefore places one device in each direction. This remains an engineering inference requiring TI application review and physical validation.</p></section><section><h2>Why the topology changed</h2><div class="panel"><p>The earlier five-instance grouping was rejected during whole-body reconciliation. A shared-input arm board would tie RS-LARM to RS-RARM. A shared-input distal board would tie TTL-LDIST, TTL-RDIST and TTL-HEAD together downstream of three independent 9 V regulators.</p><p>The corrected package instantiates one six-channel pattern for each of the eight authoritative buses. Empty positions are DNP and do not create another feed.</p></div></section><section><h2>Native KiCad is included</h2><div class="panel"><p><a href="{PROJECT}.kicad_pro">Open the native KiCad project</a> | <a href="output/{PROJECT}.svg">root schematic export</a> | <a href="validation/{PROJECT}-erc.rpt">complete ERC report</a>.</p><p>The project contains one boundary sheet and six fully populated channel-template sheets. It is a connected schematic candidate, not a routed or fabrication-released PCB.</p></div></section><section><h2>Eight board instances and 25 axes</h2><div class="scroll"><table><thead><tr><th>Board</th><th>Bus</th><th>Channel</th><th>Axis</th><th>Feed net</th><th>Nominal feed</th><th>Internal cap A</th></tr></thead><tbody>{alloc_html}</tbody></table></div></section><section><h2>Pair conduction-loss screen</h2><p>These values use the axis cap as if simultaneous and therefore bound silicon conduction loss only. They are not measured walking duty or a thermal release.</p><div class="scroll"><table><thead><tr><th>Board</th><th>Axes</th><th>Cap sum A</th><th>Pair loss typ W</th><th>Pair loss hot-max W</th></tr></thead><tbody>{loss_html}</tbody></table></div><p><a href="axis-pair-loss-screen.csv">Open all 25 axis calculations</a> | <a href="board-pair-loss-screen.csv">eight-board summary</a>.</p></section><section class="panel"><h2>The honest remaining blocker</h2><p>Each authoritative feed still needs its own measured, independently powered brake/dump circuit. No resistor, chopper, voltage threshold or energy rating is released.</p><p><a href="feed-brake-dump-boundary.csv">Open the eight feed obligations</a> | <a href="energy-flow-state-register.csv">eight power states</a> | <a href="architecture-option-register.csv">architecture decisions</a>.</p><h2>Open holds</h2><ul>{hold_html}</ul></section></main><footer>{html.escape(WARNING)}</footer></body></html>'''
 
 
 def integrate_root(status: dict[str, object]) -> None:
@@ -356,6 +386,10 @@ def integrate_root(status: dict[str, object]) -> None:
         "walking_power_successor_native_sheet_count": status["native_schematic_sheet_count"],
         "walking_power_successor_axis_count": status["allocated_axis_count"],
         "walking_power_successor_paired_device_count": status["populated_efuse_count"],
+        "walking_power_bus_count": status["authoritative_bus_count"],
+        "walking_power_board_instance_count": status["board_instance_count"],
+        "walking_power_one_bus_per_board_instance": True,
+        "walking_power_multi_bus_input_short_present": False,
         "walking_power_bidirectional_branch_architecture_defined": True,
         "walking_power_bidirectional_overcurrent_architecture_defined": True,
         "walking_power_reverse_energy_path_to_downstream_feed_defined": True,
@@ -370,19 +404,19 @@ def integrate_root(status: dict[str, object]) -> None:
     status_path.write_text(json.dumps(root_status, indent=2) + "\n", encoding="utf-8")
     readme = WHOLE / "README.md"; text = readme.read_text(encoding="utf-8")
     start, end = "<!-- HR30-WALKING-POWER-P01-README-START -->", "<!-- HR30-WALKING-POWER-P01-README-END -->"
-    if start in text and end in text:
+    while start in text and end in text:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
-    block = f'''{start}\n## Bidirectional walking-power successor\n\nThe [interactive walking-power guide](electrical/walking-power-successor-p0.1/index.html) replaces the single reverse-blocking branch for walking development with a native eight-sheet KiCad candidate containing two oppositely oriented TPS259482L devices per branch. One device protects motoring current and the other protects regenerative current. All 25 axes are allocated across five six-channel board instances; five positions remain DNP. The architecture returns energy to the downstream feed, but five contactor-open brake/dump circuits, exact current thresholds, PCB layout, thermal proof and every powered-work authority remain open.\n{end}\n'''
+    block = f'''{start}\n## Bidirectional walking-power successor\n\nThe [interactive walking-power guide](electrical/walking-power-successor-p0.1/index.html) replaces the single reverse-blocking branch for walking development with a native eight-sheet KiCad candidate containing two oppositely oriented TPS259482L devices per branch. One device protects motoring current and the other protects regenerative current. All 25 axes are allocated across eight electrically separate six-channel board instances, one per authoritative actuator bus; 23 positions remain DNP. This corrects and rejects the earlier five-board grouping that would have tied independent left/right arm and regulated 9 V TTL feeds together. Eight contactor-open brake/dump circuits, exact current thresholds, PCB layout, thermal proof and every powered-work authority remain open.\n{end}\n'''
     marker = "<!-- HR30-PROTECTION-CONDUCTOR-P01-README-START -->"
-    text = text.replace(marker, block + marker) if marker in text else text.rstrip() + "\n\n" + block
+    text = text.replace(marker, block + marker, 1) if marker in text else text.rstrip() + "\n\n" + block
     readme.write_text(text, encoding="utf-8", newline="\n")
     index = WHOLE / "index.html"; text = index.read_text(encoding="utf-8")
     start, end = "<!-- HR30-WALKING-POWER-P01-START -->", "<!-- HR30-WALKING-POWER-P01-END -->"
-    if start in text and end in text:
+    while start in text and end in text:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
-    section = f'''{start}<section id="walking-power-successor"><h2>Walking power now has a protected return path</h2><div class="grid"><article class="card pass"><div class="metric">25</div><p>axis-bound paired bidirectional branches.</p></article><article class="card pass"><div class="metric">50</div><p>candidate populated TPS259482L devices: one overcurrent direction each.</p></article><article class="card pass"><h3>ERC 0 / 0</h3><p>Eight native KiCad sheets including the root.</p></article><article class="card hold"><div class="metric">5 open</div><p>contactor-open brake/dump circuits still require measured sizing.</p></article></div><p><a href="electrical/walking-power-successor-p0.1/index.html">Open the interactive walking-power successor</a>. The return path is defined; PCB, thermal, dump-energy and powered-motion authority remain open.</p></section>{end}'''
+    section = f'''{start}<section id="walking-power-successor"><h2>Walking power now preserves all eight feed domains</h2><div class="grid"><article class="card pass"><div class="metric">25</div><p>axis-bound paired bidirectional branches.</p></article><article class="card pass"><div class="metric">8</div><p>electrically separate one-bus board instances.</p></article><article class="card pass"><h3>ERC 0 / 0</h3><p>Eight native KiCad sheets including the root.</p></article><article class="card hold"><div class="metric">8 open</div><p>bus-domain brake/dump circuits still require measured sizing.</p></article></div><p><a href="electrical/walking-power-successor-p0.1/index.html">Open the interactive walking-power successor</a>. The earlier five-board shared-input grouping is rejected; PCB, thermal, dump-energy and powered-motion authority remain open.</p></section>{end}'''
     marker = "<!-- HR30-PROTECTION-CONDUCTOR-P01-START -->"
-    text = text.replace(marker, section + marker) if marker in text else text.replace("</main>", section + "</main>", 1)
+    text = text.replace(marker, section + marker, 1) if marker in text else text.replace("</main>", section + "</main>", 1)
     index.write_text(text, encoding="utf-8", newline="\n")
 
 
@@ -412,16 +446,18 @@ def main() -> int:
     status = {
         "identifier": IDENTIFIER, "date": DATE, "warning": WARNING,
         "native_schematic_sheet_count": 8, "kicad_erc_errors": 0, "kicad_erc_warnings": 0,
-        "board_pattern_count": 1, "board_instance_count": 5, "channels_per_board": 6,
-        "allocated_axis_count": 25, "dnp_spare_count": 5, "candidate_device": "TPS259482LYWPR",
-        "populated_efuse_count": 50, "dnp_efuse_count": 10,
+        "board_pattern_count": 1, "board_instance_count": 8, "channels_per_board": 6,
+        "authoritative_bus_count": 8, "one_bus_per_board_instance": True,
+        "multi_bus_input_short_present": False,
+        "allocated_axis_count": 25, "dnp_spare_count": 23, "candidate_device": "TPS259482LYWPR",
+        "populated_efuse_count": 50, "dnp_efuse_count": 46,
         "branch_topology_selected_as_p01_candidate": True,
         "single_device_bidirectional_branch_rejected": True,
         "bidirectional_power_flow_defined": True,
         "bidirectional_overcurrent_architecture_defined": True,
         "off_state_bidirectional_blocking_defined": True,
         "reverse_energy_path_to_downstream_feed_defined": True,
-        "feed_brake_dump_obligation_count": 5,
+        "feed_brake_dump_obligation_count": 8,
         "feed_brake_dump_selected": False, "exact_current_thresholds_selected": False,
         "tps25948_pair_manufacturer_application_accepted": False,
         "exact_ywp_footprint_released": False, "pcb_layout_present": False,
@@ -433,7 +469,7 @@ def main() -> int:
     (OUT / "walking-power-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
     (OUT / "bidirectional-branch-schematic.svg").write_text(branch_svg(), encoding="utf-8", newline="\n")
     (OUT / "index.html").write_text(page(status, allocations, board_losses, holds), encoding="utf-8", newline="\n")
-    (OUT / "README.md").write_text(f"# HR-30 walking-power successor P0.1\n\n**{WARNING}**\n\nThis package provides the native KiCad and web artifacts for a paired TPS259482L bidirectional actuator-branch candidate. One eFuse protects each current direction across every populated axis. Five downstream contactor-open brake/dump circuits, exact settings, a routed PCB, thermal evidence and all powered-work authority remain open.\n", encoding="utf-8", newline="\n")
+    (OUT / "README.md").write_text(f"# HR-30 walking-power successor P0.1\n\n**{WARNING}**\n\nThis package provides the native KiCad and web artifacts for a paired TPS259482L bidirectional actuator-branch candidate. One eFuse protects each current direction across every populated axis. The corrected topology uses eight electrically separate one-bus board instances and explicitly rejects the earlier five-board grouping that would have cross-connected independent feeds. Eight downstream contactor-open brake/dump circuits, exact settings, a routed PCB, thermal evidence and all powered-work authority remain open.\n", encoding="utf-8", newline="\n")
     manifest_rows = []
     for path in sorted(p for p in OUT.rglob("*") if p.is_file() and p.name != "file-manifest.csv"):
         manifest_rows.append({"path": path.relative_to(OUT).as_posix(), "sha256": sha(path), "bytes": path.stat().st_size, "warning": WARNING})
