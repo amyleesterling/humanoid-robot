@@ -43,7 +43,7 @@ def main() -> int:
     holds = rows(OUT / "open-holds.csv")
     status = json.loads((OUT / "coupon-status.json").read_text(encoding="utf-8"))
 
-    need((len(sources), len(tools), len(bom), len(specimens), len(traveler), len(measurements), len(routes), len(holds)) == (11, 4, 9, 9, 14, 10, 25, 11), "package coverage drift")
+    need((len(sources), len(tools), len(bom), len(specimens), len(traveler), len(measurements), len(routes), len(holds)) == (18, 4, 11, 11, 16, 12, 25, 14), "package coverage drift")
     need(len({r["axis_id"] for r in routes}) == 25, "25 unique axis routes required")
     all_controlled = sources + tools + bom + specimens + traveler + measurements + routes + holds
     need(all(r["execution_state"] == "NOT EXECUTED" and r["warning"] == WARNING for r in all_controlled), "execution/warning overclaim")
@@ -54,7 +54,7 @@ def main() -> int:
     need(all(r["final_cut_length_mm"].startswith("SELECTION REQUIRED") and r["mockup_pull_string_length_mm"] == "MEASURE ON ASSEMBLED ROBOT" and r["precut_action"] == "DO NOT CUT PRODUCTION CABLE" for r in routes), "production cut length falsely released")
     need(all(r["route_measurement_state"] == "NOT EXECUTED" for r in routes), "route measurement overclaim")
 
-    local = sources[:4]
+    local = sources[:5]
     need(all(r["sha256"] == sha(ROOT / r["official_url_or_path"]) for r in local), "local input hash drift")
     need(any(r["candidate_tool"] == "JST YC-260R" and r["terminal_or_interface"] == "JST BEH-001T-P0.6" for r in tools), "loose-piece tool path missing")
     need(any(r["candidate_tool"] == "JST YRS-260" and r["terminal_or_interface"] == "JST SEH-001T-P0.6" for r in tools), "strip-terminal tool path missing")
@@ -62,6 +62,10 @@ def main() -> int:
     need(any(r["order_code"] == "CF9.UL.02.02" and "not an actuator-power candidate" in r["description"] for r in bom), "24 AWG predecessor rejection missing")
     need(any(r["order_code"] == "3051" and r["manufacturer"] == "Alpha Wire" for r in bom), "static 22 AWG coupon candidate missing")
     need(any(r["order_code"] == "CF130.03.02.UL" and r["manufacturer"] == "igus" for r in bom), "dynamic 22 AWG coupon candidate missing")
+    need(any(r["order_code"] == "430250200 + 430300001" for r in bom), "moving-side Micro-Fit coupon parts missing")
+    need(any(r["order_code"] == "430200200 + 430310001" for r in bom), "panel-side Micro-Fit coupon parts missing")
+    need(any(r["specimen_id"] == "ACC-C10" and "complete fixed-transition" in r["purpose"] for r in specimens), "complete transition coupon missing")
+    need(any(r["specimen_id"] == "ACC-C11" and "flex-isolation" in r["purpose"] for r in specimens), "JST pigtail isolation coupon missing")
     need(any(r["order_code"] == "YC-260R" for r in bom), "prototype crimp tool missing")
     need(any(r["order_code"] == "BEH-001T-P0.6" for r in bom), "loose contact missing")
     need(any("pull-force acceptance" in r["unresolved_item"] for r in holds), "crimp acceptance hold missing")
@@ -70,6 +74,7 @@ def main() -> int:
     need(status["loose_piece_tooling_path_bound"] and status["strip_terminal_tooling_path_bound"], "tooling advancement missing")
     need(status["built_coupon_count"] == status["executed_test_count"] == status["measured_robot_route_count"] == status["released_final_cut_length_count"] == 0, "physical evidence overclaim")
     need(status["cf9_power_candidate_rejected"] and status["static_22awg_candidate_defined"] and status["dynamic_22awg_candidate_defined"], "power-wire candidate disposition missing")
+    need(status["complete_fixed_transition_coupon_defined"] and status["direct_cf130_to_jst_eh_crimp_rejected"], "complete transition disposition missing")
     for key in ["alpha_3051_crimp_process_selected", "cf130_crimp_process_selected", "cf9_specific_crimp_process_selected", "procurement_authority", "production_cutting_authority", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]:
         need(status[key] is False, f"fail-closed status violated: {key}")
 
@@ -87,7 +92,7 @@ def main() -> int:
     need("font:17px" in page and "font-size:16px" in page and "min-width:1100px" in page, "web legibility/overflow drift")
     need("font-size=\"18\"" in svg and "font-size=\"34\"" in svg, "drawing legibility drift")
     need("Build and break coupons before cutting robot cables" in page and "DO NOT CUT PRODUCTION CABLE" in page, "guide purpose/warning drift")
-    need("Alpha Wire 3051" in page and "CF130.03.02.UL" in page and "CF9.UL.02.02 is 24 AWG" in page, "corrected power-wire candidate guide missing")
+    need("Test the complete transition" in page and "430250200 / 430300001" in page and "430200200 / 430310001" in page and "CF9.UL.02.02 is 24 AWG" in page, "complete transition guide missing")
     root_page = (WHOLE / "index.html").read_text(encoding="utf-8")
     root_readme = (WHOLE / "README.md").read_text(encoding="utf-8")
     need(root_page.count("HR30-ACTUATOR-CABLE-COUPON-P01-START") == root_page.count("HR30-ACTUATOR-CABLE-COUPON-P01-END") == 1, "root web integration missing")
@@ -95,7 +100,7 @@ def main() -> int:
     root_status = json.loads((WHOLE / "package-status.json").read_text(encoding="utf-8"))
     need(root_status["actuator_cable_coupon_route_measurement_count"] == 25 and root_status["actuator_cable_coupon_built_count"] == 0, "root status integration missing")
     need(root_status["actuator_cable_final_cut_lengths_selected"] is False and root_status["energization_authority"] is False, "root authority/release drift")
-    print("PASS: HR-30 cable coupon package rejects 24 AWG power credit, separates static/dynamic 22 AWG candidates, binds nine specimen families and 25 route measurements; zero coupons/tests/cut lengths are released")
+    print("PASS: HR-30 cable coupon package binds the complete CF130/Micro-Fit/Alpha-3051/JST transition, 11 specimen families and 25 route measurements; zero coupons/tests/cut lengths are released")
     return 0
 
 

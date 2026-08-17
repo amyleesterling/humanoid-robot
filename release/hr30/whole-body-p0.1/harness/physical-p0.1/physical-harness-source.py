@@ -298,6 +298,7 @@ def build() -> dict[str, int | float]:
     data_link_rows: list[dict] = []
     retention_rows: list[dict] = []
     derating_rows: list[dict] = []
+    transition_rows: list[dict] = []
     # Every connector boundary required by the eight one-bus walking-power
     # assemblies is instantiated here.  The successor is not yet a routed PCB,
     # so board-side and cable-side connector selections both remain open.
@@ -343,7 +344,7 @@ def build() -> dict[str, int | float]:
                 "connector_id": output_id, "contact": pin, "axis_id": axis, "signal": signal,
                 "bus_net": "NO NET - DNP SPARE" if axis == "DNP SPARE" else (f"{pdu_by_axis[axis]['bus_id']}_RET" if pin == "1" else f"{axis}_VDD"),
                 "service": "DNP" if axis == "DNP SPARE" else ("POWER RETURN" if pin == "1" else "ACTUATOR POWER"),
-                "wire_core": "NONE - DNP" if axis == "DNP SPARE" else f"CORE-{axis}-{'GND' if pin == '1' else 'VDD'}",
+                "wire_core": "NONE - DNP" if axis == "DNP SPARE" else f"CORE-{axis}-{'GND' if pin == '1' else 'VDD'}-DYNAMIC",
                 "physical_pin_state": "DNP - NO FIELD HARNESS" if axis == "DNP SPARE" else "BOARD CONTACT DEFINED; FIELD ASSEMBLY OPEN",
                 "end_to_end_test": "NOT EXECUTED",
             })
@@ -408,7 +409,8 @@ def build() -> dict[str, int | float]:
             "protection_topology": f"{board_id} CHANNEL {channel}; PAIRED OPPOSING TPS259482LYWPR CANDIDATES; INTERNAL CAP {allocation['candidate_internal_cap_a']} A; PCB / BRAKE-DUMP / PHYSICAL VALIDATION OPEN",
             "candidate_12v_stall_endpoint_a": f"{amps:.2f}",
             "endpoint_boundary": "DATASHEET MOMENTARY STALL ENDPOINT; NOT DEMAND/RATING",
-            "conductor_size": OPEN, "connector_limit": OPEN, "branch_protection": OPEN,
+            "conductor_size": "MOVING CANDIDATE igus CF130.03.02.UL 2 x 22 AWG; FIXED PIGTAIL CANDIDATE 2 x Alpha Wire 3051 22 AWG",
+            "connector_limit": "JST EH AND MOLEX MICRO-FIT APPLICATION DERATING / TEMPERATURE-RISE TEST OPEN", "branch_protection": OPEN,
             "fault_current_length_ambient_bundling_inrush_duty_jurisdiction": "ALL REQUIRED",
             "authority": AUTHORITY,
         })
@@ -428,6 +430,47 @@ def build() -> dict[str, int | float]:
             previous = by_axis[previous_axis]
             data_start = (float(previous["x_mm"]), float(previous["y_mm"]), float(previous["z_mm"]))
         data_link_mm = dist(data_start, center) + 20.0
+        transition_dynamic = f"J-TR-DYN-{axis}"
+        transition_pigtail = f"J-TR-PIG-{axis}"
+        connector_rows.extend(({
+            "connector_id": transition_dynamic, "location": f"FIXED SIDE OF {pseg}", "function": "MOVING CF130 POWER-PAIR TERMINATION",
+            "candidate_housing": "Molex 430250200", "mating_part": "Molex 430200200",
+            "contact_order_code": "Molex 430300001", "contact_count": 2,
+            "keying_retention_strain_relief": "LOCKING/POLARIZED FAMILY; CF130 CORE OD, CRIMP AND CABLE CLAMP VALIDATION OPEN",
+            "source": "Molex 43025/43030 official series charts", "source_date": "accessed 2026-08-17",
+            "selection_state": "EXACT CANDIDATE ORDER CODES BOUND; RECEIVED FIT/CRIMP/DERATING/BRACKET VALIDATION OPEN",
+        }, {
+            "connector_id": transition_pigtail, "location": f"PANEL AT FIXED SIDE OF {pseg}", "function": "RESTRAINED ACTUATOR-PIGTAIL SOURCE",
+            "candidate_housing": "Molex 430200200", "mating_part": "Molex 430250200",
+            "contact_order_code": "Molex 430310001", "contact_count": 2,
+            "keying_retention_strain_relief": "PANEL-MOUNT EARS; BRACKET/FASTENERS/PIGTAIL CLAMP AND PULL VALIDATION OPEN",
+            "source": "Molex 43020/43031 official series charts", "source_date": "accessed 2026-08-17",
+            "selection_state": "EXACT CANDIDATE ORDER CODES BOUND; PANEL GEOMETRY/CRIMP/DERATING VALIDATION OPEN",
+        }))
+        for pin, signal in (("1", "GND"), ("2", "VDD")):
+            physical_net = f"{bus}_RET" if signal == "GND" else f"{axis}_VDD"
+            dynamic_core = f"CORE-{axis}-{signal}-DYNAMIC"
+            pigtail_core = f"CORE-{axis}-{signal}-PIGTAIL"
+            contact_rows.extend(({
+                "connector_id": transition_dynamic, "contact": pin, "axis_id": axis, "signal": signal,
+                "bus_net": physical_net, "service": "POWER RETURN" if signal == "GND" else "ACTUATOR POWER",
+                "wire_core": dynamic_core, "physical_pin_state": "CANDIDATE CONTACT BOUND; NOT ASSEMBLED OR INSPECTED", "end_to_end_test": "NOT EXECUTED",
+            }, {
+                "connector_id": transition_pigtail, "contact": pin, "axis_id": axis, "signal": signal,
+                "bus_net": physical_net, "service": "POWER RETURN" if signal == "GND" else "ACTUATOR POWER",
+                "wire_core": pigtail_core, "physical_pin_state": "CANDIDATE CONTACT BOUND; NOT ASSEMBLED OR INSPECTED", "end_to_end_test": "NOT EXECUTED",
+            }))
+        transition_rows.append({
+            "transition_id": f"TR-{axis}", "axis_id": axis, "power_loop": pseg,
+            "location_candidate": f"FIXED-SIDE ROUTE POINT {pseg}-P01; FINAL BRACKET XYZ/TOLERANCE OPEN",
+            "moving_cable": "igus CF130.03.02.UL 2 x 22 AWG / 0.34 mm2",
+            "moving_connector": transition_dynamic, "moving_housing_terminal": "430250200 + 2 x 430300001",
+            "panel_connector": transition_pigtail, "panel_housing_terminal": "430200200 + 2 x 430310001",
+            "pigtail": "2 x Alpha Wire 3051 22 AWG TO JST EH POWER CAVITIES",
+            "load_path": "PANEL-MOUNT BRACKET AND TWO-SIDED CABLE CLAMPS MUST PREVENT JOINT LOAD AT MICRO-FIT OR JST EH",
+            "unresolved": "CF130 CORE OD; BRACKET/FASTENERS; PIGTAIL LENGTH; CRIMP; CURRENT DERATING; PULL/TEMPERATURE/FLEX TESTS",
+            "authority": AUTHORITY,
+        })
         link_rows.append({
             "link_id": f"LINK-{axis}", "bus_id": bus, "axis_id": axis,
             "ordinal": binding["segment_position_provisional"], "protocol": binding["protocol"],
@@ -452,11 +495,11 @@ def build() -> dict[str, int | float]:
         power_pair_rows.append({
             "pair_id": f"PAIR-{axis}", "axis_id": axis, "bus_id": bus,
             "positive_net": f"{axis}_VDD", "return_net": f"{bus}_RET",
-            "source_boundary": pdu_output, "destination_connector": f"J-ACT-{axis}",
+            "source_boundary": pdu_output, "inline_transition": f"{transition_dynamic} MATES {transition_pigtail}", "destination_connector": f"J-ACT-{axis}",
             "destination_contacts": "1=RETURN; 2=VDD", "one_way_planning_length_mm": f"{power_one_way_mm:.3f}",
             "round_trip_planning_length_mm": f"{2 * power_one_way_mm:.3f}",
             "length_basis": "POWER-CORRIDOR START TO AXIS DATUM PLUS 28 mm LOCAL LOOP; CUT LENGTH/SLACK NOT RELEASED",
-            "conductor_selection": OPEN, "authority": AUTHORITY,
+            "conductor_selection": "CANDIDATE SPLIT: CF130 MOVING PAIR + FIXED MICRO-FIT TRANSITION + RESTRAINED ALPHA 3051 PIGTAIL; NOT RELEASED", "authority": AUTHORITY,
         })
         data_link_rows.append({
             "link_id": f"DATA-{axis}", "bus_id": bus, "ordinal": binding["segment_position_provisional"],
@@ -483,24 +526,39 @@ def build() -> dict[str, int | float]:
         for pin, net, service in pins:
             physical_net = f"{axis}_VDD" if net == "VDD" else (f"{bus}_RET" if net == "GND" else f"{bus}_{net}")
             if net in {"VDD", "GND"}:
-                source_contact = f"{pdu_output}/{'2' if net == 'VDD' else '1'}"
+                source_contact = f"{transition_pigtail}/{'2' if net == 'VDD' else '1'}"
             else:
                 source_contact = f"{upstream_endpoint}/{net}"
+            core_suffix = net.replace('+','P').replace('-','N')
+            actuator_core = f"CORE-{axis}-{core_suffix}-PIGTAIL" if net in {"VDD", "GND"} else f"CORE-{axis}-{core_suffix}"
             contact_rows.append({
                 "connector_id": conn_id, "contact": pin, "axis_id": axis, "signal": net,
                 "bus_net": physical_net, "service": service,
-                "wire_core": f"CORE-{axis}-{net.replace('+','P').replace('-','N')}",
+                "wire_core": actuator_core,
                 "physical_pin_state": "VERIFIED AT ACTUATOR INTERFACE", "end_to_end_test": "NOT EXECUTED",
             })
             core_rows.append({
-                "core_id": f"CORE-{axis}-{net.replace('+','P').replace('-','N')}", "axis_id": axis,
+                "core_id": actuator_core, "axis_id": axis,
                 "from_connector_contact": source_contact, "to_connector_contact": f"{conn_id}/{pin}",
                 "net": physical_net, "service": service, "route": pseg if service in {"POWER RETURN", "ACTUATOR POWER"} else dseg,
-                "conductor_cross_section": OPEN, "insulation_temperature_flex": OPEN,
+                "conductor_cross_section": "Alpha Wire 3051 22 AWG FIXED PIGTAIL CANDIDATE" if net in {"VDD", "GND"} else OPEN,
+                "insulation_temperature_flex": "STATIC/RESTRAINED; MUST NOT SEE JOINT FLEX" if net in {"VDD", "GND"} else OPEN,
                 "shield_or_twist": OPEN,
-                "cut_length_and_slack": f"PLANNING {power_one_way_mm:.3f} mm ONE-WAY; CUT LENGTH/SLACK OPEN" if service in {"POWER RETURN", "ACTUATOR POWER"} else f"PLANNING {data_link_mm:.3f} mm; CUT LENGTH/SLACK OPEN",
+                "cut_length_and_slack": "MODULE CAD PIGTAIL LENGTH/CLAMP PATH SELECTION REQUIRED" if service in {"POWER RETURN", "ACTUATOR POWER"} else f"PLANNING {data_link_mm:.3f} mm; CUT LENGTH/SLACK OPEN",
                 "authority": AUTHORITY,
             })
+            if net in {"VDD", "GND"}:
+                dynamic_core = f"CORE-{axis}-{core_suffix}-DYNAMIC"
+                core_rows.append({
+                    "core_id": dynamic_core, "axis_id": axis,
+                    "from_connector_contact": f"{pdu_output}/{'2' if net == 'VDD' else '1'}", "to_connector_contact": f"{transition_dynamic}/{pin}",
+                    "net": physical_net, "service": service, "route": pseg,
+                    "conductor_cross_section": "igus CF130.03.02.UL 22 AWG / 0.34 mm2 CANDIDATE",
+                    "insulation_temperature_flex": "MEDIUM-DUTY MOVING CABLE; PUBLISHED CONDITIONS AND ROUTE-SPECIFIC QUALIFICATION APPLY",
+                    "shield_or_twist": "UNSHIELDED TWO-CONDUCTOR POWER PAIR",
+                    "cut_length_and_slack": f"PLANNING {power_one_way_mm:.3f} mm TO FIXED TRANSITION; FINAL CUT LENGTH/SLACK OPEN",
+                    "authority": AUTHORITY,
+                })
         if next_axis is not None:
             out_id = f"J-OUT-{axis}"
             connector_rows.append({
@@ -525,7 +583,8 @@ def build() -> dict[str, int | float]:
                 })
         retention_rows.append({
             "retention_id": f"RET-{axis}", "axis_id": axis, "power_loop": pseg, "data_loop": dseg,
-            "fixed_side_clamp": OPEN, "moving_side_clamp": OPEN, "connector_load_isolation": "REQUIRED",
+            "fixed_side_clamp": f"REQUIRED AT {transition_dynamic}; BRACKET/CLAMP SELECTION OPEN", "moving_side_clamp": OPEN,
+            "connector_load_isolation": "MICRO-FIT PANEL TRANSITION AND PIGTAIL CLAMP REQUIRED TO ISOLATE JST EH FROM JOINT FLEX",
             "minimum_pull_test": OPEN, "abrasion_guard": OPEN, "inspection_access": OPEN, "validation": "NOT EXECUTED",
         })
         derating_rows.append({
@@ -534,8 +593,8 @@ def build() -> dict[str, int | float]:
             "round_trip_planning_length_mm": f"{2 * power_one_way_mm:.3f}",
             "length_basis": "GEOMETRY-DERIVED PLANNING LENGTH ONLY; CUT LENGTH AND SLACK OPEN",
             "ambient_c": OPEN, "bundle_count": OPEN, "duty_cycle": OPEN, "inrush": OPEN,
-            "connector_limit_a": "JST EH CATALOG 3 A BOUNDARY; ACTUATOR ENDPOINT CONFLICT OPEN",
-            "conductor_selection": OPEN, "calculation_state": "PARTIAL - LENGTH PRESENT; RMS/FAULT/AMBIENT/BUNDLING/DUTY/INRUSH STILL REQUIRED",
+            "connector_limit_a": "JST EH 3 A AT AWG22 HEADLINE PLUS MICRO-FIT APPLICATION DERATING/TEMPERATURE-RISE VALIDATION OPEN",
+            "conductor_selection": "CF130 MOVING + MICRO-FIT TRANSITION + ALPHA 3051 PIGTAIL CANDIDATE; NOT RELEASED", "calculation_state": "PARTIAL - LENGTH PRESENT; RMS/FAULT/AMBIENT/BUNDLING/DUTY/INRUSH STILL REQUIRED",
         })
 
     write_csv(OUT / "route-segment-register.csv", route_rows)
@@ -543,6 +602,7 @@ def build() -> dict[str, int | float]:
     write_csv(OUT / "axis-harness-binding.csv", axis_rows)
     write_csv(OUT / "service-loop-register.csv", loop_rows)
     write_csv(OUT / "actuator-power-drop-register.csv", power_rows)
+    write_csv(OUT / "actuator-power-transition-register.csv", transition_rows)
     write_csv(OUT / "bus-physical-link-register.csv", link_rows)
     write_csv(OUT / "connector-instance-register.csv", connector_rows)
     write_csv(OUT / "connector-contact-map.csv", contact_rows)
@@ -727,6 +787,7 @@ def build() -> dict[str, int | float]:
         "actuator_connector_instances": len(connector_rows), "actuator_connector_contacts": len(contact_rows),
         "cable_cores": len(core_rows), "serial_data_links": len(data_link_rows),
         "individual_power_pairs": len(power_pair_rows), "data_only_outgoing_connectors": sum(1 for r in chain_rows if r["successor_axis"] != "FAR END"),
+        "fixed_side_power_transitions": len(transition_rows),
         "actuator_interface_verification_records": len(interface_rows),
         "robotis_commercial_cable_families_reviewed": len(cable_rows),
         "manufacturer_interface_discrepancies_open": len(discrepancy_rows),
@@ -740,6 +801,11 @@ def build() -> dict[str, int | float]:
         "data_star_topology_rejected": True,
         "serial_data_predecessor_successor_chain_complete": True,
         "inter_actuator_ground_or_vdd_pass_through_present": False,
+        "fixed_side_microfit_transition_candidate_defined": True,
+        "direct_cf130_to_jst_eh_crimp_rejected": True,
+        "transition_order_code_candidates_bound": True,
+        "transition_brackets_dimensioned": False,
+        "cf130_individual_core_od_verified": False,
         "route_geometry_candidate_present": True, "whole_body_route_step_present": True,
         "whole_body_route_glb_present": True, "route_cad_is_cable_size_release": False,
         "every_axis_has_power_and_data_loop": True,
@@ -764,6 +830,8 @@ This is the first complete physical translation of the HR-30 logical wiring arch
 It contains {stats['fixed_route_segments']} body corridors plus 50 explicit moving-joint power/data loops ({stats['total_route_segments']} route segments and {stats['route_points']} route points). All {stats['route_cad_solid_count']} registered routes are also exported as named editable STEP solids and as one interactive GLB in a recognizable 762 mm body context. Those rods are route centerlines—not selected cable diameters, bundle clearances, or bend-radius releases. Each actuator has a known device-side contact map, a branch-power relationship, a data-link boundary, a moving-loop obligation, retention obligation, derating inputs, and an inspection path.
 
 The architecture now defines one two-conductor power pair per actuator and a serial data chain for each bus. Every actuator input housing receives its own return, VDD, and data contacts. Every inter-actuator outgoing housing populates only the data contacts: GND and VDD cavities remain empty, so no power current is daisy-chained through a preceding actuator connector. This controlled split-harness is the P0.1 construction candidate; crimp tooling, conductor selection, cavity inspection, no-backfeed tests, and fault injection remain required before release.
+
+Every moving actuator-power pair now ends at a fixed-side panel transition: igus CF130.03.02.UL enters Molex 430250200 with 430300001 contacts, mates to panel-mount 430200200 with 430310001 contacts, and continues through a restrained Alpha Wire 3051 pigtail to JST EH. Direct CF130-to-JST crimping is rejected. The exact 25 transition candidates are in `actuator-power-transition-register.csv`; CF130 core OD, bracket/fastener CAD, pigtail length, crimp qualification, derating, pull, temperature-rise and flex tests remain open.
 
 The {stats['candidate_12v_stall_endpoint_sum_a']:.2f} A figure is only the sum of manufacturer 12 V momentary stall-current endpoints for the current 25-axis allocation. It is not expected demand, a conductor rating, a fuse value, or permission to power the robot.
 
@@ -842,6 +910,8 @@ def write_visuals(routes: list[dict], points: list[dict], axes: list[dict], buse
     )
     route_viewer = '''<h2>Orbit all 62 routes in the complete body</h2><div class="panel"><model-viewer src="HR30_whole_body_harness_centerlines_candidate.glb" camera-controls camera-orbit="32deg 76deg 105%" field-of-view="27deg" shadow-intensity="0.8" exposure="1.05" alt="Interactive recognizable 762 millimetre HR-30 whole body with all 62 registered harness centerlines"></model-viewer><p>Gold rods are actuator-power centerlines; sky-blue rods are data/low-voltage centerlines. The translucent body is lightweight positional context. Rod diameter is illustrative and does not release cable OD, bundle clearance, or bend radius.</p><p><a href="HR30_whole_body_harness_centerlines_candidate.step">Download editable route STEP</a> · <a href="route-cad-register.csv">Inspect the 62-solid CAD register</a></p></div>'''
     page = page.replace("<h2>Whole-body route map</h2>", route_viewer + "<h2>Whole-body route map</h2>", 1)
+    transition_section = '''<h2>Fixed transition at every actuator branch</h2><div class="panel open"><p><strong>Moving CF130 no longer terminates directly into JST EH.</strong> Each of the 25 branches now ends the moving cable at Molex 430250200 / 430300001, mates to panel-mounted 430200200 / 430310001, then continues through a restrained Alpha Wire 3051 pigtail to the actuator.</p><p>The parts are exact candidates, not released selections. CF130 core OD, bracket/fastener geometry, pigtail length, crimp qualification, derating, pull, temperature-rise and flex tests remain open.</p><p><a href="actuator-power-transition-register.csv">Inspect all 25 transition bindings</a></p></div>'''
+    page = page.replace("<h2>Critical power boundary</h2>", transition_section + "<h2>Critical power boundary</h2>", 1)
     page = page.replace(
         '<a href="route-point-register.csv">route points</a> ·',
         '<a href="route-point-register.csv">route points</a> · <a href="route-cad-register.csv">route CAD</a> ·',
@@ -930,6 +1000,11 @@ Four actuator-family interfaces are now source-verified, five commercial ROBOTIS
         "physical_harness_split_harness_candidate_defined": True,
         "physical_harness_serial_data_link_count": stats["serial_data_links"],
         "physical_harness_individual_power_pair_count": stats["individual_power_pairs"],
+        "physical_harness_fixed_side_transition_count": stats["fixed_side_power_transitions"],
+        "physical_harness_direct_cf130_to_jst_rejected": True,
+        "physical_harness_transition_order_code_candidates_bound": True,
+        "physical_harness_transition_brackets_dimensioned": False,
+        "physical_harness_cf130_core_od_verified": False,
         "physical_harness_actuator_interface_verification_count": stats["actuator_interface_verification_records"],
         "physical_harness_commercial_cable_family_review_count": stats["robotis_commercial_cable_families_reviewed"],
         "physical_harness_manufacturer_discrepancy_count": stats["manufacturer_interface_discrepancies_open"],
