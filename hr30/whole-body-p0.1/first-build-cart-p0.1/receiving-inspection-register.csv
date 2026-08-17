@@ -1,0 +1,8 @@
+inspection_id,item,check,record,state
+FBC-I01,printed G01 plate,exactly nine labeled parts; 1:1 millimetre scale; no unintended slicer scaling,"photos, slicer profile, measured critical dimensions and issue log",NOT EXECUTED
+FBC-I02,ROBOTIS 902-0132-000,received SKU; USB connector revision; included cable identities; no shipping damage,receiving photo and serial/lot where present,NOT RECEIVED
+FBC-I03,ROBOTIS 902-0145-001,received SKU; hub/support hardware; X3P/X4P 100 mm cables; exposed underside protected,receiving photo and continuity-only preflight record,NOT RECEIVED
+FBC-I04,igus cable samples,"exact jacket marking/order code, received length, OD, conductor count/construction and traceability","lot/CoC, dimensional record and retained sample ID",NOT RECEIVED
+FBC-I05,JST/Molex coupon components,"exact genuine order codes, quantity, plating/lot/packaging and mating fit",receiving register and controlled sample IDs,NOT RECEIVED
+FBC-I06,borrowed equipment,"exact model/serial, calibration state, accessories, isolation/current-limit behavior and operator approval",dated facility capability and pre-use inspection,NOT CONFIRMED
+FBC-I07,first actuator candidate,not yet in cart; exact model/interface/voltage/received condition required before later bench work,future selected-axis receiving record,BLOCKED / NOT SELECTED
