@@ -456,5 +456,8 @@
   "actuator_power_cable_selected": false,
   "actuator_data_cable_selected": false,
   "actuator_crimp_process_selected": false,
-  "actuator_cable_kit_built": false
+  "actuator_cable_kit_built": false,
+  "actuator_power_cable_geometric_candidate_bound": true,
+  "actuator_power_cable_20c_planning_calculated": true,
+  "actuator_power_cable_hot_ampacity_verified": false
 }
