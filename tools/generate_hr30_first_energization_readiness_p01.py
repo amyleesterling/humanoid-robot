@@ -185,7 +185,7 @@ def hold_rows() -> list[dict]:
         ("FER-H01", "received as-built robot does not yet exist", "fabricated assembly, inspection records and frozen serial/lot configuration"),
         ("FER-H02", "protective-earth/DC-reference and physical bonding candidates are defined but not approved", "topology plus enclosure, panel-terminal, tether-contact and fixed-wire families are bound; fault sizing, AHJ disposition, moving-joint jumpers, received hardware, installation, measurements and qualified electrical disposition remain required"),
         ("FER-H03", "fuse/eFuse/conductor/contact ratings unresolved", "fault current, lengths, ambient, bundling, connector limits, inrush, regeneration and duty"),
-        ("FER-H04", "physical harness and actuator cable kit are not built or tested", "resolved wire/contact compatibility, controlled crimp process, continuity, insulation, flex, retention, shield and no-backfeed evidence"),
+        ("FER-H04", "physical harness and actuator cable kit are not built or tested; the CF9 wire/contact size screen is only candidate-level", "accepted AWG24 current/thermal derating, controlled crimp process, continuity, insulation, flex/torsion, retention, signal-reference, shield and no-backfeed evidence"),
         ("FER-H05", "safety requirements and PLr/SIL allocation open", "SRS, risk assessment, common-cause analysis and qualified validation plan"),
         ("FER-H06", "total stopping time/distance unallocated", "measured sensor/logic/contactor/drive decay plus mechanical overtravel"),
         ("FER-H07", "boards unbuilt and uninspected", "received PCB/assembly inspection, coupons, isolation, thermal and fault testing"),
