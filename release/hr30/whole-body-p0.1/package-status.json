@@ -476,5 +476,16 @@
   "full_scale_fit_check_inspected_part_count": 0,
   "full_scale_fit_check_physically_validated": false,
   "full_scale_fit_check_structural_use_permitted": false,
-  "full_scale_fit_check_bed_normalized_part_count": 98
+  "full_scale_fit_check_bed_normalized_part_count": 98,
+  "whole_body_srs_candidate_present": true,
+  "whole_body_hazard_count": 24,
+  "whole_body_safety_function_count": 12,
+  "whole_body_stopping_time_interval_count": 8,
+  "whole_body_safety_validation_case_count": 20,
+  "candidate_plr_allocation_present": true,
+  "candidate_plr_approved": false,
+  "achieved_performance_level_calculated": false,
+  "stopping_time_measured": false,
+  "stopping_distance_allocated": false,
+  "functional_safety_validated": false
 }
