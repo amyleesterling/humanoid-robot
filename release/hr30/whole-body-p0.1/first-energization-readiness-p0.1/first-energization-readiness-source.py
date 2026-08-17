@@ -63,6 +63,7 @@ def source_rows() -> list[dict]:
         ("whole-body logical ECAD status", "electrical/kicad/hr30-whole-body-electrical-p0.1/electrical-status.json"),
         ("whole-body assembly traveler status", "assembly-guide-p0.1/assembly-status.json"),
         ("manufacturing artifact status", "manufacturing-files/manufacturing-files-status.json"),
+        ("full-scale nonstructural whole-body fit-check status", "full-scale-fit-check-p0.1/fit-check-status.json"),
         ("compiled whole-body no-motion firmware status", "firmware/hr30-motion-controller-p0.1/firmware-status.json"),
         ("no-actuator STM32 target bring-up status", "firmware/stm32-target-bringup-p0.1/bringup-status.json"),
         ("logic-only controller power-kit status", "electrical/logic-power-kit-p0.1/logic-power-status.json"),
@@ -183,7 +184,7 @@ def signoff_rows() -> list[dict]:
 
 def hold_rows() -> list[dict]:
     data = [
-        ("FER-H01", "received as-built robot does not yet exist", "fabricated assembly, inspection records and frozen serial/lot configuration"),
+        ("FER-H01", "a complete 98-part 1:1 nonstructural fit-check package exists, but zero parts have been printed or inspected and no received as-built robot exists", "printed and independently supported whole-body fit-check records followed by fabricated production assembly, inspection records and frozen serial/lot configuration"),
         ("FER-H02", "protective-earth/DC-reference and physical bonding candidates are defined but not approved", "topology plus enclosure, panel-terminal, tether-contact and fixed-wire families are bound; fault sizing, AHJ disposition, moving-joint jumpers, received hardware, installation, measurements and qualified electrical disposition remain required"),
         ("FER-H03", "fuse/eFuse/conductor/contact ratings unresolved", "fault current, lengths, ambient, bundling, connector limits, inrush, regeneration and duty"),
         ("FER-H04", "physical harness and actuator cable kit are not built or tested; tooling and coupon travelers now exist but record zero execution and zero production cut lengths", "received-lot CF9/JST coupon results, accepted AWG24 current/thermal derating, qualified crimp process, continuity, insulation, flex/torsion, retention, signal-reference, shield/no-backfeed evidence, and measured 25-axis as-built routes"),

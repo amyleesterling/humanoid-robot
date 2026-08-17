@@ -467,5 +467,13 @@
   "actuator_cable_coupon_built_count": 0,
   "actuator_cable_coupon_executed_test_count": 0,
   "actuator_cable_coupon_process_selected": false,
-  "actuator_cable_final_cut_lengths_selected": false
+  "actuator_cable_final_cut_lengths_selected": false,
+  "full_scale_fit_check_package_present": true,
+  "full_scale_fit_check_part_count": 98,
+  "full_scale_fit_check_stl_count": 98,
+  "full_scale_fit_check_module_count": 12,
+  "full_scale_fit_check_built_part_count": 0,
+  "full_scale_fit_check_inspected_part_count": 0,
+  "full_scale_fit_check_physically_validated": false,
+  "full_scale_fit_check_structural_use_permitted": false
 }

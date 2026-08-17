@@ -39,7 +39,7 @@ def main() -> int:
     need(len(gates) == 12 and len({r["gate_id"] for r in gates}) == 12, "12 unique gates required")
     need(len(states) == 8 and len({r["state_id"] for r in states}) == 8, "8 unique power states required")
     need(len(traveler) == 26 and len(faults) == 12 and len(measurements) == 10, "traveler/fault/measurement coverage drift")
-    need(len(signoffs) == 5 and len(holds) == 10 and len(sources) == 21, "signoff/hold/source coverage drift")
+    need(len(signoffs) == 5 and len(holds) == 10 and len(sources) == 22, "signoff/hold/source coverage drift")
     need(all(r["state"] == "OPEN - NOT EXECUTED" for r in gates + states + traveler + faults + measurements + signoffs + holds), "physical work falsely marked executed")
     need(all(r["motion_permitted"] == "NO" for r in states), "motion permitted in energization ladder")
     need(all(r["pass_fail"] == "NOT EXECUTED" and r["measured_response"] == "NONE" for r in faults), "fault test overclaim")
@@ -53,6 +53,9 @@ def main() -> int:
     need(status["stm32_target_bringup_plan_present"] is True and status["stm32_target_bringup_flash_executed"] is False, "bring-up evidence boundary drift")
     need(status["actuator_cable_coupon_plan_present"] is True and status["actuator_cable_coupon_built_count"] == 0 and status["actuator_cable_final_cut_length_count"] == 0, "cable coupon evidence boundary drift")
     need(any(r["hold_id"] == "FER-H04" and "zero production cut lengths" in r["unresolved_item"] for r in holds), "cable coupon hold not propagated")
+    need(any(r["hold_id"] == "FER-H01" and "zero parts have been printed or inspected" in r["unresolved_item"] for r in holds), "full-scale fit-check physical boundary not propagated")
+    fit_source = [r for r in sources if r["path"].endswith("full-scale-fit-check-p0.1/fit-check-status.json")]
+    need(len(fit_source) == 1, "full-scale fit-check source binding missing")
     need((OUT / "first-energization-readiness-source.py").read_bytes() == GEN.read_bytes(), "generator snapshot drift")
     manifest = rows(OUT / "file-manifest.csv")
     expected = sorted(p.relative_to(OUT).as_posix() for p in OUT.rglob("*") if p.is_file() and p.name != "file-manifest.csv")

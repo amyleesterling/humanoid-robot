@@ -145,6 +145,13 @@ The [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index
 
 The [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) binds the JST loose-piece **BEH-001T-P0.6 + YC-260R** prototype path, the strip-terminal **SEH-001T-P0.6 + YRS-260** alternative, seven destructive/measurement specimen families, and a **25-axis** as-built route register. No production cut length or crimp setting is released: every robot cable must be measured after assembly and swept through its complete joint range.
 <!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-END -->
+
+<!-- HR30-FULL-SCALE-FIT-CHECK-P01-README-START -->
+## Full-scale unpowered fit-check kit
+
+The [full-scale fit-check guide](full-scale-fit-check-p0.1/index.html) provides one source-bound STL for every one of the **98 physical CAD parts** across all twelve body modules. It is a 1:1 nonstructural package for checking dimensions, interfaces, equipment packaging, service access, hand assembly, harness pull paths and manual unpowered joint sweeps before production machining. Zero parts have been printed or accepted. Printed articles may not carry robot, standing, walking, fall, powered-test or impact loads.
+<!-- HR30-FULL-SCALE-FIT-CHECK-P01-README-END -->
+
 <!-- HR30-FIRST-ENERGIZATION-P01-README-START -->
 ## First-energization readiness
 
