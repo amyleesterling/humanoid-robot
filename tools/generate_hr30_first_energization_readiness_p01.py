@@ -56,6 +56,7 @@ def source_rows() -> list[dict]:
         ("physical head HMI harness candidate status", "harness/head-hmi-harness-p0.1/head-hmi-status.json"),
         ("25-axis harness/current policy status", "harness/current-policy-binding-p0.1/status.json"),
         ("25-axis actuator cable-kit status", "harness/actuator-cable-kit-p0.1/actuator-cable-kit-status.json"),
+        ("25-axis fixed-transition bracket CAD status", "harness/actuator-transition-brackets-p0.1/bracket-status.json"),
         ("actuator cable coupon and as-built route-measurement status", "harness/actuator-cable-coupon-p0.1/coupon-status.json"),
         ("one-axis commissioning station status", "electrical/axis-commissioning-station-p0.1/commissioning-status.json"),
         ("bench harness status", "electrical/axis-commissioning-station-p0.1/bench-harness-p0.1/harness-status.json"),
@@ -188,7 +189,7 @@ def hold_rows() -> list[dict]:
         ("FER-H01", "a complete 98-part 1:1 nonstructural fit-check package exists, but zero parts have been printed or inspected and no received as-built robot exists", "printed and independently supported whole-body fit-check records followed by fabricated production assembly, inspection records and frozen serial/lot configuration"),
         ("FER-H02", "protective-earth/DC-reference and physical bonding candidates are defined but not approved", "topology plus enclosure, panel-terminal, tether-contact and fixed-wire families are bound; fault sizing, AHJ disposition, moving-joint jumpers, received hardware, installation, measurements and qualified electrical disposition remain required"),
         ("FER-H03", "fuse/eFuse/conductor/contact ratings unresolved", "fault current, lengths, ambient, bundling, connector limits, inrush, regeneration and duty"),
-        ("FER-H04", "physical harness and actuator cable kit are not built or tested; tooling and coupon travelers now exist but record zero execution and zero production cut lengths", "received-lot CF9/JST coupon results, accepted AWG24 current/thermal derating, qualified crimp process, continuity, insulation, flex/torsion, retention, signal-reference, shield/no-backfeed evidence, and measured 25-axis as-built routes"),
+        ("FER-H04", "physical harness, 22 AWG CF130-to-Micro-Fit-to-Alpha-Wire-3051 actuator cable kit and 25 fixed-transition bracket candidates are not built or tested; tooling and coupon travelers record zero execution and zero production cut lengths", "official-drawing and received-part Micro-Fit bracket fit; received-lot 22 AWG CF130 and Alpha Wire 3051 coupon results; accepted current/thermal derating; qualified Micro-Fit and JST crimp processes; continuity, insulation, flex/torsion, retention, strain-relief, signal-reference, shield/no-backfeed evidence; and measured 25-axis as-built routes"),
         ("FER-H05", "a whole-body SRS and project-owned candidate PLr allocations now exist, but achieved PL/PFHd, common-cause evidence and qualified validation remain open", "qualified ISO 12100/13849 disposition on the hash-bound as-built system, received component reliability inputs, DCavg, CCF, software measures and witnessed ISO 13849-2 validation"),
         ("FER-H06", "the complete stopping-time equation and 25-axis distance register now exist, but every numerical allocation and physical result remains open", "synchronized measurement of input, logic, output, contactor, rail, torque and mechanical intervals plus stage-specific speed, gravity, compliance, restraint and endpoint overtravel"),
         ("FER-H07", "boards unbuilt and uninspected", "received PCB/assembly inspection, coupons, isolation, thermal and fault testing"),
@@ -222,7 +223,7 @@ def integrate_root(gates: list[dict], states: list[dict], traveler: list[dict], 
         "motion_authority": False,
         "energization_authority": False,
     })
-    status_path.write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
+    status_path.write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8", newline="\n")
 
     readme = WHOLE / "README.md"
     text = readme.read_text(encoding="utf-8")
@@ -279,7 +280,7 @@ def main() -> int:
         "first_energization_ready": False, "motion_in_scope": False, "configuration_frozen": False,
         "connection_authority": False, "powered_test_authority": False, "motion_authority": False, "energization_authority": False,
     }
-    (OUT / "readiness-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
+    (OUT / "readiness-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8", newline="\n")
     (OUT / "README.md").write_text(f"# HR-30 first-energization readiness P0.1\n\n**{WARNING}**\n\nThis package turns the current whole-body engineering set into a staged, measurable readiness path. It records no physical pass and grants no authority. Use [index.html](index.html) for the web guide.\n", encoding="utf-8", newline="\n")
     (OUT / "index.html").write_text(render(gates, states), encoding="utf-8", newline="\n")
     shutil.copy2(Path(__file__), OUT / "first-energization-readiness-source.py")

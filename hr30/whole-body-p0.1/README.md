@@ -284,6 +284,16 @@ The [interactive safety-requirements guide](safety-requirements-p0.1/index.html)
 <!-- HR30-SRS-P01-README-END -->
 
 
+
+
+<!-- HR30-TRANSITION-BRACKETS-P01-README-START -->
+## Actuator fixed-transition bracket CAD
+
+The [interactive transition-bracket guide](harness/actuator-transition-brackets-p0.1/index.html) places one dimensioned three-solid service cassette at every one of the 25 actuator feeds. Editable part STEP, the standard assembly STEP/GLB, the recognizable whole-body placement STEP/GLB and all coordinates are included.
+
+The central connector opening is a **project-owned clearance proxy**, not a released Molex cutout. Official-drawing reconciliation, received-part fit, material/process selection, cable clamp qualification, body attachment, tolerance-aware collision and physical testing remain open.
+<!-- HR30-TRANSITION-BRACKETS-P01-README-END -->
+
 <!-- HR30-FIRST-ENERGIZATION-P01-README-START -->
 ## First-energization readiness
 
