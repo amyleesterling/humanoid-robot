@@ -137,6 +137,14 @@ The [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index
 <!-- HR30-ACTUATOR-CABLE-KIT-P01-README-END -->
 
 
+
+
+
+<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-START -->
+## Actuator cable coupon and route measurement
+
+The [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) binds the JST loose-piece **BEH-001T-P0.6 + YC-260R** prototype path, the strip-terminal **SEH-001T-P0.6 + YRS-260** alternative, seven destructive/measurement specimen families, and a **25-axis** as-built route register. No production cut length or crimp setting is released: every robot cable must be measured after assembly and swept through its complete joint range.
+<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-END -->
 <!-- HR30-FIRST-ENERGIZATION-P01-README-START -->
 ## First-energization readiness
 
