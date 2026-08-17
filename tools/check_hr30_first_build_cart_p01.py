@@ -40,7 +40,7 @@ def main() -> int:
     holds = rows(OUT / "do-not-buy-yet-register.csv")
     actions = rows(OUT / "first-build-action-register.csv")
     inspections = rows(OUT / "receiving-inspection-register.csv")
-    need(len(bindings) == 12, "project-source binding count drift")
+    need(len(bindings) == 15, "project-source binding count drift")
     for row in bindings:
         path = WB / row["source_path"]
         need(path.is_file() and sha(path) == row["sha256"] and path.stat().st_size == int(row["bytes"]), f"bound input drift: {row['source_path']}")
@@ -59,7 +59,7 @@ def main() -> int:
         need(status[key] is False, f"fail-closed state violated: {key}")
     for key in ["orders_placed", "supplier_contacts_executed", "quotes_received", "parts_printed", "coupons_built", "physical_tests_executed"]:
         need(status[key] == 0, f"physical execution invented: {key}")
-    need(status["human_purchase_approval_required"] is True and status["gripper_fit_plate_part_count"] == 9 and status["whole_body_fit_check_stl_count"] == 98, "cart scope drift")
+    need(status["human_purchase_approval_required"] is True and status["gripper_fit_plate_part_count"] == 11 and status["first_fit_article_part_count"] == 11 and status["first_fit_article_coupon_count"] == 1 and status["whole_body_fit_check_stl_count"] == 98, "cart scope drift")
     need((OUT / "first-build-cart-source.py").read_bytes() == GEN.read_bytes(), "generator snapshot drift")
     manifest = rows(OUT / "file-manifest.csv")
     expected = sorted(path.relative_to(OUT).as_posix() for path in OUT.rglob("*") if path.is_file() and path.name != "file-manifest.csv")
@@ -75,7 +75,8 @@ def main() -> int:
     need("HR30-FIRST-BUILD-CART-P01-START" in root_page and "$58.77" in root_page and "0 ordered" in root_page, "whole-body integration missing")
     root_status = json.loads((WB / "package-status.json").read_text(encoding="utf-8"))
     need(root_status["first_build_cart_present"] is True and root_status["first_build_cart_orders_placed"] == 0 and root_status["first_build_cart_procurement_authority"] is False, "root status overclaim")
-    print("PASS: first-build cart binds 12 project inputs, two USD 58.77 bench candidates, eight sample quotes, six borrow/contract tools and eight do-not-buy holds; zero orders or authority")
+    need("11 parts" in page and "manual G01 fit article" in page, "manual fit-article cart handoff missing")
+    print("PASS: first-build cart binds 15 project inputs, one 11-part manual fit article plus coupon, two USD 58.77 bench candidates, eight sample quotes, six borrow/contract tools and eight do-not-buy holds; zero orders or authority")
     return 0
 
 

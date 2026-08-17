@@ -52,6 +52,9 @@ def bind_sources() -> list[dict]:
         "boston-fabrication-route-p0.1/route-status.json",
         "boston-fabrication-route-p0.1/bpl-submission/HR30_G01_gripper_fit_plate_nonstructural.stl",
         "boston-fabrication-route-p0.1/makerspace-submission/HR30_complete_98_part_nonstructural_fit_check.zip",
+        "first-fit-article-p0.1/fit-article-status.json",
+        "first-fit-article-p0.1/HR30_G01_manual_fit_article_plate_candidate.stl",
+        "first-fit-article-p0.1/HR30-G01-first-fit-article-p0.1.zip",
         "electrical/axis-commissioning-station-p0.1/candidate-bom.csv",
         "electrical/axis-commissioning-station-p0.1/bench-harness-p0.1/candidate-bom.csv",
         "electrical/logic-power-kit-p0.1/equipment-register.csv",
@@ -81,6 +84,7 @@ def bind_sources() -> list[dict]:
 def project_source_checks() -> dict:
     boston = json.loads((WB / "boston-fabrication-route-p0.1/route-status.json").read_text(encoding="utf-8"))
     readiness = json.loads((WB / "first-energization-readiness-p0.1/readiness-status.json").read_text(encoding="utf-8"))
+    fit_article = json.loads((WB / "first-fit-article-p0.1/fit-article-status.json").read_text(encoding="utf-8"))
     station = read_csv(WB / "electrical/axis-commissioning-station-p0.1/candidate-bom.csv")
     coupon = read_csv(WB / "harness/actuator-cable-coupon-p0.1/coupon-bom.csv")
     tools = read_csv(WB / "harness/actuator-cable-coupon-p0.1/tooling-candidate-register.csv")
@@ -96,6 +100,8 @@ def project_source_checks() -> dict:
         raise RuntimeError("actuator-coupon tooling register drift")
     if boston["bpl_gripper_plate_part_count"] != 9 or boston["complete_fit_check_zip_stl_count"] != 98:
         raise RuntimeError("physical fit-check source drift")
+    if fit_article["printable_part_count"] != 11 or fit_article["built_part_count"] != 0 or fit_article["energization_authority"]:
+        raise RuntimeError("manual first-fit-article source drift")
     if readiness["first_energization_ready"] or readiness["connection_authority"]:
         raise RuntimeError("readiness boundary unexpectedly changed")
     return {
@@ -104,6 +110,7 @@ def project_source_checks() -> dict:
         "coupon_tools": tools,
         "boston": boston,
         "readiness": readiness,
+        "fit_article": fit_article,
     }
 
 
@@ -179,7 +186,7 @@ def write_records(inputs: dict) -> dict:
     write_csv(OUT / "do-not-buy-yet-register.csv", hold)
 
     actions = [
-        {"sequence": 1, "action_id": "FBC-A01", "lane": "PRINT", "action": "Send the controlled nine-part gripper STL to Artisans Asylum or another confirmed local printer; BPL remains unavailable", "input": "Boston route STL SHA-bound below", "completion_evidence": "quote/profile/slicer screenshot; nine labeled parts; photographs and dimensional inspection", "state": "OPEN - NO FILE SENT"},
+        {"sequence": 1, "action_id": "FBC-A01", "lane": "PRINT", "action": "Send the controlled eleven-part manual G01 fit-article ZIP and clearance coupon to Artisans Asylum or another confirmed local printer; BPL remains unavailable", "input": "first-fit-article-p0.1 ZIP and plate STL SHA-bound below", "completion_evidence": "quote/profile/slicer screenshot; coupon plus eleven labeled parts; assembled manual mechanism; photographs and completed fit-article traveler", "state": "OPEN - NO FILE SENT"},
         {"sequence": 2, "action_id": "FBC-A02", "lane": "QUOTE", "action": "Send the eight cable/connector sample requests without authorizing production lengths", "input": "sample-quote-register.csv and vendor-request-templates.md", "completion_evidence": "dated quotes with exact order codes, MOQ, lead time, lot/CoC and shipping", "state": "OPEN - NO REQUEST SENT"},
         {"sequence": 3, "action_id": "FBC-A03", "lane": "BORROW", "action": "Ask the makerspace or a harness shop which exact crimp, pull-test, metrology and programmable-supply equipment is available", "input": "borrow-contract-register.csv", "completion_evidence": "dated capability response with model, tooling condition, calibration and operator/process constraints", "state": "OPEN - NO FACILITY CONFIRMATION"},
         {"sequence": 4, "action_id": "FBC-A04", "lane": "BUY", "action": "After human approval only, order one U2D2 and one Power Hub as reusable one-actuator commissioning tools", "input": "purchase-candidate-register.csv", "completion_evidence": "purchase record plus received SKU/USB revision/package-content inspection", "state": "OPEN - NO ORDER PLACED"},
@@ -189,7 +196,7 @@ def write_records(inputs: dict) -> dict:
     write_csv(OUT / "first-build-action-register.csv", actions)
 
     inspection = [
-        {"inspection_id": "FBC-I01", "item": "printed G01 plate", "check": "exactly nine labeled parts; 1:1 millimetre scale; no unintended slicer scaling", "record": "photos, slicer profile, measured critical dimensions and issue log", "state": "NOT EXECUTED"},
+        {"inspection_id": "FBC-I01", "item": "G01 manual fit article", "check": "clearance coupon plus exactly eleven labeled parts; 1:1 millimetre scale; no unintended slicer scaling", "record": "photos, slicer profile, hardware identities, fit-article traveler, measurements and issue log", "state": "NOT EXECUTED"},
         {"inspection_id": "FBC-I02", "item": "ROBOTIS 902-0132-000", "check": "received SKU; USB connector revision; included cable identities; no shipping damage", "record": "receiving photo and serial/lot where present", "state": "NOT RECEIVED"},
         {"inspection_id": "FBC-I03", "item": "ROBOTIS 902-0145-001", "check": "received SKU; hub/support hardware; X3P/X4P 100 mm cables; exposed underside protected", "record": "receiving photo and continuity-only preflight record", "state": "NOT RECEIVED"},
         {"inspection_id": "FBC-I04", "item": "igus cable samples", "check": "exact jacket marking/order code, received length, OD, conductor count/construction and traceability", "record": "lot/CoC, dimensional record and retained sample ID", "state": "NOT RECEIVED"},
@@ -205,7 +212,7 @@ def write_records(inputs: dict) -> dict:
 
 ## Printer / makerspace request
 
-Please quote and preflight the attached `HR30_G01_gripper_fit_plate_nonstructural.stl` at 100% scale in millimetres. It is an unpowered, nonstructural fit article containing nine separated parts. Please report printer, material, layer height, support plan, estimated time, price and any geometry concerns. Do not alter scale or manufacture further robot parts without a separate instruction.
+Please quote and preflight the attached `HR30-G01-first-fit-article-p0.1.zip` at 100% scale in millimetres. It contains one clearance coupon and one eleven-part, unpowered, nonstructural manual gripper fit article. Print the coupon first. Please report printer, material, layer height, support plan, estimated time, price and any geometry concerns. Do not alter scale, install an actuator, or manufacture further robot parts without a separate instruction.
 
 ## Cable and connector sample request
 
@@ -246,7 +253,7 @@ def write_page(records: dict, status: dict) -> None:
     page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 first physical-build cart</title><style>
 :root{{--deep:#071d36;--blue:#0b4f91;--sky:#d9f2ff;--gold:#f2b91d;--paper:#f6fbff;--ink:#142a40;--line:#91cbe7;--red:#8f2600}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,main,footer{{padding:clamp(24px,5vw,64px) max(18px,calc((100vw - 1280px)/2))}}header,footer{{background:linear-gradient(135deg,var(--deep),var(--blue));color:#fff}}h1{{font-size:clamp(38px,6vw,68px);line-height:1.05}}h2{{font-size:clamp(28px,4vw,42px)}}.warning{{background:var(--gold);color:#17243a;border:3px solid #805600;padding:16px;font-weight:900}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}}article,.panel{{background:#fff;border:2px solid var(--line);border-radius:16px;padding:19px}}.metric{{font-size:clamp(30px,5vw,48px);font-weight:900;color:var(--blue)}}.hold{{border-color:#c15b32;background:#fff4ee}}.steps{{display:grid;gap:12px}}.step label{{display:flex;gap:15px;cursor:pointer}}.step input{{width:26px;height:26px;flex:0 0 auto}}.step small{{display:block;margin-top:7px;color:#445;line-height:1.4}}.step:has(input:checked){{opacity:.64;background:#e4f7ea}}.toolbar{{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}}button{{font:700 16px system-ui;padding:10px 14px;border:2px solid var(--blue);border-radius:9px;background:#fff;color:var(--blue);cursor:pointer}}button.active{{background:var(--blue);color:#fff}}.scroll{{overflow:auto;border:2px solid var(--line);border-radius:14px;background:#fff}}table{{border-collapse:collapse;width:100%;min-width:1050px}}th,td{{padding:14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:16px}}th{{background:var(--deep);color:#fff;position:sticky;top:0}}a{{color:#075b9b;font-weight:800}}code{{font-size:15px;overflow-wrap:anywhere}}@media(max-width:560px){{body{{font-size:16px}}}}
 </style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>Boston, Massachusetts · supplier review {ACCESSED}</p><h1>Buy less. Build the first evidence.</h1><p>This is the controlled bridge from a complete digital robot to the first physical fit article and cable coupons. It is a planning cart—not an automatic order.</p></header><main>
-<section class="grid"><article><div class="metric">$58.77</div><p>two reusable ROBOTIS bench candidates before shipping and tax; human approval required.</p></article><article><div class="metric">9 parts</div><p>one unpowered left-gripper fit plate ready for a printer quote.</p></article><article><div class="metric">8 quotes</div><p>cut-length cable and genuine connector coupon requests.</p></article><article class="hold"><div class="metric">0 ordered</div><p>no vendor contact, purchase, print, build or power work has occurred.</p></article></section>
+<section class="grid"><article><div class="metric">$58.77</div><p>two reusable ROBOTIS bench candidates before shipping and tax; human approval required.</p></article><article><div class="metric">11 parts</div><p>one assemblable manual G01 fit article plus clearance coupon ready for a printer quote.</p></article><article><div class="metric">8 quotes</div><p>cut-length cable and genuine connector coupon requests.</p></article><article class="hold"><div class="metric">0 ordered</div><p>no vendor contact, purchase, print, build or power work has occurred.</p></article></section>
 <section><h2>Six actions, in order</h2><p>These checkboxes are stored only in this browser; they are not engineering evidence.</p><div class="toolbar"><button class="active" data-filter="ALL">All</button><button data-filter="PRINT">Print</button><button data-filter="QUOTE">Quote</button><button data-filter="BORROW">Borrow</button><button data-filter="BUY">Buy</button><button data-filter="BUILD">Build</button><button data-filter="HOLD">Hold</button></div><div class="steps">{cards}</div></section>
 <section><h2>The only priced purchase candidates</h2><div class="warning">Do not click through or order until Amy approves the cart. These are commissioning tools, not permission to connect or power an actuator.</div><div class="scroll"><table><thead><tr>{''.join(f'<th>{label}</th>' for _,label in purchase_cols)}</tr></thead><tbody>{rows(records['purchase'],purchase_cols)}</tbody></table></div><p><a href="purchase-candidate-register.csv">Download the purchase register</a>.</p></section>
 <section><h2>Request samples and quotes</h2><div class="scroll"><table><thead><tr>{''.join(f'<th>{label}</th>' for _,label in sample_cols)}</tr></thead><tbody>{rows(records['samples'],sample_cols)}</tbody></table></div><p><a href="sample-quote-register.csv">Download the sample register</a> · <a href="vendor-request-templates.md">copy the request templates</a>.</p></section>
@@ -275,13 +282,13 @@ def integrate(status: dict) -> None:
     block = f'''{start}
 ## First physical-build cart P0.1
 
-The [interactive first-build cart](first-build-cart-p0.1/index.html) converts the existing fit-check, cable-coupon and one-actuator commissioning packages into a deliberately small first tranche: one nine-part gripper print, eight sample/quote requests, borrowed or contracted specialist tooling, and two reusable ROBOTIS bench candidates totaling USD 58.77 before tax and shipping. No order, vendor contact, print, physical test, connection or energization is claimed.
+The [interactive first-build cart](first-build-cart-p0.1/index.html) converts the existing fit-check, cable-coupon and one-actuator commissioning packages into a deliberately small first tranche: one clearance coupon and eleven-part manually operable G01 fit article, eight sample/quote requests, borrowed or contracted specialist tooling, and two reusable ROBOTIS bench candidates totaling USD 58.77 before tax and shipping. No order, vendor contact, print, physical test, connection or energization is claimed.
 {end}'''
     readme_path.write_text(replace_marked(readme, start, end, block), encoding="utf-8", newline="\n")
 
     index_path = WB / "index.html"
     page = index_path.read_text(encoding="utf-8")
-    section = f'''{start}<section id="first-build-cart"><h2>The first-build cart is intentionally small</h2><div class="grid"><article class="card pass"><div class="metric">$58.77</div><p>two reusable one-actuator bench candidates; human approval required.</p></article><article class="card pass"><div class="metric">9 parts</div><p>one gripper fit plate ready for a printer quote.</p></article><article class="card pass"><div class="metric">8 quotes</div><p>cable and connector coupon requests.</p></article><article class="card hold"><div class="metric">0 ordered</div><p>full actuators, power boards, batteries and production harnesses remain held.</p></article></div><p><a href="first-build-cart-p0.1/index.html">Open the interactive first physical-build cart</a>.</p></section>{end}'''
+    section = f'''{start}<section id="first-build-cart"><h2>The first-build cart is intentionally small</h2><div class="grid"><article class="card pass"><div class="metric">$58.77</div><p>two reusable one-actuator bench candidates; human approval required.</p></article><article class="card pass"><div class="metric">11 parts</div><p>one assemblable manual G01 fit article plus clearance coupon.</p></article><article class="card pass"><div class="metric">8 quotes</div><p>cable and connector coupon requests.</p></article><article class="card hold"><div class="metric">0 ordered</div><p>full actuators, power boards, batteries and production harnesses remain held.</p></article></div><p><a href="first-build-cart-p0.1/index.html">Open the interactive first physical-build cart</a>.</p></section>{end}'''
     if start in page:
         page = replace_marked(page, start, end, section)
     else:
@@ -345,7 +352,7 @@ def build() -> dict:
         "identifier": "HR30-FIRST-BUILD-CART-P0.1",
         "date": ACCESSED,
         "warning": WARNING,
-        "project_source_binding_count": 12,
+        "project_source_binding_count": 15,
         "primary_source_count": len(records["sources"]),
         "priced_purchase_candidate_count": len(records["purchase"]),
         "priced_candidate_subtotal_usd": subtotal,
@@ -355,7 +362,9 @@ def build() -> dict:
         "do_not_buy_count": len(records["hold"]),
         "action_count": len(records["actions"]),
         "receiving_inspection_count": len(records["inspection"]),
-        "gripper_fit_plate_part_count": 9,
+        "gripper_fit_plate_part_count": 11,
+        "first_fit_article_part_count": 11,
+        "first_fit_article_coupon_count": 1,
         "whole_body_fit_check_stl_count": 98,
         "human_purchase_approval_required": True,
         "orders_placed": 0,
@@ -374,7 +383,7 @@ def build() -> dict:
     (OUT / "cart-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8", newline="\n")
     (OUT / "README.md").write_text(
         f"# HR-30 first physical-build cart P0.1\n\n{WARNING}\n\n"
-        "This package creates a small, human-approved first physical tranche from the current whole-body release: one gripper fit plate, two reusable ROBOTIS bench-interface candidates, eight sample/quote requests, six borrow/contract equipment paths and eight explicit do-not-buy holds. No order or physical work has been executed.\n",
+        "This package creates a small, human-approved first physical tranche from the current whole-body release: one clearance coupon and eleven-part manual G01 fit article, two reusable ROBOTIS bench-interface candidates, eight sample/quote requests, six borrow/contract equipment paths and eight explicit do-not-buy holds. No order or physical work has been executed.\n",
         encoding="utf-8",
         newline="\n",
     )
