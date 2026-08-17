@@ -6,6 +6,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import re
 from pathlib import Path
 
 import cadquery as cq
@@ -106,6 +107,10 @@ def main() -> int:
     assert "Fuse values are intentionally absent" in web and "The contactors are outside the robot" in web
     assert "The EDM hardware mismatch is corrected" in web and "LC1D40ABD" in web
     assert "HR30_external_tether_panel_candidate.glb" in web and web.count("<details>") == 6
+    assert web.count("The EDM hardware mismatch is corrected") == 1
+    object_targets = re.findall(r'<object[^>]+data="([^"]+)"', web)
+    assert len(object_targets) == 7
+    assert all((OUT / target).is_file() for target in object_targets)
     main_web = (WB / "index.html").read_text(encoding="utf-8")
     assert main_web.count('id="tether-power-core"') == 1 and "No fuse values released" in main_web
 
