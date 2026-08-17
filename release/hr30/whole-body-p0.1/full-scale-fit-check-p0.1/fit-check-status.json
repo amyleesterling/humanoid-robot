@@ -7,6 +7,16 @@
   "triangle_count": 404300,
   "mesh_linear_tolerance_mm": 0.15,
   "mesh_angular_tolerance_rad": 0.15,
+  "bed_normalized_stl_count": 98,
+  "generic_printer_envelope_mm": [
+    220.0,
+    220.0,
+    250.0
+  ],
+  "candidate_plate_count": 22,
+  "module_bundle_count": 12,
+  "gcode_released": false,
+  "slicer_profile_selected": false,
   "assembly_traveler_step_count": 54,
   "inspection_record_count": 392,
   "open_hold_count": 6,
