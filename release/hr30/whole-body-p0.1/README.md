@@ -280,5 +280,11 @@ The [interactive Boston fabrication route](boston-fabrication-route-p0.1/index.h
 <!-- HR30-FIRST-BUILD-CART-P01-START -->
 ## First physical-build cart P0.1
 
-The [interactive first-build cart](first-build-cart-p0.1/index.html) converts the existing fit-check, cable-coupon and one-actuator commissioning packages into a deliberately small first tranche: one nine-part gripper print, eight sample/quote requests, borrowed or contracted specialist tooling, and two reusable ROBOTIS bench candidates totaling USD 58.77 before tax and shipping. No order, vendor contact, print, physical test, connection or energization is claimed.
+The [interactive first-build cart](first-build-cart-p0.1/index.html) converts the existing fit-check, cable-coupon and one-actuator commissioning packages into a deliberately small first tranche: one clearance coupon and eleven-part manually operable G01 fit article, eight sample/quote requests, borrowed or contracted specialist tooling, and two reusable ROBOTIS bench candidates totaling USD 58.77 before tax and shipping. No order, vendor contact, print, physical test, connection or energization is claimed.
 <!-- HR30-FIRST-BUILD-CART-P01-END -->
+
+<!-- HR30-FIRST-FIT-ARTICLE-P01-START -->
+## First manual G01 fit article P0.1
+
+The [interactive first-fit-article guide](first-fit-article-p0.1/index.html) packages one manually operable, unpowered G01 development fixture: eleven printable parts, open/closed STEP and GLB states, one 220 mm combined plate candidate, a clearance coupon, assembly hardware candidates, and a twelve-step physical traveler. Zero parts are built. The fixture is intentionally derived and may not receive production, actuator, structural, grasp, powered-test, motion, or energization credit.
+<!-- HR30-FIRST-FIT-ARTICLE-P01-END -->

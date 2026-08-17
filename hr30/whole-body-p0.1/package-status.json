@@ -566,5 +566,14 @@
   "first_build_cart_orders_placed": 0,
   "first_build_cart_supplier_contacts_executed": 0,
   "first_build_cart_physical_actions_completed": 0,
-  "first_build_cart_procurement_authority": false
+  "first_build_cart_procurement_authority": false,
+  "first_fit_article_present": true,
+  "first_fit_article_part_count": 11,
+  "first_fit_article_open_closed_states_present": true,
+  "first_fit_article_physical_parts_built": 0,
+  "first_fit_article_physical_tests_executed": 0,
+  "first_fit_article_production_interchangeable": false,
+  "first_fit_article_powered_test_authority": false,
+  "first_fit_article_motion_authority": false,
+  "first_fit_article_energization_authority": false
 }

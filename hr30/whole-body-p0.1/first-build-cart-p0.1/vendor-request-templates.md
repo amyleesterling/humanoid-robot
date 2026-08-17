@@ -4,7 +4,7 @@ PRELIMINARY - HUMAN APPROVAL REQUIRED BEFORE ANY ORDER OR PHYSICAL WORK - NOT AP
 
 ## Printer / makerspace request
 
-Please quote and preflight the attached `HR30_G01_gripper_fit_plate_nonstructural.stl` at 100% scale in millimetres. It is an unpowered, nonstructural fit article containing nine separated parts. Please report printer, material, layer height, support plan, estimated time, price and any geometry concerns. Do not alter scale or manufacture further robot parts without a separate instruction.
+Please quote and preflight the attached `HR30-G01-first-fit-article-p0.1.zip` at 100% scale in millimetres. It contains one clearance coupon and one eleven-part, unpowered, nonstructural manual gripper fit article. Print the coupon first. Please report printer, material, layer height, support plan, estimated time, price and any geometry concerns. Do not alter scale, install an actuator, or manufacture further robot parts without a separate instruction.
 
 ## Cable and connector sample request
 
