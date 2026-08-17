@@ -475,5 +475,6 @@
   "full_scale_fit_check_built_part_count": 0,
   "full_scale_fit_check_inspected_part_count": 0,
   "full_scale_fit_check_physically_validated": false,
-  "full_scale_fit_check_structural_use_permitted": false
+  "full_scale_fit_check_structural_use_permitted": false,
+  "full_scale_fit_check_bed_normalized_part_count": 98
 }
