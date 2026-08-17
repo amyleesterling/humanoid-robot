@@ -268,3 +268,9 @@ The [interactive safety-requirements guide](safety-requirements-p0.1/index.html)
 
 The [interactive implementation map](safety-function-implementation-p0.1/index.html) binds all 12 SRS functions to current terminals and nets or marks them absent. Only SFR-01 through SFR-03 have connected candidate circuitry, and none is validated.
 <!-- HR30-SFI-P01-END -->
+
+<!-- HR30-BOSTON-FABRICATION-ROUTE-P01-START -->
+## Boston fabrication execution route P0.1
+
+The [interactive Boston fabrication route](boston-fabrication-route-p0.1/index.html) packages a nine-part, 1:1 left-gripper fit plate and the complete 98-STL body fit check for real facilities. Eight current official facility routes are recorded. Boston Public Library printing is currently unavailable; no facility contact, quote, material selection, structural fabrication, or work authority is claimed.
+<!-- HR30-BOSTON-FABRICATION-ROUTE-P01-END -->

@@ -548,5 +548,13 @@
   "walking_power_exact_ywp_land_pattern_present": true,
   "walking_power_pcb_drc_accepted": true,
   "walking_power_pcb_unconnected_pads": 0,
-  "walking_power_production_stackup_selected": false
+  "walking_power_production_stackup_selected": false,
+  "boston_fabrication_route_present": true,
+  "boston_fabrication_facility_route_count": 8,
+  "boston_bpl_gripper_plate_part_count": 9,
+  "boston_complete_fit_check_zip_stl_count": 98,
+  "boston_bpl_service_currently_available": false,
+  "boston_fabrication_supplier_contact_executed": false,
+  "boston_fit_check_parts_built": 0,
+  "boston_fabrication_authority": false
 }
