@@ -274,9 +274,14 @@ def integrate_root() -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     block = f'''{start}\n## Actuator fixed-transition bracket CAD\n\nThe [interactive transition-bracket guide](harness/actuator-transition-brackets-p0.1/index.html) places one dimensioned three-solid service cassette at every one of the 25 actuator feeds. Editable part STEP, the standard assembly STEP/GLB, the recognizable whole-body placement STEP/GLB and all coordinates are included.\n\nThe central connector opening is a **project-owned clearance proxy**, not a released Molex cutout. Official-drawing reconciliation, received-part fit, material/process selection, cable clamp qualification, body attachment, tolerance-aware collision and physical testing remain open.\n{end}\n'''
     anchor = "<!-- HR30-FIRST-ENERGIZATION-P01-README-START -->"
-    if anchor not in text:
-        raise RuntimeError("whole-body README integration anchor missing")
-    readme_path.write_text(text.replace(anchor, block + anchor, 1), encoding="utf-8", newline="\n")
+    if anchor in text:
+        text = text.replace(anchor, block + anchor, 1)
+    else:
+        # A clean release generates the bracket package before the readiness
+        # package.  Append now; readiness will add its own controlled block
+        # later without becoming a prerequisite for physical CAD.
+        text = text.rstrip() + "\n\n" + block
+    readme_path.write_text(text, encoding="utf-8", newline="\n")
 
     page_path = WB / "index.html"
     text = page_path.read_text(encoding="utf-8")
@@ -285,9 +290,13 @@ def integrate_root() -> None:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
     section = f'''{start}<section id="transition-brackets"><h2>The 25 moving power feeds now have physical fixed-transition CAD</h2><div class="grid"><article class="card"><div class="metric">25</div><p>dimensioned nominal placements</p></article><article class="card"><div class="metric">3</div><p>solids per cassette</p></article><article class="card hold"><div class="metric">0</div><p>received connector fit checks</p></article></div><p><a href="harness/actuator-transition-brackets-p0.1/index.html">Open the interactive bracket and whole-body placement guide</a>. Connector cutout, material, clamp, attachment, tolerance and physical validation remain open.</p></section>{end}'''
     anchor = "<!-- HR30-FIRST-ENERGIZATION-P01-START -->"
-    if anchor not in text:
-        raise RuntimeError("whole-body page integration anchor missing")
-    page_path.write_text(text.replace(anchor, section + anchor, 1), encoding="utf-8", newline="\n")
+    if anchor in text:
+        text = text.replace(anchor, section + anchor, 1)
+    elif "</main>" in text:
+        text = text.replace("</main>", section + "</main>", 1)
+    else:
+        raise RuntimeError("whole-body page main element missing")
+    page_path.write_text(text, encoding="utf-8", newline="\n")
 
 
 def main() -> int:
