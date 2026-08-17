@@ -90,6 +90,7 @@ def main() -> int:
             "generate_hr30_actuator_interface_carriers_p01.py",
             "generate_hr30_motion_controller_p01.py",
             "generate_hr30_actuator_branch_pdu_p01.py",
+            "generate_hr30_walking_power_successor_p01.py",
             "generate_hr30_swd_adapter_p01.py",
         } else Path(sys.executable)
         if not interpreter.is_file():

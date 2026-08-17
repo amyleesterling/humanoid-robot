@@ -133,6 +133,7 @@ The [transmission closure guide](transmission-closure-p0.1/index.html) maps all 
 
 The [interactive first-energization guide](first-energization-readiness-p0.1/index.html) joins the existing whole-body CAD, native ECAD, harness, safety architecture and one-axis bench station into **12 objective release gates**, **8 staged power states**, a 26-item inspection traveler and 12 fault-injection cases. All physical execution and signoff fields remain open. This makes the path auditable; it does **not** authorize connection, powered testing, motion or energization.
 <!-- HR30-FIRST-ENERGIZATION-P01-README-END -->
+
 <!-- HR30-HARNESS-CURRENT-BINDING-P01-README-START -->
 ## Harness/current-policy reconciliation
 
@@ -165,11 +166,7 @@ The [interactive head HMI harness guide](harness/head-hmi-harness-p0.1/index.htm
 The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 64 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
 <!-- HR30-ASSEMBLY-GUIDE-P01-END -->
 
-<!-- HR30-WALKING-POWER-P01-README-START -->
-## Bidirectional walking-power successor
 
-The [interactive walking-power guide](electrical/walking-power-successor-p0.1/index.html) replaces the single reverse-blocking branch for walking development with a native eight-sheet KiCad candidate containing two oppositely oriented TPS259482L devices per branch. One device protects motoring current and the other protects regenerative current. All 25 axes are allocated across eight electrically separate six-channel board instances, one per authoritative actuator bus; 23 positions remain DNP. This corrects and rejects the earlier five-board grouping that would have tied independent left/right arm and regulated 9 V TTL feeds together. Eight contactor-open brake/dump circuits, exact current thresholds, PCB layout, thermal proof and every powered-work authority remain open.
-<!-- HR30-WALKING-POWER-P01-README-END -->
 
 <!-- HR30-ACTUATOR-CABLE-KIT-P01-README-START -->
 ## Actuator cable kit
@@ -231,6 +228,12 @@ The [interactive SWD adapter guide](electrical/swd-adapter-p0.1/index.html) cont
 The [interactive logic-power guide](electrical/logic-power-kit-p0.1/index.html) selects a SIGLENT SPD3303X, the exact two-contact JST boundary, red/black Alpha Wire conductors and Pomona banana plugs. The cable is unbuilt; voltage/current/OCP limits, DC-reference approval and every physical test remain open. It grants no connection or powered-work authority.
 <!-- HR30-LOGIC-POWER-KIT-P01-README-END -->
 
+
+<!-- HR30-WALKING-POWER-P01-README-START -->
+## Bidirectional walking-power successor
+
+The [interactive walking-power guide](electrical/walking-power-successor-p0.1/index.html) replaces the single reverse-blocking branch for walking development with a native eight-sheet KiCad candidate containing two oppositely oriented TPS259482L devices per branch. One device protects motoring current and the other protects regenerative current. All 25 axes are allocated across eight electrically separate six-channel board instances, one per authoritative actuator bus; 23 positions remain DNP. The package now carries the exact TI YWP0012A example land pattern and a routed 150 x 68 mm ten-layer board candidate with ERC 0/0, DRC 0/0 and zero unconnected pads. Eight contactor-open brake/dump circuits, exact current thresholds, production stackup, DFM, thermal proof and every powered-work authority remain open.
+<!-- HR30-WALKING-POWER-P01-README-END -->
 <!-- HR30-PROTECTION-CONDUCTOR-P01-README-START -->
 ## Staged protection and conductor architecture
 
