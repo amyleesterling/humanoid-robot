@@ -39,7 +39,7 @@ def main() -> int:
     need(len(gates) == 12 and len({r["gate_id"] for r in gates}) == 12, "12 unique gates required")
     need(len(states) == 8 and len({r["state_id"] for r in states}) == 8, "8 unique power states required")
     need(len(traveler) == 26 and len(faults) == 12 and len(measurements) == 10, "traveler/fault/measurement coverage drift")
-    need(len(signoffs) == 5 and len(holds) == 10 and len(sources) == 23, "signoff/hold/source coverage drift")
+    need(len(signoffs) == 5 and len(holds) == 10 and len(sources) == 24, "signoff/hold/source coverage drift")
     need(all(r["state"] == "OPEN - NOT EXECUTED" for r in gates + states + traveler + faults + measurements + signoffs + holds), "physical work falsely marked executed")
     need(all(r["motion_permitted"] == "NO" for r in states), "motion permitted in energization ladder")
     need(all(r["pass_fail"] == "NOT EXECUTED" and r["measured_response"] == "NONE" for r in faults), "fault test overclaim")
@@ -52,7 +52,10 @@ def main() -> int:
     need(status["host_no_motion_firmware_evidence_present"] is True and status["stm32_target_binary_built"] is True and status["stm32_target_binary_flashed"] is False and status["target_no_motion_firmware_approved"] is False, "firmware evidence/approval boundary drift")
     need(status["stm32_target_bringup_plan_present"] is True and status["stm32_target_bringup_flash_executed"] is False, "bring-up evidence boundary drift")
     need(status["actuator_cable_coupon_plan_present"] is True and status["actuator_cable_coupon_built_count"] == 0 and status["actuator_cable_final_cut_length_count"] == 0, "cable coupon evidence boundary drift")
-    need(any(r["hold_id"] == "FER-H04" and "zero production cut lengths" in r["unresolved_item"] for r in holds), "cable coupon hold not propagated")
+    harness_hold = [r for r in holds if r["hold_id"] == "FER-H04"]
+    need(len(harness_hold) == 1 and "zero production cut lengths" in harness_hold[0]["unresolved_item"], "cable coupon hold not propagated")
+    need(all(token in harness_hold[0]["unresolved_item"] + harness_hold[0]["evidence_required"] for token in ["22 AWG CF130", "Micro-Fit", "Alpha Wire 3051"]), "current actuator transition evidence not propagated")
+    need("AWG24" not in harness_hold[0]["unresolved_item"] + harness_hold[0]["evidence_required"] and "CF9/JST" not in harness_hold[0]["evidence_required"], "obsolete harness evidence retained")
     need(any(r["hold_id"] == "FER-H01" and "zero parts have been printed or inspected" in r["unresolved_item"] for r in holds), "full-scale fit-check physical boundary not propagated")
     need(any(r["hold_id"] == "FER-H05" and "whole-body SRS" in r["unresolved_item"] and "achieved PL/PFHd" in r["unresolved_item"] for r in holds), "SRS advancement/validation hold not propagated")
     need(any(r["hold_id"] == "FER-H06" and "complete stopping-time equation" in r["unresolved_item"] and "numerical allocation" in r["unresolved_item"] for r in holds), "stopping model/result boundary not propagated")
@@ -60,6 +63,8 @@ def main() -> int:
     need(len(fit_source) == 1, "full-scale fit-check source binding missing")
     srs_source = [r for r in sources if r["path"].endswith("safety-requirements-p0.1/srs-status.json")]
     need(len(srs_source) == 1, "whole-body SRS source binding missing")
+    bracket_source = [r for r in sources if r["path"].endswith("harness/actuator-transition-brackets-p0.1/bracket-status.json")]
+    need(len(bracket_source) == 1, "25-axis transition-bracket source binding missing")
     need((OUT / "first-energization-readiness-source.py").read_bytes() == GEN.read_bytes(), "generator snapshot drift")
     manifest = rows(OUT / "file-manifest.csv")
     expected = sorted(p.relative_to(OUT).as_posix() for p in OUT.rglob("*") if p.is_file() and p.name != "file-manifest.csv")
