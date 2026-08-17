@@ -27,6 +27,7 @@ OUT = ROOT / "hr30" / "whole-body-p0.1"
 RELEASE = ROOT / "release" / "hr30" / "whole-body-p0.1"
 IDENTIFIER = "HR-30-WHOLE-BODY-POSE-ARCH-P0.1"
 WARNING = body.WARNING
+ACTIVE_DYNAMICS_URDF = "hr30_tether.urdf"
 
 
 @dataclass(frozen=True)
@@ -70,6 +71,16 @@ POSES = (
         ("L",), "L", "R",
     ),
     Pose(
+        "P08_RIGHT_TOUCHDOWN", "S5", "Right 40 mm touchdown", "A double-support landing configuration with both feet nominally flat and the right sole advanced 40 mm.",
+        0.050, -0.020,
+        {"L_HIP_ROLL": 8.5, "L_ANKLE_ROLL": -8.5, "R_HIP_ROLL": 8.5, "R_ANKLE_ROLL": -8.5,
+         "L_HIP_PITCH": 3.639935, "L_KNEE_PITCH": 0.000704, "L_ANKLE_PITCH": -3.640638,
+         "R_HIP_PITCH": -3.640461, "R_KNEE_PITCH": 0.000387, "R_ANKLE_PITCH": 3.640074,
+         "L_SHOULDER_ROLL": -12.0, "R_SHOULDER_ROLL": 12.0,
+         "L_SHOULDER_PITCH": -8.0, "R_SHOULDER_PITCH": 8.0},
+        ("L", "R"), "BOTH", "R",
+    ),
+    Pose(
         "P05_RIGHT_WEIGHT_TRANSFER", "S3", "Right weight transfer", "Mirror the lateral whole-body transfer over the right foot while both soles remain nominally flat; no foot lift.",
         -0.050, 0.0,
         {"L_HIP_ROLL": -8.5, "L_ANKLE_ROLL": 8.5, "R_HIP_ROLL": -8.5, "R_ANKLE_ROLL": 8.5, "L_SHOULDER_ROLL": -12.0, "R_SHOULDER_ROLL": 12.0},
@@ -86,6 +97,16 @@ POSES = (
         -0.050, 0.0,
         {"L_HIP_ROLL": -8.5, "L_ANKLE_ROLL": 8.5, "R_HIP_ROLL": -8.5, "R_ANKLE_ROLL": 8.5, "L_HIP_PITCH": -25.0, "L_KNEE_PITCH": 35.0, "L_ANKLE_PITCH": -10.0, "L_SHOULDER_PITCH": 12.0, "R_SHOULDER_PITCH": -12.0, "L_ELBOW_PITCH": 15.0, "R_ELBOW_PITCH": 15.0},
         ("R",), "R", "L",
+    ),
+    Pose(
+        "P09_LEFT_TOUCHDOWN", "S5", "Left 40 mm touchdown", "The mirrored double-support landing configuration with both feet nominally flat and the left sole advanced 40 mm.",
+        -0.050, -0.020,
+        {"L_HIP_ROLL": -8.5, "L_ANKLE_ROLL": 8.5, "R_HIP_ROLL": -8.5, "R_ANKLE_ROLL": 8.5,
+         "L_HIP_PITCH": -3.640461, "L_KNEE_PITCH": 0.000387, "L_ANKLE_PITCH": 3.640074,
+         "R_HIP_PITCH": 3.639935, "R_KNEE_PITCH": 0.000704, "R_ANKLE_PITCH": -3.640638,
+         "L_SHOULDER_ROLL": -12.0, "R_SHOULDER_ROLL": 12.0,
+         "L_SHOULDER_PITCH": 8.0, "R_SHOULDER_PITCH": -8.0},
+        ("L", "R"), "BOTH", "L",
     ),
 )
 
@@ -127,7 +148,10 @@ def rpy_rotation(values: np.ndarray) -> np.ndarray:
 
 
 def parse_urdf() -> tuple[ET.Element, dict[str, dict], dict[str, dict], dict[str, tuple[float, np.ndarray]]]:
-    root = ET.parse(OUT / "hr30.urdf").getroot()
+    # Standing and stepping development is explicitly tether-first.  The
+    # generic hr30.urdf currently aliases the rejected onboard-envelope mass
+    # case, so using it here silently inflated every pose mass/COM result.
+    root = ET.parse(OUT / ACTIVE_DYNAMICS_URDF).getroot()
     links: dict[str, dict] = {}
     inertials: dict[str, tuple[float, np.ndarray]] = {}
     for link in root.findall("link"):
@@ -158,6 +182,7 @@ def parse_urdf() -> tuple[ET.Element, dict[str, dict], dict[str, dict], dict[str
             "axis": xyz(joint.find("axis").attrib.get("xyz")) if joint.find("axis") is not None else np.array([0.0, 0.0, 1.0]),
             "lower": float(joint.find("limit").attrib.get("lower", "0")) if joint.find("limit") is not None else 0.0,
             "upper": float(joint.find("limit").attrib.get("upper", "0")) if joint.find("limit") is not None else 0.0,
+            "velocity": float(joint.find("limit").attrib.get("velocity", "0")) if joint.find("limit") is not None else 0.0,
         }
     return root, links, joints, inertials
 
@@ -384,7 +409,7 @@ The S4 lift target is capped below 10 mm in the generated geometry. The S5 forwa
 
 **{WARNING}**
 
-This package converts the S2–S5 standing and walking-development prose into {len(POSES)} complete rigid-link whole-body configurations. The generator reads the authoritative 25-axis URDF, applies explicit joint targets, shifts the floating base to keep the declared support foot or feet on Z=0, transforms every link inertial COM, constructs the convex support polygon and exports recognizable full-body CAD with head, screen face, arms, two-finger hands, legs, ankles and feet. Both legs have mirrored weight-transfer, lift and capture-step candidates.
+This package converts the S2–S5 standing and walking-development prose into {len(POSES)} complete rigid-link whole-body configurations. The generator reads the active tether-first 25-axis `hr30_tether.urdf` rather than the rejected onboard-envelope mass alias, applies explicit joint targets, shifts the floating base to keep the declared support foot or feet on Z=0, transforms every link inertial COM, constructs the convex support polygon and exports recognizable full-body CAD with head, screen face, arms, two-finger hands, legs, ankles and feet. Both legs have mirrored weight-transfer, lift and capture-step candidates.
 
 The register is deliberately fail-closed: values are pose candidates, not executable commands. A positive projected-COM margin is only a quasistatic geometry screen. It does not include contact-force distribution, compliance, backlash, actuator limits, rate limits, zero-moment point, capture point, state-estimation error, floor variation, cable forces, fall-restraint forces or physical correlation.
 
@@ -470,6 +495,8 @@ def main() -> int:
     status.update({
         "whole_body_pose_architecture_present": True,
         "whole_body_pose_count": len(POSES),
+        "pose_dynamics_source": ACTIVE_DYNAMICS_URDF,
+        "pose_dynamics_mass_kg": float(metric_rows[0]["total_mass_kg"]),
         "pose_support_geometry_screen_complete": True,
         "pose_trajectory_validated": False,
         "quasistatic_balance_validated": False,
@@ -481,6 +508,8 @@ def main() -> int:
     print(json.dumps({
         "identifier": IDENTIFIER,
         "pose_count": len(pose_rows),
+        "dynamics_source": ACTIVE_DYNAMICS_URDF,
+        "dynamics_mass_kg": float(metric_rows[0]["total_mass_kg"]),
         "joint_target_rows": len(target_rows),
         "minimum_primary_support_margin_mm": min(float(row["primary_support_margin_mm"]) for row in metric_rows),
         "maximum_swing_clearance_mm": max(float(row["swing_foot_clearance_mm"]) for row in metric_rows),

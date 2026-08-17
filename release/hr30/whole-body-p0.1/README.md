@@ -288,3 +288,9 @@ The [interactive first-build cart](first-build-cart-p0.1/index.html) converts th
 
 The [interactive first-fit-article guide](first-fit-article-p0.1/index.html) packages one manually operable, unpowered G01 development fixture: eleven printable parts, open/closed STEP and GLB states, one 220 mm combined plate candidate, a clearance coupon, assembly hardware candidates, and a twelve-step physical traveler. Zero parts are built. The fixture is intentionally derived and may not receive production, actuator, structural, grasp, powered-test, motion, or energization credit.
 <!-- HR30-FIRST-FIT-ARTICLE-P01-END -->
+
+<!-- HR30-WALKING-SEQUENCE-P01-START -->
+## Timed whole-body walking sequence P0.1
+
+The [interactive walking-sequence guide](walking-sequence-p0.1/index.html) binds the active 9.958 kg tether-first URDF/MJCF to two bilateral 50 Hz minimum-jerk step candidates. Each trajectory ends with both feet nominally flat and one foot advanced 40 mm; all 25 joint positions, velocities and accelerations are exported. The data is simulator-only and carries no hardware motion or walking authority.
+<!-- HR30-WALKING-SEQUENCE-P01-END -->

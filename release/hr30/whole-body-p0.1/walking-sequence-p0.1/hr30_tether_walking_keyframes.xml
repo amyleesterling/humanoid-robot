@@ -1,0 +1,182 @@
+<mujoco model="hr30_whole_body_p01">
+  <compiler angle="radian" coordinate="local" />
+  <option gravity="0 0 -9.80665" timestep="0.002" />
+  <default>
+    <joint damping="0.1" armature="0.01" limited="true" />
+    <geom type="box" density="0" rgba="0.49 0.83 0.98 1" contype="1" conaffinity="1" />
+  </default>
+  <worldbody>
+    <geom name="floor" type="plane" size="2 2 0.02" rgba="0.85 0.90 0.95 1" />
+    <body name="base_link" pos="0.000000 0.000000 0.390000">
+      <freejoint name="floating_base" />
+      <inertial pos="-0.003051 0.007384 -0.000262" mass="1.550063" diaginertia="0.002057063 0.003736298 0.004527477" />
+      <geom pos="0.000000 0.000000 0.000000" size="0.077500 0.052500 0.035000" />
+      <body name="torso" pos="0.000000 0.000000 0.035000">
+        <joint name="WAIST_YAW" type="hinge" axis="0 0 1" range="-0.520000 0.520000" />
+        <inertial pos="-0.000504 0.006838 0.094828" mass="1.034189" diaginertia="0.002854793 0.004923171 0.004153993" />
+        <geom pos="0.000000 0.000000 0.087500" size="0.095000 0.055000 0.072500" />
+        <body name="neck_pan_link" pos="0.000000 0.000000 0.225000">
+          <joint name="HEAD_PAN" type="hinge" axis="0 0 1" range="-1.400000 1.400000" />
+          <inertial pos="-0.001315 -0.000001 -0.022743" mass="0.121151" diaginertia="0.000063402 0.000063402 0.000058879" />
+          <geom pos="0.000000 0.000000 -0.025000" size="0.027000 0.027000 0.029000" />
+          <body name="head" pos="0.000000 0.000000 0.040000">
+            <joint name="HEAD_TILT" type="hinge" axis="1 0 0" range="-0.520000 0.520000" />
+            <inertial pos="-0.001989 -0.012142 0.007920" mass="0.418231" diaginertia="0.000858907 0.001221374 0.001205900" />
+            <geom pos="0.000000 0.000000 0.016000" size="0.075000 0.055000 0.056000" />
+          </body>
+        </body>
+        <body name="L_shoulder_pitch_link" pos="0.090000 0.000000 0.165000">
+          <joint name="L_SHOULDER_PITCH" type="hinge" axis="1 0 0" range="-1.570000 1.570000" />
+          <inertial pos="0.000168 0.020509 -0.004978" mass="0.191441" diaginertia="0.000136370 0.000079193 0.000108228" />
+          <geom pos="0.000000 0.000000 0.000000" size="0.020000 0.036000 0.029000" />
+          <body name="L_upper_arm" pos="0.000000 0.000000 0.000000">
+            <joint name="L_SHOULDER_ROLL" type="hinge" axis="0 1 0" range="-1.220000 1.220000" />
+            <inertial pos="0.010076 0.000072 -0.087111" mass="0.446793" diaginertia="0.000938415 0.000938415 0.000201355" />
+            <geom pos="0.000000 0.000000 -0.072553" size="0.026000 0.026000 0.075000" />
+            <body name="L_forearm" pos="0.038000 0.000000 -0.145107">
+              <joint name="L_ELBOW_PITCH" type="hinge" axis="1 0 0" range="0.000000 2.200000" />
+              <inertial pos="0.002158 -0.000001 -0.092094" mass="0.113606" diaginertia="0.000222715 0.000222715 0.000047336" />
+              <geom pos="0.005000 0.000000 -0.072457" size="0.025000 0.025000 0.072500" />
+              <body name="L_hand" pos="0.005000 0.000000 -0.144914">
+                <joint name="L_WRIST_ROTATION" type="hinge" axis="0 0 1" range="-1.570000 1.570000" />
+                <inertial pos="0.001418 -0.002474 -0.035412" mass="0.169931" diaginertia="0.000083039 0.000070804 0.000083039" />
+                <geom pos="0.000000 0.000000 -0.025000" size="0.025000 0.029000 0.025000" />
+                <body name="L_gripper" pos="0.000000 0.000000 -0.043000">
+                  <joint name="L_GRIPPER" type="slide" axis="1.0 0 0" range="0.000000 0.026000" />
+                  <inertial pos="0.000000 0.000000 -0.010000" mass="0.000000" diaginertia="0.000000000 0.000000000 0.000000000" />
+                  <geom pos="0.000000 0.000000 -0.010000" size="0.022000 0.024000 0.023000" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+        <body name="R_shoulder_pitch_link" pos="-0.090000 0.000000 0.165000">
+          <joint name="R_SHOULDER_PITCH" type="hinge" axis="1 0 0" range="-1.570000 1.570000" />
+          <inertial pos="0.000168 0.020509 -0.004978" mass="0.191441" diaginertia="0.000136370 0.000079193 0.000108228" />
+          <geom pos="0.000000 0.000000 0.000000" size="0.020000 0.036000 0.029000" />
+          <body name="R_upper_arm" pos="0.000000 0.000000 0.000000">
+            <joint name="R_SHOULDER_ROLL" type="hinge" axis="0 1 0" range="-1.220000 1.220000" />
+            <inertial pos="-0.006122 0.000072 -0.087111" mass="0.446793" diaginertia="0.000938415 0.000938415 0.000201355" />
+            <geom pos="0.000000 0.000000 -0.072553" size="0.026000 0.026000 0.075000" />
+            <body name="R_forearm" pos="-0.038000 0.000000 -0.145107">
+              <joint name="R_ELBOW_PITCH" type="hinge" axis="1 0 0" range="0.000000 2.200000" />
+              <inertial pos="-0.004962 -0.000001 -0.092094" mass="0.113606" diaginertia="0.000222715 0.000222715 0.000047336" />
+              <geom pos="-0.005000 0.000000 -0.072457" size="0.025000 0.025000 0.072500" />
+              <body name="R_hand" pos="-0.005000 0.000000 -0.144914">
+                <joint name="R_WRIST_ROTATION" type="hinge" axis="0 0 1" range="-1.570000 1.570000" />
+                <inertial pos="-0.001419 -0.002474 -0.035412" mass="0.169931" diaginertia="0.000083039 0.000070804 0.000083039" />
+                <geom pos="0.000000 0.000000 -0.025000" size="0.025000 0.029000 0.025000" />
+                <body name="R_gripper" pos="0.000000 0.000000 -0.043000">
+                  <joint name="R_GRIPPER" type="slide" axis="-1.0 0 0" range="0.000000 0.026000" />
+                  <inertial pos="0.000000 0.000000 -0.010000" mass="0.000000" diaginertia="0.000000000 0.000000000 0.000000000" />
+                  <geom pos="0.000000 0.000000 -0.010000" size="0.022000 0.024000 0.023000" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="L_hip_yaw_link" pos="0.062500 0.000000 0.020000">
+        <joint name="L_HIP_YAW" type="hinge" axis="0 0 1" range="-0.520000 0.520000" />
+        <inertial pos="0.000000 0.000000 0.000000" mass="0.000000" diaginertia="0.000000000 0.000000000 0.000000000" />
+        <geom pos="0.000000 0.000000 0.000000" size="0.030000 0.035000 0.020000" />
+        <body name="L_hip_roll_link" pos="0.000000 0.000000 -0.020000">
+          <joint name="L_HIP_ROLL" type="hinge" axis="0 1 0" range="-0.440000 0.440000" />
+          <inertial pos="0.000000 0.000000 0.000000" mass="0.000000" diaginertia="0.000000000 0.000000000 0.000000000" />
+          <geom pos="0.000000 0.000000 0.000000" size="0.030000 0.035000 0.020000" />
+          <body name="L_thigh" pos="0.000000 0.000000 -0.020000">
+            <joint name="L_HIP_PITCH" type="hinge" axis="1 0 0" range="-0.610000 0.790000" />
+            <inertial pos="-0.001383 0.000593 -0.055596" mass="1.630169" diaginertia="0.004262350 0.004221595 0.001528556" />
+            <geom pos="0.000000 0.000000 -0.080000" size="0.037000 0.038000 0.080000" />
+            <body name="L_shin" pos="0.000000 0.000000 -0.160000">
+              <joint name="L_KNEE_PITCH" type="hinge" axis="1 0 0" range="0.000000 2.090000" />
+              <inertial pos="0.000046 0.000046 -0.141674" mass="0.697911" diaginertia="0.001524296 0.001491727 0.000570426" />
+              <geom pos="0.000000 0.000000 -0.082000" size="0.034000 0.036000 0.072500" />
+              <body name="L_ankle_pitch_link" pos="0.000000 0.000000 -0.155000">
+                <joint name="L_ANKLE_PITCH" type="hinge" axis="1 0 0" range="-0.610000 0.520000" />
+                <inertial pos="0.000000 0.000000 0.000000" mass="0.000000" diaginertia="0.000000000 0.000000000 0.000000000" />
+                <geom pos="0.000000 0.000000 0.000000" size="0.033000 0.032000 0.026000" />
+                <body name="L_foot" pos="0.000000 0.000000 -0.020000">
+                  <joint name="L_ANKLE_ROLL" type="hinge" axis="0 1 0" range="-0.350000 0.350000" />
+                  <inertial pos="0.000000 0.018496 -0.023616" mass="0.167444" diaginertia="0.000310469 0.000130118 0.000406400" />
+                  <geom pos="0.000000 -0.025000 -0.017500" size="0.045000 0.072500 0.017500" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="R_hip_yaw_link" pos="-0.062500 0.000000 0.020000">
+        <joint name="R_HIP_YAW" type="hinge" axis="0 0 1" range="-0.520000 0.520000" />
+        <inertial pos="0.000000 0.000000 0.000000" mass="0.000000" diaginertia="0.000000000 0.000000000 0.000000000" />
+        <geom pos="0.000000 0.000000 0.000000" size="0.030000 0.035000 0.020000" />
+        <body name="R_hip_roll_link" pos="0.000000 0.000000 -0.020000">
+          <joint name="R_HIP_ROLL" type="hinge" axis="0 1 0" range="-0.440000 0.440000" />
+          <inertial pos="0.000000 0.000000 0.000000" mass="0.000000" diaginertia="0.000000000 0.000000000 0.000000000" />
+          <geom pos="0.000000 0.000000 0.000000" size="0.030000 0.035000 0.020000" />
+          <body name="R_thigh" pos="0.000000 0.000000 -0.020000">
+            <joint name="R_HIP_PITCH" type="hinge" axis="1 0 0" range="-0.610000 0.790000" />
+            <inertial pos="-0.001383 0.000593 -0.055596" mass="1.630169" diaginertia="0.004262350 0.004221595 0.001528556" />
+            <geom pos="0.000000 0.000000 -0.080000" size="0.037000 0.038000 0.080000" />
+            <body name="R_shin" pos="0.000000 0.000000 -0.160000">
+              <joint name="R_KNEE_PITCH" type="hinge" axis="1 0 0" range="0.000000 2.090000" />
+              <inertial pos="0.000046 0.000046 -0.141674" mass="0.697911" diaginertia="0.001524296 0.001491727 0.000570426" />
+              <geom pos="0.000000 0.000000 -0.082000" size="0.034000 0.036000 0.072500" />
+              <body name="R_ankle_pitch_link" pos="0.000000 0.000000 -0.155000">
+                <joint name="R_ANKLE_PITCH" type="hinge" axis="1 0 0" range="-0.610000 0.520000" />
+                <inertial pos="0.000000 0.000000 0.000000" mass="0.000000" diaginertia="0.000000000 0.000000000 0.000000000" />
+                <geom pos="0.000000 0.000000 0.000000" size="0.033000 0.032000 0.026000" />
+                <body name="R_foot" pos="0.000000 0.000000 -0.020000">
+                  <joint name="R_ANKLE_ROLL" type="hinge" axis="0 1 0" range="-0.350000 0.350000" />
+                  <inertial pos="-0.000000 0.018496 -0.023616" mass="0.167444" diaginertia="0.000310469 0.000130118 0.000406400" />
+                  <geom pos="0.000000 -0.025000 -0.017500" size="0.045000 0.072500 0.017500" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="M_WAIST_YAW" joint="WAIST_YAW" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_HEAD_PAN" joint="HEAD_PAN" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_HEAD_TILT" joint="HEAD_TILT" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_L_SHOULDER_PITCH" joint="L_SHOULDER_PITCH" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_L_SHOULDER_ROLL" joint="L_SHOULDER_ROLL" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_L_ELBOW_PITCH" joint="L_ELBOW_PITCH" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_L_WRIST_ROTATION" joint="L_WRIST_ROTATION" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_L_GRIPPER" joint="L_GRIPPER" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_L_HIP_YAW" joint="L_HIP_YAW" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_L_HIP_ROLL" joint="L_HIP_ROLL" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_L_HIP_PITCH" joint="L_HIP_PITCH" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_L_KNEE_PITCH" joint="L_KNEE_PITCH" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_L_ANKLE_PITCH" joint="L_ANKLE_PITCH" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_L_ANKLE_ROLL" joint="L_ANKLE_ROLL" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_R_SHOULDER_PITCH" joint="R_SHOULDER_PITCH" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_R_SHOULDER_ROLL" joint="R_SHOULDER_ROLL" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_R_ELBOW_PITCH" joint="R_ELBOW_PITCH" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_R_WRIST_ROTATION" joint="R_WRIST_ROTATION" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_R_GRIPPER" joint="R_GRIPPER" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_R_HIP_YAW" joint="R_HIP_YAW" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_R_HIP_ROLL" joint="R_HIP_ROLL" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_R_HIP_PITCH" joint="R_HIP_PITCH" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_R_KNEE_PITCH" joint="R_KNEE_PITCH" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_R_ANKLE_PITCH" joint="R_ANKLE_PITCH" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+    <motor name="M_R_ANKLE_ROLL" joint="R_ANKLE_ROLL" ctrllimited="true" ctrlrange="-1 1" gear="1" />
+  </actuator>
+  <keyframe>
+    <key name="WS-R01_00_P00_NEUTRAL_STAND" qpos="0.000000000 0.000000000 0.390000000 1.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.010000000 0.000000000 0.000000000 0.000000000 0.000000000 0.010000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000" />
+    <key name="WS-R01_01_P01_CROUCHED_STAND" qpos="0.000000000 0.000000000 0.386934442 1.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.010000000 0.000000000 0.000000000 0.000000000 0.000000000 0.010000000 0.000000000 0.000000000 -0.139626340 0.279252680 -0.139626340 0.000000000 0.000000000 0.000000000 -0.139626340 0.279252680 -0.139626340 0.000000000" />
+    <key name="WS-R01_02_P02_LEFT_WEIGHT_TRANSFER" qpos="0.050000000 0.000000000 0.386100631 1.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 -0.209439510 0.000000000 0.000000000 0.010000000 0.000000000 0.209439510 0.000000000 0.000000000 0.010000000 0.000000000 0.148352986 0.000000000 0.000000000 0.000000000 -0.148352986 0.000000000 0.148352986 0.000000000 0.000000000 0.000000000 -0.148352986" />
+    <key name="WS-R01_03_P03_RIGHT_FOOT_LIFT" qpos="0.050000000 0.000000000 0.386100631 1.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 -0.209439510 0.000000000 0.000000000 0.010000000 0.000000000 0.209439510 0.000000000 0.000000000 0.010000000 0.000000000 0.148352986 0.000000000 0.000000000 0.000000000 -0.148352986 0.000000000 0.148352986 -0.209439510 0.418879020 -0.209439510 -0.148352986" />
+    <key name="WS-R01_04_P04_RIGHT_CAPTURE_STEP" qpos="0.050000000 0.000000000 0.386100631 1.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 -0.209439510 0.000000000 0.261799388 0.000000000 0.010000000 0.209439510 0.000000000 0.261799388 0.000000000 0.010000000 0.000000000 0.148352986 0.000000000 0.000000000 0.000000000 -0.148352986 0.000000000 0.148352986 -0.436332313 0.610865238 -0.174532925 -0.148352986" />
+    <key name="WS-R01_05_P08_RIGHT_TOUCHDOWN" qpos="0.050000000 -0.020000000 0.385472053 1.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 -0.139626340 -0.209439510 0.000000000 0.000000000 0.010000000 0.139626340 0.209439510 0.000000000 0.000000000 0.010000000 0.000000000 0.148352986 0.063528850 0.000012287 -0.063541120 -0.148352986 0.000000000 0.148352986 -0.063538031 0.000006754 0.063531276 -0.148352986" />
+    <key name="WS-L01_00_P00_NEUTRAL_STAND" qpos="0.000000000 0.000000000 0.390000000 1.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.010000000 0.000000000 0.000000000 0.000000000 0.000000000 0.010000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000" />
+    <key name="WS-L01_01_P01_CROUCHED_STAND" qpos="0.000000000 0.000000000 0.386934442 1.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.010000000 0.000000000 0.000000000 0.000000000 0.000000000 0.010000000 0.000000000 0.000000000 -0.139626340 0.279252680 -0.139626340 0.000000000 0.000000000 0.000000000 -0.139626340 0.279252680 -0.139626340 0.000000000" />
+    <key name="WS-L01_02_P05_RIGHT_WEIGHT_TRANSFER" qpos="-0.050000000 0.000000000 0.386100631 1.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 -0.209439510 0.000000000 0.000000000 0.010000000 0.000000000 0.209439510 0.000000000 0.000000000 0.010000000 0.000000000 -0.148352986 0.000000000 0.000000000 0.000000000 0.148352986 0.000000000 -0.148352986 0.000000000 0.000000000 0.000000000 0.148352986" />
+    <key name="WS-L01_03_P06_LEFT_FOOT_LIFT" qpos="-0.050000000 0.000000000 0.386100631 1.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 -0.209439510 0.000000000 0.000000000 0.010000000 0.000000000 0.209439510 0.000000000 0.000000000 0.010000000 0.000000000 -0.148352986 -0.209439510 0.418879020 -0.209439510 0.148352986 0.000000000 -0.148352986 0.000000000 0.000000000 0.000000000 0.148352986" />
+    <key name="WS-L01_04_P07_LEFT_CAPTURE_STEP" qpos="-0.050000000 0.000000000 0.386100631 1.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.209439510 0.000000000 0.261799388 0.000000000 0.010000000 -0.209439510 0.000000000 0.261799388 0.000000000 0.010000000 0.000000000 -0.148352986 -0.436332313 0.610865238 -0.174532925 0.148352986 0.000000000 -0.148352986 0.000000000 0.000000000 0.000000000 0.148352986" />
+    <key name="WS-L01_05_P09_LEFT_TOUCHDOWN" qpos="-0.050000000 -0.020000000 0.385472053 1.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.139626340 -0.209439510 0.000000000 0.000000000 0.010000000 -0.139626340 0.209439510 0.000000000 0.000000000 0.010000000 0.000000000 -0.148352986 -0.063538031 0.000006754 0.063531276 0.148352986 0.000000000 -0.148352986 0.063528850 0.000012287 -0.063541120 0.148352986" />
+  </keyframe>
+</mujoco>
