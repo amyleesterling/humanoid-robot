@@ -139,9 +139,10 @@ def main() -> int:
         "H06 manufacturing disposition missing",
     )
     require(
-        "individual files for 98 body/frame/hand parts" in holds["HR30-P01-H10"]["unresolved_item"]
-        and "64 real current joint shaft/carrier solids" in holds["HR30-P01-H10"]["unresolved_item"],
-        "H10 manufacturing disposition missing",
+        "individual candidate files for all 98 physical fabrication parts" in holds["HR30-P01-H10"]["unresolved_item"]
+        and "twelve module-specific fabrication/integration STEP pairs" in holds["HR30-P01-H10"]["unresolved_item"]
+        and "Sixty-four shaft/carrier refinement solids" in holds["HR30-P01-H06"]["unresolved_item"],
+        "H10 manufacturing/interface disposition missing",
     )
 
     print(f"PASS: reimported {imported} individual STEP files; 98 physical HR-30 candidates including both detailed hands have STEP/SVG, 45 planar candidates have DXF and 24 covers have STL; drawing release, DFM/FAI, proof and all work authority remain false")

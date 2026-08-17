@@ -215,7 +215,7 @@ def build() -> dict[str, int | float]:
     harness_sources = read_csv(WB / "harness/harness-source-register.csv")
     current_limits = read_csv(WB / "current-constrained-actuation-p0.1/axis-current-torque-register.csv")
     bus_current_budgets = read_csv(WB / "current-constrained-actuation-p0.1/bus-current-budget.csv")
-    pdu_allocations = read_csv(WB / "electrical/actuator-branch-pdu-p0.1/board-instance-channel-allocation.csv")
+    pdu_allocations = read_csv(WB / "electrical/walking-power-successor-p0.1/axis-branch-allocation.csv")
     if (len(axes), len(bindings), len(buses), len(assemblies), len(actuator_pinouts), len(current_limits), len(bus_current_budgets)) != (25, 25, 8, 14, 4, 25, 8):
         raise SystemExit("controlled whole-body harness source count drift")
 
@@ -236,12 +236,12 @@ def build() -> dict[str, int | float]:
     pdu_by_axis = {row["axis_id"]: row for row in pdu_allocations if row["axis_id"] != "DNP SPARE"}
     equipment_by_id = {row["item_id"]: row for row in equipment}
     if len(pdu_by_axis) != 25 or any(f"EQ-{row['board_instance']}" not in equipment_by_id for row in pdu_allocations):
-        raise SystemExit("five-board PDU allocation is not installed in the whole-body equipment model")
+        raise SystemExit("eight-board one-bus walking-power allocation is not installed in the whole-body equipment model")
 
     source_paths = [
         WB / "joint-axis-schedule.csv", WB / "actuator-bus-axis-binding.csv",
         WB / "harness-route-register.csv", WB / "installed-equipment-register.csv",
-        WB / "electrical/actuator-branch-pdu-p0.1/board-instance-channel-allocation.csv",
+        WB / "electrical/walking-power-successor-p0.1/axis-branch-allocation.csv",
         WB / "electrical/kicad/hr30-whole-body-electrical-p0.1/connector-schedule.csv",
         WB / "harness/bus-harness-assembly-register.csv", WB / "harness/harness-assembly-register.csv",
         WB / "harness/bus-termination-register.csv", WB / "harness/actuator-side-pinout-register.csv",
@@ -298,42 +298,46 @@ def build() -> dict[str, int | float]:
     data_link_rows: list[dict] = []
     retention_rows: list[dict] = []
     derating_rows: list[dict] = []
-    # Every connector physically present on the five routed PDU assemblies is
-    # instantiated here.  Board-side parts are selected by the native KiCad
-    # source; cable-side mating contacts, crimp process and retention remain
-    # explicit selections.
-    for board_id in sorted({row["board_instance"] for row in pdu_allocations}):
+    # Every connector boundary required by the eight one-bus walking-power
+    # assemblies is instantiated here.  The successor is not yet a routed PCB,
+    # so board-side and cable-side connector selections both remain open.
+    feed_by_board = {}
+    for row in pdu_allocations:
+        feed_by_board.setdefault(board_id := row["board_instance"], (row["feed_positive_net"], row["feed_return_net"], row["nominal_feed_voltage"]))
+        if feed_by_board[board_id] != (row["feed_positive_net"], row["feed_return_net"], row["nominal_feed_voltage"]):
+            raise SystemExit(f"walking-power board {board_id} contains more than one feed domain")
+    for board_id in sorted(feed_by_board):
+        feed_positive, feed_return, nominal_feed = feed_by_board[board_id]
         input_id = f"J-{board_id}-IN"
         connector_rows.append({
-            "connector_id": input_id, "location": board_id, "function": "CONTROLLED 12 V BOARD INPUT",
-            "candidate_housing": "Phoenix Contact MKDS 5/2-9.5 board header 1714971", "mating_part": OPEN,
+            "connector_id": input_id, "location": board_id, "function": f"{nominal_feed.upper()} BOARD INPUT",
+            "candidate_housing": OPEN, "mating_part": OPEN,
             "contact_order_code": OPEN, "contact_count": 2, "keying_retention_strain_relief": OPEN,
-            "source": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-95-1714971",
-            "source_date": "accessed 2026-08-15", "selection_state": "BOARD HEADER PRESENT; FIELD MATING HARDWARE/CONDUCTOR/RETENTION OPEN",
+            "source": "electrical/walking-power-successor-p0.1", "source_date": "generated 2026-08-17", "selection_state": "INPUT CONNECTOR / PCB / FIELD ASSEMBLY SELECTION REQUIRED",
         })
-        for pin, signal in (("1", "PDU_0V"), ("2", "PDU_12V_IN")):
+        for pin, signal in (("1", feed_return), ("2", feed_positive)):
             contact_rows.append({
                 "connector_id": input_id, "contact": pin, "axis_id": "BOARD INPUT", "signal": signal,
                 "bus_net": signal, "service": "ACTUATOR POWER TRUNK", "wire_core": OPEN,
-                "physical_pin_state": "BOARD CONTACT DEFINED; FIELD TERMINATION OPEN", "end_to_end_test": "NOT EXECUTED",
+                "physical_pin_state": "LOGICAL CONTACT FUNCTION DEFINED; PHYSICAL CONTACT SELECTION REQUIRED", "end_to_end_test": "NOT EXECUTED",
             })
     for allocation in pdu_allocations:
         board_id, channel, axis = allocation["board_instance"], allocation["channel"], allocation["axis_id"]
         output_id, control_id = f"J-{board_id}-OUT-{channel}", f"J-{board_id}-CTL-{channel}"
         connector_rows.extend(({
             "connector_id": output_id, "location": board_id, "function": f"CHANNEL {channel} ACTUATOR OUTPUT",
-            "candidate_housing": "JST B2P-VH board header", "mating_part": "JST VHR-2N; contact/conductor selection open",
+            "candidate_housing": OPEN, "mating_part": OPEN,
             "contact_order_code": OPEN, "contact_count": 2, "keying_retention_strain_relief": OPEN,
-            "source": "https://www.jst-mfg.com/product/pdf/eng/eVH.pdf", "source_date": "accessed 2026-08-15",
-            "selection_state": "BOARD HEADER PRESENT; DNP CHANNEL HAS NO FIELD HARNESS" if axis == "DNP SPARE" else "BOARD HEADER PRESENT; FIELD ASSEMBLY VALIDATION OPEN",
+            "source": "electrical/walking-power-successor-p0.1", "source_date": "generated 2026-08-17",
+            "selection_state": "DNP CHANNEL HAS NO FIELD HARNESS" if axis == "DNP SPARE" else "OUTPUT CONNECTOR / PCB / FIELD ASSEMBLY SELECTION REQUIRED",
         }, {
             "connector_id": control_id, "location": board_id, "function": f"CHANNEL {channel} DISABLE/POWER-GOOD CONTROL",
-            "candidate_housing": "JST BM03B-GHS-TBT board header", "mating_part": "JST GHR-03V-S; contact/conductor selection open",
+            "candidate_housing": OPEN, "mating_part": OPEN,
             "contact_order_code": OPEN, "contact_count": 3, "keying_retention_strain_relief": OPEN,
-            "source": "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf", "source_date": "accessed 2026-08-15",
-            "selection_state": "BOARD HEADER PRESENT; DNP CHANNEL CONTROL UNPOPULATED" if axis == "DNP SPARE" else "BOARD HEADER PRESENT; CONTROL HARNESS VALIDATION OPEN",
+            "source": "electrical/walking-power-successor-p0.1", "source_date": "generated 2026-08-17",
+            "selection_state": "DNP CHANNEL CONTROL UNPOPULATED" if axis == "DNP SPARE" else "CONTROL CONNECTOR / PCB / FIELD ASSEMBLY SELECTION REQUIRED",
         }))
-        output_signals = (("1", "PDU_0V"), ("2", f"BRANCH_{channel}_12V"))
+        output_signals = (("1", allocation["feed_return_net"]), ("2", f"BRANCH_{channel}_VPOS"))
         for pin, signal in output_signals:
             contact_rows.append({
                 "connector_id": output_id, "contact": pin, "axis_id": axis, "signal": signal,
@@ -343,7 +347,7 @@ def build() -> dict[str, int | float]:
                 "physical_pin_state": "DNP - NO FIELD HARNESS" if axis == "DNP SPARE" else "BOARD CONTACT DEFINED; FIELD ASSEMBLY OPEN",
                 "end_to_end_test": "NOT EXECUTED",
             })
-        for pin, signal in (("1", "PDU_0V"), ("2", f"CH{channel}_EN"), ("3", f"CH{channel}_PG")):
+        for pin, signal in (("1", allocation["feed_return_net"]), ("2", f"CH{channel}_EN"), ("3", f"CH{channel}_PG")):
             contact_rows.append({
                 "connector_id": control_id, "contact": pin, "axis_id": axis, "signal": signal,
                 "bus_net": "NO NET - DNP SPARE" if axis == "DNP SPARE" else f"{board_id}_{signal}",
@@ -401,7 +405,7 @@ def build() -> dict[str, int | float]:
         power_rows.append({
             "drop_id": f"PWR-{axis}", "axis_id": axis, "bus_branch": bus,
             "branch_net": f"{axis}_VDD", "return_net": f"{bus}_RET",
-            "protection_topology": f"{board_id} CHANNEL {channel}; TPS259474L COMMISSIONING CANDIDATE; RILM VARIANT {allocation['r_ilm_variant']}; PHYSICAL VALIDATION OPEN",
+            "protection_topology": f"{board_id} CHANNEL {channel}; PAIRED OPPOSING TPS259482LYWPR CANDIDATES; INTERNAL CAP {allocation['candidate_internal_cap_a']} A; PCB / BRAKE-DUMP / PHYSICAL VALIDATION OPEN",
             "candidate_12v_stall_endpoint_a": f"{amps:.2f}",
             "endpoint_boundary": "DATASHEET MOMENTARY STALL ENDPOINT; NOT DEMAND/RATING",
             "conductor_size": OPEN, "connector_limit": OPEN, "branch_protection": OPEN,
@@ -561,12 +565,12 @@ def build() -> dict[str, int | float]:
     equipment_rows = []
     for eq in equipment:
         pwr, data = equipment_route(eq["module"], eq["role"])
-        is_pdu = eq["item_id"].startswith("EQ-PDU-")
+        is_pdu = eq["item_id"].startswith("EQ-WPS-")
         equipment_rows.append({
             "item_id": eq["item_id"], "module": eq["module"], "role": eq["role"], "candidate": eq["candidate"],
             "center_xyz_mm": f"({eq['center_x_mm']},{eq['center_y_mm']},{eq['center_z_mm']})",
             "power_route": pwr, "data_route": data, "connector_boundary": eq["connector_boundary"],
-            "physical_connector": "NATIVE J1/J10x/J20x BOARD HEADERS PRESENT; FIELD MATING ASSEMBLIES OPEN" if is_pdu else OPEN,
+            "physical_connector": "WPS LOGICAL CONNECTOR FUNCTIONS PRESENT; PCB AND PHYSICAL CONNECTORS SELECTION REQUIRED" if is_pdu else OPEN,
             "contact_map": "BOUND TO CONNECTOR-INSTANCE-REGISTER AND CONNECTOR-CONTACT-MAP" if is_pdu else OPEN,
             "retention": OPEN,
             "continuity_function_test": "NOT EXECUTED", "authority": AUTHORITY,

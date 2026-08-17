@@ -18,27 +18,30 @@ K2_POLE2_IN,2,03_redundant_dc_interruption.kicad_sch:K2:2/T1 | 03_redundant_dc_i
 K2_POLE3_IN,2,03_redundant_dc_interruption.kicad_sch:K2:4/T2 | 03_redundant_dc_interruption.kicad_sch:K2:5/L3
 MOTION_PERMIT_INPUT,2,03_redundant_dc_interruption.kicad_sch:XPERMIT:OUT | 06_telemetry_interlocks_commissioning.kicad_sch:MCU1:PERMIT
 PANEL_PE,4,01_external_source_panel.kicad_sch:XAC1:PE | 01_external_source_panel.kicad_sch:PS1:FG | 01_external_source_panel.kicad_sch:PS2:3 | 04_touch_safe_tether.kicad_sch:XT1A:G
-PDU_ARMS_POS,2,05_robot_five_branch_distribution.kicad_sch:FB3:OUT | 05_robot_five_branch_distribution.kicad_sch:JARMS:2
-PDU_COMMON_RET,6,05_robot_five_branch_distribution.kicad_sch:RB0:RET-BUS | 05_robot_five_branch_distribution.kicad_sch:JLLEG:1 | 05_robot_five_branch_distribution.kicad_sch:JRLEG:1 | 05_robot_five_branch_distribution.kicad_sch:JARMS:1 | 05_robot_five_branch_distribution.kicad_sch:JDISTAL:1 | 05_robot_five_branch_distribution.kicad_sch:JCORE:1
-PDU_CORE_POS,2,05_robot_five_branch_distribution.kicad_sch:FB5:OUT | 05_robot_five_branch_distribution.kicad_sch:JCORE:2
-PDU_DISTAL_POS,2,05_robot_five_branch_distribution.kicad_sch:FB4:OUT | 05_robot_five_branch_distribution.kicad_sch:JDISTAL:2
+PDU_COMMON_RET,9,05_robot_eight_branch_distribution.kicad_sch:RB0:RET-BUS | 05_robot_eight_branch_distribution.kicad_sch:JRS_LLEG:1 | 05_robot_eight_branch_distribution.kicad_sch:JRS_RLEG:1 | 05_robot_eight_branch_distribution.kicad_sch:JRS_LARM:1 | 05_robot_eight_branch_distribution.kicad_sch:JRS_RARM:1 | 05_robot_eight_branch_distribution.kicad_sch:JRS_WAIST:1 | 05_robot_eight_branch_distribution.kicad_sch:JTTL_LDIST_REG:1 | 05_robot_eight_branch_distribution.kicad_sch:JTTL_RDIST_REG:1 | 05_robot_eight_branch_distribution.kicad_sch:JTTL_HEAD_REG:1
 PDU_ENABLE_BOUNDARY,1,06_telemetry_interlocks_commissioning.kicad_sch:MCU1:ENABLE
-PDU_LLEG_POS,2,05_robot_five_branch_distribution.kicad_sch:FB1:OUT | 05_robot_five_branch_distribution.kicad_sch:JLLEG:2
-PDU_RLEG_POS,2,05_robot_five_branch_distribution.kicad_sch:FB2:OUT | 05_robot_five_branch_distribution.kicad_sch:JRLEG:2
 PDU_STATUS_BOUNDARY,1,06_telemetry_interlocks_commissioning.kicad_sch:MON1:BR
 PNOZ_AUX_STATUS,2,02_estop_reset_safety_relay.kicad_sch:SR1:42 | 06_telemetry_interlocks_commissioning.kicad_sch:MON1:SR
 PNOZ_Y32_STATUS,2,02_estop_reset_safety_relay.kicad_sch:SR1:Y32 | 06_telemetry_interlocks_commissioning.kicad_sch:MON1:Y32
 RAW_0V,3,01_external_source_panel.kicad_sch:PS1:-V | 01_external_source_panel.kicad_sch:PS2:2 | 04_touch_safe_tether.kicad_sch:XT1A:P2
 RAW_12V_POS,3,01_external_source_panel.kicad_sch:PS1:+V | 01_external_source_panel.kicad_sch:PS2:1 | 03_redundant_dc_interruption.kicad_sch:K1:1/L1
+REG_TTL_HEAD_IN_12V,2,05_robot_eight_branch_distribution.kicad_sch:FB8:OUT | 05_robot_eight_branch_distribution.kicad_sch:JTTL_HEAD_REG:2
+REG_TTL_LDIST_IN_12V,2,05_robot_eight_branch_distribution.kicad_sch:FB6:OUT | 05_robot_eight_branch_distribution.kicad_sch:JTTL_LDIST_REG:2
+REG_TTL_RDIST_IN_12V,2,05_robot_eight_branch_distribution.kicad_sch:FB7:OUT | 05_robot_eight_branch_distribution.kicad_sch:JTTL_RDIST_REG:2
 RESET_EDM,4,02_estop_reset_safety_relay.kicad_sch:S1:NO-B | 02_estop_reset_safety_relay.kicad_sch:SR1:S34 | 03_redundant_dc_interruption.kicad_sch:K1:21 | 03_redundant_dc_interruption.kicad_sch:K2:22
-ROBOT_FRAME_BOUNDARY,2,04_touch_safe_tether.kicad_sch:XT1B:G | 05_robot_five_branch_distribution.kicad_sch:RB0:FRAME-IN
-ROBOT_FUSED_POS,6,05_robot_five_branch_distribution.kicad_sch:FM0:OUT | 05_robot_five_branch_distribution.kicad_sch:FB1:IN | 05_robot_five_branch_distribution.kicad_sch:FB2:IN | 05_robot_five_branch_distribution.kicad_sch:FB3:IN | 05_robot_five_branch_distribution.kicad_sch:FB4:IN | 05_robot_five_branch_distribution.kicad_sch:FB5:IN
-ROBOT_MAIN_POS,2,04_touch_safe_tether.kicad_sch:XT1B:P1 | 05_robot_five_branch_distribution.kicad_sch:FM0:IN
-ROBOT_MAIN_RET,2,04_touch_safe_tether.kicad_sch:XT1B:P2 | 05_robot_five_branch_distribution.kicad_sch:RB0:RET-IN
+ROBOT_FRAME_BOUNDARY,2,04_touch_safe_tether.kicad_sch:XT1B:G | 05_robot_eight_branch_distribution.kicad_sch:RB0:FRAME-IN
+ROBOT_FUSED_POS,9,05_robot_eight_branch_distribution.kicad_sch:FM0:OUT | 05_robot_eight_branch_distribution.kicad_sch:FB1:IN | 05_robot_eight_branch_distribution.kicad_sch:FB2:IN | 05_robot_eight_branch_distribution.kicad_sch:FB3:IN | 05_robot_eight_branch_distribution.kicad_sch:FB4:IN | 05_robot_eight_branch_distribution.kicad_sch:FB5:IN | 05_robot_eight_branch_distribution.kicad_sch:FB6:IN | 05_robot_eight_branch_distribution.kicad_sch:FB7:IN | 05_robot_eight_branch_distribution.kicad_sch:FB8:IN
+ROBOT_MAIN_POS,2,04_touch_safe_tether.kicad_sch:XT1B:P1 | 05_robot_eight_branch_distribution.kicad_sch:FM0:IN
+ROBOT_MAIN_RET,2,04_touch_safe_tether.kicad_sch:XT1B:P2 | 05_robot_eight_branch_distribution.kicad_sch:RB0:RET-IN
 S12_CH1,3,02_estop_reset_safety_relay.kicad_sch:S0:NC1-B | 02_estop_reset_safety_relay.kicad_sch:S1:NO-A | 02_estop_reset_safety_relay.kicad_sch:SR1:S12
 S21_TEST,2,02_estop_reset_safety_relay.kicad_sch:S0:NC2-A | 02_estop_reset_safety_relay.kicad_sch:SR1:S21
 S22_CH2,2,02_estop_reset_safety_relay.kicad_sch:S0:NC2-B | 02_estop_reset_safety_relay.kicad_sch:SR1:S22
 SAFE_0V,4,01_external_source_panel.kicad_sch:PS2:4 | 02_estop_reset_safety_relay.kicad_sch:SR1:A2 | 03_redundant_dc_interruption.kicad_sch:K1:A2 | 03_redundant_dc_interruption.kicad_sch:K2:A2
 SAFE_24V,8,01_external_source_panel.kicad_sch:PS2:5 | 02_estop_reset_safety_relay.kicad_sch:S0:NC1-A | 02_estop_reset_safety_relay.kicad_sch:SR1:A1 | 02_estop_reset_safety_relay.kicad_sch:SR1:S11 | 02_estop_reset_safety_relay.kicad_sch:SR1:13 | 02_estop_reset_safety_relay.kicad_sch:SR1:23 | 02_estop_reset_safety_relay.kicad_sch:SR1:33 | 02_estop_reset_safety_relay.kicad_sch:SR1:41
-STAR_POINT_0V_FRAME,1,05_robot_five_branch_distribution.kicad_sch:RB0:FRAME-STAR
+STAR_POINT_0V_FRAME,1,05_robot_eight_branch_distribution.kicad_sch:RB0:FRAME-STAR
 TETHER_POS_SWITCHED,2,03_redundant_dc_interruption.kicad_sch:K2:6/T3 | 04_touch_safe_tether.kicad_sch:XT1A:P1
+WPS_RS_LARM_IN_12V,2,05_robot_eight_branch_distribution.kicad_sch:FB3:OUT | 05_robot_eight_branch_distribution.kicad_sch:JRS_LARM:2
+WPS_RS_LLEG_IN_12V,2,05_robot_eight_branch_distribution.kicad_sch:FB1:OUT | 05_robot_eight_branch_distribution.kicad_sch:JRS_LLEG:2
+WPS_RS_RARM_IN_12V,2,05_robot_eight_branch_distribution.kicad_sch:FB4:OUT | 05_robot_eight_branch_distribution.kicad_sch:JRS_RARM:2
+WPS_RS_RLEG_IN_12V,2,05_robot_eight_branch_distribution.kicad_sch:FB2:OUT | 05_robot_eight_branch_distribution.kicad_sch:JRS_RLEG:2
+WPS_RS_WAIST_IN_12V,2,05_robot_eight_branch_distribution.kicad_sch:FB5:OUT | 05_robot_eight_branch_distribution.kicad_sch:JRS_WAIST:2

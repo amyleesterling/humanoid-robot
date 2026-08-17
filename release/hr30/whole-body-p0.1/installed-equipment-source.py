@@ -147,7 +147,7 @@ def build() -> list[Equipment]:
 
     # Pelvis tether-first power hardware.  The source, safety relay and both
     # GV121CAC series contactors remain in the external panel.  The robot
-    # carries only the touch-safe inlet and passive main/five-branch protected
+    # carries only the touch-safe inlet and passive main/eight-branch protected
     # distribution candidate; it carries no high-current contactor.
     add("EQ-P01-TETHER-INLET", "P01", "tether inlet and service disconnect",
         "Anderson SBS75GBLK three-position inlet candidate; project contacts P1=controlled +12 V, G=pre-mate frame reference, P2=return",
@@ -156,36 +156,52 @@ def build() -> list[Equipment]:
         "1339G2 primary contacts and 1340G1 pre-mate contact are 6 AWG family candidates; exact cable, polarity marking, frame bond, retention and flex validation open",
         "https://www.andersonpower.com/content/dam/app/ecommerce/product-pdfs/SBS75G/1s6417-SBS-Assembly-Instructions.pdf",
         "Anderson 1S6417; accessed 2026-08-15", "housing/contact family identified; installed harness and application remain open", "base_link", safety)
-    add("EQ-P01-FIVE-BRANCH-DISTRIBUTOR", "P01", "main plus five protected actuator-PDU feeds",
-        "146 x 28 x 38 mm insulated distributor candidate with six Littelfuse 04980923ZXT covered MIDI holders; all fuse values SELECTION REQUIRED",
-        box(146, 28, 38, (0, 12, 382), 3), 0.235, 0.0, 1.5,
+    add("EQ-P01-EIGHT-BRANCH-DISTRIBUTOR", "P01", "main plus eight electrically separate actuator-bus feeds",
+        "146 x 34 x 66 mm insulated distributor candidate with nine Littelfuse 04980923ZXT covered MIDI holders; all fuse values SELECTION REQUIRED",
+        box(146, 34, 66, (0, 12, 382), 3), 0.325, 0.0, 2.0,
         "rear pelvis power tray", "+Y rear-cover withdrawal",
-        "one inlet, one main holder and exact feeds to PDU-LLEG/PDU-RLEG/PDU-ARMS/PDU-DISTAL/PDU-CORE; fuse values, conductors, lugs and torque open",
+        "one inlet, one main holder and exact separate feeds to RS-LLEG/RS-RLEG/RS-LARM/RS-RARM/RS-WAIST/TTL-LDIST/TTL-RDIST/TTL-HEAD boards; fuse values, conductors, lugs and torque open",
         "https://www.littelfuse.com/products/fuse-blocks-fuseholders-and-fuse-accessories/automotive-and-commercial-vehicle-fuse-holders/midi-498/04980923zxt.aspx",
         "MIDI 498 datasheet 012826-A; accessed 2026-08-15", "physical holder/enclosure allocation only; no fuse, conductor, thermal, fault or safety credit", "base_link", power)
-    # Five real 124 x 45 mm branch-PDU board envelopes replace the former
-    # single abstract pelvis reservation.  The leg boards are oriented along
-    # Z inside the removable rear thigh covers; the remaining three are
-    # oriented in the XZ plane on pelvis/torso trays.  Each envelope includes
+    # Eight real 124 x 45 mm walking-power board envelopes replace the former
+    # five-board grouping.  The leg boards are oriented along Z inside the
+    # removable rear thigh covers.  The arm and distal boards use two separated
+    # rear-torso layers; the waist board is on the pelvis tray and the head-bus
+    # board is above them.  Each envelope includes
     # the 1.6 mm PCB, connector height and a small non-credited mounting gap.
     # Board mass is a controlled planning allowance until a received assembly
-    # is weighed; the five allowances total 0.225 kg versus the superseded
-    # 0.185 kg abstract reservation.
+    # is weighed; the eight allowances total 0.360 kg.
     for board_id, module, center, dims, link, allocation, plane in (
-        ("PDU-LLEG", "L01", (62.5, 19.0, 294.0), (45, 8, 124), "L_thigh", "six left-leg axes", "inside left rear thigh cover"),
-        ("PDU-RLEG", "L02", (-62.5, 19.0, 294.0), (45, 8, 124), "R_thigh", "six right-leg axes", "inside right rear thigh cover"),
-        ("PDU-ARMS", "T01", (0.0, 31.0, 482.0), (124, 8, 45), "torso", "three left-arm plus three right-arm axes", "lower torso rear electronics tray"),
-        ("PDU-DISTAL", "T01", (0.0, 31.0, 617.0), (124, 8, 45), "torso", "wrists, grippers and two neck axes", "upper torso rear electronics tray"),
-        ("PDU-CORE", "P01", (0.0, -18.0, 382.0), (124, 8, 45), "base_link", "waist axis plus five DNP spare channels", "front pelvis power tray"),
+        ("WPS-RS-LLEG", "L01", (62.5, 19.0, 294.0), (45, 8, 124), "L_thigh", "six left-leg axes", "inside left rear thigh cover"),
+        ("WPS-RS-RLEG", "L02", (-62.5, 19.0, 294.0), (45, 8, 124), "R_thigh", "six right-leg axes", "inside right rear thigh cover"),
+        ("WPS-RS-LARM", "T01", (46.0, 31.0, 522.0), (45, 8, 124), "torso", "three left-arm axes plus three DNP channels", "right half of rear torso outer electronics layer"),
+        ("WPS-RS-RARM", "T01", (-46.0, 31.0, 522.0), (45, 8, 124), "torso", "three right-arm axes plus three DNP channels", "left half of rear torso outer electronics layer"),
+        ("WPS-TTL-LDIST", "T01", (46.0, 21.0, 522.0), (45, 8, 124), "torso", "left wrist and gripper plus four DNP channels", "right half of rear torso inner electronics layer"),
+        ("WPS-TTL-RDIST", "T01", (-46.0, 21.0, 522.0), (45, 8, 124), "torso", "right wrist and gripper plus four DNP channels", "left half of rear torso inner electronics layer"),
+        ("WPS-TTL-HEAD", "T01", (0.0, 11.0, 605.0), (124, 8, 45), "torso", "head pan and tilt plus four DNP channels", "upper torso inner electronics tray"),
+        ("WPS-RS-WAIST", "P01", (0.0, -18.0, 382.0), (124, 8, 45), "base_link", "waist axis plus five DNP channels", "front pelvis power tray"),
     ):
         add(f"EQ-{board_id}", module, "six-channel actuator branch protection board",
             f"routed 124 x 45 mm ten-layer {board_id} instance; {allocation}",
             box(*dims, center, 2), 0.045, 0.1, 0.8,
             plane, "removable-cover withdrawal before connector service",
-            "controlled 12 V trunk input, six individual actuator output pairs, six disable/PG control boundaries",
-            "electrical/actuator-branch-pdu-p0.1", "native KiCad candidate generated 2026-08-15",
-            "native schematic ERC 0/0 and routed PCB DRC 0/0; stackup, connector temperature, regeneration, physical fit and thermal proof remain open",
+            "one bus-specific controlled feed input, six paired bidirectional branch outputs, six disable/PG control boundaries",
+            "electrical/walking-power-successor-p0.1", "native KiCad architecture candidate generated 2026-08-17",
+            "native schematic ERC 0/0 for connectivity/annotation; PCB, stackup, connector temperature, regeneration, physical fit and thermal proof remain open",
             link, power)
+    for suffix, x, output_net in (
+        ("LDIST", 50.0, "TTL_LDIST_SAFE_9V"),
+        ("RDIST", 0.0, "TTL_RDIST_SAFE_9V"),
+        ("HEAD", -50.0, "TTL_HEAD_SAFE_9V"),
+    ):
+        add(f"EQ-T01-TTL-REG-{suffix}", "T01", "dedicated 12 V to 9 V actuator-bus regulator",
+            f"Pololu S18V20F9 item 2576 candidate in 45 x 22 x 14 mm installed clearance envelope; output {output_net}",
+            box(45, 14, 22, (x, 1, 450), 2), 0.018, 18.0, 2.2,
+            "lower torso isolated converter rail", "-Y front-cover withdrawal",
+            f"separate ACT_MAIN_SAFE_12V input and {output_net} output; no regulator outputs may be paralleled; exact contacts and reverse-energy behavior open",
+            "https://www.pololu.com/product/2576", "live official product page; revision not stated; accessed 2026-08-14",
+            "exact product family candidate and installed clearance envelope; current margin, transients, protection, thermal behavior and reverse-energy validation remain open",
+            "torso", power)
     add("EQ-P01-AUX-CONVERTER", "P01", "auxiliary power conversion",
         "isolated 14.8 V to 5.1 V compute/HMI converter candidate; exact model required",
         box(62, 18, 24, (-35, -4, 408), 2), 0.095, 0.0, 6.0,
@@ -463,14 +479,14 @@ def update_package(items: list[Equipment]) -> None:
 
 ## Installed equipment layout
 
-The former empty torso, pelvis, head and foot reservations now contain {len(items)} located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is {status['planning_installed_mass_kg']:.3f} kg. Five routed 124 x 45 mm branch-PDU instances are now visibly installed in the pelvis, torso and both thighs. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+The former empty torso, pelvis, head and foot reservations now contain {len(items)} located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is {status['planning_installed_mass_kg']:.3f} kg. Eight bus-specific 124 x 45 mm walking-power board instances are now visibly installed in the pelvis, torso and both thighs; no board input serves more than one actuator bus or regulator output. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
 """
     readme_path.write_text(readme.rstrip() + "\n", encoding="utf-8", newline="\n")
 
     index_path = OUT / "index.html"
     html = index_path.read_text(encoding="utf-8")
     html = re.sub(r'<section id="equipment-layout">[\s\S]*?</section>', "", html)
-    insert = f'''<section id="equipment-layout"><h2>Installed equipment—not empty bays</h2><div class="viewer"><model-viewer src="HR-30_installed_equipment_candidate.glb" alt="Interactive 3D layout of preliminary HR-30 installed electronics, five distributed actuator branch-PDU boards, legacy battery envelope, sensing, harness, soles and contact hardware" camera-controls camera-orbit="35deg 76deg 95%" field-of-view="26deg" shadow-intensity="0.8" exposure="1.05"></model-viewer><p>{len(items)} located candidate items, {status['planning_installed_mass_kg']:.3f} kg provisional as-installed mass. Five routed PDU boards are visible in the pelvis, torso and thighs. The rear-torso battery envelope is retained as rejected legacy geometry; tether-first is primary and every physical energy selection remains open.</p><p><a href="installed-equipment-register.csv">Equipment register</a> · <a href="HR-30_installed_equipment_candidate.step">Equipment STEP</a> · <a href="HR-30_integrated_whole_robot_candidate.step">Integrated whole-robot STEP</a> · <a href="battery-energy-source-register.csv">Battery-source boundary</a>.</p></div></section>'''
+    insert = f'''<section id="equipment-layout"><h2>Installed equipment—not empty bays</h2><div class="viewer"><model-viewer src="HR-30_installed_equipment_candidate.glb" alt="Interactive 3D layout of preliminary HR-30 installed electronics, eight bus-specific walking-power boards, legacy battery envelope, sensing, harness, soles and contact hardware" camera-controls camera-orbit="35deg 76deg 95%" field-of-view="26deg" shadow-intensity="0.8" exposure="1.05"></model-viewer><p>{len(items)} located candidate items, {status['planning_installed_mass_kg']:.3f} kg provisional as-installed mass. Eight one-bus walking-power boards are visible in the pelvis, torso and thighs. The rear-torso battery envelope is retained as rejected legacy geometry; tether-first is primary and every physical energy selection remains open.</p><p><a href="installed-equipment-register.csv">Equipment register</a> · <a href="HR-30_installed_equipment_candidate.step">Equipment STEP</a> · <a href="HR-30_integrated_whole_robot_candidate.step">Integrated whole-robot STEP</a> · <a href="battery-energy-source-register.csv">Battery-source boundary</a>.</p></div></section>'''
     html = html.replace("</main>", insert + "</main>")
     html = re.sub(r'<a href="installed-equipment-register\.csv">Installed equipment</a>[\s\S]*?(?=<a href="mass-properties-budget\.csv">)', "", html, count=1)
     html = html.replace('<a href="mass-properties-budget.csv">Mass/COM/inertia</a>', '<a href="installed-equipment-register.csv">Installed equipment</a> · <a href="installed-equipment-source-register.csv">Equipment sources</a> · <a href="battery-energy-source-register.csv">Battery source and runtime screen</a> · <a href="HR-30_installed_equipment_candidate.step">Equipment STEP</a> · <a href="HR-30_integrated_whole_robot_candidate.step">Integrated whole-robot STEP</a> · <a href="mass-properties-budget.csv">Mass/COM/inertia</a>')
@@ -510,7 +526,7 @@ The former empty torso, pelvis, head and foot reservations now contain {len(item
         if row["hold_id"] == "HR30-P01-H04":
             row["unresolved_item"] = ("The whole-body CAD retains the superseded 177.6 Wh Grepow/Tattu pack envelope only as legacy packaging evidence; that direct 4S actuator-bus source is rejected. Tether-first is the active development configuration, while the Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Exact battery configuration, protection, connector, current/thermal capability, containment, retention, charger, regeneration handling, grounding and pinout remain unselected and unvalidated.")
         elif row["hold_id"] == "HR30-P01-H07":
-            row["unresolved_item"] = ("Fourteen module harness assemblies and 62 route segments now have planning geometry, mass allowances and connector boundaries, including separate neck power/data paths and 25 individually routed actuator-power pairs from five installed PDU boards. Exact conductor selections, fill, flex life, service-loop validation, production connectors, strain relief, shielding, current derating, EMC and thermal evidence remain open.")
+            row["unresolved_item"] = ("Fourteen module harness assemblies and 62 route segments now have planning geometry, mass allowances and connector boundaries, including separate neck power/data paths and 25 individually routed actuator-power pairs from eight bus-specific walking-power boards. Exact conductor selections, fill, flex life, service-loop validation, production connectors, strain relief, shielding, current derating, EMC and thermal evidence remain open.")
     write_csv(holds_path, holds)
 
 

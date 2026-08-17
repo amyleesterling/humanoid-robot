@@ -1,15 +1,15 @@
 $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\tether-power-core-p0.1\validation\hr30-tether-power-core-p0.1-erc.rpt" "C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\tether-power-core-p0.1\hr30-tether-power-core-p0.1.kicad_sch"
 Found 0 violations
 Saved ERC Report to C:/Users/amyle/Documents/New project/h30e/hr30/whole-body-p0.1/electrical/tether-power-core-p0.1/validation/hr30-tether-power-core-p0.1-erc.rpt
-02:19:18: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-02:19:18: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+05:32:02: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+05:32:02: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0
 
 $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\tether-power-core-p0.1\validation\hr30-tether-power-core-p0.1.net" "C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\tether-power-core-p0.1\hr30-tether-power-core-p0.1.kicad_sch"
 Warning: schematic has annotation errors, please use the schematic editor to fix them
-02:19:20: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-02:19:20: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+05:32:05: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+05:32:05: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0
 
@@ -19,10 +19,10 @@ Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\elect
 Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\tether-power-core-p0.1\output\hr30-tether-power-core-p0.1-02 Dual-channel E-stop, monitored manual reset and PNOZ s4.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\tether-power-core-p0.1\output\hr30-tether-power-core-p0.1-03 Two series LC1D40ABD contactors and mirror-feedback loop.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\tether-power-core-p0.1\output\hr30-tether-power-core-p0.1-04 SBS75G touch-safe three-contact tether.svg'.
-Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\tether-power-core-p0.1\output\hr30-tether-power-core-p0.1-05 Robot inlet, main boundary and five protected PDU feeds.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\tether-power-core-p0.1\output\hr30-tether-power-core-p0.1-05 Robot inlet, main boundary and eight protected bus-source feeds.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\tether-power-core-p0.1\output\hr30-tether-power-core-p0.1-06 Status, telemetry and fail-closed commissioning boundary.svg'.
 Done.
-02:19:21: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-02:19:21: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+05:32:05: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+05:32:05: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0

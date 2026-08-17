@@ -1,9 +1,9 @@
 <robot name="hr30_whole_body_p01">
   <link name="base_link">
     <inertial>
-      <origin xyz="-0.003163 0.006931 0.000547" rpy="0 0 0" />
-      <mass value="1.495522" />
-      <inertia ixx="0.001984682" ixy="0" ixz="0" iyy="0.003604831" iyz="0" izz="0.004368171" />
+      <origin xyz="-0.002970 0.007186 0.000061" rpy="0 0 0" />
+      <mass value="1.592722" />
+      <inertia ixx="0.002113675" ixy="0" ixz="0" iyy="0.003839124" iyz="0" izz="0.004652076" />
     </inertial>
     <visual>
       <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
@@ -23,9 +23,9 @@
   </link>
   <link name="torso">
     <inertial>
-      <origin xyz="-0.000221 0.046483 0.101602" rpy="0 0 0" />
-      <mass value="2.356241" />
-      <inertia ixx="0.006504206" ixy="0" ixz="0" iyy="0.011216687" iyz="0" izz="0.009464233" />
+      <origin xyz="-0.000203 0.043730 0.100138" rpy="0 0 0" />
+      <mass value="2.560361" />
+      <inertia ixx="0.007067662" ixy="0" ixz="0" iyy="0.012188383" iyz="0" izz="0.010284115" />
     </inertial>
     <visual>
       <origin xyz="0.000000 0.000000 0.087500" rpy="0 0 0" />

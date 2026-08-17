@@ -37,6 +37,8 @@ cad/vendor/robotis/xc330/*.step binary
 cad/vendor/robotis/xc330/*.pdf binary
 cad/vendor/pololu/**/*.step binary
 electrical/vendor/**/*.step binary
+hr30/**/*.step text eol=lf whitespace=-trailing-space
+release/hr30/**/*.step text eol=lf whitespace=-trailing-space
 release/**/*.zip binary
 release/**/*.csv text eol=lf
 release/**/*.md text eol=lf
