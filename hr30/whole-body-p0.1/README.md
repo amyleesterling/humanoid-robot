@@ -132,6 +132,26 @@ The [transmission closure guide](transmission-closure-p0.1/index.html) maps all 
 
 
 
+
+
+<!-- HR30-TRANSITION-BRACKETS-P01-README-START -->
+## Actuator fixed-transition bracket CAD
+
+The [interactive transition-bracket guide](harness/actuator-transition-brackets-p0.1/index.html) places one dimensioned three-solid service cassette at every one of the 25 actuator feeds. Editable part STEP, the standard assembly STEP/GLB, the recognizable whole-body placement STEP/GLB and all coordinates are included.
+
+The central connector opening is a **project-owned clearance proxy**, not a released Molex cutout. Official-drawing reconciliation, received-part fit, material/process selection, cable clamp qualification, body attachment, tolerance-aware collision and physical testing remain open.
+<!-- HR30-TRANSITION-BRACKETS-P01-README-END -->
+<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-START -->
+## Actuator cable kit
+
+The [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **159 connector-cavity records**. The dimensioned transition-bracket candidate and all **25 nominal module placements** are configuration-bound. The retained rejected-CF9 predecessor calculation has a largest 20 C planning drop of **0.091 V**; it is not an ampacity or thermal release. Outgoing inter-actuator housings leave GND/VDD cavities empty so the 25 separately protected power branches cannot be paralleled; signal-reference behavior and every physical validation gate remain open.
+<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-END -->
+<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-START -->
+## Actuator cable coupon and route measurement
+
+The [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) defines the complete moving **CF130 -> Molex 430250200/430300001 -> panel 430200200/430310001 -> restrained Alpha 3051 -> JST EH** transition coupon. Eleven specimen families cover both crimp systems, the panel mount, strain isolation, electrical/thermal behavior and flex. The dimensioned bracket candidate and all **25 nominal placements** are configuration-bound. Direct CF130-to-JST crimping is rejected. No production cut length, bracket release, crimp setting or physical-work authority is granted.
+<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-END -->
+
 <!-- HR30-FIRST-ENERGIZATION-P01-README-START -->
 ## First-energization readiness
 
@@ -177,25 +197,11 @@ The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 ph
 
 
 
-<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-START -->
-## Actuator cable kit
 
-The [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **159 connector-cavity records**. Each actuator-power path now uses **igus CF130.03.02.UL** only on the moving side, a fixed panel-mounted **Molex 430250200 / 430200200** transition, and a restrained **Alpha Wire 3051** pigtail to JST EH. Direct CF130-to-JST crimping is rejected. The retained rejected-CF9 predecessor comparison has a largest 20 C planning drop of **0.091 V**. That comparison is not a cable selection, ampacity or thermal release. Outgoing inter-actuator housings leave GND/VDD cavities empty so the 25 separately protected power branches cannot be paralleled; signal-reference behavior remains a validation hold.
-<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-END -->
 
-<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-START -->
-## Actuator cable coupon and route measurement
 
-The [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) defines the complete moving **CF130 -> Molex 430250200/430300001 -> panel 430200200/430310001 -> restrained Alpha 3051 -> JST EH** transition coupon. Eleven specimen families now cover both crimp systems, the panel mount, strain isolation, electrical/thermal behavior and flex. Direct CF130-to-JST crimping is rejected. No production cut length, bracket, crimp setting or physical-work authority is released.
-<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-END -->
 
-<!-- HR30-TRANSITION-BRACKETS-P01-README-START -->
-## Actuator fixed-transition bracket CAD
 
-The [interactive transition-bracket guide](harness/actuator-transition-brackets-p0.1/index.html) places one dimensioned three-solid service cassette at every one of the 25 actuator feeds. Editable part STEP, the standard assembly STEP/GLB, the recognizable whole-body placement STEP/GLB and all coordinates are included.
-
-The central connector opening is a **project-owned clearance proxy**, not a released Molex cutout. Official-drawing reconciliation, received-part fit, material/process selection, cable clamp qualification, body attachment, tolerance-aware collision and physical testing remain open.
-<!-- HR30-TRANSITION-BRACKETS-P01-README-END -->
 
 ## Joint-hardware successor reconciliation
 

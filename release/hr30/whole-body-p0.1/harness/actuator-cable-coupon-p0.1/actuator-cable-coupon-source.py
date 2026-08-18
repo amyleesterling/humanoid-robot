@@ -17,6 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 WHOLE = ROOT / "hr30" / "whole-body-p0.1"
+BRACKETS = WHOLE / "harness" / "actuator-transition-brackets-p0.1"
 OUT = WHOLE / "harness" / "actuator-cable-coupon-p0.1"
 RELEASE = ROOT / "release" / "hr30" / "whole-body-p0.1" / "harness" / OUT.name
 IDENTIFIER = "HR30-ACTUATOR-CABLE-COUPON-P0.1"
@@ -53,6 +54,8 @@ def sources() -> list[dict[str, object]]:
         ("ACC-S03", "Project Button", "whole-body route segments", "harness/physical-p0.1/route-segment-register.csv", "fixed corridors and moving-loop planning geometry"),
         ("ACC-S04", "Project Button", "actuator connector cavity population", "harness/actuator-cable-kit-p0.1/connector-cavity-population.csv", "contact population and controlled empty cavities"),
         ("ACC-S05", "Project Button", "25-axis fixed-transition register", "harness/actuator-cable-kit-p0.1/actuator-power-transition-register.csv", "moving cable, Micro-Fit transition, restrained pigtail and open physical gates"),
+        ("ACC-S19", "Project Button", "dimensioned transition-bracket status", "harness/actuator-transition-brackets-p0.1/bracket-status.json", "dimensioned standard bracket parts and fail-closed physical boundary"),
+        ("ACC-S20", "Project Button", "25-axis transition-bracket placement register", "harness/actuator-transition-brackets-p0.1/placement-register.csv", "nominal module-specific bracket coordinates, orientation and spacing"),
     ]
     rows: list[dict[str, object]] = []
     for sid, publisher, document, rel, scope in local:
@@ -189,7 +192,7 @@ def holds() -> list[dict[str, object]]:
         ("ACC-H09", "no physical coupon has been built or tested", "completed traveler and traceable raw measurements"),
         ("ACC-H10", "qualified harness disposition absent", "signed review of exact received materials, tooling, process and results"),
         ("ACC-H11", "CF9.UL.02.02 is 24 AWG and does not earn the JST EH 3 A / AWG22 headline condition", "keep out of actuator-power service; any data-only use requires separate signal-integrity/flex qualification"),
-        ("ACC-H12", "the 25 panel-mount transition brackets, fasteners, clamps and pigtail lengths are not dimensioned", "module CAD placement, collision sweep, bracket drawing, pull-load path and service-access review"),
+        ("ACC-H12", "dimensioned bracket parts and 25 nominal placements exist, but official connector cutout, received fit, production material/fasteners, clamp force, pigtail lengths and tolerance-aware integration are not released", "revision-controlled cutout review, received-part fit coupon, DFM/material/fastener selection, pull/load tests, selected pigtail lengths and joined production-CAD collision/service sweep"),
         ("ACC-H13", "Molex crimp tooling and application settings for both exact terminal/wire constructions are unselected", "manufacturer/process-owner tooling disposition plus cross-sections and pull tests for CF130 and Alpha 3051"),
         ("ACC-H14", "Micro-Fit current derating and temperature rise are unverified for the accepted HR-30 duty", "measured RMS/peak/regeneration waveform and representative two-circuit connector thermal/fault tests"),
     ]
@@ -218,7 +221,7 @@ def render(routes: list[dict[str, object]]) -> str:
         "The 24 AWG predecessor is no longer treated as an actuator-power candidate. The package now separates a 22 AWG static suspended-commissioning lead from a 22 AWG dynamic cable candidate, and requires construction-specific destructive evidence for both.",
     )
     page = page.replace("<div class=\"metric\">7</div><p>controlled coupon specimen families", "<div class=\"metric\">11</div><p>controlled coupon specimen families", 1)
-    candidate_section = '''<section><h2>Test the complete transition, not a direct CF130-to-JST crimp</h2><div class="grid"><article><h3>Moving side</h3><p><strong>CF130.03.02.UL</strong> terminates only into Molex <strong>430250200 / 430300001</strong>. Its individual-core OD must be measured against the 1.85 mm terminal limit.</p></article><article><h3>Fixed panel side</h3><p>Molex <strong>430200200 / 430310001</strong> mounts to a representative bracket, then restrained <strong>Alpha Wire 3051</strong> continues to JST EH.</p></article><article><h3>Isolation test</h3><p>Cycle the moving cable while measuring panel motion and confirming that the JST pigtail sees no cyclic bend or pull.</p></article></div><div class="panel hold"><p><strong>CF9.UL.02.02 is 24 AWG.</strong> It remains a data/flex investigation candidate only and receives no actuator-power credit.</p></div></section>'''
+    candidate_section = '''<section><h2>Test the complete transition, not a direct CF130-to-JST crimp</h2><div class="grid"><article><h3>Moving side</h3><p><strong>CF130.03.02.UL</strong> terminates only into Molex <strong>430250200 / 430300001</strong>. Its individual-core OD must be measured against the 1.85 mm terminal limit.</p></article><article><h3>Fixed panel side</h3><p>Molex <strong>430200200 / 430310001</strong> mounts to the dimensioned bracket candidate; 25 nominal module placements are configuration-bound. Restrained <strong>Alpha Wire 3051</strong> continues to JST EH.</p></article><article><h3>Isolation test</h3><p>Cycle the moving cable while measuring panel motion and confirming that the JST pigtail sees no cyclic bend or pull.</p></article></div><div class="panel hold"><p><strong>CF9.UL.02.02 is 24 AWG.</strong> It remains a data/flex investigation candidate only and receives no actuator-power credit. Official cutout, received fit, material/fasteners, clamp force, pigtail lengths and tolerance-aware integration remain open.</p><p><a href="../actuator-transition-brackets-p0.1/index.html">Inspect the dimensioned transition-bracket candidate</a>.</p></div></section>'''
     page = page.replace("<section><h2>Prototype tooling path</h2>", candidate_section + "<section><h2>Prototype tooling path</h2>", 1)
     page = page.replace("These are manufacturer-linked candidates—not a released process for CF9's TPE construction.", "These are manufacturer-linked candidates—not a released process for either wire construction.")
     page = page.replace("These are manufacturer-linked candidatesâ€”not a released process for CF9's TPE construction.", "These are manufacturer-linked candidates—not a released process for either wire construction.")
@@ -232,6 +235,8 @@ def integrate_root(routes: list[dict[str, object]]) -> None:
         "actuator_cable_coupon_package_present": True, "actuator_cable_coupon_tooling_candidate_count": 4,
         "actuator_cable_coupon_specimen_family_count": 11, "actuator_cable_coupon_route_measurement_count": len(routes),
         "actuator_cable_coupon_fixed_transition_included": True,
+        "actuator_cable_coupon_transition_brackets_dimensioned": True,
+        "actuator_cable_coupon_transition_bracket_placement_count": 25,
         "actuator_cable_coupon_direct_cf130_to_jst_rejected": True,
         "actuator_cable_coupon_built_count": 0, "actuator_cable_coupon_executed_test_count": 0,
         "actuator_cable_coupon_process_selected": False, "actuator_cable_final_cut_lengths_selected": False,
@@ -245,7 +250,7 @@ def integrate_root(routes: list[dict[str, object]]) -> None:
     start, end = "<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-START -->", "<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-END -->"
     if start in text and end in text:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
-    block = f'''{start}\n## Actuator cable coupon and route measurement\n\nThe [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) defines the complete moving **CF130 -> Molex 430250200/430300001 -> panel 430200200/430310001 -> restrained Alpha 3051 -> JST EH** transition coupon. Eleven specimen families now cover both crimp systems, the panel mount, strain isolation, electrical/thermal behavior and flex. Direct CF130-to-JST crimping is rejected. No production cut length, bracket, crimp setting or physical-work authority is released.\n{end}\n'''
+    block = f'''{start}\n## Actuator cable coupon and route measurement\n\nThe [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) defines the complete moving **CF130 -> Molex 430250200/430300001 -> panel 430200200/430310001 -> restrained Alpha 3051 -> JST EH** transition coupon. Eleven specimen families cover both crimp systems, the panel mount, strain isolation, electrical/thermal behavior and flex. The dimensioned bracket candidate and all **25 nominal placements** are configuration-bound. Direct CF130-to-JST crimping is rejected. No production cut length, bracket release, crimp setting or physical-work authority is granted.\n{end}\n'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-README-START -->"
     if marker in text:
         text = text.replace(marker, block + marker)
@@ -291,6 +296,7 @@ def main() -> int:
         "loose_piece_tooling_path_bound": True, "strip_terminal_tooling_path_bound": True,
         "cf9_power_candidate_rejected": True, "static_22awg_candidate_defined": True, "dynamic_22awg_candidate_defined": True,
         "complete_fixed_transition_coupon_defined": True, "direct_cf130_to_jst_eh_crimp_rejected": True,
+        "transition_brackets_dimensioned": True, "transition_bracket_placement_count": 25,
         "alpha_3051_crimp_process_selected": False, "cf130_crimp_process_selected": False,
         "cf9_specific_crimp_process_selected": False, "built_coupon_count": 0, "executed_test_count": 0,
         "measured_robot_route_count": 0, "released_final_cut_length_count": 0,
@@ -298,7 +304,7 @@ def main() -> int:
         "connection_authority": False, "powered_test_authority": False, "motion_authority": False, "energization_authority": False,
     }
     (OUT / "coupon-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
-    (OUT / "README.md").write_text(f"# HR-30 actuator cable coupon P0.1\n\n**{WARNING}**\n\nThis package tests the complete moving-CF130 / fixed Micro-Fit / restrained-Alpha-3051 / JST-EH transition. Direct CF130-to-JST crimping is rejected. It records zero physical execution and releases no production cable, bracket or crimp process.\n", encoding="utf-8", newline="\n")
+    (OUT / "README.md").write_text(f"# HR-30 actuator cable coupon P0.1\n\n**{WARNING}**\n\nThis package tests the complete moving-CF130 / fixed Micro-Fit / restrained-Alpha-3051 / JST-EH transition. Direct CF130-to-JST crimping is rejected. The dimensioned bracket candidate and all 25 nominal placements are configuration-bound, while received fit, official cutout, production material/fasteners, clamp force, pigtail lengths and all coupon execution remain open. It releases no production cable, bracket, crimp process or work authority.\n", encoding="utf-8", newline="\n")
     (OUT / "coupon-architecture.svg").write_text(drawing(), encoding="utf-8", newline="\n")
     (OUT / "index.html").write_text(render(route_rows), encoding="utf-8", newline="\n")
     shutil.copy2(Path(__file__), OUT / "actuator-cable-coupon-source.py")

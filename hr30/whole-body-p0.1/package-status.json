@@ -404,7 +404,7 @@
   "actuator_power_cable_geometric_candidate_bound": true,
   "actuator_power_fixed_transition_candidate_bound": true,
   "actuator_power_direct_cf130_to_jst_rejected": true,
-  "actuator_power_transition_brackets_dimensioned": false,
+  "actuator_power_transition_brackets_dimensioned": true,
   "actuator_power_cf130_core_od_verified": false,
   "actuator_power_cable_20c_planning_calculated": true,
   "actuator_power_cable_hot_ampacity_verified": false,
@@ -629,5 +629,8 @@
   "e1_fixture_hardware_selection_count": 13,
   "e1_fixture_fabrication_drawing_count": 4,
   "e1_fixture_hardware_built": false,
-  "e1_fixture_hardware_validated": false
+  "e1_fixture_hardware_validated": false,
+  "actuator_power_transition_bracket_placement_count": 25,
+  "actuator_cable_coupon_transition_brackets_dimensioned": true,
+  "actuator_cable_coupon_transition_bracket_placement_count": 25
 }

@@ -44,7 +44,7 @@ def main() -> int:
     holds = rows(OUT / "open-holds.csv")
     status = json.loads((OUT / "actuator-cable-kit-status.json").read_text(encoding="utf-8"))
 
-    need(len(sources) == 23 and len(connectors) == 6, "source/connector coverage drift")
+    need(len(sources) == 25 and len(connectors) == 6, "source/connector coverage drift")
     need(len(axes) == 25 and len({r["axis_id"] for r in axes}) == 25, "25 unique axis candidates required")
     need(len(transitions) == 25 and {r["axis_id"] for r in transitions} == {r["axis_id"] for r in axes}, "25 transition candidates required")
     need(len(data) == 7 and len(tests) == 14 and len(holds) == 14, "candidate/test/hold coverage drift")
@@ -54,7 +54,8 @@ def main() -> int:
     need(all(r["state"] == "OPEN" for r in holds), "hold falsely closed")
     need(all(r["result"] == "NOT EXECUTED" and r["measured_value"] == "NONE" for r in tests), "test execution overclaim")
 
-    local_sources = sources[:4]
+    local_sources = [r for r in sources if r["publisher"] == "Project Button"]
+    need(len(local_sources) == 6, "local source coverage drift")
     need(all(r["sha256"] == sha(ROOT / r["official_url_or_path"]) for r in local_sources), "local source hash drift")
     need(any(r["candidate_housing"] == "JST EHR-4" and r["candidate_contact"] == "JST SEH-001T-P0.6" for r in connectors), "RS-485 connector family missing")
     need(any(r["candidate_housing"] == "JST EHR-3" and r["candidate_contact"] == "JST SEH-001T-P0.6" for r in connectors), "TTL connector family missing")
@@ -94,11 +95,12 @@ def main() -> int:
     need(any(r["candidate"] == "igus CFBUS.PVC.001" and r["disposition"] == "TEST-COUPON CANDIDATE" and "150 ohm" in r["published_construction"] for r in data), "RS-485 test-coupon candidate missing")
     need(any(r["candidate"] == "Alpha Wire 86202" and r["disposition"] == "REJECT FOR RS-485 CANDIDATE" for r in data), "87-ohm RS-485 rejection missing")
     need(any(r["hold_id"] == "ACK-H11" and "omit GND" in r["unresolved_item"] for r in holds), "signal-reference architecture hold missing")
+    need(any(r["hold_id"] == "ACK-H13" and "dimensioned bracket CAD" in r["unresolved_item"] and "production-body tolerance sweep" in r["unresolved_item"] for r in holds), "transition-bracket successor hold missing")
 
     need(status["cf9_jst_cross_section_geometry_compatible"] is True, "legacy geometric evidence not recorded")
     need(status["cf9_power_candidate_rejected"] and status["static_alpha_3051_coupon_candidate_defined"] and status["dynamic_cf130_coupon_candidate_defined"], "power-wire disposition missing")
     need(status["direct_cf130_to_jst_eh_crimp_rejected"] and status["microfit_fixed_transition_candidate_defined"] and status["microfit_fixed_transition_exact_order_codes_bound"], "transition disposition missing")
-    need(status["transition_count"] == 25 and not status["microfit_cf130_core_od_verified"] and not status["transition_brackets_dimensioned"], "transition evidence boundary drift")
+    need(status["transition_count"] == 25 and not status["microfit_cf130_core_od_verified"] and status["transition_brackets_dimensioned"] and status["transition_bracket_placement_count"] == 25, "transition evidence boundary drift")
     need(abs(status["maximum_planning_voltage_drop_20c_at_candidate_cap_v"] - 0.090851) < 1e-6, "status max drop drift")
     for key in ["cf9_current_capacity_released", "cf9_route_life_verified", "power_cable_selected", "data_cable_selected", "crimp_process_selected", "procurement_authority", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]:
         need(status[key] is False, f"fail-closed status violated: {key}")
@@ -127,6 +129,7 @@ def main() -> int:
     need(root_readme.count("HR30-AXIS-COMMISSION-START") == 1 and root_readme.count("HR30-AXIS-COMMISSION-END") == 1, "axis-commissioning README marker drift")
     root_status = json.loads((WHOLE / "package-status.json").read_text(encoding="utf-8"))
     need(root_status["actuator_cable_kit_axis_count"] == 25 and root_status["actuator_cable_kit_cavity_record_count"] == 159, "root status integration missing")
+    need(root_status["actuator_power_transition_brackets_dimensioned"] and root_status["actuator_power_transition_bracket_placement_count"] == 25, "root transition-bracket reconciliation missing")
     need(root_status["actuator_cable_kit_current_caps_propagated"] and root_status["actuator_power_cable_20c_planning_calculated"] and not root_status["actuator_power_cable_hot_ampacity_verified"], "root advancement/thermal boundary drift")
     need(not root_status["energization_authority"], "root authority drift")
     print("PASS: HR-30 actuator cable kit binds 25 fixed-side Micro-Fit transition candidates, restrained Alpha 3051 pigtails and moving CF130 pairs while keeping all physical release gates open")
