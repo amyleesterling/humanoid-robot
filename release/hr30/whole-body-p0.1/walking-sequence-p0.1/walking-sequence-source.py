@@ -315,8 +315,9 @@ def main() -> int:
         ("WS-H08", "qualified controls, mechanical, electrical and functional-safety review remains open"),
     ]
     write_csv(OUT / "open-holds.csv", [{"hold_id": hold_id, "unresolved": text, "state": "OPEN", "authority": "BLOCKS HARDWARE MOTION AND WALKING", "warning": WARNING} for hold_id, text in holds])
+    dynamics_mass = float(sample_rows[0]["mass_kg"])
     status = {
-        "identifier": IDENTIFIER, "warning": WARNING, "dynamics_source": "hr30_tether.urdf", "dynamics_mass_kg": 9.958224,
+        "identifier": IDENTIFIER, "warning": WARNING, "dynamics_source": "hr30_tether.urdf", "dynamics_mass_kg": dynamics_mass,
         "sequence_count": len(sequence_rows), "keyframe_count": len(keyframe_rows), "sample_rate_hz": 50,
         "sample_count": len(sample_rows), "joint_sample_count": len(joint_rows), "mjcf_keyframe_count": mjcf_key_count,
         "minimum_support_margin_mm": stats["minimum_support_margin_mm"], "minimum_swing_clearance_mm": stats["minimum_swing_clearance_mm"],
@@ -332,7 +333,7 @@ def main() -> int:
 
 **{WARNING}**
 
-This package converts the active 9.958 kg tether-first whole-body model into two complete 50 Hz minimum-jerk step candidates. Each sequence begins in neutral double support, crouches, transfers weight, lifts one foot, reaches a 40 mm capture-step target and ends in a nominally flat double-support touchdown. All 25 joint positions, velocities and accelerations are present at every sample, and the exact keyframes are loadable in the tether MJCF model.
+This package converts the active {dynamics_mass:.3f} kg tether-first whole-body model into two complete 50 Hz minimum-jerk step candidates. Each sequence begins in neutral double support, crouches, transfers weight, lifts one foot, reaches a 40 mm capture-step target and ends in a nominally flat double-support touchdown. All 25 joint positions, velocities and accelerations are present at every sample, and the exact keyframes are loadable in the tether MJCF model.
 
 The web guide animates the entire body from the generated link transforms. It is an engineering visualization and simulator handoff, not a motion-control interface. No DYNAMIXEL packet, actuator ID, torque-enable request or firmware command is emitted.
 
@@ -345,7 +346,7 @@ Positive projected-COM margin and in-limit interpolation are narrow kinematic sc
     readme_block = f'''{start}
 ## Timed whole-body walking sequence P0.1
 
-The [interactive walking-sequence guide](walking-sequence-p0.1/index.html) binds the active 9.958 kg tether-first URDF/MJCF to two bilateral 50 Hz minimum-jerk step candidates. Each trajectory ends with both feet nominally flat and one foot advanced 40 mm; all 25 joint positions, velocities and accelerations are exported. The data is simulator-only and carries no hardware motion or walking authority.
+The [interactive walking-sequence guide](walking-sequence-p0.1/index.html) binds the active {dynamics_mass:.3f} kg tether-first URDF/MJCF to two bilateral 50 Hz minimum-jerk step candidates. Each trajectory ends with both feet nominally flat and one foot advanced 40 mm; all 25 joint positions, velocities and accelerations are exported. The data is simulator-only and carries no hardware motion or walking authority.
 {end}'''
     replace_marked(BODY / "README.md", start, end, readme_block)
     web_block = f'''{start}<section class="panel" id="walking-sequence"><h2>Scrub the first complete timed steps</h2><p>The active tether-first model now has bilateral 50 Hz minimum-jerk sequences from neutral stand through a grounded 40 mm touchdown. <a href="walking-sequence-p0.1/index.html">Open the interactive whole-body walking-sequence guide.</a> Simulator data is not a hardware command or motion authority.</p></section>{end}'''
@@ -355,6 +356,7 @@ The [interactive walking-sequence guide](walking-sequence-p0.1/index.html) binds
     package_status.update({
         "whole_body_walking_sequence_present": True, "walking_sequence_count": len(sequence_rows),
         "walking_sequence_sample_count": len(sample_rows), "walking_sequence_dynamics_source": "hr30_tether.urdf",
+        "walking_sequence_dynamics_mass_kg": dynamics_mass,
         "bilateral_grounded_touchdown_present": True, "walking_sequence_physically_validated": False,
     })
     package_status_path.write_text(json.dumps(package_status, indent=2) + "\n", encoding="utf-8")

@@ -28,6 +28,29 @@ def rows(name: str) -> list[dict]:
     return list(csv.DictReader((SRC / name).open(encoding="utf-8")))
 
 
+def verify_assembly_group_contingency(link_rows: list[dict]) -> None:
+    groups: dict[str, list[dict]] = {}
+    for row in link_rows:
+        groups.setdefault(row["assembly_group"], []).append(row)
+    for group, members in groups.items():
+        non_fastener = sum(
+            float(row["identified_planning_candidate_kg"])
+            - float(row["explicit_joint_fastener_candidate_kg"])
+            for row in members
+        )
+        fasteners = sum(float(row["explicit_joint_fastener_candidate_kg"]) for row in members)
+        expected_group_contingency = max(0.0, non_fastener * 0.08 - fasteners)
+        actual_group_contingency = sum(float(row["integration_contingency_kg"]) for row in members)
+        require(abs(actual_group_contingency - expected_group_contingency) < 5e-9, f"assembly-group contingency mismatch {group}")
+        for row in members:
+            link_non_fastener = (
+                float(row["identified_planning_candidate_kg"])
+                - float(row["explicit_joint_fastener_candidate_kg"])
+            )
+            expected_link_share = expected_group_contingency * link_non_fastener / non_fastener if non_fastener else 0.0
+            require(abs(float(row["integration_contingency_kg"]) - expected_link_share) < 5e-9, f"assembly-group contingency share mismatch {row['dynamic_link']}")
+
+
 def main() -> int:
     required = {
         "actuator-mass-source-register.csv", "mass-item-reconciliation.csv",
@@ -135,12 +158,13 @@ def main() -> int:
         contingency_before = float(row["integration_contingency_before_fastener_allocation_kg"])
         contingency = float(row["integration_contingency_kg"])
         require(abs(contingency_before - (identified_link - fastener_link) * 0.08) < 2e-9, f"pre-fastener contingency mismatch {row['dynamic_link']}")
-        require(abs(contingency - max(0.0, contingency_before - fastener_link)) < 2e-9, f"remaining contingency mismatch {row['dynamic_link']}")
         require(abs(reconciled - (identified_link + contingency)) < 2e-9, f"link planning rule mismatch {row['dynamic_link']}")
+    verify_assembly_group_contingency(links)
     reconciled_total = sum(float(row["reconciled_dynamics_mass_kg"]) for row in links)
     require(abs(reconciled_total - float(summary["reconciled_dynamics_planning_mass_kg"])) < 2e-9, "reconciled total mismatch")
     tether_links = rows("link-mass-reconciliation-tether.csv")
     require(len(tether_links) == 26 and len({row["dynamic_link"] for row in tether_links}) == 26, "tether link reconciliation population drift")
+    verify_assembly_group_contingency(tether_links)
     tether_total = sum(float(row["reconciled_dynamics_mass_kg"]) for row in tether_links)
     require(abs(tether_total - float(summary["active_tether_dynamics_planning_mass_kg"])) < 2e-9, "tether dynamics total mismatch")
     require(float(next(row for row in tether_links if row["dynamic_link"] == "torso")["identified_planning_candidate_kg"]) < float(next(row for row in links if row["dynamic_link"] == "torso")["identified_planning_candidate_kg"]), "tether torso does not exclude onboard envelope")
