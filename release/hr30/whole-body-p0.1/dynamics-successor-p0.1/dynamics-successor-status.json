@@ -1,0 +1,19 @@
+{
+  "identifier": "HR30-DYNAMICS-SUCCESSOR-P0.1",
+  "warning": "PRELIMINARY - NUMERICAL HIP-REDUCTION SUCCESSOR ONLY - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION",
+  "numerically_finite": true,
+  "unexpected_contact_pairs": [],
+  "all_sequences_pass_bounded_successor_screen": false,
+  "sequence_count": 2,
+  "simulation_logged_sample_count": 1074,
+  "axis_result_count": 50,
+  "transmission_geometry_validated": false,
+  "transmission_inertia_backlash_modeled": false,
+  "continuous_actuator_capacity_validated": false,
+  "physical_execution_count": 0,
+  "connection_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "walking_authority": false,
+  "energization_authority": false
+}
