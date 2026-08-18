@@ -387,5 +387,5 @@ The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1
 <!-- HR30-ARTICULATED-POWER-HARNESS-P01-START -->
 ## Articulated whole-body power harness
 
-The [articulated power-harness CAD](harness/articulated-power-harness-p0.1/index.html) replaces the invalid rigid whole-limb guard idea with a cascaded, joint-by-joint candidate. All 25 axes have a tap-board envelope, flat-flex crossing and separate rigid/flexible guard geometry. It is a coherent packaging candidate; full-pose and physical validation remain open.
+The [articulated power-harness CAD](harness/articulated-power-harness-p0.1/index.html) now follows the authoritative 25 individually protected branches instead of the rejected tap-board cascade. Distal cables appear at every upstream joint, giving 76 explicit joint-crossing segments plus 25 fixed transitions and separate rigid/flexible guards. It is a coherent packaging candidate; full-pose and physical validation remain open.
 <!-- HR30-ARTICULATED-POWER-HARNESS-P01-END -->

@@ -35,5 +35,5 @@ The [interactive duty/thermal screen](duty-thermal-screen-p0.1/index.html) binds
 <!-- HR30-ARTICULATED-POWER-HARNESS-P01-START -->
 ## Articulated power harness
 
-The [articulated power-harness candidate](articulated-power-harness-p0.1/index.html) rejects a rigid whole-limb cable guard. It defines 25 passive tap-board envelopes, 45 four-conductor flat-cable joint crossings, and separate rigid-link/flexible-joint guard solids. Every protected pair remains electrically independent. Full-pose collision, bend/torsion life, termination, derating and physical validation remain open.
+The [articulated power-harness candidate](articulated-power-harness-p0.1/index.html) rejects both a rigid whole-limb cable guard and the conflicting intermediate tap-board cascade. The controlled construction candidate keeps 25 individually protected two-wire branches, represents all 76 upstream joint crossings, reuses the 25 fixed Micro-Fit transition candidates, and separates rigid-link from flexible-joint guard solids. Full-pose collision, bend/torsion life, termination, derating and physical validation remain open.
 <!-- HR30-ARTICULATED-POWER-HARNESS-P01-END -->
