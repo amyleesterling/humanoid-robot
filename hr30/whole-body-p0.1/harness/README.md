@@ -25,3 +25,9 @@ The [interactive duty/thermal screen](duty-thermal-screen-p0.1/index.html) binds
 
 The [interactive distributed-power guide](distributed-power-harness-successor-p0.1/index.html) rejects the physically impossible one-jacketed-cable-per-axis bundle. Six local protected nodes feed exact Alpha Wire 12-, 4-, and 2-core candidate trunks with an explicit protected pair for every one of the 25 axes. All six trunk diameter screens fit; five existing bend reservations require route-guide redesign. Protection devices, breakout ECAD, routed joint sweeps, thermal validation and every powered-work authority remain open.
 <!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-END -->
+
+<!-- HR30-POWER-ROUTE-GUIDES-P01-START -->
+## Whole-body power route guides
+
+The [interactive power-route guide](power-route-guides-p0.1/index.html) replaces all six straight actuator-power corridor placeholders with editable tangent 3D centerlines. Twelve exact circular turns satisfy the selected trunks' 8x maximum-OD planning rule. The routes are external guarded-spine candidates; guard CAD, clamps, cut lengths, pose/fall/walking collision sweeps, thermal/flex tests and every powered-work authority remain open.
+<!-- HR30-POWER-ROUTE-GUIDES-P01-END -->

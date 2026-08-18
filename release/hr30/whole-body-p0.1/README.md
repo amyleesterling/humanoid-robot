@@ -347,3 +347,9 @@ The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1
 
 The [distributed-power harness successor](harness/distributed-power-harness-successor-p0.1/index.html) replaces the rejected 25-jacket corridor bundle with six local protected distribution nodes and multi-core limb trunks. It binds a dedicated protected core pair to every axis and exact cable/terminal candidates. All six diameter screens pass; five bend reservations, the protection electronics, breakout ECAD, routed motion sweeps and thermal tests remain open.
 <!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-END -->
+
+<!-- HR30-POWER-ROUTE-GUIDES-P01-START -->
+## Routed whole-body power trunks
+
+The [whole-body power-route guide](harness/power-route-guides-p0.1/index.html) adds actual 3D tangent centerlines to all six actuator-power trunks. The complete robot is visible with the six external guarded-spine candidates, and the editable route-only STEP preserves every source endpoint. Geometry passes the cable-radius screen; collision, guard, clamp, thermal, motion and physical validation remain open.
+<!-- HR30-POWER-ROUTE-GUIDES-P01-END -->
