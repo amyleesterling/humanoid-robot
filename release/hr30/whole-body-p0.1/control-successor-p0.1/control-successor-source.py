@@ -53,7 +53,7 @@ def write_csv(path: Path, rows: list[dict]) -> None:
     if not rows:
         raise RuntimeError(f"refusing to write empty evidence table {path.name}")
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -117,6 +117,28 @@ def install_controller() -> None:
     predecessor.control = control
 
 
+def install_interpolation_compatibility() -> None:
+    """Adapt the predecessor's historical row API to the cached baseline API.
+
+    The P0.1 predecessor is preserved as executed evidence. The current baseline
+    caches numeric series for performance, while the historical predecessor
+    still calls ``interpolate(rows, field, time)``. Keep that evidence immutable
+    and install a bounded adapter only for this successor regeneration.
+    """
+    cache: dict[tuple[int, str], tuple[np.ndarray, np.ndarray]] = {}
+
+    def interpolate_rows(rows: list[dict[str, str]], field: str, time_s: float) -> float:
+        key = (id(rows), field)
+        if key not in cache:
+            cache[key] = (
+                np.fromiter((float(row["time_s"]) for row in rows), dtype=float),
+                np.fromiter((float(row[field]) for row in rows), dtype=float),
+            )
+        return float(np.interp(time_s, *cache[key]))
+
+    predecessor.baseline.interpolate = interpolate_rows
+
+
 def render_page(summaries: list[dict], axes: list[dict], margins: list[dict]) -> str:
     cards = "".join(
         f"<article class='card'><h3>{html.escape(row['sequence_id'])}</h3>"
@@ -168,6 +190,7 @@ def main() -> int:
 
     model_path = build_model()
     install_controller()
+    install_interpolation_compatibility()
     model = mujoco.MjModel.from_xml_path(str(model_path.resolve()))
     samples, axes, summaries, predecessor_status = predecessor.simulate(model, baseline_caps, successor_caps)
     normalize(samples)
