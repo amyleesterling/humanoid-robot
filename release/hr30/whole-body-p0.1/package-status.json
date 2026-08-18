@@ -642,5 +642,17 @@
   "actuator_bus_parallel_motor_return_prohibited": true,
   "actuator_bus_rs485_isolated_channel_count": 5,
   "actuator_bus_ttl_nonisolated_channel_count": 3,
-  "actuator_bus_reference_validated": false
+  "actuator_bus_reference_validated": false,
+  "interaxis_data_adapter_candidate_defined": true,
+  "interaxis_data_adapter_count": 17,
+  "interaxis_data_adapter_rs485_count": 14,
+  "interaxis_data_adapter_ttl_count": 3,
+  "interaxis_factory_power_conductor_removal_count": 34,
+  "interaxis_extracted_terminal_count": 68,
+  "interaxis_destination_branch_power_contact_count": 34,
+  "interaxis_upstream_empty_power_cavity_count": 34,
+  "interaxis_data_adapter_built_count": 0,
+  "interaxis_data_adapter_inspected_count": 0,
+  "interaxis_data_adapter_communication_tested_count": 0,
+  "interaxis_data_adapter_selected": false
 }
