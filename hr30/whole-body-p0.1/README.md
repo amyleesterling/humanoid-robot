@@ -104,6 +104,11 @@ The [leg-drivetrain package](leg-drivetrain-p0.1/index.html) assigns every one o
 The [leg-drive adapter guide](leg-drivetrain-adapters-p0.1/index.html) adds three editable horn-to-pulley adapters and two shouldered output-shaft/capture families. Exact HN12/HN13 STEP geometry and reference-drawing patterns control the motor interface; all ten reduced axes have an adapter allocation. Nominal geometry is complete, while material, tolerances, fits, fastener details, capacity and physical proof remain open.
 <!-- HR30-LEG-ADAPTERS-P01-README-END -->
 
+<!-- HR30-HIP4-P01-README-START -->
+## Bilateral 4:1 compound hip transmissions
+
+The [hip-transmission package](hip-transmission-p0.1/index.html) installs physical two-stage 16:32 EV5GT drives on all four hip pitch/roll axes in a derived complete-body STEP/GLB. Each module includes two belts, four pulleys, a supported intermediate shaft, two carrier plates with explicit motor-tension slots, the exact actuator/horn boundary, output retention and a removable guard. Capacity and motion validation remain open.
+<!-- HR30-HIP4-P01-README-END -->
 <!-- HR30-INSTALLED-LEG-DRIVES-P01-README-START -->
 ## Product-specific leg drives installed in the whole body
 

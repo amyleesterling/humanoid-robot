@@ -598,5 +598,12 @@
   "dynamics_successor_present": true,
   "dynamics_successor_sequence_count": 2,
   "dynamics_successor_bounded_screen_pass": false,
-  "physical_hip_transmission_validated": false
+  "physical_hip_transmission_validated": false,
+  "hip4_compound_transmission_cad_present": true,
+  "hip4_axis_count": 4,
+  "hip4_ratio": 4.0,
+  "hip4_whole_body_step_glb_present": true,
+  "hip4_urdf_mjcf_present": true,
+  "hip4_capacity_validated": false,
+  "hip4_motion_sweep_validated": false
 }
