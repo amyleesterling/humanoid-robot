@@ -23,3 +23,14 @@ The native motion-controller J1 boundary now has a physical cable assembly candi
 Manufacturing and placed STEP/GLB files, a native-J1 route, contact map, BOM and nine-step traveler are included. Crimping, set-screw assembly, sleeving, labels, received fit, derating, tests, supply limits, grounding and every authority remain open. No hand crimp is released.
 
 <!-- HR30-E1-J1-POWER-CABLE-P01-END -->
+
+<!-- HR30-E1-FIXTURE-HARDWARE-P01-START -->
+## Physical fixture hardware and fabrication definition
+
+**PRELIMINARY - UNBUILT E1 FIXTURE HARDWARE CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION**
+
+The fixture CAD now contains the hardware it previously only named. Fourteen board locations use a 3 mm project-owned LEXAN pedestal, an 8 mm Wuerth `970080155` internal/internal M2.5 standoff, and separate 12 mm bottom / 6 mm top nylon screws. The two carrier covers now have 3 mm flanges, four physical fastener holes each, and eight M3 screw/nut stacks. Four 18 mm bench feet combine a machined 7.9 mm LEXAN riser with a recessed M5 fastener and a 10.1 mm 3M `SJ5309` nonslip bumper.
+
+The base, covers, raceway, pedestals and foot risers are dimensioned for SABIC LEXAN 9034 sheet. STEP/GLB hardware CAD, four readable fabrication drawings, exact candidate/order-code registers and ten first-article inspections are included. Supplier stock, machining process, torque, received fit, adhesion, load, FAI and qualified acceptance remain open.
+
+<!-- HR30-E1-FIXTURE-HARDWARE-P01-END -->

@@ -376,3 +376,9 @@ The E1 controls fixture now includes two placed controller-to-carrier harness ca
 The E1 fixture now includes the physical two-conductor J1 cable candidate alongside the controller-to-carrier harnesses. Two 1000 mm Alpha Wire 3051 conductors are bound to native contacts J1.2 `AUX_5V_SAFE` (red) and J1.1 `CTRL_GND` (black), with exact JST, Pomona, Alpha FIT and Brady material candidates. The editable STEP/GLB assembly uses project-owned dimensional connector envelopes and shows the cable at the actual J1 placement. Every assembly process, test, supply limit, grounding decision and authority remains open.
 
 <!-- HR30-E1-J1-POWER-CABLE-P01-END -->
+
+<!-- HR30-E1-FIXTURE-HARDWARE-P01-START -->
+## E1 fixture hardware and fabrication
+
+The controls-only fixture now has [interactive hardware CAD and readable fabrication drawings](electrical/e1-controls-only-fixture-p0.1/index.html#e1-fixture-hardware). Its 14 PCB stacks, eight cover fasteners and four full-height foot stacks are dimensioned and bound to exact candidate hardware. The covers now have real flanges and mounting holes. Fabrication, received fit, torque, adhesive/load testing, FAI and qualified acceptance remain open.
+<!-- HR30-E1-FIXTURE-HARDWARE-P01-END -->

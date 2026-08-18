@@ -79,6 +79,20 @@ def main() -> int:
         "j1-power-cable-source-binding.csv", "j1-power-cable-open-holds.csv",
         "j1-power-cable-status.json", "j1-power-cable-assembly-map.svg",
         "e1-j1-power-cable-source.py",
+        "HR30_E1_fixture_hardware_candidate.step",
+        "HR30_E1_fixture_hardware_candidate.glb",
+        "fixture-hardware-selection-register.csv",
+        "fixture-fastener-stack-register.csv",
+        "fixture-material-register.csv",
+        "fixture-fabrication-drawing-register.csv",
+        "fixture-dimensional-inspection-register.csv",
+        "fixture-hardware-primary-source-register.csv",
+        "fixture-hardware-source-binding.csv",
+        "fixture-hardware-open-holds.csv", "fixture-hardware-status.json",
+        "base-panel-fabrication-drawing.svg",
+        "carrier-cover-fabrication-drawing.svg",
+        "under-panel-raceway-fabrication-drawing.svg",
+        "fixture-hardware-assembly-map.svg", "e1-fixture-hardware-source.py",
     }
     source_files = {path.name for path in OUT.iterdir() if path.is_file()}
     release_files = {path.name for path in REL.iterdir() if path.is_file()}
@@ -100,6 +114,11 @@ def main() -> int:
         sha(OUT / "e1-j1-power-cable-source.py")
         == sha(ROOT / "tools/generate_hr30_e1_logic_power_cable_p01.py"),
         "J1 power-cable generator snapshot drift",
+    )
+    need(
+        sha(OUT / "e1-fixture-hardware-source.py")
+        == sha(ROOT / "tools/generate_hr30_e1_fixture_hardware_p01.py"),
+        "fixture hardware generator snapshot drift",
     )
 
     bindings = rows(OUT / "source-binding.csv")
@@ -248,6 +267,45 @@ def main() -> int:
         "motion_authority", "walking_authority", "energization_authority",
     )), "J1 status overclaim")
 
+    hardware = rows(OUT / "fixture-hardware-selection-register.csv")
+    need(len(hardware) == 13 and len({row["selection_id"] for row in hardware}) == 13, "fixture hardware selection drift")
+    expected_orders = {
+        "970080155", "50M025045P006 / ITEM 10295533",
+        "50M025045D012 / ITEM 10325643", "50M030050P012 / ITEM 10397367",
+        "496241 / ITEM 10279151", "SJ5309 / 3M ID 7000029678",
+        "ITEM 10374603", "0030030000VR / ITEM 10041420",
+    }
+    need(expected_orders <= {row["order_code"] for row in hardware}, "exact fixture hardware candidates missing")
+    need(all(row["built"] == "NO" for row in hardware), "fixture hardware build overclaim")
+    stacks = rows(OUT / "fixture-fastener-stack-register.csv")
+    need(len(stacks) == 3 and sum(int(row["location_count"]) for row in stacks) == 26, "fixture fastener stack count drift")
+    need({row["stack_id"] for row in stacks} == {"FH-ST01", "FH-ST02", "FH-ST03"}, "fixture stack identity drift")
+    materials = rows(OUT / "fixture-material-register.csv")
+    need(len(materials) == 4 and all("OPEN" in row["state"] for row in materials), "fixture material register drift")
+    drawings = rows(OUT / "fixture-fabrication-drawing-register.csv")
+    need(len(drawings) == 4 and all((OUT / row["file"]).is_file() for row in drawings), "fixture drawing register drift")
+    inspections = rows(OUT / "fixture-dimensional-inspection-register.csv")
+    need(len(inspections) == 10 and all(row["result"] == "NOT EXECUTED" for row in inspections), "fixture inspection overclaim")
+    hardware_sources = rows(OUT / "fixture-hardware-primary-source-register.csv")
+    need(len(hardware_sources) == 10 and {row["manufacturer"] for row in hardware_sources} == {"SABIC", "Wuerth Elektronik", "Essentra", "3M"}, "fixture primary-source drift")
+    hardware_bindings = rows(OUT / "fixture-hardware-source-binding.csv")
+    need(len(hardware_bindings) == 6 and len({row["role"] for row in hardware_bindings}) == 6, "fixture hardware binding drift")
+    for row in hardware_bindings:
+        path = ROOT / row["path"]
+        need(path.is_file() and sha(path) == row["sha256"], f"fixture hardware binding mismatch {row['role']}")
+    hardware_holds = rows(OUT / "fixture-hardware-open-holds.csv")
+    need(len(hardware_holds) == 7 and all(row["state"] == "OPEN" for row in hardware_holds), "fixture hardware hold drift")
+    hardware_status = json.loads((OUT / "fixture-hardware-status.json").read_text(encoding="utf-8"))
+    need(hardware_status["hardware_selection_count"] == 13 and hardware_status["pcb_support_stack_count"] == 14, "fixture hardware status count drift")
+    need(hardware_status["cover_fastener_stack_count"] == 8 and hardware_status["bench_foot_stack_count"] == 4, "fixture cover/foot status drift")
+    need(not any(hardware_status[key] for key in (
+        "fixture_built", "supplier_coc_received", "machining_process_released",
+        "received_fit_validated", "torque_creep_validated", "foot_adhesion_load_validated",
+        "fai_executed", "qualified_review_accepted", "fabrication_authority",
+        "connection_authority", "powered_test_authority", "motion_authority",
+        "walking_authority", "energization_authority",
+    )), "fixture hardware authority overclaim")
+
     assembly = cq.importers.importStep(str(OUT / "HR30_E1_controls_only_fixture_candidate.step")).val()
     bounds = assembly.BoundingBox()
     need(abs(bounds.xlen - 360.009328) < 0.02 and abs(bounds.ylen - 240.009328) < 0.02, "assembly footprint drift")
@@ -256,6 +314,10 @@ def main() -> int:
     base_bounds = base.BoundingBox()
     need(abs(base_bounds.xlen - 360.0) < 0.02 and abs(base_bounds.ylen - 240.0) < 0.02 and abs(base_bounds.zlen - 6.0) < 0.02, "base panel dimensions drift")
     need((OUT / "HR30_E1_controls_only_fixture_candidate.glb").stat().st_size > 500_000, "GLB is implausibly small")
+    hardware_cad = cq.importers.importStep(str(OUT / "HR30_E1_fixture_hardware_candidate.step")).val()
+    hardware_bounds = hardware_cad.BoundingBox()
+    need(hardware_bounds.xlen > 340.0 and hardware_bounds.ylen > 210.0 and hardware_bounds.zlen > 35.0, "fixture hardware CAD is implausibly incomplete")
+    need((OUT / "HR30_E1_fixture_hardware_candidate.glb").stat().st_size > 40_000, "fixture hardware GLB is implausibly small")
     logic_cad = cq.importers.importStep(str(OUT / "HR30_E1_logic_harness_candidate.step")).val()
     logic_bounds = logic_cad.BoundingBox()
     need(logic_bounds.xlen > 210.0 and logic_bounds.ylen > 100.0 and logic_bounds.zlen > 30.0, "logic harness CAD is implausibly incomplete")
@@ -283,6 +345,8 @@ def main() -> int:
     need("HR30_E1_controls_fixture_with_logic_harness_candidate.glb" in page and "27" in page and "54" in page, "interactive logic harness section missing")
     need("HR30_E1_controls_fixture_complete_logic_wiring_candidate.glb" in page and 'id="e1-j1-power-cable"' in page, "interactive J1 cable section missing")
     need(page.index('id="e1-j1-power-cable"') < page.index("</main>") < page.index("<footer>"), "J1 cable guide section escaped main")
+    need("HR30_E1_fixture_hardware_candidate.glb" in page and 'id="e1-fixture-hardware"' in page, "interactive fixture hardware section missing")
+    need(page.index('id="e1-fixture-hardware"') < page.index("</main>") < page.index("<footer>"), "fixture hardware guide section escaped main")
     need("\ufffd" not in page and "Ã" not in page and "Â" not in page, "E1 guide contains mojibake")
     need("This guide cannot authorize connection or power" in page, "authority boundary missing from guide")
     root_readme = (BODY / "README.md").read_text(encoding="utf-8")
@@ -296,6 +360,8 @@ def main() -> int:
     need(not package_status["e1_logic_harness_built"] and not package_status["e1_logic_harness_validated"], "root logic harness overclaim")
     need(package_status["e1_j1_logic_power_cable_candidate_present"] and package_status["e1_j1_logic_power_conductor_count"] == 2, "root J1 cable status absent")
     need(not package_status["e1_j1_logic_power_cable_built"] and not package_status["e1_j1_logic_power_cable_validated"], "root J1 cable overclaim")
+    need(package_status["e1_fixture_hardware_candidate_present"] and package_status["e1_fixture_hardware_selection_count"] == 13, "root fixture hardware status absent")
+    need(not package_status["e1_fixture_hardware_built"] and not package_status["e1_fixture_hardware_validated"], "root fixture hardware overclaim")
     need(not package_status["e1_fixture_built"] and not package_status["e1_connection_authority"] and not package_status["e1_powered_test_authority"], "root E1 authority overclaim")
 
     manifest = rows(OUT / "file-manifest.csv")
@@ -305,7 +371,7 @@ def main() -> int:
         need(path.is_file() and int(row["bytes"]) == path.stat().st_size and row["sha256"] == sha(path), f"manifest mismatch {row['file']}")
         need(row["warning"] == WARNING, f"manifest warning drift {row['file']}")
 
-    print("PASS: HR-30 E1 fixture uses 4 native PCBs / 14 exact mount axes, encloses all 8 data field ports, adds 2 pin-for-pin logic harnesses plus the 2-conductor 1000 mm J1 logic-power cable candidate, contains zero actuator-power hardware, and keeps every physical/authority gate false")
+    print("PASS: HR-30 E1 fixture uses 4 native PCBs / 14 defined support stacks, 8 physical cover fasteners and 4 full-height foot stacks, encloses all 8 data field ports, includes both logic harnesses plus J1, contains zero actuator-power hardware, and keeps every physical/authority gate false")
     return 0
 
 

@@ -134,7 +134,17 @@ def carrier_cover(cx: float, cy: float) -> cq.Shape:
     # base plate directly below JCA1/JCB1; no external field-port opening exists.
     outer = cq.Workplane("XY").box(98, 58, 28).translate((cx, cy, 20)).val()
     inner = cq.Workplane("XY").box(92, 52, 25).translate((cx, cy, 18.5)).val()
-    return outer.cut(inner)
+    shell = outer.cut(inner)
+    flange_outer = cq.Workplane("XY").box(110, 70, 3).translate((cx, cy, 4.5)).val()
+    flange_inner = cq.Workplane("XY").box(92, 52, 4).translate((cx, cy, 4.5)).val()
+    cover = shell.fuse(flange_outer.cut(flange_inner))
+    for x, y in cover_fastener_points(cx, cy):
+        cover = cover.cut(cq.Workplane("XY").cylinder(5, 1.7).translate((x, y, 2)).val())
+    return cover
+
+
+def cover_fastener_points(cx: float, cy: float) -> list[tuple[float, float]]:
+    return [(cx + dx, cy + dy) for dx in (-52.0, 52.0) for dy in (-32.0, 32.0)]
 
 
 def write_cad(exported: dict[str, Path]) -> dict:
@@ -142,6 +152,10 @@ def write_cad(exported: dict[str, Path]) -> dict:
     for x in (-165, 165):
         for y in (-105, 105):
             panel = panel.cut(cq.Workplane("XY").cylinder(10, 2.75).translate((x, y, -5)))
+
+    for key in ("CARRIER_A", "CARRIER_B"):
+        for x, y in cover_fastener_points(*PLACEMENTS[key]):
+            panel = panel.cut(cq.Workplane("XY").cylinder(10, 1.7).translate((x, y, -5)))
 
     # Exact PCB mounting-hole axes are taken from the native board sources.
     for key, points in HOLES.items():
@@ -160,14 +174,26 @@ def write_cad(exported: dict[str, Path]) -> dict:
     panel_shape = panel.val()
 
     standoffs: list[cq.Shape] = []
+    hardware_parts: list[cq.Shape] = []
+    hardware_assembly = cq.Assembly(name="HR30_E1_FIXTURE_HARDWARE_P01_NOT_RELEASED")
     for key, points in HOLES.items():
         for x, y in points:
             px, py = local_to_panel(key, x, y)
-            standoff = (
-                cq.Workplane("XY").circle(3.0).circle(1.4).extrude(8)
+            pedestal = cq.Workplane("XY").circle(3.0).circle(1.4).extrude(3).translate((px, py, 3)).val()
+            threaded_spacer = (
+                cq.Workplane("XY").polygon(6, 5.773503).circle(1.05).extrude(8)
                 .translate((px, py, 6)).val()
             )
+            standoff = cq.Compound.makeCompound([pedestal, threaded_spacer])
             standoffs.append(standoff)
+            top_shank = cq.Workplane("XY").circle(1.25).extrude(6).translate((px, py, 9.6)).val()
+            top_head = cq.Workplane("XY").circle(2.5).extrude(2.1).translate((px, py, 15.6)).val()
+            bottom_shank = cq.Workplane("XY").circle(1.25).extrude(12).translate((px, py, -3)).val()
+            bottom_head = cq.Workplane("XY").circle(2.25).extrude(1.6).translate((px, py, -4.6)).val()
+            fastener = cq.Compound.makeCompound([top_shank, top_head, bottom_shank, bottom_head])
+            hardware_parts.extend([standoff, fastener])
+            hardware_assembly.add(standoff, name=f"{key}_M2P5_PEDESTAL_AND_STANDOFF_{len(standoffs):02d}", color=cq.Color(0.88, 0.70, 0.20, 1))
+            hardware_assembly.add(fastener, name=f"{key}_M2P5_TOP_BOTTOM_SCREWS_{len(standoffs):02d}", color=cq.Color(0.94, 0.94, 0.86, 1))
 
     covers = {
         "CARRIER_A": carrier_cover(*PLACEMENTS["CARRIER_A"]),
@@ -185,10 +211,34 @@ def write_cad(exported: dict[str, Path]) -> dict:
         cq.Workplane("XY").box(2, 146, 14).translate((106.5, 0, -10)).val(),
     ]
     underside_raceway = cq.Compound.makeCompound(guard_parts)
-    feet = [
-        cq.Workplane("XY").circle(10).extrude(18).translate((x, y, -21)).val()
-        for x in (-165, 165) for y in (-105, 105)
-    ]
+    feet: list[cq.Shape] = []
+    foot_fasteners: list[cq.Shape] = []
+    for x in (-165, 165):
+        for y in (-105, 105):
+            riser = cq.Workplane("XY").circle(11.15).circle(2.75).extrude(7.9).translate((x, y, -10.9))
+            riser = riser.cut(cq.Workplane("XY").circle(4.75).extrude(4.8).translate((x, y, -10.9)))
+            bumper = cq.Workplane("XY").circle(11.15).extrude(10.1).translate((x, y, -21)).val()
+            foot = cq.Compound.makeCompound([riser.val(), bumper])
+            feet.append(foot)
+            screw_head = cq.Workplane("XY").circle(4.5).extrude(4.5).translate((x, y, -10.9)).val()
+            screw_shank = cq.Workplane("XY").circle(2.5).extrude(16).translate((x, y, -6.4)).val()
+            nut = cq.Workplane("XY").polygon(6, 9.237604).circle(2.5).extrude(4.2).translate((x, y, 3)).val()
+            foot_fastener = cq.Compound.makeCompound([screw_head, screw_shank, nut])
+            foot_fasteners.append(foot_fastener)
+            hardware_parts.extend([foot, foot_fastener])
+            hardware_assembly.add(foot, name=f"FOOT_RISER_AND_SJ5309_{len(feet):02d}", color=cq.Color(0.12, 0.17, 0.23, 0.92))
+            hardware_assembly.add(foot_fastener, name=f"FOOT_M5_SCREW_AND_NUT_{len(feet):02d}", color=cq.Color(0.92, 0.92, 0.84, 1))
+
+    cover_fasteners: list[cq.Shape] = []
+    for key in ("CARRIER_A", "CARRIER_B"):
+        for x, y in cover_fastener_points(*PLACEMENTS[key]):
+            shank = cq.Workplane("XY").circle(1.5).extrude(12).translate((x, y, -6)).val()
+            head = cq.Workplane("XY").circle(2.8).extrude(2.4).translate((x, y, 6)).val()
+            nut = cq.Workplane("XY").polygon(6, 6.350853).circle(1.5).extrude(2.4).translate((x, y, -5.4)).val()
+            fastener = cq.Compound.makeCompound([shank, head, nut])
+            cover_fasteners.append(fastener)
+            hardware_parts.append(fastener)
+            hardware_assembly.add(fastener, name=f"{key}_COVER_M3_FASTENER_{len(cover_fasteners):02d}", color=cq.Color(0.94, 0.94, 0.86, 1))
 
     boards = {
         key: centered(cq.importers.importStep(str(path)).val(), key)
@@ -199,8 +249,12 @@ def write_cad(exported: dict[str, Path]) -> dict:
     assembly.add(underside_raceway, name="UNDER_PANEL_LOGIC_CABLE_GUARD", color=cq.Color(0.05, 0.22, 0.42, 0.32))
     for index, foot in enumerate(feet, 1):
         assembly.add(foot, name=f"BENCH_FOOT_{index}", color=cq.Color(0.08, 0.10, 0.12, 1))
+    for index, fastener in enumerate(foot_fasteners, 1):
+        assembly.add(fastener, name=f"BENCH_FOOT_M5_FASTENER_{index}", color=cq.Color(0.92, 0.92, 0.84, 1))
     for index, standoff in enumerate(standoffs, 1):
         assembly.add(standoff, name=f"M2P5_STANDOFF_{index:02d}", color=cq.Color(0.85, 0.65, 0.18, 1))
+    for index, fastener in enumerate(hardware_parts[1::2][:len(standoffs)], 1):
+        assembly.add(fastener, name=f"M2P5_STANDOFF_FASTENER_SET_{index:02d}", color=cq.Color(0.94, 0.94, 0.86, 1))
     board_colors = {
         "MCU": cq.Color(0.05, 0.35, 0.18, 1),
         "CARRIER_A": cq.Color(0.05, 0.42, 0.22, 1),
@@ -211,13 +265,20 @@ def write_cad(exported: dict[str, Path]) -> dict:
         assembly.add(board, name=f"NATIVE_{key}_PCB", color=board_colors[key])
     for key, cover in covers.items():
         assembly.add(cover, name=f"SEALED_{key}_FIELD_PORT_COVER", color=cq.Color(0.52, 0.82, 1.0, 0.34))
+    for index, fastener in enumerate(cover_fasteners, 1):
+        assembly.add(fastener, name=f"CARRIER_COVER_FASTENER_{index:02d}", color=cq.Color(0.94, 0.94, 0.86, 1))
 
-    parts = [panel_shape, underside_raceway, *feet, *standoffs, *boards.values(), *covers.values()]
+    parts = [panel_shape, underside_raceway, *feet, *foot_fasteners, *hardware_parts[1:2 * len(standoffs):2], *standoffs, *boards.values(), *covers.values(), *cover_fasteners]
     combined = cq.Compound.makeCompound(parts)
     combined_path = OUT / "HR30_E1_controls_only_fixture_candidate.step"
     cq.exporters.export(combined, str(combined_path))
     clean_step(combined_path)
     assembly.save(str(OUT / "HR30_E1_controls_only_fixture_candidate.glb"), tolerance=0.18, angularTolerance=0.14)
+    hardware_compound = cq.Compound.makeCompound(hardware_parts)
+    hardware_path = OUT / "HR30_E1_fixture_hardware_candidate.step"
+    cq.exporters.export(hardware_compound, str(hardware_path))
+    clean_step(hardware_path)
+    hardware_assembly.save(str(OUT / "HR30_E1_fixture_hardware_candidate.glb"), tolerance=0.12, angularTolerance=0.10)
     base_path = OUT / "HR30_E1_base_panel_candidate.step"
     cq.exporters.export(panel_shape, str(base_path))
     clean_step(base_path)
@@ -235,6 +296,8 @@ def write_cad(exported: dict[str, Path]) -> dict:
         "panel_mm": [360.0, 240.0, 6.0],
         "standoff_count": len(standoffs),
         "sealed_carrier_cover_count": len(covers),
+        "cover_fastener_count": len(cover_fasteners),
+        "bench_foot_count": len(feet),
         "actuator_field_port_count": 8,
     }
 
@@ -435,6 +498,8 @@ def main() -> int:
     logic_harness.generate_into_fixture()
     import generate_hr30_e1_logic_power_cable_p01 as logic_power_cable
     logic_power_cable.generate_into_fixture()
+    import generate_hr30_e1_fixture_hardware_p01 as fixture_hardware
+    fixture_hardware.generate_into_fixture()
     shutil.copy2(__file__, OUT / "e1-controls-fixture-source.py")
     manifest()
     publish_root()
