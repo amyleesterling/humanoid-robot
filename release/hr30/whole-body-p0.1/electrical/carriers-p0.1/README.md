@@ -9,3 +9,5 @@ KiCad 10 verifies schematic ERC at 0 errors / 0 warnings and both boards at 0 DR
 The machine-readable Gerber, Excellon, IPC-D-356, position and board-statistics outputs are fabrication candidates for inspection and DFM quotation only. They are explicitly not released for ordering. DRC completion does not establish independent design acceptance, controlled impedance, enclosure fit, cable retention, surge/miswire behavior, timing, waveform integrity, EMC, thermal performance, fault safety or permission for any powered test.
 
 Open `index.html` for the interactive layer-by-layer guide.
+
+The eight field ports use catalog-dimensioned JST PA through-hole secure-lock candidates: B03B-PASK-1/PAP-03V-S/SPHD-001T-P0.5 for the 0.25 mm2 RS-485 conductors, and B02B-PASK-1/PAP-02V-S/SPHD-002T-P0.5 for the 0.14 mm2 TTL conductors. This removes the prior JST GH conductor-range mismatch. Received-part fit, insulation O.D., crimp tooling, pull testing and qualified application review remain open.

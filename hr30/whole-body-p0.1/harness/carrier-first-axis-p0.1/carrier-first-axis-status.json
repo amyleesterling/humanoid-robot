@@ -11,6 +11,7 @@
   "ttl_empty_reference_cavity_count": 3,
   "carrier_connector_family_bound": true,
   "destination_connector_family_bound": true,
+  "planning_conductor_size_within_contact_range": true,
   "conductor_selected": false,
   "rb0_star_landing_selected": false,
   "shield_topology_selected": false,

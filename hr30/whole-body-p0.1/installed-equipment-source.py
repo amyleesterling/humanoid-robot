@@ -130,17 +130,17 @@ def build() -> list[Equipment]:
 
     for suffix, x, buses, candidate, watts, heat, source, revision in (
         ("A", -48, "RS-LLEG | RS-RLEG | RS-LARM | RS-RARM",
-         "four-channel carrier with 4x TI ISOW1432DFMR and 4x JST BM03B-GHS-TBT data-only field headers",
+         "four-channel carrier with 4x TI ISOW1432DFMR and 4x JST B03B-PASK-1 data-only field headers",
          3.0, 2.2, "https://www.ti.com/product/ISOW1432", "TI SLLSF86C Rev C; March 2022; accessed 2026-08-14"),
         ("B", 48, "RS-WAIST | TTL-LDIST | TTL-RDIST | TTL-HEAD",
-         "four-channel carrier with 1x TI ISOW1432DFMR, 3x SN74LVC1T45DCKR and exact JST GH data-only field headers",
+         "four-channel carrier with 1x TI ISOW1432DFMR, 3x SN74LVC1T45DCKR and exact JST PA data-only field headers",
          1.5, 1.0, "https://www.ti.com/product/SN74LVC1T45", "TI SCES515N Rev N; June 2024; accessed 2026-08-14"),
     ):
         add(f"EQ-T01-BUS-CARRIER-{suffix}", "C01", "four-channel actuator-bus interface carrier",
             f"{candidate}; buses {buses}",
             box(82, 14, 42, (x, 11, 526), 2), 0.045, watts, heat,
             "torso rear electronics tray", "+Y rear-cover withdrawal",
-            "JST GHR-15V-S logic-only controller cable plus per-segment BM02/BM03B-GHS-TBT field headers; no actuator VDD contacts",
+            "JST GHR-15V-S logic-only controller cable plus per-segment B02B/B03B-PASK-1 field headers with PAP housings; no actuator VDD contacts",
             source, revision,
             "complete sourced application circuit and 82 x 42 mm native PCB placement candidate exist; copper routing, stackup/isolation geometry, EMC, thermal and physical validation remain open; U2D2 stays external commissioning-only",
             "torso", control)

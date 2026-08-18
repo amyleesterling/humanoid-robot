@@ -77,7 +77,7 @@ def main() -> int:
     pinout = rows("interface-carrier-pinout.csv")
     require(len(pinout) == 8 and {row["bus_id"] for row in pinout} == {row["bus_id"] for row in bus_topology}, "eight-channel carrier pinout missing")
     require(sum(row["interface_device"] == "ISOW1432DFMR" for row in pinout) == 5 and sum(row["interface_device"] == "SN74LVC1T45DCKR" for row in pinout) == 3, "interface-device allocation drift")
-    require(all("package pin" in row["mcu_tx_or_io"] and "BM0" in row["field_header"] and "NO VDD" in row["field_header"] for row in pinout), "physical MCU/field connector boundary incomplete")
+    require(all("package pin" in row["mcu_tx_or_io"] and "PASK-1" in row["field_header"] and "NO VDD" in row["field_header"] for row in pinout), "physical MCU/field connector boundary incomplete")
     right_distal = next(row for row in pinout if row["bus_id"] == "TTL-RDIST")
     require(right_distal["mcu_tx_or_io"].startswith("PE8 package pin 59 ") and right_distal["mcu_rx"].startswith("PE7 package pin 58 ") and right_distal["mcu_de"].startswith("PE9 package pin 60 "), "TTL-RDIST UART7 package pins overlap or drift from STM32H743ZIT6 LQFP144")
     for ref in ("JMCU_A", "JMCU_B", "JCA1", "JCB1"):

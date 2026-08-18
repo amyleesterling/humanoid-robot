@@ -64,12 +64,12 @@ def sources() -> list[dict[str, object]]:
             "verified_scope": scope,
         }))
     official = [
-        ("CFA-S07", "JST", "GH connector family", "live official product page; accessed 2026-08-18", "https://www.jst-mfg.com/product/index.php?lang=2&series=105", "GHR-02V-S/GHR-03V-S; SSHL-002T-P0.2; AWG30-26 / 0.05-0.13 mm2; 0.76-1.0 mm insulation OD"),
+        ("CFA-S07", "JST", "PA connector family", "official ePA-F catalog; accessed 2026-08-18", "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf", "PAP-02V-S/PAP-03V-S; B02B-PASK-1/B03B-PASK-1; SPHD-001T-P0.5 0.13-0.33 mm2 / 1.0-1.5 mm insulation OD; SPHD-002T-P0.5 0.08-0.21 mm2 / 0.76-1.5 mm insulation OD"),
         ("CFA-S08", "JST", "EH connector family", "official eEH catalog; accessed 2026-08-18", "https://www.jst-mfg.com/product/pdf/eng/eEH.pdf", "EHR-3/EHR-4 and SEH-001T-P0.6; AWG30-22 / 0.05-0.33 mm2"),
         ("CFA-S09", "ROBOTIS", "XH540-W270 connector information", "ROBOTIS Docs live page; accessed 2026-08-18", "https://docs.robotis.com/docs/dxl/model_reference/x_series/xh_series/xh540-w270/", "RS-485 actuator pin 1 GND, 2 VDD, 3 DATA+, 4 DATA-"),
         ("CFA-S10", "ROBOTIS", "XC330-T288 connector information", "ROBOTIS Docs live page; accessed 2026-08-18", "https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-t288/", "TTL actuator pin 1 GND, 2 VDD, 3 DATA"),
-        ("CFA-S11", "igus", "CFBUS.PVC.001", "live official product page; accessed 2026-08-18", "https://www.igus.com/product/CFBUS_PVC?artnr=CFBUS-PVC-001", "2 x 24 AWG / 0.25 mm2 shielded pair; too large for direct GH contact crimp; test-coupon only"),
-        ("CFA-S12", "igus", "CF240.01.03", "live official product page; accessed 2026-08-18", "https://www.igus.com/product/CF240", "3 x 26 AWG / 0.14 mm2; exceeds published GH 0.13 mm2 maximum; test-coupon only"),
+        ("CFA-S11", "igus", "CFBUS.PVC.001", "live official product page; accessed 2026-08-18", "https://www.igus.com/product/CFBUS_PVC?artnr=CFBUS-PVC-001", "2 x 24 AWG / 0.25 mm2 shielded pair; conductor size is inside SPHD-001T-P0.5 range; insulation O.D., shield breakout and crimp application remain open"),
+        ("CFA-S12", "igus", "CF240.01.03", "live official product page; accessed 2026-08-18", "https://www.igus.com/product/CF240", "3 x 26 AWG / 0.14 mm2; conductor size is inside SPHD-002T-P0.5 range; insulation O.D. and crimp application remain open"),
     ]
     for sid, publisher, document, revision, url, scope in official:
         rows.append(controlled({
@@ -102,8 +102,8 @@ def assemblies(links: list[dict[str, str]]) -> list[dict[str, object]]:
             "assembly_id": f"CFA-{bus}", "bus_id": bus,
             "protocol": "RS-485 HALF-DUPLEX" if rs else "TTL HALF-DUPLEX",
             "carrier_board": ref["carrier_board"], "carrier_connector": carrier_reference,
-            "carrier_housing_candidate": "GHR-03V-S" if rs else "GHR-02V-S",
-            "carrier_contact_candidate": "SSHL-002T-P0.2",
+            "carrier_housing_candidate": "PAP-03V-S" if rs else "PAP-02V-S",
+            "carrier_contact_candidate": "SPHD-001T-P0.5" if rs else "SPHD-002T-P0.5",
             "first_axis": axis, "destination_connector": link["to_endpoint"],
             "destination_housing_candidate": "EHR-4" if rs else "EHR-3",
             "destination_contact_candidate": "SEH-001T-P0.6",
@@ -112,7 +112,7 @@ def assemblies(links: list[dict[str, str]]) -> list[dict[str, object]]:
             "carrier_empty_reference_cavity_count": 0 if rs else 1,
             "planning_data_length_mm": link["planning_length_mm"],
             "reference_path": "J10x.1 FIELD RETURN TO UNIQUE RB0 STAR LANDING" if rs else "NO FIELD REFERENCE CONDUCTOR; CTRL_GND USES ONLY GR-PB09 TO RB0",
-            "data_conductor_candidate": "SELECTION REQUIRED - GH-compatible impedance/flex construction",
+            "data_conductor_candidate": "igus CFBUS.PVC.001 0.25 mm2 CANDIDATE - INSULATION OD/SHIELD BREAKOUT/CRIMP VALIDATION OPEN" if rs else "igus CF240.01.03 0.14 mm2 CANDIDATE - INSULATION OD/CRIMP VALIDATION OPEN",
             "shield_rule": "SELECTION REQUIRED - single-end bond and EMC evidence" if rs else "SELECTION REQUIRED - do not create duplicate CTRL_GND path",
             "construction_state": "CONTACT MAP DEFINED - CONDUCTOR, STAR TERMINAL, CRIMP, ROUTE AND TEST RELEASE OPEN",
         }))
@@ -127,16 +127,16 @@ def contacts(items: list[dict[str, object]]) -> list[dict[str, object]]:
         rs = bus.startswith("RS-")
         if rs:
             specs = [
-                ("01", c, "1", f"RB0-REF-{bus}", "SELECTION REQUIRED", f"{bus}_RET", "POPULATED", "SSHL-002T-P0.2 AT GH; RB0 TERMINAL SELECTION REQUIRED", "UNIQUE FIELD-REFERENCE LEG; NO ACTUATOR PIN-1 CONNECTION"),
-                ("02", c, "2", d, "3", f"{bus}_DP", "POPULATED", "SSHL-002T-P0.2 TO SEH-001T-P0.6", "DATA+ ONLY"),
-                ("03", c, "3", d, "4", f"{bus}_DN", "POPULATED", "SSHL-002T-P0.2 TO SEH-001T-P0.6", "DATA- ONLY"),
+                ("01", c, "1", f"RB0-REF-{bus}", "SELECTION REQUIRED", f"{bus}_RET", "POPULATED", "SPHD-001T-P0.5 AT PA; RB0 TERMINAL SELECTION REQUIRED", "UNIQUE FIELD-REFERENCE LEG; NO ACTUATOR PIN-1 CONNECTION"),
+                ("02", c, "2", d, "3", f"{bus}_DP", "POPULATED", "SPHD-001T-P0.5 TO SEH-001T-P0.6", "DATA+ ONLY"),
+                ("03", c, "3", d, "4", f"{bus}_DN", "POPULATED", "SPHD-001T-P0.5 TO SEH-001T-P0.6", "DATA- ONLY"),
                 ("04", "PBR-" + str(item["first_axis"]), "RET", d, "1", "ACTUATOR_BRANCH_RET", "POPULATED BY POWER BRANCH", "SEPARATE POWER-BRANCH PROCESS", "NOT PART OF SERIAL LEAD; COMBINED DESTINATION HOUSING INTERFACE"),
                 ("05", "PBR-" + str(item["first_axis"]), "VDD", d, "2", "ACTUATOR_BRANCH_VDD", "POPULATED BY POWER BRANCH", "SEPARATE POWER-BRANCH PROCESS", "NOT PART OF SERIAL LEAD; COMBINED DESTINATION HOUSING INTERFACE"),
             ]
         else:
             specs = [
                 ("01", c, "1", "NONE", "NONE", "CTRL_GND", "EMPTY", "NO CONTACT", "DO NOT ADD A SECOND CTRL_GND-TO-RB0 PATH"),
-                ("02", c, "2", d, "3", f"{bus}_DATA", "POPULATED", "SSHL-002T-P0.2 TO SEH-001T-P0.6", "TTL DATA ONLY"),
+                ("02", c, "2", d, "3", f"{bus}_DATA", "POPULATED", "SPHD-002T-P0.5 TO SEH-001T-P0.6", "TTL DATA ONLY"),
                 ("03", "PBR-" + str(item["first_axis"]), "RET", d, "1", "ACTUATOR_BRANCH_RET", "POPULATED BY POWER BRANCH", "SEPARATE POWER-BRANCH PROCESS", "ACTUATOR REFERENCE RETURNS THROUGH ITS OWN POWER PAIR"),
                 ("04", "PBR-" + str(item["first_axis"]), "VDD", d, "2", "ACTUATOR_BRANCH_VDD", "POPULATED BY POWER BRANCH", "SEPARATE POWER-BRANCH PROCESS", "NOT PART OF SERIAL LEAD; COMBINED DESTINATION HOUSING INTERFACE"),
             ]
@@ -161,7 +161,7 @@ def routes(items: list[dict[str, object]]) -> list[dict[str, object]]:
             "from_interface": item["carrier_connector"], "to_interface": item["destination_connector"],
             "planning_length_mm": item["planning_data_length_mm"],
             "route_basis": f"existing ordinal-one physical link to {axis}",
-            "conductor_candidate": "SELECTION REQUIRED - DIRECT GH CRIMP RANGE MUST BE MET",
+            "conductor_candidate": "igus CFBUS.PVC.001 / SPHD-001T-P0.5 candidate" if bus.startswith("RS-") else "igus CF240.01.03 / SPHD-002T-P0.5 candidate",
             "minimum_bend_radius_mm": "SELECTION REQUIRED", "clamp_and_strain_relief": "SELECTION REQUIRED",
             "route_validation": "NOT EXECUTED",
         }))
@@ -171,7 +171,7 @@ def routes(items: list[dict[str, object]]) -> list[dict[str, object]]:
                 "service": "ISOLATED FIELD REFERENCE", "from_interface": f"{item['carrier_connector']}.1",
                 "to_interface": f"RB0-REF-{bus}", "planning_length_mm": "SELECTION REQUIRED",
                 "route_basis": "carrier-to-pelvis-star path requires exact installed-board/RB0 placement",
-                "conductor_candidate": "SELECTION REQUIRED - 0.05 TO 0.13 mm2 GH CONTACT RANGE",
+                "conductor_candidate": "SELECTION REQUIRED - 0.13 TO 0.33 mm2 SPHD-001T-P0.5 RANGE; RB0 END OPEN",
                 "minimum_bend_radius_mm": "SELECTION REQUIRED", "clamp_and_strain_relief": "SELECTION REQUIRED",
                 "route_validation": "NOT EXECUTED",
             }))
@@ -180,14 +180,14 @@ def routes(items: list[dict[str, object]]) -> list[dict[str, object]]:
 
 def bom() -> list[dict[str, object]]:
     data = [
-        ("CFA-B01", "JST", "GHR-03V-S", "three-position GH carrier housing for five RS-485 links", 5, "EXACT FAMILY CANDIDATE - RECEIPT/KEYING CHECK OPEN"),
-        ("CFA-B02", "JST", "GHR-02V-S", "two-position GH carrier housing for three TTL links", 3, "EXACT FAMILY CANDIDATE - PIN 1 INTENTIONALLY EMPTY"),
-        ("CFA-B03", "JST", "SSHL-002T-P0.2", "GH crimp contact; 15 RS contacts plus 3 TTL data contacts", 18, "EXACT CONTACT CANDIDATE - CRIMP TOOL/HEIGHT/PULL TEST OPEN"),
+        ("CFA-B01", "JST", "PAP-03V-S", "three-position PA carrier housing for five RS-485 links", 5, "EXACT FAMILY CANDIDATE - RECEIPT/KEYING CHECK OPEN"),
+        ("CFA-B02", "JST", "PAP-02V-S", "two-position PA carrier housing for three TTL links", 3, "EXACT FAMILY CANDIDATE - PIN 1 INTENTIONALLY EMPTY"),
+        ("CFA-B03", "JST", "SPHD-001T-P0.5 / SPHD-002T-P0.5", "PA crimp contacts; 15 RS contacts plus 3 TTL data contacts", 18, "EXACT CONTACT FAMILIES - INSULATION OD/CRIMP TOOL/HEIGHT/PULL TEST OPEN"),
         ("CFA-B04", "JST", "EHR-4", "integrated first-axis RS-485 actuator housing; shared with power branch", 5, "INTERFACE RESPONSIBILITY - NOT ADDITIVE TO POWER-HARNESS BOM"),
         ("CFA-B05", "JST", "EHR-3", "integrated first-axis TTL actuator housing; shared with power branch", 3, "INTERFACE RESPONSIBILITY - NOT ADDITIVE TO POWER-HARNESS BOM"),
         ("CFA-B06", "JST", "SEH-001T-P0.6", "first-axis actuator data contacts; 10 RS plus 3 TTL", 13, "EXACT CONTACT CANDIDATE - CRIMP TOOL/HEIGHT/PULL TEST OPEN"),
-        ("CFA-B07", "SELECTION REQUIRED", "SELECTION REQUIRED", "GH-compatible flexible impedance-controlled RS-485 pair or qualified transition splice", 5, "NO COMPATIBLE DIRECT-CRIMP CABLE RELEASED"),
-        ("CFA-B08", "SELECTION REQUIRED", "SELECTION REQUIRED", "GH-compatible flexible TTL data conductor", 3, "NO COMPATIBLE DIRECT-CRIMP CABLE RELEASED"),
+        ("CFA-B07", "igus", "CFBUS.PVC.001", "0.25 mm2 shielded RS-485 pair candidate within SPHD-001T-P0.5 conductor range", 5, "INSULATION OD/SHIELD BREAKOUT/CRIMP/FLEX/WAVEFORM VALIDATION OPEN"),
+        ("CFA-B08", "igus", "CF240.01.03", "0.14 mm2 TTL conductor candidate within SPHD-002T-P0.5 conductor range", 3, "INSULATION OD/CRIMP/FLEX/WAVEFORM VALIDATION OPEN"),
         ("CFA-B09", "SELECTION REQUIRED", "SELECTION REQUIRED", "five unique RB0 field-reference landing contacts/terminals", 5, "STAR HARDWARE AND RETENTION OPEN"),
     ]
     return [controlled({"item_id": i, "manufacturer": m, "order_code": o, "description": d, "planning_quantity": q, "selection_state": s}) for i, m, o, d, q, s in data]
@@ -195,7 +195,7 @@ def bom() -> list[dict[str, object]]:
 
 def tests() -> list[dict[str, object]]:
     data = [
-        ("CFA-T01", "received connector identity", "verify exact GH/EH housings, keys, cavity numbering and mating headers", "zero mismatch"),
+        ("CFA-T01", "received connector identity", "verify exact PA/EH housings, keys, cavity numbering and mating headers", "zero mismatch"),
         ("CFA-T02", "wire/contact compatibility", "measure conductor cross-section/strand construction and insulation OD against both contact ranges", "within published range or written manufacturer disposition"),
         ("CFA-T03", "crimp process qualification", "cross-section, crimp height, pull and retention samples for every wire/contact pair", "limits selected and accepted by qualified harness reviewer"),
         ("CFA-T04", "contact-map inspection", "100 percent independent cavity-to-cavity inspection", "37 of 37 map rows conform"),
@@ -226,12 +226,12 @@ def inspections(items: list[dict[str, object]]) -> list[dict[str, object]]:
 
 def holds() -> list[dict[str, object]]:
     data = [
-        ("CFA-H01", "exact RS-485 conductor construction is unselected", "GH-compatible 0.05-0.13 mm2 pair or qualified pigtail/splice with impedance, flex and waveform evidence"),
-        ("CFA-H02", "the current CFBUS.PVC.001 0.25 mm2 candidate exceeds the GH contact conductor range", "alternate conductor or written JST-approved transition process plus crimp/splice qualification"),
-        ("CFA-H03", "the current CF240.01.03 0.14 mm2 TTL candidate exceeds the GH 0.13 mm2 maximum", "alternate conductor or written JST-approved transition process plus crimp/splice qualification"),
+        ("CFA-H01", "the RS-485 cable conductor size fits SPHD-001T-P0.5, but insulation O.D., shield breakout, crimp process and dynamic waveform are unvalidated", "received cable measurements plus qualified crimp cross-sections/pull tests, shield termination and flex/waveform evidence"),
+        ("CFA-H02", "the TTL cable conductor size fits SPHD-002T-P0.5, but insulation O.D., crimp process and dynamic margins are unvalidated", "received cable measurements plus qualified crimp cross-sections/pull tests, flex and logic-margin evidence"),
+        ("CFA-H03", "JST PA board/header and harness fit is not physically proven", "received B02B/B03B-PASK-1 and PAP-02/03V-S fit article with cavity, boss, latch, clearance and retention inspection"),
         ("CFA-H04", "five RB0 star landing terminals, retention and installed lengths are unselected", "exact PDU/RB0 hardware drawing, one-to-one landing map, route lengths and physical inspection"),
         ("CFA-H05", "shield/bond construction is unresolved", "reviewed one-end shield rule with EMC and fault evidence and no duplicate return path"),
-        ("CFA-H06", "GH/EH crimp tools, crimp heights, pull limits and inspection criteria are unselected", "manufacturer tooling/process data and qualified cross-section/pull/retention evidence"),
+        ("CFA-H06", "PA/EH crimp tools, crimp heights, pull limits and inspection criteria are unselected", "manufacturer tooling/process data and qualified cross-section/pull/retention evidence"),
         ("CFA-H07", "the eight planning lengths are not validated in the joined physical robot", "tolerance-aware installed routing, joint sweep, service slack, clamps and strain-relief evidence"),
         ("CFA-H08", "RS-485 termination, baud, common-mode and error performance are unvalidated", "five-bus waveform/error/fault testing with exact harnesses and actuator loads"),
         ("CFA-H09", "TTL reference offset and logic margins are unvalidated", "three-bus voltage/margin/error/fault testing with exact harnesses and branch currents"),
@@ -241,12 +241,12 @@ def holds() -> list[dict[str, object]]:
 
 
 def drawing() -> str:
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="920" viewBox="0 0 1600 920" role="img" aria-labelledby="t d"><title id="t">HR-30 carrier-to-first-axis harness topology</title><desc id="d">Five isolated RS-485 channels use data plus a separate field-reference leg to RB0. Three TTL channels use data only and leave the carrier reference cavity empty. Every first-axis housing receives its own protected power pair separately.</desc><style>text{{font:600 18px system-ui;fill:#102b46}}.h{{font-size:34px;font-weight:900}}.s{{font-size:16px}}.box{{fill:#fff;stroke:#0b4f91;stroke-width:4}}.warn{{fill:#fff0b5;stroke:#982520;stroke-width:4}}.data{{stroke:#22a7dd;stroke-width:10;fill:none}}.ref{{stroke:#0b4f91;stroke-width:10;fill:none}}.pwr{{stroke:#f2b91d;stroke-width:10;fill:none}}</style><rect width="1600" height="920" fill="#eef8ff"/><text class="h" x="55" y="65">Eight carrier leads; one reference topology</text><rect class="box" x="65" y="145" width="360" height="285" rx="20"/><text x="100" y="195">Carrier field connector</text><text x="100" y="240">RS: GH-3 (REF, D+, D-)</text><text x="100" y="280">TTL: GH-2 (EMPTY, DATA)</text><path class="data" d="M425 275 C680 275 820 275 1085 275"/><path class="ref" d="M260 430 V560 H720"/><text class="s" x="440" y="530">RS only: five unique reference legs</text><rect class="box" x="1085" y="145" width="440" height="285" rx="20"/><text x="1120" y="195">First-axis combined EH housing</text><text x="1120" y="240">1 dedicated branch return</text><text x="1120" y="280">2 dedicated branch VDD</text><text x="1120" y="320">3 DATA / DATA+</text><text x="1120" y="360">4 DATA- (RS only)</text><path class="pwr" d="M1260 145 V90"/><rect class="box" x="720" y="500" width="430" height="150" rx="20"/><text x="765" y="555">RB0 / PDU common return star</text><text class="s" x="765" y="600">Five RS field returns land once.</text><rect class="warn" x="80" y="720" width="1440" height="120" rx="18"/><text x="125" y="770">TTL carrier pin 1 stays empty: CTRL_GND already reaches RB0 once through GR-PB09.</text><text x="125" y="810">No serial lead carries actuator VDD or duplicates an actuator branch return.</text><text class="s" x="55" y="890">{html.escape(WARNING)}</text></svg>'''
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="920" viewBox="0 0 1600 920" role="img" aria-labelledby="t d"><title id="t">HR-30 carrier-to-first-axis harness topology</title><desc id="d">Five isolated RS-485 channels use data plus a separate field-reference leg to RB0. Three TTL channels use data only and leave the carrier reference cavity empty. Every first-axis housing receives its own protected power pair separately.</desc><style>text{{font:600 18px system-ui;fill:#102b46}}.h{{font-size:34px;font-weight:900}}.s{{font-size:16px}}.box{{fill:#fff;stroke:#0b4f91;stroke-width:4}}.warn{{fill:#fff0b5;stroke:#982520;stroke-width:4}}.data{{stroke:#22a7dd;stroke-width:10;fill:none}}.ref{{stroke:#0b4f91;stroke-width:10;fill:none}}.pwr{{stroke:#f2b91d;stroke-width:10;fill:none}}</style><rect width="1600" height="920" fill="#eef8ff"/><text class="h" x="55" y="65">Eight carrier leads; one reference topology</text><rect class="box" x="65" y="145" width="360" height="285" rx="20"/><text x="100" y="195">Carrier field connector</text><text x="100" y="240">RS: PA-3 (REF, D+, D-)</text><text x="100" y="280">TTL: PA-2 (EMPTY, DATA)</text><path class="data" d="M425 275 C680 275 820 275 1085 275"/><path class="ref" d="M260 430 V560 H720"/><text class="s" x="440" y="530">RS only: five unique reference legs</text><rect class="box" x="1085" y="145" width="440" height="285" rx="20"/><text x="1120" y="195">First-axis combined EH housing</text><text x="1120" y="240">1 dedicated branch return</text><text x="1120" y="280">2 dedicated branch VDD</text><text x="1120" y="320">3 DATA / DATA+</text><text x="1120" y="360">4 DATA- (RS only)</text><path class="pwr" d="M1260 145 V90"/><rect class="box" x="720" y="500" width="430" height="150" rx="20"/><text x="765" y="555">RB0 / PDU common return star</text><text class="s" x="765" y="600">Five RS field returns land once.</text><rect class="warn" x="80" y="720" width="1440" height="120" rx="18"/><text x="125" y="770">TTL carrier pin 1 stays empty: CTRL_GND already reaches RB0 once through GR-PB09.</text><text x="125" y="810">No serial lead carries actuator VDD or duplicates an actuator branch return.</text><text class="s" x="55" y="890">{html.escape(WARNING)}</text></svg>'''
 
 
 def render(items: list[dict[str, object]]) -> str:
     table_rows = "".join(f"<tr><td>{html.escape(str(r['assembly_id']))}</td><td>{html.escape(str(r['protocol']))}</td><td>{html.escape(str(r['carrier_connector']))} / {html.escape(str(r['carrier_housing_candidate']))}</td><td>{html.escape(str(r['destination_connector']))} / {html.escape(str(r['destination_housing_candidate']))}</td><td>{r['planning_data_length_mm']} mm</td><td>{html.escape(str(r['reference_path']))}</td><td>{html.escape(str(r['construction_state']))}</td></tr>" for r in items)
-    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 carrier-to-first-axis harnesses</title><style>:root{{--deep:#071d36;--blue:#0b4f91;--gold:#f2b91d;--paper:#f7fbff;--ink:#142a40;--line:#82c4e6;--red:#982520}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,main,footer{{padding:clamp(24px,5vw,64px) max(18px,calc((100vw - 1280px)/2))}}header,footer{{background:linear-gradient(135deg,var(--deep),var(--blue));color:white}}h1{{font-size:clamp(38px,6vw,70px);line-height:1.04;max-width:18ch}}h2{{font-size:clamp(28px,4vw,44px)}}h3{{font-size:22px}}.warning{{background:var(--gold);color:#17243a;border:3px solid #805600;padding:16px;font-weight:900}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}}article,.panel{{background:#fff;border:2px solid var(--line);border-radius:16px;padding:19px}}.metric{{font-size:clamp(34px,5vw,54px);font-weight:900;color:var(--blue)}}.hold{{border-color:var(--red)}}img{{max-width:100%;height:auto;border:2px solid var(--line);border-radius:16px}}.scroll{{overflow:auto;border:2px solid var(--line);border-radius:14px;background:#fff}}table{{border-collapse:collapse;width:100%;min-width:1500px}}th,td{{padding:14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:16px}}th{{background:var(--deep);color:#fff;position:sticky;top:0}}a{{color:#075b9b;font-weight:800}}small{{font-size:14px}}@media(max-width:560px){{body{{font-size:16px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>HR-30 whole-body P0.1</p><h1>Every carrier now reaches its first joint on paper.</h1><p>Five isolated RS-485 channels split data from a unique star-reference leg. Three TTL channels carry data only and leave the carrier reference cavity empty.</p></header><main><section class="grid"><article><div class="metric">8 / 8</div><p>carrier-to-first-axis maps defined</p></article><article><div class="metric">5 + 3</div><p>isolated RS-485 and non-isolated TTL topologies</p></article><article><div class="metric">37</div><p>controlled contact-map rows</p></article><article class="hold"><div class="metric">0</div><p>built, routed or electrically tested harnesses</p></article></section><section><h2>The reference split matters</h2><img src="carrier-first-axis.svg" alt="Five RS field-reference legs land once at RB0 while TTL data does not add a second ground path"></section><section><h2>Connector boundary</h2><div class="panel hold"><p>JST GH and EH housing/contact families are bound, but no conductor is released. The current RS candidate is too large for a direct GH crimp, and the current TTL candidate exceeds the published GH conductor maximum. A compatible cable or a qualified transition splice is still required.</p></div></section><section><h2>Eight controlled candidates</h2><div class="scroll"><table><thead><tr><th>Assembly</th><th>Protocol</th><th>Carrier end</th><th>First-axis end</th><th>Planning length</th><th>Reference path</th><th>State</th></tr></thead><tbody>{table_rows}</tbody></table></div></section><section><h2>Controlled records</h2><div class="panel"><p><a href="carrier-first-axis-register.csv">Assembly register</a> | <a href="contact-map.csv">37-contact map</a> | <a href="route-leg-register.csv">Route legs</a> | <a href="candidate-bom.csv">Candidate BOM</a> | <a href="test-plan.csv">Test plan</a> | <a href="inspection-register.csv">Blank inspections</a> | <a href="open-holds.csv">Open holds</a> | <a href="primary-source-register.csv">Sources</a></p><small>This closes a definition gap, not a physical or energization gate.</small></div></section></main><footer>{html.escape(WARNING)}</footer></body></html>'''
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 carrier-to-first-axis harnesses</title><style>:root{{--deep:#071d36;--blue:#0b4f91;--gold:#f2b91d;--paper:#f7fbff;--ink:#142a40;--line:#82c4e6;--red:#982520}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,Segoe UI,sans-serif}}header,main,footer{{padding:clamp(24px,5vw,64px) max(18px,calc((100vw - 1280px)/2))}}header,footer{{background:linear-gradient(135deg,var(--deep),var(--blue));color:white}}h1{{font-size:clamp(38px,6vw,70px);line-height:1.04;max-width:18ch}}h2{{font-size:clamp(28px,4vw,44px)}}h3{{font-size:22px}}.warning{{background:var(--gold);color:#17243a;border:3px solid #805600;padding:16px;font-weight:900}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}}article,.panel{{background:#fff;border:2px solid var(--line);border-radius:16px;padding:19px}}.metric{{font-size:clamp(34px,5vw,54px);font-weight:900;color:var(--blue)}}.hold{{border-color:var(--red)}}img{{max-width:100%;height:auto;border:2px solid var(--line);border-radius:16px}}.scroll{{overflow:auto;border:2px solid var(--line);border-radius:14px;background:#fff}}table{{border-collapse:collapse;width:100%;min-width:1500px}}th,td{{padding:14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:16px}}th{{background:var(--deep);color:#fff;position:sticky;top:0}}a{{color:#075b9b;font-weight:800}}small{{font-size:14px}}@media(max-width:560px){{body{{font-size:16px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>HR-30 whole-body P0.1</p><h1>Every carrier now reaches its first joint on paper.</h1><p>Five isolated RS-485 channels split data from a unique star-reference leg. Three TTL channels carry data only and leave the carrier reference cavity empty.</p></header><main><section class="grid"><article><div class="metric">8 / 8</div><p>carrier-to-first-axis maps defined</p></article><article><div class="metric">5 + 3</div><p>isolated RS-485 and non-isolated TTL topologies</p></article><article><div class="metric">37</div><p>controlled contact-map rows</p></article><article class="hold"><div class="metric">0</div><p>built, routed or electrically tested harnesses</p></article></section><section><h2>The reference split matters</h2><img src="carrier-first-axis.svg" alt="Five RS field-reference legs land once at RB0 while TTL data does not add a second ground path"></section><section><h2>Connector boundary</h2><div class="panel hold"><p>JST PA and EH housing/contact families are now bound. The 0.25 mm2 RS conductor fits the SPHD-001T-P0.5 conductor range, and the 0.14 mm2 TTL conductor fits SPHD-002T-P0.5. This removes the prior GH direct-crimp mismatch; received insulation diameter, shield breakout, crimp tooling, pull strength, routing and electrical tests remain open.</p></div></section><section><h2>Eight controlled candidates</h2><div class="scroll"><table><thead><tr><th>Assembly</th><th>Protocol</th><th>Carrier end</th><th>First-axis end</th><th>Planning length</th><th>Reference path</th><th>State</th></tr></thead><tbody>{table_rows}</tbody></table></div></section><section><h2>Controlled records</h2><div class="panel"><p><a href="carrier-first-axis-register.csv">Assembly register</a> | <a href="contact-map.csv">37-contact map</a> | <a href="route-leg-register.csv">Route legs</a> | <a href="candidate-bom.csv">Candidate BOM</a> | <a href="test-plan.csv">Test plan</a> | <a href="inspection-register.csv">Blank inspections</a> | <a href="open-holds.csv">Open holds</a> | <a href="primary-source-register.csv">Sources</a></p><small>This closes a connector-range mismatch, not a physical or energization gate.</small></div></section></main><footer>{html.escape(WARNING)}</footer></body></html>'''
 
 
 def integrate_root(items: list[dict[str, object]]) -> None:
@@ -260,6 +260,7 @@ def integrate_root(items: list[dict[str, object]]) -> None:
         "carrier_first_axis_contact_map_count": 37,
         "carrier_first_axis_rs_reference_leg_count": 5,
         "carrier_first_axis_ttl_empty_reference_cavity_count": 3,
+        "carrier_first_axis_planning_conductor_size_within_contact_range": True,
         "carrier_first_axis_conductor_selected": False,
         "carrier_first_axis_built_count": 0,
         "carrier_first_axis_tested_count": 0,
@@ -275,7 +276,7 @@ def integrate_root(items: list[dict[str, object]]) -> None:
     text = path.read_text(encoding="utf-8")
     if start in text and end in text:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
-    block = f'''{start}\n## Carrier-to-first-axis harnesses\n\nThe [interactive eight-lead guide](harness/carrier-first-axis-p0.1/index.html) binds every carrier output to its first actuator through **37 controlled contact-map rows**. Five isolated RS-485 connectors use a separate unique field-reference leg to RB0; three TTL connectors leave the field reference cavity empty so `CTRL_GND` still reaches RB0 only through `GR-PB09`. JST GH/EH housing and contact families are explicit. The conductor, reference landing, crimp process, physical routing, waveform evidence and qualified disposition remain open; zero assemblies exist.\n{end}\n'''
+    block = f'''{start}\n## Carrier-to-first-axis harnesses\n\nThe [interactive eight-lead guide](harness/carrier-first-axis-p0.1/index.html) binds every carrier output to its first actuator through **37 controlled contact-map rows**. Five isolated RS-485 connectors use a separate unique field-reference leg to RB0; three TTL connectors leave the field reference cavity empty so `CTRL_GND` still reaches RB0 only through `GR-PB09`. JST PA/EH housing and contact families are explicit, and both planning conductor sizes now fall within the chosen PA contact ranges. Insulation O.D., reference landing, crimp process, physical routing, waveform evidence and qualified disposition remain open; zero assemblies exist.\n{end}\n'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-README-START -->"
     text = text.replace(marker, block + marker) if marker in text else text + "\n" + block
     path.write_text(text, encoding="utf-8", newline="\n")
@@ -285,7 +286,7 @@ def integrate_root(items: list[dict[str, object]]) -> None:
     text = path.read_text(encoding="utf-8")
     if start in text and end in text:
         text = text.split(start, 1)[0] + text.split(end, 1)[1]
-    section = f'''{start}<section id="carrier-first-axis"><h2>Eight carrier leads now have exact contact maps</h2><div class="grid"><article class="card pass"><div class="metric">8 / 8</div><p>carrier-to-first-axis interfaces defined.</p></article><article class="card"><div class="metric">37</div><p>controlled contact-map rows.</p></article><article class="card"><div class="metric">5 + 3</div><p>unique RS field-reference legs and intentionally empty TTL reference cavities.</p></article><article class="card hold"><h3>Conductor still open</h3><p>The published GH range rejects direct crimp of both existing planning cable candidates.</p></article></div><p><a href="harness/carrier-first-axis-p0.1/index.html">Open the interactive carrier-to-first-axis guide</a>. It defines the boundary without granting physical work or energization authority.</p></section>{end}'''
+    section = f'''{start}<section id="carrier-first-axis"><h2>Eight carrier leads now have exact contact maps</h2><div class="grid"><article class="card pass"><div class="metric">8 / 8</div><p>carrier-to-first-axis interfaces defined.</p></article><article class="card"><div class="metric">37</div><p>controlled contact-map rows.</p></article><article class="card"><div class="metric">5 + 3</div><p>unique RS field-reference legs and intentionally empty TTL reference cavities.</p></article><article class="card hold"><h3>Crimp validation open</h3><p>The PA contact ranges include both planning conductor sizes; received insulation O.D., tooling, pull strength and dynamic electrical tests remain open.</p></article></div><p><a href="harness/carrier-first-axis-p0.1/index.html">Open the interactive carrier-to-first-axis guide</a>. It defines the boundary without granting physical work or energization authority.</p></section>{end}'''
     marker = "<!-- HR30-FIRST-ENERGIZATION-P01-START -->"
     text = text.replace(marker, section + marker) if marker in text else text.replace("</main>", section + "</main>")
     path.write_text(text, encoding="utf-8", newline="\n")
@@ -316,6 +317,7 @@ def main() -> int:
         "contact_map_row_count": 37, "route_leg_count": 13,
         "rs_field_reference_leg_count": 5, "ttl_empty_reference_cavity_count": 3,
         "carrier_connector_family_bound": True, "destination_connector_family_bound": True,
+        "planning_conductor_size_within_contact_range": True,
         "conductor_selected": False, "rb0_star_landing_selected": False,
         "shield_topology_selected": False, "crimp_process_selected": False,
         "built_assembly_count": 0, "inspected_assembly_count": 0,
@@ -326,7 +328,7 @@ def main() -> int:
         "motion_authority": False, "energization_authority": False,
     }
     (OUT / "carrier-first-axis-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
-    (OUT / "README.md").write_text(f"# HR-30 carrier-to-first-axis harness P0.1\n\n**{WARNING}**\n\nThis package closes the eight-link physical definition gap between the two interface-carrier boards and each bus's first actuator. It freezes contact maps and reference topology while leaving incompatible planning cables, exact star hardware, crimping, routing, electrical tests and qualified acceptance open.\n", encoding="utf-8", newline="\n")
+    (OUT / "README.md").write_text(f"# HR-30 carrier-to-first-axis harness P0.1\n\n**{WARNING}**\n\nThis package closes the eight-link physical definition gap between the two interface-carrier boards and each bus's first actuator. It freezes contact maps and reference topology, and the JST PA contact ranges include both planning conductor sizes. Received insulation O.D., exact star hardware, crimping, routing, electrical tests and qualified acceptance remain open.\n", encoding="utf-8", newline="\n")
     (OUT / "carrier-first-axis.svg").write_text(drawing(), encoding="utf-8", newline="\n")
     (OUT / "index.html").write_text(render(items), encoding="utf-8", newline="\n")
     shutil.copy2(Path(__file__), OUT / "carrier-first-axis-source.py")

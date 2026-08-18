@@ -56,9 +56,9 @@ def main() -> int:
     rs = [row for row in assemblies if row["protocol"].startswith("RS-485")]
     ttl = [row for row in assemblies if row["protocol"].startswith("TTL")]
     need(len(rs) == 5 and len(ttl) == 3, "5 RS / 3 TTL split required")
-    need(all(row["carrier_housing_candidate"] == "GHR-03V-S" and row["destination_housing_candidate"] == "EHR-4" and row["field_reference_leg_count"] == "1" for row in rs), "RS connector/reference mapping drift")
-    need(all(row["carrier_housing_candidate"] == "GHR-02V-S" and row["destination_housing_candidate"] == "EHR-3" and row["field_reference_leg_count"] == "0" and row["carrier_empty_reference_cavity_count"] == "1" for row in ttl), "TTL connector/reference mapping drift")
-    need(all(row["data_conductor_candidate"].startswith("SELECTION REQUIRED") for row in assemblies), "unsupported conductor selected")
+    need(all(row["carrier_housing_candidate"] == "PAP-03V-S" and row["carrier_contact_candidate"] == "SPHD-001T-P0.5" and row["destination_housing_candidate"] == "EHR-4" and row["field_reference_leg_count"] == "1" for row in rs), "RS PA connector/reference mapping drift")
+    need(all(row["carrier_housing_candidate"] == "PAP-02V-S" and row["carrier_contact_candidate"] == "SPHD-002T-P0.5" and row["destination_housing_candidate"] == "EHR-3" and row["field_reference_leg_count"] == "0" and row["carrier_empty_reference_cavity_count"] == "1" for row in ttl), "TTL PA connector/reference mapping drift")
+    need(all("CANDIDATE" in row["data_conductor_candidate"] and "VALIDATION OPEN" in row["data_conductor_candidate"] for row in assemblies), "conductor application boundary drift")
 
     carrier_terms = {(row["reference"], row["pad"]): row["net"] for row in rows(WHOLE / "electrical/carriers-p0.1/carrier-terminal-register.csv")}
     cavity = {(row["connector_id"], row["pin"]): row for row in rows(WHOLE / "harness/actuator-cable-kit-p0.1/connector-cavity-population.csv")}
@@ -89,11 +89,12 @@ def main() -> int:
 
     need(len([row for row in routes if row["service"] == "ISOLATED FIELD REFERENCE"]) == 5, "five RS reference route legs required")
     need(len([row for row in routes if "DATA" in row["service"]]) == 8, "eight data route legs required")
-    need(all(row["conductor_candidate"].startswith("SELECTION REQUIRED") and row["route_validation"] == "NOT EXECUTED" for row in routes), "route/conductor overclaim")
-    need(any(row["order_code"] == "SSHL-002T-P0.2" and row["planning_quantity"] == "18" for row in bom), "GH contact quantity drift")
+    need(all(row["route_validation"] == "NOT EXECUTED" for row in routes), "route validation overclaim")
+    need(any(row["order_code"] == "SPHD-001T-P0.5 / SPHD-002T-P0.5" and row["planning_quantity"] == "18" for row in bom), "PA contact quantity drift")
     need(any(row["order_code"] == "SEH-001T-P0.6" and row["planning_quantity"] == "13" for row in bom), "EH data-contact quantity drift")
-    need(any(row["hold_id"] == "CFA-H02" and "0.25 mm2" in row["unresolved_item"] for row in holds), "RS direct-crimp mismatch hidden")
-    need(any(row["hold_id"] == "CFA-H03" and "0.14 mm2" in row["unresolved_item"] for row in holds), "TTL direct-crimp mismatch hidden")
+    need(any(row["hold_id"] == "CFA-H01" and "fits SPHD-001T-P0.5" in row["unresolved_item"] and "insulation O.D." in row["unresolved_item"] for row in holds), "RS PA application hold hidden")
+    need(any(row["hold_id"] == "CFA-H02" and "fits SPHD-002T-P0.5" in row["unresolved_item"] and "insulation O.D." in row["unresolved_item"] for row in holds), "TTL PA application hold hidden")
+    need(any(row["hold_id"] == "CFA-H03" and "fit is not physically proven" in row["unresolved_item"] for row in holds), "PA fit article hold hidden")
 
     local = [row for row in sources if row["publisher"] == "Project Button"]
     need(len(local) == 6 and all(row["sha256"] == sha(ROOT / row["official_url_or_path"]) for row in local), "local source hash drift")
@@ -105,6 +106,7 @@ def main() -> int:
         "route_validated_assembly_count": 0, "electrically_tested_assembly_count": 0,
     }.items():
         need(status[key] == value, f"status count drift: {key}")
+    need(status["planning_conductor_size_within_contact_range"] is True, "PA conductor-range compatibility not recorded")
     for key in ["conductor_selected", "rb0_star_landing_selected", "shield_topology_selected", "crimp_process_selected", "assembly_selected", "procurement_authority", "fabrication_authority", "assembly_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]:
         need(status[key] is False, f"fail-closed status violated: {key}")
 
@@ -121,15 +123,15 @@ def main() -> int:
     svg = (OUT / "carrier-first-axis.svg").read_text(encoding="utf-8")
     need("font:17px" in page and "font-size:16px" in page and "min-width:1500px" in page, "web legibility/overflow drift")
     need("font-size:16px" in svg and "font-size:34px" in svg, "drawing legibility drift")
-    need("Every carrier now reaches its first joint" in page and "This closes a definition gap" in page, "guide purpose/scope drift")
+    need("Every carrier now reaches its first joint" in page and "This closes a connector-range mismatch" in page, "guide purpose/scope drift")
     root_page = (WHOLE / "index.html").read_text(encoding="utf-8")
     root_readme = (WHOLE / "README.md").read_text(encoding="utf-8")
     need(root_page.count("HR30-CARRIER-FIRST-AXIS-P01-START") == root_page.count("HR30-CARRIER-FIRST-AXIS-P01-END") == 1, "root web integration missing")
     need(root_readme.count("HR30-CARRIER-FIRST-AXIS-P01-README-START") == root_readme.count("HR30-CARRIER-FIRST-AXIS-P01-README-END") == 1, "root README integration missing")
     root_status = json.loads((WHOLE / "package-status.json").read_text(encoding="utf-8"))
-    need(root_status["carrier_first_axis_assembly_count"] == 8 and root_status["carrier_first_axis_contact_map_count"] == 37, "root status integration missing")
+    need(root_status["carrier_first_axis_assembly_count"] == 8 and root_status["carrier_first_axis_contact_map_count"] == 37 and root_status["carrier_first_axis_planning_conductor_size_within_contact_range"] is True, "root status integration missing")
     need(root_status["carrier_first_axis_conductor_selected"] is False and root_status["energization_authority"] is False, "root authority drift")
-    print("PASS: HR-30 maps all eight carrier-to-first-axis harnesses through 37 controlled contacts, five unique RS field-reference legs and three intentionally empty TTL reference cavities; conductor/crimp/routing/test/authority remain open")
+    print("PASS: HR-30 maps all eight carrier-to-first-axis harnesses through 37 controlled contacts and JST PA conductor-size-compatible field interfaces; insulation OD/crimp/routing/test/authority remain open")
     return 0
 
 

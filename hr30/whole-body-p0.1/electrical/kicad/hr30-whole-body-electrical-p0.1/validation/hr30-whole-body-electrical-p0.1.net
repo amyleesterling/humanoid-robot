@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\h30e\\hr30\\whole-body-p0.1\\electrical\\kicad\\hr30-whole-body-electrical-p0.1\\hr30-whole-body-electrical-p0.1.kicad_sch")
-		(date "2026-08-17T12:44:28")
+		(date "2026-08-18T10:39:37")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR CONNECTION, FABRICATION, MOTION OR ENERGIZATION")
@@ -3504,28 +3504,28 @@
 		)
 		(comp
 			(ref "J_RS_LARM")
-			(value "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
-			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
-			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+			(value "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
+			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			(fields
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 				(field
-					(name "Display") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "J_RS_LARM")
-				(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+				(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			)
 			(property
 				(name "Status")
@@ -3533,11 +3533,11 @@
 			)
 			(property
 				(name "Evidence")
-				(value "JST GH official eGH catalog checked 2026-08-14.")
+				(value "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 			)
 			(property
 				(name "Display")
-				(value "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+				(value "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(property
 				(name "Sheetname")
@@ -3571,28 +3571,28 @@
 		)
 		(comp
 			(ref "J_RS_LLEG")
-			(value "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
-			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
-			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+			(value "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
+			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			(fields
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 				(field
-					(name "Display") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "J_RS_LLEG")
-				(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+				(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			)
 			(property
 				(name "Status")
@@ -3600,11 +3600,11 @@
 			)
 			(property
 				(name "Evidence")
-				(value "JST GH official eGH catalog checked 2026-08-14.")
+				(value "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 			)
 			(property
 				(name "Display")
-				(value "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+				(value "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(property
 				(name "Sheetname")
@@ -3638,28 +3638,28 @@
 		)
 		(comp
 			(ref "J_RS_RARM")
-			(value "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
-			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
-			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+			(value "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
+			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			(fields
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 				(field
-					(name "Display") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "J_RS_RARM")
-				(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+				(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			)
 			(property
 				(name "Status")
@@ -3667,11 +3667,11 @@
 			)
 			(property
 				(name "Evidence")
-				(value "JST GH official eGH catalog checked 2026-08-14.")
+				(value "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 			)
 			(property
 				(name "Display")
-				(value "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+				(value "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(property
 				(name "Sheetname")
@@ -3705,28 +3705,28 @@
 		)
 		(comp
 			(ref "J_RS_RLEG")
-			(value "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
-			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
-			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+			(value "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
+			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			(fields
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 				(field
-					(name "Display") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "J_RS_RLEG")
-				(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+				(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			)
 			(property
 				(name "Status")
@@ -3734,11 +3734,11 @@
 			)
 			(property
 				(name "Evidence")
-				(value "JST GH official eGH catalog checked 2026-08-14.")
+				(value "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 			)
 			(property
 				(name "Display")
-				(value "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+				(value "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(property
 				(name "Sheetname")
@@ -3993,28 +3993,28 @@
 		)
 		(comp
 			(ref "J_RS_WAIST")
-			(value "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
-			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
-			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+			(value "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
+			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			(fields
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 				(field
-					(name "Display") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "J_RS_WAIST")
-				(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+				(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 			)
 			(property
 				(name "Status")
@@ -4022,11 +4022,11 @@
 			)
 			(property
 				(name "Evidence")
-				(value "JST GH official eGH catalog checked 2026-08-14.")
+				(value "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 			)
 			(property
 				(name "Display")
-				(value "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+				(value "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(property
 				(name "Sheetname")
@@ -4060,28 +4060,28 @@
 		)
 		(comp
 			(ref "J_TTL_HEAD")
-			(value "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
-			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
-			(description "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
+			(value "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
+			(description "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
 			(fields
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.08-0.21 mm2 SPHD-002T-P0.5 contact range includes the 0.14 mm2 TTL candidate conductor.")
 				(field
-					(name "Display") "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
+					(name "Description") "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "J_TTL_HEAD")
-				(description "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
+				(description "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
 			)
 			(property
 				(name "Status")
@@ -4089,11 +4089,11 @@
 			)
 			(property
 				(name "Evidence")
-				(value "JST GH official eGH catalog checked 2026-08-14.")
+				(value "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.08-0.21 mm2 SPHD-002T-P0.5 contact range includes the 0.14 mm2 TTL candidate conductor.")
 			)
 			(property
 				(name "Display")
-				(value "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
+				(value "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(property
 				(name "Sheetname")
@@ -4124,28 +4124,28 @@
 		)
 		(comp
 			(ref "J_TTL_LDIST")
-			(value "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
-			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
-			(description "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
+			(value "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
+			(description "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
 			(fields
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.08-0.21 mm2 SPHD-002T-P0.5 contact range includes the 0.14 mm2 TTL candidate conductor.")
 				(field
-					(name "Display") "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
+					(name "Description") "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "J_TTL_LDIST")
-				(description "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
+				(description "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
 			)
 			(property
 				(name "Status")
@@ -4153,11 +4153,11 @@
 			)
 			(property
 				(name "Evidence")
-				(value "JST GH official eGH catalog checked 2026-08-14.")
+				(value "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.08-0.21 mm2 SPHD-002T-P0.5 contact range includes the 0.14 mm2 TTL candidate conductor.")
 			)
 			(property
 				(name "Display")
-				(value "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
+				(value "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(property
 				(name "Sheetname")
@@ -4188,28 +4188,28 @@
 		)
 		(comp
 			(ref "J_TTL_RDIST")
-			(value "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
-			(datasheet "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
-			(description "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
+			(value "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
+			(datasheet "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
+			(description "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
 			(fields
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.08-0.21 mm2 SPHD-002T-P0.5 contact range includes the 0.14 mm2 TTL candidate conductor.")
 				(field
-					(name "Display") "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
+					(name "Description") "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "J_TTL_RDIST")
-				(description "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
+				(description "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
 			)
 			(property
 				(name "Status")
@@ -4217,11 +4217,11 @@
 			)
 			(property
 				(name "Evidence")
-				(value "JST GH official eGH catalog checked 2026-08-14.")
+				(value "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.08-0.21 mm2 SPHD-002T-P0.5 contact range includes the 0.14 mm2 TTL candidate conductor.")
 			)
 			(property
 				(name "Display")
-				(value "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
+				(value "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(property
 				(name "Sheetname")
@@ -13539,26 +13539,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "J_RS_LARM")
-			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
-			(docs "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 			(fields
 				(field
 					(name "Reference") "J_RS_LARM")
 				(field
-					(name "Value") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Value") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 				(field
-					(name "Display") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(pins
 				(pin
@@ -13581,26 +13581,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "J_RS_LLEG")
-			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
-			(docs "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 			(fields
 				(field
 					(name "Reference") "J_RS_LLEG")
 				(field
-					(name "Value") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Value") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 				(field
-					(name "Display") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(pins
 				(pin
@@ -13623,26 +13623,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "J_RS_RARM")
-			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
-			(docs "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 			(fields
 				(field
 					(name "Reference") "J_RS_RARM")
 				(field
-					(name "Value") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Value") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 				(field
-					(name "Display") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(pins
 				(pin
@@ -13665,26 +13665,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "J_RS_RLEG")
-			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
-			(docs "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 			(fields
 				(field
 					(name "Reference") "J_RS_RLEG")
 				(field
-					(name "Value") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Value") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 				(field
-					(name "Display") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(pins
 				(pin
@@ -13707,26 +13707,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "J_RS_WAIST")
-			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
-			(docs "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+			(description "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 			(fields
 				(field
 					(name "Reference") "J_RS_WAIST")
 				(field
-					(name "Value") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Value") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating GHR-03V-S/SSHL-002T-P0.2 cable, shield/bond, termination, protection and routing remain open.")
+					(name "Description") "Three-contact data-only connector. It intentionally has no actuator VDD contact. Mating PAP-03V-S/SPHD-001T-P0.5 cable, shield/bond, termination, protection and routing remain open.")
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.13-0.33 mm2 SPHD-001T-P0.5 contact range includes the 0.25 mm2 RS candidate conductor.")
 				(field
-					(name "Display") "JST BM03B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B03B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(pins
 				(pin
@@ -13749,26 +13749,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "J_TTL_HEAD")
-			(description "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
-			(docs "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+			(description "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 			(fields
 				(field
 					(name "Reference") "J_TTL_HEAD")
 				(field
-					(name "Value") "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Value") "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
+					(name "Description") "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.08-0.21 mm2 SPHD-002T-P0.5 contact range includes the 0.14 mm2 TTL candidate conductor.")
 				(field
-					(name "Display") "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(pins
 				(pin
@@ -13786,26 +13786,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "J_TTL_LDIST")
-			(description "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
-			(docs "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+			(description "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 			(fields
 				(field
 					(name "Reference") "J_TTL_LDIST")
 				(field
-					(name "Value") "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Value") "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
+					(name "Description") "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.08-0.21 mm2 SPHD-002T-P0.5 contact range includes the 0.14 mm2 TTL candidate conductor.")
 				(field
-					(name "Display") "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(pins
 				(pin
@@ -13823,26 +13823,26 @@
 		(libpart
 			(lib "PBV3")
 			(part "J_TTL_RDIST")
-			(description "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
-			(docs "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+			(description "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
+			(docs "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 			(fields
 				(field
 					(name "Reference") "J_TTL_RDIST")
 				(field
-					(name "Value") "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Value") "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
 				(field
 					(name "Footprint")
 				)
 				(field
-					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf")
+					(name "Datasheet") "https://www.jst-mfg.com/product/pdf/eng/ePA-F.pdf")
 				(field
-					(name "Description") "Two-contact data-only connector; no actuator VDD contact. Mating GHR-02V-S/SSHL-002T-P0.2 cable, protection and routing remain open.")
+					(name "Description") "Two-contact data-only connector; no actuator VDD contact. Mating PAP-02V-S/SPHD-002T-P0.5 cable, protection and routing remain open.")
 				(field
 					(name "Status") "EXACT DATA-ONLY CONNECTOR CANDIDATE - HARNESS/EMC VALIDATION REQUIRED")
 				(field
-					(name "Evidence") "JST GH official eGH catalog checked 2026-08-14.")
+					(name "Evidence") "JST PA official ePA-F catalog checked 2026-08-18: 2.0 mm secure lock; 0.08-0.21 mm2 SPHD-002T-P0.5 contact range includes the 0.14 mm2 TTL candidate conductor.")
 				(field
-					(name "Display") "JST BM02B-GHS-TBT DATA-ONLY FIELD HEADER")
+					(name "Display") "JST B02B-PASK-1 DATA-ONLY FIELD HEADER")
 			)
 			(pins
 				(pin
