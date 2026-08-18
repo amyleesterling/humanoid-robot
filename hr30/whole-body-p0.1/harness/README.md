@@ -7,3 +7,9 @@ This package turns the 25-axis electrical allocation into eight explicit protect
 The 76.08 A figure is only the arithmetic sum of published 12 V momentary stall-current endpoints. It is not expected operating current and must not be used as a fuse, conductor, connector or source rating. A U2D2 Power Hub is limited to 10 A aggregate and is rejected for whole-body or leg power aggregation. U2D2 is retained only as an external single-segment commissioning candidate. The installed geometry instead reserves two four-channel carriers for eight simultaneous independent interfaces; their pin-level device and connector candidates are defined, while the PCB and assembled harness remain unreleased.
 
 The controller data boundary contains reference and data only; it deliberately has no actuator-VDD contact. Standard ROBOTIS X3P/X4P cable families include VDD, so the exact power-injection breakout/cable construction and no-backfeed verification remain open.
+
+<!-- HR30-DUTY-CURRENT-P01-START -->
+## Bounded current-duty envelope
+
+The [interactive duty-current envelope](duty-current-envelope-p0.1/index.html) converts the frozen 25-axis whole-body control commands into 50 Hz torque-producing current equivalents and per-axis/per-bus peak, P95, RMS and mean evidence. Active gripping, idle current, losses, transients, regeneration, faults, robustness and thermal correlation remain open, so the result does not release wires, connectors, protection or a source.
+<!-- HR30-DUTY-CURRENT-P01-END -->
