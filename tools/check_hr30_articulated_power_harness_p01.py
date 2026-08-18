@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 WHOLE = ROOT / "hr30" / "whole-body-p0.1"
 OUT = WHOLE / "harness" / "articulated-power-harness-p0.1"
 RELEASE = ROOT / "release" / "hr30" / "whole-body-p0.1" / "harness" / OUT.name
+PHYSICAL_CROSSINGS = WHOLE / "harness" / "physical-p0.1" / "direct-power-crossing-register.csv"
 WARNING = "PRELIMINARY - ARTICULATED ACTUATOR-POWER HARNESS CANDIDATE - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION"
 
 
@@ -41,6 +42,8 @@ def main() -> int:
     branches = rows("direct-branch-register.csv")
     transitions = rows("fixed-transition-register.csv")
     crossings = rows("joint-crossing-register.csv")
+    with PHYSICAL_CROSSINGS.open(encoding="utf-8", newline="") as handle:
+        physical_crossings = list(csv.DictReader(handle))
     guards = rows("guard-solid-register.csv")
     cable = rows("cable-selection-register.csv")
     dispositions = rows("architecture-disposition-register.csv")
@@ -54,6 +57,14 @@ def main() -> int:
     assert len({r["crossing_id"] for r in crossings}) == 76
     assert {r["destination_axis"] for r in crossings} == axes
     assert {r["joint_axis"] for r in crossings} == axes
+    assert len(physical_crossings) == 76
+    assert {
+        (r["target_axis"], r["crossed_joint"], r["power_corridor"])
+        for r in physical_crossings
+    } == {
+        (r["destination_axis"], r["joint_axis"], r["corridor"])
+        for r in crossings
+    }
     by_branch = {r["branch_cable_id"]: 0 for r in branches}
     for crossing in crossings:
         by_branch[crossing["branch_cable_id"]] += 1
@@ -71,7 +82,9 @@ def main() -> int:
     rejected = [r for r in dispositions if r["disposition"].startswith("REJECTED")]
     assert len(active) == 1 and "DIRECT" in active[0]["architecture"]
     assert len(rejected) == 2 and any("TAP BOARDS" in r["architecture"] for r in rejected)
-    assert len(sources) == 11 and len(holds) == 13
+    assert len(sources) == 12 and len(holds) == 13
+    physical_source = [r for r in sources if r["source_id"] == "APH-S02A"]
+    assert len(physical_source) == 1 and physical_source[0]["sha256"] == sha(PHYSICAL_CROSSINGS)
     for dataset in [branches, transitions, crossings, guards, cable, dispositions, sources, holds]:
         assert all(r["warning"] == WARNING for r in dataset)
         assert all("NO PROCUREMENT" in r["authority"] for r in dataset)

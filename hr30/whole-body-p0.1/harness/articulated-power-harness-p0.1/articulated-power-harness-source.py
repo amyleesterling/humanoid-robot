@@ -33,6 +33,7 @@ RELEASE_WHOLE = ROOT / "release" / "hr30" / "whole-body-p0.1"
 BODY_STEP = WHOLE / "HR-30_body_architecture_candidate.step"
 LOOPS = HARNESS / "physical-p0.1" / "service-loop-register.csv"
 ROUTE_POINTS = HARNESS / "physical-p0.1" / "route-point-register.csv"
+PHYSICAL_CROSSINGS = HARNESS / "physical-p0.1" / "direct-power-crossing-register.csv"
 DROPS = HARNESS / "physical-p0.1" / "actuator-power-drop-register.csv"
 TRANSITIONS = HARNESS / "physical-p0.1" / "actuator-power-transition-register.csv"
 CORES = HARNESS / "distributed-power-harness-successor-p0.1" / "axis-core-allocation.csv"
@@ -151,6 +152,7 @@ def architecture():
     core_by_axis = {r["axis_id"]: r for r in read_csv(CORES)}
     drop_by_axis = {r["axis_id"]: r for r in read_csv(DROPS)}
     transition_by_axis = {r["axis_id"]: r for r in read_csv(TRANSITIONS)}
+    physical_crossings = read_csv(PHYSICAL_CROSSINGS)
     axes = {a for chain in CHAINS.values() for a in chain}
     if any(set(source) != axes for source in (loop_by_axis, core_by_axis, drop_by_axis, transition_by_axis)):
         raise RuntimeError("25-axis direct-branch harness binding drift")
@@ -290,6 +292,16 @@ def architecture():
             f"direct architecture count drift: {len(branches)} branches {len(transitions)} transitions "
             f"{len(crossings)} crossings {len(guards)} guards"
         )
+    articulated_topology = {
+        (row["destination_axis"], row["joint_axis"], row["corridor"])
+        for row in crossings
+    }
+    physical_topology = {
+        (row["target_axis"], row["crossed_joint"], row["power_corridor"])
+        for row in physical_crossings
+    }
+    if len(physical_crossings) != 76 or physical_topology != articulated_topology:
+        raise RuntimeError("physical and articulated 76-crossing topologies are not synchronized")
     return branches, transitions, crossings, guards, geometry
 
 
@@ -338,6 +350,7 @@ def source_rows() -> list[dict[str, object]]:
     local = [
         ("APH-S01", LOOPS, "25 named joint axes, ranges and legacy final-axis loop obligations"),
         ("APH-S02", ROUTE_POINTS, "whole-body fixed corridors and route datums"),
+        ("APH-S02A", PHYSICAL_CROSSINGS, "76 physical direct-power crossing centerlines and axis obligations"),
         ("APH-S03", CORES, "25 individually protected pair allocations and current caps"),
         ("APH-S04", DROPS, "25 protected output and return-net bindings"),
         ("APH-S05", TRANSITIONS, "25 fixed-side Micro-Fit transition bindings"),

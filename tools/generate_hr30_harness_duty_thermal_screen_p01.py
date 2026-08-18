@@ -400,6 +400,44 @@ The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1
     physical_release.mkdir(parents=True, exist_ok=True)
     for path in [*physical_files, physical_manifest]:
         shutil.copy2(path, physical_release / path.name)
+
+    # The guide is also embedded in the harness and whole-body parent pages.
+    # Keep those parent manifests and release mirrors synchronized here so a
+    # standalone regeneration cannot leave otherwise unrelated packages with
+    # source/release drift.
+    harness_files = [HARNESS / "README.md", HARNESS / "index.html"]
+    harness_manifest = HARNESS / "file-manifest.csv"
+    refresh_manifest_rows(
+        harness_manifest,
+        HARNESS,
+        harness_files,
+        "PRELIMINARY - NOT APPROVED FOR CONNECTION, FABRICATION, MOTION OR ENERGIZATION",
+    )
+    harness_release = ROOT / "release" / "hr30" / "whole-body-p0.1" / "harness"
+    harness_release.mkdir(parents=True, exist_ok=True)
+    for path in [*harness_files, harness_manifest]:
+        shutil.copy2(path, harness_release / path.name)
+
+    body_files = [
+        BODY / "README.md",
+        BODY / "index.html",
+        *harness_files,
+        harness_manifest,
+        *physical_files,
+        physical_manifest,
+        *sorted(path for path in OUT.iterdir() if path.is_file()),
+    ]
+    body_manifest = BODY / "file-manifest.csv"
+    refresh_manifest_rows(
+        body_manifest,
+        BODY,
+        body_files,
+        "PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION",
+    )
+    body_release = ROOT / "release" / "hr30" / "whole-body-p0.1"
+    body_release.mkdir(parents=True, exist_ok=True)
+    for path in [BODY / "README.md", BODY / "index.html", body_manifest]:
+        shutil.copy2(path, body_release / path.name)
     print(json.dumps(status, indent=2))
     return 0
 

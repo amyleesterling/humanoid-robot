@@ -125,16 +125,45 @@ This corrects the manufacturing-universe boundary: the 98 body/frame/hand parts 
 The [transmission closure guide](transmission-closure-p0.1/index.html) maps all 39 smooth-pulley or generic-coupler predecessor placeholders to concrete successors. Twenty leg pulleys were already superseded by installed MISUMI candidates, two gripper couplers by the detailed rack-and-pinion hands, eight shoulder pulley positions now use a 16:24 5GT / 185 mm belt candidate, and nine direct axes now use four editable flanged blind-bore split-clamp adapter families. The successor whole-body STEP/GLB also corrects the wrist vendor geometry to XC330. Material, fits, retention, capacity, DFM, FAI and physical proof remain open.
 <!-- HR30-TRANSMISSION-CLOSURE-P01-README-END -->
 
-<!-- HR30-CARRIER-FIRST-AXIS-P01-README-START -->
-## Carrier-to-first-axis harnesses
 
-The [interactive eight-lead guide](harness/carrier-first-axis-p0.1/index.html) binds every carrier output to its first actuator through **37 controlled contact-map rows**. Five isolated RS-485 connectors use a separate unique field-reference leg to RB0; three TTL connectors leave the field reference cavity empty so `CTRL_GND` still reaches RB0 only through `GR-PB09`. JST PA/EH housing and contact families are explicit, and both planning conductor sizes now fall within the chosen PA contact ranges. Insulation O.D., reference landing, crimp process, physical routing, waveform evidence and qualified disposition remain open; zero assemblies exist.
-<!-- HR30-CARRIER-FIRST-AXIS-P01-README-END -->
+
+<!-- HR30-TRANSITION-BRACKETS-P01-README-START -->
+## Actuator fixed-transition bracket CAD
+
+The [interactive transition-bracket guide](harness/actuator-transition-brackets-p0.1/index.html) places one dimensioned three-solid service cassette at every one of the 25 actuator feeds. Editable part STEP, the standard assembly STEP/GLB, the recognizable whole-body placement STEP/GLB and all coordinates are included.
+
+The central connector opening is a **project-owned clearance proxy**, not a released Molex cutout. A printable nine-window diagnostic coupon, print traveler and blank inspection record are included so a received connector can be checked before all 25 brackets are revised. Official-drawing reconciliation, received-part fit, production material/process selection, cable clamp qualification, body attachment, tolerance-aware collision and physical testing remain open.
+<!-- HR30-TRANSITION-BRACKETS-P01-README-END -->
+
+
+<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-START -->
+## Actuator cable kit
+
+The [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **159 connector-cavity records**. The dimensioned transition-bracket candidate and all **25 nominal module placements** are configuration-bound. All **8 actuator buses** now bind to the proposed `PDU_COMMON_RET` single-point reference architecture: each actuator uses its dedicated branch return, while the 17 inter-actuator links leave both GND and VDD empty to prevent a parallel motor-return path. Five RS-485 carrier channels are isolated; three TTL channels are not. The retained rejected-CF9 predecessor calculation has a largest 20 C planning drop of **0.209 V**; it is not an ampacity, logic-margin or thermal release. Every bus-reference test and physical validation gate remains open.
+<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-END -->
+<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-START -->
+## Actuator cable coupon and route measurement
+
+The [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) defines the complete moving **CF130 -> Molex 430250200/430300001 -> panel 430200200/430310001 -> restrained Alpha 3051 -> JST EH** transition coupon. Eleven specimen families cover both crimp systems, the panel mount, strain isolation, electrical/thermal behavior and flex. The dimensioned bracket candidate and all **25 nominal placements** are configuration-bound. Direct CF130-to-JST crimping is rejected. No production cut length, bracket release, crimp setting or physical-work authority is granted.
+<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-END -->
 <!-- HR30-INTERAXIS-DATA-ADAPTER-P01-README-START -->
 ## Inter-axis data adapters
 
 The [interactive 17-link adaptation guide](harness/interaxis-data-adapter-p0.1/index.html) binds **14 RS-485 X4P** and **3 TTL X3P** inter-actuator links to exact ROBOTIS cable-family SKUs. Each candidate removes both factory power conductors completely, leaves upstream cavities 1/2 empty, retains factory data contacts, and inserts the destination actuator's dedicated protected branch-power contacts into its combined input housing. Zero adapters have been modified, inspected, routed or communication-tested. The eight carrier-to-first-actuator interfaces are now controlled by the separate carrier-first-axis package, but their conductor, construction and validation gates remain open.
 <!-- HR30-INTERAXIS-DATA-ADAPTER-P01-README-END -->
+<!-- HR30-SRS-P01-README-START -->
+## Whole-body safety requirements P0.1
+
+The [interactive safety-requirements guide](safety-requirements-p0.1/index.html) converts the existing whole-robot stop topology, first-power firmware and restraint boundary into 24 open hazards, 12 safety/control functions, a candidate PLr allocation, 8 explicit stopping-time intervals and 20 validation cases. Achieved PL/PFHd, common-cause evidence, numerical stopping limits, physical results and qualified approval remain open. It is a reviewable SRS candidate, not permission to connect, power or move the robot.
+<!-- HR30-SRS-P01-README-END -->
+
+
+
+<!-- HR30-CARRIER-FIRST-AXIS-P01-README-START -->
+## Carrier-to-first-axis harnesses
+
+The [interactive eight-lead guide](harness/carrier-first-axis-p0.1/index.html) binds every carrier output to its first actuator through **37 controlled contact-map rows**. Five isolated RS-485 connectors use a separate unique field-reference leg to RB0; three TTL connectors leave the field reference cavity empty so `CTRL_GND` still reaches RB0 only through `GR-PB09`. JST PA/EH housing and contact families are explicit, and both planning conductor sizes now fall within the chosen PA contact ranges. Insulation O.D., reference landing, crimp process, physical routing, waveform evidence and qualified disposition remain open; zero assemblies exist.
+<!-- HR30-CARRIER-FIRST-AXIS-P01-README-END -->
 <!-- HR30-FIRST-ENERGIZATION-P01-README-START -->
 ## First-energization readiness
 
@@ -153,14 +182,13 @@ The [current-constrained actuation guide](current-constrained-actuation-p0.1/ind
 
 ## Physical whole-body harness P0.1
 
-The [interactive physical harness guide](harness/physical-p0.1/index.html) translates the logical ECAD into 62 route segments: 12 reserved body corridors and two moving-loop candidates at every one of the 25 joint axes. It retains all 667 current logical terminals and binds every installed equipment item without inventing unresolved conductor sizes or protection values.
+The [interactive physical harness guide](harness/physical-p0.1/index.html) translates the logical ECAD into 113 route segments: 12 reserved body corridors, 76 direct-power joint crossings and 25 serial-data joint links. It retains all 667 current logical terminals and binds every installed equipment item without inventing unresolved conductor sizes or protection values.
 
-All 62 route centerlines now exist as named editable STEP solids and one interactive GLB in a recognizable 762 mm body context. The display rods are centerline references only; they do not release cable OD, bundle clearance, bend radius, cut length, or retention.
+All 113 route centerlines now exist as named editable STEP solids and one interactive GLB in a recognizable 762 mm body context. The display rods are centerline references only; they do not release cable OD, bundle clearance, bend radius, cut length, or retention.
 
 The P0.1 split-harness candidate uses 25 individual positive/return power pairs and eight serial data chains. Incoming actuator housings combine the individual pair with data; outgoing inter-actuator housings populate data contacts only and leave GND/VDD cavities empty. The eight bus assembly drawings and 25 contact maps are construction candidates, not a released cable set. Protection, conductor sizing, crimp process qualification, retention, flex-life, EMC, and physical validation remain open.
 
 Four actuator-family interfaces are now source-verified, five commercial ROBOTIS cable families are dispositioned, and five manufacturer-interface discrepancies remain explicitly open. In particular, the ROBOTIS 21 AWG statement conflicts with JST's AWG 22 contact limit, the documented housing order-code text differs, U2D2 is not the eight-segment controller, and the 10 A Power Hub is rejected for whole-body or leg power.
-
 
 <!-- HR30-GRIPPERS-P01-README-START -->
 ## Detailed bilateral hand mechanisms
@@ -174,31 +202,13 @@ The [detailed gripper package](grippers-p0.1/index.html) contains two editable 1
 The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 64 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
 <!-- HR30-ASSEMBLY-GUIDE-P01-END -->
 
-<!-- HR30-WALKING-POWER-P01-README-START -->
-## Bidirectional walking-power successor
 
-The [interactive walking-power guide](electrical/walking-power-successor-p0.1/index.html) replaces the single reverse-blocking branch for walking development with a native eight-sheet KiCad candidate containing two oppositely oriented TPS259482L devices per branch. One device protects motoring current and the other protects regenerative current. All 25 axes are allocated across eight electrically separate six-channel board instances, one per authoritative actuator bus; 23 positions remain DNP. The package now carries the exact TI YWP0012A example land pattern and a routed 150 x 68 mm ten-layer board candidate with ERC 0/0, DRC 0/0 and zero unconnected pads. Eight contactor-open brake/dump circuits, exact current thresholds, production stackup, DFM, thermal proof and every powered-work authority remain open.
-<!-- HR30-WALKING-POWER-P01-README-END -->
 
-<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-START -->
-## Actuator cable kit
 
-The [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **159 connector-cavity records**. The dimensioned transition-bracket candidate and all **25 nominal module placements** are configuration-bound. All **8 actuator buses** now bind to the proposed `PDU_COMMON_RET` single-point reference architecture: each actuator uses its dedicated branch return, while the 17 inter-actuator links leave both GND and VDD empty to prevent a parallel motor-return path. Five RS-485 carrier channels are isolated; three TTL channels are not. The retained rejected-CF9 predecessor calculation has a largest 20 C planning drop of **0.091 V**; it is not an ampacity, logic-margin or thermal release. Every bus-reference test and physical validation gate remains open.
-<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-END -->
 
-<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-START -->
-## Actuator cable coupon and route measurement
 
-The [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) defines the complete moving **CF130 -> Molex 430250200/430300001 -> panel 430200200/430310001 -> restrained Alpha 3051 -> JST EH** transition coupon. Eleven specimen families cover both crimp systems, the panel mount, strain isolation, electrical/thermal behavior and flex. The dimensioned bracket candidate and all **25 nominal placements** are configuration-bound. Direct CF130-to-JST crimping is rejected. No production cut length, bracket release, crimp setting or physical-work authority is granted.
-<!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-END -->
 
-<!-- HR30-TRANSITION-BRACKETS-P01-README-START -->
-## Actuator fixed-transition bracket CAD
 
-The [interactive transition-bracket guide](harness/actuator-transition-brackets-p0.1/index.html) places one dimensioned three-solid service cassette at every one of the 25 actuator feeds. Editable part STEP, the standard assembly STEP/GLB, the recognizable whole-body placement STEP/GLB and all coordinates are included.
-
-The central connector opening is a **project-owned clearance proxy**, not a released Molex cutout. A printable nine-window diagnostic coupon, print traveler and blank inspection record are included so a received connector can be checked before all 25 brackets are revised. Official-drawing reconciliation, received-part fit, production material/process selection, cable clamp qualification, body attachment, tolerance-aware collision and physical testing remain open.
-<!-- HR30-TRANSITION-BRACKETS-P01-README-END -->
 
 ## Joint-hardware successor reconciliation
 
@@ -240,6 +250,18 @@ The [interactive SWD adapter guide](electrical/swd-adapter-p0.1/index.html) cont
 The [interactive logic-power guide](electrical/logic-power-kit-p0.1/index.html) selects a SIGLENT SPD3303X, the exact two-contact JST boundary, red/black Alpha Wire conductors and Pomona banana plugs. The cable is unbuilt; voltage/current/OCP limits, DC-reference approval and every physical test remain open. It grants no connection or powered-work authority.
 <!-- HR30-LOGIC-POWER-KIT-P01-README-END -->
 
+
+
+
+
+
+
+
+<!-- HR30-WALKING-POWER-P01-README-START -->
+## Bidirectional walking-power successor
+
+The [interactive walking-power guide](electrical/walking-power-successor-p0.1/index.html) replaces the single reverse-blocking branch for walking development with a native eight-sheet KiCad candidate containing two oppositely oriented TPS259482L devices per branch. One device protects motoring current and the other protects regenerative current. All 25 axes are allocated across eight electrically separate six-channel board instances, one per authoritative actuator bus; 23 positions remain DNP. The package now carries the exact TI YWP0012A example land pattern and a routed 150 x 68 mm ten-layer board candidate with ERC 0/0, DRC 0/0 and zero unconnected pads. Eight contactor-open brake/dump circuits, exact current thresholds, production stackup, DFM, thermal proof and every powered-work authority remain open.
+<!-- HR30-WALKING-POWER-P01-README-END -->
 <!-- HR30-PROTECTION-CONDUCTOR-P01-README-START -->
 ## Staged protection and conductor architecture
 
@@ -250,7 +272,6 @@ The [interactive protection/conductor guide](electrical/protection-conductor-arc
 
 The [interactive grounding guide](electrical/grounding-reference-architecture-p0.1/index.html) consolidates facility PE, the external panel, the SBS75G first-mate tether contact, every conductive robot module, DC return, control ground, shields and grounded test equipment into one candidate topology. It proposes one removable BR1 DC-return/PE bond at RB0 and **10 controlled bond records**. Conductor hardware, limits, measurements, jurisdiction and qualified approval remain open; it grants no work authority.
 <!-- HR30-GROUNDING-REFERENCE-P01-README-END -->
-
 <!-- HR30-HEAD-HMI-HARNESS-P01-README-START -->
 ## Physical head HMI harness
 
@@ -261,18 +282,13 @@ The [interactive head HMI harness guide](harness/head-hmi-harness-p0.1/index.htm
 
 The [interactive protective-bonding guide](electrical/protective-bonding-implementation-p0.1/index.html) binds the PE/reference architecture to **9 hardware records**, **13 whole-robot bond zones**, **14 articulated-joint bypass obligations**, a 16-step installation traveler and a blank 12-test inspection plan. Hammond enclosure studs, Phoenix Contact UT 10-PE, Anderson 1340G1 and an Alpha Wire 6 AWG fixed-panel family are candidate interfaces only. Fault sizing, moving-joint cable, installation, measurements, AHJ disposition and qualified release remain open.
 <!-- HR30-PROTECTIVE-BONDING-P01-README-END -->
-
 <!-- HR30-STM32-BRINGUP-P01-README-START -->
 ## STM32 no-actuator bring-up
 
 The [interactive target bring-up guide](firmware/stm32-target-bringup-p0.1/index.html) binds the reproducible STM32H743 image to the controller's exact five-contact SWD boundary and the [native routed SWD adapter candidate](electrical/swd-adapter-p0.1/index.html), plus ten release gates, twelve measurements and six fault injections. The target remains unflashed; the adapter board and cable remain unbuilt; all physical results and work authority remain open.
 <!-- HR30-STM32-BRINGUP-P01-README-END -->
 
-<!-- HR30-SRS-P01-README-START -->
-## Whole-body safety requirements P0.1
 
-The [interactive safety-requirements guide](safety-requirements-p0.1/index.html) converts the existing whole-robot stop topology, first-power firmware and restraint boundary into 24 open hazards, 12 safety/control functions, a candidate PLr allocation, 8 explicit stopping-time intervals and 20 validation cases. Achieved PL/PFHd, common-cause evidence, numerical stopping limits, physical results and qualified approval remain open. It is a reviewable SRS candidate, not permission to connect, power or move the robot.
-<!-- HR30-SRS-P01-README-END -->
 
 <!-- HR30-SFI-P01-START -->
 ## Safety-function implementation map
@@ -378,14 +394,18 @@ The [interactive first-build cart](first-build-cart-p0.1/index.html) converts th
 The [whole-body harness duty-current guide](harness/duty-current-envelope-p0.1/index.html) supplies the previously missing bounded per-axis and per-bus torque-producing current envelopes from the executed control successor. It is calculation evidence only; final normal demand, wire construction, protection, thermal validation and every powered-work authority remain open.
 <!-- HR30-DUTY-CURRENT-P01-END -->
 
-<!-- HR30-DUTY-THERMAL-P01-START -->
-## Whole-body harness duty/thermal screen
-
-The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1/index.html) connects both frozen walking traces to all 25 physical power-pair lengths, eight buses and six reserved power corridors. The derived loss cases define physical test obligations; they do not release conductors, contacts, protection or energization.
-<!-- HR30-DUTY-THERMAL-P01-END -->
-
 <!-- HR30-ARTICULATED-POWER-HARNESS-P01-START -->
 ## Articulated whole-body power harness
 
 The [articulated power-harness CAD](harness/articulated-power-harness-p0.1/index.html) now follows the authoritative 25 individually protected branches instead of the rejected tap-board cascade. Distal cables appear at every upstream joint, giving 76 explicit joint-crossing segments plus 25 fixed transitions and separate rigid/flexible guards. It is a coherent packaging candidate; full-pose and physical validation remain open.
 <!-- HR30-ARTICULATED-POWER-HARNESS-P01-END -->
+
+## Installed equipment layout
+
+The former empty torso, pelvis, head and foot reservations now contain 64 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.722 kg. Eight bus-specific 124 x 45 mm walking-power board instances are now visibly installed in the pelvis, torso and both thighs; no board input serves more than one actuator bus or regulator output. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+
+<!-- HR30-DUTY-THERMAL-P01-START -->
+## Whole-body harness duty/thermal screen
+
+The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1/index.html) connects both frozen walking traces to all 25 physical power-pair lengths, eight buses and six reserved power corridors. The derived loss cases define physical test obligations; they do not release conductors, contacts, protection or energization.
+<!-- HR30-DUTY-THERMAL-P01-END -->

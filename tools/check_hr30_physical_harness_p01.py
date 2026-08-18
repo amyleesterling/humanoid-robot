@@ -38,6 +38,7 @@ def main() -> int:
     axes = rows("axis-harness-binding.csv")
     routes = rows("route-segment-register.csv")
     points = rows("route-point-register.csv")
+    power_crossings = rows("direct-power-crossing-register.csv")
     route_cad = rows("route-cad-register.csv")
     loops = rows("service-loop-register.csv")
     power = rows("actuator-power-drop-register.csv")
@@ -65,11 +66,12 @@ def main() -> int:
 
     require(len(axes) == len(loops) == len(power) == len(transitions) == len(links) == len(chains) == len(power_pairs) == len(data_links) == len(retain) == len(derating) == 25, "25-axis register spine incomplete")
     require(len(connectors) == 196, "42 actuator/data plus 104 walking-power and 50 inline-transition connector boundaries required")
-    require(len(routes) == 62 and len(points) == 124, "route geometry count drift")
-    require(len(route_cad) == 62 and {r["segment_id"] for r in route_cad} == {r["segment_id"] for r in routes}, "whole-body route CAD register does not cover all 62 segments")
-    require(len({r["solid_name"] for r in route_cad}) == 62, "route CAD solid names are not unique")
+    require(len(power_crossings) == 76, "76 direct-power joint crossings required")
+    require(len(routes) == 113 and len(points) == 226, "route geometry count drift")
+    require(len(route_cad) == 113 and {r["segment_id"] for r in route_cad} == {r["segment_id"] for r in routes}, "whole-body route CAD register does not cover all 113 segments")
+    require(len({r["solid_name"] for r in route_cad}) == 113, "route CAD solid names are not unique")
     require(all(r["geometry_interpretation"].startswith("REFERENCE CENTERLINE ROD ONLY") and r["authority"].startswith("NO PROCUREMENT") for r in route_cad), "route CAD overclaims cable sizing or authority")
-    require(Counter(r["segment_kind"] for r in routes) == {"MOVING JOINT LOOP": 50, "FIXED BODY CORRIDOR": 12}, "fixed/moving route split drift")
+    require(Counter(r["segment_kind"] for r in routes) == {"DIRECT POWER JOINT CROSSING": 76, "SERIAL DATA JOINT LINK": 25, "FIXED BODY CORRIDOR": 12}, "fixed/power/data route split drift")
     require(len(assemblies) == 14 and len(terminations) == len(shields) == 8, "assembly/bus completeness drift")
     with (WB / "electrical/kicad/hr30-whole-body-electrical-p0.1/connector-schedule.csv").open(encoding="utf-8-sig", newline="") as handle:
         ecad_terminals = list(csv.DictReader(handle))
@@ -94,10 +96,31 @@ def main() -> int:
     for a in axes:
         require(a["power_loop"] in route_ids and a["data_loop"] in route_ids, f"axis loops missing {a['axis_id']}")
         require(a["power_trunk"] in route_ids and a["data_trunk"] in route_ids, f"axis trunk missing {a['axis_id']}")
+        segments = a["power_crossing_segments"].split("; ")
+        require(len(segments) == int(a["power_crossing_count"]) == int(a["physical_power_chain_position"]), f"direct-power crossing count drift {a['axis_id']}")
+        require(all(segment in route_ids for segment in segments), f"direct-power route missing {a['axis_id']}")
+
+    require(len({r["crossing_id"] for r in power_crossings}) == 76 and len({r["segment_id"] for r in power_crossings}) == 76, "direct-power crossing IDs not unique")
+    require({r["target_axis"] for r in power_crossings} == axis_ids, "direct-power target-axis coverage drift")
+    require(all(r["segment_id"] in route_ids and r["selection_state"].startswith("CENTERLINE/LANE CANDIDATE") and r["authority"].startswith("NO PROCUREMENT") for r in power_crossings), "direct-power crossing authority or route binding drift")
 
     bus_axis: dict[str, list[str]] = defaultdict(list)
     for a in axes: bus_axis[a["bus_id"]].append(a["axis_id"])
     require(sorted(len(v) for v in bus_axis.values()) == [1, 2, 2, 2, 3, 3, 6, 6], "eight-bus axis allocation drift")
+    axis_by_id = {row["axis_id"]: row for row in axes}
+    power_corridor_axes: dict[str, list[str]] = defaultdict(list)
+    for row in axes:
+        power_corridor_axes[row["physical_power_corridor"]].append(row["axis_id"])
+    require(sorted(len(v) for v in power_corridor_axes.values()) == [1, 2, 5, 5, 6, 6], "six physical power-chain allocations drift")
+    for corridor, axis_list in power_corridor_axes.items():
+        ordered = sorted(axis_list, key=lambda axis: int(axis_by_id[axis]["physical_power_chain_position"]))
+        for ordinal, target_axis in enumerate(ordered, start=1):
+            crossed = sorted(
+                (row for row in power_crossings if row["target_axis"] == target_axis),
+                key=lambda row: int(row["joint_ordinal"]),
+            )
+            require(all(row["power_corridor"] == corridor for row in crossed), f"power corridor mismatch {target_axis}")
+            require([row["crossed_joint"] for row in crossed] == ordered[:ordinal], f"upstream crossing prefix drift {target_axis}")
     require(abs(sum(float(r["candidate_12v_stall_endpoint_a"]) for r in power) - 71.88) < 1e-8, "stall endpoint arithmetic drift")
     require(all("PAIRED OPPOSING TPS259482LYWPR" in r["protection_topology"] and "CHANNEL" in r["protection_topology"] for r in power), "25 paired board/channel protection bindings missing")
     require(all("CF130.03.02.UL" in r["conductor_size"] and "Alpha Wire 3051" in r["conductor_size"] for r in power), "moving/pigtail conductor architecture missing")
@@ -147,8 +170,10 @@ def main() -> int:
 
     false_gates = ["standard_dynamixel_cable_direct_use_approved", "assembled_cables_selected", "u2d2_final_whole_body_controller_approved", "u2d2_power_hub_whole_body_or_leg_power_approved", "robotis_jst_wire_gauge_conflict_closed", "robotis_jst_housing_order_code_conflict_closed", "conductor_sizing_released", "protection_released", "connector_set_released", "harness_validated", "procurement_authority", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]
     require(all(status[k] is False for k in false_gates), "authority/selection gate overclaimed")
-    require(status["total_route_segments"] == 62 and status["logical_terminals"] == len(ecad_terminals), "status count drift")
-    require(status["route_cad_solid_count"] == 62 and status["whole_body_route_step_present"] is True and status["whole_body_route_glb_present"] is True, "whole-body route CAD status missing")
+    require(status["fixed_route_segments"] == 12 and status["moving_power_crossing_segments"] == 76 and status["moving_data_link_segments"] == 25, "physical route category status drift")
+    require(status["moving_joint_route_segments"] == 101 and status["total_route_segments"] == 113 and status["route_points"] == 226 and status["logical_terminals"] == len(ecad_terminals), "status count drift")
+    require(status["every_direct_power_pair_crosses_all_upstream_joints"] is True, "direct-power upstream-crossing status missing")
+    require(status["route_cad_solid_count"] == 113 and status["whole_body_route_step_present"] is True and status["whole_body_route_glb_present"] is True, "whole-body route CAD status missing")
     require(status["route_cad_is_cable_size_release"] is False, "route centerline CAD incorrectly releases cable sizing")
     require(status["split_harness_candidate_defined"] is True and status["data_star_topology_rejected"] is True and status["serial_data_predecessor_successor_chain_complete"] is True, "split-harness status missing")
     require(status["actuator_connector_instances"] == 196 and status["actuator_connector_contacts"] == 515 and status["cable_cores"] == 144 and status["serial_data_links"] == status["individual_power_pairs"] == status["fixed_side_power_transitions"] == 25, "split-harness/WPS/transition status counts drift")
@@ -177,20 +202,21 @@ def main() -> int:
     svg = (OUT / "whole-body-physical-harness.svg").read_text(encoding="utf-8")
     require("font-size:14px" in page and "font:16px/1.5" in page, "web guide legibility floor missing")
     require(not re.search(r"font-size\s*:\s*(?:[0-9]|1[01])px", page), "web guide contains text below 12 px")
-    require(svg.count('class="joint"') == 25 and svg.count('class="route ') == 62, "SVG route/joint completeness drift")
+    require(svg.count('class="joint"') == 25 and svg.count('class="route ') == 113, "SVG route/joint completeness drift")
     diagrams = sorted((OUT / "bus-diagrams").glob("*.svg"))
     require(len(diagrams) == 8 and all("Outgoing pins 1/2 EMPTY" in path.read_text(encoding="utf-8") for path in diagrams), "eight serial bus assembly drawings missing")
     require("Eight serial data-chain assembly drawings" in page and "actuator-chain-contact-map.csv" in page, "interactive split-harness guide missing")
     require("Manufacturer interface reality check" in page and "robotis-cable-family-register.csv" in page and "manufacturer-interface-discrepancy-register.csv" in page, "manufacturer interface web guidance missing")
     require("Fixed transition at every actuator branch" in page and "actuator-power-transition-register.csv" in page and "Moving CF130 no longer terminates directly into JST EH" in page, "fixed-transition web guidance missing")
     require("71.88 A figure" in page and "76.08 A figure" not in page, "whole-body endpoint current text is stale")
-    require("HR30_whole_body_harness_centerlines_candidate.glb" in page and "route-cad-register.csv" in page and "model-viewer.min.js" in page, "interactive 3D route model missing from web guide")
+    require("HR30_whole_body_harness_centerlines_candidate.glb" in page and "route-cad-register.csv" in page and "direct-power-crossing-register.csv" in page and "model-viewer.min.js" in page, "interactive 3D route model or direct-power register missing from web guide")
+    require("Orbit all 113 routes" in page and ">76</strong>direct-power crossings" in page, "web guide route topology summary drift")
     step_path = OUT / "HR30_whole_body_harness_centerlines_candidate.step"
     glb_path = OUT / "HR30_whole_body_harness_centerlines_candidate.glb"
     require(step_path.stat().st_size > 100_000 and glb_path.stat().st_size > 25_000, "whole-body route STEP/GLB exports are missing or empty")
     step_shape = cq.importers.importStep(str(step_path))
     box = step_shape.val().BoundingBox()
-    require(len(step_shape.solids().vals()) >= 73, "route STEP does not contain 62 routes plus recognizable body context")
+    require(len(step_shape.solids().vals()) >= 124, "route STEP does not contain 113 routes plus recognizable body context")
     require(abs(box.zmin) < 1e-6 and abs(box.zmax - 762.0) < 1e-6, "route STEP does not preserve the complete 762 mm body datum")
     require(not list(OUT.rglob("*.pdf")), "physical harness package must remain web/register native")
 
@@ -200,13 +226,15 @@ def main() -> int:
     require("## Physical whole-body harness P0.1" in whole_readme, "whole-body README integration missing")
     require('href="harness/physical-p0.1/index.html"' in whole_page, "whole-body web guide link missing")
     require(whole_status.get("physical_harness_package_present") is True, "whole-body status integration missing")
+    require(whole_status.get("physical_harness_route_segments") == 113 and whole_status.get("physical_harness_route_points") == 226 and whole_status.get("physical_harness_route_cad_solids") == 113, "whole-body physical harness counts drift")
+    require(whole_status.get("physical_harness_direct_power_crossing_count") == 76 and whole_status.get("physical_harness_serial_data_joint_link_count") == 25 and whole_status.get("physical_harness_every_direct_pair_crosses_upstream_joints") is True, "whole-body direct-power crossing integration missing")
     require(whole_status.get("physical_harness_selected") is False and whole_status.get("physical_harness_validated") is False, "whole-body harness status overclaimed")
 
     readme = (OUT / "README.md").read_text(encoding="utf-8")
     require("71.88 A figure" in readme and "76.08 A figure" not in readme, "README endpoint current text is stale")
     require("21 AWG cable statement conflicts" in readme and "U2D2 is retained only" in readme, "README manufacturer-interface boundary missing")
 
-    print(f"PASS: HR-30 physical harness: 25 fixed-side Micro-Fit transitions split moving CF130 from restrained Alpha 3051 pigtails; 196 connectors / 515 contacts / 144 cores; {len(logical)} logical terminals; all release/authority gates false")
+    print(f"PASS: HR-30 physical harness: 12 fixed corridors + 76 direct-power crossings + 25 serial-data links; 25 fixed-side Micro-Fit transitions; 196 connectors / 515 contacts / 144 cores; {len(logical)} logical terminals; all release/authority gates false")
     return 0
 
 

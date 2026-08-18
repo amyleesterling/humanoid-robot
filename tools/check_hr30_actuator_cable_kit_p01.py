@@ -84,8 +84,8 @@ def main() -> int:
         need(abs(float(r["voltage_drop_20c_at_candidate_cap_v"]) - cap * resistance) < 5.1e-7, f"voltage-drop drift: {r['axis_id']}")
         need(abs(float(r["conductor_loss_20c_at_candidate_cap_w"]) - cap * cap * resistance) < 5.1e-7, f"conductor-loss drift: {r['axis_id']}")
         need("REJECTED CF9 PREDECESSOR" in r["calculation_boundary"] and "REJECTED CF9.UL.02.02 PREDECESSOR" in r["calculation_material"], f"planning comparison boundary missing: {r['axis_id']}")
-    need(abs(max(float(r["voltage_drop_20c_at_candidate_cap_v"]) for r in axes) - 0.090851) < 1e-6, "maximum planning drop drift")
-    need(abs(max(float(r["conductor_loss_20c_at_candidate_cap_w"]) for r in axes) - 0.181582) < 1e-6, "maximum planning loss drift")
+    need(abs(max(float(r["voltage_drop_20c_at_candidate_cap_v"]) for r in axes) - 0.208594) < 1e-6, "maximum planning drop drift")
+    need(abs(max(float(r["conductor_loss_20c_at_candidate_cap_w"]) for r in axes) - 0.423840) < 1e-6, "maximum planning loss drift")
 
     counts = Counter(r["connector_role"] for r in cavities)
     need(counts == Counter({"ACTUATOR INPUT": 94, "DATA-ONLY OUTGOING": 65}), "input/outgoing cavity coverage drift")
@@ -124,7 +124,8 @@ def main() -> int:
     need(status["transition_count"] == 25 and not status["microfit_cf130_core_od_verified"] and status["transition_brackets_dimensioned"] and status["transition_bracket_placement_count"] == 25, "transition evidence boundary drift")
     need(status["bus_reference_architecture_defined"] and status["bus_reference_count"] == 8 and status["bus_reference_star_node"] == "PDU_COMMON_RET", "bus-reference status missing")
     need(status["parallel_motor_return_path_prohibited"] and status["rs485_isolated_channel_count"] == 5 and status["ttl_nonisolated_channel_count"] == 3 and not status["bus_reference_validated"], "bus-reference validation boundary drift")
-    need(abs(status["maximum_planning_voltage_drop_20c_at_candidate_cap_v"] - 0.090851) < 1e-6, "status max drop drift")
+    need(abs(status["maximum_planning_voltage_drop_20c_at_candidate_cap_v"] - 0.208594) < 1e-6, "status max drop drift")
+    need(abs(status["maximum_planning_conductor_loss_20c_at_candidate_cap_w"] - 0.423840) < 1e-6, "status max loss drift")
     for key in ["cf9_current_capacity_released", "cf9_route_life_verified", "power_cable_selected", "data_cable_selected", "crimp_process_selected", "procurement_authority", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]:
         need(status[key] is False, f"fail-closed status violated: {key}")
     need(status["current_caps_propagated"] and status["canonical_jst_order_code_family_bound"], "material advancement missing")
