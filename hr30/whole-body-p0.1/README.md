@@ -329,3 +329,9 @@ The [interactive control-successor guide](control-successor-p0.1/index.html) rer
 
 The [interactive lightweight hip guide](lightweight-hip-successor-p0.1/index.html) replaces each heavy two-stage compound hip drive with one physically modeled 15:60 EV5GT stage. Four complete single-stage packages are installed in the recognizable 762 mm humanoid, with STEP, GLB, URDF and the passing bounded-control MJCF. The mass screen now uses the complete superseded hip package boundary. Exact pulley teeth, composite material, capacity, structural proof, physical mass and every work authority remain open.
 <!-- HR30-LIGHTWEIGHT-HIP-P01-END -->
+
+<!-- HR30-DUTY-CURRENT-P01-START -->
+## Harness duty-current evidence
+
+The [whole-body harness duty-current guide](harness/duty-current-envelope-p0.1/index.html) supplies the previously missing bounded per-axis and per-bus torque-producing current envelopes from the executed control successor. It is calculation evidence only; final normal demand, wire construction, protection, thermal validation and every powered-work authority remain open.
+<!-- HR30-DUTY-CURRENT-P01-END -->
