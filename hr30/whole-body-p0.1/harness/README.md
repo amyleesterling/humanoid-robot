@@ -15,9 +15,9 @@ The [interactive distributed-power guide](distributed-power-harness-successor-p0
 <!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-END -->
 
 <!-- HR30-POWER-ROUTE-GUIDES-P01-START -->
-## Whole-body power route guides
+## Neutral whole-body power-route envelopes
 
-The [interactive power-route guide](power-route-guides-p0.1/index.html) replaces all six straight actuator-power corridor placeholders with editable tangent 3D centerlines. Twelve exact circular turns satisfy the selected trunks' 8x maximum-OD planning rule. The routes are external guarded-spine candidates; guard CAD, clamps, cut lengths, pose/fall/walking collision sweeps, thermal/flex tests and every powered-work authority remain open.
+The [neutral power-route guide](power-route-guides-p0.1/index.html) retains six editable tangent 3D centerlines as fixed-pose planning evidence. The continuous whole-limb cable/rigid-guard topology is rejected; use the articulated-power-harness successor for moving joints.
 <!-- HR30-POWER-ROUTE-GUIDES-P01-END -->
 
 <!-- HR30-DUTY-CURRENT-P01-START -->
@@ -31,3 +31,9 @@ The [interactive duty-current envelope](duty-current-envelope-p0.1/index.html) c
 
 The [interactive duty/thermal screen](duty-thermal-screen-p0.1/index.html) binds the two frozen whole-body sequence traces to all 25 routed actuator power pairs, eight electrical buses and every reserved power corridor. It supplies bounded torque-current drop/loss and bundle test cases, while keeping total normal current, CF130 resistance, hot ampacity, faults, protection and all powered work open.
 <!-- HR30-DUTY-THERMAL-P01-END -->
+
+<!-- HR30-ARTICULATED-POWER-HARNESS-P01-START -->
+## Articulated power harness
+
+The [articulated power-harness candidate](articulated-power-harness-p0.1/index.html) rejects a rigid whole-limb cable guard. It defines 25 passive tap-board envelopes, 45 four-conductor flat-cable joint crossings, and separate rigid-link/flexible-joint guard solids. Every protected pair remains electrically independent. Full-pose collision, bend/torsion life, termination, derating and physical validation remain open.
+<!-- HR30-ARTICULATED-POWER-HARNESS-P01-END -->

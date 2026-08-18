@@ -311,9 +311,9 @@ The [distributed-power harness successor](harness/distributed-power-harness-succ
 <!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-END -->
 
 <!-- HR30-POWER-ROUTE-GUIDES-P01-START -->
-## Routed whole-body power trunks
+## Retained neutral power-route envelopes
 
-The [whole-body power-route guide](harness/power-route-guides-p0.1/index.html) adds actual 3D tangent centerlines to all six actuator-power trunks. The complete robot is visible with the six external guarded-spine candidates, and the editable route-only STEP preserves every source endpoint. Geometry passes the cable-radius screen; collision, guard, clamp, thermal, motion and physical validation remain open.
+The [neutral-route guide](harness/power-route-guides-p0.1/index.html) retains the earlier tangent centerlines as controlled fixed-pose evidence. They are explicitly rejected as continuous moving-limb routes; the articulated-power-harness package is authoritative for joint-by-joint routing.
 <!-- HR30-POWER-ROUTE-GUIDES-P01-END -->
 
 <!-- HR30-LIGHTWEIGHT-HIP-P01-START -->
@@ -383,3 +383,9 @@ The [whole-body harness duty-current guide](harness/duty-current-envelope-p0.1/i
 
 The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1/index.html) connects both frozen walking traces to all 25 physical power-pair lengths, eight buses and six reserved power corridors. The derived loss cases define physical test obligations; they do not release conductors, contacts, protection or energization.
 <!-- HR30-DUTY-THERMAL-P01-END -->
+
+<!-- HR30-ARTICULATED-POWER-HARNESS-P01-START -->
+## Articulated whole-body power harness
+
+The [articulated power-harness CAD](harness/articulated-power-harness-p0.1/index.html) replaces the invalid rigid whole-limb guard idea with a cascaded, joint-by-joint candidate. All 25 axes have a tap-board envelope, flat-flex crossing and separate rigid/flexible guard geometry. It is a coherent packaging candidate; full-pose and physical validation remain open.
+<!-- HR30-ARTICULATED-POWER-HARNESS-P01-END -->
