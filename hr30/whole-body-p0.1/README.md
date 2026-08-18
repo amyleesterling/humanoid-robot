@@ -323,3 +323,9 @@ The [dynamics successor guide](dynamics-successor-p0.1/index.html) executes the 
 
 The [interactive control-successor guide](control-successor-p0.1/index.html) reruns the complete 25-axis, 9.990 kg tether model with the installed 4:1 hip candidate and unchanged gait, contacts, current ceilings and inverse feedforward. The frozen 8.0/0.8 feedback candidate clears both bounded sequences with no rotary saturation and less than one degree maximum rotary error. This corrects the earlier controller-generated knee/ankle saturation without adding distal hardware. Robustness, free balance, continuous capacity and every physical authority remain open.
 <!-- HR30-CONTROL-SUCCESSOR-P01-END -->
+
+<!-- HR30-LIGHTWEIGHT-HIP-P01-START -->
+## Lightweight 4:1 hip successor
+
+The [interactive lightweight hip guide](lightweight-hip-successor-p0.1/index.html) replaces each heavy two-stage compound hip drive with one physically modeled 15:60 EV5GT stage. Four complete single-stage packages are installed in the recognizable 762 mm humanoid, with STEP, GLB, URDF and the passing bounded-control MJCF. The mass screen now uses the complete superseded hip package boundary. Exact pulley teeth, composite material, capacity, structural proof, physical mass and every work authority remain open.
+<!-- HR30-LIGHTWEIGHT-HIP-P01-END -->

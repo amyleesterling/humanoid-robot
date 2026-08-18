@@ -1,0 +1,815 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="hr30_whole_body_p01">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.003051 0.007384 -0.000262" rpy="0 0 0" />
+      <mass value="1.550063" />
+      <inertia ixx="0.002057063" ixy="0" ixz="0" iyy="0.003736298" iyz="0" izz="0.004527477" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.155000 0.105000 0.070000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.155000 0.105000 0.070000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="torso">
+    <inertial>
+      <origin xyz="-0.000504 0.006838 0.094828" rpy="0 0 0" />
+      <mass value="1.034189" />
+      <inertia ixx="0.002854793" ixy="0" ixz="0" iyy="0.004923171" iyz="0" izz="0.004153993" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 0.087500" rpy="0 0 0" />
+      <geometry>
+        <box size="0.190000 0.110000 0.145000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 0.087500" rpy="0 0 0" />
+      <geometry>
+        <box size="0.190000 0.110000 0.145000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="neck_pan_link">
+    <inertial>
+      <origin xyz="-0.001315 -0.000001 -0.022743" rpy="0 0 0" />
+      <mass value="0.121151" />
+      <inertia ixx="0.000063402" ixy="0" ixz="0" iyy="0.000063402" iyz="0" izz="0.000058879" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 -0.025000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.054000 0.054000 0.058000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.025000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.054000 0.054000 0.058000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="head">
+    <inertial>
+      <origin xyz="-0.001989 -0.012142 0.007920" rpy="0 0 0" />
+      <mass value="0.418231" />
+      <inertia ixx="0.000858907" ixy="0" ixz="0" iyy="0.001221374" iyz="0" izz="0.001205900" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 0.016000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.150000 0.110000 0.112000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 0.016000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.150000 0.110000 0.112000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="L_shoulder_pitch_link">
+    <inertial>
+      <origin xyz="0.000168 0.020509 -0.004978" rpy="0 0 0" />
+      <mass value="0.191441" />
+      <inertia ixx="0.000136370" ixy="0" ixz="0" iyy="0.000079193" iyz="0" izz="0.000108228" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.040000 0.072000 0.058000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.040000 0.072000 0.058000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="L_upper_arm">
+    <inertial>
+      <origin xyz="0.011090 0.000103 -0.059612" rpy="0 0 0" />
+      <mass value="0.310504" />
+      <inertia ixx="0.000652162" ixy="0" ixz="0" iyy="0.000652162" iyz="0" izz="0.000139934" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 -0.072553" rpy="0 0 0" />
+      <geometry>
+        <box size="0.052000 0.052000 0.150000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.072553" rpy="0 0 0" />
+      <geometry>
+        <box size="0.052000 0.052000 0.150000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="L_forearm">
+    <inertial>
+      <origin xyz="-0.018674 0.000000 -0.031037" rpy="0 0 0" />
+      <mass value="0.201786" />
+      <inertia ixx="0.000395584" ixy="0" ixz="0" iyy="0.000395584" iyz="0" izz="0.000084077" />
+    </inertial>
+    <visual>
+      <origin xyz="0.005000 0.000000 -0.072457" rpy="0 0 0" />
+      <geometry>
+        <box size="0.050000 0.050000 0.145000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.005000 0.000000 -0.072457" rpy="0 0 0" />
+      <geometry>
+        <box size="0.050000 0.050000 0.145000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="L_hand">
+    <inertial>
+      <origin xyz="-0.000530 -0.001402 -0.022961" rpy="0 0 0" />
+      <mass value="0.172070" />
+      <inertia ixx="0.000084085" ixy="0" ixz="0" iyy="0.000071696" iyz="0" izz="0.000084085" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 -0.025000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.050000 0.058000 0.050000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.025000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.050000 0.058000 0.050000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="L_gripper">
+    <inertial>
+      <origin xyz="0.004237 -0.004392 0.010841" rpy="0 0 0" />
+      <mass value="0.040804" />
+      <inertia ixx="0.000015030" ixy="0" ixz="0" iyy="0.000013778" iyz="0" izz="0.000014417" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 -0.010000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.044000 0.048000 0.046000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.010000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.044000 0.048000 0.046000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="L_hip_yaw_link">
+    <inertial>
+      <origin xyz="-0.009947 0.000000 -0.038038" rpy="0 0 0" />
+      <mass value="0.249282" />
+      <inertia ixx="0.000135028" ixy="0" ixz="0" iyy="0.000108022" iyz="0" izz="0.000176574" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.060000 0.070000 0.040000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.060000 0.070000 0.040000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="L_hip_roll_link">
+    <inertial>
+      <origin xyz="0.000000 0.000327 -0.033295" rpy="0 0 0" />
+      <mass value="0.343564" />
+      <inertia ixx="0.000186097" ixy="0" ixz="0" iyy="0.000148878" iyz="0" izz="0.000243358" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.060000 0.070000 0.040000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.060000 0.070000 0.040000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="L_thigh">
+    <inertial>
+      <origin xyz="0.000163 0.001237 -0.054687" rpy="0 0 0" />
+      <mass value="0.691460" />
+      <inertia ixx="0.001807939" ixy="0" ixz="0" iyy="0.001790652" iyz="0" izz="0.000648359" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 -0.080000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.074000 0.076000 0.160000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.080000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.074000 0.076000 0.160000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="L_shin">
+    <inertial>
+      <origin xyz="0.000215 0.000000 -0.027181" rpy="0 0 0" />
+      <mass value="0.524223" />
+      <inertia ixx="0.001144948" ixy="0" ixz="0" iyy="0.001120484" iyz="0" izz="0.000428465" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 -0.082000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.068000 0.072000 0.145000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.082000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.068000 0.072000 0.145000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="L_ankle_pitch_link">
+    <inertial>
+      <origin xyz="0.000124 0.000000 0.014886" rpy="0 0 0" />
+      <mass value="0.258987" />
+      <inertia ixx="0.000146759" ixy="0" ixz="0" iyy="0.000152371" iyz="0" izz="0.000182413" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.066000 0.064000 0.052000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.066000 0.064000 0.052000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="L_foot">
+    <inertial>
+      <origin xyz="0.000000 0.005810 -0.001025" rpy="0 0 0" />
+      <mass value="0.448853" />
+      <inertia ixx="0.000832248" ixy="0" ixz="0" iyy="0.000348796" iyz="0" izz="0.001089403" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 -0.025000 -0.017500" rpy="0 0 0" />
+      <geometry>
+        <box size="0.090000 0.145000 0.035000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 -0.025000 -0.017500" rpy="0 0 0" />
+      <geometry>
+        <box size="0.090000 0.145000 0.035000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="R_shoulder_pitch_link">
+    <inertial>
+      <origin xyz="0.000168 0.020509 -0.004978" rpy="0 0 0" />
+      <mass value="0.191441" />
+      <inertia ixx="0.000136370" ixy="0" ixz="0" iyy="0.000079193" iyz="0" izz="0.000108228" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.040000 0.072000 0.058000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.040000 0.072000 0.058000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="R_upper_arm">
+    <inertial>
+      <origin xyz="-0.009547 0.000103 -0.059612" rpy="0 0 0" />
+      <mass value="0.310504" />
+      <inertia ixx="0.000652162" ixy="0" ixz="0" iyy="0.000652162" iyz="0" izz="0.000139934" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 -0.072553" rpy="0 0 0" />
+      <geometry>
+        <box size="0.052000 0.052000 0.150000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.072553" rpy="0 0 0" />
+      <geometry>
+        <box size="0.052000 0.052000 0.150000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="R_forearm">
+    <inertial>
+      <origin xyz="0.025054 0.000000 -0.031037" rpy="0 0 0" />
+      <mass value="0.201786" />
+      <inertia ixx="0.000395584" ixy="0" ixz="0" iyy="0.000395584" iyz="0" izz="0.000084077" />
+    </inertial>
+    <visual>
+      <origin xyz="-0.005000 0.000000 -0.072457" rpy="0 0 0" />
+      <geometry>
+        <box size="0.050000 0.050000 0.145000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.005000 0.000000 -0.072457" rpy="0 0 0" />
+      <geometry>
+        <box size="0.050000 0.050000 0.145000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="R_hand">
+    <inertial>
+      <origin xyz="-0.001321 -0.001402 -0.022961" rpy="0 0 0" />
+      <mass value="0.172070" />
+      <inertia ixx="0.000084085" ixy="0" ixz="0" iyy="0.000071696" iyz="0" izz="0.000084085" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 -0.025000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.050000 0.058000 0.050000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.025000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.050000 0.058000 0.050000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="R_gripper">
+    <inertial>
+      <origin xyz="-0.004241 -0.004392 0.010841" rpy="0 0 0" />
+      <mass value="0.040804" />
+      <inertia ixx="0.000015030" ixy="0" ixz="0" iyy="0.000013778" iyz="0" izz="0.000014417" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 -0.010000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.044000 0.048000 0.046000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.010000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.044000 0.048000 0.046000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="R_hip_yaw_link">
+    <inertial>
+      <origin xyz="-0.009947 0.000000 -0.038038" rpy="0 0 0" />
+      <mass value="0.249282" />
+      <inertia ixx="0.000135028" ixy="0" ixz="0" iyy="0.000108022" iyz="0" izz="0.000176574" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.060000 0.070000 0.040000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.060000 0.070000 0.040000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="R_hip_roll_link">
+    <inertial>
+      <origin xyz="-0.000000 0.000327 -0.033295" rpy="0 0 0" />
+      <mass value="0.343564" />
+      <inertia ixx="0.000186097" ixy="0" ixz="0" iyy="0.000148878" iyz="0" izz="0.000243358" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.060000 0.070000 0.040000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.060000 0.070000 0.040000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="R_thigh">
+    <inertial>
+      <origin xyz="0.000163 0.001237 -0.054687" rpy="0 0 0" />
+      <mass value="0.691460" />
+      <inertia ixx="0.001807939" ixy="0" ixz="0" iyy="0.001790652" iyz="0" izz="0.000648359" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 -0.080000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.074000 0.076000 0.160000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.080000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.074000 0.076000 0.160000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="R_shin">
+    <inertial>
+      <origin xyz="0.000215 0.000000 -0.027181" rpy="0 0 0" />
+      <mass value="0.524223" />
+      <inertia ixx="0.001144948" ixy="0" ixz="0" iyy="0.001120484" iyz="0" izz="0.000428465" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 -0.082000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.068000 0.072000 0.145000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.082000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.068000 0.072000 0.145000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="R_ankle_pitch_link">
+    <inertial>
+      <origin xyz="0.000124 0.000000 0.014886" rpy="0 0 0" />
+      <mass value="0.258987" />
+      <inertia ixx="0.000146759" ixy="0" ixz="0" iyy="0.000152371" iyz="0" izz="0.000182413" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.066000 0.064000 0.052000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <box size="0.066000 0.064000 0.052000" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="R_foot">
+    <inertial>
+      <origin xyz="-0.000000 0.005810 -0.001025" rpy="0 0 0" />
+      <mass value="0.448853" />
+      <inertia ixx="0.000832248" ixy="0" ixz="0" iyy="0.000348796" iyz="0" izz="0.001089403" />
+    </inertial>
+    <visual>
+      <origin xyz="0.000000 -0.025000 -0.017500" rpy="0 0 0" />
+      <geometry>
+        <box size="0.090000 0.145000 0.035000" />
+      </geometry>
+      <material name="button_sky">
+        <color rgba="0.49 0.83 0.98 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000000 -0.025000 -0.017500" rpy="0 0 0" />
+      <geometry>
+        <box size="0.090000 0.145000 0.035000" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="WAIST_YAW" type="revolute">
+    <parent link="base_link" />
+    <child link="torso" />
+    <origin xyz="0.000000 0.000000 0.035000" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.520000" upper="0.520000" effort="0.0" velocity="0.250000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="HEAD_PAN" type="revolute">
+    <parent link="torso" />
+    <child link="neck_pan_link" />
+    <origin xyz="0.000000 0.000000 0.225000" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.400000" upper="1.400000" effort="0.0" velocity="1.000000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="HEAD_TILT" type="revolute">
+    <parent link="neck_pan_link" />
+    <child link="head" />
+    <origin xyz="0.000000 0.000000 0.040000" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.520000" upper="0.520000" effort="0.0" velocity="0.800000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="L_SHOULDER_PITCH" type="revolute">
+    <parent link="torso" />
+    <child link="L_shoulder_pitch_link" />
+    <origin xyz="0.090000 0.000000 0.165000" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.570000" upper="1.570000" effort="0.0" velocity="0.600000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="L_SHOULDER_ROLL" type="revolute">
+    <parent link="L_shoulder_pitch_link" />
+    <child link="L_upper_arm" />
+    <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.220000" upper="1.220000" effort="0.0" velocity="0.600000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="L_ELBOW_PITCH" type="revolute">
+    <parent link="L_upper_arm" />
+    <child link="L_forearm" />
+    <origin xyz="0.038000 0.000000 -0.145107" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="0.000000" upper="2.200000" effort="0.0" velocity="0.800000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="L_WRIST_ROTATION" type="revolute">
+    <parent link="L_forearm" />
+    <child link="L_hand" />
+    <origin xyz="0.005000 0.000000 -0.144914" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.570000" upper="1.570000" effort="0.0" velocity="1.000000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="L_GRIPPER" type="prismatic">
+    <parent link="L_hand" />
+    <child link="L_gripper" />
+    <origin xyz="0.000000 0.000000 -0.043000" rpy="0 0 0" />
+    <axis xyz="1.0 0 0" />
+    <limit lower="0.000000" upper="0.026000" effort="0.0" velocity="0.030000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="L_HIP_YAW" type="revolute">
+    <parent link="base_link" />
+    <child link="L_hip_yaw_link" />
+    <origin xyz="0.062500 0.000000 0.020000" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.520000" upper="0.520000" effort="0.0" velocity="0.500000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="L_HIP_ROLL" type="revolute">
+    <parent link="L_hip_yaw_link" />
+    <child link="L_hip_roll_link" />
+    <origin xyz="0.000000 0.000000 -0.020000" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-0.440000" upper="0.440000" effort="0.0" velocity="0.500000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="L_HIP_PITCH" type="revolute">
+    <parent link="L_hip_roll_link" />
+    <child link="L_thigh" />
+    <origin xyz="0.000000 0.000000 -0.020000" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.610000" upper="0.790000" effort="0.0" velocity="0.600000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="L_KNEE_PITCH" type="revolute">
+    <parent link="L_thigh" />
+    <child link="L_shin" />
+    <origin xyz="0.000000 0.000000 -0.160000" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="0.000000" upper="2.090000" effort="0.0" velocity="0.700000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="L_ANKLE_PITCH" type="revolute">
+    <parent link="L_shin" />
+    <child link="L_ankle_pitch_link" />
+    <origin xyz="0.000000 0.000000 -0.155000" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.610000" upper="0.520000" effort="0.0" velocity="0.700000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="L_ANKLE_ROLL" type="revolute">
+    <parent link="L_ankle_pitch_link" />
+    <child link="L_foot" />
+    <origin xyz="0.000000 0.000000 -0.020000" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-0.350000" upper="0.350000" effort="0.0" velocity="0.700000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="R_SHOULDER_PITCH" type="revolute">
+    <parent link="torso" />
+    <child link="R_shoulder_pitch_link" />
+    <origin xyz="-0.090000 0.000000 0.165000" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.570000" upper="1.570000" effort="0.0" velocity="0.600000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="R_SHOULDER_ROLL" type="revolute">
+    <parent link="R_shoulder_pitch_link" />
+    <child link="R_upper_arm" />
+    <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.220000" upper="1.220000" effort="0.0" velocity="0.600000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="R_ELBOW_PITCH" type="revolute">
+    <parent link="R_upper_arm" />
+    <child link="R_forearm" />
+    <origin xyz="-0.038000 0.000000 -0.145107" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="0.000000" upper="2.200000" effort="0.0" velocity="0.800000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="R_WRIST_ROTATION" type="revolute">
+    <parent link="R_forearm" />
+    <child link="R_hand" />
+    <origin xyz="-0.005000 0.000000 -0.144914" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.570000" upper="1.570000" effort="0.0" velocity="1.000000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="R_GRIPPER" type="prismatic">
+    <parent link="R_hand" />
+    <child link="R_gripper" />
+    <origin xyz="0.000000 0.000000 -0.043000" rpy="0 0 0" />
+    <axis xyz="-1.0 0 0" />
+    <limit lower="0.000000" upper="0.026000" effort="0.0" velocity="0.030000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="R_HIP_YAW" type="revolute">
+    <parent link="base_link" />
+    <child link="R_hip_yaw_link" />
+    <origin xyz="-0.062500 0.000000 0.020000" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.520000" upper="0.520000" effort="0.0" velocity="0.500000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="R_HIP_ROLL" type="revolute">
+    <parent link="R_hip_yaw_link" />
+    <child link="R_hip_roll_link" />
+    <origin xyz="0.000000 0.000000 -0.020000" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-0.440000" upper="0.440000" effort="0.0" velocity="0.500000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="R_HIP_PITCH" type="revolute">
+    <parent link="R_hip_roll_link" />
+    <child link="R_thigh" />
+    <origin xyz="0.000000 0.000000 -0.020000" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.610000" upper="0.790000" effort="0.0" velocity="0.600000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="R_KNEE_PITCH" type="revolute">
+    <parent link="R_thigh" />
+    <child link="R_shin" />
+    <origin xyz="0.000000 0.000000 -0.160000" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="0.000000" upper="2.090000" effort="0.0" velocity="0.700000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="R_ANKLE_PITCH" type="revolute">
+    <parent link="R_shin" />
+    <child link="R_ankle_pitch_link" />
+    <origin xyz="0.000000 0.000000 -0.155000" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.610000" upper="0.520000" effort="0.0" velocity="0.700000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <joint name="R_ANKLE_ROLL" type="revolute">
+    <parent link="R_ankle_pitch_link" />
+    <child link="R_foot" />
+    <origin xyz="0.000000 0.000000 -0.020000" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-0.350000" upper="0.350000" effort="0.0" velocity="0.700000" />
+    <dynamics damping="0.1" friction="0.0" />
+  </joint>
+  <transmission name="T_L_HIP_PITCH_LIGHT4_CANDIDATE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="L_HIP_PITCH">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="A_L_HIP_PITCH_XH540">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>4.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="T_L_HIP_ROLL_LIGHT4_CANDIDATE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="L_HIP_ROLL">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="A_L_HIP_ROLL_XH540">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>4.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="T_R_HIP_PITCH_LIGHT4_CANDIDATE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R_HIP_PITCH">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="A_R_HIP_PITCH_XH540">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>4.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="T_R_HIP_ROLL_LIGHT4_CANDIDATE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R_HIP_ROLL">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="A_R_HIP_ROLL_XH540">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>4.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+</robot>
