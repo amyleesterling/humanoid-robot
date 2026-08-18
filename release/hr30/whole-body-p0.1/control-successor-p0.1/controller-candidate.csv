@@ -1,0 +1,2 @@
+candidate_id,rotary_kp_formula,rotary_kd_formula,feedforward,fixed_comparison,selection_state,warning
+CS-8-0P8,8.0 * axis current endpoint [Nm/rad],0.8 * axis current endpoint [Nm*s/rad],"50 Hz contact-enabled inverse dynamics, linearly interpolated",rejected predecessor used 40.0 and 2.0 factors,BOUNDED NUMERICAL CANDIDATE; ROBUSTNESS AND PHYSICAL TUNING OPEN,"PRELIMINARY - WHOLE-BODY CONTROL CANDIDATE ONLY - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION"

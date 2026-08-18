@@ -317,3 +317,9 @@ The [interactive torque-demand guide](torque-demand-p0.1/index.html) evaluates a
 
 The [dynamics successor guide](dynamics-successor-p0.1/index.html) executes the unchanged bilateral gait with a preregistered 4:1 hip pitch/roll scenario and inverse-dynamics feedforward. The bounded numerical screen fails: the four revised hip axes clear, but unchanged knee and ankle saturation remains excessive. The configuration is retained as rejection evidence. It does not approve fabrication, motion or walking.
 <!-- HR30-DYNAMICS-SUCCESSOR-P01-END -->
+
+<!-- HR30-CONTROL-SUCCESSOR-P01-START -->
+## Whole-body control successor
+
+The [interactive control-successor guide](control-successor-p0.1/index.html) reruns the complete 25-axis, 9.990 kg tether model with the installed 4:1 hip candidate and unchanged gait, contacts, current ceilings and inverse feedforward. The frozen 8.0/0.8 feedback candidate clears both bounded sequences with no rotary saturation and less than one degree maximum rotary error. This corrects the earlier controller-generated knee/ankle saturation without adding distal hardware. Robustness, free balance, continuous capacity and every physical authority remain open.
+<!-- HR30-CONTROL-SUCCESSOR-P01-END -->
