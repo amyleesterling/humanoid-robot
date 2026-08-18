@@ -613,5 +613,11 @@
   "e1_actuator_power_component_count": 0,
   "e1_fixture_built": false,
   "e1_connection_authority": false,
-  "e1_powered_test_authority": false
+  "e1_powered_test_authority": false,
+  "e1_logic_harness_candidate_present": true,
+  "e1_logic_harness_assembly_count": 2,
+  "e1_logic_harness_populated_conductor_count": 27,
+  "e1_logic_harness_installed_contact_count": 54,
+  "e1_logic_harness_built": false,
+  "e1_logic_harness_validated": false
 }

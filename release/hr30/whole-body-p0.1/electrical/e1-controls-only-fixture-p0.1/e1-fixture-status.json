@@ -1,7 +1,7 @@
 {
   "identifier": "HR30-E1-CONTROLS-ONLY-FIXTURE-P0.1",
   "warning": "PRELIMINARY - UNBUILT CONTROLS-ONLY FIXTURE CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION",
-  "generated_utc": "2026-08-18T08:57:13.978620+00:00",
+  "generated_utc": "2026-08-18T09:34:27.689717+00:00",
   "native_board_count": 4,
   "native_board_step_export_count": 4,
   "panel_dimensions_mm": [
@@ -32,5 +32,10 @@
   "powered_test_authority": false,
   "motion_authority": false,
   "walking_authority": false,
-  "energization_authority": false
+  "energization_authority": false,
+  "logic_harness_candidate_present": true,
+  "logic_harness_assembly_count": 2,
+  "logic_harness_populated_conductor_count": 27,
+  "logic_harness_installed_contact_count": 54,
+  "logic_harness_empty_cavity_count": 6
 }

@@ -361,3 +361,10 @@ The [whole-body power-route guide](harness/power-route-guides-p0.1/index.html) a
 
 The [E1 controls-only fixture](electrical/e1-controls-only-fixture-p0.1/index.html) turns the electrification plan's E1 stage into an actual 360 x 240 mm CAD assembly. It mounts the native motion controller, both four-channel carriers and SWD adapter on their real PCB hole axes, encloses all eight actuator-data field ports, and contains no actuator-power connector, conductor, PDU or actuator. The fixture and boards remain unbuilt; wiring, supply limits, received clearances, firmware/HIL and independent authorization remain open.
 <!-- HR30-E1-CONTROLS-FIXTURE-P01-END -->
+
+<!-- HR30-E1-LOGIC-HARNESS-P01-START -->
+## E1 pin-for-pin logic harnesses
+
+The E1 controls fixture now includes two placed controller-to-carrier harness candidates with 27 individually modeled conductors and four 15-position JST GH housing envelopes. Carrier A populates all 15 contacts. Carrier B populates contacts 1-12 and leaves 13-15 empty at both ends, matching the native ECAD instead of inventing three wires. Exact straight-through net maps, 320/310 mm cut-length candidates, STEP/GLB exports and a controlled construction traveler are included. The crimp process, received fit, current derating and every physical test remain open; no connection or powered-test authority follows.
+
+<!-- HR30-E1-LOGIC-HARNESS-P01-END -->
