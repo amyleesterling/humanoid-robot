@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "hr30" / "whole-body-p0.1" / "harness" / "distributed-power-harness-successor-p0.1"
 RELEASE = ROOT / "release" / "hr30" / "whole-body-p0.1" / "harness" / OUT.name
 WHOLE = ROOT / "hr30" / "whole-body-p0.1"
+ROUTE_GUIDES = WHOLE / "harness" / "power-route-guides-p0.1" / "route-centerline-register.csv"
 RELEASE_WHOLE = ROOT / "release" / "hr30" / "whole-body-p0.1"
 WARNING = "PRELIMINARY - DISTRIBUTED ACTUATOR-POWER HARNESS CANDIDATE - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION"
 MARKER = "HR30-DISTRIBUTED-POWER-HARNESS-P01"
@@ -78,8 +79,10 @@ def main() -> None:
     status = json.loads((OUT / "status.json").read_text(encoding="utf-8"))
     if status["axis_count"] != 25 or status["distribution_node_count"] != 6 or status["corridor_count"] != 6:
         raise AssertionError("controlled counts drift")
-    if status["old_individual_cable_corridor_failures"] != 5 or status["successor_diameter_screens_pass"] != 6 or status["successor_bend_screens_pass"] != 1:
+    if status["old_individual_cable_corridor_failures"] != 5 or status["successor_diameter_screens_pass"] != 6 or status["successor_bend_screens_pass"] != 6:
         raise AssertionError("screen totals drift")
+    if status["route_guide_geometry_integrated"] is not True:
+        raise AssertionError("route-guide geometry is not integrated")
     for gate in ["protection_components_selected", "breakout_ecad_complete", "route_sweeps_complete", "thermal_validated", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]:
         if status[gate] is not False:
             raise AssertionError(f"unsafe gate true: {gate}")
@@ -98,10 +101,19 @@ def main() -> None:
         raise AssertionError("old bundle failure count drift")
     if any(r["diameter_screen"] != "PASS GEOMETRIC AREA" for r in corridors):
         raise AssertionError("successor diameter screen regression")
-    if sum(r["bend_screen"] == "PASS" for r in corridors) != 1:
+    if sum(r["bend_screen"] == "PASS ROUTE-GUIDE GEOMETRY" for r in corridors) != 6:
         raise AssertionError("bend screen count drift")
+    guide_rows = {r["source_corridor"]: r for r in rows(ROUTE_GUIDES)}
+    if set(guide_rows) != {r["corridor"] for r in corridors}:
+        raise AssertionError("route-guide/corridor identity drift")
     for row in corridors:
         close(float(row["trunk_area_fill_ratio"]), (float(row["trunk_max_od_mm"]) / float(row["corridor_diameter_mm"])) ** 2, 2e-6)
+        guide = guide_rows[row["corridor"]]
+        if row["route_guide_id"] != guide["route_id"] or row["integrated_route_geometry"] != guide["turn_geometry"]:
+            raise AssertionError(f"route-guide binding drift: {row['corridor']}")
+        close(float(row["integrated_route_guide_radius_mm"]), float(guide["exact_guide_radius_mm"]))
+        if float(row["integrated_route_guide_radius_mm"]) < float(row["candidate_required_bend_radius_mm"]):
+            raise AssertionError(f"route-guide bend regression: {row['corridor']}")
         if int(row["protected_core_count"]) + int(row["spare_cores"]) != int(row["trunk_core_count"]):
             raise AssertionError(f"core accounting error: {row['corridor']}")
 
@@ -161,7 +173,7 @@ def main() -> None:
     html_text = (OUT / "index.html").read_text(encoding="utf-8")
     if "font-size:11px" in html_text or "font-size:10px" in html_text or "font-size:9px" in html_text:
         raise AssertionError("interface text below 12px")
-    print("PASS: 25 explicit protected core pairs; six distributed nodes; successor fits diameter screens; five bend routes and all power authorities remain open")
+    print("PASS: 25 explicit protected core pairs; six distributed nodes; all diameter and route-guide bend screens pass; guarding, collision, thermal and all power authorities remain open")
 
 
 if __name__ == "__main__":

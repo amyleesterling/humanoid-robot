@@ -307,7 +307,7 @@ The [MuJoCo dynamics guide](mujoco-dynamics-validation-p0.1/index.html) records 
 <!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-START -->
 ## Distributed whole-body actuator power
 
-The [distributed-power harness successor](harness/distributed-power-harness-successor-p0.1/index.html) replaces the rejected 25-jacket corridor bundle with six local protected distribution nodes and multi-core limb trunks. It binds a dedicated protected core pair to every axis and exact cable/terminal candidates. All six diameter screens pass; five bend reservations, the protection electronics, breakout ECAD, routed motion sweeps and thermal tests remain open.
+The [distributed-power harness successor](harness/distributed-power-harness-successor-p0.1/index.html) replaces the rejected 25-jacket corridor bundle with six local protected distribution nodes and multi-core limb trunks. It binds a dedicated protected core pair to every axis and exact cable/terminal candidates. All six diameter screens and all six dimensioned route-guide radius screens pass; protection electronics, breakout ECAD, guards, full-pose collision sweeps and thermal tests remain open.
 <!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-END -->
 
 <!-- HR30-POWER-ROUTE-GUIDES-P01-START -->

@@ -11,7 +11,7 @@ The controller data boundary contains reference and data only; it deliberately h
 <!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-START -->
 ## Distributed actuator-power successor
 
-The [interactive distributed-power guide](distributed-power-harness-successor-p0.1/index.html) rejects the physically impossible one-jacketed-cable-per-axis bundle. Six local protected nodes feed exact Alpha Wire 12-, 4-, and 2-core candidate trunks with an explicit protected pair for every one of the 25 axes. All six trunk diameter screens fit; five existing bend reservations require route-guide redesign. Protection devices, breakout ECAD, routed joint sweeps, thermal validation and every powered-work authority remain open.
+The [interactive distributed-power guide](distributed-power-harness-successor-p0.1/index.html) rejects the physically impossible one-jacketed-cable-per-axis bundle. Six local protected nodes feed exact Alpha Wire 12-, 4-, and 2-core candidate trunks with an explicit protected pair for every one of the 25 axes. All six trunk diameter screens fit, and all six now bind to the dimensioned tangent guides in the whole-body route CAD. Protection devices, breakout ECAD, guard and collision sweeps, thermal validation and every powered-work authority remain open.
 <!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-END -->
 
 <!-- HR30-POWER-ROUTE-GUIDES-P01-START -->
