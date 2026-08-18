@@ -654,5 +654,16 @@
   "interaxis_data_adapter_built_count": 0,
   "interaxis_data_adapter_inspected_count": 0,
   "interaxis_data_adapter_communication_tested_count": 0,
-  "interaxis_data_adapter_selected": false
+  "interaxis_data_adapter_selected": false,
+  "carrier_first_axis_candidate_defined": true,
+  "carrier_first_axis_assembly_count": 8,
+  "carrier_first_axis_rs485_count": 5,
+  "carrier_first_axis_ttl_count": 3,
+  "carrier_first_axis_contact_map_count": 37,
+  "carrier_first_axis_rs_reference_leg_count": 5,
+  "carrier_first_axis_ttl_empty_reference_cavity_count": 3,
+  "carrier_first_axis_conductor_selected": false,
+  "carrier_first_axis_built_count": 0,
+  "carrier_first_axis_tested_count": 0,
+  "carrier_first_axis_selected": false
 }
