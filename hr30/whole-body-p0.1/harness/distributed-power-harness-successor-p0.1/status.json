@@ -1,0 +1,22 @@
+{
+  "identifier": "HR30-DISTRIBUTED-POWER-HARNESS-SUCCESSOR-P0.1",
+  "date": "2026-08-18",
+  "warning": "PRELIMINARY - DISTRIBUTED ACTUATOR-POWER HARNESS CANDIDATE - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION",
+  "axis_count": 25,
+  "distribution_node_count": 6,
+  "corridor_count": 6,
+  "old_individual_cable_corridor_failures": 5,
+  "successor_diameter_screens_pass": 6,
+  "successor_bend_screens_pass": 1,
+  "exact_cable_order_codes_bound": true,
+  "exact_18awg_microfit_terminal_order_codes_bound": true,
+  "protection_components_selected": false,
+  "breakout_ecad_complete": false,
+  "route_sweeps_complete": false,
+  "thermal_validated": false,
+  "fabrication_authority": false,
+  "connection_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false
+}

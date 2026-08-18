@@ -19,3 +19,9 @@ The [interactive duty-current envelope](duty-current-envelope-p0.1/index.html) c
 
 The [interactive duty/thermal screen](duty-thermal-screen-p0.1/index.html) binds the two frozen whole-body sequence traces to all 25 routed actuator power pairs, eight electrical buses and every reserved power corridor. It supplies bounded torque-current drop/loss and bundle test cases, while keeping total normal current, CF130 resistance, hot ampacity, faults, protection and all powered work open.
 <!-- HR30-DUTY-THERMAL-P01-END -->
+
+<!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-START -->
+## Distributed actuator-power successor
+
+The [interactive distributed-power guide](distributed-power-harness-successor-p0.1/index.html) rejects the physically impossible one-jacketed-cable-per-axis bundle. Six local protected nodes feed exact Alpha Wire 12-, 4-, and 2-core candidate trunks with an explicit protected pair for every one of the 25 axes. All six trunk diameter screens fit; five existing bend reservations require route-guide redesign. Protection devices, breakout ECAD, routed joint sweeps, thermal validation and every powered-work authority remain open.
+<!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-END -->
