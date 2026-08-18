@@ -1,0 +1,3827 @@
+(export
+	(version "E")
+	(design
+		(source "C:\\Users\\amyle\\Documents\\New project\\h30e\\test-fixtures\\hr-v0-p121-no-load-fixture-p0.1\\hr-v0-p121-no-load-fixture-p0.1.kicad_sch")
+		(date "2026-08-18T03:14:21")
+		(tool "Eeschema 10.0.5")
+		(textvar
+			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title "PROJECT BUTTON HR-V0 P1.21 NO-LOAD FIXTURE P0.1 index")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-18")
+				(source "hr-v0-p121-no-load-fixture-p0.1.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "V2.1 PRESERVED; V3 IS A CONNECTED CANDIDATE")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "2")
+			(name "/01 Isolated 24 V control source and hard exclusion boundary/")
+			(tstamps "/c7c8e6ca-1a98-5f2d-9935-4200c9e7b6e9/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 01")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-18")
+				(source "01_power_and_absence_boundary.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "3")
+			(name "/02 Native SR1/S0 and SRA1 input/start chains/")
+			(tstamps "/f7f3b1dd-83d1-5ca9-9dd0-bce194c0e4c1/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 02")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-18")
+				(source "02_estop_and_eligibility_chain.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "4")
+			(name "/03 Dual ordinary-relay A1 gate and heartbeat boundary/")
+			(tstamps "/56ef0203-6ec4-5cb3-871e-7acc6591edec/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 03")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-18")
+				(source "03_watchdog_gate_and_stimulus.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+		(sheet
+			(number "5")
+			(name "/04 Fifteen required signals on one time base/")
+			(tstamps "/7fedf637-592d-579c-80a3-9577ca46cc98/")
+			(title_block
+				(title "PB HR-V0 P0.1 - 04")
+				(company "Project Button")
+				(rev "P0.1")
+				(date "2026-08-18")
+				(source "04_isolated_measurement_fanout.kicad_sch")
+				(comment
+					(number "1")
+					(value "PRELIMINARY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION")
+				)
+				(comment
+					(number "2")
+					(value "CONNECTED DESIGN CANDIDATE - QUALIFIED REVIEW REQUIRED")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "ABSENT")
+			(value "PHYSICAL ABSENCE INTERLOCK")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "These items are absence inspections, not electrical connections. Any presence is a stop-work failure.")
+			(fields
+				(field
+					(name "Status") "MANDATORY ABSENCE / NOT EXECUTED")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "PHYSICAL ABSENCE INTERLOCK")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "These items are absence inspections, not electrical connections. Any presence is a stop-work failure.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "ABSENT")
+				(description "These items are absence inspections, not electrical connections. Any presence is a stop-work failure.")
+			)
+			(property
+				(name "Status")
+				(value "MANDATORY ABSENCE / NOT EXECUTED")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "PHYSICAL ABSENCE INTERLOCK")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Isolated 24 V control source and hard exclusion boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_power_and_absence_boundary.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Isolated 24 V control source and hard exclusion boundary/")
+				(tstamps "/c7c8e6ca-1a98-5f2d-9935-4200c9e7b6e9/")
+			)
+			(tstamps "569878b5-d5f6-56ba-807c-2fb63ff0dcc3")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "D")
+						)
+						(pin
+							(num "C")
+						)
+						(pin
+							(num "B")
+						)
+						(pin
+							(num "A")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EDISC")
+			(value "MANUAL EMERGENCY ISOLATION - SELECTION REQUIRED")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "Visible, reachable fixture isolation device; exact device and DC rating remain unselected.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "MANUAL EMERGENCY ISOLATION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Visible, reachable fixture isolation device; exact device and DC rating remain unselected.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EDISC")
+				(description "Visible, reachable fixture isolation device; exact device and DC rating remain unselected.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "MANUAL EMERGENCY ISOLATION - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Isolated 24 V control source and hard exclusion boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_power_and_absence_boundary.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Isolated 24 V control source and hard exclusion boundary/")
+				(tstamps "/c7c8e6ca-1a98-5f2d-9935-4200c9e7b6e9/")
+			)
+			(tstamps "8ea655db-c03b-584d-a8dd-ec4aeb6ffbda")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "F24")
+			(value "P1.21 F24 - SELECTION REQUIRED")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "DUT protection position from P1.21. No fuse value is released.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 F24 - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "DUT protection position from P1.21. No fuse value is released.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "F24")
+				(description "DUT protection position from P1.21. No fuse value is released.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "P1.21 F24 - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Isolated 24 V control source and hard exclusion boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_power_and_absence_boundary.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Isolated 24 V control source and hard exclusion boundary/")
+				(tstamps "/c7c8e6ca-1a98-5f2d-9935-4200c9e7b6e9/")
+			)
+			(tstamps "a4ca1628-08e8-5629-abb8-9d1ed86412b0")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "IN")
+						)
+						(pin
+							(num "OUT")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "PSFIX")
+			(value "ISOLATED CURRENT-LIMITED 24 V SOURCE - SELECTION REQUIRED")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "Exact source, limits, protection, isolation and calibration remain AUTH-006/AUTH-007 holds.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "ISOLATED CURRENT-LIMITED 24 V SOURCE - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Exact source, limits, protection, isolation and calibration remain AUTH-006/AUTH-007 holds.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "PSFIX")
+				(description "Exact source, limits, protection, isolation and calibration remain AUTH-006/AUTH-007 holds.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "ISOLATED CURRENT-LIMITED 24 V SOURCE - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Isolated 24 V control source and hard exclusion boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_power_and_absence_boundary.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Isolated 24 V control source and hard exclusion boundary/")
+				(tstamps "/c7c8e6ca-1a98-5f2d-9935-4200c9e7b6e9/")
+			)
+			(tstamps "e5c8e561-589c-5597-92f2-0e80a89991f5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "-")
+						)
+						(pin
+							(num "+")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "XD0")
+			(value "P1.21 CONTROL 0 V DISTRIBUTION")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "No proposed DC 0 V/PE bond is made by this isolated bench fixture.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 CONTROL 0 V DISTRIBUTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "No proposed DC 0 V/PE bond is made by this isolated bench fixture.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "XD0")
+				(description "No proposed DC 0 V/PE bond is made by this isolated bench fixture.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "P1.21 CONTROL 0 V DISTRIBUTION")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Isolated 24 V control source and hard exclusion boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_power_and_absence_boundary.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Isolated 24 V control source and hard exclusion boundary/")
+				(tstamps "/c7c8e6ca-1a98-5f2d-9935-4200c9e7b6e9/")
+			)
+			(tstamps "7a9ff2fd-2427-5002-9236-3f4a231a5e34")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LINE")
+						)
+						(pin
+							(num "03")
+						)
+						(pin
+							(num "02")
+						)
+						(pin
+							(num "01")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "XD24")
+			(value "P1.21 CONTROL +24 V DISTRIBUTION")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "Fixture uses only enumerated control loads; terminal hardware remains received/physical review work.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 CONTROL +24 V DISTRIBUTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Fixture uses only enumerated control loads; terminal hardware remains received/physical review work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "XD24")
+				(description "Fixture uses only enumerated control loads; terminal hardware remains received/physical review work.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "P1.21 CONTROL +24 V DISTRIBUTION")
+			)
+			(property
+				(name "Sheetname")
+				(value "01 Isolated 24 V control source and hard exclusion boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "01_power_and_absence_boundary.kicad_sch")
+			)
+			(sheetpath
+				(names "/01 Isolated 24 V control source and hard exclusion boundary/")
+				(tstamps "/c7c8e6ca-1a98-5f2d-9935-4200c9e7b6e9/")
+			)
+			(tstamps "0ce9d416-9e87-5745-8810-42b06841473a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LINE")
+						)
+						(pin
+							(num "03")
+						)
+						(pin
+							(num "02")
+						)
+						(pin
+							(num "01")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "EDMSIM")
+			(value "CONFIGURATION-CONTROLLED DRY-CONTACT EDM SIMULATOR")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "K1/K2 contactors are absent. Exact simulator switch hardware, anti-tamper state indication and contact rating are SELECTION REQUIRED.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "CONFIGURATION-CONTROLLED DRY-CONTACT EDM SIMULATOR")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "K1/K2 contactors are absent. Exact simulator switch hardware, anti-tamper state indication and contact rating are SELECTION REQUIRED.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "EDMSIM")
+				(description "K1/K2 contactors are absent. Exact simulator switch hardware, anti-tamper state indication and contact rating are SELECTION REQUIRED.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "CONFIGURATION-CONTROLLED DRY-CONTACT EDM SIMULATOR")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Native SR1/S0 and SRA1 input/start chains")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_estop_and_eligibility_chain.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Native SR1/S0 and SRA1 input/start chains/")
+				(tstamps "/f7f3b1dd-83d1-5ca9-9dd0-bce194c0e4c1/")
+			)
+			(tstamps "4bc8b987-0306-54c8-bb0e-06ae6f0887fc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "K2-21")
+						)
+						(pin
+							(num "K1-21")
+						)
+						(pin
+							(num "K2-22")
+						)
+						(pin
+							(num "K1-22")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "S0")
+			(value "P1.21 DUAL-CHANNEL E-STOP")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "Both channels require independent state capture; received terminal positions remain verification work.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 DUAL-CHANNEL E-STOP")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Both channels require independent state capture; received terminal positions remain verification work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "S0")
+				(description "Both channels require independent state capture; received terminal positions remain verification work.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "P1.21 DUAL-CHANNEL E-STOP")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Native SR1/S0 and SRA1 input/start chains")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_estop_and_eligibility_chain.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Native SR1/S0 and SRA1 input/start chains/")
+				(tstamps "/f7f3b1dd-83d1-5ca9-9dd0-bce194c0e4c1/")
+			)
+			(tstamps "0472cf85-2f3c-5a65-8f93-69430c2c8ca6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "L-2")
+						)
+						(pin
+							(num "L-1")
+						)
+						(pin
+							(num "R-2")
+						)
+						(pin
+							(num "R-1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "S1")
+			(value "P1.21 SR1 RESET")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "Terminal mapping remains received-lot verification work.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 SR1 RESET")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Terminal mapping remains received-lot verification work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "S1")
+				(description "Terminal mapping remains received-lot verification work.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "P1.21 SR1 RESET")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Native SR1/S0 and SRA1 input/start chains")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_estop_and_eligibility_chain.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Native SR1/S0 and SRA1 input/start chains/")
+				(tstamps "/f7f3b1dd-83d1-5ca9-9dd0-bce194c0e4c1/")
+			)
+			(tstamps "3737e22e-1767-5fae-8a84-1b4ac3707385")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-R1")
+						)
+						(pin
+							(num "TBD-R2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "S2")
+			(value "P1.21 ARM PUSHBUTTON")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "Falling edge must be independently timestamped; terminal mapping remains received-lot work.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 ARM PUSHBUTTON")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Falling edge must be independently timestamped; terminal mapping remains received-lot work.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "S2")
+				(description "Falling edge must be independently timestamped; terminal mapping remains received-lot work.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "P1.21 ARM PUSHBUTTON")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Native SR1/S0 and SRA1 input/start chains")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_estop_and_eligibility_chain.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Native SR1/S0 and SRA1 input/start chains/")
+				(tstamps "/f7f3b1dd-83d1-5ca9-9dd0-bce194c0e4c1/")
+			)
+			(tstamps "3bc3a736-7f64-57e6-b274-a38a05e7d454")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "TBD-A1")
+						)
+						(pin
+							(num "TBD-A2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SR1")
+			(value "P1.21 SR1 SAFETY RELAY")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "Terminal/net identity copied from P1.21; exact article and qualified application remain outside fixture release.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 SR1 SAFETY RELAY")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Terminal/net identity copied from P1.21; exact article and qualified application remain outside fixture release.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SR1")
+				(description "Terminal/net identity copied from P1.21; exact article and qualified application remain outside fixture release.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "P1.21 SR1 SAFETY RELAY")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Native SR1/S0 and SRA1 input/start chains")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_estop_and_eligibility_chain.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Native SR1/S0 and SRA1 input/start chains/")
+				(tstamps "/f7f3b1dd-83d1-5ca9-9dd0-bce194c0e4c1/")
+			)
+			(tstamps "5290e8d0-14d2-59f0-b83b-e54e4209249f")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "A2")
+						)
+						(pin
+							(num "A1")
+						)
+						(pin
+							(num "24")
+						)
+						(pin
+							(num "23")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "S34")
+						)
+						(pin
+							(num "S22")
+						)
+						(pin
+							(num "S21")
+						)
+						(pin
+							(num "S12")
+						)
+						(pin
+							(num "S11")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "SRA1")
+			(value "P1.21 PNOZ S4 750104 CANDIDATE")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "Output contact terminals are deliberately removed from the P1.21 load path and connected only to isolated low-energy state channels.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 PNOZ S4 750104 CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Output contact terminals are deliberately removed from the P1.21 load path and connected only to isolated low-energy state channels.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "SRA1")
+				(description "Output contact terminals are deliberately removed from the P1.21 load path and connected only to isolated low-energy state channels.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "P1.21 PNOZ S4 750104 CANDIDATE")
+			)
+			(property
+				(name "Sheetname")
+				(value "02 Native SR1/S0 and SRA1 input/start chains")
+			)
+			(property
+				(name "Sheetfile")
+				(value "02_estop_and_eligibility_chain.kicad_sch")
+			)
+			(sheetpath
+				(names "/02 Native SR1/S0 and SRA1 input/start chains/")
+				(tstamps "/f7f3b1dd-83d1-5ca9-9dd0-bce194c0e4c1/")
+			)
+			(tstamps "42f21a9f-ab6a-5ee9-a94c-4bffc6542fae")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "S34")
+						)
+						(pin
+							(num "S22")
+						)
+						(pin
+							(num "S21")
+						)
+						(pin
+							(num "S12")
+						)
+						(pin
+							(num "S11")
+						)
+						(pin
+							(num "A2")
+						)
+						(pin
+							(num "A1")
+						)
+						(pin
+							(num "Y32")
+						)
+						(pin
+							(num "42")
+						)
+						(pin
+							(num "41")
+						)
+						(pin
+							(num "34")
+						)
+						(pin
+							(num "33")
+						)
+						(pin
+							(num "24")
+						)
+						(pin
+							(num "23")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "13")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "HBSRC")
+			(value "ISOLATED PATTERN SOURCE / LOGGER - SELECTION REQUIRED")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "No Raspberry Pi or motion supervisor is required in the no-load fixture; exact pattern source remains unselected.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "ISOLATED PATTERN SOURCE / LOGGER - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "No Raspberry Pi or motion supervisor is required in the no-load fixture; exact pattern source remains unselected.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "HBSRC")
+				(description "No Raspberry Pi or motion supervisor is required in the no-load fixture; exact pattern source remains unselected.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "ISOLATED PATTERN SOURCE / LOGGER - SELECTION REQUIRED")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Dual ordinary-relay A1 gate and heartbeat boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_watchdog_gate_and_stimulus.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Dual ordinary-relay A1 gate and heartbeat boundary/")
+				(tstamps "/56ef0203-6ec4-5cb3-871e-7acc6591edec/")
+			)
+			(tstamps "984320a8-2f9e-59ff-90e3-d6c0e3c65bdb")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "LOG")
+						)
+						(pin
+							(num "RET")
+						)
+						(pin
+							(num "HB")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JWF1")
+			(value "P1.21 WATCHDOG FEEDBACK INTERFACE")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "Connector pin identity from P1.21.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 WATCHDOG FEEDBACK INTERFACE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Connector pin identity from P1.21.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JWF1")
+				(description "Connector pin identity from P1.21.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "P1.21 WATCHDOG FEEDBACK INTERFACE")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Dual ordinary-relay A1 gate and heartbeat boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_watchdog_gate_and_stimulus.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Dual ordinary-relay A1 gate and heartbeat boundary/")
+				(tstamps "/56ef0203-6ec4-5cb3-871e-7acc6591edec/")
+			)
+			(tstamps "b72ed133-f05b-598c-ba55-3744053f1706")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JWH1")
+			(value "P1.21 HEARTBEAT INTERFACE")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "Heartbeat source must be isolated, configuration controlled and timestamped.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 HEARTBEAT INTERFACE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Heartbeat source must be isolated, configuration controlled and timestamped.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JWH1")
+				(description "Heartbeat source must be isolated, configuration controlled and timestamped.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "P1.21 HEARTBEAT INTERFACE")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Dual ordinary-relay A1 gate and heartbeat boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_watchdog_gate_and_stimulus.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Dual ordinary-relay A1 gate and heartbeat boundary/")
+				(tstamps "/56ef0203-6ec4-5cb3-871e-7acc6591edec/")
+			)
+			(tstamps "db4383c6-a781-5e8a-ac69-c522fb0da50c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "JWP1")
+			(value "P1.21 WATCHDOG PCB POWER/COIL INTERFACE")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "Connector pin identity from P1.21; physical connector and PCB validation remain open.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 WATCHDOG PCB POWER/COIL INTERFACE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Connector pin identity from P1.21; physical connector and PCB validation remain open.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "JWP1")
+				(description "Connector pin identity from P1.21; physical connector and PCB validation remain open.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "P1.21 WATCHDOG PCB POWER/COIL INTERFACE")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Dual ordinary-relay A1 gate and heartbeat boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_watchdog_gate_and_stimulus.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Dual ordinary-relay A1 gate and heartbeat boundary/")
+				(tstamps "/56ef0203-6ec4-5cb3-871e-7acc6591edec/")
+			)
+			(tstamps "08fbb53f-b4d9-5efb-99d1-8ca0b1041ca1")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "3")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "KWD1")
+			(value "P1.21 PHOENIX 2967060 CANDIDATE")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "Exact P1.21 terminals. Ordinary relay; no safety credit.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 PHOENIX 2967060 CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Exact P1.21 terminals. Ordinary relay; no safety credit.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "KWD1")
+				(description "Exact P1.21 terminals. Ordinary relay; no safety credit.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "P1.21 PHOENIX 2967060 CANDIDATE")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Dual ordinary-relay A1 gate and heartbeat boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_watchdog_gate_and_stimulus.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Dual ordinary-relay A1 gate and heartbeat boundary/")
+				(tstamps "/56ef0203-6ec4-5cb3-871e-7acc6591edec/")
+			)
+			(tstamps "4001f4f1-4cc3-5a7a-9c96-d2f301d252c9")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "A1")
+						)
+						(pin
+							(num "21")
+						)
+						(pin
+							(num "11")
+						)
+						(pin
+							(num "A2")
+						)
+						(pin
+							(num "22")
+						)
+						(pin
+							(num "14")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "KWD2")
+			(value "P1.21 PHOENIX 2967060 CANDIDATE")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "Exact P1.21 terminals. Ordinary relay; no safety credit.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 PHOENIX 2967060 CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Exact P1.21 terminals. Ordinary relay; no safety credit.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "KWD2")
+				(description "Exact P1.21 terminals. Ordinary relay; no safety credit.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "P1.21 PHOENIX 2967060 CANDIDATE")
+			)
+			(property
+				(name "Sheetname")
+				(value "03 Dual ordinary-relay A1 gate and heartbeat boundary")
+			)
+			(property
+				(name "Sheetfile")
+				(value "03_watchdog_gate_and_stimulus.kicad_sch")
+			)
+			(sheetpath
+				(names "/03 Dual ordinary-relay A1 gate and heartbeat boundary/")
+				(tstamps "/56ef0203-6ec4-5cb3-871e-7acc6591edec/")
+			)
+			(tstamps "ecbc3c7c-b0f8-5d07-8bdf-fda34e46d077")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "A1")
+						)
+						(pin
+							(num "21")
+						)
+						(pin
+							(num "11")
+						)
+						(pin
+							(num "A2")
+						)
+						(pin
+							(num "22")
+						)
+						(pin
+							(num "14")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "DAQC")
+			(value "ISOLATED LOW-ENERGY CONTACT ACQUISITION")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "SIG-007 through SIG-011. Instrument excitation must be isolated and low energy.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "ISOLATED LOW-ENERGY CONTACT ACQUISITION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "SIG-007 through SIG-011. Instrument excitation must be isolated and low energy.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "DAQC")
+				(description "SIG-007 through SIG-011. Instrument excitation must be isolated and low energy.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "ISOLATED LOW-ENERGY CONTACT ACQUISITION")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Fifteen required signals on one time base")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_isolated_measurement_fanout.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Fifteen required signals on one time base/")
+				(tstamps "/7fedf637-592d-579c-80a3-9577ca46cc98/")
+			)
+			(tstamps "9d7e3a70-e3de-5fd3-8b73-e7d5bcd1b89e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "11B")
+						)
+						(pin
+							(num "11A")
+						)
+						(pin
+							(num "10B")
+						)
+						(pin
+							(num "10A")
+						)
+						(pin
+							(num "9B")
+						)
+						(pin
+							(num "9A")
+						)
+						(pin
+							(num "8B")
+						)
+						(pin
+							(num "8A")
+						)
+						(pin
+							(num "7B")
+						)
+						(pin
+							(num "7A")
+						)
+						(pin
+							(num "T")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "DAQS")
+			(value "ISOLATED STIMULUS/STATE LOGGER")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "SIG-012 through SIG-015. Exact dry-contact fixtures and logger remain unselected.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "ISOLATED STIMULUS/STATE LOGGER")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "SIG-012 through SIG-015. Exact dry-contact fixtures and logger remain unselected.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "DAQS")
+				(description "SIG-012 through SIG-015. Exact dry-contact fixtures and logger remain unselected.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "ISOLATED STIMULUS/STATE LOGGER")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Fifteen required signals on one time base")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_isolated_measurement_fanout.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Fifteen required signals on one time base/")
+				(tstamps "/7fedf637-592d-579c-80a3-9577ca46cc98/")
+			)
+			(tstamps "05de9ffc-d01d-529f-ad45-2fb3c421ca0e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "15B")
+						)
+						(pin
+							(num "15A")
+						)
+						(pin
+							(num "14B")
+						)
+						(pin
+							(num "14A")
+						)
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "12")
+						)
+						(pin
+							(num "T")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "DAQV")
+			(value "ISOLATED VOLTAGE/CURRENT ACQUISITION")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "SIG-001 through SIG-006. Exact probes and current measurement topology remain unselected.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "ISOLATED VOLTAGE/CURRENT ACQUISITION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "SIG-001 through SIG-006. Exact probes and current measurement topology remain unselected.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "DAQV")
+				(description "SIG-001 through SIG-006. Exact probes and current measurement topology remain unselected.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "ISOLATED VOLTAGE/CURRENT ACQUISITION")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Fifteen required signals on one time base")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_isolated_measurement_fanout.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Fifteen required signals on one time base/")
+				(tstamps "/7fedf637-592d-579c-80a3-9577ca46cc98/")
+			)
+			(tstamps "29c98f4f-f3ae-5616-b3f4-7dffc64cb6f7")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "V6")
+						)
+						(pin
+							(num "V5")
+						)
+						(pin
+							(num "V4")
+						)
+						(pin
+							(num "V3")
+						)
+						(pin
+							(num "V2")
+						)
+						(pin
+							(num "V1")
+						)
+						(pin
+							(num "T")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "STOPLOG")
+			(value "FAIL-CLOSED EVENT RECORD")
+			(datasheet "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(description "Raw data must be preserved before analysis. Missing, clipped, asynchronous or ambiguous data are FAIL.")
+			(fields
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "FAIL-CLOSED EVENT RECORD")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Raw data must be preserved before analysis. Missing, clipped, asynchronous or ambiguous data are FAIL.")
+			)
+			(libsource
+				(lib "PBV3")
+				(part "STOPLOG")
+				(description "Raw data must be preserved before analysis. Missing, clipped, asynchronous or ambiguous data are FAIL.")
+			)
+			(property
+				(name "Status")
+				(value "FIXTURE CANDIDATE / VALIDATION OPEN")
+			)
+			(property
+				(name "Evidence")
+				(value "P1.21 terminal identity or fixture-only boundary as stated")
+			)
+			(property
+				(name "Display")
+				(value "FAIL-CLOSED EVENT RECORD")
+			)
+			(property
+				(name "Sheetname")
+				(value "04 Fifteen required signals on one time base")
+			)
+			(property
+				(name "Sheetfile")
+				(value "04_isolated_measurement_fanout.kicad_sch")
+			)
+			(sheetpath
+				(names "/04 Fifteen required signals on one time base/")
+				(tstamps "/7fedf637-592d-579c-80a3-9577ca46cc98/")
+			)
+			(tstamps "b9ad3346-4468-5559-a5af-0f0818ada505")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "OFF")
+						)
+						(pin
+							(num "T")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "PBV3")
+			(part "ABSENT")
+			(description "These items are absence inspections, not electrical connections. Any presence is a stop-work failure.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "ABSENT")
+				(field
+					(name "Value") "PHYSICAL ABSENCE INTERLOCK")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "These items are absence inspections, not electrical connections. Any presence is a stop-work failure.")
+				(field
+					(name "Status") "MANDATORY ABSENCE / NOT EXECUTED")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "PHYSICAL ABSENCE INTERLOCK")
+			)
+			(pins
+				(pin
+					(num "A")
+					(name "ACTUATOR_SOURCE")
+					(type "passive")
+				)
+				(pin
+					(num "B")
+					(name "K1/K2_COILS_AND_POWER_POLES")
+					(type "passive")
+				)
+				(pin
+					(num "C")
+					(name "ALL_ACTUATORS")
+					(type "passive")
+				)
+				(pin
+					(num "D")
+					(name "MOTION_COMPUTER")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "DAQC")
+			(description "SIG-007 through SIG-011. Instrument excitation must be isolated and low energy.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "DAQC")
+				(field
+					(name "Value") "ISOLATED LOW-ENERGY CONTACT ACQUISITION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "SIG-007 through SIG-011. Instrument excitation must be isolated and low energy.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "ISOLATED LOW-ENERGY CONTACT ACQUISITION")
+			)
+			(pins
+				(pin
+					(num "7A")
+					(name "SRA1_13")
+					(type "passive")
+				)
+				(pin
+					(num "7B")
+					(name "SRA1_14")
+					(type "passive")
+				)
+				(pin
+					(num "8A")
+					(name "SRA1_23")
+					(type "passive")
+				)
+				(pin
+					(num "8B")
+					(name "SRA1_24")
+					(type "passive")
+				)
+				(pin
+					(num "9A")
+					(name "SRA1_33")
+					(type "passive")
+				)
+				(pin
+					(num "9B")
+					(name "SRA1_34")
+					(type "passive")
+				)
+				(pin
+					(num "10A")
+					(name "KWD1_11")
+					(type "passive")
+				)
+				(pin
+					(num "10B")
+					(name "KWD1_14")
+					(type "passive")
+				)
+				(pin
+					(num "11A")
+					(name "KWD2_11")
+					(type "passive")
+				)
+				(pin
+					(num "11B")
+					(name "KWD2_14")
+					(type "passive")
+				)
+				(pin
+					(num "T")
+					(name "COMMON_TIMEBASE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "DAQS")
+			(description "SIG-012 through SIG-015. Exact dry-contact fixtures and logger remain unselected.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "DAQS")
+				(field
+					(name "Value") "ISOLATED STIMULUS/STATE LOGGER")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "SIG-012 through SIG-015. Exact dry-contact fixtures and logger remain unselected.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "ISOLATED STIMULUS/STATE LOGGER")
+			)
+			(pins
+				(pin
+					(num "12")
+					(name "HEARTBEAT")
+					(type "passive")
+				)
+				(pin
+					(num "13")
+					(name "ARM_SWITCH")
+					(type "passive")
+				)
+				(pin
+					(num "14A")
+					(name "E-STOP_CH1")
+					(type "passive")
+				)
+				(pin
+					(num "14B")
+					(name "E-STOP_CH2")
+					(type "passive")
+				)
+				(pin
+					(num "15A")
+					(name "EDM_K1")
+					(type "passive")
+				)
+				(pin
+					(num "15B")
+					(name "EDM_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "T")
+					(name "COMMON_TIMEBASE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "DAQV")
+			(description "SIG-001 through SIG-006. Exact probes and current measurement topology remain unselected.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "DAQV")
+				(field
+					(name "Value") "ISOLATED VOLTAGE/CURRENT ACQUISITION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "SIG-001 through SIG-006. Exact probes and current measurement topology remain unselected.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "ISOLATED VOLTAGE/CURRENT ACQUISITION")
+			)
+			(pins
+				(pin
+					(num "T")
+					(name "COMMON_TIMEBASE")
+					(type "passive")
+				)
+				(pin
+					(num "V1")
+					(name "SAFETY_24V")
+					(type "passive")
+				)
+				(pin
+					(num "V2")
+					(name "SRA1_A1")
+					(type "passive")
+				)
+				(pin
+					(num "V3")
+					(name "SAFETY_0V")
+					(type "passive")
+				)
+				(pin
+					(num "V4")
+					(name "SRA1_S12")
+					(type "passive")
+				)
+				(pin
+					(num "V5")
+					(name "SRA1_S22")
+					(type "passive")
+				)
+				(pin
+					(num "V6")
+					(name "SRA1_S34")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EDISC")
+			(description "Visible, reachable fixture isolation device; exact device and DC rating remain unselected.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "EDISC")
+				(field
+					(name "Value") "MANUAL EMERGENCY ISOLATION - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Visible, reachable fixture isolation device; exact device and DC rating remain unselected.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "MANUAL EMERGENCY ISOLATION - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "SOURCE_IN")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "ISOLATED_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "EDMSIM")
+			(description "K1/K2 contactors are absent. Exact simulator switch hardware, anti-tamper state indication and contact rating are SELECTION REQUIRED.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "EDMSIM")
+				(field
+					(name "Value") "CONFIGURATION-CONTROLLED DRY-CONTACT EDM SIMULATOR")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "K1/K2 contactors are absent. Exact simulator switch hardware, anti-tamper state indication and contact rating are SELECTION REQUIRED.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "CONFIGURATION-CONTROLLED DRY-CONTACT EDM SIMULATOR")
+			)
+			(pins
+				(pin
+					(num "K1-21")
+					(name "SIMULATED_K1_MIRROR_IN")
+					(type "passive")
+				)
+				(pin
+					(num "K1-22")
+					(name "SIMULATED_K1_MIRROR_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "K2-21")
+					(name "SIMULATED_K2_MIRROR_IN")
+					(type "passive")
+				)
+				(pin
+					(num "K2-22")
+					(name "SIMULATED_K2_MIRROR_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "F24")
+			(description "DUT protection position from P1.21. No fuse value is released.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "F24")
+				(field
+					(name "Value") "P1.21 F24 - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "DUT protection position from P1.21. No fuse value is released.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 F24 - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "IN")
+					(name "SOURCE_+24_V")
+					(type "passive")
+				)
+				(pin
+					(num "OUT")
+					(name "PROTECTED_+24_V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "HBSRC")
+			(description "No Raspberry Pi or motion supervisor is required in the no-load fixture; exact pattern source remains unselected.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "HBSRC")
+				(field
+					(name "Value") "ISOLATED PATTERN SOURCE / LOGGER - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "No Raspberry Pi or motion supervisor is required in the no-load fixture; exact pattern source remains unselected.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "ISOLATED PATTERN SOURCE / LOGGER - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "HB")
+					(name "HEARTBEAT_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "LOG")
+					(name "COMMON_TIME_BASE")
+					(type "passive")
+				)
+				(pin
+					(num "RET")
+					(name "ISOLATED_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JWF1")
+			(description "Connector pin identity from P1.21.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "JWF1")
+				(field
+					(name "Value") "P1.21 WATCHDOG FEEDBACK INTERFACE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Connector pin identity from P1.21.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 WATCHDOG FEEDBACK INTERFACE")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "KWD1_NC_+24_V")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "KWD2_NC_+24_V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JWH1")
+			(description "Heartbeat source must be isolated, configuration controlled and timestamped.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "JWH1")
+				(field
+					(name "Value") "P1.21 HEARTBEAT INTERFACE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Heartbeat source must be isolated, configuration controlled and timestamped.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 HEARTBEAT INTERFACE")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "COMPUTE_HEARTBEAT")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "COMPUTE_0_V")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "JWP1")
+			(description "Connector pin identity from P1.21; physical connector and PCB validation remain open.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "JWP1")
+				(field
+					(name "Value") "P1.21 WATCHDOG PCB POWER/COIL INTERFACE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Connector pin identity from P1.21; physical connector and PCB validation remain open.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 WATCHDOG PCB POWER/COIL INTERFACE")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "SAFETY_+24_V")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "SAFETY_0_V")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "KWD1_COIL_SINK")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "KWD2_COIL_SINK")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "KWD1")
+			(description "Exact P1.21 terminals. Ordinary relay; no safety credit.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "KWD1")
+				(field
+					(name "Value") "P1.21 PHOENIX 2967060 CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Exact P1.21 terminals. Ordinary relay; no safety credit.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 PHOENIX 2967060 CANDIDATE")
+			)
+			(pins
+				(pin
+					(num "11")
+					(name "GATE_IN")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "GATE_STAGE_1")
+					(type "passive")
+				)
+				(pin
+					(num "21")
+					(name "NC_FEEDBACK_COM")
+					(type "passive")
+				)
+				(pin
+					(num "22")
+					(name "NC_FEEDBACK")
+					(type "passive")
+				)
+				(pin
+					(num "A1")
+					(name "COIL_+")
+					(type "passive")
+				)
+				(pin
+					(num "A2")
+					(name "COIL_SINK")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "KWD2")
+			(description "Exact P1.21 terminals. Ordinary relay; no safety credit.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "KWD2")
+				(field
+					(name "Value") "P1.21 PHOENIX 2967060 CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Exact P1.21 terminals. Ordinary relay; no safety credit.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 PHOENIX 2967060 CANDIDATE")
+			)
+			(pins
+				(pin
+					(num "11")
+					(name "GATE_STAGE_1")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "SRA1_A1_GATED")
+					(type "passive")
+				)
+				(pin
+					(num "21")
+					(name "NC_FEEDBACK_COM")
+					(type "passive")
+				)
+				(pin
+					(num "22")
+					(name "NC_FEEDBACK")
+					(type "passive")
+				)
+				(pin
+					(num "A1")
+					(name "COIL_+")
+					(type "passive")
+				)
+				(pin
+					(num "A2")
+					(name "COIL_SINK")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "PSFIX")
+			(description "Exact source, limits, protection, isolation and calibration remain AUTH-006/AUTH-007 holds.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "PSFIX")
+				(field
+					(name "Value") "ISOLATED CURRENT-LIMITED 24 V SOURCE - SELECTION REQUIRED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Exact source, limits, protection, isolation and calibration remain AUTH-006/AUTH-007 holds.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "ISOLATED CURRENT-LIMITED 24 V SOURCE - SELECTION REQUIRED")
+			)
+			(pins
+				(pin
+					(num "+")
+					(name "SOURCE_POSITIVE")
+					(type "passive")
+				)
+				(pin
+					(num "-")
+					(name "SOURCE_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "S0")
+			(description "Both channels require independent state capture; received terminal positions remain verification work.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "S0")
+				(field
+					(name "Value") "P1.21 DUAL-CHANNEL E-STOP")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Both channels require independent state capture; received terminal positions remain verification work.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 DUAL-CHANNEL E-STOP")
+			)
+			(pins
+				(pin
+					(num "L-1")
+					(name "CH2_NC_IN")
+					(type "passive")
+				)
+				(pin
+					(num "L-2")
+					(name "CH2_NC_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "R-1")
+					(name "CH1_NC_IN")
+					(type "passive")
+				)
+				(pin
+					(num "R-2")
+					(name "CH1_NC_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "S1")
+			(description "Terminal mapping remains received-lot verification work.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "S1")
+				(field
+					(name "Value") "P1.21 SR1 RESET")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Terminal mapping remains received-lot verification work.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 SR1 RESET")
+			)
+			(pins
+				(pin
+					(num "TBD-R1")
+					(name "RESET_IN")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-R2")
+					(name "RESET_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "S2")
+			(description "Falling edge must be independently timestamped; terminal mapping remains received-lot work.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "S2")
+				(field
+					(name "Value") "P1.21 ARM PUSHBUTTON")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Falling edge must be independently timestamped; terminal mapping remains received-lot work.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 ARM PUSHBUTTON")
+			)
+			(pins
+				(pin
+					(num "TBD-A1")
+					(name "ARM_IN")
+					(type "passive")
+				)
+				(pin
+					(num "TBD-A2")
+					(name "ARM_OUT")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SR1")
+			(description "Terminal/net identity copied from P1.21; exact article and qualified application remain outside fixture release.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "SR1")
+				(field
+					(name "Value") "P1.21 SR1 SAFETY RELAY")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Terminal/net identity copied from P1.21; exact article and qualified application remain outside fixture release.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 SR1 SAFETY RELAY")
+			)
+			(pins
+				(pin
+					(num "13")
+					(name "OUT1_IN")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "OUT1_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "23")
+					(name "OUT2_IN")
+					(type "passive")
+				)
+				(pin
+					(num "24")
+					(name "OUT2_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "A1")
+					(name "24_V_SUPPLY")
+					(type "passive")
+				)
+				(pin
+					(num "A2")
+					(name "0_V_SUPPLY")
+					(type "passive")
+				)
+				(pin
+					(num "S11")
+					(name "CH1_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "S12")
+					(name "CH1_RETURN_/_START_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "S21")
+					(name "CH2_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "S22")
+					(name "CH2_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "S34")
+					(name "START_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "SRA1")
+			(description "Output contact terminals are deliberately removed from the P1.21 load path and connected only to isolated low-energy state channels.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "SRA1")
+				(field
+					(name "Value") "P1.21 PNOZ S4 750104 CANDIDATE")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Output contact terminals are deliberately removed from the P1.21 load path and connected only to isolated low-energy state channels.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 PNOZ S4 750104 CANDIDATE")
+			)
+			(pins
+				(pin
+					(num "13")
+					(name "OUT1_CONTACT_A")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "OUT1_CONTACT_B")
+					(type "passive")
+				)
+				(pin
+					(num "23")
+					(name "OUT2_CONTACT_A")
+					(type "passive")
+				)
+				(pin
+					(num "24")
+					(name "OUT2_CONTACT_B")
+					(type "passive")
+				)
+				(pin
+					(num "33")
+					(name "OUT3_CONTACT_A")
+					(type "passive")
+				)
+				(pin
+					(num "34")
+					(name "OUT3_CONTACT_B")
+					(type "passive")
+				)
+				(pin
+					(num "41")
+					(name "AUX_NC_A")
+					(type "passive")
+				)
+				(pin
+					(num "42")
+					(name "AUX_NC_B")
+					(type "passive")
+				)
+				(pin
+					(num "A1")
+					(name "WATCHDOG-GATED_24_V")
+					(type "passive")
+				)
+				(pin
+					(num "A2")
+					(name "0_V")
+					(type "passive")
+				)
+				(pin
+					(num "S11")
+					(name "CH1_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "S12")
+					(name "CH1_RETURN_/_ARM_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "S21")
+					(name "CH2_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "S22")
+					(name "CH2_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "S34")
+					(name "START_/_EDM_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "Y32")
+					(name "STATUS")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "STOPLOG")
+			(description "Raw data must be preserved before analysis. Missing, clipped, asynchronous or ambiguous data are FAIL.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "STOPLOG")
+				(field
+					(name "Value") "FAIL-CLOSED EVENT RECORD")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Raw data must be preserved before analysis. Missing, clipped, asynchronous or ambiguous data are FAIL.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "FAIL-CLOSED EVENT RECORD")
+			)
+			(pins
+				(pin
+					(num "OFF")
+					(name "SOURCE-OFF_EVENT")
+					(type "passive")
+				)
+				(pin
+					(num "T")
+					(name "COMMON_TIMEBASE")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "XD0")
+			(description "No proposed DC 0 V/PE bond is made by this isolated bench fixture.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "XD0")
+				(field
+					(name "Value") "P1.21 CONTROL 0 V DISTRIBUTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "No proposed DC 0 V/PE bond is made by this isolated bench fixture.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 CONTROL 0 V DISTRIBUTION")
+			)
+			(pins
+				(pin
+					(num "01")
+					(name "SR1/SRA1_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "02")
+					(name "WATCHDOG_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "03")
+					(name "PCB_RETURN")
+					(type "passive")
+				)
+				(pin
+					(num "LINE")
+					(name "SOURCE_RETURN")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PBV3")
+			(part "XD24")
+			(description "Fixture uses only enumerated control loads; terminal hardware remains received/physical review work.")
+			(docs "CONTROLLED SOURCE BINDING IN source-register.csv")
+			(fields
+				(field
+					(name "Reference") "XD24")
+				(field
+					(name "Value") "P1.21 CONTROL +24 V DISTRIBUTION")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "CONTROLLED SOURCE BINDING IN source-register.csv")
+				(field
+					(name "Description") "Fixture uses only enumerated control loads; terminal hardware remains received/physical review work.")
+				(field
+					(name "Status") "FIXTURE CANDIDATE / VALIDATION OPEN")
+				(field
+					(name "Evidence") "P1.21 terminal identity or fixture-only boundary as stated")
+				(field
+					(name "Display") "P1.21 CONTROL +24 V DISTRIBUTION")
+			)
+			(pins
+				(pin
+					(num "01")
+					(name "SR1/SRA1_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "02")
+					(name "WATCHDOG_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "03")
+					(name "PCB_FEED")
+					(type "passive")
+				)
+				(pin
+					(num "LINE")
+					(name "PROTECTED_FEED")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "PBV3")
+			(uri "${KIPRJMOD}/hr-v0-p121-no-load-fixture-p0.1.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "ARM_AFTER_S2")
+			(class "Default")
+			(node
+				(ref "DAQS")
+				(pin "13")
+				(pinfunction "ARM_SWITCH_13")
+				(pintype "passive")
+			)
+			(node
+				(ref "EDMSIM")
+				(pin "K1-21")
+				(pinfunction "SIMULATED_K1_MIRROR_IN_K1-21")
+				(pintype "passive")
+			)
+			(node
+				(ref "S2")
+				(pin "TBD-A2")
+				(pinfunction "ARM_OUT_TBD-A2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "2")
+			(name "COMPUTE_0V")
+			(class "Default")
+			(node
+				(ref "HBSRC")
+				(pin "RET")
+				(pinfunction "ISOLATED_RETURN_RET")
+				(pintype "passive")
+			)
+			(node
+				(ref "JWH1")
+				(pin "2")
+				(pinfunction "COMPUTE_0_V_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "3")
+			(name "EDM_K1_OUT")
+			(class "Default")
+			(node
+				(ref "DAQS")
+				(pin "15A")
+				(pinfunction "EDM_K1_15A")
+				(pintype "passive")
+			)
+			(node
+				(ref "EDMSIM")
+				(pin "K1-22")
+				(pinfunction "SIMULATED_K1_MIRROR_OUT_K1-22")
+				(pintype "passive")
+			)
+			(node
+				(ref "EDMSIM")
+				(pin "K2-21")
+				(pinfunction "SIMULATED_K2_MIRROR_IN_K2-21")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "4")
+			(name "FIX_24V_RAW")
+			(class "Default")
+			(node
+				(ref "EDISC")
+				(pin "1")
+				(pinfunction "SOURCE_IN_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "PSFIX")
+				(pin "+")
+				(pinfunction "SOURCE_POSITIVE_+")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "5")
+			(name "FIX_TIMEBASE")
+			(class "Default")
+			(node
+				(ref "DAQC")
+				(pin "T")
+				(pinfunction "COMMON_TIMEBASE_T")
+				(pintype "passive")
+			)
+			(node
+				(ref "DAQS")
+				(pin "T")
+				(pinfunction "COMMON_TIMEBASE_T")
+				(pintype "passive")
+			)
+			(node
+				(ref "DAQV")
+				(pin "T")
+				(pinfunction "COMMON_TIMEBASE_T")
+				(pintype "passive")
+			)
+			(node
+				(ref "HBSRC")
+				(pin "LOG")
+				(pinfunction "COMMON_TIME_BASE_LOG")
+				(pintype "passive")
+			)
+			(node
+				(ref "STOPLOG")
+				(pin "T")
+				(pinfunction "COMMON_TIMEBASE_T")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "6")
+			(name "ISO_SRA1_13")
+			(class "Default")
+			(node
+				(ref "DAQC")
+				(pin "7A")
+				(pinfunction "SRA1_13_7A")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "13")
+				(pinfunction "OUT1_CONTACT_A_13")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "7")
+			(name "ISO_SRA1_14")
+			(class "Default")
+			(node
+				(ref "DAQC")
+				(pin "7B")
+				(pinfunction "SRA1_14_7B")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "14")
+				(pinfunction "OUT1_CONTACT_B_14")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "8")
+			(name "ISO_SRA1_23")
+			(class "Default")
+			(node
+				(ref "DAQC")
+				(pin "8A")
+				(pinfunction "SRA1_23_8A")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "23")
+				(pinfunction "OUT2_CONTACT_A_23")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "9")
+			(name "ISO_SRA1_24")
+			(class "Default")
+			(node
+				(ref "DAQC")
+				(pin "8B")
+				(pinfunction "SRA1_24_8B")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "24")
+				(pinfunction "OUT2_CONTACT_B_24")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "10")
+			(name "ISO_SRA1_33")
+			(class "Default")
+			(node
+				(ref "DAQC")
+				(pin "9A")
+				(pinfunction "SRA1_33_9A")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "33")
+				(pinfunction "OUT3_CONTACT_A_33")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "11")
+			(name "ISO_SRA1_34")
+			(class "Default")
+			(node
+				(ref "DAQC")
+				(pin "9B")
+				(pinfunction "SRA1_34_9B")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "34")
+				(pinfunction "OUT3_CONTACT_B_34")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "12")
+			(name "PI_HEARTBEAT")
+			(class "Default")
+			(node
+				(ref "DAQS")
+				(pin "12")
+				(pinfunction "HEARTBEAT_12")
+				(pintype "passive")
+			)
+			(node
+				(ref "HBSRC")
+				(pin "HB")
+				(pinfunction "HEARTBEAT_OUT_HB")
+				(pintype "passive")
+			)
+			(node
+				(ref "JWH1")
+				(pin "1")
+				(pinfunction "COMPUTE_HEARTBEAT_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "13")
+			(name "SAFETY_0V")
+			(class "Default")
+			(node
+				(ref "DAQV")
+				(pin "V3")
+				(pinfunction "SAFETY_0V_V3")
+				(pintype "passive")
+			)
+			(node
+				(ref "JWP1")
+				(pin "2")
+				(pinfunction "SAFETY_0_V_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "PSFIX")
+				(pin "-")
+				(pinfunction "SOURCE_RETURN_-")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "A2")
+				(pinfunction "0_V_SUPPLY_A2")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "A2")
+				(pinfunction "0_V_A2")
+				(pintype "passive")
+			)
+			(node
+				(ref "XD0")
+				(pin "01")
+				(pinfunction "SR1/SRA1_RETURN_01")
+				(pintype "passive")
+			)
+			(node
+				(ref "XD0")
+				(pin "02")
+				(pinfunction "WATCHDOG_RETURN_02")
+				(pintype "passive")
+			)
+			(node
+				(ref "XD0")
+				(pin "03")
+				(pinfunction "PCB_RETURN_03")
+				(pintype "passive")
+			)
+			(node
+				(ref "XD0")
+				(pin "LINE")
+				(pinfunction "SOURCE_RETURN_LINE")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "14")
+			(name "SAFETY_24V")
+			(class "Default")
+			(node
+				(ref "DAQC")
+				(pin "10A")
+				(pinfunction "KWD1_11_10A")
+				(pintype "passive")
+			)
+			(node
+				(ref "DAQV")
+				(pin "V1")
+				(pinfunction "SAFETY_24V_V1")
+				(pintype "passive")
+			)
+			(node
+				(ref "F24")
+				(pin "OUT")
+				(pinfunction "PROTECTED_+24_V_OUT")
+				(pintype "passive")
+			)
+			(node
+				(ref "JWP1")
+				(pin "1")
+				(pinfunction "SAFETY_+24_V_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD1")
+				(pin "11")
+				(pinfunction "GATE_IN_11")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD1")
+				(pin "21")
+				(pinfunction "NC_FEEDBACK_COM_21")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD1")
+				(pin "A1")
+				(pinfunction "COIL_+_A1")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD2")
+				(pin "21")
+				(pinfunction "NC_FEEDBACK_COM_21")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD2")
+				(pin "A1")
+				(pinfunction "COIL_+_A1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "A1")
+				(pinfunction "24_V_SUPPLY_A1")
+				(pintype "passive")
+			)
+			(node
+				(ref "XD24")
+				(pin "01")
+				(pinfunction "SR1/SRA1_FEED_01")
+				(pintype "passive")
+			)
+			(node
+				(ref "XD24")
+				(pin "02")
+				(pinfunction "WATCHDOG_FEED_02")
+				(pintype "passive")
+			)
+			(node
+				(ref "XD24")
+				(pin "03")
+				(pinfunction "PCB_FEED_03")
+				(pintype "passive")
+			)
+			(node
+				(ref "XD24")
+				(pin "LINE")
+				(pinfunction "PROTECTED_FEED_LINE")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "15")
+			(name "SAFETY_24V_RAW")
+			(class "Default")
+			(node
+				(ref "EDISC")
+				(pin "2")
+				(pinfunction "ISOLATED_OUT_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "F24")
+				(pin "IN")
+				(pinfunction "SOURCE_+24_V_IN")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "16")
+			(name "SR1_S11")
+			(class "Default")
+			(node
+				(ref "S0")
+				(pin "R-1")
+				(pinfunction "CH1_NC_IN_R-1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S11")
+				(pinfunction "CH1_FEED_S11")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "17")
+			(name "SR1_S12")
+			(class "Default")
+			(node
+				(ref "DAQS")
+				(pin "14A")
+				(pinfunction "E-STOP_CH1_14A")
+				(pintype "passive")
+			)
+			(node
+				(ref "S0")
+				(pin "R-2")
+				(pinfunction "CH1_NC_OUT_R-2")
+				(pintype "passive")
+			)
+			(node
+				(ref "S1")
+				(pin "TBD-R1")
+				(pinfunction "RESET_IN_TBD-R1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S12")
+				(pinfunction "CH1_RETURN_/_START_FEED_S12")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "18")
+			(name "SR1_S21")
+			(class "Default")
+			(node
+				(ref "S0")
+				(pin "L-1")
+				(pinfunction "CH2_NC_IN_L-1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S21")
+				(pinfunction "CH2_FEED_S21")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "19")
+			(name "SR1_S22")
+			(class "Default")
+			(node
+				(ref "DAQS")
+				(pin "14B")
+				(pinfunction "E-STOP_CH2_14B")
+				(pintype "passive")
+			)
+			(node
+				(ref "S0")
+				(pin "L-2")
+				(pinfunction "CH2_NC_OUT_L-2")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S22")
+				(pinfunction "CH2_RETURN_S22")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "20")
+			(name "SR1_START_RETURN")
+			(class "Default")
+			(node
+				(ref "S1")
+				(pin "TBD-R2")
+				(pinfunction "RESET_OUT_TBD-R2")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "S34")
+				(pinfunction "START_RETURN_S34")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "21")
+			(name "SRA1_A1_WD_GATED")
+			(class "Default")
+			(node
+				(ref "DAQC")
+				(pin "11B")
+				(pinfunction "KWD2_14_11B")
+				(pintype "passive")
+			)
+			(node
+				(ref "DAQV")
+				(pin "V2")
+				(pinfunction "SRA1_A1_V2")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD2")
+				(pin "14")
+				(pinfunction "SRA1_A1_GATED_14")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "A1")
+				(pinfunction "WATCHDOG-GATED_24_V_A1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "22")
+			(name "SRA1_S11")
+			(class "Default")
+			(node
+				(ref "SR1")
+				(pin "13")
+				(pinfunction "OUT1_IN_13")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "S11")
+				(pinfunction "CH1_FEED_S11")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "23")
+			(name "SRA1_S12")
+			(class "Default")
+			(node
+				(ref "DAQV")
+				(pin "V4")
+				(pinfunction "SRA1_S12_V4")
+				(pintype "passive")
+			)
+			(node
+				(ref "S2")
+				(pin "TBD-A1")
+				(pinfunction "ARM_IN_TBD-A1")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "14")
+				(pinfunction "OUT1_OUT_14")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "S12")
+				(pinfunction "CH1_RETURN_/_ARM_FEED_S12")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "24")
+			(name "SRA1_S21")
+			(class "Default")
+			(node
+				(ref "SR1")
+				(pin "23")
+				(pinfunction "OUT2_IN_23")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "S21")
+				(pinfunction "CH2_FEED_S21")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "25")
+			(name "SRA1_S22")
+			(class "Default")
+			(node
+				(ref "DAQV")
+				(pin "V5")
+				(pinfunction "SRA1_S22_V5")
+				(pintype "passive")
+			)
+			(node
+				(ref "SR1")
+				(pin "24")
+				(pinfunction "OUT2_OUT_24")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "S22")
+				(pinfunction "CH2_RETURN_S22")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "26")
+			(name "SRA1_START_RETURN")
+			(class "Default")
+			(node
+				(ref "DAQS")
+				(pin "15B")
+				(pinfunction "EDM_RETURN_15B")
+				(pintype "passive")
+			)
+			(node
+				(ref "DAQV")
+				(pin "V6")
+				(pinfunction "SRA1_S34_V6")
+				(pintype "passive")
+			)
+			(node
+				(ref "EDMSIM")
+				(pin "K2-22")
+				(pinfunction "SIMULATED_K2_MIRROR_OUT_K2-22")
+				(pintype "passive")
+			)
+			(node
+				(ref "SRA1")
+				(pin "S34")
+				(pinfunction "START_/_EDM_RETURN_S34")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "27")
+			(name "WD1_COIL_N")
+			(class "Default")
+			(node
+				(ref "JWP1")
+				(pin "3")
+				(pinfunction "KWD1_COIL_SINK_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD1")
+				(pin "A2")
+				(pinfunction "COIL_SINK_A2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "28")
+			(name "WD1_NC_24V")
+			(class "Default")
+			(node
+				(ref "JWF1")
+				(pin "1")
+				(pinfunction "KWD1_NC_+24_V_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD1")
+				(pin "22")
+				(pinfunction "NC_FEEDBACK_22")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "29")
+			(name "WD2_COIL_N")
+			(class "Default")
+			(node
+				(ref "JWP1")
+				(pin "4")
+				(pinfunction "KWD2_COIL_SINK_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD2")
+				(pin "A2")
+				(pinfunction "COIL_SINK_A2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "30")
+			(name "WD2_NC_24V")
+			(class "Default")
+			(node
+				(ref "JWF1")
+				(pin "2")
+				(pinfunction "KWD2_NC_+24_V_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD2")
+				(pin "22")
+				(pinfunction "NC_FEEDBACK_22")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "31")
+			(name "WD_SRA1_SUPPLY_INTERMEDIATE")
+			(class "Default")
+			(node
+				(ref "DAQC")
+				(pin "10B")
+				(pinfunction "KWD1_14_10B")
+				(pintype "passive")
+			)
+			(node
+				(ref "DAQC")
+				(pin "11A")
+				(pinfunction "KWD2_11_11A")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD1")
+				(pin "14")
+				(pinfunction "GATE_STAGE_1_14")
+				(pintype "passive")
+			)
+			(node
+				(ref "KWD2")
+				(pin "11")
+				(pinfunction "GATE_STAGE_1_11")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "32")
+			(name "unconnected-(ABSENT-ACTUATOR_SOURCE-PadA)")
+			(class "Default")
+			(node
+				(ref "ABSENT")
+				(pin "A")
+				(pinfunction "ACTUATOR_SOURCE_A")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "33")
+			(name "unconnected-(ABSENT-ALL_ACTUATORS-PadC)")
+			(class "Default")
+			(node
+				(ref "ABSENT")
+				(pin "C")
+				(pinfunction "ALL_ACTUATORS_C")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "34")
+			(name "unconnected-(ABSENT-K1{slash}K2_COILS_AND_POWER_POLES-PadB)")
+			(class "Default")
+			(node
+				(ref "ABSENT")
+				(pin "B")
+				(pinfunction "K1/K2_COILS_AND_POWER_POLES_B")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "35")
+			(name "unconnected-(ABSENT-MOTION_COMPUTER-PadD)")
+			(class "Default")
+			(node
+				(ref "ABSENT")
+				(pin "D")
+				(pinfunction "MOTION_COMPUTER_D")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "36")
+			(name "unconnected-(SRA1-AUX_NC_A-Pad41)")
+			(class "Default")
+			(node
+				(ref "SRA1")
+				(pin "41")
+				(pinfunction "AUX_NC_A_41")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "37")
+			(name "unconnected-(SRA1-AUX_NC_B-Pad42)")
+			(class "Default")
+			(node
+				(ref "SRA1")
+				(pin "42")
+				(pinfunction "AUX_NC_B_42")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "38")
+			(name "unconnected-(SRA1-STATUS-PadY32)")
+			(class "Default")
+			(node
+				(ref "SRA1")
+				(pin "Y32")
+				(pinfunction "STATUS_Y32")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "39")
+			(name "unconnected-(STOPLOG-SOURCE-OFF_EVENT-PadOFF)")
+			(class "Default")
+			(node
+				(ref "STOPLOG")
+				(pin "OFF")
+				(pinfunction "SOURCE-OFF_EVENT_OFF")
+				(pintype "passive+no_connect")
+			)
+		)
+	)
+)

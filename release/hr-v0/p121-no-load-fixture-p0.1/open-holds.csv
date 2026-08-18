@@ -1,0 +1,10 @@
+hold_id,evidence_required,state,authority
+FX-H01,"independent check of native fixture ECAD, point-to-point schedule and physical layout",OPEN,"NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY"
+FX-H02,Pilz/Phoenix written application responses and qualified disposition,OPEN,"NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY"
+FX-H03,received identity and terminal mapping for every DUT article,OPEN,"NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY"
+FX-H04,"exact isolated source, protection and emergency isolation selection",OPEN,"NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY"
+FX-H05,"exact isolated probes/DAQ/pattern source, calibration, ratings, bandwidth and connection diagrams",OPEN,"NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY"
+FX-H06,manufacturer-derived numeric limits and approved test-point grid,OPEN,"NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY"
+FX-H07,"received-fit physical layout, enclosure, guards, DIN hardware, strain relief and labeling",OPEN,"NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY"
+FX-H08,executed unpowered continuity/isolation/absence inspection,OPEN,"NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY"
+FX-H09,signed configuration-specific procedure and E2 control-only work authorization,OPEN,"NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY"

@@ -1,0 +1,26 @@
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\h30e\test-fixtures\hr-v0-p121-no-load-fixture-p0.1\validation\hr-v0-p121-no-load-fixture-p0.1-erc.rpt" "C:\Users\amyle\Documents\New project\h30e\test-fixtures\hr-v0-p121-no-load-fixture-p0.1\hr-v0-p121-no-load-fixture-p0.1.kicad_sch"
+Found 0 violations
+Saved ERC Report to C:/Users/amyle/Documents/New project/h30e/test-fixtures/hr-v0-p121-no-load-fixture-p0.1/validation/hr-v0-p121-no-load-fixture-p0.1-erc.rpt
+03:14:18: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+03:14:18: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\h30e\test-fixtures\hr-v0-p121-no-load-fixture-p0.1\validation\hr-v0-p121-no-load-fixture-p0.1.net" "C:\Users\amyle\Documents\New project\h30e\test-fixtures\hr-v0-p121-no-load-fixture-p0.1\hr-v0-p121-no-load-fixture-p0.1.kicad_sch"
+Warning: schematic has annotation errors, please use the schematic editor to fix them
+03:14:20: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+03:14:20: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export svg --output "C:\Users\amyle\Documents\New project\h30e\test-fixtures\hr-v0-p121-no-load-fixture-p0.1\output" "C:\Users\amyle\Documents\New project\h30e\test-fixtures\hr-v0-p121-no-load-fixture-p0.1\hr-v0-p121-no-load-fixture-p0.1.kicad_sch"
+Plotted to 'C:\Users\amyle\Documents\New project\h30e\test-fixtures\hr-v0-p121-no-load-fixture-p0.1\output\hr-v0-p121-no-load-fixture-p0.1.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\h30e\test-fixtures\hr-v0-p121-no-load-fixture-p0.1\output\hr-v0-p121-no-load-fixture-p0.1-01 Isolated 24 V control source and hard exclusion boundary.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\h30e\test-fixtures\hr-v0-p121-no-load-fixture-p0.1\output\hr-v0-p121-no-load-fixture-p0.1-02 Native SR1_S0 and SRA1 input_start chains.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\h30e\test-fixtures\hr-v0-p121-no-load-fixture-p0.1\output\hr-v0-p121-no-load-fixture-p0.1-03 Dual ordinary-relay A1 gate and heartbeat boundary.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\h30e\test-fixtures\hr-v0-p121-no-load-fixture-p0.1\output\hr-v0-p121-no-load-fixture-p0.1-04 Fifteen required signals on one time base.svg'.
+Done.
+03:14:21: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+03:14:21: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+
+exit=0
