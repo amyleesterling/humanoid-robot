@@ -1,0 +1,31 @@
+{
+  "identifier": "HR30-E1-J1-LOGIC-POWER-CABLE-P0.1",
+  "warning": "PRELIMINARY - UNBUILT J1 LOGIC-POWER CABLE CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION",
+  "generated_utc": "2026-08-18T10:00:00.431024+00:00",
+  "cable_assembly_count": 1,
+  "conductor_count": 2,
+  "wire_cut_length_mm_each": 1000.0,
+  "native_j1_reference": "J1 B2P-VH-B",
+  "native_j1_panel_xyz_mm": [
+    -128.2,
+    0.0,
+    25.0
+  ],
+  "project_owned_dimensional_envelopes_only": true,
+  "manufacturer_cad_redistributed": false,
+  "exact_candidate_housing_contacts_wire_plugs_selected": true,
+  "exact_candidate_sleeve_and_label_material_selected": true,
+  "cable_built": false,
+  "crimp_process_qualified": false,
+  "set_screw_process_released": false,
+  "received_fit_validated": false,
+  "continuity_isolation_polarity_executed": false,
+  "current_thermal_derating_validated": false,
+  "supply_limits_released": false,
+  "dc_reference_approved": false,
+  "connection_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "walking_authority": false,
+  "energization_authority": false
+}

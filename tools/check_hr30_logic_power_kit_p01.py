@@ -51,10 +51,10 @@ def main() -> int:
     need((OUT / "logic-power-kit-source.py").read_bytes() == GEN.read_bytes(), "generator snapshot drift")
     check_manifest()
     sources = rows(OUT / "primary-source-register.csv")
-    need(len(sources) == 5 and {row["source_id"] for row in sources} == {f"LP-S0{i}" for i in range(1, 6)}, "primary-source set drift")
+    need(len(sources) == 7 and {row["source_id"] for row in sources} == {f"LP-S0{i}" for i in range(1, 8)}, "primary-source set drift")
     need(any(row["manufacturer"] == "SIGLENT" and "EN03A" in row["revision_or_date"] for row in sources), "SIGLENT datasheet revision missing")
     equipment = rows(OUT / "equipment-register.csv")
-    expected = {"SPD3303X", "VHR-2N", "SVH-21T-P1.1", "3051 RD005", "3051 BK005", "5934-2", "5934-0"}
+    expected = {"SPD3303X", "VHR-2N", "SVH-21T-P1.1", "3051 RD005", "3051 BK005", "5934-2", "5934-0", "FIT-KIT-221BK", "M21-11-427"}
     need(expected <= {row["manufacturer_part_number"] for row in equipment}, "exact candidate parts missing")
     need(all(row["procurement_released"] == "NO" for row in equipment), "procurement must remain unreleased")
     contacts = rows(OUT / "connector-contact-map.csv")
@@ -73,12 +73,14 @@ def main() -> int:
     need(len(measurements) == 10 and all(row["measured_value"] == "NONE" for row in measurements), "measurement state drift")
     status = json.loads((OUT / "logic-power-status.json").read_text(encoding="utf-8"))
     need(status["exact_supply_candidate_selected"] is True and status["exact_conductor_and_source_plug_candidates_selected"] is True, "candidate status drift")
+    need(status["exact_sleeve_and_label_material_candidates_selected"] is True, "sleeve/label candidate status drift")
     for key in ("supply_received", "cable_built", "output_voltage_setpoint_released", "current_limit_released", "ocp_threshold_released", "dc_reference_disposition_approved", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"):
         need(status[key] is False, f"fail-closed status drift {key}")
     guide = (OUT / "index.html").read_text(encoding="utf-8")
     need("font:17px" in guide and "font-size:16px" in guide, "guide legibility floor missing")
     need(not re.search(r"font-size:\s*(?:[0-9]|1[01])px", guide), "guide includes text below 12 px")
     need("still no permission to plug it in" in guide and "logic-power-boundary.svg" in guide, "guide outcome or diagram missing")
+    need("\ufffd" not in guide and "Ã" not in guide and "Â" not in guide, "guide contains mojibake")
     whole_status = json.loads((WHOLE / "package-status.json").read_text(encoding="utf-8"))
     need(whole_status["logic_power_kit_package_present"] is True and whole_status["logic_power_connection_authority"] is False, "whole-body status integration drift")
     need("electrical/logic-power-kit-p0.1/index.html" in (WHOLE / "README.md").read_text(encoding="utf-8"), "README integration missing")

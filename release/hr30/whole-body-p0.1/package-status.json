@@ -619,5 +619,10 @@
   "e1_logic_harness_populated_conductor_count": 27,
   "e1_logic_harness_installed_contact_count": 54,
   "e1_logic_harness_built": false,
-  "e1_logic_harness_validated": false
+  "e1_logic_harness_validated": false,
+  "e1_j1_logic_power_cable_candidate_present": true,
+  "e1_j1_logic_power_conductor_count": 2,
+  "e1_j1_logic_power_wire_cut_length_mm_each": 1000.0,
+  "e1_j1_logic_power_cable_built": false,
+  "e1_j1_logic_power_cable_validated": false
 }

@@ -433,6 +433,8 @@ def main() -> int:
     write_docs()
     import generate_hr30_e1_logic_harness_p01 as logic_harness
     logic_harness.generate_into_fixture()
+    import generate_hr30_e1_logic_power_cable_p01 as logic_power_cable
+    logic_power_cable.generate_into_fixture()
     shutil.copy2(__file__, OUT / "e1-controls-fixture-source.py")
     manifest()
     publish_root()

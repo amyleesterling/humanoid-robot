@@ -66,6 +66,19 @@ def main() -> int:
         "logic-harness-open-holds.csv", "logic-harness-source-binding.csv",
         "logic-harness-status.json", "logic-harness-assembly-map.svg",
         "e1-logic-harness-source.py",
+        "HR30_E1_J1_logic_power_cable_candidate.step",
+        "HR30_E1_J1_logic_power_cable_candidate.glb",
+        "HR30_E1_J1_logic_power_cable_placed_candidate.step",
+        "HR30_E1_J1_logic_power_cable_placed_candidate.glb",
+        "HR30_E1_controls_fixture_complete_logic_wiring_candidate.step",
+        "HR30_E1_controls_fixture_complete_logic_wiring_candidate.glb",
+        "j1-power-cable-assembly-register.csv",
+        "j1-power-cable-contact-map.csv", "j1-power-cable-route-register.csv",
+        "j1-power-cable-bom.csv", "j1-power-cable-process-traveler.csv",
+        "j1-power-cable-primary-source-register.csv",
+        "j1-power-cable-source-binding.csv", "j1-power-cable-open-holds.csv",
+        "j1-power-cable-status.json", "j1-power-cable-assembly-map.svg",
+        "e1-j1-power-cable-source.py",
     }
     source_files = {path.name for path in OUT.iterdir() if path.is_file()}
     release_files = {path.name for path in REL.iterdir() if path.is_file()}
@@ -82,6 +95,11 @@ def main() -> int:
         sha(OUT / "e1-logic-harness-source.py")
         == sha(ROOT / "tools/generate_hr30_e1_logic_harness_p01.py"),
         "logic harness generator snapshot drift",
+    )
+    need(
+        sha(OUT / "e1-j1-power-cable-source.py")
+        == sha(ROOT / "tools/generate_hr30_e1_logic_power_cable_p01.py"),
+        "J1 power-cable generator snapshot drift",
     )
 
     bindings = rows(OUT / "source-binding.csv")
@@ -118,6 +136,9 @@ def main() -> int:
     need(actuator_power["allowed_on_fixture"] == "NONE" and "NO CONNECTOR" in actuator_power["e1_state"], "actuator-power exclusion weakened")
     need("15 OF 15 POPULATED" in next(row for row in boundaries if row["boundary"] == "JMCU_A")["selection"], "carrier A harness boundary incomplete")
     need("13-15 EMPTY" in next(row for row in boundaries if row["boundary"] == "JMCU_B")["selection"], "carrier B empty-cavity boundary missing")
+    j1_boundary = next(row for row in boundaries if row["boundary"] == "J1")
+    need("VHR-2N" in j1_boundary["selection"] and "ALPHA 3051" in j1_boundary["selection"], "J1 physical cable boundary missing")
+    need("UNBUILT / UNCONNECTED / UNPOWERED" in j1_boundary["e1_state"], "J1 boundary authority weakened")
 
     harnesses = rows(OUT / "logic-harness-assembly-register.csv")
     need(len(harnesses) == 2 and {row["harness_id"] for row in harnesses} == {"E1-HA-A", "E1-HA-B"}, "logic harness assembly drift")
@@ -188,6 +209,45 @@ def main() -> int:
         "walking_authority", "energization_authority",
     )), "logic harness status overclaim")
 
+    j1_assemblies = rows(OUT / "j1-power-cable-assembly-register.csv")
+    need(len(j1_assemblies) == 1 and int(j1_assemblies[0]["conductor_count"]) == 2, "J1 cable assembly drift")
+    need(float(j1_assemblies[0]["wire_cut_length_mm_each"]) == 1000.0, "J1 wire cut length drift")
+    need("NOT MANUFACTURER CAD" in j1_assemblies[0]["cad_basis"], "J1 dimensional-envelope disclosure missing")
+    j1_contacts = rows(OUT / "j1-power-cable-contact-map.csv")
+    need(len(j1_contacts) == 2 and len({row["map_id"] for row in j1_contacts}) == 2, "J1 contact-map count drift")
+    j1_by_destination = {row["destination"]: row for row in j1_contacts}
+    need(j1_by_destination["J1.2"]["net"] == "AUX_5V_SAFE" and j1_by_destination["J1.2"]["color"] == "RED", "J1 positive map drift")
+    need(j1_by_destination["J1.1"]["net"] == "CTRL_GND" and j1_by_destination["J1.1"]["color"] == "BLACK", "J1 return map drift")
+    need(all(float(row["cut_length_mm"]) == 1000.0 and row["continuity"] == row["isolation"] == "NOT EXECUTED" for row in j1_contacts), "J1 cable execution/cut-length drift")
+    j1_routes = rows(OUT / "j1-power-cable-route-register.csv")
+    need(len(j1_routes) == 2 and all(abs(float(row["cad_centerline_mm"]) - 1000.0) < 0.001 for row in j1_routes), "J1 placed route length drift")
+    need(all("-128.200" in row["native_j1_panel_xyz_mm"] for row in j1_routes), "native J1 placement not bound")
+    j1_bom = rows(OUT / "j1-power-cable-bom.csv")
+    expected_j1_parts = {"VHR-2N", "SVH-21T-P1.1", "3051 RD005", "3051 BK005", "5934-2", "5934-0", "FIT-KIT-221BK", "M21-11-427"}
+    need(expected_j1_parts <= {row["order_code"] for row in j1_bom}, "J1 exact material candidates missing")
+    need(any("NO HAND TOOL" in row["selection"] for row in j1_bom), "J1 hand-crimp prohibition missing")
+    j1_process = rows(OUT / "j1-power-cable-process-traveler.csv")
+    need(len(j1_process) == 9 and all(row["record"] == "NOT EXECUTED" for row in j1_process), "J1 process traveler overclaim")
+    j1_sources = rows(OUT / "j1-power-cable-primary-source-register.csv")
+    need(len(j1_sources) == 5 and {row["manufacturer"] for row in j1_sources} == {"JST", "Alpha Wire", "Pomona Electronics", "Brady"}, "J1 primary-source set drift")
+    j1_holds = rows(OUT / "j1-power-cable-open-holds.csv")
+    need(len(j1_holds) == 8 and all(row["state"] == "OPEN" for row in j1_holds), "J1 open-hold drift")
+    j1_bindings = rows(OUT / "j1-power-cable-source-binding.csv")
+    need(len(j1_bindings) == 4 and len({row["role"] for row in j1_bindings}) == 4, "J1 source-binding drift")
+    for row in j1_bindings:
+        path = ROOT / row["path"]
+        need(path.is_file() and sha(path) == row["sha256"], f"J1 source binding mismatch {row['role']}")
+    j1_status = json.loads((OUT / "j1-power-cable-status.json").read_text(encoding="utf-8"))
+    need(j1_status["cable_assembly_count"] == 1 and j1_status["conductor_count"] == 2, "J1 status count drift")
+    need(j1_status["project_owned_dimensional_envelopes_only"] and not j1_status["manufacturer_cad_redistributed"], "J1 CAD provenance boundary drift")
+    need(not any(j1_status[key] for key in (
+        "cable_built", "crimp_process_qualified", "set_screw_process_released",
+        "received_fit_validated", "continuity_isolation_polarity_executed",
+        "current_thermal_derating_validated", "supply_limits_released",
+        "dc_reference_approved", "connection_authority", "powered_test_authority",
+        "motion_authority", "walking_authority", "energization_authority",
+    )), "J1 status overclaim")
+
     assembly = cq.importers.importStep(str(OUT / "HR30_E1_controls_only_fixture_candidate.step")).val()
     bounds = assembly.BoundingBox()
     need(abs(bounds.xlen - 360.009328) < 0.02 and abs(bounds.ylen - 240.009328) < 0.02, "assembly footprint drift")
@@ -203,6 +263,13 @@ def main() -> int:
     integrated_bounds = integrated.BoundingBox()
     need(abs(integrated_bounds.xlen - bounds.xlen) < 0.02 and abs(integrated_bounds.ylen - bounds.ylen) < 0.02, "integrated harness changes fixture footprint")
     need((OUT / "HR30_E1_controls_fixture_with_logic_harness_candidate.glb").stat().st_size > 500_000, "integrated fixture GLB is implausibly small")
+    j1_cad = cq.importers.importStep(str(OUT / "HR30_E1_J1_logic_power_cable_candidate.step")).val()
+    j1_bounds = j1_cad.BoundingBox()
+    need(j1_bounds.xlen > 1035.0 and 6.0 < j1_bounds.ylen < 20.0, "J1 manufacturing cable CAD is implausible")
+    complete = cq.importers.importStep(str(OUT / "HR30_E1_controls_fixture_complete_logic_wiring_candidate.step")).val()
+    complete_bounds = complete.BoundingBox()
+    need(complete_bounds.xlen > 650.0 and complete_bounds.ylen >= bounds.ylen, "complete logic-wiring CAD is implausibly incomplete")
+    need((OUT / "HR30_E1_controls_fixture_complete_logic_wiring_candidate.glb").stat().st_size > 500_000, "complete logic-wiring GLB is implausibly small")
 
     holds = rows(OUT / "open-holds.csv")
     need(len(holds) == 8 and all(row["state"] == "OPEN" for row in holds), "E1 open-hold drift")
@@ -214,6 +281,9 @@ def main() -> int:
     need("font:17px" in page and "font-size:16px" in page and "font-size:14px" in page, "E1 guide violates legibility floor")
     need("<model-viewer" in page and "HR30_E1_controls_only_fixture_candidate.glb" in page, "interactive model missing")
     need("HR30_E1_controls_fixture_with_logic_harness_candidate.glb" in page and "27" in page and "54" in page, "interactive logic harness section missing")
+    need("HR30_E1_controls_fixture_complete_logic_wiring_candidate.glb" in page and 'id="e1-j1-power-cable"' in page, "interactive J1 cable section missing")
+    need(page.index('id="e1-j1-power-cable"') < page.index("</main>") < page.index("<footer>"), "J1 cable guide section escaped main")
+    need("\ufffd" not in page and "Ã" not in page and "Â" not in page, "E1 guide contains mojibake")
     need("This guide cannot authorize connection or power" in page, "authority boundary missing from guide")
     root_readme = (BODY / "README.md").read_text(encoding="utf-8")
     root_page = (BODY / "index.html").read_text(encoding="utf-8")
@@ -224,6 +294,8 @@ def main() -> int:
     need(package_status["e1_actuator_power_component_count"] == 0, "root status introduces actuator power")
     need(package_status["e1_logic_harness_candidate_present"] and package_status["e1_logic_harness_populated_conductor_count"] == 27, "root logic harness status absent")
     need(not package_status["e1_logic_harness_built"] and not package_status["e1_logic_harness_validated"], "root logic harness overclaim")
+    need(package_status["e1_j1_logic_power_cable_candidate_present"] and package_status["e1_j1_logic_power_conductor_count"] == 2, "root J1 cable status absent")
+    need(not package_status["e1_j1_logic_power_cable_built"] and not package_status["e1_j1_logic_power_cable_validated"], "root J1 cable overclaim")
     need(not package_status["e1_fixture_built"] and not package_status["e1_connection_authority"] and not package_status["e1_powered_test_authority"], "root E1 authority overclaim")
 
     manifest = rows(OUT / "file-manifest.csv")
@@ -233,7 +305,7 @@ def main() -> int:
         need(path.is_file() and int(row["bytes"]) == path.stat().st_size and row["sha256"] == sha(path), f"manifest mismatch {row['file']}")
         need(row["warning"] == WARNING, f"manifest warning drift {row['file']}")
 
-    print("PASS: HR-30 E1 fixture uses 4 native PCBs / 14 exact mount axes, encloses all 8 data field ports, adds 2 pin-for-pin logic harness candidates with 27 physical wires / 54 contacts / 6 deliberate empty cavities, contains zero actuator-power hardware, and keeps every physical/authority gate false")
+    print("PASS: HR-30 E1 fixture uses 4 native PCBs / 14 exact mount axes, encloses all 8 data field ports, adds 2 pin-for-pin logic harnesses plus the 2-conductor 1000 mm J1 logic-power cable candidate, contains zero actuator-power hardware, and keeps every physical/authority gate false")
     return 0
 
 
