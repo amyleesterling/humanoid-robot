@@ -1,0 +1,40 @@
+net,connection_count,connections
+ARM_AFTER_S2,3,02_estop_and_eligibility_chain.kicad_sch:S2:TBD-A2 | 02_estop_and_eligibility_chain.kicad_sch:EDMSIM:K1-21 | 04_isolated_measurement_fanout.kicad_sch:DAQS:13
+COMPUTE_0V,2,03_watchdog_gate_and_stimulus.kicad_sch:JWH1:2 | 03_watchdog_gate_and_stimulus.kicad_sch:HBSRC:RET
+EDM_K1_OUT,3,02_estop_and_eligibility_chain.kicad_sch:EDMSIM:K1-22 | 02_estop_and_eligibility_chain.kicad_sch:EDMSIM:K2-21 | 04_isolated_measurement_fanout.kicad_sch:DAQS:15A
+FIX_24V_RAW,2,01_power_and_absence_boundary.kicad_sch:PSFIX:+ | 01_power_and_absence_boundary.kicad_sch:EDISC:1
+FIX_SOURCE_OFF_EVENT,1,04_isolated_measurement_fanout.kicad_sch:STOPLOG:OFF
+FIX_TIMEBASE,5,03_watchdog_gate_and_stimulus.kicad_sch:HBSRC:LOG | 04_isolated_measurement_fanout.kicad_sch:DAQV:T | 04_isolated_measurement_fanout.kicad_sch:DAQC:T | 04_isolated_measurement_fanout.kicad_sch:DAQS:T | 04_isolated_measurement_fanout.kicad_sch:STOPLOG:T
+ISO_SRA1_13,2,02_estop_and_eligibility_chain.kicad_sch:SRA1:13 | 04_isolated_measurement_fanout.kicad_sch:DAQC:7A
+ISO_SRA1_14,2,02_estop_and_eligibility_chain.kicad_sch:SRA1:14 | 04_isolated_measurement_fanout.kicad_sch:DAQC:7B
+ISO_SRA1_23,2,02_estop_and_eligibility_chain.kicad_sch:SRA1:23 | 04_isolated_measurement_fanout.kicad_sch:DAQC:8A
+ISO_SRA1_24,2,02_estop_and_eligibility_chain.kicad_sch:SRA1:24 | 04_isolated_measurement_fanout.kicad_sch:DAQC:8B
+ISO_SRA1_33,2,02_estop_and_eligibility_chain.kicad_sch:SRA1:33 | 04_isolated_measurement_fanout.kicad_sch:DAQC:9A
+ISO_SRA1_34,2,02_estop_and_eligibility_chain.kicad_sch:SRA1:34 | 04_isolated_measurement_fanout.kicad_sch:DAQC:9B
+ISO_SRA1_41,1,02_estop_and_eligibility_chain.kicad_sch:SRA1:41
+ISO_SRA1_42,1,02_estop_and_eligibility_chain.kicad_sch:SRA1:42
+PI_HEARTBEAT,3,03_watchdog_gate_and_stimulus.kicad_sch:JWH1:1 | 03_watchdog_gate_and_stimulus.kicad_sch:HBSRC:HB | 04_isolated_measurement_fanout.kicad_sch:DAQS:12
+PROHIBITED_ACTUATORS,1,01_power_and_absence_boundary.kicad_sch:ABSENT:C
+PROHIBITED_ACTUATOR_SOURCE,1,01_power_and_absence_boundary.kicad_sch:ABSENT:A
+PROHIBITED_CONTACTORS,1,01_power_and_absence_boundary.kicad_sch:ABSENT:B
+PROHIBITED_MOTION,1,01_power_and_absence_boundary.kicad_sch:ABSENT:D
+SAFETY_0V,9,01_power_and_absence_boundary.kicad_sch:PSFIX:- | 01_power_and_absence_boundary.kicad_sch:XD0:LINE | 01_power_and_absence_boundary.kicad_sch:XD0:01 | 01_power_and_absence_boundary.kicad_sch:XD0:02 | 01_power_and_absence_boundary.kicad_sch:XD0:03 | 02_estop_and_eligibility_chain.kicad_sch:SR1:A2 | 02_estop_and_eligibility_chain.kicad_sch:SRA1:A2 | 03_watchdog_gate_and_stimulus.kicad_sch:JWP1:2 | 04_isolated_measurement_fanout.kicad_sch:DAQV:V3
+SAFETY_24V,14,01_power_and_absence_boundary.kicad_sch:F24:OUT | 01_power_and_absence_boundary.kicad_sch:XD24:LINE | 01_power_and_absence_boundary.kicad_sch:XD24:01 | 01_power_and_absence_boundary.kicad_sch:XD24:02 | 01_power_and_absence_boundary.kicad_sch:XD24:03 | 02_estop_and_eligibility_chain.kicad_sch:SR1:A1 | 03_watchdog_gate_and_stimulus.kicad_sch:KWD1:11 | 03_watchdog_gate_and_stimulus.kicad_sch:KWD1:21 | 03_watchdog_gate_and_stimulus.kicad_sch:KWD1:A1 | 03_watchdog_gate_and_stimulus.kicad_sch:KWD2:21 | 03_watchdog_gate_and_stimulus.kicad_sch:KWD2:A1 | 03_watchdog_gate_and_stimulus.kicad_sch:JWP1:1 | 04_isolated_measurement_fanout.kicad_sch:DAQV:V1 | 04_isolated_measurement_fanout.kicad_sch:DAQC:10A
+SAFETY_24V_RAW,2,01_power_and_absence_boundary.kicad_sch:EDISC:2 | 01_power_and_absence_boundary.kicad_sch:F24:IN
+SR1_S11,2,02_estop_and_eligibility_chain.kicad_sch:SR1:S11 | 02_estop_and_eligibility_chain.kicad_sch:S0:R-1
+SR1_S12,4,02_estop_and_eligibility_chain.kicad_sch:SR1:S12 | 02_estop_and_eligibility_chain.kicad_sch:S0:R-2 | 02_estop_and_eligibility_chain.kicad_sch:S1:TBD-R1 | 04_isolated_measurement_fanout.kicad_sch:DAQS:14A
+SR1_S21,2,02_estop_and_eligibility_chain.kicad_sch:SR1:S21 | 02_estop_and_eligibility_chain.kicad_sch:S0:L-1
+SR1_S22,3,02_estop_and_eligibility_chain.kicad_sch:SR1:S22 | 02_estop_and_eligibility_chain.kicad_sch:S0:L-2 | 04_isolated_measurement_fanout.kicad_sch:DAQS:14B
+SR1_START_RETURN,2,02_estop_and_eligibility_chain.kicad_sch:SR1:S34 | 02_estop_and_eligibility_chain.kicad_sch:S1:TBD-R2
+SRA1_A1_WD_GATED,4,02_estop_and_eligibility_chain.kicad_sch:SRA1:A1 | 03_watchdog_gate_and_stimulus.kicad_sch:KWD2:14 | 04_isolated_measurement_fanout.kicad_sch:DAQV:V2 | 04_isolated_measurement_fanout.kicad_sch:DAQC:11B
+SRA1_S11,2,02_estop_and_eligibility_chain.kicad_sch:SR1:13 | 02_estop_and_eligibility_chain.kicad_sch:SRA1:S11
+SRA1_S12,4,02_estop_and_eligibility_chain.kicad_sch:SR1:14 | 02_estop_and_eligibility_chain.kicad_sch:SRA1:S12 | 02_estop_and_eligibility_chain.kicad_sch:S2:TBD-A1 | 04_isolated_measurement_fanout.kicad_sch:DAQV:V4
+SRA1_S21,2,02_estop_and_eligibility_chain.kicad_sch:SR1:23 | 02_estop_and_eligibility_chain.kicad_sch:SRA1:S21
+SRA1_S22,3,02_estop_and_eligibility_chain.kicad_sch:SR1:24 | 02_estop_and_eligibility_chain.kicad_sch:SRA1:S22 | 04_isolated_measurement_fanout.kicad_sch:DAQV:V5
+SRA1_START_RETURN,4,02_estop_and_eligibility_chain.kicad_sch:SRA1:S34 | 02_estop_and_eligibility_chain.kicad_sch:EDMSIM:K2-22 | 04_isolated_measurement_fanout.kicad_sch:DAQV:V6 | 04_isolated_measurement_fanout.kicad_sch:DAQS:15B
+SRA1_STATUS,1,02_estop_and_eligibility_chain.kicad_sch:SRA1:Y32
+WD1_COIL_N,2,03_watchdog_gate_and_stimulus.kicad_sch:KWD1:A2 | 03_watchdog_gate_and_stimulus.kicad_sch:JWP1:3
+WD1_NC_24V,2,03_watchdog_gate_and_stimulus.kicad_sch:KWD1:22 | 03_watchdog_gate_and_stimulus.kicad_sch:JWF1:1
+WD2_COIL_N,2,03_watchdog_gate_and_stimulus.kicad_sch:KWD2:A2 | 03_watchdog_gate_and_stimulus.kicad_sch:JWP1:4
+WD2_NC_24V,2,03_watchdog_gate_and_stimulus.kicad_sch:KWD2:22 | 03_watchdog_gate_and_stimulus.kicad_sch:JWF1:2
+WD_SRA1_SUPPLY_INTERMEDIATE,4,03_watchdog_gate_and_stimulus.kicad_sch:KWD1:14 | 03_watchdog_gate_and_stimulus.kicad_sch:KWD2:11 | 04_isolated_measurement_fanout.kicad_sch:DAQC:10B | 04_isolated_measurement_fanout.kicad_sch:DAQC:11A

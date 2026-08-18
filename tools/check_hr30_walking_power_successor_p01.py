@@ -37,6 +37,7 @@ def main() -> int:
         "axis-branch-allocation.csv", "component-pin-register.csv", "axis-pair-loss-screen.csv", "board-pair-loss-screen.csv",
         "feed-brake-dump-boundary.csv", "open-holds.csv", "walking-power-status.json", "file-manifest.csv",
         "hr30-walking-power-successor-p0.1.kicad_pro", "hr30-walking-power-successor-p0.1.kicad_sch",
+        "hr30-walking-power-successor-p0.1.kicad_pcb", "ProjectButton_WPS.pretty",
         "hr30-walking-power-successor-p0.1.kicad_sym", "sym-lib-table", "fp-lib-table",
         "01_system_boundaries.kicad_sch", "02_paired_channel_1.kicad_sch", "03_paired_channel_2.kicad_sch",
         "04_paired_channel_3.kicad_sch", "05_paired_channel_4.kicad_sch", "06_paired_channel_5.kicad_sch",
@@ -56,7 +57,10 @@ def main() -> int:
     require(status["one_bus_per_board_instance"] and not status["multi_bus_input_short_present"], "bus isolation disposition wrong")
     require(status["branch_topology_selected_as_p01_candidate"] and status["bidirectional_overcurrent_architecture_defined"], "candidate architecture absent")
     require(status["reverse_energy_path_to_downstream_feed_defined"] and not status["feed_brake_dump_selected"], "energy boundary wrong")
-    for key in ("tps25948_pair_manufacturer_application_accepted", "exact_ywp_footprint_released", "pcb_layout_present", "thermal_validated", "walking_power_architecture_complete", "functional_safety_credit", "procurement_authority", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"):
+    require(status["exact_ywp_land_pattern_present"] and status["pcb_layout_present"] and status["pcb_routing_complete"] and status["pcb_drc_accepted"], "routed exact-land-pattern PCB evidence absent")
+    require(status["pcb_unconnected_pads"] == 0 and status["board_width_mm"] == 150.0 and status["board_height_mm"] == 68.0 and status["copper_layer_count"] == 10, "PCB geometry/connectivity status wrong")
+    require(status["validation"]["drc_errors"] == 0 and status["validation"]["drc_warnings"] == 0 and status["validation"]["unconnected_pads"] == 0, "DRC status wrong")
+    for key in ("tps25948_pair_manufacturer_application_accepted", "exact_ywp_footprint_released", "production_stackup_selected", "thermal_validated", "walking_power_architecture_complete", "functional_safety_credit", "procurement_authority", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"):
         require(status[key] is False, f"must remain false: {key}")
     alloc = rows("axis-branch-allocation.csv")
     require(len(alloc) == 48 and sum(r["axis_id"] != "DNP SPARE" for r in alloc) == 25, "allocation register wrong")
@@ -84,7 +88,10 @@ def main() -> int:
         rev = {r["pin"]: r["net"] for r in pins if r["reference"] == f"U{channel}R"}
         require(fwd == {"1": f"CH{channel}_EN", "2": f"CH{channel}_OV_F", "3": f"CH{channel}_PG_F", "4": f"CH{channel}_RCBCTRL", "5": "FEED_VPOS", "6": f"CH{channel}_MID", "7": f"CH{channel}_DVDT_F", "8": "FEED_0V", "9": f"CH{channel}_ILM_F", "10": f"CH{channel}_ITIMER_F", "11": f"CH{channel}_MID", "12": "FEED_VPOS"}, f"forward pin map wrong: channel {channel}")
         require(rev == {"1": f"CH{channel}_EN", "2": f"CH{channel}_OV_R", "3": f"CH{channel}_PG_R", "4": f"CH{channel}_RCBCTRL", "5": f"BRANCH_{channel}_VPOS", "6": f"CH{channel}_MID", "7": f"CH{channel}_DVDT_R", "8": "FEED_0V", "9": f"CH{channel}_ILM_R", "10": f"CH{channel}_ITIMER_R", "11": f"CH{channel}_MID", "12": f"BRANCH_{channel}_VPOS"}, f"reverse pin map wrong: channel {channel}")
-        require(all(r["footprint"] == "" for r in pins if r["reference"] in {f"U{channel}F", f"U{channel}R"}), "unreleased or dimension-near footprint assigned")
+        require(all(r["footprint"] == "ProjectButton_WPS:TI_YWP0012A_PowerWCSP_2.441x1.728mm" for r in pins if r["reference"] in {f"U{channel}F", f"U{channel}R"}), "exact YWP footprint binding absent")
+        ov_f = {r["pin"]: r["net"] for r in pins if r["reference"] == f"R{channel}OF"}
+        ov_r = {r["pin"]: r["net"] for r in pins if r["reference"] == f"R{channel}OR"}
+        require(ov_f == {"1": f"CH{channel}_OV_F", "2": "FEED_0V"} and ov_r == {"1": f"CH{channel}_OV_R", "2": "FEED_0V"}, f"OVLO anti-float candidate missing: channel {channel}")
     for channel in range(1, 7):
         sheet = (OUT / f"{channel + 1:02d}_paired_channel_{channel}.kicad_sch").read_text(encoding="utf-8")
         for required_net in (f"CH{channel}_PG_F", f"CH{channel}_PG_R", f"CH{channel}_RCBCTRL", f"CH{channel}_DVDT_F", f"CH{channel}_DVDT_R", f"CH{channel}_MID"):
@@ -110,7 +117,13 @@ def main() -> int:
         require(path.is_file() and sha(path) == row["sha256"] and path.stat().st_size == int(row["bytes"]), f"source binding mismatch: {row['binding_id']}")
     report = (OUT / "validation/hr30-walking-power-successor-p0.1-erc.rpt").read_text(encoding="utf-8", errors="replace")
     require("0  Errors 0  Warnings" in report, "complete ERC report is not 0/0")
-    require(len(list((OUT / "output").glob("*.svg"))) == 8, "native export count wrong")
+    drc = (OUT / "validation/hr30-walking-power-successor-p0.1-drc.rpt").read_text(encoding="utf-8", errors="replace")
+    require("found 0 drc violations" in drc.lower() and "found 0 unconnected pads" in drc.lower(), "complete DRC report is not 0/0")
+    require(len(list((OUT / "output").glob("*.svg"))) == 18, "native schematic/PCB export count wrong")
+    footprint = (OUT / "ProjectButton_WPS.pretty/TI_YWP0012A_PowerWCSP_2.441x1.728mm.kicad_mod").read_text(encoding="utf-8")
+    require(footprint.count('(pad "') == 12, "YWP footprint must contain exactly 12 lands")
+    for snippet in ('(pad "1" smd roundrect (at -1.060 0.675)', '(pad "4" smd roundrect (at -1.060 -0.675)', '(pad "5" smd roundrect (at -0.476 -0.450)', '(pad "6" smd roundrect (at 0.476 -0.450)', '(pad "7" smd roundrect (at 1.060 -0.675)', '(pad "10" smd roundrect (at 1.060 0.675)', '(pad "11" smd roundrect (at 0.476 0.450)', '(pad "12" smd roundrect (at -0.476 0.450)'):
+        require(snippet in footprint, f"YWP coordinate drift: {snippet}")
     manifest = rows("file-manifest.csv")
     for row in manifest:
         path = OUT / row["path"]
@@ -121,7 +134,7 @@ def main() -> int:
     require(root["walking_power_successor_package_present"] and not root["walking_power_architecture_complete"] and not root["walking_power_energization_authority"], "root integration wrong")
     require((WHOLE / "README.md").read_text(encoding="utf-8").count("HR30-WALKING-POWER-P01-README-START") == 1, "README integration wrong")
     require((WHOLE / "index.html").read_text(encoding="utf-8").count("HR30-WALKING-POWER-P01-START") == 1, "web integration wrong")
-    print("PASS: eight isolated one-bus HR-30 walking-power boards; paired branches retained; brake/dump, PCB, validation and all authority remain open")
+    print("PASS: exact YWP land pattern and routed ten-layer HR-30 walking-power PCB; eight bus domains retained; stackup/DFM/brake-dump/thermal and all authority remain open")
     return 0
 
 

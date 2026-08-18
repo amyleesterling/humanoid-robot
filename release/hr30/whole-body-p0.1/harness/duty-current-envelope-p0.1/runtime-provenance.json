@@ -1,0 +1,12 @@
+{
+  "identifier": "HR30-HARNESS-DUTY-CURRENT-ENVELOPE-P0.1",
+  "warning": "PRELIMINARY - BOUNDED TORQUE-PRODUCING CURRENT-EQUIVALENT EVIDENCE ONLY - NOT A WIRE, CONNECTOR, PROTECTION OR SOURCE RATING - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, WALKING OR ENERGIZATION",
+  "executed_utc": "2026-08-18T04:36:11.784295+00:00",
+  "integration_timestep_s": 0.002,
+  "logged_period_s": 0.02,
+  "controller": "frozen 8.0/0.8 endpoint-scaled control successor",
+  "control_model_mass_kg": 9.989581999999997,
+  "current_mapping": "absolute command divided by candidate linear endpoint times candidate current",
+  "gripper_virtual_work": "T = F_q * 2 * 0.005 m because q is total 26 mm gap and each rack travels q/2",
+  "scope": "bounded torque-producing current-equivalent calculation only"
+}

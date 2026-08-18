@@ -37,17 +37,19 @@ def main() -> int:
     sources = rows(OUT / "primary-source-register.csv")
     connectors = rows(OUT / "connector-family-disposition.csv")
     axes = rows(OUT / "axis-power-cable-candidate.csv")
+    transitions = rows(OUT / "actuator-power-transition-register.csv")
     data = rows(OUT / "data-cable-candidate.csv")
     cavities = rows(OUT / "connector-cavity-population.csv")
     tests = rows(OUT / "inspection-test-plan.csv")
     holds = rows(OUT / "open-holds.csv")
     status = json.loads((OUT / "actuator-cable-kit-status.json").read_text(encoding="utf-8"))
 
-    need(len(sources) == 17 and len(connectors) == 4, "source/connector coverage drift")
+    need(len(sources) == 23 and len(connectors) == 6, "source/connector coverage drift")
     need(len(axes) == 25 and len({r["axis_id"] for r in axes}) == 25, "25 unique axis candidates required")
-    need(len(data) == 7 and len(tests) == 12 and len(holds) == 11, "candidate/test/hold coverage drift")
+    need(len(transitions) == 25 and {r["axis_id"] for r in transitions} == {r["axis_id"] for r in axes}, "25 transition candidates required")
+    need(len(data) == 7 and len(tests) == 14 and len(holds) == 14, "candidate/test/hold coverage drift")
     need(len(cavities) == 159 and len({r["cavity_id"] for r in cavities}) == 159, "159 unique cavity records required")
-    all_rows = sources + connectors + axes + data + cavities + tests + holds
+    all_rows = sources + connectors + axes + transitions + data + cavities + tests + holds
     need(all(r["execution_state"] == "NOT EXECUTED" and r["warning"] == WARNING for r in all_rows), "execution/warning overclaim")
     need(all(r["state"] == "OPEN" for r in holds), "hold falsely closed")
     need(all(r["result"] == "NOT EXECUTED" and r["measured_value"] == "NONE" for r in tests), "test execution overclaim")
@@ -56,6 +58,8 @@ def main() -> int:
     need(all(r["sha256"] == sha(ROOT / r["official_url_or_path"]) for r in local_sources), "local source hash drift")
     need(any(r["candidate_housing"] == "JST EHR-4" and r["candidate_contact"] == "JST SEH-001T-P0.6" for r in connectors), "RS-485 connector family missing")
     need(any(r["candidate_housing"] == "JST EHR-3" and r["candidate_contact"] == "JST SEH-001T-P0.6" for r in connectors), "TTL connector family missing")
+    need(any(r["candidate_housing"] == "Molex 430250200" and r["candidate_contact"] == "Molex 430300001" for r in connectors), "dynamic-side Micro-Fit candidate missing")
+    need(any(r["candidate_housing"] == "Molex 430200200" and r["candidate_contact"] == "Molex 430310001" for r in connectors), "fixed-side Micro-Fit candidate missing")
     need(any("LOW-INSERTION-FORCE" in r["disposition"] and "REJECTED" in r["disposition"] for r in connectors), "vibration contact disposition missing")
 
     cap_sum = sum(float(r["candidate_internal_limit_a"]) for r in axes)
@@ -63,8 +67,9 @@ def main() -> int:
     need(abs(cap_sum - 46.67779) < 1e-6 and abs(stall_sum - 71.88) < 1e-9, "current boundaries drift")
     need(all(float(r["candidate_internal_limit_a"]) <= 2.499010 + 1e-9 for r in axes), "per-axis cap exceeds frozen candidate")
     need(all(r["stall_is_normal_demand"] == "NO" for r in axes), "stall endpoint promoted to demand")
-    need(all("Alpha Wire 3051" in r["power_pair_test_coupon_candidate"] and "CF130.03.02.UL" in r["power_pair_test_coupon_candidate"] and "CF9.UL.02.02 REJECTED" in r["power_pair_test_coupon_candidate"] for r in axes), "static/dynamic wire candidate split drift")
-    need(all("0.33 mm2" in r["jst_eh_published_conductor_range"] and "STATIC CANDIDATE PASS" in r["wire_contact_geometric_compatibility"] and "WRITTEN-DISPOSITION HOLD" in r["wire_contact_geometric_compatibility"] for r in axes), "wire/contact candidate boundary missing")
+    need(all("Alpha Wire 3051" in r["power_pair_test_coupon_candidate"] and "CF130.03.02.UL" in r["power_pair_test_coupon_candidate"] and "430250200/430300001" in r["power_pair_test_coupon_candidate"] and "CF9.UL.02.02 REJECTED" in r["power_pair_test_coupon_candidate"] for r in axes), "moving/transition/pigtail candidate split drift")
+    need(all("0.33 mm2" in r["jst_eh_published_conductor_range"] and "ALPHA 3051 TO JST/MICRO-FIT" in r["wire_contact_geometric_compatibility"] and "CORE-OD LIMIT REMAINS UNVERIFIED" in r["wire_contact_geometric_compatibility"] for r in axes), "wire/contact candidate boundary missing")
+    need(all(r["dynamic_housing"] == "Molex 430250200" and r["fixed_panel_housing"] == "Molex 430200200" and "PANEL-MOUNT TRANSITION" in r["load_isolation"] and r["pigtail_length_mm"].startswith("SELECTION REQUIRED") for r in transitions), "fixed-side transition architecture drift")
     need(all("AWG22" in r["connector_current_evidence"] and r["current_capacity_disposition"].startswith("OPEN") for r in axes), "ampacity limitation overclaimed")
     need(all(r["branch_protection"] == "SELECTION REQUIRED" and r["selection_state"].endswith("NOT RELEASED") for r in axes), "physical selection overclaimed")
     for r in axes:
@@ -92,6 +97,8 @@ def main() -> int:
 
     need(status["cf9_jst_cross_section_geometry_compatible"] is True, "legacy geometric evidence not recorded")
     need(status["cf9_power_candidate_rejected"] and status["static_alpha_3051_coupon_candidate_defined"] and status["dynamic_cf130_coupon_candidate_defined"], "power-wire disposition missing")
+    need(status["direct_cf130_to_jst_eh_crimp_rejected"] and status["microfit_fixed_transition_candidate_defined"] and status["microfit_fixed_transition_exact_order_codes_bound"], "transition disposition missing")
+    need(status["transition_count"] == 25 and not status["microfit_cf130_core_od_verified"] and not status["transition_brackets_dimensioned"], "transition evidence boundary drift")
     need(abs(status["maximum_planning_voltage_drop_20c_at_candidate_cap_v"] - 0.090851) < 1e-6, "status max drop drift")
     for key in ["cf9_current_capacity_released", "cf9_route_life_verified", "power_cable_selected", "data_cable_selected", "crimp_process_selected", "procurement_authority", "fabrication_authority", "connection_authority", "powered_test_authority", "motion_authority", "energization_authority"]:
         need(status[key] is False, f"fail-closed status violated: {key}")
@@ -111,8 +118,8 @@ def main() -> int:
     svg = (OUT / "actuator-cable-kit.svg").read_text(encoding="utf-8")
     need("font:17px" in page and "font-size:16px" in page and "min-width:1480px" in page, "web legibility/overflow drift")
     need("font-size:16px" in svg and "font-size:34px" in svg, "drawing legibility drift")
-    need("The 25 actuator feeds now separate static and dynamic 22 AWG candidates" in page and "Do not crimp or connect either candidate" in page, "guide purpose/warning drift")
-    need("Alpha Wire 3051" in page and "CF130.03.02.UL" in page and "CF9.UL.02.02 is rejected for actuator power" in (OUT / "README.md").read_text(encoding="utf-8"), "power-wire candidate guide drift")
+    need("All 25 actuator feeds now use a fixed-side transition candidate" in page and "Do not crimp or connect either candidate" in page, "guide purpose/warning drift")
+    need("430250200" in page and "430200200" in page and "Alpha Wire 3051" in page and "CF130.03.02.UL" in page and "Direct CF130-to-JST crimping is rejected" in (OUT / "README.md").read_text(encoding="utf-8"), "power-transition guide drift")
     root_page = (WHOLE / "index.html").read_text(encoding="utf-8")
     need("HR30-ACTUATOR-CABLE-KIT-P01-START" in root_page and "0.091 V" in root_page, "root guide integration missing")
     root_readme = (WHOLE / "README.md").read_text(encoding="utf-8")
@@ -122,7 +129,7 @@ def main() -> int:
     need(root_status["actuator_cable_kit_axis_count"] == 25 and root_status["actuator_cable_kit_cavity_record_count"] == 159, "root status integration missing")
     need(root_status["actuator_cable_kit_current_caps_propagated"] and root_status["actuator_power_cable_20c_planning_calculated"] and not root_status["actuator_power_cable_hot_ampacity_verified"], "root advancement/thermal boundary drift")
     need(not root_status["energization_authority"], "root authority drift")
-    print("PASS: HR-30 actuator cable kit rejects CF9 power credit, binds separate static/dynamic 22 AWG coupon candidates to all 25 feeds, and retains predecessor calculations only as bounded comparison evidence")
+    print("PASS: HR-30 actuator cable kit binds 25 fixed-side Micro-Fit transition candidates, restrained Alpha 3051 pigtails and moving CF130 pairs while keeping all physical release gates open")
     return 0
 
 

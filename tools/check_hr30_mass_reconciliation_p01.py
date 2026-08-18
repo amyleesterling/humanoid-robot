@@ -28,6 +28,29 @@ def rows(name: str) -> list[dict]:
     return list(csv.DictReader((SRC / name).open(encoding="utf-8")))
 
 
+def verify_assembly_group_contingency(link_rows: list[dict]) -> None:
+    groups: dict[str, list[dict]] = {}
+    for row in link_rows:
+        groups.setdefault(row["assembly_group"], []).append(row)
+    for group, members in groups.items():
+        non_fastener = sum(
+            float(row["identified_planning_candidate_kg"])
+            - float(row["explicit_joint_fastener_candidate_kg"])
+            for row in members
+        )
+        fasteners = sum(float(row["explicit_joint_fastener_candidate_kg"]) for row in members)
+        expected_group_contingency = max(0.0, non_fastener * 0.08 - fasteners)
+        actual_group_contingency = sum(float(row["integration_contingency_kg"]) for row in members)
+        require(abs(actual_group_contingency - expected_group_contingency) < 5e-9, f"assembly-group contingency mismatch {group}")
+        for row in members:
+            link_non_fastener = (
+                float(row["identified_planning_candidate_kg"])
+                - float(row["explicit_joint_fastener_candidate_kg"])
+            )
+            expected_link_share = expected_group_contingency * link_non_fastener / non_fastener if non_fastener else 0.0
+            require(abs(float(row["integration_contingency_kg"]) - expected_link_share) < 5e-9, f"assembly-group contingency share mismatch {row['dynamic_link']}")
+
+
 def main() -> int:
     required = {
         "actuator-mass-source-register.csv", "mass-item-reconciliation.csv",
@@ -103,24 +126,24 @@ def main() -> int:
         require(abs(actual - float(summary[key])) < 2e-9, f"summary category mismatch {category}")
     identified = sum(float(row["planning_candidate_mass_kg"]) for row in items)
     require(abs(identified - float(summary["planning_identified_candidate_mass_kg"])) < 2e-9, "identified subtotal mismatch")
-    require(11.25 < identified < 11.36, "installed-equipment/onboard-energy identified subtotal outside controlled P0.1 band")
+    require(11.00 < identified < 11.10, "lightweight whole-body/onboard-envelope identified subtotal outside controlled P0.1 band")
     require(summary["located_joint_fastener_count"] == 156, "fastener count missing from mass summary")
     require(summary["program_mass_target_kg"] == 8.0 and summary["program_maximum_mass_kg"] == 10.0, "authoritative product mass limits drift")
-    require(summary["program_mass_target_status"] == "EXCEEDS 10 KG HARD LIMIT" and -1.75 < summary["planning_margin_to_program_maximum_kg"] < -1.65, "onboard-envelope 10 kg hard-limit exceedance not disclosed")
-    require(-3.75 < summary["planning_margin_to_product_target_kg"] < -3.65, "onboard-envelope 8 kg target miss not disclosed")
+    require(summary["program_mass_target_status"] == "EXCEEDS 10 KG HARD LIMIT" and -1.50 < summary["planning_margin_to_program_maximum_kg"] < -1.35, "onboard-envelope 10 kg hard-limit exceedance not disclosed")
+    require(-3.50 < summary["planning_margin_to_product_target_kg"] < -3.35, "onboard-envelope 8 kg target miss not disclosed")
     require(not any(summary["authority"].values()), "mass package authority overclaim")
     require(summary["configuration_mass_separation_present"], "mass configuration separation missing")
     require(summary["active_development_configuration"] == "HR30-TETHER-FIRST-P0.1", "active mass configuration drift")
     require(abs(float(summary["excluded_onboard_envelope_identified_mass_kg"]) - excluded_envelope_mass) < 2e-9, "excluded envelope mass summary drift")
     require(abs(float(summary["onboard_envelope_dynamics_planning_mass_kg"]) - float(summary["reconciled_dynamics_planning_mass_kg"])) < 2e-9, "onboard envelope dynamics alias drift")
-    require(10.20 < float(summary["active_tether_dynamics_planning_mass_kg"]) < 10.27, "active tether hard-limit exceedance is not preserved in the controlled P0.1 band")
-    require(-0.27 < float(summary["active_tether_margin_to_program_maximum_kg"]) < -0.20, "active tether hard-limit deficit outside controlled P0.1 band")
+    require(9.95 < float(summary["active_tether_dynamics_planning_mass_kg"]) < 10.0, "active tether planning mass is not inside the controlled sub-10 kg P0.1 band")
+    require(0.0 < float(summary["active_tether_margin_to_program_maximum_kg"]) < 0.05, "active tether positive hard-limit margin outside controlled P0.1 band")
     arm_allocation = next(row for row in rows("mass-allocation-register.csv") if row["assembly"] == "two arms and hands")
     arm_mass = float(arm_allocation["cad_mass_kg"].rsplit(" ", 1)[-1])
     require(0.0 < arm_mass <= float(arm_allocation["maximum_kg"]) and "WITHIN MAXIMUM" in arm_allocation["status"], "bilateral arm/hand mass closure missing")
 
     decisions = rows("lightweight-architecture-register.csv")
-    require(len(decisions) == 10 and {row["decision_id"] for row in decisions} >= {"HR30-LW-001", "HR30-LW-004", "HR30-LW-005", "HR30-LW-007", "HR30-LW-008", "HR30-LW-009", "HR30-LW-TOTAL"}, "lightweight architecture decision set incomplete")
+    require(len(decisions) == 12 and {row["decision_id"] for row in decisions} >= {"HR30-LW-001", "HR30-LW-003", "HR30-LW-004", "HR30-LW-005", "HR30-LW-007", "HR30-LW-008", "HR30-LW-009", "HR30-LW-010", "HR30-LW-011", "HR30-LW-TOTAL"}, "lightweight architecture decision set incomplete")
     total_decision = next(row for row in decisions if row["decision_id"] == "HR30-LW-TOTAL")
     require("dfb9a7d" in total_decision["baseline_candidate"] and "gross identified reduction" in total_decision["mass_effect"], "lightweight baseline/delta traceability missing")
     require(all(row["authority"].startswith("NO PROCUREMENT") for row in decisions), "lightweight decision authority overclaim")
@@ -135,12 +158,13 @@ def main() -> int:
         contingency_before = float(row["integration_contingency_before_fastener_allocation_kg"])
         contingency = float(row["integration_contingency_kg"])
         require(abs(contingency_before - (identified_link - fastener_link) * 0.08) < 2e-9, f"pre-fastener contingency mismatch {row['dynamic_link']}")
-        require(abs(contingency - max(0.0, contingency_before - fastener_link)) < 2e-9, f"remaining contingency mismatch {row['dynamic_link']}")
         require(abs(reconciled - (identified_link + contingency)) < 2e-9, f"link planning rule mismatch {row['dynamic_link']}")
+    verify_assembly_group_contingency(links)
     reconciled_total = sum(float(row["reconciled_dynamics_mass_kg"]) for row in links)
     require(abs(reconciled_total - float(summary["reconciled_dynamics_planning_mass_kg"])) < 2e-9, "reconciled total mismatch")
     tether_links = rows("link-mass-reconciliation-tether.csv")
     require(len(tether_links) == 26 and len({row["dynamic_link"] for row in tether_links}) == 26, "tether link reconciliation population drift")
+    verify_assembly_group_contingency(tether_links)
     tether_total = sum(float(row["reconciled_dynamics_mass_kg"]) for row in tether_links)
     require(abs(tether_total - float(summary["active_tether_dynamics_planning_mass_kg"])) < 2e-9, "tether dynamics total mismatch")
     require(float(next(row for row in tether_links if row["dynamic_link"] == "torso")["identified_planning_candidate_kg"]) < float(next(row for row in links if row["dynamic_link"] == "torso")["identified_planning_candidate_kg"]), "tether torso does not exclude onboard envelope")
@@ -167,11 +191,11 @@ def main() -> int:
 
     allocation = {row["assembly"]: row for row in rows("mass-allocation-register.csv")}
     require(abs(float(allocation["TOTAL"]["cad_mass_kg"].split()[-1]) - round(tether_total, 3)) < 0.001, "allocation register total does not match active tether reconciliation")
-    require("OVER MAXIMUM" in allocation["TOTAL"]["status"] and "REDESIGN" in allocation["TOTAL"]["status"], "allocation register does not expose the provisional P0.1 mass-envelope deficit")
+    require("WITHIN MAXIMUM" in allocation["TOTAL"]["status"], "allocation register does not expose the provisional sub-10 kg active configuration")
     require("RESIDUAL" in allocation["integration contingency within link totals"]["cad_mass_kg"] and "EXPLICIT JOINT FASTENERS" in allocation["integration contingency within link totals"]["cad_mass_kg"], "fastener allocation against contingency not explicit")
 
     status = json.loads((SRC / "package-status.json").read_text(encoding="utf-8"))
-    require(status["mass_reconciliation_present"] and not status["mass_budget_closed"] and not status["mass_com_inertia_physically_validated"], "open planning mass deficit / physical validation boundary drift")
+    require(status["mass_reconciliation_present"] and status["mass_budget_closed"] and not status["mass_com_inertia_physically_validated"], "candidate planning mass closure / physical validation boundary drift")
     require("PLANNING MODEL ONLY" in status["mass_budget_basis"] and "8 KG TARGET" in status["mass_budget_basis"], "planning-only mass-budget basis missing")
     require(abs(float(status["estimated_mass_kg"]) - tether_total) < 2e-9, "main package active mass drift")
     require(status["mass_configuration_separation_present"] and status["active_development_mass_configuration"] == "HR30-TETHER-FIRST-P0.1", "main package active mass configuration missing")

@@ -26,8 +26,24 @@
   "feed_brake_dump_selected": false,
   "exact_current_thresholds_selected": false,
   "tps25948_pair_manufacturer_application_accepted": false,
+  "exact_ywp_land_pattern_present": true,
   "exact_ywp_footprint_released": false,
-  "pcb_layout_present": false,
+  "pcb_layout_present": true,
+  "pcb_routing_complete": true,
+  "pcb_drc_accepted": true,
+  "pcb_unconnected_pads": 0,
+  "board_width_mm": 150.0,
+  "board_height_mm": 68.0,
+  "copper_layer_count": 10,
+  "routing": {
+    "via_count": 294,
+    "fanout_count": 294,
+    "track_segment_count": 828,
+    "routing_complete": true,
+    "routing_grid_mm": 0.5,
+    "routing_method": "ten-layer deterministic family-separated routing with exact YWP fanout"
+  },
+  "production_stackup_selected": false,
   "thermal_validated": false,
   "walking_power_architecture_complete": false,
   "functional_safety_credit": false,
@@ -42,6 +58,11 @@
     "native_sheet_count_including_root": 8,
     "erc_errors": 0,
     "erc_warnings": 0,
-    "exported_svg_count": 8
+    "drc_errors": 0,
+    "drc_warnings": 0,
+    "unconnected_pads": 0,
+    "exported_svg_count": 18,
+    "drc_report_line_count": 18,
+    "pcb_layout_state": "ROUTED CANDIDATE - DRC 0/0 - PHYSICAL/THERMAL/DFM VALIDATION OPEN"
   }
 }

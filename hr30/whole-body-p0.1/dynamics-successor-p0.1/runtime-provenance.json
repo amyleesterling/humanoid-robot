@@ -1,0 +1,18 @@
+{
+  "identifier": "HR30-DYNAMICS-SUCCESSOR-P0.1",
+  "warning": "PRELIMINARY - NUMERICAL HIP-REDUCTION SUCCESSOR ONLY - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION",
+  "executed_utc": "2026-08-18T01:15:08.247580+00:00",
+  "mujoco_version": "3.10.0",
+  "numpy_version": "2.4.6",
+  "integration_timestep_s": 0.002,
+  "settle_time_s": 0.5,
+  "hip_successor_ratio": 4.0,
+  "controller": "contact-enabled inverse-dynamics feedforward interpolated from 50 Hz plus baseline-cap-scaled PD gains",
+  "thresholds": {
+    "maximum_rotary_error_deg": 5.0,
+    "maximum_gripper_error_mm": 2.0,
+    "maximum_rotary_saturation_fraction": 0.1,
+    "minimum_support_coverage": 0.99
+  },
+  "predeclared_scope": "single 4:1 bilateral hip pitch/roll scenario; no ratio tuning after result"
+}

@@ -186,7 +186,10 @@ def write_mjcf(rows: list[dict], joints: list[dict]) -> None:
         geometry_center = row.get("geometry_center", row["center"])
         geometry_rel = tuple(geometry_center[i] - world_origin[i] for i in range(3))
         ET.SubElement(body, "inertial", pos=" ".join(f"{v:.6f}" for v in inertial_rel), mass=f"{row['mass']:.6f}", diaginertia=" ".join(f"{v:.9f}" for v in inertia_box(row["mass"], row["size"])))
-        ET.SubElement(body, "geom", pos=" ".join(f"{v:.6f}" for v in geometry_rel), size=" ".join(f"{v / 2:.6f}" for v in row["size"]))
+        geom_attrs = {"name": f"G_{link_name}", "pos": " ".join(f"{v:.6f}" for v in geometry_rel), "size": " ".join(f"{v / 2:.6f}" for v in row["size"])}
+        if link_name.endswith("_foot"):
+            geom_attrs["margin"] = "0.001"
+        ET.SubElement(body, "geom", **geom_attrs)
         for joint in children.get(link_name, []):
             child_origin = frames[joint["child"]]
             child = by_link[joint["child"]]
@@ -198,7 +201,10 @@ def write_mjcf(rows: list[dict], joints: list[dict]) -> None:
             child_geometry_center = child.get("geometry_center", child["center"])
             child_geometry_rel = tuple(child_geometry_center[i] - child_origin[i] for i in range(3))
             ET.SubElement(child_body, "inertial", pos=" ".join(f"{v:.6f}" for v in child_inertial_rel), mass=f"{child['mass']:.6f}", diaginertia=" ".join(f"{v:.9f}" for v in inertia_box(child["mass"], child["size"])))
-            ET.SubElement(child_body, "geom", pos=" ".join(f"{v:.6f}" for v in child_geometry_rel), size=" ".join(f"{v / 2:.6f}" for v in child["size"]))
+            geom_attrs = {"name": f"G_{joint['child']}", "pos": " ".join(f"{v:.6f}" for v in child_geometry_rel), "size": " ".join(f"{v / 2:.6f}" for v in child["size"])}
+            if joint["child"].endswith("_foot"):
+                geom_attrs["margin"] = "0.001"
+            ET.SubElement(child_body, "geom", **geom_attrs)
 
             def recurse(existing: ET.Element, current: str, current_origin: tuple[float, float, float]) -> None:
                 for grand in children.get(current, []):
@@ -211,11 +217,29 @@ def write_mjcf(rows: list[dict], joints: list[dict]) -> None:
                     geometry_center = gr.get("geometry_center", gr["center"])
                     geometry_rel = tuple(geometry_center[i] - go[i] for i in range(3))
                     ET.SubElement(gb, "inertial", pos=" ".join(f"{v:.6f}" for v in inertial_rel), mass=f"{gr['mass']:.6f}", diaginertia=" ".join(f"{v:.9f}" for v in inertia_box(gr["mass"], gr["size"])))
-                    ET.SubElement(gb, "geom", pos=" ".join(f"{v:.6f}" for v in geometry_rel), size=" ".join(f"{v / 2:.6f}" for v in gr["size"]))
+                    geom_attrs = {"name": f"G_{grand['child']}", "pos": " ".join(f"{v:.6f}" for v in geometry_rel), "size": " ".join(f"{v / 2:.6f}" for v in gr["size"])}
+                    if grand["child"].endswith("_foot"):
+                        geom_attrs["margin"] = "0.001"
+                    ET.SubElement(gb, "geom", **geom_attrs)
                     recurse(gb, grand["child"], go)
             recurse(child_body, joint["child"], child_origin)
 
     add_body(world, "base_link", frames["base_link"], (0, 0, 0))
+    contact = ET.SubElement(model, "contact")
+    excluded_pairs = {
+        tuple(sorted((joint["parent"], joint["child"])))
+        for joint in joints
+    }
+    for side in ("L", "R"):
+        excluded_pairs.update({
+            tuple(sorted(("base_link", f"{side}_hip_roll_link"))),
+            tuple(sorted(("base_link", f"{side}_thigh"))),
+            tuple(sorted((f"{side}_hip_yaw_link", f"{side}_thigh"))),
+            tuple(sorted(("torso", f"{side}_upper_arm"))),
+            tuple(sorted((f"{side}_shin", f"{side}_foot"))),
+        })
+    for body1, body2 in sorted(excluded_pairs):
+        ET.SubElement(contact, "exclude", body1=body1, body2=body2)
     actuator = ET.SubElement(model, "actuator")
     for joint in joints:
         ET.SubElement(actuator, "motor", name=f"M_{joint['name']}", joint=joint["name"], ctrllimited="true", ctrlrange="-1 1", gear="1")

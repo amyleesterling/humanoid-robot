@@ -2,4 +2,4 @@
 
 **PRELIMINARY - UNBUILT CABLE COUPON PLAN - NOT APPROVED FOR PROCUREMENT, PRODUCTION CUTTING, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION**
 
-This package converts the cable candidate into a controlled coupon-build and route-measurement workflow. It records zero physical execution and releases no production cable.
+This package tests the complete moving-CF130 / fixed Micro-Fit / restrained-Alpha-3051 / JST-EH transition. Direct CF130-to-JST crimping is rejected. It records zero physical execution and releases no production cable, bracket or crimp process.

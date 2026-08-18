@@ -1540,3 +1540,9 @@ See [the review ledger](docs/review-ledger.md) for dates, configurations, eviden
 ## Release rule
 
 Only revisions tagged `BUILD-RELEASE-*` after the review gates in the system specification may be fabricated or energized. Documents labeled concept, draft, or preliminary are planning artifacts, not assembly instructions.
+
+<!-- HRV0-P121-FIXTURE-START -->
+## HR-V0 P1.21 control-only no-load fixture
+
+A connected five-sheet native KiCad fixture candidate now binds 42 point-to-point rows to the P1.21 terminal schedule, exposes all 15 required signals and carries the 18-test matrix with explicit actuator-power/contactors/motion-hardware absence. It is an engineering artifact, not authorization: independent review, received hardware, source/protection/instrument selections, numerical limits, physical inspection and written E2 authority remain open. See `test-fixtures/hr-v0-p121-no-load-fixture-p0.1/index.html`.
+<!-- HRV0-P121-FIXTURE-END -->

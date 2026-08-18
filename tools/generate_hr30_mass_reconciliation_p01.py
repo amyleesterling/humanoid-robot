@@ -86,6 +86,8 @@ def axis_from_component(name: str) -> str:
 
 def axis_link(axis_id: str) -> str:
     if axis_id == "WAIST_YAW":
+        # The waist actuator housing is carried by the pelvis-side structure;
+        # only its output crosses into the torso child body.
         return "base_link"
     if axis_id == "HEAD_PAN":
         return "neck_pan_link"
@@ -96,16 +98,26 @@ def axis_link(axis_id: str) -> str:
         raise KeyError(axis_id)
     if "SHOULDER_PITCH" in axis_id:
         return f"{side}_shoulder_pitch_link"
-    if "SHOULDER_ROLL" in axis_id or "ELBOW_PITCH" in axis_id:
+    if "SHOULDER_ROLL" in axis_id:
         return f"{side}_upper_arm"
-    if "WRIST_ROTATION" in axis_id:
+    if "ELBOW_PITCH" in axis_id:
         return f"{side}_forearm"
-    if "GRIPPER" in axis_id:
+    if "WRIST_ROTATION" in axis_id:
         return f"{side}_hand"
-    if any(token in axis_id for token in ("HIP_YAW", "HIP_ROLL", "HIP_PITCH", "KNEE_PITCH")):
+    if "GRIPPER" in axis_id:
+        return f"{side}_gripper"
+    if "HIP_YAW" in axis_id:
+        return f"{side}_hip_yaw_link"
+    if "HIP_ROLL" in axis_id:
+        return f"{side}_hip_roll_link"
+    if "HIP_PITCH" in axis_id:
         return f"{side}_thigh"
-    if any(token in axis_id for token in ("ANKLE_PITCH", "ANKLE_ROLL")):
+    if "KNEE_PITCH" in axis_id:
         return f"{side}_shin"
+    if "ANKLE_PITCH" in axis_id:
+        return f"{side}_ankle_pitch_link"
+    if "ANKLE_ROLL" in axis_id:
+        return f"{side}_foot"
     raise KeyError(axis_id)
 
 
@@ -346,6 +358,30 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
     for item in items:
         by_link[item["dynamic_link"]].append(item)
 
+    # Integration contingency belongs to a physical assembly, not to an
+    # arbitrary dynamics-link partition.  Calculate each assembly's residual
+    # once, after subtracting its explicit located fasteners, then distribute
+    # that invariant residual over the assembly's non-fastener link masses.
+    # This prevents a mass-model cleanup (for example moving a hip actuator
+    # from the thigh lump to the hip-yaw body) from creating or deleting robot
+    # mass while preserving the same physical item inventory.
+    group_non_fastener: dict[str, float] = defaultdict(float)
+    group_fastener: dict[str, float] = defaultdict(float)
+    link_non_fastener: dict[str, float] = defaultdict(float)
+    for link, members in by_link.items():
+        group = baseline[link]["group"]
+        for row in members:
+            mass = float(row["planning_candidate_mass_kg"])
+            if row["category"] == "LOCATED JOINT FASTENER CAD DENSITY SCREEN":
+                group_fastener[group] += mass
+            else:
+                group_non_fastener[group] += mass
+                link_non_fastener[link] += mass
+    group_contingency = {
+        group: max(0.0, non_fastener_mass * 0.08 - group_fastener[group])
+        for group, non_fastener_mass in group_non_fastener.items()
+    }
+
     link_rows = []
     dynamics_rows = []
     for link, base in baseline.items():
@@ -365,7 +401,14 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
         )
         non_fastener_planning = planning - fastener_mass
         contingency_before_fasteners = non_fastener_planning * 0.08
-        contingency = max(0.0, contingency_before_fasteners - fastener_mass)
+        group = base["group"]
+        contingency = (
+            group_contingency.get(group, 0.0)
+            * link_non_fastener[link]
+            / group_non_fastener[group]
+            if group_non_fastener.get(group, 0.0) > 0.0
+            else 0.0
+        )
         dynamic_mass = planning + contingency
         residual = contingency
         weighted = [0.0, 0.0, 0.0]
@@ -393,7 +436,7 @@ def reconcile(items: list[dict]) -> tuple[list[dict], list[dict], dict]:
             "reconciled_com_y_m": f"{center[1]:.9f}",
             "reconciled_com_z_m": f"{center[2]:.9f}",
             "identified_item_count": len(members),
-            "status": "EXPLICIT ITEMS INCLUDING LOCATED FASTENERS PLUS RESIDUAL OF FORMER 8% INTEGRATION CONTINGENCY; NO FASTENER DOUBLE COUNT",
+            "status": "EXPLICIT ITEMS INCLUDING LOCATED FASTENERS PLUS ASSEMBLY-GROUP SHARE OF RESIDUAL 8% INTEGRATION CONTINGENCY; NO FASTENER DOUBLE COUNT",
             "warning": WARNING,
         })
         dynamics_rows.append({
@@ -595,7 +638,7 @@ def write_lightweight_register(summary: dict) -> None:
         {
             "decision_id": "HR30-LW-003", "affected_system": "covers",
             "baseline_candidate": "2.4-3.0 mm shells and panels",
-            "lightweight_candidate": "1.2 mm body/limb panels with unchanged interfaces; detailed hand parts retained",
+            "lightweight_candidate": "0.8 mm thermoformed-polycarbonate or PA12 body/limb panels with unchanged outer interfaces; detailed hand parts retained",
             "mass_effect": "included in fabrication subtotal", "engineering_hold": "material/process, ribs, vents, retention, impact, pinch edges and print qualification open",
         },
         {
@@ -633,6 +676,18 @@ def write_lightweight_register(summary: dict) -> None:
             "baseline_candidate": "belt-path reference volumes with no carried belt mass",
             "lightweight_candidate": "ten Gates 5MGT3 15 mm belt candidates carried at published catalogue mass",
             "mass_effect": f"adds {summary['transmission_belt_published_mass_kg']:.3f} kg of previously omitted transmission mass", "engineering_hold": "pulley capacity, custom manufacture, tension, alignment, guard, life and received mass open",
+        },
+        {
+            "decision_id": "HR30-LW-010", "affected_system": "central and foot structure",
+            "baseline_candidate": "3 mm-wall shoulder bridge, 8 mm waist bridge and 4 mm foot carriers",
+            "lightweight_candidate": "2.5 mm-wall shoulder bridge, 6 mm windowed waist bridge and 3 mm foot carriers; joint datums and outer interfaces retained",
+            "mass_effect": "included in fabrication subtotal", "engineering_hold": "local bosses, shoulder/waist/ankle load paths, buckling, fatigue, inserts, DFM and proof loads open",
+        },
+        {
+            "decision_id": "HR30-LW-011", "affected_system": "ground-contact tread",
+            "baseline_candidate": "two solid-envelope 4 mm TPU/rubber sole candidates at 0.060 kg each",
+            "lightweight_candidate": "two 2.5 mm replaceable patterned TPU/rubber tread candidates at 0.0375 kg each",
+            "mass_effect": "reduces installed-equipment planning mass by 0.045 kg", "engineering_hold": "compound, tread pattern, friction, wear, bonding/retention, sensor isolation and received mass open",
         },
         {
             "decision_id": "HR30-LW-TOTAL", "affected_system": "whole robot identified candidate",

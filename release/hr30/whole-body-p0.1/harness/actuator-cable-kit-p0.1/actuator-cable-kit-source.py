@@ -25,7 +25,7 @@ POLICY = WHOLE / "harness" / "current-policy-binding-p0.1"
 OUT = WHOLE / "harness" / "actuator-cable-kit-p0.1"
 RELEASE = ROOT / "release" / "hr30" / "whole-body-p0.1" / "harness" / OUT.name
 IDENTIFIER = "HR30-ACTUATOR-CABLE-KIT-P0.1"
-DATE = "2026-08-16"
+DATE = "2026-08-17"
 WARNING = "PRELIMINARY - UNBUILT ACTUATOR CABLE-KIT CANDIDATE - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION"
 AUTHORITY = "NO PROCUREMENT, FABRICATION, CONNECTION, POWERED-TEST, MOTION OR ENERGIZATION AUTHORITY"
 
@@ -78,6 +78,12 @@ def source_rows() -> list[dict[str, object]]:
         ("ACK-S15", "igus", "chainflex CF240 product page", "live official page; accessed 2026-08-16", "https://www.igus.com/product/CF240", "CF240.01.03 is shielded 3 x 26 AWG / 0.14 mm2; twist/controlled impedance not established on page"),
         ("ACK-S16", "Alpha Wire", "3051 product page and customer specification", "live official page/specification; accessed 2026-08-17", "https://www.alphawire.com/products/wire/hook-up-wire/premium/3051", "22 AWG 7/30 tinned copper; 1.575 +/- 0.051 mm OD; nominal DCR 16.2 ohm/1000 ft at 20 C; 10xd bend radius; static suspended-commissioning coupon candidate only"),
         ("ACK-S17", "igus", "chainflex CF130-UL product page", "live official page; accessed 2026-08-17", "https://www.igus.com/product/CF130_UL", "CF130.03.02.UL is 2 x 22 AWG / 0.34 mm2 medium-duty moving cable; published 7.5xd minimum radius at +15 to +60 C for five million double strokes"),
+        ("ACK-S18", "Molex", "Micro-Fit 3.0 series 43025 receptacle-housing chart", "live official page; accessed 2026-08-17", "https://www.molex.com/en-us/products/series-chart/43025", "430250200 is a 2-circuit dual-row receptacle housing; polarized and locked to its mating part; -40 to +105 C"),
+        ("ACK-S19", "Molex", "Micro-Fit 3.0 series 43020 plug-housing chart", "live official page; accessed 2026-08-17", "https://www.molex.com/en-us/products/series-chart/43020", "430200200 is a 2-circuit dual-row plug housing with panel-mount ears; polarized and locked to its mating part; -40 to +105 C"),
+        ("ACK-S20", "Molex", "Micro-Fit 3.0 series 43030 female-terminal chart", "live official page; accessed 2026-08-17", "https://www.molex.com/en-us/products/series-chart/43030", "430300001 is the tin-plated female crimp terminal for 24-20 AWG and 1.85 mm maximum insulation diameter; 30 mating cycles"),
+        ("ACK-S21", "Molex", "Micro-Fit 3.0 series 43031 male-terminal chart", "live official page; accessed 2026-08-17", "https://www.molex.com/en-us/products/series-chart/43031", "430310001 is the tin-plated male crimp terminal for 24-20 AWG and 1.85 mm maximum insulation diameter; 30 mating cycles"),
+        ("ACK-S22", "Molex", "Micro-Fit 3.0 dual-row product specification PS-43045", "revision R; 2025-11-14", "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/productspecificationpdf/430/43045/PS-43045-001.pdf", "wire-to-wire system scope and 43025/43020/43030/43031 family relationship; application-specific current derating remains required"),
+        ("ACK-S23", "Molex", "Micro-Fit 3.0 application specification 430450001-AS", "revision A1; approved 2025-11-21", "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationspecificationspdf/430/43045/430450001-AS-000.pdf", "crimp/application guidance for 18-30 AWG stranded copper wire and standard Micro-Fit families"),
     ]
     rows.extend(common({"source_id": i, "publisher": p, "document": d, "revision_or_date": rev, "official_url_or_path": url, "sha256": "N/A - LIVE PRIMARY SOURCE", "verified_scope": scope}) for i, p, d, rev, url, scope in official)
     return rows
@@ -89,6 +95,8 @@ def connector_rows() -> list[dict[str, object]]:
         ("ACK-C02", "TTL actuator input", "JST EHR-3", "JST SEH-001T-P0.6", "JST B3B-EH-A device header", "3", "CANONICAL CANDIDATE ORDER CODES BOUND; RECEIVED FIT/KEYING/RETENTION AND CRIMP VALIDATION OPEN"),
         ("ACK-C03", "contact style", "standard insertion-force contact", "JST SEH-001T-P0.6", "EHR-3/EHR-4", "N/A", "CANDIDATE - LOW-INSERTION-FORCE L-CONTACTS REJECTED FOR WALKING-VIBRATION APPLICATION"),
         ("ACK-C04", "ROBOTIS EHR-03/EHR-04 notation", "JST canonical EHR-3/EHR-4", "JST SEH-001T-P0.6", "ROBOTIS device headers", "3/4", "NOMENCLATURE RECONCILED AT CANDIDATE ORDER-CODE LEVEL; RECEIVED MATING INSPECTION OPEN"),
+        ("ACK-C05", "dynamic-cable side of fixed transition", "Molex 430250200", "Molex 430300001", "Molex 430200200 panel-mount plug", "2", "CANDIDATE FAMILY BOUND; CF130 CORE OD, CRIMP, DERATING, RETENTION AND RECEIVED FIT REMAIN OPEN"),
+        ("ACK-C06", "restrained actuator-pigtail side of fixed transition", "Molex 430200200", "Molex 430310001", "Molex 430250200 receptacle", "2", "CANDIDATE FAMILY BOUND; PANEL MOUNT, 3051 CRIMP, POLARITY, RETENTION AND RECEIVED FIT REMAIN OPEN"),
     ]
     return [common({"decision_id": i, "interface": interface, "candidate_housing": housing, "candidate_contact": contact, "mating_boundary": mate, "positions": positions, "disposition": disposition, "procurement_released": "NO"}) for i, interface, housing, contact, mate, positions, disposition in data]
 
@@ -113,21 +121,41 @@ def axis_rows() -> list[dict[str, object]]:
             "candidate_internal_limit_a": f"{cap:.6f}", "published_stall_endpoint_a": f"{stall:.3f}",
             "stall_is_normal_demand": "NO", "one_way_planning_length_mm": source["one_way_planning_length_mm"],
             "round_trip_planning_length_mm": source["round_trip_planning_length_mm"],
-            "power_pair_test_coupon_candidate": "STATIC: Alpha Wire 3051 22 AWG; DYNAMIC: igus CF130.03.02.UL 2 x 22 AWG; CF9.UL.02.02 REJECTED FOR ACTUATOR POWER",
+            "power_pair_test_coupon_candidate": "DYNAMIC: igus CF130.03.02.UL to Molex 430250200/430300001; FIXED PIGTAIL: Alpha Wire 3051 to Molex 430200200/430310001 and JST EH; CF9.UL.02.02 REJECTED FOR ACTUATOR POWER",
             "candidate_conductor_mm2": "STATIC AWG22 / published 7x30 construction; DYNAMIC 0.34 mm2 nominal with written-disposition hold",
             "manufacturer_max_conductor_resistance_20c_ohm_per_km": "79.000",
             "calculation_material": "REJECTED CF9.UL.02.02 PREDECESSOR COMPARISON ONLY - NOT A POWER-CABLE SELECTION",
             "jst_eh_published_conductor_range": "AWG30-22; maximum 0.33 mm2 for SEH-001T-P0.6",
-            "wire_contact_geometric_compatibility": "STATIC CANDIDATE PASS AT PUBLISHED AWG22 / 1.575 MM OD; DYNAMIC 0.34 VS 0.33 MM2 WRITTEN-DISPOSITION HOLD",
+            "wire_contact_geometric_compatibility": "ALPHA 3051 TO JST/MICRO-FIT SIZE TABLES PASS AT PUBLISHED AWG22 / 1.575 MM OD; CF130 TO MICRO-FIT AWG22 PASS BUT 1.85 MM CORE-OD LIMIT REMAINS UNVERIFIED",
             "connector_current_evidence": "JST SERIES HEADLINE 3 A IS AT AWG22; STATIC CANDIDATE MATCHES SIZE CONDITION BUT APPLICATION/CRIMP/TEMPERATURE VALIDATION REMAINS OPEN",
             "loop_resistance_20c_planning_ohm": f"{loop_resistance_20c:.6f}",
             "voltage_drop_20c_at_candidate_cap_v": f"{drop_20c:.6f}",
             "conductor_loss_20c_at_candidate_cap_w": f"{loss_20c:.6f}",
             "calculation_boundary": "REJECTED CF9 PREDECESSOR MAX-DCR COMPARISON AT 20 C; NOT A CANDIDATE-WIRE DROP, AMPACITY, THERMAL OR REGENERATION RATING",
             "current_capacity_disposition": "OPEN - STATIC ALPHA 3051 AND DYNAMIC CF130 REQUIRE SEPARATE AMPACITY, DERATING, CRIMP AND CONNECTOR TEMPERATURE-RISE TESTS",
-            "dynamic_route_disposition": "CF130 TEST-COUPON CANDIDATE - CORE OD/CROSS-SECTION DISPOSITION, BEND/TORSION DISTRIBUTION AND CYCLE LIFE REQUIRE TEST",
+            "dynamic_route_disposition": "CF130 STOPS AT FIXED-SIDE MICRO-FIT TRANSITION; NO DIRECT CF130-TO-JST CRIMP; CORE OD, CRIMP, BEND/TORSION DISTRIBUTION AND CYCLE LIFE REQUIRE TEST",
             "branch_protection": "SELECTION REQUIRED", "cut_length_and_service_slack": "SELECTION REQUIRED",
-            "selection_state": "STATIC/DYNAMIC 22 AWG TEST-COUPON CANDIDATES DEFINED; CF9 POWER PREDECESSOR REJECTED; NOT RELEASED",
+            "selection_state": "25 FIXED-SIDE MICRO-FIT TRANSITIONS AND RESTRAINED ALPHA-3051-TO-JST PIGTAILS DEFINED AS TEST-COUPON CANDIDATES; NOT RELEASED",
+        }))
+    return rows
+
+
+def transition_rows(axis: list[dict[str, object]]) -> list[dict[str, object]]:
+    rows: list[dict[str, object]] = []
+    for source in axis:
+        axis_id = str(source["axis_id"])
+        rows.append(common({
+            "transition_id": f"TR-{axis_id}", "axis_id": axis_id, "quantity": 1,
+            "location_basis": f"FIXED SIDE OF LOOP-{axis_id}-PWR; EXACT XYZ/BRACKET SELECTION REQUIRED",
+            "dynamic_cable": "igus CF130.03.02.UL 2 x 22 AWG / 0.34 mm2",
+            "dynamic_housing": "Molex 430250200", "dynamic_terminal": "Molex 430300001; 2 required",
+            "fixed_panel_housing": "Molex 430200200", "fixed_terminal": "Molex 430310001; 2 required",
+            "fixed_pigtail": "2 x Alpha Wire 3051 22 AWG; red/black or accepted keyed color code",
+            "actuator_end": "JST EHR-3 or EHR-4 with SEH-001T-P0.6 power contacts by actuator protocol",
+            "polarity": "CONTACT 1 RETURN; CONTACT 2 VDD; 100% KEYING/POLARITY/CONTINUITY TEST REQUIRED",
+            "load_isolation": "PANEL-MOUNT TRANSITION PLUS PIGTAIL CLAMP MUST ISOLATE JST EH FROM JOINT FLEX AND CONNECTOR MASS",
+            "pigtail_length_mm": "SELECTION REQUIRED FROM MODULE CAD; NO PRODUCTION CUT LENGTH RELEASED",
+            "candidate_state": "COHERENT INLINE-TRANSITION CANDIDATE; RECEIVED FIT, CRIMP, BRACKET, DERATING AND DYNAMIC TESTS OPEN",
         }))
     return rows
 
@@ -180,6 +208,8 @@ def inspection_rows() -> list[dict[str, object]]:
         ("ACK-T10", "cycle every service loop through joint travel without power", "cycles/visual", "SELECTION REQUIRED; no snag, twist, latch damage or bend violation"),
         ("ACK-T11", "validate RS-485 and TTL waveforms at the final cable lengths/topology", "scope/error count", "SELECTION REQUIRED"),
         ("ACK-T12", "fault-inject adjacent-branch short/backfeed conditions on protected fixture", "A/V/clearing time", "SELECTION REQUIRED; protection and isolation response accepted"),
+        ("ACK-T13", "inspect and pull-test every fixed-side Micro-Fit panel transition and restrained pigtail", "100% visual/pull/polarity", "SELECTION REQUIRED; no panel motion, latch release, wire load transfer or polarity error"),
+        ("ACK-T14", "cycle CF130 moving cable while instrumenting the fixed transition and JST pigtail", "cycles/temperature/resistance/visual", "SELECTION REQUIRED; transition remains fixed and EH pigtail sees no cyclic bending"),
     ]
     return [common({"test_id": i, "inspection_or_test": test, "method_or_unit": method, "acceptance_limit": limit, "measured_value": "NONE", "result": "NOT EXECUTED", "evidence": "NONE"}) for i, test, method, limit in data]
 
@@ -197,6 +227,9 @@ def hold_rows() -> list[dict[str, object]]:
         ("ACK-H09", "whole-body bus termination, bias, baud and shielding remain unvalidated", "final controller, cable and topology tests across motion/power states"),
         ("ACK-H10", "qualified electrical and functional-safety review is absent", "signed review of the identical frozen as-built harness and test evidence"),
         ("ACK-H11", "outgoing data-only connectors omit GND as well as VDD, leaving signal reference through individual branch returns", "approved reference/isolation architecture and measured RS-485 common-mode plus TTL ground-offset/waveform evidence without power-branch paralleling"),
+        ("ACK-H12", "CF130 individual-core insulation diameter is unpublished against the Micro-Fit terminal's 1.85 mm maximum", "igus construction drawing or written confirmation plus received-lot core-OD measurements before any crimp trial"),
+        ("ACK-H13", "the 25 panel-mount transition locations, brackets, clamp spacing and pigtail lengths are not dimensioned in module CAD", "module-by-module CAD placement, collision sweep, bracket drawing, pull-load path and service-access review"),
+        ("ACK-H14", "Micro-Fit current/temperature capability is not released for the HR-30 two-circuit 22 AWG duty", "measured RMS/peak/regeneration waveform, ambient/bundling model and connector temperature-rise/fault tests using exact received terminals and tooling"),
     ]
     return [common({"hold_id": i, "unresolved_item": item, "closure_evidence": evidence, "state": "OPEN"}) for i, item, evidence in data]
 
@@ -230,7 +263,7 @@ def render(axis: list[dict[str, object]], cavities: list[dict[str, object]]) -> 
 
 
 def drawing() -> str:
-    return _legacy_drawing().replace("25-channel protected PDU", "eight isolated bus boards")
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc"><title id="title">HR-30 fixed-side actuator power transition</title><desc id="desc">Each protected branch uses moving CF130 cable, a fixed panel-mounted Micro-Fit transition, a restrained Alpha 3051 pigtail and a JST EH actuator connector.</desc><style>text{{font:600 18px system-ui;fill:#102b46}}.h{{font-size:34px;font-weight:900}}.s{{font-size:16px}}.box{{fill:#fff;stroke:#0b4f91;stroke-width:4}}.power{{stroke:#f2b91d;stroke-width:10;fill:none}}.fixed{{stroke:#982520;stroke-width:4;stroke-dasharray:12 8}}.warn{{fill:#fff0b5;stroke:#982520;stroke-width:4}}</style><rect width="1600" height="900" fill="#eef8ff"/><text class="h" x="55" y="65">One of 25 actuator-power branches</text><rect class="box" x="55" y="190" width="260" height="190" rx="20"/><text x="88" y="235">Protected output</text><text class="s" x="88" y="280">individual VDD + return</text><text class="s" x="88" y="320">cap &lt;= 2.499 A candidate</text><path class="power" d="M315 285 H520"/><text x="350" y="255">CF130 moving pair</text><rect class="box" x="520" y="150" width="420" height="270" rx="20"/><text x="555" y="200">Fixed panel transition</text><text class="s" x="555" y="245">430250200 + 2 x 430300001</text><text class="s" x="555" y="285">mates with</text><text class="s" x="555" y="325">430200200 + 2 x 430310001</text><path class="fixed" d="M500 430 H960"/><text class="s" x="620" y="465">structure / bracket boundary</text><path class="power" d="M940 285 H1135"/><text x="965" y="255">Alpha 3051 pigtail</text><rect class="box" x="1135" y="190" width="400" height="190" rx="20"/><text x="1170" y="235">JST EH actuator input</text><text class="s" x="1170" y="280">pin 1 return / pin 2 VDD</text><text class="s" x="1170" y="320">pigtail clamped; no joint flex</text><rect class="warn" x="110" y="570" width="1380" height="190" rx="20"/><text class="h" x="155" y="625">Candidate architecture, not a released cable</text><text x="155" y="675">CF130 core OD, exact bracket geometry, crimp tooling, derating and temperature rise remain open.</text><text x="155" y="715">No procurement, fabrication, connection, powered testing, motion or energization authority.</text><text class="s" x="55" y="850">{html.escape(WARNING)}</text></svg>'''
 
 
 def render(axis: list[dict[str, object]], cavities: list[dict[str, object]]) -> str:
@@ -240,6 +273,12 @@ def render(axis: list[dict[str, object]], cavities: list[dict[str, object]]) -> 
     page = page.replace("Every actuator gets an individual protected power pair. Every inter-actuator outgoing housing is data-only, with power cavities intentionally empty.", "Alpha Wire 3051 is the static suspended-commissioning coupon candidate. CF130.03.02.UL is the dynamic coupon candidate. CF9 is rejected for actuator power, and outgoing bus links remain data-only.")
     page = page.replace("axis power pairs bound to current caps and planning lengths", "axis power pairs have static/dynamic 22 AWG coupon candidates")
     page = page.replace("<strong>Do not crimp CF130.03.02.UL into this contact yet.</strong>", "<strong>Do not crimp or connect either candidate yet.</strong>")
+    page = page.replace("The 25 actuator feeds now separate static and dynamic 22 AWG candidates.", "All 25 actuator feeds now use a fixed-side transition candidate.")
+    page = page.replace("Alpha Wire 3051 is the static suspended-commissioning coupon candidate. CF130.03.02.UL is the dynamic coupon candidate. CF9 is rejected for actuator power, and outgoing bus links remain data-only.", "CF130 is the moving-cable candidate to a panel-mounted Molex Micro-Fit 3.0 pair; a restrained Alpha Wire 3051 pigtail continues to JST EH. Direct CF130-to-JST crimping is rejected.")
+    page = page.replace("axis power pairs have static/dynamic 22 AWG coupon candidates", "axis power pairs have fixed-transition plus restrained-pigtail candidates")
+    transition_section = '''<section><h2>Fixed-side transition for every joint</h2><div class="grid"><article><h3>Moving side</h3><p><strong>igus CF130.03.02.UL</strong> terminates in Molex <strong>430250200</strong> with two <strong>430300001</strong> female terminals.</p></article><article><h3>Fixed panel side</h3><p>Molex <strong>430200200</strong> with two <strong>430310001</strong> male terminals mounts to the module structure.</p></article><article><h3>Actuator pigtail</h3><p>Two restrained <strong>Alpha Wire 3051</strong> conductors continue to the JST EH power cavities. The pigtail must not flex with the joint.</p></article></div><div class="panel hold"><p>The connector families are exact candidates, not released parts. CF130 core OD, current derating, bracket geometry, crimp tooling, pull strength, temperature rise and cycle testing remain open.</p></div></section>'''
+    page = page.replace("<section><h2>All 25 axis feeds</h2>", transition_section + "<section><h2>All 25 axis feeds</h2>")
+    page = page.replace('<a href="connector-family-disposition.csv">Connector family</a> |', '<a href="connector-family-disposition.csv">Connector family</a> | <a href="actuator-power-transition-register.csv">25 fixed transitions</a> |')
     return page
 
 
@@ -255,6 +294,10 @@ def integrate_root(axis: list[dict[str, object]], cavities: list[dict[str, objec
         "actuator_cable_kit_current_caps_propagated": True,
         "actuator_connector_candidate_order_codes_bound": True,
         "actuator_power_cable_geometric_candidate_bound": True,
+        "actuator_power_fixed_transition_candidate_bound": True,
+        "actuator_power_direct_cf130_to_jst_rejected": True,
+        "actuator_power_transition_brackets_dimensioned": False,
+        "actuator_power_cf130_core_od_verified": False,
         "actuator_power_cable_20c_planning_calculated": True,
         "actuator_power_cable_hot_ampacity_verified": False,
         "actuator_power_cable_selected": False,
@@ -306,6 +349,7 @@ def correct_root_copy() -> None:
         "The power-wire path is split: **Alpha Wire 3051 22 AWG** for static suspended-commissioning coupons and **igus CF130.03.02.UL 2 x 22 AWG** for dynamic coupons. The retained rejected-CF9 predecessor comparison has a largest 20 C planning drop of **",
     )
     text = text.replace("This is not an ampacity or thermal release.", "That comparison is not a cable selection, ampacity or thermal release.")
+    text = text.replace("The power-wire path is split: **Alpha Wire 3051 22 AWG** for static suspended-commissioning coupons and **igus CF130.03.02.UL 2 x 22 AWG** for dynamic coupons.", "Each actuator-power path now uses **igus CF130.03.02.UL** only on the moving side, a fixed panel-mounted **Molex 430250200 / 430200200** transition, and a restrained **Alpha Wire 3051** pigtail to JST EH. Direct CF130-to-JST crimping is rejected.")
     readme.write_text(text, encoding="utf-8", newline="\n")
 
     page = WHOLE / "index.html"
@@ -314,6 +358,10 @@ def correct_root_copy() -> None:
     text = text.replace("axis feeds carry calculated 20 C resistance, drop and loss values", "axis feeds carry static/dynamic 22 AWG coupon-candidate bindings")
     text = text.replace("CF9.UL.02.02 fits the JST conductor range, but AWG24 current capacity, hot bundling, crimp temperature rise and route life are not validated.", "Alpha 3051 is static-only; CF130 requires written contact-boundary disposition and dynamic qualification. CF9 receives no actuator-power credit.")
     text = text.replace("It defines a test-coupon candidate but grants no procurement", "It defines separate static/dynamic coupon candidates but grants no procurement")
+    text = text.replace("Static and dynamic actuator power-wire candidates are now separated", "All 25 actuator power branches now have a fixed-transition candidate")
+    text = text.replace("axis feeds carry static/dynamic 22 AWG coupon-candidate bindings", "axis feeds bind moving cable, fixed transition and restrained pigtail")
+    text = text.replace("Alpha 3051 is static-only; CF130 requires written contact-boundary disposition and dynamic qualification. CF9 receives no actuator-power credit.", "CF130 stops at a fixed panel-mounted Micro-Fit pair; Alpha 3051 continues to JST EH under restraint. Core OD, bracket CAD, crimp and thermal qualification remain open.")
+    text = text.replace("It defines separate static/dynamic coupon candidates but grants no procurement", "It defines 25 fixed-transition candidates but grants no procurement")
     page.write_text(text, encoding="utf-8", newline="\n")
 
 
@@ -323,17 +371,19 @@ def main() -> int:
     OUT.mkdir(parents=True)
     sources, connectors = source_rows(), connector_rows()
     axes, data, cavities = axis_rows(), data_candidates(), cavity_rows()
+    transitions = transition_rows(axes)
     tests, holds = inspection_rows(), hold_rows()
     write_csv(OUT / "primary-source-register.csv", sources)
     write_csv(OUT / "connector-family-disposition.csv", connectors)
     write_csv(OUT / "axis-power-cable-candidate.csv", axes)
+    write_csv(OUT / "actuator-power-transition-register.csv", transitions)
     write_csv(OUT / "data-cable-candidate.csv", data)
     write_csv(OUT / "connector-cavity-population.csv", cavities)
     write_csv(OUT / "inspection-test-plan.csv", tests)
     write_csv(OUT / "open-holds.csv", holds)
     status = {
         "identifier": IDENTIFIER, "warning": WARNING, "source_count": len(sources), "connector_decision_count": len(connectors),
-        "axis_count": len(axes), "data_candidate_count": len(data), "cavity_record_count": len(cavities),
+        "axis_count": len(axes), "transition_count": len(transitions), "data_candidate_count": len(data), "cavity_record_count": len(cavities),
         "required_empty_cavity_count": sum(r["required_population"] == "EMPTY" for r in cavities),
         "inspection_test_count": len(tests), "open_hold_count": len(holds), "current_caps_propagated": True,
         "canonical_jst_order_code_family_bound": True,
@@ -341,6 +391,11 @@ def main() -> int:
         "cf9_power_candidate_rejected": True,
         "static_alpha_3051_coupon_candidate_defined": True,
         "dynamic_cf130_coupon_candidate_defined": True,
+        "direct_cf130_to_jst_eh_crimp_rejected": True,
+        "microfit_fixed_transition_candidate_defined": True,
+        "microfit_fixed_transition_exact_order_codes_bound": True,
+        "microfit_cf130_core_od_verified": False,
+        "transition_brackets_dimensioned": False,
         "cf9_current_capacity_released": False,
         "cf9_route_life_verified": False,
         "planning_resistance_basis_ohm_per_km_at_20c": 79.0,
@@ -351,7 +406,7 @@ def main() -> int:
         "connection_authority": False, "powered_test_authority": False, "motion_authority": False, "energization_authority": False,
     }
     (OUT / "actuator-cable-kit-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
-    (OUT / "README.md").write_text(f"# HR-30 actuator cable kit P0.1\n\n**{WARNING}**\n\nThis package defines the 25-axis split power/data cable-kit candidate down to every actuator connector cavity. Alpha Wire 3051 is the static suspended-commissioning coupon candidate; igus CF130.03.02.UL is the dynamic coupon candidate. CF9.UL.02.02 is rejected for actuator power and its retained numeric rows are predecessor comparisons only. Ampacity, hot bundling, connector temperature rise, protection, route life and crimp process remain open.\n", encoding="utf-8", newline="\n")
+    (OUT / "README.md").write_text(f"# HR-30 actuator cable kit P0.1\n\n**{WARNING}**\n\nThis package defines all 25 actuator-power branches as a moving igus CF130.03.02.UL pair ending at a fixed, panel-mounted Molex Micro-Fit 3.0 transition, followed by a restrained Alpha Wire 3051 pigtail into the JST EH actuator housing. Direct CF130-to-JST crimping is rejected. Exact transition order-code candidates are bound, but CF130 core OD, bracket geometry, crimp qualification, derating, temperature rise, flex life and every physical work authority remain open.\n", encoding="utf-8", newline="\n")
     (OUT / "actuator-cable-kit.svg").write_text(drawing(), encoding="utf-8", newline="\n")
     (OUT / "index.html").write_text(render(axes, cavities), encoding="utf-8", newline="\n")
     shutil.copy2(Path(__file__), OUT / "actuator-cable-kit-source.py")
