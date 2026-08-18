@@ -1,0 +1,6 @@
+item,zone,x_mm,y_mm,width_mm,height_mm,mounting,clearance,state
+LAY-001,A / source isolation,20,30,110,80,DIN rail or insulated stand-off selection required,40 mm service margin,PLANNING LAYOUT / RECEIVED FIT OPEN
+LAY-002,B / SR1 + SRA1,155,30,150,120,35 mm DIN rail candidate,manufacturer spacing and terminal access verification open,PLANNING LAYOUT / RECEIVED FIT OPEN
+LAY-003,C / KWD1 + KWD2,330,30,145,120,35 mm DIN rail candidate,manufacturer spacing and terminal access verification open,PLANNING LAYOUT / RECEIVED FIT OPEN
+LAY-004,D / stimuli,20,180,210,105,panel controls / exact hardware selection required,finger access with cover closed,PLANNING LAYOUT / RECEIVED FIT OPEN
+LAY-005,E / isolated measurement,255,180,220,105,external instrument bulkhead / exact connectors required,probe leads segregated from control conductors,PLANNING LAYOUT / RECEIVED FIT OPEN

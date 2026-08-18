@@ -1,0 +1,100 @@
+wire_number,sheet,reference,terminal,pin_name,net
+W1001,01_power_and_absence_boundary.kicad_sch,PSFIX,+,SOURCE POSITIVE,FIX_24V_RAW
+W1002,01_power_and_absence_boundary.kicad_sch,PSFIX,-,SOURCE RETURN,SAFETY_0V
+W1003,01_power_and_absence_boundary.kicad_sch,EDISC,1,SOURCE IN,FIX_24V_RAW
+W1004,01_power_and_absence_boundary.kicad_sch,EDISC,2,ISOLATED OUT,SAFETY_24V_RAW
+W1005,01_power_and_absence_boundary.kicad_sch,F24,IN,SOURCE +24 V,SAFETY_24V_RAW
+W1006,01_power_and_absence_boundary.kicad_sch,F24,OUT,PROTECTED +24 V,SAFETY_24V
+W1007,01_power_and_absence_boundary.kicad_sch,XD24,LINE,PROTECTED FEED,SAFETY_24V
+W1008,01_power_and_absence_boundary.kicad_sch,XD24,01,SR1/SRA1 FEED,SAFETY_24V
+W1009,01_power_and_absence_boundary.kicad_sch,XD24,02,WATCHDOG FEED,SAFETY_24V
+W1010,01_power_and_absence_boundary.kicad_sch,XD24,03,PCB FEED,SAFETY_24V
+W1011,01_power_and_absence_boundary.kicad_sch,XD0,LINE,SOURCE RETURN,SAFETY_0V
+W1012,01_power_and_absence_boundary.kicad_sch,XD0,01,SR1/SRA1 RETURN,SAFETY_0V
+W1013,01_power_and_absence_boundary.kicad_sch,XD0,02,WATCHDOG RETURN,SAFETY_0V
+W1014,01_power_and_absence_boundary.kicad_sch,XD0,03,PCB RETURN,SAFETY_0V
+W2001,02_estop_and_eligibility_chain.kicad_sch,SR1,A1,24 V SUPPLY,SAFETY_24V
+W2002,02_estop_and_eligibility_chain.kicad_sch,SR1,A2,0 V SUPPLY,SAFETY_0V
+W2003,02_estop_and_eligibility_chain.kicad_sch,SR1,S11,CH1 FEED,SR1_S11
+W2004,02_estop_and_eligibility_chain.kicad_sch,SR1,S12,CH1 RETURN / START FEED,SR1_S12
+W2005,02_estop_and_eligibility_chain.kicad_sch,SR1,S21,CH2 FEED,SR1_S21
+W2006,02_estop_and_eligibility_chain.kicad_sch,SR1,S22,CH2 RETURN,SR1_S22
+W2007,02_estop_and_eligibility_chain.kicad_sch,SR1,S34,START RETURN,SR1_START_RETURN
+W2008,02_estop_and_eligibility_chain.kicad_sch,SR1,13,OUT1 IN,SRA1_S11
+W2009,02_estop_and_eligibility_chain.kicad_sch,SR1,14,OUT1 OUT,SRA1_S12
+W2010,02_estop_and_eligibility_chain.kicad_sch,SR1,23,OUT2 IN,SRA1_S21
+W2011,02_estop_and_eligibility_chain.kicad_sch,SR1,24,OUT2 OUT,SRA1_S22
+W2012,02_estop_and_eligibility_chain.kicad_sch,S0,R-1,CH1 NC IN,SR1_S11
+W2013,02_estop_and_eligibility_chain.kicad_sch,S0,R-2,CH1 NC OUT,SR1_S12
+W2014,02_estop_and_eligibility_chain.kicad_sch,S0,L-1,CH2 NC IN,SR1_S21
+W2015,02_estop_and_eligibility_chain.kicad_sch,S0,L-2,CH2 NC OUT,SR1_S22
+W2016,02_estop_and_eligibility_chain.kicad_sch,S1,TBD-R1,RESET IN,SR1_S12
+W2017,02_estop_and_eligibility_chain.kicad_sch,S1,TBD-R2,RESET OUT,SR1_START_RETURN
+W2018,02_estop_and_eligibility_chain.kicad_sch,SRA1,A1,WATCHDOG-GATED 24 V,SRA1_A1_WD_GATED
+W2019,02_estop_and_eligibility_chain.kicad_sch,SRA1,A2,0 V,SAFETY_0V
+W2020,02_estop_and_eligibility_chain.kicad_sch,SRA1,S11,CH1 FEED,SRA1_S11
+W2021,02_estop_and_eligibility_chain.kicad_sch,SRA1,S12,CH1 RETURN / ARM FEED,SRA1_S12
+W2022,02_estop_and_eligibility_chain.kicad_sch,SRA1,S21,CH2 FEED,SRA1_S21
+W2023,02_estop_and_eligibility_chain.kicad_sch,SRA1,S22,CH2 RETURN,SRA1_S22
+W2024,02_estop_and_eligibility_chain.kicad_sch,SRA1,S34,START / EDM RETURN,SRA1_START_RETURN
+W2025,02_estop_and_eligibility_chain.kicad_sch,SRA1,13,OUT1 CONTACT A,ISO_SRA1_13
+W2026,02_estop_and_eligibility_chain.kicad_sch,SRA1,14,OUT1 CONTACT B,ISO_SRA1_14
+W2027,02_estop_and_eligibility_chain.kicad_sch,SRA1,23,OUT2 CONTACT A,ISO_SRA1_23
+W2028,02_estop_and_eligibility_chain.kicad_sch,SRA1,24,OUT2 CONTACT B,ISO_SRA1_24
+W2029,02_estop_and_eligibility_chain.kicad_sch,SRA1,33,OUT3 CONTACT A,ISO_SRA1_33
+W2030,02_estop_and_eligibility_chain.kicad_sch,SRA1,34,OUT3 CONTACT B,ISO_SRA1_34
+W2031,02_estop_and_eligibility_chain.kicad_sch,S2,TBD-A1,ARM IN,SRA1_S12
+W2032,02_estop_and_eligibility_chain.kicad_sch,S2,TBD-A2,ARM OUT,ARM_AFTER_S2
+W2033,02_estop_and_eligibility_chain.kicad_sch,EDMSIM,K1-21,SIMULATED K1 MIRROR IN,ARM_AFTER_S2
+W2034,02_estop_and_eligibility_chain.kicad_sch,EDMSIM,K2-21,SIMULATED K2 MIRROR IN,EDM_K1_OUT
+W2035,02_estop_and_eligibility_chain.kicad_sch,EDMSIM,K1-22,SIMULATED K1 MIRROR OUT,EDM_K1_OUT
+W2036,02_estop_and_eligibility_chain.kicad_sch,EDMSIM,K2-22,SIMULATED K2 MIRROR OUT,SRA1_START_RETURN
+W3001,03_watchdog_gate_and_stimulus.kicad_sch,KWD1,11,GATE IN,SAFETY_24V
+W3002,03_watchdog_gate_and_stimulus.kicad_sch,KWD1,21,NC FEEDBACK COM,SAFETY_24V
+W3003,03_watchdog_gate_and_stimulus.kicad_sch,KWD1,A1,COIL +,SAFETY_24V
+W3004,03_watchdog_gate_and_stimulus.kicad_sch,KWD1,14,GATE STAGE 1,WD_SRA1_SUPPLY_INTERMEDIATE
+W3005,03_watchdog_gate_and_stimulus.kicad_sch,KWD1,22,NC FEEDBACK,WD1_NC_24V
+W3006,03_watchdog_gate_and_stimulus.kicad_sch,KWD1,A2,COIL SINK,WD1_COIL_N
+W3007,03_watchdog_gate_and_stimulus.kicad_sch,KWD2,11,GATE STAGE 1,WD_SRA1_SUPPLY_INTERMEDIATE
+W3008,03_watchdog_gate_and_stimulus.kicad_sch,KWD2,21,NC FEEDBACK COM,SAFETY_24V
+W3009,03_watchdog_gate_and_stimulus.kicad_sch,KWD2,A1,COIL +,SAFETY_24V
+W3010,03_watchdog_gate_and_stimulus.kicad_sch,KWD2,14,SRA1 A1 GATED,SRA1_A1_WD_GATED
+W3011,03_watchdog_gate_and_stimulus.kicad_sch,KWD2,22,NC FEEDBACK,WD2_NC_24V
+W3012,03_watchdog_gate_and_stimulus.kicad_sch,KWD2,A2,COIL SINK,WD2_COIL_N
+W3013,03_watchdog_gate_and_stimulus.kicad_sch,JWP1,1,SAFETY +24 V,SAFETY_24V
+W3014,03_watchdog_gate_and_stimulus.kicad_sch,JWP1,2,SAFETY 0 V,SAFETY_0V
+W3015,03_watchdog_gate_and_stimulus.kicad_sch,JWP1,3,KWD1 COIL SINK,WD1_COIL_N
+W3016,03_watchdog_gate_and_stimulus.kicad_sch,JWP1,4,KWD2 COIL SINK,WD2_COIL_N
+W3017,03_watchdog_gate_and_stimulus.kicad_sch,JWF1,1,KWD1 NC +24 V,WD1_NC_24V
+W3018,03_watchdog_gate_and_stimulus.kicad_sch,JWF1,2,KWD2 NC +24 V,WD2_NC_24V
+W3019,03_watchdog_gate_and_stimulus.kicad_sch,JWH1,1,COMPUTE HEARTBEAT,PI_HEARTBEAT
+W3020,03_watchdog_gate_and_stimulus.kicad_sch,JWH1,2,COMPUTE 0 V,COMPUTE_0V
+W3021,03_watchdog_gate_and_stimulus.kicad_sch,HBSRC,HB,HEARTBEAT OUT,PI_HEARTBEAT
+W3022,03_watchdog_gate_and_stimulus.kicad_sch,HBSRC,RET,ISOLATED RETURN,COMPUTE_0V
+W3023,03_watchdog_gate_and_stimulus.kicad_sch,HBSRC,LOG,COMMON TIME BASE,FIX_TIMEBASE
+W4001,04_isolated_measurement_fanout.kicad_sch,DAQV,V1,SAFETY_24V,SAFETY_24V
+W4002,04_isolated_measurement_fanout.kicad_sch,DAQV,V2,SRA1 A1,SRA1_A1_WD_GATED
+W4003,04_isolated_measurement_fanout.kicad_sch,DAQV,V3,SAFETY 0V,SAFETY_0V
+W4004,04_isolated_measurement_fanout.kicad_sch,DAQV,V4,SRA1 S12,SRA1_S12
+W4005,04_isolated_measurement_fanout.kicad_sch,DAQV,V5,SRA1 S22,SRA1_S22
+W4006,04_isolated_measurement_fanout.kicad_sch,DAQV,V6,SRA1 S34,SRA1_START_RETURN
+W4007,04_isolated_measurement_fanout.kicad_sch,DAQV,T,COMMON TIMEBASE,FIX_TIMEBASE
+W4008,04_isolated_measurement_fanout.kicad_sch,DAQC,7A,SRA1 13,ISO_SRA1_13
+W4009,04_isolated_measurement_fanout.kicad_sch,DAQC,7B,SRA1 14,ISO_SRA1_14
+W4010,04_isolated_measurement_fanout.kicad_sch,DAQC,8A,SRA1 23,ISO_SRA1_23
+W4011,04_isolated_measurement_fanout.kicad_sch,DAQC,8B,SRA1 24,ISO_SRA1_24
+W4012,04_isolated_measurement_fanout.kicad_sch,DAQC,9A,SRA1 33,ISO_SRA1_33
+W4013,04_isolated_measurement_fanout.kicad_sch,DAQC,9B,SRA1 34,ISO_SRA1_34
+W4014,04_isolated_measurement_fanout.kicad_sch,DAQC,10A,KWD1 11,SAFETY_24V
+W4015,04_isolated_measurement_fanout.kicad_sch,DAQC,10B,KWD1 14,WD_SRA1_SUPPLY_INTERMEDIATE
+W4016,04_isolated_measurement_fanout.kicad_sch,DAQC,11A,KWD2 11,WD_SRA1_SUPPLY_INTERMEDIATE
+W4017,04_isolated_measurement_fanout.kicad_sch,DAQC,11B,KWD2 14,SRA1_A1_WD_GATED
+W4018,04_isolated_measurement_fanout.kicad_sch,DAQC,T,COMMON TIMEBASE,FIX_TIMEBASE
+W4019,04_isolated_measurement_fanout.kicad_sch,DAQS,12,HEARTBEAT,PI_HEARTBEAT
+W4020,04_isolated_measurement_fanout.kicad_sch,DAQS,13,ARM SWITCH,ARM_AFTER_S2
+W4021,04_isolated_measurement_fanout.kicad_sch,DAQS,14A,E-STOP CH1,SR1_S12
+W4022,04_isolated_measurement_fanout.kicad_sch,DAQS,14B,E-STOP CH2,SR1_S22
+W4023,04_isolated_measurement_fanout.kicad_sch,DAQS,15A,EDM K1,EDM_K1_OUT
+W4024,04_isolated_measurement_fanout.kicad_sch,DAQS,15B,EDM RETURN,SRA1_START_RETURN
+W4025,04_isolated_measurement_fanout.kicad_sch,DAQS,T,COMMON TIMEBASE,FIX_TIMEBASE
+W4026,04_isolated_measurement_fanout.kicad_sch,STOPLOG,T,COMMON TIMEBASE,FIX_TIMEBASE

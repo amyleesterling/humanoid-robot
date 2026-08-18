@@ -1,0 +1,6 @@
+absence_id,prohibited_item,verification,required_result,state,authority
+ABS-001,PSA1 / JA1 actuator source and all ACT_12V conductors,visual inspection plus continuity to fixture terminals,PHYSICALLY ABSENT / OPEN CIRCUIT,NOT EXECUTED,"NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY"
+ABS-002,"K1 and K2 contactor coils, main poles and power conductors",visual inspection; only labeled EDMSIM dry contacts present,PHYSICALLY ABSENT,NOT EXECUTED,"NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY"
+ABS-003,"all actuators, U2D2, actuator buses and mechanical joints",fixture boundary inspection,PHYSICALLY ABSENT,NOT EXECUTED,"NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY"
+ABS-004,mains wiring inside fixture,enclosure inspection,PHYSICALLY ABSENT; external isolated SELV/PELV source only after selection,NOT EXECUTED,"NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY"
+ABS-005,"AI, conversation agent or motion supervisor command path",software/connection inventory,PHYSICALLY AND LOGICALLY ABSENT,NOT EXECUTED,"NO CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION AUTHORITY"

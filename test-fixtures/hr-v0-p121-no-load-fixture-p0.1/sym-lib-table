@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "PBV3")(type "KiCad")(uri "${KIPRJMOD}/hr-v0-p121-no-load-fixture-p0.1.kicad_sym")(options "")(descr "HR-V0 P1.21 no-load fixture symbols"))
+)

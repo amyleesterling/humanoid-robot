@@ -1,0 +1,8 @@
+source_id,artifact,path,sha256,use,boundary
+SRC-001,P1.21 connector schedule,electrical/kicad/project-button-v3-p1.21-sra1-supply-watchdog-candidate/connector-schedule.csv,be019dfce37f2c910f7dbdbd86a321211028d1caa80659438e81db37b7564c8c,authoritative DUT terminal/net identity,P1.21 remains unaccepted
+SRC-002,P1.21 wire-number table,electrical/kicad/project-button-v3-p1.21-sra1-supply-watchdog-candidate/wire-number-table.csv,679dc07fdbe50e58d64caeced68763e3f872448c56b3f5f35349907a40c6df85,authoritative proposed conductor identity,physical installation remains open
+SRC-003,P1.21 application evidence signal register,safety/hr-v0-p121-application-evidence-p0.1/signal-capture-register.csv,f449432b87f92b5a25ee02af6ba7e466a86784dfda82f062736a19579372633e,15 required signals,instruments and limits remain unselected
+SRC-004,P1.21 application evidence test register,safety/hr-v0-p121-application-evidence-p0.1/test-case-register.csv,c00a90cc40fdad7946d9cd89cadc8a3ebd7aa78455131df96058b4f7d3abee85,18 controlled future tests,all tests unexecuted
+SRC-005,P1.21 authorization prerequisites,safety/hr-v0-p121-application-evidence-p0.1/authorization-prerequisites.csv,96f1c8c64e382e9ab065cbb5b9b8e45a77ddad6192ed635c2307e0ce2d8d5d63,AUTH-001 through AUTH-010 gate spine,all authorization gates remain open
+SRC-006,fixture generator,tools/generate_hr_v0_p121_no_load_fixture_p01.py,a1db2ce506784af151cd4932fb7f6f3ad4d39c71cdcf62da68c996013d30238a,reproducible package generation,generated candidate only
+SRC-007,fixture checker,tools/check_hr_v0_p121_no_load_fixture_p01.py,84c56193a18e11b8b519a42ad6e56eb23b2762564b504d7af61b3fd81b1b35b9,independent repository consistency checks,does not replace physical or qualified review
