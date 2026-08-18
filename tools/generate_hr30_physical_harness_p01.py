@@ -1011,7 +1011,10 @@ Four actuator-family interfaces are now source-verified, five commercial ROBOTIS
 """
     if marker in readme:
         start = readme.index(marker)
-        end = readme.find("\n## ", start + len(marker))
+        next_heading = readme.find("\n## ", start + len(marker))
+        next_control_marker = readme.find("\n<!-- ", start + len(marker))
+        candidates = [position for position in (next_heading, next_control_marker) if position >= 0]
+        end = min(candidates) if candidates else -1
         readme = readme[:start].rstrip() + "\n\n" + block.strip() + ("\n\n" + readme[end + 1:] if end >= 0 else "\n")
     else:
         readme = readme.rstrip() + "\n\n" + block.strip() + "\n"

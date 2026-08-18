@@ -86,11 +86,7 @@ The native KiCad topology correction is synchronized, but exact physical energy/
 Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
 <!-- HR30-HARNESS-README-END -->
 
-<!-- HR30-GRIPPERS-P01-README-START -->
-## Detailed bilateral hand mechanisms
 
-The [detailed gripper package](grippers-p0.1/index.html) contains two editable 18-part symmetric rack-and-pinion assemblies. Each now uses a project-owned 20-degree, module-0.5 involute pinion and matching racks with a 0.08 mm nominal total tangential-backlash candidate. The OPEN assembly rotates its pinion 148.969 degrees for the 13 mm rack displacement. CAD-derived states provide an 8–34 mm pad gap over 26 mm total coupled stroke. Manufactured profile tolerance, fits, materials, exact actuator-horn adapter, calibration, sensing, pinch proof, endurance, DFM/FAI and physical validation remain open.
-<!-- HR30-GRIPPERS-P01-README-END -->
 
 <!-- HR30-LEG-DRIVETRAIN-P01-README-START -->
 ## Reduced-leg drivetrain product geometry
@@ -167,6 +163,12 @@ Four actuator-family interfaces are now source-verified, five commercial ROBOTIS
 
 The [interactive head HMI harness guide](harness/head-hmi-harness-p0.1/index.html) replaces generic connector notes with **8 located equipment records** and **11 routed physical links**. Both cameras now correctly use Pi 5 22-way to Camera Module 3 15-pin Standard-Mini cable candidates; the former 200 mm assumption is replaced by a 300 mm route candidate. The face display is remote rather than GPIO-stacked, and a current ReSpeaker Flex linear array/core plus two speaker candidates and a specific 5 V fan define the audio/cooling path. Exact cables, privacy controls, protection, physical fit and tests remain open.
 <!-- HR30-HEAD-HMI-HARNESS-P01-README-END -->
+<!-- HR30-GRIPPERS-P01-README-START -->
+## Detailed bilateral hand mechanisms
+
+The [detailed gripper package](grippers-p0.1/index.html) contains two editable 18-part symmetric rack-and-pinion assemblies. Each now uses a project-owned 20-degree, module-0.5 involute pinion and matching racks with a 0.08 mm nominal total tangential-backlash candidate. The OPEN assembly rotates its pinion 148.969 degrees for the 13 mm rack displacement. CAD-derived states provide an 8–34 mm pad gap over 26 mm total coupled stroke. Manufactured profile tolerance, fits, materials, exact actuator-horn adapter, calibration, sensing, pinch proof, endurance, DFM/FAI and physical validation remain open.
+<!-- HR30-GRIPPERS-P01-README-END -->
+
 <!-- HR30-ASSEMBLY-GUIDE-P01-START -->
 ## Whole-robot assembly traveler
 

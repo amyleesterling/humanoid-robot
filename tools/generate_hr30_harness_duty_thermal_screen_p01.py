@@ -365,16 +365,10 @@ The [interactive duty/thermal screen](duty-thermal-screen-p0.1/index.html) binds
 
 The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1/index.html) connects both frozen walking traces to all 25 physical power-pair lengths, eight buses and six reserved power corridors. The derived loss cases define physical test obligations; they do not release conductors, contacts, protection or energization."""
     body_index = """<section id='harness-duty-thermal'><h2>The whole-body duty now reaches the physical harness</h2><div class='grid'><article class='card pass'><div class='metric'>25</div><p>axis route-specific loss cases</p></article><article class='card pass'><div class='metric'>6</div><p>bundle test obligations</p></article><article class='card hold'><div class='metric'>0</div><p>thermal or powered-work approvals</p></article></div><p><a href='harness/duty-thermal-screen-p0.1/index.html'>Open the harness duty/thermal guide.</a></p></section>"""
-    physical_readme = """## Duty/thermal successor
-
-The [route-specific duty/thermal successor](../duty-thermal-screen-p0.1/index.html) now fills the bounded torque-producing RMS and peak component for every entry in this package's derating register and groups the 25 pairs by physical power corridor. Total normal RMS, fault current, ambient, hot derating and physical tests remain open."""
-    physical_index = """<section id='physical-duty-thermal'><h2>The routed harness now has bounded electrical loss cases</h2><div class='grid'><article class='card pass'><div class='metric'>25</div><p>power pairs with bounded peak/RMS inputs.</p></article><article class='card'><div class='metric'>6</div><p>corridor bundle groups.</p></article><article class='card hold'><h3>No hot rating</h3><p>CF130 DCR, ambient, faults and physical temperature-rise tests remain open.</p></article></div><p><a href='../duty-thermal-screen-p0.1/index.html'>Open the duty/thermal successor.</a></p></section>"""
     replace_marker(HARNESS / "README.md", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", readme)
     replace_marker(HARNESS / "index.html", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", index)
     replace_marker(BODY / "README.md", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", body_readme)
     replace_marker(BODY / "index.html", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", body_index)
-    replace_marker(PHYSICAL / "README.md", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", physical_readme)
-    replace_marker(PHYSICAL / "index.html", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", physical_index)
     print(json.dumps(status, indent=2))
     return 0
 
