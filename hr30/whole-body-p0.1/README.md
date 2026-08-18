@@ -341,3 +341,9 @@ The [whole-body harness duty-current guide](harness/duty-current-envelope-p0.1/i
 
 The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1/index.html) connects both frozen walking traces to all 25 physical power-pair lengths, eight buses and six reserved power corridors. The derived loss cases define physical test obligations; they do not release conductors, contacts, protection or energization.
 <!-- HR30-DUTY-THERMAL-P01-END -->
+
+<!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-START -->
+## Distributed whole-body actuator power
+
+The [distributed-power harness successor](harness/distributed-power-harness-successor-p0.1/index.html) replaces the rejected 25-jacket corridor bundle with six local protected distribution nodes and multi-core limb trunks. It binds a dedicated protected core pair to every axis and exact cable/terminal candidates. All six diameter screens pass; five bend reservations, the protection electronics, breakout ECAD, routed motion sweeps and thermal tests remain open.
+<!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-END -->

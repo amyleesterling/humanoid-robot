@@ -317,3 +317,33 @@ The [interactive torque-demand guide](torque-demand-p0.1/index.html) evaluates a
 
 The [dynamics successor guide](dynamics-successor-p0.1/index.html) executes the unchanged bilateral gait with a preregistered 4:1 hip pitch/roll scenario and inverse-dynamics feedforward. The bounded numerical screen fails: the four revised hip axes clear, but unchanged knee and ankle saturation remains excessive. The configuration is retained as rejection evidence. It does not approve fabrication, motion or walking.
 <!-- HR30-DYNAMICS-SUCCESSOR-P01-END -->
+
+<!-- HR30-CONTROL-SUCCESSOR-P01-START -->
+## Whole-body control successor
+
+The [interactive control-successor guide](control-successor-p0.1/index.html) reruns the complete 25-axis, 9.990 kg tether model with the installed 4:1 hip candidate and unchanged gait, contacts, current ceilings and inverse feedforward. The frozen 8.0/0.8 feedback candidate clears both bounded sequences with no rotary saturation and less than one degree maximum rotary error. This corrects the earlier controller-generated knee/ankle saturation without adding distal hardware. Robustness, free balance, continuous capacity and every physical authority remain open.
+<!-- HR30-CONTROL-SUCCESSOR-P01-END -->
+
+<!-- HR30-LIGHTWEIGHT-HIP-P01-START -->
+## Lightweight 4:1 hip successor
+
+The [interactive lightweight hip guide](lightweight-hip-successor-p0.1/index.html) replaces each heavy two-stage compound hip drive with one physically modeled 15:60 EV5GT stage. Four complete single-stage packages are installed in the recognizable 762 mm humanoid, with STEP, GLB, URDF and the passing bounded-control MJCF. The mass screen now uses the complete superseded hip package boundary. Exact pulley teeth, composite material, capacity, structural proof, physical mass and every work authority remain open.
+<!-- HR30-LIGHTWEIGHT-HIP-P01-END -->
+
+<!-- HR30-DUTY-CURRENT-P01-START -->
+## Harness duty-current evidence
+
+The [whole-body harness duty-current guide](harness/duty-current-envelope-p0.1/index.html) supplies the previously missing bounded per-axis and per-bus torque-producing current envelopes from the executed control successor. It is calculation evidence only; final normal demand, wire construction, protection, thermal validation and every powered-work authority remain open.
+<!-- HR30-DUTY-CURRENT-P01-END -->
+
+<!-- HR30-DUTY-THERMAL-P01-START -->
+## Whole-body harness duty/thermal screen
+
+The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1/index.html) connects both frozen walking traces to all 25 physical power-pair lengths, eight buses and six reserved power corridors. The derived loss cases define physical test obligations; they do not release conductors, contacts, protection or energization.
+<!-- HR30-DUTY-THERMAL-P01-END -->
+
+<!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-START -->
+## Distributed whole-body actuator power
+
+The [distributed-power harness successor](harness/distributed-power-harness-successor-p0.1/index.html) replaces the rejected 25-jacket corridor bundle with six local protected distribution nodes and multi-core limb trunks. It binds a dedicated protected core pair to every axis and exact cable/terminal candidates. All six diameter screens pass; five bend reservations, the protection electronics, breakout ECAD, routed motion sweeps and thermal tests remain open.
+<!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-END -->
