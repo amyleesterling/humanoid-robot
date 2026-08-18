@@ -4,7 +4,7 @@
 
 This artifact covers all **25 axes** in the current floating-base URDF. It provides a reproducible static architecture screen for deciding which actuator packages should remain in P0.1; it is not an actuator release or gait simulation.
 
-For each non-yaw rotary axis, the generator sums the current descendant link masses using a posture-independent triangle-inequality radius bound. A 100 g object is added at each downstream hand. Leg support axes also receive a deliberately explicit single-support screen based on the full 11.455 kg planning model: 25 mm lateral COM offset, 35 mm fore-aft COM offset, or a 60 mm equivalent knee moment arm. The governing static value is multiplied by 1.50 only as an architecture endpoint screen.
+For each non-yaw rotary axis, the generator sums the current descendant link masses using a posture-independent triangle-inequality radius bound. A 100 g object is added at each downstream hand. Leg support axes also receive a deliberately explicit single-support screen based on the full 11.296 kg planning model: 25 mm lateral COM offset, 35 mm fore-aft COM offset, or a 60 mm equivalent knee moment arm. The governing static value is multiplied by 1.50 only as an architecture endpoint screen.
 
 The comparison column uses current official ROBOTIS **12 V stall torque**, transmission ratio and an 0.85 efficiency assumption for reduced axes. ROBOTIS explicitly warns that stall torque is momentary and differs from continuous and real-world output. Consequently no row claims continuous capability. Accepted trajectories, current limits, duty cycle, N-T curves, temperature, inertia, contact, stopping and physical correlation remain mandatory.
 

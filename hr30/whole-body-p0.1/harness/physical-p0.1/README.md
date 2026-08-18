@@ -17,3 +17,9 @@ Manufacturer-interface review is now configuration-bound. ROBOTIS publishes the 
 Open the [interactive physical harness guide](index.html). Start with the whole-body route model, `route-cad-register.csv`, `axis-harness-binding.csv`, `route-segment-register.csv`, `connector-contact-map.csv`, and `unresolved-harness-selections.csv`.
 
 No cable cut length, conductor size, protection value, complete connector set, retention hardware, shielding decision, or powered validation is released by this package.
+
+<!-- HR30-DUTY-THERMAL-P01-START -->
+## Route-specific duty and thermal planning
+
+The [interactive duty/thermal screen](duty-thermal-screen-p0.1/index.html) binds the two frozen whole-body sequence traces to all 25 routed actuator power pairs, eight electrical buses and every reserved power corridor. It supplies bounded torque-current drop/loss and bundle test cases, while keeping total normal current, CF130 resistance, hot ampacity, faults, protection and all powered work open.
+<!-- HR30-DUTY-THERMAL-P01-END -->

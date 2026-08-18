@@ -1,7 +1,7 @@
 {
   "identifier": "HR30-E1-J1-LOGIC-POWER-CABLE-P0.1",
   "warning": "PRELIMINARY - UNBUILT J1 LOGIC-POWER CABLE CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION",
-  "generated_utc": "2026-08-18T10:26:20.049186+00:00",
+  "generated_utc": "2026-08-18T17:06:40.466545+00:00",
   "cable_assembly_count": 1,
   "conductor_count": 2,
   "wire_cut_length_mm_each": 1000.0,

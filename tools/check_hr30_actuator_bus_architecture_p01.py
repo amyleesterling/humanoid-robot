@@ -66,7 +66,7 @@ def main() -> int:
     require((status["actuator_bus_segment_count"], status["actuator_bus_axis_binding_count"], status["rs485_actuator_axis_count"], status["ttl_actuator_axis_count"]) == (8, 25, 19, 6), "status bus counts drift")
     require(not any(status[k] for k in ("native_hr30_kicad_reconciled", "actuator_bus_interface_selected", "actuator_bus_connector_harness_validated", "procurement_authority", "fabrication_authority", "powered_test_authority", "motion_authority", "energization_authority")), "selection/KiCad/authority overclaim")
     holds = rows("open-holds.csv")
-    require(any(r["hold_id"] == "HR30-P01-H11" and r["state"] == "OPEN" and "native HR-30 KiCad project" in r["unresolved_item"] and "JST PA data-only connector candidates" in r["unresolved_item"] for r in holds), "electrical integration hold missing")
+    require(any(r["hold_id"] == "HR30-P01-H11" and r["state"] == "OPEN" and "native HR-30 KiCad project" in r["unresolved_item"] and "JST PA" in r["unresolved_item"] for r in holds), "electrical integration hold missing")
     doc = (SRC / "whole-body-electrical-integration.md").read_text(encoding="utf-8")
     require("nineteen selected `-R`" in doc and "six XC330" in doc and "pin 1 GND" in doc and "no connection" in doc.lower(), "electrical integration boundary incomplete")
     page = (SRC / "index.html").read_text(encoding="utf-8")

@@ -47,7 +47,8 @@ def main() -> int:
     assert status["sequence_count"] == 2
     assert status["axis_count"] == 25 and status["rotary_axis_count"] == 23 and status["gripper_axis_count"] == 2
     assert status["bus_count"] == 8 and status["bounded_sequence_rms_computed"] is True
-    assert 9.98 < status["control_model_mass_kg"] < 10.0
+    mass_summary = json.loads((BODY / "mass-reconciliation-summary.json").read_text(encoding="utf-8"))
+    close(status["control_model_mass_kg"], mass_summary["active_tether_dynamics_planning_mass_kg"], tolerance=5e-6)
     assert status["all_control_sequences_passed_source_screen"] is True
     for key in (
         "active_object_grip_included", "electronics_idle_and_loss_current_included", "regeneration_included",

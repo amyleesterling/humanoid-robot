@@ -120,7 +120,7 @@ def main() -> int:
     result = "PASS" if status["all_sequences_pass_bounded_ideal_fixture_screen"] else "FAIL"
     max_error = max(float(row["maximum_rotary_tracking_error_deg"]) for row in summaries)
     max_saturation = max(float(row["maximum_rotary_saturation_fraction"]) for row in summaries)
-    print(f"PASS evidence integrity: MuJoCo 3.10.0 compiles the positive-inertia 9.990 kg whole body and executes 2 x 10.72 s ideal-fixture sequences; bounded tracking result {result}, max rotary error {max_error:.3f} deg, max saturation {100*max_saturation:.2f}%; free balance, physical restraint, walking and all authority remain open")
+    print(f"PASS evidence integrity: MuJoCo 3.10.0 compiles the positive-inertia {float(status['mass_kg']):.3f} kg whole body and executes 2 x 10.72 s ideal-fixture sequences; bounded tracking result {result}, max rotary error {max_error:.3f} deg, max saturation {100*max_saturation:.2f}%; free balance, physical restraint, walking and all authority remain open")
     return 0
 
 

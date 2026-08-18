@@ -80,6 +80,23 @@ def replace_marker(path: Path, start: str, end: str, content: str) -> None:
     path.write_text(text, encoding="utf-8", newline="\n")
 
 
+def refresh_manifest_rows(manifest_path: Path, base: Path, paths: list[Path], warning: str) -> None:
+    """Refresh controlled rows after integrating generated sections into a parent package."""
+    existing = read_csv(manifest_path)
+    by_path = {row["path"]: row for row in existing}
+    for path in paths:
+        relative = path.relative_to(base).as_posix()
+        if relative not in by_path:
+            raise RuntimeError(f"parent manifest does not control {relative}")
+        by_path[relative] = {
+            "path": relative,
+            "bytes": path.stat().st_size,
+            "sha256": sha(path),
+            "warning": warning,
+        }
+    write_csv(manifest_path, [by_path[row["path"]] for row in existing])
+
+
 def pooled_stats(values: list[float]) -> tuple[float, float, float, float]:
     if not values:
         raise RuntimeError("empty sample set")
@@ -367,8 +384,22 @@ The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1
     body_index = """<section id='harness-duty-thermal'><h2>The whole-body duty now reaches the physical harness</h2><div class='grid'><article class='card pass'><div class='metric'>25</div><p>axis route-specific loss cases</p></article><article class='card pass'><div class='metric'>6</div><p>bundle test obligations</p></article><article class='card hold'><div class='metric'>0</div><p>thermal or powered-work approvals</p></article></div><p><a href='harness/duty-thermal-screen-p0.1/index.html'>Open the harness duty/thermal guide.</a></p></section>"""
     replace_marker(HARNESS / "README.md", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", readme)
     replace_marker(HARNESS / "index.html", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", index)
+    replace_marker(HARNESS / "physical-p0.1" / "README.md", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", readme)
+    replace_marker(HARNESS / "physical-p0.1" / "index.html", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", index)
     replace_marker(BODY / "README.md", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", body_readme)
     replace_marker(BODY / "index.html", "<!-- HR30-DUTY-THERMAL-P01-START -->", "<!-- HR30-DUTY-THERMAL-P01-END -->", body_index)
+    physical_files = [PHYSICAL / "README.md", PHYSICAL / "index.html"]
+    physical_manifest = PHYSICAL / "file-manifest.csv"
+    refresh_manifest_rows(
+        physical_manifest,
+        PHYSICAL,
+        physical_files,
+        "PRELIMINARY - PHYSICAL HARNESS ARCHITECTURE ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION, OR ENERGIZATION",
+    )
+    physical_release = ROOT / "release" / "hr30" / "whole-body-p0.1" / "harness" / "physical-p0.1"
+    physical_release.mkdir(parents=True, exist_ok=True)
+    for path in [*physical_files, physical_manifest]:
+        shutil.copy2(path, physical_release / path.name)
     print(json.dumps(status, indent=2))
     return 0
 
