@@ -1,0 +1,20 @@
+{
+  "identifier": "HR30-POWER-ROUTE-GUIDES-P0.1",
+  "date": "2026-08-18",
+  "warning": "PRELIMINARY - WHOLE-BODY POWER ROUTE-GUIDE CANDIDATE - NOT APPROVED FOR PROCUREMENT, FABRICATION, CONNECTION, POWERED TESTING, MOTION OR ENERGIZATION",
+  "route_count": 6,
+  "exact_circular_turn_count": 12,
+  "clamp_obligation_count": 24,
+  "geometric_radius_screens_pass": 6,
+  "combined_whole_body_glb_complete": true,
+  "editable_route_step_complete": true,
+  "guard_solids_complete": false,
+  "collision_sweeps_complete": false,
+  "walking_clearance_complete": false,
+  "physical_validation_complete": false,
+  "fabrication_authority": false,
+  "connection_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "energization_authority": false
+}
