@@ -17,3 +17,9 @@ Manufacturer-interface review is now configuration-bound. ROBOTIS publishes the 
 Open the [interactive physical harness guide](index.html). Start with the whole-body route model, `route-cad-register.csv`, `axis-harness-binding.csv`, `route-segment-register.csv`, `connector-contact-map.csv`, and `unresolved-harness-selections.csv`.
 
 No cable cut length, conductor size, protection value, complete connector set, retention hardware, shielding decision, or powered validation is released by this package.
+
+<!-- HR30-DUTY-THERMAL-P01-START -->
+## Duty/thermal successor
+
+The [route-specific duty/thermal successor](../duty-thermal-screen-p0.1/index.html) now fills the bounded torque-producing RMS and peak component for every entry in this package's derating register and groups the 25 pairs by physical power corridor. Total normal RMS, fault current, ambient, hot derating and physical tests remain open.
+<!-- HR30-DUTY-THERMAL-P01-END -->
