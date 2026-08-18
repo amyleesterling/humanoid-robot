@@ -1,0 +1,16 @@
+{
+  "identifier": "HR30-WHOLE-BODY-TORQUE-DEMAND-P0.1",
+  "warning": "PRELIMINARY - INVERSE-DYNAMICS DESIGN EVIDENCE ONLY - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION",
+  "executed_utc": "2026-08-18T00:54:40.881909+00:00",
+  "mujoco_version": "3.10.0",
+  "numpy_version": "2.4.6",
+  "trajectory_interval_s": 0.02,
+  "root_derivative_method": "numpy.gradient, second-order edge stencil, applied twice to 50 Hz root positions",
+  "inverse_inputs": "qpos, qvel, qacc, mocap_pos and mocap_quat at each prescribed trajectory sample",
+  "contact_case": "current soft foot/floor contact plus ideal pelvis weld fixture",
+  "open_chain_case": "same state and fixture with mjDSBL_CONTACT",
+  "gravity_case": "same pose with zero qvel/qacc and mjDSBL_CONTACT",
+  "design_margin": 1.25,
+  "official_method_source": "https://mujoco.readthedocs.io/en/stable/programming/simulation.html#inverse-dynamics",
+  "official_method_source_accessed": "2026-08-17"
+}

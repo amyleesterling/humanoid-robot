@@ -1,0 +1,29 @@
+{
+  "identifier": "HR30-WHOLE-BODY-TORQUE-DEMAND-P0.1",
+  "warning": "PRELIMINARY - INVERSE-DYNAMICS DESIGN EVIDENCE ONLY - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION",
+  "mujoco_version": "3.10.0",
+  "model_mass_kg": 9.989582,
+  "sequence_count": 2,
+  "trajectory_sample_count": 1074,
+  "rotary_axis_count": 23,
+  "sample_axis_evidence_count": 24702,
+  "axis_sequence_summary_count": 46,
+  "whole_body_axis_summary_count": 23,
+  "all_values_finite": true,
+  "declared_support_contacts_present": true,
+  "maximum_peak_to_current_endpoint_ratio": 1.813645,
+  "axes_exceeding_candidate_current_endpoint": [
+    "L_HIP_PITCH",
+    "L_HIP_ROLL",
+    "R_HIP_PITCH",
+    "R_HIP_ROLL"
+  ],
+  "current_allocation_closes_inverse_demand": false,
+  "inverse_dynamics_establishes_continuous_capacity": false,
+  "physical_execution_count": 0,
+  "connection_authority": false,
+  "powered_test_authority": false,
+  "motion_authority": false,
+  "walking_authority": false,
+  "energization_authority": false
+}

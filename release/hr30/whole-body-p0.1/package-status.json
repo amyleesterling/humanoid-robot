@@ -589,5 +589,14 @@
   "mujoco_model_compiles": true,
   "mujoco_executed_sequence_count": 2,
   "all_moving_bodies_positive_mass_inertia": true,
-  "free_balance_validated": false
+  "free_balance_validated": false,
+  "whole_body_torque_demand_present": true,
+  "inverse_dynamics_sequence_count": 2,
+  "inverse_dynamics_axis_sample_count": 24702,
+  "current_allocation_closes_inverse_demand": false,
+  "continuous_actuator_capacity_validated": false,
+  "dynamics_successor_present": true,
+  "dynamics_successor_sequence_count": 2,
+  "dynamics_successor_bounded_screen_pass": false,
+  "physical_hip_transmission_validated": false
 }

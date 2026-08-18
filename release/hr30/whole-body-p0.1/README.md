@@ -300,3 +300,15 @@ The [interactive walking-sequence guide](walking-sequence-p0.1/index.html) binds
 
 The [MuJoCo dynamics guide](mujoco-dynamics-validation-p0.1/index.html) records two complete ideal-fixture simulations of the bilateral 40 mm sequences. The corrected 9.990 kg model now compiles with positive inertia on every moving body and explicit foot/floor contacts. The fixture is numerical test equipment, not evidence of free balance, a physical fall restraint or walking authority.
 <!-- HR30-MUJOCO-DYNAMICS-P01-END -->
+
+<!-- HR30-TORQUE-DEMAND-P01-START -->
+## Whole-body inverse-dynamics demand
+
+The [interactive torque-demand guide](torque-demand-p0.1/index.html) evaluates all 23 rotary axes over both bilateral 50 Hz sequences with contact-enabled, open-chain and gravity-only inverse dynamics. It records the actual endpoint gap and produces sizing directions without releasing a transmission or claiming continuous capacity.
+<!-- HR30-TORQUE-DEMAND-P01-END -->
+
+<!-- HR30-DYNAMICS-SUCCESSOR-P01-START -->
+## Hip-reduction dynamics successor
+
+The [dynamics successor guide](dynamics-successor-p0.1/index.html) executes the unchanged bilateral gait with a preregistered 4:1 hip pitch/roll scenario and inverse-dynamics feedforward. The bounded numerical screen fails: the four revised hip axes clear, but unchanged knee and ankle saturation remains excessive. The configuration is retained as rejection evidence. It does not approve fabrication, motion or walking.
+<!-- HR30-DYNAMICS-SUCCESSOR-P01-END -->
