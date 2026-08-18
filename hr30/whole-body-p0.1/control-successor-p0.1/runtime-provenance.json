@@ -1,0 +1,11 @@
+{
+  "identifier": "HR30-WHOLE-BODY-CONTROL-SUCCESSOR-P0.1",
+  "warning": "PRELIMINARY - WHOLE-BODY CONTROL CANDIDATE ONLY - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION",
+  "executed_utc": "2026-08-18T03:17:01.234157+00:00",
+  "integration_timestep_s": 0.002,
+  "settle_time_s": 0.5,
+  "rotary_kp_factor": 8.0,
+  "rotary_kd_factor": 0.8,
+  "exploratory_origin": "one bounded 8/0.8 diagnostic passed after the rejected 40/2 predecessor; this package is the frozen rerun",
+  "unchanged_inputs": "gait, mass, contacts, current endpoints, inverse feedforward, 4:1 hip model and thresholds"
+}
