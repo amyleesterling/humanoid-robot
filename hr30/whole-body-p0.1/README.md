@@ -134,12 +134,24 @@ The [transmission closure guide](transmission-closure-p0.1/index.html) maps all 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- HR30-TRANSITION-BRACKETS-P01-README-START -->
 ## Actuator fixed-transition bracket CAD
 
 The [interactive transition-bracket guide](harness/actuator-transition-brackets-p0.1/index.html) places one dimensioned three-solid service cassette at every one of the 25 actuator feeds. Editable part STEP, the standard assembly STEP/GLB, the recognizable whole-body placement STEP/GLB and all coordinates are included.
 
-The central connector opening is a **project-owned clearance proxy**, not a released Molex cutout. Official-drawing reconciliation, received-part fit, material/process selection, cable clamp qualification, body attachment, tolerance-aware collision and physical testing remain open.
+The central connector opening is a **project-owned clearance proxy**, not a released Molex cutout. A printable nine-window diagnostic coupon, print traveler and blank inspection record are included so a received connector can be checked before all 25 brackets are revised. Official-drawing reconciliation, received-part fit, production material/process selection, cable clamp qualification, body attachment, tolerance-aware collision and physical testing remain open.
 <!-- HR30-TRANSITION-BRACKETS-P01-README-END -->
 <!-- HR30-ACTUATOR-CABLE-KIT-P01-README-START -->
 ## Actuator cable kit

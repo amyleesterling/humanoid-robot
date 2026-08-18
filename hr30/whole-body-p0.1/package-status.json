@@ -632,5 +632,8 @@
   "e1_fixture_hardware_validated": false,
   "actuator_power_transition_bracket_placement_count": 25,
   "actuator_cable_coupon_transition_brackets_dimensioned": true,
-  "actuator_cable_coupon_transition_bracket_placement_count": 25
+  "actuator_cable_coupon_transition_bracket_placement_count": 25,
+  "actuator_transition_bracket_diagnostic_fit_coupon_present": true,
+  "actuator_transition_bracket_coupon_opening_count": 9,
+  "actuator_transition_bracket_coupon_physical_test_executed": false
 }
