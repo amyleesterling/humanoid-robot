@@ -635,5 +635,12 @@
   "actuator_cable_coupon_transition_bracket_placement_count": 25,
   "actuator_transition_bracket_diagnostic_fit_coupon_present": true,
   "actuator_transition_bracket_coupon_opening_count": 9,
-  "actuator_transition_bracket_coupon_physical_test_executed": false
+  "actuator_transition_bracket_coupon_physical_test_executed": false,
+  "actuator_bus_reference_architecture_defined": true,
+  "actuator_bus_reference_count": 8,
+  "actuator_bus_reference_star_node": "PDU_COMMON_RET",
+  "actuator_bus_parallel_motor_return_prohibited": true,
+  "actuator_bus_rs485_isolated_channel_count": 5,
+  "actuator_bus_ttl_nonisolated_channel_count": 3,
+  "actuator_bus_reference_validated": false
 }

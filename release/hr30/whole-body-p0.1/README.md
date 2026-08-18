@@ -80,11 +80,7 @@ The [interactive energy and safety guide](energy-safety-spine-p0.1/index.html) d
 
 The native KiCad topology correction is synchronized, but exact physical energy/safety terminals remain unselected. The 179 W operating and 727 W short-peak budgets are not source or wiring ratings. Protection, conductor sizing, fault current, stopping time, PE/0 V and functional-safety validation remain open. Reset can never command motion.
 
-<!-- HR30-HARNESS-README-START -->
-## Whole-body harness
 
-Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
-<!-- HR30-HARNESS-README-END -->
 
 
 
@@ -153,17 +149,22 @@ The [interactive transition-bracket guide](harness/actuator-transition-brackets-
 
 The central connector opening is a **project-owned clearance proxy**, not a released Molex cutout. A printable nine-window diagnostic coupon, print traveler and blank inspection record are included so a received connector can be checked before all 25 brackets are revised. Official-drawing reconciliation, received-part fit, production material/process selection, cable clamp qualification, body attachment, tolerance-aware collision and physical testing remain open.
 <!-- HR30-TRANSITION-BRACKETS-P01-README-END -->
-<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-START -->
-## Actuator cable kit
 
-The [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **159 connector-cavity records**. The dimensioned transition-bracket candidate and all **25 nominal module placements** are configuration-bound. The retained rejected-CF9 predecessor calculation has a largest 20 C planning drop of **0.091 V**; it is not an ampacity or thermal release. Outgoing inter-actuator housings leave GND/VDD cavities empty so the 25 separately protected power branches cannot be paralleled; signal-reference behavior and every physical validation gate remain open.
-<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-END -->
 <!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-START -->
 ## Actuator cable coupon and route measurement
 
 The [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) defines the complete moving **CF130 -> Molex 430250200/430300001 -> panel 430200200/430310001 -> restrained Alpha 3051 -> JST EH** transition coupon. Eleven specimen families cover both crimp systems, the panel mount, strain isolation, electrical/thermal behavior and flex. The dimensioned bracket candidate and all **25 nominal placements** are configuration-bound. Direct CF130-to-JST crimping is rejected. No production cut length, bracket release, crimp setting or physical-work authority is granted.
 <!-- HR30-ACTUATOR-CABLE-COUPON-P01-README-END -->
 
+
+
+
+
+<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-START -->
+## Actuator cable kit
+
+The [interactive actuator cable-kit guide](harness/actuator-cable-kit-p0.1/index.html) assigns all **25 axis feeds** their candidate current caps and planning lengths, binds JST **EHR-3/EHR-4 + SEH-001T-P0.6** candidate order-code families, and defines **159 connector-cavity records**. The dimensioned transition-bracket candidate and all **25 nominal module placements** are configuration-bound. All **8 actuator buses** now bind to the proposed `PDU_COMMON_RET` single-point reference architecture: each actuator uses its dedicated branch return, while the 17 inter-actuator links leave both GND and VDD empty to prevent a parallel motor-return path. Five RS-485 carrier channels are isolated; three TTL channels are not. The retained rejected-CF9 predecessor calculation has a largest 20 C planning drop of **0.091 V**; it is not an ampacity, logic-margin or thermal release. Every bus-reference test and physical validation gate remains open.
+<!-- HR30-ACTUATOR-CABLE-KIT-P01-README-END -->
 <!-- HR30-FIRST-ENERGIZATION-P01-README-START -->
 ## First-energization readiness
 
@@ -400,3 +401,9 @@ The E1 fixture now includes the physical two-conductor J1 cable candidate alongs
 
 The controls-only fixture now has [interactive hardware CAD and readable fabrication drawings](electrical/e1-controls-only-fixture-p0.1/index.html#e1-fixture-hardware). Its 14 PCB stacks, eight cover fasteners and four full-height foot stacks are dimensioned and bound to exact candidate hardware. The covers now have real flanges and mounting holes. Fabrication, received fit, torque, adhesive/load testing, FAI and qualified acceptance remain open.
 <!-- HR30-E1-FIXTURE-HARDWARE-P01-END -->
+
+<!-- HR30-HARNESS-README-START -->
+## Whole-body harness
+
+Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
+<!-- HR30-HARNESS-README-END -->
