@@ -355,3 +355,9 @@ The [distributed-power harness successor](harness/distributed-power-harness-succ
 
 The [whole-body power-route guide](harness/power-route-guides-p0.1/index.html) adds actual 3D tangent centerlines to all six actuator-power trunks. The complete robot is visible with the six external guarded-spine candidates, and the editable route-only STEP preserves every source endpoint. Geometry passes the cable-radius screen; collision, guard, clamp, thermal, motion and physical validation remain open.
 <!-- HR30-POWER-ROUTE-GUIDES-P01-END -->
+
+<!-- HR30-E1-CONTROLS-FIXTURE-P01-START -->
+## E1 controls-only physical fixture
+
+The [E1 controls-only fixture](electrical/e1-controls-only-fixture-p0.1/index.html) turns the electrification plan's E1 stage into an actual 360 x 240 mm CAD assembly. It mounts the native motion controller, both four-channel carriers and SWD adapter on their real PCB hole axes, encloses all eight actuator-data field ports, and contains no actuator-power connector, conductor, PDU or actuator. The fixture and boards remain unbuilt; wiring, supply limits, received clearances, firmware/HIL and independent authorization remain open.
+<!-- HR30-E1-CONTROLS-FIXTURE-P01-END -->

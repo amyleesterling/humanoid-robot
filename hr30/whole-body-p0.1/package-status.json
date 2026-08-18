@@ -605,5 +605,13 @@
   "hip4_whole_body_step_glb_present": true,
   "hip4_urdf_mjcf_present": true,
   "hip4_capacity_validated": false,
-  "hip4_motion_sweep_validated": false
+  "hip4_motion_sweep_validated": false,
+  "e1_controls_only_fixture_present": true,
+  "e1_native_pcb_count": 4,
+  "e1_native_mount_hole_count": 14,
+  "e1_actuator_field_port_cover_count": 8,
+  "e1_actuator_power_component_count": 0,
+  "e1_fixture_built": false,
+  "e1_connection_authority": false,
+  "e1_powered_test_authority": false
 }
