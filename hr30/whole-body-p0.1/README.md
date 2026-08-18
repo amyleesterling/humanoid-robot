@@ -335,3 +335,9 @@ The [interactive lightweight hip guide](lightweight-hip-successor-p0.1/index.htm
 
 The [whole-body harness duty-current guide](harness/duty-current-envelope-p0.1/index.html) supplies the previously missing bounded per-axis and per-bus torque-producing current envelopes from the executed control successor. It is calculation evidence only; final normal demand, wire construction, protection, thermal validation and every powered-work authority remain open.
 <!-- HR30-DUTY-CURRENT-P01-END -->
+
+<!-- HR30-DUTY-THERMAL-P01-START -->
+## Whole-body harness duty/thermal screen
+
+The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1/index.html) connects both frozen walking traces to all 25 physical power-pair lengths, eight buses and six reserved power corridors. The derived loss cases define physical test obligations; they do not release conductors, contacts, protection or energization.
+<!-- HR30-DUTY-THERMAL-P01-END -->
