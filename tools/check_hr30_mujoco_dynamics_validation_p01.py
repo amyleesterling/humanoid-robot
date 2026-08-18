@@ -56,6 +56,7 @@ def main() -> int:
     need(provenance["mujoco_version"] == mujoco.__version__ == "3.10.0", "MuJoCo runtime/version drift")
     need(provenance["official_runtime_source"] == "https://pypi.org/project/mujoco/3.10.0/" and provenance["official_source_accessed"] == "2026-08-17", "official runtime provenance missing")
     need(provenance["integration_timestep_s"] == 0.002 and provenance["settle_time_s"] == 0.5, "integration prescription drift")
+    need(float(provenance["simulation_wall_time_s"]) > 0.0, "simulation wall-time provenance missing")
     need("ideal six-degree-of-freedom" in provenance["fixture"], "fixture boundary missing")
 
     model = mujoco.MjModel.from_xml_path(str((SRC / "hr30_tether_ideal_fixture.xml").resolve()))

@@ -13,6 +13,7 @@ import html
 import json
 import math
 import shutil
+import time
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
@@ -112,10 +113,22 @@ def trajectory_data() -> tuple[dict[str, list[dict]], dict[str, dict[str, list[d
     return dict(base), {sequence: dict(axes) for sequence, axes in joints.items()}
 
 
-def interpolate(rows: list[dict], field: str, time_s: float) -> float:
+def numeric_series(rows: list[dict], field: str) -> tuple[np.ndarray, np.ndarray]:
+    """Parse one controlled trajectory column once for the full simulation.
+
+    The previous implementation rebuilt both arrays on every 2 ms controller
+    step. With 25 joints and two requested fields, that repeated hundreds of
+    millions of Python-to-float conversions during an otherwise small model
+    integration. Keeping immutable arrays preserves the same linear
+    interpolation while making execution time proportional to the MuJoCo work.
+    """
     times = np.fromiter((float(row["time_s"]) for row in rows), dtype=float)
     values = np.fromiter((float(row[field]) for row in rows), dtype=float)
-    return float(np.interp(time_s, times, values))
+    return times, values
+
+
+def interpolate(series: tuple[np.ndarray, np.ndarray], time_s: float) -> float:
+    return float(np.interp(time_s, series[0], series[1]))
 
 
 def expected_support(mode: str) -> set[str]:
@@ -187,6 +200,18 @@ def simulate(model: mujoco.MjModel, caps: dict[str, float]) -> tuple[list[dict],
     for sequence_id in sorted(base_by_sequence):
         base_rows = base_by_sequence[sequence_id]
         joint_rows = joints_by_sequence[sequence_id]
+        root_series = {
+            field: numeric_series(base_rows, field)
+            for field in ("root_x_m", "root_y_m", "root_z_m")
+        }
+        joint_position_series = {
+            axis: numeric_series(rows, "position_si")
+            for axis, rows in joint_rows.items()
+        }
+        joint_velocity_series = {
+            axis: numeric_series(rows, "velocity_si_s")
+            for axis, rows in joint_rows.items()
+        }
         duration = float(base_rows[-1]["time_s"])
         data = mujoco.MjData(model)
         first_root = np.array([float(base_rows[0][field]) for field in ("root_x_m", "root_y_m", "root_z_m")])
@@ -201,9 +226,9 @@ def simulate(model: mujoco.MjModel, caps: dict[str, float]) -> tuple[list[dict],
 
         def desired(time_s: float) -> tuple[dict[str, float], dict[str, float], np.ndarray, dict]:
             nearest = min(int(round(time_s / 0.02)), len(base_rows) - 1)
-            root = np.array([interpolate(base_rows, field, time_s) for field in ("root_x_m", "root_y_m", "root_z_m")])
-            position = {axis: interpolate(joint_rows[axis], "position_si", time_s) for axis in axes}
-            velocity = {axis: interpolate(joint_rows[axis], "velocity_si_s", time_s) for axis in axes}
+            root = np.array([interpolate(root_series[field], time_s) for field in ("root_x_m", "root_y_m", "root_z_m")])
+            position = {axis: interpolate(joint_position_series[axis], time_s) for axis in axes}
+            velocity = {axis: interpolate(joint_velocity_series[axis], time_s) for axis in axes}
             return position, velocity, root, base_rows[nearest]
 
         initial_position, initial_velocity, _, _ = desired(0.0)
@@ -357,7 +382,9 @@ def main() -> int:
     physical_body_ids = np.flatnonzero((np.arange(model.nbody) > 0) & (model.body_mocapid < 0))
     if abs(float(model.body_subtreemass[1]) - expected_mass_kg) > 5e-6 or np.min(model.body_mass[physical_body_ids]) <= 0 or np.min(model.body_inertia[physical_body_ids]) <= 0:
         raise RuntimeError("compiled model mass/inertia is not positive and reconciled")
+    simulation_started = time.perf_counter()
     sample_rows, axis_rows, summary_rows, execution = simulate(model, caps)
+    simulation_wall_time_s = time.perf_counter() - simulation_started
     write_csv(OUT / "simulation-samples.csv", sample_rows)
     preview_fields = ("sequence_id", "time_s", "declared_support", "active_floor_contacts", "maximum_rotary_tracking_error_deg", "left_normal_force_n", "right_normal_force_n")
     preview_rows = [{key: row[key] for key in preview_fields} for row in sample_rows]
@@ -392,6 +419,7 @@ def main() -> int:
         "python": __import__("sys").version, "mujoco_version": mujoco.__version__, "numpy_version": np.__version__,
         "official_runtime_source": "https://pypi.org/project/mujoco/3.10.0/", "official_source_accessed": "2026-08-17",
         "integration_timestep_s": DT, "settle_time_s": SETTLE_S, "integrator": "implicitfast", "solver": "Newton",
+        "simulation_wall_time_s": round(simulation_wall_time_s, 6),
         "controller": {"rotary_kp": "40 * candidate endpoint Nm per rad", "rotary_kd": "2 * candidate endpoint Nm per rad/s", "gripper_kp_n_m": 100, "gripper_kd_n_s_m": 5},
         "fixture": "ideal six-degree-of-freedom mocap body welded numerically to base_link; not physical hardware",
     }
