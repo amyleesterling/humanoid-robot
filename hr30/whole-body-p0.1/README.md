@@ -421,3 +421,9 @@ The [interactive diagnostic-watchdog guide](electrical/e1-diagnostic-watchdog-p0
 
 The [interactive first-energization-cell guide](first-energization-cell-p0.1/index.html) places the SHA-bound complete neutral-pose robot inside a dimensioned **1200 x 1000 x 1400 mm** guarded frame. Both feet are supported and a rigid cradle locates the reserved pelvis interface. The two overhead routes are secondary position-only tether candidates, not fall arrest. The cell is unbuilt, FER-G02/G10/G11 remain open, and it grants no powered-test, motion, walking or energization authority.
 <!-- HR30-FIRST-ENERGIZATION-CELL-P01-END -->
+
+<!-- HR30-CELL-HARDWARE-P01-START -->
+## Fastened first-energization-cell hardware
+
+The [interactive hardware guide](first-energization-cell-hardware-p0.1/index.html) replaces the earlier loose-panel/caster concept with a **31-member fastened construction candidate**: framed doors, six captured 6 mm panels, 22 gusset brackets, 206 controlled fastener assemblies, six profile hinges, four floor-mount interfaces, a platform subframe, and a T-slot pelvis cradle. Purchased parts are modeled as interface envelopes, not machining sources. Floor anchors, guard impact, door interlocking, restraint dynamics, proof testing and FER-G02/G10/G11 remain open.
+<!-- HR30-CELL-HARDWARE-P01-END -->

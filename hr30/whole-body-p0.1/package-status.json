@@ -692,5 +692,13 @@
   "first_energization_cell_instrumentation_calibrated": false,
   "fer_g02_closed": false,
   "fer_g10_closed": false,
-  "fer_g11_closed": false
+  "fer_g11_closed": false,
+  "first_energization_cell_hardware_present": true,
+  "first_energization_cell_hardware_fastened_candidate": true,
+  "first_energization_cell_hardware_framed_doors": true,
+  "first_energization_cell_hardware_anchor_interfaces": true,
+  "first_energization_cell_hardware_profile_screen_only": true,
+  "first_energization_cell_hardware_released": false,
+  "first_energization_cell_hardware_guard_validated": false,
+  "first_energization_cell_hardware_restraint_rated": false
 }

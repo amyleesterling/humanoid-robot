@@ -1,6 +1,6 @@
 {
   "identifier": "HR30-WHOLE-BODY-P0.1-CHECKS",
-  "cad_runtime_validator_count": 71,
+  "cad_runtime_validator_count": 72,
   "separate_kicad_python_validators": [
     "check_hr30_actuator_interface_carriers_p01.py",
     "check_hr30_e1_diagnostic_watchdog_p01.py",

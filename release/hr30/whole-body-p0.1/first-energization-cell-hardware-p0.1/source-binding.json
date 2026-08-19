@@ -1,0 +1,18 @@
+{
+  "identifier": "HR30-FIRST-ENERGIZATION-CELL-HARDWARE-P0.1",
+  "warning": "PRELIMINARY - UNBUILT FASTENED CELL HARDWARE CANDIDATE - PURCHASED-PART ENVELOPES ARE NOT MANUFACTURING MODELS - NOT A WALKING GANTRY OR RATED FALL-ARREST SYSTEM - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, WALKING OR ENERGIZATION",
+  "robot_step": "hr30/whole-body-p0.1/HR-30_p00_neutral_stand_candidate.step",
+  "robot_step_sha256": "586ff788f5cad84288af26984345b7fdc5c619705e7a0ba1371b65608f7db5a7",
+  "predecessor_generator": "tools/generate_hr30_first_energization_cell_p01.py",
+  "predecessor_generator_sha256": "9a9dfec7d0acebb5be37ba823595ea61221d3795c33575d6414d6e5a0034d881",
+  "robot_translation_xyz_mm": [
+    0,
+    0,
+    92.5
+  ],
+  "cell_outer_xyz_mm": [
+    1200,
+    1000,
+    1400
+  ]
+}
