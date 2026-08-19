@@ -465,3 +465,9 @@ The [interactive diagnostic-pickoff guide](electrical/diagnostic-pickoff-pods-p0
 
 The [interactive calibration-fixture guide](electrical/measurement-chain-calibration-fixture-p0.1/index.html) adds a routed **104 x 76 mm native KiCad passive breakout** and a 121 x 94 x 34 mm enclosure candidate. It sequentially drives one disconnected diagnostic pod, three-metre cable, panel lane and NI-9229 input while an in-date Fluke 87V MAX CAL records the actual Keysight E36313A source voltage. The 72-point, three-repeat schedule covers gain, offset, polarity, open-lead behavior, noise and crosstalk without connecting to the robot. Hardware build, instrument receipt/calibration, numeric acceptance limits, execution, uncertainty review, source taps and FER-G11 remain open.
 <!-- HR30-MEASUREMENT-CAL-FIXTURE-P01-END -->
+
+<!-- HR30-MEASUREMENT-CAL-CABLE-KIT-P01-START -->
+## Measurement calibration cable and fault-adapter kit
+
+The [interactive cable-kit guide](electrical/measurement-chain-calibration-cable-kit-p0.1/index.html) defines **seven physical assemblies** for the off-robot measurement-chain fixture: exact source and DMM candidates, a blue normal cable, red reverse cable, two orange open-lead adapters and a black/yellow current-limit shorting adapter. The package includes contact maps, dimensions, cut/strip/ferrule instructions, the Phoenix terminal torque range, labels, a signed traveler, inspection tests, STEP/GLB layout and manufacturer evidence. Parts are not procured; crimp/insulation limits, build, inspection, metrology review, FER-G11 and every robot authority remain open.
+<!-- HR30-MEASUREMENT-CAL-CABLE-KIT-P01-END -->

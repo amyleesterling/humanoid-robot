@@ -730,5 +730,9 @@
   "measurement_chain_calibration_fixture_off_robot_only": true,
   "measurement_chain_calibration_fixture_built": false,
   "measurement_chain_calibration_executed": false,
-  "measurement_chain_calibration_accepted": false
+  "measurement_chain_calibration_accepted": false,
+  "measurement_calibration_cable_kit_candidate_present": true,
+  "measurement_calibration_cable_kit_assembly_count": 7,
+  "measurement_calibration_cable_kit_built": false,
+  "measurement_calibration_cable_kit_inspected": false
 }

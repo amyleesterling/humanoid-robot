@@ -44,7 +44,7 @@ def digest(path: Path) -> str:
 def check_board() -> None:
     board = pcbnew.LoadBoard(str(OUT / "board" / f"{PROJECT}.kicad_pcb"))
     refs = {fp.GetReference(): fp for fp in board.GetFootprints()}
-    need(set(refs) == {"JPS","JDMM","JDUT","H1","H2","H3","H4"}, "board reference set drift")
+    need(set(refs) == {"JPS","JHI","JLO","JDUT","H1","H2","H3","H4"}, "board reference set drift")
     board.BuildConnectivity()
     need(board.GetConnectivity().GetUnconnectedCount(False) == 0, "unconnected board pads")
     need(sum(isinstance(item, pcbnew.PCB_TRACK) for item in board.GetTracks()) >= 8, "board routing missing")
@@ -70,7 +70,7 @@ def main() -> int:
     schema = rows("data-schema-register.csv")
     holds = rows("open-holds.csv")
     sources = rows("primary-source-register.csv")
-    need(len(ports) == 6 and {r["connector"] for r in ports} == {"JPS","JDMM","JDUT"}, "three two-contact ports required")
+    need(len(ports) == 6 and {r["connector"] for r in ports} == {"JPS","JHI","JLO","JDUT"}, "two two-contact Phoenix ports plus two one-contact DMM safety jacks required")
     need({r["net"] for r in ports} == {"CAL_HI","CAL_LO"} and all(r["robot_connection_permitted"] == "NO" for r in ports), "floating port boundary drift")
     need(len(channels) == 8 and {r["channel_id"] for r in channels} == {f"CH-AI-{i:02d}" for i in range(1,9)}, "eight channel set drift")
     need(all(r["simultaneous_fixture_channels"] == "1" and r["robot_disconnected_required"] == "YES" for r in channels), "sequential off-robot invariant failed")
@@ -80,7 +80,9 @@ def main() -> int:
     need(len(procedures) == 15 and len(faults) == 8 and len(schema) >= 18, "procedure/fault/data completeness drift")
     need(all(r["execution_state"] == "NOT EXECUTED" for r in procedures + faults), "unexecuted evidence improperly claimed")
     need(len(holds) == 9 and all(r["state"] == "OPEN" for r in holds), "open holds drift")
-    need(len(sources) == 6 and all(r["url"].startswith("https://") for r in sources), "primary-source register incomplete")
+    need(len(sources) == 8 and all(r["url"].startswith("https://") for r in sources), "primary-source register incomplete")
+    need({r["header"] for r in ports if r["connector"] in {"JHI","JLO"}} == {"Pomona 73099-2 red","Pomona 73099-0 black"}, "DMM safety-jack candidates drift")
+    need(all(r["mating_plug"] == "Fluke TL930 4 mm patch cord" for r in ports if r["connector"] in {"JHI","JLO"}), "DMM patch-lead boundary drift")
     status = json.loads((OUT / "calibration-fixture-status.json").read_text(encoding="utf-8"))
     need(status["channel_count"] == 8 and status["simultaneous_fixture_channels"] == 1 and status["scheduled_points"] == 72, "status count drift")
     for key in ["robot_connection_permitted","fixture_built","fixture_inspection_executed","instrument_calibration_verified","calibration_executed","uncertainty_accepted","numeric_acceptance_limits_released","fer_g11_closed","functional_safety_credit","procurement_authority","fabrication_authority","assembly_authority","connection_authority","powered_robot_test_authority","motion_authority","walking_authority","energization_authority"]:

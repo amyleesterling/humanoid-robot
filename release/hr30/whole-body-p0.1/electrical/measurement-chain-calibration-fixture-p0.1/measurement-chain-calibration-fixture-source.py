@@ -43,6 +43,8 @@ PHOENIX_HEADER_URL = "https://www.phoenixcontact.com/en-us/products/pcb-header-m
 PHOENIX_PLUG_URL = "https://www.phoenixcontact.com/en-us/products/pcb-connector-mstb-25-2-st-508-1757019"
 KEYSIGHT_URL = "https://www.keysight.com/us/en/assets/7018-05629/data-sheets/5992-2124.pdf"
 FLUKE_URL = "https://www.fluke.com/en-us/product/electrical-testing/digital-multimeters/87v-max"
+FLUKE_TL930_URL = "https://www.fluke.com/en-us/product/accessories/adapters/fluke-tl930"
+POMONA_73099_URL = "https://www.pomonaelectronics.com/sites/default/files/d73099_101.pdf"
 HAMMOND_URL = "https://www.hammfg.com/electronics/small-case/plastic/1591"
 NI9229_URL = "https://www.ni.com/docs/en-US/bundle/ni-9229-specs/page/specs.html"
 
@@ -102,7 +104,6 @@ def write_schematic() -> None:
     model = load_model()
     definitions = [
         ("JPS", "isolated source input", "Phoenix Contact 1757242", (62, 95)),
-        ("JDMM", "independent source-voltage monitor", "Phoenix Contact 1757242", (190, 55)),
         ("JDUT", "output to disconnected diagnostic pod", "Phoenix Contact 1757242", (318, 95)),
     ]
     components = []
@@ -112,12 +113,16 @@ def write_schematic() -> None:
             model.pn(ref, "2", "LO / -", "CAL_LO", "right"),
         ]
         components.append(model.Component(ref, value, pins, "EXACT COMPONENT CANDIDATE; APPLICATION OPEN", "OFF-ROBOT TEST EQUIPMENT ONLY", PHOENIX_HEADER_URL, mpn, position=position, width=72, footprint=PHOENIX_FP))
-    sheet = model.Sheet(1, "01_passive_source_breakout.kicad_sch", "Passive one-channel calibration source breakout", "JPS, JDMM and JDUT are one floating pair; no PE/chassis/USB connection is present.")
+    components += [
+        model.Component("JHI", "red 4 mm DMM safety jack", [model.pn("JHI", "1", "CAL HI", "CAL_HI", "left")], "EXACT COMPONENT CANDIDATE; PCB/ENCLOSURE FAI OPEN", "OFF-ROBOT TEST EQUIPMENT ONLY", POMONA_73099_URL, "73099-2", position=(177, 48), width=66, footprint="HR30_CAL:POMONA_73099"),
+        model.Component("JLO", "black 4 mm DMM safety jack", [model.pn("JLO", "1", "CAL LO", "CAL_LO", "right")], "EXACT COMPONENT CANDIDATE; PCB/ENCLOSURE FAI OPEN", "OFF-ROBOT TEST EQUIPMENT ONLY", POMONA_73099_URL, "73099-0", position=(203, 48), width=66, footprint="HR30_CAL:POMONA_73099"),
+    ]
+    sheet = model.Sheet(1, "01_passive_source_breakout.kicad_sch", "Passive one-channel calibration source breakout", "JPS, JHI/JLO and JDUT are one floating pair; no PE/chassis/USB connection is present.")
     sheet.components = components
     sheet.notes = [
         "Use exactly one disconnected measurement chain at a time: pod, 3 m cable, one panel lane, one NI-9229 channel.",
         "Keysight output remains OFF during every connection change. Candidate ceiling is 24.0 V and candidate current limit is 10 mA; qualified procedure approval remains open.",
-        "Fluke 87V MAX CAL measures the actual JPS voltage at JDMM. Supply readback alone is not the reference value.",
+        "Fluke 87V MAX CAL measures the actual JPS voltage through JHI/JLO using the exact TL930 patch-cord candidate. Supply readback alone is not the reference value.",
         "No fixture contact may be attached to the robot, safety relay, contactor, actuator bus, PE, chassis or synchronization slate.",
         WARNING,
     ]
@@ -152,18 +157,55 @@ def pcb_mode() -> int:
         item.SetStart(pcbnew.VECTOR2I_MM(*a)); item.SetEnd(pcbnew.VECTOR2I_MM(*b))
         item.SetLayer(pcbnew.F_Cu if layer is None else layer); item.SetWidth(pcbnew.FromMM(width)); item.SetNet(net); board.Add(item)
 
+    def pomona_73099_footprint():
+        """Manufacturer-drawing footprint, D2134437 rev.101.
+
+        Four 1.3 mm holes are on a 10.16 mm square.  The 2.2 mm centre
+        contact is 3.8 mm from the left column and 2.2 mm below the top row.
+        All five metal PCB tails belong to the one-pole jack and deliberately
+        use the same pad number/net.  Received-part FAI remains mandatory.
+        """
+        fp = pcbnew.FOOTPRINT(None); fp.SetFPID(pcbnew.LIB_ID("HR30_CAL", "POMONA_73099")); fp.SetValue("POMONA_73099")
+        fp.Reference().SetVisible(False); fp.Value().SetVisible(False)
+        layers = pcbnew.LSET.AllCuMask(); layers.AddLayer(pcbnew.F_Mask); layers.AddLayer(pcbnew.B_Mask)
+        for px, py, drill in ((-5.08,-5.08,1.30),(5.08,-5.08,1.30),(-5.08,5.08,1.30),(5.08,5.08,1.30),(-1.28,-2.88,2.20)):
+            pad = pcbnew.PAD(fp); pad.SetNumber("1"); pad.SetAttribute(pcbnew.PAD_ATTRIB_PTH); pad.SetShape(pcbnew.PAD_SHAPE_CIRCLE)
+            pad.SetSize(pcbnew.VECTOR2I_MM(drill + 1.0, drill + 1.0)); pad.SetDrillSize(pcbnew.VECTOR2I_MM(drill, drill)); pad.SetFPRelativePosition(pcbnew.VECTOR2I_MM(px, py)); pad.SetLayerSet(layers); fp.Add(pad)
+        for start, end in (((-6,-7.5),(6,-7.5)),((6,-7.5),(6,7.5)),((6,7.5),(-6,7.5)),((-6,7.5),(-6,-7.5))):
+            line=pcbnew.PCB_SHAPE(fp); line.SetShape(pcbnew.SHAPE_T_SEGMENT); line.SetStart(pcbnew.VECTOR2I_MM(*start)); line.SetEnd(pcbnew.VECTOR2I_MM(*end)); line.SetLayer(pcbnew.F_Fab); line.SetWidth(pcbnew.FromMM(.15)); fp.Add(line)
+        return fp
+
+    lib = OUT / "HR30_CAL.pretty"; lib.mkdir(parents=True, exist_ok=True)
+    pcbnew.PCB_IO_KICAD_SEXPR().FootprintSave(str(lib), pomona_73099_footprint())
+    (OUT / "fp-lib-table").write_text('(fp_lib_table\n  (version 7)\n  (lib (name "HR30_CAL")(type "KiCad")(uri "${KIPRJMOD}/HR30_CAL.pretty")(options "")(descr "Pomona 73099 candidate from D2134437 rev.101"))\n)\n', encoding="utf-8")
+
+    def pomona_73099(ref: str, value: str, x: float, y: float, net):
+        fp = pomona_73099_footprint(); fp.SetFPID(pcbnew.LIB_ID("", "POMONA_73099")); fp.SetReference(ref); fp.SetValue(value); fp.SetPosition(pcbnew.VECTOR2I_MM(x, y))
+        for pad in fp.Pads(): pad.SetNet(net)
+        board.Add(fp)
+        placed = list(fp.Pads())
+        centre = max(placed, key=lambda p: p.GetDrillSize().x)
+        c = centre.GetPosition(); centre_xy = (pcbnew.ToMM(c.x), pcbnew.ToMM(c.y))
+        layer = pcbnew.F_Cu if net.GetNetname() == "CAL_HI" else pcbnew.B_Cu
+        for pad in placed:
+            if pad is centre: continue
+            p = pad.GetPosition(); track(board, net, centre_xy, (pcbnew.ToMM(p.x), pcbnew.ToMM(p.y)), layer=layer)
+        return fp
+
     board = pcbnew.BOARD(); board.SetCopperLayerCount(2)
     settings = board.GetDesignSettings(); settings.SetBoardThickness(pcbnew.FromMM(1.6)); settings.m_MinClearance = pcbnew.FromMM(.25); settings.m_TrackMinWidth = pcbnew.FromMM(.25); settings.m_HoleClearance = pcbnew.FromMM(.25); settings.m_HoleToHoleMin = pcbnew.FromMM(.30); settings.m_NetSettings.GetDefaultNetclass().SetClearance(pcbnew.FromMM(.25))
     nets = {}
     for name in ("CAL_HI", "CAL_LO"):
         net = pcbnew.NETINFO_ITEM(board, name); board.Add(net); nets[name] = net
-    placements = [("JPS", 16.0, 40.0, 90), ("JDMM", 52.0, 62.0, 0), ("JDUT", 88.0, 40.0, 90)]
+    placements = [("JPS", 16.0, 40.0, 90), ("JDUT", 88.0, 40.0, 90)]
     fps = {}
     for ref, x, y, angle in placements:
         fp = footprint(PHOENIX_FP); fp.SetReference(ref); fp.SetValue("1757242"); fp.SetPosition(pcbnew.VECTOR2I_MM(x, y)); fp.SetOrientationDegrees(angle); fp.Reference().SetVisible(False); fp.Value().SetVisible(False)
         for number, net_name in (("1", "CAL_HI"), ("2", "CAL_LO")):
             for pad in pads(fp, number): pad.SetNet(nets[net_name])
         board.Add(fp); fps[ref] = fp
+    fps["JHI"] = pomona_73099("JHI", "73099-2 RED", 43.0, 64.0, nets["CAL_HI"])
+    fps["JLO"] = pomona_73099("JLO", "73099-0 BLACK", 61.0, 64.0, nets["CAL_LO"])
     for index, (x, y) in enumerate(((5,5),(99,5),(5,71),(99,71)), 1):
         hole = footprint("MountingHole:MountingHole_3.5mm"); hole.SetReference(f"H{index}"); hole.SetValue("ENCLOSURE STANDOFF FAI REQUIRED"); hole.SetPosition(pcbnew.VECTOR2I_MM(x,y)); hole.SetBoardOnly(True); hole.SetExcludedFromBOM(True); hole.SetExcludedFromPosFiles(True); hole.Reference().SetVisible(False); hole.Value().SetVisible(False); board.Add(hole)
     corners = ((0,0),(104,0),(104,76),(0,76))
@@ -172,12 +214,15 @@ def pcb_mode() -> int:
     def pos(ref, pin):
         p = pads(fps[ref], pin)[0].GetPosition(); return pcbnew.ToMM(p.x), pcbnew.ToMM(p.y)
     for pin, net_name, ybus in (("1", "CAL_HI", 48.0), ("2", "CAL_LO", 32.0)):
-        a, b, c = pos("JPS", pin), pos("JDMM", pin), pos("JDUT", pin)
+        a, c = pos("JPS", pin), pos("JDUT", pin)
+        b = pos("JHI" if net_name == "CAL_HI" else "JLO", "1")
         layer = pcbnew.F_Cu if net_name == "CAL_HI" else pcbnew.B_Cu
         track(board, nets[net_name], a, (30,ybus), layer=layer); track(board, nets[net_name], (30,ybus), (74,ybus), layer=layer); track(board, nets[net_name], (74,ybus), c, layer=layer); track(board, nets[net_name], b, (b[0],ybus), layer=layer)
-    for value, x, y, size in (("ISOLATED SOURCE",16,73,1.0),("REFERENCE DMM",52,73,1.0),("ONE DISCONNECTED CHAIN",80,7,1.0),("NEVER CONNECT TO ROBOT",52,16,1.15)):
+    for value, x, y, size in (("ISOLATED SOURCE",16,73,1.0),("RED HI     DMM     BLACK LO",52,51,1.0),("ONE DISCONNECTED CHAIN",80,7,1.0),("NEVER CONNECT TO ROBOT",52,16,1.15)):
         label = pcbnew.PCB_TEXT(board); label.SetText(value); label.SetPosition(pcbnew.VECTOR2I_MM(x,y)); label.SetLayer(pcbnew.F_SilkS); label.SetTextSize(pcbnew.VECTOR2I_MM(size,size)); label.SetTextThickness(pcbnew.FromMM(.17)); board.Add(label)
     board_dir = OUT / "board"; board_dir.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(OUT / "fp-lib-table", board_dir / "fp-lib-table")
+    shutil.copytree(OUT / "HR30_CAL.pretty", board_dir / "HR30_CAL.pretty", dirs_exist_ok=True)
     pcbnew.SaveBoard(str(board_dir / f"{PROJECT}.kicad_pcb"), board)
     print("generated passive one-channel calibration fixture PCB")
     return 0
@@ -185,9 +230,11 @@ def pcb_mode() -> int:
 
 def port_rows() -> list[dict[str, object]]:
     rows = []
-    for ref, role, external in (("JPS", "ISOLATED SOURCE INPUT", "Keysight E36313A output 2 or 3"), ("JDMM", "REFERENCE MONITOR", "Fluke 87V MAX CAL voltage input"), ("JDUT", "DISCONNECTED CHAIN OUTPUT", "selected diagnostic pod JIN")):
+    for ref, role, external in (("JPS", "ISOLATED SOURCE INPUT", "Keysight E36313A output 2 or 3"), ("JDUT", "DISCONNECTED CHAIN OUTPUT", "selected diagnostic pod JIN")):
         for contact, polarity, net in ((1, "HI/+", "CAL_HI"), (2, "LO/-", "CAL_LO")):
             rows.append({"connector":ref,"role":role,"contact":contact,"polarity":polarity,"net":net,"header":"Phoenix Contact 1757242","mating_plug":"Phoenix Contact 1757019","external_endpoint":external,"parallel_contacts_on_board":3,"robot_connection_permitted":"NO","warning":WARNING})
+    for ref, polarity, net, jack, endpoint in (("JHI","HI/+","CAL_HI","Pomona 73099-2 red","Fluke V/ohm input through red TL930 lead"),("JLO","LO/-","CAL_LO","Pomona 73099-0 black","Fluke COM input through black TL930 lead")):
+        rows.append({"connector":ref,"role":"REFERENCE DMM SAFETY JACK","contact":1,"polarity":polarity,"net":net,"header":jack,"mating_plug":"Fluke TL930 4 mm patch cord","external_endpoint":endpoint,"parallel_contacts_on_board":3,"robot_connection_permitted":"NO","warning":WARNING})
     return rows
 
 
@@ -207,9 +254,9 @@ def procedure_rows() -> list[dict[str, object]]:
     steps = [
         ("CF-P01","prove robot separation","Photograph all eight pod JIN source tails disconnected from robot and cap them; continuity proves no fixture-to-robot path.","STOP if any robot, safety, actuator, PE or chassis connection exists"),
         ("CF-P02","record equipment identity","Record source, DMM, cDAQ, both NI-9229 serials, firmware/software, calibration certificates and expiry.","STOP for expired/missing calibration or failed self-test"),
-        ("CF-P03","inspect passive fixture","Continuity CAL_HI JPS-JDMM-JDUT and CAL_LO likewise; >10 Mohm between HI/LO and enclosure/PE with all external leads removed.","STOP on map, insulation or damage discrepancy"),
+        ("CF-P03","inspect passive fixture","Continuity CAL_HI JPS-JHI-JDUT and CAL_LO JPS-JLO-JDUT; >10 Mohm between HI/LO and enclosure/PE with all external leads removed.","STOP on map, insulation or damage discrepancy"),
         ("CF-P04","set isolated source","Output OFF; select one E36313A output 2 or 3; candidate 10 mA current limit; verify no earth-reference strap or series/parallel coupling.","Qualified setup approval remains required"),
-        ("CF-P05","connect reference meter","Connect voltage-only Fluke leads to JDMM; verify current jack empty and polarity correct.","STOP if meter current input is used"),
+        ("CF-P05","connect reference meter","Connect red/black TL930 leads from JHI/JLO to the Fluke V/ohm and COM inputs; verify both current jacks empty and polarity correct.","STOP if either meter current input is used"),
         ("CF-P06","connect one chain","Connect JDUT only to selected pod JIN; connect that pod through its 3 m cable, panel lane and measurement harness to one NI-9229 channel.","All seven other lanes remain disconnected from fixture"),
         ("CF-P07","zero check","Command 0 V, turn output ON, record DMM and NI samples; then output OFF.","No numerical acceptance until qualified limits are released"),
         ("CF-P08","ascending points","For each scheduled nonzero point: output OFF, set value, verify 10 mA limit, output ON, settle, record DMM and NI; output OFF before change.","Never exceed 24.0 V candidate ceiling"),
@@ -248,12 +295,15 @@ def data_rows() -> list[dict[str, object]]:
 def bom_rows() -> list[dict[str, object]]:
     return [
         {"item":"passive calibration breakout PCB","manufacturer":"SELECTION REQUIRED","order_code":"SELECTION REQUIRED","quantity":1,"basis":"104 x 76 x 1.6 mm two-layer native KiCad design","state":"FABRICATOR/STACKUP/FINISH/DFM OPEN","procurement_released":"NO","warning":WARNING},
-        {"item":"2-position 5.08 mm horizontal PCB header","manufacturer":"Phoenix Contact","order_code":"1757242","quantity":3,"basis":"JPS, JDMM, JDUT","state":"EXACT CANDIDATE","procurement_released":"NO","warning":WARNING},
-        {"item":"2-position 5.08 mm screw plug","manufacturer":"Phoenix Contact","order_code":"1757019","quantity":6,"basis":"source, DMM, normal, reverse, HI-open and LO-open labeled cables; shorting plug additional","state":"EXACT CONNECTOR; CABLE TERMINATIONS OPEN","procurement_released":"NO","warning":WARNING},
+        {"item":"2-position 5.08 mm horizontal PCB header","manufacturer":"Phoenix Contact","order_code":"1757242","quantity":2,"basis":"JPS and JDUT","state":"EXACT CANDIDATE","procurement_released":"NO","warning":WARNING},
+        {"item":"2-position 5.08 mm screw plug","manufacturer":"Phoenix Contact","order_code":"1757019","quantity":7,"basis":"source pair, normal, reverse, HI-open, LO-open and controlled short adapter","state":"EXACT CONNECTOR; CABLE TERMINATIONS DEFINED IN SEPARATE CABLE-KIT PACKAGE","procurement_released":"NO","warning":WARNING},
+        {"item":"right-angle PCB 4 mm safety jack, red","manufacturer":"Pomona Electronics","order_code":"73099-2","quantity":1,"basis":"JHI direct DMM monitor","state":"EXACT CANDIDATE; MANUFACTURER DRAWING D2134437 REV.101; RECEIVED FAI OPEN","procurement_released":"NO","warning":WARNING},
+        {"item":"right-angle PCB 4 mm safety jack, black","manufacturer":"Pomona Electronics","order_code":"73099-0","quantity":1,"basis":"JLO direct DMM monitor","state":"EXACT CANDIDATE; MANUFACTURER DRAWING D2134437 REV.101; RECEIVED FAI OPEN","procurement_released":"NO","warning":WARNING},
+        {"item":"61 cm red/black 4 mm patch-cord pair","manufacturer":"Fluke","order_code":"TL930 / part 1616671","quantity":1,"basis":"fixture JHI/JLO to 87V MAX V/ohm and COM inputs","state":"EXACT CANDIDATE; 30 V RMS/60 V DC, 8 A; RECEIPT/LEAD INSPECTION OPEN","procurement_released":"NO","warning":WARNING},
         {"item":"flanged-lid ABS enclosure 121 x 94 x 34 mm","manufacturer":"Hammond Manufacturing","order_code":"1591GFLBK","quantity":1,"basis":"fixture housing candidate","state":"EXACT ENVELOPE CANDIDATE; PCB SUPPORT/CUTOUT/FAI OPEN","procurement_released":"NO","warning":WARNING},
         {"item":"triple-output programmable DC supply","manufacturer":"Keysight","order_code":"E36313A","quantity":1,"basis":"output 2 or 3; 0-25 V / 0-2 A; low-current range available","state":"BORROW CANDIDATE; RECEIPT/CALIBRATION/ISOLATION CHECK OPEN","procurement_released":"NO","warning":WARNING},
         {"item":"traceably calibrated DMM","manufacturer":"Fluke","order_code":"5206068 (87V MAX CAL)","quantity":1,"basis":"independent source-voltage reference","state":"EXACT CANDIDATE; CERTIFICATE/DUE DATE/LEAD INSPECTION OPEN","procurement_released":"NO","warning":WARNING},
-        {"item":"source and fault-injection cable set","manufacturer":"SELECTION REQUIRED","order_code":"SELECTION REQUIRED","quantity":6,"basis":"normal, reverse, HI-open, LO-open, short and source leads; keyed labels required","state":"CONDUCTOR/TERMINATION/STRAIN-RELIEF SELECTION OPEN","procurement_released":"NO","warning":WARNING},
+        {"item":"source and fault-injection cable set","manufacturer":"PROJECT ASSEMBLY","order_code":"HR30-MCF-CK-P0.1","quantity":1,"basis":"normal, reverse, HI-open, LO-open, short and source leads; keyed labels required","state":"DEFINED IN SEPARATE CABLE-KIT PACKAGE; UNBUILT","procurement_released":"NO","warning":WARNING},
     ]
 
 
@@ -265,6 +315,8 @@ def source_rows() -> list[dict[str, object]]:
         {"source_id":"CF-S04","manufacturer":"Phoenix Contact","document":"MSTB 2,5/2-ST-5,08 product page","revision_or_date":"live official page accessed 2026-08-19; page revision not stated","url":PHOENIX_PLUG_URL,"verified":"1757019 mating screw plug family","open_boundary":"wire range, strip/ferrule method and retention for exact cable","warning":WARNING},
         {"source_id":"CF-S05","manufacturer":"Hammond Manufacturing","document":"1591 series product page and current family drawing","revision_or_date":"live official page accessed 2026-08-19","url":HAMMOND_URL,"verified":"1591GFLBK nominal 121 x 94 x 34 mm flanged-lid ABS enclosure family","open_boundary":"internal PCB supports, connector cutouts and received FAI","warning":WARNING},
         {"source_id":"CF-S06","manufacturer":"National Instruments","document":"NI-9229 specifications","revision_or_date":"live official documentation accessed 2026-08-19; revision not stated on page","url":NI9229_URL,"verified":"four simultaneously sampled differential channels and published input characteristics","open_boundary":"received module identity/calibration and complete-chain uncertainty","warning":WARNING},
+        {"source_id":"CF-S07","manufacturer":"Pomona Electronics","document":"Model 73099 technical data sheet D2134437 rev.101","revision_or_date":"rev.101; copyright 2019; live official PDF accessed 2026-08-19","url":POMONA_73099_URL,"verified":"red 73099-2 and black 73099-0 right-angle PCB safety jacks; official drill pattern; CAT III 1000 V/CAT IV 600 V, 24 A","open_boundary":"received-part pin/commoning check, PCB/enclosure FAI and application review","warning":WARNING},
+        {"source_id":"CF-S08","manufacturer":"Fluke","document":"TL930 product page","revision_or_date":"live official page accessed 2026-08-19; page revision not stated","url":FLUKE_TL930_URL,"verified":"part 1616671; red/black pair; 61 cm; multi-stacking 4 mm plugs; 30 V RMS/60 V DC, 8 A","open_boundary":"received lead inspection and exact 87V MAX input fit","warning":WARNING},
     ]
 
 
@@ -285,9 +337,9 @@ def hold_rows() -> list[dict[str, object]]:
 
 def inspection_rows() -> list[dict[str, object]]:
     tests = [
-        ("CF-T01","board continuity","JPS.1/JDMM.1/JDUT.1 common; .2 likewise; no cross pair"),
+        ("CF-T01","board continuity","JPS.1/JHI.1/JDUT.1 common; JPS.2/JLO.1/JDUT.2 common; no cross pair"),
         ("CF-T02","mutual isolation",">10 Mohm between CAL_HI, CAL_LO, enclosure and PE with all external cables removed; limit requires qualified confirmation"),
-        ("CF-T03","connector polarity","all six contacts and every labeled cable match connector/contact map"),
+        ("CF-T03","connector polarity","all six external contacts and every labeled cable match connector/contact map; JHI red and JLO black"),
         ("CF-T04","enclosure/strain relief","received board supports, clearances, lid, cutouts, guards, labels and clamps inspected"),
         ("CF-T05","robot separation","fixture has no continuity to robot, safety, actuator, PE, chassis or sync slate"),
         ("CF-T06","source current limit","candidate 10 mA behavior verified into dedicated shorting plug without exceeding received ratings"),
@@ -309,9 +361,12 @@ def write_cad() -> None:
     assembly.add(enclosure, name="HAMMOND_1591GFLBK_ENVELOPE", color=cq.Color(0.05,0.13,0.28,0.35))
     assembly.add(lid, name="FLANGED_LID", color=cq.Color(0.05,0.13,0.28,0.45))
     assembly.add(board, name="PASSIVE_BREAKOUT_PCB", color=cq.Color(0.05,0.45,0.22))
-    for name, x, y, angle in (("JPS",-36,0,0),("JDMM",0,22,90),("JDUT",36,0,0)):
+    for name, x, y, angle in (("JPS",-36,0,0),("JDUT",36,0,0)):
         connector = cq.Workplane("XY").box(12,10,9).translate((x,y,13))
         assembly.add(connector, name=name, color=cq.Color(0.16,0.55,0.30))
+    for name, x, color in (("JHI_RED",-9,cq.Color(0.85,0.05,0.05)),("JLO_BLACK",9,cq.Color(0.04,0.04,0.04))):
+        jack = cq.Workplane("XY").box(12,33,14.9).translate((x,30,16))
+        assembly.add(jack, name=name, color=color)
     if not exportAssembly(assembly, str(OUT / "HR30_measurement_chain_calibration_fixture_candidate.step")):
         raise RuntimeError("STEP export failed")
     if not exportGLTF(assembly, str(OUT / "HR30_measurement_chain_calibration_fixture_candidate.glb"), binary=True):
@@ -319,7 +374,7 @@ def write_cad() -> None:
 
 
 def make_svg() -> None:
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760"><rect width="1600" height="760" fill="#f7fbff"/><style>text{{font-family:system-ui,Segoe UI,sans-serif;fill:#0b1d35}}.h{{font-size:36px;font-weight:900}}.t{{font-size:18px;font-weight:800}}.s{{font-size:14px}}.box{{fill:#fff;stroke:#082d67;stroke-width:3}}.fixture{{fill:#e4f6ff;stroke:#145ca8;stroke-width:4}}.wire{{stroke:#145ca8;stroke-width:5;fill:none}}.ref{{stroke:#d39b00;stroke-width:5;fill:none}}.warn{{fill:#ffc83d;stroke:#6e4d00;stroke-width:3}}</style><text class="h" x="48" y="56">Off-robot calibration of one complete floating measurement lane</text><rect class="warn" x="48" y="78" width="1504" height="58" rx="10"/><text class="t" x="72" y="113">UNBUILT - ROBOT CONNECTION PROHIBITED - NUMERIC ACCEPTANCE LIMITS OPEN - ZERO SAFETY CREDIT</text><rect class="box" x="55" y="270" width="245" height="150" rx="16"/><text class="t" x="80" y="312">Keysight E36313A</text><text class="s" x="80" y="345">Output 2 or 3 / isolated check</text><text class="s" x="80" y="375">0-24 V points / 10 mA candidate</text><rect class="fixture" x="365" y="235" width="320" height="220" rx="18"/><text class="t" x="392" y="280">Passive calibration fixture</text><text class="s" x="392" y="315">JPS source - JDMM monitor - JDUT out</text><text class="s" x="392" y="345">104 x 76 mm routed PCB</text><text class="s" x="392" y="375">1591GFLBK envelope candidate</text><path class="wire" d="M300 330 H365"/><rect class="box" x="390" y="520" width="270" height="120" rx="16"/><text class="t" x="420" y="560">Fluke 87V MAX CAL</text><text class="s" x="420" y="590">Actual source reference at JDMM</text><path class="ref" d="M525 520 V455"/><rect class="box" x="755" y="270" width="205" height="150" rx="16"/><text class="t" x="785" y="312">One DP pod</text><text class="s" x="785" y="345">2 x 100 kOhm / lead</text><text class="s" x="785" y="375">source tail disconnected</text><path class="wire" d="M685 330 H755"/><rect class="box" x="1025" y="270" width="205" height="150" rx="16"/><text class="t" x="1055" y="312">3 m cable + panel</text><text class="s" x="1055" y="345">one floating lane</text><text class="s" x="1055" y="375">10.2 kOhm / lead</text><path class="wire" d="M960 330 H1025"/><rect class="box" x="1295" y="270" width="250" height="150" rx="16"/><text class="t" x="1325" y="312">NI-9229 channel</text><text class="s" x="1325" y="345">raw differential samples</text><text class="s" x="1325" y="375">gain/offset/uncertainty fit</text><path class="wire" d="M1230 330 H1295"/><text class="t" x="55" y="700">Repeat sequentially for CH-AI-01 through CH-AI-08. Seven fixture inputs remain disconnected at every run.</text></svg>'''
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760"><rect width="1600" height="760" fill="#f7fbff"/><style>text{{font-family:system-ui,Segoe UI,sans-serif;fill:#0b1d35}}.h{{font-size:36px;font-weight:900}}.t{{font-size:18px;font-weight:800}}.s{{font-size:14px}}.box{{fill:#fff;stroke:#082d67;stroke-width:3}}.fixture{{fill:#e4f6ff;stroke:#145ca8;stroke-width:4}}.wire{{stroke:#145ca8;stroke-width:5;fill:none}}.ref{{stroke:#d39b00;stroke-width:5;fill:none}}.warn{{fill:#ffc83d;stroke:#6e4d00;stroke-width:3}}</style><text class="h" x="48" y="56">Off-robot calibration of one complete floating measurement lane</text><rect class="warn" x="48" y="78" width="1504" height="58" rx="10"/><text class="t" x="72" y="113">UNBUILT - ROBOT CONNECTION PROHIBITED - NUMERIC ACCEPTANCE LIMITS OPEN - ZERO SAFETY CREDIT</text><rect class="box" x="55" y="270" width="245" height="150" rx="16"/><text class="t" x="80" y="312">Keysight E36313A</text><text class="s" x="80" y="345">Output 2 or 3 / isolated check</text><text class="s" x="80" y="375">0-24 V points / 10 mA candidate</text><rect class="fixture" x="365" y="235" width="320" height="220" rx="18"/><text class="t" x="392" y="280">Passive calibration fixture</text><text class="s" x="392" y="315">JPS source - JHI/JLO DMM - JDUT out</text><text class="s" x="392" y="345">104 x 76 mm routed PCB</text><text class="s" x="392" y="375">Pomona safety jacks / 1591GFLBK</text><path class="wire" d="M300 330 H365"/><rect class="box" x="390" y="520" width="270" height="120" rx="16"/><text class="t" x="420" y="560">Fluke 87V MAX CAL</text><text class="s" x="420" y="590">TL930 red/black patch pair</text><path class="ref" d="M525 520 V455"/><rect class="box" x="755" y="270" width="205" height="150" rx="16"/><text class="t" x="785" y="312">One DP pod</text><text class="s" x="785" y="345">2 x 100 kOhm / lead</text><text class="s" x="785" y="375">source tail disconnected</text><path class="wire" d="M685 330 H755"/><rect class="box" x="1025" y="270" width="205" height="150" rx="16"/><text class="t" x="1055" y="312">3 m cable + panel</text><text class="s" x="1055" y="345">one floating lane</text><text class="s" x="1055" y="375">10.2 kOhm / lead</text><path class="wire" d="M960 330 H1025"/><rect class="box" x="1295" y="270" width="250" height="150" rx="16"/><text class="t" x="1325" y="312">NI-9229 channel</text><text class="s" x="1325" y="345">raw differential samples</text><text class="s" x="1325" y="375">gain/offset/uncertainty fit</text><path class="wire" d="M1230 330 H1295"/><text class="t" x="55" y="700">Repeat sequentially for CH-AI-01 through CH-AI-08. Seven fixture inputs remain disconnected at every run.</text></svg>'''
     (OUT / "off-robot-calibration-architecture.svg").write_text(svg + "\n", encoding="utf-8")
 
 
@@ -389,7 +444,7 @@ def write_package() -> None:
     (OUT / "source-binding.json").write_text(json.dumps(binding, indent=2) + "\n", encoding="utf-8")
     status = {"identifier":IDENTIFIER,"date":DATE,"warning":WARNING,"channel_count":8,"simultaneous_fixture_channels":1,"scheduled_points":72,"repeats_per_point":3,"native_kicad_sheet_count":2,"erc_errors":0,"erc_warnings":0,"drc_violations":0,"robot_connection_permitted":False,"fixture_built":False,"fixture_inspection_executed":False,"instrument_calibration_verified":False,"calibration_executed":False,"uncertainty_accepted":False,"numeric_acceptance_limits_released":False,"fer_g11_closed":False,"functional_safety_credit":False,"procurement_authority":False,"fabrication_authority":False,"assembly_authority":False,"connection_authority":False,"powered_robot_test_authority":False,"motion_authority":False,"walking_authority":False,"energization_authority":False}
     (OUT / "calibration-fixture-status.json").write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
-    (OUT / "README.md").write_text(f'''# HR-30 measurement-chain calibration fixture P0.1\n\n**{WARNING}**\n\nThis package defines a passive one-channel source breakout for calibrating the complete disconnected diagnostic chain: one source-local pod, its three-metre cable, one measurement-panel lane, its harness and one NI-9229 input. A Keysight E36313A candidate provides 0-24 V points with a provisional 10 mA current limit. A Fluke 87V MAX CAL candidate independently measures the actual source at the fixture.\n\nThe fixture has no PE, chassis, USB, robot or safety-circuit connection. Exactly one lane is driven at a time. The point schedule, fault-characterization adapters, data schema, routed PCB and physical enclosure model are design artifacts only. Build, calibration, numeric acceptance limits, uncertainty review, source-terminal taps, FER-G11 and every robot work authority remain open.\n''', encoding="utf-8")
+    (OUT / "README.md").write_text(f'''# HR-30 measurement-chain calibration fixture P0.1\n\n**{WARNING}**\n\nThis package defines a passive one-channel source breakout for calibrating the complete disconnected diagnostic chain: one source-local pod, its three-metre cable, one measurement-panel lane, its harness and one NI-9229 input. A Keysight E36313A candidate provides 0-24 V points with a provisional 10 mA current limit. A Fluke 87V MAX CAL candidate independently measures the actual source through exact Pomona 73099-2/73099-0 PCB safety-jack and Fluke TL930 patch-cord candidates.\n\nThe fixture has no PE, chassis, USB, robot or safety-circuit connection. Exactly one lane is driven at a time. The point schedule, fault-characterization adapters, data schema, routed PCB and physical enclosure model are design artifacts only. Build, received-part FAI, calibration, numeric acceptance limits, uncertainty review, source-terminal taps, FER-G11 and every robot work authority remain open.\n''', encoding="utf-8")
     write_cad(); make_svg(); make_html()
     shutil.copy2(Path(__file__), OUT / "measurement-chain-calibration-fixture-source.py")
     shutil.copy2(ROOT / "tools" / "check_hr30_measurement_chain_calibration_fixture_p01.py", OUT / "measurement-chain-calibration-fixture-checker.py")
