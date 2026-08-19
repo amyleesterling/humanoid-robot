@@ -478,10 +478,10 @@ def build_sheets(model):
     ])
     sheets.append(s14)
 
-    s15 = model.Sheet(15, "15_pelvis_aux_imu.kicad_sch", "Three-rail auxiliary conversion and pelvis inertial sensing", "Three independent REC30E-2405SZ candidates supply compute, HMI and deterministic control; protection and validation remain open.")
+    s15 = model.Sheet(15, "15_pelvis_aux_imu.kicad_sch", "Three-rail auxiliary conversion and pelvis inertial sensing", "Two REC30E-2405SZ candidates supply compute/control and one TEN 40-1211E supplies HMI; protection and validation remain open.")
     s15.components = [
         component(model, "AUXCOM1", "RECOM REC30E-2405SZ COMPUTE-RAIL CANDIDATE", [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-DISABLE", "ACTIVE-LOW DISABLE", "AUX_COMPUTE_DISABLE", "left"), ("LOG-OUT", "COMPUTE 5.1 V", "COMPUTE_5V1", "right"), ("LOG-RET-OUT", "ISOLATED SECONDARY RETURN", "AUX_0V_STAR", "right")], "REC30E-Z datasheet REV 1/2024: 9-36 V input, 5 V/6 A, 30 W. Fuse, reverse/inrush, trim, harness, thermal, EMC and received-part FAI remain open.", (85, 105), width=105.0),
-        component(model, "AUXHMI1", "RECOM REC30E-2405SZ HMI-RAIL CANDIDATE", [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-DISABLE", "ACTIVE-LOW DISABLE", "AUX_HMI_DISABLE", "left"), ("LOG-OUT", "HMI 5 V", "HMI_5V0", "right"), ("LOG-RET-OUT", "ISOLATED SECONDARY RETURN", "AUX_0V_STAR", "right")], "The current coarse HMI peak is 30 W, leaving zero published headroom. Measured-load closure or redesign is mandatory; protection and validation remain open.", (215, 105), width=105.0),
+        component(model, "AUXHMI1", "TRACO POWER TEN 40-1211E HMI-RAIL CANDIDATE", [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-DISABLE", "ACTIVE-LOW DISABLE", "AUX_HMI_DISABLE", "left"), ("LOG-OUT", "HMI 5 V", "HMI_5V0", "right"), ("LOG-RET-OUT", "ISOLATED SECONDARY RETURN", "AUX_0V_STAR", "right")], "TEN 40E datasheet Rev. August 7, 2024: 9-18 V input, 5 V/8 A, 40 W. The 30 W coarse HMI peak has 10 W planning headroom; protection, physical load, transient, thermal, EMC and received-part FAI remain open.", (215, 105), width=105.0),
         component(model, "AUXCTL1", "RECOM REC30E-2405SZ CONTROL-RAIL CANDIDATE", [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-DISABLE", "ACTIVE-LOW DISABLE", "AUX_CONTROL_DISABLE", "left"), ("LOG-OUT", "CONTROL 5 V", "AUX_5V_SAFE", "right"), ("LOG-RET-OUT", "ISOLATED SECONDARY RETURN", "AUX_0V_STAR", "right")], "This is a deterministic-control rail candidate, not a safety supply. Fuse, reverse/inrush, trim, grounding, harness, thermal and EMC evidence remain open.", (345, 105), width=105.0),
         component(model, "AUXSTAR1", "SINGLE PROPOSED AUXILIARY RETURN STAR / PE BOND BOUNDARY", [("LOG-RET", "COMMON SECONDARY RETURN", "AUX_0V_STAR", "left"), ("LOG-PE", "SOLE PROPOSED PE BOND", "FRAME_PE_BOUNDARY", "right")], "Exact star-point implementation and the sole possible DC 0 V/PE bond remain SELECTION REQUIRED. No other secondary bond is permitted without a signed grounding revision.", (90, 200), width=105.0),
         component(model, "IMU1", "PELVIS 6/9-AXIS IMU - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "AUX_5V_SAFE", "left"), ("LOG-RET", "RETURN", "AUX_0V_STAR", "left"), ("LOG-DATA", "DETERMINISTIC SENSOR DATA", "PELVIS_IMU_DATA", "right"), ("LOG-INT", "DATA READY / FAULT", "PELVIS_IMU_INT", "right")], "Exact device, range, bandwidth, timestamping, calibration, connector and physical pins remain open.", (310, 200), width=92.0),
@@ -647,10 +647,11 @@ def write_docs(sheets):
         "individual_actuator_power_feed_count": 25,
         "regulated_ttl_branch_count": 3,
         "three_rail_auxiliary_architecture_encoded": True,
-        "auxiliary_converter_candidate": "3x RECOM REC30E-2405SZ",
+        "auxiliary_converter_candidate": "2x RECOM REC30E-2405SZ + 1x TRACO POWER TEN 40-1211E",
         "auxiliary_positive_rails": ["COMPUTE_5V1", "HMI_5V0", "AUX_5V_SAFE"],
         "auxiliary_return_star": "AUX_0V_STAR",
-        "auxiliary_hmi_zero_peak_headroom_blocker": True,
+        "auxiliary_hmi_peak_headroom_w": 10,
+        "auxiliary_hmi_zero_peak_headroom_blocker": False,
         "reset_can_command_motion": False,
         "physical_pin_mapping_reconciled": False,
         "interface_devices_selected": False, "protection_values_selected": False,

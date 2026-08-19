@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\amyle\\Documents\\New project\\h30e\\hr30\\whole-body-p0.1\\electrical\\kicad\\hr30-whole-body-electrical-p0.1\\hr30-whole-body-electrical-p0.1.kicad_sch")
-		(date "2026-08-19T05:17:55")
+		(date "2026-08-19T07:47:11")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "PROJECT_STATUS") "PRELIMINARY - NOT APPROVED FOR CONNECTION, FABRICATION, MOTION OR ENERGIZATION")
@@ -9404,8 +9404,8 @@
 		)
 		(comp
 			(ref "AUXHMI1")
-			(value "RECOM REC30E-2405SZ HMI-RAIL CANDIDATE")
-			(description "The current coarse HMI peak is 30 W, leaving zero published headroom. Measured-load closure or redesign is mandatory; protection and validation remain open.")
+			(value "TRACO POWER TEN 40-1211E HMI-RAIL CANDIDATE")
+			(description "TEN 40E datasheet Rev. August 7, 2024: 9-18 V input, 5 V/8 A, 40 W. The 30 W coarse HMI peak has 10 W planning headroom; protection, physical load, transient, thermal, EMC and received-part FAI remain open.")
 			(fields
 				(field
 					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
@@ -9413,7 +9413,7 @@
 					(name "Evidence")
 				)
 				(field
-					(name "Display") "RECOM REC30E-2405SZ HMI-RAIL CANDIDATE")
+					(name "Display") "TRACO POWER TEN 40-1211E HMI-RAIL CANDIDATE")
 				(field
 					(name "Footprint")
 				)
@@ -9421,12 +9421,12 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "The current coarse HMI peak is 30 W, leaving zero published headroom. Measured-load closure or redesign is mandatory; protection and validation remain open.")
+					(name "Description") "TEN 40E datasheet Rev. August 7, 2024: 9-18 V input, 5 V/8 A, 40 W. The 30 W coarse HMI peak has 10 W planning headroom; protection, physical load, transient, thermal, EMC and received-part FAI remain open.")
 			)
 			(libsource
 				(lib "PBV3")
 				(part "AUXHMI1")
-				(description "The current coarse HMI peak is 30 W, leaving zero published headroom. Measured-load closure or redesign is mandatory; protection and validation remain open.")
+				(description "TEN 40E datasheet Rev. August 7, 2024: 9-18 V input, 5 V/8 A, 40 W. The 30 W coarse HMI peak has 10 W planning headroom; protection, physical load, transient, thermal, EMC and received-part FAI remain open.")
 			)
 			(property
 				(name "Status")
@@ -9438,7 +9438,7 @@
 			)
 			(property
 				(name "Display")
-				(value "RECOM REC30E-2405SZ HMI-RAIL CANDIDATE")
+				(value "TRACO POWER TEN 40-1211E HMI-RAIL CANDIDATE")
 			)
 			(property
 				(name "Sheetname")
@@ -11127,12 +11127,12 @@
 		(libpart
 			(lib "PBV3")
 			(part "AUXHMI1")
-			(description "The current coarse HMI peak is 30 W, leaving zero published headroom. Measured-load closure or redesign is mandatory; protection and validation remain open.")
+			(description "TEN 40E datasheet Rev. August 7, 2024: 9-18 V input, 5 V/8 A, 40 W. The 30 W coarse HMI peak has 10 W planning headroom; protection, physical load, transient, thermal, EMC and received-part FAI remain open.")
 			(fields
 				(field
 					(name "Reference") "AUXHMI1")
 				(field
-					(name "Value") "RECOM REC30E-2405SZ HMI-RAIL CANDIDATE")
+					(name "Value") "TRACO POWER TEN 40-1211E HMI-RAIL CANDIDATE")
 				(field
 					(name "Footprint")
 				)
@@ -11140,14 +11140,14 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "The current coarse HMI peak is 30 W, leaving zero published headroom. Measured-load closure or redesign is mandatory; protection and validation remain open.")
+					(name "Description") "TEN 40E datasheet Rev. August 7, 2024: 9-18 V input, 5 V/8 A, 40 W. The 30 W coarse HMI peak has 10 W planning headroom; protection, physical load, transient, thermal, EMC and received-part FAI remain open.")
 				(field
 					(name "Status") "SELECTION REQUIRED - LOGICAL CONNECTIVITY ONLY")
 				(field
 					(name "Evidence")
 				)
 				(field
-					(name "Display") "RECOM REC30E-2405SZ HMI-RAIL CANDIDATE")
+					(name "Display") "TRACO POWER TEN 40-1211E HMI-RAIL CANDIDATE")
 			)
 			(pins
 				(pin

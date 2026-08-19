@@ -2,9 +2,9 @@
 <robot name="hr30_whole_body_p01">
   <link name="base_link">
     <inertial>
-      <origin xyz="-0.003051 0.007384 -0.000262" rpy="0 0 0" />
-      <mass value="1.550063" />
-      <inertia ixx="0.002057063" ixy="0" ixz="0" iyy="0.003736298" iyz="0" izz="0.004527477" />
+      <origin xyz="-0.000853 0.006730 0.000736" rpy="0 0 0" />
+      <mass value="1.647263" />
+      <inertia ixx="0.002186056" ixy="0" ixz="0" iyy="0.003970591" iyz="0" izz="0.004811382" />
     </inertial>
     <visual>
       <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />

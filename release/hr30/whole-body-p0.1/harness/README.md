@@ -8,6 +8,18 @@ The 76.08 A figure is only the arithmetic sum of published 12 V momentary stall-
 
 The controller data boundary contains reference and data only; it deliberately has no actuator-VDD contact. Standard ROBOTIS X3P/X4P cable families include VDD, so the exact power-injection breakout/cable construction and no-backfeed verification remain open.
 
+<!-- HR30-DUTY-CURRENT-P01-START -->
+## Bounded current-duty envelope
+
+The [interactive duty-current envelope](duty-current-envelope-p0.1/index.html) converts the frozen 25-axis whole-body control commands into 50 Hz torque-producing current equivalents and per-axis/per-bus peak, P95, RMS and mean evidence. Active gripping, idle current, losses, transients, regeneration, faults, robustness and thermal correlation remain open, so the result does not release wires, connectors, protection or a source.
+<!-- HR30-DUTY-CURRENT-P01-END -->
+
+<!-- HR30-DUTY-THERMAL-P01-START -->
+## Route-specific duty and thermal planning
+
+The [interactive duty/thermal screen](duty-thermal-screen-p0.1/index.html) binds the two frozen whole-body sequence traces to all 25 routed actuator power pairs, eight electrical buses and every reserved power corridor. It supplies bounded torque-current drop/loss and bundle test cases, while keeping total normal current, CF130 resistance, hot ampacity, faults, protection and all powered work open.
+<!-- HR30-DUTY-THERMAL-P01-END -->
+
 <!-- HR30-ARTICULATED-POWER-HARNESS-P01-START -->
 ## Articulated power harness
 
@@ -25,15 +37,3 @@ The [interactive distributed-power guide](distributed-power-harness-successor-p0
 
 The [neutral power-route guide](power-route-guides-p0.1/index.html) retains six editable tangent 3D centerlines as fixed-pose planning evidence. The continuous whole-limb cable/rigid-guard topology is rejected; use the articulated-power-harness successor for moving joints.
 <!-- HR30-POWER-ROUTE-GUIDES-P01-END -->
-
-<!-- HR30-DUTY-CURRENT-P01-START -->
-## Bounded current-duty envelope
-
-The [interactive duty-current envelope](duty-current-envelope-p0.1/index.html) converts the frozen 25-axis whole-body control commands into 50 Hz torque-producing current equivalents and per-axis/per-bus peak, P95, RMS and mean evidence. Active gripping, idle current, losses, transients, regeneration, faults, robustness and thermal correlation remain open, so the result does not release wires, connectors, protection or a source.
-<!-- HR30-DUTY-CURRENT-P01-END -->
-
-<!-- HR30-DUTY-THERMAL-P01-START -->
-## Route-specific duty and thermal planning
-
-The [interactive duty/thermal screen](duty-thermal-screen-p0.1/index.html) binds the two frozen whole-body sequence traces to all 25 routed actuator power pairs, eight electrical buses and every reserved power corridor. It supplies bounded torque-current drop/loss and bundle test cases, while keeping total normal current, CF130 resistance, hot ampacity, faults, protection and all powered work open.
-<!-- HR30-DUTY-THERMAL-P01-END -->

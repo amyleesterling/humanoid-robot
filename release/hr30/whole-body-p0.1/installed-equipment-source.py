@@ -203,12 +203,12 @@ def build() -> list[Equipment]:
             "exact product family candidate and installed clearance envelope; current margin, transients, protection, thermal behavior and reverse-energy validation remain open",
             "torso", power)
     add("EQ-P01-AUX-CONVERTER", "P01", "auxiliary power conversion",
-        "120 x 58 mm three-rail carrier candidate with 3x RECOM REC30E-2405SZ; compute/HMI/control positive rails remain separate",
-        box(120, 16, 58, (0, -4, 408), 2), 0.160, 0.0, 9.0,
+        "150 x 58 mm three-rail carrier candidate with 2x RECOM REC30E-2405SZ + 1x TRACO POWER TEN 40-1211E; compute/HMI/control positive rails remain separate",
+        box(150, 16, 58, (0, -4, 408), 2), 0.185, 0.0, 9.0,
         "upper pelvis vertical electronics datum", "-Y front-cover withdrawal",
         "three protected 12 V inputs; COMPUTE_5V1/HMI_5V0/AUX_5V_SAFE outputs; returns meet at AUX_0V_STAR; fuse/reverse-inrush/bond/harness open",
-        "https://recom-power.com/en/rec-s-REC30E-Z.html", "REC30E-Z datasheet REV 1/2024; live product page accessed 2026-08-19",
-        "exact converter candidate and native carrier package exist; HMI rail has zero coarse-peak headroom; protection, trim, thermal, EMC, DFM/FAI and physical validation remain open",
+        "https://www.tracopower.com/overview/ten40e", "TEN 40E datasheet Rev. August 7, 2024 plus REC30E-Z datasheet REV 1/2024; live product pages accessed 2026-08-19",
+        "exact converter candidates and native carrier package exist; HMI rail has 10 W coarse-peak headroom; protection, trim, thermal, EMC, DFM/FAI and physical validation remain open",
         "base_link", power)
     add("EQ-P01-IMU", "P01", "pelvis inertial sensor",
         "industrial 6/9-axis IMU module candidate; exact model required",
@@ -431,7 +431,8 @@ def update_package(items: list[Equipment]) -> None:
         seen.add(key)
         source_rows.append({
             "candidate": item.candidate, "manufacturer_source_url": item.source_url,
-            "document_revision_or_date": item.source_revision, "accessed_date": ACCESSED,
+            "document_revision_or_date": item.source_revision,
+            "accessed_date": "2026-08-19" if item.item_id == "EQ-P01-AUX-CONVERTER" else ACCESSED,
             "verified_or_provisional": item.evidence_state, "selection_state": "CANDIDATE / SELECTION REQUIRED",
             "warning": WARNING,
         })
@@ -506,6 +507,11 @@ The former empty torso, pelvis, head and foot reservations now contain {len(item
             row["candidate"] = "Pi Active Cooler plus head tach fan; installed envelopes/masses modeled; torso duct/fan selection open"
         elif row["item_id"] == "HR30-BOM-032":
             row["candidate"] = "distributed 0.340 kg planning allowance placed by module; exact counts/grades/torques/locking remain open"
+        elif row["item_id"] == "HR30-BOM-025":
+            row["manufacturer"] = "SELECTION REQUIRED / RECOM / TRACO POWER"
+            row["candidate"] = ("tethered current-limited controlled 12 V source plus 2x REC30E-2405SZ compute/control converters "
+                                "and 1x TEN 40-1211E HMI converter on the 150 x 58 mm auxiliary carrier; source, protection, "
+                                "wiring, PE bond, thermal and physical validation remain open")
     write_csv(bom_path, bom)
 
     package_status_path = OUT / "package-status.json"

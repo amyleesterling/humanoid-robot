@@ -17,7 +17,7 @@ P0.1 now also includes floating-base 25-DOF URDF and MJCF models, a historical 9
 P0.1 now includes an editable CAD assembly that converts the visual body envelopes into a candidate central frame, paired windowed limb plates, foot carriers, hollow split torso/pelvis/head shells, removable body panels, both seventeen-part custom gripper mechanisms, and twelve segregated harness corridors. Separate neck data and actuator-power branches prevent the head actuators from borrowing the data-only corridor. The current mass-margin correction preserves every joint datum and outer module interface while using 2.5 mm windowed leg plates/ties and foot carriers, 3.5 mm slotted arm links, 18 x 18 x 1.5 mm hollow torso rails, a 2.0 mm nominal shoulder-bridge wall, a 6 mm windowed waist bridge, and 0.8 mm thermoformed-polycarbonate or PA12 body/limb panels. Local inserts and bosses, buckling, bilateral shoulder loading, gait/fall loads, foot pressure distribution, payload, fatigue, forming/SLS qualification and impact stiffness remain open. The CAD density screen is 1.311 kg for fixed/mechanism parts and 0.279 kg for removable covers. These numbers feed the downstream mass reconciliation but remain geometry/material-assumption screens; they do not establish as-built whole-robot mass or strength. No drawing, tolerance, material, fastener, harness, structural, DFM, or work release follows.
 ## Whole-body mass reconciliation
 
-The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 98 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 156 located screw candidates, 10 catalogue belt candidates and 64 located equipment/harness/contact items. The active tether-first dynamics model is 9.901 kg with neutral COM Z=0.348 m and 0.099 kg planning margin to the 10 kg hard limit. The separate onboard-envelope model is 11.367 kg and includes 1.357 kg for the rejected direct-source pack envelope, cassette and unselected protection allowance. It exceeds the product hard limit and is packaging evidence, not an installed energy configuration. Exact protection, received masses and physical properties remain open.
+The 9.63 kg allocation is no longer presented as the current dynamics mass. A reproducible reconciliation now combines 98 fabrication-CAD parts, 25 published actuator masses, 142 joint-hardware candidate parts (including catalogue bearing masses), 156 located screw candidates, 10 catalogue belt candidates and 64 located equipment/harness/contact items. The active tether-first dynamics model is 9.928 kg with neutral COM Z=0.349 m and 0.072 kg planning margin to the 10 kg hard limit. The separate onboard-envelope model is 11.394 kg and includes 1.357 kg for the rejected direct-source pack envelope, cassette and unselected protection allowance. It exceeds the product hard limit and is packaging evidence, not an installed energy configuration. Exact protection, received masses and physical properties remain open.
 ## Located joint fastener candidates
 
 The whole-body joint carriers now contain 156 explicit M3/M4/M5 socket-head geometry candidates across 39 plates. Every screw axis is generated from the same joint datum and carrier pattern as the body CAD. The 0.554 kg generic-steel screen is included in mass reconciliation, but exact products, threads, tapped members, torque, preload, locking, access and physical proof remain open.
@@ -76,10 +76,6 @@ The [interactive energy and safety guide](energy-safety-spine-p0.1/index.html) d
 
 The native KiCad topology correction is synchronized, but exact physical energy/safety terminals remain unselected. The 179 W operating and 727 W short-peak budgets are not source or wiring ratings. Protection, conductor sizing, fault current, stopping time, PE/0 V and functional-safety validation remain open. Reset can never command motion.
 
-
-
-
-
 <!-- HR30-LEG-DRIVETRAIN-P01-README-START -->
 ## Reduced-leg drivetrain product geometry
 
@@ -121,8 +117,6 @@ This corrects the manufacturing-universe boundary: the 98 body/frame/hand parts 
 The [transmission closure guide](transmission-closure-p0.1/index.html) maps all 39 smooth-pulley or generic-coupler predecessor placeholders to concrete successors. Twenty leg pulleys were already superseded by installed MISUMI candidates, two gripper couplers by the detailed rack-and-pinion hands, eight shoulder pulley positions now use a 16:24 5GT / 185 mm belt candidate, and nine direct axes now use four editable flanged blind-bore split-clamp adapter families. The successor whole-body STEP/GLB also corrects the wrist vendor geometry to XC330. Material, fits, retention, capacity, DFM, FAI and physical proof remain open.
 <!-- HR30-TRANSMISSION-CLOSURE-P01-README-END -->
 
-
-
 <!-- HR30-TRANSITION-BRACKETS-P01-README-START -->
 ## Actuator fixed-transition bracket CAD
 
@@ -130,7 +124,6 @@ The [interactive transition-bracket guide](harness/actuator-transition-brackets-
 
 The central connector opening is a **project-owned clearance proxy**, not a released Molex cutout. A printable nine-window diagnostic coupon, print traveler and blank inspection record are included so a received connector can be checked before all 25 brackets are revised. Official-drawing reconciliation, received-part fit, production material/process selection, cable clamp qualification, body attachment, tolerance-aware collision and physical testing remain open.
 <!-- HR30-TRANSITION-BRACKETS-P01-README-END -->
-
 
 <!-- HR30-ACTUATOR-CABLE-KIT-P01-README-START -->
 ## Actuator cable kit
@@ -148,19 +141,20 @@ The [interactive coupon guide](harness/actuator-cable-coupon-p0.1/index.html) de
 The [interactive 17-link adaptation guide](harness/interaxis-data-adapter-p0.1/index.html) binds **14 RS-485 X4P** and **3 TTL X3P** inter-actuator links to exact ROBOTIS cable-family SKUs. Each candidate removes both factory power conductors completely, leaves upstream cavities 1/2 empty, retains factory data contacts, and inserts the destination actuator's dedicated protected branch-power contacts into its combined input housing. Zero adapters have been modified, inspected, routed or communication-tested. The eight carrier-to-first-actuator interfaces are now controlled by the separate carrier-first-axis package, but their conductor, construction and validation gates remain open.
 <!-- HR30-INTERAXIS-DATA-ADAPTER-P01-README-END -->
 
-
-
-
 <!-- HR30-CARRIER-FIRST-AXIS-P01-README-START -->
 ## Carrier-to-first-axis harnesses
 
 The [interactive eight-lead guide](harness/carrier-first-axis-p0.1/index.html) binds every carrier output to its first actuator through **37 controlled contact-map rows**. Five isolated RS-485 connectors use a separate unique field-reference leg to RB0; three TTL connectors leave the field reference cavity empty so `CTRL_GND` still reaches RB0 only through `GR-PB09`. JST PA/EH housing and contact families are explicit, and both planning conductor sizes now fall within the chosen PA contact ranges. Insulation O.D., reference landing, crimp process, physical routing, waveform evidence and qualified disposition remain open; zero assemblies exist.
 <!-- HR30-CARRIER-FIRST-AXIS-P01-README-END -->
+
+
 <!-- HR30-SRS-P01-README-START -->
 ## Whole-body safety requirements P0.1
 
 The [interactive safety-requirements guide](safety-requirements-p0.1/index.html) converts the existing whole-robot stop topology, first-power firmware and restraint boundary into 24 open hazards, 12 safety/control functions, a candidate PLr allocation, 8 explicit stopping-time intervals and 20 validation cases. Achieved PL/PFHd, common-cause evidence, numerical stopping limits, physical results and qualified approval remain open. It is a reviewable SRS candidate, not permission to connect, power or move the robot.
 <!-- HR30-SRS-P01-README-END -->
+
+
 
 <!-- HR30-FIRST-ENERGIZATION-P01-README-START -->
 ## First-energization readiness
@@ -199,14 +193,6 @@ The [detailed gripper package](grippers-p0.1/index.html) contains two editable 1
 
 The [interactive assembly guide](assembly-guide-p0.1/index.html) binds all 12 physical modules, 98 fabrication candidates including both detailed hand mechanisms, 25 axes, 156 located joint fasteners, 64 installed equipment items and 14 harness assemblies into a dependency-ordered unpowered traveler. It does not release materials, tolerances, hardware, torque, assembly, powered work, motion or energization.
 <!-- HR30-ASSEMBLY-GUIDE-P01-END -->
-
-
-
-
-
-
-
-
 
 ## Joint-hardware successor reconciliation
 
@@ -248,14 +234,6 @@ The [interactive SWD adapter guide](electrical/swd-adapter-p0.1/index.html) cont
 The [interactive logic-power guide](electrical/logic-power-kit-p0.1/index.html) selects a SIGLENT SPD3303X, the exact two-contact JST boundary, red/black Alpha Wire conductors and Pomona banana plugs. The cable is unbuilt; voltage/current/OCP limits, DC-reference approval and every physical test remain open. It grants no connection or powered-work authority.
 <!-- HR30-LOGIC-POWER-KIT-P01-README-END -->
 
-
-
-
-
-
-
-
-
 <!-- HR30-WALKING-POWER-P01-README-START -->
 ## Bidirectional walking-power successor
 
@@ -268,17 +246,20 @@ The [interactive protection/conductor guide](electrical/protection-conductor-arc
 <!-- HR30-PROTECTION-CONDUCTOR-P01-README-END -->
 
 
-<!-- HR30-HEAD-HMI-HARNESS-P01-README-START -->
-## Physical head HMI harness
 
-The [interactive head HMI harness guide](harness/head-hmi-harness-p0.1/index.html) replaces generic connector notes with **8 located equipment records** and **11 routed physical links**. Both cameras now correctly use Pi 5 22-way to Camera Module 3 15-pin Standard-Mini cable candidates; the former 200 mm assumption is replaced by a 300 mm route candidate. The face display is remote rather than GPIO-stacked, and a current ReSpeaker Flex linear array/core plus two speaker candidates and a specific 5 V fan define the audio/cooling path. Exact cables, privacy controls, protection, physical fit and tests remain open.
-<!-- HR30-HEAD-HMI-HARNESS-P01-README-END -->
+
+
 
 <!-- HR30-GROUNDING-REFERENCE-P01-README-START -->
 ## Whole-robot grounding and DC-reference architecture
 
 The [interactive grounding guide](electrical/grounding-reference-architecture-p0.1/index.html) consolidates facility PE, the external panel, the SBS75G first-mate tether contact, every conductive robot module, DC return, control ground, shields and grounded test equipment into one candidate topology. It proposes one removable BR1 DC-return/PE bond at RB0 and **10 controlled bond records**. Conductor hardware, limits, measurements, jurisdiction and qualified approval remain open; it grants no work authority.
 <!-- HR30-GROUNDING-REFERENCE-P01-README-END -->
+<!-- HR30-HEAD-HMI-HARNESS-P01-README-START -->
+## Physical head HMI harness
+
+The [interactive head HMI harness guide](harness/head-hmi-harness-p0.1/index.html) replaces generic connector notes with **8 located equipment records** and **11 routed physical links**. Both cameras now correctly use Pi 5 22-way to Camera Module 3 15-pin Standard-Mini cable candidates; the former 200 mm assumption is replaced by a 300 mm route candidate. The face display is remote rather than GPIO-stacked, and a current ReSpeaker Flex linear array/core plus two speaker candidates and a specific 5 V fan define the audio/cooling path. Exact cables, privacy controls, protection, physical fit and tests remain open.
+<!-- HR30-HEAD-HMI-HARNESS-P01-README-END -->
 <!-- HR30-PROTECTIVE-BONDING-P01-README-START -->
 ## Physical protective-bonding implementation
 
@@ -291,12 +272,6 @@ The [interactive target bring-up guide](firmware/stm32-target-bringup-p0.1/index
 <!-- HR30-STM32-BRINGUP-P01-README-END -->
 
 
-
-<!-- HR30-SFI-P01-START -->
-## Safety-function implementation map
-
-The [interactive implementation map](safety-function-implementation-p0.1/index.html) binds all 12 SRS functions to current terminals and nets or marks them absent. Only SFR-01 through SFR-03 have connected candidate circuitry, and none is validated.
-<!-- HR30-SFI-P01-END -->
 
 <!-- HR30-DYNAMICS-SUCCESSOR-P01-START -->
 ## Hip-reduction dynamics successor
@@ -313,13 +288,13 @@ The [interactive torque-demand guide](torque-demand-p0.1/index.html) evaluates a
 <!-- HR30-WALKING-SEQUENCE-P01-START -->
 ## Timed whole-body walking sequence P0.1
 
-The [interactive walking-sequence guide](walking-sequence-p0.1/index.html) binds the active 9.901 kg tether-first URDF/MJCF to two bilateral 50 Hz minimum-jerk step candidates. Each trajectory ends with both feet nominally flat and one foot advanced 40 mm; all 25 joint positions, velocities and accelerations are exported. The data is simulator-only and carries no hardware motion or walking authority.
+The [interactive walking-sequence guide](walking-sequence-p0.1/index.html) binds the active 9.928 kg tether-first URDF/MJCF to two bilateral 50 Hz minimum-jerk step candidates. Each trajectory ends with both feet nominally flat and one foot advanced 40 mm; all 25 joint positions, velocities and accelerations are exported. The data is simulator-only and carries no hardware motion or walking authority.
 <!-- HR30-WALKING-SEQUENCE-P01-END -->
 
 <!-- HR30-MUJOCO-DYNAMICS-P01-START -->
 ## Executed MuJoCo dynamics checkpoint
 
-The [MuJoCo dynamics guide](mujoco-dynamics-validation-p0.1/index.html) records two complete ideal-fixture simulations of the bilateral 40 mm sequences. The corrected 9.901 kg model now compiles with positive inertia on every moving body and explicit foot/floor contacts. The fixture is numerical test equipment, not evidence of free balance, a physical fall restraint or walking authority.
+The [MuJoCo dynamics guide](mujoco-dynamics-validation-p0.1/index.html) records two complete ideal-fixture simulations of the bilateral 40 mm sequences. The corrected 9.928 kg model now compiles with positive inertia on every moving body and explicit foot/floor contacts. The fixture is numerical test equipment, not evidence of free balance, a physical fall restraint or walking authority.
 <!-- HR30-MUJOCO-DYNAMICS-P01-END -->
 
 <!-- HR30-DISTRIBUTED-POWER-HARNESS-P01-START -->
@@ -419,14 +394,6 @@ The [interactive first-energization-cell guide](first-energization-cell-p0.1/ind
 The [interactive hardware guide](first-energization-cell-hardware-p0.1/index.html) replaces the earlier loose-panel/caster concept with a **31-member fastened construction candidate**: framed doors, six captured 6 mm panels, 22 gusset brackets, 206 controlled fastener assemblies, six profile hinges, four floor-mount interfaces, a platform subframe, and a T-slot pelvis cradle. Purchased parts are modeled as interface envelopes, not machining sources. Floor anchors, guard impact, door interlocking, restraint dynamics, proof testing and FER-G02/G10/G11 remain open.
 <!-- HR30-CELL-HARDWARE-P01-END -->
 
-
-
-
-
-
-
-
-
 <!-- HR30-FER-INSTRUMENTS-P01-START -->
 ## First-energization instrumentation
 
@@ -438,10 +405,6 @@ The [interactive instrumentation guide](first-energization-instrumentation-p0.1/
 
 The [interactive measurement-boundary guide](electrical/measurement-boundary-panel-p0.1/index.html) adds a routed **210 x 134 mm native KiCad board** with eight mutually floating, current-limited differential lanes and an independent battery-powered camera/DAQ sync slate. The panel contact map is exact. Field/DAQ harnesses, resistor order codes, battery chemistry, DFM, fabrication, calibration, timing uncertainty and qualified limits remain open, so FER-G11 and every work authority remain false.
 <!-- HR30-MEASUREMENT-BOUNDARY-P01-END -->
-
-
-
-
 
 <!-- HR30-MEASUREMENT-CAL-FIXTURE-P01-START -->
 ## Off-robot measurement-chain calibration fixture
@@ -455,21 +418,10 @@ The [interactive calibration-fixture guide](electrical/measurement-chain-calibra
 The [interactive cable-kit guide](electrical/measurement-chain-calibration-cable-kit-p0.1/index.html) defines **seven physical assemblies** for the off-robot measurement-chain fixture: exact source and DMM candidates, a blue normal cable, red reverse cable, two orange open-lead adapters and a black/yellow current-limit shorting adapter. The package includes contact maps, dimensions, cut/strip/ferrule instructions, the Phoenix terminal torque range, labels, a signed traveler, inspection tests, STEP/GLB layout and manufacturer evidence. Parts are not procured; crimp/insulation limits, build, inspection, metrology review, FER-G11 and every robot authority remain open.
 <!-- HR30-MEASUREMENT-CAL-CABLE-KIT-P01-END -->
 
-
-
-## Installed equipment layout
-
-The former empty torso, pelvis, head and foot reservations now contain 64 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.787 kg. Eight bus-specific 124 x 45 mm walking-power board instances are now visibly installed in the pelvis, torso and both thighs; no board input serves more than one actuator bus or regulator output. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
-
-
-
-<!-- HR30-HARNESS-README-START -->
 ## Whole-body harness
 
 Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
 <!-- HR30-HARNESS-README-END -->
-
-
 
 <!-- HR30-MEASUREMENT-HARNESS-P01-START -->
 ## First-energization measurement harness
@@ -483,11 +435,17 @@ The [interactive measurement-harness guide](first-energization-measurement-harne
 The [interactive diagnostic-pickoff guide](electrical/diagnostic-pickoff-pods-p0.1/index.html) defines **eight separate one-channel pods**, one per measured HR-30 node. Two 100 kOhm Vishay elements in each lead precede every long source-to-panel cable, with exact pod connectors, enclosure candidate, board source, contact map, paper fault screens and composite 1.4204 scale correction. Device-specific source-terminal accessories, the <=100 mm upstream tails, build/FAI/calibration and qualified no-bypass review remain open; no connection or energization authority follows.
 <!-- HR30-DIAGNOSTIC-PICKOFF-PODS-P01-END -->
 
-<!-- HR30-AUXILIARY-POWER-P01-START -->
-## Three-rail auxiliary-power module
+## Installed equipment layout
 
-The former undefined pelvis converter has been replaced by a dimensioned **120 x 58 mm three-channel candidate** using three current RECOM `REC30E-2405SZ` isolated 30 W modules. Compute, face/HMI and deterministic control now have separate positive rails and independent enable/protection boundaries; secondary returns meet only at `AUX_0V_STAR`. The HMI rail has zero margin against the current coarse 30 W peak budget, and all fuses, reverse/inrush devices, trim parts, harnesses, PE bonding, thermal tests and physical reviews remain open. [Open the interactive engineering guide](electrical/auxiliary-power-module-p0.1/index.html).
-<!-- HR30-AUXILIARY-POWER-P01-END -->
+The former empty torso, pelvis, head and foot reservations now contain 64 located equipment, harness, contact, sole and installation-hardware candidates with explicit mounting planes, service directions, connector boundaries and dynamic-link placement. Their provisional as-installed planning mass is 3.812 kg. Eight bus-specific 124 x 45 mm walking-power board instances are now visibly installed in the pelvis, torso and both thighs; no board input serves more than one actuator bus or regulator output. The rear-torso model retains the former Grepow/Tattu pack envelope so the superseded packaging assumption remains visible, but that direct 4S source is rejected. Tether-first is the primary development configuration; Bioenno BLF-1209WS remains an onboard-later evaluation candidate requiring a new cassette. Battery current delivery, containment, retention, connector, charger, thermal and abuse evidence remain open.
+
+
+
+<!-- HR30-HARNESS-README-START -->
+## Whole-body harness
+
+Eight protected bus-branch candidates now map all 25 actuator drops through 12 located power/data corridors, including separate head power and data paths. Primary sources close the actuator pins, eight STM32 channel pins, five RS-485 and three TTL interface-device pinouts, and exact data-only field connector candidates. Assembled cables, branch protection, sizing, retention, flex life, termination, EMC and physical validation remain open. See [`harness/index.html`](harness/index.html).
+<!-- HR30-HARNESS-README-END -->
 
 <!-- HR30-DUTY-CURRENT-P01-START -->
 ## Harness duty-current evidence
@@ -500,3 +458,15 @@ The [whole-body harness duty-current guide](harness/duty-current-envelope-p0.1/i
 
 The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1/index.html) connects both frozen walking traces to all 25 physical power-pair lengths, eight buses and six reserved power corridors. The derived loss cases define physical test obligations; they do not release conductors, contacts, protection or energization.
 <!-- HR30-DUTY-THERMAL-P01-END -->
+
+<!-- HR30-SFI-P01-START -->
+## Safety-function implementation map
+
+The [interactive implementation map](safety-function-implementation-p0.1/index.html) binds all 12 SRS functions to current terminals and nets or marks them absent. Only SFR-01 through SFR-03 have connected candidate circuitry, and none is validated.
+<!-- HR30-SFI-P01-END -->
+
+<!-- HR30-AUXILIARY-POWER-P01-START -->
+## Three-rail auxiliary-power module
+
+The former undefined pelvis converter has been replaced by a dimensioned **150 x 58 mm three-channel candidate** using two current RECOM `REC30E-2405SZ` 30 W modules and one current TRACO POWER `TEN 40-1211E` 40 W HMI module. Compute, face/HMI and deterministic control have separate positive rails and independent enable/protection boundaries; secondary returns meet only at `AUX_0V_STAR`. The HMI rail now has 10 W coarse peak headroom, while fuses, reverse/inrush devices, trim parts, harnesses, PE bonding, thermal tests and physical reviews remain open. [Open the interactive engineering guide](electrical/auxiliary-power-module-p0.1/index.html).
+<!-- HR30-AUXILIARY-POWER-P01-END -->

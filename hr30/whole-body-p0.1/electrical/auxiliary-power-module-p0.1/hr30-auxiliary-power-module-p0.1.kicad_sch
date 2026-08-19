@@ -7,7 +7,7 @@
       (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "a14167fc-05f2-5aec-a305-c1b8b5ebf4e6"))
   (text "PROJECT BUTTON HR-30 AUXILIARY POWER MODULE" (exclude_from_sim no) (at 17.78 19.05 0)
       (effects (font (size 2.54 2.54)) (justify left bottom)) (uuid "b3ecf65f-2b4c-5805-8010-54b0a28e28c3"))
-  (text "Three isolated 30 W rails; protection, thermal and physical validation open." (exclude_from_sim no) (at 17.78 27.00 0)
+  (text "Two isolated 30 W rails plus one isolated 40 W HMI rail; protection and validation open." (exclude_from_sim no) (at 17.78 27.00 0)
       (effects (font (size 1.80 1.80)) (justify left bottom)) (uuid "5d6e65f4-d616-580b-a540-2909478be132"))
   (sheet (at 17.78 42.00) (size 116.84 40.64)
           (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)

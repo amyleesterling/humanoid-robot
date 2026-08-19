@@ -1,4 +1,6 @@
 source_id,manufacturer,document,revision_or_date,accessed,url,verified_use
 AUX-S01,RECOM,REC30E-Z datasheet,REV 1/2024,2026-08-19,https://recom-power.com/pdf/Econoline/REC30E-Z.pdf,"REC30E-2405SZ pinout, 9-36 V input, 5 V/6 A output, 89% typical efficiency, 2 kVDC/1 min isolation, protections, dimensions and mass"
 AUX-S02,RECOM,REC30E-Z current product page,live page; revision not stated,2026-08-19,https://recom-power.com/en/rec-s-REC30E-Z.html,"REC30E-2405SZ listed as current Focus product; manufacturer application cautions for reverse polarity, battery inrush and customer suitability"
-AUX-S03,JST,VH connector catalog,live official catalog; revision not stated,2026-08-19,https://www.jst-mfg.com/product/pdf/eng/eVH.pdf,B2P-VH-B and B3P-VH-B board-header family; final wire/contact/derating application remains open
+AUX-S03,TRACO POWER,TEN 40E datasheet,"Rev. August 7, 2024",2026-08-19,https://www.tracopower.com/sites/default/files/products/datasheets/ten40e_datasheet.pdf,"TEN 40-1211E pinout, 9-18 V input, 5 V/8 A output, 40 W, 90% typical efficiency, 1.6 kVDC/60 s functional isolation, 50.8 x 25.4 x 10.2 mm envelope and 34 g mass"
+AUX-S04,TRACO POWER,TEN 40E current product overview,live page; revision not stated,2026-08-19,https://www.tracopower.com/overview/ten40e,current family identity and supporting-document boundary
+AUX-S05,JST,VH connector catalog,live official catalog; revision not stated,2026-08-19,https://www.jst-mfg.com/product/pdf/eng/eVH.pdf,B2P-VH-B and B3P-VH-B board-header family; final wire/contact/derating application remains open

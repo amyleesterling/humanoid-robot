@@ -3,7 +3,7 @@
   "warning": "PRELIMINARY - IDEAL-FIXTURE SIMULATION ONLY - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION",
   "mujoco_model_compiles": true,
   "mujoco_version": "3.10.0",
-  "mass_kg": 9.901056,
+  "mass_kg": 9.928056,
   "nq": 32,
   "nv": 31,
   "actuator_count": 25,
