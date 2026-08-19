@@ -365,6 +365,63 @@ The [interactive instrumentation guide](first-energization-instrumentation-p0.1/
     text=text.replace("</main>",section+"</main>",1); page.write_text(text,encoding="utf-8")
 
 
+def bind_measurement_boundary_panel() -> None:
+    panel = WHOLE / "electrical" / "measurement-boundary-panel-p0.1"
+    panel_status = panel / "panel-status.json"
+    if not panel_status.exists():
+        return
+    probe_path = OUT / "probe-connection-register.csv"
+    with probe_path.open(encoding="utf-8", newline="") as handle:
+        probe_rows = list(csv.DictReader(handle))
+    for row in probe_rows:
+        if row["channel"].startswith("CH-AI-"):
+            number = int(row["channel"].split("-")[-1])
+            row["method"] = f"route through measurement panel J{number}I -> J{number}O; exact field and NI harnesses remain open"
+            row["connector_pinout_released"] = "PANEL CONTACTS RELEASED; FIELD/DAQ ENDS OPEN"
+            row["probe_protection_released"] = "CURRENT-LIMITING DESIGN PRESENT; NOT PHYSICALLY VALIDATED"
+            row["installed"] = "NO"
+        elif row["channel"] == "CH-DIO-01":
+            row["method"] = "independent battery sync slate JTTL -> NI-9924 DIO0/COM; direct robot 24 V remains prohibited"
+            row["connector_pinout_released"] = "PANEL CONTACTS RELEASED; NI CONTACTS OPEN"
+            row["probe_protection_released"] = "BATTERY-ONLY 1K SERIES DESIGN PRESENT; NOT PHYSICALLY VALIDATED"
+            row["installed"] = "NO"
+    write_csv(probe_path, probe_rows)
+    status_path = OUT / "instrumentation-status.json"
+    status = json.loads(status_path.read_text(encoding="utf-8"))
+    status.update({
+        "measurement_boundary_panel_design_present": True,
+        "measurement_boundary_panel_installed": False,
+        "measurement_boundary_panel_calibrated": False,
+        "physical_test_points_released": False,
+        "fer_g11_closed": False,
+    })
+    status_path.write_text(json.dumps(status, indent=2) + "\n", encoding="utf-8")
+    binding_path = OUT / "source-binding.json"
+    binding = json.loads(binding_path.read_text(encoding="utf-8"))
+    binding.update({
+        "measurement_boundary_panel": "hr30/whole-body-p0.1/electrical/measurement-boundary-panel-p0.1",
+        "measurement_boundary_panel_status_sha256": sha(panel_status),
+        "measurement_boundary_scope": "PANEL CONTACT MAP/DESIGN PRESENT; FIELD HARNESS, INSTALLATION, CALIBRATION AND QUALIFICATION OPEN",
+    })
+    binding_path.write_text(json.dumps(binding, indent=2) + "\n", encoding="utf-8")
+    bom_path = OUT / "candidate-bom.csv"
+    with bom_path.open(encoding="utf-8", newline="") as handle:
+        bom = [row for row in csv.DictReader(handle) if row["item_id"] != "B-15"]
+    bom.append({"item_id":"B-15","item":"eight-channel floating measurement boundary panel + battery sync slate","candidate_order_code":"PROJECT NATIVE KICAD/CAD P0.1; PASSIVE ORDER CODES OPEN","quantity":"1","acquisition":"FABRICATION/ASSEMBLY NOT RELEASED","procurement_released":"NO","warning":WARNING})
+    write_csv(bom_path, bom)
+    marker_start, marker_end = "<!-- HR30-MEASUREMENT-BOUNDARY-P01-START -->", "<!-- HR30-MEASUREMENT-BOUNDARY-P01-END -->"
+    readme_path = OUT / "README.md"; readme = readme_path.read_text(encoding="utf-8")
+    if marker_start in readme and marker_end in readme:
+        readme = readme.split(marker_start, 1)[0] + readme.split(marker_end, 1)[1]
+    readme += f"\n{marker_start}\n## Physical measurement boundary\n\nThe [measurement-boundary panel](../electrical/measurement-boundary-panel-p0.1/index.html) now defines the eight floating analog panel contacts and independent battery sync-slate output. Field/DAQ harnesses, fabrication, calibration, timing uncertainty and qualified limits remain open; FER-G11 remains open.\n{marker_end}\n"
+    readme_path.write_text(readme, encoding="utf-8")
+    page_path = OUT / "index.html"; page = page_path.read_text(encoding="utf-8")
+    if marker_start in page and marker_end in page:
+        page = page.split(marker_start, 1)[0] + page.split(marker_end, 1)[1]
+    section = f'''{marker_start}<section><h2>A physical panel now replaces generic voltage clips</h2><div class="grid"><article class="card"><div class="metric">8 x 2</div><p>mutually floating, current-limited analog conductors.</p></article><article class="card"><h2>Battery sync slate</h2><p>The visible LED and TTL event have no robot electrical connection.</p></article><article class="card hold"><h2>Still unbuilt</h2><p>Harnesses, calibration and qualified limits remain open; FER-G11 is not closed.</p></article></div><p><a href="../electrical/measurement-boundary-panel-p0.1/index.html">Open the measurement-boundary panel guide</a>.</p></section>{marker_end}'''
+    page_path.write_text(page.replace("</main>", section + "</main>", 1), encoding="utf-8")
+
+
 def manifest_release() -> None:
     shutil.copy2(Path(__file__),OUT/"first-energization-instrumentation-source.py")
     files=[p for p in OUT.rglob("*") if p.is_file() and p.name!="file-manifest.csv"]
@@ -379,7 +436,7 @@ def manifest_release() -> None:
 def main() -> int:
     if OUT.exists(): shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
-    meta=build_cad(); publish(meta); integrate(); manifest_release()
+    meta=build_cad(); publish(meta); bind_measurement_boundary_panel(); integrate(); manifest_release()
     print(json.dumps({"identifier":IDENTIFIER,**meta,"instrument_candidates":11,"channels":18,"authorities":0},indent=2))
     return 0
 

@@ -5,5 +5,8 @@
   "authoritative_fer_register_sha256": "8b4fb14cf31a9b00e67900ec520978edeb404ea9614557022ceece25117a34b9",
   "power_budget": "hr30/whole-body-p0.1/energy-safety-spine-p0.1/current-power-budget.csv",
   "power_budget_sha256": "2598d0a469b43c0ea9931f3d8199804f80a7d0101337a7625ec2a1f00f99869f",
-  "scope": "FER-G11 DESIGN EVIDENCE ONLY; PHYSICAL EXECUTION/QUALIFICATION OPEN"
+  "scope": "FER-G11 DESIGN EVIDENCE ONLY; PHYSICAL EXECUTION/QUALIFICATION OPEN",
+  "measurement_boundary_panel": "hr30/whole-body-p0.1/electrical/measurement-boundary-panel-p0.1",
+  "measurement_boundary_panel_status_sha256": "35645b12f3ea4a33bd6347aa050aaac1ba61e50665b1e7ab4d03d33964a5118b",
+  "measurement_boundary_scope": "PANEL CONTACT MAP/DESIGN PRESENT; FIELD HARNESS, INSTALLATION, CALIBRATION AND QUALIFICATION OPEN"
 }

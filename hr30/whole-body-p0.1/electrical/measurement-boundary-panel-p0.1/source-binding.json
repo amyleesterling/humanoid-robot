@@ -1,0 +1,10 @@
+{
+  "identifier": "HR30-MEASUREMENT-BOUNDARY-PANEL-P0.1",
+  "warning": "PRELIMINARY - UNBUILT MEASUREMENT FIXTURE - ZERO SAFETY CREDIT - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, WALKING OR ENERGIZATION",
+  "instrumentation_package": "hr30/whole-body-p0.1/first-energization-instrumentation-p0.1",
+  "instrumentation_status_sha256": "75e52cc3a9dc173ae4c4efa4c4e43cd53c78abd4058abc35d78deef85a25a724",
+  "instrumentation_probe_register_sha256": "11bc9183525745d72f4a0bca4045c4afa7bc4223c2ed3878386c7d911f9a3522",
+  "fer_gate_register": "hr30/whole-body-p0.1/first-energization-readiness-p0.1/energization-gate-register.csv",
+  "fer_gate_register_sha256": "8b4fb14cf31a9b00e67900ec520978edeb404ea9614557022ceece25117a34b9",
+  "scope": "FER-G11 PHYSICAL-INTERFACE DESIGN EVIDENCE ONLY; INSTALLATION/CALIBRATION/QUALIFICATION OPEN"
+}

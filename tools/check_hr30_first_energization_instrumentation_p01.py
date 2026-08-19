@@ -79,8 +79,15 @@ def check_registers()->None:
     triggers=rows("trigger-and-timebase-register.csv")
     need(len(triggers)==4 and all(r["released"].startswith("NO") for r in triggers),"trigger/timebase release overclaim")
     connections=rows("probe-connection-register.csv")
-    need(len(connections)==12 and all(r["connector_pinout_released"]=="NO" and r["probe_protection_released"]=="NO" and r["installed"]=="NO" for r in connections),"probe connection overclaim")
-    need("direct 24 V connection" in next(r for r in connections if r["connection_id"]=="PC-11")["method"],"digital input prohibition missing")
+    need(len(connections)==12 and all(r["installed"]=="NO" for r in connections),"probe installation overclaim")
+    for row in connections:
+        if row["channel"].startswith("CH-AI-"):
+            need(row["connector_pinout_released"]=="PANEL CONTACTS RELEASED; FIELD/DAQ ENDS OPEN" and row["probe_protection_released"]=="CURRENT-LIMITING DESIGN PRESENT; NOT PHYSICALLY VALIDATED","analog panel disposition mismatch")
+        elif row["channel"]=="CH-DIO-01":
+            need(row["connector_pinout_released"]=="PANEL CONTACTS RELEASED; NI CONTACTS OPEN" and row["probe_protection_released"]=="BATTERY-ONLY 1K SERIES DESIGN PRESENT; NOT PHYSICALLY VALIDATED","sync panel disposition mismatch")
+        else:
+            need(row["connector_pinout_released"]=="NO" and row["probe_protection_released"]=="NO","unrelated probe connection overclaim")
+    need("direct robot 24 V" in next(r for r in connections if r["connection_id"]=="PC-11")["method"],"digital input prohibition missing")
     schema=rows("data-file-schema.csv")
     need(len(schema)==16 and all(r["required"]=="YES" for r in schema),"raw data schema completeness drift")
     traveler=rows("dry-rehearsal-traveler.csv")
@@ -90,7 +97,7 @@ def check_registers()->None:
     holds=rows("open-holds.csv")
     need(len(holds)==12 and all(r["state"].startswith("OPEN") and r["authority"]=="NONE" for r in holds),"open hold closure overclaim")
     bom=rows("candidate-bom.csv")
-    need(len(bom)==14 and all(r["procurement_released"]=="NO" for r in bom),"candidate BOM release overclaim")
+    need(len(bom)==15 and all(r["procurement_released"]=="NO" for r in bom),"candidate BOM release overclaim")
 
 
 def check_status_guides()->None:

@@ -1,0 +1,24 @@
+{
+  "identifier": "HR30-MEASUREMENT-BOUNDARY-PANEL-CAD-P0.1",
+  "warning": "PRELIMINARY - UNBUILT MEASUREMENT FIXTURE - ZERO SAFETY CREDIT - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, WALKING OR ENERGIZATION",
+  "enclosure_candidate": "Hammond RZ0218C",
+  "enclosure_external_mm": [
+    222,
+    146,
+    55
+  ],
+  "published_max_pcb_mm": [
+    213.87,
+    137.87
+  ],
+  "project_pcb_mm": [
+    210,
+    134,
+    1.6
+  ],
+  "modeled_item_count": 25,
+  "received_part_dimensional_validation": false,
+  "fabrication_authority": false,
+  "connection_authority": false,
+  "energization_authority": false
+}

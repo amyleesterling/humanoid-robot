@@ -704,5 +704,13 @@
   "first_energization_instrumentation_present": true,
   "first_energization_instrumentation_channel_architecture_defined": true,
   "first_energization_instrumentation_physical_evidence_present": false,
-  "first_energization_instrumentation_limits_qualified": false
+  "first_energization_instrumentation_limits_qualified": false,
+  "measurement_boundary_panel_present": true,
+  "measurement_boundary_panel_native_kicad": true,
+  "measurement_boundary_panel_floating_channels": 8,
+  "measurement_boundary_panel_contact_map_present": true,
+  "measurement_boundary_panel_field_harness_released": false,
+  "measurement_boundary_panel_daq_harness_released": false,
+  "measurement_boundary_panel_calibrated": false,
+  "measurement_boundary_panel_safety_credit": false
 }

@@ -29,5 +29,8 @@
   "powered_test_authority": false,
   "motion_authority": false,
   "walking_authority": false,
-  "energization_authority": false
+  "energization_authority": false,
+  "measurement_boundary_panel_design_present": true,
+  "measurement_boundary_panel_installed": false,
+  "measurement_boundary_panel_calibrated": false
 }
