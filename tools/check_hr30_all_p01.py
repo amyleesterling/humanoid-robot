@@ -19,6 +19,7 @@ TOOLS = ROOT / "tools"
 SELF = Path(__file__).name
 PCBNEW_CHECKERS = {
     "check_hr30_actuator_interface_carriers_p01.py",
+    "check_hr30_measurement_chain_calibration_fixture_p01.py",
     "check_hr30_swd_adapter_p01.py",
     "check_hr30_e1_diagnostic_watchdog_p01.py",
 }

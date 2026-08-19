@@ -1,0 +1,22 @@
+{
+  "board": {},
+  "boards": [],
+  "cvpcb": {},
+  "erc": {},
+  "libraries": {},
+  "meta": {
+    "filename": "hr30-measurement-chain-calibration-fixture-p0.1.kicad_pro",
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [],
+    "meta": {
+      "version": 3
+    }
+  },
+  "pcbnew": {},
+  "schematic": {},
+  "text_variables": {
+    "PROJECT_STATUS": "PRELIMINARY - UNBUILT OFF-ROBOT MEASUREMENT CALIBRATION FIXTURE - ZERO SAFETY CREDIT - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION TO THE ROBOT, POWERED ROBOT TESTING, MOTION, WALKING OR ENERGIZATION"
+  }
+}

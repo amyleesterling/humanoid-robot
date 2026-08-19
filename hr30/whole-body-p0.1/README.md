@@ -459,3 +459,9 @@ The [interactive measurement-harness guide](first-energization-measurement-harne
 
 The [interactive diagnostic-pickoff guide](electrical/diagnostic-pickoff-pods-p0.1/index.html) defines **eight separate one-channel pods**, one per measured HR-30 node. Two 100 kOhm Vishay elements in each lead precede every long source-to-panel cable, with exact pod connectors, enclosure candidate, board source, contact map, paper fault screens and composite 1.4204 scale correction. Device-specific source-terminal accessories, the <=100 mm upstream tails, build/FAI/calibration and qualified no-bypass review remain open; no connection or energization authority follows.
 <!-- HR30-DIAGNOSTIC-PICKOFF-PODS-P01-END -->
+
+<!-- HR30-MEASUREMENT-CAL-FIXTURE-P01-START -->
+## Off-robot measurement-chain calibration fixture
+
+The [interactive calibration-fixture guide](electrical/measurement-chain-calibration-fixture-p0.1/index.html) adds a routed **104 x 76 mm native KiCad passive breakout** and a 121 x 94 x 34 mm enclosure candidate. It sequentially drives one disconnected diagnostic pod, three-metre cable, panel lane and NI-9229 input while an in-date Fluke 87V MAX CAL records the actual Keysight E36313A source voltage. The 72-point, three-repeat schedule covers gain, offset, polarity, open-lead behavior, noise and crosstalk without connecting to the robot. Hardware build, instrument receipt/calibration, numeric acceptance limits, execution, uncertainty review, source taps and FER-G11 remain open.
+<!-- HR30-MEASUREMENT-CAL-FIXTURE-P01-END -->
