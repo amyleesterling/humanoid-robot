@@ -40,7 +40,7 @@ FP_ROOT = Path(r"C:\Program Files\KiCad\10.0\share\kicad\footprints")
 PHOENIX_HEADER = "Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal"
 PHOENIX_PAGE = "https://www.phoenixcontact.com/en-us/products/pcb-header-mstba-25-2-g-508-1757242"
 PHOENIX_PLUG = "https://www.phoenixcontact.com/en-us/products/pcb-connector-mstb-25-2-st-508-1757019"
-VISHAY_TNPW = "https://www.vishay.com/docs/31006/tnpw.pdf"
+VISHAY_TNPW = "https://www.vishay.com/docs/28758/tnpw_e3.pdf"
 NI_9229 = "https://download.ni.com/support/manuals/374184c_02.pdf"
 NI_9924 = "https://www.ni.com/en/shop/hardware/connectors/model-ni-9924"
 KEYSTONE_2464 = "https://www.keyelco.com/product.cfm/product_id/1029"
@@ -51,12 +51,12 @@ HAMMOND_RZ = "https://www.hammfg.com/electronics/small-case/plastic/rz"
 CHANNELS = [
     (1, "CH-AI-01", "ACT_MAIN_SOURCE_12V", "INS-02/AI0"),
     (2, "CH-AI-02", "ACT_MAIN_SAFE_12V", "INS-02/AI1"),
-    (3, "CH-AI-03", "TTL_SELECTED_SAFE_9V", "INS-02/AI2"),
-    (4, "CH-AI-04", "CTRL_SAFE_5V", "INS-02/AI3"),
+    (3, "CH-AI-03", "TTL_LDIST_SAFE_9V", "INS-02/AI2"),
+    (4, "CH-AI-04", "CTRL_5V", "INS-02/AI3"),
     (5, "CH-AI-05", "ESTOP_CH_A_24V", "INS-03/AI0"),
-    (6, "CH-AI-06", "WATCHDOG_PERMIT_24V", "INS-03/AI1"),
-    (7, "CH-AI-07", "K1_DIAGNOSTIC_24V", "INS-03/AI2"),
-    (8, "CH-AI-08", "K2_DIAGNOSTIC_24V", "INS-03/AI3"),
+    (6, "CH-AI-06", "HARDWIRED_PERMIT_24V", "INS-03/AI1"),
+    (7, "CH-AI-07", "K1_COIL_24V", "INS-03/AI2"),
+    (8, "CH-AI-08", "K2_COIL_24V", "INS-03/AI3"),
 ]
 
 
@@ -95,10 +95,10 @@ def analog_parts() -> list[Part]:
         items += [
             Part(f"J{index}I", f"{signal} floating input", "Phoenix Contact", "1757242", PHOENIX_HEADER,
                  {"1":f"{base}_HI_IN","2":f"{base}_LO_IN"}, 12, y, 90),
-            Part(f"R{index}A", "5.10 kOhm 0.1% series", "Vishay", "ORDER CODE SELECTION REQUIRED", "Resistor_SMD:R_1206_3216Metric", {"1":f"{base}_HI_IN","2":f"{base}_HI_MID"}, 55, y),
-            Part(f"R{index}B", "5.10 kOhm 0.1% series", "Vishay", "ORDER CODE SELECTION REQUIRED", "Resistor_SMD:R_1206_3216Metric", {"1":f"{base}_HI_MID","2":f"{base}_HI_OUT"}, 110, y),
-            Part(f"R{index}C", "5.10 kOhm 0.1% series", "Vishay", "ORDER CODE SELECTION REQUIRED", "Resistor_SMD:R_1206_3216Metric", {"1":f"{base}_LO_IN","2":f"{base}_LO_MID"}, 55, y - 5.08),
-            Part(f"R{index}D", "5.10 kOhm 0.1% series", "Vishay", "ORDER CODE SELECTION REQUIRED", "Resistor_SMD:R_1206_3216Metric", {"1":f"{base}_LO_MID","2":f"{base}_LO_OUT"}, 110, y - 5.08),
+            Part(f"R{index}A", "5.10 kOhm 0.1% series", "Vishay", "TNPW12065K10BEEA", "Resistor_SMD:R_1206_3216Metric", {"1":f"{base}_HI_IN","2":f"{base}_HI_MID"}, 55, y),
+            Part(f"R{index}B", "5.10 kOhm 0.1% series", "Vishay", "TNPW12065K10BEEA", "Resistor_SMD:R_1206_3216Metric", {"1":f"{base}_HI_MID","2":f"{base}_HI_OUT"}, 110, y),
+            Part(f"R{index}C", "5.10 kOhm 0.1% series", "Vishay", "TNPW12065K10BEEA", "Resistor_SMD:R_1206_3216Metric", {"1":f"{base}_LO_IN","2":f"{base}_LO_MID"}, 55, y - 5.08),
+            Part(f"R{index}D", "5.10 kOhm 0.1% series", "Vishay", "TNPW12065K10BEEA", "Resistor_SMD:R_1206_3216Metric", {"1":f"{base}_LO_MID","2":f"{base}_LO_OUT"}, 110, y - 5.08),
             Part(f"J{index}O", f"to {signal} DAQ input", "Phoenix Contact", "1757242", PHOENIX_HEADER,
                  {"1":f"{base}_HI_OUT","2":f"{base}_LO_OUT"}, 184, y, 90),
         ]
@@ -110,9 +110,9 @@ def slate_parts() -> list[Part]:
         Part("JBT1", "3-AA battery holder input", "Phoenix Contact", "1757242", PHOENIX_HEADER, {"1":"SLATE_BAT_POS","2":"SLATE_BAT_RET"}, 12, 124, 90, "SLATE"),
         Part("SW1", "momentary sync", "Omron", "B3F-1000", "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-100x", {"1":"SLATE_BAT_POS","2":"SLATE_ACTIVE"}, 42, 119, 0, "SLATE"),
         Part("D1", "blue visible sync LED", "Kingbright", "WP7113QBC/D", "LED_THT:LED_D5.0mm_Clear", {"1":"SLATE_LED_RET","2":"SLATE_ACTIVE"}, 72, 122, 0, "SLATE"),
-        Part("RSL1", "330 Ohm LED series", "Vishay", "ORDER CODE SELECTION REQUIRED", "Resistor_SMD:R_1206_3216Metric", {"1":"SLATE_LED_RET","2":"SLATE_BAT_RET"}, 90, 128, 0, "SLATE"),
-        Part("RSL2", "1.00 kOhm DIO series", "Vishay", "ORDER CODE SELECTION REQUIRED", "Resistor_SMD:R_1206_3216Metric", {"1":"SLATE_ACTIVE","2":"SLATE_OUT"}, 122, 118, 0, "SLATE"),
-        Part("RSL3", "100 kOhm output pulldown", "Vishay", "ORDER CODE SELECTION REQUIRED", "Resistor_SMD:R_1206_3216Metric", {"1":"SLATE_OUT","2":"SLATE_BAT_RET"}, 150, 128, 0, "SLATE"),
+        Part("RSL1", "330 Ohm LED series", "Vishay", "TNPW1206330RBEEA", "Resistor_SMD:R_1206_3216Metric", {"1":"SLATE_LED_RET","2":"SLATE_BAT_RET"}, 90, 128, 0, "SLATE"),
+        Part("RSL2", "1.00 kOhm DIO series", "Vishay", "TNPW12061K00BEEA", "Resistor_SMD:R_1206_3216Metric", {"1":"SLATE_ACTIVE","2":"SLATE_OUT"}, 122, 118, 0, "SLATE"),
+        Part("RSL3", "100 kOhm output pulldown", "Vishay", "TNPW1206100KBEEA", "Resistor_SMD:R_1206_3216Metric", {"1":"SLATE_OUT","2":"SLATE_BAT_RET"}, 150, 128, 0, "SLATE"),
         Part("JTTL", "to NI-9924 / NI-9401 DIO0", "Phoenix Contact", "1757242", PHOENIX_HEADER, {"1":"SLATE_OUT","2":"SLATE_BAT_RET"}, 184, 124, 90, "SLATE"),
     ]
 
@@ -325,7 +325,7 @@ def publish(items, info, checks):
     sources=[
         ("MB-S01","Phoenix Contact","MSTBA 2,5/2-G-5,08 product record 1757242",PHOENIX_PAGE,"live official product record; accessed 2026-08-18","2 poles; 5.08 mm pitch; 12 A nominal; 320 V; exact PCB-header footprint candidate"),
         ("MB-S02","Phoenix Contact","MSTB 2,5/2-ST-5,08 product record 1757019",PHOENIX_PLUG,"live official product record; accessed 2026-08-18","matching 2-position screw plug; 0.2-2.5 mm2 / AWG24-12"),
-        ("MB-S03","Vishay","TNPW precision thin-film resistor datasheet 31006",VISHAY_TNPW,"revision 18-Feb-2025; accessed 2026-08-18","1206: 0.25 W, 200 V, 10 ohm-2 Mohm; 0.1% and 25 ppm/K available; exact order codes remain selection required"),
+        ("MB-S03","Vishay","TNPW e3 precision thin-film resistor datasheet 28758",VISHAY_TNPW,"revision 10-Apr-2026; accessed 2026-08-19","1206 values use the manufacturer ordering grammar: B tolerance 0.1%, E TCR 25 ppm/K, EA 5000-piece packaging; supplier quotation and received-lot verification remain required"),
         ("MB-S04","NI","NI-9229 datasheet 374184C-02",NI_9229,"official datasheet; accessed 2026-08-18","4 differential simultaneous channels; +/-60 V nominal; 1 Mohm differential input; +/-100 V overvoltage; wiring and torque"),
         ("MB-S05","NI","NI-9924 product record",NI_9924,"live official product page; accessed 2026-08-18","781922-01; 25-pin female D-sub to screw-terminal block; 60 VDC/30 Vrms"),
         ("MB-S06","Keystone Electronics","3 AA cell holder product record",KEYSTONE_2464,"live official product page; accessed 2026-08-18","part 2464; 3 AA cells in series; polypropylene; through-hole holder"),
@@ -348,7 +348,7 @@ def publish(items, info, checks):
     ]
     write_csv(OUT/"inspection-and-calibration-register.csv",[{"test_id":a,"test":b,"acceptance":c,"result":"NOT EXECUTED","evidence":"REQUIRED","authority":AUTHORITY,"warning":WARNING} for a,b,c in tests])
     holds=[
-        ("MB-H01","precision resistor order codes","qualified selection of exact 5.10k 0.1%, 330 ohm, 1k and 100k TNPW candidates plus traceable lot receiving"),
+        ("MB-H01","precision resistor procurement confirmation","manufacturer/supplier quotation for the four exact TNPW e3 candidate order codes plus traceable received-lot identity"),
         ("MB-H02","analog input harness endpoints","exact robot/PDU diagnostic terminal locations, connectors, wire, ferrules, strain relief and no-bypass review"),
         ("MB-H03","DAQ output harness","exact NI-9976 contact/wire schedule, cable length, ferrules, shielding/routing and strain relief"),
         ("MB-H04","sync output harness","exact NI-9924 DIO0/COM contact map, cable, voltage check and review"),

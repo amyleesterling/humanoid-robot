@@ -432,6 +432,10 @@ The [interactive hardware guide](first-energization-cell-hardware-p0.1/index.htm
 
 
 
+
+
+
+
 <!-- HR30-FER-INSTRUMENTS-P01-START -->
 ## First-energization instrumentation
 
@@ -443,3 +447,9 @@ The [interactive instrumentation guide](first-energization-instrumentation-p0.1/
 
 The [interactive measurement-boundary guide](electrical/measurement-boundary-panel-p0.1/index.html) adds a routed **210 x 134 mm native KiCad board** with eight mutually floating, current-limited differential lanes and an independent battery-powered camera/DAQ sync slate. The panel contact map is exact. Field/DAQ harnesses, resistor order codes, battery chemistry, DFM, fabrication, calibration, timing uncertainty and qualified limits remain open, so FER-G11 and every work authority remain false.
 <!-- HR30-MEASUREMENT-BOUNDARY-P01-END -->
+
+<!-- HR30-MEASUREMENT-HARNESS-P01-START -->
+## First-energization measurement harness
+
+The [interactive measurement-harness guide](first-energization-measurement-harness-p0.1/index.html) defines all **16 analog conductors** from the measurement panel to two NI-9229 modules and the exact battery-slate path through NI-9924 terminal 14 (DIO0), terminal 1 (COM), SH and ferrite 782803-01. It also corrects the earlier ambiguous channels to `HARDWIRED_PERMIT`, `K1_COIL_POS` and `K2_COIL_POS`. Robot-side protected diagnostic pickoffs, build, review, calibration and FER-G11 remain open; no connection or energization authority follows.
+<!-- HR30-MEASUREMENT-HARNESS-P01-END -->

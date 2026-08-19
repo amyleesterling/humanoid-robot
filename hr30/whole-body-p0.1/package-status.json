@@ -712,5 +712,11 @@
   "measurement_boundary_panel_field_harness_released": false,
   "measurement_boundary_panel_daq_harness_released": false,
   "measurement_boundary_panel_calibrated": false,
-  "measurement_boundary_panel_safety_credit": false
+  "measurement_boundary_panel_safety_credit": false,
+  "first_energization_measurement_harness_present": true,
+  "measurement_harness_analog_conductor_map_complete": true,
+  "measurement_harness_sync_contact_map_complete": true,
+  "measurement_harness_robot_pickoffs_released": false,
+  "measurement_harness_built": false,
+  "measurement_harness_calibrated": false
 }

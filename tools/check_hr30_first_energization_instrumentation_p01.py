@@ -60,7 +60,8 @@ def check_registers()->None:
     need(len(instruments)==11 and len({r["instrument_id"] for r in instruments})==11,"11 unique candidate instruments required")
     need(next(r for r in instruments if r["instrument_id"]=="INS-08")["order_code"]=="5206068","calibrated DMM part drift")
     need("WHOLE-RAIL CURRENT JACK USE PROHIBITED" in next(r for r in instruments if r["instrument_id"]=="INS-08")["connection_state"],"DMM current misuse not prohibited")
-    need("24 V-TO-TTL" in next(r for r in instruments if r["instrument_id"]=="INS-05")["connection_state"],"direct 24 V TTL boundary missing")
+    dio_state=next(r for r in instruments if r["instrument_id"]=="INS-05")["connection_state"]
+    need("BATTERY-ONLY" in dio_state and "24 V CONNECTION PROHIBITED" in dio_state,"battery-only/direct-24-V TTL boundary missing")
     channels=rows("measurement-channel-register.csv")
     need(len(channels)==18 and len({r["channel_id"] for r in channels})==18,"18 unique channels required")
     need(sum(r["channel_id"].startswith("CH-AI-") for r in channels)==8,"eight isolated analog channels required")
