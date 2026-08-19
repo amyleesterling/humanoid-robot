@@ -415,3 +415,9 @@ The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1
 
 The [interactive diagnostic-watchdog guide](electrical/e1-diagnostic-watchdog-p0.1/index.html) contains a routed **40 x 25 mm native KiCad board** using the exact TPS3431SDRBR candidate. Its four-conductor fixture cable carries only ground, 3.3 V, a hard-low permit and heartbeat. Watchdog outputs remain local. The board/cable are unbuilt, HIL is unexecuted, and the circuit has zero functional-safety or work authority.
 <!-- HR30-E1-WATCHDOG-P01-END -->
+
+<!-- HR30-FIRST-ENERGIZATION-CELL-P01-START -->
+## Whole-body first-energization cell
+
+The [interactive first-energization-cell guide](first-energization-cell-p0.1/index.html) places the SHA-bound complete neutral-pose robot inside a dimensioned **1200 x 1000 x 1400 mm** guarded frame. Both feet are supported and a rigid cradle locates the reserved pelvis interface. The two overhead routes are secondary position-only tether candidates, not fall arrest. The cell is unbuilt, FER-G02/G10/G11 remain open, and it grants no powered-test, motion, walking or energization authority.
+<!-- HR30-FIRST-ENERGIZATION-CELL-P01-END -->

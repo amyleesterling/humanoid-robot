@@ -679,5 +679,18 @@
   "e1_diagnostic_watchdog_drc_violations": 0,
   "e1_diagnostic_watchdog_fabricated": false,
   "e1_diagnostic_watchdog_hil_complete": false,
-  "e1_diagnostic_watchdog_safety_credit": false
+  "e1_diagnostic_watchdog_safety_credit": false,
+  "first_energization_cell_present": true,
+  "first_energization_cell_whole_robot_bound": true,
+  "first_energization_cell_static_use_only": true,
+  "first_energization_cell_walking_gantry": false,
+  "first_energization_cell_structure_calculated": false,
+  "first_energization_cell_restraint_rated": false,
+  "first_energization_cell_guard_impact_validated": false,
+  "first_energization_cell_fabricated": false,
+  "first_energization_cell_site_commissioned": false,
+  "first_energization_cell_instrumentation_calibrated": false,
+  "fer_g02_closed": false,
+  "fer_g10_closed": false,
+  "fer_g11_closed": false
 }
