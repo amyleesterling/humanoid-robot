@@ -13,7 +13,7 @@
   "buses": 8,
   "harness_assemblies": 14,
   "equipment_items": 64,
-  "logical_terminals": 667,
+  "logical_terminals": 681,
   "actuator_connector_instances": 196,
   "actuator_connector_contacts": 515,
   "cable_cores": 144,

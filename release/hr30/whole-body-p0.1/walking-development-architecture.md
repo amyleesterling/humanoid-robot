@@ -2,7 +2,7 @@
 
 **PRELIMINARY - CONFIGURATION AND PACKAGING CAD ONLY - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, POWERED TESTING, MOTION, OR ENERGIZATION**
 
-The whole body has six commanded axes per leg: hip yaw/roll/pitch, knee pitch, and ankle pitch/roll. Hip pitch reserves 1.5:1, knee and roll axes reserve 2.0:1, and ankle pitch reserves 2.5:1 timing reductions with dual-supported 12 mm outputs and output encoders. Each foot is 90 x 145 mm with four-corner force sensing and a replaceable compliant sole. The active tether-first planning dynamics mass is 9.831 kg with neutral COM Z=0.348 m; these are candidate-volume and allocation values, not measured properties. The separate 11.296 kg onboard-envelope case retains rejected-pack packaging evidence and is not an active power configuration.
+The whole body has six commanded axes per leg: hip yaw/roll/pitch, knee pitch, and ankle pitch/roll. Hip pitch reserves 1.5:1, knee and roll axes reserve 2.0:1, and ankle pitch reserves 2.5:1 timing reductions with dual-supported 12 mm outputs and output encoders. Each foot is 90 x 145 mm with four-corner force sensing and a replaceable compliant sole. The active tether-first planning dynamics mass is 9.901 kg with neutral COM Z=0.348 m; these are candidate-volume and allocation values, not measured properties. The separate 11.367 kg onboard-envelope case retains rejected-pack packaging evidence and is not an active power configuration.
 
 Control layers are: embedded actuator current/velocity loops; a deterministic local motion controller for joint interpolation, state estimation, support-polygon checks and limits; a separately powered watchdog/permit path with zero safety credit until validated; and a Raspberry Pi/OpenAI conversational layer that can request only named behaviors. Loss or staleness of the conversational layer never becomes a motion request.
 
@@ -23,20 +23,20 @@ The fall-restraint architecture is a rated overhead gantry, swivel, energy-limit
 
 ## Articulated P0.1 pose set
 
-The package now carries 10 generated full-body configurations rather than prose-only stages, including mirrored lift and capture-step candidates for both legs. Joint targets are in `pose-joint-targets.csv`; transformed COM, support polygons, foot clearance and placement are in `pose-support-metrics.csv`; and each pose has STEP and GLB geometry. The minimum primary-foot COM margin in this set is **21.9 mm**. This is a rigid-link kinematic screen using provisional inertial data—not a zero-moment-point, contact-force, compliance, actuator, trajectory or balance validation.
+The package now carries 10 generated full-body configurations rather than prose-only stages, including mirrored lift and capture-step candidates for both legs. Joint targets are in `pose-joint-targets.csv`; transformed COM, support polygons, foot clearance and placement are in `pose-support-metrics.csv`; and each pose has STEP and GLB geometry. The minimum primary-foot COM margin in this set is **22.3 mm**. This is a rigid-link kinematic screen using provisional inertial data—not a zero-moment-point, contact-force, compliance, actuator, trajectory or balance validation.
 
 | Pose | Stage | Support | COM margin | Swing clearance | Forward placement |
 |---|---:|---|---:|---:|---:|
-| Neutral double support | S2 | DOUBLE | 44.7 mm | 0.0 mm | 0.0 mm |
+| Neutral double support | S2 | DOUBLE | 44.8 mm | 0.0 mm | 0.0 mm |
 | Crouched double support | S2 | DOUBLE | 47.1 mm | 0.0 mm | 0.0 mm |
-| Left weight transfer | S3 | DOUBLE | 21.9 mm | 0.0 mm | 0.0 mm |
-| Right foot lift | S4 | L SINGLE | 22.0 mm | 6.8 mm | 1.0 mm |
-| Right capture-step candidate | S5 | L SINGLE | 22.2 mm | 17.2 mm | 40.7 mm |
-| Right 40 mm touchdown | S5 | DOUBLE | 64.7 mm | 0.0 mm | 40.0 mm |
-| Right weight transfer | S3 | DOUBLE | 23.7 mm | 0.0 mm | 0.0 mm |
-| Left foot lift | S4 | R SINGLE | 23.9 mm | 6.8 mm | 1.0 mm |
-| Left capture-step candidate | S5 | R SINGLE | 24.1 mm | 17.2 mm | 40.7 mm |
-| Left 40 mm touchdown | S5 | DOUBLE | 64.7 mm | 0.0 mm | 40.0 mm |
+| Left weight transfer | S3 | DOUBLE | 22.3 mm | 0.0 mm | 0.0 mm |
+| Right foot lift | S4 | L SINGLE | 22.4 mm | 6.8 mm | 1.0 mm |
+| Right capture-step candidate | S5 | L SINGLE | 22.6 mm | 17.2 mm | 40.7 mm |
+| Right 40 mm touchdown | S5 | DOUBLE | 64.8 mm | 0.0 mm | 40.0 mm |
+| Right weight transfer | S3 | DOUBLE | 23.5 mm | 0.0 mm | 0.0 mm |
+| Left foot lift | S4 | R SINGLE | 23.6 mm | 6.8 mm | 1.0 mm |
+| Left capture-step candidate | S5 | R SINGLE | 23.8 mm | 17.2 mm | 40.7 mm |
+| Left 40 mm touchdown | S5 | DOUBLE | 64.8 mm | 0.0 mm | 40.0 mm |
 
 <!-- HR30-POSE-P01-END -->
 

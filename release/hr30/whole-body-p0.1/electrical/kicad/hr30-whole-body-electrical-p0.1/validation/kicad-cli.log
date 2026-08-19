@@ -1,15 +1,15 @@
 $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch erc --exit-code-violations --output "C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\validation\hr30-whole-body-electrical-p0.1-erc.rpt" "C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\hr30-whole-body-electrical-p0.1.kicad_sch"
 Found 0 violations
 Saved ERC Report to C:/Users/amyle/Documents/New project/h30e/hr30/whole-body-p0.1/electrical/kicad/hr30-whole-body-electrical-p0.1/validation/hr30-whole-body-electrical-p0.1-erc.rpt
-11:33:50: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-11:33:50: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+05:17:51: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+05:17:51: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0
 
 $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" sch export netlist --output "C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\validation\hr30-whole-body-electrical-p0.1.net" "C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\hr30-whole-body-electrical-p0.1.kicad_sch"
 Warning: schematic has annotation errors, please use the schematic editor to fix them
-11:33:53: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-11:33:53: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+05:17:54: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+05:17:54: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0
 
@@ -29,12 +29,12 @@ Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\elect
 Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\output\hr30-whole-body-electrical-p0.1-12 Left wrist_gripper TTL data bus and individual feeds.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\output\hr30-whole-body-electrical-p0.1-13 Right wrist_gripper TTL data bus and individual feeds.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\output\hr30-whole-body-electrical-p0.1-14 Head TTL, cameras, face display, audio and cooling.svg'.
-Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\output\hr30-whole-body-electrical-p0.1-15 Auxiliary conversion and pelvis inertial sensing.svg'.
+Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\output\hr30-whole-body-electrical-p0.1-15 Three-rail auxiliary conversion and pelvis inertial sensing.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\output\hr30-whole-body-electrical-p0.1-16 Left foot four-point load sensing.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\output\hr30-whole-body-electrical-p0.1-17 Right foot four-point load sensing.svg'.
 Plotted to 'C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\kicad\hr30-whole-body-electrical-p0.1\output\hr30-whole-body-electrical-p0.1-18 Onboard-later isolated energy evaluation.svg'.
 Done.
-11:33:54: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-11:33:54: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+05:17:55: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+05:17:55: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0

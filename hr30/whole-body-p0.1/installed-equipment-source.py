@@ -203,11 +203,13 @@ def build() -> list[Equipment]:
             "exact product family candidate and installed clearance envelope; current margin, transients, protection, thermal behavior and reverse-energy validation remain open",
             "torso", power)
     add("EQ-P01-AUX-CONVERTER", "P01", "auxiliary power conversion",
-        "isolated 14.8 V to 5.1 V compute/HMI converter candidate; exact model required",
-        box(62, 18, 24, (-35, -4, 408), 2), 0.095, 0.0, 6.0,
-        "upper pelvis conductive tray", "-Y front-cover withdrawal",
-        "protected primary input; separate compute and control outputs; grounding scheme open",
-        "SELECTION REQUIRED", "SELECTION REQUIRED", "planning envelope/mass/loss only", "base_link", power)
+        "120 x 58 mm three-rail carrier candidate with 3x RECOM REC30E-2405SZ; compute/HMI/control positive rails remain separate",
+        box(120, 16, 58, (0, -4, 408), 2), 0.160, 0.0, 9.0,
+        "upper pelvis vertical electronics datum", "-Y front-cover withdrawal",
+        "three protected 12 V inputs; COMPUTE_5V1/HMI_5V0/AUX_5V_SAFE outputs; returns meet at AUX_0V_STAR; fuse/reverse-inrush/bond/harness open",
+        "https://recom-power.com/en/rec-s-REC30E-Z.html", "REC30E-Z datasheet REV 1/2024; live product page accessed 2026-08-19",
+        "exact converter candidate and native carrier package exist; HMI rail has zero coarse-peak headroom; protection, trim, thermal, EMC, DFM/FAI and physical validation remain open",
+        "base_link", power)
     add("EQ-P01-IMU", "P01", "pelvis inertial sensor",
         "industrial 6/9-axis IMU module candidate; exact model required",
         box(34, 10, 34, (43, -4, 408), 2), 0.025, 0.8, 0.8,

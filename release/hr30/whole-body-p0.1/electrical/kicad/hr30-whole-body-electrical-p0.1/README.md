@@ -26,7 +26,7 @@ AX_* actuator terminals use current official ROBOTIS actuator-side pin numbers. 
 12. `12_left_distal_ttl.kicad_sch` — Left wrist/gripper TTL data bus and individual feeds
 13. `13_right_distal_ttl.kicad_sch` — Right wrist/gripper TTL data bus and individual feeds
 14. `14_head_ttl_sensors_hmi.kicad_sch` — Head TTL, cameras, face display, audio and cooling
-15. `15_pelvis_aux_imu.kicad_sch` — Auxiliary conversion and pelvis inertial sensing
+15. `15_pelvis_aux_imu.kicad_sch` — Three-rail auxiliary conversion and pelvis inertial sensing
 16. `16_left_foot_load_sensing.kicad_sch` — Left foot four-point load sensing
 17. `17_right_foot_load_sensing.kicad_sch` — Right foot four-point load sensing
 18. `18_onboard_later_energy_evaluation.kicad_sch` — Onboard-later isolated energy evaluation

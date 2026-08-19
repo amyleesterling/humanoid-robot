@@ -305,7 +305,8 @@ def build_sheets(model):
                 ("LOG-PSTAT", "PRECHARGE STATUS", "PRECHARGE_STATUS", "left")]
     s3.components = [
         component(model, "CPU1", "RASPBERRY PI 5 CONVERSATIONAL COMPUTE CANDIDATE",
-                  [("LOG-NET", "NETWORK / OPENAI CLIENT", "EXTERNAL_NETWORK", "left"), ("LOG-ACTION", "STRUCTURED ACTION REQUEST", "ACTION_REQUEST_AUTH", "right"),
+                  [("LOG-5V", "COMPUTE 5.1 V INPUT", "COMPUTE_5V1", "left"), ("LOG-RET", "AUXILIARY RETURN", "AUX_0V_STAR", "left"),
+                   ("LOG-NET", "NETWORK / OPENAI CLIENT", "EXTERNAL_NETWORK", "left"), ("LOG-ACTION", "STRUCTURED ACTION REQUEST", "ACTION_REQUEST_AUTH", "right"),
                    ("LOG-CAM-L", "LEFT CAMERA IPC", "HEAD_CAM_L_IPC", "right"), ("LOG-CAM-R", "RIGHT CAMERA IPC", "HEAD_CAM_R_IPC", "right"),
                    ("LOG-DISPLAY", "FACE DISPLAY IPC", "HEAD_DISPLAY_IPC", "right"), ("LOG-TOUCH", "FACE TOUCH IPC", "HEAD_TOUCH_IPC", "right"),
                    ("LOG-MIC", "MICROPHONE IPC", "HEAD_MIC_IPC", "right"), ("LOG-AUDIO", "AUDIO OUTPUT IPC", "HEAD_AUDIO_IPC", "right"),
@@ -371,7 +372,7 @@ def build_sheets(model):
     s4 = model.Sheet(4, "04_motion_controller_carrier_connectors.kicad_sch", "STM32H743 motion-controller power and carrier connectors", "Physical two-board interface for the eight UART channels; no field actuator power enters either connector.")
     s4.components = [
         component(model, "REG1", "CONTROL 5 V TO 3.3 V REGULATOR - DESIGN REQUIRED",
-                  [("LOG-5V-IN", "AUXILIARY 5 V INPUT", "AUX_5V_SAFE", "left"), ("LOG-RET-IN", "AUXILIARY RETURN", "AUX_0V", "left"),
+                  [("LOG-5V-IN", "CONTROL 5 V INPUT", "AUX_5V_SAFE", "left"), ("LOG-RET-IN", "AUXILIARY RETURN", "AUX_0V_STAR", "left"),
                    ("LOG-5V", "CONTROL 5 V", "CTRL_5V", "right"), ("LOG-3V3", "CONTROL 3.3 V", "CTRL_3V3", "right"), ("LOG-GND", "CONTROL GROUND", "CTRL_GND", "right")],
                   "The exact regulator, filtering, sequencing, brownout, protection, thermal and EMC design remains open. This block does not authorize powering MCU1 or either carrier.", (205, 65), width=108.0),
         component(model, "JMCU_A", "JST BM15B-GHS-TBT - CARRIER A CONTROLLER HEADER", carrier_connector_pins("A"),
@@ -465,7 +466,7 @@ def build_sheets(model):
 
     s14 = bus_sheet(model, 14, "14_head_ttl_sensors_hmi.kicad_sch", "Head TTL, cameras, face display, audio and cooling", "TTL-HEAD", BUS_AXES["TTL-HEAD"], by_axis)
     s14.components.extend([
-        component(model, "HPWR1", "PROTECTED HEAD AUXILIARY DISTRIBUTION - DESIGN REQUIRED", [("LOG-IN", "AUXILIARY 5 V INPUT", "AUX_5V_SAFE", "left"), ("LOG-RET-IN", "AUXILIARY RETURN", "AUX_0V", "left"), ("LOG-OUT", "HEAD 5 V", "HEAD_5V", "right"), ("LOG-RET-OUT", "HEAD RETURN", "HEAD_0V", "right")], "Branch protection, filtering, connector and current allocation remain open.", (70, 235), width=82.0),
+        component(model, "HPWR1", "PROTECTED HEAD HMI DISTRIBUTION - DESIGN REQUIRED", [("LOG-IN", "HMI 5 V INPUT", "HMI_5V0", "left"), ("LOG-RET-IN", "AUXILIARY RETURN", "AUX_0V_STAR", "left"), ("LOG-OUT", "HEAD 5 V", "HEAD_5V", "right"), ("LOG-RET-OUT", "HEAD RETURN", "HEAD_0V", "right")], "Branch protection, filtering, connector and current allocation remain open. The present coarse HMI peak equals the 30 W converter rating, so measured-load closure or redesign is mandatory.", (70, 235), width=82.0),
         component(model, "CAM1", "LEFT CAMERA MODULE - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-IPC", "VISION IPC", "HEAD_CAM_L_IPC", "right")], "No safety role; exact module, optics, privacy and mounting remain open.", (175, 235), width=64.0),
         component(model, "CAM2", "RIGHT CAMERA MODULE - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-IPC", "VISION IPC", "HEAD_CAM_R_IPC", "right")], "No safety role; exact module, optics, synchronization and mounting remain open.", (260, 235), width=64.0),
         component(model, "DISP1", "FACE DISPLAY - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "HEAD_5V", "left"), ("LOG-RET", "RETURN", "HEAD_0V", "left"), ("LOG-IPC", "DISPLAY IPC", "HEAD_DISPLAY_IPC", "right"), ("LOG-TOUCH", "TOUCH IPC", "HEAD_TOUCH_IPC", "right")], "Exact screen, controller, luminance and touch interface remain open.", (350, 235), width=68.0),
@@ -477,10 +478,13 @@ def build_sheets(model):
     ])
     sheets.append(s14)
 
-    s15 = model.Sheet(15, "15_pelvis_aux_imu.kicad_sch", "Auxiliary conversion and pelvis inertial sensing", "Logical 5 V auxiliary rail and pelvis IMU boundary.")
+    s15 = model.Sheet(15, "15_pelvis_aux_imu.kicad_sch", "Three-rail auxiliary conversion and pelvis inertial sensing", "Three independent REC30E-2405SZ candidates supply compute, HMI and deterministic control; protection and validation remain open.")
     s15.components = [
-        component(model, "AUXD1", "CONTROLLED 12 V TO 5.1 V AUXILIARY CONVERTER - SELECTION REQUIRED", [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-OUT", "AUXILIARY 5 V", "AUX_5V_SAFE", "right"), ("LOG-RET-OUT", "AUXILIARY RETURN", "AUX_0V", "right"), ("LOG-TLM", "CONVERTER TELEMETRY", "TLM_AUXD1", "right")], "Exact converter, protection, isolation/bonding, inrush, thermal and EMC evidence remain open.", (125, 115), width=96.0),
-        component(model, "IMU1", "PELVIS 6/9-AXIS IMU - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "AUX_5V_SAFE", "left"), ("LOG-RET", "RETURN", "AUX_0V", "left"), ("LOG-DATA", "DETERMINISTIC SENSOR DATA", "PELVIS_IMU_DATA", "right"), ("LOG-INT", "DATA READY / FAULT", "PELVIS_IMU_INT", "right")], "Exact device, range, bandwidth, timestamping, calibration, connector and physical pins remain open.", (315, 115), width=92.0),
+        component(model, "AUXCOM1", "RECOM REC30E-2405SZ COMPUTE-RAIL CANDIDATE", [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-DISABLE", "ACTIVE-LOW DISABLE", "AUX_COMPUTE_DISABLE", "left"), ("LOG-OUT", "COMPUTE 5.1 V", "COMPUTE_5V1", "right"), ("LOG-RET-OUT", "ISOLATED SECONDARY RETURN", "AUX_0V_STAR", "right")], "REC30E-Z datasheet REV 1/2024: 9-36 V input, 5 V/6 A, 30 W. Fuse, reverse/inrush, trim, harness, thermal, EMC and received-part FAI remain open.", (85, 105), width=105.0),
+        component(model, "AUXHMI1", "RECOM REC30E-2405SZ HMI-RAIL CANDIDATE", [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-DISABLE", "ACTIVE-LOW DISABLE", "AUX_HMI_DISABLE", "left"), ("LOG-OUT", "HMI 5 V", "HMI_5V0", "right"), ("LOG-RET-OUT", "ISOLATED SECONDARY RETURN", "AUX_0V_STAR", "right")], "The current coarse HMI peak is 30 W, leaving zero published headroom. Measured-load closure or redesign is mandatory; protection and validation remain open.", (215, 105), width=105.0),
+        component(model, "AUXCTL1", "RECOM REC30E-2405SZ CONTROL-RAIL CANDIDATE", [("LOG-IN", "CONTROLLED 12 V INPUT", "ACT_MAIN_SAFE_12V", "left"), ("LOG-RET-IN", "CONTROLLED RETURN", "ACT_0V_CONTROLLED", "left"), ("LOG-DISABLE", "ACTIVE-LOW DISABLE", "AUX_CONTROL_DISABLE", "left"), ("LOG-OUT", "CONTROL 5 V", "AUX_5V_SAFE", "right"), ("LOG-RET-OUT", "ISOLATED SECONDARY RETURN", "AUX_0V_STAR", "right")], "This is a deterministic-control rail candidate, not a safety supply. Fuse, reverse/inrush, trim, grounding, harness, thermal and EMC evidence remain open.", (345, 105), width=105.0),
+        component(model, "AUXSTAR1", "SINGLE PROPOSED AUXILIARY RETURN STAR / PE BOND BOUNDARY", [("LOG-RET", "COMMON SECONDARY RETURN", "AUX_0V_STAR", "left"), ("LOG-PE", "SOLE PROPOSED PE BOND", "FRAME_PE_BOUNDARY", "right")], "Exact star-point implementation and the sole possible DC 0 V/PE bond remain SELECTION REQUIRED. No other secondary bond is permitted without a signed grounding revision.", (90, 200), width=105.0),
+        component(model, "IMU1", "PELVIS 6/9-AXIS IMU - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "AUX_5V_SAFE", "left"), ("LOG-RET", "RETURN", "AUX_0V_STAR", "left"), ("LOG-DATA", "DETERMINISTIC SENSOR DATA", "PELVIS_IMU_DATA", "right"), ("LOG-INT", "DATA READY / FAULT", "PELVIS_IMU_INT", "right")], "Exact device, range, bandwidth, timestamping, calibration, connector and physical pins remain open.", (310, 200), width=92.0),
         component(model, "MCU_AUX", "MCU1 AUXILIARY SENSOR PORTS - LOGICAL UNIT", [("LOG-IMU", "PELVIS IMU DATA", "PELVIS_IMU_DATA", "left"), ("LOG-IMU-INT", "PELVIS IMU INTERRUPT", "PELVIS_IMU_INT", "left"), ("LOG-LFOOT", "LEFT FOOT SENSOR DATA", "L_FOOT_SENSOR_DATA", "right"), ("LOG-RFOOT", "RIGHT FOOT SENSOR DATA", "R_FOOT_SENSOR_DATA", "right")], "Alternate logical view of MCU1; exact package pins and interfaces remain open.", (220, 215), width=100.0),
     ]
     sheets.append(s15)
@@ -493,7 +497,7 @@ def build_sheets(model):
         for corner, position in zip(("FL", "FR", "RL", "RR"), positions):
             signal_pins.extend([(f"LOG-{corner}-P", f"{corner} SIGNAL +", f"{prefix}_FOOT_{corner}_SIG_P", "left"), (f"LOG-{corner}-N", f"{corner} SIGNAL -", f"{prefix}_FOOT_{corner}_SIG_N", "left")])
             sheet.components.append(component(model, f"LOAD_{prefix}_{corner}", f"{side.upper()} FOOT {corner} LOAD SENSOR - SELECTION REQUIRED", [("LOG-EXC-P", "EXCITATION +", f"{prefix}_FOOT_EXC_P", "left"), ("LOG-EXC-N", "EXCITATION -", f"{prefix}_FOOT_EXC_N", "left"), ("LOG-SIG-P", "SIGNAL +", f"{prefix}_FOOT_{corner}_SIG_P", "right"), ("LOG-SIG-N", "SIGNAL -", f"{prefix}_FOOT_{corner}_SIG_N", "right")], "Exact sensor type, range, overload, mounting, connector, calibration and physical pins remain open.", position, width=78.0))
-        sheet.components.append(component(model, f"ADC_{prefix}_FOOT", f"{side.upper()} FOOT LOAD ACQUISITION - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "AUX_5V_SAFE", "left"), ("LOG-RET", "RETURN", "AUX_0V", "left"), ("LOG-EXC-P", "EXCITATION +", f"{prefix}_FOOT_EXC_P", "right"), ("LOG-EXC-N", "EXCITATION -", f"{prefix}_FOOT_EXC_N", "right"), ("LOG-DATA", "UPSTREAM SENSOR DATA", f"{prefix}_FOOT_SENSOR_DATA", "right")] + signal_pins, "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.", (205, 280), width=112.0))
+        sheet.components.append(component(model, f"ADC_{prefix}_FOOT", f"{side.upper()} FOOT LOAD ACQUISITION - SELECTION REQUIRED", [("LOG-5V", "5 V POWER", "AUX_5V_SAFE", "left"), ("LOG-RET", "RETURN", "AUX_0V_STAR", "left"), ("LOG-EXC-P", "EXCITATION +", f"{prefix}_FOOT_EXC_P", "right"), ("LOG-EXC-N", "EXCITATION -", f"{prefix}_FOOT_EXC_N", "right"), ("LOG-DATA", "UPSTREAM SENSOR DATA", f"{prefix}_FOOT_SENSOR_DATA", "right")] + signal_pins, "Exact ADC, excitation, anti-aliasing, protection, timing, calibration and connector pins remain open.", (205, 280), width=112.0))
         sheet.notes = ["The four sensor locations correspond to the physical installed-equipment register; no sensor order code or force accuracy is released.", "Foot data supports state estimation only after calibration and fault validation; it carries no independent safety credit."]
         return sheet
 
@@ -642,6 +646,11 @@ def write_docs(sheets):
         "direct_14v8_actuator_source_absent": True,
         "individual_actuator_power_feed_count": 25,
         "regulated_ttl_branch_count": 3,
+        "three_rail_auxiliary_architecture_encoded": True,
+        "auxiliary_converter_candidate": "3x RECOM REC30E-2405SZ",
+        "auxiliary_positive_rails": ["COMPUTE_5V1", "HMI_5V0", "AUX_5V_SAFE"],
+        "auxiliary_return_star": "AUX_0V_STAR",
+        "auxiliary_hmi_zero_peak_headroom_blocker": True,
         "reset_can_command_motion": False,
         "physical_pin_mapping_reconciled": False,
         "interface_devices_selected": False, "protection_values_selected": False,
@@ -681,6 +690,7 @@ def update_package():
         "native_hr30_kicad_direct_14v8_actuator_source_absent": True,
         "native_hr30_kicad_individual_actuator_power_feed_count": 25,
         "native_hr30_kicad_regulated_ttl_branch_count": 3,
+        "native_hr30_kicad_three_rail_auxiliary_architecture": True,
         "native_hr30_kicad_physical_pins_selected": False,
         "native_hr30_kicad_erc_errors": 0,
         "native_hr30_kicad_erc_warnings": 0,
