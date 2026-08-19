@@ -1,0 +1,9 @@
+{
+  "identifier": "HR30-FIRST-ENERGIZATION-INSTRUMENTATION-P0.1",
+  "warning": "PRELIMINARY - UNBUILT FIRST-ENERGIZATION INSTRUMENTATION CANDIDATE - ABORT LIMITS ARE NOT QUALIFIED OR RELEASED - NOT APPROVED FOR PROCUREMENT, CONNECTION, POWERED TESTING, MOTION, WALKING OR ENERGIZATION",
+  "authoritative_fer_register": "hr30/whole-body-p0.1/first-energization-readiness-p0.1/energization-gate-register.csv",
+  "authoritative_fer_register_sha256": "8b4fb14cf31a9b00e67900ec520978edeb404ea9614557022ceece25117a34b9",
+  "power_budget": "hr30/whole-body-p0.1/energy-safety-spine-p0.1/current-power-budget.csv",
+  "power_budget_sha256": "2598d0a469b43c0ea9931f3d8199804f80a7d0101337a7625ec2a1f00f99869f",
+  "scope": "FER-G11 DESIGN EVIDENCE ONLY; PHYSICAL EXECUTION/QUALIFICATION OPEN"
+}

@@ -427,3 +427,9 @@ The [interactive first-energization-cell guide](first-energization-cell-p0.1/ind
 
 The [interactive hardware guide](first-energization-cell-hardware-p0.1/index.html) replaces the earlier loose-panel/caster concept with a **31-member fastened construction candidate**: framed doors, six captured 6 mm panels, 22 gusset brackets, 206 controlled fastener assemblies, six profile hinges, four floor-mount interfaces, a platform subframe, and a T-slot pelvis cradle. Purchased parts are modeled as interface envelopes, not machining sources. Floor anchors, guard impact, door interlocking, restraint dynamics, proof testing and FER-G02/G10/G11 remain open.
 <!-- HR30-CELL-HARDWARE-P01-END -->
+
+<!-- HR30-FER-INSTRUMENTS-P01-START -->
+## First-energization instrumentation
+
+The [interactive instrumentation guide](first-energization-instrumentation-p0.1/index.html) defines an **18-channel E0-E7 measurement architecture**: eight isolated analog channels, four contact temperatures, a 150 A current-probe chain, scope voltage, a held-disconnected digital timing input, thermal imaging and two video views. It includes an external bench STEP/GLB, exact candidate order codes, calibration checks, protected connection obligations, time-correlation method, raw-data schema and dry-rehearsal traveler. Numeric current, temperature and stopping-time limits remain unresolved; no physical calibration or rehearsal has been executed, so FER-G11 remains open.
+<!-- HR30-FER-INSTRUMENTS-P01-END -->
