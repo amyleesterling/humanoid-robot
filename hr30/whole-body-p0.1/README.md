@@ -465,6 +465,14 @@ The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1
 The [interactive implementation map](safety-function-implementation-p0.1/index.html) binds all 12 SRS functions to current terminals and nets or marks them absent. Only SFR-01 through SFR-03 have connected candidate circuitry, and none is validated.
 <!-- HR30-SFI-P01-END -->
 
+
+
+<!-- HR30-ACTIVE-LIGHT4-P01-START -->
+## Integrated LIGHT4 whole-body candidate
+
+The [integrated LIGHT4 guide](active-light4-p0.1/index.html) binds the complete lightweight-hip STEP/GLB, a 9.880 kg reconciled whole-body URDF/MJCF, freshly recomputed inverse dynamics, and freshly executed bounded control traces. The planning model is 0.120 kg below the 10 kg maximum and the ideal-fixture control screen passes with zero rotary saturation. Physical mass, transmission strength, continuous duty, free balance, restraint, motion and energization remain open.
+<!-- HR30-ACTIVE-LIGHT4-P01-END -->
+
 <!-- HR30-AUXILIARY-POWER-P01-START -->
 ## Three-rail auxiliary-power module
 

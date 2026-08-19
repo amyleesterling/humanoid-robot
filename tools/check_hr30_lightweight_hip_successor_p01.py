@@ -33,7 +33,12 @@ def main() -> int:
     assert status["new_hip_pair_interference_count"] == 0
     assert status["program_mass_maximum_met"] is True
     assert status["projected_active_tether_mass_kg"] <= 10.0
-    assert status["bounded_control_screen_passed"] is True
+    assert status["predecessor_bounded_control_screen_passed"] is True
+    assert status["lightweight_mass_model_control_screen_passed"] is False
+    assert "ACTIVE-LIGHT4-P0.1" in status["model_consistency_hold"]
+    active = json.loads((BODY / "active-light4-p0.1" / "active-light4-status.json").read_text(encoding="utf-8"))
+    assert active["bounded_control_screen_pass"] is True
+    assert active["mass_kg"] == status["projected_active_tether_mass_kg"]
     for key in ("tooth_geometry_released", "capacity_validated", "thermal_validated", "fabrication_authority", "powered_test_authority", "motion_authority", "walking_authority", "energization_authority"):
         assert status[key] is False, key
     transmissions = rows(OUT / "hip-transmission-register.csv")

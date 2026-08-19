@@ -752,5 +752,12 @@
     "REC30E-2405SZ",
     "TEN 40-1211E"
   ],
-  "auxiliary_power_hmi_peak_headroom_w": 10
+  "auxiliary_power_hmi_peak_headroom_w": 10,
+  "active_whole_body_engineering_candidate": "HR30-TETHER-LIGHT4-P0.1",
+  "active_light4_mass_bound_model_present": true,
+  "active_light4_planning_mass_kg": 9.879813509,
+  "active_light4_margin_to_10kg_kg": 0.12018649100000012,
+  "active_light4_fresh_inverse_dynamics_executed": true,
+  "active_light4_bounded_control_screen_pass": true,
+  "active_light4_physical_validation_complete": false
 }

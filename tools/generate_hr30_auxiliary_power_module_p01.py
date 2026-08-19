@@ -431,6 +431,12 @@ def integrate_root(status: dict[str, object]) -> None:
 
 
 def manifest_release() -> None:
+    # KiCad's SVG plotter emits insignificant spaces before newlines.  Strip
+    # them deterministically before hashing so `git diff --check` and package
+    # manifests describe the same normalized web artifacts on every run.
+    for svg_path in OUT.rglob("*.svg"):
+        normalized = "\n".join(line.rstrip() for line in svg_path.read_text(encoding="utf-8").splitlines()) + "\n"
+        svg_path.write_text(normalized, encoding="utf-8", newline="\n")
     files = [p for p in OUT.rglob("*") if p.is_file() and p.name != "file-manifest.csv"]
     rows = [{"path": p.relative_to(OUT).as_posix(), "bytes": p.stat().st_size, "sha256": sha(p), "warning": WARNING} for p in sorted(files)]
     write_csv(OUT / "file-manifest.csv", list(rows[0]), rows)
