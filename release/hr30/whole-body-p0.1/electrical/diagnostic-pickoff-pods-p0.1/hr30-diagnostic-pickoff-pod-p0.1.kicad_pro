@@ -1,0 +1,22 @@
+{
+  "board": {},
+  "boards": [],
+  "cvpcb": {},
+  "erc": {},
+  "libraries": {},
+  "meta": {
+    "filename": "hr30-diagnostic-pickoff-pod-p0.1.kicad_pro",
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [],
+    "meta": {
+      "version": 3
+    }
+  },
+  "pcbnew": {},
+  "schematic": {},
+  "text_variables": {
+    "PROJECT_STATUS": "PRELIMINARY - UNBUILT SOURCE-LOCAL DIAGNOSTIC PICKOFF PODS - ZERO SAFETY CREDIT - NOT APPROVED FOR PROCUREMENT, FABRICATION, ASSEMBLY, CONNECTION, POWERED TESTING, MOTION, WALKING OR ENERGIZATION"
+  }
+}

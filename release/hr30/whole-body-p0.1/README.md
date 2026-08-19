@@ -453,3 +453,9 @@ The [interactive measurement-boundary guide](electrical/measurement-boundary-pan
 
 The [interactive measurement-harness guide](first-energization-measurement-harness-p0.1/index.html) defines all **16 analog conductors** from the measurement panel to two NI-9229 modules and the exact battery-slate path through NI-9924 terminal 14 (DIO0), terminal 1 (COM), SH and ferrite 782803-01. It also corrects the earlier ambiguous channels to `HARDWIRED_PERMIT`, `K1_COIL_POS` and `K2_COIL_POS`. Robot-side protected diagnostic pickoffs, build, review, calibration and FER-G11 remain open; no connection or energization authority follows.
 <!-- HR30-MEASUREMENT-HARNESS-P01-END -->
+
+<!-- HR30-DIAGNOSTIC-PICKOFF-PODS-P01-START -->
+## Source-local diagnostic pickoff pods
+
+The [interactive diagnostic-pickoff guide](electrical/diagnostic-pickoff-pods-p0.1/index.html) defines **eight separate one-channel pods**, one per measured HR-30 node. Two 100 kOhm Vishay elements in each lead precede every long source-to-panel cable, with exact pod connectors, enclosure candidate, board source, contact map, paper fault screens and composite 1.4204 scale correction. Device-specific source-terminal accessories, the <=100 mm upstream tails, build/FAI/calibration and qualified no-bypass review remain open; no connection or energization authority follows.
+<!-- HR30-DIAGNOSTIC-PICKOFF-PODS-P01-END -->

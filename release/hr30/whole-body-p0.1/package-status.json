@@ -718,5 +718,11 @@
   "measurement_harness_sync_contact_map_complete": true,
   "measurement_harness_robot_pickoffs_released": false,
   "measurement_harness_built": false,
-  "measurement_harness_calibrated": false
+  "measurement_harness_calibrated": false,
+  "diagnostic_pickoff_pods_candidate_present": true,
+  "diagnostic_pickoff_pod_count": 8,
+  "diagnostic_pickoff_series_elements_per_lead": 2,
+  "diagnostic_pickoff_long_cables_current_limited": true,
+  "diagnostic_pickoff_source_terminal_taps_released": false,
+  "diagnostic_pickoff_pods_built": false
 }
