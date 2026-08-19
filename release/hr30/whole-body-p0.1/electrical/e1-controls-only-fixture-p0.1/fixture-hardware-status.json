@@ -1,10 +1,10 @@
 {
   "identifier": "HR30-E1-FIXTURE-HARDWARE-P0.1",
   "warning": "PRELIMINARY - UNBUILT E1 FIXTURE HARDWARE CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION",
-  "generated_utc": "2026-08-18T17:06:40.542550+00:00",
+  "generated_utc": "2026-08-19T00:20:36.094977+00:00",
   "material_selection_count": 4,
   "hardware_selection_count": 13,
-  "pcb_support_stack_count": 14,
+  "pcb_support_stack_count": 16,
   "cover_fastener_stack_count": 8,
   "bench_foot_stack_count": 4,
   "fabrication_drawing_count": 4,

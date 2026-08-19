@@ -607,8 +607,8 @@
   "hip4_capacity_validated": false,
   "hip4_motion_sweep_validated": false,
   "e1_controls_only_fixture_present": true,
-  "e1_native_pcb_count": 4,
-  "e1_native_mount_hole_count": 14,
+  "e1_native_pcb_count": 5,
+  "e1_native_mount_hole_count": 16,
   "e1_actuator_field_port_cover_count": 8,
   "e1_actuator_power_component_count": 0,
   "e1_fixture_built": false,
@@ -669,5 +669,15 @@
   "carrier_first_axis_planning_conductor_size_within_contact_range": true,
   "physical_harness_direct_power_crossing_count": 76,
   "physical_harness_serial_data_joint_link_count": 25,
-  "physical_harness_every_direct_pair_crosses_upstream_joints": true
+  "physical_harness_every_direct_pair_crosses_upstream_joints": true,
+  "e1_diagnostic_watchdog_native_board_present": true,
+  "e1_diagnostic_watchdog_exact_tps3431_candidate": true,
+  "e1_diagnostic_watchdog_permit_hard_low": true,
+  "e1_diagnostic_watchdog_outputs_local_only": true,
+  "e1_diagnostic_watchdog_erc_errors": 0,
+  "e1_diagnostic_watchdog_erc_warnings": 0,
+  "e1_diagnostic_watchdog_drc_violations": 0,
+  "e1_diagnostic_watchdog_fabricated": false,
+  "e1_diagnostic_watchdog_hil_complete": false,
+  "e1_diagnostic_watchdog_safety_credit": false
 }

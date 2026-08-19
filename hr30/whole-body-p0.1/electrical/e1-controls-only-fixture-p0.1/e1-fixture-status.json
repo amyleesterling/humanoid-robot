@@ -1,9 +1,9 @@
 {
   "identifier": "HR30-E1-CONTROLS-ONLY-FIXTURE-P0.1",
   "warning": "PRELIMINARY - UNBUILT CONTROLS-ONLY FIXTURE CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION",
-  "generated_utc": "2026-08-18T17:05:43.238258+00:00",
-  "native_board_count": 4,
-  "native_board_step_export_count": 4,
+  "generated_utc": "2026-08-19T00:19:38.221969+00:00",
+  "native_board_count": 5,
+  "native_board_step_export_count": 5,
   "panel_dimensions_mm": [
     360.0,
     240.0,
@@ -14,7 +14,7 @@
     240.009328,
     55.006792
   ],
-  "native_mount_hole_count": 14,
+  "native_mount_hole_count": 16,
   "sealed_carrier_cover_count": 2,
   "actuator_field_port_count": 8,
   "actuator_field_ports_physically_covered_in_cad": true,
@@ -45,7 +45,7 @@
   "j1_logic_power_cable_validated": false,
   "fixture_hardware_candidate_present": true,
   "fixture_material_candidate": "SABIC LEXAN 9034 POLYCARBONATE",
-  "pcb_support_stack_count": 14,
+  "pcb_support_stack_count": 16,
   "cover_fastener_count": 8,
   "bench_foot_stack_count": 4,
   "fabrication_drawing_count": 4,

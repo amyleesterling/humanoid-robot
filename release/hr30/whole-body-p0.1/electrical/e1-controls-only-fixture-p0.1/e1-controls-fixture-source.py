@@ -41,6 +41,7 @@ BOARD_SOURCES = {
     "CARRIER_A": BODY / "electrical/carriers-p0.1/carrier-a/hr30-carrier-a-p0.1.kicad_pcb",
     "CARRIER_B": BODY / "electrical/carriers-p0.1/carrier-b/hr30-carrier-b-p0.1.kicad_pcb",
     "SWD": BODY / "electrical/swd-adapter-p0.1/board/hr30-swd-adapter-p0.1.kicad_pcb",
+    "WATCHDOG": BODY / "electrical/e1-diagnostic-watchdog-p0.1/board/hr30-e1-diagnostic-watchdog-p0.1.kicad_pcb",
 }
 
 PLACEMENTS = {
@@ -48,6 +49,7 @@ PLACEMENTS = {
     "CARRIER_A": (44.0, -48.0),
     "CARRIER_B": (44.0, 48.0),
     "SWD": (-122.0, 58.0),
+    "WATCHDOG": (-75.0, 60.0),
 }
 
 HOLES = {
@@ -55,6 +57,7 @@ HOLES = {
     "CARRIER_A": [(3.5, -3.5), (3.5, -38.5), (78.5, -38.5), (78.5, -3.5)],
     "CARRIER_B": [(3.5, -3.5), (3.5, -38.5), (78.5, -38.5), (78.5, -3.5)],
     "SWD": [(2.5, -2.5), (29.5, -17.5)],
+    "WATCHDOG": [(12.0, -22.0), (37.0, -22.0)],
 }
 
 SIZE = {
@@ -62,6 +65,7 @@ SIZE = {
     "CARRIER_A": (82.0, 42.0),
     "CARRIER_B": (82.0, 42.0),
     "SWD": (32.0, 20.0),
+    "WATCHDOG": (40.0, 25.0),
 }
 
 
@@ -260,6 +264,7 @@ def write_cad(exported: dict[str, Path]) -> dict:
         "CARRIER_A": cq.Color(0.05, 0.42, 0.22, 1),
         "CARRIER_B": cq.Color(0.05, 0.42, 0.22, 1),
         "SWD": cq.Color(0.05, 0.35, 0.18, 1),
+        "WATCHDOG": cq.Color(0.10, 0.30, 0.58, 1),
     }
     for key, board in boards.items():
         assembly.add(board, name=f"NATIVE_{key}_PCB", color=board_colors[key])
@@ -304,7 +309,7 @@ def write_cad(exported: dict[str, Path]) -> dict:
 
 def board_rows(exported: dict[str, Path]) -> list[dict]:
     rows: list[dict] = []
-    for key in ("MCU", "CARRIER_A", "CARRIER_B", "SWD"):
+    for key in ("MCU", "CARRIER_A", "CARRIER_B", "SWD", "WATCHDOG"):
         width, depth = SIZE[key]
         rows.append({
             "board_id": key,
@@ -362,6 +367,7 @@ def write_registers(exported: dict[str, Path], geometry: dict) -> None:
     write_csv(OUT / "connector-boundary-register.csv", [
         {"boundary": "J1", "endpoint": "motion-controller logic input", "allowed_on_fixture": "5 V LOGIC CANDIDATE THROUGH LOGIC-POWER-KIT ONLY", "e1_state": "UNCONNECTED / UNPOWERED", "selection": "JST VHR-2N / SVH-21T-P1.1 CANDIDATE; ASSEMBLY OPEN", "warning": WARNING},
         {"boundary": "JDBG1", "endpoint": "motion-controller SWD", "allowed_on_fixture": "STDC14 ADAPTER PATH CANDIDATE", "e1_state": "UNCONNECTED", "selection": "EXISTING SWD ADAPTER CANDIDATE; CABLE/PROBE OPEN", "warning": WARNING},
+        {"boundary": "JIO1_WATCHDOG", "endpoint": "motion-controller diagnostic watchdog fixture cable", "allowed_on_fixture": "CONTACTS 1,2,3,5 ONLY; CONTACT 3 HARD-LOW; OUTPUTS LOCAL", "e1_state": "UNBUILT / UNCONNECTED / UNPOWERED", "selection": "TPS3431SDRBR ADAPTER + GHR-08V-S FOUR-CONDUCTOR CABLE CANDIDATE; ZERO SAFETY CREDIT", "warning": WARNING},
         {"boundary": "JMCU_A", "endpoint": "carrier A logic-only link", "allowed_on_fixture": "UNDER-PANEL PREWIRED LOGIC CABLE ONLY", "e1_state": "UNBUILT", "selection": "15-CIRCUIT JST GH HARNESS SELECTION/CRIMP VALIDATION OPEN", "warning": WARNING},
         {"boundary": "JMCU_B", "endpoint": "carrier B logic-only link", "allowed_on_fixture": "UNDER-PANEL PREWIRED LOGIC CABLE ONLY", "e1_state": "UNBUILT", "selection": "15-CIRCUIT JST GH HARNESS SELECTION/CRIMP VALIDATION OPEN", "warning": WARNING},
         {"boundary": "FIELD_PORTS", "endpoint": "eight actuator-data outputs", "allowed_on_fixture": "NONE", "e1_state": "BLOCKED BY TWO CLOSED COVERS", "selection": "COVER MATERIAL/FASTENERS/RECEIVED CLEARANCE OPEN", "warning": WARNING},
@@ -371,19 +377,20 @@ def write_registers(exported: dict[str, Path], geometry: dict) -> None:
     write_csv(OUT / "candidate-bom.csv", [
         {"item": "E1-01", "quantity": 1, "part": "360 x 240 x 6 mm base panel", "candidate": "CLEAR POLYCARBONATE OR ALUMINUM - SELECTION REQUIRED", "fabrication": "CNC / WATERJET; DXF PROVIDED", "release": "NO", "warning": WARNING},
         {"item": "E1-02", "quantity": 2, "part": "carrier field-port cover", "candidate": "3 mm CLEAR POLYCARBONATE CANDIDATE", "fabrication": "PRINT/MACHINE/THERMOFORM PROCESS SELECTION REQUIRED", "release": "NO", "warning": WARNING},
-        {"item": "E1-03", "quantity": 14, "part": "M2.5 x 8 mm standoff", "candidate": "MATERIAL/ORDER CODE SELECTION REQUIRED", "fabrication": "PURCHASE", "release": "NO", "warning": WARNING},
-        {"item": "E1-04", "quantity": 28, "part": "M2.5 board/standoff fastener", "candidate": "LENGTH/HEAD/MATERIAL/TORQUE SELECTION REQUIRED", "fabrication": "PURCHASE", "release": "NO", "warning": WARNING},
+        {"item": "E1-03", "quantity": 16, "part": "M2.5 x 8 mm standoff", "candidate": "MATERIAL/ORDER CODE SELECTION REQUIRED", "fabrication": "PURCHASE", "release": "NO", "warning": WARNING},
+        {"item": "E1-04", "quantity": 32, "part": "M2.5 board/standoff fastener", "candidate": "LENGTH/HEAD/MATERIAL/TORQUE SELECTION REQUIRED", "fabrication": "PURCHASE", "release": "NO", "warning": WARNING},
         {"item": "E1-05", "quantity": 4, "part": "20 mm bench foot", "candidate": "NONSLIP MATERIAL/ORDER CODE SELECTION REQUIRED", "fabrication": "PURCHASE", "release": "NO", "warning": WARNING},
         {"item": "E1-06", "quantity": 1, "part": "under-panel logic cable cover", "candidate": "INSULATING MATERIAL SELECTION REQUIRED", "fabrication": "MACHINE/PRINT", "release": "NO", "warning": WARNING},
         {"item": "E1-07", "quantity": 1, "part": "native HR-30 motion controller", "candidate": "CURRENT P0.1 PCB CANDIDATE", "fabrication": "UNBUILT / PCB RELEASE OPEN", "release": "NO", "warning": WARNING},
         {"item": "E1-08", "quantity": 2, "part": "native HR-30 interface carriers", "candidate": "CURRENT CARRIER A/B P0.1 PCB CANDIDATES", "fabrication": "UNBUILT / PCB RELEASE OPEN", "release": "NO", "warning": WARNING},
         {"item": "E1-09", "quantity": 1, "part": "native HR-30 SWD adapter", "candidate": "CURRENT P0.1 PCB CANDIDATE", "fabrication": "UNBUILT / PCB RELEASE OPEN", "release": "NO", "warning": WARNING},
+        {"item": "E1-10", "quantity": 1, "part": "native HR-30 E1 diagnostic watchdog", "candidate": "TPS3431 P0.1 PCB CANDIDATE; ZERO SAFETY CREDIT", "fabrication": "UNBUILT / PCB RELEASE OPEN", "release": "NO", "warning": WARNING},
     ])
 
     write_csv(OUT / "assembly-sequence.csv", [
         {"step": 1, "operation": "machine base and covers; deburr and clean", "mandatory_check": "dimensions, edge condition, insulation/material identity", "result": "NOT EXECUTED", "authority": AUTHORITY, "warning": WARNING},
         {"step": 2, "operation": "fit feet, standoffs and empty panel hardware", "mandatory_check": "flatness, retention, no conductive debris", "result": "NOT EXECUTED", "authority": AUTHORITY, "warning": WARNING},
-        {"step": 3, "operation": "fit unpowered MCU and SWD adapter", "mandatory_check": "native hole alignment and received-board clearance", "result": "NOT EXECUTED", "authority": AUTHORITY, "warning": WARNING},
+        {"step": 3, "operation": "fit unpowered MCU, SWD adapter and diagnostic-watchdog adapter", "mandatory_check": "native hole alignment and received-board clearance; permit remains hard-low", "result": "NOT EXECUTED", "authority": AUTHORITY, "warning": WARNING},
         {"step": 4, "operation": "fit unpowered carriers and under-panel logic harnesses", "mandatory_check": "point-to-point/short/retention inspection; no field cables", "result": "NOT EXECUTED", "authority": AUTHORITY, "warning": WARNING},
         {"step": 5, "operation": "install both closed carrier covers", "mandatory_check": "all eight field ports physically inaccessible; witness fasteners", "result": "NOT EXECUTED", "authority": AUTHORITY, "warning": WARNING},
         {"step": 6, "operation": "independent E1 configuration inspection", "mandatory_check": "zero actuator-power hardware and zero actuator/data field cables present", "result": "NOT EXECUTED", "authority": AUTHORITY, "warning": WARNING},
@@ -403,20 +410,20 @@ def write_registers(exported: dict[str, Path], geometry: dict) -> None:
     ])
 
     write_csv(OUT / "open-holds.csv", [
-        {"hold_id": "E1-H01", "unresolved": "all four native PCBs remain unbuilt/uninspected candidates", "closure": "fabrication release, received inspection, assembly records and independent electrical review", "state": "OPEN", "authority": AUTHORITY, "warning": WARNING},
+        {"hold_id": "E1-H01", "unresolved": "all five native PCBs remain unbuilt/uninspected candidates", "closure": "fabrication release, received inspection, assembly records and independent electrical review", "state": "OPEN", "authority": AUTHORITY, "warning": WARNING},
         {"hold_id": "E1-H02", "unresolved": "carrier STEP exports report missing 3D models for controller-side JST GH connectors", "closure": "received connector envelope or authoritative model; cover/slot clearance inspection", "state": "OPEN", "authority": AUTHORITY, "warning": WARNING},
         {"hold_id": "E1-H03", "unresolved": "panel, covers, standoffs, feet and fasteners are not selected or built", "closure": "exact material/order codes, DFM, fabrication and dimensional inspection", "state": "OPEN", "authority": AUTHORITY, "warning": WARNING},
         {"hold_id": "E1-H04", "unresolved": "J1 and both 15-circuit logic harnesses are unbuilt", "closure": "released wire/contact/tooling/process plus continuity, isolation, pull and retention records", "state": "OPEN", "authority": AUTHORITY, "warning": WARNING},
         {"hold_id": "E1-H05", "unresolved": "logic supply setpoint/current/OCP and DC-reference plan remain unreleased", "closure": "received-load/inrush/fault measurements and qualified electrical disposition", "state": "OPEN", "authority": AUTHORITY, "warning": WARNING},
         {"hold_id": "E1-H06", "unresolved": "no-motion binary is compiled but unflashed; HIL is unexecuted", "closure": "approved flash, boot, IO, fault-injection and torque-disabled measurements", "state": "OPEN", "authority": AUTHORITY, "warning": WARNING},
-        {"hold_id": "E1-H07", "unresolved": "diagnostic watchdog hardware/interface remains unselected", "closure": "actual circuit, adapter, fail-state implementation and HIL evidence", "state": "OPEN", "authority": AUTHORITY, "warning": WARNING},
+        {"hold_id": "E1-H07", "unresolved": "diagnostic watchdog circuit/adapter candidate is selected but board and four-conductor cable are unbuilt and HIL is unexecuted", "closure": "independent review, controlled fabrication/cable assembly, received inspection, hard-low permit confirmation and eight-row HIL evidence", "state": "OPEN", "authority": AUTHORITY, "warning": WARNING},
         {"hold_id": "E1-H08", "unresolved": "fixture has no qualified connection or powered-test authorization", "closure": "named qualified reviewers accept exact as-built fixture and sign a separate stage-specific authorization", "state": "OPEN", "authority": AUTHORITY, "warning": WARNING},
     ])
 
     status = {
         "identifier": IDENTIFIER, "warning": WARNING,
         "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "native_board_count": 4, "native_board_step_export_count": len(exported),
+        "native_board_count": 5, "native_board_step_export_count": len(exported),
         "panel_dimensions_mm": geometry["panel_mm"],
         "assembly_extent_mm": geometry["assembly_extent_mm"],
         "native_mount_hole_count": geometry["standoff_count"],
@@ -439,7 +446,7 @@ def write_docs() -> None:
 
 **{WARNING}**
 
-This is the missing physical artifact for the whole-body electrification plan's E1 stage. The 360 x 240 mm bench fixture carries the native motion-controller, carrier A, carrier B and SWD-adapter board candidates. Fourteen native mounting-hole axes are retained. Each carrier is enclosed by a screw-retained cover with no external opening; its controller cable enters through the panel from below. All eight actuator-data field ports are inaccessible, and the fixture contains no actuator-power connector, PDU, conductor or actuator.
+This is the missing physical artifact for the whole-body electrification plan's E1 stage. The 360 x 240 mm bench fixture carries the native motion-controller, carrier A, carrier B, SWD-adapter and diagnostic-watchdog board candidates. Sixteen native mounting-hole axes are retained. The watchdog's permit contact is hard-low and its outputs remain local. Each carrier is enclosed by a screw-retained cover with no external opening; its controller cable enters through the panel from below. All eight actuator-data field ports are inaccessible, and the fixture contains no actuator-power connector, PDU, conductor or actuator.
 
 The fixture is an editable/generated CAD candidate, not a built or approved test station. The native PCB STEP exports disclose missing connector models, exact hardware/material selections remain open, and the logic wiring has not been built or inspected. No hardware may be connected or powered from this package.
 """, encoding="utf-8", newline="\n")
@@ -452,7 +459,7 @@ The fixture is an editable/generated CAD candidate, not a built or approved test
         f"<tr><td>{html.escape(row['port_id'])}</td><td>{html.escape(row['whole_body_bus'])}</td><td>{html.escape(row['e1_physical_state'])}</td></tr>"
         for row in list(csv.DictReader((OUT / "field-port-exclusion-register.csv").open(encoding="utf-8", newline="")))
     )
-    (OUT / "index.html").write_text(f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 E1 controls-only fixture</title><script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script><style>:root{{--deep:#071d36;--blue:#0b4f91;--sky:#dff4ff;--gold:#f2b91d;--paper:#eef8fe;--ink:#142a40;--line:#86c7e7;--red:#8d241f}}*{{box-sizing:border-box}}html,body{{max-width:100%;overflow-x:clip}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 system-ui,Segoe UI,sans-serif}}header,main,footer{{padding:clamp(24px,5vw,62px) max(18px,calc((100vw - 1180px)/2))}}header,footer{{background:linear-gradient(135deg,var(--deep),var(--blue));color:white}}h1{{font-size:clamp(38px,6vw,68px);line-height:1.04;max-width:18ch}}h2{{font-size:clamp(28px,4vw,44px)}}.warning{{background:var(--gold);color:#17243a;border:3px solid #805600;padding:16px;font-weight:900}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}}article,.panel{{background:white;border:2px solid var(--line);border-radius:16px;padding:19px;margin:18px 0}}.metric{{font-size:clamp(34px,5vw,54px);font-weight:900;color:var(--blue)}}.hold{{border-color:#c85b4d}}model-viewer{{width:100%;height:min(70vh,650px);background:linear-gradient(#dff4ff,#fff);border:2px solid var(--line);border-radius:16px}}.scroll{{overflow:auto}}table{{border-collapse:collapse;width:100%;min-width:780px}}th,td{{font-size:16px;line-height:1.45;text-align:left;vertical-align:top;padding:13px;border-bottom:1px solid var(--line)}}th{{background:var(--deep);color:white}}a{{color:#075b9b;font-weight:800}}small{{font-size:14px}}@media(max-width:600px){{body{{font-size:16px}}model-viewer{{height:480px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>Project Button &middot; whole-body E1 artifact</p><h1>Power the controls without creating an actuator path.</h1><p>The complete humanoid now has a physical controls-only fixture candidate, not merely an E1 paragraph.</p></header><main><section class="grid"><article><div class="metric">4</div><p>native PCB candidates on exact mounting axes</p></article><article><div class="metric">8 / 8</div><p>actuator-data field ports enclosed</p></article><article><div class="metric">0</div><p>actuator-power connectors, conductors, PDUs or actuators</p></article><article class="hold"><div class="metric">0</div><p>built fixtures or authorized powered tests</p></article></section><section><h2>Inspect the actual fixture geometry</h2><model-viewer src="HR30_E1_controls_only_fixture_candidate.glb" camera-controls shadow-intensity="0.8" exposure="1.05" alt="Interactive HR-30 E1 controls-only fixture with motion controller, two enclosed interface carriers and SWD adapter"></model-viewer><p><a href="HR30_E1_controls_only_fixture_candidate.step">assembly STEP</a> &middot; <a href="HR30_E1_base_panel_candidate.dxf">base DXF</a> &middot; <a href="HR30_E1_carrier_field_port_cover_candidate.stl">cover STL</a></p></section><section class="panel"><h2>Three controlled configurations</h2><div class="scroll"><table><thead><tr><th>Stage</th><th>Installed</th><th>Physically absent</th><th>Execution</th></tr></thead><tbody>{stages}</tbody></table></div></section><section class="panel"><h2>All eight field ports remain inaccessible</h2><div class="scroll"><table><thead><tr><th>Port</th><th>Bus</th><th>Physical state</th></tr></thead><tbody>{ports}</tbody></table></div></section><section class="panel"><h2>Fail-closed boundary</h2><p>The covers shown in CAD are not proof. Native board fabrication, received connector clearance, panel hardware, logic cables, supply limits, grounding, firmware flashing, HIL and independent approval remain open. This guide cannot authorize connection or power.</p><p><a href="open-holds.csv">open holds</a> &middot; <a href="pcb-placement-register.csv">PCB placements</a> &middot; <a href="mount-hole-register.csv">mount axes</a> &middot; <a href="connector-boundary-register.csv">connector boundaries</a> &middot; <a href="candidate-bom.csv">candidate BOM</a></p></section></main><footer>{html.escape(WARNING)}</footer></body></html>""", encoding="utf-8", newline="\n")
+    (OUT / "index.html").write_text(f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HR-30 E1 controls-only fixture</title><script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script><style>:root{{--deep:#071d36;--blue:#0b4f91;--sky:#dff4ff;--gold:#f2b91d;--paper:#eef8fe;--ink:#142a40;--line:#86c7e7;--red:#8d241f}}*{{box-sizing:border-box}}html,body{{max-width:100%;overflow-x:clip}}body{{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 system-ui,Segoe UI,sans-serif}}header,main,footer{{padding:clamp(24px,5vw,62px) max(18px,calc((100vw - 1180px)/2))}}header,footer{{background:linear-gradient(135deg,var(--deep),var(--blue));color:white}}h1{{font-size:clamp(38px,6vw,68px);line-height:1.04;max-width:18ch}}h2{{font-size:clamp(28px,4vw,44px)}}.warning{{background:var(--gold);color:#17243a;border:3px solid #805600;padding:16px;font-weight:900}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}}article,.panel{{background:white;border:2px solid var(--line);border-radius:16px;padding:19px;margin:18px 0}}.metric{{font-size:clamp(34px,5vw,54px);font-weight:900;color:var(--blue)}}.hold{{border-color:#c85b4d}}model-viewer{{width:100%;height:min(70vh,650px);background:linear-gradient(#dff4ff,#fff);border:2px solid var(--line);border-radius:16px}}.scroll{{overflow:auto}}table{{border-collapse:collapse;width:100%;min-width:780px}}th,td{{font-size:16px;line-height:1.45;text-align:left;vertical-align:top;padding:13px;border-bottom:1px solid var(--line)}}th{{background:var(--deep);color:white}}a{{color:#075b9b;font-weight:800}}small{{font-size:14px}}@media(max-width:600px){{body{{font-size:16px}}model-viewer{{height:480px}}}}</style></head><body><header><div class="warning">{html.escape(WARNING)}</div><p>Project Button &middot; whole-body E1 artifact</p><h1>Power the controls without creating an actuator path.</h1><p>The complete humanoid now has a physical controls-only fixture candidate, not merely an E1 paragraph.</p></header><main><section class="grid"><article><div class="metric">5</div><p>native PCB candidates on exact mounting axes</p></article><article><div class="metric">8 / 8</div><p>actuator-data field ports enclosed</p></article><article><div class="metric">0</div><p>actuator-power connectors, conductors, PDUs or actuators</p></article><article class="hold"><div class="metric">0</div><p>built fixtures or authorized powered tests</p></article></section><section><h2>Inspect the actual fixture geometry</h2><model-viewer src="HR30_E1_controls_only_fixture_candidate.glb" camera-controls shadow-intensity="0.8" exposure="1.05" alt="Interactive HR-30 E1 controls-only fixture with motion controller, two enclosed interface carriers, SWD adapter and local diagnostic watchdog"></model-viewer><p><a href="HR30_E1_controls_only_fixture_candidate.step">assembly STEP</a> &middot; <a href="HR30_E1_base_panel_candidate.dxf">base DXF</a> &middot; <a href="HR30_E1_carrier_field_port_cover_candidate.stl">cover STL</a></p></section><section class="panel"><h2>Three controlled configurations</h2><div class="scroll"><table><thead><tr><th>Stage</th><th>Installed</th><th>Physically absent</th><th>Execution</th></tr></thead><tbody>{stages}</tbody></table></div></section><section class="panel"><h2>All eight field ports remain inaccessible</h2><div class="scroll"><table><thead><tr><th>Port</th><th>Bus</th><th>Physical state</th></tr></thead><tbody>{ports}</tbody></table></div></section><section class="panel"><h2>Fail-closed boundary</h2><p>The watchdog board shown in CAD grounds the permit contact and keeps WDO/ENOUT local, but the board and cable are unbuilt and receive zero safety credit. Native board fabrication, received connector clearance, panel hardware, logic cables, supply limits, grounding, firmware flashing, HIL and independent approval remain open. This guide cannot authorize connection or power.</p><p><a href="../e1-diagnostic-watchdog-p0.1/index.html">watchdog guide</a> &middot; <a href="open-holds.csv">open holds</a> &middot; <a href="pcb-placement-register.csv">PCB placements</a> &middot; <a href="mount-hole-register.csv">mount axes</a> &middot; <a href="connector-boundary-register.csv">connector boundaries</a> &middot; <a href="candidate-bom.csv">candidate BOM</a></p></section></main><footer>{html.escape(WARNING)}</footer></body></html>""", encoding="utf-8", newline="\n")
 
 
 def manifest() -> None:
@@ -466,16 +473,16 @@ def manifest() -> None:
 def publish_root() -> None:
     readme_block = """## E1 controls-only physical fixture
 
-The [E1 controls-only fixture](electrical/e1-controls-only-fixture-p0.1/index.html) turns the electrification plan's E1 stage into an actual 360 x 240 mm CAD assembly. It mounts the native motion controller, both four-channel carriers and SWD adapter on their real PCB hole axes, encloses all eight actuator-data field ports, and contains no actuator-power connector, conductor, PDU or actuator. The fixture and boards remain unbuilt; wiring, supply limits, received clearances, firmware/HIL and independent authorization remain open."""
-    html_block = """<section id="e1-controls-fixture"><h2>E1 now has a physical controls-only fixture</h2><div class="grid"><article class="card pass"><div class="metric">4</div><p>native PCB candidates on exact hole axes</p></article><article class="card pass"><div class="metric">8 / 8</div><p>actuator-data field ports enclosed in CAD</p></article><article class="card pass"><div class="metric">0</div><p>actuator-power components present</p></article><article class="card hold"><div class="metric">0</div><p>built or powered fixtures</p></article></div><p><a href="electrical/e1-controls-only-fixture-p0.1/index.html">Open the interactive E1 fixture guide</a>. No connection or powered-test authority follows.</p></section>"""
+The [E1 controls-only fixture](electrical/e1-controls-only-fixture-p0.1/index.html) turns the electrification plan's E1 stage into an actual 360 x 240 mm CAD assembly. It mounts the native motion controller, both four-channel carriers, SWD adapter and local diagnostic-watchdog board on their real PCB hole axes, encloses all eight actuator-data field ports, and contains no actuator-power connector, conductor, PDU or actuator. The watchdog permit is hard-low and both outputs stay local. The fixture and boards remain unbuilt; wiring, supply limits, received clearances, firmware/HIL and independent authorization remain open."""
+    html_block = """<section id="e1-controls-fixture"><h2>E1 now has a physical controls-only fixture</h2><div class="grid"><article class="card pass"><div class="metric">5</div><p>native PCB candidates on exact hole axes</p></article><article class="card pass"><div class="metric">8 / 8</div><p>actuator-data field ports enclosed in CAD</p></article><article class="card pass"><div class="metric">0</div><p>actuator-power components present</p></article><article class="card hold"><div class="metric">0</div><p>built or powered fixtures</p></article></div><p><a href="electrical/e1-controls-only-fixture-p0.1/index.html">Open the interactive E1 fixture guide</a>. The watchdog receives zero safety credit, and no connection or powered-test authority follows.</p></section>"""
     replace_marker(BODY / "README.md", "<!-- HR30-E1-CONTROLS-FIXTURE-P01-START -->", "<!-- HR30-E1-CONTROLS-FIXTURE-P01-END -->", readme_block)
     replace_marker(BODY / "index.html", "<!-- HR30-E1-CONTROLS-FIXTURE-P01-START -->", "<!-- HR30-E1-CONTROLS-FIXTURE-P01-END -->", html_block)
     status_path = BODY / "package-status.json"
     status = json.loads(status_path.read_text(encoding="utf-8"))
     status.update({
         "e1_controls_only_fixture_present": True,
-        "e1_native_pcb_count": 4,
-        "e1_native_mount_hole_count": 14,
+        "e1_native_pcb_count": 5,
+        "e1_native_mount_hole_count": 16,
         "e1_actuator_field_port_cover_count": 8,
         "e1_actuator_power_component_count": 0,
         "e1_fixture_built": False,

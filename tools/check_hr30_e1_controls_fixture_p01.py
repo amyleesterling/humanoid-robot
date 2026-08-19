@@ -48,7 +48,7 @@ def main() -> int:
         "HR30_E1_carrier_field_port_cover_candidate.step",
         "HR30_E1_carrier_field_port_cover_candidate.stl",
         "mcu-native-pcb.step", "carrier_a-native-pcb.step",
-        "carrier_b-native-pcb.step", "swd-native-pcb.step",
+        "carrier_b-native-pcb.step", "swd-native-pcb.step", "watchdog-native-pcb.step",
         "kicad-board-export.log", "pcb-placement-register.csv",
         "mount-hole-register.csv", "field-port-exclusion-register.csv",
         "e1-configuration-register.csv", "connector-boundary-register.csv",
@@ -122,22 +122,24 @@ def main() -> int:
     )
 
     bindings = rows(OUT / "source-binding.csv")
-    need(len(bindings) == 9 and len({row["role"] for row in bindings}) == 9, "source binding count drift")
+    need(len(bindings) == 10 and len({row["role"] for row in bindings}) == 10, "source binding count drift")
     for row in bindings:
         path = ROOT / row["path"]
         need(path.is_file() and sha(path) == row["sha256"] and row["state"] == "BOUND", f"source binding mismatch {row['role']}")
 
     boards = rows(OUT / "pcb-placement-register.csv")
-    need(len(boards) == 4 and {row["board_id"] for row in boards} == {"MCU", "CARRIER_A", "CARRIER_B", "SWD"}, "board population drift")
-    need(sum(int(row["mount_hole_count"]) for row in boards) == 14, "board mount-hole aggregate drift")
+    need(len(boards) == 5 and {row["board_id"] for row in boards} == {"MCU", "CARRIER_A", "CARRIER_B", "SWD", "WATCHDOG"}, "board population drift")
+    need(sum(int(row["mount_hole_count"]) for row in boards) == 16, "board mount-hole aggregate drift")
+    watchdog = next(row for row in boards if row["board_id"] == "WATCHDOG")
+    need(float(watchdog["board_width_mm"]) == 40.0 and float(watchdog["board_depth_mm"]) == 25.0 and int(watchdog["mount_hole_count"]) == 2, "watchdog placement geometry drift")
     for row in boards:
         source = ROOT / row["native_pcb"]
         need(source.is_file() and sha(source) == row["native_pcb_sha256"], f"native PCB hash drift {row['board_id']}")
         need((OUT / row["exported_step"]).is_file(), f"missing board STEP {row['board_id']}")
 
     holes = rows(OUT / "mount-hole-register.csv")
-    need(len(holes) == 14 and len({row["hole_id"] for row in holes}) == 14, "mount-hole register drift")
-    need(len({(row["panel_x_mm"], row["panel_y_mm"]) for row in holes}) == 14, "duplicate panel hole axes")
+    need(len(holes) == 16 and len({row["hole_id"] for row in holes}) == 16, "mount-hole register drift")
+    need(len({(row["panel_x_mm"], row["panel_y_mm"]) for row in holes}) == 16, "duplicate panel hole axes")
     need(all(float(row["native_hole_diameter_mm"]) == 2.7 and float(row["panel_clearance_diameter_mm"]) == 3.0 for row in holes), "mount-hole diameter drift")
 
     ports = rows(OUT / "field-port-exclusion-register.csv")
@@ -150,7 +152,9 @@ def main() -> int:
     need([row["stage"] for row in stages] == ["E1-A", "E1-B", "E1-C"], "E1 stage sequence drift")
     need(all(row["execution"] == "NOT EXECUTED" for row in stages), "unexecuted fixture presented as executed")
     boundaries = rows(OUT / "connector-boundary-register.csv")
-    need({row["boundary"] for row in boundaries} == {"J1", "JDBG1", "JMCU_A", "JMCU_B", "FIELD_PORTS", "ACTUATOR_POWER"}, "connector boundary drift")
+    need({row["boundary"] for row in boundaries} == {"J1", "JDBG1", "JIO1_WATCHDOG", "JMCU_A", "JMCU_B", "FIELD_PORTS", "ACTUATOR_POWER"}, "connector boundary drift")
+    watchdog_boundary = next(row for row in boundaries if row["boundary"] == "JIO1_WATCHDOG")
+    need("CONTACTS 1,2,3,5 ONLY" in watchdog_boundary["allowed_on_fixture"] and "HARD-LOW" in watchdog_boundary["allowed_on_fixture"] and "ZERO SAFETY CREDIT" in watchdog_boundary["selection"], "watchdog boundary weakened")
     actuator_power = next(row for row in boundaries if row["boundary"] == "ACTUATOR_POWER")
     need(actuator_power["allowed_on_fixture"] == "NONE" and "NO CONNECTOR" in actuator_power["e1_state"], "actuator-power exclusion weakened")
     need("15 OF 15 POPULATED" in next(row for row in boundaries if row["boundary"] == "JMCU_A")["selection"], "carrier A harness boundary incomplete")
@@ -205,8 +209,8 @@ def main() -> int:
         need(path.is_file() and sha(path) == row["sha256"], f"logic harness binding mismatch {row['role']}")
 
     status = json.loads((OUT / "e1-fixture-status.json").read_text(encoding="utf-8"))
-    need(status["native_board_count"] == 4 and status["native_board_step_export_count"] == 4, "status board count drift")
-    need(status["native_mount_hole_count"] == 14 and status["sealed_carrier_cover_count"] == 2, "status geometry count drift")
+    need(status["native_board_count"] == 5 and status["native_board_step_export_count"] == 5, "status board count drift")
+    need(status["native_mount_hole_count"] == 16 and status["sealed_carrier_cover_count"] == 2, "status geometry count drift")
     need(status["actuator_field_port_count"] == 8 and status["actuator_field_ports_physically_covered_in_cad"], "status port coverage drift")
     need(not any(status[key] for key in (
         "actuator_power_connectors_present", "actuator_power_conductors_present",
@@ -278,7 +282,7 @@ def main() -> int:
     need(expected_orders <= {row["order_code"] for row in hardware}, "exact fixture hardware candidates missing")
     need(all(row["built"] == "NO" for row in hardware), "fixture hardware build overclaim")
     stacks = rows(OUT / "fixture-fastener-stack-register.csv")
-    need(len(stacks) == 3 and sum(int(row["location_count"]) for row in stacks) == 26, "fixture fastener stack count drift")
+    need(len(stacks) == 3 and sum(int(row["location_count"]) for row in stacks) == 28, "fixture fastener stack count drift")
     need({row["stack_id"] for row in stacks} == {"FH-ST01", "FH-ST02", "FH-ST03"}, "fixture stack identity drift")
     materials = rows(OUT / "fixture-material-register.csv")
     need(len(materials) == 4 and all("OPEN" in row["state"] for row in materials), "fixture material register drift")
@@ -296,7 +300,7 @@ def main() -> int:
     hardware_holds = rows(OUT / "fixture-hardware-open-holds.csv")
     need(len(hardware_holds) == 7 and all(row["state"] == "OPEN" for row in hardware_holds), "fixture hardware hold drift")
     hardware_status = json.loads((OUT / "fixture-hardware-status.json").read_text(encoding="utf-8"))
-    need(hardware_status["hardware_selection_count"] == 13 and hardware_status["pcb_support_stack_count"] == 14, "fixture hardware status count drift")
+    need(hardware_status["hardware_selection_count"] == 13 and hardware_status["pcb_support_stack_count"] == 16, "fixture hardware status count drift")
     need(hardware_status["cover_fastener_stack_count"] == 8 and hardware_status["bench_foot_stack_count"] == 4, "fixture cover/foot status drift")
     need(not any(hardware_status[key] for key in (
         "fixture_built", "supplier_coc_received", "machining_process_released",
@@ -336,7 +340,7 @@ def main() -> int:
     holds = rows(OUT / "open-holds.csv")
     need(len(holds) == 8 and all(row["state"] == "OPEN" for row in holds), "E1 open-hold drift")
     log = (OUT / "kicad-board-export.log").read_text(encoding="utf-8")
-    need(log.count("exit=0") == 4, "KiCad board export count/result drift")
+    need(log.count("exit=0") == 5, "KiCad board export count/result drift")
     need("Could not add 3D model" in log, "missing-model disclosure unexpectedly absent")
 
     page = (OUT / "index.html").read_text(encoding="utf-8")
@@ -354,7 +358,7 @@ def main() -> int:
     need(root_readme.count("HR30-E1-CONTROLS-FIXTURE-P01-START") == 1, "root README marker drift")
     need(root_page.count("HR30-E1-CONTROLS-FIXTURE-P01-START") == 1, "root page marker drift")
     package_status = json.loads((BODY / "package-status.json").read_text(encoding="utf-8"))
-    need(package_status["e1_controls_only_fixture_present"] and package_status["e1_native_pcb_count"] == 4, "root E1 status absent")
+    need(package_status["e1_controls_only_fixture_present"] and package_status["e1_native_pcb_count"] == 5, "root E1 status absent")
     need(package_status["e1_actuator_power_component_count"] == 0, "root status introduces actuator power")
     need(package_status["e1_logic_harness_candidate_present"] and package_status["e1_logic_harness_populated_conductor_count"] == 27, "root logic harness status absent")
     need(not package_status["e1_logic_harness_built"] and not package_status["e1_logic_harness_validated"], "root logic harness overclaim")
@@ -371,7 +375,7 @@ def main() -> int:
         need(path.is_file() and int(row["bytes"]) == path.stat().st_size and row["sha256"] == sha(path), f"manifest mismatch {row['file']}")
         need(row["warning"] == WARNING, f"manifest warning drift {row['file']}")
 
-    print("PASS: HR-30 E1 fixture uses 4 native PCBs / 14 defined support stacks, 8 physical cover fasteners and 4 full-height foot stacks, encloses all 8 data field ports, includes both logic harnesses plus J1, contains zero actuator-power hardware, and keeps every physical/authority gate false")
+    print("PASS: HR-30 E1 fixture uses 5 native PCBs / 16 defined support stacks, including the hard-low/local-output watchdog, encloses all 8 data field ports, contains zero actuator-power hardware, and keeps every physical/authority gate false")
     return 0
 
 

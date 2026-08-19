@@ -2,7 +2,7 @@
 
 **PRELIMINARY - UNBUILT CONTROLS-ONLY FIXTURE CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION**
 
-This is the missing physical artifact for the whole-body electrification plan's E1 stage. The 360 x 240 mm bench fixture carries the native motion-controller, carrier A, carrier B and SWD-adapter board candidates. Fourteen native mounting-hole axes are retained. Each carrier is enclosed by a screw-retained cover with no external opening; its controller cable enters through the panel from below. All eight actuator-data field ports are inaccessible, and the fixture contains no actuator-power connector, PDU, conductor or actuator.
+This is the missing physical artifact for the whole-body electrification plan's E1 stage. The 360 x 240 mm bench fixture carries the native motion-controller, carrier A, carrier B, SWD-adapter and diagnostic-watchdog board candidates. Sixteen native mounting-hole axes are retained. The watchdog's permit contact is hard-low and its outputs remain local. Each carrier is enclosed by a screw-retained cover with no external opening; its controller cable enters through the panel from below. All eight actuator-data field ports are inaccessible, and the fixture contains no actuator-power connector, PDU, conductor or actuator.
 
 The fixture is an editable/generated CAD candidate, not a built or approved test station. The native PCB STEP exports disclose missing connector models, exact hardware/material selections remain open, and the logic wiring has not been built or inspected. No hardware may be connected or powered from this package.
 
@@ -29,7 +29,7 @@ Manufacturing and placed STEP/GLB files, a native-J1 route, contact map, BOM and
 
 **PRELIMINARY - UNBUILT E1 FIXTURE HARDWARE CANDIDATE - NOT APPROVED FOR CONNECTION, POWERED TESTING, MOTION, WALKING, OR ENERGIZATION**
 
-The fixture CAD now contains the hardware it previously only named. Fourteen board locations use a 3 mm project-owned LEXAN pedestal, an 8 mm Wuerth `970080155` internal/internal M2.5 standoff, and separate 12 mm bottom / 6 mm top nylon screws. The two carrier covers now have 3 mm flanges, four physical fastener holes each, and eight M3 screw/nut stacks. Four 18 mm bench feet combine a machined 7.9 mm LEXAN riser with a recessed M5 fastener and a 10.1 mm 3M `SJ5309` nonslip bumper.
+The fixture CAD now contains the hardware it previously only named. Sixteen board locations use a 3 mm project-owned LEXAN pedestal, an 8 mm Wuerth `970080155` internal/internal M2.5 standoff, and separate 12 mm bottom / 6 mm top nylon screws. The two carrier covers now have 3 mm flanges, four physical fastener holes each, and eight M3 screw/nut stacks. Four 18 mm bench feet combine a machined 7.9 mm LEXAN riser with a recessed M5 fastener and a 10.1 mm 3M `SJ5309` nonslip bumper.
 
 The base, covers, raceway, pedestals and foot risers are dimensioned for SABIC LEXAN 9034 sheet. STEP/GLB hardware CAD, four readable fabrication drawings, exact candidate/order-code registers and ten first-article inspections are included. Supplier stock, machining process, torque, received fit, adhesion, load, FAI and qualified acceptance remain open.
 

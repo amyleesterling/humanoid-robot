@@ -355,13 +355,13 @@ The E1 fixture now includes the physical two-conductor J1 cable candidate alongs
 <!-- HR30-E1-FIXTURE-HARDWARE-P01-START -->
 ## E1 fixture hardware and fabrication
 
-The controls-only fixture now has [interactive hardware CAD and readable fabrication drawings](electrical/e1-controls-only-fixture-p0.1/index.html#e1-fixture-hardware). Its 14 PCB stacks, eight cover fasteners and four full-height foot stacks are dimensioned and bound to exact candidate hardware. The covers now have real flanges and mounting holes. Fabrication, received fit, torque, adhesive/load testing, FAI and qualified acceptance remain open.
+The controls-only fixture now has [interactive hardware CAD and readable fabrication drawings](electrical/e1-controls-only-fixture-p0.1/index.html#e1-fixture-hardware). Its 16 PCB stacks, eight cover fasteners and four full-height foot stacks are dimensioned and bound to exact candidate hardware. The covers now have real flanges and mounting holes. Fabrication, received fit, torque, adhesive/load testing, FAI and qualified acceptance remain open.
 <!-- HR30-E1-FIXTURE-HARDWARE-P01-END -->
 
 <!-- HR30-E1-CONTROLS-FIXTURE-P01-START -->
 ## E1 controls-only physical fixture
 
-The [E1 controls-only fixture](electrical/e1-controls-only-fixture-p0.1/index.html) turns the electrification plan's E1 stage into an actual 360 x 240 mm CAD assembly. It mounts the native motion controller, both four-channel carriers and SWD adapter on their real PCB hole axes, encloses all eight actuator-data field ports, and contains no actuator-power connector, conductor, PDU or actuator. The fixture and boards remain unbuilt; wiring, supply limits, received clearances, firmware/HIL and independent authorization remain open.
+The [E1 controls-only fixture](electrical/e1-controls-only-fixture-p0.1/index.html) turns the electrification plan's E1 stage into an actual 360 x 240 mm CAD assembly. It mounts the native motion controller, both four-channel carriers, SWD adapter and local diagnostic-watchdog board on their real PCB hole axes, encloses all eight actuator-data field ports, and contains no actuator-power connector, conductor, PDU or actuator. The watchdog permit is hard-low and both outputs stay local. The fixture and boards remain unbuilt; wiring, supply limits, received clearances, firmware/HIL and independent authorization remain open.
 <!-- HR30-E1-CONTROLS-FIXTURE-P01-END -->
 
 <!-- HR30-CONTROL-SUCCESSOR-P01-START -->
@@ -409,3 +409,9 @@ The former empty torso, pelvis, head and foot reservations now contain 64 locate
 
 The [route-specific harness duty/thermal guide](harness/duty-thermal-screen-p0.1/index.html) connects both frozen walking traces to all 25 physical power-pair lengths, eight buses and six reserved power corridors. The derived loss cases define physical test obligations; they do not release conductors, contacts, protection or energization.
 <!-- HR30-DUTY-THERMAL-P01-END -->
+
+<!-- HR30-E1-WATCHDOG-P01-START -->
+## E1 diagnostic heartbeat watchdog
+
+The [interactive diagnostic-watchdog guide](electrical/e1-diagnostic-watchdog-p0.1/index.html) contains a routed **40 x 25 mm native KiCad board** using the exact TPS3431SDRBR candidate. Its four-conductor fixture cable carries only ground, 3.3 V, a hard-low permit and heartbeat. Watchdog outputs remain local. The board/cable are unbuilt, HIL is unexecuted, and the circuit has zero functional-safety or work authority.
+<!-- HR30-E1-WATCHDOG-P01-END -->

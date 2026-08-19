@@ -9,9 +9,9 @@ Could not add 3D model for J1.
 File not found: ${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_VH_B2P-VH-B_1x02_P3.96mm_Vertical.step
 STEP file 'C:/Users/amyle/Documents/New project/h30e/hr30/whole-body-p0.1/electrical/e1-controls-only-fixture-p0.1/mcu-native-pcb.step' created.
 
-Export time 3.850 s
-13:05:16: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-13:05:16: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+Export time 3.642 s
+20:19:09: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+20:19:09: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0
 
@@ -20,9 +20,9 @@ Could not add 3D model for JCA1.
 File not found: ${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_GH_BM15B-GHS-TBT_1x15-1MP_P1.25mm_Vertical.step
 STEP file 'C:/Users/amyle/Documents/New project/h30e/hr30/whole-body-p0.1/electrical/e1-controls-only-fixture-p0.1/carrier_a-native-pcb.step' created.
 
-Export time 0.736 s
-13:05:21: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-13:05:21: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+Export time 0.805 s
+20:19:13: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+20:19:13: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0
 
@@ -31,17 +31,28 @@ Could not add 3D model for JCB1.
 File not found: ${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_GH_BM15B-GHS-TBT_1x15-1MP_P1.25mm_Vertical.step
 STEP file 'C:/Users/amyle/Documents/New project/h30e/hr30/whole-body-p0.1/electrical/e1-controls-only-fixture-p0.1/carrier_b-native-pcb.step' created.
 
-Export time 0.908 s
-13:05:22: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-13:05:22: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+Export time 0.876 s
+20:19:15: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+20:19:15: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0
 
 $ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export step --force --subst-models --output "C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\e1-controls-only-fixture-p0.1\swd-native-pcb.step" "C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\swd-adapter-p0.1\board\hr30-swd-adapter-p0.1.kicad_pcb"
 STEP file 'C:/Users/amyle/Documents/New project/h30e/hr30/whole-body-p0.1/electrical/e1-controls-only-fixture-p0.1/swd-native-pcb.step' created.
 
-Export time 0.303 s
-13:05:23: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
-13:05:23: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+Export time 0.307 s
+20:19:16: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+20:19:16: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
+
+exit=0
+
+$ "C:\Program Files\KiCad\10.0\bin\kicad-cli.exe" pcb export step --force --subst-models --output "C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\e1-controls-only-fixture-p0.1\watchdog-native-pcb.step" "C:\Users\amyle\Documents\New project\h30e\hr30\whole-body-p0.1\electrical\e1-diagnostic-watchdog-p0.1\board\hr30-e1-diagnostic-watchdog-p0.1.kicad_pcb"
+Could not add 3D model for U1.
+File not found: ${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/VSON-8-1EP_3x3mm_P0.65mm_EP1.65x2.4mm.step
+STEP file 'C:/Users/amyle/Documents/New project/h30e/hr30/whole-body-p0.1/electrical/e1-controls-only-fixture-p0.1/watchdog-native-pcb.step' created.
+
+Export time 0.531 s
+20:19:17: Error: Can't create registry key 'HKCU\Software\kicad-cli' (error 5: Access is denied.)
+20:19:17: Error: Can't open registry key 'HKCU\Software\kicad-cli' (error 2: The system cannot find the file specified.)
 
 exit=0
